@@ -27,6 +27,8 @@
     reducedMotion: window.matchMedia("(prefers-reduced-motion: reduce)"),
     uniforms: {},
     diagnosticFrame: 0,
+    timelineSource: { media: null, bpm: 112, firstDownbeatSeconds: 0, fallbackBpm: 112 },
+    visualTimeline: { seconds: 0, beatPosition: 0, source: "fallback", bpm: 112 },
   };
 
   const vertexSource = `#version 300 es
@@ -669,25 +671,65 @@
     if (canvas.width !== width || canvas.height !== height) { canvas.width = width; canvas.height = height; }
   }
 
+  function setTimelineSource(source = {}) {
+    const bpm = Math.max(1, Number(source.bpm) || Number(source.fallbackBpm) || 112);
+    const fallbackBpm = Math.max(1, Number(source.fallbackBpm) || bpm || 112);
+    const firstDownbeatSeconds = Number.isFinite(Number(source.firstDownbeatSeconds))
+      ? Number(source.firstDownbeatSeconds)
+      : 0;
+    const media = source.media && Number.isFinite(Number(source.media.currentTime)) ? source.media : null;
+    state.timelineSource = { media, bpm, firstDownbeatSeconds, fallbackBpm };
+    return {
+      source: media ? "media_bpm_downbeat" : "fallback",
+      bpm: media ? bpm : fallbackBpm,
+      firstDownbeatSeconds: media ? firstDownbeatSeconds : 0,
+    };
+  }
+
+  function resolveVisualTimeline(elapsed) {
+    const mediaSeconds = Number(state.timelineSource.media?.currentTime);
+    const mediaHasStarted = Number.isFinite(mediaSeconds) && (mediaSeconds > .05 || !state.timelineSource.media?.paused);
+    const usingMedia = Boolean(state.timelineSource.media) && mediaHasStarted;
+    const seconds = usingMedia ? Math.max(0, mediaSeconds) : Math.max(0, elapsed);
+    const bpm = usingMedia ? state.timelineSource.bpm : state.timelineSource.fallbackBpm;
+    const downbeat = usingMedia ? state.timelineSource.firstDownbeatSeconds : 0;
+    state.visualTimeline = {
+      seconds,
+      beatPosition: (seconds - downbeat) * bpm / 60,
+      source: usingMedia ? "media_bpm_downbeat" : "fallback",
+      bpm,
+    };
+    return state.visualTimeline;
+  }
+
   function render(now) {
     if (!state.active || !state.gl) return;
     resize(); updateAudio();
+    const elapsed = (now - state.startedAt) / 1000;
+    const visualTimeline = resolveVisualTimeline(elapsed);
     state.diagnosticFrame += 1;
     if (state.diagnosticFrame % 30 === 0) {
       const diagnostic = Array.from(state.audio).map((value) => value.toFixed(4)).join(",");
       const rhythmDiagnostic = Array.from(state.rhythm).map((value) => value.toFixed(4)).join(",");
       state.canvas.dataset.emdrAudioBands = diagnostic;
       state.canvas.dataset.emdrRhythm = rhythmDiagnostic;
+      state.canvas.dataset.emdrBeatPosition = visualTimeline.beatPosition.toFixed(3);
+      state.canvas.dataset.emdrTimelineSource = visualTimeline.source;
       const threeCanvas = document.querySelector("[data-emdr-three-canvas]");
       if (threeCanvas) {
         threeCanvas.dataset.emdrAudioBands = diagnostic;
         threeCanvas.dataset.emdrRhythm = rhythmDiagnostic;
       }
+      const vectorWorld = document.querySelector("[data-emdr-vector-world]");
+      if (vectorWorld) {
+        vectorWorld.dataset.emdrBeatPosition = visualTimeline.beatPosition.toFixed(3);
+        vectorWorld.dataset.emdrTimelineSource = visualTimeline.source;
+      }
     }
-    const elapsed = (now - state.startedAt) / 1000;
     const effectiveIntensity = state.intensity;
     window.IAMVectorWorlds?.render?.({
-      time: elapsed,
+      time: visualTimeline.seconds,
+      beatPosition: visualTimeline.beatPosition,
       rhythm: state.rhythm,
       intensity: effectiveIntensity,
       motion: state.reducedMotion.matches ? .18 : 1,
@@ -760,6 +802,7 @@
       state.rhythm.fill(0);
       return state.reactionEnabled;
     },
+    setTimelineSource,
     setAudioSource(media) { connectAudio(media); state.audioContext?.resume?.().catch(() => {}); return Boolean(state.sources.has(media)); },
     getAudioLevel() { return currentAudioLevel(); },
     diagnostics() {
@@ -773,6 +816,7 @@
         audioRms: currentAudioLevel(),
         audioBands: Array.from(state.audio),
         rhythm: Array.from(state.rhythm),
+        visualTimeline: { ...state.visualTimeline },
         mediaSourceCountAvailable: Boolean(state.sources),
       };
     },

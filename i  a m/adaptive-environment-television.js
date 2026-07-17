@@ -135,6 +135,7 @@
   const supportClose = document.querySelector("[data-television-support-close]");
   const typewriterLines = Array.from(document.querySelectorAll("[data-adaptive-typewriter]"));
   const contextLines = Array.from(document.querySelectorAll("[data-local-context-line]"));
+  const televisionPageTitle = document.title;
 
   if (!playButton || !room || !playerMount) return;
 
@@ -176,12 +177,23 @@
   let soundResearchMediaLevel = 0;
   let soundResearchTargetLevel = 0;
   let soundResearchDiagnosticAt = 0;
-  const soundResearchTestMode = new URLSearchParams(window.location.search).get("soundResearchTest") === "1";
+  let soundResearchPlaybackObservedAt = 0;
+  let soundResearchPlaybackTime = 0;
+  let soundResearchPlaybackAdvancing = false;
+  let soundResearchRetryAt = 0;
+  let soundResearchMonitor = null;
+  const soundResearchParams = new URLSearchParams(window.location.search);
+  const soundResearchTestMode = soundResearchParams.get("soundResearchTest") === "1";
+  const soundResearchMonitorMode = soundResearchParams.get("quantumTreeMonitor") === "1";
   let soundResearchEnabled = soundResearchTestMode || localStorage.getItem("iamSoundResearchLayer") !== "off";
-  const SOUND_RESEARCH_MAX_VOLUME = 0.03;
+  const SOUND_RESEARCH_DEFAULT_MAX_VOLUME = 0.585;
+  const SOUND_RESEARCH_PEAK_STORAGE_KEY = "iamQuantumTreePeakVolume";
   const SOUND_RESEARCH_SILENCE_FLOOR = 0.012;
-  const SOUND_RESEARCH_FULL_MASK_LEVEL = 0.18;
-  const SOUND_RESEARCH_MASKING_CURVE = 1.55;
+  const SOUND_RESEARCH_FULL_MASK_LEVEL = 0.12;
+  const SOUND_RESEARCH_MASKING_CURVE = 0.75;
+  const SOUND_RESEARCH_ATTACK_SMOOTHING = 0.05;
+  const SOUND_RESEARCH_RELEASE_SMOOTHING = 0.12;
+  let soundResearchMaxVolume = readSoundResearchPeakVolume();
   let continuationDecision = null;
   let flowerCanvasFrame = 0;
   let timecode = null;
@@ -362,24 +374,39 @@
 
   function updateRecommendationFromStorage() {
     track = resolveSelectedTrack();
+    document.body.classList.remove("adaptive-music-selection-failed");
     setRecommendationLoading(false);
     syncSelectedTrackCopy();
     setMusicTelevisionMetadata();
     window.IAMStreamReady?.then(() => primeLocalVideo());
   }
 
-  function useRecommendationFallback() {
-    track = resolveSelectedTrack();
+  function showRecommendationUnavailable() {
     const basisLine = document.querySelector(".adaptive-environment__basis");
+    const artistLine = document.querySelector(".adaptive-environment__source");
+    const titleLine = document.querySelector(".adaptive-environment__station");
     if (basisLine) {
-      const fallbackText = "A music experience for this moment";
-      basisLine.dataset.adaptiveTypewriterText = fallbackText;
-      basisLine.textContent = fallbackText;
+      const unavailableText = "Music selection is unavailable. Please check in again.";
+      basisLine.dataset.adaptiveTypewriterText = unavailableText;
+      basisLine.textContent = unavailableText;
     }
+    if (artistLine) {
+      artistLine.dataset.adaptiveTypewriterText = "";
+      artistLine.textContent = "";
+    }
+    if (titleLine) {
+      titleLine.dataset.adaptiveTypewriterText = "";
+      titleLine.textContent = "";
+    }
+
     setRecommendationLoading(false);
-    syncSelectedTrackCopy();
-    setMusicTelevisionMetadata();
-    window.IAMStreamReady?.then(() => primeLocalVideo());
+    document.body.classList.remove("adaptive-music-selection-ready");
+    document.body.classList.add("adaptive-music-selection-failed");
+    document.body.dataset.adaptiveSelectionSource = "pipeline_error";
+    delete document.body.dataset.adaptiveTrackId;
+    playButton.disabled = true;
+    playButton.removeAttribute("data-selected-track-id");
+    playButton.setAttribute("aria-label", "Music selection unavailable. Please check in again.");
   }
 
   function shouldAutoPreloadVideo() {
@@ -391,6 +418,26 @@
 
   function clamp(value, min, max) {
     return Math.min(max, Math.max(min, value));
+  }
+
+  function readSoundResearchPeakVolume() {
+    const storedPeak = localStorage.getItem(SOUND_RESEARCH_PEAK_STORAGE_KEY);
+    if (storedPeak === null || storedPeak === "") return SOUND_RESEARCH_DEFAULT_MAX_VOLUME;
+    const storedValue = Number(storedPeak);
+    return Number.isFinite(storedValue) && storedValue >= 0 && storedValue <= 1
+      ? storedValue
+      : SOUND_RESEARCH_DEFAULT_MAX_VOLUME;
+  }
+
+  function setSoundResearchPeakVolume(value, persist = true) {
+    soundResearchMaxVolume = clamp(Number(value) || 0, 0, 1);
+    if (persist) localStorage.setItem(SOUND_RESEARCH_PEAK_STORAGE_KEY, soundResearchMaxVolume.toFixed(4));
+    document.body.dataset.quantumTreePeakVolume = soundResearchMaxVolume.toFixed(4);
+    window.dispatchEvent(new CustomEvent("iam:quantum-tree-peak-changed", {
+      detail: { peakVolume: soundResearchMaxVolume },
+    }));
+    if (soundResearchMonitor) updateSoundResearchMonitor(soundResearchDiagnostics());
+    return soundResearchMaxVolume;
   }
 
   function baseEdgeScale() {
@@ -1570,30 +1617,124 @@
   }
 
   function soundResearchTargetVolume() {
-    if (soundResearchTestMode) return SOUND_RESEARCH_MAX_VOLUME;
+    if (soundResearchTestMode) return soundResearchMaxVolume;
     const videoIsAudible = localVideo && !localVideo.paused && !localVideo.muted && localVideo.volume > 0;
-    if (videoIsAudible) {
+    const radioIsAudible = continuationAudio && !continuationAudio.paused && !continuationAudio.muted && continuationAudio.volume > 0;
+    const activeMedia = videoIsAudible ? localVideo : (radioIsAudible ? continuationAudio : null);
+    if (activeMedia) {
       const measuredLevel = Number(window.IAMEMDR?.getAudioLevel?.());
-      soundResearchMediaLevel = Number.isFinite(measuredLevel) ? measuredLevel * localVideo.volume : 0;
+      soundResearchMediaLevel = Number.isFinite(measuredLevel) ? measuredLevel * activeMedia.volume : 0;
       const normalizedLevel = clamp(
         (soundResearchMediaLevel - SOUND_RESEARCH_SILENCE_FLOOR) /
           (SOUND_RESEARCH_FULL_MASK_LEVEL - SOUND_RESEARCH_SILENCE_FLOOR),
         0,
         1
       );
-      return SOUND_RESEARCH_MAX_VOLUME * Math.pow(normalizedLevel, SOUND_RESEARCH_MASKING_CURVE);
+      return soundResearchMaxVolume * Math.pow(normalizedLevel, SOUND_RESEARCH_MASKING_CURVE);
     }
     soundResearchMediaLevel = 0;
-    const radioLevel = continuationAudio && !continuationAudio.paused && !continuationAudio.muted ? continuationAudio.volume : 0;
-    return radioLevel * SOUND_RESEARCH_MAX_VOLUME;
+    return 0;
+  }
+
+  function soundResearchDiagnostics() {
+    const videoIsAudible = localVideo && !localVideo.paused && !localVideo.muted && localVideo.volume > 0;
+    const radioIsAudible = continuationAudio && !continuationAudio.paused && !continuationAudio.muted && continuationAudio.volume > 0;
+    const activeSource = videoIsAudible ? "video" : (radioIsAudible ? "radio" : "none");
+    return {
+      enabled: soundResearchEnabled,
+      activeSource,
+      fileLoaded: Boolean(soundResearchAudio && soundResearchAudio.readyState >= 2),
+      playing: Boolean(soundResearchAudio && !soundResearchAudio.paused && !soundResearchAudio.ended),
+      advancing: soundResearchPlaybackAdvancing,
+      currentTime: Number(soundResearchAudio?.currentTime || 0),
+      duration: Number(soundResearchAudio?.duration || 0),
+      readyState: Number(soundResearchAudio?.readyState || 0),
+      mediaLevel: soundResearchMediaLevel,
+      targetVolume: soundResearchTargetLevel,
+      currentVolume: Number(soundResearchAudio?.volume || 0),
+      peakVolume: soundResearchMaxVolume,
+      silenceFloor: SOUND_RESEARCH_SILENCE_FLOOR,
+      fullMaskLevel: SOUND_RESEARCH_FULL_MASK_LEVEL,
+    };
+  }
+
+  function initSoundResearchMonitor() {
+    if (!soundResearchMonitorMode || soundResearchMonitor) return;
+    const monitor = document.createElement("aside");
+    monitor.setAttribute("aria-label", "Quantum Tree live monitor");
+    monitor.style.cssText = "position:fixed;right:18px;top:18px;z-index:2147483000;width:min(320px,calc(100vw - 36px));padding:16px 18px;border:1px solid rgba(255,255,255,.22);border-radius:18px;background:rgba(8,8,13,.88);box-shadow:0 18px 50px rgba(0,0,0,.45);backdrop-filter:blur(18px);color:#fff;font:500 12px/1.45 -apple-system,BlinkMacSystemFont,Segoe UI,sans-serif;letter-spacing:.02em";
+    monitor.innerHTML = `
+      <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:12px">
+        <strong style="font-size:14px;letter-spacing:.08em;text-transform:uppercase">Quantum Tree</strong>
+        <span data-quantum-monitor-status style="padding:4px 9px;border-radius:999px;background:rgba(255,255,255,.1)">waiting</span>
+      </div>
+      <dl style="display:grid;grid-template-columns:1fr auto;gap:6px 14px;margin:0">
+        <dt style="opacity:.62">Audio source</dt><dd data-quantum-monitor-source style="margin:0">none</dd>
+        <dt style="opacity:.62">File</dt><dd data-quantum-monitor-file style="margin:0">not loaded</dd>
+        <dt style="opacity:.62">Signal</dt><dd data-quantum-monitor-signal style="margin:0">stopped</dd>
+        <dt style="opacity:.62">Media RMS</dt><dd data-quantum-monitor-media style="margin:0">0.000</dd>
+        <dt style="opacity:.62">Current gain</dt><dd data-quantum-monitor-current style="margin:0">0%</dd>
+        <dt style="opacity:.62">Target gain</dt><dd data-quantum-monitor-target style="margin:0">0%</dd>
+        <dt style="opacity:.62">Saved peak</dt><dd data-quantum-monitor-peak style="margin:0">0%</dd>
+      </dl>
+      <a href="quantum-tree-control.html" target="_blank" rel="noopener" style="display:block;margin-top:14px;padding:9px 12px;border:1px solid rgba(255,255,255,.24);border-radius:999px;color:#fff;text-align:center;text-decoration:none">Open calibration dashboard</a>
+    `;
+    document.body.append(monitor);
+    soundResearchMonitor = monitor;
+    updateSoundResearchMonitor(soundResearchDiagnostics());
+  }
+
+  function updateSoundResearchMonitor(diagnostics) {
+    if (!soundResearchMonitor) return;
+    const setText = (selector, value) => {
+      const element = soundResearchMonitor.querySelector(selector);
+      if (element) element.textContent = value;
+    };
+    const verifiedPlaying = diagnostics.playing && diagnostics.advancing;
+    const verifiedOutput = verifiedPlaying && diagnostics.currentVolume > 0.0001;
+    const status = !diagnostics.enabled
+      ? "disabled"
+      : (verifiedOutput ? "verified output" : (verifiedPlaying ? "playing · gated silent" : (diagnostics.playing ? "starting" : "stopped")));
+    const statusElement = soundResearchMonitor.querySelector("[data-quantum-monitor-status]");
+    if (statusElement) {
+      statusElement.textContent = status;
+      statusElement.style.background = verifiedOutput ? "rgba(70,207,126,.24)" : "rgba(255,255,255,.1)";
+      statusElement.style.color = verifiedOutput ? "#9effbf" : "#fff";
+    }
+    setText("[data-quantum-monitor-source]", diagnostics.activeSource);
+    setText("[data-quantum-monitor-file]", diagnostics.fileLoaded ? "loaded" : "loading");
+    setText("[data-quantum-monitor-signal]", diagnostics.advancing ? `${diagnostics.currentTime.toFixed(1)}s advancing` : "not advancing");
+    setText("[data-quantum-monitor-media]", diagnostics.mediaLevel.toFixed(4));
+    setText("[data-quantum-monitor-current]", `${(diagnostics.currentVolume * 100).toFixed(1)}%`);
+    setText("[data-quantum-monitor-target]", `${(diagnostics.targetVolume * 100).toFixed(1)}%`);
+    setText("[data-quantum-monitor-peak]", `${(diagnostics.peakVolume * 100).toFixed(1)}%`);
   }
 
   function publishSoundResearchDiagnostics(now) {
-    if (!emdrSoundResearch || now - soundResearchDiagnosticAt < 250) return;
+    if (now - soundResearchDiagnosticAt < 250) return;
     soundResearchDiagnosticAt = now;
-    emdrSoundResearch.dataset.soundResearchMediaLevel = soundResearchMediaLevel.toFixed(5);
-    emdrSoundResearch.dataset.soundResearchTargetVolume = soundResearchTargetLevel.toFixed(5);
-    emdrSoundResearch.dataset.soundResearchVolume = Number(soundResearchAudio?.volume || 0).toFixed(5);
+    const currentTime = Number(soundResearchAudio?.currentTime || 0);
+    if (soundResearchAudio && !soundResearchAudio.paused && Math.abs(currentTime - soundResearchPlaybackTime) > 0.001) {
+      soundResearchPlaybackObservedAt = now;
+    }
+    soundResearchPlaybackTime = currentTime;
+    soundResearchPlaybackAdvancing = Boolean(
+      soundResearchAudio &&
+      !soundResearchAudio.paused &&
+      now - soundResearchPlaybackObservedAt < 1000
+    );
+    const diagnostics = soundResearchDiagnostics();
+    if (emdrSoundResearch) {
+      emdrSoundResearch.dataset.soundResearchMediaLevel = diagnostics.mediaLevel.toFixed(5);
+      emdrSoundResearch.dataset.soundResearchTargetVolume = diagnostics.targetVolume.toFixed(5);
+      emdrSoundResearch.dataset.soundResearchVolume = diagnostics.currentVolume.toFixed(5);
+      emdrSoundResearch.dataset.soundResearchPeakVolume = diagnostics.peakVolume.toFixed(5);
+      emdrSoundResearch.dataset.soundResearchPlaying = String(diagnostics.playing);
+      emdrSoundResearch.dataset.soundResearchAdvancing = String(diagnostics.advancing);
+      emdrSoundResearch.dataset.soundResearchCurrentTime = diagnostics.currentTime.toFixed(3);
+      emdrSoundResearch.dataset.soundResearchActiveSource = diagnostics.activeSource;
+    }
+    updateSoundResearchMonitor(diagnostics);
   }
 
   function updateSoundResearchGain(now = 0) {
@@ -1601,10 +1742,17 @@
     if (!soundResearchAudio || !soundResearchEnabled) return;
     const target = soundResearchTargetVolume();
     soundResearchTargetLevel = target;
-    const smoothing = target > soundResearchAudio.volume ? 0.018 : 0.18;
+    const smoothing = target > soundResearchAudio.volume
+      ? SOUND_RESEARCH_ATTACK_SMOOTHING
+      : SOUND_RESEARCH_RELEASE_SMOOTHING;
     soundResearchAudio.volume += (target - soundResearchAudio.volume) * smoothing;
     if (target === 0 && soundResearchAudio.volume < 0.0001) soundResearchAudio.volume = 0;
-    publishSoundResearchDiagnostics(Number(now) || window.performance?.now?.() || Date.now());
+    const diagnosticNow = Number(now) || window.performance?.now?.() || Date.now();
+    if (target > 0 && soundResearchAudio.paused && diagnosticNow - soundResearchRetryAt > 1000) {
+      soundResearchRetryAt = diagnosticNow;
+      soundResearchAudio.play().catch(() => null);
+    }
+    publishSoundResearchDiagnostics(diagnosticNow);
     soundResearchGainFrame = window.requestAnimationFrame(updateSoundResearchGain);
   }
 
@@ -1638,6 +1786,17 @@
     }
   }
 
+  window.IAMQuantumTree = {
+    diagnostics: soundResearchDiagnostics,
+    getPeakVolume() {
+      return soundResearchMaxVolume;
+    },
+    setPeakVolume(value) {
+      return setSoundResearchPeakVolume(value, true);
+    },
+    setEnabled: setSoundResearchEnabled,
+  };
+
   function startTelevisionContinuation() {
     if (!localVideo) return;
 
@@ -1655,6 +1814,12 @@
     window.IAMStreamController?.setFashionActive(localVideo, true);
 
     primeContinuationAudio(radioDecision);
+    window.IAMEMDR?.setTimelineSource?.({
+      media: continuationAudio,
+      bpm: 112,
+      firstDownbeatSeconds: 0,
+      fallbackBpm: 112,
+    });
 
     continuationAudio.muted = false;
     continuationAudio.play()
@@ -1700,6 +1865,7 @@
     }
 
     window.IAMEMDR?.setActive?.(false, { canvas: emdrCanvas, video: localVideo });
+    window.IAMEMDR?.setTimelineSource?.({ media: null, fallbackBpm: 112 });
     stopEmdrIntensityJourney();
     window.IAMEMDR?.setAudioSource?.(null);
     document.body.classList.remove("television-radio-continuation");
@@ -1998,6 +2164,12 @@
       ? emdrUserIntensity
       : adaptiveStartingIntensity;
     emdrStyleIndex = adaptation.styleIndex;
+    window.IAMEMDR?.setTimelineSource?.({
+      media: localVideo && !document.body.classList.contains("television-radio-continuation") ? localVideo : continuationAudio,
+      bpm: Number(track.bpm) || 112,
+      firstDownbeatSeconds: Number.isFinite(Number(track.firstDownbeatSeconds)) ? Number(track.firstDownbeatSeconds) : 0,
+      fallbackBpm: 112,
+    });
     window.IAMEMDR?.setStyle(emdrStyleValues[emdrStyleIndex]);
     window.IAMEMDR?.setIntensity(startingIntensity);
     if (emdrStyle) {
@@ -2161,6 +2333,23 @@
     return url.href;
   }
 
+  function refreshOuterFavicon() {
+    window.__iamAdaptiveEnvironment?.refreshFavicon?.({ force: true });
+  }
+
+  function syncPageLayerMetadata() {
+    if (!document.body.classList.contains("television-page-view-open")) return;
+
+    try {
+      const nextTitle = pageFrame?.contentDocument?.title?.trim();
+      if (nextTitle) document.title = nextTitle;
+    } catch {
+      // The frame remains usable if browser security blocks title access.
+    }
+
+    refreshOuterFavicon();
+  }
+
   function openInVideoPageLayer(link) {
     if (!pageView || !pageFrame) return;
 
@@ -2175,6 +2364,8 @@
   }
 
   function returnToTelevisionRoom() {
+    document.title = televisionPageTitle;
+    refreshOuterFavicon();
     document.body.classList.remove(
       "homepage-radar-open",
       "homepage-radar-arming",
@@ -2284,7 +2475,7 @@
   setRecommendationLoading(selectionIsLoading);
   if (!selectionIsLoading) {
     if (document.body.classList.contains("adaptive-music-selection-failed")) {
-      useRecommendationFallback();
+      showRecommendationUnavailable();
     } else {
       syncSelectedTrackCopy();
     }
@@ -2415,6 +2606,12 @@
     setSoundResearchEnabled(!soundResearchEnabled);
   });
   syncSoundResearchControl();
+  setSoundResearchPeakVolume(soundResearchMaxVolume, false);
+  initSoundResearchMonitor();
+  window.addEventListener("storage", (event) => {
+    if (event.key !== SOUND_RESEARCH_PEAK_STORAGE_KEY) return;
+    setSoundResearchPeakVolume(readSoundResearchPeakVolume(), false);
+  });
   researchRolloverHosts.forEach((host) => {
     const moreButton = host.querySelector(".adaptive-television-research-tooltip__more");
 
@@ -2573,7 +2770,7 @@
   playButton.addEventListener("click", openRoom, true);
   window.addEventListener("iam:music-television-selection-updated", updateRecommendationFromStorage);
   window.addEventListener("iam:checkin-pipeline-complete", updateRecommendationFromStorage);
-  window.addEventListener("iam:checkin-pipeline-error", useRecommendationFallback);
+  window.addEventListener("iam:checkin-pipeline-error", showRecommendationUnavailable);
   document.addEventListener("fullscreenchange", syncFullscreenState);
   document.addEventListener("webkitfullscreenchange", syncFullscreenState);
   window.addEventListener("message", (event) => {
@@ -2581,6 +2778,7 @@
     if (event.data?.type !== "iam:return-to-television") return;
     returnToTelevisionRoom();
   });
+  pageFrame?.addEventListener("load", syncPageLayerMetadata);
   setMusicTelevisionMetadata();
   syncFullscreenState();
   window.IAMStreamReady?.then(() => {

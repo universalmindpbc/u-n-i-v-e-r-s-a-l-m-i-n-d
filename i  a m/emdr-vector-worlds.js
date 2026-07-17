@@ -370,12 +370,165 @@
       <path d="M-86-84L-56-108M86-84L56-108" fill="none" stroke="#fff" stroke-width="9" opacity=".58"/>
     </g>`;
 
+  const raveCharacterPoseArtwork = `
+    <g id="vector-rave-dragon-flight-body" stroke="#15131d" stroke-linejoin="round" stroke-linecap="round">
+      <path d="M-300 45 C-226-52-154 105-68 19 C8-58 73 83 150 14 C205-34 244-16 285 23" fill="none" stroke="#15131d" stroke-width="101"/>
+      <path d="M-300 45 C-226-52-154 105-68 19 C8-58 73 83 150 14 C205-34 244-16 285 23" fill="none" stroke="url(#vector-dragon-gradient)" stroke-width="78"/>
+      <path d="M-237 10 L-205-79 L-155-20 M-100 45 L-56-65 L-7 9 M52 40 L95-58 L137 7" fill="#21d1e8" stroke-width="10"/>
+      <path d="M-301 45 Q-351 79-375 36" fill="none" stroke="#15131d" stroke-width="27"/>
+      <path d="M-301 45 Q-351 79-375 36" fill="none" stroke="#55df51" stroke-width="15"/>
+    </g>
+
+    <g id="vector-rave-dragon-wing" stroke="#15131d" stroke-width="10" stroke-linejoin="round" stroke-linecap="round">
+      <path d="M0 18C-34-31-82-72-137-63C-117-14-90 22-38 47C-68 55-91 74-103 106C-53 98-19 70 0 35Z" fill="#25d5e7"/>
+      <path d="M-18 33L-72-18M-39 48L-91 22M-58 67L-94 64" fill="none" stroke="#fff" stroke-width="7" opacity=".62"/>
+    </g>
+
+    <g id="vector-rave-dragon-head-shell" stroke="#15131d" stroke-linejoin="round" stroke-linecap="round">
+      <path d="M224-22C270-75 343-49 350 13C357 73 297 106 244 71C217 53 204 13 224-22Z" fill="#ffce2c" stroke-width="10"/>
+      <path d="M252-51L263-108L291-57M299-49L332-96L333-31" fill="#ff4d96" stroke-width="10"/>
+      <path d="M314 48Q342 37 349 16" fill="none" stroke-width="8"/>
+    </g>
+
+    <g id="vector-rave-dragon-head-normal">
+      <use href="#vector-rave-dragon-head-shell"/>
+      <ellipse cx="309" cy="6" rx="25" ry="29" fill="#fff" stroke="#15131d" stroke-width="8"/>
+      <circle cx="317" cy="9" r="9" fill="#15131d"/>
+    </g>
+
+    <g id="vector-rave-dragon-head-look">
+      <use href="#vector-rave-dragon-head-shell"/>
+      <ellipse cx="309" cy="6" rx="25" ry="29" fill="#fff" stroke="#15131d" stroke-width="8"/>
+      <circle cx="301" cy="9" r="9" fill="#15131d"/>
+      <path d="M278-25Q306-42 334-24" fill="none" stroke="#15131d" stroke-width="7" stroke-linecap="round"/>
+    </g>
+
+    <g id="vector-rave-dragon-head-blink">
+      <use href="#vector-rave-dragon-head-shell"/>
+      <path d="M282 7Q307-9 333 7" fill="none" stroke="#15131d" stroke-width="10" stroke-linecap="round"/>
+      <path d="M288 14Q307 23 326 14" fill="none" stroke="#fff" stroke-width="5" opacity=".68" stroke-linecap="round"/>
+    </g>
+
+    <g id="vector-rave-dragon-flight-up">
+      <use href="#vector-rave-dragon-wing" transform="translate(-72 -15) rotate(-48) scale(.82)"/>
+      <use href="#vector-rave-dragon-flight-body"/>
+      <use href="#vector-rave-dragon-wing" transform="translate(68 -2) rotate(-28) scale(-.7 .7)"/>
+      <use href="#vector-rave-dragon-head-normal"/>
+    </g>
+
+    <g id="vector-rave-dragon-flight-down">
+      <use href="#vector-rave-dragon-wing" transform="translate(-70 18) rotate(32) scale(.82)"/>
+      <use href="#vector-rave-dragon-flight-body" transform="scale(1 .96)"/>
+      <use href="#vector-rave-dragon-wing" transform="translate(66 22) rotate(52) scale(-.7 .7)"/>
+      <use href="#vector-rave-dragon-head-normal" transform="translate(0 7) rotate(2 270 20)"/>
+    </g>
+
+    <g id="vector-rave-dragon-flight-stretch">
+      <use href="#vector-rave-dragon-wing" transform="translate(-48 18) rotate(12) scale(.78)"/>
+      <use href="#vector-rave-dragon-flight-body" transform="scale(1.12 .84)"/>
+      <use href="#vector-rave-dragon-wing" transform="translate(96 20) rotate(24) scale(-.66 .66)"/>
+      <use href="#vector-rave-dragon-head-normal" transform="translate(34 -4)"/>
+    </g>
+
+    <g id="vector-rave-dragon-look">
+      <use href="#vector-rave-dragon-wing" transform="translate(-68 0) rotate(-10) scale(.75)"/>
+      <use href="#vector-rave-dragon-flight-body"/>
+      <use href="#vector-rave-dragon-wing" transform="translate(65 10) rotate(14) scale(-.64 .64)"/>
+      <use href="#vector-rave-dragon-head-look" transform="rotate(-5 260 20)"/>
+    </g>
+
+    <g id="vector-rave-dragon-blink">
+      <use href="#vector-rave-dragon-wing" transform="translate(-68 5) rotate(-4) scale(.73)"/>
+      <use href="#vector-rave-dragon-flight-body" transform="scale(1 .98)"/>
+      <use href="#vector-rave-dragon-wing" transform="translate(65 12) rotate(20) scale(-.62 .62)"/>
+      <use href="#vector-rave-dragon-head-blink" transform="translate(0 5)"/>
+    </g>
+
+    <g id="vector-rave-dragon-meditate" stroke="#15131d" stroke-linejoin="round" stroke-linecap="round">
+      <path d="M-212 62C-252-49-132-151 3-111C113-78 164 18 112 93C65 160-60 164-128 107C-163 78-169 39-143 12" fill="none" stroke="#15131d" stroke-width="104"/>
+      <path d="M-212 62C-252-49-132-151 3-111C113-78 164 18 112 93C65 160-60 164-128 107C-163 78-169 39-143 12" fill="none" stroke="url(#vector-dragon-gradient)" stroke-width="80"/>
+      <path d="M-171-43L-127-122L-75-65M-32-92L10-155L55-88" fill="#21d1e8" stroke-width="10"/>
+      <path d="M-50 91Q-94 128-139 99M30 101Q80 137 124 91" fill="none" stroke-width="20"/>
+      <use href="#vector-rave-dragon-wing" transform="translate(-35 20) rotate(38) scale(.62)"/>
+      <use href="#vector-rave-dragon-head-normal" transform="translate(-111 30) rotate(18) scale(.76)"/>
+      <path d="M-4 27Q30 47 59 22" fill="none" stroke="#fff" stroke-width="7" opacity=".46"/>
+    </g>
+
+    <g id="vector-rave-smiley-body" stroke="#15131d" stroke-width="8" stroke-linecap="round">
+      <circle r="61" fill="#ffcf1d"/>
+      <g fill="none">
+        <path d="M0-103V-137M0 103V137M-103 0H-137M103 0H137"/>
+        <path d="M-73-73L-98-98M73 73L98 98M73-73L98-98M-73 73L-98 98"/>
+      </g>
+    </g>
+
+    <g id="vector-rave-smiley-idle">
+      <use href="#vector-rave-smiley-body"/>
+      <circle cx="-19" cy="-9" r="6" fill="#15131d"/>
+      <circle cx="19" cy="-9" r="6" fill="#15131d"/>
+      <path d="M-26 17Q0 42 29 15" fill="none" stroke="#15131d" stroke-width="8" stroke-linecap="round"/>
+    </g>
+
+    <g id="vector-rave-smiley-blink">
+      <use href="#vector-rave-smiley-body"/>
+      <path d="M-30-8Q-19-18-8-8M8-8Q19-18 30-8" fill="none" stroke="#15131d" stroke-width="8" stroke-linecap="round"/>
+      <path d="M-25 18Q0 41 28 16" fill="none" stroke="#15131d" stroke-width="8" stroke-linecap="round"/>
+    </g>
+
+    <g id="vector-rave-smiley-grin">
+      <use href="#vector-rave-smiley-body"/>
+      <path d="M-30-10Q-19-22-8-10M8-10Q19-22 30-10" fill="none" stroke="#15131d" stroke-width="8" stroke-linecap="round"/>
+      <path d="M-35 12Q0 58 38 10Q2 35-35 12Z" fill="#fff" stroke="#15131d" stroke-width="7"/>
+      <path d="M-20 28Q2 39 23 27" fill="none" stroke="#ff4d96" stroke-width="7" stroke-linecap="round"/>
+    </g>
+
+    <g id="vector-rave-smiley-glance">
+      <use href="#vector-rave-smiley-body"/>
+      <ellipse cx="-18" cy="-8" rx="12" ry="15" fill="#fff" stroke="#15131d" stroke-width="6"/>
+      <ellipse cx="22" cy="-8" rx="12" ry="15" fill="#fff" stroke="#15131d" stroke-width="6"/>
+      <circle cx="-23" cy="-7" r="5" fill="#15131d"/>
+      <circle cx="17" cy="-7" r="5" fill="#15131d"/>
+      <path d="M-22 21Q1 34 25 17" fill="none" stroke="#15131d" stroke-width="8" stroke-linecap="round"/>
+    </g>
+
+    <g id="vector-rave-monster-core" stroke="#15131d" stroke-width="9" stroke-linejoin="round" stroke-linecap="round">
+      <path d="M-72 29C-91-15-71-76-22-90C32-106 83-69 87-14C92 44 53 88 0 90C-32 91-58 70-72 29Z" fill="#ff4f9b"/>
+      <path d="M-52 43C-34 13-8-1 26 5C55 10 70 32 64 60C34 91-23 96-52 43Z" fill="#ffcf33"/>
+      <path d="M-72-18Q-110-42-104-74Q-65-74-48-47" fill="#21d1e8"/>
+      <path d="M66-35Q104-60 112-28Q100 2 77 7" fill="#75df4d"/>
+      <ellipse cx="-25" cy="-25" rx="19" ry="24" fill="#fff"/>
+      <ellipse cx="28" cy="-25" rx="19" ry="24" fill="#fff"/>
+      <circle cx="-20" cy="-21" r="7" fill="#15131d" stroke="none"/>
+      <circle cx="33" cy="-21" r="7" fill="#15131d" stroke="none"/>
+      <path d="M-29 19Q3 48 39 14" fill="none"/>
+      <path d="M-68-4L62-66" fill="none" stroke="#fff" stroke-width="13" opacity=".78"/>
+    </g>
+
+    <g id="vector-rave-monster-step-left" stroke="#15131d" stroke-width="11" stroke-linecap="round">
+      <use href="#vector-rave-monster-core" transform="rotate(-4)"/>
+      <path d="M-65 31Q-118 16-132-19M70 31Q116 58 126 93" fill="none"/>
+      <path d="M-30 84L-76 113L-106 99M31 84L58 125L88 119" fill="none"/>
+    </g>
+
+    <g id="vector-rave-monster-step-right" stroke="#15131d" stroke-width="11" stroke-linecap="round">
+      <use href="#vector-rave-monster-core" transform="rotate(4)"/>
+      <path d="M-67 31Q-112 61-120 96M69 30Q120 13 134-22" fill="none"/>
+      <path d="M-31 84L-57 126L-88 120M30 84L78 112L108 98" fill="none"/>
+    </g>
+
+    <g id="vector-rave-monster-float" stroke="#15131d" stroke-width="11" stroke-linecap="round">
+      <use href="#vector-rave-monster-core" transform="translate(0 -8) scale(1.03 .96)"/>
+      <path d="M-68 25Q-118-17-104-65M69 25Q118-17 105-65" fill="none"/>
+      <path d="M-29 80Q-67 96-84 72M30 80Q69 96 87 71" fill="none"/>
+    </g>`;
+
   function installAmendedArtwork() {
     const templeGroup = state.svg.querySelector('[data-vector-style="0"]');
     if (templeGroup) templeGroup.innerHTML = literalTempleArtwork;
 
     const definitions = state.svg.querySelector("defs");
     if (definitions && !definitions.querySelector("#vector-purple-worm")) definitions.insertAdjacentHTML("beforeend", purpleWormArtwork);
+    if (definitions && !definitions.querySelector("#vector-rave-dragon-flight-up")) definitions.insertAdjacentHTML("beforeend", raveCharacterPoseArtwork);
 
     const raveGroup = state.svg.querySelector('[data-vector-style="2"]');
     const secondDragon = raveGroup?.querySelector('use[href="#vector-dragon"][data-vector-extra]');
@@ -420,11 +573,22 @@
       sprite.dataset.drift = String(drift);
     });
 
+    const dragon = raveGroup?.querySelector('use[href="#vector-dragon"]');
+    const smiley = raveGroup?.querySelector('use[href="#vector-sun"]');
+    const monster = raveGroup?.querySelector('use[href="#vector-mascot"]');
+    dragon?.setAttribute("href", "#vector-rave-dragon-flight-up");
+    smiley?.setAttribute("href", "#vector-rave-smiley-idle");
+    monster?.setAttribute("href", "#vector-rave-monster-step-left");
+    if (dragon) dragon.dataset.raveCharacter = "dragon";
+    if (smiley) smiley.dataset.raveCharacter = "smiley";
+    if (monster) monster.dataset.raveCharacter = "monster";
+
     raveGroup?.querySelectorAll("[data-vector-sprite]").forEach((sprite) => {
       const source = String(sprite.getAttribute("href") || "").replace("#vector-", "");
       const roles = {
         dragon: "dragon", "purple-worm": "worm", daisy: "daisy", mascot: "monster",
         spark: "spark", eye: "eye", dancer: "dancer", cassette: "cassette", sun: "smiley",
+        "rave-dragon-flight-up": "dragon", "rave-smiley-idle": "smiley", "rave-monster-step-left": "monster",
       };
       sprite.dataset.raveRole = source === "blossom"
         ? (sprite.hasAttribute("data-vector-extra") ? "guest" : "small-daisy")
@@ -578,18 +742,239 @@
     });
   }
 
-  function renderRaveGentle({ time, rhythm, intensity, motion }) {
+  const RAVE_PHRASE_BEATS = 64;
+  const ravePoseIds = {
+    dragon: {
+      up: "#vector-rave-dragon-flight-up",
+      down: "#vector-rave-dragon-flight-down",
+      stretch: "#vector-rave-dragon-flight-stretch",
+      meditate: "#vector-rave-dragon-meditate",
+      look: "#vector-rave-dragon-look",
+      blink: "#vector-rave-dragon-blink",
+    },
+    smiley: {
+      idle: "#vector-rave-smiley-idle",
+      blink: "#vector-rave-smiley-blink",
+      grin: "#vector-rave-smiley-grin",
+      glance: "#vector-rave-smiley-glance",
+    },
+    monster: {
+      left: "#vector-rave-monster-step-left",
+      right: "#vector-rave-monster-step-right",
+      float: "#vector-rave-monster-float",
+    },
+  };
+
+  function positiveModulo(value, divisor) {
+    const remainder = (Number(value) || 0) % divisor;
+    return remainder < 0 ? remainder + divisor : remainder;
+  }
+
+  function sceneFade(progress, edge = .08) {
+    const entry = eased(progress / edge);
+    const exit = 1 - eased((progress - (1 - edge)) / edge);
+    return clamp(Math.min(entry, exit));
+  }
+
+  function setRaveCharacterPose(sprite, pose, action) {
+    if (pose && sprite.dataset.ravePose !== pose) {
+      sprite.setAttribute("href", pose);
+      sprite.dataset.ravePose = pose;
+    }
+    if (action) sprite.dataset.raveAction = action;
+  }
+
+  function dragonDirection(beat, intensity) {
+    const phrase = positiveModulo(beat, RAVE_PHRASE_BEATS);
+    const flapFrame = Math.floor(positiveModulo(beat * 2, 4));
+    const flapPose = flapFrame < 2 ? ravePoseIds.dragon.up : ravePoseIds.dragon.down;
+    const energy = .55 + intensity * .45;
+    let action = flapFrame < 2 ? "wings-up" : "wings-down";
+    let pose = flapPose;
+    let x = 785;
+    let y = 285 + Math.sin(beat * Math.PI) * 18 * energy;
+    let rotation = Math.sin(beat * Math.PI * .5) * 2.8;
+    let scaleX = 1;
+    let scaleY = 1;
+    let opacity = 1;
+
+    if (phrase >= 8 && phrase < 24) {
+      const progress = (phrase - 8) / 16;
+      const flight = eased(progress);
+      x = 155 + flight * 1290;
+      y = 285 - Math.sin(progress * Math.PI) * (120 + intensity * 70) + Math.sin(progress * Math.PI * 6) * 24;
+      rotation = -8 + progress * 16 + Math.sin(progress * Math.PI * 4) * 4;
+      opacity = sceneFade(progress);
+      action = "fly-right";
+      if (positiveModulo(phrase - 8, 4) > 2.9) {
+        pose = ravePoseIds.dragon.stretch;
+        action = "flying-stretch";
+        scaleX = 1.08;
+        scaleY = .94;
+      }
+    } else if (phrase >= 24 && phrase < 40) {
+      const progress = (phrase - 24) / 16;
+      const breath = Math.sin((phrase - 24) * Math.PI / 2);
+      x = 800;
+      y = 438 - breath * (8 + intensity * 7);
+      rotation = Math.sin((phrase - 24) * Math.PI / 4) * 1.4;
+      scaleX = 1.08 + breath * (.025 + intensity * .025);
+      scaleY = 1.08 + breath * (.05 + intensity * .04);
+      opacity = sceneFade(progress, .1);
+      pose = ravePoseIds.dragon.meditate;
+      action = breath > 0 ? "meditating-breathe-in" : "meditating-breathe-out";
+    } else if (phrase >= 40 && phrase < 48) {
+      const lookBeat = positiveModulo(phrase - 40, 4);
+      const blink = lookBeat >= 2.65 && lookBeat < 3.05;
+      x = 800 + Math.sin((phrase - 40) * Math.PI / 4) * 18;
+      y = 330 + Math.cos((phrase - 40) * Math.PI / 2) * 10;
+      rotation = -2 + Math.sin((phrase - 40) * Math.PI / 2) * 2;
+      pose = blink ? ravePoseIds.dragon.blink : ravePoseIds.dragon.look;
+      action = blink ? "blink" : "sideways-look";
+    } else if (phrase >= 48) {
+      const progress = (phrase - 48) / 16;
+      const flight = eased(progress);
+      x = 1445 - flight * 1290;
+      y = 300 - Math.sin(progress * Math.PI) * (115 + intensity * 65) + Math.cos(progress * Math.PI * 6) * 22;
+      rotation = 8 - progress * 16 - Math.sin(progress * Math.PI * 4) * 4;
+      opacity = sceneFade(progress);
+      action = "fly-left";
+      if (positiveModulo(phrase - 48, 4) > 2.9) {
+        pose = ravePoseIds.dragon.stretch;
+        action = "flying-stretch";
+        scaleX = 1.08;
+        scaleY = .94;
+      }
+    } else if (phrase >= 6) {
+      pose = ravePoseIds.dragon.stretch;
+      action = "takeoff-stretch";
+      scaleX = 1.06;
+      scaleY = .95;
+    }
+
+    return { pose, action, x, y, rotation, scaleX, scaleY, opacity };
+  }
+
+  function smileyDirection(beat, intensity, baseX, baseY) {
+    const phrase = positiveModulo(beat, 8);
+    const story = positiveModulo(beat, RAVE_PHRASE_BEATS);
+    const energy = .5 + intensity * .5;
+    const flyingRight = story >= 8 && story < 24;
+    const flyingLeft = story >= 48;
+    const stageX = flyingRight
+      ? (story < 16 ? baseX : 185)
+      : flyingLeft ? (story < 56 ? 185 : 1415) : baseX;
+    const stageY = flyingRight || flyingLeft ? 195 : baseY;
+    let pose = ravePoseIds.smiley.idle;
+    let action = "smile";
+    let scaleX = 1;
+    let scaleY = 1;
+    let hop = 0;
+    let rotation = Math.sin(beat * Math.PI * .5) * 4 * energy;
+
+    if (phrase >= .55 && phrase < .9) {
+      pose = ravePoseIds.smiley.blink;
+      action = "blink";
+    } else if (phrase >= 1 && phrase < 2) {
+      pose = ravePoseIds.smiley.grin;
+      action = "grin-change";
+    } else if (phrase >= 2 && phrase < 2.5) {
+      action = "squash";
+      scaleX = 1.18;
+      scaleY = .8;
+    } else if (phrase >= 2.5 && phrase < 3) {
+      action = "stretch";
+      scaleX = .86;
+      scaleY = 1.18;
+    } else if (phrase >= 3 && phrase < 4) {
+      pose = ravePoseIds.smiley.glance;
+      action = "sideways-glance";
+      rotation -= 7;
+    } else if (phrase >= 4 && phrase < 5.35) {
+      const progress = (phrase - 4) / 1.35;
+      pose = progress > .55 ? ravePoseIds.smiley.grin : ravePoseIds.smiley.idle;
+      action = "small-hop";
+      hop = Math.sin(progress * Math.PI) * (46 + intensity * 42);
+      scaleX = 1 - Math.sin(progress * Math.PI) * .06;
+      scaleY = 1 + Math.sin(progress * Math.PI) * .08;
+    } else if (phrase >= 5.35 && phrase < 6.7) {
+      pose = ravePoseIds.smiley.grin;
+      action = "grin-change";
+    } else if (phrase >= 7.45) {
+      pose = ravePoseIds.smiley.blink;
+      action = "blink";
+    }
+
+    return {
+      pose,
+      action,
+      x: stageX + Math.sin(beat * Math.PI * .25) * 11 * energy,
+      y: stageY - hop + Math.cos(beat * Math.PI * .5) * 5,
+      rotation,
+      scaleX,
+      scaleY,
+      opacity: 1,
+    };
+  }
+
+  function monsterDirection(beat, intensity, baseX, baseY) {
+    const phrase = positiveModulo(beat, 4);
+    const step = Math.floor(phrase);
+    const stepProgress = positiveModulo(phrase, 1);
+    const pulse = Math.sin(stepProgress * Math.PI);
+    const direction = step === 0 || step === 2 ? -1 : 1;
+    const floating = step === 3;
+    const pose = floating
+      ? ravePoseIds.monster.float
+      : direction < 0 ? ravePoseIds.monster.left : ravePoseIds.monster.right;
+    return {
+      pose,
+      action: floating ? "float" : direction < 0 ? "two-step-left" : "two-step-right",
+      x: baseX + direction * (12 + intensity * 16) * pulse,
+      y: baseY - (floating ? Math.sin(stepProgress * Math.PI) * (36 + intensity * 34) : pulse * (8 + intensity * 15)),
+      rotation: direction * (2 + intensity * 3) * pulse,
+      scaleX: 1 + pulse * .035,
+      scaleY: 1 - pulse * .025,
+      opacity: 1,
+    };
+  }
+
+  function renderRaveGentle({ time, rhythm, intensity, motion, beatPosition }) {
     const localTime = Math.max(0, (Number(time) || 0) * (Number(motion) || 1));
     const kick = rhythm?.[1] || 0;
+    const rawBeat = Number.isFinite(Number(beatPosition)) ? Number(beatPosition) : localTime * 2;
+    const directedBeat = rawBeat * (motion < .5 ? .2 : 1);
     const background = state.sprites.filter((sprite) => !sprite.hasAttribute("data-rave-centerpiece"));
     const centre = state.sprites.filter((sprite) => sprite.hasAttribute("data-rave-centerpiece"));
 
     background.forEach((sprite, index) => {
       sprite.style.display = "";
-      sprite.style.opacity = "1";
       const x = Number(sprite.dataset.x || 0);
       const y = Number(sprite.dataset.y || 0);
       const baseScale = Number(sprite.dataset.scale || 1);
+      const role = sprite.dataset.raveRole || "spark";
+      const phraseBeat = positiveModulo(directedBeat, RAVE_PHRASE_BEATS);
+      let direction = null;
+      if (role === "dragon") direction = dragonDirection(directedBeat, intensity);
+      else if (role === "smiley") direction = smileyDirection(directedBeat, intensity, x, y);
+      else if (role === "monster") direction = monsterDirection(directedBeat, intensity, x, y);
+
+      if (direction) {
+        setRaveCharacterPose(sprite, direction.pose, direction.action);
+        sprite.style.opacity = String(direction.opacity);
+        const accent = 1 + kick * intensity * .045;
+        const scaleX = baseScale * direction.scaleX * accent;
+        const scaleY = baseScale * direction.scaleY * accent;
+        sprite.setAttribute("transform", `translate(${direction.x.toFixed(2)} ${direction.y.toFixed(2)}) rotate(${direction.rotation.toFixed(2)}) scale(${scaleX.toFixed(4)} ${scaleY.toFixed(4)})`);
+        return;
+      }
+
+      if (role === "worm" && phraseBeat >= 24 && phraseBeat < 48) {
+        sprite.style.opacity = "0";
+        return;
+      }
+
+      sprite.style.opacity = "1";
       const phase = Number(sprite.dataset.phase || index);
       const speed = Number(sprite.dataset.speed || .1) * (.64 + intensity * .34);
       const drift = Number(sprite.dataset.drift || 12) * (.3 + intensity * .28);
@@ -622,11 +1007,11 @@
     });
   }
 
-  function render({ time, rhythm, intensity, motion }) {
+  function render({ time, rhythm, intensity, motion, beatPosition }) {
     if (!state.active || (state.style !== 0 && state.style !== 2) || !init()) return;
     state.intensity = clamp(intensity);
     if (state.style === 0) renderTemple({ time, intensity: state.intensity, motion });
-    else renderRaveGentle({ time, rhythm, intensity: state.intensity, motion });
+    else renderRaveGentle({ time, rhythm, intensity: state.intensity, motion, beatPosition });
   }
 
   init();

@@ -485,10 +485,14 @@ async function requestAdaptiveMusicVideoSelection(phrase, inferenceRecord = {}) 
     });
     const selection = await response.json().catch(() => null);
     if (!response.ok || !selection) {
-      if (window.location.hostname === "staging.universalmind.tv") return null;
       throw new Error(selection?.error || "music_selector_unavailable");
     }
-    return persistMusicTelevisionSelection(selection);
+
+    const persistedSelection = persistMusicTelevisionSelection(selection);
+    if (!persistedSelection?.selected_track_id) {
+      throw new Error("music_selector_invalid_response");
+    }
+    return persistedSelection;
   } finally {
     window.clearTimeout(timeout);
   }
@@ -586,6 +590,7 @@ function loadMainHomepage() {
   const nextUrl = new URL(nextPage, window.location.href);
   const currentParams = new URLSearchParams(window.location.search);
   const isMusicTelevisionFrame = currentParams.get("musicTelevisionFrame") === "1";
+  const isAdaptiveFrame = currentParams.get("adaptiveFrame") === "1";
   const inMemoryTrackId = window.__iamLatestMusicTelevisionSelection?.selected_track_id || "";
   const explicitTrackId = currentParams.get("selected_track_id") || "";
   let selectedTrackId = inMemoryTrackId || explicitTrackId;
@@ -621,7 +626,7 @@ function loadMainHomepage() {
     nextUrl.searchParams.set("musicTelevisionFrame", "1");
   }
 
-  if (isMusicTelevisionFrame && /\/index\.html$/.test(nextUrl.pathname) && window.top && window.top !== window) {
+  if ((isAdaptiveFrame || isMusicTelevisionFrame) && /\/index\.html$/.test(nextUrl.pathname) && window.top && window.top !== window) {
     nextUrl.searchParams.delete("adaptiveFrame");
     nextUrl.searchParams.delete("musicTelevisionFrame");
     nextUrl.searchParams.set("selection", String(Date.now()));

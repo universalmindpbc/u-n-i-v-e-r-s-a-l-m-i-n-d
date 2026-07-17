@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex,nofollow">
+  <title>Quantum Tree — Owner Calibration</title>
+  <link rel="stylesheet" href="quantum-tree-control.css?v=quantum-tree-control-1">
+</head>
+<body>
+  <main class="quantum-control" aria-labelledby="quantum-control-title">
+    <header class="quantum-control__header">
+      <img src="a s s e t s/Universal Mind [ I o H ] Logo.PNG" alt="Universal Mind" class="quantum-control__mark">
+      <div>
+        <p class="quantum-control__eyebrow">Owner calibration and verification</p>
+        <h1 id="quantum-control-title">Quantum Tree</h1>
+        <p class="quantum-control__intro">Set the maximum level, hear the isochronic signal by itself, and verify objectively that the audio file is loaded and advancing.</p>
+      </div>
+    </header>
+
+    <section class="quantum-card quantum-card--control" aria-labelledby="peak-heading">
+      <div class="quantum-card__heading">
+        <div>
+          <p class="quantum-card__kicker">Algorithm ceiling</p>
+          <h2 id="peak-heading">Peak volume</h2>
+        </div>
+        <output class="quantum-peak" for="quantum-peak-slider">
+          <strong data-peak-percent>58.5%</strong>
+          <span data-peak-db>−4.7 dB</span>
+        </output>
+      </div>
+
+      <label class="quantum-slider-label" for="quantum-peak-slider">Adjust the maximum Quantum Tree level</label>
+      <input id="quantum-peak-slider" class="quantum-slider" type="range" min="0" max="100" step="0.5" value="58.5">
+      <div class="quantum-slider-scale" aria-hidden="true"><span>0%</span><span>50%</span><span>100%</span></div>
+
+      <div class="quantum-actions">
+        <button type="button" class="quantum-button quantum-button--primary" data-preview-toggle>Play isolated test</button>
+        <button type="button" class="quantum-button" data-preview-stop>Stop</button>
+        <button type="button" class="quantum-button quantum-button--save" data-save-peak>Save peak for this browser</button>
+        <button type="button" class="quantum-button quantum-button--quiet" data-reset-peak>Reset to 58.5%</button>
+      </div>
+
+      <audio data-quantum-preview preload="auto" loop src="a s s e t s/q u a n t u m [ t r e e ].wav"></audio>
+      <p class="quantum-note">The slider changes the isolated test immediately. “Save peak” makes the real music player use the same ceiling in this browser while remaining dynamically tied to the playing audio.</p>
+    </section>
+
+    <section class="quantum-card" aria-labelledby="verification-heading">
+      <div class="quantum-card__heading">
+        <div>
+          <p class="quantum-card__kicker">Objective playback proof</p>
+          <h2 id="verification-heading">Signal verification</h2>
+        </div>
+        <span class="quantum-status" data-overall-status>waiting</span>
+      </div>
+
+      <dl class="quantum-diagnostics">
+        <div><dt>Source file</dt><dd data-file-status>loading</dd></div>
+        <div><dt>Playback state</dt><dd data-playback-status>stopped</dd></div>
+        <div><dt>Signal clock</dt><dd data-signal-clock>0.0 seconds</dd></div>
+        <div><dt>Clock advancing</dt><dd data-signal-advancing>no</dd></div>
+        <div><dt>Test output</dt><dd data-test-output>58.5%</dd></div>
+        <div><dt>Saved peak</dt><dd data-saved-peak>58.5%</dd></div>
+      </dl>
+      <p class="quantum-verification-copy" data-verification-copy>The green “verified playing” status appears only when the file is decoded, playback is active, the signal clock is moving, and the output gain is above zero.</p>
+    </section>
+
+    <section class="quantum-card quantum-card--algorithm" aria-labelledby="algorithm-heading">
+      <p class="quantum-card__kicker">Live behavior</p>
+      <h2 id="algorithm-heading">The music still controls the layer</h2>
+      <div class="quantum-flow" aria-label="Quantum Tree volume flow">
+        <div><strong>Silence</strong><span>Quantum Tree = 0%</span></div>
+        <span aria-hidden="true">→</span>
+        <div><strong>Music rises</strong><span>Measured RMS raises the layer</span></div>
+        <span aria-hidden="true">→</span>
+        <div><strong>Music peaks</strong><span>Stops at your saved ceiling</span></div>
+      </div>
+      <p>Video and Café del Mar radio are both measured from their real waveform. The saved peak is an upper boundary; it is not a fixed playback volume.</p>
+      <div class="quantum-links">
+        <a href="index.html?selected_track_id=sasha-ibiza-boat-at-sunset-freqways&amp;quantumTreeMonitor=1" class="quantum-link">Open Sasha with the live monitor</a>
+        <a href="index.html" class="quantum-link quantum-link--quiet">Return to music television</a>
+      </div>
+    </section>
+  </main>
+
+  <script src="quantum-tree-control.js?v=quantum-tree-control-2"></script>
+</body>
+</html>

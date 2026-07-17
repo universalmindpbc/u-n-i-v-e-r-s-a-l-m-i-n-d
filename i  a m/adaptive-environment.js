@@ -69,7 +69,7 @@
   const restoreDelay = 500;
   const restoreFadeDuration = 4100;
   const vimeoSdkUrl = "https://player.vimeo.com/api/player.js";
-  const faviconVersion = "iam-favicon-3";
+  const faviconVersion = "iam-favicon-4";
   const parser = new DOMParser();
   const radio = new Audio();
   radio.preload = "auto";
@@ -1161,7 +1161,7 @@
   }
 
   function init() {
-    refreshFavicon();
+    refreshFavicon({ force: true });
     ensureStreamHints();
     selectedStation = chooseStation();
     updateStationSurface();
@@ -1195,6 +1195,7 @@
     duckRadio,
     restoreRadio,
     stopRadio,
+    refreshFavicon,
     chooseStation: () => selectedStation,
     audio: radio,
   };
