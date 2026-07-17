@@ -229,8 +229,8 @@
   const RESEARCH_ROLLOVER_CLOSE_DELAY_MS = 1000;
   let audioWalletInteracting = false;
   let walletView = "closed";
-  const emdrStyleNames = ["temple", "rave", "platonics", "stellar", "GIF"];
-  const emdrStyleValues = [0, 2, 6, 5, 7];
+  const emdrStyleNames = ["GIF", "stellar"];
+  const emdrStyleValues = [7, 5];
   let emdrStyleIndex = 0;
   let emdrGifPreviousVideoBlend = null;
   let emdrIntensityFrame = 0;
@@ -2177,8 +2177,6 @@
     const environment = music?.environment_function || selection?.environment_function || {};
     const soundtrack = inference?.adaptive_environment?.soundtrack ||
       music?.streaming_radio_continuation || selection?.streaming_radio_handoff || {};
-    const functionName = String(environment.primary_function || "").toLowerCase();
-    const trajectory = String(environment.trajectory || "").toLowerCase();
     const station = String(soundtrack.selected_mode || soundtrack.station || track.radioHandoff || "chill").toLowerCase();
 
     const load = meanNeed(needs, ["Anxiety", "Stress", "Fear", "Hypervigilance", "Startle Sensitivity", "Intrusions", "Mental Load"]);
@@ -2189,32 +2187,14 @@
     const exploration = meanNeed(needs, ["Awe", "Curiosity", "Self-Actualisation", "Self-Transcendence", "Hope"]);
     const activation = meanNeed(needs, ["Joy", "Motivation", "Arousal", "Connection", "Belonging"]);
 
-    const scores = [
-      restoration * 1.05 + load * .72 + depletion * .55,
-      connection * 1.05 + restoration * .38 + (trajectory.includes("warm") ? .35 : 0),
-      exploration * .92 + meanNeed(needs, ["Awe", "Hope", "Self-Transcendence"]) * .54,
-      cognition * 1.08 + exploration * .28 + (trajectory.includes("focus") ? .4 : 0),
-      activation * 1.12 + connection * .24 + (functionName.includes("club") ? .52 : 0),
-      exploration * .88 + meanNeed(needs, ["Self-Actualisation", "Self-Transcendence", "Awe"]) * .65 + (trajectory.includes("exploration") ? .4 : 0),
-    ];
-
     const identitySeed = inference?.citizen_id || inference?.checkin || inference?.interpretation_summary ||
       selection?.citizen_checkin || JSON.stringify(inference?.top_highlights || []) || track.id;
     const seed = stableUnit(identitySeed);
-    scores.forEach((_, index) => { scores[index] += stableUnit(`${identitySeed}:${index}`) * .055; });
-    if (!hasNeeds) {
-      scores.fill(.15);
-      const fallbackByStation = station === "house" ? 4 : station === "calm" ? 0 : Math.floor(seed * 4) + 1;
-      scores[fallbackByStation] = .72;
-    }
 
     const supportLevel = String(inference?.adaptive_support_relevance?.level || selection?.safety?.support_level || "none").toLowerCase();
     const reviewLevel = String(inference?.human_review_relevance?.level || "none").toLowerCase();
     const highConcern = ["high", "urgent"].includes(supportLevel) || ["recommended", "urgent"].includes(reviewLevel);
-    const selectedLegacyStyle = scores.indexOf(Math.max(...scores));
-    const legacyToCurrentStyle = [0, 2, 1, 2, 1, 3];
-    let styleIndex = legacyToCurrentStyle[selectedLegacyStyle] ?? 2;
-    if (highConcern) styleIndex = 0;
+    const styleIndex = 0;
 
     const namedIntensity = { low: .28, low_to_moderate: .42, moderate: .58, high: .8, variable: .62 };
     const stationIntensity = { calm: .34, chill: .52, house: .72 };
