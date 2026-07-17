@@ -11,6 +11,8 @@ Production publishing uses the dedicated `codexdeploy@universalmind.tv` FTP acco
 
 The Panthur deployment scripts remain the only website publishing method. GitHub stores version history and provides the rollback safety net; it does not automatically deploy either environment.
 
+Creating and pushing the GitHub record is nevertheless a mandatory part of every completed deployment. The agent performing the website update is responsible for this automatically; Ben does not need to request a commit or push separately.
+
 ## GitHub branch model
 
 Use one private GitHub repository for both environments:
@@ -20,13 +22,35 @@ Use one private GitHub repository for both environments:
 
 Keeping both branches in one repository makes the difference between staging and production visible while preserving the rule that production changes only after explicit approval.
 
+## Staging releases
+
+Every completed staging update must follow this sequence:
+
+1. Inspect the working tree and identify only the files belonging to the current task.
+2. Test the change locally where appropriate.
+3. Commit the exact intended source locally on `staging` with a descriptive message.
+4. Deploy that exact committed source with `./deploy-panthur-staging.sh`.
+5. Verify the precise changed page and user journey on `https://staging.universalmind.tv`.
+6. Commit any resulting staging deployment-manifest update as deployment metadata.
+7. Push the completed commits to `origin/staging` and confirm the remote commit.
+8. Include the staging commit identifier in the proofing handoff.
+
+Never deploy uncommitted or untracked website files. Never include another thread's unfinished changes in a commit or deployment. If the shared checkout contains unrelated work, deploy the exact task commit from a clean isolated Git worktree.
+
+The staging update is not complete if deployment, verification, commit, or push fails.
+
 ## Production releases
 
-After an approved staging build has been verified and deployed to production:
+Only after Ben explicitly approves a staging version:
 
-1. Fast-forward `main` to the verified staging commit.
-2. Create an annotated tag named `production-YYYY-MM-DD-HHMM`.
-3. Push `main`, `staging`, and the production tag to GitHub.
+1. Deploy the exact approved staging version with `./deploy-panthurlive.sh`. Any additional source change must return to staging first.
+2. Verify the production website and the precise changed user journey.
+3. Fast-forward `main` to the deployed staging commit.
+4. Create an annotated tag named `production-YYYY-MM-DD-HHMM`.
+5. Push `main`, `staging`, and the production tag to GitHub.
+6. Confirm the remote branch and tag references and report the production commit and tag.
+
+The production release is not complete if deployment, verification, push, or tagging fails.
 
 ## Rollback
 
