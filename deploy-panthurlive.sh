@@ -5,18 +5,28 @@ ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 FTP_HOST="${FTP_HOST:-ftp.universalmind.tv}"
 FTP_USER="${FTP_USER:-codexdeploy@universalmind.tv}"
 FTP_PASS_FILE="${FTP_PASS_FILE:-/private/tmp/um-public-html-ftp-pass.txt}"
+FTP_KEYCHAIN_SERVICE="${FTP_KEYCHAIN_SERVICE:-universalmind-production-ftp}"
 IAM_DIR="${IAM_DIR:-$ROOT_DIR/i  a m}"
 MANIFEST_FILE="${MANIFEST_FILE:-$ROOT_DIR/.panthur-deploy-manifest.tsv}"
 REMOTE_ROOT="${REMOTE_ROOT:-}"
 REMOTE_ROOT="${REMOTE_ROOT#/}"
 REMOTE_ROOT="${REMOTE_ROOT%/}"
 
-if [[ ! -f "$FTP_PASS_FILE" ]]; then
-  echo "Missing FTP password file: $FTP_PASS_FILE" >&2
-  exit 1
+if [[ -f "$FTP_PASS_FILE" ]]; then
+  FTP_PASS="$(cat "$FTP_PASS_FILE")"
+elif command -v security >/dev/null 2>&1; then
+  FTP_PASS="$(security find-generic-password \
+    -a "$FTP_USER" \
+    -s "$FTP_KEYCHAIN_SERVICE" \
+    -w 2>/dev/null || true)"
+else
+  FTP_PASS=""
 fi
 
-FTP_PASS="$(cat "$FTP_PASS_FILE")"
+if [[ -z "$FTP_PASS" ]]; then
+  echo "Missing production FTP credential in $FTP_PASS_FILE or macOS Keychain service $FTP_KEYCHAIN_SERVICE." >&2
+  exit 1
+fi
 
 encode_path() {
   python3 - "$1" <<'PY'
