@@ -2096,6 +2096,14 @@ body.television-room-open .adaptive-television-room {
   visibility: visible;
 }
 
+/* Hidden overflow remains a scroll container, so focusing the low wallet
+   controls can subtly shift the entire fixed room. Clip the open television
+   scene instead so the GIF composition stays locked to the viewport. */
+body.television-room-opening .scene,
+body.television-room-open .scene {
+  overflow: clip;
+}
+
 body.television-room-opening .global-nav,
 body.television-room-open .global-nav {
   display: block;
