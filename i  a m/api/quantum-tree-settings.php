@@ -1,6 +1,8 @@
 <?php
 declare(strict_types=1);
 
+ini_set('serialize_precision', '-1');
+
 header('Content-Type: application/json; charset=utf-8');
 header('Cache-Control: no-store, no-cache, must-revalidate, max-age=0');
 header('Pragma: no-cache');
@@ -135,11 +137,13 @@ function write_quantum_tree_config(float $peak): array
     return $config;
 }
 
-start_owner_session();
-
 $method = $_SERVER['REQUEST_METHOD'] ?? 'GET';
 if ($method === 'GET') {
-    $authenticated = ($_SESSION['quantum_tree_owner'] ?? false) === true;
+    $authenticated = false;
+    if (isset($_COOKIE['iam_quantum_tree_owner'])) {
+        start_owner_session();
+        $authenticated = ($_SESSION['quantum_tree_owner'] ?? false) === true;
+    }
     json_response(public_quantum_tree_config(read_quantum_tree_config(), $authenticated));
 }
 
@@ -148,6 +152,7 @@ if ($method !== 'POST') {
     json_response(['error' => 'Method not allowed.'], 405);
 }
 
+start_owner_session();
 require_same_origin();
 $request = read_json_request();
 $action = is_string($request['action'] ?? null) ? $request['action'] : '';
