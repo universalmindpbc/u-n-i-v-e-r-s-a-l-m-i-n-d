@@ -219,6 +219,7 @@ body.television-support-card-open .adaptive-television-support-card {
 }
 
 .adaptive-television-player,
+.adaptive-television-local-video-frame,
 .adaptive-television-local-video,
 .adaptive-television-youtube-fallback {
   position: absolute;
@@ -232,6 +233,11 @@ body.television-support-card-open .adaptive-television-support-card {
   overflow: hidden;
   --adaptive-video-edge-scale: 1.12;
   --fashion-video-opacity: 0;
+}
+
+.adaptive-television-local-video-frame {
+  z-index: 1;
+  overflow: hidden;
 }
 
 .adaptive-television-local-video {
@@ -314,7 +320,6 @@ body.television-support-card-open .adaptive-television-support-card {
    backdrop and the current music video held in the central black casing. */
 .adaptive-television-room {
   --emdr-gif-gap: clamp(9px, 1vw, 24px);
-  --emdr-gif-grid-width: 93vw;
   --emdr-gif-front-width: min(55vw, 84vh);
   --emdr-gif-front-height: min(30.9375vw, 47.25vh);
 }
@@ -340,9 +345,11 @@ body.television-support-card-open .adaptive-television-support-card {
   left: 50%;
   z-index: 1;
   display: grid;
+  box-sizing: border-box;
   grid-template-columns: repeat(3, 1fr);
   gap: var(--emdr-gif-gap);
-  width: var(--emdr-gif-grid-width);
+  width: 100vw;
+  padding-inline: var(--emdr-gif-gap);
   transform: translate(-50%, -50%);
 }
 
@@ -383,7 +390,7 @@ body.television-emdr-gif-active .adaptive-television-player .adaptive-television
   opacity: 1;
 }
 
-body.television-emdr-gif-active .adaptive-television-player .adaptive-television-local-video {
+body.television-emdr-gif-active .adaptive-television-player .adaptive-television-local-video-frame {
   top: 50%;
   left: 50%;
   right: auto;
@@ -391,13 +398,27 @@ body.television-emdr-gif-active .adaptive-television-player .adaptive-television
   z-index: 8;
   width: var(--emdr-gif-front-width);
   height: var(--emdr-gif-front-height);
+  overflow: hidden;
+  transform: translate(-50%, -50%);
+}
+
+body.television-emdr-gif-active .adaptive-television-player .adaptive-television-local-video {
+  inset: 0;
+  width: 100%;
+  height: 100%;
   object-fit: cover;
   opacity: 1;
-  transform: translate(-50%, -50%);
+  transform: scale(var(--adaptive-video-edge-scale));
 }
 
 body.television-emdr-gif-active .adaptive-television-timecode {
   opacity: 0 !important;
+}
+
+body.television-emdr-gif-active .adaptive-television-emdr-react,
+body.television-emdr-gif-active .adaptive-television-emdr-automate,
+body.television-emdr-gif-active .adaptive-television-emdr-intensity {
+  display: none;
 }
 
 .adaptive-television-video-choice[data-video-mode="emdr"][aria-pressed="true"] {

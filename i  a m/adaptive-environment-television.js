@@ -151,6 +151,7 @@
   let walletOnboardingLineTwoTimer = 0;
   let walletOnboardingDismissTimer = 0;
   let learnCueAfterWalletTimer = 0;
+  let localVideoFrame = null;
   let localVideo = null;
   let fashionVideo = null;
   let fashionRunwayIndex = 0;
@@ -656,6 +657,9 @@
     fashionVideo.classList.add("is-fashion-active");
     updateFashionRunwayToggle();
 
+    localVideoFrame = document.createElement("div");
+    localVideoFrame.className = "adaptive-television-local-video-frame";
+
     localVideo = document.createElement("video");
     localVideo.className = "adaptive-television-local-video";
     localVideo.controls = false;
@@ -704,7 +708,8 @@
     timecode.setAttribute("aria-hidden", "true");
     timecode.textContent = "0:00";
 
-    playerMount.append(localVideo);
+    localVideoFrame.append(localVideo);
+    playerMount.append(localVideoFrame);
     playerMount.append(fashionVideo);
     playerMount.append(timecode);
     attachAdaptiveStream(localVideo, track.localVideoSrc, "music");
