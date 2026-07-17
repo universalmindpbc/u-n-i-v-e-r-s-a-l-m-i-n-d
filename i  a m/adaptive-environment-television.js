@@ -229,9 +229,10 @@
   const RESEARCH_ROLLOVER_CLOSE_DELAY_MS = 1000;
   let audioWalletInteracting = false;
   let walletView = "closed";
-  const emdrStyleNames = ["temple", "rave", "platonics", "stellar"];
-  const emdrStyleValues = [0, 2, 6, 5];
+  const emdrStyleNames = ["temple", "rave", "platonics", "stellar", "GIF"];
+  const emdrStyleValues = [0, 2, 6, 5, 7];
   let emdrStyleIndex = 0;
+  let emdrGifPreviousVideoBlend = null;
   let emdrIntensityFrame = 0;
   let emdrIntensityJourneyStartedAt = 0;
   let emdrIntensityJourneyLastAt = 0;
@@ -1274,6 +1275,26 @@
         });
     }
   }
+
+  function setEmdrGifPresentationActive(active) {
+    if (active) {
+      if (emdrGifPreviousVideoBlend === null) emdrGifPreviousVideoBlend = requestedVideoBlend;
+      setVideoBlend(0);
+      playerMount.dataset.emdrGifVideoLayers = "active";
+      return;
+    }
+
+    if (emdrGifPreviousVideoBlend !== null) {
+      const previousBlend = emdrGifPreviousVideoBlend;
+      emdrGifPreviousVideoBlend = null;
+      setVideoBlend(previousBlend);
+    }
+    delete playerMount.dataset.emdrGifVideoLayers;
+  }
+
+  window.addEventListener("iam:emdr-gif-presentation", (event) => {
+    setEmdrGifPresentationActive(Boolean(event.detail?.active));
+  });
 
   function disarmVideoTooltips() {
     window.clearTimeout(videoTooltipArmTimer);

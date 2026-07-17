@@ -766,6 +766,7 @@
     state.canvas?.classList.toggle("is-active", state.active && state.style < 4.5);
     window.IAMVectorWorlds?.setActive?.(state.active && state.style < 4.5);
     window.IAMEMDRThree?.setActive?.(state.active && state.style >= 4.5 && state.style < 5.5);
+    window.IAMEMDRGif?.setActive?.(state.active && state.style >= 6.5 && state.style < 7.5);
     if (!state.active) {
       window.cancelAnimationFrame(state.frame); state.frame = 0;
       if (state.gl) { state.gl.clearColor(0,0,0,0); state.gl.clear(state.gl.COLOR_BUFFER_BIT); }
@@ -788,11 +789,12 @@
     get threeSceneReady() { return Boolean(window.IAMEMDRThree?.ready); },
     setActive,
     setStyle(value) {
-      state.style = Math.max(0, Math.min(6, Number(value) || 0));
+      state.style = Math.max(0, Math.min(7, Number(value) || 0));
       state.canvas?.classList.toggle("is-active", state.active && state.style < 4.5);
       window.IAMVectorWorlds?.setStyle?.(state.style);
       window.IAMVectorWorlds?.setActive?.(state.active && state.style < 4.5);
       window.IAMEMDRThree?.setActive?.(state.active && state.style >= 4.5 && state.style < 5.5);
+      window.IAMEMDRGif?.setActive?.(state.active && state.style >= 6.5 && state.style < 7.5);
       return state.style;
     },
     setIntensity(value) { state.intensity = Math.max(0, Math.min(1, Number(value) || 0)); window.IAMVectorWorlds?.setIntensity?.(state.intensity); return state.intensity; },
