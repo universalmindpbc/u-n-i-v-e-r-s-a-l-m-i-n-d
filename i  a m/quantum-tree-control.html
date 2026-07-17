@@ -5,16 +5,34 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="robots" content="noindex,nofollow">
   <title>Quantum Tree — Owner Calibration</title>
-  <link rel="stylesheet" href="quantum-tree-control.css?v=quantum-tree-control-1">
+  <link rel="stylesheet" href="quantum-tree-control.css?v=quantum-tree-control-2">
 </head>
 <body>
-  <main class="quantum-control" aria-labelledby="quantum-control-title">
+  <section class="quantum-access" data-owner-access aria-labelledby="quantum-access-title">
+    <div class="quantum-access__card">
+      <img src="a s s e t s/Universal Mind [ I o H ] Logo.PNG" alt="Universal Mind" class="quantum-control__mark">
+      <p class="quantum-control__eyebrow">Administrator access</p>
+      <h1 id="quantum-access-title">Quantum Tree</h1>
+      <p class="quantum-control__intro">Sign in to change the platform-wide isochronic layer. This setting is shared by every listener; it is not saved in this browser.</p>
+      <form class="quantum-access__form" data-owner-login>
+        <label for="quantum-owner-key">Owner access key</label>
+        <input id="quantum-owner-key" type="password" name="owner_key" autocomplete="current-password" autocapitalize="none" spellcheck="false" required data-owner-key>
+        <button type="submit" class="quantum-button quantum-button--primary">Open administrator dashboard</button>
+        <p class="quantum-access__status" role="status" aria-live="polite" data-owner-status></p>
+      </form>
+    </div>
+  </section>
+
+  <main class="quantum-control" aria-labelledby="quantum-control-title" data-owner-dashboard hidden>
     <header class="quantum-control__header">
       <img src="a s s e t s/Universal Mind [ I o H ] Logo.PNG" alt="Universal Mind" class="quantum-control__mark">
       <div>
-        <p class="quantum-control__eyebrow">Owner calibration and verification</p>
+        <div class="quantum-control__eyebrow-row">
+          <p class="quantum-control__eyebrow">Administrator calibration and verification</p>
+          <button type="button" class="quantum-logout" data-owner-logout>Sign out</button>
+        </div>
         <h1 id="quantum-control-title">Quantum Tree</h1>
-        <p class="quantum-control__intro">Set the maximum level, hear the isochronic signal by itself, and verify objectively that the audio file is loaded and advancing.</p>
+        <p class="quantum-control__intro">Set one staging-wide maximum, hear the isochronic signal by itself, and verify objectively that the audio file is loaded and advancing.</p>
       </div>
     </header>
 
@@ -25,24 +43,25 @@
           <h2 id="peak-heading">Peak volume</h2>
         </div>
         <output class="quantum-peak" for="quantum-peak-slider">
-          <strong data-peak-percent>58.5%</strong>
-          <span data-peak-db>−4.7 dB</span>
+          <strong data-peak-percent>5.5%</strong>
+          <span data-peak-db>−25.2 dB</span>
         </output>
       </div>
 
       <label class="quantum-slider-label" for="quantum-peak-slider">Adjust the maximum Quantum Tree level</label>
-      <input id="quantum-peak-slider" class="quantum-slider" type="range" min="0" max="100" step="0.5" value="58.5">
+      <input id="quantum-peak-slider" class="quantum-slider" type="range" min="0" max="100" step="0.1" value="5.5">
       <div class="quantum-slider-scale" aria-hidden="true"><span>0%</span><span>50%</span><span>100%</span></div>
 
       <div class="quantum-actions">
         <button type="button" class="quantum-button quantum-button--primary" data-preview-toggle>Play isolated test</button>
         <button type="button" class="quantum-button" data-preview-stop>Stop</button>
-        <button type="button" class="quantum-button quantum-button--save" data-save-peak>Save peak for this browser</button>
-        <button type="button" class="quantum-button quantum-button--quiet" data-reset-peak>Reset to 58.5%</button>
+        <button type="button" class="quantum-button quantum-button--save" data-save-peak>Save platform peak</button>
+        <button type="button" class="quantum-button quantum-button--quiet" data-reset-peak>Restore approved 5.5%</button>
       </div>
 
       <audio data-quantum-preview preload="auto" loop src="a s s e t s/q u a n t u m [ t r e e ].wav"></audio>
-      <p class="quantum-note">The slider changes the isolated test immediately. “Save peak” makes the real music player use the same ceiling in this browser while remaining dynamically tied to the playing audio.</p>
+      <p class="quantum-note">The slider changes the isolated test immediately. “Save platform peak” publishes one ceiling to staging. Every music player reads that same setting while the real music waveform still controls the progressive gain below it.</p>
+      <p class="quantum-save-status" role="status" aria-live="polite" data-save-status></p>
     </section>
 
     <section class="quantum-card" aria-labelledby="verification-heading">
@@ -59,8 +78,8 @@
         <div><dt>Playback state</dt><dd data-playback-status>stopped</dd></div>
         <div><dt>Signal clock</dt><dd data-signal-clock>0.0 seconds</dd></div>
         <div><dt>Clock advancing</dt><dd data-signal-advancing>no</dd></div>
-        <div><dt>Test output</dt><dd data-test-output>58.5%</dd></div>
-        <div><dt>Saved peak</dt><dd data-saved-peak>58.5%</dd></div>
+        <div><dt>Test output</dt><dd data-test-output>5.5%</dd></div>
+        <div><dt>Staging peak</dt><dd data-saved-peak>5.5%</dd></div>
       </dl>
       <p class="quantum-verification-copy" data-verification-copy>The green “verified playing” status appears only when the file is decoded, playback is active, the signal clock is moving, and the output gain is above zero.</p>
     </section>
@@ -75,7 +94,7 @@
         <span aria-hidden="true">→</span>
         <div><strong>Music peaks</strong><span>Stops at your saved ceiling</span></div>
       </div>
-      <p>Video and Café del Mar radio are both measured from their real waveform. The saved peak is an upper boundary; it is not a fixed playback volume.</p>
+      <p>Video and Café del Mar radio are both measured from their real waveform. The staging peak is an upper boundary; it is not a fixed playback volume. The live monitor’s gate bypass is a temporary administrator audition and never changes normal visitor playback.</p>
       <div class="quantum-links">
         <a href="index.html?selected_track_id=sasha-ibiza-boat-at-sunset-freqways&amp;quantumTreeMonitor=1" class="quantum-link">Open Sasha with the live monitor</a>
         <a href="index.html" class="quantum-link quantum-link--quiet">Return to music television</a>
@@ -83,6 +102,6 @@
     </section>
   </main>
 
-  <script src="quantum-tree-control.js?v=quantum-tree-control-2"></script>
+  <script src="quantum-tree-control.js?v=quantum-tree-control-3"></script>
 </body>
 </html>

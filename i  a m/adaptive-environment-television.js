@@ -182,18 +182,20 @@
   let soundResearchPlaybackAdvancing = false;
   let soundResearchRetryAt = 0;
   let soundResearchMonitor = null;
+  let soundResearchAuditionMode = false;
+  let soundResearchSettingsLoaded = false;
   const soundResearchParams = new URLSearchParams(window.location.search);
   const soundResearchTestMode = soundResearchParams.get("soundResearchTest") === "1";
   const soundResearchMonitorMode = soundResearchParams.get("quantumTreeMonitor") === "1";
   let soundResearchEnabled = soundResearchTestMode || localStorage.getItem("iamSoundResearchLayer") !== "off";
-  const SOUND_RESEARCH_DEFAULT_MAX_VOLUME = 0.585;
-  const SOUND_RESEARCH_PEAK_STORAGE_KEY = "iamQuantumTreePeakVolume";
+  const SOUND_RESEARCH_DEFAULT_MAX_VOLUME = 0.055;
+  const SOUND_RESEARCH_SETTINGS_ENDPOINT = "api/quantum-tree-settings.php";
   const SOUND_RESEARCH_SILENCE_FLOOR = 0.012;
   const SOUND_RESEARCH_FULL_MASK_LEVEL = 0.12;
   const SOUND_RESEARCH_MASKING_CURVE = 0.75;
   const SOUND_RESEARCH_ATTACK_SMOOTHING = 0.05;
   const SOUND_RESEARCH_RELEASE_SMOOTHING = 0.12;
-  let soundResearchMaxVolume = readSoundResearchPeakVolume();
+  let soundResearchMaxVolume = SOUND_RESEARCH_DEFAULT_MAX_VOLUME;
   let continuationDecision = null;
   let flowerCanvasFrame = 0;
   let timecode = null;
@@ -420,24 +422,34 @@
     return Math.min(max, Math.max(min, value));
   }
 
-  function readSoundResearchPeakVolume() {
-    const storedPeak = localStorage.getItem(SOUND_RESEARCH_PEAK_STORAGE_KEY);
-    if (storedPeak === null || storedPeak === "") return SOUND_RESEARCH_DEFAULT_MAX_VOLUME;
-    const storedValue = Number(storedPeak);
-    return Number.isFinite(storedValue) && storedValue >= 0 && storedValue <= 1
-      ? storedValue
-      : SOUND_RESEARCH_DEFAULT_MAX_VOLUME;
-  }
-
-  function setSoundResearchPeakVolume(value, persist = true) {
+  function setSoundResearchPeakVolume(value, source = "runtime") {
     soundResearchMaxVolume = clamp(Number(value) || 0, 0, 1);
-    if (persist) localStorage.setItem(SOUND_RESEARCH_PEAK_STORAGE_KEY, soundResearchMaxVolume.toFixed(4));
     document.body.dataset.quantumTreePeakVolume = soundResearchMaxVolume.toFixed(4);
+    document.body.dataset.quantumTreeConfigSource = source;
     window.dispatchEvent(new CustomEvent("iam:quantum-tree-peak-changed", {
-      detail: { peakVolume: soundResearchMaxVolume },
+      detail: { peakVolume: soundResearchMaxVolume, source },
     }));
     if (soundResearchMonitor) updateSoundResearchMonitor(soundResearchDiagnostics());
     return soundResearchMaxVolume;
+  }
+
+  async function loadSoundResearchSettings() {
+    try {
+      const response = await fetch(SOUND_RESEARCH_SETTINGS_ENDPOINT, {
+        cache: "no-store",
+        credentials: "same-origin",
+        headers: { Accept: "application/json" },
+      });
+      if (!response.ok) throw new Error(`settings ${response.status}`);
+      const settings = await response.json();
+      const peak = Number(settings?.peak_volume);
+      if (!Number.isFinite(peak) || peak < 0 || peak > 1) throw new Error("invalid settings");
+      soundResearchSettingsLoaded = true;
+      return setSoundResearchPeakVolume(peak, "platform");
+    } catch {
+      soundResearchSettingsLoaded = false;
+      return setSoundResearchPeakVolume(SOUND_RESEARCH_DEFAULT_MAX_VOLUME, "built-in fallback");
+    }
   }
 
   function baseEdgeScale() {
@@ -1617,7 +1629,7 @@
   }
 
   function soundResearchTargetVolume() {
-    if (soundResearchTestMode) return soundResearchMaxVolume;
+    if (soundResearchTestMode || soundResearchAuditionMode) return soundResearchMaxVolume;
     const videoIsAudible = localVideo && !localVideo.paused && !localVideo.muted && localVideo.volume > 0;
     const radioIsAudible = continuationAudio && !continuationAudio.paused && !continuationAudio.muted && continuationAudio.volume > 0;
     const activeMedia = videoIsAudible ? localVideo : (radioIsAudible ? continuationAudio : null);
@@ -1653,6 +1665,8 @@
       targetVolume: soundResearchTargetLevel,
       currentVolume: Number(soundResearchAudio?.volume || 0),
       peakVolume: soundResearchMaxVolume,
+      auditionMode: soundResearchAuditionMode,
+      settingsLoaded: soundResearchSettingsLoaded,
       silenceFloor: SOUND_RESEARCH_SILENCE_FLOOR,
       fullMaskLevel: SOUND_RESEARCH_FULL_MASK_LEVEL,
     };
@@ -1662,7 +1676,7 @@
     if (!soundResearchMonitorMode || soundResearchMonitor) return;
     const monitor = document.createElement("aside");
     monitor.setAttribute("aria-label", "Quantum Tree live monitor");
-    monitor.style.cssText = "position:fixed;right:18px;top:18px;z-index:2147483000;width:min(320px,calc(100vw - 36px));padding:16px 18px;border:1px solid rgba(255,255,255,.22);border-radius:18px;background:rgba(8,8,13,.88);box-shadow:0 18px 50px rgba(0,0,0,.45);backdrop-filter:blur(18px);color:#fff;font:500 12px/1.45 -apple-system,BlinkMacSystemFont,Segoe UI,sans-serif;letter-spacing:.02em";
+    monitor.style.cssText = "position:fixed;right:18px;top:18px;z-index:2147483000;width:min(340px,calc(100vw - 36px));padding:16px 18px;border:1px solid rgba(255,255,255,.22);border-radius:18px;background:rgba(8,8,13,.88);box-shadow:0 18px 50px rgba(0,0,0,.45);backdrop-filter:blur(18px);color:#fff;font:500 12px/1.45 -apple-system,BlinkMacSystemFont,Segoe UI,sans-serif;letter-spacing:.02em";
     monitor.innerHTML = `
       <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:12px">
         <strong style="font-size:14px;letter-spacing:.08em;text-transform:uppercase">Quantum Tree</strong>
@@ -1675,12 +1689,30 @@
         <dt style="opacity:.62">Media RMS</dt><dd data-quantum-monitor-media style="margin:0">0.000</dd>
         <dt style="opacity:.62">Current gain</dt><dd data-quantum-monitor-current style="margin:0">0%</dd>
         <dt style="opacity:.62">Target gain</dt><dd data-quantum-monitor-target style="margin:0">0%</dd>
-        <dt style="opacity:.62">Saved peak</dt><dd data-quantum-monitor-peak style="margin:0">0%</dd>
+        <dt style="opacity:.62">Platform peak</dt><dd data-quantum-monitor-peak style="margin:0">0%</dd>
+        <dt style="opacity:.62">Platform setting</dt><dd data-quantum-monitor-setting style="margin:0">loading</dd>
       </dl>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:14px">
+        <button type="button" data-quantum-monitor-toggle style="min-height:38px;padding:8px 10px;border:1px solid rgba(255,255,255,.24);border-radius:999px;background:rgba(255,255,255,.08);color:#fff;font:inherit;cursor:pointer">Quantum Tree: on</button>
+        <button type="button" data-quantum-monitor-audition style="min-height:38px;padding:8px 10px;border:1px solid rgba(255,255,255,.24);border-radius:999px;background:rgba(255,255,255,.08);color:#fff;font:inherit;cursor:pointer">Gate: normal</button>
+      </div>
+      <p style="margin:9px 2px 0;opacity:.62;font-size:10px;line-height:1.45">Gate bypass auditions the saved peak while the music is paused. It affects this QA tab only.</p>
       <a href="quantum-tree-control.html" target="_blank" rel="noopener" style="display:block;margin-top:14px;padding:9px 12px;border:1px solid rgba(255,255,255,.24);border-radius:999px;color:#fff;text-align:center;text-decoration:none">Open calibration dashboard</a>
     `;
     document.body.append(monitor);
     soundResearchMonitor = monitor;
+    monitor.querySelector("[data-quantum-monitor-toggle]")?.addEventListener("click", () => {
+      setSoundResearchEnabled(!soundResearchEnabled, { persist: false });
+    });
+    monitor.querySelector("[data-quantum-monitor-audition]")?.addEventListener("click", () => {
+      soundResearchAuditionMode = !soundResearchAuditionMode;
+      if (soundResearchAuditionMode && !soundResearchEnabled) {
+        setSoundResearchEnabled(true, { persist: false });
+      } else if (soundResearchAuditionMode) {
+        startSoundResearchLayer();
+      }
+      updateSoundResearchMonitor(soundResearchDiagnostics());
+    });
     updateSoundResearchMonitor(soundResearchDiagnostics());
   }
 
@@ -1694,7 +1726,9 @@
     const verifiedOutput = verifiedPlaying && diagnostics.currentVolume > 0.0001;
     const status = !diagnostics.enabled
       ? "disabled"
-      : (verifiedOutput ? "verified output" : (verifiedPlaying ? "playing · gated silent" : (diagnostics.playing ? "starting" : "stopped")));
+      : (diagnostics.auditionMode && verifiedOutput
+        ? "auditioning peak"
+        : (verifiedOutput ? "verified output" : (verifiedPlaying ? "playing · gated silent" : (diagnostics.playing ? "starting" : "stopped"))));
     const statusElement = soundResearchMonitor.querySelector("[data-quantum-monitor-status]");
     if (statusElement) {
       statusElement.textContent = status;
@@ -1708,6 +1742,19 @@
     setText("[data-quantum-monitor-current]", `${(diagnostics.currentVolume * 100).toFixed(1)}%`);
     setText("[data-quantum-monitor-target]", `${(diagnostics.targetVolume * 100).toFixed(1)}%`);
     setText("[data-quantum-monitor-peak]", `${(diagnostics.peakVolume * 100).toFixed(1)}%`);
+    setText("[data-quantum-monitor-setting]", diagnostics.settingsLoaded ? "server verified" : "safe fallback");
+    const toggleButton = soundResearchMonitor.querySelector("[data-quantum-monitor-toggle]");
+    if (toggleButton) {
+      toggleButton.textContent = `Quantum Tree: ${diagnostics.enabled ? "on" : "off"}`;
+      toggleButton.style.borderColor = diagnostics.enabled ? "rgba(143,242,177,.56)" : "rgba(255,255,255,.24)";
+      toggleButton.style.color = diagnostics.enabled ? "#9effbf" : "#fff";
+    }
+    const auditionButton = soundResearchMonitor.querySelector("[data-quantum-monitor-audition]");
+    if (auditionButton) {
+      auditionButton.textContent = diagnostics.auditionMode ? "Gate: bypassed" : "Gate: normal";
+      auditionButton.style.borderColor = diagnostics.auditionMode ? "rgba(216,200,119,.7)" : "rgba(255,255,255,.24)";
+      auditionButton.style.color = diagnostics.auditionMode ? "#f2df82" : "#fff";
+    }
   }
 
   function publishSoundResearchDiagnostics(now) {
@@ -1773,9 +1820,9 @@
     emdrSoundResearch?.setAttribute("aria-label", soundResearchEnabled ? "Turn Sound Research Layer off" : "Turn Sound Research Layer on");
   }
 
-  function setSoundResearchEnabled(enabled) {
+  function setSoundResearchEnabled(enabled, { persist = true } = {}) {
     soundResearchEnabled = Boolean(enabled);
-    localStorage.setItem("iamSoundResearchLayer", soundResearchEnabled ? "on" : "off");
+    if (persist) localStorage.setItem("iamSoundResearchLayer", soundResearchEnabled ? "on" : "off");
     syncSoundResearchControl();
     if (soundResearchEnabled) {
       startSoundResearchLayer();
@@ -1784,6 +1831,8 @@
       window.cancelAnimationFrame(soundResearchGainFrame);
       soundResearchGainFrame = 0;
     }
+    if (soundResearchMonitor) updateSoundResearchMonitor(soundResearchDiagnostics());
+    return soundResearchEnabled;
   }
 
   window.IAMQuantumTree = {
@@ -1792,9 +1841,15 @@
       return soundResearchMaxVolume;
     },
     setPeakVolume(value) {
-      return setSoundResearchPeakVolume(value, true);
+      return setSoundResearchPeakVolume(value, "runtime QA");
     },
     setEnabled: setSoundResearchEnabled,
+    setAuditionMode(enabled) {
+      soundResearchAuditionMode = Boolean(enabled);
+      if (soundResearchAuditionMode) startSoundResearchLayer();
+      return soundResearchAuditionMode;
+    },
+    reloadSettings: loadSoundResearchSettings,
   };
 
   function startTelevisionContinuation() {
@@ -2606,11 +2661,12 @@
     setSoundResearchEnabled(!soundResearchEnabled);
   });
   syncSoundResearchControl();
-  setSoundResearchPeakVolume(soundResearchMaxVolume, false);
+  setSoundResearchPeakVolume(soundResearchMaxVolume, "built-in default");
   initSoundResearchMonitor();
-  window.addEventListener("storage", (event) => {
-    if (event.key !== SOUND_RESEARCH_PEAK_STORAGE_KEY) return;
-    setSoundResearchPeakVolume(readSoundResearchPeakVolume(), false);
+  loadSoundResearchSettings();
+  window.setInterval(loadSoundResearchSettings, 60000);
+  document.addEventListener("visibilitychange", () => {
+    if (!document.hidden) loadSoundResearchSettings();
   });
   researchRolloverHosts.forEach((host) => {
     const moreButton = host.querySelector(".adaptive-television-research-tooltip__more");

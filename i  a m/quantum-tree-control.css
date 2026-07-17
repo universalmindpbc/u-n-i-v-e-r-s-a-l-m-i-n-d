@@ -10,6 +10,7 @@
 }
 
 * { box-sizing: border-box; }
+[hidden] { display: none !important; }
 
 body {
   min-height: 100vh;
@@ -21,6 +22,39 @@ body {
 }
 
 button, input { font: inherit; }
+
+.quantum-access {
+  display: grid;
+  min-height: 100vh;
+  place-items: center;
+  padding: 24px;
+}
+
+.quantum-access__card {
+  width: min(560px, 100%);
+  padding: clamp(28px, 6vw, 54px);
+  border: 1px solid var(--line);
+  border-radius: 28px;
+  background: rgba(19, 18, 25, 0.86);
+  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.36);
+  backdrop-filter: blur(20px);
+}
+
+.quantum-access__card .quantum-control__mark { margin-bottom: 24px; }
+.quantum-access__form { display: grid; gap: 12px; margin-top: 28px; }
+.quantum-access__form label { color: var(--muted); font-size: 13px; }
+.quantum-access__form input {
+  width: 100%;
+  min-height: 50px;
+  padding: 12px 15px;
+  border: 1px solid rgba(255, 255, 255, 0.24);
+  border-radius: 14px;
+  outline: none;
+  background: rgba(255, 255, 255, 0.07);
+  color: #fff;
+}
+.quantum-access__form input:focus { border-color: var(--green); box-shadow: 0 0 0 3px rgba(143, 242, 177, 0.12); }
+.quantum-access__status { min-height: 20px; margin: 2px 0 0; color: #f1b3b3; font-size: 12px; }
 
 .quantum-control {
   width: min(980px, calc(100% - 32px));
@@ -34,6 +68,19 @@ button, input { font: inherit; }
   gap: 22px;
   align-items: start;
   margin-bottom: 30px;
+}
+
+.quantum-control__eyebrow-row { display: flex; align-items: center; justify-content: space-between; gap: 18px; }
+.quantum-control__eyebrow-row .quantum-control__eyebrow { margin-bottom: 0; }
+.quantum-logout {
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: var(--muted);
+  cursor: pointer;
+  font-size: 12px;
+  text-decoration: underline;
+  text-underline-offset: 3px;
 }
 
 .quantum-control__mark {
@@ -97,6 +144,8 @@ h2 { margin-bottom: 0; font-size: clamp(22px, 3vw, 30px); font-weight: 550; lett
 .quantum-button--save { border-color: rgba(143, 242, 177, 0.5); color: var(--green); }
 .quantum-button--quiet, .quantum-link--quiet { color: var(--muted); }
 .quantum-note { margin: 20px 0 0; color: var(--muted); font-size: 13px; line-height: 1.55; }
+.quantum-save-status { min-height: 20px; margin: 8px 0 0; color: var(--green); font-size: 12px; }
+.quantum-save-status.is-error { color: #f1b3b3; }
 
 .quantum-status { padding: 6px 11px; border-radius: 999px; background: rgba(255,255,255,.08); font-size: 12px; text-transform: lowercase; }
 .quantum-status.is-verified { background: rgba(60, 208, 113, 0.17); color: var(--green); }

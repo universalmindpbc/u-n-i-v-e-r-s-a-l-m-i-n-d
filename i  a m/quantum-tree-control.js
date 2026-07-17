@@ -1,6 +1,12 @@
 (function () {
-  const DEFAULT_PEAK = 0.585;
-  const PEAK_STORAGE_KEY = "iamQuantumTreePeakVolume";
+  const DEFAULT_PEAK = 0.055;
+  const SETTINGS_ENDPOINT = "api/quantum-tree-settings.php";
+  const accessPanel = document.querySelector("[data-owner-access]");
+  const dashboard = document.querySelector("[data-owner-dashboard]");
+  const loginForm = document.querySelector("[data-owner-login]");
+  const ownerKey = document.querySelector("[data-owner-key]");
+  const ownerStatus = document.querySelector("[data-owner-status]");
+  const logoutButton = document.querySelector("[data-owner-logout]");
   const audio = document.querySelector("[data-quantum-preview]");
   const slider = document.querySelector("#quantum-peak-slider");
   const playToggle = document.querySelector("[data-preview-toggle]");
@@ -8,21 +14,17 @@
   const saveButton = document.querySelector("[data-save-peak]");
   const resetButton = document.querySelector("[data-reset-peak]");
   const overallStatus = document.querySelector("[data-overall-status]");
+  const saveStatus = document.querySelector("[data-save-status]");
+  let csrfToken = "";
+  let platformPeak = DEFAULT_PEAK;
   let lastPlaybackTime = 0;
   let lastAdvanceAt = 0;
   let playbackError = "";
 
-  if (!audio || !slider || !playToggle) return;
+  if (!audio || !slider || !playToggle || !accessPanel || !dashboard) return;
 
   function clamp(value, min, max) {
     return Math.min(max, Math.max(min, value));
-  }
-
-  function readSavedPeak() {
-    const stored = localStorage.getItem(PEAK_STORAGE_KEY);
-    if (stored === null || stored === "") return DEFAULT_PEAK;
-    const value = Number(stored);
-    return Number.isFinite(value) ? clamp(value, 0, 1) : DEFAULT_PEAK;
   }
 
   function selectedPeak() {
@@ -38,6 +40,12 @@
     if (element) element.textContent = value;
   }
 
+  function setSaveStatus(message, isError = false) {
+    if (!saveStatus) return;
+    saveStatus.textContent = message;
+    saveStatus.classList.toggle("is-error", isError);
+  }
+
   function renderPeak() {
     const peak = selectedPeak();
     audio.volume = peak;
@@ -46,8 +54,56 @@
     setText("[data-test-output]", `${(peak * 100).toFixed(1)}%`);
   }
 
-  function renderSavedPeak() {
-    setText("[data-saved-peak]", `${(readSavedPeak() * 100).toFixed(1)}%`);
+  function renderPlatformPeak() {
+    setText("[data-saved-peak]", `${(platformPeak * 100).toFixed(1)}%`);
+  }
+
+  function applySettings(settings, { updateSlider = true } = {}) {
+    const peak = Number(settings?.peak_volume);
+    if (Number.isFinite(peak) && peak >= 0 && peak <= 1) platformPeak = peak;
+    csrfToken = typeof settings?.csrf_token === "string" ? settings.csrf_token : csrfToken;
+    if (updateSlider) slider.value = String(platformPeak * 100);
+    renderPeak();
+    renderPlatformPeak();
+  }
+
+  async function requestSettings(payload) {
+    const options = {
+      cache: "no-store",
+      credentials: "same-origin",
+      headers: { Accept: "application/json" },
+    };
+    if (payload) {
+      options.method = "POST";
+      options.headers["Content-Type"] = "application/json";
+      options.body = JSON.stringify(payload);
+    }
+
+    const response = await fetch(SETTINGS_ENDPOINT, options);
+    let result = {};
+    try {
+      result = await response.json();
+    } catch {
+      result = {};
+    }
+    if (!response.ok) throw new Error(result.error || `Request failed (${response.status})`);
+    return result;
+  }
+
+  function showDashboard(settings) {
+    applySettings(settings);
+    accessPanel.hidden = true;
+    dashboard.hidden = false;
+    ownerKey.value = "";
+    ownerStatus.textContent = "";
+  }
+
+  function showLogin(message = "") {
+    csrfToken = "";
+    dashboard.hidden = true;
+    accessPanel.hidden = false;
+    ownerStatus.textContent = message;
+    window.setTimeout(() => ownerKey.focus(), 0);
   }
 
   function renderDiagnostics(now) {
@@ -69,12 +125,11 @@
     window.requestAnimationFrame(renderDiagnostics);
   }
 
-  const savedPeak = readSavedPeak();
-  slider.value = String(savedPeak * 100);
-  renderPeak();
-  renderSavedPeak();
+  slider.addEventListener("input", () => {
+    renderPeak();
+    setSaveStatus(selectedPeak() === platformPeak ? "" : "Unsaved staging change");
+  });
 
-  slider.addEventListener("input", renderPeak);
   playToggle.addEventListener("click", async () => {
     if (!audio.paused) {
       audio.pause();
@@ -94,21 +149,59 @@
     audio.currentTime = 0;
   });
 
-  saveButton?.addEventListener("click", () => {
-    const peak = selectedPeak();
-    localStorage.setItem(PEAK_STORAGE_KEY, peak.toFixed(4));
-    renderSavedPeak();
-    saveButton.textContent = "Saved for this browser";
-    window.setTimeout(() => {
-      saveButton.textContent = "Save peak for this browser";
-    }, 1800);
+  saveButton?.addEventListener("click", async () => {
+    saveButton.disabled = true;
+    setSaveStatus("Publishing the staging-wide peak…");
+    try {
+      const settings = await requestSettings({
+        action: "save",
+        csrf_token: csrfToken,
+        peak_volume: selectedPeak(),
+      });
+      applySettings(settings);
+      setSaveStatus(`Published ${(platformPeak * 100).toFixed(1)}% to every staging player.`);
+      saveButton.textContent = "Platform peak saved";
+      window.setTimeout(() => {
+        saveButton.textContent = "Save platform peak";
+      }, 1800);
+    } catch (error) {
+      setSaveStatus(error.message || "The platform setting could not be saved.", true);
+      if (/authentication|session/i.test(error.message || "")) showLogin("Your administrator session ended. Please sign in again.");
+    } finally {
+      saveButton.disabled = false;
+    }
   });
 
   resetButton?.addEventListener("click", () => {
     slider.value = String(DEFAULT_PEAK * 100);
-    localStorage.setItem(PEAK_STORAGE_KEY, DEFAULT_PEAK.toFixed(4));
     renderPeak();
-    renderSavedPeak();
+    setSaveStatus(platformPeak === DEFAULT_PEAK ? "" : "Approved 5.5% loaded — press Save platform peak to publish it.");
+  });
+
+  loginForm?.addEventListener("submit", async (event) => {
+    event.preventDefault();
+    ownerStatus.textContent = "Verifying…";
+    const submitButton = loginForm.querySelector("button[type=submit]");
+    if (submitButton) submitButton.disabled = true;
+    try {
+      const settings = await requestSettings({ action: "login", owner_key: ownerKey.value });
+      showDashboard(settings);
+    } catch (error) {
+      ownerStatus.textContent = error.message || "Owner key not recognised.";
+      ownerKey.select();
+    } finally {
+      if (submitButton) submitButton.disabled = false;
+    }
+  });
+
+  logoutButton?.addEventListener("click", async () => {
+    try {
+      await requestSettings({ action: "logout" });
+    } catch {
+      // The local view still closes if the server session already ended.
+    }
+    audio.pause();
+    showLogin();
   });
 
   audio.addEventListener("error", () => {
@@ -118,9 +211,15 @@
   audio.addEventListener("play", () => {
     playbackError = "";
   });
-  window.addEventListener("storage", (event) => {
-    if (event.key !== PEAK_STORAGE_KEY) return;
-    renderSavedPeak();
-  });
+
+  slider.value = String(DEFAULT_PEAK * 100);
+  renderPeak();
+  renderPlatformPeak();
+  requestSettings()
+    .then((settings) => {
+      if (settings.authenticated) showDashboard(settings);
+      else showLogin();
+    })
+    .catch(() => showLogin("The administrator service is temporarily unavailable."));
   window.requestAnimationFrame(renderDiagnostics);
 }());

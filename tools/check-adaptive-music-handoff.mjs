@@ -6,14 +6,25 @@ import { fileURLToPath } from 'node:url';
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const IAM_DIR = path.join(ROOT, 'i  a m');
 const controllerPath = path.join(IAM_DIR, 'adaptive-environment-television.js');
+const globeControllerPath = path.join(IAM_DIR, 'globe.js');
 const streamControllerPath = path.join(IAM_DIR, 'cloudflare-stream-controller.js');
 const streamCataloguePath = path.join(IAM_DIR, 'cloudflare-stream-catalogue.js');
 const shellControllerPath = path.join(IAM_DIR, 'script.js');
 const djSetManifestPath = path.join(ROOT, 'cloudflare-stream-djset-upload-manifest.json');
 const televisionCssPath = path.join(IAM_DIR, 'adaptive-environment-television.css');
+const quantumTreeControlPagePath = path.join(IAM_DIR, 'quantum-tree-control.html');
+const quantumTreeControlScriptPath = path.join(IAM_DIR, 'quantum-tree-control.js');
+const quantumTreeSettingsEndpointPath = path.join(IAM_DIR, 'api', 'quantum-tree-settings.php');
+const quantumTreeSettingsDataPath = path.join(IAM_DIR, 'api', 'quantum-tree-settings.json');
 const pagePaths = [
   path.join(IAM_DIR, 'index.html'),
   path.join(IAM_DIR, 'adaptive-environment-television.html'),
+];
+const globeScriptPagePaths = [
+  path.join(IAM_DIR, 'index.html'),
+  path.join(IAM_DIR, 'vogue-self-report.html'),
+  path.join(IAM_DIR, 'globe.html'),
+  path.join(IAM_DIR, 'community-globe.html'),
 ];
 
 function requireCondition(condition, message) {
@@ -21,17 +32,27 @@ function requireCondition(condition, message) {
 }
 
 const controller = await fs.readFile(controllerPath, 'utf8');
+const globeController = await fs.readFile(globeControllerPath, 'utf8');
 const streamController = await fs.readFile(streamControllerPath, 'utf8');
 const streamCatalogue = await fs.readFile(streamCataloguePath, 'utf8');
 const shellController = await fs.readFile(shellControllerPath, 'utf8');
 const djSetManifest = JSON.parse(await fs.readFile(djSetManifestPath, 'utf8'));
 const televisionCss = await fs.readFile(televisionCssPath, 'utf8');
+const quantumTreeControlPage = await fs.readFile(quantumTreeControlPagePath, 'utf8');
+const quantumTreeControlScript = await fs.readFile(quantumTreeControlScriptPath, 'utf8');
+const quantumTreeSettingsEndpoint = await fs.readFile(quantumTreeSettingsEndpointPath, 'utf8');
+const quantumTreeSettingsData = JSON.parse(await fs.readFile(quantumTreeSettingsDataPath, 'utf8'));
 const pages = await Promise.all(pagePaths.map(async (pagePath) => ({
+  pagePath,
+  source: await fs.readFile(pagePath, 'utf8'),
+})));
+const globeScriptPages = await Promise.all(globeScriptPagePaths.map(async (pagePath) => ({
   pagePath,
   source: await fs.readFile(pagePath, 'utf8'),
 })));
 
 const expectedCacheToken = `music-tv-${createHash('sha256').update(controller).digest('hex').slice(0, 12)}`;
+const expectedGlobeCacheToken = `globe-${createHash('sha256').update(globeController).digest('hex').slice(0, 12)}`;
 const expectedCssCacheToken = `music-tv-css-${createHash('sha256').update(televisionCss).digest('hex').slice(0, 12)}`;
 const expectedStreamCatalogueToken = `stream-catalogue-${createHash('sha256').update(streamCatalogue).digest('hex').slice(0, 12)}`;
 const expectedStreamControllerToken = `stream-controller-${createHash('sha256').update(streamController).digest('hex').slice(0, 12)}`;
@@ -46,6 +67,12 @@ const settlingWalletRule = televisionCss.match(/body\.television-wallet-settling
 requireCondition(controller.includes(explicitSelectionMarker), 'the home controller no longer reads selected_track_id from the URL');
 requireCondition(controller.includes('id: "the-prodigy-everybody-in-the-place"'), 'the Prodigy track is missing from the television catalogue');
 requireCondition(controller.includes('document.body.dataset.adaptiveTrackId = track.id;'), 'the resolved track is not exposed for staging verification');
+requireCondition(controller.includes('function showRecommendationUnavailable()'), 'selector failures can silently present the default track again');
+requireCondition(!controller.includes('useRecommendationFallback'), 'selector failures still use a default-track fallback');
+requireCondition(globeController.includes('const persistedSelection = persistMusicTelevisionSelection(selection);'), 'the check-in pipeline does not validate persisted selector output');
+requireCondition(globeController.includes('const isAdaptiveFrame = currentParams.get("adaptiveFrame") === "1";'), 'embedded repeat check-ins no longer detect their frame context');
+requireCondition(globeController.includes('(isAdaptiveFrame || isMusicTelevisionFrame)'), 'embedded repeat check-ins no longer return to the top-level homepage');
+requireCondition(!globeController.includes('if (window.location.hostname === "staging.universalmind.tv") return null;'), 'staging can still turn selector errors into a successful default-track result');
 requireCondition(syncCallPosition >= 0 && introCallPosition > syncCallPosition, 'track copy must resolve before the animated intro starts');
 requireCondition(controller.includes('const REACTION_WALLET_POINTER_LOCK_MS = 10000;'), 'the flower wallet no longer ignores mouse activation for a full ten seconds');
 requireCondition(controller.includes('const REACTION_WALLET_POINTER_MOVE_PX = 2;'), 'the flower wallet no longer requires physical pointer travel');
@@ -71,6 +98,44 @@ requireCondition(controller.includes('firstFallbackMs: 1250'), 'fashion reveal n
 requireCondition(controller.includes('secondFallbackMs: 2000'), 'fashion reveal no longer falls progressively to 360p');
 requireCondition(controller.includes('window.IAMStreamController?.noteFashionReveal(video);'), 'fashion crossfade telemetry is missing');
 requireCondition(televisionCss.includes('transition: opacity 300ms cubic-bezier(0.22, 0.72, 0.18, 1);'), 'fashion crossfade is no longer 300 milliseconds');
+requireCondition(controller.includes('const SOUND_RESEARCH_DEFAULT_MAX_VOLUME = 0.055;'), 'the approved 5.5 percent Quantum Tree default ceiling has changed');
+requireCondition(controller.includes('const SOUND_RESEARCH_SETTINGS_ENDPOINT = "api/quantum-tree-settings.php";'), 'the Quantum Tree player no longer reads the platform-wide setting');
+requireCondition(controller.includes('async function loadSoundResearchSettings()'), 'the Quantum Tree platform setting loader is missing');
+requireCondition(!controller.includes('iamQuantumTreePeakVolume'), 'a browser-specific Quantum Tree peak override has returned');
+requireCondition(controller.includes('const radioIsAudible = continuationAudio && !continuationAudio.paused'), 'the Quantum Tree layer no longer detects active radio playback');
+requireCondition(controller.includes('const activeMedia = videoIsAudible ? localVideo : (radioIsAudible ? continuationAudio : null);'), 'the Quantum Tree layer no longer selects the audible video or radio source');
+requireCondition(controller.includes('measuredLevel * activeMedia.volume'), 'the Quantum Tree layer no longer follows the measured level of the active media source');
+requireCondition(!controller.includes('return radioLevel * SOUND_RESEARCH_MAX_VOLUME;'), 'radio playback has returned to a fixed Quantum Tree gain');
+requireCondition(controller.includes('window.IAMQuantumTree = {'), 'the live Quantum Tree diagnostic interface is missing');
+requireCondition(controller.includes('soundResearchParams.get("quantumTreeMonitor") === "1"'), 'the stakeholder live monitor can no longer be opened');
+requireCondition(controller.includes('const verifiedOutput = verifiedPlaying && diagnostics.currentVolume > 0.0001;'), 'the live monitor can report success at zero Quantum Tree gain');
+requireCondition(controller.includes('data-quantum-monitor-toggle'), 'the live monitor has no Quantum Tree A/B control');
+requireCondition(controller.includes('data-quantum-monitor-audition'), 'the live monitor has no silence-gate audition control');
+requireCondition(controller.includes('soundResearchTestMode || soundResearchAuditionMode'), 'the administrator cannot audition the configured peak through the live monitor');
+requireCondition(quantumTreeControlPage.includes('data-quantum-preview'), 'the owner dashboard has no isolated Quantum Tree player');
+requireCondition(quantumTreeControlPage.includes('id="quantum-peak-slider"'), 'the owner dashboard has no peak slider');
+requireCondition(quantumTreeControlPage.includes('data-owner-login'), 'the administrator dashboard is not access-controlled');
+requireCondition(quantumTreeControlScript.includes('action: "save"'), 'the administrator dashboard no longer publishes the platform peak');
+requireCondition(quantumTreeControlScript.includes('credentials: "same-origin"'), 'the administrator dashboard no longer uses its protected server session');
+requireCondition(quantumTreeControlScript.includes('const verified = fileReady && playing && advancing && audio.volume > 0;'), 'the owner dashboard no longer verifies decoded and advancing playback');
+requireCondition(quantumTreeSettingsEndpoint.includes('QUANTUM_TREE_OWNER_KEY_HASH'), 'the platform settings endpoint has no owner authentication');
+requireCondition(quantumTreeSettingsEndpoint.includes('hash_equals($_SESSION[\'quantum_tree_csrf\'], $csrf)'), 'the platform settings endpoint has no CSRF verification');
+requireCondition(quantumTreeSettingsEndpoint.includes('file_put_contents($temporaryPath, $json, LOCK_EX)'), 'the platform setting is not written atomically');
+requireCondition(quantumTreeSettingsData.peak_volume === 0.055, 'the deployed Quantum Tree platform setting is not 5.5 percent');
+
+for (const { pagePath, source } of globeScriptPages) {
+  const label = path.relative(ROOT, pagePath);
+  const globeScriptMatch = source.match(/globe\.js\?v=([^"']+)/);
+  requireCondition(globeScriptMatch, `${label} has no versioned check-in controller`);
+  requireCondition(globeScriptMatch[1] === expectedGlobeCacheToken, `${label} check-in cache token ${globeScriptMatch[1]} does not match ${expectedGlobeCacheToken}`);
+}
+
+for (const pagePath of [path.join(IAM_DIR, 'index.html'), path.join(IAM_DIR, 'vogue-self-report.html')]) {
+  const source = await fs.readFile(pagePath, 'utf8');
+  const label = path.relative(ROOT, pagePath);
+  requireCondition(source.includes('content="/vogue/iam/api/adaptive-music-video-selection.php"'), `${label} does not use the working PHP selector route`);
+  requireCondition(!source.includes('content="/vogue/iam/api/adaptive-music-video-selection.py"'), `${label} still points at the failing Python CGI selector route`);
+}
 
 const musicBufferManager = streamController.slice(
   streamController.indexOf('function manageFashionQualityFromMusic'),
