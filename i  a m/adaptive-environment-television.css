@@ -240,6 +240,24 @@ body.television-support-card-open .adaptive-television-support-card {
   overflow: hidden;
 }
 
+.adaptive-television-fashion-hero-frame {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 8;
+  display: block;
+  overflow: hidden;
+  opacity: 0;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+}
+
+.adaptive-television-fashion-hero-canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
 .adaptive-television-local-video {
   z-index: 1;
 }
@@ -316,12 +334,14 @@ body.television-support-card-open .adaptive-television-support-card {
   display: block;
 }
 
-/* Editorial GIF preset: six authored square animations, a silent runway
-   backdrop and the current music video held in the central black casing. */
+/* Editorial GIF preset: six complete square animations surrounding one silent
+   runway source, mirrored exactly into the central black fashion casing. */
 .adaptive-television-room {
-  --emdr-gif-gap: clamp(9px, 1vw, 24px);
-  --emdr-gif-front-width: min(55vw, 84vh);
-  --emdr-gif-front-height: min(30.9375vw, 47.25vh);
+  --emdr-gif-casing-gap: clamp(12px, 1vw, 30px);
+  --emdr-gif-grid-gap: min(3.4vw, 5.6vh, 100px);
+  --emdr-gif-tile-size: min(24vw, 42vh, 720px);
+  --emdr-gif-front-width: min(60vw, 104vh);
+  --emdr-gif-front-height: min(33.75vw, 58.5vh);
 }
 
 .adaptive-television-emdr-gif-world {
@@ -345,17 +365,17 @@ body.television-support-card-open .adaptive-television-support-card {
   left: 50%;
   z-index: 1;
   display: grid;
-  box-sizing: border-box;
-  grid-template-columns: repeat(3, 1fr);
-  gap: var(--emdr-gif-gap);
-  width: 100vw;
-  padding-inline: var(--emdr-gif-gap);
+  grid-template-columns: repeat(3, var(--emdr-gif-tile-size));
+  grid-template-rows: repeat(2, var(--emdr-gif-tile-size));
+  gap: var(--emdr-gif-grid-gap);
+  width: max-content;
   transform: translate(-50%, -50%);
 }
 
 .adaptive-television-emdr-gif-grid img {
   display: block;
-  width: 100%;
+  width: var(--emdr-gif-tile-size);
+  height: var(--emdr-gif-tile-size);
   aspect-ratio: 1;
   object-fit: cover;
   opacity: .77;
@@ -370,7 +390,7 @@ body.television-support-card-open .adaptive-television-support-card {
   width: var(--emdr-gif-front-width);
   height: var(--emdr-gif-front-height);
   background: rgba(0, 0, 0, .65);
-  padding: var(--emdr-gif-gap);
+  padding: var(--emdr-gif-casing-gap);
   transform: translate(-50%, -50%);
 }
 
@@ -391,6 +411,10 @@ body.television-emdr-gif-active .adaptive-television-player .adaptive-television
 }
 
 body.television-emdr-gif-active .adaptive-television-player .adaptive-television-local-video-frame {
+  opacity: 0;
+}
+
+body.television-emdr-gif-active .adaptive-television-player .adaptive-television-fashion-hero-frame {
   top: 50%;
   left: 50%;
   right: auto;
@@ -399,16 +423,8 @@ body.television-emdr-gif-active .adaptive-television-player .adaptive-television
   width: var(--emdr-gif-front-width);
   height: var(--emdr-gif-front-height);
   overflow: hidden;
-  transform: translate(-50%, -50%);
-}
-
-body.television-emdr-gif-active .adaptive-television-player .adaptive-television-local-video {
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
   opacity: 1;
-  transform: scale(var(--adaptive-video-edge-scale));
+  transform: translate(-50%, -50%);
 }
 
 body.television-emdr-gif-active .adaptive-television-timecode {

@@ -154,6 +154,13 @@
   let localVideoFrame = null;
   let localVideo = null;
   let fashionVideo = null;
+  let fashionHeroFrame = null;
+  let fashionHeroCanvas = null;
+  let fashionHeroContext = null;
+  let fashionHeroAnimationFrame = 0;
+  let fashionHeroVideoFrame = 0;
+  let fashionHeroVideoFrameSource = null;
+  let fashionHeroGeneration = 0;
   let fashionRunwayIndex = 0;
   let fashionRunwaySwitching = false;
   let requestedVideoBlend = Number(videoCrossfader?.value || 100);
@@ -645,6 +652,97 @@
     return video;
   }
 
+  function stopFashionHeroMirror() {
+    fashionHeroGeneration += 1;
+    if (fashionHeroAnimationFrame) {
+      window.cancelAnimationFrame(fashionHeroAnimationFrame);
+      fashionHeroAnimationFrame = 0;
+    }
+    if (fashionHeroVideoFrame && fashionHeroVideoFrameSource?.cancelVideoFrameCallback) {
+      try { fashionHeroVideoFrameSource.cancelVideoFrameCallback(fashionHeroVideoFrame); } catch {}
+    }
+    fashionHeroVideoFrame = 0;
+    fashionHeroVideoFrameSource = null;
+    if (fashionHeroFrame) fashionHeroFrame.dataset.fashionHeroMirror = "inactive";
+  }
+
+  function drawFashionHeroFrame() {
+    if (!fashionHeroCanvas || !fashionHeroContext || !fashionVideo || fashionVideo.readyState < 2) return;
+    const sourceWidth = fashionVideo.videoWidth;
+    const sourceHeight = fashionVideo.videoHeight;
+    const frameWidth = fashionHeroFrame?.clientWidth || 0;
+    const frameHeight = fashionHeroFrame?.clientHeight || 0;
+    if (!sourceWidth || !sourceHeight || !frameWidth || !frameHeight) return;
+
+    const pixelRatio = Math.min(2, Math.max(1, window.devicePixelRatio || 1));
+    const targetWidth = Math.max(1, Math.round(frameWidth * pixelRatio));
+    const targetHeight = Math.max(1, Math.round(frameHeight * pixelRatio));
+    if (fashionHeroCanvas.width !== targetWidth || fashionHeroCanvas.height !== targetHeight) {
+      fashionHeroCanvas.width = targetWidth;
+      fashionHeroCanvas.height = targetHeight;
+    }
+
+    const sourceRatio = sourceWidth / sourceHeight;
+    const targetRatio = targetWidth / targetHeight;
+    let cropX = 0;
+    let cropY = 0;
+    let cropWidth = sourceWidth;
+    let cropHeight = sourceHeight;
+    if (sourceRatio > targetRatio) {
+      cropWidth = sourceHeight * targetRatio;
+      cropX = (sourceWidth - cropWidth) / 2;
+    } else if (sourceRatio < targetRatio) {
+      cropHeight = sourceWidth / targetRatio;
+      cropY = (sourceHeight - cropHeight) / 2;
+    }
+
+    try {
+      fashionHeroContext.clearRect(0, 0, targetWidth, targetHeight);
+      fashionHeroContext.drawImage(
+        fashionVideo,
+        cropX,
+        cropY,
+        cropWidth,
+        cropHeight,
+        0,
+        0,
+        targetWidth,
+        targetHeight
+      );
+      fashionHeroFrame.dataset.fashionHeroMirror = "ready";
+      delete fashionHeroFrame.dataset.fashionHeroError;
+    } catch (error) {
+      fashionHeroFrame.dataset.fashionHeroMirror = "error";
+      fashionHeroFrame.dataset.fashionHeroError = String(error?.message || error).slice(0, 160);
+    }
+  }
+
+  function scheduleFashionHeroMirror(generation) {
+    if (generation !== fashionHeroGeneration || !document.body.classList.contains("television-emdr-gif-active")) return;
+    drawFashionHeroFrame();
+
+    if (fashionVideo?.requestVideoFrameCallback && !fashionVideo.paused && fashionVideo.readyState >= 2) {
+      fashionHeroVideoFrameSource = fashionVideo;
+      fashionHeroVideoFrame = fashionVideo.requestVideoFrameCallback(() => {
+        fashionHeroVideoFrame = 0;
+        scheduleFashionHeroMirror(generation);
+      });
+      return;
+    }
+
+    fashionHeroAnimationFrame = window.requestAnimationFrame(() => {
+      fashionHeroAnimationFrame = 0;
+      scheduleFashionHeroMirror(generation);
+    });
+  }
+
+  function startFashionHeroMirror() {
+    stopFashionHeroMirror();
+    if (fashionHeroFrame) fashionHeroFrame.dataset.fashionHeroMirror = "starting";
+    const generation = fashionHeroGeneration;
+    scheduleFashionHeroMirror(generation);
+  }
+
   function mountPlayer() {
     if (localVideo) return localVideo;
 
@@ -656,6 +754,14 @@
     fashionVideo = createFashionVideo(fashionRunwayIndex);
     fashionVideo.classList.add("is-fashion-active");
     updateFashionRunwayToggle();
+
+    fashionHeroFrame = document.createElement("div");
+    fashionHeroFrame.className = "adaptive-television-fashion-hero-frame";
+    fashionHeroCanvas = document.createElement("canvas");
+    fashionHeroCanvas.className = "adaptive-television-fashion-hero-canvas";
+    fashionHeroCanvas.setAttribute("aria-hidden", "true");
+    fashionHeroContext = fashionHeroCanvas.getContext("2d", { alpha: false });
+    fashionHeroFrame.append(fashionHeroCanvas);
 
     localVideoFrame = document.createElement("div");
     localVideoFrame.className = "adaptive-television-local-video-frame";
@@ -711,6 +817,7 @@
     localVideoFrame.append(localVideo);
     playerMount.append(localVideoFrame);
     playerMount.append(fashionVideo);
+    playerMount.append(fashionHeroFrame);
     playerMount.append(timecode);
     attachAdaptiveStream(localVideo, track.localVideoSrc, "music");
     if (televisionPlaybackRequested) ensureFashionStreamAttached();
@@ -1199,6 +1306,7 @@
     fashionRunwayIndex = nextIndex;
     fashionVideo = createFashionVideo(fashionRunwayIndex);
     playerMount.insertBefore(fashionVideo, timecode || null);
+    if (document.body.classList.contains("television-emdr-gif-active")) startFashionHeroMirror();
     updateFashionRunwayToggle();
 
     try {
@@ -1286,9 +1394,11 @@
       if (emdrGifPreviousVideoBlend === null) emdrGifPreviousVideoBlend = requestedVideoBlend;
       setVideoBlend(0);
       playerMount.dataset.emdrGifVideoLayers = "active";
+      startFashionHeroMirror();
       return;
     }
 
+    stopFashionHeroMirror();
     if (emdrGifPreviousVideoBlend !== null) {
       const previousBlend = emdrGifPreviousVideoBlend;
       emdrGifPreviousVideoBlend = null;
