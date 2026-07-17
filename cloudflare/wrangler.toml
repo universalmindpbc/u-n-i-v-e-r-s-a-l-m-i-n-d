@@ -1,0 +1,7 @@
+name = "iam-citizen-needs-inference"
+main = "iam-citizen-needs-worker.js"
+compatibility_date = "2026-07-03"
+workers_dev = true
+
+[vars]
+OPENAI_INFERENCE_MODEL = "gpt-5.5"

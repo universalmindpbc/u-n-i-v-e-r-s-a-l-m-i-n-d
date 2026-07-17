@@ -1,0 +1,189 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noindex, nofollow">
+    <title>Universal Mind</title>
+    <link rel="icon" type="image/png" sizes="32x32" href="/vogue/iam/favicon.png?v=iam-favicon-3">
+    <link rel="shortcut icon" type="image/png" href="/vogue/iam/favicon.png?v=iam-favicon-3">
+    <link rel="apple-touch-icon" sizes="180x180" href="/vogue/iam/apple-touch-icon.png?v=iam-favicon-3">
+    <style>
+      :root {
+        color-scheme: dark;
+        font-family: Arial, Helvetica, sans-serif;
+        background: #000;
+        color: #fff;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        min-height: 100%;
+        margin: 0;
+      }
+
+      body {
+        min-height: 100svh;
+        display: grid;
+        place-items: center;
+        padding: 32px 24px;
+        background: #000;
+      }
+
+      .access-shell {
+        width: min(100%, 440px);
+        text-align: center;
+      }
+
+      .access-title {
+        margin: 0 0 52px;
+        font-size: clamp(14px, 2.3vw, 18px);
+        font-weight: 400;
+        letter-spacing: 0.42em;
+        line-height: 1.7;
+        text-transform: lowercase;
+      }
+
+      .access-form {
+        display: grid;
+        gap: 18px;
+      }
+
+      .access-label {
+        font-size: 11px;
+        letter-spacing: 0.32em;
+        text-transform: lowercase;
+      }
+
+      .access-input {
+        width: 100%;
+        border: 0;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.7);
+        border-radius: 0;
+        padding: 13px 2px;
+        background: transparent;
+        color: #fff;
+        font: inherit;
+        font-size: 16px;
+        letter-spacing: 0.12em;
+        text-align: center;
+        outline: none;
+        appearance: none;
+      }
+
+      .access-input:focus {
+        border-bottom-color: #fff;
+      }
+
+      .access-submit {
+        justify-self: center;
+        border: 1px solid rgba(255, 255, 255, 0.72);
+        border-radius: 0;
+        margin-top: 10px;
+        padding: 12px 30px;
+        background: transparent;
+        color: #fff;
+        font: inherit;
+        font-size: 11px;
+        letter-spacing: 0.28em;
+        text-transform: lowercase;
+        cursor: pointer;
+      }
+
+      .access-submit:hover,
+      .access-submit:focus-visible {
+        background: #fff;
+        color: #000;
+      }
+
+      .access-error {
+        min-height: 18px;
+        margin: 2px 0 0;
+        color: rgba(255, 255, 255, 0.72);
+        font-size: 10px;
+        letter-spacing: 0.2em;
+        line-height: 1.8;
+        text-transform: lowercase;
+      }
+
+      @media (prefers-reduced-motion: no-preference) {
+        .access-submit {
+          transition: background-color 160ms ease, color 160ms ease;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="access-shell">
+      <h1 class="access-title">u n i v e r s a l&nbsp;&nbsp;m i n d</h1>
+      <form class="access-form" data-access-form novalidate>
+        <label class="access-label" for="access-password">password</label>
+        <input
+          class="access-input"
+          id="access-password"
+          name="password"
+          type="password"
+          autocomplete="current-password"
+          autocapitalize="none"
+          spellcheck="false"
+          required
+          data-access-password
+        >
+        <button class="access-submit" type="submit">enter</button>
+        <p class="access-error" role="status" aria-live="polite" data-access-error></p>
+      </form>
+    </main>
+
+    <script>
+      (() => {
+        const allowedPasswordHashes = new Set([
+          "95ad12a6f06a11c5ec4de138f63f0065aa61eb48157b750beaeeed2a4ec01d4f",
+          "de60f72e9e3d9c93159ddcf26bec48a4e1c4516dd050c46a4e2c3e339a3dee22",
+          "63ccf93639ee0f851cd1fde9dd880948f89af2993bc685c09cb5ff7bf1c5f1b8",
+          "9150328d4eac1e52783a656fdfaec9295704c127e3d2b76c5194b941c072a66c",
+          "a4abddbf6baad08c17395862cea8f55665e654c7237be4f2fdfa6a06138ca3dc",
+          "1e6c6c9d57ee2d45bb19b5f332580541aac2bf725b6851a951438944c152f539"
+        ]);
+        const form = document.querySelector("[data-access-form]");
+        const passwordInput = document.querySelector("[data-access-password]");
+        const errorMessage = document.querySelector("[data-access-error]");
+
+        const hashPassword = async (password) => {
+          const bytes = new TextEncoder().encode(password);
+          const digest = await window.crypto.subtle.digest("SHA-256", bytes);
+          return Array.from(new Uint8Array(digest), (byte) => byte.toString(16).padStart(2, "0")).join("");
+        };
+
+        form.addEventListener("submit", async (event) => {
+          event.preventDefault();
+          errorMessage.textContent = "";
+
+          const password = passwordInput.value.trim();
+          if (!password) {
+            errorMessage.textContent = "please enter your password";
+            passwordInput.focus();
+            return;
+          }
+
+          try {
+            const passwordHash = await hashPassword(password);
+            if (allowedPasswordHashes.has(passwordHash)) {
+              window.location.assign("/vogue/iam/induction.html");
+              return;
+            }
+          } catch (error) {
+            errorMessage.textContent = "unable to verify — please try again";
+            return;
+          }
+
+          errorMessage.textContent = "password not recognised";
+          passwordInput.select();
+        });
+      })();
+    </script>
+  </body>
+</html>

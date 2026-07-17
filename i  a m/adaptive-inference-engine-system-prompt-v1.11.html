@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Adaptive Inference Engine System Prompt v1.11</title>
+    <link rel="icon" type="image/png" sizes="32x32" href="/vogue/iam/favicon.png?v=iam-favicon-3">
+    <link rel="shortcut icon" type="image/png" href="/vogue/iam/favicon.png?v=iam-favicon-3">
+    <link rel="apple-touch-icon" sizes="180x180" href="/vogue/iam/apple-touch-icon.png?v=iam-favicon-3">
+    <style>
+      :root {
+        color-scheme: dark;
+        --bg: #050506;
+        --panel: rgba(255, 255, 255, 0.055);
+        --line: rgba(255, 255, 255, 0.13);
+        --text: rgba(255, 255, 255, 0.9);
+        --muted: rgba(255, 255, 255, 0.54);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        min-height: 100%;
+        margin: 0;
+        background: var(--bg);
+        color: var(--text);
+        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      }
+
+      body {
+        padding: clamp(22px, 4vw, 64px);
+      }
+
+      header {
+        display: flex;
+        align-items: baseline;
+        justify-content: space-between;
+        gap: 22px;
+        margin: 0 0 clamp(24px, 4vw, 52px);
+        border-bottom: 1px solid var(--line);
+        padding-bottom: 22px;
+      }
+
+      h1,
+      p {
+        margin: 0;
+      }
+
+      h1 {
+        font-size: clamp(24px, 3vw, 48px);
+        font-weight: 100;
+        letter-spacing: 0;
+        line-height: 1;
+      }
+
+      p,
+      a {
+        color: var(--muted);
+        font-size: 13px;
+        font-weight: 300;
+        line-height: 1.4;
+      }
+
+      a {
+        text-underline-offset: 3px;
+      }
+
+      main {
+        border: 1px solid var(--line);
+        background: var(--panel);
+      }
+
+      pre {
+        margin: 0;
+        overflow: auto;
+        padding: clamp(18px, 3vw, 42px);
+        white-space: pre-wrap;
+      }
+
+      code {
+        color: rgba(255, 255, 255, 0.88);
+        font: 13px/1.58 ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+      }
+
+      @media (max-width: 720px) {
+        body {
+          padding: 18px;
+        }
+
+        header {
+          display: grid;
+        }
+
+        code {
+          font-size: 12px;
+          line-height: 1.5;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div>
+        <p>universalmind / i a m</p>
+        <h1>System Prompt v1.11</h1>
+      </div>
+      <a href="i%20n%20f%20e%20r%20e%20n%20c%20e%20%20e%20n%20g%20i%20n%20e%20%20-%20%20s%20y%20s%20t%20e%20m%20%20p%20r%20o%20m%20p%20t%20%20v%20%201%20.%201%201.md" target="_blank" rel="noopener noreferrer">Raw .md</a>
+    </header>
+
+    <main aria-label="Adaptive Inference Engine System Prompt v1.11 code">
+      <pre><code data-prompt-code>Loading system prompt v1.11...</code></pre>
+    </main>
+
+    <script>
+      (async function () {
+        const code = document.querySelector("[data-prompt-code]");
+        if (!code) return;
+
+        try {
+          const response = await fetch("i%20n%20f%20e%20r%20e%20n%20c%20e%20%20e%20n%20g%20i%20n%20e%20%20-%20%20s%20y%20s%20t%20e%20m%20%20p%20r%20o%20m%20p%20t%20%20v%20%201%20.%201%201.md", {
+            cache: "no-store"
+          });
+
+          if (!response.ok) throw new Error("Prompt unavailable");
+          code.textContent = await response.text();
+        } catch (error) {
+          code.textContent = "Unable to load the system prompt in this browser. Use the Raw .md link above.";
+        }
+      }());
+    </script>
+  </body>
+</html>

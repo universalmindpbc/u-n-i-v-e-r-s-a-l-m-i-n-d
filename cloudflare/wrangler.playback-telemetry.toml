@@ -1,0 +1,8 @@
+name = "iam-playback-telemetry"
+main = "playback-telemetry-worker.js"
+compatibility_date = "2026-07-16"
+workers_dev = true
+
+[observability]
+enabled = true
+head_sampling_rate = 1

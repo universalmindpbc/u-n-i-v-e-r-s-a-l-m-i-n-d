@@ -1,0 +1,509 @@
+import {
+  ADAPTIVE_INFERENCE_SYSTEM_PROMPT,
+  SYSTEM_PROMPT_SHA256,
+  SYSTEM_PROMPT_SOURCE,
+  SYSTEM_PROMPT_VERSION,
+} from "./adaptive-inference-system-prompt-v4-44.js";
+import {
+  ADAPTIVE_SOUNDTRACK_SELECTION_GUIDE,
+  SOUNDTRACK_SELECTION_GUIDE_VERSION,
+} from "./adaptive-soundtrack-selection-guide-v2-22.js";
+
+const DEFAULT_MODEL = "gpt-5.5";
+
+const allowedOrigins = new Set([
+  "https://universalmind.tv",
+  "https://www.universalmind.tv",
+  "http://127.0.0.1:8126",
+  "http://localhost:8126",
+  "http://127.0.0.1:8125",
+  "http://localhost:8125",
+  "http://127.0.0.1:5191",
+  "http://localhost:5191",
+]);
+
+const allowedHighlights = [
+  "Calm",
+  "Hope",
+  "Curiosity",
+  "Gratitude",
+  "Joy",
+  "Love",
+  "Awe",
+  "Purpose",
+  "Self-actualisation",
+  "Fear",
+  "Anxiety",
+  "Anger",
+  "Shame",
+  "Loneliness",
+  "Trust",
+  "Belonging",
+  "Connection",
+  "Empathy",
+  "Psychological Safety",
+  "Self Transcendence",
+  "Attention",
+  "Clarity",
+  "Mental Load",
+  "Rumination",
+  "Motivation",
+  "Executive Function",
+  "Arousal",
+  "Recovery",
+  "Stress",
+  "Sleep Pressure",
+  "Fatigue",
+  "Hypervigilance",
+  "Avoidance",
+  "Intrusions",
+  "Emotional Numbing",
+  "Sleep Disturbance",
+  "Startle Sensitivity",
+];
+
+const allowedSoundtrackStageGates = ["calm", "chill", "house"];
+const allowedLocationPrecisions = ["none", "approximate", "precise"];
+const allowedDomains = ["Emotion", "Social", "Cognitive", "Physiological", "Threat", "Clinical Risk"];
+
+const scorecardDomains = {
+  human_needs_radar: allowedHighlights,
+  maslow_human_needs: [
+    "Physiological Regulation", "Rest", "Shelter", "Safety", "Stability", "Protection",
+    "Belonging", "Love", "Esteem", "Recognition", "Agency", "Self-Actualisation",
+    "Self-Transcendence", "Meaning", "Contribution", "Creative Expression",
+  ],
+  mindfulness_dadirri: [
+    "DM 01 Deep Listening", "DM 02 Presence", "DM 03 Connection to Country", "DM 04 Awareness",
+    "DM 05 Trust", "DM 06 Self Compassion", "DM 07 Integration", "DM 08 Intention",
+    "DM 09 Clarity", "DM 10 Curiosity", "DM 11 Courage", "DM 12 Service",
+    "DM 13 Celebration", "DM 14 Grounded Readiness", "DM 15 Embodied Peace",
+  ],
+  meditative_values_applied: [
+    "MVA 1 Anxiety to Peace Of Mind", "MVA 2 This Too Shall Pass", "MVA 3 Compassion Without Fixing",
+    "MVA 4 Common Humanity via Body", "MVA 5 Awakening the Dreamtime", "MVA 6 Dadirri",
+    "MVA 7 Grounded on Country", "MVA 8 Healing Wisdom of Nature",
+  ],
+  monomyth_hero_journey: [
+    "MM 01 Call To Adventure", "MM 02 Refusal Of The Call", "MM 03 Supernatural Aid Mentor",
+    "MM 04 Crossing First Threshold", "MM 05 Belly Of The Whale", "MM 06 Road Of Trials",
+    "MM 07 Meeting With The Goddess", "MM 08 Temptation Distraction", "MM 09 Atonement With Authority",
+    "MM 10 Apotheosis", "MM 11 Ultimate Boon", "MM 12 Refusal Of The Return", "MM 13 Magic Flight",
+    "MM 14 Rescue From Without", "MM 15 Crossing Return Threshold", "MM 16 Master Of Two Worlds",
+    "MM 17 Freedom To Live",
+  ],
+  memory_state: [
+    "Memory Activation Strength", "Memory Specificity", "Nostalgia Intensity", "Somatic Memory Signal",
+    "Agency After Listening", "Hope After Listening", "Place Memory Relevance", "Relationship Memory Relevance",
+    "Sensory Memory Relevance", "Autobiographical Trigger Relevance", "Cultural Memory Relevance",
+    "Future Memory Seeding",
+  ],
+  mental_health_safety: [
+    "Fear", "Anxiety", "Anger", "Shame", "Loneliness", "Stress", "Rumination", "Hypervigilance",
+    "Avoidance", "Intrusions", "Emotional Numbing", "Sleep Disturbance", "Startle Sensitivity",
+    "Dysregulation", "Grounding Need", "Support Need", "Acute Distress", "Human Review Need",
+    "Window of Tolerance", "Emotional Regulation Need", "Dissociation Risk", "Overwhelm", "Burnout Signal",
+    "Isolation Risk", "Anger Activation", "Grief Activation", "Trauma Sensitivity",
+  ],
+  contextual_modifiers: [
+    "Morning Activation", "Afternoon Sustain", "Evening Downshift", "Night Recovery",
+    "Cold Weather Containment", "Warm Weather Expansion", "Clear Weather Brightness", "Rain Weather Holding",
+    "Urban Density", "Coastal Openness", "Private Space", "Public Space",
+  ],
+};
+
+function scorecardDomainSchema(labels) {
+  return {
+    type: "object",
+    additionalProperties: false,
+    properties: Object.fromEntries(labels.map((label) => [label, {
+      type: "number",
+      minimum: 0,
+      maximum: 1,
+    }])),
+    required: labels,
+  };
+}
+
+const scorecardSchema = {
+  type: "object",
+  additionalProperties: false,
+  properties: Object.fromEntries(
+    Object.entries(scorecardDomains).map(([domain, labels]) => [domain, scorecardDomainSchema(labels)]),
+  ),
+  required: Object.keys(scorecardDomains),
+};
+
+const inferenceInstructions = [
+  ADAPTIVE_INFERENCE_SYSTEM_PROMPT,
+  [
+    "Current live MVP endpoint constraint:",
+    "- Use the short Horizon 1 self-report check-in supplied in this request plus the supplied environment_context JSON.",
+    "- Select exactly four labels from the existing UI radar label list.",
+    "- Also score the complete 144-field needs_scorecard. Every field must be a number from 0.00 to 1.00.",
+    "- Treat needs_scorecard values as present-state relevance signals for adaptive music matching, not as clinical facts.",
+    "- The four highlights remain the hero vectors. They should be the four strongest or most decision-relevant human_needs_radar signals.",
+    "- Select one adaptive soundtrack stage gate: calm, chill, or house.",
+    "- Use calm to downshift threat, stress, overload, fatigue, sleep pressure, rumination, or clinical-risk language.",
+    "- Use chill to hold balanced, reflective, connected, grateful, hopeful, clear, trusting, or awe-based states.",
+    "- Use house to lift joy, motivation, curiosity, agency, self-actualisation, and healthy activation.",
+    "- Treat local time, weather, temperature, and location as adaptive-environment-only modifiers.",
+    "- Environmental context never creates clinical evidence and never overrides citizen self-report.",
+    "- Return top_needs_used, dominant_domains, and context_modifiers_used as the audit trail for soundtrack selection.",
+    `Soundtrack selection JSON guide: ${JSON.stringify(ADAPTIVE_SOUNDTRACK_SELECTION_GUIDE)}`,
+    "- Obey the API-provided strict JSON schema exactly. Do not add, omit, or rename scorecard fields.",
+    "- Treat the output as language-theme mapping for adaptive interface exploration.",
+    "- Do not diagnose, prescribe, claim certainty, or provide clinical advice.",
+  ].join("\n"),
+].join("\n\n");
+
+function corsHeaders(request) {
+  const origin = request.headers.get("Origin");
+  const allowedOrigin = origin && allowedOrigins.has(origin) ? origin : "https://universalmind.tv";
+
+  return {
+    "Access-Control-Allow-Origin": allowedOrigin,
+    "Access-Control-Allow-Methods": "POST, OPTIONS",
+    "Access-Control-Allow-Headers": "Content-Type",
+    "Access-Control-Max-Age": "86400",
+    "Vary": "Origin",
+  };
+}
+
+function jsonResponse(request, status, payload) {
+  return Response.json(payload, {
+    status,
+    headers: {
+      ...corsHeaders(request),
+      "Cache-Control": "no-store",
+    },
+  });
+}
+
+function parseStructuredResponse(payload) {
+  if (typeof payload.output_text === "string" && payload.output_text.trim()) {
+    return JSON.parse(payload.output_text);
+  }
+
+  const textItem = payload.output
+    ?.flatMap((item) => item.content || [])
+    ?.find((content) => content.type === "output_text" && typeof content.text === "string");
+
+  if (textItem?.text) {
+    return JSON.parse(textItem.text);
+  }
+
+  throw new Error("The model response did not include structured text.");
+}
+
+function cleanContextString(value, maxLength = 96) {
+  if (typeof value !== "string") return null;
+  const cleaned = value.trim().replace(/\s+/g, " ");
+  return cleaned ? cleaned.slice(0, maxLength) : null;
+}
+
+function cleanContextNumber(value) {
+  const number = Number(value);
+  return Number.isFinite(number) ? Math.round(number * 10) / 10 : null;
+}
+
+function normalizeEnvironmentContext(value) {
+  const input = value && typeof value === "object" ? value : {};
+  const locationPrecision = cleanContextString(input.location_precision || input.locationPrecision, 24) || "none";
+  const normalized = {
+    local_time: cleanContextString(input.local_time || input.localTime, 32),
+    location_label: cleanContextString(input.location_label || input.locationLabel, 96),
+    location_precision: allowedLocationPrecisions.includes(locationPrecision) ? locationPrecision : "none",
+    location_source: cleanContextString(input.location_source || input.locationSource, 64),
+    weather_condition: cleanContextString(input.weather_condition || input.weatherCondition, 64),
+    temperature_celsius: cleanContextNumber(input.temperature_celsius ?? input.temperatureCelsius),
+    context_available: Boolean(input.context_available ?? input.contextAvailable),
+    context_role: "adaptive_environment_only",
+  };
+
+  normalized.context_available = normalized.context_available ||
+    Boolean(normalized.local_time || normalized.location_label || normalized.weather_condition || normalized.temperature_celsius !== null);
+
+  if (!normalized.location_label) normalized.location_precision = "none";
+
+  return normalized;
+}
+
+function normalizeScore(value) {
+  const number = Number(value);
+  if (!Number.isFinite(number)) return 0;
+  return Math.max(0, Math.min(1, Math.round(number * 100) / 100));
+}
+
+function normalizeNeedsScorecard(value) {
+  const input = value && typeof value === "object" ? value : {};
+  return Object.fromEntries(
+    Object.entries(scorecardDomains).map(([domain, labels]) => {
+      const domainInput = input[domain] && typeof input[domain] === "object" ? input[domain] : {};
+      return [domain, Object.fromEntries(labels.map((label) => [label, normalizeScore(domainInput[label])]))];
+    }),
+  );
+}
+
+function validateInference(result, model) {
+  if (!result || !Array.isArray(result.highlights) || result.highlights.length !== 4) {
+    throw new Error("The model response must include exactly four highlights.");
+  }
+
+  const uniqueHighlights = new Set(result.highlights);
+  if (uniqueHighlights.size !== 4) {
+    throw new Error("The model response must include four unique highlights.");
+  }
+
+  result.highlights.forEach((highlight) => {
+    if (!allowedHighlights.includes(highlight)) {
+      throw new Error(`Unknown radar highlight: ${highlight}`);
+    }
+  });
+
+  const topNeedsUsed = Array.isArray(result.top_needs_used)
+    ? result.top_needs_used.filter((need) => allowedHighlights.includes(need)).slice(0, 4)
+    : result.highlights;
+  const dominantDomains = Array.isArray(result.dominant_domains)
+    ? result.dominant_domains.filter((domain) => allowedDomains.includes(domain)).slice(0, 4)
+    : [];
+  const contextModifiersUsed = Array.isArray(result.context_modifiers_used)
+    ? result.context_modifiers_used
+      .filter((modifier) => typeof modifier === "string" && modifier.trim())
+      .map((modifier) => modifier.trim().replace(/\s+/g, " ").slice(0, 80))
+      .slice(0, 4)
+    : [];
+
+  return {
+    highlights: result.highlights,
+    confidence: typeof result.confidence === "number" ? result.confidence : 0,
+    soundtrack_stage_gate: allowedSoundtrackStageGates.includes(result.soundtrack_stage_gate)
+      ? result.soundtrack_stage_gate
+      : "chill",
+    soundtrack_confidence: typeof result.soundtrack_confidence === "number" ? result.soundtrack_confidence : 0,
+    soundtrack_reason: typeof result.soundtrack_reason === "string" ? result.soundtrack_reason : "",
+    needs_scorecard: normalizeNeedsScorecard(result.needs_scorecard),
+    dominant_domains: dominantDomains,
+    top_needs_used: topNeedsUsed.length ? topNeedsUsed : result.highlights,
+    context_modifiers_used: contextModifiersUsed,
+    uncertainty_notes: Array.isArray(result.uncertainty_notes) ? result.uncertainty_notes.slice(0, 3) : [],
+    human_review_relevance: result.human_review_relevance || "not_indicated",
+    interpretation_type: result.interpretation_type || "language_theme_mapping",
+    clinical_status: "not_a_diagnosis",
+    model,
+    prompt_version: SYSTEM_PROMPT_VERSION,
+    prompt_sha256: SYSTEM_PROMPT_SHA256,
+    prompt_source: SYSTEM_PROMPT_SOURCE,
+    soundtrack_selection_guide_version: SOUNDTRACK_SELECTION_GUIDE_VERSION,
+  };
+}
+
+async function handleInference(request, env) {
+  if (request.method === "OPTIONS") {
+    return new Response(null, {
+      status: 204,
+      headers: corsHeaders(request),
+    });
+  }
+
+  if (request.method !== "POST") {
+    return jsonResponse(request, 405, { error: "Method not allowed." });
+  }
+
+  if (!env.OPENAI_API_KEY) {
+    return jsonResponse(request, 503, { error: "The inference engine is unavailable for this prototype." });
+  }
+
+  let checkin = "";
+  let environmentContext = normalizeEnvironmentContext(null);
+  try {
+    const body = await request.json();
+    checkin = typeof body.checkin === "string" ? body.checkin.trim() : "";
+    environmentContext = normalizeEnvironmentContext(body.environment_context || body.environmentContext || body.context);
+  } catch {
+    return jsonResponse(request, 400, { error: "Invalid JSON request." });
+  }
+
+  if (!checkin || checkin.length > 180) {
+    return jsonResponse(request, 400, { error: "Provide a short I am check-in." });
+  }
+
+  const model = env.OPENAI_INFERENCE_MODEL || DEFAULT_MODEL;
+  const openaiResponse = await fetch("https://api.openai.com/v1/responses", {
+    method: "POST",
+    headers: {
+      Authorization: `Bearer ${env.OPENAI_API_KEY}`,
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      model,
+      store: false,
+      reasoning: {
+        effort: "low",
+      },
+      input: [
+        {
+          role: "system",
+          content: inferenceInstructions,
+        },
+        {
+          role: "user",
+          content: [
+            `Allowed UI radar labels: ${allowedHighlights.join(", ")}`,
+            "Pick exactly four unique labels from that list.",
+            `Needs scorecard domains and fields: ${JSON.stringify(scorecardDomains)}`,
+            "Score every needs_scorecard field from 0.00 to 1.00. Use 0.00 when there is no evidence; use higher scores only when the check-in or adaptive context supports present-state relevance.",
+            "Keep the four highlights aligned with the most salient human_needs_radar scores, but do not hide important lower-level signals from the full scorecard.",
+            `Pick exactly one soundtrack stage gate: ${allowedSoundtrackStageGates.join(", ")}.`,
+            "Use high scores only as stronger present-state relevance, never as diagnosis.",
+            `Environment context JSON: ${JSON.stringify(environmentContext)}`,
+            `Citizen check-in: ${checkin}`,
+          ].join("\n"),
+        },
+      ],
+      text: {
+        format: {
+          type: "json_schema",
+          name: "citizen_needs_language_theme_mapping",
+          strict: true,
+          schema: {
+            type: "object",
+            additionalProperties: false,
+            properties: {
+              highlights: {
+                type: "array",
+                minItems: 4,
+                maxItems: 4,
+                items: {
+                  type: "string",
+                  enum: allowedHighlights,
+                },
+              },
+              confidence: {
+                type: "number",
+                minimum: 0,
+                maximum: 1,
+              },
+              soundtrack_stage_gate: {
+                type: "string",
+                enum: allowedSoundtrackStageGates,
+              },
+              soundtrack_confidence: {
+                type: "number",
+                minimum: 0,
+                maximum: 1,
+              },
+              soundtrack_reason: {
+                type: "string",
+              },
+              needs_scorecard: scorecardSchema,
+              dominant_domains: {
+                type: "array",
+                minItems: 1,
+                maxItems: 4,
+                items: {
+                  type: "string",
+                  enum: allowedDomains,
+                },
+              },
+              top_needs_used: {
+                type: "array",
+                minItems: 1,
+                maxItems: 4,
+                items: {
+                  type: "string",
+                  enum: allowedHighlights,
+                },
+              },
+              context_modifiers_used: {
+                type: "array",
+                minItems: 0,
+                maxItems: 4,
+                items: {
+                  type: "string",
+                },
+              },
+              uncertainty_notes: {
+                type: "array",
+                minItems: 1,
+                maxItems: 3,
+                items: {
+                  type: "string",
+                },
+              },
+              human_review_relevance: {
+                type: "string",
+                enum: [
+                  "not_indicated",
+                  "consider_if_persistent_or_escalating",
+                  "human_review_recommended",
+                  "urgent_human_review",
+                ],
+              },
+              interpretation_type: {
+                type: "string",
+                enum: ["language_theme_mapping"],
+              },
+              clinical_status: {
+                type: "string",
+                enum: ["not_a_diagnosis"],
+              },
+            },
+            required: [
+              "highlights",
+              "confidence",
+              "soundtrack_stage_gate",
+              "soundtrack_confidence",
+              "soundtrack_reason",
+              "needs_scorecard",
+              "dominant_domains",
+              "top_needs_used",
+              "context_modifiers_used",
+              "uncertainty_notes",
+              "human_review_relevance",
+              "interpretation_type",
+              "clinical_status",
+            ],
+          },
+        },
+        verbosity: "low",
+      },
+    }),
+  });
+
+  const payload = await openaiResponse.json();
+  if (!openaiResponse.ok) {
+    console.error("OpenAI inference error:", openaiResponse.status, payload.error?.message || "No error message.");
+    return jsonResponse(request, 502, { error: "The inference engine is unavailable for this prototype." });
+  }
+
+  try {
+    const result = {
+      ...validateInference(parseStructuredResponse(payload), model),
+      environment_context: environmentContext,
+    };
+    console.info("Citizen needs inference QA", {
+      model: result.model,
+      prompt_version: result.prompt_version,
+      prompt_sha256: result.prompt_sha256,
+      highlights: result.highlights,
+      soundtrack_stage_gate: result.soundtrack_stage_gate,
+      human_review_relevance: result.human_review_relevance,
+    });
+    return jsonResponse(request, 200, result);
+  } catch (error) {
+    console.error("Inference validation error:", error.message);
+    return jsonResponse(request, 502, { error: "The inference engine is unavailable for this prototype." });
+  }
+}
+
+export default {
+  async fetch(request, env) {
+    const url = new URL(request.url);
+    if (!url.pathname.endsWith("/citizen-needs-inference")) {
+      return jsonResponse(request, 404, { error: "Not found." });
+    }
+
+    return handleInference(request, env);
+  },
+};

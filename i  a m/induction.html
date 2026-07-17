@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Universal Mind | I Am Induction</title>
+    <link rel="icon" type="image/png" sizes="32x32" href="/vogue/iam/favicon.png?v=iam-favicon-3">
+    <link rel="shortcut icon" type="image/png" href="/vogue/iam/favicon.png?v=iam-favicon-3">
+    <link rel="apple-touch-icon" sizes="180x180" href="/vogue/iam/apple-touch-icon.png?v=iam-favicon-3">
+    <link rel="stylesheet" href="styles.css?v=continuous-media-10">
+    <script>
+      (() => {
+        const cookieName = "universalMindIAmInductionVisits";
+        const maxVisits = 1;
+        const cookieMaxAge = 60 * 60 * 24 * 365;
+        const params = new URLSearchParams(window.location.search);
+        const forceInduction = params.get("induction") === "show";
+
+        const getCookie = (name) => {
+          const value = document.cookie
+            .split("; ")
+            .find((entry) => entry.startsWith(`${name}=`));
+
+          return value ? window.decodeURIComponent(value.split("=").slice(1).join("=")) : "";
+        };
+
+        const setCookie = (name, value) => {
+          document.cookie = `${name}=${window.encodeURIComponent(value)}; max-age=${cookieMaxAge}; path=/; SameSite=Lax`;
+        };
+
+        try {
+          const currentVisits = Number.parseInt(getCookie(cookieName) || "0", 10);
+          const safeVisits = Number.isFinite(currentVisits) && currentVisits > 0 ? currentVisits : 0;
+
+          if (!forceInduction && safeVisits >= maxVisits) {
+            window.location.replace("vogue-self-report.html");
+            return;
+          }
+
+          if (!forceInduction) {
+            setCookie(cookieName, String(safeVisits + 1));
+          }
+        } catch (error) {
+          document.documentElement.dataset.inductionPersistence = "unavailable";
+        }
+      })();
+    </script>
+  </head>
+  <body class="induction-page">
+    <main class="induction-shell" aria-label="Universal Mind I Am induction">
+      <section class="induction-scene" aria-label="I Am portal introduction">
+        <div class="induction-background-video" aria-hidden="true">
+          <video
+            data-stream-file="a s s e t s/Globe Landing Page Video - Sunscreem - Perfection Motion for RMU.mp4"
+            data-stream-reveal="pending"
+            autoplay
+            muted
+            playsinline
+            loop
+            preload="metadata"
+          ></video>
+        </div>
+
+        <div class="induction-black-overlay" aria-hidden="true"></div>
+
+        <div class="induction-content">
+          <header class="induction-response-banner">
+            <p>
+              A Direct Response To Orygen + Phoenix Australia’s
+              <a href="https://www.orygen.org.au/Policy-Centre/Policy-Areas/Population-groups/The-next-post/Orygen_Young_veterans-Policy-paper_Mar2018edition_?ext=.pdf" target="_blank" rel="noreferrer">“The Next Post: Young people transitioning from military service and their mental health”</a>
+            </p>
+          </header>
+
+          <div class="induction-pages">
+            <section class="induction-copy induction-copy--intro" aria-label="Universal Mind I Am introduction">
+              <h1 class="induction-heading">
+                Welcome to Universal Mind and our I Am project. I Am is an invitation to make mental health feel as natural, beautiful and culturally relevant as fashion and music, for young people, primarily aged 16-24.
+              </h1>
+
+              <p>
+                Rather than asking young people to visit another mental health website, I Am brings support into the digital spaces they already love. <strong>Visitors can voluntarily check in using simple self-reporting, unlock exclusive creative experiences, and—only with their permission—receive increasingly personalised content, community and support over time.</strong>
+              </p>
+
+              <p>
+                Behind the experience is a <strong>privacy-first</strong> citizen needs inference engine that combines human self-reporting with modern AI to understand changing needs, not simply detect risk. Every interaction is voluntary, every recommendation is transparent, every conclusion remains uncertain until supported by evidence, and every important decision stays with the human, not the machine.
+              </p>
+
+              <p>
+                <strong>Our ambition is simple: create a world where technology quietly helps people feel more understood, while fashion, music and culture become everyday pathways to better mental health.</strong>
+              </p>
+            </section>
+
+            <section class="induction-copy induction-copy--prototype" aria-label="About this prototype">
+              <h2 class="induction-subheading">
+                — About this prototype —
+              </h2>
+
+              <p>
+                <strong>Universal Mind’s I Am is a transparent piece of technology that integrates with existing youth-focused communities online.</strong> We are not another mental health platform or app. We are the invisible layer that helps already trusted youth communities care for their people — with a deliberate focus on music and fashion culture, industries we have spent our careers helping build.
+              </p>
+
+              <p>
+                <strong>This experience has been designed as a concept demonstration using Vogue as the creative environment, and young female veterans as our primary audience.</strong>
+              </p>
+
+              <p>
+                The same platform can be adapted to trusted publications, broadcasters, artists and public figures — including Vogue, Boiler Room, Carl Cox, Bella Hadid and others within our creative network — where culture becomes a gateway to voluntary mental health support for young veterans, young sufferers of mental illness, and healthy people, together as one.
+              </p>
+
+              <div class="induction-enter-wrap">
+                <a class="induction-enter" href="vogue-self-report.html" aria-label="Enter the I Am portal">enter</a>
+              </div>
+            </section>
+          </div>
+        </div>
+      </section>
+    </main>
+    <script src="cloudflare-stream-catalogue.js?v=stream-catalogue-5"></script>
+    <script src="cloudflare-stream-controller.js?v=stream-controller-8"></script>
+  </body>
+</html>

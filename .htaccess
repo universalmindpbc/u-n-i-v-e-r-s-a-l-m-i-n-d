@@ -1,0 +1,14 @@
+Options -MultiViews
+DirectoryIndex index.html
+
+RewriteEngine On
+
+# Password-free Universal Mind I AM entrypoints.
+RewriteRule ^iam/?$ /vogue/iam/induction.html [R=302,L]
+RewriteRule ^vogue/?$ /vogue/iam/induction.html [R=302,L]
+RewriteRule ^vogue/iam/?$ /vogue/iam/induction.html [R=302,L]
+
+# If a deploy does not contain physical /vogue/iam files, fall back to the local source folder.
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^vogue/iam/(.+)$ /i%20%20a%20m/$1 [B,L]

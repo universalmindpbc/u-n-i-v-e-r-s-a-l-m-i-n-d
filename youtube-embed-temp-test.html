@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>YouTube Embed Temp Test</title>
+  <style>
+    body {
+      margin: 24px;
+      font-family: Arial, sans-serif;
+      background: #f6f6f6;
+      color: #111;
+    }
+
+    h1 {
+      margin: 0 0 20px;
+      font-size: 24px;
+      font-weight: 600;
+    }
+
+    .stack {
+      display: grid;
+      gap: 24px;
+      max-width: 960px;
+    }
+
+    .embed {
+      background: #fff;
+      border: 1px solid #ddd;
+      padding: 16px;
+    }
+
+    h2 {
+      margin: 0 0 12px;
+      font-size: 16px;
+      font-weight: 600;
+    }
+
+    iframe {
+      display: block;
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      border: 0;
+      background: #000;
+    }
+
+    .player {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      background: #000;
+    }
+
+    .status {
+      margin: 10px 0 0;
+      font-size: 13px;
+      color: #444;
+    }
+  </style>
+</head>
+<body>
+  <h1>YouTube Embed Temp Test</h1>
+
+  <main class="stack">
+    <section class="embed">
+      <h2>Techno Llama - Gentle Flowstate Techno For Spaciousness &amp; Energy Renewal</h2>
+      <div id="techno-llama-player" class="player"></div>
+      <p id="techno-llama-status" class="status">Loading YouTube player...</p>
+    </section>
+
+    <section class="embed">
+      <h2>Peggy Gou | Boiler Room x Dekmantel Festival: Amsterdam</h2>
+      <div id="boiler-room-player" class="player"></div>
+      <p id="boiler-room-status" class="status">Loading YouTube player...</p>
+    </section>
+  </main>
+
+  <script src="https://www.youtube.com/iframe_api"></script>
+  <script>
+    const errorLabels = {
+      2: 'Invalid video id',
+      5: 'HTML5 player error',
+      100: 'Video removed or private',
+      101: 'Embedding disabled by owner',
+      150: 'Embedding disabled by owner',
+      153: 'Player configuration / referrer issue'
+    };
+
+    const players = [
+      {
+        id: 'techno-llama-player',
+        statusId: 'techno-llama-status',
+        videoId: 'VmxZesuird0'
+      },
+      {
+        id: 'boiler-room-player',
+        statusId: 'boiler-room-status',
+        videoId: 'nKHpbiYCtDQ'
+      }
+    ];
+
+    function setStatus(statusId, message) {
+      document.getElementById(statusId).textContent = message;
+    }
+
+    window.onYouTubeIframeAPIReady = function () {
+      players.forEach((config) => {
+        new YT.Player(config.id, {
+          videoId: config.videoId,
+          host: 'https://www.youtube.com',
+          playerVars: {
+            origin: window.location.origin,
+            playsinline: 1,
+            rel: 0
+          },
+          events: {
+            onReady: () => setStatus(config.statusId, 'Ready'),
+            onStateChange: (event) => setStatus(config.statusId, `State: ${event.data}`),
+            onError: (event) => {
+              const label = errorLabels[event.data] || 'Unknown error';
+              setStatus(config.statusId, `Error ${event.data}: ${label}`);
+            }
+          }
+        });
+      });
+    };
+  </script>
+</body>
+</html>

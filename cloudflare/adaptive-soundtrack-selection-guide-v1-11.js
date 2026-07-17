@@ -1,0 +1,111 @@
+export const SOUNDTRACK_SELECTION_GUIDE_VERSION = "adaptive_soundtrack_selection_guide_v1.11";
+
+export const ADAPTIVE_SOUNDTRACK_SELECTION_GUIDE = {
+  guide_version: "adaptive_soundtrack_selection_guide_v1.11",
+  source_prompt_version: "adaptive-inference-engine-system-prompt-v1.11",
+  source_prompt: "i  a m/i n f e r e n c e  e n g i n e  -  s y s t e m  p r o m p t  v  1 . 1 1.md",
+  context_rule: "GPT never fetches private context. The application supplies environment_context as adaptive_environment_only data.",
+  inputs: {
+    citizen_checkin: "required",
+    citizen_needs_radar: "use current top highlights and dominant domains when available",
+    environment_context: {
+      local_time: "optional",
+      location_label: "optional privacy-preserving display label",
+      location_precision: "none | approximate | precise",
+      location_source: "optional source label supplied by the application",
+      weather_condition: "optional",
+      temperature_celsius: "optional",
+      context_role: "adaptive_environment_only",
+    },
+  },
+  location_display_hierarchy: {
+    rule: "Use the least precise location label that still supports useful adaptive environment reasoning. Do not convert a timezone city into a claimed user location.",
+    levels: [
+      {
+        input_source: "browser_timezone",
+        display_label_pattern: "{nearest_timezone_city} time",
+        location_precision: "none",
+        gpt_meaning: "time-region cue only; do not infer the citizen is physically in this city",
+        example: {
+          timezone: "Australia/Sydney",
+          location_label: "Sydney time",
+          location_precision: "none",
+        },
+      },
+      {
+        input_source: "coarse_region_or_area",
+        display_label_pattern: "{region_or_area}",
+        location_precision: "approximate",
+        gpt_meaning: "broad environmental context only; useful for tone, density and atmosphere",
+        example: {
+          location_label: "Central Coast, NSW",
+          location_precision: "approximate",
+        },
+      },
+      {
+        input_source: "browser_geolocation_permission",
+        display_label_pattern: "{broad_region} or near {recognisable_place_or_region}",
+        location_precision: "approximate",
+        gpt_meaning: "permissioned approximate place context; never use coordinates, street, address or exact dwelling context",
+        example: {
+          location_label: "Central Coast, NSW",
+          location_precision: "approximate",
+        },
+      },
+      {
+        input_source: "citizen_explicit_location_text",
+        display_label_pattern: "{citizen_supplied_location}",
+        location_precision: "precise",
+        gpt_meaning: "use only when the citizen explicitly provides or confirms the precise label",
+        example: {
+          location_label: "Avoca Beach",
+          location_precision: "precise",
+        },
+      },
+    ],
+    never: [
+      "Never display a timezone fallback as a physical city location.",
+      "Never pass raw coordinates, street address, exact home context or inferred dwelling context to GPT.",
+      "Never let location override citizen self-report, safety, threat load or physiological load.",
+      "Never use location as clinical evidence.",
+    ],
+  },
+  decision_hierarchy: [
+    "safety_and_clinical_risk",
+    "threat_and_physiological_load",
+    "current_emotional_state",
+    "cognitive_readiness",
+    "connection_and_social_context",
+    "growth_purpose_and_activation",
+    "time_weather_and_location_modifiers",
+  ],
+  stage_gates: {
+    calm: {
+      intent: ["downshift", "regulate", "reduce_density", "soften_stimulation"],
+      fit_signals: ["Anxiety", "Stress", "Fatigue", "Hypervigilance", "Sleep Pressure", "Emotional Numbing", "Fear", "Shame", "Startle Sensitivity", "Intrusions"],
+    },
+    chill: {
+      intent: ["stabilise", "soften", "maintain_warmth", "support_balance"],
+      fit_signals: ["Calm", "Gratitude", "Belonging", "Recovery", "Clarity", "Connection", "Hope", "Psychological Safety", "Trust", "Awe"],
+    },
+    house: {
+      intent: ["uplift", "energise", "support_agency", "activate_positive_momentum"],
+      fit_signals: ["Joy", "Motivation", "Curiosity", "Purpose", "Self-Actualisation", "Arousal", "Love", "Connection", "Executive Function"],
+    },
+  },
+  context_modifiers: {
+    time: ["morning_may_support_gentle_activation", "evening_may_support_downshift", "late_night_may_support_calm"],
+    weather: ["clear_may_support_spacious_warm_modes", "rain_may_support_reflective_lower_density_modes", "heat_may_reduce_intensity", "storm_may_favour_regulation"],
+    location: ["coastal_may_support_open_spacious_textures", "city_may_support_kinetic_energy", "travel_may_support_grounding"],
+  },
+  required_audit_fields: [
+    "soundtrack_stage_gate",
+    "soundtrack_confidence",
+    "soundtrack_reason",
+    "dominant_domains",
+    "top_needs_used",
+    "context_modifiers_used",
+    "environment_context",
+  ],
+  safety_note: "Soundtrack is adaptive environment support, not treatment. Context never creates clinical evidence and never overrides citizen self-report.",
+};

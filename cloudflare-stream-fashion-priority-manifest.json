@@ -1,0 +1,33 @@
+{
+  "accountId": "bef34a5ee69678e46332813cb7610012",
+  "createdAt": "2026-07-15T01:53:33.870Z",
+  "files": {
+    "Chanel - Paris 2020.mp4": {
+      "fileName": "Chanel - Paris 2020.mp4",
+      "size": 263243800,
+      "status": "uploaded",
+      "offset": 263243800,
+      "percent": 100,
+      "startedAt": "2026-07-15T01:53:34.673Z",
+      "location": "https://edge-production.gateway.api.cloudflare.com/client/v4/accounts/bef34a5ee69678e46332813cb7610012/media/f6eefc5a83e53f24990a7477ecd04010?tusv2=true",
+      "uid": "f6eefc5a83e53f24990a7477ecd04010",
+      "uploadedAt": "2026-07-15T02:19:50.281Z"
+    },
+    "Dolce & Gabbanna - Sicily 2019.mp4": {
+      "fileName": "Dolce & Gabbanna - Sicily 2019.mp4",
+      "size": 31605787,
+      "status": "uploaded",
+      "offset": 31605787,
+      "percent": 100,
+      "startedAt": "2026-07-15T01:53:34.729Z",
+      "location": "https://edge-production.gateway.api.cloudflare.com/client/v4/accounts/bef34a5ee69678e46332813cb7610012/media/b582b1bff1de6e3952f815b9e2f79ebc?tusv2=true",
+      "uid": "b582b1bff1de6e3952f815b9e2f79ebc",
+      "uploadedAt": "2026-07-15T01:58:23.717Z"
+    }
+  },
+  "expectedFiles": [
+    "Chanel - Paris 2020.mp4",
+    "Dolce & Gabbanna - Sicily 2019.mp4"
+  ],
+  "updatedAt": "2026-07-15T02:19:50.281Z"
+}

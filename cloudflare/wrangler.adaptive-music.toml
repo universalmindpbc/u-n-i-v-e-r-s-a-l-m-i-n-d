@@ -1,0 +1,12 @@
+name = "iam-adaptive-music-intelligence"
+main = "adaptive-music-intelligence-worker.js"
+compatibility_date = "2026-07-04"
+workers_dev = true
+
+# Store API keys as Cloudflare secrets, not in this file:
+# wrangler secret put YOUTUBE_API_KEY --config cloudflare/wrangler.adaptive-music.toml
+# wrangler secret put GRACENOTE_API_KEY --config cloudflare/wrangler.adaptive-music.toml
+# wrangler secret put GRACENOTE_CLIENT_ID --config cloudflare/wrangler.adaptive-music.toml
+# wrangler secret put GRACENOTE_CLIENT_TAG --config cloudflare/wrangler.adaptive-music.toml
+# wrangler secret put CYANITE_ACCESS_TOKEN --config cloudflare/wrangler.adaptive-music.toml
+# wrangler secret put MUSIXMATCH_API_KEY --config cloudflare/wrangler.adaptive-music.toml

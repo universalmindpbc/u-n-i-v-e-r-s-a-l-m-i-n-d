@@ -1,0 +1,132 @@
+{
+  "accountId": "bef34a5ee69678e46332813cb7610012",
+  "createdAt": "2026-07-14T06:15:52.999Z",
+  "files": {
+    " Sasha - Ibiza Boat at Sunset - Freqways.mp4": {
+      "fileName": " Sasha - Ibiza Boat at Sunset - Freqways.mp4",
+      "size": 2755358980,
+      "status": "uploaded",
+      "displayName": "Sasha - Ibiza Boat at Sunset - Freqways.mp4",
+      "offset": 2755358980,
+      "startedAt": "2026-07-15T12:15:57.217Z",
+      "percent": 100,
+      "supersededUploads": [
+        {
+          "uid": "57e5221930c9f915673de09caad2cb21",
+          "location": "https://edge-production.gateway.api.cloudflare.com/client/v4/accounts/bef34a5ee69678e46332813cb7610012/media/57e5221930c9f915673de09caad2cb21?tusv2=true",
+          "offset": 2755358980,
+          "status": "uploaded",
+          "supersededAt": "2026-07-15T12:15:56.555Z"
+        }
+      ],
+      "location": "https://edge-production.gateway.api.cloudflare.com/client/v4/accounts/bef34a5ee69678e46332813cb7610012/media/d328b01e1d577c082facbb65c159b116?tusv2=true",
+      "uid": "d328b01e1d577c082facbb65c159b116",
+      "completedAt": "2026-07-15T13:51:42.049Z",
+      "readyToStream": true,
+      "readyAt": "2026-07-15T13:57:16.708Z"
+    },
+    "Ben Böhmer live - Cappadocia, Turkey - Cercle.mp4": {
+      "fileName": "Ben Böhmer live - Cappadocia, Turkey - Cercle.mp4",
+      "size": 1081745929,
+      "status": "uploaded",
+      "displayName": "Ben Böhmer live - Cappadocia, Turkey - Cercle.mp4",
+      "offset": 1081745929,
+      "startedAt": "2026-07-15T13:57:17.490Z",
+      "percent": 100,
+      "supersededUploads": [
+        {
+          "uid": "4f7feddf5de83c3f6be654ce90b1cc9b",
+          "location": "https://edge-production.gateway.api.cloudflare.com/client/v4/accounts/bef34a5ee69678e46332813cb7610012/media/4f7feddf5de83c3f6be654ce90b1cc9b?tusv2=true",
+          "offset": 1081745929,
+          "status": "uploaded",
+          "supersededAt": "2026-07-15T13:57:16.980Z"
+        }
+      ],
+      "location": "https://edge-production.gateway.api.cloudflare.com/client/v4/accounts/bef34a5ee69678e46332813cb7610012/media/8db5f9511d39139c1f3e0b1dbdda4474?tusv2=true",
+      "uid": "8db5f9511d39139c1f3e0b1dbdda4474",
+      "completedAt": "2026-07-15T14:35:56.291Z",
+      "readyToStream": true,
+      "readyAt": "2026-07-15T14:39:32.803Z"
+    },
+    "Carl Cox - Château de Chambord, France - Cercle.mp4": {
+      "fileName": "Carl Cox - Château de Chambord, France - Cercle.mp4",
+      "size": 3577082380,
+      "status": "uploaded",
+      "location": "https://edge-production.gateway.api.cloudflare.com/client/v4/accounts/bef34a5ee69678e46332813cb7610012/media/6551c49b117a51123ea7909455caa65f?tusv2=true",
+      "uid": "6551c49b117a51123ea7909455caa65f",
+      "displayName": "Carl Cox - Château de Chambord, France - Cercle.mp4",
+      "offset": 3577082380,
+      "startedAt": "2026-07-15T01:55:18.191Z",
+      "percent": 100,
+      "completedAt": "2026-07-15T05:03:51.535Z",
+      "readyToStream": true,
+      "readyAt": "2026-07-15T05:31:49.403Z"
+    },
+    "Miss Monique - Biosphere Museum in Montreal, Canada - Cercle.mp4": {
+      "fileName": "Miss Monique - Biosphere Museum in Montreal, Canada - Cercle.mp4",
+      "size": 3216057635,
+      "status": "uploaded",
+      "location": "https://edge-production.gateway.api.cloudflare.com/client/v4/accounts/bef34a5ee69678e46332813cb7610012/media/2b14fa4819e45f2389e332bcf5da784e?tusv2=true",
+      "uid": "2b14fa4819e45f2389e332bcf5da784e",
+      "displayName": "Miss Monique - Biosphere Museum in Montreal, Canada - Cercle.mp4",
+      "offset": 3216057635,
+      "startedAt": "2026-07-15T01:55:53.444Z",
+      "percent": 100,
+      "completedAt": "2026-07-15T07:31:25.927Z",
+      "readyToStream": true,
+      "readyAt": "2026-07-15T12:11:21.786Z"
+    },
+    "NASTIA - Ibiza at Sunset - The Lab.mp4": {
+      "fileName": "NASTIA - Ibiza at Sunset - The Lab.mp4",
+      "size": 2428631306,
+      "status": "uploaded",
+      "location": "https://edge-production.gateway.api.cloudflare.com/client/v4/accounts/bef34a5ee69678e46332813cb7610012/media/136ec1e0ea6fab6cf3b2823c0f1c91a4?tusv2=true",
+      "uid": "136ec1e0ea6fab6cf3b2823c0f1c91a4",
+      "displayName": "NASTIA - Ibiza at Sunset - The Lab.mp4",
+      "offset": 2428631306,
+      "startedAt": "2026-07-15T02:00:21.396Z",
+      "percent": 100,
+      "completedAt": "2026-07-15T08:53:20.097Z",
+      "readyToStream": true,
+      "readyAt": "2026-07-15T12:11:21.895Z"
+    },
+    "Nina Kraviz - Eiffel Tower, Paris, France - Cercle.mp4": {
+      "fileName": "Nina Kraviz - Eiffel Tower, Paris, France - Cercle.mp4",
+      "size": 3241166870,
+      "status": "uploaded",
+      "location": "https://edge-production.gateway.api.cloudflare.com/client/v4/accounts/bef34a5ee69678e46332813cb7610012/media/ddd5d833455f0710e35b8a7a86cd6479?tusv2=true",
+      "uid": "ddd5d833455f0710e35b8a7a86cd6479",
+      "displayName": "Nina Kraviz - Eiffel Tower, Paris, France - Cercle.mp4",
+      "offset": 3241166870,
+      "startedAt": "2026-07-15T02:00:55.438Z",
+      "percent": 100,
+      "completedAt": "2026-07-15T10:42:18.768Z",
+      "readyToStream": true,
+      "readyAt": "2026-07-15T12:11:21.787Z"
+    },
+    "Peggy Gou - Cercle - Palais des Beaux - Cercle.mp4": {
+      "fileName": "Peggy Gou - Cercle - Palais des Beaux - Cercle.mp4",
+      "size": 2662859149,
+      "status": "uploaded",
+      "location": "https://edge-production.gateway.api.cloudflare.com/client/v4/accounts/bef34a5ee69678e46332813cb7610012/media/deffc6cd21e8ab75deaa6bf01eaf841c?tusv2=true",
+      "uid": "deffc6cd21e8ab75deaa6bf01eaf841c",
+      "displayName": "Peggy Gou - Cercle - Palais des Beaux - Cercle.mp4",
+      "offset": 2662859149,
+      "startedAt": "2026-07-15T02:05:24.606Z",
+      "percent": 100,
+      "completedAt": "2026-07-15T12:11:21.423Z",
+      "readyToStream": true,
+      "readyAt": "2026-07-15T12:15:56.311Z"
+    }
+  },
+  "expectedFiles": [
+    " Sasha - Ibiza Boat at Sunset - Freqways.mp4",
+    "Ben Böhmer live - Cappadocia, Turkey - Cercle.mp4",
+    "Carl Cox - Château de Chambord, France - Cercle.mp4",
+    "Miss Monique - Biosphere Museum in Montreal, Canada - Cercle.mp4",
+    "NASTIA - Ibiza at Sunset - The Lab.mp4",
+    "Nina Kraviz - Eiffel Tower, Paris, France - Cercle.mp4",
+    "Peggy Gou - Cercle - Palais des Beaux - Cercle.mp4"
+  ],
+  "updatedAt": "2026-07-15T14:39:32.803Z"
+}

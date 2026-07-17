@@ -1,0 +1,110 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>YouTube Embed Check</title>
+<style>
+  body { font-family: system-ui, sans-serif; margin: 24px; background: #f6f6f2; color: #171717; }
+  table { border-collapse: collapse; width: 100%; font-size: 13px; }
+  th, td { border: 1px solid #ccc; padding: 6px 8px; vertical-align: top; }
+  th { background: #e8e5dc; text-align: left; }
+  .ready { background: #d8f5dc; }
+  .error { background: #ffd9d4; }
+  .pending { background: #fff4c7; }
+  iframe { width: 320px; height: 180px; border: 0; }
+</style>
+<h1>YouTube Embed Check</h1>
+<table>
+  <thead>
+    <tr>
+      <th>Track</th>
+      <th>Video</th>
+      <th>Status</th>
+      <th>Embed</th>
+    </tr>
+  </thead>
+  <tbody id="rows"></tbody>
+</table>
+<script>
+const videos = [
+  ["Björk - Hyperballad", "6CSiU0j_lFA"],
+  ["Caroline Polachek - Welcome To My Island", "hxgcz_6GKX0"],
+  ["Charli XCX feat. John Cale - House", "Xgp7wlBfASA"],
+  ["Dua Lipa - Be The One", "-rey3m8SWQI"],
+  ["Flume - Never Be Like You Laneway", "vNy-CnyEMoA"],
+  ["Flume feat. Beck - Tiny Cities", "p_6In1gr36A"],
+  ["Grimes - Genesis", "1FH-q0I1fJY"],
+  ["Linkin Park - Numb", "kXYiU_JCYtU"],
+  ["Linkin Park - Numb Live", "7i4s-NXfkPk"],
+  ["Little Simz - Gorilla", "K7xzmkpwNoA"],
+  ["M.I.A. - Borders", "r-Nw7HbaeWY"],
+  ["Madonna - Ray of Light", "x3ov9USxVxY"],
+  ["Madonna - Frozen", "XS088Opj9o0"],
+  ["Nightmares on Wax - Shape the Future", "kG8ESXaR6F0"],
+  ["Nine Inch Nails - Closer Live", "6Q2lkd0fjO8"],
+  ["PinkPantheress - Illegal Glastonbury", "EtKqtlJxcfQ"],
+  ["Rihanna - Diamonds", "lWA2pjMjpBs"],
+  ["Sampa the Great - Final Form", "H2lvgKDpiSA"],
+  ["Sampa the Great - Energy", "dDubhAKSeB0"],
+  ["Solange - Cranes in the Sky", "S0qrinhNnOM"],
+  ["Tame Impala - The Less I Know The Better", "sBzrzS1Ag_g"],
+  ["The Prodigy - Everybody in the Place", "WY87o9IZXWg"],
+  ["U2 - Numb", "N4jR1RNypG0"]
+];
+
+const rows = document.querySelector("#rows");
+const statusById = {};
+
+function setStatus(id, status, detail) {
+  statusById[id] = { status, detail };
+  const cell = document.querySelector(`[data-status-for="${id}"]`);
+  if (cell) {
+    cell.className = status;
+    cell.textContent = detail ? `${status}: ${detail}` : status;
+  }
+}
+
+videos.forEach(([label, id]) => {
+  const tr = document.createElement("tr");
+  tr.innerHTML = `
+    <td>${label}</td>
+    <td><a href="https://www.youtube.com/watch?v=${id}">${id}</a></td>
+    <td data-status-for="${id}" class="pending">pending</td>
+    <td><div id="player-${id}"></div></td>
+  `;
+  rows.appendChild(tr);
+});
+
+window.onYouTubeIframeAPIReady = function () {
+  videos.forEach(([label, id]) => {
+    new YT.Player(`player-${id}`, {
+      videoId: id,
+      width: 320,
+      height: 180,
+      playerVars: { origin: location.origin, playsinline: 1 },
+      events: {
+        onReady: (event) => {
+          setStatus(id, "ready", "player ready");
+          try {
+            event.target.mute();
+            event.target.playVideo();
+          } catch (err) {
+            setStatus(id, "ready", `ready; play call threw ${err.message}`);
+          }
+        },
+        onStateChange: (event) => {
+          if (event.data === YT.PlayerState.PLAYING) setStatus(id, "ready", "muted playback started");
+        },
+        onError: (event) => {
+          const meanings = { 2: "invalid parameter", 5: "html5 error", 100: "not found/private", 101: "embed disabled", 150: "embed disabled" };
+          setStatus(id, "error", `${event.data} ${meanings[event.data] || ""}`.trim());
+        }
+      }
+    });
+  });
+};
+
+window.__embedStatus = statusById;
+
+const api = document.createElement("script");
+api.src = "https://www.youtube.com/iframe_api";
+document.head.appendChild(api);
+</script>

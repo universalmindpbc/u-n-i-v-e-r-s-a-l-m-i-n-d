@@ -1,0 +1,15 @@
+name = "iam-citizen-needs-inference"
+main = "iam-citizen-needs-worker.js"
+compatibility_date = "2026-07-02"
+
+# If universalmind.tv is proxied through Cloudflare, this route lets the
+# static site keep using /api/citizen-needs-inference.
+# routes = [
+#   { pattern = "universalmind.tv/api/citizen-needs-inference", zone_name = "universalmind.tv" }
+# ]
+
+[vars]
+OPENAI_INFERENCE_MODEL = "gpt-5.5"
+
+# Store the API key as a Cloudflare secret, not in this file:
+# wrangler secret put OPENAI_API_KEY

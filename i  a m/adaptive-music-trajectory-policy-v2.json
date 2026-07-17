@@ -1,0 +1,186 @@
+{
+  "schema_version": "adaptive_music_trajectory_policy_v2",
+  "policy_version": "tensor_uplift_rotation_v2",
+  "objective": "Prefer a safe constructive emotional trajectory over repeated emotional mirroring while preserving tensor fit.",
+  "uplift_quota": {
+    "uplift_slots": 10,
+    "window_size": 13,
+    "state_led_slots_zero_indexed": [
+      3,
+      7,
+      11
+    ],
+    "rule": "Uplift is mandatory in ten distributed slots. The remaining three slots are state-led and may still uplift. Acute safety always overrides quota."
+  },
+  "recency": {
+    "history_limit": 13,
+    "hard_track_exclusion_count": 6,
+    "hard_artist_exclusion_count": 2,
+    "relax_only_when_safe_fit_pool_is_exhausted": true
+  },
+  "activation_levels": {
+    "0": "reflective containment",
+    "1": "warmth, connection and gentle activation",
+    "2": "agency, movement and moderate uplift",
+    "3": "high-energy celebration or cathartic activation"
+  },
+  "tracks": {
+    "madonna-frozen": {
+      "mode": "reflective",
+      "activation_level": 0,
+      "counts_as_uplift": false
+    },
+    "madonna-ray-of-light": {
+      "mode": "uplift",
+      "activation_level": 3,
+      "counts_as_uplift": true
+    },
+    "rihanna-diamonds": {
+      "mode": "uplift",
+      "activation_level": 2,
+      "counts_as_uplift": true
+    },
+    "bjork-hyperballad": {
+      "mode": "reflective",
+      "activation_level": 1,
+      "counts_as_uplift": false
+    },
+    "tame-impala-the-less-i-know-the-better": {
+      "mode": "reflective",
+      "activation_level": 0,
+      "counts_as_uplift": false
+    },
+    "flume-tiny-cities": {
+      "mode": "uplift",
+      "activation_level": 1,
+      "counts_as_uplift": true
+    },
+    "flume-never-be-like-you-laneway": {
+      "mode": "reflective",
+      "activation_level": 1,
+      "counts_as_uplift": false
+    },
+    "grimes-genesis": {
+      "mode": "uplift",
+      "activation_level": 2,
+      "counts_as_uplift": true
+    },
+    "solange-cranes-in-the-sky": {
+      "mode": "uplift",
+      "activation_level": 1,
+      "counts_as_uplift": true
+    },
+    "little-simz-gorilla": {
+      "mode": "uplift",
+      "activation_level": 3,
+      "counts_as_uplift": true
+    },
+    "the-prodigy-everybody-in-the-place": {
+      "mode": "uplift",
+      "activation_level": 3,
+      "counts_as_uplift": true
+    },
+    "nightmares-on-wax-shape-the-future": {
+      "mode": "uplift",
+      "activation_level": 1,
+      "counts_as_uplift": true
+    },
+    "mia-borders": {
+      "mode": "uplift",
+      "activation_level": 2,
+      "counts_as_uplift": true
+    },
+    "sampa-the-great-energy": {
+      "mode": "uplift",
+      "activation_level": 2,
+      "counts_as_uplift": true
+    },
+    "sampa-the-great-final-form": {
+      "mode": "uplift",
+      "activation_level": 3,
+      "counts_as_uplift": true
+    },
+    "dua-lipa-be-the-one-glastonbury-2017": {
+      "mode": "uplift",
+      "activation_level": 2,
+      "counts_as_uplift": true
+    },
+    "charli-xcx-house-john-cale": {
+      "mode": "reflective",
+      "activation_level": 1,
+      "counts_as_uplift": false
+    },
+    "pinkpantheress-illegal-glastonbury-2025": {
+      "mode": "uplift",
+      "activation_level": 2,
+      "counts_as_uplift": true
+    },
+    "caroline-polachek-welcome-to-my-island": {
+      "mode": "uplift",
+      "activation_level": 2,
+      "counts_as_uplift": true
+    },
+    "u2-numb": {
+      "mode": "reflective",
+      "activation_level": 0,
+      "counts_as_uplift": false
+    },
+    "linkin-park-numb-official": {
+      "mode": "reflective",
+      "activation_level": 1,
+      "counts_as_uplift": false
+    },
+    "linkin-park-numb-live-2024": {
+      "mode": "reflective",
+      "activation_level": 1,
+      "counts_as_uplift": false
+    },
+    "nine-inch-nails-closer-glastonbury-2026": {
+      "mode": "restricted",
+      "activation_level": 3,
+      "counts_as_uplift": false
+    },
+    "sasha-ibiza-boat-at-sunset-freqways": {
+      "mode": "uplift",
+      "activation_level": 2,
+      "counts_as_uplift": true,
+      "media_class": "long_form_dj_set"
+    },
+    "ben-bohmer-cappadocia-cercle": {
+      "mode": "uplift",
+      "activation_level": 1,
+      "counts_as_uplift": true,
+      "media_class": "long_form_dj_set"
+    },
+    "peggy-gou-palais-des-beaux-arts-cercle": {
+      "mode": "uplift",
+      "activation_level": 3,
+      "counts_as_uplift": true,
+      "media_class": "long_form_dj_set"
+    },
+    "miss-monique-biosphere-montreal-cercle": {
+      "mode": "uplift",
+      "activation_level": 3,
+      "counts_as_uplift": true,
+      "media_class": "long_form_dj_set"
+    },
+    "nina-kraviz-eiffel-tower-cercle": {
+      "mode": "restricted",
+      "activation_level": 3,
+      "counts_as_uplift": false,
+      "media_class": "long_form_dj_set"
+    },
+    "nastia-drum-bass-sunset-the-lab-ibiza": {
+      "mode": "uplift",
+      "activation_level": 3,
+      "counts_as_uplift": true,
+      "media_class": "long_form_dj_set"
+    },
+    "carl-cox-chateau-de-chambord-cercle": {
+      "mode": "uplift",
+      "activation_level": 3,
+      "counts_as_uplift": true,
+      "media_class": "long_form_dj_set"
+    }
+  }
+}

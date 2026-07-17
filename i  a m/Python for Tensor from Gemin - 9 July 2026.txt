@@ -1,0 +1,177 @@
+import numpy as np
+
+# Canonical Ordering for the 144-dimensional vector space mapping
+RADAR_DOMAINS = ["Emotion", "Social", "Cognitive", "Physiological", "Threat", "Clinical Risk"]
+RADAR_SCHEMA = {
+    "Emotion": ["Joy", "Calm", "Hope", "Curiosity", "Gratitude", "Awe", "Love", "Self-Actualisation"],
+    "Social": ["Trust", "Belonging", "Connection", "Empathy", "Psychological Safety", "Self-Transcendence"],
+    "Cognitive": ["Attention", "Mental Load", "Rumination", "Motivation", "Executive Function", "Clarity"],
+    "Physiological": ["Stress", "Recovery", "Sleep Pressure", "Fatigue", "Arousal"],
+    "Threat": ["Fear", "Anxiety", "Anger", "Shame", "Loneliness"],
+    "Clinical Risk": ["Hypervigilance", "Avoidance", "Intrusions", "Emotional Numbing", "Sleep Disturbance", "Startle Sensitivity"]
+}
+
+# Section 3: Structural Trajectory Translation Rules Mapping Matrix (Page 3-4)
+TRAJECTORY_TARGETS = {
+    "Anger": ["Motivation", "Executive Function", "Clarity", "Self-Actualisation"], # Transmutes to Agency/Dignity
+    "Heartbreak": ["Belonging", "Connection", "Trust", "Hope"],
+    "Numbness": ["Clarity", "Attention", "Arousal", "Connection"],
+    "Anxiety": ["Calm", "Psychological Safety", "Clarity", "Trust"],
+    "Loneliness": ["Belonging", "Connection", "Love", "Gratitude"],
+    "Shame": ["Psychological Safety", "Trust", "Self-Actualisation", "Love"],
+    "Low agency": ["Motivation", "Executive Function", "Purpose", "Hope"],
+    "Creative blockage": ["Curiosity", "Awe", "Self-Actualisation", "Joy"],
+    "Fatigue": ["Recovery", "Calm", "Psychological Safety"],
+    "Overstimulation": ["Calm", "Psychological Safety", "Recovery"],
+    "Flatness": ["Joy", "Curiosity", "Connection", "Arousal"]
+}
+
+def vectorise_state(needs_profile):
+    """Flattens nested dicts into a strict continuous float index array."""
+    vector = []
+    for domain in RADAR_DOMAINS:
+        sub_dict = needs_profile.get(domain, {})
+        for key in RADAR_SCHEMA[domain]:
+            vector.append(sub_dict.get(key, 0.0))
+    return np.array(vector)
+
+def execute_v1_11_selection(v444_input, v111_catalogue_json):
+    """
+    Executes an interpretative vector selection balancing safety, need fit, 
+    and target trajectory paths as dictated by the Universal Mind subprompt doctrine.
+    """
+    # Parse incoming v4.44 components
+    citizen_checkin = v444_input.get("interpretation_summary", "")
+    radar_scores = v444_input.get("citizen_needs", {})
+    top_highlights = v444_input.get("top_highlights", [])
+    env_context = v444_input.get("environment_context", {})
+    
+    user_vector = vectorise_state(radar_scores)
+    flat_keys_ordered = [k for d in RADAR_DOMAINS for k in RADAR_SCHEMA[d]]
+    
+    # Check for hard absolute red-zones from Safety Doctrine (Page 6)
+    clinical_risk = radar_scores.get("Clinical Risk", {})
+    threat_metrics = radar_scores.get("Threat", {})
+    
+    is_acute_distress = (
+        clinical_risk.get("Intrusions", 0.0) > 0.75 or 
+        threat_metrics.get("Anxiety", 0.0) > 0.85 or
+        v444_input.get("adaptive_support_relevance", {}).get("level") in ["high", "urgent"]
+    )
+
+    scored_candidates = []
+
+    # Process and evaluate every track inside the approved v1.11 JSON database
+    for track in v111_catalogue_json:
+        # Field Bible safety and rule cross-checking (Pages 10-11)
+        suitability = track.get("suitability", {})
+        not_suitable_states = suitability.get("not_suitable_citizen_state", "")
+        
+        # Absolute Safety Veto Check
+        safety_veto = False
+        if is_acute_distress:
+            # Drop tracks designated as intensely heavy or red-zone matching
+            if track.get("title") in ["Closer", "Numb (Official Music Video / 4K Upgrade)"]:
+                safety_veto = True
+                
+        for highlight in top_highlights:
+            if highlight in not_suitable_states:
+                safety_veto = True
+                break
+                
+        if safety_veto:
+            continue # Force-drops the index; Editorial safety wins over score (Page 11)
+
+        # 1. NEED FIT SCORING (Weight: 0.30)
+        song_vector = vectorise_state(track.get("citizen_needs_scores", {}))
+        
+        # Calculate localized Cosine Similarity for basic tracking matching
+        dot = np.dot(song_vector, user_vector)
+        norm_s = np.linalg.norm(song_vector)
+        norm_u = np.linalg.norm(user_vector)
+        base_need_score = dot / (norm_s * norm_u) if (norm_s and norm_u) else 0.0
+        
+        # 2. TRAJECTORY SCORING (Weight: 0.22)
+        # Instead of mirroring, reward tracks that inject target medicine elements
+        trajectory_score = 0.0
+        active_trajectories_calculated = 0
+        
+        for highlight in top_highlights:
+            # If the user has a flared state, pull target trajectory goals
+            lookup_key = highlight.lower().replace("_", " ")
+            # Normalize dictionary mapping reads
+            matched_key = next((k for k in TRAJECTORY_TARGETS if k.lower() in lookup_key), None)
+            
+            if matched_key:
+                active_trajectories_calculated += 1
+                targets = TRAJECTORY_TARGETS[matched_key]
+                # Check how strongly the song features the solution states
+                song_sub_scores = [track.get("citizen_needs_scores", {}).get(d, {}).get(t, 0.0) 
+                                   for d in RADAR_DOMAINS for t in RADAR_SCHEMA[d] if t in targets]
+                trajectory_score += np.mean(song_sub_scores) if song_sub_scores else 0.0
+                
+        if active_trajectories_calculated > 0:
+            trajectory_score /= active_trajectories_calculated
+
+        # 3. CONTEXT MODIFIERS (Weight: 0.06) (Page 22-23)
+        context_score = 0.5
+        local_time = env_context.get("local_time", "")
+        selected_mode = track.get("radio_handoff", {}).get("station", "Chill")
+        
+        if local_time and "pm" in local_time.lower():
+            # Evening context rewards Calm handoffs and penalizes intense arousal tracks
+            if selected_mode == "Calm":
+                context_score += 0.25
+            elif selected_mode == "House":
+                context_score -= 0.25
+
+        # Consolidate unified balancing metric formula matrix
+        unified_score = (
+            (0.22 * 1.0) +  # Safety verified candidate placeholder
+            (0.30 * base_need_score) + 
+            (0.22 * trajectory_score) + 
+            (0.10 * 0.8) +  # Standard presentation normalization
+            (0.06 * context_score)
+        )
+        
+        scored_candidates.append((unified_score, track))
+
+    # Sort descending based on our integrated forcing function weights
+    scored_candidates.sort(key=lambda x: x[0], reverse=True)
+    
+    if not scored_candidates:
+        return {"error": "No tracks cleared current safety criteria pipelines."}
+        
+    best_score, final_track = scored_candidates[0]
+    
+    # Render final Output Contract block exactly as specified on Page 31
+    return {
+        "schema_version": "adaptive_music_video_selection_v1.11",
+        "selected_track_id": final_track.get("song_id", "unknown"),
+        "artist": final_track.get("artist"),
+        "title": final_track.get("title"),
+        "presentation": "Live Edition" if "live" in final_track.get("title", "").lower() else "Studio Version",
+        "local_video_file": f"/assets/video/{final_track.get('song_id')}.mp4",
+        "youtube_id": final_track.get("source_ids", {}).get("youtube_video_id"),
+        "confidence": int(best_score * 100),
+        "why_this_video": final_track.get("editorial", {}).get("why_this_track", ""),
+        "citizen_needs_used": top_highlights,
+        "trajectory": final_track.get("lyrical_interpretation", {}).get("lyric_emotional_trajectory", "stabilise"),
+        "primary_environmental_function": final_track.get("primary_environment_function"),
+        "radio_handoff": {
+            "station": final_track.get("lambda_cache_preset", {}).get("preset_key", "chill"),
+            "why_this_handoff": f"Seamless transition targeting {final_track.get('artist')} residual state tracking."
+        },
+        "safety": {
+            "support_card_required": "linkin park" in final_track.get("artist", "").lower() or "closer" in final_track.get("title", "").lower(),
+            "age_gate_required": "closer" in final_track.get("title", "").lower(),
+            "avoid_for_acute_distress": "closer" in final_track.get("title", "").lower(),
+            "sensitive_use_note": final_track.get("suitability", {}).get("sensitive_audience_use_notes", "")
+        },
+        "audit": {
+            "catalogue_version": "adaptive_music_video_catalogue_v1.11",
+            "source": "Ben Gold Standard V1.11",
+            "not_a_diagnosis": True,
+            "human_review_required": is_acute_distress
+        }
+    }

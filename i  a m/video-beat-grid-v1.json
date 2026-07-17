@@ -1,0 +1,401 @@
+{
+  "version": "video_beat_grid_v1",
+  "tracks": [
+    {
+      "bpm": 134.0,
+      "first_beat_seconds": 8.699,
+      "first_downbeat_seconds": 9.595,
+      "beats_per_bar": 4,
+      "analysis_confidence": 0.377,
+      "file": "Björk - Hyperballad.mp4",
+      "duration_seconds": 239.375,
+      "analysis_version": "local_spectral_flux_v2_canonical_tempo",
+      "estimated_bpm": 135.463,
+      "tempo_candidates_bpm": [
+        135.999,
+        89.103,
+        92.285,
+        129.199,
+        107.666
+      ]
+    },
+    {
+      "bpm": 140.0,
+      "first_beat_seconds": 22.054,
+      "first_downbeat_seconds": 45.197,
+      "beats_per_bar": 4,
+      "analysis_confidence": 0.389,
+      "file": "Caroline Polachek - Welcome To My Island.mp4",
+      "duration_seconds": 236.217,
+      "analysis_version": "local_spectral_flux_v2_canonical_tempo",
+      "estimated_bpm": 117.728,
+      "tempo_candidates_bpm": [
+        117.454,
+        78.303,
+        123.047,
+        112.347,
+        161.499
+      ]
+    },
+    {
+      "bpm": 131.525,
+      "first_beat_seconds": 22.948,
+      "first_downbeat_seconds": 23.86,
+      "beats_per_bar": 4,
+      "analysis_confidence": 0.417,
+      "file": "Charli XCX - House featuring John Cale.mp4",
+      "duration_seconds": 196.139,
+      "analysis_version": "local_spectral_flux_v2_canonical_tempo",
+      "estimated_bpm": 131.525,
+      "tempo_candidates_bpm": [
+        129.199,
+        135.999,
+        143.555,
+        123.047,
+        151.999
+      ]
+    },
+    {
+      "bpm": 87.0,
+      "first_beat_seconds": 1.976,
+      "first_downbeat_seconds": 44.735,
+      "beats_per_bar": 4,
+      "analysis_confidence": 0.442,
+      "file": "Dua Lipa - Be The One.mp4",
+      "duration_seconds": 209.421,
+      "analysis_version": "local_spectral_flux_v2_canonical_tempo",
+      "estimated_bpm": 87.384,
+      "tempo_candidates_bpm": [
+        86.133,
+        89.103,
+        172.266,
+        117.454,
+        69.837
+      ]
+    },
+    {
+      "bpm": 119.0,
+      "first_beat_seconds": 46.103,
+      "first_downbeat_seconds": 46.607,
+      "beats_per_bar": 4,
+      "analysis_confidence": 0.411,
+      "file": "Flume - Never Be Like You feat. Kai [ Live at Laneway Festival ].mp4",
+      "duration_seconds": 336.898,
+      "analysis_version": "local_spectral_flux_v2_canonical_tempo",
+      "estimated_bpm": 118.802,
+      "tempo_candidates_bpm": [
+        117.454,
+        123.047,
+        80.75,
+        78.303,
+        83.354
+      ]
+    },
+    {
+      "bpm": 71.0,
+      "first_beat_seconds": 3.479,
+      "first_downbeat_seconds": 29.676,
+      "beats_per_bar": 4,
+      "analysis_confidence": 1.0,
+      "file": "Flume - Tiny Cities feat. Beck.mp4",
+      "duration_seconds": 236.658,
+      "analysis_version": "local_spectral_flux_v2_canonical_tempo",
+      "estimated_bpm": 71.148,
+      "tempo_candidates_bpm": [
+        71.777,
+        69.837,
+        143.555,
+        73.828,
+        135.999
+      ]
+    },
+    {
+      "bpm": 166.0,
+      "first_beat_seconds": 76.609,
+      "first_downbeat_seconds": 78.778,
+      "beats_per_bar": 4,
+      "analysis_confidence": 1.0,
+      "file": "Grimes - Genesis.mp4",
+      "duration_seconds": 332.44,
+      "analysis_version": "local_spectral_flux_v2_canonical_tempo",
+      "estimated_bpm": 83.121,
+      "tempo_candidates_bpm": [
+        83.354,
+        161.499,
+        172.266,
+        80.75,
+        112.347
+      ]
+    },
+    {
+      "bpm": 110.0,
+      "first_beat_seconds": 10.694,
+      "first_downbeat_seconds": 11.24,
+      "beats_per_bar": 4,
+      "analysis_confidence": 1.0,
+      "file": "Linkin Park - Numb (Live, 2024).mp4",
+      "duration_seconds": 192.261,
+      "analysis_version": "local_spectral_flux_v2_canonical_tempo",
+      "estimated_bpm": 73.503,
+      "tempo_candidates_bpm": [
+        73.828,
+        107.666,
+        112.347,
+        143.555,
+        71.777
+      ]
+    },
+    {
+      "bpm": 110.0,
+      "first_beat_seconds": 5.426,
+      "first_downbeat_seconds": 15.789,
+      "beats_per_bar": 4,
+      "analysis_confidence": 1.0,
+      "file": "Linkin Park - Numb.mp4",
+      "duration_seconds": 187.199,
+      "analysis_version": "local_spectral_flux_v2_canonical_tempo",
+      "estimated_bpm": 110.265,
+      "tempo_candidates_bpm": [
+        112.347,
+        107.666,
+        73.828,
+        143.555,
+        151.999
+      ]
+    },
+    {
+      "bpm": 90.0,
+      "first_beat_seconds": 0.481,
+      "first_downbeat_seconds": 1.148,
+      "beats_per_bar": 4,
+      "analysis_confidence": 0.368,
+      "file": "Little Simz - Gorilla.mp4",
+      "duration_seconds": 244.645,
+      "analysis_version": "local_spectral_flux_v2_canonical_tempo",
+      "estimated_bpm": 181.339,
+      "tempo_candidates_bpm": [
+        184.57,
+        92.285,
+        89.103,
+        172.266,
+        95.703
+      ]
+    },
+    {
+      "bpm": 89.0,
+      "first_beat_seconds": 43.553,
+      "first_downbeat_seconds": 45.575,
+      "beats_per_bar": 4,
+      "analysis_confidence": 1.0,
+      "file": "M.I.A. - Borders.mp4",
+      "duration_seconds": 282.842,
+      "analysis_version": "local_spectral_flux_v2_canonical_tempo",
+      "estimated_bpm": 89.016,
+      "tempo_candidates_bpm": [
+        89.103,
+        172.266,
+        184.57,
+        86.133,
+        92.285
+      ]
+    },
+    {
+      "bpm": 108.0,
+      "first_beat_seconds": 36.128,
+      "first_downbeat_seconds": 54.462,
+      "beats_per_bar": 4,
+      "analysis_confidence": 1.0,
+      "file": "Madonna - Frozen.mp4",
+      "duration_seconds": 329.05,
+      "analysis_version": "local_spectral_flux_v2_canonical_tempo",
+      "estimated_bpm": 107.86,
+      "tempo_candidates_bpm": [
+        107.666,
+        71.777,
+        143.555,
+        73.828,
+        86.133
+      ]
+    },
+    {
+      "bpm": 128.0,
+      "first_beat_seconds": 16.725,
+      "first_downbeat_seconds": 17.193,
+      "beats_per_bar": 4,
+      "analysis_confidence": 0.394,
+      "file": "Madonna - Ray Of Light.mp4",
+      "duration_seconds": 307.154,
+      "analysis_version": "local_spectral_flux_v2_canonical_tempo",
+      "estimated_bpm": 127.825,
+      "tempo_candidates_bpm": [
+        129.199,
+        86.133,
+        83.354,
+        123.047,
+        135.999
+      ]
+    },
+    {
+      "bpm": 116.584,
+      "first_beat_seconds": 28.196,
+      "first_downbeat_seconds": 47.238,
+      "beats_per_bar": 4,
+      "analysis_confidence": 0.414,
+      "file": "Nightmares On Wax - Shape The Future.mp4",
+      "duration_seconds": 247.548,
+      "analysis_version": "local_spectral_flux_v2_canonical_tempo",
+      "estimated_bpm": 116.584,
+      "tempo_candidates_bpm": [
+        117.454,
+        112.347,
+        123.047,
+        69.837,
+        172.266
+      ]
+    },
+    {
+      "bpm": 141.0,
+      "first_beat_seconds": 6.43,
+      "first_downbeat_seconds": 8.557,
+      "beats_per_bar": 4,
+      "analysis_confidence": 0.429,
+      "file": "PinkPantheress - Illegal ( Live at Glastonbury).mp4",
+      "duration_seconds": 141.224,
+      "analysis_version": "local_spectral_flux_v2_canonical_tempo",
+      "estimated_bpm": 69.837,
+      "tempo_candidates_bpm": [
+        69.837,
+        71.777,
+        143.555,
+        135.999,
+        95.703
+      ]
+    },
+    {
+      "bpm": 92.0,
+      "first_beat_seconds": 22.523,
+      "first_downbeat_seconds": 49.915,
+      "beats_per_bar": 4,
+      "analysis_confidence": 1.0,
+      "file": "Rihanna - Diamonds.mp4",
+      "duration_seconds": 282.912,
+      "analysis_version": "local_spectral_flux_v2_canonical_tempo",
+      "estimated_bpm": 92.084,
+      "tempo_candidates_bpm": [
+        92.285,
+        89.103,
+        184.57,
+        95.703,
+        123.047
+      ]
+    },
+    {
+      "bpm": 90.0,
+      "first_beat_seconds": 14.371,
+      "first_downbeat_seconds": 16.371,
+      "beats_per_bar": 4,
+      "analysis_confidence": 1.0,
+      "file": "Sampa The Great - Energy (feat. Nadeem Din-Gabisi).mp4",
+      "duration_seconds": 308.013,
+      "analysis_version": "local_spectral_flux_v2_canonical_tempo",
+      "estimated_bpm": 89.765,
+      "tempo_candidates_bpm": [
+        89.103,
+        92.285,
+        184.57,
+        117.454,
+        172.266
+      ]
+    },
+    {
+      "bpm": 96.0,
+      "first_beat_seconds": 0.619,
+      "first_downbeat_seconds": 0.619,
+      "beats_per_bar": 4,
+      "analysis_confidence": 1.0,
+      "file": "Sampa The Great - Final Form.mp4",
+      "duration_seconds": 215.086,
+      "analysis_version": "local_spectral_flux_v2_canonical_tempo",
+      "estimated_bpm": 95.839,
+      "tempo_candidates_bpm": [
+        95.703,
+        184.57,
+        99.384,
+        92.285,
+        172.266
+      ]
+    },
+    {
+      "bpm": 97.0,
+      "first_beat_seconds": 0.081,
+      "first_downbeat_seconds": 0.081,
+      "beats_per_bar": 4,
+      "analysis_confidence": 1.0,
+      "file": "Solange - Cranes in the Sky.mp4",
+      "duration_seconds": 272.277,
+      "analysis_version": "local_spectral_flux_v2_canonical_tempo",
+      "estimated_bpm": 131.825,
+      "tempo_candidates_bpm": [
+        129.199,
+        135.999,
+        95.703,
+        99.384,
+        184.57
+      ]
+    },
+    {
+      "bpm": 117.0,
+      "first_beat_seconds": 41.871,
+      "first_downbeat_seconds": 41.871,
+      "beats_per_bar": 4,
+      "analysis_confidence": 1.0,
+      "file": "Tame Impala - The Less I Know The Better.mp4",
+      "duration_seconds": 342.889,
+      "analysis_version": "local_spectral_flux_v2_canonical_tempo",
+      "estimated_bpm": 117.108,
+      "tempo_candidates_bpm": [
+        117.454,
+        112.347,
+        123.047,
+        78.303,
+        76.0
+      ]
+    },
+    {
+      "bpm": 183.727,
+      "first_beat_seconds": 7.785,
+      "first_downbeat_seconds": 8.765,
+      "beats_per_bar": 4,
+      "analysis_confidence": 0.36,
+      "file": "The Prodigy - Everybody In The Place.mp4",
+      "duration_seconds": 231.108,
+      "analysis_version": "local_spectral_flux_v2_canonical_tempo",
+      "estimated_bpm": 183.727,
+      "tempo_candidates_bpm": [
+        184.57,
+        107.666,
+        69.837,
+        135.999,
+        112.347
+      ]
+    },
+    {
+      "bpm": 90.0,
+      "first_beat_seconds": 1.762,
+      "first_downbeat_seconds": 2.429,
+      "beats_per_bar": 4,
+      "analysis_confidence": 0.496,
+      "file": "U2 - Numb.mp4",
+      "duration_seconds": 260.458,
+      "analysis_version": "local_spectral_flux_v2_canonical_tempo",
+      "estimated_bpm": 90.048,
+      "tempo_candidates_bpm": [
+        89.103,
+        184.57,
+        92.285,
+        172.266,
+        123.047
+      ]
+    }
+  ]
+}

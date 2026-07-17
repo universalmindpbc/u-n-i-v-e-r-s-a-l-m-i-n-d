@@ -1,0 +1,27 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+NODE_BIN="${NODE_BIN:-}"
+
+if [[ -z "$NODE_BIN" ]]; then
+  if command -v node >/dev/null 2>&1; then
+    NODE_BIN="$(command -v node)"
+  elif [[ -x "/Users/benkorbel/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/bin/node" ]]; then
+    NODE_BIN="/Users/benkorbel/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/bin/node"
+  else
+    echo "Node.js is required for the staging preflight checks." >&2
+    exit 1
+  fi
+fi
+
+"$NODE_BIN" --check "$ROOT_DIR/i  a m/adaptive-environment-television.js"
+"$NODE_BIN" "$ROOT_DIR/tools/check-adaptive-music-handoff.mjs"
+
+export FTP_HOST="${FTP_HOST:-sh00023.pa.smartservers.com.au}"
+export FTP_USER="${FTP_USER:-stagingdeploy@universalmind.tv}"
+export FTP_PASS_FILE="${FTP_PASS_FILE:-/private/tmp/um-staging-ftp-pass.txt}"
+export REMOTE_ROOT=""
+export MANIFEST_FILE="${MANIFEST_FILE:-$ROOT_DIR/.panthur-staging-deploy-manifest.tsv}"
+
+exec "$ROOT_DIR/deploy-panthurlive.sh" "${1:-all-changed}"

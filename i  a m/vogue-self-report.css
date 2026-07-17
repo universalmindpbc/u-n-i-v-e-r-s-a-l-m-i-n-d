@@ -1,0 +1,1045 @@
+:root {
+  color-scheme: dark;
+  --white: #fff;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  width: 100%;
+  min-height: 100%;
+  margin: 0;
+  background: #030403;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+body {
+  overflow: hidden;
+}
+
+.vogue-report-page {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 100vw;
+  min-height: 100svh;
+  overflow: hidden;
+  color: var(--white);
+  isolation: isolate;
+}
+
+.vogue-cover-layer,
+.vogue-video-layer,
+.vogue-video-layer video,
+.vogue-page-shade {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.vogue-cover-layer {
+  z-index: 0;
+  object-fit: cover;
+  object-position: center;
+}
+
+.vogue-video-layer {
+  z-index: 1;
+  opacity: 0.44;
+  mix-blend-mode: screen;
+}
+
+.vogue-video-layer video {
+  object-fit: cover;
+  object-position: center;
+}
+
+.vogue-video-layer video[data-stream-reveal] {
+  opacity: 0;
+  transition: opacity 900ms cubic-bezier(0.22, 1, 0.36, 1) var(--stream-reveal-delay, 180ms);
+  will-change: opacity;
+}
+
+.vogue-video-layer video[data-stream-reveal="ready"] {
+  opacity: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .vogue-video-layer video[data-stream-reveal] {
+    transition-duration: 1ms;
+    transition-delay: 0ms;
+  }
+}
+
+.vogue-page-shade {
+  z-index: 2;
+  background:
+    linear-gradient(90deg, rgba(0, 0, 0, 0.28), rgba(0, 0, 0, 0.02) 46%, rgba(0, 0, 0, 0.26)),
+    linear-gradient(180deg, rgba(0, 0, 0, 0.18), rgba(0, 0, 0, 0.02) 48%, rgba(0, 0, 0, 0.28));
+  pointer-events: none;
+}
+
+.vogue-report-lockup {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  z-index: 4;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: min(1260px, calc(100vw - 40px));
+  padding-top: clamp(10px, 1.1vh, 18px);
+  text-align: center;
+  transform: translateX(-50%);
+}
+
+.vogue-logo {
+  display: block;
+  width: min(1050px, 56vw);
+  height: auto;
+  filter: brightness(0) invert(1);
+}
+
+.vogue-url {
+  margin: clamp(5px, 0.6vh, 10px) 0 0;
+  color: rgba(255, 255, 255, 0.96);
+  font-size: clamp(32px, 4.42vw, 65px);
+  font-weight: 300;
+  line-height: 0.98;
+  letter-spacing: 0;
+}
+
+.vogue-url strong {
+  font-weight: 700;
+}
+
+.vogue-checkin-stage {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: min(640px, 48vw);
+  min-height: clamp(145px, 22vh, 260px);
+  margin-top: clamp(18px, 3.2vh, 46px);
+}
+
+.vogue-flora {
+  position: absolute;
+  z-index: 0;
+  width: min(390px, 27vw);
+  opacity: 0.65;
+  filter: saturate(1.05);
+  transform: translateY(9%);
+}
+
+.vogue-iam-form {
+  position: relative;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(24px, 2.1vw, 34px);
+  margin: 0;
+  border: 0;
+  background: transparent;
+  color: rgba(255, 255, 255, 0.96);
+  font-size: clamp(30px, 2.86vw, 42px);
+  font-style: italic;
+  font-weight: 700;
+  line-height: 1;
+  text-shadow: 0 2px 13px rgba(0, 0, 0, 0.42);
+}
+
+.iam-joining-loader {
+  position: absolute;
+  left: 50%;
+  top: calc(50% + clamp(45px, 4.4vw, 57px));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  width: 88px;
+  height: 22px;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateX(-50%) translateY(5px);
+  transition: transform 260ms ease;
+}
+
+.iam-joining-loader span {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.94);
+  box-shadow: 0 0 14px rgba(255, 255, 255, 0.48);
+  animation: iam-joining-pulse 1050ms ease-in-out infinite;
+}
+
+.iam-joining-loader span:nth-child(2) { animation-delay: 140ms; }
+.iam-joining-loader span:nth-child(3) { animation-delay: 280ms; }
+
+.vogue-iam-form[data-state="joining"] + .iam-joining-loader {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+.vogue-iam-form[data-state="joining"] + .iam-joining-loader[aria-hidden="true"] {
+  visibility: visible;
+}
+
+@keyframes iam-joining-pulse {
+  0%, 70%, 100% { opacity: 0.28; transform: translateY(0) scale(0.8); }
+  35% { opacity: 1; transform: translateY(-5px) scale(1); }
+}
+
+.iam-record-dot {
+  appearance: none;
+  display: inline-grid;
+  place-items: center;
+  flex: 0 0 auto;
+  width: clamp(58px, 4.55vw, 78px);
+  height: clamp(58px, 4.55vw, 78px);
+  border: 3px solid rgba(255, 255, 255, 0.94);
+  border-radius: 50%;
+  background: transparent;
+  cursor: pointer;
+  padding: 0;
+  box-shadow: 0 2px 14px rgba(0, 0, 0, 0.28);
+}
+
+.iam-record-dot::after {
+  content: "";
+  width: 58%;
+  height: 58%;
+  border-radius: 50%;
+  background: #ff1f13;
+}
+
+.iam-control-text {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  min-width: clamp(315px, 27vw, 420px);
+  height: clamp(62px, 5.4vw, 86px);
+  padding: 0 clamp(36px, 3.2vw, 54px);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.18);
+  color: rgba(255, 255, 255, 0.96);
+  cursor: text;
+  overflow: hidden;
+}
+
+.iam-entry-cursor,
+.iam-display-text,
+.iam-fixed-prefix {
+  position: relative;
+  z-index: 1;
+  white-space: nowrap;
+}
+
+.iam-entry-cursor {
+  display: inline-block;
+  flex: 0 0 auto;
+  width: 1px;
+  height: 0.96em;
+  margin-right: 0.34em;
+  background: rgba(255, 255, 255, 0.92);
+  transform: translateY(0.04em);
+  animation: iam-entry-cursor-blink 940ms steps(1, end) infinite;
+}
+
+.iam-display-text {
+  display: inline-block;
+  width: 0;
+  overflow: hidden;
+  transition: opacity 1280ms ease;
+  animation: iam-type-in 1100ms steps(7, end) 650ms forwards;
+}
+
+.iam-fixed-prefix {
+  display: none;
+  flex: 0 0 auto;
+  margin-right: 0.34em;
+  font-size: clamp(22px, 2.25vw, 34px);
+  font-style: normal;
+  font-weight: 700;
+  transition: opacity 1220ms ease;
+}
+
+.iam-input {
+  position: absolute;
+  left: clamp(36px, 3.2vw, 54px);
+  top: 50%;
+  z-index: 1;
+  display: block;
+  width: calc(100% - clamp(72px, 6.4vw, 108px));
+  min-width: 0;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  color: rgba(255, 255, 255, 0.96);
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: clamp(22px, 2.25vw, 34px);
+  font-style: normal;
+  font-weight: 700;
+  letter-spacing: 0;
+  line-height: 1;
+  opacity: 0;
+  padding: 0;
+  transform: translateY(-50%);
+  transition: opacity 1220ms ease;
+}
+
+.vogue-iam-form[data-state="prompt"] .iam-display-text,
+.vogue-iam-form[data-state="thanks"] .iam-display-text,
+.vogue-iam-form[data-state="joining"] .iam-display-text {
+  width: auto;
+  animation: none;
+  font-size: clamp(20px, 1.9vw, 30px);
+  font-style: normal;
+  font-weight: 700;
+}
+
+.vogue-iam-form[data-state="prompt"] .iam-display-text {
+  width: 21ch;
+  animation: iam-prompt-type 1800ms steps(20, end) 160ms both;
+}
+
+.vogue-iam-form.is-text-fading .iam-display-text,
+.vogue-iam-form.is-text-fading .iam-entry-cursor,
+.vogue-iam-form.is-text-fading .iam-fixed-prefix,
+.vogue-iam-form.is-text-fading .iam-input {
+  opacity: 0;
+}
+
+.vogue-iam-form[data-state="prompt"] .iam-entry-cursor,
+.vogue-iam-form[data-state="typing"] .iam-entry-cursor,
+.vogue-iam-form[data-state="thanks"] .iam-entry-cursor,
+.vogue-iam-form[data-state="joining"] .iam-entry-cursor,
+.vogue-iam-form[data-state="reflecting"] .iam-entry-cursor,
+.vogue-iam-form[data-state="integrating"] .iam-entry-cursor {
+  width: 0;
+  margin-right: 0;
+  opacity: 0;
+  animation: none;
+}
+
+.vogue-iam-form[data-state="typing"] .iam-display-text {
+  display: none;
+}
+
+.vogue-iam-form[data-state="typing"] .iam-fixed-prefix {
+  display: inline-block;
+}
+
+.vogue-iam-form[data-state="typing"] .iam-input {
+  position: relative;
+  left: auto;
+  top: auto;
+  display: inline-block;
+  flex: 1 1 auto;
+  opacity: 1;
+  transform: none;
+}
+
+.vogue-iam-form[data-state="typing"] .iam-control-text {
+  min-width: clamp(360px, 30vw, 470px);
+}
+
+.vogue-iam-form[data-state="thanks"] .iam-control-text,
+.vogue-iam-form[data-state="joining"] .iam-control-text {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.vogue-iam-form[data-state="reflecting"],
+.vogue-iam-form[data-state="integrating"] {
+  opacity: 0;
+  filter: blur(6px);
+  pointer-events: none;
+}
+
+.vogue-report-copy {
+  margin-top: clamp(10px, 1vh, 18px);
+  text-transform: uppercase;
+  text-shadow: 0 2px 14px rgba(0, 0, 0, 0.42);
+}
+
+.vogue-check-line,
+.vogue-privacy-line,
+.vogue-partnership {
+  margin: 0;
+  letter-spacing: 0;
+}
+
+.vogue-check-line {
+  font-size: clamp(27px, 2.86vw, 42px);
+  font-weight: 300;
+  line-height: 1.1;
+}
+
+.vogue-check-line strong {
+  font-weight: 700;
+}
+
+.vogue-privacy-line {
+  margin-top: clamp(16px, 1.45vh, 24px);
+  font-size: clamp(15px, 1.5vw, 22px);
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.vogue-partnership {
+  position: absolute;
+  z-index: 4;
+  left: 50%;
+  bottom: clamp(12px, 2.2vh, 31px);
+  color: rgba(255, 255, 255, 0.9);
+  font-size: clamp(12px, 1.02vw, 15px);
+  font-weight: 300;
+  line-height: 1;
+  text-align: center;
+  transform: translateX(-50%);
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.45);
+  white-space: nowrap;
+}
+
+.vogue-phone-icon {
+  position: absolute;
+  z-index: 4;
+  left: 50%;
+  bottom: clamp(34px, 5vh, 92px);
+  width: clamp(34px, 2.8vw, 54px);
+  height: auto;
+  object-fit: contain;
+  transform: translateX(-50%);
+  filter: drop-shadow(0 2px 10px rgba(0, 0, 0, 0.36));
+}
+
+.iam-hero-reflection {
+  position: fixed;
+  z-index: 9;
+  left: 50%;
+  top: 50%;
+  display: inline-flex;
+  align-items: center;
+  gap: clamp(16px, 1.6vw, 28px);
+  max-width: min(74vw, 920px);
+  color: rgba(255, 255, 255, 0.96);
+  font-size: 34px;
+  font-weight: 300;
+  line-height: 1;
+  opacity: 0;
+  pointer-events: none;
+  text-shadow: 0 2px 18px rgba(0, 0, 0, 0.52);
+  transform: translate(-50%, -50%);
+  transition: opacity 3200ms cubic-bezier(0.2, 0, 0.18, 1);
+}
+
+.iam-hero-reflection span {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.iam-reflection-flora {
+  flex: 0 0 auto;
+  width: 92px;
+  height: 92px;
+  opacity: 0.65;
+}
+
+.iam-hero-reflection.is-visible {
+  opacity: 1;
+}
+
+.iam-transfer-field {
+  position: fixed;
+  inset: 0;
+  z-index: 8;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.iam-transfer-canvas {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+@keyframes iam-type-in {
+  to {
+    width: 7ch;
+  }
+}
+
+@keyframes iam-entry-cursor-blink {
+  0%,
+  44% {
+    opacity: 1;
+  }
+
+  45%,
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes iam-prompt-type {
+  from {
+    width: 0;
+  }
+
+  to {
+    width: 21ch;
+  }
+}
+
+@media (max-width: 760px) {
+  body {
+    overflow: hidden auto;
+  }
+
+  .vogue-report-page {
+    min-height: 100svh;
+  }
+
+  .vogue-report-lockup {
+    width: calc(100vw - 28px);
+    padding-top: 4vh;
+  }
+
+  .vogue-logo {
+    width: min(94vw, 620px);
+  }
+
+  .vogue-url {
+    font-size: clamp(28px, 11vw, 48px);
+  }
+
+  .vogue-checkin-stage {
+    width: 100%;
+    min-height: 30vh;
+    margin-top: 4vh;
+  }
+
+  .vogue-flora {
+    width: min(72vw, 280px);
+  }
+
+  .vogue-iam-form {
+    gap: 13px;
+    font-size: clamp(25px, 8vw, 34px);
+  }
+
+  .iam-record-dot {
+    width: 52px;
+    height: 52px;
+    border-width: 2px;
+  }
+
+  .iam-control-text {
+    min-width: 0;
+    width: min(68vw, 315px);
+    height: 56px;
+    padding: 0 23px;
+  }
+
+  .vogue-iam-form[data-state="typing"] .iam-control-text {
+    min-width: 0;
+    width: min(72vw, 335px);
+  }
+
+  .vogue-check-line {
+    font-size: clamp(25px, 8vw, 38px);
+  }
+
+  .vogue-privacy-line {
+    margin-inline: auto;
+    max-width: 92vw;
+    font-size: clamp(14px, 4.8vw, 21px);
+  }
+
+  .vogue-phone-icon {
+    bottom: clamp(72px, 10vh, 96px);
+    width: 48px;
+  }
+
+  .iam-hero-reflection {
+    flex-direction: column;
+    max-width: calc(100vw - 48px);
+    gap: 12px;
+    font-size: clamp(24px, 8vw, 34px);
+    line-height: 1.12;
+    text-align: center;
+  }
+
+  .iam-reflection-flora {
+    width: 72px;
+    height: 72px;
+  }
+}
+
+/* Mockup alignment pass: keep this page as a scaled editorial composition. */
+.vogue-report-lockup {
+  inset: 0;
+  width: 100vw;
+  padding: 0;
+  text-align: left;
+  transform: none;
+}
+
+.vogue-logo {
+  position: absolute;
+  left: 20.75vw;
+  top: 1.15vh;
+  width: 57.57vw;
+  max-width: none;
+}
+
+.vogue-url {
+  position: absolute;
+  left: 25.6vw;
+  top: 28.45vh;
+  margin: 0;
+  font-size: clamp(19px, 3.45vw, 50.7px);
+  line-height: 1;
+  text-align: left;
+  white-space: nowrap;
+}
+
+.vogue-checkin-stage {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: auto;
+  min-height: 0;
+  margin: 0;
+}
+
+.vogue-flora {
+  left: 40.9vw;
+  top: 50vh;
+  width: 19.64vw;
+  max-width: none;
+  transform: translateY(-50%);
+}
+
+.vogue-iam-form {
+  position: absolute;
+  left: 34.35vw;
+  top: 50vh;
+  display: inline-flex;
+  align-items: center;
+  gap: clamp(16px, 1.3vw, 25px);
+  width: fit-content;
+  min-width: 0;
+  height: auto;
+  margin: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  color: rgba(255, 255, 255, 0.94);
+  font-size: clamp(20px, 1.75vw, 33px);
+  font-style: italic;
+  font-weight: 700;
+  letter-spacing: 0;
+  line-height: 1;
+  padding: 0;
+  text-decoration: none;
+  text-shadow: 0 1px 8px rgba(0, 0, 0, 0.32);
+  text-transform: none;
+  text-align: left;
+  transform: translateY(-50%);
+}
+
+.iam-record-dot {
+  width: clamp(42px, 3.2vw, 62px);
+  height: clamp(42px, 3.2vw, 62px);
+  border: 2px solid rgba(255, 255, 255, 0.92);
+}
+
+.iam-control-text {
+  width: auto;
+  min-width: clamp(210px, 17.2vw, 330px);
+  height: clamp(42px, 3.35vw, 64px);
+  padding: 0 clamp(32px, 3vw, 58px);
+  background: rgba(255, 255, 255, 0.125);
+  text-align: left;
+  transform: none;
+}
+
+.iam-display-text {
+  font-size: inherit;
+  font-style: inherit;
+  font-weight: inherit;
+}
+
+.iam-fixed-prefix,
+.iam-input {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 21px;
+  font-style: normal;
+  font-weight: 300;
+  letter-spacing: 0;
+  line-height: 1;
+}
+
+.vogue-iam-form[data-state="prompt"] .iam-display-text,
+.vogue-iam-form[data-state="thanks"] .iam-display-text,
+.vogue-iam-form[data-state="joining"] .iam-display-text {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 21px;
+  letter-spacing: 0;
+  width: auto;
+  animation: none;
+  font-style: normal;
+  font-weight: 300;
+}
+
+.vogue-iam-form[data-state="typing"] .iam-control-text {
+  width: auto;
+  min-width: clamp(240px, 19vw, 360px);
+}
+
+.vogue-report-copy {
+  position: absolute;
+  left: 25.6vw;
+  top: 62.55vh;
+  margin: 0;
+  text-align: left;
+}
+
+.vogue-check-line {
+  font-size: clamp(12px, 2.23vw, 32.76px);
+  line-height: 1;
+  text-align: left;
+  white-space: nowrap;
+}
+
+.vogue-privacy-line {
+  margin-top: 2.35vh;
+  max-width: none;
+  font-size: clamp(7px, 1.17vw, 17.16px);
+  line-height: 1;
+  text-align: left;
+  white-space: nowrap;
+}
+
+.vogue-phone-icon {
+  left: 50%;
+  top: calc(82.44vh + 5mm);
+  bottom: auto;
+  width: clamp(20.7px, 2.95vw, 42.82px);
+  transform: translate(-50%, -50%);
+}
+
+.vogue-partnership {
+  bottom: 2.4vh;
+  font-size: clamp(5px, 0.8vw, 11.7px);
+  text-align: left;
+}
+
+/* Globe form parity: keep form animation, typography, and state rules identical to globe.css. */
+.vogue-iam-form {
+  position: absolute;
+  left: 34.35vw;
+  top: 50vh;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  gap: clamp(16px, 1.3vw, 25px);
+  width: fit-content;
+  min-width: 0;
+  height: auto;
+  margin: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  color: rgba(255, 255, 255, 0.94);
+  font-size: clamp(20px, 1.75vw, 33px);
+  font-style: italic;
+  font-weight: 700;
+  letter-spacing: 0;
+  line-height: 1;
+  padding: 0;
+  text-align: left;
+  text-decoration: none;
+  text-shadow: 0 1px 8px rgba(0, 0, 0, 0.32);
+  text-transform: none;
+  transform: translateY(-50%);
+}
+
+.iam-record-dot {
+  appearance: none;
+  display: inline-grid;
+  place-items: center;
+  flex: 0 0 auto;
+  width: clamp(42px, 3.2vw, 62px);
+  height: clamp(42px, 3.2vw, 62px);
+  border: 2px solid rgba(255, 255, 255, 0.92);
+  border-radius: 50%;
+  background: transparent;
+  cursor: pointer;
+  opacity: 0;
+  padding: 0;
+  transform: scale(0.78);
+  animation:
+    record-dot-enter 1250ms ease-out 280ms forwards,
+    record-dot-pulse 2200ms ease-in-out 1550ms infinite;
+}
+
+.iam-record-dot::after {
+  content: "";
+  width: 62%;
+  height: 62%;
+  background: #ff1f13;
+  border-radius: 50%;
+}
+
+.iam-control-text {
+  display: inline-flex;
+  align-items: center;
+  position: relative;
+  min-width: clamp(210px, 17.2vw, 330px);
+  width: auto;
+  height: clamp(42px, 3.35vw, 64px);
+  padding: 0 clamp(32px, 3vw, 58px);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.125);
+  color: rgba(255, 255, 255, 0.94);
+  cursor: text;
+  overflow: hidden;
+  text-align: left;
+  transform: none;
+  transition: background 360ms ease, opacity 360ms ease, width 360ms ease;
+}
+
+.iam-entry-cursor,
+.iam-display-text,
+.iam-fixed-prefix {
+  position: relative;
+  z-index: 1;
+  white-space: nowrap;
+}
+
+.iam-entry-cursor {
+  display: inline-block;
+  flex: 0 0 auto;
+  width: 1px;
+  height: 0.96em;
+  margin-right: 0.34em;
+  background: rgba(255, 255, 255, 0.92);
+  transform: translateY(0.04em);
+  animation: iam-entry-cursor-blink 940ms steps(1, end) infinite;
+}
+
+.iam-display-text {
+  display: inline-block;
+  width: 0;
+  overflow: hidden;
+  font-size: inherit;
+  font-style: inherit;
+  font-weight: inherit;
+  transition: opacity 1280ms ease;
+  animation: iam-type-in 1100ms steps(7, end) 1500ms forwards;
+}
+
+.vogue-iam-form.is-example-typing[data-state="idle"] .iam-display-text {
+  width: 0;
+  animation: iam-vogue-example-type 1100ms steps(var(--iam-example-steps), end) forwards;
+}
+
+.iam-fixed-prefix {
+  display: none;
+  flex: 0 0 auto;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 21px;
+  font-style: normal;
+  font-weight: 300;
+  margin-right: 0.34em;
+  transition: opacity 1220ms ease;
+}
+
+.iam-input {
+  position: absolute;
+  left: clamp(32px, 3vw, 58px);
+  top: 50%;
+  z-index: 1;
+  display: block;
+  width: calc(100% - clamp(64px, 6vw, 116px));
+  min-width: 0;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  color: rgba(255, 255, 255, 0.94);
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 21px;
+  font-style: normal;
+  font-weight: 300;
+  letter-spacing: 0;
+  line-height: 1;
+  opacity: 0;
+  padding: 0;
+  transform: translateY(-50%);
+  transition: opacity 1220ms ease;
+}
+
+.iam-input::placeholder {
+  color: rgba(255, 255, 255, 0.24);
+}
+
+.vogue-iam-form[data-state="prompt"] .iam-display-text,
+.vogue-iam-form[data-state="thanks"] .iam-display-text,
+.vogue-iam-form[data-state="joining"] .iam-display-text {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 21px;
+  letter-spacing: 0;
+  width: auto;
+  animation: none;
+  font-style: normal;
+  font-weight: 300;
+}
+
+.vogue-iam-form[data-state="prompt"] .iam-display-text {
+  width: 21ch;
+  animation: iam-prompt-type 1800ms steps(20, end) 160ms both;
+}
+
+.vogue-iam-form.is-text-fading .iam-display-text,
+.vogue-iam-form.is-text-fading .iam-entry-cursor,
+.vogue-iam-form.is-text-fading .iam-fixed-prefix,
+.vogue-iam-form.is-text-fading .iam-input {
+  opacity: 0;
+}
+
+.vogue-iam-form[data-state="prompt"] .iam-entry-cursor,
+.vogue-iam-form[data-state="typing"] .iam-entry-cursor,
+.vogue-iam-form[data-state="thanks"] .iam-entry-cursor,
+.vogue-iam-form[data-state="joining"] .iam-entry-cursor,
+.vogue-iam-form[data-state="reflecting"] .iam-entry-cursor,
+.vogue-iam-form[data-state="integrating"] .iam-entry-cursor {
+  width: 0;
+  margin-right: 0;
+  opacity: 0;
+  animation: none;
+}
+
+.vogue-iam-form[data-state="typing"] .iam-display-text {
+  display: none;
+}
+
+.vogue-iam-form[data-state="typing"] .iam-fixed-prefix {
+  display: inline-block;
+}
+
+.vogue-iam-form[data-state="typing"] .iam-input {
+  position: relative;
+  left: auto;
+  top: auto;
+  display: inline-block;
+  flex: 1 1 auto;
+  opacity: 1;
+  transform: none;
+}
+
+.vogue-iam-form[data-state="typing"] .iam-control-text {
+  min-width: clamp(240px, 19vw, 360px);
+  width: auto;
+}
+
+.vogue-iam-form[data-state="thanks"] .iam-control-text,
+.vogue-iam-form[data-state="joining"] .iam-control-text {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.vogue-iam-form.is-busy .iam-record-dot {
+  animation:
+    record-dot-enter 1250ms ease-out 280ms forwards,
+    record-dot-pulse 1200ms ease-in-out 1550ms infinite;
+}
+
+.vogue-iam-form[data-state="reflecting"],
+.vogue-iam-form[data-state="integrating"] {
+  opacity: 0;
+  filter: blur(6px);
+  pointer-events: none;
+}
+
+@keyframes record-dot-enter {
+  0% {
+    opacity: 0;
+    transform: scale(0.72);
+  }
+
+  48% {
+    opacity: 1;
+    transform: scale(1.13);
+  }
+
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes record-dot-pulse {
+  0%,
+  100% {
+    opacity: 0.86;
+    transform: scale(0.96);
+  }
+
+  50% {
+    opacity: 1;
+    transform: scale(1.04);
+  }
+}
+
+@keyframes iam-vogue-example-type {
+  to {
+    width: var(--iam-example-width);
+  }
+}
+
+@media (max-width: 760px) {
+  .vogue-iam-form {
+    max-width: 100%;
+    gap: 12px;
+  }
+
+  .iam-control-text {
+    flex: 1 1 auto;
+    width: min(66vw, 300px);
+    min-width: 0;
+    padding: 0 24px;
+  }
+
+  .vogue-iam-form[data-state="typing"] .iam-control-text {
+    width: min(70vw, 310px);
+    min-width: 0;
+  }
+}
+
+@media (max-width: 760px) and (max-height: 740px) {
+  .iam-record-dot {
+    width: 38px;
+    height: 38px;
+  }
+
+  .iam-control-text {
+    height: 42px;
+    padding: 0 18px;
+  }
+
+  .vogue-iam-form[data-state="prompt"] .iam-display-text,
+  .vogue-iam-form[data-state="thanks"] .iam-display-text,
+  .vogue-iam-form[data-state="joining"] .iam-display-text,
+  .iam-fixed-prefix,
+  .iam-input {
+    font-size: 18px;
+  }
+}

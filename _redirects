@@ -1,0 +1,10 @@
+# Password-free Universal Mind I AM entrypoints.
+/iam /vogue/iam/induction.html 302
+/iam/ /vogue/iam/induction.html 302
+/vogue /vogue/iam/induction.html 302
+/vogue/ /vogue/iam/induction.html 302
+/vogue/iam /vogue/iam/induction.html 302
+/vogue/iam/ /vogue/iam/induction.html 302
+
+# Serve the existing static I AM files under the public /vogue/iam path.
+/vogue/iam/* /i%20%20a%20m/:splat 200

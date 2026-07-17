@@ -1,0 +1,20 @@
+# macOS and generated files
+.DS_Store
+**/.DS_Store
+__pycache__/
+**/__pycache__/
+*.py[cod]
+.wrangler/
+**/.wrangler/
+
+# Local secrets and environment configuration
+.env
+.env.*
+*.pem
+*.key
+*ftp-pass*
+
+# Local video masters are intentionally excluded from GitHub.
+# Production playback uses the hosted media catalogue; these files total about 21 GB.
+*.mp4
+**/*.mp4
