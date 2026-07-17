@@ -2,8 +2,8 @@
 set -euo pipefail
 
 ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-FTP_HOST="${FTP_HOST:-116.90.36.24}"
-FTP_USER="${FTP_USER:-umdeploy@universalmind.tv}"
+FTP_HOST="${FTP_HOST:-ftp.universalmind.tv}"
+FTP_USER="${FTP_USER:-codexdeploy@universalmind.tv}"
 FTP_PASS_FILE="${FTP_PASS_FILE:-/private/tmp/um-public-html-ftp-pass.txt}"
 IAM_DIR="${IAM_DIR:-$ROOT_DIR/i  a m}"
 MANIFEST_FILE="${MANIFEST_FILE:-$ROOT_DIR/.panthur-deploy-manifest.tsv}"

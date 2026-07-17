@@ -7,6 +7,8 @@
 - Staging publisher: `./deploy-panthur-staging.sh`
 - Production publisher: `./deploy-panthurlive.sh`
 
+Production publishing uses the dedicated `codexdeploy@universalmind.tv` FTP account, restricted to `/public_html`. Its credential is stored outside the repository in `/private/tmp/um-public-html-ftp-pass.txt` with owner-only permissions.
+
 The Panthur deployment scripts remain the only website publishing method. GitHub stores version history and provides the rollback safety net; it does not automatically deploy either environment.
 
 ## GitHub branch model
