@@ -1828,6 +1828,9 @@
       startSoundResearchLayer();
     } else if (soundResearchAudio) {
       soundResearchAudio.pause();
+      soundResearchAudio.volume = 0;
+      soundResearchTargetLevel = 0;
+      soundResearchMediaLevel = 0;
       window.cancelAnimationFrame(soundResearchGainFrame);
       soundResearchGainFrame = 0;
     }
