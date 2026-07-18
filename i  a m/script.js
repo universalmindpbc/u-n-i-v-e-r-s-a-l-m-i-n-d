@@ -10,7 +10,7 @@
     });
   }
   window.IAMStreamReady = load("cloudflare-stream-catalogue.js?v=stream-catalogue-9b7893e7ad6d")
-    .then(() => load("cloudflare-stream-controller.js?v=stream-controller-5eba3a3416a0"))
+    .then(() => load("cloudflare-stream-controller.js?v=stream-controller-4819c6737cd4"))
     .catch(() => null);
 }());
 

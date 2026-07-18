@@ -14,6 +14,8 @@
   const FASHION_SECOND_FALLBACK_MS = 2000;
   const MUSIC_LOW_BUFFER_SECONDS = 8;
   const MUSIC_CRITICAL_BUFFER_SECONDS = 3;
+  const FASHION_LOW_BUFFER_SECONDS = 8;
+  const FASHION_CRITICAL_BUFFER_SECONDS = 3;
   const MUSIC_RECOVERY_BUFFER_SECONDS = 15;
   const QUALITY_RECOVERY_HOLD_MS = 5000;
   const QUALITY_THROUGHPUT_MARGIN = 1.7;
@@ -366,6 +368,21 @@
     });
   }
 
+  function manageFashionBuffer(state, trigger = "fashion_buffer_sample") {
+    if (state.role !== "fashion" || !state.wantsPlayback || state.video.paused) return;
+    const fashionBuffer = bufferedAhead(state.video);
+    if (fashionBuffer < FASHION_CRITICAL_BUFFER_SECONDS) {
+      setFashionQualityCap(state, 360, `${trigger}_critical_fashion_buffer`);
+      state.hls?.startLoad?.();
+      if (!document.hidden) state.video.play().catch(() => {});
+      return;
+    }
+    if (fashionBuffer < FASHION_LOW_BUFFER_SECONDS) {
+      setFashionQualityCap(state, 480, `${trigger}_low_fashion_buffer`);
+      state.hls?.startLoad?.();
+    }
+  }
+
   function beginFreeze(state, source) {
     if (state.freezeStartedAt) return;
     state.freezeStartedAt = now();
@@ -600,12 +617,14 @@
       video.dataset.streamWaitingCount = String(state.waitingCount);
       beginFreeze(state, "waiting");
       if (role === "music") manageFashionQualityFromMusic(state, "waiting");
+      else manageFashionBuffer(state, "waiting");
     });
     video.addEventListener("stalled", () => {
       state.stalledCount += 1;
       video.dataset.streamStalledCount = String(state.stalledCount);
       beginFreeze(state, "stalled");
       if (role === "music") manageFashionQualityFromMusic(state, "stalled");
+      else manageFashionBuffer(state, "stalled");
     });
     video.addEventListener("playing", () => {
       endFreeze(state, "playing");
@@ -646,8 +665,8 @@
         autoStartLoad: state.wantsPlayback || state.preloadRequested,
         capLevelToPlayerSize: role === "fashion",
         startLevel: -1,
-        maxBufferLength: role === "fashion" ? 16 : 30,
-        maxMaxBufferLength: role === "fashion" ? 20 : 60,
+        maxBufferLength: role === "fashion" ? 24 : 30,
+        maxMaxBufferLength: role === "fashion" ? 30 : 60,
         backBufferLength: role === "fashion" ? 10 : 30,
       };
       if (throttleKbps > 0) {
@@ -700,6 +719,10 @@
         }
         if (role === "music" && data?.details?.includes?.("buffer")) {
           manageFashionQualityFromMusic(state, "hls_buffer_error");
+        }
+        if (role === "fashion" && (data?.details?.includes?.("buffer") || data?.type === Hls.ErrorTypes.NETWORK_ERROR)) {
+          manageFashionBuffer(state, "hls_error");
+          hls.startLoad();
         }
         if (!data?.fatal) return;
         if (data.type === Hls.ErrorTypes.NETWORK_ERROR) hls.startLoad();
@@ -806,6 +829,8 @@
       state.video.dataset.streamBufferDepth = bufferedAhead(state.video).toFixed(3);
       state.video.dataset.streamQualityHeight = String(currentQualityHeight(state));
       state.video.dataset.streamBandwidthEstimate = String(Math.round(finiteNumber(state.hls?.bandwidthEstimate, 0)));
+      const effectiveMaximum = state.role === "fashion" ? effectiveFashionCap(state) : capFor(state.role, state.video);
+      if (state.video.dataset.streamEffectiveMaxHeight !== String(effectiveMaximum)) capHlsLevel(state);
       const activelyExpected = state.wantsPlayback && !state.video.paused && !document.hidden && state.isVisible;
       if (activelyExpected) {
         if (currentTime > state.lastClockTime + 0.08) {
@@ -822,6 +847,7 @@
       state.lastClockTime = currentTime;
 
       if (state.role === "music") manageFashionQualityFromMusic(state, "periodic_buffer_sample");
+      if (state.role === "fashion") manageFashionBuffer(state, "periodic_buffer_sample");
       if (timestamp - state.lastHeartbeatAt >= TELEMETRY_HEARTBEAT_MS) {
         state.lastHeartbeatAt = timestamp;
         recordTelemetry(state, "playback_heartbeat");

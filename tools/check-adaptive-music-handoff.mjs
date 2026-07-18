@@ -153,7 +153,9 @@ requireCondition(!musicBufferManager.includes('pauseFashion') && !musicBufferMan
 requireCondition(!streamController.includes('outside_viewport') && !streamController.includes('document_hidden'), 'a visibility change can still automatically pause fashion');
 requireCondition(streamController.includes('const FASHION_PRELOAD_TARGET_SECONDS = 12;'), 'stream controller preload target is no longer twelve seconds');
 requireCondition(streamController.includes('const FASHION_REVEAL_MINIMUM_SECONDS = 8;'), 'stream controller reveal floor is no longer eight seconds');
-requireCondition(streamController.includes('maxBufferLength: role === "fashion" ? 16 : 30'), 'fashion preload no longer has a bounded buffer window');
+requireCondition(streamController.includes('maxBufferLength: role === "fashion" ? 24 : 30'), 'fashion playback no longer carries its expanded twenty-four-second buffer window');
+requireCondition(streamController.includes('function manageFashionBuffer(state, trigger = "fashion_buffer_sample")'), 'fashion playback no longer responds to its own buffer depth');
+requireCondition(streamController.includes('manageFashionBuffer(state, "waiting")'), 'fashion waiting events no longer trigger immediate buffer recovery');
 requireCondition(streamController.includes('bufferedAhead(video) + 0.15 >= state.preloadTargetSeconds'), 'fashion preload no longer stops on the fragment that reaches its target');
 requireCondition(streamController.includes('state.bufferedSegments.size >= 2'), 'two completed fashion segments no longer unlock reveal');
 requireCondition(streamController.includes('setFashionQualityCap(state, 480'), 'the progressive 480p fashion fallback is missing');
