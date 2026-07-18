@@ -3669,7 +3669,7 @@ button.adaptive-television-research-tooltip__more {
 
 /* EMDR safety, style and intensity controls. */
 .adaptive-television-reaction-wallet[data-wallet-view="emdr"] {
-  width: min(720px, calc(100vw - 38px)) !important;
+  width: min(800px, calc(100vw - 38px)) !important;
   min-height: 66px;
   border-color: rgba(255, 255, 255, 0.14);
   background: rgba(12, 12, 14, 0.1);
