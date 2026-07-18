@@ -5,13 +5,13 @@ c6ed3bc518a2267a85e1f1dc384a5dd3c1d40e981f860a6d5030fe02eb113253	technology-citi
 1b54395c6c66406021fb43f94398c990f8de5ba86472708fef57c95b5d54a288	adaptive-music-video-selector-subprompt-v1.11.md
 3fbb7da3f3b26ad145bfaabf745b4b4697004dcd6ee9a015c686084d5d381e21	vogue-self-report.css
 c6029b8e8142de6f26a28305558ebf7d4be7657ebb3385ff374d17ec71726e10	adaptive-music-artist-catalogue.json
-58c4406f30c7c785ecb576e569da31789b845d3b7fb59e7b815f21f55ed5f0ed	adaptive-environment-television.css
+49255be606351e01000471206c51a6fe095802158d1bd5cd36e1eb77b2d22b82	adaptive-environment-television.css
 c02cc753604c4462d49c2f44d36245d5df944136f2c59d834371b1b13c209155	cafe-del-mar-home.html
 dcbff34364d60a02e5a68c1c27db1da0aba2c6059e154b93da9ed822926eea8e	a d a p t i v e  m u s i c  v i d e o  i n t e l l i g e n c e   -  c o d e x   b r i e f  v 0 . 1.md
 f5523d0d103367606e5c786fdefe6a1a560975a214ebe5188405469ec5619e09	tools/analyze-video-beats.py
 f1670bb15260c563cfe508ea2be7ddfe2f1b9260e0f3ab2f1015343345b5d177	i  a m.md
 9cf7263f144214ca145f6e8d42a58795a22e5f6e94d08e2703caeaa1ad9243a8	community-globe.html
-34b62eebe7972bcfece98b1c39c6b9cc63ccb54972a47edf88f905ba661ce0cd	index.html
+6dba1f488fe0c3a901f8da33485ed6f1e9429058762067a00725d4c836618f32	index.html
 e4bc56131bc5ba8bede4bde7a22e1634279bc5ec6ad1f9da1177e24c6523edbb	vogue-self-report.js
 90f71e39cc1a79b3f541c3dfbf8d248aab39eb936f419ca2d9c7c2a77daf4107	problem.html
 5dd6355dbbaa5dc8b92c4588ac7d70396423a9739c0415b7d91a029a8218ba38	selector_benchmark.py
@@ -33,7 +33,7 @@ b7a2e613c395b1c88f6b9124dbf48169326d32b29b2d9312215019c400feb8ee	handover 1.12.m
 e98001a1504264b56ff7a895704818c451940b48b7c9aac15d011e2253fc3427	i n f e r e n c e  e n g i n e  -  s y s t e m  p r o m p t  v  2 . 2 2.md
 72108e0785cba2e253da994bac6fadf514343a7b092a78c50b3bbb5e642e1fe5	dj-set-tensor-approved-notion-export-v1.0.json
 5bd762cf9205f1093c9c2ceae46e54887d3ae4a958a1efd62f70809a57912722	adaptive-music-video-strategy.md
-8dd8a6762f41505465dd808a4d1a84285b5b7929e6a5fbb41c07f47539f1e258	quantum-tree-control.html
+6c83291433e1b52af874b5e4ec2241c585794118c48873c8004fa404e99de838	quantum-tree-control.html
 b922c0ed559272b40cd18d8a3aaea60a4b7ffd04e036e9817f5ba3bfdc8145b5	adaptive-soundtrack-selection-guide-v2.22.json
 6494ffec558557a97a73d9753e93a4c6fd21d2c532066d41a17cbdaaec869c50	adaptive-page-metadata-v1.js
 9ae5176893ea899472b3a73e71de8f743b6bf59967e840a930bfadea8659ebdc	t e c h n o l o g y - c i t i z e n  n e e d s  —  i n t e r a c t i v e  d e m o - c o d e x  b r i e f.md
@@ -49,15 +49,15 @@ beb34584876306e5825ba720c8cfb01b871065791c48be5add2ce5cc6d75f59f	adaptive-infere
 3862c4481721b08403d25024626930de4c0a2b265ccc336e99b830bb3133825e	c h a n g e l o g.md
 e12eb24c367d2ac6f67963f434a729027e75b914e450b6260f47c01b9bd1ef58	i  a m  c h e c k i n  -  f o r m  -  b r i e f.md
 7350db3b2b025bd5d7586c08c6fd80b1af68f0e85a5f558924ee55241ead18bf	adaptive-music-video-catalogue-v1.11.json
-9dfcc609231cf1cd6dcac187414b34d206ed55bec40eb38302d6fe46220d3868	adaptive-environment-television.js
+87b075a5c48d0b3c9d0899bb3baaba990fc206301b6f4e98850b5a0062c0534e	adaptive-environment-television.js
 7e7de3214d7993ba32c4578b3027a3452edb3524c3e60eab367f650b9b1f89e2	technology.html
-d9bafca5898c5ffacf0f29081c2d588153e59e4b972523a0b0206dc43a96abeb	adaptive-environment-television.html
-cb55cbc4a66a77813a394e53c2512a56924e8cf9eebd91dfcc1e388092fb4167	script.js
+47b6e8e4501c0deb691d823067055a67c5a42843868fabb5013e65ec1c1442b4	adaptive-environment-television.html
+ec296b99d4858ad343edbbfe7ba9a7f509cd3076b55721efa1b0af5ae29671f9	script.js
 6b4dabad0c6b29d40d4d7abe7661345cdcc0d9103705a3bf2233a632a1c3192b	adaptive-soundtrack-selection-guide-v1.11.json
 d7b0c8c14b00152e1be5a74c0d51dd9e31ea33fb6c0b0dbc5febc6f903aaa89d	favicon.png
 cb1b29386bb61f875d22f83de35c53a285a30ff7433e9cb58a9940914231d52e	adaptive-inference-engine-system-prompt-v2.22.html
 ea9c74095740c48e246dc1a18521c94bf060a17e80adf16fa4bcbdf295d59066	c o d e x.md
-f80144e6e70c09484f0ff95ddaec9356cc989c099f2b3b03b53f73235a06e3d7	quantum-tree-control.js
+7e5eac183d8dd2b3d3b8483424c3387badb2972036aad9fb102b2824e0063830	quantum-tree-control.js
 09483dd4627f5dae95eaf25fa8e7dd1cc23a8890294f781da0569110910bd26b	Algorithm Architecture | 144+ Dimensional | Adaptive Music Engine.png
 174d358ee9eb0940cc3dbdb47ebf89f2dd4157286c1f15df59ee00dcc2885c06	technology-citizen-needs.js
 969d056d2ed29f10c85b9bbe2f935982c0ada344177204b3a7a187b418362550	induction.html
@@ -104,6 +104,7 @@ f0cf686dd585bab3a0e110c4674e760a4c222e42c98f455d6762a879b10ae176	a s s e t s/r e
 03d00cb7d620cb4ec8a5526e8eab6515666b1e37b9d62b9a445f2aec57d493f8	a s s e t s/r e f e r e n c e s/form brief/Screenshot 2026-07-01 at 3.01.21 pm.png
 757602ea01b370ffa42f88027edea29e687da69465ca3f78304d1c23b0ddb67b	a s s e t s/r e f e r e n c e s/Global Nav Lightbox - Screen 4.png
 055bd4cd0a8be7a8f3f37ee098fb3e951116c1d5b2cd301f7b75b90b27bd5fb7	a s s e t s/r e f e r e n c e s/Global Nav Lightbox - Screen 5.png
+396bef934cc6463037d7f9c7d15e542ab6da07305474a3d1c89ffac8114a1ac6	a s s e t s/q u a n t u m [ t r e e ].m4a
 002a02564c7ad3a38a4e491212b4ff6b604807125d30ae55e7ed535597e726f8	a s s e t s/wallet-fashion-reference.png
 d90a2e05eefd5b61d352b2994e9b0e4646193e175ff9944666f03a69d550126b	a s s e t s/Citizen Needs - Populated Radar - Diagram.png
 304d4fa92c0874490fe182dbfc624876a6b5c5c8e76dd1a5bc6a5e5c9ae167fe	a s s e t s/Meta logo.png
@@ -125,7 +126,7 @@ e5d291b702dd7b25a96599093c93f893da9fb4bca13f5aeaa56d731544f8d37f	a s s e t s/Vog
 6f73aa0ff756237d230bfecfbc5061dabfa896228f4914713cd6b7eba07460fd	adaptive-music-video.js
 a3dc2975c5d344de0e9b654d5a02bbef92b536131545eca3cd9a2a1d37168e8c	demo.html
 679377272b40ed6baf4d3baefc4fc769c709fa13ece2835156491623ae971105	i n f e r e n c e  e n g i n e  -  s y s t e m  p r o m p t  v  1 . 0.md
-95afe2867436ba3c1656d7b897302c4329800deb8574df8f9de2b62b8b24c5c5	cloudflare-stream-controller.js
+5eba3a3416a094812d0dff9b33d0b56c8a808e8a83ed6f62239ec9648b631cb4	cloudflare-stream-controller.js
 48827949511057e78be51bd6400e3d59b822dfa3a7f7a03bdf4172c719af6e7a	adaptive-music-api-setup.md
 cc96241e49b1c2366429ac6e1c6795ba8a22cb7c9f2b38ac05de02d140132bf8	vogue-self-report.html
 09e8aad6f5d94c6c1189379f9f5fdb6ab443b19d6bc7591f9ec4b863b44b8d49	quantum-tree-control.css
