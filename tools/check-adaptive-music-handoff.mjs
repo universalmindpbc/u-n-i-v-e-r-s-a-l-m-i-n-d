@@ -14,6 +14,7 @@ const djSetManifestPath = path.join(ROOT, 'cloudflare-stream-djset-upload-manife
 const televisionCssPath = path.join(IAM_DIR, 'adaptive-environment-television.css');
 const quantumTreeControlPagePath = path.join(IAM_DIR, 'quantum-tree-control.html');
 const quantumTreeControlScriptPath = path.join(IAM_DIR, 'quantum-tree-control.js');
+const quantumTreeAudioPath = path.join(IAM_DIR, 'a s s e t s', 'q u a n t u m [ t r e e ].m4a');
 const quantumTreeSettingsEndpointPath = path.join(IAM_DIR, 'api', 'quantum-tree-settings.php');
 const quantumTreeSettingsDataPath = path.join(IAM_DIR, 'api', 'quantum-tree-settings.json');
 const pagePaths = [
@@ -42,6 +43,7 @@ const quantumTreeControlPage = await fs.readFile(quantumTreeControlPagePath, 'ut
 const quantumTreeControlScript = await fs.readFile(quantumTreeControlScriptPath, 'utf8');
 const quantumTreeSettingsEndpoint = await fs.readFile(quantumTreeSettingsEndpointPath, 'utf8');
 const quantumTreeSettingsData = JSON.parse(await fs.readFile(quantumTreeSettingsDataPath, 'utf8'));
+const quantumTreeAudioStat = await fs.stat(quantumTreeAudioPath);
 const pages = await Promise.all(pagePaths.map(async (pagePath) => ({
   pagePath,
   source: await fs.readFile(pagePath, 'utf8'),
@@ -103,7 +105,7 @@ requireCondition(controller.includes('const SOUND_RESEARCH_SETTINGS_ENDPOINT = "
 requireCondition(controller.includes('async function loadSoundResearchSettings()'), 'the Quantum Tree platform setting loader is missing');
 requireCondition(!controller.includes('iamQuantumTreePeakVolume'), 'a browser-specific Quantum Tree peak override has returned');
 requireCondition(controller.includes('const radioIsAudible = continuationAudio && !continuationAudio.paused'), 'the Quantum Tree layer no longer detects active radio playback');
-requireCondition(controller.includes('const activeMedia = videoIsAudible ? localVideo : (radioIsAudible ? continuationAudio : null);'), 'the Quantum Tree layer no longer selects the audible video or radio source');
+requireCondition(controller.includes('media: videoIsAudible ? localVideo : (radioIsAudible ? continuationAudio : null),'), 'the Quantum Tree layer no longer selects the audible video or radio source');
 requireCondition(controller.includes('measuredLevel * activeMedia.volume'), 'the Quantum Tree layer no longer follows the measured level of the active media source');
 requireCondition(!controller.includes('return radioLevel * SOUND_RESEARCH_MAX_VOLUME;'), 'radio playback has returned to a fixed Quantum Tree gain');
 requireCondition(controller.includes('window.IAMQuantumTree = {'), 'the live Quantum Tree diagnostic interface is missing');
@@ -112,7 +114,12 @@ requireCondition(controller.includes('const verifiedOutput = verifiedPlaying && 
 requireCondition(controller.includes('data-quantum-monitor-toggle'), 'the live monitor has no Quantum Tree A/B control');
 requireCondition(controller.includes('data-quantum-monitor-audition'), 'the live monitor has no silence-gate audition control');
 requireCondition(controller.includes('soundResearchTestMode || soundResearchAuditionMode'), 'the administrator cannot audition the configured peak through the live monitor');
+requireCondition(controller.includes('q u a n t u m [ t r e e ].m4a'), 'the live Quantum Tree layer is not wired to the AAC source');
+requireCondition(controller.includes('soundResearchMediaInterrupted(activeMedia)'), 'the active EMDR session has no Quantum Tree media-interruption continuity');
+requireCondition(controller.includes('return soundResearchMaxVolume;'), 'the Quantum Tree interruption continuity no longer respects the platform peak');
 requireCondition(quantumTreeControlPage.includes('data-quantum-preview'), 'the owner dashboard has no isolated Quantum Tree player');
+requireCondition(quantumTreeControlPage.includes('q u a n t u m [ t r e e ].m4a'), 'the owner dashboard isolated test is not wired to the same AAC source');
+requireCondition(quantumTreeAudioStat.size > 900000 && quantumTreeAudioStat.size < 1200000, 'the Quantum Tree AAC asset does not match the expected 192 kbps build size');
 requireCondition(quantumTreeControlPage.includes('id="quantum-peak-slider"'), 'the owner dashboard has no peak slider');
 requireCondition(quantumTreeControlPage.includes('data-owner-login'), 'the administrator dashboard is not access-controlled');
 requireCondition(quantumTreeControlScript.includes('action: "save"'), 'the administrator dashboard no longer publishes the platform peak');
@@ -162,6 +169,9 @@ requireCondition(streamController.includes('video.dataset.streamStartupMs'), 'mu
 requireCondition(streamController.includes('video.dataset.streamWaitingCount'), 'music waiting diagnostics are missing');
 requireCondition(streamController.includes('video.dataset.streamStalledCount'), 'music stalled diagnostics are missing');
 requireCondition(streamController.includes('video.dataset.streamLastFreezeDurationMs'), 'music freeze-duration diagnostics are missing');
+requireCondition(streamController.includes('function setMaxHeight(video, maximumHeight = null'), 'the stream controller has no runtime quality cap');
+requireCondition(controller.includes('controller.setMaxHeight(localVideo, 360, "emdr_gif_active")'), 'GIF mode no longer caps the hidden music stream at 360p');
+requireCondition(controller.includes('video.dataset.streamMaxHeight = "720";'), 'the fashion runway no longer retains its 720p ceiling');
 requireCondition(shellController.includes(`cloudflare-stream-catalogue.js?v=${expectedStreamCatalogueToken}`), 'the shared script does not cache-bust the current Stream catalogue');
 requireCondition(shellController.includes(`cloudflare-stream-controller.js?v=${expectedStreamControllerToken}`), 'the shared script does not cache-bust the current Stream controller');
 
@@ -195,5 +205,9 @@ for (const { pagePath, source } of pages) {
   requireCondition(!source.includes('data-adaptive-typewriter-text="Charli XCX"'), `${label} can still display Charli XCX before selection resolves`);
   requireCondition(source.includes('name="iam-playback-telemetry-endpoint"'), `${label} does not publish playback telemetry to Cloudflare`);
 }
+
+const televisionPage = pages.find(({ pagePath }) => pagePath.endsWith('index.html'))?.source || '';
+requireCondition((televisionPage.match(/data-emdr-style-index=/g) || []).length === 2, 'the EMDR wallet does not expose both GIF and stellar buttons');
+requireCondition(televisionPage.includes('data-emdr-style-index="0"') && televisionPage.includes('data-emdr-style-index="1"'), 'the explicit GIF and stellar controls are not addressable independently');
 
 console.log(`Adaptive music handoff preflight passed (${expectedCacheToken}).`);

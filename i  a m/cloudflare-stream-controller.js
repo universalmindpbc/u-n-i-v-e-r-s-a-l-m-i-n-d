@@ -108,10 +108,11 @@
   }
 
   function capFor(role, video = null) {
-    if (role === "fashion") {
-      const requestedMaximum = Number(video?.dataset.streamMaxHeight || 360);
-      return Number.isFinite(requestedMaximum) ? Math.max(240, Math.min(1080, requestedMaximum)) : 360;
+    const requestedMaximum = Number(video?.dataset.streamMaxHeight);
+    if (Number.isFinite(requestedMaximum) && requestedMaximum >= 240) {
+      return Math.max(240, Math.min(1080, requestedMaximum));
     }
+    if (role === "fashion") return 360;
     return connectionIsConstrained() ? 720 : 1080;
   }
 
@@ -198,6 +199,32 @@
     state.hls.autoLevelCapping = selected.index;
     state.video.dataset.streamEffectiveMaxHeight = String(maximumHeight);
     state.video.dataset.streamLevelCap = String(selected.index);
+  }
+
+  function setMaxHeight(video, maximumHeight = null, reason = "runtime") {
+    if (!video) return 0;
+    const previousMaximum = video.dataset.streamMaxHeight || "automatic";
+    const requestedMaximum = Number(maximumHeight);
+    if (Number.isFinite(requestedMaximum) && requestedMaximum >= 240) {
+      video.dataset.streamMaxHeight = String(Math.max(240, Math.min(1080, Math.round(requestedMaximum))));
+    } else {
+      delete video.dataset.streamMaxHeight;
+    }
+
+    const state = states.get(video);
+    const role = state?.role || video.dataset.streamRole || "music";
+    const effectiveMaximum = capFor(role, video);
+    video.dataset.streamEffectiveMaxHeight = String(effectiveMaximum);
+    if (state?.hls) capHlsLevel(state);
+    if (state) {
+      recordTelemetry(state, "quality_cap_changed", {
+        quality_cap_previous: previousMaximum,
+        quality_cap_requested: video.dataset.streamMaxHeight || "automatic",
+        quality_cap: effectiveMaximum,
+        quality_cap_reason: String(reason || "runtime").slice(0, 80),
+      });
+    }
+    return effectiveMaximum;
   }
 
   function telemetrySnapshot(state, eventName, extra = {}) {
@@ -812,6 +839,7 @@
     preloadFashion,
     prepareFashionReveal,
     noteFashionReveal,
+    setMaxHeight,
     bufferedAhead,
     upgradeDocumentVideos,
     assetFor: catalogue.assetFor,

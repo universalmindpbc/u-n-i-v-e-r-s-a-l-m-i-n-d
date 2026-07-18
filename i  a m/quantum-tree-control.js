@@ -1,6 +1,7 @@
 (function () {
   const DEFAULT_PEAK = 0.055;
   const SETTINGS_ENDPOINT = "api/quantum-tree-settings.php";
+  const SOURCE_LABEL = "Quantum Tree AAC · 192 kbps";
   const accessPanel = document.querySelector("[data-owner-access]");
   const dashboard = document.querySelector("[data-owner-dashboard]");
   const loginForm = document.querySelector("[data-owner-login]");
@@ -115,7 +116,7 @@
     const playing = !audio.paused && !audio.ended;
     const verified = fileReady && playing && advancing && audio.volume > 0;
 
-    setText("[data-file-status]", fileReady ? `loaded · ${audio.duration.toFixed(1)}s` : (audio.error ? "error" : "loading"));
+    setText("[data-file-status]", fileReady ? `${SOURCE_LABEL} · loaded · ${audio.duration.toFixed(1)}s` : (audio.error ? `${SOURCE_LABEL} · error` : `${SOURCE_LABEL} · loading`));
     setText("[data-playback-status]", playbackError || (audio.error ? "error" : (playing ? "playing" : "stopped")));
     setText("[data-signal-clock]", `${currentTime.toFixed(1)} seconds`);
     setText("[data-signal-advancing]", advancing ? "yes" : "no");
@@ -206,7 +207,7 @@
 
   audio.addEventListener("error", () => {
     playbackError = "file error";
-    setText("[data-file-status]", "file error");
+    setText("[data-file-status]", `${SOURCE_LABEL} · file error`);
   });
   audio.addEventListener("play", () => {
     playbackError = "";

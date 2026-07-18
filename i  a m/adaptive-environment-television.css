@@ -337,11 +337,11 @@ body.television-support-card-open .adaptive-television-support-card {
 /* Editorial GIF preset: six complete square animations surrounding one silent
    runway source, mirrored exactly into the central black fashion casing. */
 .adaptive-television-room {
-  --emdr-gif-casing-gap: clamp(12px, 1vw, 30px);
+  --emdr-gif-casing-gap: clamp(10px, .8vw, 24px);
   --emdr-gif-grid-gap: min(3.4vw, 5.6vh, 100px);
   --emdr-gif-tile-size: min(24vw, 42vh, 720px);
-  --emdr-gif-front-width: min(60vw, 104vh);
-  --emdr-gif-front-height: min(33.75vw, 58.5vh);
+  --emdr-gif-front-width: min(45vw, 80vh);
+  --emdr-gif-front-height: min(25.3125vw, 45vh);
 }
 
 .adaptive-television-emdr-gif-world {
@@ -3728,7 +3728,22 @@ button.adaptive-television-research-tooltip__more {
 
 .adaptive-television-emdr-style {
   position: relative;
-  min-width: 92px;
+  min-width: 78px;
+  color: rgba(255, 255, 255, 0.48);
+  background: rgba(255, 255, 255, 0.035);
+  transition: color 240ms ease, border-color 240ms ease, background 240ms ease, opacity 240ms ease;
+}
+
+.adaptive-television-emdr-style-group {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.adaptive-television-emdr-style[aria-pressed="true"] {
+  border-color: rgba(255, 255, 255, 0.34);
+  background: rgba(255, 255, 255, 0.15);
+  color: rgba(255, 255, 255, 0.98);
 }
 
 .adaptive-television-emdr-react,

@@ -117,7 +117,7 @@
   const fashionRunwayDots = document.querySelector("[data-fashion-runway-dots]");
   const emdrCanvas = document.querySelector("[data-emdr-canvas]");
   const emdrOff = document.querySelector("[data-emdr-off]");
-  const emdrStyle = document.querySelector("[data-emdr-style]");
+  const emdrStyleButtons = Array.from(document.querySelectorAll("[data-emdr-style]"));
   const emdrReact = document.querySelector("[data-emdr-react]");
   const emdrAutomate = document.querySelector("[data-emdr-automate]");
   const emdrIntensity = document.querySelector("[data-emdr-intensity]");
@@ -157,10 +157,12 @@
   let fashionHeroFrame = null;
   let fashionHeroCanvas = null;
   let fashionHeroContext = null;
-  let fashionHeroAnimationFrame = 0;
+  let fashionHeroFallbackTimer = 0;
   let fashionHeroVideoFrame = 0;
   let fashionHeroVideoFrameSource = null;
   let fashionHeroGeneration = 0;
+  let fashionHeroLastMediaTime = -1;
+  let fashionHeroDrawCount = 0;
   let fashionRunwayIndex = 0;
   let fashionRunwaySwitching = false;
   let requestedVideoBlend = Number(videoCrossfader?.value || 100);
@@ -192,12 +194,17 @@
   let soundResearchMonitor = null;
   let soundResearchAuditionMode = false;
   let soundResearchSettingsLoaded = false;
+  let soundResearchContinuityActive = false;
+  let soundResearchLastError = "";
+  let soundResearchLastPlayReason = "";
+  let soundResearchWatchdog = 0;
   const soundResearchParams = new URLSearchParams(window.location.search);
   const soundResearchTestMode = soundResearchParams.get("soundResearchTest") === "1";
   const soundResearchMonitorMode = soundResearchParams.get("quantumTreeMonitor") === "1";
   let soundResearchEnabled = soundResearchTestMode || localStorage.getItem("iamSoundResearchLayer") !== "off";
   const SOUND_RESEARCH_DEFAULT_MAX_VOLUME = 0.055;
   const SOUND_RESEARCH_SETTINGS_ENDPOINT = "api/quantum-tree-settings.php";
+  const SOUND_RESEARCH_AUDIO_SRC = "a s s e t s/q u a n t u m [ t r e e ].m4a";
   const SOUND_RESEARCH_SILENCE_FLOOR = 0.012;
   const SOUND_RESEARCH_FULL_MASK_LEVEL = 0.12;
   const SOUND_RESEARCH_MASKING_CURVE = 0.75;
@@ -241,6 +248,8 @@
   const emdrStyleValues = [7, 5];
   let emdrStyleIndex = 0;
   let emdrGifPreviousVideoBlend = null;
+  let emdrGifPreviousMusicMaxHeight = null;
+  let emdrGifMusicMaxHeightCaptured = false;
   let emdrIntensityFrame = 0;
   let emdrIntensityJourneyStartedAt = 0;
   let emdrIntensityJourneyLastAt = 0;
@@ -654,19 +663,20 @@
 
   function stopFashionHeroMirror() {
     fashionHeroGeneration += 1;
-    if (fashionHeroAnimationFrame) {
-      window.cancelAnimationFrame(fashionHeroAnimationFrame);
-      fashionHeroAnimationFrame = 0;
+    if (fashionHeroFallbackTimer) {
+      window.clearTimeout(fashionHeroFallbackTimer);
+      fashionHeroFallbackTimer = 0;
     }
     if (fashionHeroVideoFrame && fashionHeroVideoFrameSource?.cancelVideoFrameCallback) {
       try { fashionHeroVideoFrameSource.cancelVideoFrameCallback(fashionHeroVideoFrame); } catch {}
     }
     fashionHeroVideoFrame = 0;
     fashionHeroVideoFrameSource = null;
+    fashionHeroLastMediaTime = -1;
     if (fashionHeroFrame) fashionHeroFrame.dataset.fashionHeroMirror = "inactive";
   }
 
-  function drawFashionHeroFrame() {
+  function drawFashionHeroFrame(mediaTime = Number(fashionVideo?.currentTime || 0)) {
     if (!fashionHeroCanvas || !fashionHeroContext || !fashionVideo || fashionVideo.readyState < 2) return;
     const sourceWidth = fashionVideo.videoWidth;
     const sourceHeight = fashionVideo.videoHeight;
@@ -674,10 +684,12 @@
     const frameHeight = fashionHeroFrame?.clientHeight || 0;
     if (!sourceWidth || !sourceHeight || !frameWidth || !frameHeight) return;
 
-    const pixelRatio = Math.min(2, Math.max(1, window.devicePixelRatio || 1));
+    const pixelRatio = Math.min(1.5, Math.max(1, window.devicePixelRatio || 1));
     const targetWidth = Math.max(1, Math.round(frameWidth * pixelRatio));
     const targetHeight = Math.max(1, Math.round(frameHeight * pixelRatio));
-    if (fashionHeroCanvas.width !== targetWidth || fashionHeroCanvas.height !== targetHeight) {
+    const needsResize = fashionHeroCanvas.width !== targetWidth || fashionHeroCanvas.height !== targetHeight;
+    if (!needsResize && Math.abs(Number(mediaTime) - fashionHeroLastMediaTime) < 0.0005) return;
+    if (needsResize) {
       fashionHeroCanvas.width = targetWidth;
       fashionHeroCanvas.height = targetHeight;
     }
@@ -709,7 +721,12 @@
         targetWidth,
         targetHeight
       );
+      fashionHeroLastMediaTime = Number(mediaTime);
+      fashionHeroDrawCount += 1;
       fashionHeroFrame.dataset.fashionHeroMirror = "ready";
+      fashionHeroFrame.dataset.fashionHeroPixelRatio = pixelRatio.toFixed(2);
+      fashionHeroFrame.dataset.fashionHeroDrawCount = String(fashionHeroDrawCount);
+      fashionHeroFrame.dataset.fashionHeroMediaTime = fashionHeroLastMediaTime.toFixed(3);
       delete fashionHeroFrame.dataset.fashionHeroError;
     } catch (error) {
       fashionHeroFrame.dataset.fashionHeroMirror = "error";
@@ -719,27 +736,30 @@
 
   function scheduleFashionHeroMirror(generation) {
     if (generation !== fashionHeroGeneration || !document.body.classList.contains("television-emdr-gif-active")) return;
-    drawFashionHeroFrame();
 
     if (fashionVideo?.requestVideoFrameCallback && !fashionVideo.paused && fashionVideo.readyState >= 2) {
       fashionHeroVideoFrameSource = fashionVideo;
-      fashionHeroVideoFrame = fashionVideo.requestVideoFrameCallback(() => {
+      fashionHeroVideoFrame = fashionVideo.requestVideoFrameCallback((_now, metadata) => {
         fashionHeroVideoFrame = 0;
+        drawFashionHeroFrame(metadata?.mediaTime);
         scheduleFashionHeroMirror(generation);
       });
       return;
     }
 
-    fashionHeroAnimationFrame = window.requestAnimationFrame(() => {
-      fashionHeroAnimationFrame = 0;
+    const fallbackDelay = fashionVideo?.paused ? 250 : 42;
+    fashionHeroFallbackTimer = window.setTimeout(() => {
+      fashionHeroFallbackTimer = 0;
+      drawFashionHeroFrame();
       scheduleFashionHeroMirror(generation);
-    });
+    }, fallbackDelay);
   }
 
   function startFashionHeroMirror() {
     stopFashionHeroMirror();
     if (fashionHeroFrame) fashionHeroFrame.dataset.fashionHeroMirror = "starting";
     const generation = fashionHeroGeneration;
+    drawFashionHeroFrame();
     scheduleFashionHeroMirror(generation);
   }
 
@@ -1392,13 +1412,39 @@
   function setEmdrGifPresentationActive(active) {
     if (active) {
       if (emdrGifPreviousVideoBlend === null) emdrGifPreviousVideoBlend = requestedVideoBlend;
+      if (!emdrGifMusicMaxHeightCaptured && localVideo) {
+        emdrGifPreviousMusicMaxHeight = localVideo.dataset.streamMaxHeight || null;
+        emdrGifMusicMaxHeightCaptured = true;
+      }
+      if (localVideo) {
+        const controller = window.IAMStreamController;
+        const effectiveMaximum = controller?.setMaxHeight
+          ? controller.setMaxHeight(localVideo, 360, "emdr_gif_active")
+          : 360;
+        if (!controller?.setMaxHeight) localVideo.dataset.streamMaxHeight = "360";
+        localVideo.dataset.emdrGifQualityCap = String(effectiveMaximum);
+      }
       setVideoBlend(0);
       playerMount.dataset.emdrGifVideoLayers = "active";
       startFashionHeroMirror();
+      startSoundResearchLayer();
       return;
     }
 
     stopFashionHeroMirror();
+    if (localVideo && emdrGifMusicMaxHeightCaptured) {
+      const controller = window.IAMStreamController;
+      if (controller?.setMaxHeight) {
+        controller.setMaxHeight(localVideo, emdrGifPreviousMusicMaxHeight, "emdr_gif_inactive");
+      } else if (emdrGifPreviousMusicMaxHeight) {
+        localVideo.dataset.streamMaxHeight = emdrGifPreviousMusicMaxHeight;
+      } else {
+        delete localVideo.dataset.streamMaxHeight;
+      }
+      delete localVideo.dataset.emdrGifQualityCap;
+    }
+    emdrGifPreviousMusicMaxHeight = null;
+    emdrGifMusicMaxHeightCaptured = false;
     if (emdrGifPreviousVideoBlend !== null) {
       const previousBlend = emdrGifPreviousVideoBlend;
       emdrGifPreviousVideoBlend = null;
@@ -1764,11 +1810,36 @@
     }
   }
 
-  function soundResearchTargetVolume() {
-    if (soundResearchTestMode || soundResearchAuditionMode) return soundResearchMaxVolume;
+  function soundResearchActiveMedia() {
     const videoIsAudible = localVideo && !localVideo.paused && !localVideo.muted && localVideo.volume > 0;
     const radioIsAudible = continuationAudio && !continuationAudio.paused && !continuationAudio.muted && continuationAudio.volume > 0;
-    const activeMedia = videoIsAudible ? localVideo : (radioIsAudible ? continuationAudio : null);
+    return {
+      media: videoIsAudible ? localVideo : (radioIsAudible ? continuationAudio : null),
+      source: videoIsAudible ? "video" : (radioIsAudible ? "radio" : "none"),
+    };
+  }
+
+  function soundResearchMediaInterrupted(activeMedia) {
+    if (!window.IAMEMDR?.active) return false;
+    if (!activeMedia) return true;
+    return Boolean(
+      activeMedia.ended ||
+      activeMedia.readyState < HTMLMediaElement.HAVE_FUTURE_DATA ||
+      activeMedia.dataset?.streamFreezeState
+    );
+  }
+
+  function soundResearchTargetVolume() {
+    if (soundResearchTestMode || soundResearchAuditionMode) {
+      soundResearchContinuityActive = false;
+      return soundResearchMaxVolume;
+    }
+    const { media: activeMedia } = soundResearchActiveMedia();
+    soundResearchContinuityActive = soundResearchMediaInterrupted(activeMedia);
+    if (soundResearchContinuityActive) {
+      soundResearchMediaLevel = 0;
+      return soundResearchMaxVolume;
+    }
     if (activeMedia) {
       const measuredLevel = Number(window.IAMEMDR?.getAudioLevel?.());
       soundResearchMediaLevel = Number.isFinite(measuredLevel) ? measuredLevel * activeMedia.volume : 0;
@@ -1785,12 +1856,12 @@
   }
 
   function soundResearchDiagnostics() {
-    const videoIsAudible = localVideo && !localVideo.paused && !localVideo.muted && localVideo.volume > 0;
-    const radioIsAudible = continuationAudio && !continuationAudio.paused && !continuationAudio.muted && continuationAudio.volume > 0;
-    const activeSource = videoIsAudible ? "video" : (radioIsAudible ? "radio" : "none");
+    const { source: activeSource } = soundResearchActiveMedia();
     return {
       enabled: soundResearchEnabled,
       activeSource,
+      sourceFile: SOUND_RESEARCH_AUDIO_SRC,
+      codec: "AAC 192 kbps",
       fileLoaded: Boolean(soundResearchAudio && soundResearchAudio.readyState >= 2),
       playing: Boolean(soundResearchAudio && !soundResearchAudio.paused && !soundResearchAudio.ended),
       advancing: soundResearchPlaybackAdvancing,
@@ -1802,6 +1873,9 @@
       currentVolume: Number(soundResearchAudio?.volume || 0),
       peakVolume: soundResearchMaxVolume,
       auditionMode: soundResearchAuditionMode,
+      continuityActive: soundResearchContinuityActive,
+      lastError: soundResearchLastError,
+      lastPlayReason: soundResearchLastPlayReason,
       settingsLoaded: soundResearchSettingsLoaded,
       silenceFloor: SOUND_RESEARCH_SILENCE_FLOOR,
       fullMaskLevel: SOUND_RESEARCH_FULL_MASK_LEVEL,
@@ -1821,7 +1895,9 @@
       <dl style="display:grid;grid-template-columns:1fr auto;gap:6px 14px;margin:0">
         <dt style="opacity:.62">Audio source</dt><dd data-quantum-monitor-source style="margin:0">none</dd>
         <dt style="opacity:.62">File</dt><dd data-quantum-monitor-file style="margin:0">not loaded</dd>
+        <dt style="opacity:.62">Encoding</dt><dd data-quantum-monitor-codec style="margin:0">AAC 192 kbps</dd>
         <dt style="opacity:.62">Signal</dt><dd data-quantum-monitor-signal style="margin:0">stopped</dd>
+        <dt style="opacity:.62">Continuity</dt><dd data-quantum-monitor-continuity style="margin:0">normal masking</dd>
         <dt style="opacity:.62">Media RMS</dt><dd data-quantum-monitor-media style="margin:0">0.000</dd>
         <dt style="opacity:.62">Current gain</dt><dd data-quantum-monitor-current style="margin:0">0%</dd>
         <dt style="opacity:.62">Target gain</dt><dd data-quantum-monitor-target style="margin:0">0%</dd>
@@ -1860,11 +1936,13 @@
     };
     const verifiedPlaying = diagnostics.playing && diagnostics.advancing;
     const verifiedOutput = verifiedPlaying && diagnostics.currentVolume > 0.0001;
-    const status = !diagnostics.enabled
-      ? "disabled"
-      : (diagnostics.auditionMode && verifiedOutput
-        ? "auditioning peak"
-        : (verifiedOutput ? "verified output" : (verifiedPlaying ? "playing · gated silent" : (diagnostics.playing ? "starting" : "stopped"))));
+    let status = diagnostics.playing ? "starting" : "stopped";
+    if (verifiedPlaying) status = "playing · gated silent";
+    if (verifiedOutput) status = "verified output";
+    if (diagnostics.auditionMode && verifiedOutput) status = "auditioning peak";
+    if (diagnostics.continuityActive && verifiedOutput) status = "continuity at peak";
+    if (diagnostics.lastError) status = "playback blocked";
+    if (!diagnostics.enabled) status = "disabled";
     const statusElement = soundResearchMonitor.querySelector("[data-quantum-monitor-status]");
     if (statusElement) {
       statusElement.textContent = status;
@@ -1872,8 +1950,10 @@
       statusElement.style.color = verifiedOutput ? "#9effbf" : "#fff";
     }
     setText("[data-quantum-monitor-source]", diagnostics.activeSource);
-    setText("[data-quantum-monitor-file]", diagnostics.fileLoaded ? "loaded" : "loading");
+    setText("[data-quantum-monitor-file]", diagnostics.fileLoaded ? "Quantum Tree AAC loaded" : "Quantum Tree AAC loading");
+    setText("[data-quantum-monitor-codec]", diagnostics.codec);
     setText("[data-quantum-monitor-signal]", diagnostics.advancing ? `${diagnostics.currentTime.toFixed(1)}s advancing` : "not advancing");
+    setText("[data-quantum-monitor-continuity]", diagnostics.continuityActive ? "saved peak during media interruption" : "normal waveform masking");
     setText("[data-quantum-monitor-media]", diagnostics.mediaLevel.toFixed(4));
     setText("[data-quantum-monitor-current]", `${(diagnostics.currentVolume * 100).toFixed(1)}%`);
     setText("[data-quantum-monitor-target]", `${(diagnostics.targetVolume * 100).toFixed(1)}%`);
@@ -1916,8 +1996,63 @@
       emdrSoundResearch.dataset.soundResearchAdvancing = String(diagnostics.advancing);
       emdrSoundResearch.dataset.soundResearchCurrentTime = diagnostics.currentTime.toFixed(3);
       emdrSoundResearch.dataset.soundResearchActiveSource = diagnostics.activeSource;
+      emdrSoundResearch.dataset.soundResearchSourceFile = diagnostics.sourceFile;
+      emdrSoundResearch.dataset.soundResearchCodec = diagnostics.codec;
+      emdrSoundResearch.dataset.soundResearchContinuityActive = String(diagnostics.continuityActive);
+      emdrSoundResearch.dataset.soundResearchLastError = diagnostics.lastError;
+      emdrSoundResearch.dataset.soundResearchLastPlayReason = diagnostics.lastPlayReason;
     }
     updateSoundResearchMonitor(diagnostics);
+  }
+
+  function requestSoundResearchPlayback(reason = "runtime") {
+    if (!soundResearchAudio || !soundResearchEnabled) return Promise.resolve(false);
+    soundResearchLastPlayReason = reason;
+    const attempt = soundResearchAudio.play();
+    if (!attempt?.then) return Promise.resolve(true);
+    return attempt.then(() => {
+      soundResearchLastError = "";
+      return true;
+    }).catch((error) => {
+      soundResearchLastError = `${error?.name || "PlaybackError"}: ${error?.message || "Quantum Tree playback was blocked"}`.slice(0, 180);
+      return false;
+    });
+  }
+
+  function ensureSoundResearchAudio() {
+    if (soundResearchAudio) return soundResearchAudio;
+    soundResearchAudio = new Audio(SOUND_RESEARCH_AUDIO_SRC);
+    soundResearchAudio.loop = true;
+    soundResearchAudio.preload = "auto";
+    soundResearchAudio.playsInline = true;
+    soundResearchAudio.volume = 0;
+    soundResearchPlaybackObservedAt = window.performance?.now?.() || Date.now();
+    soundResearchAudio.addEventListener("playing", () => {
+      soundResearchLastError = "";
+      soundResearchPlaybackObservedAt = window.performance?.now?.() || Date.now();
+    });
+    soundResearchAudio.addEventListener("error", () => {
+      const code = Number(soundResearchAudio?.error?.code || 0);
+      soundResearchLastError = `MediaError ${code || "unknown"}: Quantum Tree AAC could not be decoded`;
+    });
+    if (!soundResearchWatchdog) {
+      soundResearchWatchdog = window.setInterval(() => {
+        if (!soundResearchEnabled || !soundResearchAudio || document.hidden) return;
+        const watchdogNow = window.performance?.now?.() || Date.now();
+        const clockStalled = !soundResearchAudio.paused && watchdogNow - soundResearchPlaybackObservedAt > 2500;
+        if (soundResearchAudio.readyState < HTMLMediaElement.HAVE_CURRENT_DATA || clockStalled) {
+          soundResearchAudio.load();
+          soundResearchPlaybackObservedAt = watchdogNow;
+          requestSoundResearchPlayback(clockStalled ? "clock_stall_recovery" : "decode_recovery");
+        } else if (soundResearchAudio.paused || soundResearchAudio.ended) {
+          requestSoundResearchPlayback("pause_recovery");
+        }
+      }, 1000);
+      document.addEventListener("visibilitychange", () => {
+        if (!document.hidden && soundResearchEnabled) requestSoundResearchPlayback("visibility_recovery");
+      });
+    }
+    return soundResearchAudio;
   }
 
   function updateSoundResearchGain(now = 0) {
@@ -1933,7 +2068,7 @@
     const diagnosticNow = Number(now) || window.performance?.now?.() || Date.now();
     if (target > 0 && soundResearchAudio.paused && diagnosticNow - soundResearchRetryAt > 1000) {
       soundResearchRetryAt = diagnosticNow;
-      soundResearchAudio.play().catch(() => null);
+      requestSoundResearchPlayback("gain_recovery");
     }
     publishSoundResearchDiagnostics(diagnosticNow);
     soundResearchGainFrame = window.requestAnimationFrame(updateSoundResearchGain);
@@ -1941,13 +2076,8 @@
 
   function startSoundResearchLayer() {
     if (!soundResearchEnabled) return;
-    if (!soundResearchAudio) {
-      soundResearchAudio = new Audio("a s s e t s/q u a n t u m [ t r e e ].wav");
-      soundResearchAudio.loop = true;
-      soundResearchAudio.preload = "auto";
-      soundResearchAudio.volume = 0;
-    }
-    soundResearchAudio.play().catch(() => null);
+    ensureSoundResearchAudio();
+    requestSoundResearchPlayback("layer_start");
     if (!soundResearchGainFrame) soundResearchGainFrame = window.requestAnimationFrame(updateSoundResearchGain);
   }
 
@@ -1967,6 +2097,7 @@
       soundResearchAudio.volume = 0;
       soundResearchTargetLevel = 0;
       soundResearchMediaLevel = 0;
+      soundResearchContinuityActive = false;
       window.cancelAnimationFrame(soundResearchGainFrame);
       soundResearchGainFrame = 0;
     }
@@ -2331,6 +2462,16 @@
     };
   }
 
+  function syncEmdrStyleButtons() {
+    emdrStyleButtons.forEach((button) => {
+      const buttonIndex = Number(button.dataset.emdrStyleIndex);
+      const styleName = emdrStyleNames[buttonIndex] || "EMDR";
+      const selected = buttonIndex === emdrStyleIndex;
+      button.setAttribute("aria-pressed", String(selected));
+      button.setAttribute("aria-label", `Use ${styleName} EMDR style${selected ? " (selected)" : ""}`);
+    });
+  }
+
   function applyEmdrAdaptation() {
     const adaptation = selectEmdrAdaptation();
     const adaptiveStartingIntensity = Math.max(.22, Math.min(.3, adaptation.intensity));
@@ -2346,10 +2487,7 @@
     });
     window.IAMEMDR?.setStyle(emdrStyleValues[emdrStyleIndex]);
     window.IAMEMDR?.setIntensity(startingIntensity);
-    if (emdrStyle) {
-      emdrStyle.textContent = adaptation.style;
-      emdrStyle.setAttribute("aria-label", `EMDR style: ${adaptation.style}. Activate next style`);
-    }
+    syncEmdrStyleButtons();
     if (emdrIntensity) emdrIntensity.value = String(Math.round(startingIntensity * 100));
     adaptation.intensityJourney = {
       start: startingIntensity,
@@ -2375,12 +2513,8 @@
     const currentStyleValue = runtimeStyle === 4 ? 2 : runtimeStyle;
     const currentStyleIndex = emdrStyleValues.indexOf(currentStyleValue);
     emdrStyleIndex = currentStyleIndex >= 0 ? currentStyleIndex : 0;
-    const styleName = emdrStyleNames[emdrStyleIndex];
     const intensity = Math.max(0, Math.min(1, Number(window.IAMEMDR.intensity) || 0));
-    if (emdrStyle) {
-      emdrStyle.textContent = styleName;
-      emdrStyle.setAttribute("aria-label", `EMDR style: ${styleName}. Activate next style`);
-    }
+    syncEmdrStyleButtons();
     if (emdrIntensity) emdrIntensity.value = String(Math.round(intensity * 100));
     emdrReact?.setAttribute("aria-pressed", String(Boolean(window.IAMEMDR.reactionEnabled)));
     emdrAutomate?.setAttribute("aria-pressed", String(emdrAutomateEnabled));
@@ -2700,6 +2834,7 @@
         if (syncActiveEmdrControls()) {
           button.setAttribute("aria-pressed", "true");
           setWalletView("emdr");
+          startSoundResearchLayer();
           return;
         }
         const adaptation = applyEmdrAdaptation();
@@ -2709,6 +2844,7 @@
         button.setAttribute("aria-pressed", String(Boolean(active)));
         if (active) {
           setWalletView("emdr");
+          startSoundResearchLayer();
           if (emdrAutomateEnabled) startEmdrIntensityJourney(adaptation.intensityJourney.minimum);
           else window.IAMEMDR?.setIntensity(adaptation.intensityJourney.start);
         }
@@ -2747,14 +2883,16 @@
     document.querySelector('[data-video-mode="emdr"]')?.setAttribute("aria-pressed", "false");
     setWalletView("video");
   });
-  emdrStyle?.addEventListener("click", (event) => {
+  emdrStyleButtons.forEach((button) => button.addEventListener("click", (event) => {
     event.preventDefault();
     event.stopPropagation();
-    emdrStyleIndex = (emdrStyleIndex + 1) % emdrStyleNames.length;
+    const requestedStyleIndex = Number(button.dataset.emdrStyleIndex);
+    if (!Number.isInteger(requestedStyleIndex) || !emdrStyleValues[requestedStyleIndex]) return;
+    emdrStyleIndex = requestedStyleIndex;
     window.IAMEMDR?.setStyle(emdrStyleValues[emdrStyleIndex]);
-    emdrStyle.textContent = emdrStyleNames[emdrStyleIndex];
-    emdrStyle.setAttribute("aria-label", `EMDR style: ${emdrStyleNames[emdrStyleIndex]}. Activate next style`);
-  });
+    syncEmdrStyleButtons();
+    startSoundResearchLayer();
+  }));
   emdrReact?.addEventListener("click", (event) => {
     event.preventDefault();
     event.stopPropagation();
@@ -2779,6 +2917,7 @@
     event.stopPropagation();
     setSoundResearchEnabled(!soundResearchEnabled);
   });
+  syncEmdrStyleButtons();
   syncSoundResearchControl();
   setSoundResearchPeakVolume(soundResearchMaxVolume, "built-in default");
   initSoundResearchMonitor();
