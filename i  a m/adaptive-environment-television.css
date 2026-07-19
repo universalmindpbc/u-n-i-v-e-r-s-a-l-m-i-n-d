@@ -787,7 +787,8 @@ body.community-globe-open .adaptive-television-community {
 
 body.community-globe-open .adaptive-television-live-pill,
 body.community-globe-open .adaptive-television-reaction-wallet,
-body.community-globe-open .adaptive-television-fullscreen {
+body.community-globe-open .adaptive-television-fullscreen,
+body.community-globe-open .adaptive-television-wallet-onboarding {
   opacity: 0 !important;
   pointer-events: none !important;
 }
