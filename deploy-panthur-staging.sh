@@ -22,6 +22,7 @@ fi
 export FTP_HOST="${FTP_HOST:-sh00023.pa.smartservers.com.au}"
 export FTP_USER="${FTP_USER:-stagingdeploy@universalmind.tv}"
 export FTP_PASS_FILE="${FTP_PASS_FILE:-/private/tmp/um-staging-ftp-pass.txt}"
+export FTP_KEYCHAIN_SERVICE="${FTP_KEYCHAIN_SERVICE:-universalmind-staging-ftp}"
 export REMOTE_ROOT=""
 export MANIFEST_FILE="${MANIFEST_FILE:-$ROOT_DIR/.panthur-staging-deploy-manifest.tsv}"
 

@@ -7,7 +7,9 @@
 - Staging publisher: `./deploy-panthur-staging.sh`
 - Production publisher: `./deploy-panthurlive.sh`
 
-Production publishing uses the dedicated `codexdeploy@universalmind.tv` FTP account, restricted to `/public_html`. Its credential is stored outside the repository in the encrypted macOS Keychain under the `universalmind-production-ftp` service. The publisher also accepts `/private/tmp/um-public-html-ftp-pass.txt` as a temporary override.
+Staging publishing uses the dedicated `stagingdeploy@universalmind.tv` FTP account. Its credential is stored outside the repository in the encrypted macOS Keychain under the `universalmind-staging-ftp` service. The staging publisher also accepts `/private/tmp/um-staging-ftp-pass.txt` as a temporary override.
+
+Production publishing uses the dedicated `codexdeploy@universalmind.tv` FTP account, restricted to `/public_html`. Its credential is stored outside the repository in the encrypted macOS Keychain under the `universalmind-production-ftp` service. The production publisher also accepts `/private/tmp/um-public-html-ftp-pass.txt` as a temporary override.
 
 The Panthur deployment scripts remain the only website publishing method. GitHub stores version history and provides the rollback safety net; it does not automatically deploy either environment.
 
