@@ -2,6 +2,23 @@ body.adaptive-television-page {
   background: #000;
 }
 
+.adaptive-television-page .background-video::before {
+  content: none;
+  background: none;
+}
+
+.adaptive-television-page .background-video video {
+  opacity: 1;
+}
+
+.adaptive-television-page .background-video video[data-stream-reveal="pending"] {
+  opacity: 0;
+}
+
+.adaptive-television-page .background-video video[data-stream-reveal="ready"] {
+  opacity: 1;
+}
+
 .adaptive-television-page .brand-lockup,
 .adaptive-television-page .homepage-welcome-copy,
 .adaptive-television-page .adaptive-environment__copy,
