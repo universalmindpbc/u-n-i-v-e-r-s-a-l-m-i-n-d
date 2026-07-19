@@ -11,6 +11,8 @@ const iamReflectionFlora = document.querySelector("[data-iam-reflection-flora]")
 const iamReflectionText = document.querySelector("[data-iam-reflection-text]");
 const iamTransfer = document.querySelector("[data-iam-transfer]");
 const globePage = document.querySelector(".globe-page");
+const isCommunityOverlay = document.documentElement.classList.contains("iam-community-overlay");
+const communityMonogramTextureUrl = "a s s e t s/universal-mind-flora-travel-monogram-leather-v1.webp";
 const configuredInferenceEndpoint =
   window.IAM_CITIZEN_NEEDS_INFERENCE_ENDPOINT ||
   document.querySelector('meta[name="iam-citizen-needs-inference-endpoint"]')?.content;
@@ -1067,7 +1069,155 @@ if (iamForm && iamStart && iamControl && iamInput) {
   });
 }
 
-function makeGlobeTexture() {
+function loadImageAsset(source) {
+  return new Promise((resolve) => {
+    const image = new Image();
+    image.decoding = "async";
+    image.addEventListener("load", () => resolve(image), { once: true });
+    image.addEventListener("error", () => resolve(null), { once: true });
+    image.src = source;
+  });
+}
+
+function traceNormalizedLand(ctx, points, width, height) {
+  ctx.beginPath();
+  points.forEach(([x, y], index) => {
+    const pointX = x * width;
+    const pointY = y * height;
+    if (index === 0) ctx.moveTo(pointX, pointY);
+    else ctx.lineTo(pointX, pointY);
+  });
+  ctx.closePath();
+}
+
+function makeCommunityGlobeTexture(monogramImage) {
+  const canvas = document.createElement("canvas");
+  canvas.width = 2048;
+  canvas.height = 1024;
+  const ctx = canvas.getContext("2d");
+  const width = canvas.width;
+  const height = canvas.height;
+  const ocean = ctx.createLinearGradient(0, 0, width, height);
+  ocean.addColorStop(0, "#082f52");
+  ocean.addColorStop(0.42, "#11637d");
+  ocean.addColorStop(0.7, "#0c526c");
+  ocean.addColorStop(1, "#061f3c");
+  ctx.fillStyle = ocean;
+  ctx.fillRect(0, 0, width, height);
+
+  const oceanLight = ctx.createRadialGradient(width * 0.42, height * 0.28, 20, width * 0.42, height * 0.28, width * 0.64);
+  oceanLight.addColorStop(0, "rgba(112, 196, 196, 0.28)");
+  oceanLight.addColorStop(0.44, "rgba(31, 119, 145, 0.08)");
+  oceanLight.addColorStop(1, "rgba(2, 19, 41, 0.36)");
+  ctx.fillStyle = oceanLight;
+  ctx.fillRect(0, 0, width, height);
+
+  ctx.strokeStyle = "rgba(193, 227, 213, 0.075)";
+  ctx.lineWidth = 2;
+  for (let y = 60; y < height; y += 68) {
+    ctx.beginPath();
+    ctx.moveTo(0, y);
+    for (let x = 0; x <= width; x += 80) {
+      ctx.quadraticCurveTo(x + 20, y - 8, x + 40, y);
+      ctx.quadraticCurveTo(x + 60, y + 8, x + 80, y);
+    }
+    ctx.stroke();
+  }
+
+  let leatherPattern = null;
+  if (monogramImage) {
+    const tile = document.createElement("canvas");
+    tile.width = 320;
+    tile.height = 320;
+    tile.getContext("2d").drawImage(monogramImage, 0, 0, tile.width, tile.height);
+    leatherPattern = ctx.createPattern(tile, "repeat");
+  }
+
+  const landMasses = [
+    [[0.018, 0.27], [0.052, 0.20], [0.11, 0.17], [0.16, 0.20], [0.19, 0.24], [0.245, 0.26], [0.285, 0.33], [0.274, 0.39], [0.238, 0.41], [0.214, 0.38], [0.174, 0.43], [0.145, 0.40], [0.112, 0.43], [0.075, 0.38], [0.032, 0.35]],
+    [[0.207, 0.41], [0.247, 0.43], [0.275, 0.50], [0.285, 0.58], [0.267, 0.67], [0.242, 0.76], [0.218, 0.69], [0.205, 0.58], [0.19, 0.49]],
+    [[0.295, 0.10], [0.335, 0.08], [0.363, 0.14], [0.352, 0.22], [0.318, 0.25], [0.29, 0.19]],
+    [[0.438, 0.27], [0.466, 0.23], [0.51, 0.25], [0.535, 0.3], [0.52, 0.35], [0.48, 0.34], [0.448, 0.32]],
+    [[0.46, 0.34], [0.505, 0.32], [0.546, 0.38], [0.55, 0.48], [0.525, 0.62], [0.486, 0.66], [0.458, 0.55], [0.44, 0.44]],
+    [[0.505, 0.24], [0.55, 0.18], [0.61, 0.16], [0.66, 0.2], [0.71, 0.17], [0.77, 0.2], [0.832, 0.19], [0.89, 0.25], [0.93, 0.31], [0.91, 0.38], [0.86, 0.4], [0.825, 0.46], [0.77, 0.43], [0.735, 0.49], [0.68, 0.45], [0.65, 0.39], [0.604, 0.37], [0.565, 0.32], [0.53, 0.31]],
+    [[0.776, 0.59], [0.823, 0.55], [0.875, 0.58], [0.902, 0.65], [0.878, 0.72], [0.821, 0.74], [0.785, 0.69]],
+    [[0.925, 0.42], [0.943, 0.39], [0.952, 0.45], [0.944, 0.51], [0.932, 0.49]],
+    [[0.55, 0.62], [0.56, 0.65], [0.555, 0.72], [0.543, 0.69]],
+    [[0, 0.86], [0.08, 0.84], [0.17, 0.87], [0.27, 0.85], [0.37, 0.88], [0.48, 0.85], [0.58, 0.88], [0.68, 0.85], [0.78, 0.88], [0.9, 0.84], [1, 0.87], [1, 1], [0, 1]],
+  ];
+
+  landMasses.forEach((points, index) => {
+    traceNormalizedLand(ctx, points, width, height);
+    ctx.fillStyle = leatherPattern || "#9a4b21";
+    ctx.fill();
+    ctx.save();
+    ctx.clip();
+    const emeraldWash = ctx.createLinearGradient(0, 0, width, height);
+    emeraldWash.addColorStop(0, "rgba(31, 111, 72, 0.7)");
+    emeraldWash.addColorStop(0.54, "rgba(18, 92, 65, 0.38)");
+    emeraldWash.addColorStop(1, "rgba(111, 132, 62, 0.52)");
+    ctx.globalCompositeOperation = "multiply";
+    ctx.fillStyle = emeraldWash;
+    ctx.fillRect(0, 0, width, height);
+    const leatherHighlight = ctx.createLinearGradient(0, height * 0.12, 0, height * 0.82);
+    leatherHighlight.addColorStop(0, "rgba(255, 207, 136, 0.2)");
+    leatherHighlight.addColorStop(0.5, "rgba(120, 58, 24, 0.02)");
+    leatherHighlight.addColorStop(1, "rgba(49, 20, 7, 0.26)");
+    ctx.globalCompositeOperation = "screen";
+    ctx.fillStyle = leatherHighlight;
+    ctx.fillRect(0, 0, width, height);
+    ctx.restore();
+    traceNormalizedLand(ctx, points, width, height);
+    ctx.strokeStyle = index === landMasses.length - 1 ? "rgba(220, 181, 115, 0.42)" : "rgba(234, 193, 124, 0.74)";
+    ctx.lineWidth = index === landMasses.length - 1 ? 2 : 3;
+    ctx.stroke();
+  });
+
+  const glaze = ctx.createLinearGradient(0, 0, width, 0);
+  glaze.addColorStop(0, "rgba(86, 28, 8, 0.14)");
+  glaze.addColorStop(0.28, "rgba(255, 217, 162, 0.07)");
+  glaze.addColorStop(0.66, "rgba(57, 137, 124, 0.05)");
+  glaze.addColorStop(1, "rgba(25, 8, 4, 0.18)");
+  ctx.fillStyle = glaze;
+  ctx.fillRect(0, 0, width, height);
+
+  return canvas;
+}
+
+function makeMiniPlanetTexture(seed = 0) {
+  const canvas = document.createElement("canvas");
+  canvas.width = 256;
+  canvas.height = 128;
+  const ctx = canvas.getContext("2d");
+  const ocean = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
+  ocean.addColorStop(0, seed % 2 ? "#0b4d72" : "#0d6380");
+  ocean.addColorStop(1, "#071f42");
+  ctx.fillStyle = ocean;
+  ctx.fillRect(0, 0, canvas.width, canvas.height);
+  const islands = [
+    [0.08, 0.32, 0.2, 0.19],
+    [0.32, 0.56, 0.26, 0.24],
+    [0.59, 0.24, 0.22, 0.22],
+    [0.76, 0.62, 0.28, 0.2],
+  ];
+  ctx.fillStyle = seed % 2 ? "#4a8a55" : "#3d9a70";
+  islands.forEach(([x, y, width, height], index) => {
+    ctx.beginPath();
+    ctx.ellipse((x + seed * 0.07) % 1 * canvas.width, y * canvas.height, width * canvas.width, height * canvas.height, index * 0.42, 0, Math.PI * 2);
+    ctx.fill();
+  });
+  ctx.strokeStyle = "rgba(228, 190, 123, 0.62)";
+  ctx.lineWidth = 2;
+  ctx.beginPath();
+  ctx.moveTo(0, canvas.height * 0.48);
+  ctx.bezierCurveTo(canvas.width * 0.27, canvas.height * 0.32, canvas.width * 0.63, canvas.height * 0.66, canvas.width, canvas.height * 0.44);
+  ctx.stroke();
+  return canvas;
+}
+
+function makeGlobeTexture(monogramImage = null) {
+  if (isCommunityOverlay) return makeCommunityGlobeTexture(monogramImage);
+
   const canvas = document.createElement("canvas");
   canvas.width = 1024;
   canvas.height = 512;
@@ -1206,8 +1356,12 @@ async function initGlobe() {
   const communityActivationSequence = communityNodes
     .map((node, index) => (node.hero ? index : null))
     .filter((index) => index !== null);
-  const beaconColors = ["#80a8ff", "#ffd92e", "#ff005e"];
-  const beaconSoftColors = ["rgba(128, 168, 255, 0.24)", "rgba(255, 217, 46, 0.24)", "rgba(255, 0, 94, 0.24)"];
+  const beaconColors = isCommunityOverlay
+    ? ["#e2b675", "#5da882", "#8abec5"]
+    : ["#80a8ff", "#ffd92e", "#ff005e"];
+  const beaconSoftColors = isCommunityOverlay
+    ? ["rgba(226, 182, 117, 0.18)", "rgba(93, 168, 130, 0.18)", "rgba(138, 190, 197, 0.18)"]
+    : ["rgba(128, 168, 255, 0.24)", "rgba(255, 217, 46, 0.24)", "rgba(255, 0, 94, 0.24)"];
   let activeCommunityIndex = communityActivationSequence[0];
   let activeCommunityStep = -1;
   let lastCommunityActivation = 0;
@@ -1227,17 +1381,42 @@ async function initGlobe() {
     "Bondi Beach": { x: 0.76, y: -0.44, labelSide: "right" },
     "Avoca Beach": { x: 0.58, y: -0.76, labelSide: "right" },
   };
-  const texture = new THREE.CanvasTexture(makeGlobeTexture());
+  const monogramImage = isCommunityOverlay ? await loadImageAsset(communityMonogramTextureUrl) : null;
+  const texture = new THREE.CanvasTexture(makeGlobeTexture(monogramImage));
   texture.colorSpace = THREE.SRGBColorSpace;
+  texture.anisotropy = Math.min(8, renderer.capabilities.getMaxAnisotropy());
+
+  let leatherBumpTexture = null;
+  if (isCommunityOverlay && monogramImage) {
+    leatherBumpTexture = new THREE.Texture(monogramImage);
+    leatherBumpTexture.wrapS = THREE.RepeatWrapping;
+    leatherBumpTexture.wrapT = THREE.RepeatWrapping;
+    leatherBumpTexture.repeat.set(7, 3.5);
+    leatherBumpTexture.needsUpdate = true;
+  }
 
   nodeLabel.className = "globe-node-label";
   nodeLabelBeacon.className = "globe-label-beacon";
   nodeLabel.style.opacity = "0";
   nodeLabel.append(nodeLabelBeacon, nodeLabelName, nodeLabelState);
 
-  const globe = new THREE.Mesh(
-    new THREE.SphereGeometry(radius, 96, 96),
-    new THREE.MeshStandardMaterial({
+  const globeMaterial = isCommunityOverlay
+    ? new THREE.MeshPhysicalMaterial({
+      map: texture,
+      bumpMap: leatherBumpTexture,
+      bumpScale: leatherBumpTexture ? 0.018 : 0,
+      color: "#ffffff",
+      metalness: 0.12,
+      roughness: 0.46,
+      clearcoat: 0.42,
+      clearcoatRoughness: 0.31,
+      sheen: 0.5,
+      sheenColor: new THREE.Color("#8a4b2a"),
+      sheenRoughness: 0.58,
+      emissive: "#180b06",
+      emissiveIntensity: 0.08,
+    })
+    : new THREE.MeshStandardMaterial({
       map: texture,
       color: "#ffffff",
       metalness: 0.1,
@@ -1246,36 +1425,60 @@ async function initGlobe() {
       emissiveIntensity: 0.42,
       opacity: 0.889,
       transparent: true,
-    })
-  );
+    });
+  const globe = new THREE.Mesh(new THREE.SphereGeometry(radius, 96, 96), globeMaterial);
 
-  const atmosphere = new THREE.Mesh(
-    new THREE.SphereGeometry(radius * 1.018, 96, 96),
-    new THREE.MeshBasicMaterial({
+  const atmosphereMaterial = isCommunityOverlay
+    ? new THREE.ShaderMaterial({
+      transparent: true,
+      depthWrite: false,
+      vertexShader: `
+        varying vec3 vViewNormal;
+        void main() {
+          vViewNormal = normalize(normalMatrix * normal);
+          gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
+        }
+      `,
+      fragmentShader: `
+        varying vec3 vViewNormal;
+        void main() {
+          float rim = pow(1.0 - abs(dot(vViewNormal, vec3(0.0, 0.0, 1.0))), 3.2);
+          vec3 emerald = vec3(0.20, 0.48, 0.39);
+          vec3 champagne = vec3(0.90, 0.68, 0.40);
+          vec3 color = mix(emerald, champagne, 0.64 + vViewNormal.y * 0.12);
+          gl_FragColor = vec4(color, rim * 0.42);
+        }
+      `,
+    })
+    : new THREE.MeshBasicMaterial({
       color: "#80a8ff",
       transparent: true,
       opacity: 0.12,
       wireframe: true,
-    })
-  );
+    });
+  const atmosphere = new THREE.Mesh(new THREE.SphereGeometry(radius * (isCommunityOverlay ? 1.035 : 1.018), 96, 96), atmosphereMaterial);
 
   scene.add(globeGroup);
   globeGroup.add(globe, atmosphere);
-  scene.add(new THREE.AmbientLight("#ffffff", 1.8));
+  if (isCommunityOverlay) {
+    scene.add(new THREE.HemisphereLight("#f4dec0", "#133c3a", 1.65));
+  } else {
+    scene.add(new THREE.AmbientLight("#ffffff", 1.8));
+  }
 
   const ringMaterial = new THREE.MeshBasicMaterial({
     color: "#ffffff",
     transparent: true,
     opacity: 0.12,
-    blending: THREE.AdditiveBlending,
+    blending: isCommunityOverlay ? THREE.NormalBlending : THREE.AdditiveBlending,
     depthWrite: false,
   });
   const cyanRingMaterial = ringMaterial.clone();
-  cyanRingMaterial.color = new THREE.Color("#00f0d8");
-  cyanRingMaterial.opacity = 0.07;
+  cyanRingMaterial.color = new THREE.Color(isCommunityOverlay ? "#d9aa67" : "#00f0d8");
+  cyanRingMaterial.opacity = isCommunityOverlay ? 0.16 : 0.07;
   const magentaRingMaterial = ringMaterial.clone();
-  magentaRingMaterial.color = new THREE.Color("#d8fff8");
-  magentaRingMaterial.opacity = 0.025;
+  magentaRingMaterial.color = new THREE.Color(isCommunityOverlay ? "#5f9a79" : "#d8fff8");
+  magentaRingMaterial.opacity = isCommunityOverlay ? 0.11 : 0.025;
 
   const currentRing = new THREE.Mesh(new THREE.TorusGeometry(radius * 1.06, 0.003, 8, 160), cyanRingMaterial);
   currentRing.rotation.set(1.25, 0.12, 0.5);
@@ -1283,18 +1486,53 @@ async function initGlobe() {
   counterRing.rotation.set(1.42, 0.64, -0.35);
   globeGroup.add(currentRing, counterRing);
 
-  const keyLight = new THREE.DirectionalLight("#ffffff", 3.4);
+  const keyLight = new THREE.DirectionalLight(isCommunityOverlay ? "#ffe0b4" : "#ffffff", isCommunityOverlay ? 4.2 : 3.4);
   keyLight.position.set(4, 2, 5);
   scene.add(keyLight);
+  let fashionFillLight = null;
+  if (isCommunityOverlay) {
+    fashionFillLight = new THREE.PointLight("#6eb5a0", 1.35, 14, 2);
+    fashionFillLight.position.set(-4, -1.2, 3.6);
+    scene.add(fashionFillLight);
+    const rimLight = new THREE.DirectionalLight("#d7a867", 2.2);
+    rimLight.position.set(-3.5, 2.8, -4);
+    scene.add(rimLight);
+  }
 
-  checkInData.forEach((point) => {
+  const orbitingPlanets = [];
+  if (isCommunityOverlay) {
+    const planetDefinitions = [
+      { size: 0.075, orbit: 1.94, height: 0.72, depth: 0.52, phase: 0.2, speed: 0.00022 },
+      { size: 0.105, orbit: 2.12, height: 0.48, depth: 0.64, phase: 2.4, speed: -0.00016 },
+      { size: 0.06, orbit: 2.28, height: 0.88, depth: 0.38, phase: 4.3, speed: 0.00012 },
+    ];
+    planetDefinitions.forEach((definition, index) => {
+      const planetTexture = new THREE.CanvasTexture(makeMiniPlanetTexture(index));
+      planetTexture.colorSpace = THREE.SRGBColorSpace;
+      const planet = new THREE.Mesh(
+        new THREE.SphereGeometry(definition.size, 32, 32),
+        new THREE.MeshPhysicalMaterial({
+          map: planetTexture,
+          metalness: 0.08,
+          roughness: 0.38,
+          clearcoat: 0.48,
+          clearcoatRoughness: 0.24,
+        })
+      );
+      orbitingPlanets.push({ mesh: planet, ...definition });
+      globeGroup.add(planet);
+    });
+  }
+
+  checkInData.forEach((point, index) => {
     const surface = latLngToVector3(point.lat, point.lng, radius);
     const top = latLngToVector3(point.lat, point.lng, radius + point.size);
-    const material = new THREE.MeshBasicMaterial({ color: point.color });
+    const pointColor = isCommunityOverlay ? ["#e2b675", "#68ad86", "#9ac7ca"][index % 3] : point.color;
+    const material = new THREE.MeshBasicMaterial({ color: pointColor });
     const marker = new THREE.Mesh(new THREE.SphereGeometry(0.025, 18, 18), material);
     const spike = new THREE.Line(
       new THREE.BufferGeometry().setFromPoints([surface, top]),
-      new THREE.LineBasicMaterial({ color: point.color, transparent: true, opacity: 0.58 })
+      new THREE.LineBasicMaterial({ color: pointColor, transparent: true, opacity: isCommunityOverlay ? 0.34 : 0.58 })
     );
 
     marker.position.copy(top);
@@ -1302,17 +1540,17 @@ async function initGlobe() {
     globeGroup.add(marker, spike);
   });
 
-  const arcLines = arcData.map((arc) => {
+  const arcLines = arcData.map((arc, arcIndex) => {
     const start = latLngToVector3(arc.startLat, arc.startLng, radius + 0.025);
     const end = latLngToVector3(arc.endLat, arc.endLng, radius + 0.025);
     const curve = makeArcCurve(start, end);
     const points = curve.getPoints(64);
     const line = new THREE.Line(
       new THREE.BufferGeometry().setFromPoints(points),
-      new THREE.LineBasicMaterial({ color: arc.color, transparent: true, opacity: 0.24 })
+      new THREE.LineBasicMaterial({ color: isCommunityOverlay ? ["#e2b675", "#5da882", "#9ac7ca"][arcIndex % 3] : arc.color, transparent: true, opacity: isCommunityOverlay ? 0.18 : 0.24 })
     );
     globeGroup.add(line);
-    return { line, curve, color: arc.color };
+    return { line, curve, color: isCommunityOverlay ? ["#e2b675", "#5da882", "#9ac7ca"][arcIndex % 3] : arc.color };
   });
 
   arcLines.forEach((arc, arcIndex) => {
@@ -1336,8 +1574,8 @@ async function initGlobe() {
     }
   });
 
-  namasteData.forEach((item) => {
-    const sprite = makeTextSprite(item.text, item.color);
+  namasteData.forEach((item, index) => {
+    const sprite = makeTextSprite(item.text, isCommunityOverlay ? ["#efd7b0", "#d3a765", "#7eb493", "#f4ead8"][index % 4] : item.color);
     sprite.position.copy(latLngToVector3(item.lat, item.lng, radius + 0.34));
     namasteSprites.push(sprite);
     globeGroup.add(sprite);
@@ -1345,7 +1583,9 @@ async function initGlobe() {
 
   function addCommunityMarker(node, index, visualOverride) {
     const isHero = node.hero === true;
-    const warmth = index % 3 === 0 ? "#fff6d6" : index % 3 === 1 ? "#ffd9ec" : "#d9fff8";
+    const warmth = isCommunityOverlay
+      ? (index % 3 === 0 ? "#f0d0a0" : index % 3 === 1 ? "#75aa87" : "#9fc7c2")
+      : (index % 3 === 0 ? "#fff6d6" : index % 3 === 1 ? "#ffd9ec" : "#d9fff8");
     const core = new THREE.Mesh(
       new THREE.SphereGeometry(isHero ? 0.014 : 0.009, 14, 14),
       new THREE.MeshBasicMaterial({
@@ -1610,10 +1850,27 @@ async function initGlobe() {
   }
 
   function animateGlobe(time) {
-    globeGroup.rotation.y += 0.0015;
-    globeGroup.rotation.x = Math.sin(time * 0.00022) * 0.05;
-    currentRing.rotation.z += 0.0018;
-    counterRing.rotation.z -= 0.0012;
+    globeGroup.rotation.y += isCommunityOverlay ? 0.00108 : 0.0015;
+    globeGroup.rotation.x = Math.sin(time * 0.00022) * (isCommunityOverlay ? 0.035 : 0.05);
+    currentRing.rotation.z += isCommunityOverlay ? 0.00075 : 0.0018;
+    counterRing.rotation.z -= isCommunityOverlay ? 0.00052 : 0.0012;
+    if (isCommunityOverlay) {
+      keyLight.position.x = 4.2 + Math.sin(time * 0.00018) * 1.8;
+      keyLight.position.y = 2.2 + Math.cos(time * 0.00013) * 0.65;
+      if (fashionFillLight) {
+        fashionFillLight.position.x = -3.7 + Math.cos(time * 0.00016) * 1.4;
+        fashionFillLight.position.y = -0.8 + Math.sin(time * 0.00019) * 0.9;
+      }
+      orbitingPlanets.forEach((planet, index) => {
+        const angle = time * planet.speed + planet.phase;
+        planet.mesh.position.set(
+          Math.cos(angle) * planet.orbit,
+          Math.sin(angle * 1.18 + index * 0.8) * planet.height,
+          Math.sin(angle) * planet.depth
+        );
+        planet.mesh.rotation.y += 0.003 + index * 0.0007;
+      });
+    }
     signalMarkers.forEach((marker, index) => {
       const pulse = 1 + Math.sin(time * 0.004 + index) * 0.28;
       marker.scale.setScalar(pulse);

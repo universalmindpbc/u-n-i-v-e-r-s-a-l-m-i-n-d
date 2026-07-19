@@ -669,7 +669,10 @@ body.television-emdr-gif-active .adaptive-television-emdr-intensity {
   width: 100%;
   height: 100%;
   border: 0;
-  background: rgba(0, 0, 0, 0.77);
+  background:
+    linear-gradient(112deg, rgba(51, 21, 8, 0.42), rgba(6, 25, 28, 0.21) 54%, rgba(58, 29, 11, 0.34)),
+    rgba(22, 12, 8, 0.28);
+  backdrop-filter: blur(2px) saturate(0.82) sepia(0.12);
   cursor: default;
 }
 
@@ -685,12 +688,52 @@ body.television-emdr-gif-active .adaptive-television-emdr-intensity {
 }
 
 .adaptive-television-community__numbers.adaptive-television-live-popover {
-  top: 50%;
+  top: auto;
   left: 50%;
+  bottom: clamp(24px, 4.2vh, 52px);
   z-index: 2;
+  grid-template-columns: repeat(9, minmax(28px, 1fr));
+  column-gap: clamp(7px, 1.1vw, 18px);
+  row-gap: 0;
+  width: min(720px, calc(100vw - 96px));
+  border: 0;
+  border-top: 1px solid rgba(219, 176, 108, 0.38);
+  border-bottom: 1px solid rgba(219, 176, 108, 0.2);
+  border-radius: 0;
+  background: linear-gradient(90deg, transparent, rgba(68, 33, 14, 0.26) 16%, rgba(21, 53, 48, 0.14) 84%, transparent);
+  box-shadow: none;
+  backdrop-filter: none;
   opacity: 1;
+  padding: 10px 0 9px;
   pointer-events: none;
-  transform: translate(-50%, -50%) scale(1);
+  transform: translateX(-50%) scale(1);
+}
+
+.adaptive-television-community__numbers.adaptive-television-live-popover span {
+  display: grid;
+  grid-template-columns: 1fr;
+  justify-items: center;
+  min-height: 26px;
+  color: rgba(218, 240, 220, 0.8);
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 9px;
+  letter-spacing: 0.14em;
+}
+
+.adaptive-television-community__numbers.adaptive-television-live-popover b {
+  min-width: 0;
+  color: rgba(217, 177, 110, 0.88);
+  font-size: 8px;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-shadow: none;
+}
+
+.adaptive-television-community__numbers.adaptive-television-live-popover em {
+  color: rgba(231, 244, 226, 0.9);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 12px;
+  text-shadow: none;
 }
 
 .adaptive-television-community__close {
@@ -702,10 +745,10 @@ body.television-emdr-gif-active .adaptive-television-emdr-intensity {
   place-items: center;
   width: 44px;
   height: 44px;
-  border: 1px solid rgba(255, 255, 255, 0.24);
+  border: 1px solid rgba(223, 182, 117, 0.5);
   border-radius: 50%;
-  background: rgba(0, 0, 0, 0.24);
-  color: rgba(255, 255, 255, 0.86);
+  background: rgba(58, 27, 12, 0.2);
+  color: rgba(247, 226, 194, 0.9);
   cursor: pointer;
   font: 200 30px/1 "Helvetica Neue", Helvetica, Arial, sans-serif;
   padding: 0 0 3px;
@@ -713,10 +756,27 @@ body.television-emdr-gif-active .adaptive-television-emdr-intensity {
 
 .adaptive-television-community__close:hover,
 .adaptive-television-community__close:focus-visible {
-  border-color: rgba(255, 255, 255, 0.62);
-  background: rgba(255, 255, 255, 0.09);
-  color: #fff;
+  border-color: rgba(239, 207, 157, 0.9);
+  background: rgba(118, 66, 30, 0.28);
+  color: #fff2dd;
   outline: 0;
+}
+
+@media (max-width: 760px) {
+  .adaptive-television-community__numbers.adaptive-television-live-popover {
+    bottom: 18px;
+    column-gap: 4px;
+    width: calc(100vw - 36px);
+    padding: 8px 0 7px;
+  }
+
+  .adaptive-television-community__numbers.adaptive-television-live-popover span {
+    font-size: 8px;
+  }
+
+  .adaptive-television-community__numbers.adaptive-television-live-popover em {
+    font-size: 11px;
+  }
 }
 
 body.community-globe-open .adaptive-television-community {
