@@ -12,6 +12,7 @@
     downPivot: null,
     materials: [],
     edgeMaterials: [],
+    facetMaterials: [],
     seedMaterial: null,
     nestedStars: [],
     architecture: [],
@@ -224,6 +225,65 @@
     mesh.add(edges);
   }
 
+  function coutureFacetMaterial(THREE, primary, secondary) {
+    const material = new THREE.ShaderMaterial({
+      transparent: true,
+      depthWrite: false,
+      side: THREE.DoubleSide,
+      blending: THREE.NormalBlending,
+      uniforms: {
+        uTime: { value: 0 },
+        uIntensity: { value: .6 },
+        uSweep: { value: 0 },
+        uFlash: { value: 0 },
+        uPrimary: { value: new THREE.Color(primary) },
+        uSecondary: { value: new THREE.Color(secondary) },
+      },
+      vertexShader: `
+        varying vec3 vNormal;
+        varying vec3 vViewPosition;
+        varying vec3 vWorldPosition;
+        void main() {
+          vec4 worldPosition = modelMatrix * vec4(position, 1.0);
+          vec4 viewPosition = modelViewMatrix * vec4(position, 1.0);
+          vNormal = normalize(normalMatrix * normal);
+          vViewPosition = -viewPosition.xyz;
+          vWorldPosition = worldPosition.xyz;
+          gl_Position = projectionMatrix * viewPosition;
+        }
+      `,
+      fragmentShader: `
+        precision highp float;
+        varying vec3 vNormal;
+        varying vec3 vViewPosition;
+        varying vec3 vWorldPosition;
+        uniform float uTime;
+        uniform float uIntensity;
+        uniform float uSweep;
+        uniform float uFlash;
+        uniform vec3 uPrimary;
+        uniform vec3 uSecondary;
+        void main() {
+          vec3 normal = normalize(vNormal);
+          vec3 viewDirection = normalize(vViewPosition);
+          float rim = pow(1.0 - abs(dot(normal, viewDirection)), 2.65);
+          float cut = pow(max(0.0, dot(normal, normalize(vec3(-.18, .72, .68)))), 11.0);
+          float sweep = exp(-pow(vWorldPosition.x - uSweep * 1.45, 2.0) * 7.0);
+          float prismatic = .5 + .5 * sin(uTime * .055 + normal.x * 2.2 + normal.y * 1.6);
+          vec3 colour = mix(uPrimary, uSecondary, prismatic);
+          colour = mix(colour, vec3(1.0, .985, .95), cut * .72 + uFlash * .55);
+          float alpha = rim * (.075 + uIntensity * .075);
+          alpha += cut * (.045 + uIntensity * .035);
+          alpha += sweep * (rim * .14 + cut * .055);
+          alpha += uFlash * (rim * .22 + cut * .14);
+          gl_FragColor = vec4(colour, min(alpha, .46));
+        }
+      `,
+    });
+    state.facetMaterials.push(material);
+    return material;
+  }
+
   function addTemple(THREE, scene) {
     const group = new THREE.Group();
     group.position.set(0, -.24, -2.35);
@@ -270,9 +330,9 @@
 
     const pearlGeometry = new THREE.SphereGeometry(1, 24, 16);
     [
-      { x: -2.5, y: .88, z: -1.2, size: .105, phase: .6 },
-      { x: 2.72, y: .48, z: -1.52, size: .14, phase: 2.8 },
-      { x: 1.95, y: 1.35, z: -2.2, size: .072, phase: 4.7 },
+      { x: -2.5, y: .88, z: -1.2, size: .07, phase: .6 },
+      { x: 2.72, y: .48, z: -1.52, size: .095, phase: 2.8 },
+      { x: 1.95, y: 1.35, z: -2.2, size: .05, phase: 4.7 },
     ].forEach((specification) => {
       const material = new THREE.MeshPhysicalMaterial({
         color: "#fff8ef",
@@ -305,16 +365,16 @@
   function addSculpture(THREE, scene) {
     const geometry = tetrahedronGeometry(THREE);
     const upMaterial = physicalMaterial(THREE, {
-      color: "#f2c98f", emissive: "#6d213a", emissiveIntensity: .11,
-      metalness: .02, roughness: .08, opacity: .34, sheen: "#fff7df",
-      transmission: .72, thickness: .58, attenuationColor: "#9d2755",
-      attenuationDistance: 1.35, envMapIntensity: 1.65, role: "outer",
+      color: "#fff4df", emissive: "#7d2948", emissiveIntensity: .075,
+      metalness: .01, roughness: .045, opacity: .23, sheen: "#fffdf8",
+      transmission: .9, thickness: .62, attenuationColor: "#be5574",
+      attenuationDistance: 1.65, envMapIntensity: 2.65, role: "outer",
     });
     const downMaterial = physicalMaterial(THREE, {
-      color: "#c6a7ec", emissive: "#3b146a", emissiveIntensity: .12,
-      metalness: .02, roughness: .075, opacity: .31, sheen: "#f8dcff",
-      transmission: .76, thickness: .54, attenuationColor: "#7930b3",
-      attenuationDistance: 1.2, envMapIntensity: 1.72, role: "outer",
+      color: "#ede2ff", emissive: "#451279", emissiveIntensity: .08,
+      metalness: .01, roughness: .04, opacity: .215, sheen: "#fbf2ff",
+      transmission: .91, thickness: .58, attenuationColor: "#6d28a5",
+      attenuationDistance: 1.48, envMapIntensity: 2.75, role: "outer",
     });
     const innerUpMaterial = physicalMaterial(THREE, {
       color: "#fff4e4", emissive: "#8f224e", emissiveIntensity: .28,
@@ -339,8 +399,14 @@
     down.rotation.z = Math.PI;
     up.castShadow = true;
     down.castShadow = true;
-    addCoutureEdges(THREE, up, geometry, "#f7d9a9", .23);
-    addCoutureEdges(THREE, down, geometry, "#ead7ff", .21);
+    addCoutureEdges(THREE, up, geometry, "#ffe0a9", .34);
+    addCoutureEdges(THREE, down, geometry, "#e5caff", .31);
+
+    const upFacet = new THREE.Mesh(geometry, coutureFacetMaterial(THREE, "#f2c17e", "#fffaf2"));
+    const downFacet = new THREE.Mesh(geometry, coutureFacetMaterial(THREE, "#7525c7", "#f2dfff"));
+    upFacet.scale.setScalar(1.006);
+    downFacet.scale.setScalar(1.006);
+    downFacet.rotation.z = Math.PI;
 
     const innerUp = new THREE.Mesh(geometry, innerUpMaterial);
     innerUp.scale.setScalar(.46);
@@ -380,8 +446,8 @@
     downAura.scale.setScalar(1.055);
     downAura.rotation.z = Math.PI;
 
-    state.upPivot.add(up, innerUp, upAura);
-    state.downPivot.add(down, innerDown, downAura);
+    state.upPivot.add(up, innerUp, upAura, upFacet);
+    state.downPivot.add(down, innerDown, downAura, downFacet);
     state.sculpture.add(state.upPivot, state.downPivot);
 
     const coreMaterial = physicalMaterial(THREE, {
@@ -519,7 +585,7 @@
     const kick = rhythm ? rhythm[1] : 0;
     const snare = rhythm ? rhythm[2] : 0;
     const pace = (.035 + intensity * .12) * motion;
-    const breath = 1 + bass * (.004 + intensity * .006) + kick * intensity * .009 + Math.sin(time * .58) * .0035;
+    const breath = .88 + bass * (.004 + intensity * .006) + kick * intensity * .009 + Math.sin(time * .58) * .0035;
     const separation = intensity * .007 + kick * intensity * .01;
     const sweepPosition = Math.sin(time * .42);
     const flash = Math.pow(Math.max(0, Math.sin(time * .29 - 1.4)), 34);
@@ -559,7 +625,7 @@
       const role = material.userData.role;
       if (role === "outer") {
         material.emissiveIntensity = material.userData.baseEmissive + intensity * .16 + flash * .18;
-        material.opacity = material.userData.baseOpacity * (.92 + intensity * .12);
+        material.opacity = material.userData.baseOpacity * (.78 + intensity * .1);
       } else if (role === "inner") {
         material.emissiveIntensity = material.userData.baseEmissive + intensity * .44 + bass * .18 + snare * .12;
         material.opacity = material.userData.baseOpacity * (.86 + intensity * .42);
@@ -570,6 +636,12 @@
     });
     state.edgeMaterials.forEach((material, index) => {
       material.opacity = Math.min(.72, material.userData.baseOpacity * (.72 + intensity * .52) + flash * .42 + snare * (index ? .08 : .13));
+    });
+    state.facetMaterials.forEach((material) => {
+      material.uniforms.uTime.value = time;
+      material.uniforms.uIntensity.value = intensity;
+      material.uniforms.uSweep.value = sweepPosition;
+      material.uniforms.uFlash.value = flash;
     });
     if (state.core) {
       const corePulse = 1 + bass * (.025 + intensity * .025) + kick * .014;
@@ -585,7 +657,7 @@
     state.pearls.forEach((item) => {
       item.mesh.position.x = item.baseX + Math.sin(time * .055 + item.phase) * .34;
       item.mesh.position.y = item.baseY + Math.cos(time * .07 + item.phase) * .11;
-      item.material.opacity = .26 + intensity * .19 + flash * .12;
+      item.material.opacity = .16 + intensity * .13 + flash * .09;
     });
     state.sparkles.forEach((item, index) => {
       const reveal = Math.pow(Math.max(0, Math.sin(time * .22 + item.phase)), 42);
