@@ -24,6 +24,7 @@
     previousTreble: 0,
     lastKickAt: 0,
     lastSnareAt: 0,
+    lastAccentAt: 0,
     reducedMotion: window.matchMedia("(prefers-reduced-motion: reduce)"),
     uniforms: {},
     diagnosticFrame: 0,
@@ -631,21 +632,27 @@
         state.reactionPrimed = true;
         return;
       }
-      if (bassDelta > .04 && targets[0] > .12 && bassDelta > Math.max(.014, midDelta * 1.12) && now - state.lastKickAt > 190) {
-        state.rhythm[1] = Math.min(1, .24 + bassDelta * 5.2 + targets[0] * .28);
+      if (bassDelta > .018 && targets[0] > .075 && bassDelta > Math.max(.008, midDelta * .75) && now - state.lastKickAt > 110) {
+        state.rhythm[1] = Math.min(1, .34 + bassDelta * 7.2 + targets[0] * .38);
         state.lastKickAt = now;
       } else {
-        state.rhythm[1] *= .8;
+        state.rhythm[1] *= .76;
       }
-      if (snareDelta > .034 && hatDelta > .014 && snareBand > .095 && snareDelta > Math.max(.012, midDelta * .72) && now - state.lastSnareAt > 180) {
-        state.rhythm[2] = Math.min(1, .22 + snareDelta * 5.8 + hatBand * .22);
+      if (snareDelta > .014 && snareBand > .06 && (hatDelta > .007 || snareDelta > Math.max(.006, midDelta * .42)) && now - state.lastSnareAt > 95) {
+        state.rhythm[2] = Math.min(1, .32 + snareDelta * 8.2 + hatBand * .34);
         state.lastSnareAt = now;
       } else {
-        state.rhythm[2] *= .74;
+        state.rhythm[2] *= .72;
       }
       state.rhythm[0] += (targets[0] - state.rhythm[0]) * (targets[0] > state.rhythm[0] ? .2 : .055);
-      const percussion = Math.max(state.rhythm[1], state.rhythm[2]);
-      state.rhythm[3] += (percussion - state.rhythm[3]) * (percussion > state.rhythm[3] ? .3 : .09);
+      const spectralAccent = Math.max(0, bassDelta) * .55 + Math.max(0, snareDelta) * 1.1 + Math.max(0, hatDelta) * .8;
+      let accentImpulse = 0;
+      if (spectralAccent > .018 && now - state.lastAccentAt > 82) {
+        accentImpulse = Math.min(1, .3 + spectralAccent * 7.5);
+        state.lastAccentAt = now;
+      }
+      const percussion = Math.max(state.rhythm[1], state.rhythm[2], accentImpulse);
+      state.rhythm[3] += (percussion - state.rhythm[3]) * (percussion > state.rhythm[3] ? .62 : .14);
       state.previousBass = targets[0];
       state.previousMid = targets[1];
       state.previousSnareBand = snareBand;
@@ -707,6 +714,13 @@
     resize(); updateAudio();
     const elapsed = (now - state.startedAt) / 1000;
     const visualTimeline = resolveVisualTimeline(elapsed);
+    if (state.reactionEnabled) {
+      const beatPhase = ((visualTimeline.beatPosition % 1) + 1) % 1;
+      const beatIndex = ((Math.floor(visualTimeline.beatPosition) % 4) + 4) % 4;
+      const beatWeight = beatIndex === 0 ? .58 : (beatIndex % 2 === 1 ? .48 : .42);
+      const beatPulse = Math.exp(-beatPhase * 11) * beatWeight;
+      state.rhythm[3] = Math.max(state.rhythm[3], beatPulse);
+    }
     state.diagnosticFrame += 1;
     if (state.diagnosticFrame % 30 === 0) {
       const diagnostic = Array.from(state.audio).map((value) => value.toFixed(4)).join(",");
@@ -741,6 +755,8 @@
         rhythm: state.rhythm,
         intensity: state.intensity * .77,
         motion: state.reducedMotion.matches ? .18 : 1,
+        automated: document.querySelector("[data-emdr-automate]")?.getAttribute("aria-pressed") === "true",
+        beatPosition: visualTimeline.beatPosition,
       });
       state.frame = window.requestAnimationFrame(render);
       return;

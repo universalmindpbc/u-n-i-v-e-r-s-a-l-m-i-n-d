@@ -23,9 +23,13 @@
     environmentTexture: null,
     lastWidth: 0,
     lastHeight: 0,
+    diagnosticFrame: 0,
   };
 
   const THREE_URL = "https://unpkg.com/three@0.165.0/build/three.module.js";
+  const STELLA_VISIBLE_TURN = Math.PI * 2 / 3;
+  const STELLA_MANUAL_LOW_SECONDS = 10;
+  const STELLA_MANUAL_HIGH_SECONDS = 2;
 
   function tetrahedronGeometry(THREE) {
     const apex = [0, 1.24, 0];
@@ -574,7 +578,7 @@
     state.camera.updateProjectionMatrix();
   }
 
-  function render({ time, audio, rhythm, intensity, motion }) {
+  function render({ time, audio, rhythm, intensity, motion, automated = false, beatPosition = 0 }) {
     if (!state.active) return;
     if (!state.ready) {
       init();
@@ -584,9 +588,19 @@
     const bass = rhythm ? rhythm[0] : (audio?.[0] || 0);
     const kick = rhythm ? rhythm[1] : 0;
     const snare = rhythm ? rhythm[2] : 0;
-    const pace = (.035 + intensity * .12) * motion;
-    const breath = .88 + bass * (.004 + intensity * .006) + kick * intensity * .009 + Math.sin(time * .58) * .0035;
-    const separation = intensity * .007 + kick * intensity * .01;
+    const accent = rhythm ? rhythm[3] : 0;
+    const normalizedIntensity = Math.max(0, Math.min(1, intensity / .77));
+    const manualLowPace = STELLA_VISIBLE_TURN / STELLA_MANUAL_LOW_SECONDS;
+    const manualHighPace = STELLA_VISIBLE_TURN / STELLA_MANUAL_HIGH_SECONDS;
+    const manualPace = manualLowPace + (manualHighPace - manualLowPace) * Math.pow(normalizedIntensity, 1.22);
+    const existingAutomatePace = .035 + intensity * .12;
+    const pace = (automated ? existingAutomatePace * 1.2 : manualPace) * motion;
+    const rhythmicPulse = Math.max(kick, snare, accent);
+    const breath = .88
+      + bass * (.012 + normalizedIntensity * .018)
+      + rhythmicPulse * (.045 + normalizedIntensity * .04)
+      + Math.sin(time * .58) * .0035;
+    const separation = normalizedIntensity * .007 + rhythmicPulse * (.01 + normalizedIntensity * .012);
     const sweepPosition = Math.sin(time * .42);
     const flash = Math.pow(Math.max(0, Math.sin(time * .29 - 1.4)), 34);
 
@@ -595,6 +609,8 @@
     state.sculpture.rotation.z = Math.sin(time * .075) * .018;
     state.upPivot.position.y = separation;
     state.downPivot.position.y = -separation;
+    state.upPivot.scale.setScalar(1 + kick * (.05 + normalizedIntensity * .045) + snare * .018 + accent * .025);
+    state.downPivot.scale.setScalar(1 + snare * (.05 + normalizedIntensity * .045) + kick * .018 + accent * .025);
     state.upPivot.rotation.y = time * pace;
     state.downPivot.rotation.y = -time * pace * .74;
     state.nestedStars.forEach((star, index) => {
@@ -604,7 +620,7 @@
       const nestedPace = pace * (1.08 + index * .24);
       star.up.rotation.y = time * nestedPace + index * .72;
       star.down.rotation.y = -time * nestedPace * .9 - index * .64;
-      const nestedPulse = 1 + kick * intensity * (.016 + index * .008);
+      const nestedPulse = 1 + rhythmicPulse * (.055 + normalizedIntensity * .045 + index * .012);
       star.up.scale.setScalar((index === 0 ? .27 : .69) * nestedPulse);
       star.down.scale.setScalar((index === 0 ? .27 : .69) * nestedPulse);
     });
@@ -671,6 +687,14 @@
     state.seedMaterial.uniforms.uTreble.value = snare * .45;
     state.seedMaterial.uniforms.uIntensity.value = intensity;
     state.seedMaterial.uniforms.uHue.value = sweepPosition * .28;
+    state.diagnosticFrame += 1;
+    if (state.diagnosticFrame % 20 === 0 && state.canvas) {
+      state.canvas.dataset.emdrStellaControl = automated ? "automate" : "manual";
+      state.canvas.dataset.emdrStellaPace = pace.toFixed(4);
+      state.canvas.dataset.emdrStellaVisibleTurnSeconds = (STELLA_VISIBLE_TURN / Math.max(pace, .0001)).toFixed(2);
+      state.canvas.dataset.emdrStellaPulse = rhythmicPulse.toFixed(4);
+      state.canvas.dataset.emdrStellaBeatPosition = Number(beatPosition).toFixed(3);
+    }
     state.renderer.render(state.scene, state.camera);
   }
 
