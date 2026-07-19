@@ -2633,7 +2633,8 @@ body.induction-page {
   min-height: calc(100vh - clamp(86px, 11vh, 126px));
   min-height: calc(100dvh - clamp(86px, 11vh, 126px));
   padding: clamp(38px, 6vh, 70px) 0 clamp(58px, 9vh, 104px);
-  scroll-snap-align: start;
+  scroll-margin-top: clamp(86px, 11vh, 126px);
+  scroll-snap-align: center;
 }
 
 .induction-page .induction-copy--intro {
@@ -2694,7 +2695,7 @@ body.induction-page {
 
 .induction-page .induction-copy p:not(.induction-portal-kicker):not(.induction-portal-name):not(.induction-chapter) {
   max-width: 740px;
-  color: rgba(247, 243, 234, 0.78);
+  color: rgba(247, 243, 234, 0.84);
   font-size: var(--induction-editorial-body);
   font-weight: 300;
   letter-spacing: -0.008em;
@@ -2789,6 +2790,7 @@ body.induction-page {
     min-height: calc(100vh - 74px);
     min-height: calc(100dvh - 74px);
     padding: 30px 0 48px;
+    scroll-margin-top: 74px;
   }
 }
 
@@ -2831,6 +2833,7 @@ body.induction-page {
     min-height: calc(100vh - 104px);
     min-height: calc(100dvh - 104px);
     padding: 42px 0 68px;
+    scroll-margin-top: 104px;
   }
 }
 
@@ -2861,6 +2864,7 @@ body.induction-page {
     min-height: calc(100vh - 108px);
     min-height: calc(100dvh - 108px);
     padding: 38px 0 58px;
+    scroll-margin-top: 108px;
   }
 
   .induction-portal-seal {
