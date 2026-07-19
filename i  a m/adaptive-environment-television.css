@@ -9,6 +9,7 @@ body.adaptive-television-page {
 
 .adaptive-television-page .background-video video {
   opacity: 1;
+  filter: saturate(1.02) contrast(1.02) brightness(.98);
 }
 
 .adaptive-television-page .background-video video[data-stream-reveal="pending"] {
@@ -17,6 +18,82 @@ body.adaptive-television-page {
 
 .adaptive-television-page .background-video video[data-stream-reveal="ready"] {
   opacity: 1;
+}
+
+.adaptive-television-page .scene-veil {
+  background: transparent;
+  opacity: 0;
+}
+
+.adaptive-television-page .brand-lockup {
+  text-shadow:
+    0 1px 2px rgba(0, 0, 0, .92),
+    0 3px 14px rgba(0, 0, 0, .68);
+}
+
+.adaptive-television-page .homepage-welcome-copy {
+  isolation: isolate;
+  text-shadow:
+    0 1px 1px rgba(0, 0, 0, .96),
+    0 3px 12px rgba(0, 0, 0, .76);
+}
+
+.adaptive-television-page .homepage-welcome-copy::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  inset: -42px -86px -38px -48px;
+  background: radial-gradient(
+    ellipse at 24% 52%,
+    rgba(6, 5, 7, .3) 0%,
+    rgba(6, 5, 7, .15) 42%,
+    rgba(6, 5, 7, 0) 76%
+  );
+  pointer-events: none;
+}
+
+.adaptive-television-page .adaptive-environment__copy {
+  isolation: isolate;
+  text-shadow:
+    0 1px 1px rgba(0, 0, 0, .98),
+    0 3px 12px rgba(0, 0, 0, .82);
+}
+
+.adaptive-television-page .adaptive-environment__copy::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  inset: -92px -142px -104px;
+  background: radial-gradient(
+    ellipse at center,
+    rgba(7, 5, 8, .38) 0%,
+    rgba(7, 5, 8, .21) 42%,
+    rgba(7, 5, 8, .07) 61%,
+    rgba(7, 5, 8, 0) 78%
+  );
+  pointer-events: none;
+}
+
+.adaptive-television-page .adaptive-environment__basis {
+  color: rgba(255, 255, 255, .94);
+  font-weight: 300;
+}
+
+.adaptive-television-page .adaptive-environment__local-context {
+  font-weight: 300;
+  text-shadow:
+    0 1px 1px rgba(0, 0, 0, .98),
+    0 3px 10px rgba(0, 0, 0, .84);
+}
+
+.adaptive-television-page .adaptive-environment__context-line::before {
+  box-shadow: 0 2px 5px rgba(0, 0, 0, .72);
+}
+
+.adaptive-television-page .adaptive-television-cta {
+  text-shadow:
+    0 1px 1px rgba(0, 0, 0, .98),
+    0 3px 12px rgba(0, 0, 0, .86);
 }
 
 .adaptive-television-page .brand-lockup,
