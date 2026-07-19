@@ -1035,6 +1035,9 @@
       if (currentMain !== persistentHomeShell) reusePersistentBackgroundVideo(currentMain, importedMain);
       installGuestShell(currentMain, importedMain);
 
+      await window.IAMStreamReady;
+      window.IAMStreamController?.upgradeDocumentVideos(importedMain);
+
       if (!replace) {
         window.history.pushState({ iamInPlace: true }, "", url.href);
       }
