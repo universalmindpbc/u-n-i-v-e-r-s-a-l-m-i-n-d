@@ -145,10 +145,10 @@ body.adaptive-television-page {
 
 .adaptive-television-cta span {
   display: block;
-  color: rgba(255, 255, 255, 0.72);
-  font-size: clamp(11px, 0.78vw, 14px);
-  font-weight: 100;
-  letter-spacing: 0;
+  color: rgba(255, 255, 255, 0.82);
+  font-size: clamp(12px, 0.8vw, 15px);
+  font-weight: 300;
+  letter-spacing: 0.015em;
   max-width: min(360px, calc(100vw - 48px));
   text-align: center;
 }
