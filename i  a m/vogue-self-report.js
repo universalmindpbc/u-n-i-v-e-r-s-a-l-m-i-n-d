@@ -3,6 +3,15 @@ const vogueLoopVideo = document.querySelector("[data-music-video][data-loop-star
 if (vogueLoopVideo) {
   const loopStart = Number(vogueLoopVideo.dataset.loopStart) || 858;
 
+  function resumeVogueLoopVideo() {
+    if (document.hidden || !vogueLoopVideo.isConnected) return;
+    vogueLoopVideo.muted = true;
+    vogueLoopVideo.defaultMuted = true;
+    vogueLoopVideo.setAttribute("muted", "");
+    const playAttempt = window.IAMStreamController?.play(vogueLoopVideo) || vogueLoopVideo.play();
+    playAttempt?.catch?.(() => {});
+  }
+
   function seekToLoopStart() {
     if (Number.isFinite(vogueLoopVideo.duration) && vogueLoopVideo.duration > loopStart) {
       vogueLoopVideo.currentTime = loopStart;
@@ -12,7 +21,11 @@ if (vogueLoopVideo) {
   vogueLoopVideo.addEventListener("loadedmetadata", seekToLoopStart, { once: true });
   vogueLoopVideo.addEventListener("ended", () => {
     seekToLoopStart();
-    vogueLoopVideo.play().catch(() => {});
+    resumeVogueLoopVideo();
+  });
+  vogueLoopVideo.addEventListener("canplay", resumeVogueLoopVideo);
+  vogueLoopVideo.addEventListener("pause", () => {
+    if (!document.hidden) window.setTimeout(resumeVogueLoopVideo, 120);
   });
   vogueLoopVideo.addEventListener("timeupdate", () => {
     if (vogueLoopVideo.currentTime < loopStart - 1) {
@@ -23,6 +36,14 @@ if (vogueLoopVideo) {
   if (vogueLoopVideo.readyState >= 1) {
     seekToLoopStart();
   }
+
+  window.addEventListener("pageshow", resumeVogueLoopVideo);
+  window.addEventListener("focus", resumeVogueLoopVideo);
+  document.addEventListener("visibilitychange", () => {
+    if (!document.hidden) resumeVogueLoopVideo();
+  });
+  window.setTimeout(resumeVogueLoopVideo, 0);
+  window.setTimeout(resumeVogueLoopVideo, 600);
 }
 
 const vogueIamForm = document.querySelector("[data-iam-form]");

@@ -96,10 +96,65 @@
       }
     </script>
     <script src="cloudflare-stream-catalogue.js?v=stream-catalogue-9b7893e7ad6d"></script>
+    <script>
+      (() => {
+        const video = document.querySelector("[data-music-video][data-stream-file]");
+        const nativeHlsType = "application/vnd.apple.mpegurl";
+        if (!video || !video.canPlayType(nativeHlsType)) return;
+
+        const streamFile = video.dataset.streamFile;
+        const asset = window.IAMCloudflareStream?.assetFor(streamFile);
+        if (!asset?.hls) return;
+
+        let settled = false;
+        video.dataset.streamNativeFile = streamFile;
+        video.dataset.streamNativeHls = "true";
+        video.dataset.streamRole = "fashion";
+        delete video.dataset.streamFile;
+        video.crossOrigin = "anonymous";
+        video.src = asset.hls;
+
+        const revealNativeVideo = () => {
+          if (settled || video.readyState < HTMLMediaElement.HAVE_CURRENT_DATA) return;
+          settled = true;
+          video.dataset.streamReveal = "ready";
+          video.parentElement?.removeAttribute("aria-busy");
+          video.play().catch(() => {});
+        };
+
+        const restoreSharedController = () => {
+          if (settled || video.readyState >= HTMLMediaElement.HAVE_CURRENT_DATA) return;
+          settled = true;
+          delete video.dataset.streamNativeHls;
+          video.dataset.streamFile = streamFile;
+          video.removeAttribute("src");
+          video.load();
+
+          let attempts = 0;
+          const attach = () => {
+            if (window.IAMStreamController?.upgradeDocumentVideos) {
+              window.IAMStreamController.upgradeDocumentVideos(document);
+              return;
+            }
+            attempts += 1;
+            if (attempts < 80) window.setTimeout(attach, 100);
+          };
+          attach();
+        };
+
+        ["loadeddata", "canplay", "playing"].forEach((eventName) => {
+          video.addEventListener(eventName, revealNativeVideo, { once: true });
+        });
+        video.addEventListener("error", restoreSharedController, { once: true });
+        window.setTimeout(restoreSharedController, 8000);
+        video.load();
+        video.play().catch(() => {});
+      })();
+    </script>
     <script src="cloudflare-stream-controller.js?v=stream-controller-4819c6737cd4"></script>
     <script src="local-context.js?v=local-context-3"></script>
     <script src="adaptive-environment.js?v=adaptive-inplace-stream-8f5b2187ebf3"></script>
     <script src="globe.js?v=globe-af1227b10265"></script>
-    <script src="vogue-self-report.js?v=vogue-self-report-3"></script>
+    <script src="vogue-self-report.js?v=vogue-video-resume-6733d5763202"></script>
   </body>
 </html>
