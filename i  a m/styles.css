@@ -2055,6 +2055,11 @@ body.team-page {
   --team-grid-row: calc((var(--team-grid-height) - (2 * var(--team-grid-gap-y))) / 3);
 }
 
+.team-page .background-video::before {
+  content: none;
+  background: none;
+}
+
 .team-page .background-video video {
   opacity: 1;
   filter: none;
