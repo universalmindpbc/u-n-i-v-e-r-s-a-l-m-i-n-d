@@ -2662,6 +2662,7 @@ body.induction-page {
   letter-spacing: 0.22em;
   line-height: 1;
   text-transform: uppercase;
+  transform: translateY(-8px);
 }
 
 .induction-page .induction-portal-name {
@@ -2873,6 +2874,7 @@ body.induction-page {
 
   .induction-page .induction-portal-kicker {
     font-size: 8px;
+    transform: translateY(-6px);
   }
 }
 
