@@ -94,6 +94,17 @@ requireCondition(!/^\s*\.adaptive-television-reaction-wallet:(?:hover|focus-with
 requireCondition(!/^\s*\.adaptive-television-reaction-wallet\[data-wallet-view="closed"\]:(?:hover|focus-within)/m.test(televisionCss), 'a later wallet hierarchy rule can still expand the closed flower during the ten-second lock');
 requireCondition(televisionCss.includes('body.television-wallet-pointer-locked .adaptive-television-reaction-wallet[data-wallet-view="closed"] .adaptive-television-reaction-trigger'), 'the locked room entry no longer guarantees one visible flower');
 requireCondition(!controller.includes('REACTION_WALLET_OPEN_DELAY_MS'), 'the flower wallet still has an automatic hover timer');
+requireCondition(controller.includes('window.IAMNowPlaying = {'), 'the primary wallet has no Now Playing diagnostic state');
+requireCondition(controller.includes('hourCycle: "h23"'), 'the Now Playing clock is no longer fixed to local 24-hour time');
+requireCondition(controller.includes('openNowPlayingRecommendations'), 'the Now Playing rail no longer opens the active Music shelf');
+requireCondition(controller.includes('nowPlayingInteractiveAt = Date.now() + 420;'), 'the opening flower can activate Now Playing during the same pointer gesture');
+requireCondition(controller.includes('nowPlaying.setAttribute("aria-hidden", String(!active));'), 'the hidden Now Playing rail remains in the accessibility tree');
+requireCondition(controller.includes('nowPlayingResizeObserver = new ResizeObserver(updateNowPlayingOverflow);'), 'the Now Playing rail measures overflow before the wallet settles');
+requireCondition(controller.includes('reactionWalletTrigger?.addEventListener("pointerdown", beginReactionWalletOpenGesture, true);'), 'the taller primary wallet can activate a category during its opening pointer gesture');
+requireCondition(controller.includes('nowPlayingInteractiveAt = Date.now() + 1400;'), 'the primary wallet opening gesture is not guarded for its full expansion transition');
+requireCondition(controller.includes('requestedVideoBlend < 99.5'), 'the Now Playing rail no longer reports the visible Fashion layer');
+requireCondition(televisionCss.includes('.adaptive-television-now-playing.is-overflowing .adaptive-television-now-playing__track'), 'long Now Playing titles no longer receive overflow-only movement');
+requireCondition(televisionCss.includes('@media (prefers-reduced-motion: reduce)'), 'the Now Playing movement no longer respects reduced-motion preferences');
 requireCondition(controller.includes('preloadTargetSeconds: 12'), 'fashion no longer preloads toward a twelve-second buffer');
 requireCondition(controller.includes('minimumSeconds: 8'), 'fashion reveal no longer requires an eight-second buffer floor');
 requireCondition(controller.includes('firstFallbackMs: 1250'), 'fashion reveal no longer falls to 480p after 1.25 seconds');
@@ -136,6 +147,11 @@ for (const { pagePath, source } of globeScriptPages) {
   requireCondition(globeScriptMatch, `${label} has no versioned check-in controller`);
   requireCondition(globeScriptMatch[1] === expectedGlobeCacheToken, `${label} check-in cache token ${globeScriptMatch[1]} does not match ${expectedGlobeCacheToken}`);
 }
+
+const homePage = pages.find(({ pagePath }) => pagePath.endsWith('index.html'))?.source || '';
+requireCondition(homePage.includes('data-now-playing'), 'the primary wallet has no Now Playing rail');
+requireCondition(homePage.includes('data-now-playing-time'), 'the primary wallet has no 24-hour Now Playing clock');
+requireCondition(homePage.includes('data-now-playing-visual-title'), 'the primary wallet cannot name the visible Fashion runway');
 
 for (const pagePath of [path.join(IAM_DIR, 'index.html'), path.join(IAM_DIR, 'vogue-self-report.html')]) {
   const source = await fs.readFile(pagePath, 'utf8');

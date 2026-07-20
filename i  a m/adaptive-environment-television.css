@@ -2614,6 +2614,7 @@ body.television-room-open.nav-open .global-nav-scrim {
     background 1050ms cubic-bezier(0.22, 0.72, 0.18, 1),
     box-shadow 1050ms cubic-bezier(0.22, 0.72, 0.18, 1),
     gap 1050ms cubic-bezier(0.22, 0.72, 0.18, 1),
+    min-height 900ms cubic-bezier(0.22, 0.72, 0.18, 1),
     opacity 720ms ease,
     padding 1050ms cubic-bezier(0.22, 0.72, 0.18, 1),
     transform 1050ms cubic-bezier(0.22, 0.72, 0.18, 1),
@@ -2796,13 +2797,194 @@ body:not(.television-wallet-pointer-locked) .adaptive-television-reaction-wallet
 body:not(.television-wallet-pointer-locked) .adaptive-television-reaction-wallet[data-wallet-view="closed"]:hover,
 body:not(.television-wallet-pointer-locked) .adaptive-television-reaction-wallet[data-wallet-view="closed"]:focus-within,
 .adaptive-television-reaction-wallet[data-wallet-view="categories"] {
+  flex-direction: column;
   width: min(420px, calc(100vw - 38px));
-  min-height: 78px;
+  min-height: 110px;
   border-color: rgba(255, 255, 255, 0.14);
   background: rgba(12, 12, 14, 0.1);
   box-shadow: none;
   backdrop-filter: none;
   -webkit-backdrop-filter: none;
+  padding: 4px 16px 8px;
+}
+
+.adaptive-television-now-playing {
+  --now-playing-overflow: 0px;
+  position: absolute;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  min-width: 0;
+  height: 28px;
+  border: 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.11);
+  border-radius: 0;
+  background: transparent;
+  color: rgba(255, 255, 255, 0.86);
+  cursor: pointer;
+  font: 400 9.5px/1.15 "Helvetica Neue", Helvetica, Arial, sans-serif;
+  letter-spacing: 0.075em;
+  opacity: 0;
+  overflow: hidden;
+  padding: 7px 2px 0;
+  pointer-events: none;
+  text-align: left;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.92), 0 0 4px rgba(0, 0, 0, 0.62);
+  text-transform: uppercase;
+  transform: translateY(3px);
+  transition: color 220ms ease, opacity 360ms ease 120ms, transform 480ms cubic-bezier(0.22, 0.72, 0.18, 1) 100ms;
+}
+
+body:not(.television-wallet-pointer-locked) .adaptive-television-reaction-wallet[data-wallet-view="closed"]:hover .adaptive-television-now-playing,
+body:not(.television-wallet-pointer-locked) .adaptive-television-reaction-wallet[data-wallet-view="closed"]:focus-within .adaptive-television-now-playing,
+.adaptive-television-reaction-wallet[data-wallet-view="categories"] .adaptive-television-now-playing {
+  position: relative;
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+.adaptive-television-now-playing:hover,
+.adaptive-television-now-playing:focus-visible {
+  color: rgba(255, 255, 255, 0.92);
+  outline: 0;
+}
+
+.adaptive-television-now-playing:focus-visible {
+  border-top-color: rgba(120, 147, 67, 0.82);
+}
+
+.adaptive-television-now-playing__time {
+  flex: 0 0 auto;
+  color: rgba(145, 167, 93, 0.9);
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.045em;
+  margin-right: 8px;
+}
+
+.adaptive-television-now-playing__status {
+  display: inline-flex;
+  align-items: center;
+  flex: 0 0 auto;
+  color: #91a75d;
+  font-weight: 600;
+  letter-spacing: 0.09em;
+  margin-right: 8px;
+  white-space: nowrap;
+}
+
+.adaptive-television-now-playing__dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #789343;
+  margin-right: 5px;
+  transform-origin: center;
+  animation: television-now-playing-pulse 2800ms ease-in-out infinite;
+}
+
+.adaptive-television-now-playing[data-now-playing-state="loading"] .adaptive-television-now-playing__dot {
+  background: #aaa06f;
+}
+
+.adaptive-television-now-playing[data-now-playing-state="error"] .adaptive-television-now-playing__dot,
+.adaptive-television-now-playing[data-now-playing-state="error"] .adaptive-television-now-playing__status {
+  background: transparent;
+  color: rgba(255, 255, 255, 0.52);
+  animation: none;
+}
+
+.adaptive-television-now-playing[data-now-playing-state="error"] .adaptive-television-now-playing__dot {
+  background: rgba(255, 255, 255, 0.42);
+}
+
+.adaptive-television-now-playing__viewport {
+  display: block;
+  flex: 1 1 auto;
+  min-width: 0;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.adaptive-television-now-playing__track,
+.adaptive-television-now-playing__visual {
+  display: inline-flex;
+  align-items: center;
+  white-space: nowrap;
+}
+
+.adaptive-television-now-playing__track {
+  width: max-content;
+  will-change: transform, opacity;
+}
+
+.adaptive-television-now-playing.is-overflowing .adaptive-television-now-playing__track {
+  animation: television-now-playing-travel 14s ease-in-out infinite;
+}
+
+.adaptive-television-now-playing:hover .adaptive-television-now-playing__track,
+.adaptive-television-now-playing:focus-visible .adaptive-television-now-playing__track {
+  animation-play-state: paused;
+}
+
+.adaptive-television-now-playing__mode {
+  color: #91a75d;
+  font-weight: 600;
+}
+
+.adaptive-television-now-playing__slash {
+  color: rgba(255, 255, 255, 0.56);
+  margin: 0 5px;
+}
+
+.adaptive-television-now-playing__divider {
+  color: rgba(255, 255, 255, 0.56);
+  margin: 0 8px;
+}
+
+.adaptive-television-now-playing__visual[hidden] {
+  display: none;
+}
+
+@keyframes television-now-playing-pulse {
+  0%, 100% { opacity: 0.66; transform: scale(0.92); }
+  50% { opacity: 1; transform: scale(1.08); }
+}
+
+@keyframes television-now-playing-travel {
+  0%, 14% { opacity: 1; transform: translateX(0); }
+  68%, 86% { opacity: 1; transform: translateX(var(--now-playing-overflow)); }
+  92% { opacity: 0.16; transform: translateX(var(--now-playing-overflow)); }
+  93% { opacity: 0.16; transform: translateX(0); }
+  100% { opacity: 1; transform: translateX(0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .adaptive-television-now-playing__dot,
+  .adaptive-television-now-playing.is-overflowing .adaptive-television-now-playing__track {
+    animation: none;
+  }
+}
+
+@media (max-width: 520px) {
+  body:not(.television-wallet-pointer-locked) .adaptive-television-reaction-wallet[data-wallet-view="closed"]:hover,
+  body:not(.television-wallet-pointer-locked) .adaptive-television-reaction-wallet[data-wallet-view="closed"]:focus-within,
+  .adaptive-television-reaction-wallet[data-wallet-view="categories"] {
+    min-height: 104px;
+    padding: 2px 12px 7px;
+  }
+
+  .adaptive-television-now-playing {
+    height: 27px;
+    font-size: 9px;
+    letter-spacing: 0.055em;
+  }
+
+  .adaptive-television-now-playing__time,
+  .adaptive-television-now-playing__status {
+    margin-right: 6px;
+  }
 }
 
 .adaptive-television-wallet-category {

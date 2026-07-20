@@ -106,6 +106,15 @@
   const walletCategories = document.querySelector("[data-wallet-categories]");
   const walletCategoryButtons = Array.from(document.querySelectorAll("[data-wallet-category]"));
   const walletPanels = Array.from(document.querySelectorAll("[data-wallet-panel]"));
+  const nowPlaying = document.querySelector("[data-now-playing]");
+  const nowPlayingTime = document.querySelector("[data-now-playing-time]");
+  const nowPlayingStatus = document.querySelector("[data-now-playing-status]");
+  const nowPlayingViewport = document.querySelector("[data-now-playing-viewport]");
+  const nowPlayingTrack = document.querySelector("[data-now-playing-track]");
+  const nowPlayingMode = document.querySelector("[data-now-playing-mode]");
+  const nowPlayingTitle = document.querySelector("[data-now-playing-title]");
+  const nowPlayingVisual = document.querySelector("[data-now-playing-visual]");
+  const nowPlayingVisualTitle = document.querySelector("[data-now-playing-visual-title]");
   const videoModeButtons = Array.from(document.querySelectorAll("[data-video-mode]"));
   const videoMixControls = document.querySelector("[data-video-mix-controls]");
   const videoCrossfader = document.querySelector("[data-video-crossfader]");
@@ -330,6 +339,8 @@
   let reactionWalletPointerAnchorY = null;
   let reactionWalletPointerLockTimer = 0;
   let reactionWalletCollapseTimer = 0;
+  let nowPlayingInteractiveAt = 0;
+  let nowPlayingResizeObserver = null;
   const REACTION_WALLET_POINTER_LOCK_MS = 10000;
   const REACTION_WALLET_POINTER_MOVE_PX = 2;
   let audioWalletMode = false;
@@ -477,6 +488,7 @@
     document.body.classList.add("adaptive-music-selection-ready");
     playButton.dataset.selectedTrackId = track.id;
     playButton.setAttribute("aria-label", `Expand the room and play ${artistText} - ${titleText}`);
+    updateNowPlaying();
   }
 
   function setRecommendationLoading(isLoading) {
@@ -1383,10 +1395,107 @@
       const active = panel.dataset.walletPanel === nextView;
       panel.setAttribute("aria-hidden", String(!active));
     });
+    if (nowPlaying) {
+      const active = nextView === "categories";
+      nowPlaying.setAttribute("aria-hidden", String(!active));
+      nowPlaying.tabIndex = active ? 0 : -1;
+      if (active) nowPlayingInteractiveAt = Date.now() + 420;
+    }
     reactionButtons.forEach((button) => {
       button.tabIndex = nextView === "emoji" ? 0 : -1;
     });
+    if (nextView === "categories") updateNowPlayingOverflow();
   }
+
+  function currentNowPlayingMedia() {
+    const radioActive = Boolean(activeRadioStationId && document.body.classList.contains("television-radio-continuation"));
+    if (radioActive) {
+      const station = radioStationRecords.find((candidate) => candidate.id === activeRadioStationId) || stationForId(activeRadioStationId);
+      return {
+        mode: "radio",
+        label: station?.display_title || station?.title || "Universal Mind Radio",
+      };
+    }
+    return {
+      mode: track.presentation === "live_dj_set" ? "parties" : "videos",
+      label: `${track.displayArtist || track.artist} — ${track.displayTitle || track.title}`,
+    };
+  }
+
+  function updateNowPlayingClock() {
+    if (!nowPlayingTime) return;
+    const now = new Date();
+    nowPlayingTime.textContent = new Intl.DateTimeFormat(undefined, {
+      hour: "2-digit",
+      minute: "2-digit",
+      hourCycle: "h23",
+    }).format(now);
+    nowPlayingTime.dateTime = now.toISOString();
+  }
+
+  function updateNowPlayingOverflow() {
+    if (!nowPlaying || !nowPlayingViewport || !nowPlayingTrack) return;
+    window.requestAnimationFrame(() => {
+      const overflow = Math.max(0, nowPlayingTrack.scrollWidth - nowPlayingViewport.clientWidth);
+      nowPlaying.classList.toggle("is-overflowing", overflow > 4);
+      nowPlaying.style.setProperty("--now-playing-overflow", `${-Math.ceil(overflow)}px`);
+    });
+  }
+
+  function updateNowPlaying() {
+    if (!nowPlaying) return;
+    const media = currentNowPlayingMedia();
+    const radioState = document.body.dataset.radioPlaybackState || "stopped";
+    const status = media.mode === "radio"
+      ? (radioState === "error" ? "RADIO OFFLINE" : radioState === "loading" ? "TUNING" : "LIVE RADIO")
+      : "NOW PLAYING";
+    const state = media.mode === "radio"
+      ? (radioState === "error" ? "error" : radioState === "loading" ? "loading" : "live")
+      : "playing";
+    const modeLabel = media.mode === "parties" ? "PARTY" : media.mode === "radio" ? "RADIO" : "VIDEO";
+    const activeRunway = fashionRunways[fashionRunwayIndex];
+    const fashionVisible = Boolean(activeRunway && requestedVideoBlend < 99.5);
+
+    if (nowPlayingStatus) nowPlayingStatus.textContent = status;
+    if (nowPlayingMode) nowPlayingMode.textContent = modeLabel;
+    if (nowPlayingTitle) nowPlayingTitle.textContent = media.label;
+    if (nowPlayingVisual) nowPlayingVisual.hidden = !fashionVisible;
+    if (nowPlayingVisualTitle) nowPlayingVisualTitle.textContent = fashionVisible ? activeRunway.title : "";
+    nowPlaying.dataset.nowPlayingState = state;
+    nowPlaying.dataset.nowPlayingMode = media.mode;
+    nowPlaying.setAttribute(
+      "aria-label",
+      `Open ${modeLabel.toLowerCase()} recommendations. ${status}: ${media.label}${fashionVisible ? `. Visual: ${activeRunway.title}` : ""}`
+    );
+    updateNowPlayingClock();
+    updateNowPlayingOverflow();
+  }
+
+  function openNowPlayingRecommendations(event) {
+    event?.preventDefault();
+    event?.stopPropagation();
+    if (Date.now() < nowPlayingInteractiveAt) return;
+    const media = currentNowPlayingMedia();
+    setMusicMode(media.mode, { manual: false });
+    setWalletView("music");
+    openMusicShelf();
+  }
+
+  window.IAMNowPlaying = {
+    version: "wallet_now_playing_v1.0",
+    getState() {
+      const media = currentNowPlayingMedia();
+      return {
+        time: nowPlayingTime?.textContent || "",
+        status: nowPlayingStatus?.textContent || "",
+        mode: media.mode,
+        title: media.label,
+        visual: nowPlayingVisual?.hidden ? "" : (nowPlayingVisualTitle?.textContent || ""),
+        overflow: Boolean(nowPlaying?.classList.contains("is-overflowing")),
+      };
+    },
+    refresh: updateNowPlaying,
+  };
 
   function fashionCardsPerView() {
     return window.matchMedia("(max-width: 720px)").matches ? 1 : 3;
@@ -1726,6 +1835,7 @@
       playerMount.dataset.emdrGifFashionRunway = activeRunway.assetKey;
     }
     persistFashionSelection(fashionSelectionSource);
+    updateNowPlaying();
   }
 
   async function setFashionRunway(index, options = {}) {
@@ -1959,6 +2069,7 @@
     musicModeButtons.forEach((button) => button.setAttribute("aria-selected", String(button.dataset.musicMode === musicChannelMode)));
     document.body.dataset.musicChannelMode = musicChannelMode;
     document.body.dataset.musicChannelItem = active?.id || "";
+    updateNowPlaying();
   }
 
   function setMusicMode(mode, options = {}) {
@@ -2288,10 +2399,12 @@
       .then(() => {
         document.body.dataset.radioPlaybackState = "playing";
         fadeContinuationAudio(.68, 1200);
+        updateNowPlaying();
       })
       .catch((error) => {
         document.body.dataset.radioPlaybackState = "error";
         document.body.dataset.radioPlaybackError = String(error?.message || error).slice(0, 120);
+        updateNowPlaying();
       });
     if ("mediaSession" in window.navigator && window.MediaMetadata) {
       window.navigator.mediaSession.metadata = new window.MediaMetadata({ title: station.display_title, artist: station.provider, album: "Universal Mind · 24/7 Radio" });
@@ -2394,6 +2507,7 @@
     playerMount.style.setProperty("--fashion-video-opacity", fashionOpacity.toFixed(3));
     playerMount.dataset.videoBlend = musicAmount <= 0 ? "fashion" : musicAmount >= 100 ? "music" : "mixed";
     if (videoCrossfader) videoCrossfader.value = String(musicAmount);
+    updateNowPlaying();
   }
 
   async function revealFashionWhenReady(video, generation) {
@@ -2607,6 +2721,12 @@
     setReactionWalletOpen(true);
   }
 
+  function beginReactionWalletOpenGesture() {
+    if (!document.body.classList.contains("television-room-open") || audioWalletMode) return;
+    setReactionWalletOpen(true);
+    nowPlayingInteractiveAt = Date.now() + 1400;
+  }
+
   function syncAudioWallet() {
     if (!reactionWallet) return;
 
@@ -2650,6 +2770,7 @@
   function openAudioWallet(event) {
     event?.preventDefault();
     event?.stopPropagation();
+    if (Date.now() < nowPlayingInteractiveAt) return;
     window.clearTimeout(reactionWalletCollapseTimer);
     reactionWallet?.classList.remove("is-reaction-wallet-open", "is-reaction-wallet-closing");
     reactionWallet?.classList.remove("is-circle-tooltip-armed");
@@ -3829,11 +3950,14 @@
     setAudioWalletInteracting(false);
     if (walletView === "emoji") scheduleReactionWalletCollapse(120);
   });
+  reactionWalletTrigger?.addEventListener("pointerdown", beginReactionWalletOpenGesture, true);
   reactionWalletTrigger?.addEventListener("click", openReactionWalletFromTrigger, true);
+  nowPlaying?.addEventListener("click", openNowPlayingRecommendations);
   walletCategoryButtons.forEach((button) => {
     button.addEventListener("click", (event) => {
       event.preventDefault();
       event.stopPropagation();
+      if (Date.now() < nowPlayingInteractiveAt) return;
       const category = button.dataset.walletCategory;
       if (category === "audio") return;
       window.clearTimeout(reactionWalletCollapseTimer);
@@ -3992,6 +4116,7 @@
   window.addEventListener("resize", () => {
     if (fashionShelfOpen) updateFashionShelfPosition({ preview: false });
     if (musicShelfOpen) updateMusicShelfPosition({ preview: false });
+    updateNowPlayingOverflow();
   });
   document.addEventListener("keydown", (event) => {
     if (fashionShelfOpen) {
@@ -4241,6 +4366,13 @@
   });
   pageFrame?.addEventListener("load", syncPageLayerMetadata);
   setMusicTelevisionMetadata();
+  updateNowPlaying();
+  if (window.ResizeObserver && nowPlayingViewport && nowPlayingTrack) {
+    nowPlayingResizeObserver = new ResizeObserver(updateNowPlayingOverflow);
+    nowPlayingResizeObserver.observe(nowPlayingViewport);
+    nowPlayingResizeObserver.observe(nowPlayingTrack);
+  }
+  window.setInterval(updateNowPlayingClock, 30000);
   syncFullscreenState();
   window.IAMStreamReady?.then(() => {
     if (!selectionIsLoading) primeLocalVideo();
