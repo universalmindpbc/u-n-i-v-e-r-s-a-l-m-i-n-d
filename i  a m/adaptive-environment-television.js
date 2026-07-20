@@ -1639,7 +1639,7 @@
     if (!fashionShelf || fashionShelfOpen) return;
     fashionShelfOpen = true;
     const cardsPerView = fashionCardsPerView();
-    fashionShelfOffset = Math.floor(fashionRunwayOrderPosition(fashionRunwayIndex) / cardsPerView) * cardsPerView;
+    fashionShelfOffset = 0;
     fashionShelf.setAttribute("aria-hidden", "false");
     fashionShelf.removeAttribute("inert");
     fashionShelfToggle?.setAttribute("aria-expanded", "true");
@@ -1647,8 +1647,11 @@
     renderFashionShelf();
     window.setTimeout(() => {
       updateFashionShelfPosition();
-      const activeCard = fashionShelfTrack?.querySelector(`[data-fashion-runway-index="${fashionRunwayIndex}"]`);
-      activeCard?.focus({ preventScroll: true });
+      const activePosition = fashionRunwayOrderPosition(fashionRunwayIndex);
+      const focusCard = activePosition < cardsPerView
+        ? fashionShelfTrack?.querySelector(`[data-fashion-runway-index="${fashionRunwayIndex}"]`)
+        : fashionShelfTrack?.querySelector("[data-fashion-card]");
+      focusCard?.focus({ preventScroll: true });
     }, 90);
   }
 

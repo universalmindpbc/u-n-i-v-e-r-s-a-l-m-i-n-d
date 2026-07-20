@@ -41,6 +41,7 @@ assert.match(controller, /setFashionRunway\(index, \{ source: "manual", feedback
 assert.match(controller, /fashionRunwayIndex \+ 1/);
 assert.match(controller, /setFashionRunway\(fashionRunwayIndex - 1, \{ source: "manual", feedbackType: "explicit_select" \}\)/);
 assert.match(controller, /setFashionRunway\(fashionRunwayIndex \+ 1, \{ source: "manual", feedbackType: "explicit_select" \}\)/);
+assert.match(controller, /function openFashionShelf\(\)[\s\S]*?fashionShelfOffset = 0/);
 assert.match(controller, /playerMount\.dataset\.emdrGifFashionRunway = fashionRunways\[fashionRunwayIndex\]\?\.assetKey/);
 assert.match(controller, /emdrUsesCurrentFashion: true/);
 
