@@ -21502,5 +21502,14 @@
     "approved_count": 7,
     "gold_calibration_unchanged": true,
     "media_availability": "Cloudflare Stream UID required before staging playback"
+  },
+  "fashion_visuals": {
+    "schema": "um_fashion_visual_tensor_candidate_v1.0",
+    "source_json": "fashion-visual-tensor-notion-export-v1.0.json",
+    "selector": "fashion-visual-selector-v1.js",
+    "candidate_count": 6,
+    "gold_calibration_unchanged": true,
+    "playback_contract": "Immediate silent visual switch; preserve the continuous audio programme",
+    "human_review_required": true
   }
 }

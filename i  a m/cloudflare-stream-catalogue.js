@@ -2,6 +2,7 @@
   const CUSTOMER_HOST = "customer-1vpwglz3v6fiyaas.cloudflarestream.com";
   const UPLOADS = {
     " Sasha - Ibiza Boat at Sunset - Freqways.mp4": "d328b01e1d577c082facbb65c159b116",
+    "Annie's Ibiza.mp4": "30b3a8a9a753d23f089f480689bd14f6",
     "Ben Böhmer live - Cappadocia, Turkey - Cercle.mp4": "8db5f9511d39139c1f3e0b1dbdda4474",
     "Björk - Hyperballad.mp4": "950d50bf4e6a880c7455b25754d5e4f4",
     "Carl Cox - Château de Chambord, France - Cercle.mp4": "6551c49b117a51123ea7909455caa65f",
@@ -15,6 +16,7 @@
     "Globe Landing Page Video - Sunscreem - Perfection Motion for RMU.mp4": "fd142ca0e1672dd7a92729857db1facd",
     "Grimes - Genesis.mp4": "e6a813342812c4039b48aff744f64304",
     "Homepage - Hero Background Video - Chanel 2020 Runway Show.mp4": "d86c877dafcfacfcda49aa40ed08ab57",
+    "JACQUEMUS - SS20 LE COUP DE SOLEIL.mp4": "00fe2d47012a31b3b0796fcf2e544360",
     "Linkin Park - Numb (Live, 2024).mp4": "91072eec8efdeb2d2e2a18e1a0f2ea5d",
     "Linkin Park - Numb.mp4": "1fbfae86a89fb8798e736c0394e0f77a",
     "Little Simz - Gorilla.mp4": "15e3ba715d1e95c483a08f0665dcb0c3",
@@ -22,6 +24,7 @@
     "Madonna - Frozen.mp4": "722da24280e5ee6617e01c47d1689278",
     "Madonna - Ray Of Light.mp4": "4c91276cedb006ba1b30b8b8f978a851",
     "Miss Monique - Biosphere Museum in Montreal, Canada - Cercle.mp4": "2b14fa4819e45f2389e332bcf5da784e",
+    "Mugler - Fall Winter 2021.mp4": "792c884e5d63177f32dd85a2f7e97c28",
     "NASTIA - Ibiza at Sunset - The Lab.mp4": "136ec1e0ea6fab6cf3b2823c0f1c91a4",
     "Nina Kraviz - Eiffel Tower, Paris, France - Cercle.mp4": "ddd5d833455f0710e35b8a7a86cd6479",
     "Nightmares On Wax - Shape The Future.mp4": "8f62532e4e436ce5e173334187666c56",
@@ -34,6 +37,7 @@
     "Tame Impala - The Less I Know The Better.mp4": "fe21473d2b3980739ff1046b819a6ef0",
     "The Prodigy - Everybody In The Place.mp4": "e8d1ffe1bb389abb17b29099424d4afa",
     "U2 - Numb.mp4": "f903cfefe0fd849f4cb54fab4b9e851b",
+    "Wolford x Sergio Rossi.mp4": "90c027288fe81ad915971988aafebafd",
   };
 
   function fileNameFromPath(value) {
