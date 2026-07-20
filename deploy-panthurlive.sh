@@ -63,12 +63,19 @@ file_hash() {
   shasum -a 256 "$1" | awk '{ print $1 }'
 }
 
+should_skip_iam_source() {
+  local source_file="$1"
+  [[ "$(basename "$source_file")" == ".DS_Store" ]] ||
+    [[ "$source_file" == */__pycache__/* ]] ||
+    [[ "$source_file" == *.pyc ]]
+}
+
 write_fast_manifest() {
   local manifest_tmp source_file relative_path checksum
 
   manifest_tmp="$(mktemp)"
   find "$IAM_DIR" -type f -print0 | while IFS= read -r -d '' source_file; do
-    if [[ "$(basename "$source_file")" == ".DS_Store" ]]; then
+    if should_skip_iam_source "$source_file"; then
       continue
     fi
 
@@ -149,7 +156,7 @@ deploy_iam() {
   fi
 
   find "$IAM_DIR" -type f -print0 | while IFS= read -r -d '' source_file; do
-    if [[ "$(basename "$source_file")" == ".DS_Store" ]]; then
+    if should_skip_iam_source "$source_file"; then
       continue
     fi
 
@@ -190,7 +197,7 @@ deploy_iam_changed() {
   fi
 
   while IFS= read -r -d '' source_file; do
-    if [[ "$(basename "$source_file")" == ".DS_Store" ]]; then
+    if should_skip_iam_source "$source_file"; then
       continue
     fi
 
