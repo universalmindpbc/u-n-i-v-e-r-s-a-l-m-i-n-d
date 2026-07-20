@@ -2632,6 +2632,7 @@ body:not(.television-wallet-pointer-locked) .adaptive-television-reaction-wallet
 .adaptive-television-reaction-wallet[data-wallet-view="categories"],
 .adaptive-television-reaction-wallet[data-wallet-view="emoji"],
 .adaptive-television-reaction-wallet[data-wallet-view="video"],
+.adaptive-television-reaction-wallet[data-wallet-view="music"],
 .adaptive-television-reaction-wallet[data-wallet-view="support"],
 .adaptive-television-reaction-wallet[data-wallet-view="collect"] {
   width: min(354px, calc(100vw - 38px));
@@ -2666,6 +2667,7 @@ body:not(.television-wallet-pointer-locked) .adaptive-television-reaction-wallet
 .adaptive-television-reaction-wallet[data-wallet-view="categories"] .adaptive-television-wallet-categories,
 .adaptive-television-reaction-wallet[data-wallet-view="emoji"] [data-wallet-panel="emoji"],
 .adaptive-television-reaction-wallet[data-wallet-view="video"] [data-wallet-panel="video"],
+.adaptive-television-reaction-wallet[data-wallet-view="music"] [data-wallet-panel="music"],
 .adaptive-television-reaction-wallet[data-wallet-view="support"] [data-wallet-panel="support"],
 .adaptive-television-reaction-wallet[data-wallet-view="collect"] [data-wallet-panel="collect"] {
   opacity: 1;
@@ -4034,6 +4036,308 @@ button.adaptive-television-research-tooltip__more {
 
 body.fashion-shelf-open .adaptive-television-fashion-runway-selector[data-video-tooltip]::after {
   display: none;
+}
+
+/* Music wallet: one compact switcher for the three adaptive linear channels. */
+.adaptive-television-reaction-wallet[data-wallet-view="music"] {
+  width: min(680px, calc(100vw - 38px));
+  min-height: 70px;
+  border-color: rgba(255, 255, 255, 0.16);
+  background: rgba(12, 12, 14, 0.12);
+  box-shadow: none;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  padding: 0 18px;
+}
+
+.adaptive-television-music-controls {
+  gap: 13px;
+}
+
+.adaptive-television-music-modes {
+  display: flex;
+  align-items: center;
+  height: 27px;
+  overflow: visible;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  border-radius: 8px;
+  background: rgba(0, 0, 0, 0.2);
+  padding: 2px;
+}
+
+.adaptive-television-music-modes button {
+  position: relative;
+  min-width: 68px;
+  height: 21px;
+  border: 0;
+  border-radius: 5px;
+  background: transparent;
+  color: rgba(255, 255, 255, 0.62);
+  cursor: pointer;
+  font: 600 9px/1 "Helvetica Neue", Helvetica, Arial, sans-serif;
+  letter-spacing: 0.075em;
+  padding: 0 9px;
+  text-transform: uppercase;
+  transition: background 220ms ease, color 220ms ease;
+}
+
+.adaptive-television-music-modes button[aria-selected="true"] {
+  background: rgba(255, 255, 255, 0.9);
+  color: #171717;
+}
+
+.adaptive-television-music-modes button:hover,
+.adaptive-television-music-modes button:focus-visible {
+  color: #fff;
+  outline: 0;
+}
+
+.adaptive-television-music-modes button[aria-selected="true"]:hover,
+.adaptive-television-music-modes button[aria-selected="true"]:focus-visible {
+  color: #171717;
+}
+
+.adaptive-television-music-modes button[data-music-tooltip]::after {
+  position: absolute;
+  left: 50%;
+  bottom: calc(100% + 31px);
+  z-index: 14;
+  width: min(430px, calc(100vw - 48px));
+  color: rgba(255, 255, 255, 0.96);
+  content: attr(data-music-tooltip);
+  font: 500 12px/1.42 "Helvetica Neue", Helvetica, Arial, sans-serif;
+  opacity: 0;
+  pointer-events: none;
+  text-align: center;
+  text-shadow: 0 2px 14px rgba(0, 0, 0, 0.94);
+  text-transform: none;
+  transform: translate(-50%, 7px);
+  transition: opacity 240ms ease, transform 360ms cubic-bezier(0.22, 0.72, 0.18, 1);
+}
+
+.adaptive-television-reaction-wallet.is-video-tooltip-armed .adaptive-television-music-modes button[data-music-tooltip]:hover::after,
+.adaptive-television-music-modes button[data-music-tooltip]:focus-visible::after {
+  opacity: 1;
+  transform: translate(-50%, 0);
+}
+
+.adaptive-television-music-selector {
+  position: relative;
+  display: flex;
+  flex: 1 1 260px;
+  align-items: center;
+  justify-content: space-between;
+  min-width: 236px;
+  max-width: 330px;
+  height: 27px;
+  border-radius: 8px;
+  background: #e7e7e7;
+  color: #171717;
+  overflow: visible;
+  padding: 0 4px;
+}
+
+.adaptive-television-music-selector__arrow {
+  display: grid;
+  flex: 0 0 20px;
+  place-items: center;
+  width: 20px;
+  height: 23px;
+  border: 0;
+  border-radius: 5px;
+  background: transparent;
+  color: #171717;
+  cursor: pointer;
+  font: 400 18px/1 Arial, sans-serif;
+  padding: 0 0 1px;
+}
+
+.adaptive-television-music-selector__current {
+  display: flex;
+  min-width: 0;
+  flex: 1 1 auto;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  height: 23px;
+  border: 0;
+  border-radius: 5px;
+  background: transparent;
+  color: #171717;
+  cursor: pointer;
+  padding: 0 4px;
+}
+
+.adaptive-television-music-selector__arrow:hover,
+.adaptive-television-music-selector__arrow:focus-visible,
+.adaptive-television-music-selector__current:hover,
+.adaptive-television-music-selector__current:focus-visible {
+  background: rgba(0, 0, 0, 0.08);
+  outline: 0;
+}
+
+.adaptive-television-music-selector__label {
+  min-width: 0;
+  overflow: hidden;
+  color: #171717;
+  font: 600 10px/1 "Helvetica Neue", Helvetica, Arial, sans-serif;
+  letter-spacing: -0.025em;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.adaptive-television-music-selector__count {
+  flex: 0 0 auto;
+  color: rgba(23, 23, 23, 0.58);
+  font: 600 8px/1 "Helvetica Neue", Helvetica, Arial, sans-serif;
+  white-space: nowrap;
+}
+
+.adaptive-television-music-selector[data-video-tooltip]::after {
+  content: attr(data-video-tooltip);
+  position: absolute;
+  left: 50%;
+  bottom: calc(100% + 28px);
+  z-index: 14;
+  width: max-content;
+  max-width: min(340px, calc(100vw - 48px));
+  color: rgba(255, 255, 255, 0.94);
+  font: 500 13px/1.4 "Helvetica Neue", Helvetica, Arial, sans-serif;
+  opacity: 0;
+  pointer-events: none;
+  text-align: center;
+  text-shadow: 0 2px 14px rgba(0, 0, 0, 0.94);
+  white-space: pre-line;
+  transform: translate(-50%, 7px);
+  transition: opacity 240ms ease, transform 360ms cubic-bezier(0.22, 0.72, 0.18, 1);
+}
+
+.adaptive-television-reaction-wallet.is-video-tooltip-armed .adaptive-television-music-selector[data-video-tooltip]:hover::after,
+.adaptive-television-music-selector[data-video-tooltip]:focus-within::after {
+  opacity: 1;
+  transform: translate(-50%, 0);
+}
+
+body.music-shelf-open .adaptive-television-music-selector[data-video-tooltip]::after {
+  display: none;
+}
+
+/* Music shelf reuses the Fashion shelf geometry and permanent title system. */
+.adaptive-television-music-shelf {
+  z-index: 17;
+}
+
+.adaptive-television-music-card__media {
+  isolation: isolate;
+}
+
+.adaptive-television-music-card__live,
+.adaptive-television-music-card__mode {
+  position: absolute;
+  z-index: 4;
+  top: 9px;
+  border: 1px solid rgba(255, 255, 255, 0.44);
+  border-radius: 999px;
+  background: rgba(0, 0, 0, 0.46);
+  color: rgba(255, 255, 255, 0.94);
+  font: 700 7px/1 "Helvetica Neue", Helvetica, Arial, sans-serif;
+  letter-spacing: 0.12em;
+  padding: 5px 7px 4px;
+  text-transform: uppercase;
+}
+
+.adaptive-television-music-card__live {
+  left: 9px;
+  border-color: rgba(236, 69, 69, 0.76);
+  background: rgba(177, 25, 25, 0.84);
+}
+
+.adaptive-television-music-card__mode {
+  right: 9px;
+}
+
+.adaptive-television-radio-art {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  background:
+    linear-gradient(135deg, color-mix(in srgb, var(--station-a) 72%, #050505), color-mix(in srgb, var(--station-b) 68%, #050505));
+}
+
+.adaptive-television-radio-art::before {
+  position: absolute;
+  inset: 12% 8%;
+  border-top: 1px solid rgba(255, 255, 255, 0.26);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  content: "";
+  transform: skewY(-9deg);
+}
+
+.adaptive-television-radio-art::after {
+  position: absolute;
+  right: 8%;
+  bottom: 14%;
+  left: 8%;
+  height: 26%;
+  background: repeating-linear-gradient(90deg, rgba(255, 255, 255, 0.62) 0 1px, transparent 1px 13px);
+  content: "";
+  opacity: 0.52;
+  transform: scaleY(.58);
+  transform-origin: bottom;
+}
+
+.adaptive-television-radio-art strong {
+  position: relative;
+  z-index: 2;
+  width: min(78%, 250px);
+  color: rgba(255, 255, 255, 0.94);
+  font: 500 clamp(18px, 2vw, 31px)/.96 "Helvetica Neue", Helvetica, Arial, sans-serif;
+  letter-spacing: -0.055em;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.adaptive-television-music-shelf__status {
+  min-width: 0;
+  flex: 1 1 auto;
+  overflow: hidden;
+  color: rgba(255, 255, 255, 0.72);
+  text-align: right;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+body.music-shelf-open .adaptive-television-fashion-shelf:not(.adaptive-television-music-shelf) {
+  pointer-events: none;
+}
+
+@media (max-width: 760px) {
+  .adaptive-television-reaction-wallet[data-wallet-view="music"] {
+    width: min(96vw, 460px);
+    min-height: 94px;
+    padding: 9px 12px;
+  }
+
+  .adaptive-television-music-controls {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .adaptive-television-music-modes,
+  .adaptive-television-music-selector {
+    flex: 1 1 100%;
+    max-width: none;
+  }
+
+  .adaptive-television-music-modes {
+    justify-content: center;
+  }
+
+  .adaptive-television-music-modes button {
+    flex: 1 1 0;
+  }
 }
 
 .adaptive-television-video-crossfader {

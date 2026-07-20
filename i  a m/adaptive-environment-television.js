@@ -65,22 +65,22 @@
   const IOH_LOGO_SRC = "a s s e t s/Universal Mind [ I o H ] Logo.PNG";
   const DEFAULT_EDGE_SCALE = 1.12;
   const MAX_DETECTED_EDGE_SCALE = 1.85;
+  const DEFAULT_RADIO_STATIONS = [
+    { id: "cafe-del-mar-calm", stageGate: "calm", mode: "radio", provider: "Café del Mar Radio", title: "Calm", display_title: "Café del Mar — Calm", short_title: "CALM", stream_url: "https://streamer.radio.co/sb748f24ad/listen", primary_environmental_function: "Soul + Restoration", top_needs: ["Calm", "Recovery", "Psychological Safety", "Anxiety"], card_palette: ["#506f88", "#c8d6d9"] },
+    { id: "cafe-del-mar-chill", stageGate: "chill", mode: "radio", provider: "Café del Mar Radio", title: "Chill", display_title: "Café del Mar — Chill", short_title: "CHILL", stream_url: "https://streams.radio.co/se1a320b47/listen", primary_environmental_function: "Soul + Restoration", top_needs: ["Recovery", "Belonging", "Gratitude", "Trust"], card_palette: ["#99815f", "#e3ceb3"] },
+    { id: "cafe-del-mar-house", stageGate: "house", mode: "radio", provider: "Café del Mar Radio", title: "House", display_title: "Café del Mar — House", short_title: "HOUSE", stream_url: "https://s4.radio.co/seeae9c220/listen", primary_environmental_function: "Club Energy + Festival Activation", top_needs: ["Joy", "Motivation", "Connection", "Arousal"], card_palette: ["#8a4867", "#e6a99f"] },
+    { id: "groove-salad", stageGate: "calm", mode: "radio", provider: "SomaFM", title: "Groove Salad", display_title: "Groove Salad", short_title: "GROOVE SALAD", stream_url: "https://ice5.somafm.com/groovesalad-128-mp3", primary_environmental_function: "Focus + Flow", top_needs: ["Attention", "Executive Function", "Calm", "Recovery"], card_palette: ["#526b52", "#cad4a4"] },
+    { id: "groove-salad-classic", stageGate: "chill", mode: "radio", provider: "SomaFM", title: "Groove Salad Classic", display_title: "Groove Salad Classic", short_title: "GS CLASSIC", stream_url: "https://ice5.somafm.com/gsclassic-128-mp3", primary_environmental_function: "Soul + Restoration", top_needs: ["Belonging", "Gratitude", "Recovery", "Calm"], card_palette: ["#725f50", "#c9b896"] },
+    { id: "sanctuary-dark-electro", stageGate: "house", mode: "radio", provider: "Sanctuary Radio", title: "Dark Electro", display_title: "Sanctuary — Dark Electro", short_title: "DARK ELECTRO", stream_url: "https://stream.sanctuaryradio.com/mainchannel_hq", primary_environmental_function: "Grit + Agency", top_needs: ["Anger", "Motivation", "Self-Actualisation", "Curiosity"], card_palette: ["#312e42", "#9c6da6"] },
+    { id: "sanctuary-retro", stageGate: "chill", mode: "radio", provider: "Sanctuary Radio", title: "Retro", display_title: "Sanctuary — Retro", short_title: "RETRO", stream_url: "https://stream.sanctuaryradio.com/retrochannel_hq", primary_environmental_function: "Joy + Affirmation", top_needs: ["Belonging", "Joy", "Gratitude", "Connection"], card_palette: ["#355c67", "#d57c72"] },
+  ];
   const continuation = {
     videoSrc: "a s s e t s/Homepage - Hero Background Video - Chanel 2020 Runway Show.mp4",
-    defaultStation: "chill",
-    stations: {
-      calm: {
-        label: "Cafe Del Mar Radio - Calm",
-        src: "https://streamer.radio.co/sb748f24ad/listen",
-      },
-      chill: {
-        label: "Cafe Del Mar Radio - Chill",
-        src: "https://streams.radio.co/se1a320b47/listen",
-      },
-      house: {
-        label: "Cafe Del Mar Radio - House",
-        src: "https://s4.radio.co/seeae9c220/listen",
-      },
+    defaultStation: "cafe-del-mar-chill",
+    stagePools: {
+      calm: ["cafe-del-mar-calm", "groove-salad", "groove-salad-classic"],
+      chill: ["cafe-del-mar-chill", "groove-salad", "groove-salad-classic", "sanctuary-retro"],
+      house: ["cafe-del-mar-house", "sanctuary-dark-electro", "sanctuary-retro"],
     },
   };
   const playButton = document.querySelector("[data-television-play]");
@@ -124,6 +124,24 @@
   const fashionShelfCounter = document.querySelector("[data-fashion-shelf-counter]");
   const fashionShelfProgress = document.querySelector("[data-fashion-shelf-progress]");
   const fashionShelfCloseButtons = Array.from(document.querySelectorAll("[data-fashion-shelf-close]"));
+  const musicShelf = document.querySelector("[data-music-shelf]");
+  const musicShelfToggle = document.querySelector("[data-music-shelf-toggle]");
+  const musicShelfTrack = document.querySelector("[data-music-shelf-track]");
+  const musicShelfViewport = document.querySelector("[data-music-shelf-viewport]");
+  const musicShelfPrevious = document.querySelector("[data-music-shelf-previous]");
+  const musicShelfNext = document.querySelector("[data-music-shelf-next]");
+  const musicShelfCounter = document.querySelector("[data-music-shelf-counter]");
+  const musicShelfProgress = document.querySelector("[data-music-shelf-progress]");
+  const musicShelfTitle = document.querySelector("[data-music-shelf-title]");
+  const musicShelfSubtitle = document.querySelector("[data-music-shelf-subtitle]");
+  const musicShelfStatus = document.querySelector("[data-music-shelf-status]");
+  const musicShelfCloseButtons = Array.from(document.querySelectorAll("[data-music-shelf-close]"));
+  const musicModeButtons = Array.from(document.querySelectorAll("[data-music-mode]"));
+  const musicSelector = document.querySelector("[data-music-selector]");
+  const musicSelectorPrevious = document.querySelector("[data-music-previous]");
+  const musicSelectorNext = document.querySelector("[data-music-next]");
+  const musicSelectorLabel = document.querySelector("[data-music-selector-label]");
+  const musicSelectorCount = document.querySelector("[data-music-selector-count]");
   const emdrCanvas = document.querySelector("[data-emdr-canvas]");
   const emdrOff = document.querySelector("[data-emdr-off]");
   const emdrStyleButtons = Array.from(document.querySelectorAll("[data-emdr-style]"));
@@ -149,6 +167,22 @@
   if (!playButton || !room || !playerMount) return;
 
   let track = resolveSelectedTrack();
+  let musicChannelMode = track.presentation === "live_dj_set" ? "parties" : "videos";
+  let musicModeManuallySelected = false;
+  let musicShelfOpen = false;
+  let musicShelfOffset = 0;
+  let musicShelfSwipeStartX = null;
+  let musicShelfPreviewVideo = null;
+  let musicShelfPreviewCard = null;
+  let musicCatalogueRecords = [];
+  let radioStationRecords = DEFAULT_RADIO_STATIONS.map((station) => ({ ...station }));
+  let musicShelfOrders = { videos: [], parties: [], radio: radioStationRecords.slice() };
+  let activeRadioStationId = "";
+  let musicContinuationSequence = 0;
+  let musicSwitching = false;
+  let musicDwellTimer = 0;
+  let musicRadioPreviousBlend = 100;
+  let groupQueue = [];
   let selectionIsLoading = document.body.classList.contains("adaptive-music-selection-loading");
   let hasOpened = false;
   let televisionPlaybackRequested = false;
@@ -460,10 +494,14 @@
 
   function updateRecommendationFromStorage() {
     track = resolveSelectedTrack();
+    musicChannelMode = track.presentation === "live_dj_set" ? "parties" : "videos";
+    musicModeManuallySelected = false;
+    activeRadioStationId = "";
     document.body.classList.remove("adaptive-music-selection-failed");
     setRecommendationLoading(false);
     syncSelectedTrackCopy();
     setMusicTelevisionMetadata();
+    rankMusicShelves();
     window.IAMStreamReady?.then(() => primeLocalVideo());
   }
 
@@ -1327,6 +1365,7 @@
   function setWalletView(nextView) {
     if (!reactionWallet) return;
     if (nextView !== "video-mix" && fashionShelfOpen) closeFashionShelf(false);
+    if (nextView !== "music" && musicShelfOpen) closeMusicShelf(false);
     if (nextView !== walletView) closeAllResearchRollovers();
     walletView = nextView;
     reactionWallet.dataset.walletView = nextView;
@@ -1754,6 +1793,586 @@
     }
   }
 
+  function musicModeLabel(mode = musicChannelMode) {
+    return ({ videos: "Videos", parties: "Parties", radio: "Radio" })[mode] || "Music";
+  }
+
+  function musicCardsPerView() {
+    return window.matchMedia("(max-width: 720px)").matches ? 1 : 3;
+  }
+
+  function readMusicTasteProfile() {
+    try {
+      const parsed = JSON.parse(window.localStorage.getItem("iamMusicChannelTasteV1") || "null");
+      if (parsed && typeof parsed === "object") {
+        return {
+          affinities: parsed.affinities && typeof parsed.affinities === "object" ? parsed.affinities : {},
+          recentIds: Array.isArray(parsed.recentIds) ? parsed.recentIds : [],
+          lastId: String(parsed.lastId || ""),
+          lastSelectedAt: Number(parsed.lastSelectedAt || 0),
+        };
+      }
+    } catch {
+      // A fresh taste profile is safe when storage is unavailable.
+    }
+    return { affinities: {}, recentIds: [], lastId: "", lastSelectedAt: 0 };
+  }
+
+  function writeMusicTasteProfile(profile) {
+    try {
+      window.localStorage.setItem("iamMusicChannelTasteV1", JSON.stringify(profile));
+    } catch {
+      // Explicit playback remains available without preference persistence.
+    }
+  }
+
+  function musicCitizenNeeds() {
+    return normalizedNeedMap(readStoredCitizenInference() || {});
+  }
+
+  function musicRecommendationSeed() {
+    const inference = readStoredCitizenInference() || {};
+    return inference.citizen_id || inference.inference_id || inference.interpretation_summary ||
+      JSON.stringify(inference.top_highlights || []) || track.id;
+  }
+
+  function musicTensorRecord(trackId) {
+    return musicCatalogueRecords.find((record) => record.id === trackId) || null;
+  }
+
+  function musicTrackContext(candidate, tensor) {
+    const primary = String(tensor?.primary_environmental_function || "");
+    const isParty = candidate.presentation === "live_dj_set";
+    const restorative = /restoration|focus|melancholy/i.test(primary);
+    const activating = /club energy|grit|joy/i.test(primary);
+    return {
+      work_fit: isParty ? (restorative ? .58 : .28) : (activating ? .42 : .7),
+      group_fit: isParty ? .92 : (activating ? .78 : .54),
+      high_load_fit: restorative ? .82 : (activating ? .28 : .52),
+    };
+  }
+
+  function musicTrackRecord(candidate) {
+    const tensor = musicTensorRecord(candidate.id);
+    const needScores = tensor?.tensor_profile?.citizen_needs_scores || tensor?.citizen_need_affinities || {};
+    const displayTitle = candidate.displayTitle || candidate.title;
+    return {
+      id: candidate.id,
+      mode: candidate.presentation === "live_dj_set" ? "parties" : "videos",
+      artist: candidate.displayArtist || candidate.artist,
+      provider: candidate.displayArtist || candidate.artist,
+      title: displayTitle,
+      display_title: displayTitle,
+      short_title: displayTitle,
+      localVideoSrc: candidate.localVideoSrc,
+      streamUid: candidate.streamUid,
+      presentation: candidate.presentation || "official_video",
+      editorial_priority: tensor?.priority || 2,
+      primary_environmental_function: tensor?.primary_environmental_function || "Adaptive music",
+      top_needs: tensor?.top_needs || [],
+      need_scores: needScores,
+      context: musicTrackContext(candidate, tensor),
+      trackRef: candidate,
+      previewStart: candidate.presentation === "live_dj_set" ? 36 : 8,
+    };
+  }
+
+  function musicItems(mode = musicChannelMode) {
+    if (mode === "radio") return radioStationRecords.slice();
+    return TRACK_CATALOGUE
+      .filter((candidate) => mode === "parties" ? candidate.presentation === "live_dj_set" : candidate.presentation !== "live_dj_set")
+      .map(musicTrackRecord);
+  }
+
+  function rankMusicShelves() {
+    const selector = window.IAMMusicChannelSelector;
+    const taste = readMusicTasteProfile();
+    const inference = readStoredCitizenInference() || {};
+    const atWork = Boolean(selector?.explicitWorkContext?.(inference));
+    const citizenNeeds = musicCitizenNeeds();
+    ["videos", "parties", "radio"].forEach((mode) => {
+      const pool = musicItems(mode);
+      const result = selector?.rank
+        ? selector.rank(pool, {
+          mode,
+          citizenNeeds,
+          tasteAffinities: taste.affinities,
+          recentIds: taste.recentIds,
+          atWork,
+          inGroup: audioWalletJoined,
+          seed: musicRecommendationSeed(),
+          limit: 3,
+        })
+        : { ranked: pool, recommendations: pool.slice(0, 3), context: { atWork, inGroup: audioWalletJoined } };
+      musicShelfOrders[mode] = result.ranked;
+      document.body.dataset[`music${mode[0].toUpperCase()}${mode.slice(1)}RecommendationCount`] = String(result.recommendations.length);
+    });
+    document.body.dataset.musicRecommendationSource = Object.keys(citizenNeeds).length ? "citizen_needs_tensor" : "editorial_taste_exploration";
+    document.body.dataset.musicAtWorkContext = String(atWork);
+    updateMusicSelector();
+    renderMusicShelf();
+  }
+
+  async function loadMusicRecommendations() {
+    try {
+      const [catalogueResponse, stationsResponse] = await Promise.all([
+        fetch("adaptive-music-video-catalogue-v1.11.json?v=music-channel-tensor-1", { cache: "no-store" }),
+        fetch("radio-station-tensor-notion-export-v1.0.json?v=radio-stations-1", { cache: "no-store" }),
+      ]);
+      if (!catalogueResponse.ok) throw new Error(`Music Tensor fetch failed (${catalogueResponse.status})`);
+      if (!stationsResponse.ok) throw new Error(`Radio Tensor fetch failed (${stationsResponse.status})`);
+      const [catalogue, stations] = await Promise.all([catalogueResponse.json(), stationsResponse.json()]);
+      musicCatalogueRecords = Array.isArray(catalogue.tracks) ? catalogue.tracks : [];
+      const fallbacks = new Map(DEFAULT_RADIO_STATIONS.map((station) => [station.id, station]));
+      radioStationRecords = (Array.isArray(stations.records) ? stations.records : DEFAULT_RADIO_STATIONS)
+        .map((station) => ({ ...fallbacks.get(station.id), ...station, stageGate: fallbacks.get(station.id)?.stageGate || station.stageGate || "chill" }));
+      rankMusicShelves();
+    } catch (error) {
+      document.body.dataset.musicRecommendationSource = "catalogue_fallback";
+      document.body.dataset.musicRecommendationError = String(error?.message || error).slice(0, 120);
+      rankMusicShelves();
+    }
+  }
+
+  function musicActiveItem(mode = musicChannelMode) {
+    const order = musicShelfOrders[mode] || [];
+    if (mode === "radio") return order.find((item) => item.id === activeRadioStationId) || order[0] || null;
+    const currentMode = track.presentation === "live_dj_set" ? "parties" : "videos";
+    return currentMode === mode ? order.find((item) => item.id === track.id) || order[0] || null : order[0] || null;
+  }
+
+  function updateMusicSelector() {
+    const order = musicShelfOrders[musicChannelMode] || [];
+    const active = musicActiveItem();
+    const position = Math.max(0, order.findIndex((item) => item.id === active?.id));
+    const label = active
+      ? (musicChannelMode === "radio" ? active.display_title : `${active.artist} — ${active.display_title}`)
+      : musicModeLabel().toUpperCase();
+    if (musicSelectorLabel) musicSelectorLabel.textContent = label;
+    if (musicSelectorCount) musicSelectorCount.textContent = order.length ? `${position + 1} / ${order.length}` : "0 / 0";
+    if (musicSelector) {
+      musicSelector.dataset.videoTooltip = `${musicModeLabel()}\nClick for more recommendations.`;
+      musicSelector.dataset.musicMode = musicChannelMode;
+      musicSelector.dataset.musicItemId = active?.id || "";
+    }
+    musicShelfToggle?.setAttribute("aria-label", `Click for more recommendations. Current ${musicModeLabel().toLowerCase()}: ${label}`);
+    musicModeButtons.forEach((button) => button.setAttribute("aria-selected", String(button.dataset.musicMode === musicChannelMode)));
+    document.body.dataset.musicChannelMode = musicChannelMode;
+    document.body.dataset.musicChannelItem = active?.id || "";
+  }
+
+  function setMusicMode(mode, options = {}) {
+    if (!["videos", "parties", "radio"].includes(mode)) return;
+    musicChannelMode = mode;
+    if (options.manual !== false) musicModeManuallySelected = true;
+    musicShelfOffset = 0;
+    updateMusicSelector();
+    renderMusicShelf();
+    if (options.openShelf) openMusicShelf();
+  }
+
+  function musicThumbnailUrl(item) {
+    const uid = item.streamUid || window.IAMCloudflareStream?.assetFor(String(item.localVideoSrc || "").split("/").pop())?.uid;
+    if (!uid) return "";
+    const host = window.IAMCloudflareStream?.customerHost || "customer-1vpwglz3v6fiyaas.cloudflarestream.com";
+    return `https://${host}/${uid}/thumbnails/thumbnail.jpg?time=${item.previewStart || 8}s&height=360`;
+  }
+
+  function stopMusicShelfPreview() {
+    if (!musicShelfPreviewVideo) return;
+    try { musicShelfPreviewVideo.pause(); } catch {}
+    window.IAMStreamController?.detach(musicShelfPreviewVideo);
+    musicShelfPreviewVideo.remove();
+    musicShelfPreviewCard?.classList.remove("is-previewing");
+    musicShelfPreviewVideo = null;
+    musicShelfPreviewCard = null;
+  }
+
+  async function startMusicShelfPreview(card) {
+    if (!musicShelfOpen || !card || card === musicShelfPreviewCard || musicChannelMode === "radio") return;
+    stopMusicShelfPreview();
+    const item = (musicShelfOrders[musicChannelMode] || []).find((candidate) => candidate.id === card.dataset.musicItemId);
+    const media = card.querySelector(".adaptive-television-music-card__media");
+    if (!item?.localVideoSrc || !media || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    const preview = document.createElement("video");
+    preview.className = "adaptive-television-fashion-card__preview";
+    preview.muted = true;
+    preview.defaultMuted = true;
+    preview.volume = 0;
+    preview.playsInline = true;
+    preview.preload = "metadata";
+    preview.setAttribute("muted", "");
+    preview.setAttribute("aria-hidden", "true");
+    preview.dataset.streamRole = "music-preview";
+    preview.dataset.streamMaxHeight = "360";
+    musicShelfPreviewVideo = preview;
+    musicShelfPreviewCard = card;
+    card.classList.add("is-previewing");
+    media.append(preview);
+    const previewStart = Number(item.previewStart || 8);
+    const resetPreview = () => {
+      try { preview.currentTime = Math.min(previewStart, Math.max(0, Number(preview.duration || previewStart) - .5)); } catch {}
+    };
+    preview.addEventListener("loadedmetadata", resetPreview, { once: true });
+    preview.addEventListener("timeupdate", () => {
+      if (preview.currentTime >= Math.min(Number(preview.duration || previewStart + 10), previewStart + 10) - .08) resetPreview();
+    });
+    try {
+      await window.IAMStreamController?.attach(preview, {
+        fileName: item.localVideoSrc,
+        role: "music",
+        autoplay: false,
+        preload: true,
+        preloadTargetSeconds: 10,
+      });
+      if (preview !== musicShelfPreviewVideo || !musicShelfOpen) return;
+      resetPreview();
+      await preview.play();
+    } catch {
+      if (preview === musicShelfPreviewVideo) stopMusicShelfPreview();
+    }
+  }
+
+  function updateMusicShelfPosition({ preview = true } = {}) {
+    const order = musicShelfOrders[musicChannelMode] || [];
+    if (!musicShelfTrack) return;
+    const cardsPerView = musicCardsPerView();
+    const maximumOffset = Math.max(0, order.length - cardsPerView);
+    musicShelfOffset = Math.max(0, Math.min(maximumOffset, musicShelfOffset));
+    const items = Array.from(musicShelfTrack.querySelectorAll("[data-music-shelf-item]"));
+    musicShelfTrack.style.transform = `translate3d(-${items[musicShelfOffset]?.offsetLeft || 0}px, 0, 0)`;
+    const start = order.length ? musicShelfOffset + 1 : 0;
+    const end = Math.min(order.length, musicShelfOffset + cardsPerView);
+    if (musicShelfCounter) musicShelfCounter.textContent = start === end ? `${start} / ${order.length}` : `${start}–${end} / ${order.length}`;
+    if (musicShelfProgress) musicShelfProgress.style.width = `${order.length ? (end / order.length) * 100 : 0}%`;
+    musicShelfPrevious?.toggleAttribute("disabled", musicShelfOffset === 0);
+    musicShelfNext?.toggleAttribute("disabled", musicShelfOffset >= maximumOffset);
+    if (musicShelfOpen && preview && musicChannelMode !== "radio") {
+      window.setTimeout(() => startMusicShelfPreview(items[musicShelfOffset]?.querySelector("[data-music-card]")), 160);
+    }
+  }
+
+  function moveMusicShelf(direction) {
+    musicShelfOffset += direction * musicCardsPerView();
+    stopMusicShelfPreview();
+    updateMusicShelfPosition();
+  }
+
+  function musicCardMedia(item, position) {
+    if (musicChannelMode === "radio") {
+      const palette = item.card_palette || ["#4c5664", "#aeb7bf"];
+      return `<span class="adaptive-television-fashion-card__media adaptive-television-music-card__media" style="--station-a:${palette[0]};--station-b:${palette[1]}">
+        <span class="adaptive-television-radio-art"><strong>${item.display_title}</strong></span>
+        <span class="adaptive-television-music-card__live">live</span>
+        <span class="adaptive-television-music-card__mode">radio</span>
+      </span>`;
+    }
+    return `<span class="adaptive-television-fashion-card__media adaptive-television-music-card__media">
+      <img src="${musicThumbnailUrl(item)}" alt="" loading="${position < 3 ? "eager" : "lazy"}">
+      <span class="adaptive-television-fashion-card__preview-label">10s preview</span>
+      <span class="adaptive-television-music-card__mode">${musicChannelMode === "parties" ? "party" : "video"}</span>
+    </span>`;
+  }
+
+  function renderMusicShelf() {
+    if (!musicShelfTrack) return;
+    stopMusicShelfPreview();
+    const order = musicShelfOrders[musicChannelMode] || [];
+    const active = musicActiveItem();
+    if (musicShelfTitle) musicShelfTitle.textContent = `${musicModeLabel()} for you`;
+    if (musicShelfSubtitle && !musicShelfSubtitle.dataset.temporaryStatus) musicShelfSubtitle.textContent = "Recommended for you based on your current needs";
+    musicShelfTrack.setAttribute("aria-label", `${musicModeLabel()} choices`);
+    musicShelfTrack.innerHTML = order.map((item, position) => {
+      const selected = item.id === active?.id;
+      const recommendationLabel = position < 3 ? `Recommended ${String(position + 1).padStart(2, "0")}` : `Explore ${String(position + 1).padStart(2, "0")}`;
+      const provider = musicChannelMode === "radio" ? item.provider : item.artist;
+      const title = item.display_title || item.title;
+      const action = audioWalletJoined ? "Vote to play next" : "Play now";
+      return `<div class="adaptive-television-fashion-shelf__item" data-music-shelf-item role="listitem">
+        <button class="adaptive-television-fashion-card adaptive-television-music-card${selected ? " is-active" : ""}" type="button" data-music-card data-music-item-id="${item.id}" aria-pressed="${selected}" aria-label="${action}: ${provider} — ${title}">
+          ${musicCardMedia(item, position)}
+          <span class="adaptive-television-fashion-card__copy">
+            <small>${recommendationLabel}</small>
+            <strong>${title}</strong>
+            <span>${provider} · ${item.primary_environmental_function || "Adaptive music"}</span>
+          </span>
+        </button>
+      </div>`;
+    }).join("");
+    musicShelfTrack.querySelectorAll("[data-music-card]").forEach((card) => {
+      card.addEventListener("pointerenter", () => startMusicShelfPreview(card));
+      card.addEventListener("focus", () => startMusicShelfPreview(card));
+      card.addEventListener("click", async (event) => {
+        event.preventDefault();
+        event.stopPropagation();
+        const item = order.find((candidate) => candidate.id === card.dataset.musicItemId);
+        if (item) await selectMusicItem(item, { source: "shelf", closeShelf: true });
+      });
+    });
+    window.requestAnimationFrame(() => updateMusicShelfPosition({ preview: musicShelfOpen }));
+  }
+
+  function openMusicShelf() {
+    if (!musicShelf || musicShelfOpen) return;
+    if (fashionShelfOpen) closeFashionShelf(false);
+    musicShelfOpen = true;
+    musicShelfOffset = 0;
+    musicShelf.setAttribute("aria-hidden", "false");
+    musicShelf.removeAttribute("inert");
+    musicShelfToggle?.setAttribute("aria-expanded", "true");
+    document.body.classList.add("music-shelf-open");
+    renderMusicShelf();
+    window.setTimeout(() => {
+      updateMusicShelfPosition();
+      musicShelfTrack?.querySelector("[data-music-card]")?.focus({ preventScroll: true });
+    }, 90);
+  }
+
+  function closeMusicShelf(restoreFocus = true) {
+    if (!musicShelf || !musicShelfOpen) return;
+    musicShelfOpen = false;
+    musicShelf.setAttribute("aria-hidden", "true");
+    musicShelf.setAttribute("inert", "");
+    musicShelfToggle?.setAttribute("aria-expanded", "false");
+    document.body.classList.remove("music-shelf-open");
+    stopMusicShelfPreview();
+    if (restoreFocus) musicShelfToggle?.focus({ preventScroll: true });
+  }
+
+  function showMusicShelfStatus(message, duration = 3600) {
+    if (musicShelfStatus) musicShelfStatus.textContent = message;
+    if (musicShelfSubtitle) {
+      musicShelfSubtitle.dataset.temporaryStatus = "true";
+      musicShelfSubtitle.textContent = message;
+      window.setTimeout(() => {
+        if (musicShelfSubtitle.textContent !== message) return;
+        delete musicShelfSubtitle.dataset.temporaryStatus;
+        musicShelfSubtitle.textContent = "Recommended for you based on your current needs";
+      }, duration);
+    }
+  }
+
+  function recordMusicFeedback(item, type = "explicit_select") {
+    const profile = readMusicTasteProfile();
+    const weight = Number(window.IAMMusicChannelSelector?.feedbackWeight?.(type) ?? 1);
+    const id = item.id;
+    profile.affinities[id] = Math.max(0, Math.min(1, Number(profile.affinities[id] || 0) + .16 * weight));
+    profile.recentIds = [id, ...profile.recentIds.filter((recentId) => recentId !== id)].slice(0, 8);
+    profile.lastId = id;
+    profile.lastSelectedAt = Date.now();
+    writeMusicTasteProfile(profile);
+    window.clearTimeout(musicDwellTimer);
+    musicDwellTimer = window.setTimeout(() => {
+      const latest = readMusicTasteProfile();
+      latest.affinities[id] = Math.max(0, Math.min(1, Number(latest.affinities[id] || 0) + .06));
+      writeMusicTasteProfile(latest);
+    }, 30000);
+    window.IAMFirstPartyAnalytics?.record?.("music_channel_select", {
+      selected_item_id: id,
+      music_mode: item.mode || musicChannelMode,
+      feedback_type: type,
+      in_group: audioWalletJoined,
+    });
+  }
+
+  function queueMusicItem(item) {
+    const existing = groupQueue.find((queued) => queued.id === item.id);
+    if (!existing) groupQueue.push({ id: item.id, mode: musicChannelMode, votes: 1, queuedAt: new Date().toISOString() });
+    try { window.localStorage.setItem("iamMusicGroupQueueV1", JSON.stringify(groupQueue)); } catch {}
+    document.body.dataset.musicGroupQueueLength = String(groupQueue.length);
+    document.body.dataset.musicGroupQueueNext = groupQueue[0]?.id || "";
+    const message = `${item.display_title || item.title} queued for the Chillout Circle · 1 vote`;
+    showMusicShelfStatus(message);
+    recordMusicFeedback(item, "queued_vote");
+    window.IAMFirstPartyAnalytics?.record?.("music_group_queue_vote", { selected_item_id: item.id, music_mode: musicChannelMode, votes: 1 });
+  }
+
+  function stopContinuationAudioImmediately() {
+    if (!continuationAudio) return;
+    try {
+      continuationAudio.pause();
+      continuationAudio.muted = true;
+      continuationAudio.volume = 0;
+      continuationAudio.removeAttribute("src");
+      continuationAudio.load();
+    } catch {}
+    continuationAudio = null;
+    continuationDecision = null;
+  }
+
+  async function switchMusicTrack(nextTrack, options = {}) {
+    if (!nextTrack || musicSwitching) return;
+    musicSwitching = true;
+    stopContinuationAudioImmediately();
+    document.body.classList.remove("television-radio-continuation");
+    activeRadioStationId = "";
+    musicChannelMode = nextTrack.presentation === "live_dj_set" ? "parties" : "videos";
+    musicModeManuallySelected = options.source !== "automatic_continuation";
+    try {
+      const video = localVideo || mountPlayer();
+      try { video.pause(); } catch {}
+      window.IAMStreamController?.detach(video);
+      delete video.__iamStreamAttachPromise;
+      delete video.dataset.televisionStreamAttach;
+      delete video.dataset.televisionStreamError;
+      track = nextTrack;
+      video.loop = false;
+      video.muted = false;
+      video.defaultMuted = false;
+      video.volume = 1;
+      video.setAttribute("aria-label", `${track.artist} - ${track.title}`);
+      try { video.currentTime = 0; } catch {}
+      syncSelectedTrackCopy();
+      setMusicTelevisionMetadata();
+      await setVideoBlend(100);
+      await attachAdaptiveStream(video, track.localVideoSrc, "music");
+      playLocalVideo(video);
+      window.IAMEMDR?.setTimelineSource?.({
+        media: video,
+        bpm: Number(track.bpm) || 112,
+        firstDownbeatSeconds: Number.isFinite(Number(track.firstDownbeatSeconds)) ? Number(track.firstDownbeatSeconds) : 0,
+        fallbackBpm: 112,
+      });
+      try {
+        window.localStorage.setItem("iamMusicChannelStateV1", JSON.stringify({ mode: musicChannelMode, selected_item_id: track.id, selected_at: new Date().toISOString() }));
+      } catch {}
+      updateMusicSelector();
+      renderMusicShelf();
+      window.IAMFirstPartyAnalytics?.record?.("music_channel_start", { selected_item_id: track.id, music_mode: musicChannelMode, selection_source: options.source || "manual" });
+    } finally {
+      musicSwitching = false;
+    }
+  }
+
+  function stationForId(stationId) {
+    return radioStationRecords.find((station) => station.id === stationId) || radioStationRecords.find((station) => station.id === continuation.defaultStation) || radioStationRecords[0];
+  }
+
+  function bestRadioStationForTrack() {
+    const ranked = musicShelfOrders.radio?.length ? musicShelfOrders.radio : radioStationRecords;
+    const stagePool = continuation.stagePools[track.radioHandoff] || [];
+    return ranked.find((station) => stagePool.includes(station.id)) || ranked[0] || stationForId(continuation.defaultStation);
+  }
+
+  async function startRadioStation(stationDecision, options = {}) {
+    const station = stationForId(stationDecision?.id || stationDecision) || bestRadioStationForTrack();
+    if (!station) return;
+    musicRadioPreviousBlend = requestedVideoBlend;
+    if (localVideo) {
+      try { localVideo.pause(); } catch {}
+      localVideo.muted = true;
+    }
+    document.body.classList.add("television-radio-continuation");
+    playerMount.classList.remove("is-local-video-awaiting-gesture");
+    await setVideoBlend(0);
+    await ensureFashionStreamAttached();
+    if (fashionVideo?.paused) await playWhenStreamAttached(fashionVideo, "fashion").catch(() => {});
+    activeRadioStationId = station.id;
+    musicChannelMode = "radio";
+    continuationDecision = { ...station, label: station.display_title, src: station.stream_url };
+    primeContinuationAudio(continuationDecision);
+    window.IAMEMDR?.setTimelineSource?.({ media: continuationAudio, bpm: 112, firstDownbeatSeconds: 0, fallbackBpm: 112 });
+    continuationAudio.muted = false;
+    continuationAudio.play()
+      .then(() => fadeContinuationAudio(.68, 1200))
+      .catch((error) => {
+        document.body.dataset.radioPlaybackError = String(error?.message || error).slice(0, 120);
+      });
+    if ("mediaSession" in window.navigator && window.MediaMetadata) {
+      window.navigator.mediaSession.metadata = new window.MediaMetadata({ title: station.display_title, artist: station.provider, album: "Universal Mind · 24/7 Radio" });
+    }
+    document.body.dataset.radioStationId = station.id;
+    document.body.dataset.radioStationProvider = station.provider;
+    updateMusicSelector();
+    renderMusicShelf();
+    showMusicShelfStatus(`${station.display_title} · live now`, 2600);
+    window.IAMFirstPartyAnalytics?.record?.("radio_start", { station_id: station.id, provider: station.provider, selection_source: options.source || "adaptive" });
+    maybeShowSupportCard();
+  }
+
+  async function selectMusicItem(item, options = {}) {
+    if (!item) return;
+    if (audioWalletJoined) {
+      queueMusicItem(item);
+      if (options.closeShelf) window.setTimeout(() => closeMusicShelf(false), 520);
+      return;
+    }
+    musicModeManuallySelected = true;
+    recordMusicFeedback(item, "explicit_select");
+    if (item.mode === "radio" || musicChannelMode === "radio") await startRadioStation(item, { source: options.source || "manual" });
+    else await switchMusicTrack(item.trackRef || findTrack(item.id), { source: options.source || "manual" });
+    rankMusicShelves();
+    if (options.closeShelf) closeMusicShelf(false);
+  }
+
+  async function selectAdjacentMusicItem(direction) {
+    const order = musicShelfOrders[musicChannelMode] || [];
+    if (!order.length) return;
+    const active = musicActiveItem();
+    const currentIndex = Math.max(0, order.findIndex((item) => item.id === active?.id));
+    const next = order[(currentIndex + direction + order.length) % order.length];
+    await selectMusicItem(next, { source: "wallet_arrow" });
+  }
+
+  async function continueAdaptiveMusicProgramme() {
+    if (track.presentation === "live_dj_set") {
+      await startRadioStation(bestRadioStationForTrack(), { source: "party_complete" });
+      return;
+    }
+    if (musicChannelMode === "videos" && musicModeManuallySelected) {
+      const order = musicShelfOrders.videos || [];
+      const position = Math.max(0, order.findIndex((item) => item.id === track.id));
+      const next = order[(position + 1) % Math.max(1, order.length)];
+      if (next) await switchMusicTrack(next.trackRef || findTrack(next.id), { source: "automatic_continuation" });
+      return;
+    }
+    const selector = window.IAMMusicChannelSelector;
+    const inference = readStoredCitizenInference() || {};
+    const decision = selector?.chooseContinuationMode?.({
+      citizenNeeds: musicCitizenNeeds(),
+      atWork: Boolean(selector?.explicitWorkContext?.(inference)),
+      inGroup: audioWalletJoined,
+      seed: musicRecommendationSeed(),
+      sequence: musicContinuationSequence++,
+    }) || { mode: "parties", reason: "fallback_party_prior" };
+    document.body.dataset.musicContinuationDecision = decision.mode;
+    document.body.dataset.musicContinuationReason = decision.reason;
+    if (decision.mode === "parties") {
+      const party = musicShelfOrders.parties?.[0];
+      if (party) await switchMusicTrack(party.trackRef || findTrack(party.id), { source: "automatic_continuation" });
+      else await startRadioStation(bestRadioStationForTrack(), { source: "party_pool_unavailable" });
+      return;
+    }
+    await startRadioStation(bestRadioStationForTrack(), { source: "adaptive_continuation" });
+  }
+
+  window.IAMMusicChannels = {
+    version: "music_channel_selector_v1.0",
+    getState() {
+      return {
+        mode: musicChannelMode,
+        activeItemId: musicActiveItem()?.id || "",
+        activeRadioStationId,
+        shelfOpen: musicShelfOpen,
+        recommendations: Object.fromEntries(Object.entries(musicShelfOrders).map(([mode, items]) => [mode, items.slice(0, 3).map((item) => item.id)])),
+        radioStationCount: radioStationRecords.length,
+        groupQueue: groupQueue.slice(),
+        inGroup: audioWalletJoined,
+        atWork: document.body.dataset.musicAtWorkContext === "true",
+      };
+    },
+    setMode(mode) {
+      setMusicMode(mode, { manual: true });
+      return this.getState();
+    },
+    select(itemId) {
+      const item = (musicShelfOrders[musicChannelMode] || []).find((candidate) => candidate.id === itemId);
+      return selectMusicItem(item, { source: "runtime_api" });
+    },
+    continueProgramme: continueAdaptiveMusicProgramme,
+    rank: rankMusicShelves,
+  };
+
   function applyVideoBlend(value) {
     const musicAmount = Math.max(0, Math.min(100, Number(value) || 0));
     const fashionOpacity = 1 - (musicAmount / 100);
@@ -2036,6 +2655,7 @@
       audioWalletOccupancy = 0;
       audioWalletMode = true;
       syncAudioWallet();
+      rankMusicShelves();
       return;
     }
     audioWalletMode = false;
@@ -2055,6 +2675,7 @@
     audioWalletOccupancy = audioWalletJoined ? 1 : 0;
     audioWalletMode = true;
     syncAudioWallet();
+    rankMusicShelves();
   }
 
   function toggleAudioWalletMute(event) {
@@ -2076,7 +2697,7 @@
   }
 
   function closeWalletFromOutside(event) {
-    if (reactionWallet?.contains(event.target) || fashionShelf?.contains(event.target) || walletView === "closed") return;
+    if (reactionWallet?.contains(event.target) || fashionShelf?.contains(event.target) || musicShelf?.contains(event.target) || walletView === "closed") return;
     window.clearTimeout(reactionWalletCollapseTimer);
     if (audioWalletMode) return;
     setWalletView("closed");
@@ -2538,42 +3159,10 @@
 
   function startTelevisionContinuation() {
     if (!localVideo) return;
-
-    const radioDecision = continuationDecision || selectRadioContinuation();
-    continuationDecision = radioDecision;
-
-    document.body.classList.add("television-radio-continuation");
-    playerMount.classList.remove("is-local-video-awaiting-gesture");
-    window.IAMStreamController?.detach(localVideo);
-    localVideo.loop = true;
-    localVideo.muted = true;
-    localVideo.controls = false;
-    localVideo.setAttribute("aria-label", "Vogue fashion show with adaptive streaming radio");
-    attachAdaptiveStream(localVideo, continuation.videoSrc, "fashion");
-    window.IAMStreamController?.setFashionActive(localVideo, true);
-
-    primeContinuationAudio(radioDecision);
-    window.IAMEMDR?.setTimelineSource?.({
-      media: continuationAudio,
-      bpm: 112,
-      firstDownbeatSeconds: 0,
-      fallbackBpm: 112,
+    continueAdaptiveMusicProgramme().catch((error) => {
+      document.body.dataset.musicContinuationError = String(error?.message || error).slice(0, 140);
+      startRadioStation(bestRadioStationForTrack(), { source: "continuation_error_fallback" }).catch(() => null);
     });
-
-    continuationAudio.muted = false;
-    continuationAudio.play()
-      .then(() => fadeContinuationAudio(0.68, 1800))
-      .catch(() => null);
-
-    if ("mediaSession" in window.navigator && window.MediaMetadata) {
-      window.navigator.mediaSession.metadata = new window.MediaMetadata({
-        title: radioDecision.label,
-        artist: "Universal Mind",
-        album: "Adaptive Environment Soundtrack",
-      });
-    }
-
-    maybeShowSupportCard();
   }
 
   function stopTelevisionMedia() {
@@ -2614,15 +3203,16 @@
 
   function primeContinuationAudio(radioDecision = selectRadioContinuation()) {
     continuationDecision = radioDecision;
+    const source = radioDecision?.src || radioDecision?.stream_url;
 
     if (!continuationAudio) {
       continuationAudio = new Audio();
       continuationAudio.crossOrigin = "anonymous";
-      continuationAudio.src = radioDecision.src;
+      continuationAudio.src = source;
       continuationAudio.preload = "auto";
       continuationAudio.volume = 0;
-    } else if (continuationAudio.src !== radioDecision.src) {
-      continuationAudio.src = radioDecision.src;
+    } else if (continuationAudio.src !== source) {
+      continuationAudio.src = source;
       continuationAudio.volume = 0;
     }
 
@@ -2642,15 +3232,17 @@
   }
 
   function selectRadioContinuation() {
-    const fallback = continuation.stations[continuation.defaultStation];
-    if (continuation.stations[track.radioHandoff]) return continuation.stations[track.radioHandoff];
+    const fallback = stationForId(continuation.defaultStation);
+    const adaptive = bestRadioStationForTrack();
+    if (adaptive) return { ...adaptive, label: adaptive.display_title, src: adaptive.stream_url };
 
     try {
       const parsed = readStoredSelection();
       const stationName = parsed?.radio_handoff?.station ||
         parsed?.streaming_radio_handoff?.station ||
         parsed?.radio_continuation?.station;
-      return continuation.stations[stationName] || fallback;
+      const station = stationForId(stationName);
+      return station ? { ...station, label: station.display_title, src: station.stream_url } : fallback;
     } catch {
       return fallback;
     }
@@ -3198,6 +3790,9 @@
   updateFashionRunwayToggle();
   renderFashionShelf();
   loadFashionRecommendations();
+  updateMusicSelector();
+  renderMusicShelf();
+  loadMusicRecommendations();
   if (!selectionIsLoading) {
     if (document.body.classList.contains("adaptive-music-selection-failed")) {
       showRecommendationUnavailable();
@@ -3268,7 +3863,12 @@
         return;
       }
       disarmVideoTooltips();
-      setVideoBlend(mode === "fashion" ? 0 : 100);
+      if (mode === "music") {
+        setWalletView("music");
+        updateMusicSelector();
+        return;
+      }
+      setVideoBlend(0);
       setWalletView("video-mix");
     });
   });
@@ -3276,7 +3876,12 @@
     button.addEventListener("click", (event) => {
       event.preventDefault();
       event.stopPropagation();
-      setVideoBlend(button.dataset.videoMixEndpoint === "fashion" ? 0 : 100);
+      const endpoint = button.dataset.videoMixEndpoint;
+      setVideoBlend(endpoint === "fashion" ? 0 : 100);
+      if (endpoint === "music") {
+        setWalletView("music");
+        updateMusicSelector();
+      }
     });
   });
   fashionRunwayPrevious?.addEventListener("click", (event) => {
@@ -3325,19 +3930,87 @@
   fashionShelfViewport?.addEventListener("pointercancel", () => {
     fashionShelfSwipeStartX = null;
   });
+  musicModeButtons.forEach((button) => {
+    button.addEventListener("click", (event) => {
+      event.preventDefault();
+      event.stopPropagation();
+      setMusicMode(button.dataset.musicMode, { manual: true, openShelf: true });
+    });
+  });
+  musicSelectorPrevious?.addEventListener("click", (event) => {
+    event.preventDefault();
+    event.stopPropagation();
+    selectAdjacentMusicItem(-1);
+  });
+  musicSelectorNext?.addEventListener("click", (event) => {
+    event.preventDefault();
+    event.stopPropagation();
+    selectAdjacentMusicItem(1);
+  });
+  musicShelfToggle?.addEventListener("click", (event) => {
+    event.preventDefault();
+    event.stopPropagation();
+    if (musicShelfOpen) closeMusicShelf();
+    else openMusicShelf();
+  });
+  musicShelfCloseButtons.forEach((button) => {
+    button.addEventListener("click", (event) => {
+      event.preventDefault();
+      event.stopPropagation();
+      closeMusicShelf();
+    });
+  });
+  musicShelfPrevious?.addEventListener("click", (event) => {
+    event.preventDefault();
+    event.stopPropagation();
+    moveMusicShelf(-1);
+  });
+  musicShelfNext?.addEventListener("click", (event) => {
+    event.preventDefault();
+    event.stopPropagation();
+    moveMusicShelf(1);
+  });
+  musicShelfViewport?.addEventListener("pointerdown", (event) => {
+    musicShelfSwipeStartX = Number(event.clientX);
+  });
+  musicShelfViewport?.addEventListener("pointerup", (event) => {
+    const start = musicShelfSwipeStartX;
+    musicShelfSwipeStartX = null;
+    if (!Number.isFinite(start)) return;
+    const distance = Number(event.clientX) - start;
+    if (Math.abs(distance) < 46) return;
+    moveMusicShelf(distance < 0 ? 1 : -1);
+  });
+  musicShelfViewport?.addEventListener("pointercancel", () => {
+    musicShelfSwipeStartX = null;
+  });
   window.addEventListener("resize", () => {
     if (fashionShelfOpen) updateFashionShelfPosition({ preview: false });
+    if (musicShelfOpen) updateMusicShelfPosition({ preview: false });
   });
   document.addEventListener("keydown", (event) => {
-    if (!fashionShelfOpen) return;
-    if (event.key === "Escape") {
-      event.preventDefault();
-      closeFashionShelf();
+    if (fashionShelfOpen) {
+      if (event.key === "Escape") {
+        event.preventDefault();
+        closeFashionShelf();
+        return;
+      }
+      if (event.key === "ArrowLeft" || event.key === "ArrowRight") {
+        event.preventDefault();
+        moveFashionShelf(event.key === "ArrowRight" ? 1 : -1);
+      }
       return;
     }
-    if (event.key === "ArrowLeft" || event.key === "ArrowRight") {
-      event.preventDefault();
-      moveFashionShelf(event.key === "ArrowRight" ? 1 : -1);
+    if (musicShelfOpen) {
+      if (event.key === "Escape") {
+        event.preventDefault();
+        closeMusicShelf();
+        return;
+      }
+      if (event.key === "ArrowLeft" || event.key === "ArrowRight") {
+        event.preventDefault();
+        moveMusicShelf(event.key === "ArrowRight" ? 1 : -1);
+      }
     }
   });
   videoCrossfader?.addEventListener("input", () => {
@@ -3450,7 +4123,7 @@
   });
   reactionWallet?.addEventListener("pointermove", (event) => {
     openReactionWalletFromPointerMove(event);
-    if (walletView !== "video" && walletView !== "video-mix" && walletView !== "emdr") return;
+    if (walletView !== "video" && walletView !== "video-mix" && walletView !== "music" && walletView !== "emdr") return;
     const now = window.performance?.now?.() || Date.now();
     if (now - videoTooltipOpenedAt < 160) return;
     reactionWallet.classList.add("is-video-tooltip-armed");
@@ -3492,6 +4165,7 @@
   radarClose?.addEventListener("click", closeVideoRadar);
   supportClose?.addEventListener("click", closeSupportCard);
   playerMount.addEventListener("click", () => {
+    if (document.body.classList.contains("television-radio-continuation")) return;
     if (!localVideo?.paused) return;
     playLocalVideo(localVideo);
   });

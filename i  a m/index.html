@@ -13,9 +13,11 @@
     <link rel="preconnect" href="https://streamer.radio.co" crossorigin>
     <link rel="preconnect" href="https://streams.radio.co" crossorigin>
     <link rel="preconnect" href="https://s4.radio.co" crossorigin>
+    <link rel="preconnect" href="https://ice5.somafm.com" crossorigin>
+    <link rel="preconnect" href="https://stream.sanctuaryradio.com" crossorigin>
     <link rel="stylesheet" href="styles.css?v=continuous-media-10">
     <link rel="preload" as="image" href="a s s e t s/Universal Mind [ I o H ] Logo.PNG">
-    <link rel="stylesheet" href="adaptive-environment-television.css?v=music-tv-css-d61e1463d1ab">
+    <link rel="stylesheet" href="adaptive-environment-television.css?v=music-tv-css-4a087c7fed7c">
   </head>
   <body class="adaptive-television-page">
     <main class="site-shell" aria-label="Universal Mind i am adaptive environment music television">
@@ -140,6 +142,34 @@
               <footer class="adaptive-television-fashion-shelf__footer">
                 <span data-fashion-shelf-counter aria-live="polite">1–3 / 6</span>
                 <span class="adaptive-television-fashion-shelf__progress" aria-hidden="true"><i data-fashion-shelf-progress></i></span>
+              </footer>
+            </div>
+          </section>
+          <section class="adaptive-television-fashion-shelf adaptive-television-music-shelf" id="music-shelf" data-music-shelf aria-hidden="true" aria-labelledby="music-shelf-title" inert>
+            <button class="adaptive-television-fashion-shelf__backdrop" type="button" data-music-shelf-close tabindex="-1" aria-label="Close Music recommendations"></button>
+            <div class="adaptive-television-fashion-shelf__panel" role="dialog" aria-modal="false">
+              <header class="adaptive-television-fashion-shelf__header">
+                <div>
+                  <h2 id="music-shelf-title" data-music-shelf-title>Videos for you</h2>
+                  <p data-music-shelf-subtitle>Recommended for you based on your current needs</p>
+                </div>
+                <button class="adaptive-television-fashion-shelf__close" type="button" data-music-shelf-close aria-label="Close Music recommendations">×</button>
+              </header>
+              <div class="adaptive-television-fashion-shelf__carousel">
+                <button class="adaptive-television-fashion-shelf__arrow adaptive-television-fashion-shelf__arrow--previous" type="button" data-music-shelf-previous aria-label="Previous Music recommendations">
+                  <span aria-hidden="true">&lsaquo;</span>
+                </button>
+                <div class="adaptive-television-fashion-shelf__viewport" data-music-shelf-viewport>
+                  <div class="adaptive-television-fashion-shelf__track" data-music-shelf-track role="list" aria-label="Music choices"></div>
+                </div>
+                <button class="adaptive-television-fashion-shelf__arrow adaptive-television-fashion-shelf__arrow--next" type="button" data-music-shelf-next aria-label="Next Music recommendations">
+                  <span aria-hidden="true">&rsaquo;</span>
+                </button>
+              </div>
+              <footer class="adaptive-television-fashion-shelf__footer">
+                <span data-music-shelf-counter aria-live="polite">1–3</span>
+                <span class="adaptive-television-fashion-shelf__progress" aria-hidden="true"><i data-music-shelf-progress></i></span>
+                <span class="adaptive-television-music-shelf__status" data-music-shelf-status aria-live="polite"></span>
               </footer>
             </div>
           </section>
@@ -274,6 +304,21 @@
               <button class="adaptive-television-video-mix-endpoint" type="button" data-video-mix-endpoint="music" data-video-tooltip="Stay with the original music video, dj set or live performance." aria-label="Show Music — Stay with the original music video, DJ set or live performance">
                 <span class="adaptive-television-video-icon-stage" aria-hidden="true"><img class="adaptive-television-video-icon-reference adaptive-television-video-icon-reference--music" src="a s s e t s/wallet-turntable-reference.png?v=reference-2" alt=""></span>
               </button>
+            </div>
+            <div class="adaptive-television-wallet-panel adaptive-television-music-controls" data-wallet-panel="music" aria-hidden="true">
+              <div class="adaptive-television-music-modes" role="tablist" aria-label="Choose a 24/7 Music mode">
+                <button type="button" role="tab" data-music-mode="videos" data-music-tooltip="24/7 livestream electronic music videos — from ambient, Balearic, hip hop and future bass through to house, rave, techno, and a splash of indie electronic." aria-selected="true">videos</button>
+                <button type="button" role="tab" data-music-mode="parties" data-music-tooltip="24/7 livestream DJ sets, parties and festivals, together as one." aria-selected="false">parties</button>
+                <button type="button" role="tab" data-music-mode="radio" data-music-tooltip="24/7 livestream electronic music radio — Balearic, chillout, house, ambient, electro, EBM and more." aria-selected="false">radio</button>
+              </div>
+              <div class="adaptive-television-music-selector" data-music-selector data-video-tooltip="Videos&#10;Click for more recommendations." role="group" aria-label="Choose Music content">
+                <button class="adaptive-television-music-selector__arrow" type="button" data-music-previous aria-label="Previous Music recommendation"><span aria-hidden="true">&lsaquo;</span></button>
+                <button class="adaptive-television-music-selector__current" type="button" data-music-shelf-toggle aria-haspopup="dialog" aria-expanded="false" aria-controls="music-shelf" aria-label="Click for more recommendations">
+                  <span class="adaptive-television-music-selector__label" data-music-selector-label>VIDEOS</span>
+                  <span class="adaptive-television-music-selector__count" data-music-selector-count aria-hidden="true">1 / 22</span>
+                </button>
+                <button class="adaptive-television-music-selector__arrow" type="button" data-music-next aria-label="Next Music recommendation"><span aria-hidden="true">&rsaquo;</span></button>
+              </div>
             </div>
             <div class="adaptive-television-emdr-controls" data-wallet-panel="emdr" data-emdr-controls aria-hidden="true">
               <button class="adaptive-television-emdr-off" type="button" data-emdr-off>off</button>
@@ -466,8 +511,10 @@
     <script src="emdr-three-art.js?v=emdr-stella-dynamics-1"></script>
     <script src="emdr-gif-world.js?v=emdr-gif-world-cf9610919c50"></script>
     <script src="emdr-shader.js?v=emdr-stella-rhythm-1"></script>
+    <script src="first-party-analytics.js?v=first-party-analytics-2"></script>
     <script src="fashion-visual-selector-v1.js?v=fashion-selector-v1"></script>
-    <script src="adaptive-environment-television.js?v=music-tv-e6e80e900320"></script>
+    <script src="music-channel-selector-v1.js?v=music-channel-selector-97674825d8bd"></script>
+    <script src="adaptive-environment-television.js?v=music-tv-d20c96658081"></script>
     <script src="adaptive-page-metadata-v1.js"></script>
   </body>
 </html>

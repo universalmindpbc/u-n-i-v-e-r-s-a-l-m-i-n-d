@@ -18,6 +18,23 @@
     "hard_artist_exclusion_count": 2,
     "relax_only_when_safe_fit_pool_is_exhausted": true
   },
+  "adaptive_linear_channels": {
+    "policy_version": "music_channel_selector_v1.0",
+    "modes": ["videos", "parties", "radio"],
+    "opening_contract": "The check-in opens with one personalised music video.",
+    "post_video_prior": {"parties": 0.7, "radio": 0.3},
+    "post_video_overrides": {
+      "explicit_work_context": "radio",
+      "high_sensory_load": "radio",
+      "joined_audio_room": "parties"
+    },
+    "party_completion": "Continue into the best-fit radio station for the citizen needs and the completed Party's musical context.",
+    "solo_selection": "Switch immediately with continuous fashion and EMDR state.",
+    "group_selection": "Record one shared next-item vote per citizen while preserving the common stream and timecode.",
+    "ranking_formula": ["citizen_needs_fit", "explicit_context_fit", "musical_continuity", "personal_affinity", "adjacent_exploration", "repetition_penalty"],
+    "adjacent_exploration_rate": 0.28,
+    "station_tensor_source": "radio-station-tensor-notion-export-v1.0.json"
+  },
   "activation_levels": {
     "0": "reflective containment",
     "1": "warmth, connection and gentle activation",
