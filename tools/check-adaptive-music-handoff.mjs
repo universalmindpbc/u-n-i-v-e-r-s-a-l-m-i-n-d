@@ -12,6 +12,7 @@ const streamCataloguePath = path.join(IAM_DIR, 'cloudflare-stream-catalogue.js')
 const shellControllerPath = path.join(IAM_DIR, 'script.js');
 const djSetManifestPath = path.join(ROOT, 'cloudflare-stream-djset-upload-manifest.json');
 const televisionCssPath = path.join(IAM_DIR, 'adaptive-environment-television.css');
+const inductionPagePath = path.join(IAM_DIR, 'induction.html');
 const quantumTreeControlPagePath = path.join(IAM_DIR, 'quantum-tree-control.html');
 const quantumTreeControlScriptPath = path.join(IAM_DIR, 'quantum-tree-control.js');
 const quantumTreeAudioPath = path.join(IAM_DIR, 'a s s e t s', 'q u a n t u m [ t r e e ].m4a');
@@ -39,6 +40,7 @@ const streamCatalogue = await fs.readFile(streamCataloguePath, 'utf8');
 const shellController = await fs.readFile(shellControllerPath, 'utf8');
 const djSetManifest = JSON.parse(await fs.readFile(djSetManifestPath, 'utf8'));
 const televisionCss = await fs.readFile(televisionCssPath, 'utf8');
+const inductionPage = await fs.readFile(inductionPagePath, 'utf8');
 const quantumTreeControlPage = await fs.readFile(quantumTreeControlPagePath, 'utf8');
 const quantumTreeControlScript = await fs.readFile(quantumTreeControlScriptPath, 'utf8');
 const quantumTreeSettingsEndpoint = await fs.readFile(quantumTreeSettingsEndpointPath, 'utf8');
@@ -65,6 +67,11 @@ const introCallPosition = controller.lastIndexOf('runIntro();');
 const roomOpenPosition = controller.indexOf('document.body.classList.add("television-room-open");');
 const pointerCountdownPosition = controller.indexOf('startReactionWalletPointerUnlockCountdown();');
 const settlingWalletRule = televisionCss.match(/body\.television-wallet-settling \.adaptive-television-reaction-wallet(?:\[data-wallet-view="closed"\])?,[\s\S]*?\{([\s\S]*?)\}/)?.[1] ?? '';
+const nowPlayingCssStart = televisionCss.indexOf('/* Fixed primary wallet with a quiet, readable programme ticker. */');
+const nowPlayingCss = televisionCss.slice(
+  nowPlayingCssStart,
+  televisionCss.indexOf('.adaptive-television-wallet-category {', nowPlayingCssStart)
+);
 
 requireCondition(controller.includes(explicitSelectionMarker), 'the home controller no longer reads selected_track_id from the URL');
 requireCondition(controller.includes('id: "the-prodigy-everybody-in-the-place"'), 'the Prodigy track is missing from the television catalogue');
@@ -103,8 +110,20 @@ requireCondition(controller.includes('nowPlayingResizeObserver = new ResizeObser
 requireCondition(controller.includes('reactionWalletTrigger?.addEventListener("pointerdown", beginReactionWalletOpenGesture, true);'), 'the taller primary wallet can activate a category during its opening pointer gesture');
 requireCondition(controller.includes('nowPlayingInteractiveAt = Date.now() + 1400;'), 'the primary wallet opening gesture is not guarded for its full expansion transition');
 requireCondition(controller.includes('requestedVideoBlend < 99.5'), 'the Now Playing rail no longer reports the visible Fashion layer');
-requireCondition(televisionCss.includes('.adaptive-television-now-playing.is-overflowing .adaptive-television-now-playing__track'), 'long Now Playing titles no longer receive overflow-only movement');
+requireCondition(controller.includes('function setNowPlayingTickerView(nextView)'), 'the music and Fashion labels no longer share a rotating ticker slot');
+requireCondition(controller.includes('}, 7000);'), 'the quiet Now Playing ticker cadence has changed');
+requireCondition(controller.includes('nowPlayingViewport.style.width = activeWidth > 0'), 'the clock and active title no longer centre as one complete text unit');
+requireCondition(televisionCss.includes('.adaptive-television-now-playing.is-overflowing .adaptive-television-now-playing__item.is-active .adaptive-television-now-playing__content'), 'long Now Playing titles no longer receive overflow-only movement');
 requireCondition(televisionCss.includes('@media (prefers-reduced-motion: reduce)'), 'the Now Playing movement no longer respects reduced-motion preferences');
+requireCondition(nowPlayingCss.includes('width: min(520px, calc(100vw - 48px));'), 'the primary wallet no longer holds one ample fixed desktop width');
+requireCondition(nowPlayingCss.includes('padding: 4px 24px 16px;'), 'the primary wallet has lost its generous side and lower buffer');
+requireCondition(nowPlayingCss.includes('background: rgba(12, 12, 14, 0.1);'), 'the primary wallet casing has not retained its original translucent opacity');
+requireCondition(nowPlayingCss.includes('backdrop-filter: none;'), 'the primary wallet casing has regained the rejected dark frosting');
+requireCondition(nowPlayingCss.includes('text-align: center;'), 'the Now Playing line is no longer centred');
+requireCondition((nowPlayingCss.match(/#54ae32/g) || []).length === 0, 'green has returned to the Now Playing ticker');
+requireCondition(nowPlayingCss.includes('.adaptive-television-now-playing__time {') && nowPlayingCss.includes('color: #fff;'), 'the 24-hour clock is no longer white');
+requireCondition(nowPlayingCss.includes('.adaptive-television-now-playing__status {') && nowPlayingCss.includes('color: #fff;'), 'Now Playing is no longer white');
+requireCondition((nowPlayingCss.match(/font-weight: 400;/g) || []).length >= 2, 'the time and Now Playing label are no longer as light as the active title');
 requireCondition(controller.includes('preloadTargetSeconds: 12'), 'fashion no longer preloads toward a twelve-second buffer');
 requireCondition(controller.includes('minimumSeconds: 8'), 'fashion reveal no longer requires an eight-second buffer floor');
 requireCondition(controller.includes('firstFallbackMs: 1250'), 'fashion reveal no longer falls to 480p after 1.25 seconds');
@@ -152,6 +171,12 @@ const homePage = pages.find(({ pagePath }) => pagePath.endsWith('index.html'))?.
 requireCondition(homePage.includes('data-now-playing'), 'the primary wallet has no Now Playing rail');
 requireCondition(homePage.includes('data-now-playing-time'), 'the primary wallet has no 24-hour Now Playing clock');
 requireCondition(homePage.includes('data-now-playing-visual-title'), 'the primary wallet cannot name the visible Fashion runway');
+requireCondition(homePage.includes('data-now-playing-audio'), 'the primary wallet has no dedicated music ticker item');
+requireCondition(homePage.includes('adaptive-television-now-playing__separator--content'), 'the compact divider between Now Playing and the active title is missing');
+requireCondition(homePage.includes('EMDR Research Feature - 10min Nervous System Rest. Investigating whether an optional visual layer modulates short term transcriptional pathways, relevant to mental health.'), 'the EMDR rollover is missing the ten-minute nervous-system-rest terminology');
+requireCondition(inductionPage.includes('as electronic music and fashion, for young people, primarily aged 16-24.'), 'the Induction welcome copy has not adopted electronic music and fashion');
+requireCondition(inductionPage.includes('while electronic music, fashion and culture become everyday pathways to better mental health.'), 'the Induction ambition copy has not adopted electronic music first');
+requireCondition(inductionPage.includes('with a deliberate focus on electronic music and fashion culture, industries we have spent our careers helping build.'), 'the Induction prototype copy has not adopted electronic music and fashion culture');
 
 for (const pagePath of [path.join(IAM_DIR, 'index.html'), path.join(IAM_DIR, 'vogue-self-report.html')]) {
   const source = await fs.readFile(pagePath, 'utf8');

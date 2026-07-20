@@ -111,7 +111,7 @@
   const nowPlayingStatus = document.querySelector("[data-now-playing-status]");
   const nowPlayingViewport = document.querySelector("[data-now-playing-viewport]");
   const nowPlayingTrack = document.querySelector("[data-now-playing-track]");
-  const nowPlayingMode = document.querySelector("[data-now-playing-mode]");
+  const nowPlayingAudio = document.querySelector("[data-now-playing-audio]");
   const nowPlayingTitle = document.querySelector("[data-now-playing-title]");
   const nowPlayingVisual = document.querySelector("[data-now-playing-visual]");
   const nowPlayingVisualTitle = document.querySelector("[data-now-playing-visual-title]");
@@ -341,6 +341,8 @@
   let reactionWalletCollapseTimer = 0;
   let nowPlayingInteractiveAt = 0;
   let nowPlayingResizeObserver = null;
+  let nowPlayingTickerTimer = 0;
+  let nowPlayingTickerView = "audio";
   const REACTION_WALLET_POINTER_LOCK_MS = 10000;
   const REACTION_WALLET_POINTER_MOVE_PX = 2;
   let audioWalletMode = false;
@@ -1436,19 +1438,44 @@
   function updateNowPlayingOverflow() {
     if (!nowPlaying || !nowPlayingViewport || !nowPlayingTrack) return;
     window.requestAnimationFrame(() => {
-      const overflow = Math.max(0, nowPlayingTrack.scrollWidth - nowPlayingViewport.clientWidth);
+      const activeContent = nowPlayingTrack.querySelector(
+        ".adaptive-television-now-playing__item.is-active:not([hidden]) .adaptive-television-now-playing__content"
+      );
+      const activeWidth = Math.min(310, Math.ceil(activeContent?.scrollWidth || 0));
+      nowPlayingViewport.style.width = activeWidth > 0 ? `${activeWidth}px` : "auto";
+      const overflow = Math.max(0, (activeContent?.scrollWidth || 0) - nowPlayingViewport.clientWidth);
       nowPlaying.classList.toggle("is-overflowing", overflow > 4);
       nowPlaying.style.setProperty("--now-playing-overflow", `${-Math.ceil(overflow)}px`);
     });
+  }
+
+  function setNowPlayingTickerView(nextView) {
+    if (!nowPlaying || !nowPlayingAudio || !nowPlayingVisual) return;
+    const visualAvailable = !nowPlayingVisual.hidden;
+    nowPlayingTickerView = visualAvailable && nextView === "visual" ? "visual" : "audio";
+    const audioActive = nowPlayingTickerView === "audio";
+    nowPlayingAudio.classList.toggle("is-active", audioActive);
+    nowPlayingAudio.setAttribute("aria-hidden", String(!audioActive));
+    nowPlayingVisual.classList.toggle("is-active", !audioActive);
+    nowPlayingVisual.setAttribute("aria-hidden", String(audioActive));
+    nowPlaying.dataset.nowPlayingTicker = nowPlayingTickerView;
+    updateNowPlayingOverflow();
+  }
+
+  function restartNowPlayingTicker(hasVisual) {
+    window.clearInterval(nowPlayingTickerTimer);
+    nowPlayingTickerTimer = 0;
+    setNowPlayingTickerView("audio");
+    if (!hasVisual) return;
+    nowPlayingTickerTimer = window.setInterval(() => {
+      setNowPlayingTickerView(nowPlayingTickerView === "audio" ? "visual" : "audio");
+    }, 7000);
   }
 
   function updateNowPlaying() {
     if (!nowPlaying) return;
     const media = currentNowPlayingMedia();
     const radioState = document.body.dataset.radioPlaybackState || "stopped";
-    const status = media.mode === "radio"
-      ? (radioState === "error" ? "RADIO OFFLINE" : radioState === "loading" ? "TUNING" : "LIVE RADIO")
-      : "NOW PLAYING";
     const state = media.mode === "radio"
       ? (radioState === "error" ? "error" : radioState === "loading" ? "loading" : "live")
       : "playing";
@@ -1456,8 +1483,7 @@
     const activeRunway = fashionRunways[fashionRunwayIndex];
     const fashionVisible = Boolean(activeRunway && requestedVideoBlend < 99.5);
 
-    if (nowPlayingStatus) nowPlayingStatus.textContent = status;
-    if (nowPlayingMode) nowPlayingMode.textContent = modeLabel;
+    if (nowPlayingStatus) nowPlayingStatus.textContent = "NOW PLAYING";
     if (nowPlayingTitle) nowPlayingTitle.textContent = media.label;
     if (nowPlayingVisual) nowPlayingVisual.hidden = !fashionVisible;
     if (nowPlayingVisualTitle) nowPlayingVisualTitle.textContent = fashionVisible ? activeRunway.title : "";
@@ -1465,10 +1491,10 @@
     nowPlaying.dataset.nowPlayingMode = media.mode;
     nowPlaying.setAttribute(
       "aria-label",
-      `Open ${modeLabel.toLowerCase()} recommendations. ${status}: ${media.label}${fashionVisible ? `. Visual: ${activeRunway.title}` : ""}`
+      `Open ${modeLabel.toLowerCase()} recommendations. Now playing: ${media.label}${fashionVisible ? `. Visual: ${activeRunway.title}` : ""}`
     );
     updateNowPlayingClock();
-    updateNowPlayingOverflow();
+    restartNowPlayingTicker(fashionVisible);
   }
 
   function openNowPlayingRecommendations(event) {
@@ -1482,7 +1508,7 @@
   }
 
   window.IAMNowPlaying = {
-    version: "wallet_now_playing_v1.0",
+    version: "wallet_now_playing_v1.1",
     getState() {
       const media = currentNowPlayingMedia();
       return {
@@ -1491,10 +1517,12 @@
         mode: media.mode,
         title: media.label,
         visual: nowPlayingVisual?.hidden ? "" : (nowPlayingVisualTitle?.textContent || ""),
+        ticker: nowPlayingTickerView,
         overflow: Boolean(nowPlaying?.classList.contains("is-overflowing")),
       };
     },
     refresh: updateNowPlaying,
+    setTickerView: setNowPlayingTickerView,
   };
 
   function fashionCardsPerView() {
@@ -4370,7 +4398,8 @@
   if (window.ResizeObserver && nowPlayingViewport && nowPlayingTrack) {
     nowPlayingResizeObserver = new ResizeObserver(updateNowPlayingOverflow);
     nowPlayingResizeObserver.observe(nowPlayingViewport);
-    nowPlayingResizeObserver.observe(nowPlayingTrack);
+    if (nowPlayingTitle) nowPlayingResizeObserver.observe(nowPlayingTitle);
+    if (nowPlayingVisualTitle) nowPlayingResizeObserver.observe(nowPlayingVisualTitle);
   }
   window.setInterval(updateNowPlayingClock, 30000);
   syncFullscreenState();
