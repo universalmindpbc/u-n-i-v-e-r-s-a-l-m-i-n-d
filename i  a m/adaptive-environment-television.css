@@ -881,6 +881,7 @@ body.community-globe-open .adaptive-television-community {
 
 body.community-globe-open .adaptive-television-live-pill,
 body.community-globe-open .adaptive-television-reaction-wallet,
+body.community-globe-open .adaptive-television-fashion-shelf,
 body.community-globe-open .adaptive-television-fullscreen,
 body.community-globe-open .adaptive-television-wallet-onboarding {
   opacity: 0 !important;
@@ -3476,10 +3477,10 @@ body.television-wallet-pointer-locked .adaptive-television-reaction-wallet[data-
 .adaptive-television-fashion-runway-selector {
   position: relative;
   display: flex;
-  flex: 0 0 137px;
+  flex: 0 0 164px;
   align-items: center;
   justify-content: space-between;
-  width: 137px;
+  width: 164px;
   height: 22px;
   border: 0;
   border-radius: 7px;
@@ -3510,7 +3511,13 @@ body.television-wallet-pointer-locked .adaptive-television-reaction-wallet[data-
   flex: 1 1 auto;
   align-items: center;
   justify-content: center;
-  gap: 6px;
+  gap: 5px;
+  height: 20px;
+  border: 0;
+  border-radius: 4px;
+  background: transparent;
+  cursor: pointer;
+  padding: 0 2px;
 }
 
 .adaptive-television-fashion-runway-label {
@@ -3520,24 +3527,11 @@ body.television-wallet-pointer-locked .adaptive-television-reaction-wallet[data-
   white-space: nowrap;
 }
 
-.adaptive-television-fashion-runway-dots {
-  display: inline-flex;
-  align-items: center;
-  gap: 5px;
-}
-
-.adaptive-television-fashion-runway-dots i {
-  display: block;
-  width: 9px;
-  height: 9px;
-  border: 1px solid #171717;
-  border-radius: 50%;
-  background: transparent;
-  box-sizing: border-box;
-}
-
-.adaptive-television-fashion-runway-dots i.is-active {
-  background: #171717;
+.adaptive-television-fashion-runway-count {
+  color: rgba(23, 23, 23, 0.58);
+  font: 600 8px/1 "Helvetica Neue", Helvetica, Arial, sans-serif;
+  letter-spacing: 0;
+  white-space: nowrap;
 }
 
 .adaptive-television-reaction-wallet[data-wallet-view="video-mix"] .adaptive-television-video-mix-controls {
@@ -3751,9 +3745,290 @@ button.adaptive-television-research-tooltip__more {
 }
 
 .adaptive-television-fashion-runway-arrow:hover,
-.adaptive-television-fashion-runway-arrow:focus-visible {
+.adaptive-television-fashion-runway-arrow:focus-visible,
+.adaptive-television-fashion-runway-current:hover,
+.adaptive-television-fashion-runway-current:focus-visible {
   background: rgba(0, 0, 0, 0.08);
   outline: 0;
+}
+
+/* Fashion shelf: one adaptive visual catalogue shared by Fashion and EMDR GIF. */
+.adaptive-television-fashion-shelf {
+  position: absolute;
+  inset: 0;
+  z-index: 16;
+  opacity: 0;
+  pointer-events: none;
+  visibility: hidden;
+  transition: opacity 260ms ease, visibility 0s linear 260ms;
+}
+
+.adaptive-television-fashion-shelf[aria-hidden="false"] {
+  opacity: 1;
+  pointer-events: auto;
+  visibility: visible;
+  transition: opacity 320ms ease, visibility 0s linear 0s;
+}
+
+.adaptive-television-fashion-shelf__backdrop {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  border: 0;
+  background: rgba(0, 0, 0, 0.24);
+  cursor: default;
+  padding: 0;
+}
+
+.adaptive-television-fashion-shelf__panel {
+  position: absolute;
+  top: 49%;
+  left: 50%;
+  width: min(1180px, calc(100vw - 88px));
+  color: #fff;
+  transform: translate(-50%, calc(-50% + 14px));
+  transition: transform 480ms cubic-bezier(0.22, 0.72, 0.18, 1);
+}
+
+.adaptive-television-fashion-shelf[aria-hidden="false"] .adaptive-television-fashion-shelf__panel {
+  transform: translate(-50%, -50%);
+}
+
+.adaptive-television-fashion-shelf__header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  width: calc(100% - 112px);
+  margin: 0 auto 18px;
+}
+
+.adaptive-television-fashion-shelf__header h2,
+.adaptive-television-fashion-shelf__header p {
+  margin: 0;
+  text-shadow: 0 1px 6px rgba(0, 0, 0, 0.9);
+}
+
+.adaptive-television-fashion-shelf__header h2 {
+  font: 500 clamp(19px, 1.7vw, 25px)/1.08 "Helvetica Neue", Helvetica, Arial, sans-serif;
+  letter-spacing: -0.035em;
+}
+
+.adaptive-television-fashion-shelf__header p {
+  margin-top: 5px;
+  color: rgba(255, 255, 255, 0.7);
+  font: 400 11px/1.2 "Helvetica Neue", Helvetica, Arial, sans-serif;
+  letter-spacing: 0.055em;
+}
+
+.adaptive-television-fashion-shelf__close {
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  border: 0;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.34);
+  color: rgba(255, 255, 255, 0.9);
+  cursor: pointer;
+  font: 300 23px/1 "Helvetica Neue", Helvetica, Arial, sans-serif;
+  padding: 0 0 2px;
+}
+
+.adaptive-television-fashion-shelf__carousel {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  width: 100%;
+}
+
+.adaptive-television-fashion-shelf__viewport {
+  width: calc(100% - 112px);
+  margin: 0 auto;
+  overflow: hidden;
+  touch-action: pan-y;
+}
+
+.adaptive-television-fashion-shelf__track {
+  display: flex;
+  align-items: stretch;
+  gap: 22px;
+  transform: translate3d(0, 0, 0);
+  transition: transform 620ms cubic-bezier(0.22, 0.72, 0.18, 1);
+  will-change: transform;
+}
+
+.adaptive-television-fashion-shelf__item {
+  flex: 0 0 calc((100% - 44px) / 3);
+  min-width: 0;
+}
+
+.adaptive-television-fashion-card {
+  display: block;
+  width: 100%;
+  border: 0;
+  background: transparent;
+  color: #fff;
+  cursor: pointer;
+  padding: 0;
+  text-align: left;
+  transform: translateY(0);
+  transition: opacity 220ms ease, transform 300ms cubic-bezier(0.22, 0.72, 0.18, 1);
+}
+
+.adaptive-television-fashion-card:hover,
+.adaptive-television-fashion-card:focus-visible,
+.adaptive-television-fashion-card.is-previewing {
+  outline: 0;
+  transform: translateY(-3px);
+}
+
+.adaptive-television-fashion-card__media {
+  position: relative;
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  background: #050505;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.adaptive-television-fashion-card.is-active .adaptive-television-fashion-card__media {
+  border-color: rgba(255, 255, 255, 0.9);
+}
+
+.adaptive-television-fashion-card__media img,
+.adaptive-television-fashion-card__preview {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.adaptive-television-fashion-card__preview {
+  z-index: 2;
+}
+
+.adaptive-television-fashion-card__preview-label {
+  position: absolute;
+  right: 9px;
+  bottom: 8px;
+  z-index: 3;
+  color: rgba(255, 255, 255, 0.78);
+  font: 500 8px/1 "Helvetica Neue", Helvetica, Arial, sans-serif;
+  letter-spacing: 0.08em;
+  opacity: 0;
+  text-transform: uppercase;
+  transition: opacity 180ms ease;
+}
+
+.adaptive-television-fashion-card.is-previewing .adaptive-television-fashion-card__preview-label {
+  opacity: 1;
+}
+
+.adaptive-television-fashion-card__copy {
+  display: grid;
+  min-height: 64px;
+  padding: 10px 1px 0;
+}
+
+.adaptive-television-fashion-card__copy small,
+.adaptive-television-fashion-card__copy strong,
+.adaptive-television-fashion-card__copy span {
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-shadow: 0 1px 7px rgba(0, 0, 0, 0.94);
+  white-space: nowrap;
+}
+
+.adaptive-television-fashion-card__copy small {
+  color: rgba(255, 255, 255, 0.58);
+  font: 500 8px/1 "Helvetica Neue", Helvetica, Arial, sans-serif;
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+}
+
+.adaptive-television-fashion-card__copy strong {
+  margin-top: 5px;
+  font: 600 13px/1 "Helvetica Neue", Helvetica, Arial, sans-serif;
+  letter-spacing: -0.02em;
+}
+
+.adaptive-television-fashion-card__copy span {
+  margin-top: 5px;
+  color: rgba(255, 255, 255, 0.68);
+  font: 400 9px/1.1 "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+.adaptive-television-fashion-shelf__arrow {
+  position: absolute;
+  top: calc(50% - 31px);
+  z-index: 4;
+  display: grid;
+  place-items: center;
+  width: 38px;
+  height: 58px;
+  border: 0;
+  background: transparent;
+  color: rgba(255, 255, 255, 0.88);
+  cursor: pointer;
+  font: 300 38px/1 "Helvetica Neue", Helvetica, Arial, sans-serif;
+  padding: 0 0 5px;
+}
+
+.adaptive-television-fashion-shelf__arrow--previous {
+  left: 2px;
+}
+
+.adaptive-television-fashion-shelf__arrow--next {
+  right: 2px;
+}
+
+.adaptive-television-fashion-shelf__arrow:hover,
+.adaptive-television-fashion-shelf__arrow:focus-visible,
+.adaptive-television-fashion-shelf__close:hover,
+.adaptive-television-fashion-shelf__close:focus-visible {
+  background: rgba(255, 255, 255, 0.1);
+  outline: 0;
+}
+
+.adaptive-television-fashion-shelf__arrow:disabled {
+  cursor: default;
+  opacity: 0.2;
+}
+
+.adaptive-television-fashion-shelf__footer {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: calc(100% - 112px);
+  margin: 10px auto 0;
+  color: rgba(255, 255, 255, 0.62);
+  font: 500 9px/1 "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+.adaptive-television-fashion-shelf__progress {
+  position: relative;
+  display: block;
+  flex: 0 0 74px;
+  height: 1px;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.22);
+}
+
+.adaptive-television-fashion-shelf__progress i {
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 50%;
+  background: rgba(255, 255, 255, 0.86);
+  transition: width 620ms cubic-bezier(0.22, 0.72, 0.18, 1);
+}
+
+body.fashion-shelf-open .adaptive-television-fashion-runway-selector[data-video-tooltip]::after {
+  display: none;
 }
 
 .adaptive-television-video-crossfader {
@@ -3779,12 +4054,53 @@ button.adaptive-television-research-tooltip__more {
   }
 
   .adaptive-television-fashion-runway-selector {
-    flex-basis: 117px;
-    width: 117px;
+    flex-basis: 136px;
+    width: 136px;
   }
 
   .adaptive-television-video-crossfader {
     width: max(64px, calc(100vw - 311px));
+  }
+}
+
+@media (max-width: 720px) {
+  .adaptive-television-fashion-shelf__panel {
+    top: 46%;
+    width: 100%;
+  }
+
+  .adaptive-television-fashion-shelf__header,
+  .adaptive-television-fashion-shelf__footer {
+    width: min(78vw, 350px);
+  }
+
+  .adaptive-television-fashion-shelf__viewport {
+    width: min(86vw, 390px);
+  }
+
+  .adaptive-television-fashion-shelf__track {
+    gap: 12px;
+  }
+
+  .adaptive-television-fashion-shelf__item {
+    flex-basis: min(78vw, 350px);
+  }
+
+  .adaptive-television-fashion-shelf__arrow--previous {
+    left: 0;
+  }
+
+  .adaptive-television-fashion-shelf__arrow--next {
+    right: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .adaptive-television-fashion-shelf,
+  .adaptive-television-fashion-shelf__panel,
+  .adaptive-television-fashion-shelf__track,
+  .adaptive-television-fashion-card {
+    transition-duration: 1ms;
   }
 }
 

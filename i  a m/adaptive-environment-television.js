@@ -114,7 +114,16 @@
   const fashionRunwayPrevious = document.querySelector("[data-fashion-runway-previous]");
   const fashionRunwayNext = document.querySelector("[data-fashion-runway-next]");
   const fashionRunwayLabel = document.querySelector("[data-fashion-runway-label]");
-  const fashionRunwayDots = document.querySelector("[data-fashion-runway-dots]");
+  const fashionRunwayCount = document.querySelector("[data-fashion-runway-count]");
+  const fashionShelf = document.querySelector("[data-fashion-shelf]");
+  const fashionShelfToggle = document.querySelector("[data-fashion-shelf-toggle]");
+  const fashionShelfTrack = document.querySelector("[data-fashion-shelf-track]");
+  const fashionShelfViewport = document.querySelector("[data-fashion-shelf-viewport]");
+  const fashionShelfPrevious = document.querySelector("[data-fashion-shelf-previous]");
+  const fashionShelfNext = document.querySelector("[data-fashion-shelf-next]");
+  const fashionShelfCounter = document.querySelector("[data-fashion-shelf-counter]");
+  const fashionShelfProgress = document.querySelector("[data-fashion-shelf-progress]");
+  const fashionShelfCloseButtons = Array.from(document.querySelectorAll("[data-fashion-shelf-close]"));
   const emdrCanvas = document.querySelector("[data-emdr-canvas]");
   const emdrOff = document.querySelector("[data-emdr-off]");
   const emdrStyleButtons = Array.from(document.querySelectorAll("[data-emdr-style]"));
@@ -165,22 +174,79 @@
   let fashionHeroDrawCount = 0;
   let fashionRunwayIndex = 0;
   let fashionRunwaySwitching = false;
+  let fashionSelectionSource = "algorithm";
+  let fashionShelfOpen = false;
+  let fashionShelfOffset = 0;
+  let fashionShelfOrder = [0, 1, 2, 3, 4, 5];
+  let fashionShelfPreviewVideo = null;
+  let fashionShelfPreviewCard = null;
+  let fashionShelfSwipeStartX = null;
+  let fashionTensorRecords = [];
+  let fashionDwellTimer = 0;
   let requestedVideoBlend = Number(videoCrossfader?.value || 100);
   let fashionRevealGeneration = 0;
   let pendingFashionRevealPromise = null;
   let pendingFashionRevealVideo = null;
   const fashionRunways = [
     {
+      assetKey: "chanel-paris-rooftops",
       title: "Chanel 2020",
       shortTitle: "CHANEL 2020",
       videoSrc: "a s s e t s/Chanel - Paris 2020.mp4",
+      streamUid: "f6eefc5a83e53f24990a7477ecd04010",
+      previewStart: 12,
     },
     {
+      assetKey: "jacquemus-le-coup-de-soleil",
+      title: "Jacquemus SS20 — Le Coup de Soleil",
+      shortTitle: "JACQUEMUS",
+      videoSrc: "a s s e t s/f a s h i o n [ r u n w a y ]/JACQUEMUS - SS20 LE COUP DE SOLEIL.mp4",
+      streamUid: "00fe2d47012a31b3b0796fcf2e544360",
+      previewStart: 18,
+    },
+    {
+      assetKey: "annies-ibiza-runway",
+      title: "Annie’s Ibiza — Runway Film",
+      shortTitle: "ANNIE’S IBIZA",
+      videoSrc: "a s s e t s/f a s h i o n [ r u n w a y ]/Annie's Ibiza.mp4",
+      streamUid: "30b3a8a9a753d23f089f480689bd14f6",
+      previewStart: 6,
+    },
+    {
+      assetKey: "dolce-gabbana-valley-of-the-temples",
       title: "Dolce & Gabbana 2019",
       shortTitle: "D&G 2019",
       videoSrc: "a s s e t s/Dolce & Gabbanna - Sicily 2019.mp4",
+      streamUid: "b582b1bff1de6e3952f815b9e2f79ebc",
+      previewStart: 14,
+    },
+    {
+      assetKey: "mugler-fall-winter-2021",
+      title: "Mugler Fall Winter 2021",
+      shortTitle: "MUGLER FW21",
+      videoSrc: "a s s e t s/f a s h i o n [ r u n w a y ]/Mugler - Fall Winter 2021.mp4",
+      streamUid: "792c884e5d63177f32dd85a2f7e97c28",
+      previewStart: 9,
+    },
+    {
+      assetKey: "wolford-sergio-rossi-capsule",
+      title: "Wolford × Sergio Rossi",
+      shortTitle: "WOLFORD",
+      videoSrc: "a s s e t s/f a s h i o n [ r u n w a y ]/Wolford x Sergio Rossi.mp4",
+      streamUid: "90c027288fe81ad915971988aafebafd",
+      previewStart: 4,
     },
   ];
+  try {
+    const storedFashion = JSON.parse(window.sessionStorage.getItem("iamFashionVisualStateV1") || "null");
+    const storedIndex = fashionRunways.findIndex((runway) => runway.assetKey === storedFashion?.assetKey);
+    if (storedIndex >= 0) {
+      fashionRunwayIndex = storedIndex;
+      fashionSelectionSource = storedFashion?.source === "manual" ? "manual" : "algorithm";
+    }
+  } catch {
+    // The adaptive recommendation remains available when session storage is restricted.
+  }
   let continuationAudio = null;
   let soundResearchAudio = null;
   let soundResearchGainFrame = 0;
@@ -1260,6 +1326,7 @@
 
   function setWalletView(nextView) {
     if (!reactionWallet) return;
+    if (nextView !== "video-mix" && fashionShelfOpen) closeFashionShelf(false);
     if (nextView !== walletView) closeAllResearchRollovers();
     walletView = nextView;
     reactionWallet.dataset.walletView = nextView;
@@ -1282,26 +1349,354 @@
     });
   }
 
+  function fashionCardsPerView() {
+    return window.matchMedia("(max-width: 720px)").matches ? 1 : 3;
+  }
+
+  function fashionRunwayOrderPosition(index) {
+    const position = fashionShelfOrder.indexOf(index);
+    return position >= 0 ? position : index;
+  }
+
+  function fashionThumbnailUrl(runway) {
+    const host = window.IAMCloudflareStream?.customerHost || "customer-1vpwglz3v6fiyaas.cloudflarestream.com";
+    return `https://${host}/${runway.streamUid}/thumbnails/thumbnail.jpg?time=${runway.previewStart}s&height=360`;
+  }
+
+  function readFashionTasteProfile() {
+    try {
+      const parsed = JSON.parse(window.localStorage.getItem("iamFashionVisualTasteV1") || "null");
+      if (parsed && typeof parsed === "object") {
+        return {
+          affinities: parsed.affinities && typeof parsed.affinities === "object" ? parsed.affinities : {},
+          recentAssetKeys: Array.isArray(parsed.recentAssetKeys) ? parsed.recentAssetKeys : [],
+          lastAssetKey: String(parsed.lastAssetKey || ""),
+          lastSelectedAt: Number(parsed.lastSelectedAt || 0),
+        };
+      }
+    } catch {
+      // Use a fresh local preference profile when storage is unavailable.
+    }
+    return { affinities: {}, recentAssetKeys: [], lastAssetKey: "", lastSelectedAt: 0 };
+  }
+
+  function writeFashionTasteProfile(profile) {
+    try {
+      window.localStorage.setItem("iamFashionVisualTasteV1", JSON.stringify(profile));
+    } catch {
+      // Selection still works when local storage is unavailable.
+    }
+  }
+
+  function persistFashionSelection(source = fashionSelectionSource) {
+    const runway = fashionRunways[fashionRunwayIndex];
+    fashionSelectionSource = source === "manual" ? "manual" : "algorithm";
+    document.body.dataset.fashionRunway = runway.assetKey;
+    document.body.dataset.fashionSelectionSource = fashionSelectionSource;
+    playerMount.dataset.fashionRunway = runway.assetKey;
+    try {
+      window.sessionStorage.setItem("iamFashionVisualStateV1", JSON.stringify({
+        assetKey: runway.assetKey,
+        source: fashionSelectionSource,
+        selectedAt: new Date().toISOString(),
+      }));
+    } catch {
+      // The active visual remains available in memory when storage is restricted.
+    }
+  }
+
+  function scheduleFashionDwellFeedback() {
+    window.clearTimeout(fashionDwellTimer);
+    const assetKey = fashionRunways[fashionRunwayIndex]?.assetKey;
+    fashionDwellTimer = window.setTimeout(() => {
+      if (fashionRunways[fashionRunwayIndex]?.assetKey !== assetKey) return;
+      const selector = window.IAMFashionVisualSelector;
+      const weight = Number(selector?.feedbackWeight?.({ type: "dwell_30_seconds" }) || .45);
+      const profile = readFashionTasteProfile();
+      profile.affinities[assetKey] = Math.max(0, Math.min(1, Number(profile.affinities[assetKey] || 0) + .08 * weight));
+      writeFashionTasteProfile(profile);
+    }, 30000);
+  }
+
+  function recordFashionSelectionFeedback(index, feedbackType = "explicit_select") {
+    const runway = fashionRunways[index];
+    if (!runway) return;
+    const selector = window.IAMFashionVisualSelector;
+    const profile = readFashionTasteProfile();
+    const now = Date.now();
+    const repeat = profile.lastAssetKey === runway.assetKey;
+    const type = repeat ? "repeat_select" : feedbackType;
+    const weight = Number(selector?.feedbackWeight?.({ type }) || (repeat ? .85 : 1));
+    profile.affinities[runway.assetKey] = Math.max(0, Math.min(1, Number(profile.affinities[runway.assetKey] || 0) + .18 * weight));
+    if (!repeat && profile.lastAssetKey && now - profile.lastSelectedAt < 4500) {
+      const quickSwitchWeight = Math.abs(Number(selector?.feedbackWeight?.({ type: "quick_switch" }) || -.2));
+      profile.affinities[profile.lastAssetKey] = Math.max(0, Number(profile.affinities[profile.lastAssetKey] || 0) - .12 * quickSwitchWeight);
+    }
+    profile.recentAssetKeys = [runway.assetKey, ...profile.recentAssetKeys.filter((key) => key !== runway.assetKey)].slice(0, 2);
+    profile.lastAssetKey = runway.assetKey;
+    profile.lastSelectedAt = now;
+    writeFashionTasteProfile(profile);
+    scheduleFashionDwellFeedback();
+  }
+
+  function fashionCitizenNeeds(records) {
+    const normalized = normalizedNeedMap(readStoredCitizenInference() || {});
+    const result = {};
+    const dimensions = new Set();
+    records.forEach((record) => Object.keys(record.need_scores || {}).forEach((name) => dimensions.add(name)));
+    dimensions.forEach((name) => {
+      const value = normalized[normalizeSlug(name)];
+      if (Number.isFinite(value)) result[name] = value;
+    });
+    return result;
+  }
+
+  async function rankFashionShelf(options = {}) {
+    const selector = window.IAMFashionVisualSelector;
+    if (!selector || !fashionTensorRecords.length) return;
+    const taste = readFashionTasteProfile();
+    const result = selector.rank(fashionTensorRecords, {
+      citizenNeeds: fashionCitizenNeeds(fashionTensorRecords),
+      tasteAffinities: taste.affinities,
+      recentAssetKeys: taste.recentAssetKeys,
+      limit: 3,
+    });
+    const rankedIndexes = result.ranked
+      .map((record) => fashionRunways.findIndex((runway) => runway.assetKey === record.asset_key))
+      .filter((index) => index >= 0);
+    fashionShelfOrder = [...rankedIndexes, ...fashionRunways.map((_runway, index) => index).filter((index) => !rankedIndexes.includes(index))];
+    document.body.dataset.fashionRecommendationCount = String(result.recommendations.length);
+    document.body.dataset.fashionRecommendationSource = Object.keys(result.supportGoals || {}).length
+      ? "citizen_needs"
+      : "editorial_and_taste";
+
+    const recommendedIndex = fashionShelfOrder[0] ?? 0;
+    if (!options.preserveSelection && fashionSelectionSource !== "manual" && recommendedIndex !== fashionRunwayIndex) {
+      if (fashionVideo) await setFashionRunway(recommendedIndex, { source: "algorithm" });
+      else {
+        fashionRunwayIndex = recommendedIndex;
+        persistFashionSelection("algorithm");
+      }
+    }
+    updateFashionRunwayToggle();
+    renderFashionShelf();
+  }
+
+  async function loadFashionRecommendations() {
+    if (!fashionRunwaySelector || !window.IAMFashionVisualSelector) return;
+    try {
+      const response = await fetch("fashion-visual-tensor-notion-export-v1.0.json?v=fashion-tensor-1", { cache: "no-store" });
+      if (!response.ok) throw new Error(`Fashion Tensor fetch failed (${response.status})`);
+      const catalogue = await response.json();
+      fashionTensorRecords = Array.isArray(catalogue.records) ? catalogue.records : [];
+      await rankFashionShelf();
+    } catch (error) {
+      document.body.dataset.fashionRecommendationSource = "catalogue_fallback";
+      document.body.dataset.fashionRecommendationError = String(error?.message || error).slice(0, 120);
+      updateFashionRunwayToggle();
+      renderFashionShelf();
+    }
+  }
+
+  function stopFashionShelfPreview() {
+    if (!fashionShelfPreviewVideo) return;
+    window.IAMStreamController?.setFashionActive(fashionShelfPreviewVideo, false, "fashion_shelf_preview_closed");
+    try { fashionShelfPreviewVideo.pause(); } catch {}
+    window.IAMStreamController?.detach(fashionShelfPreviewVideo);
+    fashionShelfPreviewVideo.remove();
+    fashionShelfPreviewCard?.classList.remove("is-previewing");
+    fashionShelfPreviewVideo = null;
+    fashionShelfPreviewCard = null;
+  }
+
+  async function startFashionShelfPreview(card) {
+    if (!fashionShelfOpen || !card || card === fashionShelfPreviewCard) return;
+    stopFashionShelfPreview();
+    const index = Number(card.dataset.fashionRunwayIndex);
+    const runway = fashionRunways[index];
+    const media = card.querySelector(".adaptive-television-fashion-card__media");
+    if (!runway || !media || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+    const preview = document.createElement("video");
+    preview.className = "adaptive-television-fashion-card__preview";
+    preview.muted = true;
+    preview.defaultMuted = true;
+    preview.volume = 0;
+    preview.playsInline = true;
+    preview.preload = "metadata";
+    preview.setAttribute("muted", "");
+    preview.setAttribute("aria-hidden", "true");
+    preview.dataset.streamRole = "fashion";
+    preview.dataset.streamMaxHeight = "360";
+    preview.__iamFashionSource = runway.videoSrc;
+    fashionShelfPreviewVideo = preview;
+    fashionShelfPreviewCard = card;
+    card.classList.add("is-previewing");
+    media.append(preview);
+
+    const previewStart = runway.previewStart;
+    const applyPreviewStart = () => {
+      try { preview.currentTime = Math.min(previewStart, Math.max(0, Number(preview.duration || previewStart) - .5)); } catch {}
+    };
+    preview.addEventListener("loadedmetadata", applyPreviewStart, { once: true });
+    preview.addEventListener("timeupdate", () => {
+      const end = Math.min(Number(preview.duration || previewStart + 10), previewStart + 10);
+      if (preview.currentTime >= end - .08) applyPreviewStart();
+    });
+
+    try {
+      await window.IAMStreamController?.attach(preview, {
+        fileName: runway.videoSrc,
+        role: "fashion",
+        autoplay: false,
+        preload: true,
+        preloadTargetSeconds: 10,
+      });
+      if (preview !== fashionShelfPreviewVideo || !fashionShelfOpen) return;
+      applyPreviewStart();
+      window.IAMStreamController?.setFashionActive(preview, true, "fashion_shelf_preview");
+      await preview.play();
+    } catch {
+      if (preview === fashionShelfPreviewVideo) stopFashionShelfPreview();
+    }
+  }
+
+  function updateFashionShelfPosition({ preview = true } = {}) {
+    if (!fashionShelfTrack) return;
+    const cardsPerView = fashionCardsPerView();
+    const maximumOffset = Math.max(0, fashionShelfOrder.length - cardsPerView);
+    fashionShelfOffset = Math.max(0, Math.min(maximumOffset, fashionShelfOffset));
+    const items = Array.from(fashionShelfTrack.querySelectorAll("[data-fashion-shelf-item]"));
+    const target = items[fashionShelfOffset];
+    const distance = target?.offsetLeft || 0;
+    fashionShelfTrack.style.transform = `translate3d(-${distance}px, 0, 0)`;
+
+    const start = fashionShelfOffset + 1;
+    const end = Math.min(fashionShelfOrder.length, fashionShelfOffset + cardsPerView);
+    if (fashionShelfCounter) fashionShelfCounter.textContent = start === end ? `${start} / ${fashionShelfOrder.length}` : `${start}–${end} / ${fashionShelfOrder.length}`;
+    if (fashionShelfProgress) fashionShelfProgress.style.width = `${(end / fashionShelfOrder.length) * 100}%`;
+    fashionShelfPrevious?.toggleAttribute("disabled", fashionShelfOffset === 0);
+    fashionShelfNext?.toggleAttribute("disabled", fashionShelfOffset >= maximumOffset);
+
+    if (fashionShelfOpen && preview) {
+      window.setTimeout(() => {
+        const activePosition = fashionRunwayOrderPosition(fashionRunwayIndex);
+        const previewPosition = activePosition >= fashionShelfOffset && activePosition < end ? activePosition : fashionShelfOffset;
+        startFashionShelfPreview(items[previewPosition]?.querySelector("[data-fashion-card]"));
+      }, 160);
+    }
+  }
+
+  function moveFashionShelf(direction) {
+    const cardsPerView = fashionCardsPerView();
+    fashionShelfOffset += direction * cardsPerView;
+    stopFashionShelfPreview();
+    updateFashionShelfPosition();
+  }
+
+  function renderFashionShelf() {
+    if (!fashionShelfTrack) return;
+    stopFashionShelfPreview();
+    const recordsByAsset = new Map(fashionTensorRecords.map((record) => [record.asset_key, record]));
+    fashionShelfTrack.innerHTML = fashionShelfOrder.map((runwayIndex, position) => {
+      const runway = fashionRunways[runwayIndex];
+      const record = recordsByAsset.get(runway.assetKey);
+      const recommendationLabel = position < 3 ? `Recommended ${String(position + 1).padStart(2, "0")}` : `Explore ${String(position + 1).padStart(2, "0")}`;
+      const context = record?.primary_environmental_function || "Fashion visual";
+      const selected = runwayIndex === fashionRunwayIndex;
+      return `
+        <div class="adaptive-television-fashion-shelf__item" data-fashion-shelf-item role="listitem">
+          <button class="adaptive-television-fashion-card${selected ? " is-active" : ""}" type="button" data-fashion-card data-fashion-runway-index="${runwayIndex}" aria-pressed="${selected}" aria-label="Switch visual to ${runway.title}">
+            <span class="adaptive-television-fashion-card__media">
+              <img src="${fashionThumbnailUrl(runway)}" alt="" loading="${position < 3 ? "eager" : "lazy"}">
+              <span class="adaptive-television-fashion-card__preview-label">10s preview</span>
+            </span>
+            <span class="adaptive-television-fashion-card__copy">
+              <small>${recommendationLabel}</small>
+              <strong>${runway.shortTitle}</strong>
+              <span>${context}</span>
+            </span>
+          </button>
+        </div>`;
+    }).join("");
+
+    fashionShelfTrack.querySelectorAll("[data-fashion-card]").forEach((card) => {
+      card.addEventListener("pointerenter", () => startFashionShelfPreview(card));
+      card.addEventListener("focus", () => startFashionShelfPreview(card));
+      card.addEventListener("click", async (event) => {
+        event.preventDefault();
+        event.stopPropagation();
+        const index = Number(card.dataset.fashionRunwayIndex);
+        await setFashionRunway(index, { source: "manual", feedbackType: "explicit_select" });
+        closeFashionShelf(false);
+        fashionShelfToggle?.focus({ preventScroll: true });
+      });
+    });
+    window.requestAnimationFrame(() => updateFashionShelfPosition({ preview: fashionShelfOpen }));
+  }
+
+  function openFashionShelf() {
+    if (!fashionShelf || fashionShelfOpen) return;
+    fashionShelfOpen = true;
+    const cardsPerView = fashionCardsPerView();
+    fashionShelfOffset = Math.floor(fashionRunwayOrderPosition(fashionRunwayIndex) / cardsPerView) * cardsPerView;
+    fashionShelf.setAttribute("aria-hidden", "false");
+    fashionShelf.removeAttribute("inert");
+    fashionShelfToggle?.setAttribute("aria-expanded", "true");
+    document.body.classList.add("fashion-shelf-open");
+    renderFashionShelf();
+    window.setTimeout(() => {
+      updateFashionShelfPosition();
+      const activeCard = fashionShelfTrack?.querySelector(`[data-fashion-runway-index="${fashionRunwayIndex}"]`);
+      activeCard?.focus({ preventScroll: true });
+    }, 90);
+  }
+
+  function closeFashionShelf(restoreFocus = true) {
+    if (!fashionShelf || !fashionShelfOpen) return;
+    fashionShelfOpen = false;
+    fashionShelf.setAttribute("aria-hidden", "true");
+    fashionShelf.setAttribute("inert", "");
+    fashionShelfToggle?.setAttribute("aria-expanded", "false");
+    document.body.classList.remove("fashion-shelf-open");
+    stopFashionShelfPreview();
+    if (restoreFocus) fashionShelfToggle?.focus({ preventScroll: true });
+  }
+
+  function toggleFashionShelf() {
+    if (fashionShelfOpen) closeFashionShelf();
+    else openFashionShelf();
+  }
+
   function updateFashionRunwayToggle() {
     if (!fashionRunwaySelector) return;
     const activeRunway = fashionRunways[fashionRunwayIndex];
     const previousRunway = fashionRunways[(fashionRunwayIndex - 1 + fashionRunways.length) % fashionRunways.length];
     const nextRunway = fashionRunways[(fashionRunwayIndex + 1) % fashionRunways.length];
     if (fashionRunwayLabel) fashionRunwayLabel.textContent = activeRunway.shortTitle;
-    if (fashionRunwayDots) {
-      fashionRunwayDots.innerHTML = fashionRunways
-        .map((runway, index) => `<i class="${index === fashionRunwayIndex ? "is-active" : ""}"></i>`)
-        .join("");
-    }
-    fashionRunwaySelector.dataset.videoTooltip = `Runway: ${activeRunway.title}.`;
+    if (fashionRunwayCount) fashionRunwayCount.textContent = `${fashionRunwayIndex + 1} / ${fashionRunways.length}`;
+    fashionRunwaySelector.dataset.videoTooltip = `Runway: ${activeRunway.title}. Open recommendations.`;
+    fashionShelfToggle?.setAttribute("aria-label", `Open Fashion recommendations. Current visual: ${activeRunway.title}`);
     fashionRunwayPrevious?.setAttribute("aria-label", `Previous runway: ${previousRunway.title}`);
     fashionRunwayNext?.setAttribute("aria-label", `Next runway: ${nextRunway.title}`);
+    fashionRunwaySelector.dataset.fashionRunway = activeRunway.assetKey;
+    if (document.body.classList.contains("television-emdr-gif-active")) {
+      playerMount.dataset.emdrGifFashionRunway = activeRunway.assetKey;
+    }
+    persistFashionSelection(fashionSelectionSource);
   }
 
-  async function setFashionRunway(index) {
+  async function setFashionRunway(index, options = {}) {
     if (!fashionVideo || fashionRunwaySwitching) return;
     const nextIndex = ((index % fashionRunways.length) + fashionRunways.length) % fashionRunways.length;
-    if (nextIndex === fashionRunwayIndex) return;
+    const source = options.source === "manual" ? "manual" : "algorithm";
+    if (nextIndex === fashionRunwayIndex) {
+      if (source === "manual") recordFashionSelectionFeedback(nextIndex, options.feedbackType);
+      fashionSelectionSource = source;
+      updateFashionRunwayToggle();
+      renderFashionShelf();
+      return;
+    }
 
     fashionRunwaySwitching = true;
     fashionRunwayPrevious?.setAttribute("disabled", "");
@@ -1324,10 +1719,20 @@
     previousVideo.remove();
 
     fashionRunwayIndex = nextIndex;
+    fashionSelectionSource = source;
     fashionVideo = createFashionVideo(fashionRunwayIndex);
     playerMount.insertBefore(fashionVideo, timecode || null);
     if (document.body.classList.contains("television-emdr-gif-active")) startFashionHeroMirror();
     updateFashionRunwayToggle();
+    if (source === "manual") recordFashionSelectionFeedback(nextIndex, options.feedbackType);
+    else if (requestedVideoBlend < 100) scheduleFashionDwellFeedback();
+    window.dispatchEvent(new CustomEvent("iam:fashion-runway-change", {
+      detail: {
+        assetKey: fashionRunways[fashionRunwayIndex].assetKey,
+        source,
+        emdrUsesCurrentFashion: true,
+      },
+    }));
 
     try {
       await ensureFashionStreamAttached(fashionVideo);
@@ -1379,6 +1784,7 @@
     requestedVideoBlend = musicAmount;
 
     if (musicAmount >= 100) {
+      window.clearTimeout(fashionDwellTimer);
       fashionRevealGeneration += 1;
       applyVideoBlend(100);
       if (fashionVideo) {
@@ -1390,6 +1796,7 @@
       return;
     }
 
+    scheduleFashionDwellFeedback();
     if (fashionVideo && !fashionVideo.paused && fashionVideo.readyState >= HTMLMediaElement.HAVE_CURRENT_DATA) {
       applyVideoBlend(musicAmount);
       return;
@@ -1426,6 +1833,8 @@
       }
       setVideoBlend(0);
       playerMount.dataset.emdrGifVideoLayers = "active";
+      playerMount.dataset.emdrGifFashionRunway = fashionRunways[fashionRunwayIndex]?.assetKey || "";
+      playerMount.dataset.emdrGifFashionSelectionSource = fashionSelectionSource;
       startFashionHeroMirror();
       startSoundResearchLayer();
       return;
@@ -1451,6 +1860,8 @@
       setVideoBlend(previousBlend);
     }
     delete playerMount.dataset.emdrGifVideoLayers;
+    delete playerMount.dataset.emdrGifFashionRunway;
+    delete playerMount.dataset.emdrGifFashionSelectionSource;
   }
 
   window.addEventListener("iam:emdr-gif-presentation", (event) => {
@@ -1662,7 +2073,7 @@
   }
 
   function closeWalletFromOutside(event) {
-    if (reactionWallet?.contains(event.target) || walletView === "closed") return;
+    if (reactionWallet?.contains(event.target) || fashionShelf?.contains(event.target) || walletView === "closed") return;
     window.clearTimeout(reactionWalletCollapseTimer);
     if (audioWalletMode) return;
     setWalletView("closed");
@@ -2781,6 +3192,9 @@
   setReactionWalletOpen(false);
   syncAudioWallet();
   setRecommendationLoading(selectionIsLoading);
+  updateFashionRunwayToggle();
+  renderFashionShelf();
+  loadFashionRecommendations();
   if (!selectionIsLoading) {
     if (document.body.classList.contains("adaptive-music-selection-failed")) {
       showRecommendationUnavailable();
@@ -2865,12 +3279,63 @@
   fashionRunwayPrevious?.addEventListener("click", (event) => {
     event.preventDefault();
     event.stopPropagation();
-    setFashionRunway(fashionRunwayIndex - 1);
+    setFashionRunway(fashionRunwayIndex - 1, { source: "manual", feedbackType: "explicit_select" });
   });
   fashionRunwayNext?.addEventListener("click", (event) => {
     event.preventDefault();
     event.stopPropagation();
-    setFashionRunway(fashionRunwayIndex + 1);
+    setFashionRunway(fashionRunwayIndex + 1, { source: "manual", feedbackType: "explicit_select" });
+  });
+  fashionShelfToggle?.addEventListener("click", (event) => {
+    event.preventDefault();
+    event.stopPropagation();
+    toggleFashionShelf();
+  });
+  fashionShelfCloseButtons.forEach((button) => {
+    button.addEventListener("click", (event) => {
+      event.preventDefault();
+      event.stopPropagation();
+      closeFashionShelf();
+    });
+  });
+  fashionShelfPrevious?.addEventListener("click", (event) => {
+    event.preventDefault();
+    event.stopPropagation();
+    moveFashionShelf(-1);
+  });
+  fashionShelfNext?.addEventListener("click", (event) => {
+    event.preventDefault();
+    event.stopPropagation();
+    moveFashionShelf(1);
+  });
+  fashionShelfViewport?.addEventListener("pointerdown", (event) => {
+    fashionShelfSwipeStartX = Number(event.clientX);
+  });
+  fashionShelfViewport?.addEventListener("pointerup", (event) => {
+    const start = fashionShelfSwipeStartX;
+    fashionShelfSwipeStartX = null;
+    if (!Number.isFinite(start)) return;
+    const distance = Number(event.clientX) - start;
+    if (Math.abs(distance) < 46) return;
+    moveFashionShelf(distance < 0 ? 1 : -1);
+  });
+  fashionShelfViewport?.addEventListener("pointercancel", () => {
+    fashionShelfSwipeStartX = null;
+  });
+  window.addEventListener("resize", () => {
+    if (fashionShelfOpen) updateFashionShelfPosition({ preview: false });
+  });
+  document.addEventListener("keydown", (event) => {
+    if (!fashionShelfOpen) return;
+    if (event.key === "Escape") {
+      event.preventDefault();
+      closeFashionShelf();
+      return;
+    }
+    if (event.key === "ArrowLeft" || event.key === "ArrowRight") {
+      event.preventDefault();
+      moveFashionShelf(event.key === "ArrowRight" ? 1 : -1);
+    }
   });
   videoCrossfader?.addEventListener("input", () => {
     setVideoBlend(videoCrossfader.value);
