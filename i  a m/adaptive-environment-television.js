@@ -2040,7 +2040,11 @@
     const maximumOffset = Math.max(0, order.length - cardsPerView);
     musicShelfOffset = Math.max(0, Math.min(maximumOffset, musicShelfOffset));
     const items = Array.from(musicShelfTrack.querySelectorAll("[data-music-shelf-item]"));
-    musicShelfTrack.style.transform = `translate3d(-${items[musicShelfOffset]?.offsetLeft || 0}px, 0, 0)`;
+    musicShelfTrack.style.setProperty(
+      "transform",
+      `translate3d(-${items[musicShelfOffset]?.offsetLeft || 0}px, 0, 0)`,
+      "important"
+    );
     const start = order.length ? musicShelfOffset + 1 : 0;
     const end = Math.min(order.length, musicShelfOffset + cardsPerView);
     if (musicShelfCounter) musicShelfCounter.textContent = start === end ? `${start} / ${order.length}` : `${start}–${end} / ${order.length}`;
