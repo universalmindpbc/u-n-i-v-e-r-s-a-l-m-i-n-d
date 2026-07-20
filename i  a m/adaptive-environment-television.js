@@ -159,6 +159,12 @@
   const emdrIntensity = document.querySelector("[data-emdr-intensity]");
   const emdrSoundResearch = document.querySelector("[data-emdr-sound-research]");
   const researchRolloverHosts = Array.from(document.querySelectorAll(".adaptive-television-research-tooltip-host"));
+  const researchDialog = document.querySelector("[data-research-dialog]");
+  const researchDialogClose = document.querySelector("[data-research-dialog-close]");
+  const researchDialogCopy = document.querySelector("[data-research-dialog-copy]");
+  const researchDialogPrimary = document.querySelector("[data-research-dialog-primary]");
+  const researchDialogPrompt = document.querySelector("[data-research-dialog-prompt]");
+  const researchDialogSecondary = document.querySelector("[data-research-dialog-secondary]");
   const reactionButtons = Array.from(document.querySelectorAll("[data-television-reaction]"));
   const audioModeTrigger = document.querySelector("[data-audio-mode-open]");
   const audioModeClose = document.querySelector("[data-audio-mode-close]");
@@ -353,8 +359,9 @@
   let videoTooltipArmTimer = 0;
   let videoTooltipOpenedAt = 0;
   const researchRolloverCloseTimers = new WeakMap();
-  const researchDetailsCloseTimers = new WeakMap();
   const RESEARCH_ROLLOVER_CLOSE_DELAY_MS = 1000;
+  let activeResearchHost = null;
+  let researchPreviousFocus = null;
   let audioWalletInteracting = false;
   let walletView = "closed";
   const emdrStyleNames = ["GIF", "stellar"];
@@ -1323,20 +1330,48 @@
     timerMap.delete(host);
   }
 
-  function closeResearchRollover(host) {
+  function hideResearchDialog(host, restoreFocus = false) {
+    if (host && activeResearchHost && host !== activeResearchHost) return;
+    const previousFocus = researchPreviousFocus;
+    activeResearchHost = null;
+    researchPreviousFocus = null;
+    document.body.classList.remove("research-details-open");
+    researchDialog?.setAttribute("aria-hidden", "true");
+    if (researchDialog) researchDialog.inert = true;
+    if (restoreFocus && previousFocus?.isConnected) previousFocus.focus({ preventScroll: true });
+  }
+
+  function showResearchDialog(host) {
+    const primary = host.querySelector(".adaptive-television-research-tooltip__primary");
+    const prompt = host.querySelector(".adaptive-television-research-tooltip__prompt");
+    const secondary = host.querySelector(".adaptive-television-research-tooltip__secondary");
+    if (!researchDialog || !researchDialogCopy || !primary || !prompt || !secondary) return;
+    activeResearchHost = host;
+    researchPreviousFocus = document.activeElement instanceof HTMLElement ? document.activeElement : null;
+    if (researchDialogPrimary) researchDialogPrimary.textContent = primary.textContent;
+    if (researchDialogPrompt) researchDialogPrompt.textContent = prompt.textContent;
+    if (researchDialogSecondary) researchDialogSecondary.textContent = secondary.textContent;
+    researchDialog.setAttribute("aria-label", host.classList.contains("adaptive-television-research-tooltip-host--sound") ? "Sound research information" : "EMDR research information");
+    researchDialog.setAttribute("aria-hidden", "false");
+    researchDialog.inert = false;
+    document.body.classList.add("research-details-open");
+    window.requestAnimationFrame(() => researchDialogCopy.focus({ preventScroll: true }));
+  }
+
+  function closeResearchRollover(host, restoreFocus = false) {
     clearResearchTimer(researchRolloverCloseTimers, host);
-    clearResearchTimer(researchDetailsCloseTimers, host);
     host.classList.remove(
       "is-research-rollover-open",
       "is-research-details-active",
       "is-research-details-pinned"
     );
     host.querySelector(".adaptive-television-research-tooltip__more")?.setAttribute("aria-expanded", "false");
+    hideResearchDialog(host, restoreFocus);
   }
 
-  function closeAllResearchRollovers(exceptHost = null) {
+  function closeAllResearchRollovers(exceptHost = null, restoreFocus = false) {
     researchRolloverHosts.forEach((host) => {
-      if (host !== exceptHost) closeResearchRollover(host);
+      if (host !== exceptHost) closeResearchRollover(host, restoreFocus);
     });
   }
 
@@ -1357,19 +1392,9 @@
   }
 
   function openResearchDetails(host) {
-    clearResearchTimer(researchDetailsCloseTimers, host);
     host.classList.add("is-research-details-active");
     host.querySelector(".adaptive-television-research-tooltip__more")?.setAttribute("aria-expanded", "true");
-  }
-
-  function scheduleResearchDetailsClose(host) {
-    clearResearchTimer(researchDetailsCloseTimers, host);
-    if (host.classList.contains("is-research-details-pinned")) return;
-    const timer = window.setTimeout(() => {
-      host.classList.remove("is-research-details-active");
-      host.querySelector(".adaptive-television-research-tooltip__more")?.setAttribute("aria-expanded", "false");
-    }, RESEARCH_ROLLOVER_CLOSE_DELAY_MS);
-    researchDetailsCloseTimers.set(host, timer);
+    showResearchDialog(host);
   }
 
   function researchRolloverIsArmed() {
@@ -4245,11 +4270,6 @@
       scheduleResearchRolloverClose(host);
     });
 
-    moreButton?.addEventListener("pointerenter", () => openResearchDetails(host));
-    moreButton?.addEventListener("pointermove", () => openResearchDetails(host));
-    moreButton?.addEventListener("pointerleave", () => scheduleResearchDetailsClose(host));
-    moreButton?.addEventListener("focusin", () => openResearchDetails(host));
-    moreButton?.addEventListener("focusout", () => scheduleResearchDetailsClose(host));
     moreButton?.addEventListener("click", (event) => {
       event.preventDefault();
       event.stopPropagation();
@@ -4259,11 +4279,18 @@
         openResearchRollover(host);
         openResearchDetails(host);
       } else {
-        scheduleResearchDetailsClose(host);
-        scheduleResearchRolloverClose(host);
+        closeResearchRollover(host, true);
       }
     });
   });
+  researchDialogClose?.addEventListener("pointerdown", (event) => event.stopPropagation());
+  researchDialogClose?.addEventListener("click", (event) => {
+    event.preventDefault();
+    event.stopPropagation();
+    closeAllResearchRollovers(null, true);
+  });
+  researchDialogCopy?.addEventListener("pointerdown", (event) => event.stopPropagation());
+  researchDialogCopy?.addEventListener("click", (event) => event.stopPropagation());
   document.addEventListener("pointermove", (event) => {
     researchRolloverHosts.forEach((host) => {
       if (!host.classList.contains("is-research-rollover-open")) return;
@@ -4277,7 +4304,7 @@
     });
   });
   document.addEventListener("keydown", (event) => {
-    if (event.key === "Escape") closeAllResearchRollovers();
+    if (event.key === "Escape") closeAllResearchRollovers(null, true);
   });
   reactionWallet?.addEventListener("pointermove", (event) => {
     openReactionWalletFromPointerMove(event);
