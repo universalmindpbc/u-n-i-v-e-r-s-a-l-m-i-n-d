@@ -27,6 +27,7 @@ assert.match(html, />Recommended for you</);
 assert.match(html, />Based on your current needs</);
 assert.match(html, /data-fashion-shelf-toggle/);
 assert.match(html, /data-fashion-runway-count[^>]*>1 \/ 6</);
+assert.match(html, /Chanel 2020&#10;Click for more recommendations\./);
 assert.ok(
   html.indexOf("fashion-visual-selector-v1.js") < html.indexOf("adaptive-environment-television.js"),
   "Fashion ranking policy must load before the television controller",
@@ -34,7 +35,9 @@ assert.ok(
 
 assert.match(css, /adaptive-television-fashion-shelf__item[\s\S]*?flex:\s*0 0 calc\(\(100% - 44px\) \/ 3\)/);
 assert.match(css, /@media \(max-width: 720px\)[\s\S]*?adaptive-television-fashion-shelf__item[\s\S]*?flex-basis:\s*min\(78vw, 350px\)/);
+assert.match(css, /adaptive-television-fashion-runway-selector\[data-video-tooltip\]::after\s*\{[\s\S]*?bottom:\s*calc\(100% \+ 28px\)[\s\S]*?white-space:\s*pre-line/);
 assert.match(controller, /fashionCardsPerView\(\)[\s\S]*?return window\.matchMedia\("\(max-width: 720px\)"\)\.matches \? 1 : 3/);
+assert.match(controller, /`\$\{activeRunway\.title\}\\nClick for more recommendations\.`/);
 assert.equal(tensor.recommendation_policy.hover_is_training_signal, false);
 assert.match(controller, /feedbackWeight\?\.\(\{ type: "dwell_30_seconds" \}\)/);
 assert.match(controller, /setFashionRunway\(index, \{ source: "manual", feedbackType: "explicit_select" \}\)/);

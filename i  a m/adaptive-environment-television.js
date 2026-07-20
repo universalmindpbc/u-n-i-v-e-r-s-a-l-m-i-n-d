@@ -1678,8 +1678,8 @@
     const nextRunway = fashionRunways[(fashionRunwayIndex + 1) % fashionRunways.length];
     if (fashionRunwayLabel) fashionRunwayLabel.textContent = activeRunway.shortTitle;
     if (fashionRunwayCount) fashionRunwayCount.textContent = `${fashionRunwayIndex + 1} / ${fashionRunways.length}`;
-    fashionRunwaySelector.dataset.videoTooltip = `Runway: ${activeRunway.title}. Open recommendations.`;
-    fashionShelfToggle?.setAttribute("aria-label", `Open Fashion recommendations. Current visual: ${activeRunway.title}`);
+    fashionRunwaySelector.dataset.videoTooltip = `${activeRunway.title}\nClick for more recommendations.`;
+    fashionShelfToggle?.setAttribute("aria-label", `Click for more recommendations. Current runway: ${activeRunway.title}`);
     fashionRunwayPrevious?.setAttribute("aria-label", `Previous runway: ${previousRunway.title}`);
     fashionRunwayNext?.setAttribute("aria-label", `Next runway: ${nextRunway.title}`);
     fashionRunwaySelector.dataset.fashionRunway = activeRunway.assetKey;

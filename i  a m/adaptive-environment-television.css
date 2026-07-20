@@ -3607,6 +3607,11 @@ body.television-wallet-pointer-locked .adaptive-television-reaction-wallet[data-
   bottom: calc(100% + 22px);
 }
 
+.adaptive-television-fashion-runway-selector[data-video-tooltip]::after {
+  bottom: calc(100% + 28px);
+  white-space: pre-line;
+}
+
 .adaptive-television-video-choice[data-video-mode="emdr"]::after {
   display: none;
 }
