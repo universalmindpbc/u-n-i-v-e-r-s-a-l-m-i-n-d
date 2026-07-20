@@ -173,7 +173,7 @@ requireCondition(homePage.includes('data-now-playing-time'), 'the primary wallet
 requireCondition(homePage.includes('data-now-playing-visual-title'), 'the primary wallet cannot name the visible Fashion runway');
 requireCondition(homePage.includes('data-now-playing-audio'), 'the primary wallet has no dedicated music ticker item');
 requireCondition(homePage.includes('adaptive-television-now-playing__separator--content'), 'the compact divider between Now Playing and the active title is missing');
-requireCondition(homePage.includes('EMDR Research Feature - 10min Nervous System Rest. Investigating whether an optional visual layer modulates short term transcriptional pathways, relevant to mental health.'), 'the EMDR rollover is missing the ten-minute nervous-system-rest terminology');
+requireCondition(homePage.includes('EMDR Research Feature - 10min Nervous System Reset. Investigating whether an optional visual layer modulates short term transcriptional pathways, relevant to mental health.'), 'the EMDR rollover is missing the ten-minute nervous-system-reset terminology');
 requireCondition(inductionPage.includes('as electronic music and fashion, for young people, primarily aged 16-24.'), 'the Induction welcome copy has not adopted electronic music and fashion');
 requireCondition(inductionPage.includes('while electronic music, fashion and culture become everyday pathways to better mental health.'), 'the Induction ambition copy has not adopted electronic music first');
 requireCondition(inductionPage.includes('with a deliberate focus on electronic music and fashion culture, industries we have spent our careers helping build.'), 'the Induction prototype copy has not adopted electronic music and fashion culture');
