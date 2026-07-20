@@ -1426,14 +1426,13 @@ body:not(.television-wallet-pointer-locked) .adaptive-television-reaction-wallet
   font-weight: 600;
   letter-spacing: 0;
   line-height: 1;
-  opacity: 0;
-  pointer-events: none;
+  opacity: 0.58;
+  pointer-events: auto;
   transform: translateY(-50%);
 }
 
 .adaptive-television-reaction-wallet.is-audio-wallet-joined .adaptive-television-audio-back {
-  opacity: 0.58;
-  pointer-events: auto;
+  opacity: 0.72;
 }
 
 .adaptive-television-audio-mic:hover,

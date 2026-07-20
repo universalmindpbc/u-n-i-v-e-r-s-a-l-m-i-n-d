@@ -2198,6 +2198,7 @@
     } catch {}
     continuationAudio = null;
     continuationDecision = null;
+    document.body.dataset.radioPlaybackState = "stopped";
   }
 
   async function switchMusicTrack(nextTrack, options = {}) {
@@ -2206,6 +2207,10 @@
     stopContinuationAudioImmediately();
     document.body.classList.remove("television-radio-continuation");
     activeRadioStationId = "";
+    delete document.body.dataset.radioStationId;
+    delete document.body.dataset.radioStationProvider;
+    delete document.body.dataset.radioPlaybackError;
+    document.body.dataset.radioPlaybackState = "stopped";
     musicChannelMode = nextTrack.presentation === "live_dj_set" ? "parties" : "videos";
     musicModeManuallySelected = options.source !== "automatic_continuation";
     try {
@@ -2270,12 +2275,18 @@
     activeRadioStationId = station.id;
     musicChannelMode = "radio";
     continuationDecision = { ...station, label: station.display_title, src: station.stream_url };
+    delete document.body.dataset.radioPlaybackError;
+    document.body.dataset.radioPlaybackState = "loading";
     primeContinuationAudio(continuationDecision);
     window.IAMEMDR?.setTimelineSource?.({ media: continuationAudio, bpm: 112, firstDownbeatSeconds: 0, fallbackBpm: 112 });
     continuationAudio.muted = false;
     continuationAudio.play()
-      .then(() => fadeContinuationAudio(.68, 1200))
+      .then(() => {
+        document.body.dataset.radioPlaybackState = "playing";
+        fadeContinuationAudio(.68, 1200);
+      })
       .catch((error) => {
+        document.body.dataset.radioPlaybackState = "error";
         document.body.dataset.radioPlaybackError = String(error?.message || error).slice(0, 120);
       });
     if ("mediaSession" in window.navigator && window.MediaMetadata) {
@@ -2602,6 +2613,7 @@
     reactionWallet.classList.toggle("is-audio-wallet-on-air", audioWalletJoined && !audioWalletMuted);
     audioModeTrigger?.setAttribute("aria-expanded", String(audioWalletMode));
     audioWalletControls?.setAttribute("aria-hidden", String(!audioWalletMode));
+    document.body.dataset.audioWalletJoined = String(audioWalletJoined);
 
     if (audioWalletJoin) {
       audioWalletJoin.textContent = audioWalletJoined ? "Chillout Circle" : "Join Chillout Circle";
@@ -2621,8 +2633,8 @@
 
     if (audioModeClose) {
       audioModeClose.disabled = false;
-      audioModeClose.textContent = audioWalletJoined ? "leave" : "×";
-      audioModeClose.setAttribute("aria-label", audioWalletJoined ? "Leave Chillout Circle" : "Return to reactions");
+      audioModeClose.textContent = "×";
+      audioModeClose.setAttribute("aria-label", "Return to wallet");
     }
 
     if (audioWalletCount) {
@@ -2649,17 +2661,7 @@
   function closeAudioWallet(event) {
     event?.preventDefault();
     event?.stopPropagation();
-    if (audioWalletJoined) {
-      audioWalletJoined = false;
-      audioWalletMuted = false;
-      audioWalletOccupancy = 0;
-      audioWalletMode = true;
-      syncAudioWallet();
-      rankMusicShelves();
-      return;
-    }
     audioWalletMode = false;
-    audioWalletMuted = false;
     window.clearTimeout(circleTooltipArmTimer);
     reactionWallet?.classList.remove("is-circle-tooltip-armed");
     setWalletView("categories");
@@ -2669,7 +2671,6 @@
   function toggleAudioWalletJoin(event) {
     event?.preventDefault();
     event?.stopPropagation();
-    if (audioWalletJoined) return;
     audioWalletJoined = !audioWalletJoined;
     audioWalletMuted = false;
     audioWalletOccupancy = audioWalletJoined ? 1 : 0;
