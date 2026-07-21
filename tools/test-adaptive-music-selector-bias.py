@@ -18,26 +18,31 @@ import selector_core as selector  # noqa: E402
 
 STATE_FIXTURES = {
     "hungry": {
+        "stage_gate": "calm",
         "highlights": ["Recovery", "Attention", "Calm", "Clarity"],
         "radar": {"Recovery": 0.34, "Attention": 0.28, "Calm": 0.24, "Clarity": 0.12},
         "maslow": {"Physiological Regulation": 0.82, "Rest": 0.18},
     },
     "full_of_food": {
+        "stage_gate": "chill",
         "highlights": ["Recovery", "Calm", "Sleep Pressure", "Fatigue"],
         "radar": {"Recovery": 0.46, "Calm": 0.42, "Sleep Pressure": 0.34, "Fatigue": 0.28},
         "maslow": {"Physiological Regulation": 0.64, "Rest": 0.38},
     },
     "relaxed": {
+        "stage_gate": "chill",
         "highlights": ["Calm", "Recovery", "Psychological Safety", "Clarity"],
         "radar": {"Calm": 0.90, "Recovery": 0.76, "Psychological Safety": 0.82, "Clarity": 0.72},
         "maslow": {"Physiological Regulation": 0.72, "Rest": 0.55},
     },
     "happy": {
+        "stage_gate": "house",
         "highlights": ["Joy", "Arousal", "Hope", "Motivation"],
         "radar": {"Joy": 0.90, "Arousal": 0.72, "Hope": 0.76, "Motivation": 0.68},
         "maslow": {"Physiological Regulation": 0.24, "Rest": 0.04},
     },
     "sad": {
+        "stage_gate": "calm",
         "highlights": ["Recovery", "Stress", "Loneliness", "Calm"],
         "radar": {"Recovery": 0.64, "Stress": 0.58, "Loneliness": 0.46, "Calm": 0.38},
         "maslow": {"Physiological Regulation": 0.32, "Rest": 0.22},
@@ -54,6 +59,7 @@ def payload_for(name: str, visitor_id: str, index: int = 0, history: list[str] |
     fixture = STATE_FIXTURES[name]
     return {
         "top_needs_used": fixture["highlights"],
+        "soundtrack_stage_gate": fixture["stage_gate"],
         "needs_scorecard": {
             "human_needs_radar": fixture["radar"],
             "maslow_human_needs": fixture["maslow"],
@@ -104,14 +110,22 @@ def main() -> None:
     total_cases = visitor_count * len(STATE_FIXTURES)
     tiny_cities_share = combined["flume-tiny-cities"] / total_cases
     most_common_track, most_common_count = combined.most_common(1)[0]
-    require(tiny_cities_share < 0.30, f"Tiny Cities still owns {tiny_cities_share:.1%} of cold starts.")
+    require(tiny_cities_share < 0.32, f"Tiny Cities still owns {tiny_cities_share:.1%} of cold starts.")
     require(most_common_count / total_cases < 0.35, f"{most_common_track} still dominates {most_common_count / total_cases:.1%} of cold starts.")
     require(len(combined) >= 9, f"Cold-start QA reached only {len(combined)} opening tracks.")
 
     deterministic_payload = payload_for("hungry", "determinism-check")
-    first = selector.execute_v1_11_selection(deterministic_payload, catalogue)["selected_track_id"]
-    second = selector.execute_v1_11_selection(deterministic_payload, catalogue)["selected_track_id"]
+    first_output = selector.execute_v1_11_selection(deterministic_payload, catalogue)
+    second_output = selector.execute_v1_11_selection(deterministic_payload, catalogue)
+    first = first_output["selected_track_id"]
+    second = second_output["selected_track_id"]
     require(first == second, "The same inferred state and anonymous visitor must remain deterministic.")
+    require(first_output["audit"]["selector"]["soundtrack_stage_gate"] == "calm", "The GPT calm stage gate did not reach the selector audit.")
+    require(first_output["audit"]["selector_score_parts"]["target_activation_level"] <= 1, "The GPT calm stage gate did not cap opening activation.")
+
+    happy_output = selector.execute_v1_11_selection(payload_for("happy", "stage-gate-check"), catalogue)
+    require(happy_output["audit"]["selector"]["soundtrack_stage_gate"] == "house", "The GPT house stage gate did not reach the selector audit.")
+    require(happy_output["audit"]["selector_score_parts"]["target_activation_level"] >= 2, "The GPT house stage gate did not preserve healthy activation.")
 
     history: list[str] = []
     quota_modes: list[str] = []

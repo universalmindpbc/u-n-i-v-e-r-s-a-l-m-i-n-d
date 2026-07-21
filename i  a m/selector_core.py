@@ -1031,6 +1031,7 @@ def output_contract(
                 "trajectory_policy": str(score_parts.get("trajectory_policy") or SELECTION_POLICY_VERSION),
                 "quota_mode": str(score_parts.get("quota_mode") or "state_led"),
                 "selected_trajectory_mode": str(score_parts.get("selected_trajectory_mode") or "unclassified"),
+                "soundtrack_stage_gate": str(score_parts.get("soundtrack_stage_gate") or ""),
                 "recency_policy": "hard_exclude_6_tracks_2_artists_then_relax_if_pool_exhausted",
             },
             "selector_score_parts": {key: round(value, 3) for key, value in score_parts.items() if isinstance(value, (int, float))},
@@ -1157,7 +1158,16 @@ def choose_relevance_bounded_candidate(
     return selected, len(fit_band), max(0.0, best_post_fit - selected[1])
 
 
-def target_activation_level(user_vector: Mapping[str, float], acute: bool) -> int:
+def soundtrack_stage_gate(v444_input: Mapping[str, Any]) -> str:
+    gate = str(
+        v444_input.get("soundtrack_stage_gate")
+        or get_nested(v444_input, ["citizen_needs", "soundtrack_stage_gate"])
+        or ""
+    ).strip().lower()
+    return gate if gate in {"calm", "chill", "house"} else ""
+
+
+def target_activation_level(v444_input: Mapping[str, Any], user_vector: Mapping[str, float], acute: bool) -> int:
     if acute:
         return 0
     depletion = max(
@@ -1181,12 +1191,22 @@ def target_activation_level(user_vector: Mapping[str, float], acute: bool) -> in
         coerce_number(user_vector.get("Self-Actualisation")),
     )
     if depletion >= 0.52 or threat >= 0.62:
-        return 1
-    if anger >= 0.55:
-        return 2
-    if positive_activation >= 0.58:
-        return 3
-    return 2
+        target = 1
+    elif anger >= 0.55:
+        target = 2
+    elif positive_activation >= 0.58:
+        target = 3
+    else:
+        target = 2
+
+    gate = soundtrack_stage_gate(v444_input)
+    if gate == "calm":
+        return min(target, 1)
+    if gate == "chill":
+        return min(target, 2)
+    if gate == "house":
+        return max(target, 2)
+    return target
 
 
 def constructive_trajectory_fit(
@@ -1231,7 +1251,8 @@ def execute_v1_11_selection(
         acute,
         trajectory_policy,
     )
-    activation_target = target_activation_level(user_vector, acute)
+    activation_target = target_activation_level(v444_input, user_vector, acute)
+    stage_gate = soundtrack_stage_gate(v444_input)
     input_scorecard = extract_needs_scorecard(v444_input)
     input_scorecard_dimensions = sum(
         1
@@ -1404,6 +1425,7 @@ def execute_v1_11_selection(
         "trajectory_policy": str(trajectory_policy.get("policy_version") or SELECTION_POLICY_VERSION),
         "quota_mode": quota_mode,
         "selected_trajectory_mode": str(trajectory_profile(best_track, trajectory_policy)["mode"]),
+        "soundtrack_stage_gate": stage_gate,
         "tensor_selector_score": float(best_score),
         "post_fit_reranker_score": float(post_fit_score),
         "input_scorecard_dimensions": float(input_scorecard_dimensions),
