@@ -62,8 +62,8 @@
   const backgroundVideoStateKey = "iamPersistentBackgroundVideoState";
   const inferenceKeys = ["iamLatestInference", "citizenNeedsLatestInference"];
   const normalPages = new Set(["index.html", "adaptive-music-video.html", "our-team.html", "cafe-del-mar-home.html"]);
-  const framePages = new Set(["globe.html", "vogue-self-report.html", "technology-citizen-needs.html", "science.html", "about.html"]);
-  const standalonePages = new Set();
+  const framePages = new Set(["globe.html", "vogue-self-report.html", "technology-citizen-needs.html", "science.html"]);
+  const standalonePages = new Set(["about.html"]);
   const baseVolume = 0.68;
   const duckedVolume = 0;
   const restoreDelay = 500;
@@ -824,7 +824,7 @@
     const url = new URL(link.getAttribute("href"), window.location.href);
     if (url.origin !== window.location.origin) return null;
     const pageName = pageNameFromUrl(url);
-    if (!normalPages.has(pageName) && !framePages.has(pageName)) return null;
+    if (!normalPages.has(pageName) && !framePages.has(pageName) && !standalonePages.has(pageName)) return null;
     return url;
   }
 

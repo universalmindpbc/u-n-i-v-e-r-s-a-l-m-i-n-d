@@ -234,7 +234,33 @@
     }, true);
   }
 
+  function bindStandaloneAboutNavigation() {
+    if (window.__iamStandaloneAboutNavigationBound) return;
+    window.__iamStandaloneAboutNavigationBound = true;
+
+    document.addEventListener("click", (event) => {
+      if (event.defaultPrevented || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+
+      const link = event.target.closest?.('a[data-nav-item="about"]');
+      if (!link || link.target || link.hasAttribute("download")) return;
+
+      const url = new URL(link.getAttribute("href"), window.location.href);
+      if (url.origin !== window.location.origin) return;
+
+      event.preventDefault();
+      event.stopImmediatePropagation();
+
+      if (window.self !== window.top) {
+        window.top.location.href = url.href;
+        return;
+      }
+
+      window.location.href = url.href;
+    }, true);
+  }
+
   function init() {
+    bindStandaloneAboutNavigation();
     bindCanonicalCitizenRadarNavigation();
 
     const shell = document.querySelector(".site-shell");

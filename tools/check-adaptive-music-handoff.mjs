@@ -10,6 +10,7 @@ const globeControllerPath = path.join(IAM_DIR, 'globe.js');
 const streamControllerPath = path.join(IAM_DIR, 'cloudflare-stream-controller.js');
 const streamCataloguePath = path.join(IAM_DIR, 'cloudflare-stream-catalogue.js');
 const shellControllerPath = path.join(IAM_DIR, 'script.js');
+const adaptiveEnvironmentPath = path.join(IAM_DIR, 'adaptive-environment.js');
 const djSetManifestPath = path.join(ROOT, 'cloudflare-stream-djset-upload-manifest.json');
 const televisionCssPath = path.join(IAM_DIR, 'adaptive-environment-television.css');
 const inductionPagePath = path.join(IAM_DIR, 'induction.html');
@@ -28,6 +29,26 @@ const globeScriptPagePaths = [
   path.join(IAM_DIR, 'globe.html'),
   path.join(IAM_DIR, 'community-globe.html'),
 ];
+const sharedNavigationPagePaths = [
+  path.join(IAM_DIR, 'index.html'),
+  path.join(IAM_DIR, 'adaptive-environment-television.html'),
+  path.join(IAM_DIR, 'adaptive-music-video.html'),
+  path.join(IAM_DIR, 'cafe-del-mar-home.html'),
+  path.join(IAM_DIR, 'globe.html'),
+  path.join(IAM_DIR, 'our-team.html'),
+  path.join(IAM_DIR, 'science.html'),
+  path.join(IAM_DIR, 'about.html'),
+];
+const adaptiveEnvironmentPagePaths = [
+  path.join(IAM_DIR, 'index.html'),
+  path.join(IAM_DIR, 'adaptive-environment-television.html'),
+  path.join(IAM_DIR, 'adaptive-music-video.html'),
+  path.join(IAM_DIR, 'cafe-del-mar-home.html'),
+  path.join(IAM_DIR, 'globe.html'),
+  path.join(IAM_DIR, 'our-team.html'),
+  path.join(IAM_DIR, 'technology-citizen-needs.html'),
+  path.join(IAM_DIR, 'vogue-self-report.html'),
+];
 
 function requireCondition(condition, message) {
   if (!condition) throw new Error(`Adaptive music handoff preflight failed: ${message}`);
@@ -38,6 +59,7 @@ const globeController = await fs.readFile(globeControllerPath, 'utf8');
 const streamController = await fs.readFile(streamControllerPath, 'utf8');
 const streamCatalogue = await fs.readFile(streamCataloguePath, 'utf8');
 const shellController = await fs.readFile(shellControllerPath, 'utf8');
+const adaptiveEnvironment = await fs.readFile(adaptiveEnvironmentPath, 'utf8');
 const djSetManifest = JSON.parse(await fs.readFile(djSetManifestPath, 'utf8'));
 const televisionCss = await fs.readFile(televisionCssPath, 'utf8');
 const inductionPage = await fs.readFile(inductionPagePath, 'utf8');
@@ -54,6 +76,14 @@ const globeScriptPages = await Promise.all(globeScriptPagePaths.map(async (pageP
   pagePath,
   source: await fs.readFile(pagePath, 'utf8'),
 })));
+const sharedNavigationPages = await Promise.all(sharedNavigationPagePaths.map(async (pagePath) => ({
+  pagePath,
+  source: await fs.readFile(pagePath, 'utf8'),
+})));
+const adaptiveEnvironmentPages = await Promise.all(adaptiveEnvironmentPagePaths.map(async (pagePath) => ({
+  pagePath,
+  source: await fs.readFile(pagePath, 'utf8'),
+})));
 
 const expectedCacheToken = `music-tv-${createHash('sha256').update(controller).digest('hex').slice(0, 12)}`;
 const expectedGlobeCacheToken = `globe-${createHash('sha256').update(globeController).digest('hex').slice(0, 12)}`;
@@ -61,6 +91,7 @@ const expectedCssCacheToken = `music-tv-css-${createHash('sha256').update(televi
 const expectedStreamCatalogueToken = `stream-catalogue-${createHash('sha256').update(streamCatalogue).digest('hex').slice(0, 12)}`;
 const expectedStreamControllerToken = `stream-controller-${createHash('sha256').update(streamController).digest('hex').slice(0, 12)}`;
 const expectedShellControllerToken = `adaptive-env-stream-${createHash('sha256').update(shellController).digest('hex').slice(0, 12)}`;
+const expectedAdaptiveEnvironmentToken = `adaptive-env-${createHash('sha256').update(adaptiveEnvironment).digest('hex').slice(0, 12)}`;
 const explicitSelectionMarker = 'params.get("selected_track_id")';
 const syncCallPosition = controller.lastIndexOf('syncSelectedTrackCopy();');
 const introCallPosition = controller.lastIndexOf('runIntro();');
@@ -74,6 +105,11 @@ const nowPlayingCss = televisionCss.slice(
 );
 
 requireCondition(controller.includes(explicitSelectionMarker), 'the home controller no longer reads selected_track_id from the URL');
+requireCondition(shellController.includes('function bindStandaloneAboutNavigation()'), 'the shared navigation no longer forces About into a complete top-level document');
+requireCondition(shellController.includes('window.top.location.href = url.href;'), 'embedded global navigation can no longer escape to the complete About page');
+requireCondition(adaptiveEnvironment.includes('const standalonePages = new Set(["about.html"]);'), 'About is no longer classified as a standalone destination');
+requireCondition(!adaptiveEnvironment.match(/const framePages = new Set\([^;]*about\.html/), 'About can still be rendered inside the undersized adaptive frame');
+requireCondition(adaptiveEnvironment.includes('!standalonePages.has(pageName)'), 'standalone destinations are no longer recognised by shared navigation');
 requireCondition(controller.includes('id: "the-prodigy-everybody-in-the-place"'), 'the Prodigy track is missing from the television catalogue');
 requireCondition(controller.includes('document.body.dataset.adaptiveTrackId = track.id;'), 'the resolved track is not exposed for staging verification');
 requireCondition(controller.includes('function showRecommendationUnavailable()'), 'selector failures can silently present the default track again');
@@ -165,6 +201,20 @@ for (const { pagePath, source } of globeScriptPages) {
   const globeScriptMatch = source.match(/globe\.js\?v=([^"']+)/);
   requireCondition(globeScriptMatch, `${label} has no versioned check-in controller`);
   requireCondition(globeScriptMatch[1] === expectedGlobeCacheToken, `${label} check-in cache token ${globeScriptMatch[1]} does not match ${expectedGlobeCacheToken}`);
+}
+
+for (const { pagePath, source } of sharedNavigationPages) {
+  const label = path.relative(ROOT, pagePath);
+  const sharedNavigationMatch = source.match(/script\.js\?v=([^"']+)/);
+  requireCondition(sharedNavigationMatch, `${label} has no versioned shared navigation controller`);
+  requireCondition(sharedNavigationMatch[1] === expectedShellControllerToken, `${label} shared-navigation cache token ${sharedNavigationMatch[1]} does not match ${expectedShellControllerToken}`);
+}
+
+for (const { pagePath, source } of adaptiveEnvironmentPages) {
+  const label = path.relative(ROOT, pagePath);
+  const adaptiveEnvironmentMatch = source.match(/adaptive-environment\.js\?v=([^"']+)/);
+  requireCondition(adaptiveEnvironmentMatch, `${label} has no versioned adaptive navigation controller`);
+  requireCondition(adaptiveEnvironmentMatch[1] === expectedAdaptiveEnvironmentToken, `${label} adaptive-navigation cache token ${adaptiveEnvironmentMatch[1]} does not match ${expectedAdaptiveEnvironmentToken}`);
 }
 
 const homePage = pages.find(({ pagePath }) => pagePath.endsWith('index.html'))?.source || '';
