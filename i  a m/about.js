@@ -1,20 +1,26 @@
 (function () {
   "use strict";
 
-  const embedded = (() => {
-    const params = new URLSearchParams(window.location.search);
-    return params.get("adaptiveFrame") === "1" || params.get("musicTelevisionFrame") === "1";
-  })();
+  const routingUrl = new URL(window.location.href);
+  const embedded = window.self !== window.top ||
+    routingUrl.searchParams.get("adaptiveFrame") === "1" ||
+    routingUrl.searchParams.get("musicTelevisionFrame") === "1";
+
+  ["adaptiveFrame", "musicTelevisionFrame", "aboutTopLevel"].forEach((parameter) => {
+    routingUrl.searchParams.delete(parameter);
+  });
 
   if (embedded) {
-    document.documentElement.dataset.adaptiveFrame = "embedded";
+    try {
+      window.top.location.replace(routingUrl.href);
+    } catch {
+      window.location.replace(routingUrl.href);
+    }
+    return;
+  }
 
-    document.querySelectorAll('a[href="index.html"]').forEach((link) => {
-      link.addEventListener("click", (event) => {
-        event.preventDefault();
-        window.top?.postMessage({ type: "iam:return-to-television" }, window.location.origin);
-      });
-    });
+  if (window.location.href !== routingUrl.href) {
+    window.history.replaceState(window.history.state, "", routingUrl.href);
   }
 
   const chapters = Array.from(document.querySelectorAll("[data-about-chapter]"));
