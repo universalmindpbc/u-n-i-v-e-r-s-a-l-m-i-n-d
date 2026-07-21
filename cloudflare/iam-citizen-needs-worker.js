@@ -14,6 +14,7 @@ const DEFAULT_MODEL = "gpt-5.5";
 const allowedOrigins = new Set([
   "https://universalmind.tv",
   "https://www.universalmind.tv",
+  "https://staging.universalmind.tv",
   "http://127.0.0.1:8126",
   "http://localhost:8126",
   "http://127.0.0.1:8125",
@@ -177,6 +178,26 @@ function jsonResponse(request, status, payload) {
       ...corsHeaders(request),
       "Cache-Control": "no-store",
     },
+  });
+}
+
+function voiceCorsHeaders(request) {
+  const origin = request.headers.get("Origin") || "";
+  const allowedOrigin = allowedOrigins.has(origin) ? origin : "";
+  return {
+    ...(allowedOrigin ? { "Access-Control-Allow-Origin": allowedOrigin } : {}),
+    "Access-Control-Allow-Methods": "POST, OPTIONS",
+    "Access-Control-Allow-Headers": "Content-Type",
+    "Access-Control-Max-Age": "86400",
+    "Cache-Control": "no-store",
+    "Vary": "Origin",
+  };
+}
+
+function voiceJsonResponse(request, status, payload) {
+  return Response.json(payload, {
+    status,
+    headers: voiceCorsHeaders(request),
   });
 }
 
@@ -497,13 +518,139 @@ async function handleInference(request, env) {
   }
 }
 
+function cleanVoiceContext(value, maxLength = 180) {
+  if (typeof value !== "string") return "";
+  return value.trim().replace(/[\u0000-\u001f\u007f]+/g, " ").replace(/\s+/g, " ").slice(0, maxLength);
+}
+
+async function voiceSafetyIdentifier(request) {
+  const source = [
+    request.headers.get("CF-Connecting-IP") || "unknown",
+    request.headers.get("User-Agent") || "unknown",
+    "universal-mind-realtime-v1",
+  ].join("|");
+  const digest = await crypto.subtle.digest("SHA-256", new TextEncoder().encode(source));
+  return `um_${Array.from(new Uint8Array(digest), (byte) => byte.toString(16).padStart(2, "0")).join("").slice(0, 48)}`;
+}
+
+async function handleRealtimeClientSecret(request, env) {
+  if (request.method === "OPTIONS") {
+    const origin = request.headers.get("Origin") || "";
+    if (!allowedOrigins.has(origin)) return new Response(null, { status: 403 });
+    return new Response(null, { status: 204, headers: voiceCorsHeaders(request) });
+  }
+
+  if (request.method !== "POST") {
+    return voiceJsonResponse(request, 405, { error: "Method not allowed." });
+  }
+
+  const origin = request.headers.get("Origin") || "";
+  if (!allowedOrigins.has(origin)) {
+    return voiceJsonResponse(request, 403, { error: "This voice service is available only inside Universal Mind." });
+  }
+
+  if (!env.OPENAI_API_KEY) {
+    return voiceJsonResponse(request, 503, { error: "Voice is not configured on this environment yet." });
+  }
+
+  const visitorKey = request.headers.get("CF-Connecting-IP") || "unknown";
+  if (env.REALTIME_RATE_LIMITER) {
+    const { success } = await env.REALTIME_RATE_LIMITER.limit({ key: `voice:${visitorKey}` });
+    if (!success) {
+      return voiceJsonResponse(request, 429, { error: "Please wait a little before starting another voice session." });
+    }
+  }
+
+  const contentLength = Number(request.headers.get("Content-Length") || 0);
+  if (contentLength > 4096) {
+    return voiceJsonResponse(request, 413, { error: "The voice context is too large." });
+  }
+
+  let body;
+  try {
+    body = await request.json();
+  } catch {
+    return voiceJsonResponse(request, 400, { error: "Invalid JSON request." });
+  }
+
+  const context = body?.context && typeof body.context === "object" ? body.context : {};
+  const nowPlaying = cleanVoiceContext(context.title);
+  const visual = cleanVoiceContext(context.visual);
+  const source = cleanVoiceContext(context.source, 24);
+  const portalContext = nowPlaying
+    ? `The visitor currently has ${nowPlaying} playing${source ? ` in ${source} mode` : ""}${visual ? `, with ${visual} as the visual layer` : ""}.`
+    : "The visitor is in the Vogue I Am adaptive music television room.";
+
+  const instructions = `# Role and objective
+You are Universal One, the transparent AI voice companion inside Universal Mind's Vogue I Am portal. Speak in a warm, savvy, friendly and relaxed feminine manner using the Marin voice. Be present and emotionally intelligent without pretending to be human or conscious.
+
+# Conversation style
+Make the exchange feel natural and unhurried. Let the visitor finish; a reflective pause is welcome. Answer directly, usually in a few conversational sentences, but stay with longer emotional or philosophical conversations when invited. Use plain language, gentle curiosity and light humour where it fits. Do not overuse the visitor's name, spiritual language, lists, disclaimers or verbal filler. Never reveal private chain-of-thought.
+
+# Portal context
+${portalContext}
+You can talk about the current music, relaxation, light-touch meditation, creativity, culture, wellbeing and the experience of the portal. If live or changing portal information is not in this context, say you cannot see it rather than inventing it.
+
+# Trust and boundaries
+You are AI-generated speech. Say so plainly if asked. Do not diagnose, prescribe treatment or claim professional authority. For urgent danger or self-harm, encourage immediate local emergency or crisis support and contact with a trusted person. Respect autonomy and avoid presenting spirituality or speculation as fact. Do not claim to have performed actions or accessed information you have not actually received.
+
+# Turn taking
+The visitor may interrupt at any time. Stop cleanly and listen. Keep opening acknowledgements brief so the conversation stays fluid.`;
+
+  const openaiResponse = await fetch("https://api.openai.com/v1/realtime/client_secrets", {
+    method: "POST",
+    headers: {
+      "Authorization": `Bearer ${env.OPENAI_API_KEY}`,
+      "Content-Type": "application/json",
+      "OpenAI-Safety-Identifier": await voiceSafetyIdentifier(request),
+    },
+    body: JSON.stringify({
+      expires_after: { anchor: "created_at", seconds: 120 },
+      session: {
+        type: "realtime",
+        model: "gpt-realtime-2.1",
+        output_modalities: ["audio"],
+        instructions,
+        reasoning: { effort: "low" },
+        max_output_tokens: 900,
+        audio: {
+          input: {
+            noise_reduction: { type: "near_field" },
+            transcription: { model: "gpt-4o-mini-transcribe" },
+            turn_detection: {
+              type: "semantic_vad",
+              eagerness: "low",
+              create_response: true,
+              interrupt_response: true,
+            },
+          },
+          output: { voice: "marin", speed: 1.0 },
+        },
+        tracing: null,
+      },
+    }),
+  });
+
+  const payload = await openaiResponse.json().catch(() => ({}));
+  if (!openaiResponse.ok || !payload.value) {
+    console.error("OpenAI Realtime client secret error:", openaiResponse.status, payload.error?.message || "No error message.");
+    return voiceJsonResponse(request, 502, { error: "The voice connection could not be prepared. Please try again shortly." });
+  }
+
+  return voiceJsonResponse(request, 200, {
+    value: payload.value,
+    expires_at: payload.expires_at || 0,
+    model: "gpt-realtime-2.1",
+    voice: "marin",
+  });
+}
+
 export default {
   async fetch(request, env) {
     const url = new URL(request.url);
-    if (!url.pathname.endsWith("/citizen-needs-inference")) {
-      return jsonResponse(request, 404, { error: "Not found." });
-    }
+    if (url.pathname.endsWith("/realtime-client-secret")) return handleRealtimeClientSecret(request, env);
+    if (url.pathname.endsWith("/citizen-needs-inference")) return handleInference(request, env);
 
-    return handleInference(request, env);
+    return jsonResponse(request, 404, { error: "Not found." });
   },
 };

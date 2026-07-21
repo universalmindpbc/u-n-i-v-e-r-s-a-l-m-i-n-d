@@ -4,7 +4,11 @@
 
   const params = new URLSearchParams(window.location.search);
   const qaMode = window.location.hostname === "staging.universalmind.tv" && params.get("qa") === "realtime-voice";
-  const endpoint = "api/realtime-client-secret.php";
+  const endpoint = window.location.hostname === "staging.universalmind.tv"
+    ? "https://realtime-staging-iam-citizen-needs-inference.universalmind.workers.dev/realtime-client-secret"
+    : (window.location.hostname.endsWith("universalmind.tv")
+        ? "https://iam-citizen-needs-inference.universalmind.workers.dev/realtime-client-secret"
+        : "api/realtime-client-secret.php");
   const sessionLimitMs = 55 * 60 * 1000;
   const poseSequence = ["tea-tablet", "meditate", "tea", "music", "rave"];
   let poseIndex = 0;

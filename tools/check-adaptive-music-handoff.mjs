@@ -17,6 +17,8 @@ const televisionCssPath = path.join(IAM_DIR, 'adaptive-environment-television.cs
 const realtimeVoiceControllerPath = path.join(IAM_DIR, 'realtime-voice-assistant.js');
 const realtimeVoiceCssPath = path.join(IAM_DIR, 'realtime-voice-assistant.css');
 const realtimeVoiceEndpointPath = path.join(IAM_DIR, 'api', 'realtime-client-secret.php');
+const citizenNeedsWorkerPath = path.join(ROOT, 'cloudflare', 'iam-citizen-needs-worker.js');
+const citizenNeedsWorkerConfigPath = path.join(ROOT, 'cloudflare', 'wrangler.toml');
 const inductionPagePath = path.join(IAM_DIR, 'induction.html');
 const quantumTreeControlPagePath = path.join(IAM_DIR, 'quantum-tree-control.html');
 const quantumTreeControlScriptPath = path.join(IAM_DIR, 'quantum-tree-control.js');
@@ -80,6 +82,8 @@ const televisionCss = await fs.readFile(televisionCssPath, 'utf8');
 const realtimeVoiceController = await fs.readFile(realtimeVoiceControllerPath, 'utf8');
 const realtimeVoiceCss = await fs.readFile(realtimeVoiceCssPath, 'utf8');
 const realtimeVoiceEndpoint = await fs.readFile(realtimeVoiceEndpointPath, 'utf8');
+const citizenNeedsWorker = await fs.readFile(citizenNeedsWorkerPath, 'utf8');
+const citizenNeedsWorkerConfig = await fs.readFile(citizenNeedsWorkerConfigPath, 'utf8');
 const inductionPage = await fs.readFile(inductionPagePath, 'utf8');
 const quantumTreeControlPage = await fs.readFile(quantumTreeControlPagePath, 'utf8');
 const quantumTreeControlScript = await fs.readFile(quantumTreeControlScriptPath, 'utf8');
@@ -224,7 +228,8 @@ requireCondition(quantumTreeSettingsEndpoint.includes('file_put_contents($tempor
 requireCondition(quantumTreeSettingsData.peak_volume === 0.055, 'the deployed Quantum Tree platform setting is not 5.5 percent');
 requireCondition(realtimeVoiceController.includes('<strong>I am here.</strong>'), 'the voice planet has lost its approved I am here invitation');
 requireCondition(realtimeVoiceController.includes('<span>Need help or want to chat?</span>'), 'the voice planet has lost its approved chat invitation');
-requireCondition(realtimeVoiceController.includes('api/realtime-client-secret.php'), 'the browser no longer requests same-origin ephemeral Realtime credentials');
+requireCondition(realtimeVoiceController.includes('realtime-staging-iam-citizen-needs-inference.universalmind.workers.dev/realtime-client-secret'), 'staging no longer requests credentials from the undeployed Realtime Worker preview');
+requireCondition(realtimeVoiceController.includes('iam-citizen-needs-inference.universalmind.workers.dev/realtime-client-secret'), 'the production Realtime endpoint is no longer reserved for the approved Worker release');
 requireCondition(!realtimeVoiceController.includes('OPENAI_API_KEY'), 'the browser voice controller contains a server credential name');
 requireCondition(realtimeVoiceController.includes('navigator.mediaDevices.getUserMedia'), 'voice activation no longer requests the microphone after an explicit click');
 requireCondition(realtimeVoiceController.includes('conversation.item.input_audio_transcription.completed'), 'voice captions no longer receive completed visitor transcripts');
@@ -238,6 +243,15 @@ requireCondition(realtimeVoiceEndpoint.includes("'voice' => 'marin'"), 'the Real
 requireCondition(realtimeVoiceEndpoint.includes("'reasoning' => ['effort' => 'low']"), 'the Realtime endpoint no longer uses low reasoning effort');
 requireCondition(realtimeVoiceEndpoint.includes("'type' => 'semantic_vad'") && realtimeVoiceEndpoint.includes("'eagerness' => 'low'"), 'the Realtime endpoint no longer permits relaxed reflective turn taking');
 requireCondition(realtimeVoiceEndpoint.includes('OpenAI-Safety-Identifier:'), 'the Realtime endpoint no longer sends a privacy-preserving safety identifier');
+requireCondition(citizenNeedsWorker.includes('handleRealtimeClientSecret(request, env)'), 'the Cloudflare Worker no longer mints Realtime client secrets');
+requireCondition(citizenNeedsWorker.includes('https://api.openai.com/v1/realtime/client_secrets'), 'the Cloudflare Worker no longer uses the official Realtime client-secret endpoint');
+requireCondition(citizenNeedsWorker.includes('model: "gpt-realtime-2.1"') && citizenNeedsWorker.includes('voice: "marin"'), 'the Worker Realtime session no longer locks the approved model and voice');
+requireCondition(citizenNeedsWorker.includes('reasoning: { effort: "low" }'), 'the Worker Realtime session no longer uses low reasoning effort');
+requireCondition(citizenNeedsWorker.includes('type: "semantic_vad"') && citizenNeedsWorker.includes('eagerness: "low"'), 'the Worker Realtime session no longer uses relaxed semantic VAD');
+requireCondition(citizenNeedsWorker.includes('env.REALTIME_RATE_LIMITER.limit'), 'the Worker no longer rate-limits Realtime client-secret requests');
+requireCondition(citizenNeedsWorkerConfig.includes('preview_urls = true'), 'the staging-only Worker preview URL is not explicitly enabled');
+requireCondition(citizenNeedsWorkerConfig.includes('required = [ "OPENAI_API_KEY" ]'), 'the Worker does not declare its required encrypted OpenAI key');
+requireCondition(citizenNeedsWorkerConfig.includes('name = "REALTIME_RATE_LIMITER"'), 'the Worker has no native Realtime rate-limit binding');
 requireCondition(controller.includes('voiceAssistantBaseVolumes.get(media) * .15, 800'), 'the television programme no longer ducks smoothly to fifteen percent for voice');
 requireCondition(controller.includes('animateVoiceAssistantProgramVolume(media, baseline, 1000)'), 'the television programme no longer restores smoothly after voice');
 

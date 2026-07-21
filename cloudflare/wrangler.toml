@@ -2,6 +2,18 @@ name = "iam-citizen-needs-inference"
 main = "iam-citizen-needs-worker.js"
 compatibility_date = "2026-07-03"
 workers_dev = true
+preview_urls = true
 
 [vars]
 OPENAI_INFERENCE_MODEL = "gpt-5.5"
+
+[secrets]
+required = [ "OPENAI_API_KEY" ]
+
+[[ratelimits]]
+name = "REALTIME_RATE_LIMITER"
+namespace_id = "1001"
+
+  [ratelimits.simple]
+  limit = 12
+  period = 60
