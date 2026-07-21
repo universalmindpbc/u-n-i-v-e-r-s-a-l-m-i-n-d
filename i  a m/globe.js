@@ -364,6 +364,7 @@ function readMusicSelectionHistory() {
   for (const store of [window.localStorage, window.sessionStorage]) {
     try {
       const raw = readStoredValue(store, musicSelectionHistoryKey);
+      if (!raw) continue;
       const parsed = raw ? JSON.parse(raw) : [];
       if (Array.isArray(parsed)) return parsed.filter(Boolean).map(String).slice(0, 13);
     } catch {
@@ -382,7 +383,9 @@ function rememberMusicSelection(trackId) {
 
 function readMusicSelectionCount() {
   for (const store of [window.localStorage, window.sessionStorage]) {
-    const value = Number(readStoredValue(store, musicSelectionCountKey));
+    const raw = readStoredValue(store, musicSelectionCountKey);
+    if (!raw.trim()) continue;
+    const value = Number(raw);
     if (Number.isFinite(value) && value >= 0) return Math.floor(value);
   }
   return readMusicSelectionHistory().length;

@@ -180,7 +180,7 @@ This is not sedation. It is restoration with emotional intelligence.
 
 Use when the citizen needs attention, rhythm, cognitive clarity, pattern, spacious repetition, low-friction movement or productive absorption.
 
-This is not currently a dominant function in the 23-track V1.11 music television set, but it matters as the catalogue grows.
+This is not currently a dominant function in the 22-track safe-opening V1.11 music television set. The combined catalogue also contains one age-gated editorial video and seven long-form DJ sets, but those are separate surfaces and must not leak into the default opening recommendation.
 
 ### Grit + Agency
 
@@ -314,6 +314,13 @@ The app should provide:
     "location_label": "",
     "location_precision": "none | approximate | precise"
   },
+  "selection_context": {
+    "visitor_id": "anonymous random UUID",
+    "recent_track_ids": [],
+    "recommendation_index": 0,
+    "requested_media_class": "music_video",
+    "age_gate_confirmed": false
+  },
   "available_local_assets": []
 }
 ```
@@ -331,6 +338,10 @@ Score every approved catalogue track using this hierarchy:
 5. Environmental context as a soft modifier.
 6. Editorial diversity and provenance.
 7. Local playback availability.
+
+The opening selector uses only the 22 safe music-video records. Long-form DJ sets require an explicit `requested_media_class`, and age-gated records require an explicit confirmed gate.
+
+Cold-start diversity remains tensor-first. Seed the 10-of-13 uplift cycle from the anonymous visitor ID, then rotate only among tracks inside the configured near-equal score band. Build the rotation fingerprint from GPT-produced highlights and the needs scorecard. Never use the raw check-in text for track matching, never move a track into the eligible pool for variety, and never allow the anonymous seed to override safety or tensor relevance.
 
 Suggested scoring weights:
 

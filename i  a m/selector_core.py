@@ -9,6 +9,7 @@ matching: GPT can produce the citizen state, but this file chooses the track.
 from __future__ import annotations
 
 import argparse
+import hashlib
 import json
 import math
 import re
@@ -23,7 +24,7 @@ except Exception:
 
 CATALOGUE_VERSION = "adaptive_music_video_catalogue_v1.11"
 SELECTION_SCHEMA_VERSION = "adaptive_music_video_selection_v1.11"
-SELECTION_POLICY_VERSION = "tensor_uplift_rotation_v2"
+SELECTION_POLICY_VERSION = "tensor_uplift_rotation_v3"
 DCN_RERANKER_VERSION = "adaptive_music_engagement_dcn_reranker_v0.1"
 ALIGNED_NUMERIC_DIMENSIONS = 80
 BASE_DIR = Path(__file__).resolve().parent
@@ -593,6 +594,33 @@ def hard_veto_track(track: Mapping[str, Any], highlights: List[str], acute: bool
     return False, ""
 
 
+def selection_context(v444_payload: Mapping[str, Any]) -> Mapping[str, Any]:
+    context = v444_payload.get("selection_context")
+    return context if isinstance(context, Mapping) else {}
+
+
+def opening_catalogue_veto(track: Mapping[str, Any], v444_payload: Mapping[str, Any]) -> Tuple[bool, str]:
+    """Keep the opening recommendation inside its requested media and safety surface."""
+    context = selection_context(v444_payload)
+    media_class = str(
+        track.get("media_class")
+        or get_nested(track, ["tensor_profile", "runtime_delivery", "media_class"])
+        or "music_video"
+    )
+    requested_media_class = str(
+        context.get("requested_media_class")
+        or context.get("media_class")
+        or "music_video"
+    )
+    if media_class != requested_media_class:
+        return True, "opening_media_class_veto"
+
+    age_gate_confirmed = context.get("age_gate_confirmed") is True
+    if track_safety(track).get("requires_age_gate") and not age_gate_confirmed:
+        return True, "opening_age_gate_veto"
+    return False, ""
+
+
 def safety_fit(track: Mapping[str, Any], acute: bool) -> float:
     safety = track_safety(track)
     score = 1.0
@@ -1054,16 +1082,79 @@ def recommendation_index(v444_input: Mapping[str, Any], recent_track_ids: List[s
         return len(recent_track_ids)
 
 
-def quota_mode_for_selection(index: int, acute: bool, policy: Mapping[str, Any]) -> str:
+def stable_hash_fraction(*parts: Any) -> float:
+    digest = hashlib.sha256("\u241f".join(str(part) for part in parts).encode("utf-8")).digest()
+    return int.from_bytes(digest[:8], "big") / float((1 << 64) - 1)
+
+
+def inferred_state_fingerprint(v444_input: Mapping[str, Any]) -> str:
+    """Hash GPT-produced tensor state only; the raw citizen phrase is deliberately excluded."""
+    state = {
+        "highlights": extract_highlights(v444_input),
+        "needs_scorecard": extract_needs_scorecard(v444_input),
+    }
+    serialized = json.dumps(state, sort_keys=True, separators=(",", ":"), ensure_ascii=True)
+    return hashlib.sha256(serialized.encode("utf-8")).hexdigest()
+
+
+def recommendation_cycle(
+    v444_input: Mapping[str, Any],
+    index: int,
+    acute: bool,
+    policy: Mapping[str, Any],
+) -> Tuple[str, int, int]:
     if acute:
-        return "regulation"
+        return "regulation", 0, 0
     quota = policy.get("uplift_quota") if isinstance(policy.get("uplift_quota"), Mapping) else {}
     window_size = max(1, int(quota.get("window_size", 13)))
     state_led_slots = {
         int(slot)
         for slot in as_list(quota.get("state_led_slots_zero_indexed"))
     }
-    return "state_led" if index % window_size in state_led_slots else "uplift"
+    diversity = policy.get("cold_start_diversity") if isinstance(policy.get("cold_start_diversity"), Mapping) else {}
+    visitor_id = str(selection_context(v444_input).get("visitor_id") or "")
+    cycle_offset = 0
+    if diversity.get("visitor_seeded_cycle_offset") and visitor_id:
+        cycle_offset = int(stable_hash_fraction("quota-cycle", visitor_id) * window_size) % window_size
+    cycle_position = (index + cycle_offset) % window_size
+    quota_mode = "state_led" if cycle_position in state_led_slots else "uplift"
+    return quota_mode, cycle_position, cycle_offset
+
+
+def choose_relevance_bounded_candidate(
+    candidates: List[Tuple[float, float, Mapping[str, Any], Dict[str, Any]]],
+    v444_input: Mapping[str, Any],
+    selection_index: int,
+    policy: Mapping[str, Any],
+) -> Tuple[Tuple[float, float, Mapping[str, Any], Dict[str, Any]], int, float]:
+    """Rotate only among near-equal tensor fits so variety never outranks relevance."""
+    if not candidates:
+        raise ValueError("No relevance-bounded candidates are available.")
+    diversity = policy.get("cold_start_diversity") if isinstance(policy.get("cold_start_diversity"), Mapping) else {}
+    max_score_gap = max(0.0, min(0.12, float(diversity.get("fit_band_max_score_gap", 0.0))))
+    best_post_fit = max(item[1] for item in candidates)
+    fit_band = [item for item in candidates if item[1] >= best_post_fit - max_score_gap]
+    if len(fit_band) == 1:
+        return fit_band[0], 1, 0.0
+
+    context = selection_context(v444_input)
+    visitor_id = str(context.get("visitor_id") or "anonymous")
+    state_fingerprint = inferred_state_fingerprint(v444_input)
+    selected = max(
+        fit_band,
+        key=lambda item: (
+            stable_hash_fraction(
+                "fit-band",
+                visitor_id,
+                state_fingerprint,
+                selection_index,
+                str(item[2].get("id") or ""),
+            ),
+            item[1],
+            item[0],
+        ),
+    )
+    return selected, len(fit_band), max(0.0, best_post_fit - selected[1])
 
 
 def target_activation_level(user_vector: Mapping[str, float], acute: bool) -> int:
@@ -1134,7 +1225,12 @@ def execute_v1_11_selection(
     recent_track_ids = extract_recent_track_ids(v444_input)
     trajectory_policy = load_trajectory_policy()
     selection_index = recommendation_index(v444_input, recent_track_ids)
-    quota_mode = quota_mode_for_selection(selection_index, acute, trajectory_policy)
+    quota_mode, quota_cycle_position, quota_cycle_offset = recommendation_cycle(
+        v444_input,
+        selection_index,
+        acute,
+        trajectory_policy,
+    )
     activation_target = target_activation_level(user_vector, acute)
     input_scorecard = extract_needs_scorecard(v444_input)
     input_scorecard_dimensions = sum(
@@ -1149,6 +1245,10 @@ def execute_v1_11_selection(
     vetoed: List[Dict[str, str]] = []
 
     for track in tracks:
+        veto, reason = opening_catalogue_veto(track, v444_input)
+        if veto:
+            vetoed.append({"track": str(track.get("id")), "reason": reason})
+            continue
         veto, reason = hard_veto_track(track, highlights, acute, safety_flags)
         if veto:
             vetoed.append({"track": str(track.get("id")), "reason": reason})
@@ -1201,7 +1301,9 @@ def execute_v1_11_selection(
         fallback = next(
             (
                 track for track in tracks
-                if playable_media_available(track) and not track_safety(track).get("requires_age_gate")
+                if not opening_catalogue_veto(track, v444_input)[0]
+                and playable_media_available(track)
+                and not track_safety(track).get("requires_age_gate")
             ),
             None,
         )
@@ -1271,10 +1373,13 @@ def execute_v1_11_selection(
         if recent_artists and different_artist_candidates:
             choice_pool = different_artist_candidates
             artist_repeat_avoided = len(choice_pool) != len(fresh_candidates)
-        best_score, post_fit_score, best_track, score_parts = max(
+        selected_candidate, fit_band_rotation_size, fit_band_score_gap = choose_relevance_bounded_candidate(
             choice_pool,
-            key=lambda item: (item[1], item[0]),
+            v444_input,
+            selection_index,
+            trajectory_policy,
         )
+        best_score, post_fit_score, best_track, score_parts = selected_candidate
     elif recent_track_ids:
         recency_relaxed = True
         recency = {track_id: index for index, track_id in enumerate(recent_track_ids)}
@@ -1288,8 +1393,12 @@ def execute_v1_11_selection(
             reverse=True,
         )
         best_score, post_fit_score, best_track, score_parts = recycled_candidates[0]
+        fit_band_rotation_size = 1
+        fit_band_score_gap = 0.0
     else:
         best_score, post_fit_score, best_track, score_parts = eligible_pool[0]
+        fit_band_rotation_size = 1
+        fit_band_score_gap = 0.0
     score_parts = {
         **score_parts,
         "trajectory_policy": str(trajectory_policy.get("policy_version") or SELECTION_POLICY_VERSION),
@@ -1304,7 +1413,10 @@ def execute_v1_11_selection(
         "artist_repeat_avoided": 1.0 if artist_repeat_avoided else 0.0,
         "recency_relaxed": 1.0 if recency_relaxed else 0.0,
         "uplift_slot": 1.0 if quota_mode == "uplift" else 0.0,
-        "quota_cycle_position": float(selection_index % 13),
+        "quota_cycle_position": float(quota_cycle_position),
+        "quota_cycle_offset": float(quota_cycle_offset),
+        "fit_band_rotation_size": float(fit_band_rotation_size),
+        "fit_band_score_gap": float(fit_band_score_gap),
         "fit_band_expanded": 1.0 if fit_band_expanded else 0.0,
         "selection_history_size": float(len(recent_track_ids)),
         "tensor_candidate_count": float(len(scored)),
