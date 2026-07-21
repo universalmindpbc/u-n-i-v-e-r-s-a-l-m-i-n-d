@@ -2311,12 +2311,12 @@ html {
   grid-template-columns: minmax(170px, 210px) minmax(0, 1fr);
   gap: clamp(42px, 6vw, 108px);
   padding: clamp(66px, 6.4vw, 112px) clamp(24px, 5.8vw, 118px);
-  background: #fff;
-  color: #484846;
+  background: var(--about-paper);
+  color: var(--about-ink);
 }
 
 .about-overview-copy {
-  max-width: 1320px;
+  max-width: 1180px;
 }
 
 .about-overview h1,
@@ -2326,14 +2326,15 @@ html {
 }
 
 .about-overview h1 {
-  max-width: 1240px;
-  margin-bottom: clamp(38px, 4.5vw, 72px);
-  color: #3f3f3d;
+  max-width: 1040px;
+  margin-bottom: clamp(28px, 3.2vw, 48px);
+  color: var(--about-ink);
   font-family: var(--about-sans);
-  font-size: clamp(25px, 2.25vw, 38px);
-  font-weight: 400;
-  letter-spacing: -0.025em;
-  line-height: 1.34;
+  font-size: clamp(42px, 4vw, 68px);
+  font-weight: 300;
+  letter-spacing: -0.045em;
+  line-height: 1;
+  text-wrap: balance;
 }
 
 .about-overview-refuge,
@@ -2341,31 +2342,43 @@ html {
 .about-overview-partnerships,
 .about-overview-positioning,
 .about-overview-support > p {
-  max-width: 1240px;
-  font-size: clamp(20px, 1.62vw, 27px);
-  line-height: 1.4;
+  font-size: clamp(19px, 1.55vw, 26px);
+  line-height: 1.38;
 }
 
 .about-overview-refuge {
-  margin-bottom: clamp(48px, 5vw, 82px);
+  max-width: 930px;
+  margin-bottom: clamp(42px, 4.8vw, 76px);
+  color: #4b4b46;
+  font-size: clamp(22px, 1.75vw, 30px);
+  font-weight: 300;
+  letter-spacing: -0.025em;
+  line-height: 1.3;
 }
 
 .about-overview-definition {
-  margin-bottom: clamp(30px, 3.6vw, 58px);
+  max-width: 1080px;
+  margin-bottom: clamp(42px, 4.8vw, 76px);
+  padding: clamp(25px, 2.6vw, 38px) 0;
+  border-top: 1px solid var(--about-line);
+  border-bottom: 1px solid var(--about-line);
+  font-size: clamp(22px, 1.75vw, 30px);
+  letter-spacing: -0.02em;
+  line-height: 1.32;
 }
 
 .about-overview strong {
-  color: #444442;
+  color: var(--about-ink);
   font-weight: 700;
 }
 
 .about-overview-experience,
 .about-overview-support ul {
-  display: grid;
-  gap: clamp(20px, 2.2vw, 34px);
+  counter-reset: overview-row;
   margin-bottom: 0;
   padding: 0;
-  font-size: clamp(19px, 1.5vw, 25px);
+  border-top: 1px solid var(--about-line);
+  font-size: clamp(17px, 1.22vw, 21px);
   line-height: 1.42;
   list-style: none;
 }
@@ -2373,14 +2386,23 @@ html {
 .about-overview-experience li,
 .about-overview-support li {
   position: relative;
-  padding-left: 1.55em;
+  counter-increment: overview-row;
+  min-height: 82px;
+  padding: clamp(22px, 2vw, 30px) 0 clamp(22px, 2vw, 30px) 70px;
+  border-bottom: 1px solid var(--about-line);
 }
 
 .about-overview-experience li::before,
 .about-overview-support li::before {
   position: absolute;
-  left: 0.2em;
-  content: "–";
+  top: clamp(24px, 2.15vw, 32px);
+  left: 0;
+  color: var(--about-olive);
+  content: "0" counter(overview-row);
+  font-family: var(--about-mono);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
 }
 
 .about-overview-tag {
@@ -2390,20 +2412,35 @@ html {
 
 .about-overview-support {
   margin-top: clamp(70px, 7vw, 116px);
-  padding-top: clamp(28px, 3vw, 48px);
-  border-top: 1px solid var(--about-line);
 }
 
 .about-overview-support > p {
-  margin-bottom: clamp(26px, 3vw, 44px);
+  max-width: 780px;
+  margin-bottom: clamp(24px, 2.6vw, 40px);
+  font-size: clamp(28px, 2.35vw, 40px);
+  font-weight: 300;
+  letter-spacing: -0.035em;
+  line-height: 1.08;
 }
 
 .about-overview-support ul {
-  gap: 6px;
+  counter-reset: overview-policy;
+}
+
+.about-overview-support li {
+  counter-increment: overview-policy;
+}
+
+.about-overview-support li::before {
+  content: "0" counter(overview-policy);
 }
 
 .about-overview-partnerships {
-  margin: clamp(58px, 6vw, 96px) 0 0;
+  max-width: 980px;
+  margin: clamp(62px, 6.2vw, 100px) 0 0;
+  padding-left: clamp(20px, 2vw, 32px);
+  border-left: 3px solid var(--about-olive);
+  font-size: clamp(20px, 1.45vw, 25px);
 }
 
 .about-overview .about-invitation-register {
@@ -2411,9 +2448,15 @@ html {
 }
 
 .about-overview-positioning {
+  max-width: none;
   margin: clamp(62px, 6.5vw, 104px) 0 0;
-  padding-top: clamp(28px, 3vw, 48px);
-  border-top: 1px solid var(--about-line);
+  padding: clamp(30px, 3.2vw, 50px);
+  background: var(--about-black);
+  color: #fff;
+  font-size: clamp(22px, 1.75vw, 30px);
+  font-weight: 300;
+  letter-spacing: -0.022em;
+  line-height: 1.32;
 }
 
 /* HOW / ORIGINAL REFERENCE COMPOSITION
@@ -2568,20 +2611,26 @@ html {
   }
 
   .about-overview h1 {
-    font-size: clamp(25px, 5.5vw, 34px);
+    font-size: clamp(38px, 8.5vw, 56px);
   }
 
   .about-overview-refuge,
-  .about-overview-definition,
   .about-overview-partnerships,
-  .about-overview-positioning,
-  .about-overview-support > p {
+  .about-overview-positioning {
     font-size: clamp(19px, 4.2vw, 24px);
+  }
+
+  .about-overview-definition {
+    font-size: clamp(21px, 4.8vw, 27px);
+  }
+
+  .about-overview-support > p {
+    font-size: clamp(27px, 6vw, 36px);
   }
 
   .about-overview-experience,
   .about-overview-support ul {
-    font-size: clamp(18px, 3.8vw, 22px);
+    font-size: clamp(17px, 3.8vw, 21px);
   }
 
   .about-flow {
@@ -2610,12 +2659,22 @@ html {
   }
 
   .about-overview h1 {
-    font-size: clamp(24px, 7vw, 30px);
+    font-size: clamp(35px, 11vw, 48px);
   }
 
   .about-overview-experience li,
   .about-overview-support li {
-    padding-left: 1.25em;
+    min-height: 0;
+    padding: 22px 0 22px 42px;
+  }
+
+  .about-overview-experience li::before,
+  .about-overview-support li::before {
+    top: 25px;
+  }
+
+  .about-overview-positioning {
+    padding: 28px 24px;
   }
 
   .about-flow {
