@@ -2473,7 +2473,7 @@ html {
 
 .about-flow-node--human {
   left: 36%;
-  bottom: 1.2%;
+  bottom: 8%;
   width: 28%;
 }
 
@@ -2502,8 +2502,8 @@ html {
 
 .about-flow-node--rewards { top: 31%; }
 .about-flow-node--content { top: 28%; }
-.about-flow-node--support { bottom: 17%; }
-.about-flow-node--emdr { bottom: 17%; }
+.about-flow-node--support { bottom: 28%; }
+.about-flow-node--emdr { bottom: 28%; }
 
 .about-flow-node--rewards .about-flow-icon,
 .about-flow-node--support .about-flow-icon {
