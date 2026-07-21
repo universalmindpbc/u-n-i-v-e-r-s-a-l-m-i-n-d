@@ -2370,6 +2370,7 @@
     continuationAudio = null;
     continuationDecision = null;
     document.body.dataset.radioPlaybackState = "stopped";
+    document.body.dataset.radioPreloadState = "stopped";
   }
 
   async function switchMusicTrack(nextTrack, options = {}) {
@@ -2451,6 +2452,7 @@
     primeContinuationAudio(continuationDecision);
     window.IAMEMDR?.setTimelineSource?.({ media: continuationAudio, bpm: 112, firstDownbeatSeconds: 0, fallbackBpm: 112 });
     continuationAudio.muted = false;
+    document.body.dataset.radioPreloadState = "live";
     continuationAudio.play()
       .then(() => {
         document.body.dataset.radioPlaybackState = "playing";
@@ -3033,9 +3035,12 @@
   function setVoiceAssistantDucking(active) {
     const nextActive = Boolean(active);
     voiceAssistantDuckActive = nextActive;
+    const radioIsActiveProgramme = document.body.classList.contains("television-radio-continuation");
+    const programmeMedia = [localVideo];
+    if (radioIsActiveProgramme) programmeMedia.push(continuationAudio);
 
     if (nextActive) {
-      [localVideo, continuationAudio].forEach((media) => {
+      programmeMedia.forEach((media) => {
         if (!media || media.muted) return;
         if (!voiceAssistantBaseVolumes.has(media)) {
           const fallback = media === continuationAudio ? .68 : 1;
@@ -3051,6 +3056,9 @@
     }
 
     document.body.classList.toggle("television-voice-conversation-active", nextActive);
+    document.body.dataset.voiceDuckedMedia = nextActive
+      ? programmeMedia.filter(Boolean).map((media) => media === continuationAudio ? "radio" : "video").join(",")
+      : "";
     return voiceAssistantDuckActive;
   }
 
@@ -3432,6 +3440,7 @@
       }
       continuationAudio = null;
     }
+    document.body.dataset.radioPreloadState = "stopped";
 
     window.IAMEMDR?.setActive?.(false, { canvas: emdrCanvas, video: localVideo });
     window.IAMEMDR?.setTimelineSource?.({ media: null, fallbackBpm: 112 });
@@ -3457,7 +3466,14 @@
       continuationAudio.volume = 0;
     }
 
-    continuationAudio.muted = false;
+    // The radio handoff is only a silent preloader at this point. Keep it hard
+    // muted so voice-assistant ducking can never mistake it for live programme
+    // audio and raise it alongside the selected video.
+    continuationAudio.muted = true;
+    if (!document.body.classList.contains("television-radio-continuation")) {
+      document.body.dataset.radioPlaybackState = "primed-muted";
+      document.body.dataset.radioPreloadState = "muted";
+    }
     window.IAMEMDR?.setAudioSource?.(continuationAudio);
 
     const playAttempt = continuationAudio.play();
