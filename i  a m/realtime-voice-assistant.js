@@ -330,7 +330,7 @@
       case "response.content_part.done":
       case "response.output_item.done": {
         const completedTranscript = transcriptFromRealtimePayload(event.part || event.item);
-        if (completedTranscript) {
+        if (completedTranscript && completedTranscript !== lastAssistantTranscript.trim()) {
           lastAssistantTranscript = completedTranscript;
           appendTranscript("one", completedTranscript, false, event.item_id || event.response_id || "assistant-current", true);
           selectPoseFromWords(completedTranscript);
@@ -340,7 +340,7 @@
       case "response.done":
         {
           const completedTranscript = transcriptFromRealtimePayload(event.response);
-          if (completedTranscript) {
+          if (completedTranscript && completedTranscript !== lastAssistantTranscript.trim()) {
             lastAssistantTranscript = completedTranscript;
             appendTranscript("one", completedTranscript, false, event.response?.id || event.response_id || "assistant-current", true);
             selectPoseFromWords(completedTranscript);
