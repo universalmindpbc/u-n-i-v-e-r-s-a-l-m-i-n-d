@@ -2449,7 +2449,7 @@ body.television-page-view-open.flower-cue-visible .flower-begin-cue {
 
 body.television-page-view-open .global-nav-trigger,
 body.television-page-view-open .brand {
-  z-index: 30;
+  display: none !important;
 }
 
 body.television-room-opening.nav-open .global-nav-scrim,
