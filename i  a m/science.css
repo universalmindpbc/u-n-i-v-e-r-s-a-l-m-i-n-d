@@ -16,6 +16,11 @@
   box-sizing: border-box;
 }
 
+html[data-adaptive-frame="embedded"] .science-brand,
+html[data-adaptive-frame="embedded"] .global-nav {
+  display: none !important;
+}
+
 html {
   background: var(--science-paper);
   color: var(--science-ink);

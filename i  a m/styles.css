@@ -32,6 +32,7 @@ body {
 }
 
 html[data-adaptive-frame="embedded"] .brand,
+html[data-adaptive-frame="embedded"] .about-brand,
 html[data-adaptive-frame="embedded"] .global-nav-trigger,
 html[data-adaptive-frame="embedded"] .global-nav,
 html[data-adaptive-frame="embedded"] .flower-begin-cue,

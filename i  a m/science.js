@@ -204,22 +204,7 @@
     });
   }
 
-  function bindEmbeddedHome() {
-    if (window.self === window.top) return;
-    const params = new URLSearchParams(window.location.search);
-    if (params.get("adaptiveFrame") !== "1" && params.get("musicTelevisionFrame") !== "1") return;
-
-    document.addEventListener("click", (event) => {
-      const homeLink = event.target.closest('a[data-nav-item="home"], a.global-nav-brand, a.science-brand');
-      if (!homeLink) return;
-      event.preventDefault();
-      event.stopImmediatePropagation();
-      window.top.postMessage({ type: "iam:return-to-television" }, window.location.origin);
-    }, true);
-  }
-
   renderTracker();
   bindMethod();
-  bindEmbeddedHome();
   verifySources();
 }());

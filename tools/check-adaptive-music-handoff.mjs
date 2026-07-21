@@ -12,6 +12,10 @@ const streamCataloguePath = path.join(IAM_DIR, 'cloudflare-stream-catalogue.js')
 const shellControllerPath = path.join(IAM_DIR, 'script.js');
 const adaptiveEnvironmentPath = path.join(IAM_DIR, 'adaptive-environment.js');
 const aboutControllerPath = path.join(IAM_DIR, 'about.js');
+const frameContextPath = path.join(IAM_DIR, 'music-television-frame-context.js');
+const sharedStylesPath = path.join(IAM_DIR, 'styles.css');
+const scienceControllerPath = path.join(IAM_DIR, 'science.js');
+const scienceCssPath = path.join(IAM_DIR, 'science.css');
 const djSetManifestPath = path.join(ROOT, 'cloudflare-stream-djset-upload-manifest.json');
 const televisionCssPath = path.join(IAM_DIR, 'adaptive-environment-television.css');
 const realtimeVoiceControllerPath = path.join(IAM_DIR, 'realtime-voice-assistant.js');
@@ -66,6 +70,16 @@ const aboutLinkPagePaths = [
   path.join(IAM_DIR, 'technology-citizen-needs.html'),
   path.join(IAM_DIR, 'about.html'),
 ];
+const singleShellNavigationPagePaths = [
+  path.join(IAM_DIR, 'index.html'),
+  path.join(IAM_DIR, 'adaptive-environment-television.html'),
+  path.join(IAM_DIR, 'adaptive-music-video.html'),
+  path.join(IAM_DIR, 'cafe-del-mar-home.html'),
+  path.join(IAM_DIR, 'our-team.html'),
+  path.join(IAM_DIR, 'science.html'),
+  path.join(IAM_DIR, 'technology-citizen-needs.html'),
+  path.join(IAM_DIR, 'about.html'),
+];
 
 function requireCondition(condition, message) {
   if (!condition) throw new Error(`Adaptive music handoff preflight failed: ${message}`);
@@ -78,6 +92,10 @@ const streamCatalogue = await fs.readFile(streamCataloguePath, 'utf8');
 const shellController = await fs.readFile(shellControllerPath, 'utf8');
 const adaptiveEnvironment = await fs.readFile(adaptiveEnvironmentPath, 'utf8');
 const aboutController = await fs.readFile(aboutControllerPath, 'utf8');
+const frameContext = await fs.readFile(frameContextPath, 'utf8');
+const sharedStyles = await fs.readFile(sharedStylesPath, 'utf8');
+const scienceController = await fs.readFile(scienceControllerPath, 'utf8');
+const scienceCss = await fs.readFile(scienceCssPath, 'utf8');
 const djSetManifest = JSON.parse(await fs.readFile(djSetManifestPath, 'utf8'));
 const televisionCss = await fs.readFile(televisionCssPath, 'utf8');
 const realtimeVoiceController = await fs.readFile(realtimeVoiceControllerPath, 'utf8');
@@ -112,6 +130,10 @@ const aboutLinkPages = await Promise.all(aboutLinkPagePaths.map(async (pagePath)
   pagePath,
   source: await fs.readFile(pagePath, 'utf8'),
 })));
+const singleShellNavigationPages = await Promise.all(singleShellNavigationPagePaths.map(async (pagePath) => ({
+  pagePath,
+  source: await fs.readFile(pagePath, 'utf8'),
+})));
 
 const expectedCacheToken = `music-tv-${createHash('sha256').update(controller).digest('hex').slice(0, 12)}`;
 const expectedGlobeCacheToken = `globe-${createHash('sha256').update(globeController).digest('hex').slice(0, 12)}`;
@@ -123,6 +145,7 @@ const expectedStreamControllerToken = `stream-controller-${createHash('sha256').
 const expectedShellControllerToken = `adaptive-env-stream-${createHash('sha256').update(shellController).digest('hex').slice(0, 12)}`;
 const expectedAdaptiveEnvironmentToken = `adaptive-env-${createHash('sha256').update(adaptiveEnvironment).digest('hex').slice(0, 12)}`;
 const expectedAboutControllerToken = `about-briefing-${createHash('sha256').update(aboutController).digest('hex').slice(0, 12)}`;
+const expectedFrameContextToken = `music-tv-frame-${createHash('sha256').update(frameContext).digest('hex').slice(0, 12)}`;
 const explicitSelectionMarker = 'params.get("selected_track_id")';
 const syncCallPosition = controller.lastIndexOf('syncSelectedTrackCopy();');
 const introCallPosition = controller.lastIndexOf('runIntro();');
@@ -176,7 +199,14 @@ requireCondition(televisionCss.includes('body:not(.television-wallet-pointer-loc
 requireCondition(!/^\s*\.adaptive-television-reaction-wallet:(?:hover|focus-within)/m.test(televisionCss), 'an ungated stylesheet hover path can still open the flower early');
 requireCondition(!/^\s*\.adaptive-television-reaction-wallet\[data-wallet-view="closed"\]:(?:hover|focus-within)/m.test(televisionCss), 'a later wallet hierarchy rule can still expand the closed flower during the ten-second lock');
 requireCondition(televisionCss.includes('body.television-wallet-pointer-locked .adaptive-television-reaction-wallet[data-wallet-view="closed"] .adaptive-television-reaction-trigger'), 'the locked room entry no longer guarantees one visible flower');
-requireCondition(televisionCss.includes('body.television-page-view-open .global-nav-trigger,\nbody.television-page-view-open .brand {\n  display: none !important;\n}'), 'the television shell can render a second global navigation flower above framed site pages');
+requireCondition(televisionCss.includes('body.television-page-view-open .global-nav-trigger,\nbody.television-page-view-open .brand {\n  z-index: 30;\n}'), 'the persistent television navigation is no longer available above framed site pages');
+requireCondition(televisionCss.includes('body.television-page-view-open .brand-lockup {\n  display: flex;\n}'), 'framed pages no longer retain the canonical television navigation identity');
+requireCondition(frameContext.includes('document.documentElement.dataset.musicTelevisionFrame = "embedded";'), 'framed pages no longer share one early television context marker');
+requireCondition(frameContext.includes('document.documentElement.dataset.adaptiveFrame = "embedded";'), 'framed pages can render a competing local navigation before the television shell appears');
+requireCondition(sharedStyles.includes('html[data-adaptive-frame="embedded"] .about-brand,'), 'About can render a competing navigation flower inside the television shell');
+requireCondition(scienceCss.includes('html[data-adaptive-frame="embedded"] .science-brand,'), 'Science can render a competing navigation flower inside the television shell');
+requireCondition(!scienceController.includes('bindEmbeddedHome'), 'Science still owns a page-specific Home handler instead of the persistent television shell');
+requireCondition(controller.includes('if (link.dataset.navItem === "home") {') && controller.includes('returnToTelevisionRoom();'), 'Home no longer returns to the existing playing television room');
 requireCondition(!controller.includes('REACTION_WALLET_OPEN_DELAY_MS'), 'the flower wallet still has an automatic hover timer');
 requireCondition(controller.includes('window.IAMNowPlaying = {'), 'the primary wallet has no Now Playing diagnostic state');
 requireCondition(controller.includes('hourCycle: "h23"'), 'the Now Playing clock is no longer fixed to local 24-hour time');
@@ -292,6 +322,13 @@ for (const { pagePath, source } of sharedNavigationPages) {
   const sharedNavigationMatch = source.match(/script\.js\?v=([^"']+)/);
   requireCondition(sharedNavigationMatch, `${label} has no versioned shared navigation controller`);
   requireCondition(sharedNavigationMatch[1] === expectedShellControllerToken, `${label} shared-navigation cache token ${sharedNavigationMatch[1]} does not match ${expectedShellControllerToken}`);
+}
+
+for (const { pagePath, source } of singleShellNavigationPages) {
+  const label = path.relative(ROOT, pagePath);
+  const frameContextMatch = source.match(/music-television-frame-context\.js\?v=([^"']+)/);
+  requireCondition(frameContextMatch, `${label} has no early television-frame context controller`);
+  requireCondition(frameContextMatch[1] === expectedFrameContextToken, `${label} frame-context cache token ${frameContextMatch[1]} does not match ${expectedFrameContextToken}`);
 }
 
 for (const { pagePath, source } of adaptiveEnvironmentPages) {
