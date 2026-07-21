@@ -2,15 +2,23 @@
   "use strict";
 
   const routingUrl = new URL(window.location.href);
-  const embedded = window.self !== window.top ||
-    routingUrl.searchParams.get("adaptiveFrame") === "1" ||
+  const musicTelevisionFrame = window.self !== window.top &&
     routingUrl.searchParams.get("musicTelevisionFrame") === "1";
+  const invalidEmbeddedRoute = !musicTelevisionFrame && (
+    window.self !== window.top ||
+    routingUrl.searchParams.get("adaptiveFrame") === "1" ||
+    routingUrl.searchParams.get("musicTelevisionFrame") === "1"
+  );
+
+  if (musicTelevisionFrame) {
+    window.__iamMusicTelevisionFrame = true;
+  }
 
   ["adaptiveFrame", "musicTelevisionFrame", "aboutTopLevel"].forEach((parameter) => {
     routingUrl.searchParams.delete(parameter);
   });
 
-  if (embedded) {
+  if (invalidEmbeddedRoute) {
     try {
       window.top.location.replace(routingUrl.href);
     } catch {

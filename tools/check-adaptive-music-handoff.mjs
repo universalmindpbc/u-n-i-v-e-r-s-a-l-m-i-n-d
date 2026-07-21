@@ -136,10 +136,17 @@ const nowPlayingCss = televisionCss.slice(
 requireCondition(controller.includes(explicitSelectionMarker), 'the home controller no longer reads selected_track_id from the URL');
 requireCondition(shellController.includes('function bindStandaloneAboutNavigation()'), 'the shared navigation no longer forces About into a complete top-level document');
 requireCondition(shellController.includes('window.top.location.href = url.href;'), 'embedded global navigation can no longer escape to the complete About page');
+requireCondition(shellController.includes('document.body.classList.contains("television-room-open")'), 'About can still bypass the persistent television page layer');
+requireCondition(shellController.includes('currentParams.get("musicTelevisionFrame") === "1"'), 'About links inside the television page layer no longer preserve the continuous environment');
+requireCondition(shellController.includes('window.__iamMusicTelevisionFrame === true'), 'About loses its television-frame identity after cleaning routing parameters');
+requireCondition(shellController.includes('url.searchParams.set("musicTelevisionFrame", "1");'), 'About cannot remain inside the playing television frame during internal navigation');
 requireCondition(adaptiveEnvironment.includes('const standalonePages = new Set(["about.html"]);'), 'About is no longer classified as a standalone destination');
 requireCondition(!adaptiveEnvironment.match(/const framePages = new Set\([^;]*about\.html/), 'About can still be rendered inside the undersized adaptive frame');
 requireCondition(adaptiveEnvironment.includes('!standalonePages.has(pageName)'), 'standalone destinations are no longer recognised by shared navigation');
 requireCondition(aboutController.includes('window.top.location.replace(routingUrl.href);'), 'a framed About page can no longer promote itself to the full browser window');
+requireCondition(aboutController.includes('const musicTelevisionFrame = window.self !== window.top'), 'About no longer distinguishes the persistent television frame from broken generic frames');
+requireCondition(aboutController.includes('window.__iamMusicTelevisionFrame = true;'), 'About no longer retains television continuity after cleaning its URL');
+requireCondition(aboutController.includes('const invalidEmbeddedRoute = !musicTelevisionFrame'), 'About can still escape the active television player');
 requireCondition(aboutController.includes('["adaptiveFrame", "musicTelevisionFrame", "aboutTopLevel"]'), 'About no longer removes its temporary routing parameters');
 requireCondition(controller.includes('id: "the-prodigy-everybody-in-the-place"'), 'the Prodigy track is missing from the television catalogue');
 requireCondition(controller.includes('document.body.dataset.adaptiveTrackId = track.id;'), 'the resolved track is not exposed for staging verification');

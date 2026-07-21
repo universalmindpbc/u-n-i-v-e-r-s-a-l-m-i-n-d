@@ -247,8 +247,27 @@
       const url = new URL(link.getAttribute("href"), window.location.href);
       if (url.origin !== window.location.origin) return;
 
+      // The television room owns its page layer so the active music/video
+      // element survives navigation. Let its controller intercept About just
+      // as it already does Science and the other internal destinations.
+      if (document.body.classList.contains("television-room-open")) return;
+
+      const currentParams = new URLSearchParams(window.location.search);
+      const musicTelevisionFrame = window.self !== window.top && (
+        currentParams.get("musicTelevisionFrame") === "1" ||
+        window.__iamMusicTelevisionFrame === true
+      );
+
       event.preventDefault();
       event.stopImmediatePropagation();
+
+      if (musicTelevisionFrame) {
+        url.searchParams.delete("aboutTopLevel");
+        url.searchParams.set("adaptiveFrame", "1");
+        url.searchParams.set("musicTelevisionFrame", "1");
+        window.location.href = url.href;
+        return;
+      }
 
       if (window.self !== window.top) {
         window.top.location.href = url.href;
