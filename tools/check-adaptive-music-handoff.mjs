@@ -207,6 +207,7 @@ requireCondition(sharedStyles.includes('html[data-adaptive-frame="embedded"] .ab
 requireCondition(scienceCss.includes('html[data-adaptive-frame="embedded"] .science-brand,'), 'Science can render a competing navigation flower inside the television shell');
 requireCondition(!scienceController.includes('bindEmbeddedHome'), 'Science still owns a page-specific Home handler instead of the persistent television shell');
 requireCondition(controller.includes('if (link.dataset.navItem === "home") {') && controller.includes('returnToTelevisionRoom();'), 'Home no longer returns to the existing playing television room');
+requireCondition(controller.includes('url.searchParams.set("navigationShell", "1");'), 'framed destinations can reuse stale page-local navigation markup');
 requireCondition(!controller.includes('REACTION_WALLET_OPEN_DELAY_MS'), 'the flower wallet still has an automatic hover timer');
 requireCondition(controller.includes('window.IAMNowPlaying = {'), 'the primary wallet has no Now Playing diagnostic state');
 requireCondition(controller.includes('hourCycle: "h23"'), 'the Now Playing clock is no longer fixed to local 24-hour time');

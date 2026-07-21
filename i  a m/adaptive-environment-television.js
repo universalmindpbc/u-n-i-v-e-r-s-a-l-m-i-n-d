@@ -3889,6 +3889,7 @@
     const url = new URL(link.getAttribute("href"), window.location.href);
     url.searchParams.set("adaptiveFrame", "1");
     url.searchParams.set("musicTelevisionFrame", "1");
+    url.searchParams.set("navigationShell", "1");
     return url.href;
   }
 
