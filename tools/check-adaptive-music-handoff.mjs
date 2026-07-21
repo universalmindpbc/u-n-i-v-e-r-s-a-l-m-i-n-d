@@ -234,6 +234,7 @@ requireCondition(!realtimeVoiceController.includes('OPENAI_API_KEY'), 'the brows
 requireCondition(realtimeVoiceController.includes('navigator.mediaDevices.getUserMedia'), 'voice activation no longer requests the microphone after an explicit click');
 requireCondition(realtimeVoiceController.includes('conversation.item.input_audio_transcription.completed'), 'voice captions no longer receive completed visitor transcripts');
 requireCondition(realtimeVoiceController.includes('response.output_audio_transcript.delta'), 'voice captions no longer receive live assistant transcripts');
+requireCondition(realtimeVoiceController.includes('transcriptFromRealtimePayload(event.response)'), 'voice captions no longer recover the final completed-response transcript');
 requireCondition(realtimeVoiceController.includes('staging.universalmind.tv') && realtimeVoiceController.includes('staging voice check · no microphone'), 'the microphone-free Realtime QA path is not restricted to staging');
 requireCondition(realtimeVoiceCss.includes('right: max(clamp(20px, 2.5vw, 42px), env(safe-area-inset-right));'), 'the assistant is no longer anchored to the lower right safe area');
 requireCondition(realtimeVoiceCss.includes('@media (prefers-reduced-motion: reduce)'), 'the assistant has no reduced-motion treatment');

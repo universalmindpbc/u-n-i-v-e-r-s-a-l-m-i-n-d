@@ -23,6 +23,7 @@
   let muted = false;
   let captionsVisible = false;
   let lastAssistantTranscript = "";
+  const transcriptLines = new Map();
 
   const textureUrl = makeMiniPlanetTexture(0);
   const root = document.createElement("section");
@@ -145,6 +146,7 @@
     muted = false;
     lastAssistantTranscript = "";
     transcript.replaceChildren();
+    transcriptLines.clear();
     root.dataset.pose = "wave";
     setState("connecting", "Connecting…");
     root.classList.add("is-active");
@@ -303,6 +305,7 @@
         setState("thinking", "Thinking…");
         break;
       case "response.output_audio.delta":
+      case "response.audio.delta":
         root.dataset.pose = "wave";
         setState("speaking", "Speaking");
         break;
@@ -314,15 +317,35 @@
         selectPoseFromWords(event.transcript || "");
         break;
       case "response.output_audio_transcript.delta":
+      case "response.audio_transcript.delta":
         lastAssistantTranscript += event.delta || "";
         appendTranscript("one", event.delta || "", true, event.item_id || event.response_id || "assistant-current");
         break;
       case "response.output_audio_transcript.done":
+      case "response.audio_transcript.done":
         lastAssistantTranscript = event.transcript || lastAssistantTranscript;
         appendTranscript("one", lastAssistantTranscript, false, event.item_id || event.response_id || "assistant-current", true);
         selectPoseFromWords(lastAssistantTranscript);
         break;
+      case "response.content_part.done":
+      case "response.output_item.done": {
+        const completedTranscript = transcriptFromRealtimePayload(event.part || event.item);
+        if (completedTranscript) {
+          lastAssistantTranscript = completedTranscript;
+          appendTranscript("one", completedTranscript, false, event.item_id || event.response_id || "assistant-current", true);
+          selectPoseFromWords(completedTranscript);
+        }
+        break;
+      }
       case "response.done":
+        {
+          const completedTranscript = transcriptFromRealtimePayload(event.response);
+          if (completedTranscript) {
+            lastAssistantTranscript = completedTranscript;
+            appendTranscript("one", completedTranscript, false, event.response?.id || event.response_id || "assistant-current", true);
+            selectPoseFromWords(completedTranscript);
+          }
+        }
         lastAssistantTranscript = "";
         if (!muted) setState("listening", microphoneStream ? "I'm listening" : "Staging voice check complete");
         scheduleLifestylePose();
@@ -337,24 +360,36 @@
 
   function appendTranscript(role, text, partial, itemId, replace = false) {
     if (!text) return;
-    let line = transcript.querySelector(`[data-transcript-id="${cssEscape(itemId)}"][data-transcript-role="${role}"]`);
+    const lineKey = `${role}:${itemId}`;
+    let line = transcriptLines.get(lineKey);
     if (!line) {
       line = document.createElement("p");
       line.dataset.transcriptId = itemId;
       line.dataset.transcriptRole = role;
       line.innerHTML = `<strong>${role === "you" ? "you" : "one"}</strong><span></span>`;
       transcript.appendChild(line);
+      transcriptLines.set(lineKey, line);
     }
     const content = line.querySelector("span");
     content.textContent = replace ? text : (partial ? content.textContent + text : text);
     line.classList.toggle("is-partial", partial);
-    while (transcript.children.length > 8) transcript.firstElementChild?.remove();
+    while (transcript.children.length > 8) {
+      const oldest = transcript.firstElementChild;
+      transcriptLines.forEach((value, key) => { if (value === oldest) transcriptLines.delete(key); });
+      oldest?.remove();
+    }
     transcript.scrollTop = transcript.scrollHeight;
   }
 
-  function cssEscape(value) {
-    if (window.CSS?.escape) return window.CSS.escape(String(value));
-    return String(value).replace(/[^a-zA-Z0-9_-]/g, "_");
+  function transcriptFromRealtimePayload(value) {
+    if (!value || typeof value !== "object") return "";
+    if (typeof value.transcript === "string" && value.transcript.trim()) return value.transcript.trim();
+    if (typeof value.text === "string" && value.text.trim()) return value.text.trim();
+    const nested = [value.output, value.content]
+      .flatMap((collection) => Array.isArray(collection) ? collection : [])
+      .map((item) => transcriptFromRealtimePayload(item))
+      .filter(Boolean);
+    return nested.join(" ").trim();
   }
 
   function setState(nextState, label) {
