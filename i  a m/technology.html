@@ -3,123 +3,18 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>UX | I Am</title>
-    <link rel="icon" type="image/png" sizes="32x32" href="/vogue/iam/favicon.png?v=iam-favicon-3">
-    <link rel="shortcut icon" type="image/png" href="/vogue/iam/favicon.png?v=iam-favicon-3">
-    <link rel="apple-touch-icon" sizes="180x180" href="/vogue/iam/apple-touch-icon.png?v=iam-favicon-3">
-    <link rel="preconnect" href="https://streamer.radio.co" crossorigin>
-    <link rel="preconnect" href="https://streams.radio.co" crossorigin>
-    <link rel="preconnect" href="https://s4.radio.co" crossorigin>
-    <link rel="stylesheet" href="styles.css?v=global-nav-signal-1">
+    <meta http-equiv="refresh" content="0;url=about.html#how">
+    <title>UX | About I Am</title>
+    <script>
+      (() => {
+        const target = new URL("about.html", window.location.href);
+        target.search = window.location.search;
+        target.hash = "how";
+        window.location.replace(target.href);
+      })();
+    </script>
   </head>
-  <body data-current-nav="technology">
-    <main class="site-shell" aria-label="Universal Mind i am microsite">
-      <section class="scene" aria-label="Featured film scene">
-        <div class="background-video" aria-hidden="true">
-          <video
-            data-stream-file="a s s e t s/Homepage - Hero Background Video - Chanel 2020 Runway Show.mp4"
-            data-stream-reveal="pending"
-            autoplay
-            muted
-            playsinline
-            loop
-            preload="metadata"
-          ></video>
-        </div>
-
-        <div class="panel-grid" aria-hidden="true">
-          <span></span><span></span><span></span><span></span><span></span>
-          <span></span><span></span><span></span><span></span><span></span>
-          <span></span><span></span><span></span><span></span><span></span>
-        </div>
-
-        <div class="scene-veil" aria-hidden="true"></div>
-
-        <header class="brand" aria-label="Universal Mind">
-          <img class="brand-mark" src="a s s e t s/Universal Mind [ I o H ] Logo.PNG" alt="">
-          <div class="brand-lockup" aria-live="polite">
-            <span class="brand-name" data-language>universalmind</span>
-            <span class="brand-suffix" data-brand-suffix>
-              <span class="brand-slash">/</span>
-              <span class="brand-iam">i a m</span>
-            </span>
-          </div>
-        </header>
-
-        <button class="global-nav-trigger" type="button" aria-label="Open global navigation" data-nav-open></button>
-
-        <section class="hero-casing" aria-label="Featured film">
-          <div class="hero-media">
-            <iframe
-              class="hero-video"
-              src="https://player.vimeo.com/video/1205363406?title=0&byline=0&portrait=0&badge=0&controls=1&autopause=0"
-              title="i a m vogue technology"
-              allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
-              referrerpolicy="strict-origin-when-cross-origin"
-            ></iframe>
-            <a
-              class="citation"
-              href="https://www.orygen.org.au/Policy-Centre/Policy-Areas/Population-groups/The-next-post/Orygen_Young_veterans-Policy-paper_Mar2018edition_?ext=.pdf"
-              target="_blank"
-              rel="noreferrer"
-            >Orygen | Phoenix Australia</a>
-          </div>
-        </section>
-
-        <nav class="film-chapters" aria-label="Film chapters">
-          <a class="film-chapter" href="problem.html">problem</a>
-          <a class="film-chapter" href="solution.html">solution</a>
-          <a class="film-chapter" href="demo.html">demo</a>
-          <span class="film-chapter-group">
-            <button class="film-chapter film-chapter-trigger is-active" type="button" aria-current="page" aria-haspopup="true">technology</button>
-            <span class="film-chapter-dropdown" aria-label="Technology">
-              <a href="technology.html">ux</a>
-              <a href="technology-citizen-needs.html">ai</a>
-            </span>
-          </span>
-        </nav>
-      </section>
-
-      <aside class="global-nav" data-global-nav aria-hidden="true" aria-label="Global navigation">
-        <div class="global-nav-scrim" data-nav-close></div>
-
-        <div class="global-nav-content">
-          <a class="global-nav-brand" href="index.html" aria-label="Universal Mind i am homepage">
-            <img class="global-nav-mark" src="a s s e t s/Universal Mind [ I o H ] Logo.PNG" alt="">
-            <span class="global-nav-lockup">
-              <span class="global-nav-name">universalmind</span>
-              <span class="global-nav-slash">/</span>
-              <strong>i am</strong>
-            </span>
-          </a>
-
-          <nav class="global-nav-menu" aria-label="Primary">
-            <a class="global-nav-item" href="index.html" data-nav-item="home">home</a>
-            <a class="global-nav-item" href="problem.html" data-nav-item="problem">problem</a>
-            <a class="global-nav-item" href="solution.html" data-nav-item="solution">solution</a>
-            <a class="global-nav-item" href="technology.html" data-nav-item="technology" aria-expanded="false">technology</a>
-            <div class="global-nav-submenu" data-nav-submenu="technology">
-              <a href="technology-citizen-needs.html" data-nav-subitem="technology-ai">ai-citizen needs inference</a>
-              <a href="technology.html" data-nav-subitem="technology-ux">ux - ai with human in the loop</a>
-            </div>
-            <a class="global-nav-item" href="science.html" data-nav-item="science">science</a>
-            <a class="global-nav-item" href="#" data-nav-item="privacy-first" aria-disabled="true">privacy first</a>
-            <a class="global-nav-item" href="#" data-nav-item="go-to-market" aria-disabled="true">go to market</a>
-            <a class="global-nav-item" href="vogue-self-report.html" data-nav-item="check-in">check in</a>
-            <a class="global-nav-item" href="our-team.html" data-nav-item="our-team">our team</a>
-            <a class="global-nav-item" href="mailto:bk@universalmind.tv?subject=I%20Am%20Vogue%20%7C%20Referral" data-nav-item="contact">contact</a>
-          </nav>
-
-          <p class="global-nav-citation">
-            A Direct Response To Orygen + Phoenix Australia’s
-            <a href="https://www.orygen.org.au/Policy-Centre/Policy-Areas/Population-groups/The-next-post/Orygen_Young_veterans-Policy-paper_Mar2018edition_?ext=.pdf" target="_blank" rel="noreferrer">“The Next Post: Young people transitioning from military service and their mental health”</a>
-          </p>
-        </div>
-      </aside>
-    </main>
-
-    <script src="local-context.js?v=local-context-3"></script>
-    <script src="adaptive-environment.js?v=science-frame-1"></script>
-    <script src="script.js?v=adaptive-env-stream-be549a660ca4"></script>
+  <body>
+    <p>This chapter now lives in <a href="about.html#how">About / How</a>.</p>
   </body>
 </html>

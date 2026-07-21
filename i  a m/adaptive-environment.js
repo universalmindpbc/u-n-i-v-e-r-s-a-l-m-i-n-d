@@ -61,8 +61,8 @@
   const stateKey = "iamAdaptiveEnvironmentState";
   const backgroundVideoStateKey = "iamPersistentBackgroundVideoState";
   const inferenceKeys = ["iamLatestInference", "citizenNeedsLatestInference"];
-  const normalPages = new Set(["index.html", "problem.html", "solution.html", "demo.html", "technology.html", "adaptive-music-video.html", "our-team.html", "cafe-del-mar-home.html"]);
-  const framePages = new Set(["globe.html", "vogue-self-report.html", "technology-citizen-needs.html", "science.html"]);
+  const normalPages = new Set(["index.html", "adaptive-music-video.html", "our-team.html", "cafe-del-mar-home.html"]);
+  const framePages = new Set(["globe.html", "vogue-self-report.html", "technology-citizen-needs.html", "science.html", "about.html"]);
   const standalonePages = new Set();
   const baseVolume = 0.68;
   const duckedVolume = 0;
