@@ -115,7 +115,7 @@
   entryPreflight.innerHTML = `
     <span class="iam-voice-entry-preflight__mark" aria-hidden="true"><i></i></span>
     <strong id="iam-voice-entry-title">Voice features are available</strong>
-    <p id="iam-voice-entry-copy">Universal One and Circle audio rooms use your microphone only when you choose to speak. Allow access now for an uninterrupted full-screen experience?</p>
+    <p id="iam-voice-entry-copy">Chat with Universal One, your personal AI voice companion, or join a Circle audio room with other people. Allow microphone access now for an uninterrupted full-screen experience?</p>
     <div class="iam-voice-entry-preflight__actions">
       <button type="button" data-voice-entry-allow>allow microphone</button>
       <button type="button" data-voice-entry-skip>enter without voice</button>
@@ -262,7 +262,7 @@
     entrySkipButton.hidden = false;
     entryError.hidden = true;
     entryTitle.textContent = "Voice features are available";
-    entryCopy.textContent = "Universal One and Circle audio rooms use your microphone only when you choose to speak. Allow access now for an uninterrupted full-screen experience?";
+    entryCopy.textContent = "Chat with Universal One, your personal AI voice companion, or join a Circle audio room with other people. Allow microphone access now for an uninterrupted full-screen experience?";
     window.setTimeout(() => entryAllowButton.focus({ preventScroll: true }), 30);
     return true;
   }
