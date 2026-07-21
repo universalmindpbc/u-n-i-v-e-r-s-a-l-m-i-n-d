@@ -3990,6 +3990,11 @@
 
     if (selectionIsLoading) return;
 
+    if (window.IAMRealtimeVoiceAssistant?.shouldPreflightEntry?.()) {
+      window.IAMRealtimeVoiceAssistant.showEntryPreflight?.();
+      return;
+    }
+
     if (hasOpened) {
       if (localVideo?.paused) playLocalVideo(localVideo);
       return;
@@ -4497,6 +4502,15 @@
   }
   window.setInterval(updateNowPlayingClock, 30000);
   syncFullscreenState();
+  window.IAMTelevisionRoom = {
+    version: "voice_entry_preflight_v1",
+    enterFromVoicePreflight() {
+      openRoom({
+        preventDefault() {},
+        stopImmediatePropagation() {},
+      });
+    },
+  };
   window.IAMStreamReady?.then(() => {
     if (!selectionIsLoading) primeLocalVideo();
   });

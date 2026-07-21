@@ -5,6 +5,8 @@
   const params = new URLSearchParams(window.location.search);
   const qaMode = window.location.hostname === "staging.universalmind.tv" && params.get("qa") === "realtime-voice";
   const qaScenario = qaMode ? params.get("voice_test") : "";
+  const forceEntryPreflight = qaMode && params.get("voice_entry_test") === "1";
+  const entryPreferenceKey = "iam-universal-one-entry-voice-v1";
   const endpoint = window.location.hostname === "staging.universalmind.tv"
     ? "https://realtime-staging-iam-citizen-needs-inference.universalmind.workers.dev/realtime-client-secret"
     : (window.location.hostname.endsWith("universalmind.tv")
@@ -21,6 +23,15 @@
   let dataChannel = null;
   let microphoneStream = null;
   let fullscreenResumeWaiter = null;
+  let microphoneFullscreenRecoveryArmed = false;
+  let microphonePermissionState = "unknown";
+  let entryPreflightState = "idle";
+  let waveformAudioContext = null;
+  let waveformSource = null;
+  let waveformAnalyser = null;
+  let waveformFrame = 0;
+  let waveformSamples = null;
+  let waveformLevel = 0;
   let starting = false;
   let active = false;
   let muted = false;
@@ -73,7 +84,7 @@
 
     <div class="iam-realtime-voice__panel" aria-hidden="true">
       <div class="iam-realtime-voice__identity">
-        <span class="iam-realtime-voice__signal" aria-hidden="true"><i></i><i></i><i></i></span>
+        <canvas class="iam-realtime-voice__waveform" data-voice-waveform width="64" height="64" aria-hidden="true"></canvas>
         <span>
           <strong>Universal One</strong>
           <small data-voice-status aria-live="polite">Ready when you are</small>
@@ -93,10 +104,32 @@
   `;
   room.appendChild(root);
 
+  const entryHost = document.querySelector("[data-adaptive-environment]");
+  const entryPreflight = document.createElement("section");
+  entryPreflight.className = "iam-voice-entry-preflight";
+  entryPreflight.hidden = true;
+  entryPreflight.setAttribute("role", "dialog");
+  entryPreflight.setAttribute("aria-modal", "true");
+  entryPreflight.setAttribute("aria-labelledby", "iam-voice-entry-title");
+  entryPreflight.setAttribute("aria-describedby", "iam-voice-entry-copy");
+  entryPreflight.innerHTML = `
+    <span class="iam-voice-entry-preflight__mark" aria-hidden="true"><i></i></span>
+    <strong id="iam-voice-entry-title">Voice features are available</strong>
+    <p id="iam-voice-entry-copy">Universal One and Circle audio rooms use your microphone only when you choose to speak. Allow access now for an uninterrupted full-screen experience?</p>
+    <div class="iam-voice-entry-preflight__actions">
+      <button type="button" data-voice-entry-allow>allow microphone</button>
+      <button type="button" data-voice-entry-skip>enter without voice</button>
+    </div>
+    <small>The microphone is off outside a voice conversation or audio room.</small>
+    <p class="iam-voice-entry-preflight__error" data-voice-entry-error aria-live="polite" hidden></p>
+  `;
+  entryHost?.appendChild(entryPreflight);
+
   root.style.setProperty("--iam-mini-planet-texture", `url("${textureUrl}")`);
   const summonButton = root.querySelector(".iam-realtime-voice__summon");
   const panel = root.querySelector(".iam-realtime-voice__panel");
   const status = root.querySelector("[data-voice-status]");
+  const waveformCanvas = root.querySelector("[data-voice-waveform]");
   const fullscreenResumeButton = root.querySelector("[data-voice-fullscreen-resume]");
   const transcript = root.querySelector("[data-voice-transcript]");
   const muteButton = root.querySelector("[data-voice-mute]");
@@ -104,6 +137,18 @@
   const endButton = root.querySelector("[data-voice-end]");
   const qaButton = root.querySelector("[data-voice-qa]");
   const remoteAudio = root.querySelector("[data-voice-audio]");
+  const entryTitle = entryPreflight.querySelector("#iam-voice-entry-title");
+  const entryCopy = entryPreflight.querySelector("#iam-voice-entry-copy");
+  const entryAllowButton = entryPreflight.querySelector("[data-voice-entry-allow]");
+  const entrySkipButton = entryPreflight.querySelector("[data-voice-entry-skip]");
+  const entryError = entryPreflight.querySelector("[data-voice-entry-error]");
+
+  const storedEntryPreference = readEntryPreference();
+  if (!forceEntryPreflight && (storedEntryPreference === "allowed" || storedEntryPreference === "without-voice")) {
+    entryPreflightState = storedEntryPreference;
+  }
+  queryMicrophonePermission();
+  drawWaveformIdle();
 
   function stagingQaOptions() {
     if (qaScenario === "portal") {
@@ -126,14 +171,23 @@
     startConversation(options).catch(handleStartError);
   });
 
-  [panel, fullscreenResumeButton, muteButton, captionsButton, endButton, qaButton].filter(Boolean).forEach((element) => {
+  [panel, fullscreenResumeButton, muteButton, captionsButton, endButton, qaButton, entryPreflight].filter(Boolean).forEach((element) => {
     element.addEventListener("click", (event) => event.stopPropagation());
   });
+
+  entryAllowButton.addEventListener("click", handleEntryAllow);
+  entrySkipButton.addEventListener("click", handleEntrySkip);
 
   fullscreenResumeButton.addEventListener("click", async (event) => {
     event.preventDefault();
     setState("connecting", "Returning to full screen…");
-    await requestViewerFullscreen();
+    const requested = await requestViewerFullscreen();
+    await waitForFullscreenTransition();
+    if (!requested || !isViewingFullscreen()) {
+      setState("connecting", "Tap again to return to full screen");
+      fullscreenResumeButton.hidden = false;
+      return;
+    }
     fullscreenResumeButton.hidden = true;
     const waiter = fullscreenResumeWaiter;
     fullscreenResumeWaiter = null;
@@ -161,6 +215,104 @@
   });
 
   window.addEventListener("pagehide", () => endConversation("", { quiet: true }));
+  document.addEventListener("fullscreenchange", handleVoiceFullscreenChange);
+  document.addEventListener("webkitfullscreenchange", handleVoiceFullscreenChange);
+
+  function readEntryPreference() {
+    try {
+      return window.sessionStorage.getItem(entryPreferenceKey) || "";
+    } catch {
+      return "";
+    }
+  }
+
+  function writeEntryPreference(value) {
+    if (forceEntryPreflight) return;
+    try { window.sessionStorage.setItem(entryPreferenceKey, value); } catch {}
+  }
+
+  async function queryMicrophonePermission() {
+    if (!navigator.permissions?.query) return;
+    try {
+      const permission = await navigator.permissions.query({ name: "microphone" });
+      microphonePermissionState = permission.state;
+      permission.addEventListener?.("change", () => {
+        microphonePermissionState = permission.state;
+      });
+    } catch {
+      microphonePermissionState = "unknown";
+    }
+  }
+
+  function shouldPreflightEntry() {
+    if (!entryHost || !navigator.mediaDevices?.getUserMedia) return false;
+    if (document.body.classList.contains("television-room-open") || document.body.classList.contains("television-room-opening")) return false;
+    if (forceEntryPreflight) return entryPreflightState === "idle";
+    if (microphonePermissionState === "granted") return false;
+    return entryPreflightState === "idle";
+  }
+
+  function showEntryPreflight() {
+    if (!shouldPreflightEntry()) return false;
+    entryPreflight.hidden = false;
+    entryPreflight.dataset.state = "choice";
+    document.body.classList.add("iam-voice-entry-preflight-open");
+    entryAllowButton.disabled = false;
+    entryAllowButton.textContent = "allow microphone";
+    entrySkipButton.hidden = false;
+    entryError.hidden = true;
+    entryTitle.textContent = "Voice features are available";
+    entryCopy.textContent = "Universal One and Circle audio rooms use your microphone only when you choose to speak. Allow access now for an uninterrupted full-screen experience?";
+    window.setTimeout(() => entryAllowButton.focus({ preventScroll: true }), 30);
+    return true;
+  }
+
+  function hideEntryPreflight() {
+    entryPreflight.hidden = true;
+    document.body.classList.remove("iam-voice-entry-preflight-open");
+  }
+
+  async function handleEntryAllow(event) {
+    event.preventDefault();
+    if (entryPreflight.dataset.state === "ready") {
+      entryPreflightState = "allowed";
+      hideEntryPreflight();
+      window.IAMTelevisionRoom?.enterFromVoicePreflight?.();
+      return;
+    }
+
+    entryAllowButton.disabled = true;
+    entryAllowButton.textContent = "requesting…";
+    entryError.hidden = true;
+    try {
+      const permissionStream = await navigator.mediaDevices.getUserMedia(microphoneConstraints());
+      permissionStream.getTracks().forEach((track) => track.stop());
+      microphonePermissionState = "granted";
+      entryPreflightState = "ready";
+      writeEntryPreference("allowed");
+      entryPreflight.dataset.state = "ready";
+      entryTitle.textContent = "Microphone ready";
+      entryCopy.textContent = "Universal One and Circle are ready whenever you choose to speak.";
+      entryAllowButton.disabled = false;
+      entryAllowButton.textContent = "enter the room";
+      entrySkipButton.hidden = true;
+      entryAllowButton.focus({ preventScroll: true });
+    } catch (error) {
+      microphonePermissionState = error?.name === "NotAllowedError" ? "denied" : microphonePermissionState;
+      entryAllowButton.disabled = false;
+      entryAllowButton.textContent = "try again";
+      entryError.textContent = "Microphone access was not granted. You can enter without voice, or enable it in Safari’s website settings.";
+      entryError.hidden = false;
+    }
+  }
+
+  function handleEntrySkip(event) {
+    event.preventDefault();
+    entryPreflightState = "without-voice";
+    writeEntryPreference("without-voice");
+    hideEntryPreflight();
+    window.IAMTelevisionRoom?.enterFromVoicePreflight?.();
+  }
 
   async function startConversation(options = {}) {
     if (starting || active) return;
@@ -179,25 +331,22 @@
     try {
       if (options.microphone !== false) {
         if (!navigator.mediaDevices?.getUserMedia) throw new Error("This browser cannot open a microphone.");
-        const beganInFullscreen = isViewingFullscreen();
-        microphoneStream = await navigator.mediaDevices.getUserMedia({
-          audio: {
-            echoCancellation: true,
-            noiseSuppression: true,
-            autoGainControl: true,
-            channelCount: 1,
-          },
-        });
+        const beganInFullscreen = isImmersiveViewing();
+        microphoneFullscreenRecoveryArmed = beganInFullscreen;
+        microphoneStream = await navigator.mediaDevices.getUserMedia(microphoneConstraints());
         startupInputGate = true;
         microphoneStream.getAudioTracks().forEach((track) => {
           try { track.contentHint = "speech"; } catch {}
         });
         syncMicrophoneTrackState();
+        startMicrophoneWaveform(microphoneStream);
 
+        if (beganInFullscreen) await waitForFullscreenTransition();
         if (beganInFullscreen && !isViewingFullscreen()) {
           const shouldContinue = await waitForFullscreenReturn();
           if (!shouldContinue || !starting) return;
         }
+        microphoneFullscreenRecoveryArmed = false;
       }
 
       const audioContext = window.IAMTelevisionAudio?.getState?.() || {};
@@ -437,6 +586,128 @@
     if (label) status.textContent = label;
   }
 
+  function microphoneConstraints() {
+    return {
+      audio: {
+        echoCancellation: true,
+        noiseSuppression: true,
+        autoGainControl: true,
+        channelCount: 1,
+      },
+    };
+  }
+
+  function startMicrophoneWaveform(stream) {
+    stopMicrophoneWaveform();
+    const AudioContextClass = window.AudioContext || window.webkitAudioContext;
+    if (!AudioContextClass || !waveformCanvas) return;
+    try {
+      waveformAudioContext = new AudioContextClass();
+      waveformSource = waveformAudioContext.createMediaStreamSource(stream);
+      waveformAnalyser = waveformAudioContext.createAnalyser();
+      waveformAnalyser.fftSize = 256;
+      waveformAnalyser.smoothingTimeConstant = 0.72;
+      waveformSamples = new Uint8Array(waveformAnalyser.fftSize);
+      waveformSource.connect(waveformAnalyser);
+      waveformAudioContext.resume?.().catch(() => {});
+      waveformFrame = window.requestAnimationFrame(drawWaveformFrame);
+    } catch {
+      stopMicrophoneWaveform();
+    }
+  }
+
+  function stopMicrophoneWaveform() {
+    if (waveformFrame) window.cancelAnimationFrame(waveformFrame);
+    waveformFrame = 0;
+    try { waveformSource?.disconnect(); } catch {}
+    waveformSource = null;
+    waveformAnalyser = null;
+    waveformSamples = null;
+    waveformLevel = 0;
+    root.dataset.inputActive = "false";
+    const context = waveformAudioContext;
+    waveformAudioContext = null;
+    context?.close?.().catch(() => {});
+    drawWaveformIdle();
+  }
+
+  function drawWaveformIdle() {
+    drawWaveformLine({ state: root.dataset.state || "idle", level: 0, samples: null, time: 0 });
+  }
+
+  function drawWaveformFrame(time) {
+    const state = root.dataset.state || "idle";
+    const receivesInput = state === "listening" && active && !muted && !startupInputGate;
+    let samples = null;
+    let level = 0;
+
+    if (receivesInput && waveformAnalyser && waveformSamples) {
+      waveformAnalyser.getByteTimeDomainData(waveformSamples);
+      let energy = 0;
+      for (let index = 0; index < waveformSamples.length; index += 1) {
+        const sample = (waveformSamples[index] - 128) / 128;
+        energy += sample * sample;
+      }
+      level = Math.sqrt(energy / waveformSamples.length);
+      waveformLevel = waveformLevel * 0.68 + level * 0.32;
+      samples = waveformSamples;
+    } else {
+      waveformLevel *= 0.72;
+    }
+
+    root.dataset.inputActive = String(receivesInput && waveformLevel > 0.018);
+    drawWaveformLine({ state, level: waveformLevel, samples, time });
+    waveformFrame = window.requestAnimationFrame(drawWaveformFrame);
+  }
+
+  function drawWaveformLine({ state, level, samples, time }) {
+    const context = waveformCanvas?.getContext("2d");
+    if (!context) return;
+    const width = waveformCanvas.width;
+    const height = waveformCanvas.height;
+    const centre = height / 2;
+    const reducedMotion = window.matchMedia?.("(prefers-reduced-motion: reduce)")?.matches;
+    context.clearRect(0, 0, width, height);
+    context.lineCap = "round";
+    context.lineJoin = "round";
+    context.lineWidth = 3;
+    context.strokeStyle = state === "speaking"
+      ? "rgba(228, 190, 123, .96)"
+      : (state === "muted" ? "rgba(210, 220, 219, .52)" : "rgba(117, 223, 213, .96)");
+    context.beginPath();
+
+    const startX = 10;
+    const endX = width - 10;
+    const span = endX - startX;
+    const hasLiveInput = samples && !reducedMotion;
+    for (let point = 0; point <= 28; point += 1) {
+      const ratio = point / 28;
+      const x = startX + ratio * span;
+      let y = centre;
+      if (hasLiveInput) {
+        const sampleIndex = Math.min(samples.length - 1, Math.floor(ratio * samples.length));
+        const sample = (samples[sampleIndex] - 128) / 128;
+        const boost = Math.min(4.8, 1.45 + level * 22);
+        y += sample * height * 0.29 * boost;
+      } else if (state === "speaking" && !reducedMotion) {
+        y += Math.sin(ratio * Math.PI * 4 + time / 330) * 3.2;
+      } else if (state !== "muted") {
+        y += Math.sin(ratio * Math.PI * 4) * 1.15;
+      }
+      if (point === 0) context.moveTo(x, y);
+      else context.lineTo(x, y);
+    }
+    context.stroke();
+
+    if (state === "muted") {
+      context.lineWidth = 2;
+      context.beginPath();
+      context.moveTo(21, 43);
+      context.lineTo(43, 21);
+      context.stroke();
+    }
+  }
+
   function selectPoseFromWords(words) {
     const value = String(words).toLowerCase();
     if (/rave|party|dance|hands in the air/.test(value)) root.dataset.pose = "rave";
@@ -459,6 +730,28 @@
     return Boolean(document.fullscreenElement || document.webkitFullscreenElement);
   }
 
+  function isImmersiveViewing() {
+    return isViewingFullscreen() || document.body.classList.contains("television-is-fullscreen");
+  }
+
+  function waitForFullscreenTransition() {
+    return new Promise((resolve) => window.setTimeout(resolve, 220));
+  }
+
+  function handleVoiceFullscreenChange() {
+    if (isViewingFullscreen()) {
+      if (!fullscreenResumeWaiter) return;
+      fullscreenResumeButton.hidden = true;
+      const waiter = fullscreenResumeWaiter;
+      fullscreenResumeWaiter = null;
+      waiter.resolve(true);
+      return;
+    }
+    if (microphoneFullscreenRecoveryArmed && (starting || active)) {
+      waitForFullscreenReturn();
+    }
+  }
+
   function requestViewerFullscreen() {
     const fullscreenTarget = room.closest(".site-shell") || document.querySelector(".site-shell") || document.documentElement;
     try {
@@ -476,9 +769,11 @@
   function waitForFullscreenReturn() {
     setState("connecting", "Microphone ready");
     fullscreenResumeButton.hidden = false;
-    return new Promise((resolve) => {
-      fullscreenResumeWaiter = { resolve };
-    });
+    if (fullscreenResumeWaiter?.promise) return fullscreenResumeWaiter.promise;
+    let resolveWaiter;
+    const promise = new Promise((resolve) => { resolveWaiter = resolve; });
+    fullscreenResumeWaiter = { promise, resolve: resolveWaiter };
+    return promise;
   }
 
   function syncMicrophoneTrackState() {
@@ -527,6 +822,7 @@
     window.clearTimeout(disconnectTimer);
     window.clearTimeout(startupInputTimer);
     startupInputGate = false;
+    microphoneFullscreenRecoveryArmed = false;
     fullscreenResumeButton.hidden = true;
     const waiter = fullscreenResumeWaiter;
     fullscreenResumeWaiter = null;
@@ -535,6 +831,7 @@
     dataChannel = null;
     try { peerConnection?.close(); } catch {}
     peerConnection = null;
+    stopMicrophoneWaveform();
     microphoneStream?.getTracks().forEach((track) => track.stop());
     microphoneStream = null;
     remoteAudio.pause();
@@ -587,8 +884,10 @@
   }
 
   window.IAMRealtimeVoiceAssistant = {
-    version: "universal_one_realtime_v2",
+    version: "universal_one_realtime_v3",
     end: endConversation,
+    shouldPreflightEntry,
+    showEntryPreflight,
     getState() {
       return {
         active,
@@ -596,6 +895,10 @@
         muted,
         captionsVisible,
         startupInputGate,
+        microphonePermissionState,
+        entryPreflightState,
+        waveformActive: Boolean(waveformAnalyser && waveformFrame),
+        waveformLevel: Number(waveformLevel.toFixed(4)),
         awaitingFullscreenReturn: !fullscreenResumeButton.hidden,
         state: root.dataset.state,
         pose: root.dataset.pose,

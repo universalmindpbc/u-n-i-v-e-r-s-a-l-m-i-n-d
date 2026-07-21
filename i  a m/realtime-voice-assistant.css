@@ -43,6 +43,145 @@ body.homepage-radar-open .iam-realtime-voice {
   visibility: hidden;
 }
 
+.iam-voice-entry-preflight {
+  position: absolute;
+  left: 50%;
+  bottom: max(4.2vh, 24px);
+  z-index: 9;
+  display: grid;
+  grid-template-columns: 34px 1fr;
+  gap: 7px 12px;
+  width: min(450px, calc(100vw - 38px));
+  border: 1px solid rgba(228, 190, 123, .48);
+  border-radius: 16px 16px 5px 16px;
+  background: rgba(4, 18, 36, .94);
+  color: rgba(247, 251, 249, .9);
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  padding: 15px 17px 14px;
+  text-align: left;
+  transform: translateX(-50%);
+}
+
+.iam-voice-entry-preflight[hidden] { display: none; }
+
+.iam-voice-entry-preflight__mark {
+  position: relative;
+  grid-row: 1 / span 2;
+  display: grid;
+  place-items: center;
+  width: 30px;
+  height: 30px;
+  border: 1px solid rgba(117, 223, 213, .68);
+  border-radius: 50%;
+  background: rgba(13, 99, 128, .18);
+  color: rgba(139, 235, 224, .92);
+}
+
+.iam-voice-entry-preflight__mark i {
+  position: relative;
+  display: block;
+  width: 7px;
+  height: 11px;
+  border: 1px solid currentColor;
+  border-radius: 5px;
+}
+
+.iam-voice-entry-preflight__mark i::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: -5px;
+  width: 12px;
+  height: 7px;
+  border: 1px solid currentColor;
+  border-top: 0;
+  border-radius: 0 0 7px 7px;
+  transform: translateX(-50%);
+}
+
+.iam-voice-entry-preflight > strong {
+  align-self: end;
+  color: #fff;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 16px;
+  font-weight: 400;
+  letter-spacing: .01em;
+}
+
+.iam-voice-entry-preflight > p {
+  grid-column: 2;
+  margin: 0;
+  color: rgba(221, 234, 230, .78);
+  font-size: 10px;
+  font-weight: 300;
+  line-height: 1.45;
+}
+
+.iam-voice-entry-preflight__actions {
+  grid-column: 2;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  margin-top: 4px;
+}
+
+.iam-voice-entry-preflight__actions button {
+  min-height: 30px;
+  border: 1px solid rgba(255, 255, 255, .2);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, .04);
+  color: rgba(248, 251, 250, .88);
+  cursor: pointer;
+  font: 400 9px/1.2 "Helvetica Neue", Helvetica, Arial, sans-serif;
+  letter-spacing: .035em;
+  padding: 7px 10px;
+}
+
+.iam-voice-entry-preflight__actions button:first-child {
+  border-color: rgba(117, 223, 213, .58);
+  background: rgba(13, 99, 128, .2);
+}
+
+.iam-voice-entry-preflight__actions button:hover,
+.iam-voice-entry-preflight__actions button:focus-visible {
+  border-color: rgba(228, 190, 123, .82);
+  color: #fff;
+  outline: 0;
+}
+
+.iam-voice-entry-preflight__actions button:disabled {
+  cursor: wait;
+  opacity: .62;
+}
+
+.iam-voice-entry-preflight > small {
+  grid-column: 2;
+  color: rgba(207, 222, 218, .5);
+  font-size: 8px;
+  font-weight: 300;
+  line-height: 1.35;
+}
+
+.iam-voice-entry-preflight .iam-voice-entry-preflight__error {
+  grid-column: 2;
+  color: rgba(228, 190, 123, .88);
+  font-size: 8px;
+}
+
+.iam-voice-entry-preflight[data-state="ready"] {
+  border-color: rgba(117, 223, 213, .58);
+}
+
+body.iam-voice-entry-preflight-open .adaptive-environment__play {
+  opacity: .16;
+  pointer-events: none;
+}
+
+body.iam-voice-entry-preflight-open .adaptive-television-cta {
+  opacity: 0;
+  transform: translateY(8px);
+}
+
 .iam-realtime-voice.is-active {
   width: min(430px, calc(100vw - 40px));
   height: 274px;
@@ -571,27 +710,31 @@ body.homepage-radar-open .iam-realtime-voice {
   letter-spacing: .05em;
 }
 
-.iam-realtime-voice__signal {
-  display: flex;
-  align-items: center;
-  gap: 2px;
-  width: 19px;
-  height: 18px;
+.iam-realtime-voice__waveform {
+  display: block;
+  flex: 0 0 auto;
+  width: 32px;
+  height: 32px;
+  border: 1px solid rgba(117, 223, 213, .48);
+  border-radius: 50%;
+  background: rgba(7, 38, 67, .72);
+  transition: border-color 160ms ease, background 160ms ease;
 }
 
-.iam-realtime-voice__signal i {
-  display: block;
-  width: 3px;
-  height: 5px;
-  border-radius: 3px;
-  background: var(--iam-voice-lime);
-  transition: height 220ms ease;
+.iam-realtime-voice[data-input-active="true"] .iam-realtime-voice__waveform {
+  border-color: rgba(117, 223, 213, .96);
+  background: rgba(13, 99, 128, .28);
 }
-.iam-realtime-voice__signal i:nth-child(2) { height: 10px; }
-.iam-realtime-voice[data-state="speaking"] .iam-realtime-voice__signal i { animation: iam-signal .72s ease-in-out infinite alternate; }
-.iam-realtime-voice[data-state="speaking"] .iam-realtime-voice__signal i:nth-child(2) { animation-delay: .18s; }
-.iam-realtime-voice[data-state="speaking"] .iam-realtime-voice__signal i:nth-child(3) { animation-delay: .36s; }
-.iam-realtime-voice[data-state="error"] .iam-realtime-voice__signal i { background: #e4be7b; }
+
+.iam-realtime-voice[data-state="speaking"] .iam-realtime-voice__waveform {
+  border-color: rgba(228, 190, 123, .8);
+  background: rgba(228, 190, 123, .08);
+}
+
+.iam-realtime-voice[data-state="muted"] .iam-realtime-voice__waveform,
+.iam-realtime-voice[data-state="error"] .iam-realtime-voice__waveform {
+  border-color: rgba(228, 190, 123, .52);
+}
 
 .iam-realtime-voice__fullscreen-resume {
   width: 190px;
@@ -748,7 +891,6 @@ body.homepage-radar-open .iam-realtime-voice {
 }
 @keyframes iam-planet-turn { to { background-position: -200% 50%; } }
 @keyframes iam-eye-speak { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-2px); } }
-@keyframes iam-signal { from { height: 4px; } to { height: 15px; } }
 @keyframes iam-tea-steam { 0% { opacity: 0; transform: translateY(4px) scaleY(.6); } 45% { opacity: .8; } 100% { opacity: 0; transform: translateY(-9px) translateX(3px); } }
 @keyframes iam-head-bop { 0%, 100% { transform: rotate(-2deg) translateY(0); } 50% { transform: rotate(2deg) translateY(2px); } }
 @keyframes iam-friendly-wave { 0%, 100% { transform: rotate(-148deg) translate(4px, 1px); } 50% { transform: rotate(-164deg) translate(1px, 2px); } }
@@ -756,6 +898,12 @@ body.homepage-radar-open .iam-realtime-voice {
 @keyframes iam-rave-right { 0%, 100% { transform: rotate(-158deg) translate(2px, 3px); } 50% { transform: rotate(-174deg) translate(5px, 1px); } }
 
 @media (max-width: 620px) {
+  .iam-voice-entry-preflight {
+    bottom: max(3.4vh, 18px);
+    grid-template-columns: 30px 1fr;
+    padding: 13px 14px 12px;
+  }
+
   .iam-realtime-voice {
     right: max(15px, env(safe-area-inset-right));
     bottom: max(18px, env(safe-area-inset-bottom));
