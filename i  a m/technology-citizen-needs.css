@@ -241,16 +241,21 @@ body.tensor-kernel-open .kernel-video-backdrop {
 }
 
 .global-nav-menu {
-  --global-nav-row-gap: clamp(26px, 3.05vh, 42px);
-  --global-nav-sub-gap: clamp(22px, 2.2vh, 32px);
+  --global-nav-row-gap: clamp(18px, 2.25vh, 30px);
+  --global-nav-sub-gap: clamp(14px, 1.5vh, 22px);
   position: absolute;
   left: clamp(92px, 6.95vw, 142px);
-  top: clamp(118px, 15.45vh, 178px);
+  top: clamp(112px, 13.2vh, 152px);
+  max-height: calc(100vh - 190px);
+  max-height: calc(100dvh - 190px);
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   gap: var(--global-nav-row-gap);
+  overflow-y: auto;
+  padding-right: 34px;
   pointer-events: auto;
+  scrollbar-width: thin;
 }
 
 .global-nav-item,
@@ -270,7 +275,7 @@ body.tensor-kernel-open .kernel-video-backdrop {
 }
 
 .global-nav-item {
-  font-size: clamp(34px, 2.55vw, 52px);
+  font-size: clamp(28px, 2.25vw, 46px);
   font-weight: 700;
   letter-spacing: 0.46em;
 }
@@ -312,7 +317,7 @@ body.tensor-kernel-open .kernel-video-backdrop {
 }
 
 .global-nav-submenu a {
-  font-size: clamp(18px, 1.35vw, 28px);
+  font-size: clamp(15px, 1.12vw, 22px);
   font-weight: 700;
   letter-spacing: 0.38em;
 }
