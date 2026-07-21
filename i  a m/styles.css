@@ -1458,21 +1458,21 @@ body.iam-page-transitioning .site-shell {
 .global-nav-item:focus-visible,
 .global-nav-submenu a:focus-visible,
 .global-nav-submenu button:focus-visible {
-  color: var(--keynote-yellow);
+  color: #d8ff42;
   outline: 0;
 }
 
 .global-nav-item.is-active,
 .global-nav-submenu a.is-active,
 .global-nav-submenu button.is-active {
-  color: var(--keynote-yellow);
+  color: #d8ff42;
 }
 
 @media (hover: hover) and (pointer: fine) {
   .global-nav-item:hover,
   .global-nav-submenu a:hover,
   .global-nav-submenu button:hover {
-    color: var(--keynote-yellow);
+    color: #d8ff42;
   }
 }
 
@@ -1480,7 +1480,7 @@ body.iam-page-transitioning .site-shell {
   .global-nav-item:active,
   .global-nav-submenu a:active,
   .global-nav-submenu button:active {
-    color: var(--keynote-yellow);
+    color: #d8ff42;
   }
 }
 

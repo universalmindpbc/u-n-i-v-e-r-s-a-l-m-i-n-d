@@ -284,14 +284,14 @@ body.tensor-kernel-open .kernel-video-backdrop {
 .global-nav-submenu a:focus-visible,
 .global-nav-item.is-active,
 .global-nav-submenu a.is-active {
-  color: var(--gold);
+  color: #d8ff42;
   outline: 0;
 }
 
 @media (hover: hover) and (pointer: fine) {
   .global-nav-item:hover,
   .global-nav-submenu a:hover {
-    color: var(--gold);
+    color: #d8ff42;
   }
 }
 
