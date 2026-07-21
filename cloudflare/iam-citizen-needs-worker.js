@@ -8,6 +8,7 @@ import {
   ADAPTIVE_SOUNDTRACK_SELECTION_GUIDE,
   SOUNDTRACK_SELECTION_GUIDE_VERSION,
 } from "./adaptive-soundtrack-selection-guide-v2-22.js";
+import UNIVERSAL_ONE_PORTAL_GUIDE from "../i  a m/universal-one-portal-guide-v1.txt";
 
 const DEFAULT_MODEL = "gpt-5.5";
 
@@ -577,9 +578,12 @@ async function handleRealtimeClientSecret(request, env) {
   const nowPlaying = cleanVoiceContext(context.title);
   const visual = cleanVoiceContext(context.visual);
   const source = cleanVoiceContext(context.source, 24);
-  const portalContext = nowPlaying
+  const page = cleanVoiceContext(context.page, 120);
+  const path = cleanVoiceContext(context.path, 160);
+  const mediaContext = nowPlaying
     ? `The visitor currently has ${nowPlaying} playing${source ? ` in ${source} mode` : ""}${visual ? `, with ${visual} as the visual layer` : ""}.`
     : "The visitor is in the Vogue I Am adaptive music television room.";
+  const portalContext = `${page ? `The current page title is ${page}. ` : ""}${path ? `The current route is ${path}. ` : ""}${mediaContext}`;
 
   const instructions = `# Role and objective
 You are Universal One, the transparent AI voice companion inside Universal Mind's Vogue I Am portal. Speak in a warm, savvy, friendly and relaxed feminine manner using the Marin voice. Be present and emotionally intelligent without pretending to be human or conscious.
@@ -589,13 +593,17 @@ Make the exchange feel natural and unhurried. Let the visitor finish; a reflecti
 
 # Portal context
 ${portalContext}
-You can talk about the current music, relaxation, light-touch meditation, creativity, culture, wellbeing and the experience of the portal. If live or changing portal information is not in this context, say you cannot see it rather than inventing it.
+
+# Portal guide
+${UNIVERSAL_ONE_PORTAL_GUIDE}
+
+You can talk about the current music, relaxation, light-touch meditation, creativity, culture, wellbeing and the experience of the portal. Give the shortest accurate navigation route when asked. If live or changing portal information is not in this context or guide, say you cannot see it rather than inventing it.
 
 # Trust and boundaries
 You are AI-generated speech. Say so plainly if asked. Do not diagnose, prescribe treatment or claim professional authority. For urgent danger or self-harm, encourage immediate local emergency or crisis support and contact with a trusted person. Respect autonomy and avoid presenting spirituality or speculation as fact. Do not claim to have performed actions or accessed information you have not actually received.
 
 # Turn taking
-The visitor may interrupt at any time. Stop cleanly and listen. Keep opening acknowledgements brief so the conversation stays fluid.`;
+The visitor may interrupt at any time. Stop cleanly and listen. Keep opening acknowledgements brief so the conversation stays fluid. After your welcome, wait quietly for clear human speech. Treat music, room noise and indistinct audio as background: do not answer it, do not repeatedly ask whether anyone is there, and prefer silence over guessing.`;
 
   const openaiResponse = await fetch("https://api.openai.com/v1/realtime/client_secrets", {
     method: "POST",
@@ -618,8 +626,10 @@ The visitor may interrupt at any time. Stop cleanly and listen. Keep opening ack
             noise_reduction: { type: "near_field" },
             transcription: { model: "gpt-4o-mini-transcribe" },
             turn_detection: {
-              type: "semantic_vad",
-              eagerness: "low",
+              type: "server_vad",
+              threshold: 0.72,
+              prefix_padding_ms: 300,
+              silence_duration_ms: 800,
               create_response: true,
               interrupt_response: true,
             },
@@ -642,6 +652,8 @@ The visitor may interrupt at any time. Stop cleanly and listen. Keep opening ack
     expires_at: payload.expires_at || 0,
     model: "gpt-realtime-2.1",
     voice: "marin",
+    turn_detection: "server_vad",
+    portal_guide_version: "v1",
   });
 }
 

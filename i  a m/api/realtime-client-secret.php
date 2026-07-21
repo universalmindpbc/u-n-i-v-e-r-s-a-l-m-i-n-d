@@ -98,9 +98,20 @@ $context = is_array($request['context'] ?? null) ? $request['context'] : [];
 $nowPlaying = $cleanContextValue($context['title'] ?? '');
 $visual = $cleanContextValue($context['visual'] ?? '');
 $source = $cleanContextValue($context['source'] ?? '', 24);
-$portalContext = $nowPlaying !== ''
+$page = $cleanContextValue($context['page'] ?? '', 120);
+$path = $cleanContextValue($context['path'] ?? '', 160);
+$mediaContext = $nowPlaying !== ''
     ? "The visitor currently has {$nowPlaying} playing" . ($source !== '' ? " in {$source} mode" : '') . ($visual !== '' ? ", with {$visual} as the visual layer" : '') . "."
     : 'The visitor is in the Vogue I Am adaptive music television room.';
+$portalContext = ($page !== '' ? "The current page title is {$page}. " : '')
+    . ($path !== '' ? "The current route is {$path}. " : '')
+    . $mediaContext;
+
+$portalGuidePath = dirname(__DIR__) . DIRECTORY_SEPARATOR . 'universal-one-portal-guide-v1.txt';
+$portalGuide = is_readable($portalGuidePath) ? trim((string) file_get_contents($portalGuidePath)) : '';
+if ($portalGuide === '') {
+    $portalGuide = 'Explain only portal features supplied in the current context. Distinguish live controls from proposals and do not invent navigation.';
+}
 
 $instructions = <<<PROMPT
 # Role and objective
@@ -111,13 +122,17 @@ Make the exchange feel natural and unhurried. Let the visitor finish; a reflecti
 
 # Portal context
 {$portalContext}
-You can talk about the current music, relaxation, light-touch meditation, creativity, culture, wellbeing and the experience of the portal. If live or changing portal information is not in this context, say you cannot see it rather than inventing it.
+
+# Portal guide
+{$portalGuide}
+
+You can talk about the current music, relaxation, light-touch meditation, creativity, culture, wellbeing and the experience of the portal. Give the shortest accurate navigation route when asked. If live or changing portal information is not in this context or guide, say you cannot see it rather than inventing it.
 
 # Trust and boundaries
 You are AI-generated speech. Say so plainly if asked. Do not diagnose, prescribe treatment or claim professional authority. For urgent danger or self-harm, encourage immediate local emergency or crisis support and contact with a trusted person. Respect autonomy and avoid presenting spirituality or speculation as fact. Do not claim to have performed actions or accessed information you have not actually received.
 
 # Turn taking
-The visitor may interrupt at any time. Stop cleanly and listen. Keep opening acknowledgements brief so the conversation stays fluid.
+The visitor may interrupt at any time. Stop cleanly and listen. Keep opening acknowledgements brief so the conversation stays fluid. After your welcome, wait quietly for clear human speech. Treat music, room noise and indistinct audio as background: do not answer it, do not repeatedly ask whether anyone is there, and prefer silence over guessing.
 PROMPT;
 
 $session = [
@@ -132,8 +147,10 @@ $session = [
             'noise_reduction' => ['type' => 'near_field'],
             'transcription' => ['model' => 'gpt-4o-mini-transcribe'],
             'turn_detection' => [
-                'type' => 'semantic_vad',
-                'eagerness' => 'low',
+                'type' => 'server_vad',
+                'threshold' => 0.72,
+                'prefix_padding_ms' => 300,
+                'silence_duration_ms' => 800,
                 'create_response' => true,
                 'interrupt_response' => true,
             ],
@@ -191,4 +208,6 @@ respond(200, [
     'expires_at' => (int) ($upstream['expires_at'] ?? 0),
     'model' => 'gpt-realtime-2.1',
     'voice' => 'marin',
+    'turn_detection' => 'server_vad',
+    'portal_guide_version' => 'v1',
 ]);

@@ -4,6 +4,7 @@
 
   const params = new URLSearchParams(window.location.search);
   const qaMode = window.location.hostname === "staging.universalmind.tv" && params.get("qa") === "realtime-voice";
+  const qaScenario = qaMode ? params.get("voice_test") : "";
   const endpoint = window.location.hostname === "staging.universalmind.tv"
     ? "https://realtime-staging-iam-citizen-needs-inference.universalmind.workers.dev/realtime-client-secret"
     : (window.location.hostname.endsWith("universalmind.tv")
@@ -15,12 +16,15 @@
   let poseTimer = 0;
   let sessionTimer = 0;
   let disconnectTimer = 0;
+  let startupInputTimer = 0;
   let peerConnection = null;
   let dataChannel = null;
   let microphoneStream = null;
+  let fullscreenResumeWaiter = null;
   let starting = false;
   let active = false;
   let muted = false;
+  let startupInputGate = false;
   let captionsVisible = false;
   let lastAssistantTranscript = "";
   const transcriptLines = new Map();
@@ -75,6 +79,7 @@
           <small data-voice-status aria-live="polite">Ready when you are</small>
         </span>
       </div>
+      <button class="iam-realtime-voice__fullscreen-resume" type="button" data-voice-fullscreen-resume hidden>return to full screen &amp; begin</button>
       <div class="iam-realtime-voice__transcript" data-voice-transcript aria-live="polite" aria-label="Voice conversation captions"></div>
       <div class="iam-realtime-voice__controls" aria-label="Voice conversation controls">
         <button type="button" data-voice-mute aria-pressed="false"><i aria-hidden="true"></i><span>mute</span></button>
@@ -92,6 +97,7 @@
   const summonButton = root.querySelector(".iam-realtime-voice__summon");
   const panel = root.querySelector(".iam-realtime-voice__panel");
   const status = root.querySelector("[data-voice-status]");
+  const fullscreenResumeButton = root.querySelector("[data-voice-fullscreen-resume]");
   const transcript = root.querySelector("[data-voice-transcript]");
   const muteButton = root.querySelector("[data-voice-mute]");
   const captionsButton = root.querySelector("[data-voice-captions]");
@@ -99,26 +105,45 @@
   const qaButton = root.querySelector("[data-voice-qa]");
   const remoteAudio = root.querySelector("[data-voice-audio]");
 
+  function stagingQaOptions() {
+    if (qaScenario === "portal") {
+      return {
+        microphone: false,
+        qaPrompt: "In two short sentences, tell me exactly how to find Radio in the Vogue I Am television room.",
+      };
+    }
+    if (qaScenario === "quiet") return { microphone: false };
+    return {
+      microphone: false,
+      qaPrompt: "This is a staging voice check. Say exactly: Namaste. Universal One is here and ready to chat.",
+    };
+  }
+
   summonButton.addEventListener("click", (event) => {
     event.preventDefault();
     event.stopPropagation();
-    const options = qaMode
-      ? {
-          microphone: false,
-          qaPrompt: "This is a staging voice check. Say exactly: Namaste. Universal One is here and ready to chat.",
-        }
-      : { microphone: true };
+    const options = qaMode ? stagingQaOptions() : { microphone: true };
     startConversation(options).catch(handleStartError);
   });
 
-  [panel, muteButton, captionsButton, endButton, qaButton].filter(Boolean).forEach((element) => {
+  [panel, fullscreenResumeButton, muteButton, captionsButton, endButton, qaButton].filter(Boolean).forEach((element) => {
     element.addEventListener("click", (event) => event.stopPropagation());
+  });
+
+  fullscreenResumeButton.addEventListener("click", async (event) => {
+    event.preventDefault();
+    setState("connecting", "Returning to full screen…");
+    await requestViewerFullscreen();
+    fullscreenResumeButton.hidden = true;
+    const waiter = fullscreenResumeWaiter;
+    fullscreenResumeWaiter = null;
+    waiter?.resolve(true);
   });
 
   muteButton.addEventListener("click", () => {
     if (!active || !microphoneStream) return;
     muted = !muted;
-    microphoneStream.getAudioTracks().forEach((track) => { track.enabled = !muted; });
+    syncMicrophoneTrackState();
     muteButton.setAttribute("aria-pressed", String(muted));
     muteButton.querySelector("span").textContent = muted ? "unmute" : "mute";
     setState(muted ? "muted" : "listening", muted ? "Mic muted" : "I'm listening");
@@ -132,10 +157,7 @@
 
   endButton.addEventListener("click", () => endConversation("Conversation ended"));
   qaButton?.addEventListener("click", () => {
-    startConversation({
-      microphone: false,
-      qaPrompt: "This is a staging voice check. Say exactly: Namaste. Universal One is here and ready to chat.",
-    }).catch(handleStartError);
+    startConversation(stagingQaOptions()).catch(handleStartError);
   });
 
   window.addEventListener("pagehide", () => endConversation("", { quiet: true }));
@@ -152,10 +174,12 @@
     root.classList.add("is-active");
     summonButton.setAttribute("aria-expanded", "true");
     panel.setAttribute("aria-hidden", "false");
+    window.IAMTelevisionAudio?.setVoiceConversationActive?.(true);
 
     try {
       if (options.microphone !== false) {
         if (!navigator.mediaDevices?.getUserMedia) throw new Error("This browser cannot open a microphone.");
+        const beganInFullscreen = isViewingFullscreen();
         microphoneStream = await navigator.mediaDevices.getUserMedia({
           audio: {
             echoCancellation: true,
@@ -164,6 +188,16 @@
             channelCount: 1,
           },
         });
+        startupInputGate = true;
+        microphoneStream.getAudioTracks().forEach((track) => {
+          try { track.contentHint = "speech"; } catch {}
+        });
+        syncMicrophoneTrackState();
+
+        if (beganInFullscreen && !isViewingFullscreen()) {
+          const shouldContinue = await waitForFullscreenReturn();
+          if (!shouldContinue || !starting) return;
+        }
       }
 
       const audioContext = window.IAMTelevisionAudio?.getState?.() || {};
@@ -177,6 +211,8 @@
             source: audioContext.source || "video",
             title: audioContext.title || "",
             visual: audioContext.visual || "",
+            page: document.title || "Vogue I Am",
+            path: window.location.pathname,
           },
         }),
       });
@@ -230,9 +266,8 @@
 
       active = true;
       starting = false;
-      window.IAMTelevisionAudio?.setVoiceConversationActive?.(true);
       root.dataset.pose = options.microphone === false ? "wave" : "tea-tablet";
-      setState(options.microphone === false ? "thinking" : "listening", options.microphone === false ? "Running staging check…" : "I'm listening");
+      setState(options.microphone === false ? "thinking" : "connecting", options.microphone === false ? "Running staging check…" : "Joining you…");
       scheduleLifestylePose();
       window.clearTimeout(sessionTimer);
       sessionTimer = window.setTimeout(() => endConversation("Let's pause here for now"), sessionLimitMs);
@@ -293,7 +328,7 @@
     switch (event.type) {
       case "session.created":
       case "session.updated":
-        if (active && !muted) setState("listening", "I'm listening");
+        if (active && !muted && !startupInputGate) setState("listening", "I'm listening");
         break;
       case "input_audio_buffer.speech_started":
         root.dataset.pose = "listen";
@@ -347,8 +382,13 @@
           }
         }
         lastAssistantTranscript = "";
-        if (!muted) setState("listening", microphoneStream ? "I'm listening" : "Staging voice check complete");
-        scheduleLifestylePose();
+        if (startupInputGate && microphoneStream) {
+          setState("connecting", "Opening the microphone…");
+          releaseStartupInputAfterGreeting();
+        } else {
+          if (!muted) setState("listening", microphoneStream ? "I'm listening" : "Staging voice check complete");
+          scheduleLifestylePose();
+        }
         break;
       case "error":
         setState("error", event.error?.message || "Voice connection error");
@@ -415,6 +455,48 @@
     }, 14000);
   }
 
+  function isViewingFullscreen() {
+    return Boolean(document.fullscreenElement || document.webkitFullscreenElement);
+  }
+
+  function requestViewerFullscreen() {
+    const fullscreenTarget = room.closest(".site-shell") || document.querySelector(".site-shell") || document.documentElement;
+    try {
+      if (fullscreenTarget.requestFullscreen) {
+        return fullscreenTarget.requestFullscreen({ navigationUI: "hide" }).then(() => true).catch(() => false);
+      }
+      if (fullscreenTarget.webkitRequestFullscreen) {
+        fullscreenTarget.webkitRequestFullscreen();
+        return Promise.resolve(true);
+      }
+    } catch {}
+    return Promise.resolve(false);
+  }
+
+  function waitForFullscreenReturn() {
+    setState("connecting", "Microphone ready");
+    fullscreenResumeButton.hidden = false;
+    return new Promise((resolve) => {
+      fullscreenResumeWaiter = { resolve };
+    });
+  }
+
+  function syncMicrophoneTrackState() {
+    const enabled = active && !muted && !startupInputGate;
+    microphoneStream?.getAudioTracks().forEach((track) => { track.enabled = enabled; });
+  }
+
+  function releaseStartupInputAfterGreeting() {
+    window.clearTimeout(startupInputTimer);
+    startupInputTimer = window.setTimeout(() => {
+      if (!active || !microphoneStream) return;
+      startupInputGate = false;
+      syncMicrophoneTrackState();
+      setState(muted ? "muted" : "listening", muted ? "Mic muted" : "I'm listening");
+      scheduleLifestylePose();
+    }, 1200);
+  }
+
   function handleStartError(error) {
     const micDenied = error?.name === "NotAllowedError" || error?.name === "PermissionDeniedError";
     const message = micDenied
@@ -422,6 +504,7 @@
       : (error?.code === "voice_not_configured" ? "Voice is awaiting its secure key" : (error?.message || "Voice is having a quiet moment"));
     setState("error", message);
     cleanupConnection();
+    window.IAMTelevisionAudio?.setVoiceConversationActive?.(false);
     window.setTimeout(() => {
       if (!active && !starting) resetInterface();
     }, 4500);
@@ -442,6 +525,12 @@
     window.clearTimeout(sessionTimer);
     window.clearTimeout(poseTimer);
     window.clearTimeout(disconnectTimer);
+    window.clearTimeout(startupInputTimer);
+    startupInputGate = false;
+    fullscreenResumeButton.hidden = true;
+    const waiter = fullscreenResumeWaiter;
+    fullscreenResumeWaiter = null;
+    waiter?.resolve(false);
     try { dataChannel?.close(); } catch {}
     dataChannel = null;
     try { peerConnection?.close(); } catch {}
@@ -498,7 +587,7 @@
   }
 
   window.IAMRealtimeVoiceAssistant = {
-    version: "universal_one_realtime_v1",
+    version: "universal_one_realtime_v2",
     end: endConversation,
     getState() {
       return {
@@ -506,13 +595,15 @@
         starting,
         muted,
         captionsVisible,
+        startupInputGate,
+        awaitingFullscreenReturn: !fullscreenResumeButton.hidden,
         state: root.dataset.state,
         pose: root.dataset.pose,
         transcript: transcript.textContent.trim(),
       };
     },
     startStagingCheck: qaMode
-      ? () => startConversation({ microphone: false, qaPrompt: "Say exactly: Namaste. Universal One is here and ready to chat." })
+      ? () => startConversation(stagingQaOptions())
       : undefined,
   };
 })();

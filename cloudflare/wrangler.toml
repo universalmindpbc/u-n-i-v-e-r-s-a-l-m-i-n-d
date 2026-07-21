@@ -4,6 +4,11 @@ compatibility_date = "2026-07-03"
 workers_dev = true
 preview_urls = true
 
+[[rules]]
+type = "Text"
+globs = [ "**/*.txt" ]
+fallthrough = true
+
 [vars]
 OPENAI_INFERENCE_MODEL = "gpt-5.5"
 
