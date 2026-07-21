@@ -1,4 +1,4 @@
-4925e65c2f52041da6a420df0a79ab190b882d878eebc6fb94366f6e8639ae38	solution.html
+41113cb2981ef7742aea7f85c37555a6283a65ab723b26b14d6822a169235272	solution.html
 c6ed3bc518a2267a85e1f1dc384a5dd3c1d40e981f860a6d5030fe02eb113253	technology-citizen-needs-context-handoff.md
 09d77ed38fbfa8549383886f2e657092bdfdc3cc8a59a0d3127cc3fb788f3ef7	emdr-adaptation-v0.1.md
 822c7554b59739a635da7630c9d9ebed4228b31fe0d0d91f25bf7d6c14241635	adaptive-music-dcn-reranker.md
@@ -7,20 +7,20 @@ c6ed3bc518a2267a85e1f1dc384a5dd3c1d40e981f860a6d5030fe02eb113253	technology-citi
 9dc9dba7368146dd96ed3bc5875e48530af168389b47becd20bc07f380b9a615	vogue-self-report.css
 c6029b8e8142de6f26a28305558ebf7d4be7657ebb3385ff374d17ec71726e10	adaptive-music-artist-catalogue.json
 dc8b641cc7563e3104faebf59ee78ea0c82d8102b7bd5d72373b2d0f1d61d297	adaptive-environment-television.css
-d213546a3c7465e87e20a688da22fc92261c98d8710113379965279d766409c4	cafe-del-mar-home.html
+4870c05bf055a9cda1d63acb1ab9e08df33a795f2c2304b57d27e32fbd3a03ac	cafe-del-mar-home.html
 dcbff34364d60a02e5a68c1c27db1da0aba2c6059e154b93da9ed822926eea8e	a d a p t i v e  m u s i c  v i d e o  i n t e l l i g e n c e   -  c o d e x   b r i e f  v 0 . 1.md
 f5523d0d103367606e5c786fdefe6a1a560975a214ebe5188405469ec5619e09	tools/analyze-video-beats.py
 f1670bb15260c563cfe508ea2be7ddfe2f1b9260e0f3ab2f1015343345b5d177	i  a m.md
 2395bc9f9a00c3c567f3525cda478d2c138592cd215860d5b1545c88e2037f38	community-globe.html
-cc5bf58fa55831d9c81fd626cc1e4bc5970fd6d67d4353988bc13a7fb6b06fa8	index.html
+879ed8f5f66728c8cf7a4ae616733b9b6e2c3cbb32d7763ee4df012a27b5a499	index.html
 6733d57632028171b99f89270ff8237c250411f62166ebe1a2f36a80fe88833f	vogue-self-report.js
-ed7cd200ebf84d2ff347df09855e5769f09ed4e6c5c79d47fc7dea2d90303d1f	problem.html
+2ec128e61dc58257f648cd3ee66501b46b926eb1a7eebf1317cebf1bf2dded46	problem.html
 5dd6355dbbaa5dc8b92c4588ac7d70396423a9739c0415b7d91a029a8218ba38	selector_benchmark.py
-f85a7430461287aa4d3bbac2bdd65a895948b70beac5cd30624f94677bafa162	technology-citizen-needs.html
+47071ad2f3b225bc005f88451dd90cefeed78801fd58d8e62754bdd8a0b60425	technology-citizen-needs.html
 52fd6dcb6ef2736df89486fd144caf1842aa8957911378772409a1b4ecbed3f8	adaptive-inference-engine-system-prompt-v4.44-content.js
 0d480c5363dc9453ab5db5d3153af999c8a9abea823a8c25da22f7da00564d6f	adaptive-soundtrack-stage-gates.md
 c506df2be441c6489d4ee85438aa668eab8be5194ae9f381e4380ba074a21ebd	apple-touch-icon.png
-3ab3bb2fde9cb7c2d1cb56b559778b783ebe8cf1246511b40f5411f8d680a369	styles.css
+aa8715a6e069ff0e0d1278cc54cbbda3ad5b9f868b3a6643fd4adab1c6e3ded3	styles.css
 0f2562e9d94029f185d95d0e1babeab028a25b246f97273b552ba587510f3b1d	b u i l d _ n o t e s.md
 f578ff3dd063658cebff38d374369d0edf214230077d24c41a4eb785fd26ad74	globe.js
 a7ec4d743e2aadb702450504543e6dd71262bd314b74e82775c97b1a3adf8e9e	emdr-three-art.js
@@ -31,7 +31,7 @@ b73735526d3a58119dcb63a1c4ef9b48414fa32e855c58190e8b77f6d92f28f3	fashion-visual-
 af031f3f6f49e795ab1ce5c751232ae6ac926ca160a81ed86f05b555444a3e71	adaptive-music-video-catalogue-notion-export-v1.11.json
 97674825d8bdac13e88d1f19d8e9c468d76907dc4b6226f85e0e12b2c3f1cb38	music-channel-selector-v1.js
 3112f6656eb2fad46e0d228af30abe4eef66f3707e67379159ca3dbcece803b8	semantic_compiler.py
-40d4ba6547ea9026d0cdadc020501377500d239b672071ca148ed0b2b4fe9f8d	adaptive-music-video.html
+84820dce3489f710ed8a05b30ed158ddd5794d6a810760414dd7615acc8898ca	adaptive-music-video.html
 b7a2e613c395b1c88f6b9124dbf48169326d32b29b2d9312215019c400feb8ee	handover 1.12.md
 8c8b53637bc86a6836863daaf8d1e97db8f680b874f787a5a15e4412cffc65a3	science.css
 e98001a1504264b56ff7a895704818c451940b48b7c9aac15d011e2253fc3427	i n f e r e n c e  e n g i n e  -  s y s t e m  p r o m p t  v  2 . 2 2.md
@@ -52,8 +52,8 @@ e12eb24c367d2ac6f67963f434a729027e75b914e450b6260f47c01b9bd1ef58	i  a m  c h e c
 2ce0d0a5afb4d9961eec772a296e17f9c703d89182648b6d35ee6007c776d59f	science-research-data-v1.js
 d3300a631f7de9b0b077f578945dd6927a86e19a69acd7cf7d6982b0aa56d0ff	adaptive-music-video-catalogue-v1.11.json
 2e39004fe99d76cd8838f96e5616dd939399d9f1d66a469b0b1455ee1d88f1ba	adaptive-environment-television.js
-a657c6242393beb31c5a9c4050f9dcef70f0fcd7b3c9e8614b31cb2c3c165ebb	technology.html
-ae51e9fb8cb08a2b47f5580dd34948bd8561dc0977ea07e71f37eb6eedc62591	adaptive-environment-television.html
+ce02708622e37e2efe0777e52a480ff19ecef53be9f5201d69f5a388cfd62dd5	technology.html
+345bf5f65d99d05e15de7ba04ae1bfd58852dfe8438bbf26de604b914c6d3696	adaptive-environment-television.html
 be549a660ca4677b87127aeec0bf724b3cdb00649321a1f6750cf0f819d99079	script.js
 6b4dabad0c6b29d40d4d7abe7661345cdcc0d9103705a3bf2233a632a1c3192b	adaptive-soundtrack-selection-guide-v1.11.json
 d7b0c8c14b00152e1be5a74c0d51dd9e31ea33fb6c0b0dbc5febc6f903aaa89d	favicon.png
@@ -67,7 +67,7 @@ ea9c74095740c48e246dc1a18521c94bf060a17e80adf16fa4bcbdf295d59066	c o d e x.md
 f44af6ede2c0b3aaebec3978299ffc9a39cfea9600711313405cac6d70794a0d	i n f e r e n c e  e n g i n e  -  s y s t e m  p r o m p t  v  4 . 4 4.md
 516824cbacb0672384d55e782c8ca9be619ab34165a09c9b22101da3db921cda	globe.html
 216382500cca8c3160766deb8edd985ffee99ff149811f3d378cfaf7a4c4f685	adaptive-environment.js
-647ec2c667b2d62879f0b39d3d3dba13759e28087862e3519c4f16fd36b0215c	our-team.html
+47b4c04455e5951c80c3010c1039d7ea290cc9b12a7ff6a43e043cb115933b12	our-team.html
 00e182a786017f5a82429c24db86a531e6dc3935916ffa5f1dce69558f7f9340	adaptive-music-trajectory-policy-v2.json
 5bcbf61ff69c8db3466ce6d94c329e6bfa090d7a465814b9c9422942931da4d0	handover 1.11.md
 a08aea883abe8dc9aeb7dcb3d00d01f2383690c4589d1f1ad7b94e64df732317	api/adaptive-music-video-selection.php
@@ -78,7 +78,7 @@ eddef54940a3a48620977e7f6888b1f82ee3c21a75d092d4031470c5bb54f2cc	api/quantum-tre
 6a8254aba9609963d3bf84ad05febfcde1aaf989711241e33f74dd5315d43a50	api/.htaccess
 a5f82f1b7439d3be667eabf8b6fc852854d3654185eeb7d0d0cdf313bb1e59db	cloudflare-stream-catalogue.js
 db213ad178d17d3b7092436c17048a426e2ac2cc8cedaa1a4a1740b1c0184bec	video-beat-grid-v1.json
-6c4043a024e8679cd3f1ec9104a51c23ad6377ada1c99e03abae3e8cb8611b1f	technology-citizen-needs.css
+056b2cfea79da0ae3212382dea92045698bece09c7ce8daa327ac4b547658330	technology-citizen-needs.css
 bc88681e6235e92a8ac72105c0dbf58968959bb4fc83a7dfe36bb7f90b4ae50b	selector_core.py
 f237cab76a076231d45693131e7aac7cd08653f2842275cb5ab3af37421dbddb	u n i v e r s a l m i n d.md
 45d15609554ee1b9b0cde561c2c6f77d605a73410bfea4b4f612b0b33b342bfa	a s s e t s/Vogue Logo - large.png
@@ -131,7 +131,7 @@ e5d291b702dd7b25a96599093c93f893da9fb4bca13f5aeaa56d731544f8d37f	a s s e t s/Vog
 25f5a871ec4fb26ba75d49bde1daa88dbda625c8eae00dc14cafe06137a51746	a s s e t s/wallet-rewards-card.png
 97402de02367b5d9bf7c89b40fd689a5965644e13fdbc5b5268023efa1717641	a s s e t s/Colour  - 12 x 3 Square Layer.png
 eb5c6d0f0227bbc951cb2a510c1238c4a8e4fbbf424a190c72c39a88d1b60562	adaptive-music-video.js
-2c69990b3714680eef321cd24f624747cc74cfe882884f5a804ca458f4f5b7fb	demo.html
+a80d5164627080c8b0cc0c85704ba43b375cccd11f3f895d867cc5958336010a	demo.html
 679377272b40ed6baf4d3baefc4fc769c709fa13ece2835156491623ae971105	i n f e r e n c e  e n g i n e  -  s y s t e m  p r o m p t  v  1 . 0.md
 4819c6737cd48d7baa1e85680640e65b79895341f1e6429da2c8c0b1a63b8af0	cloudflare-stream-controller.js
 48827949511057e78be51bd6400e3d59b822dfa3a7f7a03bdf4172c719af6e7a	adaptive-music-api-setup.md
