@@ -14,6 +14,9 @@ const adaptiveEnvironmentPath = path.join(IAM_DIR, 'adaptive-environment.js');
 const aboutControllerPath = path.join(IAM_DIR, 'about.js');
 const djSetManifestPath = path.join(ROOT, 'cloudflare-stream-djset-upload-manifest.json');
 const televisionCssPath = path.join(IAM_DIR, 'adaptive-environment-television.css');
+const realtimeVoiceControllerPath = path.join(IAM_DIR, 'realtime-voice-assistant.js');
+const realtimeVoiceCssPath = path.join(IAM_DIR, 'realtime-voice-assistant.css');
+const realtimeVoiceEndpointPath = path.join(IAM_DIR, 'api', 'realtime-client-secret.php');
 const inductionPagePath = path.join(IAM_DIR, 'induction.html');
 const quantumTreeControlPagePath = path.join(IAM_DIR, 'quantum-tree-control.html');
 const quantumTreeControlScriptPath = path.join(IAM_DIR, 'quantum-tree-control.js');
@@ -74,6 +77,9 @@ const adaptiveEnvironment = await fs.readFile(adaptiveEnvironmentPath, 'utf8');
 const aboutController = await fs.readFile(aboutControllerPath, 'utf8');
 const djSetManifest = JSON.parse(await fs.readFile(djSetManifestPath, 'utf8'));
 const televisionCss = await fs.readFile(televisionCssPath, 'utf8');
+const realtimeVoiceController = await fs.readFile(realtimeVoiceControllerPath, 'utf8');
+const realtimeVoiceCss = await fs.readFile(realtimeVoiceCssPath, 'utf8');
+const realtimeVoiceEndpoint = await fs.readFile(realtimeVoiceEndpointPath, 'utf8');
 const inductionPage = await fs.readFile(inductionPagePath, 'utf8');
 const quantumTreeControlPage = await fs.readFile(quantumTreeControlPagePath, 'utf8');
 const quantumTreeControlScript = await fs.readFile(quantumTreeControlScriptPath, 'utf8');
@@ -104,6 +110,8 @@ const aboutLinkPages = await Promise.all(aboutLinkPagePaths.map(async (pagePath)
 const expectedCacheToken = `music-tv-${createHash('sha256').update(controller).digest('hex').slice(0, 12)}`;
 const expectedGlobeCacheToken = `globe-${createHash('sha256').update(globeController).digest('hex').slice(0, 12)}`;
 const expectedCssCacheToken = `music-tv-css-${createHash('sha256').update(televisionCss).digest('hex').slice(0, 12)}`;
+const expectedRealtimeVoiceToken = `realtime-voice-${createHash('sha256').update(realtimeVoiceController).digest('hex').slice(0, 12)}`;
+const expectedRealtimeVoiceCssToken = `realtime-voice-css-${createHash('sha256').update(realtimeVoiceCss).digest('hex').slice(0, 12)}`;
 const expectedStreamCatalogueToken = `stream-catalogue-${createHash('sha256').update(streamCatalogue).digest('hex').slice(0, 12)}`;
 const expectedStreamControllerToken = `stream-controller-${createHash('sha256').update(streamController).digest('hex').slice(0, 12)}`;
 const expectedShellControllerToken = `adaptive-env-stream-${createHash('sha256').update(shellController).digest('hex').slice(0, 12)}`;
@@ -214,6 +222,24 @@ requireCondition(quantumTreeSettingsEndpoint.includes('QUANTUM_TREE_OWNER_KEY_HA
 requireCondition(quantumTreeSettingsEndpoint.includes('hash_equals($_SESSION[\'quantum_tree_csrf\'], $csrf)'), 'the platform settings endpoint has no CSRF verification');
 requireCondition(quantumTreeSettingsEndpoint.includes('file_put_contents($temporaryPath, $json, LOCK_EX)'), 'the platform setting is not written atomically');
 requireCondition(quantumTreeSettingsData.peak_volume === 0.055, 'the deployed Quantum Tree platform setting is not 5.5 percent');
+requireCondition(realtimeVoiceController.includes('<strong>I am here.</strong>'), 'the voice planet has lost its approved I am here invitation');
+requireCondition(realtimeVoiceController.includes('<span>Need help or want to chat?</span>'), 'the voice planet has lost its approved chat invitation');
+requireCondition(realtimeVoiceController.includes('api/realtime-client-secret.php'), 'the browser no longer requests same-origin ephemeral Realtime credentials');
+requireCondition(!realtimeVoiceController.includes('OPENAI_API_KEY'), 'the browser voice controller contains a server credential name');
+requireCondition(realtimeVoiceController.includes('navigator.mediaDevices.getUserMedia'), 'voice activation no longer requests the microphone after an explicit click');
+requireCondition(realtimeVoiceController.includes('conversation.item.input_audio_transcription.completed'), 'voice captions no longer receive completed visitor transcripts');
+requireCondition(realtimeVoiceController.includes('response.output_audio_transcript.delta'), 'voice captions no longer receive live assistant transcripts');
+requireCondition(realtimeVoiceController.includes('staging.universalmind.tv') && realtimeVoiceController.includes('staging voice check · no microphone'), 'the microphone-free Realtime QA path is not restricted to staging');
+requireCondition(realtimeVoiceCss.includes('right: max(clamp(20px, 2.5vw, 42px), env(safe-area-inset-right));'), 'the assistant is no longer anchored to the lower right safe area');
+requireCondition(realtimeVoiceCss.includes('@media (prefers-reduced-motion: reduce)'), 'the assistant has no reduced-motion treatment');
+requireCondition(realtimeVoiceEndpoint.includes("getenv('OPENAI_API_KEY')"), 'the Realtime endpoint no longer reads its standard API key server-side');
+requireCondition(realtimeVoiceEndpoint.includes("'model' => 'gpt-realtime-2.1'"), 'the Realtime endpoint no longer uses gpt-realtime-2.1');
+requireCondition(realtimeVoiceEndpoint.includes("'voice' => 'marin'"), 'the Realtime endpoint no longer uses Marin');
+requireCondition(realtimeVoiceEndpoint.includes("'reasoning' => ['effort' => 'low']"), 'the Realtime endpoint no longer uses low reasoning effort');
+requireCondition(realtimeVoiceEndpoint.includes("'type' => 'semantic_vad'") && realtimeVoiceEndpoint.includes("'eagerness' => 'low'"), 'the Realtime endpoint no longer permits relaxed reflective turn taking');
+requireCondition(realtimeVoiceEndpoint.includes('OpenAI-Safety-Identifier:'), 'the Realtime endpoint no longer sends a privacy-preserving safety identifier');
+requireCondition(controller.includes('voiceAssistantBaseVolumes.get(media) * .15, 800'), 'the television programme no longer ducks smoothly to fifteen percent for voice');
+requireCondition(controller.includes('animateVoiceAssistantProgramVolume(media, baseline, 1000)'), 'the television programme no longer restores smoothly after voice');
 
 for (const { pagePath, source } of globeScriptPages) {
   const label = path.relative(ROOT, pagePath);
@@ -314,6 +340,8 @@ for (const { pagePath, source } of pages) {
   const scriptMatch = source.match(/adaptive-environment-television\.js\?v=([^"']+)/);
   const shellScriptMatch = source.match(/script\.js\?v=([^"']+)/);
   const cssMatch = source.match(/adaptive-environment-television\.css\?v=([^"']+)/);
+  const realtimeVoiceMatch = source.match(/realtime-voice-assistant\.js\?v=([^"']+)/);
+  const realtimeVoiceCssMatch = source.match(/realtime-voice-assistant\.css\?v=([^"']+)/);
   const sourceLine = source.match(/class="adaptive-environment__source[^"]*"[^>]*>([^<]*)<\/p>/)?.[1] ?? null;
   const titleLine = source.match(/class="adaptive-environment__station[^"]*"[^>]*>([^<]*)<\/p>/)?.[1] ?? null;
 
@@ -323,6 +351,10 @@ for (const { pagePath, source } of pages) {
   requireCondition(scriptMatch[1] === expectedCacheToken, `${label} cache token ${scriptMatch[1]} does not match controller content ${expectedCacheToken}`);
   requireCondition(cssMatch, `${label} has no versioned television stylesheet`);
   requireCondition(cssMatch[1] === expectedCssCacheToken, `${label} stylesheet cache token ${cssMatch[1]} does not match stylesheet content ${expectedCssCacheToken}`);
+  requireCondition(realtimeVoiceMatch, `${label} has no versioned Realtime voice controller`);
+  requireCondition(realtimeVoiceMatch[1] === expectedRealtimeVoiceToken, `${label} Realtime voice cache token ${realtimeVoiceMatch[1]} does not match ${expectedRealtimeVoiceToken}`);
+  requireCondition(realtimeVoiceCssMatch, `${label} has no versioned Realtime voice stylesheet`);
+  requireCondition(realtimeVoiceCssMatch[1] === expectedRealtimeVoiceCssToken, `${label} Realtime voice stylesheet token ${realtimeVoiceCssMatch[1]} does not match ${expectedRealtimeVoiceCssToken}`);
   requireCondition(sourceLine === '' && titleLine === '', `${label} contains stale hard-coded track copy`);
   requireCondition(!source.includes('data-adaptive-typewriter-text="Charli XCX"'), `${label} can still display Charli XCX before selection resolves`);
   requireCondition(source.includes('name="iam-playback-telemetry-endpoint"'), `${label} does not publish playback telemetry to Cloudflare`);

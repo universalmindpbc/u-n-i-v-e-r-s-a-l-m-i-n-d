@@ -297,6 +297,9 @@
     // The adaptive recommendation remains available when session storage is restricted.
   }
   let continuationAudio = null;
+  let voiceAssistantDuckActive = false;
+  const voiceAssistantBaseVolumes = new Map();
+  const voiceAssistantVolumeFrames = new Map();
   let soundResearchAudio = null;
   let soundResearchGainFrame = 0;
   let soundResearchMediaLevel = 0;
@@ -2392,7 +2395,7 @@
       video.loop = false;
       video.muted = false;
       video.defaultMuted = false;
-      video.volume = 1;
+      setVoiceAssistantProgramVolume(video, 1, voiceAssistantDuckActive ? 260 : 0);
       video.setAttribute("aria-label", `${track.artist} - ${track.title}`);
       try { video.currentTime = 0; } catch {}
       syncSelectedTrackCopy();
@@ -2992,12 +2995,71 @@
     mountPlayer();
   }
 
+  function animateVoiceAssistantProgramVolume(media, targetVolume, duration = 0) {
+    if (!media) return;
+    const existingFrame = voiceAssistantVolumeFrames.get(media);
+    if (existingFrame) window.cancelAnimationFrame(existingFrame);
+
+    const target = Math.max(0, Math.min(1, Number(targetVolume) || 0));
+    if (!duration) {
+      media.volume = target;
+      voiceAssistantVolumeFrames.delete(media);
+      return;
+    }
+
+    const startVolume = Number(media.volume) || 0;
+    const startedAt = window.performance?.now?.() || Date.now();
+    const frame = (now) => {
+      const progress = Math.min(1, (now - startedAt) / duration);
+      const eased = 1 - Math.pow(1 - progress, 3);
+      media.volume = startVolume + ((target - startVolume) * eased);
+      if (progress < 1) {
+        voiceAssistantVolumeFrames.set(media, window.requestAnimationFrame(frame));
+      } else {
+        voiceAssistantVolumeFrames.delete(media);
+      }
+    };
+    voiceAssistantVolumeFrames.set(media, window.requestAnimationFrame(frame));
+  }
+
+  function setVoiceAssistantProgramVolume(media, baseVolume, duration = 0) {
+    if (!media) return;
+    const baseline = Math.max(0, Math.min(1, Number(baseVolume) || 0));
+    if (voiceAssistantDuckActive) voiceAssistantBaseVolumes.set(media, baseline);
+    const target = voiceAssistantDuckActive ? baseline * .15 : baseline;
+    animateVoiceAssistantProgramVolume(media, target, duration);
+  }
+
+  function setVoiceAssistantDucking(active) {
+    const nextActive = Boolean(active);
+    voiceAssistantDuckActive = nextActive;
+
+    if (nextActive) {
+      [localVideo, continuationAudio].forEach((media) => {
+        if (!media || media.muted) return;
+        if (!voiceAssistantBaseVolumes.has(media)) {
+          const fallback = media === continuationAudio ? .68 : 1;
+          voiceAssistantBaseVolumes.set(media, Math.max(Number(media.volume) || 0, fallback));
+        }
+        animateVoiceAssistantProgramVolume(media, voiceAssistantBaseVolumes.get(media) * .15, 800);
+      });
+    } else {
+      voiceAssistantBaseVolumes.forEach((baseline, media) => {
+        animateVoiceAssistantProgramVolume(media, baseline, 1000);
+      });
+      voiceAssistantBaseVolumes.clear();
+    }
+
+    document.body.classList.toggle("television-voice-conversation-active", nextActive);
+    return voiceAssistantDuckActive;
+  }
+
   function playLocalVideo(video) {
     televisionPlaybackRequested = true;
     video.dataset.streamPlayRequestedAt = String(window.performance?.now?.() || Date.now());
     video.preload = "auto";
     video.muted = soundResearchTestMode;
-    video.volume = soundResearchTestMode ? 0 : 1;
+    setVoiceAssistantProgramVolume(video, soundResearchTestMode ? 0 : 1, voiceAssistantDuckActive ? 260 : 0);
     playerMount.classList.remove("is-local-video-awaiting-gesture");
 
     // Attach the EMDR analyser before playback begins. Claiming an already
@@ -3729,18 +3791,22 @@
 
   function fadeContinuationAudio(targetVolume, duration) {
     if (!continuationAudio) return;
-
-    const startVolume = continuationAudio.volume;
-    const startedAt = performance.now();
-
-    function frame(now) {
-      const progress = Math.min(1, (now - startedAt) / duration);
-      continuationAudio.volume = startVolume + ((targetVolume - startVolume) * progress);
-      if (progress < 1) window.requestAnimationFrame(frame);
-    }
-
-    window.requestAnimationFrame(frame);
+    setVoiceAssistantProgramVolume(continuationAudio, targetVolume, duration);
   }
+
+  window.IAMTelevisionAudio = {
+    version: "realtime_voice_duck_v1",
+    setVoiceConversationActive: setVoiceAssistantDucking,
+    getState() {
+      const nowPlayingState = window.IAMNowPlaying?.getState?.() || {};
+      return {
+        conversationActive: voiceAssistantDuckActive,
+        source: document.body.classList.contains("television-radio-continuation") ? "radio" : "video",
+        title: nowPlayingState.title || `${track.displayArtist || track.artist} — ${track.displayTitle || track.title}`,
+        visual: nowPlayingState.visual || "",
+      };
+    },
+  };
 
   function requestViewingFullscreen(video) {
     const fullscreenTarget = siteShell || document.documentElement;
