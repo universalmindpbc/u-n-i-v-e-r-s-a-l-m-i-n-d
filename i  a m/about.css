@@ -2386,17 +2386,6 @@ html {
   stroke-width: 1.25;
 }
 
-.about-intent-map > p {
-  margin: -4px 0 0;
-  color: var(--about-olive);
-  font-family: var(--about-mono);
-  font-size: clamp(9px, 0.68vw, 11px);
-  font-weight: 700;
-  letter-spacing: 0.17em;
-  line-height: 1.4;
-  text-align: center;
-}
-
 .about-overview-refuge,
 .about-overview-context,
 .about-overview-definition,
