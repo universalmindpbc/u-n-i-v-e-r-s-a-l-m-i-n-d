@@ -3,22 +3,24 @@
   if (!selector) return;
 
   const CIRCLES = Object.freeze([
-    { id: "img", name: "img", description: "[ models 💃 ]" },
-    { id: "wme", name: "wme", description: "[ talent 🌐 ]" },
-    { id: "north-bondi-rsl", name: "north bondi rsl", description: "[ veterans 🎖️ ]" },
-    { id: "nagnata", name: "nagnata", description: "[ customers 🩱 ]" },
-    { id: "aime", name: "aime", description: "[ first nations imagination 🧘🏾‍♀️ ]" },
-    { id: "black-rainbow", name: "black rainbow", description: "[ first nations mental health 🌈 ]" },
-    { id: "headspace", name: "headspace", description: "[ youth mental health 🧩 ]" },
-    { id: "phoenix", name: "phoenix", description: "[ veterans mental health 🐦‍🔥 ]" },
+    { id: "img", name: "img", joinName: "IMG", description: "[ models 💃 ]" },
+    { id: "wme", name: "wme", joinName: "WME", description: "[ talent 🌐 ]" },
+    { id: "north-bondi-rsl", name: "north bondi rsl", joinName: "North Bondi RSL", description: "[ veterans 🎖️ ]" },
+    { id: "nagnata", name: "nagnata", joinName: "NAGNATA", description: "[ customers 🩱 ]" },
+    { id: "aime", name: "aime", joinName: "AIME", description: "[ first nations imagination 🧘🏾‍♀️ ]" },
+    { id: "black-rainbow", name: "black rainbow", joinName: "Black Rainbow", description: "[ first nations mental health 🌈 ]" },
+    { id: "headspace", name: "headspace", joinName: "Headspace", description: "[ youth mental health 🧩 ]" },
+    { id: "phoenix", name: "phoenix", joinName: "Phoenix", description: "[ veterans mental health 🐦‍🔥 ]" },
   ]);
 
   const CAPACITY = 9;
   const selectorButtons = Array.from(selector.querySelectorAll("[data-circle-id]"));
+  const energySignals = Array.from(selector.querySelectorAll("[data-circle-energy]"));
   const selectorCloseButtons = Array.from(selector.querySelectorAll("[data-circle-selector-close]"));
   const selectedName = selector.querySelector("[data-circle-selected-name]");
   const selectedDescription = selector.querySelector("[data-circle-selected-description]");
   const selectedStatus = selector.querySelector("[data-circle-selected-status]");
+  const selectionPanel = selector.querySelector(".circle-room-selector__centre");
   const joinButton = selector.querySelector("[data-circle-selector-join]");
   const statusLine = selector.querySelector("[data-circle-selector-status]");
   const endpointMeta = document.querySelector('meta[name="iam-circle-room-endpoint"]');
@@ -120,6 +122,10 @@
       button.classList.toggle("is-selected", active);
       button.setAttribute("aria-pressed", String(active));
     });
+    energySignals.forEach((signal) => {
+      signal.classList.toggle("is-selected", signal.dataset.circleEnergy === circle?.id);
+    });
+    selector.dataset.selectedCircle = circle?.id || "";
 
     if (!circle) {
       selectedName.textContent = "Select A Circle";
@@ -137,7 +143,7 @@
       joinButton.textContent = "Leave Circle";
     } else {
       selectedStatus.textContent = nextRoomStatus(catalogue.get(circle.id));
-      joinButton.textContent = operationPending ? "Joining…" : "Join Circle";
+      joinButton.textContent = operationPending ? "Joining…" : `Join ${circle.joinName} Circle`;
     }
     joinButton.hidden = false;
     joinButton.disabled = operationPending;
@@ -157,6 +163,9 @@
     selectedCircleId = circleId;
     setStatus();
     updateSelectionPanel();
+    if (window.matchMedia("(max-width: 780px)").matches) {
+      selectionPanel?.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
   }
 
   async function refreshCatalogue() {

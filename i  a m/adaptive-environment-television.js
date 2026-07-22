@@ -3199,9 +3199,9 @@
 
     if (audioWalletJoin) {
       const circleName = audioWalletCircleName || "selected";
-      audioWalletJoin.textContent = audioWalletJoined ? audioWalletCircleName : "Select a Circle";
-      audioWalletJoin.setAttribute("aria-label", audioWalletJoined ? `Leave ${circleName} Circle` : "Select a Circle");
-      audioWalletJoin.setAttribute("title", audioWalletJoined ? `Leave ${circleName} Circle` : "Select a Circle");
+      audioWalletJoin.textContent = audioWalletJoined ? audioWalletCircleName : "Join Circle";
+      audioWalletJoin.setAttribute("aria-label", audioWalletJoined ? `Leave ${circleName} Circle` : "Join Circle");
+      audioWalletJoin.setAttribute("title", audioWalletJoined ? `Leave ${circleName} Circle` : "Join Circle");
     }
 
     if (audioWalletMic) {
@@ -3240,7 +3240,6 @@
     audioWalletMode = true;
     setWalletView("audio");
     syncAudioWallet();
-    if (!audioWalletJoined) window.IAMCircleRooms?.open?.(audioModeTrigger);
   }
 
   function closeAudioWallet(event) {

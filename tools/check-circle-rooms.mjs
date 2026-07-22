@@ -49,6 +49,12 @@ for (const [circleId, description] of circles) {
 requireCondition(source.controller.includes("createMicrophoneAudioTrack"), "the browser controller cannot publish microphone audio");
 requireCondition(source.controller.includes('muted: true'), "new Circle members do not enter muted");
 requireCondition(source.television.includes('window.IAMCircleRooms?.open?.'), "the wallet does not open the Circle selector");
+requireCondition(source.page.includes('data-circle-radar-stage'), "the Community Radar stage is missing");
+requireCondition((source.page.match(/data-circle-energy=/g) || []).length === circles.length, "the Community Radar must connect all eight Circles");
+requireCondition(source.styles.includes("calc(150ms + (var(--circle-index) * 72ms))"), "the clockwise room entrance choreography is missing");
+requireCondition(source.page.includes(">Join Circle</button>"), "the compact wallet must retain the staggered Join Circle action");
+requireCondition(!source.television.includes('if (!audioWalletJoined) window.IAMCircleRooms?.open?.(audioModeTrigger);'), "opening the audio wallet must not launch the radar immediately");
+requireCondition(source.controller.includes('`Join ${circle.joinName} Circle`'), "room selection must require an explicit named confirmation");
 requireCondition(source.television.includes('iam:circle-room-state'), "the compact wallet does not receive live Circle state");
 requireCondition(source.worker.includes("const ROOM_CAPACITY = 9;"), "the Worker room capacity is not nine");
 requireCondition(source.worker.includes("this.allocationTail = Promise.resolve();"), "seat allocation is not serialised");
