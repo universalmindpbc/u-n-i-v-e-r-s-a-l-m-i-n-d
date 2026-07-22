@@ -455,7 +455,10 @@ for (const { pagePath, source } of pages) {
   requireCondition(sourceLine === '' && titleLine === '', `${label} contains stale hard-coded track copy`);
   requireCondition(!source.includes('data-adaptive-typewriter-text="Charli XCX"'), `${label} can still display Charli XCX before selection resolves`);
   requireCondition(source.includes('name="iam-playback-telemetry-endpoint"'), `${label} does not publish playback telemetry to Cloudflare`);
+  requireCondition(source.includes('<strong>explore</strong>') && source.includes('<span>learn about Universal Mind</span>'), `${label} has lost the approved global navigation hover label`);
 }
+
+requireCondition(televisionCss.includes('@media (hover: hover) and (pointer: fine)') && televisionCss.includes('.global-nav-trigger:hover .global-nav-trigger__label'), 'the global navigation label is no longer restricted to intentional computer hover');
 
 const televisionPage = pages.find(({ pagePath }) => pagePath.endsWith('index.html'))?.source || '';
 requireCondition((televisionPage.match(/data-emdr-style-index=/g) || []).length === 2, 'the EMDR wallet does not expose both GIF and stellar buttons');

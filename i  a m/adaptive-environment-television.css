@@ -2273,6 +2273,54 @@ body.television-room-open .global-nav-trigger {
   height: clamp(64px, 4.35vw, 90px);
 }
 
+.global-nav-trigger__label {
+  position: absolute;
+  left: calc(100% + clamp(12px, 1.1vw, 20px));
+  top: 50%;
+  display: grid;
+  gap: 2px;
+  width: max-content;
+  color: rgba(255, 255, 255, 0.9);
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  line-height: 1.15;
+  opacity: 0;
+  pointer-events: none;
+  text-align: left;
+  text-shadow: 0 1px 8px rgba(0, 0, 0, 0.72);
+  transform: translate(8px, -50%);
+  transition:
+    opacity 240ms ease,
+    transform 320ms cubic-bezier(0.2, 0.72, 0.2, 1),
+    visibility 0s linear 320ms;
+  visibility: hidden;
+  white-space: nowrap;
+}
+
+.global-nav-trigger__label strong {
+  color: #fff;
+  font-size: clamp(14px, 0.9vw, 16px);
+  font-weight: 700;
+  letter-spacing: 0.015em;
+}
+
+.global-nav-trigger__label span {
+  font-size: clamp(11px, 0.7vw, 13px);
+  font-weight: 300;
+  letter-spacing: 0.01em;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  body.television-room-opening .global-nav-trigger:hover .global-nav-trigger__label,
+  body.television-room-opening .global-nav-trigger:focus-visible .global-nav-trigger__label,
+  body.television-room-open .global-nav-trigger:hover .global-nav-trigger__label,
+  body.television-room-open .global-nav-trigger:focus-visible .global-nav-trigger__label {
+    opacity: 1;
+    transform: translate(0, -50%);
+    transition-delay: 0s;
+    visibility: visible;
+  }
+}
+
 body.television-room-opening .brand,
 body.television-room-open .brand {
   top: var(--brand-top);
