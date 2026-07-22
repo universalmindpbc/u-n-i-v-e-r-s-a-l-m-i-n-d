@@ -3,14 +3,14 @@
   if (!selector) return;
 
   const CIRCLES = Object.freeze([
-    { id: "img", name: "img", joinName: "IMG", description: "[ models 💃 ]" },
-    { id: "wme", name: "wme", joinName: "WME", description: "[ talent 🌐 ]" },
-    { id: "north-bondi-rsl", name: "north bondi rsl", joinName: "North Bondi RSL", description: "[ veterans 🎖️ ]" },
-    { id: "nagnata", name: "nagnata", joinName: "NAGNATA", description: "[ customers 🩱 ]" },
-    { id: "aime", name: "aime", joinName: "AIME", description: "[ first nations imagination 🧘🏾‍♀️ ]" },
-    { id: "black-rainbow", name: "black rainbow", joinName: "Black Rainbow", description: "[ first nations mental health 🌈 ]" },
-    { id: "headspace", name: "headspace", joinName: "Headspace", description: "[ youth mental health 🧩 ]" },
-    { id: "phoenix", name: "phoenix", joinName: "Phoenix", description: "[ veterans mental health 🐦‍🔥 ]" },
+    { id: "img", name: "IMG", joinName: "IMG", description: "Models" },
+    { id: "wme", name: "WME", joinName: "WME", description: "Talent" },
+    { id: "north-bondi-rsl", name: "North Bondi RSL", joinName: "North Bondi RSL", description: "Veterans" },
+    { id: "nagnata", name: "NAGNATA", joinName: "NAGNATA", description: "Customers" },
+    { id: "aime", name: "AIME", joinName: "AIME", description: "First Nations imagination" },
+    { id: "black-rainbow", name: "Black Rainbow", joinName: "Black Rainbow", description: "First Nations mental health" },
+    { id: "headspace", name: "Headspace", joinName: "Headspace", description: "Youth mental health" },
+    { id: "phoenix", name: "Phoenix", joinName: "Phoenix", description: "Veterans mental health" },
   ]);
 
   const CAPACITY = 9;
@@ -20,8 +20,6 @@
   const selectedName = selector.querySelector("[data-circle-selected-name]");
   const selectedDescription = selector.querySelector("[data-circle-selected-description]");
   const selectedStatus = selector.querySelector("[data-circle-selected-status]");
-  const selectionPanel = selector.querySelector(".circle-room-selector__centre");
-  const joinButton = selector.querySelector("[data-circle-selector-join]");
   const statusLine = selector.querySelector("[data-circle-selector-status]");
   const endpointMeta = document.querySelector('meta[name="iam-circle-room-endpoint"]');
   const endpoint = String(window.IAM_CIRCLE_ROOM_ENDPOINT || endpointMeta?.content || "").replace(/\/+$/, "");
@@ -29,6 +27,7 @@
 
   let previousFocus = null;
   let selectedCircleId = "";
+  let previewCircleId = "";
   let client = null;
   let localTrack = null;
   let presenceSocket = null;
@@ -91,62 +90,38 @@
     state.error = isError ? message : "";
   }
 
-  function formatAvailability(summary) {
-    if (!summary) return "available";
-    const liveCount = Math.max(0, Number(summary.live_count) || 0);
-    const roomCount = Math.max(0, Number(summary.room_count) || 0);
-    if (liveCount === 0) return "open";
-    if (roomCount <= 1) return `${liveCount}/${CAPACITY} live`;
-    return `${liveCount} live · ${roomCount} rooms`;
-  }
-
-  function nextRoomStatus(summary) {
-    if (!summary) return `up to ${CAPACITY} people`;
-    const nextRoom = summary.next_room || {};
-    const count = Math.max(0, Number(nextRoom.count) || 0);
-    const number = Math.max(1, Number(nextRoom.number) || 1);
-    return number > 1 ? `next · room ${number} · ${count}/${CAPACITY}` : `${count}/${CAPACITY} in next room`;
-  }
-
   function updateAvailability(summary) {
     if (!summary?.id) return;
     catalogue.set(summary.id, summary);
-    const availability = selector.querySelector(`[data-circle-availability="${summary.id}"]`);
-    if (availability) availability.textContent = formatAvailability(summary);
   }
 
   function updateSelectionPanel() {
-    const circle = circleForId(state.joined ? state.circleId : selectedCircleId);
+    const circle = circleForId(selectedCircleId);
     selectorButtons.forEach((button) => {
-      const active = button.dataset.circleId === circle?.id;
+      const active = operationPending && button.dataset.circleId === circle?.id;
       button.classList.toggle("is-selected", active);
-      button.setAttribute("aria-pressed", String(active));
+      button.classList.toggle("is-joining", active);
+      button.disabled = operationPending;
+      button.setAttribute("aria-busy", String(active));
+      const action = button.querySelector("[data-circle-action]");
+      if (action) action.textContent = active ? "Joining…" : "";
     });
     energySignals.forEach((signal) => {
-      signal.classList.toggle("is-selected", signal.dataset.circleEnergy === circle?.id);
+      const signalId = signal.dataset.circleEnergy || "";
+      signal.classList.toggle("is-selected", operationPending && signalId === circle?.id);
+      signal.classList.toggle("is-preview", !operationPending && signalId === previewCircleId);
     });
-    selector.dataset.selectedCircle = circle?.id || "";
+    selector.dataset.selectedCircle = operationPending ? circle?.id || "" : "";
 
-    if (!circle) {
-      selectedName.textContent = "Select A Circle";
-      selectedDescription.textContent = "[ live audio rooms · 9 person capacity each ]";
-      selectedStatus.textContent = "";
-      joinButton.hidden = true;
-      joinButton.disabled = true;
-      return;
-    }
-
-    selectedName.textContent = circle.name;
-    selectedDescription.textContent = circle.description;
     if (state.joined) {
+      selectedName.textContent = state.circleName;
+      selectedDescription.textContent = "You are already in this Circle";
       selectedStatus.textContent = `room ${state.roomNumber} · ${state.occupancy}/${CAPACITY} live`;
-      joinButton.textContent = "Leave Circle";
     } else {
-      selectedStatus.textContent = nextRoomStatus(catalogue.get(circle.id));
-      joinButton.textContent = operationPending ? "Joining…" : `Join ${circle.joinName} Circle`;
+      selectedName.textContent = "Join A Tribe";
+      selectedDescription.textContent = "9 people per room · you join muted";
+      selectedStatus.textContent = operationPending && circle ? `Joining ${circle.joinName}…` : "";
     }
-    joinButton.hidden = false;
-    joinButton.disabled = operationPending;
   }
 
   function emitState() {
@@ -158,24 +133,23 @@
     updateSelectionPanel();
   }
 
-  function selectCircle(circleId) {
-    if (state.joined || !circleForId(circleId)) return;
+  async function joinCircle(circleId) {
+    if (state.joined || operationPending || !circleForId(circleId)) return;
     selectedCircleId = circleId;
+    previewCircleId = "";
     setStatus();
     updateSelectionPanel();
-    if (window.matchMedia("(max-width: 780px)").matches) {
-      selectionPanel?.scrollIntoView({ behavior: "smooth", block: "start" });
-    }
+    await joinSelected();
+  }
+
+  function previewCircle(circleId = "") {
+    if (operationPending) return;
+    previewCircleId = circleForId(circleId) ? circleId : "";
+    updateSelectionPanel();
   }
 
   async function refreshCatalogue() {
-    if (!endpoint) {
-      selectorButtons.forEach((button) => {
-        const availability = button.querySelector("[data-circle-availability]");
-        if (availability) availability.textContent = "unavailable";
-      });
-      return;
-    }
+    if (!endpoint) return;
 
     try {
       const response = await fetch(endpointUrl("/audio-rooms"), {
@@ -186,18 +160,16 @@
       const payload = await readJson(response);
       (payload.circles || []).forEach(updateAvailability);
       updateSelectionPanel();
-    } catch (error) {
-      selectorButtons.forEach((button) => {
-        const availability = button.querySelector("[data-circle-availability]");
-        if (availability) availability.textContent = "available";
-      });
-      setStatus("Live room counts are temporarily unavailable.", true);
+    } catch {
+      // Catalogue counts are supplementary; joining remains available from every node.
     }
   }
 
   function open(source = null) {
     if (state.selectorOpen) return;
     previousFocus = source || document.activeElement;
+    selectedCircleId = "";
+    previewCircleId = "";
     state.selectorOpen = true;
     selector.inert = false;
     selector.setAttribute("aria-hidden", "false");
@@ -205,8 +177,7 @@
     emitState();
     refreshCatalogue();
     window.setTimeout(() => {
-      const activeButton = selector.querySelector('[data-circle-id][aria-pressed="true"]');
-      (activeButton || selectorButtons[0])?.focus();
+      selectorButtons[0]?.focus();
     }, 80);
   }
 
@@ -216,6 +187,7 @@
     selector.inert = true;
     selector.setAttribute("aria-hidden", "true");
     document.body.classList.remove("circle-room-selector-open");
+    previewCircleId = "";
     emitState();
     if (restoreFocus && previousFocus?.focus) previousFocus.focus();
   }
@@ -318,16 +290,12 @@
   }
 
   async function joinSelected() {
-    if (state.joined) {
-      await leave();
-      return;
-    }
     const circle = circleForId(selectedCircleId);
     if (!circle || operationPending) return;
 
     operationPending = true;
     intentionalDisconnect = false;
-    setStatus("Finding your Circle…");
+    setStatus();
     updateSelectionPanel();
 
     let joinPayload = null;
@@ -373,6 +341,7 @@
       reservation = null;
       const message = error?.message === "Failed to fetch" ? "The Circle could not be reached." : error?.message;
       setStatus(message || "The Circle could not be joined.", true);
+      selectedCircleId = "";
     } finally {
       operationPending = false;
       updateSelectionPanel();
@@ -440,6 +409,7 @@
         roomNumber: 0,
         error: "",
       };
+      selectedCircleId = "";
       operationPending = false;
       intentionalDisconnect = false;
       emitState();
@@ -490,10 +460,14 @@
   }
 
   selectorButtons.forEach((button) => {
-    button.addEventListener("click", () => selectCircle(button.dataset.circleId || ""));
+    const circleId = button.dataset.circleId || "";
+    button.addEventListener("click", () => void joinCircle(circleId));
+    button.addEventListener("pointerenter", () => previewCircle(circleId));
+    button.addEventListener("pointerleave", () => previewCircle());
+    button.addEventListener("focus", () => previewCircle(circleId));
+    button.addEventListener("blur", () => previewCircle());
   });
   selectorCloseButtons.forEach((button) => button.addEventListener("click", () => close()));
-  joinButton?.addEventListener("click", joinSelected);
   document.addEventListener("keydown", (event) => {
     if (event.key === "Escape" && state.selectorOpen) {
       event.preventDefault();
@@ -510,7 +484,7 @@
   });
 
   window.IAMCircleRooms = {
-    version: "circle_rooms_v1",
+    version: "circle_rooms_v2",
     circles: CIRCLES.map((circle) => ({ ...circle })),
     open,
     close,

@@ -23,28 +23,43 @@ function requireCondition(condition, message) {
 }
 
 const circles = [
-  ["img", "[ models 💃 ]"],
-  ["wme", "[ talent 🌐 ]"],
-  ["north-bondi-rsl", "[ veterans 🎖️ ]"],
-  ["nagnata", "[ customers 🩱 ]"],
-  ["aime", "[ first nations imagination 🧘🏾‍♀️ ]"],
-  ["black-rainbow", "[ first nations mental health 🌈 ]"],
-  ["headspace", "[ youth mental health 🧩 ]"],
-  ["phoenix", "[ veterans mental health 🐦‍🔥 ]"],
+  ["img", "IMG", "Models"],
+  ["wme", "WME", "Talent"],
+  ["north-bondi-rsl", "North Bondi RSL", "Veterans"],
+  ["nagnata", "NAGNATA", "Customers"],
+  ["aime", "AIME", "First Nations imagination"],
+  ["black-rainbow", "Black Rainbow", "First Nations mental health"],
+  ["headspace", "Headspace", "Youth mental health"],
+  ["phoenix", "Phoenix", "Veterans mental health"],
 ];
 
-requireCondition(source.page.includes(">Select A Circle</h2>"), "the approved selector heading is missing");
+const selectorStart = source.page.indexOf('<section class="circle-room-selector"');
+const selectorEnd = source.page.indexOf("</section>", selectorStart);
+const selectorMarkup = source.page.slice(selectorStart, selectorEnd);
+
+requireCondition(selectorStart >= 0 && selectorEnd > selectorStart, "the Circle selector markup is missing");
+requireCondition(source.page.includes(">Join A Tribe</h2>"), "the approved selector heading is missing");
 requireCondition(
-  source.page.includes("[ live audio rooms · 9 person capacity each ]"),
+  source.page.includes("9 people per room · you join muted"),
   "the approved capacity line is missing"
 );
+requireCondition(source.page.includes("live audio <span>circles</span>"), "the approved Live Audio Circles label is missing");
 requireCondition((source.page.match(/data-circle-id=/g) || []).length === circles.length, "the selector must expose exactly eight Circles");
-for (const [circleId, description] of circles) {
+requireCondition((source.page.match(/data-circle-action=/g) || []).length === circles.length, "every Circle needs a direct-join action state");
+requireCondition((source.page.match(/circle-room-selector__node-flower/g) || []).length === circles.length, "every Circle needs a Universal Mind flower");
+for (const [circleId, name, description] of circles) {
   requireCondition(source.page.includes(`data-circle-id="${circleId}"`), `${circleId} is missing from the selector`);
-  requireCondition(source.page.includes(description), `${circleId} does not retain its approved description`);
+  requireCondition(source.page.includes(`<span class="circle-room-selector__name">${name}</span>`), `${circleId} does not retain its approved name`);
+  requireCondition(source.page.includes(`<span class="circle-room-selector__description">${description}</span>`), `${circleId} does not retain its approved description`);
   requireCondition(source.controller.includes(`id: "${circleId}"`), `${circleId} is missing from the browser controller`);
+  requireCondition(source.controller.includes(`description: "${description}"`), `${circleId} does not retain its clean controller description`);
   requireCondition(source.worker.includes(`id: "${circleId}"`), `${circleId} is missing from the Worker catalogue`);
 }
+requireCondition(!selectorMarkup.includes("data-circle-availability"), "legacy room availability labels remain in the selector");
+requireCondition(!selectorMarkup.includes("data-circle-selector-join"), "the redundant centre confirmation remains in the selector");
+requireCondition(!selectorMarkup.includes("["), "decorative brackets remain in the selector copy");
+requireCondition(!/[💃🌐🎖🩱🧘🌈🧩🐦🔥]/u.test(selectorMarkup), "legacy emojis remain in the selector copy");
+requireCondition(!/>\s*open\s*</iu.test(selectorMarkup), "legacy Open labels remain in the selector copy");
 
 requireCondition(source.controller.includes("createMicrophoneAudioTrack"), "the browser controller cannot publish microphone audio");
 requireCondition(source.controller.includes('muted: true'), "new Circle members do not enter muted");
@@ -54,7 +69,7 @@ requireCondition((source.page.match(/data-circle-energy=/g) || []).length === ci
 requireCondition(source.styles.includes("calc(150ms + (var(--circle-index) * 72ms))"), "the clockwise room entrance choreography is missing");
 requireCondition(source.page.includes(">Join Circle</button>"), "the compact wallet must retain the staggered Join Circle action");
 requireCondition(!source.television.includes('if (!audioWalletJoined) window.IAMCircleRooms?.open?.(audioModeTrigger);'), "opening the audio wallet must not launch the radar immediately");
-requireCondition(source.controller.includes('`Join ${circle.joinName} Circle`'), "room selection must require an explicit named confirmation");
+requireCondition(source.controller.includes('button.addEventListener("click", () => void joinCircle(circleId));'), "selecting a tribe must begin its muted join directly");
 requireCondition(source.television.includes('iam:circle-room-state'), "the compact wallet does not receive live Circle state");
 requireCondition(source.worker.includes("const ROOM_CAPACITY = 9;"), "the Worker room capacity is not nine");
 requireCondition(source.worker.includes("this.allocationTail = Promise.resolve();"), "seat allocation is not serialised");
