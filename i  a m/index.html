@@ -19,7 +19,7 @@
     <script src="music-television-frame-context.js?v=music-tv-frame-14ebf4459d03"></script>
     <link rel="stylesheet" href="styles.css?v=global-nav-single-shell-1">
     <link rel="preload" as="image" href="a s s e t s/Universal Mind [ I o H ] Logo.PNG">
-    <link rel="stylesheet" href="adaptive-environment-television.css?v=music-tv-css-60781cf591b5">
+    <link rel="stylesheet" href="adaptive-environment-television.css?v=music-tv-css-80b82a4f94c2">
     <link rel="stylesheet" href="circle-audio-rooms.css?v=circle-rooms-css-72d523b18b71">
     <link rel="stylesheet" href="realtime-voice-assistant.css?v=realtime-voice-css-3dbe2f94acaa">
   </head>
@@ -281,7 +281,7 @@
               <p class="circle-room-selector__status" data-circle-selector-status aria-live="polite"></p>
             </div>
           </section>
-          <div class="adaptive-television-reaction-wallet" data-reaction-wallet data-wallet-view="closed" aria-label="Universal Mind wallet">
+          <div class="adaptive-television-reaction-wallet" data-reaction-wallet data-wallet-view="closed" data-wallet-resume-view="categories" aria-label="Universal Mind wallet">
             <button class="adaptive-television-reaction-trigger" type="button" data-reaction-wallet-trigger aria-label="Open Universal Mind wallet" aria-expanded="false">
               <span class="adaptive-television-reaction__glyph adaptive-television-reaction__glyph--ioh-logo adaptive-television-reaction__glyph--flora-trigger" aria-hidden="true"></span>
             </button>
@@ -357,6 +357,9 @@
               </span>
             </button>
             <div class="adaptive-television-wallet-panel adaptive-television-wallet-panel--emoji" data-wallet-panel="emoji" aria-hidden="true">
+            <button class="adaptive-television-wallet-home" type="button" data-wallet-home data-wallet-tooltip="wallet home" aria-label="Return to wallet home">
+              <span class="adaptive-television-reaction__glyph adaptive-television-reaction__glyph--ioh-logo adaptive-television-reaction__glyph--flora-trigger" aria-hidden="true"></span>
+            </button>
             <button class="adaptive-television-reaction" type="button" data-television-reaction="flora" aria-label="Send Universal Mind flora">
               <span class="adaptive-television-reaction__glyph adaptive-television-reaction__glyph--ioh-logo adaptive-television-reaction__glyph--flora-flower" aria-hidden="true"></span>
             </button>
@@ -384,6 +387,9 @@
             </button>
             </div>
             <div class="adaptive-television-wallet-panel adaptive-television-wallet-panel--video" data-wallet-panel="video" aria-hidden="true">
+              <button class="adaptive-television-wallet-home" type="button" data-wallet-home data-wallet-tooltip="wallet home" aria-label="Return to wallet home">
+                <span class="adaptive-television-reaction__glyph adaptive-television-reaction__glyph--ioh-logo adaptive-television-reaction__glyph--flora-trigger" aria-hidden="true"></span>
+              </button>
               <button class="adaptive-television-video-choice" type="button" data-video-mode="fashion" data-video-tooltip="Watch a runway while the music continues uninterrupted." aria-label="Fashion — Watch a runway while the music continues uninterrupted">
                 <span class="adaptive-television-video-icon-stage" aria-hidden="true">
                   <img class="adaptive-television-video-icon-reference adaptive-television-video-icon-reference--fashion" src="a s s e t s/wallet-fashion-reference.png?v=reference-2" alt="">
@@ -413,6 +419,9 @@
               </span>
             </div>
             <div class="adaptive-television-video-mix-controls" data-wallet-panel="video-mix" data-video-mix-controls aria-hidden="true">
+              <button class="adaptive-television-wallet-home" type="button" data-wallet-home data-wallet-tooltip="wallet home" aria-label="Return to wallet home">
+                <span class="adaptive-television-reaction__glyph adaptive-television-reaction__glyph--ioh-logo adaptive-television-reaction__glyph--flora-trigger" aria-hidden="true"></span>
+              </button>
               <button class="adaptive-television-video-mix-endpoint" type="button" data-video-mix-endpoint="fashion" data-video-tooltip="Watch a runway while the music continues uninterrupted." aria-label="Show Fashion — Watch a runway while the music continues uninterrupted">
                 <span class="adaptive-television-video-icon-stage" aria-hidden="true"><img class="adaptive-television-video-icon-reference adaptive-television-video-icon-reference--fashion" src="a s s e t s/wallet-fashion-reference.png?v=reference-2" alt=""></span>
               </button>
@@ -434,6 +443,9 @@
               </button>
             </div>
             <div class="adaptive-television-wallet-panel adaptive-television-music-controls" data-wallet-panel="music" aria-hidden="true">
+              <button class="adaptive-television-wallet-home" type="button" data-wallet-home data-wallet-tooltip="wallet home" aria-label="Return to wallet home">
+                <span class="adaptive-television-reaction__glyph adaptive-television-reaction__glyph--ioh-logo adaptive-television-reaction__glyph--flora-trigger" aria-hidden="true"></span>
+              </button>
               <div class="adaptive-television-music-modes" role="tablist" aria-label="Choose a 24/7 Music mode">
                 <button type="button" role="tab" data-music-mode="videos" data-music-tooltip="24/7 livestream electronic music videos — from ambient, Balearic, hip hop and future bass through to house, rave, techno, and a splash of indie electronic." aria-selected="true">videos</button>
                 <button type="button" role="tab" data-music-mode="parties" data-music-tooltip="24/7 livestream DJ sets, parties and festivals, together as one." aria-selected="false">parties</button>
@@ -449,6 +461,9 @@
               </div>
             </div>
             <div class="adaptive-television-emdr-controls" data-wallet-panel="emdr" data-emdr-controls aria-hidden="true">
+              <button class="adaptive-television-wallet-home" type="button" data-wallet-home data-wallet-tooltip="wallet home" aria-label="Return to wallet home">
+                <span class="adaptive-television-reaction__glyph adaptive-television-reaction__glyph--ioh-logo adaptive-television-reaction__glyph--flora-trigger" aria-hidden="true"></span>
+              </button>
               <button class="adaptive-television-emdr-off" type="button" data-emdr-off>off</button>
               <div class="adaptive-television-emdr-style-group" role="group" aria-label="Choose an EMDR style">
                 <button class="adaptive-television-emdr-style" type="button" data-emdr-style data-emdr-style-index="0" data-emdr-tooltip="Choose the editorial animated GIF experience." aria-pressed="true" aria-label="Use GIF EMDR style">GIF</button>
@@ -481,7 +496,10 @@
                 </span>
               </span>
             </div>
-            <div class="adaptive-television-audio-controls" data-audio-wallet-controls aria-hidden="true">
+            <div class="adaptive-television-audio-controls" data-wallet-panel="audio" data-audio-wallet-controls aria-hidden="true">
+              <button class="adaptive-television-wallet-home adaptive-television-wallet-home--audio" type="button" data-wallet-home data-wallet-tooltip="wallet home" aria-label="Return to wallet home">
+                <span class="adaptive-television-reaction__glyph adaptive-television-reaction__glyph--ioh-logo adaptive-television-reaction__glyph--flora-trigger" aria-hidden="true"></span>
+              </button>
               <button class="adaptive-television-audio-mic" type="button" data-audio-wallet-mic aria-label="Return to reactions">
                 <span class="adaptive-television-reaction__glyph adaptive-television-reaction__glyph--ioh-logo adaptive-television-reaction__glyph--flora-mic" aria-hidden="true">
                   <svg viewBox="0 0 32 32" focusable="false">
@@ -495,9 +513,11 @@
               <canvas class="adaptive-television-audio-waveform" data-audio-wallet-waveform data-waveform-state="idle" data-input-active="false" width="64" height="64" aria-hidden="true"></canvas>
               <button class="adaptive-television-audio-join" type="button" data-audio-wallet-join data-circle-tooltip="Join a live audio Circle of up to nine people. Listen, speak, or simply chill with the vibe.">Join Circle</button>
               <span class="adaptive-television-audio-count" data-audio-wallet-count data-circle-tooltip="zero of nine people checked into selected Circle." role="status" aria-label="zero of nine people checked into selected Circle." tabindex="-1">0 / 9</span>
-              <button class="adaptive-television-audio-back" type="button" data-audio-mode-close aria-label="Return to wallet">×</button>
             </div>
             <div class="adaptive-television-wallet-panel adaptive-television-wallet-panel--support" data-wallet-panel="support" aria-hidden="true">
+              <button class="adaptive-television-wallet-home" type="button" data-wallet-home data-wallet-tooltip="wallet home" aria-label="Return to wallet home">
+                <span class="adaptive-television-reaction__glyph adaptive-television-reaction__glyph--ioh-logo adaptive-television-reaction__glyph--flora-trigger" aria-hidden="true"></span>
+              </button>
               <button type="button" data-care-tooltip="Talk Live with mentors, peers and supportive communities" aria-label="Connect — Talk Live with mentors, peers and supportive communities">
                 <span class="adaptive-television-care-icon-stage" aria-hidden="true"><svg class="adaptive-television-care-icon adaptive-television-care-icon--connect" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"></circle><path d="M3.8 12h16.4M12 3.5c2.4 2.3 3.6 5.1 3.6 8.5S14.4 18.2 12 20.5M12 3.5C9.6 5.8 8.4 8.6 8.4 12s1.2 6.2 3.6 8.5"></path></svg></span>
                 <span>Connect</span>
@@ -512,6 +532,9 @@
               </button>
             </div>
             <div class="adaptive-television-wallet-panel adaptive-television-wallet-panel--collect" data-wallet-panel="collect" aria-hidden="true">
+              <button class="adaptive-television-wallet-home" type="button" data-wallet-home data-wallet-tooltip="wallet home" aria-label="Return to wallet home">
+                <span class="adaptive-television-reaction__glyph adaptive-television-reaction__glyph--ioh-logo adaptive-television-reaction__glyph--flora-trigger" aria-hidden="true"></span>
+              </button>
               <div class="adaptive-television-wallet-reward-choices" aria-label="Collect rewards by category">
                 <button type="button" data-reward-tooltip="Every visit unlocks something new.&#10;We earn, together as one." aria-label="music — Every visit unlocks something new. We earn, together as one.">
                   <span class="adaptive-television-reward-icon-stage" aria-hidden="true"><svg class="adaptive-television-reward-icon" viewBox="0 0 24 24"><path d="M9 17.5V6.8l9-2v10.7"></path><circle cx="6.5" cy="17.5" r="2.5"></circle><circle cx="15.5" cy="15.5" r="2.5"></circle></svg></span>
@@ -648,7 +671,7 @@
     <script src="fashion-visual-selector-v1.js?v=fashion-selector-v1"></script>
     <script src="music-channel-selector-v1.js?v=music-channel-selector-97674825d8bd"></script>
     <script src="circle-audio-rooms.js?v=circle-rooms-4bcb0602f8f3"></script>
-    <script src="adaptive-environment-television.js?v=music-tv-816d8f9972f4"></script>
+    <script src="adaptive-environment-television.js?v=music-tv-5a90132ec7ba"></script>
     <script src="realtime-voice-assistant.js?v=realtime-voice-5c84122268bd"></script>
     <script src="adaptive-page-metadata-v1.js"></script>
     <script async data-agora-rtc-sdk src="https://download.agora.io/sdk/release/AgoraRTC_N-4.24.6.js"></script>

@@ -461,6 +461,17 @@ for (const { pagePath, source } of pages) {
 requireCondition(televisionCss.includes('@media (hover: hover) and (pointer: fine)') && televisionCss.includes('.global-nav-trigger:hover .global-nav-trigger__label'), 'the global navigation label is no longer restricted to intentional computer hover');
 
 const televisionPage = pages.find(({ pagePath }) => pagePath.endsWith('index.html'))?.source || '';
+requireCondition((televisionPage.match(/data-wallet-home/g) || []).length === 8, 'every secondary wallet panel must begin with one wallet-home flower');
+requireCondition((televisionPage.match(/data-wallet-tooltip="wallet home"/g) || []).length === 8, 'the wallet-home flowers no longer expose the approved rollover');
+requireCondition((televisionPage.match(/aria-label="Return to wallet home"/g) || []).length === 8, 'the wallet-home flowers no longer expose the approved accessible label');
+requireCondition(televisionPage.includes('data-wallet-resume-view="categories"'), 'the wallet no longer exposes its session resume state for verification');
+requireCondition(!televisionPage.includes('adaptive-television-audio-back'), 'Circle still uses the superseded close symbol instead of wallet home');
+requireCondition(controller.includes('const WALLET_RESUMABLE_VIEWS = new Set(["categories", "emoji", "video", "video-mix", "music", "emdr", "audio", "support", "collect"]);'), 'the complete wallet hierarchy is no longer resumable');
+requireCondition(controller.includes('let walletResumeView = "categories";') && controller.includes('function restoreReactionWalletView()'), 'the wallet no longer remembers and restores the last meaningful panel');
+requireCondition(controller.includes('setWalletView("closed", { remember: false });'), 'closing the wallet can overwrite its remembered panel');
+requireCondition(controller.includes('walletHomeButtons.forEach((button) => button.addEventListener("click", returnToWalletHome));'), 'the wallet-home flowers no longer share one state-preserving route home');
+requireCondition(!controller.includes('WALLET_RESUME_TIMEOUT'), 'wallet resume has regained an arbitrary time expiry');
+requireCondition(televisionCss.includes('.adaptive-television-wallet-home::after {\n  content: attr(data-wallet-tooltip) !important;'), 'the wallet-home rollover is no longer rendered from its metadata');
 requireCondition((televisionPage.match(/data-emdr-style-index=/g) || []).length === 2, 'the EMDR wallet does not expose both GIF and stellar buttons');
 requireCondition(televisionPage.includes('data-emdr-style-index="0"') && televisionPage.includes('data-emdr-style-index="1"'), 'the explicit GIF and stellar controls are not addressable independently');
 requireCondition(televisionPage.includes('Isochronic tone: 7.38088 Hz, carried on a 111.011 Hz sine wave, plus a separate constant 528.088 Hz sine wave, together as one.'), 'the Sound research lightbox no longer describes the approved frequencies exactly');

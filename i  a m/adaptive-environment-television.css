@@ -2775,8 +2775,6 @@ body.television-room-open.nav-open .global-nav-scrim {
     transform 780ms cubic-bezier(0.22, 0.72, 0.18, 1);
 }
 
-body:not(.television-wallet-pointer-locked) .adaptive-television-reaction-wallet[data-wallet-view="closed"]:hover,
-body:not(.television-wallet-pointer-locked) .adaptive-television-reaction-wallet[data-wallet-view="closed"]:focus-within,
 .adaptive-television-reaction-wallet[data-wallet-view="categories"],
 .adaptive-television-reaction-wallet[data-wallet-view="emoji"],
 .adaptive-television-reaction-wallet[data-wallet-view="video"],
@@ -2810,8 +2808,6 @@ body:not(.television-wallet-pointer-locked) .adaptive-television-reaction-wallet
     transform 720ms cubic-bezier(0.22, 0.72, 0.18, 1) 40ms;
 }
 
-body:not(.television-wallet-pointer-locked) .adaptive-television-reaction-wallet[data-wallet-view="closed"]:hover .adaptive-television-wallet-categories,
-body:not(.television-wallet-pointer-locked) .adaptive-television-reaction-wallet[data-wallet-view="closed"]:focus-within .adaptive-television-wallet-categories,
 .adaptive-television-reaction-wallet[data-wallet-view="categories"] .adaptive-television-wallet-categories,
 .adaptive-television-reaction-wallet[data-wallet-view="emoji"] [data-wallet-panel="emoji"],
 .adaptive-television-reaction-wallet[data-wallet-view="video"] [data-wallet-panel="video"],
@@ -2942,8 +2938,6 @@ body:not(.television-wallet-pointer-locked) .adaptive-television-reaction-wallet
 }
 
 /* Fixed primary wallet with a quiet, readable programme ticker. */
-body:not(.television-wallet-pointer-locked) .adaptive-television-reaction-wallet[data-wallet-view="closed"]:hover,
-body:not(.television-wallet-pointer-locked) .adaptive-television-reaction-wallet[data-wallet-view="closed"]:focus-within,
 body .adaptive-television-reaction-wallet[data-wallet-view="categories"].is-reaction-wallet-open {
   flex-direction: column;
   gap: 0;
@@ -2985,8 +2979,6 @@ body .adaptive-television-reaction-wallet[data-wallet-view="categories"].is-reac
   transition: color 220ms ease, opacity 360ms ease 120ms, transform 480ms cubic-bezier(0.22, 0.72, 0.18, 1) 100ms;
 }
 
-body:not(.television-wallet-pointer-locked) .adaptive-television-reaction-wallet[data-wallet-view="closed"]:hover .adaptive-television-now-playing,
-body:not(.television-wallet-pointer-locked) .adaptive-television-reaction-wallet[data-wallet-view="closed"]:focus-within .adaptive-television-now-playing,
 .adaptive-television-reaction-wallet[data-wallet-view="categories"] .adaptive-television-now-playing {
   position: relative;
   opacity: 1;
@@ -3125,8 +3117,6 @@ body:not(.television-wallet-pointer-locked) .adaptive-television-reaction-wallet
 }
 
 @media (max-width: 520px) {
-  body:not(.television-wallet-pointer-locked) .adaptive-television-reaction-wallet[data-wallet-view="closed"]:hover,
-  body:not(.television-wallet-pointer-locked) .adaptive-television-reaction-wallet[data-wallet-view="closed"]:focus-within,
   body .adaptive-television-reaction-wallet[data-wallet-view="categories"].is-reaction-wallet-open {
     width: min(520px, calc(100vw - 28px));
     min-height: 116px;
@@ -3528,13 +3518,6 @@ body:not(.television-wallet-pointer-locked) .adaptive-television-reaction-wallet
 }
 
 .adaptive-television-reaction-wallet[data-wallet-view]:not([data-wallet-view="closed"]) .adaptive-television-reaction-trigger {
-  opacity: 0;
-  position: absolute;
-  pointer-events: none;
-}
-
-body:not(.television-wallet-pointer-locked) .adaptive-television-reaction-wallet[data-wallet-view="closed"]:hover .adaptive-television-reaction-trigger,
-body:not(.television-wallet-pointer-locked) .adaptive-television-reaction-wallet[data-wallet-view="closed"]:focus-within .adaptive-television-reaction-trigger {
   opacity: 0;
   position: absolute;
   pointer-events: none;
@@ -5167,5 +5150,155 @@ body.music-shelf-open .adaptive-television-fashion-shelf:not(.adaptive-televisio
 
   .adaptive-television-video-icon--emdr .emdr-focus {
     animation: none;
+  }
+}
+
+/* A single, nonverbal route back to the five-part wallet home. */
+.adaptive-television-wallet-home {
+  position: relative !important;
+  display: grid !important;
+  flex: 0 0 48px;
+  place-items: center;
+  width: 48px !important;
+  min-width: 48px !important;
+  height: 48px !important;
+  min-height: 48px !important;
+  border: 0 !important;
+  border-radius: 50% !important;
+  background: transparent !important;
+  color: rgba(255, 255, 255, 0.96);
+  cursor: pointer;
+  padding: 0 !important;
+  transform: none;
+  transition: background 220ms ease, transform 220ms cubic-bezier(0.2, 0.72, 0.2, 1);
+  z-index: 4;
+}
+
+.adaptive-television-wallet-home .adaptive-television-reaction__glyph--flora-trigger {
+  width: 42px;
+  height: 42px;
+}
+
+.adaptive-television-wallet-home::after {
+  content: attr(data-wallet-tooltip) !important;
+  position: absolute;
+  left: 50%;
+  bottom: calc(100% + 13px);
+  z-index: 14;
+  width: max-content;
+  max-width: min(220px, calc(100vw - 48px));
+  border: 0;
+  border-radius: 999px;
+  background: rgba(10, 12, 14, 0.86);
+  color: rgba(255, 255, 255, 0.96);
+  font: 500 12px/1 "Helvetica Neue", Helvetica, Arial, sans-serif;
+  opacity: 0;
+  padding: 7px 10px;
+  pointer-events: none;
+  text-align: center;
+  text-shadow: none;
+  white-space: nowrap;
+  transform: translate(-50%, 6px);
+  transition: opacity 220ms ease, transform 320ms cubic-bezier(0.22, 0.72, 0.18, 1);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .adaptive-television-wallet-home:hover {
+    background: rgba(255, 255, 255, 0.08) !important;
+  }
+
+  .adaptive-television-wallet-home:hover::after {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+}
+
+.adaptive-television-wallet-home:focus-visible {
+  background: rgba(255, 255, 255, 0.08) !important;
+  outline: 1px solid rgba(255, 255, 255, 0.72);
+  outline-offset: 2px;
+}
+
+.adaptive-television-wallet-home:focus-visible::after {
+  opacity: 1;
+  transform: translate(-50%, 0);
+}
+
+.adaptive-television-reaction-wallet[data-wallet-view="video"] {
+  width: min(460px, calc(100vw - 38px));
+}
+
+.adaptive-television-reaction-wallet[data-wallet-view="video-mix"] {
+  width: min(610px, calc(100vw - 38px));
+}
+
+.adaptive-television-reaction-wallet[data-wallet-view="music"] {
+  width: min(730px, calc(100vw - 38px));
+}
+
+.adaptive-television-reaction-wallet[data-wallet-view="emdr"] {
+  width: min(860px, calc(100vw - 38px)) !important;
+}
+
+.adaptive-television-reaction-wallet[data-wallet-view="support"] {
+  width: min(555px, calc(100vw - 38px));
+}
+
+.adaptive-television-reaction-wallet[data-wallet-view="collect"] {
+  width: min(680px, calc(100vw - 38px)) !important;
+}
+
+.adaptive-television-wallet-home--audio {
+  position: absolute !important;
+  left: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.adaptive-television-wallet-home--audio:hover,
+.adaptive-television-wallet-home--audio:focus-visible {
+  transform: translateY(-50%);
+}
+
+.adaptive-television-audio-mic {
+  left: 60px;
+}
+
+.adaptive-television-audio-waveform {
+  left: 108px;
+}
+
+.adaptive-television-audio-count {
+  right: 20px;
+}
+
+@media (max-width: 760px) {
+  .adaptive-television-wallet-home {
+    flex-basis: 38px;
+    width: 38px !important;
+    min-width: 38px !important;
+    height: 38px !important;
+    min-height: 38px !important;
+  }
+
+  .adaptive-television-wallet-home .adaptive-television-reaction__glyph--flora-trigger {
+    width: 36px;
+    height: 36px;
+  }
+
+  .adaptive-television-wallet-home--audio {
+    left: 5px;
+  }
+
+  .adaptive-television-audio-mic {
+    left: 45px;
+  }
+
+  .adaptive-television-audio-waveform {
+    left: 86px;
+  }
+
+  .adaptive-television-audio-count {
+    right: 10px;
   }
 }

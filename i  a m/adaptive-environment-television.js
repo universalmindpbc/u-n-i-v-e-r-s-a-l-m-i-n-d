@@ -110,6 +110,7 @@
   const walletCategories = document.querySelector("[data-wallet-categories]");
   const walletCategoryButtons = Array.from(document.querySelectorAll("[data-wallet-category]"));
   const walletPanels = Array.from(document.querySelectorAll("[data-wallet-panel]"));
+  const walletHomeButtons = Array.from(document.querySelectorAll("[data-wallet-home]"));
   const nowPlaying = document.querySelector("[data-now-playing]");
   const nowPlayingTime = document.querySelector("[data-now-playing-time]");
   const nowPlayingStatus = document.querySelector("[data-now-playing-status]");
@@ -174,7 +175,6 @@
   const researchDialogSecondary = document.querySelector("[data-research-dialog-secondary]");
   const reactionButtons = Array.from(document.querySelectorAll("[data-television-reaction]"));
   const audioModeTrigger = document.querySelector("[data-audio-mode-open]");
-  const audioModeClose = document.querySelector("[data-audio-mode-close]");
   const audioWalletControls = document.querySelector("[data-audio-wallet-controls]");
   const audioWalletMic = document.querySelector("[data-audio-wallet-mic]");
   const audioWalletJoin = document.querySelector("[data-audio-wallet-join]");
@@ -399,6 +399,8 @@
   let researchPreviousFocus = null;
   let audioWalletInteracting = false;
   let walletView = "closed";
+  const WALLET_RESUMABLE_VIEWS = new Set(["categories", "emoji", "video", "video-mix", "music", "emdr", "audio", "support", "collect"]);
+  let walletResumeView = "categories";
   const emdrStyleNames = ["GIF", "stellar"];
   const emdrStyleValues = [7, 5];
   let emdrStyleIndex = 0;
@@ -1444,13 +1446,17 @@
     return Boolean(reactionWallet?.classList.contains("is-video-tooltip-armed"));
   }
 
-  function setWalletView(nextView) {
+  function setWalletView(nextView, { remember = true } = {}) {
     if (!reactionWallet) return;
     if (nextView !== "video-mix" && fashionShelfOpen) closeFashionShelf(false);
     if (nextView !== "music" && musicShelfOpen) closeMusicShelf(false);
     if (nextView !== walletView) closeAllResearchRollovers();
     walletView = nextView;
     reactionWallet.dataset.walletView = nextView;
+    if (remember && WALLET_RESUMABLE_VIEWS.has(nextView)) {
+      walletResumeView = nextView;
+      reactionWallet.dataset.walletResumeView = nextView;
+    }
     const isOpen = nextView !== "closed";
     reactionWallet.classList.toggle("is-reaction-wallet-open", isOpen && nextView !== "audio");
     reactionWallet.classList.remove("is-reaction-wallet-closing");
@@ -3465,10 +3471,22 @@
     }, 2200);
   }
 
+  function restoreReactionWalletView() {
+    const nextView = WALLET_RESUMABLE_VIEWS.has(walletResumeView) ? walletResumeView : "categories";
+    audioWalletMode = nextView === "audio";
+    setWalletView(nextView, { remember: false });
+    syncAudioWallet();
+    if (nextView === "music") updateMusicSelector();
+  }
+
   function setReactionWalletOpen(isOpen) {
     if (!reactionWallet) return;
-    if (audioWalletMode) return;
-    setWalletView(isOpen ? "categories" : "closed");
+    if (!isOpen) {
+      setWalletView("closed", { remember: false });
+      return;
+    }
+    if (audioWalletMode && walletView === "audio") return;
+    restoreReactionWalletView();
   }
 
   function closeReactionWalletSoftly() {
@@ -3593,12 +3611,6 @@
       );
     }
 
-    if (audioModeClose) {
-      audioModeClose.disabled = false;
-      audioModeClose.textContent = "×";
-      audioModeClose.setAttribute("aria-label", "Return to wallet");
-    }
-
     if (audioWalletCount) {
       const occupancyWords = ["zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine"];
       const occupancy = Math.max(0, Math.min(9, Math.round(Number(audioWalletOccupancy) || 0)));
@@ -3627,7 +3639,7 @@
     syncAudioWallet();
   }
 
-  function closeAudioWallet(event) {
+  function returnToWalletHome(event) {
     event?.preventDefault();
     event?.stopPropagation();
     audioWalletMode = false;
@@ -5230,7 +5242,7 @@
     if (joinedChanged) rankMusicShelves();
   });
   audioModeTrigger?.addEventListener("click", openAudioWallet);
-  audioModeClose?.addEventListener("click", closeAudioWallet);
+  walletHomeButtons.forEach((button) => button.addEventListener("click", returnToWalletHome));
   audioWalletJoin?.addEventListener("click", toggleAudioWalletJoin);
   audioWalletJoin?.addEventListener("pointerleave", () => {
     if (audioWalletMode) reactionWallet?.classList.add("is-circle-tooltip-armed");
