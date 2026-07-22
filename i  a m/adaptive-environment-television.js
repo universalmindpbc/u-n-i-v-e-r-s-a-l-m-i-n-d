@@ -179,6 +179,7 @@
   const audioWalletMic = document.querySelector("[data-audio-wallet-mic]");
   const audioWalletJoin = document.querySelector("[data-audio-wallet-join]");
   const audioWalletCount = document.querySelector("[data-audio-wallet-count]");
+  const circleRoomSelector = document.querySelector("[data-circle-room-selector]");
   const heartField = document.querySelector("[data-heart-field]");
   const supportCard = document.querySelector("[data-television-support-card]");
   const supportClose = document.querySelector("[data-television-support-close]");
@@ -370,6 +371,7 @@
   let audioWalletJoined = false;
   let audioWalletMuted = false;
   let audioWalletOccupancy = 0;
+  let audioWalletCircleName = "";
   let circleTooltipArmTimer = 0;
   let videoTooltipArmTimer = 0;
   let videoTooltipOpenedAt = 0;
@@ -2948,9 +2950,10 @@
     document.body.dataset.audioWalletJoined = String(audioWalletJoined);
 
     if (audioWalletJoin) {
-      audioWalletJoin.textContent = audioWalletJoined ? "Chillout Circle" : "Join Chillout Circle";
-      audioWalletJoin.setAttribute("aria-label", audioWalletJoined ? "Leave Chillout Circle" : "Join Chillout Circle");
-      audioWalletJoin.setAttribute("title", audioWalletJoined ? "Leave Chillout Circle" : "Join Chillout Circle");
+      const circleName = audioWalletCircleName || "selected";
+      audioWalletJoin.textContent = audioWalletJoined ? audioWalletCircleName : "Select a Circle";
+      audioWalletJoin.setAttribute("aria-label", audioWalletJoined ? `Leave ${circleName} Circle` : "Select a Circle");
+      audioWalletJoin.setAttribute("title", audioWalletJoined ? `Leave ${circleName} Circle` : "Select a Circle");
     }
 
     if (audioWalletMic) {
@@ -2971,7 +2974,7 @@
 
     if (audioWalletCount) {
       audioWalletCount.textContent = `${audioWalletOccupancy}/9`;
-      audioWalletCount.setAttribute("aria-label", `${audioWalletOccupancy} of 9 people in Chillout Circle`);
+      audioWalletCount.setAttribute("aria-label", `${audioWalletOccupancy} of 9 people in ${audioWalletCircleName || "selected"} Circle`);
     }
   }
 
@@ -2989,12 +2992,14 @@
     audioWalletMode = true;
     setWalletView("audio");
     syncAudioWallet();
+    if (!audioWalletJoined) window.IAMCircleRooms?.open?.(audioModeTrigger);
   }
 
   function closeAudioWallet(event) {
     event?.preventDefault();
     event?.stopPropagation();
     audioWalletMode = false;
+    window.IAMCircleRooms?.close?.();
     window.clearTimeout(circleTooltipArmTimer);
     reactionWallet?.classList.remove("is-circle-tooltip-armed");
     setWalletView("categories");
@@ -3004,25 +3009,24 @@
   function toggleAudioWalletJoin(event) {
     event?.preventDefault();
     event?.stopPropagation();
-    audioWalletJoined = !audioWalletJoined;
-    audioWalletMuted = false;
-    audioWalletOccupancy = audioWalletJoined ? 1 : 0;
-    audioWalletMode = true;
-    syncAudioWallet();
-    rankMusicShelves();
+    if (audioWalletJoined) {
+      window.IAMCircleRooms?.leave?.();
+      return;
+    }
+    window.IAMCircleRooms?.open?.(audioWalletJoin);
   }
 
   function toggleAudioWalletMute(event) {
     event?.preventDefault();
     event?.stopPropagation();
     if (!audioWalletJoined) return;
-    audioWalletMuted = !audioWalletMuted;
-    syncAudioWallet();
+    window.IAMCircleRooms?.toggleMute?.();
   }
 
   function closeAudioWalletFromOutside(event) {
     if (!audioWalletMode) return;
     if (reactionWallet?.contains(event.target)) return;
+    if (circleRoomSelector?.contains(event.target)) return;
     audioWalletMode = false;
     window.clearTimeout(circleTooltipArmTimer);
     reactionWallet?.classList.remove("is-circle-tooltip-armed");
@@ -4561,6 +4565,20 @@
   document.addEventListener("keydown", (event) => {
     if (event.key !== "Escape" || !document.body.classList.contains("community-globe-open")) return;
     closeCommunityGlobe(event);
+  });
+  window.addEventListener("iam:circle-room-state", (event) => {
+    const nextState = event.detail || {};
+    const joinedChanged = audioWalletJoined !== Boolean(nextState.joined);
+    audioWalletJoined = Boolean(nextState.joined);
+    audioWalletMuted = nextState.muted !== false;
+    audioWalletOccupancy = audioWalletJoined ? Math.max(1, Number(nextState.occupancy) || 1) : 0;
+    audioWalletCircleName = audioWalletJoined ? String(nextState.circleName || "Circle") : "";
+    if (nextState.selectorOpen) {
+      audioWalletMode = true;
+      setWalletView("audio");
+    }
+    syncAudioWallet();
+    if (joinedChanged) rankMusicShelves();
   });
   audioModeTrigger?.addEventListener("click", openAudioWallet);
   audioModeClose?.addEventListener("click", closeAudioWallet);

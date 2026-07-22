@@ -1,12 +1,20 @@
 name = "iam-agora-audio-room"
 main = "agora-audio-room-worker.js"
 compatibility_date = "2026-07-10"
+compatibility_flags = ["nodejs_compat"]
 workers_dev = true
 
-# Store the temporary RTC token as a Cloudflare secret, not in this file:
-# wrangler secret put AGORA_CHILLOUT_POD_RTC_TOKEN --config cloudflare/wrangler.agora-audio.toml
+# Store the Agora App Certificate as a Cloudflare secret, never in this file:
+# wrangler secret put AGORA_APP_CERTIFICATE --config cloudflare/wrangler.agora-audio.toml
+
+[[durable_objects.bindings]]
+name = "CIRCLE_ROOMS"
+class_name = "CircleRoom"
+
+[[migrations]]
+tag = "v1"
+new_sqlite_classes = ["CircleRoom"]
 
 [vars]
 AGORA_APP_ID = "a211bda773b743579b5f86d5d89e6c3c"
-AGORA_AUDIO_ROOM_CHANNEL = "Chillout Pod"
 AGORA_TOKEN_TTL_SECONDS = "3600"

@@ -1,53 +1,37 @@
-# Agora Audio Room Backend Setup
+# Circle Audio Rooms Backend
 
-This backend is prepared for the `Chillout Pod` audio room without adding UI to the home/video page.
+The I Am television wallet offers eight live audio communities through one Cloudflare Worker and Agora RTC.
 
-## Worker
+## Public API
 
-- Worker file: `cloudflare/agora-audio-room-worker.js`
-- Wrangler config: `cloudflare/wrangler.agora-audio.toml`
-- Endpoint path: `/agora-audio-token`
-- Current room: `Chillout Pod`
-- Current Agora App ID: `a211bda773b743579b5f86d5d89e6c3c`
+- Worker: `cloudflare/agora-audio-room-worker.js`
+- Configuration: `cloudflare/wrangler.agora-audio.toml`
+- Endpoint: `https://iam-agora-audio-room.universalmind.workers.dev`
+- Catalogue: `GET /audio-rooms`
+- Reserve a seat and mint an RTC token: `POST /audio-rooms/join`
+- Confirm live presence: `GET /audio-rooms/presence` with a WebSocket upgrade
+- Leave or release a pending seat: `POST /audio-rooms/leave`
 
-The worker returns the client join payload:
+The Circle catalogue is IMG, WME, North Bondi RSL, NAGNATA, AIME, Black Rainbow, Headspace, and Phoenix. Each physical room has a strict capacity of nine. A tenth simultaneous reservation is assigned to room two, then further rooms are created as needed.
 
-```json
-{
-  "app_id": "a211bda773b743579b5f86d5d89e6c3c",
-  "channel": "Chillout Pod",
-  "token": "...",
-  "uid": null,
-  "role": "publisher"
-}
-```
+## Credentials
 
-## Secret
-
-Store the temporary RTC token in Cloudflare, not in repository files:
+The Agora App ID is a non-secret Worker variable. Store the matching App Certificate as a Cloudflare secret; never put it in this repository:
 
 ```sh
-wrangler secret put AGORA_CHILLOUT_POD_RTC_TOKEN --config cloudflare/wrangler.agora-audio.toml
+wrangler secret put AGORA_APP_CERTIFICATE --config cloudflare/wrangler.agora-audio.toml
 ```
 
-Paste the Agora Console temporary RTC token when prompted.
+The Worker mints short-lived publisher tokens for the allocated channel and random numeric UID. The previous temporary-console-token flow is retired.
 
-## Deploy
+## Deploy and verify
 
 ```sh
-wrangler deploy --config cloudflare/wrangler.agora-audio.toml
+cd cloudflare
+pnpm install --frozen-lockfile
+wrangler deploy --config wrangler.agora-audio.toml
+cd ..
+node tools/check-circle-room-worker.mjs https://iam-agora-audio-room.universalmind.workers.dev
 ```
 
-## Local Test Shape
-
-Once deployed, the eventual UI can request:
-
-```text
-GET https://iam-agora-audio-room.<account>.workers.dev/agora-audio-token?channel=Chillout%20Pod
-```
-
-The frontend should use the returned `app_id`, `channel`, `token`, and `uid` with the Agora Web SDK audio client.
-
-## Production Note
-
-This first backend stores a temporary Agora Console RTC token. For production, replace it with server-side token generation using the Agora App Certificate as a Cloudflare secret, so tokens can be minted per user/session and refreshed automatically.
+The verification script proves the exact eight-community catalogue, live WebSocket presence, dynamic secure token issuance, nine-seat capacity, and automatic creation of room two for person ten.

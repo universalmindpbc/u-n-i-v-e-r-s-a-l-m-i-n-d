@@ -6,6 +6,7 @@
     <meta name="iam-citizen-needs-inference-endpoint" content="https://iam-citizen-needs-inference.universalmind.workers.dev/citizen-needs-inference">
     <meta name="iam-adaptive-music-video-selection-endpoint" content="/vogue/iam/api/adaptive-music-video-selection.php">
     <meta name="iam-playback-telemetry-endpoint" content="https://iam-playback-telemetry.universalmind.workers.dev/events">
+    <meta name="iam-circle-room-endpoint" content="https://iam-agora-audio-room.universalmind.workers.dev">
     <title>Home | I Am</title>
     <link rel="icon" type="image/png" sizes="32x32" href="/vogue/iam/favicon.png?v=iam-favicon-4">
     <link rel="shortcut icon" type="image/png" href="/vogue/iam/favicon.png?v=iam-favicon-4">
@@ -19,6 +20,7 @@
     <link rel="stylesheet" href="styles.css?v=global-nav-single-shell-1">
     <link rel="preload" as="image" href="a s s e t s/Universal Mind [ I o H ] Logo.PNG">
     <link rel="stylesheet" href="adaptive-environment-television.css?v=music-tv-css-e3cb715d442b">
+    <link rel="stylesheet" href="circle-audio-rooms.css?v=circle-rooms-css-994b4d54f528">
     <link rel="stylesheet" href="realtime-voice-assistant.css?v=realtime-voice-css-3dbe2f94acaa">
   </head>
   <body class="adaptive-television-page">
@@ -183,6 +185,61 @@
                 <span class="adaptive-television-fashion-shelf__progress" aria-hidden="true"><i data-music-shelf-progress></i></span>
                 <span class="adaptive-television-music-shelf__status" data-music-shelf-status aria-live="polite"></span>
               </footer>
+            </div>
+          </section>
+          <section class="circle-room-selector" data-circle-room-selector aria-hidden="true" inert>
+            <button class="circle-room-selector__backdrop" type="button" data-circle-selector-close tabindex="-1" aria-label="Close Circle selector"></button>
+            <div class="circle-room-selector__casing" role="dialog" aria-modal="true" aria-labelledby="circle-room-selector-title" aria-describedby="circle-room-selector-capacity">
+              <button class="circle-room-selector__close" type="button" data-circle-selector-close aria-label="Close Circle selector">×</button>
+              <div class="circle-room-selector__orbit" data-circle-room-orbit>
+                <button class="circle-room-selector__circle circle-room-selector__circle--img" type="button" data-circle-id="img" aria-pressed="false">
+                  <span class="circle-room-selector__name">img</span>
+                  <span class="circle-room-selector__description">[ models 💃 ]</span>
+                  <span class="circle-room-selector__availability" data-circle-availability="img">checking</span>
+                </button>
+                <button class="circle-room-selector__circle circle-room-selector__circle--wme" type="button" data-circle-id="wme" aria-pressed="false">
+                  <span class="circle-room-selector__name">wme</span>
+                  <span class="circle-room-selector__description">[ talent 🌐 ]</span>
+                  <span class="circle-room-selector__availability" data-circle-availability="wme">checking</span>
+                </button>
+                <button class="circle-room-selector__circle circle-room-selector__circle--north-bondi-rsl" type="button" data-circle-id="north-bondi-rsl" aria-pressed="false">
+                  <span class="circle-room-selector__name">north bondi rsl</span>
+                  <span class="circle-room-selector__description">[ veterans 🎖️ ]</span>
+                  <span class="circle-room-selector__availability" data-circle-availability="north-bondi-rsl">checking</span>
+                </button>
+                <button class="circle-room-selector__circle circle-room-selector__circle--nagnata" type="button" data-circle-id="nagnata" aria-pressed="false">
+                  <span class="circle-room-selector__name">nagnata</span>
+                  <span class="circle-room-selector__description">[ customers 🩱 ]</span>
+                  <span class="circle-room-selector__availability" data-circle-availability="nagnata">checking</span>
+                </button>
+                <button class="circle-room-selector__circle circle-room-selector__circle--aime" type="button" data-circle-id="aime" aria-pressed="false">
+                  <span class="circle-room-selector__name">aime</span>
+                  <span class="circle-room-selector__description">[ first nations imagination 🧘🏾‍♀️ ]</span>
+                  <span class="circle-room-selector__availability" data-circle-availability="aime">checking</span>
+                </button>
+                <button class="circle-room-selector__circle circle-room-selector__circle--black-rainbow" type="button" data-circle-id="black-rainbow" aria-pressed="false">
+                  <span class="circle-room-selector__name">black rainbow</span>
+                  <span class="circle-room-selector__description">[ first nations mental health 🌈 ]</span>
+                  <span class="circle-room-selector__availability" data-circle-availability="black-rainbow">checking</span>
+                </button>
+                <button class="circle-room-selector__circle circle-room-selector__circle--headspace" type="button" data-circle-id="headspace" aria-pressed="false">
+                  <span class="circle-room-selector__name">headspace</span>
+                  <span class="circle-room-selector__description">[ youth mental health 🧩 ]</span>
+                  <span class="circle-room-selector__availability" data-circle-availability="headspace">checking</span>
+                </button>
+                <button class="circle-room-selector__circle circle-room-selector__circle--phoenix" type="button" data-circle-id="phoenix" aria-pressed="false">
+                  <span class="circle-room-selector__name">phoenix</span>
+                  <span class="circle-room-selector__description">[ veterans mental health 🐦‍🔥 ]</span>
+                  <span class="circle-room-selector__availability" data-circle-availability="phoenix">checking</span>
+                </button>
+                <div class="circle-room-selector__centre">
+                  <h2 id="circle-room-selector-title" data-circle-selected-name>Select A Circle</h2>
+                  <p id="circle-room-selector-capacity" data-circle-selected-description>[ live audio rooms · 9 person capacity each ]</p>
+                  <p class="circle-room-selector__room-status" data-circle-selected-status aria-live="polite"></p>
+                  <button class="circle-room-selector__join" type="button" data-circle-selector-join hidden disabled>Join Circle</button>
+                </div>
+              </div>
+              <p class="circle-room-selector__status" data-circle-selector-status aria-live="polite"></p>
             </div>
           </section>
           <div class="adaptive-television-reaction-wallet" data-reaction-wallet data-wallet-view="closed" aria-label="Universal Mind wallet">
@@ -396,8 +453,8 @@
                   </svg>
                 </span>
               </button>
-              <button class="adaptive-television-audio-join" type="button" data-audio-wallet-join data-circle-tooltip="Join audio room circles of up to nine people to watch live music and fashion tv together. Listen, speak, or simply chill with the vibe.">Join Chillout Circle</button>
-              <span class="adaptive-television-audio-count" data-audio-wallet-count aria-label="0 of 9 people in room">0/9</span>
+              <button class="adaptive-television-audio-join" type="button" data-audio-wallet-join data-circle-tooltip="Select a live audio Circle of up to nine people. Listen, speak, or simply chill with the vibe.">Select a Circle</button>
+              <span class="adaptive-television-audio-count" data-audio-wallet-count aria-label="0 of 9 people in selected Circle">0/9</span>
               <button class="adaptive-television-audio-back" type="button" data-audio-mode-close aria-label="Return to wallet">×</button>
             </div>
             <div class="adaptive-television-wallet-panel adaptive-television-wallet-panel--support" data-wallet-panel="support" aria-hidden="true">
@@ -545,8 +602,10 @@
     <script src="first-party-analytics.js?v=first-party-analytics-2"></script>
     <script src="fashion-visual-selector-v1.js?v=fashion-selector-v1"></script>
     <script src="music-channel-selector-v1.js?v=music-channel-selector-97674825d8bd"></script>
-    <script src="adaptive-environment-television.js?v=music-tv-b6ccd2fe950b"></script>
+    <script src="circle-audio-rooms.js?v=circle-rooms-e8a6d28e3856"></script>
+    <script src="adaptive-environment-television.js?v=music-tv-3835f9f013a5"></script>
     <script src="realtime-voice-assistant.js?v=realtime-voice-5c84122268bd"></script>
     <script src="adaptive-page-metadata-v1.js"></script>
+    <script async data-agora-rtc-sdk src="https://download.agora.io/sdk/release/AgoraRTC_N-4.24.6.js"></script>
   </body>
 </html>
