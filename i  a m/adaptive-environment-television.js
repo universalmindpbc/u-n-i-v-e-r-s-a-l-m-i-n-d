@@ -2454,6 +2454,8 @@
     const bufferSeconds = radioBufferedAhead(audio);
     document.body.dataset.radioBufferSeconds = bufferSeconds.toFixed(1);
     document.body.dataset.radioBufferTargetSeconds = String(RADIO_READY_BUFFER_SECONDS);
+    document.body.dataset.radioPlaybackTime = (Number(audio.currentTime) || 0).toFixed(1);
+    document.body.dataset.radioPaused = String(Boolean(audio.paused));
     document.body.dataset.radioReadyState = String(audio.readyState || 0);
     document.body.dataset.radioNetworkState = String(audio.networkState || 0);
     document.body.dataset.radioWaitingCount = String(radioWaitingCount);
@@ -2598,7 +2600,9 @@
       if (bufferSeconds < RADIO_LOW_BUFFER_SECONDS) {
         try { hls.startLoad(-1); } catch {}
       }
-      if (audio.paused && playbackState === "playing") scheduleRadioRecovery("unexpected_pause", 100);
+      if (audio.paused && playbackState === "playing" && Date.now() - lastAdvanceAt > 1500) {
+        scheduleRadioRecovery("unexpected_pause", 100);
+      }
     }, 1000);
   }
 
@@ -2632,7 +2636,8 @@
     continuationHls = null;
     continuationAudioSource = "";
     [
-      "radioStreamTransport", "radioBufferSeconds", "radioBufferTargetSeconds", "radioReadyState",
+      "radioStreamTransport", "radioBufferSeconds", "radioBufferTargetSeconds", "radioPlaybackTime",
+      "radioPaused", "radioReadyState",
       "radioNetworkState", "radioBandwidthKbps", "radioLiveLatencySeconds", "radioWaitingCount",
       "radioStalledCount", "radioRecoveryCount", "radioRecoveryReason", "radioLastHlsError",
       "radioLastMediaError", "radioManifestVariants", "radioBitrateKbps", "radioLiveSyncSegments",
