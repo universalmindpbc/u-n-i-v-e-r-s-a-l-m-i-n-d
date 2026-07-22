@@ -305,11 +305,23 @@
     // The adaptive recommendation remains available when session storage is restricted.
   }
   const RADIO_HLS_LIBRARY_URL = "https://cdn.jsdelivr.net/npm/hls.js@1.6.13/dist/hls.min.js";
+  const RADIO_READY_BUFFER_SECONDS = 24;
+  const RADIO_LOW_BUFFER_SECONDS = 12;
+  const RADIO_BUFFER_WAIT_MS = 12000;
+  const RADIO_LIVE_SYNC_SEGMENTS = 4;
+  const RADIO_MAX_LIVE_LATENCY_SEGMENTS = 5;
   let continuationAudio = null;
   let continuationHls = null;
   let continuationAudioSource = "";
   let radioHlsLibraryPromise = null;
   let radioHlsAttachSequence = 0;
+  let radioPlaybackCleanup = null;
+  let radioBufferMonitor = 0;
+  let radioRecoveryTimer = 0;
+  let radioWaitingCount = 0;
+  let radioStalledCount = 0;
+  let radioRecoveryCount = 0;
+  let radioLastRecoveryAt = 0;
   let voiceAssistantDuckActive = false;
   const voiceAssistantBaseVolumes = new Map();
   const voiceAssistantVolumeFrames = new Map();
@@ -2424,12 +2436,208 @@
     return radioHlsLibraryPromise;
   }
 
+  function radioBufferedAhead(audio = continuationAudio) {
+    if (!audio?.buffered?.length) return 0;
+    const currentTime = Number(audio.currentTime) || 0;
+    let fallbackRange = 0;
+    for (let index = 0; index < audio.buffered.length; index += 1) {
+      const start = Number(audio.buffered.start(index)) || 0;
+      const end = Number(audio.buffered.end(index)) || 0;
+      fallbackRange = Math.max(fallbackRange, end - start);
+      if (currentTime + .12 >= start && currentTime <= end + .12) return Math.max(0, end - currentTime);
+    }
+    return audio.paused ? Math.max(0, fallbackRange) : 0;
+  }
+
+  function updateRadioBufferDiagnostics(audio = continuationAudio, hls = continuationHls) {
+    if (!audio) return 0;
+    const bufferSeconds = radioBufferedAhead(audio);
+    document.body.dataset.radioBufferSeconds = bufferSeconds.toFixed(1);
+    document.body.dataset.radioBufferTargetSeconds = String(RADIO_READY_BUFFER_SECONDS);
+    document.body.dataset.radioReadyState = String(audio.readyState || 0);
+    document.body.dataset.radioNetworkState = String(audio.networkState || 0);
+    document.body.dataset.radioWaitingCount = String(radioWaitingCount);
+    document.body.dataset.radioStalledCount = String(radioStalledCount);
+    document.body.dataset.radioRecoveryCount = String(radioRecoveryCount);
+    const bandwidth = Number(hls?.bandwidthEstimate);
+    if (Number.isFinite(bandwidth) && bandwidth > 0) {
+      document.body.dataset.radioBandwidthKbps = String(Math.round(bandwidth / 1000));
+    }
+    const latency = Number(hls?.latency);
+    if (Number.isFinite(latency) && latency >= 0) document.body.dataset.radioLiveLatencySeconds = latency.toFixed(1);
+    return bufferSeconds;
+  }
+
+  function clearRadioPlaybackDiagnostics() {
+    window.clearInterval(radioBufferMonitor);
+    window.clearTimeout(radioRecoveryTimer);
+    radioBufferMonitor = 0;
+    radioRecoveryTimer = 0;
+    radioPlaybackCleanup?.();
+    radioPlaybackCleanup = null;
+  }
+
+  function recoverRadioPlayback(reason = "buffer_low") {
+    const audio = continuationAudio;
+    const hls = continuationHls;
+    if (!audio || !hls || !document.body.classList.contains("television-radio-continuation")) return;
+    const now = Date.now();
+    if (now - radioLastRecoveryAt < 800) return;
+    radioLastRecoveryAt = now;
+    radioRecoveryCount += 1;
+    document.body.dataset.radioPlaybackState = "recovering";
+    document.body.dataset.radioRecoveryReason = reason;
+    document.body.dataset.radioRecoveryCount = String(radioRecoveryCount);
+    try { hls.startLoad(-1); } catch {}
+    audio.play()
+      .then(() => {
+        document.body.dataset.radioPlaybackState = "playing";
+        delete document.body.dataset.radioPlaybackError;
+      })
+      .catch((error) => {
+        document.body.dataset.radioPlaybackError = String(error?.message || error).slice(0, 120);
+      });
+  }
+
+  function scheduleRadioRecovery(reason, delayMs = 900) {
+    window.clearTimeout(radioRecoveryTimer);
+    radioRecoveryTimer = window.setTimeout(() => {
+      radioRecoveryTimer = 0;
+      recoverRadioPlayback(reason);
+    }, delayMs);
+  }
+
+  function bindRadioPlaybackDiagnostics(audio, hls, Hls) {
+    clearRadioPlaybackDiagnostics();
+    radioWaitingCount = 0;
+    radioStalledCount = 0;
+    radioRecoveryCount = 0;
+    radioLastRecoveryAt = 0;
+    let lastPlaybackTime = Number(audio.currentTime) || 0;
+    let lastAdvanceAt = Date.now();
+
+    const handleWaiting = () => {
+      radioWaitingCount += 1;
+      if (document.body.dataset.radioPlaybackState !== "loading") document.body.dataset.radioPlaybackState = "buffering";
+      updateRadioBufferDiagnostics(audio, hls);
+      try { hls.startLoad(-1); } catch {}
+      scheduleRadioRecovery("waiting");
+    };
+    const handleStalled = () => {
+      radioStalledCount += 1;
+      if (document.body.dataset.radioPlaybackState !== "loading") document.body.dataset.radioPlaybackState = "buffering";
+      updateRadioBufferDiagnostics(audio, hls);
+      try { hls.startLoad(-1); } catch {}
+      scheduleRadioRecovery("stalled");
+    };
+    const handlePlaying = () => {
+      lastAdvanceAt = Date.now();
+      lastPlaybackTime = Number(audio.currentTime) || 0;
+      if (document.body.classList.contains("television-radio-continuation")) {
+        document.body.dataset.radioPlaybackState = "playing";
+        delete document.body.dataset.radioPlaybackError;
+      }
+      updateRadioBufferDiagnostics(audio, hls);
+    };
+    const handleProgress = () => updateRadioBufferDiagnostics(audio, hls);
+    const handleMediaError = () => {
+      document.body.dataset.radioLastMediaError = String(audio.error?.code || "unknown");
+      scheduleRadioRecovery("media_error", 300);
+    };
+
+    audio.addEventListener("waiting", handleWaiting);
+    audio.addEventListener("stalled", handleStalled);
+    audio.addEventListener("playing", handlePlaying);
+    audio.addEventListener("progress", handleProgress);
+    audio.addEventListener("error", handleMediaError);
+    radioPlaybackCleanup = () => {
+      audio.removeEventListener("waiting", handleWaiting);
+      audio.removeEventListener("stalled", handleStalled);
+      audio.removeEventListener("playing", handlePlaying);
+      audio.removeEventListener("progress", handleProgress);
+      audio.removeEventListener("error", handleMediaError);
+    };
+
+    hls.on(Hls.Events.MANIFEST_PARSED, () => {
+      document.body.dataset.radioManifestVariants = String(hls.levels?.length || 0);
+      const bitrate = Number(hls.levels?.[0]?.bitrate || hls.levels?.[0]?.maxBitrate);
+      if (Number.isFinite(bitrate) && bitrate > 0) document.body.dataset.radioBitrateKbps = String(Math.round(bitrate / 1000));
+    });
+    hls.on(Hls.Events.FRAG_BUFFERED, () => updateRadioBufferDiagnostics(audio, hls));
+    hls.on(Hls.Events.ERROR, (_event, data) => {
+      document.body.dataset.radioLastHlsError = `${data?.type || "unknown"}:${data?.details || "unknown"}`.slice(0, 160);
+      if (data?.details?.includes?.("buffer") || data?.type === Hls.ErrorTypes.NETWORK_ERROR) {
+        try { hls.startLoad(-1); } catch {}
+        scheduleRadioRecovery(data?.fatal ? "fatal_network" : "hls_buffer");
+      }
+      if (!data?.fatal) return;
+      if (data.type === Hls.ErrorTypes.MEDIA_ERROR) {
+        try { hls.recoverMediaError(); } catch {}
+        scheduleRadioRecovery("fatal_media", 300);
+      } else if (data.type !== Hls.ErrorTypes.NETWORK_ERROR) {
+        scheduleRadioRecovery("fatal_other");
+      }
+    });
+
+    radioBufferMonitor = window.setInterval(() => {
+      if (audio !== continuationAudio || hls !== continuationHls) return;
+      const bufferSeconds = updateRadioBufferDiagnostics(audio, hls);
+      if (!document.body.classList.contains("television-radio-continuation")) return;
+      const playbackState = document.body.dataset.radioPlaybackState;
+      if (playbackState === "loading") return;
+      const currentTime = Number(audio.currentTime) || 0;
+      if (currentTime > lastPlaybackTime + .04) {
+        lastPlaybackTime = currentTime;
+        lastAdvanceAt = Date.now();
+        if (playbackState === "buffering" || playbackState === "recovering") {
+          document.body.dataset.radioPlaybackState = "playing";
+        }
+      } else if (!audio.paused && Date.now() - lastAdvanceAt > 3500) {
+        scheduleRadioRecovery("clock_stalled", 200);
+      }
+      if (bufferSeconds < RADIO_LOW_BUFFER_SECONDS) {
+        try { hls.startLoad(-1); } catch {}
+      }
+      if (audio.paused && playbackState === "playing") scheduleRadioRecovery("unexpected_pause", 100);
+    }, 1000);
+  }
+
+  function waitForRadioBuffer(audio, minimumSeconds = RADIO_READY_BUFFER_SECONDS) {
+    if (audio?.dataset.radioTransport !== "hls-js") return Promise.resolve(radioBufferedAhead(audio));
+    const startedAt = Date.now();
+    document.body.dataset.radioPlaybackState = "buffering";
+    return new Promise((resolve) => {
+      const inspect = () => {
+        if (audio !== continuationAudio) {
+          resolve(0);
+          return;
+        }
+        const bufferSeconds = updateRadioBufferDiagnostics(audio, continuationHls);
+        if (bufferSeconds >= minimumSeconds || Date.now() - startedAt >= RADIO_BUFFER_WAIT_MS) {
+          document.body.dataset.radioInitialBufferSeconds = bufferSeconds.toFixed(1);
+          document.body.dataset.radioInitialBufferState = bufferSeconds >= minimumSeconds ? "ready" : "timeout";
+          resolve(bufferSeconds);
+          return;
+        }
+        window.setTimeout(inspect, 120);
+      };
+      inspect();
+    });
+  }
+
   function destroyContinuationHls() {
     radioHlsAttachSequence += 1;
+    clearRadioPlaybackDiagnostics();
     try { continuationHls?.destroy?.(); } catch {}
     continuationHls = null;
     continuationAudioSource = "";
-    delete document.body.dataset.radioStreamTransport;
+    [
+      "radioStreamTransport", "radioBufferSeconds", "radioBufferTargetSeconds", "radioReadyState",
+      "radioNetworkState", "radioBandwidthKbps", "radioLiveLatencySeconds", "radioWaitingCount",
+      "radioStalledCount", "radioRecoveryCount", "radioRecoveryReason", "radioLastHlsError",
+      "radioLastMediaError", "radioManifestVariants", "radioBitrateKbps", "radioLiveSyncSegments",
+      "radioInitialBufferSeconds", "radioInitialBufferState",
+    ].forEach((key) => delete document.body.dataset[key]);
   }
 
   async function attachContinuationAudioSource(audio, source) {
@@ -2468,10 +2676,38 @@
       return audio;
     }
 
-    const hls = new Hls({ enableWorker: true, maxBufferLength: 60, backBufferLength: 30 });
+    const hls = new Hls({
+      enableWorker: true,
+      lowLatencyMode: false,
+      startFragPrefetch: true,
+      liveSyncDurationCount: RADIO_LIVE_SYNC_SEGMENTS,
+      liveMaxLatencyDurationCount: RADIO_MAX_LIVE_LATENCY_SEGMENTS,
+      maxLiveSyncPlaybackRate: 1,
+      maxBufferLength: 60,
+      maxMaxBufferLength: 90,
+      backBufferLength: 15,
+      maxBufferHole: 1.5,
+      highBufferWatchdogPeriod: 1,
+      nudgeOffset: .1,
+      nudgeMaxRetry: 5,
+      manifestLoadingTimeOut: 20000,
+      manifestLoadingMaxRetry: 6,
+      manifestLoadingRetryDelay: 1000,
+      manifestLoadingMaxRetryTimeout: 16000,
+      levelLoadingTimeOut: 20000,
+      levelLoadingMaxRetry: 8,
+      levelLoadingRetryDelay: 1000,
+      levelLoadingMaxRetryTimeout: 16000,
+      fragLoadingTimeOut: 20000,
+      fragLoadingMaxRetry: 8,
+      fragLoadingRetryDelay: 1000,
+      fragLoadingMaxRetryTimeout: 16000,
+    });
     continuationHls = hls;
     audio.dataset.radioTransport = "hls-js";
     document.body.dataset.radioStreamTransport = "hls-js";
+    document.body.dataset.radioLiveSyncSegments = String(RADIO_LIVE_SYNC_SEGMENTS);
+    bindRadioPlaybackDiagnostics(audio, hls, Hls);
 
     await new Promise((resolve, reject) => {
       let settled = false;
@@ -2697,6 +2933,16 @@
         groupQueue: groupQueue.slice(),
         inGroup: audioWalletJoined,
         atWork: document.body.dataset.musicAtWorkContext === "true",
+        radioPlayback: {
+          state: document.body.dataset.radioPlaybackState || "stopped",
+          transport: document.body.dataset.radioStreamTransport || "",
+          bufferSeconds: Number(document.body.dataset.radioBufferSeconds || 0),
+          initialBufferSeconds: Number(document.body.dataset.radioInitialBufferSeconds || 0),
+          waitingCount: Number(document.body.dataset.radioWaitingCount || 0),
+          stalledCount: Number(document.body.dataset.radioStalledCount || 0),
+          recoveryCount: Number(document.body.dataset.radioRecoveryCount || 0),
+          lastHlsError: document.body.dataset.radioLastHlsError || "",
+        },
       };
     },
     setMode(mode) {
@@ -3626,6 +3872,7 @@
       document.body.dataset.radioPreloadState = "muted";
     }
     await attachContinuationAudioSource(continuationAudio, source);
+    await waitForRadioBuffer(continuationAudio);
     continuationAudio.volume = 0;
     window.IAMEMDR?.setAudioSource?.(continuationAudio);
 

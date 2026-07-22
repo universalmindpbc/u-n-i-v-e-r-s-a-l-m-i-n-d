@@ -244,6 +244,11 @@ requireCondition(controller.includes('async function loadSoundResearchSettings()
 requireCondition(!controller.includes('iamQuantumTreePeakVolume'), 'a browser-specific Quantum Tree peak override has returned');
 requireCondition(controller.includes('const radioIsAudible = continuationAudio && !continuationAudio.paused'), 'the Quantum Tree layer no longer detects active radio playback');
 requireCondition(controller.includes('media: videoIsAudible ? localVideo : (radioIsAudible ? continuationAudio : null),'), 'the Quantum Tree layer no longer selects the audible video or radio source');
+requireCondition(controller.includes('const RADIO_READY_BUFFER_SECONDS = 24;') && controller.includes('const RADIO_LIVE_SYNC_SEGMENTS = 4;'), 'NTS radio no longer builds a multi-segment safety reservoir behind the live edge');
+requireCondition(controller.includes('liveSyncDurationCount: RADIO_LIVE_SYNC_SEGMENTS') && controller.includes('liveMaxLatencyDurationCount: RADIO_MAX_LIVE_LATENCY_SEGMENTS'), 'NTS radio has lost its resilient live-window position');
+requireCondition(controller.includes('fragLoadingMaxRetry: 8') && controller.includes('levelLoadingMaxRetry: 8'), 'NTS radio segment and playlist retry protection has regressed');
+requireCondition(controller.includes('bindRadioPlaybackDiagnostics(audio, hls, Hls);') && controller.includes('scheduleRadioRecovery("waiting")'), 'NTS radio stall detection and automatic recovery are no longer wired');
+requireCondition(controller.includes('await waitForRadioBuffer(continuationAudio);'), 'NTS radio starts before the initial safety buffer is ready');
 requireCondition(controller.includes('measuredLevel * activeMedia.volume'), 'the Quantum Tree layer no longer follows the measured level of the active media source');
 requireCondition(!controller.includes('return radioLevel * SOUND_RESEARCH_MAX_VOLUME;'), 'radio playback has returned to a fixed Quantum Tree gain');
 requireCondition(controller.includes('window.IAMQuantumTree = {'), 'the live Quantum Tree diagnostic interface is missing');
