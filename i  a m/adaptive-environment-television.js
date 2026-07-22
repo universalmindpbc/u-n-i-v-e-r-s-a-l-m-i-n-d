@@ -168,6 +168,9 @@
   const researchDialogCopy = document.querySelector("[data-research-dialog-copy]");
   const researchDialogPrimary = document.querySelector("[data-research-dialog-primary]");
   const researchDialogPrompt = document.querySelector("[data-research-dialog-prompt]");
+  const researchDialogFrequency = document.querySelector("[data-research-dialog-frequency]");
+  const researchDialogScience = document.querySelector("[data-research-dialog-science]");
+  const researchDialogScienceLink = document.querySelector("[data-research-dialog-science-link]");
   const researchDialogSecondary = document.querySelector("[data-research-dialog-secondary]");
   const reactionButtons = Array.from(document.querySelectorAll("[data-television-reaction]"));
   const audioModeTrigger = document.querySelector("[data-audio-mode-open]");
@@ -1357,11 +1360,19 @@
     const primary = host.querySelector(".adaptive-television-research-tooltip__primary");
     const prompt = host.querySelector(".adaptive-television-research-tooltip__prompt");
     const secondary = host.querySelector(".adaptive-television-research-tooltip__secondary");
+    const frequency = host.dataset.researchFrequency?.trim() || "";
+    const scienceHref = host.dataset.researchScienceHref?.trim() || "";
     if (!researchDialog || !researchDialogCopy || !primary || !prompt || !secondary) return;
     activeResearchHost = host;
     researchPreviousFocus = document.activeElement instanceof HTMLElement ? document.activeElement : null;
     if (researchDialogPrimary) researchDialogPrimary.textContent = primary.textContent;
     if (researchDialogPrompt) researchDialogPrompt.textContent = prompt.textContent;
+    if (researchDialogFrequency) {
+      researchDialogFrequency.textContent = frequency;
+      researchDialogFrequency.hidden = !frequency;
+    }
+    if (researchDialogScience) researchDialogScience.hidden = !scienceHref;
+    if (researchDialogScienceLink && scienceHref) researchDialogScienceLink.href = scienceHref;
     if (researchDialogSecondary) researchDialogSecondary.textContent = secondary.textContent;
     researchDialog.setAttribute("aria-label", host.classList.contains("adaptive-television-research-tooltip-host--sound") ? "Sound research information" : "EMDR research information");
     researchDialog.setAttribute("aria-hidden", "false");

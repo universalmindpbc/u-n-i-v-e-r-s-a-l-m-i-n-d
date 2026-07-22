@@ -50,7 +50,7 @@
     const dossier = layer.dossier;
 
     return `
-      <article class="research-layer" data-research-layer="${escapeHtml(layer.id)}">
+      <article class="research-layer" id="research-${escapeHtml(layer.id)}" data-research-layer="${escapeHtml(layer.id)}">
         <button class="research-row-button" type="button" aria-expanded="false" aria-controls="${panelId}" data-layer-toggle="${escapeHtml(layer.id)}">
           <span class="research-layer-name"><small>${escapeHtml(layer.sequence)}</small>${escapeHtml(layer.name)}</span>
           <span class="research-position">${escapeHtml(layer.position)}</span>
@@ -120,11 +120,11 @@
     });
   }
 
-  function toggleLayer(layerId) {
+  function toggleLayer(layerId, forceOpen = false) {
     tracker?.querySelectorAll("[data-research-layer]").forEach((article) => {
       const button = article.querySelector("[data-layer-toggle]");
       const detail = article.querySelector(".research-detail");
-      const shouldOpen = article.dataset.researchLayer === layerId && button.getAttribute("aria-expanded") !== "true";
+      const shouldOpen = article.dataset.researchLayer === layerId && (forceOpen || button.getAttribute("aria-expanded") !== "true");
 
       article.classList.toggle("is-open", shouldOpen);
       button.setAttribute("aria-expanded", String(shouldOpen));
@@ -133,6 +133,21 @@
 
     const selectedLayer = record.layers.find((layer) => layer.id === layerId);
     if (selectedLayer) loadCrossrefMetadata(selectedLayer);
+  }
+
+  function openLayerFromHash() {
+    const hashPrefix = "#research-";
+    if (!window.location.hash.startsWith(hashPrefix)) return;
+    const layerId = window.location.hash.slice(hashPrefix.length);
+    if (!record?.layers?.some((layer) => layer.id === layerId)) return;
+
+    toggleLayer(layerId, true);
+    const layer = tracker?.querySelector(`[data-research-layer="${CSS.escape(layerId)}"]`);
+    const button = layer?.querySelector("[data-layer-toggle]");
+    window.requestAnimationFrame(() => {
+      layer?.scrollIntoView({ block: "start" });
+      button?.focus({ preventScroll: true });
+    });
   }
 
   async function headSource(layer) {
@@ -206,5 +221,7 @@
 
   renderTracker();
   bindMethod();
+  openLayerFromHash();
+  window.addEventListener("hashchange", openLayerFromHash);
   verifySources();
 }());

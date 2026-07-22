@@ -449,5 +449,11 @@ for (const { pagePath, source } of pages) {
 const televisionPage = pages.find(({ pagePath }) => pagePath.endsWith('index.html'))?.source || '';
 requireCondition((televisionPage.match(/data-emdr-style-index=/g) || []).length === 2, 'the EMDR wallet does not expose both GIF and stellar buttons');
 requireCondition(televisionPage.includes('data-emdr-style-index="0"') && televisionPage.includes('data-emdr-style-index="1"'), 'the explicit GIF and stellar controls are not addressable independently');
+requireCondition(televisionPage.includes('Isochronic tone: 7.38088 Hz, carried on a 111.011 Hz sine wave, plus a separate constant 528.088 Hz sine wave, together as one.'), 'the Sound research lightbox no longer describes the approved frequencies exactly');
+requireCondition(!televisionPage.includes('constant 528.08 Hz sine wave'), 'the Sound research lightbox has regressed to the superseded 528.08 Hz value');
+requireCondition(televisionPage.includes('To learn more about the scientific research behind these selected frequencies, <a href="science.html#research-sound"'), 'the Sound research lightbox no longer links to its Science evidence');
+requireCondition(controller.includes('researchDialogFrequency.hidden = !frequency;') && controller.includes('researchDialogScience.hidden = !scienceHref;'), 'the shared research dialog no longer keeps frequency evidence exclusive to Sound');
+requireCondition(scienceController.includes('function openLayerFromHash()') && scienceController.includes('toggleLayer(layerId, true);'), 'the Science page no longer opens a directly linked research layer');
+requireCondition(televisionCss.includes('border-top: 1px solid rgba(211, 216, 222, 0.3);') && televisionCss.includes('border-bottom: 1px solid rgba(211, 216, 222, 0.3);'), 'the Sound frequency evidence is no longer framed by the approved grey hairlines');
 
 console.log(`Adaptive music handoff preflight passed (${expectedCacheToken}).`);
