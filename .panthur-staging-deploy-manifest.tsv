@@ -13,7 +13,7 @@ dcbff34364d60a02e5a68c1c27db1da0aba2c6059e154b93da9ed822926eea8e	a d a p t i v e
 f5523d0d103367606e5c786fdefe6a1a560975a214ebe5188405469ec5619e09	tools/analyze-video-beats.py
 f1670bb15260c563cfe508ea2be7ddfe2f1b9260e0f3ab2f1015343345b5d177	i  a m.md
 2395bc9f9a00c3c567f3525cda478d2c138592cd215860d5b1545c88e2037f38	community-globe.html
-00b98626a7be28815f37cf4cab92606554ba139337fc00854341e282f69eb323	index.html
+769c4f71b15272c19378bd56c8ade9c2299878a731330094f29b18b7d5d49f85	index.html
 6733d57632028171b99f89270ff8237c250411f62166ebe1a2f36a80fe88833f	vogue-self-report.js
 8db79c73cc87c67ec83416ea86f2c9ceb53a9ac706eed513bbf7ac1c01f15a59	about.js
 90f3492e36d53a1c252af9546d4d8c0ea98179aa0be21414ef577ebce2c4208c	problem.html
@@ -37,12 +37,14 @@ af031f3f6f49e795ab1ce5c751232ae6ac926ca160a81ed86f05b555444a3e71	adaptive-music-
 cabef2d09a67170dec2653407254eed9b8ac1527b61ca0267855c7e6d1dd942e	adaptive-music-video.html
 b7a2e613c395b1c88f6b9124dbf48169326d32b29b2d9312215019c400feb8ee	handover 1.12.md
 0eb771cca2a8a92c472c0cd53913eea84abf8df0a9480c71d0d25ec4219bd798	science.css
+994b4d54f5284c54eb9d756867abbcdb5d616bf2d0e5ad996a3ce7ae3229d09a	circle-audio-rooms.css
 e98001a1504264b56ff7a895704818c451940b48b7c9aac15d011e2253fc3427	i n f e r e n c e  e n g i n e  -  s y s t e m  p r o m p t  v  2 . 2 2.md
 72108e0785cba2e253da994bac6fadf514343a7b092a78c50b3bbb5e642e1fe5	dj-set-tensor-approved-notion-export-v1.0.json
 5bd762cf9205f1093c9c2ceae46e54887d3ae4a958a1efd62f70809a57912722	adaptive-music-video-strategy.md
 7d7f480e246c67a5cb389da4b52cf179f17d9e2c605879ea2244ed8ee262b17c	universal-one-portal-guide-v1.txt
 6c83291433e1b52af874b5e4ec2241c585794118c48873c8004fa404e99de838	quantum-tree-control.html
 b922c0ed559272b40cd18d8a3aaea60a4b7ffd04e036e9817f5ba3bfdc8145b5	adaptive-soundtrack-selection-guide-v2.22.json
+e8a6d28e3856cc4b104468b583fd5609c48eeaf22440a1ea9f6a61bdc45ad36f	circle-audio-rooms.js
 6494ffec558557a97a73d9753e93a4c6fd21d2c532066d41a17cbdaaec869c50	adaptive-page-metadata-v1.js
 9ae5176893ea899472b3a73e71de8f743b6bf59967e840a930bfadea8659ebdc	t e c h n o l o g y - c i t i z e n  n e e d s  —  i n t e r a c t i v e  d e m o - c o d e x  b r i e f.md
 14ebf4459d034e1c47ce14b478c54bf6f0f6ba52ddcdd53e1fb9c1b4ada987c4	music-television-frame-context.js
@@ -57,9 +59,9 @@ beb34584876306e5825ba720c8cfb01b871065791c48be5add2ce5cc6d75f59f	adaptive-infere
 e12eb24c367d2ac6f67963f434a729027e75b914e450b6260f47c01b9bd1ef58	i  a m  c h e c k i n  -  f o r m  -  b r i e f.md
 2ce0d0a5afb4d9961eec772a296e17f9c703d89182648b6d35ee6007c776d59f	science-research-data-v1.js
 43bb3e81ba8213e37db4fec33570d65bfed2bdc74ea138e2bd46af7b18108b86	adaptive-music-video-catalogue-v1.11.json
-b6ccd2fe950b3da98ef56e2d6a2a1101030cb617b7b599b50c37d93fc8027497	adaptive-environment-television.js
+3835f9f013a54a11d77edb1a621a33d4e13840fa80f59acb2063c781b30f30cf	adaptive-environment-television.js
 21018b071ae34b685b6ee42f98207b3b1af59b53977f6ce26345fcf1b1224c35	technology.html
-e9cad390bedcd50e198eec174e62bc5df05f9bd3aefa1736d3a263727cc8bbe2	adaptive-environment-television.html
+a1f250bc9e5a5d034af935069991bfa83808fa3e7c2d8dd96ac0ce3bce9d1282	adaptive-environment-television.html
 bd7c2792addca34fdb4f10d7b25c3a21b99e86a3f233e7afc2fd54ef541d2419	script.js
 8ea0432ffcd62efe867482b520f0f7d2f005cc43117cb5424ca7097d7f5ad936	stakeholders/budget/index.html
 0f32e3f59c3045259d45f6db8dd9ebb9fcac04da5b8a2982912baae86d7e14f2	stakeholders/budget/iamvogue-stakeholder-budget-v1.xlsx
@@ -162,7 +164,7 @@ be3b868878a1c07a5007108633926ede85f69a786a489e9af2af0427f740b736	local-context.j
 a1a09a378cca2a0df41bbcdc9da6e3e640bdffcd1f7da5bad4b0ee402e58f384	science.js
 cf9610919c509c6482c01480ca8a9c4091160055519615d4c29b0cd873f64ca0	emdr-gif-world.js
 64ebb1b3303e67c60a7b673b7d91d4a20b4c3588350428ad71baf2b0cbe0ec5e	first-party-analytics-schema.md
-79098e43cbe393d44e1739a5039fd9cc6f7590757d8c8cb2ce43f717cf1ad31a	agora-audio-room-setup.md
+1080d19d4b07721ef556ea1f65e70bed8968cae5b049c6ac735d7b6634b8a64f	agora-audio-room-setup.md
 cda1c667a651066906a136babc7cbd07eed37f27938c0c304bdfee9e602beaac	emdr-platonics.js
 3047ba3cb6e5a187548d2037e23d60fb90640ca3237f1ad0d20fcf54858488f0	i n f e r e n c e  e n g i n e  -  s y s t e m  p r o m p t  v  1 . 1 1.md
 e626828010dbb405df876bcdc33ec2ac81af46bbc259fe474ecd34e64d2041f5	technology-citizen-needs-handover-2026-07-02.md
