@@ -29,7 +29,7 @@ for (const record of records) {
   assert.match(record.notion_page_url, /^https:\/\/app\.notion\.com\/p\/[a-f0-9]{32}$/i, `${record.id} Notion page URL is invalid`);
   assert.ok(record.stream_url, `${record.id} stream URL is missing`);
   assert.ok(record.player_url, `${record.id} player URL is missing`);
-  assert.ok(["Direct MP3", "HLS"].includes(record.stream_transport), `${record.id} transport is unsupported`);
+  assert.ok(["Direct MP3", "HLS", "Buffered HLS scheduler"].includes(record.stream_transport), `${record.id} transport is unsupported`);
   assert.ok(Array.isArray(record.stage_gate_fit) && record.stage_gate_fit.length, `${record.id} needs at least one stage gate`);
   assert.ok(record.stage_gate_fit.every((gate) => allowedGates.has(gate)), `${record.id} has an invalid stage gate`);
   assert.equal(record.top_needs.length, 4, `${record.id} must expose exactly four leading citizen needs`);
@@ -39,9 +39,10 @@ for (const [id, streamUrl] of requiredNts) {
   const record = records.find((candidate) => candidate.id === id);
   assert.ok(record, `${id} is missing from the Notion tensor export`);
   assert.equal(record.provider, "NTS");
-  assert.equal(record.stream_transport, "Direct MP3");
+  assert.equal(record.stream_transport, "Buffered HLS scheduler");
   assert.equal(record.stream_url, streamUrl);
-  assert.ok(!record.stream_url.endsWith("/hls.m3u8"), `${id} must not use fragmented HLS playback`);
+  assert.ok(!record.stream_url.endsWith("/hls.m3u8"), `${id} stores the canonical Radio Mast mount and derives HLS at runtime`);
+  assert.equal(record.stream_format, "Buffered HLS audio segments");
   assert.match(record.player_url, /^https:\/\/www\.nts\.live\/infinite-mixtapes\//);
 }
 
@@ -56,4 +57,4 @@ for (const [gate, definition] of Object.entries(catalogue.radio_handoff_stations
   }
 }
 
-console.log("Radio station Notion tensor passed: 11 approved stations, including 4 continuous NTS MP3 streams.");
+console.log("Radio station Notion tensor passed: 11 approved stations, including 4 locally buffered NTS HLS streams.");

@@ -73,10 +73,10 @@
     { id: "groove-salad-classic", stageGate: "chill", mode: "radio", provider: "SomaFM", title: "Groove Salad Classic", display_title: "Groove Salad Classic", short_title: "GS CLASSIC", stream_url: "https://ice5.somafm.com/gsclassic-128-mp3", primary_environmental_function: "Soul + Restoration", top_needs: ["Belonging", "Gratitude", "Recovery", "Calm"], card_palette: ["#725f50", "#c9b896"] },
     { id: "sanctuary-dark-electro", stageGate: "house", mode: "radio", provider: "Sanctuary Radio", title: "Dark Electro", display_title: "Sanctuary — Dark Electro", short_title: "DARK ELECTRO", stream_url: "https://stream.sanctuaryradio.com/mainchannel_hq", primary_environmental_function: "Grit + Agency", top_needs: ["Anger", "Motivation", "Self-Actualisation", "Curiosity"], card_palette: ["#312e42", "#9c6da6"] },
     { id: "sanctuary-retro", stageGate: "chill", mode: "radio", provider: "Sanctuary Radio", title: "Retro", display_title: "Sanctuary — Retro", short_title: "RETRO", stream_url: "https://stream.sanctuaryradio.com/retrochannel_hq", primary_environmental_function: "Joy + Affirmation", top_needs: ["Belonging", "Joy", "Gratitude", "Connection"], card_palette: ["#355c67", "#d57c72"] },
-    { id: "nts-slow-focus", stageGate: "calm", mode: "radio", provider: "NTS", title: "Slow Focus", display_title: "NTS — Slow Focus", short_title: "SLOW FOCUS", stream_url: "https://streams.radiomast.io/dfc76352-cda6-4a95-85dd-6f6609f83ba2", stream_transport: "Direct MP3", primary_environmental_function: "Soul + Restoration", top_needs: ["Calm", "Recovery", "Attention", "Awe"], card_palette: ["#3c4660", "#aebbd0"] },
-    { id: "nts-poolside", stageGate: "chill", mode: "radio", provider: "NTS", title: "Poolside", display_title: "NTS — Poolside", short_title: "POOLSIDE", stream_url: "https://streams.radiomast.io/052d2e3c-389c-44cf-a91a-8f5e1854f4c6", stream_transport: "Direct MP3", primary_environmental_function: "Joy + Affirmation", top_needs: ["Joy", "Gratitude", "Connection", "Belonging"], card_palette: ["#2f7890", "#f2c978"] },
-    { id: "nts-otaku", stageGate: "chill", mode: "radio", provider: "NTS", title: "Otaku", display_title: "NTS — Otaku", short_title: "OTAKU", stream_url: "https://streams.radiomast.io/7481798f-063c-42a2-8048-15ff98fe309e", stream_transport: "Direct MP3", primary_environmental_function: "Curiosity + Exploration", top_needs: ["Curiosity", "Awe", "Joy", "Self-Actualisation"], card_palette: ["#392d70", "#79d5cf"] },
-    { id: "nts-low-key", stageGate: "calm", mode: "radio", provider: "NTS", title: "Low Key", display_title: "NTS — Low Key", short_title: "LOW KEY", stream_url: "https://streams.radiomast.io/de114902-ee1b-441f-91bc-5468d1e77605", stream_transport: "Direct MP3", primary_environmental_function: "Soul + Restoration", top_needs: ["Calm", "Attention", "Belonging", "Connection"], card_palette: ["#53423d", "#c5ab89"] },
+    { id: "nts-slow-focus", stageGate: "calm", mode: "radio", provider: "NTS", title: "Slow Focus", display_title: "NTS — Slow Focus", short_title: "SLOW FOCUS", stream_url: "https://streams.radiomast.io/dfc76352-cda6-4a95-85dd-6f6609f83ba2", stream_transport: "Buffered HLS scheduler", primary_environmental_function: "Soul + Restoration", top_needs: ["Calm", "Recovery", "Attention", "Awe"], card_palette: ["#3c4660", "#aebbd0"] },
+    { id: "nts-poolside", stageGate: "chill", mode: "radio", provider: "NTS", title: "Poolside", display_title: "NTS — Poolside", short_title: "POOLSIDE", stream_url: "https://streams.radiomast.io/052d2e3c-389c-44cf-a91a-8f5e1854f4c6", stream_transport: "Buffered HLS scheduler", primary_environmental_function: "Joy + Affirmation", top_needs: ["Joy", "Gratitude", "Connection", "Belonging"], card_palette: ["#2f7890", "#f2c978"] },
+    { id: "nts-otaku", stageGate: "chill", mode: "radio", provider: "NTS", title: "Otaku", display_title: "NTS — Otaku", short_title: "OTAKU", stream_url: "https://streams.radiomast.io/7481798f-063c-42a2-8048-15ff98fe309e", stream_transport: "Buffered HLS scheduler", primary_environmental_function: "Curiosity + Exploration", top_needs: ["Curiosity", "Awe", "Joy", "Self-Actualisation"], card_palette: ["#392d70", "#79d5cf"] },
+    { id: "nts-low-key", stageGate: "calm", mode: "radio", provider: "NTS", title: "Low Key", display_title: "NTS — Low Key", short_title: "LOW KEY", stream_url: "https://streams.radiomast.io/de114902-ee1b-441f-91bc-5468d1e77605", stream_transport: "Buffered HLS scheduler", primary_environmental_function: "Soul + Restoration", top_needs: ["Calm", "Attention", "Belonging", "Connection"], card_palette: ["#53423d", "#c5ab89"] },
   ];
   const continuation = {
     videoSrc: "a s s e t s/Homepage - Hero Background Video - Chanel 2020 Runway Show.mp4",
@@ -311,8 +311,13 @@
   const RADIO_LIVE_SYNC_SEGMENTS = 4;
   const RADIO_MAX_LIVE_LATENCY_SEGMENTS = 5;
   const RADIO_DIRECT_STALL_MS = 6000;
+  const RADIO_SEGMENT_BUFFER_TARGET_SECONDS = 48;
+  const RADIO_SEGMENT_START_DELAY_SECONDS = .35;
+  const RADIO_SEGMENT_CROSSFADE_SECONDS = .035;
+  const RADIO_SEGMENT_POLL_MS = 3000;
   let continuationAudio = null;
   let continuationHls = null;
+  let continuationSegmentPlayer = null;
   let continuationAudioSource = "";
   let radioHlsLibraryPromise = null;
   let radioHlsAttachSequence = 0;
@@ -2403,6 +2408,11 @@
     return /\.m3u8(?:$|[?#])/i.test(String(source || ""));
   }
 
+  function isBufferedNtsRadioSource(source) {
+    return continuationDecision?.stream_transport === "Buffered HLS scheduler" &&
+      /^https:\/\/streams\.radiomast\.io\/[a-f0-9-]+\/?$/i.test(String(source || ""));
+  }
+
   function loadRadioHlsLibrary() {
     if (window.Hls) return Promise.resolve(window.Hls);
     if (radioHlsLibraryPromise) return radioHlsLibraryPromise;
@@ -2607,6 +2617,12 @@
   }
 
   function waitForRadioBuffer(audio, minimumSeconds = RADIO_READY_BUFFER_SECONDS) {
+    if (audio?.dataset.radioTransport === "buffered-hls-scheduler") {
+      const bufferSeconds = Math.max(0, Number(continuationSegmentPlayer?.nextStartAt || 0) - Number(continuationSegmentPlayer?.context?.currentTime || 0));
+      document.body.dataset.radioInitialBufferSeconds = bufferSeconds.toFixed(1);
+      document.body.dataset.radioInitialBufferState = bufferSeconds >= minimumSeconds ? "ready" : "partial";
+      return Promise.resolve(bufferSeconds);
+    }
     if (audio?.dataset.radioTransport !== "hls-js") return Promise.resolve(radioBufferedAhead(audio));
     const startedAt = Date.now();
     document.body.dataset.radioPlaybackState = "buffering";
@@ -2627,6 +2643,251 @@
       };
       inspect();
     });
+  }
+
+  async function fetchRadioResource(url, responseType = "text", timeoutMs = 14000) {
+    const controller = new AbortController();
+    const timeout = window.setTimeout(() => controller.abort(), timeoutMs);
+    try {
+      const response = await window.fetch(url, {
+        cache: "no-store",
+        credentials: "omit",
+        signal: controller.signal,
+      });
+      if (!response.ok) throw new Error(`Radio segment request failed (${response.status}).`);
+      return responseType === "arrayBuffer" ? response.arrayBuffer() : response.text();
+    } finally {
+      window.clearTimeout(timeout);
+    }
+  }
+
+  function resolveHlsChildUrl(line, parentUrl) {
+    try { return new URL(String(line || "").trim(), parentUrl).href; } catch { return ""; }
+  }
+
+  function parseHlsSegmentUrls(playlist, mediaUrl) {
+    const lines = String(playlist || "").split(/\r?\n/);
+    return lines
+      .filter((line) => line && !line.startsWith("#"))
+      .map((line) => resolveHlsChildUrl(line, mediaUrl))
+      .filter(Boolean);
+  }
+
+  function updateBufferedNtsDiagnostics(player = continuationSegmentPlayer) {
+    if (!player || player.stopped) return 0;
+    const audio = player.audio;
+    const bufferSeconds = Math.max(0, Number(player.nextStartAt || 0) - Number(player.context.currentTime || 0));
+    document.body.dataset.radioBufferSeconds = bufferSeconds.toFixed(1);
+    document.body.dataset.radioBufferTargetSeconds = String(RADIO_SEGMENT_BUFFER_TARGET_SECONDS);
+    document.body.dataset.radioPlaybackTime = Number(player.context.currentTime || 0).toFixed(1);
+    document.body.dataset.radioPaused = String(Boolean(audio.paused));
+    document.body.dataset.radioMuted = String(Boolean(audio.muted));
+    document.body.dataset.radioVolume = (Number(audio.volume) || 0).toFixed(2);
+    document.body.dataset.radioReadyState = String(audio.readyState || 0);
+    document.body.dataset.radioNetworkState = String(audio.networkState || 0);
+    document.body.dataset.radioWaitingCount = String(radioWaitingCount);
+    document.body.dataset.radioStalledCount = String(radioStalledCount);
+    document.body.dataset.radioRecoveryCount = String(radioRecoveryCount);
+    document.body.dataset.radioSegmentCount = String(player.scheduledCount || 0);
+    document.body.dataset.radioSegmentRetryCount = String(player.retryCount || 0);
+    return bufferSeconds;
+  }
+
+  function scheduleDecodedRadioSegment(player, audioBuffer, segmentUrl) {
+    if (!player || player.stopped || player !== continuationSegmentPlayer) return;
+    const context = player.context;
+    const overlap = player.scheduledCount ? RADIO_SEGMENT_CROSSFADE_SECONDS : 0;
+    const startAt = Math.max(
+      Number(player.nextStartAt || 0) - overlap,
+      Number(context.currentTime || 0) + (player.scheduledCount ? .05 : RADIO_SEGMENT_START_DELAY_SECONDS),
+    );
+    const sourceNode = context.createBufferSource();
+    const gainNode = context.createGain();
+    sourceNode.buffer = audioBuffer;
+    sourceNode.connect(gainNode);
+    gainNode.connect(player.destination);
+
+    if (overlap) {
+      gainNode.gain.setValueAtTime(0, startAt);
+      gainNode.gain.linearRampToValueAtTime(1, startAt + overlap);
+      if (player.previousGain) {
+        player.previousGain.gain.setValueAtTime(1, startAt);
+        player.previousGain.gain.linearRampToValueAtTime(0, startAt + overlap);
+      }
+    } else {
+      gainNode.gain.setValueAtTime(1, startAt);
+    }
+
+    sourceNode.start(startAt);
+    player.previousGain = gainNode;
+    player.nextStartAt = startAt + audioBuffer.duration;
+    player.scheduledCount += 1;
+    player.lastSegmentUrl = segmentUrl;
+    player.nodes.add(sourceNode);
+    sourceNode.addEventListener("ended", () => {
+      player.nodes.delete(sourceNode);
+      try { sourceNode.disconnect(); } catch {}
+      if (player.previousGain !== gainNode) {
+        try { gainNode.disconnect(); } catch {}
+      }
+    }, { once: true });
+    updateBufferedNtsDiagnostics(player);
+  }
+
+  async function refreshBufferedNtsSegments(player = continuationSegmentPlayer, forceMaster = false) {
+    if (!player || player.stopped || player !== continuationSegmentPlayer) return;
+    if (player.refreshPromise) return player.refreshPromise;
+
+    player.refreshPromise = (async () => {
+      try {
+        if (!player.mediaUrl || forceMaster || Date.now() - player.masterLoadedAt > 120000) {
+          const masterUrl = `${player.baseUrl.replace(/\/$/, "")}/hls.m3u8`;
+          const master = await fetchRadioResource(masterUrl);
+          const variant = String(master).split(/\r?\n/).find((line) => line && !line.startsWith("#"));
+          player.mediaUrl = resolveHlsChildUrl(variant, masterUrl);
+          player.masterLoadedAt = Date.now();
+          if (!player.mediaUrl) throw new Error("NTS HLS master has no playable variant.");
+        }
+
+        let media;
+        try {
+          media = await fetchRadioResource(player.mediaUrl);
+        } catch (error) {
+          if (forceMaster) throw error;
+          const masterUrl = `${player.baseUrl.replace(/\/$/, "")}/hls.m3u8`;
+          const master = await fetchRadioResource(masterUrl);
+          const variant = String(master).split(/\r?\n/).find((line) => line && !line.startsWith("#"));
+          player.mediaUrl = resolveHlsChildUrl(variant, masterUrl);
+          player.masterLoadedAt = Date.now();
+          if (!player.mediaUrl) throw new Error("NTS HLS master has no playable variant.");
+          media = await fetchRadioResource(player.mediaUrl);
+        }
+
+        const segmentUrls = parseHlsSegmentUrls(media, player.mediaUrl);
+        for (const segmentUrl of segmentUrls) {
+          if (player.stopped || player !== continuationSegmentPlayer) return;
+          if (player.seen.has(segmentUrl)) continue;
+          player.seen.add(segmentUrl);
+          try {
+            const encoded = await fetchRadioResource(segmentUrl, "arrayBuffer", 18000);
+            if (player.stopped || player !== continuationSegmentPlayer) return;
+            const decoded = await player.context.decodeAudioData(encoded.slice(0));
+            scheduleDecodedRadioSegment(player, decoded, segmentUrl);
+          } catch (error) {
+            player.seen.delete(segmentUrl);
+            player.retryCount += 1;
+            document.body.dataset.radioSegmentLastError = String(error?.message || error).slice(0, 140);
+            break;
+          }
+        }
+      } finally {
+        player.refreshPromise = null;
+      }
+    })();
+
+    return player.refreshPromise;
+  }
+
+  function destroyContinuationSegmentPlayer() {
+    const player = continuationSegmentPlayer;
+    continuationSegmentPlayer = null;
+    if (!player) return;
+    player.stopped = true;
+    window.clearInterval(player.monitor);
+    player.nodes.forEach((node) => {
+      try { node.stop(); } catch {}
+      try { node.disconnect(); } catch {}
+    });
+    player.nodes.clear();
+    try { player.previousGain?.disconnect?.(); } catch {}
+    try { player.audio.srcObject = null; } catch {}
+    try { player.context.close(); } catch {}
+  }
+
+  async function attachBufferedNtsRadio(audio, source) {
+    const AudioContextClass = window.AudioContext || window.webkitAudioContext;
+    if (!AudioContextClass || !window.MediaStream) throw new Error("Buffered NTS playback is not supported by this browser.");
+
+    const context = new AudioContextClass({ latencyHint: "playback" });
+    const destination = context.createMediaStreamDestination();
+    const player = {
+      audio,
+      baseUrl: source,
+      context,
+      destination,
+      mediaUrl: "",
+      masterLoadedAt: 0,
+      nextStartAt: 0,
+      previousGain: null,
+      scheduledCount: 0,
+      retryCount: 0,
+      seen: new Set(),
+      nodes: new Set(),
+      refreshPromise: null,
+      monitor: 0,
+      playbackStarted: false,
+      underrunActive: false,
+      stopped: false,
+    };
+    continuationSegmentPlayer = player;
+    audio.srcObject = destination.stream;
+    audio.dataset.radioTransport = "buffered-hls-scheduler";
+    document.body.dataset.radioStreamTransport = "buffered-hls-scheduler";
+    radioWaitingCount = 0;
+    radioStalledCount = 0;
+    radioRecoveryCount = 0;
+
+    const handleWaiting = () => {
+      if (!player.playbackStarted) return;
+      radioWaitingCount += 1;
+      document.body.dataset.radioPlaybackState = "buffering";
+      updateBufferedNtsDiagnostics(player);
+    };
+    const handlePlaying = () => {
+      player.playbackStarted = true;
+      document.body.dataset.radioPlaybackState = "playing";
+      delete document.body.dataset.radioPlaybackError;
+      updateBufferedNtsDiagnostics(player);
+    };
+    audio.addEventListener("waiting", handleWaiting);
+    audio.addEventListener("playing", handlePlaying);
+    radioPlaybackCleanup = () => {
+      audio.removeEventListener("waiting", handleWaiting);
+      audio.removeEventListener("playing", handlePlaying);
+    };
+
+    await refreshBufferedNtsSegments(player);
+    if (player !== continuationSegmentPlayer || player.scheduledCount < 2) {
+      throw new Error("NTS could not build a safe audio buffer.");
+    }
+    const initialBuffer = updateBufferedNtsDiagnostics(player);
+    document.body.dataset.radioInitialBufferSeconds = initialBuffer.toFixed(1);
+    document.body.dataset.radioInitialBufferState = initialBuffer >= RADIO_READY_BUFFER_SECONDS ? "ready" : "partial";
+
+    player.monitor = window.setInterval(() => {
+      if (player.stopped || player !== continuationSegmentPlayer) return;
+      const bufferSeconds = updateBufferedNtsDiagnostics(player);
+      const running = player.context.state === "running" && player.playbackStarted;
+      if (running && bufferSeconds < .12) {
+        if (!player.underrunActive) {
+          player.underrunActive = true;
+          radioStalledCount += 1;
+          radioRecoveryCount += 1;
+          document.body.dataset.radioRecoveryReason = "segment_buffer_underrun";
+          document.body.dataset.radioPlaybackState = "buffering";
+        }
+      } else if (bufferSeconds > 1) {
+        player.underrunActive = false;
+        if (running && !audio.paused) document.body.dataset.radioPlaybackState = "playing";
+      }
+      if (bufferSeconds < RADIO_SEGMENT_BUFFER_TARGET_SECONDS) {
+        refreshBufferedNtsSegments(player).catch((error) => {
+          player.retryCount += 1;
+          document.body.dataset.radioSegmentLastError = String(error?.message || error).slice(0, 140);
+        });
+      }
+    }, RADIO_SEGMENT_POLL_MS);
+    return audio;
   }
 
   function bindDirectRadioPlaybackDiagnostics(audio, source) {
@@ -2732,6 +2993,7 @@
 
   function destroyContinuationHls() {
     radioHlsAttachSequence += 1;
+    destroyContinuationSegmentPlayer();
     clearRadioPlaybackDiagnostics();
     try { continuationHls?.destroy?.(); } catch {}
     continuationHls = null;
@@ -2742,22 +3004,28 @@
       "radioNetworkState", "radioBandwidthKbps", "radioLiveLatencySeconds", "radioWaitingCount",
       "radioStalledCount", "radioRecoveryCount", "radioRecoveryReason", "radioLastHlsError",
       "radioLastMediaError", "radioManifestVariants", "radioBitrateKbps", "radioLiveSyncSegments",
-      "radioInitialBufferSeconds", "radioInitialBufferState",
+      "radioInitialBufferSeconds", "radioInitialBufferState", "radioSegmentCount",
+      "radioSegmentRetryCount", "radioSegmentLastError",
     ].forEach((key) => delete document.body.dataset[key]);
   }
 
   async function attachContinuationAudioSource(audio, source) {
     if (!audio || !source) throw new Error("Radio station has no playable stream URL.");
-    if (continuationAudioSource === source && (continuationHls || audio.getAttribute("src"))) return audio;
+    if (continuationAudioSource === source && (continuationHls || continuationSegmentPlayer || audio.getAttribute("src") || audio.srcObject)) return audio;
 
     destroyContinuationHls();
     const attachSequence = radioHlsAttachSequence;
     continuationAudioSource = source;
     try {
       audio.pause();
+      audio.srcObject = null;
       audio.removeAttribute("src");
       audio.load();
     } catch {}
+
+    if (isBufferedNtsRadioSource(source)) {
+      return attachBufferedNtsRadio(audio, source);
+    }
 
     if (!isHlsRadioSource(source)) {
       audio.src = source;
@@ -2948,6 +3216,12 @@
     window.IAMEMDR?.setTimelineSource?.({ media: continuationAudio, bpm: 112, firstDownbeatSeconds: 0, fallbackBpm: 112 });
     continuationAudio.muted = false;
     document.body.dataset.radioPreloadState = "live";
+    if (continuationSegmentPlayer) {
+      continuationSegmentPlayer.playbackStarted = true;
+      continuationSegmentPlayer.context.resume().catch((error) => {
+        document.body.dataset.radioPlaybackError = String(error?.message || error).slice(0, 120);
+      });
+    }
     continuationAudio.play()
       .then(() => {
         document.body.dataset.radioPlaybackState = "playing";
