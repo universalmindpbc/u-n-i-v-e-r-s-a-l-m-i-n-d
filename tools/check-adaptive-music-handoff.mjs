@@ -466,6 +466,8 @@ requireCondition((televisionPage.match(/data-wallet-tooltip="wallet home"/g) || 
 requireCondition((televisionPage.match(/aria-label="Return to wallet home"/g) || []).length === 8, 'the wallet-home flowers no longer expose the approved accessible label');
 requireCondition(televisionPage.includes('data-wallet-resume-view="categories"'), 'the wallet no longer exposes its session resume state for verification');
 requireCondition(!televisionPage.includes('adaptive-television-audio-back'), 'Circle still uses the superseded close symbol instead of wallet home');
+requireCondition(televisionPage.includes('data-audio-wallet-leave'), 'Circle no longer exposes its dedicated leave control');
+requireCondition(controller.includes('audioWalletLeave?.addEventListener("click", leaveAudioWalletCircle);'), 'the dedicated Circle leave control is not wired');
 requireCondition(controller.includes('const WALLET_RESUMABLE_VIEWS = new Set(["categories", "emoji", "video", "video-mix", "music", "emdr", "audio", "support", "collect"]);'), 'the complete wallet hierarchy is no longer resumable');
 requireCondition(controller.includes('let walletResumeView = "categories";') && controller.includes('function restoreReactionWalletView()'), 'the wallet no longer remembers and restores the last meaningful panel');
 requireCondition(controller.includes('setWalletView("closed", { remember: false });'), 'closing the wallet can overwrite its remembered panel');

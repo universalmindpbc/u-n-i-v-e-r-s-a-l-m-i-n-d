@@ -65,6 +65,8 @@ requireCondition(!/>\s*open\s*</iu.test(selectorMarkup), "legacy Open labels rem
 requireCondition(source.controller.includes("createMicrophoneAudioTrack"), "the browser controller cannot publish microphone audio");
 requireCondition(source.controller.includes('muted: true'), "new Circle members do not enter muted");
 requireCondition(source.page.includes('data-audio-wallet-waveform'), "the joined wallet has no circular microphone waveform");
+requireCondition(source.page.includes('data-audio-wallet-leave'), "the joined wallet has no explicit leave-Circle control");
+requireCondition(source.page.includes('data-audio-tooltip="Activate Microphone"'), "the microphone has no activation rollover");
 requireCondition(source.page.includes('data-circle-tooltip="zero of nine people checked into selected Circle."'), "the occupancy rollover has no approved initial copy");
 requireCondition(source.controller.includes('track?.getMediaStreamTrack?.()'), "the wallet waveform is not analysing the existing Agora microphone track");
 requireCondition(source.controller.includes('createMediaStreamSource(new window.MediaStream([mediaTrack]))'), "the wallet waveform is not connected to live microphone samples");
@@ -76,6 +78,8 @@ requireCondition(source.television.includes('audioWalletCount.textContent = `${o
 requireCondition(source.televisionStyles.includes('.adaptive-television-audio-waveform[data-input-active="true"]'), "the aqua transmitting state is missing");
 requireCondition(source.televisionStyles.includes('.adaptive-television-reaction-wallet.is-audio-wallet-joined .adaptive-television-audio-count'), "the joined wallet does not reveal live occupancy");
 requireCondition(source.television.includes('window.IAMCircleRooms?.open?.'), "the wallet does not open the Circle selector");
+requireCondition(source.television.includes('function leaveAudioWalletCircle(event)'), "the explicit leave-Circle control has no controller action");
+requireCondition(source.television.includes('const microphoneAction = audioWalletJoined && !audioWalletMuted ? "Mute Microphone" : "Activate Microphone";'), "the microphone rollover is not state-aware");
 requireCondition(source.page.includes('data-circle-radar-stage'), "the Community Radar stage is missing");
 requireCondition((source.page.match(/data-circle-energy=/g) || []).length === circles.length, "the Community Radar must connect all eight Circles");
 requireCondition(source.styles.includes("calc(150ms + (var(--circle-index) * 72ms))"), "the clockwise room entrance choreography is missing");

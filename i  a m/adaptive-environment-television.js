@@ -178,6 +178,7 @@
   const audioWalletControls = document.querySelector("[data-audio-wallet-controls]");
   const audioWalletMic = document.querySelector("[data-audio-wallet-mic]");
   const audioWalletJoin = document.querySelector("[data-audio-wallet-join]");
+  const audioWalletLeave = document.querySelector("[data-audio-wallet-leave]");
   const audioWalletCount = document.querySelector("[data-audio-wallet-count]");
   const circleRoomSelector = document.querySelector("[data-circle-room-selector]");
   const heartField = document.querySelector("[data-heart-field]");
@@ -3610,16 +3611,23 @@
       audioWalletJoin.textContent = audioWalletJoined ? audioWalletCircleName : "Join Circle";
       audioWalletJoin.setAttribute("aria-label", audioWalletJoined ? `Leave ${circleName} Circle` : "Join Circle");
       audioWalletJoin.setAttribute("title", audioWalletJoined ? `Leave ${circleName} Circle` : "Join Circle");
+      audioWalletJoin.dataset.circleTooltip = audioWalletJoined
+        ? `Leave ${circleName} Circle.`
+        : "Join a live audio Circle of up to nine people. Listen, speak, or simply chill with the vibe.";
     }
 
     if (audioWalletMic) {
+      const microphoneAction = audioWalletJoined && !audioWalletMuted ? "Mute Microphone" : "Activate Microphone";
       audioWalletMic.disabled = false;
-      audioWalletMic.setAttribute(
-        "aria-label",
-        audioWalletJoined
-          ? (audioWalletMuted ? "Unmute microphone" : "Mute microphone")
-          : "Return to reactions"
-      );
+      audioWalletMic.dataset.audioTooltip = microphoneAction;
+      audioWalletMic.setAttribute("aria-label", microphoneAction);
+    }
+
+    if (audioWalletLeave) {
+      const circleName = audioWalletCircleName || "selected";
+      audioWalletLeave.hidden = !audioWalletJoined;
+      audioWalletLeave.disabled = !audioWalletJoined;
+      audioWalletLeave.setAttribute("aria-label", `Leave ${circleName} Circle`);
     }
 
     if (audioWalletCount) {
@@ -3676,6 +3684,13 @@
     event?.stopPropagation();
     if (!audioWalletJoined) return;
     window.IAMCircleRooms?.toggleMute?.();
+  }
+
+  function leaveAudioWalletCircle(event) {
+    event?.preventDefault();
+    event?.stopPropagation();
+    if (!audioWalletJoined) return;
+    window.IAMCircleRooms?.leave?.();
   }
 
   function closeAudioWalletFromOutside(event) {
@@ -5260,6 +5275,7 @@
     if (audioWalletMode) reactionWallet?.classList.add("is-circle-tooltip-armed");
   });
   audioWalletMic?.addEventListener("click", toggleAudioWalletMute);
+  audioWalletLeave?.addEventListener("click", leaveAudioWalletCircle);
   document.addEventListener("click", closeAudioWalletFromOutside);
   document.addEventListener("click", closeWalletFromOutside);
   reactionButtons.forEach((button) => {
