@@ -4925,6 +4925,17 @@
       openInVideoPageLayer(link);
     }, true);
   });
+  researchDialogScienceLink?.addEventListener("click", (event) => {
+    if (!document.body.classList.contains("television-room-open") || !isInternalPageLink(researchDialogScienceLink)) {
+      exitFullscreenForNavigation();
+      return;
+    }
+
+    event.preventDefault();
+    event.stopImmediatePropagation();
+    closeAllResearchRollovers();
+    openInVideoPageLayer(researchDialogScienceLink);
+  });
   document.querySelectorAll("[data-nav-close]").forEach((button) => {
     button.addEventListener("click", closeVideoNavigation);
   });

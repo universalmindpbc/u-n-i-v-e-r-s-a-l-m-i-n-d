@@ -459,6 +459,7 @@ requireCondition(televisionPage.includes('Isochronic tone: 7.38088 Hz, carried o
 requireCondition(!televisionPage.includes('constant 528.08 Hz sine wave'), 'the Sound research lightbox has regressed to the superseded 528.08 Hz value');
 requireCondition(televisionPage.includes('To learn more about the scientific research behind these selected frequencies, <a href="science.html#research-sound"'), 'the Sound research lightbox no longer links to its Science evidence');
 requireCondition(controller.includes('researchDialogFrequency.hidden = !frequency;') && controller.includes('researchDialogScience.hidden = !scienceHref;'), 'the shared research dialog no longer keeps frequency evidence exclusive to Sound');
+requireCondition(controller.includes('researchDialogScienceLink?.addEventListener("click"') && controller.includes('openInVideoPageLayer(researchDialogScienceLink);'), 'the Sound research Science link no longer preserves the full-screen television page layer');
 requireCondition(scienceController.includes('function openLayerFromHash()') && scienceController.includes('toggleLayer(layerId, true);'), 'the Science page no longer opens a directly linked research layer');
 requireCondition(televisionCss.includes('border-top: 1px solid rgba(211, 216, 222, 0.3);') && televisionCss.includes('border-bottom: 1px solid rgba(211, 216, 222, 0.3);'), 'the Sound frequency evidence is no longer framed by the approved grey hairlines');
 
