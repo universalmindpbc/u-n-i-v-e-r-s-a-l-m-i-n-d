@@ -3578,7 +3578,9 @@
 
   function beginReactionWalletOpenGesture() {
     if (!document.body.classList.contains("television-room-open") || audioWalletMode) return;
-    setReactionWalletOpen(true);
+    // Keep a resumed secondary panel closed until the click completes, so its
+    // newly revealed control cannot inherit the flower's pointer-up gesture.
+    if (walletResumeView === "categories") setReactionWalletOpen(true);
     nowPlayingInteractiveAt = Date.now() + 1400;
   }
 
