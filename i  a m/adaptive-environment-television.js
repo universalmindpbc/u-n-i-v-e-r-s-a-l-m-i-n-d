@@ -73,14 +73,18 @@
     { id: "groove-salad-classic", stageGate: "chill", mode: "radio", provider: "SomaFM", title: "Groove Salad Classic", display_title: "Groove Salad Classic", short_title: "GS CLASSIC", stream_url: "https://ice5.somafm.com/gsclassic-128-mp3", primary_environmental_function: "Soul + Restoration", top_needs: ["Belonging", "Gratitude", "Recovery", "Calm"], card_palette: ["#725f50", "#c9b896"] },
     { id: "sanctuary-dark-electro", stageGate: "house", mode: "radio", provider: "Sanctuary Radio", title: "Dark Electro", display_title: "Sanctuary — Dark Electro", short_title: "DARK ELECTRO", stream_url: "https://stream.sanctuaryradio.com/mainchannel_hq", primary_environmental_function: "Grit + Agency", top_needs: ["Anger", "Motivation", "Self-Actualisation", "Curiosity"], card_palette: ["#312e42", "#9c6da6"] },
     { id: "sanctuary-retro", stageGate: "chill", mode: "radio", provider: "Sanctuary Radio", title: "Retro", display_title: "Sanctuary — Retro", short_title: "RETRO", stream_url: "https://stream.sanctuaryradio.com/retrochannel_hq", primary_environmental_function: "Joy + Affirmation", top_needs: ["Belonging", "Joy", "Gratitude", "Connection"], card_palette: ["#355c67", "#d57c72"] },
+    { id: "nts-slow-focus", stageGate: "calm", mode: "radio", provider: "NTS", title: "Slow Focus", display_title: "NTS — Slow Focus", short_title: "SLOW FOCUS", stream_url: "https://streams.radiomast.io/dfc76352-cda6-4a95-85dd-6f6609f83ba2/hls.m3u8", stream_transport: "HLS", primary_environmental_function: "Soul + Restoration", top_needs: ["Calm", "Recovery", "Attention", "Awe"], card_palette: ["#3c4660", "#aebbd0"] },
+    { id: "nts-poolside", stageGate: "chill", mode: "radio", provider: "NTS", title: "Poolside", display_title: "NTS — Poolside", short_title: "POOLSIDE", stream_url: "https://streams.radiomast.io/052d2e3c-389c-44cf-a91a-8f5e1854f4c6/hls.m3u8", stream_transport: "HLS", primary_environmental_function: "Joy + Affirmation", top_needs: ["Joy", "Gratitude", "Connection", "Belonging"], card_palette: ["#2f7890", "#f2c978"] },
+    { id: "nts-otaku", stageGate: "chill", mode: "radio", provider: "NTS", title: "Otaku", display_title: "NTS — Otaku", short_title: "OTAKU", stream_url: "https://streams.radiomast.io/7481798f-063c-42a2-8048-15ff98fe309e/hls.m3u8", stream_transport: "HLS", primary_environmental_function: "Curiosity + Exploration", top_needs: ["Curiosity", "Awe", "Joy", "Self-Actualisation"], card_palette: ["#392d70", "#79d5cf"] },
+    { id: "nts-low-key", stageGate: "calm", mode: "radio", provider: "NTS", title: "Low Key", display_title: "NTS — Low Key", short_title: "LOW KEY", stream_url: "https://streams.radiomast.io/de114902-ee1b-441f-91bc-5468d1e77605/hls.m3u8", stream_transport: "HLS", primary_environmental_function: "Soul + Restoration", top_needs: ["Calm", "Attention", "Belonging", "Connection"], card_palette: ["#53423d", "#c5ab89"] },
   ];
   const continuation = {
     videoSrc: "a s s e t s/Homepage - Hero Background Video - Chanel 2020 Runway Show.mp4",
     defaultStation: "cafe-del-mar-chill",
     stagePools: {
-      calm: ["cafe-del-mar-calm", "groove-salad", "groove-salad-classic"],
-      chill: ["cafe-del-mar-chill", "groove-salad", "groove-salad-classic", "sanctuary-retro"],
-      house: ["cafe-del-mar-house", "sanctuary-dark-electro", "sanctuary-retro"],
+      calm: ["cafe-del-mar-calm", "groove-salad", "groove-salad-classic", "nts-slow-focus", "nts-low-key"],
+      chill: ["cafe-del-mar-chill", "groove-salad", "groove-salad-classic", "sanctuary-retro", "nts-poolside", "nts-otaku", "nts-low-key"],
+      house: ["cafe-del-mar-house", "sanctuary-dark-electro", "sanctuary-retro", "nts-poolside", "nts-otaku"],
     },
   };
   const playButton = document.querySelector("[data-television-play]");
@@ -296,7 +300,12 @@
   } catch {
     // The adaptive recommendation remains available when session storage is restricted.
   }
+  const RADIO_HLS_LIBRARY_URL = "https://cdn.jsdelivr.net/npm/hls.js@1.6.13/dist/hls.min.js";
   let continuationAudio = null;
+  let continuationHls = null;
+  let continuationAudioSource = "";
+  let radioHlsLibraryPromise = null;
+  let radioHlsAttachSequence = 0;
   let voiceAssistantDuckActive = false;
   const voiceAssistantBaseVolumes = new Map();
   const voiceAssistantVolumeFrames = new Map();
@@ -2082,16 +2091,22 @@
   async function loadMusicRecommendations() {
     try {
       const [catalogueResponse, stationsResponse] = await Promise.all([
-        fetch("adaptive-music-video-catalogue-v1.11.json?v=music-channel-tensor-1", { cache: "no-store" }),
-        fetch("radio-station-tensor-notion-export-v1.0.json?v=radio-stations-1", { cache: "no-store" }),
+        fetch("adaptive-music-video-catalogue-v1.11.json?v=music-channel-tensor-nts-1", { cache: "no-store" }),
+        fetch("radio-station-tensor-notion-export-v1.0.json?v=radio-stations-nts-1", { cache: "no-store" }),
       ]);
       if (!catalogueResponse.ok) throw new Error(`Music Tensor fetch failed (${catalogueResponse.status})`);
       if (!stationsResponse.ok) throw new Error(`Radio Tensor fetch failed (${stationsResponse.status})`);
       const [catalogue, stations] = await Promise.all([catalogueResponse.json(), stationsResponse.json()]);
       musicCatalogueRecords = Array.isArray(catalogue.tracks) ? catalogue.tracks : [];
       const fallbacks = new Map(DEFAULT_RADIO_STATIONS.map((station) => [station.id, station]));
-      radioStationRecords = (Array.isArray(stations.records) ? stations.records : DEFAULT_RADIO_STATIONS)
-        .map((station) => ({ ...fallbacks.get(station.id), ...station, stageGate: fallbacks.get(station.id)?.stageGate || station.stageGate || "chill" }));
+      const approvedStations = (Array.isArray(stations.records) ? stations.records : DEFAULT_RADIO_STATIONS)
+        .filter((station) => !station.status || station.status === "Approved");
+      radioStationRecords = approvedStations
+        .map((station) => ({
+          ...fallbacks.get(station.id),
+          ...station,
+          stageGate: fallbacks.get(station.id)?.stageGate || station.stageGate || station.stage_gate_fit?.[0] || "chill",
+        }));
       rankMusicShelves();
     } catch (error) {
       document.body.dataset.musicRecommendationSource = "catalogue_fallback";
@@ -2358,15 +2373,126 @@
     window.IAMFirstPartyAnalytics?.record?.("music_group_queue_vote", { selected_item_id: item.id, music_mode: musicChannelMode, votes: 1 });
   }
 
-  function stopContinuationAudioImmediately() {
-    if (!continuationAudio) return;
+  function isHlsRadioSource(source) {
+    return /\.m3u8(?:$|[?#])/i.test(String(source || ""));
+  }
+
+  function loadRadioHlsLibrary() {
+    if (window.Hls) return Promise.resolve(window.Hls);
+    if (radioHlsLibraryPromise) return radioHlsLibraryPromise;
+
+    radioHlsLibraryPromise = new Promise((resolve, reject) => {
+      let script = document.querySelector("script[data-iam-hls-library], script[src*='hls.min.js']");
+      const handleLoad = () => window.Hls ? resolve(window.Hls) : reject(new Error("HLS library loaded without a browser API."));
+      const handleError = () => reject(new Error("HLS radio support could not be loaded."));
+
+      if (script) {
+        script.addEventListener("load", handleLoad, { once: true });
+        script.addEventListener("error", handleError, { once: true });
+        window.setTimeout(() => {
+          if (window.Hls) resolve(window.Hls);
+        }, 0);
+        return;
+      }
+
+      script = document.createElement("script");
+      script.src = RADIO_HLS_LIBRARY_URL;
+      script.async = true;
+      script.crossOrigin = "anonymous";
+      script.dataset.iamHlsLibrary = "radio";
+      script.addEventListener("load", handleLoad, { once: true });
+      script.addEventListener("error", handleError, { once: true });
+      document.head.appendChild(script);
+    }).catch((error) => {
+      radioHlsLibraryPromise = null;
+      throw error;
+    });
+
+    return radioHlsLibraryPromise;
+  }
+
+  function destroyContinuationHls() {
+    radioHlsAttachSequence += 1;
+    try { continuationHls?.destroy?.(); } catch {}
+    continuationHls = null;
+    continuationAudioSource = "";
+    delete document.body.dataset.radioStreamTransport;
+  }
+
+  async function attachContinuationAudioSource(audio, source) {
+    if (!audio || !source) throw new Error("Radio station has no playable stream URL.");
+    if (continuationAudioSource === source && (continuationHls || audio.getAttribute("src"))) return audio;
+
+    destroyContinuationHls();
+    const attachSequence = radioHlsAttachSequence;
+    continuationAudioSource = source;
     try {
-      continuationAudio.pause();
-      continuationAudio.muted = true;
-      continuationAudio.volume = 0;
-      continuationAudio.removeAttribute("src");
-      continuationAudio.load();
+      audio.pause();
+      audio.removeAttribute("src");
+      audio.load();
     } catch {}
+
+    if (!isHlsRadioSource(source)) {
+      audio.src = source;
+      audio.dataset.radioTransport = "direct";
+      document.body.dataset.radioStreamTransport = "direct";
+      return audio;
+    }
+
+    if (audio.canPlayType("application/vnd.apple.mpegurl")) {
+      audio.src = source;
+      audio.dataset.radioTransport = "hls-native";
+      document.body.dataset.radioStreamTransport = "hls-native";
+      return audio;
+    }
+
+    const Hls = await loadRadioHlsLibrary();
+    if (attachSequence !== radioHlsAttachSequence || audio !== continuationAudio) return audio;
+    if (!Hls?.isSupported?.()) throw new Error("This browser cannot play the station's HLS stream.");
+
+    const hls = new Hls({ enableWorker: true, maxBufferLength: 60, backBufferLength: 30 });
+    continuationHls = hls;
+    audio.dataset.radioTransport = "hls-js";
+    document.body.dataset.radioStreamTransport = "hls-js";
+
+    await new Promise((resolve, reject) => {
+      let settled = false;
+      const timeout = window.setTimeout(() => finish(new Error("HLS station manifest timed out.")), 12000);
+      const finish = (error) => {
+        if (settled) return;
+        settled = true;
+        window.clearTimeout(timeout);
+        hls.off(Hls.Events.ERROR, handleError);
+        if (error) reject(error);
+        else resolve();
+      };
+      const handleError = (_event, data) => {
+        if (data?.fatal) finish(new Error(`HLS station error: ${data.details || data.type || "fatal"}`));
+      };
+
+      hls.on(Hls.Events.ERROR, handleError);
+      hls.once(Hls.Events.MEDIA_ATTACHED, () => hls.loadSource(source));
+      hls.once(Hls.Events.MANIFEST_PARSED, () => finish());
+      hls.attachMedia(audio);
+    }).catch((error) => {
+      if (continuationHls === hls) destroyContinuationHls();
+      throw error;
+    });
+
+    return audio;
+  }
+
+  function stopContinuationAudioImmediately() {
+    destroyContinuationHls();
+    if (continuationAudio) {
+      try {
+        continuationAudio.pause();
+        continuationAudio.muted = true;
+        continuationAudio.volume = 0;
+        continuationAudio.removeAttribute("src");
+        continuationAudio.load();
+      } catch {}
+    }
     continuationAudio = null;
     continuationDecision = null;
     document.body.dataset.radioPlaybackState = "stopped";
@@ -2449,7 +2575,15 @@
     continuationDecision = { ...station, label: station.display_title, src: station.stream_url };
     delete document.body.dataset.radioPlaybackError;
     document.body.dataset.radioPlaybackState = "loading";
-    primeContinuationAudio(continuationDecision);
+    try {
+      await primeContinuationAudio(continuationDecision);
+    } catch (error) {
+      document.body.dataset.radioPlaybackState = "error";
+      document.body.dataset.radioPlaybackError = String(error?.message || error).slice(0, 120);
+      updateNowPlaying();
+      showMusicShelfStatus(`${station.display_title} · stream unavailable`, 3200);
+      return;
+    }
     window.IAMEMDR?.setTimelineSource?.({ media: continuationAudio, bpm: 112, firstDownbeatSeconds: 0, fallbackBpm: 112 });
     continuationAudio.muted = false;
     document.body.dataset.radioPreloadState = "live";
@@ -3428,6 +3562,7 @@
       }
     });
 
+    destroyContinuationHls();
     if (continuationAudio) {
       try {
         continuationAudio.pause();
@@ -3451,18 +3586,14 @@
 
   window.__iamStopAdaptiveMedia = stopTelevisionMedia;
 
-  function primeContinuationAudio(radioDecision = selectRadioContinuation()) {
+  async function primeContinuationAudio(radioDecision = selectRadioContinuation()) {
     continuationDecision = radioDecision;
     const source = radioDecision?.src || radioDecision?.stream_url;
 
     if (!continuationAudio) {
       continuationAudio = new Audio();
       continuationAudio.crossOrigin = "anonymous";
-      continuationAudio.src = source;
       continuationAudio.preload = "auto";
-      continuationAudio.volume = 0;
-    } else if (continuationAudio.src !== source) {
-      continuationAudio.src = source;
       continuationAudio.volume = 0;
     }
 
@@ -3474,6 +3605,8 @@
       document.body.dataset.radioPlaybackState = "primed-muted";
       document.body.dataset.radioPreloadState = "muted";
     }
+    await attachContinuationAudioSource(continuationAudio, source);
+    continuationAudio.volume = 0;
     window.IAMEMDR?.setAudioSource?.(continuationAudio);
 
     const playAttempt = continuationAudio.play();
@@ -4031,7 +4164,10 @@
     room.setAttribute("aria-hidden", "false");
     playButton.setAttribute("aria-expanded", "true");
     const video = mountPlayer();
-    primeContinuationAudio();
+    primeContinuationAudio().catch((error) => {
+      document.body.dataset.radioPreloadState = "error";
+      document.body.dataset.radioPlaybackError = String(error?.message || error).slice(0, 120);
+    });
     startFlowerSpin();
     startLiveViewerSimulation();
     window.setTimeout(ensureCommunityGlobeLoaded, 1200);

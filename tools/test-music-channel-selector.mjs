@@ -1,4 +1,7 @@
 import assert from "node:assert/strict";
+import fs from "node:fs";
+import path from "node:path";
+import { fileURLToPath } from "node:url";
 
 globalThis.window = globalThis;
 await import("../i  a m/music-channel-selector-v1.js");
@@ -17,6 +20,28 @@ const sample = [
 ];
 const ranked = selector.rank(sample, { mode: "radio", atWork: true, citizenNeeds: { Calm: 1 }, seed: "rank", limit: 2 });
 assert.equal(ranked.ranked[0].id, "calm");
+
+const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
+const radioTensor = JSON.parse(fs.readFileSync(path.join(root, "i  a m", "radio-station-tensor-notion-export-v1.0.json"), "utf8"));
+const ntsStations = radioTensor.records.filter((record) => record.provider === "NTS");
+const leadingNtsStation = (citizenNeeds, options = {}) => selector.rank(ntsStations, {
+  mode: "radio",
+  citizenNeeds,
+  seed: options.seed,
+  atWork: options.atWork,
+  inGroup: options.inGroup,
+  tasteAffinities: options.tasteAffinities,
+  limit: 4,
+}).recommendations[0].id;
+
+assert.equal(leadingNtsStation({ Calm: 1, Recovery: 1, Stress: 1, Anxiety: .95, "Mental Load": .9 }, { atWork: true, seed: "slow" }), "nts-slow-focus");
+assert.equal(leadingNtsStation({ Joy: 1, Gratitude: .95, Connection: .95, Belonging: .9 }, { inGroup: true, seed: "pool" }), "nts-poolside");
+assert.equal(leadingNtsStation({ Curiosity: 1, Awe: .95, "Self-Actualisation": .9, Joy: .8 }, { seed: "otaku" }), "nts-otaku");
+assert.equal(leadingNtsStation({ Attention: 1, Belonging: .95, Connection: .9, Calm: .85 }, {
+  atWork: true,
+  seed: "low",
+  tasteAffinities: { "nts-low-key": 1, "nts-slow-focus": .3, "nts-poolside": .3, "nts-otaku": .3 },
+}), "nts-low-key");
 
 let parties = 0;
 const iterations = 1000;

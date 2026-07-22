@@ -18,17 +18,17 @@
     "calm": {
       "id": "calm",
       "intent": "downshift, regulate, reduce density, soften stimulation",
-      "station_pool": ["cafe-del-mar-calm", "groove-salad", "groove-salad-classic"]
+      "station_pool": ["cafe-del-mar-calm", "groove-salad", "groove-salad-classic", "nts-slow-focus", "nts-low-key"]
     },
     "chill": {
       "id": "chill",
       "intent": "stabilise, soften, maintain warmth, support balance",
-      "station_pool": ["cafe-del-mar-chill", "groove-salad", "groove-salad-classic", "sanctuary-retro"]
+      "station_pool": ["cafe-del-mar-chill", "groove-salad", "groove-salad-classic", "sanctuary-retro", "nts-poolside", "nts-otaku", "nts-low-key"]
     },
     "house": {
       "id": "house",
       "intent": "uplift, energise, support agency, activate positive momentum",
-      "station_pool": ["cafe-del-mar-house", "sanctuary-dark-electro", "sanctuary-retro"]
+      "station_pool": ["cafe-del-mar-house", "sanctuary-dark-electro", "sanctuary-retro", "nts-poolside", "nts-otaku"]
     }
   },
   "tensor_field_bible": {
@@ -21866,7 +21866,7 @@
   "radio_stations": {
     "schema": "um_radio_station_tensor_approved_v1.0",
     "source_json": "radio-station-tensor-notion-export-v1.0.json",
-    "approved_count": 7,
+    "approved_count": 11,
     "station_ids": [
       "cafe-del-mar-calm",
       "cafe-del-mar-chill",
@@ -21874,10 +21874,14 @@
       "groove-salad",
       "groove-salad-classic",
       "sanctuary-dark-electro",
-      "sanctuary-retro"
+      "sanctuary-retro",
+      "nts-slow-focus",
+      "nts-poolside",
+      "nts-otaku",
+      "nts-low-key"
     ],
     "selection_contract": "Rank within the inferred calm, chill or house stage gate using citizen-needs fit, explicit work context, group context, personal affinity, continuity and adjacent exploration.",
-    "private_demo_approval": "All seven sources approved by Ben for the password-locked stakeholder sandpit on 2026-07-20.",
+    "private_demo_approval": "All eleven sources approved by Ben for password-locked internal demo use. The four NTS Infinite Mixtapes require official permission before any public release.",
     "handoff_contract": "A completed Party continues into the best-fit live radio station; a solo citizen may switch immediately, while a joined audio room records a shared next-item vote.",
     "exploration_rate": 0.28,
     "party_radio_prior": {"parties": 0.7, "radio": 0.3}
