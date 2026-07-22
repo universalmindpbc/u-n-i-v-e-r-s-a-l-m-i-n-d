@@ -3600,8 +3600,14 @@
     }
 
     if (audioWalletCount) {
-      audioWalletCount.textContent = `${audioWalletOccupancy}/9`;
-      audioWalletCount.setAttribute("aria-label", `${audioWalletOccupancy} of 9 people in ${audioWalletCircleName || "selected"} Circle`);
+      const occupancyWords = ["zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine"];
+      const occupancy = Math.max(0, Math.min(9, Math.round(Number(audioWalletOccupancy) || 0)));
+      const circleName = audioWalletCircleName || "selected";
+      const occupancyLabel = `${occupancyWords[occupancy]} of nine people checked into ${circleName} Circle.`;
+      audioWalletCount.textContent = `${occupancy} / 9`;
+      audioWalletCount.dataset.circleTooltip = occupancyLabel;
+      audioWalletCount.setAttribute("aria-label", occupancyLabel);
+      audioWalletCount.setAttribute("tabindex", audioWalletJoined ? "0" : "-1");
     }
   }
 

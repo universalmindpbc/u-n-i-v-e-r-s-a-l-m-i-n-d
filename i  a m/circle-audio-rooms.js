@@ -24,6 +24,7 @@
   const endpointMeta = document.querySelector('meta[name="iam-circle-room-endpoint"]');
   const endpoint = String(window.IAM_CIRCLE_ROOM_ENDPOINT || endpointMeta?.content || "").replace(/\/+$/, "");
   const catalogue = new Map();
+  const walletWaveformCanvas = document.querySelector("[data-audio-wallet-waveform]");
 
   let previousFocus = null;
   let selectedCircleId = "";
@@ -34,6 +35,13 @@
   let reservation = null;
   let operationPending = false;
   let intentionalDisconnect = false;
+  let walletWaveformTrack = null;
+  let walletWaveformAudioContext = null;
+  let walletWaveformSource = null;
+  let walletWaveformAnalyser = null;
+  let walletWaveformSamples = null;
+  let walletWaveformFrame = 0;
+  let walletWaveformLevel = 0;
   let state = {
     selectorOpen: false,
     joined: false,
@@ -269,6 +277,118 @@
     client = rtcClient;
   }
 
+  function drawWalletWaveformLine({ waveformState = "idle", level = 0, samples = null, time = 0 } = {}) {
+    const context = walletWaveformCanvas?.getContext("2d");
+    if (!context) return;
+    const width = walletWaveformCanvas.width;
+    const height = walletWaveformCanvas.height;
+    const centre = height / 2;
+    const muted = waveformState === "muted" || waveformState === "idle";
+    const inputActive = !muted && level > 0.018;
+    const reducedMotion = window.matchMedia?.("(prefers-reduced-motion: reduce)")?.matches;
+    walletWaveformCanvas.dataset.waveformState = waveformState;
+    walletWaveformCanvas.dataset.inputActive = String(inputActive);
+    context.clearRect(0, 0, width, height);
+    context.lineCap = "round";
+    context.lineJoin = "round";
+    context.lineWidth = muted ? 2.5 : 3;
+    context.strokeStyle = muted
+      ? "rgba(255, 255, 255, .5)"
+      : "rgba(117, 223, 213, .96)";
+    context.beginPath();
+
+    const startX = 10;
+    const endX = width - 10;
+    const span = endX - startX;
+    for (let point = 0; point <= 28; point += 1) {
+      const ratio = point / 28;
+      const x = startX + ratio * span;
+      let y = centre;
+      if (!muted && inputActive && samples && !reducedMotion) {
+        const sampleIndex = Math.min(samples.length - 1, Math.floor(ratio * samples.length));
+        const sample = (samples[sampleIndex] - 128) / 128;
+        const boost = Math.min(4.8, 1.45 + level * 22);
+        y += sample * height * 0.29 * boost;
+      } else if (!muted && !reducedMotion) {
+        const restingAmplitude = inputActive ? Math.min(8, 2.2 + level * 40) : 1.15;
+        y += Math.sin(ratio * Math.PI * 4 + time / 330) * restingAmplitude;
+      }
+      if (point === 0) context.moveTo(x, y);
+      else context.lineTo(x, y);
+    }
+    context.stroke();
+  }
+
+  function drawWalletWaveformFrame(time) {
+    const receivesInput = state.joined && !state.muted && Boolean(walletWaveformTrack);
+    let samples = null;
+    let level = 0;
+
+    if (receivesInput && walletWaveformAnalyser && walletWaveformSamples) {
+      walletWaveformAnalyser.getByteTimeDomainData(walletWaveformSamples);
+      let energy = 0;
+      for (let index = 0; index < walletWaveformSamples.length; index += 1) {
+        const sample = (walletWaveformSamples[index] - 128) / 128;
+        energy += sample * sample;
+      }
+      level = Math.sqrt(energy / walletWaveformSamples.length);
+      samples = walletWaveformSamples;
+    } else if (receivesInput) {
+      level = Math.max(0, Number(walletWaveformTrack.getVolumeLevel?.()) || 0);
+    }
+
+    walletWaveformLevel = receivesInput
+      ? (walletWaveformLevel * 0.68 + level * 0.32)
+      : (walletWaveformLevel * 0.72);
+    drawWalletWaveformLine({
+      waveformState: receivesInput ? "listening" : (state.joined ? "muted" : "idle"),
+      level: walletWaveformLevel,
+      samples,
+      time,
+    });
+    walletWaveformFrame = window.requestAnimationFrame(drawWalletWaveformFrame);
+  }
+
+  function stopWalletWaveform(nextState = "idle") {
+    if (walletWaveformFrame) window.cancelAnimationFrame(walletWaveformFrame);
+    walletWaveformFrame = 0;
+    try { walletWaveformSource?.disconnect(); } catch {}
+    walletWaveformSource = null;
+    walletWaveformAnalyser = null;
+    walletWaveformSamples = null;
+    walletWaveformTrack = null;
+    walletWaveformLevel = 0;
+    const context = walletWaveformAudioContext;
+    walletWaveformAudioContext = null;
+    context?.close?.().catch(() => {});
+    drawWalletWaveformLine({ waveformState: nextState });
+  }
+
+  function startWalletWaveform(track) {
+    stopWalletWaveform("listening");
+    walletWaveformTrack = track;
+    const AudioContextClass = window.AudioContext || window.webkitAudioContext;
+    const mediaTrack = track?.getMediaStreamTrack?.();
+    if (AudioContextClass && mediaTrack && window.MediaStream) {
+      try {
+        walletWaveformAudioContext = new AudioContextClass();
+        walletWaveformSource = walletWaveformAudioContext.createMediaStreamSource(new window.MediaStream([mediaTrack]));
+        walletWaveformAnalyser = walletWaveformAudioContext.createAnalyser();
+        walletWaveformAnalyser.fftSize = 256;
+        walletWaveformAnalyser.smoothingTimeConstant = 0.72;
+        walletWaveformSamples = new Uint8Array(walletWaveformAnalyser.fftSize);
+        walletWaveformSource.connect(walletWaveformAnalyser);
+        walletWaveformAudioContext.resume?.().catch(() => {});
+      } catch {
+        try { walletWaveformSource?.disconnect(); } catch {}
+        walletWaveformSource = null;
+        walletWaveformAnalyser = null;
+        walletWaveformSamples = null;
+      }
+    }
+    walletWaveformFrame = window.requestAnimationFrame(drawWalletWaveformFrame);
+  }
+
   async function releaseReservation(joinPayload = reservation) {
     if (!joinPayload?.reservation_id || !endpoint) return;
     try {
@@ -326,6 +446,7 @@
         roomNumber: Math.max(1, Number(joinPayload.room_number) || 1),
         error: "",
       };
+      stopWalletWaveform("muted");
       window.IAMTelevisionAudio?.setVoiceConversationActive?.(true);
       setStatus();
       emitState();
@@ -337,6 +458,7 @@
       presenceSocket = null;
       if (client) await client.leave().catch(() => null);
       client = null;
+      stopWalletWaveform("idle");
       await releaseReservation(joinPayload);
       reservation = null;
       const message = error?.message === "Failed to fetch" ? "The Circle could not be reached." : error?.message;
@@ -365,13 +487,16 @@
           await localTrack.setMuted(false);
         }
         state.muted = false;
+        startWalletWaveform(localTrack);
       } else {
         await localTrack?.setMuted(true);
         state.muted = true;
+        stopWalletWaveform("muted");
       }
       state.error = "";
       emitState();
     } catch (error) {
+      stopWalletWaveform(state.joined ? "muted" : "idle");
       setStatus(error.message || "Microphone access was not available.", true);
       open(document.querySelector("[data-audio-wallet-mic]"));
     } finally {
@@ -387,6 +512,7 @@
     reservation = null;
 
     try {
+      stopWalletWaveform("idle");
       presenceSocket?.close(1000, "left-circle");
       presenceSocket = null;
       if (localTrack) {
@@ -420,6 +546,7 @@
   async function handleUnexpectedDisconnect() {
     if (!state.joined) return;
     intentionalDisconnect = true;
+    stopWalletWaveform("idle");
     if (localTrack) {
       localTrack.close();
       localTrack = null;
@@ -477,6 +604,7 @@
     trapDialogFocus(event);
   });
   window.addEventListener("pagehide", () => {
+    stopWalletWaveform("idle");
     if (!reservation) return;
     intentionalDisconnect = true;
     presenceSocket?.close();
@@ -484,14 +612,19 @@
   });
 
   window.IAMCircleRooms = {
-    version: "circle_rooms_v2",
+    version: "circle_rooms_v3",
     circles: CIRCLES.map((circle) => ({ ...circle })),
     open,
     close,
     leave,
     toggleMute,
     refresh: refreshCatalogue,
-    getState: () => ({ ...state }),
+    getState: () => ({
+      ...state,
+      waveformActive: Boolean(walletWaveformFrame),
+      waveformLevel: Number(walletWaveformLevel.toFixed(4)),
+    }),
   };
+  stopWalletWaveform("idle");
   document.body.dataset.circleRoomsReady = "true";
 })();
