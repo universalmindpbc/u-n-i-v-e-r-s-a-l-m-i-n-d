@@ -9,10 +9,10 @@ const tensor = JSON.parse(fs.readFileSync(path.join(iam, "radio-station-tensor-n
 const catalogue = JSON.parse(fs.readFileSync(path.join(iam, "adaptive-music-video-catalogue-v1.11.json"), "utf8"));
 
 const requiredNts = new Map([
-  ["nts-slow-focus", "https://streams.radiomast.io/dfc76352-cda6-4a95-85dd-6f6609f83ba2/hls.m3u8"],
-  ["nts-poolside", "https://streams.radiomast.io/052d2e3c-389c-44cf-a91a-8f5e1854f4c6/hls.m3u8"],
-  ["nts-otaku", "https://streams.radiomast.io/7481798f-063c-42a2-8048-15ff98fe309e/hls.m3u8"],
-  ["nts-low-key", "https://streams.radiomast.io/de114902-ee1b-441f-91bc-5468d1e77605/hls.m3u8"],
+  ["nts-slow-focus", "https://streams.radiomast.io/dfc76352-cda6-4a95-85dd-6f6609f83ba2"],
+  ["nts-poolside", "https://streams.radiomast.io/052d2e3c-389c-44cf-a91a-8f5e1854f4c6"],
+  ["nts-otaku", "https://streams.radiomast.io/7481798f-063c-42a2-8048-15ff98fe309e"],
+  ["nts-low-key", "https://streams.radiomast.io/de114902-ee1b-441f-91bc-5468d1e77605"],
 ]);
 const allowedGates = new Set(["calm", "chill", "house"]);
 const records = Array.isArray(tensor.records) ? tensor.records : [];
@@ -39,8 +39,9 @@ for (const [id, streamUrl] of requiredNts) {
   const record = records.find((candidate) => candidate.id === id);
   assert.ok(record, `${id} is missing from the Notion tensor export`);
   assert.equal(record.provider, "NTS");
-  assert.equal(record.stream_transport, "HLS");
+  assert.equal(record.stream_transport, "Direct MP3");
   assert.equal(record.stream_url, streamUrl);
+  assert.ok(!record.stream_url.endsWith("/hls.m3u8"), `${id} must not use fragmented HLS playback`);
   assert.match(record.player_url, /^https:\/\/www\.nts\.live\/infinite-mixtapes\//);
 }
 
@@ -55,4 +56,4 @@ for (const [gate, definition] of Object.entries(catalogue.radio_handoff_stations
   }
 }
 
-console.log("Radio station Notion tensor passed: 11 approved stations, including 4 transport-valid NTS HLS streams.");
+console.log("Radio station Notion tensor passed: 11 approved stations, including 4 continuous NTS MP3 streams.");

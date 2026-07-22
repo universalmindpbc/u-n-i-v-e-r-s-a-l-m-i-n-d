@@ -244,11 +244,13 @@ requireCondition(controller.includes('async function loadSoundResearchSettings()
 requireCondition(!controller.includes('iamQuantumTreePeakVolume'), 'a browser-specific Quantum Tree peak override has returned');
 requireCondition(controller.includes('const radioIsAudible = continuationAudio && !continuationAudio.paused'), 'the Quantum Tree layer no longer detects active radio playback');
 requireCondition(controller.includes('media: videoIsAudible ? localVideo : (radioIsAudible ? continuationAudio : null),'), 'the Quantum Tree layer no longer selects the audible video or radio source');
-requireCondition(controller.includes('const RADIO_READY_BUFFER_SECONDS = 24;') && controller.includes('const RADIO_LIVE_SYNC_SEGMENTS = 4;'), 'NTS radio no longer builds a multi-segment safety reservoir behind the live edge');
-requireCondition(controller.includes('liveSyncDurationCount: RADIO_LIVE_SYNC_SEGMENTS') && controller.includes('liveMaxLatencyDurationCount: RADIO_MAX_LIVE_LATENCY_SEGMENTS'), 'NTS radio has lost its resilient live-window position');
-requireCondition(controller.includes('fragLoadingMaxRetry: 8') && controller.includes('levelLoadingMaxRetry: 8'), 'NTS radio segment and playlist retry protection has regressed');
-requireCondition(controller.includes('bindRadioPlaybackDiagnostics(audio, hls, Hls);') && controller.includes('scheduleRadioRecovery("waiting")'), 'NTS radio stall detection and automatic recovery are no longer wired');
-requireCondition(controller.includes('await waitForRadioBuffer(continuationAudio);'), 'NTS radio starts before the initial safety buffer is ready');
+requireCondition(controller.includes('"https://streams.radiomast.io/052d2e3c-389c-44cf-a91a-8f5e1854f4c6"') && !controller.includes('052d2e3c-389c-44cf-a91a-8f5e1854f4c6/hls.m3u8'), 'NTS Poolside has regressed to fragmented HLS instead of continuous MP3');
+requireCondition((controller.match(/stream_transport: "Direct MP3"/g) || []).length === 4, 'the four NTS stations are not all using continuous MP3 transport');
+requireCondition(controller.includes('bindDirectRadioPlaybackDiagnostics(audio, source);') && controller.includes('scheduleReconnect("direct_waiting", 2500);'), 'continuous MP3 stall detection and reconnection are no longer wired');
+requireCondition(controller.includes('const RADIO_DIRECT_STALL_MS = 6000;') && controller.includes('scheduleReconnect("direct_clock_stalled", 200);'), 'continuous MP3 clock-stall recovery has regressed');
+requireCondition(controller.includes('const RADIO_READY_BUFFER_SECONDS = 24;') && controller.includes('const RADIO_LIVE_SYNC_SEGMENTS = 4;'), 'the generic HLS radio fallback has lost its safety reservoir');
+requireCondition(controller.includes('liveSyncDurationCount: RADIO_LIVE_SYNC_SEGMENTS') && controller.includes('fragLoadingMaxRetry: 8'), 'the generic HLS radio fallback has lost live-window or retry protection');
+requireCondition(controller.includes('await waitForRadioBuffer(continuationAudio);'), 'radio starts before transport-specific readiness completes');
 requireCondition(controller.includes('continuationAudioSource !== source') && controller.includes('const previousAudio = continuationAudio;'), 'radio source changes can once again inherit stale playback state from the previous station');
 requireCondition(controller.includes('measuredLevel * activeMedia.volume'), 'the Quantum Tree layer no longer follows the measured level of the active media source');
 requireCondition(!controller.includes('return radioLevel * SOUND_RESEARCH_MAX_VOLUME;'), 'radio playback has returned to a fixed Quantum Tree gain');

@@ -73,10 +73,10 @@
     { id: "groove-salad-classic", stageGate: "chill", mode: "radio", provider: "SomaFM", title: "Groove Salad Classic", display_title: "Groove Salad Classic", short_title: "GS CLASSIC", stream_url: "https://ice5.somafm.com/gsclassic-128-mp3", primary_environmental_function: "Soul + Restoration", top_needs: ["Belonging", "Gratitude", "Recovery", "Calm"], card_palette: ["#725f50", "#c9b896"] },
     { id: "sanctuary-dark-electro", stageGate: "house", mode: "radio", provider: "Sanctuary Radio", title: "Dark Electro", display_title: "Sanctuary — Dark Electro", short_title: "DARK ELECTRO", stream_url: "https://stream.sanctuaryradio.com/mainchannel_hq", primary_environmental_function: "Grit + Agency", top_needs: ["Anger", "Motivation", "Self-Actualisation", "Curiosity"], card_palette: ["#312e42", "#9c6da6"] },
     { id: "sanctuary-retro", stageGate: "chill", mode: "radio", provider: "Sanctuary Radio", title: "Retro", display_title: "Sanctuary — Retro", short_title: "RETRO", stream_url: "https://stream.sanctuaryradio.com/retrochannel_hq", primary_environmental_function: "Joy + Affirmation", top_needs: ["Belonging", "Joy", "Gratitude", "Connection"], card_palette: ["#355c67", "#d57c72"] },
-    { id: "nts-slow-focus", stageGate: "calm", mode: "radio", provider: "NTS", title: "Slow Focus", display_title: "NTS — Slow Focus", short_title: "SLOW FOCUS", stream_url: "https://streams.radiomast.io/dfc76352-cda6-4a95-85dd-6f6609f83ba2/hls.m3u8", stream_transport: "HLS", primary_environmental_function: "Soul + Restoration", top_needs: ["Calm", "Recovery", "Attention", "Awe"], card_palette: ["#3c4660", "#aebbd0"] },
-    { id: "nts-poolside", stageGate: "chill", mode: "radio", provider: "NTS", title: "Poolside", display_title: "NTS — Poolside", short_title: "POOLSIDE", stream_url: "https://streams.radiomast.io/052d2e3c-389c-44cf-a91a-8f5e1854f4c6/hls.m3u8", stream_transport: "HLS", primary_environmental_function: "Joy + Affirmation", top_needs: ["Joy", "Gratitude", "Connection", "Belonging"], card_palette: ["#2f7890", "#f2c978"] },
-    { id: "nts-otaku", stageGate: "chill", mode: "radio", provider: "NTS", title: "Otaku", display_title: "NTS — Otaku", short_title: "OTAKU", stream_url: "https://streams.radiomast.io/7481798f-063c-42a2-8048-15ff98fe309e/hls.m3u8", stream_transport: "HLS", primary_environmental_function: "Curiosity + Exploration", top_needs: ["Curiosity", "Awe", "Joy", "Self-Actualisation"], card_palette: ["#392d70", "#79d5cf"] },
-    { id: "nts-low-key", stageGate: "calm", mode: "radio", provider: "NTS", title: "Low Key", display_title: "NTS — Low Key", short_title: "LOW KEY", stream_url: "https://streams.radiomast.io/de114902-ee1b-441f-91bc-5468d1e77605/hls.m3u8", stream_transport: "HLS", primary_environmental_function: "Soul + Restoration", top_needs: ["Calm", "Attention", "Belonging", "Connection"], card_palette: ["#53423d", "#c5ab89"] },
+    { id: "nts-slow-focus", stageGate: "calm", mode: "radio", provider: "NTS", title: "Slow Focus", display_title: "NTS — Slow Focus", short_title: "SLOW FOCUS", stream_url: "https://streams.radiomast.io/dfc76352-cda6-4a95-85dd-6f6609f83ba2", stream_transport: "Direct MP3", primary_environmental_function: "Soul + Restoration", top_needs: ["Calm", "Recovery", "Attention", "Awe"], card_palette: ["#3c4660", "#aebbd0"] },
+    { id: "nts-poolside", stageGate: "chill", mode: "radio", provider: "NTS", title: "Poolside", display_title: "NTS — Poolside", short_title: "POOLSIDE", stream_url: "https://streams.radiomast.io/052d2e3c-389c-44cf-a91a-8f5e1854f4c6", stream_transport: "Direct MP3", primary_environmental_function: "Joy + Affirmation", top_needs: ["Joy", "Gratitude", "Connection", "Belonging"], card_palette: ["#2f7890", "#f2c978"] },
+    { id: "nts-otaku", stageGate: "chill", mode: "radio", provider: "NTS", title: "Otaku", display_title: "NTS — Otaku", short_title: "OTAKU", stream_url: "https://streams.radiomast.io/7481798f-063c-42a2-8048-15ff98fe309e", stream_transport: "Direct MP3", primary_environmental_function: "Curiosity + Exploration", top_needs: ["Curiosity", "Awe", "Joy", "Self-Actualisation"], card_palette: ["#392d70", "#79d5cf"] },
+    { id: "nts-low-key", stageGate: "calm", mode: "radio", provider: "NTS", title: "Low Key", display_title: "NTS — Low Key", short_title: "LOW KEY", stream_url: "https://streams.radiomast.io/de114902-ee1b-441f-91bc-5468d1e77605", stream_transport: "Direct MP3", primary_environmental_function: "Soul + Restoration", top_needs: ["Calm", "Attention", "Belonging", "Connection"], card_palette: ["#53423d", "#c5ab89"] },
   ];
   const continuation = {
     videoSrc: "a s s e t s/Homepage - Hero Background Video - Chanel 2020 Runway Show.mp4",
@@ -310,6 +310,7 @@
   const RADIO_BUFFER_WAIT_MS = 12000;
   const RADIO_LIVE_SYNC_SEGMENTS = 4;
   const RADIO_MAX_LIVE_LATENCY_SEGMENTS = 5;
+  const RADIO_DIRECT_STALL_MS = 6000;
   let continuationAudio = null;
   let continuationHls = null;
   let continuationAudioSource = "";
@@ -2456,6 +2457,8 @@
     document.body.dataset.radioBufferTargetSeconds = String(RADIO_READY_BUFFER_SECONDS);
     document.body.dataset.radioPlaybackTime = (Number(audio.currentTime) || 0).toFixed(1);
     document.body.dataset.radioPaused = String(Boolean(audio.paused));
+    document.body.dataset.radioMuted = String(Boolean(audio.muted));
+    document.body.dataset.radioVolume = (Number(audio.volume) || 0).toFixed(2);
     document.body.dataset.radioReadyState = String(audio.readyState || 0);
     document.body.dataset.radioNetworkState = String(audio.networkState || 0);
     document.body.dataset.radioWaitingCount = String(radioWaitingCount);
@@ -2626,6 +2629,107 @@
     });
   }
 
+  function bindDirectRadioPlaybackDiagnostics(audio, source) {
+    clearRadioPlaybackDiagnostics();
+    radioWaitingCount = 0;
+    radioStalledCount = 0;
+    radioRecoveryCount = 0;
+    radioLastRecoveryAt = 0;
+    let playbackStarted = false;
+    let lastPlaybackTime = Number(audio.currentTime) || 0;
+    let lastAdvanceAt = Date.now();
+
+    const reconnect = (reason) => {
+      if (audio !== continuationAudio || continuationAudioSource !== source) return;
+      if (!document.body.classList.contains("television-radio-continuation")) return;
+      const now = Date.now();
+      if (now - radioLastRecoveryAt < 2500) return;
+      radioLastRecoveryAt = now;
+      radioRecoveryCount += 1;
+      document.body.dataset.radioRecoveryCount = String(radioRecoveryCount);
+      document.body.dataset.radioRecoveryReason = reason;
+      document.body.dataset.radioPlaybackState = "reconnecting";
+      try {
+        audio.pause();
+        audio.src = source;
+        audio.load();
+      } catch {}
+      audio.play()
+        .then(() => {
+          document.body.dataset.radioPlaybackState = "playing";
+          delete document.body.dataset.radioPlaybackError;
+        })
+        .catch((error) => {
+          document.body.dataset.radioPlaybackState = "error";
+          document.body.dataset.radioPlaybackError = String(error?.message || error).slice(0, 120);
+        });
+    };
+    const scheduleReconnect = (reason, delayMs = 1200) => {
+      window.clearTimeout(radioRecoveryTimer);
+      radioRecoveryTimer = window.setTimeout(() => {
+        radioRecoveryTimer = 0;
+        reconnect(reason);
+      }, delayMs);
+    };
+    const handleWaiting = () => {
+      if (!playbackStarted) return;
+      radioWaitingCount += 1;
+      document.body.dataset.radioPlaybackState = "buffering";
+      updateRadioBufferDiagnostics(audio, null);
+      scheduleReconnect("direct_waiting", 2500);
+    };
+    const handleStalled = () => {
+      radioStalledCount += 1;
+      document.body.dataset.radioPlaybackState = "buffering";
+      updateRadioBufferDiagnostics(audio, null);
+      scheduleReconnect("direct_stalled");
+    };
+    const handlePlaying = () => {
+      playbackStarted = true;
+      window.clearTimeout(radioRecoveryTimer);
+      radioRecoveryTimer = 0;
+      lastPlaybackTime = Number(audio.currentTime) || 0;
+      lastAdvanceAt = Date.now();
+      if (document.body.classList.contains("television-radio-continuation")) {
+        document.body.dataset.radioPlaybackState = "playing";
+        delete document.body.dataset.radioPlaybackError;
+      }
+      updateRadioBufferDiagnostics(audio, null);
+    };
+    const handleError = () => {
+      document.body.dataset.radioLastMediaError = String(audio.error?.code || "unknown");
+      scheduleReconnect("direct_media_error", 400);
+    };
+    const handleEnded = () => scheduleReconnect("direct_ended", 200);
+
+    audio.addEventListener("waiting", handleWaiting);
+    audio.addEventListener("stalled", handleStalled);
+    audio.addEventListener("playing", handlePlaying);
+    audio.addEventListener("error", handleError);
+    audio.addEventListener("ended", handleEnded);
+    radioPlaybackCleanup = () => {
+      audio.removeEventListener("waiting", handleWaiting);
+      audio.removeEventListener("stalled", handleStalled);
+      audio.removeEventListener("playing", handlePlaying);
+      audio.removeEventListener("error", handleError);
+      audio.removeEventListener("ended", handleEnded);
+    };
+
+    radioBufferMonitor = window.setInterval(() => {
+      if (audio !== continuationAudio || continuationAudioSource !== source) return;
+      updateRadioBufferDiagnostics(audio, null);
+      if (!document.body.classList.contains("television-radio-continuation")) return;
+      const currentTime = Number(audio.currentTime);
+      if (!Number.isFinite(currentTime)) return;
+      if (currentTime > lastPlaybackTime + .04) {
+        lastPlaybackTime = currentTime;
+        lastAdvanceAt = Date.now();
+      } else if (playbackStarted && !audio.paused && Date.now() - lastAdvanceAt > RADIO_DIRECT_STALL_MS) {
+        scheduleReconnect("direct_clock_stalled", 200);
+      }
+    }, 1000);
+  }
+
   function destroyContinuationHls() {
     radioHlsAttachSequence += 1;
     clearRadioPlaybackDiagnostics();
@@ -2634,7 +2738,7 @@
     continuationAudioSource = "";
     [
       "radioStreamTransport", "radioBufferSeconds", "radioBufferTargetSeconds", "radioPlaybackTime",
-      "radioPaused", "radioReadyState",
+      "radioPaused", "radioMuted", "radioVolume", "radioReadyState",
       "radioNetworkState", "radioBandwidthKbps", "radioLiveLatencySeconds", "radioWaitingCount",
       "radioStalledCount", "radioRecoveryCount", "radioRecoveryReason", "radioLastHlsError",
       "radioLastMediaError", "radioManifestVariants", "radioBitrateKbps", "radioLiveSyncSegments",
@@ -2657,8 +2761,9 @@
 
     if (!isHlsRadioSource(source)) {
       audio.src = source;
-      audio.dataset.radioTransport = "direct";
-      document.body.dataset.radioStreamTransport = "direct";
+      audio.dataset.radioTransport = "direct-mp3";
+      document.body.dataset.radioStreamTransport = "direct-mp3";
+      bindDirectRadioPlaybackDiagnostics(audio, source);
       return audio;
     }
 
