@@ -399,6 +399,7 @@
   let researchPreviousFocus = null;
   let audioWalletInteracting = false;
   let walletView = "closed";
+  let walletControlsInteractiveAt = 0;
   const WALLET_RESUMABLE_VIEWS = new Set(["categories", "emoji", "video", "video-mix", "music", "emdr", "audio", "support", "collect"]);
   let walletResumeView = "categories";
   const emdrStyleNames = ["GIF", "stellar"];
@@ -3473,6 +3474,7 @@
 
   function restoreReactionWalletView() {
     const nextView = WALLET_RESUMABLE_VIEWS.has(walletResumeView) ? walletResumeView : "categories";
+    walletControlsInteractiveAt = nextView === "categories" ? 0 : Date.now() + 450;
     audioWalletMode = nextView === "audio";
     setWalletView(nextView, { remember: false });
     syncAudioWallet();
@@ -3582,6 +3584,13 @@
     // newly revealed control cannot inherit the flower's pointer-up gesture.
     if (walletResumeView === "categories") setReactionWalletOpen(true);
     nowPlayingInteractiveAt = Date.now() + 1400;
+  }
+
+  function blockRestoredWalletClickThrough(event) {
+    if (Date.now() >= walletControlsInteractiveAt) return;
+    if (event.target.closest?.("[data-reaction-wallet-trigger], [data-wallet-home]")) return;
+    event.preventDefault();
+    event.stopImmediatePropagation();
   }
 
   function syncAudioWallet() {
@@ -4910,6 +4919,7 @@
     setAudioWalletInteracting(false);
     if (walletView === "emoji") scheduleReactionWalletCollapse(120);
   });
+  reactionWallet?.addEventListener("click", blockRestoredWalletClickThrough, true);
   reactionWalletTrigger?.addEventListener("pointerdown", beginReactionWalletOpenGesture, true);
   reactionWalletTrigger?.addEventListener("click", openReactionWalletFromTrigger, true);
   nowPlaying?.addEventListener("click", openNowPlayingRecommendations);
