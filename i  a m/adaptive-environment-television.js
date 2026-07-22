@@ -2517,7 +2517,6 @@
     radioLastRecoveryAt = 0;
     let lastPlaybackTime = Number(audio.currentTime) || 0;
     let lastAdvanceAt = Date.now();
-    const unexpectedPauseRecoveryAt = Date.now() + 8000;
 
     const handleWaiting = () => {
       radioWaitingCount += 1;
@@ -2600,9 +2599,6 @@
       }
       if (bufferSeconds < RADIO_LOW_BUFFER_SECONDS) {
         try { hls.startLoad(-1); } catch {}
-      }
-      if (audio.paused && playbackState === "playing" && Date.now() >= unexpectedPauseRecoveryAt && Date.now() - lastAdvanceAt > 1500) {
-        scheduleRadioRecovery("unexpected_pause", 100);
       }
     }, 1000);
   }
