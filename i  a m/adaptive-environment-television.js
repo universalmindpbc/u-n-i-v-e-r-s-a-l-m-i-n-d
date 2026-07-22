@@ -2439,16 +2439,21 @@
       return audio;
     }
 
-    if (audio.canPlayType("application/vnd.apple.mpegurl")) {
+    const nativeHlsSupported = Boolean(audio.canPlayType("application/vnd.apple.mpegurl"));
+    let Hls;
+    try {
+      Hls = await loadRadioHlsLibrary();
+    } catch (error) {
+      if (!nativeHlsSupported) throw error;
+    }
+    if (attachSequence !== radioHlsAttachSequence || audio !== continuationAudio) return audio;
+    if (!Hls?.isSupported?.()) {
+      if (!nativeHlsSupported) throw new Error("This browser cannot play the station's HLS stream.");
       audio.src = source;
       audio.dataset.radioTransport = "hls-native";
       document.body.dataset.radioStreamTransport = "hls-native";
       return audio;
     }
-
-    const Hls = await loadRadioHlsLibrary();
-    if (attachSequence !== radioHlsAttachSequence || audio !== continuationAudio) return audio;
-    if (!Hls?.isSupported?.()) throw new Error("This browser cannot play the station's HLS stream.");
 
     const hls = new Hls({ enableWorker: true, maxBufferLength: 60, backBufferLength: 30 });
     continuationHls = hls;
