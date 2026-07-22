@@ -3627,7 +3627,7 @@
       const circleName = audioWalletCircleName || "selected";
       audioWalletLeave.hidden = !audioWalletJoined;
       audioWalletLeave.disabled = !audioWalletJoined;
-      audioWalletLeave.setAttribute("aria-label", `Leave ${circleName} Circle`);
+      audioWalletLeave.setAttribute("aria-label", `Close ${circleName} audio room`);
     }
 
     if (audioWalletCount) {
