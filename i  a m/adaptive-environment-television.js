@@ -3881,13 +3881,15 @@
     continuationAudio.volume = 0;
     window.IAMEMDR?.setAudioSource?.(continuationAudio);
 
-    const playAttempt = continuationAudio.play();
-    if (playAttempt?.then) {
-      playAttempt
-        .then(() => {
-          continuationAudio.volume = 0;
-        })
-        .catch(() => null);
+    if (!document.body.classList.contains("television-radio-continuation")) {
+      const playAttempt = continuationAudio.play();
+      if (playAttempt?.then) {
+        playAttempt
+          .then(() => {
+            continuationAudio.volume = 0;
+          })
+          .catch(() => null);
+      }
     }
 
     return continuationAudio;
