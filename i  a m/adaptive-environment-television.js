@@ -3862,6 +3862,20 @@
     continuationDecision = radioDecision;
     const source = radioDecision?.src || radioDecision?.stream_url;
 
+    if (continuationAudio && continuationAudioSource && continuationAudioSource !== source) {
+      const previousAudio = continuationAudio;
+      destroyContinuationHls();
+      try {
+        previousAudio.pause();
+        previousAudio.muted = true;
+        previousAudio.volume = 0;
+        previousAudio.removeAttribute("src");
+        previousAudio.load();
+      } catch {}
+      window.IAMEMDR?.setAudioSource?.(null);
+      continuationAudio = null;
+    }
+
     if (!continuationAudio) {
       continuationAudio = new Audio();
       continuationAudio.crossOrigin = "anonymous";

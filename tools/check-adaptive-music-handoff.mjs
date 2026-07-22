@@ -249,6 +249,7 @@ requireCondition(controller.includes('liveSyncDurationCount: RADIO_LIVE_SYNC_SEG
 requireCondition(controller.includes('fragLoadingMaxRetry: 8') && controller.includes('levelLoadingMaxRetry: 8'), 'NTS radio segment and playlist retry protection has regressed');
 requireCondition(controller.includes('bindRadioPlaybackDiagnostics(audio, hls, Hls);') && controller.includes('scheduleRadioRecovery("waiting")'), 'NTS radio stall detection and automatic recovery are no longer wired');
 requireCondition(controller.includes('await waitForRadioBuffer(continuationAudio);'), 'NTS radio starts before the initial safety buffer is ready');
+requireCondition(controller.includes('continuationAudioSource !== source') && controller.includes('const previousAudio = continuationAudio;'), 'radio source changes can once again inherit stale playback state from the previous station');
 requireCondition(controller.includes('measuredLevel * activeMedia.volume'), 'the Quantum Tree layer no longer follows the measured level of the active media source');
 requireCondition(!controller.includes('return radioLevel * SOUND_RESEARCH_MAX_VOLUME;'), 'radio playback has returned to a fixed Quantum Tree gain');
 requireCondition(controller.includes('window.IAMQuantumTree = {'), 'the live Quantum Tree diagnostic interface is missing');
