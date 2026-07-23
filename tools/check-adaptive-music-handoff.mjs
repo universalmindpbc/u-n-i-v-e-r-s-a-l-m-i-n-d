@@ -560,6 +560,13 @@ requireCondition(!televisionPage.includes('one hit · retrigger anytime') && !te
 requireCondition(mantraStudioPage.includes('data-editor-tab="pad"') && mantraStudioPage.includes('data-editor-tab="sample"') && mantraStudioPage.includes('data-editor-tab="pitch"') && mantraStudioPage.includes('data-editor-tab="amp"'), 'the owner studio no longer exposes Pad, Sample, Pitch and Amp editing');
 requireCondition(mantraStudioScript.includes('pitchCanvas?.addEventListener("pointermove"') && mantraStudioScript.includes('pitchCurve = simplifyCurve(pitchCurve);'), 'the pitch editor is no longer directly drawable');
 requireCondition(mantraStudioScript.includes('getByteTimeDomainData') && mantraStudioPage.includes('data-vu-meter'), 'the owner preview no longer has a live VU meter');
+const mantraGainInput = mantraStudioPage.match(/<input type="range" min="0" max="([^"]+)" value="1" step="0\.001" data-sample-gain>/);
+requireCondition(mantraGainInput && Math.abs(20 * Math.log10(Number(mantraGainInput[1])) - 24) < 0.01, 'the Mantra Studio Gain control no longer reaches +24 dB');
+requireCondition(mantraStudioPage.includes('data-sample-normalise') && mantraStudioPage.includes('>normalise sample</button>'), 'the Pad editor no longer exposes the requested normalise button');
+requireCondition(mantraStudioScript.includes('const NORMALISE_TARGET_DB = -12;') && mantraStudioScript.includes('function trimmedRms(buffer)') && mantraStudioScript.includes('NORMALISE_TARGET_RMS / average'), 'normalise no longer raises the current trim toward a strong average level');
+requireCondition(mantraStudioScript.includes('function createPeakLimiter(ctx)') && mantraStudioScript.includes('limiter.threshold.value = -1;') && mantraStudioScript.includes('connect(limiter).connect(analyser)'), 'the Studio preview no longer contains high-gain peaks');
+requireCondition(mantraSampler.includes('Math.min(15.849, itemGain)') && mantraSampler.includes('ctx.createDynamicsCompressor()') && mantraSampler.includes('connect(limiter).connect(ctx.destination)'), 'saved +24 dB Mantra gain no longer reaches protected sampler playback');
+requireCondition(mantraLibraryEndpoint.includes('const MANTRA_MAX_GAIN = 15.849;') && mantraLibraryEndpoint.includes('$gain > MANTRA_MAX_GAIN'), 'the owner API no longer accepts the Studio +24 dB gain range safely');
 const mantraStudioScriptMatch = mantraStudioPage.match(/mantra-studio\.js\?v=([^"']+)/);
 const mantraVoiceDspMatch = mantraStudioPage.match(/mantra-voice-dsp\.js\?v=([^"']+)/);
 const mantraStudioCssMatch = mantraStudioPage.match(/mantra-studio\.css\?v=([^"']+)/);

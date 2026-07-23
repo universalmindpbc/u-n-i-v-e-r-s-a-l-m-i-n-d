@@ -153,6 +153,7 @@ textarea:focus {
 
 .mantra-login button,
 .mantra-upload button,
+.mantra-normalise button,
 .mantra-editor__transport button,
 .mantra-vocoder__transport button {
   min-height: 42px;
@@ -350,6 +351,21 @@ textarea:focus {
 
 .mantra-knob > span {
   margin: 0;
+}
+
+.mantra-normalise {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 14px;
+}
+
+.mantra-normalise button {
+  min-height: 38px;
+}
+
+.mantra-normalise button:disabled {
+  cursor: not-allowed;
+  opacity: 0.35;
 }
 
 .mantra-upload {
@@ -651,6 +667,10 @@ button:disabled {
 
   .mantra-upload {
     grid-template-columns: 1fr;
+  }
+
+  .mantra-normalise button {
+    width: 100%;
   }
 
   .mantra-editor__transport {

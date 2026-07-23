@@ -42,6 +42,11 @@
   const vocoderEffect = document.querySelector("[data-vocoder-effect]");
   const vocoderPreviewButton = document.querySelector("[data-vocoder-preview]");
   const vocoderSaveButton = document.querySelector("[data-vocoder-save]");
+  const normaliseButton = document.querySelector("[data-sample-normalise]");
+  const MAX_GAIN_DB = 24;
+  const MAX_GAIN = 10 ** (MAX_GAIN_DB / 20);
+  const NORMALISE_TARGET_DB = -12;
+  const NORMALISE_TARGET_RMS = 10 ** (NORMALISE_TARGET_DB / 20);
 
   let library = null;
   let csrfToken = "";
@@ -164,6 +169,52 @@
     document.querySelector("[data-vocoder-effect-output]").textContent = `${Math.round(Number(vocoderEffect.value) * 100)}%`;
   }
 
+  function trimmedRms(buffer) {
+    const startTime = Math.max(0, Number(fields.trimStart.value) || 0);
+    const endTime = Math.min(buffer.duration, Number(fields.trimEnd.value) || buffer.duration);
+    const start = Math.max(0, Math.floor(startTime * buffer.sampleRate));
+    const end = Math.min(buffer.length, Math.ceil(endTime * buffer.sampleRate));
+    if (end <= start) return 0;
+    let energy = 0;
+    let count = 0;
+    for (let channel = 0; channel < buffer.numberOfChannels; channel += 1) {
+      const data = buffer.getChannelData(channel);
+      for (let index = start; index < end; index += 1) {
+        energy += data[index] * data[index];
+        count += 1;
+      }
+    }
+    return count ? Math.sqrt(energy / count) : 0;
+  }
+
+  function normaliseSelectedSample() {
+    if (!decodedBuffer) {
+      announce("Choose a pad with audio before normalising.");
+      return;
+    }
+    const average = trimmedRms(decodedBuffer);
+    if (!Number.isFinite(average) || average < 0.00001) {
+      announce("The selected audio is too quiet to normalise.");
+      return;
+    }
+    const normalisedGain = Math.min(MAX_GAIN, NORMALISE_TARGET_RMS / average);
+    fields.gain.value = String(Number(normalisedGain.toFixed(3)));
+    updateOutputs();
+    const appliedDb = 20 * Math.log10(normalisedGain);
+    const limitCopy = normalisedGain >= MAX_GAIN - 0.001 ? " · maximum +24.0 dB applied" : "";
+    announce(`average normalised to ${NORMALISE_TARGET_DB} dBFS · ${appliedDb >= 0 ? "+" : ""}${appliedDb.toFixed(1)} dB gain${limitCopy}`);
+  }
+
+  function createPeakLimiter(ctx) {
+    const limiter = ctx.createDynamicsCompressor();
+    limiter.threshold.value = -1;
+    limiter.knee.value = 0;
+    limiter.ratio.value = 20;
+    limiter.attack.value = 0.003;
+    limiter.release.value = 0.08;
+    return limiter;
+  }
+
   async function decodeAsset(item) {
     decodedBuffer = null;
     if (!item?.asset) return;
@@ -194,6 +245,7 @@
       : [{ x: 0, y: 0 }, { x: 1, y: 0 }];
     announce(`loading ${selected.label || "pad"}…`);
     await decodeAsset(selected);
+    normaliseButton.disabled = !decodedBuffer;
     const duration = decodedBuffer?.duration || Math.max(1, Number(selected.trim_end) || 1);
     fields.trimStart.max = String(duration);
     fields.trimEnd.max = String(duration);
@@ -383,6 +435,7 @@
 
     const gain = ctx.createGain();
     const pan = ctx.createStereoPanner ? ctx.createStereoPanner() : null;
+    const limiter = createPeakLimiter(ctx);
     const analyser = ctx.createAnalyser();
     analyser.fftSize = 256;
     const attack = raw ? Math.min(0.01, duration * 0.25) : Math.min(duration * 0.9, Math.max(0.005, Number(fields.attack.value) * duration));
@@ -394,9 +447,9 @@
     gain.gain.linearRampToValueAtTime(0.0001, ctx.currentTime + duration);
     if (pan) {
       pan.pan.value = raw ? 0 : Number(fields.pan.value) || 0;
-      source.connect(gain).connect(pan).connect(analyser).connect(ctx.destination);
+      source.connect(gain).connect(pan).connect(limiter).connect(analyser).connect(ctx.destination);
     } else {
-      source.connect(gain).connect(analyser).connect(ctx.destination);
+      source.connect(gain).connect(limiter).connect(analyser).connect(ctx.destination);
     }
     const samples = new Uint8Array(analyser.frequencyBinCount);
     const meter = () => {
@@ -644,6 +697,7 @@
   });
 
   document.querySelector("[data-sample-preview]")?.addEventListener("click", () => previewBuffer());
+  normaliseButton?.addEventListener("click", normaliseSelectedSample);
   document.querySelector("[data-sample-save]")?.addEventListener("click", savePad);
   document.querySelector("[data-sample-upload-button]")?.addEventListener("click", async () => {
     try {

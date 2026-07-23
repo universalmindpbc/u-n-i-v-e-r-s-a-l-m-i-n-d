@@ -10,6 +10,7 @@ const MANTRA_OWNER_KEY_HASH = 'e6a9c12b1512ebc1790482dbb21854d33e4217fdcabb1e494
 const MANTRA_LIBRARY_PATH = __DIR__ . '/mantra-library.json';
 const MANTRA_UPLOAD_DIR = __DIR__ . '/../a s s e t s/m a n t r a [ u p l o a d s ]';
 const MANTRA_MAX_UPLOAD_BYTES = 12582912;
+const MANTRA_MAX_GAIN = 15.849;
 
 function mantra_json(array $payload, int $status = 200): void
 {
@@ -187,7 +188,7 @@ if ($action === 'save') {
     if ($trimStart === false || $trimEnd === false || $trimStart < 0 || $trimEnd <= $trimStart || $trimEnd > 900) {
         mantra_json(['error' => 'Set a valid start and end point.'], 422);
     }
-    if ($gain === false || $gain < 0 || $gain > 2 || $pan === false || $pan < -1 || $pan > 1
+    if ($gain === false || $gain < 0 || $gain > MANTRA_MAX_GAIN || $pan === false || $pan < -1 || $pan > 1
         || $speed === false || $speed < 0.35 || $speed > 2 || $pitch === false || $pitch < -12 || $pitch > 12
         || $pitchMotion === false || $pitchMotion < 0 || $pitchMotion > 12) {
         mantra_json(['error' => 'One or more sound controls are outside their safe range.'], 422);

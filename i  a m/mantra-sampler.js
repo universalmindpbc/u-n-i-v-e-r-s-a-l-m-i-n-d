@@ -122,19 +122,25 @@
     const envelope = item.amp_envelope || {};
     const itemGain = Number.isFinite(Number(item.gain)) ? Number(item.gain) : 1;
     const envelopeLevel = Number.isFinite(Number(envelope.level)) ? Number(envelope.level) : 1;
-    const peak = Math.max(0.0001, Math.min(2, itemGain) * Math.max(0, Math.min(1, envelopeLevel)));
+    const peak = Math.max(0.0001, Math.min(15.849, itemGain) * Math.max(0, Math.min(1, envelopeLevel)));
     const attack = Math.min(outputDuration * 0.9, Math.max(0.005, Number(envelope.attack) * outputDuration || 0.02));
     const release = Math.min(outputDuration * 0.9, Math.max(0.005, Number(envelope.release) * outputDuration || 0.08));
     gain.gain.setValueAtTime(0.0001, ctx.currentTime);
     gain.gain.linearRampToValueAtTime(peak, ctx.currentTime + attack);
     gain.gain.setValueAtTime(peak, ctx.currentTime + Math.max(attack, outputDuration - release));
     gain.gain.linearRampToValueAtTime(0.0001, ctx.currentTime + outputDuration);
+    const limiter = ctx.createDynamicsCompressor();
+    limiter.threshold.value = -1;
+    limiter.knee.value = 0;
+    limiter.ratio.value = 20;
+    limiter.attack.value = 0.003;
+    limiter.release.value = 0.08;
     if (ctx.createStereoPanner) {
       const pan = ctx.createStereoPanner();
       pan.pan.value = Math.max(-1, Math.min(1, Number(item.pan) || 0));
-      source.connect(gain).connect(pan).connect(ctx.destination);
+      source.connect(gain).connect(pan).connect(limiter).connect(ctx.destination);
     } else {
-      source.connect(gain).connect(ctx.destination);
+      source.connect(gain).connect(limiter).connect(ctx.destination);
     }
     source.onended = () => deactivate(item.id);
     sourceById.set(item.id, source);
