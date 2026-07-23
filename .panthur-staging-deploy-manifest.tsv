@@ -7,21 +7,22 @@ cb5ca5c93b603f262be4cc408fe60c9f358ca0f144908743a4787c189a186a1e	science.html
 9dc9dba7368146dd96ed3bc5875e48530af168389b47becd20bc07f380b9a615	vogue-self-report.css
 3dbe2f94acaafdad192b50067532b9cb420512bc6381c2fbcb9d838afbdb3972	realtime-voice-assistant.css
 c6029b8e8142de6f26a28305558ebf7d4be7657ebb3385ff374d17ec71726e10	adaptive-music-artist-catalogue.json
-bc658915b10678b01a9c440e5d1361db72b725d3b150dd0533213125f6cc49b7	adaptive-environment-television.css
+11a071bb7a0cf217cead1b9d3329d3896978c9dfe1e8a7f33220bdec87a43840	adaptive-environment-television.css
 40421155254df07fd6e5e346995df3092325c6e8662b535ff050f7aaa77769cb	cafe-del-mar-home.html
 dcbff34364d60a02e5a68c1c27db1da0aba2c6059e154b93da9ed822926eea8e	a d a p t i v e  m u s i c  v i d e o  i n t e l l i g e n c e   -  c o d e x   b r i e f  v 0 . 1.md
 f5523d0d103367606e5c786fdefe6a1a560975a214ebe5188405469ec5619e09	tools/analyze-video-beats.py
 f1670bb15260c563cfe508ea2be7ddfe2f1b9260e0f3ab2f1015343345b5d177	i  a m.md
 2395bc9f9a00c3c567f3525cda478d2c138592cd215860d5b1545c88e2037f38	community-globe.html
 5f0737cd938e152d4f72293c969dc4060ef2b47b00b7f60e2bccad037aa80bc8	mantra-samples-v1.json
-e8b9b887a8c40dc52cbf7bb63e94ad2f768a276648c3592c06c8509be1b81347	index.html
-501fead65f98b801db3508e0232648da58015ca0a08ce280fadfb7348a37f8bf	mantra-sampler.js
+6e4dc20021882de99a9f4c955e0bdbae7e36dd4b709552c93c6f310deabd46e2	index.html
+a521b1357424a5649bb36c8a584096de26d42c493424290d33ef1d183bff939d	mantra-sampler.js
 6733d57632028171b99f89270ff8237c250411f62166ebe1a2f36a80fe88833f	vogue-self-report.js
 8db79c73cc87c67ec83416ea86f2c9ceb53a9ac706eed513bbf7ac1c01f15a59	about.js
 90f3492e36d53a1c252af9546d4d8c0ea98179aa0be21414ef577ebce2c4208c	problem.html
 5dd6355dbbaa5dc8b92c4588ac7d70396423a9739c0415b7d91a029a8218ba38	selector_benchmark.py
 123e089d15feaa6829debe13abe44f08cac866b2073016b170829491f4f6208b	technology-citizen-needs.html
 52fd6dcb6ef2736df89486fd144caf1842aa8957911378772409a1b4ecbed3f8	adaptive-inference-engine-system-prompt-v4.44-content.js
+90dd44f74532843f450fddd78ea2a0f68d0aae805166db779623882ee3f07026	mantra-studio.js
 0d480c5363dc9453ab5db5d3153af999c8a9abea823a8c25da22f7da00564d6f	adaptive-soundtrack-stage-gates.md
 c506df2be441c6489d4ee85438aa668eab8be5194ae9f381e4380ba074a21ebd	apple-touch-icon.png
 d562c1cecd4dd0a86f083be7eb0655c195381cca295daf7f1a23001747b56005	styles.css
@@ -60,10 +61,11 @@ beb34584876306e5825ba720c8cfb01b871065791c48be5add2ce5cc6d75f59f	adaptive-infere
 3862c4481721b08403d25024626930de4c0a2b265ccc336e99b830bb3133825e	c h a n g e l o g.md
 e12eb24c367d2ac6f67963f434a729027e75b914e450b6260f47c01b9bd1ef58	i  a m  c h e c k i n  -  f o r m  -  b r i e f.md
 2ce0d0a5afb4d9961eec772a296e17f9c703d89182648b6d35ee6007c776d59f	science-research-data-v1.js
+5275f347994be619b3125337f3c678422ba2ab483ce54b67f382f652a0659c6b	mantra-sampler.css
 43bb3e81ba8213e37db4fec33570d65bfed2bdc74ea138e2bd46af7b18108b86	adaptive-music-video-catalogue-v1.11.json
-6a6e43294b0f0885747eb4d6fe312f01c48689249f91c2d950c001b808f8989b	adaptive-environment-television.js
+aa0f6941fca8fa552e17bc68f424993eb45ebc572a85987c612d0a4fa5f697b1	adaptive-environment-television.js
 21018b071ae34b685b6ee42f98207b3b1af59b53977f6ce26345fcf1b1224c35	technology.html
-1bf8ef28feea28c27239a92c0ce349d4454f18e4af0904622378ea1d9d393435	adaptive-environment-television.html
+8b65156631f925942451dcc933e51c2504456a3558dc9f444ada9085570eaac6	adaptive-environment-television.html
 bd7c2792addca34fdb4f10d7b25c3a21b99e86a3f233e7afc2fd54ef541d2419	script.js
 8ea0432ffcd62efe867482b520f0f7d2f005cc43117cb5424ca7097d7f5ad936	stakeholders/budget/index.html
 0f32e3f59c3045259d45f6db8dd9ebb9fcac04da5b8a2982912baae86d7e14f2	stakeholders/budget/iamvogue-stakeholder-budget-v1.xlsx
@@ -74,6 +76,7 @@ ea9c74095740c48e246dc1a18521c94bf060a17e80adf16fa4bcbdf295d59066	c o d e x.md
 7e5eac183d8dd2b3d3b8483424c3387badb2972036aad9fb102b2824e0063830	quantum-tree-control.js
 09483dd4627f5dae95eaf25fa8e7dd1cc23a8890294f781da0569110910bd26b	Algorithm Architecture | 144+ Dimensional | Adaptive Music Engine.png
 cf01c223f31ddc67e0fa713e7b072b23720bbf9116972c1f357555c158c86ffc	radio-station-tensor-notion-export-v1.0.json
+22c4a6a091d9c5c016ce9c6849c356e6d940f564de80b35451cb17425af1cf39	mantra-studio.css
 809696402633707d2f5e4028f5fcfe92a6aa18c1ce9e0f16864e8797023938e7	about.css
 174d358ee9eb0940cc3dbdb47ebf89f2dd4157286c1f15df59ee00dcc2885c06	technology-citizen-needs.js
 2a13d4d099900dcb9fcc2f72ac7af705bfaa4c6f9031c9fb9b20691f86033001	induction.html
@@ -84,6 +87,8 @@ f451b091244b651f3b0d83261c5bc7bacf6ec613f0181ee180ec97cb0e890897	our-team.html
 00e182a786017f5a82429c24db86a531e6dc3935916ffa5f1dce69558f7f9340	adaptive-music-trajectory-policy-v2.json
 5bcbf61ff69c8db3466ce6d94c329e6bfa090d7a465814b9c9422942931da4d0	handover 1.11.md
 a08aea883abe8dc9aeb7dcb3d00d01f2383690c4589d1f1ad7b94e64df732317	api/adaptive-music-video-selection.php
+4155d04bca0c07678abbe0dfc0be008a634ca95eb669d1a383b1f03c30321e18	api/mantra-library.php
+ee950eeaf5f3c85f35ab8d297f484d93765f44a40e430c1d914cafcb45e0dd7c	api/mantra-library.json
 eddef54940a3a48620977e7f6888b1f82ee3c21a75d092d4031470c5bb54f2cc	api/quantum-tree-settings.php
 55be60405ee05c5fb53833bc796a3c421d5ac6befb84c416437ebbc4da936c21	api/quantum-tree-settings.json
 8178460f2d594ece008e01e417b9c3f51acbf996583de9ca7e03e85f45561566	api/adaptive-music-video-selection.py
@@ -144,17 +149,21 @@ fff81bc9f0033750539e8b818a12e59a3db605f20ca4dcb43fc8b62315ee60f7	a s s e t s/abo
 ae762c5a26c411eb64dfac72a00998136e625d66e8db0bb6671a6e5ab834c27a	a s s e t s/phone icon.png
 c4fa014be259c7919f552523fe2b23698a4e2dc81774daad11414a2ca842fcd8	a s s e t s/audio on - icon.png
 ed5301623fb036bcc72780a8c33714fe81542420e9ce33b01c458258b4b635c1	a s s e t s/wallet-turntable-reference.png
+a9b1c7451fafd9b6a21a6eed05e344fb920ea0b9fc01e3d397c62ed536fc30df	a s s e t s/m a n t r a [ m o c k u p ]/ibiza-plur-vocoder.wav
 ec0ef264764ec3faeebe7ae340f86f9ffdbc2c4cd76f15b09a7756dd11265ec2	a s s e t s/m a n t r a [ m o c k u p ]/tibet-multiplicity.m4a
 db9ee81b91695eca4cadef3b2da19dd4762b9ebb6723ab56e71e6d5025a8de5f	a s s e t s/m a n t r a [ m o c k u p ]/ibiza-lifestyle.m4a
 eca59e175e75c5c2af190a7b4c96bd66b6af031d72364a4dce23f0d7c3b3e75c	a s s e t s/m a n t r a [ m o c k u p ]/ibiza-glowing.m4a
 551a8e97b378d129d74c459bb8b0c4f6edad35e33956e2ddda0c067aa144fd75	a s s e t s/m a n t r a [ m o c k u p ]/ibiza-dimension.m4a
 103abcd6e206b38b3dc88b90a7734fb24bee6d268d2b4ab8d50f6df16f068643	a s s e t s/m a n t r a [ m o c k u p ]/ibiza-narayana.m4a
 22644f03e2d830433b7c8cc5cbb384ca66d8e931f979765071b25110ecb9b6f7	a s s e t s/m a n t r a [ m o c k u p ]/ibiza-mind-body-soul.m4a
+688321129be61041b19f9cc88ced05b13d3e14921868eabd4d5d97c51ec288a7	a s s e t s/m a n t r a [ m o c k u p ]/ibiza-narayana-vocoder.wav
 c08c2d5a7677079edcdaba25ffcb0053f37945f1ed2e8765f4b90ab4bb1da34b	a s s e t s/m a n t r a [ m o c k u p ]/tibet-one-life.m4a
+18343e3e9b9231e53b13d103a3c56e1884cc76e37f9bf492cc1b20ed3d63fff9	a s s e t s/m a n t r a [ m o c k u p ]/ibiza-lifestyle-vocoder.wav
 7dd9ca7bec389334c91df624c0379dbdd06a6c89bddb1d22b772e2ec701ee2a9	a s s e t s/m a n t r a [ m o c k u p ]/tibet-universe.m4a
 9a5707b4b92958d7a7489a1718cfa303f89fbe18f66f245e59a2233cad08f79c	a s s e t s/m a n t r a [ m o c k u p ]/ibiza-open-mind.m4a
 b2a543ef4624f5b96ede3cc0b45b35bbbffee3e2a499a72af910d8ccbf6aedc8	a s s e t s/Vogue - Front Cover.png
 b41634dca5af7bae44dc76c5a98d562ce94f060065ddc448d31f1f3e70f45c55	a s s e t s/iconmonstr-video play button - white -16-240.png
+01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b	a s s e t s/m a n t r a [ u p l o a d s ]/.gitkeep
 42696e9d82cce1333c571c6b749e7d50daa3e258bdd1cd8b70ac59e604f1ccad	a s s e t s/q a/quantum-tree-next-pass-sasha-typical-56-percent.wav
 f8e58c5d47ca7b7708d9bf2be677b2811887fd16d997cf09971f1fc5cf7bd4fe	a s s e t s/q a/quantum-tree-current-sasha-typical-0.73-percent.wav
 02eba9b37349d2c376b9bac7cfffdc73f8079c7e57b8503f58d144e1cc6239a6	a s s e t s/q a/quantum-tree-sasha-typical-44-percent.wav
@@ -175,6 +184,7 @@ be3b868878a1c07a5007108633926ede85f69a786a489e9af2af0427f740b736	local-context.j
 a1a09a378cca2a0df41bbcdc9da6e3e640bdffcd1f7da5bad4b0ee402e58f384	science.js
 cf9610919c509c6482c01480ca8a9c4091160055519615d4c29b0cd873f64ca0	emdr-gif-world.js
 64ebb1b3303e67c60a7b673b7d91d4a20b4c3588350428ad71baf2b0cbe0ec5e	first-party-analytics-schema.md
+add5c343d84b163f1ff1d1603a2c426be9ddfaa47629f0c0e419700915367bb3	mantra-studio.html
 1080d19d4b07721ef556ea1f65e70bed8968cae5b049c6ac735d7b6634b8a64f	agora-audio-room-setup.md
 cda1c667a651066906a136babc7cbd07eed37f27938c0c304bdfee9e602beaac	emdr-platonics.js
 3047ba3cb6e5a187548d2037e23d60fb90640ca3237f1ad0d20fcf54858488f0	i n f e r e n c e  e n g i n e  -  s y s t e m  p r o m p t  v  1 . 1 1.md
