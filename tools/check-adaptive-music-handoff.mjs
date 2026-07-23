@@ -22,6 +22,8 @@ const realtimeVoiceControllerPath = path.join(IAM_DIR, 'realtime-voice-assistant
 const realtimeVoiceCssPath = path.join(IAM_DIR, 'realtime-voice-assistant.css');
 const realtimeVoiceEndpointPath = path.join(IAM_DIR, 'api', 'realtime-client-secret.php');
 const realtimeVoicePortalGuidePath = path.join(IAM_DIR, 'universal-one-portal-guide-v1.txt');
+const mantraSamplerPath = path.join(IAM_DIR, 'mantra-sampler.js');
+const mantraSamplesPath = path.join(IAM_DIR, 'mantra-samples-v1.json');
 const citizenNeedsWorkerPath = path.join(ROOT, 'cloudflare', 'iam-citizen-needs-worker.js');
 const citizenNeedsWorkerConfigPath = path.join(ROOT, 'cloudflare', 'wrangler.toml');
 const inductionPagePath = path.join(IAM_DIR, 'induction.html');
@@ -102,6 +104,8 @@ const realtimeVoiceController = await fs.readFile(realtimeVoiceControllerPath, '
 const realtimeVoiceCss = await fs.readFile(realtimeVoiceCssPath, 'utf8');
 const realtimeVoiceEndpoint = await fs.readFile(realtimeVoiceEndpointPath, 'utf8');
 const realtimeVoicePortalGuide = await fs.readFile(realtimeVoicePortalGuidePath, 'utf8');
+const mantraSampler = await fs.readFile(mantraSamplerPath, 'utf8');
+const mantraSamples = JSON.parse(await fs.readFile(mantraSamplesPath, 'utf8'));
 const citizenNeedsWorker = await fs.readFile(citizenNeedsWorkerPath, 'utf8');
 const citizenNeedsWorkerConfig = await fs.readFile(citizenNeedsWorkerConfigPath, 'utf8');
 const inductionPage = await fs.readFile(inductionPagePath, 'utf8');
@@ -140,6 +144,7 @@ const expectedGlobeCacheToken = `globe-${createHash('sha256').update(globeContro
 const expectedCssCacheToken = `music-tv-css-${createHash('sha256').update(televisionCss).digest('hex').slice(0, 12)}`;
 const expectedRealtimeVoiceToken = `realtime-voice-${createHash('sha256').update(realtimeVoiceController).digest('hex').slice(0, 12)}`;
 const expectedRealtimeVoiceCssToken = `realtime-voice-css-${createHash('sha256').update(realtimeVoiceCss).digest('hex').slice(0, 12)}`;
+const expectedMantraSamplerToken = `mantra-sampler-${createHash('sha256').update(mantraSampler).digest('hex').slice(0, 12)}`;
 const expectedStreamCatalogueToken = `stream-catalogue-${createHash('sha256').update(streamCatalogue).digest('hex').slice(0, 12)}`;
 const expectedStreamControllerToken = `stream-controller-${createHash('sha256').update(streamController).digest('hex').slice(0, 12)}`;
 const expectedShellControllerToken = `adaptive-env-stream-${createHash('sha256').update(shellController).digest('hex').slice(0, 12)}`;
@@ -329,7 +334,7 @@ requireCondition(realtimeVoicePortalGuide.includes('Privacy first and Go to mark
 requireCondition(realtimeVoicePortalGuide.includes('Bloom, Mix, Circle, Care and Collect') && realtimeVoicePortalGuide.includes('10-minute Nervous System Reset research feature'), 'Universal One no longer knows the television wallet and research feature');
 requireCondition(realtimeVoicePortalGuide.includes('Partner lists are invitations or proposed ideal partners'), 'Universal One can misstate proposed partnerships as confirmed');
 requireCondition(controller.includes('voiceAssistantBaseVolumes.get(media) * .15, 800'), 'the television programme no longer ducks smoothly to fifteen percent for voice');
-requireCondition(controller.includes('animateVoiceAssistantProgramVolume(media, baseline, 1000)'), 'the television programme no longer restores smoothly after voice');
+requireCondition(controller.includes('animateVoiceAssistantProgramVolume(media, baseline * (mantraSamplerDuckActive ? .38 : 1), 1000)'), 'the television programme no longer restores smoothly after voice while preserving an active mantra duck');
 
 for (const { pagePath, source } of globeScriptPages) {
   const label = path.relative(ROOT, pagePath);
@@ -468,7 +473,7 @@ requireCondition(televisionPage.includes('data-wallet-resume-view="categories"')
 requireCondition(!televisionPage.includes('adaptive-television-audio-back'), 'Circle still uses the superseded close symbol instead of wallet home');
 requireCondition(televisionPage.includes('data-audio-wallet-leave'), 'Circle no longer exposes its dedicated leave control');
 requireCondition(controller.includes('audioWalletLeave?.addEventListener("click", leaveAudioWalletCircle);'), 'the dedicated Circle leave control is not wired');
-requireCondition(controller.includes('const WALLET_RESUMABLE_VIEWS = new Set(["categories", "emoji", "video", "video-mix", "music", "emdr", "audio", "support", "collect"]);'), 'the complete wallet hierarchy is no longer resumable');
+requireCondition(controller.includes('const WALLET_RESUMABLE_VIEWS = new Set(["categories", "emoji", "video", "video-mix", "music", "emdr", "mantra", "audio", "support", "collect"]);'), 'the complete wallet hierarchy is no longer resumable');
 requireCondition(controller.includes('let walletResumeView = "categories";') && controller.includes('function restoreReactionWalletView()'), 'the wallet no longer remembers and restores the last meaningful panel');
 requireCondition(controller.includes('setWalletView("closed", { remember: false });'), 'closing the wallet can overwrite its remembered panel');
 requireCondition(controller.includes('walletHomeButtons.forEach((button) => button.addEventListener("click", returnToWalletHome));'), 'the wallet-home flowers no longer share one state-preserving route home');
@@ -485,5 +490,33 @@ requireCondition(controller.includes('researchDialogFrequency.hidden = !frequenc
 requireCondition(controller.includes('researchDialogScienceLink?.addEventListener("click"') && controller.includes('openInVideoPageLayer(researchDialogScienceLink);'), 'the Sound research Science link no longer preserves the full-screen television page layer');
 requireCondition(scienceController.includes('function openLayerFromHash()') && scienceController.includes('toggleLayer(layerId, true);'), 'the Science page no longer opens a directly linked research layer');
 requireCondition(televisionCss.includes('border-top: 1px solid rgba(211, 216, 222, 0.3);') && televisionCss.includes('border-bottom: 1px solid rgba(211, 216, 222, 0.3);'), 'the Sound frequency evidence is no longer framed by the approved grey hairlines');
+
+const mantraScriptMatch = televisionPage.match(/mantra-sampler\.js\?v=([^"']+)/);
+requireCondition(mantraScriptMatch, 'the television page no longer loads the mantra sampler');
+requireCondition(mantraScriptMatch[1] === expectedMantraSamplerToken, `the mantra sampler cache token ${mantraScriptMatch[1]} does not match ${expectedMantraSamplerToken}`);
+requireCondition(televisionPage.includes('data-emdr-mantra-open'), 'the EMDR wallet no longer opens the mantra sampler');
+requireCondition(televisionPage.includes('data-wallet-panel="mantra"') && televisionPage.includes('data-mantra-sampler'), 'the mantra sampler panel is missing');
+requireCondition((televisionPage.match(/data-mantra-pad(?=[\s>])/g) || []).length === 12, 'the mantra honeycomb must expose six Tibet and six Ibiza pads');
+requireCondition((televisionPage.match(/data-mantra-reserved="true"/g) || []).length === 3, 'the three undecided Tibet pad positions are no longer reserved');
+requireCondition((televisionPage.match(/data-mantra-src=/g) || []).length === 9, 'the nine current mantra reference samples are not all connected');
+requireCondition(televisionPage.includes('data-mantra-bank="tibet"') && televisionPage.includes('data-mantra-bank="ibiza"'), 'the Tibet and Ibiza banks are no longer selectable');
+requireCondition(televisionPage.includes('data-mantra-mode="one-shot"') && televisionPage.includes('data-mantra-mode="loop"'), 'one-shot and loop playback are no longer selectable');
+requireCondition(televisionPage.includes('data-mantra-stop'), 'the honeycomb no longer has a central stop-all control');
+requireCondition(mantraSampler.includes('audio.loop = currentMode === "loop";'), 'loop mode no longer controls sample playback');
+requireCondition(mantraSampler.includes('iam:mantra-playback-change'), 'mantra playback no longer reports its programme-duck state');
+requireCondition(controller.includes('setMantraSamplerDucking') && controller.includes('mantraSamplerDuckActive ? .38 : 1'), 'mantra playback no longer ducks and restores the programme safely');
+requireCondition(televisionCss.includes('clip-path: polygon(25% 0, 75% 0, 100% 50%, 75% 100%, 25% 100%, 0 50%);'), 'the sampler pads are no longer literal flat-top hexagons');
+requireCondition(mantraSamples.scope.includes('Private password-gated concept mockup only'), 'the mantra sample manifest no longer limits these references to the private mockup');
+requireCondition(mantraSamples.replacementRule.includes('replace every reference asset with a licensed master or newly commissioned recording'), 'the mantra sample manifest no longer requires licensed public replacements');
+requireCondition(mantraSamples.samples.length === 9, 'the mantra source manifest must contain exactly nine current reference samples');
+requireCondition(mantraSamples.reserved.length === 3, 'the source manifest must retain three reserved Tibet positions');
+requireCondition(mantraSamples.samples.every((sample) => sample.rightsStatus === 'uncleared_reference'), 'every private reference sample must be marked uncleared');
+requireCondition(new Set(mantraSamples.samples.map((sample) => sample.id)).size === mantraSamples.samples.length, 'the mantra source manifest contains duplicate sample ids');
+for (const sample of mantraSamples.samples) {
+  requireCondition(televisionPage.includes(`data-mantra-sample="${sample.id}"`), `${sample.id} is not connected to a honeycomb pad`);
+  const assetStat = await fs.stat(path.join(IAM_DIR, sample.asset));
+  requireCondition(assetStat.size > 15000, `${sample.id} reference audio is missing or unexpectedly small`);
+  requireCondition(assetStat.size < 500000, `${sample.id} reference audio is unexpectedly large for a sampler pad`);
+}
 
 console.log(`Adaptive music handoff preflight passed (${expectedCacheToken}).`);

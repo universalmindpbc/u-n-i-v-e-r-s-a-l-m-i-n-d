@@ -161,6 +161,8 @@
   const emdrStyleButtons = Array.from(document.querySelectorAll("[data-emdr-style]"));
   const emdrReact = document.querySelector("[data-emdr-react]");
   const emdrAutomate = document.querySelector("[data-emdr-automate]");
+  const emdrMantraOpen = document.querySelector("[data-emdr-mantra-open]");
+  const mantraBack = document.querySelector("[data-mantra-back]");
   const emdrIntensity = document.querySelector("[data-emdr-intensity]");
   const emdrSoundResearch = document.querySelector("[data-emdr-sound-research]");
   const researchRolloverHosts = Array.from(document.querySelectorAll(".adaptive-television-research-tooltip-host"));
@@ -330,6 +332,7 @@
   let radioRecoveryCount = 0;
   let radioLastRecoveryAt = 0;
   let voiceAssistantDuckActive = false;
+  let mantraSamplerDuckActive = false;
   const voiceAssistantBaseVolumes = new Map();
   const voiceAssistantVolumeFrames = new Map();
   let soundResearchAudio = null;
@@ -401,7 +404,7 @@
   let audioWalletInteracting = false;
   let walletView = "closed";
   let walletControlsInteractiveAt = 0;
-  const WALLET_RESUMABLE_VIEWS = new Set(["categories", "emoji", "video", "video-mix", "music", "emdr", "audio", "support", "collect"]);
+  const WALLET_RESUMABLE_VIEWS = new Set(["categories", "emoji", "video", "video-mix", "music", "emdr", "mantra", "audio", "support", "collect"]);
   let walletResumeView = "categories";
   const emdrStyleNames = ["GIF", "stellar"];
   const emdrStyleValues = [7, 5];
@@ -1452,6 +1455,9 @@
     if (!reactionWallet) return;
     if (nextView !== "video-mix" && fashionShelfOpen) closeFashionShelf(false);
     if (nextView !== "music" && musicShelfOpen) closeMusicShelf(false);
+    if (nextView !== "mantra" && walletView === "mantra") {
+      window.IAMMantraSampler?.stopAll?.({ announceStop: false });
+    }
     if (nextView !== walletView) closeAllResearchRollovers();
     walletView = nextView;
     reactionWallet.dataset.walletView = nextView;
@@ -1463,6 +1469,7 @@
     reactionWallet.classList.toggle("is-reaction-wallet-open", isOpen && nextView !== "audio");
     reactionWallet.classList.remove("is-reaction-wallet-closing");
     reactionWalletTrigger?.setAttribute("aria-expanded", String(isOpen));
+    emdrMantraOpen?.setAttribute("aria-expanded", String(nextView === "mantra"));
     walletCategories?.setAttribute("aria-hidden", String(nextView !== "categories"));
     walletCategoryButtons.forEach((button) => {
       const active = button.dataset.walletCategory === nextView;
@@ -3159,7 +3166,7 @@
       video.loop = false;
       video.muted = false;
       video.defaultMuted = false;
-      setVoiceAssistantProgramVolume(video, 1, voiceAssistantDuckActive ? 260 : 0);
+      setVoiceAssistantProgramVolume(video, 1, (voiceAssistantDuckActive || mantraSamplerDuckActive) ? 260 : 0);
       video.setAttribute("aria-label", `${track.artist} - ${track.title}`);
       try { video.currentTime = 0; } catch {}
       syncSelectedTrackCopy();
@@ -3851,8 +3858,9 @@
   function setVoiceAssistantProgramVolume(media, baseVolume, duration = 0) {
     if (!media) return;
     const baseline = Math.max(0, Math.min(1, Number(baseVolume) || 0));
-    if (voiceAssistantDuckActive) voiceAssistantBaseVolumes.set(media, baseline);
-    const target = voiceAssistantDuckActive ? baseline * .15 : baseline;
+    if (voiceAssistantDuckActive || mantraSamplerDuckActive) voiceAssistantBaseVolumes.set(media, baseline);
+    const duckFactor = voiceAssistantDuckActive ? .15 : (mantraSamplerDuckActive ? .38 : 1);
+    const target = baseline * duckFactor;
     animateVoiceAssistantProgramVolume(media, target, duration);
   }
 
@@ -3874,9 +3882,9 @@
       });
     } else {
       voiceAssistantBaseVolumes.forEach((baseline, media) => {
-        animateVoiceAssistantProgramVolume(media, baseline, 1000);
+        animateVoiceAssistantProgramVolume(media, baseline * (mantraSamplerDuckActive ? .38 : 1), 1000);
       });
-      voiceAssistantBaseVolumes.clear();
+      if (!mantraSamplerDuckActive) voiceAssistantBaseVolumes.clear();
     }
 
     document.body.classList.toggle("television-voice-conversation-active", nextActive);
@@ -3886,12 +3894,46 @@
     return voiceAssistantDuckActive;
   }
 
+  function setMantraSamplerDucking(active) {
+    const nextActive = Boolean(active);
+    mantraSamplerDuckActive = nextActive;
+    const radioIsActiveProgramme = document.body.classList.contains("television-radio-continuation");
+    const programmeMedia = [localVideo];
+    if (radioIsActiveProgramme) programmeMedia.push(continuationAudio);
+
+    if (nextActive) {
+      programmeMedia.forEach((media) => {
+        if (!media || media.muted) return;
+        if (!voiceAssistantBaseVolumes.has(media)) {
+          const fallback = media === continuationAudio ? .68 : 1;
+          voiceAssistantBaseVolumes.set(media, Math.max(Number(media.volume) || 0, fallback));
+        }
+        const factor = voiceAssistantDuckActive ? .15 : .38;
+        animateVoiceAssistantProgramVolume(media, voiceAssistantBaseVolumes.get(media) * factor, 420);
+      });
+    } else {
+      voiceAssistantBaseVolumes.forEach((baseline, media) => {
+        animateVoiceAssistantProgramVolume(media, baseline * (voiceAssistantDuckActive ? .15 : 1), 640);
+      });
+      if (!voiceAssistantDuckActive) voiceAssistantBaseVolumes.clear();
+    }
+
+    document.body.dataset.mantraDuckedMedia = nextActive
+      ? programmeMedia.filter(Boolean).map((media) => media === continuationAudio ? "radio" : "video").join(",")
+      : "";
+    return mantraSamplerDuckActive;
+  }
+
+  window.addEventListener("iam:mantra-playback-change", (event) => {
+    setMantraSamplerDucking(Boolean(event.detail?.active));
+  });
+
   function playLocalVideo(video) {
     televisionPlaybackRequested = true;
     video.dataset.streamPlayRequestedAt = String(window.performance?.now?.() || Date.now());
     video.preload = "auto";
     video.muted = soundResearchTestMode;
-    setVoiceAssistantProgramVolume(video, soundResearchTestMode ? 0 : 1, voiceAssistantDuckActive ? 260 : 0);
+    setVoiceAssistantProgramVolume(video, soundResearchTestMode ? 0 : 1, (voiceAssistantDuckActive || mantraSamplerDuckActive) ? 260 : 0);
     playerMount.classList.remove("is-local-video-awaiting-gesture");
 
     // Attach the EMDR analyser before playback begins. Claiming an already
@@ -4657,6 +4699,7 @@
       const nowPlayingState = window.IAMNowPlaying?.getState?.() || {};
       return {
         conversationActive: voiceAssistantDuckActive,
+        mantraSampleActive: mantraSamplerDuckActive,
         source: document.body.classList.contains("television-radio-continuation") ? "radio" : "video",
         title: nowPlayingState.title || `${track.displayArtist || track.artist} — ${track.displayTitle || track.title}`,
         visual: nowPlayingState.visual || "",
@@ -5160,6 +5203,17 @@
     event.preventDefault();
     event.stopPropagation();
     setEmdrAutomateEnabled(!emdrAutomateEnabled);
+  });
+  emdrMantraOpen?.addEventListener("click", (event) => {
+    event.preventDefault();
+    event.stopPropagation();
+    disarmVideoTooltips();
+    setWalletView("mantra");
+  });
+  mantraBack?.addEventListener("click", (event) => {
+    event.preventDefault();
+    event.stopPropagation();
+    setWalletView("emdr");
   });
   emdrIntensity?.addEventListener("input", () => {
     const intensity = Number(emdrIntensity.value) / 100;

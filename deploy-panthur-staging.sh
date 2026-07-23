@@ -16,6 +16,7 @@ if [[ -z "$NODE_BIN" ]]; then
 fi
 
 "$NODE_BIN" --check "$ROOT_DIR/i  a m/adaptive-environment-television.js"
+"$NODE_BIN" --check "$ROOT_DIR/i  a m/mantra-sampler.js"
 "$NODE_BIN" --check "$ROOT_DIR/i  a m/circle-audio-rooms.js"
 "$NODE_BIN" --check "$ROOT_DIR/cloudflare/agora-audio-room-worker.js"
 "$NODE_BIN" --check "$ROOT_DIR/i  a m/globe.js"
