@@ -254,7 +254,11 @@
     currentBank = requestedBank;
     renderBank();
   }));
-  closeButtons.forEach((button) => button.addEventListener("click", () => close()));
+  closeButtons.forEach((button) => button.addEventListener("click", (event) => {
+    event.preventDefault();
+    event.stopPropagation();
+    close();
+  }));
   document.addEventListener("keydown", (event) => {
     if (event.key !== "Escape" || !document.body.classList.contains("mantra-sampler-open")) return;
     event.preventDefault();
