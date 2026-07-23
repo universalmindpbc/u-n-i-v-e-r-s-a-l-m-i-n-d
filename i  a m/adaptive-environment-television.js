@@ -162,10 +162,6 @@
   const emdrReact = document.querySelector("[data-emdr-react]");
   const emdrAutomate = document.querySelector("[data-emdr-automate]");
   const emdrMantraOpen = document.querySelector("[data-emdr-mantra-open]");
-  const emdrMenuBack = document.querySelector("[data-emdr-menu-back]");
-  const emdrActiveBack = document.querySelector("[data-emdr-active-back]");
-  const emdrActiveLabel = document.querySelector("[data-emdr-active-label]");
-  const emdrChoiceStatus = document.querySelector("[data-emdr-choice-status]");
   const emdrIntensity = document.querySelector("[data-emdr-intensity]");
   const emdrSoundResearch = document.querySelector("[data-emdr-sound-research]");
   const researchRolloverHosts = Array.from(document.querySelectorAll(".adaptive-television-research-tooltip-host"));
@@ -357,7 +353,7 @@
   const soundResearchParams = new URLSearchParams(window.location.search);
   const soundResearchTestMode = soundResearchParams.get("soundResearchTest") === "1";
   const soundResearchMonitorMode = soundResearchParams.get("quantumTreeMonitor") === "1";
-  let soundResearchEnabled = soundResearchTestMode || localStorage.getItem("iamSoundResearchLayer") === "on";
+  let soundResearchEnabled = soundResearchTestMode || localStorage.getItem("iamSoundResearchLayer") !== "off";
   const SOUND_RESEARCH_DEFAULT_MAX_VOLUME = 0.055;
   const SOUND_RESEARCH_SETTINGS_ENDPOINT = "api/quantum-tree-settings.php";
   const SOUND_RESEARCH_AUDIO_SRC = "a s s e t s/q u a n t u m [ t r e e ].m4a";
@@ -409,7 +405,7 @@
   let walletControlsInteractiveAt = 0;
   const WALLET_RESUMABLE_VIEWS = new Set(["categories", "emoji", "video", "video-mix", "music", "emdr", "audio", "support", "collect"]);
   let walletResumeView = "categories";
-  const emdrStyleNames = ["GIF", "Stella"];
+  const emdrStyleNames = ["GIF", "stellar"];
   const emdrStyleValues = [7, 5];
   let emdrStyleIndex = 0;
   let emdrGifPreviousVideoBlend = null;
@@ -3927,10 +3923,6 @@
   window.addEventListener("iam:mantra-playback-change", (event) => {
     setMantraSamplerDucking(Boolean(event.detail?.active));
   });
-  window.addEventListener("iam:mantra-close", () => {
-    setWalletView("emdr");
-    if (emdrChoiceStatus) emdrChoiceStatus.textContent = "nothing starts until you choose";
-  });
 
   function playLocalVideo(video) {
     televisionPlaybackRequested = true;
@@ -4612,15 +4604,13 @@
   }
 
   function syncEmdrStyleButtons() {
-    const visualActive = Boolean(window.IAMEMDR?.active);
     emdrStyleButtons.forEach((button) => {
       const buttonIndex = Number(button.dataset.emdrStyleIndex);
       const styleName = emdrStyleNames[buttonIndex] || "EMDR";
-      const selected = visualActive && buttonIndex === emdrStyleIndex;
+      const selected = buttonIndex === emdrStyleIndex;
       button.setAttribute("aria-pressed", String(selected));
-      button.setAttribute("aria-label", `${selected ? "Active" : "Activate"} ${styleName} EMDR${selected ? "" : " style"}`);
+      button.setAttribute("aria-label", `Use ${styleName} EMDR style${selected ? " (selected)" : ""}`);
     });
-    if (emdrActiveLabel) emdrActiveLabel.textContent = `${emdrStyleNames[emdrStyleIndex] || "EMDR"} active`;
   }
 
   function applyEmdrAdaptation() {
@@ -4669,29 +4659,6 @@
     if (emdrIntensity) emdrIntensity.value = String(Math.round(intensity * 100));
     emdrReact?.setAttribute("aria-pressed", String(Boolean(window.IAMEMDR.reactionEnabled)));
     emdrAutomate?.setAttribute("aria-pressed", String(emdrAutomateEnabled));
-    return true;
-  }
-
-  function deactivateVisualEmdr() {
-    window.IAMEMDR?.setActive(false, { canvas: emdrCanvas, video: localVideo });
-    stopEmdrIntensityJourney();
-    document.querySelector('[data-video-mode="emdr"]')?.setAttribute("aria-pressed", "false");
-    syncEmdrStyleButtons();
-  }
-
-  function activateEmdrStyle(requestedStyleIndex) {
-    if (!Number.isInteger(requestedStyleIndex) || !emdrStyleValues[requestedStyleIndex]) return false;
-    setSoundResearchEnabled(false);
-    const adaptation = applyEmdrAdaptation();
-    emdrStyleIndex = requestedStyleIndex;
-    window.IAMEMDR?.setStyle(emdrStyleValues[emdrStyleIndex]);
-    const active = window.IAMEMDR?.active || window.IAMEMDR?.setActive(true, { canvas: emdrCanvas });
-    document.querySelector('[data-video-mode="emdr"]')?.setAttribute("aria-pressed", String(Boolean(active)));
-    syncEmdrStyleButtons();
-    if (!active) return false;
-    setWalletView("emdr-active");
-    if (emdrAutomateEnabled) startEmdrIntensityJourney(adaptation.intensityJourney.minimum);
-    else window.IAMEMDR?.setIntensity(adaptation.intensityJourney.start);
     return true;
   }
 
@@ -5029,14 +4996,22 @@
       const mode = button.dataset.videoMode;
       if (mode === "emdr") {
         disarmVideoTooltips();
-        syncActiveEmdrControls();
-        setWalletView("emdr");
-        if (emdrChoiceStatus) {
-          emdrChoiceStatus.textContent = window.IAMEMDR?.active
-            ? `${emdrStyleNames[emdrStyleIndex]} is active · choose to change`
-            : soundResearchEnabled
-              ? "Sound is active · choose to change"
-              : "nothing starts until you choose";
+        if (syncActiveEmdrControls()) {
+          button.setAttribute("aria-pressed", "true");
+          setWalletView("emdr");
+          startSoundResearchLayer();
+          return;
+        }
+        const adaptation = applyEmdrAdaptation();
+        // The playing audio source is connected before playback starts; EMDR
+        // activation must remain a visual-only state change.
+        const active = window.IAMEMDR?.active || window.IAMEMDR?.setActive(true, { canvas: emdrCanvas });
+        button.setAttribute("aria-pressed", String(Boolean(active)));
+        if (active) {
+          setWalletView("emdr");
+          startSoundResearchLayer();
+          if (emdrAutomateEnabled) startEmdrIntensityJourney(adaptation.intensityJourney.minimum);
+          else window.IAMEMDR?.setIntensity(adaptation.intensityJourney.start);
         }
         return;
       }
@@ -5198,15 +5173,20 @@
   emdrOff?.addEventListener("click", (event) => {
     event.preventDefault();
     event.stopPropagation();
-    deactivateVisualEmdr();
-    setWalletView("emdr");
-    if (emdrChoiceStatus) emdrChoiceStatus.textContent = "nothing starts until you choose";
+    window.IAMEMDR?.setActive(false, { canvas: emdrCanvas, video: localVideo });
+    stopEmdrIntensityJourney();
+    document.querySelector('[data-video-mode="emdr"]')?.setAttribute("aria-pressed", "false");
+    setWalletView("video");
   });
   emdrStyleButtons.forEach((button) => button.addEventListener("click", (event) => {
     event.preventDefault();
     event.stopPropagation();
     const requestedStyleIndex = Number(button.dataset.emdrStyleIndex);
-    activateEmdrStyle(requestedStyleIndex);
+    if (!Number.isInteger(requestedStyleIndex) || !emdrStyleValues[requestedStyleIndex]) return;
+    emdrStyleIndex = requestedStyleIndex;
+    window.IAMEMDR?.setStyle(emdrStyleValues[emdrStyleIndex]);
+    syncEmdrStyleButtons();
+    startSoundResearchLayer();
   }));
   emdrReact?.addEventListener("click", (event) => {
     event.preventDefault();
@@ -5224,21 +5204,7 @@
     event.preventDefault();
     event.stopPropagation();
     disarmVideoTooltips();
-    deactivateVisualEmdr();
-    setSoundResearchEnabled(false);
-    if (emdrChoiceStatus) emdrChoiceStatus.textContent = "nothing starts until you choose";
     window.IAMMantraSampler?.open?.();
-  });
-  emdrMenuBack?.addEventListener("click", (event) => {
-    event.preventDefault();
-    event.stopPropagation();
-    setWalletView("video-mix");
-  });
-  emdrActiveBack?.addEventListener("click", (event) => {
-    event.preventDefault();
-    event.stopPropagation();
-    setWalletView("emdr");
-    if (emdrChoiceStatus) emdrChoiceStatus.textContent = `${emdrStyleNames[emdrStyleIndex]} is active · choose to change`;
   });
   emdrIntensity?.addEventListener("input", () => {
     const intensity = Number(emdrIntensity.value) / 100;
@@ -5250,11 +5216,7 @@
   emdrSoundResearch?.addEventListener("click", (event) => {
     event.preventDefault();
     event.stopPropagation();
-    deactivateVisualEmdr();
-    const active = setSoundResearchEnabled(!soundResearchEnabled);
-    if (emdrChoiceStatus) emdrChoiceStatus.textContent = active
-      ? "Sound is active · tap again to turn off"
-      : "nothing starts until you choose";
+    setSoundResearchEnabled(!soundResearchEnabled);
   });
   syncEmdrStyleButtons();
   syncSoundResearchControl();

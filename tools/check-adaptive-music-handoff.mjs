@@ -479,6 +479,11 @@ for (const { pagePath, source } of pages) {
 requireCondition(televisionCss.includes('@media (hover: hover) and (pointer: fine)') && televisionCss.includes('.global-nav-trigger:hover .global-nav-trigger__label'), 'the global navigation label is no longer restricted to intentional computer hover');
 
 const televisionPage = pages.find(({ pagePath }) => pagePath.endsWith('index.html'))?.source || '';
+const restoredEmdrPanelStart = televisionPage.indexOf('<div class="adaptive-television-emdr-controls" data-wallet-panel="emdr"');
+const restoredEmdrPanelEnd = televisionPage.indexOf('<div class="adaptive-television-audio-controls"', restoredEmdrPanelStart);
+const restoredEmdrPanel = restoredEmdrPanelStart >= 0 && restoredEmdrPanelEnd > restoredEmdrPanelStart
+  ? televisionPage.slice(restoredEmdrPanelStart, restoredEmdrPanelEnd)
+  : '';
 requireCondition((televisionPage.match(/data-wallet-home/g) || []).length === 8, 'every secondary wallet branch must retain its wallet-home flower');
 requireCondition((televisionPage.match(/data-wallet-tooltip="wallet home"/g) || []).length === 8, 'the wallet-home flowers no longer expose the approved rollover');
 requireCondition((televisionPage.match(/aria-label="Return to wallet home"/g) || []).length === 8, 'the wallet-home flowers no longer expose the approved accessible label');
@@ -494,12 +499,17 @@ requireCondition(controller.includes('if (walletResumeView === "categories") set
 requireCondition(controller.includes('reactionWallet?.addEventListener("click", blockRestoredWalletClickThrough, true);'), 'a restored panel can inherit the completed flower click');
 requireCondition(!controller.includes('WALLET_RESUME_TIMEOUT'), 'wallet resume has regained an arbitrary time expiry');
 requireCondition(televisionCss.includes('.adaptive-television-wallet-home::after {\n  content: attr(data-wallet-tooltip) !important;'), 'the wallet-home rollover is no longer rendered from its metadata');
-requireCondition((televisionPage.match(/data-emdr-style-index=/g) || []).length === 2, 'the EMDR choice panel does not expose both GIF and Stella buttons');
-requireCondition(televisionPage.includes('data-emdr-style-index="0"') && televisionPage.includes('data-emdr-style-index="1"'), 'the explicit GIF and Stella controls are not addressable independently');
-requireCondition(televisionPage.includes('data-wallet-panel="emdr"') && televisionPage.includes('data-wallet-panel="emdr-active"'), 'EMDR no longer separates neutral choices from active visual controls');
-requireCondition((televisionPage.match(/class="adaptive-television-emdr-choice/g) || []).length === 4, 'the neutral EMDR panel must expose exactly GIF, Stella, Mantra and Sound');
-requireCondition(controller.includes('if (mode === "emdr") {\n        disarmVideoTooltips();\n        syncActiveEmdrControls();\n        setWalletView("emdr");'), 'opening EMDR no longer stops at the neutral choice panel');
-requireCondition(controller.includes('localStorage.getItem("iamSoundResearchLayer") === "on"'), 'Sound can start without an explicit saved opt-in');
+requireCondition((televisionPage.match(/data-emdr-style-index=/g) || []).length === 2, 'the restored EMDR wallet does not expose both GIF and stellar buttons');
+requireCondition(televisionPage.includes('data-emdr-tooltip="Choose the editorial animated GIF experience."'), 'the approved GIF rollover has not been restored');
+requireCondition(televisionPage.includes('data-emdr-tooltip="Choose the stellar geometric experience."'), 'the approved stellar rollover has not been restored');
+requireCondition(televisionPage.includes('data-emdr-tooltip="Play one-shot mantra samples."'), 'the Mantra rollover has not been restored for one-shot playback');
+requireCondition(televisionPage.includes('data-wallet-panel="emdr" data-emdr-controls') && !televisionPage.includes('data-wallet-panel="emdr-active"'), 'the approved single-panel EMDR hierarchy has not been restored');
+requireCondition(!televisionPage.includes('adaptive-television-emdr-menu') && !televisionPage.includes('nothing starts until you choose'), 'the superseded neutral EMDR hierarchy is still present');
+requireCondition(restoredEmdrPanel.includes('data-wallet-home') && restoredEmdrPanel.includes('aria-label="Return to wallet home"'), 'the restored EMDR wallet has lost its mandatory home flower');
+requireCondition(restoredEmdrPanel.includes('data-emdr-off') && restoredEmdrPanel.includes('data-emdr-react') && restoredEmdrPanel.includes('data-emdr-automate') && restoredEmdrPanel.includes('data-emdr-mantra-open') && restoredEmdrPanel.includes('data-emdr-intensity') && restoredEmdrPanel.includes('data-emdr-sound-research'), 'the restored EMDR wallet no longer contains the complete approved control hierarchy');
+requireCondition(televisionPage.includes('adaptive-television-research-tooltip-host--sound') && televisionPage.includes('adaptive-television-research-tooltip--sound'), 'the approved two-stage Sound research rollover has not been restored');
+requireCondition(controller.includes('if (syncActiveEmdrControls()) {\n          button.setAttribute("aria-pressed", "true");\n          setWalletView("emdr");\n          startSoundResearchLayer();'), 'opening EMDR no longer follows the previously approved activation and continuity path');
+requireCondition(controller.includes('localStorage.getItem("iamSoundResearchLayer") !== "off"'), 'the established Sound persistence behavior has not been restored');
 requireCondition(televisionPage.includes('Isochronic tone: 7.38088 Hz, carried on a 111.011 Hz sine wave, plus a separate constant 528.088 Hz sine wave, together as one.'), 'the Sound research lightbox no longer describes the approved frequencies exactly');
 requireCondition(!televisionPage.includes('constant 528.08 Hz sine wave'), 'the Sound research lightbox has regressed to the superseded 528.08 Hz value');
 requireCondition(televisionPage.includes('To learn more about the scientific research behind these selected frequencies, <a href="science.html#research-sound"'), 'the Sound research lightbox no longer links to its Science evidence');
@@ -525,7 +535,8 @@ requireCondition(mantraLibrary.banks.ibiza.filter((item) => item.source_type ===
 requireCondition(mantraLibrary.banks.ibiza.filter((item) => item.source_type === 'vocoder').length === 3, 'Ibiza must contain the three original vocoder samples');
 requireCondition(mantraSampler.includes('stopItem(item.id);') && mantraSampler.includes('source.start(0, trimStart, sampleDuration);'), 'a mantra pad can no longer retrigger before its sample finishes');
 requireCondition(mantraSampler.includes('source.detune.linearRampToValueAtTime') && mantraSampler.includes('item.pitch_curve'), 'saved drawn pitch lines no longer shape sampler playback');
-requireCondition(mantraSampler.includes('new CustomEvent("iam:mantra-close")') && controller.includes('window.addEventListener("iam:mantra-close"'), 'closing the full-screen sampler no longer returns to the neutral EMDR choices');
+requireCondition(mantraSampler.includes('document.body.classList.remove("mantra-sampler-open")') && !controller.includes('window.addEventListener("iam:mantra-close"'), 'closing the full-screen sampler can still rewrite the approved wallet navigation');
+requireCondition(controller.includes('emdrMantraOpen?.addEventListener("click"') && controller.includes('window.IAMMantraSampler?.open?.();') && !controller.includes('deactivateVisualEmdr();'), 'the Mantra extension no longer opens independently from the restored EMDR controls');
 requireCondition(mantraSampler.includes('iam:mantra-playback-change'), 'mantra playback no longer reports its programme-duck state');
 requireCondition(controller.includes('setMantraSamplerDucking') && controller.includes('mantraSamplerDuckActive ? .38 : 1'), 'mantra playback no longer ducks and restores the programme safely');
 requireCondition(controller.includes('Math.max(0, Math.min(1, (now - startedAt) / duration))'), 'rapid mantra ducking can once again overrun the media volume range');
