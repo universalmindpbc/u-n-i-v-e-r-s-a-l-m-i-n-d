@@ -3843,9 +3843,9 @@
     const startVolume = Number(media.volume) || 0;
     const startedAt = window.performance?.now?.() || Date.now();
     const frame = (now) => {
-      const progress = Math.min(1, (now - startedAt) / duration);
+      const progress = Math.max(0, Math.min(1, (now - startedAt) / duration));
       const eased = 1 - Math.pow(1 - progress, 3);
-      media.volume = startVolume + ((target - startVolume) * eased);
+      media.volume = Math.max(0, Math.min(1, startVolume + ((target - startVolume) * eased)));
       if (progress < 1) {
         voiceAssistantVolumeFrames.set(media, window.requestAnimationFrame(frame));
       } else {
@@ -3926,6 +3926,10 @@
 
   window.addEventListener("iam:mantra-playback-change", (event) => {
     setMantraSamplerDucking(Boolean(event.detail?.active));
+  });
+  window.addEventListener("iam:mantra-close", () => {
+    setWalletView("emdr");
+    if (emdrChoiceStatus) emdrChoiceStatus.textContent = "nothing starts until you choose";
   });
 
   function playLocalVideo(video) {
@@ -5222,6 +5226,7 @@
     disarmVideoTooltips();
     deactivateVisualEmdr();
     setSoundResearchEnabled(false);
+    if (emdrChoiceStatus) emdrChoiceStatus.textContent = "nothing starts until you choose";
     window.IAMMantraSampler?.open?.();
   });
   emdrMenuBack?.addEventListener("click", (event) => {

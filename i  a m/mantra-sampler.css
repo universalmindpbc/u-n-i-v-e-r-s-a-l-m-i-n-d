@@ -135,7 +135,7 @@ body.mantra-sampler-open .mantra-orbit__casing {
   position: absolute;
   left: 50%;
   top: 51%;
-  width: min(78vw, 880px);
+  width: min(78vw, calc(100vh - 108px), 880px);
   aspect-ratio: 1;
   transform: translate(-50%, -50%);
 }

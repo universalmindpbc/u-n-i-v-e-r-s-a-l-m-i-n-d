@@ -525,8 +525,10 @@ requireCondition(mantraLibrary.banks.ibiza.filter((item) => item.source_type ===
 requireCondition(mantraLibrary.banks.ibiza.filter((item) => item.source_type === 'vocoder').length === 3, 'Ibiza must contain the three original vocoder samples');
 requireCondition(mantraSampler.includes('stopItem(item.id);') && mantraSampler.includes('source.start(0, trimStart, sampleDuration);'), 'a mantra pad can no longer retrigger before its sample finishes');
 requireCondition(mantraSampler.includes('source.detune.linearRampToValueAtTime') && mantraSampler.includes('item.pitch_curve'), 'saved drawn pitch lines no longer shape sampler playback');
+requireCondition(mantraSampler.includes('new CustomEvent("iam:mantra-close")') && controller.includes('window.addEventListener("iam:mantra-close"'), 'closing the full-screen sampler no longer returns to the neutral EMDR choices');
 requireCondition(mantraSampler.includes('iam:mantra-playback-change'), 'mantra playback no longer reports its programme-duck state');
 requireCondition(controller.includes('setMantraSamplerDucking') && controller.includes('mantraSamplerDuckActive ? .38 : 1'), 'mantra playback no longer ducks and restores the programme safely');
+requireCondition(controller.includes('Math.max(0, Math.min(1, (now - startedAt) / duration))'), 'rapid mantra ducking can once again overrun the media volume range');
 requireCondition(mantraSamplerCss.includes('.mantra-orbit__node') && mantraSamplerCss.includes('border-radius: 50%;'), 'the Audio Rooms-inspired circular sampler nodes are missing');
 requireCondition(!mantraSamplerCss.includes('clip-path: polygon'), 'hexagonal sampler artwork has returned');
 requireCondition(mantraStudioPage.includes('data-editor-tab="pad"') && mantraStudioPage.includes('data-editor-tab="sample"') && mantraStudioPage.includes('data-editor-tab="pitch"') && mantraStudioPage.includes('data-editor-tab="amp"'), 'the owner studio no longer exposes Pad, Sample, Pitch and Amp editing');

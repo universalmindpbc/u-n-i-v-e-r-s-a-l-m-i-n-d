@@ -244,6 +244,7 @@
     sampler.setAttribute("aria-hidden", "true");
     sampler.setAttribute("inert", "");
     document.querySelector("[data-emdr-mantra-open]")?.setAttribute("aria-expanded", "false");
+    window.dispatchEvent(new CustomEvent("iam:mantra-close"));
     if (restoreFocus && previousFocus?.isConnected) previousFocus.focus({ preventScroll: true });
   }
 
