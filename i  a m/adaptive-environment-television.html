@@ -14,8 +14,8 @@
     <link rel="preconnect" href="https://ice5.somafm.com" crossorigin>
     <link rel="preconnect" href="https://stream.sanctuaryradio.com" crossorigin>
     <script src="music-television-frame-context.js?v=music-tv-frame-14ebf4459d03"></script>
-    <link rel="stylesheet" href="styles.css?v=global-nav-single-shell-1">
-    <link rel="preload" as="image" href="a s s e t s/Universal Mind [ I o H ] Logo.PNG">
+    <link rel="stylesheet" href="styles.css?v=global-nav-single-shell-2">
+    <link rel="preload" as="image" href="a s s e t s/Universal Mind [ I o H ] Logo 512.png" fetchpriority="high">
     <link rel="stylesheet" href="adaptive-environment-television.css?v=music-tv-css-1e8fccc06bc8">
     <link rel="stylesheet" href="realtime-voice-assistant.css?v=realtime-voice-css-3dbe2f94acaa">
   </head>
@@ -155,7 +155,7 @@
         </section>
 
         <header class="brand" aria-label="Universal Mind">
-          <img class="brand-mark" src="a s s e t s/Universal Mind [ I o H ] Logo.PNG" alt="">
+          <img class="brand-mark" src="a s s e t s/Universal Mind [ I o H ] Logo 512.png" alt="" decoding="async" fetchpriority="high" data-atomic-logo data-logo-ready="false">
           <div class="brand-lockup" aria-live="polite">
             <span class="brand-name" data-language>universalmind</span>
             <span class="brand-suffix" data-brand-suffix>
@@ -178,7 +178,7 @@
 
         <div class="global-nav-content">
           <a class="global-nav-brand" href="index.html" aria-label="Universal Mind i am homepage">
-            <img class="global-nav-mark" src="a s s e t s/Universal Mind [ I o H ] Logo.PNG" alt="">
+            <img class="global-nav-mark" src="a s s e t s/Universal Mind [ I o H ] Logo 512.png" alt="" decoding="async" data-atomic-logo data-logo-ready="false">
             <span class="global-nav-lockup">
               <span class="global-nav-name">universalmind</span>
               <span class="global-nav-slash">/</span>
@@ -209,12 +209,24 @@
       </aside>
     </main>
 
+    <script>
+      document.querySelectorAll("[data-atomic-logo]").forEach((logo) => {
+        const revealLogo = async () => {
+          try {
+            if (logo.decode) await logo.decode();
+          } catch {}
+          if (logo.naturalWidth > 0) logo.dataset.logoReady = "true";
+        };
+        if (logo.complete) revealLogo();
+        else logo.addEventListener("load", revealLogo, { once: true });
+      });
+    </script>
     <script src="local-context.js?v=local-context-4"></script>
     <script src="script.js?v=adaptive-env-stream-bd7c2792addc"></script>
     <script src="adaptive-environment.js?v=adaptive-env-6e2e517a39e4"></script>
     <script src="first-party-analytics.js?v=first-party-analytics-2"></script>
     <script src="music-channel-selector-v1.js?v=music-channel-selector-97674825d8bd"></script>
-  <script src="adaptive-environment-television.js?v=music-tv-ccafb666bd9b"></script>
+  <script src="adaptive-environment-television.js?v=music-tv-56af85710181"></script>
     <script src="realtime-voice-assistant.js?v=realtime-voice-5c84122268bd"></script>
     <script src="adaptive-page-metadata-v1.js"></script>
   </body>

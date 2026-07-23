@@ -1251,6 +1251,11 @@ body.iam-page-transitioning .site-shell {
   animation: mark-spin 3s linear infinite;
 }
 
+.brand-mark[data-logo-ready="false"],
+.global-nav-mark[data-logo-ready="false"] {
+  visibility: hidden;
+}
+
 .brand-lockup {
   display: flex;
   align-items: baseline;

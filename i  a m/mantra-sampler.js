@@ -13,10 +13,18 @@
   const sourceById = new Map();
   const itemById = new Map();
   const activeIds = new Set();
+  const programmeLevels = [];
+  const PROGRAMME_WINDOW_MS = 3000;
+  const PROGRAMME_SAMPLE_MS = 100;
+  const PROGRAMME_QUIET_RMS = 0.028;
+  const PROGRAMME_LOUD_RMS = 0.09;
+  const PROGRAMME_MAX_ATTENUATION_DB = -3;
   let library = null;
   let currentBank = "tibet";
   let previousFocus = null;
   let audioContext = null;
+  let adaptiveGainDb = 0;
+  let programmeRms = null;
 
   const fallbackUrl = "api/mantra-library.json";
   const endpointUrl = "api/mantra-library.php";
@@ -52,6 +60,34 @@
   function context() {
     if (!audioContext) audioContext = new (window.AudioContext || window.webkitAudioContext)();
     return audioContext;
+  }
+
+  function sampleProgrammeLevel() {
+    const measurement = window.IAMTelevisionAudio?.getProgrammeLevel?.();
+    const level = Number(measurement?.rms);
+    const now = performance.now();
+    if (measurement?.source !== "none" && Number.isFinite(level) && level >= 0) {
+      programmeLevels.push({ level, at: now });
+    }
+    while (programmeLevels.length && now - programmeLevels[0].at > PROGRAMME_WINDOW_MS) programmeLevels.shift();
+  }
+
+  function adaptiveProgrammeGain() {
+    sampleProgrammeLevel();
+    if (!programmeLevels.length) {
+      programmeRms = null;
+      adaptiveGainDb = 0;
+      return 1;
+    }
+    const sorted = programmeLevels.map((sample) => sample.level).sort((a, b) => a - b);
+    programmeRms = sorted[Math.min(sorted.length - 1, Math.floor(sorted.length * 0.75))];
+    const loudness = Math.max(0, Math.min(1,
+      (programmeRms - PROGRAMME_QUIET_RMS) / (PROGRAMME_LOUD_RMS - PROGRAMME_QUIET_RMS)
+    ));
+    adaptiveGainDb = PROGRAMME_MAX_ATTENUATION_DB * (1 - loudness);
+    document.body.dataset.mantraProgrammeRms = programmeRms.toFixed(5);
+    document.body.dataset.mantraAdaptiveGainDb = adaptiveGainDb.toFixed(2);
+    return 10 ** (adaptiveGainDb / 20);
   }
 
   async function bufferFor(item) {
@@ -119,7 +155,8 @@
     const envelope = item.amp_envelope || {};
     const itemGain = Number.isFinite(Number(item.gain)) ? Number(item.gain) : 1;
     const envelopeLevel = Number.isFinite(Number(envelope.level)) ? Number(envelope.level) : 1;
-    const peak = Math.max(0.0001, Math.min(15.849, itemGain) * Math.max(0, Math.min(1, envelopeLevel)));
+    const programmeGain = adaptiveProgrammeGain();
+    const peak = Math.max(0.0001, Math.min(15.849, itemGain) * Math.max(0, Math.min(1, envelopeLevel)) * programmeGain);
     const attack = Math.min(outputDuration * 0.9, Math.max(0.005, Number(envelope.attack) * outputDuration || 0.02));
     const release = Math.min(outputDuration * 0.9, Math.max(0.005, Number(envelope.release) * outputDuration || 0.08));
     gain.gain.setValueAtTime(0.0001, ctx.currentTime);
@@ -132,12 +169,25 @@
     limiter.ratio.value = 20;
     limiter.attack.value = 0.003;
     limiter.release.value = 0.08;
+    limiter.connect(ctx.destination);
+    let effectInput = gain;
     if (ctx.createStereoPanner) {
       const pan = ctx.createStereoPanner();
       pan.pan.value = Math.max(-1, Math.min(1, Number(item.pan) || 0));
-      source.connect(gain).connect(pan).connect(limiter).connect(ctx.destination);
+      source.connect(gain).connect(pan);
+      effectInput = pan;
     } else {
-      source.connect(gain).connect(limiter).connect(ctx.destination);
+      source.connect(gain);
+    }
+    if (window.IAMMantraAudioFX?.connect) {
+      window.IAMMantraAudioFX.connect({
+        ctx,
+        input: effectInput,
+        destination: limiter,
+        state: item.fx,
+      });
+    } else {
+      effectInput.connect(limiter);
     }
     source.onended = () => deactivate(item.id);
     sourceById.set(item.id, source);
@@ -267,10 +317,14 @@
     event.preventDefault();
     close();
   });
-  window.addEventListener("pagehide", () => stopAll());
+  const programmeSampler = window.setInterval(sampleProgrammeLevel, PROGRAMME_SAMPLE_MS);
+  window.addEventListener("pagehide", () => {
+    window.clearInterval(programmeSampler);
+    stopAll();
+  });
 
   window.IAMMantraSampler = {
-    version: "mantra_sampler_v2.0",
+    version: "mantra_sampler_v2.1",
     open,
     close,
     refresh,
@@ -280,6 +334,9 @@
         bank: currentBank,
         active: Array.from(activeIds),
         open: document.body.classList.contains("mantra-sampler-open"),
+        programmeRms,
+        adaptiveGainDb,
+        maximumAdaptiveAttenuationDb: PROGRAMME_MAX_ATTENUATION_DB,
         sixNodeBanks: Object.fromEntries(Object.entries(library?.banks || {}).map(([name, items]) => [name, items.length])),
       };
     },

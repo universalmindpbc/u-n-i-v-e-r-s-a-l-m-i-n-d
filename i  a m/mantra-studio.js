@@ -15,6 +15,7 @@
   const studioStatus = document.querySelector("[data-studio-status]");
   const vocoderStatus = document.querySelector("[data-vocoder-status]");
   const vocoderButtons = Array.from(document.querySelectorAll("[data-vocoder-voice]"));
+  const fxEngine = window.IAMMantraAudioFX;
 
   const fields = {
     label: document.querySelector("[data-sample-label]"),
@@ -35,6 +36,19 @@
   const waveformCanvas = document.querySelector("[data-waveform-canvas]");
   const pitchCanvas = document.querySelector("[data-pitch-canvas]");
   const ampCanvas = document.querySelector("[data-amp-canvas]");
+  const fxCanvas = document.querySelector("[data-fx-canvas]");
+  const fxPanel = document.querySelector("[data-editor-panel=\"fx\"]");
+  const fxSlotButtons = Array.from(document.querySelectorAll("[data-fx-slot]"));
+  const fxBypassButton = document.querySelector("[data-fx-bypass]");
+  const fxFields = {
+    reverbMix: document.querySelector("[data-fx-reverb-mix]"),
+    reverbDecay: document.querySelector("[data-fx-reverb-decay]"),
+    reverbPredelay: document.querySelector("[data-fx-reverb-predelay]"),
+    spectralMix: document.querySelector("[data-fx-spectral-mix]"),
+    spectralTime: document.querySelector("[data-fx-spectral-time]"),
+    spectralSpread: document.querySelector("[data-fx-spectral-spread]"),
+    spectralFeedback: document.querySelector("[data-fx-spectral-feedback]"),
+  };
   const vuMeter = document.querySelector("[data-vu-meter]");
   const vocoderText = document.querySelector("[data-vocoder-text]");
   const vocoderRate = document.querySelector("[data-vocoder-rate]");
@@ -56,6 +70,7 @@
   let audioContext = null;
   let decodedBuffer = null;
   let previewSource = null;
+  let previewNodes = [];
   let previewAnimation = 0;
   let pitchCurve = [{ x: 0, y: 0 }, { x: 1, y: 0 }];
   let drawingPitch = false;
@@ -65,6 +80,12 @@
   let renderedVocoderKey = "";
   let vocoderVoice = "human-clear";
   let voiceRequestActive = false;
+  let fxState = fxEngine?.defaultState?.() || {
+    active: "a",
+    bypass: false,
+    a: { reverb: { mix: 0, decay: 2.4, predelay: 0.025 }, spectral_delay: { mix: 0, time: 0.18, spread: 0.45, feedback: 0.18 } },
+    b: { reverb: { mix: 0, decay: 2.4, predelay: 0.025 }, spectral_delay: { mix: 0, time: 0.18, spread: 0.45, feedback: 0.18 } },
+  };
 
   function announce(message, target = studioStatus) {
     if (target) target.textContent = message;
@@ -154,6 +175,54 @@
     await loadSelected();
   }
 
+  function activeFxSettings() {
+    return fxState[fxState.active === "b" ? "b" : "a"];
+  }
+
+  function captureFxControls() {
+    const settings = activeFxSettings();
+    if (!settings) return;
+    settings.reverb = {
+      mix: Number(fxFields.reverbMix.value),
+      decay: Number(fxFields.reverbDecay.value),
+      predelay: Number(fxFields.reverbPredelay.value),
+    };
+    settings.spectral_delay = {
+      mix: Number(fxFields.spectralMix.value),
+      time: Number(fxFields.spectralTime.value),
+      spread: Number(fxFields.spectralSpread.value),
+      feedback: Number(fxFields.spectralFeedback.value),
+    };
+    fxState = fxEngine?.normaliseState?.(fxState) || fxState;
+  }
+
+  function loadFxControls() {
+    const settings = activeFxSettings();
+    if (!settings) return;
+    fxFields.reverbMix.value = String(settings.reverb.mix);
+    fxFields.reverbDecay.value = String(settings.reverb.decay);
+    fxFields.reverbPredelay.value = String(settings.reverb.predelay);
+    fxFields.spectralMix.value = String(settings.spectral_delay.mix);
+    fxFields.spectralTime.value = String(settings.spectral_delay.time);
+    fxFields.spectralSpread.value = String(settings.spectral_delay.spread);
+    fxFields.spectralFeedback.value = String(settings.spectral_delay.feedback);
+    fxSlotButtons.forEach((button) => {
+      button.setAttribute("aria-pressed", String(button.dataset.fxSlot === fxState.active));
+    });
+    fxBypassButton?.setAttribute("aria-pressed", String(fxState.bypass));
+    fxPanel?.classList.toggle("is-bypassed", fxState.bypass);
+  }
+
+  function updateFxOutputs() {
+    document.querySelector("[data-fx-reverb-mix-output]").textContent = `${Math.round(Number(fxFields.reverbMix.value) * 100)}%`;
+    document.querySelector("[data-fx-reverb-decay-output]").textContent = `${Number(fxFields.reverbDecay.value).toFixed(1)}s`;
+    document.querySelector("[data-fx-reverb-predelay-output]").textContent = `${Math.round(Number(fxFields.reverbPredelay.value) * 1000)}ms`;
+    document.querySelector("[data-fx-spectral-mix-output]").textContent = `${Math.round(Number(fxFields.spectralMix.value) * 100)}%`;
+    document.querySelector("[data-fx-spectral-time-output]").textContent = `${Math.round(Number(fxFields.spectralTime.value) * 1000)}ms`;
+    document.querySelector("[data-fx-spectral-spread-output]").textContent = `${Math.round(Number(fxFields.spectralSpread.value) * 100)}%`;
+    document.querySelector("[data-fx-spectral-feedback-output]").textContent = `${Math.round(Number(fxFields.spectralFeedback.value) * 100)}%`;
+  }
+
   function updateOutputs() {
     document.querySelector("[data-sample-speed-output]").textContent = `${Number(fields.speed.value).toFixed(2)}×`;
     document.querySelector("[data-sample-pan-output]").textContent = `${Math.round(Number(fields.pan.value) * 100)}%`;
@@ -167,6 +236,7 @@
     const tone = Math.round(Number(vocoderTone.value));
     document.querySelector("[data-vocoder-tone-output]").textContent = `${tone > 0 ? "+" : ""}${tone} st`;
     document.querySelector("[data-vocoder-effect-output]").textContent = `${Math.round(Number(vocoderEffect.value) * 100)}%`;
+    updateFxOutputs();
   }
 
   function trimmedRms(buffer) {
@@ -243,6 +313,8 @@
     pitchCurve = Array.isArray(selected.pitch_curve) && selected.pitch_curve.length > 1
       ? selected.pitch_curve.map((point) => ({ x: Number(point.x), y: Number(point.y) }))
       : [{ x: 0, y: 0 }, { x: 1, y: 0 }];
+    fxState = fxEngine?.normaliseState?.(selected.fx) || fxState;
+    loadFxControls();
     announce(`loading ${selected.label || "pad"}…`);
     await decodeAsset(selected);
     normaliseButton.disabled = !decodedBuffer;
@@ -372,10 +444,43 @@
     ctx.stroke();
   }
 
+  function drawFx() {
+    if (!fxCanvas) return;
+    const { ctx, width, height } = drawWaveform(fxCanvas, { pitch: true });
+    const settings = activeFxSettings();
+    if (!settings) return;
+    if (settings.reverb.mix > 0) {
+      const tailWidth = width * Math.min(0.85, settings.reverb.decay / 7);
+      const gradient = ctx.createLinearGradient(width - tailWidth, 0, width, 0);
+      gradient.addColorStop(0, "rgba(103,232,198,0)");
+      gradient.addColorStop(1, `rgba(103,232,198,${(settings.reverb.mix * 0.34).toFixed(3)})`);
+      ctx.fillStyle = gradient;
+      ctx.fillRect(width - tailWidth, 0, tailWidth, height);
+    }
+    if (settings.spectral_delay.mix > 0) {
+      const colors = ["103,232,198", "216,255,66", "157,134,255", "255,122,133"];
+      colors.forEach((color, index) => {
+        const delayShift = settings.spectral_delay.time * (0.42 + index * settings.spectral_delay.spread * 0.18);
+        const xShift = width * Math.min(0.22, delayShift / 2.6);
+        const y = height * (0.25 + index * 0.17);
+        ctx.strokeStyle = `rgba(${color},${(settings.spectral_delay.mix * 0.82).toFixed(3)})`;
+        ctx.lineWidth = 1.5;
+        ctx.beginPath();
+        ctx.moveTo(xShift, y);
+        ctx.bezierCurveTo(width * 0.34, y - 10, width * 0.68, y + 10, width, y);
+        ctx.stroke();
+      });
+    }
+    ctx.fillStyle = "rgba(255,255,255,.58)";
+    ctx.font = "10px Helvetica Neue";
+    ctx.fillText(`${fxState.active.toUpperCase()} · ${fxState.bypass ? "BYPASS" : "ACTIVE"}`, 10, 16);
+  }
+
   function drawAll() {
     drawWaveform(waveformCanvas, { trim: true });
     drawPitch();
     drawAmp();
+    drawFx();
   }
 
   function simplifyCurve(points, count = 48) {
@@ -406,6 +511,10 @@
       try { previewSource.stop(); } catch {}
       previewSource = null;
     }
+    previewNodes.forEach((node) => {
+      try { node.disconnect(); } catch {}
+    });
+    previewNodes = [];
     window.cancelAnimationFrame(previewAnimation);
     previewAnimation = 0;
     if (vuMeter) vuMeter.style.height = "0%";
@@ -445,11 +554,27 @@
     gain.gain.linearRampToValueAtTime(peak, ctx.currentTime + attack);
     gain.gain.setValueAtTime(peak, ctx.currentTime + Math.max(attack, duration - release));
     gain.gain.linearRampToValueAtTime(0.0001, ctx.currentTime + duration);
+    limiter.connect(analyser).connect(ctx.destination);
+    source.connect(gain);
+    previewNodes = [source, gain, limiter, analyser];
+    let effectInput = gain;
     if (pan) {
       pan.pan.value = raw ? 0 : Number(fields.pan.value) || 0;
-      source.connect(gain).connect(pan).connect(limiter).connect(analyser).connect(ctx.destination);
+      gain.connect(pan);
+      effectInput = pan;
+      previewNodes.push(pan);
+    }
+    if (!raw && fxEngine?.connect) {
+      captureFxControls();
+      const effectGraph = fxEngine.connect({
+        ctx,
+        input: effectInput,
+        destination: limiter,
+        state: fxState,
+      });
+      previewNodes.push(...(effectGraph.nodes || []));
     } else {
-      source.connect(gain).connect(limiter).connect(analyser).connect(ctx.destination);
+      effectInput.connect(limiter);
     }
     const samples = new Uint8Array(analyser.frequencyBinCount);
     const meter = () => {
@@ -470,6 +595,7 @@
   async function savePad() {
     if (!selected) return;
     try {
+      captureFxControls();
       const payload = await api({
         action: "save",
         csrf_token: csrfToken,
@@ -490,6 +616,7 @@
           level: Number(fields.level.value),
           release: Number(fields.release.value),
         },
+        fx: fxState,
       });
       library = payload.library;
       csrfToken = payload.csrf_token || csrfToken;
@@ -674,6 +801,30 @@
     updateOutputs();
     drawAll();
   }));
+
+  Object.values(fxFields).filter(Boolean).forEach((field) => field.addEventListener("input", () => {
+    captureFxControls();
+    updateFxOutputs();
+    drawFx();
+    announce(`FX ${fxState.active.toUpperCase()} ready · preview or save`);
+  }));
+
+  fxSlotButtons.forEach((button) => button.addEventListener("click", () => {
+    captureFxControls();
+    fxState.active = button.dataset.fxSlot === "b" ? "b" : "a";
+    loadFxControls();
+    updateFxOutputs();
+    drawFx();
+    announce(`FX ${fxState.active.toUpperCase()} selected · preview to compare`);
+  }));
+
+  fxBypassButton?.addEventListener("click", () => {
+    captureFxControls();
+    fxState.bypass = !fxState.bypass;
+    loadFxControls();
+    drawFx();
+    announce(fxState.bypass ? "FX bypassed · original pad preview" : `FX ${fxState.active.toUpperCase()} active`);
+  });
 
   pitchCanvas?.addEventListener("pointerdown", (event) => {
     drawingPitch = true;

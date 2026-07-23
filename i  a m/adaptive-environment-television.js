@@ -364,6 +364,7 @@
   let soundResearchMaxVolume = SOUND_RESEARCH_DEFAULT_MAX_VOLUME;
   let continuationDecision = null;
   let flowerCanvasFrame = 0;
+  let flowerCanvasStarting = false;
   let timecode = null;
   let edgeCropLastScanAt = 0;
 
@@ -3772,14 +3773,33 @@
     document.body.classList.add("flower-cue-visible");
   }
 
-  function startFlowerSpin() {
+  async function startFlowerSpin() {
     const flower = document.querySelector(".brand-mark");
     const brand = document.querySelector(".brand");
-    if (!flower || !brand || flowerCanvasFrame) return;
+    if (!flower || !brand || flowerCanvasFrame || flowerCanvasStarting) return;
+    flowerCanvasStarting = true;
+
+    try {
+      if (flower.decode) {
+        await flower.decode();
+      } else if (!flower.complete) {
+        await new Promise((resolve, reject) => {
+          flower.addEventListener("load", resolve, { once: true });
+          flower.addEventListener("error", reject, { once: true });
+        });
+      }
+    } catch {
+      flowerCanvasStarting = false;
+      return;
+    }
+    flower.dataset.logoReady = "true";
 
     const canvas = document.createElement("canvas");
     const context = canvas.getContext("2d");
-    if (!context) return;
+    if (!context) {
+      flowerCanvasStarting = false;
+      return;
+    }
 
     canvas.className = "television-flower-canvas";
     canvas.setAttribute("aria-hidden", "true");
@@ -3810,13 +3830,8 @@
       flowerCanvasFrame = window.requestAnimationFrame(draw);
     }
 
-    if (flower.complete) {
-      flowerCanvasFrame = window.requestAnimationFrame(draw);
-    } else {
-      flower.addEventListener("load", () => {
-        if (!flowerCanvasFrame) flowerCanvasFrame = window.requestAnimationFrame(draw);
-      }, { once: true });
-    }
+    flowerCanvasStarting = false;
+    flowerCanvasFrame = window.requestAnimationFrame(draw);
   }
 
   function primeLocalVideo() {
@@ -4663,8 +4678,18 @@
   }
 
   window.IAMTelevisionAudio = {
-    version: "realtime_voice_duck_v1",
+    version: "programme_meter_v1",
     setVoiceConversationActive: setVoiceAssistantDucking,
+    getProgrammeLevel() {
+      const { media, source } = soundResearchActiveMedia();
+      const measuredLevel = Number(window.IAMEMDR?.getAudioLevel?.());
+      const rms = media && Number.isFinite(measuredLevel) ? measuredLevel * media.volume : null;
+      return {
+        rms,
+        source,
+        mediaVolume: media?.volume ?? 0,
+      };
+    },
     getState() {
       const nowPlayingState = window.IAMNowPlaying?.getState?.() || {};
       return {

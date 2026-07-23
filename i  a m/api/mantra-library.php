@@ -117,6 +117,49 @@ function mantra_text(mixed $value, int $maximum, string $fallback = ''): string
     return mb_substr($value, 0, $maximum);
 }
 
+function mantra_fx_number(mixed $value, float $minimum, float $maximum, float $fallback): float
+{
+    if ($value === null) return $fallback;
+    $number = filter_var($value, FILTER_VALIDATE_FLOAT);
+    if ($number === false || $number < $minimum || $number > $maximum) {
+        mantra_json(['error' => 'One or more FX controls are outside their safe range.'], 422);
+    }
+    return round((float) $number, 4);
+}
+
+function mantra_fx_slot(mixed $raw): array
+{
+    $slot = is_array($raw) ? $raw : [];
+    $reverb = is_array($slot['reverb'] ?? null) ? $slot['reverb'] : [];
+    $spectral = is_array($slot['spectral_delay'] ?? null) ? $slot['spectral_delay'] : [];
+    return [
+        'reverb' => [
+            'mix' => mantra_fx_number($reverb['mix'] ?? null, 0, 0.5, 0),
+            'decay' => mantra_fx_number($reverb['decay'] ?? null, 0.2, 6, 2.4),
+            'predelay' => mantra_fx_number($reverb['predelay'] ?? null, 0, 0.15, 0.025),
+        ],
+        'spectral_delay' => [
+            'mix' => mantra_fx_number($spectral['mix'] ?? null, 0, 0.5, 0),
+            'time' => mantra_fx_number($spectral['time'] ?? null, 0.02, 0.6, 0.18),
+            'spread' => mantra_fx_number($spectral['spread'] ?? null, 0, 1, 0.45),
+            'feedback' => mantra_fx_number($spectral['feedback'] ?? null, 0, 0.65, 0.18),
+        ],
+    ];
+}
+
+function mantra_fx_state(mixed $raw): array
+{
+    $fx = is_array($raw) ? $raw : [];
+    $bypass = filter_var($fx['bypass'] ?? false, FILTER_VALIDATE_BOOLEAN, FILTER_NULL_ON_FAILURE);
+    if ($bypass === null) mantra_json(['error' => 'Choose a valid FX bypass setting.'], 422);
+    return [
+        'active' => ($fx['active'] ?? 'a') === 'b' ? 'b' : 'a',
+        'bypass' => $bypass,
+        'a' => mantra_fx_slot($fx['a'] ?? null),
+        'b' => mantra_fx_slot($fx['b'] ?? null),
+    ];
+}
+
 $method = $_SERVER['REQUEST_METHOD'] ?? 'GET';
 if ($method === 'GET') {
     $authenticated = false;
@@ -228,6 +271,7 @@ if ($action === 'save') {
         'level' => round((float) $level, 3),
         'release' => round((float) $release, 3),
     ];
+    $current['fx'] = mantra_fx_state($request['fx'] ?? ($current['fx'] ?? []));
     $library['banks'][$bank][$index] = $current;
     mantra_json(mantra_public(mantra_write_library($library), true));
 }

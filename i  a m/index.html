@@ -17,8 +17,8 @@
     <link rel="preconnect" href="https://ice5.somafm.com" crossorigin>
     <link rel="preconnect" href="https://stream.sanctuaryradio.com" crossorigin>
     <script src="music-television-frame-context.js?v=music-tv-frame-14ebf4459d03"></script>
-    <link rel="stylesheet" href="styles.css?v=global-nav-single-shell-1">
-    <link rel="preload" as="image" href="a s s e t s/Universal Mind [ I o H ] Logo.PNG">
+    <link rel="stylesheet" href="styles.css?v=global-nav-single-shell-2">
+    <link rel="preload" as="image" href="a s s e t s/Universal Mind [ I o H ] Logo 512.png" fetchpriority="high">
     <link rel="stylesheet" href="adaptive-environment-television.css?v=music-tv-css-1e8fccc06bc8">
     <link rel="stylesheet" href="circle-audio-rooms.css?v=circle-rooms-css-9cb7b0860284">
     <link rel="stylesheet" href="mantra-sampler.css?v=mantra-sampler-css-fa5e34089bf9">
@@ -636,7 +636,7 @@
         </section>
 
         <header class="brand" aria-label="Universal Mind">
-          <img class="brand-mark" src="a s s e t s/Universal Mind [ I o H ] Logo.PNG" alt="">
+          <img class="brand-mark" src="a s s e t s/Universal Mind [ I o H ] Logo 512.png" alt="" decoding="async" fetchpriority="high" data-atomic-logo data-logo-ready="false">
           <div class="brand-lockup" aria-live="polite">
             <span class="brand-name" data-language>universalmind</span>
             <span class="brand-suffix" data-brand-suffix>
@@ -659,7 +659,7 @@
 
         <div class="global-nav-content">
           <a class="global-nav-brand" href="index.html" aria-label="Universal Mind i am homepage">
-            <img class="global-nav-mark" src="a s s e t s/Universal Mind [ I o H ] Logo.PNG" alt="">
+            <img class="global-nav-mark" src="a s s e t s/Universal Mind [ I o H ] Logo 512.png" alt="" decoding="async" data-atomic-logo data-logo-ready="false">
             <span class="global-nav-lockup">
               <span class="global-nav-name">universalmind</span>
               <span class="global-nav-slash">/</span>
@@ -691,6 +691,17 @@
     </main>
 
     <script>
+      document.querySelectorAll("[data-atomic-logo]").forEach((logo) => {
+        const revealLogo = async () => {
+          try {
+            if (logo.decode) await logo.decode();
+          } catch {}
+          if (logo.naturalWidth > 0) logo.dataset.logoReady = "true";
+        };
+        if (logo.complete) revealLogo();
+        else logo.addEventListener("load", revealLogo, { once: true });
+      });
+
       if (window.location.hostname === "staging.universalmind.tv") {
         window.IAM_CITIZEN_NEEDS_INFERENCE_ENDPOINT = "/vogue/iam/api/citizen-needs-inference.php";
       }
@@ -717,8 +728,9 @@
     <script src="fashion-visual-selector-v1.js?v=fashion-selector-v1"></script>
     <script src="music-channel-selector-v1.js?v=music-channel-selector-97674825d8bd"></script>
     <script src="circle-audio-rooms.js?v=circle-rooms-4bcb0602f8f3"></script>
-    <script src="mantra-sampler.js?v=mantra-sampler-64c637b84965"></script>
-    <script src="adaptive-environment-television.js?v=music-tv-ccafb666bd9b"></script>
+    <script src="mantra-audio-fx.js?v=mantra-audio-fx-5e1fdfbadb04"></script>
+    <script src="mantra-sampler.js?v=mantra-sampler-78ba87fa5290"></script>
+    <script src="adaptive-environment-television.js?v=music-tv-56af85710181"></script>
     <script src="realtime-voice-assistant.js?v=realtime-voice-5c84122268bd"></script>
     <script src="adaptive-page-metadata-v1.js"></script>
     <script async data-agora-rtc-sdk src="https://download.agora.io/sdk/release/AgoraRTC_N-4.24.6.js"></script>

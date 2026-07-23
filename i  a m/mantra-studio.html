@@ -6,7 +6,7 @@
     <meta name="robots" content="noindex,nofollow">
     <title>Mantra Studio | Universal Mind</title>
     <link rel="icon" type="image/png" sizes="32x32" href="/vogue/iam/favicon.png?v=iam-favicon-4">
-    <link rel="stylesheet" href="mantra-studio.css?v=mantra-studio-css-8dd84c7343da">
+    <link rel="stylesheet" href="mantra-studio.css?v=mantra-studio-css-a7238920f740">
   </head>
   <body>
     <main class="mantra-studio">
@@ -54,6 +54,7 @@
             <button type="button" role="tab" data-editor-tab="sample" aria-selected="false">Sample</button>
             <button type="button" role="tab" data-editor-tab="pitch" aria-selected="false">Pitch</button>
             <button type="button" role="tab" data-editor-tab="amp" aria-selected="false">Amp</button>
+            <button type="button" role="tab" data-editor-tab="fx" aria-selected="false">FX</button>
           </nav>
 
           <div class="mantra-editor__panel is-active" data-editor-panel="pad">
@@ -148,6 +149,63 @@
             </div>
           </div>
 
+          <div class="mantra-editor__panel mantra-fx" data-editor-panel="fx">
+            <div class="mantra-fx__toolbar">
+              <p>Reverb and four-band spectral delay · original audio stays untouched</p>
+              <div class="mantra-fx__compare" aria-label="FX comparison">
+                <button type="button" data-fx-slot="a" aria-pressed="true">A</button>
+                <button type="button" data-fx-slot="b" aria-pressed="false">B</button>
+                <button type="button" data-fx-bypass aria-pressed="false">bypass</button>
+              </div>
+            </div>
+            <div class="mantra-curve mantra-fx__visual">
+              <canvas width="1100" height="190" data-fx-canvas aria-label="Effects over the audio waveform"></canvas>
+            </div>
+            <div class="mantra-fx__groups">
+              <section class="mantra-fx__group" aria-labelledby="mantra-reverb-heading">
+                <h3 id="mantra-reverb-heading">Reverb</h3>
+                <label class="mantra-fx__control">
+                  <span>Mix</span>
+                  <input type="range" min="0" max="0.5" value="0" step="0.01" data-fx-reverb-mix>
+                  <output data-fx-reverb-mix-output>0%</output>
+                </label>
+                <label class="mantra-fx__control">
+                  <span>Decay</span>
+                  <input type="range" min="0.2" max="6" value="2.4" step="0.1" data-fx-reverb-decay>
+                  <output data-fx-reverb-decay-output>2.4s</output>
+                </label>
+                <label class="mantra-fx__control">
+                  <span>Pre-delay</span>
+                  <input type="range" min="0" max="0.15" value="0.025" step="0.005" data-fx-reverb-predelay>
+                  <output data-fx-reverb-predelay-output>25ms</output>
+                </label>
+              </section>
+              <section class="mantra-fx__group" aria-labelledby="mantra-spectral-heading">
+                <h3 id="mantra-spectral-heading">Spectral delay</h3>
+                <label class="mantra-fx__control">
+                  <span>Mix</span>
+                  <input type="range" min="0" max="0.5" value="0" step="0.01" data-fx-spectral-mix>
+                  <output data-fx-spectral-mix-output>0%</output>
+                </label>
+                <label class="mantra-fx__control">
+                  <span>Time</span>
+                  <input type="range" min="0.02" max="0.6" value="0.18" step="0.01" data-fx-spectral-time>
+                  <output data-fx-spectral-time-output>180ms</output>
+                </label>
+                <label class="mantra-fx__control">
+                  <span>Spread</span>
+                  <input type="range" min="0" max="1" value="0.45" step="0.01" data-fx-spectral-spread>
+                  <output data-fx-spectral-spread-output>45%</output>
+                </label>
+                <label class="mantra-fx__control">
+                  <span>Feedback</span>
+                  <input type="range" min="0" max="0.65" value="0.18" step="0.01" data-fx-spectral-feedback>
+                  <output data-fx-spectral-feedback-output>18%</output>
+                </label>
+              </section>
+            </div>
+          </div>
+
           <footer class="mantra-editor__transport">
             <button type="button" class="mantra-editor__preview" data-sample-preview>▶ preview / retrigger</button>
             <button type="button" data-sample-save>save pad</button>
@@ -220,7 +278,8 @@
         </section>
       </section>
     </main>
+    <script src="mantra-audio-fx.js?v=mantra-audio-fx-5e1fdfbadb04"></script>
     <script src="mantra-voice-dsp.js?v=mantra-voice-dsp-d2ebef23890d"></script>
-    <script src="mantra-studio.js?v=mantra-studio-09871f4224bd"></script>
+    <script src="mantra-studio.js?v=mantra-studio-a9df7a905032"></script>
   </body>
 </html>
