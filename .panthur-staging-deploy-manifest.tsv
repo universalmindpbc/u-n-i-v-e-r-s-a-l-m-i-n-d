@@ -13,7 +13,7 @@ dcbff34364d60a02e5a68c1c27db1da0aba2c6059e154b93da9ed822926eea8e	a d a p t i v e
 f5523d0d103367606e5c786fdefe6a1a560975a214ebe5188405469ec5619e09	tools/analyze-video-beats.py
 f1670bb15260c563cfe508ea2be7ddfe2f1b9260e0f3ab2f1015343345b5d177	i  a m.md
 2395bc9f9a00c3c567f3525cda478d2c138592cd215860d5b1545c88e2037f38	community-globe.html
-5f0737cd938e152d4f72293c969dc4060ef2b47b00b7f60e2bccad037aa80bc8	mantra-samples-v1.json
+95811f319fe8fd80719921ccffdb063f417f77fcec50b3eac90c319d9cc84dce	mantra-samples-v1.json
 0652d4b6501f90ed41f9ceee71eb3d003eaf12408dd274a4ce67e44fce505c96	index.html
 8dced4b5aa626ac2f94faf32a1c05a4aaa7f32dc2c0249b0cd045403fb1b08fd	mantra-sampler.js
 6733d57632028171b99f89270ff8237c250411f62166ebe1a2f36a80fe88833f	vogue-self-report.js
@@ -22,9 +22,10 @@ f1670bb15260c563cfe508ea2be7ddfe2f1b9260e0f3ab2f1015343345b5d177	i  a m.md
 5dd6355dbbaa5dc8b92c4588ac7d70396423a9739c0415b7d91a029a8218ba38	selector_benchmark.py
 123e089d15feaa6829debe13abe44f08cac866b2073016b170829491f4f6208b	technology-citizen-needs.html
 52fd6dcb6ef2736df89486fd144caf1842aa8957911378772409a1b4ecbed3f8	adaptive-inference-engine-system-prompt-v4.44-content.js
-46c1441f9df05670f03f3e5bcf710b2a020e2ac5523f4c69c510554ee9ab19dd	mantra-studio.js
+795e2434e97dca49fe02c103116ab7e30ae1df081d9117204f91e84c4fd12349	mantra-studio.js
 0d480c5363dc9453ab5db5d3153af999c8a9abea823a8c25da22f7da00564d6f	adaptive-soundtrack-stage-gates.md
 c506df2be441c6489d4ee85438aa668eab8be5194ae9f381e4380ba074a21ebd	apple-touch-icon.png
+d2ebef23890dc87cd52bd3904022d2959a990ec0483d917a78b107b3d86183f0	mantra-voice-dsp.js
 d562c1cecd4dd0a86f083be7eb0655c195381cca295daf7f1a23001747b56005	styles.css
 0f2562e9d94029f185d95d0e1babeab028a25b246f97273b552ba587510f3b1d	b u i l d _ n o t e s.md
 4cbe6f0e9e38b400ca2c8a1317c77e827c51d16b707f62885319cab4f21704ff	about.html
@@ -88,7 +89,7 @@ f451b091244b651f3b0d83261c5bc7bacf6ec613f0181ee180ec97cb0e890897	our-team.html
 5bcbf61ff69c8db3466ce6d94c329e6bfa090d7a465814b9c9422942931da4d0	handover 1.11.md
 a08aea883abe8dc9aeb7dcb3d00d01f2383690c4589d1f1ad7b94e64df732317	api/adaptive-music-video-selection.php
 4155d04bca0c07678abbe0dfc0be008a634ca95eb669d1a383b1f03c30321e18	api/mantra-library.php
-ee950eeaf5f3c85f35ab8d297f484d93765f44a40e430c1d914cafcb45e0dd7c	api/mantra-library.json
+3768d4a9fe093099d983d4da7c8567ed142a4f0010f5a8b514bd97f63c78f324	api/mantra-library.json
 eddef54940a3a48620977e7f6888b1f82ee3c21a75d092d4031470c5bb54f2cc	api/quantum-tree-settings.php
 55be60405ee05c5fb53833bc796a3c421d5ac6befb84c416437ebbc4da936c21	api/quantum-tree-settings.json
 8178460f2d594ece008e01e417b9c3f51acbf996583de9ca7e03e85f45561566	api/adaptive-music-video-selection.py
@@ -151,17 +152,17 @@ ae762c5a26c411eb64dfac72a00998136e625d66e8db0bb6671a6e5ab834c27a	a s s e t s/pho
 c4fa014be259c7919f552523fe2b23698a4e2dc81774daad11414a2ca842fcd8	a s s e t s/audio on - icon.png
 ed5301623fb036bcc72780a8c33714fe81542420e9ce33b01c458258b4b635c1	a s s e t s/wallet-turntable-reference.png
 a9b1c7451fafd9b6a21a6eed05e344fb920ea0b9fc01e3d397c62ed536fc30df	a s s e t s/m a n t r a [ m o c k u p ]/ibiza-plur-vocoder.wav
-ec0ef264764ec3faeebe7ae340f86f9ffdbc2c4cd76f15b09a7756dd11265ec2	a s s e t s/m a n t r a [ m o c k u p ]/tibet-multiplicity.m4a
+539496598781b995faf01d8bbbeb8d01ed450d971f2e1f57076b77e3ec326b84	a s s e t s/m a n t r a [ m o c k u p ]/tibet-multiplicity.m4a
 db9ee81b91695eca4cadef3b2da19dd4762b9ebb6723ab56e71e6d5025a8de5f	a s s e t s/m a n t r a [ m o c k u p ]/ibiza-lifestyle.m4a
-eca59e175e75c5c2af190a7b4c96bd66b6af031d72364a4dce23f0d7c3b3e75c	a s s e t s/m a n t r a [ m o c k u p ]/ibiza-glowing.m4a
+ab4ce533c024e100792462bd453ae1d5945ebb27892b7c8979d1123de3961dd8	a s s e t s/m a n t r a [ m o c k u p ]/ibiza-glowing.m4a
 551a8e97b378d129d74c459bb8b0c4f6edad35e33956e2ddda0c067aa144fd75	a s s e t s/m a n t r a [ m o c k u p ]/ibiza-dimension.m4a
 103abcd6e206b38b3dc88b90a7734fb24bee6d268d2b4ab8d50f6df16f068643	a s s e t s/m a n t r a [ m o c k u p ]/ibiza-narayana.m4a
-22644f03e2d830433b7c8cc5cbb384ca66d8e931f979765071b25110ecb9b6f7	a s s e t s/m a n t r a [ m o c k u p ]/ibiza-mind-body-soul.m4a
+df7602dc9b80a2d6ec485298ec771a25bdc6819cf97be188493882dd1a49e7c8	a s s e t s/m a n t r a [ m o c k u p ]/ibiza-mind-body-soul.m4a
 688321129be61041b19f9cc88ced05b13d3e14921868eabd4d5d97c51ec288a7	a s s e t s/m a n t r a [ m o c k u p ]/ibiza-narayana-vocoder.wav
-c08c2d5a7677079edcdaba25ffcb0053f37945f1ed2e8765f4b90ab4bb1da34b	a s s e t s/m a n t r a [ m o c k u p ]/tibet-one-life.m4a
+5e3d8a277e0a70ea01b5e509d75f18b29e7214ba05ee44812755ef16acca09a3	a s s e t s/m a n t r a [ m o c k u p ]/tibet-one-life.m4a
 18343e3e9b9231e53b13d103a3c56e1884cc76e37f9bf492cc1b20ed3d63fff9	a s s e t s/m a n t r a [ m o c k u p ]/ibiza-lifestyle-vocoder.wav
-7dd9ca7bec389334c91df624c0379dbdd06a6c89bddb1d22b772e2ec701ee2a9	a s s e t s/m a n t r a [ m o c k u p ]/tibet-universe.m4a
-9a5707b4b92958d7a7489a1718cfa303f89fbe18f66f245e59a2233cad08f79c	a s s e t s/m a n t r a [ m o c k u p ]/ibiza-open-mind.m4a
+61f7a57d0988c7ec72650458b160fc2ade4d4fd7ae7cb46ded7d3c192e38aff0	a s s e t s/m a n t r a [ m o c k u p ]/tibet-universe.m4a
+380e9ad3b497da372f6d0606c883d96ab5fcad844a86bf80b317830baff413a0	a s s e t s/m a n t r a [ m o c k u p ]/ibiza-open-mind.m4a
 b2a543ef4624f5b96ede3cc0b45b35bbbffee3e2a499a72af910d8ccbf6aedc8	a s s e t s/Vogue - Front Cover.png
 b41634dca5af7bae44dc76c5a98d562ce94f060065ddc448d31f1f3e70f45c55	a s s e t s/iconmonstr-video play button - white -16-240.png
 01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b	a s s e t s/m a n t r a [ u p l o a d s ]/.gitkeep
@@ -185,7 +186,7 @@ be3b868878a1c07a5007108633926ede85f69a786a489e9af2af0427f740b736	local-context.j
 a1a09a378cca2a0df41bbcdc9da6e3e640bdffcd1f7da5bad4b0ee402e58f384	science.js
 cf9610919c509c6482c01480ca8a9c4091160055519615d4c29b0cd873f64ca0	emdr-gif-world.js
 64ebb1b3303e67c60a7b673b7d91d4a20b4c3588350428ad71baf2b0cbe0ec5e	first-party-analytics-schema.md
-37c2b4758afc840a51c4fdc961f757fac5805f3376f262c3b534bbd57470d6ae	mantra-studio.html
+7b8f6e02934357515c9b8fb398625b1d0e8bd4b56ff2015d847081554e27515e	mantra-studio.html
 1080d19d4b07721ef556ea1f65e70bed8968cae5b049c6ac735d7b6634b8a64f	agora-audio-room-setup.md
 cda1c667a651066906a136babc7cbd07eed37f27938c0c304bdfee9e602beaac	emdr-platonics.js
 3047ba3cb6e5a187548d2037e23d60fb90640ca3237f1ad0d20fcf54858488f0	i n f e r e n c e  e n g i n e  -  s y s t e m  p r o m p t  v  1 . 1 1.md
