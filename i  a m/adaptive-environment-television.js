@@ -407,7 +407,7 @@
   let walletResumeView = "categories";
   const emdrStyleNames = ["GIF", "stellar"];
   const emdrStyleValues = [7, 5];
-  let emdrStyleIndex = 0;
+  let emdrStyleIndex = -1;
   let emdrGifPreviousVideoBlend = null;
   let emdrGifPreviousMusicMaxHeight = null;
   let emdrGifMusicMaxHeightCaptured = false;
@@ -4613,8 +4613,12 @@
     });
   }
 
-  function applyEmdrAdaptation() {
+  function applyEmdrAdaptation(requestedStyleIndex = null) {
     const adaptation = selectEmdrAdaptation();
+    if (Number.isInteger(requestedStyleIndex) && emdrStyleValues[requestedStyleIndex]) {
+      adaptation.styleIndex = requestedStyleIndex;
+      adaptation.style = emdrStyleNames[requestedStyleIndex];
+    }
     const adaptiveStartingIntensity = Math.max(.22, Math.min(.3, adaptation.intensity));
     const startingIntensity = !emdrAutomateEnabled && Number.isFinite(emdrUserIntensity)
       ? emdrUserIntensity
@@ -4996,23 +5000,13 @@
       const mode = button.dataset.videoMode;
       if (mode === "emdr") {
         disarmVideoTooltips();
-        if (syncActiveEmdrControls()) {
-          button.setAttribute("aria-pressed", "true");
-          setWalletView("emdr");
-          startSoundResearchLayer();
-          return;
-        }
-        const adaptation = applyEmdrAdaptation();
-        // The playing audio source is connected before playback starts; EMDR
-        // activation must remain a visual-only state change.
-        const active = window.IAMEMDR?.active || window.IAMEMDR?.setActive(true, { canvas: emdrCanvas });
-        button.setAttribute("aria-pressed", String(Boolean(active)));
-        if (active) {
-          setWalletView("emdr");
-          startSoundResearchLayer();
-          if (emdrAutomateEnabled) startEmdrIntensityJourney(adaptation.intensityJourney.minimum);
-          else window.IAMEMDR?.setIntensity(adaptation.intensityJourney.start);
-        }
+        window.IAMEMDR?.setActive(false, { canvas: emdrCanvas, video: localVideo });
+        stopEmdrIntensityJourney();
+        emdrStyleIndex = -1;
+        syncEmdrStyleButtons();
+        button.setAttribute("aria-pressed", "false");
+        setSoundResearchEnabled(true);
+        setWalletView("emdr");
         return;
       }
       disarmVideoTooltips();
@@ -5183,9 +5177,11 @@
     event.stopPropagation();
     const requestedStyleIndex = Number(button.dataset.emdrStyleIndex);
     if (!Number.isInteger(requestedStyleIndex) || !emdrStyleValues[requestedStyleIndex]) return;
-    emdrStyleIndex = requestedStyleIndex;
-    window.IAMEMDR?.setStyle(emdrStyleValues[emdrStyleIndex]);
-    syncEmdrStyleButtons();
+    const adaptation = applyEmdrAdaptation(requestedStyleIndex);
+    const active = window.IAMEMDR?.setActive(true, { canvas: emdrCanvas });
+    document.querySelector('[data-video-mode="emdr"]')?.setAttribute("aria-pressed", String(Boolean(active)));
+    if (active && emdrAutomateEnabled) startEmdrIntensityJourney(adaptation.intensityJourney.minimum);
+    else if (active) window.IAMEMDR?.setIntensity(adaptation.intensityJourney.start);
     startSoundResearchLayer();
   }));
   emdrReact?.addEventListener("click", (event) => {

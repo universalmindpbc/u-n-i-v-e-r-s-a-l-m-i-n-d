@@ -124,65 +124,33 @@ if (count($requests) >= $maxRequests) {
 $requests[] = $now;
 $_SESSION['mantra_voice_requests'] = $requests;
 
-$apiKey = trim((string) (getenv('OPENAI_API_KEY') ?: ($_SERVER['OPENAI_API_KEY'] ?? $_ENV['OPENAI_API_KEY'] ?? '')));
-if ($apiKey === '') {
-    $keyFile = trim((string) (getenv('IAM_OPENAI_API_KEY_FILE') ?: ''));
-    if ($keyFile !== '' && is_readable($keyFile)) {
-        $apiKey = trim((string) file_get_contents($keyFile));
-    }
-}
-if ($apiKey === '') {
-    voice_json(['error' => 'Voice rendering is not configured on this environment yet.'], 503);
-}
-
-$preset = $presets[$presetId];
-$toneDirection = $tone === 0
-    ? 'Keep the natural tonal centre of the selected voice.'
-    : ($tone > 0
-        ? "Lift the perceived vocal tone by about {$tone} semitones while avoiding thinness or squeakiness."
-        : 'Lower the perceived vocal tone by about ' . abs($tone) . ' semitones while avoiding muddiness.');
-$effectPercent = (int) round($effectAmount * 100);
-$effectDirection = $effectPercent === 0
-    ? 'Use no added electronic character beyond the selected preset.'
-    : "Apply the selected electronic character at roughly {$effectPercent}% intensity. It must colour the voice without masking consonants, vowels or word boundaries.";
-
-$instructions = <<<PROMPT
-Create a short, production-ready spoken mantra sample.
-Say only the exact supplied text. Do not add an introduction, commentary, sound effects or extra words.
-Speech intelligibility is the first priority: every word and syllable must be immediately understandable, clearly articulated and evenly audible.
-{$preset['direction']}
-{$toneDirection}
-{$effectDirection}
-Keep the recording dry, close and clean enough for later music production.
-PROMPT;
-
 $payload = json_encode([
-    'model' => 'gpt-4o-mini-tts',
-    'voice' => $preset['voice'],
-    'input' => $text,
-    'instructions' => $instructions,
-    'response_format' => 'wav',
+    'text' => $text,
+    'preset' => $presetId,
     'speed' => round((float) $speed, 2),
+    'tone' => (int) $tone,
+    'effect_amount' => round((float) $effectAmount, 2),
 ], JSON_UNESCAPED_SLASHES);
 
 if ($payload === false || !function_exists('curl_init')) {
     voice_json(['error' => 'The secure voice service is unavailable.'], 503);
 }
 
-$remoteAddress = (string) ($_SERVER['REMOTE_ADDR'] ?? 'unknown');
-$userAgent = (string) ($_SERVER['HTTP_USER_AGENT'] ?? 'unknown');
-$safetyIdentifier = 'mantra_' . substr(hash('sha256', $remoteAddress . '|' . $userAgent . '|' . session_id()), 0, 48);
+$host = strtolower((string) preg_replace('/:\d+$/', '', (string) ($_SERVER['HTTP_HOST'] ?? '')));
+$workerEndpoint = $host === 'staging.universalmind.tv'
+    ? 'https://realtime-staging-iam-citizen-needs-inference.universalmind.workers.dev/mantra-voice'
+    : 'https://iam-citizen-needs-inference.universalmind.workers.dev/mantra-voice';
+$origin = ((!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') ? 'https://' : 'http://') . $host;
 session_write_close();
 
-$curl = curl_init('https://api.openai.com/v1/audio/speech');
+$curl = curl_init($workerEndpoint);
 curl_setopt_array($curl, [
     CURLOPT_POST => true,
     CURLOPT_POSTFIELDS => $payload,
     CURLOPT_HTTPHEADER => [
-        'Authorization: Bearer ' . $apiKey,
         'Content-Type: application/json',
         'Accept: audio/wav',
-        'OpenAI-Safety-Identifier: ' . $safetyIdentifier,
+        'Origin: ' . $origin,
     ],
     CURLOPT_RETURNTRANSFER => true,
     CURLOPT_CONNECTTIMEOUT => 10,
@@ -195,9 +163,20 @@ $curlError = curl_error($curl);
 $contentType = (string) curl_getinfo($curl, CURLINFO_CONTENT_TYPE);
 curl_close($curl);
 
-if ($audio === false || $upstreamStatus < 200 || $upstreamStatus >= 300 || strlen($audio) < 44) {
-    error_log('Mantra voice generation failed: status=' . $upstreamStatus . ' curl=' . $curlError);
+if ($audio === false || $upstreamStatus < 100) {
+    error_log('Mantra voice proxy failed: status=' . $upstreamStatus . ' curl=' . $curlError);
     voice_json(['error' => 'The voice could not be generated. Please try again shortly.'], 502);
+}
+if ($upstreamStatus < 200 || $upstreamStatus >= 300) {
+    $upstream = json_decode($audio, true);
+    $message = is_array($upstream) && is_string($upstream['error'] ?? null)
+        ? $upstream['error']
+        : 'The voice could not be generated. Please try again shortly.';
+    voice_json(['error' => $message], $upstreamStatus);
+}
+if (strlen($audio) < 44 || !str_contains(strtolower($contentType), 'audio')) {
+    error_log('Mantra voice proxy returned invalid audio: status=' . $upstreamStatus . ' type=' . $contentType);
+    voice_json(['error' => 'The voice service returned an invalid audio file.'], 502);
 }
 
 header_remove('Content-Type');

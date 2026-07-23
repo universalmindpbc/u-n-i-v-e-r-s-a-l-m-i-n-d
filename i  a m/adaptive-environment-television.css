@@ -5590,7 +5590,7 @@ body.music-shelf-open .adaptive-television-fashion-shelf:not(.adaptive-televisio
 }
 
 .adaptive-television-reaction-wallet[data-wallet-view="emdr"] {
-  width: min(860px, calc(100vw - 38px)) !important;
+  width: min(960px, calc(100vw - 38px)) !important;
 }
 
 .adaptive-television-reaction-wallet[data-wallet-view="support"] {

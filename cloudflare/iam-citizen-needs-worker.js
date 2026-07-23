@@ -524,11 +524,11 @@ function cleanVoiceContext(value, maxLength = 180) {
   return value.trim().replace(/[\u0000-\u001f\u007f]+/g, " ").replace(/\s+/g, " ").slice(0, maxLength);
 }
 
-async function voiceSafetyIdentifier(request) {
+async function voiceSafetyIdentifier(request, scope = "realtime") {
   const source = [
     request.headers.get("CF-Connecting-IP") || "unknown",
     request.headers.get("User-Agent") || "unknown",
-    "universal-mind-realtime-v1",
+    `universal-mind-${scope}-v1`,
   ].join("|");
   const digest = await crypto.subtle.digest("SHA-256", new TextEncoder().encode(source));
   return `um_${Array.from(new Uint8Array(digest), (byte) => byte.toString(16).padStart(2, "0")).join("").slice(0, 48)}`;
@@ -657,9 +657,147 @@ The visitor may interrupt at any time. Stop cleanly and listen. Keep opening ack
   });
 }
 
+const mantraVoicePresets = {
+  "human-clear": { voice: "coral", direction: "Natural, contemporary and neutral. Crisp diction with calm confidence." },
+  "human-warm": { voice: "marin", direction: "Warm, grounded and emotionally present. Gentle energy without breathiness." },
+  "human-deep": { voice: "onyx", direction: "Deep, resonant and assured. Maintain precise consonants and an unhurried pace." },
+  "human-bright": { voice: "shimmer", direction: "Bright, buoyant and clean. Energetic but never rushed or shrill." },
+  "human-calm": { voice: "sage", direction: "Calm, spacious and meditative. Keep every word fully articulated." },
+  "human-intimate": { voice: "nova", direction: "Close, intimate and conversational. Soft, but still clearly audible." },
+  "robot-machine": { voice: "echo", direction: "Fred reference: classic dry system-synth speech, neutral and slightly mechanical, with crisp consonants and every word completely legible." },
+  "robot-chrome": { voice: "alloy", direction: "Trinoids reference: a bright multi-voice electronic choir with airy upper harmonics, while preserving a clear central voice and exact pronunciation." },
+  "robot-command": { voice: "cedar", direction: "Zarvox reference: an overt resonant science-fiction robot voice, deep and metallic, with slow deliberate articulation and completely intelligible words." },
+  "robot-android": { voice: "fable", direction: "A friendly intelligent android: distinctly electronic in character, never caricatured." },
+  "robot-circuit": { voice: "verse", direction: "A precise circuit voice with clipped rhythm and subtle computational character." },
+  "robot-digital": { voice: "ash", direction: "A modern digital assistant voice with clean transients and clear speech rhythm." },
+  "vocoder-neon": { voice: "shimmer", direction: "A luminous club-vocoder character with melodic colour and immaculate pronunciation." },
+  "vocoder-oracle": { voice: "sage", direction: "A futuristic oracle with spacious electronic colour and calm, legible delivery." },
+  "vocoder-temple": { voice: "ballad", direction: "A ceremonial vocoder character: resonant and devotional, with every syllable distinct." },
+  "vocoder-astral": { voice: "verse", direction: "An astral synthesizer voice with floating tonal colour and sharply intelligible words." },
+  "vocoder-cosmic": { voice: "marin", direction: "A warm cosmic vocoder character, expansive but speech-first and fully audible." },
+  "vocoder-electric": { voice: "coral", direction: "An electric dance-floor voice with rhythmic voltage and clear human-language articulation." },
+};
+
+async function handleMantraVoice(request, env) {
+  if (request.method === "OPTIONS") {
+    const origin = request.headers.get("Origin") || "";
+    if (!allowedOrigins.has(origin)) return new Response(null, { status: 403 });
+    return new Response(null, { status: 204, headers: voiceCorsHeaders(request) });
+  }
+
+  if (request.method !== "POST") {
+    return voiceJsonResponse(request, 405, { error: "Method not allowed." });
+  }
+
+  const origin = request.headers.get("Origin") || "";
+  if (!allowedOrigins.has(origin)) {
+    return voiceJsonResponse(request, 403, { error: "This voice service is available only inside Universal Mind." });
+  }
+
+  if (!env.OPENAI_API_KEY) {
+    return voiceJsonResponse(request, 503, { error: "Voice rendering is unavailable on this environment." });
+  }
+
+  const visitorKey = request.headers.get("CF-Connecting-IP") || "unknown";
+  if (env.REALTIME_RATE_LIMITER) {
+    const { success } = await env.REALTIME_RATE_LIMITER.limit({ key: `mantra:${visitorKey}` });
+    if (!success) {
+      return voiceJsonResponse(request, 429, { error: "Please wait a moment before generating another voice." });
+    }
+  }
+
+  const contentLength = Number(request.headers.get("Content-Length") || 0);
+  if (contentLength > 8192) {
+    return voiceJsonResponse(request, 413, { error: "The voice request is too large." });
+  }
+
+  let body;
+  try {
+    body = await request.json();
+  } catch {
+    return voiceJsonResponse(request, 400, { error: "Invalid JSON request." });
+  }
+
+  const presetId = cleanVoiceContext(body?.preset, 40);
+  const preset = mantraVoicePresets[presetId];
+  const text = cleanVoiceContext(body?.text, 220);
+  const speed = Number(body?.speed);
+  const tone = Number(body?.tone);
+  const effectAmount = Number(body?.effect_amount);
+  if (!preset) {
+    return voiceJsonResponse(request, 422, { error: "Choose one of the available voice presets." });
+  }
+  if (!text) {
+    return voiceJsonResponse(request, 422, { error: "Write a line for the voice first." });
+  }
+  if (!Number.isFinite(speed) || speed < 0.55 || speed > 1.65
+      || !Number.isInteger(tone) || tone < -6 || tone > 6
+      || !Number.isFinite(effectAmount) || effectAmount < 0 || effectAmount > 1) {
+    return voiceJsonResponse(request, 422, { error: "One or more voice controls are outside their safe range." });
+  }
+
+  const toneDirection = tone === 0
+    ? "Keep the natural tonal centre of the selected voice."
+    : (tone > 0
+        ? `Lift the perceived vocal tone by about ${tone} semitones while avoiding thinness or squeakiness.`
+        : `Lower the perceived vocal tone by about ${Math.abs(tone)} semitones while avoiding muddiness.`);
+  const effectPercent = Math.round(effectAmount * 100);
+  const effectDirection = effectPercent === 0
+    ? "Use no added electronic character beyond the selected preset."
+    : `Apply the selected electronic character at roughly ${effectPercent}% intensity. It must colour the voice without masking consonants, vowels or word boundaries.`;
+  const instructions = `Create a short, production-ready spoken mantra sample.
+Say only the exact supplied text. Do not add an introduction, commentary, sound effects or extra words.
+Speech intelligibility is the first priority: every word and syllable must be immediately understandable, clearly articulated and evenly audible.
+${preset.direction}
+${toneDirection}
+${effectDirection}
+Keep the recording dry, close and clean enough for later music production.`;
+
+  const openaiResponse = await fetch("https://api.openai.com/v1/audio/speech", {
+    method: "POST",
+    headers: {
+      "Authorization": `Bearer ${env.OPENAI_API_KEY}`,
+      "Content-Type": "application/json",
+      "Accept": "audio/wav",
+      "OpenAI-Safety-Identifier": await voiceSafetyIdentifier(request, "mantra"),
+    },
+    body: JSON.stringify({
+      model: "gpt-4o-mini-tts",
+      voice: preset.voice,
+      input: text,
+      instructions,
+      response_format: "wav",
+      speed: Math.round(speed * 100) / 100,
+    }),
+  });
+
+  if (!openaiResponse.ok) {
+    const payload = await openaiResponse.json().catch(() => ({}));
+    console.error("OpenAI Mantra voice error:", openaiResponse.status, payload.error?.message || "No error message.");
+    return voiceJsonResponse(request, 502, { error: "The voice could not be generated. Please try again shortly." });
+  }
+
+  const audio = await openaiResponse.arrayBuffer();
+  if (audio.byteLength < 44) {
+    console.error("OpenAI Mantra voice response did not contain a valid audio file.");
+    return voiceJsonResponse(request, 502, { error: "The voice service returned an invalid audio file." });
+  }
+
+  return new Response(audio, {
+    status: 200,
+    headers: {
+      ...voiceCorsHeaders(request),
+      "Content-Type": "audio/wav",
+      "Content-Disposition": 'inline; filename="mantra-voice.wav"',
+      "Content-Length": String(audio.byteLength),
+    },
+  });
+}
+
 export default {
   async fetch(request, env) {
     const url = new URL(request.url);
+    if (url.pathname.endsWith("/mantra-voice")) return handleMantraVoice(request, env);
     if (url.pathname.endsWith("/realtime-client-secret")) return handleRealtimeClientSecret(request, env);
     if (url.pathname.endsWith("/citizen-needs-inference")) return handleInference(request, env);
 
