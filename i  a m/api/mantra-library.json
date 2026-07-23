@@ -1,0 +1,159 @@
+{
+  "version": "mantra_library_v2.0",
+  "scope": "private_password_gated_mockup",
+  "replacement_rule": "Public release requires licensed or original replacement audio.",
+  "updated_at": "2026-07-23T04:30:00Z",
+  "banks": {
+    "tibet": [
+      {
+        "slot": 1,
+        "id": "tibet-universe",
+        "label": "Universe",
+        "phrase": "You are not in the universe, you are the universe.",
+        "asset": "a s s e t s/m a n t r a [ m o c k u p ]/tibet-universe.m4a",
+        "trim_start": 0,
+        "trim_end": 4,
+        "source_type": "reference_sample",
+        "rights_status": "private_mockup_only",
+        "color": "235, 214, 108"
+      },
+      {
+        "slot": 2,
+        "id": "tibet-one-life",
+        "label": "One Life",
+        "phrase": "The one life, experiencing itself through countless lifeforms.",
+        "asset": "a s s e t s/m a n t r a [ m o c k u p ]/tibet-one-life.m4a",
+        "trim_start": 0,
+        "trim_end": 8,
+        "source_type": "reference_sample",
+        "rights_status": "private_mockup_only",
+        "color": "91, 230, 196"
+      },
+      {
+        "slot": 3,
+        "id": "tibet-multiplicity",
+        "label": "Multiplicity",
+        "phrase": "The universe delights in creating this multiplicity of forms, and it delights in experiencing itself through all those forms.",
+        "asset": "a s s e t s/m a n t r a [ m o c k u p ]/tibet-multiplicity.m4a",
+        "trim_start": 0,
+        "trim_end": 11.7,
+        "source_type": "reference_sample",
+        "rights_status": "private_mockup_only",
+        "color": "86, 171, 255"
+      },
+      {
+        "slot": 4,
+        "id": "tibet-future-4",
+        "label": "Future Mantra",
+        "phrase": "Reserved for a future Tibet mantra.",
+        "asset": "",
+        "trim_start": 0,
+        "trim_end": 0,
+        "source_type": "reserved",
+        "rights_status": "reserved",
+        "reserved": true,
+        "color": "183, 139, 255"
+      },
+      {
+        "slot": 5,
+        "id": "tibet-future-5",
+        "label": "Future Mantra",
+        "phrase": "Reserved for a future Tibet mantra.",
+        "asset": "",
+        "trim_start": 0,
+        "trim_end": 0,
+        "source_type": "reserved",
+        "rights_status": "reserved",
+        "reserved": true,
+        "color": "241, 143, 193"
+      },
+      {
+        "slot": 6,
+        "id": "tibet-future-6",
+        "label": "Future Mantra",
+        "phrase": "Reserved for a future Tibet mantra.",
+        "asset": "",
+        "trim_start": 0,
+        "trim_end": 0,
+        "source_type": "reserved",
+        "rights_status": "reserved",
+        "reserved": true,
+        "color": "255, 159, 84"
+      }
+    ],
+    "ibiza": [
+      {
+        "slot": 1,
+        "id": "ibiza-mind-body-soul",
+        "label": "Mind Body Soul",
+        "phrase": "Something for your mind, your body and your soul.",
+        "asset": "a s s e t s/m a n t r a [ m o c k u p ]/ibiza-mind-body-soul.m4a",
+        "trim_start": 0,
+        "trim_end": 5.6,
+        "source_type": "reference_sample",
+        "rights_status": "private_mockup_only",
+        "color": "216, 255, 66"
+      },
+      {
+        "slot": 2,
+        "id": "ibiza-open-mind",
+        "label": "Open Your Mind",
+        "phrase": "Open your mind.",
+        "asset": "a s s e t s/m a n t r a [ m o c k u p ]/ibiza-open-mind.m4a",
+        "trim_start": 0,
+        "trim_end": 1.16,
+        "source_type": "reference_sample",
+        "rights_status": "private_mockup_only",
+        "color": "91, 230, 196"
+      },
+      {
+        "slot": 3,
+        "id": "ibiza-glowing",
+        "label": "Mind Is Glowing",
+        "phrase": "My mind is glowing.",
+        "asset": "a s s e t s/m a n t r a [ m o c k u p ]/ibiza-glowing.m4a",
+        "trim_start": 0,
+        "trim_end": 3.8,
+        "source_type": "reference_sample",
+        "rights_status": "private_mockup_only",
+        "color": "86, 171, 255"
+      },
+      {
+        "slot": 4,
+        "id": "ibiza-plur-vocoder",
+        "label": "PLUR",
+        "phrase": "Peace, love, unity, respect... PLUR",
+        "asset": "a s s e t s/m a n t r a [ m o c k u p ]/ibiza-plur-vocoder.wav",
+        "trim_start": 0,
+        "trim_end": 3.569,
+        "source_type": "vocoder",
+        "rights_status": "original_mockup",
+        "color": "183, 139, 255"
+      },
+      {
+        "slot": 5,
+        "id": "ibiza-lifestyle-vocoder",
+        "label": "Lifestyle",
+        "phrase": "Ibiza, It's The Lifestyle We're Living",
+        "asset": "a s s e t s/m a n t r a [ m o c k u p ]/ibiza-lifestyle-vocoder.wav",
+        "trim_start": 0,
+        "trim_end": 3.288,
+        "source_type": "vocoder",
+        "rights_status": "original_mockup",
+        "color": "241, 143, 193"
+      },
+      {
+        "slot": 6,
+        "id": "ibiza-narayana-vocoder",
+        "label": "Narayana",
+        "phrase": "Om Namo. Narayana",
+        "asset": "a s s e t s/m a n t r a [ m o c k u p ]/ibiza-narayana-vocoder.wav",
+        "trim_start": 0,
+        "trim_end": 2.166,
+        "source_type": "vocoder",
+        "rights_status": "original_mockup",
+        "color": "255, 159, 84"
+      }
+    ]
+  }
+}

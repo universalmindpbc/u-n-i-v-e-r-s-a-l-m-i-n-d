@@ -17,11 +17,16 @@ fi
 
 "$NODE_BIN" --check "$ROOT_DIR/i  a m/adaptive-environment-television.js"
 "$NODE_BIN" --check "$ROOT_DIR/i  a m/mantra-sampler.js"
+"$NODE_BIN" --check "$ROOT_DIR/i  a m/mantra-studio.js"
 "$NODE_BIN" --check "$ROOT_DIR/i  a m/circle-audio-rooms.js"
 "$NODE_BIN" --check "$ROOT_DIR/cloudflare/agora-audio-room-worker.js"
 "$NODE_BIN" --check "$ROOT_DIR/i  a m/globe.js"
 "$NODE_BIN" "$ROOT_DIR/tools/check-adaptive-music-handoff.mjs"
 "$NODE_BIN" "$ROOT_DIR/tools/check-circle-rooms.mjs"
+
+if command -v php >/dev/null 2>&1; then
+  php -l "$ROOT_DIR/i  a m/api/mantra-library.php"
+fi
 
 export FTP_HOST="${FTP_HOST:-sh00023.pa.smartservers.com.au}"
 export FTP_USER="${FTP_USER:-stagingdeploy@universalmind.tv}"

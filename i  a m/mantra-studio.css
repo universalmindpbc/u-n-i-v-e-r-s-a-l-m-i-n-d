@@ -1,0 +1,637 @@
+:root {
+  color-scheme: dark;
+  --lime: #d8ff42;
+  --ink: #03111f;
+  --line: rgba(255, 255, 255, 0.14);
+  --muted: rgba(255, 255, 255, 0.5);
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  min-width: 320px;
+  min-height: 100vh;
+  margin: 0;
+  background:
+    radial-gradient(circle at 72% 18%, rgba(57, 119, 135, 0.22), transparent 34%),
+    radial-gradient(circle at 14% 76%, rgba(124, 77, 142, 0.13), transparent 31%),
+    linear-gradient(145deg, #020c16, #061523 52%, #020a12);
+  color: #fff;
+}
+
+button,
+input,
+textarea {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+.mantra-studio {
+  width: min(1540px, calc(100% - 40px));
+  margin: 0 auto;
+  padding: 28px 0 50px;
+}
+
+.mantra-studio__header {
+  display: grid;
+  align-items: end;
+  grid-template-columns: 1fr auto 1fr;
+  min-height: 80px;
+  margin-bottom: 24px;
+  border-bottom: 1px solid var(--line);
+  padding: 0 3px 20px;
+}
+
+.mantra-studio__header > a {
+  color: rgba(255, 255, 255, 0.62);
+  font-size: 13px;
+  text-decoration: none;
+}
+
+.mantra-studio__header > div {
+  text-align: center;
+}
+
+.mantra-studio__header p,
+.mantra-library__heading p,
+.mantra-vocoder header p {
+  margin: 0 0 5px;
+  color: var(--lime);
+  font-size: 9px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.mantra-studio__header h1 {
+  margin: 0;
+  font: 400 31px/1 "Iowan Old Style", Baskerville, Georgia, serif;
+}
+
+.mantra-studio__header > button {
+  justify-self: end;
+  border: 0;
+  background: transparent;
+  color: var(--muted);
+}
+
+.mantra-login {
+  display: grid;
+  min-height: 60vh;
+  place-items: center;
+}
+
+.mantra-login form {
+  width: min(440px, 100%);
+  border: 1px solid var(--line);
+  border-radius: 28px;
+  background: rgba(7, 24, 38, 0.6);
+  padding: 38px;
+  text-align: center;
+  backdrop-filter: blur(18px);
+}
+
+.mantra-login form > span {
+  color: var(--lime);
+  font-size: 28px;
+}
+
+.mantra-login h2 {
+  margin: 12px 0 8px;
+  font: 400 30px/1.1 "Iowan Old Style", Baskerville, Georgia, serif;
+}
+
+.mantra-login p {
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.mantra-login label {
+  display: block;
+  margin-top: 24px;
+  text-align: left;
+}
+
+label > span {
+  display: block;
+  margin-bottom: 7px;
+  color: var(--muted);
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+input[type="text"],
+input[type="password"],
+textarea,
+input[type="file"] {
+  width: 100%;
+  border: 1px solid var(--line);
+  border-radius: 13px;
+  background: rgba(255, 255, 255, 0.045);
+  color: #fff;
+  outline: 0;
+  padding: 12px 14px;
+}
+
+textarea {
+  resize: vertical;
+}
+
+input:focus,
+textarea:focus {
+  border-color: rgba(216, 255, 66, 0.55);
+}
+
+.mantra-login button,
+.mantra-upload button,
+.mantra-editor__transport button,
+.mantra-vocoder__transport button {
+  min-height: 42px;
+  border: 1px solid rgba(216, 255, 66, 0.42);
+  border-radius: 999px;
+  background: rgba(216, 255, 66, 0.12);
+  color: #f2ffc5;
+  padding: 0 20px;
+}
+
+.mantra-login form > button {
+  width: 100%;
+  margin-top: 14px;
+}
+
+.mantra-login__status {
+  min-height: 18px;
+  margin-bottom: 0 !important;
+  color: #ff9aa9 !important;
+}
+
+.mantra-workspace {
+  display: grid;
+  grid-template-columns: minmax(230px, 0.72fr) minmax(560px, 2fr) minmax(290px, 0.95fr);
+  gap: 18px;
+}
+
+.mantra-library,
+.mantra-editor,
+.mantra-vocoder {
+  min-width: 0;
+  border: 1px solid var(--line);
+  border-radius: 24px;
+  background: rgba(7, 23, 36, 0.58);
+  backdrop-filter: blur(16px);
+}
+
+.mantra-library {
+  padding: 20px;
+}
+
+.mantra-library__heading,
+.mantra-vocoder header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 18px;
+}
+
+.mantra-library h2,
+.mantra-vocoder h2 {
+  margin: 0;
+  font: 400 25px/1 "Iowan Old Style", Baskerville, Georgia, serif;
+}
+
+.mantra-library__banks {
+  display: flex;
+  gap: 3px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 3px;
+}
+
+.mantra-library__banks button,
+.mantra-editor__tabs button {
+  border: 0;
+  border-radius: 999px;
+  background: transparent;
+  color: var(--muted);
+}
+
+.mantra-library__banks button {
+  padding: 7px 10px;
+  font-size: 10px;
+}
+
+.mantra-library__banks button[aria-selected="true"],
+.mantra-editor__tabs button[aria-selected="true"] {
+  background: rgba(255, 255, 255, 0.13);
+  color: #fff;
+}
+
+.mantra-library__slots {
+  display: grid;
+  gap: 8px;
+}
+
+.mantra-library__slot {
+  display: grid;
+  align-items: center;
+  grid-template-columns: 29px 1fr auto;
+  gap: 9px;
+  min-height: 60px;
+  border: 1px solid rgba(var(--slot-rgb), 0.32);
+  border-radius: 16px;
+  background: linear-gradient(120deg, rgba(var(--slot-rgb), 0.12), rgba(255,255,255,0.025));
+  color: rgba(255,255,255,0.72);
+  padding: 8px 10px;
+  text-align: left;
+}
+
+.mantra-library__slot[aria-current="true"] {
+  border-color: rgba(var(--slot-rgb), 0.86);
+  box-shadow: 0 0 0 2px rgba(var(--slot-rgb), 0.09);
+  color: #fff;
+}
+
+.mantra-library__slot-number {
+  display: grid;
+  width: 27px;
+  height: 27px;
+  border-radius: 50%;
+  background: rgba(var(--slot-rgb), 0.3);
+  place-items: center;
+}
+
+.mantra-library__slot-name {
+  min-width: 0;
+  font-size: 12px;
+}
+
+.mantra-library__slot-type {
+  color: rgba(255,255,255,0.36);
+  font-size: 8px;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+}
+
+.mantra-editor {
+  overflow: hidden;
+}
+
+.mantra-editor__tabs {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 5px;
+  margin: 16px;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: 4px;
+}
+
+.mantra-editor__tabs button {
+  min-height: 40px;
+  font-weight: 600;
+}
+
+.mantra-editor__panel {
+  display: none;
+  min-height: 450px;
+  padding: 18px 24px 24px;
+}
+
+.mantra-editor__panel.is-active {
+  display: block;
+}
+
+.mantra-editor__identity {
+  display: grid;
+  gap: 14px;
+}
+
+.mantra-knobs {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-top: 26px;
+}
+
+.mantra-knobs--two {
+  grid-template-columns: repeat(2, minmax(150px, 230px));
+  justify-content: center;
+}
+
+.mantra-knob {
+  display: grid;
+  min-height: 145px;
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255,255,255,0.06), transparent 62%);
+  place-items: center;
+  padding: 24px 14px;
+  text-align: center;
+}
+
+.mantra-knob input {
+  width: 90%;
+  accent-color: var(--lime);
+}
+
+.mantra-knob output {
+  font-size: 17px;
+}
+
+.mantra-knob > span {
+  margin: 0;
+}
+
+.mantra-upload {
+  display: grid;
+  align-items: end;
+  grid-template-columns: 1fr auto;
+  gap: 12px;
+  margin-top: 28px;
+}
+
+.mantra-waveform,
+.mantra-curve {
+  position: relative;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  background: rgba(1, 9, 15, 0.54);
+  overflow: hidden;
+}
+
+.mantra-waveform canvas,
+.mantra-curve canvas {
+  display: block;
+  width: 100%;
+  height: 300px;
+}
+
+.mantra-curve canvas[data-pitch-canvas] {
+  cursor: crosshair;
+  touch-action: none;
+}
+
+.mantra-curve__help {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 10px;
+}
+
+.mantra-curve__help p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 10px;
+}
+
+.mantra-curve__help button {
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: rgba(255,255,255,0.04);
+  color: rgba(255,255,255,0.62);
+  padding: 7px 12px;
+}
+
+.mantra-vu {
+  position: absolute;
+  right: 9px;
+  top: 16px;
+  bottom: 16px;
+  width: 8px;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.1);
+  overflow: hidden;
+}
+
+.mantra-vu span {
+  position: absolute;
+  inset: auto 0 0;
+  height: 0;
+  border-radius: inherit;
+  background: linear-gradient(to top, #67e8c6, var(--lime) 72%, #ff7a85);
+  transition: height 55ms linear;
+}
+
+.mantra-trim,
+.mantra-envelope {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.mantra-envelope {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.mantra-trim label,
+.mantra-envelope label {
+  display: grid;
+  grid-template-columns: 58px 1fr auto;
+  gap: 10px;
+  align-items: center;
+}
+
+.mantra-trim label > span,
+.mantra-envelope label > span {
+  margin: 0;
+}
+
+input[type="range"] {
+  accent-color: var(--lime);
+}
+
+.mantra-editor__transport {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 76px;
+  border-top: 1px solid var(--line);
+  padding: 14px 20px;
+}
+
+.mantra-editor__transport .mantra-editor__preview {
+  border-color: rgba(255,255,255,0.27);
+  background: rgba(255,255,255,0.08);
+  color: #fff;
+}
+
+.mantra-editor__transport p {
+  margin: 0 0 0 auto;
+  color: var(--muted);
+  font-size: 10px;
+}
+
+.mantra-vocoder {
+  padding: 20px;
+}
+
+.mantra-vocoder header > span {
+  color: rgba(255,255,255,0.3);
+  font-size: 8px;
+  text-transform: uppercase;
+}
+
+.mantra-vocoder__scripts,
+.mantra-vocoder__voices {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 7px;
+  margin-top: 12px;
+}
+
+.mantra-vocoder__scripts button,
+.mantra-vocoder__voices button {
+  min-height: 40px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: rgba(255,255,255,0.04);
+  color: rgba(255,255,255,0.6);
+  font-size: 10px;
+}
+
+.mantra-vocoder__voices button[aria-checked="true"] {
+  border-color: rgba(216, 255, 66, 0.55);
+  background: rgba(216, 255, 66, 0.1);
+  color: #f1ffc3;
+}
+
+.mantra-vocoder__controls {
+  display: grid;
+  gap: 14px;
+  margin-top: 22px;
+}
+
+.mantra-vocoder__controls label {
+  display: grid;
+  align-items: center;
+  grid-template-columns: 52px 1fr 48px;
+  gap: 8px;
+}
+
+.mantra-vocoder__controls label > span {
+  margin: 0;
+}
+
+.mantra-vocoder__controls output {
+  color: rgba(255,255,255,0.6);
+  font-size: 10px;
+  text-align: right;
+}
+
+.mantra-vocoder__transport {
+  display: grid;
+  gap: 8px;
+  margin-top: 23px;
+}
+
+.mantra-vocoder__transport button:first-child {
+  border-color: rgba(255,255,255,0.25);
+  background: rgba(255,255,255,0.07);
+  color: #fff;
+}
+
+.mantra-vocoder > p {
+  min-height: 30px;
+  margin: 14px 3px 0;
+  color: var(--muted);
+  font-size: 9px;
+  line-height: 1.4;
+}
+
+button:focus-visible {
+  outline: 1px solid var(--lime);
+  outline-offset: 2px;
+}
+
+button:disabled {
+  cursor: not-allowed;
+  opacity: 0.38;
+}
+
+@media (max-width: 1180px) {
+  .mantra-workspace {
+    grid-template-columns: minmax(220px, 0.75fr) minmax(520px, 2fr);
+  }
+
+  .mantra-vocoder {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 820px) {
+  .mantra-studio {
+    width: min(100% - 22px, 720px);
+  }
+
+  .mantra-studio__header {
+    grid-template-columns: 1fr auto;
+  }
+
+  .mantra-studio__header > div {
+    grid-row: 1;
+    grid-column: 1 / -1;
+    margin-bottom: 19px;
+  }
+
+  .mantra-workspace {
+    display: block;
+  }
+
+  .mantra-library,
+  .mantra-editor,
+  .mantra-vocoder {
+    margin-bottom: 14px;
+  }
+
+  .mantra-library__slots {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .mantra-editor__panel {
+    min-height: auto;
+  }
+}
+
+@media (max-width: 540px) {
+  .mantra-library__slots,
+  .mantra-knobs,
+  .mantra-trim,
+  .mantra-envelope {
+    grid-template-columns: 1fr;
+  }
+
+  .mantra-editor__tabs {
+    margin: 10px;
+  }
+
+  .mantra-editor__panel {
+    padding: 14px;
+  }
+
+  .mantra-waveform canvas,
+  .mantra-curve canvas {
+    height: 220px;
+  }
+
+  .mantra-upload {
+    grid-template-columns: 1fr;
+  }
+
+  .mantra-editor__transport {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .mantra-editor__transport p {
+    margin: 6px 0 0;
+    text-align: center;
+  }
+}

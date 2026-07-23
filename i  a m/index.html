@@ -19,8 +19,9 @@
     <script src="music-television-frame-context.js?v=music-tv-frame-14ebf4459d03"></script>
     <link rel="stylesheet" href="styles.css?v=global-nav-single-shell-1">
     <link rel="preload" as="image" href="a s s e t s/Universal Mind [ I o H ] Logo.PNG">
-    <link rel="stylesheet" href="adaptive-environment-television.css?v=music-tv-css-bc658915b106">
+    <link rel="stylesheet" href="adaptive-environment-television.css?v=music-tv-css-11a071bb7a0c">
     <link rel="stylesheet" href="circle-audio-rooms.css?v=circle-rooms-css-72d523b18b71">
+    <link rel="stylesheet" href="mantra-sampler.css?v=mantra-sampler-css-de574fd9e8ee">
     <link rel="stylesheet" href="realtime-voice-assistant.css?v=realtime-voice-css-3dbe2f94acaa">
   </head>
   <body class="adaptive-television-page">
@@ -281,6 +282,52 @@
               <p class="circle-room-selector__status" data-circle-selector-status aria-live="polite"></p>
             </div>
           </section>
+          <section class="mantra-orbit" data-mantra-sampler data-mantra-active-bank="tibet" aria-hidden="true" inert>
+            <button class="mantra-orbit__backdrop" type="button" data-mantra-close tabindex="-1" aria-label="Close Mantra sampler"></button>
+            <div class="mantra-orbit__casing" role="dialog" aria-modal="true" aria-labelledby="mantra-orbit-title" aria-describedby="mantra-orbit-instruction">
+              <button class="mantra-orbit__close" type="button" data-mantra-close aria-label="Close Mantra sampler">×</button>
+              <p class="mantra-orbit__eyebrow" aria-hidden="true">mantra <span>sampler</span></p>
+              <div class="mantra-orbit__banks" role="tablist" aria-label="Choose a mantra collection">
+                <button type="button" role="tab" data-mantra-bank="tibet" aria-selected="true">Tibet</button>
+                <button type="button" role="tab" data-mantra-bank="ibiza" aria-selected="false" tabindex="-1">Ibiza</button>
+              </div>
+              <div class="mantra-orbit__stage">
+                <svg class="mantra-orbit__energy" viewBox="0 0 1000 1000" aria-hidden="true" focusable="false">
+                  <defs>
+                    <linearGradient id="mantraOrbitEnergy" x1="0" y1="0" x2="1" y2="1">
+                      <stop offset="0" stop-color="#d8ff42"></stop>
+                      <stop offset="0.34" stop-color="#67e8c6"></stop>
+                      <stop offset="0.67" stop-color="#5ba7ff"></stop>
+                      <stop offset="1" stop-color="#d68cff"></stop>
+                    </linearGradient>
+                  </defs>
+                  <g class="mantra-orbit__grid">
+                    <circle cx="500" cy="500" r="386"></circle>
+                    <circle cx="500" cy="500" r="300"></circle>
+                    <circle cx="500" cy="500" r="214"></circle>
+                    <path d="M500 114 834 307 834 693 500 886 166 693 166 307Z"></path>
+                  </g>
+                  <g class="mantra-orbit__signals">
+                    <path pathLength="1" d="M500 500 500 114"></path>
+                    <path pathLength="1" d="M500 500 834 307"></path>
+                    <path pathLength="1" d="M500 500 834 693"></path>
+                    <path pathLength="1" d="M500 500 500 886"></path>
+                    <path pathLength="1" d="M500 500 166 693"></path>
+                    <path pathLength="1" d="M500 500 166 307"></path>
+                  </g>
+                </svg>
+                <div class="mantra-orbit__centre">
+                  <span class="mantra-orbit__flower adaptive-television-reaction__glyph adaptive-television-reaction__glyph--ioh-logo adaptive-television-reaction__glyph--flora-trigger" aria-hidden="true"></span>
+                  <h2 id="mantra-orbit-title" data-mantra-bank-title>Tibet</h2>
+                  <p id="mantra-orbit-instruction">one hit · retrigger anytime</p>
+                  <p class="mantra-orbit__status" data-mantra-status aria-live="polite">choose a mantra</p>
+                  <a class="mantra-orbit__studio" href="mantra-studio.html" target="_blank" rel="noopener">edit samples</a>
+                </div>
+                <div class="mantra-orbit__nodes" data-mantra-nodes role="group" aria-label="Six mantra sample pads"></div>
+              </div>
+              <p class="mantra-orbit__scope">private research mockup · source samples to be licensed before public use</p>
+            </div>
+          </section>
           <div class="adaptive-television-reaction-wallet" data-reaction-wallet data-wallet-view="closed" data-wallet-resume-view="categories" aria-label="Universal Mind wallet">
             <button class="adaptive-television-reaction-trigger" type="button" data-reaction-wallet-trigger aria-label="Open Universal Mind wallet" aria-expanded="false">
               <span class="adaptive-television-reaction__glyph adaptive-television-reaction__glyph--ioh-logo adaptive-television-reaction__glyph--flora-trigger" aria-hidden="true"></span>
@@ -460,78 +507,29 @@
                 <button class="adaptive-television-music-selector__arrow" type="button" data-music-next aria-label="Next Music recommendation"><span aria-hidden="true">&rsaquo;</span></button>
               </div>
             </div>
-            <div class="adaptive-television-emdr-controls" data-wallet-panel="emdr" data-emdr-controls aria-hidden="true">
+            <div class="adaptive-television-wallet-panel adaptive-television-emdr-menu" data-wallet-panel="emdr" aria-hidden="true">
               <button class="adaptive-television-wallet-home" type="button" data-wallet-home data-wallet-tooltip="wallet home" aria-label="Return to wallet home">
                 <span class="adaptive-television-reaction__glyph adaptive-television-reaction__glyph--ioh-logo adaptive-television-reaction__glyph--flora-trigger" aria-hidden="true"></span>
               </button>
+              <button class="adaptive-television-emdr-menu__back" type="button" data-emdr-menu-back aria-label="Return to Mix"><span aria-hidden="true">‹</span> Mix</button>
+              <p class="adaptive-television-emdr-menu__label">choose</p>
+              <button class="adaptive-television-emdr-choice" type="button" data-emdr-style data-emdr-style-index="0" aria-pressed="false" aria-label="Activate GIF EMDR">GIF</button>
+              <button class="adaptive-television-emdr-choice" type="button" data-emdr-style data-emdr-style-index="1" aria-pressed="false" aria-label="Activate Stella EMDR">Stella</button>
+              <button class="adaptive-television-emdr-choice" type="button" data-emdr-mantra-open aria-haspopup="dialog" aria-expanded="false">Mantra</button>
+              <button class="adaptive-television-emdr-choice adaptive-television-emdr-choice--sound" type="button" data-emdr-sound-research data-research-frequency="Isochronic tone: 7.38088 Hz, carried on a 111.011 Hz sine wave, plus a separate constant 528.088 Hz sine wave, together as one." data-research-science-href="science.html#research-sound" aria-pressed="false" aria-label="Turn Sound Research Layer on">Sound</button>
+              <span class="adaptive-television-emdr-menu__status" data-emdr-choice-status aria-live="polite">nothing starts until you choose</span>
+            </div>
+            <div class="adaptive-television-emdr-controls" data-wallet-panel="emdr-active" data-emdr-controls aria-hidden="true">
+              <button class="adaptive-television-emdr-menu__back" type="button" data-emdr-active-back aria-label="Return to EMDR choices"><span aria-hidden="true">‹</span> EMDR</button>
+              <strong class="adaptive-television-emdr-active-label" data-emdr-active-label>GIF active</strong>
               <button class="adaptive-television-emdr-off" type="button" data-emdr-off>off</button>
-              <div class="adaptive-television-emdr-style-group" role="group" aria-label="Choose an EMDR style">
-                <button class="adaptive-television-emdr-style" type="button" data-emdr-style data-emdr-style-index="0" data-emdr-tooltip="Choose the editorial animated GIF experience." aria-pressed="true" aria-label="Use GIF EMDR style">GIF</button>
-                <button class="adaptive-television-emdr-style" type="button" data-emdr-style data-emdr-style-index="1" data-emdr-tooltip="Choose the stellar geometric experience." aria-pressed="false" aria-label="Use stellar EMDR style">stellar</button>
-              </div>
               <button class="adaptive-television-emdr-react" type="button" data-emdr-react data-emdr-tooltip="React to the music." aria-pressed="false" aria-label="Turn music reaction on">react <span aria-hidden="true">♫</span></button>
               <button class="adaptive-television-emdr-automate" type="button" data-emdr-automate data-emdr-tooltip="Automate the intensity slider." aria-pressed="true" aria-label="Turn automatic intensity movement off">automate <span aria-hidden="true">↔︎</span></button>
-              <button class="adaptive-television-emdr-mantra" type="button" data-emdr-mantra-open data-emdr-tooltip="Play one shot or looping mantra samples." aria-haspopup="true" aria-expanded="false">mantra</button>
               <label class="adaptive-television-emdr-intensity" data-emdr-tooltip="Dial in your own EMDR intensity.">
                 <span>intensity</span>
                 <input type="range" min="0" max="100" value="62" step="1" data-emdr-intensity aria-label="Dial in your own EMDR intensity">
               </label>
-              <span class="adaptive-television-research-tooltip-host adaptive-television-research-tooltip-host--sound" data-research-frequency="Isochronic tone: 7.38088 Hz, carried on a 111.011 Hz sine wave, plus a separate constant 528.088 Hz sine wave, together as one." data-research-science-href="science.html#research-sound">
-                <button class="adaptive-television-emdr-sound-research" type="button" data-emdr-sound-research aria-pressed="true" aria-label="Turn Sound Research Layer off">
-                  <span>Sound</span>
-                  <svg class="adaptive-television-emdr-sound-research-icon" viewBox="0 0 68 184" aria-hidden="true" focusable="false">
-                    <defs>
-                      <filter id="sound-research-dna-white" x="0" y="0" width="68" height="184" color-interpolation-filters="sRGB">
-                        <feColorMatrix type="matrix" values="0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  1.6 0 1.6 0 -1.4"></feColorMatrix>
-                      </filter>
-                    </defs>
-                    <image href="a s s e t s/sound-research-dna-reference.png" x="-145" y="-71" width="378" height="324" filter="url(#sound-research-dna-white)"></image>
-                  </svg>
-                </button>
-                <span class="adaptive-television-research-tooltip adaptive-television-research-tooltip--sound">
-                  <span class="adaptive-television-research-tooltip__primary">Sound Research Layer - Investigating whether an optional sound layer modulates short term transcriptional pathways, relevant to mental health.</span>
-                  <button class="adaptive-television-research-tooltip__more" type="button" aria-label="More information on the Sound research" aria-expanded="false" aria-controls="sound-research-details">
-                    <span class="adaptive-television-research-tooltip__prompt">[ more info on the research ]</span>
-                    <span class="adaptive-television-research-tooltip__secondary" id="sound-research-details">[ Proposed double blinded RCT with mRNA sequencing via buccal swab and roadmap to CandyCollect lollypop. Target genes include NMDAR for cognition and memory, OXTR, SLC6A4, DRD2, IL6, NR3C1, DOCK2, CD38, together as one ]</span>
-                  </button>
-                </span>
-              </span>
             </div>
-            <section class="adaptive-television-wallet-panel adaptive-television-mantra-controls" data-wallet-panel="mantra" data-mantra-sampler data-mantra-active-bank="tibet" data-mantra-active-mode="one-shot" aria-label="Mantra sample pads" aria-hidden="true">
-              <header class="adaptive-television-mantra-header">
-                <button class="adaptive-television-mantra-back" type="button" data-mantra-back aria-label="Return to EMDR controls"><span aria-hidden="true">‹</span> EMDR</button>
-                <h2>mantra</h2>
-                <span class="adaptive-television-mantra-scope">private mockup</span>
-              </header>
-              <div class="adaptive-television-mantra-toolbar">
-                <div class="adaptive-television-mantra-banks" role="tablist" aria-label="Choose a mantra bank">
-                  <button type="button" role="tab" data-mantra-bank="tibet" aria-selected="true">Tibet</button>
-                  <button type="button" role="tab" data-mantra-bank="ibiza" aria-selected="false" tabindex="-1">Ibiza</button>
-                </div>
-                <div class="adaptive-television-mantra-modes" role="group" aria-label="Choose sample playback mode">
-                  <button type="button" data-mantra-mode="one-shot" aria-pressed="true">one shot</button>
-                  <button type="button" data-mantra-mode="loop" aria-pressed="false">loop</button>
-                </div>
-              </div>
-              <p class="adaptive-television-mantra-status" data-mantra-status aria-live="polite">Tibet — choose a mantra</p>
-              <div class="adaptive-television-mantra-honeycomb" role="group" aria-label="Mantra samples">
-                <button class="adaptive-television-mantra-pad" type="button" data-mantra-pad data-mantra-pad-bank="tibet" data-mantra-position="1" data-mantra-sample="tibet-universe" data-mantra-label="Universe" data-mantra-phrase="You are not in the universe, you are the universe." data-mantra-src="a s s e t s/m a n t r a [ m o c k u p ]/tibet-universe.m4a" aria-label="Universe — You are not in the universe, you are the universe" aria-pressed="false"><span>universe</span></button>
-                <button class="adaptive-television-mantra-pad adaptive-television-mantra-pad--reserved" type="button" data-mantra-pad data-mantra-pad-bank="tibet" data-mantra-position="2" data-mantra-reserved="true" aria-label="Reserved for a future Tibet mantra" disabled><span aria-hidden="true">+</span></button>
-                <button class="adaptive-television-mantra-pad" type="button" data-mantra-pad data-mantra-pad-bank="tibet" data-mantra-position="3" data-mantra-sample="tibet-one-life" data-mantra-label="One Life" data-mantra-phrase="The one life, expressing itself through countless life forms." data-mantra-src="a s s e t s/m a n t r a [ m o c k u p ]/tibet-one-life.m4a" aria-label="One Life — The one life, expressing itself through countless life forms" aria-pressed="false"><span>one life</span></button>
-                <button class="adaptive-television-mantra-pad adaptive-television-mantra-pad--reserved" type="button" data-mantra-pad data-mantra-pad-bank="tibet" data-mantra-position="4" data-mantra-reserved="true" aria-label="Reserved for a future Tibet mantra" disabled><span aria-hidden="true">+</span></button>
-                <button class="adaptive-television-mantra-pad" type="button" data-mantra-pad data-mantra-pad-bank="tibet" data-mantra-position="5" data-mantra-sample="tibet-multiplicity" data-mantra-label="Multiplicity" data-mantra-phrase="The universe delights in creating this multiplicity of forms, and it delights in experiencing itself through all those forms." data-mantra-src="a s s e t s/m a n t r a [ m o c k u p ]/tibet-multiplicity.m4a" aria-label="Multiplicity — The universe delights in creating this multiplicity of forms and experiencing itself through all those forms" aria-pressed="false"><span>multiplicity</span></button>
-                <button class="adaptive-television-mantra-pad adaptive-television-mantra-pad--reserved" type="button" data-mantra-pad data-mantra-pad-bank="tibet" data-mantra-position="6" data-mantra-reserved="true" aria-label="Reserved for a future Tibet mantra" disabled><span aria-hidden="true">+</span></button>
-
-                <button class="adaptive-television-mantra-pad" type="button" data-mantra-pad data-mantra-pad-bank="ibiza" data-mantra-position="1" data-mantra-sample="ibiza-lifestyle" data-mantra-label="Lifestyle" data-mantra-phrase="It's the lifestyle we're living." data-mantra-src="a s s e t s/m a n t r a [ m o c k u p ]/ibiza-lifestyle.m4a" aria-label="Lifestyle — It's the lifestyle we're living" aria-pressed="false" hidden><span>lifestyle</span></button>
-                <button class="adaptive-television-mantra-pad" type="button" data-mantra-pad data-mantra-pad-bank="ibiza" data-mantra-position="2" data-mantra-sample="ibiza-glowing" data-mantra-label="Glowing" data-mantra-phrase="My mind is glowing." data-mantra-src="a s s e t s/m a n t r a [ m o c k u p ]/ibiza-glowing.m4a" aria-label="Glowing — My mind is glowing" aria-pressed="false" hidden><span>glowing</span></button>
-                <button class="adaptive-television-mantra-pad" type="button" data-mantra-pad data-mantra-pad-bank="ibiza" data-mantra-position="3" data-mantra-sample="ibiza-open-mind" data-mantra-label="Open Mind" data-mantra-phrase="Open your mind." data-mantra-src="a s s e t s/m a n t r a [ m o c k u p ]/ibiza-open-mind.m4a" aria-label="Open Mind — Open your mind" aria-pressed="false" hidden><span>open mind</span></button>
-                <button class="adaptive-television-mantra-pad" type="button" data-mantra-pad data-mantra-pad-bank="ibiza" data-mantra-position="4" data-mantra-sample="ibiza-dimension" data-mantra-label="Dimension" data-mantra-phrase="I'll take your brain to another dimension." data-mantra-src="a s s e t s/m a n t r a [ m o c k u p ]/ibiza-dimension.m4a" aria-label="Dimension — I'll take your brain to another dimension" aria-pressed="false" hidden><span>dimension</span></button>
-                <button class="adaptive-television-mantra-pad" type="button" data-mantra-pad data-mantra-pad-bank="ibiza" data-mantra-position="5" data-mantra-sample="ibiza-mind-body-soul" data-mantra-label="Mind Body Soul" data-mantra-phrase="Something for your mind, your body and your soul." data-mantra-src="a s s e t s/m a n t r a [ m o c k u p ]/ibiza-mind-body-soul.m4a" aria-label="Mind Body Soul — Something for your mind, your body and your soul" aria-pressed="false" hidden><span>mind<br>body<br>soul</span></button>
-                <button class="adaptive-television-mantra-pad" type="button" data-mantra-pad data-mantra-pad-bank="ibiza" data-mantra-position="6" data-mantra-sample="ibiza-narayana" data-mantra-label="Narayana" data-mantra-phrase="Om Namo Narayana." data-mantra-src="a s s e t s/m a n t r a [ m o c k u p ]/ibiza-narayana.m4a" aria-label="Narayana — Om Namo Narayana" aria-pressed="false" hidden><span>narayana</span></button>
-
-                <button class="adaptive-television-mantra-stop" type="button" data-mantra-stop aria-label="Stop all mantra samples"><span>stop</span><small>all</small></button>
-              </div>
-            </section>
             <div class="adaptive-television-audio-controls" data-wallet-panel="audio" data-audio-wallet-controls aria-hidden="true">
               <button class="adaptive-television-wallet-home adaptive-television-wallet-home--audio" type="button" data-wallet-home data-wallet-tooltip="wallet home" aria-label="Return to wallet home">
                 <span class="adaptive-television-reaction__glyph adaptive-television-reaction__glyph--ioh-logo adaptive-television-reaction__glyph--flora-trigger" aria-hidden="true"></span>
@@ -708,8 +706,8 @@
     <script src="fashion-visual-selector-v1.js?v=fashion-selector-v1"></script>
     <script src="music-channel-selector-v1.js?v=music-channel-selector-97674825d8bd"></script>
     <script src="circle-audio-rooms.js?v=circle-rooms-4bcb0602f8f3"></script>
-    <script src="mantra-sampler.js?v=mantra-sampler-501fead65f98"></script>
-    <script src="adaptive-environment-television.js?v=music-tv-6a6e43294b0f"></script>
+    <script src="mantra-sampler.js?v=mantra-sampler-7dd53a118d59"></script>
+    <script src="adaptive-environment-television.js?v=music-tv-e52cb8235f1e"></script>
     <script src="realtime-voice-assistant.js?v=realtime-voice-5c84122268bd"></script>
     <script src="adaptive-page-metadata-v1.js"></script>
     <script async data-agora-rtc-sdk src="https://download.agora.io/sdk/release/AgoraRTC_N-4.24.6.js"></script>

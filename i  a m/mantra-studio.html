@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noindex,nofollow">
+    <title>Mantra Studio | Universal Mind</title>
+    <link rel="icon" type="image/png" sizes="32x32" href="/vogue/iam/favicon.png?v=iam-favicon-4">
+    <link rel="stylesheet" href="mantra-studio.css?v=mantra-studio-css-v1">
+  </head>
+  <body>
+    <main class="mantra-studio">
+      <header class="mantra-studio__header">
+        <a href="index.html" aria-label="Return to Universal Mind">universalmind / <strong>i am</strong></a>
+        <div>
+          <p>owner tools</p>
+          <h1>Mantra Studio</h1>
+        </div>
+        <button type="button" data-mantra-logout hidden>sign out</button>
+      </header>
+
+      <section class="mantra-login" data-mantra-login>
+        <form data-mantra-login-form>
+          <span aria-hidden="true">✦</span>
+          <h2>Private studio</h2>
+          <p>Use the same owner key as the Sound calibration dashboard.</p>
+          <label>
+            <span>Owner key</span>
+            <input type="password" name="owner_key" autocomplete="current-password" required>
+          </label>
+          <button type="submit">enter studio</button>
+          <p class="mantra-login__status" data-mantra-login-status aria-live="polite"></p>
+        </form>
+      </section>
+
+      <section class="mantra-workspace" data-mantra-workspace hidden>
+        <aside class="mantra-library">
+          <div class="mantra-library__heading">
+            <div>
+              <p>six slots per collection</p>
+              <h2>Library</h2>
+            </div>
+            <div class="mantra-library__banks" role="tablist" aria-label="Choose mantra collection">
+              <button type="button" role="tab" data-studio-bank="tibet" aria-selected="true">Tibet</button>
+              <button type="button" role="tab" data-studio-bank="ibiza" aria-selected="false">Ibiza</button>
+            </div>
+          </div>
+          <div class="mantra-library__slots" data-mantra-library-slots></div>
+        </aside>
+
+        <section class="mantra-editor">
+          <nav class="mantra-editor__tabs" role="tablist" aria-label="Mantra editing tools">
+            <button type="button" role="tab" data-editor-tab="pad" aria-selected="true">Pad</button>
+            <button type="button" role="tab" data-editor-tab="sample" aria-selected="false">Sample</button>
+            <button type="button" role="tab" data-editor-tab="pitch" aria-selected="false">Pitch</button>
+            <button type="button" role="tab" data-editor-tab="amp" aria-selected="false">Amp</button>
+          </nav>
+
+          <div class="mantra-editor__panel is-active" data-editor-panel="pad">
+            <div class="mantra-editor__identity">
+              <label>
+                <span>Pad name</span>
+                <input type="text" data-sample-label maxlength="80">
+              </label>
+              <label>
+                <span>Words</span>
+                <textarea data-sample-phrase rows="3" maxlength="700"></textarea>
+              </label>
+            </div>
+            <div class="mantra-knobs">
+              <label class="mantra-knob">
+                <input type="range" min="0.35" max="2" value="1" step="0.01" data-sample-speed>
+                <output data-sample-speed-output>1.00×</output>
+                <span>Speed</span>
+              </label>
+              <label class="mantra-knob">
+                <input type="range" min="-1" max="1" value="0" step="0.01" data-sample-pan>
+                <output data-sample-pan-output>0%</output>
+                <span>Pan</span>
+              </label>
+              <label class="mantra-knob">
+                <input type="range" min="0" max="2" value="1" step="0.01" data-sample-gain>
+                <output data-sample-gain-output>0.0 dB</output>
+                <span>Gain</span>
+              </label>
+            </div>
+            <div class="mantra-upload">
+              <label>
+                <span>Replace this pad with audio</span>
+                <input type="file" accept=".m4a,.mp3,.wav,.ogg,audio/*" data-sample-upload>
+              </label>
+              <button type="button" data-sample-upload-button>upload audio</button>
+            </div>
+          </div>
+
+          <div class="mantra-editor__panel" data-editor-panel="sample">
+            <div class="mantra-waveform">
+              <canvas width="1100" height="320" data-waveform-canvas aria-label="Audio waveform"></canvas>
+              <div class="mantra-vu" aria-label="Preview volume meter"><span data-vu-meter></span></div>
+            </div>
+            <div class="mantra-trim">
+              <label>
+                <span>Start</span>
+                <input type="range" min="0" max="1" value="0" step="0.001" data-trim-start>
+                <output data-trim-start-output>0.000s</output>
+              </label>
+              <label>
+                <span>End</span>
+                <input type="range" min="0" max="1" value="1" step="0.001" data-trim-end>
+                <output data-trim-end-output>1.000s</output>
+              </label>
+            </div>
+          </div>
+
+          <div class="mantra-editor__panel" data-editor-panel="pitch">
+            <div class="mantra-curve">
+              <canvas width="1100" height="300" data-pitch-canvas aria-label="Pitch modulation preview"></canvas>
+            </div>
+            <div class="mantra-curve__help">
+              <p>Draw directly across the waveform. Up raises pitch; down lowers it.</p>
+              <button type="button" data-pitch-reset>reset line</button>
+            </div>
+            <div class="mantra-knobs mantra-knobs--two">
+              <label class="mantra-knob">
+                <input type="range" min="-12" max="12" value="0" step="0.1" data-sample-pitch>
+                <output data-sample-pitch-output>0.0 st</output>
+                <span>Pitch</span>
+              </label>
+              <label class="mantra-knob">
+                <input type="range" min="0" max="12" value="0" step="0.1" data-pitch-motion>
+                <output data-pitch-motion-output>0.0 st</output>
+                <span>Motion</span>
+              </label>
+            </div>
+          </div>
+
+          <div class="mantra-editor__panel" data-editor-panel="amp">
+            <div class="mantra-curve">
+              <canvas width="1100" height="300" data-amp-canvas aria-label="Amplitude envelope preview"></canvas>
+            </div>
+            <div class="mantra-envelope">
+              <label><span>Fade in</span><input type="range" min="0" max="1" value="0.02" step="0.01" data-amp-attack></label>
+              <label><span>Level</span><input type="range" min="0" max="1" value="1" step="0.01" data-amp-level></label>
+              <label><span>Fade out</span><input type="range" min="0" max="1" value="0.08" step="0.01" data-amp-release></label>
+            </div>
+          </div>
+
+          <footer class="mantra-editor__transport">
+            <button type="button" class="mantra-editor__preview" data-sample-preview>▶ preview / retrigger</button>
+            <button type="button" data-sample-save>save pad</button>
+            <p data-studio-status aria-live="polite">choose a pad to begin</p>
+          </footer>
+        </section>
+
+        <section class="mantra-vocoder">
+          <header>
+            <div>
+              <p>speech-to-synth</p>
+              <h2>Voice Lab</h2>
+            </div>
+            <span>original browser synthesis</span>
+          </header>
+          <label class="mantra-vocoder__script">
+            <span>Script</span>
+            <textarea rows="3" maxlength="220" data-vocoder-text>Peace, love, unity, respect... PLUR</textarea>
+          </label>
+          <div class="mantra-vocoder__scripts" aria-label="Initial Ibiza scripts">
+            <button type="button" data-vocoder-script="Peace, love, unity, respect... PLUR">PLUR</button>
+            <button type="button" data-vocoder-script="Ibiza, It's The Lifestyle We're Living">Lifestyle</button>
+            <button type="button" data-vocoder-script="Om Namo. Narayana">Narayana</button>
+          </div>
+          <div class="mantra-vocoder__voices" role="radiogroup" aria-label="Voice character">
+            <button type="button" role="radio" data-vocoder-voice="machine" aria-checked="true">Machine</button>
+            <button type="button" role="radio" data-vocoder-voice="oracle" aria-checked="false">Oracle</button>
+            <button type="button" role="radio" data-vocoder-voice="neon" aria-checked="false">Neon</button>
+            <button type="button" role="radio" data-vocoder-voice="temple" aria-checked="false">Temple</button>
+            <button type="button" role="radio" data-vocoder-voice="astral" aria-checked="false">Astral</button>
+            <button type="button" role="radio" data-vocoder-voice="human" aria-checked="false">Human</button>
+          </div>
+          <div class="mantra-vocoder__controls">
+            <label><span>Rate</span><input type="range" min="0.55" max="1.65" step="0.01" value="0.95" data-vocoder-rate><output data-vocoder-rate-output>0.95×</output></label>
+            <label><span>Pitch</span><input type="range" min="65" max="190" step="1" value="105" data-vocoder-pitch><output data-vocoder-pitch-output>105 Hz</output></label>
+            <label><span>Robot</span><input type="range" min="0" max="1" step="0.01" value="0.72" data-vocoder-robot><output data-vocoder-robot-output>72%</output></label>
+          </div>
+          <div class="mantra-vocoder__transport">
+            <button type="button" data-vocoder-preview>render + preview</button>
+            <button type="button" data-vocoder-save>save to selected pad</button>
+          </div>
+          <p data-vocoder-status aria-live="polite">select an Ibiza pad, write a line, then render</p>
+        </section>
+      </section>
+    </main>
+    <script src="mantra-studio.js?v=mantra-studio-v1"></script>
+  </body>
+</html>
