@@ -4952,6 +4952,16 @@ body.music-shelf-open .adaptive-television-fashion-shelf:not(.adaptive-televisio
   font-weight: 500;
 }
 
+.adaptive-television-reaction-wallet[data-emdr-controls-view="neutral"] .adaptive-television-emdr-off,
+.adaptive-television-reaction-wallet[data-emdr-controls-view="neutral"] .adaptive-television-emdr-react,
+.adaptive-television-reaction-wallet[data-emdr-controls-view="neutral"] .adaptive-television-emdr-automate,
+.adaptive-television-reaction-wallet[data-emdr-controls-view="neutral"] .adaptive-television-emdr-intensity,
+.adaptive-television-reaction-wallet[data-emdr-controls-view="gif"] .adaptive-television-emdr-react,
+.adaptive-television-reaction-wallet[data-emdr-controls-view="gif"] .adaptive-television-emdr-automate,
+.adaptive-television-reaction-wallet[data-emdr-controls-view="gif"] .adaptive-television-emdr-intensity {
+  display: none;
+}
+
 .adaptive-television-emdr-style {
   position: relative;
   min-width: 78px;

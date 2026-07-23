@@ -4611,6 +4611,11 @@
       button.setAttribute("aria-pressed", String(selected));
       button.setAttribute("aria-label", `Use ${styleName} EMDR style${selected ? " (selected)" : ""}`);
     });
+    if (reactionWallet) {
+      reactionWallet.dataset.emdrControlsView = emdrStyleIndex === 1
+        ? "stellar"
+        : (emdrStyleIndex === 0 ? "gif" : "neutral");
+    }
   }
 
   function applyEmdrAdaptation(requestedStyleIndex = null) {
@@ -5169,8 +5174,10 @@
     event.stopPropagation();
     window.IAMEMDR?.setActive(false, { canvas: emdrCanvas, video: localVideo });
     stopEmdrIntensityJourney();
+    emdrStyleIndex = -1;
+    syncEmdrStyleButtons();
     document.querySelector('[data-video-mode="emdr"]')?.setAttribute("aria-pressed", "false");
-    setWalletView("video");
+    setWalletView("emdr");
   });
   emdrStyleButtons.forEach((button) => button.addEventListener("click", (event) => {
     event.preventDefault();

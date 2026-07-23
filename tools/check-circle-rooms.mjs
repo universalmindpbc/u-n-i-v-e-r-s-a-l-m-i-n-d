@@ -83,6 +83,7 @@ requireCondition(source.television.includes('const microphoneAction = audioWalle
 requireCondition(source.page.includes('data-circle-radar-stage'), "the Community Radar stage is missing");
 requireCondition((source.page.match(/data-circle-energy=/g) || []).length === circles.length, "the Community Radar must connect all eight Circles");
 requireCondition(source.styles.includes("calc(150ms + (var(--circle-index) * 72ms))"), "the clockwise room entrance choreography is missing");
+requireCondition(!["color: #10232b;", "color: #071a21;", "color: #10171b;"].some((value) => source.styles.includes(value)), "Audio Room circle text must remain white in its resting, hover and selected states");
 requireCondition(source.page.includes(">Join Circle</button>"), "the compact wallet must retain the staggered Join Circle action");
 requireCondition(!source.television.includes('if (!audioWalletJoined) window.IAMCircleRooms?.open?.(audioModeTrigger);'), "opening the audio wallet must not launch the radar immediately");
 requireCondition(source.controller.includes('button.addEventListener("click", () => void joinCircle(circleId));'), "selecting a tribe must begin its muted join directly");

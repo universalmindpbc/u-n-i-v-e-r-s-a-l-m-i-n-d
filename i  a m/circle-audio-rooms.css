@@ -205,7 +205,7 @@ body.circle-room-selector-open .circle-room-selector__signals path {
     inset 0 1px 0 rgba(255, 255, 255, 0.82),
     inset -18px -24px 38px rgba(var(--room-rgb), 0.12),
     0 12px 30px rgba(3, 15, 23, 0.14);
-  color: #10232b;
+  color: #fff;
   cursor: pointer;
   filter: blur(5px);
   opacity: 0;
@@ -247,7 +247,7 @@ body.circle-room-selector-open .circle-room-selector__circle:focus-visible {
   background:
     linear-gradient(142deg, rgba(255, 255, 255, 0.86), rgba(255, 255, 255, 0.24) 27%, transparent 48%),
     radial-gradient(circle at 34% 25%, rgba(255, 255, 255, 0.76), rgba(var(--room-rgb), 0.82) 38%, rgba(var(--room-rgb), 0.52) 72%, rgba(var(--room-rgb), 0.34));
-  color: #071a21;
+  color: #fff;
   outline: 0;
   transform: translate(-50%, -50%) scale(1.045);
   transition-delay: 0s;
@@ -259,7 +259,7 @@ body.circle-room-selector-open .circle-room-selector__circle:focus-visible {
   background:
     linear-gradient(142deg, #fff, rgba(255, 255, 255, 0.48) 33%, transparent 54%),
     radial-gradient(circle, rgba(255, 255, 255, 0.96), rgba(var(--room-rgb), 0.78));
-  color: #10171b;
+  color: #fff;
 }
 
 .circle-room-selector__circle--img {
