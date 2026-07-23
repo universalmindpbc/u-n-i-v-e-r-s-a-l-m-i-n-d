@@ -555,6 +555,7 @@ requireCondition(mantraStudioScriptMatch?.[1] === expectedMantraStudioToken, `th
 requireCondition(mantraStudioCssMatch?.[1] === expectedMantraStudioCssToken, `the Mantra Studio stylesheet token does not match ${expectedMantraStudioCssToken}`);
 const voicePresetIds = Array.from(mantraStudioPage.matchAll(/data-vocoder-voice="([^"]+)"/g), (match) => match[1]);
 requireCondition(voicePresetIds.length === 18 && new Set(voicePresetIds).size === 18, 'Voice Lab must expose 18 distinct human, robot and vocoder presets');
+requireCondition(['Fred', 'Trinoids', 'Zarvox'].every((voice) => mantraStudioPage.includes(`>${voice}</button>`)), 'Voice Lab is missing one of the three supplied Speaking of Witch reference voices');
 requireCondition(voicePresetIds.filter((id) => id.startsWith('human-')).length === 6 && voicePresetIds.filter((id) => id.startsWith('robot-')).length === 6 && voicePresetIds.filter((id) => id.startsWith('vocoder-')).length === 6, 'Voice Lab must retain six options in each voice family');
 requireCondition(!mantraStudioScript.includes('synthesizeVocoder') && !mantraStudioScript.includes('phonemeMap') && mantraStudioScript.includes('fetch(voiceEndpoint'), 'the unusable browser phoneme oscillator has not been fully replaced');
 requireCondition(voicePresetIds.every((id) => mantraVoiceEndpoint.includes(`'${id}' =>`)), 'the secure voice endpoint does not implement every visible Voice Lab preset');
