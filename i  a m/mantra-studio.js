@@ -2,6 +2,7 @@
   "use strict";
 
   const endpoint = "api/mantra-library.php";
+  const voiceEndpoint = "api/mantra-voice.php";
   const login = document.querySelector("[data-mantra-login]");
   const loginForm = document.querySelector("[data-mantra-login-form]");
   const loginStatus = document.querySelector("[data-mantra-login-status]");
@@ -13,6 +14,7 @@
   const tabPanels = Array.from(document.querySelectorAll("[data-editor-panel]"));
   const studioStatus = document.querySelector("[data-studio-status]");
   const vocoderStatus = document.querySelector("[data-vocoder-status]");
+  const vocoderButtons = Array.from(document.querySelectorAll("[data-vocoder-voice]"));
 
   const fields = {
     label: document.querySelector("[data-sample-label]"),
@@ -36,8 +38,10 @@
   const vuMeter = document.querySelector("[data-vu-meter]");
   const vocoderText = document.querySelector("[data-vocoder-text]");
   const vocoderRate = document.querySelector("[data-vocoder-rate]");
-  const vocoderPitch = document.querySelector("[data-vocoder-pitch]");
-  const vocoderRobot = document.querySelector("[data-vocoder-robot]");
+  const vocoderTone = document.querySelector("[data-vocoder-tone]");
+  const vocoderEffect = document.querySelector("[data-vocoder-effect]");
+  const vocoderPreviewButton = document.querySelector("[data-vocoder-preview]");
+  const vocoderSaveButton = document.querySelector("[data-vocoder-save]");
 
   let library = null;
   let csrfToken = "";
@@ -52,7 +56,9 @@
   let drawingPitch = false;
   let renderedVocoder = null;
   let renderedVocoderDuration = 0;
-  let vocoderVoice = "machine";
+  let renderedVocoderKey = "";
+  let vocoderVoice = "human-clear";
+  let voiceRequestActive = false;
 
   function announce(message, target = studioStatus) {
     if (target) target.textContent = message;
@@ -152,8 +158,9 @@
     document.querySelector("[data-trim-start-output]").textContent = `${Number(fields.trimStart.value).toFixed(3)}s`;
     document.querySelector("[data-trim-end-output]").textContent = `${Number(fields.trimEnd.value).toFixed(3)}s`;
     document.querySelector("[data-vocoder-rate-output]").textContent = `${Number(vocoderRate.value).toFixed(2)}×`;
-    document.querySelector("[data-vocoder-pitch-output]").textContent = `${Math.round(Number(vocoderPitch.value))} Hz`;
-    document.querySelector("[data-vocoder-robot-output]").textContent = `${Math.round(Number(vocoderRobot.value) * 100)}%`;
+    const tone = Math.round(Number(vocoderTone.value));
+    document.querySelector("[data-vocoder-tone-output]").textContent = `${tone > 0 ? "+" : ""}${tone} st`;
+    document.querySelector("[data-vocoder-effect-output]").textContent = `${Math.round(Number(vocoderEffect.value) * 100)}%`;
   }
 
   async function decodeAsset(item) {
@@ -351,9 +358,9 @@
     if (vuMeter) vuMeter.style.height = "0%";
   }
 
-  async function previewBuffer(buffer = decodedBuffer) {
+  async function previewBuffer(buffer = decodedBuffer, { raw = false, statusTarget = studioStatus } = {}) {
     if (!buffer) {
-      announce("Upload or render audio for this pad first.");
+      announce("Upload or generate audio for this pad first.", statusTarget);
       return;
     }
     stopPreview();
@@ -361,14 +368,14 @@
     await ctx.resume();
     const source = ctx.createBufferSource();
     source.buffer = buffer;
-    source.playbackRate.value = Number(fields.speed.value) || 1;
-    const basePitch = Number(fields.pitch.value) || 0;
-    const motion = Number(fields.pitchMotion.value) || 0;
-    const start = Math.max(0, Number(fields.trimStart.value) || 0);
-    const end = Math.min(buffer.duration, Number(fields.trimEnd.value) || buffer.duration);
+    source.playbackRate.value = raw ? 1 : Number(fields.speed.value) || 1;
+    const basePitch = raw ? 0 : Number(fields.pitch.value) || 0;
+    const motion = raw ? 0 : Number(fields.pitchMotion.value) || 0;
+    const start = raw ? 0 : Math.max(0, Number(fields.trimStart.value) || 0);
+    const end = raw ? buffer.duration : Math.min(buffer.duration, Number(fields.trimEnd.value) || buffer.duration);
     const duration = Math.max(0.01, end - start);
     source.detune.setValueAtTime(basePitch * 100, ctx.currentTime);
-    pitchCurve.forEach((point) => {
+    (raw ? [{ x: 0, y: 0 }, { x: 1, y: 0 }] : pitchCurve).forEach((point) => {
       const curvePitch = (Number(point.y) || 0) + Math.sin(Number(point.x) * Math.PI * 2) * motion;
       source.detune.linearRampToValueAtTime((basePitch + curvePitch) * 100, ctx.currentTime + Number(point.x) * duration);
     });
@@ -377,15 +384,15 @@
     const pan = ctx.createStereoPanner ? ctx.createStereoPanner() : null;
     const analyser = ctx.createAnalyser();
     analyser.fftSize = 256;
-    const attack = Math.min(duration * 0.9, Math.max(0.005, Number(fields.attack.value) * duration));
-    const release = Math.min(duration * 0.9, Math.max(0.005, Number(fields.release.value) * duration));
-    const peak = Math.max(0.0001, Number(fields.gain.value) * Number(fields.level.value));
+    const attack = raw ? Math.min(0.01, duration * 0.25) : Math.min(duration * 0.9, Math.max(0.005, Number(fields.attack.value) * duration));
+    const release = raw ? Math.min(0.05, duration * 0.25) : Math.min(duration * 0.9, Math.max(0.005, Number(fields.release.value) * duration));
+    const peak = raw ? 0.92 : Math.max(0.0001, Number(fields.gain.value) * Number(fields.level.value));
     gain.gain.setValueAtTime(0.0001, ctx.currentTime);
     gain.gain.linearRampToValueAtTime(peak, ctx.currentTime + attack);
     gain.gain.setValueAtTime(peak, ctx.currentTime + Math.max(attack, duration - release));
     gain.gain.linearRampToValueAtTime(0.0001, ctx.currentTime + duration);
     if (pan) {
-      pan.pan.value = Number(fields.pan.value) || 0;
+      pan.pan.value = raw ? 0 : Number(fields.pan.value) || 0;
       source.connect(gain).connect(pan).connect(analyser).connect(ctx.destination);
     } else {
       source.connect(gain).connect(analyser).connect(ctx.destination);
@@ -403,7 +410,7 @@
     previewSource = source;
     source.start(0, start, duration);
     meter();
-    announce("previewing · retrigger anytime");
+    announce("previewing · retrigger anytime", statusTarget);
   }
 
   async function savePad() {
@@ -457,154 +464,81 @@
     await renderLibrary();
   }
 
-  const phonemeMap = {
-    AA: [730, 1090, 2440], AH: [640, 1190, 2390], AE: [660, 1720, 2410],
-    EH: [530, 1840, 2480], ER: [490, 1350, 1690], IH: [400, 1990, 2550],
-    IY: [270, 2290, 3010], OW: [570, 840, 2410], UW: [300, 870, 2240],
-    AY: [660, 1720, 2410], OY: [570, 840, 2410],
-  };
-
-  const wordPhonemes = {
-    PEACE: ["P", "IY", "S"], LOVE: ["L", "AH", "V"], UNITY: ["Y", "UW", "N", "IH", "T", "IY"],
-    RESPECT: ["R", "IH", "S", "P", "EH", "K", "T"], PLUR: ["P", "L", "ER"],
-    IBIZA: ["IH", "B", "IY", "Z", "AH"], ITS: ["IH", "T", "S"], THE: ["D", "AH"],
-    LIFESTYLE: ["L", "AY", "F", "S", "T", "AY", "L"], WERE: ["W", "IY", "ER"],
-    WE: ["W", "IY"], LIVING: ["L", "IH", "V", "IH", "N"], OM: ["OW", "M"],
-    NAMO: ["N", "AA", "M", "OW"], NARAYANA: ["N", "AA", "R", "AA", "Y", "AA", "N", "AA"],
-  };
-
-  function textPhonemes(text) {
-    const words = String(text).toUpperCase().match(/[A-Z']+|[.,!?]/g) || [];
-    const result = [];
-    const vowels = { A: "AA", E: "EH", I: "IH", O: "OW", U: "UW" };
-    words.forEach((word) => {
-      if (/^[.,!?]$/.test(word)) {
-        result.push("_", "_");
-      } else if (wordPhonemes[word]) {
-        result.push(...wordPhonemes[word], "_");
-      } else {
-        Array.from(word.replace(/'/g, "")).forEach((letter) => result.push(vowels[letter] || letter));
-        result.push("_");
-      }
-    });
-    return result;
-  }
-
-  function voiceSettings(name) {
+  function voiceRequest() {
     return {
-      machine: { formant: 1, breath: 0.16, wobble: 0.02, ring: 74 },
-      oracle: { formant: 0.83, breath: 0.1, wobble: 0.08, ring: 39 },
-      neon: { formant: 1.24, breath: 0.08, wobble: 0.14, ring: 93 },
-      temple: { formant: 0.72, breath: 0.19, wobble: 0.04, ring: 31 },
-      astral: { formant: 1.1, breath: 0.2, wobble: 0.22, ring: 58 },
-      human: { formant: 1, breath: 0.06, wobble: 0.035, ring: 0 },
-    }[name] || { formant: 1, breath: 0.1, wobble: 0.04, ring: 60 };
+      csrf_token: csrfToken,
+      text: vocoderText.value.trim(),
+      preset: vocoderVoice,
+      speed: Number(vocoderRate.value),
+      tone: Number(vocoderTone.value),
+      effect_amount: Number(vocoderEffect.value),
+    };
   }
 
-  function seededNoise(index) {
-    const value = Math.sin(index * 12.9898 + 78.233) * 43758.5453;
-    return (value - Math.floor(value)) * 2 - 1;
-  }
-
-  function synthesizeVocoder(text, options = {}) {
-    const sampleRate = 44100;
-    const rate = Math.max(0.55, Number(options.rate) || 0.95);
-    const basePitch = Math.max(55, Number(options.pitch) || 105);
-    const robot = Math.max(0, Math.min(1, Number(options.robot) || 0));
-    const voice = voiceSettings(options.voice);
-    const phonemes = textPhonemes(text).slice(0, 240);
-    const segments = phonemes.map((phoneme) => {
-      if (phoneme === "_") return { phoneme, duration: 0.07 / rate };
-      if (phonemeMap[phoneme]) return { phoneme, duration: 0.13 / rate };
-      return { phoneme, duration: 0.055 / rate };
+  function voiceRequestKey(request = voiceRequest()) {
+    return JSON.stringify({
+      text: request.text,
+      preset: request.preset,
+      speed: request.speed,
+      tone: request.tone,
+      effect_amount: request.effect_amount,
     });
-    const duration = segments.reduce((sum, segment) => sum + segment.duration, 0) + 0.16;
-    const pcm = new Float32Array(Math.ceil(duration * sampleRate));
-    let cursor = Math.floor(0.04 * sampleRate);
-    let phase = 0;
-    segments.forEach((segment, segmentIndex) => {
-      const count = Math.max(1, Math.floor(segment.duration * sampleRate));
-      const formants = phonemeMap[segment.phoneme];
-      for (let index = 0; index < count && cursor + index < pcm.length; index += 1) {
-        const t = index / sampleRate;
-        const position = index / count;
-        const envelope = Math.min(1, position * 12) * Math.min(1, (1 - position) * 14);
-        const absolute = (cursor + index) / sampleRate;
-        const pitch = basePitch * (1 + Math.sin(absolute * Math.PI * 2 * 4.1) * voice.wobble);
-        phase += Math.PI * 2 * pitch / sampleRate;
-        let sample = 0;
-        if (formants) {
-          const glottal = Math.sin(phase) + 0.34 * Math.sin(phase * 2) + 0.16 * Math.sin(phase * 3);
-          const vowel = formants.reduce((sum, frequency, formantIndex) => (
-            sum + Math.sin(Math.PI * 2 * frequency * voice.formant * t + phase * 0.08) * [0.44, 0.23, 0.1][formantIndex]
-          ), 0);
-          sample = glottal * 0.32 + vowel;
-        } else if (segment.phoneme !== "_") {
-          const voiced = /[LMNRVWYBDGZ]/.test(segment.phoneme);
-          const noise = seededNoise(index + segmentIndex * 1777);
-          sample = noise * (voiced ? 0.22 : 0.48) + (voiced ? Math.sin(phase) * 0.42 : 0);
-        }
-        const ring = voice.ring ? Math.sin(Math.PI * 2 * voice.ring * absolute) : 1;
-        const breath = seededNoise(index + segmentIndex * 913) * voice.breath;
-        pcm[cursor + index] += (sample * (1 - robot * 0.22) + sample * ring * robot * 0.34 + breath) * envelope * 0.54;
-      }
-      cursor += count;
-    });
-    let peak = 0;
-    pcm.forEach((sample) => { peak = Math.max(peak, Math.abs(sample)); });
-    const normalization = peak > 0 ? 0.88 / peak : 1;
-    for (let index = 0; index < pcm.length; index += 1) pcm[index] *= normalization;
-    return { pcm, sampleRate, duration: pcm.length / sampleRate };
   }
 
-  function wavBlob(pcm, sampleRate) {
-    const buffer = new ArrayBuffer(44 + pcm.length * 2);
-    const view = new DataView(buffer);
-    const write = (offset, value) => Array.from(value).forEach((character, index) => view.setUint8(offset + index, character.charCodeAt(0)));
-    write(0, "RIFF");
-    view.setUint32(4, 36 + pcm.length * 2, true);
-    write(8, "WAVE");
-    write(12, "fmt ");
-    view.setUint32(16, 16, true);
-    view.setUint16(20, 1, true);
-    view.setUint16(22, 1, true);
-    view.setUint32(24, sampleRate, true);
-    view.setUint32(28, sampleRate * 2, true);
-    view.setUint16(32, 2, true);
-    view.setUint16(34, 16, true);
-    write(36, "data");
-    view.setUint32(40, pcm.length * 2, true);
-    pcm.forEach((sample, index) => view.setInt16(44 + index * 2, Math.max(-1, Math.min(1, sample)) * 0x7fff, true));
-    return new Blob([buffer], { type: "audio/wav" });
+  function invalidateVoiceRender() {
+    renderedVocoder = null;
+    renderedVocoderDuration = 0;
+    renderedVocoderKey = "";
+  }
+
+  function setVoiceBusy(active) {
+    voiceRequestActive = active;
+    vocoderPreviewButton.disabled = active;
+    vocoderSaveButton.disabled = active;
+    vocoderButtons.forEach((button) => { button.disabled = active; });
+  }
+
+  async function fetchVoice(request) {
+    const response = await fetch(voiceEndpoint, {
+      method: "POST",
+      credentials: "same-origin",
+      cache: "no-store",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(request),
+    });
+    if (!response.ok) {
+      const payload = await response.json().catch(() => ({}));
+      throw new Error(payload.error || "The voice could not be generated.");
+    }
+    const blob = await response.blob();
+    if (!blob.size || !String(blob.type).includes("audio")) {
+      throw new Error("The voice service returned an invalid audio file.");
+    }
+    return blob;
   }
 
   async function renderVocoder({ preview = true } = {}) {
-    const text = vocoderText.value.trim();
-    if (!text) throw new Error("Write a line for the voice first.");
-    announce("rendering voice…", vocoderStatus);
-    const rendered = synthesizeVocoder(text, {
-      rate: vocoderRate.value,
-      pitch: vocoderPitch.value,
-      robot: vocoderRobot.value,
-      voice: vocoderVoice,
-    });
-    renderedVocoder = wavBlob(rendered.pcm, rendered.sampleRate);
-    renderedVocoderDuration = rendered.duration;
-    const decoded = await context().decodeAudioData(await renderedVocoder.arrayBuffer());
-    announce(`${vocoderVoice} voice ready · ${rendered.duration.toFixed(2)}s`, vocoderStatus);
-    if (preview) {
-      const previous = decodedBuffer;
-      const oldStart = fields.trimStart.value;
-      const oldEnd = fields.trimEnd.value;
-      decodedBuffer = decoded;
-      fields.trimStart.value = "0";
-      fields.trimEnd.value = String(decoded.duration);
-      await previewBuffer(decoded);
-      decodedBuffer = previous;
-      fields.trimStart.value = oldStart;
-      fields.trimEnd.value = oldEnd;
+    if (voiceRequestActive) throw new Error("A voice is already being generated.");
+    const request = voiceRequest();
+    if (!request.text) throw new Error("Write a line for the voice first.");
+    if (!csrfToken) throw new Error("Refresh the studio and sign in again.");
+    const requestKey = voiceRequestKey(request);
+    setVoiceBusy(true);
+    try {
+      announce("generating clear speech…", vocoderStatus);
+      if (!renderedVocoder || renderedVocoderKey !== requestKey) {
+        renderedVocoder = await fetchVoice(request);
+        renderedVocoderKey = requestKey;
+      }
+      const decoded = await context().decodeAudioData(await renderedVocoder.arrayBuffer());
+      renderedVocoderDuration = decoded.duration;
+      const voiceLabel = vocoderButtons.find((button) => button.dataset.vocoderVoice === vocoderVoice)?.textContent?.trim() || "Voice";
+      announce(`${voiceLabel} ready · ${decoded.duration.toFixed(2)}s`, vocoderStatus);
+      if (preview) await previewBuffer(decoded, { raw: true, statusTarget: vocoderStatus });
+      return renderedVocoder;
+    } finally {
+      setVoiceBusy(false);
     }
-    return renderedVocoder;
   }
 
   loginForm?.addEventListener("submit", async (event) => {
@@ -692,25 +626,33 @@
 
   document.querySelectorAll("[data-vocoder-script]").forEach((button) => button.addEventListener("click", () => {
     vocoderText.value = button.dataset.vocoderScript;
+    invalidateVoiceRender();
+    announce("script ready · choose a voice or generate", vocoderStatus);
   }));
-  document.querySelectorAll("[data-vocoder-voice]").forEach((button) => button.addEventListener("click", () => {
+  vocoderButtons.forEach((button) => button.addEventListener("click", () => {
     vocoderVoice = button.dataset.vocoderVoice;
-    document.querySelectorAll("[data-vocoder-voice]").forEach((candidate) => candidate.setAttribute("aria-checked", String(candidate === button)));
+    vocoderButtons.forEach((candidate) => candidate.setAttribute("aria-checked", String(candidate === button)));
+    invalidateVoiceRender();
+    announce(`${button.textContent.trim()} selected · generate to hear it`, vocoderStatus);
   }));
-  [vocoderRate, vocoderPitch, vocoderRobot].forEach((field) => field?.addEventListener("input", updateOutputs));
-  document.querySelector("[data-vocoder-preview]")?.addEventListener("click", async () => {
+  vocoderText?.addEventListener("input", invalidateVoiceRender);
+  [vocoderRate, vocoderTone, vocoderEffect].forEach((field) => field?.addEventListener("input", () => {
+    invalidateVoiceRender();
+    updateOutputs();
+  }));
+  vocoderPreviewButton?.addEventListener("click", async () => {
     try { await renderVocoder(); } catch (error) { announce(error.message, vocoderStatus); }
   });
-  document.querySelector("[data-vocoder-save]")?.addEventListener("click", async () => {
+  vocoderSaveButton?.addEventListener("click", async () => {
     try {
       if (currentBank !== "ibiza") throw new Error("Choose one of the six Ibiza pads first.");
-      if (!renderedVocoder) await renderVocoder({ preview: false });
-      fields.label.value = fields.label.value || "Vocoder";
+      if (!renderedVocoder || renderedVocoderKey !== voiceRequestKey()) await renderVocoder({ preview: false });
+      fields.label.value = fields.label.value || "Voice";
       fields.phrase.value = vocoderText.value.trim();
-      const file = new File([renderedVocoder], `ibiza-${currentSlot}-vocoder.wav`, { type: "audio/wav" });
-      announce("saving synth to selected pad…", vocoderStatus);
+      const file = new File([renderedVocoder], `ibiza-${currentSlot}-voice.wav`, { type: "audio/wav" });
+      announce("saving voice to selected pad…", vocoderStatus);
       await uploadAudio(file, "vocoder", renderedVocoderDuration);
-      announce("vocoder sample saved to the selected Ibiza pad", vocoderStatus);
+      announce("voice saved to the selected Ibiza pad", vocoderStatus);
     } catch (error) {
       announce(error.message, vocoderStatus);
     }

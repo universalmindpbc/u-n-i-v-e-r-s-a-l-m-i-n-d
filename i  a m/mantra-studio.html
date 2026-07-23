@@ -6,7 +6,7 @@
     <meta name="robots" content="noindex,nofollow">
     <title>Mantra Studio | Universal Mind</title>
     <link rel="icon" type="image/png" sizes="32x32" href="/vogue/iam/favicon.png?v=iam-favicon-4">
-    <link rel="stylesheet" href="mantra-studio.css?v=mantra-studio-css-22c4a6a091d9">
+    <link rel="stylesheet" href="mantra-studio.css?v=mantra-studio-css-852189871694">
   </head>
   <body>
     <main class="mantra-studio">
@@ -155,10 +155,10 @@
         <section class="mantra-vocoder">
           <header>
             <div>
-              <p>speech-to-synth</p>
+              <p>speech-first voice rendering</p>
               <h2>Voice Lab</h2>
             </div>
-            <span>original browser synthesis</span>
+            <span>intelligible speech · human / robot / vocoder</span>
           </header>
           <label class="mantra-vocoder__script">
             <span>Script</span>
@@ -170,26 +170,53 @@
             <button type="button" data-vocoder-script="Om Namo. Narayana">Narayana</button>
           </div>
           <div class="mantra-vocoder__voices" role="radiogroup" aria-label="Voice character">
-            <button type="button" role="radio" data-vocoder-voice="machine" aria-checked="true">Machine</button>
-            <button type="button" role="radio" data-vocoder-voice="oracle" aria-checked="false">Oracle</button>
-            <button type="button" role="radio" data-vocoder-voice="neon" aria-checked="false">Neon</button>
-            <button type="button" role="radio" data-vocoder-voice="temple" aria-checked="false">Temple</button>
-            <button type="button" role="radio" data-vocoder-voice="astral" aria-checked="false">Astral</button>
-            <button type="button" role="radio" data-vocoder-voice="human" aria-checked="false">Human</button>
+            <section role="group" aria-labelledby="voice-group-human">
+              <h3 id="voice-group-human">Human</h3>
+              <div>
+                <button type="button" role="radio" data-vocoder-voice="human-clear" aria-checked="true">Clear</button>
+                <button type="button" role="radio" data-vocoder-voice="human-warm" aria-checked="false">Warm</button>
+                <button type="button" role="radio" data-vocoder-voice="human-deep" aria-checked="false">Deep</button>
+                <button type="button" role="radio" data-vocoder-voice="human-bright" aria-checked="false">Bright</button>
+                <button type="button" role="radio" data-vocoder-voice="human-calm" aria-checked="false">Calm</button>
+                <button type="button" role="radio" data-vocoder-voice="human-intimate" aria-checked="false">Intimate</button>
+              </div>
+            </section>
+            <section role="group" aria-labelledby="voice-group-robot">
+              <h3 id="voice-group-robot">Robot</h3>
+              <div>
+                <button type="button" role="radio" data-vocoder-voice="robot-machine" aria-checked="false">Machine</button>
+                <button type="button" role="radio" data-vocoder-voice="robot-chrome" aria-checked="false">Chrome</button>
+                <button type="button" role="radio" data-vocoder-voice="robot-command" aria-checked="false">Command</button>
+                <button type="button" role="radio" data-vocoder-voice="robot-android" aria-checked="false">Android</button>
+                <button type="button" role="radio" data-vocoder-voice="robot-circuit" aria-checked="false">Circuit</button>
+                <button type="button" role="radio" data-vocoder-voice="robot-digital" aria-checked="false">Digital</button>
+              </div>
+            </section>
+            <section role="group" aria-labelledby="voice-group-vocoder">
+              <h3 id="voice-group-vocoder">Vocoder</h3>
+              <div>
+                <button type="button" role="radio" data-vocoder-voice="vocoder-neon" aria-checked="false">Neon</button>
+                <button type="button" role="radio" data-vocoder-voice="vocoder-oracle" aria-checked="false">Oracle</button>
+                <button type="button" role="radio" data-vocoder-voice="vocoder-temple" aria-checked="false">Temple</button>
+                <button type="button" role="radio" data-vocoder-voice="vocoder-astral" aria-checked="false">Astral</button>
+                <button type="button" role="radio" data-vocoder-voice="vocoder-cosmic" aria-checked="false">Cosmic</button>
+                <button type="button" role="radio" data-vocoder-voice="vocoder-electric" aria-checked="false">Electric</button>
+              </div>
+            </section>
           </div>
           <div class="mantra-vocoder__controls">
             <label><span>Rate</span><input type="range" min="0.55" max="1.65" step="0.01" value="0.95" data-vocoder-rate><output data-vocoder-rate-output>0.95×</output></label>
-            <label><span>Pitch</span><input type="range" min="65" max="190" step="1" value="105" data-vocoder-pitch><output data-vocoder-pitch-output>105 Hz</output></label>
-            <label><span>Robot</span><input type="range" min="0" max="1" step="0.01" value="0.72" data-vocoder-robot><output data-vocoder-robot-output>72%</output></label>
+            <label><span>Tone</span><input type="range" min="-6" max="6" step="1" value="0" data-vocoder-tone><output data-vocoder-tone-output>0 st</output></label>
+            <label><span>Effect</span><input type="range" min="0" max="1" step="0.05" value="0.25" data-vocoder-effect><output data-vocoder-effect-output>25%</output></label>
           </div>
           <div class="mantra-vocoder__transport">
-            <button type="button" data-vocoder-preview>render + preview</button>
+            <button type="button" data-vocoder-preview>generate + preview</button>
             <button type="button" data-vocoder-save>save to selected pad</button>
           </div>
-          <p data-vocoder-status aria-live="polite">select an Ibiza pad, write a line, then render</p>
+          <p data-vocoder-status aria-live="polite">select an Ibiza pad, choose a voice, then generate · AI-generated voice</p>
         </section>
       </section>
     </main>
-    <script src="mantra-studio.js?v=mantra-studio-90dd44f74532"></script>
+    <script src="mantra-studio.js?v=mantra-studio-46c1441f9df0"></script>
   </body>
 </html>

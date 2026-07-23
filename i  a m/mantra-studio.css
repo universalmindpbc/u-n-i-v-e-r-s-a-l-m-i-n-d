@@ -483,8 +483,7 @@ input[type="range"] {
   text-transform: uppercase;
 }
 
-.mantra-vocoder__scripts,
-.mantra-vocoder__voices {
+.mantra-vocoder__scripts {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 7px;
@@ -499,6 +498,31 @@ input[type="range"] {
   background: rgba(255,255,255,0.04);
   color: rgba(255,255,255,0.6);
   font-size: 10px;
+}
+
+.mantra-vocoder__voices {
+  display: grid;
+  gap: 13px;
+  margin-top: 18px;
+}
+
+.mantra-vocoder__voices section {
+  min-width: 0;
+}
+
+.mantra-vocoder__voices h3 {
+  margin: 0 0 7px;
+  color: rgba(255,255,255,0.42);
+  font-size: 8px;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.mantra-vocoder__voices section > div {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 7px;
 }
 
 .mantra-vocoder__voices button[aria-checked="true"] {

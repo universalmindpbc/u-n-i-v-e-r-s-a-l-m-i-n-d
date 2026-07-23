@@ -26,6 +26,7 @@ fi
 
 if command -v php >/dev/null 2>&1; then
   php -l "$ROOT_DIR/i  a m/api/mantra-library.php"
+  php -l "$ROOT_DIR/i  a m/api/mantra-voice.php"
 fi
 
 export FTP_HOST="${FTP_HOST:-sh00023.pa.smartservers.com.au}"

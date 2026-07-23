@@ -5206,6 +5206,9 @@
     disarmVideoTooltips();
     window.IAMMantraSampler?.open?.();
   });
+  window.addEventListener("iam:mantra-close", () => {
+    setWalletView("emdr");
+  });
   emdrIntensity?.addEventListener("input", () => {
     const intensity = Number(emdrIntensity.value) / 100;
     emdrIntensityJourneyCurrent = intensity;
