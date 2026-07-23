@@ -1,5 +1,5 @@
 {
-  "version": "mantra_samples_mockup_v1.0",
+  "version": "mantra_samples_mockup_v1.1",
   "scope": "Private password-gated concept mockup only. These reference samples are not cleared for public or production use.",
   "replacementRule": "Before any public release, replace every reference asset with a licensed master or newly commissioned recording and attach the applicable rights record.",
   "samples": [
@@ -11,7 +11,12 @@
       "sourceTitle": "The Divine Purpose Of The Universe, with Eckhart Tolle",
       "sourceArtist": "Eckhart Tolle",
       "sourceUrl": "https://www.youtube.com/watch?v=skFQck_gWT8",
-      "sourceWindow": "02:09.50-02:13.45",
+      "phraseWindow": "02:09.50-02:13.45",
+      "sourceWindow": "02:04.50-02:18.45",
+      "editHandles": {
+        "beforeSeconds": 5,
+        "afterSeconds": 5
+      },
       "asset": "a s s e t s/m a n t r a [ m o c k u p ]/tibet-universe.m4a",
       "rightsStatus": "uncleared_reference"
     },
@@ -23,7 +28,12 @@
       "sourceTitle": "The Divine Purpose Of The Universe, with Eckhart Tolle",
       "sourceArtist": "Eckhart Tolle",
       "sourceUrl": "https://www.youtube.com/watch?v=skFQck_gWT8",
-      "sourceWindow": "02:13.45-02:21.45",
+      "phraseWindow": "02:13.45-02:21.45",
+      "sourceWindow": "02:08.45-02:26.45",
+      "editHandles": {
+        "beforeSeconds": 5,
+        "afterSeconds": 5
+      },
       "asset": "a s s e t s/m a n t r a [ m o c k u p ]/tibet-one-life.m4a",
       "rightsStatus": "uncleared_reference"
     },
@@ -35,7 +45,12 @@
       "sourceTitle": "The Divine Purpose Of The Universe, with Eckhart Tolle",
       "sourceArtist": "Eckhart Tolle",
       "sourceUrl": "https://www.youtube.com/watch?v=skFQck_gWT8",
-      "sourceWindow": "01:27.25-01:38.95",
+      "phraseWindow": "01:27.25-01:38.95",
+      "sourceWindow": "01:22.25-01:43.95",
+      "editHandles": {
+        "beforeSeconds": 5,
+        "afterSeconds": 5
+      },
       "asset": "a s s e t s/m a n t r a [ m o c k u p ]/tibet-multiplicity.m4a",
       "rightsStatus": "uncleared_reference"
     },
@@ -59,7 +74,12 @@
       "sourceTitle": "Claustrophobic Sting (Remastered)",
       "sourceArtist": "The Prodigy",
       "sourceUrl": "https://www.youtube.com/watch?v=O7z0sY2EVW8",
-      "sourceWindow": "02:55.80-02:59.60",
+      "phraseWindow": "02:55.80-02:59.60",
+      "sourceWindow": "02:50.80-03:04.60",
+      "editHandles": {
+        "beforeSeconds": 5,
+        "afterSeconds": 5
+      },
       "asset": "a s s e t s/m a n t r a [ m o c k u p ]/ibiza-glowing.m4a",
       "rightsStatus": "uncleared_reference"
     },
@@ -71,7 +91,12 @@
       "sourceTitle": "Open Your Mind To Kuato",
       "sourceArtist": "Total Recall (1990) dialogue",
       "sourceUrl": "https://www.youtube.com/watch?v=xO1kKemcwYk&t=45s",
-      "sourceWindow": "00:43.62-00:44.78",
+      "phraseWindow": "00:43.62-00:44.78",
+      "sourceWindow": "00:38.62-00:49.78",
+      "editHandles": {
+        "beforeSeconds": 5,
+        "afterSeconds": 5
+      },
       "asset": "a s s e t s/m a n t r a [ m o c k u p ]/ibiza-open-mind.m4a",
       "rightsStatus": "uncleared_reference"
     },
@@ -95,7 +120,13 @@
       "sourceTitle": "The Realm (Acapella)",
       "sourceArtist": "C'hantal",
       "sourceUrl": "https://www.youtube.com/watch?v=T7m1u9-Cq3I",
-      "sourceWindow": "00:01.52-00:07.05",
+      "phraseWindow": "00:01.52-00:07.05",
+      "sourceWindow": "00:00.00-00:12.05",
+      "editHandles": {
+        "beforeSeconds": 1.52,
+        "afterSeconds": 5,
+        "beforeLimitedBySourceStart": true
+      },
       "asset": "a s s e t s/m a n t r a [ m o c k u p ]/ibiza-mind-body-soul.m4a",
       "rightsStatus": "uncleared_reference"
     },

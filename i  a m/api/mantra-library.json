@@ -1,8 +1,8 @@
 {
-  "version": "mantra_library_v2.0",
+  "version": "mantra_library_v2.1",
   "scope": "private_password_gated_mockup",
   "replacement_rule": "Public release requires licensed or original replacement audio.",
-  "updated_at": "2026-07-23T04:30:00Z",
+  "updated_at": "2026-07-23T07:20:00Z",
   "banks": {
     "tibet": [
       {
@@ -12,7 +12,7 @@
         "phrase": "You are not in the universe, you are the universe.",
         "asset": "a s s e t s/m a n t r a [ m o c k u p ]/tibet-universe.m4a",
         "trim_start": 0,
-        "trim_end": 4,
+        "trim_end": 13.95,
         "source_type": "reference_sample",
         "rights_status": "private_mockup_only",
         "color": "235, 214, 108"
@@ -24,7 +24,7 @@
         "phrase": "The one life, experiencing itself through countless lifeforms.",
         "asset": "a s s e t s/m a n t r a [ m o c k u p ]/tibet-one-life.m4a",
         "trim_start": 0,
-        "trim_end": 8,
+        "trim_end": 18,
         "source_type": "reference_sample",
         "rights_status": "private_mockup_only",
         "color": "91, 230, 196"
@@ -36,7 +36,7 @@
         "phrase": "The universe delights in creating this multiplicity of forms, and it delights in experiencing itself through all those forms.",
         "asset": "a s s e t s/m a n t r a [ m o c k u p ]/tibet-multiplicity.m4a",
         "trim_start": 0,
-        "trim_end": 11.7,
+        "trim_end": 21.7,
         "source_type": "reference_sample",
         "rights_status": "private_mockup_only",
         "color": "86, 171, 255"
@@ -89,7 +89,7 @@
         "phrase": "Something for your mind, your body and your soul.",
         "asset": "a s s e t s/m a n t r a [ m o c k u p ]/ibiza-mind-body-soul.m4a",
         "trim_start": 0,
-        "trim_end": 5.6,
+        "trim_end": 12.05,
         "source_type": "reference_sample",
         "rights_status": "private_mockup_only",
         "color": "216, 255, 66"
@@ -101,7 +101,7 @@
         "phrase": "Open your mind.",
         "asset": "a s s e t s/m a n t r a [ m o c k u p ]/ibiza-open-mind.m4a",
         "trim_start": 0,
-        "trim_end": 1.16,
+        "trim_end": 11.16,
         "source_type": "reference_sample",
         "rights_status": "private_mockup_only",
         "color": "91, 230, 196"
@@ -113,7 +113,7 @@
         "phrase": "My mind is glowing.",
         "asset": "a s s e t s/m a n t r a [ m o c k u p ]/ibiza-glowing.m4a",
         "trim_start": 0,
-        "trim_end": 3.8,
+        "trim_end": 13.8,
         "source_type": "reference_sample",
         "rights_status": "private_mockup_only",
         "color": "86, 171, 255"

@@ -1,7 +1,7 @@
 import { createHash } from 'node:crypto';
 import fs from 'node:fs/promises';
 import path from 'node:path';
-import { fileURLToPath } from 'node:url';
+import { fileURLToPath, pathToFileURL } from 'node:url';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const IAM_DIR = path.join(ROOT, 'i  a m');
@@ -30,6 +30,7 @@ const mantraLibraryEndpointPath = path.join(IAM_DIR, 'api', 'mantra-library.php'
 const mantraVoiceEndpointPath = path.join(IAM_DIR, 'api', 'mantra-voice.php');
 const mantraStudioPagePath = path.join(IAM_DIR, 'mantra-studio.html');
 const mantraStudioScriptPath = path.join(IAM_DIR, 'mantra-studio.js');
+const mantraVoiceDspPath = path.join(IAM_DIR, 'mantra-voice-dsp.js');
 const mantraStudioCssPath = path.join(IAM_DIR, 'mantra-studio.css');
 const citizenNeedsWorkerPath = path.join(ROOT, 'cloudflare', 'iam-citizen-needs-worker.js');
 const citizenNeedsWorkerConfigPath = path.join(ROOT, 'cloudflare', 'wrangler.toml');
@@ -119,6 +120,7 @@ const mantraLibraryEndpoint = await fs.readFile(mantraLibraryEndpointPath, 'utf8
 const mantraVoiceEndpoint = await fs.readFile(mantraVoiceEndpointPath, 'utf8');
 const mantraStudioPage = await fs.readFile(mantraStudioPagePath, 'utf8');
 const mantraStudioScript = await fs.readFile(mantraStudioScriptPath, 'utf8');
+const mantraVoiceDsp = await fs.readFile(mantraVoiceDspPath, 'utf8');
 const mantraStudioCss = await fs.readFile(mantraStudioCssPath, 'utf8');
 const citizenNeedsWorker = await fs.readFile(citizenNeedsWorkerPath, 'utf8');
 const citizenNeedsWorkerConfig = await fs.readFile(citizenNeedsWorkerConfigPath, 'utf8');
@@ -161,6 +163,7 @@ const expectedRealtimeVoiceCssToken = `realtime-voice-css-${createHash('sha256')
 const expectedMantraSamplerToken = `mantra-sampler-${createHash('sha256').update(mantraSampler).digest('hex').slice(0, 12)}`;
 const expectedMantraSamplerCssToken = `mantra-sampler-css-${createHash('sha256').update(mantraSamplerCss).digest('hex').slice(0, 12)}`;
 const expectedMantraStudioToken = `mantra-studio-${createHash('sha256').update(mantraStudioScript).digest('hex').slice(0, 12)}`;
+const expectedMantraVoiceDspToken = `mantra-voice-dsp-${createHash('sha256').update(mantraVoiceDsp).digest('hex').slice(0, 12)}`;
 const expectedMantraStudioCssToken = `mantra-studio-css-${createHash('sha256').update(mantraStudioCss).digest('hex').slice(0, 12)}`;
 const expectedStreamCatalogueToken = `stream-catalogue-${createHash('sha256').update(streamCatalogue).digest('hex').slice(0, 12)}`;
 const expectedStreamControllerToken = `stream-controller-${createHash('sha256').update(streamController).digest('hex').slice(0, 12)}`;
@@ -558,14 +561,18 @@ requireCondition(mantraStudioPage.includes('data-editor-tab="pad"') && mantraStu
 requireCondition(mantraStudioScript.includes('pitchCanvas?.addEventListener("pointermove"') && mantraStudioScript.includes('pitchCurve = simplifyCurve(pitchCurve);'), 'the pitch editor is no longer directly drawable');
 requireCondition(mantraStudioScript.includes('getByteTimeDomainData') && mantraStudioPage.includes('data-vu-meter'), 'the owner preview no longer has a live VU meter');
 const mantraStudioScriptMatch = mantraStudioPage.match(/mantra-studio\.js\?v=([^"']+)/);
+const mantraVoiceDspMatch = mantraStudioPage.match(/mantra-voice-dsp\.js\?v=([^"']+)/);
 const mantraStudioCssMatch = mantraStudioPage.match(/mantra-studio\.css\?v=([^"']+)/);
 requireCondition(mantraStudioScriptMatch?.[1] === expectedMantraStudioToken, `the Mantra Studio cache token does not match ${expectedMantraStudioToken}`);
+requireCondition(mantraVoiceDspMatch?.[1] === expectedMantraVoiceDspToken, `the Mantra Voice DSP cache token does not match ${expectedMantraVoiceDspToken}`);
 requireCondition(mantraStudioCssMatch?.[1] === expectedMantraStudioCssToken, `the Mantra Studio stylesheet token does not match ${expectedMantraStudioCssToken}`);
 const voicePresetIds = Array.from(mantraStudioPage.matchAll(/data-vocoder-voice="([^"]+)"/g), (match) => match[1]);
 requireCondition(voicePresetIds.length === 18 && new Set(voicePresetIds).size === 18, 'Voice Lab must expose 18 distinct human, robot and vocoder presets');
 requireCondition(['Fred', 'Trinoids', 'Zarvox'].every((voice) => mantraStudioPage.includes(`>${voice}</button>`)), 'Voice Lab is missing one of the three supplied Speaking of Witch reference voices');
 requireCondition(voicePresetIds.filter((id) => id.startsWith('human-')).length === 6 && voicePresetIds.filter((id) => id.startsWith('robot-')).length === 6 && voicePresetIds.filter((id) => id.startsWith('vocoder-')).length === 6, 'Voice Lab must retain six options in each voice family');
 requireCondition(!mantraStudioScript.includes('synthesizeVocoder') && !mantraStudioScript.includes('phonemeMap') && mantraStudioScript.includes('fetch(voiceEndpoint'), 'the unusable browser phoneme oscillator has not been fully replaced');
+requireCondition(mantraStudioScript.includes('processor.processVoice({') && mantraStudioScript.includes('speechBuffer') && mantraStudioScript.includes('effectAmount: request.effect_amount'), 'Robot and Vocoder presets no longer process the rendered speech through the carrier DSP');
+requireCondition(mantraVoiceDsp.includes('function applyRobotDsp(') && mantraVoiceDsp.includes('function applyVocoderDsp(') && mantraVoiceDsp.includes('function bandpassCoefficients('), 'the actual robot ring modulation or filter-bank vocoder engine is missing');
 requireCondition(voicePresetIds.every((id) => mantraVoiceEndpoint.includes(`'${id}' =>`)), 'the secure voice endpoint does not implement every visible Voice Lab preset');
 requireCondition(mantraVoiceEndpoint.includes("($_SESSION['quantum_tree_owner'] ?? false) !== true") && mantraVoiceEndpoint.includes("hash_equals($_SESSION['quantum_tree_csrf'], $csrf)"), 'the voice endpoint no longer requires the owner session and CSRF token');
 requireCondition(mantraVoiceEndpoint.includes('realtime-staging-iam-citizen-needs-inference.universalmind.workers.dev/mantra-voice') && mantraVoiceEndpoint.includes("($_SESSION['quantum_tree_owner'] ?? false) !== true"), 'Voice Lab no longer routes authenticated staging requests through the configured speech Worker');
@@ -581,6 +588,47 @@ requireCondition(mantraSamples.samples.length === 9, 'the mantra source manifest
 requireCondition(mantraSamples.reserved.length === 3, 'the source manifest must retain three reserved Tibet positions');
 requireCondition(mantraSamples.samples.every((sample) => sample.rightsStatus === 'uncleared_reference'), 'every private reference sample must be marked uncleared');
 requireCondition(new Set(mantraSamples.samples.map((sample) => sample.id)).size === mantraSamples.samples.length, 'the mantra source manifest contains duplicate sample ids');
+const handledSampleDurations = new Map([
+  ['tibet-universe', 13.95],
+  ['tibet-one-life', 18],
+  ['tibet-multiplicity', 21.7],
+  ['ibiza-mind-body-soul', 12.05],
+  ['ibiza-open-mind', 11.16],
+  ['ibiza-glowing', 13.8],
+]);
+for (const [sampleId, expectedDuration] of handledSampleDurations) {
+  const source = mantraSamples.samples.find((sample) => sample.id === sampleId);
+  const libraryItem = [...mantraLibrary.banks.tibet, ...mantraLibrary.banks.ibiza].find((item) => item.id === sampleId);
+  requireCondition(source?.phraseWindow && source?.editHandles?.afterSeconds === 5, `${sampleId} no longer records the original phrase and five-second trailing edit handle`);
+  requireCondition(source?.editHandles?.beforeSeconds === 5 || source?.editHandles?.beforeLimitedBySourceStart === true, `${sampleId} no longer records its five-second leading handle or source-start limit`);
+  requireCondition(Math.abs(Number(libraryItem?.trim_end) - expectedDuration) < 0.001, `${sampleId} does not expose the complete longer source recording to the waveform editor`);
+}
+
+await import(`${pathToFileURL(mantraVoiceDspPath).href}?preflight=${expectedMantraVoiceDspToken}`);
+const voiceDsp = globalThis.IAMMantraVoiceDSP;
+const nonHumanPresetIds = voicePresetIds.filter((id) => !id.startsWith('human-'));
+requireCondition(nonHumanPresetIds.every((id) => voiceDsp?.ROBOT_PRESETS?.[id] || voiceDsp?.VOCODER_PRESETS?.[id]), 'one or more visible Robot or Vocoder presets has no real DSP configuration');
+const dspSampleRate = 24000;
+const dspProbeData = Float32Array.from({ length: dspSampleRate }, (_, index) => {
+  const time = index / dspSampleRate;
+  const syllable = 0.24 + 0.76 * Math.max(0, Math.sin(time * Math.PI * 5));
+  return syllable * (
+    Math.sin(time * Math.PI * 2 * 118) * 0.45
+    + Math.sin(time * Math.PI * 2 * 236) * 0.2
+    + Math.sin(time * Math.PI * 2 * 944) * 0.12
+  );
+});
+const dspProbeBuffer = {
+  numberOfChannels: 1,
+  length: dspProbeData.length,
+  sampleRate: dspSampleRate,
+  getChannelData: () => dspProbeData,
+};
+const robotProbe = voiceDsp.processVoice({ audioBuffer: dspProbeBuffer, preset: 'robot-machine', effectAmount: 0.75 });
+const vocoderProbe = voiceDsp.processVoice({ audioBuffer: dspProbeBuffer, preset: 'vocoder-neon', effectAmount: 0.75 });
+const probeDifference = (output) => Math.sqrt(output.reduce((sum, sample, index) => sum + (sample - dspProbeData[index]) ** 2, 0) / output.length);
+requireCondition(robotProbe.mode === 'robot' && robotProbe.blob.size > 44 && probeDifference(robotProbe.samples) > 0.08, 'the Robot path does not produce an audibly transformed WAV');
+requireCondition(vocoderProbe.mode === 'vocoder' && vocoderProbe.blob.size > 44 && probeDifference(vocoderProbe.samples) > 0.08, 'the Vocoder path does not produce an audibly transformed WAV');
 for (const sample of mantraSamples.samples) {
   const assetStat = await fs.stat(path.join(IAM_DIR, sample.asset));
   requireCondition(assetStat.size > 15000, `${sample.id} reference audio is missing or unexpectedly small`);

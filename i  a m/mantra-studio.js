@@ -55,6 +55,7 @@
   let pitchCurve = [{ x: 0, y: 0 }, { x: 1, y: 0 }];
   let drawingPitch = false;
   let renderedVocoder = null;
+  let renderedVocoderBuffer = null;
   let renderedVocoderDuration = 0;
   let renderedVocoderKey = "";
   let vocoderVoice = "human-clear";
@@ -487,6 +488,7 @@
 
   function invalidateVoiceRender() {
     renderedVocoder = null;
+    renderedVocoderBuffer = null;
     renderedVocoderDuration = 0;
     renderedVocoderKey = "";
   }
@@ -517,6 +519,18 @@
     return blob;
   }
 
+  function bufferFromProcessedVoice(processed) {
+    const buffer = context().createBuffer(1, processed.samples.length, processed.sampleRate);
+    buffer.copyToChannel(processed.samples, 0);
+    return buffer;
+  }
+
+  function voiceFamily(preset = vocoderVoice) {
+    if (preset.startsWith("robot-")) return "robot";
+    if (preset.startsWith("vocoder-")) return "vocoder";
+    return "human";
+  }
+
   async function renderVocoder({ preview = true } = {}) {
     if (voiceRequestActive) throw new Error("A voice is already being generated.");
     const request = voiceRequest();
@@ -525,15 +539,35 @@
     const requestKey = voiceRequestKey(request);
     setVoiceBusy(true);
     try {
-      announce("generating clear speech…", vocoderStatus);
+      const family = voiceFamily(request.preset);
+      announce(family === "human" ? "generating clear speech…" : `generating speech + ${family} carrier…`, vocoderStatus);
       if (!renderedVocoder || renderedVocoderKey !== requestKey) {
-        renderedVocoder = await fetchVoice(request);
+        const speech = await fetchVoice(request);
+        const speechBuffer = await context().decodeAudioData(await speech.arrayBuffer());
+        if (family === "human") {
+          renderedVocoder = speech;
+          renderedVocoderBuffer = speechBuffer;
+          renderedVocoderDuration = speechBuffer.duration;
+        } else {
+          const processor = globalThis.IAMMantraVoiceDSP;
+          if (!processor?.processVoice) throw new Error("The robot voice processor did not load. Refresh and try again.");
+          const processed = processor.processVoice({
+            audioBuffer: speechBuffer,
+            preset: request.preset,
+            tone: request.tone,
+            effectAmount: request.effect_amount,
+          });
+          renderedVocoder = processed.blob;
+          renderedVocoderBuffer = bufferFromProcessedVoice(processed);
+          renderedVocoderDuration = processed.duration;
+        }
         renderedVocoderKey = requestKey;
       }
-      const decoded = await context().decodeAudioData(await renderedVocoder.arrayBuffer());
+      const decoded = renderedVocoderBuffer || await context().decodeAudioData(await renderedVocoder.arrayBuffer());
+      renderedVocoderBuffer = decoded;
       renderedVocoderDuration = decoded.duration;
       const voiceLabel = vocoderButtons.find((button) => button.dataset.vocoderVoice === vocoderVoice)?.textContent?.trim() || "Voice";
-      announce(`${voiceLabel} ready · ${decoded.duration.toFixed(2)}s`, vocoderStatus);
+      announce(`${voiceLabel} ${family} ready · ${decoded.duration.toFixed(2)}s`, vocoderStatus);
       if (preview) await previewBuffer(decoded, { raw: true, statusTarget: vocoderStatus });
       return renderedVocoder;
     } finally {
