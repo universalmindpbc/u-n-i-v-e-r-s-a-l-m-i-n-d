@@ -25,13 +25,10 @@
     if (status) status.textContent = message;
   }
 
-  function dispatchPlaybackState() {
+  function syncPlaybackState() {
     const active = activeIds.size > 0;
     document.body.classList.toggle("television-mantra-sample-active", active);
     document.body.dataset.mantraSampleCount = String(activeIds.size);
-    window.dispatchEvent(new CustomEvent("iam:mantra-playback-change", {
-      detail: { active, count: activeIds.size, ids: Array.from(activeIds) },
-    }));
   }
 
   function nodeForId(id) {
@@ -44,7 +41,7 @@
     const node = nodeForId(id);
     node?.classList.toggle("is-playing", playing);
     node?.setAttribute("aria-pressed", String(playing));
-    dispatchPlaybackState();
+    syncPlaybackState();
   }
 
   function deactivate(id) {
@@ -88,7 +85,7 @@
   function stopAll({ announceStop = false } = {}) {
     Array.from(sourceById.keys()).forEach((id) => stopItem(id));
     if (announceStop) announce("all samples stopped");
-    dispatchPlaybackState();
+    syncPlaybackState();
   }
 
   async function trigger(item) {

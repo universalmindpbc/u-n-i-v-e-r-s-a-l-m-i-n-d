@@ -331,7 +331,6 @@
   let radioRecoveryCount = 0;
   let radioLastRecoveryAt = 0;
   let voiceAssistantDuckActive = false;
-  let mantraSamplerDuckActive = false;
   const voiceAssistantBaseVolumes = new Map();
   const voiceAssistantVolumeFrames = new Map();
   let soundResearchAudio = null;
@@ -3162,7 +3161,7 @@
       video.loop = false;
       video.muted = false;
       video.defaultMuted = false;
-      setVoiceAssistantProgramVolume(video, 1, (voiceAssistantDuckActive || mantraSamplerDuckActive) ? 260 : 0);
+      setVoiceAssistantProgramVolume(video, 1, voiceAssistantDuckActive ? 260 : 0);
       video.setAttribute("aria-label", `${track.artist} - ${track.title}`);
       try { video.currentTime = 0; } catch {}
       syncSelectedTrackCopy();
@@ -3854,8 +3853,8 @@
   function setVoiceAssistantProgramVolume(media, baseVolume, duration = 0) {
     if (!media) return;
     const baseline = Math.max(0, Math.min(1, Number(baseVolume) || 0));
-    if (voiceAssistantDuckActive || mantraSamplerDuckActive) voiceAssistantBaseVolumes.set(media, baseline);
-    const duckFactor = voiceAssistantDuckActive ? .15 : (mantraSamplerDuckActive ? .38 : 1);
+    if (voiceAssistantDuckActive) voiceAssistantBaseVolumes.set(media, baseline);
+    const duckFactor = voiceAssistantDuckActive ? .15 : 1;
     const target = baseline * duckFactor;
     animateVoiceAssistantProgramVolume(media, target, duration);
   }
@@ -3878,9 +3877,9 @@
       });
     } else {
       voiceAssistantBaseVolumes.forEach((baseline, media) => {
-        animateVoiceAssistantProgramVolume(media, baseline * (mantraSamplerDuckActive ? .38 : 1), 1000);
+        animateVoiceAssistantProgramVolume(media, baseline, 1000);
       });
-      if (!mantraSamplerDuckActive) voiceAssistantBaseVolumes.clear();
+      voiceAssistantBaseVolumes.clear();
     }
 
     document.body.classList.toggle("television-voice-conversation-active", nextActive);
@@ -3890,46 +3889,12 @@
     return voiceAssistantDuckActive;
   }
 
-  function setMantraSamplerDucking(active) {
-    const nextActive = Boolean(active);
-    mantraSamplerDuckActive = nextActive;
-    const radioIsActiveProgramme = document.body.classList.contains("television-radio-continuation");
-    const programmeMedia = [localVideo];
-    if (radioIsActiveProgramme) programmeMedia.push(continuationAudio);
-
-    if (nextActive) {
-      programmeMedia.forEach((media) => {
-        if (!media || media.muted) return;
-        if (!voiceAssistantBaseVolumes.has(media)) {
-          const fallback = media === continuationAudio ? .68 : 1;
-          voiceAssistantBaseVolumes.set(media, Math.max(Number(media.volume) || 0, fallback));
-        }
-        const factor = voiceAssistantDuckActive ? .15 : .38;
-        animateVoiceAssistantProgramVolume(media, voiceAssistantBaseVolumes.get(media) * factor, 420);
-      });
-    } else {
-      voiceAssistantBaseVolumes.forEach((baseline, media) => {
-        animateVoiceAssistantProgramVolume(media, baseline * (voiceAssistantDuckActive ? .15 : 1), 640);
-      });
-      if (!voiceAssistantDuckActive) voiceAssistantBaseVolumes.clear();
-    }
-
-    document.body.dataset.mantraDuckedMedia = nextActive
-      ? programmeMedia.filter(Boolean).map((media) => media === continuationAudio ? "radio" : "video").join(",")
-      : "";
-    return mantraSamplerDuckActive;
-  }
-
-  window.addEventListener("iam:mantra-playback-change", (event) => {
-    setMantraSamplerDucking(Boolean(event.detail?.active));
-  });
-
   function playLocalVideo(video) {
     televisionPlaybackRequested = true;
     video.dataset.streamPlayRequestedAt = String(window.performance?.now?.() || Date.now());
     video.preload = "auto";
     video.muted = soundResearchTestMode;
-    setVoiceAssistantProgramVolume(video, soundResearchTestMode ? 0 : 1, (voiceAssistantDuckActive || mantraSamplerDuckActive) ? 260 : 0);
+    setVoiceAssistantProgramVolume(video, soundResearchTestMode ? 0 : 1, voiceAssistantDuckActive ? 260 : 0);
     playerMount.classList.remove("is-local-video-awaiting-gesture");
 
     // Attach the EMDR analyser before playback begins. Claiming an already
@@ -4704,7 +4669,7 @@
       const nowPlayingState = window.IAMNowPlaying?.getState?.() || {};
       return {
         conversationActive: voiceAssistantDuckActive,
-        mantraSampleActive: mantraSamplerDuckActive,
+        mantraSampleActive: document.body.classList.contains("television-mantra-sample-active"),
         source: document.body.classList.contains("television-radio-continuation") ? "radio" : "video",
         title: nowPlayingState.title || `${track.displayArtist || track.artist} — ${track.displayTitle || track.title}`,
         visual: nowPlayingState.visual || "",

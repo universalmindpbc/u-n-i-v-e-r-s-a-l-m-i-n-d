@@ -500,15 +500,18 @@
     }
   }
 
-  async function uploadAudio(file, sourceType = "owner_upload", duration = 0) {
-    if (!file || !selected) throw new Error("Choose a pad and audio file first.");
+  async function uploadAudio(file, sourceType = "owner_upload", duration = 0, target = null) {
+    const targetBank = target?.bank || currentBank;
+    const targetSlot = Number(target?.slot ?? currentSlot);
+    const targetItem = target?.item || selected;
+    if (!file || !targetItem) throw new Error("Choose a pad and audio file first.");
     const data = new FormData();
     data.set("action", "upload");
     data.set("csrf_token", csrfToken);
-    data.set("bank", currentBank);
-    data.set("slot", String(currentSlot));
-    data.set("label", fields.label.value || selected.label || "Mantra");
-    data.set("phrase", fields.phrase.value || selected.phrase || "");
+    data.set("bank", targetBank);
+    data.set("slot", String(targetSlot));
+    data.set("label", target?.label || fields.label.value || targetItem.label || "Mantra");
+    data.set("phrase", target?.phrase || fields.phrase.value || targetItem.phrase || "");
     data.set("source_type", sourceType);
     data.set("duration", String(duration || decodedBuffer?.duration || 1));
     data.set("audio", file, file.name);
@@ -733,14 +736,20 @@
   });
   vocoderSaveButton?.addEventListener("click", async () => {
     try {
-      if (currentBank !== "ibiza") throw new Error("Choose one of the six Ibiza pads first.");
+      if (!selected) throw new Error("Choose one of the twelve pads first.");
+      const target = {
+        bank: currentBank,
+        slot: currentSlot,
+        item: selected,
+        label: fields.label.value || selected.label || "Voice",
+        phrase: vocoderText.value.trim(),
+      };
       if (!renderedVocoder || renderedVocoderKey !== voiceRequestKey()) await renderVocoder({ preview: false });
-      fields.label.value = fields.label.value || "Voice";
-      fields.phrase.value = vocoderText.value.trim();
-      const file = new File([renderedVocoder], `ibiza-${currentSlot}-voice.wav`, { type: "audio/wav" });
+      const file = new File([renderedVocoder], `${target.bank}-${target.slot}-voice.wav`, { type: "audio/wav" });
       announce("saving voice to selected pad…", vocoderStatus);
-      await uploadAudio(file, "vocoder", renderedVocoderDuration);
-      announce("voice saved to the selected Ibiza pad", vocoderStatus);
+      await uploadAudio(file, "vocoder", renderedVocoderDuration, target);
+      const bankLabel = target.bank === "tibet" ? "Tibet" : "Ibiza";
+      announce(`voice saved to ${bankLabel} pad ${target.slot}`, vocoderStatus);
     } catch (error) {
       announce(error.message, vocoderStatus);
     }

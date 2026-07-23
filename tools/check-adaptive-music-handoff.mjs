@@ -354,7 +354,7 @@ requireCondition(realtimeVoicePortalGuide.includes('Privacy first and Go to mark
 requireCondition(realtimeVoicePortalGuide.includes('Bloom, Mix, Circle, Care and Collect') && realtimeVoicePortalGuide.includes('10-minute Nervous System Reset research feature'), 'Universal One no longer knows the television wallet and research feature');
 requireCondition(realtimeVoicePortalGuide.includes('Partner lists are invitations or proposed ideal partners'), 'Universal One can misstate proposed partnerships as confirmed');
 requireCondition(controller.includes('voiceAssistantBaseVolumes.get(media) * .15, 800'), 'the television programme no longer ducks smoothly to fifteen percent for voice');
-requireCondition(controller.includes('animateVoiceAssistantProgramVolume(media, baseline * (mantraSamplerDuckActive ? .38 : 1), 1000)'), 'the television programme no longer restores smoothly after voice while preserving an active mantra duck');
+requireCondition(controller.includes('animateVoiceAssistantProgramVolume(media, baseline, 1000)') && controller.includes('const duckFactor = voiceAssistantDuckActive ? .15 : 1;'), 'the television programme no longer restores smoothly after voice');
 
 for (const { pagePath, source } of globeScriptPages) {
   const label = path.relative(ROOT, pagePath);
@@ -550,12 +550,13 @@ requireCondition(televisionPage.includes('data-emdr-controls-view="neutral"'), '
 requireCondition(controller.includes('reactionWallet.dataset.emdrControlsView = emdrStyleIndex === 1') && controller.includes('? "stellar"') && controller.includes('emdrStyleIndex === 0 ? "gif" : "neutral"'), 'the EMDR wallet no longer discloses controls according to the selected experience');
 requireCondition(televisionCss.includes('[data-emdr-controls-view="neutral"] .adaptive-television-emdr-off') && televisionCss.includes('[data-emdr-controls-view="neutral"] .adaptive-television-emdr-react') && televisionCss.includes('[data-emdr-controls-view="gif"] .adaptive-television-emdr-react'), 'neutral and GIF EMDR views no longer keep unrelated advanced controls hidden');
 requireCondition(controller.includes('emdrStyleIndex = -1;\n    syncEmdrStyleButtons();\n    document.querySelector(\'[data-video-mode="emdr"]\')?.setAttribute("aria-pressed", "false");\n    setWalletView("emdr");'), 'the EMDR off button no longer returns to the compact EMDR picker');
-requireCondition(mantraSampler.includes('iam:mantra-playback-change'), 'mantra playback no longer reports its programme-duck state');
-requireCondition(controller.includes('setMantraSamplerDucking') && controller.includes('mantraSamplerDuckActive ? .38 : 1'), 'mantra playback no longer ducks and restores the programme safely');
-requireCondition(controller.includes('Math.max(0, Math.min(1, (now - startedAt) / duration))'), 'rapid mantra ducking can once again overrun the media volume range');
+requireCondition(mantraSampler.includes('television-mantra-sample-active') && !mantraSampler.includes('iam:mantra-playback-change'), 'mantra playback state must remain visible without requesting programme ducking');
+requireCondition(!controller.includes('setMantraSamplerDucking') && !controller.includes('mantraSamplerDuckActive') && !controller.includes('mantraDuckedMedia'), 'Mantra playback can still lower the programme volume');
+requireCondition(controller.includes('Math.max(0, Math.min(1, (now - startedAt) / duration))'), 'voice-assistant volume animation can once again overrun the media volume range');
 requireCondition(mantraSamplerCss.includes('.mantra-orbit__node') && mantraSamplerCss.includes('border-radius: 50%;'), 'the Audio Rooms-inspired circular sampler nodes are missing');
 requireCondition(!mantraSamplerCss.includes('clip-path: polygon'), 'hexagonal sampler artwork has returned');
 requireCondition(mantraSamplerCss.includes('color: #fff;') && mantraSamplerCss.includes('color: rgba(255, 255, 255, 0.72);'), 'active Mantra circle labels are no longer white');
+requireCondition(mantraSamplerCss.includes('top: max(14px, env(safe-area-inset-top));') && mantraSamplerCss.includes('min-width: 80px;') && mantraSamplerCss.includes('height: 30px;'), 'the Tibet and Ibiza selector no longer clears the top Mantra circle');
 requireCondition(!televisionPage.includes('one hit · retrigger anytime') && !televisionPage.includes('class="mantra-orbit__studio"') && !televisionPage.includes('data-mantra-status'), 'the Mantra centre contains copy beyond the flower and bank name');
 requireCondition(mantraStudioPage.includes('data-editor-tab="pad"') && mantraStudioPage.includes('data-editor-tab="sample"') && mantraStudioPage.includes('data-editor-tab="pitch"') && mantraStudioPage.includes('data-editor-tab="amp"'), 'the owner studio no longer exposes Pad, Sample, Pitch and Amp editing');
 requireCondition(mantraStudioScript.includes('pitchCanvas?.addEventListener("pointermove"') && mantraStudioScript.includes('pitchCurve = simplifyCurve(pitchCurve);'), 'the pitch editor is no longer directly drawable');
@@ -567,6 +568,8 @@ requireCondition(mantraStudioScript.includes('const NORMALISE_TARGET_DB = -12;')
 requireCondition(mantraStudioScript.includes('function createPeakLimiter(ctx)') && mantraStudioScript.includes('limiter.threshold.value = -1;') && mantraStudioScript.includes('connect(limiter).connect(analyser)'), 'the Studio preview no longer contains high-gain peaks');
 requireCondition(mantraSampler.includes('Math.min(15.849, itemGain)') && mantraSampler.includes('ctx.createDynamicsCompressor()') && mantraSampler.includes('connect(limiter).connect(ctx.destination)'), 'saved +24 dB Mantra gain no longer reaches protected sampler playback');
 requireCondition(mantraLibraryEndpoint.includes('const MANTRA_MAX_GAIN = 15.849;') && mantraLibraryEndpoint.includes('$gain > MANTRA_MAX_GAIN'), 'the owner API no longer accepts the Studio +24 dB gain range safely');
+requireCondition(!mantraStudioScript.includes('currentBank !== "ibiza"') && mantraStudioScript.includes('await uploadAudio(file, "vocoder", renderedVocoderDuration, target);'), 'Voice Lab can no longer save a render to a selected Tibet pad');
+requireCondition(mantraStudioScript.includes('bank: currentBank') && mantraStudioScript.includes('slot: currentSlot') && mantraStudioPage.includes('select any pad, choose a voice'), 'Voice Lab no longer preserves the selected bank and pad through rendering');
 const mantraStudioScriptMatch = mantraStudioPage.match(/mantra-studio\.js\?v=([^"']+)/);
 const mantraVoiceDspMatch = mantraStudioPage.match(/mantra-voice-dsp\.js\?v=([^"']+)/);
 const mantraStudioCssMatch = mantraStudioPage.match(/mantra-studio\.css\?v=([^"']+)/);

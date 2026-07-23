@@ -100,11 +100,11 @@ body.mantra-sampler-open .mantra-orbit__casing {
 .mantra-orbit__banks {
   position: absolute;
   left: 50%;
-  top: max(30px, env(safe-area-inset-top));
+  top: max(14px, env(safe-area-inset-top));
   z-index: 4;
   display: inline-flex;
-  gap: 5px;
-  padding: 5px;
+  gap: 3px;
+  padding: 4px;
   border: 1px solid rgba(255, 255, 255, 0.18);
   border-radius: 999px;
   background: rgba(4, 20, 34, 0.3);
@@ -114,14 +114,14 @@ body.mantra-sampler-open .mantra-orbit__casing {
 }
 
 .mantra-orbit__banks button {
-  min-width: 92px;
-  height: 34px;
+  min-width: 80px;
+  height: 30px;
   border: 0;
   border-radius: 999px;
   background: transparent;
   color: rgba(255, 255, 255, 0.55);
   cursor: pointer;
-  font: 500 12px/1 "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font: 500 11px/1 "Helvetica Neue", Helvetica, Arial, sans-serif;
   letter-spacing: 0.04em;
   transition: color 220ms ease, background 220ms ease;
 }
