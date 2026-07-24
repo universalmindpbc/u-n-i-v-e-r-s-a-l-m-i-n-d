@@ -46,13 +46,21 @@ const djDurations = new Map([
   ["nastia-drum-bass-sunset-the-lab-ibiza", 5135.2],
   ["carl-cox-chateau-de-chambord-cercle", 7986.09],
 ]);
+const fashionRunwayIds = new Set([
+  "chanel-paris-rooftops",
+  "jacquemus-le-coup-de-soleil",
+  "annies-ibiza-runway",
+  "dolce-gabbana-valley-of-the-temples",
+  "mugler-fall-winter-2021",
+  "wolford-sergio-rossi-capsule",
+]);
 const approvedStationIds = new Set(
   stationTensor.records
     .filter((station) => !station.status || station.status === "Approved")
     .map((station) => station.id)
 );
 
-assert.equal(schedule.stage, "nine_shared_channels_24_hour_prototype");
+assert.equal(schedule.stage, "twelve_shared_channels_24_hour_prototype");
 assert.ok(Number.isFinite(Date.parse(schedule.epoch_utc)), "The shared UTC epoch must be valid.");
 assert.deepEqual(
   schedule.planning_markets.map((market) => market.name),
@@ -62,9 +70,9 @@ assert.deepEqual(
   schedule.planning_markets.map((market) => market.time_zone),
   ["Australia/Sydney", "America/Los_Angeles", "Europe/Madrid"]
 );
-assert.equal(schedule.channels.length, 9, "The prototype must expose exactly nine shared channels.");
+assert.equal(schedule.channels.length, 12, "The prototype must expose exactly twelve shared channels.");
 
-for (const format of ["videos", "parties", "radio"]) {
+for (const format of ["videos", "parties", "radio", "fashion"]) {
   const channels = schedule.channels.filter((channel) => channel.format === format);
   assert.equal(channels.length, 3, `${format} must expose exactly three shared channels.`);
   assert.deepEqual(channels.map((channel) => channel.energy_id), energyIds);
@@ -73,6 +81,7 @@ for (const format of ["videos", "parties", "radio"]) {
 const scheduledVideos = [];
 const scheduledDjSets = [];
 const scheduledStations = new Set();
+const scheduledRunways = [];
 for (const channel of schedule.channels) {
   const cycleSeconds = channel.schedule.reduce((sum, entry) => sum + Number(entry.duration_seconds), 0);
   assert.ok(cycleSeconds > 0, `${channel.name} must have a continuous cycle.`);
@@ -91,13 +100,22 @@ for (const channel of schedule.channels) {
       assert.match(controller, new RegExp(`id: "${entry.track_id}"`), `${entry.track_id} must exist in the player catalogue.`);
       scheduledDjSets.push(entry.track_id);
     }
-  } else {
+  } else if (channel.format === "radio") {
     assert.equal(channel.media_type, "radio");
     assert.equal(cycleSeconds, 86400, `${channel.name} Radio must define one exact 24-hour timetable.`);
     for (const entry of channel.schedule) {
       assert.equal(Number(entry.duration_seconds), 7200, "Stage-one Radio blocks must be two hours.");
       assert.ok(approvedStationIds.has(entry.station_id), `${entry.station_id} must be an approved radio station.`);
       scheduledStations.add(entry.station_id);
+    }
+  } else {
+    assert.equal(channel.media_type, "fashion");
+    assert.equal(cycleSeconds, 1800, `${channel.name} Fashion must define one repeating 30-minute cycle.`);
+    for (const entry of channel.schedule) {
+      assert.equal(Number(entry.duration_seconds), 900, "Each Fashion film must occupy one 15-minute shared block.");
+      assert.ok(fashionRunwayIds.has(entry.runway_id), `${entry.runway_id} must be a verified Fashion runway.`);
+      assert.match(controller, new RegExp(`assetKey: "${entry.runway_id}"`), `${entry.runway_id} must exist in the Fashion catalogue.`);
+      scheduledRunways.push(entry.runway_id);
     }
   }
 
@@ -116,21 +134,34 @@ assert.ok(!scheduledVideos.includes("nine-inch-nails-closer-glastonbury-2026"), 
 assert.deepEqual(new Set(scheduledDjSets), new Set(djDurations.keys()), "All seven DJ sets must belong to exactly one shared channel.");
 assert.equal(scheduledDjSets.length, djDurations.size, "A DJ set cannot belong to more than one shared channel.");
 assert.deepEqual(scheduledStations, approvedStationIds, "The three Radio timetables must programme the full approved station catalogue.");
+assert.deepEqual(new Set(scheduledRunways), fashionRunwayIds, "All six Fashion films must belong to exactly one shared channel.");
+assert.equal(scheduledRunways.length, fashionRunwayIds.size, "A Fashion film cannot belong to more than one shared channel.");
 
 assert.match(clockController, /serverNowMs - \(\(startedAt \+ endedAt\) \/ 2\)/, "Clock sync must compensate for request round-trip latency.");
 assert.match(clockController, /positiveModulo\(elapsedSeconds, channel\.cycleSeconds\)/, "Channel state must repeat continuously from the shared epoch.");
 assert.match(clockController, /channels\(format = ""\)/, "The clock must expose channels by media format.");
-assert.match(controller, /channels\?\.\(mode\)/, "Videos, DJ Sets and Radio must all resolve through the shared clock.");
+assert.match(clockController, /previousRunwayId/, "The shared clock must expose the previous Fashion programme.");
+assert.match(controller, /channels\?\.\(mode\)/, "Videos, DJ Sets, Radio and Fashion must all resolve through the shared clock.");
 assert.match(controller, /absoluteDrift > 1\.25/, "Shared video playback must hard-correct material drift.");
 assert.match(controller, /localVideo\.playbackRate = driftSeconds > 0 \? \.98 : 1\.02/, "Shared video playback must gently correct smaller drift.");
 assert.match(controller, /broadcastCorrection = "live_station_locked"/, "Shared Radio must retain the station selected by the timetable.");
-assert.match(controller, /musicContinuationReason = "personal_opening_complete"/, "The personal opening video must converge into a shared Music Video channel.");
+assert.match(controller, /musicContinuationDecision = "parties"/, "The personal opening video must converge into a recommended shared DJ Set channel.");
+assert.match(controller, /musicContinuationReason = "personal_opening_complete"/, "The shared DJ Set invitation must follow the personal opening video.");
+assert.match(controller, /radio_energy_match/, "Shared Radio must automatically pair with the matching Fashion energy channel.");
+assert.match(controller, /fashionBroadcastBlockRemainingSeconds/, "Fashion playback must remain locked to its 15-minute shared block.");
+assert.match(controller, /musicShelfRecommendationIds/, "The recommended channel must be stored independently from fixed shelf order.");
 assert.match(index, /data-broadcast-join>join the broadcast</);
 assert.match(index, /data-broadcast-choose>choose another channel</);
+assert.match(index, /data-broadcast-entry-vibe/);
+assert.match(index, /data-broadcast-entry-format/);
+assert.match(index, /data-broadcast-programme-previous/);
+assert.match(index, /data-broadcast-programme-now/);
+assert.match(index, /data-broadcast-programme-next/);
+assert.match(index, /data-music-mode="fashion"/);
 assert.doesNotMatch(index, /data-broadcast-vod|watch from the beginning/i);
 assert.doesNotMatch(controller, /watchBroadcastFromBeginning|watchFromBeginning|broadcast_watch_from_beginning/);
 assert.match(index, /broadcast-clock-v1\.js/);
 assert.match(endpoint, /microtime\(true\) \* 1000/);
 assert.match(endpoint, /Cache-Control: no-store/);
 
-console.log("Broadcast clock preflight passed: 3 Music Video, 3 DJ Set and 3 Radio channels; one personal opening; 29 timed videos; 11 approved stations; no solo replay path.");
+console.log("Broadcast clock preflight passed: 3 Music Video, 3 DJ Set, 3 Radio and 3 Fashion channels; personal opening to recommended DJ Set; 15-minute Fashion blocks; fixed energy order; previous/now/next guide; no solo replay path.");

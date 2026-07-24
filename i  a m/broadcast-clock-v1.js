@@ -1,5 +1,5 @@
 (function () {
-  const SCHEDULE_URL = "broadcast-schedule-v1.json?v=broadcast-schedule-v1-1";
+  const SCHEDULE_URL = "broadcast-schedule-v1.json?v=broadcast-schedule-v1-2";
   const CLOCK_URL = "api/broadcast-clock.php";
   const CLOCK_PROBES = 3;
   let schedule = null;
@@ -13,14 +13,16 @@
 
   function normalizedChannel(channel) {
     const entries = Array.isArray(channel?.schedule) ? channel.schedule : [];
-    const mediaType = channel?.media_type === "radio" ? "radio" : "video";
+    const mediaType = ["radio", "fashion"].includes(channel?.media_type) ? channel.media_type : "video";
     const normalizedEntries = entries.map((entry) => {
       const trackId = String(entry.track_id || "");
       const stationId = String(entry.station_id || "");
+      const runwayId = String(entry.runway_id || "");
       return {
-        mediaId: mediaType === "radio" ? stationId : trackId,
+        mediaId: mediaType === "radio" ? stationId : mediaType === "fashion" ? runwayId : trackId,
         trackId,
         stationId,
+        runwayId,
         durationSeconds: Number(entry.duration_seconds),
       };
     });
@@ -118,6 +120,7 @@
       cursor = nextCursor;
     }
     const entry = channel.entries[entryIndex];
+    const previousEntry = channel.entries[(entryIndex - 1 + channel.entries.length) % channel.entries.length];
     const nextEntry = channel.entries[(entryIndex + 1) % channel.entries.length];
     const offsetSeconds = Math.max(0, Math.min(entry.durationSeconds - 0.05, cyclePositionSeconds - cursor));
     return {
@@ -130,12 +133,18 @@
       mediaId: entry.mediaId,
       trackId: entry.trackId,
       stationId: entry.stationId,
+      runwayId: entry.runwayId,
       durationSeconds: entry.durationSeconds,
       offsetSeconds,
       remainingSeconds: Math.max(0, entry.durationSeconds - offsetSeconds),
+      previousMediaId: previousEntry.mediaId,
+      previousTrackId: previousEntry.trackId,
+      previousStationId: previousEntry.stationId,
+      previousRunwayId: previousEntry.runwayId,
       nextMediaId: nextEntry.mediaId,
       nextTrackId: nextEntry.trackId,
       nextStationId: nextEntry.stationId,
+      nextRunwayId: nextEntry.runwayId,
       entryIndex,
       cyclePositionSeconds,
       cycleSeconds: channel.cycleSeconds,
@@ -195,6 +204,7 @@
         cycleSeconds: channel.cycleSeconds,
         trackIds: channel.entries.map((entry) => entry.trackId),
         stationIds: channel.entries.map((entry) => entry.stationId),
+        runwayIds: channel.entries.map((entry) => entry.runwayId),
         mediaIds: channel.entries.map((entry) => entry.mediaId),
       })) || [];
     },

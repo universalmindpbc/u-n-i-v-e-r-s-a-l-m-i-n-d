@@ -1,6 +1,6 @@
 {
-  "version": "broadcast_schedule_v1.1",
-  "stage": "nine_shared_channels_24_hour_prototype",
+  "version": "broadcast_schedule_v1.2",
+  "stage": "twelve_shared_channels_24_hour_prototype",
   "epoch_utc": "2026-07-24T00:00:00.000Z",
   "planning_markets": [
     {
@@ -170,6 +170,42 @@
         { "station_id": "sanctuary-dark-electro", "duration_seconds": 7200 },
         { "station_id": "nts-otaku", "duration_seconds": 7200 },
         { "station_id": "sanctuary-retro", "duration_seconds": 7200 }
+      ]
+    },
+    {
+      "id": "fashion-restore",
+      "format": "fashion",
+      "media_type": "fashion",
+      "energy_id": "restore",
+      "name": "Restore",
+      "description": "Spacious, composed and restorative shared fashion films.",
+      "schedule": [
+        { "runway_id": "jacquemus-le-coup-de-soleil", "duration_seconds": 900 },
+        { "runway_id": "chanel-paris-rooftops", "duration_seconds": 900 }
+      ]
+    },
+    {
+      "id": "fashion-social-uplift",
+      "format": "fashion",
+      "media_type": "fashion",
+      "energy_id": "social-uplift",
+      "name": "Social Uplift",
+      "description": "Expressive, celebratory and communal shared fashion films.",
+      "schedule": [
+        { "runway_id": "annies-ibiza-runway", "duration_seconds": 900 },
+        { "runway_id": "dolce-gabbana-valley-of-the-temples", "duration_seconds": 900 }
+      ]
+    },
+    {
+      "id": "fashion-underground-intensity",
+      "format": "fashion",
+      "media_type": "fashion",
+      "energy_id": "underground-intensity",
+      "name": "Underground Intensity",
+      "description": "Darker, sensual and higher-activation shared fashion films.",
+      "schedule": [
+        { "runway_id": "wolford-sergio-rossi-capsule", "duration_seconds": 900 },
+        { "runway_id": "mugler-fall-winter-2021", "duration_seconds": 900 }
       ]
     }
   ]

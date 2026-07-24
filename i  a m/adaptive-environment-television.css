@@ -4483,9 +4483,9 @@ body.fashion-shelf-open .adaptive-television-fashion-runway-selector[data-video-
   display: none;
 }
 
-/* Music wallet: one compact switcher for the three adaptive linear channels. */
+/* Music wallet: one compact switcher for four adaptive linear formats. */
 .adaptive-television-reaction-wallet[data-wallet-view="music"] {
-  width: min(680px, calc(100vw - 38px));
+  width: min(760px, calc(100vw - 38px));
   min-height: 70px;
   border-color: rgba(255, 255, 255, 0.16);
   background: rgba(12, 12, 14, 0.12);
@@ -4701,6 +4701,65 @@ body.music-shelf-open .adaptive-television-music-selector[data-video-tooltip]::a
   right: 9px;
 }
 
+.adaptive-television-broadcast-programme {
+  display: grid;
+  grid-template-columns: 1fr 1.12fr 1fr;
+  width: calc(100% - 112px);
+  margin: 9px auto 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.13);
+  color: #fff;
+}
+
+.adaptive-television-broadcast-programme[aria-hidden="true"] {
+  visibility: hidden;
+}
+
+.adaptive-television-broadcast-programme__item {
+  display: grid;
+  min-width: 0;
+  min-height: 46px;
+  align-content: center;
+  padding: 7px 12px 8px;
+}
+
+.adaptive-television-broadcast-programme__item + .adaptive-television-broadcast-programme__item {
+  border-left: 1px solid rgba(255, 255, 255, 0.13);
+}
+
+.adaptive-television-broadcast-programme__item small,
+.adaptive-television-broadcast-programme__item strong,
+.adaptive-television-broadcast-programme__item span {
+  display: block;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-shadow: 0 1px 7px rgba(0, 0, 0, 0.94);
+  white-space: nowrap;
+}
+
+.adaptive-television-broadcast-programme__item small {
+  color: rgba(255, 255, 255, 0.52);
+  font: 650 7px/1 "Helvetica Neue", Helvetica, Arial, sans-serif;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.adaptive-television-broadcast-programme__item strong {
+  margin-top: 5px;
+  font: 550 10px/1.1 "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+.adaptive-television-broadcast-programme__item span {
+  margin-top: 4px;
+  color: rgba(255, 255, 255, 0.62);
+  font: 500 8px/1 "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+.adaptive-television-broadcast-programme__item--now strong {
+  color: #d8ff42;
+}
+
 .adaptive-television-radio-art {
   position: absolute;
   inset: 0;
@@ -4824,8 +4883,18 @@ body.music-shelf-open .adaptive-television-fashion-shelf:not(.adaptive-televisio
   }
 
   .adaptive-television-fashion-shelf__header,
+  .adaptive-television-broadcast-programme,
   .adaptive-television-fashion-shelf__footer {
     width: min(78vw, 350px);
+  }
+
+  .adaptive-television-broadcast-programme__item {
+    min-height: 42px;
+    padding: 6px 7px 7px;
+  }
+
+  .adaptive-television-broadcast-programme__item strong {
+    font-size: 8px;
   }
 
   .adaptive-television-fashion-shelf__viewport {
@@ -5849,9 +5918,28 @@ body.music-shelf-open .adaptive-television-fashion-shelf:not(.adaptive-televisio
 .adaptive-broadcast-entry__channel {
   margin-top: 16px;
   color: #d8ff42;
+  text-transform: uppercase;
+}
+
+.adaptive-broadcast-entry__channel span,
+.adaptive-broadcast-entry__channel small {
+  display: block;
+}
+
+.adaptive-broadcast-entry__channel span {
   font: 700 10px/1 "Helvetica Neue", Helvetica, Arial, sans-serif;
   letter-spacing: 0.13em;
-  text-transform: uppercase;
+}
+
+.adaptive-broadcast-entry__channel strong {
+  font: inherit;
+}
+
+.adaptive-broadcast-entry__channel small {
+  margin-top: 7px;
+  color: rgba(255, 255, 255, 0.7);
+  font: 650 8px/1 "Helvetica Neue", Helvetica, Arial, sans-serif;
+  letter-spacing: 0.16em;
 }
 
 .adaptive-broadcast-entry__description {
