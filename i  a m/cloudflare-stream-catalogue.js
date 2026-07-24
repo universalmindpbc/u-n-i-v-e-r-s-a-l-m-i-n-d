@@ -38,6 +38,8 @@
     "The Prodigy - Everybody In The Place.mp4": "e8d1ffe1bb389abb17b29099424d4afa",
     "U2 - Numb.mp4": "f903cfefe0fd849f4cb54fab4b9e851b",
     "Wolford x Sergio Rossi.mp4": "90c027288fe81ad915971988aafebafd",
+    "Zip (Perlon) - Air Festival, 2007.mp4": "16beb0de56b4924810211bae6d917ebb",
+    "Zip & Sammy D (Perlon) - Betalounge, 2000.mp4": "f1257734ca8ee5702b3022619db360cd",
   };
 
   function fileNameFromPath(value) {

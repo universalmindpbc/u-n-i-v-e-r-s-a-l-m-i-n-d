@@ -107,7 +107,7 @@
 
   const formatLabels = {
     videos: "Videos",
-    parties: "DJ Sets + Parties",
+    parties: "Parties",
     radio: "Radio",
   };
 

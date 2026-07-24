@@ -16,15 +16,17 @@ const MANTRA_MAX_DURATION_MS = 180000;
 const EVENT_TTL_MS = 120000;
 
 const ALLOWED_CHANNEL_IDS = [
-    'video-restore',
-    'video-social-uplift',
-    'video-underground-intensity',
-    'restore',
-    'social-uplift',
-    'underground-intensity',
-    'radio-restore',
-    'radio-social-uplift',
-    'radio-underground-intensity',
+    'video-inner-planes',
+    'video-champagne-bohemia',
+    'video-modul8-infinity',
+    'video-james-bondage',
+    'party-champagne-bohemia',
+    'party-modul8-infinity',
+    'party-james-bondage',
+    'radio-inner-planes',
+    'radio-champagne-bohemia',
+    'radio-modul8-infinity',
+    'radio-james-bondage',
 ];
 
 const ALLOWED_BLOOM_IDS = [

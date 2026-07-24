@@ -29,6 +29,8 @@
     { id: "nina-kraviz-eiffel-tower-cercle", artist: "Nina Kraviz", title: "Nina Kraviz at the Eiffel Tower, Paris (Cercle)", displayTitle: "Eiffel Tower, Paris (Cercle)", localVideoSrc: "a s s e t s/d j  s e t s/Nina Kraviz - Eiffel Tower, Paris, France - Cercle.mp4", radioHandoff: "house", presentation: "live_dj_set" },
     { id: "nastia-drum-bass-sunset-the-lab-ibiza", artist: "NASTIA", title: "NASTIA - Drum & Bass Sunset Set at The Lab Ibiza", displayTitle: "Drum & Bass Sunset Set at The Lab Ibiza", localVideoSrc: "a s s e t s/d j  s e t s/NASTIA - Ibiza at Sunset - The Lab.mp4", radioHandoff: "house", presentation: "live_dj_set" },
     { id: "carl-cox-chateau-de-chambord-cercle", artist: "Carl Cox", title: "Carl Cox at Château de Chambord, France (Cercle)", displayTitle: "Château de Chambord, France (Cercle)", localVideoSrc: "a s s e t s/d j  s e t s/Carl Cox - Château de Chambord, France - Cercle.mp4", radioHandoff: "house", presentation: "live_dj_set" },
+    { id: "zip-perlon-air-festival-2007", artist: "Zip", title: "Perlon at Air Festival, 2007", displayTitle: "Perlon · Air Festival, 2007", localVideoSrc: "a s s e t s/d j  s e t s/Zip (Perlon) - Air Festival, 2007.mp4", radioHandoff: "house", presentation: "live_dj_set", audioOnly: true },
+    { id: "zip-sammy-d-perlon-betalounge-2000", artist: "Zip & Sammy D", title: "Perlon at Betalounge, 2000", displayTitle: "Perlon · Betalounge, 2000", localVideoSrc: "a s s e t s/d j  s e t s/Zip & Sammy D (Perlon) - Betalounge, 2000.mp4", radioHandoff: "house", presentation: "live_dj_set", audioOnly: true },
 
   ];
   const VIDEO_BEAT_GRID = {
@@ -68,6 +70,7 @@
   const BROADCAST_FORMATS = ["videos", "parties", "radio", "fashion"];
   const MUSIC_BROADCAST_FORMATS = ["videos", "parties", "radio"];
   const BROADCAST_ENERGY_ORDER = ["restore", "social-uplift", "underground-intensity"];
+  const BROADCAST_EDITORIAL_ORDER = ["inner-planes", "champagne-bohemia", "modul8-infinity", "james-bondage"];
   const BROADCAST_ENERGY_PROFILES = {
     restore: {
       need_scores: { Anxiety: 1, Stress: 1, Fear: .88, Recovery: 1, Calm: 1, Attention: .78, "Psychological Safety": .92 },
@@ -83,17 +86,17 @@
     },
   };
   const DEFAULT_RADIO_STATIONS = [
-    { id: "cafe-del-mar-calm", stageGate: "calm", mode: "radio", provider: "Café del Mar Radio", title: "Calm", display_title: "Café del Mar — Calm", short_title: "CALM", stream_url: "https://streamer.radio.co/sb748f24ad/listen", primary_environmental_function: "Soul + Restoration", top_needs: ["Calm", "Recovery", "Psychological Safety", "Anxiety"], card_palette: ["#506f88", "#c8d6d9"] },
-    { id: "cafe-del-mar-chill", stageGate: "chill", mode: "radio", provider: "Café del Mar Radio", title: "Chill", display_title: "Café del Mar — Chill", short_title: "CHILL", stream_url: "https://streams.radio.co/se1a320b47/listen", primary_environmental_function: "Soul + Restoration", top_needs: ["Recovery", "Belonging", "Gratitude", "Trust"], card_palette: ["#99815f", "#e3ceb3"] },
-    { id: "cafe-del-mar-house", stageGate: "house", mode: "radio", provider: "Café del Mar Radio", title: "House", display_title: "Café del Mar — House", short_title: "HOUSE", stream_url: "https://s4.radio.co/seeae9c220/listen", primary_environmental_function: "Club Energy + Festival Activation", top_needs: ["Joy", "Motivation", "Connection", "Arousal"], card_palette: ["#8a4867", "#e6a99f"] },
-    { id: "groove-salad", stageGate: "calm", mode: "radio", provider: "SomaFM", title: "Groove Salad", display_title: "Groove Salad", short_title: "GROOVE SALAD", stream_url: "https://ice5.somafm.com/groovesalad-128-mp3", primary_environmental_function: "Focus + Flow", top_needs: ["Attention", "Executive Function", "Calm", "Recovery"], card_palette: ["#526b52", "#cad4a4"] },
-    { id: "groove-salad-classic", stageGate: "chill", mode: "radio", provider: "SomaFM", title: "Groove Salad Classic", display_title: "Groove Salad Classic", short_title: "GS CLASSIC", stream_url: "https://ice5.somafm.com/gsclassic-128-mp3", primary_environmental_function: "Soul + Restoration", top_needs: ["Belonging", "Gratitude", "Recovery", "Calm"], card_palette: ["#725f50", "#c9b896"] },
-    { id: "sanctuary-dark-electro", stageGate: "house", mode: "radio", provider: "Sanctuary Radio", title: "Dark Electro", display_title: "Sanctuary — Dark Electro", short_title: "DARK ELECTRO", stream_url: "https://stream.sanctuaryradio.com/mainchannel_hq", primary_environmental_function: "Grit + Agency", top_needs: ["Anger", "Motivation", "Self-Actualisation", "Curiosity"], card_palette: ["#312e42", "#9c6da6"] },
-    { id: "sanctuary-retro", stageGate: "chill", mode: "radio", provider: "Sanctuary Radio", title: "Retro", display_title: "Sanctuary — Retro", short_title: "RETRO", stream_url: "https://stream.sanctuaryradio.com/retrochannel_hq", primary_environmental_function: "Joy + Affirmation", top_needs: ["Belonging", "Joy", "Gratitude", "Connection"], card_palette: ["#355c67", "#d57c72"] },
-    { id: "nts-slow-focus", stageGate: "calm", mode: "radio", provider: "NTS", title: "Slow Focus", display_title: "NTS — Slow Focus", short_title: "SLOW FOCUS", stream_url: "https://streams.radiomast.io/dfc76352-cda6-4a95-85dd-6f6609f83ba2", stream_transport: "Buffered HLS scheduler", primary_environmental_function: "Soul + Restoration", top_needs: ["Calm", "Recovery", "Attention", "Awe"], card_palette: ["#3c4660", "#aebbd0"] },
-    { id: "nts-poolside", stageGate: "chill", mode: "radio", provider: "NTS", title: "Poolside", display_title: "NTS — Poolside", short_title: "POOLSIDE", stream_url: "https://streams.radiomast.io/052d2e3c-389c-44cf-a91a-8f5e1854f4c6", stream_transport: "Buffered HLS scheduler", primary_environmental_function: "Joy + Affirmation", top_needs: ["Joy", "Gratitude", "Connection", "Belonging"], card_palette: ["#2f7890", "#f2c978"] },
-    { id: "nts-otaku", stageGate: "chill", mode: "radio", provider: "NTS", title: "Otaku", display_title: "NTS — Otaku", short_title: "OTAKU", stream_url: "https://streams.radiomast.io/7481798f-063c-42a2-8048-15ff98fe309e", stream_transport: "Buffered HLS scheduler", primary_environmental_function: "Curiosity + Exploration", top_needs: ["Curiosity", "Awe", "Joy", "Self-Actualisation"], card_palette: ["#392d70", "#79d5cf"] },
-    { id: "nts-low-key", stageGate: "calm", mode: "radio", provider: "NTS", title: "Low Key", display_title: "NTS — Low Key", short_title: "LOW KEY", stream_url: "https://streams.radiomast.io/de114902-ee1b-441f-91bc-5468d1e77605", stream_transport: "Buffered HLS scheduler", primary_environmental_function: "Soul + Restoration", top_needs: ["Calm", "Attention", "Belonging", "Connection"], card_palette: ["#53423d", "#c5ab89"] },
+    { id: "cafe-del-mar-calm", stageGate: "calm", mode: "radio", provider: "Café del Mar Radio", title: "Calm", display_title: "Café del Mar — Calm", short_title: "CALM", stream_url: "https://streamer.radio.co/sb748f24ad/listen", logo_src: "a s s e t s/radio-logos/cafe-del-mar-calm.svg", brand_logo_src: "a s s e t s/radio-logos/cafe-del-mar.svg", logo_alt: "Café del Mar Calm", primary_environmental_function: "Soul + Restoration", top_needs: ["Calm", "Recovery", "Psychological Safety", "Anxiety"], card_palette: ["#506f88", "#c8d6d9"] },
+    { id: "cafe-del-mar-chill", stageGate: "chill", mode: "radio", provider: "Café del Mar Radio", title: "Chill", display_title: "Café del Mar — Chill", short_title: "CHILL", stream_url: "https://streams.radio.co/se1a320b47/listen", logo_src: "a s s e t s/radio-logos/cafe-del-mar-chill.svg", brand_logo_src: "a s s e t s/radio-logos/cafe-del-mar.svg", logo_alt: "Café del Mar Chill", primary_environmental_function: "Soul + Restoration", top_needs: ["Recovery", "Belonging", "Gratitude", "Trust"], card_palette: ["#99815f", "#e3ceb3"] },
+    { id: "cafe-del-mar-house", stageGate: "house", mode: "radio", provider: "Café del Mar Radio", title: "House", display_title: "Café del Mar — House", short_title: "HOUSE", stream_url: "https://s4.radio.co/seeae9c220/listen", logo_src: "a s s e t s/radio-logos/cafe-del-mar-house.svg", brand_logo_src: "a s s e t s/radio-logos/cafe-del-mar.svg", logo_alt: "Café del Mar House", primary_environmental_function: "Club Energy + Festival Activation", top_needs: ["Joy", "Motivation", "Connection", "Arousal"], card_palette: ["#8a4867", "#e6a99f"] },
+    { id: "groove-salad", stageGate: "calm", mode: "radio", provider: "SomaFM", title: "Groove Salad", display_title: "Groove Salad", short_title: "GROOVE SALAD", stream_url: "https://ice5.somafm.com/groovesalad-128-mp3", logo_src: "a s s e t s/radio-logos/groove-salad.png", logo_alt: "Groove Salad on SomaFM", primary_environmental_function: "Focus + Flow", top_needs: ["Attention", "Executive Function", "Calm", "Recovery"], card_palette: ["#526b52", "#cad4a4"] },
+    { id: "groove-salad-classic", stageGate: "chill", mode: "radio", provider: "SomaFM", title: "Groove Salad Classic", display_title: "Groove Salad Classic", short_title: "GS CLASSIC", stream_url: "https://ice5.somafm.com/gsclassic-128-mp3", logo_src: "a s s e t s/radio-logos/groove-salad-classic.jpg", logo_alt: "Groove Salad Classic on SomaFM", primary_environmental_function: "Soul + Restoration", top_needs: ["Belonging", "Gratitude", "Recovery", "Calm"], card_palette: ["#725f50", "#c9b896"] },
+    { id: "sanctuary-dark-electro", stageGate: "house", mode: "radio", provider: "Sanctuary Radio", title: "Dark Electro", display_title: "Sanctuary — Dark Electro", short_title: "DARK ELECTRO", stream_url: "https://stream.sanctuaryradio.com/mainchannel_hq", logo_src: "a s s e t s/radio-logos/sanctuary-radio.jpg", logo_alt: "Sanctuary Radio", logo_crop: "sanctuary", primary_environmental_function: "Grit + Agency", top_needs: ["Anger", "Motivation", "Self-Actualisation", "Curiosity"], card_palette: ["#312e42", "#9c6da6"] },
+    { id: "sanctuary-retro", stageGate: "chill", mode: "radio", provider: "Sanctuary Radio", title: "Retro", display_title: "Sanctuary — Retro", short_title: "RETRO", stream_url: "https://stream.sanctuaryradio.com/retrochannel_hq", logo_src: "a s s e t s/radio-logos/sanctuary-radio.jpg", logo_alt: "Sanctuary Radio", logo_crop: "sanctuary", primary_environmental_function: "Joy + Affirmation", top_needs: ["Belonging", "Joy", "Gratitude", "Connection"], card_palette: ["#355c67", "#d57c72"] },
+    { id: "nts-slow-focus", stageGate: "calm", mode: "radio", provider: "NTS", title: "Slow Focus", display_title: "NTS — Slow Focus", short_title: "SLOW FOCUS", stream_url: "https://streams.radiomast.io/dfc76352-cda6-4a95-85dd-6f6609f83ba2", stream_transport: "Buffered HLS scheduler", logo_src: "a s s e t s/radio-logos/nts.svg", logo_alt: "NTS Radio", primary_environmental_function: "Soul + Restoration", top_needs: ["Calm", "Recovery", "Attention", "Awe"], card_palette: ["#3c4660", "#aebbd0"] },
+    { id: "nts-poolside", stageGate: "chill", mode: "radio", provider: "NTS", title: "Poolside", display_title: "NTS — Poolside", short_title: "POOLSIDE", stream_url: "https://streams.radiomast.io/052d2e3c-389c-44cf-a91a-8f5e1854f4c6", stream_transport: "Buffered HLS scheduler", logo_src: "a s s e t s/radio-logos/nts.svg", logo_alt: "NTS Radio", primary_environmental_function: "Joy + Affirmation", top_needs: ["Joy", "Gratitude", "Connection", "Belonging"], card_palette: ["#2f7890", "#f2c978"] },
+    { id: "nts-otaku", stageGate: "chill", mode: "radio", provider: "NTS", title: "Otaku", display_title: "NTS — Otaku", short_title: "OTAKU", stream_url: "https://streams.radiomast.io/7481798f-063c-42a2-8048-15ff98fe309e", stream_transport: "Buffered HLS scheduler", logo_src: "a s s e t s/radio-logos/nts.svg", logo_alt: "NTS Radio", primary_environmental_function: "Curiosity + Exploration", top_needs: ["Curiosity", "Awe", "Joy", "Self-Actualisation"], card_palette: ["#392d70", "#79d5cf"] },
+    { id: "nts-low-key", stageGate: "calm", mode: "radio", provider: "NTS", title: "Low Key", display_title: "NTS — Low Key", short_title: "LOW KEY", stream_url: "https://streams.radiomast.io/de114902-ee1b-441f-91bc-5468d1e77605", stream_transport: "Buffered HLS scheduler", logo_src: "a s s e t s/radio-logos/nts.svg", logo_alt: "NTS Radio", primary_environmental_function: "Soul + Restoration", top_needs: ["Calm", "Attention", "Belonging", "Connection"], card_palette: ["#53423d", "#c5ab89"] },
   ];
   const continuation = {
     videoSrc: "a s s e t s/Homepage - Hero Background Video - Chanel 2020 Runway Show.mp4",
@@ -2080,7 +2083,7 @@
   function broadcastFormatLabel(mode = musicChannelMode) {
     return ({
       videos: "MUSIC VIDEOS",
-      parties: "DJ SETS",
+      parties: "PARTIES",
       radio: "RADIO",
       fashion: "FASHION",
     })[mode] || "SHARED CHANNEL";
@@ -2090,13 +2093,15 @@
     return fashionRunways.find((runway) => runway.assetKey === runwayId) || null;
   }
 
-  function broadcastEnergyPosition(item) {
-    const position = BROADCAST_ENERGY_ORDER.indexOf(item?.broadcastState?.energyId || item?.energyId || "");
-    return position >= 0 ? position : BROADCAST_ENERGY_ORDER.length;
+  function broadcastEditorialPosition(item) {
+    const position = BROADCAST_EDITORIAL_ORDER.indexOf(item?.editorialId || item?.broadcastState?.editorialId || "");
+    return position >= 0 ? position : BROADCAST_EDITORIAL_ORDER.length;
   }
 
   function musicCardsPerView() {
-    return window.matchMedia("(max-width: 720px)").matches ? 1 : 3;
+    if (window.matchMedia("(max-width: 720px)").matches) return 1;
+    if (window.matchMedia("(max-width: 1100px)").matches) return 2;
+    return 4;
   }
 
   function readMusicTasteProfile() {
@@ -2164,6 +2169,8 @@
       short_title: displayTitle,
       localVideoSrc: candidate.localVideoSrc,
       streamUid: candidate.streamUid,
+      hlsVideoSrc: candidate.hlsVideoSrc,
+      audioOnly: candidate.audioOnly === true,
       presentation: candidate.presentation || "official_video",
       editorial_priority: tensor?.priority || 2,
       primary_environmental_function: tensor?.primary_environmental_function || "Adaptive music",
@@ -2177,6 +2184,27 @@
 
   function broadcastChannelRecord(channel) {
     const state = window.IAMBroadcastClock?.stateAt(channel.id);
+    if (!state && channel.available === false) {
+      const energyProfile = BROADCAST_ENERGY_PROFILES[channel.energyId] || {};
+      return {
+        id: `broadcast-${channel.id}`,
+        mode: channel.format,
+        provider: channel.name,
+        artist: channel.name,
+        title: "Programming soon",
+        display_title: "Programming soon",
+        short_title: "PROGRAMMING SOON",
+        broadcastChannelId: channel.id,
+        broadcastChannelName: channel.name,
+        broadcastDescriptor: channel.descriptor,
+        broadcastDescription: channel.description,
+        editorialId: channel.editorialId,
+        unavailable: true,
+        primary_environmental_function: channel.description,
+        need_scores: energyProfile.need_scores || {},
+        context: energyProfile.context || {},
+      };
+    }
     if (!state) return null;
     const energyProfile = BROADCAST_ENERGY_PROFILES[state.energyId] || {};
     if (state.mediaType === "radio") {
@@ -2188,7 +2216,10 @@
         mode: channel.format,
         broadcastChannelId: channel.id,
         broadcastChannelName: channel.name,
+        broadcastDescriptor: channel.descriptor,
         broadcastDescription: channel.description,
+        editorialId: channel.editorialId,
+        visualChannelId: channel.visualChannelId,
         broadcastState: state,
         primary_environmental_function: channel.description || currentStation.primary_environmental_function,
         need_scores: energyProfile.need_scores || currentStation.need_scores,
@@ -2214,7 +2245,10 @@
         runwayRef: currentRunway,
         broadcastChannelId: channel.id,
         broadcastChannelName: channel.name,
+        broadcastDescriptor: channel.descriptor,
         broadcastDescription: channel.description,
+        editorialId: channel.editorialId,
+        visualChannelId: channel.visualChannelId,
         broadcastState: state,
         primary_environmental_function: channel.description,
         need_scores: energyProfile.need_scores || {},
@@ -2224,18 +2258,27 @@
     const currentTrack = findTrack(state?.trackId);
     if (!currentTrack) return null;
     const record = musicTrackRecord(currentTrack);
+    const pairedVisualState = state.mediaType === "audio" && state.visualChannelId
+      ? window.IAMBroadcastClock?.stateAt(state.visualChannelId)
+      : null;
+    const pairedRunway = fashionRunwayForId(pairedVisualState?.runwayId);
     return {
       ...record,
       id: `broadcast-${channel.id}`,
       mode: channel.format,
       broadcastChannelId: channel.id,
       broadcastChannelName: channel.name,
+      broadcastDescriptor: channel.descriptor,
       broadcastDescription: channel.description,
+      editorialId: channel.editorialId,
+      visualChannelId: channel.visualChannelId,
       broadcastState: state,
       primary_environmental_function: channel.description || record.primary_environmental_function,
       need_scores: energyProfile.need_scores || record.need_scores,
       context: energyProfile.context || record.context,
-      previewStart: Math.max(8, Math.floor(state.offsetSeconds)),
+      previewStart: pairedRunway?.previewStart || Math.max(8, Math.floor(state.offsetSeconds)),
+      previewVideoSrc: pairedRunway?.videoSrc || record.localVideoSrc,
+      visualStreamUid: pairedRunway?.streamUid || "",
       trackRef: currentTrack,
     };
   }
@@ -2254,8 +2297,9 @@
     const citizenNeeds = musicCitizenNeeds();
     BROADCAST_FORMATS.forEach((mode) => {
       const pool = musicItems(mode);
+      const availablePool = pool.filter((item) => !item.unavailable);
       const result = selector?.rank
-        ? selector.rank(pool, {
+        ? selector.rank(availablePool, {
           mode,
           citizenNeeds,
           tasteAffinities: taste.affinities,
@@ -2263,13 +2307,13 @@
           atWork,
           inGroup: audioWalletJoined,
           seed: musicRecommendationSeed(),
-          limit: 3,
+          limit: 4,
         })
-        : { ranked: pool, recommendations: pool.slice(0, 3), context: { atWork, inGroup: audioWalletJoined } };
+        : { ranked: availablePool, recommendations: availablePool.slice(0, 4), context: { atWork, inGroup: audioWalletJoined } };
       musicShelfRecommendationIds[mode] = result.recommendations[0]?.id || result.ranked[0]?.id || "";
-      musicShelfOrders[mode] = result.ranked
+      musicShelfOrders[mode] = pool
         .slice()
-        .sort((a, b) => broadcastEnergyPosition(a) - broadcastEnergyPosition(b));
+        .sort((a, b) => broadcastEditorialPosition(a) - broadcastEditorialPosition(b));
       document.body.dataset[`music${mode[0].toUpperCase()}${mode.slice(1)}RecommendationCount`] = String(result.recommendations.length);
     });
     document.body.dataset.musicRecommendationSource = Object.keys(citizenNeeds).length ? "citizen_needs_tensor" : "editorial_taste_exploration";
@@ -2354,7 +2398,7 @@
   }
 
   function musicThumbnailUrl(item) {
-    const uid = item.streamUid || window.IAMCloudflareStream?.assetFor(String(item.localVideoSrc || "").split("/").pop())?.uid;
+    const uid = item.visualStreamUid || item.streamUid || window.IAMCloudflareStream?.assetFor(String(item.previewVideoSrc || item.localVideoSrc || "").split("/").pop())?.uid;
     if (!uid) return "";
     const host = window.IAMCloudflareStream?.customerHost || "customer-1vpwglz3v6fiyaas.cloudflarestream.com";
     return `https://${host}/${uid}/thumbnails/thumbnail.jpg?time=${item.previewStart || 8}s&height=360`;
@@ -2378,7 +2422,8 @@
     stopMusicShelfPreview();
     const item = (musicShelfOrders[musicChannelMode] || []).find((candidate) => candidate.id === card.dataset.musicItemId);
     const media = card.querySelector(".adaptive-television-music-card__media");
-    if (!item?.localVideoSrc || !media || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    const previewVideoSrc = item?.previewVideoSrc || item?.localVideoSrc;
+    if (!previewVideoSrc || !media || item.unavailable || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
     const preview = document.createElement("video");
     preview.className = "adaptive-television-fashion-card__preview";
     preview.muted = true;
@@ -2390,9 +2435,9 @@
     preview.setAttribute("aria-hidden", "true");
     preview.dataset.streamRole = "music-preview";
     preview.dataset.streamMaxHeight = "360";
-    if (musicChannelMode === "fashion") {
+    if (musicChannelMode === "fashion" || item.audioOnly) {
       preview.dataset.streamRole = "fashion";
-      preview.__iamFashionSource = item.localVideoSrc;
+      preview.__iamFashionSource = previewVideoSrc;
     }
     musicShelfPreviewVideo = preview;
     musicShelfPreviewCard = card;
@@ -2408,15 +2453,15 @@
     });
     try {
       await window.IAMStreamController?.attach(preview, {
-        fileName: item.localVideoSrc,
-        role: musicChannelMode === "fashion" ? "fashion" : "music",
+        fileName: previewVideoSrc,
+        role: musicChannelMode === "fashion" || item.audioOnly ? "fashion" : "music",
         autoplay: false,
         preload: true,
         preloadTargetSeconds: 10,
       });
       if (preview !== musicShelfPreviewVideo || !musicShelfOpen) return;
       resetPreview();
-      if (musicChannelMode === "fashion") {
+      if (musicChannelMode === "fashion" || item.audioOnly) {
         window.IAMStreamController?.setFashionActive(preview, true, "shared_fashion_preview");
       }
       await preview.play();
@@ -2455,16 +2500,26 @@
   }
 
   function musicCardMedia(item, position) {
+    if (item.unavailable) {
+      return `<span class="adaptive-television-fashion-card__media adaptive-television-music-card__media adaptive-television-music-card__media--unavailable">
+        <span class="adaptive-television-music-card__placeholder">${item.broadcastChannelName}</span>
+        <span class="adaptive-television-music-card__soon">PROGRAMMING SOON</span>
+        <span class="adaptive-television-music-card__mode">${item.broadcastChannelName}</span>
+      </span>`;
+    }
     if (musicChannelMode === "radio") {
       const palette = item.card_palette || ["#4c5664", "#aeb7bf"];
       return `<span class="adaptive-television-fashion-card__media adaptive-television-music-card__media" style="--station-a:${palette[0]};--station-b:${palette[1]}">
-        <span class="adaptive-television-radio-art"><strong>${item.display_title}</strong></span>
+        <span class="adaptive-television-radio-art${item.logo_crop ? ` adaptive-television-radio-art--${item.logo_crop}` : ""}">
+          <img class="adaptive-television-radio-art__logo" src="${item.logo_src}" alt="${item.logo_alt || item.provider}">
+          ${item.brand_logo_src ? `<img class="adaptive-television-radio-art__brand" src="${item.brand_logo_src}" alt="">` : ""}
+        </span>
         <span class="adaptive-television-music-card__live">ON NOW</span>
         <span class="adaptive-television-music-card__mode">${item.broadcastChannelName}</span>
       </span>`;
     }
     return `<span class="adaptive-television-fashion-card__media adaptive-television-music-card__media">
-      <img src="${musicThumbnailUrl(item)}" alt="" loading="${position < 3 ? "eager" : "lazy"}">
+      <img src="${musicThumbnailUrl(item)}" alt="" loading="${position < 4 ? "eager" : "lazy"}">
       <span class="adaptive-television-fashion-card__preview-label">10s preview</span>
       <span class="adaptive-television-music-card__live">ON NOW</span>
       <span class="adaptive-television-music-card__mode">${item.broadcastChannelName}</span>
@@ -2483,17 +2538,17 @@
     musicShelfTrack.innerHTML = order.map((item, position) => {
       const current = item.broadcastChannelId === activeBroadcastChannelIdForMode(musicChannelMode);
       const recommended = item.id === musicShelfRecommendationIds[musicChannelMode];
-      const recommendationLabel = recommended ? "Based on your check-in · ON NOW" : "ON NOW";
       const provider = musicChannelMode === "radio" ? item.provider : item.artist;
       const title = item.display_title || item.title;
-      const action = "Open shared broadcast";
-      const cardTitle = musicChannelMode === "radio" ? title : provider;
-      const cardDetail = musicChannelMode === "radio" ? "" : title;
+      const action = item.unavailable ? "Programming soon" : "Open shared broadcast";
+      const cardTitle = item.unavailable ? item.broadcastChannelName : musicChannelMode === "radio" ? item.title : provider;
+      const cardDetail = item.unavailable ? "Programming soon" : musicChannelMode === "radio" ? item.provider : title;
       return `<div class="adaptive-television-fashion-shelf__item" data-music-shelf-item role="listitem">
-        <button class="adaptive-television-fashion-card adaptive-television-music-card${current ? " is-current-broadcast" : ""}${recommended ? " is-recommended" : ""}" type="button" data-music-card data-music-item-id="${item.id}" aria-pressed="${current}" aria-label="${action}: ${provider} — ${title}">
+        <button class="adaptive-television-fashion-card adaptive-television-music-card${current ? " is-current-broadcast" : ""}${recommended ? " is-recommended" : ""}${item.unavailable ? " is-unavailable" : ""}" type="button" data-music-card data-music-item-id="${item.id}" aria-pressed="${current}" aria-label="${action}: ${provider} — ${title}"${item.unavailable ? " disabled" : ""}>
+          <span class="adaptive-television-music-card__recommendation${recommended ? " is-visible" : ""}">${recommended ? "Based on your check-in" : "&nbsp;"}</span>
           ${musicCardMedia(item, position)}
           <span class="adaptive-television-fashion-card__copy">
-            <small>${recommendationLabel}</small>
+            <small>${item.broadcastDescriptor || item.broadcastDescription}</small>
             <strong>${cardTitle}</strong>
             ${cardDetail ? `<span>${cardDetail}</span>` : ""}
           </span>
@@ -3336,7 +3391,7 @@
       return false;
     }
     const state = window.IAMBroadcastClock?.stateAt(item.broadcastChannelId);
-    const currentTrack = state?.mediaType === "video" ? findTrack(state.trackId) : null;
+    const currentTrack = ["video", "audio"].includes(state?.mediaType) ? findTrack(state.trackId) : null;
     const currentStation = state?.mediaType === "radio" ? stationForId(state.stationId) : null;
     const currentRunway = state?.mediaType === "fashion" ? fashionRunwayForId(state.runwayId) : null;
     const currentMedia = currentTrack || currentStation || currentRunway;
@@ -3552,6 +3607,44 @@
       }
       return state;
     }
+    if (state.mediaType === "audio") {
+      const scheduledTrack = findTrack(state.trackId);
+      if (!scheduledTrack) return null;
+      document.body.dataset.broadcastTrackId = state.trackId;
+      delete document.body.dataset.broadcastStationId;
+      document.body.dataset.broadcastTargetSeconds = state.offsetSeconds.toFixed(3);
+      if (
+        continuationDecision?.track_id !== scheduledTrack.id ||
+        !continuationAudio ||
+        document.body.dataset.audioPartyPlaybackState === "stopped"
+      ) {
+        document.body.dataset.broadcastCorrection = "programme_rollover";
+        if (!musicSwitching) {
+          await startAudioLedParty(scheduledTrack, {
+            source: "broadcast_rollover",
+            broadcastChannelId,
+          });
+          rankMusicShelves();
+        }
+        return state;
+      }
+      if (continuationAudio.readyState < 1) return state;
+      const driftSeconds = Number(continuationAudio.currentTime || 0) - state.offsetSeconds;
+      const absoluteDrift = Math.abs(driftSeconds);
+      document.body.dataset.broadcastDriftSeconds = driftSeconds.toFixed(3);
+      if (forceSeek || absoluteDrift > 1.25) {
+        seekBroadcastVideo(continuationAudio, state.offsetSeconds);
+        continuationAudio.playbackRate = 1;
+        document.body.dataset.broadcastCorrection = forceSeek ? "entry_seek" : "hard_seek";
+      } else if (absoluteDrift > .35) {
+        continuationAudio.playbackRate = driftSeconds > 0 ? .98 : 1.02;
+        document.body.dataset.broadcastCorrection = driftSeconds > 0 ? "soft_slow" : "soft_catchup";
+      } else {
+        continuationAudio.playbackRate = 1;
+        document.body.dataset.broadcastCorrection = "locked";
+      }
+      return state;
+    }
     const scheduledTrack = findTrack(state.trackId);
     if (!scheduledTrack || !localVideo) return null;
     document.body.dataset.broadcastTrackId = state.trackId;
@@ -3610,7 +3703,7 @@
         pairingSource: options.pairingSource || "manual_fashion_channel",
       });
     }
-    const scheduledTrack = state?.mediaType === "video" ? findTrack(state.trackId) : null;
+    const scheduledTrack = ["video", "audio"].includes(state?.mediaType) ? findTrack(state.trackId) : null;
     const scheduledStation = state?.mediaType === "radio" ? stationForId(state.stationId) : null;
     if (!state || (!scheduledTrack && !scheduledStation)) return false;
     closeBroadcastEntry(false);
@@ -3623,9 +3716,19 @@
         source: options.source || "broadcast_join",
         broadcastChannelId: channelId,
       });
-      await joinFashionBroadcastChannel(fashionChannelIdForEnergy(state.energyId), {
+      await joinFashionBroadcastChannel(state.visualChannelId || fashionChannelIdForEnergy(state.energyId), {
         source: "radio_energy_match",
-        pairingSource: `radio_${state.energyId}`,
+        pairingSource: `radio_${state.editorialId || state.energyId}`,
+      });
+    } else if (state.mediaType === "audio") {
+      const started = await startAudioLedParty(scheduledTrack, {
+        source: options.source || "broadcast_join",
+        broadcastChannelId: channelId,
+      });
+      if (!started) return false;
+      await joinFashionBroadcastChannel(state.visualChannelId || "fashion-underground-intensity", {
+        source: "audio_party_visual_pair",
+        pairingSource: `party_${state.editorialId || state.energyId}`,
       });
     } else {
       await switchMusicTrack(scheduledTrack, {
@@ -3656,7 +3759,8 @@
       stopBroadcastPlayback(options.source || "track_switch");
     }
     stopContinuationAudioImmediately();
-    document.body.classList.remove("television-radio-continuation");
+    document.body.classList.remove("television-radio-continuation", "television-audio-party");
+    document.body.dataset.audioPartyPlaybackState = "stopped";
     activeRadioStationId = "";
     delete document.body.dataset.radioStationId;
     delete document.body.dataset.radioStationProvider;
@@ -3710,6 +3814,88 @@
     return radioStationRecords.find((station) => station.id === stationId) || radioStationRecords.find((station) => station.id === continuation.defaultStation) || radioStationRecords[0];
   }
 
+  async function startAudioLedParty(nextTrack, options = {}) {
+    if (!nextTrack?.audioOnly || musicSwitching) return false;
+    const streamAsset = window.IAMCloudflareStream?.assetFor(nextTrack.localVideoSrc);
+    const source = nextTrack.hlsVideoSrc || streamAsset?.hls || "";
+    if (!source) {
+      document.body.dataset.audioPartyPlaybackState = "encoding";
+      showMusicShelfStatus(`${nextTrack.displayArtist || nextTrack.artist} · broadcast encoding is finishing`, 4200);
+      return false;
+    }
+    musicSwitching = true;
+    try {
+      if (options.broadcastChannelId) {
+        broadcastChannelId = options.broadcastChannelId;
+        document.body.dataset.broadcastMode = "shared";
+        document.body.dataset.broadcastChannelId = broadcastChannelId;
+      } else {
+        stopBroadcastPlayback(options.source || "audio_party_start");
+      }
+      if (localVideo) {
+        try { localVideo.pause(); } catch {}
+        localVideo.muted = true;
+      }
+      activeRadioStationId = "";
+      delete document.body.dataset.radioStationId;
+      delete document.body.dataset.radioStationProvider;
+      document.body.classList.add("television-radio-continuation", "television-audio-party");
+      document.body.dataset.audioPartyPlaybackState = "loading";
+      document.body.dataset.audioPartyTrackId = nextTrack.id;
+      playerMount.classList.remove("is-local-video-awaiting-gesture");
+      await setVideoBlend(0);
+      await ensureFashionStreamAttached();
+      if (fashionVideo?.paused) await playWhenStreamAttached(fashionVideo, "fashion").catch(() => {});
+      musicChannelMode = "parties";
+      musicModeManuallySelected = options.source !== "automatic_continuation";
+      track = nextTrack;
+      syncSelectedTrackCopy();
+      setMusicTelevisionMetadata();
+      await primeContinuationAudio({
+        id: nextTrack.id,
+        track_id: nextTrack.id,
+        label: nextTrack.displayTitle || nextTrack.title,
+        src: source,
+      });
+      const state = options.broadcastChannelId
+        ? window.IAMBroadcastClock?.stateAt(options.broadcastChannelId)
+        : null;
+      if (state?.trackId === nextTrack.id) seekBroadcastVideo(continuationAudio, state.offsetSeconds);
+      continuationAudio.loop = false;
+      continuationAudio.muted = false;
+      continuationAudio.playbackRate = 1;
+      setVoiceAssistantProgramVolume(continuationAudio, .68, voiceAssistantDuckActive ? 260 : 0);
+      await continuationAudio.play();
+      document.body.dataset.radioPlaybackState = "playing";
+      document.body.dataset.audioPartyPlaybackState = "playing";
+      window.IAMEMDR?.setTimelineSource?.({ media: continuationAudio, bpm: 124, firstDownbeatSeconds: 0, fallbackBpm: 124 });
+      if ("mediaSession" in window.navigator && window.MediaMetadata) {
+        window.navigator.mediaSession.metadata = new window.MediaMetadata({
+          title: nextTrack.displayTitle || nextTrack.title,
+          artist: nextTrack.displayArtist || nextTrack.artist,
+          album: "Universal Mind · james bondage",
+        });
+      }
+      updateMusicSelector();
+      renderMusicShelf();
+      showMusicShelfStatus(`${nextTrack.displayArtist || nextTrack.artist} · live mix now`, 2600);
+      window.IAMFirstPartyAnalytics?.record?.("audio_party_start", {
+        track_id: nextTrack.id,
+        channel_id: options.broadcastChannelId || "",
+        visual_channel_id: "fashion-underground-intensity",
+        selection_source: options.source || "adaptive",
+      });
+      return true;
+    } catch (error) {
+      document.body.dataset.audioPartyPlaybackState = "error";
+      document.body.dataset.audioPartyPlaybackError = String(error?.message || error).slice(0, 140);
+      showMusicShelfStatus(`${nextTrack.displayArtist || nextTrack.artist} · mix unavailable`, 3600);
+      return false;
+    } finally {
+      musicSwitching = false;
+    }
+  }
+
   function bestRadioStationForTrack() {
     const ranked = musicShelfOrders.radio?.length ? musicShelfOrders.radio : radioStationRecords;
     const stagePool = continuation.stagePools[track.radioHandoff] || [];
@@ -3734,6 +3920,8 @@
       localVideo.muted = true;
     }
     document.body.classList.add("television-radio-continuation");
+    document.body.classList.remove("television-audio-party");
+    document.body.dataset.audioPartyPlaybackState = "stopped";
     playerMount.classList.remove("is-local-video-awaiting-gesture");
     await setVideoBlend(0);
     await ensureFashionStreamAttached();

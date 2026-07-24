@@ -1,5 +1,5 @@
 (function () {
-  const SCHEDULE_URL = "broadcast-schedule-v1.json?v=broadcast-schedule-v1-2";
+  const SCHEDULE_URL = "broadcast-schedule-v1.json?v=broadcast-schedule-v1-3";
   const CLOCK_URL = "api/broadcast-clock.php";
   const CLOCK_PROBES = 3;
   let schedule = null;
@@ -13,7 +13,8 @@
 
   function normalizedChannel(channel) {
     const entries = Array.isArray(channel?.schedule) ? channel.schedule : [];
-    const mediaType = ["radio", "fashion"].includes(channel?.media_type) ? channel.media_type : "video";
+    const mediaType = ["audio", "radio", "fashion"].includes(channel?.media_type) ? channel.media_type : "video";
+    const available = channel?.available !== false;
     const normalizedEntries = entries.map((entry) => {
       const trackId = String(entry.track_id || "");
       const stationId = String(entry.station_id || "");
@@ -27,7 +28,13 @@
       };
     });
     const cycleSeconds = normalizedEntries.reduce((sum, entry) => sum + entry.durationSeconds, 0);
-    if (!channel?.id || !channel?.format || !channel?.energy_id || !channel?.name || !normalizedEntries.length || !Number.isFinite(cycleSeconds) || cycleSeconds <= 0) {
+    if (
+      !channel?.id ||
+      !channel?.format ||
+      !channel?.energy_id ||
+      !channel?.name ||
+      (available && (!normalizedEntries.length || !Number.isFinite(cycleSeconds) || cycleSeconds <= 0))
+    ) {
       throw new Error("Invalid broadcast channel schedule.");
     }
     if (normalizedEntries.some((entry) => !entry.mediaId || !Number.isFinite(entry.durationSeconds) || entry.durationSeconds <= 0)) {
@@ -37,9 +44,13 @@
       id: channel.id,
       format: channel.format,
       mediaType,
+      available,
       energyId: channel.energy_id,
+      editorialId: channel.editorial_id || channel.id,
       name: channel.name,
+      descriptor: channel.descriptor || "",
       description: channel.description || "",
+      visualChannelId: channel.visual_channel_id || "",
       entries: normalizedEntries,
       cycleSeconds,
     };
@@ -106,7 +117,7 @@
   function stateAt(channelId, requestedNowMs = nowMs()) {
     if (!schedule) return null;
     const channel = channelForId(channelId);
-    if (!channel) return null;
+    if (!channel?.available) return null;
     const elapsedSeconds = (Number(requestedNowMs) - schedule.epochMs) / 1000;
     const cycleIndex = Math.floor(elapsedSeconds / channel.cycleSeconds);
     const cyclePositionSeconds = positiveModulo(elapsedSeconds, channel.cycleSeconds);
@@ -130,9 +141,13 @@
       channelId: channel.id,
       format: channel.format,
       mediaType: channel.mediaType,
+      available: channel.available,
       energyId: channel.energyId,
+      editorialId: channel.editorialId,
       channelName: channel.name,
+      channelDescriptor: channel.descriptor,
       channelDescription: channel.description,
+      visualChannelId: channel.visualChannelId,
       mediaId: entry.mediaId,
       trackId: entry.trackId,
       stationId: entry.stationId,
@@ -191,7 +206,7 @@
   }
 
   const api = {
-    version: "broadcast_clock_v1.1",
+    version: "broadcast_clock_v1.2",
     ready: null,
     nowMs,
     stateAt,
@@ -204,9 +219,13 @@
         id: channel.id,
         format: channel.format,
         mediaType: channel.mediaType,
+        available: channel.available,
         energyId: channel.energyId,
+        editorialId: channel.editorialId,
         name: channel.name,
+        descriptor: channel.descriptor,
         description: channel.description,
+        visualChannelId: channel.visualChannelId,
         cycleSeconds: channel.cycleSeconds,
         trackIds: channel.entries.map((entry) => entry.trackId),
         stationIds: channel.entries.map((entry) => entry.stationId),

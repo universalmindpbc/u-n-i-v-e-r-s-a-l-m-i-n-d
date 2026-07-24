@@ -4675,12 +4675,49 @@ body.music-shelf-open .adaptive-television-music-selector[data-video-tooltip]::a
   z-index: 17;
 }
 
+.adaptive-television-music-shelf .adaptive-television-fashion-shelf__panel {
+  width: min(1580px, calc(100vw - 72px));
+}
+
+.adaptive-television-music-shelf .adaptive-television-fashion-shelf__header,
+.adaptive-television-music-shelf .adaptive-television-fashion-shelf__viewport,
+.adaptive-television-music-shelf .adaptive-television-fashion-shelf__footer {
+  width: calc(100% - 88px);
+}
+
+.adaptive-television-music-shelf .adaptive-television-fashion-shelf__track {
+  gap: 18px;
+}
+
+.adaptive-television-music-shelf .adaptive-television-fashion-shelf__item {
+  flex: 0 0 calc((100% - 54px) / 4);
+}
+
+.adaptive-television-music-card__recommendation {
+  display: block;
+  height: 14px;
+  overflow: hidden;
+  color: transparent;
+  font: 600 8px/1 "Helvetica Neue", Helvetica, Arial, sans-serif;
+  letter-spacing: 0.1em;
+  text-overflow: ellipsis;
+  text-shadow: none;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.adaptive-television-music-card__recommendation.is-visible {
+  color: rgba(255, 255, 255, 0.74);
+  text-shadow: 0 1px 7px rgba(0, 0, 0, 0.94);
+}
+
 .adaptive-television-music-card__media {
   isolation: isolate;
 }
 
 .adaptive-television-music-card__live,
-.adaptive-television-music-card__mode {
+.adaptive-television-music-card__mode,
+.adaptive-television-music-card__soon {
   position: absolute;
   z-index: 4;
   top: 9px;
@@ -4704,8 +4741,35 @@ body.music-shelf-open .adaptive-television-music-selector[data-video-tooltip]::a
   right: 9px;
 }
 
-.adaptive-television-music-card.is-current-broadcast .adaptive-television-fashion-card__copy strong {
+.adaptive-television-music-card.is-recommended .adaptive-television-fashion-card__copy strong {
   color: #d8ff42;
+}
+
+.adaptive-television-music-card.is-current-broadcast .adaptive-television-music-card__media {
+  border-color: #d8ff42;
+}
+
+.adaptive-television-music-card__soon {
+  left: 9px;
+}
+
+.adaptive-television-music-card__media--unavailable {
+  background: rgba(4, 5, 8, 0.82);
+}
+
+.adaptive-television-music-card__placeholder {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  color: rgba(255, 255, 255, 0.6);
+  font: 500 clamp(18px, 2vw, 30px)/1 "Helvetica Neue", Helvetica, Arial, sans-serif;
+  letter-spacing: -0.045em;
+}
+
+.adaptive-television-music-card.is-unavailable {
+  cursor: default;
+  opacity: 0.58;
 }
 
 .adaptive-television-radio-art {
@@ -4714,41 +4778,53 @@ body.music-shelf-open .adaptive-television-music-selector[data-video-tooltip]::a
   display: grid;
   place-items: center;
   overflow: hidden;
-  background:
-    linear-gradient(135deg, color-mix(in srgb, var(--station-a) 72%, #050505), color-mix(in srgb, var(--station-b) 68%, #050505));
+  gap: 14px;
+  grid-auto-flow: column;
+  grid-auto-columns: minmax(0, 1fr);
+  padding: 12%;
+  background: color-mix(in srgb, var(--station-a) 22%, #050505);
 }
 
 .adaptive-television-radio-art::before {
-  position: absolute;
-  inset: 12% 8%;
-  border-top: 1px solid rgba(255, 255, 255, 0.26);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-  content: "";
-  transform: skewY(-9deg);
+  display: none;
 }
 
 .adaptive-television-radio-art::after {
-  position: absolute;
-  right: 8%;
-  bottom: 14%;
-  left: 8%;
-  height: 26%;
-  background: repeating-linear-gradient(90deg, rgba(255, 255, 255, 0.62) 0 1px, transparent 1px 13px);
-  content: "";
-  opacity: 0.52;
-  transform: scaleY(.58);
-  transform-origin: bottom;
+  display: none;
 }
 
-.adaptive-television-radio-art strong {
+.adaptive-television-radio-art .adaptive-television-radio-art__logo,
+.adaptive-television-radio-art .adaptive-television-radio-art__brand {
   position: relative;
+  inset: auto;
   z-index: 2;
-  width: min(78%, 250px);
-  color: rgba(255, 255, 255, 0.94);
-  font: 500 clamp(18px, 2vw, 31px)/.96 "Helvetica Neue", Helvetica, Arial, sans-serif;
-  letter-spacing: -0.055em;
-  text-align: center;
-  text-transform: uppercase;
+  width: 100%;
+  height: 100%;
+  max-height: 74px;
+  object-fit: contain;
+}
+
+.adaptive-television-radio-art:not(:has(.adaptive-television-radio-art__brand)) .adaptive-television-radio-art__logo {
+  grid-column: 1 / -1;
+  max-height: 112px;
+}
+
+.adaptive-television-radio-art--sanctuary {
+  display: block;
+  padding: 0;
+}
+
+.adaptive-television-radio-art--sanctuary .adaptive-television-radio-art__logo {
+  max-height: none;
+  object-fit: cover;
+  object-position: 50% 0;
+  transform: scale(2.15);
+  transform-origin: 39% 15%;
+}
+
+.adaptive-television-music-card .adaptive-television-fashion-card__copy small {
+  color: rgba(255, 255, 255, 0.72);
+  font-weight: 700;
 }
 
 .adaptive-television-music-shelf__status {
@@ -4763,6 +4839,12 @@ body.music-shelf-open .adaptive-television-music-selector[data-video-tooltip]::a
 
 body.music-shelf-open .adaptive-television-fashion-shelf:not(.adaptive-television-music-shelf) {
   pointer-events: none;
+}
+
+@media (max-width: 1100px) and (min-width: 721px) {
+  .adaptive-television-music-shelf .adaptive-television-fashion-shelf__item {
+    flex-basis: calc((100% - 18px) / 2);
+  }
 }
 
 @media (max-width: 760px) {
@@ -4825,6 +4907,23 @@ body.music-shelf-open .adaptive-television-fashion-shelf:not(.adaptive-televisio
 }
 
 @media (max-width: 720px) {
+  .adaptive-television-music-shelf .adaptive-television-fashion-shelf__panel {
+    width: 100%;
+  }
+
+  .adaptive-television-music-shelf .adaptive-television-fashion-shelf__header,
+  .adaptive-television-music-shelf .adaptive-television-fashion-shelf__footer {
+    width: min(78vw, 350px);
+  }
+
+  .adaptive-television-music-shelf .adaptive-television-fashion-shelf__viewport {
+    width: min(86vw, 390px);
+  }
+
+  .adaptive-television-music-shelf .adaptive-television-fashion-shelf__item {
+    flex-basis: min(78vw, 350px);
+  }
+
   .adaptive-television-fashion-shelf__panel {
     top: 46%;
     width: 100%;
