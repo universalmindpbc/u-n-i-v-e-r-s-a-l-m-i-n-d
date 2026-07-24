@@ -2583,7 +2583,8 @@
     startBroadcastProgrammeTicker();
     window.setTimeout(() => {
       updateMusicShelfPosition();
-      musicShelfTrack?.querySelector("[data-music-card]")?.focus({ preventScroll: true });
+      (musicShelfTrack?.querySelector("[data-music-card].is-active") ||
+        musicShelfTrack?.querySelector("[data-music-card]"))?.focus({ preventScroll: true });
     }, 90);
   }
 
