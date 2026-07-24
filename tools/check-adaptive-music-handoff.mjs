@@ -567,7 +567,12 @@ requireCondition(mantraLibrary.banks.tibet.length === 6 && mantraLibrary.banks.i
 requireCondition(mantraLibrary.banks.tibet.filter((item) => item.reserved).length === 3, 'the three undecided Tibet nodes are no longer reserved');
 requireCondition(mantraLibrary.banks.ibiza.filter((item) => item.source_type === 'reference_sample').length === 3, 'Ibiza must retain exactly the three approved reference samples');
 requireCondition(mantraLibrary.banks.ibiza.filter((item) => item.source_type === 'vocoder').length === 3, 'Ibiza must contain the three original vocoder samples');
-requireCondition(mantraSampler.includes('stopItem(item.id);') && mantraSampler.includes('source.start(scheduledContextTime, trimStart, sampleDuration);'), 'a mantra pad can no longer retrigger before its sample finishes');
+requireCondition(
+  mantraSampler.includes('const sources = sourceById.get(item.id) || new Set();')
+    && mantraSampler.includes('sources.add(source);')
+    && mantraSampler.includes('source.start(scheduledContextTime, trimStart, sampleDuration);'),
+  'a mantra pad can no longer retrigger polyphonically before its earlier voices finish'
+);
 requireCondition(mantraSampler.includes('source.detune.linearRampToValueAtTime') && mantraSampler.includes('item.pitch_curve'), 'saved drawn pitch lines no longer shape sampler playback');
 requireCondition(mantraSampler.includes('document.body.classList.remove("mantra-sampler-open")') && controller.includes('window.addEventListener("iam:mantra-close"') && controller.includes('setWalletView("emdr");'), 'closing the full-screen sampler no longer returns to the restored EMDR wallet');
 requireCondition(controller.includes('emdrMantraOpen?.addEventListener("click"') && controller.includes('window.IAMMantraSampler?.open?.();') && !controller.includes('deactivateVisualEmdr();'), 'the Mantra extension no longer opens independently from the restored EMDR controls');
@@ -596,7 +601,12 @@ requireCondition(mantraGainInput && Math.abs(20 * Math.log10(Number(mantraGainIn
 requireCondition(mantraStudioPage.includes('data-sample-normalise') && mantraStudioPage.includes('>normalise sample</button>'), 'the Pad editor no longer exposes the requested normalise button');
 requireCondition(mantraStudioScript.includes('const NORMALISE_TARGET_DB = -12;') && mantraStudioScript.includes('function trimmedRms(buffer)') && mantraStudioScript.includes('NORMALISE_TARGET_RMS / average'), 'normalise no longer raises the current trim toward a strong average level');
 requireCondition(mantraStudioScript.includes('function createPeakLimiter(ctx)') && mantraStudioScript.includes('limiter.threshold.value = -1;') && mantraStudioScript.includes('limiter.connect(analyser).connect(ctx.destination)'), 'the Studio preview no longer contains high-gain peaks');
-requireCondition(mantraSampler.includes('Math.min(15.849, itemGain)') && mantraSampler.includes('ctx.createDynamicsCompressor()') && mantraSampler.includes('limiter.connect(ctx.destination)'), 'saved +24 dB Mantra gain no longer reaches protected sampler playback');
+requireCondition(
+  mantraSampler.includes('Math.min(15.849, itemGain)')
+    && mantraSampler.includes('function outputLimiter(ctx)')
+    && mantraSampler.includes('masterLimiter.connect(ctx.destination)'),
+  'saved +24 dB polyphonic Mantra gain no longer reaches protected master-limited playback'
+);
 requireCondition(mantraLibraryEndpoint.includes('const MANTRA_MAX_GAIN = 15.849;') && mantraLibraryEndpoint.includes('$gain > MANTRA_MAX_GAIN'), 'the owner API no longer accepts the Studio +24 dB gain range safely');
 requireCondition(!mantraStudioScript.includes('currentBank !== "ibiza"') && mantraStudioScript.includes('await uploadAudio(file, "vocoder", renderedVocoderDuration, target);'), 'Voice Lab can no longer save a render to a selected Tibet pad');
 requireCondition(mantraStudioScript.includes('bank: currentBank') && mantraStudioScript.includes('slot: currentSlot') && mantraStudioPage.includes('select any pad, choose a voice'), 'Voice Lab no longer preserves the selected bank and pad through rendering');

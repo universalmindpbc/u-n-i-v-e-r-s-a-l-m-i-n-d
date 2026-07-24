@@ -5,16 +5,12 @@ header('Content-Type: application/json; charset=utf-8');
 header('Cache-Control: no-store, no-cache, must-revalidate, max-age=0');
 header('Pragma: no-cache');
 
-const WORKER_VERSION = 'broadcast_interactions_panthur_v1.2';
-const BLOOM_COALESCE_MS = 350;
+const WORKER_VERSION = 'broadcast_interactions_panthur_v1.3';
 const BLOOM_PERSON_COOLDOWN_MS = 2000;
 const BLOOM_PERSON_LIMIT_PER_MINUTE = 6;
-const BLOOM_GLOBAL_GAP_MS = 2000;
-const DOVE_GLOBAL_GAP_MS = 6000;
-const MANTRA_SCHEDULE_AHEAD_MS = 1500;
-const MANTRA_PERSON_COOLDOWN_MS = 1500;
-const MANTRA_QUIET_MS = 8000;
-const MANTRA_GLOBAL_LIMIT_PER_MINUTE = 2;
+const MANTRA_DEMO_MODE = 'unrestricted_stakeholder_demo';
+const DEMO_CUE_PAST_TOLERANCE_MS = 2500;
+const DEMO_CUE_FUTURE_TOLERANCE_MS = 250;
 const MANTRA_LIBRARY_PATH = __DIR__ . '/mantra-library.json';
 const MANTRA_DEFAULT_DURATION_MS = 15000;
 const MANTRA_MAX_DURATION_MS = 180000;
@@ -93,15 +89,7 @@ function empty_state(): array
         'version' => WORKER_VERSION,
         'sequence' => 0,
         'events' => [],
-        'next_bloom_at_ms' => 0,
-        'bloom_flush_at_ms' => 0,
         'bloom_history_by_session' => [],
-        'pending_blooms' => [],
-        'next_mantra_at_ms' => 0,
-        'mantra_history_by_session' => [],
-        'global_mantra_history' => [],
-        'current_mantra' => null,
-        'queued_mantra' => null,
         'recent_event_ids' => [],
     ];
 }
@@ -125,26 +113,10 @@ function prune_state(array &$state, int $now): void
         }
     }
 
-    foreach ((array) ($state['mantra_history_by_session'] ?? []) as $sessionId => $at) {
-        if ($now - (int) $at >= MANTRA_PERSON_COOLDOWN_MS) {
-            unset($state['mantra_history_by_session'][$sessionId]);
-        }
-    }
-
-    $state['global_mantra_history'] = array_values(array_filter(
-        array_map('intval', (array) ($state['global_mantra_history'] ?? [])),
-        static fn (int $at): bool => $now - $at < 60000
-    ));
-    sort($state['global_mantra_history'], SORT_NUMERIC);
-
     foreach ((array) ($state['recent_event_ids'] ?? []) as $eventId => $at) {
         if ($now - (int) $at >= EVENT_TTL_MS) {
             unset($state['recent_event_ids'][$eventId]);
         }
-    }
-
-    if (is_array($state['current_mantra'] ?? null) && (int) ($state['current_mantra']['ends_at_ms'] ?? 0) <= $now) {
-        $state['current_mantra'] = null;
     }
 }
 
@@ -157,94 +129,9 @@ function append_event(array &$state, array $event): void
     $state['events'][] = $event;
 }
 
-function mantra_eligible_at(array $state, int $now): int
-{
-    $eligibleAt = max($now, (int) ($state['next_mantra_at_ms'] ?? 0));
-    $history = array_values((array) ($state['global_mantra_history'] ?? []));
-    if (count($history) >= MANTRA_GLOBAL_LIMIT_PER_MINUTE) {
-        $eligibleAt = max($eligibleAt, (int) $history[0] + 60000);
-    }
-    return $eligibleAt;
-}
-
-function schedule_mantra(
-    array &$state,
-    string $mantraId,
-    int $participantCount,
-    int $now,
-    int $duration,
-    array $sourceEventIds
-): void
-{
-    $playAt = max($now, mantra_eligible_at($state, $now)) + MANTRA_SCHEDULE_AHEAD_MS;
-    $state['global_mantra_history'][] = $playAt;
-    sort($state['global_mantra_history'], SORT_NUMERIC);
-    $state['next_mantra_at_ms'] = $playAt + $duration + MANTRA_QUIET_MS;
-    $state['current_mantra'] = [
-        'id' => $mantraId,
-        'ends_at_ms' => $playAt + $duration,
-        'participant_count' => max(1, $participantCount),
-    ];
-    append_event($state, [
-        'type' => 'shared_mantra',
-        'asset_id' => $mantraId,
-        'participant_count' => max(1, $participantCount),
-        'server_play_at_ms' => $playAt,
-        'duration_ms' => $duration,
-        'source_event_ids' => array_values(array_unique(array_map('strval', $sourceEventIds))),
-    ]);
-}
-
 function advance_state(array &$state, int $now): void
 {
     prune_state($state, $now);
-
-    $pendingBlooms = array_values((array) ($state['pending_blooms'] ?? []));
-    $bloomEligibleAt = max((int) ($state['next_bloom_at_ms'] ?? 0), (int) ($state['bloom_flush_at_ms'] ?? 0));
-    if ($pendingBlooms && $now >= $bloomEligibleAt) {
-        $counts = [];
-        $contributors = [];
-        $sourceEventIds = [];
-        foreach ($pendingBlooms as $entry) {
-            $assetId = (string) ($entry['asset_id'] ?? '');
-            $counts[$assetId] = ($counts[$assetId] ?? 0) + 1;
-            $contributors[(string) ($entry['session_id'] ?? '')] = true;
-            $sourceEventId = (string) ($entry['source_event_id'] ?? '');
-            if ($sourceEventId !== '') $sourceEventIds[$sourceEventId] = true;
-        }
-        $winner = (string) ($pendingBlooms[0]['asset_id'] ?? 'flora');
-        foreach ($counts as $assetId => $count) {
-            if ($count > ($counts[$winner] ?? 0)) {
-                $winner = (string) $assetId;
-            }
-        }
-        $participantCount = max(1, count($contributors));
-        $playAt = $now + 900;
-        append_event($state, [
-            'type' => 'shared_bloom',
-            'asset_id' => $winner,
-            'participant_count' => $participantCount,
-            'density' => min(3, $participantCount),
-            'server_play_at_ms' => $playAt,
-            'source_event_ids' => array_keys($sourceEventIds),
-        ]);
-        $state['next_bloom_at_ms'] = $now + ($winner === 'dove' ? DOVE_GLOBAL_GAP_MS : BLOOM_GLOBAL_GAP_MS);
-        $state['pending_blooms'] = [];
-        $state['bloom_flush_at_ms'] = 0;
-    }
-
-    if (is_array($state['queued_mantra'] ?? null) && mantra_eligible_at($state, $now) <= $now) {
-        $queued = $state['queued_mantra'];
-        $state['queued_mantra'] = null;
-        schedule_mantra(
-            $state,
-            (string) $queued['id'],
-            max(1, (int) ($queued['participant_count'] ?? 1)),
-            $now,
-            max(250, min(MANTRA_MAX_DURATION_MS, (int) ($queued['duration_ms'] ?? MANTRA_DEFAULT_DURATION_MS))),
-            array_values((array) ($queued['source_event_ids'] ?? []))
-        );
-    }
 }
 
 $method = strtoupper((string) ($_SERVER['REQUEST_METHOD'] ?? 'GET'));
@@ -320,16 +207,20 @@ if ($method === 'POST') {
             } else {
                 $history[] = $now;
                 $state['bloom_history_by_session'][$sessionId] = $history;
-                $state['pending_blooms'][] = [
-                    'asset_id' => $assetId,
-                    'session_id' => $sessionId,
-                    'source_event_id' => $eventId,
-                    'received_at_ms' => $now,
-                ];
-                $state['bloom_flush_at_ms'] = max(
-                    $now + BLOOM_COALESCE_MS,
-                    (int) ($state['next_bloom_at_ms'] ?? 0)
+                $requestedCueAt = (int) ($input['cue_at_ms'] ?? $now);
+                $cueAt = max(
+                    $now - DEMO_CUE_PAST_TOLERANCE_MS,
+                    min($now + DEMO_CUE_FUTURE_TOLERANCE_MS, $requestedCueAt)
                 );
+                append_event($state, [
+                    'type' => 'shared_bloom',
+                    'asset_id' => $assetId,
+                    'participant_count' => 1,
+                    'density' => 1,
+                    'server_play_at_ms' => $cueAt,
+                    'cue_at_ms' => $cueAt,
+                    'source_event_ids' => [$eventId],
+                ]);
                 $outcome = 'accepted';
             }
         }
@@ -340,35 +231,23 @@ if ($method === 'POST') {
             $error = 'unknown_asset';
         } else {
             $duration = (int) $mantraDurations[$assetId];
-            $lastAt = (int) ($state['mantra_history_by_session'][$sessionId] ?? 0);
-            if ($now - $lastAt < MANTRA_PERSON_COOLDOWN_MS) {
-                $error = 'personal_cadence';
-            } else {
-                $state['mantra_history_by_session'][$sessionId] = $now;
-                $current = is_array($state['current_mantra'] ?? null) ? $state['current_mantra'] : null;
-                if ($current && ($current['id'] ?? '') === $assetId && (int) ($current['ends_at_ms'] ?? 0) > $now) {
-                    $state['current_mantra']['participant_count'] = max(1, (int) ($current['participant_count'] ?? 1)) + 1;
-                    $outcome = 'coalesced';
-                } elseif (mantra_eligible_at($state, $now) <= $now && !is_array($state['queued_mantra'] ?? null)) {
-                    schedule_mantra($state, $assetId, 1, $now, $duration, [$eventId]);
-                    $outcome = 'scheduled';
-                } elseif (!is_array($state['queued_mantra'] ?? null)) {
-                    $state['queued_mantra'] = [
-                        'id' => $assetId,
-                        'duration_ms' => $duration,
-                        'participant_count' => 1,
-                        'source_event_ids' => [$eventId],
-                        'requested_at_ms' => $now,
-                    ];
-                    $outcome = 'queued';
-                } elseif (($state['queued_mantra']['id'] ?? '') === $assetId) {
-                    $state['queued_mantra']['participant_count'] = max(1, (int) ($state['queued_mantra']['participant_count'] ?? 1)) + 1;
-                    $state['queued_mantra']['source_event_ids'][] = $eventId;
-                    $outcome = 'coalesced';
-                } else {
-                    $error = 'shared_queue_full';
-                }
-            }
+            $requestedCueAt = (int) ($input['cue_at_ms'] ?? $now);
+            $cueAt = max(
+                $now - DEMO_CUE_PAST_TOLERANCE_MS,
+                min($now + DEMO_CUE_FUTURE_TOLERANCE_MS, $requestedCueAt)
+            );
+            $programmePosition = max(0, min(86400000, (int) ($input['programme_position_ms'] ?? 0)));
+            append_event($state, [
+                'type' => 'shared_mantra',
+                'asset_id' => $assetId,
+                'participant_count' => 1,
+                'server_play_at_ms' => $cueAt,
+                'cue_at_ms' => $cueAt,
+                'programme_position_ms' => $programmePosition,
+                'duration_ms' => $duration,
+                'source_event_ids' => [$eventId],
+            ]);
+            $outcome = 'broadcast';
         }
     } else {
         $error = 'unsupported_interaction';
@@ -399,4 +278,5 @@ respond(200, [
     'cursor' => $cursor,
     'events' => $events,
     'server_now_ms' => now_ms(),
+    'mantra_mode' => MANTRA_DEMO_MODE,
 ]);

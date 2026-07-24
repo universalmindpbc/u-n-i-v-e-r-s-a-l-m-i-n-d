@@ -53,12 +53,13 @@ assert.match(endpoint, /const MANTRA_LIBRARY_PATH = __DIR__ \. '\/mantra-library
 assert.match(endpoint, /function mantra_durations_ms\(\): array/, "The coordinator must derive its mantra allowlist dynamically.");
 assert.match(endpoint, /!empty\(\$item\['reserved'\]\)/, "Reserved mantra placeholders must remain unavailable.");
 assert.match(endpoint, /trim\(\(string\) \(\$item\['asset'\]/, "Only mantra slots with audio may be shared.");
-assert.match(endpoint, /\(\(\$end - \$start\) \/ \$speed\) \* 1000/, "Shared cadence must follow the edited sample duration and speed.");
+assert.match(endpoint, /\(\(\$end - \$start\) \/ \$speed\) \* 1000/, "Shared sample timing metadata must follow the edited duration and speed.");
 assert.match(endpoint, /array_key_exists\(\$assetId, \$mantraDurations\)/, "Every currently playable library mantra must be accepted without a stale hardcoded list.");
 
 assert.match(clock, /programmeStartMs/, "The broadcast clock must expose the exact programme start.");
 assert.match(clock, /programmeInstanceId/, "The broadcast clock must expose a unique programme instance.");
-assert.match(interactions, /POLL_INTERVAL_MS = 450/, "The internal test must poll the shared room frequently enough to schedule audio ahead.");
+assert.match(interactions, /POLL_INTERVAL_MS = 100/, "The stakeholder demo must poll the shared room with low latency.");
+assert.match(interactions, /REMOTE_MANTRA_JITTER_BUFFER_MS = 75/, "Remote mantras need only a tiny buffer to preserve rapid tap rhythm.");
 assert.match(interactions, /credentials: "same-origin"/, "The interaction client must remain inside the existing Panthur staging environment.");
 assert.match(interactions, /fetchPayload\("GET"/, "The browser client must receive shared events.");
 assert.match(interactions, /fetchPayload\("POST"/, "The browser client must send shared events.");
@@ -68,13 +69,19 @@ assert.match(interactions, /locallyRenderedEventIds/, "The sender cannot suppres
 assert.match(interactions, /source_event_ids/, "The client cannot identify its own optimistic interaction.");
 assert.match(interactions, /renderedLocally: true/, "Shared sends must record immediate local rendering.");
 assert.match(interactions, /programmeInstanceId/, "The browser client is not scoped to the exact broadcast programme.");
+assert.match(interactions, /cue_at_ms/, "Shared mantra events must preserve the corrected tap timestamp.");
+assert.match(interactions, /programme_position_ms/, "Shared mantra events must preserve the tap's programme position.");
 assert.match(interactions, /IAMMantraSampler\?\.playShared/, "Incoming shared mantras are not routed to the local sampler.");
 assert.match(mantraSampler, /armSharedAudio/, "Shared mantra audio is not preloaded and unlocked on entry.");
 assert.match(mantraSampler, /playShared/, "The sampler cannot schedule a remote mantra.");
 assert.match(mantraSampler, /serverPlayAtMs/, "The sampler is not using the server-scheduled play time.");
 assert.match(mantraSampler, /IAMBroadcastInteractions\?\.sendMantra/, "A mantra tap is not routed through the shared coordinator.");
-assert.match(mantraSampler, /const localPlayback = playItem\(item, \{ exclusive: true \}\)/, "A mantra tap must begin local playback before contacting the coordinator.");
+assert.match(mantraSampler, /const localPlayback = playItem\(item\)/, "A mantra tap must begin local playback before contacting the coordinator.");
 assert.match(mantraSampler, /await localPlayback;/, "A mantra tap must complete its independent local playback path.");
+assert.match(mantraSampler, /const sourceById = new Map\(\)/, "The sampler must track concurrent voices for each mantra.");
+assert.match(mantraSampler, /const sources = sourceById\.get\(item\.id\) \|\| new Set\(\)/, "Repeated taps of the same mantra must create overlapping voices.");
+assert.doesNotMatch(mantraSampler, /if \(shared \|\| exclusive\) stopAll\(\)/, "Shared or local mantra taps must not stop voices already playing.");
+assert.doesNotMatch(mantraSampler, /stopItem\(item\.id\)/, "Repeated taps must not cut off an earlier copy of the same sample.");
 assert.doesNotMatch(mantraSampler, /await ctx\.resume\(\)/, "Mantra playback must not wait for AudioContext resume before constructing the sample.");
 assert.match(mantraSampler, /serverPlayAtMs !== null/, "A local mantra tap must not be mistaken for a stale server-scheduled event.");
 assert.match(mantraSampler, /mantraPlaybackMode = shared \? "shared" : "local"/, "Mantra playback timing is not observable for live QA.");
@@ -90,12 +97,15 @@ assert.match(
 
 assert.match(endpoint, /const BLOOM_PERSON_COOLDOWN_MS = 2000;/, "Bloom personal cadence must remain conservative.");
 assert.match(endpoint, /const BLOOM_PERSON_LIMIT_PER_MINUTE = 6;/, "Bloom personal minute limit must remain conservative.");
-assert.match(endpoint, /const DOVE_GLOBAL_GAP_MS = 6000;/, "The shared dove needs a longer global recovery gap.");
-assert.match(endpoint, /const MANTRA_PERSON_COOLDOWN_MS = 1500;/, "Mantra sharing needs only an accidental double-tap guard; local pads must never lock.");
-assert.match(endpoint, /const MANTRA_GLOBAL_LIMIT_PER_MINUTE = 2;/, "No more than two shared mantras may start per minute.");
-assert.match(endpoint, /const MANTRA_QUIET_MS = 8000;/, "Every shared mantra must retain a quiet recovery interval.");
-assert.match(endpoint, /\$current\['id'\].*=== \$assetId/s, "Matching mantra taps must coalesce during playback.");
-assert.match(endpoint, /shared_queue_full/, "Competing mantras must not create an unbounded queue.");
+assert.match(endpoint, /'type' => 'shared_bloom'[\s\S]*?'server_play_at_ms' => \$cueAt/, "Every accepted Bloom must broadcast on its original tap timestamp.");
+assert.doesNotMatch(endpoint, /BLOOM_COALESCE_MS|BLOOM_GLOBAL_GAP_MS|DOVE_GLOBAL_GAP_MS|bloom_flush_at_ms|pending_blooms/, "Accepted Blooms must not have an artificial coalescing, lead or recovery delay.");
+assert.match(endpoint, /const MANTRA_DEMO_MODE = 'unrestricted_stakeholder_demo';/, "The internal stakeholder build must explicitly identify unrestricted mantra mode.");
+assert.match(endpoint, /\$outcome = 'broadcast';/, "Every valid mantra tap must become its own broadcast event.");
+assert.match(endpoint, /'cue_at_ms' => \$cueAt/, "The coordinator must retain each corrected mantra cue timestamp.");
+assert.doesNotMatch(endpoint, /const MANTRA_PERSON_COOLDOWN_MS/, "Stakeholder demo mantras must not have a personal cooldown.");
+assert.doesNotMatch(endpoint, /const MANTRA_GLOBAL_LIMIT_PER_MINUTE/, "Stakeholder demo mantras must not have a global minute limit.");
+assert.doesNotMatch(endpoint, /const MANTRA_QUIET_MS/, "Stakeholder demo mantras must not insert a quiet interval.");
+assert.doesNotMatch(endpoint, /queued_mantra|current_mantra|shared_queue_full/, "Stakeholder demo mantras must not queue, coalesce or reject competing samples.");
 assert.match(endpoint, /recent_event_ids/, "Repeated network events must be idempotent.");
 assert.match(endpoint, /source_event_ids/, "Shared events must identify contributing taps so senders do not replay delayed echoes.");
 assert.match(endpoint, /ALLOWED_BLOOM_IDS/, "Arbitrary visual events must not be accepted.");
@@ -111,4 +121,4 @@ for (const page of [index, televisionPage]) {
   assert.ok(page.includes(`broadcast-interactions-v1.js?v=${interactionToken}`), `The interaction cache token must be ${interactionToken}.`);
 }
 
-console.log(`Broadcast interactions preflight passed (${interactionToken}): nine shared Music streams, six approved Blooms, every playable library mantra, deterministic cadence and programme-isolated same-origin coordination.`);
+console.log(`Broadcast interactions preflight passed (${interactionToken}): nine shared Music streams, six moderated Blooms, every playable mantra in unrestricted low-latency polyphonic stakeholder-demo mode, and programme-isolated same-origin coordination.`);

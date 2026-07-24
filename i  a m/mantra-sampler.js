@@ -12,7 +12,6 @@
   const bufferById = new Map();
   const sourceById = new Map();
   const itemById = new Map();
-  const activeIds = new Set();
   const programmeLevels = [];
   const PROGRAMME_WINDOW_MS = 3000;
   const PROGRAMME_SAMPLE_MS = 100;
@@ -23,6 +22,7 @@
   let currentBank = "tibet";
   let previousFocus = null;
   let audioContext = null;
+  let masterLimiter = null;
   let adaptiveGainDb = 0;
   let programmeRms = null;
 
@@ -34,32 +34,48 @@
   }
 
   function syncPlaybackState() {
-    const active = activeIds.size > 0;
+    const activeVoiceCount = Array.from(sourceById.values())
+      .reduce((total, sources) => total + sources.size, 0);
+    const active = activeVoiceCount > 0;
     document.body.classList.toggle("television-mantra-sample-active", active);
-    document.body.dataset.mantraSampleCount = String(activeIds.size);
+    document.body.dataset.mantraSampleCount = String(activeVoiceCount);
+    document.body.dataset.mantraActiveVoiceCount = String(activeVoiceCount);
   }
 
   function nodeForId(id) {
     return nodes?.querySelector(`[data-mantra-sample="${CSS.escape(id)}"]`) || null;
   }
 
-  function setPlaying(id, playing) {
-    if (playing) activeIds.add(id);
-    else activeIds.delete(id);
+  function syncItemPlaying(id) {
+    const playing = (sourceById.get(id)?.size || 0) > 0;
     const node = nodeForId(id);
     node?.classList.toggle("is-playing", playing);
     node?.setAttribute("aria-pressed", String(playing));
     syncPlaybackState();
   }
 
-  function deactivate(id) {
-    sourceById.delete(id);
-    setPlaying(id, false);
+  function deactivate(id, source) {
+    const sources = sourceById.get(id);
+    sources?.delete(source);
+    if (sources?.size === 0) sourceById.delete(id);
+    syncItemPlaying(id);
   }
 
   function context() {
     if (!audioContext) audioContext = new (window.AudioContext || window.webkitAudioContext)();
     return audioContext;
+  }
+
+  function outputLimiter(ctx) {
+    if (masterLimiter) return masterLimiter;
+    masterLimiter = ctx.createDynamicsCompressor();
+    masterLimiter.threshold.value = -1;
+    masterLimiter.knee.value = 0;
+    masterLimiter.ratio.value = 20;
+    masterLimiter.attack.value = 0.003;
+    masterLimiter.release.value = 0.08;
+    masterLimiter.connect(ctx.destination);
+    return masterLimiter;
   }
 
   function sampleProgrammeLevel() {
@@ -109,13 +125,13 @@
   }
 
   function stopItem(id) {
-    const source = sourceById.get(id);
-    if (source) {
+    const sources = sourceById.get(id);
+    sources?.forEach((source) => {
       source.onended = null;
       try { source.stop(); } catch {}
-      sourceById.delete(id);
-    }
-    setPlaying(id, false);
+    });
+    sourceById.delete(id);
+    syncItemPlaying(id);
   }
 
   function stopAll({ announceStop = false } = {}) {
@@ -130,7 +146,7 @@
       .find((item) => item.id === id) || null;
   }
 
-  async function playItem(item, { serverPlayAtMs = null, shared = false, exclusive = false } = {}) {
+  async function playItem(item, { serverPlayAtMs = null, shared = false } = {}) {
     if (!item || item.reserved || !item.asset) return;
     const ctx = context();
     ctx.resume().catch(() => null);
@@ -144,8 +160,6 @@
       announce("shared mantra arrived too late");
       return;
     }
-    if (shared || exclusive) stopAll();
-    stopItem(item.id);
     const trimStart = Math.max(0, Number(item.trim_start) || 0);
     const trimEnd = Math.min(buffer.duration, Math.max(trimStart + 0.01, Number(item.trim_end) || buffer.duration));
     const sampleDuration = trimEnd - trimStart;
@@ -156,6 +170,8 @@
       : ctx.currentTime;
     document.body.dataset.mantraPlaybackMode = shared ? "shared" : "local";
     document.body.dataset.mantraPlaybackLeadMs = String(Math.max(0, Math.round((scheduledContextTime - ctx.currentTime) * 1000)));
+    document.body.dataset.mantraLastSampleId = item.id;
+    document.body.dataset.mantraLastStartedAtMs = String(Date.now());
     const source = ctx.createBufferSource();
     source.buffer = buffer;
     source.playbackRate.value = speed;
@@ -183,13 +199,7 @@
     gain.gain.linearRampToValueAtTime(peak, scheduledContextTime + attack);
     gain.gain.setValueAtTime(peak, scheduledContextTime + Math.max(attack, outputDuration - release));
     gain.gain.linearRampToValueAtTime(0.0001, scheduledContextTime + outputDuration);
-    const limiter = ctx.createDynamicsCompressor();
-    limiter.threshold.value = -1;
-    limiter.knee.value = 0;
-    limiter.ratio.value = 20;
-    limiter.attack.value = 0.003;
-    limiter.release.value = 0.08;
-    limiter.connect(ctx.destination);
+    const limiter = outputLimiter(ctx);
     let effectInput = gain;
     if (ctx.createStereoPanner) {
       const pan = ctx.createStereoPanner();
@@ -209,14 +219,16 @@
     } else {
       effectInput.connect(limiter);
     }
-    source.onended = () => deactivate(item.id);
-    sourceById.set(item.id, source);
-    setPlaying(item.id, true);
+    source.onended = () => deactivate(item.id, source);
+    const sources = sourceById.get(item.id) || new Set();
+    sources.add(source);
+    sourceById.set(item.id, sources);
+    syncItemPlaying(item.id);
     announce(item.phrase || item.label || "mantra");
     try {
       source.start(scheduledContextTime, trimStart, sampleDuration);
     } catch {
-      deactivate(item.id);
+      deactivate(item.id, source);
       announce("tap the sample again to play");
     }
   }
@@ -247,7 +259,7 @@
     const ctx = context();
     ctx.resume().catch(() => null);
     void bufferFor(item);
-    const localPlayback = playItem(item, { exclusive: true });
+    const localPlayback = playItem(item);
     window.IAMBroadcastInteractions?.sendMantra?.(item.id);
     await localPlayback;
   }
@@ -370,14 +382,11 @@
   });
   window.addEventListener("iam:shared-interaction-acknowledged", (event) => {
     if (event.detail?.kind !== "mantra") return;
-    if (event.detail.outcome === "queued") announce("shared mantra is waiting");
-    if (event.detail.outcome === "coalesced") announce("shared mantra joined");
+    if (event.detail.outcome === "broadcast") document.body.dataset.mantraShareMode = "unrestricted_stakeholder_demo";
   });
   window.addEventListener("iam:shared-interaction-rejected", (event) => {
     if (event.detail?.kind !== "mantra") return;
-    announce(event.detail.reason === "shared_queue_full"
-      ? "one shared mantra is already waiting"
-      : "shared mantra is resting");
+    announce("shared mantra could not be sent");
   });
   const programmeSampler = window.setInterval(sampleProgrammeLevel, PROGRAMME_SAMPLE_MS);
   window.addEventListener("pagehide", () => {
@@ -386,7 +395,7 @@
   });
 
   window.IAMMantraSampler = {
-    version: "mantra_sampler_v2.5",
+    version: "mantra_sampler_v2.6",
     open,
     close,
     refresh,
@@ -396,7 +405,8 @@
     getState() {
       return {
         bank: currentBank,
-        active: Array.from(activeIds),
+        active: Array.from(sourceById.keys()),
+        activeVoices: Array.from(sourceById.values()).reduce((total, sources) => total + sources.size, 0),
         open: document.body.classList.contains("mantra-sampler-open"),
         programmeRms,
         adaptiveGainDb,

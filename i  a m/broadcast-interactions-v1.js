@@ -6,7 +6,11 @@
   const SHARED_FORMATS = new Set(["videos", "parties", "radio"]);
   const ALLOWED_BLOOMS = new Set(["flora", "daisy", "aboriginal", "trans", "dove", "medallion"]);
   const STALE_EVENT_MS = 1200;
-  const POLL_INTERVAL_MS = 450;
+  const MANTRA_STALE_EVENT_MS = 2500;
+  const REMOTE_MANTRA_JITTER_BUFFER_MS = 75;
+  const REMOTE_MANTRA_MIN_LEAD_MS = 25;
+  const REMOTE_MANTRA_BURST_RESET_MS = 1600;
+  const POLL_INTERVAL_MS = 100;
   const POLL_MAX_BACKOFF_MS = 4000;
   const recentEventIds = new Map();
   const locallyRenderedEventIds = new Map();
@@ -22,6 +26,8 @@
   let rejectedInteractions = 0;
   let suppressedLocalEchoes = 0;
   let lastEvent = null;
+  let lastRemoteMantraCueMs = 0;
+  let lastRemoteMantraTargetMs = 0;
 
   function makeId() {
     if (window.crypto?.randomUUID) return window.crypto.randomUUID();
@@ -105,7 +111,7 @@
   }
 
   function scheduleBloom(message) {
-    const playAt = Number(message.server_play_at_ms);
+    const playAt = Number(message.cue_at_ms ?? message.server_play_at_ms);
     if (!Number.isFinite(playAt) || playAt < serverNowMs() - STALE_EVENT_MS) return;
     const delay = Math.max(0, playAt - serverNowMs());
     window.setTimeout(() => {
@@ -128,8 +134,21 @@
   }
 
   function scheduleMantra(message) {
-    const playAt = Number(message.server_play_at_ms);
-    if (!Number.isFinite(playAt) || playAt < serverNowMs() - STALE_EVENT_MS) return;
+    const cueAt = Number(message.cue_at_ms ?? message.server_play_at_ms);
+    const now = serverNowMs();
+    if (!Number.isFinite(cueAt) || cueAt < now - MANTRA_STALE_EVENT_MS) return;
+    const continuesBurst = lastRemoteMantraCueMs > 0
+      && cueAt >= lastRemoteMantraCueMs
+      && cueAt - lastRemoteMantraCueMs <= REMOTE_MANTRA_BURST_RESET_MS
+      && now <= lastRemoteMantraTargetMs + REMOTE_MANTRA_BURST_RESET_MS;
+    const playAt = continuesBurst
+      ? Math.max(
+          now + REMOTE_MANTRA_MIN_LEAD_MS,
+          lastRemoteMantraTargetMs + Math.max(0, cueAt - lastRemoteMantraCueMs)
+        )
+      : now + REMOTE_MANTRA_JITTER_BUFFER_MS;
+    lastRemoteMantraCueMs = cueAt;
+    lastRemoteMantraTargetMs = playAt;
     receivedMantras += 1;
     lastEvent = {
       type: "mantra",
@@ -137,6 +156,8 @@
       receivedAt: Date.now(),
       participants: Math.max(1, Number(message.participant_count) || 1),
     };
+    document.body.dataset.mantraRemoteTransportMs = String(Math.max(0, Math.round(now - cueAt)));
+    document.body.dataset.mantraRemoteProgrammePositionMs = String(Math.max(0, Number(message.programme_position_ms) || 0));
     window.IAMMantraSampler?.playShared?.(String(message.asset_id || ""), playAt, {
       eventId: String(message.event_id || ""),
       participantCount: Math.max(1, Number(message.participant_count) || 1),
@@ -144,7 +165,16 @@
   }
 
   function consumePayload(payload) {
-    const messages = Array.isArray(payload?.events) ? payload.events : [];
+    const messages = Array.isArray(payload?.events)
+      ? payload.events.slice().sort((left, right) => {
+          if (left?.type === "shared_mantra" && right?.type === "shared_mantra") {
+            const cueDifference = Number(left.cue_at_ms ?? left.server_play_at_ms)
+              - Number(right.cue_at_ms ?? right.server_play_at_ms);
+            if (Number.isFinite(cueDifference) && cueDifference !== 0) return cueDifference;
+          }
+          return (Number(left?.sequence) || 0) - (Number(right?.sequence) || 0);
+        })
+      : [];
     messages.forEach((message) => {
       cursor = Math.max(cursor, Number(message.sequence) || 0);
       if (!eventIsNew(message)) return;
@@ -153,6 +183,7 @@
       if (message.type === "shared_mantra") scheduleMantra(message);
     });
     cursor = Math.max(cursor, Number(payload?.cursor) || 0);
+    if (payload?.mantra_mode) document.body.dataset.mantraShareMode = String(payload.mantra_mode);
     if (payload?.outcome) {
       document.body.dataset.broadcastInteractionLastAcknowledgement = `${payload.kind || "interaction"}:${payload.outcome}`;
       window.dispatchEvent(new CustomEvent("iam:shared-interaction-acknowledged", {
@@ -253,6 +284,8 @@
     activeKey = nextKey;
     cursor = 0;
     pollFailures = 0;
+    lastRemoteMantraCueMs = 0;
+    lastRemoteMantraTargetMs = 0;
     generation += 1;
     updateDataset("connecting");
     window.IAMMantraSampler?.armSharedAudio?.();
@@ -267,12 +300,14 @@
     activeKey = "";
     cursor = 0;
     pollFailures = 0;
+    lastRemoteMantraCueMs = 0;
+    lastRemoteMantraTargetMs = 0;
     generation += 1;
     clearPollTimer();
     updateDataset("idle");
   }
 
-  function send(type, assetId, { renderedLocally = false } = {}) {
+  function send(type, assetId, { renderedLocally = false, payload = {} } = {}) {
     if (!activeState) return false;
     const expectedGeneration = generation;
     const eventId = makeId();
@@ -281,6 +316,7 @@
       type,
       asset_id: assetId,
       event_id: eventId,
+      ...payload,
     }).then((payload) => {
       if (activeState && generation === expectedGeneration) consumePayload(payload);
     }).catch((error) => {
@@ -293,17 +329,28 @@
 
   function sendBloom(type) {
     const assetId = String(type || "");
-    return ALLOWED_BLOOMS.has(assetId) && send("bloom", assetId, { renderedLocally: true });
+    const cueAt = serverNowMs();
+    return ALLOWED_BLOOMS.has(assetId) && send("bloom", assetId, {
+      renderedLocally: true,
+      payload: { cue_at_ms: Math.round(cueAt) },
+    });
   }
 
   function sendMantra(mantraId) {
-    return send("mantra", String(mantraId || ""), { renderedLocally: true });
+    const cueAt = serverNowMs();
+    return send("mantra", String(mantraId || ""), {
+      renderedLocally: true,
+      payload: {
+        cue_at_ms: Math.round(cueAt),
+        programme_position_ms: Math.max(0, Math.round(cueAt - Number(activeState?.programmeStartMs || cueAt))),
+      },
+    });
   }
 
   window.addEventListener("pagehide", () => clear());
 
   window.IAMBroadcastInteractions = {
-    version: "broadcast_interactions_client_v1.2",
+    version: "broadcast_interactions_client_v1.3",
     setBroadcast,
     clear,
     sendBloom,
@@ -311,7 +358,9 @@
     diagnostics() {
       return {
         configured: Boolean(endpoint),
-        transport: "same_origin_polling",
+        transport: "same_origin_fast_polling",
+        pollIntervalMs: POLL_INTERVAL_MS,
+        remoteMantraJitterBufferMs: REMOTE_MANTRA_JITTER_BUFFER_MS,
         state: document.body.dataset.broadcastInteractionState || "idle",
         channelId: activeState?.channelId || "",
         programmeId: activeState?.programmeId || "",
