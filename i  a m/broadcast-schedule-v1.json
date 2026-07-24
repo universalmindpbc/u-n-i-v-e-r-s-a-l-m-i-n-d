@@ -1,0 +1,61 @@
+{
+  "version": "broadcast_schedule_v1.0",
+  "stage": "24_hour_shared_broadcast_prototype",
+  "epoch_utc": "2026-07-24T00:00:00.000Z",
+  "planning_markets": [
+    "Sydney",
+    "Los Angeles",
+    "Ibiza"
+  ],
+  "channels": [
+    {
+      "id": "restore",
+      "name": "Restore",
+      "description": "Ambient, melodic and restorative shared sets.",
+      "schedule": [
+        {
+          "track_id": "sasha-ibiza-boat-at-sunset-freqways",
+          "duration_seconds": 5273.194
+        },
+        {
+          "track_id": "ben-bohmer-cappadocia-cercle",
+          "duration_seconds": 5068.1
+        }
+      ]
+    },
+    {
+      "id": "social-uplift",
+      "name": "Social Uplift",
+      "description": "Expressive, communal and uplifting shared sets.",
+      "schedule": [
+        {
+          "track_id": "peggy-gou-palais-des-beaux-arts-cercle",
+          "duration_seconds": 6500
+        },
+        {
+          "track_id": "miss-monique-biosphere-montreal-cercle",
+          "duration_seconds": 7985.5
+        }
+      ]
+    },
+    {
+      "id": "underground-intensity",
+      "name": "Underground Intensity",
+      "description": "Higher-activation underground and techno programming.",
+      "schedule": [
+        {
+          "track_id": "nina-kraviz-eiffel-tower-cercle",
+          "duration_seconds": 6762.9
+        },
+        {
+          "track_id": "nastia-drum-bass-sunset-the-lab-ibiza",
+          "duration_seconds": 5135.2
+        },
+        {
+          "track_id": "carl-cox-chateau-de-chambord-cercle",
+          "duration_seconds": 7986.09
+        }
+      ]
+    }
+  ]
+}
