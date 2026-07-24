@@ -163,7 +163,6 @@
   const broadcastEntryTitle = document.querySelector("[data-broadcast-entry-title]");
   const broadcastEntryChannel = document.querySelector("[data-broadcast-entry-channel]");
   const broadcastJoinButton = document.querySelector("[data-broadcast-join]");
-  const broadcastVodButton = document.querySelector("[data-broadcast-vod]");
   const broadcastChooseButton = document.querySelector("[data-broadcast-choose]");
   const emdrCanvas = document.querySelector("[data-emdr-canvas]");
   const emdrOff = document.querySelector("[data-emdr-off]");
@@ -214,6 +213,7 @@
   let activeRadioStationId = "";
   let broadcastChannelId = "";
   let pendingBroadcastChannelId = "";
+  let pendingBroadcastFormat = "videos";
   let broadcastEntryOpen = false;
   let broadcastSyncTimer = 0;
   let musicContinuationSequence = 0;
@@ -2109,13 +2109,28 @@
 
   function broadcastChannelRecord(channel) {
     const state = window.IAMBroadcastClock?.stateAt(channel.id);
+    if (!state) return null;
+    if (state.mediaType === "radio") {
+      const currentStation = stationForId(state.stationId);
+      if (!currentStation) return null;
+      return {
+        ...currentStation,
+        id: `broadcast-${channel.id}`,
+        mode: channel.format,
+        broadcastChannelId: channel.id,
+        broadcastChannelName: channel.name,
+        broadcastDescription: channel.description,
+        broadcastState: state,
+        primary_environmental_function: channel.description || currentStation.primary_environmental_function,
+      };
+    }
     const currentTrack = findTrack(state?.trackId);
-    if (!state || !currentTrack) return null;
+    if (!currentTrack) return null;
     const record = musicTrackRecord(currentTrack);
     return {
       ...record,
       id: `broadcast-${channel.id}`,
-      mode: "parties",
+      mode: channel.format,
       broadcastChannelId: channel.id,
       broadcastChannelName: channel.name,
       broadcastDescription: channel.description,
@@ -2127,15 +2142,9 @@
   }
 
   function musicItems(mode = musicChannelMode) {
-    if (mode === "radio") return radioStationRecords.slice();
-    if (mode === "parties") {
-      return (window.IAMBroadcastClock?.channels?.() || [])
-        .map(broadcastChannelRecord)
-        .filter(Boolean);
-    }
-    return TRACK_CATALOGUE
-      .filter((candidate) => candidate.presentation !== "live_dj_set")
-      .map(musicTrackRecord);
+    return (window.IAMBroadcastClock?.channels?.(mode) || [])
+      .map(broadcastChannelRecord)
+      .filter(Boolean);
   }
 
   function rankMusicShelves() {
@@ -2196,16 +2205,11 @@
 
   function musicActiveItem(mode = musicChannelMode) {
     const order = musicShelfOrders[mode] || [];
-    if (mode === "radio") return order.find((item) => item.id === activeRadioStationId) || order[0] || null;
-    if (mode === "parties") {
-      return broadcastChannelId
-        ? order.find((item) => item.broadcastChannelId === broadcastChannelId) || null
-        : null;
+    if (broadcastChannelId) {
+      const activeBroadcast = order.find((item) => item.broadcastChannelId === broadcastChannelId);
+      if (activeBroadcast) return activeBroadcast;
     }
-    const currentMode = track.presentation === "live_dj_set" ? "parties" : "videos";
-    return currentMode === mode
-      ? order.find((item) => item.id === track.id || item.trackRef?.id === track.id) || order[0] || null
-      : order[0] || null;
+    return order[0] || null;
   }
 
   function updateMusicSelector() {
@@ -2213,11 +2217,7 @@
     const active = musicActiveItem();
     const position = Math.max(0, order.findIndex((item) => item.id === active?.id));
     const label = active
-      ? (musicChannelMode === "radio"
-        ? active.display_title
-        : musicChannelMode === "parties"
-          ? `${active.broadcastChannelName} — ${active.artist}`
-          : `${active.artist} — ${active.display_title}`)
+      ? `${active.broadcastChannelName} — ${musicChannelMode === "radio" ? active.provider : active.artist}`
       : musicModeLabel().toUpperCase();
     if (musicSelectorLabel) musicSelectorLabel.textContent = label;
     if (musicSelectorCount) musicSelectorCount.textContent = order.length ? `${position + 1} / ${order.length}` : "0 / 0";
@@ -2339,15 +2339,15 @@
       const palette = item.card_palette || ["#4c5664", "#aeb7bf"];
       return `<span class="adaptive-television-fashion-card__media adaptive-television-music-card__media" style="--station-a:${palette[0]};--station-b:${palette[1]}">
         <span class="adaptive-television-radio-art"><strong>${item.display_title}</strong></span>
-        <span class="adaptive-television-music-card__live">live</span>
-        <span class="adaptive-television-music-card__mode">radio</span>
+        <span class="adaptive-television-music-card__live">ON NOW</span>
+        <span class="adaptive-television-music-card__mode">${item.broadcastChannelName}</span>
       </span>`;
     }
     return `<span class="adaptive-television-fashion-card__media adaptive-television-music-card__media">
       <img src="${musicThumbnailUrl(item)}" alt="" loading="${position < 3 ? "eager" : "lazy"}">
       <span class="adaptive-television-fashion-card__preview-label">10s preview</span>
-      ${musicChannelMode === "parties" ? '<span class="adaptive-television-music-card__live">ON NOW</span>' : ""}
-      <span class="adaptive-television-music-card__mode">${musicChannelMode === "parties" ? item.broadcastChannelName : "video"}</span>
+      <span class="adaptive-television-music-card__live">ON NOW</span>
+      <span class="adaptive-television-music-card__mode">${item.broadcastChannelName}</span>
     </span>`;
   }
 
@@ -2356,25 +2356,19 @@
     stopMusicShelfPreview();
     const order = musicShelfOrders[musicChannelMode] || [];
     const active = musicActiveItem();
-    if (musicShelfTitle) musicShelfTitle.textContent = musicChannelMode === "parties" ? "Shared channels" : `${musicModeLabel()} for you`;
+    if (musicShelfTitle) musicShelfTitle.textContent = `${musicModeLabel()} · shared channels`;
     if (musicShelfSubtitle && !musicShelfSubtitle.dataset.temporaryStatus) {
-      musicShelfSubtitle.textContent = musicChannelMode === "parties"
-        ? "Join whatever is on now, together as one"
-        : "Recommended for you based on your current needs";
+      musicShelfSubtitle.textContent = "Join whatever is on now, together as one";
     }
-    musicShelfTrack.setAttribute("aria-label", musicChannelMode === "parties" ? "Shared channel choices" : `${musicModeLabel()} choices`);
+    musicShelfTrack.setAttribute("aria-label", `${musicModeLabel()} shared channel choices`);
     musicShelfTrack.innerHTML = order.map((item, position) => {
       const selected = item.id === active?.id;
-      const recommendationLabel = musicChannelMode === "parties"
-        ? (position === 0 ? "Based on your check-in · ON NOW" : "ON NOW")
-        : (position < 3 ? `Recommended ${String(position + 1).padStart(2, "0")}` : `Explore ${String(position + 1).padStart(2, "0")}`);
+      const recommendationLabel = position === 0 ? "Based on your check-in · ON NOW" : "ON NOW";
       const provider = musicChannelMode === "radio" ? item.provider : item.artist;
       const title = item.display_title || item.title;
-      const action = musicChannelMode === "parties" ? "Open shared broadcast" : (audioWalletJoined ? "Vote to play next" : "Play now");
-      const cardTitle = musicChannelMode === "parties" ? provider : title;
-      const cardDetail = musicChannelMode === "parties"
-        ? `${title} · ${item.broadcastChannelName}`
-        : `${provider} · ${item.primary_environmental_function || "Adaptive music"}`;
+      const action = "Open shared broadcast";
+      const cardTitle = provider;
+      const cardDetail = `${title} · ${item.broadcastChannelName}`;
       return `<div class="adaptive-television-fashion-shelf__item" data-music-shelf-item role="listitem">
         <button class="adaptive-television-fashion-card adaptive-television-music-card${selected ? " is-active" : ""}" type="button" data-music-card data-music-item-id="${item.id}" aria-pressed="${selected}" aria-label="${action}: ${provider} — ${title}">
           ${musicCardMedia(item, position)}
@@ -2434,7 +2428,7 @@
       window.setTimeout(() => {
         if (musicShelfSubtitle.textContent !== message) return;
         delete musicShelfSubtitle.dataset.temporaryStatus;
-        musicShelfSubtitle.textContent = "Recommended for you based on your current needs";
+        musicShelfSubtitle.textContent = "Join whatever is on now, together as one";
       }, duration);
     }
   }
@@ -3217,28 +3211,37 @@
       return false;
     }
     const state = window.IAMBroadcastClock?.stateAt(item.broadcastChannelId);
-    const currentTrack = findTrack(state?.trackId);
-    if (!state || !currentTrack) return false;
+    const currentTrack = state?.mediaType === "video" ? findTrack(state.trackId) : null;
+    const currentStation = state?.mediaType === "radio" ? stationForId(state.stationId) : null;
+    const currentMedia = currentTrack || currentStation;
+    if (!state || !currentMedia) return false;
     pendingBroadcastChannelId = item.broadcastChannelId;
+    pendingBroadcastFormat = state.format;
     if (!broadcastEntry) {
       await joinBroadcastChannel(item.broadcastChannelId, { source: options.source || "broadcast_direct" });
       return true;
     }
     if (musicShelfOpen) closeMusicShelf(false);
-    if (broadcastEntryArtist) broadcastEntryArtist.textContent = currentTrack.displayArtist || currentTrack.artist;
-    if (broadcastEntryTitle) broadcastEntryTitle.textContent = currentTrack.displayTitle || currentTrack.title;
-    if (broadcastEntryChannel) broadcastEntryChannel.textContent = `${state.channelName} channel`;
+    if (broadcastEntryArtist) broadcastEntryArtist.textContent = currentTrack
+      ? (currentTrack.displayArtist || currentTrack.artist)
+      : currentStation.provider;
+    if (broadcastEntryTitle) broadcastEntryTitle.textContent = currentTrack
+      ? (currentTrack.displayTitle || currentTrack.title)
+      : currentStation.display_title;
+    if (broadcastEntryChannel) broadcastEntryChannel.textContent = `${state.channelName} · ${musicModeLabel(state.format)}`;
     broadcastEntryOpen = true;
     broadcastEntry.setAttribute("aria-hidden", "false");
     broadcastEntry.removeAttribute("inert");
     document.body.classList.add("broadcast-entry-open");
     document.body.dataset.broadcastEntryState = "open";
     document.body.dataset.broadcastEntryChannel = item.broadcastChannelId;
-    document.body.dataset.broadcastEntryTrack = currentTrack.id;
+    document.body.dataset.broadcastEntryFormat = state.format;
+    document.body.dataset.broadcastEntryMedia = state.mediaId;
     window.setTimeout(() => broadcastEntryPanel?.focus({ preventScroll: true }), 40);
     window.IAMFirstPartyAnalytics?.record?.("broadcast_invitation_open", {
       channel_id: item.broadcastChannelId,
-      track_id: currentTrack.id,
+      format: state.format,
+      media_id: state.mediaId,
       selection_source: options.source || "adaptive",
     });
     return true;
@@ -3255,6 +3258,7 @@
     document.body.dataset.broadcastExitReason = reason;
     delete document.body.dataset.broadcastChannelId;
     delete document.body.dataset.broadcastTrackId;
+    delete document.body.dataset.broadcastStationId;
     delete document.body.dataset.broadcastTargetSeconds;
     delete document.body.dataset.broadcastDriftSeconds;
     delete document.body.dataset.broadcastCorrection;
@@ -3273,15 +3277,37 @@
   }
 
   async function synchronizeBroadcastPlayback(forceSeek = false) {
-    if (!broadcastChannelId || !localVideo || !window.IAMBroadcastClock) return null;
+    if (!broadcastChannelId || !window.IAMBroadcastClock) return null;
     const state = window.IAMBroadcastClock.stateAt(broadcastChannelId);
     if (!state) return null;
-    const scheduledTrack = findTrack(state.trackId);
-    if (!scheduledTrack) return null;
     document.body.dataset.broadcastChannelId = broadcastChannelId;
-    document.body.dataset.broadcastTrackId = state.trackId;
-    document.body.dataset.broadcastTargetSeconds = state.offsetSeconds.toFixed(3);
     document.body.dataset.broadcastRemainingSeconds = state.remainingSeconds.toFixed(3);
+    if (state.mediaType === "radio") {
+      const scheduledStation = stationForId(state.stationId);
+      if (!scheduledStation) return null;
+      document.body.dataset.broadcastStationId = state.stationId;
+      delete document.body.dataset.broadcastTrackId;
+      delete document.body.dataset.broadcastTargetSeconds;
+      delete document.body.dataset.broadcastDriftSeconds;
+      if (activeRadioStationId !== scheduledStation.id || document.body.dataset.radioPlaybackState === "stopped") {
+        document.body.dataset.broadcastCorrection = "programme_rollover";
+        if (!musicSwitching) {
+          await startRadioStation(scheduledStation, {
+            source: "broadcast_rollover",
+            broadcastChannelId,
+          });
+          rankMusicShelves();
+        }
+      } else {
+        document.body.dataset.broadcastCorrection = "live_station_locked";
+      }
+      return state;
+    }
+    const scheduledTrack = findTrack(state.trackId);
+    if (!scheduledTrack || !localVideo) return null;
+    document.body.dataset.broadcastTrackId = state.trackId;
+    delete document.body.dataset.broadcastStationId;
+    document.body.dataset.broadcastTargetSeconds = state.offsetSeconds.toFixed(3);
     if (track.id !== scheduledTrack.id) {
       document.body.dataset.broadcastCorrection = "programme_rollover";
       if (!musicSwitching) {
@@ -3328,44 +3354,33 @@
       return false;
     }
     const state = window.IAMBroadcastClock?.stateAt(channelId);
-    const scheduledTrack = findTrack(state?.trackId);
-    if (!state || !scheduledTrack) return false;
+    const scheduledTrack = state?.mediaType === "video" ? findTrack(state.trackId) : null;
+    const scheduledStation = state?.mediaType === "radio" ? stationForId(state.stationId) : null;
+    if (!state || (!scheduledTrack && !scheduledStation)) return false;
     closeBroadcastEntry(false);
     pendingBroadcastChannelId = "";
     broadcastChannelId = channelId;
     document.body.dataset.broadcastMode = "shared";
     document.body.dataset.broadcastClockSource = window.IAMBroadcastClock.diagnostics().clockSource;
-    await switchMusicTrack(scheduledTrack, {
-      source: options.source || "broadcast_join",
-      broadcastChannelId: channelId,
-    });
+    if (scheduledStation) {
+      await startRadioStation(scheduledStation, {
+        source: options.source || "broadcast_join",
+        broadcastChannelId: channelId,
+      });
+    } else {
+      await switchMusicTrack(scheduledTrack, {
+        source: options.source || "broadcast_join",
+        broadcastChannelId: channelId,
+      });
+    }
     startBroadcastSynchronization();
     await synchronizeBroadcastPlayback(true);
     rankMusicShelves();
     window.IAMFirstPartyAnalytics?.record?.("broadcast_join", {
       channel_id: channelId,
-      track_id: scheduledTrack.id,
+      format: state.format,
+      media_id: state.mediaId,
       offset_seconds: Number(document.body.dataset.broadcastTargetSeconds || state.offsetSeconds),
-    });
-    return true;
-  }
-
-  async function watchBroadcastFromBeginning(channelId = pendingBroadcastChannelId) {
-    try {
-      await window.IAMBroadcastClock?.ready;
-    } catch {
-      return false;
-    }
-    const state = window.IAMBroadcastClock?.stateAt(channelId);
-    const currentTrack = findTrack(state?.trackId);
-    if (!state || !currentTrack) return false;
-    closeBroadcastEntry(false);
-    pendingBroadcastChannelId = "";
-    stopBroadcastPlayback("watch_from_beginning");
-    await switchMusicTrack(currentTrack, { source: "broadcast_vod", startAt: 0 });
-    window.IAMFirstPartyAnalytics?.record?.("broadcast_watch_from_beginning", {
-      channel_id: channelId,
-      track_id: currentTrack.id,
     });
     return true;
   }
@@ -3444,7 +3459,15 @@
   async function startRadioStation(stationDecision, options = {}) {
     const station = stationForId(stationDecision?.id || stationDecision) || bestRadioStationForTrack();
     if (!station) return;
-    stopBroadcastPlayback(options.source || "radio_start");
+    if (options.broadcastChannelId) {
+      broadcastChannelId = options.broadcastChannelId;
+      document.body.dataset.broadcastMode = "shared";
+      document.body.dataset.broadcastChannelId = broadcastChannelId;
+      document.body.dataset.broadcastStationId = station.id;
+      delete document.body.dataset.broadcastTrackId;
+    } else {
+      stopBroadcastPlayback(options.source || "radio_start");
+    }
     musicRadioPreviousBlend = requestedVideoBlend;
     if (localVideo) {
       try { localVideo.pause(); } catch {}
@@ -3497,7 +3520,12 @@
     updateMusicSelector();
     renderMusicShelf();
     showMusicShelfStatus(`${station.display_title} · live now`, 2600);
-    window.IAMFirstPartyAnalytics?.record?.("radio_start", { station_id: station.id, provider: station.provider, selection_source: options.source || "adaptive" });
+    window.IAMFirstPartyAnalytics?.record?.("radio_start", {
+      station_id: station.id,
+      provider: station.provider,
+      channel_id: options.broadcastChannelId || "",
+      selection_source: options.source || "adaptive",
+    });
     maybeShowSupportCard();
   }
 
@@ -3533,39 +3561,19 @@
   }
 
   async function continueAdaptiveMusicProgramme() {
-    if (track.presentation === "live_dj_set" && broadcastChannelId) {
+    if (broadcastChannelId) {
       await synchronizeBroadcastPlayback(true);
       return;
     }
-    if (track.presentation === "live_dj_set") {
-      await startRadioStation(bestRadioStationForTrack(), { source: "party_complete" });
+    const sharedVideoChannel = musicShelfOrders.videos?.[0];
+    document.body.dataset.musicContinuationDecision = "videos";
+    document.body.dataset.musicContinuationReason = "personal_opening_complete";
+    musicContinuationSequence += 1;
+    if (sharedVideoChannel) {
+      await openBroadcastEntry(sharedVideoChannel, { source: "automatic_continuation" });
       return;
     }
-    if (musicChannelMode === "videos" && musicModeManuallySelected) {
-      const order = musicShelfOrders.videos || [];
-      const position = Math.max(0, order.findIndex((item) => item.id === track.id));
-      const next = order[(position + 1) % Math.max(1, order.length)];
-      if (next) await switchMusicTrack(next.trackRef || findTrack(next.id), { source: "automatic_continuation" });
-      return;
-    }
-    const selector = window.IAMMusicChannelSelector;
-    const inference = readStoredCitizenInference() || {};
-    const decision = selector?.chooseContinuationMode?.({
-      citizenNeeds: musicCitizenNeeds(),
-      atWork: Boolean(selector?.explicitWorkContext?.(inference)),
-      inGroup: audioWalletJoined,
-      seed: musicRecommendationSeed(),
-      sequence: musicContinuationSequence++,
-    }) || { mode: "parties", reason: "fallback_party_prior" };
-    document.body.dataset.musicContinuationDecision = decision.mode;
-    document.body.dataset.musicContinuationReason = decision.reason;
-    if (decision.mode === "parties") {
-      const party = musicShelfOrders.parties?.[0];
-      if (party) await openBroadcastEntry(party, { source: "automatic_continuation" });
-      else await startRadioStation(bestRadioStationForTrack(), { source: "party_pool_unavailable" });
-      return;
-    }
-    await startRadioStation(bestRadioStationForTrack(), { source: "adaptive_continuation" });
+    showMusicShelfStatus("The shared Music Video channels are temporarily unavailable.", 3600);
   }
 
   window.IAMMusicChannels = {
@@ -3587,6 +3595,7 @@
           entryOpen: broadcastEntryOpen,
           pendingChannelId: pendingBroadcastChannelId,
           trackId: document.body.dataset.broadcastTrackId || "",
+          stationId: document.body.dataset.broadcastStationId || "",
           targetSeconds: Number(document.body.dataset.broadcastTargetSeconds || 0),
           driftSeconds: Number(document.body.dataset.broadcastDriftSeconds || 0),
           correction: document.body.dataset.broadcastCorrection || "",
@@ -3612,14 +3621,13 @@
       return selectMusicItem(item, { source: "runtime_api" });
     },
     openBroadcast(channelId) {
-      const item = (musicShelfOrders.parties || []).find((candidate) => candidate.broadcastChannelId === channelId);
+      const item = Object.values(musicShelfOrders)
+        .flat()
+        .find((candidate) => candidate.broadcastChannelId === channelId);
       return openBroadcastEntry(item, { source: "runtime_api" });
     },
     joinBroadcast(channelId) {
       return joinBroadcastChannel(channelId, { source: "runtime_api" });
-    },
-    watchFromBeginning(channelId) {
-      return watchBroadcastFromBeginning(channelId);
     },
     synchronizeBroadcast(forceSeek = true) {
       return synchronizeBroadcastPlayback(forceSeek);
@@ -4531,7 +4539,7 @@
     if (!localVideo) return;
     continueAdaptiveMusicProgramme().catch((error) => {
       document.body.dataset.musicContinuationError = String(error?.message || error).slice(0, 140);
-      startRadioStation(bestRadioStationForTrack(), { source: "continuation_error_fallback" }).catch(() => null);
+      showMusicShelfStatus("The shared channels are temporarily unavailable.", 3600);
     });
   }
 
@@ -5422,16 +5430,11 @@
     event.stopPropagation();
     joinBroadcastChannel(pendingBroadcastChannelId, { source: "broadcast_invitation" });
   });
-  broadcastVodButton?.addEventListener("click", (event) => {
-    event.preventDefault();
-    event.stopPropagation();
-    watchBroadcastFromBeginning(pendingBroadcastChannelId);
-  });
   broadcastChooseButton?.addEventListener("click", (event) => {
     event.preventDefault();
     event.stopPropagation();
     closeBroadcastEntry(false);
-    setMusicMode("parties", { manual: true, openShelf: true });
+    setMusicMode(pendingBroadcastFormat, { manual: true, openShelf: true });
   });
   window.addEventListener("resize", () => {
     if (fashionShelfOpen) updateFashionShelfPosition({ preview: false });

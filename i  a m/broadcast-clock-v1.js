@@ -1,5 +1,5 @@
 (function () {
-  const SCHEDULE_URL = "broadcast-schedule-v1.json?v=broadcast-schedule-v1";
+  const SCHEDULE_URL = "broadcast-schedule-v1.json?v=broadcast-schedule-v1-1";
   const CLOCK_URL = "api/broadcast-clock.php";
   const CLOCK_PROBES = 3;
   let schedule = null;
@@ -13,19 +13,29 @@
 
   function normalizedChannel(channel) {
     const entries = Array.isArray(channel?.schedule) ? channel.schedule : [];
-    const normalizedEntries = entries.map((entry) => ({
-      trackId: String(entry.track_id || ""),
-      durationSeconds: Number(entry.duration_seconds),
-    }));
+    const mediaType = channel?.media_type === "radio" ? "radio" : "video";
+    const normalizedEntries = entries.map((entry) => {
+      const trackId = String(entry.track_id || "");
+      const stationId = String(entry.station_id || "");
+      return {
+        mediaId: mediaType === "radio" ? stationId : trackId,
+        trackId,
+        stationId,
+        durationSeconds: Number(entry.duration_seconds),
+      };
+    });
     const cycleSeconds = normalizedEntries.reduce((sum, entry) => sum + entry.durationSeconds, 0);
-    if (!channel?.id || !channel?.name || !normalizedEntries.length || !Number.isFinite(cycleSeconds) || cycleSeconds <= 0) {
+    if (!channel?.id || !channel?.format || !channel?.energy_id || !channel?.name || !normalizedEntries.length || !Number.isFinite(cycleSeconds) || cycleSeconds <= 0) {
       throw new Error("Invalid broadcast channel schedule.");
     }
-    if (normalizedEntries.some((entry) => !entry.trackId || !Number.isFinite(entry.durationSeconds) || entry.durationSeconds <= 0)) {
+    if (normalizedEntries.some((entry) => !entry.mediaId || !Number.isFinite(entry.durationSeconds) || entry.durationSeconds <= 0)) {
       throw new Error(`Invalid broadcast entry in ${channel.id}.`);
     }
     return {
       id: channel.id,
+      format: channel.format,
+      mediaType,
+      energyId: channel.energy_id,
       name: channel.name,
       description: channel.description || "",
       entries: normalizedEntries,
@@ -42,7 +52,11 @@
       version: payload.version || "broadcast_schedule_v1",
       stage: payload.stage || "",
       epochMs,
-      planningMarkets: Array.isArray(payload.planning_markets) ? payload.planning_markets.slice() : [],
+      planningMarkets: (Array.isArray(payload.planning_markets) ? payload.planning_markets : [])
+        .map((market) => typeof market === "string"
+          ? { name: market, timeZone: "" }
+          : { name: String(market?.name || ""), timeZone: String(market?.time_zone || "") })
+        .filter((market) => market.name),
       channels,
     };
   }
@@ -108,13 +122,20 @@
     const offsetSeconds = Math.max(0, Math.min(entry.durationSeconds - 0.05, cyclePositionSeconds - cursor));
     return {
       channelId: channel.id,
+      format: channel.format,
+      mediaType: channel.mediaType,
+      energyId: channel.energyId,
       channelName: channel.name,
       channelDescription: channel.description,
+      mediaId: entry.mediaId,
       trackId: entry.trackId,
+      stationId: entry.stationId,
       durationSeconds: entry.durationSeconds,
       offsetSeconds,
       remainingSeconds: Math.max(0, entry.durationSeconds - offsetSeconds),
+      nextMediaId: nextEntry.mediaId,
       nextTrackId: nextEntry.trackId,
+      nextStationId: nextEntry.stationId,
       entryIndex,
       cyclePositionSeconds,
       cycleSeconds: channel.cycleSeconds,
@@ -125,6 +146,14 @@
   function channelForTrack(trackId) {
     if (!schedule) return null;
     return schedule.channels.find((channel) => channel.entries.some((entry) => entry.trackId === trackId)) || null;
+  }
+
+  function channelForMedia(mediaId, format = "") {
+    if (!schedule) return null;
+    return schedule.channels.find((channel) => (
+      (!format || channel.format === format) &&
+      channel.entries.some((entry) => entry.mediaId === mediaId)
+    )) || null;
   }
 
   async function initialize() {
@@ -147,18 +176,26 @@
   }
 
   const api = {
-    version: "broadcast_clock_v1.0",
+    version: "broadcast_clock_v1.1",
     ready: null,
     nowMs,
     stateAt,
     channelForTrack,
-    channels() {
-      return schedule?.channels.map((channel) => ({
+    channelForMedia,
+    channels(format = "") {
+      return schedule?.channels
+        .filter((channel) => !format || channel.format === format)
+        .map((channel) => ({
         id: channel.id,
+        format: channel.format,
+        mediaType: channel.mediaType,
+        energyId: channel.energyId,
         name: channel.name,
         description: channel.description,
         cycleSeconds: channel.cycleSeconds,
         trackIds: channel.entries.map((entry) => entry.trackId),
+        stationIds: channel.entries.map((entry) => entry.stationId),
+        mediaIds: channel.entries.map((entry) => entry.mediaId),
       })) || [];
     },
     diagnostics() {
