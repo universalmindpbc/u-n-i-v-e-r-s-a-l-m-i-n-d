@@ -179,7 +179,7 @@
       "name": "Champagne Bohemia",
       "descriptor": "sunset Balearic",
       "description": "Balearic · chillout · electronica",
-      "visual_channel_id": "fashion-social-uplift",
+      "visual_channel_id": "fashion-restore",
       "schedule": [
         { "station_id": "cafe-del-mar-chill", "duration_seconds": 7200 },
         { "station_id": "nts-poolside", "duration_seconds": 7200 },
@@ -204,7 +204,7 @@
       "name": "modul8 infinity",
       "descriptor": "rave × mindfulness",
       "description": "House · techno · rave · future bass",
-      "visual_channel_id": "fashion-underground-intensity",
+      "visual_channel_id": "fashion-social-uplift",
       "schedule": [
         { "station_id": "cafe-del-mar-house", "duration_seconds": 7200 },
         { "station_id": "nts-otaku", "duration_seconds": 7200 },

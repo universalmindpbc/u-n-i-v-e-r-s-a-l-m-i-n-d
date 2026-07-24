@@ -4685,6 +4685,10 @@ body.music-shelf-open .adaptive-television-music-selector[data-video-tooltip]::a
   width: calc(100% - 88px);
 }
 
+.adaptive-television-music-shelf .adaptive-television-fashion-shelf__viewport {
+  padding-top: 5px;
+}
+
 .adaptive-television-music-shelf .adaptive-television-fashion-shelf__track {
   gap: 18px;
 }

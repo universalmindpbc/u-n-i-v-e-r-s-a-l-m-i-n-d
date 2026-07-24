@@ -280,6 +280,7 @@
   let fashionShelfSwipeStartX = null;
   let fashionTensorRecords = [];
   let fashionDwellTimer = 0;
+  const radioFashionPreloadPool = new Map();
   let requestedVideoBlend = Number(videoCrossfader?.value || 100);
   let fashionRevealGeneration = 0;
   let pendingFashionRevealPromise = null;
@@ -351,6 +352,8 @@
     // The adaptive recommendation remains available when session storage is restricted.
   }
   const RADIO_HLS_LIBRARY_URL = "https://cdn.jsdelivr.net/npm/hls.js@1.6.13/dist/hls.min.js";
+  const FASHION_REVEAL_BUFFER_SECONDS = 8;
+  const RADIO_FASHION_REVEAL_BUFFER_SECONDS = 4;
   const RADIO_READY_BUFFER_SECONDS = 24;
   const RADIO_LOW_BUFFER_SECONDS = 12;
   const RADIO_BUFFER_WAIT_MS = 12000;
@@ -1061,6 +1064,73 @@
       preload: true,
       preloadTargetSeconds: 12,
     });
+  }
+
+  function updateRadioFashionPreloadDiagnostics(targetCount = null) {
+    const readyCount = Array.from(radioFashionPreloadPool.values())
+      .filter((entry) => entry.video?.dataset.radioFashionPreload === "ready")
+      .length;
+    if (targetCount !== null && Number.isFinite(Number(targetCount))) {
+      document.body.dataset.radioFashionPreloadTargets = String(Number(targetCount));
+    }
+    document.body.dataset.radioFashionPreloadReady = String(readyCount);
+  }
+
+  function preloadRadioFashionRunway(runwayIndex) {
+    const runway = fashionRunways[runwayIndex];
+    if (!runway || runwayIndex === fashionRunwayIndex) return Promise.resolve(fashionVideo);
+    const existing = radioFashionPreloadPool.get(runway.assetKey);
+    if (existing) return existing.promise;
+
+    const video = createFashionVideo(runwayIndex);
+    video.dataset.radioFashionPreload = "loading";
+    playerMount.insertBefore(video, timecode || null);
+    const entry = { video, runwayIndex, promise: null };
+    entry.promise = attachAdaptiveStream(video, runway.videoSrc, "fashion", {
+      preload: true,
+      preloadTargetSeconds: RADIO_FASHION_REVEAL_BUFFER_SECONDS,
+    })
+      .then(() => window.IAMStreamController?.preloadFashion(video, {
+        targetSeconds: RADIO_FASHION_REVEAL_BUFFER_SECONDS,
+      }))
+      .then(() => {
+        video.dataset.radioFashionPreload = "ready";
+        updateRadioFashionPreloadDiagnostics();
+        return video;
+      })
+      .catch((error) => {
+        video.dataset.radioFashionPreload = "error";
+        video.dataset.radioFashionPreloadError = String(error?.message || error).slice(0, 140);
+        window.IAMStreamController?.detach(video);
+        video.remove();
+        radioFashionPreloadPool.delete(runway.assetKey);
+        updateRadioFashionPreloadDiagnostics();
+        return null;
+      });
+    radioFashionPreloadPool.set(runway.assetKey, entry);
+    updateRadioFashionPreloadDiagnostics();
+    return entry.promise;
+  }
+
+  function preloadRadioFashionRunways() {
+    Promise.resolve(window.IAMBroadcastClock?.ready)
+      .then(() => {
+        const runwayIds = new Set(
+          (window.IAMBroadcastClock?.channels?.("radio") || [])
+            .map((channel) => window.IAMBroadcastClock?.stateAt(channel.visualChannelId)?.runwayId)
+            .filter(Boolean)
+        );
+        const runwayIndexes = Array.from(runwayIds)
+          .map((runwayId) => fashionRunways.findIndex((runway) => runway.assetKey === runwayId))
+          .filter((index) => index >= 0 && index !== fashionRunwayIndex);
+        updateRadioFashionPreloadDiagnostics(runwayIndexes.length);
+        runwayIndexes.forEach((runwayIndex, position) => {
+          window.setTimeout(() => preloadRadioFashionRunway(runwayIndex), position * 180);
+        });
+      })
+      .catch((error) => {
+        document.body.dataset.radioFashionPreloadError = String(error?.message || error).slice(0, 140);
+      });
   }
 
   function attachAdaptiveStream(video, source, role, streamOptions = {}) {
@@ -2045,7 +2115,12 @@
 
     fashionRunwayIndex = nextIndex;
     fashionSelectionSource = source;
-    fashionVideo = createFashionVideo(fashionRunwayIndex);
+    const nextRunway = fashionRunways[fashionRunwayIndex];
+    const preloadedEntry = radioFashionPreloadPool.get(nextRunway.assetKey);
+    if (preloadedEntry) radioFashionPreloadPool.delete(nextRunway.assetKey);
+    fashionVideo = preloadedEntry?.video || createFashionVideo(fashionRunwayIndex);
+    delete fashionVideo.dataset.radioFashionPreload;
+    delete fashionVideo.dataset.radioFashionPreloadError;
     playerMount.insertBefore(fashionVideo, timecode || null);
     if (document.body.classList.contains("television-emdr-gif-active")) startFashionHeroMirror();
     updateFashionRunwayToggle();
@@ -2062,7 +2137,9 @@
     try {
       await ensureFashionStreamAttached(fashionVideo);
       if (shouldPlay) {
-        await revealFashionWhenReady(fashionVideo, revealGeneration);
+        await revealFashionWhenReady(fashionVideo, revealGeneration, {
+          minimumSeconds: options.revealMinimumSeconds,
+        });
       } else {
         window.IAMStreamController?.preloadFashion(fashionVideo, { targetSeconds: 12 });
         fashionVideo.classList.add("is-fashion-active");
@@ -2073,6 +2150,8 @@
       fashionRunwaySwitching = false;
       fashionRunwayPrevious?.removeAttribute("disabled");
       fashionRunwayNext?.removeAttribute("disabled");
+      updateRadioFashionPreloadDiagnostics();
+      window.setTimeout(preloadRadioFashionRunways, 480);
     }
   }
 
@@ -2394,6 +2473,7 @@
     musicShelfOffset = 0;
     updateMusicSelector();
     renderMusicShelf();
+    if (mode === "radio") preloadRadioFashionRunways();
     if (options.openShelf) openMusicShelf();
   }
 
@@ -3565,7 +3645,10 @@
     fashionBroadcastPairingSource = options.pairingSource || options.source || "fashion_broadcast";
     document.body.dataset.fashionBroadcastMode = "shared";
     document.body.dataset.fashionBroadcastPairingSource = fashionBroadcastPairingSource;
-    await setFashionRunway(fashionRunways.indexOf(scheduledRunway), { source: "algorithm" });
+    await setFashionRunway(fashionRunways.indexOf(scheduledRunway), {
+      source: "algorithm",
+      revealMinimumSeconds: options.revealMinimumSeconds,
+    });
     setVideoBlend(0);
     startFashionBroadcastSynchronization();
     await synchronizeFashionBroadcastPlayback(true);
@@ -3712,13 +3795,17 @@
     document.body.dataset.broadcastMode = "shared";
     document.body.dataset.broadcastClockSource = window.IAMBroadcastClock.diagnostics().clockSource;
     if (scheduledStation) {
-      await startRadioStation(scheduledStation, {
-        source: options.source || "broadcast_join",
-        broadcastChannelId: channelId,
-      });
+      // Put the silent runway on screen before the radio transport performs its
+      // larger safety-buffer fill. A slow station must never hold the picture
+      // behind a 12–30 second audio startup.
       await joinFashionBroadcastChannel(state.visualChannelId || fashionChannelIdForEnergy(state.energyId), {
         source: "radio_energy_match",
         pairingSource: `radio_${state.editorialId || state.energyId}`,
+        revealMinimumSeconds: RADIO_FASHION_REVEAL_BUFFER_SECONDS,
+      });
+      await startRadioStation(scheduledStation, {
+        source: options.source || "broadcast_join",
+        broadcastChannelId: channelId,
       });
     } else if (state.mediaType === "audio") {
       const started = await startAudioLedParty(scheduledTrack, {
@@ -4106,11 +4193,13 @@
     updateNowPlaying();
   }
 
-  async function revealFashionWhenReady(video, generation) {
+  async function revealFashionWhenReady(video, generation, options = {}) {
     if (!video) return;
     await ensureFashionStreamAttached(video);
     const readiness = await window.IAMStreamController?.prepareFashionReveal(video, {
-      minimumSeconds: 8,
+      minimumSeconds: Number.isFinite(Number(options.minimumSeconds))
+        ? Math.max(4, Number(options.minimumSeconds))
+        : FASHION_REVEAL_BUFFER_SECONDS,
       firstFallbackMs: 1250,
       secondFallbackMs: 2000,
     });
@@ -4676,6 +4765,7 @@
     ensureFashionStreamAttached()
       .then(() => window.IAMStreamController?.preloadFashion(fashionVideo, { targetSeconds: 12 }))
       .catch(() => {});
+    window.setTimeout(preloadRadioFashionRunways, 900);
 
     if (playAttempt?.catch) {
       playAttempt.catch(() => {
@@ -5693,7 +5783,10 @@
   renderMusicShelf();
   loadMusicRecommendations();
   window.IAMBroadcastClock?.ready
-    ?.then(() => rankMusicShelves())
+    ?.then(() => {
+      rankMusicShelves();
+      window.setTimeout(preloadRadioFashionRunways, 350);
+    })
     .catch(() => showMusicShelfStatus("The shared broadcast clock is temporarily unavailable.", 3600));
   window.addEventListener("iam:broadcast-clock-ready", rankMusicShelves);
   if (!selectionIsLoading) {

@@ -123,6 +123,17 @@ for (const channel of schedule.channels) {
   } else if (channel.format === "radio") {
     assert.equal(channel.media_type, "radio");
     assert.equal(cycleSeconds, 86400, `${channel.name} Radio must define one exact 24-hour timetable.`);
+    const approvedRadioVisualChannels = {
+      "radio-inner-planes": "fashion-restore",
+      "radio-champagne-bohemia": "fashion-restore",
+      "radio-modul8-infinity": "fashion-social-uplift",
+      "radio-james-bondage": "fashion-underground-intensity",
+    };
+    assert.equal(
+      channel.visual_channel_id,
+      approvedRadioVisualChannels[channel.id],
+      `${channel.name} Radio must retain its approved Fashion pairing.`
+    );
     for (const entry of channel.schedule) {
       assert.equal(Number(entry.duration_seconds), 7200, "Stage-one Radio blocks must be two hours.");
       assert.ok(approvedStationIds.has(entry.station_id), `${entry.station_id} must be an approved radio station.`);
@@ -168,6 +179,7 @@ assert.match(controller, /broadcastCorrection = "live_station_locked"/, "Shared 
 assert.match(controller, /musicContinuationDecision = "parties"/, "The personal opening video must converge into a recommended shared DJ Set channel.");
 assert.match(controller, /musicContinuationReason = "personal_opening_complete"/, "The shared DJ Set invitation must follow the personal opening video.");
 assert.match(controller, /radio_energy_match/, "Shared Radio must automatically pair with the matching Fashion energy channel.");
+assert.match(controller, /revealMinimumSeconds:\s*RADIO_FASHION_REVEAL_BUFFER_SECONDS/, "Shared Radio must begin its Fashion picture before the station safety buffer.");
 assert.match(controller, /audio_party_visual_pair/, "James Bondage audio-led parties must pair with the Fashion broadcast clock.");
 assert.match(controller, /startAudioLedParty/, "The Zip and Sammy D mixes must use the audio-led party player.");
 assert.match(controller, /fashionBroadcastBlockRemainingSeconds/, "Fashion playback must remain locked to its 15-minute shared block.");

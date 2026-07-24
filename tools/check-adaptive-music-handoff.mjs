@@ -268,7 +268,10 @@ requireCondition(nowPlayingCss.includes('.adaptive-television-now-playing__time 
 requireCondition(nowPlayingCss.includes('.adaptive-television-now-playing__status {') && nowPlayingCss.includes('color: #fff;'), 'Now Playing is no longer white');
 requireCondition((nowPlayingCss.match(/font-weight: 400;/g) || []).length >= 2, 'the time and Now Playing label are no longer as light as the active title');
 requireCondition(controller.includes('preloadTargetSeconds: 12'), 'fashion no longer preloads toward a twelve-second buffer');
-requireCondition(controller.includes('minimumSeconds: 8'), 'fashion reveal no longer requires an eight-second buffer floor');
+requireCondition(controller.includes('const FASHION_REVEAL_BUFFER_SECONDS = 8;'), 'fashion reveal no longer requires an eight-second buffer floor');
+requireCondition(controller.includes('const RADIO_FASHION_REVEAL_BUFFER_SECONDS = 4;') && controller.includes('revealMinimumSeconds: RADIO_FASHION_REVEAL_BUFFER_SECONDS'), 'Radio no longer receives its faster Fashion-first visual handoff');
+requireCondition(controller.includes('const radioFashionPreloadPool = new Map();') && controller.includes('preloadRadioFashionRunways'), 'Radio Fashion channels are no longer warmed before selection');
+requireCondition(televisionCss.includes('padding-top: 5px;'), 'the recommended-channel label can be clipped by the shelf rollover');
 requireCondition(controller.includes('firstFallbackMs: 1250'), 'fashion reveal no longer falls to 480p after 1.25 seconds');
 requireCondition(controller.includes('secondFallbackMs: 2000'), 'fashion reveal no longer falls progressively to 360p');
 requireCondition(controller.includes('window.IAMStreamController?.noteFashionReveal(video);'), 'fashion crossfade telemetry is missing');
