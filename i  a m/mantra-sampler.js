@@ -133,7 +133,7 @@
   async function playItem(item, { serverPlayAtMs = null, shared = false, exclusive = false } = {}) {
     if (!item || item.reserved || !item.asset) return;
     const ctx = context();
-    await ctx.resume().catch(() => null);
+    ctx.resume().catch(() => null);
     const buffer = await bufferFor(item);
     if (!buffer) return;
     const correctedNowMs = Number(window.IAMBroadcastClock?.nowMs?.()) || Date.now();
@@ -244,8 +244,9 @@
     const ctx = context();
     ctx.resume().catch(() => null);
     void bufferFor(item);
+    const localPlayback = playItem(item, { exclusive: true });
     window.IAMBroadcastInteractions?.sendMantra?.(item.id);
-    await playItem(item, { exclusive: true });
+    await localPlayback;
   }
 
   function createNode(item, index) {
@@ -382,7 +383,7 @@
   });
 
   window.IAMMantraSampler = {
-    version: "mantra_sampler_v2.3",
+    version: "mantra_sampler_v2.4",
     open,
     close,
     refresh,
