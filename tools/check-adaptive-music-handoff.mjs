@@ -483,6 +483,11 @@ requireCondition(
   "Max Richter is not connected to the verified Cloudflare Stream UID"
 );
 requireCondition(controller.includes('id: "max-richter-cercle-odyssey-paris"'), "Max Richter is not selectable in Inner Planes Parties");
+requireCondition(
+  streamCatalogue.includes('"Ólafur Arnalds live from Hafursey, in Iceland for Cercle.mp4": "ab3bad1d63041842c5a485b0e6f04381"'),
+  "Ólafur Arnalds is not connected to the verified Cloudflare Stream UID"
+);
+requireCondition(controller.includes('id: "olafur-arnalds-hafursey-iceland-cercle"'), "Ólafur Arnalds is not selectable in Inner Planes Parties");
 
 for (const { pagePath, source } of pages) {
   const label = path.relative(ROOT, pagePath);

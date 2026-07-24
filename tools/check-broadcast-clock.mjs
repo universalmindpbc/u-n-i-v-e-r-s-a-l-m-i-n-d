@@ -46,6 +46,7 @@ const djDurations = new Map([
   ["nastia-drum-bass-sunset-the-lab-ibiza", 5135.2],
   ["carl-cox-chateau-de-chambord-cercle", 7986.09],
   ["max-richter-cercle-odyssey-paris", 3729.19],
+  ["olafur-arnalds-hafursey-iceland-cercle", 5242.2],
   ["zip-perlon-air-festival-2007", 11255.780136],
   ["zip-sammy-d-perlon-betalounge-2000", 13194.739229],
 ]);
@@ -202,4 +203,4 @@ assert.match(index, /broadcast-clock-v1\.js/);
 assert.match(endpoint, /microtime\(true\) \* 1000/);
 assert.match(endpoint, /Cache-Control: no-store/);
 
-console.log("Broadcast clock preflight passed: four live editorial channels across Videos, Parties and Radio; Max Richter programmed in Inner Planes Parties; Zip/Perlon audio paired to Mugler/Wolford; exact shared clocks; no solo replay path.");
+console.log("Broadcast clock preflight passed: four live editorial channels across Videos, Parties and Radio; Max Richter and Ólafur Arnalds programmed in Inner Planes Parties; Zip/Perlon audio paired to Mugler/Wolford; exact shared clocks; no solo replay path.");

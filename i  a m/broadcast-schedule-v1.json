@@ -97,7 +97,8 @@
       "descriptor": "sunrise ambient",
       "description": "Ambient · beatless · electronica",
       "schedule": [
-        { "track_id": "max-richter-cercle-odyssey-paris", "duration_seconds": 3729.19 }
+        { "track_id": "max-richter-cercle-odyssey-paris", "duration_seconds": 3729.19 },
+        { "track_id": "olafur-arnalds-hafursey-iceland-cercle", "duration_seconds": 5242.2 }
       ]
     },
     {

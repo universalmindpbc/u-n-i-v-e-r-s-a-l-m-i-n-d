@@ -29,6 +29,7 @@
     "NASTIA - Ibiza at Sunset - The Lab.mp4": "136ec1e0ea6fab6cf3b2823c0f1c91a4",
     "Nina Kraviz - Eiffel Tower, Paris, France - Cercle.mp4": "ddd5d833455f0710e35b8a7a86cd6479",
     "Nightmares On Wax - Shape The Future.mp4": "8f62532e4e436ce5e173334187666c56",
+    "Ólafur Arnalds live from Hafursey, in Iceland for Cercle.mp4": "ab3bad1d63041842c5a485b0e6f04381",
     "PinkPantheress - Illegal ( Live at Glastonbury).mp4": "d8b7080ac4fb2d0acfeb6244ca076a0a",
     "Peggy Gou - Cercle - Palais des Beaux - Cercle.mp4": "deffc6cd21e8ab75deaa6bf01eaf841c",
     "Rihanna - Diamonds.mp4": "e5186fe7cb7bf9c7e3496104f83084aa",
