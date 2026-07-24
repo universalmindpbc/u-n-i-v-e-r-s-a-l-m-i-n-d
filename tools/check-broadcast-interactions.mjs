@@ -76,6 +76,7 @@ assert.match(mantraSampler, /IAMBroadcastInteractions\?\.sendMantra/, "A mantra 
 assert.match(mantraSampler, /const localPlayback = playItem\(item, \{ exclusive: true \}\)/, "A mantra tap must begin local playback before contacting the coordinator.");
 assert.match(mantraSampler, /await localPlayback;/, "A mantra tap must complete its independent local playback path.");
 assert.doesNotMatch(mantraSampler, /await ctx\.resume\(\)/, "Mantra playback must not wait for AudioContext resume before constructing the sample.");
+assert.match(mantraSampler, /serverPlayAtMs !== null/, "A local mantra tap must not be mistaken for a stale server-scheduled event.");
 assert.match(mantraSampler, /mantraPlaybackMode = shared \? "shared" : "local"/, "Mantra playback timing is not observable for live QA.");
 assert.match(television, /IAMBroadcastInteractions\?\.setBroadcast/, "Broadcast entry does not join the matching interaction room.");
 assert.match(television, /IAMBroadcastInteractions\?\.clear/, "Leaving shared playback does not leave the interaction room.");

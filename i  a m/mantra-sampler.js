@@ -137,7 +137,10 @@
     const buffer = await bufferFor(item);
     if (!buffer) return;
     const correctedNowMs = Number(window.IAMBroadcastClock?.nowMs?.()) || Date.now();
-    if (Number.isFinite(Number(serverPlayAtMs)) && Number(serverPlayAtMs) < correctedNowMs - 1200) {
+    const hasServerPlayAt = serverPlayAtMs !== null
+      && serverPlayAtMs !== undefined
+      && Number.isFinite(Number(serverPlayAtMs));
+    if (hasServerPlayAt && Number(serverPlayAtMs) < correctedNowMs - 1200) {
       announce("shared mantra arrived too late");
       return;
     }
@@ -148,7 +151,7 @@
     const sampleDuration = trimEnd - trimStart;
     const speed = Math.max(0.35, Math.min(2, Number(item.speed) || 1));
     const outputDuration = sampleDuration / speed;
-    const scheduledContextTime = Number.isFinite(Number(serverPlayAtMs))
+    const scheduledContextTime = hasServerPlayAt
       ? ctx.currentTime + Math.max(0.03, (Number(serverPlayAtMs) - correctedNowMs) / 1000)
       : ctx.currentTime;
     document.body.dataset.mantraPlaybackMode = shared ? "shared" : "local";
@@ -383,7 +386,7 @@
   });
 
   window.IAMMantraSampler = {
-    version: "mantra_sampler_v2.4",
+    version: "mantra_sampler_v2.5",
     open,
     close,
     refresh,
