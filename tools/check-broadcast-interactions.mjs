@@ -64,6 +64,8 @@ assert.match(interactions, /credentials: "same-origin"/, "The interaction client
 assert.match(interactions, /fetchPayload\("GET"/, "The browser client must receive shared events.");
 assert.match(interactions, /fetchPayload\("POST"/, "The browser client must send shared events.");
 assert.match(interactions, /sendBloom/, "The browser client cannot send Blooms.");
+assert.match(interactions, /broadcastInteractionReceivedBlooms = String\(receivedBlooms\)/, "Remote Bloom receipts must remain observable for rapid-fire live QA.");
+assert.match(interactions, /bloomShareMode = String\(payload\.bloom_mode\)/, "The closed-test Bloom mode must remain observable on each viewer.");
 assert.match(interactions, /sendMantra/, "The browser client cannot send mantras.");
 assert.match(interactions, /locallyRenderedEventIds/, "The sender cannot suppress its delayed shared echo.");
 assert.match(interactions, /source_event_ids/, "The client cannot identify its own optimistic interaction.");

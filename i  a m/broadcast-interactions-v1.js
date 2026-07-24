@@ -116,6 +116,7 @@
     const delay = Math.max(0, playAt - serverNowMs());
     window.setTimeout(() => {
       receivedBlooms += 1;
+      document.body.dataset.broadcastInteractionReceivedBlooms = String(receivedBlooms);
       lastEvent = {
         type: "bloom",
         assetId: String(message.asset_id || ""),
@@ -183,6 +184,7 @@
       if (message.type === "shared_mantra") scheduleMantra(message);
     });
     cursor = Math.max(cursor, Number(payload?.cursor) || 0);
+    if (payload?.bloom_mode) document.body.dataset.bloomShareMode = String(payload.bloom_mode);
     if (payload?.mantra_mode) document.body.dataset.mantraShareMode = String(payload.mantra_mode);
     if (payload?.outcome) {
       document.body.dataset.broadcastInteractionLastAcknowledgement = `${payload.kind || "interaction"}:${payload.outcome}`;
@@ -377,4 +379,5 @@
   };
 
   updateDataset("idle");
+  document.body.dataset.broadcastInteractionReceivedBlooms = "0";
 })();
