@@ -108,6 +108,7 @@
     const channel = channelForId(channelId);
     if (!channel) return null;
     const elapsedSeconds = (Number(requestedNowMs) - schedule.epochMs) / 1000;
+    const cycleIndex = Math.floor(elapsedSeconds / channel.cycleSeconds);
     const cyclePositionSeconds = positiveModulo(elapsedSeconds, channel.cycleSeconds);
     let cursor = 0;
     let entryIndex = 0;
@@ -123,6 +124,8 @@
     const previousEntry = channel.entries[(entryIndex - 1 + channel.entries.length) % channel.entries.length];
     const nextEntry = channel.entries[(entryIndex + 1) % channel.entries.length];
     const offsetSeconds = Math.max(0, Math.min(entry.durationSeconds - 0.05, cyclePositionSeconds - cursor));
+    const programmeStartMs = Math.round(schedule.epochMs + ((cycleIndex * channel.cycleSeconds + cursor) * 1000));
+    const programmeInstanceId = `${channel.id}.${entryIndex}.${programmeStartMs}`;
     return {
       channelId: channel.id,
       format: channel.format,
@@ -146,8 +149,11 @@
       nextStationId: nextEntry.stationId,
       nextRunwayId: nextEntry.runwayId,
       entryIndex,
+      cycleIndex,
       cyclePositionSeconds,
       cycleSeconds: channel.cycleSeconds,
+      programmeStartMs,
+      programmeInstanceId,
       serverNowMs: Number(requestedNowMs),
     };
   }

@@ -1335,7 +1335,7 @@
     heartField.append(flower);
   }
 
-  function releaseDoveFlowerDrop() {
+  function releaseDoveFlowerDrop({ shared = false, density = 1 } = {}) {
     if (!heartField || heartBurstActive) return;
 
     heartBurstActive = true;
@@ -1377,7 +1377,10 @@
     dove.addEventListener("animationend", () => dove.remove(), { once: true });
     heartField.append(dove);
 
-    const total = window.matchMedia("(prefers-reduced-motion: reduce)").matches ? 24 : 108;
+    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const total = shared
+      ? (reducedMotion ? 18 : Math.min(72, 42 + (Math.max(1, Math.min(3, density)) * 10)))
+      : (reducedMotion ? 24 : 108);
     for (let index = 0; index < total; index += 1) spawnDroppedFlower(index, total);
 
     window.setTimeout(() => {
@@ -1385,18 +1388,21 @@
     }, 4300);
   }
 
-  function releaseReactionFlood(type = "daisy") {
+  function releaseReactionFlood(type = "daisy", { shared = false, density = 1 } = {}) {
     if (!heartField || heartBurstActive) return;
 
     if (type === "dove") {
-      releaseDoveFlowerDrop();
+      releaseDoveFlowerDrop({ shared, density });
       return;
     }
 
     heartBurstActive = true;
     heartField.replaceChildren();
 
-    const total = window.matchMedia("(prefers-reduced-motion: reduce)").matches ? 22 : 86;
+    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const total = shared
+      ? (reducedMotion ? 12 : Math.min(52, 28 + (Math.max(1, Math.min(3, density)) * 8)))
+      : (reducedMotion ? 22 : 86);
     const burst = document.createDocumentFragment();
     for (let index = 0; index < total; index += 1) burst.append(createReaction(index, total, type));
     heartField.append(burst);
@@ -3379,6 +3385,7 @@
       broadcastSyncTimer = 0;
     }
     if (localVideo && Math.abs(Number(localVideo.playbackRate || 1) - 1) > .001) localVideo.playbackRate = 1;
+    window.IAMBroadcastInteractions?.clear?.(reason);
     broadcastChannelId = "";
     document.body.dataset.broadcastMode = "personal";
     document.body.dataset.broadcastExitReason = reason;
@@ -3521,6 +3528,7 @@
     if (!broadcastChannelId || !window.IAMBroadcastClock) return null;
     const state = window.IAMBroadcastClock.stateAt(broadcastChannelId);
     if (!state) return null;
+    window.IAMBroadcastInteractions?.setBroadcast?.(state);
     document.body.dataset.broadcastChannelId = broadcastChannelId;
     document.body.dataset.broadcastRemainingSeconds = state.remainingSeconds.toFixed(3);
     if (state.mediaType === "radio") {
@@ -3588,6 +3596,7 @@
   }
 
   async function joinBroadcastChannel(channelId, options = {}) {
+    window.IAMMantraSampler?.armSharedAudio?.();
     try {
       await window.IAMBroadcastClock?.ready;
     } catch {
@@ -5922,7 +5931,9 @@
     button.addEventListener("click", (event) => {
       event.preventDefault();
       event.stopPropagation();
-      releaseReactionFlood(button.dataset.televisionReaction || "daisy");
+      const reactionType = button.dataset.televisionReaction || "daisy";
+      const shared = window.IAMBroadcastInteractions?.sendBloom?.(reactionType) || false;
+      if (!shared) releaseReactionFlood(reactionType);
       const walletIsActive =
         audioWalletInteracting ||
         reactionWallet?.matches(":hover") ||
@@ -5932,6 +5943,11 @@
         scheduleReactionWalletCollapse(120);
       }
     });
+  });
+  window.addEventListener("iam:shared-bloom", (event) => {
+    const reactionType = String(event.detail?.type || "daisy");
+    const density = Math.max(1, Math.min(3, Number(event.detail?.density) || 1));
+    releaseReactionFlood(reactionType, { shared: true, density });
   });
   learnCue?.addEventListener("click", openVideoRadar);
   radarClose?.addEventListener("click", closeVideoRadar);

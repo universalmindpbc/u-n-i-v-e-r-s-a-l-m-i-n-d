@@ -567,7 +567,7 @@ requireCondition(mantraLibrary.banks.tibet.length === 6 && mantraLibrary.banks.i
 requireCondition(mantraLibrary.banks.tibet.filter((item) => item.reserved).length === 3, 'the three undecided Tibet nodes are no longer reserved');
 requireCondition(mantraLibrary.banks.ibiza.filter((item) => item.source_type === 'reference_sample').length === 3, 'Ibiza must retain exactly the three approved reference samples');
 requireCondition(mantraLibrary.banks.ibiza.filter((item) => item.source_type === 'vocoder').length === 3, 'Ibiza must contain the three original vocoder samples');
-requireCondition(mantraSampler.includes('stopItem(item.id);') && mantraSampler.includes('source.start(0, trimStart, sampleDuration);'), 'a mantra pad can no longer retrigger before its sample finishes');
+requireCondition(mantraSampler.includes('stopItem(item.id);') && mantraSampler.includes('source.start(scheduledContextTime, trimStart, sampleDuration);'), 'a mantra pad can no longer retrigger before its sample finishes');
 requireCondition(mantraSampler.includes('source.detune.linearRampToValueAtTime') && mantraSampler.includes('item.pitch_curve'), 'saved drawn pitch lines no longer shape sampler playback');
 requireCondition(mantraSampler.includes('document.body.classList.remove("mantra-sampler-open")') && controller.includes('window.addEventListener("iam:mantra-close"') && controller.includes('setWalletView("emdr");'), 'closing the full-screen sampler no longer returns to the restored EMDR wallet');
 requireCondition(controller.includes('emdrMantraOpen?.addEventListener("click"') && controller.includes('window.IAMMantraSampler?.open?.();') && !controller.includes('deactivateVisualEmdr();'), 'the Mantra extension no longer opens independently from the restored EMDR controls');

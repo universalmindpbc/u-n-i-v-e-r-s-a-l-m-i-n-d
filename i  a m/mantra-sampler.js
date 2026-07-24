@@ -124,23 +124,38 @@
     syncPlaybackState();
   }
 
-  async function trigger(item) {
+  function libraryItemForId(id) {
+    return Object.values(library?.banks || {})
+      .flat()
+      .find((item) => item.id === id) || null;
+  }
+
+  async function playItem(item, { serverPlayAtMs = null, shared = false } = {}) {
     if (!item || item.reserved || !item.asset) return;
     const ctx = context();
-    await ctx.resume();
+    await ctx.resume().catch(() => null);
     const buffer = await bufferFor(item);
     if (!buffer) return;
+    const correctedNowMs = Number(window.IAMBroadcastClock?.nowMs?.()) || Date.now();
+    if (Number.isFinite(Number(serverPlayAtMs)) && Number(serverPlayAtMs) < correctedNowMs - 1200) {
+      announce("shared mantra arrived too late");
+      return;
+    }
+    if (shared) stopAll();
     stopItem(item.id);
     const trimStart = Math.max(0, Number(item.trim_start) || 0);
     const trimEnd = Math.min(buffer.duration, Math.max(trimStart + 0.01, Number(item.trim_end) || buffer.duration));
     const sampleDuration = trimEnd - trimStart;
     const speed = Math.max(0.35, Math.min(2, Number(item.speed) || 1));
     const outputDuration = sampleDuration / speed;
+    const scheduledContextTime = Number.isFinite(Number(serverPlayAtMs))
+      ? ctx.currentTime + Math.max(0.03, (Number(serverPlayAtMs) - correctedNowMs) / 1000)
+      : ctx.currentTime;
     const source = ctx.createBufferSource();
     source.buffer = buffer;
     source.playbackRate.value = speed;
     const basePitch = Number(item.pitch) || 0;
-    source.detune.setValueAtTime(basePitch * 100, ctx.currentTime);
+    source.detune.setValueAtTime(basePitch * 100, scheduledContextTime);
     const pitchCurve = Array.isArray(item.pitch_curve) && item.pitch_curve.length > 1
       ? item.pitch_curve
       : [{ x: 0, y: 0 }, { x: 1, y: 0 }];
@@ -149,7 +164,7 @@
       const x = Math.max(0, Math.min(1, Number(point.x) || 0));
       const drawnPitch = Math.max(-12, Math.min(12, Number(point.y) || 0));
       const movingPitch = Math.sin(x * Math.PI * 2) * motion;
-      source.detune.linearRampToValueAtTime((basePitch + drawnPitch + movingPitch) * 100, ctx.currentTime + x * outputDuration);
+      source.detune.linearRampToValueAtTime((basePitch + drawnPitch + movingPitch) * 100, scheduledContextTime + x * outputDuration);
     });
     const gain = ctx.createGain();
     const envelope = item.amp_envelope || {};
@@ -159,10 +174,10 @@
     const peak = Math.max(0.0001, Math.min(15.849, itemGain) * Math.max(0, Math.min(1, envelopeLevel)) * programmeGain);
     const attack = Math.min(outputDuration * 0.9, Math.max(0.005, Number(envelope.attack) * outputDuration || 0.02));
     const release = Math.min(outputDuration * 0.9, Math.max(0.005, Number(envelope.release) * outputDuration || 0.08));
-    gain.gain.setValueAtTime(0.0001, ctx.currentTime);
-    gain.gain.linearRampToValueAtTime(peak, ctx.currentTime + attack);
-    gain.gain.setValueAtTime(peak, ctx.currentTime + Math.max(attack, outputDuration - release));
-    gain.gain.linearRampToValueAtTime(0.0001, ctx.currentTime + outputDuration);
+    gain.gain.setValueAtTime(0.0001, scheduledContextTime);
+    gain.gain.linearRampToValueAtTime(peak, scheduledContextTime + attack);
+    gain.gain.setValueAtTime(peak, scheduledContextTime + Math.max(attack, outputDuration - release));
+    gain.gain.linearRampToValueAtTime(0.0001, scheduledContextTime + outputDuration);
     const limiter = ctx.createDynamicsCompressor();
     limiter.threshold.value = -1;
     limiter.knee.value = 0;
@@ -194,11 +209,44 @@
     setPlaying(item.id, true);
     announce(item.phrase || item.label || "mantra");
     try {
-      source.start(0, trimStart, sampleDuration);
+      source.start(scheduledContextTime, trimStart, sampleDuration);
     } catch {
       deactivate(item.id);
       announce("tap the sample again to play");
     }
+  }
+
+  function armSharedAudio() {
+    const ctx = context();
+    ctx.resume().catch(() => null);
+    return (async () => {
+      if (!library) await refresh();
+      const playable = Object.values(library?.banks || {})
+        .flat()
+        .filter((item) => !item.reserved && item.asset);
+      await Promise.allSettled(playable.map((item) => bufferFor(item)));
+      return playable.length;
+    })();
+  }
+
+  async function playShared(id, serverPlayAtMs) {
+    if (!library) await refresh();
+    const item = libraryItemForId(id);
+    if (!item || item.reserved || !item.asset) return false;
+    await playItem(item, { serverPlayAtMs, shared: true });
+    return true;
+  }
+
+  async function trigger(item) {
+    if (!item || item.reserved || !item.asset) return;
+    const ctx = context();
+    ctx.resume().catch(() => null);
+    void bufferFor(item);
+    if (window.IAMBroadcastInteractions?.sendMantra?.(item.id)) {
+      announce(`sharing ${item.label || "mantra"}`);
+      return;
+    }
+    await playItem(item);
   }
 
   function createNode(item, index) {
@@ -317,6 +365,17 @@
     event.preventDefault();
     close();
   });
+  window.addEventListener("iam:shared-interaction-acknowledged", (event) => {
+    if (event.detail?.kind !== "mantra") return;
+    if (event.detail.outcome === "queued") announce("shared mantra is waiting");
+    if (event.detail.outcome === "coalesced") announce("shared mantra joined");
+  });
+  window.addEventListener("iam:shared-interaction-rejected", (event) => {
+    if (event.detail?.kind !== "mantra") return;
+    announce(event.detail.reason === "shared_queue_full"
+      ? "one shared mantra is already waiting"
+      : "shared mantra is resting");
+  });
   const programmeSampler = window.setInterval(sampleProgrammeLevel, PROGRAMME_SAMPLE_MS);
   window.addEventListener("pagehide", () => {
     window.clearInterval(programmeSampler);
@@ -324,11 +383,13 @@
   });
 
   window.IAMMantraSampler = {
-    version: "mantra_sampler_v2.1",
+    version: "mantra_sampler_v2.2",
     open,
     close,
     refresh,
     stopAll,
+    armSharedAudio,
+    playShared,
     getState() {
       return {
         bank: currentBank,
