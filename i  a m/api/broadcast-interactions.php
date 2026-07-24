@@ -5,14 +5,14 @@ header('Content-Type: application/json; charset=utf-8');
 header('Cache-Control: no-store, no-cache, must-revalidate, max-age=0');
 header('Pragma: no-cache');
 
-const WORKER_VERSION = 'broadcast_interactions_panthur_v1.1';
+const WORKER_VERSION = 'broadcast_interactions_panthur_v1.2';
 const BLOOM_COALESCE_MS = 350;
 const BLOOM_PERSON_COOLDOWN_MS = 2000;
 const BLOOM_PERSON_LIMIT_PER_MINUTE = 6;
 const BLOOM_GLOBAL_GAP_MS = 2000;
 const DOVE_GLOBAL_GAP_MS = 6000;
 const MANTRA_SCHEDULE_AHEAD_MS = 1500;
-const MANTRA_PERSON_COOLDOWN_MS = 30000;
+const MANTRA_PERSON_COOLDOWN_MS = 1500;
 const MANTRA_QUIET_MS = 8000;
 const MANTRA_GLOBAL_LIMIT_PER_MINUTE = 2;
 const MANTRA_LIBRARY_PATH = __DIR__ . '/mantra-library.json';
@@ -167,7 +167,14 @@ function mantra_eligible_at(array $state, int $now): int
     return $eligibleAt;
 }
 
-function schedule_mantra(array &$state, string $mantraId, int $participantCount, int $now, int $duration): void
+function schedule_mantra(
+    array &$state,
+    string $mantraId,
+    int $participantCount,
+    int $now,
+    int $duration,
+    array $sourceEventIds
+): void
 {
     $playAt = max($now, mantra_eligible_at($state, $now)) + MANTRA_SCHEDULE_AHEAD_MS;
     $state['global_mantra_history'][] = $playAt;
@@ -184,6 +191,7 @@ function schedule_mantra(array &$state, string $mantraId, int $participantCount,
         'participant_count' => max(1, $participantCount),
         'server_play_at_ms' => $playAt,
         'duration_ms' => $duration,
+        'source_event_ids' => array_values(array_unique(array_map('strval', $sourceEventIds))),
     ]);
 }
 
@@ -196,10 +204,13 @@ function advance_state(array &$state, int $now): void
     if ($pendingBlooms && $now >= $bloomEligibleAt) {
         $counts = [];
         $contributors = [];
+        $sourceEventIds = [];
         foreach ($pendingBlooms as $entry) {
             $assetId = (string) ($entry['asset_id'] ?? '');
             $counts[$assetId] = ($counts[$assetId] ?? 0) + 1;
             $contributors[(string) ($entry['session_id'] ?? '')] = true;
+            $sourceEventId = (string) ($entry['source_event_id'] ?? '');
+            if ($sourceEventId !== '') $sourceEventIds[$sourceEventId] = true;
         }
         $winner = (string) ($pendingBlooms[0]['asset_id'] ?? 'flora');
         foreach ($counts as $assetId => $count) {
@@ -215,6 +226,7 @@ function advance_state(array &$state, int $now): void
             'participant_count' => $participantCount,
             'density' => min(3, $participantCount),
             'server_play_at_ms' => $playAt,
+            'source_event_ids' => array_keys($sourceEventIds),
         ]);
         $state['next_bloom_at_ms'] = $now + ($winner === 'dove' ? DOVE_GLOBAL_GAP_MS : BLOOM_GLOBAL_GAP_MS);
         $state['pending_blooms'] = [];
@@ -229,7 +241,8 @@ function advance_state(array &$state, int $now): void
             (string) $queued['id'],
             max(1, (int) ($queued['participant_count'] ?? 1)),
             $now,
-            max(250, min(MANTRA_MAX_DURATION_MS, (int) ($queued['duration_ms'] ?? MANTRA_DEFAULT_DURATION_MS)))
+            max(250, min(MANTRA_MAX_DURATION_MS, (int) ($queued['duration_ms'] ?? MANTRA_DEFAULT_DURATION_MS))),
+            array_values((array) ($queued['source_event_ids'] ?? []))
         );
     }
 }
@@ -310,6 +323,7 @@ if ($method === 'POST') {
                 $state['pending_blooms'][] = [
                     'asset_id' => $assetId,
                     'session_id' => $sessionId,
+                    'source_event_id' => $eventId,
                     'received_at_ms' => $now,
                 ];
                 $state['bloom_flush_at_ms'] = max(
@@ -336,18 +350,20 @@ if ($method === 'POST') {
                     $state['current_mantra']['participant_count'] = max(1, (int) ($current['participant_count'] ?? 1)) + 1;
                     $outcome = 'coalesced';
                 } elseif (mantra_eligible_at($state, $now) <= $now && !is_array($state['queued_mantra'] ?? null)) {
-                    schedule_mantra($state, $assetId, 1, $now, $duration);
+                    schedule_mantra($state, $assetId, 1, $now, $duration, [$eventId]);
                     $outcome = 'scheduled';
                 } elseif (!is_array($state['queued_mantra'] ?? null)) {
                     $state['queued_mantra'] = [
                         'id' => $assetId,
                         'duration_ms' => $duration,
                         'participant_count' => 1,
+                        'source_event_ids' => [$eventId],
                         'requested_at_ms' => $now,
                     ];
                     $outcome = 'queued';
                 } elseif (($state['queued_mantra']['id'] ?? '') === $assetId) {
                     $state['queued_mantra']['participant_count'] = max(1, (int) ($state['queued_mantra']['participant_count'] ?? 1)) + 1;
+                    $state['queued_mantra']['source_event_ids'][] = $eventId;
                     $outcome = 'coalesced';
                 } else {
                     $error = 'shared_queue_full';

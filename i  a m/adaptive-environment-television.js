@@ -5932,8 +5932,8 @@
       event.preventDefault();
       event.stopPropagation();
       const reactionType = button.dataset.televisionReaction || "daisy";
-      const shared = window.IAMBroadcastInteractions?.sendBloom?.(reactionType) || false;
-      if (!shared) releaseReactionFlood(reactionType);
+      releaseReactionFlood(reactionType);
+      window.IAMBroadcastInteractions?.sendBloom?.(reactionType);
       const walletIsActive =
         audioWalletInteracting ||
         reactionWallet?.matches(":hover") ||

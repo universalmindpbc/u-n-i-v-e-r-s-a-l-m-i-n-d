@@ -130,7 +130,7 @@
       .find((item) => item.id === id) || null;
   }
 
-  async function playItem(item, { serverPlayAtMs = null, shared = false } = {}) {
+  async function playItem(item, { serverPlayAtMs = null, shared = false, exclusive = false } = {}) {
     if (!item || item.reserved || !item.asset) return;
     const ctx = context();
     await ctx.resume().catch(() => null);
@@ -141,7 +141,7 @@
       announce("shared mantra arrived too late");
       return;
     }
-    if (shared) stopAll();
+    if (shared || exclusive) stopAll();
     stopItem(item.id);
     const trimStart = Math.max(0, Number(item.trim_start) || 0);
     const trimEnd = Math.min(buffer.duration, Math.max(trimStart + 0.01, Number(item.trim_end) || buffer.duration));
@@ -151,6 +151,8 @@
     const scheduledContextTime = Number.isFinite(Number(serverPlayAtMs))
       ? ctx.currentTime + Math.max(0.03, (Number(serverPlayAtMs) - correctedNowMs) / 1000)
       : ctx.currentTime;
+    document.body.dataset.mantraPlaybackMode = shared ? "shared" : "local";
+    document.body.dataset.mantraPlaybackLeadMs = String(Math.max(0, Math.round((scheduledContextTime - ctx.currentTime) * 1000)));
     const source = ctx.createBufferSource();
     source.buffer = buffer;
     source.playbackRate.value = speed;
@@ -242,11 +244,8 @@
     const ctx = context();
     ctx.resume().catch(() => null);
     void bufferFor(item);
-    if (window.IAMBroadcastInteractions?.sendMantra?.(item.id)) {
-      announce(`sharing ${item.label || "mantra"}`);
-      return;
-    }
-    await playItem(item);
+    window.IAMBroadcastInteractions?.sendMantra?.(item.id);
+    await playItem(item, { exclusive: true });
   }
 
   function createNode(item, index) {
@@ -383,7 +382,7 @@
   });
 
   window.IAMMantraSampler = {
-    version: "mantra_sampler_v2.2",
+    version: "mantra_sampler_v2.3",
     open,
     close,
     refresh,

@@ -9,6 +9,7 @@
   const POLL_INTERVAL_MS = 450;
   const POLL_MAX_BACKOFF_MS = 4000;
   const recentEventIds = new Map();
+  const locallyRenderedEventIds = new Map();
   let activeState = null;
   let activeKey = "";
   let cursor = 0;
@@ -19,6 +20,7 @@
   let receivedBlooms = 0;
   let receivedMantras = 0;
   let rejectedInteractions = 0;
+  let suppressedLocalEchoes = 0;
   let lastEvent = null;
 
   function makeId() {
@@ -81,6 +83,9 @@
     recentEventIds.forEach((at, id) => {
       if (now - at > 120000) recentEventIds.delete(id);
     });
+    locallyRenderedEventIds.forEach((at, id) => {
+      if (now - at > 120000) locallyRenderedEventIds.delete(id);
+    });
   }
 
   function eventIsNew(message) {
@@ -90,6 +95,13 @@
     if (recentEventIds.has(eventId)) return false;
     recentEventIds.set(eventId, Date.now());
     return true;
+  }
+
+  function eventIsLocalEcho(message) {
+    const sourceEventIds = Array.isArray(message?.source_event_ids) ? message.source_event_ids : [];
+    const localEcho = sourceEventIds.some((eventId) => locallyRenderedEventIds.has(String(eventId || "")));
+    if (localEcho) suppressedLocalEchoes += 1;
+    return localEcho;
   }
 
   function scheduleBloom(message) {
@@ -136,6 +148,7 @@
     messages.forEach((message) => {
       cursor = Math.max(cursor, Number(message.sequence) || 0);
       if (!eventIsNew(message)) return;
+      if (eventIsLocalEcho(message)) return;
       if (message.type === "shared_bloom") scheduleBloom(message);
       if (message.type === "shared_mantra") scheduleMantra(message);
     });
@@ -259,13 +272,15 @@
     updateDataset("idle");
   }
 
-  function send(type, assetId) {
+  function send(type, assetId, { renderedLocally = false } = {}) {
     if (!activeState) return false;
     const expectedGeneration = generation;
+    const eventId = makeId();
+    if (renderedLocally) locallyRenderedEventIds.set(eventId, Date.now());
     void fetchPayload("POST", {
       type,
       asset_id: assetId,
-      event_id: makeId(),
+      event_id: eventId,
     }).then((payload) => {
       if (activeState && generation === expectedGeneration) consumePayload(payload);
     }).catch((error) => {
@@ -278,17 +293,17 @@
 
   function sendBloom(type) {
     const assetId = String(type || "");
-    return ALLOWED_BLOOMS.has(assetId) && send("bloom", assetId);
+    return ALLOWED_BLOOMS.has(assetId) && send("bloom", assetId, { renderedLocally: true });
   }
 
   function sendMantra(mantraId) {
-    return send("mantra", String(mantraId || ""));
+    return send("mantra", String(mantraId || ""), { renderedLocally: true });
   }
 
   window.addEventListener("pagehide", () => clear());
 
   window.IAMBroadcastInteractions = {
-    version: "broadcast_interactions_client_v1.1",
+    version: "broadcast_interactions_client_v1.2",
     setBroadcast,
     clear,
     sendBloom,
@@ -306,6 +321,7 @@
         receivedBlooms,
         receivedMantras,
         rejectedInteractions,
+        suppressedLocalEchoes,
         lastEvent,
       };
     },
