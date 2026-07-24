@@ -160,7 +160,7 @@
     if (qaScenario === "wellbeing") {
       return {
         microphone: false,
-        qaPrompt: "I am 19 and in Australia. I feel anxious, but I am not in immediate danger. Briefly tell me how headspace can help and how I can contact it, then offer your default EFT tapping support using the opening Even though statement. Keep the reply under eight conversational sentences.",
+        qaPrompt: "I am 19 and in Australia. I feel anxious, but I am not in immediate danger. Briefly tell me how headspace can help and how I can contact it. I consent to a short EFT tapping round, so then guide the opening Even though setup statement using my word anxious. Keep the reply under eight conversational sentences.",
       };
     }
     if (qaScenario === "crisis") {
