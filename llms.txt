@@ -1,0 +1,37 @@
+# Universal Mind / I AM
+
+> Universal Mind is the company. I AM is its first experience: live electronic music television for mental health.
+
+Check in. Unlock exclusive content. Watch electronic music television, together as one. With your permission, connect with personalised content, real-time community support and trusted mental-health referral pathways—inside the places you already trust, where you already spend your time.
+
+Not another mental-health app. A privacy-first support layer within electronic music, fashion and culture.
+
+Important context:
+
+- I AM is a voluntary experience. Personalisation and support connections depend on permission.
+- Universal Mind's current wellbeing features are not diagnosis and do not replace qualified clinical care.
+- The Science record distinguishes established evidence, developing evidence, product translation and research still requiring product-specific testing.
+- The three full research dossiers retain their Internet of Happiness [ I o H ] identity and compile cited peer-reviewed and institutional research relevant to the planned Epigenetics of Happiness study.
+
+## Start here
+
+- [Induction](https://universalmind.tv/vogue/iam/induction.html): The invitation, intended audience, privacy principles and role of trusted cultural spaces.
+- [About I AM](https://universalmind.tv/vogue/iam/about.html): The complete public briefing on the problem, solution, experience, access model and research direction.
+- [Science](https://universalmind.tv/vogue/iam/science.html): The live evidence record, evidence grades, research limitations and clinical boundaries.
+- [Our Team](https://universalmind.tv/vogue/iam/our-team.html): The people and experience behind Universal Mind.
+
+## I AM experience
+
+- [Check in](https://universalmind.tv/vogue/iam/vogue-self-report.html): The voluntary self-report entry into I AM.
+- [Electronic music television](https://universalmind.tv/vogue/iam/index.html): The live adaptive music television experience, including content, participation, community and support pathways.
+- [Citizen Needs technology](https://universalmind.tv/vogue/iam/technology-citizen-needs.html): The public explanation of the privacy-first inference model used to interpret changing needs.
+
+## Full research dossiers
+
+- [EMDR Medical Research](https://universalmind.tv/vogue/iam/a%20s%20s%20e%20t%20s/r%20e%20s%20e%20a%20r%20c%20h/Universal%20Mind%20%5B%20I%20o%20H%20%5D%20-%20EMDR%20Medical%20Research.pdf): Full Internet of Happiness research dossier on eye movement desensitisation and reprocessing.
+- [Sound Medical Research](https://universalmind.tv/vogue/iam/a%20s%20s%20e%20t%20s/r%20e%20s%20e%20a%20r%20c%20h/Universal%20Mind%20%5B%20I%20o%20H%20%5D%20-%20Sound%20Medical%20Research.pdf): Full Internet of Happiness research dossier on music, sound and brain entrainment.
+- [Mantra Medical Research](https://universalmind.tv/vogue/iam/a%20s%20s%20e%20t%20s/r%20e%20s%20e%20a%20r%20c%20h/Universal%20Mind%20%5B%20I%20o%20H%20%5D%20-%20Mantra%20Medical%20Research.pdf): Full Internet of Happiness research dossier on mantra meditation, mindfulness and related practices.
+
+## Optional
+
+- [Website sitemap](https://universalmind.tv/sitemap.xml): Canonical list of the public pages and research documents approved for indexing.

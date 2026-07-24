@@ -26,6 +26,7 @@ fi
 "$NODE_BIN" "$ROOT_DIR/tools/check-broadcast-clock.mjs"
 "$NODE_BIN" "$ROOT_DIR/tools/check-broadcast-interactions.mjs"
 "$NODE_BIN" "$ROOT_DIR/tools/check-circle-rooms.mjs"
+"$NODE_BIN" "$ROOT_DIR/tools/check-public-crawler-surface.mjs"
 
 if command -v php >/dev/null 2>&1; then
   php -l "$ROOT_DIR/i  a m/api/mantra-library.php"
@@ -40,5 +41,6 @@ export FTP_PASS_FILE="${FTP_PASS_FILE:-/private/tmp/um-staging-ftp-pass.txt}"
 export FTP_KEYCHAIN_SERVICE="${FTP_KEYCHAIN_SERVICE:-universalmind-staging-ftp}"
 export REMOTE_ROOT=""
 export MANIFEST_FILE="${MANIFEST_FILE:-$ROOT_DIR/.panthur-staging-deploy-manifest.tsv}"
+export ROBOTS_FILE="${ROBOTS_FILE:-$ROOT_DIR/robots-staging.txt}"
 
 exec "$ROOT_DIR/deploy-panthurlive.sh" "${1:-all-changed}"

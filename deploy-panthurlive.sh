@@ -8,6 +8,7 @@ FTP_PASS_FILE="${FTP_PASS_FILE:-/private/tmp/um-public-html-ftp-pass.txt}"
 FTP_KEYCHAIN_SERVICE="${FTP_KEYCHAIN_SERVICE:-universalmind-production-ftp}"
 IAM_DIR="${IAM_DIR:-$ROOT_DIR/i  a m}"
 MANIFEST_FILE="${MANIFEST_FILE:-$ROOT_DIR/.panthur-deploy-manifest.tsv}"
+ROBOTS_FILE="${ROBOTS_FILE:-$ROOT_DIR/robots.txt}"
 REMOTE_ROOT="${REMOTE_ROOT:-}"
 REMOTE_ROOT="${REMOTE_ROOT#/}"
 REMOTE_ROOT="${REMOTE_ROOT%/}"
@@ -145,6 +146,9 @@ deploy_redirects() {
   put_file "$ROOT_DIR/index.html" "index.html"
   put_file "$ROOT_DIR/iam/index.html" "iam/index.html"
   put_file "$ROOT_DIR/vogue/index.html" "vogue/index.html"
+  put_file "$ROBOTS_FILE" "robots.txt"
+  put_file "$ROOT_DIR/sitemap.xml" "sitemap.xml"
+  put_file "$ROOT_DIR/llms.txt" "llms.txt"
 }
 
 deploy_iam() {
