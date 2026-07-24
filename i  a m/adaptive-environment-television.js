@@ -66,6 +66,7 @@
   const DEFAULT_EDGE_SCALE = 1.12;
   const MAX_DETECTED_EDGE_SCALE = 1.85;
   const BROADCAST_FORMATS = ["videos", "parties", "radio", "fashion"];
+  const MUSIC_BROADCAST_FORMATS = ["videos", "parties", "radio"];
   const BROADCAST_ENERGY_ORDER = ["restore", "social-uplift", "underground-intensity"];
   const BROADCAST_ENERGY_PROFILES = {
     restore: {
@@ -181,11 +182,6 @@
   const broadcastEntryFormat = document.querySelector("[data-broadcast-entry-format]");
   const broadcastJoinButton = document.querySelector("[data-broadcast-join]");
   const broadcastChooseButton = document.querySelector("[data-broadcast-choose]");
-  const broadcastProgramme = document.querySelector("[data-broadcast-programme]");
-  const broadcastProgrammePrevious = document.querySelector("[data-broadcast-programme-previous]");
-  const broadcastProgrammeNow = document.querySelector("[data-broadcast-programme-now]");
-  const broadcastProgrammeNext = document.querySelector("[data-broadcast-programme-next]");
-  const broadcastProgrammeCountdown = document.querySelector("[data-broadcast-programme-countdown]");
   const emdrCanvas = document.querySelector("[data-emdr-canvas]");
   const emdrOff = document.querySelector("[data-emdr-off]");
   const emdrStyleButtons = Array.from(document.querySelectorAll("[data-emdr-style]"));
@@ -242,8 +238,6 @@
   let pendingBroadcastFormat = "videos";
   let broadcastEntryOpen = false;
   let broadcastSyncTimer = 0;
-  let broadcastProgrammeTimer = 0;
-  let broadcastProgrammeChannelId = "";
   let musicContinuationSequence = 0;
   let musicSwitching = false;
   let musicDwellTimer = 0;
@@ -1655,14 +1649,21 @@
     return window.matchMedia("(max-width: 720px)").matches ? 1 : 3;
   }
 
-  function fashionRunwayOrderPosition(index) {
-    const position = fashionShelfOrder.indexOf(index);
-    return position >= 0 ? position : index;
+  function fashionSharedItems() {
+    return musicShelfOrders.fashion || [];
   }
 
-  function fashionThumbnailUrl(runway) {
-    const host = window.IAMCloudflareStream?.customerHost || "customer-1vpwglz3v6fiyaas.cloudflarestream.com";
-    return `https://${host}/${runway.streamUid}/thumbnails/thumbnail.jpg?time=${runway.previewStart}s&height=360`;
+  function fashionSharedItem() {
+    const order = fashionSharedItems();
+    const current = order.find((item) => item.broadcastChannelId === fashionBroadcastChannelId);
+    if (current) return current;
+    const recommendedId = musicShelfRecommendationIds.fashion;
+    return order.find((item) => item.id === recommendedId) || order[0] || null;
+  }
+
+  function fashionBroadcastOrderPosition(channelId) {
+    const position = fashionSharedItems().findIndex((item) => item.broadcastChannelId === channelId);
+    return position >= 0 ? position : 0;
   }
 
   function readFashionTasteProfile() {
@@ -1814,10 +1815,9 @@
   async function startFashionShelfPreview(card) {
     if (!fashionShelfOpen || !card || card === fashionShelfPreviewCard) return;
     stopFashionShelfPreview();
-    const index = Number(card.dataset.fashionRunwayIndex);
-    const runway = fashionRunways[index];
+    const item = fashionSharedItems().find((candidate) => candidate.broadcastChannelId === card.dataset.fashionChannelId);
     const media = card.querySelector(".adaptive-television-fashion-card__media");
-    if (!runway || !media || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    if (!item?.localVideoSrc || !media || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
 
     const preview = document.createElement("video");
     preview.className = "adaptive-television-fashion-card__preview";
@@ -1830,13 +1830,13 @@
     preview.setAttribute("aria-hidden", "true");
     preview.dataset.streamRole = "fashion";
     preview.dataset.streamMaxHeight = "360";
-    preview.__iamFashionSource = runway.videoSrc;
+    preview.__iamFashionSource = item.localVideoSrc;
     fashionShelfPreviewVideo = preview;
     fashionShelfPreviewCard = card;
     card.classList.add("is-previewing");
     media.append(preview);
 
-    const previewStart = runway.previewStart;
+    const previewStart = Number(item.previewStart || 8);
     const applyPreviewStart = () => {
       try { preview.currentTime = Math.min(previewStart, Math.max(0, Number(preview.duration || previewStart) - .5)); } catch {}
     };
@@ -1848,7 +1848,7 @@
 
     try {
       await window.IAMStreamController?.attach(preview, {
-        fileName: runway.videoSrc,
+        fileName: item.localVideoSrc,
         role: "fashion",
         autoplay: false,
         preload: true,
@@ -1865,24 +1865,25 @@
 
   function updateFashionShelfPosition({ preview = true } = {}) {
     if (!fashionShelfTrack) return;
+    const order = fashionSharedItems();
     const cardsPerView = fashionCardsPerView();
-    const maximumOffset = Math.max(0, fashionShelfOrder.length - cardsPerView);
+    const maximumOffset = Math.max(0, order.length - cardsPerView);
     fashionShelfOffset = Math.max(0, Math.min(maximumOffset, fashionShelfOffset));
     const items = Array.from(fashionShelfTrack.querySelectorAll("[data-fashion-shelf-item]"));
     const target = items[fashionShelfOffset];
     const distance = target?.offsetLeft || 0;
     fashionShelfTrack.style.transform = `translate3d(-${distance}px, 0, 0)`;
 
-    const start = fashionShelfOffset + 1;
-    const end = Math.min(fashionShelfOrder.length, fashionShelfOffset + cardsPerView);
-    if (fashionShelfCounter) fashionShelfCounter.textContent = start === end ? `${start} / ${fashionShelfOrder.length}` : `${start}–${end} / ${fashionShelfOrder.length}`;
-    if (fashionShelfProgress) fashionShelfProgress.style.width = `${(end / fashionShelfOrder.length) * 100}%`;
+    const start = order.length ? fashionShelfOffset + 1 : 0;
+    const end = Math.min(order.length, fashionShelfOffset + cardsPerView);
+    if (fashionShelfCounter) fashionShelfCounter.textContent = start === end ? `${start} / ${order.length}` : `${start}–${end} / ${order.length}`;
+    if (fashionShelfProgress) fashionShelfProgress.style.width = `${order.length ? (end / order.length) * 100 : 0}%`;
     fashionShelfPrevious?.toggleAttribute("disabled", fashionShelfOffset === 0);
     fashionShelfNext?.toggleAttribute("disabled", fashionShelfOffset >= maximumOffset);
 
     if (fashionShelfOpen && preview) {
       window.setTimeout(() => {
-        const activePosition = fashionRunwayOrderPosition(fashionRunwayIndex);
+        const activePosition = fashionBroadcastOrderPosition(fashionSharedItem()?.broadcastChannelId);
         const previewPosition = activePosition >= fashionShelfOffset && activePosition < end ? activePosition : fashionShelfOffset;
         startFashionShelfPreview(items[previewPosition]?.querySelector("[data-fashion-card]"));
       }, 160);
@@ -1899,24 +1900,25 @@
   function renderFashionShelf() {
     if (!fashionShelfTrack) return;
     stopFashionShelfPreview();
-    const recordsByAsset = new Map(fashionTensorRecords.map((record) => [record.asset_key, record]));
-    fashionShelfTrack.innerHTML = fashionShelfOrder.map((runwayIndex, position) => {
-      const runway = fashionRunways[runwayIndex];
-      const record = recordsByAsset.get(runway.assetKey);
-      const recommendationLabel = position < 3 ? `Recommended ${String(position + 1).padStart(2, "0")}` : `Explore ${String(position + 1).padStart(2, "0")}`;
-      const context = record?.primary_environmental_function || "Fashion visual";
-      const selected = runwayIndex === fashionRunwayIndex;
+    const order = fashionSharedItems();
+    const recommendedId = musicShelfRecommendationIds.fashion;
+    fashionShelfTrack.innerHTML = order.map((item, position) => {
+      const current = item.broadcastChannelId === fashionBroadcastChannelId;
+      const recommended = item.id === recommendedId;
+      const recommendationLabel = recommended ? "Based on your check-in · ON NOW" : "ON NOW";
       return `
         <div class="adaptive-television-fashion-shelf__item" data-fashion-shelf-item role="listitem">
-          <button class="adaptive-television-fashion-card${selected ? " is-active" : ""}" type="button" data-fashion-card data-fashion-runway-index="${runwayIndex}" aria-pressed="${selected}" aria-label="Switch visual to ${runway.title}">
-            <span class="adaptive-television-fashion-card__media">
-              <img src="${fashionThumbnailUrl(runway)}" alt="" loading="${position < 3 ? "eager" : "lazy"}">
+          <button class="adaptive-television-fashion-card adaptive-television-music-card${current ? " is-current-broadcast" : ""}${recommended ? " is-recommended" : ""}" type="button" data-fashion-card data-fashion-channel-id="${item.broadcastChannelId}" aria-pressed="${current}" aria-label="Open shared Fashion broadcast: ${item.broadcastChannelName} — ${item.artist} — ${item.display_title}">
+            <span class="adaptive-television-fashion-card__media adaptive-television-music-card__media">
+              <img src="${musicThumbnailUrl(item)}" alt="" loading="${position < 3 ? "eager" : "lazy"}">
               <span class="adaptive-television-fashion-card__preview-label">10s preview</span>
+              <span class="adaptive-television-music-card__live">ON NOW</span>
+              <span class="adaptive-television-music-card__mode">${item.broadcastChannelName}</span>
             </span>
             <span class="adaptive-television-fashion-card__copy">
               <small>${recommendationLabel}</small>
-              <strong>${runway.shortTitle}</strong>
-              <span>${context}</span>
+              <strong>${item.artist}</strong>
+              <span>${item.display_title}</span>
             </span>
           </button>
         </div>`;
@@ -1928,10 +1930,9 @@
       card.addEventListener("click", async (event) => {
         event.preventDefault();
         event.stopPropagation();
-        const index = Number(card.dataset.fashionRunwayIndex);
-        await setFashionRunway(index, { source: "manual", feedbackType: "explicit_select" });
+        const item = order.find((candidate) => candidate.broadcastChannelId === card.dataset.fashionChannelId);
         closeFashionShelf(false);
-        fashionShelfToggle?.focus({ preventScroll: true });
+        if (item) await openBroadcastEntry(item, { source: "fashion_shelf" });
       });
     });
     window.requestAnimationFrame(() => updateFashionShelfPosition({ preview: fashionShelfOpen }));
@@ -1939,8 +1940,8 @@
 
   function openFashionShelf() {
     if (!fashionShelf || fashionShelfOpen) return;
+    if (musicShelfOpen) closeMusicShelf(false);
     fashionShelfOpen = true;
-    const cardsPerView = fashionCardsPerView();
     fashionShelfOffset = 0;
     fashionShelf.setAttribute("aria-hidden", "false");
     fashionShelf.removeAttribute("inert");
@@ -1949,10 +1950,9 @@
     renderFashionShelf();
     window.setTimeout(() => {
       updateFashionShelfPosition();
-      const activePosition = fashionRunwayOrderPosition(fashionRunwayIndex);
-      const focusCard = activePosition < cardsPerView
-        ? fashionShelfTrack?.querySelector(`[data-fashion-runway-index="${fashionRunwayIndex}"]`)
-        : fashionShelfTrack?.querySelector("[data-fashion-card]");
+      const focusCard = fashionShelfTrack?.querySelector("[data-fashion-card].is-current-broadcast") ||
+        fashionShelfTrack?.querySelector("[data-fashion-card].is-recommended") ||
+        fashionShelfTrack?.querySelector("[data-fashion-card]");
       focusCard?.focus({ preventScroll: true });
     }, 90);
   }
@@ -1975,21 +1975,31 @@
 
   function updateFashionRunwayToggle() {
     if (!fashionRunwaySelector) return;
-    const activeRunway = fashionRunways[fashionRunwayIndex];
-    const previousRunway = fashionRunways[(fashionRunwayIndex - 1 + fashionRunways.length) % fashionRunways.length];
-    const nextRunway = fashionRunways[(fashionRunwayIndex + 1) % fashionRunways.length];
-    if (fashionRunwayLabel) fashionRunwayLabel.textContent = activeRunway.shortTitle;
-    if (fashionRunwayCount) fashionRunwayCount.textContent = `${fashionRunwayIndex + 1} / ${fashionRunways.length}`;
-    fashionRunwaySelector.dataset.videoTooltip = `${activeRunway.title}\nClick for more recommendations.`;
-    fashionShelfToggle?.setAttribute("aria-label", `Click for more recommendations. Current runway: ${activeRunway.title}`);
-    fashionRunwayPrevious?.setAttribute("aria-label", `Previous runway: ${previousRunway.title}`);
-    fashionRunwayNext?.setAttribute("aria-label", `Next runway: ${nextRunway.title}`);
-    fashionRunwaySelector.dataset.fashionRunway = activeRunway.assetKey;
+    const order = fashionSharedItems();
+    const active = fashionSharedItem();
+    const position = Math.max(0, order.findIndex((item) => item.id === active?.id));
+    const label = active ? `${active.broadcastChannelName} — ${active.artist}` : "FASHION CHANNELS";
+    if (fashionRunwayLabel) fashionRunwayLabel.textContent = label;
+    if (fashionRunwayCount) fashionRunwayCount.textContent = order.length ? `${position + 1} / ${order.length}` : "1 / 3";
+    fashionRunwaySelector.dataset.videoTooltip = "Fashion shared channels\nJoin whatever is on now, together as one.";
+    fashionShelfToggle?.setAttribute("aria-label", `Open Fashion shared channels${active ? `. Recommended: ${label}` : ""}`);
+    fashionRunwayPrevious?.setAttribute("aria-label", "Previous Fashion shared channel");
+    fashionRunwayNext?.setAttribute("aria-label", "Next Fashion shared channel");
+    fashionRunwaySelector.dataset.fashionChannelId = active?.broadcastChannelId || "";
     if (document.body.classList.contains("television-emdr-gif-active")) {
-      playerMount.dataset.emdrGifFashionRunway = activeRunway.assetKey;
+      playerMount.dataset.emdrGifFashionRunway = fashionRunways[fashionRunwayIndex]?.assetKey || "";
     }
     persistFashionSelection(fashionSelectionSource);
     updateNowPlaying();
+  }
+
+  async function selectAdjacentFashionBroadcastItem(direction) {
+    const order = fashionSharedItems();
+    if (!order.length) return;
+    const active = fashionSharedItem();
+    const currentIndex = Math.max(0, order.findIndex((item) => item.id === active?.id));
+    const next = order[(currentIndex + direction + order.length) % order.length];
+    await openBroadcastEntry(next, { source: "fashion_wallet_arrow" });
   }
 
   async function setFashionRunway(index, options = {}) {
@@ -2063,10 +2073,10 @@
 
   function broadcastFormatLabel(mode = musicChannelMode) {
     return ({
-      videos: "MUSIC VIDEO CHANNEL",
-      parties: "DJ SET CHANNEL",
-      radio: "RADIO CHANNEL",
-      fashion: "FASHION CHANNEL",
+      videos: "MUSIC VIDEOS",
+      parties: "DJ SETS",
+      radio: "RADIO",
+      fashion: "FASHION",
     })[mode] || "SHARED CHANNEL";
   }
 
@@ -2259,6 +2269,8 @@
     document.body.dataset.musicRecommendationSource = Object.keys(citizenNeeds).length ? "citizen_needs_tensor" : "editorial_taste_exploration";
     document.body.dataset.musicAtWorkContext = String(atWork);
     updateMusicSelector();
+    updateFashionRunwayToggle();
+    renderFashionShelf();
     renderMusicShelf();
   }
 
@@ -2291,7 +2303,7 @@
 
   function musicActiveItem(mode = musicChannelMode) {
     const order = musicShelfOrders[mode] || [];
-    const activeChannelId = mode === "fashion" ? fashionBroadcastChannelId : broadcastChannelId;
+    const activeChannelId = activeBroadcastChannelIdForMode(mode);
     if (activeChannelId) {
       const activeBroadcast = order.find((item) => item.broadcastChannelId === activeChannelId);
       if (activeBroadcast) return activeBroadcast;
@@ -2300,12 +2312,16 @@
     return order.find((item) => item.id === recommendedId) || order[0] || null;
   }
 
+  function activeBroadcastChannelIdForMode(mode = musicChannelMode) {
+    return mode === "fashion" ? fashionBroadcastChannelId : broadcastChannelId;
+  }
+
   function updateMusicSelector() {
     const order = musicShelfOrders[musicChannelMode] || [];
     const active = musicActiveItem();
     const position = Math.max(0, order.findIndex((item) => item.id === active?.id));
     const label = active
-      ? `${active.broadcastChannelName} — ${musicChannelMode === "radio" ? active.provider : active.artist}`
+      ? `${active.broadcastChannelName} — ${musicChannelMode === "radio" ? active.display_title : active.artist}`
       : musicModeLabel().toUpperCase();
     if (musicSelectorLabel) musicSelectorLabel.textContent = label;
     if (musicSelectorCount) musicSelectorCount.textContent = order.length ? `${position + 1} / ${order.length}` : "0 / 0";
@@ -2322,11 +2338,10 @@
   }
 
   function setMusicMode(mode, options = {}) {
-    if (!BROADCAST_FORMATS.includes(mode)) return;
+    if (!MUSIC_BROADCAST_FORMATS.includes(mode)) return;
     musicChannelMode = mode;
     if (options.manual !== false) musicModeManuallySelected = true;
     musicShelfOffset = 0;
-    broadcastProgrammeChannelId = "";
     updateMusicSelector();
     renderMusicShelf();
     if (options.openShelf) openMusicShelf();
@@ -2439,126 +2454,49 @@
       return `<span class="adaptive-television-fashion-card__media adaptive-television-music-card__media" style="--station-a:${palette[0]};--station-b:${palette[1]}">
         <span class="adaptive-television-radio-art"><strong>${item.display_title}</strong></span>
         <span class="adaptive-television-music-card__live">ON NOW</span>
-        <span class="adaptive-television-music-card__mode">VIBE · ${item.broadcastChannelName}</span>
+        <span class="adaptive-television-music-card__mode">${item.broadcastChannelName}</span>
       </span>`;
     }
     return `<span class="adaptive-television-fashion-card__media adaptive-television-music-card__media">
       <img src="${musicThumbnailUrl(item)}" alt="" loading="${position < 3 ? "eager" : "lazy"}">
       <span class="adaptive-television-fashion-card__preview-label">10s preview</span>
       <span class="adaptive-television-music-card__live">ON NOW</span>
-      <span class="adaptive-television-music-card__mode">VIBE · ${item.broadcastChannelName}</span>
+      <span class="adaptive-television-music-card__mode">${item.broadcastChannelName}</span>
     </span>`;
-  }
-
-  function broadcastProgrammeMediaLabel(mediaType, mediaId) {
-    if (mediaType === "radio") {
-      const station = radioStationRecords.find((candidate) => candidate.id === mediaId);
-      return station?.display_title || station?.title || "Universal Mind Radio";
-    }
-    if (mediaType === "fashion") {
-      const runway = fashionRunwayForId(mediaId);
-      return runway?.title || "Universal Mind Fashion";
-    }
-    const programmeTrack = findTrack(mediaId);
-    if (!programmeTrack) return "Universal Mind";
-    const artist = programmeTrack.displayArtist || programmeTrack.artist;
-    const title = programmeTrack.displayTitle || programmeTrack.title;
-    return programmeTrack.presentation === "live_dj_set" ? artist : `${artist} · ${title}`;
-  }
-
-  function broadcastProgrammeCountdownLabel(seconds) {
-    const remaining = Math.max(0, Math.ceil(Number(seconds) || 0));
-    if (remaining >= 3600) {
-      const hours = Math.floor(remaining / 3600);
-      const minutes = Math.floor((remaining % 3600) / 60);
-      return `in ${hours}h ${String(minutes).padStart(2, "0")}m`;
-    }
-    const minutes = Math.floor(remaining / 60);
-    const secondsPart = remaining % 60;
-    return `in ${String(minutes).padStart(2, "0")}:${String(secondsPart).padStart(2, "0")}`;
-  }
-
-  function updateBroadcastProgramme(channelId = "") {
-    if (!broadcastProgramme) return;
-    const resolvedChannelId = channelId || broadcastProgrammeChannelId || musicActiveItem()?.broadcastChannelId || "";
-    const state = window.IAMBroadcastClock?.stateAt(resolvedChannelId);
-    if (!state) {
-      broadcastProgramme.setAttribute("aria-hidden", "true");
-      return;
-    }
-    broadcastProgrammeChannelId = resolvedChannelId;
-    broadcastProgramme.removeAttribute("aria-hidden");
-    broadcastProgramme.dataset.broadcastChannelId = resolvedChannelId;
-    broadcastProgramme.dataset.broadcastFormat = state.format;
-    if (broadcastProgrammePrevious) {
-      broadcastProgrammePrevious.textContent = broadcastProgrammeMediaLabel(state.mediaType, state.previousMediaId);
-    }
-    if (broadcastProgrammeNow) {
-      broadcastProgrammeNow.textContent = broadcastProgrammeMediaLabel(state.mediaType, state.mediaId);
-    }
-    if (broadcastProgrammeNext) {
-      broadcastProgrammeNext.textContent = broadcastProgrammeMediaLabel(state.mediaType, state.nextMediaId);
-    }
-    if (broadcastProgrammeCountdown) {
-      broadcastProgrammeCountdown.textContent = broadcastProgrammeCountdownLabel(state.remainingSeconds);
-    }
-  }
-
-  function startBroadcastProgrammeTicker() {
-    if (broadcastProgrammeTimer) window.clearInterval(broadcastProgrammeTimer);
-    updateBroadcastProgramme();
-    broadcastProgrammeTimer = window.setInterval(() => updateBroadcastProgramme(), 1000);
-  }
-
-  function stopBroadcastProgrammeTicker() {
-    if (!broadcastProgrammeTimer) return;
-    window.clearInterval(broadcastProgrammeTimer);
-    broadcastProgrammeTimer = 0;
   }
 
   function renderMusicShelf() {
     if (!musicShelfTrack) return;
     stopMusicShelfPreview();
     const order = musicShelfOrders[musicChannelMode] || [];
-    const active = musicActiveItem();
     if (musicShelfTitle) musicShelfTitle.textContent = `${musicModeLabel()} · shared channels`;
     if (musicShelfSubtitle && !musicShelfSubtitle.dataset.temporaryStatus) {
       musicShelfSubtitle.textContent = "Join whatever is on now, together as one";
     }
     musicShelfTrack.setAttribute("aria-label", `${musicModeLabel()} shared channel choices`);
     musicShelfTrack.innerHTML = order.map((item, position) => {
-      const selected = item.id === active?.id;
+      const current = item.broadcastChannelId === activeBroadcastChannelIdForMode(musicChannelMode);
       const recommended = item.id === musicShelfRecommendationIds[musicChannelMode];
       const recommendationLabel = recommended ? "Based on your check-in · ON NOW" : "ON NOW";
       const provider = musicChannelMode === "radio" ? item.provider : item.artist;
       const title = item.display_title || item.title;
       const action = "Open shared broadcast";
-      const cardTitle = provider;
-      const cardDetail = title;
+      const cardTitle = musicChannelMode === "radio" ? title : provider;
+      const cardDetail = musicChannelMode === "radio" ? "" : title;
       return `<div class="adaptive-television-fashion-shelf__item" data-music-shelf-item role="listitem">
-        <button class="adaptive-television-fashion-card adaptive-television-music-card${selected ? " is-active" : ""}" type="button" data-music-card data-music-item-id="${item.id}" aria-pressed="${selected}" aria-label="${action}: ${provider} — ${title}">
+        <button class="adaptive-television-fashion-card adaptive-television-music-card${current ? " is-current-broadcast" : ""}${recommended ? " is-recommended" : ""}" type="button" data-music-card data-music-item-id="${item.id}" aria-pressed="${current}" aria-label="${action}: ${provider} — ${title}">
           ${musicCardMedia(item, position)}
           <span class="adaptive-television-fashion-card__copy">
             <small>${recommendationLabel}</small>
             <strong>${cardTitle}</strong>
-            <span>${cardDetail}</span>
+            ${cardDetail ? `<span>${cardDetail}</span>` : ""}
           </span>
         </button>
       </div>`;
     }).join("");
     musicShelfTrack.querySelectorAll("[data-music-card]").forEach((card) => {
-      const showCardProgramme = () => {
-        const item = order.find((candidate) => candidate.id === card.dataset.musicItemId);
-        if (item?.broadcastChannelId) updateBroadcastProgramme(item.broadcastChannelId);
-      };
-      card.addEventListener("pointerenter", () => {
-        showCardProgramme();
-        startMusicShelfPreview(card);
-      });
-      card.addEventListener("focus", () => {
-        showCardProgramme();
-        startMusicShelfPreview(card);
-      });
+      card.addEventListener("pointerenter", () => startMusicShelfPreview(card));
+      card.addEventListener("focus", () => startMusicShelfPreview(card));
       card.addEventListener("click", async (event) => {
         event.preventDefault();
         event.stopPropagation();
@@ -2566,7 +2504,6 @@
         if (item) await selectMusicItem(item, { source: "shelf", closeShelf: true });
       });
     });
-    updateBroadcastProgramme(active?.broadcastChannelId || "");
     window.requestAnimationFrame(() => updateMusicShelfPosition({ preview: musicShelfOpen }));
   }
 
@@ -2580,10 +2517,10 @@
     musicShelfToggle?.setAttribute("aria-expanded", "true");
     document.body.classList.add("music-shelf-open");
     renderMusicShelf();
-    startBroadcastProgrammeTicker();
     window.setTimeout(() => {
       updateMusicShelfPosition();
-      (musicShelfTrack?.querySelector("[data-music-card].is-active") ||
+      (musicShelfTrack?.querySelector("[data-music-card].is-current-broadcast") ||
+        musicShelfTrack?.querySelector("[data-music-card].is-recommended") ||
         musicShelfTrack?.querySelector("[data-music-card]"))?.focus({ preventScroll: true });
     }, 90);
   }
@@ -2595,7 +2532,6 @@
     musicShelf.setAttribute("inert", "");
     musicShelfToggle?.setAttribute("aria-expanded", "false");
     document.body.classList.remove("music-shelf-open");
-    stopBroadcastProgrammeTicker();
     stopMusicShelfPreview();
     if (restoreFocus) musicShelfToggle?.focus({ preventScroll: true });
   }
@@ -3379,7 +3315,10 @@
     broadcastEntry.setAttribute("inert", "");
     document.body.classList.remove("broadcast-entry-open");
     document.body.dataset.broadcastEntryState = "closed";
-    if (restoreFocus) musicShelfToggle?.focus({ preventScroll: true });
+    if (restoreFocus) {
+      const returnTarget = pendingBroadcastFormat === "fashion" ? fashionShelfToggle : musicShelfToggle;
+      returnTarget?.focus({ preventScroll: true });
+    }
   }
 
   async function openBroadcastEntry(item, options = {}) {
@@ -3403,6 +3342,7 @@
       return true;
     }
     if (musicShelfOpen) closeMusicShelf(false);
+    if (fashionShelfOpen) closeFashionShelf(false);
     if (broadcastEntryArtist) broadcastEntryArtist.textContent = currentTrack
       ? (currentTrack.displayArtist || currentTrack.artist)
       : currentStation
@@ -5628,8 +5568,8 @@
         updateMusicSelector();
         return;
       }
-      setVideoBlend(0);
       setWalletView("video-mix");
+      openFashionShelf();
     });
   });
   videoMixEndpoints.forEach((button) => {
@@ -5637,7 +5577,12 @@
       event.preventDefault();
       event.stopPropagation();
       const endpoint = button.dataset.videoMixEndpoint;
-      setVideoBlend(endpoint === "fashion" ? 0 : 100);
+      if (endpoint === "fashion") {
+        if (fashionBroadcastChannelId) setVideoBlend(0);
+        else openFashionShelf();
+        return;
+      }
+      setVideoBlend(100);
       if (endpoint === "music") {
         setWalletView("music");
         updateMusicSelector();
@@ -5647,12 +5592,12 @@
   fashionRunwayPrevious?.addEventListener("click", (event) => {
     event.preventDefault();
     event.stopPropagation();
-    setFashionRunway(fashionRunwayIndex - 1, { source: "manual", feedbackType: "explicit_select" });
+    selectAdjacentFashionBroadcastItem(-1);
   });
   fashionRunwayNext?.addEventListener("click", (event) => {
     event.preventDefault();
     event.stopPropagation();
-    setFashionRunway(fashionRunwayIndex + 1, { source: "manual", feedbackType: "explicit_select" });
+    selectAdjacentFashionBroadcastItem(1);
   });
   fashionShelfToggle?.addEventListener("click", (event) => {
     event.preventDefault();
@@ -5760,7 +5705,12 @@
     event.preventDefault();
     event.stopPropagation();
     closeBroadcastEntry(false);
-    setMusicMode(pendingBroadcastFormat, { manual: true, openShelf: true });
+    if (pendingBroadcastFormat === "fashion") {
+      setWalletView("video-mix");
+      openFashionShelf();
+    } else {
+      setMusicMode(pendingBroadcastFormat, { manual: true, openShelf: true });
+    }
   });
   window.addEventListener("resize", () => {
     if (fashionShelfOpen) updateFashionShelfPosition({ preview: false });
