@@ -48,20 +48,13 @@ const playableMantraIds = Object.values(mantraLibrary.banks)
   .flat()
   .filter((item) => !item.reserved && item.asset)
   .map((item) => item.id);
-const endpointMantraDurations = Array.from(
-  endpoint.matchAll(/^\s{4}'([^']+)'\s*=>\s*(\d+),?$/gm),
-  (match) => [match[1], Number(match[2])]
-);
 assert.equal(playableMantraIds.length, 9, "The internal test must expose all nine currently playable mantras.");
-assert.deepEqual(
-  new Set(endpointMantraDurations.map(([id]) => id)),
-  new Set(playableMantraIds),
-  "The coordinator must allow every playable mantra and no reserved placeholder."
-);
-for (const [id, durationMs] of endpointMantraDurations) {
-  const item = Object.values(mantraLibrary.banks).flat().find((candidate) => candidate.id === id);
-  assert.equal(durationMs, Math.round((Number(item.trim_end) - Number(item.trim_start || 0)) * 1000), `${id} must use its approved sample duration.`);
-}
+assert.match(endpoint, /const MANTRA_LIBRARY_PATH = __DIR__ \. '\/mantra-library\.json';/, "The coordinator must use the editable mantra library.");
+assert.match(endpoint, /function mantra_durations_ms\(\): array/, "The coordinator must derive its mantra allowlist dynamically.");
+assert.match(endpoint, /!empty\(\$item\['reserved'\]\)/, "Reserved mantra placeholders must remain unavailable.");
+assert.match(endpoint, /trim\(\(string\) \(\$item\['asset'\]/, "Only mantra slots with audio may be shared.");
+assert.match(endpoint, /\(\(\$end - \$start\) \/ \$speed\) \* 1000/, "Shared cadence must follow the edited sample duration and speed.");
+assert.match(endpoint, /array_key_exists\(\$assetId, \$mantraDurations\)/, "Every currently playable library mantra must be accepted without a stale hardcoded list.");
 
 assert.match(clock, /programmeStartMs/, "The broadcast clock must expose the exact programme start.");
 assert.match(clock, /programmeInstanceId/, "The broadcast clock must expose a unique programme instance.");
@@ -92,7 +85,7 @@ assert.match(endpoint, /\$current\['id'\].*=== \$assetId/s, "Matching mantra tap
 assert.match(endpoint, /shared_queue_full/, "Competing mantras must not create an unbounded queue.");
 assert.match(endpoint, /recent_event_ids/, "Repeated network events must be idempotent.");
 assert.match(endpoint, /ALLOWED_BLOOM_IDS/, "Arbitrary visual events must not be accepted.");
-assert.match(endpoint, /MANTRA_DURATIONS_MS/, "Arbitrary audio events must not be accepted.");
+assert.match(endpoint, /mantra_durations_ms\(\)/, "Arbitrary audio events must not be accepted.");
 assert.match(endpoint, /staging\.universalmind\.tv/, "The coordinator must remain staging-only.");
 assert.match(endpoint, /flock\(\$handle, LOCK_EX\)/, "Concurrent interactions must be serialized.");
 assert.doesNotMatch(endpoint, /\$input\[(?:'text'|'url'|'audio'|'asset_url')\]/, "The coordinator must not accept arbitrary text, URLs or audio.");
@@ -104,4 +97,4 @@ for (const page of [index, televisionPage]) {
   assert.ok(page.includes(`broadcast-interactions-v1.js?v=${interactionToken}`), `The interaction cache token must be ${interactionToken}.`);
 }
 
-console.log(`Broadcast interactions preflight passed (${interactionToken}): nine shared Music streams, six approved Blooms, nine audible mantras, deterministic cadence and programme-isolated same-origin coordination.`);
+console.log(`Broadcast interactions preflight passed (${interactionToken}): nine shared Music streams, six approved Blooms, every playable library mantra, deterministic cadence and programme-isolated same-origin coordination.`);

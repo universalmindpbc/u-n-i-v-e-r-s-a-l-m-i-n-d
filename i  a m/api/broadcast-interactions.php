@@ -5,7 +5,7 @@ header('Content-Type: application/json; charset=utf-8');
 header('Cache-Control: no-store, no-cache, must-revalidate, max-age=0');
 header('Pragma: no-cache');
 
-const WORKER_VERSION = 'broadcast_interactions_panthur_v1.0';
+const WORKER_VERSION = 'broadcast_interactions_panthur_v1.1';
 const BLOOM_COALESCE_MS = 350;
 const BLOOM_PERSON_COOLDOWN_MS = 2000;
 const BLOOM_PERSON_LIMIT_PER_MINUTE = 6;
@@ -15,6 +15,9 @@ const MANTRA_SCHEDULE_AHEAD_MS = 1500;
 const MANTRA_PERSON_COOLDOWN_MS = 30000;
 const MANTRA_QUIET_MS = 8000;
 const MANTRA_GLOBAL_LIMIT_PER_MINUTE = 2;
+const MANTRA_LIBRARY_PATH = __DIR__ . '/mantra-library.json';
+const MANTRA_DEFAULT_DURATION_MS = 15000;
+const MANTRA_MAX_DURATION_MS = 180000;
 const EVENT_TTL_MS = 120000;
 
 const ALLOWED_CHANNEL_IDS = [
@@ -38,18 +41,6 @@ const ALLOWED_BLOOM_IDS = [
     'medallion',
 ];
 
-const MANTRA_DURATIONS_MS = [
-    'tibet-universe' => 13950,
-    'tibet-one-life' => 18000,
-    'tibet-multiplicity' => 21700,
-    'ibiza-mind-body-soul' => 12050,
-    'ibiza-open-mind' => 11160,
-    'ibiza-glowing' => 13800,
-    'ibiza-plur-vocoder' => 3569,
-    'ibiza-lifestyle-vocoder' => 3288,
-    'ibiza-narayana-vocoder' => 2166,
-];
-
 function respond(int $status, array $payload): void
 {
     http_response_code($status);
@@ -66,6 +57,34 @@ function clean_id(mixed $value, string $pattern, int $maximumLength): string
 {
     $id = trim((string) ($value ?? ''));
     return strlen($id) <= $maximumLength && preg_match($pattern, $id) === 1 ? $id : '';
+}
+
+function mantra_durations_ms(): array
+{
+    static $durations = null;
+    if (is_array($durations)) return $durations;
+
+    $raw = @file_get_contents(MANTRA_LIBRARY_PATH);
+    $library = is_string($raw) && $raw !== '' ? json_decode($raw, true) : null;
+    $banks = is_array($library['banks'] ?? null) ? $library['banks'] : [];
+    $durations = [];
+
+    foreach ($banks as $items) {
+        foreach (is_array($items) ? $items : [] as $item) {
+            if (!is_array($item) || !empty($item['reserved']) || trim((string) ($item['asset'] ?? '')) === '') continue;
+            $id = clean_id($item['id'] ?? '', '/^[a-z0-9][a-z0-9._-]{1,119}$/', 120);
+            if ($id === '') continue;
+            $start = max(0.0, (float) ($item['trim_start'] ?? 0));
+            $end = max($start, (float) ($item['trim_end'] ?? 0));
+            $speed = max(0.35, min(2.0, (float) ($item['speed'] ?? 1)));
+            $duration = $end > $start
+                ? (int) round((($end - $start) / $speed) * 1000)
+                : MANTRA_DEFAULT_DURATION_MS;
+            $durations[$id] = max(250, min(MANTRA_MAX_DURATION_MS, $duration));
+        }
+    }
+
+    return $durations;
 }
 
 function empty_state(): array
@@ -148,10 +167,9 @@ function mantra_eligible_at(array $state, int $now): int
     return $eligibleAt;
 }
 
-function schedule_mantra(array &$state, string $mantraId, int $participantCount, int $now): void
+function schedule_mantra(array &$state, string $mantraId, int $participantCount, int $now, int $duration): void
 {
     $playAt = max($now, mantra_eligible_at($state, $now)) + MANTRA_SCHEDULE_AHEAD_MS;
-    $duration = MANTRA_DURATIONS_MS[$mantraId];
     $state['global_mantra_history'][] = $playAt;
     sort($state['global_mantra_history'], SORT_NUMERIC);
     $state['next_mantra_at_ms'] = $playAt + $duration + MANTRA_QUIET_MS;
@@ -210,7 +228,8 @@ function advance_state(array &$state, int $now): void
             $state,
             (string) $queued['id'],
             max(1, (int) ($queued['participant_count'] ?? 1)),
-            $now
+            $now,
+            max(250, min(MANTRA_MAX_DURATION_MS, (int) ($queued['duration_ms'] ?? MANTRA_DEFAULT_DURATION_MS)))
         );
     }
 }
@@ -302,9 +321,11 @@ if ($method === 'POST') {
         }
     } elseif ($kind === 'mantra') {
         $state['recent_event_ids'][$eventId] = $now;
-        if (!array_key_exists($assetId, MANTRA_DURATIONS_MS)) {
+        $mantraDurations = mantra_durations_ms();
+        if (!array_key_exists($assetId, $mantraDurations)) {
             $error = 'unknown_asset';
         } else {
+            $duration = (int) $mantraDurations[$assetId];
             $lastAt = (int) ($state['mantra_history_by_session'][$sessionId] ?? 0);
             if ($now - $lastAt < MANTRA_PERSON_COOLDOWN_MS) {
                 $error = 'personal_cadence';
@@ -315,11 +336,12 @@ if ($method === 'POST') {
                     $state['current_mantra']['participant_count'] = max(1, (int) ($current['participant_count'] ?? 1)) + 1;
                     $outcome = 'coalesced';
                 } elseif (mantra_eligible_at($state, $now) <= $now && !is_array($state['queued_mantra'] ?? null)) {
-                    schedule_mantra($state, $assetId, 1, $now);
+                    schedule_mantra($state, $assetId, 1, $now, $duration);
                     $outcome = 'scheduled';
                 } elseif (!is_array($state['queued_mantra'] ?? null)) {
                     $state['queued_mantra'] = [
                         'id' => $assetId,
+                        'duration_ms' => $duration,
                         'participant_count' => 1,
                         'requested_at_ms' => $now,
                     ];
