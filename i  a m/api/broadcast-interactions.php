@@ -5,9 +5,8 @@ header('Content-Type: application/json; charset=utf-8');
 header('Cache-Control: no-store, no-cache, must-revalidate, max-age=0');
 header('Pragma: no-cache');
 
-const WORKER_VERSION = 'broadcast_interactions_panthur_v1.3';
-const BLOOM_PERSON_COOLDOWN_MS = 2000;
-const BLOOM_PERSON_LIMIT_PER_MINUTE = 6;
+const WORKER_VERSION = 'broadcast_interactions_panthur_v1.4';
+const BLOOM_DEMO_MODE = 'unrestricted_stakeholder_demo';
 const MANTRA_DEMO_MODE = 'unrestricted_stakeholder_demo';
 const DEMO_CUE_PAST_TOLERANCE_MS = 2500;
 const DEMO_CUE_FUTURE_TOLERANCE_MS = 250;
@@ -89,7 +88,6 @@ function empty_state(): array
         'version' => WORKER_VERSION,
         'sequence' => 0,
         'events' => [],
-        'bloom_history_by_session' => [],
         'recent_event_ids' => [],
     ];
 }
@@ -100,18 +98,6 @@ function prune_state(array &$state, int $now): void
         is_array($state['events'] ?? null) ? $state['events'] : [],
         static fn (array $event): bool => $now - (int) ($event['created_at_ms'] ?? 0) < EVENT_TTL_MS
     ));
-
-    foreach ((array) ($state['bloom_history_by_session'] ?? []) as $sessionId => $history) {
-        $recent = array_values(array_filter(
-            array_map('intval', is_array($history) ? $history : []),
-            static fn (int $at): bool => $now - $at < 60000
-        ));
-        if ($recent) {
-            $state['bloom_history_by_session'][$sessionId] = $recent;
-        } else {
-            unset($state['bloom_history_by_session'][$sessionId]);
-        }
-    }
 
     foreach ((array) ($state['recent_event_ids'] ?? []) as $eventId => $at) {
         if ($now - (int) $at >= EVENT_TTL_MS) {
@@ -200,29 +186,21 @@ if ($method === 'POST') {
         if (!in_array($assetId, ALLOWED_BLOOM_IDS, true)) {
             $error = 'unknown_asset';
         } else {
-            $history = array_values((array) ($state['bloom_history_by_session'][$sessionId] ?? []));
-            $lastAt = $history ? (int) end($history) : 0;
-            if ($now - $lastAt < BLOOM_PERSON_COOLDOWN_MS || count($history) >= BLOOM_PERSON_LIMIT_PER_MINUTE) {
-                $error = 'personal_cadence';
-            } else {
-                $history[] = $now;
-                $state['bloom_history_by_session'][$sessionId] = $history;
-                $requestedCueAt = (int) ($input['cue_at_ms'] ?? $now);
-                $cueAt = max(
-                    $now - DEMO_CUE_PAST_TOLERANCE_MS,
-                    min($now + DEMO_CUE_FUTURE_TOLERANCE_MS, $requestedCueAt)
-                );
-                append_event($state, [
-                    'type' => 'shared_bloom',
-                    'asset_id' => $assetId,
-                    'participant_count' => 1,
-                    'density' => 1,
-                    'server_play_at_ms' => $cueAt,
-                    'cue_at_ms' => $cueAt,
-                    'source_event_ids' => [$eventId],
-                ]);
-                $outcome = 'accepted';
-            }
+            $requestedCueAt = (int) ($input['cue_at_ms'] ?? $now);
+            $cueAt = max(
+                $now - DEMO_CUE_PAST_TOLERANCE_MS,
+                min($now + DEMO_CUE_FUTURE_TOLERANCE_MS, $requestedCueAt)
+            );
+            append_event($state, [
+                'type' => 'shared_bloom',
+                'asset_id' => $assetId,
+                'participant_count' => 1,
+                'density' => 1,
+                'server_play_at_ms' => $cueAt,
+                'cue_at_ms' => $cueAt,
+                'source_event_ids' => [$eventId],
+            ]);
+            $outcome = 'accepted';
         }
     } elseif ($kind === 'mantra') {
         $state['recent_event_ids'][$eventId] = $now;
@@ -278,5 +256,6 @@ respond(200, [
     'cursor' => $cursor,
     'events' => $events,
     'server_now_ms' => now_ms(),
+    'bloom_mode' => BLOOM_DEMO_MODE,
     'mantra_mode' => MANTRA_DEMO_MODE,
 ]);

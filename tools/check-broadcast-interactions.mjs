@@ -95,10 +95,10 @@ assert.match(
   "The sender Bloom must render before its asynchronous shared send."
 );
 
-assert.match(endpoint, /const BLOOM_PERSON_COOLDOWN_MS = 2000;/, "Bloom personal cadence must remain conservative.");
-assert.match(endpoint, /const BLOOM_PERSON_LIMIT_PER_MINUTE = 6;/, "Bloom personal minute limit must remain conservative.");
-assert.match(endpoint, /'type' => 'shared_bloom'[\s\S]*?'server_play_at_ms' => \$cueAt/, "Every accepted Bloom must broadcast on its original tap timestamp.");
+assert.match(endpoint, /const BLOOM_DEMO_MODE = 'unrestricted_stakeholder_demo';/, "The internal stakeholder build must explicitly identify unrestricted Bloom mode.");
+assert.match(endpoint, /'type' => 'shared_bloom'[\s\S]*?'server_play_at_ms' => \$cueAt/, "Every valid Bloom tap must broadcast on its original timestamp.");
 assert.doesNotMatch(endpoint, /BLOOM_COALESCE_MS|BLOOM_GLOBAL_GAP_MS|DOVE_GLOBAL_GAP_MS|bloom_flush_at_ms|pending_blooms/, "Accepted Blooms must not have an artificial coalescing, lead or recovery delay.");
+assert.doesNotMatch(endpoint, /BLOOM_PERSON_COOLDOWN_MS|BLOOM_PERSON_LIMIT_PER_MINUTE|bloom_history_by_session|personal_cadence/, "Stakeholder demo Blooms must not have a cooldown, minute cap or cadence rejection.");
 assert.match(endpoint, /const MANTRA_DEMO_MODE = 'unrestricted_stakeholder_demo';/, "The internal stakeholder build must explicitly identify unrestricted mantra mode.");
 assert.match(endpoint, /\$outcome = 'broadcast';/, "Every valid mantra tap must become its own broadcast event.");
 assert.match(endpoint, /'cue_at_ms' => \$cueAt/, "The coordinator must retain each corrected mantra cue timestamp.");
@@ -121,4 +121,4 @@ for (const page of [index, televisionPage]) {
   assert.ok(page.includes(`broadcast-interactions-v1.js?v=${interactionToken}`), `The interaction cache token must be ${interactionToken}.`);
 }
 
-console.log(`Broadcast interactions preflight passed (${interactionToken}): nine shared Music streams, six moderated Blooms, every playable mantra in unrestricted low-latency polyphonic stakeholder-demo mode, and programme-isolated same-origin coordination.`);
+console.log(`Broadcast interactions preflight passed (${interactionToken}): nine shared Music streams, six unrestricted rapid-fire Blooms, every playable mantra in unrestricted low-latency polyphonic stakeholder-demo mode, and programme-isolated same-origin coordination.`);
