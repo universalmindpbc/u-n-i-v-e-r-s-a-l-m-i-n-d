@@ -40,8 +40,8 @@ const expectedSharedChannelIds = schedule.channels
   .map((channel) => channel.id);
 const endpointChannelIds = phpListMembers(endpoint, "ALLOWED_CHANNEL_IDS");
 
-assert.equal(expectedSharedChannelIds.length, 11, "The interaction prototype must cover all eleven live Music broadcasts.");
-assert.deepEqual(new Set(endpointChannelIds), new Set(expectedSharedChannelIds), "The coordinator room allowlist must match all eleven live Music broadcasts.");
+assert.equal(expectedSharedChannelIds.length, 12, "The interaction prototype must cover all twelve live Music broadcasts.");
+assert.deepEqual(new Set(endpointChannelIds), new Set(expectedSharedChannelIds), "The coordinator room allowlist must match all twelve live Music broadcasts.");
 assert.ok(endpointChannelIds.every((id) => !id.startsWith("fashion-")), "Fashion must stay outside the Music interaction prototype.");
 
 const playableMantraIds = Object.values(mantraLibrary.banks)
@@ -123,4 +123,4 @@ for (const page of [index, televisionPage]) {
   assert.ok(page.includes(`broadcast-interactions-v1.js?v=${interactionToken}`), `The interaction cache token must be ${interactionToken}.`);
 }
 
-console.log(`Broadcast interactions preflight passed (${interactionToken}): eleven live shared Music streams, six unrestricted rapid-fire Blooms, every playable mantra in unrestricted low-latency polyphonic stakeholder-demo mode, and programme-isolated same-origin coordination.`);
+console.log(`Broadcast interactions preflight passed (${interactionToken}): twelve live shared Music streams, six unrestricted rapid-fire Blooms, every playable mantra in unrestricted low-latency polyphonic stakeholder-demo mode, and programme-isolated same-origin coordination.`);

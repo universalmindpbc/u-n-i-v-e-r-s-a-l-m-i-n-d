@@ -20,6 +20,7 @@ const ALLOWED_CHANNEL_IDS = [
     'video-champagne-bohemia',
     'video-modul8-infinity',
     'video-james-bondage',
+    'party-inner-planes',
     'party-champagne-bohemia',
     'party-modul8-infinity',
     'party-james-bondage',

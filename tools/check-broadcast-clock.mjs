@@ -45,6 +45,7 @@ const djDurations = new Map([
   ["nina-kraviz-eiffel-tower-cercle", 6762.9],
   ["nastia-drum-bass-sunset-the-lab-ibiza", 5135.2],
   ["carl-cox-chateau-de-chambord-cercle", 7986.09],
+  ["max-richter-cercle-odyssey-paris", 3729.19],
   ["zip-perlon-air-festival-2007", 11255.780136],
   ["zip-sammy-d-perlon-betalounge-2000", 13194.739229],
 ]);
@@ -95,11 +96,7 @@ const scheduledStations = new Set();
 const scheduledRunways = [];
 for (const channel of schedule.channels) {
   const cycleSeconds = channel.schedule.reduce((sum, entry) => sum + Number(entry.duration_seconds), 0);
-  if (channel.available === false) {
-    assert.equal(channel.id, "party-inner-planes", "Only Inner Planes Parties may be held for future programming.");
-    assert.equal(channel.schedule.length, 0, "Inner Planes Parties must not force a beat-led programme.");
-    continue;
-  }
+  assert.notEqual(channel.available, false, `${channel.name} must now expose its approved programming.`);
   assert.ok(cycleSeconds > 0, `${channel.name} must have a continuous cycle.`);
 
   if (channel.format === "videos") {
@@ -162,7 +159,7 @@ for (const channel of schedule.channels) {
 assert.deepEqual(new Set(scheduledVideos), new Set(videoDurations.keys()), "All 22 verified music videos must belong to exactly one shared channel.");
 assert.equal(scheduledVideos.length, videoDurations.size, "A music video cannot belong to more than one shared channel.");
 assert.ok(!scheduledVideos.includes("nine-inch-nails-closer-glastonbury-2026"), "The unverified Nine Inch Nails item must stay outside the shared broadcast.");
-assert.deepEqual(new Set(scheduledDjSets), new Set(djDurations.keys()), "All nine approved DJ sets and mixes must belong to exactly one shared channel.");
+assert.deepEqual(new Set(scheduledDjSets), new Set(djDurations.keys()), "All ten approved DJ sets and mixes must belong to exactly one shared channel.");
 assert.equal(scheduledDjSets.length, djDurations.size, "A DJ set cannot belong to more than one shared channel.");
 assert.deepEqual(scheduledStations, approvedStationIds, "The four Radio timetables must programme the full approved station catalogue.");
 assert.deepEqual(new Set(scheduledRunways), fashionRunwayIds, "All six Fashion films must belong to exactly one shared channel.");
@@ -205,4 +202,4 @@ assert.match(index, /broadcast-clock-v1\.js/);
 assert.match(endpoint, /microtime\(true\) \* 1000/);
 assert.match(endpoint, /Cache-Control: no-store/);
 
-console.log("Broadcast clock preflight passed: four editorial channels across Videos, Parties and Radio; Inner Planes Parties held honestly; Zip/Perlon audio paired to Mugler/Wolford; exact shared clocks; no solo replay path.");
+console.log("Broadcast clock preflight passed: four live editorial channels across Videos, Parties and Radio; Max Richter programmed in Inner Planes Parties; Zip/Perlon audio paired to Mugler/Wolford; exact shared clocks; no solo replay path.");

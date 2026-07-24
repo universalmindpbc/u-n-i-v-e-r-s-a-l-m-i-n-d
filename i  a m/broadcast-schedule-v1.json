@@ -96,8 +96,9 @@
       "name": "Inner Planes",
       "descriptor": "sunrise ambient",
       "description": "Ambient · beatless · electronica",
-      "available": false,
-      "schedule": []
+      "schedule": [
+        { "track_id": "max-richter-cercle-odyssey-paris", "duration_seconds": 3729.19 }
+      ]
     },
     {
       "id": "party-champagne-bohemia",

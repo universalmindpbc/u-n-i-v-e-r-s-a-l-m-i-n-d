@@ -23,6 +23,7 @@
     "M.I.A. - Borders.mp4": "72194540ee128c6de0ce26da63f220c1",
     "Madonna - Frozen.mp4": "722da24280e5ee6617e01c47d1689278",
     "Madonna - Ray Of Light.mp4": "4c91276cedb006ba1b30b8b8f978a851",
+    "Max Richter live at Cercle Odyssey, Paris, France.mp4": "2519e10718345a02e793736dde912307",
     "Miss Monique - Biosphere Museum in Montreal, Canada - Cercle.mp4": "2b14fa4819e45f2389e332bcf5da784e",
     "Mugler - Fall Winter 2021.mp4": "792c884e5d63177f32dd85a2f7e97c28",
     "NASTIA - Ibiza at Sunset - The Lab.mp4": "136ec1e0ea6fab6cf3b2823c0f1c91a4",

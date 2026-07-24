@@ -478,6 +478,11 @@ for (const djSet of djSetFiles) {
   );
   requireCondition(controller.includes(djSet.fileName), `${djSet.fileName} is not selectable in the television catalogue`);
 }
+requireCondition(
+  streamCatalogue.includes('"Max Richter live at Cercle Odyssey, Paris, France.mp4": "2519e10718345a02e793736dde912307"'),
+  "Max Richter is not connected to the verified Cloudflare Stream UID"
+);
+requireCondition(controller.includes('id: "max-richter-cercle-odyssey-paris"'), "Max Richter is not selectable in Inner Planes Parties");
 
 for (const { pagePath, source } of pages) {
   const label = path.relative(ROOT, pagePath);
