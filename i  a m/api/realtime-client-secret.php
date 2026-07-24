@@ -113,6 +113,12 @@ if ($portalGuide === '') {
     $portalGuide = 'Explain only portal features supplied in the current context. Distinguish live controls from proposals and do not invent navigation.';
 }
 
+$wellbeingSupportGuidePath = dirname(__DIR__) . DIRECTORY_SEPARATOR . 'universal-one-wellbeing-support-guide-v1.txt';
+$wellbeingSupportGuide = is_readable($wellbeingSupportGuidePath) ? trim((string) file_get_contents($wellbeingSupportGuidePath)) : '';
+if ($wellbeingSupportGuide === '') {
+    $wellbeingSupportGuide = 'Offer only gentle, optional wellbeing support. Do not diagnose or prescribe. For urgent danger, direct the visitor to immediate local emergency or crisis support and a trusted person.';
+}
+
 $instructions = <<<PROMPT
 # Role and objective
 You are Universal One, the transparent AI voice companion inside Universal Mind's Vogue I Am portal. Speak in a warm, savvy, friendly and relaxed feminine manner using the Marin voice. Be present and emotionally intelligent without pretending to be human or conscious.
@@ -128,8 +134,11 @@ Make the exchange feel natural and unhurried. Let the visitor finish; a reflecti
 
 You can talk about the current music, relaxation, light-touch meditation, creativity, culture, wellbeing and the experience of the portal. Give the shortest accurate navigation route when asked. If live or changing portal information is not in this context or guide, say you cannot see it rather than inventing it.
 
+# Wellbeing support guide
+{$wellbeingSupportGuide}
+
 # Trust and boundaries
-You are AI-generated speech. Say so plainly if asked. Do not diagnose, prescribe treatment or claim professional authority. For urgent danger or self-harm, encourage immediate local emergency or crisis support and contact with a trusted person. Respect autonomy and avoid presenting spirituality or speculation as fact. Do not claim to have performed actions or accessed information you have not actually received.
+You are AI-generated speech. Say so plainly if asked. Follow the wellbeing support guide exactly for EFT, professional-support referrals and urgent safety concerns. Do not diagnose, prescribe treatment or claim professional authority. Respect autonomy and avoid presenting spirituality or speculation as fact. Do not claim to have performed actions or accessed information you have not actually received.
 
 # Turn taking
 The visitor may interrupt at any time. Stop cleanly and listen. Keep opening acknowledgements brief so the conversation stays fluid. After your welcome, wait quietly for clear human speech. Treat music, room noise and indistinct audio as background: do not answer it, do not repeatedly ask whether anyone is there, and prefer silence over guessing.
@@ -210,4 +219,5 @@ respond(200, [
     'voice' => 'marin',
     'turn_detection' => 'server_vad',
     'portal_guide_version' => 'v1',
+    'wellbeing_support_guide_version' => 'v1',
 ]);

@@ -22,6 +22,7 @@ const realtimeVoiceControllerPath = path.join(IAM_DIR, 'realtime-voice-assistant
 const realtimeVoiceCssPath = path.join(IAM_DIR, 'realtime-voice-assistant.css');
 const realtimeVoiceEndpointPath = path.join(IAM_DIR, 'api', 'realtime-client-secret.php');
 const realtimeVoicePortalGuidePath = path.join(IAM_DIR, 'universal-one-portal-guide-v1.txt');
+const realtimeVoiceWellbeingGuidePath = path.join(IAM_DIR, 'universal-one-wellbeing-support-guide-v1.txt');
 const mantraSamplerPath = path.join(IAM_DIR, 'mantra-sampler.js');
 const mantraSamplerCssPath = path.join(IAM_DIR, 'mantra-sampler.css');
 const mantraAudioFxPath = path.join(IAM_DIR, 'mantra-audio-fx.js');
@@ -115,6 +116,7 @@ const realtimeVoiceController = await fs.readFile(realtimeVoiceControllerPath, '
 const realtimeVoiceCss = await fs.readFile(realtimeVoiceCssPath, 'utf8');
 const realtimeVoiceEndpoint = await fs.readFile(realtimeVoiceEndpointPath, 'utf8');
 const realtimeVoicePortalGuide = await fs.readFile(realtimeVoicePortalGuidePath, 'utf8');
+const realtimeVoiceWellbeingGuide = await fs.readFile(realtimeVoiceWellbeingGuidePath, 'utf8');
 const mantraSampler = await fs.readFile(mantraSamplerPath, 'utf8');
 const mantraSamplerCss = await fs.readFile(mantraSamplerCssPath, 'utf8');
 const mantraAudioFx = await fs.readFile(mantraAudioFxPath, 'utf8');
@@ -331,6 +333,8 @@ requireCondition(realtimeVoiceController.includes('track.contentHint = "speech"'
 requireCondition(realtimeVoiceController.includes('data-voice-waveform') && realtimeVoiceController.includes('createMediaStreamSource(stream)') && realtimeVoiceController.includes('getByteTimeDomainData'), 'the Universal One panel no longer renders a live local microphone waveform');
 requireCondition(realtimeVoiceCss.includes('.iam-realtime-voice__waveform') && realtimeVoiceCss.includes('[data-input-active="true"]'), 'the microphone waveform has lost its circular live-input treatment');
 requireCondition(realtimeVoiceController.includes('qaScenario === "portal"') && realtimeVoiceController.includes('how to find Radio'), 'staging can no longer verify Universal One portal guidance without a microphone');
+requireCondition(realtimeVoiceController.includes('qaScenario === "wellbeing"') && realtimeVoiceController.includes('default EFT tapping support') && realtimeVoiceController.includes('opening Even though statement'), 'staging can no longer verify Universal One wellbeing guidance without a microphone');
+requireCondition(realtimeVoiceController.includes('qaScenario === "crisis"') && realtimeVoiceController.includes('might hurt myself tonight'), 'staging can no longer verify Universal One crisis routing without a microphone');
 requireCondition(realtimeVoiceController.includes('conversation.item.input_audio_transcription.completed'), 'voice captions no longer receive completed visitor transcripts');
 requireCondition(realtimeVoiceController.includes('response.output_audio_transcript.delta'), 'voice captions no longer receive live assistant transcripts');
 requireCondition(realtimeVoiceController.includes('transcriptFromRealtimePayload(event.response)'), 'voice captions no longer recover the final completed-response transcript');
@@ -344,6 +348,7 @@ requireCondition(realtimeVoiceEndpoint.includes("'reasoning' => ['effort' => 'lo
 requireCondition(realtimeVoiceEndpoint.includes("'type' => 'server_vad'") && realtimeVoiceEndpoint.includes("'threshold' => 0.72") && realtimeVoiceEndpoint.includes("'silence_duration_ms' => 800"), 'the Realtime endpoint no longer rejects quieter background noise before creating a turn');
 requireCondition(realtimeVoiceEndpoint.includes("'noise_reduction' => ['type' => 'near_field']"), 'the Realtime endpoint no longer filters near-field microphone noise before VAD');
 requireCondition(realtimeVoiceEndpoint.includes('universal-one-portal-guide-v1.txt'), 'the Realtime endpoint no longer loads the maintained portal guide');
+requireCondition(realtimeVoiceEndpoint.includes('universal-one-wellbeing-support-guide-v1.txt') && realtimeVoiceEndpoint.includes('wellbeing_support_guide_version'), 'the Realtime endpoint no longer loads and versions the maintained wellbeing support guide');
 requireCondition(realtimeVoiceEndpoint.includes('OpenAI-Safety-Identifier:'), 'the Realtime endpoint no longer sends a privacy-preserving safety identifier');
 requireCondition(citizenNeedsWorker.includes('handleRealtimeClientSecret(request, env)'), 'the Cloudflare Worker no longer mints Realtime client secrets');
 requireCondition(citizenNeedsWorker.includes('https://api.openai.com/v1/realtime/client_secrets'), 'the Cloudflare Worker no longer uses the official Realtime client-secret endpoint');
@@ -352,6 +357,7 @@ requireCondition(citizenNeedsWorker.includes('reasoning: { effort: "low" }'), 't
 requireCondition(citizenNeedsWorker.includes('type: "server_vad"') && citizenNeedsWorker.includes('threshold: 0.72') && citizenNeedsWorker.includes('silence_duration_ms: 800'), 'the Worker Realtime session no longer rejects quieter background noise before creating a turn');
 requireCondition(citizenNeedsWorker.includes('noise_reduction: { type: "near_field" }'), 'the Worker Realtime session no longer filters microphone noise before VAD');
 requireCondition(citizenNeedsWorker.includes('UNIVERSAL_ONE_PORTAL_GUIDE'), 'the Worker Realtime session no longer receives the maintained portal guide');
+requireCondition(citizenNeedsWorker.includes('UNIVERSAL_ONE_WELLBEING_SUPPORT_GUIDE') && citizenNeedsWorker.includes('wellbeing_support_guide_version'), 'the Worker Realtime session no longer receives and versions the maintained wellbeing support guide');
 requireCondition(citizenNeedsWorker.includes('env.REALTIME_RATE_LIMITER.limit'), 'the Worker no longer rate-limits Realtime client-secret requests');
 requireCondition(citizenNeedsWorkerConfig.includes('preview_urls = true'), 'the staging-only Worker preview URL is not explicitly enabled');
 requireCondition(citizenNeedsWorkerConfig.includes('required = [ "OPENAI_API_KEY" ]'), 'the Worker does not declare its required encrypted OpenAI key');
@@ -361,6 +367,11 @@ requireCondition(realtimeVoicePortalGuide.includes('GLOBAL NAVIGATION') && realt
 requireCondition(realtimeVoicePortalGuide.includes('Privacy first and Go to market') && realtimeVoicePortalGuide.includes('currently disabled'), 'Universal One can misdescribe roadmap navigation as live');
 requireCondition(realtimeVoicePortalGuide.includes('Bloom, Mix, Circle, Care and Collect') && realtimeVoicePortalGuide.includes('10-minute Nervous System Reset research feature'), 'Universal One no longer knows the television wallet and research feature');
 requireCondition(realtimeVoicePortalGuide.includes('Partner lists are invitations or proposed ideal partners'), 'Universal One can misstate proposed partnerships as confirmed');
+requireCondition(realtimeVoiceWellbeingGuide.includes('Even though I\'m feeling [the visitor\'s own words], I choose to be kind to myself right now.'), 'Universal One no longer has the approved default Even though EFT setup statement');
+requireCondition(realtimeVoiceWellbeingGuide.includes('https://headspace.org.au/services/') && realtimeVoiceWellbeingGuide.includes('1800 650 890') && realtimeVoiceWellbeingGuide.includes('young people aged 12 to 25'), 'Universal One no longer has the source-grounded headspace service and contact guide');
+requireCondition(realtimeVoiceWellbeingGuide.includes('call 13 11 14') && realtimeVoiceWellbeingGuide.includes('text 0477 13 11 14') && realtimeVoiceWellbeingGuide.includes('https://www.lifeline.org.au/crisis-chat/'), 'Universal One no longer has the approved Australian Lifeline pathway');
+requireCondition(realtimeVoiceWellbeingGuide.includes('Triple Zero on 000') && realtimeVoiceWellbeingGuide.includes('Universal One cannot call emergency services'), 'Universal One no longer has a clear immediate-danger boundary');
+requireCondition(realtimeVoiceWellbeingGuide.includes('This is curated source-grounded knowledge, not live browsing.'), 'Universal One can no longer distinguish curated headspace knowledge from live website access');
 requireCondition(controller.includes('voiceAssistantBaseVolumes.get(media) * .15, 800'), 'the television programme no longer ducks smoothly to fifteen percent for voice');
 requireCondition(controller.includes('animateVoiceAssistantProgramVolume(media, baseline, 1000)') && controller.includes('const duckFactor = voiceAssistantDuckActive ? .15 : 1;'), 'the television programme no longer restores smoothly after voice');
 
