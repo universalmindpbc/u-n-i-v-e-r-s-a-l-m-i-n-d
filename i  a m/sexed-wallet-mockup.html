@@ -4,8 +4,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="robots" content="noindex, nofollow">
-    <meta name="description" content="Sexed wallet placement study for James Bondage Health.">
-    <title>Sexed wallet study | I Am</title>
+    <meta name="description" content="Sex-ed wallet text-link study for James Bondage Health.">
+    <title>Sex-ed wallet study | I Am</title>
     <link rel="icon" type="image/png" sizes="32x32" href="/vogue/iam/favicon.png?v=iam-favicon-4">
     <link rel="apple-touch-icon" sizes="180x180" href="/vogue/iam/apple-touch-icon.png?v=iam-favicon-4">
     <style>
@@ -169,10 +169,6 @@
           width 420ms cubic-bezier(0.22, 0.72, 0.18, 1);
       }
 
-      .wallet[data-placement="strip"] {
-        min-height: 166px;
-      }
-
       .wallet-categories {
         display: flex;
         align-items: center;
@@ -287,102 +283,32 @@
         height: auto;
       }
 
-      .wallet-category--sexed {
-        display: none;
-      }
-
-      .wallet[data-placement="circle"] .wallet-category--sexed {
+      .sexed-link {
         display: grid;
-      }
-
-      .sexed-roundel {
-        position: relative;
-        display: grid;
-        width: 52px;
-        height: 52px;
-        border: 1px solid rgba(255, 255, 255, 0.34);
-        border-radius: 50%;
-        background:
-          linear-gradient(145deg, rgba(255, 255, 255, 0.16), transparent 52%),
-          rgba(22, 13, 16, 0.68);
-        place-items: center;
-      }
-
-      .sexed-roundel span {
-        font-family: Georgia, "Times New Roman", serif;
-        font-size: 10px;
-        letter-spacing: -0.025em;
-        line-height: 1;
-      }
-
-      .sexed-feature {
-        position: relative;
-        display: none;
-        grid-template-columns: minmax(74px, 0.7fr) minmax(170px, 2fr) auto;
-        align-items: center;
-        width: 100%;
-        min-height: 44px;
+        min-width: 88px;
+        min-height: 24px;
         border: 0;
-        border-top: 1px solid rgba(255, 255, 255, 0.18);
-        border-bottom: 1px solid rgba(255, 255, 255, 0.13);
-        background: rgba(255, 255, 255, 0.035);
-        color: #fff;
+        background: transparent;
+        color: rgba(255, 255, 255, 0.9);
         cursor: pointer;
-        padding: 0 13px;
-        text-align: left;
-      }
-
-      .wallet[data-placement="strip"] .sexed-feature {
-        display: grid;
-      }
-
-      .sexed-feature:hover,
-      .sexed-feature:focus-visible {
-        background: rgba(255, 255, 255, 0.1);
-        outline: 0;
-      }
-
-      .sexed-feature__name {
         font-family: Georgia, "Times New Roman", serif;
-        font-size: 20px;
+        font-size: 19px;
         letter-spacing: -0.035em;
         line-height: 1;
+        padding: 0 14px 3px;
+        place-items: center;
+        text-shadow: 0 2px 10px rgba(0, 0, 0, 0.72);
+        transition: color 180ms ease, transform 180ms ease;
       }
 
-      .sexed-feature__programme {
-        display: grid;
-        gap: 3px;
-        min-width: 0;
-        padding: 0 14px;
-      }
-
-      .sexed-feature__programme strong {
-        overflow: hidden;
-        font-size: 9px;
-        font-weight: 500;
-        letter-spacing: 0.12em;
-        text-overflow: ellipsis;
-        text-transform: uppercase;
-        white-space: nowrap;
-      }
-
-      .sexed-feature__programme small {
-        overflow: hidden;
-        color: rgba(255, 255, 255, 0.58);
-        font-size: 8px;
-        font-weight: 400;
-        letter-spacing: 0.08em;
-        text-overflow: ellipsis;
-        text-transform: uppercase;
-        white-space: nowrap;
-      }
-
-      .sexed-feature__play {
-        color: rgba(255, 255, 255, 0.82);
-        font-size: 9px;
-        letter-spacing: 0.11em;
-        text-transform: uppercase;
-        white-space: nowrap;
+      .sexed-link:hover,
+      .sexed-link:focus-visible {
+        color: #fff;
+        outline: 0;
+        text-decoration: underline;
+        text-decoration-thickness: 1px;
+        text-underline-offset: 4px;
+        transform: translateY(-1px);
       }
 
       .now-playing {
@@ -409,7 +335,7 @@
         margin: 0 7px;
       }
 
-      .wallet[data-placement="circle"] .now-playing {
+      .now-playing {
         border-top: 1px solid rgba(255, 255, 255, 0.15);
       }
 
@@ -420,56 +346,23 @@
         padding-left: 14px;
       }
 
-      .preview-stage.is-mobile .wallet[data-placement="strip"] .wallet-categories {
-        gap: 8px;
-      }
-
-      .preview-stage.is-mobile .wallet[data-placement="strip"] .wallet-category {
-        width: 57px;
-        height: 57px;
-      }
-
-      .preview-stage.is-mobile .wallet[data-placement="circle"] .wallet-categories {
+      .preview-stage.is-mobile .wallet-categories {
         gap: 5px;
       }
 
-      .preview-stage.is-mobile .wallet[data-placement="circle"] .wallet-category {
+      .preview-stage.is-mobile .wallet-category {
         width: 49px;
         height: 57px;
       }
 
-      .preview-stage.is-mobile .wallet[data-placement="circle"] .flora-icon,
-      .preview-stage.is-mobile .wallet[data-placement="circle"] .rewards-icon,
-      .preview-stage.is-mobile .wallet[data-placement="circle"] .sexed-roundel {
+      .preview-stage.is-mobile .flora-icon,
+      .preview-stage.is-mobile .rewards-icon {
         width: 45px;
         height: 45px;
       }
 
-      .preview-stage.is-mobile .wallet[data-placement="circle"] .wallet-overlay {
+      .preview-stage.is-mobile .wallet-overlay {
         transform: translate(-50%, -50%) scale(0.82);
-      }
-
-      .preview-stage.is-mobile .sexed-feature {
-        grid-template-columns: 64px minmax(0, 1fr) auto;
-        padding-right: 8px;
-        padding-left: 8px;
-      }
-
-      .preview-stage.is-mobile .sexed-feature__name {
-        font-size: 18px;
-      }
-
-      .preview-stage.is-mobile .sexed-feature__programme {
-        padding-right: 8px;
-        padding-left: 8px;
-      }
-
-      .preview-stage.is-mobile .sexed-feature__programme strong {
-        font-size: 7.7px;
-      }
-
-      .preview-stage.is-mobile .sexed-feature__programme small {
-        display: none;
       }
 
       .preview-stage.is-mobile .now-playing {
@@ -506,20 +399,11 @@
           padding-left: 14px;
         }
 
-        .preview-stage:not(.is-mobile) .wallet[data-placement="strip"] .wallet-categories {
-          gap: 8px;
-        }
-
-        .preview-stage:not(.is-mobile) .wallet[data-placement="strip"] .wallet-category {
-          width: 57px;
-          height: 57px;
-        }
-
-        .preview-stage:not(.is-mobile) .wallet[data-placement="circle"] .wallet-categories {
+        .preview-stage:not(.is-mobile) .wallet-categories {
           gap: 5px;
         }
 
-        .preview-stage:not(.is-mobile) .wallet[data-placement="circle"] .wallet-category {
+        .preview-stage:not(.is-mobile) .wallet-category {
           width: 49px;
           height: 57px;
         }
@@ -543,10 +427,10 @@
   <body>
     <main class="study-shell">
       <nav class="study-toolbar" aria-label="Mock-up controls">
-        <span class="study-toolbar__title">Sexed wallet study</span>
-        <span class="study-toolbar__group" aria-label="Choose placement">
-          <button type="button" data-placement-control="strip" aria-pressed="true">Feature strip</button>
-          <button type="button" data-placement-control="circle" aria-pressed="false">Sixth circle</button>
+        <span class="study-toolbar__title">Text-link study</span>
+        <span class="study-toolbar__group" aria-label="Choose name">
+          <button type="button" data-name-control="hyphenated" aria-pressed="true">sex-ed</button>
+          <button type="button" data-name-control="closed" aria-pressed="false">sexed</button>
         </span>
         <span class="study-toolbar__group" aria-label="Choose preview size">
           <button type="button" data-viewport-control="desktop" aria-pressed="true">Desktop</button>
@@ -555,7 +439,7 @@
       </nav>
 
       <section class="preview-stage" data-preview-stage aria-label="James Bondage Health wallet mock-up">
-        <section class="wallet" data-wallet data-placement="strip" aria-label="Universal Mind wallet placement study">
+        <section class="wallet" data-wallet aria-label="Universal Mind wallet text-link study">
           <div class="wallet-categories">
             <button class="wallet-category" type="button" data-label="bloom" aria-label="bloom">
               <span class="flora-icon" aria-hidden="true">
@@ -610,20 +494,9 @@
                 <img src="a s s e t s/wallet-rewards-card.png?v=rewards-card-2" alt="">
               </span>
             </button>
-
-            <button class="wallet-category wallet-category--sexed" type="button" data-label="sexed" aria-label="sexed — James Bondage Health">
-              <span class="sexed-roundel" aria-hidden="true"><span>sexed</span></span>
-            </button>
           </div>
 
-          <button class="sexed-feature" type="button" aria-label="sexed — open James Bondage Health episode one">
-            <span class="sexed-feature__name">sexed</span>
-            <span class="sexed-feature__programme">
-              <strong>James Bondage Health · Episode 01</strong>
-              <small>Caitlin Erica · watch the conversation</small>
-            </span>
-            <span class="sexed-feature__play">watch →</span>
-          </button>
+          <button class="sexed-link" type="button" data-sexed-link aria-label="sex-ed — open James Bondage Health">sex-ed</button>
 
           <button class="now-playing" type="button" aria-label="Open current Music recommendations">
             <time datetime="14:19" data-now-playing-time>14:19</time>
@@ -633,16 +506,16 @@
             James Bondage Party
           </button>
         </section>
-        <span class="preview-stage__label">Placement mock-up only · episode media pending</span>
+        <span class="preview-stage__label">Text-link mock-up only · episode media pending</span>
       </section>
     </main>
 
     <script>
       (() => {
         const stage = document.querySelector("[data-preview-stage]");
-        const wallet = document.querySelector("[data-wallet]");
-        const placementControls = Array.from(document.querySelectorAll("[data-placement-control]"));
+        const nameControls = Array.from(document.querySelectorAll("[data-name-control]"));
         const viewportControls = Array.from(document.querySelectorAll("[data-viewport-control]"));
+        const sexedLink = document.querySelector("[data-sexed-link]");
         const nowPlayingTime = document.querySelector("[data-now-playing-time]");
         const params = new URLSearchParams(window.location.search);
 
@@ -652,12 +525,14 @@
           });
         }
 
-        function setPlacement(value, updateUrl = true) {
-          const placement = value === "circle" ? "circle" : "strip";
-          wallet.dataset.placement = placement;
-          setPressed(placementControls, placement, "data-placement-control");
+        function setName(value, updateUrl = true) {
+          const name = value === "closed" ? "closed" : "hyphenated";
+          const label = name === "closed" ? "sexed" : "sex-ed";
+          sexedLink.textContent = label;
+          sexedLink.setAttribute("aria-label", `${label} — open James Bondage Health`);
+          setPressed(nameControls, name, "data-name-control");
           if (!updateUrl) return;
-          params.set("placement", placement);
+          params.set("name", name);
           window.history.replaceState({}, "", `${window.location.pathname}?${params.toString()}`);
         }
 
@@ -670,8 +545,8 @@
           window.history.replaceState({}, "", `${window.location.pathname}?${params.toString()}`);
         }
 
-        placementControls.forEach((control) => {
-          control.addEventListener("click", () => setPlacement(control.dataset.placementControl));
+        nameControls.forEach((control) => {
+          control.addEventListener("click", () => setName(control.dataset.nameControl));
         });
 
         viewportControls.forEach((control) => {
@@ -686,7 +561,7 @@
         }).format(now);
         nowPlayingTime.dateTime = now.toISOString();
 
-        setPlacement(params.get("placement"), false);
+        setName(params.get("name"), false);
         setViewport(params.get("view"), false);
       })();
     </script>
