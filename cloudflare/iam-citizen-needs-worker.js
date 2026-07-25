@@ -628,7 +628,7 @@ The visitor may interrupt at any time. Stop cleanly and listen. Keep opening ack
         output_modalities: ["audio"],
         instructions,
         reasoning: { effort: "low" },
-        max_output_tokens: 900,
+        max_output_tokens: 2400,
         audio: {
           input: {
             noise_reduction: { type: "near_field" },

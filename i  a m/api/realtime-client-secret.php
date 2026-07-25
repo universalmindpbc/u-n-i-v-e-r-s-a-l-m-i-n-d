@@ -159,7 +159,7 @@ $session = [
     'output_modalities' => ['audio'],
     'instructions' => $instructions,
     'reasoning' => ['effort' => 'low'],
-    'max_output_tokens' => 900,
+    'max_output_tokens' => 2400,
     'audio' => [
         'input' => [
             'noise_reduction' => ['type' => 'near_field'],
