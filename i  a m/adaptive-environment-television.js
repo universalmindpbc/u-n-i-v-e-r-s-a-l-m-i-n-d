@@ -254,6 +254,9 @@
   let sexEdStartTime = 139;
   let sexEdNeedsInitialSeek = true;
   let sexEdReturnProgramme = null;
+  let sexEdAudioContext = null;
+  let sexEdAudioSource = null;
+  let sexEdAudioGain = null;
   let musicCatalogueRecords = [];
   let radioStationRecords = DEFAULT_RADIO_STATIONS.map((station) => ({ ...station }));
   let musicShelfOrders = { videos: [], parties: [], radio: radioStationRecords.slice(), fashion: [] };
@@ -404,7 +407,10 @@
   const RADIO_SEGMENT_START_DELAY_SECONDS = .35;
   const RADIO_SEGMENT_CROSSFADE_SECONDS = .035;
   const RADIO_SEGMENT_POLL_MS = 3000;
-  const SEX_ED_PROGRAMME_MIX_LEVEL = .1125;
+  const SEX_ED_PROGRAMME_MIX_LEVEL = .15;
+  const SEX_ED_EPISODE_GAIN = Object.freeze({
+    "01": 1.3,
+  });
   let continuationAudio = null;
   let continuationHls = null;
   let continuationSegmentPlayer = null;
@@ -4302,6 +4308,9 @@
       if (options.closeShelf) window.setTimeout(() => closeMusicShelf(false), 520);
       return;
     }
+    if (document.body.classList.contains("television-sex-ed-active")) {
+      stopSexEdEpisode({ restoreProgramme: false });
+    }
     musicModeManuallySelected = true;
     recordMusicFeedback(item, "explicit_select");
     if (item.mode === "radio" || musicChannelMode === "radio") await startRadioStation(item, { source: options.source || "manual" });
@@ -4404,6 +4413,9 @@
       return openBroadcastEntry(item, { source: "runtime_api" });
     },
     joinBroadcast(channelId) {
+      if (document.body.classList.contains("television-sex-ed-active")) {
+        stopSexEdEpisode({ restoreProgramme: false });
+      }
       return joinBroadcastChannel(channelId, { source: "runtime_api" });
     },
     synchronizeBroadcast(forceSeek = true) {
@@ -5165,6 +5177,43 @@
     document.title = `${title} | Sex-ed`;
   }
 
+  function applySexEdEpisodeGain() {
+    if (!sexEdEpisodeVideo) return 1;
+    const targetGain = Math.max(1, Number(SEX_ED_EPISODE_GAIN[sexEdActiveEpisode]) || 1);
+    sexEdEpisodeVideo.crossOrigin = "anonymous";
+    sexEdEpisodeVideo.volume = 1;
+    document.body.dataset.sexEdForegroundGain = String(targetGain);
+    document.body.dataset.sexEdForegroundGainDb = (20 * Math.log10(targetGain)).toFixed(2);
+
+    const AudioContextClass = window.AudioContext || window.webkitAudioContext;
+    if (!AudioContextClass) {
+      document.body.dataset.sexEdForegroundGainState = "media_volume_only";
+      return 1;
+    }
+
+    try {
+      if (!sexEdAudioContext) sexEdAudioContext = new AudioContextClass();
+      if (!sexEdAudioSource) {
+        sexEdAudioSource = sexEdAudioContext.createMediaElementSource(sexEdEpisodeVideo);
+        sexEdAudioGain = sexEdAudioContext.createGain();
+        sexEdAudioSource.connect(sexEdAudioGain);
+        sexEdAudioGain.connect(sexEdAudioContext.destination);
+      }
+      sexEdAudioGain.gain.setValueAtTime(targetGain, sexEdAudioContext.currentTime);
+      document.body.dataset.sexEdForegroundGainState = "connected";
+      sexEdAudioContext.resume?.()
+        .then(() => {
+          document.body.dataset.sexEdForegroundAudioContext = sexEdAudioContext.state;
+        })
+        .catch(() => {});
+      return targetGain;
+    } catch (error) {
+      document.body.dataset.sexEdForegroundGainState = "media_volume_only";
+      document.body.dataset.sexEdForegroundGainError = String(error?.message || error).slice(0, 140);
+      return 1;
+    }
+  }
+
   async function seekSexEdEpisodeStart() {
     if (!sexEdEpisodeVideo || !sexEdNeedsInitialSeek) return;
     if (sexEdEpisodeVideo.readyState < 1) {
@@ -5193,6 +5242,7 @@
 
   async function playSexEdEpisode() {
     if (!sexEdEpisodeVideo) return false;
+    applySexEdEpisodeGain();
     await ensureSexEdStream(sexEdEpisodeVideo, "music");
     await seekSexEdEpisodeStart();
     sexEdEpisodeVideo.muted = false;
@@ -5208,7 +5258,8 @@
     }
   }
 
-  function stopSexEdEpisode() {
+  function stopSexEdEpisode(options = {}) {
+    const restoreProgramme = options.restoreProgramme !== false;
     const wasActive = document.body.classList.contains("television-sex-ed-active");
     document.body.classList.remove("television-sex-ed-active");
     sexEdWorld?.setAttribute("aria-hidden", "true");
@@ -5217,19 +5268,27 @@
     sexEdLoopVideos.forEach((video) => {
       try { video.pause(); } catch {}
     });
+    if (sexEdAudioGain && sexEdAudioContext) {
+      sexEdAudioGain.gain.setValueAtTime(1, sexEdAudioContext.currentTime);
+    }
     if (sexEdEpisodeStart) sexEdEpisodeStart.hidden = false;
     sexEdNeedsInitialSeek = true;
     delete document.body.dataset.sexEdEpisode;
     delete document.body.dataset.sexEdEpisodeStart;
+    delete document.body.dataset.sexEdForegroundGain;
+    delete document.body.dataset.sexEdForegroundGainDb;
+    delete document.body.dataset.sexEdForegroundGainState;
+    delete document.body.dataset.sexEdForegroundAudioContext;
+    delete document.body.dataset.sexEdForegroundGainError;
     if (wasActive) {
       setProgrammeMixLevel(null);
       const returnProgramme = sexEdReturnProgramme;
       sexEdReturnProgramme = null;
       delete document.body.dataset.sexEdReturnChannel;
       delete document.body.dataset.sexEdReturnTrack;
-      if (returnProgramme?.channelId && broadcastChannelId !== returnProgramme.channelId) {
+      if (restoreProgramme && returnProgramme?.channelId && broadcastChannelId !== returnProgramme.channelId) {
         joinBroadcastChannel(returnProgramme.channelId, { source: "sex_ed_return" }).catch(() => {});
-      } else if (!returnProgramme?.channelId && returnProgramme?.trackId) {
+      } else if (restoreProgramme && !returnProgramme?.channelId && returnProgramme?.trackId) {
         const returnTrack = findTrack(returnProgramme.trackId);
         if (returnTrack) {
           switchMusicTrack(returnTrack, {
@@ -6583,6 +6642,9 @@
   broadcastJoinButton?.addEventListener("click", (event) => {
     event.preventDefault();
     event.stopPropagation();
+    if (document.body.classList.contains("television-sex-ed-active")) {
+      stopSexEdEpisode({ restoreProgramme: false });
+    }
     joinBroadcastChannel(pendingBroadcastChannelId, { source: "broadcast_invitation" });
   });
   broadcastChooseButton?.addEventListener("click", (event) => {

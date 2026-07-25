@@ -3,7 +3,7 @@
   const episodeLinks = Array.from(document.querySelectorAll('a[href="sex-ed-episode-01.html"]'));
   const episodeVideo = document.querySelector("[data-sex-ed-episode-video]");
   const episodeStart = document.querySelector("[data-sex-ed-episode-start]");
-  const SEX_ED_PROGRAMME_MIX_LEVEL = .1125;
+  const SEX_ED_PROGRAMME_MIX_LEVEL = .15;
   let episodeNeedsInitialSeek = true;
 
   if (window.self !== window.top) {
