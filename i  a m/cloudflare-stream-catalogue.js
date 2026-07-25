@@ -13,6 +13,7 @@
     "Dolce & Gabbanna - Sicily 2019.mp4": "b582b1bff1de6e3952f815b9e2f79ebc",
     "Flume - Never Be Like You feat. Kai [ Live at Laneway Festival ].mp4": "6768454558383ed9b6a8be6554b07ef7",
     "Flume - Tiny Cities feat. Beck.mp4": "8c93a0419c8da7f73bb601d8dfd53943",
+    "From Doula to Stripper - Reclaiming the Forbidden Feminine with Caitlin Erica.mp4": "55930437b1aeff8960fb73aee334fd71",
     "Globe Landing Page Video - Sunscreem - Perfection Motion for RMU.mp4": "fd142ca0e1672dd7a92729857db1facd",
     "Grimes - Genesis.mp4": "e6a813342812c4039b48aff744f64304",
     "Homepage - Hero Background Video - Chanel 2020 Runway Show.mp4": "d86c877dafcfacfcda49aa40ed08ab57",

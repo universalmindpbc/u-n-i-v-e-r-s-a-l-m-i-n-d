@@ -2973,26 +2973,49 @@ body .adaptive-television-reaction-wallet[data-wallet-view="categories"].is-reac
   flex-direction: column;
   gap: 0;
   width: min(520px, calc(100vw - 48px));
-  min-height: 122px;
+  min-height: 106px;
   border-color: rgba(255, 255, 255, 0.14);
   background: rgba(12, 12, 14, 0.1);
   box-shadow: none;
   backdrop-filter: none;
   -webkit-backdrop-filter: none;
-  padding: 4px 24px 16px;
+  padding: 2px 24px 8px;
 }
 
-.adaptive-television-now-playing {
-  --now-playing-overflow: 0px;
+.adaptive-television-wallet-status-row {
   position: absolute;
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 100%;
-  min-width: 0;
-  height: 30px;
-  border: 0;
+  width: min(100%, 448px);
+  height: 29px;
   border-top: 1px solid rgba(255, 255, 255, 0.15);
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(3px);
+  transition:
+    opacity 360ms ease 120ms,
+    transform 480ms cubic-bezier(0.22, 0.72, 0.18, 1) 100ms;
+}
+
+.adaptive-television-reaction-wallet[data-wallet-view="categories"] .adaptive-television-wallet-status-row {
+  position: relative;
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+.adaptive-television-now-playing {
+  --now-playing-overflow: 0px;
+  position: relative;
+  display: flex;
+  flex: 0 1 auto;
+  align-items: center;
+  justify-content: center;
+  width: auto;
+  min-width: 0;
+  height: 28px;
+  border: 0;
   border-radius: 0;
   background: transparent;
   color: rgba(255, 255, 255, 0.96);
@@ -3001,7 +3024,7 @@ body .adaptive-television-reaction-wallet[data-wallet-view="categories"].is-reac
   letter-spacing: 0.07em;
   opacity: 0;
   overflow: hidden;
-  padding: 8px 18px 0;
+  padding: 7px 10px 0;
   pointer-events: none;
   text-align: center;
   text-shadow: none;
@@ -3015,6 +3038,43 @@ body .adaptive-television-reaction-wallet[data-wallet-view="categories"].is-reac
   opacity: 1;
   pointer-events: auto;
   transform: translateY(0);
+}
+
+.adaptive-television-wallet-status-divider {
+  flex: 0 0 auto;
+  width: 1px;
+  height: 15px;
+  margin: 6px 11px 0 7px;
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.adaptive-television-sex-ed-link {
+  display: grid;
+  flex: 0 0 auto;
+  width: 46px;
+  height: 21px;
+  margin-top: 6px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.025);
+  color: rgba(255, 255, 255, 0.65);
+  font: 400 10px/1 "Helvetica Neue", Helvetica, Arial, sans-serif;
+  letter-spacing: 0;
+  place-items: center;
+  text-decoration: none;
+  text-transform: lowercase;
+  transition:
+    background 220ms ease,
+    border-color 220ms ease,
+    color 220ms ease;
+}
+
+.adaptive-television-sex-ed-link:hover,
+.adaptive-television-sex-ed-link:focus-visible {
+  border-color: rgba(255, 255, 255, 0.58);
+  background: rgba(255, 255, 255, 0.08);
+  color: rgba(255, 255, 255, 0.9);
+  outline: 0;
 }
 
 .adaptive-television-now-playing:hover,
@@ -3150,8 +3210,8 @@ body .adaptive-television-reaction-wallet[data-wallet-view="categories"].is-reac
 @media (max-width: 520px) {
   body .adaptive-television-reaction-wallet[data-wallet-view="categories"].is-reaction-wallet-open {
     width: min(520px, calc(100vw - 28px));
-    min-height: 116px;
-    padding: 2px 14px 14px;
+    min-height: 106px;
+    padding: 2px 14px 8px;
   }
 
   .adaptive-television-now-playing {
@@ -3170,6 +3230,21 @@ body .adaptive-television-reaction-wallet[data-wallet-view="categories"].is-reac
   .adaptive-television-now-playing__viewport {
     flex: 0 1 auto;
     width: auto;
+  }
+
+  .adaptive-television-wallet-status-row {
+    width: calc(100% - 8px);
+  }
+
+  .adaptive-television-wallet-status-divider {
+    margin-right: 8px;
+    margin-left: 5px;
+  }
+
+  .adaptive-television-sex-ed-link {
+    width: 42px;
+    height: 19px;
+    font-size: 8.8px;
   }
 }
 

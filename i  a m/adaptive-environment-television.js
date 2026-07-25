@@ -142,6 +142,7 @@
   const nowPlayingTitle = document.querySelector("[data-now-playing-title]");
   const nowPlayingVisual = document.querySelector("[data-now-playing-visual]");
   const nowPlayingVisualTitle = document.querySelector("[data-now-playing-visual-title]");
+  const sexEdLink = document.querySelector("[data-sex-ed-link]");
   const videoModeButtons = Array.from(document.querySelectorAll("[data-video-mode]"));
   const videoMixControls = document.querySelector("[data-video-mix-controls]");
   const videoCrossfader = document.querySelector("[data-video-crossfader]");
@@ -394,6 +395,7 @@
   let radioRecoveryCount = 0;
   let radioLastRecoveryAt = 0;
   let voiceAssistantDuckActive = false;
+  let programmeFixedMixLevel = null;
   const voiceAssistantBaseVolumes = new Map();
   const voiceAssistantVolumeFrames = new Map();
   let soundResearchAudio = null;
@@ -4141,7 +4143,11 @@
       continuationAudio.loop = false;
       continuationAudio.muted = false;
       continuationAudio.playbackRate = 1;
-      setVoiceAssistantProgramVolume(continuationAudio, .68, voiceAssistantDuckActive ? 260 : 0);
+      setVoiceAssistantProgramVolume(
+        continuationAudio,
+        programmeFixedMixLevel ?? .68,
+        voiceAssistantDuckActive ? 260 : 0
+      );
       await continuationAudio.play();
       document.body.dataset.radioPlaybackState = "playing";
       document.body.dataset.audioPartyPlaybackState = "playing";
@@ -4953,6 +4959,23 @@
       ? programmeMedia.filter(Boolean).map((media) => media === continuationAudio ? "radio" : "video").join(",")
       : "";
     return voiceAssistantDuckActive;
+  }
+
+  function setProgrammeMixLevel(level) {
+    const requested = Number(level);
+    programmeFixedMixLevel = Number.isFinite(requested)
+      ? Math.max(0, Math.min(1, requested))
+      : null;
+    const target = programmeFixedMixLevel ?? .68;
+    if (continuationAudio && !continuationAudio.muted) {
+      animateVoiceAssistantProgramVolume(continuationAudio, target, 420);
+    }
+    if (programmeFixedMixLevel === null) {
+      delete document.body.dataset.programmeFixedMixLevel;
+    } else {
+      document.body.dataset.programmeFixedMixLevel = programmeFixedMixLevel.toFixed(2);
+    }
+    return programmeFixedMixLevel;
   }
 
   function playLocalVideo(video) {
@@ -5892,6 +5915,7 @@
       setVideoBlend(pageViewPreviousBlend);
       pageViewPreviousBlend = null;
     }
+    setProgrammeMixLevel(null);
     learnCue?.setAttribute("aria-hidden", "true");
     document.querySelectorAll("[data-homepage-radar]").forEach((radar) => {
       radar.setAttribute("aria-hidden", "true");
@@ -6510,6 +6534,17 @@
       openInVideoPageLayer(link);
     }, true);
   });
+  sexEdLink?.addEventListener("click", (event) => {
+    if (!document.body.classList.contains("television-room-open")) return;
+    event.preventDefault();
+    event.stopImmediatePropagation();
+    setProgrammeMixLevel(.15);
+    const activeChannelId = window.IAMMusicChannels?.getState?.().broadcast?.channelId || "";
+    if (activeChannelId !== "party-james-bondage") {
+      window.IAMMusicChannels?.joinBroadcast?.("party-james-bondage")?.catch?.(() => {});
+    }
+    openInVideoPageLayer(sexEdLink);
+  }, true);
   researchDialogScienceLink?.addEventListener("click", (event) => {
     if (!document.body.classList.contains("television-room-open") || !isInternalPageLink(researchDialogScienceLink)) {
       exitFullscreenForNavigation();
@@ -6550,12 +6585,15 @@
   window.setInterval(updateNowPlayingClock, 30000);
   syncFullscreenState();
   window.IAMTelevisionRoom = {
-    version: "voice_entry_preflight_v1",
+    version: "sex_ed_programme_mix_v1",
     enterFromVoicePreflight() {
       openRoom({
         preventDefault() {},
         stopImmediatePropagation() {},
       });
+    },
+    setProgrammeMixLevel(level) {
+      return setProgrammeMixLevel(level);
     },
   };
   window.IAMStreamReady?.then(() => {
