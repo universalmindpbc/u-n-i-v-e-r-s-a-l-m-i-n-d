@@ -259,7 +259,8 @@ requireCondition(controller.includes('nowPlayingViewport.style.width = activeWid
 requireCondition(televisionCss.includes('.adaptive-television-now-playing.is-overflowing .adaptive-television-now-playing__item.is-active .adaptive-television-now-playing__content'), 'long Now Playing titles no longer receive overflow-only movement');
 requireCondition(televisionCss.includes('@media (prefers-reduced-motion: reduce)'), 'the Now Playing movement no longer respects reduced-motion preferences');
 requireCondition(nowPlayingCss.includes('width: min(520px, calc(100vw - 48px));'), 'the primary wallet no longer holds one ample fixed desktop width');
-requireCondition(nowPlayingCss.includes('padding: 4px 24px 16px;'), 'the primary wallet has lost its generous side and lower buffer');
+requireCondition(nowPlayingCss.includes('min-height: 106px;'), 'the primary wallet no longer holds the approved compact Sex-ed height');
+requireCondition(nowPlayingCss.includes('padding: 2px 24px 8px;'), 'the primary wallet no longer holds the approved compact side and lower buffer');
 requireCondition(nowPlayingCss.includes('background: rgba(12, 12, 14, 0.1);'), 'the primary wallet casing has not retained its original translucent opacity');
 requireCondition(nowPlayingCss.includes('backdrop-filter: none;'), 'the primary wallet casing has regained the rejected dark frosting');
 requireCondition(nowPlayingCss.includes('text-align: center;'), 'the Now Playing line is no longer centred');
