@@ -1,0 +1,61 @@
+{
+  "version": "universal_one_programme_sources_v1",
+  "reviewed": "2026-07-26",
+  "use_policy": {
+    "assistant_surface": "Universal One Realtime voice",
+    "storage": "Transcript-derived editorial briefing only; full third-party transcripts are not stored in the website repository.",
+    "response_rule": "Paraphrase and attribute by default. Do not reproduce long transcript passages.",
+    "health_rule": "Episode viewpoints are educational source material, not diagnosis, treatment, obstetric advice, trauma therapy, financial advice, or established medical fact."
+  },
+  "programme_sources": [
+    {
+      "id": "seeding-sessions",
+      "title": "Four Seeding Sessions programming",
+      "source_type": "first_party_schedule",
+      "path": "broadcast-schedule-v1.json",
+      "verified": true
+    },
+    {
+      "id": "james-bondage-health-ui",
+      "title": "James Bondage Health sex-ed collection",
+      "source_type": "first_party_interface",
+      "path": "index.html",
+      "verified": true
+    }
+  ],
+  "episode_sources": [
+    {
+      "episode": "01",
+      "title": "From Doula to Stripper: Reclaiming the Forbidden Feminine with Caitlin Erica",
+      "publisher": "Phenxx. Becoming Flame Podcast",
+      "url": "https://www.youtube.com/watch?v=5V03WROKX9o",
+      "transcript_source": "YouTube transcript panel",
+      "transcript_verified": true
+    },
+    {
+      "episode": "02",
+      "title": "The Truth About Tantra, Sacred Union & Embodied Wealth | Sofia Sundari",
+      "publisher": "Conscious CoCreators",
+      "url": "https://www.youtube.com/watch?v=Miwe9YD-tSQ",
+      "transcript_source": "YouTube transcript panel",
+      "transcript_verified": true
+    },
+    {
+      "episode": "03",
+      "title": "#75 Vylana Marcus - Femininity, Sex, and Intimacy",
+      "publisher": "Chatting with Candice",
+      "url": "https://www.chattingwithcandice.com/75-vylana-marcus-femininity-sex-and-intimacy/",
+      "transcript_source": "Publisher canonical full transcript",
+      "transcript_verified": true,
+      "youtube_note": "The publisher page links to YouTube, but the exact episode watch URL could not be independently resolved without the signed-out age confirmation screen."
+    },
+    {
+      "episode": "04",
+      "title": "The Psychology of BORING SEX with Shashi Solluna: Expanding The Window of Pleasure",
+      "publisher": "Boundless Body Podcast",
+      "url": "https://www.youtube.com/watch?v=o3Mo1bt3qmU",
+      "transcript_source": "YouTube transcript panel",
+      "transcript_verified": true
+    }
+  ]
+}

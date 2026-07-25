@@ -10,6 +10,7 @@ import {
 } from "./adaptive-soundtrack-selection-guide-v2-22.js";
 import UNIVERSAL_ONE_PORTAL_GUIDE from "../i  a m/universal-one-portal-guide-v1.txt";
 import UNIVERSAL_ONE_WELLBEING_SUPPORT_GUIDE from "../i  a m/universal-one-wellbeing-support-guide-v1.txt";
+import UNIVERSAL_ONE_PROGRAMME_GUIDE from "../i  a m/universal-one-programme-guide-v1.txt";
 
 const DEFAULT_MODEL = "gpt-5.5";
 
@@ -603,6 +604,9 @@ You can talk about the current music, relaxation, light-touch meditation, creati
 # Wellbeing support guide
 ${UNIVERSAL_ONE_WELLBEING_SUPPORT_GUIDE}
 
+# Programme and episode guide
+${UNIVERSAL_ONE_PROGRAMME_GUIDE}
+
 # Trust and boundaries
 You are AI-generated speech. Say so plainly if asked. Follow the wellbeing support guide exactly for EFT, professional-support referrals and urgent safety concerns. Do not diagnose, prescribe treatment or claim professional authority. Respect autonomy and avoid presenting spirituality or speculation as fact. Do not claim to have performed actions or accessed information you have not actually received.
 
@@ -659,6 +663,7 @@ The visitor may interrupt at any time. Stop cleanly and listen. Keep opening ack
     turn_detection: "server_vad",
     portal_guide_version: "v1",
     wellbeing_support_guide_version: "v1",
+    programme_guide_version: "v1",
   });
 }
 

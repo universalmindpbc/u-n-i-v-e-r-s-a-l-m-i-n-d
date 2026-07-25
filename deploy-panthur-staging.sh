@@ -21,18 +21,22 @@ fi
 "$NODE_BIN" --check "$ROOT_DIR/i  a m/mantra-studio.js"
 "$NODE_BIN" --check "$ROOT_DIR/i  a m/circle-audio-rooms.js"
 "$NODE_BIN" --check "$ROOT_DIR/cloudflare/agora-audio-room-worker.js"
+"$NODE_BIN" --check "$ROOT_DIR/i  a m/realtime-voice-assistant.js"
+"$NODE_BIN" --check "$ROOT_DIR/cloudflare/iam-citizen-needs-worker.js"
 "$NODE_BIN" --check "$ROOT_DIR/i  a m/globe.js"
 "$NODE_BIN" "$ROOT_DIR/tools/check-adaptive-music-handoff.mjs"
 "$NODE_BIN" "$ROOT_DIR/tools/check-broadcast-clock.mjs"
 "$NODE_BIN" "$ROOT_DIR/tools/check-broadcast-interactions.mjs"
 "$NODE_BIN" "$ROOT_DIR/tools/check-circle-rooms.mjs"
 "$NODE_BIN" "$ROOT_DIR/tools/check-public-crawler-surface.mjs"
+"$NODE_BIN" "$ROOT_DIR/tools/check-universal-one-programme-guide.mjs"
 
 if command -v php >/dev/null 2>&1; then
   php -l "$ROOT_DIR/i  a m/api/mantra-library.php"
   php -l "$ROOT_DIR/i  a m/api/mantra-voice.php"
   php -l "$ROOT_DIR/i  a m/api/broadcast-clock.php"
   php -l "$ROOT_DIR/i  a m/api/broadcast-interactions.php"
+  php -l "$ROOT_DIR/i  a m/api/realtime-client-secret.php"
 fi
 
 export FTP_HOST="${FTP_HOST:-sh00023.pa.smartservers.com.au}"

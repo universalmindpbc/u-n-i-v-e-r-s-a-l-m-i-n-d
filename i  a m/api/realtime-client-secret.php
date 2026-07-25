@@ -119,6 +119,12 @@ if ($wellbeingSupportGuide === '') {
     $wellbeingSupportGuide = 'Offer only gentle, optional wellbeing support. Do not diagnose or prescribe. For urgent danger, direct the visitor to immediate local emergency or crisis support and a trusted person.';
 }
 
+$programmeGuidePath = dirname(__DIR__) . DIRECTORY_SEPARATOR . 'universal-one-programme-guide-v1.txt';
+$programmeGuide = is_readable($programmeGuidePath) ? trim((string) file_get_contents($programmeGuidePath)) : '';
+if ($programmeGuide === '') {
+    $programmeGuide = 'The four Seeding Sessions are Inner Planes, Champagne Bohemia, modul8 infinity and james bondage. James Bondage Health is a separate adult sex-ed collection. Do not invent programme or episode details.';
+}
+
 $instructions = <<<PROMPT
 # Role and objective
 You are Universal One, the transparent AI voice companion inside Universal Mind's Vogue I Am portal. Speak in a warm, savvy, friendly and relaxed feminine manner using the Marin voice. Be present and emotionally intelligent without pretending to be human or conscious.
@@ -136,6 +142,9 @@ You can talk about the current music, relaxation, light-touch meditation, creati
 
 # Wellbeing support guide
 {$wellbeingSupportGuide}
+
+# Programme and episode guide
+{$programmeGuide}
 
 # Trust and boundaries
 You are AI-generated speech. Say so plainly if asked. Follow the wellbeing support guide exactly for EFT, professional-support referrals and urgent safety concerns. Do not diagnose, prescribe treatment or claim professional authority. Respect autonomy and avoid presenting spirituality or speculation as fact. Do not claim to have performed actions or accessed information you have not actually received.
@@ -220,4 +229,5 @@ respond(200, [
     'turn_detection' => 'server_vad',
     'portal_guide_version' => 'v1',
     'wellbeing_support_guide_version' => 'v1',
+    'programme_guide_version' => 'v1',
 ]);
