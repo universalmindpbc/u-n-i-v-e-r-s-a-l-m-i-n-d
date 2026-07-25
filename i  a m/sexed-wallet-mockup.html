@@ -1,0 +1,694 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noindex, nofollow">
+    <meta name="description" content="Sexed wallet placement study for James Bondage Health.">
+    <title>Sexed wallet study | I Am</title>
+    <link rel="icon" type="image/png" sizes="32x32" href="/vogue/iam/favicon.png?v=iam-favicon-4">
+    <link rel="apple-touch-icon" sizes="180x180" href="/vogue/iam/apple-touch-icon.png?v=iam-favicon-4">
+    <style>
+      :root {
+        color-scheme: dark;
+        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        width: 100%;
+        min-width: 320px;
+        min-height: 100%;
+        margin: 0;
+        background: #08080a;
+      }
+
+      body {
+        min-height: 100svh;
+        overflow: hidden;
+      }
+
+      button {
+        font: inherit;
+      }
+
+      .study-shell {
+        position: relative;
+        display: grid;
+        width: 100%;
+        min-height: 100svh;
+        place-items: center;
+        background:
+          linear-gradient(rgba(0, 0, 0, 0.24), rgba(0, 0, 0, 0.24)),
+          #08080a;
+      }
+
+      .study-toolbar {
+        position: fixed;
+        top: 18px;
+        left: 18px;
+        z-index: 20;
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        max-width: calc(100vw - 36px);
+        border: 1px solid rgba(255, 255, 255, 0.22);
+        border-radius: 999px;
+        background: rgba(7, 7, 9, 0.78);
+        color: #fff;
+        padding: 7px 9px 7px 15px;
+      }
+
+      .study-toolbar__title {
+        color: rgba(255, 255, 255, 0.72);
+        font-size: 9px;
+        font-weight: 500;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        white-space: nowrap;
+      }
+
+      .study-toolbar__group {
+        display: flex;
+        align-items: center;
+        gap: 3px;
+      }
+
+      .study-toolbar button {
+        min-height: 28px;
+        border: 1px solid transparent;
+        border-radius: 999px;
+        background: transparent;
+        color: rgba(255, 255, 255, 0.62);
+        cursor: pointer;
+        font-size: 9px;
+        font-weight: 500;
+        letter-spacing: 0.08em;
+        padding: 0 10px;
+        text-transform: uppercase;
+      }
+
+      .study-toolbar button:hover,
+      .study-toolbar button:focus-visible {
+        border-color: rgba(255, 255, 255, 0.32);
+        color: #fff;
+        outline: 0;
+      }
+
+      .study-toolbar button[aria-pressed="true"] {
+        border-color: rgba(255, 255, 255, 0.7);
+        background: #fff;
+        color: #0b0b0d;
+      }
+
+      .preview-stage {
+        position: relative;
+        width: 100vw;
+        height: 100svh;
+        overflow: hidden;
+        background:
+          linear-gradient(rgba(7, 7, 10, 0.04), rgba(7, 7, 10, 0.22)),
+          center / cover no-repeat url("a s s e t s/sexed-wallet-mockup-background.jpg");
+        transition:
+          width 420ms cubic-bezier(0.22, 0.72, 0.18, 1),
+          height 420ms cubic-bezier(0.22, 0.72, 0.18, 1),
+          border-radius 420ms cubic-bezier(0.22, 0.72, 0.18, 1);
+      }
+
+      .preview-stage::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        z-index: 1;
+        background: linear-gradient(180deg, rgba(0, 0, 0, 0.02) 45%, rgba(0, 0, 0, 0.32) 100%);
+        pointer-events: none;
+      }
+
+      .preview-stage.is-mobile {
+        width: min(390px, calc(100vw - 24px));
+        height: min(844px, calc(100svh - 24px));
+        border: 1px solid rgba(255, 255, 255, 0.22);
+        border-radius: 28px;
+        background-position: center;
+      }
+
+      .preview-stage__label {
+        position: absolute;
+        right: 24px;
+        bottom: 24px;
+        z-index: 4;
+        color: rgba(255, 255, 255, 0.56);
+        font-size: 8px;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+      }
+
+      .wallet {
+        position: absolute;
+        left: 50%;
+        bottom: clamp(54px, 8.5vh, 94px);
+        z-index: 5;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: min(520px, calc(100% - 48px));
+        min-height: 122px;
+        border: 1px solid rgba(255, 255, 255, 0.14);
+        border-radius: 42px;
+        background: rgba(12, 12, 14, 0.28);
+        color: #fff;
+        padding: 4px 24px 15px;
+        transform: translateX(-50%);
+        transition:
+          min-height 420ms cubic-bezier(0.22, 0.72, 0.18, 1),
+          width 420ms cubic-bezier(0.22, 0.72, 0.18, 1);
+      }
+
+      .wallet[data-placement="strip"] {
+        min-height: 166px;
+      }
+
+      .wallet-categories {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 14px;
+        width: 100%;
+      }
+
+      .wallet-category {
+        position: relative;
+        display: grid;
+        flex: 0 0 auto;
+        width: 62px;
+        height: 62px;
+        border: 0;
+        border-radius: 50%;
+        background: transparent;
+        color: #fff;
+        cursor: pointer;
+        padding: 0;
+        place-items: center;
+        transition: background 180ms ease, transform 180ms ease;
+      }
+
+      .wallet-category:hover,
+      .wallet-category:focus-visible {
+        background: rgba(255, 255, 255, 0.11);
+        outline: 0;
+        transform: translateY(-1px) scale(1.04);
+      }
+
+      .wallet-category::after {
+        content: attr(data-label);
+        position: absolute;
+        bottom: calc(100% + 7px);
+        left: 50%;
+        color: rgba(255, 255, 255, 0.94);
+        font-size: 13px;
+        font-weight: 300;
+        opacity: 0;
+        pointer-events: none;
+        text-shadow: 0 2px 10px rgba(0, 0, 0, 0.86);
+        transform: translate(-50%, 5px);
+        transition: opacity 180ms ease, transform 220ms ease;
+        white-space: nowrap;
+      }
+
+      .wallet-category:hover::after,
+      .wallet-category:focus-visible::after {
+        opacity: 1;
+        transform: translate(-50%, 0);
+      }
+
+      .flora-icon,
+      .rewards-icon {
+        position: relative;
+        display: grid;
+        width: 52px;
+        height: 52px;
+        background: center / contain no-repeat url("a s s e t s/Universal Mind [ I o H ] Logo.PNG");
+        filter:
+          drop-shadow(0 2px 0 rgba(0, 0, 0, 0.34))
+          saturate(1.58)
+          contrast(1.16);
+        place-items: center;
+      }
+
+      .wallet-overlay {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        z-index: 2;
+        width: 35px;
+        height: 35px;
+        fill: rgba(255, 255, 255, 0.98);
+        transform: translate(-50%, -50%);
+      }
+
+      .wallet-overlay--film {
+        width: 32px;
+        height: 32px;
+      }
+
+      .wallet-overlay--mic {
+        width: 39px;
+        height: 39px;
+        fill: none;
+        stroke: rgba(255, 255, 255, 0.98);
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        stroke-width: 2.8;
+      }
+
+      .wallet-overlay--care {
+        width: 35px;
+        height: 35px;
+        fill: none;
+        stroke: #54ae32;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        stroke-width: 2.7;
+      }
+
+      .wallet-overlay--care .heart {
+        fill: #54ae32;
+        stroke: none;
+      }
+
+      .rewards-icon img {
+        display: block;
+        width: 35px;
+        height: auto;
+      }
+
+      .wallet-category--sexed {
+        display: none;
+      }
+
+      .wallet[data-placement="circle"] .wallet-category--sexed {
+        display: grid;
+      }
+
+      .sexed-roundel {
+        position: relative;
+        display: grid;
+        width: 52px;
+        height: 52px;
+        border: 1px solid rgba(255, 255, 255, 0.34);
+        border-radius: 50%;
+        background:
+          linear-gradient(145deg, rgba(255, 255, 255, 0.16), transparent 52%),
+          rgba(22, 13, 16, 0.68);
+        place-items: center;
+      }
+
+      .sexed-roundel span {
+        font-family: Georgia, "Times New Roman", serif;
+        font-size: 10px;
+        letter-spacing: -0.025em;
+        line-height: 1;
+      }
+
+      .sexed-feature {
+        position: relative;
+        display: none;
+        grid-template-columns: minmax(74px, 0.7fr) minmax(170px, 2fr) auto;
+        align-items: center;
+        width: 100%;
+        min-height: 44px;
+        border: 0;
+        border-top: 1px solid rgba(255, 255, 255, 0.18);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.13);
+        background: rgba(255, 255, 255, 0.035);
+        color: #fff;
+        cursor: pointer;
+        padding: 0 13px;
+        text-align: left;
+      }
+
+      .wallet[data-placement="strip"] .sexed-feature {
+        display: grid;
+      }
+
+      .sexed-feature:hover,
+      .sexed-feature:focus-visible {
+        background: rgba(255, 255, 255, 0.1);
+        outline: 0;
+      }
+
+      .sexed-feature__name {
+        font-family: Georgia, "Times New Roman", serif;
+        font-size: 20px;
+        letter-spacing: -0.035em;
+        line-height: 1;
+      }
+
+      .sexed-feature__programme {
+        display: grid;
+        gap: 3px;
+        min-width: 0;
+        padding: 0 14px;
+      }
+
+      .sexed-feature__programme strong {
+        overflow: hidden;
+        font-size: 9px;
+        font-weight: 500;
+        letter-spacing: 0.12em;
+        text-overflow: ellipsis;
+        text-transform: uppercase;
+        white-space: nowrap;
+      }
+
+      .sexed-feature__programme small {
+        overflow: hidden;
+        color: rgba(255, 255, 255, 0.58);
+        font-size: 8px;
+        font-weight: 400;
+        letter-spacing: 0.08em;
+        text-overflow: ellipsis;
+        text-transform: uppercase;
+        white-space: nowrap;
+      }
+
+      .sexed-feature__play {
+        color: rgba(255, 255, 255, 0.82);
+        font-size: 9px;
+        letter-spacing: 0.11em;
+        text-transform: uppercase;
+        white-space: nowrap;
+      }
+
+      .now-playing {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        min-height: 30px;
+        border: 0;
+        background: transparent;
+        color: rgba(255, 255, 255, 0.96);
+        cursor: pointer;
+        font-size: 9.5px;
+        font-weight: 400;
+        letter-spacing: 0.07em;
+        overflow: hidden;
+        padding: 8px 12px 0;
+        text-align: center;
+        text-transform: uppercase;
+        white-space: nowrap;
+      }
+
+      .now-playing span {
+        margin: 0 7px;
+      }
+
+      .wallet[data-placement="circle"] .now-playing {
+        border-top: 1px solid rgba(255, 255, 255, 0.15);
+      }
+
+      .preview-stage.is-mobile .wallet {
+        bottom: 42px;
+        width: calc(100% - 28px);
+        padding-right: 14px;
+        padding-left: 14px;
+      }
+
+      .preview-stage.is-mobile .wallet[data-placement="strip"] .wallet-categories {
+        gap: 8px;
+      }
+
+      .preview-stage.is-mobile .wallet[data-placement="strip"] .wallet-category {
+        width: 57px;
+        height: 57px;
+      }
+
+      .preview-stage.is-mobile .wallet[data-placement="circle"] .wallet-categories {
+        gap: 5px;
+      }
+
+      .preview-stage.is-mobile .wallet[data-placement="circle"] .wallet-category {
+        width: 49px;
+        height: 57px;
+      }
+
+      .preview-stage.is-mobile .wallet[data-placement="circle"] .flora-icon,
+      .preview-stage.is-mobile .wallet[data-placement="circle"] .rewards-icon,
+      .preview-stage.is-mobile .wallet[data-placement="circle"] .sexed-roundel {
+        width: 45px;
+        height: 45px;
+      }
+
+      .preview-stage.is-mobile .wallet[data-placement="circle"] .wallet-overlay {
+        transform: translate(-50%, -50%) scale(0.82);
+      }
+
+      .preview-stage.is-mobile .sexed-feature {
+        grid-template-columns: 64px minmax(0, 1fr) auto;
+        padding-right: 8px;
+        padding-left: 8px;
+      }
+
+      .preview-stage.is-mobile .sexed-feature__name {
+        font-size: 18px;
+      }
+
+      .preview-stage.is-mobile .sexed-feature__programme {
+        padding-right: 8px;
+        padding-left: 8px;
+      }
+
+      .preview-stage.is-mobile .sexed-feature__programme strong {
+        font-size: 7.7px;
+      }
+
+      .preview-stage.is-mobile .sexed-feature__programme small {
+        display: none;
+      }
+
+      .preview-stage.is-mobile .now-playing {
+        font-size: 8px;
+        letter-spacing: 0.045em;
+        padding-right: 5px;
+        padding-left: 5px;
+      }
+
+      @media (max-width: 720px) {
+        .study-toolbar {
+          top: 10px;
+          left: 10px;
+          flex-wrap: wrap;
+          gap: 4px 8px;
+          max-width: calc(100vw - 20px);
+          border-radius: 18px;
+          padding: 6px 7px 6px 11px;
+        }
+
+        .study-toolbar__title {
+          width: 100%;
+        }
+
+        .study-toolbar button {
+          padding-right: 7px;
+          padding-left: 7px;
+        }
+
+        .preview-stage:not(.is-mobile) .wallet {
+          bottom: 36px;
+          width: calc(100% - 28px);
+          padding-right: 14px;
+          padding-left: 14px;
+        }
+
+        .preview-stage:not(.is-mobile) .wallet[data-placement="strip"] .wallet-categories {
+          gap: 8px;
+        }
+
+        .preview-stage:not(.is-mobile) .wallet[data-placement="strip"] .wallet-category {
+          width: 57px;
+          height: 57px;
+        }
+
+        .preview-stage:not(.is-mobile) .wallet[data-placement="circle"] .wallet-categories {
+          gap: 5px;
+        }
+
+        .preview-stage:not(.is-mobile) .wallet[data-placement="circle"] .wallet-category {
+          width: 49px;
+          height: 57px;
+        }
+
+        .preview-stage__label {
+          right: 15px;
+          bottom: 14px;
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        *,
+        *::before,
+        *::after {
+          scroll-behavior: auto !important;
+          transition-duration: 0.01ms !important;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="study-shell">
+      <nav class="study-toolbar" aria-label="Mock-up controls">
+        <span class="study-toolbar__title">Sexed wallet study</span>
+        <span class="study-toolbar__group" aria-label="Choose placement">
+          <button type="button" data-placement-control="strip" aria-pressed="true">Feature strip</button>
+          <button type="button" data-placement-control="circle" aria-pressed="false">Sixth circle</button>
+        </span>
+        <span class="study-toolbar__group" aria-label="Choose preview size">
+          <button type="button" data-viewport-control="desktop" aria-pressed="true">Desktop</button>
+          <button type="button" data-viewport-control="mobile" aria-pressed="false">Phone 390</button>
+        </span>
+      </nav>
+
+      <section class="preview-stage" data-preview-stage aria-label="James Bondage Health wallet mock-up">
+        <section class="wallet" data-wallet data-placement="strip" aria-label="Universal Mind wallet placement study">
+          <div class="wallet-categories">
+            <button class="wallet-category" type="button" data-label="bloom" aria-label="bloom">
+              <span class="flora-icon" aria-hidden="true">
+                <svg class="wallet-overlay" viewBox="0 0 32 32">
+                  <defs>
+                    <mask id="mockup-smile-cutout">
+                      <rect width="32" height="32" fill="black"></rect>
+                      <circle cx="16" cy="16" r="10" fill="white"></circle>
+                      <circle cx="12.5" cy="13.5" r="1.5" fill="black"></circle>
+                      <circle cx="19.5" cy="13.5" r="1.5" fill="black"></circle>
+                      <path d="M11.5 18.2c1.3 2.1 2.8 3.1 4.5 3.1s3.2-1 4.5-3.1" fill="none" stroke="black" stroke-width="2.2" stroke-linecap="round"></path>
+                    </mask>
+                  </defs>
+                  <rect width="32" height="32" fill="white" mask="url(#mockup-smile-cutout)"></rect>
+                </svg>
+              </span>
+            </button>
+
+            <button class="wallet-category" type="button" data-label="mix" aria-label="mix">
+              <span class="flora-icon" aria-hidden="true">
+                <svg class="wallet-overlay wallet-overlay--film" viewBox="0 0 32 32">
+                  <path fill-rule="evenodd" d="M4 6h24v20H4V6Zm4 5h16v10H8V11Zm-2-3h3v2H6V8Zm5 0h3v2h-3V8Zm5 0h3v2h-3V8Zm5 0h3v2h-3V8Zm5 0h1v2h-1V8ZM6 22h3v2H6v-2Zm5 0h3v2h-3v-2Zm5 0h3v2h-3v-2Zm5 0h3v2h-3v-2Zm5 0h1v2h-1v-2Z"></path>
+                </svg>
+              </span>
+            </button>
+
+            <button class="wallet-category" type="button" data-label="circle" aria-label="circle">
+              <span class="flora-icon" aria-hidden="true">
+                <svg class="wallet-overlay wallet-overlay--mic" viewBox="0 0 32 32">
+                  <rect x="11" y="4" width="10" height="17" rx="5"></rect>
+                  <path d="M7.5 15.5v1.6c0 4.7 3.8 8.4 8.5 8.4s8.5-3.7 8.5-8.4v-1.6"></path>
+                  <path d="M16 25.5V29"></path>
+                  <path d="M11.5 29h9"></path>
+                </svg>
+              </span>
+            </button>
+
+            <button class="wallet-category" type="button" data-label="care" aria-label="care">
+              <span class="flora-icon" aria-hidden="true">
+                <svg class="wallet-overlay wallet-overlay--care" viewBox="0 0 32 32">
+                  <path class="heart" d="M16 15.7 10.2 10.4C6.8 7.2 11.5 2.8 16 6.8c4.5-4 9.2.4 5.8 3.6L16 15.7Z"></path>
+                  <path d="M7.8 28.2 4.4 21.5 3.7 13.2c-.2-2.2 2.7-2.8 3.2-.6l1.5 6.1"></path>
+                  <path d="M7.8 28.2h5.1l2.1-5.1-5.1-5.7c-1.5-1.7-3.6.3-2.3 2l3.1 4"></path>
+                  <path d="M24.2 28.2 27.6 21.5l.7-8.3c.2-2.2-2.7-2.8-3.2-.6l-1.5 6.1"></path>
+                  <path d="M24.2 28.2h-5.1L17 23.1l5.1-5.7c1.5-1.7 3.6.3 2.3 2l-3.1 4"></path>
+                </svg>
+              </span>
+            </button>
+
+            <button class="wallet-category" type="button" data-label="collect" aria-label="collect">
+              <span class="rewards-icon" aria-hidden="true">
+                <img src="a s s e t s/wallet-rewards-card.png?v=rewards-card-2" alt="">
+              </span>
+            </button>
+
+            <button class="wallet-category wallet-category--sexed" type="button" data-label="sexed" aria-label="sexed — James Bondage Health">
+              <span class="sexed-roundel" aria-hidden="true"><span>sexed</span></span>
+            </button>
+          </div>
+
+          <button class="sexed-feature" type="button" aria-label="sexed — open James Bondage Health episode one">
+            <span class="sexed-feature__name">sexed</span>
+            <span class="sexed-feature__programme">
+              <strong>James Bondage Health · Episode 01</strong>
+              <small>Caitlin Erica · watch the conversation</small>
+            </span>
+            <span class="sexed-feature__play">watch →</span>
+          </button>
+
+          <button class="now-playing" type="button" aria-label="Open current Music recommendations">
+            <time datetime="14:19" data-now-playing-time>14:19</time>
+            <span aria-hidden="true">·</span>
+            <b>Now Playing</b>
+            <span aria-hidden="true">·</span>
+            James Bondage Party
+          </button>
+        </section>
+        <span class="preview-stage__label">Placement mock-up only · episode media pending</span>
+      </section>
+    </main>
+
+    <script>
+      (() => {
+        const stage = document.querySelector("[data-preview-stage]");
+        const wallet = document.querySelector("[data-wallet]");
+        const placementControls = Array.from(document.querySelectorAll("[data-placement-control]"));
+        const viewportControls = Array.from(document.querySelectorAll("[data-viewport-control]"));
+        const nowPlayingTime = document.querySelector("[data-now-playing-time]");
+        const params = new URLSearchParams(window.location.search);
+
+        function setPressed(controls, value, attribute) {
+          controls.forEach((control) => {
+            control.setAttribute("aria-pressed", String(control.getAttribute(attribute) === value));
+          });
+        }
+
+        function setPlacement(value, updateUrl = true) {
+          const placement = value === "circle" ? "circle" : "strip";
+          wallet.dataset.placement = placement;
+          setPressed(placementControls, placement, "data-placement-control");
+          if (!updateUrl) return;
+          params.set("placement", placement);
+          window.history.replaceState({}, "", `${window.location.pathname}?${params.toString()}`);
+        }
+
+        function setViewport(value, updateUrl = true) {
+          const viewport = value === "mobile" ? "mobile" : "desktop";
+          stage.classList.toggle("is-mobile", viewport === "mobile");
+          setPressed(viewportControls, viewport, "data-viewport-control");
+          if (!updateUrl) return;
+          params.set("view", viewport);
+          window.history.replaceState({}, "", `${window.location.pathname}?${params.toString()}`);
+        }
+
+        placementControls.forEach((control) => {
+          control.addEventListener("click", () => setPlacement(control.dataset.placementControl));
+        });
+
+        viewportControls.forEach((control) => {
+          control.addEventListener("click", () => setViewport(control.dataset.viewportControl));
+        });
+
+        const now = new Date();
+        nowPlayingTime.textContent = new Intl.DateTimeFormat("en-AU", {
+          hour: "2-digit",
+          minute: "2-digit",
+          hour12: false,
+        }).format(now);
+        nowPlayingTime.dateTime = now.toISOString();
+
+        setPlacement(params.get("placement"), false);
+        setViewport(params.get("view"), false);
+      })();
+    </script>
+  </body>
+</html>
