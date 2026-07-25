@@ -356,6 +356,33 @@ body.television-support-card-open .adaptive-television-support-card {
   z-index: 1;
 }
 
+.adaptive-television-radio-visual-video {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: #000;
+  object-fit: cover;
+  object-position: center center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 300ms cubic-bezier(0.22, 0.72, 0.18, 1);
+}
+
+body.television-radio-continuation .adaptive-television-radio-visual-video.is-radio-visual-active {
+  opacity: 1;
+}
+
+.adaptive-television-radio-visual-video[data-stream-reveal] {
+  opacity: 0;
+}
+
+body.television-radio-continuation .adaptive-television-radio-visual-video[data-stream-reveal="ready"].is-radio-visual-active {
+  opacity: 1;
+}
+
 .adaptive-television-fashion-video {
   position: absolute;
   inset: 0;
@@ -369,6 +396,10 @@ body.television-support-card-open .adaptive-television-support-card {
   opacity: 0;
   pointer-events: none;
   transition: opacity 300ms cubic-bezier(0.22, 0.72, 0.18, 1);
+}
+
+body.television-radio-continuation .adaptive-television-fashion-video {
+  z-index: 3;
 }
 
 .adaptive-television-fashion-video.is-fashion-active {

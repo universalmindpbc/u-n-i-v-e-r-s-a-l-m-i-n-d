@@ -195,6 +195,10 @@ assert.match(controller, /broadcastCorrection = "live_station_locked"/, "Shared 
 assert.match(controller, /musicContinuationDecision = "parties"/, "The personal opening video must converge into a recommended shared DJ Set channel.");
 assert.match(controller, /musicContinuationReason = "personal_opening_complete"/, "The shared DJ Set invitation must follow the personal opening video.");
 assert.match(controller, /radio_energy_match/, "Shared Radio must automatically pair with the matching Fashion energy channel.");
+assert.match(controller, /joinRadioVisualBroadcastChannel/, "Shared Radio must use an independent visual layer instead of replacing public Fashion.");
+assert.match(controller, /synchronizeRadioVisualBroadcastPlayback/, "The independent Radio visual must retain shared-clock synchronization.");
+assert.match(controller, /radioVisualVideo\.playbackRate = driftSeconds > 0 \? \.98 : 1\.02/, "The independent Radio visual must gently correct smaller drift.");
+assert.match(controller, /radioIsActiveProgramme \? "radio-visual" : "music"/, "The crossfader right endpoint must remain the Radio visual while Radio is playing.");
 assert.match(controller, /revealMinimumSeconds:\s*RADIO_FASHION_REVEAL_BUFFER_SECONDS/, "Shared Radio must begin its Fashion picture before the station safety buffer.");
 assert.match(controller, /audio_party_visual_pair/, "James Bondage audio-led parties must pair with the Fashion broadcast clock.");
 assert.match(controller, /startAudioLedParty/, "The Zip and Sammy D mixes must use the audio-led party player.");
@@ -221,4 +225,4 @@ assert.match(index, /broadcast-clock-v1\.js/);
 assert.match(endpoint, /microtime\(true\) \* 1000/);
 assert.match(endpoint, /Cache-Control: no-store/);
 
-console.log("Broadcast clock preflight passed: four live editorial channels across Videos, Parties and Radio; Max Richter and Ólafur Arnalds in Inner Planes Parties; Pearl privately clocked to Inner Planes Radio; public Fashion remains Chanel/Jacquemus, Annie’s/D&G and Mugler/Wolford; no solo replay path.");
+console.log("Broadcast clock preflight passed: four live editorial channels across Videos, Parties and Radio; Max Richter and Ólafur Arnalds in Inner Planes Parties; Pearl privately clocked to Inner Planes Radio; Radio visuals remain independent crossfader endpoints beneath public Fashion; no solo replay path.");

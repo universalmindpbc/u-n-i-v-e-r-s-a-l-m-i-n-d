@@ -239,6 +239,10 @@
   let fashionBroadcastChannelId = "";
   let fashionBroadcastSyncTimer = 0;
   let fashionBroadcastPairingSource = "";
+  let radioVisualBroadcastChannelId = "";
+  let radioVisualBroadcastSyncTimer = 0;
+  let radioVisualVideo = null;
+  let radioVisualRunwayIndex = -1;
   let pendingBroadcastChannelId = "";
   let pendingBroadcastFormat = "videos";
   let broadcastEntryOpen = false;
@@ -886,6 +890,15 @@
     return video;
   }
 
+  function createRadioVisualVideo(runwayIndex) {
+    const runway = fashionRunways[runwayIndex];
+    if (!runway) return null;
+    const video = createFashionVideo(runwayIndex);
+    video.className = "adaptive-television-radio-visual-video";
+    video.dataset.radioVisualRunwayId = runway.assetKey;
+    return video;
+  }
+
   function stopFashionHeroMirror() {
     fashionHeroGeneration += 1;
     if (fashionHeroFallbackTimer) {
@@ -1061,6 +1074,9 @@
 
     localVideoFrame.append(localVideo);
     playerMount.append(localVideoFrame);
+    radioFashionPreloadPool.forEach((entry) => {
+      if (entry.video) playerMount.append(entry.video);
+    });
     playerMount.append(fashionVideo);
     playerMount.append(fashionHeroFrame);
     playerMount.append(timecode);
@@ -1090,13 +1106,14 @@
 
   function preloadRadioFashionRunway(runwayIndex) {
     const runway = fashionRunways[runwayIndex];
-    if (!runway || runwayIndex === fashionRunwayIndex) return Promise.resolve(fashionVideo);
+    if (!runway) return Promise.resolve(null);
     const existing = radioFashionPreloadPool.get(runway.assetKey);
     if (existing) return existing.promise;
 
-    const video = createFashionVideo(runwayIndex);
+    const video = createRadioVisualVideo(runwayIndex);
+    if (!video) return Promise.resolve(null);
     video.dataset.radioFashionPreload = "loading";
-    playerMount.insertBefore(video, timecode || null);
+    playerMount.insertBefore(video, fashionVideo || timecode || null);
     const entry = { video, runwayIndex, promise: null };
     entry.promise = attachAdaptiveStream(video, runway.videoSrc, "fashion", {
       preload: true,
@@ -1134,7 +1151,7 @@
         );
         const runwayIndexes = Array.from(runwayIds)
           .map((runwayId) => fashionRunways.findIndex((runway) => runway.assetKey === runwayId))
-          .filter((index) => index >= 0 && index !== fashionRunwayIndex);
+          .filter((index) => index >= 0);
         updateRadioFashionPreloadDiagnostics(runwayIndexes.length);
         runwayIndexes.forEach((runwayIndex, position) => {
           window.setTimeout(() => preloadRadioFashionRunway(runwayIndex), position * 180);
@@ -1692,20 +1709,24 @@
       : "playing";
     const modeLabel = media.mode === "parties" ? "PARTY" : media.mode === "radio" ? "RADIO" : "VIDEO";
     const activeRunway = fashionRunways[fashionRunwayIndex];
+    const radioRunway = fashionRunways[radioVisualRunwayIndex];
+    const radioActive = Boolean(activeRadioStationId && document.body.classList.contains("television-radio-continuation"));
     const fashionVisible = Boolean(activeRunway && requestedVideoBlend < 99.5);
+    const radioVisualVisible = Boolean(radioActive && radioRunway && requestedVideoBlend >= 99.5);
+    const visibleRunway = fashionVisible ? activeRunway : radioVisualVisible ? radioRunway : null;
 
     if (nowPlayingStatus) nowPlayingStatus.textContent = "NOW PLAYING";
     if (nowPlayingTitle) nowPlayingTitle.textContent = media.label;
-    if (nowPlayingVisual) nowPlayingVisual.hidden = !fashionVisible;
-    if (nowPlayingVisualTitle) nowPlayingVisualTitle.textContent = fashionVisible ? activeRunway.title : "";
+    if (nowPlayingVisual) nowPlayingVisual.hidden = !visibleRunway;
+    if (nowPlayingVisualTitle) nowPlayingVisualTitle.textContent = visibleRunway?.title || "";
     nowPlaying.dataset.nowPlayingState = state;
     nowPlaying.dataset.nowPlayingMode = media.mode;
     nowPlaying.setAttribute(
       "aria-label",
-      `Open ${modeLabel.toLowerCase()} recommendations. Now playing: ${media.label}${fashionVisible ? `. Visual: ${activeRunway.title}` : ""}`
+      `Open ${modeLabel.toLowerCase()} recommendations. Now playing: ${media.label}${visibleRunway ? `. Visual: ${visibleRunway.title}` : ""}`
     );
     updateNowPlayingClock();
-    restartNowPlayingTicker(fashionVisible);
+    restartNowPlayingTicker(Boolean(visibleRunway));
   }
 
   function openNowPlayingRecommendations(event) {
@@ -2137,12 +2158,7 @@
 
     fashionRunwayIndex = nextIndex;
     fashionSelectionSource = source;
-    const nextRunway = fashionRunways[fashionRunwayIndex];
-    const preloadedEntry = radioFashionPreloadPool.get(nextRunway.assetKey);
-    if (preloadedEntry) radioFashionPreloadPool.delete(nextRunway.assetKey);
-    fashionVideo = preloadedEntry?.video || createFashionVideo(fashionRunwayIndex);
-    delete fashionVideo.dataset.radioFashionPreload;
-    delete fashionVideo.dataset.radioFashionPreloadError;
+    fashionVideo = createFashionVideo(fashionRunwayIndex);
     playerMount.insertBefore(fashionVideo, timecode || null);
     if (document.body.classList.contains("television-emdr-gif-active")) startFashionHeroMirror();
     updateFashionRunwayToggle();
@@ -3651,6 +3667,151 @@
     delete document.body.dataset.fashionBroadcastCorrection;
   }
 
+  async function setRadioVisualRunway(index, options = {}) {
+    const nextIndex = ((index % fashionRunways.length) + fashionRunways.length) % fashionRunways.length;
+    const nextRunway = fashionRunways[nextIndex];
+    if (!nextRunway) return false;
+    const nextVideo = await preloadRadioFashionRunway(nextIndex);
+    if (!nextVideo) return false;
+    if (nextVideo.parentElement !== playerMount) {
+      playerMount.insertBefore(nextVideo, fashionVideo || timecode || null);
+    }
+
+    if (radioVisualVideo && radioVisualVideo !== nextVideo) {
+      radioVisualVideo.classList.remove("is-radio-visual-active");
+      window.IAMStreamController?.setFashionActive(radioVisualVideo, false, "radio_visual_switch");
+      try { radioVisualVideo.pause(); } catch {}
+      if (Math.abs(Number(radioVisualVideo.playbackRate || 1) - 1) > .001) radioVisualVideo.playbackRate = 1;
+    }
+
+    radioVisualVideo = nextVideo;
+    radioVisualRunwayIndex = nextIndex;
+    await ensureFashionStreamAttached(radioVisualVideo);
+    const readiness = await window.IAMStreamController?.prepareFashionReveal(radioVisualVideo, {
+      minimumSeconds: Number.isFinite(Number(options.revealMinimumSeconds))
+        ? Math.max(4, Number(options.revealMinimumSeconds))
+        : RADIO_FASHION_REVEAL_BUFFER_SECONDS,
+      firstFallbackMs: 1250,
+      secondFallbackMs: 2000,
+    });
+    if (readiness?.cancelled) return false;
+    await playWhenStreamAttached(radioVisualVideo, "fashion").catch(() => {});
+    radioVisualVideo.classList.add("is-radio-visual-active");
+    playerMount.dataset.radioVisualRunwayId = nextRunway.assetKey;
+    document.body.dataset.radioVisualRunwayId = nextRunway.assetKey;
+    window.IAMStreamController?.noteFashionReveal(radioVisualVideo);
+    return true;
+  }
+
+  async function synchronizeRadioVisualBroadcastPlayback(forceSeek = false) {
+    if (!radioVisualBroadcastChannelId || !window.IAMBroadcastClock) return null;
+    const state = window.IAMBroadcastClock.stateAt(radioVisualBroadcastChannelId);
+    const scheduledRunway = fashionRunwayForId(state?.runwayId);
+    const scheduledIndex = fashionRunways.indexOf(scheduledRunway);
+    if (!state || !scheduledRunway || scheduledIndex < 0) return null;
+    document.body.dataset.radioVisualBroadcastChannelId = radioVisualBroadcastChannelId;
+    document.body.dataset.radioVisualBroadcastRunwayId = state.runwayId;
+    document.body.dataset.radioVisualBroadcastBlockRemainingSeconds = state.remainingSeconds.toFixed(3);
+    if (radioVisualRunwayIndex !== scheduledIndex || !radioVisualVideo) {
+      document.body.dataset.radioVisualBroadcastCorrection = "programme_rollover";
+      const activated = await setRadioVisualRunway(scheduledIndex);
+      if (!activated) return state;
+      forceSeek = true;
+    }
+
+    await ensureFashionStreamAttached(radioVisualVideo);
+    if (radioVisualVideo.paused) await playWhenStreamAttached(radioVisualVideo, "fashion").catch(() => {});
+    const duration = Number(radioVisualVideo.duration || 0);
+    if (!Number.isFinite(duration) || duration <= 0) {
+      if (forceSeek) seekFashionBroadcastVideo(radioVisualVideo, state.offsetSeconds);
+      return state;
+    }
+    const targetSeconds = ((state.offsetSeconds % duration) + duration) % duration;
+    let driftSeconds = Number(radioVisualVideo.currentTime || 0) - targetSeconds;
+    if (Math.abs(driftSeconds) > duration / 2) driftSeconds += driftSeconds > 0 ? -duration : duration;
+    document.body.dataset.radioVisualBroadcastTargetSeconds = targetSeconds.toFixed(3);
+    document.body.dataset.radioVisualBroadcastDriftSeconds = driftSeconds.toFixed(3);
+    if (forceSeek || Math.abs(driftSeconds) > 1.25) {
+      seekFashionBroadcastVideo(radioVisualVideo, state.offsetSeconds);
+      radioVisualVideo.playbackRate = 1;
+      document.body.dataset.radioVisualBroadcastCorrection = forceSeek ? "entry_seek" : "hard_seek";
+    } else if (Math.abs(driftSeconds) > .35) {
+      radioVisualVideo.playbackRate = driftSeconds > 0 ? .98 : 1.02;
+      document.body.dataset.radioVisualBroadcastCorrection = driftSeconds > 0 ? "soft_slow" : "soft_catchup";
+    } else {
+      radioVisualVideo.playbackRate = 1;
+      document.body.dataset.radioVisualBroadcastCorrection = "locked";
+    }
+    return state;
+  }
+
+  function startRadioVisualBroadcastSynchronization() {
+    if (radioVisualBroadcastSyncTimer) window.clearInterval(radioVisualBroadcastSyncTimer);
+    radioVisualBroadcastSyncTimer = window.setInterval(() => {
+      synchronizeRadioVisualBroadcastPlayback(false).catch((error) => {
+        document.body.dataset.radioVisualBroadcastSyncError = String(error?.message || error).slice(0, 140);
+      });
+    }, 3000);
+  }
+
+  function stopRadioVisualBroadcastPlayback(reason = "radio_visual_stopped") {
+    if (radioVisualBroadcastSyncTimer) {
+      window.clearInterval(radioVisualBroadcastSyncTimer);
+      radioVisualBroadcastSyncTimer = 0;
+    }
+    if (radioVisualVideo) {
+      radioVisualVideo.classList.remove("is-radio-visual-active");
+      window.IAMStreamController?.setFashionActive(radioVisualVideo, false, reason);
+      try { radioVisualVideo.pause(); } catch {}
+      if (Math.abs(Number(radioVisualVideo.playbackRate || 1) - 1) > .001) radioVisualVideo.playbackRate = 1;
+    }
+    radioVisualBroadcastChannelId = "";
+    radioVisualRunwayIndex = -1;
+    radioVisualVideo = null;
+    delete playerMount.dataset.radioVisualRunwayId;
+    document.body.dataset.radioVisualBroadcastMode = "stopped";
+    document.body.dataset.radioVisualBroadcastExitReason = reason;
+    delete document.body.dataset.radioVisualBroadcastChannelId;
+    delete document.body.dataset.radioVisualBroadcastRunwayId;
+    delete document.body.dataset.radioVisualBroadcastBlockRemainingSeconds;
+    delete document.body.dataset.radioVisualBroadcastTargetSeconds;
+    delete document.body.dataset.radioVisualBroadcastDriftSeconds;
+    delete document.body.dataset.radioVisualBroadcastCorrection;
+    delete document.body.dataset.radioVisualRunwayId;
+  }
+
+  async function joinRadioVisualBroadcastChannel(channelId, options = {}) {
+    try {
+      await window.IAMBroadcastClock?.ready;
+    } catch {
+      showMusicShelfStatus("The shared Radio visual clock is temporarily unavailable.", 3600);
+      return false;
+    }
+    const state = window.IAMBroadcastClock?.stateAt(channelId);
+    const scheduledRunway = fashionRunwayForId(state?.runwayId);
+    const scheduledIndex = fashionRunways.indexOf(scheduledRunway);
+    if (!state || state.mediaType !== "fashion" || !scheduledRunway || scheduledIndex < 0) return false;
+    radioVisualBroadcastChannelId = channelId;
+    document.body.dataset.radioVisualBroadcastMode = "shared";
+    const activated = await setRadioVisualRunway(scheduledIndex, {
+      revealMinimumSeconds: options.revealMinimumSeconds,
+    });
+    if (!activated) {
+      stopRadioVisualBroadcastPlayback("radio_visual_unavailable");
+      return false;
+    }
+    setVideoBlend(100);
+    startRadioVisualBroadcastSynchronization();
+    await synchronizeRadioVisualBroadcastPlayback(true);
+    window.IAMFirstPartyAnalytics?.record?.("radio_visual_broadcast_join", {
+      channel_id: channelId,
+      runway_id: state.runwayId,
+      block_offset_seconds: state.offsetSeconds,
+      pairing_source: options.pairingSource || options.source || "radio_visual",
+    });
+    return true;
+  }
+
   async function joinFashionBroadcastChannel(channelId, options = {}) {
     try {
       await window.IAMBroadcastClock?.ready;
@@ -3820,11 +3981,15 @@
       // Put the silent runway on screen before the radio transport performs its
       // larger safety-buffer fill. A slow station must never hold the picture
       // behind a 12–30 second audio startup.
-      await joinFashionBroadcastChannel(state.visualChannelId || fashionChannelIdForEnergy(state.energyId), {
+      const radioVisualReady = await joinRadioVisualBroadcastChannel(state.visualChannelId || fashionChannelIdForEnergy(state.energyId), {
         source: "radio_energy_match",
         pairingSource: `radio_${state.editorialId || state.energyId}`,
         revealMinimumSeconds: RADIO_FASHION_REVEAL_BUFFER_SECONDS,
       });
+      if (!radioVisualReady) {
+        showMusicShelfStatus("The shared Radio visual is temporarily unavailable.", 3600);
+        return false;
+      }
       await startRadioStation(scheduledStation, {
         source: options.source || "broadcast_join",
         broadcastChannelId: channelId,
@@ -3840,6 +4005,7 @@
         pairingSource: `party_${state.editorialId || state.energyId}`,
       });
     } else {
+      stopRadioVisualBroadcastPlayback("video_broadcast_start");
       await switchMusicTrack(scheduledTrack, {
         source: options.source || "broadcast_join",
         broadcastChannelId: channelId,
@@ -3868,6 +4034,7 @@
       stopBroadcastPlayback(options.source || "track_switch");
     }
     stopContinuationAudioImmediately();
+    stopRadioVisualBroadcastPlayback("track_switch");
     document.body.classList.remove("television-radio-continuation", "television-audio-party");
     document.body.dataset.audioPartyPlaybackState = "stopped";
     activeRadioStationId = "";
@@ -3945,6 +4112,7 @@
         try { localVideo.pause(); } catch {}
         localVideo.muted = true;
       }
+      stopRadioVisualBroadcastPlayback("audio_party_start");
       activeRadioStationId = "";
       delete document.body.dataset.radioStationId;
       delete document.body.dataset.radioStationProvider;
@@ -4032,9 +4200,10 @@
     document.body.classList.remove("television-audio-party");
     document.body.dataset.audioPartyPlaybackState = "stopped";
     playerMount.classList.remove("is-local-video-awaiting-gesture");
-    await setVideoBlend(0);
-    await ensureFashionStreamAttached();
-    if (fashionVideo?.paused) await playWhenStreamAttached(fashionVideo, "fashion").catch(() => {});
+    await setVideoBlend(100);
+    if (radioVisualBroadcastChannelId) {
+      await synchronizeRadioVisualBroadcastPlayback(true);
+    }
     activeRadioStationId = station.id;
     musicChannelMode = "radio";
     continuationDecision = { ...station, label: station.display_title, src: station.stream_url };
@@ -4167,6 +4336,14 @@
           driftSeconds: Number(document.body.dataset.fashionBroadcastDriftSeconds || 0),
           correction: document.body.dataset.fashionBroadcastCorrection || "",
         },
+        radioVisualBroadcast: {
+          mode: radioVisualBroadcastChannelId ? "shared" : "stopped",
+          channelId: radioVisualBroadcastChannelId,
+          runwayId: document.body.dataset.radioVisualBroadcastRunwayId || "",
+          targetSeconds: Number(document.body.dataset.radioVisualBroadcastTargetSeconds || 0),
+          driftSeconds: Number(document.body.dataset.radioVisualBroadcastDriftSeconds || 0),
+          correction: document.body.dataset.radioVisualBroadcastCorrection || "",
+        },
         radioPlayback: {
           state: document.body.dataset.radioPlaybackState || "stopped",
           transport: document.body.dataset.radioStreamTransport || "",
@@ -4202,6 +4379,9 @@
     synchronizeFashionBroadcast(forceSeek = true) {
       return synchronizeFashionBroadcastPlayback(forceSeek);
     },
+    synchronizeRadioVisualBroadcast(forceSeek = true) {
+      return synchronizeRadioVisualBroadcastPlayback(forceSeek);
+    },
     continueProgramme: continueAdaptiveMusicProgramme,
     rank: rankMusicShelves,
   };
@@ -4209,8 +4389,16 @@
   function applyVideoBlend(value) {
     const musicAmount = Math.max(0, Math.min(100, Number(value) || 0));
     const fashionOpacity = 1 - (musicAmount / 100);
+    const radioIsActiveProgramme = document.body.classList.contains("television-radio-continuation");
     playerMount.style.setProperty("--fashion-video-opacity", fashionOpacity.toFixed(3));
-    playerMount.dataset.videoBlend = musicAmount <= 0 ? "fashion" : musicAmount >= 100 ? "music" : "mixed";
+    playerMount.dataset.videoBlend = musicAmount <= 0
+      ? "fashion"
+      : musicAmount >= 100
+        ? radioIsActiveProgramme ? "radio-visual" : "music"
+        : "mixed";
+    document.body.dataset.radioVisualMixState = radioIsActiveProgramme
+      ? musicAmount <= 0 ? "fashion" : musicAmount >= 100 ? "radio-visual" : "mixed"
+      : "inactive";
     if (videoCrossfader) videoCrossfader.value = String(musicAmount);
     updateNowPlaying();
   }
@@ -4245,6 +4433,10 @@
       window.clearTimeout(fashionDwellTimer);
       fashionRevealGeneration += 1;
       applyVideoBlend(100);
+      if (document.body.classList.contains("television-radio-continuation") && radioVisualVideo) {
+        radioVisualVideo.classList.add("is-radio-visual-active");
+        playWhenStreamAttached(radioVisualVideo, "fashion").catch(() => {});
+      }
       if (fashionVideo) {
         window.IAMStreamController?.setFashionActive(fashionVideo, false, "music_selected");
         ensureFashionStreamAttached(fashionVideo)
@@ -5120,9 +5312,15 @@
     window.__iamAdaptiveEnvironment?.stopRadio?.();
     stopBroadcastPlayback("television_closed");
     stopFashionBroadcastPlayback("television_closed");
+    stopRadioVisualBroadcastPlayback("television_closed");
     stopBroadcastProgrammeTicker();
 
-    [localVideo, fashionVideo].forEach((video) => {
+    const televisionVideos = new Set([
+      localVideo,
+      fashionVideo,
+      ...Array.from(radioFashionPreloadPool.values()).map((entry) => entry.video),
+    ]);
+    televisionVideos.forEach((video) => {
       if (!video) return;
       try {
         video.pause();
@@ -5896,6 +6094,10 @@
       }
       setVideoBlend(100);
       if (endpoint === "music") {
+        if (document.body.classList.contains("television-radio-continuation") && radioVisualBroadcastChannelId) {
+          setWalletView("video-mix");
+          return;
+        }
         setWalletView("music");
         updateMusicSelector();
       }

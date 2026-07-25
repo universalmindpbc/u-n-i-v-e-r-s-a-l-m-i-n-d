@@ -271,6 +271,13 @@ requireCondition(controller.includes('preloadTargetSeconds: 12'), 'fashion no lo
 requireCondition(controller.includes('const FASHION_REVEAL_BUFFER_SECONDS = 8;'), 'fashion reveal no longer requires an eight-second buffer floor');
 requireCondition(controller.includes('const RADIO_FASHION_REVEAL_BUFFER_SECONDS = 4;') && controller.includes('revealMinimumSeconds: RADIO_FASHION_REVEAL_BUFFER_SECONDS'), 'Radio no longer receives its faster Fashion-first visual handoff');
 requireCondition(controller.includes('const radioFashionPreloadPool = new Map();') && controller.includes('preloadRadioFashionRunways'), 'Radio Fashion channels are no longer warmed before selection');
+requireCondition(controller.includes('let radioVisualVideo = null;') && controller.includes('function createRadioVisualVideo(runwayIndex)'), 'Radio no longer owns an independent visual layer beneath public Fashion');
+requireCondition(controller.includes('async function joinRadioVisualBroadcastChannel(channelId, options = {})') && controller.includes('await joinRadioVisualBroadcastChannel(state.visualChannelId'), 'Radio can once again replace the public Fashion broadcast layer');
+requireCondition(controller.includes('async function synchronizeRadioVisualBroadcastPlayback(forceSeek = false)') && controller.includes('radioVisualVideo.playbackRate = driftSeconds > 0 ? .98 : 1.02;'), 'the Radio visual no longer keeps its own shared-clock correction');
+requireCondition(controller.includes('const radioVisualVisible = Boolean(radioActive && radioRunway && requestedVideoBlend >= 99.5);'), 'Now Playing can still report the paused opening music video at the Radio endpoint');
+requireCondition(controller.includes('radioIsActiveProgramme ? "radio-visual" : "music"'), 'the crossfader right endpoint can still resolve to the opening music video during Radio');
+requireCondition(!controller.includes('const preloadedEntry = radioFashionPreloadPool.get(nextRunway.assetKey);'), 'public Fashion can still steal a preloaded Radio visual element');
+requireCondition(televisionCss.includes('.adaptive-television-radio-visual-video') && televisionCss.includes('body.television-radio-continuation .adaptive-television-fashion-video {\n  z-index: 3;'), 'Radio and public Fashion no longer retain independent stacked visual layers');
 requireCondition(televisionCss.includes('padding-top: 5px;'), 'the recommended-channel label can be clipped by the shelf rollover');
 requireCondition(controller.includes('firstFallbackMs: 1250'), 'fashion reveal no longer falls to 480p after 1.25 seconds');
 requireCondition(controller.includes('secondFallbackMs: 2000'), 'fashion reveal no longer falls progressively to 360p');
