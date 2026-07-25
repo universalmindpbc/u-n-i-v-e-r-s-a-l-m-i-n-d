@@ -26,6 +26,11 @@ a {
   font: inherit;
 }
 
+html[data-adaptive-frame="embedded"] .sex-ed-home,
+html[data-music-television-frame="embedded"] .sex-ed-home {
+  display: none;
+}
+
 .sex-ed-stage {
   position: relative;
   display: grid;

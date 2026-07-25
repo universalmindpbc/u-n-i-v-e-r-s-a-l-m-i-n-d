@@ -143,6 +143,20 @@
   const nowPlayingVisual = document.querySelector("[data-now-playing-visual]");
   const nowPlayingVisualTitle = document.querySelector("[data-now-playing-visual-title]");
   const sexEdLink = document.querySelector("[data-sex-ed-link]");
+  const sexEdShelf = document.querySelector("[data-sex-ed-shelf]");
+  const sexEdShelfTrack = document.querySelector("[data-sex-ed-shelf-track]");
+  const sexEdShelfViewport = document.querySelector("[data-sex-ed-shelf-viewport]");
+  const sexEdShelfPrevious = document.querySelector("[data-sex-ed-shelf-previous]");
+  const sexEdShelfNext = document.querySelector("[data-sex-ed-shelf-next]");
+  const sexEdShelfCounter = document.querySelector("[data-sex-ed-shelf-counter]");
+  const sexEdShelfProgress = document.querySelector("[data-sex-ed-shelf-progress]");
+  const sexEdShelfCloseButtons = Array.from(document.querySelectorAll("[data-sex-ed-shelf-close]"));
+  const sexEdCards = Array.from(document.querySelectorAll("[data-sex-ed-card]"));
+  const sexEdWorld = document.querySelector("[data-sex-ed-world]");
+  const sexEdBackground = document.querySelector("[data-sex-ed-background]");
+  const sexEdEpisodeVideo = document.querySelector("[data-sex-ed-shell-video]");
+  const sexEdEpisodeStart = document.querySelector("[data-sex-ed-shell-start]");
+  const sexEdLoopVideos = Array.from(document.querySelectorAll(".adaptive-television-sex-ed-grid video"));
   const videoModeButtons = Array.from(document.querySelectorAll("[data-video-mode]"));
   const videoMixControls = document.querySelector("[data-video-mix-controls]");
   const videoCrossfader = document.querySelector("[data-video-crossfader]");
@@ -231,6 +245,14 @@
   let musicShelfSwipeStartX = null;
   let musicShelfPreviewVideo = null;
   let musicShelfPreviewCard = null;
+  let sexEdShelfOpen = false;
+  let sexEdShelfOffset = 0;
+  let sexEdShelfSwipeStartX = null;
+  let sexEdShelfPreviewVideo = null;
+  let sexEdShelfPreviewCard = null;
+  let sexEdActiveEpisode = "01";
+  let sexEdStartTime = 139;
+  let sexEdNeedsInitialSeek = true;
   let musicCatalogueRecords = [];
   let radioStationRecords = DEFAULT_RADIO_STATIONS.map((station) => ({ ...station }));
   let musicShelfOrders = { videos: [], parties: [], radio: radioStationRecords.slice(), fashion: [] };
@@ -1605,6 +1627,7 @@
     if (!reactionWallet) return;
     if (nextView !== "video-mix" && fashionShelfOpen) closeFashionShelf(false);
     if (nextView !== "music" && musicShelfOpen) closeMusicShelf(false);
+    if (sexEdShelfOpen) closeSexEdShelf(false);
     if (nextView !== walletView) closeAllResearchRollovers();
     walletView = nextView;
     reactionWallet.dataset.walletView = nextView;
@@ -2065,6 +2088,7 @@
   function openFashionShelf() {
     if (!fashionShelf || fashionShelfOpen) return;
     if (musicShelfOpen) closeMusicShelf(false);
+    if (sexEdShelfOpen) closeSexEdShelf(false);
     fashionShelfOpen = true;
     fashionShelfOffset = 0;
     fashionShelf.setAttribute("aria-hidden", "false");
@@ -2691,6 +2715,7 @@
   function openMusicShelf() {
     if (!musicShelf || musicShelfOpen) return;
     if (fashionShelfOpen) closeFashionShelf(false);
+    if (sexEdShelfOpen) closeSexEdShelf(false);
     musicShelfOpen = true;
     musicShelfOffset = 0;
     musicShelf.setAttribute("aria-hidden", "false");
@@ -4978,6 +5003,253 @@
     return programmeFixedMixLevel;
   }
 
+  function sexEdCardsPerView() {
+    if (window.matchMedia("(max-width: 720px)").matches) return 1;
+    if (window.matchMedia("(max-width: 1100px)").matches) return 2;
+    return 4;
+  }
+
+  function updateSexEdShelfPosition({ preview = true } = {}) {
+    if (!sexEdShelfTrack) return;
+    const items = Array.from(sexEdShelfTrack.children);
+    const cardsPerView = sexEdCardsPerView();
+    const maximumOffset = Math.max(0, items.length - cardsPerView);
+    sexEdShelfOffset = Math.max(0, Math.min(maximumOffset, sexEdShelfOffset));
+    sexEdShelfTrack.style.setProperty(
+      "transform",
+      `translate3d(-${items[sexEdShelfOffset]?.offsetLeft || 0}px, 0, 0)`,
+      "important"
+    );
+    const start = items.length ? sexEdShelfOffset + 1 : 0;
+    const end = Math.min(items.length, sexEdShelfOffset + cardsPerView);
+    if (sexEdShelfCounter) {
+      sexEdShelfCounter.textContent = start === end ? `${start} / ${items.length}` : `${start}–${end} / ${items.length}`;
+    }
+    if (sexEdShelfProgress) {
+      sexEdShelfProgress.style.width = `${items.length ? (end / items.length) * 100 : 0}%`;
+    }
+    sexEdShelfPrevious?.toggleAttribute("disabled", sexEdShelfOffset === 0);
+    sexEdShelfNext?.toggleAttribute("disabled", sexEdShelfOffset >= maximumOffset);
+    if (sexEdShelfOpen && preview) {
+      window.setTimeout(() => startSexEdShelfPreview(items[sexEdShelfOffset]?.querySelector("[data-sex-ed-card]")), 160);
+    }
+  }
+
+  function moveSexEdShelf(direction) {
+    sexEdShelfOffset += direction * sexEdCardsPerView();
+    stopSexEdShelfPreview();
+    updateSexEdShelfPosition();
+  }
+
+  function stopSexEdShelfPreview() {
+    if (!sexEdShelfPreviewVideo) return;
+    try { sexEdShelfPreviewVideo.pause(); } catch {}
+    window.IAMStreamController?.detach?.(sexEdShelfPreviewVideo);
+    sexEdShelfPreviewVideo.remove();
+    sexEdShelfPreviewCard?.classList.remove("is-previewing");
+    sexEdShelfPreviewVideo = null;
+    sexEdShelfPreviewCard = null;
+  }
+
+  async function startSexEdShelfPreview(card) {
+    if (!sexEdShelfOpen || !card || card === sexEdShelfPreviewCard) return;
+    stopSexEdShelfPreview();
+    const media = card.querySelector(".adaptive-television-music-card__media");
+    const fileName = card.dataset.sexEdFile || "";
+    if (!media || !fileName || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    const preview = document.createElement("video");
+    const previewStart = Math.max(0, Number(card.dataset.sexEdStartTime || 0), 150);
+    preview.className = "adaptive-television-fashion-card__preview";
+    preview.muted = true;
+    preview.defaultMuted = true;
+    preview.volume = 0;
+    preview.playsInline = true;
+    preview.preload = "metadata";
+    preview.setAttribute("muted", "");
+    preview.setAttribute("aria-hidden", "true");
+    preview.dataset.streamRole = "music-preview";
+    preview.dataset.streamFile = fileName;
+    sexEdShelfPreviewVideo = preview;
+    sexEdShelfPreviewCard = card;
+    card.classList.add("is-previewing");
+    media.append(preview);
+    const resetPreview = () => {
+      try { preview.currentTime = Math.min(previewStart, Math.max(0, Number(preview.duration || previewStart) - .5)); } catch {}
+    };
+    preview.addEventListener("loadedmetadata", resetPreview, { once: true });
+    preview.addEventListener("timeupdate", () => {
+      if (preview.currentTime >= Math.min(Number(preview.duration || previewStart + 10), previewStart + 10) - .08) {
+        resetPreview();
+      }
+    });
+    try {
+      await ensureSexEdStream(preview, "music");
+      if (preview !== sexEdShelfPreviewVideo || !sexEdShelfOpen) return;
+      resetPreview();
+      await preview.play();
+    } catch {
+      if (preview === sexEdShelfPreviewVideo) stopSexEdShelfPreview();
+    }
+  }
+
+  function openSexEdShelf() {
+    if (!sexEdShelf || sexEdShelfOpen) return;
+    if (fashionShelfOpen) closeFashionShelf(false);
+    if (musicShelfOpen) closeMusicShelf(false);
+    stopSexEdEpisode();
+    sexEdShelfOpen = true;
+    sexEdShelfOffset = 0;
+    sexEdShelf.setAttribute("aria-hidden", "false");
+    sexEdShelf.removeAttribute("inert");
+    document.body.classList.add("sex-ed-shelf-open");
+    sexEdLink?.setAttribute("aria-expanded", "true");
+    setProgrammeMixLevel(.15);
+    const activeChannelId = window.IAMMusicChannels?.getState?.().broadcast?.channelId || "";
+    if (activeChannelId !== "party-james-bondage") {
+      window.IAMMusicChannels?.joinBroadcast?.("party-james-bondage")?.catch?.(() => {});
+    }
+    window.setTimeout(() => {
+      updateSexEdShelfPosition();
+      sexEdCards[0]?.focus({ preventScroll: true });
+    }, 90);
+  }
+
+  function closeSexEdShelf(restoreFocus = true, restoreMix = true) {
+    if (!sexEdShelf || !sexEdShelfOpen) return;
+    sexEdShelfOpen = false;
+    sexEdShelf.setAttribute("aria-hidden", "true");
+    sexEdShelf.setAttribute("inert", "");
+    document.body.classList.remove("sex-ed-shelf-open");
+    sexEdLink?.setAttribute("aria-expanded", "false");
+    stopSexEdShelfPreview();
+    if (restoreMix) setProgrammeMixLevel(null);
+    if (restoreFocus) sexEdLink?.focus({ preventScroll: true });
+  }
+
+  async function ensureSexEdStream(video, role) {
+    if (!video) return false;
+    const fileName = video.dataset.streamFile || "";
+    if (!fileName) return false;
+    try {
+      await window.IAMStreamController?.attach?.(video, {
+        fileName,
+        role,
+        autoplay: false,
+        preload: true,
+        preloadTargetSeconds: role === "fashion" ? 8 : 12,
+      });
+      return true;
+    } catch (error) {
+      video.dataset.sexEdStreamError = String(error?.message || error).slice(0, 140);
+      return false;
+    }
+  }
+
+  function configureSexEdEpisode(episode = "01") {
+    const card = sexEdCards.find((candidate) => candidate.dataset.sexEdEpisode === String(episode).padStart(2, "0")) || sexEdCards[0];
+    if (!card || !sexEdEpisodeVideo) return;
+    const fileName = card.dataset.sexEdFile || "";
+    if (sexEdEpisodeVideo.dataset.streamFile !== fileName) {
+      try { sexEdEpisodeVideo.pause(); } catch {}
+      window.IAMStreamController?.detach?.(sexEdEpisodeVideo);
+      sexEdEpisodeVideo.dataset.streamFile = fileName;
+    }
+    const image = card.querySelector("img");
+    if (image?.src) sexEdEpisodeVideo.poster = image.src.replace("height=360", "height=1080");
+    const title = card.querySelector("strong")?.textContent?.trim() || "Sex-ed";
+    const guest = card.querySelector(".adaptive-television-fashion-card__copy span")?.textContent?.trim() || "";
+    sexEdActiveEpisode = card.dataset.sexEdEpisode || "01";
+    sexEdStartTime = Math.max(0, Number(card.dataset.sexEdStartTime || 0));
+    sexEdNeedsInitialSeek = true;
+    document.body.dataset.sexEdEpisode = sexEdActiveEpisode;
+    document.body.dataset.sexEdEpisodeStart = String(sexEdStartTime);
+    sexEdEpisodeVideo.setAttribute("aria-label", guest ? `${title} — ${guest}` : title);
+    document.title = `${title} | Sex-ed`;
+  }
+
+  async function seekSexEdEpisodeStart() {
+    if (!sexEdEpisodeVideo || !sexEdNeedsInitialSeek) return;
+    if (sexEdEpisodeVideo.readyState < 1) {
+      await new Promise((resolve) => {
+        const timeout = window.setTimeout(resolve, 4500);
+        sexEdEpisodeVideo.addEventListener("loadedmetadata", () => {
+          window.clearTimeout(timeout);
+          resolve();
+        }, { once: true });
+      });
+    }
+    try {
+      sexEdEpisodeVideo.currentTime = sexEdStartTime;
+      sexEdEpisodeVideo.dataset.sexEdStartApplied = String(sexEdStartTime);
+      sexEdNeedsInitialSeek = false;
+    } catch {
+      sexEdEpisodeVideo.addEventListener("loadedmetadata", () => {
+        try {
+          sexEdEpisodeVideo.currentTime = sexEdStartTime;
+          sexEdEpisodeVideo.dataset.sexEdStartApplied = String(sexEdStartTime);
+          sexEdNeedsInitialSeek = false;
+        } catch {}
+      }, { once: true });
+    }
+  }
+
+  async function playSexEdEpisode() {
+    if (!sexEdEpisodeVideo) return false;
+    await ensureSexEdStream(sexEdEpisodeVideo, "music");
+    await seekSexEdEpisodeStart();
+    sexEdEpisodeVideo.muted = false;
+    sexEdEpisodeVideo.controls = false;
+    sexEdEpisodeVideo.dataset.streamPlayRequestedAt = String(window.performance?.now?.() || Date.now());
+    try {
+      await (window.IAMStreamController?.play?.(sexEdEpisodeVideo) || sexEdEpisodeVideo.play());
+      if (sexEdEpisodeStart) sexEdEpisodeStart.hidden = true;
+      return true;
+    } catch {
+      if (sexEdEpisodeStart) sexEdEpisodeStart.hidden = false;
+      return false;
+    }
+  }
+
+  function stopSexEdEpisode() {
+    document.body.classList.remove("television-sex-ed-active");
+    sexEdWorld?.setAttribute("aria-hidden", "true");
+    try { sexEdEpisodeVideo?.pause(); } catch {}
+    try { sexEdBackground?.pause(); } catch {}
+    sexEdLoopVideos.forEach((video) => {
+      try { video.pause(); } catch {}
+    });
+    if (sexEdEpisodeStart) sexEdEpisodeStart.hidden = false;
+    sexEdNeedsInitialSeek = true;
+    delete document.body.dataset.sexEdEpisode;
+    delete document.body.dataset.sexEdEpisodeStart;
+    setProgrammeMixLevel(null);
+  }
+
+  async function openSexEdEpisode(episode = "01") {
+    closeSexEdShelf(false, false);
+    returnToTelevisionRoom({ preserveSexEd: true });
+    configureSexEdEpisode(episode);
+    document.body.classList.add("television-sex-ed-active", "flower-cue-visible");
+    sexEdWorld?.setAttribute("aria-hidden", "false");
+    setProgrammeMixLevel(.15);
+    const activeChannelId = window.IAMMusicChannels?.getState?.().broadcast?.channelId || "";
+    if (activeChannelId !== "party-james-bondage") {
+      window.IAMMusicChannels?.joinBroadcast?.("party-james-bondage")?.catch?.(() => {});
+    }
+    ensureSexEdStream(sexEdBackground, "fashion").then(() => {
+      if (!sexEdBackground) return;
+      sexEdBackground.muted = true;
+      sexEdBackground.loop = true;
+      (window.IAMStreamController?.play?.(sexEdBackground) || sexEdBackground.play())?.catch?.(() => {});
+    });
+    sexEdLoopVideos.forEach((video) => {
+      video.muted = true;
+      video.loop = true;
+      video.play()?.catch?.(() => {});
+    });
+    await playSexEdEpisode();
+  }
+
   function playLocalVideo(video) {
     televisionPlaybackRequested = true;
     video.dataset.streamPlayRequestedAt = String(window.performance?.now?.() || Date.now());
@@ -5891,6 +6163,8 @@
   function openInVideoPageLayer(link) {
     if (!pageView || !pageFrame) return;
 
+    closeSexEdShelf(false);
+    stopSexEdEpisode();
     if (pageViewPreviousBlend === null) {
       pageViewPreviousBlend = Number(videoCrossfader?.value || 100);
     }
@@ -5901,7 +6175,9 @@
     closeVideoNavigation();
   }
 
-  function returnToTelevisionRoom() {
+  function returnToTelevisionRoom(options = {}) {
+    closeSexEdShelf(false);
+    if (!options.preserveSexEd) stopSexEdEpisode();
     document.title = televisionPageTitle;
     refreshOuterFavicon();
     document.body.classList.remove(
@@ -6227,6 +6503,46 @@
   musicShelfViewport?.addEventListener("pointercancel", () => {
     musicShelfSwipeStartX = null;
   });
+  sexEdShelfCloseButtons.forEach((button) => {
+    button.addEventListener("click", (event) => {
+      event.preventDefault();
+      event.stopPropagation();
+      closeSexEdShelf();
+    });
+  });
+  sexEdShelfPrevious?.addEventListener("click", (event) => {
+    event.preventDefault();
+    event.stopPropagation();
+    moveSexEdShelf(-1);
+  });
+  sexEdShelfNext?.addEventListener("click", (event) => {
+    event.preventDefault();
+    event.stopPropagation();
+    moveSexEdShelf(1);
+  });
+  sexEdShelfViewport?.addEventListener("pointerdown", (event) => {
+    sexEdShelfSwipeStartX = Number(event.clientX);
+  });
+  sexEdShelfViewport?.addEventListener("pointerup", (event) => {
+    const start = sexEdShelfSwipeStartX;
+    sexEdShelfSwipeStartX = null;
+    if (!Number.isFinite(start)) return;
+    const distance = Number(event.clientX) - start;
+    if (Math.abs(distance) < 46) return;
+    moveSexEdShelf(distance < 0 ? 1 : -1);
+  });
+  sexEdShelfViewport?.addEventListener("pointercancel", () => {
+    sexEdShelfSwipeStartX = null;
+  });
+  sexEdCards.forEach((card) => {
+    card.addEventListener("pointerenter", () => startSexEdShelfPreview(card));
+    card.addEventListener("focus", () => startSexEdShelfPreview(card));
+    card.addEventListener("click", (event) => {
+      event.preventDefault();
+      event.stopPropagation();
+      openSexEdEpisode(card.dataset.sexEdEpisode || "01");
+    });
+  });
   broadcastEntryCloseButtons.forEach((button) => {
     button.addEventListener("click", (event) => {
       event.preventDefault();
@@ -6253,6 +6569,7 @@
   window.addEventListener("resize", () => {
     if (fashionShelfOpen) updateFashionShelfPosition({ preview: false });
     if (musicShelfOpen) updateMusicShelfPosition({ preview: false });
+    if (sexEdShelfOpen) updateSexEdShelfPosition({ preview: false });
     updateNowPlayingOverflow();
   });
   document.addEventListener("keydown", (event) => {
@@ -6260,6 +6577,18 @@
       if (event.key === "Escape") {
         event.preventDefault();
         closeBroadcastEntry(true);
+      }
+      return;
+    }
+    if (sexEdShelfOpen) {
+      if (event.key === "Escape") {
+        event.preventDefault();
+        closeSexEdShelf();
+        return;
+      }
+      if (event.key === "ArrowLeft" || event.key === "ArrowRight") {
+        event.preventDefault();
+        moveSexEdShelf(event.key === "ArrowRight" ? 1 : -1);
       }
       return;
     }
@@ -6538,12 +6867,8 @@
     if (!document.body.classList.contains("television-room-open")) return;
     event.preventDefault();
     event.stopImmediatePropagation();
-    setProgrammeMixLevel(.15);
-    const activeChannelId = window.IAMMusicChannels?.getState?.().broadcast?.channelId || "";
-    if (activeChannelId !== "party-james-bondage") {
-      window.IAMMusicChannels?.joinBroadcast?.("party-james-bondage")?.catch?.(() => {});
-    }
-    openInVideoPageLayer(sexEdLink);
+    if (sexEdShelfOpen) closeSexEdShelf();
+    else openSexEdShelf();
   }, true);
   researchDialogScienceLink?.addEventListener("click", (event) => {
     if (!document.body.classList.contains("television-room-open") || !isInternalPageLink(researchDialogScienceLink)) {
@@ -6570,8 +6895,25 @@
   document.addEventListener("webkitfullscreenchange", syncFullscreenState);
   window.addEventListener("message", (event) => {
     if (event.origin !== window.location.origin) return;
-    if (event.data?.type !== "iam:return-to-television") return;
-    returnToTelevisionRoom();
+    if (event.data?.type === "iam:open-sex-ed-episode") {
+      openSexEdEpisode(event.data.episode || "01");
+      return;
+    }
+    if (event.data?.type === "iam:return-to-television") {
+      returnToTelevisionRoom();
+    }
+  });
+  sexEdEpisodeStart?.addEventListener("click", playSexEdEpisode);
+  sexEdEpisodeVideo?.addEventListener("play", () => {
+    if (sexEdEpisodeStart) sexEdEpisodeStart.hidden = true;
+  });
+  sexEdEpisodeVideo?.addEventListener("playing", () => {
+    if (sexEdEpisodeStart) sexEdEpisodeStart.hidden = true;
+  });
+  sexEdEpisodeVideo?.addEventListener("pause", () => {
+    if (document.body.classList.contains("television-sex-ed-active") && sexEdEpisodeStart) {
+      sexEdEpisodeStart.hidden = false;
+    }
   });
   pageFrame?.addEventListener("load", syncPageLayerMetadata);
   setMusicTelevisionMetadata();

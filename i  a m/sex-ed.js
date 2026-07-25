@@ -1,7 +1,14 @@
 (function () {
   const closeButtons = Array.from(document.querySelectorAll("[data-sex-ed-close]"));
+  const episodeLinks = Array.from(document.querySelectorAll('a[href="sex-ed-episode-01.html"]'));
   const episodeVideo = document.querySelector("[data-sex-ed-episode-video]");
   const episodeStart = document.querySelector("[data-sex-ed-episode-start]");
+  let episodeNeedsInitialSeek = true;
+
+  if (window.self !== window.top) {
+    document.documentElement.dataset.adaptiveFrame = "embedded";
+    document.documentElement.dataset.musicTelevisionFrame = "embedded";
+  }
 
   function returnToTelevision() {
     if (window.self !== window.top) {
@@ -31,14 +38,40 @@
   closeButtons.forEach((button) => {
     button.addEventListener("click", returnToTelevision);
   });
+  episodeLinks.forEach((link) => {
+    link.addEventListener("click", (event) => {
+      if (window.self === window.top) return;
+      event.preventDefault();
+      window.top.postMessage({ type: "iam:open-sex-ed-episode", episode: "01" }, window.location.origin);
+    });
+  });
 
   setSexEdProgramme(true);
   window.addEventListener("pagehide", () => setSexEdProgramme(false));
   window.addEventListener("beforeunload", () => setSexEdProgramme(false));
 
   if (episodeVideo) {
-    const requestEpisodePlayback = () => {
+    const applyEpisodeStart = async () => {
+      if (!episodeNeedsInitialSeek) return;
+      const startTime = Math.max(0, Number(episodeVideo.dataset.sexEdStartTime || 0));
+      if (episodeVideo.readyState < 1) {
+        await new Promise((resolve) => {
+          const timeout = window.setTimeout(resolve, 4500);
+          episodeVideo.addEventListener("loadedmetadata", () => {
+            window.clearTimeout(timeout);
+            resolve();
+          }, { once: true });
+        });
+      }
+      try {
+        episodeVideo.currentTime = startTime;
+        episodeVideo.dataset.sexEdStartApplied = String(startTime);
+        episodeNeedsInitialSeek = false;
+      } catch {}
+    };
+    const requestEpisodePlayback = async () => {
       episodeVideo.dataset.streamPlayRequestedAt = String(window.performance?.now?.() || Date.now());
+      await applyEpisodeStart();
       const playAttempt = window.IAMStreamController?.play?.(episodeVideo) || episodeVideo.play();
       playAttempt?.catch?.(() => {
         if (episodeStart) episodeStart.hidden = false;
@@ -66,6 +99,7 @@
       if (episodeStart) episodeStart.hidden = false;
     });
     episodeVideo.addEventListener("ended", () => {
+      episodeNeedsInitialSeek = true;
       if (episodeStart) episodeStart.hidden = false;
     });
   }
