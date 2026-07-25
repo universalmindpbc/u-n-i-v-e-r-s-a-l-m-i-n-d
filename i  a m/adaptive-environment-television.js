@@ -253,7 +253,7 @@
   let sexEdActiveEpisode = "01";
   let sexEdStartTime = 139;
   let sexEdNeedsInitialSeek = true;
-  let sexEdReturnChannelId = "";
+  let sexEdReturnProgramme = null;
   let musicCatalogueRecords = [];
   let radioStationRecords = DEFAULT_RADIO_STATIONS.map((station) => ({ ...station }));
   let musicShelfOrders = { videos: [], parties: [], radio: radioStationRecords.slice(), fashion: [] };
@@ -5221,12 +5221,22 @@
     delete document.body.dataset.sexEdEpisodeStart;
     if (wasActive) {
       setProgrammeMixLevel(null);
-      const returnChannelId = sexEdReturnChannelId;
-      sexEdReturnChannelId = "";
+      const returnProgramme = sexEdReturnProgramme;
+      sexEdReturnProgramme = null;
       delete document.body.dataset.sexEdReturnChannel;
-      const activeChannelId = window.IAMMusicChannels?.getState?.().broadcast?.channelId || "";
-      if (returnChannelId && activeChannelId !== returnChannelId) {
-        window.IAMMusicChannels?.joinBroadcast?.(returnChannelId)?.catch?.(() => {});
+      delete document.body.dataset.sexEdReturnTrack;
+      if (returnProgramme?.channelId && broadcastChannelId !== returnProgramme.channelId) {
+        joinBroadcastChannel(returnProgramme.channelId, { source: "sex_ed_return" }).catch(() => {});
+      } else if (!returnProgramme?.channelId && returnProgramme?.trackId) {
+        const returnTrack = findTrack(returnProgramme.trackId);
+        if (returnTrack) {
+          switchMusicTrack(returnTrack, {
+            source: "sex_ed_return",
+            startAt: returnProgramme.currentTime,
+          })
+            .then(() => setVideoBlend(returnProgramme.videoBlend))
+            .catch(() => {});
+        }
       }
     }
   }
@@ -5237,14 +5247,22 @@
     configureSexEdEpisode(episode);
     document.body.classList.add("television-sex-ed-active", "flower-cue-visible");
     sexEdWorld?.setAttribute("aria-hidden", "false");
-    const activeChannelId = window.IAMMusicChannels?.getState?.().broadcast?.channelId || "";
-    if (!sexEdReturnChannelId && activeChannelId) {
-      sexEdReturnChannelId = activeChannelId;
-      document.body.dataset.sexEdReturnChannel = activeChannelId;
+    if (!sexEdReturnProgramme) {
+      sexEdReturnProgramme = {
+        channelId: broadcastChannelId,
+        trackId: track?.id || "",
+        currentTime: Math.max(0, Number(localVideo?.currentTime || 0)),
+        videoBlend: Math.max(0, Math.min(100, Number(videoCrossfader?.value || 100))),
+      };
+      if (sexEdReturnProgramme.channelId) {
+        document.body.dataset.sexEdReturnChannel = sexEdReturnProgramme.channelId;
+      } else if (sexEdReturnProgramme.trackId) {
+        document.body.dataset.sexEdReturnTrack = sexEdReturnProgramme.trackId;
+      }
     }
     setProgrammeMixLevel(SEX_ED_PROGRAMME_MIX_LEVEL);
-    if (activeChannelId !== "party-james-bondage") {
-      window.IAMMusicChannels?.joinBroadcast?.("party-james-bondage")?.catch?.(() => {});
+    if (broadcastChannelId !== "party-james-bondage") {
+      joinBroadcastChannel("party-james-bondage", { source: "sex_ed_episode" }).catch(() => {});
     }
     ensureSexEdStream(sexEdBackground, "fashion").then(() => {
       if (!sexEdBackground) return;
