@@ -3,6 +3,7 @@
   const episodeLinks = Array.from(document.querySelectorAll('a[href="sex-ed-episode-01.html"]'));
   const episodeVideo = document.querySelector("[data-sex-ed-episode-video]");
   const episodeStart = document.querySelector("[data-sex-ed-episode-start]");
+  const SEX_ED_PROGRAMME_MIX_LEVEL = .1125;
   let episodeNeedsInitialSeek = true;
 
   if (window.self !== window.top) {
@@ -24,12 +25,12 @@
         window.top.IAMTelevisionRoom?.setProgrammeMixLevel?.(null);
         return;
       }
-      window.top.IAMTelevisionRoom?.setProgrammeMixLevel?.(.15);
+      window.top.IAMTelevisionRoom?.setProgrammeMixLevel?.(SEX_ED_PROGRAMME_MIX_LEVEL);
       const activeChannelId = window.top.IAMMusicChannels?.getState?.().broadcast?.channelId || "";
       if (activeChannelId !== "party-james-bondage") {
         await window.top.IAMMusicChannels?.joinBroadcast?.("party-james-bondage");
       }
-      window.top.IAMTelevisionRoom?.setProgrammeMixLevel?.(.15);
+      window.top.IAMTelevisionRoom?.setProgrammeMixLevel?.(SEX_ED_PROGRAMME_MIX_LEVEL);
     } catch {
       // The standalone episode remains usable without the television shell.
     }
@@ -46,11 +47,11 @@
     });
   });
 
-  setSexEdProgramme(true);
-  window.addEventListener("pagehide", () => setSexEdProgramme(false));
-  window.addEventListener("beforeunload", () => setSexEdProgramme(false));
-
   if (episodeVideo) {
+    setSexEdProgramme(true);
+    window.addEventListener("pagehide", () => setSexEdProgramme(false));
+    window.addEventListener("beforeunload", () => setSexEdProgramme(false));
+
     const applyEpisodeStart = async () => {
       if (!episodeNeedsInitialSeek) return;
       const startTime = Math.max(0, Number(episodeVideo.dataset.sexEdStartTime || 0));

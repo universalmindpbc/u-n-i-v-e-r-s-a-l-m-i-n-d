@@ -253,6 +253,7 @@
   let sexEdActiveEpisode = "01";
   let sexEdStartTime = 139;
   let sexEdNeedsInitialSeek = true;
+  let sexEdReturnChannelId = "";
   let musicCatalogueRecords = [];
   let radioStationRecords = DEFAULT_RADIO_STATIONS.map((station) => ({ ...station }));
   let musicShelfOrders = { videos: [], parties: [], radio: radioStationRecords.slice(), fashion: [] };
@@ -403,6 +404,7 @@
   const RADIO_SEGMENT_START_DELAY_SECONDS = .35;
   const RADIO_SEGMENT_CROSSFADE_SECONDS = .035;
   const RADIO_SEGMENT_POLL_MS = 3000;
+  const SEX_ED_PROGRAMME_MIX_LEVEL = .1125;
   let continuationAudio = null;
   let continuationHls = null;
   let continuationSegmentPlayer = null;
@@ -4998,7 +5000,7 @@
     if (programmeFixedMixLevel === null) {
       delete document.body.dataset.programmeFixedMixLevel;
     } else {
-      document.body.dataset.programmeFixedMixLevel = programmeFixedMixLevel.toFixed(2);
+      document.body.dataset.programmeFixedMixLevel = String(programmeFixedMixLevel);
     }
     return programmeFixedMixLevel;
   }
@@ -5103,18 +5105,13 @@
     sexEdShelf.removeAttribute("inert");
     document.body.classList.add("sex-ed-shelf-open");
     sexEdLink?.setAttribute("aria-expanded", "true");
-    setProgrammeMixLevel(.15);
-    const activeChannelId = window.IAMMusicChannels?.getState?.().broadcast?.channelId || "";
-    if (activeChannelId !== "party-james-bondage") {
-      window.IAMMusicChannels?.joinBroadcast?.("party-james-bondage")?.catch?.(() => {});
-    }
     window.setTimeout(() => {
       updateSexEdShelfPosition();
       sexEdCards[0]?.focus({ preventScroll: true });
     }, 90);
   }
 
-  function closeSexEdShelf(restoreFocus = true, restoreMix = true) {
+  function closeSexEdShelf(restoreFocus = true) {
     if (!sexEdShelf || !sexEdShelfOpen) return;
     sexEdShelfOpen = false;
     sexEdShelf.setAttribute("aria-hidden", "true");
@@ -5122,7 +5119,6 @@
     document.body.classList.remove("sex-ed-shelf-open");
     sexEdLink?.setAttribute("aria-expanded", "false");
     stopSexEdShelfPreview();
-    if (restoreMix) setProgrammeMixLevel(null);
     if (restoreFocus) sexEdLink?.focus({ preventScroll: true });
   }
 
@@ -5211,6 +5207,7 @@
   }
 
   function stopSexEdEpisode() {
+    const wasActive = document.body.classList.contains("television-sex-ed-active");
     document.body.classList.remove("television-sex-ed-active");
     sexEdWorld?.setAttribute("aria-hidden", "true");
     try { sexEdEpisodeVideo?.pause(); } catch {}
@@ -5222,17 +5219,30 @@
     sexEdNeedsInitialSeek = true;
     delete document.body.dataset.sexEdEpisode;
     delete document.body.dataset.sexEdEpisodeStart;
-    setProgrammeMixLevel(null);
+    if (wasActive) {
+      setProgrammeMixLevel(null);
+      const returnChannelId = sexEdReturnChannelId;
+      sexEdReturnChannelId = "";
+      delete document.body.dataset.sexEdReturnChannel;
+      const activeChannelId = window.IAMMusicChannels?.getState?.().broadcast?.channelId || "";
+      if (returnChannelId && activeChannelId !== returnChannelId) {
+        window.IAMMusicChannels?.joinBroadcast?.(returnChannelId)?.catch?.(() => {});
+      }
+    }
   }
 
   async function openSexEdEpisode(episode = "01") {
-    closeSexEdShelf(false, false);
+    closeSexEdShelf(false);
     returnToTelevisionRoom({ preserveSexEd: true });
     configureSexEdEpisode(episode);
     document.body.classList.add("television-sex-ed-active", "flower-cue-visible");
     sexEdWorld?.setAttribute("aria-hidden", "false");
-    setProgrammeMixLevel(.15);
     const activeChannelId = window.IAMMusicChannels?.getState?.().broadcast?.channelId || "";
+    if (!sexEdReturnChannelId && activeChannelId) {
+      sexEdReturnChannelId = activeChannelId;
+      document.body.dataset.sexEdReturnChannel = activeChannelId;
+    }
+    setProgrammeMixLevel(SEX_ED_PROGRAMME_MIX_LEVEL);
     if (activeChannelId !== "party-james-bondage") {
       window.IAMMusicChannels?.joinBroadcast?.("party-james-bondage")?.catch?.(() => {});
     }
