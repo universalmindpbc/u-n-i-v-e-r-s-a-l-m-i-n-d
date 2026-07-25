@@ -110,13 +110,23 @@
         width: 100vw;
         height: 100svh;
         overflow: hidden;
-        background:
-          linear-gradient(rgba(7, 7, 10, 0.04), rgba(7, 7, 10, 0.22)),
-          center / cover no-repeat url("a s s e t s/sexed-wallet-mockup-background.jpg");
+        background: #08080a;
         transition:
           width 420ms cubic-bezier(0.22, 0.72, 0.18, 1),
           height 420ms cubic-bezier(0.22, 0.72, 0.18, 1),
           border-radius 420ms cubic-bezier(0.22, 0.72, 0.18, 1);
+      }
+
+      .preview-video {
+        position: absolute;
+        inset: 0;
+        z-index: 0;
+        display: block;
+        width: 100%;
+        height: 100%;
+        background: #08080a;
+        object-fit: cover;
+        object-position: center;
       }
 
       .preview-stage::after {
@@ -124,7 +134,7 @@
         position: absolute;
         inset: 0;
         z-index: 1;
-        background: linear-gradient(180deg, rgba(0, 0, 0, 0.02) 45%, rgba(0, 0, 0, 0.32) 100%);
+        background: linear-gradient(180deg, rgba(0, 0, 0, 0.04) 42%, rgba(0, 0, 0, 0.2) 100%);
         pointer-events: none;
       }
 
@@ -133,7 +143,6 @@
         height: min(844px, calc(100svh - 24px));
         border: 1px solid rgba(255, 255, 255, 0.22);
         border-radius: 28px;
-        background-position: center;
       }
 
       .preview-stage__label {
@@ -157,12 +166,12 @@
         align-items: center;
         justify-content: center;
         width: min(520px, calc(100% - 48px));
-        min-height: 122px;
+        min-height: 106px;
         border: 1px solid rgba(255, 255, 255, 0.14);
-        border-radius: 42px;
+        border-radius: 38px;
         background: rgba(12, 12, 14, 0.28);
         color: #fff;
-        padding: 4px 24px 15px;
+        padding: 2px 24px 8px;
         transform: translateX(-50%);
         transition:
           min-height 420ms cubic-bezier(0.22, 0.72, 0.18, 1),
@@ -283,34 +292,48 @@
         height: auto;
       }
 
+      .wallet-status-row {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: calc(100% - 14px);
+        min-height: 31px;
+        margin: 0 7px;
+        border-top: 1px solid rgba(255, 255, 255, 0.15);
+        padding-top: 4px;
+      }
+
       .sexed-link {
         display: grid;
-        width: calc(100% - 14px);
-        min-height: 38px;
-        margin: 2px 7px 7px;
-        border: 0;
-        border-top: 1px solid rgba(255, 255, 255, 0.15);
-        border-bottom: 1px solid rgba(255, 255, 255, 0.15);
-        background: transparent;
-        color: rgba(255, 255, 255, 0.77);
+        flex: 0 0 auto;
+        min-width: 46px;
+        min-height: 21px;
+        margin-top: 4px;
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        border-radius: 4px;
+        background: rgba(255, 255, 255, 0.025);
+        color: rgba(255, 255, 255, 0.65);
         cursor: pointer;
         font-family: Georgia, "Times New Roman", serif;
-        font-size: 13.3px;
-        letter-spacing: -0.02em;
+        font-size: 10px;
+        letter-spacing: 0;
         line-height: 1;
-        padding: 10px 14px 11px;
+        padding: 4px 7px 5px;
         place-items: center;
         text-shadow: 0 2px 10px rgba(0, 0, 0, 0.72);
-        transition: color 180ms ease, transform 180ms ease;
+        transition:
+          background 180ms ease,
+          border-color 180ms ease,
+          color 180ms ease,
+          transform 180ms ease;
       }
 
       .sexed-link:hover,
       .sexed-link:focus-visible {
-        color: #fff;
+        border-color: rgba(255, 255, 255, 0.56);
+        background: rgba(255, 255, 255, 0.08);
+        color: rgba(255, 255, 255, 0.96);
         outline: 0;
-        text-decoration: underline;
-        text-decoration-thickness: 1px;
-        text-underline-offset: 4px;
         transform: translateY(-1px);
       }
 
@@ -318,8 +341,8 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        width: 100%;
-        min-height: 30px;
+        width: auto;
+        min-height: 25px;
         border: 0;
         background: transparent;
         color: rgba(255, 255, 255, 0.96);
@@ -328,14 +351,22 @@
         font-weight: 400;
         letter-spacing: 0.07em;
         overflow: hidden;
-        padding: 8px 12px 0;
+        padding: 5px 0 0;
         text-align: center;
         text-transform: uppercase;
         white-space: nowrap;
       }
 
       .now-playing span {
-        margin: 0 7px;
+        margin: 0 6px;
+      }
+
+      .wallet-status-divider {
+        flex: 0 0 auto;
+        width: 1px;
+        height: 14px;
+        margin: 4px 11px 0;
+        background: rgba(255, 255, 255, 0.24);
       }
 
       .preview-stage.is-mobile .wallet {
@@ -365,10 +396,31 @@
       }
 
       .preview-stage.is-mobile .now-playing {
-        font-size: 8px;
-        letter-spacing: 0.045em;
-        padding-right: 5px;
-        padding-left: 5px;
+        font-size: 7.4px;
+        letter-spacing: 0.035em;
+      }
+
+      .preview-stage.is-mobile .now-playing span {
+        margin-right: 4px;
+        margin-left: 4px;
+      }
+
+      .preview-stage.is-mobile .wallet-status-row {
+        width: 100%;
+        margin-right: 0;
+        margin-left: 0;
+      }
+
+      .preview-stage.is-mobile .wallet-status-divider {
+        margin-right: 7px;
+        margin-left: 7px;
+      }
+
+      .preview-stage.is-mobile .sexed-link {
+        min-width: 42px;
+        min-height: 19px;
+        font-size: 8.8px;
+        padding: 3px 6px 4px;
       }
 
       @media (max-width: 720px) {
@@ -407,6 +459,34 @@
           height: 57px;
         }
 
+        .preview-stage:not(.is-mobile) .wallet-status-row {
+          width: 100%;
+          margin-right: 0;
+          margin-left: 0;
+        }
+
+        .preview-stage:not(.is-mobile) .now-playing {
+          font-size: 7.4px;
+          letter-spacing: 0.035em;
+        }
+
+        .preview-stage:not(.is-mobile) .now-playing span {
+          margin-right: 4px;
+          margin-left: 4px;
+        }
+
+        .preview-stage:not(.is-mobile) .wallet-status-divider {
+          margin-right: 7px;
+          margin-left: 7px;
+        }
+
+        .preview-stage:not(.is-mobile) .sexed-link {
+          min-width: 42px;
+          min-height: 19px;
+          font-size: 8.8px;
+          padding: 3px 6px 4px;
+        }
+
         .preview-stage__label {
           right: 15px;
           bottom: 14px;
@@ -426,7 +506,7 @@
   <body>
     <main class="study-shell">
       <nav class="study-toolbar" aria-label="Mock-up controls">
-        <span class="study-toolbar__title">Text-link study</span>
+        <span class="study-toolbar__title">Tertiary-entry study</span>
         <span class="study-toolbar__group" aria-label="Choose name">
           <button type="button" data-name-control="hyphenated" aria-pressed="true">sex-ed</button>
           <button type="button" data-name-control="closed" aria-pressed="false">sexed</button>
@@ -438,6 +518,17 @@
       </nav>
 
       <section class="preview-stage" data-preview-stage aria-label="James Bondage Health wallet mock-up">
+        <video
+          class="preview-video"
+          data-preview-video
+          src="a s s e t s/f a s h i o n [ r u n w a y ]/Wolford x Sergio Rossi.mp4"
+          autoplay
+          muted
+          loop
+          playsinline
+          preload="auto"
+          aria-hidden="true"
+        ></video>
         <section class="wallet" data-wallet aria-label="Universal Mind wallet text-link study">
           <div class="wallet-categories">
             <button class="wallet-category" type="button" data-label="bloom" aria-label="bloom">
@@ -495,17 +586,19 @@
             </button>
           </div>
 
-          <button class="sexed-link" type="button" data-sexed-link aria-label="sex-ed — open James Bondage Health">sex-ed</button>
-
-          <button class="now-playing" type="button" aria-label="Open current Music recommendations">
-            <time datetime="14:19" data-now-playing-time>14:19</time>
-            <span aria-hidden="true">·</span>
-            <b>Now Playing</b>
-            <span aria-hidden="true">·</span>
-            James Bondage Party
-          </button>
+          <div class="wallet-status-row">
+            <button class="now-playing" type="button" aria-label="Open current Music recommendations">
+              <time datetime="14:19" data-now-playing-time>14:19</time>
+              <span aria-hidden="true">·</span>
+              <b>Now Playing</b>
+              <span aria-hidden="true">·</span>
+              James Bondage Party
+            </button>
+            <span class="wallet-status-divider" aria-hidden="true"></span>
+            <button class="sexed-link" type="button" data-sexed-link aria-label="sex-ed — open James Bondage Health">sex-ed</button>
+          </div>
         </section>
-        <span class="preview-stage__label">Text-link mock-up only · episode media pending</span>
+        <span class="preview-stage__label">Tertiary-entry mock-up only · episode media pending</span>
       </section>
     </main>
 
@@ -514,6 +607,7 @@
         const stage = document.querySelector("[data-preview-stage]");
         const nameControls = Array.from(document.querySelectorAll("[data-name-control]"));
         const viewportControls = Array.from(document.querySelectorAll("[data-viewport-control]"));
+        const previewVideo = document.querySelector("[data-preview-video]");
         const sexedLink = document.querySelector("[data-sexed-link]");
         const nowPlayingTime = document.querySelector("[data-now-playing-time]");
         const params = new URLSearchParams(window.location.search);
@@ -551,6 +645,19 @@
         viewportControls.forEach((control) => {
           control.addEventListener("click", () => setViewport(control.dataset.viewportControl));
         });
+
+        function startPreviewVideo() {
+          if (!previewVideo) return;
+          previewVideo.muted = true;
+          if (previewVideo.duration > 4 && previewVideo.currentTime < 3.5) previewVideo.currentTime = 4;
+          previewVideo.play().catch(() => {});
+        }
+
+        if (previewVideo?.readyState >= 1) {
+          startPreviewVideo();
+        } else {
+          previewVideo?.addEventListener("loadedmetadata", startPreviewVideo, { once: true });
+        }
 
         const now = new Date();
         nowPlayingTime.textContent = new Intl.DateTimeFormat("en-AU", {
