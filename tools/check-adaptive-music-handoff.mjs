@@ -488,6 +488,13 @@ requireCondition(
   "Ólafur Arnalds is not connected to the verified Cloudflare Stream UID"
 );
 requireCondition(controller.includes('id: "olafur-arnalds-hafursey-iceland-cercle"'), "Ólafur Arnalds is not selectable in Inner Planes Parties");
+requireCondition(
+  streamCatalogue.includes('"ISS - The Blue Pearl.mp4": "08d6983ef6584f2b8659ceaf0cfa248a"'),
+  "Pearl is not connected to the verified Cloudflare Stream UID"
+);
+requireCondition(controller.includes('assetKey: "inner-planes-radio-blue-pearl"'), "Pearl is not available to the private Inner Planes Radio visual channel");
+requireCondition(controller.includes('privateVisual: true'), "Pearl is not marked private from the public Fashion experience");
+requireCondition(controller.includes('if (runway.privateVisual) return;'), "Private Radio visuals can leak into persisted public Fashion selection");
 
 for (const { pagePath, source } of pages) {
   const label = path.relative(ROOT, pagePath);

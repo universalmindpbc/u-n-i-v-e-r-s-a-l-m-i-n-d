@@ -156,7 +156,7 @@
       "name": "Inner Planes",
       "descriptor": "sunrise ambient",
       "description": "Ambient · beatless · electronica",
-      "visual_channel_id": "fashion-restore",
+      "visual_channel_id": "radio-visual-inner-planes",
       "schedule": [
         { "station_id": "cafe-del-mar-calm", "duration_seconds": 7200 },
         { "station_id": "nts-slow-focus", "duration_seconds": 7200 },
@@ -245,6 +245,19 @@
         { "station_id": "sanctuary-retro", "duration_seconds": 7200 },
         { "station_id": "sanctuary-dark-electro", "duration_seconds": 7200 },
         { "station_id": "sanctuary-retro", "duration_seconds": 7200 }
+      ]
+    },
+    {
+      "id": "radio-visual-inner-planes",
+      "format": "radio-visual",
+      "media_type": "fashion",
+      "internal": true,
+      "energy_id": "restore",
+      "editorial_id": "inner-planes",
+      "name": "Inner Planes Radio Visual",
+      "description": "Private Earth-at-night visual for the Inner Planes Radio broadcast.",
+      "schedule": [
+        { "runway_id": "inner-planes-radio-blue-pearl", "duration_seconds": 10045.51 }
       ]
     },
     {

@@ -58,6 +58,7 @@ const fashionRunwayIds = new Set([
   "mugler-fall-winter-2021",
   "wolford-sergio-rossi-capsule",
 ]);
+const privateRadioVisualIds = new Set(["inner-planes-radio-blue-pearl"]);
 const approvedStationIds = new Set(
   stationTensor.records
     .filter((station) => !station.status || station.status === "Approved")
@@ -74,7 +75,7 @@ assert.deepEqual(
   schedule.planning_markets.map((market) => market.time_zone),
   ["Australia/Sydney", "America/Los_Angeles", "Europe/Madrid"]
 );
-assert.equal(schedule.channels.length, 15, "The schedule must expose twelve public Music channels plus three internal Fashion channels.");
+assert.equal(schedule.channels.length, 16, "The schedule must expose twelve public Music channels, three public Fashion channels and one private Radio visual channel.");
 
 for (const format of ["videos", "parties", "radio"]) {
   const channels = schedule.channels.filter((channel) => channel.format === format);
@@ -88,7 +89,12 @@ for (const format of ["videos", "parties", "radio"]) {
 assert.deepEqual(
   schedule.channels.filter((channel) => channel.format === "fashion").map((channel) => channel.energy_id),
   ["restore", "social-uplift", "underground-intensity"],
-  "Fashion remains an internal three-way visual pairing system."
+  "The public Fashion shelf remains an exact three-way visual pairing system."
+);
+assert.deepEqual(
+  schedule.channels.filter((channel) => channel.format === "radio-visual").map((channel) => channel.id),
+  ["radio-visual-inner-planes"],
+  "Inner Planes Radio must use one dedicated private visual channel."
 );
 
 const scheduledVideos = [];
@@ -122,7 +128,7 @@ for (const channel of schedule.channels) {
     assert.equal(channel.media_type, "radio");
     assert.equal(cycleSeconds, 86400, `${channel.name} Radio must define one exact 24-hour timetable.`);
     const approvedRadioVisualChannels = {
-      "radio-inner-planes": "fashion-restore",
+      "radio-inner-planes": "radio-visual-inner-planes",
       "radio-champagne-bohemia": "fashion-restore",
       "radio-modul8-infinity": "fashion-social-uplift",
       "radio-james-bondage": "fashion-underground-intensity",
@@ -137,7 +143,7 @@ for (const channel of schedule.channels) {
       assert.ok(approvedStationIds.has(entry.station_id), `${entry.station_id} must be an approved radio station.`);
       scheduledStations.add(entry.station_id);
     }
-  } else {
+  } else if (channel.format === "fashion") {
     assert.equal(channel.media_type, "fashion");
     assert.equal(cycleSeconds, 1800, `${channel.name} Fashion must define one repeating 30-minute cycle.`);
     for (const entry of channel.schedule) {
@@ -145,6 +151,17 @@ for (const channel of schedule.channels) {
       assert.ok(fashionRunwayIds.has(entry.runway_id), `${entry.runway_id} must be a verified Fashion runway.`);
       assert.match(controller, new RegExp(`assetKey: "${entry.runway_id}"`), `${entry.runway_id} must exist in the Fashion catalogue.`);
       scheduledRunways.push(entry.runway_id);
+    }
+  } else {
+    assert.equal(channel.format, "radio-visual");
+    assert.equal(channel.internal, true, "The Inner Planes Radio visual channel must remain private.");
+    assert.equal(channel.media_type, "fashion");
+    assert.equal(cycleSeconds, 10045.51, "Pearl must use its exact encoded HLS duration.");
+    assert.equal(channel.schedule.length, 1);
+    for (const entry of channel.schedule) {
+      assert.equal(Number(entry.duration_seconds), 10045.51);
+      assert.ok(privateRadioVisualIds.has(entry.runway_id), `${entry.runway_id} must be the private Inner Planes Radio visual.`);
+      assert.match(controller, new RegExp(`assetKey: "${entry.runway_id}"`), `${entry.runway_id} must exist in the visual catalogue.`);
     }
   }
 
@@ -165,6 +182,7 @@ assert.equal(scheduledDjSets.length, djDurations.size, "A DJ set cannot belong t
 assert.deepEqual(scheduledStations, approvedStationIds, "The four Radio timetables must programme the full approved station catalogue.");
 assert.deepEqual(new Set(scheduledRunways), fashionRunwayIds, "All six Fashion films must belong to exactly one shared channel.");
 assert.equal(scheduledRunways.length, fashionRunwayIds.size, "A Fashion film cannot belong to more than one shared channel.");
+assert.ok(!scheduledRunways.some((runwayId) => privateRadioVisualIds.has(runwayId)), "Pearl must never enter the public Fashion shelf.");
 
 assert.match(clockController, /serverNowMs - \(\(startedAt \+ endedAt\) \/ 2\)/, "Clock sync must compensate for request round-trip latency.");
 assert.match(clockController, /positiveModulo\(elapsedSeconds, channel\.cycleSeconds\)/, "Channel state must repeat continuously from the shared epoch.");
@@ -203,4 +221,4 @@ assert.match(index, /broadcast-clock-v1\.js/);
 assert.match(endpoint, /microtime\(true\) \* 1000/);
 assert.match(endpoint, /Cache-Control: no-store/);
 
-console.log("Broadcast clock preflight passed: four live editorial channels across Videos, Parties and Radio; Max Richter and Ólafur Arnalds programmed in Inner Planes Parties; Zip/Perlon audio paired to Mugler/Wolford; exact shared clocks; no solo replay path.");
+console.log("Broadcast clock preflight passed: four live editorial channels across Videos, Parties and Radio; Max Richter and Ólafur Arnalds in Inner Planes Parties; Pearl privately clocked to Inner Planes Radio; public Fashion remains Chanel/Jacquemus, Annie’s/D&G and Mugler/Wolford; no solo replay path.");

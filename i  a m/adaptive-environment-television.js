@@ -342,10 +342,20 @@
       streamUid: "90c027288fe81ad915971988aafebafd",
       previewStart: 4,
     },
+    {
+      assetKey: "inner-planes-radio-blue-pearl",
+      brand: "ISS",
+      title: "ISS - The Blue Pearl",
+      shortTitle: "THE BLUE PEARL",
+      videoSrc: "a s s e t s/r a d i o  v i s u a l s/ISS - The Blue Pearl.mp4",
+      streamUid: "08d6983ef6584f2b8659ceaf0cfa248a",
+      previewStart: 8,
+      privateVisual: true,
+    },
   ];
   try {
     const storedFashion = JSON.parse(window.sessionStorage.getItem("iamFashionVisualStateV1") || "null");
-    const storedIndex = fashionRunways.findIndex((runway) => runway.assetKey === storedFashion?.assetKey);
+    const storedIndex = fashionRunways.findIndex((runway) => !runway.privateVisual && runway.assetKey === storedFashion?.assetKey);
     if (storedIndex >= 0) {
       fashionRunwayIndex = storedIndex;
       fashionSelectionSource = storedFashion?.source === "manual" ? "manual" : "algorithm";
@@ -1774,10 +1784,14 @@
 
   function persistFashionSelection(source = fashionSelectionSource) {
     const runway = fashionRunways[fashionRunwayIndex];
+    if (!runway) return;
     fashionSelectionSource = source === "manual" ? "manual" : "algorithm";
     document.body.dataset.fashionRunway = runway.assetKey;
+    document.body.dataset.fashionVisualScope = runway.privateVisual ? "internal" : "public";
     document.body.dataset.fashionSelectionSource = fashionSelectionSource;
     playerMount.dataset.fashionRunway = runway.assetKey;
+    playerMount.dataset.fashionVisualScope = runway.privateVisual ? "internal" : "public";
+    if (runway.privateVisual) return;
     try {
       window.sessionStorage.setItem("iamFashionVisualStateV1", JSON.stringify({
         assetKey: runway.assetKey,
@@ -1804,7 +1818,7 @@
 
   function recordFashionSelectionFeedback(index, feedbackType = "explicit_select") {
     const runway = fashionRunways[index];
-    if (!runway) return;
+    if (!runway || runway.privateVisual) return;
     const selector = window.IAMFashionVisualSelector;
     const profile = readFashionTasteProfile();
     const now = Date.now();
@@ -1848,7 +1862,13 @@
     const rankedIndexes = result.ranked
       .map((record) => fashionRunways.findIndex((runway) => runway.assetKey === record.asset_key))
       .filter((index) => index >= 0);
-    fashionShelfOrder = [...rankedIndexes, ...fashionRunways.map((_runway, index) => index).filter((index) => !rankedIndexes.includes(index))];
+    fashionShelfOrder = [
+      ...rankedIndexes,
+      ...fashionRunways
+        .map((runway, index) => ({ runway, index }))
+        .filter(({ runway, index }) => !runway.privateVisual && !rankedIndexes.includes(index))
+        .map(({ index }) => index),
+    ];
     document.body.dataset.fashionRecommendationCount = String(result.recommendations.length);
     document.body.dataset.fashionRecommendationSource = Object.keys(result.supportGoals || {}).length
       ? "citizen_needs"
