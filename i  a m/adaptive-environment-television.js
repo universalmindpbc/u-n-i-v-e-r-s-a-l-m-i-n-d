@@ -4989,7 +4989,9 @@
   }
 
   function setProgrammeMixLevel(level) {
-    const requested = Number(level);
+    const requested = level === null || level === undefined || level === ""
+      ? Number.NaN
+      : Number(level);
     programmeFixedMixLevel = Number.isFinite(requested)
       ? Math.max(0, Math.min(1, requested))
       : null;

@@ -42,6 +42,7 @@ assert.doesNotMatch(televisionJs, /openInVideoPageLayer\(sexEdLink\)/);
 assert.match(televisionJs, /setProgrammeMixLevel\(level\)/);
 assert.match(televisionJs, /const SEX_ED_PROGRAMME_MIX_LEVEL = \.1125/);
 assert.match(televisionJs, /setProgrammeMixLevel\(SEX_ED_PROGRAMME_MIX_LEVEL\)/);
+assert.match(televisionJs, /level === null \|\| level === undefined \|\| level === ""/);
 assert.match(televisionJs, /dataset\.programmeFixedMixLevel = String\(programmeFixedMixLevel\)/);
 assert.match(televisionJs, /joinBroadcastChannel\("party-james-bondage", \{ source: "sex_ed_episode" \}\)/);
 const openShelfSource = televisionJs.match(/function openSexEdShelf\(\)[\s\S]*?\n  }\n\n  function closeSexEdShelf/)?.[0] || "";
