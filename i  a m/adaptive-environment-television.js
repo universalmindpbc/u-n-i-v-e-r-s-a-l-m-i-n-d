@@ -6384,6 +6384,7 @@
     try { video.pause(); } catch {}
     video.muted = true;
     document.body.classList.add("television-room-open");
+    startFlowerSpin();
     openInVideoPageLayer(shopLink);
   }
 

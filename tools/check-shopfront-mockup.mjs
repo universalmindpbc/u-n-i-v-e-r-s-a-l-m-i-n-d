@@ -94,6 +94,7 @@ assert.ok(fs.existsSync(path.join(iam, "a s s e t s/shop-mockup/james-bondage-ha
 assert.match(shop, /data-shop-return-music[\s\S]*Universal Mind \[ I o H \] Logo 512\.png/, "Standalone Shop proof must reserve the Universal Mind flower position");
 assert.match(shopScript, /iam:return-to-television/, "The Shop flower must return framed visitors to their continuing Music Television room");
 assert.match(shopStyle, /data-music-television-frame="embedded"[\s\S]*shop-universal-nav[\s\S]*display:\s*none/, "The fallback flower must yield to the real outer-shell flower when framed");
+assert.match(television, /function bootstrapRequestedShop\(\)[\s\S]*classList\.add\("television-room-open"\);\s*startFlowerSpin\(\);\s*openInVideoPageLayer/, "The direct Shop journey must start the existing spinning outer-shell flower");
 assert.match(shop, /data-shop-theme-toggle/, "Shop must expose the day/night control");
 assert.match(shop, /savedTheme \|\| "night"/, "A first Shop visit must default to the night presentation");
 assert.doesNotMatch(shop, /prefersNight/, "System colour preference must not replace the night-first Shop default");
