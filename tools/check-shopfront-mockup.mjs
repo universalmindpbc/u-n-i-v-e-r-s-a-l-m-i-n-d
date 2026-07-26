@@ -139,7 +139,7 @@ assert.match(shopScript, /shop-catalogue-v1\.json/, "Shop catalogue must render 
 assert.match(shopScript, /productDialog\.showModal\(\)/, "Product cards must open the accessible expanded view");
 assert.match(shopScript, /productDialogPrice\.textContent = product\.price/, "Expanded product view must carry the verified price");
 assert.match(shopScript, /productDialogDescription\.textContent = product\.description/, "Expanded product view must carry the retailer-sourced description");
-assert.match(shopScript, /enteringCatalogue[\s\S]*window\.scrollTo\(0, 0\)/, "Entering ERES from the brand ledger must reset to the editorial header");
+assert.match(shopScript, /enteringCatalogue[\s\S]*scrollBehavior = "auto"[\s\S]*window\.scrollTo\(\{ top: 0, left: 0, behavior: "auto" \}\)/, "Entering ERES from the brand ledger must reset immediately to the editorial header");
 
 assert.match(shopScript, /iam:shop-music-request/, "Shop must request music through the persistent Music Television shell");
 assert.match(television, /iam:shop-music-request/, "Music Television must respond to Shop music requests");

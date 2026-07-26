@@ -316,7 +316,10 @@
       return;
     }
     if (enteringCatalogue) {
-      window.requestAnimationFrame(() => window.scrollTo(0, 0));
+      const root = document.documentElement;
+      root.style.scrollBehavior = "auto";
+      window.scrollTo({ top: 0, left: 0, behavior: "auto" });
+      window.requestAnimationFrame(() => root.style.removeProperty("scroll-behavior"));
     }
     const selectedProduct = productFromHash();
     if (selectedProduct) showProduct(selectedProduct);
