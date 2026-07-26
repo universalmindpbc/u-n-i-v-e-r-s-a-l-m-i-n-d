@@ -18,7 +18,8 @@ f5523d0d103367606e5c786fdefe6a1a560975a214ebe5188405469ec5619e09	tools/analyze-v
 f1670bb15260c563cfe508ea2be7ddfe2f1b9260e0f3ab2f1015343345b5d177	i  a m.md
 2395bc9f9a00c3c567f3525cda478d2c138592cd215860d5b1545c88e2037f38	community-globe.html
 95811f319fe8fd80719921ccffdb063f417f77fcec50b3eac90c319d9cc84dce	mantra-samples-v1.json
-69a1d949611dcb46cf9031f052cf634398724fe71c1a461562ed0c6f2b667172	index.html
+247397dadc0e39b2dde0260e40f11117da5b9e6d93c95ceb52d4773c601f38fa	index.html
+d7f214e8a9a49b9c02b0f000cfa048df0aa1c1f8ea4fb7287e5f626a54603a7f	shop.css
 6402cc9d89a20b6e4b48802930edbbe616be2186f1a2e3688736d2e05e5b6231	mantra-sampler.js
 6733d57632028171b99f89270ff8237c250411f62166ebe1a2f36a80fe88833f	vogue-self-report.js
 8db79c73cc87c67ec83416ea86f2c9ceb53a9ac706eed513bbf7ac1c01f15a59	about.js
@@ -65,6 +66,7 @@ b692b121b053af40a60b1cf1782aa95ca2648714aae914282844602a3a4e54c3	emdr-shader.js
 c1c822706963fd43a4320f7212c399503fb2a4f64206a3bf75e13b34f83e784a	adaptive-inference-engine-system-prompt-v2.22-content.js
 2d617f2ef088b89c73c02cfc5f4fa7f418ce6a79a270d2d4c1950323c8246d08	emdr-vector-worlds.js
 beb34584876306e5825ba720c8cfb01b871065791c48be5add2ce5cc6d75f59f	adaptive-inference-engine-system-prompt-v1.11.html
+72416788d1fc16d2f3a0f10dcd9516b4d6f615f3dedada451d8e5a477e06e608	shop.html
 f8316640aa0abbcb8880897ea3f05b506041c2ed3cdd4170100d0ef56edce4e3	realtime-voice-assistant.js
 3862c4481721b08403d25024626930de4c0a2b265ccc336e99b830bb3133825e	c h a n g e l o g.md
 5e1fdfbadb0466e1997b206c6197cba92f566d211a16f31bd627da4cfb976b4b	mantra-audio-fx.js
@@ -72,12 +74,13 @@ e12eb24c367d2ac6f67963f434a729027e75b914e450b6260f47c01b9bd1ef58	i  a m  c h e c
 2ce0d0a5afb4d9961eec772a296e17f9c703d89182648b6d35ee6007c776d59f	science-research-data-v1.js
 fa5e34089bf9beb5efdf29d28d82e758d766a3e078ab1f271fb7e4fb698c0367	mantra-sampler.css
 43bb3e81ba8213e37db4fec33570d65bfed2bdc74ea138e2bd46af7b18108b86	adaptive-music-video-catalogue-v1.11.json
-9b1f663a5ffeaf28bb73416e8934c8dfed7a8c07b18a9adbb12edf36abda54b4	adaptive-environment-television.js
+d8b8dcecdd0b64bbcf8ec33f3140eb19e38e1007b76e6f624d1b574fe8bce673	adaptive-environment-television.js
 21018b071ae34b685b6ee42f98207b3b1af59b53977f6ce26345fcf1b1224c35	technology.html
-9e64e5c5901fe011a3209d0cde9a9f1e1494c2d89fa0453ae5a27731c10427ec	adaptive-environment-television.html
+cfcfa8dac37547afc93482c0caff9b58a2d7200bbdd1b4bbaa41e09e3a62b1a7	adaptive-environment-television.html
 dde02975acff59c1a024ea00edbe34cfca0ad446fe252b60f42d679ef49fe892	script.js
 8ea0432ffcd62efe867482b520f0f7d2f005cc43117cb5424ca7097d7f5ad936	stakeholders/budget/index.html
 0f32e3f59c3045259d45f6db8dd9ebb9fcac04da5b8a2982912baae86d7e14f2	stakeholders/budget/iamvogue-stakeholder-budget-v1.xlsx
+f05e966f58441cd152b307bbbe6b0cac2ff9eaf1ab2fc324e089482d54ad6e51	shopfront-architecture.md
 6b4dabad0c6b29d40d4d7abe7661345cdcc0d9103705a3bf2233a632a1c3192b	adaptive-soundtrack-selection-guide-v1.11.json
 d7b0c8c14b00152e1be5a74c0d51dd9e31ea33fb6c0b0dbc5febc6f903aaa89d	favicon.png
 cb1b29386bb61f875d22f83de35c53a285a30ff7433e9cb58a9940914231d52e	adaptive-inference-engine-system-prompt-v2.22.html
@@ -111,6 +114,7 @@ b24c854a7f72d9405a5356f697f7c30658a659d25472517d254b090ca7fa3e3d	api/realtime-cl
 9a6ec6f1d90ab5d1c67389791f1e2fb95a285e0d57fcae480ae176ea7a1c6f27	api/broadcast-interactions.php
 6a8254aba9609963d3bf84ad05febfcde1aaf989711241e33f74dd5315d43a50	api/.htaccess
 ba84d95b8970e48f10c03f6a3ca28073c2ff80366d4e4ededcf6369b4585c146	cloudflare-stream-catalogue.js
+753ee7bee5fcdbffc9b6df8ae9a3f1c6f2ba077f24c6fd44302b7e1846d1c227	shop.js
 db213ad178d17d3b7092436c17048a426e2ac2cc8cedaa1a4a1740b1c0184bec	video-beat-grid-v1.json
 038b3253ec1922dd72f098a762ad4b3739a297a6c0259080f57209f55696995a	our-team-concept.html
 056b2cfea79da0ae3212382dea92045698bece09c7ce8daa327ac4b547658330	technology-citizen-needs.css
@@ -150,6 +154,18 @@ f0cf686dd585bab3a0e110c4674e760a4c222e42c98f455d6762a879b10ae176	a s s e t s/r e
 757602ea01b370ffa42f88027edea29e687da69465ca3f78304d1c23b0ddb67b	a s s e t s/r e f e r e n c e s/Global Nav Lightbox - Screen 4.png
 055bd4cd0a8be7a8f3f37ee098fb3e951116c1d5b2cd301f7b75b90b27bd5fb7	a s s e t s/r e f e r e n c e s/Global Nav Lightbox - Screen 5.png
 396bef934cc6463037d7f9c7d15e542ab6da07305474a3d1c89ffac8114a1ac6	a s s e t s/q u a n t u m [ t r e e ].m4a
+84e852d5b7ef5b0813d31e6aabbe5ffcb334005200dcdb75fffd76f9b6dc565d	a s s e t s/shop-mockup/nike-skims-airy.png
+fa0a131f319d3f31d156f615374b2b5cd9bbeab362705d21e0267e05cdd1d371	a s s e t s/shop-mockup/nagnata-pinstripe.jpg
+98e9136b2e14af3ccb8de435b9237c3634ff6894b622c85fffb5d29d880533e6	a s s e t s/shop-mockup/annies-juliet.jpg
+c2662a74dfd696b809a650c1d90e93768fc344fc3622cf178f1d432161dfe089	a s s e t s/shop-mockup/skims-body.jpg
+0d4ed9a7ae236952583a5168858954dc9ec4f9b8e8a512ea4829fdb5b5fb05b0	a s s e t s/shop-mockup/triangl-mima.jpg
+1e7bd4bba47ff158499f0a5580b404294e0e2f64aa84a0339a04dff946ca13ce	a s s e t s/shop-mockup/karla-fluorite.jpg
+854c79819379e218a72a9c7c399631fd82664bccc0d2c49e4fa07beabfd411b7	a s s e t s/shop-mockup/wardrobe-sheer.jpg
+c88391560d9470f8bd430a81582d19eebca6daa75480ac08f07a9a4ca3ba79c6	a s s e t s/shop-mockup/eres-apparence.jpg
+2565a0173a0d4fdcb21b34803356230b94edb76a60014ff144d97281962892ee	a s s e t s/shop-mockup/sir-montparnasse.jpg
+dca72ca85301d64b599236f34b7ccdd1d2de731aaff3ed9515d6e3ce1e73dd93	a s s e t s/shop-mockup/pucci-vivara.jpg
+6d8346410a8a43816d1aa8f81f6fd866ffb6682ff4d6f033dbe37d63bfe69d4d	a s s e t s/shop-mockup/bordelle-signature.jpg
+ef4da7654b183dcf1b17365050ec04ea9ae16b653522009c6548a24e819737ee	a s s e t s/shop-mockup/upside-neptune.jpg
 002a02564c7ad3a38a4e491212b4ff6b604807125d30ae55e7ed535597e726f8	a s s e t s/wallet-fashion-reference.png
 d90a2e05eefd5b61d352b2994e9b0e4646193e175ff9944666f03a69d550126b	a s s e t s/Citizen Needs - Populated Radar - Diagram.png
 304d4fa92c0874490fe182dbfc624876a6b5c5c8e76dd1a5bc6a5e5c9ae167fe	a s s e t s/Meta logo.png
