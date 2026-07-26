@@ -153,7 +153,8 @@ assert.match(architecture, /do not activate without Ben's go-ahead/i, "Fashion T
 assert.match(architecture, /No diagnosis, treatment claim/i, "Fashion Tensor roadmap is missing the clinical boundary");
 assert.match(architecture, /Commercial value must not override citizen fit/i, "Fashion Tensor roadmap is missing the commercial-conflict boundary");
 assert.match(architecture, /default catalogue thumbnail is always the retailer's first official product hero/i, "Catalogue is missing the deterministic first-hero thumbnail rule");
-assert.match(architecture, /fail-closed product authority/i, "Catalogue architecture must make the approved bookmark manifest authoritative");
+assert.match(architecture, /Notion page \*\*`j a m e s  b o n d a g e  \[ s h o p \]`\*\* is the canonical master registry/i, "Catalogue architecture must make the approved Notion registry authoritative");
+assert.match(architecture, /fail-closed staging projection/i, "Catalogue architecture must retain a fail-closed staging projection");
 assert.match(architecture, /neither GPT nor an ingestion process may discover, infer, replace or add a product/i, "Catalogue architecture must prohibit generated or discovered products");
 
 console.log("Shopfront mock-up checks passed.");

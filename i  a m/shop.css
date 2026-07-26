@@ -1298,18 +1298,28 @@ body[data-shop-view="catalogue"] [data-shop-editorial] { display: none !importan
 
 @media (max-width: 700px) {
   .shop-masthead {
+    grid-template-columns: minmax(0, 1fr) auto;
     min-height: 58px;
     padding: 0 17px 0 74px;
   }
 
   .shop-universal-nav { top: 8px; left: 12px; width: 42px; height: 42px; }
 
-  .shop-masthead__brand,
   .shop-theme,
   .shop-music { font-size: 8px; }
 
-  .shop-masthead__actions { gap: 16px; }
-  .shop-menu__panel { padding: 22px 20px 26px; }
+  .shop-masthead__brand { display: none; }
+  .shop-masthead__nav { justify-content: flex-start; gap: 14px; }
+  .shop-masthead__actions { grid-column: 2; gap: 12px; }
+  .shop-menu__panel {
+    position: fixed;
+    top: 58px;
+    right: 12px;
+    left: 12px;
+    width: auto;
+    padding: 22px 20px 26px;
+    transform: none;
+  }
   .shop-music [data-shop-music-label] { font-size: 0; }
   .shop-music [data-shop-music-label]::after { content: "chill"; font-size: 8px; }
 

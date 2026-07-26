@@ -26,14 +26,17 @@ The next design step is a classic, minimal catalogue beneath the editorial shopf
 - The expanded view enlarges the hero image and holds the brand, product title, forms/categories, concise editorial context and one clearly disclosed route to the retailer. It closes back into the same catalogue position without interrupting the music experience.
 - Each expanded state should have a shareable query or hash URL and correct browser Back behaviour. This provides product-level navigation without maintaining hundreds of hand-authored pages.
 - A structured catalogue record should drive every view so a product, URL or image is updated once and reflected across brand results, category results, expanded views and later adaptive sequencing.
-- `shop-approved-products-v1.json` is the fail-closed product authority. It mirrors Ben-approved Safari bookmarks exactly: retailer pages may supply metadata only for a URL already present in that manifest, and neither GPT nor an ingestion process may discover, infer, replace or add a product. A non-product homepage bookmark remains a brand link rather than becoming a catalogue card.
+- The Notion page **`j a m e s  b o n d a g e  [ s h o p ]`** is the canonical master registry for the 300+ products selected across the 23 brands. Future ingestion should reconcile products from that page rather than re-extracting Safari bookmarks or discovering products on the web. Retailer pages may supply current metadata only for a canonical URL already present in the Notion registry; neither GPT nor an ingestion process may discover, infer, replace or add a product.
+- `shop-approved-products-v1.json` is the fail-closed staging projection for the current signed-off mock-up. It contains only the URLs Ben explicitly supplied for this round and must be reconciled back to the Notion master before the wider catalogue is populated. A non-product homepage remains a brand link rather than becoming a catalogue card.
 - Every ingested card retains its approved `sourcePageUrl`, the retailer's exact gallery-zero `sourceImageUrl`, `sourceImageIndex: 0`, retrieval date and any separate official price-source URL. If an approved page, first image, description or price cannot be verified, ingestion stops for that record and requests review instead of choosing an alternative.
 - Parties, cities, seasons or cultural moments can become temporary editorial pages that select product IDs from the same catalogue—for example an after-dark party edit or a city-specific summer wardrobe—without duplicating product content.
 - If editorial storytelling, SEO or a retailer partnership later justifies true product pages, generate those routes from the same catalogue records rather than authoring a second product system.
 
 ## Future Fashion Tensor — hold for approval
 
-When commissioned, create a human-readable Fashion Tensor in Notion, parallel in spirit to the music tensor. It should describe products in an editorially useful, inspectable way before any adaptive ordering is attempted.
+The existing Notion page **`j a m e s  b o n d a g e  [ s h o p ]`** becomes the beginning of a human-readable Fashion Tensor kernel, parallel in spirit to the music tensor. It should remain the editorially inspectable product source before any adaptive ordering is attempted.
+
+Add catalogue reconciliation fields so every product can be audited through ingestion: `approved`, `listed on shop`, `staging checked`, `retailer URL checked`, `first hero checked`, `description checked`, `price checked`, `last checked`, `shop product ID` and `review notes`. The public catalogue should only include records that are approved and marked ready; publishing a product should update its Notion listing status rather than creating a disconnected second list.
 
 Possible record layers:
 
@@ -62,7 +65,7 @@ The online tensor would be a versioned, machine-readable projection of approved 
 ## Proposed implementation sequence — only after approval
 
 1. Agree the scientific and editorial question the Fashion Tensor is allowed to answer.
-2. Define the Notion schema, controlled vocabularies, evidence/status fields and review workflow.
+2. Extend `j a m e s  b o n d a g e  [ s h o p ]` with the controlled vocabularies, evidence/status fields and review workflow, preserving its existing 300+ product records.
 3. Hand-tag a small, diverse pilot set and test inter-rater consistency.
 4. Export a versioned public-safe tensor and validate it against the source records.
 5. Prototype deterministic, explainable sequencing before involving GPT.
