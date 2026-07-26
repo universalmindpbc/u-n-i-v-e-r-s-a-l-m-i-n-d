@@ -8,6 +8,7 @@ const iam = path.join(root, "i  a m");
 const read = (relative) => fs.readFileSync(path.join(root, relative), "utf8");
 const shop = read("i  a m/shop.html");
 const shopScript = read("i  a m/shop.js");
+const catalogue = JSON.parse(read("i  a m/shop-catalogue-v1.json"));
 const architecture = read("i  a m/shopfront-architecture.md");
 const television = read("i  a m/adaptive-environment-television.js");
 const index = read("i  a m/index.html");
@@ -41,8 +42,18 @@ for (const absent of [
 ]) {
   assert.doesNotMatch(shop, absent, `Current shop must not contain ${absent}`);
 }
-assert.equal((shop.match(/<li><span>/g) || []).length, 23, "Brand ledger must contain all 23 retailers");
+assert.equal((shop.match(/<li(?:\s+class="[^"]*")?><span>/g) || []).length, 23, "Brand ledger must contain all 23 retailers");
 assert.equal((shop.match(/data-product(?:\s|>)/g) || []).length, 12, "Opening edit must contain the restrained 12 photographed hero pieces");
+
+assert.equal(catalogue.products.length, 15, "ERES catalogue proof must contain exactly 15 products");
+assert.equal(new Set(catalogue.products.map((product) => product.id)).size, 15, "Catalogue product IDs must be unique");
+assert.equal(new Set(catalogue.products.map((product) => product.slug)).size, 15, "Catalogue product slugs must be unique");
+assert.ok(catalogue.products.every((product) => product.brand === "ERES"), "First catalogue proof must remain a singular ERES edit");
+assert.ok(catalogue.products.every((product) => product.imageSource === "retailer_first_hero"), "Every bulk-ingested catalogue image must use the first retailer hero");
+for (const product of catalogue.products) {
+  assert.ok(fs.existsSync(path.join(iam, product.image)), `Missing ERES catalogue image: ${product.image}`);
+  assert.match(product.retailerUrl, /^https:\/\/www\.eresparis\.com\//, `ERES catalogue product must keep an official retailer URL: ${product.id}`);
+}
 
 const assetMatches = [...shop.matchAll(/src="(a s s e t s\/shop-mockup\/[^"]+)"/g)].map((match) => match[1]);
 assert.ok(assetMatches.length >= 12, "Shop must use the locally preserved presentation imagery");
@@ -70,6 +81,12 @@ assert.doesNotMatch(shop, /prefersNight/, "System colour preference must not rep
 assert.match(shopScript, /iamShopThemeV1/, "Shop must remember the viewer's day/night choice");
 assert.match(shopScript, /dataset\.shopTheme \|\| "night"/, "Shop script fallback must remain night-first");
 assert.equal((shop.match(/data-filter-category=/g) || []).length, 6, "James Bondage edit must expose the six restrained form filters");
+assert.match(shop, /href="#catalogue\/eres"[^>]*data-shop-catalogue-link/, "ERES must open from the 23-brand ledger");
+assert.match(shop, /data-shop-product-dialog/, "Catalogue must expose the quiet expanded product view");
+assert.equal((shop.match(/data-catalogue-filter=/g) || []).length, 4, "ERES catalogue must expose the restrained form filters");
+assert.match(shopScript, /#catalogue\\\/eres\\\/product\\\//, "Expanded product state must have a shareable hash route");
+assert.match(shopScript, /shop-catalogue-v1\.json/, "Shop catalogue must render from the shared structured product data");
+assert.match(shopScript, /productDialog\.showModal\(\)/, "Product cards must open the accessible expanded view");
 
 assert.match(shopScript, /iam:shop-music-request/, "Shop must request music through the persistent Music Television shell");
 assert.match(television, /iam:shop-music-request/, "Music Television must respond to Shop music requests");
@@ -82,5 +99,6 @@ assert.match(redirects, /^\/shop /m, "Root /shop route is missing from static re
 assert.match(architecture, /do not activate without Ben's go-ahead/i, "Fashion Tensor roadmap must remain approval-gated");
 assert.match(architecture, /No diagnosis, treatment claim/i, "Fashion Tensor roadmap is missing the clinical boundary");
 assert.match(architecture, /Commercial value must not override citizen fit/i, "Fashion Tensor roadmap is missing the commercial-conflict boundary");
+assert.match(architecture, /default catalogue thumbnail is always the retailer's first official product hero/i, "Catalogue is missing the deterministic first-hero thumbnail rule");
 
 console.log("Shopfront mock-up checks passed.");

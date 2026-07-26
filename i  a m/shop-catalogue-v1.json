@@ -1,0 +1,156 @@
+{
+  "version": 1,
+  "thumbnailPolicy": "retailer_first_hero_unless_editorial_override",
+  "products": [
+    {
+      "id": "eres-ruban-60997-1001",
+      "slug": "ruban-crop-top-bra",
+      "brand": "ERES",
+      "name": "Ruban Crop Top Bra",
+      "categories": ["bras", "lingerie"],
+      "image": "a s s e t s/shop-mockup/eres-catalogue/ruban.avif",
+      "imageSource": "retailer_first_hero",
+      "retailerUrl": "https://www.eresparis.com/eu/en/lingerie/60997-1001.html"
+    },
+    {
+      "id": "eres-voilette-612529-1001",
+      "slug": "voilette-high-waisted-briefs",
+      "brand": "ERES",
+      "name": "Voilette High-Waisted Briefs",
+      "categories": ["briefs", "lingerie"],
+      "image": "a s s e t s/shop-mockup/eres-catalogue/voilette.avif",
+      "imageSource": "retailer_first_hero",
+      "retailerUrl": "https://www.eresparis.com/eu/en/lingerie/612529-1001.html"
+    },
+    {
+      "id": "eres-voltige-622504-1001",
+      "slug": "voltige-bodysuit",
+      "brand": "ERES",
+      "name": "Voltige Bodysuit",
+      "categories": ["bodysuits", "lingerie"],
+      "image": "a s s e t s/shop-mockup/eres-catalogue/voltige.avif",
+      "imageSource": "retailer_first_hero",
+      "retailerUrl": "https://www.eresparis.com/eu/en/lingerie/622504-1001.html"
+    },
+    {
+      "id": "eres-intriguee-60996-1001",
+      "slug": "intriguee-triangle-bra-black",
+      "brand": "ERES",
+      "name": "Intriguée Triangle Bra",
+      "categories": ["bras", "lingerie"],
+      "image": "a s s e t s/shop-mockup/eres-catalogue/intriguee-black.avif",
+      "imageSource": "retailer_first_hero",
+      "retailerUrl": "https://www.eresparis.com/eu/en/lingerie/60996-1001.html"
+    },
+    {
+      "id": "eres-envolee-612527-1001",
+      "slug": "envolee-tanga-black",
+      "brand": "ERES",
+      "name": "Envolée Tanga",
+      "categories": ["briefs", "lingerie"],
+      "image": "a s s e t s/shop-mockup/eres-catalogue/envolee-black.avif",
+      "imageSource": "retailer_first_hero",
+      "retailerUrl": "https://www.eresparis.com/eu/en/lingerie/612527-1001.html"
+    },
+    {
+      "id": "eres-evidence-60999-01517",
+      "slug": "evidence-demi-cup-bra-chat-noir",
+      "brand": "ERES",
+      "name": "Évidence Demi-Cup Bra",
+      "categories": ["bras", "lingerie"],
+      "image": "a s s e t s/shop-mockup/eres-catalogue/evidence-chat-noir.avif",
+      "imageSource": "retailer_first_hero",
+      "retailerUrl": "https://www.eresparis.com/eu/en/lingerie/60999-01517.html"
+    },
+    {
+      "id": "eres-certitude-612528-01517",
+      "slug": "certitude-briefs-chat-noir",
+      "brand": "ERES",
+      "name": "Certitude Briefs",
+      "categories": ["briefs", "lingerie"],
+      "image": "a s s e t s/shop-mockup/eres-catalogue/certitude-chat-noir.avif",
+      "imageSource": "retailer_first_hero",
+      "retailerUrl": "https://www.eresparis.com/eu/en/lingerie/612528-01517.html"
+    },
+    {
+      "id": "eres-intriguee-60996-01517",
+      "slug": "intriguee-triangle-bra-chat-noir",
+      "brand": "ERES",
+      "name": "Intriguée Triangle Bra / Chat Noir",
+      "categories": ["bras", "lingerie"],
+      "image": "a s s e t s/shop-mockup/eres-catalogue/intriguee-chat-noir.avif",
+      "imageSource": "retailer_first_hero",
+      "retailerUrl": "https://www.eresparis.com/eu/en/lingerie/60996-01517.html"
+    },
+    {
+      "id": "eres-envolee-612527-01517",
+      "slug": "envolee-tanga-chat-noir",
+      "brand": "ERES",
+      "name": "Envolée Tanga / Chat Noir",
+      "categories": ["briefs", "lingerie"],
+      "image": "a s s e t s/shop-mockup/eres-catalogue/envolee-chat-noir.avif",
+      "imageSource": "retailer_first_hero",
+      "retailerUrl": "https://www.eresparis.com/eu/en/lingerie/612527-01517.html"
+    },
+    {
+      "id": "eres-inspiree-612523-01528",
+      "slug": "inspiree-briefs",
+      "brand": "ERES",
+      "name": "Inspirée Briefs",
+      "categories": ["briefs", "lingerie"],
+      "image": "a s s e t s/shop-mockup/eres-catalogue/inspiree.avif",
+      "imageSource": "retailer_first_hero",
+      "retailerUrl": "https://www.eresparis.com/eu/en/lingerie/612523-01528.html"
+    },
+    {
+      "id": "eres-reveur-612522-01528",
+      "slug": "reveur-tanga",
+      "brand": "ERES",
+      "name": "Rêveur Tanga",
+      "categories": ["briefs", "lingerie"],
+      "image": "a s s e t s/shop-mockup/eres-catalogue/reveur.avif",
+      "imageSource": "retailer_first_hero",
+      "retailerUrl": "https://www.eresparis.com/eu/en/lingerie/612522-01528.html"
+    },
+    {
+      "id": "eres-destin-60990-01528",
+      "slug": "destin-triangle-bra",
+      "brand": "ERES",
+      "name": "Destin Triangle Bra",
+      "categories": ["bras", "lingerie"],
+      "image": "a s s e t s/shop-mockup/eres-catalogue/destin.avif",
+      "imageSource": "retailer_first_hero",
+      "retailerUrl": "https://www.eresparis.com/eu/en/lingerie/60990-01528.html"
+    },
+    {
+      "id": "eres-evidence-60999-1001",
+      "slug": "evidence-demi-cup-bra-black",
+      "brand": "ERES",
+      "name": "Évidence Demi-Cup Bra / Black",
+      "categories": ["bras", "lingerie"],
+      "image": "a s s e t s/shop-mockup/eres-catalogue/evidence-black.avif",
+      "imageSource": "retailer_first_hero",
+      "retailerUrl": "https://www.eresparis.com/eu/en/lingerie/60999-1001.html"
+    },
+    {
+      "id": "eres-certitude-612528-1001",
+      "slug": "certitude-briefs-black",
+      "brand": "ERES",
+      "name": "Certitude Briefs / Black",
+      "categories": ["briefs", "lingerie"],
+      "image": "a s s e t s/shop-mockup/eres-catalogue/certitude-black.avif",
+      "imageSource": "retailer_first_hero",
+      "retailerUrl": "https://www.eresparis.com/eu/en/lingerie/612528-1001.html"
+    },
+    {
+      "id": "eres-delicieux-64001-01512",
+      "slug": "delicieux-triangle-bra",
+      "brand": "ERES",
+      "name": "Délicieux Triangle Bra",
+      "categories": ["bras", "lingerie"],
+      "image": "a s s e t s/shop-mockup/eres-catalogue/delicieux.avif",
+      "imageSource": "retailer_first_hero",
+      "retailerUrl": "https://www.eresparis.com/eu/en/lingerie/64001-01512.html"
+    }
+  ]
+}

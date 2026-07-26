@@ -15,7 +15,7 @@
       }
     </script>
     <script src="music-television-frame-context.js?v=music-tv-frame-14ebf4459d03"></script>
-    <link rel="stylesheet" href="shop.css?v=shop-james-bondage-1">
+    <link rel="stylesheet" href="shop.css?v=shop-eres-catalogue-2">
   </head>
   <body class="shop-page">
     <a class="shop-skip" href="#edit">Skip to the edit</a>
@@ -42,7 +42,7 @@
     </header>
 
     <main>
-      <section class="shop-hero" id="top" aria-labelledby="shop-title">
+      <section class="shop-hero" id="top" aria-labelledby="shop-title" data-shop-editorial>
         <div class="shop-hero__film" aria-label="Bordelle Signature Waspie film">
           <iframe
             data-shop-hero-video
@@ -60,7 +60,7 @@
         <a class="shop-hero__enter" href="#edit">the edit <span aria-hidden="true">↓</span></a>
       </section>
 
-      <section class="shop-looks" aria-label="James Bondage opening looks">
+      <section class="shop-looks" aria-label="James Bondage opening looks" data-shop-editorial>
         <a class="shop-look shop-look--bordelle" href="https://eu.bordelle.co.uk/products/signature-waspie-cream?variant=43656648884396" target="_blank" rel="noopener noreferrer">
           <figure><img src="a s s e t s/shop-mockup/bordelle-waspie-detail.jpg" alt="Bordelle Signature Waspie in cream, back detail" fetchpriority="high"></figure>
           <p><strong>Bordelle</strong><span>Signature Waspie</span></p>
@@ -75,7 +75,7 @@
         </a>
       </section>
 
-      <section class="shop-edit" id="edit" aria-labelledby="edit-title">
+      <section class="shop-edit" id="edit" aria-labelledby="edit-title" data-shop-editorial>
         <header class="shop-section-heading">
           <p>02 / James Bondage</p>
           <h2 id="edit-title">The edit</h2>
@@ -171,19 +171,19 @@
         </div>
       </section>
 
-      <a class="shop-campaign" href="https://www.theupside.com.au/kefi-25in-midi-pant-oyster-usw226087/" target="_blank" rel="noopener noreferrer">
+      <a class="shop-campaign" href="https://www.theupside.com.au/kefi-25in-midi-pant-oyster-usw226087/" target="_blank" rel="noopener noreferrer" data-shop-editorial>
         <figure><img src="a s s e t s/shop-mockup/upside-kefi-hero.png" alt="The Upside Kefi pant campaign image"></figure>
         <p><strong>The Upside</strong><span>Kefi / body in motion</span></p>
       </a>
 
-      <section class="shop-brands" id="brands" aria-labelledby="brands-title">
+      <section class="shop-brands" id="brands" aria-labelledby="brands-title" data-shop-editorial>
         <header class="shop-section-heading shop-section-heading--brands">
           <p>03 / brands</p>
           <h2 id="brands-title">23 brands</h2>
           <b>312</b>
         </header>
         <ol class="shop-brand-ledger">
-          <li><span>ERES</span><b>37</b></li>
+          <li class="shop-brand-ledger__active"><span><a href="#catalogue/eres" data-shop-catalogue-link>ERES <em>browse 15</em></a></span><b>37</b></li>
           <li><span>Mugler</span><b>6</b></li>
           <li><span>La Perla</span><b>22</b></li>
           <li><span>Fleur of England</span><b>4</b></li>
@@ -208,13 +208,46 @@
           <li><span>WARDROBE.NYC</span><b>21</b></li>
         </ol>
       </section>
+
+      <section class="shop-catalogue" data-shop-catalogue hidden aria-labelledby="catalogue-title">
+        <a class="shop-catalogue__back" href="#brands" data-shop-catalogue-back><span aria-hidden="true">←</span> James Bondage</a>
+        <header class="shop-catalogue__heading">
+          <p>04 / brand catalogue</p>
+          <h2 id="catalogue-title">ERES</h2>
+          <b data-catalogue-count>15</b>
+        </header>
+        <div class="shop-catalogue__filters" aria-label="Filter ERES products">
+          <span>form</span>
+          <div role="group" aria-label="Filter catalogue by form">
+            <button class="is-active" type="button" data-catalogue-filter="all" aria-pressed="true">all</button>
+            <button type="button" data-catalogue-filter="bras" aria-pressed="false">bras</button>
+            <button type="button" data-catalogue-filter="briefs" aria-pressed="false">briefs</button>
+            <button type="button" data-catalogue-filter="bodysuits" aria-pressed="false">bodysuits</button>
+          </div>
+          <p data-catalogue-status aria-live="polite">15 pieces</p>
+        </div>
+        <div class="shop-catalogue__grid" id="catalogue-grid" data-catalogue-grid aria-live="polite"></div>
+      </section>
     </main>
+
+    <dialog class="shop-product-dialog" data-shop-product-dialog aria-labelledby="shop-product-dialog-title" aria-describedby="shop-product-dialog-form">
+      <button class="shop-product-dialog__close" type="button" data-shop-product-dialog-close aria-label="Close expanded product view">close <span aria-hidden="true">×</span></button>
+      <div class="shop-product-dialog__layout">
+        <figure><img src="" alt="" data-shop-product-dialog-image></figure>
+        <div class="shop-product-dialog__details">
+          <p data-shop-product-dialog-brand>ERES</p>
+          <h2 id="shop-product-dialog-title" data-shop-product-dialog-title></h2>
+          <p id="shop-product-dialog-form" data-shop-product-dialog-form></p>
+          <a href="#" target="_blank" rel="noopener noreferrer" data-shop-product-dialog-retailer>view at ERES <span aria-hidden="true">↗</span></a>
+        </div>
+      </div>
+    </dialog>
 
     <footer class="shop-footer">
       <p>James Bondage / Vogue presentation mock-up</p>
       <p>Retail and affiliate relationships are proposed. Imagery © the respective brands.</p>
     </footer>
 
-    <script src="shop.js?v=shop-james-bondage-1"></script>
+    <script src="shop.js?v=shop-eres-catalogue-2"></script>
   </body>
 </html>

@@ -21,6 +21,7 @@ The next design step is a classic, minimal catalogue beneath the editorial shopf
 - One catalogue view serves both brand and category routes: all ERES, all WARDROBE.NYC, all swim, bras, bodysuits, dresses, or another approved form.
 - Desktop uses three equal product columns for as many rows as the result set requires; tablet resolves to two columns and mobile to one.
 - The first presentation can hold roughly 15–30 products at once—five to ten desktop rows—without promotional tiles, pop-ups or competing calls to action.
+- The default catalogue thumbnail is always the retailer's first official product hero. Do not manually search alternate gallery frames during bulk ingestion; use a separate, explicitly approved editorial-image override only when Ben or Vogue supplies a stronger in-situ image.
 - Each card contains one human-first image, brand and product name. Selecting it opens a quiet expanded view rather than requiring a separate internal product page.
 - The expanded view enlarges the hero image and holds the brand, product title, forms/categories, concise editorial context and one clearly disclosed route to the retailer. It closes back into the same catalogue position without interrupting the music experience.
 - Each expanded state should have a shareable query or hash URL and correct browser Back behaviour. This provides product-level navigation without maintaining hundreds of hand-authored pages.
