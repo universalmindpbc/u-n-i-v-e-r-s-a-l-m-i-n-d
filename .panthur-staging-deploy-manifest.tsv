@@ -66,7 +66,7 @@ b692b121b053af40a60b1cf1782aa95ca2648714aae914282844602a3a4e54c3	emdr-shader.js
 c1c822706963fd43a4320f7212c399503fb2a4f64206a3bf75e13b34f83e784a	adaptive-inference-engine-system-prompt-v2.22-content.js
 2d617f2ef088b89c73c02cfc5f4fa7f418ce6a79a270d2d4c1950323c8246d08	emdr-vector-worlds.js
 beb34584876306e5825ba720c8cfb01b871065791c48be5add2ce5cc6d75f59f	adaptive-inference-engine-system-prompt-v1.11.html
-250a1abe75ae12aad612155cbc2b4b7af5382964c98e1cc9c157c001feb4e87e	shop.html
+85fadd28c1385f83f9f6f6cb5fe712c6849fd1c18d5dfc5cbf8b87cc787e24eb	shop.html
 f8316640aa0abbcb8880897ea3f05b506041c2ed3cdd4170100d0ef56edce4e3	realtime-voice-assistant.js
 3862c4481721b08403d25024626930de4c0a2b265ccc336e99b830bb3133825e	c h a n g e l o g.md
 5e1fdfbadb0466e1997b206c6197cba92f566d211a16f31bd627da4cfb976b4b	mantra-audio-fx.js
@@ -80,7 +80,7 @@ cfcfa8dac37547afc93482c0caff9b58a2d7200bbdd1b4bbaa41e09e3a62b1a7	adaptive-enviro
 dde02975acff59c1a024ea00edbe34cfca0ad446fe252b60f42d679ef49fe892	script.js
 8ea0432ffcd62efe867482b520f0f7d2f005cc43117cb5424ca7097d7f5ad936	stakeholders/budget/index.html
 0f32e3f59c3045259d45f6db8dd9ebb9fcac04da5b8a2982912baae86d7e14f2	stakeholders/budget/iamvogue-stakeholder-budget-v1.xlsx
-c37ae19badd4ebe3acf8d6c1a67c46db6e615c9c3dc35e4b139ae66e686640cf	shopfront-architecture.md
+f52be9b5e8b10afb309bac2b00e3ff9d0ca8f334743b6e895e76df9ccf794075	shopfront-architecture.md
 6b4dabad0c6b29d40d4d7abe7661345cdcc0d9103705a3bf2233a632a1c3192b	adaptive-soundtrack-selection-guide-v1.11.json
 d7b0c8c14b00152e1be5a74c0d51dd9e31ea33fb6c0b0dbc5febc6f903aaa89d	favicon.png
 cb1b29386bb61f875d22f83de35c53a285a30ff7433e9cb58a9940914231d52e	adaptive-inference-engine-system-prompt-v2.22.html
@@ -154,17 +154,23 @@ f0cf686dd585bab3a0e110c4674e760a4c222e42c98f455d6762a879b10ae176	a s s e t s/r e
 757602ea01b370ffa42f88027edea29e687da69465ca3f78304d1c23b0ddb67b	a s s e t s/r e f e r e n c e s/Global Nav Lightbox - Screen 4.png
 055bd4cd0a8be7a8f3f37ee098fb3e951116c1d5b2cd301f7b75b90b27bd5fb7	a s s e t s/r e f e r e n c e s/Global Nav Lightbox - Screen 5.png
 396bef934cc6463037d7f9c7d15e542ab6da07305474a3d1c89ffac8114a1ac6	a s s e t s/q u a n t u m [ t r e e ].m4a
+bd50add6f527566ad4dafc056c2ca1cabea1bd2f910ba446759d0bf2f8d9965c	a s s e t s/shop-mockup/triangl-celeste-jett.png
 aa6d7faff16abfac983dcb88cba9e0273f5a34e580beebb99ac013cc0425d972	a s s e t s/shop-mockup/wardrobe-lace.webp
 84e852d5b7ef5b0813d31e6aabbe5ffcb334005200dcdb75fffd76f9b6dc565d	a s s e t s/shop-mockup/nike-skims-airy.png
+0478aa0b4e99927b18486879c3355fa81094d3496d9c902a228e74f950811974	a s s e t s/shop-mockup/pucci-vivara-triangle.png
 fa0a131f319d3f31d156f615374b2b5cd9bbeab362705d21e0267e05cdd1d371	a s s e t s/shop-mockup/nagnata-pinstripe.jpg
 98e9136b2e14af3ccb8de435b9237c3634ff6894b622c85fffb5d29d880533e6	a s s e t s/shop-mockup/annies-juliet.jpg
 c2662a74dfd696b809a650c1d90e93768fc344fc3622cf178f1d432161dfe089	a s s e t s/shop-mockup/skims-body.jpg
 0db1ea0fe905a2fad860ca03abcde925f2c7ab7f2f81c80707ddcc82112a7b0e	a s s e t s/shop-mockup/bordelle-waspie-detail.jpg
+dc5a317fe5db8e0d7c420f783892a5dcd9c021287d1adcf5df1855c867e9a80e	a s s e t s/shop-mockup/nagnata-pinstripe-editorial.png
 0d4ed9a7ae236952583a5168858954dc9ec4f9b8e8a512ea4829fdb5b5fb05b0	a s s e t s/shop-mockup/triangl-mima.jpg
+67943e3bbb40b276a4f76a3987a9c5f178121acfdad45c278bda1dabc0534d5b	a s s e t s/shop-mockup/eres-providence-portrait.png
+6cce8dedb026fc2c6bb0d3bac2990f93b749b1471cd169826b80cf176b2c54e9	a s s e t s/shop-mockup/nike-jordan-brooklyn.png
 1e7bd4bba47ff158499f0a5580b404294e0e2f64aa84a0339a04dff946ca13ce	a s s e t s/shop-mockup/karla-fluorite.jpg
 854c79819379e218a72a9c7c399631fd82664bccc0d2c49e4fa07beabfd411b7	a s s e t s/shop-mockup/wardrobe-sheer.jpg
 c88391560d9470f8bd430a81582d19eebca6daa75480ac08f07a9a4ca3ba79c6	a s s e t s/shop-mockup/eres-apparence.jpg
 2565a0173a0d4fdcb21b34803356230b94edb76a60014ff144d97281962892ee	a s s e t s/shop-mockup/sir-montparnasse.jpg
+6236122bb6fbe45000a65c49cf6dac6dbf8589ed88756b6369e3496d2737ec57	a s s e t s/shop-mockup/sir-montparnasse-portrait.png
 e18099cc1820d9f2a59480e8653bc7cd6604610391e7cec06a8b3ecaeb9b4b2c	a s s e t s/shop-mockup/upside-kefi-hero.png
 f3b92f6900a679472947166dc0bcb665be81198a1b1d2c3d58c3a2fa66206540	a s s e t s/shop-mockup/karla-neon-tiger.jpg
 bb7ba5971885b0979cead959182fdc750b53b996ef511a7462b1863f62fa0628	a s s e t s/shop-mockup/bordelle-waspie-dynamic.jpg
