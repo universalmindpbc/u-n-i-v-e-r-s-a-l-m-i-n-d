@@ -16,17 +16,28 @@ const redirects = read("_redirects");
 
 for (const required of [
   "James Bondage",
-  "Champagne Bohemia",
-  "inner planes",
-  "modul8 infinity",
   "23 brands",
-  "312 saved references",
+  "312",
   "affiliate relationships are proposed",
+  "Bordelle / Signature Waspie",
+  "WARDROBE.NYC",
+  "KARLA ŠPETIĆ",
+  "The Upside",
 ]) {
   assert.match(shop, new RegExp(required.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"), "i"), `Missing shop presentation text: ${required}`);
 }
 
 assert.doesNotMatch(shop, /James Bondage Health/i, "Fashion masthead must remain James Bondage, not James Bondage Health");
+for (const absent of [
+  /Champagne Bohemia/i,
+  /inner planes/i,
+  /modul8 infinity/i,
+  /Designed as a quieter way to browse/i,
+  /No urgency mechanics/i,
+  /A shop that pays attention/i,
+]) {
+  assert.doesNotMatch(shop, absent, `Current shop must not contain ${absent}`);
+}
 assert.equal((shop.match(/<li><span>/g) || []).length, 23, "Brand ledger must contain all 23 retailers");
 assert.equal((shop.match(/data-product(?:\s|>)/g) || []).length, 12, "Opening edit must contain the restrained 12 photographed hero pieces");
 
@@ -36,10 +47,26 @@ for (const relativeAsset of new Set(assetMatches)) {
   assert.ok(fs.existsSync(path.join(iam, relativeAsset)), `Missing shop image: ${relativeAsset}`);
 }
 
+for (const suppliedReference of [
+  "https://eu.bordelle.co.uk/products/signature-waspie-cream?variant=43656648884396",
+  "https://wardrobe.nyc/collections/bodysuits/products/lace-bodysuit-w5051f25lcblk",
+  "https://karlaspetic.com/product/no-v-neon-tiger-bikini/",
+  "https://www.eresparis.com/eu/en/lingerie/60653-01062.html",
+  "https://www.theupside.com.au/kefi-25in-midi-pant-oyster-usw226087/",
+]) {
+  assert.match(shop, new RegExp(suppliedReference.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")), `Missing supplied product reference: ${suppliedReference}`);
+}
+
+assert.match(shop, /player\.vimeo\.com\/video\/987002812[^\"]*muted=1/, "Hero film must be the supplied muted Bordelle Vimeo");
+assert.match(shop, /data-shop-theme-toggle/, "Shop must expose the day/night control");
+assert.match(shopScript, /iamShopThemeV1/, "Shop must remember the viewer's day/night choice");
+assert.equal((shop.match(/data-filter-category=/g) || []).length, 6, "James Bondage edit must expose the six restrained form filters");
+
 assert.match(shopScript, /iam:shop-music-request/, "Shop must request music through the persistent Music Television shell");
 assert.match(television, /iam:shop-music-request/, "Music Television must respond to Shop music requests");
 assert.match(television, /continuation\.defaultStation/, "A quiet Shop session must use the established Café del Mar Chill default");
 assert.match(index, /data-nav-item="shop"/, "Music Television navigation must expose Shop");
+assert.match(index, /data-nav-item="contact"[^>]*>contact<\/a>\s*<a[^>]*data-nav-item="shop"[^>]*>shop<\/a>/, "Shop must be the final global navigation item after Contact");
 assert.match(htaccess, /RewriteRule \^shop\/\?\$/, "Root /shop route is missing from Apache redirects");
 assert.match(redirects, /^\/shop /m, "Root /shop route is missing from static redirects");
 

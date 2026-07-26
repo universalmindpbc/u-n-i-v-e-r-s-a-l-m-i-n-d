@@ -6,11 +6,12 @@ Status: **future-facing working note; do not activate without Ben's go-ahead**
 
 The first shopfront is deliberately human-curated. It proves the editorial and experience architecture without claiming that product recommendation science, retailer relationships or affiliate tracking are live.
 
-- Four overlapping editorial worlds: **James Bondage**, **Champagne Bohemia**, **inner planes** and **modul8 infinity**.
-- Functional forms beneath those worlds: lingerie, swim, bodysuits, movement, ready-to-wear, hosiery and accessories.
-- Products may belong to more than one world and more than one form.
+- This presentation is exclusively **James Bondage**. Other mastheads will be authored separately after their own editorial direction is commissioned; they are not represented here.
+- Functional forms within James Bondage: lingerie, second skin, swim, movement and after dark.
+- Products may belong to more than one form.
 - The current working edit contains 312 Safari references across 23 retailers. The mock-up exposes the breadth of that edit while limiting the photographed opening selection to avoid retail overload.
 - Music Television remains the outer experience. A current Universal Mind music/video programme continues into Shop. A quiet session offers Café del Mar Chill after an explicit play gesture.
+- A discreet day/night control lets the viewer choose a white or black presentation and remembers that choice locally. The first visit follows the viewer's system preference.
 
 ## Future Fashion Tensor — hold for approval
 
@@ -19,7 +20,7 @@ When commissioned, create a human-readable Fashion Tensor in Notion, parallel in
 Possible record layers:
 
 1. Product identity: brand, retailer, canonical URL, imagery, availability state and rights/provenance.
-2. Editorial identity: I AM world membership, form, silhouette, colour, texture, coverage, movement, season and occasion.
+2. Editorial identity: approved masthead and category membership, form, silhouette, colour, texture, coverage, movement, season and occasion.
 3. Citizen Needs hypotheses: carefully reviewed relationships to chosen contexts such as calm, confidence, play, connection, self-expression, restoration or activation.
 4. Emotional tone: human-authored descriptors and confidence, with space for ambiguity and multiple readings.
 5. Mental-health boundary: non-diagnostic language, contraindication/sensitivity notes where relevant, evidence status and required human review.
@@ -37,7 +38,7 @@ The online tensor would be a versioned, machine-readable projection of approved 
 - Keep a clear route back to an unpersonalised chronological/editorial edit.
 - Measure wellbeing and trust signals alongside relevance; do not optimise only for clicks, basket value or commission.
 - Maintain novelty and brand diversity so adaptation does not become a narrowing loop.
-- Explain why a world or piece is being surfaced in plain language.
+- Explain why an edit or piece is being surfaced in plain language.
 - Require editorial and scientific review before a Citizen Needs mapping can influence placement.
 
 ## Proposed implementation sequence — only after approval

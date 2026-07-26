@@ -17,13 +17,14 @@
   }
 
   const products = Array.from(document.querySelectorAll("[data-product]"));
-  const worldButtons = Array.from(document.querySelectorAll("[data-filter-world]"));
   const categoryButtons = Array.from(document.querySelectorAll("[data-filter-category]"));
-  const worldEntryButtons = Array.from(document.querySelectorAll("[data-world-select]"));
   const filterStatus = document.querySelector("[data-filter-status]");
+  const themeButton = document.querySelector("[data-shop-theme-toggle]");
+  const themeLabel = document.querySelector("[data-shop-theme-label]");
+  const heroVideo = document.querySelector("[data-shop-hero-video]");
   const musicButton = document.querySelector("[data-shop-music]");
   const musicLabel = document.querySelector("[data-shop-music-label]");
-  let activeWorld = "all";
+  const themeKey = "iamShopThemeV1";
   let activeCategory = "all";
 
   function setPressed(buttons, activeButton) {
@@ -38,28 +39,17 @@
     let visible = 0;
 
     products.forEach((product) => {
-      const worlds = String(product.dataset.worlds || "").split(/\s+/).filter(Boolean);
-      const worldMatch = activeWorld === "all" || worlds.includes(activeWorld);
-      const categoryMatch = activeCategory === "all" || product.dataset.category === activeCategory;
-      const show = worldMatch && categoryMatch;
+      const categories = String(product.dataset.categories || "").split(/\s+/).filter(Boolean);
+      const show = activeCategory === "all" || categories.includes(activeCategory);
       product.hidden = !show;
       if (show) visible += 1;
     });
 
     if (filterStatus) {
       const noun = visible === 1 ? "piece" : "pieces";
-      const scope = activeWorld === "all" && activeCategory === "all" ? "all " : "";
-      filterStatus.textContent = `Showing ${scope}${visible} hero ${noun}.`;
+      filterStatus.textContent = `${visible} ${noun}`;
     }
   }
-
-  worldButtons.forEach((button) => {
-    button.addEventListener("click", () => {
-      activeWorld = button.dataset.filterWorld || "all";
-      setPressed(worldButtons, button);
-      applyFilters();
-    });
-  });
 
   categoryButtons.forEach((button) => {
     button.addEventListener("click", () => {
@@ -69,20 +59,36 @@
     });
   });
 
-  worldEntryButtons.forEach((button) => {
-    button.addEventListener("click", () => {
-      const requestedWorld = button.dataset.worldSelect || "all";
-      const filterButton = worldButtons.find((candidate) => candidate.dataset.filterWorld === requestedWorld);
-      if (filterButton) {
-        activeWorld = requestedWorld;
-        activeCategory = "all";
-        setPressed(worldButtons, filterButton);
-        setPressed(categoryButtons, categoryButtons.find((candidate) => candidate.dataset.filterCategory === "all"));
-        applyFilters();
+  function applyTheme(theme, options = {}) {
+    const nextTheme = theme === "night" ? "night" : "day";
+    document.documentElement.dataset.shopTheme = nextTheme;
+    if (themeLabel) themeLabel.textContent = nextTheme;
+    if (themeButton) {
+      const targetTheme = nextTheme === "night" ? "day" : "night";
+      themeButton.setAttribute("aria-pressed", String(nextTheme === "night"));
+      themeButton.setAttribute("aria-label", `Switch to ${targetTheme} mode`);
+    }
+    if (options.persist) {
+      try {
+        window.localStorage.setItem(themeKey, nextTheme);
+      } catch {
+        // The visual choice still applies if storage is unavailable.
       }
-      document.querySelector("#edit")?.scrollIntoView({ behavior: "smooth", block: "start" });
-    });
+    }
+  }
+
+  themeButton?.addEventListener("click", () => {
+    const currentTheme = document.documentElement.dataset.shopTheme;
+    applyTheme(currentTheme === "night" ? "day" : "night", { persist: true });
   });
+
+  applyTheme(document.documentElement.dataset.shopTheme || "day");
+
+  if (heroVideo && window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    const reducedMotionUrl = new URL(heroVideo.src);
+    reducedMotionUrl.searchParams.set("autoplay", "0");
+    heroVideo.src = reducedMotionUrl.href;
+  }
 
   function updateMusicStatus(detail = {}) {
     if (!musicButton || !musicLabel) return;
