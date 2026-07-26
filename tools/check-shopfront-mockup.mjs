@@ -65,7 +65,10 @@ for (const suppliedReference of [
 
 assert.match(shop, /player\.vimeo\.com\/video\/987002812[^\"]*muted=1/, "Hero film must be the supplied muted Bordelle Vimeo");
 assert.match(shop, /data-shop-theme-toggle/, "Shop must expose the day/night control");
+assert.match(shop, /savedTheme \|\| "night"/, "A first Shop visit must default to the night presentation");
+assert.doesNotMatch(shop, /prefersNight/, "System colour preference must not replace the night-first Shop default");
 assert.match(shopScript, /iamShopThemeV1/, "Shop must remember the viewer's day/night choice");
+assert.match(shopScript, /dataset\.shopTheme \|\| "night"/, "Shop script fallback must remain night-first");
 assert.equal((shop.match(/data-filter-category=/g) || []).length, 6, "James Bondage edit must expose the six restrained form filters");
 
 assert.match(shopScript, /iam:shop-music-request/, "Shop must request music through the persistent Music Television shell");

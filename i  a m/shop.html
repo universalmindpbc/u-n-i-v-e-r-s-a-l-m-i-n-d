@@ -9,10 +9,9 @@
     <script>
       try {
         const savedTheme = window.localStorage.getItem("iamShopThemeV1");
-        const prefersNight = window.matchMedia("(prefers-color-scheme: dark)").matches;
-        document.documentElement.dataset.shopTheme = savedTheme || (prefersNight ? "night" : "day");
+        document.documentElement.dataset.shopTheme = savedTheme || "night";
       } catch {
-        document.documentElement.dataset.shopTheme = "day";
+        document.documentElement.dataset.shopTheme = "night";
       }
     </script>
     <script src="music-television-frame-context.js?v=music-tv-frame-14ebf4459d03"></script>

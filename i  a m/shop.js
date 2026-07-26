@@ -82,7 +82,7 @@
     applyTheme(currentTheme === "night" ? "day" : "night", { persist: true });
   });
 
-  applyTheme(document.documentElement.dataset.shopTheme || "day");
+  applyTheme(document.documentElement.dataset.shopTheme || "night");
 
   if (heroVideo && window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
     const reducedMotionUrl = new URL(heroVideo.src);
