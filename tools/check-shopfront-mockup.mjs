@@ -10,6 +10,7 @@ const shop = read("i  a m/shop.html");
 const shopStyle = read("i  a m/shop.css");
 const shopScript = read("i  a m/shop.js");
 const catalogue = JSON.parse(read("i  a m/shop-catalogue-v1.json"));
+const approvedProducts = JSON.parse(read("i  a m/shop-approved-products-v1.json"));
 const architecture = read("i  a m/shopfront-architecture.md");
 const television = read("i  a m/adaptive-environment-television.js");
 const index = read("i  a m/index.html");
@@ -50,12 +51,29 @@ assert.equal(catalogue.products.length, 15, "ERES catalogue proof must contain e
 assert.equal(new Set(catalogue.products.map((product) => product.id)).size, 15, "Catalogue product IDs must be unique");
 assert.equal(new Set(catalogue.products.map((product) => product.slug)).size, 15, "Catalogue product slugs must be unique");
 assert.ok(catalogue.products.every((product) => product.brand === "ERES"), "First catalogue proof must remain a singular ERES edit");
-assert.ok(catalogue.products.every((product) => product.imageSource === "retailer_first_hero"), "Every bulk-ingested catalogue image must use the first retailer hero");
+assert.ok(catalogue.products.every((product) => product.imageSource === "retailer_gallery_index_0"), "Every bulk-ingested catalogue image must use the first retailer hero");
 assert.equal(catalogue.priceCurrency, "AUD", "ERES proof must display the requested Australian pricing");
-assert.equal(catalogue.pricesCheckedAt, "2026-07-26", "ERES prices must carry their verification date");
+assert.equal(catalogue.thumbnailPolicy, "retailer_gallery_index_0_only", "ERES proof must use the deterministic first-image policy");
+assert.equal(catalogue.pricesCheckedAt, "2026-07-27", "ERES prices must carry their live verification date");
+assert.equal(approvedProducts.products.length, 36, "Approved ERES bookmark manifest must contain 36 product URLs");
+assert.equal(approvedProducts.brandLinks.length, 1, "Approved ERES bookmark manifest must keep the non-product ERES homepage separate");
+assert.equal(new Set(approvedProducts.products.map((product) => product.url)).size, 36, "Approved ERES product URLs must be unique");
+const approvedProductUrls = new Set(approvedProducts.products.map((product) => product.url));
+assert.deepEqual(
+  catalogue.products.map((product) => product.retailerUrl),
+  approvedProducts.products.slice(0, 15).map((product) => product.url),
+  "ERES proof must use only the first 15 approved bookmark products in exact bookmark order",
+);
 for (const product of catalogue.products) {
   assert.ok(fs.existsSync(path.join(iam, product.image)), `Missing ERES catalogue image: ${product.image}`);
   assert.match(product.retailerUrl, /^https:\/\/www\.eresparis\.com\//, `ERES catalogue product must keep an official retailer URL: ${product.id}`);
+  assert.ok(approvedProductUrls.has(product.retailerUrl), `Unapproved ERES product URL: ${product.retailerUrl}`);
+  assert.equal(product.sourcePageUrl, product.retailerUrl, `ERES product source page must equal the approved retailer URL: ${product.id}`);
+  assert.match(product.sourceImageUrl, /^https:\/\//, `ERES product must retain its official source image URL: ${product.id}`);
+  assert.match(product.sourceImageUrl, /_PDP_D_1\.jpg(?:\?|$)/, `ERES product must use the retailer's gallery-zero PDP_D_1 image: ${product.id}`);
+  assert.equal(product.sourceImageIndex, 0, `ERES product must use the retailer's first official product image: ${product.id}`);
+  assert.match(product.retrievedAt, /^2026-07-2[67]/, `ERES product must carry its retrieval date: ${product.id}`);
+  assert.ok(product.description?.trim().length >= 24, `ERES product must retain a concise retailer-sourced description: ${product.id}`);
   assert.match(product.price, /^AU\$ (?:\d{3}|\d\.\d{3})$/, `ERES catalogue product must keep its verified AUD price: ${product.id}`);
 }
 
@@ -86,7 +104,11 @@ assert.match(shopScript, /shopLiveDriftSeconds[\s\S]*entry_seek[\s\S]*hard_seek[
 assert.match(shopStyle, /height:\s*clamp\(430px, 66svh, 760px\)/, "The live masthead must remain a full-width two-thirds-height band");
 assert.match(shop, /shop-film-editorial[\s\S]*player\.vimeo\.com\/video\/987002812[^\"]*muted=1/, "The supplied muted Bordelle Vimeo must live lower on the homepage as editorial film");
 assert.match(shop, /shopBrandVariant === "b" \? "handdrawn" : "a"/, "The hand-drawn brand test must remain a switchable B variant");
-assert.match(shopStyle, /Avenir Next Condensed[\s\S]*Bodoni 72 Smallcaps/, "The A masthead must retain its stylised serif and condensed-sans construction");
+assert.match(shop, /shopBrandInk === "white" \? "white" : "black"/, "The hand-drawn B hero must expose deterministic black and white ink proofs");
+assert.match(shopStyle, /data-shop-brand-variant="handdrawn"\]\[data-shop-brand-ink="white"\][\s\S]*brightness\(0\) invert\(1\)/, "The white B hero proof must invert the hand-drawn artwork cleanly");
+assert.match(shopStyle, /data-shop-brand-variant="handdrawn"\] \.shop-context--about,[\s\S]*background:\s*#050505[\s\S]*color:\s*#fff/, "The lower B brand sections must remain black with white artwork");
+assert.match(shopStyle, /\.shop-hero h1\s*\{[\s\S]*?font-family:\s*var\(--shop-serif\)/, "The A masthead must use the approved single classic serif treatment");
+assert.doesNotMatch(shopStyle, /--shop-brand(?:-serif)?:/, "The rejected split novelty font treatment must not return");
 assert.ok((shop.match(/james-bondage-handdrawn-faces-b\.png/g) || []).length >= 4, "The interlocking face mark must recur as B-version branding");
 assert.match(shop, /james-bondage-handdrawn-wordmark-b\.png/, "The B-version hero must use the isolated yellow hand-drawn wordmark");
 assert.ok(fs.existsSync(path.join(iam, "a s s e t s/shop-mockup/james-bondage-handdrawn-wordmark-b.png")), "Missing isolated B-version wordmark");
@@ -103,16 +125,20 @@ assert.match(shopScript, /dataset\.shopTheme \|\| "night"/, "Shop script fallbac
 assert.equal((shop.match(/data-filter-category=/g) || []).length, 6, "James Bondage edit must expose the six restrained form filters");
 assert.match(shop, /href="#shop-about">about<\/a>[\s\S]*data-shop-menu[\s\S]*href="#giving-back">giving back<\/a>/i, "Shop masthead must use the approved About / Shop / Giving Back hierarchy");
 assert.equal((shop.match(/data-shop-type=/g) || []).length, 6, "Shop menu must expose the six functional type routes");
-assert.match(shop, /James Bondage Health is the editorial video series/i, "Shop About must preserve the James Bondage Health distinction");
-assert.match(shop, /All profits go to youth mental health research\./i, "Giving Back must state the approved profit formula");
+assert.match(shop, /James Bondage is 24\/7 electronic music television broadcasting sex x mindfulness/i, "Shop About must use the approved 24/7 electronic music television copy");
+assert.match(shop, /Our James Bondage Health series \[ sex-ed \] shares female lead conversations/i, "Shop About must preserve the approved James Bondage Health distinction");
+assert.match(shop, /All profits from affiliate revenue are invested in mental health\./i, "Giving Back must state the approved affiliate profit formula");
+assert.match(shop, /youth mental health outreach \| youth mental health research \| women’s mental health \|veteran’s mental health/i, "Giving Back must preserve the four approved wallet choices");
 assert.match(shop, /href="#catalogue\/eres"[^>]*data-shop-catalogue-link/, "ERES must open from the 23-brand ledger");
 assert.match(shop, /data-catalogue-editorial-header/, "ERES catalogue must open with the approved editorial header");
 assert.match(shop, /data-shop-product-dialog/, "Catalogue must expose the quiet expanded product view");
+assert.match(shop, /data-shop-product-dialog-description/, "Expanded product view must prioritize retailer-sourced product context");
 assert.equal((shop.match(/data-catalogue-filter=/g) || []).length, 4, "ERES catalogue must expose the restrained form filters");
 assert.match(shopScript, /#catalogue\\\/eres\\\/product\\\//, "Expanded product state must have a shareable hash route");
 assert.match(shopScript, /shop-catalogue-v1\.json/, "Shop catalogue must render from the shared structured product data");
 assert.match(shopScript, /productDialog\.showModal\(\)/, "Product cards must open the accessible expanded view");
 assert.match(shopScript, /productDialogPrice\.textContent = product\.price/, "Expanded product view must carry the verified price");
+assert.match(shopScript, /productDialogDescription\.textContent = product\.description/, "Expanded product view must carry the retailer-sourced description");
 assert.match(shopScript, /enteringCatalogue[\s\S]*window\.scrollTo\(0, 0\)/, "Entering ERES from the brand ledger must reset to the editorial header");
 
 assert.match(shopScript, /iam:shop-music-request/, "Shop must request music through the persistent Music Television shell");
@@ -127,5 +153,7 @@ assert.match(architecture, /do not activate without Ben's go-ahead/i, "Fashion T
 assert.match(architecture, /No diagnosis, treatment claim/i, "Fashion Tensor roadmap is missing the clinical boundary");
 assert.match(architecture, /Commercial value must not override citizen fit/i, "Fashion Tensor roadmap is missing the commercial-conflict boundary");
 assert.match(architecture, /default catalogue thumbnail is always the retailer's first official product hero/i, "Catalogue is missing the deterministic first-hero thumbnail rule");
+assert.match(architecture, /fail-closed product authority/i, "Catalogue architecture must make the approved bookmark manifest authoritative");
+assert.match(architecture, /neither GPT nor an ingestion process may discover, infer, replace or add a product/i, "Catalogue architecture must prohibit generated or discovered products");
 
 console.log("Shopfront mock-up checks passed.");

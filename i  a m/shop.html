@@ -14,11 +14,14 @@
         document.documentElement.dataset.shopTheme = "night";
       }
 
-      const shopBrandVariant = new URLSearchParams(window.location.search).get("brand");
+      const shopBrandParams = new URLSearchParams(window.location.search);
+      const shopBrandVariant = shopBrandParams.get("brand");
+      const shopBrandInk = shopBrandParams.get("ink");
       document.documentElement.dataset.shopBrandVariant = shopBrandVariant === "b" ? "handdrawn" : "a";
+      document.documentElement.dataset.shopBrandInk = shopBrandInk === "white" ? "white" : "black";
     </script>
     <script src="music-television-frame-context.js?v=music-tv-frame-14ebf4459d03"></script>
-    <link rel="stylesheet" href="shop.css?v=shop-brand-variants-4">
+    <link rel="stylesheet" href="shop.css?v=shop-brand-variants-5">
   </head>
   <body class="shop-page">
     <a class="shop-skip" href="#edit">Skip to the edit</a>
@@ -269,8 +272,7 @@
           <img class="shop-context__b-wordmark" src="a s s e t s/shop-mockup/james-bondage-handdrawn-wordmark-b.png" alt="" aria-hidden="true">
         </header>
         <div>
-          <p>James Bondage is the fashion masthead. James Bondage Health is the editorial video series for conversations about tantra, intimacy and wellbeing.</p>
-          <p>The shop brings together an edit from 23 retailers. Each piece is presented here before the journey continues to the retailer.</p>
+          <p>James Bondage is 24/7 electronic music television broadcasting sex x mindfulness, bringing emotional intelligence to the bedroom, soundtracked to minimal, electro and EBM - Electronic Body Music. Our James Bondage Health series [ sex-ed ] shares female lead conversations about tantra, relationships, intimacy and mental health, from the leading voices in the space. This shop brings together an edit from 23 retailers representing the world of James Bondage Health and its ambassadors. Each piece is presented here before the journey continues to the retailer.</p>
         </div>
       </section>
 
@@ -278,14 +280,18 @@
         <img class="shop-b-face shop-b-face--giving" src="a s s e t s/shop-mockup/james-bondage-handdrawn-faces-b.png" alt="" aria-hidden="true">
         <header>
           <p>05 / giving back</p>
-          <h2 id="giving-back-title">All profits go to youth mental health research.</h2>
+          <h2 id="giving-back-title">All profits from affiliate revenue are invested in mental health.</h2>
         </header>
+        <div class="shop-context__giving-copy">
+          <p>Via your I AM wallet, you choose how we spend it:</p>
+          <p>youth mental health outreach | youth mental health research | women’s mental health |veteran’s mental health</p>
+        </div>
       </section>
 
       <section class="shop-catalogue" data-shop-catalogue hidden aria-labelledby="catalogue-title">
         <header class="shop-catalogue__editorial" id="catalogue-editorial" data-catalogue-editorial-header>
           <figure class="shop-catalogue__editorial-lead">
-            <img src="a s s e t s/shop-mockup/eres-catalogue/ruban.avif" alt="ERES Ruban lace bralette, editorial profile">
+            <img src="a s s e t s/shop-mockup/eres-catalogue/eden-60650-00996.jpg" alt="ERES Eden full-cup bra in Make Up, forward-facing portrait">
           </figure>
           <a class="shop-catalogue__back" href="#brands" data-shop-catalogue-back><span aria-hidden="true">←</span> James Bondage</a>
           <div class="shop-catalogue__wordmark">
@@ -294,7 +300,7 @@
             <span>James Bondage / first edit <b>15</b></span>
           </div>
           <div class="shop-catalogue__editorial-aside">
-            <figure><img src="a s s e t s/shop-mockup/eres-catalogue/voltige.avif" alt="ERES Voltige bodysuit, editorial portrait"></figure>
+            <figure><img src="a s s e t s/shop-mockup/eres-catalogue/providence-60653-01062.jpg" alt="ERES Providence triangle bra in Ultra, forward-facing portrait"></figure>
             <p><span>ERES</span><span>lingerie / second skin</span></p>
             <a href="#catalogue-grid">view the collection <span aria-hidden="true">↓</span></a>
           </div>
@@ -313,15 +319,18 @@
       </section>
     </main>
 
-    <dialog class="shop-product-dialog" data-shop-product-dialog aria-labelledby="shop-product-dialog-title" aria-describedby="shop-product-dialog-form">
+    <dialog class="shop-product-dialog" data-shop-product-dialog aria-labelledby="shop-product-dialog-title" aria-describedby="shop-product-dialog-description">
       <button class="shop-product-dialog__close" type="button" data-shop-product-dialog-close aria-label="Close expanded product view">close <span aria-hidden="true">×</span></button>
       <div class="shop-product-dialog__layout">
         <figure><img src="" alt="" data-shop-product-dialog-image></figure>
         <div class="shop-product-dialog__details">
           <p data-shop-product-dialog-brand>ERES</p>
           <h2 id="shop-product-dialog-title" data-shop-product-dialog-title></h2>
-          <p id="shop-product-dialog-form" data-shop-product-dialog-form></p>
-          <p data-shop-product-dialog-price></p>
+          <p class="shop-product-dialog__description" id="shop-product-dialog-description" data-shop-product-dialog-description></p>
+          <div class="shop-product-dialog__meta">
+            <p id="shop-product-dialog-form" data-shop-product-dialog-form></p>
+            <p data-shop-product-dialog-price></p>
+          </div>
           <a href="#" target="_blank" rel="noopener noreferrer" data-shop-product-dialog-retailer>view at ERES <span aria-hidden="true">↗</span></a>
         </div>
       </div>
@@ -335,6 +344,6 @@
     <script src="cloudflare-stream-catalogue.js?v=stream-catalogue-1"></script>
     <script src="cloudflare-stream-controller.js?v=stream-controller-1"></script>
     <script src="broadcast-clock-v1.js?v=broadcast-clock-v1-c71d08e16ee0"></script>
-    <script src="shop.js?v=shop-brand-variants-4"></script>
+    <script src="shop.js?v=shop-brand-variants-5"></script>
   </body>
 </html>

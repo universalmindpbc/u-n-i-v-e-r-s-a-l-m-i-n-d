@@ -39,6 +39,7 @@
   const productDialogImage = document.querySelector("[data-shop-product-dialog-image]");
   const productDialogBrand = document.querySelector("[data-shop-product-dialog-brand]");
   const productDialogTitle = document.querySelector("[data-shop-product-dialog-title]");
+  const productDialogDescription = document.querySelector("[data-shop-product-dialog-description]");
   const productDialogForm = document.querySelector("[data-shop-product-dialog-form]");
   const productDialogPrice = document.querySelector("[data-shop-product-dialog-price]");
   const productDialogRetailer = document.querySelector("[data-shop-product-dialog-retailer]");
@@ -233,7 +234,7 @@
     const figure = document.createElement("figure");
     const image = document.createElement("img");
     image.src = product.image;
-    image.alt = `${product.brand} ${product.name}`;
+    image.alt = product.imageAlt || `${product.brand} ${product.name}`;
     image.loading = "lazy";
     figure.append(image);
 
@@ -242,7 +243,7 @@
     const name = document.createElement("h3");
     name.textContent = product.name;
     const form = document.createElement("span");
-    form.textContent = labelCategories(product.categories);
+    form.textContent = product.color || labelCategories(product.categories);
     const price = document.createElement("strong");
     price.textContent = product.price;
     const expand = document.createElement("em");
@@ -284,11 +285,14 @@
     if (!productDialog || !product) return;
     if (productDialogImage) {
       productDialogImage.src = product.image;
-      productDialogImage.alt = `${product.brand} ${product.name}`;
+      productDialogImage.alt = product.imageAlt || `${product.brand} ${product.name}`;
     }
     if (productDialogBrand) productDialogBrand.textContent = product.brand;
     if (productDialogTitle) productDialogTitle.textContent = product.name;
-    if (productDialogForm) productDialogForm.textContent = labelCategories(product.categories);
+    if (productDialogDescription) productDialogDescription.textContent = product.description || "";
+    if (productDialogForm) {
+      productDialogForm.textContent = [product.color, labelCategories(product.categories)].filter(Boolean).join(" / ");
+    }
     if (productDialogPrice) productDialogPrice.textContent = product.price;
     if (productDialogRetailer) productDialogRetailer.href = product.retailerUrl;
     if (!productDialog.open) productDialog.showModal();
@@ -338,7 +342,7 @@
 
   async function loadCatalogue() {
     try {
-      const response = await fetch("shop-catalogue-v1.json?v=3", { credentials: "same-origin" });
+      const response = await fetch("shop-catalogue-v1.json?v=4", { credentials: "same-origin" });
       if (!response.ok) throw new Error(`Catalogue request failed: ${response.status}`);
       const catalogue = await response.json();
       catalogueProducts = Array.isArray(catalogue.products) ? catalogue.products : [];
