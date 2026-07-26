@@ -36,6 +36,7 @@ for (const absent of [
   /No urgency mechanics/i,
   /A shop that pays attention/i,
   /NikeSKIMS/i,
+  /Mima Sala/i,
 ]) {
   assert.doesNotMatch(shop, absent, `Current shop must not contain ${absent}`);
 }
@@ -55,6 +56,7 @@ for (const suppliedReference of [
   "https://www.eresparis.com/eu/en/lingerie/60653-01062.html",
   "https://www.theupside.com.au/kefi-25in-midi-pant-oyster-usw226087/",
   "https://www.nike.com/au/t/jordan-brooklyn-womens-bodysuit-nZh4yxyG/IM6875-100",
+  "https://triangl.com/en-au/products/celeste-jett-black-short?variant=42685752049760",
 ]) {
   assert.match(shop, new RegExp(suppliedReference.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")), `Missing supplied product reference: ${suppliedReference}`);
 }
