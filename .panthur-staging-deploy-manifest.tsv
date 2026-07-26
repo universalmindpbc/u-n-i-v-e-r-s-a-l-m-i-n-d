@@ -19,7 +19,7 @@ f1670bb15260c563cfe508ea2be7ddfe2f1b9260e0f3ab2f1015343345b5d177	i  a m.md
 2395bc9f9a00c3c567f3525cda478d2c138592cd215860d5b1545c88e2037f38	community-globe.html
 95811f319fe8fd80719921ccffdb063f417f77fcec50b3eac90c319d9cc84dce	mantra-samples-v1.json
 56be85e4e0f6fec2f6a885f44ea235b5c2cabadcacee40370f325d4f10009cac	index.html
-e493cfb7a7b93bfdc936b5745a651711d739c2af5f5bdb6621a0f49b140337c8	shop.css
+9f08e11fd0cb6d18c48f1cd49e29d248d39544429a41ca0ee3b4ee92e7373002	shop.css
 6402cc9d89a20b6e4b48802930edbbe616be2186f1a2e3688736d2e05e5b6231	mantra-sampler.js
 6733d57632028171b99f89270ff8237c250411f62166ebe1a2f36a80fe88833f	vogue-self-report.js
 8db79c73cc87c67ec83416ea86f2c9ceb53a9ac706eed513bbf7ac1c01f15a59	about.js
@@ -31,7 +31,7 @@ a9df7a90503204ef5a32c8362de562456a8799ed5d3084feba307dfd3dfdefb3	mantra-studio.j
 0d480c5363dc9453ab5db5d3153af999c8a9abea823a8c25da22f7da00564d6f	adaptive-soundtrack-stage-gates.md
 c506df2be441c6489d4ee85438aa668eab8be5194ae9f381e4380ba074a21ebd	apple-touch-icon.png
 d2ebef23890dc87cd52bd3904022d2959a990ec0483d917a78b107b3d86183f0	mantra-voice-dsp.js
-fb732c91e8257dfdd99a4165b9149d77795dcf6697538307e4d54a3c10210db9	shop-catalogue-v1.json
+a1a31b029c3f394772e3d38bafc78a7b56898a09e630225190ba6e6ecec8e970	shop-catalogue-v1.json
 30fca818adeb183ee5be287293758d5822fef264ba7701199d7af6d64565b86f	styles.css
 0f2562e9d94029f185d95d0e1babeab028a25b246f97273b552ba587510f3b1d	b u i l d _ n o t e s.md
 0b308328c7abe42cab6ec25159355a85fe1be08354aa57091acb7b611858a0d1	about.html
@@ -67,12 +67,13 @@ b692b121b053af40a60b1cf1782aa95ca2648714aae914282844602a3a4e54c3	emdr-shader.js
 c1c822706963fd43a4320f7212c399503fb2a4f64206a3bf75e13b34f83e784a	adaptive-inference-engine-system-prompt-v2.22-content.js
 2d617f2ef088b89c73c02cfc5f4fa7f418ce6a79a270d2d4c1950323c8246d08	emdr-vector-worlds.js
 beb34584876306e5825ba720c8cfb01b871065791c48be5add2ce5cc6d75f59f	adaptive-inference-engine-system-prompt-v1.11.html
-d5f52644003c43ad6c92419ab9b08cc1ed837bc86e2415fa5ed1f4566eec5303	shop.html
+ee64cf09873b4e3b15a8f05cfac6ee6c1abc4cadb7560d8ad305aa2985eb0ef3	shop.html
 f8316640aa0abbcb8880897ea3f05b506041c2ed3cdd4170100d0ef56edce4e3	realtime-voice-assistant.js
 3862c4481721b08403d25024626930de4c0a2b265ccc336e99b830bb3133825e	c h a n g e l o g.md
 5e1fdfbadb0466e1997b206c6197cba92f566d211a16f31bd627da4cfb976b4b	mantra-audio-fx.js
 e12eb24c367d2ac6f67963f434a729027e75b914e450b6260f47c01b9bd1ef58	i  a m  c h e c k i n  -  f o r m  -  b r i e f.md
 2ce0d0a5afb4d9961eec772a296e17f9c703d89182648b6d35ee6007c776d59f	science-research-data-v1.js
+f89cebb043a21aa77133c9cd40875d6703eefcb3b8fab637931e1da119eb01f7	shop-approved-products-v1.json
 fa5e34089bf9beb5efdf29d28d82e758d766a3e078ab1f271fb7e4fb698c0367	mantra-sampler.css
 43bb3e81ba8213e37db4fec33570d65bfed2bdc74ea138e2bd46af7b18108b86	adaptive-music-video-catalogue-v1.11.json
 4b99f2937f69fafcc9ff0322cbda3a6b6fa47986da51b0483fbec3ac71e47e09	adaptive-environment-television.js
@@ -81,7 +82,7 @@ fa5e34089bf9beb5efdf29d28d82e758d766a3e078ab1f271fb7e4fb698c0367	mantra-sampler.
 dde02975acff59c1a024ea00edbe34cfca0ad446fe252b60f42d679ef49fe892	script.js
 8ea0432ffcd62efe867482b520f0f7d2f005cc43117cb5424ca7097d7f5ad936	stakeholders/budget/index.html
 0f32e3f59c3045259d45f6db8dd9ebb9fcac04da5b8a2982912baae86d7e14f2	stakeholders/budget/iamvogue-stakeholder-budget-v1.xlsx
-a1b035dac111492789f38b64d8cadae8df0933a4a08224f8a3f12d3cdd50ba03	shopfront-architecture.md
+36c4ab88a84adae69c9ea4f7d98ad4bb3635905ef2f8043b7c21cf57922e5563	shopfront-architecture.md
 6b4dabad0c6b29d40d4d7abe7661345cdcc0d9103705a3bf2233a632a1c3192b	adaptive-soundtrack-selection-guide-v1.11.json
 d7b0c8c14b00152e1be5a74c0d51dd9e31ea33fb6c0b0dbc5febc6f903aaa89d	favicon.png
 cb1b29386bb61f875d22f83de35c53a285a30ff7433e9cb58a9940914231d52e	adaptive-inference-engine-system-prompt-v2.22.html
@@ -115,7 +116,7 @@ b24c854a7f72d9405a5356f697f7c30658a659d25472517d254b090ca7fa3e3d	api/realtime-cl
 9a6ec6f1d90ab5d1c67389791f1e2fb95a285e0d57fcae480ae176ea7a1c6f27	api/broadcast-interactions.php
 6a8254aba9609963d3bf84ad05febfcde1aaf989711241e33f74dd5315d43a50	api/.htaccess
 ba84d95b8970e48f10c03f6a3ca28073c2ff80366d4e4ededcf6369b4585c146	cloudflare-stream-catalogue.js
-45d10b7b86ced5e908f5aa202c146a444b6b024d866634fa41758dab6e274c51	shop.js
+86464271d437cfd82905005e4c8f3bf31675a9716031558df28928c5bae11818	shop.js
 db213ad178d17d3b7092436c17048a426e2ac2cc8cedaa1a4a1740b1c0184bec	video-beat-grid-v1.json
 038b3253ec1922dd72f098a762ad4b3739a297a6c0259080f57209f55696995a	our-team-concept.html
 056b2cfea79da0ae3212382dea92045698bece09c7ce8daa327ac4b547658330	technology-citizen-needs.css
@@ -169,17 +170,32 @@ c0f9c3384ce0ccfcc781e423d07fbdd8ec4531751b459aaee5b5e69f8e76bc74	a s s e t s/sho
 139538014d9e945d852007f9a5d4637685486dfc1e584c0c019e88212bce3181	a s s e t s/shop-mockup/eres-catalogue/certitude-black.avif
 88197ff0792e78a8bc2555f39c206f76a01c7a863ec9d7f9d2c8577158f1f8b0	a s s e t s/shop-mockup/eres-catalogue/voilette.avif
 77e0774a6371eb5012c0addc2747e6d9daf14de740024f8ec199a7a7bf5b3931	a s s e t s/shop-mockup/eres-catalogue/envolee-chat-noir.avif
+446d884e9afedfc55e11ae679208ecbf291a6f4cdfcd07721aa30be02c106a1d	a s s e t s/shop-mockup/eres-catalogue/exalte-612416-00996.jpg
+532ab6ea652229fff9a1f49ede62f6baaf6e35a5be9ac5354179a90d317c093e	a s s e t s/shop-mockup/eres-catalogue/eden-60650-00996.jpg
 1d613ed3999dc3d87b55a8f564b38ebd4da00686423666bb33f4b98e579f09bd	a s s e t s/shop-mockup/eres-catalogue/voltige.avif
+d0b440783486848e46c5f075a4109fb593fa25cfb55102eb1ca137e4759ad8b7	a s s e t s/shop-mockup/eres-catalogue/fidele-60954-00996.jpg
+861ad219750509b31e171fb45ef57bb24e91cc9fa3d24a9371203ca980d3cfea	a s s e t s/shop-mockup/eres-catalogue/melodie-612415-00996.jpg
 277b21b00fe9f0337aafa22a7442c1e1e5551093c7028f073eb8f23c313c545d	a s s e t s/shop-mockup/eres-catalogue/certitude-chat-noir.avif
 5a6dc3780875ccac43fe6ac5f85ffb5ac1bfbefe353961ae7efd79e0da0223ec	a s s e t s/shop-mockup/eres-catalogue/evidence-chat-noir.avif
+8992e7b45aa34bd0c76a2bf1d4df3c0fe4e840bea73cd5eea2cb6d3fce5413c5	a s s e t s/shop-mockup/eres-catalogue/providence-tonique-menthe-60985-01618.jpg
+6df0de86daa72a3be20275b1a4ccc1ee9581dee22717bcd4e74e2af8ed84ec74	a s s e t s/shop-mockup/eres-catalogue/indiscrete-60651-01062.jpg
+1896d174503930037ef1a6844722e0714dba26d88e4dbcd6a3c711a8552f65b4	a s s e t s/shop-mockup/eres-catalogue/diva-60970-00996.jpg
+2a46c854ddafe84840728a70a83492cd377c82ca3036e551695a3508691a1ea9	a s s e t s/shop-mockup/eres-catalogue/providence-tonique-rouille-60985-01623.jpg
 7da25f4bbcaa6d08b6cded8d4071ddef3dbeef9de7ba9aa50f0bfe289092d111	a s s e t s/shop-mockup/eres-catalogue/intriguee-chat-noir.avif
+dd4f32780655a91f498594b9642c7ef38eae1d3d69a1a41260efc818f56686d8	a s s e t s/shop-mockup/eres-catalogue/promesse-tonique-612518-01605.jpg
 f69d3f669bb0383009533f42486bb0b1ce9d5bd4844d710758e6c498c035c859	a s s e t s/shop-mockup/eres-catalogue/intriguee-black.avif
+c1a4749be322ff080fcb6f31b5d82055e2f2beae2c03f90db6465850d2227184	a s s e t s/shop-mockup/eres-catalogue/providence-60653-01062.jpg
 b0c5ec7844a1d8425d6a36666fa1c2371bae715cd692ee52c724ad23e1159ff8	a s s e t s/shop-mockup/eres-catalogue/delicieux.avif
 4369ff8203a0a7b97371a7a69372481e2d90ea63933a8cd7cbe7a4e2728f51a3	a s s e t s/shop-mockup/eres-catalogue/inspiree.avif
 3ad585bac0c93180cec6f1178c85a8dbb197f3464499880fb9842cbbbda25e82	a s s e t s/shop-mockup/eres-catalogue/reveur.avif
 62087bf445d95ea69c043b994ccead11f37ed603199182c229c0aedf04edfd89	a s s e t s/shop-mockup/eres-catalogue/destin.avif
+1ea34bf0ee8da98c68b2dc9cb75d8041ce7644b82f4a4b03efbbd7546a3dae9a	a s s e t s/shop-mockup/eres-catalogue/idole-ultra-60953-01062.jpg
+126afdce532a4923f7bb36dc3bf08da01d46389e2171c0ee4e7da46fe66a83eb	a s s e t s/shop-mockup/eres-catalogue/singuliere-make-up-60973-00996.jpg
 45731935fd923e3be22ceb9d993ed230b421d19cd6fd46412cf4bf0da5dbe4b7	a s s e t s/shop-mockup/eres-catalogue/envolee-black.avif
+031906e7e3e834c60d6d12f997c52c1708364df4f684b4da207cf840f0b93406	a s s e t s/shop-mockup/eres-catalogue/singuliere-ultra-60973-01062.jpg
 24b61751eea278b649fc888a7f304270d380e9bc75ca70009131b74735952d7b	a s s e t s/shop-mockup/eres-catalogue/evidence-black.avif
+5f697fae25dcee362e2f494de62d0c17cfde3e422f03c40b6ab00f7915d5e84f	a s s e t s/shop-mockup/eres-catalogue/idole-make-up-60953-00996.jpg
+f31002a8383554643c26fdae483c242815570f43f97f56e6ba459ee47bb0b28c	a s s e t s/shop-mockup/eres-catalogue/singuliere-lys-60973-0022.jpg
 0d4ed9a7ae236952583a5168858954dc9ec4f9b8e8a512ea4829fdb5b5fb05b0	a s s e t s/shop-mockup/triangl-mima.jpg
 67943e3bbb40b276a4f76a3987a9c5f178121acfdad45c278bda1dabc0534d5b	a s s e t s/shop-mockup/eres-providence-portrait.png
 b24278ed027c3cd40916fbba013791770f1838daaa327dad75f33b1c20ac8058	a s s e t s/shop-mockup/james-bondage-handdrawn-wordmark-b.png
