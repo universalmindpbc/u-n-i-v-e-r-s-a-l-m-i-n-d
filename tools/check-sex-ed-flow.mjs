@@ -15,6 +15,7 @@ const sexEdJs = read("i  a m/sex-ed.js");
 assert.match(index, /class="adaptive-television-wallet-status-row"/);
 assert.match(index, /class="adaptive-television-sex-ed-link" href="#sex-ed-shelf"/);
 assert.match(index, /data-now-playing[\s\S]*data-sex-ed-link/);
+assert.match(index, /data-now-playing-secondary-label>VISUAL</);
 assert.match(index, /class="adaptive-television-fashion-shelf adaptive-television-music-shelf adaptive-television-sex-ed-shelf"/);
 assert.equal((index.match(/data-sex-ed-card(?:\s|>)/g) || []).length, 4);
 assert.match(index, /data-sex-ed-episode="01"[\s\S]{0,300}data-sex-ed-start-time="139"/);
@@ -58,6 +59,15 @@ assert.match(broadcastJoinSource, /stopSexEdEpisode\(\{ restoreProgramme: false 
 assert.match(televisionJs, /switchMusicTrack\(returnTrack, \{[\s\S]*?source: "sex_ed_return",[\s\S]*?startAt: returnProgramme\.currentTime/);
 assert.match(televisionJs, /joinBroadcastChannel\(returnProgramme\.channelId, \{ source: "sex_ed_return" \}\)/);
 assert.match(televisionJs, /openSexEdEpisode\(card\.dataset\.sexEdEpisode/);
+assert.match(televisionJs, /function currentSexEdNowPlaying\(\)/);
+assert.match(televisionJs, /dataset\.sexEdEpisodeTitle = title/);
+assert.match(televisionJs, /dataset\.sexEdEpisodeGuest = guest/);
+assert.match(televisionJs, /const primaryLabel = sexEdProgramme\?\.label \|\| media\.label/);
+assert.match(televisionJs, /const secondaryLabel = sexEdProgramme \? "MUSIC" : "VISUAL"/);
+assert.match(televisionJs, /nowPlaying\.dataset\.nowPlayingMode = sexEdProgramme \? "sex-ed" : media\.mode/);
+assert.match(televisionJs, /Open sex-ed episodes\. Now playing:/);
+assert.match(televisionJs, /if \(currentSexEdNowPlaying\(\)\) \{[\s\S]*?openSexEdShelf\(\)/);
+assert.match(televisionJs, /if \(wasActive\) \{[\s\S]*?setProgrammeMixLevel\(null\);[\s\S]*?updateNowPlaying\(\)/);
 assert.match(televisionJs, /sexEdEpisodeVideo\.currentTime = sexEdStartTime/);
 assert.match(televisionJs, /data\.episode \|\| "01"/);
 

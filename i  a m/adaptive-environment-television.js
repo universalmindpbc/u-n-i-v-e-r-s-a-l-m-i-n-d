@@ -141,6 +141,7 @@
   const nowPlayingAudio = document.querySelector("[data-now-playing-audio]");
   const nowPlayingTitle = document.querySelector("[data-now-playing-title]");
   const nowPlayingVisual = document.querySelector("[data-now-playing-visual]");
+  const nowPlayingSecondaryLabel = document.querySelector("[data-now-playing-secondary-label]");
   const nowPlayingVisualTitle = document.querySelector("[data-now-playing-visual-title]");
   const sexEdLink = document.querySelector("[data-sex-ed-link]");
   const sexEdShelf = document.querySelector("[data-sex-ed-shelf]");
@@ -1733,9 +1734,29 @@
     }, 7000);
   }
 
+  function currentSexEdNowPlaying() {
+    if (!document.body.classList.contains("television-sex-ed-active")) return null;
+    const episode = document.body.dataset.sexEdEpisode || "";
+    const card = sexEdCards.find((candidate) => candidate.dataset.sexEdEpisode === episode);
+    const title = document.body.dataset.sexEdEpisodeTitle
+      || card?.querySelector(".adaptive-television-fashion-card__copy strong")?.textContent?.trim()
+      || "";
+    const guest = document.body.dataset.sexEdEpisodeGuest
+      || card?.querySelector(".adaptive-television-fashion-card__copy > span")?.textContent?.trim()
+      || "";
+    if (!title) return null;
+    return {
+      episode,
+      title,
+      guest,
+      label: guest ? `${title} — ${guest}` : title,
+    };
+  }
+
   function updateNowPlaying() {
     if (!nowPlaying) return;
     const media = currentNowPlayingMedia();
+    const sexEdProgramme = currentSexEdNowPlaying();
     const radioState = document.body.dataset.radioPlaybackState || "stopped";
     const state = media.mode === "radio"
       ? (radioState === "error" ? "error" : radioState === "loading" ? "loading" : "live")
@@ -1747,25 +1768,36 @@
     const fashionVisible = Boolean(activeRunway && requestedVideoBlend < 99.5);
     const radioVisualVisible = Boolean(radioActive && radioRunway && requestedVideoBlend >= 99.5);
     const visibleRunway = fashionVisible ? activeRunway : radioVisualVisible ? radioRunway : null;
+    const primaryLabel = sexEdProgramme?.label || media.label;
+    const secondaryLabel = sexEdProgramme ? "MUSIC" : "VISUAL";
+    const secondaryTitle = sexEdProgramme ? media.label : (visibleRunway?.title || "");
+    const secondaryAvailable = sexEdProgramme ? Boolean(media.label) : Boolean(visibleRunway);
 
     if (nowPlayingStatus) nowPlayingStatus.textContent = "NOW PLAYING";
-    if (nowPlayingTitle) nowPlayingTitle.textContent = media.label;
-    if (nowPlayingVisual) nowPlayingVisual.hidden = !visibleRunway;
-    if (nowPlayingVisualTitle) nowPlayingVisualTitle.textContent = visibleRunway?.title || "";
+    if (nowPlayingTitle) nowPlayingTitle.textContent = primaryLabel;
+    if (nowPlayingVisual) nowPlayingVisual.hidden = !secondaryAvailable;
+    if (nowPlayingSecondaryLabel) nowPlayingSecondaryLabel.textContent = secondaryLabel;
+    if (nowPlayingVisualTitle) nowPlayingVisualTitle.textContent = secondaryTitle;
     nowPlaying.dataset.nowPlayingState = state;
-    nowPlaying.dataset.nowPlayingMode = media.mode;
+    nowPlaying.dataset.nowPlayingMode = sexEdProgramme ? "sex-ed" : media.mode;
     nowPlaying.setAttribute(
       "aria-label",
-      `Open ${modeLabel.toLowerCase()} recommendations. Now playing: ${media.label}${visibleRunway ? `. Visual: ${visibleRunway.title}` : ""}`
+      sexEdProgramme
+        ? `Open sex-ed episodes. Now playing: ${sexEdProgramme.label}. Music: ${media.label}`
+        : `Open ${modeLabel.toLowerCase()} recommendations. Now playing: ${media.label}${visibleRunway ? `. Visual: ${visibleRunway.title}` : ""}`
     );
     updateNowPlayingClock();
-    restartNowPlayingTicker(Boolean(visibleRunway));
+    restartNowPlayingTicker(secondaryAvailable);
   }
 
   function openNowPlayingRecommendations(event) {
     event?.preventDefault();
     event?.stopPropagation();
     if (Date.now() < nowPlayingInteractiveAt) return;
+    if (currentSexEdNowPlaying()) {
+      openSexEdShelf();
+      return;
+    }
     const media = currentNowPlayingMedia();
     setMusicMode(media.mode, { manual: false });
     setWalletView("music");
@@ -1773,14 +1805,17 @@
   }
 
   window.IAMNowPlaying = {
-    version: "wallet_now_playing_v1.1",
+    version: "wallet_now_playing_v1.2",
     getState() {
       const media = currentNowPlayingMedia();
+      const sexEdProgramme = currentSexEdNowPlaying();
       return {
         time: nowPlayingTime?.textContent || "",
         status: nowPlayingStatus?.textContent || "",
-        mode: media.mode,
-        title: media.label,
+        mode: sexEdProgramme ? "sex-ed" : media.mode,
+        title: sexEdProgramme?.label || media.label,
+        secondaryLabel: nowPlayingVisual?.hidden ? "" : (nowPlayingSecondaryLabel?.textContent || ""),
+        secondary: nowPlayingVisual?.hidden ? "" : (nowPlayingVisualTitle?.textContent || ""),
         visual: nowPlayingVisual?.hidden ? "" : (nowPlayingVisualTitle?.textContent || ""),
         ticker: nowPlayingTickerView,
         overflow: Boolean(nowPlaying?.classList.contains("is-overflowing")),
@@ -5173,6 +5208,8 @@
     sexEdNeedsInitialSeek = true;
     document.body.dataset.sexEdEpisode = sexEdActiveEpisode;
     document.body.dataset.sexEdEpisodeStart = String(sexEdStartTime);
+    document.body.dataset.sexEdEpisodeTitle = title;
+    document.body.dataset.sexEdEpisodeGuest = guest;
     sexEdEpisodeVideo.setAttribute("aria-label", guest ? `${title} — ${guest}` : title);
     document.title = `${title} | Sex-ed`;
   }
@@ -5275,6 +5312,8 @@
     sexEdNeedsInitialSeek = true;
     delete document.body.dataset.sexEdEpisode;
     delete document.body.dataset.sexEdEpisodeStart;
+    delete document.body.dataset.sexEdEpisodeTitle;
+    delete document.body.dataset.sexEdEpisodeGuest;
     delete document.body.dataset.sexEdForegroundGain;
     delete document.body.dataset.sexEdForegroundGainDb;
     delete document.body.dataset.sexEdForegroundGainState;
@@ -5282,6 +5321,7 @@
     delete document.body.dataset.sexEdForegroundGainError;
     if (wasActive) {
       setProgrammeMixLevel(null);
+      updateNowPlaying();
       const returnProgramme = sexEdReturnProgramme;
       sexEdReturnProgramme = null;
       delete document.body.dataset.sexEdReturnChannel;
@@ -5307,6 +5347,7 @@
     returnToTelevisionRoom({ preserveSexEd: true });
     configureSexEdEpisode(episode);
     document.body.classList.add("television-sex-ed-active", "flower-cue-visible");
+    updateNowPlaying();
     sexEdWorld?.setAttribute("aria-hidden", "false");
     if (!sexEdReturnProgramme) {
       sexEdReturnProgramme = {
