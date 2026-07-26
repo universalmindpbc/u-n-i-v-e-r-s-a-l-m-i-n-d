@@ -9,6 +9,7 @@ The first shopfront is deliberately human-curated. It proves the editorial and e
 - This presentation is exclusively **James Bondage**. Other mastheads will be authored separately after their own editorial direction is commissioned; they are not represented here.
 - Functional forms within James Bondage: lingerie, second skin, swim, movement and after dark.
 - Products may belong to more than one form.
+- Imagery is selected human-first: prefer a woman present in the frame, a visible or forward-facing gaze where available, and an in-situ or lived context over an isolated product on white. The test is whether the image carries emotion and human experience while still revealing the piece.
 - The current working edit contains 312 Safari references across 23 retailers. The mock-up exposes the breadth of that edit while limiting the photographed opening selection to avoid retail overload.
 - Music Television remains the outer experience. A current Universal Mind music/video programme continues into Shop. A quiet session offers Café del Mar Chill after an explicit play gesture.
 - A discreet day/night control lets the viewer choose a white or black presentation and remembers that choice locally. The first visit follows the viewer's system preference.
@@ -19,7 +20,7 @@ When commissioned, create a human-readable Fashion Tensor in Notion, parallel in
 
 Possible record layers:
 
-1. Product identity: brand, retailer, canonical URL, imagery, availability state and rights/provenance.
+1. Product identity: brand, retailer, canonical URL, imagery, image type, subject presence, gaze, setting, availability state and rights/provenance.
 2. Editorial identity: approved masthead and category membership, form, silhouette, colour, texture, coverage, movement, season and occasion.
 3. Citizen Needs hypotheses: carefully reviewed relationships to chosen contexts such as calm, confidence, play, connection, self-expression, restoration or activation.
 4. Emotional tone: human-authored descriptors and confidence, with space for ambiguity and multiple readings.
