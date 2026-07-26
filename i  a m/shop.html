@@ -13,21 +13,47 @@
       } catch {
         document.documentElement.dataset.shopTheme = "night";
       }
+
+      const shopBrandVariant = new URLSearchParams(window.location.search).get("brand");
+      document.documentElement.dataset.shopBrandVariant = shopBrandVariant === "b" ? "handdrawn" : "a";
     </script>
     <script src="music-television-frame-context.js?v=music-tv-frame-14ebf4459d03"></script>
-    <link rel="stylesheet" href="shop.css?v=shop-eres-catalogue-2">
+    <link rel="stylesheet" href="shop.css?v=shop-brand-variants-4">
   </head>
   <body class="shop-page">
     <a class="shop-skip" href="#edit">Skip to the edit</a>
 
+    <a class="shop-universal-nav" href="index.html" data-shop-return-music aria-label="Return to Universal Mind Music Television">
+      <img src="a s s e t s/Universal Mind [ I o H ] Logo 512.png" alt="">
+    </a>
+
     <header class="shop-masthead" data-shop-masthead>
       <a class="shop-masthead__brand" href="#top" aria-label="James Bondage shop, return to top">
+        <img class="shop-b-face shop-b-face--masthead" src="a s s e t s/shop-mockup/james-bondage-handdrawn-faces-b.png" alt="" aria-hidden="true">
         <span>VOGUE</span><i>//</i><strong>I AM</strong>
       </a>
       <nav class="shop-masthead__nav" aria-label="Shop sections">
-        <a href="#top">film</a>
-        <a href="#edit">the edit</a>
-        <a href="#brands">23 brands</a>
+        <a href="#shop-about">about</a>
+        <details class="shop-menu" data-shop-menu>
+          <summary>shop</summary>
+          <div class="shop-menu__panel">
+            <div>
+              <p>shop by type</p>
+              <a href="#edit" data-shop-type="all">all pieces</a>
+              <a href="#edit" data-shop-type="lingerie">lingerie</a>
+              <a href="#edit" data-shop-type="second-skin">second skin</a>
+              <a href="#edit" data-shop-type="swim">swim</a>
+              <a href="#edit" data-shop-type="movement">movement</a>
+              <a href="#edit" data-shop-type="after-dark">after dark</a>
+            </div>
+            <div>
+              <p>shop by brand</p>
+              <a href="#catalogue/eres">ERES / first edit</a>
+              <a href="#brands">all 23 brands</a>
+            </div>
+          </div>
+        </details>
+        <a href="#giving-back">giving back</a>
       </nav>
       <div class="shop-masthead__actions">
         <button class="shop-theme" type="button" data-shop-theme-toggle aria-label="Switch to night mode" aria-pressed="false">
@@ -42,22 +68,29 @@
     </header>
 
     <main>
-      <section class="shop-hero" id="top" aria-labelledby="shop-title" data-shop-editorial>
-        <div class="shop-hero__film" aria-label="Bordelle Signature Waspie film">
-          <iframe
-            data-shop-hero-video
-            src="https://player.vimeo.com/video/987002812?autoplay=1&amp;background=1&amp;byline=0&amp;controls=0&amp;dnt=1&amp;hd=1&amp;loop=1&amp;muted=1&amp;playsinline=1&amp;title=0"
-            title="Bordelle Signature Waspie film"
-            allow="autoplay; fullscreen; picture-in-picture"
-            referrerpolicy="strict-origin-when-cross-origin"
-            loading="eager"
-            tabindex="-1"
-          ></iframe>
+      <section class="shop-hero" id="top" aria-labelledby="shop-title">
+        <div class="shop-hero__film" aria-label="James Bondage live fashion channel">
+          <video
+            data-shop-live-band
+            data-stream-file="a s s e t s/f a s h i o n [ r u n w a y ]/Wolford x Sergio Rossi.mp4"
+            data-stream-role="fashion"
+            data-stream-keep-alive
+            autoplay
+            muted
+            playsinline
+            loop
+            preload="auto"
+            aria-hidden="true"
+          ></video>
         </div>
-        <p class="shop-hero__index">01 / film</p>
+        <div class="shop-hero__veil" aria-hidden="true"></div>
+        <p class="shop-hero__index">01 / live</p>
         <h1 id="shop-title"><span>James</span><span>Bondage</span></h1>
-        <p class="shop-hero__credit">Bordelle / Signature Waspie</p>
-        <a class="shop-hero__enter" href="#edit">the edit <span aria-hidden="true">↓</span></a>
+        <img class="shop-hero__b-wordmark" src="a s s e t s/shop-mockup/james-bondage-handdrawn-wordmark-b.png" alt="" aria-hidden="true">
+        <img class="shop-b-face shop-b-face--hero" src="a s s e t s/shop-mockup/james-bondage-handdrawn-faces-b.png" alt="" aria-hidden="true">
+        <p class="shop-hero__credit"><span data-shop-live-title>Wolford × Sergio Rossi</span> / live channel</p>
+        <a class="shop-hero__enter shop-hero__enter--editorial" href="#edit">the edit <span aria-hidden="true">↓</span></a>
+        <a class="shop-hero__enter shop-hero__enter--catalogue" href="#catalogue-editorial">ERES / collection <span aria-hidden="true">↓</span></a>
       </section>
 
       <section class="shop-looks" aria-label="James Bondage opening looks" data-shop-editorial>
@@ -73,6 +106,25 @@
           <figure><img src="a s s e t s/shop-mockup/karla-neon-tiger.jpg" alt="KARLA ŠPETIĆ neon tiger bikini on the beach" fetchpriority="high"></figure>
           <p><strong>KARLA ŠPETIĆ</strong><span>No.V Neon Tiger Bikini</span></p>
         </a>
+      </section>
+
+      <section class="shop-film-editorial" aria-labelledby="bordelle-film-title" data-shop-editorial>
+        <header>
+          <p>editorial film / Bordelle</p>
+          <h2 id="bordelle-film-title">Signature<br>Waspie</h2>
+        </header>
+        <div class="shop-film-editorial__frame">
+          <iframe
+            data-shop-bordelle-film
+            src="https://player.vimeo.com/video/987002812?autoplay=1&amp;background=1&amp;byline=0&amp;controls=0&amp;dnt=1&amp;hd=1&amp;loop=1&amp;muted=1&amp;playsinline=1&amp;title=0"
+            title="Bordelle Signature Waspie film"
+            allow="autoplay; fullscreen; picture-in-picture"
+            referrerpolicy="strict-origin-when-cross-origin"
+            loading="lazy"
+            tabindex="-1"
+          ></iframe>
+        </div>
+        <a href="https://eu.bordelle.co.uk/products/signature-waspie-cream?variant=43656648884396" target="_blank" rel="noopener noreferrer">Bordelle / Signature Waspie <span aria-hidden="true">↗</span></a>
       </section>
 
       <section class="shop-edit" id="edit" aria-labelledby="edit-title" data-shop-editorial>
@@ -209,12 +261,43 @@
         </ol>
       </section>
 
+      <section class="shop-context shop-context--about" id="shop-about" aria-labelledby="shop-about-title" data-shop-editorial>
+        <img class="shop-b-face shop-b-face--about" src="a s s e t s/shop-mockup/james-bondage-handdrawn-faces-b.png" alt="" aria-hidden="true">
+        <header>
+          <p>04 / about</p>
+          <h2 id="shop-about-title">James<br>Bondage</h2>
+          <img class="shop-context__b-wordmark" src="a s s e t s/shop-mockup/james-bondage-handdrawn-wordmark-b.png" alt="" aria-hidden="true">
+        </header>
+        <div>
+          <p>James Bondage is the fashion masthead. James Bondage Health is the editorial video series for conversations about tantra, intimacy and wellbeing.</p>
+          <p>The shop brings together an edit from 23 retailers. Each piece is presented here before the journey continues to the retailer.</p>
+        </div>
+      </section>
+
+      <section class="shop-context shop-context--giving" id="giving-back" aria-labelledby="giving-back-title" data-shop-editorial>
+        <img class="shop-b-face shop-b-face--giving" src="a s s e t s/shop-mockup/james-bondage-handdrawn-faces-b.png" alt="" aria-hidden="true">
+        <header>
+          <p>05 / giving back</p>
+          <h2 id="giving-back-title">All profits go to youth mental health research.</h2>
+        </header>
+      </section>
+
       <section class="shop-catalogue" data-shop-catalogue hidden aria-labelledby="catalogue-title">
-        <a class="shop-catalogue__back" href="#brands" data-shop-catalogue-back><span aria-hidden="true">←</span> James Bondage</a>
-        <header class="shop-catalogue__heading">
-          <p>04 / brand catalogue</p>
-          <h2 id="catalogue-title">ERES</h2>
-          <b data-catalogue-count>15</b>
+        <header class="shop-catalogue__editorial" id="catalogue-editorial" data-catalogue-editorial-header>
+          <figure class="shop-catalogue__editorial-lead">
+            <img src="a s s e t s/shop-mockup/eres-catalogue/ruban.avif" alt="ERES Ruban lace bralette, editorial profile">
+          </figure>
+          <a class="shop-catalogue__back" href="#brands" data-shop-catalogue-back><span aria-hidden="true">←</span> James Bondage</a>
+          <div class="shop-catalogue__wordmark">
+            <p>ERES / catalogue</p>
+            <h2 id="catalogue-title">ERES</h2>
+            <span>James Bondage / first edit <b>15</b></span>
+          </div>
+          <div class="shop-catalogue__editorial-aside">
+            <figure><img src="a s s e t s/shop-mockup/eres-catalogue/voltige.avif" alt="ERES Voltige bodysuit, editorial portrait"></figure>
+            <p><span>ERES</span><span>lingerie / second skin</span></p>
+            <a href="#catalogue-grid">view the collection <span aria-hidden="true">↓</span></a>
+          </div>
         </header>
         <div class="shop-catalogue__filters" aria-label="Filter ERES products">
           <span>form</span>
@@ -238,6 +321,7 @@
           <p data-shop-product-dialog-brand>ERES</p>
           <h2 id="shop-product-dialog-title" data-shop-product-dialog-title></h2>
           <p id="shop-product-dialog-form" data-shop-product-dialog-form></p>
+          <p data-shop-product-dialog-price></p>
           <a href="#" target="_blank" rel="noopener noreferrer" data-shop-product-dialog-retailer>view at ERES <span aria-hidden="true">↗</span></a>
         </div>
       </div>
@@ -248,6 +332,9 @@
       <p>Retail and affiliate relationships are proposed. Imagery © the respective brands.</p>
     </footer>
 
-    <script src="shop.js?v=shop-eres-catalogue-2"></script>
+    <script src="cloudflare-stream-catalogue.js?v=stream-catalogue-1"></script>
+    <script src="cloudflare-stream-controller.js?v=stream-controller-1"></script>
+    <script src="broadcast-clock-v1.js?v=broadcast-clock-v1-c71d08e16ee0"></script>
+    <script src="shop.js?v=shop-brand-variants-4"></script>
   </body>
 </html>

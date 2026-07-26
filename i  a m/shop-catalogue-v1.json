@@ -1,6 +1,8 @@
 {
   "version": 1,
   "thumbnailPolicy": "retailer_first_hero_unless_editorial_override",
+  "priceCurrency": "AUD",
+  "pricesCheckedAt": "2026-07-26",
   "products": [
     {
       "id": "eres-ruban-60997-1001",
@@ -10,6 +12,7 @@
       "categories": ["bras", "lingerie"],
       "image": "a s s e t s/shop-mockup/eres-catalogue/ruban.avif",
       "imageSource": "retailer_first_hero",
+      "price": "AU$ 660",
       "retailerUrl": "https://www.eresparis.com/eu/en/lingerie/60997-1001.html"
     },
     {
@@ -20,6 +23,7 @@
       "categories": ["briefs", "lingerie"],
       "image": "a s s e t s/shop-mockup/eres-catalogue/voilette.avif",
       "imageSource": "retailer_first_hero",
+      "price": "AU$ 360",
       "retailerUrl": "https://www.eresparis.com/eu/en/lingerie/612529-1001.html"
     },
     {
@@ -30,6 +34,7 @@
       "categories": ["bodysuits", "lingerie"],
       "image": "a s s e t s/shop-mockup/eres-catalogue/voltige.avif",
       "imageSource": "retailer_first_hero",
+      "price": "AU$ 1.405",
       "retailerUrl": "https://www.eresparis.com/eu/en/lingerie/622504-1001.html"
     },
     {
@@ -40,6 +45,7 @@
       "categories": ["bras", "lingerie"],
       "image": "a s s e t s/shop-mockup/eres-catalogue/intriguee-black.avif",
       "imageSource": "retailer_first_hero",
+      "price": "AU$ 585",
       "retailerUrl": "https://www.eresparis.com/eu/en/lingerie/60996-1001.html"
     },
     {
@@ -50,6 +56,7 @@
       "categories": ["briefs", "lingerie"],
       "image": "a s s e t s/shop-mockup/eres-catalogue/envolee-black.avif",
       "imageSource": "retailer_first_hero",
+      "price": "AU$ 305",
       "retailerUrl": "https://www.eresparis.com/eu/en/lingerie/612527-1001.html"
     },
     {
@@ -60,6 +67,7 @@
       "categories": ["bras", "lingerie"],
       "image": "a s s e t s/shop-mockup/eres-catalogue/evidence-chat-noir.avif",
       "imageSource": "retailer_first_hero",
+      "price": "AU$ 620",
       "retailerUrl": "https://www.eresparis.com/eu/en/lingerie/60999-01517.html"
     },
     {
@@ -70,6 +78,7 @@
       "categories": ["briefs", "lingerie"],
       "image": "a s s e t s/shop-mockup/eres-catalogue/certitude-chat-noir.avif",
       "imageSource": "retailer_first_hero",
+      "price": "AU$ 325",
       "retailerUrl": "https://www.eresparis.com/eu/en/lingerie/612528-01517.html"
     },
     {
@@ -80,6 +89,7 @@
       "categories": ["bras", "lingerie"],
       "image": "a s s e t s/shop-mockup/eres-catalogue/intriguee-chat-noir.avif",
       "imageSource": "retailer_first_hero",
+      "price": "AU$ 585",
       "retailerUrl": "https://www.eresparis.com/eu/en/lingerie/60996-01517.html"
     },
     {
@@ -90,6 +100,7 @@
       "categories": ["briefs", "lingerie"],
       "image": "a s s e t s/shop-mockup/eres-catalogue/envolee-chat-noir.avif",
       "imageSource": "retailer_first_hero",
+      "price": "AU$ 305",
       "retailerUrl": "https://www.eresparis.com/eu/en/lingerie/612527-01517.html"
     },
     {
@@ -100,6 +111,7 @@
       "categories": ["briefs", "lingerie"],
       "image": "a s s e t s/shop-mockup/eres-catalogue/inspiree.avif",
       "imageSource": "retailer_first_hero",
+      "price": "AU$ 370",
       "retailerUrl": "https://www.eresparis.com/eu/en/lingerie/612523-01528.html"
     },
     {
@@ -110,6 +122,7 @@
       "categories": ["briefs", "lingerie"],
       "image": "a s s e t s/shop-mockup/eres-catalogue/reveur.avif",
       "imageSource": "retailer_first_hero",
+      "price": "AU$ 360",
       "retailerUrl": "https://www.eresparis.com/eu/en/lingerie/612522-01528.html"
     },
     {
@@ -120,6 +133,7 @@
       "categories": ["bras", "lingerie"],
       "image": "a s s e t s/shop-mockup/eres-catalogue/destin.avif",
       "imageSource": "retailer_first_hero",
+      "price": "AU$ 650",
       "retailerUrl": "https://www.eresparis.com/eu/en/lingerie/60990-01528.html"
     },
     {
@@ -130,6 +144,7 @@
       "categories": ["bras", "lingerie"],
       "image": "a s s e t s/shop-mockup/eres-catalogue/evidence-black.avif",
       "imageSource": "retailer_first_hero",
+      "price": "AU$ 620",
       "retailerUrl": "https://www.eresparis.com/eu/en/lingerie/60999-1001.html"
     },
     {
@@ -140,6 +155,7 @@
       "categories": ["briefs", "lingerie"],
       "image": "a s s e t s/shop-mockup/eres-catalogue/certitude-black.avif",
       "imageSource": "retailer_first_hero",
+      "price": "AU$ 325",
       "retailerUrl": "https://www.eresparis.com/eu/en/lingerie/612528-1001.html"
     },
     {
@@ -150,6 +166,7 @@
       "categories": ["bras", "lingerie"],
       "image": "a s s e t s/shop-mockup/eres-catalogue/delicieux.avif",
       "imageSource": "retailer_first_hero",
+      "price": "AU$ 585",
       "retailerUrl": "https://www.eresparis.com/eu/en/lingerie/64001-01512.html"
     }
   ]

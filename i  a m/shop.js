@@ -18,10 +18,15 @@
 
   const products = Array.from(document.querySelectorAll("[data-product]"));
   const categoryButtons = Array.from(document.querySelectorAll("[data-filter-category]"));
+  const shopMenu = document.querySelector("[data-shop-menu]");
+  const returnMusicLink = document.querySelector("[data-shop-return-music]");
+  const shopTypeLinks = Array.from(document.querySelectorAll("[data-shop-type]"));
   const filterStatus = document.querySelector("[data-filter-status]");
   const themeButton = document.querySelector("[data-shop-theme-toggle]");
   const themeLabel = document.querySelector("[data-shop-theme-label]");
-  const heroVideo = document.querySelector("[data-shop-hero-video]");
+  const liveBand = document.querySelector("[data-shop-live-band]");
+  const liveTitle = document.querySelector("[data-shop-live-title]");
+  const bordelleFilm = document.querySelector("[data-shop-bordelle-film]");
   const musicButton = document.querySelector("[data-shop-music]");
   const musicLabel = document.querySelector("[data-shop-music-label]");
   const catalogueSection = document.querySelector("[data-shop-catalogue]");
@@ -35,11 +40,119 @@
   const productDialogBrand = document.querySelector("[data-shop-product-dialog-brand]");
   const productDialogTitle = document.querySelector("[data-shop-product-dialog-title]");
   const productDialogForm = document.querySelector("[data-shop-product-dialog-form]");
+  const productDialogPrice = document.querySelector("[data-shop-product-dialog-price]");
   const productDialogRetailer = document.querySelector("[data-shop-product-dialog-retailer]");
   const themeKey = "iamShopThemeV1";
   let activeCategory = "all";
   let activeCatalogueCategory = "all";
   let catalogueProducts = [];
+  let liveBandSyncTimer = 0;
+  let liveBandRunwayId = "";
+
+  const liveRunways = Object.freeze({
+    "wolford-sergio-rossi-capsule": {
+      file: "a s s e t s/f a s h i o n [ r u n w a y ]/Wolford x Sergio Rossi.mp4",
+      title: "Wolford × Sergio Rossi",
+    },
+    "mugler-fall-winter-2021": {
+      file: "a s s e t s/f a s h i o n [ r u n w a y ]/Mugler - Fall Winter 2021.mp4",
+      title: "Mugler FW21",
+    },
+  });
+
+  function seekLiveBand(blockOffsetSeconds) {
+    if (!liveBand || !Number.isFinite(Number(blockOffsetSeconds))) return;
+    const seek = () => {
+      const duration = Number(liveBand.duration || 0);
+      if (!Number.isFinite(duration) || duration <= 0) return;
+      const target = ((Number(blockOffsetSeconds) % duration) + duration) % duration;
+      try {
+        if (typeof liveBand.fastSeek === "function") liveBand.fastSeek(target);
+        else liveBand.currentTime = target;
+      } catch {
+        // The next clock pass will retry once the stream is seekable.
+      }
+    };
+    if (liveBand.readyState >= 1) seek();
+    else liveBand.addEventListener("loadedmetadata", seek, { once: true });
+  }
+
+  async function synchronizeLiveBand(forceSeek = false) {
+    if (!liveBand || !window.IAMBroadcastClock || !window.IAMStreamController) return null;
+    await window.IAMBroadcastClock.ready;
+    const state = window.IAMBroadcastClock.stateAt("fashion-underground-intensity");
+    const runway = liveRunways[state?.runwayId];
+    if (!state || !runway) throw new Error("James Bondage live fashion programme unavailable.");
+
+    const programmeChanged = liveBandRunwayId !== state.runwayId;
+    if (programmeChanged) {
+      liveBandRunwayId = state.runwayId;
+      window.IAMStreamController.detach(liveBand);
+      liveBand.pause();
+      liveBand.dataset.streamFile = runway.file;
+      liveBand.dataset.shopLiveRunway = state.runwayId;
+      if (liveTitle) liveTitle.textContent = runway.title;
+      await window.IAMStreamController.attach(liveBand, {
+        fileName: runway.file,
+        role: "fashion",
+        autoplay: !window.matchMedia("(prefers-reduced-motion: reduce)").matches,
+      });
+      forceSeek = true;
+    } else if (!liveBand.dataset.streamUid) {
+      await window.IAMStreamController.attach(liveBand, {
+        fileName: runway.file,
+        role: "fashion",
+        autoplay: !window.matchMedia("(prefers-reduced-motion: reduce)").matches,
+      });
+    }
+
+    document.body.dataset.shopLiveState = "ready";
+    document.body.dataset.shopLiveChannel = state.channelId;
+    document.body.dataset.shopLiveRunway = state.runwayId;
+    document.body.dataset.shopLiveRemainingSeconds = state.remainingSeconds.toFixed(3);
+
+    const duration = Number(liveBand.duration || 0);
+    if (!Number.isFinite(duration) || duration <= 0) {
+      if (forceSeek) seekLiveBand(state.offsetSeconds);
+      return state;
+    }
+    const target = ((state.offsetSeconds % duration) + duration) % duration;
+    let drift = Number(liveBand.currentTime || 0) - target;
+    if (Math.abs(drift) > duration / 2) drift += drift > 0 ? -duration : duration;
+    document.body.dataset.shopLiveTargetSeconds = target.toFixed(3);
+    document.body.dataset.shopLiveDriftSeconds = drift.toFixed(3);
+    if (forceSeek || Math.abs(drift) > 1.25) {
+      seekLiveBand(state.offsetSeconds);
+      liveBand.playbackRate = 1;
+      document.body.dataset.shopLiveCorrection = forceSeek ? "entry_seek" : "hard_seek";
+    } else if (Math.abs(drift) > .35) {
+      liveBand.playbackRate = drift > 0 ? .98 : 1.02;
+      document.body.dataset.shopLiveCorrection = drift > 0 ? "soft_slow" : "soft_catchup";
+    } else {
+      liveBand.playbackRate = 1;
+      document.body.dataset.shopLiveCorrection = "locked";
+    }
+    return state;
+  }
+
+  async function startLiveBand() {
+    if (!liveBand) return;
+    try {
+      await synchronizeLiveBand(true);
+      if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+        await window.IAMStreamController.play(liveBand).catch(() => null);
+      }
+      liveBandSyncTimer = window.setInterval(() => {
+        synchronizeLiveBand(false).catch((error) => {
+          document.body.dataset.shopLiveState = "error";
+          document.body.dataset.shopLiveError = String(error?.message || error).slice(0, 140);
+        });
+      }, 3000);
+    } catch (error) {
+      document.body.dataset.shopLiveState = "error";
+      document.body.dataset.shopLiveError = String(error?.message || error).slice(0, 140);
+    }
+  }
 
   function setPressed(buttons, activeButton) {
     buttons.forEach((button) => {
@@ -73,6 +186,35 @@
     });
   });
 
+  shopTypeLinks.forEach((link) => {
+    link.addEventListener("click", () => {
+      activeCategory = link.dataset.shopType || "all";
+      const filterButton = categoryButtons.find((button) => button.dataset.filterCategory === activeCategory);
+      if (filterButton) setPressed(categoryButtons, filterButton);
+      applyFilters();
+    });
+  });
+
+  shopMenu?.querySelectorAll("a").forEach((link) => {
+    link.addEventListener("click", () => shopMenu.removeAttribute("open"));
+  });
+
+  shopMenu?.addEventListener("keydown", (event) => {
+    if (event.key !== "Escape") return;
+    shopMenu.removeAttribute("open");
+    shopMenu.querySelector("summary")?.focus();
+  });
+
+  document.addEventListener("click", (event) => {
+    if (shopMenu?.open && !shopMenu.contains(event.target)) shopMenu.removeAttribute("open");
+  });
+
+  returnMusicLink?.addEventListener("click", (event) => {
+    if (!inMusicTelevisionFrame) return;
+    event.preventDefault();
+    window.parent.postMessage({ type: "iam:return-to-television" }, window.location.origin);
+  });
+
   function labelCategories(categories = []) {
     return categories.filter((category) => category !== "lingerie").join(" / ") || "lingerie";
   }
@@ -97,15 +239,15 @@
 
     const copy = document.createElement("div");
     copy.className = "shop-catalogue-card__copy";
-    const brand = document.createElement("p");
-    brand.textContent = product.brand;
     const name = document.createElement("h3");
     name.textContent = product.name;
     const form = document.createElement("span");
     form.textContent = labelCategories(product.categories);
+    const price = document.createElement("strong");
+    price.textContent = product.price;
     const expand = document.createElement("em");
-    expand.textContent = "expand +";
-    copy.append(brand, name, form, expand);
+    expand.textContent = "+";
+    copy.append(name, form, price, expand);
     button.append(figure, copy);
     article.append(button);
     return article;
@@ -147,6 +289,7 @@
     if (productDialogBrand) productDialogBrand.textContent = product.brand;
     if (productDialogTitle) productDialogTitle.textContent = product.name;
     if (productDialogForm) productDialogForm.textContent = labelCategories(product.categories);
+    if (productDialogPrice) productDialogPrice.textContent = product.price;
     if (productDialogRetailer) productDialogRetailer.href = product.retailerUrl;
     if (!productDialog.open) productDialog.showModal();
   }
@@ -161,11 +304,15 @@
 
   function renderRoute() {
     const catalogueRoute = window.location.hash.startsWith("#catalogue/eres");
+    const enteringCatalogue = catalogueRoute && document.body.dataset.shopView !== "catalogue";
     document.body.dataset.shopView = catalogueRoute ? "catalogue" : "editorial";
     if (catalogueSection) catalogueSection.hidden = !catalogueRoute;
     if (!catalogueRoute) {
       closeProduct();
       return;
+    }
+    if (enteringCatalogue) {
+      window.requestAnimationFrame(() => window.scrollTo(0, 0));
     }
     const selectedProduct = productFromHash();
     if (selectedProduct) showProduct(selectedProduct);
@@ -191,7 +338,7 @@
 
   async function loadCatalogue() {
     try {
-      const response = await fetch("shop-catalogue-v1.json?v=1", { credentials: "same-origin" });
+      const response = await fetch("shop-catalogue-v1.json?v=3", { credentials: "same-origin" });
       if (!response.ok) throw new Error(`Catalogue request failed: ${response.status}`);
       const catalogue = await response.json();
       catalogueProducts = Array.isArray(catalogue.products) ? catalogue.products : [];
@@ -227,10 +374,15 @@
 
   applyTheme(document.documentElement.dataset.shopTheme || "night");
 
-  if (heroVideo && window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-    const reducedMotionUrl = new URL(heroVideo.src);
+  if (liveBand && window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    liveBand.autoplay = false;
+    liveBand.pause();
+  }
+
+  if (bordelleFilm && window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    const reducedMotionUrl = new URL(bordelleFilm.src);
     reducedMotionUrl.searchParams.set("autoplay", "0");
-    heroVideo.src = reducedMotionUrl.href;
+    bordelleFilm.src = reducedMotionUrl.href;
   }
 
   function updateMusicStatus(detail = {}) {
@@ -272,4 +424,9 @@
   applyFilters();
   renderRoute();
   loadCatalogue();
+  startLiveBand();
+
+  window.addEventListener("pagehide", () => {
+    if (liveBandSyncTimer) window.clearInterval(liveBandSyncTimer);
+  }, { once: true });
 }());
