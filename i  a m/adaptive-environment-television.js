@@ -235,6 +235,7 @@
   const typewriterLines = Array.from(document.querySelectorAll("[data-adaptive-typewriter]"));
   const contextLines = Array.from(document.querySelectorAll("[data-local-context-line]"));
   const televisionPageTitle = document.title;
+  const shopShellRequested = new URLSearchParams(window.location.search).get("shop") === "1";
 
   if (!playButton || !room || !playerMount) return;
 
@@ -3369,6 +3370,7 @@
       scheduleReconnect("direct_waiting", 2500);
     };
     const handleStalled = () => {
+      if (!playbackStarted) return;
       radioStalledCount += 1;
       document.body.dataset.radioPlaybackState = "buffering";
       updateRadioBufferDiagnostics(audio, null);
@@ -4294,6 +4296,8 @@
     }
     window.IAMEMDR?.setTimelineSource?.({ media: continuationAudio, bpm: 112, firstDownbeatSeconds: 0, fallbackBpm: 112 });
     continuationAudio.muted = false;
+    continuationAudio.addEventListener("playing", () => postShopMusicStatus(), { once: true });
+    continuationAudio.addEventListener("error", () => postShopMusicStatus(), { once: true });
     document.body.dataset.radioPreloadState = "live";
     if (continuationSegmentPlayer) {
       continuationSegmentPlayer.playbackStarted = true;
@@ -6290,6 +6294,67 @@
     refreshOuterFavicon();
   }
 
+  function shopMusicStatus() {
+    const radioPlaybackState = document.body.dataset.radioPlaybackState || "stopped";
+    const audioPartyPlaying = Boolean(
+      document.body.classList.contains("television-audio-party") &&
+      document.body.dataset.audioPartyPlaybackState === "playing"
+    );
+    const radioPlaying = Boolean(
+      document.body.classList.contains("television-radio-continuation") &&
+      !document.body.classList.contains("television-audio-party") &&
+      radioPlaybackState === "playing"
+    );
+    const videoPlaying = Boolean(localVideo && !localVideo.paused && !localVideo.muted);
+
+    if (audioPartyPlaying) {
+      return {
+        playing: true,
+        label: `${track.displayArtist || track.artist} — ${track.displayTitle || track.title}`,
+        source: "party",
+      };
+    }
+
+    if (radioPlaying) {
+      const station = stationForId(activeRadioStationId);
+      return { playing: true, label: station?.display_title || "Café del Mar — Chill", source: "radio" };
+    }
+
+    if (videoPlaying) {
+      return {
+        playing: true,
+        label: `${track.displayArtist || track.artist} — ${track.displayTitle || track.title}`,
+        source: track.presentation === "live_dj_set" ? "party" : "video",
+      };
+    }
+
+    const radioLoading = document.body.classList.contains("television-radio-continuation") &&
+      ["loading", "buffering", "recovering", "reconnecting"].includes(radioPlaybackState);
+    return {
+      playing: false,
+      loading: radioLoading,
+      label: "Café del Mar — Chill",
+      source: radioLoading ? "radio" : "quiet",
+    };
+  }
+
+  function postShopMusicStatus(targetWindow = pageFrame?.contentWindow) {
+    targetWindow?.postMessage({ type: "iam:shop-music-status", ...shopMusicStatus() }, window.location.origin);
+  }
+
+  function requestShopMusic(targetWindow = pageFrame?.contentWindow) {
+    const currentStatus = shopMusicStatus();
+    if (currentStatus.playing) {
+      postShopMusicStatus(targetWindow);
+      return true;
+    }
+
+    startRadioStation(continuation.defaultStation, { source: "shop_default" })
+      .then(() => postShopMusicStatus(targetWindow))
+      .catch(() => postShopMusicStatus(targetWindow));
+    return true;
+  }
+
   function openInVideoPageLayer(link) {
     if (!pageView || !pageFrame) return;
 
@@ -6303,6 +6368,23 @@
     pageView.setAttribute("aria-hidden", "false");
     document.body.classList.add("television-page-view-open");
     closeVideoNavigation();
+  }
+
+  function bootstrapRequestedShop() {
+    if (!shopShellRequested || !pageView || !pageFrame) return;
+    const shopLink = document.querySelector('[data-nav-item="shop"]');
+    if (!shopLink) return;
+
+    hasOpened = true;
+    televisionPlaybackRequested = false;
+    setReactionWalletOpen(false);
+    room.setAttribute("aria-hidden", "false");
+    playButton.setAttribute("aria-expanded", "true");
+    const video = mountPlayer();
+    try { video.pause(); } catch {}
+    video.muted = true;
+    document.body.classList.add("television-room-open");
+    openInVideoPageLayer(shopLink);
   }
 
   function returnToTelevisionRoom(options = {}) {
@@ -7028,6 +7110,14 @@
   document.addEventListener("webkitfullscreenchange", syncFullscreenState);
   window.addEventListener("message", (event) => {
     if (event.origin !== window.location.origin) return;
+    if (event.data?.type === "iam:shop-music-status-request") {
+      postShopMusicStatus(event.source);
+      return;
+    }
+    if (event.data?.type === "iam:shop-music-request") {
+      requestShopMusic(event.source);
+      return;
+    }
     if (event.data?.type === "iam:open-sex-ed-episode") {
       openSexEdEpisode(event.data.episode || "01");
       return;
@@ -7048,7 +7138,10 @@
       sexEdEpisodeStart.hidden = false;
     }
   });
-  pageFrame?.addEventListener("load", syncPageLayerMetadata);
+  pageFrame?.addEventListener("load", () => {
+    syncPageLayerMetadata();
+    postShopMusicStatus();
+  });
   setMusicTelevisionMetadata();
   updateNowPlaying();
   if (window.ResizeObserver && nowPlayingViewport && nowPlayingTrack) {
@@ -7070,9 +7163,13 @@
     setProgrammeMixLevel(level) {
       return setProgrammeMixLevel(level);
     },
+    requestShopMusic() {
+      return requestShopMusic(pageFrame?.contentWindow);
+    },
   };
   window.IAMStreamReady?.then(() => {
     if (!selectionIsLoading) primeLocalVideo();
   });
+  if (shopShellRequested) window.addEventListener("load", bootstrapRequestedShop, { once: true });
   runIntro();
 }());
