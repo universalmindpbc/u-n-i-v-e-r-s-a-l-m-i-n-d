@@ -8,6 +8,14 @@ import {
   happinessAgentCard,
   reserveState,
 } from "./happiness-rewards-core.js";
+import {
+  HAPPINESS_PILOT_POLICY,
+  assertPilotReady,
+  evaluateBaselineEligibility,
+  evaluateCitizenBonus,
+  pilotReadiness,
+  publicPilotConfig,
+} from "./happiness-pilot-core.js";
 
 const ALLOWED_ORIGINS = new Set([
   "https://staging.universalmind.tv",
@@ -34,6 +42,19 @@ function json(body, status = 200, origin = "") {
   });
 }
 
+function internalAuthorized(request, env) {
+  const authorization = request.headers.get("Authorization") || "";
+  return Boolean(env.HAPPINESS_INTERNAL_TOKEN) && authorization === `Bearer ${env.HAPPINESS_INTERNAL_TOKEN}`;
+}
+
+async function requestJson(request) {
+  try {
+    return await request.json();
+  } catch {
+    throw new Error("invalid_json_body");
+  }
+}
+
 export default {
   async fetch(request, env) {
     const url = new URL(request.url);
@@ -57,6 +78,31 @@ export default {
 
     if (request.method === "GET" && url.pathname === "/v1/config") {
       return json({ ok: true, ...publicHappinessConfig() }, 200, origin);
+    }
+
+    if (request.method === "GET" && url.pathname === "/v1/pilot") {
+      return json({ ok: true, ...publicPilotConfig() }, 200, origin);
+    }
+
+    if (request.method === "GET" && url.pathname === "/v1/wallet") {
+      if (String(env.HAPPINESS_MEMBER_READS_ENABLED || "false") !== "true") {
+        return json({ ok: false, error: "happiness_member_reads_disabled" }, 503, origin);
+      }
+      return json({ ok: false, error: "member_identity_adapter_not_activated" }, 501, origin);
+    }
+
+    if (request.method === "GET" && url.pathname === "/v1/apple-wallet/pass") {
+      if (String(env.HAPPINESS_APPLE_PASS_ISSUANCE_ENABLED || "false") !== "true") {
+        return json({ ok: false, error: "happiness_apple_pass_issuance_disabled" }, 503, origin);
+      }
+      return json({ ok: false, error: "apple_pass_signing_adapter_not_activated" }, 501, origin);
+    }
+
+    if (url.pathname.startsWith("/apple-wallet/v1/")) {
+      if (String(env.HAPPINESS_APPLE_PASS_UPDATES_ENABLED || "false") !== "true") {
+        return json({ ok: false, error: "happiness_apple_pass_updates_disabled" }, 503, origin);
+      }
+      return json({ ok: false, error: "apple_pass_update_service_not_activated" }, 501, origin);
     }
 
     if (request.method === "GET" && url.pathname === HAPPINESS_ARCHITECTURE.a2a.discoveryPath) {
@@ -95,6 +141,10 @@ export default {
           caps_configured: Boolean(env.HAPPINESS_COLLECTIVE_EPOCH_MINT_UNITS && env.HAPPINESS_COLLECTIVE_WEEKLY_CAP_UNITS && env.HAPPINESS_COLLECTIVE_TOTAL_CAP_UNITS),
           treasury_configured: Boolean(env.HAPPINESS_COMMUNITY_TREASURY_ADDRESS),
         },
+        pilot: {
+          ...pilotReadiness(env),
+          policy: HAPPINESS_PILOT_POLICY.schemaVersion,
+        },
         a2a: {
           protocol: HAPPINESS_ARCHITECTURE.a2a.protocol,
           protocol_version: HAPPINESS_ARCHITECTURE.a2a.protocolVersion,
@@ -109,7 +159,10 @@ export default {
         apple_wallet: {
           pass_type_configured: Boolean(env.HAPPINESS_APPLE_PASS_TYPE_IDENTIFIER),
           signing_certificate_configured: Boolean(env.HAPPINESS_APPLE_PASS_CERTIFICATE),
-          update_service_enabled: false,
+          team_identifier_configured: Boolean(env.HAPPINESS_APPLE_TEAM_IDENTIFIER),
+          web_service_url_configured: Boolean(env.HAPPINESS_APPLE_WEB_SERVICE_URL),
+          issuance_enabled: String(env.HAPPINESS_APPLE_PASS_ISSUANCE_ENABLED || "false") === "true",
+          update_service_enabled: String(env.HAPPINESS_APPLE_PASS_UPDATES_ENABLED || "false") === "true",
         },
       }, 200, origin);
     }
@@ -148,6 +201,27 @@ export default {
         return json({ ok: false, error: error.message }, 503, origin);
       }
       return json({ ok: false, error: "a2a_innovation_adapter_not_activated" }, 501, origin);
+    }
+
+    if (request.method === "POST" && url.pathname === "/internal/pilot/evaluate-baseline") {
+      try {
+        assertPilotReady(env);
+        if (!internalAuthorized(request, env)) return json({ ok: false, error: "not_authorized" }, 401, origin);
+        return json({ ok: true, evaluation: evaluateBaselineEligibility(await requestJson(request)) }, 200, origin);
+      } catch (error) {
+        return json({ ok: false, error: error.message }, error.message === "happiness_pilot_disabled" ? 503 : 400, origin);
+      }
+    }
+
+    if (request.method === "POST" && url.pathname === "/internal/pilot/evaluate-bonus") {
+      try {
+        assertPilotReady(env);
+        if (!internalAuthorized(request, env)) return json({ ok: false, error: "not_authorized" }, 401, origin);
+        const body = await requestJson(request);
+        return json({ ok: true, evaluation: evaluateCitizenBonus(body.intent, body.history) }, 200, origin);
+      } catch (error) {
+        return json({ ok: false, error: error.message }, error.message === "happiness_pilot_disabled" ? 503 : 400, origin);
+      }
     }
 
     if (request.method === "POST" && url.pathname === "/v1/redeem") {

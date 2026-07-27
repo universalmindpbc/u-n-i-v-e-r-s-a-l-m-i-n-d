@@ -1,0 +1,31 @@
+{
+  "schema_version": "happiness_wallet_read_model_v1",
+  "mode": "staging_preview",
+  "member": {
+    "display_id": "UM · 000 001",
+    "status": "FOUNDING CITIZEN"
+  },
+  "balance": {
+    "available_display": "0",
+    "ticker": "[ I o H ]"
+  },
+  "pilot": {
+    "status": "rules prepared · activation pending",
+    "rolling_window_days": 91,
+    "minimum_special_event_attendance": "51%",
+    "minimum_weekly_participation": "2 healthy hours",
+    "enhanced_weekly_participation": "4 healthy hours",
+    "baseline_award": "citizen governance pending"
+  },
+  "collective": {
+    "current_tier": "foundation",
+    "status": "collective targets pending",
+    "message": "We unlock the rewards catalogue together. No citizen is ranked against another."
+  },
+  "activity": {
+    "empty_message": "Your first eligible participation will appear here after sign-in is activated."
+  },
+  "apple_wallet": {
+    "status": "Pass design prepared · Apple signing pending"
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "formatVersion": 1,
+  "passTypeIdentifier": "{{PASS_TYPE_IDENTIFIER}}",
+  "serialNumber": "{{SERIAL_NUMBER}}",
+  "teamIdentifier": "{{TEAM_IDENTIFIER}}",
+  "organizationName": "Universal Mind",
+  "description": "HAPPINESS rewards by Universal Mind",
+  "logoText": "HAPPINESS",
+  "foregroundColor": "rgb(247, 244, 237)",
+  "backgroundColor": "rgb(31, 39, 35)",
+  "labelColor": "rgb(195, 208, 197)",
+  "webServiceURL": "{{WEB_SERVICE_URL}}",
+  "authenticationToken": "{{AUTHENTICATION_TOKEN}}",
+  "storeCard": {
+    "primaryFields": [
+      { "key": "balance", "label": "AVAILABLE", "value": "{{BALANCE}}", "changeMessage": "Your HAPPINESS balance is now %@." }
+    ],
+    "secondaryFields": [
+      { "key": "ticker", "label": "INTERNET OF HAPPINESS", "value": "[ I o H ]" },
+      { "key": "member", "label": "FOUNDING CITIZEN", "value": "{{MEMBER_DISPLAY_ID}}" }
+    ],
+    "backFields": [
+      { "key": "programme", "label": "HAPPINESS", "value": "A Universal Mind rewards programme. It has no cash value and is not available for cash redemption." }
+    ]
+  },
+  "barcodes": [
+    { "format": "PKBarcodeFormatQR", "message": "{{WALLET_URL}}", "messageEncoding": "iso-8859-1", "altText": "Open HAPPINESS wallet" }
+  ]
+}

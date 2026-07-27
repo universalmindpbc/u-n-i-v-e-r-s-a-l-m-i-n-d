@@ -17,6 +17,15 @@
     "mode": "rewards",
     "cash_value": false,
     "cash_redemption": false,
-    "transfer_between_members": false
+    "transfer_between_members": false,
+    "pilot": {
+      "rolling_window_days": 91,
+      "minimum_designated_event_attendance_bps": 5100,
+      "universal_weekly_minutes": 120,
+      "optional_enhanced_weekly_minutes": 240,
+      "baseline_award_units": null,
+      "collective_thresholds": null,
+      "bonus_award_units": null
+    }
   }
 }

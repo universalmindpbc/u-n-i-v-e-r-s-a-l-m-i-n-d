@@ -17,6 +17,21 @@ Members may receive a genuine ERC-20 balance once the contract is activated, but
 
 The code remains fail-closed: reward mutations, Chainlink attestation, Polygon signing, Apple-pass issuance and USDC settlement are disabled until their required configuration is deliberately supplied.
 
+## Pilot earning pipeline
+
+The first pilot uses a rolling 91-day window. Baseline eligibility requires at least 51% attendance across designated special events when such events occur, plus an average of two credited healthy-participation hours per active week. Four hours is an optional enhanced-participation pathway, never an employment-status test. Up to two pause or grace weeks may be excluded without creating a punitive broken streak.
+
+Baseline HAPPINESS amounts, individual bonus amounts, weekly award caps and collective catalogue thresholds remain `citizen_governance_configuration_required`. They must not be invented in code. Until those decisions are approved, the evaluator may determine eligibility but returns no issuable amount.
+
+The pipeline has four independent lanes:
+
+1. **Show up:** determine baseline eligibility from privacy-safe aggregate attendance and credited minutes.
+2. **Unlock together:** evaluate collective unique-citizen and continuity targets to open catalogue tiers for every eligible citizen; this never changes individual ranking.
+3. **Contribute:** recognise capped meaningful actions such as considered check-ins, mentor audio rooms, educational programmes, appropriately safety-gated EMDR practice and human-approved community contribution.
+4. **Innovate:** issue only against an approved A2A innovation contribution receipt.
+
+Repetition is capped by action and week. There are no points for raw screen time, emotional state, clinical outcome, diagnosis, maintaining a streak or proving employment status. The same idempotency key cannot issue twice, and there is no member-to-member transfer path.
+
 ## A2A mental-health innovation gateway
 
 The Agent2Agent gateway is for agents and future agent swarms that contribute useful mental-health innovation to the Internet of Happiness, beginning with Universal Mind's I AM portal. It is not a channel for agents to use, simulate or bot the product. Automated check-ins, clicks, engagement, referrals, sessions and screen time are never eligible contributions and cannot create an agent reward receipt.
@@ -116,6 +131,9 @@ Adding USDC infrastructure does not itself make HAPPINESS a stablecoin. Backing,
 - HTTPS registration and update endpoints;
 - artistic QR handoff with a normal scannable quiet zone;
 - balance update after confirmed ledger events.
+- unsigned source-bundle generation for design QA before credentials exist;
+- SHA-1 manifest generation and PKCS #7 detached signing when the Pass Type certificate, private key and Apple WWDR certificate are supplied;
+- Apple-standard registration, update, unregister and pass-delivery routes, all disabled until authenticated storage and signing are active.
 
 ### A2A innovation gateway
 
