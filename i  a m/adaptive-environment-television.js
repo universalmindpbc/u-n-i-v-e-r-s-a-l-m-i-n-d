@@ -1280,9 +1280,12 @@
   }
 
   function updateTimecode() {
-    if (!timecode || !localVideo) return;
+    const source = document.body.classList.contains("television-sex-ed-active")
+      ? sexEdEpisodeVideo
+      : localVideo;
+    if (!timecode || !source) return;
 
-    timecode.textContent = formatTime(localVideo.currentTime);
+    timecode.textContent = formatTime(source.currentTime);
   }
 
   function updateLiveRegionCounts(total) {
@@ -5215,6 +5218,7 @@
     document.body.dataset.sexEdEpisodeTitle = title;
     document.body.dataset.sexEdEpisodeGuest = guest;
     sexEdEpisodeVideo.setAttribute("aria-label", guest ? `${title} — ${guest}` : title);
+    if (timecode) timecode.textContent = formatTime(sexEdStartTime);
     document.title = `${title} | Sex-ed`;
   }
 
@@ -5304,6 +5308,7 @@
     const wasActive = document.body.classList.contains("television-sex-ed-active");
     document.body.classList.remove("television-sex-ed-active");
     sexEdWorld?.setAttribute("aria-hidden", "true");
+    updateTimecode();
     try { sexEdEpisodeVideo?.pause(); } catch {}
     try { sexEdBackground?.pause(); } catch {}
     sexEdLoopVideos.forEach((video) => {
@@ -7128,6 +7133,8 @@
     }
   });
   sexEdEpisodeStart?.addEventListener("click", playSexEdEpisode);
+  sexEdEpisodeVideo?.addEventListener("loadedmetadata", updateTimecode);
+  sexEdEpisodeVideo?.addEventListener("timeupdate", updateTimecode);
   sexEdEpisodeVideo?.addEventListener("play", () => {
     if (sexEdEpisodeStart) sexEdEpisodeStart.hidden = true;
   });

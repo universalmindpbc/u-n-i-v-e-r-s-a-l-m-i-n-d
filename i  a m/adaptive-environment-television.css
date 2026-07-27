@@ -683,7 +683,7 @@ body.television-sex-ed-active .adaptive-television-sex-ed-world {
 }
 
 body.television-sex-ed-active .adaptive-television-timecode {
-  opacity: 0 !important;
+  opacity: 1 !important;
 }
 
 .adaptive-television-video-choice[data-video-mode="emdr"][aria-pressed="true"] {

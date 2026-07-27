@@ -28,6 +28,7 @@ assert.match(index, /<strong>The Truth About Tantra &amp; Embodied Wealth<\/stro
 assert.match(index, /<strong>Power, Sex &amp; Intimacy<\/strong>/);
 assert.match(index, /<strong>Expanding the Window of Pleasure<\/strong>/);
 assert.match(index, /<strong>Healthy Sexuality vs\. Healing Sexuality<\/strong>/);
+assert.match(index, /b35b5890ca38c7b99bfc7adaae5bc16c\/thumbnails\/thumbnail\.jpg\?time=60s&height=360/);
 assert.match(index, /1–4 \/ 5/);
 assert.match(index, /James Bondage Health · sex-ed/);
 assert.match(index, /data-television-live-pill/);
@@ -89,6 +90,10 @@ assert.match(televisionCss, /\.adaptive-television-sex-ed-casing[\s\S]*backgroun
 assert.match(televisionCss, /\.adaptive-television-sex-ed-casing[\s\S]*padding: var\(--emdr-gif-casing-gap\)/);
 assert.match(televisionCss, /\.adaptive-television-sex-ed-episode[\s\S]*width: var\(--emdr-gif-front-width\)/);
 assert.match(televisionCss, /\.adaptive-television-sex-ed-episode[\s\S]*height: var\(--emdr-gif-front-height\)/);
+assert.match(televisionCss, /body\.television-sex-ed-active \.adaptive-television-timecode \{\s*opacity: 1 !important;/);
+assert.match(televisionJs, /const source = document\.body\.classList\.contains\("television-sex-ed-active"\)[\s\S]*\? sexEdEpisodeVideo[\s\S]*: localVideo;/);
+assert.match(televisionJs, /sexEdEpisodeVideo\?\.addEventListener\("loadedmetadata", updateTimecode\)/);
+assert.match(televisionJs, /sexEdEpisodeVideo\?\.addEventListener\("timeupdate", updateTimecode\)/);
 
 assert.match(episode, /Mugler - Fall Winter 2021\.mp4/);
 assert.match(episode, /data-sex-ed-episode-video/);
