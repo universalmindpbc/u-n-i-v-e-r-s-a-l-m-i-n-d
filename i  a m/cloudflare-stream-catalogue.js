@@ -32,6 +32,8 @@
     "ICEHOUSE - Electric Blue.mp4": "e268a70974dc3fe8e57d73cbb45ab9f6",
     "INXS - Don't Change.mp4": "c2798773d4d87e3c8b4d7e9e02bdb83f",
     "JACQUEMUS - SS20 LE COUP DE SOLEIL.mp4": "00fe2d47012a31b3b0796fcf2e544360",
+    "Jacqueline Michell - Healing Through Solo Rope & Self Pleasure.mp4": "7f60e29d9e432bf4198df7dc223b66ef",
+    "Karl Lagerfeld - The Making of the 2011 Pirelli Calendar.mp4": "f9eb03d0f256739628addbb7ab66b7ed",
     "Kate Bush - Running Up That Hill.mp4": "d2b7246f4e982309ad26f079716ce915",
     "Linkin Park - Numb (Live, 2024).mp4": "91072eec8efdeb2d2e2a18e1a0f2ea5d",
     "Linkin Park - Numb.mp4": "1fbfae86a89fb8798e736c0394e0f77a",

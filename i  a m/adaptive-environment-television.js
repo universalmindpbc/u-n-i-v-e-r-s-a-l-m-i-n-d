@@ -429,6 +429,7 @@
   const RADIO_SEGMENT_CROSSFADE_SECONDS = .035;
   const RADIO_SEGMENT_POLL_MS = 3000;
   const SEX_ED_PROGRAMME_MIX_LEVEL = .15;
+  const SEX_ED_DEFAULT_BACKGROUND_FILE = "a s s e t s/f a s h i o n [ r u n w a y ]/Mugler - Fall Winter 2021.mp4";
   let continuationAudio = null;
   let continuationHls = null;
   let continuationSegmentPlayer = null;
@@ -5243,6 +5244,12 @@
       try { sexEdEpisodeVideo.pause(); } catch {}
       window.IAMStreamController?.detach?.(sexEdEpisodeVideo);
       sexEdEpisodeVideo.dataset.streamFile = fileName;
+    }
+    const backgroundFileName = card.dataset.sexEdBackgroundFile || SEX_ED_DEFAULT_BACKGROUND_FILE;
+    if (sexEdBackground && sexEdBackground.dataset.streamFile !== backgroundFileName) {
+      try { sexEdBackground.pause(); } catch {}
+      window.IAMStreamController?.detach?.(sexEdBackground);
+      sexEdBackground.dataset.streamFile = backgroundFileName;
     }
     const image = card.querySelector("img");
     if (image?.src) sexEdEpisodeVideo.poster = image.src.replace("height=360", "height=1080");

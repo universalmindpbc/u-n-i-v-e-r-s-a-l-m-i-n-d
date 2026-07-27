@@ -17,19 +17,22 @@ assert.match(index, /class="adaptive-television-sex-ed-link" href="#sex-ed-shelf
 assert.match(index, /data-now-playing[\s\S]*data-sex-ed-link/);
 assert.match(index, /data-now-playing-secondary-label>VISUAL</);
 assert.match(index, /class="adaptive-television-fashion-shelf adaptive-television-music-shelf adaptive-television-sex-ed-shelf"/);
-assert.equal((index.match(/data-sex-ed-card(?:\s|>)/g) || []).length, 5);
+assert.equal((index.match(/data-sex-ed-card(?:\s|>)/g) || []).length, 6);
 assert.match(index, /data-sex-ed-episode="01"[\s\S]{0,300}data-sex-ed-start-time="139"/);
 assert.match(index, /data-sex-ed-episode="02"/);
 assert.match(index, /data-sex-ed-episode="03"/);
 assert.match(index, /data-sex-ed-episode="04"/);
 assert.match(index, /data-sex-ed-episode="05"/);
+assert.match(index, /data-sex-ed-episode="06"[\s\S]{0,360}data-sex-ed-background-file="Karl Lagerfeld - The Making of the 2011 Pirelli Calendar\.mp4"/);
 assert.match(index, /<strong>Reclaiming the Forbidden Feminine<\/strong>/);
 assert.match(index, /<strong>The Truth About Tantra &amp; Embodied Wealth<\/strong>/);
 assert.match(index, /<strong>Power, Sex &amp; Intimacy<\/strong>/);
 assert.match(index, /<strong>Expanding the Window of Pleasure<\/strong>/);
 assert.match(index, /<strong>Healthy Sexuality vs\. Healing Sexuality<\/strong>/);
+assert.match(index, /<strong>Healing Through Solo Rope &amp; Self Pleasure<\/strong>/);
 assert.match(index, /b35b5890ca38c7b99bfc7adaae5bc16c\/thumbnails\/thumbnail\.jpg\?time=60s&height=360/);
-assert.match(index, /1–4 \/ 5/);
+assert.match(index, /7f60e29d9e432bf4198df7dc223b66ef\/thumbnails\/thumbnail\.jpg\?time=60s&height=360/);
+assert.match(index, /1–4 \/ 6/);
 assert.match(index, /James Bondage Health · sex-ed/);
 assert.match(index, /data-television-live-pill/);
 assert.match(index, /data-reaction-wallet/);
@@ -45,6 +48,7 @@ assert.match(televisionJs, /openSexEdShelf\(\)/);
 assert.doesNotMatch(televisionJs, /openInVideoPageLayer\(sexEdLink\)/);
 assert.match(televisionJs, /setProgrammeMixLevel\(level\)/);
 assert.match(televisionJs, /const SEX_ED_PROGRAMME_MIX_LEVEL = \.15/);
+assert.match(televisionJs, /const SEX_ED_DEFAULT_BACKGROUND_FILE = "a s s e t s\/f a s h i o n \[ r u n w a y \]\/Mugler - Fall Winter 2021\.mp4"/);
 assert.match(televisionJs, /setProgrammeMixLevel\(SEX_ED_PROGRAMME_MIX_LEVEL\)/);
 assert.match(televisionJs, /sexEdEpisodeVideo\.volume = 1/);
 assert.doesNotMatch(televisionJs, /SEX_ED_EPISODE_GAIN/);
@@ -54,6 +58,8 @@ assert.match(televisionJs, /stopSexEdEpisode\(\{ restoreProgramme: false \}\)/);
 assert.match(televisionJs, /level === null \|\| level === undefined \|\| level === ""/);
 assert.match(televisionJs, /dataset\.programmeFixedMixLevel = String\(programmeFixedMixLevel\)/);
 assert.match(televisionJs, /joinBroadcastChannel\("party-james-bondage", \{ source: "sex_ed_episode" \}\)/);
+assert.match(televisionJs, /card\.dataset\.sexEdBackgroundFile \|\| SEX_ED_DEFAULT_BACKGROUND_FILE/);
+assert.match(televisionJs, /sexEdBackground\.dataset\.streamFile = backgroundFileName/);
 const openShelfSource = televisionJs.match(/function openSexEdShelf\(\)[\s\S]*?\n  }\n\n  function closeSexEdShelf/)?.[0] || "";
 assert.doesNotMatch(openShelfSource, /setProgrammeMixLevel/);
 assert.doesNotMatch(openShelfSource, /joinBroadcast/);
@@ -125,6 +131,8 @@ for (const [fileName, uid] of [
   ["Femininity Explored - Power, Sex, & Intimacy, with Vylana.mp4", "ef8bbcd95a067bbc294d0d493b93fabc"],
   ["The Psychology of boring sex with Shashi Solluna - Tantra - Expanding The Window of Pleasure.mp4", "af6f972e12eb0e9317a0d4e0d694b382"],
   ["Healthy Sexuality Vs. Healing Sexuality - Teal Swan.mp4", "b35b5890ca38c7b99bfc7adaae5bc16c"],
+  ["Jacqueline Michell - Healing Through Solo Rope & Self Pleasure.mp4", "7f60e29d9e432bf4198df7dc223b66ef"],
+  ["Karl Lagerfeld - The Making of the 2011 Pirelli Calendar.mp4", "f9eb03d0f256739628addbb7ab66b7ed"],
 ]) {
   assert.ok(catalogue.includes(`"${fileName}": "${uid}"`), `${fileName} must map to its ready Cloudflare Stream upload.`);
 }
@@ -141,4 +149,4 @@ for (const position of [2, 5]) {
   assert.equal(readFileSync(path, { encoding: null }).subarray(0, 3).toString(), "GIF");
 }
 
-console.log("Sex-ed five-episode shelf and shell-native show preflight passed.");
+console.log("Sex-ed six-episode shelf and episode-specific silent background preflight passed.");
