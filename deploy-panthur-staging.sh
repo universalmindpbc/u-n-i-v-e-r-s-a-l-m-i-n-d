@@ -25,6 +25,7 @@ fi
 "$NODE_BIN" --check "$ROOT_DIR/cloudflare/iam-citizen-needs-worker.js"
 "$NODE_BIN" --check "$ROOT_DIR/i  a m/globe.js"
 "$NODE_BIN" "$ROOT_DIR/tools/check-adaptive-music-handoff.mjs"
+"$NODE_BIN" "$ROOT_DIR/tools/check-owner-state-persistence.mjs"
 "$NODE_BIN" "$ROOT_DIR/tools/check-broadcast-clock.mjs"
 "$NODE_BIN" "$ROOT_DIR/tools/check-broadcast-interactions.mjs"
 "$NODE_BIN" "$ROOT_DIR/tools/check-circle-rooms.mjs"

@@ -1,6 +1,8 @@
 <?php
 declare(strict_types=1);
 
+require_once __DIR__ . '/owner-state-history.php';
+
 header('Content-Type: application/json; charset=utf-8');
 header('Cache-Control: no-store, no-cache, must-revalidate, max-age=0');
 header('Pragma: no-cache');
@@ -68,6 +70,11 @@ function mantra_write_library(array $library): array
 {
     $library['updated_at'] = gmdate('c');
     $json = json_encode($library, JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT) . "\n";
+    try {
+        iam_owner_state_prepare_write('mantra-library', MANTRA_LIBRARY_PATH, $json);
+    } catch (RuntimeException) {
+        mantra_json(['error' => 'The protected mantra history could not be saved. No changes were made.'], 500);
+    }
     $temporary = MANTRA_LIBRARY_PATH . '.tmp-' . bin2hex(random_bytes(6));
     if (file_put_contents($temporary, $json, LOCK_EX) === false || !@rename($temporary, MANTRA_LIBRARY_PATH)) {
         @unlink($temporary);

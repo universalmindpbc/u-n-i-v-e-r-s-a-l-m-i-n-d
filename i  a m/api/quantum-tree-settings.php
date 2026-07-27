@@ -1,6 +1,8 @@
 <?php
 declare(strict_types=1);
 
+require_once __DIR__ . '/owner-state-history.php';
+
 ini_set('serialize_precision', '-1');
 
 header('Content-Type: application/json; charset=utf-8');
@@ -127,6 +129,11 @@ function write_quantum_tree_config(float $peak): array
         'updated_at' => gmdate('c'),
     ];
     $json = json_encode($config, JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT) . "\n";
+    try {
+        iam_owner_state_prepare_write('quantum-tree-settings', QUANTUM_TREE_CONFIG_PATH, $json);
+    } catch (RuntimeException) {
+        json_response(['error' => 'The protected Quantum Tree history could not be saved. No changes were made.'], 500);
+    }
     $temporaryPath = QUANTUM_TREE_CONFIG_PATH . '.tmp-' . bin2hex(random_bytes(6));
 
     if (file_put_contents($temporaryPath, $json, LOCK_EX) === false || !@rename($temporaryPath, QUANTUM_TREE_CONFIG_PATH)) {

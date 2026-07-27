@@ -66,9 +66,42 @@ file_hash() {
 
 should_skip_iam_source() {
   local source_file="$1"
+  local relative_path="${source_file#"$IAM_DIR"/}"
+
+  case "$relative_path" in
+    "api/mantra-library.json"|"api/quantum-tree-settings.json"|"api/.owner-state-history/"*|"a s s e t s/m a n t r a [ u p l o a d s ]/"*)
+      return 0
+      ;;
+  esac
+
   [[ "$(basename "$source_file")" == ".DS_Store" ]] ||
     [[ "$source_file" == */__pycache__/* ]] ||
     [[ "$source_file" == *.pyc ]]
+}
+
+remote_file_exists() {
+  local remote_path="$1"
+  local encoded_path
+
+  encoded_path="$(encode_path "$(remote_target "$remote_path")")"
+  curl --globoff --fail --silent --show-error \
+    --user "$FTP_USER:$FTP_PASS" \
+    "ftp://$FTP_HOST/$encoded_path" \
+    --output /dev/null
+}
+
+deploy_owner_state_seeds() {
+  local relative_path
+
+  for relative_path in "api/mantra-library.json" "api/quantum-tree-settings.json"; do
+    if remote_file_exists "vogue/iam/$relative_path"; then
+      echo "Owner state already exists; preserved: $relative_path"
+      continue
+    fi
+
+    put_file "$IAM_DIR/$relative_path" "vogue/iam/$relative_path"
+    echo "Owner state seeded because no live file existed: $relative_path"
+  done
 }
 
 write_fast_manifest() {
@@ -259,8 +292,11 @@ case "${1:-iam}" in
     deploy_redirects
     deploy_iam_changed
     ;;
+  seed-owner-state)
+    deploy_owner_state_seeds
+    ;;
   *)
-    echo "Usage: $0 [iam|iam-fast|fast|changed|iam-changed|mark|media|redirects|all|all-fast|all-changed]" >&2
+    echo "Usage: $0 [iam|iam-fast|fast|changed|iam-changed|mark|media|redirects|all|all-fast|all-changed|seed-owner-state]" >&2
     exit 2
     ;;
 esac

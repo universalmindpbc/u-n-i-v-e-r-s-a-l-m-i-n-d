@@ -1,2 +1,7 @@
 Options +ExecCGI
 AddHandler cgi-script .py
+
+<IfModule mod_rewrite.c>
+RewriteEngine On
+RewriteRule ^\.owner-state-history(?:/|$) - [F,L]
+</IfModule>
