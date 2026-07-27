@@ -65,6 +65,7 @@
   let catalogueProducts = [];
   let catalogueKernel = null;
   let catalogueReturnHash = "";
+  let catalogueReturnScrollY = 0;
   let lastCatalogueResultCount = 0;
   const catalogueChunkSize = 24;
   let liveBandSyncTimer = 0;
@@ -571,6 +572,9 @@
     if (options.updateRoute && window.location.hash.includes("/product/")) {
       window.history.replaceState(null, "", catalogueReturnHash || catalogueBrowseHash());
       renderRoute();
+      window.requestAnimationFrame(() => {
+        window.scrollTo({ top: catalogueReturnScrollY, left: 0, behavior: "auto" });
+      });
     }
   }
 
@@ -643,6 +647,7 @@
     if (!trigger) return;
     const slug = trigger.dataset.catalogueProductOpen;
     catalogueReturnHash = catalogueBrowseHash();
+    catalogueReturnScrollY = window.scrollY;
     window.location.hash = catalogueProductHash(slug);
   });
 
@@ -684,7 +689,7 @@
 
   async function loadCatalogue() {
     try {
-      const response = await fetch("shop-product-kernel-v1.json?v=1", { credentials: "same-origin" });
+      const response = await fetch("shop-product-kernel-v1.json?v=shop-universal-catalogue-2", { credentials: "same-origin" });
       if (!response.ok) throw new Error(`Catalogue request failed: ${response.status}`);
       catalogueKernel = await response.json();
       catalogueProducts = Array.isArray(catalogueKernel.products)
