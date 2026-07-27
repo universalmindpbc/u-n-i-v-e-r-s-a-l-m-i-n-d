@@ -14,7 +14,7 @@
     "brandOrCollectionLinks": 5,
     "duplicateProductReferences": 3,
     "brands": 23,
-    "metadataReady": 15
+    "metadataReady": 36
   },
   "brandOrder": [
     "ERES",
@@ -45,7 +45,7 @@
     {
       "brand": "ERES",
       "count": 36,
-      "ready": 15,
+      "ready": 36,
       "route": "#catalogue/eres"
     },
     {
@@ -636,337 +636,650 @@
       "id": "JB-0017",
       "brand": "ERES",
       "sourceTitle": "Bambin toni - Lassi in Tulle · Luxury Lingerie | ERES",
-      "name": "Bambin toni - Lassi in Tulle · Luxury Lingerie | ERES",
-      "productType": "Pending",
+      "name": "Bambin tonique",
+      "productType": "Briefs",
       "forms": [
         "lingerie"
       ],
       "retailerUrl": "https://www.eresparis.com/eu/en/lingerie/612519-01605.html",
       "canonicalUrl": "https://www.eresparis.com/eu/en/lingerie/612519-01605.html",
       "sourceOccurrences": 1,
-      "metadataStatus": "Inventory only",
-      "listedOnShop": false,
-      "shopRoute": "#catalogue/eres"
+      "metadataStatus": "Metadata ready",
+      "listedOnShop": true,
+      "shopRoute": "#catalogue/eres",
+      "slug": "bambin-tonique-612519-01605",
+      "color": "Lassi",
+      "categories": [
+        "briefs",
+        "lingerie"
+      ],
+      "description": "These low-waisted briefs are made of stretch tulle, a signature ERES material.",
+      "image": "a s s e t s/shop-mockup/eres-catalogue/bambin-tonique-612519-01605.jpg",
+      "imageAlt": "Bambin tonique Briefs standard view 1 out of 4",
+      "imageSource": "retailer_gallery_index_0",
+      "sourceImageUrl": "https://www.eresparis.com/dw/image/v2/BDLN_PRD/on/demandware.static/-/Sites-master/default/dw20410ad8/images/612519_01605_PDP_D_1.jpg?sw=900&sh=1200&frz-v=282",
+      "sourceImageIndex": 0,
+      "price": "AU$ 190",
+      "priceValue": 190,
+      "currency": "AUD"
     },
     {
       "id": "JB-0018",
       "brand": "ERES",
       "sourceTitle": "Eden tonique - Argent in Tulle · Luxury Lingerie | ERES",
-      "name": "Eden tonique - Argent in Tulle · Luxury Lingerie | ERES",
-      "productType": "Pending",
+      "name": "Eden tonique",
+      "productType": "Bra",
       "forms": [
         "lingerie"
       ],
       "retailerUrl": "https://www.eresparis.com/eu/en/lingerie/60986-01562.html",
       "canonicalUrl": "https://www.eresparis.com/eu/en/lingerie/60986-01562.html",
       "sourceOccurrences": 1,
-      "metadataStatus": "Inventory only",
-      "listedOnShop": false,
-      "shopRoute": "#catalogue/eres"
+      "metadataStatus": "Metadata ready",
+      "listedOnShop": true,
+      "shopRoute": "#catalogue/eres",
+      "slug": "eden-tonique-60986-01562",
+      "color": "Argent",
+      "categories": [
+        "bras",
+        "lingerie"
+      ],
+      "description": "This underwired full-cup bra with bust darts is made of ERES' signature stretch tulle and provides excellent support up to a D cup. The straps are adjustable at the front.",
+      "image": "a s s e t s/shop-mockup/eres-catalogue/eden-tonique-60986-01562.jpg",
+      "imageAlt": "Eden tonique Full-cup bra standard view 1 out of 4",
+      "imageSource": "retailer_gallery_index_0",
+      "sourceImageUrl": "https://www.eresparis.com/dw/image/v2/BDLN_PRD/on/demandware.static/-/Sites-master/default/dwf845c2fd/images/60986_01562_PDP_D_1.jpg?sw=900&sh=1200&frz-v=282",
+      "sourceImageIndex": 0,
+      "price": "AU$ 350",
+      "priceValue": 350,
+      "currency": "AUD"
     },
     {
       "id": "JB-0019",
       "brand": "ERES",
       "sourceTitle": "Bambin toni - Argent in Tulle · Luxury Lingerie | ERES",
-      "name": "Bambin toni - Argent in Tulle · Luxury Lingerie | ERES",
-      "productType": "Pending",
+      "name": "Bambin tonique",
+      "productType": "Briefs",
       "forms": [
         "lingerie"
       ],
       "retailerUrl": "https://www.eresparis.com/eu/en/lingerie/612519-01562.html",
       "canonicalUrl": "https://www.eresparis.com/eu/en/lingerie/612519-01562.html",
       "sourceOccurrences": 1,
-      "metadataStatus": "Inventory only",
-      "listedOnShop": false,
-      "shopRoute": "#catalogue/eres"
+      "metadataStatus": "Metadata ready",
+      "listedOnShop": true,
+      "shopRoute": "#catalogue/eres",
+      "slug": "bambin-tonique-612519-01562",
+      "color": "Argent",
+      "categories": [
+        "briefs",
+        "lingerie"
+      ],
+      "description": "These low-waisted briefs are made of stretch tulle, a signature ERES material.",
+      "image": "a s s e t s/shop-mockup/eres-catalogue/bambin-tonique-612519-01562.jpg",
+      "imageAlt": "Bambin tonique Briefs standard view 1 out of 4",
+      "imageSource": "retailer_gallery_index_0",
+      "sourceImageUrl": "https://www.eresparis.com/dw/image/v2/BDLN_PRD/on/demandware.static/-/Sites-master/default/dwd91e9414/images/612519_01562_PDP_D_1.jpg?sw=900&sh=1200&frz-v=282",
+      "sourceImageIndex": 0,
+      "price": "AU$ 190",
+      "priceValue": 190,
+      "currency": "AUD"
     },
     {
       "id": "JB-0020",
       "brand": "ERES",
       "sourceTitle": "Providence toni - Argent in Tulle · Luxury Lingerie | ERES",
-      "name": "Providence toni - Argent in Tulle · Luxury Lingerie | ERES",
-      "productType": "Pending",
+      "name": "Providence tonique",
+      "productType": "Bra",
       "forms": [
         "lingerie"
       ],
       "retailerUrl": "https://www.eresparis.com/eu/en/lingerie/60985-01562.html",
       "canonicalUrl": "https://www.eresparis.com/eu/en/lingerie/60985-01562.html",
       "sourceOccurrences": 1,
-      "metadataStatus": "Inventory only",
-      "listedOnShop": false,
-      "shopRoute": "#catalogue/eres"
+      "metadataStatus": "Metadata ready",
+      "listedOnShop": true,
+      "shopRoute": "#catalogue/eres",
+      "slug": "providence-tonique-60985-01562",
+      "color": "Argent",
+      "categories": [
+        "bras",
+        "lingerie"
+      ],
+      "description": "This triangle bra in stretch tulle, a signature ERES material, features a V-shaped neckline and straps that can be adjusted at the front. Its construction with elastic strips, bust darts, triangle side inserts and a leotard back guarantees optimal support.",
+      "image": "a s s e t s/shop-mockup/eres-catalogue/providence-tonique-60985-01562.jpg",
+      "imageAlt": "Providence tonique Triangle bra standard view 1 out of 4",
+      "imageSource": "retailer_gallery_index_0",
+      "sourceImageUrl": "https://www.eresparis.com/dw/image/v2/BDLN_PRD/on/demandware.static/-/Sites-master/default/dw4f13d739/images/60985_01562_PDP_D_1.jpg?sw=900&sh=1200&frz-v=282",
+      "sourceImageIndex": 0,
+      "price": "AU$ 370",
+      "priceValue": 370,
+      "currency": "AUD"
     },
     {
       "id": "JB-0021",
       "brand": "ERES",
       "sourceTitle": "Volute - Lys in Lace · Luxury Lingerie | ERES",
-      "name": "Volute - Lys in Lace · Luxury Lingerie | ERES",
-      "productType": "Pending",
+      "name": "Volute",
+      "productType": "Briefs",
       "forms": [
         "lingerie"
       ],
       "retailerUrl": "https://www.eresparis.com/eu/en/lingerie/612603-0022.html",
       "canonicalUrl": "https://www.eresparis.com/eu/en/lingerie/612603-0022.html",
       "sourceOccurrences": 1,
-      "metadataStatus": "Inventory only",
-      "listedOnShop": false,
-      "shopRoute": "#catalogue/eres"
+      "metadataStatus": "Metadata ready",
+      "listedOnShop": true,
+      "shopRoute": "#catalogue/eres",
+      "slug": "volute-612603-0022",
+      "color": "Lys",
+      "categories": [
+        "briefs",
+        "lingerie"
+      ],
+      "description": "The Volute briefs show off your silhouette in retro-chic style with their high waist and floral design.",
+      "image": "a s s e t s/shop-mockup/eres-catalogue/volute-612603-0022.jpg",
+      "imageAlt": "Volute High-waisted briefs standard view 1 out of 5",
+      "imageSource": "retailer_gallery_index_0",
+      "sourceImageUrl": "https://www.eresparis.com/dw/image/v2/BDLN_PRD/on/demandware.static/-/Sites-master/default/dwe665d5f5/images/612603_0022_PDP_D_1.jpg?sw=900&sh=1200&frz-v=282",
+      "sourceImageIndex": 0,
+      "price": "AU$ 400",
+      "priceValue": 400,
+      "currency": "AUD"
     },
     {
       "id": "JB-0022",
       "brand": "ERES",
       "sourceTitle": "Eden toni - Scarabée in Tulle · Luxury Lingerie | ERES",
-      "name": "Eden toni - Scarabée in Tulle · Luxury Lingerie | ERES",
-      "productType": "Pending",
+      "name": "Eden tonique",
+      "productType": "Bra",
       "forms": [
         "lingerie"
       ],
       "retailerUrl": "https://www.eresparis.com/eu/en/lingerie/60986-01548.html",
       "canonicalUrl": "https://www.eresparis.com/eu/en/lingerie/60986-01548.html",
       "sourceOccurrences": 1,
-      "metadataStatus": "Inventory only",
-      "listedOnShop": false,
-      "shopRoute": "#catalogue/eres"
+      "metadataStatus": "Metadata ready",
+      "listedOnShop": true,
+      "shopRoute": "#catalogue/eres",
+      "slug": "eden-tonique-60986-01548",
+      "color": "Scarabée",
+      "categories": [
+        "bras",
+        "lingerie"
+      ],
+      "description": "This underwired full-cup bra with bust darts is made of ERES' signature stretch tulle and provides excellent support up to a D cup. The straps are adjustable at the front.",
+      "image": "a s s e t s/shop-mockup/eres-catalogue/eden-tonique-60986-01548.jpg",
+      "imageAlt": "Eden tonique Full-cup bra standard view 1 out of 5",
+      "imageSource": "retailer_gallery_index_0",
+      "sourceImageUrl": "https://www.eresparis.com/dw/image/v2/BDLN_PRD/on/demandware.static/-/Sites-master/default/dw10bfcbef/images/60986_01548_PDP_D_1.jpg?sw=900&sh=1200&frz-v=282",
+      "sourceImageIndex": 0,
+      "price": "AU$ 350",
+      "priceValue": 350,
+      "currency": "AUD"
     },
     {
       "id": "JB-0023",
       "brand": "ERES",
       "sourceTitle": "Symbolique - Palmeraie in Lace · Luxury Lingerie | ERES",
-      "name": "Symbolique - Palmeraie in Lace · Luxury Lingerie | ERES",
-      "productType": "Pending",
+      "name": "Symbolique",
+      "productType": "Other",
       "forms": [
         "lingerie"
       ],
       "retailerUrl": "https://www.eresparis.com/eu/en/lingerie/612606-01566.html",
       "canonicalUrl": "https://www.eresparis.com/eu/en/lingerie/612606-01566.html",
       "sourceOccurrences": 1,
-      "metadataStatus": "Inventory only",
-      "listedOnShop": false,
-      "shopRoute": "#catalogue/eres"
+      "metadataStatus": "Metadata ready",
+      "listedOnShop": true,
+      "shopRoute": "#catalogue/eres",
+      "slug": "symbolique-612606-01566",
+      "color": "Palmeraie",
+      "categories": [
+        "lingerie"
+      ],
+      "description": "Embellished with a geometric motif that creates a light-and-shadow effect, the stretch jacquard lace of the high-waisted Symbolique shorties delivers bold, feminine style.",
+      "image": "a s s e t s/shop-mockup/eres-catalogue/symbolique-612606-01566.jpg",
+      "imageAlt": "Symbolique Shorty standard view 1 out of 6",
+      "imageSource": "retailer_gallery_index_0",
+      "sourceImageUrl": "https://www.eresparis.com/dw/image/v2/BDLN_PRD/on/demandware.static/-/Sites-master/default/dwa2281ab8/images/612606_01566_PDP_D_1.jpg?sw=900&sh=1200&frz-v=282",
+      "sourceImageIndex": 0,
+      "price": "AU$ 370",
+      "priceValue": 370,
+      "currency": "AUD"
     },
     {
       "id": "JB-0024",
       "brand": "ERES",
       "sourceTitle": "Symbolique - Panama in Lace · Luxury Lingerie | ERES",
-      "name": "Symbolique - Panama in Lace · Luxury Lingerie | ERES",
-      "productType": "Pending",
+      "name": "Symbolique",
+      "productType": "Other",
       "forms": [
         "lingerie"
       ],
       "retailerUrl": "https://www.eresparis.com/eu/en/lingerie/612606-01547.html",
       "canonicalUrl": "https://www.eresparis.com/eu/en/lingerie/612606-01547.html",
       "sourceOccurrences": 1,
-      "metadataStatus": "Inventory only",
-      "listedOnShop": false,
-      "shopRoute": "#catalogue/eres"
+      "metadataStatus": "Metadata ready",
+      "listedOnShop": true,
+      "shopRoute": "#catalogue/eres",
+      "slug": "symbolique-612606-01547",
+      "color": "Panama",
+      "categories": [
+        "lingerie"
+      ],
+      "description": "Embellished with a geometric motif that creates a light-and-shadow effect, the stretch jacquard lace of the high-waisted Symbolique shorties delivers bold, feminine style.",
+      "image": "a s s e t s/shop-mockup/eres-catalogue/symbolique-612606-01547.jpg",
+      "imageAlt": "Symbolique Shorty standard view 1 out of 5",
+      "imageSource": "retailer_gallery_index_0",
+      "sourceImageUrl": "https://www.eresparis.com/dw/image/v2/BDLN_PRD/on/demandware.static/-/Sites-master/default/dwedc63143/images/612606_01547_PDP_D_1.jpg?sw=900&sh=1200&frz-v=282",
+      "sourceImageIndex": 0,
+      "price": "AU$ 370",
+      "priceValue": 370,
+      "currency": "AUD"
     },
     {
       "id": "JB-0025",
       "brand": "ERES",
       "sourceTitle": "Ruban - Noir in Lace · Luxury Lingerie | ERES",
-      "name": "Ruban - Noir in Lace · Luxury Lingerie | ERES",
-      "productType": "Pending",
+      "name": "Ruban",
+      "productType": "Bra",
       "forms": [
         "lingerie"
       ],
       "retailerUrl": "https://www.eresparis.com/eu/en/lingerie/60997-1001.html",
       "canonicalUrl": "https://www.eresparis.com/eu/en/lingerie/60997-1001.html",
       "sourceOccurrences": 1,
-      "metadataStatus": "Inventory only",
-      "listedOnShop": false,
-      "shopRoute": "#catalogue/eres"
+      "metadataStatus": "Metadata ready",
+      "listedOnShop": true,
+      "shopRoute": "#catalogue/eres",
+      "slug": "ruban-60997-1001",
+      "color": "Noir",
+      "categories": [
+        "bras",
+        "lingerie"
+      ],
+      "description": "The Ruban bralette combines two types of lace with a graphic, floral feel. Its straps are covered in velvet for added sophistication.",
+      "image": "a s s e t s/shop-mockup/eres-catalogue/ruban-60997-1001.jpg",
+      "imageAlt": "Ruban Crop top bra standard view 1 out of 7",
+      "imageSource": "retailer_gallery_index_0",
+      "sourceImageUrl": "https://www.eresparis.com/dw/image/v2/BDLN_PRD/on/demandware.static/-/Sites-master/default/dwc75ef733/images/60997_1001_PDP_D_1.jpg?sw=900&sh=1200&frz-v=282",
+      "sourceImageIndex": 0,
+      "price": "AU$ 660",
+      "priceValue": 660,
+      "currency": "AUD"
     },
     {
       "id": "JB-0026",
       "brand": "ERES",
       "sourceTitle": "Providence toni - Lilas in Tulle · Luxury Lingerie | ERES",
-      "name": "Providence toni - Lilas in Tulle · Luxury Lingerie | ERES",
-      "productType": "Pending",
+      "name": "Providence tonique",
+      "productType": "Bra",
       "forms": [
         "lingerie"
       ],
       "retailerUrl": "https://www.eresparis.com/eu/en/lingerie/60985-01516.html",
       "canonicalUrl": "https://www.eresparis.com/eu/en/lingerie/60985-01516.html",
       "sourceOccurrences": 1,
-      "metadataStatus": "Inventory only",
-      "listedOnShop": false,
-      "shopRoute": "#catalogue/eres"
+      "metadataStatus": "Metadata ready",
+      "listedOnShop": true,
+      "shopRoute": "#catalogue/eres",
+      "slug": "providence-tonique-60985-01516",
+      "color": "Lilas",
+      "categories": [
+        "bras",
+        "lingerie"
+      ],
+      "description": "This triangle bra in stretch tulle, a signature ERES material, features a V-shaped neckline and straps that can be adjusted at the front. Its construction with elastic strips, bust darts, triangle side inserts and a leotard back guarantees optimal support.",
+      "image": "a s s e t s/shop-mockup/eres-catalogue/providence-tonique-60985-01516.jpg",
+      "imageAlt": "Providence tonique Triangle bra standard view 1 out of 5",
+      "imageSource": "retailer_gallery_index_0",
+      "sourceImageUrl": "https://www.eresparis.com/dw/image/v2/BDLN_PRD/on/demandware.static/-/Sites-master/default/dw0e865884/images/60985_01516_PDP_D_1.jpg?sw=900&sh=1200&frz-v=282",
+      "sourceImageIndex": 0,
+      "price": "AU$ 370",
+      "priceValue": 370,
+      "currency": "AUD"
     },
     {
       "id": "JB-0027",
       "brand": "ERES",
       "sourceTitle": "Bambin toni - Lilas in Tulle · Luxury Lingerie | ERES",
-      "name": "Bambin toni - Lilas in Tulle · Luxury Lingerie | ERES",
-      "productType": "Pending",
+      "name": "Bambin tonique",
+      "productType": "Briefs",
       "forms": [
         "lingerie"
       ],
       "retailerUrl": "https://www.eresparis.com/eu/en/lingerie/612519-01516.html",
       "canonicalUrl": "https://www.eresparis.com/eu/en/lingerie/612519-01516.html",
       "sourceOccurrences": 1,
-      "metadataStatus": "Inventory only",
-      "listedOnShop": false,
-      "shopRoute": "#catalogue/eres"
+      "metadataStatus": "Metadata ready",
+      "listedOnShop": true,
+      "shopRoute": "#catalogue/eres",
+      "slug": "bambin-tonique-612519-01516",
+      "color": "Lilas",
+      "categories": [
+        "briefs",
+        "lingerie"
+      ],
+      "description": "These low-waisted briefs are made of stretch tulle, a signature ERES material.",
+      "image": "a s s e t s/shop-mockup/eres-catalogue/bambin-tonique-612519-01516.jpg",
+      "imageAlt": "Bambin tonique Briefs standard view 1 out of 4",
+      "imageSource": "retailer_gallery_index_0",
+      "sourceImageUrl": "https://www.eresparis.com/dw/image/v2/BDLN_PRD/on/demandware.static/-/Sites-master/default/dwdb52fc65/images/612519_01516_PDP_D_1.jpg?sw=900&sh=1200&frz-v=282",
+      "sourceImageIndex": 0,
+      "price": "AU$ 190",
+      "priceValue": 190,
+      "currency": "AUD"
     },
     {
       "id": "JB-0028",
       "brand": "ERES",
       "sourceTitle": "Eden toni - Lilas in Tulle · Luxury Lingerie | ERES",
-      "name": "Eden toni - Lilas in Tulle · Luxury Lingerie | ERES",
-      "productType": "Pending",
+      "name": "Eden tonique",
+      "productType": "Bra",
       "forms": [
         "lingerie"
       ],
       "retailerUrl": "https://www.eresparis.com/eu/en/lingerie/60986-01516.html",
       "canonicalUrl": "https://www.eresparis.com/eu/en/lingerie/60986-01516.html",
       "sourceOccurrences": 1,
-      "metadataStatus": "Inventory only",
-      "listedOnShop": false,
-      "shopRoute": "#catalogue/eres"
+      "metadataStatus": "Metadata ready",
+      "listedOnShop": true,
+      "shopRoute": "#catalogue/eres",
+      "slug": "eden-tonique-60986-01516",
+      "color": "Lilas",
+      "categories": [
+        "bras",
+        "lingerie"
+      ],
+      "description": "This underwired full-cup bra with bust darts is made of ERES' signature stretch tulle and provides excellent support up to a D cup. The straps are adjustable at the front.",
+      "image": "a s s e t s/shop-mockup/eres-catalogue/eden-tonique-60986-01516.jpg",
+      "imageAlt": "Eden tonique Full-cup bra standard view 1 out of 4",
+      "imageSource": "retailer_gallery_index_0",
+      "sourceImageUrl": "https://www.eresparis.com/dw/image/v2/BDLN_PRD/on/demandware.static/-/Sites-master/default/dwd4853e5e/images/60986_01516_PDP_D_1.jpg?sw=900&sh=1200&frz-v=282",
+      "sourceImageIndex": 0,
+      "price": "AU$ 350",
+      "priceValue": 350,
+      "currency": "AUD"
     },
     {
       "id": "JB-0029",
       "brand": "ERES",
       "sourceTitle": "Apparence - Guimauve in Peau Douce Naturelle · Luxury Swim | ERES",
-      "name": "Apparence - Guimauve in Peau Douce Naturelle · Luxury Swim | ERES",
-      "productType": "Pending",
+      "name": "Apparence",
+      "productType": "Swimsuit",
       "forms": [
         "swim"
       ],
       "retailerUrl": "https://www.eresparis.com/eu/en/swimwear/012646-01624.html",
       "canonicalUrl": "https://www.eresparis.com/eu/en/swimwear/012646-01624.html",
       "sourceOccurrences": 1,
-      "metadataStatus": "Inventory only",
-      "listedOnShop": false,
-      "shopRoute": "#catalogue/eres"
+      "metadataStatus": "Metadata ready",
+      "listedOnShop": true,
+      "shopRoute": "#catalogue/eres",
+      "slug": "apparence-012646-01624",
+      "color": "Guimauve",
+      "categories": [
+        "swimsuits",
+        "swim"
+      ],
+      "description": "Apparence is a graphic bustier swimsuit featuring a distinctive V-shaped link and structuring seams. Its gripper tape and lining offer flawless support for a refined look.",
+      "image": "a s s e t s/shop-mockup/eres-catalogue/apparence-012646-01624.jpg",
+      "imageAlt": "Apparence Bustier one-piece standard view 1 out of 8",
+      "imageSource": "retailer_gallery_index_0",
+      "sourceImageUrl": "https://www.eresparis.com/dw/image/v2/BDLN_PRD/on/demandware.static/-/Sites-master/default/dw98a5b6d1/images/012646_01624_PDP_D_1.jpg?sw=900&sh=1200&frz-v=282",
+      "sourceImageIndex": 0,
+      "price": "AU$ 1.150",
+      "priceValue": 1150,
+      "currency": "AUD"
     },
     {
       "id": "JB-0030",
       "brand": "ERES",
       "sourceTitle": "Intense - Bonbon in Peau Douce Naturelle · Luxury Swim | ERES",
-      "name": "Intense - Bonbon in Peau Douce Naturelle · Luxury Swim | ERES",
-      "productType": "Pending",
+      "name": "Intense",
+      "productType": "Swimsuit",
       "forms": [
         "swim"
       ],
       "retailerUrl": "https://www.eresparis.com/eu/en/swimwear/012643-01627.html",
       "canonicalUrl": "https://www.eresparis.com/eu/en/swimwear/012643-01627.html",
       "sourceOccurrences": 1,
-      "metadataStatus": "Inventory only",
-      "listedOnShop": false,
-      "shopRoute": "#catalogue/eres"
+      "metadataStatus": "Metadata ready",
+      "listedOnShop": true,
+      "shopRoute": "#catalogue/eres",
+      "slug": "intense-012643-01627",
+      "color": "Bonbon",
+      "categories": [
+        "swimsuits",
+        "swim"
+      ],
+      "description": "Intense is a swimsuit cut under the bust with seductive narrow straps and a V-shaped link at the neckline. Its underbust seam and straight back outline a modern and timeless silhouette.",
+      "image": "a s s e t s/shop-mockup/eres-catalogue/intense-012643-01627.jpg",
+      "imageAlt": "Intense Underbust-cut swimsuit standard view 1 out of 6",
+      "imageSource": "retailer_gallery_index_0",
+      "sourceImageUrl": "https://www.eresparis.com/dw/image/v2/BDLN_PRD/on/demandware.static/-/Sites-master/default/dw6d2debd9/images/012643_01627_PDP_D_1.jpg?sw=900&sh=1200&frz-v=282",
+      "sourceImageIndex": 0,
+      "price": "AU$ 990",
+      "priceValue": 990,
+      "currency": "AUD"
     },
     {
       "id": "JB-0031",
       "brand": "ERES",
       "sourceTitle": "Nightlife - Imprimé loulou in Peau Douce Naturelle · Luxury Swim | ERES",
-      "name": "Nightlife - Imprimé loulou in Peau Douce Naturelle · Luxury Swim | ERES",
-      "productType": "Pending",
+      "name": "Nightlife",
+      "productType": "Swimsuit",
       "forms": [
         "swim"
       ],
       "retailerUrl": "https://www.eresparis.com/eu/en/swimwear/012642-01625.html",
       "canonicalUrl": "https://www.eresparis.com/eu/en/swimwear/012642-01625.html",
       "sourceOccurrences": 1,
-      "metadataStatus": "Inventory only",
-      "listedOnShop": false,
-      "shopRoute": "#catalogue/eres"
+      "metadataStatus": "Metadata ready",
+      "listedOnShop": true,
+      "shopRoute": "#catalogue/eres",
+      "slug": "nightlife-012642-01625",
+      "color": "Imprimé loulou",
+      "categories": [
+        "swimsuits",
+        "swim"
+      ],
+      "description": "Nightlife, the graphic trikini, features a seductive open front and a U-shaped accessory linking its two cups. Straight dainty straps and a round plunging back show off your silhouette with daring, for a truly modern allure.",
+      "image": "a s s e t s/shop-mockup/eres-catalogue/nightlife-012642-01625.jpg",
+      "imageAlt": "Nightlife Trikini standard view 1 out of 7",
+      "imageSource": "retailer_gallery_index_0",
+      "sourceImageUrl": "https://www.eresparis.com/dw/image/v2/BDLN_PRD/on/demandware.static/-/Sites-master/default/dw5b251322/images/012642_01625_PDP_D_1.jpg?sw=900&sh=1200&frz-v=282",
+      "sourceImageIndex": 0,
+      "price": "AU$ 1.150",
+      "priceValue": 1150,
+      "currency": "AUD"
     },
     {
       "id": "JB-0032",
       "brand": "ERES",
       "sourceTitle": "Arcade - Bonbon in Peau Douce Naturelle · Luxury Swim | ERES",
-      "name": "Arcade - Bonbon in Peau Douce Naturelle · Luxury Swim | ERES",
-      "productType": "Pending",
+      "name": "Arcade",
+      "productType": "Bikini Top",
       "forms": [
         "swim"
       ],
       "retailerUrl": "https://www.eresparis.com/eu/en/swimwear/032631-01627.html",
       "canonicalUrl": "https://www.eresparis.com/eu/en/swimwear/032631-01627.html",
       "sourceOccurrences": 1,
-      "metadataStatus": "Inventory only",
-      "listedOnShop": false,
-      "shopRoute": "#catalogue/eres"
+      "metadataStatus": "Metadata ready",
+      "listedOnShop": true,
+      "shopRoute": "#catalogue/eres",
+      "slug": "arcade-032631-01627",
+      "color": "Bonbon",
+      "categories": [
+        "bikini-tops",
+        "swim"
+      ],
+      "description": "Arcade is an elegant bandeau bikini top with seductive bust gathering and a V-shaped link. Its gripper tape and branded clasp guarantee support and style.",
+      "image": "a s s e t s/shop-mockup/eres-catalogue/arcade-032631-01627.jpg",
+      "imageAlt": "Arcade Bandeau standard view 1 out of 6",
+      "imageSource": "retailer_gallery_index_0",
+      "sourceImageUrl": "https://www.eresparis.com/dw/image/v2/BDLN_PRD/on/demandware.static/-/Sites-master/default/dw348352a1/images/032631_01627_PDP_D_1.jpg?sw=900&sh=1200&frz-v=282",
+      "sourceImageIndex": 0,
+      "price": "AU$ 550",
+      "priceValue": 550,
+      "currency": "AUD"
     },
     {
       "id": "JB-0033",
       "brand": "ERES",
       "sourceTitle": "Inspiring - Menthe givrée in Peau Douce Naturelle · Luxury Swim | ERES",
-      "name": "Inspiring - Menthe givrée in Peau Douce Naturelle · Luxury Swim | ERES",
-      "productType": "Pending",
+      "name": "Inspiring",
+      "productType": "Swimsuit",
       "forms": [
         "swim"
       ],
       "retailerUrl": "https://www.eresparis.com/eu/en/swimwear/012641-01618.html",
       "canonicalUrl": "https://www.eresparis.com/eu/en/swimwear/012641-01618.html",
       "sourceOccurrences": 1,
-      "metadataStatus": "Inventory only",
-      "listedOnShop": false,
-      "shopRoute": "#catalogue/eres"
+      "metadataStatus": "Metadata ready",
+      "listedOnShop": true,
+      "shopRoute": "#catalogue/eres",
+      "slug": "inspiring-012641-01618",
+      "color": "Menthe givrée",
+      "categories": [
+        "swimsuits",
+        "swim"
+      ],
+      "description": "Inspiring is a flattering swimsuit with wide straps embellished by two U-shaped accessories. Its seam sits under and subtly enhances the bust, while its straight back and classic coverage create a timeless, elegant look.",
+      "image": "a s s e t s/shop-mockup/eres-catalogue/inspiring-012641-01618.jpg",
+      "imageAlt": "Inspiring Underbust-cut swimsuit standard view 1 out of 7",
+      "imageSource": "retailer_gallery_index_0",
+      "sourceImageUrl": "https://www.eresparis.com/dw/image/v2/BDLN_PRD/on/demandware.static/-/Sites-master/default/dw9268f63e/images/012641_01618_PDP_D_1.jpg?sw=900&sh=1200&frz-v=282",
+      "sourceImageIndex": 0,
+      "price": "AU$ 1.030",
+      "priceValue": 1030,
+      "currency": "AUD"
     },
     {
       "id": "JB-0034",
       "brand": "ERES",
       "sourceTitle": "Clutch - Menthe givrée in Peau Douce Naturelle · Luxury Swim | ERES",
-      "name": "Clutch - Menthe givrée in Peau Douce Naturelle · Luxury Swim | ERES",
-      "productType": "Pending",
+      "name": "Clutch",
+      "productType": "Briefs",
       "forms": [
         "swim"
       ],
       "retailerUrl": "https://www.eresparis.com/eu/en/swimwear/042631-01618.html",
       "canonicalUrl": "https://www.eresparis.com/eu/en/swimwear/042631-01618.html",
       "sourceOccurrences": 1,
-      "metadataStatus": "Inventory only",
-      "listedOnShop": false,
-      "shopRoute": "#catalogue/eres"
+      "metadataStatus": "Metadata ready",
+      "listedOnShop": true,
+      "shopRoute": "#catalogue/eres",
+      "slug": "clutch-042631-01618",
+      "color": "Menthe givrée",
+      "categories": [
+        "briefs",
+        "swim"
+      ],
+      "description": "Clutch is a pair of classic bikini briefs with a twist, their elegant cut and side U-shaped details creating a feminine and sophisticated silhouette.",
+      "image": "a s s e t s/shop-mockup/eres-catalogue/clutch-042631-01618.jpg",
+      "imageAlt": "Clutch Classic briefs standard view 1 out of 5",
+      "imageSource": "retailer_gallery_index_0",
+      "sourceImageUrl": "https://www.eresparis.com/dw/image/v2/BDLN_PRD/on/demandware.static/-/Sites-master/default/dwef5295d3/images/042631_01618_PDP_D_1.jpg?sw=900&sh=1200&frz-v=282",
+      "sourceImageIndex": 0,
+      "price": "AU$ 530",
+      "priceValue": 530,
+      "currency": "AUD"
     },
     {
       "id": "JB-0035",
       "brand": "ERES",
       "sourceTitle": "Macadamia - Alligator / argent in Peau Douce Naturelle · Luxury Swim | ERES",
-      "name": "Macadamia - Alligator / argent in Peau Douce Naturelle · Luxury Swim | ERES",
-      "productType": "Pending",
+      "name": "Macadamia",
+      "productType": "Swimsuit",
       "forms": [
         "swim"
       ],
       "retailerUrl": "https://www.eresparis.com/eu/en/swimwear/012627-01598.html",
       "canonicalUrl": "https://www.eresparis.com/eu/en/swimwear/012627-01598.html",
       "sourceOccurrences": 1,
-      "metadataStatus": "Inventory only",
-      "listedOnShop": false,
-      "shopRoute": "#catalogue/eres"
+      "metadataStatus": "Metadata ready",
+      "listedOnShop": true,
+      "shopRoute": "#catalogue/eres",
+      "slug": "macadamia-012627-01598",
+      "color": "Alligator / argent",
+      "categories": [
+        "swimsuits",
+        "swim"
+      ],
+      "description": "Macadamia features elegant wide straps and bold panels. Its low V-neck and back lend structure to the silhouette, while a contrasting stripe under the bust emphasizes your waist with sophistication. Bold and contemporary, it elevates any waterside moment.",
+      "image": "a s s e t s/shop-mockup/eres-catalogue/macadamia-012627-01598.jpg",
+      "imageAlt": "Macadamia V-neck one-piece standard view 1 out of 6",
+      "imageSource": "retailer_gallery_index_0",
+      "sourceImageUrl": "https://www.eresparis.com/dw/image/v2/BDLN_PRD/on/demandware.static/-/Sites-master/default/dw1606644a/images/012627_01598_PDP_D_1.jpg?sw=900&sh=1200&frz-v=282",
+      "sourceImageIndex": 0,
+      "price": "AU$ 1.090",
+      "priceValue": 1090,
+      "currency": "AUD"
     },
     {
       "id": "JB-0036",
       "brand": "ERES",
       "sourceTitle": "Aquarelle - Lassi in Peau Douce Naturelle · Luxury Swim | ERES",
-      "name": "Aquarelle - Lassi in Peau Douce Naturelle · Luxury Swim | ERES",
-      "productType": "Pending",
+      "name": "Aquarelle",
+      "productType": "Swimsuit",
       "forms": [
         "swim"
       ],
       "retailerUrl": "https://www.eresparis.com/eu/en/swimwear/011402-01605.html",
       "canonicalUrl": "https://www.eresparis.com/eu/en/swimwear/011402-01605.html",
       "sourceOccurrences": 1,
-      "metadataStatus": "Inventory only",
-      "listedOnShop": false,
-      "shopRoute": "#catalogue/eres"
+      "metadataStatus": "Metadata ready",
+      "listedOnShop": true,
+      "shopRoute": "#catalogue/eres",
+      "slug": "aquarelle-011402-01605",
+      "color": "Lassi",
+      "categories": [
+        "swimsuits",
+        "swim"
+      ],
+      "description": "An iconic ERES style loved for its clean lines, this one-piece swimsuit features a straight neckline framed by delicate straps. It shows off all body types.",
+      "image": "a s s e t s/shop-mockup/eres-catalogue/aquarelle-011402-01605.jpg",
+      "imageAlt": "Aquarelle Tank one-piece standard view 1 out of 6",
+      "imageSource": "retailer_gallery_index_0",
+      "sourceImageUrl": "https://www.eresparis.com/dw/image/v2/BDLN_PRD/on/demandware.static/-/Sites-master/default/dwe15f3ac7/images/011402_01605_PDP_D_1.jpg?sw=900&sh=1200&frz-v=282",
+      "sourceImageIndex": 0,
+      "price": "AU$ 690",
+      "priceValue": 690,
+      "currency": "AUD"
     },
     {
       "id": "JB-0037",
       "brand": "ERES",
       "sourceTitle": "Asia - Alligator in Peau Douce Naturelle · Luxury Swim | ERES",
-      "name": "Asia - Alligator in Peau Douce Naturelle · Luxury Swim | ERES",
-      "productType": "Pending",
+      "name": "Asia",
+      "productType": "Swimsuit",
       "forms": [
         "swim"
       ],
       "retailerUrl": "https://www.eresparis.com/eu/en/swimwear/011401-01563.html",
       "canonicalUrl": "https://www.eresparis.com/eu/en/swimwear/011401-01563.html",
       "sourceOccurrences": 1,
-      "metadataStatus": "Inventory only",
-      "listedOnShop": false,
-      "shopRoute": "#catalogue/eres"
+      "metadataStatus": "Metadata ready",
+      "listedOnShop": true,
+      "shopRoute": "#catalogue/eres",
+      "slug": "asia-011401-01563",
+      "color": "Alligator",
+      "categories": [
+        "swimsuits",
+        "swim"
+      ],
+      "description": "This one-piece swimsuit, available in the season's colours, has wide straps and a round neckline. Its graphic yet practical waistband shapes the figure and suits all body types.",
+      "image": "a s s e t s/shop-mockup/eres-catalogue/asia-011401-01563.jpg",
+      "imageAlt": "Asia Tank one-piece standard view 1 out of 6",
+      "imageSource": "retailer_gallery_index_0",
+      "sourceImageUrl": "https://www.eresparis.com/dw/image/v2/BDLN_PRD/on/demandware.static/-/Sites-master/default/dwad6fd9e0/images/011401_01563_PDP_D_1.jpg?sw=900&sh=1200&frz-v=282",
+      "sourceImageIndex": 0,
+      "price": "AU$ 750",
+      "priceValue": 750,
+      "currency": "AUD"
     },
     {
       "id": "JB-0038",

@@ -1,10 +1,10 @@
 {
-  "version": 2,
+  "version": 3,
   "sourcePolicy": "approved_bookmark_urls_only",
   "thumbnailPolicy": "retailer_gallery_index_0_only",
   "priceCurrency": "AUD",
   "pricesCheckedAt": "2026-07-27",
-  "retrievedAt": "2026-07-26T22:04:19.316Z",
+  "retrievedAt": "2026-07-27T08:36:27.897Z",
   "products": [
     {
       "id": "eres-60650-00996",
@@ -12,7 +12,10 @@
       "brand": "ERES",
       "name": "Eden Full-cup bra",
       "color": "Make Up",
-      "categories": ["bras", "lingerie"],
+      "categories": [
+        "bras",
+        "lingerie"
+      ],
       "description": "An underwired full-cup bra with bust darts, this style in iconic ERES stretch tulle offers very good support up to a D cup. The straps are adjusted at the front.",
       "image": "a s s e t s/shop-mockup/eres-catalogue/eden-60650-00996.jpg",
       "imageSource": "retailer_gallery_index_0",
@@ -21,7 +24,7 @@
       "sourcePageUrl": "https://www.eresparis.com/eu/en/lingerie/60650-00996.html",
       "sourceImageUrl": "https://www.eresparis.com/dw/image/v2/BDLN_PRD/on/demandware.static/-/Sites-master/default/dwe7aab553/images/60650_00996_PDP_D_1.jpg?sw=900&sh=1200&frz-v=282",
       "sourceImageIndex": 0,
-      "retrievedAt": "2026-07-26T22:04:19.316Z"
+      "retrievedAt": "2026-07-27T08:36:27.897Z"
     },
     {
       "id": "eres-60653-01062",
@@ -29,7 +32,10 @@
       "brand": "ERES",
       "name": "Providence Triangle bra",
       "color": "Ultra",
-      "categories": ["bras", "lingerie"],
+      "categories": [
+        "bras",
+        "lingerie"
+      ],
       "description": "A wireless triangle bra, in stretch tulle typical of ERES, with a V-neckline, this style features straps which are adjusted at the front. Its elasticized band construction, bust darts, triangle panels on the sides and full-figure back guarantee optimum support.",
       "image": "a s s e t s/shop-mockup/eres-catalogue/providence-60653-01062.jpg",
       "imageSource": "retailer_gallery_index_0",
@@ -38,8 +44,7 @@
       "sourcePageUrl": "https://www.eresparis.com/us/en-US/lingerie/60653-01062.html",
       "sourceImageUrl": "https://www.eresparis.com/dw/image/v2/BDLN_PRD/on/demandware.static/-/Sites-master/default/dwe9bbf1d2/images/60653_01062_PDP_D_1.jpg?sw=900&sh=1200&frz-v=282",
       "sourceImageIndex": 0,
-      "retrievedAt": "2026-07-26T22:04:19.316Z",
-      "priceSourceUrl": "https://www.eresparis.com/eu/en/lingerie/60653-01062.html"
+      "retrievedAt": "2026-07-27T08:36:27.897Z"
     },
     {
       "id": "eres-60651-01062",
@@ -47,7 +52,10 @@
       "brand": "ERES",
       "name": "Indiscrète Bandeau top",
       "color": "Ultra",
-      "categories": ["bras", "lingerie"],
+      "categories": [
+        "bras",
+        "lingerie"
+      ],
       "description": "This bandeau bra in stretch tulle, a typical ERES fabric, features an underbust band. It flaunts a bustier neckline, wide back and removable multiway straps. The bust darts, side stays and gripper tape ensure optimal support.",
       "image": "a s s e t s/shop-mockup/eres-catalogue/indiscrete-60651-01062.jpg",
       "imageSource": "retailer_gallery_index_0",
@@ -56,7 +64,7 @@
       "sourcePageUrl": "https://www.eresparis.com/eu/en/lingerie/60651-01062.html",
       "sourceImageUrl": "https://www.eresparis.com/dw/image/v2/BDLN_PRD/on/demandware.static/-/Sites-master/default/dw1f4e57d2/images/60651_01062_PDP_D_1.jpg?sw=900&sh=1200&frz-v=282",
       "sourceImageIndex": 0,
-      "retrievedAt": "2026-07-26T22:04:19.316Z"
+      "retrievedAt": "2026-07-27T08:36:27.897Z"
     },
     {
       "id": "eres-60953-00996",
@@ -64,7 +72,10 @@
       "brand": "ERES",
       "name": "Idole Full-cup bra",
       "color": "Make Up",
-      "categories": ["bras", "lingerie"],
+      "categories": [
+        "bras",
+        "lingerie"
+      ],
       "description": "Comfy and feminine, this tulle bra offers flawless support thanks to its full-cup shape and under-bust band. It features a satin trim and straps for ultimate sophistication.",
       "image": "a s s e t s/shop-mockup/eres-catalogue/idole-make-up-60953-00996.jpg",
       "imageSource": "retailer_gallery_index_0",
@@ -73,7 +84,7 @@
       "sourcePageUrl": "https://www.eresparis.com/eu/en/lingerie/60953-00996.html",
       "sourceImageUrl": "https://www.eresparis.com/dw/image/v2/BDLN_PRD/on/demandware.static/-/Sites-master/default/dw68eb02f6/images/60953_00996_PDP_D_1.jpg?sw=900&sh=1200&frz-v=282",
       "sourceImageIndex": 0,
-      "retrievedAt": "2026-07-26T22:04:19.316Z"
+      "retrievedAt": "2026-07-27T08:36:27.897Z"
     },
     {
       "id": "eres-60973-0022",
@@ -81,7 +92,10 @@
       "brand": "ERES",
       "name": "Singulière Triangle bra",
       "color": "Lys",
-      "categories": ["bras", "lingerie"],
+      "categories": [
+        "bras",
+        "lingerie"
+      ],
       "description": "The wireless Singulière triangle bra draws on the Maison's hallmark details: a V-shaped neckline with a link, tulle, satin and openwork details. Boasting an iconic shape, it provides excellent support and comfort thanks to the wide satin-covered elasticated chest band.",
       "image": "a s s e t s/shop-mockup/eres-catalogue/singuliere-lys-60973-0022.jpg",
       "imageSource": "retailer_gallery_index_0",
@@ -90,7 +104,7 @@
       "sourcePageUrl": "https://www.eresparis.com/eu/en/lingerie/60973-0022.html",
       "sourceImageUrl": "https://www.eresparis.com/dw/image/v2/BDLN_PRD/on/demandware.static/-/Sites-master/default/dw9685b2a6/images/60973_0022_PDP_D_1.jpg?sw=900&sh=1200&frz-v=282",
       "sourceImageIndex": 0,
-      "retrievedAt": "2026-07-26T22:04:19.316Z"
+      "retrievedAt": "2026-07-27T08:36:27.897Z"
     },
     {
       "id": "eres-60973-00996",
@@ -98,7 +112,10 @@
       "brand": "ERES",
       "name": "Singulière Triangle bra",
       "color": "Make Up",
-      "categories": ["bras", "lingerie"],
+      "categories": [
+        "bras",
+        "lingerie"
+      ],
       "description": "The wireless Singulière triangle bra draws on the Maison's hallmark details: a V-shaped neckline with a link, tulle, satin and openwork details. Boasting an iconic shape, it provides excellent support and comfort thanks to the wide satin-covered elasticated chest band.",
       "image": "a s s e t s/shop-mockup/eres-catalogue/singuliere-make-up-60973-00996.jpg",
       "imageSource": "retailer_gallery_index_0",
@@ -107,7 +124,7 @@
       "sourcePageUrl": "https://www.eresparis.com/eu/en/lingerie/60973-00996.html",
       "sourceImageUrl": "https://www.eresparis.com/dw/image/v2/BDLN_PRD/on/demandware.static/-/Sites-master/default/dw1e12f005/images/60973_00996_PDP_D_1.jpg?sw=900&sh=1200&frz-v=282",
       "sourceImageIndex": 0,
-      "retrievedAt": "2026-07-26T22:04:19.316Z"
+      "retrievedAt": "2026-07-27T08:36:27.897Z"
     },
     {
       "id": "eres-60954-00996",
@@ -115,7 +132,10 @@
       "brand": "ERES",
       "name": "Fidele Padded bra",
       "color": "Make Up",
-      "categories": ["bras", "lingerie"],
+      "categories": [
+        "bras",
+        "lingerie"
+      ],
       "description": "Elegant and feminine, the Fidèle padded bra is made entirely from satin. Both comfortable and supportive, it enhances all body types.",
       "image": "a s s e t s/shop-mockup/eres-catalogue/fidele-60954-00996.jpg",
       "imageSource": "retailer_gallery_index_0",
@@ -124,7 +144,7 @@
       "sourcePageUrl": "https://www.eresparis.com/eu/en/lingerie/60954-00996.html",
       "sourceImageUrl": "https://www.eresparis.com/dw/image/v2/BDLN_PRD/on/demandware.static/-/Sites-master/default/dw40689fb0/images/60954_00996_PDP_D_1.jpg?sw=900&sh=1200&frz-v=282",
       "sourceImageIndex": 0,
-      "retrievedAt": "2026-07-26T22:04:19.316Z"
+      "retrievedAt": "2026-07-27T08:36:27.897Z"
     },
     {
       "id": "eres-612415-00996",
@@ -132,7 +152,10 @@
       "brand": "ERES",
       "name": "Mélodie Briefs",
       "color": "Make Up",
-      "categories": ["briefs", "lingerie"],
+      "categories": [
+        "briefs",
+        "lingerie"
+      ],
       "description": "Made from satin, the Mélodie briefs feature contrasting tulle at the sides. The openwork and satin trim enhance the comfort and feminine style of this piece.",
       "image": "a s s e t s/shop-mockup/eres-catalogue/melodie-612415-00996.jpg",
       "imageSource": "retailer_gallery_index_0",
@@ -141,7 +164,7 @@
       "sourcePageUrl": "https://www.eresparis.com/eu/en/lingerie/612415-00996.html",
       "sourceImageUrl": "https://www.eresparis.com/dw/image/v2/BDLN_PRD/on/demandware.static/-/Sites-master/default/dwb32515ea/images/612415_00996_PDP_D_1.jpg?sw=900&sh=1200&frz-v=282",
       "sourceImageIndex": 0,
-      "retrievedAt": "2026-07-26T22:04:19.316Z"
+      "retrievedAt": "2026-07-27T08:36:27.897Z"
     },
     {
       "id": "eres-60970-00996",
@@ -149,7 +172,10 @@
       "brand": "ERES",
       "name": "Diva Triangle bra",
       "color": "Make Up",
-      "categories": ["bras", "lingerie"],
+      "categories": [
+        "bras",
+        "lingerie"
+      ],
       "description": "For a contrasting effect, this wireless triangle bra features various ERES-signature touches: tulle, satin and openwork. Boasting an iconic shape, it provides excellent support and comfort thanks to the satin-covered elasticated chest band.",
       "image": "a s s e t s/shop-mockup/eres-catalogue/diva-60970-00996.jpg",
       "imageSource": "retailer_gallery_index_0",
@@ -158,7 +184,7 @@
       "sourcePageUrl": "https://www.eresparis.com/eu/en/lingerie/60970-00996.html",
       "sourceImageUrl": "https://www.eresparis.com/dw/image/v2/BDLN_PRD/on/demandware.static/-/Sites-master/default/dwcbeabc35/images/60970_00996_PDP_D_1.jpg?sw=900&sh=1200&frz-v=282",
       "sourceImageIndex": 0,
-      "retrievedAt": "2026-07-26T22:04:19.316Z"
+      "retrievedAt": "2026-07-27T08:36:27.897Z"
     },
     {
       "id": "eres-612416-00996",
@@ -166,7 +192,10 @@
       "brand": "ERES",
       "name": "Exalte High-waisted briefs",
       "color": "Make Up",
-      "categories": ["briefs", "lingerie"],
+      "categories": [
+        "briefs",
+        "lingerie"
+      ],
       "description": "Made from satin and tulle, the Exalte high-waisted briefs are a figure-flattering pair. The fold-over waistband and openwork at the sides make the piece all the more comfortable and visually stylish.",
       "image": "a s s e t s/shop-mockup/eres-catalogue/exalte-612416-00996.jpg",
       "imageSource": "retailer_gallery_index_0",
@@ -175,7 +204,7 @@
       "sourcePageUrl": "https://www.eresparis.com/eu/en/lingerie/612416-00996.html",
       "sourceImageUrl": "https://www.eresparis.com/dw/image/v2/BDLN_PRD/on/demandware.static/-/Sites-master/default/dw56d5adca/images/612416_00996_PDP_D_1.jpg?sw=900&sh=1200&frz-v=282",
       "sourceImageIndex": 0,
-      "retrievedAt": "2026-07-26T22:04:19.316Z"
+      "retrievedAt": "2026-07-27T08:36:27.897Z"
     },
     {
       "id": "eres-60973-01062",
@@ -183,7 +212,10 @@
       "brand": "ERES",
       "name": "Singulière Triangle bra",
       "color": "Ultra",
-      "categories": ["bras", "lingerie"],
+      "categories": [
+        "bras",
+        "lingerie"
+      ],
       "description": "The wireless Singulière triangle bra draws on the Maison's hallmark details: a V-shaped neckline with a link, tulle, satin and openwork details. Boasting an iconic shape, it provides excellent support and comfort thanks to the wide satin-covered elasticated chest band.",
       "image": "a s s e t s/shop-mockup/eres-catalogue/singuliere-ultra-60973-01062.jpg",
       "imageSource": "retailer_gallery_index_0",
@@ -192,7 +224,7 @@
       "sourcePageUrl": "https://www.eresparis.com/eu/en/lingerie/60973-01062.html",
       "sourceImageUrl": "https://www.eresparis.com/dw/image/v2/BDLN_PRD/on/demandware.static/-/Sites-master/default/dw1689df62/images/60973_01062_PDP_D_1.jpg?sw=900&sh=1200&frz-v=282",
       "sourceImageIndex": 0,
-      "retrievedAt": "2026-07-26T22:04:19.316Z"
+      "retrievedAt": "2026-07-27T08:36:27.897Z"
     },
     {
       "id": "eres-60953-01062",
@@ -200,7 +232,10 @@
       "brand": "ERES",
       "name": "Idole Full-cup bra",
       "color": "Ultra",
-      "categories": ["bras", "lingerie"],
+      "categories": [
+        "bras",
+        "lingerie"
+      ],
       "description": "Comfy and feminine, this tulle bra offers flawless support thanks to its full-cup shape and under-bust band. It features a satin trim and straps for ultimate sophistication.",
       "image": "a s s e t s/shop-mockup/eres-catalogue/idole-ultra-60953-01062.jpg",
       "imageSource": "retailer_gallery_index_0",
@@ -209,7 +244,7 @@
       "sourcePageUrl": "https://www.eresparis.com/eu/en/lingerie/60953-01062.html",
       "sourceImageUrl": "https://www.eresparis.com/dw/image/v2/BDLN_PRD/on/demandware.static/-/Sites-master/default/dwf58c3006/images/60953_01062_PDP_D_1.jpg?sw=900&sh=1200&frz-v=282",
       "sourceImageIndex": 0,
-      "retrievedAt": "2026-07-26T22:04:19.316Z"
+      "retrievedAt": "2026-07-27T08:36:27.897Z"
     },
     {
       "id": "eres-60985-01618",
@@ -217,7 +252,10 @@
       "brand": "ERES",
       "name": "Providence tonique Triangle bra",
       "color": "Menthe givrée",
-      "categories": ["bras", "lingerie"],
+      "categories": [
+        "bras",
+        "lingerie"
+      ],
       "description": "This triangle bra in stretch tulle, a signature ERES material, features a V-shaped neckline and straps that can be adjusted at the front. Its construction with elastic strips, bust darts, triangle side inserts and a leotard back guarantees optimal support.",
       "image": "a s s e t s/shop-mockup/eres-catalogue/providence-tonique-menthe-60985-01618.jpg",
       "imageSource": "retailer_gallery_index_0",
@@ -226,7 +264,7 @@
       "sourcePageUrl": "https://www.eresparis.com/eu/en/lingerie/60985-01618.html",
       "sourceImageUrl": "https://www.eresparis.com/dw/image/v2/BDLN_PRD/on/demandware.static/-/Sites-master/default/dwea1557bb/images/60985_01618_PDP_D_1.jpg?sw=900&sh=1200&frz-v=282",
       "sourceImageIndex": 0,
-      "retrievedAt": "2026-07-26T22:04:19.316Z"
+      "retrievedAt": "2026-07-27T08:36:27.897Z"
     },
     {
       "id": "eres-60985-01623",
@@ -234,7 +272,10 @@
       "brand": "ERES",
       "name": "Providence tonique Triangle bra",
       "color": "Rouille",
-      "categories": ["bras", "lingerie"],
+      "categories": [
+        "bras",
+        "lingerie"
+      ],
       "description": "This triangle bra in stretch tulle, a signature ERES material, features a V-shaped neckline and straps that can be adjusted at the front. Its construction with elastic strips, bust darts, triangle side inserts and a leotard back guarantees optimal support.",
       "image": "a s s e t s/shop-mockup/eres-catalogue/providence-tonique-rouille-60985-01623.jpg",
       "imageSource": "retailer_gallery_index_0",
@@ -243,7 +284,7 @@
       "sourcePageUrl": "https://www.eresparis.com/eu/en/lingerie/60985-01623.html",
       "sourceImageUrl": "https://www.eresparis.com/dw/image/v2/BDLN_PRD/on/demandware.static/-/Sites-master/default/dw4f5ea2ea/images/60985_01623_PDP_D_1.jpg?sw=900&sh=1200&frz-v=282",
       "sourceImageIndex": 0,
-      "retrievedAt": "2026-07-26T22:04:19.316Z"
+      "retrievedAt": "2026-07-27T08:36:27.897Z"
     },
     {
       "id": "eres-612518-01605",
@@ -251,7 +292,10 @@
       "brand": "ERES",
       "name": "Promesse tonique Tanga",
       "color": "Lassi",
-      "categories": ["briefs", "lingerie"],
+      "categories": [
+        "briefs",
+        "lingerie"
+      ],
       "description": "These tanga briefs are made of 100% stretch tulle, a signature ERES material.",
       "image": "a s s e t s/shop-mockup/eres-catalogue/promesse-tonique-612518-01605.jpg",
       "imageSource": "retailer_gallery_index_0",
@@ -260,7 +304,446 @@
       "sourcePageUrl": "https://www.eresparis.com/eu/en/lingerie/612518-01605.html",
       "sourceImageUrl": "https://www.eresparis.com/dw/image/v2/BDLN_PRD/on/demandware.static/-/Sites-master/default/dw3dfb1fd9/images/612518_01605_PDP_D_1.jpg?sw=900&sh=1200&frz-v=282",
       "sourceImageIndex": 0,
-      "retrievedAt": "2026-07-26T22:04:19.316Z"
+      "retrievedAt": "2026-07-27T08:36:27.897Z"
+    },
+    {
+      "id": "eres-612519-01605",
+      "slug": "bambin-tonique-612519-01605",
+      "brand": "ERES",
+      "name": "Bambin tonique",
+      "color": "Lassi",
+      "categories": [
+        "briefs",
+        "lingerie"
+      ],
+      "description": "These low-waisted briefs are made of stretch tulle, a signature ERES material.",
+      "image": "a s s e t s/shop-mockup/eres-catalogue/bambin-tonique-612519-01605.jpg",
+      "imageAlt": "Bambin tonique Briefs standard view 1 out of 4",
+      "imageSource": "retailer_gallery_index_0",
+      "price": "AU$ 190",
+      "retailerUrl": "https://www.eresparis.com/eu/en/lingerie/612519-01605.html",
+      "sourcePageUrl": "https://www.eresparis.com/eu/en/lingerie/612519-01605.html",
+      "sourceImageUrl": "https://www.eresparis.com/dw/image/v2/BDLN_PRD/on/demandware.static/-/Sites-master/default/dw20410ad8/images/612519_01605_PDP_D_1.jpg?sw=900&sh=1200&frz-v=282",
+      "sourceImageIndex": 0,
+      "retrievedAt": "2026-07-27T08:36:27.897Z"
+    },
+    {
+      "id": "eres-60986-01562",
+      "slug": "eden-tonique-60986-01562",
+      "brand": "ERES",
+      "name": "Eden tonique",
+      "color": "Argent",
+      "categories": [
+        "bras",
+        "lingerie"
+      ],
+      "description": "This underwired full-cup bra with bust darts is made of ERES' signature stretch tulle and provides excellent support up to a D cup. The straps are adjustable at the front.",
+      "image": "a s s e t s/shop-mockup/eres-catalogue/eden-tonique-60986-01562.jpg",
+      "imageAlt": "Eden tonique Full-cup bra standard view 1 out of 4",
+      "imageSource": "retailer_gallery_index_0",
+      "price": "AU$ 350",
+      "retailerUrl": "https://www.eresparis.com/eu/en/lingerie/60986-01562.html",
+      "sourcePageUrl": "https://www.eresparis.com/eu/en/lingerie/60986-01562.html",
+      "sourceImageUrl": "https://www.eresparis.com/dw/image/v2/BDLN_PRD/on/demandware.static/-/Sites-master/default/dwf845c2fd/images/60986_01562_PDP_D_1.jpg?sw=900&sh=1200&frz-v=282",
+      "sourceImageIndex": 0,
+      "retrievedAt": "2026-07-27T08:36:27.897Z"
+    },
+    {
+      "id": "eres-612519-01562",
+      "slug": "bambin-tonique-612519-01562",
+      "brand": "ERES",
+      "name": "Bambin tonique",
+      "color": "Argent",
+      "categories": [
+        "briefs",
+        "lingerie"
+      ],
+      "description": "These low-waisted briefs are made of stretch tulle, a signature ERES material.",
+      "image": "a s s e t s/shop-mockup/eres-catalogue/bambin-tonique-612519-01562.jpg",
+      "imageAlt": "Bambin tonique Briefs standard view 1 out of 4",
+      "imageSource": "retailer_gallery_index_0",
+      "price": "AU$ 190",
+      "retailerUrl": "https://www.eresparis.com/eu/en/lingerie/612519-01562.html",
+      "sourcePageUrl": "https://www.eresparis.com/eu/en/lingerie/612519-01562.html",
+      "sourceImageUrl": "https://www.eresparis.com/dw/image/v2/BDLN_PRD/on/demandware.static/-/Sites-master/default/dwd91e9414/images/612519_01562_PDP_D_1.jpg?sw=900&sh=1200&frz-v=282",
+      "sourceImageIndex": 0,
+      "retrievedAt": "2026-07-27T08:36:27.897Z"
+    },
+    {
+      "id": "eres-60985-01562",
+      "slug": "providence-tonique-60985-01562",
+      "brand": "ERES",
+      "name": "Providence tonique",
+      "color": "Argent",
+      "categories": [
+        "bras",
+        "lingerie"
+      ],
+      "description": "This triangle bra in stretch tulle, a signature ERES material, features a V-shaped neckline and straps that can be adjusted at the front. Its construction with elastic strips, bust darts, triangle side inserts and a leotard back guarantees optimal support.",
+      "image": "a s s e t s/shop-mockup/eres-catalogue/providence-tonique-60985-01562.jpg",
+      "imageAlt": "Providence tonique Triangle bra standard view 1 out of 4",
+      "imageSource": "retailer_gallery_index_0",
+      "price": "AU$ 370",
+      "retailerUrl": "https://www.eresparis.com/eu/en/lingerie/60985-01562.html",
+      "sourcePageUrl": "https://www.eresparis.com/eu/en/lingerie/60985-01562.html",
+      "sourceImageUrl": "https://www.eresparis.com/dw/image/v2/BDLN_PRD/on/demandware.static/-/Sites-master/default/dw4f13d739/images/60985_01562_PDP_D_1.jpg?sw=900&sh=1200&frz-v=282",
+      "sourceImageIndex": 0,
+      "retrievedAt": "2026-07-27T08:36:27.897Z"
+    },
+    {
+      "id": "eres-612603-0022",
+      "slug": "volute-612603-0022",
+      "brand": "ERES",
+      "name": "Volute",
+      "color": "Lys",
+      "categories": [
+        "briefs",
+        "lingerie"
+      ],
+      "description": "The Volute briefs show off your silhouette in retro-chic style with their high waist and floral design.",
+      "image": "a s s e t s/shop-mockup/eres-catalogue/volute-612603-0022.jpg",
+      "imageAlt": "Volute High-waisted briefs standard view 1 out of 5",
+      "imageSource": "retailer_gallery_index_0",
+      "price": "AU$ 400",
+      "retailerUrl": "https://www.eresparis.com/eu/en/lingerie/612603-0022.html",
+      "sourcePageUrl": "https://www.eresparis.com/eu/en/lingerie/612603-0022.html",
+      "sourceImageUrl": "https://www.eresparis.com/dw/image/v2/BDLN_PRD/on/demandware.static/-/Sites-master/default/dwe665d5f5/images/612603_0022_PDP_D_1.jpg?sw=900&sh=1200&frz-v=282",
+      "sourceImageIndex": 0,
+      "retrievedAt": "2026-07-27T08:36:27.897Z"
+    },
+    {
+      "id": "eres-60986-01548",
+      "slug": "eden-tonique-60986-01548",
+      "brand": "ERES",
+      "name": "Eden tonique",
+      "color": "Scarabée",
+      "categories": [
+        "bras",
+        "lingerie"
+      ],
+      "description": "This underwired full-cup bra with bust darts is made of ERES' signature stretch tulle and provides excellent support up to a D cup. The straps are adjustable at the front.",
+      "image": "a s s e t s/shop-mockup/eres-catalogue/eden-tonique-60986-01548.jpg",
+      "imageAlt": "Eden tonique Full-cup bra standard view 1 out of 5",
+      "imageSource": "retailer_gallery_index_0",
+      "price": "AU$ 350",
+      "retailerUrl": "https://www.eresparis.com/eu/en/lingerie/60986-01548.html",
+      "sourcePageUrl": "https://www.eresparis.com/eu/en/lingerie/60986-01548.html",
+      "sourceImageUrl": "https://www.eresparis.com/dw/image/v2/BDLN_PRD/on/demandware.static/-/Sites-master/default/dw10bfcbef/images/60986_01548_PDP_D_1.jpg?sw=900&sh=1200&frz-v=282",
+      "sourceImageIndex": 0,
+      "retrievedAt": "2026-07-27T08:36:27.897Z"
+    },
+    {
+      "id": "eres-612606-01566",
+      "slug": "symbolique-612606-01566",
+      "brand": "ERES",
+      "name": "Symbolique",
+      "color": "Palmeraie",
+      "categories": [
+        "lingerie"
+      ],
+      "description": "Embellished with a geometric motif that creates a light-and-shadow effect, the stretch jacquard lace of the high-waisted Symbolique shorties delivers bold, feminine style.",
+      "image": "a s s e t s/shop-mockup/eres-catalogue/symbolique-612606-01566.jpg",
+      "imageAlt": "Symbolique Shorty standard view 1 out of 6",
+      "imageSource": "retailer_gallery_index_0",
+      "price": "AU$ 370",
+      "retailerUrl": "https://www.eresparis.com/eu/en/lingerie/612606-01566.html",
+      "sourcePageUrl": "https://www.eresparis.com/eu/en/lingerie/612606-01566.html",
+      "sourceImageUrl": "https://www.eresparis.com/dw/image/v2/BDLN_PRD/on/demandware.static/-/Sites-master/default/dwa2281ab8/images/612606_01566_PDP_D_1.jpg?sw=900&sh=1200&frz-v=282",
+      "sourceImageIndex": 0,
+      "retrievedAt": "2026-07-27T08:36:27.897Z"
+    },
+    {
+      "id": "eres-612606-01547",
+      "slug": "symbolique-612606-01547",
+      "brand": "ERES",
+      "name": "Symbolique",
+      "color": "Panama",
+      "categories": [
+        "lingerie"
+      ],
+      "description": "Embellished with a geometric motif that creates a light-and-shadow effect, the stretch jacquard lace of the high-waisted Symbolique shorties delivers bold, feminine style.",
+      "image": "a s s e t s/shop-mockup/eres-catalogue/symbolique-612606-01547.jpg",
+      "imageAlt": "Symbolique Shorty standard view 1 out of 5",
+      "imageSource": "retailer_gallery_index_0",
+      "price": "AU$ 370",
+      "retailerUrl": "https://www.eresparis.com/eu/en/lingerie/612606-01547.html",
+      "sourcePageUrl": "https://www.eresparis.com/eu/en/lingerie/612606-01547.html",
+      "sourceImageUrl": "https://www.eresparis.com/dw/image/v2/BDLN_PRD/on/demandware.static/-/Sites-master/default/dwedc63143/images/612606_01547_PDP_D_1.jpg?sw=900&sh=1200&frz-v=282",
+      "sourceImageIndex": 0,
+      "retrievedAt": "2026-07-27T08:36:27.897Z"
+    },
+    {
+      "id": "eres-60997-1001",
+      "slug": "ruban-60997-1001",
+      "brand": "ERES",
+      "name": "Ruban",
+      "color": "Noir",
+      "categories": [
+        "bras",
+        "lingerie"
+      ],
+      "description": "The Ruban bralette combines two types of lace with a graphic, floral feel. Its straps are covered in velvet for added sophistication.",
+      "image": "a s s e t s/shop-mockup/eres-catalogue/ruban-60997-1001.jpg",
+      "imageAlt": "Ruban Crop top bra standard view 1 out of 7",
+      "imageSource": "retailer_gallery_index_0",
+      "price": "AU$ 660",
+      "retailerUrl": "https://www.eresparis.com/eu/en/lingerie/60997-1001.html",
+      "sourcePageUrl": "https://www.eresparis.com/eu/en/lingerie/60997-1001.html",
+      "sourceImageUrl": "https://www.eresparis.com/dw/image/v2/BDLN_PRD/on/demandware.static/-/Sites-master/default/dwc75ef733/images/60997_1001_PDP_D_1.jpg?sw=900&sh=1200&frz-v=282",
+      "sourceImageIndex": 0,
+      "retrievedAt": "2026-07-27T08:36:27.897Z"
+    },
+    {
+      "id": "eres-60985-01516",
+      "slug": "providence-tonique-60985-01516",
+      "brand": "ERES",
+      "name": "Providence tonique",
+      "color": "Lilas",
+      "categories": [
+        "bras",
+        "lingerie"
+      ],
+      "description": "This triangle bra in stretch tulle, a signature ERES material, features a V-shaped neckline and straps that can be adjusted at the front. Its construction with elastic strips, bust darts, triangle side inserts and a leotard back guarantees optimal support.",
+      "image": "a s s e t s/shop-mockup/eres-catalogue/providence-tonique-60985-01516.jpg",
+      "imageAlt": "Providence tonique Triangle bra standard view 1 out of 5",
+      "imageSource": "retailer_gallery_index_0",
+      "price": "AU$ 370",
+      "retailerUrl": "https://www.eresparis.com/eu/en/lingerie/60985-01516.html",
+      "sourcePageUrl": "https://www.eresparis.com/eu/en/lingerie/60985-01516.html",
+      "sourceImageUrl": "https://www.eresparis.com/dw/image/v2/BDLN_PRD/on/demandware.static/-/Sites-master/default/dw0e865884/images/60985_01516_PDP_D_1.jpg?sw=900&sh=1200&frz-v=282",
+      "sourceImageIndex": 0,
+      "retrievedAt": "2026-07-27T08:36:27.897Z"
+    },
+    {
+      "id": "eres-612519-01516",
+      "slug": "bambin-tonique-612519-01516",
+      "brand": "ERES",
+      "name": "Bambin tonique",
+      "color": "Lilas",
+      "categories": [
+        "briefs",
+        "lingerie"
+      ],
+      "description": "These low-waisted briefs are made of stretch tulle, a signature ERES material.",
+      "image": "a s s e t s/shop-mockup/eres-catalogue/bambin-tonique-612519-01516.jpg",
+      "imageAlt": "Bambin tonique Briefs standard view 1 out of 4",
+      "imageSource": "retailer_gallery_index_0",
+      "price": "AU$ 190",
+      "retailerUrl": "https://www.eresparis.com/eu/en/lingerie/612519-01516.html",
+      "sourcePageUrl": "https://www.eresparis.com/eu/en/lingerie/612519-01516.html",
+      "sourceImageUrl": "https://www.eresparis.com/dw/image/v2/BDLN_PRD/on/demandware.static/-/Sites-master/default/dwdb52fc65/images/612519_01516_PDP_D_1.jpg?sw=900&sh=1200&frz-v=282",
+      "sourceImageIndex": 0,
+      "retrievedAt": "2026-07-27T08:36:27.897Z"
+    },
+    {
+      "id": "eres-60986-01516",
+      "slug": "eden-tonique-60986-01516",
+      "brand": "ERES",
+      "name": "Eden tonique",
+      "color": "Lilas",
+      "categories": [
+        "bras",
+        "lingerie"
+      ],
+      "description": "This underwired full-cup bra with bust darts is made of ERES' signature stretch tulle and provides excellent support up to a D cup. The straps are adjustable at the front.",
+      "image": "a s s e t s/shop-mockup/eres-catalogue/eden-tonique-60986-01516.jpg",
+      "imageAlt": "Eden tonique Full-cup bra standard view 1 out of 4",
+      "imageSource": "retailer_gallery_index_0",
+      "price": "AU$ 350",
+      "retailerUrl": "https://www.eresparis.com/eu/en/lingerie/60986-01516.html",
+      "sourcePageUrl": "https://www.eresparis.com/eu/en/lingerie/60986-01516.html",
+      "sourceImageUrl": "https://www.eresparis.com/dw/image/v2/BDLN_PRD/on/demandware.static/-/Sites-master/default/dwd4853e5e/images/60986_01516_PDP_D_1.jpg?sw=900&sh=1200&frz-v=282",
+      "sourceImageIndex": 0,
+      "retrievedAt": "2026-07-27T08:36:27.897Z"
+    },
+    {
+      "id": "eres-012646-01624",
+      "slug": "apparence-012646-01624",
+      "brand": "ERES",
+      "name": "Apparence",
+      "color": "Guimauve",
+      "categories": [
+        "swimsuits",
+        "swim"
+      ],
+      "description": "Apparence is a graphic bustier swimsuit featuring a distinctive V-shaped link and structuring seams. Its gripper tape and lining offer flawless support for a refined look.",
+      "image": "a s s e t s/shop-mockup/eres-catalogue/apparence-012646-01624.jpg",
+      "imageAlt": "Apparence Bustier one-piece standard view 1 out of 8",
+      "imageSource": "retailer_gallery_index_0",
+      "price": "AU$ 1.150",
+      "retailerUrl": "https://www.eresparis.com/eu/en/swimwear/012646-01624.html",
+      "sourcePageUrl": "https://www.eresparis.com/eu/en/swimwear/012646-01624.html",
+      "sourceImageUrl": "https://www.eresparis.com/dw/image/v2/BDLN_PRD/on/demandware.static/-/Sites-master/default/dw98a5b6d1/images/012646_01624_PDP_D_1.jpg?sw=900&sh=1200&frz-v=282",
+      "sourceImageIndex": 0,
+      "retrievedAt": "2026-07-27T08:36:27.897Z"
+    },
+    {
+      "id": "eres-012643-01627",
+      "slug": "intense-012643-01627",
+      "brand": "ERES",
+      "name": "Intense",
+      "color": "Bonbon",
+      "categories": [
+        "swimsuits",
+        "swim"
+      ],
+      "description": "Intense is a swimsuit cut under the bust with seductive narrow straps and a V-shaped link at the neckline. Its underbust seam and straight back outline a modern and timeless silhouette.",
+      "image": "a s s e t s/shop-mockup/eres-catalogue/intense-012643-01627.jpg",
+      "imageAlt": "Intense Underbust-cut swimsuit standard view 1 out of 6",
+      "imageSource": "retailer_gallery_index_0",
+      "price": "AU$ 990",
+      "retailerUrl": "https://www.eresparis.com/eu/en/swimwear/012643-01627.html",
+      "sourcePageUrl": "https://www.eresparis.com/eu/en/swimwear/012643-01627.html",
+      "sourceImageUrl": "https://www.eresparis.com/dw/image/v2/BDLN_PRD/on/demandware.static/-/Sites-master/default/dw6d2debd9/images/012643_01627_PDP_D_1.jpg?sw=900&sh=1200&frz-v=282",
+      "sourceImageIndex": 0,
+      "retrievedAt": "2026-07-27T08:36:27.897Z"
+    },
+    {
+      "id": "eres-012642-01625",
+      "slug": "nightlife-012642-01625",
+      "brand": "ERES",
+      "name": "Nightlife",
+      "color": "Imprimé loulou",
+      "categories": [
+        "swimsuits",
+        "swim"
+      ],
+      "description": "Nightlife, the graphic trikini, features a seductive open front and a U-shaped accessory linking its two cups. Straight dainty straps and a round plunging back show off your silhouette with daring, for a truly modern allure.",
+      "image": "a s s e t s/shop-mockup/eres-catalogue/nightlife-012642-01625.jpg",
+      "imageAlt": "Nightlife Trikini standard view 1 out of 7",
+      "imageSource": "retailer_gallery_index_0",
+      "price": "AU$ 1.150",
+      "retailerUrl": "https://www.eresparis.com/eu/en/swimwear/012642-01625.html",
+      "sourcePageUrl": "https://www.eresparis.com/eu/en/swimwear/012642-01625.html",
+      "sourceImageUrl": "https://www.eresparis.com/dw/image/v2/BDLN_PRD/on/demandware.static/-/Sites-master/default/dw5b251322/images/012642_01625_PDP_D_1.jpg?sw=900&sh=1200&frz-v=282",
+      "sourceImageIndex": 0,
+      "retrievedAt": "2026-07-27T08:36:27.897Z"
+    },
+    {
+      "id": "eres-032631-01627",
+      "slug": "arcade-032631-01627",
+      "brand": "ERES",
+      "name": "Arcade",
+      "color": "Bonbon",
+      "categories": [
+        "bikini-tops",
+        "swim"
+      ],
+      "description": "Arcade is an elegant bandeau bikini top with seductive bust gathering and a V-shaped link. Its gripper tape and branded clasp guarantee support and style.",
+      "image": "a s s e t s/shop-mockup/eres-catalogue/arcade-032631-01627.jpg",
+      "imageAlt": "Arcade Bandeau standard view 1 out of 6",
+      "imageSource": "retailer_gallery_index_0",
+      "price": "AU$ 550",
+      "retailerUrl": "https://www.eresparis.com/eu/en/swimwear/032631-01627.html",
+      "sourcePageUrl": "https://www.eresparis.com/eu/en/swimwear/032631-01627.html",
+      "sourceImageUrl": "https://www.eresparis.com/dw/image/v2/BDLN_PRD/on/demandware.static/-/Sites-master/default/dw348352a1/images/032631_01627_PDP_D_1.jpg?sw=900&sh=1200&frz-v=282",
+      "sourceImageIndex": 0,
+      "retrievedAt": "2026-07-27T08:36:27.897Z"
+    },
+    {
+      "id": "eres-012641-01618",
+      "slug": "inspiring-012641-01618",
+      "brand": "ERES",
+      "name": "Inspiring",
+      "color": "Menthe givrée",
+      "categories": [
+        "swimsuits",
+        "swim"
+      ],
+      "description": "Inspiring is a flattering swimsuit with wide straps embellished by two U-shaped accessories. Its seam sits under and subtly enhances the bust, while its straight back and classic coverage create a timeless, elegant look.",
+      "image": "a s s e t s/shop-mockup/eres-catalogue/inspiring-012641-01618.jpg",
+      "imageAlt": "Inspiring Underbust-cut swimsuit standard view 1 out of 7",
+      "imageSource": "retailer_gallery_index_0",
+      "price": "AU$ 1.030",
+      "retailerUrl": "https://www.eresparis.com/eu/en/swimwear/012641-01618.html",
+      "sourcePageUrl": "https://www.eresparis.com/eu/en/swimwear/012641-01618.html",
+      "sourceImageUrl": "https://www.eresparis.com/dw/image/v2/BDLN_PRD/on/demandware.static/-/Sites-master/default/dw9268f63e/images/012641_01618_PDP_D_1.jpg?sw=900&sh=1200&frz-v=282",
+      "sourceImageIndex": 0,
+      "retrievedAt": "2026-07-27T08:36:27.897Z"
+    },
+    {
+      "id": "eres-042631-01618",
+      "slug": "clutch-042631-01618",
+      "brand": "ERES",
+      "name": "Clutch",
+      "color": "Menthe givrée",
+      "categories": [
+        "briefs",
+        "swim"
+      ],
+      "description": "Clutch is a pair of classic bikini briefs with a twist, their elegant cut and side U-shaped details creating a feminine and sophisticated silhouette.",
+      "image": "a s s e t s/shop-mockup/eres-catalogue/clutch-042631-01618.jpg",
+      "imageAlt": "Clutch Classic briefs standard view 1 out of 5",
+      "imageSource": "retailer_gallery_index_0",
+      "price": "AU$ 530",
+      "retailerUrl": "https://www.eresparis.com/eu/en/swimwear/042631-01618.html",
+      "sourcePageUrl": "https://www.eresparis.com/eu/en/swimwear/042631-01618.html",
+      "sourceImageUrl": "https://www.eresparis.com/dw/image/v2/BDLN_PRD/on/demandware.static/-/Sites-master/default/dwef5295d3/images/042631_01618_PDP_D_1.jpg?sw=900&sh=1200&frz-v=282",
+      "sourceImageIndex": 0,
+      "retrievedAt": "2026-07-27T08:36:27.897Z"
+    },
+    {
+      "id": "eres-012627-01598",
+      "slug": "macadamia-012627-01598",
+      "brand": "ERES",
+      "name": "Macadamia",
+      "color": "Alligator / argent",
+      "categories": [
+        "swimsuits",
+        "swim"
+      ],
+      "description": "Macadamia features elegant wide straps and bold panels. Its low V-neck and back lend structure to the silhouette, while a contrasting stripe under the bust emphasizes your waist with sophistication. Bold and contemporary, it elevates any waterside moment.",
+      "image": "a s s e t s/shop-mockup/eres-catalogue/macadamia-012627-01598.jpg",
+      "imageAlt": "Macadamia V-neck one-piece standard view 1 out of 6",
+      "imageSource": "retailer_gallery_index_0",
+      "price": "AU$ 1.090",
+      "retailerUrl": "https://www.eresparis.com/eu/en/swimwear/012627-01598.html",
+      "sourcePageUrl": "https://www.eresparis.com/eu/en/swimwear/012627-01598.html",
+      "sourceImageUrl": "https://www.eresparis.com/dw/image/v2/BDLN_PRD/on/demandware.static/-/Sites-master/default/dw1606644a/images/012627_01598_PDP_D_1.jpg?sw=900&sh=1200&frz-v=282",
+      "sourceImageIndex": 0,
+      "retrievedAt": "2026-07-27T08:36:27.897Z"
+    },
+    {
+      "id": "eres-011402-01605",
+      "slug": "aquarelle-011402-01605",
+      "brand": "ERES",
+      "name": "Aquarelle",
+      "color": "Lassi",
+      "categories": [
+        "swimsuits",
+        "swim"
+      ],
+      "description": "An iconic ERES style loved for its clean lines, this one-piece swimsuit features a straight neckline framed by delicate straps. It shows off all body types.",
+      "image": "a s s e t s/shop-mockup/eres-catalogue/aquarelle-011402-01605.jpg",
+      "imageAlt": "Aquarelle Tank one-piece standard view 1 out of 6",
+      "imageSource": "retailer_gallery_index_0",
+      "price": "AU$ 690",
+      "retailerUrl": "https://www.eresparis.com/eu/en/swimwear/011402-01605.html",
+      "sourcePageUrl": "https://www.eresparis.com/eu/en/swimwear/011402-01605.html",
+      "sourceImageUrl": "https://www.eresparis.com/dw/image/v2/BDLN_PRD/on/demandware.static/-/Sites-master/default/dwe15f3ac7/images/011402_01605_PDP_D_1.jpg?sw=900&sh=1200&frz-v=282",
+      "sourceImageIndex": 0,
+      "retrievedAt": "2026-07-27T08:36:27.897Z"
+    },
+    {
+      "id": "eres-011401-01563",
+      "slug": "asia-011401-01563",
+      "brand": "ERES",
+      "name": "Asia",
+      "color": "Alligator",
+      "categories": [
+        "swimsuits",
+        "swim"
+      ],
+      "description": "This one-piece swimsuit, available in the season's colours, has wide straps and a round neckline. Its graphic yet practical waistband shapes the figure and suits all body types.",
+      "image": "a s s e t s/shop-mockup/eres-catalogue/asia-011401-01563.jpg",
+      "imageAlt": "Asia Tank one-piece standard view 1 out of 6",
+      "imageSource": "retailer_gallery_index_0",
+      "price": "AU$ 750",
+      "retailerUrl": "https://www.eresparis.com/eu/en/swimwear/011401-01563.html",
+      "sourcePageUrl": "https://www.eresparis.com/eu/en/swimwear/011401-01563.html",
+      "sourceImageUrl": "https://www.eresparis.com/dw/image/v2/BDLN_PRD/on/demandware.static/-/Sites-master/default/dwad6fd9e0/images/011401_01563_PDP_D_1.jpg?sw=900&sh=1200&frz-v=282",
+      "sourceImageIndex": 0,
+      "retrievedAt": "2026-07-27T08:36:27.897Z"
     }
   ]
 }

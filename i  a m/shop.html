@@ -21,7 +21,7 @@
       document.documentElement.dataset.shopBrandInk = shopBrandInk === "white" ? "white" : "black";
     </script>
     <script src="music-television-frame-context.js?v=music-tv-frame-14ebf4459d03"></script>
-    <link rel="stylesheet" href="shop.css?v=shop-kernel-nav-7">
+    <link rel="stylesheet" href="shop.css?v=shop-universal-catalogue-9">
   </head>
   <body class="shop-page">
     <a class="shop-skip" href="#edit">Skip to the edit</a>
@@ -134,13 +134,13 @@
           <figure><img src="a s s e t s/shop-mockup/bordelle-waspie-detail.jpg" alt="Bordelle Signature Waspie in cream, back detail" fetchpriority="high"></figure>
           <p><strong>Bordelle</strong><span>Signature Waspie</span></p>
         </a>
-        <a class="shop-look shop-look--wardrobe" href="https://wardrobe.nyc/collections/bodysuits/products/lace-bodysuit-w5051f25lcblk" target="_blank" rel="noopener noreferrer">
-          <figure><img src="a s s e t s/shop-mockup/wardrobe-lace.webp" alt="WARDROBE.NYC black high-cut lace bodysuit" fetchpriority="high"></figure>
-          <p><strong>WARDROBE.NYC</strong><span>High Cut Lace Bodysuit</span></p>
+        <a class="shop-look shop-look--wardrobe" href="https://wardrobe.nyc/collections/bodysuits/products/sheer-bodysuit-w5043f25nyblk" target="_blank" rel="noopener noreferrer">
+          <figure><img src="a s s e t s/shop-mockup/wardrobe-sheer.jpg" alt="WARDROBE.NYC sheer bodysuit in black" fetchpriority="high"></figure>
+          <p><strong>WARDROBE.NYC</strong><span>Sheer Bodysuit</span></p>
         </a>
-        <a class="shop-look shop-look--karla" href="https://karlaspetic.com/product/no-v-neon-tiger-bikini/" target="_blank" rel="noopener noreferrer">
-          <figure><img src="a s s e t s/shop-mockup/karla-neon-tiger.jpg" alt="KARLA ŠPETIĆ neon tiger bikini on the beach" fetchpriority="high"></figure>
-          <p><strong>KARLA ŠPETIĆ</strong><span>No.V Neon Tiger Bikini</span></p>
+        <a class="shop-look shop-look--karla" href="https://karlaspetic.com/product/fluorite-tunic-dress/" target="_blank" rel="noopener noreferrer">
+          <figure><img src="a s s e t s/shop-mockup/karla-fluorite.jpg" alt="KARLA ŠPETIĆ Fluorite tunic dress on a model" fetchpriority="high"></figure>
+          <p><strong>KARLA ŠPETIĆ</strong><span>Fluorite Tunic Dress</span></p>
         </a>
       </section>
 
@@ -259,9 +259,9 @@
         </div>
       </section>
 
-      <a class="shop-campaign" href="https://www.theupside.com.au/kefi-25in-midi-pant-oyster-usw226087/" target="_blank" rel="noopener noreferrer" data-shop-editorial>
-        <figure><img src="a s s e t s/shop-mockup/upside-kefi-hero.png" alt="The Upside Kefi pant campaign image"></figure>
-        <p><strong>The Upside</strong><span>Kefi / body in motion</span></p>
+      <a class="shop-campaign" href="https://www.theupside.com.au/neptune-cassandra-bodysuit-sapphire-usw126044/" target="_blank" rel="noopener noreferrer" data-shop-editorial>
+        <figure><img src="a s s e t s/shop-mockup/upside-neptune.jpg" alt="The Upside Neptune Cassandra bodysuit campaign image"></figure>
+        <p><strong>The Upside</strong><span>Neptune Cassandra / body in motion</span></p>
       </a>
 
       <section class="shop-brands" id="brands" aria-labelledby="brands-title" data-shop-editorial>
@@ -324,16 +324,16 @@
       <section class="shop-catalogue" data-shop-catalogue hidden aria-labelledby="catalogue-title">
         <header class="shop-catalogue__editorial" id="catalogue-editorial" data-catalogue-editorial-header>
           <figure class="shop-catalogue__editorial-lead">
-            <img src="a s s e t s/shop-mockup/eres-catalogue/eden-60650-00996.jpg" alt="ERES Eden full-cup bra in Make Up, forward-facing portrait">
+            <img src="a s s e t s/shop-mockup/eres-catalogue/eden-60650-00996.jpg" alt="ERES Eden full-cup bra in Make Up, forward-facing portrait" data-catalogue-lead-image>
           </figure>
           <a class="shop-catalogue__back" href="#brands" data-shop-catalogue-back><span aria-hidden="true">←</span> James Bondage</a>
           <div class="shop-catalogue__wordmark">
             <p><span data-catalogue-brand-kicker>ERES</span> / catalogue</p>
             <h2 id="catalogue-title" data-catalogue-brand-title>ERES</h2>
-            <span>James Bondage / verified edit <b data-catalogue-count>15</b></span>
+            <span>James Bondage / approved edit <b data-catalogue-count>36</b></span>
           </div>
           <div class="shop-catalogue__editorial-aside">
-            <figure><img src="a s s e t s/shop-mockup/eres-catalogue/providence-60653-01062.jpg" alt="ERES Providence triangle bra in Ultra, forward-facing portrait"></figure>
+            <figure><img src="a s s e t s/shop-mockup/eres-catalogue/providence-60653-01062.jpg" alt="ERES Providence triangle bra in Ultra, forward-facing portrait" data-catalogue-aside-image></figure>
             <p><span data-catalogue-aside-brand>ERES</span><span data-catalogue-aside-form>lingerie / second skin</span></p>
             <a href="#catalogue-grid">view the collection <span aria-hidden="true">↓</span></a>
           </div>
@@ -342,9 +342,13 @@
           <label><span>brand</span><select data-catalogue-brand aria-label="Shop by brand"></select></label>
           <label><span>type</span><select data-catalogue-type aria-label="Shop by product type"></select></label>
           <label><span>sort</span><select data-catalogue-sort aria-label="Sort products"><option value="editorial">editorial</option><option value="price-asc">price / low to high</option><option value="price-desc">price / high to low</option></select></label>
-          <p data-catalogue-status aria-live="polite">15 verified pieces</p>
+          <p data-catalogue-status aria-live="polite">showing 24 of 36</p>
         </div>
         <div class="shop-catalogue__grid" id="catalogue-grid" data-catalogue-grid aria-live="polite"></div>
+        <div class="shop-catalogue__more" data-catalogue-more-wrap hidden>
+          <button type="button" data-catalogue-load-more>load 24 more</button>
+          <p data-catalogue-progress>showing 24 of 36</p>
+        </div>
       </section>
     </main>
 
@@ -373,6 +377,6 @@
     <script src="cloudflare-stream-catalogue.js?v=stream-catalogue-1"></script>
     <script src="cloudflare-stream-controller.js?v=stream-controller-1"></script>
     <script src="broadcast-clock-v1.js?v=broadcast-clock-626a37ed5d83"></script>
-    <script src="shop.js?v=shop-kernel-nav-7"></script>
+    <script src="shop.js?v=shop-universal-catalogue-9"></script>
   </body>
 </html>

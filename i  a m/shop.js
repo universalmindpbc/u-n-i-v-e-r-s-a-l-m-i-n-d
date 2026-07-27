@@ -29,6 +29,7 @@
   const musicButton = document.querySelector("[data-shop-music]");
   const musicLabel = document.querySelector("[data-shop-music-label]");
   const catalogueSection = document.querySelector("[data-shop-catalogue]");
+  const catalogueHeader = document.querySelector("[data-catalogue-editorial-header]");
   const catalogueGrid = document.querySelector("[data-catalogue-grid]");
   const catalogueCount = document.querySelector("[data-catalogue-count]");
   const catalogueStatus = document.querySelector("[data-catalogue-status]");
@@ -39,6 +40,11 @@
   const catalogueBrandKicker = document.querySelector("[data-catalogue-brand-kicker]");
   const catalogueAsideBrand = document.querySelector("[data-catalogue-aside-brand]");
   const catalogueAsideForm = document.querySelector("[data-catalogue-aside-form]");
+  const catalogueLeadImage = document.querySelector("[data-catalogue-lead-image]");
+  const catalogueAsideImage = document.querySelector("[data-catalogue-aside-image]");
+  const catalogueMoreWrap = document.querySelector("[data-catalogue-more-wrap]");
+  const catalogueLoadMore = document.querySelector("[data-catalogue-load-more]");
+  const catalogueProgress = document.querySelector("[data-catalogue-progress]");
   const productDialog = document.querySelector("[data-shop-product-dialog]");
   const productDialogClose = document.querySelector("[data-shop-product-dialog-close]");
   const productDialogImage = document.querySelector("[data-shop-product-dialog-image]");
@@ -54,8 +60,12 @@
   let activeCatalogueBrand = "all";
   let activeCatalogueType = "all";
   let activeCatalogueSort = "editorial";
+  let activeCatalogueLimit = 24;
   let catalogueProducts = [];
   let catalogueKernel = null;
+  let catalogueReturnHash = "";
+  let lastCatalogueResultCount = 0;
+  const catalogueChunkSize = 24;
   let liveBandSyncTimer = 0;
   let liveBandRunwayId = "";
 
@@ -344,6 +354,10 @@
     }
   }
 
+  function productHasFullDetail(product) {
+    return product.metadataStatus === "Metadata ready" && Boolean(product.image);
+  }
+
   function updateCatalogueHeader(visibleProducts) {
     const brand = currentBrandRecord();
     const displayName = brand?.brand || "SHOP";
@@ -359,25 +373,53 @@
     if (catalogueBrandSelect) catalogueBrandSelect.value = activeCatalogueBrand;
     if (catalogueTypeSelect) catalogueTypeSelect.value = activeCatalogueType;
     if (catalogueSortSelect) catalogueSortSelect.value = activeCatalogueSort;
+
+    const brandImages = activeCatalogueBrand === "all"
+      ? []
+      : visibleProducts.filter(productHasFullDetail).slice(0, 2);
+    const hasBrandImages = brandImages.length >= 2;
+    catalogueHeader?.classList.toggle("is-text-only", !hasBrandImages);
+    if (hasBrandImages && catalogueLeadImage && catalogueAsideImage) {
+      catalogueLeadImage.src = brandImages[0].image;
+      catalogueLeadImage.alt = brandImages[0].imageAlt || `${brandImages[0].brand} ${brandImages[0].name}`;
+      catalogueAsideImage.src = brandImages[1].image;
+      catalogueAsideImage.alt = brandImages[1].imageAlt || `${brandImages[1].brand} ${brandImages[1].name}`;
+    }
   }
 
-  function buildCatalogueCard(product) {
+  function buildCatalogueCard(product, index) {
     const article = document.createElement("article");
     article.className = "shop-catalogue-card";
-    article.dataset.catalogueProduct = product.slug;
-    article.dataset.categories = product.categories.join(" ");
+    article.dataset.catalogueProduct = product.slug || product.id;
+    article.dataset.categories = (product.categories || []).join(" ");
+    const fullDetail = productHasFullDetail(product);
+    article.dataset.metadataState = fullDetail ? "ready" : "inventory";
 
-    const button = document.createElement("button");
-    button.type = "button";
-    button.dataset.catalogueProductOpen = product.slug;
-    button.setAttribute("aria-label", `Expand ${product.brand} ${product.name}`);
+    const control = document.createElement(fullDetail ? "button" : "a");
+    if (fullDetail) {
+      control.type = "button";
+      control.dataset.catalogueProductOpen = product.slug;
+      control.setAttribute("aria-label", `Expand ${product.brand} ${product.name}`);
+    } else {
+      control.href = product.retailerUrl;
+      control.target = "_blank";
+      control.rel = "noopener noreferrer";
+      control.setAttribute("aria-label", `View ${product.brand} ${product.name} at the retailer`);
+    }
 
     const figure = document.createElement("figure");
-    const image = document.createElement("img");
-    image.src = product.image;
-    image.alt = product.imageAlt || `${product.brand} ${product.name}`;
-    image.loading = "lazy";
-    figure.append(image);
+    if (fullDetail) {
+      const image = document.createElement("img");
+      image.src = product.image;
+      image.alt = product.imageAlt || `${product.brand} ${product.name}`;
+      image.loading = index < 6 ? "eager" : "lazy";
+      figure.append(image);
+    } else {
+      figure.className = "shop-catalogue-card__placeholder";
+      const inventoryBrand = document.createElement("span");
+      inventoryBrand.textContent = product.brand;
+      figure.append(inventoryBrand);
+    }
 
     const copy = document.createElement("div");
     copy.className = "shop-catalogue-card__copy";
@@ -386,21 +428,40 @@
     const name = document.createElement("h3");
     name.textContent = product.name;
     const form = document.createElement("span");
-    form.textContent = product.color || labelCategories(product.categories);
+    form.textContent = product.color || normalisedProductType(product) || labelCategories(product.forms);
     const price = document.createElement("strong");
-    price.textContent = product.price;
+    price.textContent = fullDetail ? product.price : "price at retailer";
     const expand = document.createElement("em");
-    expand.textContent = "+";
+    expand.textContent = fullDetail ? "+" : "↗";
     copy.append(brand, name, form, price, expand);
-    button.append(figure, copy);
-    article.append(button);
+    control.append(figure, copy);
+    article.append(control);
     return article;
+  }
+
+  function roundRobinByBrand(productsToOrder) {
+    const buckets = new Map(catalogueKernel.brandOrder.map((brand) => [brand, []]));
+    productsToOrder.forEach((product) => {
+      if (!buckets.has(product.brand)) buckets.set(product.brand, []);
+      buckets.get(product.brand).push(product);
+    });
+    const ordered = [];
+    let added = true;
+    while (added) {
+      added = false;
+      for (const bucket of buckets.values()) {
+        if (!bucket.length) continue;
+        ordered.push(bucket.shift());
+        added = true;
+      }
+    }
+    return ordered;
   }
 
   function renderCatalogue() {
     if (!catalogueGrid || !catalogueKernel) return;
     const brand = currentBrandRecord();
-    const visibleProducts = catalogueProducts
+    let visibleProducts = catalogueProducts
       .filter((product) => activeCatalogueBrand === "all" || brandSlug(product.brand) === activeCatalogueBrand)
       .filter(productMatchesType)
       .sort((a, b) => {
@@ -409,8 +470,15 @@
         return String(a.id).localeCompare(String(b.id));
       });
 
-    if (visibleProducts.length) {
-      catalogueGrid.replaceChildren(...visibleProducts.map(buildCatalogueCard));
+    if (activeCatalogueBrand === "all" && activeCatalogueSort === "editorial") {
+      visibleProducts = roundRobinByBrand(visibleProducts);
+    }
+
+    lastCatalogueResultCount = visibleProducts.length;
+    const displayedProducts = visibleProducts.slice(0, activeCatalogueLimit);
+
+    if (displayedProducts.length) {
+      catalogueGrid.replaceChildren(...displayedProducts.map(buildCatalogueCard));
     } else {
       const empty = document.createElement("p");
       empty.className = "shop-catalogue__empty";
@@ -419,15 +487,21 @@
     }
     updateCatalogueHeader(visibleProducts);
     if (catalogueStatus) {
-      const sourceTotal = brand?.count || catalogueKernel.counts.products;
-      catalogueStatus.textContent = visibleProducts.length + " verified / " + sourceTotal + " approved";
+      const fullDetailCount = visibleProducts.filter(productHasFullDetail).length;
+      catalogueStatus.textContent = `showing ${displayedProducts.length} of ${visibleProducts.length} / ${fullDetailCount} with full detail`;
     }
+    const hasMore = displayedProducts.length < visibleProducts.length;
+    if (catalogueMoreWrap) catalogueMoreWrap.hidden = !hasMore;
+    if (catalogueLoadMore) {
+      const remaining = Math.min(catalogueChunkSize, visibleProducts.length - displayedProducts.length);
+      catalogueLoadMore.textContent = `load ${remaining} more`;
+    }
+    if (catalogueProgress) catalogueProgress.textContent = `showing ${displayedProducts.length} of ${visibleProducts.length}`;
   }
 
-  function productFromHash() {
-    const match = window.location.hash.match(/^#catalogue\/[^/]+\/product\/([^/?#]+)/);
-    if (!match) return null;
-    const slug = decodeURIComponent(match[1]);
+  function productFromRoute(route) {
+    if (!route?.product) return null;
+    const slug = route.product;
     return catalogueProducts.find((product) => product.slug === slug) || null;
   }
 
@@ -452,18 +526,45 @@
   function closeProduct(options = {}) {
     if (productDialog?.open) productDialog.close();
     if (options.updateRoute && window.location.hash.includes("/product/")) {
-      window.history.replaceState(null, "", "#catalogue/" + activeCatalogueBrand);
+      window.history.replaceState(null, "", catalogueReturnHash || catalogueBrowseHash());
       renderRoute();
     }
   }
 
   function catalogueRoute() {
-    const match = window.location.hash.match(/^#catalogue\/([^/]+)(?:\/type\/([^/]+))?/);
-    if (!match) return null;
+    const [path, query = ""] = window.location.hash.slice(1).split("?");
+    const parts = path.split("/").filter(Boolean);
+    if (parts[0] !== "catalogue" || !parts[1]) return null;
+    const search = new URLSearchParams(query);
+    const typeIndex = parts.indexOf("type");
+    const productIndex = parts.indexOf("product");
     return {
-      brand: decodeURIComponent(match[1] || "all"),
-      type: decodeURIComponent(match[2] || "all"),
+      brand: decodeURIComponent(parts[1] || "all"),
+      type: typeIndex >= 0 ? decodeURIComponent(parts[typeIndex + 1] || "all") : decodeURIComponent(search.get("type") || "all"),
+      product: productIndex >= 0 ? decodeURIComponent(parts[productIndex + 1] || "") : "",
+      sort: search.get("sort") || "editorial",
+      count: Number(search.get("count") || catalogueChunkSize),
     };
+  }
+
+  function catalogueBrowseHash() {
+    const path = activeCatalogueType === "all"
+      ? `#catalogue/${activeCatalogueBrand}`
+      : `#catalogue/${activeCatalogueBrand}/type/${activeCatalogueType}`;
+    const search = new URLSearchParams();
+    if (activeCatalogueSort !== "editorial") search.set("sort", activeCatalogueSort);
+    if (activeCatalogueLimit > catalogueChunkSize) search.set("count", String(activeCatalogueLimit));
+    const query = search.toString();
+    return path + (query ? `?${query}` : "");
+  }
+
+  function catalogueProductHash(slug) {
+    const search = new URLSearchParams();
+    if (activeCatalogueType !== "all") search.set("type", activeCatalogueType);
+    if (activeCatalogueSort !== "editorial") search.set("sort", activeCatalogueSort);
+    if (activeCatalogueLimit > catalogueChunkSize) search.set("count", String(activeCatalogueLimit));
+    const query = search.toString();
+    return `#catalogue/${activeCatalogueBrand}/product/${encodeURIComponent(slug)}` + (query ? `?${query}` : "");
   }
 
   function renderRoute() {
@@ -478,6 +579,10 @@
     const validBrand = route.brand === "all" || catalogueKernel?.brandCounts.some((entry) => brandSlug(entry.brand) === route.brand);
     activeCatalogueBrand = validBrand ? route.brand : "all";
     activeCatalogueType = route.type || "all";
+    activeCatalogueSort = ["editorial", "price-asc", "price-desc"].includes(route.sort) ? route.sort : "editorial";
+    activeCatalogueLimit = Number.isFinite(route.count)
+      ? Math.max(catalogueChunkSize, Math.floor(route.count))
+      : catalogueChunkSize;
     renderCatalogue();
     if (enteringCatalogue) {
       const root = document.documentElement;
@@ -485,7 +590,7 @@
       window.scrollTo({ top: 0, left: 0, behavior: "auto" });
       window.requestAnimationFrame(() => root.style.removeProperty("scroll-behavior"));
     }
-    const selectedProduct = productFromHash();
+    const selectedProduct = productFromRoute(route);
     if (selectedProduct) showProduct(selectedProduct);
     else closeProduct();
   }
@@ -494,23 +599,33 @@
     const trigger = event.target.closest("[data-catalogue-product-open]");
     if (!trigger) return;
     const slug = trigger.dataset.catalogueProductOpen;
-    window.location.hash = "catalogue/" + activeCatalogueBrand + "/product/" + encodeURIComponent(slug);
+    catalogueReturnHash = catalogueBrowseHash();
+    window.location.hash = catalogueProductHash(slug);
   });
 
   catalogueBrandSelect?.addEventListener("change", () => {
     activeCatalogueBrand = catalogueBrandSelect.value || "all";
-    window.location.hash = "catalogue/" + activeCatalogueBrand;
+    activeCatalogueType = "all";
+    activeCatalogueLimit = catalogueChunkSize;
+    window.location.hash = catalogueBrowseHash();
   });
 
   catalogueTypeSelect?.addEventListener("change", () => {
     activeCatalogueType = catalogueTypeSelect.value || "all";
-    window.location.hash = activeCatalogueType === "all"
-      ? "catalogue/" + activeCatalogueBrand
-      : "catalogue/" + activeCatalogueBrand + "/type/" + activeCatalogueType;
+    activeCatalogueLimit = catalogueChunkSize;
+    window.location.hash = catalogueBrowseHash();
   });
 
   catalogueSortSelect?.addEventListener("change", () => {
     activeCatalogueSort = catalogueSortSelect.value || "editorial";
+    activeCatalogueLimit = catalogueChunkSize;
+    window.history.replaceState(null, "", catalogueBrowseHash());
+    renderCatalogue();
+  });
+
+  catalogueLoadMore?.addEventListener("click", () => {
+    activeCatalogueLimit = Math.min(activeCatalogueLimit + catalogueChunkSize, lastCatalogueResultCount);
+    window.history.replaceState(null, "", catalogueBrowseHash());
     renderCatalogue();
   });
 
@@ -530,7 +645,7 @@
       if (!response.ok) throw new Error(`Catalogue request failed: ${response.status}`);
       catalogueKernel = await response.json();
       catalogueProducts = Array.isArray(catalogueKernel.products)
-        ? catalogueKernel.products.filter((product) => product.metadataStatus === "Metadata ready" && product.image)
+        ? catalogueKernel.products.filter((product) => product.retailerUrl?.startsWith("https://"))
         : [];
       populateCatalogueControls();
       renderRoute();

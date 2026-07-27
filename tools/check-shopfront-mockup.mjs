@@ -48,10 +48,10 @@ for (const absent of [
 assert.equal((shop.match(/<li(?:\s+class="[^"]*")?><span>/g) || []).length, 23, "Brand ledger must contain all 23 retailers");
 assert.equal((shop.match(/data-product(?:\s|>)/g) || []).length, 12, "Opening edit must contain the restrained 12 photographed hero pieces");
 
-assert.equal(catalogue.products.length, 15, "ERES catalogue proof must contain exactly 15 products");
-assert.equal(new Set(catalogue.products.map((product) => product.id)).size, 15, "Catalogue product IDs must be unique");
-assert.equal(new Set(catalogue.products.map((product) => product.slug)).size, 15, "Catalogue product slugs must be unique");
-assert.ok(catalogue.products.every((product) => product.brand === "ERES"), "First catalogue proof must remain a singular ERES edit");
+assert.equal(catalogue.products.length, 36, "Finished ERES catalogue must contain all 36 approved product URLs");
+assert.equal(new Set(catalogue.products.map((product) => product.id)).size, 36, "Catalogue product IDs must be unique");
+assert.equal(new Set(catalogue.products.map((product) => product.slug)).size, 36, "Catalogue product slugs must be unique");
+assert.ok(catalogue.products.every((product) => product.brand === "ERES"), "Finished ERES catalogue must remain a singular ERES edit");
 assert.ok(catalogue.products.every((product) => product.imageSource === "retailer_gallery_index_0"), "Every bulk-ingested catalogue image must use the first retailer hero");
 assert.equal(catalogue.priceCurrency, "AUD", "ERES proof must display the requested Australian pricing");
 assert.equal(catalogue.thumbnailPolicy, "retailer_gallery_index_0_only", "ERES proof must use the deterministic first-image policy");
@@ -62,8 +62,8 @@ assert.equal(new Set(approvedProducts.products.map((product) => product.url)).si
 const approvedProductUrls = new Set(approvedProducts.products.map((product) => product.url));
 assert.deepEqual(
   catalogue.products.map((product) => product.retailerUrl),
-  approvedProducts.products.slice(0, 15).map((product) => product.url),
-  "ERES proof must use only the first 15 approved bookmark products in exact bookmark order",
+  approvedProducts.products.map((product) => product.url),
+  "ERES page must use all 36 approved product URLs in exact Notion order",
 );
 for (const product of catalogue.products) {
   assert.ok(fs.existsSync(path.join(iam, product.image)), `Missing ERES catalogue image: ${product.image}`);
@@ -81,8 +81,8 @@ for (const product of catalogue.products) {
 assert.equal(productKernel.counts.brands, 23, "Fashion kernel must retain all 23 approved retailers");
 assert.equal(productKernel.products.length, 303, "Fashion kernel must contain exactly 303 canonical product URLs from Notion");
 assert.equal(new Set(productKernel.products.map((product) => product.canonicalUrl)).size, 303, "Fashion kernel product URLs must be canonical and unique");
-assert.equal(productKernel.products.filter((product) => product.metadataStatus === "Metadata ready").length, 15, "Only the verified first ERES edit may be metadata-ready in this pass");
-assert.equal(productKernel.products.filter((product) => product.listedOnShop).length, 15, "The Shop projection must fail closed to the 15 verified records");
+assert.equal(productKernel.products.filter((product) => product.metadataStatus === "Metadata ready").length, 36, "All 36 approved ERES records must be metadata-ready");
+assert.equal(productKernel.products.filter((product) => product.listedOnShop).length, 36, "All 36 approved ERES records must be listed with full detail");
 assert.ok(productKernel.products.every((product) => product.retailerUrl?.startsWith("https://")), "Every tensor product must retain its exact retailer URL");
 assert.equal(productKernel.authority.policy, "exact_notion_product_urls_only", "Notion must remain the sole product authority");
 
@@ -91,6 +91,9 @@ assert.ok(assetMatches.length >= 12, "Shop must use the locally preserved presen
 for (const relativeAsset of new Set(assetMatches)) {
   assert.ok(fs.existsSync(path.join(iam, relativeAsset)), `Missing shop image: ${relativeAsset}`);
 }
+
+const editorialFigureImages = [...shop.matchAll(/<figure><img src="([^"]+)"/g)].map((match) => match[1]);
+assert.equal(new Set(editorialFigureImages).size, editorialFigureImages.length, "Homepage editorial figure images must not repeat");
 
 for (const suppliedReference of [
   "https://eu.bordelle.co.uk/products/signature-waspie-cream?variant=43656648884396",
@@ -126,7 +129,7 @@ assert.match(shop, /data-shop-return-music[\s\S]*Universal Mind \[ I o H \] Logo
 assert.match(shopScript, /iam:return-to-television/, "The Shop flower must return framed visitors to their continuing Music Television room");
 assert.match(shop, /class="global-nav"[\s\S]*data-nav-item="contact"[^>]*>contact<\/a>\s*<a[^>]*data-nav-item="shop"/, "Shop must include the full shared global navigation with Shop last after Contact");
 assert.match(shopStyle, /global-nav-mark[\s\S]*animation:\s*shop-universal-flower-spin/, "The shared navigation flower must keep rotating");
-assert.doesNotMatch(shopStyle, /data-music-television-frame="embedded"[\s\S]*shop-universal-nav[\s\S]*display:\s*none/, "The full Shop navigation flower must remain available inside the Music Television layer");
+assert.match(shopStyle, /data-music-television-frame="embedded"\] \.shop-universal-nav,[\s\S]*data-music-television-frame="embedded"\] \.global-nav[\s\S]*display:\s*none/, "The embedded Shop must hide its duplicate flower and defer to the outer Music Television navigation");
 assert.match(television, /function bootstrapRequestedShop\(\)[\s\S]*classList\.add\("television-room-open"\);\s*startFlowerSpin\(\);\s*openInVideoPageLayer/, "The direct Shop journey must start the existing spinning outer-shell flower");
 assert.match(shop, /data-shop-theme-toggle/, "Shop must expose the day/night control");
 assert.match(shop, /savedTheme \|\| "night"/, "A first Shop visit must default to the night presentation");
@@ -146,9 +149,14 @@ assert.match(shop, /data-shop-product-dialog/, "Catalogue must expose the quiet 
 assert.match(shop, /data-shop-product-dialog-description/, "Expanded product view must prioritize retailer-sourced product context");
 assert.match(shop, /data-catalogue-brand[\s\S]*data-catalogue-type[\s\S]*data-catalogue-sort/, "Combined catalogue must expose brand, product type and sort controls");
 assert.match(shop, /price \/ low to high[\s\S]*price \/ high to low/, "Combined catalogue must expose both price sort directions");
-assert.match(shopScript, /#catalogue\\\/\[\^\/\]\+\\\/product\\\//, "Expanded product state must have a shareable retailer-agnostic hash route");
+assert.match(shopScript, /catalogueProductHash\(slug\)/, "Expanded product state must have a shareable retailer-agnostic hash route");
 assert.match(shopScript, /shop-product-kernel-v1\.json/, "Shop catalogue must render from the Notion-backed product kernel");
-assert.match(shopScript, /metadataStatus === "Metadata ready" && product\.image/, "Shop must fail closed rather than render unverified catalogue records");
+assert.match(shopScript, /metadataStatus === "Metadata ready" && Boolean\(product\.image\)/, "Shop must fail closed before adding imagery or expanded detail");
+assert.match(shopScript, /catalogueChunkSize = 24/, "Catalogue must use the approved 24-product loading rhythm");
+assert.match(shopScript, /load \$\{remaining\} more/, "Catalogue must expose progressive load-more control rather than endless scroll");
+assert.match(shopScript, /roundRobinByBrand/, "Universal editorial ordering must surface brand diversity rather than one full brand at a time");
+assert.match(shopScript, /price at retailer/, "Inventory-only cards must disclose that current pricing remains with the retailer");
+assert.doesNotMatch(shopScript, /IntersectionObserver/, "Catalogue must not silently become infinite scroll");
 assert.match(shopScript, /productDialog\.showModal\(\)/, "Product cards must open the accessible expanded view");
 assert.match(shopScript, /productDialogPrice\.textContent = product\.price/, "Expanded product view must carry the verified price");
 assert.match(shopScript, /productDialogDescription\.textContent = product\.description/, "Expanded product view must carry the retailer-sourced description");
