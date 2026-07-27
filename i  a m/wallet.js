@@ -18,6 +18,74 @@
   const collectiveStatus = document.querySelector("[data-happiness-collective-status]");
   const activity = document.querySelector("[data-happiness-activity]");
   const appleStatus = document.querySelector("[data-apple-wallet-status]");
+  const globalNav = document.querySelector("[data-global-nav]");
+  const navItems = Array.from(document.querySelectorAll("[data-nav-item]"));
+  const technologySubmenu = document.querySelector('[data-nav-submenu="technology"]');
+  const embeddedParams = new URLSearchParams(window.location.search);
+  const inMusicTelevisionFrame = window.self !== window.top && embeddedParams.get("musicTelevisionFrame") === "1";
+
+  function setActiveNavItem(itemName) {
+    navItems.forEach((item) => {
+      const active = item.dataset.navItem === itemName;
+      item.classList.toggle("is-active", active);
+      if (item.dataset.navItem === "technology") item.setAttribute("aria-expanded", String(active));
+    });
+    technologySubmenu?.classList.toggle("is-open", itemName === "technology");
+  }
+
+  function closeGlobalNav() {
+    document.body.classList.remove("nav-open");
+    globalNav?.classList.remove("is-open");
+    globalNav?.setAttribute("aria-hidden", "true");
+  }
+
+  document.querySelectorAll("[data-nav-open]").forEach((button) => {
+    button.addEventListener("click", () => {
+      if (!globalNav) return;
+      if (globalNav.classList.contains("is-open")) {
+        closeGlobalNav();
+        return;
+      }
+      setActiveNavItem("");
+      document.body.classList.add("nav-open");
+      globalNav.classList.add("is-open");
+      globalNav.setAttribute("aria-hidden", "false");
+    });
+  });
+
+  document.querySelectorAll("[data-nav-close]").forEach((button) => button.addEventListener("click", closeGlobalNav));
+
+  navItems.forEach((item) => {
+    item.addEventListener("mouseenter", () => setActiveNavItem(item.dataset.navItem));
+    item.addEventListener("focus", () => setActiveNavItem(item.dataset.navItem));
+    item.addEventListener("click", (event) => {
+      if (item.getAttribute("aria-disabled") === "true") {
+        event.preventDefault();
+        setActiveNavItem(item.dataset.navItem);
+        return;
+      }
+      if (item.dataset.navItem === "technology") {
+        event.preventDefault();
+        setActiveNavItem("technology");
+        return;
+      }
+      if (!inMusicTelevisionFrame || item.getAttribute("href")?.startsWith("mailto:")) return;
+      event.preventDefault();
+      if (item.dataset.navItem === "home") {
+        window.parent.postMessage({ type: "iam:return-to-television" }, window.location.origin);
+        return;
+      }
+      const url = new URL(item.href, window.location.href);
+      url.searchParams.set("adaptiveFrame", "1");
+      url.searchParams.set("musicTelevisionFrame", "1");
+      url.searchParams.set("navigationShell", "1");
+      window.location.href = url.href;
+    });
+  });
+
+  window.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") closeGlobalNav();
+  });
 
   function selectCategory(category) {
     const nextCopy = categoryCopy[category];

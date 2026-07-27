@@ -6646,6 +6646,9 @@
   function openInVideoPageLayer(link) {
     if (!pageView || !pageFrame) return;
 
+    const destination = new URL(link.href, window.location.href);
+    const isHappinessWallet = /\/wallet\.html$/i.test(destination.pathname);
+
     closeSexEdShelf(false);
     stopSexEdEpisode();
     if (pageViewPreviousBlend === null) {
@@ -6655,6 +6658,7 @@
     pageFrame.src = frameHref(link);
     pageView.setAttribute("aria-hidden", "false");
     document.body.classList.add("television-page-view-open");
+    document.body.classList.toggle("television-wallet-page-open", isHappinessWallet);
     closeVideoNavigation();
   }
 
@@ -6685,6 +6689,7 @@
       "homepage-radar-open",
       "homepage-radar-arming",
       "television-page-view-open",
+      "television-wallet-page-open",
       "flower-cue-visible"
     );
     pageView?.setAttribute("aria-hidden", "true");
@@ -6705,7 +6710,7 @@
     event.preventDefault();
     event.stopPropagation();
 
-    document.body.classList.remove("flower-cue-visible", "television-page-view-open");
+    document.body.classList.remove("flower-cue-visible", "television-page-view-open", "television-wallet-page-open");
     document.body.classList.add("homepage-radar-open", "homepage-radar-arming");
     learnCue?.setAttribute("aria-hidden", "true");
     pageView?.setAttribute("aria-hidden", "true");
@@ -7318,6 +7323,22 @@
     if (document.body.classList.contains("television-radio-continuation")) return;
     if (!localVideo?.paused) return;
     playLocalVideo(localVideo);
+  });
+  document.querySelectorAll("[data-happiness-wallet-category]").forEach((button) => {
+    button.addEventListener("click", (event) => {
+      event.preventDefault();
+      event.stopImmediatePropagation();
+      const category = String(button.dataset.happinessWalletCategory || "").toLowerCase();
+      if (!new Set(["music", "fashion", "events", "health"]).has(category)) return;
+      const walletLink = document.createElement("a");
+      walletLink.setAttribute("href", `wallet.html#${category}`);
+      if (!document.body.classList.contains("television-room-open")) {
+        window.location.href = walletLink.href;
+        return;
+      }
+      setReactionWalletOpen(false);
+      openInVideoPageLayer(walletLink);
+    }, true);
   });
   document.querySelectorAll(".global-nav a").forEach((link) => {
     link.addEventListener("click", (event) => {

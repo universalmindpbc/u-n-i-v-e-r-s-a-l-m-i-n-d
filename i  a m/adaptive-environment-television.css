@@ -2585,6 +2585,13 @@ body.television-page-view-open .adaptive-television-page-view {
   visibility: visible;
 }
 
+/* The HAPPINESS wallet carries its own spinning flower and global navigation.
+   Lift that iframe above the television shell's duplicate brand control so the
+   wallet flower remains the physical navigation target. */
+body.television-page-view-open.television-wallet-page-open .adaptive-television-page-view {
+  z-index: 31;
+}
+
 body.television-room-open.homepage-radar-open .homepage-welcome-copy {
   opacity: 1;
   filter: none;
