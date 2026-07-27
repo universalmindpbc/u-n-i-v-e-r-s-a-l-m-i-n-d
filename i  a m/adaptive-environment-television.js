@@ -6379,7 +6379,7 @@
     return {
       playing: false,
       loading: radioLoading,
-      label: "Café del Mar — Chill",
+      label: "James Bondage — Parties",
       source: radioLoading ? "radio" : "quiet",
     };
   }
@@ -6395,7 +6395,7 @@
       return true;
     }
 
-    startRadioStation(bestRadioStationForTrack(), { source: "shop_default" })
+    joinBroadcastChannel("party-james-bondage", { source: "shop_default" })
       .then(() => postShopMusicStatus(targetWindow))
       .catch(() => postShopMusicStatus(targetWindow));
     return true;

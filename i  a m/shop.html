@@ -21,14 +21,47 @@
       document.documentElement.dataset.shopBrandInk = shopBrandInk === "white" ? "white" : "black";
     </script>
     <script src="music-television-frame-context.js?v=music-tv-frame-14ebf4459d03"></script>
-    <link rel="stylesheet" href="shop.css?v=shop-brand-variants-6">
+    <link rel="stylesheet" href="shop.css?v=shop-kernel-nav-7">
   </head>
   <body class="shop-page">
     <a class="shop-skip" href="#edit">Skip to the edit</a>
 
-    <a class="shop-universal-nav" href="index.html" data-shop-return-music aria-label="Return to Universal Mind Music Television">
-      <img src="a s s e t s/Universal Mind [ I o H ] Logo 512.png" alt="">
-    </a>
+    <button class="shop-universal-nav global-nav-trigger" type="button" data-nav-open aria-label="Open Universal Mind navigation">
+      <img src="a s s e t s/Universal Mind [ I o H ] Logo 512.png" alt="" decoding="async">
+    </button>
+
+    <aside class="global-nav" data-global-nav aria-hidden="true" aria-label="Global navigation">
+      <div class="global-nav-scrim" data-nav-close></div>
+      <div class="global-nav-content">
+        <a class="global-nav-brand" href="index.html" data-shop-return-music aria-label="Universal Mind i am homepage">
+          <img class="global-nav-mark" src="a s s e t s/Universal Mind [ I o H ] Logo 512.png" alt="" decoding="async">
+          <span class="global-nav-lockup">
+            <span class="global-nav-name">universalmind</span>
+            <span class="global-nav-slash">/</span>
+            <strong>i am</strong>
+          </span>
+        </a>
+        <nav class="global-nav-menu" aria-label="Primary">
+          <a class="global-nav-item" href="index.html" data-nav-item="home" data-shop-return-music>home</a>
+          <a class="global-nav-item" href="about.html?aboutTopLevel=1" data-nav-item="about">about</a>
+          <a class="global-nav-item" href="technology-citizen-needs.html" data-nav-item="technology" aria-expanded="false">technology</a>
+          <div class="global-nav-submenu" data-nav-submenu="technology">
+            <a href="technology-citizen-needs.html" data-nav-subitem="technology-ai">ai-citizen needs inference</a>
+          </div>
+          <a class="global-nav-item" href="science.html" data-nav-item="science">science</a>
+          <a class="global-nav-item" href="#" data-nav-item="privacy-first" aria-disabled="true">privacy first</a>
+          <a class="global-nav-item" href="#" data-nav-item="go-to-market" aria-disabled="true">go to market</a>
+          <a class="global-nav-item" href="vogue-self-report.html" data-nav-item="check-in">check in</a>
+          <a class="global-nav-item" href="our-team.html" data-nav-item="our-team">our team</a>
+          <a class="global-nav-item" href="mailto:bk@universalmind.tv?subject=I%20Am%20Vogue%20%7C%20Referral" data-nav-item="contact">contact</a>
+          <a class="global-nav-item is-active" href="shop.html" data-nav-item="shop">shop</a>
+        </nav>
+        <p class="global-nav-citation">
+          A Direct Response To Orygen + Phoenix Australia’s
+          <a href="https://www.orygen.org.au/Policy-Centre/Policy-Areas/Population-groups/The-next-post/Orygen_Young_veterans-Policy-paper_Mar2018edition_?ext=.pdf" target="_blank" rel="noreferrer">“The Next Post: Young people transitioning from military service and their mental health”</a>
+        </p>
+      </div>
+    </aside>
 
     <header class="shop-masthead" data-shop-masthead>
       <a class="shop-masthead__brand" href="#top" aria-label="James Bondage shop, return to top">
@@ -42,17 +75,17 @@
           <div class="shop-menu__panel">
             <div>
               <p>shop by type</p>
-              <a href="#edit" data-shop-type="all">all pieces</a>
-              <a href="#edit" data-shop-type="lingerie">lingerie</a>
-              <a href="#edit" data-shop-type="second-skin">second skin</a>
-              <a href="#edit" data-shop-type="swim">swim</a>
-              <a href="#edit" data-shop-type="movement">movement</a>
-              <a href="#edit" data-shop-type="after-dark">after dark</a>
+              <a href="#catalogue/all" data-shop-catalogue-type="all">all pieces</a>
+              <a href="#catalogue/all/type/lingerie" data-shop-catalogue-type="lingerie">lingerie</a>
+              <a href="#catalogue/all/type/second-skin" data-shop-catalogue-type="second-skin">second skin</a>
+              <a href="#catalogue/all/type/swim" data-shop-catalogue-type="swim">swim</a>
+              <a href="#catalogue/all/type/movement" data-shop-catalogue-type="movement">movement</a>
+              <a href="#catalogue/all/type/after-dark" data-shop-catalogue-type="after-dark">after dark</a>
             </div>
             <div>
               <p>shop by brand</p>
               <a href="#catalogue/eres">ERES / first edit</a>
-              <a href="#brands">all 23 brands</a>
+              <a href="#catalogue/all">all 23 brands</a>
             </div>
           </div>
         </details>
@@ -63,9 +96,9 @@
           <span class="shop-theme__disc" aria-hidden="true"></span>
           <span data-shop-theme-label>day</span>
         </button>
-        <button class="shop-music" type="button" data-shop-music aria-label="Listen to Café del Mar Chill while browsing">
+        <button class="shop-music" type="button" data-shop-music aria-label="Listen to James Bondage Parties while browsing">
           <span class="shop-music__dot" aria-hidden="true"></span>
-          <span data-shop-music-label>listen / Café del Mar Chill</span>
+          <span data-shop-music-label>listen / James Bondage Parties</span>
         </button>
       </div>
     </header>
@@ -235,32 +268,32 @@
         <header class="shop-section-heading shop-section-heading--brands">
           <p>03 / brands</p>
           <h2 id="brands-title">23 brands</h2>
-          <b>312</b>
+          <b>303</b>
         </header>
         <ol class="shop-brand-ledger">
-          <li class="shop-brand-ledger__active"><span><a href="#catalogue/eres" data-shop-catalogue-link>ERES <em>browse 15</em></a></span><b>37</b></li>
-          <li><span>Mugler</span><b>6</b></li>
-          <li><span>La Perla</span><b>22</b></li>
-          <li><span>Fleur of England</span><b>4</b></li>
-          <li><span>Wolford</span><b>5</b></li>
-          <li><span>Annie's Ibiza</span><b>11</b></li>
-          <li><span>PUCCI</span><b>4</b></li>
-          <li><span>Bordelle</span><b>23</b></li>
-          <li><span>Calvin Klein</span><b>10</b></li>
-          <li><span>SKIMS</span><b>6</b></li>
-          <li><span>Saint Laurent</span><b>4</b></li>
-          <li><span>Lucas Hugh</span><b>3</b></li>
-          <li><span>Nike</span><b>9</b></li>
-          <li><span>adidas</span><b>11</b></li>
-          <li><span>Rashi World</span><b>7</b></li>
-          <li><span>KIINI</span><b>25</b></li>
-          <li><span>NAGNATA</span><b>15</b></li>
-          <li><span>P.E Nation</span><b>16</b></li>
-          <li><span>The Upside</span><b>26</b></li>
-          <li><span>KARLA ŠPETIĆ</span><b>12</b></li>
-          <li><span>SIR.</span><b>27</b></li>
-          <li><span>Triangl</span><b>8</b></li>
-          <li><span>WARDROBE.NYC</span><b>21</b></li>
+          <li class="shop-brand-ledger__active"><span><a href="#catalogue/eres" data-shop-catalogue-link>ERES <em>browse edit</em></a></span><b>36</b></li>
+          <li><span><a href="#catalogue/mugler">Mugler</a></span><b>6</b></li>
+          <li><span><a href="#catalogue/la-perla">La Perla</a></span><b>19</b></li>
+          <li><span><a href="#catalogue/fleur-of-england">Fleur of England</a></span><b>4</b></li>
+          <li><span><a href="#catalogue/wolford">Wolford</a></span><b>5</b></li>
+          <li><span><a href="#catalogue/annies-ibiza">Annie's Ibiza</a></span><b>11</b></li>
+          <li><span><a href="#catalogue/pucci">PUCCI</a></span><b>3</b></li>
+          <li><span><a href="#catalogue/bordelle">Bordelle</a></span><b>22</b></li>
+          <li><span><a href="#catalogue/calvin-klein">Calvin Klein</a></span><b>9</b></li>
+          <li><span><a href="#catalogue/skims">SKIMS</a></span><b>6</b></li>
+          <li><span><a href="#catalogue/saint-laurent">Saint Laurent</a></span><b>4</b></li>
+          <li><span><a href="#catalogue/lucas-hugh">Lucas Hugh</a></span><b>3</b></li>
+          <li><span><a href="#catalogue/nike">Nike</a></span><b>9</b></li>
+          <li><span><a href="#catalogue/adidas">adidas</a></span><b>10</b></li>
+          <li><span><a href="#catalogue/rashi-world">Rashi World</a></span><b>7</b></li>
+          <li><span><a href="#catalogue/kiini">KIINI</a></span><b>25</b></li>
+          <li><span><a href="#catalogue/nagnata">NAGNATA</a></span><b>15</b></li>
+          <li><span><a href="#catalogue/pe-nation">P.E Nation</a></span><b>16</b></li>
+          <li><span><a href="#catalogue/the-upside">The Upside</a></span><b>26</b></li>
+          <li><span><a href="#catalogue/karla-spetic">KARLA ŠPETIĆ</a></span><b>12</b></li>
+          <li><span><a href="#catalogue/sir">SIR.</a></span><b>27</b></li>
+          <li><span><a href="#catalogue/triangl">Triangl</a></span><b>7</b></li>
+          <li><span><a href="#catalogue/wardrobenyc">WARDROBE.NYC</a></span><b>21</b></li>
         </ol>
       </section>
 
@@ -295,25 +328,21 @@
           </figure>
           <a class="shop-catalogue__back" href="#brands" data-shop-catalogue-back><span aria-hidden="true">←</span> James Bondage</a>
           <div class="shop-catalogue__wordmark">
-            <p>ERES / catalogue</p>
-            <h2 id="catalogue-title">ERES</h2>
-            <span>James Bondage / first edit <b>15</b></span>
+            <p><span data-catalogue-brand-kicker>ERES</span> / catalogue</p>
+            <h2 id="catalogue-title" data-catalogue-brand-title>ERES</h2>
+            <span>James Bondage / verified edit <b data-catalogue-count>15</b></span>
           </div>
           <div class="shop-catalogue__editorial-aside">
             <figure><img src="a s s e t s/shop-mockup/eres-catalogue/providence-60653-01062.jpg" alt="ERES Providence triangle bra in Ultra, forward-facing portrait"></figure>
-            <p><span>ERES</span><span>lingerie / second skin</span></p>
+            <p><span data-catalogue-aside-brand>ERES</span><span data-catalogue-aside-form>lingerie / second skin</span></p>
             <a href="#catalogue-grid">view the collection <span aria-hidden="true">↓</span></a>
           </div>
         </header>
-        <div class="shop-catalogue__filters" aria-label="Filter ERES products">
-          <span>form</span>
-          <div role="group" aria-label="Filter catalogue by form">
-            <button class="is-active" type="button" data-catalogue-filter="all" aria-pressed="true">all</button>
-            <button type="button" data-catalogue-filter="bras" aria-pressed="false">bras</button>
-            <button type="button" data-catalogue-filter="briefs" aria-pressed="false">briefs</button>
-            <button type="button" data-catalogue-filter="bodysuits" aria-pressed="false">bodysuits</button>
-          </div>
-          <p data-catalogue-status aria-live="polite">15 pieces</p>
+        <div class="shop-catalogue__filters" aria-label="Filter and sort the James Bondage catalogue">
+          <label><span>brand</span><select data-catalogue-brand aria-label="Shop by brand"></select></label>
+          <label><span>type</span><select data-catalogue-type aria-label="Shop by product type"></select></label>
+          <label><span>sort</span><select data-catalogue-sort aria-label="Sort products"><option value="editorial">editorial</option><option value="price-asc">price / low to high</option><option value="price-desc">price / high to low</option></select></label>
+          <p data-catalogue-status aria-live="polite">15 verified pieces</p>
         </div>
         <div class="shop-catalogue__grid" id="catalogue-grid" data-catalogue-grid aria-live="polite"></div>
       </section>
@@ -331,7 +360,7 @@
             <p id="shop-product-dialog-form" data-shop-product-dialog-form></p>
             <p data-shop-product-dialog-price></p>
           </div>
-          <a href="#" target="_blank" rel="noopener noreferrer" data-shop-product-dialog-retailer>view at ERES <span aria-hidden="true">↗</span></a>
+          <a href="#" target="_blank" rel="noopener noreferrer" data-shop-product-dialog-retailer><span data-shop-product-dialog-retailer-label>view at ERES</span> <span aria-hidden="true">↗</span></a>
         </div>
       </div>
     </dialog>
@@ -344,6 +373,6 @@
     <script src="cloudflare-stream-catalogue.js?v=stream-catalogue-1"></script>
     <script src="cloudflare-stream-controller.js?v=stream-controller-1"></script>
     <script src="broadcast-clock-v1.js?v=broadcast-clock-e599125b0d32"></script>
-    <script src="shop.js?v=shop-brand-variants-6"></script>
+    <script src="shop.js?v=shop-kernel-nav-7"></script>
   </body>
 </html>

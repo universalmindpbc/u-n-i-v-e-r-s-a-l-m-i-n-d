@@ -10,6 +10,7 @@ const shop = read("i  a m/shop.html");
 const shopStyle = read("i  a m/shop.css");
 const shopScript = read("i  a m/shop.js");
 const catalogue = JSON.parse(read("i  a m/shop-catalogue-v1.json"));
+const productKernel = JSON.parse(read("i  a m/shop-product-kernel-v1.json"));
 const approvedProducts = JSON.parse(read("i  a m/shop-approved-products-v1.json"));
 const architecture = read("i  a m/shopfront-architecture.md");
 const television = read("i  a m/adaptive-environment-television.js");
@@ -20,7 +21,7 @@ const redirects = read("_redirects");
 for (const required of [
   "James Bondage",
   "23 brands",
-  "312",
+  "303",
   "affiliate relationships are proposed",
   "Bordelle / Signature Waspie",
   "WARDROBE.NYC",
@@ -77,6 +78,14 @@ for (const product of catalogue.products) {
   assert.match(product.price, /^AU\$ (?:\d{3}|\d\.\d{3})$/, `ERES catalogue product must keep its verified AUD price: ${product.id}`);
 }
 
+assert.equal(productKernel.counts.brands, 23, "Fashion kernel must retain all 23 approved retailers");
+assert.equal(productKernel.products.length, 303, "Fashion kernel must contain exactly 303 canonical product URLs from Notion");
+assert.equal(new Set(productKernel.products.map((product) => product.canonicalUrl)).size, 303, "Fashion kernel product URLs must be canonical and unique");
+assert.equal(productKernel.products.filter((product) => product.metadataStatus === "Metadata ready").length, 15, "Only the verified first ERES edit may be metadata-ready in this pass");
+assert.equal(productKernel.products.filter((product) => product.listedOnShop).length, 15, "The Shop projection must fail closed to the 15 verified records");
+assert.ok(productKernel.products.every((product) => product.retailerUrl?.startsWith("https://")), "Every tensor product must retain its exact retailer URL");
+assert.equal(productKernel.authority.policy, "exact_notion_product_urls_only", "Notion must remain the sole product authority");
+
 const assetMatches = [...shop.matchAll(/src="(a s s e t s\/shop-mockup\/[^"]+)"/g)].map((match) => match[1]);
 assert.ok(assetMatches.length >= 12, "Shop must use the locally preserved presentation imagery");
 for (const relativeAsset of new Set(assetMatches)) {
@@ -115,7 +124,9 @@ assert.ok(fs.existsSync(path.join(iam, "a s s e t s/shop-mockup/james-bondage-ha
 assert.ok(fs.existsSync(path.join(iam, "a s s e t s/shop-mockup/james-bondage-handdrawn-faces-b.png")), "Missing isolated B-version face mark");
 assert.match(shop, /data-shop-return-music[\s\S]*Universal Mind \[ I o H \] Logo 512\.png/, "Standalone Shop proof must reserve the Universal Mind flower position");
 assert.match(shopScript, /iam:return-to-television/, "The Shop flower must return framed visitors to their continuing Music Television room");
-assert.match(shopStyle, /data-music-television-frame="embedded"[\s\S]*shop-universal-nav[\s\S]*display:\s*none/, "The fallback flower must yield to the real outer-shell flower when framed");
+assert.match(shop, /class="global-nav"[\s\S]*data-nav-item="contact"[^>]*>contact<\/a>\s*<a[^>]*data-nav-item="shop"/, "Shop must include the full shared global navigation with Shop last after Contact");
+assert.match(shopStyle, /global-nav-mark[\s\S]*animation:\s*shop-universal-flower-spin/, "The shared navigation flower must keep rotating");
+assert.doesNotMatch(shopStyle, /data-music-television-frame="embedded"[\s\S]*shop-universal-nav[\s\S]*display:\s*none/, "The full Shop navigation flower must remain available inside the Music Television layer");
 assert.match(television, /function bootstrapRequestedShop\(\)[\s\S]*classList\.add\("television-room-open"\);\s*startFlowerSpin\(\);\s*openInVideoPageLayer/, "The direct Shop journey must start the existing spinning outer-shell flower");
 assert.match(shop, /data-shop-theme-toggle/, "Shop must expose the day/night control");
 assert.match(shop, /savedTheme \|\| "night"/, "A first Shop visit must default to the night presentation");
@@ -124,7 +135,7 @@ assert.match(shopScript, /iamShopThemeV1/, "Shop must remember the viewer's day/
 assert.match(shopScript, /dataset\.shopTheme \|\| "night"/, "Shop script fallback must remain night-first");
 assert.equal((shop.match(/data-filter-category=/g) || []).length, 6, "James Bondage edit must expose the six restrained form filters");
 assert.match(shop, /href="#shop-about">about<\/a>[\s\S]*data-shop-menu[\s\S]*href="#giving-back">giving back<\/a>/i, "Shop masthead must use the approved About / Shop / Giving Back hierarchy");
-assert.equal((shop.match(/data-shop-type=/g) || []).length, 6, "Shop menu must expose the six functional type routes");
+assert.equal((shop.match(/data-shop-catalogue-type=/g) || []).length, 6, "Shop menu must expose the six functional type routes");
 assert.match(shop, /James Bondage is 24\/7 electronic music television broadcasting sex x mindfulness/i, "Shop About must use the approved 24/7 electronic music television copy");
 assert.match(shop, /Our James Bondage Health series \[ sex-ed \] shares female lead conversations/i, "Shop About must preserve the approved James Bondage Health distinction");
 assert.match(shop, /All profits from affiliate revenue are invested in mental health\./i, "Giving Back must state the approved affiliate profit formula");
@@ -133,9 +144,11 @@ assert.match(shop, /href="#catalogue\/eres"[^>]*data-shop-catalogue-link/, "ERES
 assert.match(shop, /data-catalogue-editorial-header/, "ERES catalogue must open with the approved editorial header");
 assert.match(shop, /data-shop-product-dialog/, "Catalogue must expose the quiet expanded product view");
 assert.match(shop, /data-shop-product-dialog-description/, "Expanded product view must prioritize retailer-sourced product context");
-assert.equal((shop.match(/data-catalogue-filter=/g) || []).length, 4, "ERES catalogue must expose the restrained form filters");
-assert.match(shopScript, /#catalogue\\\/eres\\\/product\\\//, "Expanded product state must have a shareable hash route");
-assert.match(shopScript, /shop-catalogue-v1\.json/, "Shop catalogue must render from the shared structured product data");
+assert.match(shop, /data-catalogue-brand[\s\S]*data-catalogue-type[\s\S]*data-catalogue-sort/, "Combined catalogue must expose brand, product type and sort controls");
+assert.match(shop, /price \/ low to high[\s\S]*price \/ high to low/, "Combined catalogue must expose both price sort directions");
+assert.match(shopScript, /#catalogue\\\/\[\^\/\]\+\\\/product\\\//, "Expanded product state must have a shareable retailer-agnostic hash route");
+assert.match(shopScript, /shop-product-kernel-v1\.json/, "Shop catalogue must render from the Notion-backed product kernel");
+assert.match(shopScript, /metadataStatus === "Metadata ready" && product\.image/, "Shop must fail closed rather than render unverified catalogue records");
 assert.match(shopScript, /productDialog\.showModal\(\)/, "Product cards must open the accessible expanded view");
 assert.match(shopScript, /productDialogPrice\.textContent = product\.price/, "Expanded product view must carry the verified price");
 assert.match(shopScript, /productDialogDescription\.textContent = product\.description/, "Expanded product view must carry the retailer-sourced description");
@@ -143,18 +156,20 @@ assert.match(shopScript, /enteringCatalogue[\s\S]*scrollBehavior = "auto"[\s\S]*
 
 assert.match(shopScript, /iam:shop-music-request/, "Shop must request music through the persistent Music Television shell");
 assert.match(television, /iam:shop-music-request/, "Music Television must respond to Shop music requests");
-assert.match(television, /startRadioStation\(bestRadioStationForTrack\(\), \{ source: "shop_default" \}\)/, "A quiet Shop session must use a radio source compatible with the current music room");
+assert.match(television, /joinBroadcastChannel\("party-james-bondage", \{ source: "shop_default" \}\)/, "A quiet Shop session must join the current James Bondage Parties broadcast");
+assert.match(television, /if \(currentStatus\.playing\)[\s\S]*return true;[\s\S]*joinBroadcastChannel/, "Shop must preserve existing music before starting the Parties channel");
+assert.doesNotMatch(shop, /Café del Mar Chill/, "Shop controls must no longer advertise Café del Mar as the quiet default");
 assert.match(index, /data-nav-item="shop"/, "Music Television navigation must expose Shop");
 assert.match(index, /data-nav-item="contact"[^>]*>contact<\/a>\s*<a[^>]*data-nav-item="shop"[^>]*>shop<\/a>/, "Shop must be the final global navigation item after Contact");
 assert.match(htaccess, /RewriteRule \^shop\/\?\$/, "Root /shop route is missing from Apache redirects");
 assert.match(redirects, /^\/shop /m, "Root /shop route is missing from static redirects");
 
-assert.match(architecture, /do not activate without Ben's go-ahead/i, "Fashion Tensor roadmap must remain approval-gated");
+assert.match(architecture, /adaptive scoring remains review-gated/i, "Fashion Tensor recommendation logic must remain approval-gated");
 assert.match(architecture, /No diagnosis, treatment claim/i, "Fashion Tensor roadmap is missing the clinical boundary");
 assert.match(architecture, /Commercial value must not override citizen fit/i, "Fashion Tensor roadmap is missing the commercial-conflict boundary");
 assert.match(architecture, /default catalogue thumbnail is always the retailer's first official product hero/i, "Catalogue is missing the deterministic first-hero thumbnail rule");
 assert.match(architecture, /Notion page \*\*`j a m e s  b o n d a g e  \[ s h o p \]`\*\* is the canonical master registry/i, "Catalogue architecture must make the approved Notion registry authoritative");
-assert.match(architecture, /fail-closed staging projection/i, "Catalogue architecture must retain a fail-closed staging projection");
+assert.match(architecture, /fail-closed catalogue inventory/i, "Catalogue architecture must retain a fail-closed staging projection");
 assert.match(architecture, /neither GPT nor an ingestion process may discover, infer, replace or add a product/i, "Catalogue architecture must prohibit generated or discovered products");
 
 console.log("Shopfront mock-up checks passed.");

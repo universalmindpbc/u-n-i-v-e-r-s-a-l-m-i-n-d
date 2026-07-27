@@ -1,6 +1,6 @@
 # I AM Shop — presentation architecture
 
-Status: **future-facing working note; do not activate without Ben's go-ahead**
+Status: **approved catalogue kernel and staging architecture; adaptive scoring remains review-gated**
 
 ## Current presentation layer
 
@@ -10,8 +10,9 @@ The first shopfront is deliberately human-curated. It proves the editorial and e
 - Functional forms within James Bondage: lingerie, second skin, swim, movement and after dark.
 - Products may belong to more than one form.
 - Imagery is selected human-first: prefer a woman present in the frame, a visible or forward-facing gaze where available, and an in-situ or lived context over an isolated product on white. The test is whether the image carries emotion and human experience while still revealing the piece.
-- The current working edit contains 312 Safari references across 23 retailers. The mock-up exposes the breadth of that edit while limiting the photographed opening selection to avoid retail overload.
-- Music Television remains the outer experience. A current Universal Mind music/video programme continues into Shop. A quiet session offers Café del Mar Chill after an explicit play gesture.
+- The current Notion authority contains 311 references across 23 retailers: 303 canonical product URLs, five brand/collection links and three duplicate product references, represented by 308 canonical kernel records.
+- Music Television remains the outer experience. A current Universal Mind music/video programme continues into Shop. A quiet session joins the current shared **James Bondage Parties** broadcast after an explicit play gesture, using the same Zip/Perlon programme that drives the channel rather than starting a separate Shop stream.
+- The Shop includes the full shared Universal Mind navigation: the rotating flower, the established dropdown destinations and Shop as the final item after Contact.
 - A discreet day/night control lets the viewer choose a white or black presentation and remembers that choice locally. A first visit always opens in night mode; an explicit day choice or a future approved adaptive theme decision may override that default.
 
 ## Next presentation layer — catalogue and expanded product view
@@ -27,16 +28,16 @@ The next design step is a classic, minimal catalogue beneath the editorial shopf
 - Each expanded state should have a shareable query or hash URL and correct browser Back behaviour. This provides product-level navigation without maintaining hundreds of hand-authored pages.
 - A structured catalogue record should drive every view so a product, URL or image is updated once and reflected across brand results, category results, expanded views and later adaptive sequencing.
 - The Notion page **`j a m e s  b o n d a g e  [ s h o p ]`** is the canonical master registry for the 300+ products selected across the 23 brands. Future ingestion should reconcile products from that page rather than re-extracting Safari bookmarks or discovering products on the web. Retailer pages may supply current metadata only for a canonical URL already present in the Notion registry; neither GPT nor an ingestion process may discover, infer, replace or add a product.
-- `shop-approved-products-v1.json` is the fail-closed staging projection for the current signed-off mock-up. It contains only the URLs Ben explicitly supplied for this round and must be reconciled back to the Notion master before the wider catalogue is populated. A non-product homepage remains a brand link rather than becoming a catalogue card.
+- `shop-product-kernel-v1.json` is the Notion-backed, fail-closed catalogue inventory: it retains all 303 canonical product URLs but renders only records whose retailer image, description and price have been verified. `shop-approved-products-v1.json` remains the narrower ERES audit manifest. A non-product homepage remains a brand link rather than becoming a catalogue card.
 - Every ingested card retains its approved `sourcePageUrl`, the retailer's exact gallery-zero `sourceImageUrl`, `sourceImageIndex: 0`, retrieval date and any separate official price-source URL. If an approved page, first image, description or price cannot be verified, ingestion stops for that record and requests review instead of choosing an alternative.
 - Parties, cities, seasons or cultural moments can become temporary editorial pages that select product IDs from the same catalogue—for example an after-dark party edit or a city-specific summer wardrobe—without duplicating product content.
 - If editorial storytelling, SEO or a retailer partnership later justifies true product pages, generate those routes from the same catalogue records rather than authoring a second product system.
 
-## Future Fashion Tensor — hold for approval
+## Fashion Tensor kernel — active inventory; adaptive scoring held for review
 
-The existing Notion page **`j a m e s  b o n d a g e  [ s h o p ]`** becomes the beginning of a human-readable Fashion Tensor kernel, parallel in spirit to the music tensor. It should remain the editorially inspectable product source before any adaptive ordering is attempted.
+The existing Notion page **`j a m e s  b o n d a g e  [ s h o p ]`** is now the human-readable source for the child database **`James Bondage Fashion Tensor Kernel [ shop ]`**, parallel in spirit to the music tensor. The kernel contains one canonical record per approved source URL, preserves duplicate occurrence counts, and remains the editorially inspectable source before any adaptive ordering is attempted.
 
-Add catalogue reconciliation fields so every product can be audited through ingestion: `approved`, `listed on shop`, `staging checked`, `retailer URL checked`, `first hero checked`, `description checked`, `price checked`, `last checked`, `shop product ID` and `review notes`. The public catalogue should only include records that are approved and marked ready; publishing a product should update its Notion listing status rather than creating a disconnected second list.
+The database includes catalogue reconciliation fields so every product can be audited through ingestion: `approved`, `listed on shop`, `staging checked`, `retailer URL checked`, `first hero checked`, `description checked`, `price checked`, `last checked`, `shop product ID` and `review notes`. Its Inventory, ERES, Ready to list, Listed on Shop, Needs review and Tensor review views separate source authority from public readiness. The public catalogue includes only records marked metadata-ready with a verified image; publishing a product updates its Notion listing status rather than creating a disconnected second list.
 
 Possible record layers:
 
@@ -62,10 +63,10 @@ The online tensor would be a versioned, machine-readable projection of approved 
 - Explain why an edit or piece is being surfaced in plain language.
 - Require editorial and scientific review before a Citizen Needs mapping can influence placement.
 
-## Proposed implementation sequence — only after approval
+## Adaptive implementation sequence — only after separate scientific/editorial approval
 
 1. Agree the scientific and editorial question the Fashion Tensor is allowed to answer.
-2. Extend `j a m e s  b o n d a g e  [ s h o p ]` with the controlled vocabularies, evidence/status fields and review workflow, preserving its existing 300+ product records.
+2. Review and refine the existing controlled vocabularies, evidence/status fields and workflow in the Fashion Tensor Kernel without changing the 303-product source authority.
 3. Hand-tag a small, diverse pilot set and test inter-rater consistency.
 4. Export a versioned public-safe tensor and validate it against the source records.
 5. Prototype deterministic, explainable sequencing before involving GPT.
