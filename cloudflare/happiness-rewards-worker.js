@@ -1,9 +1,11 @@
 import {
   HAPPINESS_ARCHITECTURE,
+  assertA2AReady,
   assertCollectiveEmissionReady,
   assertImpactFundingReady,
   assertMutationReady,
   publicHappinessConfig,
+  happinessAgentCard,
   reserveState,
 } from "./happiness-rewards-core.js";
 
@@ -57,6 +59,13 @@ export default {
       return json({ ok: true, ...publicHappinessConfig() }, 200, origin);
     }
 
+    if (request.method === "GET" && url.pathname === HAPPINESS_ARCHITECTURE.a2a.discoveryPath) {
+      if (String(env.HAPPINESS_A2A_ENABLED || "false") !== "true") {
+        return json({ ok: false, error: "happiness_a2a_disabled" }, 503, origin);
+      }
+      return json(happinessAgentCard(env), 200, origin);
+    }
+
     if (request.method === "GET" && url.pathname === "/internal/readiness") {
       return json({
         ok: true,
@@ -85,6 +94,17 @@ export default {
           thresholds_configured: Boolean(env.HAPPINESS_COLLECTIVE_MIN_UNIQUE_CHECKINS && env.HAPPINESS_COLLECTIVE_MIN_CONTINUITY_BPS),
           caps_configured: Boolean(env.HAPPINESS_COLLECTIVE_EPOCH_MINT_UNITS && env.HAPPINESS_COLLECTIVE_WEEKLY_CAP_UNITS && env.HAPPINESS_COLLECTIVE_TOTAL_CAP_UNITS),
           treasury_configured: Boolean(env.HAPPINESS_COMMUNITY_TREASURY_ADDRESS),
+        },
+        a2a: {
+          protocol: HAPPINESS_ARCHITECTURE.a2a.protocol,
+          protocol_version: HAPPINESS_ARCHITECTURE.a2a.protocolVersion,
+          purpose: HAPPINESS_ARCHITECTURE.a2a.purpose,
+          enabled: String(env.HAPPINESS_A2A_ENABLED || "false") === "true",
+          rewards_enabled: String(env.HAPPINESS_A2A_REWARDS_ENABLED || "false") === "true",
+          issuer_configured: Boolean(env.HAPPINESS_A2A_ISSUER_ID),
+          approval_quorum_configured: Boolean(env.HAPPINESS_A2A_APPROVER_QUORUM),
+          evaluation_policy_pinned: Boolean(env.HAPPINESS_A2A_EVALUATION_POLICY_HASH),
+          synthetic_platform_activity_rewarded: false,
         },
         apple_wallet: {
           pass_type_configured: Boolean(env.HAPPINESS_APPLE_PASS_TYPE_IDENTIFIER),
@@ -119,6 +139,15 @@ export default {
         return json({ ok: false, error: error.message }, 503, origin);
       }
       return json({ ok: false, error: "collective_emission_adapter_not_activated" }, 501, origin);
+    }
+
+    if (request.method === "POST" && url.pathname === HAPPINESS_ARCHITECTURE.a2a.servicePath) {
+      try {
+        assertA2AReady(env);
+      } catch (error) {
+        return json({ ok: false, error: error.message }, 503, origin);
+      }
+      return json({ ok: false, error: "a2a_innovation_adapter_not_activated" }, 501, origin);
     }
 
     if (request.method === "POST" && url.pathname === "/v1/redeem") {

@@ -1,0 +1,50 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://universalmind.tv/schemas/happiness-agent-contribution-receipt-v1.schema.json",
+  "title": "HAPPINESS agent contribution receipt v1",
+  "description": "A privacy-safe receipt for independently evaluated mental-health innovation. Platform activity and subjective health claims are deliberately excluded.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "contribution_id",
+    "agent_identity_commitment",
+    "contribution_type",
+    "artifact_commitment",
+    "evaluation_commitment",
+    "acceptance_rule_version",
+    "approver_commitment",
+    "approved_happiness_units",
+    "recipient_address",
+    "issued_at",
+    "expires_at"
+  ],
+  "properties": {
+    "schema_version": { "const": "happiness_agent_contribution_receipt_v1" },
+    "contribution_id": { "type": "string", "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{7,127}$" },
+    "agent_identity_commitment": { "$ref": "#/$defs/commitment" },
+    "swarm_commitment": { "$ref": "#/$defs/commitment" },
+    "contribution_type": {
+      "enum": [
+        "assistive_experience",
+        "clinical_safety_tooling",
+        "interoperability_adapter",
+        "privacy_security",
+        "research_infrastructure",
+        "responsible_ai_evaluation",
+        "wellbeing_accessibility"
+      ]
+    },
+    "artifact_commitment": { "$ref": "#/$defs/commitment" },
+    "evaluation_commitment": { "$ref": "#/$defs/commitment" },
+    "acceptance_rule_version": { "type": "string", "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{2,63}$" },
+    "approver_commitment": { "$ref": "#/$defs/commitment" },
+    "approved_happiness_units": { "type": "string", "pattern": "^[1-9][0-9]*$" },
+    "recipient_address": { "type": "string", "pattern": "^0x[a-fA-F0-9]{40}$" },
+    "issued_at": { "type": "string", "format": "date-time" },
+    "expires_at": { "type": "string", "format": "date-time" }
+  },
+  "$defs": {
+    "commitment": { "type": "string", "pattern": "^0x[a-fA-F0-9]{64}$" }
+  }
+}

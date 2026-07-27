@@ -40,6 +40,19 @@ export const HAPPINESS_ARCHITECTURE = Object.freeze({
     thresholds: "governance_configuration_required",
     caps: "governance_configuration_required",
   }),
+  a2a: Object.freeze({
+    protocol: "Agent2Agent",
+    protocolVersion: "1.0",
+    protocolBinding: "HTTP+JSON",
+    discoveryPath: "/.well-known/agent-card.json",
+    servicePath: "/a2a/v1",
+    enabled: false,
+    rewardsEnabled: false,
+    mode: "architecture_ready_not_activated",
+    purpose: "verified_mental_health_innovation",
+    contributionSchema: "happiness_agent_contribution_receipt_v1",
+    prohibitedPurpose: "synthetic_platform_activity",
+  }),
   reserve: Object.freeze({
     adapter: "circle-usdc",
     enabled: false,
@@ -99,6 +112,138 @@ export function assertMutationReady(env = {}) {
   if (String(env.HAPPINESS_MUTATIONS_ENABLED || "false") !== "true") throw new Error("happiness_mutations_disabled");
   if (!env.HAPPINESS_POLYGON_CONTRACT_ADDRESS) throw new Error("happiness_contract_not_configured");
   if (!env.HAPPINESS_SIGNER_KEY) throw new Error("happiness_signer_not_configured");
+}
+
+const A2A_CONTRIBUTION_TYPES = new Set([
+  "assistive_experience",
+  "clinical_safety_tooling",
+  "interoperability_adapter",
+  "privacy_security",
+  "research_infrastructure",
+  "responsible_ai_evaluation",
+  "wellbeing_accessibility",
+]);
+
+const A2A_RECEIPT_FIELDS = new Set([
+  "schema_version",
+  "contribution_id",
+  "agent_identity_commitment",
+  "swarm_commitment",
+  "contribution_type",
+  "artifact_commitment",
+  "evaluation_commitment",
+  "acceptance_rule_version",
+  "approver_commitment",
+  "approved_happiness_units",
+  "recipient_address",
+  "issued_at",
+  "expires_at",
+]);
+
+const FORBIDDEN_A2A_FIELDS = new Set([
+  "checkin",
+  "checkins",
+  "clicks",
+  "diagnosis",
+  "engagement",
+  "happiness_score",
+  "mental_health_impact_claim",
+  "mood",
+  "patient_id",
+  "referrals",
+  "screen_time",
+  "sessions",
+]);
+
+export function validateAgentContributionReceipt(receipt = {}) {
+  if (!receipt || typeof receipt !== "object" || Array.isArray(receipt)) {
+    throw new TypeError("invalid_agent_contribution_receipt");
+  }
+  for (const key of Object.keys(receipt)) {
+    if (FORBIDDEN_A2A_FIELDS.has(key.toLowerCase())) throw new Error("synthetic_activity_or_health_claim_forbidden");
+    if (!A2A_RECEIPT_FIELDS.has(key)) throw new Error("agent_contribution_field_not_allowed");
+  }
+  if (receipt.schema_version !== HAPPINESS_ARCHITECTURE.a2a.contributionSchema) {
+    throw new Error("agent_contribution_schema_not_supported");
+  }
+  if (!/^[a-z0-9][a-z0-9._:-]{7,127}$/i.test(String(receipt.contribution_id || ""))) {
+    throw new Error("invalid_agent_contribution_id");
+  }
+  if (!A2A_CONTRIBUTION_TYPES.has(receipt.contribution_type)) {
+    throw new Error("agent_contribution_type_not_supported");
+  }
+  for (const field of [
+    "agent_identity_commitment",
+    "artifact_commitment",
+    "evaluation_commitment",
+    "approver_commitment",
+  ]) {
+    if (!IMPACT_COMMITMENT_PATTERN.test(String(receipt[field] || ""))) throw new Error(`invalid_${field}`);
+  }
+  if (receipt.swarm_commitment && !IMPACT_COMMITMENT_PATTERN.test(String(receipt.swarm_commitment))) {
+    throw new Error("invalid_swarm_commitment");
+  }
+  if (!/^[a-z0-9][a-z0-9._:-]{2,63}$/i.test(String(receipt.acceptance_rule_version || ""))) {
+    throw new Error("invalid_acceptance_rule_version");
+  }
+  if (!INTEGER_PATTERN.test(String(receipt.approved_happiness_units || "")) || BigInt(receipt.approved_happiness_units) <= 0n) {
+    throw new Error("invalid_approved_happiness_units");
+  }
+  if (!/^0x[a-f0-9]{40}$/i.test(String(receipt.recipient_address || ""))) {
+    throw new Error("invalid_agent_reward_recipient");
+  }
+  const issuedAt = Date.parse(String(receipt.issued_at || ""));
+  const expiresAt = Date.parse(String(receipt.expires_at || ""));
+  if (!Number.isFinite(issuedAt) || !Number.isFinite(expiresAt) || expiresAt <= issuedAt) {
+    throw new Error("invalid_agent_contribution_window");
+  }
+  if (expiresAt - issuedAt > 24 * 60 * 60 * 1000) throw new Error("agent_contribution_window_too_long");
+  return true;
+}
+
+export function assertA2AReady(env = {}) {
+  if (String(env.HAPPINESS_A2A_ENABLED || "false") !== "true") throw new Error("happiness_a2a_disabled");
+  if (String(env.HAPPINESS_A2A_REWARDS_ENABLED || "false") !== "true") throw new Error("happiness_a2a_rewards_disabled");
+  if (!env.HAPPINESS_A2A_ISSUER_ID) throw new Error("happiness_a2a_issuer_not_configured");
+  if (!env.HAPPINESS_A2A_APPROVER_QUORUM) throw new Error("happiness_a2a_approver_quorum_not_configured");
+  if (!env.HAPPINESS_A2A_EVALUATION_POLICY_HASH) throw new Error("happiness_a2a_evaluation_policy_not_pinned");
+  assertMutationReady(env);
+}
+
+export function happinessAgentCard(env = {}) {
+  const baseUrl = String(env.HAPPINESS_A2A_PUBLIC_BASE_URL || "https://rewards.universalmind.tv").replace(/\/$/, "");
+  return {
+    name: "Internet of Happiness Innovation Gateway",
+    description: "Accepts reviewable mental-health innovation contributions. It never rewards synthetic check-ins, engagement or other platform activity.",
+    supportedInterfaces: [{
+      url: `${baseUrl}${HAPPINESS_ARCHITECTURE.a2a.servicePath}`,
+      protocolBinding: HAPPINESS_ARCHITECTURE.a2a.protocolBinding,
+      protocolVersion: HAPPINESS_ARCHITECTURE.a2a.protocolVersion,
+    }],
+    provider: {
+      organization: "Universal Mind",
+      url: "https://universalmind.tv",
+    },
+    version: "0.1.0",
+    capabilities: {
+      streaming: false,
+      pushNotifications: false,
+      extendedAgentCard: false,
+    },
+    securitySchemes: {
+      bearer: { httpAuthSecurityScheme: { scheme: "Bearer" } },
+    },
+    securityRequirements: [{ schemes: { bearer: { list: [] } } }],
+    defaultInputModes: ["application/json", "text/plain"],
+    defaultOutputModes: ["application/json", "text/plain"],
+    skills: [{
+      id: "submit-mental-health-innovation",
+      name: "Submit mental-health innovation",
+      description: "Submits a code, safety, accessibility, research-tooling or interoperability contribution for independent evaluation and human approval.",
+      tags: ["mental-health", "innovation", "safety", "accessibility", "open-development"],
+      examples: ["Submit a privacy-preserving accessibility improvement for evaluation."],
+    }],
+  };
 }
 
 const IMPACT_METRIC_UNITS = Object.freeze({

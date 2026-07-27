@@ -195,7 +195,7 @@ button, a { font: inherit; }
 }
 
 .happiness-card__member img {
-  width: clamp(18px, 1.7vw, 25px);
+  width: clamp(54px, 4.8vw, 75px);
   height: auto;
   object-fit: contain;
 }

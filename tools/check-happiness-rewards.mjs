@@ -5,14 +5,17 @@ import { fileURLToPath } from "node:url";
 import {
   HAPPINESS_ARCHITECTURE,
   assertCollectiveEmissionReady,
+  assertA2AReady,
   assertImpactFundingReady,
   assertMutationReady,
   assertOracleReady,
   evaluateCollectiveEmission,
   formatHappinessUnits,
+  happinessAgentCard,
   parseHappinessUnits,
   publicHappinessConfig,
   reserveState,
+  validateAgentContributionReceipt,
   validateImpactFundingAttestation,
 } from "../cloudflare/happiness-rewards-core.js";
 import happinessWorker from "../cloudflare/happiness-rewards-worker.js";
@@ -42,6 +45,9 @@ assert.equal(HAPPINESS_ARCHITECTURE.oracle.purpose, "collective_emissions_and_st
 assert.equal(HAPPINESS_ARCHITECTURE.oracle.evidencePolicy, "cohort_impact_milestones_not_individual_scoring");
 assert.equal(HAPPINESS_ARCHITECTURE.oracle.evidenceOrigin, "triall-verifiable-proof");
 assert.equal(HAPPINESS_ARCHITECTURE.oracle.triallAdapterMode, "interface_pending_vendor_diligence");
+assert.equal(HAPPINESS_ARCHITECTURE.a2a.protocolVersion, "1.0");
+assert.equal(HAPPINESS_ARCHITECTURE.a2a.purpose, "verified_mental_health_innovation");
+assert.equal(HAPPINESS_ARCHITECTURE.a2a.prohibitedPurpose, "synthetic_platform_activity");
 
 assert.equal(parseHappinessUnits("12.345").toString(), "12345000");
 assert.equal(formatHappinessUnits("12345000"), "12.345");
@@ -50,6 +56,7 @@ assert.throws(() => assertMutationReady({}), /happiness_mutations_disabled/);
 assert.throws(() => assertOracleReady({}), /happiness_oracle_disabled/);
 assert.throws(() => assertImpactFundingReady({}), /happiness_impact_funding_disabled/);
 assert.throws(() => assertCollectiveEmissionReady({}), /happiness_collective_emissions_disabled/);
+assert.throws(() => assertA2AReady({}), /happiness_a2a_disabled/);
 const collectiveRule = assertCollectiveEmissionReady({
   HAPPINESS_COLLECTIVE_EMISSIONS_ENABLED: "true",
   HAPPINESS_MUTATIONS_ENABLED: "true",
@@ -103,6 +110,32 @@ assert.equal(validateImpactFundingAttestation({
   expires_at: "2026-07-28T00:10:00.000Z",
 }), true);
 assert.throws(() => validateImpactFundingAttestation({ mood: "happy" }), /sensitive_or_subjective_oracle_field_forbidden/);
+assert.equal(validateAgentContributionReceipt({
+  schema_version: "happiness_agent_contribution_receipt_v1",
+  contribution_id: "innovation:privacy:0001",
+  agent_identity_commitment: `0x${"a".repeat(64)}`,
+  swarm_commitment: `0x${"b".repeat(64)}`,
+  contribution_type: "privacy_security",
+  artifact_commitment: `0x${"c".repeat(64)}`,
+  evaluation_commitment: `0x${"d".repeat(64)}`,
+  acceptance_rule_version: "privacy-v1",
+  approver_commitment: `0x${"e".repeat(64)}`,
+  approved_happiness_units: "1000000",
+  recipient_address: "0x1111111111111111111111111111111111111111",
+  issued_at: "2026-07-28T00:00:00.000Z",
+  expires_at: "2026-07-28T00:10:00.000Z",
+}), true);
+assert.throws(() => validateAgentContributionReceipt({
+  mental_health_impact_claim: "generated 1000 check-ins",
+}), /synthetic_activity_or_health_claim_forbidden/);
+assert.throws(() => validateAgentContributionReceipt({
+  schema_version: "happiness_agent_contribution_receipt_v1",
+  contribution_type: "checkin_generation",
+}), /agent_contribution_type_not_supported|invalid_agent_contribution_id/);
+const agentCard = happinessAgentCard({ HAPPINESS_A2A_PUBLIC_BASE_URL: "https://agents.example/" });
+assert.equal(agentCard.supportedInterfaces[0].url, "https://agents.example/a2a/v1");
+assert.equal(agentCard.supportedInterfaces[0].protocolVersion, "1.0");
+assert.match(agentCard.description, /never rewards synthetic check-ins/i);
 assert.deepEqual(reserveState({}), {
   adapter: "circle-usdc",
   requested: false,
@@ -125,14 +158,14 @@ assert.match(style, /grid-template-columns:\s*repeat\(12, 1fr\)/);
 assert.match(style, /@media \(max-width: 980px\)/);
 assert.match(wallet, /happiness-wallet-qr-staging\.png/);
 assert.match(script, /happiness-wallet-qr-production\.png/);
-assert.match(wallet, /href="\/vogue\/iam\/wallet\.css\?v=happiness-wallet-3"/);
+assert.match(wallet, /href="\/vogue\/iam\/wallet\.css\?v=happiness-wallet-4"/);
 assert.match(wallet, /src="\/vogue\/iam\/wallet\.js\?v=happiness-wallet-2"/);
 assert.doesNotMatch(wallet, /(?:href|src)="a s s e t s\//);
 assert.match(wallet, /data-stream-file="a s s e t s\/Globe Landing Page Video - Sunscreem - Perfection Motion for RMU\.mp4"/);
 assert.match(wallet, /Ethereum Diamond Rainbow \[ e o r a \] 3\.png/);
 assert.match(wallet, /cloudflare-stream-controller\.js\?v=stream-controller-8/);
 assert.match(style, /\.happiness-background-shade\s*\{[^}]*background:\s*rgba\(0, 0, 0, 0\.77\)/s);
-assert.match(style, /\.happiness-card__member img\s*\{[^}]*width:\s*clamp\(18px, 1\.7vw, 25px\)/s);
+assert.match(style, /\.happiness-card__member img\s*\{[^}]*width:\s*clamp\(54px, 4\.8vw, 75px\)/s);
 assert.match(architecture, /It is not currently backed, pegged, cash redeemable/i);
 assert.match(architecture, /Adding USDC infrastructure does not itself make HAPPINESS a stablecoin/i);
 assert.match(architecture, /It does not decide individual HAPPINESS rewards/i);
@@ -140,6 +173,8 @@ assert.match(architecture, /never raw sequence data, an individual result, clini
 assert.match(architecture, /That proof establishes integrity, not scientific meaning/i);
 assert.match(architecture, /interface_pending_vendor_diligence/i);
 assert.match(architecture, /no promise of appreciation, USDC conversion, cash value, investment return or migration/i);
+assert.match(architecture, /not a channel for agents to use, simulate or bot the product/i);
+assert.match(architecture, /no rewards for check-ins, clicks, engagement, referrals, sessions or screen time/i);
 assert.match(contract, /contract HappinessRewards is ERC20, AccessControl, Pausable/);
 assert.match(contract, /ERC20\("HAPPINESS", "\[ I o H \]"\)/);
 assert.match(contract, /return 6;/);
@@ -173,6 +208,23 @@ const emissionResponse = await happinessWorker.fetch(new Request("https://reward
 }), {});
 assert.equal(emissionResponse.status, 503);
 assert.equal((await emissionResponse.json()).error, "happiness_collective_emissions_disabled");
+
+const agentCardDisabledResponse = await happinessWorker.fetch(new Request("https://rewards.example/.well-known/agent-card.json"), {});
+assert.equal(agentCardDisabledResponse.status, 503);
+assert.equal((await agentCardDisabledResponse.json()).error, "happiness_a2a_disabled");
+
+const agentCardResponse = await happinessWorker.fetch(new Request("https://rewards.example/.well-known/agent-card.json"), {
+  HAPPINESS_A2A_ENABLED: "true",
+  HAPPINESS_A2A_PUBLIC_BASE_URL: "https://agents.example",
+});
+assert.equal(agentCardResponse.status, 200);
+assert.equal((await agentCardResponse.json()).supportedInterfaces[0].protocolVersion, "1.0");
+
+const a2aResponse = await happinessWorker.fetch(new Request("https://rewards.example/a2a/v1", {
+  method: "POST",
+}), {});
+assert.equal(a2aResponse.status, 503);
+assert.equal((await a2aResponse.json()).error, "happiness_a2a_disabled");
 
 const blockedOriginResponse = await happinessWorker.fetch(new Request("https://rewards.example/v1/config", {
   headers: { Origin: "https://example.com" },

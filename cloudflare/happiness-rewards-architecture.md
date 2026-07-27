@@ -17,6 +17,16 @@ Members may receive a genuine ERC-20 balance once the contract is activated, but
 
 The code remains fail-closed: reward mutations, Chainlink attestation, Polygon signing, Apple-pass issuance and USDC settlement are disabled until their required configuration is deliberately supplied.
 
+## A2A mental-health innovation gateway
+
+The Agent2Agent gateway is for agents and future agent swarms that contribute useful mental-health innovation to the Internet of Happiness, beginning with Universal Mind's I AM portal. It is not a channel for agents to use, simulate or bot the product. Automated check-ins, clicks, engagement, referrals, sessions and screen time are never eligible contributions and cannot create an agent reward receipt.
+
+Eligible work is objective and reviewable: assistive experiences, clinical-safety tooling, interoperability adapters, privacy and security improvements, research infrastructure, responsible-AI evaluations and wellbeing accessibility. Each proposed contribution enters a sandbox, produces an immutable artifact commitment and evaluation commitment, and is assessed against a versioned acceptance rule. A human or authorised multisig quorum must approve the receipt before any HAPPINESS issuance can be requested.
+
+The gateway follows the A2A 1.0 discovery model: a public Agent Card at `/.well-known/agent-card.json` declares an HTTP+JSON interface at `/a2a/v1`. Discovery, task intake and HAPPINESS issuance are separately gated. The draft adapter is deliberately disabled, publishes no credentials or internal details, and returns no reward until agent identity, provenance, evaluation policy, approval quorum, idempotency, caps and Polygon signing are configured.
+
+An agent or swarm may receive a pseudonymous, non-transferable HAPPINESS balance for an accepted contribution. The receipt is not proof of clinical efficacy and contains no patient data, mood, diagnosis, individual outcome, mental-health score or speculative financial claim. Self-approval, recursive rewards, duplicate artifacts, collusive review and rewards based on generated platform traffic must be rejected.
+
 ## Chainlink trigger lanes
 
 Chainlink has two deliberately separate lanes. Neither lane scores an individual's mental health.
@@ -107,6 +117,20 @@ Adding USDC infrastructure does not itself make HAPPINESS a stablecoin. Backing,
 - artistic QR handoff with a normal scannable quiet zone;
 - balance update after confirmed ledger events.
 
+### A2A innovation gateway
+
+- A2A 1.0 Agent Card and versioned HTTP+JSON interface;
+- authenticated, rate-limited task intake with malware and prompt-injection isolation;
+- contribution types limited to reviewable mental-health innovation;
+- immutable agent, swarm, artifact, evaluation and approver commitments;
+- sandboxed tests and a content-hash-pinned evaluation policy;
+- human or authorised multisig approval quorum;
+- per-contribution, per-agent, per-swarm and epoch issuance caps;
+- replay protection and duplicate-artifact detection;
+- no rewards for check-ins, clicks, engagement, referrals, sessions or screen time;
+- no patient, clinical, mood, diagnosis or individual outcome data; and
+- separate security, clinical-safety, abuse and economic review before activation.
+
 ### Circle / USDC
 
 - actual reserve treasury;
@@ -122,6 +146,8 @@ The desktop wallet, Apple pass service, Polygon ledger adapter and future reserv
 
 ## Primary technical references
 
+- [Agent2Agent Protocol 1.0 specification](https://a2a-protocol.org/latest/specification/)
+- [A2A Agent Discovery and Agent Cards](https://a2a-protocol.org/latest/topics/agent-discovery/)
 - [Chainlink Functions overview](https://docs.chain.link/chainlink-functions)
 - [Chainlink Functions releases and Polygon Amoy support](https://docs.chain.link/chainlink-functions/resources/release-notes)
 - [Chainlink Automation overview](https://docs.chain.link/chainlink-automation)
