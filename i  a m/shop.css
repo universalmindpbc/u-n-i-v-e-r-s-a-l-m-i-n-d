@@ -405,9 +405,13 @@ html[data-shop-theme="night"] .shop-theme__disc {
 .shop-filter-panel button,
 .shop-catalogue__filters button,
 .shop-product img,
+.shop-product video,
 .shop-catalogue-card img,
 .shop-look img,
-.shop-campaign img { transition: opacity 180ms ease, transform 600ms cubic-bezier(.2, .7, .2, 1); }
+.shop-look video,
+.shop-campaign img,
+.shop-campaign video,
+.shop-video-pair video { transition: opacity 180ms ease, transform 600ms cubic-bezier(.2, .7, .2, 1); }
 
 .shop-masthead a:hover,
 .shop-masthead a:focus-visible,
@@ -634,30 +638,47 @@ html[data-shop-brand-variant="handdrawn"][data-shop-theme="night"] .shop-b-face-
   background: var(--shop-soft);
 }
 
+.shop-look video,
+.shop-product video,
+.shop-campaign video,
+.shop-video-pair video {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: #000;
+  object-fit: cover;
+}
+
 .shop-look:hover img,
 .shop-look:focus-visible img,
+.shop-look:hover video,
+.shop-look:focus-visible video,
 .shop-product a:hover img,
 .shop-product a:focus-visible img,
+.shop-product a:hover video,
+.shop-product a:focus-visible video,
 .shop-campaign:hover img,
-.shop-campaign:focus-visible img { transform: scale(1.018); }
+.shop-campaign:focus-visible img,
+.shop-campaign:hover video,
+.shop-campaign:focus-visible video { transform: scale(1.018); }
 
 .shop-look--bordelle { grid-column: 1 / span 6; }
 .shop-look--bordelle figure { aspect-ratio: 2 / 3; }
 
-.shop-look--wardrobe {
+.shop-look--secondary {
   grid-column: 8 / span 5;
   margin-top: clamp(90px, 14vw, 230px);
 }
 
-.shop-look--wardrobe figure { aspect-ratio: 4 / 5; }
-.shop-look--wardrobe img { object-position: center 28%; }
+.shop-look--secondary figure { aspect-ratio: 4 / 5; }
+.shop-look--secondary img { object-position: center 28%; }
 
-.shop-look--karla {
+.shop-look--tertiary {
   grid-column: 3 / span 7;
   margin-top: clamp(20px, 4vw, 72px);
 }
 
-.shop-look--karla figure { aspect-ratio: 4 / 5; }
+.shop-look--tertiary figure { aspect-ratio: 4 / 5; }
 
 .shop-look p,
 .shop-campaign p {
@@ -781,6 +802,7 @@ html[data-shop-brand-variant="handdrawn"][data-shop-theme="night"] .shop-b-face-
 .shop-product--wide figure { aspect-ratio: 4 / 3; }
 .shop-product--cinematic figure { aspect-ratio: 16 / 9; }
 .shop-product--cinematic img { object-position: center 30%; }
+.shop-product--upside-kefi img { object-position: center top; }
 
 .shop-product__copy {
   display: grid;
@@ -844,6 +866,51 @@ html[data-shop-brand-variant="handdrawn"][data-shop-theme="night"] .shop-b-face-
 }
 
 .shop-campaign p span { text-align: left; }
+
+.shop-video-pair {
+  display: grid;
+  grid-template-columns: minmax(180px, 3fr) repeat(2, minmax(0, 4.5fr));
+  gap: clamp(18px, 2.5vw, 44px);
+  align-items: end;
+  padding: 0 clamp(22px, 5.7vw, 106px) clamp(110px, 14vw, 220px);
+}
+
+.shop-video-pair header { align-self: start; }
+
+.shop-video-pair header > p,
+.shop-video-pair header > a {
+  margin: 0;
+  font-size: 8px;
+  letter-spacing: .17em;
+  text-transform: uppercase;
+}
+
+.shop-video-pair h2 {
+  margin: 28px 0 clamp(34px, 6vw, 90px);
+  font-family: var(--shop-serif);
+  font-size: clamp(44px, 5.5vw, 96px);
+  font-weight: 400;
+  letter-spacing: -.055em;
+  line-height: .82;
+}
+
+.shop-video-pair header > a {
+  display: inline-block;
+  border-bottom: 1px solid currentColor;
+  padding-bottom: 6px;
+}
+
+.shop-video-pair__film {
+  min-width: 0;
+  overflow: hidden;
+  aspect-ratio: 9 / 14;
+  background: #000;
+}
+
+.shop-video-pair__film--second { margin-bottom: clamp(45px, 7vw, 110px); }
+
+.shop-video-pair__film:hover video,
+.shop-video-pair__film:focus-visible video { transform: scale(1.018); }
 
 .shop-brands {
   padding: clamp(105px, 13vw, 190px) clamp(22px, 5.7vw, 106px) clamp(130px, 15vw, 240px);
@@ -1649,14 +1716,14 @@ body[data-shop-view="catalogue"] [data-shop-editorial] { display: none !importan
   }
 
   .shop-look,
-  .shop-look--wardrobe,
-  .shop-look--karla {
+  .shop-look--secondary,
+  .shop-look--tertiary {
     width: 100%;
     margin: 0 0 88px;
   }
 
-  .shop-look--karla { margin-bottom: 0; }
-  .shop-look--wardrobe figure { aspect-ratio: 3 / 4; }
+  .shop-look--tertiary { margin-bottom: 0; }
+  .shop-look--secondary figure { aspect-ratio: 3 / 4; }
 
   .shop-film-editorial {
     display: block;
@@ -1703,6 +1770,7 @@ body[data-shop-view="catalogue"] [data-shop-editorial] { display: none !importan
   .shop-product--cinematic figure { aspect-ratio: 4 / 5; }
 
   .shop-product--cinematic img { object-position: center 30%; }
+  .shop-product--upside-kefi img { object-position: center top; }
 
   .shop-campaign {
     display: block;
@@ -1711,6 +1779,16 @@ body[data-shop-view="catalogue"] [data-shop-editorial] { display: none !importan
 
   .shop-campaign figure { height: 76svh; }
   .shop-campaign p { display: flex; }
+
+  .shop-video-pair {
+    display: block;
+    padding: 0 17px 116px;
+  }
+
+  .shop-video-pair header { margin-bottom: 42px; }
+  .shop-video-pair h2 { margin-bottom: 38px; font-size: clamp(58px, 18vw, 80px); }
+  .shop-video-pair__film { display: block; margin: 0 0 17px; aspect-ratio: 4 / 5; }
+  .shop-video-pair__film--second { margin-bottom: 0; }
 
   .shop-brand-ledger { grid-template-columns: 1fr; }
 

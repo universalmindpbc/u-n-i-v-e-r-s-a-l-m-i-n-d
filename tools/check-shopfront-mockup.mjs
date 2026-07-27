@@ -20,8 +20,8 @@ const redirects = read("_redirects");
 
 for (const required of [
   "James Bondage",
-  "23 brands",
-  "303",
+  "24 brands",
+  "304",
   "affiliate relationships are proposed",
   "Bordelle / Signature Waspie",
   "WARDROBE.NYC",
@@ -45,8 +45,8 @@ for (const absent of [
 ]) {
   assert.doesNotMatch(shop, absent, `Current shop must not contain ${absent}`);
 }
-assert.equal((shop.match(/<li(?:\s+class="[^"]*")?><span>/g) || []).length, 23, "Brand ledger must contain all 23 retailers");
-assert.equal((shop.match(/data-product(?:\s|>)/g) || []).length, 12, "Opening edit must contain the restrained 12 photographed hero pieces");
+assert.equal((shop.match(/<li(?:\s+class="[^"]*")?><span>/g) || []).length, 24, "Brand ledger must contain all 24 retailers");
+assert.equal((shop.match(/data-product(?:\s|>)/g) || []).length, 11, "Opening edit must contain the restrained 11 authorized hero pieces");
 
 assert.equal(catalogue.products.length, 36, "Finished ERES catalogue must contain all 36 approved product URLs");
 assert.equal(new Set(catalogue.products.map((product) => product.id)).size, 36, "Catalogue product IDs must be unique");
@@ -78,13 +78,16 @@ for (const product of catalogue.products) {
   assert.match(product.price, /^AU\$ (?:\d{3}|\d\.\d{3})$/, `ERES catalogue product must keep its verified AUD price: ${product.id}`);
 }
 
-assert.equal(productKernel.counts.brands, 23, "Fashion kernel must retain all 23 approved retailers");
-assert.equal(productKernel.products.length, 303, "Fashion kernel must contain exactly 303 canonical product URLs from Notion");
-assert.equal(new Set(productKernel.products.map((product) => product.canonicalUrl)).size, 303, "Fashion kernel product URLs must be canonical and unique");
+assert.equal(productKernel.counts.brands, 24, "Fashion kernel must retain all 24 approved retailers");
+assert.equal(productKernel.products.length, 304, "Fashion kernel must contain exactly 304 canonical product URLs from Notion");
+assert.equal(new Set(productKernel.products.map((product) => product.canonicalUrl)).size, 304, "Fashion kernel product URLs must be canonical and unique");
 assert.equal(productKernel.products.filter((product) => product.metadataStatus === "Metadata ready").length, 36, "All 36 approved ERES records must be metadata-ready");
-assert.equal(productKernel.products.filter((product) => product.listedOnShop).length, 36, "All 36 approved ERES records must be listed with full detail");
+assert.equal(productKernel.products.filter((product) => product.listedOnShop).length, 37, "The 36 finished ERES records and approved Emilio inventory record must be listed");
 assert.ok(productKernel.products.every((product) => product.retailerUrl?.startsWith("https://")), "Every tensor product must retain its exact retailer URL");
 assert.equal(productKernel.authority.policy, "exact_notion_product_urls_only", "Notion must remain the sole product authority");
+const emilioProduct = productKernel.products.find((product) => product.brand === "Emilio Cavallini");
+assert.equal(emilioProduct?.retailerUrl, "https://www.emiliocavallini.com/en/engeneered-body.html", "Emilio Cavallini must retain Ben's exact approved product URL");
+assert.equal(emilioProduct?.metadataStatus, "Inventory only", "The Emilio catalogue card must remain fail-closed until retailer metadata is fully verified");
 
 const assetMatches = [...shop.matchAll(/src="(a s s e t s\/shop-mockup\/[^"]+)"/g)].map((match) => match[1]);
 assert.ok(assetMatches.length >= 12, "Shop must use the locally preserved presentation imagery");
@@ -95,15 +98,37 @@ for (const relativeAsset of new Set(assetMatches)) {
 const editorialFigureImages = [...shop.matchAll(/<figure><img src="([^"]+)"/g)].map((match) => match[1]);
 assert.equal(new Set(editorialFigureImages).size, editorialFigureImages.length, "Homepage editorial figure images must not repeat");
 
+for (const unauthorizedAsset of [
+  "wardrobe-sheer.jpg",
+  "karla-fluorite.jpg",
+  "upside-neptune.jpg",
+  "eres-providence-portrait.png",
+  "bordelle-waspie-detail.jpg",
+]) {
+  assert.doesNotMatch(shop, new RegExp(unauthorizedAsset.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")), `Unauthorized homepage asset must be absent: ${unauthorizedAsset}`);
+}
+
+for (const suppliedSilentVideo of [
+  "bordelle-look58-home.mp4",
+  "annies-home-silent.mp4",
+  "skims-home-silent.mp4",
+  "emilio-cavallini-home-silent.mp4",
+  "mugler-adut-home-1.mp4",
+  "mugler-adut-home-2.mp4",
+]) {
+  assert.match(shop, new RegExp(`<video[^>]*data-shop-silent-video[^>]*muted[^>]*playsinline[^>]*loop[^>]*>[\\s\\S]*?${suppliedSilentVideo.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}`), `Missing muted supplied homepage film: ${suppliedSilentVideo}`);
+}
+
 for (const suppliedReference of [
   "https://eu.bordelle.co.uk/products/signature-waspie-cream?variant=43656648884396",
   "https://wardrobe.nyc/collections/bodysuits/products/lace-bodysuit-w5051f25lcblk",
   "https://karlaspetic.com/product/no-v-neon-tiger-bikini/",
-  "https://www.eresparis.com/eu/en/lingerie/60653-01062.html",
   "https://www.theupside.com.au/kefi-25in-midi-pant-oyster-usw226087/",
   "https://www.nike.com/au/t/jordan-brooklyn-womens-bodysuit-nZh4yxyG/IM6875-100",
   "https://triangl.com/en-au/products/celeste-jett-black-short?variant=42685752049760",
   "https://www.pucci.com/en-au/products/vivara-print-triangle-bikini-top-6hmx096h895p20",
+  "https://www.emiliocavallini.com/en/engeneered-body.html",
+  "https://www.eresparis.com/eu/en/lingerie/60973-0022.html",
 ]) {
   assert.match(shop, new RegExp(suppliedReference.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")), `Missing supplied product reference: ${suppliedReference}`);
 }
@@ -143,7 +168,7 @@ assert.match(shop, /James Bondage is 24\/7 electronic music television broadcast
 assert.match(shop, /Our James Bondage Health series \[ sex-ed \] shares female lead conversations/i, "Shop About must preserve the approved James Bondage Health distinction");
 assert.match(shop, /All profits from affiliate revenue are invested in mental health\./i, "Giving Back must state the approved affiliate profit formula");
 assert.match(shop, /youth mental health outreach \| youth mental health research \| women’s mental health \|veteran’s mental health/i, "Giving Back must preserve the four approved wallet choices");
-assert.match(shop, /href="#catalogue\/eres"[^>]*data-shop-catalogue-link/, "ERES must open from the 23-brand ledger");
+assert.match(shop, /href="#catalogue\/eres"[^>]*data-shop-catalogue-link/, "ERES must open from the 24-brand ledger");
 assert.match(shop, /data-catalogue-editorial-header/, "ERES catalogue must open with the approved editorial header");
 assert.match(shop, /data-shop-product-dialog/, "Catalogue must expose the quiet expanded product view");
 assert.match(shop, /data-shop-product-dialog-description/, "Expanded product view must prioritize retailer-sourced product context");
@@ -156,7 +181,8 @@ assert.match(shopScript, /catalogueChunkSize = 24/, "Catalogue must use the appr
 assert.match(shopScript, /load \$\{remaining\} more/, "Catalogue must expose progressive load-more control rather than endless scroll");
 assert.match(shopScript, /roundRobinByBrand/, "Universal editorial ordering must surface brand diversity rather than one full brand at a time");
 assert.match(shopScript, /price at retailer/, "Inventory-only cards must disclose that current pricing remains with the retailer");
-assert.doesNotMatch(shopScript, /IntersectionObserver/, "Catalogue must not silently become infinite scroll");
+assert.match(shopScript, /catalogueLoadMore\?\.addEventListener\("click"/, "Catalogue must advance only through the explicit load-more control");
+assert.match(shopScript, /IntersectionObserver[\s\S]*data-shop-silent-video|silentEditorialVideos[\s\S]*IntersectionObserver/, "Homepage films must only play while they are near the viewport");
 assert.match(shopScript, /productDialog\.showModal\(\)/, "Product cards must open the accessible expanded view");
 assert.match(shopScript, /productDialogPrice\.textContent = product\.price/, "Expanded product view must carry the verified price");
 assert.match(shopScript, /productDialogDescription\.textContent = product\.description/, "Expanded product view must carry the retailer-sourced description");
@@ -176,7 +202,7 @@ assert.match(architecture, /adaptive scoring remains review-gated/i, "Fashion Te
 assert.match(architecture, /No diagnosis, treatment claim/i, "Fashion Tensor roadmap is missing the clinical boundary");
 assert.match(architecture, /Commercial value must not override citizen fit/i, "Fashion Tensor roadmap is missing the commercial-conflict boundary");
 assert.match(architecture, /default catalogue thumbnail is always the retailer's first official product hero/i, "Catalogue is missing the deterministic first-hero thumbnail rule");
-assert.match(architecture, /Notion page \*\*`j a m e s  b o n d a g e  \[ s h o p \]`\*\* is the canonical master registry/i, "Catalogue architecture must make the approved Notion registry authoritative");
+assert.match(architecture, /Notion page \*\*`j a m e s  b o n d a g e  \[ s h o p \]`\*\*[\s\S]*?canonical master registry/i, "Catalogue architecture must make the approved Notion registry authoritative");
 assert.match(architecture, /fail-closed catalogue inventory/i, "Catalogue architecture must retain a fail-closed staging projection");
 assert.match(architecture, /neither GPT nor an ingestion process may discover, infer, replace or add a product/i, "Catalogue architecture must prohibit generated or discovered products");
 

@@ -17,6 +17,7 @@
   }
 
   const products = Array.from(document.querySelectorAll("[data-product]"));
+  const silentEditorialVideos = Array.from(document.querySelectorAll("[data-shop-silent-video]"));
   const categoryButtons = Array.from(document.querySelectorAll("[data-filter-category]"));
   const shopMenu = document.querySelector("[data-shop-menu]");
   const returnMusicLinks = Array.from(document.querySelectorAll("[data-shop-return-music]"));
@@ -79,6 +80,48 @@
       title: "Mugler FW21",
     },
   });
+
+  function prepareSilentEditorialVideos() {
+    if (!silentEditorialVideos.length) return;
+    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    silentEditorialVideos.forEach((video) => {
+      video.muted = true;
+      video.defaultMuted = true;
+      video.playsInline = true;
+      video.removeAttribute("autoplay");
+      if (reducedMotion) video.pause();
+    });
+
+    if (reducedMotion) return;
+
+    const playIfVisible = (video) => {
+      if (document.hidden) return;
+      video.muted = true;
+      video.play().catch(() => null);
+    };
+
+    if (!("IntersectionObserver" in window)) {
+      silentEditorialVideos.forEach(playIfVisible);
+      return;
+    }
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        const video = entry.target;
+        if (entry.isIntersecting && entry.intersectionRatio >= .18) playIfVisible(video);
+        else video.pause();
+      });
+    }, {
+      rootMargin: "180px 0px",
+      threshold: [0, .18, .6],
+    });
+
+    silentEditorialVideos.forEach((video) => observer.observe(video));
+    document.addEventListener("visibilitychange", () => {
+      if (document.hidden) silentEditorialVideos.forEach((video) => video.pause());
+    });
+  }
 
   function seekLiveBand(blockOffsetSeconds) {
     if (!liveBand || !Number.isFinite(Number(blockOffsetSeconds))) return;
@@ -336,7 +379,7 @@
     if (!catalogueKernel) return;
     if (catalogueBrandSelect) {
       catalogueBrandSelect.replaceChildren(
-        option("all", "all 23 brands"),
+        option("all", `all ${catalogueKernel.brandOrder.length} brands`),
         ...catalogueKernel.brandOrder.map((brand) => option(brandSlug(brand), brand)),
       );
     }
@@ -362,7 +405,7 @@
     const brand = currentBrandRecord();
     const displayName = brand?.brand || "SHOP";
     if (catalogueBrandTitle) catalogueBrandTitle.textContent = displayName;
-    if (catalogueBrandKicker) catalogueBrandKicker.textContent = brand?.brand || "all 23 brands";
+    if (catalogueBrandKicker) catalogueBrandKicker.textContent = brand?.brand || `all ${catalogueKernel?.brandOrder?.length || 24} brands`;
     if (catalogueAsideBrand) catalogueAsideBrand.textContent = brand?.brand || "James Bondage";
     if (catalogueAsideForm) {
       catalogueAsideForm.textContent = activeCatalogueType === "all"
@@ -727,6 +770,7 @@
   }
 
   applyFilters();
+  prepareSilentEditorialVideos();
   renderRoute();
   loadCatalogue();
   startLiveBand();

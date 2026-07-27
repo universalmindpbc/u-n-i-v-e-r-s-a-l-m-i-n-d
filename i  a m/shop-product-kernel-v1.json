@@ -8,12 +8,12 @@
   },
   "generatedAt": "2026-07-27",
   "counts": {
-    "sourceReferences": 311,
-    "canonicalRecords": 308,
-    "products": 303,
+    "sourceReferences": 312,
+    "canonicalRecords": 309,
+    "products": 304,
     "brandOrCollectionLinks": 5,
     "duplicateProductReferences": 3,
-    "brands": 23,
+    "brands": 24,
     "metadataReady": 36
   },
   "brandOrder": [
@@ -39,7 +39,8 @@
     "KARLA ŠPETIĆ",
     "SIR.",
     "Triangl",
-    "WARDROBE.NYC"
+    "WARDROBE.NYC",
+    "Emilio Cavallini"
   ],
   "brandCounts": [
     {
@@ -179,6 +180,12 @@
       "count": 21,
       "ready": 0,
       "route": "#catalogue/wardrobenyc"
+    },
+    {
+      "brand": "Emilio Cavallini",
+      "count": 1,
+      "ready": 0,
+      "route": "#catalogue/emilio-cavallini"
     }
   ],
   "products": [
@@ -5590,6 +5597,27 @@
       "metadataStatus": "Inventory only",
       "listedOnShop": false,
       "shopRoute": "#catalogue/wardrobenyc"
+    },
+    {
+      "id": "JB-0309",
+      "brand": "Emilio Cavallini",
+      "sourceTitle": "engeneered body",
+      "name": "Engineered Body",
+      "productType": "Bodysuit",
+      "forms": [
+        "second skin",
+        "after dark"
+      ],
+      "retailerUrl": "https://www.emiliocavallini.com/en/engeneered-body.html",
+      "canonicalUrl": "https://www.emiliocavallini.com/en/engeneered-body.html",
+      "sourceOccurrences": 1,
+      "metadataStatus": "Inventory only",
+      "listedOnShop": true,
+      "shopRoute": "#catalogue/emilio-cavallini",
+      "editorialImage": "a s s e t s/shop-mockup/emilio-cavallini-zendaya.png",
+      "editorialImageAlt": "Zendaya wearing a white floral Emilio Cavallini body in a rose-toned room",
+      "imageSource": "user_authorized_editorial_override",
+      "currency": "EUR"
     }
   ]
 }
