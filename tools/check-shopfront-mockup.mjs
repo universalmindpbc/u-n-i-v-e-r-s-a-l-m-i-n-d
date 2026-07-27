@@ -143,7 +143,7 @@ assert.match(shopScript, /enteringCatalogue[\s\S]*scrollBehavior = "auto"[\s\S]*
 
 assert.match(shopScript, /iam:shop-music-request/, "Shop must request music through the persistent Music Television shell");
 assert.match(television, /iam:shop-music-request/, "Music Television must respond to Shop music requests");
-assert.match(television, /continuation\.defaultStation/, "A quiet Shop session must use the established Café del Mar Chill default");
+assert.match(television, /startRadioStation\(bestRadioStationForTrack\(\), \{ source: "shop_default" \}\)/, "A quiet Shop session must use a radio source compatible with the current music room");
 assert.match(index, /data-nav-item="shop"/, "Music Television navigation must expose Shop");
 assert.match(index, /data-nav-item="contact"[^>]*>contact<\/a>\s*<a[^>]*data-nav-item="shop"[^>]*>shop<\/a>/, "Shop must be the final global navigation item after Contact");
 assert.match(htaccess, /RewriteRule \^shop\/\?\$/, "Root /shop route is missing from Apache redirects");
