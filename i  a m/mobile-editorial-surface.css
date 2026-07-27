@@ -1,0 +1,136 @@
+.mobile-experience-notice,
+.mobile-editorial-status {
+  display: none;
+}
+
+html[data-mobile-editorial="true"] [data-mobile-editorial-hidden] {
+  display: none !important;
+}
+
+html[data-mobile-editorial="true"] body:not(.induction-page) {
+  padding-bottom: calc(54px + env(safe-area-inset-bottom, 0px));
+}
+
+html[data-mobile-editorial="true"] .mobile-editorial-status {
+  position: fixed;
+  z-index: 100000;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  min-height: 54px;
+  border-top: 1px solid rgba(247, 243, 234, 0.28);
+  padding: 10px max(16px, env(safe-area-inset-right, 0px)) calc(10px + env(safe-area-inset-bottom, 0px)) max(16px, env(safe-area-inset-left, 0px));
+  background: #08080a;
+  color: #f7f3ea;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  line-height: 1.25;
+}
+
+html[data-mobile-editorial="true"] .mobile-editorial-status a {
+  color: inherit;
+  text-decoration-color: #7d9f68;
+  text-underline-offset: 3px;
+}
+
+html[data-mobile-editorial="true"] .mobile-editorial-status span {
+  color: #d9cdb8;
+  text-align: right;
+}
+
+html[data-mobile-editorial="true"] .mobile-experience-notice {
+  display: grid;
+  gap: 16px;
+  width: var(--induction-editorial-copy, 100%);
+  margin: clamp(34px, 7vh, 72px) 0 clamp(24px, 5vh, 54px);
+  border-top: 1px solid rgba(247, 243, 234, 0.78);
+  border-bottom: 1px solid rgba(247, 243, 234, 0.44);
+  padding: clamp(24px, 5vh, 46px) 0;
+  color: #f7f3ea;
+  scroll-margin-top: 24px;
+}
+
+html[data-mobile-editorial="true"] .mobile-experience-notice__eyebrow {
+  margin: 0;
+  color: #7d9f68;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+html[data-mobile-editorial="true"] .mobile-experience-notice h2 {
+  max-width: 620px;
+  margin: 0;
+  color: #f7f3ea;
+  font-family: Didot, "Bodoni 72", "Bodoni MT", "Times New Roman", serif;
+  font-size: clamp(34px, 9vw, 56px);
+  font-weight: 400;
+  letter-spacing: -0.035em;
+  line-height: 0.96;
+}
+
+html[data-mobile-editorial="true"] .mobile-experience-notice p:not(.mobile-experience-notice__eyebrow) {
+  max-width: 620px;
+  margin: 0;
+  color: rgba(247, 243, 234, 0.84);
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: clamp(15px, 4.2vw, 18px);
+  font-weight: 300;
+  letter-spacing: -0.008em;
+  line-height: 1.42;
+}
+
+html[data-mobile-editorial="true"] .mobile-experience-notice p strong {
+  color: #f7f3ea;
+  font-weight: 600;
+}
+
+html[data-mobile-editorial="true"] .mobile-experience-notice nav {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px 18px;
+  max-width: 520px;
+  margin-top: 8px;
+  padding-top: 18px;
+  border-top: 1px solid rgba(247, 243, 234, 0.24);
+}
+
+html[data-mobile-editorial="true"] .mobile-experience-notice nav a {
+  color: #f7f3ea;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  line-height: 1.2;
+  text-decoration-color: rgba(125, 159, 104, 0.9);
+  text-underline-offset: 4px;
+  text-transform: uppercase;
+}
+
+html[data-mobile-editorial="true"] .induction-page .induction-enter-wrap {
+  display: none;
+}
+
+@media (max-width: 390px) {
+  html[data-mobile-editorial="true"] .mobile-editorial-status {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 3px;
+  }
+
+  html[data-mobile-editorial="true"] .mobile-editorial-status span {
+    text-align: left;
+  }
+
+  html[data-mobile-editorial="true"] .mobile-experience-notice nav {
+    grid-template-columns: 1fr;
+  }
+}

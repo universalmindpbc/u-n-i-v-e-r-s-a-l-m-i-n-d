@@ -3,6 +3,26 @@ DirectoryIndex index.html
 
 RewriteEngine On
 
+# Smartphone visitors receive the lightweight editorial surface while the
+# full media application remains available on desktop and tablet. `full=1`
+# is the private QA escape hatch for deliberate phone testing.
+RewriteCond %{HTTP_USER_AGENT} !(iPad|Macintosh.*Mobile) [NC]
+RewriteCond %{HTTP_USER_AGENT} "(Mobile|iPhone|iPod|IEMobile|Opera Mini|BlackBerry|webOS)" [NC]
+RewriteCond %{QUERY_STRING} !(^|&)full=1(&|$) [NC]
+RewriteRule ^shop/?$ /vogue/iam/shop.html [R=302,L,NE]
+
+RewriteCond %{HTTP_USER_AGENT} !(iPad|Macintosh.*Mobile) [NC]
+RewriteCond %{HTTP_USER_AGENT} "(Mobile|iPhone|iPod|IEMobile|Opera Mini|BlackBerry|webOS)" [NC]
+RewriteCond %{QUERY_STRING} !(^|&)full=1(&|$) [NC]
+RewriteCond %{QUERY_STRING} (^|&)shop=1(&|$) [NC]
+RewriteRule ^vogue/iam/index\.html$ /vogue/iam/shop.html [R=302,L,NE]
+
+RewriteCond %{HTTP_USER_AGENT} !(iPad|Macintosh.*Mobile) [NC]
+RewriteCond %{HTTP_USER_AGENT} "(Mobile|iPhone|iPod|IEMobile|Opera Mini|BlackBerry|webOS)" [NC]
+RewriteCond %{QUERY_STRING} !(^|&)full=1(&|$) [NC]
+RewriteCond %{REQUEST_URI} !^/vogue/iam/(induction|about|science|our-team|shop)\.html$ [NC]
+RewriteRule ^vogue/iam/.*\.html$ /vogue/iam/induction.html?mobile=1 [R=302,L,NE]
+
 # Password-free Universal Mind I AM entrypoints.
 RewriteRule ^wallet/?$ /vogue/iam/wallet.html [L]
 RewriteRule ^shop/?$ /vogue/iam/index.html?shop=1 [R=302,L,NE]

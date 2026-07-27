@@ -9,7 +9,11 @@
 
   // Shop is a room inside Music Television. A top-level visit enters the
   // persistent shell first so existing media can survive page navigation.
-  if (window.self === window.top && params.get("standalone") !== "1") {
+  if (
+    window.self === window.top
+    && params.get("standalone") !== "1"
+    && window.IAMMobileEditorial?.active !== true
+  ) {
     const shellUrl = new URL("index.html", window.location.href);
     shellUrl.searchParams.set("shop", "1");
     window.location.replace(shellUrl.href);

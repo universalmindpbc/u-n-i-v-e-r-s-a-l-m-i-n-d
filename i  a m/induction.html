@@ -60,6 +60,8 @@
     <link rel="shortcut icon" type="image/png" href="/vogue/iam/favicon.png?v=iam-favicon-3">
     <link rel="apple-touch-icon" sizes="180x180" href="/vogue/iam/apple-touch-icon.png?v=iam-favicon-3">
     <link rel="stylesheet" href="styles.css?v=induction-editorial-ff83cc100d82">
+    <link rel="stylesheet" href="mobile-editorial-surface.css?v=mobile-editorial-20260728-2">
+    <script src="mobile-editorial-surface.js?v=mobile-editorial-20260728-2"></script>
     <script>
       (() => {
         const cookieName = "universalMindIAmInductionVisits";
@@ -67,6 +69,8 @@
         const cookieMaxAge = 60 * 60 * 24 * 365;
         const params = new URLSearchParams(window.location.search);
         const forceInduction = params.get("induction") === "show";
+
+        if (window.IAMMobileEditorial?.active) return;
 
         const getCookie = (name) => {
           const value = document.cookie
@@ -123,6 +127,21 @@
               <a href="https://www.orygen.org.au/Policy-Centre/Policy-Areas/Population-groups/The-next-post/Orygen_Young_veterans-Policy-paper_Mar2018edition_?ext=.pdf" target="_blank" rel="noreferrer">“The Next Post: Young people transitioning from military service and their mental health”</a>
             </p>
           </header>
+
+          <section class="mobile-experience-notice" id="mobile-experience" aria-labelledby="mobile-experience-title">
+            <p class="mobile-experience-notice__eyebrow">Mobile</p>
+            <h2 id="mobile-experience-title">THE FULL I AM EXPERIENCE</h2>
+            <p><strong>is currently available on desktop and tablet.</strong></p>
+            <p>An iOS SDK is in development, designed to bring Universal Mind experiences into many different apps.</p>
+            <p>Visit universalmind.tv on a desktop or tablet to enter the full experience.</p>
+            <nav aria-label="Explore Universal Mind on mobile">
+              <a href="induction.html?mobile=1" aria-current="page">induction</a>
+              <a href="about.html?aboutTopLevel=1">about</a>
+              <a href="science.html">science</a>
+              <a href="our-team.html">our team</a>
+              <a href="shop.html">shop</a>
+            </nav>
+          </section>
 
           <div class="induction-pages">
             <section class="induction-copy induction-copy--intro" aria-label="Universal Mind I Am introduction">
@@ -189,6 +208,7 @@
         </div>
       </section>
     </main>
+    <script>window.IAMMobileEditorial?.apply();</script>
     <script src="cloudflare-stream-catalogue.js?v=stream-catalogue-9c3eb91a8b7c"></script>
     <script src="cloudflare-stream-controller.js?v=stream-controller-8"></script>
   </body>
