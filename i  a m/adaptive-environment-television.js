@@ -257,10 +257,6 @@
   let sexEdStartTime = 139;
   let sexEdNeedsInitialSeek = true;
   let sexEdReturnProgramme = null;
-  let sexEdAudioContext = null;
-  let sexEdAudioSource = null;
-  let sexEdAudioGain = null;
-  let sexEdAudioCompressor = null;
   let musicCatalogueRecords = [];
   let radioStationRecords = DEFAULT_RADIO_STATIONS.map((station) => ({ ...station }));
   let musicShelfOrders = { videos: [], parties: [], radio: radioStationRecords.slice(), fashion: [] };
@@ -412,12 +408,6 @@
   const RADIO_SEGMENT_CROSSFADE_SECONDS = .035;
   const RADIO_SEGMENT_POLL_MS = 3000;
   const SEX_ED_PROGRAMME_MIX_LEVEL = .15;
-  const SEX_ED_EPISODE_GAIN = Object.freeze({
-    "01": 2,
-  });
-  const SEX_ED_EPISODE_LIMITER = Object.freeze({
-    "01": Object.freeze({ threshold: -1.5, knee: 0, ratio: 20, attack: .003, release: .12 }),
-  });
   let continuationAudio = null;
   let continuationHls = null;
   let continuationSegmentPlayer = null;
@@ -5248,54 +5238,6 @@
     document.title = `${title} | Sex-ed`;
   }
 
-  function applySexEdEpisodeGain() {
-    if (!sexEdEpisodeVideo) return 1;
-    const targetGain = Math.max(1, Number(SEX_ED_EPISODE_GAIN[sexEdActiveEpisode]) || 1);
-    const limiter = SEX_ED_EPISODE_LIMITER[sexEdActiveEpisode] || null;
-    sexEdEpisodeVideo.crossOrigin = "anonymous";
-    sexEdEpisodeVideo.volume = 1;
-    document.body.dataset.sexEdForegroundGain = String(targetGain);
-    document.body.dataset.sexEdForegroundGainDb = (20 * Math.log10(targetGain)).toFixed(2);
-    document.body.dataset.sexEdForegroundLimiter = limiter ? "active" : "bypass";
-
-    const AudioContextClass = window.AudioContext || window.webkitAudioContext;
-    if (!AudioContextClass) {
-      document.body.dataset.sexEdForegroundGainState = "media_volume_only";
-      return 1;
-    }
-
-    try {
-      if (!sexEdAudioContext) sexEdAudioContext = new AudioContextClass();
-      if (!sexEdAudioSource) {
-        sexEdAudioSource = sexEdAudioContext.createMediaElementSource(sexEdEpisodeVideo);
-        sexEdAudioGain = sexEdAudioContext.createGain();
-        sexEdAudioCompressor = sexEdAudioContext.createDynamicsCompressor();
-        sexEdAudioSource.connect(sexEdAudioGain);
-        sexEdAudioGain.connect(sexEdAudioCompressor);
-        sexEdAudioCompressor.connect(sexEdAudioContext.destination);
-      }
-      const currentTime = sexEdAudioContext.currentTime;
-      sexEdAudioGain.gain.setValueAtTime(targetGain, currentTime);
-      sexEdAudioCompressor.threshold.setValueAtTime(limiter?.threshold ?? 0, currentTime);
-      sexEdAudioCompressor.knee.setValueAtTime(limiter?.knee ?? 0, currentTime);
-      sexEdAudioCompressor.ratio.setValueAtTime(limiter?.ratio ?? 1, currentTime);
-      sexEdAudioCompressor.attack.setValueAtTime(limiter?.attack ?? .003, currentTime);
-      sexEdAudioCompressor.release.setValueAtTime(limiter?.release ?? .12, currentTime);
-      document.body.dataset.sexEdForegroundLimiterThreshold = String(limiter?.threshold ?? 0);
-      document.body.dataset.sexEdForegroundGainState = "connected";
-      sexEdAudioContext.resume?.()
-        .then(() => {
-          document.body.dataset.sexEdForegroundAudioContext = sexEdAudioContext.state;
-        })
-        .catch(() => {});
-      return targetGain;
-    } catch (error) {
-      document.body.dataset.sexEdForegroundGainState = "media_volume_only";
-      document.body.dataset.sexEdForegroundGainError = String(error?.message || error).slice(0, 140);
-      return 1;
-    }
-  }
-
   async function seekSexEdEpisodeStart() {
     if (!sexEdEpisodeVideo || !sexEdNeedsInitialSeek) return;
     if (sexEdEpisodeVideo.readyState < 1) {
@@ -5324,7 +5266,7 @@
 
   async function playSexEdEpisode() {
     if (!sexEdEpisodeVideo) return false;
-    applySexEdEpisodeGain();
+    sexEdEpisodeVideo.volume = 1;
     await ensureSexEdStream(sexEdEpisodeVideo, "music");
     await seekSexEdEpisodeStart();
     sexEdEpisodeVideo.muted = false;
@@ -5351,25 +5293,12 @@
     sexEdLoopVideos.forEach((video) => {
       try { video.pause(); } catch {}
     });
-    if (sexEdAudioGain && sexEdAudioContext) {
-      sexEdAudioGain.gain.setValueAtTime(1, sexEdAudioContext.currentTime);
-    }
-    if (sexEdAudioCompressor && sexEdAudioContext) {
-      sexEdAudioCompressor.ratio.setValueAtTime(1, sexEdAudioContext.currentTime);
-    }
     if (sexEdEpisodeStart) sexEdEpisodeStart.hidden = false;
     sexEdNeedsInitialSeek = true;
     delete document.body.dataset.sexEdEpisode;
     delete document.body.dataset.sexEdEpisodeStart;
     delete document.body.dataset.sexEdEpisodeTitle;
     delete document.body.dataset.sexEdEpisodeGuest;
-    delete document.body.dataset.sexEdForegroundGain;
-    delete document.body.dataset.sexEdForegroundGainDb;
-    delete document.body.dataset.sexEdForegroundGainState;
-    delete document.body.dataset.sexEdForegroundAudioContext;
-    delete document.body.dataset.sexEdForegroundGainError;
-    delete document.body.dataset.sexEdForegroundLimiter;
-    delete document.body.dataset.sexEdForegroundLimiterThreshold;
     if (wasActive) {
       setProgrammeMixLevel(null);
       updateNowPlaying();

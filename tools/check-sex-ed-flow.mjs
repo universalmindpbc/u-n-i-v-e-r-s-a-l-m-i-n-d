@@ -46,12 +46,10 @@ assert.doesNotMatch(televisionJs, /openInVideoPageLayer\(sexEdLink\)/);
 assert.match(televisionJs, /setProgrammeMixLevel\(level\)/);
 assert.match(televisionJs, /const SEX_ED_PROGRAMME_MIX_LEVEL = \.15/);
 assert.match(televisionJs, /setProgrammeMixLevel\(SEX_ED_PROGRAMME_MIX_LEVEL\)/);
-assert.match(televisionJs, /"01": 2/);
-assert.match(televisionJs, /createMediaElementSource\(sexEdEpisodeVideo\)/);
-assert.match(televisionJs, /createDynamicsCompressor\(\)/);
-assert.match(televisionJs, /sexEdAudioGain\.connect\(sexEdAudioCompressor\)/);
-assert.match(televisionJs, /ratio: 20/);
-assert.match(televisionJs, /dataset\.sexEdForegroundLimiter = limiter \? "active" : "bypass"/);
+assert.match(televisionJs, /sexEdEpisodeVideo\.volume = 1/);
+assert.doesNotMatch(televisionJs, /SEX_ED_EPISODE_GAIN/);
+assert.doesNotMatch(televisionJs, /createMediaElementSource\(sexEdEpisodeVideo\)/);
+assert.doesNotMatch(televisionJs, /sexEdForegroundGain/);
 assert.match(televisionJs, /stopSexEdEpisode\(\{ restoreProgramme: false \}\)/);
 assert.match(televisionJs, /level === null \|\| level === undefined \|\| level === ""/);
 assert.match(televisionJs, /dataset\.programmeFixedMixLevel = String\(programmeFixedMixLevel\)/);
@@ -82,7 +80,7 @@ assert.match(index, /data-sex-ed-world/);
 assert.match(index, /Mugler - Fall Winter 2021\.mp4/);
 assert.match(index, /data-sex-ed-shell-video/);
 assert.match(index, /From Doula to Stripper - Reclaiming the Forbidden Feminine with Caitlin Erica\.mp4/);
-assert.match(index, /55930437b1aeff8960fb73aee334fd71\/thumbnails\/thumbnail\.jpg\?time=900s&height=360/);
+assert.match(index, /9162e29e524b6db596d72d8c9720729d\/thumbnails\/thumbnail\.jpg\?time=900s&height=360/);
 assert.doesNotMatch(index.match(/<video[\s\S]*?data-sex-ed-shell-video[\s\S]*?<\/video>/)?.[0] || "", /\scontrols(?:\s|>)/);
 assert.equal((index.match(/class="adaptive-television-sex-ed-grid"[\s\S]*?<\/div>/)?.[0].match(/<video /g) || []).length, 4);
 assert.equal((index.match(/class="adaptive-television-sex-ed-grid"[\s\S]*?<\/div>/)?.[0].match(/<img /g) || []).length, 2);
@@ -122,7 +120,7 @@ assert.match(sexEdJs, /episodeVideo\.currentTime = startTime/);
 new Script(sexEdJs, { filename: "sex-ed.js" });
 
 for (const [fileName, uid] of [
-  ["From Doula to Stripper - Reclaiming the Forbidden Feminine with Caitlin Erica.mp4", "55930437b1aeff8960fb73aee334fd71"],
+  ["From Doula to Stripper - Reclaiming the Forbidden Feminine with Caitlin Erica.mp4", "9162e29e524b6db596d72d8c9720729d"],
   ["The Truth About Tantra, Sacred Union & Embodied Wealth - Sofia Sundari.mp4", "a821a9447efb3dd9381008eafac0ff78"],
   ["Femininity Explored - Power, Sex, & Intimacy, with Vylana.mp4", "ef8bbcd95a067bbc294d0d493b93fabc"],
   ["The Psychology of boring sex with Shashi Solluna - Tantra - Expanding The Window of Pleasure.mp4", "af6f972e12eb0e9317a0d4e0d694b382"],

@@ -14,7 +14,7 @@
     "Flume - Never Be Like You feat. Kai [ Live at Laneway Festival ].mp4": "6768454558383ed9b6a8be6554b07ef7",
     "Flume - Tiny Cities feat. Beck.mp4": "8c93a0419c8da7f73bb601d8dfd53943",
     "Femininity Explored - Power, Sex, & Intimacy, with Vylana.mp4": "ef8bbcd95a067bbc294d0d493b93fabc",
-    "From Doula to Stripper - Reclaiming the Forbidden Feminine with Caitlin Erica.mp4": "55930437b1aeff8960fb73aee334fd71",
+    "From Doula to Stripper - Reclaiming the Forbidden Feminine with Caitlin Erica.mp4": "9162e29e524b6db596d72d8c9720729d",
     "Globe Landing Page Video - Sunscreem - Perfection Motion for RMU.mp4": "fd142ca0e1672dd7a92729857db1facd",
     "Grimes - Genesis.mp4": "e6a813342812c4039b48aff744f64304",
     "Healthy Sexuality Vs. Healing Sexuality - Teal Swan.mp4": "b35b5890ca38c7b99bfc7adaae5bc16c",
