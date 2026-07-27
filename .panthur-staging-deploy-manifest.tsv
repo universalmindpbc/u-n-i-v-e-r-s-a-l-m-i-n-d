@@ -106,17 +106,16 @@ dcf221ac9c0e10c78fd98037da21b004e714d9845fbe757aa165b0cb7701b4e5	adaptive-enviro
 00e182a786017f5a82429c24db86a531e6dc3935916ffa5f1dce69558f7f9340	adaptive-music-trajectory-policy-v2.json
 5bcbf61ff69c8db3466ce6d94c329e6bfa090d7a465814b9c9422942931da4d0	handover 1.11.md
 a08aea883abe8dc9aeb7dcb3d00d01f2383690c4589d1f1ad7b94e64df732317	api/adaptive-music-video-selection.php
-324832c3b5d3b801e3c5d75e0a394c84f784975b00fec66a908675f5176a0f35	api/mantra-library.php
-3768d4a9fe093099d983d4da7c8567ed142a4f0010f5a8b514bd97f63c78f324	api/mantra-library.json
+1f3520675feda5692f2ed874085e9c33ca5264120afd6ca500562f95cf2309ec	api/mantra-library.php
 5d9f6692b2d904275a6774c8641b8f891fdc73dd22d0d814bd1050f81859d9d4	api/broadcast-clock.php
-eddef54940a3a48620977e7f6888b1f82ee3c21a75d092d4031470c5bb54f2cc	api/quantum-tree-settings.php
-55be60405ee05c5fb53833bc796a3c421d5ac6befb84c416437ebbc4da936c21	api/quantum-tree-settings.json
+7cd34f1350ba6a637e0a80ee4d7de3e5fc826f78f356552ad433fd2aa0289b35	api/quantum-tree-settings.php
+e4f89461e10f3e317b5d97873023c7607bb356e673a89a175612c9df4ddb8b85	api/owner-state-history.php
 8178460f2d594ece008e01e417b9c3f51acbf996583de9ca7e03e85f45561566	api/adaptive-music-video-selection.py
 b24c854a7f72d9405a5356f697f7c30658a659d25472517d254b090ca7fa3e3d	api/realtime-client-secret.php
 213da8d3b9ecf5ef18fd3e6b510cf14df3a4fc9e1081b81c0cc980418c3e9158	api/mantra-voice.php
 24f9f1f922a53868938abc09fc7072eb4ceda15bcde76211ab8c1ff72aa640ae	api/citizen-needs-inference.php
 3e3e42839dd57487ed36514a52029588545699122ddb67a9899374ba8dd431cd	api/broadcast-interactions.php
-6a8254aba9609963d3bf84ad05febfcde1aaf989711241e33f74dd5315d43a50	api/.htaccess
+d0a555d584a0824037004347280f8111b1b9340dbcab9ef5585cd64b057f5bf6	api/.htaccess
 014ed369f68cae824cd12a96033ce03ca01cddd6e835bce572b018d78c9b1d27	cloudflare-stream-catalogue.js
 cbae09470f81c4e4444bf4b77680ac945f8741ad7f4de1a9a93947443cf49885	shop.js
 db213ad178d17d3b7092436c17048a426e2ac2cc8cedaa1a4a1740b1c0184bec	video-beat-grid-v1.json
@@ -250,7 +249,6 @@ df7602dc9b80a2d6ec485298ec771a25bdc6819cf97be188493882dd1a49e7c8	a s s e t s/m a
 989aeecadaa5222f6716af782f2ec12ffe64047df1fdcab66aa5342f39797696	a s s e t s/j a m e s b o n d a g e/s q u a r e  v i d e o s/gif position 5.gif
 b2a543ef4624f5b96ede3cc0b45b35bbbffee3e2a499a72af910d8ccbf6aedc8	a s s e t s/Vogue - Front Cover.png
 b41634dca5af7bae44dc76c5a98d562ce94f060065ddc448d31f1f3e70f45c55	a s s e t s/iconmonstr-video play button - white -16-240.png
-01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b	a s s e t s/m a n t r a [ u p l o a d s ]/.gitkeep
 42696e9d82cce1333c571c6b749e7d50daa3e258bdd1cd8b70ac59e604f1ccad	a s s e t s/q a/quantum-tree-next-pass-sasha-typical-56-percent.wav
 f8e58c5d47ca7b7708d9bf2be677b2811887fd16d997cf09971f1fc5cf7bd4fe	a s s e t s/q a/quantum-tree-current-sasha-typical-0.73-percent.wav
 02eba9b37349d2c376b9bac7cfffdc73f8079c7e57b8503f58d144e1cc6239a6	a s s e t s/q a/quantum-tree-sasha-typical-44-percent.wav
