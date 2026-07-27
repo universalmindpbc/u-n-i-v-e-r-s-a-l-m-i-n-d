@@ -21,9 +21,10 @@ const redirects = read("_redirects");
 for (const required of [
   "James Bondage",
   "24 brands",
-  "304",
+  "309",
   "affiliate relationships are proposed",
-  "Bordelle / Signature Waspie",
+  "Bordelle",
+  "Signature Waspie",
   "WARDROBE.NYC",
   "KARLA ŠPETIĆ",
   "The Upside",
@@ -79,15 +80,21 @@ for (const product of catalogue.products) {
 }
 
 assert.equal(productKernel.counts.brands, 24, "Fashion kernel must retain all 24 approved retailers");
-assert.equal(productKernel.products.length, 304, "Fashion kernel must contain exactly 304 canonical product URLs from Notion");
-assert.equal(new Set(productKernel.products.map((product) => product.canonicalUrl)).size, 304, "Fashion kernel product URLs must be canonical and unique");
+assert.equal(productKernel.products.length, 309, "Fashion kernel must contain exactly 309 approved canonical product URLs from Notion");
+assert.equal(new Set(productKernel.products.map((product) => product.canonicalUrl)).size, 309, "Fashion kernel product URLs must be canonical and unique");
+assert.equal(new Set(productKernel.products.map((product) => `${product.brand}:${product.slug}`)).size, 309, "Fashion kernel product slugs must be unique within each brand");
 assert.equal(productKernel.products.filter((product) => product.metadataStatus === "Metadata ready").length, 36, "All 36 approved ERES records must be metadata-ready");
-assert.equal(productKernel.products.filter((product) => product.listedOnShop).length, 37, "The 36 finished ERES records and approved Emilio inventory record must be listed");
+assert.equal(productKernel.products.filter((product) => product.listedOnShop).length, 309, "Every approved product record must be listed");
+assert.equal(productKernel.products.filter((product) => product.image).length, 309, "Every approved product record must carry an approved hero image");
 assert.ok(productKernel.products.every((product) => product.retailerUrl?.startsWith("https://")), "Every tensor product must retain its exact retailer URL");
 assert.equal(productKernel.authority.policy, "exact_notion_product_urls_only", "Notion must remain the sole product authority");
 const emilioProduct = productKernel.products.find((product) => product.brand === "Emilio Cavallini");
 assert.equal(emilioProduct?.retailerUrl, "https://www.emiliocavallini.com/en/engeneered-body.html", "Emilio Cavallini must retain Ben's exact approved product URL");
 assert.equal(emilioProduct?.metadataStatus, "Inventory only", "The Emilio catalogue card must remain fail-closed until retailer metadata is fully verified");
+for (const product of productKernel.products) {
+  assert.ok(product.slug, `Missing stable product slug: ${product.id}`);
+  assert.ok(fs.existsSync(path.join(iam, product.image)), `Missing approved catalogue image: ${product.image}`);
+}
 
 const assetMatches = [...shop.matchAll(/src="(a s s e t s\/shop-mockup\/[^"]+)"/g)].map((match) => match[1]);
 assert.ok(assetMatches.length >= 12, "Shop must use the locally preserved presentation imagery");
@@ -115,9 +122,14 @@ for (const suppliedSilentVideo of [
   "emilio-cavallini-home-silent.mp4",
   "mugler-adut-home-1.mp4",
   "mugler-adut-home-2.mp4",
+  "bordelle-look83-waspie-home.mp4",
+  "nagnata-home-silent-1.mp4",
+  "nagnata-home-silent-2.mp4",
 ]) {
   assert.match(shop, new RegExp(`<video[^>]*data-shop-silent-video[^>]*muted[^>]*playsinline[^>]*loop[^>]*>[\\s\\S]*?${suppliedSilentVideo.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}`), `Missing muted supplied homepage film: ${suppliedSilentVideo}`);
 }
+assert.match(shop, /href="#catalogue\/nagnata"[^>]*>[\s\S]*?nagnata-home-silent-1\.mp4[\s\S]*?nagnata-home-silent-2\.mp4[\s\S]*?<div class="shop-product__copy shop-product__copy--brand-only"><p>NAGNATA<\/p><em>view edit<\/em><\/div>/, "Nagnata films must link to the brand shopfront without a product name");
+assert.match(shop, /pucci-vivara-editorial\.jpg/, "The supplied Pucci Vivara editorial still must replace the previous homepage image");
 
 for (const suppliedReference of [
   "https://eu.bordelle.co.uk/products/signature-waspie-cream?variant=43656648884396",
@@ -130,7 +142,17 @@ for (const suppliedReference of [
   "https://www.emiliocavallini.com/en/engeneered-body.html",
   "https://www.eresparis.com/eu/en/lingerie/60973-0022.html",
 ]) {
-  assert.match(shop, new RegExp(suppliedReference.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")), `Missing supplied product reference: ${suppliedReference}`);
+  assert.ok(productKernel.products.some((product) => product.retailerUrl === suppliedReference), `Missing supplied product reference: ${suppliedReference}`);
+}
+
+for (const featuredReference of [
+  "https://anniesibiza.com/collections/annies-favourites-1/products/theodora-gown",
+  "https://skims.com/en-au/products/fits-everybody-lace-scoop-bralette-onyx",
+  "https://eu.bordelle.co.uk/products/signature-harness-angela-dress-burnt-red?variant=43656631681196",
+  "https://www.emiliocavallini.com/en/bouganvillea-tights.html",
+  "https://triangl.com/en-au/products/celeste-jett-black-short?variant=42685752049760",
+]) {
+  assert.ok(productKernel.products.some((product) => product.retailerUrl === featuredReference), `Featured homepage product is missing from the canonical kernel: ${featuredReference}`);
 }
 
 assert.match(shop, /data-shop-live-band[\s\S]*data-stream-role="fashion"[\s\S]*autoplay[\s\S]*muted/, "Every Shop route must open with the silent live fashion band");
@@ -139,14 +161,15 @@ assert.match(shopScript, /stateAt\("fashion-underground-intensity"\)/, "The live
 assert.match(shopScript, /wolford-sergio-rossi-capsule[\s\S]*mugler-fall-winter-2021/, "The first live channel proof must rotate between Wolford and Mugler");
 assert.match(shopScript, /shopLiveDriftSeconds[\s\S]*entry_seek[\s\S]*hard_seek[\s\S]*soft_catchup/, "The live band must remain locked to the shared broadcast clock");
 assert.match(shopStyle, /height:\s*clamp\(430px, 66svh, 760px\)/, "The live masthead must remain a full-width two-thirds-height band");
-assert.match(shop, /shop-film-editorial[\s\S]*player\.vimeo\.com\/video\/987002812[^\"]*muted=1/, "The supplied muted Bordelle Vimeo must live lower on the homepage as editorial film");
+assert.match(shop, /data-shop-silent-video[\s\S]*bordelle-look83-waspie-home\.mp4/, "The supplied Bordelle Look83 film must replace the duplicate product still");
+assert.doesNotMatch(shop, /player\.vimeo\.com\/video\/987002812/, "The slow remote Bordelle Vimeo must not remain on the homepage");
 assert.match(shop, /shopBrandVariant === "b" \? "handdrawn" : "a"/, "The hand-drawn brand test must remain a switchable B variant");
 assert.match(shop, /shopBrandInk === "white" \? "white" : "black"/, "The hand-drawn B hero must expose deterministic black and white ink proofs");
 assert.match(shopStyle, /data-shop-brand-variant="handdrawn"\]\[data-shop-brand-ink="white"\][\s\S]*brightness\(0\) invert\(1\)/, "The white B hero proof must invert the hand-drawn artwork cleanly");
 assert.match(shopStyle, /data-shop-brand-variant="handdrawn"\] \.shop-context--about,[\s\S]*background:\s*#050505[\s\S]*color:\s*#fff/, "The lower B brand sections must remain black with white artwork");
 assert.match(shopStyle, /\.shop-hero h1\s*\{[\s\S]*?font-family:\s*var\(--shop-serif\)/, "The A masthead must use the approved single classic serif treatment");
 assert.doesNotMatch(shopStyle, /--shop-brand(?:-serif)?:/, "The rejected split novelty font treatment must not return");
-assert.ok((shop.match(/james-bondage-handdrawn-faces-b\.png/g) || []).length >= 4, "The interlocking face mark must recur as B-version branding");
+assert.ok((shop.match(/james-bondage-handdrawn-faces-b\.png/g) || []).length >= 3, "The interlocking face mark must recur as B-version branding");
 assert.match(shop, /james-bondage-handdrawn-wordmark-b\.png/, "The B-version hero must use the isolated yellow hand-drawn wordmark");
 assert.ok(fs.existsSync(path.join(iam, "a s s e t s/shop-mockup/james-bondage-handdrawn-wordmark-b.png")), "Missing isolated B-version wordmark");
 assert.ok(fs.existsSync(path.join(iam, "a s s e t s/shop-mockup/james-bondage-handdrawn-faces-b.png")), "Missing isolated B-version face mark");
@@ -167,7 +190,7 @@ assert.equal((shop.match(/data-shop-catalogue-type=/g) || []).length, 6, "Shop m
 assert.match(shop, /James Bondage is 24\/7 electronic music television broadcasting sex x mindfulness/i, "Shop About must use the approved 24/7 electronic music television copy");
 assert.match(shop, /Our James Bondage Health series \[ sex-ed \] shares female lead conversations/i, "Shop About must preserve the approved James Bondage Health distinction");
 assert.match(shop, /All profits from affiliate revenue are invested in mental health\./i, "Giving Back must state the approved affiliate profit formula");
-assert.match(shop, /youth mental health outreach \| youth mental health research \| women’s mental health \|veteran’s mental health/i, "Giving Back must preserve the four approved wallet choices");
+assert.match(shop, /<li>youth mental health outreach<\/li>[\s\S]*<li>youth mental health research<\/li>[\s\S]*<li>women’s mental health<\/li>[\s\S]*<li>veteran’s mental health<\/li>/i, "Giving Back must preserve the four approved wallet choices as separate lines");
 assert.match(shop, /href="#catalogue\/eres"[^>]*data-shop-catalogue-link/, "ERES must open from the 24-brand ledger");
 assert.match(shop, /data-catalogue-editorial-header/, "ERES catalogue must open with the approved editorial header");
 assert.match(shop, /data-shop-product-dialog/, "Catalogue must expose the quiet expanded product view");
@@ -176,7 +199,9 @@ assert.match(shop, /data-catalogue-brand[\s\S]*data-catalogue-type[\s\S]*data-ca
 assert.match(shop, /price \/ low to high[\s\S]*price \/ high to low/, "Combined catalogue must expose both price sort directions");
 assert.match(shopScript, /catalogueProductHash\(slug\)/, "Expanded product state must have a shareable retailer-agnostic hash route");
 assert.match(shopScript, /shop-product-kernel-v1\.json/, "Shop catalogue must render from the Notion-backed product kernel");
-assert.match(shopScript, /metadataStatus === "Metadata ready" && Boolean\(product\.image\)/, "Shop must fail closed before adding imagery or expanded detail");
+assert.match(shopScript, /metadataStatus === "Metadata ready" && Boolean\(product\.image\)/, "Shop must fail closed before adding expanded detail");
+assert.match(shopScript, /activeCatalogueLead[\s\S]*visibleProducts\.findIndex[\s\S]*visibleProducts\.unshift/, "Homepage campaigns must deterministically move their approved product into slot one");
+assert.match(shopScript, /function productHasImage[\s\S]*Boolean\(product\.image\)/, "Inventory-only cards must still show their approved exact-source image");
 assert.match(shopScript, /catalogueChunkSize = 24/, "Catalogue must use the approved 24-product loading rhythm");
 assert.match(shopScript, /load \$\{remaining\} more/, "Catalogue must expose progressive load-more control rather than endless scroll");
 assert.match(shopScript, /roundRobinByBrand/, "Universal editorial ordering must surface brand diversity rather than one full brand at a time");

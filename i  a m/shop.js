@@ -29,8 +29,9 @@
   const themeButton = document.querySelector("[data-shop-theme-toggle]");
   const themeLabel = document.querySelector("[data-shop-theme-label]");
   const liveBand = document.querySelector("[data-shop-live-band]");
+  const hero = document.querySelector(".shop-hero");
+  const heroFullscreen = document.querySelector("[data-shop-hero-fullscreen]");
   const liveTitle = document.querySelector("[data-shop-live-title]");
-  const bordelleFilm = document.querySelector("[data-shop-bordelle-film]");
   const musicButton = document.querySelector("[data-shop-music]");
   const musicLabel = document.querySelector("[data-shop-music-label]");
   const catalogueSection = document.querySelector("[data-shop-catalogue]");
@@ -65,6 +66,7 @@
   let activeCatalogueBrand = "all";
   let activeCatalogueType = "all";
   let activeCatalogueSort = "editorial";
+  let activeCatalogueLead = "";
   let activeCatalogueLimit = 24;
   let catalogueProducts = [];
   let catalogueKernel = null;
@@ -406,6 +408,10 @@
     return product.metadataStatus === "Metadata ready" && Boolean(product.image);
   }
 
+  function productHasImage(product) {
+    return Boolean(product.image);
+  }
+
   function updateCatalogueHeader(visibleProducts) {
     const brand = currentBrandRecord();
     const displayName = brand?.brand || "SHOP";
@@ -424,7 +430,7 @@
 
     const brandImages = activeCatalogueBrand === "all"
       ? []
-      : visibleProducts.filter(productHasFullDetail).slice(0, 2);
+      : visibleProducts.filter(productHasImage).slice(0, 2);
     const hasBrandImages = brandImages.length >= 2;
     catalogueHeader?.classList.toggle("is-text-only", !hasBrandImages);
     if (hasBrandImages && catalogueLeadImage && catalogueAsideImage) {
@@ -440,6 +446,7 @@
     article.className = "shop-catalogue-card";
     article.dataset.catalogueProduct = product.slug || product.id;
     article.dataset.categories = (product.categories || []).join(" ");
+    const hasImage = productHasImage(product);
     const fullDetail = productHasFullDetail(product);
     article.dataset.metadataState = fullDetail ? "ready" : "inventory";
 
@@ -456,7 +463,7 @@
     }
 
     const figure = document.createElement("figure");
-    if (fullDetail) {
+    if (hasImage) {
       const image = document.createElement("img");
       image.src = product.image;
       image.alt = product.imageAlt || `${product.brand} ${product.name}`;
@@ -520,6 +527,14 @@
 
     if (activeCatalogueBrand === "all" && activeCatalogueSort === "editorial") {
       visibleProducts = roundRobinByBrand(visibleProducts);
+    }
+
+    if (activeCatalogueLead) {
+      const leadIndex = visibleProducts.findIndex((product) => product.slug === activeCatalogueLead);
+      if (leadIndex > 0) {
+        const [leadProduct] = visibleProducts.splice(leadIndex, 1);
+        visibleProducts.unshift(leadProduct);
+      }
     }
 
     lastCatalogueResultCount = visibleProducts.length;
@@ -598,6 +613,7 @@
       type: typeIndex >= 0 ? decodeURIComponent(parts[typeIndex + 1] || "all") : decodeURIComponent(search.get("type") || "all"),
       product: productIndex >= 0 ? decodeURIComponent(parts[productIndex + 1] || "") : "",
       sort: search.get("sort") || "editorial",
+      lead: search.get("lead") || "",
       count: Number(search.get("count") || catalogueChunkSize),
     };
   }
@@ -608,6 +624,7 @@
       : `#catalogue/${activeCatalogueBrand}/type/${activeCatalogueType}`;
     const search = new URLSearchParams();
     if (activeCatalogueSort !== "editorial") search.set("sort", activeCatalogueSort);
+    if (activeCatalogueLead) search.set("lead", activeCatalogueLead);
     if (activeCatalogueLimit > catalogueChunkSize) search.set("count", String(activeCatalogueLimit));
     const query = search.toString();
     return path + (query ? `?${query}` : "");
@@ -617,6 +634,7 @@
     const search = new URLSearchParams();
     if (activeCatalogueType !== "all") search.set("type", activeCatalogueType);
     if (activeCatalogueSort !== "editorial") search.set("sort", activeCatalogueSort);
+    if (activeCatalogueLead) search.set("lead", activeCatalogueLead);
     if (activeCatalogueLimit > catalogueChunkSize) search.set("count", String(activeCatalogueLimit));
     const query = search.toString();
     return `#catalogue/${activeCatalogueBrand}/product/${encodeURIComponent(slug)}` + (query ? `?${query}` : "");
@@ -635,6 +653,7 @@
     activeCatalogueBrand = validBrand ? route.brand : "all";
     activeCatalogueType = route.type || "all";
     activeCatalogueSort = ["editorial", "price-asc", "price-desc"].includes(route.sort) ? route.sort : "editorial";
+    activeCatalogueLead = route.lead || "";
     activeCatalogueLimit = Number.isFinite(route.count)
       ? Math.max(catalogueChunkSize, Math.floor(route.count))
       : catalogueChunkSize;
@@ -662,18 +681,21 @@
   catalogueBrandSelect?.addEventListener("change", () => {
     activeCatalogueBrand = catalogueBrandSelect.value || "all";
     activeCatalogueType = "all";
+    activeCatalogueLead = "";
     activeCatalogueLimit = catalogueChunkSize;
     window.location.hash = catalogueBrowseHash();
   });
 
   catalogueTypeSelect?.addEventListener("change", () => {
     activeCatalogueType = catalogueTypeSelect.value || "all";
+    activeCatalogueLead = "";
     activeCatalogueLimit = catalogueChunkSize;
     window.location.hash = catalogueBrowseHash();
   });
 
   catalogueSortSelect?.addEventListener("change", () => {
     activeCatalogueSort = catalogueSortSelect.value || "editorial";
+    activeCatalogueLead = "";
     activeCatalogueLimit = catalogueChunkSize;
     window.history.replaceState(null, "", catalogueBrowseHash());
     renderCatalogue();
@@ -697,7 +719,7 @@
 
   async function loadCatalogue() {
     try {
-      const response = await fetch("shop-product-kernel-v1.json?v=shop-universal-catalogue-2", { credentials: "same-origin" });
+      const response = await fetch("shop-product-kernel-v1.json?v=shop-universal-catalogue-16", { credentials: "same-origin" });
       if (!response.ok) throw new Error(`Catalogue request failed: ${response.status}`);
       catalogueKernel = await response.json();
       catalogueProducts = Array.isArray(catalogueKernel.products)
@@ -740,11 +762,19 @@
     liveBand.pause();
   }
 
-  if (bordelleFilm && window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-    const reducedMotionUrl = new URL(bordelleFilm.src);
-    reducedMotionUrl.searchParams.set("autoplay", "0");
-    bordelleFilm.src = reducedMotionUrl.href;
-  }
+  heroFullscreen?.addEventListener("click", async () => {
+    try {
+      if (document.fullscreenElement || document.webkitFullscreenElement) {
+        if (document.exitFullscreen) await document.exitFullscreen();
+        else if (document.webkitExitFullscreen) document.webkitExitFullscreen();
+        return;
+      }
+      if (hero?.requestFullscreen) await hero.requestFullscreen();
+      else if (hero?.webkitRequestFullscreen) hero.webkitRequestFullscreen();
+    } catch {
+      // Fullscreen remains an optional enhancement on browsers that restrict it.
+    }
+  });
 
   function updateMusicStatus(detail = {}) {
     if (!musicButton || !musicLabel) return;
