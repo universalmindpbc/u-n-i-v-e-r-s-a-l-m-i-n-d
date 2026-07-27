@@ -42,6 +42,7 @@ b73735526d3a58119dcb63a1c4ef9b48414fa32e855c58190e8b77f6d92f28f3	fashion-visual-
 34235c1854b0e01b3484192b9e1aae381720ea6414f2c58c658d2eea8c35cc6e	technology-citizen-needs-server.mjs
 2cc229daf0b966255e9ef88f5758ceb14af1c46e98ad117d4c582e6fdc2dc36d	Python for Tensor from Gemin - 9 July 2026.txt
 144d67514823c8e3675f4a7d5a138b5438d90421bf73bb630747a9b4187ae880	broadcast-schedule-v1.json
+a7468b7929c254b897a3ac27b2933b5dd8b3f107929c51da95932c2166a5a9c8	happiness-rewards-public-config-v1.json
 4965fd689d7779d63bc67fca8e620790bde9532658020ee486fad02c2151c66f	adaptive-inference-engine-system-prompt-v4.44.html
 bdec966fe5d43257adc09f3d89fca08397f6673329316ccd339f59a133e1cea4	sex-ed-episode-01.html
 5300b03dadcf37108e67e03e6cc4edd1e8d4a6c1386400c8496a2ba170df43aa	adaptive-music-video-catalogue-notion-export-v1.11.json
@@ -52,6 +53,7 @@ b7a2e613c395b1c88f6b9124dbf48169326d32b29b2d9312215019c400feb8ee	handover 1.12.m
 0eb771cca2a8a92c472c0cd53913eea84abf8df0a9480c71d0d25ec4219bd798	science.css
 9cb7b0860284400b04fa3d490ca624ea700abbfb3e38b2aa49b1b3ef48b8f200	circle-audio-rooms.css
 e98001a1504264b56ff7a895704818c451940b48b7c9aac15d011e2253fc3427	i n f e r e n c e  e n g i n e  -  s y s t e m  p r o m p t  v  2 . 2 2.md
+9ede498426b83110aa2dfa971ad888823d8998ce2c5f2d968bb6ec6676fcc639	wallet.css
 72108e0785cba2e253da994bac6fadf514343a7b092a78c50b3bbb5e642e1fe5	dj-set-tensor-approved-notion-export-v1.0.json
 61340da7b8fa1b223e87b55c88134f33f832a6d660db9e570b747f21f09a2d40	adaptive-music-video-strategy.md
 84f37ed698e5bcb845f39f35cc08cc5107ef071249884380b36d5eecf3e66163	universal-one-portal-guide-v1.txt
@@ -96,6 +98,8 @@ b52659abb919fce1ad6e8c9fb0d947c89f8653dad6bc91d073eb8b1b8ec58ad3	our-team-concep
 6dd335662e4fc1aadf773fc9f3e929dad4468f04e629256936fcc5acb5c8a2e4	radio-station-tensor-notion-export-v1.0.json
 a7238920f740f1a921237bb8466901c56a8628406fa29a185bcbbd6ecdb3aab4	mantra-studio.css
 809696402633707d2f5e4028f5fcfe92a6aa18c1ce9e0f16864e8797023938e7	about.css
+7b47f3407e652402cce051e2c236077d7afe35f8ab62760e3c083acf9531aa89	wallet.js
+21d7d60e39e22eb8202f58bf51476c9f9d64791421edcb91801b4eb550fbb791	wallet.html
 174d358ee9eb0940cc3dbdb47ebf89f2dd4157286c1f15df59ee00dcc2885c06	technology-citizen-needs.js
 9575e4a26b4679429c29373dff3cd6d93ccfdeb5c49be8b60e5c7306ba4c2896	induction.html
 e3f9d0c235cfc80b7a4c5b3e639a5ca8d00c02cef20a781ce2bea02593736366	i n f e r e n c e  e n g i n e  -  s y s t e m  p r o m p t  v  4 . 4 4.md
@@ -132,6 +136,7 @@ f237cab76a076231d45693131e7aac7cd08653f2842275cb5ab3af37421dbddb	u n i v e r s a
 0d988e1c5ac332bde61f56418cdcd72b02b24ddb1a15530e82bb0f78883af9d2	a s s e t s/a n i m a t e d [ g i f s ]/Animation Portrait GIF by xavieralopez - position 6.gif
 68fe9785317c57e9288f3ff5f8c5666874190e121684a9e2b8ecd7aaccc95dca	a s s e t s/a n i m a t e d [ g i f s ]/Self Portrait Art GIF by xavieralopez-2 - position 4.gif
 3ad7d0b83e5814fac708f8b6df60a8bf38418a3ac89c5c0ac74e35d5ccc56cc6	a s s e t s/a n i m a t e d [ g i f s ]/black and white dance GIF by xavieralopez - position 5.gif
+3370333d3183770f684cebc004abf13d6d391ac4343f2c2634c49e107100bd8e	a s s e t s/happiness-wallet-qr-staging.png
 6e59e037abab754d1db3f8b2d35bee48b9fa45b1cdb988fefd52702253ae839b	a s s e t s/WME logo.png
 9251278794a42df69cc8e0df4c4c527ba46d342f65f2e601d13e8a36322510ee	a s s e t s/Ben Korbel portrait.jpg
 3dec583525e6c5b83579d07cf4adcf93c68752aeca9936ee3b183d40097f7e31	a s s e t s/r e s e a r c h/Universal Mind [ I o H ] - EMDR Medical Research.pdf
@@ -268,6 +273,7 @@ df7602dc9b80a2d6ec485298ec771a25bdc6819cf97be188493882dd1a49e7c8	a s s e t s/m a
 18343e3e9b9231e53b13d103a3c56e1884cc76e37f9bf492cc1b20ed3d63fff9	a s s e t s/m a n t r a [ m o c k u p ]/ibiza-lifestyle-vocoder.wav
 61f7a57d0988c7ec72650458b160fc2ade4d4fd7ae7cb46ded7d3c192e38aff0	a s s e t s/m a n t r a [ m o c k u p ]/tibet-universe.m4a
 380e9ad3b497da372f6d0606c883d96ab5fcad844a86bf80b317830baff413a0	a s s e t s/m a n t r a [ m o c k u p ]/ibiza-open-mind.m4a
+d6a127208ac7cfab7dfd600f86d4c88212a375bd34c364eb6e1556aeac09bcf4	a s s e t s/happiness-wallet-qr-production.png
 33c4faaeb2abd10a9b73989678ee96756435fae2cc7f7ce78da0133fe180eea6	a s s e t s/j a m e s b o n d a g e/s q u a r e  v i d e o s/gif position 2.gif
 989aeecadaa5222f6716af782f2ec12ffe64047df1fdcab66aa5342f39797696	a s s e t s/j a m e s b o n d a g e/s q u a r e  v i d e o s/gif position 5.gif
 b2a543ef4624f5b96ede3cc0b45b35bbbffee3e2a499a72af910d8ccbf6aedc8	a s s e t s/Vogue - Front Cover.png
