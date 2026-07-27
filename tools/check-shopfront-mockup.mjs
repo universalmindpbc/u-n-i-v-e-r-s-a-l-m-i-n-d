@@ -187,7 +187,7 @@ assert.match(shopScript, /productDialog\.showModal\(\)/, "Product cards must ope
 assert.match(shopScript, /productDialogPrice\.textContent = product\.price/, "Expanded product view must carry the verified price");
 assert.match(shopScript, /productDialogDescription\.textContent = product\.description/, "Expanded product view must carry the retailer-sourced description");
 assert.match(shopScript, /catalogueReturnScrollY = window\.scrollY/, "Opening an expanded product must remember the viewer's catalogue position");
-assert.match(shopScript, /window\.scrollTo\(\{ top: catalogueReturnScrollY, left: 0, behavior: "auto" \}\)/, "Closing an expanded product must restore the viewer's precise catalogue position");
+assert.match(shopScript, /restoreCatalogueScroll[\s\S]*window\.setTimeout\(restoreCatalogueScroll, 50\)/, "Closing an expanded product must restore the viewer's precise catalogue position after native dialog focus returns");
 assert.match(shopScript, /enteringCatalogue[\s\S]*scrollBehavior = "auto"[\s\S]*window\.scrollTo\(\{ top: 0, left: 0, behavior: "auto" \}\)/, "Entering ERES from the brand ledger must reset immediately to the editorial header");
 
 assert.match(shopScript, /iam:shop-music-request/, "Shop must request music through the persistent Music Television shell");

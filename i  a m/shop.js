@@ -572,8 +572,12 @@
     if (options.updateRoute && window.location.hash.includes("/product/")) {
       window.history.replaceState(null, "", catalogueReturnHash || catalogueBrowseHash());
       renderRoute();
-      window.requestAnimationFrame(() => {
+      const restoreCatalogueScroll = () => {
         window.scrollTo({ top: catalogueReturnScrollY, left: 0, behavior: "auto" });
+      };
+      window.requestAnimationFrame(() => {
+        restoreCatalogueScroll();
+        window.setTimeout(restoreCatalogueScroll, 50);
       });
     }
   }
