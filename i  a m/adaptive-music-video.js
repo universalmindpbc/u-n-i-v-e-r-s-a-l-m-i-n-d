@@ -18,7 +18,7 @@
     ? "https://realtime-staging-iam-citizen-needs-inference.universalmind.workers.dev/citizen-needs-inference"
     : document.querySelector('meta[name="iam-citizen-needs-inference-endpoint"]')?.content || "";
   const musicEndpoint = stagingHost
-    ? "https://adaptive-music-staging-iam-adaptive-music-intelligence.universalmind.workers.dev/adaptive-music-intelligence"
+    ? "https://iam-adaptive-music-intelligence-staging.universalmind.workers.dev/adaptive-music-intelligence"
     : document.querySelector('meta[name="iam-adaptive-music-intelligence-endpoint"]')?.content || "";
   const searchParams = new URLSearchParams(window.location.search);
   const liveInferenceAllowed = searchParams.get("liveInference") === "1" ||
