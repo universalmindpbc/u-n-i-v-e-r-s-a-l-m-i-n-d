@@ -1,0 +1,47 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://universalmind.tv/schemas/happiness-impact-funding-attestation-v1.schema.json",
+  "title": "HAPPINESS cohort-impact funding attestation v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "funding_stage_id",
+    "cohort_commitment",
+    "methodology_commitment",
+    "evaluator_commitment",
+    "study_registry_commitment",
+    "scientific_review_commitment",
+    "investor_milestone_commitment",
+    "triall_proof_commitment",
+    "evidence_origin",
+    "metric_type",
+    "metric_unit",
+    "metric_value",
+    "minimum_cohort_size",
+    "approved_usdc_units",
+    "issued_at",
+    "expires_at"
+  ],
+  "properties": {
+    "schema_version": { "const": "happiness_impact_funding_attestation_v1" },
+    "funding_stage_id": { "type": "string", "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{7,127}$" },
+    "cohort_commitment": { "type": "string", "pattern": "^0x[A-Fa-f0-9]{64}$" },
+    "methodology_commitment": { "type": "string", "pattern": "^0x[A-Fa-f0-9]{64}$" },
+    "evaluator_commitment": { "type": "string", "pattern": "^0x[A-Fa-f0-9]{64}$" },
+    "study_registry_commitment": { "type": "string", "pattern": "^0x[A-Fa-f0-9]{64}$" },
+    "scientific_review_commitment": { "type": "string", "pattern": "^0x[A-Fa-f0-9]{64}$" },
+    "investor_milestone_commitment": { "type": "string", "pattern": "^0x[A-Fa-f0-9]{64}$" },
+    "triall_proof_commitment": { "type": "string", "pattern": "^0x[A-Fa-f0-9]{64}$" },
+    "evidence_origin": { "const": "triall-verifiable-proof" },
+    "metric_type": {
+      "enum": ["checkin_continuity_rate", "referral_pathway_rate", "independent_study_milestone"]
+    },
+    "metric_unit": { "enum": ["basis_points", "milestone"] },
+    "metric_value": { "type": "string", "pattern": "^[0-9]+$" },
+    "minimum_cohort_size": { "type": "integer", "minimum": 1 },
+    "approved_usdc_units": { "type": "string", "pattern": "^[1-9][0-9]*$" },
+    "issued_at": { "type": "string", "format": "date-time" },
+    "expires_at": { "type": "string", "format": "date-time" }
+  }
+}

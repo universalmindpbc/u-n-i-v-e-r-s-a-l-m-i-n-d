@@ -1,4 +1,6 @@
 # Password-free Universal Mind I AM entrypoints.
+/wallet /vogue/iam/wallet.html 200
+/wallet/ /vogue/iam/wallet.html 200
 /shop /vogue/iam/index.html?shop=1 302
 /shop/ /vogue/iam/index.html?shop=1 302
 /iam /vogue/iam/induction.html 302

@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://universalmind.tv/schemas/happiness-collective-emission-attestation-v1.schema.json",
+  "title": "HAPPINESS collective participation emission attestation v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "epoch_id",
+    "rule_commitment",
+    "source_commitment",
+    "unique_eligible_checkins",
+    "continuity_rate_bps",
+    "mint_units",
+    "community_treasury",
+    "issued_at",
+    "expires_at"
+  ],
+  "properties": {
+    "schema_version": { "const": "happiness_collective_emission_attestation_v1" },
+    "epoch_id": { "type": "string", "pattern": "^[0-9]{4}-W[0-9]{2}$" },
+    "rule_commitment": { "type": "string", "pattern": "^0x[A-Fa-f0-9]{64}$" },
+    "source_commitment": { "type": "string", "pattern": "^0x[A-Fa-f0-9]{64}$" },
+    "unique_eligible_checkins": { "type": "string", "pattern": "^[1-9][0-9]*$" },
+    "continuity_rate_bps": { "type": "string", "pattern": "^[0-9]+$" },
+    "mint_units": { "type": "string", "pattern": "^[1-9][0-9]*$" },
+    "community_treasury": { "type": "string", "pattern": "^0x[A-Fa-f0-9]{40}$" },
+    "issued_at": { "type": "string", "format": "date-time" },
+    "expires_at": { "type": "string", "format": "date-time" }
+  }
+}

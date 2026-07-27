@@ -1,0 +1,22 @@
+{
+  "schema_version": "happiness_rewards_public_v1",
+  "currency": {
+    "name": "HAPPINESS",
+    "ticker": "[ I o H ]",
+    "ticker_meaning": "Internet of Happiness",
+    "icon": "a s s e t s/Universal Mind [ I o H ] Logo 512.png",
+    "decimals": 6
+  },
+  "experience": {
+    "primary_surface": "desktop_tablet_web",
+    "apple_wallet_mirror": "prepared_not_issued",
+    "categories": ["music", "fashion", "events", "health"],
+    "customer_facing_technical_language": false
+  },
+  "programme": {
+    "mode": "rewards",
+    "cash_value": false,
+    "cash_redemption": false,
+    "transfer_between_members": false
+  }
+}

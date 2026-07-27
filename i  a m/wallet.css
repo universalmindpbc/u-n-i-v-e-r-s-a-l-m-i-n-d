@@ -1,0 +1,294 @@
+:root {
+  color-scheme: dark;
+  --ink: #f7f4ed;
+  --muted: rgba(247, 244, 237, 0.62);
+  --line: rgba(255, 255, 255, 0.15);
+  --glass: rgba(255, 255, 255, 0.075);
+  --green: #58df34;
+}
+
+* { box-sizing: border-box; }
+
+html { min-width: 320px; background: #080909; }
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at 78% 4%, rgba(116, 173, 135, 0.22), transparent 32rem),
+    radial-gradient(circle at 12% 34%, rgba(193, 128, 190, 0.16), transparent 28rem),
+    linear-gradient(155deg, #111414 0%, #080909 48%, #12100e 100%);
+  color: var(--ink);
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+button, a { font: inherit; }
+
+.happiness-shell {
+  width: min(1440px, 100%);
+  margin: 0 auto;
+  padding: 28px clamp(28px, 5vw, 84px) 64px;
+}
+
+.happiness-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 70px;
+}
+
+.happiness-header > p,
+.happiness-kicker,
+.happiness-apple__copy > p:first-child,
+.happiness-activity > div > p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+}
+
+.happiness-brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  color: var(--ink);
+  font-size: 15px;
+  font-weight: 300;
+  letter-spacing: 0.02em;
+  text-decoration: none;
+}
+
+.happiness-brand img { width: 42px; height: 42px; object-fit: contain; }
+
+.happiness-hero {
+  display: grid;
+  grid-template-columns: minmax(220px, 0.72fr) minmax(560px, 1.35fr);
+  gap: clamp(30px, 6vw, 86px);
+  align-items: center;
+  padding: clamp(58px, 8vh, 100px) 0 52px;
+}
+
+.happiness-intro h1 {
+  margin: 15px 0 0;
+  font-size: clamp(48px, 6.8vw, 102px);
+  font-weight: 600;
+  letter-spacing: -0.075em;
+  line-height: 0.86;
+}
+
+.happiness-ticker {
+  margin: 24px 0 0;
+  font-size: clamp(20px, 2vw, 30px);
+  font-weight: 300;
+  letter-spacing: 0.16em;
+}
+
+.happiness-meaning {
+  margin: 9px 0 0;
+  color: var(--muted);
+  font-size: 13px;
+  letter-spacing: 0.08em;
+}
+
+.happiness-card {
+  position: relative;
+  aspect-ratio: 1.66 / 1;
+  width: 100%;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.32);
+  border-radius: clamp(28px, 3.6vw, 52px);
+  background:
+    linear-gradient(132deg, rgba(255,255,255,.24), rgba(255,255,255,.06) 38%, rgba(255,255,255,.15)),
+    linear-gradient(145deg, rgba(71, 91, 76, .88), rgba(18, 22, 21, .95) 63%, rgba(48, 37, 30, .93));
+  box-shadow: 0 34px 90px rgba(0,0,0,.42), inset 0 1px 0 rgba(255,255,255,.35);
+  padding: clamp(28px, 4vw, 54px);
+  isolation: isolate;
+}
+
+.happiness-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: radial-gradient(circle at 72% 22%, rgba(133, 255, 117, 0.16), transparent 31%), linear-gradient(105deg, transparent 58%, rgba(255,255,255,.07));
+}
+
+.happiness-card__bloom {
+  position: absolute;
+  right: -4%;
+  bottom: -24%;
+  width: 60%;
+  aspect-ratio: 1;
+  background: center / contain no-repeat url("a s s e t s/Universal Mind [ I o H ] Logo 512.png");
+  filter: saturate(1.15);
+  opacity: 0.21;
+  transform: rotate(-9deg);
+}
+
+.happiness-card__top,
+.happiness-card__footer {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.happiness-card__top { font-size: clamp(14px, 1.25vw, 20px); font-weight: 600; letter-spacing: .12em; }
+.happiness-card__mark { width: clamp(54px, 6vw, 88px); height: auto; }
+
+.happiness-card__balance {
+  position: absolute;
+  left: clamp(28px, 4vw, 54px);
+  bottom: 28%;
+  display: grid;
+  grid-template-columns: auto auto;
+  align-items: baseline;
+  column-gap: 14px;
+}
+
+.happiness-card__balance > span { grid-column: 1 / -1; color: rgba(255,255,255,.66); font-size: 11px; letter-spacing: .16em; text-transform: uppercase; }
+.happiness-card__balance strong { font-size: clamp(58px, 8vw, 116px); font-weight: 300; letter-spacing: -.075em; line-height: .96; }
+.happiness-card__balance em { font-size: clamp(14px, 1.65vw, 24px); font-style: normal; font-weight: 300; letter-spacing: .12em; }
+
+.happiness-card__footer {
+  position: absolute;
+  right: clamp(28px, 4vw, 54px);
+  bottom: clamp(26px, 3vw, 42px);
+  left: clamp(28px, 4vw, 54px);
+  color: rgba(255,255,255,.72);
+  font-size: 10px;
+  letter-spacing: .13em;
+}
+
+.happiness-promise {
+  grid-column: 2;
+  margin: -12px 0 0;
+  color: rgba(255,255,255,.76);
+  font-size: clamp(18px, 1.7vw, 25px);
+  font-weight: 300;
+  line-height: 1.35;
+  text-align: center;
+}
+
+.happiness-dashboard {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 18px;
+  margin-top: 46px;
+}
+
+.happiness-dashboard > section,
+.happiness-balance-panel,
+.happiness-categories {
+  border: 1px solid var(--line);
+  border-radius: 28px;
+  background: var(--glass);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.08);
+  backdrop-filter: blur(22px);
+}
+
+.happiness-balance-panel {
+  grid-column: span 4;
+  padding: 30px;
+}
+
+.happiness-balance-panel > span { color: var(--muted); font-size: 12px; letter-spacing: .12em; text-transform: uppercase; }
+.happiness-balance-panel strong { display: block; margin-top: 24px; font-size: clamp(42px, 5vw, 72px); font-weight: 300; letter-spacing: -.055em; }
+.happiness-balance-panel strong em { font-size: 15px; font-style: normal; letter-spacing: .12em; }
+.happiness-balance-panel p { margin: 22px 0 0; color: var(--muted); font-size: 13px; line-height: 1.5; }
+
+.happiness-categories {
+  grid-column: span 8;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  align-items: stretch;
+  overflow: hidden;
+  padding: 14px;
+}
+
+.happiness-categories button {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 170px;
+  border: 0;
+  border-radius: 20px;
+  background: transparent;
+  color: rgba(255,255,255,.75);
+  cursor: pointer;
+  font-size: 14px;
+  transition: background .24s ease, color .24s ease, transform .24s ease;
+}
+
+.happiness-categories button:hover,
+.happiness-categories button:focus-visible,
+.happiness-categories button.is-active { background: rgba(255,255,255,.09); color: #fff; outline: 0; transform: translateY(-2px); }
+
+.happiness-category__icon { position: relative; display: grid; place-items: center; width: 82px; height: 82px; }
+.happiness-category__icon img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; }
+.happiness-category__icon svg { position: relative; width: 38px; height: 38px; fill: none; stroke: #fff; stroke-linecap: round; stroke-linejoin: round; stroke-width: 1.7; filter: drop-shadow(0 2px 5px rgba(0,0,0,.42)); }
+.happiness-category__icon svg.is-filled { fill: #fff; stroke-width: 1; }
+
+.happiness-category-view { grid-column: span 5; min-height: 246px; padding: 34px; }
+.happiness-category-view > p:first-child { margin: 0; color: var(--green); font-size: 11px; letter-spacing: .2em; text-transform: uppercase; }
+.happiness-category-view h2,
+.happiness-apple h2,
+.happiness-activity h2 { margin: 18px 0 0; font-size: clamp(26px, 3vw, 43px); font-weight: 400; letter-spacing: -.035em; line-height: 1.05; }
+.happiness-category-view > p:last-child { max-width: 36rem; margin: 24px 0 0; color: var(--muted); font-size: 15px; line-height: 1.55; }
+
+.happiness-apple {
+  grid-column: span 7;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 32px;
+  align-items: center;
+  min-height: 246px;
+  padding: 30px;
+}
+
+.happiness-apple__copy > p:not(:first-child) { max-width: 35rem; margin: 18px 0 0; color: var(--muted); font-size: 14px; line-height: 1.5; }
+.happiness-apple__copy > span { display: block; margin-top: 20px; color: rgba(255,255,255,.46); font-size: 11px; letter-spacing: .08em; }
+
+.happiness-qr { position: relative; display: grid; place-items: center; flex: 0 0 auto; width: 178px; height: 178px; overflow: hidden; border: 12px solid rgba(255,255,255,.92); border-radius: 28px; background: #fff; box-shadow: 0 18px 44px rgba(0,0,0,.3); }
+.happiness-qr > img:first-child { width: 100%; height: 100%; object-fit: contain; image-rendering: pixelated; }
+.happiness-qr__flower { position: absolute; width: 46px; height: 46px; border: 5px solid #fff; border-radius: 50%; background: #fff; }
+
+.happiness-activity { grid-column: 1 / -1; display: flex; align-items: flex-end; justify-content: space-between; gap: 30px; padding: 34px; }
+.happiness-activity > p { max-width: 30rem; margin: 0; color: var(--muted); font-size: 14px; line-height: 1.5; text-align: right; }
+
+.happiness-footer { display: flex; align-items: center; gap: 18px; padding: 50px 6px 0; }
+.happiness-footer img { width: 36px; height: 36px; }
+.happiness-footer p { max-width: 760px; margin: 0; color: rgba(255,255,255,.42); font-size: 11px; line-height: 1.55; }
+
+@media (max-width: 980px) {
+  .happiness-hero { grid-template-columns: 1fr; }
+  .happiness-intro { text-align: center; }
+  .happiness-promise { grid-column: 1; }
+  .happiness-balance-panel,
+  .happiness-categories,
+  .happiness-category-view,
+  .happiness-apple { grid-column: 1 / -1; }
+}
+
+@media (max-width: 680px) {
+  .happiness-shell { padding: 18px 16px 42px; }
+  .happiness-header > p { display: none; }
+  .happiness-hero { padding-top: 44px; }
+  .happiness-card { min-height: 300px; }
+  .happiness-card__footer { align-items: flex-start; flex-direction: column; gap: 7px; }
+  .happiness-categories { grid-template-columns: repeat(2, 1fr); }
+  .happiness-categories button { min-height: 138px; }
+  .happiness-apple { grid-template-columns: 1fr; }
+  .happiness-qr { justify-self: center; }
+  .happiness-activity { align-items: flex-start; flex-direction: column; }
+  .happiness-activity > p { text-align: left; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; }
+}

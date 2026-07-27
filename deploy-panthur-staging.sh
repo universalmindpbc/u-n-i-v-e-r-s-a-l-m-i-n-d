@@ -31,6 +31,7 @@ fi
 "$NODE_BIN" "$ROOT_DIR/tools/check-circle-rooms.mjs"
 "$NODE_BIN" "$ROOT_DIR/tools/check-public-crawler-surface.mjs"
 "$NODE_BIN" "$ROOT_DIR/tools/check-shopfront-mockup.mjs"
+"$NODE_BIN" "$ROOT_DIR/tools/check-happiness-rewards.mjs"
 "$NODE_BIN" "$ROOT_DIR/tools/check-universal-one-programme-guide.mjs"
 
 if command -v php >/dev/null 2>&1; then
