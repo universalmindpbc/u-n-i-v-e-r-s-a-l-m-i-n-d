@@ -30,6 +30,6 @@
   if (categoryCopy[requestedCategory]) selectCategory(requestedCategory);
 
   if (qrImage && /^(www\.)?universalmind\.tv$/i.test(window.location.hostname)) {
-    qrImage.src = "a s s e t s/happiness-wallet-qr-production.png";
+    qrImage.src = "/vogue/iam/a s s e t s/happiness-wallet-qr-production.png";
   }
 })();
