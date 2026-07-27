@@ -14,17 +14,41 @@ html { min-width: 320px; background: #080909; }
 body {
   margin: 0;
   min-height: 100vh;
-  background:
-    radial-gradient(circle at 78% 4%, rgba(116, 173, 135, 0.22), transparent 32rem),
-    radial-gradient(circle at 12% 34%, rgba(193, 128, 190, 0.16), transparent 28rem),
-    linear-gradient(155deg, #111414 0%, #080909 48%, #12100e 100%);
+  background: #080909;
   color: var(--ink);
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
 button, a { font: inherit; }
 
+.happiness-background,
+.happiness-background-shade {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+}
+
+.happiness-background {
+  z-index: 0;
+  overflow: hidden;
+  background: #080909;
+}
+
+.happiness-background video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 1;
+}
+
+.happiness-background-shade {
+  z-index: 1;
+  background: rgba(0, 0, 0, 0.77);
+}
+
 .happiness-shell {
+  position: relative;
+  z-index: 2;
   width: min(1440px, 100%);
   margin: 0 auto;
   padding: 28px clamp(28px, 5vw, 84px) 64px;
@@ -163,6 +187,19 @@ button, a { font: inherit; }
   letter-spacing: .13em;
 }
 
+.happiness-card__member {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+}
+
+.happiness-card__member img {
+  width: clamp(18px, 1.7vw, 25px);
+  height: auto;
+  object-fit: contain;
+}
+
 .happiness-promise {
   grid-column: 2;
   margin: -12px 0 0;
@@ -291,4 +328,5 @@ button, a { font: inherit; }
 
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; }
+  .happiness-background video { display: none; }
 }

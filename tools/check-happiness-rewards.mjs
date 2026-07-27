@@ -125,9 +125,14 @@ assert.match(style, /grid-template-columns:\s*repeat\(12, 1fr\)/);
 assert.match(style, /@media \(max-width: 980px\)/);
 assert.match(wallet, /happiness-wallet-qr-staging\.png/);
 assert.match(script, /happiness-wallet-qr-production\.png/);
-assert.match(wallet, /href="\/vogue\/iam\/wallet\.css\?v=happiness-wallet-2"/);
+assert.match(wallet, /href="\/vogue\/iam\/wallet\.css\?v=happiness-wallet-3"/);
 assert.match(wallet, /src="\/vogue\/iam\/wallet\.js\?v=happiness-wallet-2"/);
 assert.doesNotMatch(wallet, /(?:href|src)="a s s e t s\//);
+assert.match(wallet, /data-stream-file="a s s e t s\/Globe Landing Page Video - Sunscreem - Perfection Motion for RMU\.mp4"/);
+assert.match(wallet, /Ethereum Diamond Rainbow \[ e o r a \] 3\.png/);
+assert.match(wallet, /cloudflare-stream-controller\.js\?v=stream-controller-8/);
+assert.match(style, /\.happiness-background-shade\s*\{[^}]*background:\s*rgba\(0, 0, 0, 0\.77\)/s);
+assert.match(style, /\.happiness-card__member img\s*\{[^}]*width:\s*clamp\(18px, 1\.7vw, 25px\)/s);
 assert.match(architecture, /It is not currently backed, pegged, cash redeemable/i);
 assert.match(architecture, /Adding USDC infrastructure does not itself make HAPPINESS a stablecoin/i);
 assert.match(architecture, /It does not decide individual HAPPINESS rewards/i);
@@ -178,6 +183,7 @@ for (const asset of [
   "i  a m/a s s e t s/Universal Mind [ I o H ] Logo 512.png",
   "i  a m/a s s e t s/happiness-wallet-qr-staging.png",
   "i  a m/a s s e t s/happiness-wallet-qr-production.png",
+  "i  a m/a s s e t s/Ethereum Diamond Rainbow [ e o r a ] 3.png",
 ]) {
   assert.ok(fs.existsSync(path.join(root, asset)), `Missing HAPPINESS wallet asset: ${asset}`);
 }
