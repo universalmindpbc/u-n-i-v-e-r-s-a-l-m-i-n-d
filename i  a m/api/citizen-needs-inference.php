@@ -17,7 +17,11 @@ if ($body === false || $body === '' || strlen($body) > 65536) {
     exit;
 }
 
-$endpoint = 'https://iam-citizen-needs-inference.universalmind.workers.dev/citizen-needs-inference';
+$host = strtolower((string) ($_SERVER['HTTP_HOST'] ?? ''));
+$isStaging = str_starts_with($host, 'staging.universalmind.tv');
+$endpoint = $isStaging
+    ? 'https://realtime-staging-iam-citizen-needs-inference.universalmind.workers.dev/citizen-needs-inference'
+    : 'https://iam-citizen-needs-inference.universalmind.workers.dev/citizen-needs-inference';
 
 if (function_exists('curl_init')) {
     $curl = curl_init($endpoint);

@@ -13,8 +13,13 @@
   const jsonState = document.querySelector("[data-json-state]");
   const jsonToggle = document.querySelector("[data-json-toggle]");
   const jsonOutput = document.querySelector("[data-recommendation-json]");
-  const endpoint = document.querySelector('meta[name="iam-citizen-needs-inference-endpoint"]')?.content || "";
-  const musicEndpoint = document.querySelector('meta[name="iam-adaptive-music-intelligence-endpoint"]')?.content || "";
+  const stagingHost = window.location.hostname === "staging.universalmind.tv";
+  const endpoint = stagingHost
+    ? "https://realtime-staging-iam-citizen-needs-inference.universalmind.workers.dev/citizen-needs-inference"
+    : document.querySelector('meta[name="iam-citizen-needs-inference-endpoint"]')?.content || "";
+  const musicEndpoint = stagingHost
+    ? "https://adaptive-music-staging-iam-adaptive-music-intelligence.universalmind.workers.dev/adaptive-music-intelligence"
+    : document.querySelector('meta[name="iam-adaptive-music-intelligence-endpoint"]')?.content || "";
   const searchParams = new URLSearchParams(window.location.search);
   const liveInferenceAllowed = searchParams.get("liveInference") === "1" ||
     /(^|\.)universalmind\.tv$/i.test(window.location.hostname);
