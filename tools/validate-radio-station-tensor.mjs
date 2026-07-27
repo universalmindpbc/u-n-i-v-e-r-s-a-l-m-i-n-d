@@ -14,7 +14,7 @@ const requiredNts = new Map([
   ["nts-otaku", "https://streams.radiomast.io/7481798f-063c-42a2-8048-15ff98fe309e"],
   ["nts-low-key", "https://streams.radiomast.io/de114902-ee1b-441f-91bc-5468d1e77605"],
 ]);
-const allowedGates = new Set(["calm", "chill", "house"]);
+const allowedRooms = new Set(["inner-planes", "champagne-bohemia", "modul8-infinity", "james-bondage", "safety-cushion"]);
 const records = Array.isArray(tensor.records) ? tensor.records : [];
 
 assert.equal(tensor.source_data_source, "collection://6993ebc6-bb6e-44c3-933a-18c5d6ad44bc");
@@ -30,8 +30,10 @@ for (const record of records) {
   assert.ok(record.stream_url, `${record.id} stream URL is missing`);
   assert.ok(record.player_url, `${record.id} player URL is missing`);
   assert.ok(["Direct MP3", "HLS", "Buffered HLS scheduler"].includes(record.stream_transport), `${record.id} transport is unsupported`);
-  assert.ok(Array.isArray(record.stage_gate_fit) && record.stage_gate_fit.length, `${record.id} needs at least one stage gate`);
-  assert.ok(record.stage_gate_fit.every((gate) => allowedGates.has(gate)), `${record.id} has an invalid stage gate`);
+  assert.ok(Array.isArray(record.music_room_fit), `${record.id} needs a music-room fit array`);
+  assert.ok(record.music_room_fit.every((room) => allowedRooms.has(room)), `${record.id} has an invalid music room`);
+  assert.ok(!record.music_room_fit.includes("safety-cushion"), `${record.id} cannot route radio into the music-video-only safety cushion room`);
+  if (record.id !== "sanctuary-retro") assert.ok(record.music_room_fit.length, `${record.id} needs at least one active music room`);
   assert.equal(record.top_needs.length, 4, `${record.id} must expose exactly four leading citizen needs`);
 }
 
@@ -49,12 +51,14 @@ for (const [id, streamUrl] of requiredNts) {
 const catalogueRadio = catalogue.radio_stations;
 assert.equal(catalogueRadio.approved_count, records.length);
 assert.deepEqual(new Set(catalogueRadio.station_ids), new Set(records.map((record) => record.id)));
-for (const [gate, definition] of Object.entries(catalogue.radio_handoff_stations)) {
+for (const [room, definition] of Object.entries(catalogue.music_rooms)) {
   for (const stationId of definition.station_pool) {
     const record = records.find((candidate) => candidate.id === stationId);
-    assert.ok(record, `${gate} references unknown station ${stationId}`);
-    assert.ok(record.stage_gate_fit.includes(gate), `${stationId} is not classified for the ${gate} gate`);
+    assert.ok(record, `${room} references unknown station ${stationId}`);
+    assert.ok(record.music_room_fit.includes(room), `${stationId} is not classified for ${room}`);
   }
 }
+assert.deepEqual(catalogue.music_rooms["safety-cushion"].allowed_formats, ["videos"]);
+assert.deepEqual(catalogue.music_rooms["safety-cushion"].station_pool, []);
 
-console.log("Radio station Notion tensor passed: 11 approved stations, including 4 locally buffered NTS HLS streams.");
+console.log("Radio station Notion tensor passed: five-room routing is valid, Safety Cushion has no radio, and 4 NTS HLS streams remain available.");

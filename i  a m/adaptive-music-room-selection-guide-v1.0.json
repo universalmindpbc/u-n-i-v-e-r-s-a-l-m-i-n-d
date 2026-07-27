@@ -1,0 +1,97 @@
+{
+  "guide_version": "adaptive_music_room_selection_guide_v1.0",
+  "source_prompt_version": "adaptive-inference-engine-system-prompt-v4.44",
+  "source_prompt": "i  a m/i n f e r e n c e  e n g i n e  -  s y s t e m  p r o m p t  v  4 . 4 4.md",
+  "context_rule": "GPT never fetches private context. The application supplies environment_context as adaptive_environment_only data.",
+  "inputs": {
+    "citizen_checkin": "required",
+    "citizen_needs_radar": "use current top highlights and dominant domains when available",
+    "music_taste": "use explicit and consented taste or relationship history when available",
+    "catalogue_availability": "select only approved ready sources in an eligible format",
+    "environment_context": {
+      "local_time": "optional",
+      "location_label": "optional privacy-preserving display label",
+      "location_precision": "none | approximate | precise",
+      "location_source": "optional source label supplied by the application",
+      "weather_condition": "optional",
+      "temperature_celsius": "optional",
+      "context_role": "adaptive_environment_only"
+    }
+  },
+  "music_rooms": {
+    "inner-planes": {
+      "name": "inner planes",
+      "music_identity": ["ambient", "sleep", "sunrise"],
+      "allowed_formats": ["videos", "parties", "radio"]
+    },
+    "champagne-bohemia": {
+      "name": "champagne bohemia",
+      "music_identity": ["Balearic", "sunset", "chillout"],
+      "allowed_formats": ["videos", "parties", "radio"]
+    },
+    "modul8-infinity": {
+      "name": "modul8 infinity",
+      "music_identity": ["rave", "house", "techno", "future bass", "future psychedelic beats", "hiphop", "Brainfeeder-adjacent"],
+      "allowed_formats": ["videos", "parties", "radio"]
+    },
+    "james-bondage": {
+      "name": "james bondage",
+      "music_identity": ["minimal", "electro", "EBM"],
+      "allowed_formats": ["videos", "parties", "radio"]
+    },
+    "safety-cushion": {
+      "name": "safety cushion",
+      "music_identity": ["80s nu wave"],
+      "allowed_formats": ["videos"],
+      "music_video_only": true,
+      "catalogue_status": "pending_ready_assets"
+    }
+  },
+  "decision_hierarchy": [
+    "catalogue_readiness_and_format_eligibility",
+    "safety_age_suitability_and_explicit_boundaries",
+    "citizen_stated_music_intent_and_known_taste",
+    "citizen_needs_fit_and_constructive_trajectory",
+    "cognitive_physiological_and_social_context",
+    "time_weather_and_approximate_location_modifiers",
+    "relationship_history_continuity_novelty_and_repetition_control",
+    "universal_mind_editorial_confidence"
+  ],
+  "journey_contract": {
+    "step_1": "check_in",
+    "step_2": "needs_matched_vod_music_video",
+    "step_3": "needs_matched_extended_livestream",
+    "step_4": "manual_portal_exploration"
+  },
+  "extended_session_format_policy": {
+    "scope": "eligible extended livestream sessions after the opening VOD music video",
+    "weights": {
+      "parties": 0.8,
+      "radio": 0.1,
+      "videos": 0.1
+    },
+    "assignment_rule": "Use a stable visitor-and-recommendation slot so the 80/10/10 traffic mix is enforced by the application rather than improvised by GPT.",
+    "needs_matching_rule": "After the format slot is assigned, choose the compatible music room and approved ready source from citizen needs, taste, context, continuity and editorial suitability.",
+    "radio_examples": [
+      "inner planes ambient radio late at night",
+      "champagne bohemia chillout radio in the morning"
+    ],
+    "videos_example": "When the videos slot is assigned, peak anxiety may favour safety cushion only when an approved Ready 80s nu wave music-video source is attached and editorially suitable.",
+    "eligibility_rule": "Safety, citizen agency and source readiness override the traffic mix. Never invent a source or route safety cushion to parties or radio."
+  },
+  "legacy_rule": "Calm, Chill and House are not recommendation categories. They may appear only as a Citizen Needs label, a genre word, or part of a literal Cafe Del Mar station name.",
+  "availability_rule": "Never select a room without an approved ready source in an allowed format. Return no room instead of forcing a default.",
+  "required_audit_fields": [
+    "selected_music_room",
+    "selected_format",
+    "music_room_confidence",
+    "music_room_reason",
+    "source_id",
+    "catalogue_ready",
+    "dominant_domains",
+    "top_needs_used",
+    "context_modifiers_used",
+    "environment_context"
+  ],
+  "safety_note": "Music-room selection is adaptive environment support, not treatment. Context never creates clinical evidence and never overrides citizen self-report."
+}

@@ -18,31 +18,31 @@ import selector_core as selector  # noqa: E402
 
 STATE_FIXTURES = {
     "hungry": {
-        "stage_gate": "calm",
+        "music_room": "inner-planes",
         "highlights": ["Recovery", "Attention", "Calm", "Clarity"],
         "radar": {"Recovery": 0.34, "Attention": 0.28, "Calm": 0.24, "Clarity": 0.12},
         "maslow": {"Physiological Regulation": 0.82, "Rest": 0.18},
     },
     "full_of_food": {
-        "stage_gate": "chill",
+        "music_room": "champagne-bohemia",
         "highlights": ["Recovery", "Calm", "Sleep Pressure", "Fatigue"],
         "radar": {"Recovery": 0.46, "Calm": 0.42, "Sleep Pressure": 0.34, "Fatigue": 0.28},
         "maslow": {"Physiological Regulation": 0.64, "Rest": 0.38},
     },
     "relaxed": {
-        "stage_gate": "chill",
+        "music_room": "inner-planes",
         "highlights": ["Calm", "Recovery", "Psychological Safety", "Clarity"],
         "radar": {"Calm": 0.90, "Recovery": 0.76, "Psychological Safety": 0.82, "Clarity": 0.72},
         "maslow": {"Physiological Regulation": 0.72, "Rest": 0.55},
     },
     "happy": {
-        "stage_gate": "house",
+        "music_room": "modul8-infinity",
         "highlights": ["Joy", "Arousal", "Hope", "Motivation"],
         "radar": {"Joy": 0.90, "Arousal": 0.72, "Hope": 0.76, "Motivation": 0.68},
         "maslow": {"Physiological Regulation": 0.24, "Rest": 0.04},
     },
     "sad": {
-        "stage_gate": "calm",
+        "music_room": "james-bondage",
         "highlights": ["Recovery", "Stress", "Loneliness", "Calm"],
         "radar": {"Recovery": 0.64, "Stress": 0.58, "Loneliness": 0.46, "Calm": 0.38},
         "maslow": {"Physiological Regulation": 0.32, "Rest": 0.22},
@@ -59,7 +59,7 @@ def payload_for(name: str, visitor_id: str, index: int = 0, history: list[str] |
     fixture = STATE_FIXTURES[name]
     return {
         "top_needs_used": fixture["highlights"],
-        "soundtrack_stage_gate": fixture["stage_gate"],
+        "selected_music_room": fixture["music_room"],
         "needs_scorecard": {
             "human_needs_radar": fixture["radar"],
             "maslow_human_needs": fixture["maslow"],
@@ -120,12 +120,32 @@ def main() -> None:
     first = first_output["selected_track_id"]
     second = second_output["selected_track_id"]
     require(first == second, "The same inferred state and anonymous visitor must remain deterministic.")
-    require(first_output["audit"]["selector"]["soundtrack_stage_gate"] == "calm", "The GPT calm stage gate did not reach the selector audit.")
-    require(first_output["audit"]["selector_score_parts"]["target_activation_level"] <= 1, "The GPT calm stage gate did not cap opening activation.")
+    require(first_output["audit"]["selector"]["selected_music_room"] == "inner-planes", "The selected music room did not reach the selector audit.")
 
-    happy_output = selector.execute_v1_11_selection(payload_for("happy", "stage-gate-check"), catalogue)
-    require(happy_output["audit"]["selector"]["soundtrack_stage_gate"] == "house", "The GPT house stage gate did not reach the selector audit.")
-    require(happy_output["audit"]["selector_score_parts"]["target_activation_level"] >= 2, "The GPT house stage gate did not preserve healthy activation.")
+    happy_payload = payload_for("happy", "music-room-check")
+    happy_output = selector.execute_v1_11_selection(happy_payload, catalogue)
+    require(happy_output["audit"]["selector"]["selected_music_room"] == "modul8-infinity", "The selected music room did not reach the selector audit.")
+    alternate_room_payload = {**happy_payload, "selected_music_room": "inner-planes"}
+    alternate_room_output = selector.execute_v1_11_selection(alternate_room_payload, catalogue)
+    require(
+        happy_output["audit"]["selector_score_parts"]["target_activation_level"] == alternate_room_output["audit"]["selector_score_parts"]["target_activation_level"],
+        "Music-room identity must not act as a calm/chill/house activation ladder.",
+    )
+    require(happy_output["extended_session"]["music_room"] != "safety-cushion", "Safety Cushion became playable before ready assets were attached.")
+    require(
+        happy_output["extended_session"]["format_policy"]["weights"] == selector.EXTENDED_SESSION_FORMAT_WEIGHTS,
+        "The extended-session output lost the canonical 80/10/10 format policy.",
+    )
+
+    format_counts = Counter()
+    for visitor_index in range(10000):
+        extended_format, _ = selector.assigned_extended_format(
+            payload_for("happy", f"format-mix-{visitor_index}")
+        )
+        format_counts[extended_format] += 1
+    require(0.77 <= format_counts["parties"] / 10000 <= 0.83, f"Parties format drifted from 80%: {format_counts}.")
+    require(0.08 <= format_counts["radio"] / 10000 <= 0.12, f"Radio format drifted from 10%: {format_counts}.")
+    require(0.08 <= format_counts["videos"] / 10000 <= 0.12, f"Videos format drifted from 10%: {format_counts}.")
 
     history: list[str] = []
     quota_modes: list[str] = []
@@ -157,6 +177,7 @@ def main() -> None:
         "cycle_unique_tracks": len(set(sequence)),
         "cycle_sequence": sequence,
         "quota_modes": quota_modes,
+        "extended_session_format_counts": format_counts,
     }, indent=2))
 
 

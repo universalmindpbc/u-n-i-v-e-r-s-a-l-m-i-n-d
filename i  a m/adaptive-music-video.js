@@ -22,20 +22,24 @@
   const forceLiveVideoAllowed = searchParams.get("forceLiveVideo") === "1";
   const liveMusicAllowed = searchParams.get("mockMusic") !== "1";
   const MUSIC_INTELLIGENCE_VERSION = "adaptive_music_intelligence_v0.1";
-  const CATALOGUE_URL = "adaptive-music-video-catalogue-v1.11.json?v=music-video-catalogue-fashion-1";
+  const CATALOGUE_URL = "adaptive-music-video-catalogue-v1.11.json?v=music-video-catalogue-e9e88062e024";
 
   const stations = {
-    calm: {
-      label: "Calm",
+    "inner-planes": {
+      label: "Inner Planes · Radio · Cafe Del Mar — Calm",
       url: "https://streamer.radio.co/sb748f24ad/listen",
     },
-    chill: {
-      label: "Chill",
+    "champagne-bohemia": {
+      label: "Champagne Bohemia · Radio · Cafe Del Mar — Chill",
       url: "https://streams.radio.co/se1a320b47/listen",
     },
-    house: {
-      label: "House",
+    "modul8-infinity": {
+      label: "modul8 infinity · Radio · Cafe Del Mar — House",
       url: "https://s4.radio.co/seeae9c220/listen",
+    },
+    "james-bondage": {
+      label: "james bondage · Radio · Sanctuary — Dark Electro",
+      url: "https://stream.sanctuaryradio.com/mainchannel_hq",
     },
   };
 
@@ -45,7 +49,7 @@
       artist: "RÜFÜS DU SOL",
       title: "Innerbloom",
       videoId: "Tx9zMFodNtA",
-      stageGates: ["calm", "chill"],
+      musicRooms: ["champagne-bohemia"],
       genres: ["electronic", "deep house", "progressive house"],
       moods: ["expansive", "restorative", "beautiful", "connected"],
       needs: ["Recovery", "Awe", "Connection", "Hope"],
@@ -59,7 +63,7 @@
       artist: "Bonobo",
       title: "Cirrus",
       videoId: "WF34N4gJAKE",
-      stageGates: ["calm", "chill"],
+      musicRooms: ["champagne-bohemia"],
       genres: ["electronic", "downtempo", "instrumental"],
       moods: ["curious", "soft", "patterned", "surreal"],
       needs: ["Curiosity", "Attention", "Clarity", "Recovery"],
@@ -73,7 +77,7 @@
       artist: "BICEP",
       title: "Glue",
       videoId: "A7ZxRs45tTg",
-      stageGates: ["chill", "house"],
+      musicRooms: ["modul8-infinity"],
       genres: ["breakbeat", "house", "electronic"],
       moods: ["nostalgic", "open", "uplifting", "communal"],
       needs: ["Belonging", "Connection", "Hope", "Motivation"],
@@ -87,7 +91,7 @@
       artist: "Jamie xx",
       title: "Gosh",
       videoId: "hTGJfRPLe08",
-      stageGates: ["chill", "house"],
+      musicRooms: ["modul8-infinity"],
       genres: ["future garage", "deep house", "post-dubstep"],
       moods: ["awe", "scale", "focus", "collective"],
       needs: ["Awe", "Purpose", "Self-actualisation", "Attention"],
@@ -101,7 +105,7 @@
       artist: "Jamie xx",
       title: "Gosh",
       videoId: "WjNssEVlB6M",
-      stageGates: ["chill"],
+      musicRooms: ["modul8-infinity"],
       genres: ["future garage", "deep house", "post-dubstep"],
       moods: ["space", "wonder", "quiet momentum"],
       needs: ["Awe", "Clarity", "Purpose", "Curiosity"],
@@ -115,7 +119,7 @@
       artist: "Disclosure",
       title: "You & Me",
       videoId: "W_vM8ePGuRM",
-      stageGates: ["house"],
+      musicRooms: ["modul8-infinity"],
       genres: ["uk garage", "house", "dance"],
       moods: ["romantic", "kinetic", "bright", "travel"],
       needs: ["Joy", "Love", "Motivation", "Connection"],
@@ -138,6 +142,7 @@
     radioStartedAt: 0,
     radioTelemetryTimer: null,
     handoffStarted: false,
+    extendedSessionIndex: 0,
   };
 
   function wait(ms) {
@@ -230,6 +235,35 @@
     return String(value || "").trim().toLowerCase();
   }
 
+  function stableUnit(value) {
+    let hash = 2166136261;
+    for (const character of String(value || "")) {
+      hash ^= character.codePointAt(0);
+      hash = Math.imul(hash, 16777619);
+    }
+    return (hash >>> 0) / 4294967295;
+  }
+
+  function extendedSessionVisitorId() {
+    const key = "iamAdaptiveMusicVisitorId";
+    try {
+      const existing = window.localStorage.getItem(key);
+      if (existing) return existing;
+      const created = window.crypto?.randomUUID?.() || `visitor-${Date.now()}-${Math.random().toString(16).slice(2)}`;
+      window.localStorage.setItem(key, created);
+      return created;
+    } catch {
+      return "anonymous";
+    }
+  }
+
+  function assignedExtendedSessionFormat(index = state.extendedSessionIndex) {
+    const draw = stableUnit(`extended-session-format-v1:${extendedSessionVisitorId()}:${index}`);
+    if (draw < 0.8) return "parties";
+    if (draw < 0.9) return "radio";
+    return "videos";
+  }
+
   function unique(values) {
     return Array.from(new Set(values.filter(Boolean)));
   }
@@ -262,11 +296,10 @@
     else if (curiositySignal && !downshiftSignal) environmentFunctionHint = "Curiosity + Exploration";
     else if (restorationSignal || downshiftSignal) environmentFunctionHint = "Soul + Restoration";
 
-    let stageGate = "chill";
-    if (downshiftSignal && !agencySignal && !joySignal) stageGate = "calm";
-    if ((joySignal || agencySignal) && !downshiftSignal) stageGate = "house";
-    if (focusSignal && !downshiftSignal && !joySignal && !agencySignal) stageGate = "chill";
-    if (curiositySignal && joySignal && !downshiftSignal) stageGate = "house";
+    let musicRoom = "champagne-bohemia";
+    if (restorationSignal || downshiftSignal) musicRoom = "inner-planes";
+    if (focusSignal && !downshiftSignal && !joySignal) musicRoom = "james-bondage";
+    if ((joySignal || agencySignal || curiositySignal) && !downshiftSignal) musicRoom = "modul8-infinity";
 
     const highlightsByFunction = {
       "Joy + Affirmation": ["Joy", "Motivation", "Connection", "Love"],
@@ -280,7 +313,7 @@
 
     const weather = context?.weather_condition ? `${context.weather_condition}` : "";
     const time = context?.time_of_day || "";
-    const dominantDomains = stageGate === "calm"
+    const dominantDomains = musicRoom === "inner-planes"
       ? ["Physiological", "Emotion"]
       : environmentFunctionHint === "Focus + Flow"
         ? ["Cognitive", "Emotion"]
@@ -288,12 +321,16 @@
           ? ["Emotion", "Cognitive"]
           : ["Emotion", "Social"];
 
+    const selectedFormat = assignedExtendedSessionFormat();
     return {
       highlights,
       confidence: 0.72,
-      soundtrack_stage_gate: stageGate,
-      soundtrack_confidence: 0.74,
-      soundtrack_reason: `${environmentFunctionHint} signals with ${time || "local"} context favour ${stations[stageGate].label}.`,
+      selected_music_room: musicRoom,
+      selected_format: selectedFormat,
+      source_id: null,
+      catalogue_ready: true,
+      music_room_confidence: 0.74,
+      music_room_reason: `${environmentFunctionHint} signals with ${time || "local"} context support ${musicRoom}; the application assigned the ${selectedFormat} slot under the 80/10/10 extended-session policy.`,
       dominant_domains: dominantDomains,
       top_needs_used: highlights.slice(0, 4),
       context_modifiers_used: unique([time, weather, context?.location_label]).slice(0, 4),
@@ -352,19 +389,19 @@
     return localInference(checkin, environmentContext);
   }
 
-  function toStageLabel(stageGate) {
-    const key = normalize(stageGate) || "chill";
-    return stations[key]?.label || "Chill";
+  function toMusicRoomLabel(musicRoom) {
+    const key = normalizeMusicRoom(musicRoom);
+    return stations[key]?.label || "No extended session";
   }
 
-  function normalizeStageGate(value) {
+  function normalizeMusicRoom(value) {
     const normalized = normalize(value);
-    return stations[normalized] ? normalized : "chill";
+    return stations[normalized] ? normalized : "";
   }
 
   function normalizeCandidate(candidate) {
     const runtimeDelivery = candidate.tensor_profile?.runtime_delivery || {};
-    const stageGates = candidate.stageGates || candidate.stage_gate_fit || candidate.stage_gate || [candidate.radio_handoff || runtimeDelivery.radio_handoff].filter(Boolean);
+    const musicRooms = candidate.musicRooms || candidate.music_room_fit || [candidate.music_room || runtimeDelivery.music_room].filter(Boolean);
     const needs = candidate.needs || candidate.citizen_needs_fit || candidate.top_needs || [];
     const localVideoFile = candidate.localVideoFile || candidate.local_video_file || runtimeDelivery.local_video_file || null;
 
@@ -374,7 +411,7 @@
       videoId: candidate.videoId || candidate.youtube_video_id || null,
       localVideoFile,
       local_video_file: localVideoFile,
-      stageGates: stageGates.map((stageGate) => normalizeStageGate(stageGate)),
+      musicRooms: musicRooms.map((musicRoom) => normalizeMusicRoom(musicRoom)).filter(Boolean),
       genres: candidate.genres || [],
       moods: candidate.moods || [],
       needs,
@@ -389,7 +426,7 @@
       density: candidate.density || "variable",
       intensity: candidate.energy || candidate.intensity || "variable",
       trajectory: candidate.trajectory || "stabilise",
-      radioHandoff: candidate.radio_handoff || runtimeDelivery.radio_handoff || "chill",
+      musicRoom: normalizeMusicRoom(candidate.music_room || runtimeDelivery.music_room || musicRooms[0]),
     };
   }
 
@@ -508,7 +545,6 @@
       return hintedFunctions[hintedFunction];
     }
 
-    const stageGate = normalizeStageGate(inference.soundtrack_stage_gate);
     const needs = getNeeds(inference);
     const needText = needs.join(" ");
     const reportText = checkin || "";
@@ -535,7 +571,7 @@
       };
     }
 
-    if (stageGate === "calm" || recoverySignal) {
+    if (recoverySignal) {
       return {
         primary_function: "Soul + Restoration",
         secondary_function: curiositySignal ? "Curiosity + Exploration" : "Melancholy + Honesty",
@@ -545,7 +581,7 @@
       };
     }
 
-    if (stageGate === "house" && joySignal) {
+    if (joySignal) {
       return {
         primary_function: "Joy + Affirmation",
         secondary_function: "Club Energy + Festival Activation",
@@ -585,7 +621,7 @@
   }
 
   function buildApiSearchPlan(checkin, inference, environmentContext, environmentFunction, experimentTrack) {
-    const stageGate = normalizeStageGate(inference.soundtrack_stage_gate);
+    const musicRoom = normalizeMusicRoom(inference.selected_music_room);
     const needs = getNeeds(inference);
     const contextTerms = [
       environmentContext?.time_of_day,
@@ -595,7 +631,7 @@
     const query = unique([
       "official music video",
       "electronic dance music",
-      stageGate,
+      musicRoom,
       ...needs,
       ...contextTerms,
     ]).join(" ");
@@ -618,7 +654,7 @@
         query: {
           genre: ["electronic", "dance"],
           mood: needs,
-          style: [stageGate, environmentFunction.primary_function],
+          style: [musicRoom, environmentFunction.primary_function].filter(Boolean),
           era: ["current", "classic"],
         },
         failure_policy: "continue_to_cyanite_if_unavailable_or_sparse",
@@ -628,7 +664,7 @@
         production_status: "fallback_if_gracenote_unavailable",
         query: {
           mood: needs,
-          movement: stageGate === "house" ? "high" : stageGate === "calm" ? "low" : "medium",
+          movement: environmentFunction.intensity,
           energy: environmentFunction.intensity,
           density: environmentFunction.density,
         },
@@ -766,7 +802,7 @@
 
   function candidatesFromProviderResult(providerResult, inference, environmentFunction) {
     const candidates = providerResult?.payload?.youtube_result?.candidates || [];
-    const stageGate = toStageLabel(normalizeStageGate(inference.soundtrack_stage_gate));
+    const musicRoom = normalizeMusicRoom(inference.selected_music_room);
     const needs = getNeeds(inference);
 
     return candidates
@@ -778,7 +814,7 @@
         youtube_video_id: candidate.youtube_video_id,
         youtube_embed_status: "api_confirmed",
         source_priority: "youtube_search",
-        stage_gate_fit: [stageGate],
+        music_room_fit: musicRoom ? [musicRoom] : [],
         emotional_functions: [environmentFunction.primary_function],
         genres: ["electronic", "dance"],
         moods: needs,
@@ -794,7 +830,7 @@
   }
 
   function scoreCandidate(candidate, inference, environmentContext, searchPlan, environmentFunction) {
-    const stageGate = normalizeStageGate(inference.soundtrack_stage_gate);
+    const musicRoom = normalizeMusicRoom(inference.selected_music_room);
     const needs = getNeeds(inference);
     const checkinTerms = searchPlan.checkin_terms || [];
     const candidateTerms = wordsFrom([
@@ -811,7 +847,7 @@
       emotionalFunction === environmentFunction.primary_function ||
       emotionalFunction === environmentFunction.secondary_function
     ));
-    const stageScore = candidate.stageGates.includes(stageGate) ? 0.38 : 0.1;
+    const roomScore = musicRoom && candidate.musicRooms.includes(musicRoom) ? 0.38 : 0.1;
     const primaryFunctionScore = candidate.emotionalFunctions.includes(environmentFunction.primary_function) ? 0.24 : 0;
     const secondaryFunctionScore = candidate.emotionalFunctions.includes(environmentFunction.secondary_function) ? 0.06 : 0;
     const leadFunctionScore = candidate.emotionalFunctions[0] === environmentFunction.primary_function ? 0.12 : 0;
@@ -835,7 +871,7 @@
         : 0;
     const trajectoryScore = candidate.trajectory === environmentFunction.trajectory ? 0.08 : 0;
     const densityScore = candidate.density === environmentFunction.density ? 0.05 : 0;
-    const score = stageScore + functionScore + needScore + wordScore + contextScore + youthScore + safetyScore + editorialScore + trajectoryScore + densityScore + embedScore;
+    const score = roomScore + functionScore + needScore + wordScore + contextScore + youthScore + safetyScore + editorialScore + trajectoryScore + densityScore + embedScore;
 
     return {
       ...candidate,
@@ -843,7 +879,7 @@
       matched_needs: matchedNeeds,
       matched_terms: matchedTerms,
       review: [
-        candidate.stageGates.includes(stageGate) ? `matches ${stageGate} stage gate` : `secondary fit for ${stageGate}`,
+        musicRoom && candidate.musicRooms.includes(musicRoom) ? `matches ${musicRoom}` : "music-room fit remains secondary to tensor relevance",
         matchedFunctions.length ? `matches ${matchedFunctions.join(", ")}` : `broad fit for ${environmentFunction.primary_function}`,
         matchedNeeds.length ? `supports ${matchedNeeds.join(", ")}` : "broad electronic culture fit",
         candidate.youtubeEmbedStatus === "blocked_local_test" ? "known unavailable as raw embed; do not auto-embed" : `${candidate.youtubeEmbedStatus} YouTube embed`,
@@ -855,8 +891,7 @@
   async function recommendVideo(checkin, inference, environmentContext) {
     const catalogue = await loadCatalogue();
     const experimentTrack = getExperimentTrack();
-    const stageGate = normalizeStageGate(inference.soundtrack_stage_gate);
-    const stageLabel = toStageLabel(stageGate);
+    const preferredMusicRoom = normalizeMusicRoom(inference.selected_music_room);
     const environmentFunction = deriveEnvironmentFunction(checkin, inference, environmentContext);
     const searchPlan = buildApiSearchPlan(checkin, inference, environmentContext, environmentFunction, experimentTrack);
     const liveProviderResult = await fetchMusicIntelligenceProviderResult(checkin, inference, environmentContext, environmentFunction);
@@ -885,8 +920,15 @@
       musixmatch: providerAudit.musixmatch.status,
       youtube_api: providerAudit.youtube_api.status,
     };
-    const selectionReason = `${winner.artist} - ${winner.title} carries ${environmentFunction.primary_function} for ${stageLabel}: ${winner.review.join("; ")}.`;
-    const radioReason = inference.soundtrack_reason || `${stageLabel} continues the environment after the hero video.`;
+    const selectedMusicRoom = preferredMusicRoom || winner.musicRoom || winner.musicRooms[0] || "";
+    const selectedFormat = assignedExtendedSessionFormat();
+    const extendedCatalogueReady = Boolean(selectedMusicRoom && selectedFormat && (
+      (selectedMusicRoom !== "safety-cushion" || selectedFormat === "videos") &&
+      (selectedFormat !== "radio" || stations[selectedMusicRoom])
+    ));
+    const roomLabel = toMusicRoomLabel(selectedMusicRoom);
+    const selectionReason = `${winner.artist} - ${winner.title} carries ${environmentFunction.primary_function} with ${roomLabel}: ${winner.review.join("; ")}.`;
+    const extendedSessionReason = inference.music_room_reason || (selectedMusicRoom ? `${roomLabel} continues the environment after the hero video.` : "No eligible extended session is available.");
     const heroMusicVideo = {
       platform: winner.localVideoFile ? "local_mp4" : "youtube",
       selected_track_id: winner.id,
@@ -921,7 +963,7 @@
       youtube_embed_status: fallbackVideo.youtubeEmbedStatus,
       source_priority: fallbackVideo.sourcePriority,
       reason: fallbackVideo.id === winner.id
-        ? "Use cinematic prototype frame and move to radio if no API-confirmed embeddable video is available."
+        ? "Use the cinematic prototype frame if no API-confirmed embeddable video is available, then preserve the assigned extended-session branch."
         : "Use if selected hero embed errors, is private, removed, or disallows embedded playback.",
     };
     const adaptiveMusicIntelligence = {
@@ -937,14 +979,21 @@
       },
       environment_function: environmentFunction,
       hero_music_video: heroMusicVideo,
-      streaming_radio_continuation: {
-        source: "Cafe Del Mar Radio",
-        available_modes: ["Calm", "Chill", "House"],
-        selected_mode: stageLabel,
-        station_key: stageGate,
-        station_url: stations[stageGate]?.url || stations.chill.url,
-        soundtrack_confidence: inference.soundtrack_confidence ?? 0,
-        reason: radioReason,
+      extended_streaming_session: {
+        available_music_rooms: ["inner-planes", "champagne-bohemia", "modul8-infinity", "james-bondage", "safety-cushion"],
+        music_room: selectedMusicRoom || null,
+        format: extendedCatalogueReady ? selectedFormat : null,
+        source_id: null,
+        station_label: selectedFormat === "radio" ? roomLabel : null,
+        station_url: selectedFormat === "radio" ? stations[selectedMusicRoom]?.url || null : null,
+        catalogue_ready: extendedCatalogueReady,
+        format_policy: {
+          weights: { parties: 0.8, radio: 0.1, videos: 0.1 },
+          assignment: "stable_visitor_and_recommendation_slot",
+          safety_and_readiness_override: true,
+        },
+        music_room_confidence: inference.music_room_confidence ?? 0,
+        reason: extendedSessionReason,
       },
       editorial_layer: {
         emotionally_honest: true,
@@ -962,8 +1011,8 @@
       fallbacks: {
         fallback_video_id: fallbackHeroVideo.video_id,
         fallback_video: fallbackHeroVideo,
-        fallback_radio_mode: "Chill",
-        fallback_reason: "Use safe middle-state radio if API confidence, lyrical safety, or embed quality is low.",
+        fallback_music_room: null,
+        fallback_reason: "Return no extended session if confidence, catalogue readiness or embed quality is insufficient.",
       },
     };
 
@@ -982,9 +1031,9 @@
       live_provider_result: liveProviderResult,
       gpt_review_simulation: {
         few_shot_examples_applied: [
-          "If threat, overload or fatigue dominates, choose lower density visuals and calm handoff.",
-          "If connection, hope or awe dominates, choose expansive visuals and chill handoff.",
-          "If joy, curiosity or motivation dominates without strong downshift signals, choose kinetic visuals and house handoff.",
+          "Choose the music room from musical identity, stated intent and taste, constructive trajectory, context and eligible catalogue sources.",
+          "Calm remains a Citizen Needs signal; chillout and house remain genres, not room categories.",
+          "Safety Cushion is 80s nu wave music videos only and remains unavailable until approved ready assets are attached.",
         ],
         reviewed_candidate_count: reviewedCandidates.length,
         top_candidates: reviewedCandidates.slice(0, 4).map((candidate) => ({
@@ -1000,12 +1049,20 @@
       },
       final_output: {
         hero_music_video: heroMusicVideo,
-        streaming_radio_handoff: {
-          station_key: stageGate,
-          station_label: stageLabel,
-          station_url: stations[stageGate]?.url || stations.chill.url,
-          transition: "dissolve_video_then_start_radio",
-          reason: radioReason,
+        extended_session: {
+          music_room: selectedMusicRoom || null,
+          format: extendedCatalogueReady ? selectedFormat : null,
+          source_id: null,
+          station_label: selectedFormat === "radio" ? roomLabel : null,
+          station_url: selectedFormat === "radio" ? stations[selectedMusicRoom]?.url || null : null,
+          catalogue_ready: extendedCatalogueReady,
+          transition: extendedCatalogueReady ? `dissolve_video_then_join_${selectedFormat}_livestream` : null,
+          format_policy: {
+            weights: { parties: 0.8, radio: 0.1, videos: 0.1 },
+            assignment: "stable_visitor_and_recommendation_slot",
+            safety_and_readiness_override: true,
+          },
+          reason: extendedSessionReason,
         },
         safety: {
           clinical_status: "not_a_diagnosis",
@@ -1039,7 +1096,7 @@
       jsonOutput.textContent = JSON.stringify(recommendation, null, 2);
     }
     if (jsonState) {
-      jsonState.textContent = recommendation?.final_output?.streaming_radio_handoff?.station_label || "json";
+      jsonState.textContent = recommendation?.final_output?.extended_session?.station_label || "json";
     }
   }
 
@@ -1065,7 +1122,7 @@
 
   function renderRecommendation(recommendation) {
     const video = recommendation.final_output.hero_music_video;
-    const radio = recommendation.final_output.streaming_radio_handoff;
+    const radio = recommendation.final_output.extended_session;
 
     if (heroKicker) heroKicker.textContent = radio.station_label;
     if (heroTitle) heroTitle.textContent = `${video.artist} / ${video.title}`;
@@ -1360,19 +1417,23 @@
     clearPrototypeTimer();
 
     await wait(820);
-    const radio = state.recommendation?.final_output?.streaming_radio_handoff || {};
+    const radio = state.recommendation?.final_output?.extended_session || {};
+    if (!radio.catalogue_ready || radio.format !== "radio") {
+      setStatus("no extended session");
+      return;
+    }
     clearRadioTelemetryTimer();
     state.radioStartedAt = Date.now();
     analyticsRecord("radio_start", {
       selected_track_id: activeTrackId(),
-      station_key: radio.station_key || null,
+      music_room_id: radio.music_room || null,
       station_label: radio.station_label || null,
       transition_reason: reason,
     });
     state.radioTelemetryTimer = window.setInterval(() => {
       analyticsRecord("radio_progress", {
         selected_track_id: activeTrackId(),
-        station_key: radio.station_key || null,
+        music_room_id: radio.music_room || null,
         station_label: radio.station_label || null,
         listen_seconds: Math.round((Date.now() - state.radioStartedAt) / 1000),
       });
@@ -1417,10 +1478,11 @@
     setStatus("music intelligence");
     const recommendation = await recommendVideo(checkin, inference, environmentContext);
     state.recommendation = recommendation;
+    state.extendedSessionIndex += 1;
     updateFirstPartyEngagementSummary(recommendation);
     analyticsRecord("music_recommendation", {
       selected_track_id: recommendation.final_output?.hero_music_video?.selected_track_id || null,
-      station_key: recommendation.final_output?.streaming_radio_handoff?.station_key || null,
+      music_room_id: recommendation.final_output?.extended_session?.music_room || null,
       confidence: recommendation.final_output?.hero_music_video?.selection_confidence || 0,
       source_priority: recommendation.final_output?.hero_music_video?.source_priority || null,
     });

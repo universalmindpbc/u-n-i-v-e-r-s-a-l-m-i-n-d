@@ -12,7 +12,8 @@ const index = await fs.readFile(path.join(IAM_DIR, "index.html"), "utf8");
 const endpoint = await fs.readFile(path.join(IAM_DIR, "api", "broadcast-clock.php"), "utf8");
 const stationTensor = JSON.parse(await fs.readFile(path.join(IAM_DIR, "radio-station-tensor-notion-export-v1.0.json"), "utf8"));
 
-const editorialIds = ["inner-planes", "champagne-bohemia", "modul8-infinity", "james-bondage"];
+const playableEditorialIds = ["inner-planes", "champagne-bohemia", "modul8-infinity", "james-bondage"];
+const canonicalMusicRoomIds = [...playableEditorialIds, "safety-cushion"];
 const videoDurations = new Map([
   ["madonna-frozen", 329],
   ["madonna-ray-of-light", 306.994],
@@ -65,7 +66,12 @@ const approvedStationIds = new Set(
     .map((station) => station.id)
 );
 
-assert.equal(schedule.stage, "four_editorial_music_channels");
+assert.equal(schedule.stage, "five_music_rooms_safety_cushion_pending_assets");
+assert.deepEqual(schedule.music_rooms.map((room) => room.id), canonicalMusicRoomIds);
+const safetyCushion = schedule.music_rooms.find((room) => room.id === "safety-cushion");
+assert.deepEqual(safetyCushion.allowed_formats, ["videos"]);
+assert.equal(safetyCushion.catalogue_status, "pending_ready_assets");
+assert.ok(!schedule.channels.some((channel) => channel.editorial_id === "safety-cushion"), "Safety Cushion must remain unavailable until approved ready videos are attached.");
 assert.ok(Number.isFinite(Date.parse(schedule.epoch_utc)), "The shared UTC epoch must be valid.");
 assert.deepEqual(
   schedule.planning_markets.map((market) => market.name),
@@ -80,7 +86,7 @@ assert.equal(schedule.channels.length, 16, "The schedule must expose twelve publ
 for (const format of ["videos", "parties", "radio"]) {
   const channels = schedule.channels.filter((channel) => channel.format === format);
   assert.equal(channels.length, 4, `${format} must expose the four named editorial channels.`);
-  assert.deepEqual(channels.map((channel) => channel.editorial_id), editorialIds);
+  assert.deepEqual(channels.map((channel) => channel.editorial_id), playableEditorialIds);
   assert.deepEqual(
     channels.map((channel) => channel.name),
     ["Inner Planes", "Champagne Bohemia", "modul8 infinity", "james bondage"]
@@ -179,7 +185,8 @@ assert.equal(scheduledVideos.length, videoDurations.size, "A music video cannot 
 assert.ok(!scheduledVideos.includes("nine-inch-nails-closer-glastonbury-2026"), "The unverified Nine Inch Nails item must stay outside the shared broadcast.");
 assert.deepEqual(new Set(scheduledDjSets), new Set(djDurations.keys()), "All ten approved DJ sets and mixes must belong to exactly one shared channel.");
 assert.equal(scheduledDjSets.length, djDurations.size, "A DJ set cannot belong to more than one shared channel.");
-assert.deepEqual(scheduledStations, approvedStationIds, "The four Radio timetables must programme the full approved station catalogue.");
+assert.deepEqual(scheduledStations, new Set([...approvedStationIds].filter((id) => id !== "sanctuary-retro")), "Radio timetables must use the assigned music-room sources only.");
+assert.ok(!scheduledStations.has("sanctuary-retro"), "Sanctuary Retro must not be misclassified as the video-only Safety Cushion room.");
 assert.deepEqual(new Set(scheduledRunways), fashionRunwayIds, "All six Fashion films must belong to exactly one shared channel.");
 assert.equal(scheduledRunways.length, fashionRunwayIds.size, "A Fashion film cannot belong to more than one shared channel.");
 assert.ok(!scheduledRunways.some((runwayId) => privateRadioVisualIds.has(runwayId)), "Pearl must never enter the public Fashion shelf.");
@@ -192,8 +199,10 @@ assert.match(controller, /channels\?\.\(mode\)/, "Videos, DJ Sets, Radio and Fas
 assert.match(controller, /absoluteDrift > 1\.25/, "Shared video playback must hard-correct material drift.");
 assert.match(controller, /localVideo\.playbackRate = driftSeconds > 0 \? \.98 : 1\.02/, "Shared video playback must gently correct smaller drift.");
 assert.match(controller, /broadcastCorrection = "live_station_locked"/, "Shared Radio must retain the station selected by the timetable.");
-assert.match(controller, /musicContinuationDecision = "parties"/, "The personal opening video must converge into a recommended shared DJ Set channel.");
-assert.match(controller, /musicContinuationReason = "personal_opening_complete"/, "The shared DJ Set invitation must follow the personal opening video.");
+assert.match(controller, /\["parties", "radio", "videos"\]\.includes\(extendedSession\.format\)/, "The personal opening video must honour the assigned 80/10/10 extended-session format.");
+assert.match(controller, /item\.editorialId === selectedRoom/, "The extended livestream must remain inside the needs-matched music room.");
+assert.match(controller, /selectedRoom === "safety-cushion" && selectedFormat !== "videos"/, "Safety Cushion must remain video-only in the runtime handoff.");
+assert.match(controller, /musicContinuationReason = "personal_opening_complete"/, "The needs-matched livestream invitation must follow the personal opening video.");
 assert.match(controller, /radio_energy_match/, "Shared Radio must automatically pair with the matching Fashion energy channel.");
 assert.match(controller, /joinRadioVisualBroadcastChannel/, "Shared Radio must use an independent visual layer instead of replacing public Fashion.");
 assert.match(controller, /synchronizeRadioVisualBroadcastPlayback/, "The independent Radio visual must retain shared-clock synchronization.");
@@ -216,7 +225,7 @@ assert.match(controller, /MUSIC_BROADCAST_FORMATS = \["videos", "parties", "radi
 assert.match(controller, /is-current-broadcast/, "The exact joined channel must have a dedicated current state.");
 assert.match(controller, /activeBroadcastChannelIdForMode/, "Current state must resolve from the joined broadcast channel ID.");
 assert.doesNotMatch(controller, /VIBE · \$\{item\.broadcastChannelName\}/, "Generic VIBE hierarchy must not be overlaid on channel cards.");
-assert.match(controller, /BROADCAST_EDITORIAL_ORDER = \["inner-planes", "champagne-bohemia", "modul8-infinity", "james-bondage"\]/);
+assert.match(controller, /BROADCAST_EDITORIAL_ORDER = \["inner-planes", "champagne-bohemia", "modul8-infinity", "james-bondage", "safety-cushion"\]/);
 assert.match(index, /data-music-mode="parties"[^>]*>Parties</);
 assert.match(index, /CHANNEL · <strong data-broadcast-entry-vibe>INNER PLANES/);
 assert.doesNotMatch(index, /data-broadcast-vod|watch from the beginning/i);
@@ -225,4 +234,4 @@ assert.match(index, /broadcast-clock-v1\.js/);
 assert.match(endpoint, /microtime\(true\) \* 1000/);
 assert.match(endpoint, /Cache-Control: no-store/);
 
-console.log("Broadcast clock preflight passed: four live editorial channels across Videos, Parties and Radio; Max Richter and Ólafur Arnalds in Inner Planes Parties; Pearl privately clocked to Inner Planes Radio; Radio visuals remain independent crossfader endpoints beneath public Fashion; no solo replay path.");
+console.log("Broadcast clock preflight passed: five canonical music rooms are encoded; four have live Videos, Parties and Radio; Safety Cushion remains video-only and pending ready assets.");

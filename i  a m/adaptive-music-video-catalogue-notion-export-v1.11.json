@@ -177,7 +177,8 @@
     "Why This Track",
     "Writers",
     "YouTube ID",
-    "Youth Safety"
+    "Youth Safety",
+    "Music Room Fit"
   ],
   "row_count": 42,
   "gold_standard_row_count": 23,
@@ -358,7 +359,8 @@
       "Why This Track": "Candidate for memory, weather-emotion resonance, melancholy, longing and reflective emotional states.",
       "Writers": null,
       "YouTube ID": null,
-      "Youth Safety": null
+      "Youth Safety": null,
+      "Music Room Fit": []
     },
     {
       "Track": "Fall",
@@ -536,7 +538,8 @@
       "Why This Track": "Candidate based on Ben's stated meaning and adaptive music relevance. Metadata needs verification.",
       "Writers": null,
       "YouTube ID": null,
-      "Youth Safety": null
+      "Youth Safety": null,
+      "Music Room Fit": []
     },
     {
       "Track": "Weird Fishes / Arpeggi",
@@ -714,7 +717,8 @@
       "Why This Track": "Candidate already meaningful in modul8 infinity. Strong for surrender, descent, longing, beauty, transformation and water-like immersion.",
       "Writers": null,
       "YouTube ID": null,
-      "Youth Safety": null
+      "Youth Safety": null,
+      "Music Room Fit": []
     },
     {
       "Track": "Górecki",
@@ -892,7 +896,8 @@
       "Why This Track": "Candidate for love, devotion, awe, self-transcendence, embodiment and spiritual intensity.",
       "Writers": null,
       "YouTube ID": null,
-      "Youth Safety": null
+      "Youth Safety": null,
+      "Music Room Fit": []
     },
     {
       "Track": "Numb",
@@ -1070,7 +1075,10 @@
       "Why This Track": "Ben's Gold Standard V1.11 editorial anchor. Role: Frustration Named / Identity Validation. Official music video, 4K upgrade. Represents alienation, frustration, pressure, emotional numbing and the relief of being understood by a culturally massive shared song.",
       "Writers": null,
       "YouTube ID": null,
-      "Youth Safety": "Review"
+      "Youth Safety": "Review",
+      "Music Room Fit": [
+        "james-bondage"
+      ]
     },
     {
       "Track": "Bad",
@@ -1248,7 +1256,8 @@
       "Why This Track": "Candidate for longing, struggle, surrender, release, addiction-adjacent themes and catharsis.",
       "Writers": null,
       "YouTube ID": null,
-      "Youth Safety": null
+      "Youth Safety": null,
+      "Music Room Fit": []
     },
     {
       "Track": "Place in My Heart",
@@ -1426,7 +1435,8 @@
       "Why This Track": "Candidate for love, tenderness, belonging, soul restoration and memory.",
       "Writers": null,
       "YouTube ID": null,
-      "Youth Safety": null
+      "Youth Safety": null,
+      "Music Room Fit": []
     },
     {
       "Track": "Digeridoo",
@@ -1604,7 +1614,8 @@
       "Why This Track": "Candidate for non-lyric / instrumental energy mapping, arousal, trance, body, rhythm and edge.",
       "Writers": null,
       "YouTube ID": null,
-      "Youth Safety": null
+      "Youth Safety": null,
+      "Music Room Fit": []
     },
     {
       "Track": "Human Behaviour",
@@ -1782,7 +1793,8 @@
       "Why This Track": "Candidate for curiosity, human patterning, avant-garde identity and exploration.",
       "Writers": null,
       "YouTube ID": null,
-      "Youth Safety": null
+      "Youth Safety": null,
+      "Music Room Fit": []
     },
     {
       "Track": "Black Hole Sun",
@@ -1960,7 +1972,8 @@
       "Why This Track": "Candidate for shadow, surreal memory, melancholy, threat, awe and existential complexity.",
       "Writers": null,
       "YouTube ID": null,
-      "Youth Safety": null
+      "Youth Safety": null,
+      "Music Room Fit": []
     },
     {
       "Track": "Diamonds",
@@ -2138,7 +2151,10 @@
       "Why This Track": "Ben's Gold Standard V1.11 editorial anchor. Role: Inner Light. Represents hope, resilience, self-worth, clarity and emotional openness. Core Vogue / I AM hero candidate for citizens needing hope and self-worth.",
       "Writers": null,
       "YouTube ID": null,
-      "Youth Safety": "Safe"
+      "Youth Safety": "Safe",
+      "Music Room Fit": [
+        "champagne-bohemia"
+      ]
     },
     {
       "Track": "Everything in Its Right Place",
@@ -2316,7 +2332,8 @@
       "Why This Track": "Candidate for cognitive dislocation, order, unease, clarity, rumination and altered-state emotional honesty.",
       "Writers": null,
       "YouTube ID": null,
-      "Youth Safety": null
+      "Youth Safety": null,
+      "Music Room Fit": []
     },
     {
       "Track": "Mandala",
@@ -2494,7 +2511,8 @@
       "Why This Track": "Candidate based on Ben's stated meaning and adaptive music relevance. Metadata needs verification.",
       "Writers": null,
       "YouTube ID": null,
-      "Youth Safety": null
+      "Youth Safety": null,
+      "Music Room Fit": []
     },
     {
       "Track": "Protection",
@@ -2672,7 +2690,8 @@
       "Why This Track": "Candidate gold-standard track. Strong memory, protection, vulnerability, safety and care themes.",
       "Writers": null,
       "YouTube ID": null,
-      "Youth Safety": null
+      "Youth Safety": null,
+      "Music Room Fit": []
     },
     {
       "Track": "Under the Milky Way",
@@ -2850,7 +2869,8 @@
       "Why This Track": "Candidate for awe, nostalgia, mystery, night, memory, longing and Australian context.",
       "Writers": null,
       "YouTube ID": null,
-      "Youth Safety": null
+      "Youth Safety": null,
+      "Music Room Fit": []
     },
     {
       "Track": "Chandelier",
@@ -3028,7 +3048,8 @@
       "Why This Track": "Candidate for complex amber-zone review: performance, pain, survival, emotional intensity, agency and youth safety nuance.",
       "Writers": null,
       "YouTube ID": null,
-      "Youth Safety": null
+      "Youth Safety": null,
+      "Music Room Fit": []
     },
     {
       "Track": "Street Spirit (Fade Out)",
@@ -3206,7 +3227,8 @@
       "Why This Track": "Candidate for amber/red-zone review: melancholy, surrender, existential weight, beauty and safety boundary testing.",
       "Writers": null,
       "YouTube ID": null,
-      "Youth Safety": null
+      "Youth Safety": null,
+      "Music Room Fit": []
     },
     {
       "Track": "Genesis",
@@ -3384,7 +3406,10 @@
       "Why This Track": "Ben's Gold Standard V1.11 editorial anchor. Role: Creative Possibility. Represents imagination, futurism, fantasy, courage, possibility and hope for the future.",
       "Writers": null,
       "YouTube ID": null,
-      "Youth Safety": "Review"
+      "Youth Safety": "Review",
+      "Music Room Fit": [
+        "james-bondage"
+      ]
     },
     {
       "Track": "Bring Me to Life",
@@ -3562,7 +3587,8 @@
       "Why This Track": "Candidate for awakening, rescue, threshold crossing, intensity, agency and youth resonance.",
       "Writers": null,
       "YouTube ID": null,
-      "Youth Safety": null
+      "Youth Safety": null,
+      "Music Room Fit": []
     },
     {
       "Track": "Head Over Heels",
@@ -3740,7 +3766,8 @@
       "Why This Track": "Candidate for memory, longing, romance, nostalgia and emotional complexity.",
       "Writers": null,
       "YouTube ID": null,
-      "Youth Safety": null
+      "Youth Safety": null,
+      "Music Room Fit": []
     },
     {
       "Track": "Fix You",
@@ -3955,7 +3982,8 @@
       "Why This Track": "Gold-standard calibration track for grief, repair, care, hope, memory, catharsis and differential monomyth-stage response. Useful first example because many people know it, yet it lands differently depending on life experience, memory and transformation stage.",
       "Writers": "Chris Martin; Jonny Buckland; Guy Berryman; Will Champion",
       "YouTube ID": null,
-      "Youth Safety": "Review"
+      "Youth Safety": "Review",
+      "Music Room Fit": []
     },
     {
       "Track": "Titanium",
@@ -4133,7 +4161,8 @@
       "Why This Track": "Candidate for joy + affirmation, resilience, agency and mainstream EDM positivity.",
       "Writers": null,
       "YouTube ID": null,
-      "Youth Safety": null
+      "Youth Safety": null,
+      "Music Room Fit": []
     },
     {
       "Track": "Gorilla",
@@ -4311,7 +4340,10 @@
       "Why This Track": "Ben's Gold Standard V1.11 editorial anchor. Role: Personal Sovereignty. Represents agency, confidence, fierce self-belief and strength without apology. Strong Vogue / fashion / avant-garde alignment.",
       "Writers": null,
       "YouTube ID": null,
-      "Youth Safety": "Review"
+      "Youth Safety": "Review",
+      "Music Room Fit": [
+        "modul8-infinity"
+      ]
     },
     {
       "Track": "Hyperballad",
@@ -4489,7 +4521,10 @@
       "Why This Track": "Ben's Gold Standard V1.11 editorial anchor. Role: Emotional Regulation. Represents private ritual, vulnerability, grounding, self-awareness and reconnection.",
       "Writers": null,
       "YouTube ID": null,
-      "Youth Safety": "Review"
+      "Youth Safety": "Review",
+      "Music Room Fit": [
+        "inner-planes"
+      ]
     },
     {
       "Track": "The Less I Know The Better",
@@ -4667,7 +4702,10 @@
       "Why This Track": "Ben's Gold Standard V1.11 editorial anchor. Role: Young Heartbreak With Dignity. Represents first love, youth identity, disappointment, acceptance and emotional style. Important Universal Mind / Modular Recordings-aligned cultural anchor.",
       "Writers": null,
       "YouTube ID": null,
-      "Youth Safety": "Safe"
+      "Youth Safety": "Safe",
+      "Music Room Fit": [
+        "champagne-bohemia"
+      ]
     },
     {
       "Track": "Cranes in the Sky",
@@ -4845,7 +4883,10 @@
       "Why This Track": "Ben's Gold Standard V1.11 editorial anchor. Role: Quiet Resilience. Represents healing, grace, dignity and self-possession. Major Vogue-aligned video for editorial restraint, fashion language and women of colour representation.",
       "Writers": null,
       "YouTube ID": null,
-      "Youth Safety": "Safe"
+      "Youth Safety": "Safe",
+      "Music Room Fit": [
+        "champagne-bohemia"
+      ]
     },
     {
       "Track": "Ray of Light",
@@ -5023,7 +5064,10 @@
       "Why This Track": "Ben's Gold Standard V1.11 editorial anchor. Role: Optimistic Reawakening. Represents hope, curiosity, vitality, expansion and life-force movement. Counterpoint to Frozen: outward motion after contraction.",
       "Writers": null,
       "YouTube ID": null,
-      "Youth Safety": "Safe"
+      "Youth Safety": "Safe",
+      "Music Room Fit": [
+        "modul8-infinity"
+      ]
     },
     {
       "Track": "Frozen",
@@ -5201,7 +5245,10 @@
       "Why This Track": "Ben's Gold Standard V1.11 editorial anchor. Role: Reflective Transformation. Represents acceptance, stillness, emotional regulation, heartbreak and closed-heartedness moving toward release. Vogue-aligned calibration piece for cinematic fashion language and inner transformation.",
       "Writers": null,
       "YouTube ID": null,
-      "Youth Safety": "Review"
+      "Youth Safety": "Review",
+      "Music Room Fit": [
+        "inner-planes"
+      ]
     },
     {
       "Track": "Never Be Like You (Laneway Festival Live Edition)",
@@ -5379,7 +5426,10 @@
       "Why This Track": "Ben's Gold Standard V1.11 editorial anchor. Role: Collective Vulnerability. Represents belonging, emotional release, shared humanity and live-audience connection.",
       "Writers": null,
       "YouTube ID": null,
-      "Youth Safety": "Review"
+      "Youth Safety": "Review",
+      "Music Room Fit": [
+        "modul8-infinity"
+      ]
     },
     {
       "Track": "Tiny Cities",
@@ -5557,7 +5607,10 @@
       "Why This Track": "Ben's Gold Standard V1.11 editorial anchor. Role: Quiet Transcendence. Represents emotional spaciousness, contemplation, recovery and reflective lift. Important Australian electronic / tastemaker entry.",
       "Writers": null,
       "YouTube ID": null,
-      "Youth Safety": "Safe"
+      "Youth Safety": "Safe",
+      "Music Room Fit": [
+        "inner-planes"
+      ]
     },
     {
       "Track": "Energy",
@@ -5735,7 +5788,10 @@
       "Why This Track": "Ben's Gold Standard V1.11 editorial anchor. Role: Life Force. Represents divine feminine energy, vitality, confidence, embodied motivation, joy and connection. Strong Australian / African-diasporic / Vogue-aligned contribution.",
       "Writers": null,
       "YouTube ID": null,
-      "Youth Safety": "Safe"
+      "Youth Safety": "Safe",
+      "Music Room Fit": [
+        "modul8-infinity"
+      ]
     },
     {
       "Track": "Be The One (Glastonbury 2017 Live)",
@@ -5913,7 +5969,10 @@
       "Why This Track": "Ben's Gold Standard V1.11 editorial anchor. Role: Trusting Connection. Represents love, trust, openness, belonging, emotional availability and collective celebration. Chosen specifically to fill the positive love gap.",
       "Writers": null,
       "YouTube ID": null,
-      "Youth Safety": "Safe"
+      "Youth Safety": "Safe",
+      "Music Room Fit": [
+        "champagne-bohemia"
+      ]
     },
     {
       "Track": "House",
@@ -6091,7 +6150,10 @@
       "Why This Track": "Ben's Gold Standard V1.11 editorial anchor. Role: Beautiful Discomfort. From Wuthering Heights. Gothic pain, grit, iconic film adjacency, fashion language and art-house emotional complexity.",
       "Writers": null,
       "YouTube ID": null,
-      "Youth Safety": "Review"
+      "Youth Safety": "Review",
+      "Music Room Fit": [
+        "james-bondage"
+      ]
     },
     {
       "Track": "Everybody in the Place",
@@ -6269,7 +6331,10 @@
       "Why This Track": "Ben's Gold Standard V1.11 editorial anchor. Role: Collective Vitality. Represents rave culture, dance, optimism, embodied movement, freedom and togetherness. Chosen ahead of Out of Space as the primary Prodigy anchor.",
       "Writers": null,
       "YouTube ID": null,
-      "Youth Safety": "Safe"
+      "Youth Safety": "Safe",
+      "Music Room Fit": [
+        "modul8-infinity"
+      ]
     },
     {
       "Track": "Final Form",
@@ -6447,7 +6512,10 @@
       "Why This Track": "Ben's Gold Standard V1.11 editorial anchor. Role: Becoming. Represents identity, purpose, courage, self-actualisation, emergence and cultural power.",
       "Writers": null,
       "YouTube ID": null,
-      "Youth Safety": "Safe"
+      "Youth Safety": "Safe",
+      "Music Room Fit": [
+        "modul8-infinity"
+      ]
     },
     {
       "Track": "Shape the Future",
@@ -6625,7 +6693,10 @@
       "Why This Track": "Ben's Gold Standard V1.11 editorial anchor. Role: Wisdom. Balearic / New Age-leaning counterculture anthem about positive affirmation, strength of mind, strength of heart, courage, empathy, connection and shaping the future.",
       "Writers": null,
       "YouTube ID": null,
-      "Youth Safety": "Safe"
+      "Youth Safety": "Safe",
+      "Music Room Fit": [
+        "champagne-bohemia"
+      ]
     },
     {
       "Track": "Illegal (Glastonbury 2025 Live)",
@@ -6803,7 +6874,10 @@
       "Why This Track": "Ben's Gold Standard V1.11 editorial anchor. Role: Playful Reconnection. Represents joy, rave-inflected lightness, recovery, youth energy, curiosity and belonging.",
       "Writers": null,
       "YouTube ID": null,
-      "Youth Safety": "Safe"
+      "Youth Safety": "Safe",
+      "Music Room Fit": [
+        "modul8-infinity"
+      ]
     },
     {
       "Track": "Borders",
@@ -6981,7 +7055,10 @@
       "Why This Track": "Ben's Gold Standard V1.11 editorial anchor. Role: Collective Identity. Represents justice, displacement, refugees, courage, oppression, identity politics and global social awareness.",
       "Writers": null,
       "YouTube ID": null,
-      "Youth Safety": "Review"
+      "Youth Safety": "Review",
+      "Music Room Fit": [
+        "modul8-infinity"
+      ]
     },
     {
       "Track": "Welcome To My Island",
@@ -7159,7 +7236,10 @@
       "Why This Track": "Ben's Gold Standard V1.11 editorial anchor. Role: Authentic Self-Expression. Represents identity, witchiness, permission, curiosity, creative confidence, self-actualisation and awe.",
       "Writers": null,
       "YouTube ID": null,
-      "Youth Safety": "Review"
+      "Youth Safety": "Review",
+      "Music Room Fit": [
+        "modul8-infinity"
+      ]
     },
     {
       "Track": "Closer (Glastonbury 2026 Live)",
@@ -7337,7 +7417,10 @@
       "Why This Track": "Ben's Gold Standard V1.11 editorial anchor. Role: Shadow Integration / Avant-Garde Arousal. Ben identifies the Glastonbury 2026 live performance as iconic, internet-breaking and highly Vogue-aligned. Represents darkness, taboo, desire, intensity, industrial beauty and avant-garde self-confrontation.",
       "Writers": null,
       "YouTube ID": null,
-      "Youth Safety": "Caution"
+      "Youth Safety": "Caution",
+      "Music Room Fit": [
+        "james-bondage"
+      ]
     },
     {
       "Track": "Numb (Live, 9 September 2024)",
@@ -7515,7 +7598,10 @@
       "Why This Track": "Ben's Gold Standard V1.11 editorial anchor. Role: Collective Catharsis / Shared Frustration. Live Numb performance, released 9 September 2024 per Ben's note. Represents frustration held by a crowd, emotional release, togetherness and the experience of not being alone in anger or numbness.",
       "Writers": null,
       "YouTube ID": null,
-      "Youth Safety": "Review"
+      "Youth Safety": "Review",
+      "Music Room Fit": [
+        "james-bondage"
+      ]
     },
     {
       "Track": "Numb",
@@ -7693,7 +7779,10 @@
       "Why This Track": "Ben's Gold Standard V1.11 editorial anchor. Role: Gentle Validation / Low-Arousal Activation. Represents boredom, frustration, emotional desensitisation and numbness, with classic U2 musicianship, delay, arpeggio and open-hearted lift offering a subtle pivot toward receptivity.",
       "Writers": null,
       "YouTube ID": null,
-      "Youth Safety": "Review"
+      "Youth Safety": "Review",
+      "Music Room Fit": [
+        "james-bondage"
+      ]
     }
   ],
   "gold_standard_rows": [
@@ -7873,7 +7962,10 @@
       "Why This Track": "Ben's Gold Standard V1.11 editorial anchor. Role: Frustration Named / Identity Validation. Official music video, 4K upgrade. Represents alienation, frustration, pressure, emotional numbing and the relief of being understood by a culturally massive shared song.",
       "Writers": null,
       "YouTube ID": null,
-      "Youth Safety": "Review"
+      "Youth Safety": "Review",
+      "Music Room Fit": [
+        "james-bondage"
+      ]
     },
     {
       "Track": "Diamonds",
@@ -8051,7 +8143,10 @@
       "Why This Track": "Ben's Gold Standard V1.11 editorial anchor. Role: Inner Light. Represents hope, resilience, self-worth, clarity and emotional openness. Core Vogue / I AM hero candidate for citizens needing hope and self-worth.",
       "Writers": null,
       "YouTube ID": null,
-      "Youth Safety": "Safe"
+      "Youth Safety": "Safe",
+      "Music Room Fit": [
+        "champagne-bohemia"
+      ]
     },
     {
       "Track": "Genesis",
@@ -8229,7 +8324,10 @@
       "Why This Track": "Ben's Gold Standard V1.11 editorial anchor. Role: Creative Possibility. Represents imagination, futurism, fantasy, courage, possibility and hope for the future.",
       "Writers": null,
       "YouTube ID": null,
-      "Youth Safety": "Review"
+      "Youth Safety": "Review",
+      "Music Room Fit": [
+        "james-bondage"
+      ]
     },
     {
       "Track": "Gorilla",
@@ -8407,7 +8505,10 @@
       "Why This Track": "Ben's Gold Standard V1.11 editorial anchor. Role: Personal Sovereignty. Represents agency, confidence, fierce self-belief and strength without apology. Strong Vogue / fashion / avant-garde alignment.",
       "Writers": null,
       "YouTube ID": null,
-      "Youth Safety": "Review"
+      "Youth Safety": "Review",
+      "Music Room Fit": [
+        "modul8-infinity"
+      ]
     },
     {
       "Track": "Hyperballad",
@@ -8585,7 +8686,10 @@
       "Why This Track": "Ben's Gold Standard V1.11 editorial anchor. Role: Emotional Regulation. Represents private ritual, vulnerability, grounding, self-awareness and reconnection.",
       "Writers": null,
       "YouTube ID": null,
-      "Youth Safety": "Review"
+      "Youth Safety": "Review",
+      "Music Room Fit": [
+        "inner-planes"
+      ]
     },
     {
       "Track": "The Less I Know The Better",
@@ -8763,7 +8867,10 @@
       "Why This Track": "Ben's Gold Standard V1.11 editorial anchor. Role: Young Heartbreak With Dignity. Represents first love, youth identity, disappointment, acceptance and emotional style. Important Universal Mind / Modular Recordings-aligned cultural anchor.",
       "Writers": null,
       "YouTube ID": null,
-      "Youth Safety": "Safe"
+      "Youth Safety": "Safe",
+      "Music Room Fit": [
+        "champagne-bohemia"
+      ]
     },
     {
       "Track": "Cranes in the Sky",
@@ -8941,7 +9048,10 @@
       "Why This Track": "Ben's Gold Standard V1.11 editorial anchor. Role: Quiet Resilience. Represents healing, grace, dignity and self-possession. Major Vogue-aligned video for editorial restraint, fashion language and women of colour representation.",
       "Writers": null,
       "YouTube ID": null,
-      "Youth Safety": "Safe"
+      "Youth Safety": "Safe",
+      "Music Room Fit": [
+        "champagne-bohemia"
+      ]
     },
     {
       "Track": "Ray of Light",
@@ -9119,7 +9229,10 @@
       "Why This Track": "Ben's Gold Standard V1.11 editorial anchor. Role: Optimistic Reawakening. Represents hope, curiosity, vitality, expansion and life-force movement. Counterpoint to Frozen: outward motion after contraction.",
       "Writers": null,
       "YouTube ID": null,
-      "Youth Safety": "Safe"
+      "Youth Safety": "Safe",
+      "Music Room Fit": [
+        "modul8-infinity"
+      ]
     },
     {
       "Track": "Frozen",
@@ -9297,7 +9410,10 @@
       "Why This Track": "Ben's Gold Standard V1.11 editorial anchor. Role: Reflective Transformation. Represents acceptance, stillness, emotional regulation, heartbreak and closed-heartedness moving toward release. Vogue-aligned calibration piece for cinematic fashion language and inner transformation.",
       "Writers": null,
       "YouTube ID": null,
-      "Youth Safety": "Review"
+      "Youth Safety": "Review",
+      "Music Room Fit": [
+        "inner-planes"
+      ]
     },
     {
       "Track": "Never Be Like You (Laneway Festival Live Edition)",
@@ -9475,7 +9591,10 @@
       "Why This Track": "Ben's Gold Standard V1.11 editorial anchor. Role: Collective Vulnerability. Represents belonging, emotional release, shared humanity and live-audience connection.",
       "Writers": null,
       "YouTube ID": null,
-      "Youth Safety": "Review"
+      "Youth Safety": "Review",
+      "Music Room Fit": [
+        "modul8-infinity"
+      ]
     },
     {
       "Track": "Tiny Cities",
@@ -9653,7 +9772,10 @@
       "Why This Track": "Ben's Gold Standard V1.11 editorial anchor. Role: Quiet Transcendence. Represents emotional spaciousness, contemplation, recovery and reflective lift. Important Australian electronic / tastemaker entry.",
       "Writers": null,
       "YouTube ID": null,
-      "Youth Safety": "Safe"
+      "Youth Safety": "Safe",
+      "Music Room Fit": [
+        "inner-planes"
+      ]
     },
     {
       "Track": "Energy",
@@ -9831,7 +9953,10 @@
       "Why This Track": "Ben's Gold Standard V1.11 editorial anchor. Role: Life Force. Represents divine feminine energy, vitality, confidence, embodied motivation, joy and connection. Strong Australian / African-diasporic / Vogue-aligned contribution.",
       "Writers": null,
       "YouTube ID": null,
-      "Youth Safety": "Safe"
+      "Youth Safety": "Safe",
+      "Music Room Fit": [
+        "modul8-infinity"
+      ]
     },
     {
       "Track": "Be The One (Glastonbury 2017 Live)",
@@ -10009,7 +10134,10 @@
       "Why This Track": "Ben's Gold Standard V1.11 editorial anchor. Role: Trusting Connection. Represents love, trust, openness, belonging, emotional availability and collective celebration. Chosen specifically to fill the positive love gap.",
       "Writers": null,
       "YouTube ID": null,
-      "Youth Safety": "Safe"
+      "Youth Safety": "Safe",
+      "Music Room Fit": [
+        "champagne-bohemia"
+      ]
     },
     {
       "Track": "House",
@@ -10187,7 +10315,10 @@
       "Why This Track": "Ben's Gold Standard V1.11 editorial anchor. Role: Beautiful Discomfort. From Wuthering Heights. Gothic pain, grit, iconic film adjacency, fashion language and art-house emotional complexity.",
       "Writers": null,
       "YouTube ID": null,
-      "Youth Safety": "Review"
+      "Youth Safety": "Review",
+      "Music Room Fit": [
+        "james-bondage"
+      ]
     },
     {
       "Track": "Everybody in the Place",
@@ -10365,7 +10496,10 @@
       "Why This Track": "Ben's Gold Standard V1.11 editorial anchor. Role: Collective Vitality. Represents rave culture, dance, optimism, embodied movement, freedom and togetherness. Chosen ahead of Out of Space as the primary Prodigy anchor.",
       "Writers": null,
       "YouTube ID": null,
-      "Youth Safety": "Safe"
+      "Youth Safety": "Safe",
+      "Music Room Fit": [
+        "modul8-infinity"
+      ]
     },
     {
       "Track": "Final Form",
@@ -10543,7 +10677,10 @@
       "Why This Track": "Ben's Gold Standard V1.11 editorial anchor. Role: Becoming. Represents identity, purpose, courage, self-actualisation, emergence and cultural power.",
       "Writers": null,
       "YouTube ID": null,
-      "Youth Safety": "Safe"
+      "Youth Safety": "Safe",
+      "Music Room Fit": [
+        "modul8-infinity"
+      ]
     },
     {
       "Track": "Shape the Future",
@@ -10721,7 +10858,10 @@
       "Why This Track": "Ben's Gold Standard V1.11 editorial anchor. Role: Wisdom. Balearic / New Age-leaning counterculture anthem about positive affirmation, strength of mind, strength of heart, courage, empathy, connection and shaping the future.",
       "Writers": null,
       "YouTube ID": null,
-      "Youth Safety": "Safe"
+      "Youth Safety": "Safe",
+      "Music Room Fit": [
+        "champagne-bohemia"
+      ]
     },
     {
       "Track": "Illegal (Glastonbury 2025 Live)",
@@ -10899,7 +11039,10 @@
       "Why This Track": "Ben's Gold Standard V1.11 editorial anchor. Role: Playful Reconnection. Represents joy, rave-inflected lightness, recovery, youth energy, curiosity and belonging.",
       "Writers": null,
       "YouTube ID": null,
-      "Youth Safety": "Safe"
+      "Youth Safety": "Safe",
+      "Music Room Fit": [
+        "modul8-infinity"
+      ]
     },
     {
       "Track": "Borders",
@@ -11077,7 +11220,10 @@
       "Why This Track": "Ben's Gold Standard V1.11 editorial anchor. Role: Collective Identity. Represents justice, displacement, refugees, courage, oppression, identity politics and global social awareness.",
       "Writers": null,
       "YouTube ID": null,
-      "Youth Safety": "Review"
+      "Youth Safety": "Review",
+      "Music Room Fit": [
+        "modul8-infinity"
+      ]
     },
     {
       "Track": "Welcome To My Island",
@@ -11255,7 +11401,10 @@
       "Why This Track": "Ben's Gold Standard V1.11 editorial anchor. Role: Authentic Self-Expression. Represents identity, witchiness, permission, curiosity, creative confidence, self-actualisation and awe.",
       "Writers": null,
       "YouTube ID": null,
-      "Youth Safety": "Review"
+      "Youth Safety": "Review",
+      "Music Room Fit": [
+        "modul8-infinity"
+      ]
     },
     {
       "Track": "Closer (Glastonbury 2026 Live)",
@@ -11433,7 +11582,10 @@
       "Why This Track": "Ben's Gold Standard V1.11 editorial anchor. Role: Shadow Integration / Avant-Garde Arousal. Ben identifies the Glastonbury 2026 live performance as iconic, internet-breaking and highly Vogue-aligned. Represents darkness, taboo, desire, intensity, industrial beauty and avant-garde self-confrontation.",
       "Writers": null,
       "YouTube ID": null,
-      "Youth Safety": "Caution"
+      "Youth Safety": "Caution",
+      "Music Room Fit": [
+        "james-bondage"
+      ]
     },
     {
       "Track": "Numb (Live, 9 September 2024)",
@@ -11611,7 +11763,10 @@
       "Why This Track": "Ben's Gold Standard V1.11 editorial anchor. Role: Collective Catharsis / Shared Frustration. Live Numb performance, released 9 September 2024 per Ben's note. Represents frustration held by a crowd, emotional release, togetherness and the experience of not being alone in anger or numbness.",
       "Writers": null,
       "YouTube ID": null,
-      "Youth Safety": "Review"
+      "Youth Safety": "Review",
+      "Music Room Fit": [
+        "james-bondage"
+      ]
     },
     {
       "Track": "Numb",
@@ -11789,7 +11944,10 @@
       "Why This Track": "Ben's Gold Standard V1.11 editorial anchor. Role: Gentle Validation / Low-Arousal Activation. Represents boredom, frustration, emotional desensitisation and numbness, with classic U2 musicianship, delay, arpeggio and open-hearted lift offering a subtle pivot toward receptivity.",
       "Writers": null,
       "YouTube ID": null,
-      "Youth Safety": "Review"
+      "Youth Safety": "Review",
+      "Music Room Fit": [
+        "james-bondage"
+      ]
     }
   ]
 }

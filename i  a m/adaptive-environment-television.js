@@ -1,38 +1,38 @@
 (function () {
   const TRACK_CATALOGUE = [
-    { id: "madonna-frozen", artist: "Madonna", title: "Frozen", localVideoSrc: "a s s e t s/Madonna - Frozen.mp4", radioHandoff: "chill", edgeScale: 1.2 },
-    { id: "madonna-ray-of-light", artist: "Madonna", title: "Ray Of Light", localVideoSrc: "a s s e t s/Madonna - Ray Of Light.mp4", radioHandoff: "house", edgeScale: 1.2 },
-    { id: "rihanna-diamonds", artist: "Rihanna", title: "Diamonds", localVideoSrc: "a s s e t s/Rihanna - Diamonds.mp4", radioHandoff: "chill" },
-    { id: "bjork-hyperballad", artist: "Björk", title: "Hyperballad", localVideoSrc: "a s s e t s/Björk - Hyperballad.mp4", radioHandoff: "chill" },
-    { id: "tame-impala-the-less-i-know-the-better", artist: "Tame Impala", title: "The Less I Know The Better", localVideoSrc: "a s s e t s/Tame Impala - The Less I Know The Better.mp4", radioHandoff: "chill" },
-    { id: "flume-tiny-cities", artist: "Flume feat. Beck", title: "Tiny Cities", localVideoSrc: "a s s e t s/Flume - Tiny Cities feat. Beck.mp4", radioHandoff: "chill" },
-    { id: "flume-never-be-like-you-laneway", artist: "Flume feat. Kai", title: "Never Be Like You [Live at Laneway Festival]", localVideoSrc: "a s s e t s/Flume - Never Be Like You feat. Kai [ Live at Laneway Festival ].mp4", radioHandoff: "house" },
-    { id: "grimes-genesis", artist: "Grimes", title: "Genesis", localVideoSrc: "a s s e t s/Grimes - Genesis.mp4", radioHandoff: "house" },
-    { id: "solange-cranes-in-the-sky", artist: "Solange", title: "Cranes in the Sky", localVideoSrc: "a s s e t s/Solange - Cranes in the Sky.mp4", radioHandoff: "calm" },
-    { id: "little-simz-gorilla", artist: "Little Simz", title: "Gorilla", localVideoSrc: "a s s e t s/Little Simz - Gorilla.mp4", radioHandoff: "house" },
-    { id: "the-prodigy-everybody-in-the-place", artist: "The Prodigy", title: "Everybody In The Place", localVideoSrc: "a s s e t s/The Prodigy - Everybody In The Place.mp4", radioHandoff: "house", edgeScale: 1.16 },
-    { id: "nightmares-on-wax-shape-the-future", artist: "Nightmares On Wax", title: "Shape The Future", localVideoSrc: "a s s e t s/Nightmares On Wax - Shape The Future.mp4", radioHandoff: "calm" },
-    { id: "mia-borders", artist: "M.I.A.", title: "Borders", localVideoSrc: "a s s e t s/M.I.A. - Borders.mp4", radioHandoff: "house" },
-    { id: "sampa-the-great-energy", artist: "Sampa The Great feat. Nadeem Din-Gabisi", title: "Energy", localVideoSrc: "a s s e t s/Sampa The Great - Energy (feat. Nadeem Din-Gabisi).mp4", radioHandoff: "house" },
-    { id: "sampa-the-great-final-form", artist: "Sampa The Great", title: "Final Form", localVideoSrc: "a s s e t s/Sampa The Great - Final Form.mp4", radioHandoff: "house" },
-    { id: "dua-lipa-be-the-one-glastonbury-2017", artist: "Dua Lipa", title: "Be The One", localVideoSrc: "a s s e t s/Dua Lipa - Be The One.mp4", radioHandoff: "house" },
-    { id: "charli-xcx-house-john-cale", artist: "Charli XCX feat. John Cale", title: "House", displayArtist: "Charli XCX", displayTitle: "House feat. John Cale", localVideoSrc: "a s s e t s/Charli XCX - House featuring John Cale.mp4", youtubeVideoId: "Xgp7wlBfASA", radioHandoff: "house" },
-    { id: "pinkpantheress-illegal-glastonbury-2025", artist: "PinkPantheress", title: "Illegal [Live at Glastonbury]", localVideoSrc: "a s s e t s/PinkPantheress - Illegal ( Live at Glastonbury).mp4", radioHandoff: "house" },
-    { id: "caroline-polachek-welcome-to-my-island", artist: "Caroline Polachek", title: "Welcome To My Island", localVideoSrc: "a s s e t s/Caroline Polachek - Welcome To My Island.mp4", radioHandoff: "house" },
-    { id: "u2-numb", artist: "U2", title: "Numb", localVideoSrc: "a s s e t s/U2 - Numb.mp4", radioHandoff: "chill", edgeScale: 1.16 },
-    { id: "linkin-park-numb-official", artist: "Linkin Park", title: "Numb", localVideoSrc: "a s s e t s/Linkin Park - Numb.mp4", radioHandoff: "chill" },
-    { id: "linkin-park-numb-live-2024", artist: "Linkin Park", title: "Numb [Live, 2024]", localVideoSrc: "a s s e t s/Linkin Park - Numb (Live, 2024).mp4", radioHandoff: "chill" },
-    { id: "sasha-ibiza-boat-at-sunset-freqways", artist: "Sasha", title: "Sasha - Ibiza Boat at Sunset (Freqways)", displayTitle: "Ibiza Boat at Sunset (Freqways)", localVideoSrc: "a s s e t s/d j  s e t s/ Sasha - Ibiza Boat at Sunset - Freqways.mp4", radioHandoff: "chill", presentation: "live_dj_set" },
-    { id: "ben-bohmer-cappadocia-cercle", artist: "Ben Böhmer", title: "Ben Böhmer live above Cappadocia, Turkey (Cercle)", displayTitle: "Cappadocia, Turkey (Cercle)", localVideoSrc: "a s s e t s/d j  s e t s/Ben Böhmer live - Cappadocia, Turkey - Cercle.mp4", radioHandoff: "chill", presentation: "live_dj_set" },
-    { id: "peggy-gou-palais-des-beaux-arts-cercle", artist: "Peggy Gou", title: "Peggy Gou at Palais des Beaux-Arts, Lille (Cercle)", displayTitle: "Palais des Beaux-Arts, Lille (Cercle)", localVideoSrc: "a s s e t s/d j  s e t s/Peggy Gou - Cercle - Palais des Beaux - Cercle.mp4", radioHandoff: "house", presentation: "live_dj_set" },
-    { id: "miss-monique-biosphere-montreal-cercle", artist: "Miss Monique", title: "Miss Monique at the Biosphere, Montreal (Cercle)", displayTitle: "Biosphere, Montreal (Cercle)", localVideoSrc: "a s s e t s/d j  s e t s/Miss Monique - Biosphere Museum in Montreal, Canada - Cercle.mp4", radioHandoff: "house", presentation: "live_dj_set" },
-    { id: "nina-kraviz-eiffel-tower-cercle", artist: "Nina Kraviz", title: "Nina Kraviz at the Eiffel Tower, Paris (Cercle)", displayTitle: "Eiffel Tower, Paris (Cercle)", localVideoSrc: "a s s e t s/d j  s e t s/Nina Kraviz - Eiffel Tower, Paris, France - Cercle.mp4", radioHandoff: "house", presentation: "live_dj_set" },
-    { id: "nastia-drum-bass-sunset-the-lab-ibiza", artist: "NASTIA", title: "NASTIA - Drum & Bass Sunset Set at The Lab Ibiza", displayTitle: "Drum & Bass Sunset Set at The Lab Ibiza", localVideoSrc: "a s s e t s/d j  s e t s/NASTIA - Ibiza at Sunset - The Lab.mp4", radioHandoff: "house", presentation: "live_dj_set" },
-    { id: "carl-cox-chateau-de-chambord-cercle", artist: "Carl Cox", title: "Carl Cox at Château de Chambord, France (Cercle)", displayTitle: "Château de Chambord, France (Cercle)", localVideoSrc: "a s s e t s/d j  s e t s/Carl Cox - Château de Chambord, France - Cercle.mp4", radioHandoff: "house", presentation: "live_dj_set" },
-    { id: "max-richter-cercle-odyssey-paris", artist: "Max Richter", title: "Max Richter live at Cercle Odyssey, Paris, France", displayTitle: "Cercle Odyssey, Paris, France", localVideoSrc: "a s s e t s/d j  s e t s/Max Richter live at Cercle Odyssey, Paris, France.mp4", radioHandoff: "calm", presentation: "live_dj_set" },
-    { id: "olafur-arnalds-hafursey-iceland-cercle", artist: "Ólafur Arnalds", title: "Ólafur Arnalds live from Hafursey, in Iceland for Cercle", displayTitle: "live from Hafursey, in Iceland for Cercle", localVideoSrc: "a s s e t s/d j  s e t s/Ólafur Arnalds live from Hafursey, in Iceland for Cercle.mp4", radioHandoff: "calm", presentation: "live_dj_set" },
-    { id: "zip-perlon-air-festival-2007", artist: "Zip", title: "Perlon at Air Festival, 2007", displayTitle: "Perlon · Air Festival, 2007", localVideoSrc: "a s s e t s/d j  s e t s/Zip (Perlon) - Air Festival, 2007.mp4", radioHandoff: "house", presentation: "live_dj_set", audioOnly: true },
-    { id: "zip-sammy-d-perlon-betalounge-2000", artist: "Zip & Sammy D", title: "Perlon at Betalounge, 2000", displayTitle: "Perlon · Betalounge, 2000", localVideoSrc: "a s s e t s/d j  s e t s/Zip & Sammy D (Perlon) - Betalounge, 2000.mp4", radioHandoff: "house", presentation: "live_dj_set", audioOnly: true },
+    { id: "madonna-frozen", artist: "Madonna", title: "Frozen", localVideoSrc: "a s s e t s/Madonna - Frozen.mp4", musicRoom: "inner-planes", edgeScale: 1.2 },
+    { id: "madonna-ray-of-light", artist: "Madonna", title: "Ray Of Light", localVideoSrc: "a s s e t s/Madonna - Ray Of Light.mp4", musicRoom: "modul8-infinity", edgeScale: 1.2 },
+    { id: "rihanna-diamonds", artist: "Rihanna", title: "Diamonds", localVideoSrc: "a s s e t s/Rihanna - Diamonds.mp4", musicRoom: "champagne-bohemia" },
+    { id: "bjork-hyperballad", artist: "Björk", title: "Hyperballad", localVideoSrc: "a s s e t s/Björk - Hyperballad.mp4", musicRoom: "inner-planes" },
+    { id: "tame-impala-the-less-i-know-the-better", artist: "Tame Impala", title: "The Less I Know The Better", localVideoSrc: "a s s e t s/Tame Impala - The Less I Know The Better.mp4", musicRoom: "champagne-bohemia" },
+    { id: "flume-tiny-cities", artist: "Flume feat. Beck", title: "Tiny Cities", localVideoSrc: "a s s e t s/Flume - Tiny Cities feat. Beck.mp4", musicRoom: "inner-planes" },
+    { id: "flume-never-be-like-you-laneway", artist: "Flume feat. Kai", title: "Never Be Like You [Live at Laneway Festival]", localVideoSrc: "a s s e t s/Flume - Never Be Like You feat. Kai [ Live at Laneway Festival ].mp4", musicRoom: "modul8-infinity" },
+    { id: "grimes-genesis", artist: "Grimes", title: "Genesis", localVideoSrc: "a s s e t s/Grimes - Genesis.mp4", musicRoom: "james-bondage" },
+    { id: "solange-cranes-in-the-sky", artist: "Solange", title: "Cranes in the Sky", localVideoSrc: "a s s e t s/Solange - Cranes in the Sky.mp4", musicRoom: "champagne-bohemia" },
+    { id: "little-simz-gorilla", artist: "Little Simz", title: "Gorilla", localVideoSrc: "a s s e t s/Little Simz - Gorilla.mp4", musicRoom: "modul8-infinity" },
+    { id: "the-prodigy-everybody-in-the-place", artist: "The Prodigy", title: "Everybody In The Place", localVideoSrc: "a s s e t s/The Prodigy - Everybody In The Place.mp4", musicRoom: "modul8-infinity", edgeScale: 1.16 },
+    { id: "nightmares-on-wax-shape-the-future", artist: "Nightmares On Wax", title: "Shape The Future", localVideoSrc: "a s s e t s/Nightmares On Wax - Shape The Future.mp4", musicRoom: "champagne-bohemia" },
+    { id: "mia-borders", artist: "M.I.A.", title: "Borders", localVideoSrc: "a s s e t s/M.I.A. - Borders.mp4", musicRoom: "modul8-infinity" },
+    { id: "sampa-the-great-energy", artist: "Sampa The Great feat. Nadeem Din-Gabisi", title: "Energy", localVideoSrc: "a s s e t s/Sampa The Great - Energy (feat. Nadeem Din-Gabisi).mp4", musicRoom: "modul8-infinity" },
+    { id: "sampa-the-great-final-form", artist: "Sampa The Great", title: "Final Form", localVideoSrc: "a s s e t s/Sampa The Great - Final Form.mp4", musicRoom: "modul8-infinity" },
+    { id: "dua-lipa-be-the-one-glastonbury-2017", artist: "Dua Lipa", title: "Be The One", localVideoSrc: "a s s e t s/Dua Lipa - Be The One.mp4", musicRoom: "champagne-bohemia" },
+    { id: "charli-xcx-house-john-cale", artist: "Charli XCX feat. John Cale", title: "House", displayArtist: "Charli XCX", displayTitle: "House feat. John Cale", localVideoSrc: "a s s e t s/Charli XCX - House featuring John Cale.mp4", youtubeVideoId: "Xgp7wlBfASA", musicRoom: "james-bondage" },
+    { id: "pinkpantheress-illegal-glastonbury-2025", artist: "PinkPantheress", title: "Illegal [Live at Glastonbury]", localVideoSrc: "a s s e t s/PinkPantheress - Illegal ( Live at Glastonbury).mp4", musicRoom: "modul8-infinity" },
+    { id: "caroline-polachek-welcome-to-my-island", artist: "Caroline Polachek", title: "Welcome To My Island", localVideoSrc: "a s s e t s/Caroline Polachek - Welcome To My Island.mp4", musicRoom: "modul8-infinity" },
+    { id: "u2-numb", artist: "U2", title: "Numb", localVideoSrc: "a s s e t s/U2 - Numb.mp4", musicRoom: "james-bondage", edgeScale: 1.16 },
+    { id: "linkin-park-numb-official", artist: "Linkin Park", title: "Numb", localVideoSrc: "a s s e t s/Linkin Park - Numb.mp4", musicRoom: "james-bondage" },
+    { id: "linkin-park-numb-live-2024", artist: "Linkin Park", title: "Numb [Live, 2024]", localVideoSrc: "a s s e t s/Linkin Park - Numb (Live, 2024).mp4", musicRoom: "james-bondage" },
+    { id: "sasha-ibiza-boat-at-sunset-freqways", artist: "Sasha", title: "Sasha - Ibiza Boat at Sunset (Freqways)", displayTitle: "Ibiza Boat at Sunset (Freqways)", localVideoSrc: "a s s e t s/d j  s e t s/ Sasha - Ibiza Boat at Sunset - Freqways.mp4", musicRoom: "champagne-bohemia", presentation: "live_dj_set" },
+    { id: "ben-bohmer-cappadocia-cercle", artist: "Ben Böhmer", title: "Ben Böhmer live above Cappadocia, Turkey (Cercle)", displayTitle: "Cappadocia, Turkey (Cercle)", localVideoSrc: "a s s e t s/d j  s e t s/Ben Böhmer live - Cappadocia, Turkey - Cercle.mp4", musicRoom: "champagne-bohemia", presentation: "live_dj_set" },
+    { id: "peggy-gou-palais-des-beaux-arts-cercle", artist: "Peggy Gou", title: "Peggy Gou at Palais des Beaux-Arts, Lille (Cercle)", displayTitle: "Palais des Beaux-Arts, Lille (Cercle)", localVideoSrc: "a s s e t s/d j  s e t s/Peggy Gou - Cercle - Palais des Beaux - Cercle.mp4", musicRoom: "modul8-infinity", presentation: "live_dj_set" },
+    { id: "miss-monique-biosphere-montreal-cercle", artist: "Miss Monique", title: "Miss Monique at the Biosphere, Montreal (Cercle)", displayTitle: "Biosphere, Montreal (Cercle)", localVideoSrc: "a s s e t s/d j  s e t s/Miss Monique - Biosphere Museum in Montreal, Canada - Cercle.mp4", musicRoom: "modul8-infinity", presentation: "live_dj_set" },
+    { id: "nina-kraviz-eiffel-tower-cercle", artist: "Nina Kraviz", title: "Nina Kraviz at the Eiffel Tower, Paris (Cercle)", displayTitle: "Eiffel Tower, Paris (Cercle)", localVideoSrc: "a s s e t s/d j  s e t s/Nina Kraviz - Eiffel Tower, Paris, France - Cercle.mp4", musicRoom: "modul8-infinity", presentation: "live_dj_set" },
+    { id: "nastia-drum-bass-sunset-the-lab-ibiza", artist: "NASTIA", title: "NASTIA - Drum & Bass Sunset Set at The Lab Ibiza", displayTitle: "Drum & Bass Sunset Set at The Lab Ibiza", localVideoSrc: "a s s e t s/d j  s e t s/NASTIA - Ibiza at Sunset - The Lab.mp4", musicRoom: "modul8-infinity", presentation: "live_dj_set" },
+    { id: "carl-cox-chateau-de-chambord-cercle", artist: "Carl Cox", title: "Carl Cox at Château de Chambord, France (Cercle)", displayTitle: "Château de Chambord, France (Cercle)", localVideoSrc: "a s s e t s/d j  s e t s/Carl Cox - Château de Chambord, France - Cercle.mp4", musicRoom: "modul8-infinity", presentation: "live_dj_set" },
+    { id: "max-richter-cercle-odyssey-paris", artist: "Max Richter", title: "Max Richter live at Cercle Odyssey, Paris, France", displayTitle: "Cercle Odyssey, Paris, France", localVideoSrc: "a s s e t s/d j  s e t s/Max Richter live at Cercle Odyssey, Paris, France.mp4", musicRoom: "inner-planes", presentation: "live_dj_set" },
+    { id: "olafur-arnalds-hafursey-iceland-cercle", artist: "Ólafur Arnalds", title: "Ólafur Arnalds live from Hafursey, in Iceland for Cercle", displayTitle: "live from Hafursey, in Iceland for Cercle", localVideoSrc: "a s s e t s/d j  s e t s/Ólafur Arnalds live from Hafursey, in Iceland for Cercle.mp4", musicRoom: "inner-planes", presentation: "live_dj_set" },
+    { id: "zip-perlon-air-festival-2007", artist: "Zip", title: "Perlon at Air Festival, 2007", displayTitle: "Perlon · Air Festival, 2007", localVideoSrc: "a s s e t s/d j  s e t s/Zip (Perlon) - Air Festival, 2007.mp4", musicRoom: "james-bondage", presentation: "live_dj_set", audioOnly: true },
+    { id: "zip-sammy-d-perlon-betalounge-2000", artist: "Zip & Sammy D", title: "Perlon at Betalounge, 2000", displayTitle: "Perlon · Betalounge, 2000", localVideoSrc: "a s s e t s/d j  s e t s/Zip & Sammy D (Perlon) - Betalounge, 2000.mp4", musicRoom: "james-bondage", presentation: "live_dj_set", audioOnly: true },
 
   ];
   const VIDEO_BEAT_GRID = {
@@ -72,7 +72,7 @@
   const BROADCAST_FORMATS = ["videos", "parties", "radio", "fashion"];
   const MUSIC_BROADCAST_FORMATS = ["videos", "parties", "radio"];
   const BROADCAST_ENERGY_ORDER = ["restore", "social-uplift", "underground-intensity"];
-  const BROADCAST_EDITORIAL_ORDER = ["inner-planes", "champagne-bohemia", "modul8-infinity", "james-bondage"];
+  const BROADCAST_EDITORIAL_ORDER = ["inner-planes", "champagne-bohemia", "modul8-infinity", "james-bondage", "safety-cushion"];
   const BROADCAST_ENERGY_PROFILES = {
     restore: {
       need_scores: { Anxiety: 1, Stress: 1, Fear: .88, Recovery: 1, Calm: 1, Attention: .78, "Psychological Safety": .92 },
@@ -88,25 +88,26 @@
     },
   };
   const DEFAULT_RADIO_STATIONS = [
-    { id: "cafe-del-mar-calm", stageGate: "calm", mode: "radio", provider: "Café del Mar Radio", title: "Calm", display_title: "Café del Mar — Calm", short_title: "CALM", stream_url: "https://streamer.radio.co/sb748f24ad/listen", logo_src: "a s s e t s/radio-logos/cafe-del-mar-calm.svg", brand_logo_src: "a s s e t s/radio-logos/cafe-del-mar.svg", logo_alt: "Café del Mar Calm", primary_environmental_function: "Soul + Restoration", top_needs: ["Calm", "Recovery", "Psychological Safety", "Anxiety"], card_palette: ["#506f88", "#c8d6d9"] },
-    { id: "cafe-del-mar-chill", stageGate: "chill", mode: "radio", provider: "Café del Mar Radio", title: "Chill", display_title: "Café del Mar — Chill", short_title: "CHILL", stream_url: "https://streams.radio.co/se1a320b47/listen", logo_src: "a s s e t s/radio-logos/cafe-del-mar-chill.svg", brand_logo_src: "a s s e t s/radio-logos/cafe-del-mar.svg", logo_alt: "Café del Mar Chill", primary_environmental_function: "Soul + Restoration", top_needs: ["Recovery", "Belonging", "Gratitude", "Trust"], card_palette: ["#99815f", "#e3ceb3"] },
-    { id: "cafe-del-mar-house", stageGate: "house", mode: "radio", provider: "Café del Mar Radio", title: "House", display_title: "Café del Mar — House", short_title: "HOUSE", stream_url: "https://s4.radio.co/seeae9c220/listen", logo_src: "a s s e t s/radio-logos/cafe-del-mar-house.svg", brand_logo_src: "a s s e t s/radio-logos/cafe-del-mar.svg", logo_alt: "Café del Mar House", primary_environmental_function: "Club Energy + Festival Activation", top_needs: ["Joy", "Motivation", "Connection", "Arousal"], card_palette: ["#8a4867", "#e6a99f"] },
-    { id: "groove-salad", stageGate: "calm", mode: "radio", provider: "SomaFM", title: "Groove Salad", display_title: "Groove Salad", short_title: "GROOVE SALAD", stream_url: "https://ice5.somafm.com/groovesalad-128-mp3", logo_src: "a s s e t s/radio-logos/groove-salad.png", logo_alt: "Groove Salad on SomaFM", primary_environmental_function: "Focus + Flow", top_needs: ["Attention", "Executive Function", "Calm", "Recovery"], card_palette: ["#526b52", "#cad4a4"] },
-    { id: "groove-salad-classic", stageGate: "chill", mode: "radio", provider: "SomaFM", title: "Groove Salad Classic", display_title: "Groove Salad Classic", short_title: "GS CLASSIC", stream_url: "https://ice5.somafm.com/gsclassic-128-mp3", logo_src: "a s s e t s/radio-logos/groove-salad-classic.jpg", logo_alt: "Groove Salad Classic on SomaFM", primary_environmental_function: "Soul + Restoration", top_needs: ["Belonging", "Gratitude", "Recovery", "Calm"], card_palette: ["#725f50", "#c9b896"] },
-    { id: "sanctuary-dark-electro", stageGate: "house", mode: "radio", provider: "Sanctuary Radio", title: "Dark Electro", display_title: "Sanctuary — Dark Electro", short_title: "DARK ELECTRO", stream_url: "https://stream.sanctuaryradio.com/mainchannel_hq", logo_src: "a s s e t s/radio-logos/sanctuary-radio.jpg", logo_alt: "Sanctuary Radio", logo_crop: "sanctuary", primary_environmental_function: "Grit + Agency", top_needs: ["Anger", "Motivation", "Self-Actualisation", "Curiosity"], card_palette: ["#312e42", "#9c6da6"] },
-    { id: "sanctuary-retro", stageGate: "chill", mode: "radio", provider: "Sanctuary Radio", title: "Retro", display_title: "Sanctuary — Retro", short_title: "RETRO", stream_url: "https://stream.sanctuaryradio.com/retrochannel_hq", logo_src: "a s s e t s/radio-logos/sanctuary-radio.jpg", logo_alt: "Sanctuary Radio", logo_crop: "sanctuary", primary_environmental_function: "Joy + Affirmation", top_needs: ["Belonging", "Joy", "Gratitude", "Connection"], card_palette: ["#355c67", "#d57c72"] },
-    { id: "nts-slow-focus", stageGate: "calm", mode: "radio", provider: "NTS", title: "Slow Focus", display_title: "NTS — Slow Focus", short_title: "SLOW FOCUS", stream_url: "https://streams.radiomast.io/dfc76352-cda6-4a95-85dd-6f6609f83ba2", stream_transport: "Buffered HLS scheduler", logo_src: "a s s e t s/radio-logos/nts.svg", logo_alt: "NTS Radio", primary_environmental_function: "Soul + Restoration", top_needs: ["Calm", "Recovery", "Attention", "Awe"], card_palette: ["#3c4660", "#aebbd0"] },
-    { id: "nts-poolside", stageGate: "chill", mode: "radio", provider: "NTS", title: "Poolside", display_title: "NTS — Poolside", short_title: "POOLSIDE", stream_url: "https://streams.radiomast.io/052d2e3c-389c-44cf-a91a-8f5e1854f4c6", stream_transport: "Buffered HLS scheduler", logo_src: "a s s e t s/radio-logos/nts.svg", logo_alt: "NTS Radio", primary_environmental_function: "Joy + Affirmation", top_needs: ["Joy", "Gratitude", "Connection", "Belonging"], card_palette: ["#2f7890", "#f2c978"] },
-    { id: "nts-otaku", stageGate: "chill", mode: "radio", provider: "NTS", title: "Otaku", display_title: "NTS — Otaku", short_title: "OTAKU", stream_url: "https://streams.radiomast.io/7481798f-063c-42a2-8048-15ff98fe309e", stream_transport: "Buffered HLS scheduler", logo_src: "a s s e t s/radio-logos/nts.svg", logo_alt: "NTS Radio", primary_environmental_function: "Curiosity + Exploration", top_needs: ["Curiosity", "Awe", "Joy", "Self-Actualisation"], card_palette: ["#392d70", "#79d5cf"] },
-    { id: "nts-low-key", stageGate: "calm", mode: "radio", provider: "NTS", title: "Low Key", display_title: "NTS — Low Key", short_title: "LOW KEY", stream_url: "https://streams.radiomast.io/de114902-ee1b-441f-91bc-5468d1e77605", stream_transport: "Buffered HLS scheduler", logo_src: "a s s e t s/radio-logos/nts.svg", logo_alt: "NTS Radio", primary_environmental_function: "Soul + Restoration", top_needs: ["Calm", "Attention", "Belonging", "Connection"], card_palette: ["#53423d", "#c5ab89"] },
+    { id: "cafe-del-mar-calm", musicRoomFit: ["inner-planes"], mode: "radio", provider: "Café del Mar Radio", title: "Calm", display_title: "Café del Mar — Calm", short_title: "CALM", stream_url: "https://streamer.radio.co/sb748f24ad/listen", logo_src: "a s s e t s/radio-logos/cafe-del-mar-calm.svg", brand_logo_src: "a s s e t s/radio-logos/cafe-del-mar.svg", logo_alt: "Café del Mar Calm", primary_environmental_function: "Soul + Restoration", top_needs: ["Calm", "Recovery", "Psychological Safety", "Anxiety"], card_palette: ["#506f88", "#c8d6d9"] },
+    { id: "cafe-del-mar-chill", musicRoomFit: ["champagne-bohemia"], mode: "radio", provider: "Café del Mar Radio", title: "Chill", display_title: "Café del Mar — Chill", short_title: "CHILL", stream_url: "https://streams.radio.co/se1a320b47/listen", logo_src: "a s s e t s/radio-logos/cafe-del-mar-chill.svg", brand_logo_src: "a s s e t s/radio-logos/cafe-del-mar.svg", logo_alt: "Café del Mar Chill", primary_environmental_function: "Soul + Restoration", top_needs: ["Recovery", "Belonging", "Gratitude", "Trust"], card_palette: ["#99815f", "#e3ceb3"] },
+    { id: "cafe-del-mar-house", musicRoomFit: ["modul8-infinity"], mode: "radio", provider: "Café del Mar Radio", title: "House", display_title: "Café del Mar — House", short_title: "HOUSE", stream_url: "https://s4.radio.co/seeae9c220/listen", logo_src: "a s s e t s/radio-logos/cafe-del-mar-house.svg", brand_logo_src: "a s s e t s/radio-logos/cafe-del-mar.svg", logo_alt: "Café del Mar House", primary_environmental_function: "Club Energy + Festival Activation", top_needs: ["Joy", "Motivation", "Connection", "Arousal"], card_palette: ["#8a4867", "#e6a99f"] },
+    { id: "groove-salad", musicRoomFit: ["champagne-bohemia"], mode: "radio", provider: "SomaFM", title: "Groove Salad", display_title: "Groove Salad", short_title: "GROOVE SALAD", stream_url: "https://ice5.somafm.com/groovesalad-128-mp3", logo_src: "a s s e t s/radio-logos/groove-salad.png", logo_alt: "Groove Salad on SomaFM", primary_environmental_function: "Focus + Flow", top_needs: ["Attention", "Executive Function", "Calm", "Recovery"], card_palette: ["#526b52", "#cad4a4"] },
+    { id: "groove-salad-classic", musicRoomFit: ["champagne-bohemia"], mode: "radio", provider: "SomaFM", title: "Groove Salad Classic", display_title: "Groove Salad Classic", short_title: "GS CLASSIC", stream_url: "https://ice5.somafm.com/gsclassic-128-mp3", logo_src: "a s s e t s/radio-logos/groove-salad-classic.jpg", logo_alt: "Groove Salad Classic on SomaFM", primary_environmental_function: "Soul + Restoration", top_needs: ["Belonging", "Gratitude", "Recovery", "Calm"], card_palette: ["#725f50", "#c9b896"] },
+    { id: "sanctuary-dark-electro", musicRoomFit: ["james-bondage"], mode: "radio", provider: "Sanctuary Radio", title: "Dark Electro", display_title: "Sanctuary — Dark Electro", short_title: "DARK ELECTRO", stream_url: "https://stream.sanctuaryradio.com/mainchannel_hq", logo_src: "a s s e t s/radio-logos/sanctuary-radio.jpg", logo_alt: "Sanctuary Radio", logo_crop: "sanctuary", primary_environmental_function: "Grit + Agency", top_needs: ["Anger", "Motivation", "Self-Actualisation", "Curiosity"], card_palette: ["#312e42", "#9c6da6"] },
+    { id: "sanctuary-retro", musicRoomFit: [], mode: "radio", provider: "Sanctuary Radio", title: "Retro", display_title: "Sanctuary — Retro", short_title: "RETRO", stream_url: "https://stream.sanctuaryradio.com/retrochannel_hq", logo_src: "a s s e t s/radio-logos/sanctuary-radio.jpg", logo_alt: "Sanctuary Radio", logo_crop: "sanctuary", primary_environmental_function: "Joy + Affirmation", top_needs: ["Belonging", "Joy", "Gratitude", "Connection"], card_palette: ["#355c67", "#d57c72"] },
+    { id: "nts-slow-focus", musicRoomFit: ["inner-planes"], mode: "radio", provider: "NTS", title: "Slow Focus", display_title: "NTS — Slow Focus", short_title: "SLOW FOCUS", stream_url: "https://streams.radiomast.io/dfc76352-cda6-4a95-85dd-6f6609f83ba2", stream_transport: "Buffered HLS scheduler", logo_src: "a s s e t s/radio-logos/nts.svg", logo_alt: "NTS Radio", primary_environmental_function: "Soul + Restoration", top_needs: ["Calm", "Recovery", "Attention", "Awe"], card_palette: ["#3c4660", "#aebbd0"] },
+    { id: "nts-poolside", musicRoomFit: ["champagne-bohemia"], mode: "radio", provider: "NTS", title: "Poolside", display_title: "NTS — Poolside", short_title: "POOLSIDE", stream_url: "https://streams.radiomast.io/052d2e3c-389c-44cf-a91a-8f5e1854f4c6", stream_transport: "Buffered HLS scheduler", logo_src: "a s s e t s/radio-logos/nts.svg", logo_alt: "NTS Radio", primary_environmental_function: "Joy + Affirmation", top_needs: ["Joy", "Gratitude", "Connection", "Belonging"], card_palette: ["#2f7890", "#f2c978"] },
+    { id: "nts-otaku", musicRoomFit: ["modul8-infinity"], mode: "radio", provider: "NTS", title: "Otaku", display_title: "NTS — Otaku", short_title: "OTAKU", stream_url: "https://streams.radiomast.io/7481798f-063c-42a2-8048-15ff98fe309e", stream_transport: "Buffered HLS scheduler", logo_src: "a s s e t s/radio-logos/nts.svg", logo_alt: "NTS Radio", primary_environmental_function: "Curiosity + Exploration", top_needs: ["Curiosity", "Awe", "Joy", "Self-Actualisation"], card_palette: ["#392d70", "#79d5cf"] },
+    { id: "nts-low-key", musicRoomFit: ["modul8-infinity"], mode: "radio", provider: "NTS", title: "Low Key", display_title: "NTS — Low Key", short_title: "LOW KEY", stream_url: "https://streams.radiomast.io/de114902-ee1b-441f-91bc-5468d1e77605", stream_transport: "Buffered HLS scheduler", logo_src: "a s s e t s/radio-logos/nts.svg", logo_alt: "NTS Radio", primary_environmental_function: "Soul + Restoration", top_needs: ["Calm", "Attention", "Belonging", "Connection"], card_palette: ["#53423d", "#c5ab89"] },
   ];
   const continuation = {
     videoSrc: "a s s e t s/Homepage - Hero Background Video - Chanel 2020 Runway Show.mp4",
-    defaultStation: "cafe-del-mar-chill",
-    stagePools: {
-      calm: ["cafe-del-mar-calm", "groove-salad", "groove-salad-classic", "nts-slow-focus", "nts-low-key"],
-      chill: ["cafe-del-mar-chill", "groove-salad", "groove-salad-classic", "sanctuary-retro", "nts-poolside", "nts-otaku", "nts-low-key"],
-      house: ["cafe-del-mar-house", "sanctuary-dark-electro", "sanctuary-retro", "nts-poolside", "nts-otaku"],
+    roomPools: {
+      "inner-planes": ["cafe-del-mar-calm", "nts-slow-focus"],
+      "champagne-bohemia": ["cafe-del-mar-chill", "groove-salad", "groove-salad-classic", "nts-poolside"],
+      "modul8-infinity": ["cafe-del-mar-house", "nts-otaku", "nts-low-key"],
+      "james-bondage": ["sanctuary-dark-electro"],
+      "safety-cushion": [],
     },
   };
   const playButton = document.querySelector("[data-television-play]");
@@ -2521,8 +2522,8 @@
   async function loadMusicRecommendations() {
     try {
       const [catalogueResponse, stationsResponse] = await Promise.all([
-        fetch("adaptive-music-video-catalogue-v1.11.json?v=music-channel-tensor-nts-1", { cache: "no-store" }),
-        fetch("radio-station-tensor-notion-export-v1.0.json?v=radio-stations-nts-1", { cache: "no-store" }),
+        fetch("adaptive-music-video-catalogue-v1.11.json?v=music-video-catalogue-e9e88062e024", { cache: "no-store" }),
+        fetch("radio-station-tensor-notion-export-v1.0.json?v=radio-stations-6dd335662e4f", { cache: "no-store" }),
       ]);
       if (!catalogueResponse.ok) throw new Error(`Music Tensor fetch failed (${catalogueResponse.status})`);
       if (!stationsResponse.ok) throw new Error(`Radio Tensor fetch failed (${stationsResponse.status})`);
@@ -2535,7 +2536,7 @@
         .map((station) => ({
           ...fallbacks.get(station.id),
           ...station,
-          stageGate: fallbacks.get(station.id)?.stageGate || station.stageGate || station.stage_gate_fit?.[0] || "chill",
+          musicRoomFit: station.music_room_fit || fallbacks.get(station.id)?.musicRoomFit || [],
         }));
       rankMusicShelves();
     } catch (error) {
@@ -4166,7 +4167,7 @@
   }
 
   function stationForId(stationId) {
-    return radioStationRecords.find((station) => station.id === stationId) || radioStationRecords.find((station) => station.id === continuation.defaultStation) || radioStationRecords[0];
+    return radioStationRecords.find((station) => station.id === stationId) || null;
   }
 
   async function startAudioLedParty(nextTrack, options = {}) {
@@ -4258,8 +4259,9 @@
 
   function bestRadioStationForTrack() {
     const ranked = musicShelfOrders.radio?.length ? musicShelfOrders.radio : radioStationRecords;
-    const stagePool = continuation.stagePools[track.radioHandoff] || [];
-    return ranked.find((station) => stagePool.includes(station.id)) || ranked[0] || stationForId(continuation.defaultStation);
+    const roomPool = continuation.roomPools[track.musicRoom] || [];
+    if (!roomPool.length) return null;
+    return ranked.find((station) => roomPool.includes(station.id)) || null;
   }
 
   async function startRadioStation(stationDecision, options = {}) {
@@ -4379,16 +4381,36 @@
       await synchronizeBroadcastPlayback(true);
       return;
     }
-    const recommendedDjId = musicShelfRecommendationIds.parties;
-    const sharedDjChannel = musicShelfOrders.parties?.find((item) => item.id === recommendedDjId) || musicShelfOrders.parties?.[0];
-    document.body.dataset.musicContinuationDecision = "parties";
+    const storedSelection = readStoredSelection() || {};
+    const extendedSession = storedSelection.extended_session ||
+      storedSelection.adaptive_music_intelligence?.extended_streaming_session || {};
+    const selectedFormat = ["parties", "radio", "videos"].includes(extendedSession.format)
+      ? extendedSession.format
+      : "";
+    const selectedRoom = String(extendedSession.music_room || "").toLowerCase();
+    const eligible = extendedSession.catalogue_ready === true && selectedFormat && selectedRoom;
+    document.body.dataset.musicContinuationDecision = eligible ? selectedFormat : "unavailable";
     document.body.dataset.musicContinuationReason = "personal_opening_complete";
     musicContinuationSequence += 1;
-    if (sharedDjChannel) {
-      await openBroadcastEntry(sharedDjChannel, { source: "automatic_continuation" });
+
+    if (!eligible || (selectedRoom === "safety-cushion" && selectedFormat !== "videos")) {
+      showMusicShelfStatus("No approved ready extended livestream is available for this session.", 3600);
       return;
     }
-    showMusicShelfStatus("The shared DJ Set channels are temporarily unavailable.", 3600);
+
+    const formatPool = musicShelfOrders[selectedFormat] || [];
+    const sourceId = String(extendedSession.source_id || "");
+    const recommendedId = musicShelfRecommendationIds[selectedFormat];
+    const sharedChannel = formatPool.find((item) => sourceId && (
+      item.id === sourceId || item.broadcastChannelId === sourceId
+    )) || formatPool.find((item) => item.editorialId === selectedRoom && !item.unavailable) ||
+      formatPool.find((item) => item.id === recommendedId && !item.unavailable);
+
+    if (sharedChannel) {
+      await openBroadcastEntry(sharedChannel, { source: "automatic_continuation" });
+      return;
+    }
+    showMusicShelfStatus(`The needs-matched ${selectedFormat} livestream is temporarily unavailable.`, 3600);
   }
 
   window.IAMMusicChannels = {
@@ -5812,6 +5834,7 @@
   async function primeContinuationAudio(radioDecision = selectRadioContinuation()) {
     continuationDecision = radioDecision;
     const source = radioDecision?.src || radioDecision?.stream_url;
+    if (!source) return null;
 
     if (continuationAudio && continuationAudioSource && continuationAudioSource !== source) {
       const previousAudio = continuationAudio;
@@ -5862,19 +5885,18 @@
   }
 
   function selectRadioContinuation() {
-    const fallback = stationForId(continuation.defaultStation);
     const adaptive = bestRadioStationForTrack();
     if (adaptive) return { ...adaptive, label: adaptive.display_title, src: adaptive.stream_url };
 
     try {
       const parsed = readStoredSelection();
-      const stationName = parsed?.radio_handoff?.station ||
-        parsed?.streaming_radio_handoff?.station ||
-        parsed?.radio_continuation?.station;
-      const station = stationForId(stationName);
-      return station ? { ...station, label: station.display_title, src: station.stream_url } : fallback;
+      const extendedSession = parsed?.extended_session || parsed?.extended_streaming_session || {};
+      if (extendedSession.format !== "radio" || !extendedSession.catalogue_ready) return null;
+      const roomPool = continuation.roomPools[extendedSession.music_room] || [];
+      const station = radioStationRecords.find((candidate) => roomPool.includes(candidate.id));
+      return station ? { ...station, label: station.display_title, src: station.stream_url } : null;
     } catch {
-      return fallback;
+      return null;
     }
   }
 
@@ -5892,8 +5914,8 @@
         if (!raw) continue;
         const parsed = JSON.parse(raw);
         if (parsed?.schema_version === "adaptive_music_video_selection_v1.11") return parsed;
-        if (parsed?.final_output?.hero_music_video || parsed?.final_output?.streaming_radio_handoff) return parsed.final_output;
-        if (parsed?.radio_handoff || parsed?.safety) return parsed;
+        if (parsed?.final_output?.hero_music_video || parsed?.final_output?.extended_session) return parsed.final_output;
+        if (parsed?.extended_session || parsed?.safety) return parsed;
       } catch {
         // Continue searching other storage keys.
       }
@@ -6057,9 +6079,9 @@
     const music = inference?.adaptive_environment?.music_intelligence ||
       inference?.adaptive_music_intelligence || selection?.adaptive_music_intelligence || {};
     const environment = music?.environment_function || selection?.environment_function || {};
-    const soundtrack = inference?.adaptive_environment?.soundtrack ||
-      music?.streaming_radio_continuation || selection?.streaming_radio_handoff || {};
-    const station = String(soundtrack.selected_mode || soundtrack.station || track.radioHandoff || "chill").toLowerCase();
+    const extendedSession = inference?.adaptive_environment?.music_room ||
+      music?.extended_streaming_session || selection?.extended_session || {};
+    const musicRoom = String(extendedSession.selected_music_room || extendedSession.music_room || track.musicRoom || "").toLowerCase();
 
     const load = meanNeed(needs, ["Anxiety", "Stress", "Fear", "Hypervigilance", "Startle Sensitivity", "Intrusions", "Mental Load"]);
     const depletion = meanNeed(needs, ["Fatigue", "Sleep Pressure", "Sleep Disturbance", "Emotional Numbing"]);
@@ -6079,8 +6101,7 @@
     const styleIndex = 0;
 
     const namedIntensity = { low: .28, low_to_moderate: .42, moderate: .58, high: .8, variable: .62 };
-    const stationIntensity = { calm: .34, chill: .52, house: .72 };
-    const musicIntensity = namedIntensity[String(environment.intensity || "").toLowerCase()] ?? stationIntensity[station] ?? .52;
+    const musicIntensity = namedIntensity[String(environment.intensity || "").toLowerCase()] ?? .52;
     const readiness = (activation + exploration + cognition) / 3;
     let intensity = musicIntensity * .58 + readiness * .32 + .1 - load * .22 - depletion * .1;
     intensity += (seed - .5) * .06;
@@ -6093,7 +6114,7 @@
       style: emdrStyleNames[styleIndex],
       intensity: Math.round(intensity * 100) / 100,
       source: hasNeeds ? "citizen_needs_plus_music" : "music_context_fallback",
-      factors: { load, depletion, restoration, connection, cognition, exploration, activation, station },
+      factors: { load, depletion, restoration, connection, cognition, exploration, activation, music_room: musicRoom },
       experimental_status: "visual_research_hypothesis_not_clinical_treatment",
     };
   }
@@ -6374,7 +6395,7 @@
       return true;
     }
 
-    startRadioStation(continuation.defaultStation, { source: "shop_default" })
+    startRadioStation(bestRadioStationForTrack(), { source: "shop_default" })
       .then(() => postShopMusicStatus(targetWindow))
       .catch(() => postShopMusicStatus(targetWindow));
     return true;

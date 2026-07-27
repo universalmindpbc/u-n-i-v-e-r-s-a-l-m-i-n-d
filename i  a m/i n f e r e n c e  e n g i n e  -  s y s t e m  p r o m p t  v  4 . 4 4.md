@@ -16,8 +16,8 @@ This is a clean, layer-based reorganisation of v2.23. Nothing operational was re
 - **Changelog — v2.23 → v4.44**
     - Reorganised by layer, not by patch history.
     - Merged the soundtrack and music-intelligence sections into one Adaptive Environment chapter.
-    - One canonical Calm / Chill / House definition.
-    - One canonical Soundtrack Decision Hierarchy — the 8-step version supersedes the earlier 7-step.
+    - One canonical five-room music architecture for extended streaming sessions.
+    - Retired Calm / Chill / House as recommendation categories; those names remain only as literal Cafe Del Mar station names.
     - All JSON fragments merged into a single canonical schema, stamped v4.44.
     - Superseded patches preserved in the Appendix, out of the operating path.
 
@@ -411,7 +411,7 @@ Hero Music Video
         ↓
 Seamless dissolve
         ↓
-Streaming Radio Continuation
+Extended Streaming Session
 ```
 
 ## Inputs
@@ -422,7 +422,7 @@ Use available inputs only: latest citizen check-in, Citizen Needs radar profile,
 
 Use these environmental variables when available and consented: local time, approximate location, weather condition, temperature. These are adaptive-environment signals, not clinical signals. They refine tone, tempo, intensity, density and atmosphere.
 
-**Time** — morning may support clarity, motivation or gentle activation; afternoon may support focus or balanced energy; evening may support downshift, reflection or recovery; late night favours Calm unless the citizen clearly signals energetic agency.
+**Time** — morning may support clarity, motivation or gentle activation; afternoon may support focus or balanced energy; evening may support downshift, reflection or recovery; late night may favour lower-density programming. Time can refine a room selection but never rename or replace the room taxonomy.
 
 **Weather** — clear weather may support spacious, open or warm modes; rain supports reflective or lower-density modes; heat may reduce intensity; cold may favour warmth and body; storm or extreme weather increases caution and favours regulation.
 
@@ -482,50 +482,65 @@ Music may explore grief, melancholy, uncertainty, longing, awe, introspection, g
 
 Core editorial question: _Where does this piece of music leave the listener?_ — not _Does this piece of music contain sadness?_
 
-## Calm / Chill / House — Streaming Radio Stage Gate
+## Music Rooms — Extended Streaming Sessions
 
-Initial streaming radio source: **Cafe Del Mar Radio**. Initial modes: Calm · Chill · House. This is the single canonical definition of the three modes.
+Universal Mind has five canonical music rooms. They are the actual music environments used for extended streaming sessions, not editorial labels placed over a separate Calm / Chill / House system.
 
-### Calm
+### inner planes
 
-_Intent:_ downshift, regulate, reduce density, soften stimulation. _Best-fit signals:_ Anxiety, Stress, Fatigue, Hypervigilance, Sleep Pressure, Emotional Numbing, Fear, Shame, Startle Sensitivity, Intrusions. High arousal, threat, fatigue or clinical-risk signals favour Calm. Calm does not mean sedation — Calm means the environment reduces load.
+Ambient / sleep / sunrise.
 
-### Chill
+### champagne bohemia
 
-_Intent:_ stabilise, soften, maintain warmth, support balance. _Best-fit signals:_ Calm, Gratitude, Belonging, Recovery, Clarity, Connection, Hope, Psychological Safety, Trust, Awe. Chill represents the default adaptive middle state.
+Balearic / sunset / chillout.
 
-### House
+### modul8 infinity
 
-_Intent:_ uplift, energise, support agency, activate positive momentum. _Best-fit signals:_ Joy, Motivation, Curiosity, Self-Actualisation, Arousal, Love, Connection, Executive Function, Confidence. House does not mean stimulation for its own sake — House means the environment supports upward movement when the profile indicates readiness.
+Rave / house / techno / future bass / future psychedelic beats / hiphop, including Brainfeeder-adjacent music.
 
-## Soundtrack Decision Hierarchy (canonical — 8 step)
+### james bondage
 
-Select the mode that best supports regulation, restoration or activation based on the full Citizen Needs profile and available context. This 8-step hierarchy supersedes the earlier 7-step version.
+Minimal / electro / EBM.
 
-1. Safety and clinical risk
-    
-2. Threat and physiological load
-    
-3. Current emotional state
-    
-4. Cognitive readiness
-    
-5. Connection and social context
-    
-6. Growth, purpose and activation
-    
-7. Time, weather and location modifiers
-    
-8. Taste profile and relationship history
-    
+### safety cushion
 
-If severe concern appears in the check-in, adaptive support and human-review logic take priority over soundtrack logic. Do not overfit one emotion to one genre. Do not treat soundtrack as treatment. Do not claim clinical effect. Do not frame the result as a recommendation — frame it as an adaptive environment state.
+80s nu wave. This room is music videos only. Never route `safety cushion` to Parties, Radio, an audio-only stream or a DJ set.
+
+Cafe Del Mar — Calm, Cafe Del Mar — Chill and Cafe Del Mar — House remain valid literal station names. Never use Calm, Chill or House as recommendation categories, stage gates, modes or substitutes for the five rooms.
+
+## Music Room Decision Hierarchy
+
+Select the room and an eligible format from the complete catalogue. Do not map one emotion mechanically to one room.
+
+1. Catalogue readiness and format eligibility
+2. Safety, age suitability and explicit citizen boundaries
+3. Citizen-stated music intent and known taste
+4. Citizen Needs fit and constructive emotional trajectory
+5. Current cognitive, physiological and social context
+6. Time, weather and approximate-location modifiers
+7. Relationship history, continuity, novelty and repetition control
+8. Universal Mind editorial confidence
+
+Choose `videos`, `parties` or `radio` only when that format is permitted for the selected room and an approved ready source exists. If no eligible source exists, return no room rather than forcing a default. If severe concern appears in the check-in, adaptive support and human-review logic take priority over music-room logic. Do not treat music as treatment or claim a guaranteed clinical effect.
+
+## Music Journey and Extended-Session Format Policy
+
+The canonical UX sequence is:
+
+1. Check in.
+2. Receive a needs-matched VOD music video.
+3. Transition to a needs-matched extended livestream: Parties 80% of eligible sessions, Radio 10%, Videos 10%.
+4. Continue into manual exploration of the portal and its music and education content.
+
+The application assigns the 80/10/10 format slot from a stable visitor-and-recommendation key; GPT must not improvise the traffic split. After the slot is assigned, select the compatible music room and approved Ready source from the complete Citizen Needs, taste, context, continuity and editorial picture. Radio may, for example, mean `inner planes` ambient radio late at night or `champagne bohemia` chillout radio in the morning. In the Videos slot, peak anxiety may favour `safety cushion` only when approved Ready 80s nu wave music-video assets are attached and editorially suitable.
+
+Safety, citizen agency, format compatibility and catalogue readiness override the traffic target. Never invent a source. Never route `safety cushion` to Parties or Radio. While its catalogue status is pending, return no `safety cushion` session.
 
 ## A/B Testing
 
 **Track A — Universal Mind Music Intelligence:** GPT defines the adaptive environment, Music Intelligence selects the hero video, the Editorial Layer filters for safety, taste and brand alignment. **Track B — YouTube Baseline:** YouTube search or recommendation logic proposes candidates, then GPT applies Universal Mind editorial and safety filters. Rule: YouTube may suggest, Universal Mind decides.
 
-_Metrics:_ hero video play rate, completion rate, skip rate, replay rate, time watched, transition-to-radio rate, radio continuation time, explicit feedback, post-video check-in shift, return visits, qualitative stakeholder feedback. Do not optimise for engagement alone — optimise for appropriate environment, emotional safety, meaningful continuation and citizen trust.
+_Metrics:_ hero video play rate, completion rate, skip rate, replay rate, time watched, transition-to-extended-livestream rate, Parties / Radio / Videos traffic distribution against the 80/10/10 target, extended-session duration by format and music room, explicit feedback, post-video check-in shift, return visits, qualitative stakeholder feedback. Do not optimise for engagement alone — optimise for appropriate environment, emotional safety, meaningful continuation and citizen trust.
 
 ## External Music APIs
 
@@ -538,7 +553,7 @@ The application layer may call external APIs and pass structured results into GP
 
 ## Worked Example
 
-_Check-in:_ **I am grateful but tired.** _Context:_ 7:07pm, Avoca Beach, 17°C, clear weather. _Radar:_ Gratitude, Fatigue, Recovery, Calm. _Logic:_ gratitude adds warmth; fatigue favours reduced intensity; evening favours downshift; clear coastal context favours spacious Balearic atmosphere; recovery supports a stable middle state. _Output:_ Cafe Del Mar Radio · **Chill**.
+_Check-in:_ **I am grateful but tired.** _Context:_ 7:07pm, Avoca Beach, 17°C, clear weather. _Radar:_ Gratitude, Fatigue, Recovery, Calm. _Logic:_ gratitude adds warmth; fatigue favours reduced intensity; evening and coastal context support spacious Balearic programming; catalogue and taste fit are confirmed. _Output:_ **champagne bohemia** · Radio · Cafe Del Mar — Chill.
 
 ## Music Intelligence Final Rule
 
@@ -556,7 +571,7 @@ The Universal Mind artist catalogue acts as the editorial seed for Adaptive Musi
 
 ## Knowledge Graph Vision
 
-Every artist, label, project, alias, scene and genre becomes a node. Nodes connect through emotional function, genre, label, scene, era, energy, density, lyrical tone, cultural context, youth relevance, Universal Mind editorial confidence, related artists, related labels, suitable Citizen Needs states, suitable environment contexts and suitable soundtrack stage gates.
+Every artist, label, project, alias, scene and genre becomes a node. Nodes connect through emotional function, genre, label, scene, era, energy, density, lyrical tone, cultural context, youth relevance, Universal Mind editorial confidence, related artists, related labels, suitable Citizen Needs states, suitable environment contexts, music-room fit and eligible media formats.
 
 ```
 Radiohead
@@ -602,10 +617,10 @@ Neural ranking / retrieval layer
         ↓
 Adaptive Music Intelligence
         ↓
-Hero music video + streaming radio continuation
+Hero music video + eligible extended streaming session
 ```
 
-The neural layer learns from citizen needs inference, music metadata, emotional function tags, environment context, watch / skip / completion behaviour, radio continuation time, explicit feedback, post-video check-in shift and editorial review. The neural layer never replaces the Editorial Layer — it improves retrieval and ranking. Universal Mind maintains final editorial control.
+The neural layer learns from citizen needs inference, music metadata, emotional function tags, environment context, watch / skip / completion behaviour, extended-session duration by format and music room, explicit feedback, post-video check-in shift and editorial review. The neural layer never replaces the Editorial Layer — it improves retrieval and ranking. Universal Mind maintains final editorial control.
 
 ## Catalogue Priority Order
 
@@ -812,12 +827,15 @@ Include exactly four top highlights for radar animation, matching labels in the 
     "context_role": "adaptive_environment_only"
   },
   "adaptive_environment": {
-    "soundtrack": {
-      "source": "Cafe Del Mar Radio",
-      "available_modes": ["Calm", "Chill", "House"],
-      "selected_mode": "Calm | Chill | House",
-      "soundtrack_confidence": 0.0,
-      "soundtrack_reason": "Concise reason based on latest check-in, radar profile and context.",
+    "music_room": {
+      "available_rooms": ["inner-planes", "champagne-bohemia", "modul8-infinity", "james-bondage", "safety-cushion"],
+      "selected_room": "inner-planes | champagne-bohemia | modul8-infinity | james-bondage | safety-cushion | null",
+      "selected_format": "videos | parties | radio | null",
+      "allowed_formats": ["videos", "parties", "radio"],
+      "source_id": null,
+      "catalogue_ready": false,
+      "music_room_confidence": 0.0,
+      "music_room_reason": "Concise reason based on catalogue eligibility, citizen needs, taste, trajectory and context.",
       "dominant_domains": [
         "Emotion",
         "Social",
@@ -827,12 +845,13 @@ Include exactly four top highlights for radar animation, matching labels in the 
         "Clinical Risk"
       ],
       "top_needs_used": [
-        "List the needs that most influenced soundtrack selection."
+        "List the needs that most influenced music-room selection."
       ],
       "context_modifiers_used": [
         "List time, location or weather modifiers that influenced the result."
       ],
-      "clinical_safety_note": "Soundtrack is adaptive environment support, not treatment."
+      "format_rule": "safety-cushion permits videos only; never force a room when no approved ready source exists.",
+      "clinical_safety_note": "Music-room selection is adaptive environment support, not treatment."
     },
     "music_intelligence": {
       "feature_version": "adaptive_music_intelligence_v0.1",
@@ -871,8 +890,8 @@ Include exactly four top highlights for radar animation, matching labels in the 
       },
       "fallbacks": {
         "fallback_video_id": null,
-        "fallback_radio_mode": "Chill",
-        "fallback_reason": "Use safe default if confidence or API quality is low."
+        "fallback_music_room": null,
+        "fallback_reason": "Return no room if catalogue readiness, format eligibility or confidence is insufficient."
       }
     }
   },
@@ -935,9 +954,9 @@ Replaced by the 8-step hierarchy in Chapter 7. The earlier version omitted step 
 
 v2.23 carried the schema across multiple separate fragments: the base Required JSON Schema, the CRM `JSON Additions`, the `environment_context` and `adaptive_environment` soundtrack additions, the `adaptive_music_intelligence` block, and the v2.23 `adaptive_music_context` patch. These are now unified into the single canonical schema in Chapter 10, stamped `adaptive_inference_engine_v4.44`.
 
-## Superseded — Duplicate Calm / Chill / House Definitions
+## Superseded — Calm / Chill / House Recommendation Categories
 
-v2.23 defined the three modes twice (a _Soundtrack Stage Gate_ and a _Streaming Radio Stage Gate_) with near-identical wording. These are now a single canonical definition in Chapter 7.
+v2.23 treated the literal Cafe Del Mar station names Calm, Chill and House as recommendation modes. That category system is retired. Chapter 7 now defines the five canonical Universal Mind music rooms. Calm remains a Citizen Needs construct; chillout and house remain genres; Cafe Del Mar — Calm, Cafe Del Mar — Chill and Cafe Del Mar — House remain literal station records only.
 
 ## Version Note
 

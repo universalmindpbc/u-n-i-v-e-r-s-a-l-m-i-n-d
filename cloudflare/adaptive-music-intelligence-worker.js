@@ -6,6 +6,7 @@ const YOUTUBE_VIDEOS_URL = "https://www.googleapis.com/youtube/v3/videos";
 const allowedOrigins = new Set([
   "https://universalmind.tv",
   "https://www.universalmind.tv",
+  "https://staging.universalmind.tv",
   "http://127.0.0.1:8126",
   "http://localhost:8126",
   "http://127.0.0.1:5191",
@@ -56,7 +57,9 @@ function buildMusicQuery(body) {
     ? body.environment_context
     : {};
   const needs = cleanArray(inference.top_needs_used || inference.highlights || body.top_needs, 4);
-  const stageGate = cleanString(inference.soundtrack_stage_gate || body.stage_gate || "chill", 24).toLowerCase();
+  const requestedMusicRoom = cleanString(inference.selected_music_room || body.music_room || "", 32).toLowerCase();
+  const allowedMusicRooms = new Set(["inner-planes", "champagne-bohemia", "modul8-infinity", "james-bondage", "safety-cushion"]);
+  const musicRoom = allowedMusicRooms.has(requestedMusicRoom) ? requestedMusicRoom : "";
   const primaryFunction = cleanString(environmentFunction.primary_function || "Soul + Restoration", 80);
   const location = cleanString(context.location_label, 64);
   const weather = cleanString(context.weather_condition, 40);
@@ -65,7 +68,7 @@ function buildMusicQuery(body) {
     q: [
       "official music video",
       "electronic dance music",
-      stageGate,
+      musicRoom,
       primaryFunction,
       ...needs,
       location,
@@ -73,7 +76,7 @@ function buildMusicQuery(body) {
       checkin,
     ].filter(Boolean).join(" "),
     needs,
-    stage_gate: stageGate,
+    music_room: musicRoom,
     primary_function: primaryFunction,
   };
 }
@@ -99,7 +102,7 @@ function buildProviderPlan(body) {
         query: {
           genre: ["electronic", "dance"],
           mood: musicQuery.needs,
-          style: [musicQuery.stage_gate, musicQuery.primary_function],
+          style: [musicQuery.music_room, musicQuery.primary_function].filter(Boolean),
         },
         call_policy: "server_side_only_when_GRACENOTE_credentials_and_contract_endpoint_are_configured",
       },
@@ -108,7 +111,7 @@ function buildProviderPlan(body) {
         role: "contingency metadata and audio similarity if Gracenote fails",
         query: {
           mood: musicQuery.needs,
-          energy: musicQuery.stage_gate === "house" ? "high" : musicQuery.stage_gate === "calm" ? "low" : "medium",
+          energy: cleanString(body.environment_function?.intensity || "variable", 24),
           emotional_function: musicQuery.primary_function,
         },
         call_policy: "server_side_graphql; use with authorised catalogue tracks, not scraped YouTube audio",

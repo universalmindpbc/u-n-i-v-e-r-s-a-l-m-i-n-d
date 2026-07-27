@@ -14,49 +14,49 @@ const configs = [
     artistKey: 'Sasha',
     id: 'sasha-ibiza-boat-at-sunset-freqways',
     filePrefix: 'Sasha',
-    radioHandoff: 'chill',
+    musicRoom: 'champagne-bohemia',
     policy: { mode: 'uplift', activation_level: 2, counts_as_uplift: true },
   },
   {
     artistKey: 'Ben B',
     id: 'ben-bohmer-cappadocia-cercle',
     filePrefix: 'Ben B',
-    radioHandoff: 'chill',
+    musicRoom: 'champagne-bohemia',
     policy: { mode: 'uplift', activation_level: 1, counts_as_uplift: true },
   },
   {
     artistKey: 'Peggy Gou',
     id: 'peggy-gou-palais-des-beaux-arts-cercle',
     filePrefix: 'Peggy Gou',
-    radioHandoff: 'house',
+    musicRoom: 'modul8-infinity',
     policy: { mode: 'uplift', activation_level: 3, counts_as_uplift: true },
   },
   {
     artistKey: 'Miss Monique',
     id: 'miss-monique-biosphere-montreal-cercle',
     filePrefix: 'Miss Monique',
-    radioHandoff: 'house',
+    musicRoom: 'modul8-infinity',
     policy: { mode: 'uplift', activation_level: 3, counts_as_uplift: true },
   },
   {
     artistKey: 'Nina Kraviz',
     id: 'nina-kraviz-eiffel-tower-cercle',
     filePrefix: 'Nina Kraviz',
-    radioHandoff: 'house',
+    musicRoom: 'modul8-infinity',
     policy: { mode: 'restricted', activation_level: 3, counts_as_uplift: false },
   },
   {
     artistKey: 'NASTIA',
     id: 'nastia-drum-bass-sunset-the-lab-ibiza',
     filePrefix: 'NASTIA',
-    radioHandoff: 'house',
+    musicRoom: 'modul8-infinity',
     policy: { mode: 'uplift', activation_level: 3, counts_as_uplift: true },
   },
   {
     artistKey: 'Carl Cox',
     id: 'carl-cox-chateau-de-chambord-cercle',
     filePrefix: 'Carl Cox',
-    radioHandoff: 'house',
+    musicRoom: 'modul8-infinity',
     policy: { mode: 'uplift', activation_level: 3, counts_as_uplift: true },
   },
 ];
@@ -148,7 +148,7 @@ function addTelevisionTracks(source, tracks) {
   const currentBlock = source.slice(start, end);
   const additions = tracks
     .filter((track) => !currentBlock.includes(`id: ${JSON.stringify(track.id)}`))
-    .map((track) => `    { id: ${JSON.stringify(track.id)}, artist: ${JSON.stringify(track.artist)}, title: ${JSON.stringify(track.title)}, localVideoSrc: ${JSON.stringify(track.local_video_file)}, radioHandoff: ${JSON.stringify(track.radio_handoff)}, presentation: "live_dj_set" }`);
+    .map((track) => `    { id: ${JSON.stringify(track.id)}, artist: ${JSON.stringify(track.artist)}, title: ${JSON.stringify(track.title)}, localVideoSrc: ${JSON.stringify(track.local_video_file)}, musicRoom: ${JSON.stringify(track.music_room)}, presentation: "live_dj_set" }`);
   if (!additions.length) return source;
   const before = source.slice(0, end);
   const separator = before.trimEnd().endsWith(',') ? '\n' : ',\n';
@@ -223,7 +223,7 @@ const promoted = configs.map((config) => {
     top_needs: normalizeTopNeeds(row['Top 4 / 37 Need Mapping']),
     citizen_need_affinities: Object.fromEntries(Object.entries(citizenScores).filter(([, value]) => Number.isFinite(Number(value))).map(([key, value]) => [key, Number(value)])),
     trajectory: row['Lyric Emotional Trajectory'] || row['Emotional Trajectory'] || '',
-    radio_handoff: config.radioHandoff,
+    music_room: config.musicRoom,
     safety: {
       youth_safety: row['Youth Safety'] || '',
       memory_zone: row['Memory Zone'] || '',
@@ -246,7 +246,7 @@ const promoted = configs.map((config) => {
     selected_track_id: track.id,
     local_video_file: localVideoFile,
     youtube_video_id: track.youtube_video_id,
-    radio_handoff: config.radioHandoff,
+    music_room: config.musicRoom,
     presentation: track.presentation,
     source_record_url: track.source_record_url,
     media_class: track.media_class,

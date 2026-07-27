@@ -27,6 +27,11 @@ SELECTION_SCHEMA_VERSION = "adaptive_music_video_selection_v1.11"
 SELECTION_POLICY_VERSION = "tensor_uplift_rotation_v3"
 DCN_RERANKER_VERSION = "adaptive_music_engagement_dcn_reranker_v0.1"
 ALIGNED_NUMERIC_DIMENSIONS = 80
+EXTENDED_SESSION_FORMAT_WEIGHTS = {
+    "parties": 0.80,
+    "radio": 0.10,
+    "videos": 0.10,
+}
 BASE_DIR = Path(__file__).resolve().parent
 DEFAULT_CATALOGUE_PATH = BASE_DIR / "adaptive-music-video-catalogue-v1.11.json"
 DEFAULT_TRAJECTORY_POLICY_PATH = BASE_DIR / "adaptive-music-trajectory-policy-v2.json"
@@ -676,7 +681,7 @@ def structured_summary_fragments(v444_payload: Mapping[str, Any]) -> List[str]:
     """Return only GPT-produced summaries, never the raw citizen check-in."""
     fragments = [
         v444_payload.get("interpretation_summary"),
-        v444_payload.get("soundtrack_reason"),
+        v444_payload.get("music_room_reason"),
         get_nested(v444_payload, ["citizen_needs", "interpretation_summary"]),
         get_nested(v444_payload, ["citizen_needs", "summary"]),
         get_nested(v444_payload, ["adaptive_music", "why_music"]),
@@ -793,19 +798,19 @@ def semantic_fit_for_intent(track: Mapping[str, Any], highlights: List[str], int
 
 def context_fit(track: Mapping[str, Any], environment_context: Mapping[str, Any]) -> float:
     score = 0.5
-    station = str(track.get("radio_handoff") or get_nested(track, ["tensor_profile", "runtime_delivery", "radio_handoff"], "")).lower()
+    room = str(track.get("music_room") or get_nested(track, ["tensor_profile", "runtime_delivery", "music_room"], "")).lower()
     time_text = str(environment_context.get("local_time") or environment_context.get("time_of_day") or "").lower()
     weather = str(environment_context.get("weather_condition") or "").lower()
     temp = environment_context.get("temperature_celsius")
 
-    if ("pm" in time_text or "night" in time_text or "evening" in time_text) and station == "calm":
+    if ("sunrise" in time_text or "early" in time_text) and room == "inner-planes":
         score += 0.16
-    if ("late" in time_text or "night" in time_text) and station == "house":
-        score -= 0.16
-    if any(word in weather for word in ("rain", "storm", "wind")) and station in {"calm", "chill"}:
+    if ("sunset" in time_text or "evening" in time_text) and room == "champagne-bohemia":
+        score += 0.16
+    if any(word in weather for word in ("rain", "storm", "wind")) and room in {"inner-planes", "champagne-bohemia"}:
         score += 0.12
-    if isinstance(temp, (int, float)) and temp >= 30 and station == "house":
-        score -= 0.1
+    if isinstance(temp, (int, float)) and temp >= 30 and room == "champagne-bohemia":
+        score += 0.1
     return max(0.0, min(1.0, score))
 
 
@@ -881,10 +886,31 @@ def engagement_feature_snapshot(track: Mapping[str, Any], bundle: Mapping[str, A
         coerce_ratio(first_number(combined, ("video_completion_ratio", "video_watch_ratio", "watch_ratio", "completion_ratio"))),
         coerce_ratio(first_number(combined, ("video_percent_watched", "percent_watched", "video_completion_percent"))),
     )
-    radio_listen = max(
-        coerce_ratio(first_number(combined, ("radio_listen_ratio", "radio_completion_ratio", "streaming_radio_ratio"))),
-        coerce_count(first_number(combined, ("radio_listen_seconds", "streaming_radio_seconds", "audio_seconds")), 20 * 60),
-        coerce_count(first_number(combined, ("radio_listen_minutes", "streaming_radio_minutes")), 20),
+    extended_session_listen = max(
+        coerce_ratio(first_number(combined, (
+            "extended_session_listen_ratio",
+            "extended_session_completion_ratio",
+            "parties_listen_ratio",
+            "videos_livestream_ratio",
+            "radio_listen_ratio",
+            "radio_completion_ratio",
+            "streaming_radio_ratio",
+        ))),
+        coerce_count(first_number(combined, (
+            "extended_session_listen_seconds",
+            "parties_listen_seconds",
+            "videos_livestream_seconds",
+            "radio_listen_seconds",
+            "streaming_radio_seconds",
+            "audio_seconds",
+        )), 20 * 60),
+        coerce_count(first_number(combined, (
+            "extended_session_listen_minutes",
+            "parties_listen_minutes",
+            "videos_livestream_minutes",
+            "radio_listen_minutes",
+            "streaming_radio_minutes",
+        )), 20),
     )
     dwell = max(
         coerce_count(first_number(combined, ("engaged_seconds", "dwell_seconds", "session_seconds", "time_on_page_seconds")), 240),
@@ -900,22 +926,21 @@ def engagement_feature_snapshot(track: Mapping[str, Any], bundle: Mapping[str, A
         coerce_ratio(combined.get("bounce_rate") or combined.get("bounce")),
     )
 
-    station, _ = infer_radio_handoff(track, [])
-    calm_or_chill = 1.0 if station in {"calm", "chill"} else 0.0
-    house = 1.0 if station == "house" else 0.0
+    music_room, _ = infer_music_room(track, [])
+    room_continuity = 1.0 if music_room else 0.0
 
     return {
         "video_completion": video_completion,
-        "radio_listening": radio_listen,
+        "extended_session_listening": extended_session_listen,
         "soft_dwell": dwell * low_click,
         "returning_interest": return_visits,
         "emoji_need_fit": emoji_need_fit(track, combined),
         "survey_fit": voluntary_survey_fit(combined),
         "friction": friction,
         "video_x_soft_dwell": video_completion * dwell * low_click,
-        "radio_x_handoff": radio_listen * (0.65 + 0.35 * calm_or_chill),
+        "extended_session_x_room_continuity": extended_session_listen * room_continuity,
         "emoji_x_track_needs": emoji_need_fit(track, combined) * max(video_completion, dwell, return_visits),
-        "house_activation_fit": house * max(video_completion, return_visits) * (1.0 - friction),
+        "music_room_return_fit": room_continuity * max(video_completion, return_visits) * (1.0 - friction),
     }
 
 
@@ -930,7 +955,7 @@ def dcn_reranker_score(
     features = engagement_feature_snapshot(track, bundle)
     signal_strength = max(
         features["video_completion"],
-        features["radio_listening"],
+        features["extended_session_listening"],
         features["soft_dwell"],
         features["returning_interest"],
         abs(features["survey_fit"] - 0.5) * 2.0,
@@ -938,15 +963,15 @@ def dcn_reranker_score(
     )
     engagement_score = (
         0.23 * features["video_completion"]
-        + 0.18 * features["radio_listening"]
+        + 0.18 * features["extended_session_listening"]
         + 0.15 * features["soft_dwell"]
         + 0.10 * features["returning_interest"]
         + 0.12 * features["emoji_need_fit"]
         + 0.12 * features["survey_fit"]
         + 0.10 * features["video_x_soft_dwell"]
-        + 0.06 * features["radio_x_handoff"]
+        + 0.06 * features["extended_session_x_room_continuity"]
         + 0.06 * features["emoji_x_track_needs"]
-        + 0.03 * features["house_activation_fit"]
+        + 0.03 * features["music_room_return_fit"]
         - 0.15 * features["friction"]
     )
     engagement_score = max(0.0, min(1.0, engagement_score))
@@ -961,16 +986,90 @@ def dcn_reranker_score(
     return max(0.0, min(1.0, reranked_score)), features
 
 
-def infer_radio_handoff(track: Mapping[str, Any], highlights: List[str]) -> Tuple[str, str]:
-    station = str(track.get("radio_handoff") or get_nested(track, ["tensor_profile", "runtime_delivery", "radio_handoff"], "chill")).lower()
-    if station not in {"calm", "chill", "house"}:
-        station = "chill"
+def infer_music_room(track: Mapping[str, Any], highlights: List[str]) -> Tuple[str, str]:
+    room = str(track.get("music_room") or get_nested(track, ["tensor_profile", "runtime_delivery", "music_room"], "")).lower()
+    allowed_rooms = {"inner-planes", "champagne-bohemia", "modul8-infinity", "james-bondage", "safety-cushion"}
+    if room not in allowed_rooms:
+        return "", "No eligible music room is assigned; do not force an extended session."
     reasons = {
-        "calm": "The radio handoff downshifts the room after the video and supports regulation, recovery and lower density.",
-        "chill": "The radio handoff keeps the room warm and spacious so the video can integrate without dropping the citizen abruptly.",
-        "house": "The radio handoff carries the video into embodied momentum, agency and social energy.",
+        "inner-planes": "The extended session continues through the ambient, sleep and sunrise identity of inner planes.",
+        "champagne-bohemia": "The extended session continues through the Balearic, sunset and chillout identity of champagne bohemia.",
+        "modul8-infinity": "The extended session continues through the rave, house, techno, future bass and future psychedelic hiphop identity of modul8 infinity.",
+        "james-bondage": "The extended session continues through the minimal, electro and EBM identity of james bondage.",
+        "safety-cushion": "The extended session continues through 80s nu wave music videos in safety cushion.",
     }
-    return station, reasons[station]
+    return room, reasons[room]
+
+
+def assigned_extended_format(v444_input: Mapping[str, Any]) -> Tuple[str, float]:
+    """Assign the 80/10/10 traffic slot outside GPT with a stable session key."""
+    context = selection_context(v444_input)
+    visitor_id = str(context.get("visitor_id") or "anonymous")
+    index = recommendation_index(v444_input, extract_recent_track_ids(v444_input))
+    draw = stable_hash_fraction("extended-session-format-v1", visitor_id, index)
+    if draw < EXTENDED_SESSION_FORMAT_WEIGHTS["parties"]:
+        return "parties", draw
+    if draw < EXTENDED_SESSION_FORMAT_WEIGHTS["parties"] + EXTENDED_SESSION_FORMAT_WEIGHTS["radio"]:
+        return "radio", draw
+    return "videos", draw
+
+
+def extended_session_contract(
+    track: Mapping[str, Any],
+    highlights: List[str],
+    acute: bool,
+    v444_input: Mapping[str, Any],
+    catalogue: Mapping[str, Any],
+) -> Dict[str, Any]:
+    assigned_format, format_draw = assigned_extended_format(v444_input)
+    track_room, track_room_reason = infer_music_room(track, highlights)
+    requested_room = selected_music_room(v444_input) or track_room
+    room_definitions = catalogue.get("music_rooms") if isinstance(catalogue.get("music_rooms"), Mapping) else {}
+
+    def room_ready(room: str, extended_format: str) -> bool:
+        definition = room_definitions.get(room) if isinstance(room_definitions.get(room), Mapping) else {}
+        return bool(
+            room
+            and definition.get("catalogue_status") == "ready"
+            and extended_format in as_list(definition.get("allowed_formats"))
+        )
+
+    user_vector = vectorise_state(v444_input)
+    peak_anxiety = max(
+        coerce_number(user_vector.get("Anxiety")),
+        coerce_number(user_vector.get("Fear")),
+        coerce_number(user_vector.get("Hypervigilance")),
+        coerce_number(user_vector.get("Startle Sensitivity")),
+    ) >= 0.70
+
+    selected_room = requested_room
+    if assigned_format == "videos" and peak_anxiety and not acute and room_ready("safety-cushion", "videos"):
+        selected_room = "safety-cushion"
+    elif not room_ready(selected_room, assigned_format):
+        selected_room = track_room if room_ready(track_room, assigned_format) else ""
+
+    catalogue_ready = room_ready(selected_room, assigned_format)
+    reason = track_room_reason
+    if selected_room == "safety-cushion":
+        reason = "The Videos slot and peak anxiety signals support an approved Ready 80s nu wave continuation in safety cushion."
+    elif selected_room:
+        reason = f"{reason} The application assigned the {assigned_format} slot under the 80/10/10 extended-session policy."
+    else:
+        reason = "No approved Ready source is compatible with the assigned extended-session format; do not force a fallback."
+
+    return {
+        "music_room": selected_room or None,
+        "format": assigned_format if catalogue_ready else None,
+        "source_id": None,
+        "catalogue_ready": catalogue_ready,
+        "why_this_session": reason,
+        "format_policy": {
+            "weights": EXTENDED_SESSION_FORMAT_WEIGHTS,
+            "assignment": "stable_visitor_and_recommendation_slot",
+            "draw": round(format_draw, 6),
+            "safety_and_readiness_override": True,
+        },
+    }
 
 
 def why_this_video(track: Mapping[str, Any], highlights: List[str], score_parts: Mapping[str, float]) -> str:
@@ -988,9 +1087,11 @@ def output_contract(
     highlights: List[str],
     score_parts: Mapping[str, float],
     acute: bool,
+    v444_input: Mapping[str, Any],
+    catalogue: Mapping[str, Any],
 ) -> Dict[str, Any]:
     safety = track_safety(track)
-    station, station_reason = infer_radio_handoff(track, highlights)
+    extended_session = extended_session_contract(track, highlights, acute, v444_input, catalogue)
     return {
         "schema_version": SELECTION_SCHEMA_VERSION,
         "selected_track_id": track.get("id") or get_nested(track, ["tensor_profile", "runtime_delivery", "selected_track_id"], ""),
@@ -1004,10 +1105,7 @@ def output_contract(
         "citizen_needs_used": highlights[:4],
         "trajectory": track.get("trajectory") or get_nested(track, ["tensor_profile", "musicianship_emotion", "Lyric Emotional Trajectory"], ""),
         "primary_environmental_function": track.get("primary_environmental_function") or get_nested(track, ["tensor_profile", "human_review_flow", "Primary Environmental Function"], ""),
-        "radio_handoff": {
-            "station": station,
-            "why_this_handoff": station_reason,
-        },
+        "extended_session": extended_session,
         "safety": {
             "support_card_required": bool(acute or safety.get("requires_support_card")),
             "age_gate_required": bool(safety.get("requires_age_gate")),
@@ -1031,7 +1129,7 @@ def output_contract(
                 "trajectory_policy": str(score_parts.get("trajectory_policy") or SELECTION_POLICY_VERSION),
                 "quota_mode": str(score_parts.get("quota_mode") or "state_led"),
                 "selected_trajectory_mode": str(score_parts.get("selected_trajectory_mode") or "unclassified"),
-                "soundtrack_stage_gate": str(score_parts.get("soundtrack_stage_gate") or ""),
+                "selected_music_room": str(score_parts.get("selected_music_room") or ""),
                 "recency_policy": "hard_exclude_6_tracks_2_artists_then_relax_if_pool_exhausted",
             },
             "selector_score_parts": {key: round(value, 3) for key, value in score_parts.items() if isinstance(value, (int, float))},
@@ -1158,13 +1256,13 @@ def choose_relevance_bounded_candidate(
     return selected, len(fit_band), max(0.0, best_post_fit - selected[1])
 
 
-def soundtrack_stage_gate(v444_input: Mapping[str, Any]) -> str:
-    gate = str(
-        v444_input.get("soundtrack_stage_gate")
-        or get_nested(v444_input, ["citizen_needs", "soundtrack_stage_gate"])
+def selected_music_room(v444_input: Mapping[str, Any]) -> str:
+    room = str(
+        v444_input.get("selected_music_room")
+        or get_nested(v444_input, ["citizen_needs", "selected_music_room"])
         or ""
     ).strip().lower()
-    return gate if gate in {"calm", "chill", "house"} else ""
+    return room if room in {"inner-planes", "champagne-bohemia", "modul8-infinity", "james-bondage", "safety-cushion"} else ""
 
 
 def target_activation_level(v444_input: Mapping[str, Any], user_vector: Mapping[str, float], acute: bool) -> int:
@@ -1199,13 +1297,6 @@ def target_activation_level(v444_input: Mapping[str, Any], user_vector: Mapping[
     else:
         target = 2
 
-    gate = soundtrack_stage_gate(v444_input)
-    if gate == "calm":
-        return min(target, 1)
-    if gate == "chill":
-        return min(target, 2)
-    if gate == "house":
-        return max(target, 2)
     return target
 
 
@@ -1252,7 +1343,7 @@ def execute_v1_11_selection(
         trajectory_policy,
     )
     activation_target = target_activation_level(v444_input, user_vector, acute)
-    stage_gate = soundtrack_stage_gate(v444_input)
+    music_room = selected_music_room(v444_input)
     input_scorecard = extract_needs_scorecard(v444_input)
     input_scorecard_dimensions = sum(
         1
@@ -1330,7 +1421,7 @@ def execute_v1_11_selection(
         )
         if not fallback:
             raise ValueError("No tracks cleared current safety criteria.")
-        return attach_inference_provenance(output_contract(fallback, 0.0, highlights, {}, True), v444_input)
+        return attach_inference_provenance(output_contract(fallback, 0.0, highlights, {}, True, v444_input, catalogue), v444_input)
 
     # Tensor fit establishes eligibility. Engagement and recency can only choose
     # within this bounded pool; they can never introduce a lower-fit track.
@@ -1425,7 +1516,7 @@ def execute_v1_11_selection(
         "trajectory_policy": str(trajectory_policy.get("policy_version") or SELECTION_POLICY_VERSION),
         "quota_mode": quota_mode,
         "selected_trajectory_mode": str(trajectory_profile(best_track, trajectory_policy)["mode"]),
-        "soundtrack_stage_gate": stage_gate,
+        "selected_music_room": music_room,
         "tensor_selector_score": float(best_score),
         "post_fit_reranker_score": float(post_fit_score),
         "input_scorecard_dimensions": float(input_scorecard_dimensions),
@@ -1446,7 +1537,7 @@ def execute_v1_11_selection(
         "policy_candidate_count": float(len(mode_pool)),
         "fit_floor": float(fit_floor),
     }
-    return attach_inference_provenance(output_contract(best_track, best_score, highlights, score_parts, acute), v444_input)
+    return attach_inference_provenance(output_contract(best_track, best_score, highlights, score_parts, acute, v444_input, catalogue), v444_input)
 
 
 def select_from_file(

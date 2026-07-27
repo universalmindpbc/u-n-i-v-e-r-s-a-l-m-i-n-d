@@ -14,23 +14,6 @@
     "Do not simply mirror the citizen's current emotion. Infer the most helpful trajectory from the current state toward support, agency, clarity, belonging, recovery, joy or transformation.",
     "Use only the pre-approved editorial pool for MVP selection."
   ],
-  "radio_handoff_stations": {
-    "calm": {
-      "id": "calm",
-      "intent": "downshift, regulate, reduce density, soften stimulation",
-      "station_pool": ["cafe-del-mar-calm", "groove-salad", "groove-salad-classic", "nts-slow-focus", "nts-low-key"]
-    },
-    "chill": {
-      "id": "chill",
-      "intent": "stabilise, soften, maintain warmth, support balance",
-      "station_pool": ["cafe-del-mar-chill", "groove-salad", "groove-salad-classic", "sanctuary-retro", "nts-poolside", "nts-otaku", "nts-low-key"]
-    },
-    "house": {
-      "id": "house",
-      "intent": "uplift, energise, support agency, activate positive momentum",
-      "station_pool": ["cafe-del-mar-house", "sanctuary-dark-electro", "sanctuary-retro", "nts-poolside", "nts-otaku"]
-    }
-  },
   "tensor_field_bible": {
     "source": "UM Song Tensor Kernel — Gold Training Set Notion views",
     "principle": "Preserve the full field surface. Do not collapse the tensor into generic mood tags.",
@@ -440,7 +423,6 @@
         "Startle Sensitivity": 0.06
       },
       "trajectory": "Emotional contraction → recognition of frozen feeling → desire for opening → reflective transformation.",
-      "radio_handoff": "chill",
       "safety": {
         "youth_safety": "Review",
         "memory_zone": "Amber",
@@ -764,9 +746,9 @@
           "selected_track_id": "madonna-frozen",
           "local_video_file": "a s s e t s/Madonna - Frozen.mp4",
           "youtube_id": null,
-          "radio_handoff": "chill",
           "presentation": "official_video",
-          "source_record_url": "https://app.notion.com/p/3987b9c99c5681cb9090f063236e86f6"
+          "source_record_url": "https://app.notion.com/p/3987b9c99c5681cb9090f063236e86f6",
+          "music_room": "inner-planes"
         }
       },
       "notion_export": {
@@ -1125,7 +1107,8 @@
             "desire"
           ]
         }
-      }
+      },
+      "music_room": "inner-planes"
     },
     {
       "id": "madonna-ray-of-light",
@@ -1182,7 +1165,6 @@
         "Startle Sensitivity": 0.12
       },
       "trajectory": "Stillness / ordinary life → motion → light → ecstatic expansion → renewed aliveness.",
-      "radio_handoff": "house",
       "safety": {
         "youth_safety": "Safe",
         "memory_zone": "Green",
@@ -1506,9 +1488,9 @@
           "selected_track_id": "madonna-ray-of-light",
           "local_video_file": "a s s e t s/Madonna - Ray Of Light.mp4",
           "youtube_id": null,
-          "radio_handoff": "house",
           "presentation": "official_video",
-          "source_record_url": "https://app.notion.com/p/3987b9c99c5681c38b1ff49eee3756de"
+          "source_record_url": "https://app.notion.com/p/3987b9c99c5681c38b1ff49eee3756de",
+          "music_room": "modul8-infinity"
         }
       },
       "notion_export": {
@@ -1883,7 +1865,8 @@
             "stimulation"
           ]
         }
-      }
+      },
+      "music_room": "modul8-infinity"
     },
     {
       "id": "rihanna-diamonds",
@@ -1940,7 +1923,6 @@
         "Startle Sensitivity": 0.04
       },
       "trajectory": "Vulnerability → recognition of inner value → shared brightness → confident hope.",
-      "radio_handoff": "chill",
       "safety": {
         "youth_safety": "Safe",
         "memory_zone": "Green",
@@ -2264,9 +2246,9 @@
           "selected_track_id": "rihanna-diamonds",
           "local_video_file": "a s s e t s/Rihanna - Diamonds.mp4",
           "youtube_id": null,
-          "radio_handoff": "chill",
           "presentation": "official_video",
-          "source_record_url": "https://app.notion.com/p/3947b9c99c56817a8e66f138a13a8604"
+          "source_record_url": "https://app.notion.com/p/3947b9c99c56817a8e66f138a13a8604",
+          "music_room": "champagne-bohemia"
         }
       },
       "notion_export": {
@@ -2522,7 +2504,7 @@
         "memory_zone": "Green",
         "youth_safety": "Safe",
         "semantic_scores": {
-          "hope": 1.0,
+          "hope": 1,
           "identity": 0.943,
           "clarity": 0.832,
           "psychological_safety": 0.82,
@@ -2620,7 +2602,8 @@
             "sensuality"
           ]
         }
-      }
+      },
+      "music_room": "champagne-bohemia"
     },
     {
       "id": "bjork-hyperballad",
@@ -2677,7 +2660,6 @@
         "Startle Sensitivity": 0.06
       },
       "trajectory": "Private intensity → ritualised release → return to relationship / connection.",
-      "radio_handoff": "chill",
       "safety": {
         "youth_safety": "Review",
         "memory_zone": "Amber",
@@ -3001,9 +2983,9 @@
           "selected_track_id": "bjork-hyperballad",
           "local_video_file": "a s s e t s/Björk - Hyperballad.mp4",
           "youtube_id": null,
-          "radio_handoff": "chill",
           "presentation": "official_video",
-          "source_record_url": "https://app.notion.com/3987b9c99c56811f8263c87c60fe3d31"
+          "source_record_url": "https://app.notion.com/3987b9c99c56811f8263c87c60fe3d31",
+          "music_room": "inner-planes"
         }
       },
       "notion_export": {
@@ -3348,7 +3330,8 @@
             "movement"
           ]
         }
-      }
+      },
+      "music_room": "inner-planes"
     },
     {
       "id": "tame-impala-the-less-i-know-the-better",
@@ -3404,7 +3387,6 @@
         "Startle Sensitivity": 0.04
       },
       "trajectory": "Desire → loss / jealousy → cool self-protection → bittersweet acceptance.",
-      "radio_handoff": "chill",
       "safety": {
         "youth_safety": "Safe",
         "memory_zone": "Amber",
@@ -3728,9 +3710,9 @@
           "selected_track_id": "tame-impala-the-less-i-know-the-better",
           "local_video_file": "a s s e t s/Tame Impala - The Less I Know The Better.mp4",
           "youtube_id": null,
-          "radio_handoff": "chill",
           "presentation": "official_video",
-          "source_record_url": "https://app.notion.com/p/3987b9c99c568177a413fcdfc3dcf959"
+          "source_record_url": "https://app.notion.com/p/3987b9c99c568177a413fcdfc3dcf959",
+          "music_room": "champagne-bohemia"
         }
       },
       "notion_export": {
@@ -4093,7 +4075,8 @@
             "desire"
           ]
         }
-      }
+      },
+      "music_room": "champagne-bohemia"
     },
     {
       "id": "flume-tiny-cities",
@@ -4149,7 +4132,6 @@
         "Startle Sensitivity": 0.02
       },
       "trajectory": "Distance → contemplation → spacious lift → gentle transcendence.",
-      "radio_handoff": "chill",
       "safety": {
         "youth_safety": "Safe",
         "memory_zone": "Green",
@@ -4473,9 +4455,9 @@
           "selected_track_id": "flume-tiny-cities",
           "local_video_file": "a s s e t s/Flume - Tiny Cities feat. Beck.mp4",
           "youtube_id": null,
-          "radio_handoff": "chill",
           "presentation": "official_video",
-          "source_record_url": "https://app.notion.com/p/3987b9c99c5681eaa472f3dff6dc6601"
+          "source_record_url": "https://app.notion.com/p/3987b9c99c5681eaa472f3dff6dc6601",
+          "music_room": "inner-planes"
         }
       },
       "notion_export": {
@@ -4812,7 +4794,8 @@
             "movement"
           ]
         }
-      }
+      },
+      "music_room": "inner-planes"
     },
     {
       "id": "flume-never-be-like-you-laneway",
@@ -4868,7 +4851,6 @@
         "Startle Sensitivity": 0.04
       },
       "trajectory": "Regret / vulnerability → collective recognition → emotional release → belonging.",
-      "radio_handoff": "chill",
       "safety": {
         "youth_safety": "Review",
         "memory_zone": "Amber",
@@ -5192,9 +5174,9 @@
           "selected_track_id": "flume-never-be-like-you-laneway",
           "local_video_file": "a s s e t s/Flume - Never Be Like You feat. Kai [ Live at Laneway Festival ].mp4",
           "youtube_id": null,
-          "radio_handoff": "chill",
           "presentation": "live_video",
-          "source_record_url": "https://app.notion.com/p/3987b9c99c5681da90bcec9e16d85a0c"
+          "source_record_url": "https://app.notion.com/p/3987b9c99c5681da90bcec9e16d85a0c",
+          "music_room": "modul8-infinity"
         }
       },
       "notion_export": {
@@ -5454,7 +5436,7 @@
         "memory_zone": "Amber",
         "youth_safety": "Review",
         "semantic_scores": {
-          "belonging": 1.0,
+          "belonging": 1,
           "recovery": 0.943,
           "connection": 0.86,
           "empathy": 0.78,
@@ -5540,7 +5522,8 @@
             "pulse"
           ]
         }
-      }
+      },
+      "music_room": "modul8-infinity"
     },
     {
       "id": "grimes-genesis",
@@ -5578,7 +5561,6 @@
         "Loneliness": 0.24
       },
       "trajectory": "Uncertainty → imaginative opening → playful courage → future possibility.",
-      "radio_handoff": "house",
       "safety": {
         "youth_safety": "Review",
         "memory_zone": "Green",
@@ -5902,9 +5884,9 @@
           "selected_track_id": "grimes-genesis",
           "local_video_file": "a s s e t s/Grimes - Genesis.mp4",
           "youtube_id": null,
-          "radio_handoff": "house",
           "presentation": "official_video",
-          "source_record_url": "https://app.notion.com/p/3947b9c99c5681daa42cee48ce1f6edc"
+          "source_record_url": "https://app.notion.com/p/3947b9c99c5681daa42cee48ce1f6edc",
+          "music_room": "james-bondage"
         }
       },
       "notion_export": {
@@ -6249,7 +6231,8 @@
             "youth"
           ]
         }
-      }
+      },
+      "music_room": "james-bondage"
     },
     {
       "id": "solange-cranes-in-the-sky",
@@ -6305,7 +6288,6 @@
         "Startle Sensitivity": 0.04
       },
       "trajectory": "Struggle / coping → recognition → letting go → quiet resilience.",
-      "radio_handoff": "calm",
       "safety": {
         "youth_safety": "Safe",
         "memory_zone": "Amber",
@@ -6629,9 +6611,9 @@
           "selected_track_id": "solange-cranes-in-the-sky",
           "local_video_file": "a s s e t s/Solange - Cranes in the Sky.mp4",
           "youtube_id": null,
-          "radio_handoff": "calm",
           "presentation": "official_video",
-          "source_record_url": "https://app.notion.com/p/3987b9c99c5681bba8bfe5732054ec15"
+          "source_record_url": "https://app.notion.com/p/3987b9c99c5681bba8bfe5732054ec15",
+          "music_room": "champagne-bohemia"
         }
       },
       "notion_export": {
@@ -6983,7 +6965,8 @@
             "pulse"
           ]
         }
-      }
+      },
+      "music_room": "champagne-bohemia"
     },
     {
       "id": "little-simz-gorilla",
@@ -7040,7 +7023,6 @@
         "Startle Sensitivity": 0.04
       },
       "trajectory": "Pressure / assertion → command → self-possession → triumph.",
-      "radio_handoff": "house",
       "safety": {
         "youth_safety": "Review",
         "memory_zone": "Green",
@@ -7364,9 +7346,9 @@
           "selected_track_id": "little-simz-gorilla",
           "local_video_file": "a s s e t s/Little Simz - Gorilla.mp4",
           "youtube_id": null,
-          "radio_handoff": "house",
           "presentation": "official_video",
-          "source_record_url": "https://app.notion.com/p/3987b9c99c568114bbd7cb130498a2c2"
+          "source_record_url": "https://app.notion.com/p/3987b9c99c568114bbd7cb130498a2c2",
+          "music_room": "modul8-infinity"
         }
       },
       "notion_export": {
@@ -7627,7 +7609,7 @@
         "memory_zone": "Green",
         "youth_safety": "Review",
         "semantic_scores": {
-          "agency": 1.0,
+          "agency": 1,
           "identity": 0.986,
           "groundedness": 0.943,
           "motivation": 0.92,
@@ -7723,7 +7705,8 @@
             "movement"
           ]
         }
-      }
+      },
+      "music_room": "modul8-infinity"
     },
     {
       "id": "the-prodigy-everybody-in-the-place",
@@ -7771,7 +7754,6 @@
         "Emotional Numbing": 0.06
       },
       "trajectory": "Stuck / aggressive charge → hard-beat movement → embodied release → agency and rave belonging.",
-      "radio_handoff": "house",
       "safety": {
         "youth_safety": "Safe",
         "memory_zone": "Green",
@@ -8098,9 +8080,9 @@
           "selected_track_id": "the-prodigy-everybody-in-the-place",
           "local_video_file": "a s s e t s/The Prodigy - Everybody In The Place.mp4",
           "youtube_id": null,
-          "radio_handoff": "house",
           "presentation": "official_video",
-          "source_record_url": "https://app.notion.com/p/3987b9c99c568170960fd692a3361d66"
+          "source_record_url": "https://app.notion.com/p/3987b9c99c568170960fd692a3361d66",
+          "music_room": "modul8-infinity"
         }
       },
       "notion_export": {
@@ -8471,7 +8453,8 @@
             "youth"
           ]
         }
-      }
+      },
+      "music_room": "modul8-infinity"
     },
     {
       "id": "nightmares-on-wax-shape-the-future",
@@ -8515,7 +8498,6 @@
         "Loneliness": 0.22
       },
       "trajectory": "Uncertainty → affirmation → courage → purpose → future orientation.",
-      "radio_handoff": "chill",
       "safety": {
         "youth_safety": "Safe",
         "memory_zone": "Green",
@@ -8839,9 +8821,9 @@
           "selected_track_id": "nightmares-on-wax-shape-the-future",
           "local_video_file": "a s s e t s/Nightmares On Wax - Shape The Future.mp4",
           "youtube_id": null,
-          "radio_handoff": "chill",
           "presentation": "official_video",
-          "source_record_url": "https://app.notion.com/p/3987b9c99c5681919f75e6c0ea818beb"
+          "source_record_url": "https://app.notion.com/p/3987b9c99c5681919f75e6c0ea818beb",
+          "music_room": "champagne-bohemia"
         }
       },
       "notion_export": {
@@ -9196,7 +9178,8 @@
             "movement"
           ]
         }
-      }
+      },
+      "music_room": "champagne-bohemia"
     },
     {
       "id": "mia-borders",
@@ -9247,7 +9230,6 @@
         "Startle Sensitivity": 0.14
       },
       "trajectory": "Frustration → witness → collective identity → agency / solidarity.",
-      "radio_handoff": "chill",
       "safety": {
         "youth_safety": "Review",
         "memory_zone": "Amber",
@@ -9571,9 +9553,9 @@
           "selected_track_id": "mia-borders",
           "local_video_file": "a s s e t s/M.I.A. - Borders.mp4",
           "youtube_id": null,
-          "radio_handoff": "chill",
           "presentation": "official_video",
-          "source_record_url": "https://app.notion.com/p/3987b9c99c5681d8ab63f1decff2936e"
+          "source_record_url": "https://app.notion.com/p/3987b9c99c5681d8ab63f1decff2936e",
+          "music_room": "modul8-infinity"
         }
       },
       "notion_export": {
@@ -9942,7 +9924,8 @@
             "movement"
           ]
         }
-      }
+      },
+      "music_room": "modul8-infinity"
     },
     {
       "id": "sampa-the-great-energy",
@@ -9999,7 +9982,6 @@
         "Startle Sensitivity": 0.02
       },
       "trajectory": "Disconnection / depletion → reconnection to energy → confidence → embodied vitality.",
-      "radio_handoff": "house",
       "safety": {
         "youth_safety": "Safe",
         "memory_zone": "Green",
@@ -10323,9 +10305,9 @@
           "selected_track_id": "sampa-the-great-energy",
           "local_video_file": "a s s e t s/Sampa The Great - Energy (feat. Nadeem Din-Gabisi).mp4",
           "youtube_id": null,
-          "radio_handoff": "house",
           "presentation": "official_video",
-          "source_record_url": "https://app.notion.com/p/3987b9c99c568108aa5fe49358b29330"
+          "source_record_url": "https://app.notion.com/p/3987b9c99c568108aa5fe49358b29330",
+          "music_room": "modul8-infinity"
         }
       },
       "notion_export": {
@@ -10583,7 +10565,7 @@
         "memory_zone": "Green",
         "youth_safety": "Safe",
         "semantic_scores": {
-          "motivation": 1.0,
+          "motivation": 1,
           "groundedness": 0.993,
           "connection": 0.893,
           "agency": 0.832,
@@ -10692,7 +10674,8 @@
             "movement"
           ]
         }
-      }
+      },
+      "music_room": "modul8-infinity"
     },
     {
       "id": "sampa-the-great-final-form",
@@ -10748,7 +10731,6 @@
         "Startle Sensitivity": 0.02
       },
       "trajectory": "Becoming → declaration → cultural power → final form / arrival.",
-      "radio_handoff": "house",
       "safety": {
         "youth_safety": "Safe",
         "memory_zone": "Green",
@@ -11072,9 +11054,9 @@
           "selected_track_id": "sampa-the-great-final-form",
           "local_video_file": "a s s e t s/Sampa The Great - Final Form.mp4",
           "youtube_id": null,
-          "radio_handoff": "house",
           "presentation": "official_video",
-          "source_record_url": "https://app.notion.com/p/3987b9c99c5681818a8ce3b639f2619e"
+          "source_record_url": "https://app.notion.com/p/3987b9c99c5681818a8ce3b639f2619e",
+          "music_room": "modul8-infinity"
         }
       },
       "notion_export": {
@@ -11333,8 +11315,8 @@
         "memory_zone": "Green",
         "youth_safety": "Safe",
         "semantic_scores": {
-          "identity": 1.0,
-          "self_actualisation": 1.0,
+          "identity": 1,
+          "self_actualisation": 1,
           "groundedness": 0.972,
           "agency": 0.96,
           "motivation": 0.9,
@@ -11433,7 +11415,8 @@
             "movement"
           ]
         }
-      }
+      },
+      "music_room": "modul8-infinity"
     },
     {
       "id": "dua-lipa-be-the-one-glastonbury-2017",
@@ -11488,7 +11471,6 @@
         "Startle Sensitivity": 0.02
       },
       "trajectory": "Longing → trust → invitation → collective celebration.",
-      "radio_handoff": "house",
       "safety": {
         "youth_safety": "Safe",
         "memory_zone": "Green",
@@ -11812,9 +11794,9 @@
           "selected_track_id": "dua-lipa-be-the-one-glastonbury-2017",
           "local_video_file": "a s s e t s/Dua Lipa - Be The One.mp4",
           "youtube_id": null,
-          "radio_handoff": "house",
           "presentation": "live_video",
-          "source_record_url": "https://app.notion.com/3987b9c99c56813abcfdfb7b2868792b"
+          "source_record_url": "https://app.notion.com/3987b9c99c56813abcfdfb7b2868792b",
+          "music_room": "champagne-bohemia"
         }
       },
       "notion_export": {
@@ -12168,7 +12150,8 @@
             "movement"
           ]
         }
-      }
+      },
+      "music_room": "champagne-bohemia"
     },
     {
       "id": "charli-xcx-house-john-cale",
@@ -12224,7 +12207,6 @@
         "Startle Sensitivity": 0.08
       },
       "trajectory": "Pain / grit → aesthetic containment → curiosity → beautiful discomfort.",
-      "radio_handoff": "chill",
       "safety": {
         "youth_safety": "Review",
         "memory_zone": "Amber",
@@ -12548,9 +12530,9 @@
           "selected_track_id": "charli-xcx-house-john-cale",
           "local_video_file": "a s s e t s/Charli XCX - House featuring John Cale.mp4",
           "youtube_id": null,
-          "radio_handoff": "chill",
           "presentation": "official_video",
-          "source_record_url": "https://app.notion.com/3987b9c99c56815199f2c3a0a6780954"
+          "source_record_url": "https://app.notion.com/3987b9c99c56815199f2c3a0a6780954",
+          "music_room": "james-bondage"
         }
       },
       "notion_export": {
@@ -12891,7 +12873,8 @@
             "gothic"
           ]
         }
-      }
+      },
+      "music_room": "james-bondage"
     },
     {
       "id": "pinkpantheress-illegal-glastonbury-2025",
@@ -12948,7 +12931,6 @@
         "Startle Sensitivity": 0.02
       },
       "trajectory": "Low-stakes tension → play → movement → reconnection.",
-      "radio_handoff": "house",
       "safety": {
         "youth_safety": "Safe",
         "memory_zone": "Green",
@@ -13272,9 +13254,9 @@
           "selected_track_id": "pinkpantheress-illegal-glastonbury-2025",
           "local_video_file": "a s s e t s/PinkPantheress - Illegal ( Live at Glastonbury).mp4",
           "youtube_id": null,
-          "radio_handoff": "house",
           "presentation": "live_video",
-          "source_record_url": "https://app.notion.com/p/3987b9c99c5681d1800ceecb20a49158"
+          "source_record_url": "https://app.notion.com/p/3987b9c99c5681d1800ceecb20a49158",
+          "music_room": "modul8-infinity"
         }
       },
       "notion_export": {
@@ -13635,7 +13617,8 @@
             "desire"
           ]
         }
-      }
+      },
+      "music_room": "modul8-infinity"
     },
     {
       "id": "caroline-polachek-welcome-to-my-island",
@@ -13692,7 +13675,6 @@
         "Startle Sensitivity": 0.04
       },
       "trajectory": "Self-containment → declaration → invitation into personal world → authentic expression.",
-      "radio_handoff": "house",
       "safety": {
         "youth_safety": "Review",
         "memory_zone": "Green",
@@ -14016,9 +13998,9 @@
           "selected_track_id": "caroline-polachek-welcome-to-my-island",
           "local_video_file": "a s s e t s/Caroline Polachek - Welcome To My Island.mp4",
           "youtube_id": null,
-          "radio_handoff": "house",
           "presentation": "official_video",
-          "source_record_url": "https://app.notion.com/3987b9c99c5681e4b3f6c6345093def1"
+          "source_record_url": "https://app.notion.com/3987b9c99c5681e4b3f6c6345093def1",
+          "music_room": "modul8-infinity"
         }
       },
       "notion_export": {
@@ -14278,7 +14260,7 @@
         "memory_zone": "Green",
         "youth_safety": "Review",
         "semantic_scores": {
-          "identity": 1.0,
+          "identity": 1,
           "self_actualisation": 0.956,
           "curiosity": 0.943,
           "awe": 0.82,
@@ -14357,7 +14339,8 @@
             "movement"
           ]
         }
-      }
+      },
+      "music_room": "modul8-infinity"
     },
     {
       "id": "u2-numb",
@@ -14414,7 +14397,6 @@
         "Startle Sensitivity": 0.06
       },
       "trajectory": "Overload / refusal → recognition of numbness → slight opening through musical space.",
-      "radio_handoff": "calm",
       "safety": {
         "youth_safety": "Review",
         "memory_zone": "Amber",
@@ -14738,9 +14720,9 @@
           "selected_track_id": "u2-numb",
           "local_video_file": "a s s e t s/U2 - Numb.mp4",
           "youtube_id": null,
-          "radio_handoff": "calm",
           "presentation": "official_video",
-          "source_record_url": "https://app.notion.com/p/3987b9c99c5681fabe3bf4bb4205b929"
+          "source_record_url": "https://app.notion.com/p/3987b9c99c5681fabe3bf4bb4205b929",
+          "music_room": "james-bondage"
         }
       },
       "notion_export": {
@@ -15096,7 +15078,8 @@
             "intrusion"
           ]
         }
-      }
+      },
+      "music_room": "james-bondage"
     },
     {
       "id": "linkin-park-numb-official",
@@ -15153,7 +15136,6 @@
         "Startle Sensitivity": 0.12
       },
       "trajectory": "Alienation / pressure → frustration named → shared recognition → partial catharsis.",
-      "radio_handoff": "calm",
       "safety": {
         "youth_safety": "Review",
         "memory_zone": "Amber",
@@ -15477,9 +15459,9 @@
           "selected_track_id": "linkin-park-numb-official",
           "local_video_file": "a s s e t s/Linkin Park - Numb.mp4",
           "youtube_id": null,
-          "radio_handoff": "calm",
           "presentation": "official_video_4k_upgrade",
-          "source_record_url": "https://app.notion.com/p/3947b9c99c5681418c22c1d0a9804899"
+          "source_record_url": "https://app.notion.com/p/3947b9c99c5681418c22c1d0a9804899",
+          "music_room": "james-bondage"
         }
       },
       "notion_export": {
@@ -15844,7 +15826,8 @@
             "pulse"
           ]
         }
-      }
+      },
+      "music_room": "james-bondage"
     },
     {
       "id": "linkin-park-numb-live-2024",
@@ -15900,7 +15883,6 @@
         "Startle Sensitivity": 0.12
       },
       "trajectory": "Individual pain → crowd recognition → collective catharsis → not alone.",
-      "radio_handoff": "chill",
       "safety": {
         "youth_safety": "Review",
         "memory_zone": "Amber",
@@ -16224,9 +16206,9 @@
           "selected_track_id": "linkin-park-numb-live-2024",
           "local_video_file": "a s s e t s/Linkin Park - Numb (Live, 2024).mp4",
           "youtube_id": null,
-          "radio_handoff": "chill",
           "presentation": "live_video",
-          "source_record_url": "https://app.notion.com/p/3987b9c99c56819aa3c3d49e91b0942b"
+          "source_record_url": "https://app.notion.com/p/3987b9c99c56819aa3c3d49e91b0942b",
+          "music_room": "james-bondage"
         }
       },
       "notion_export": {
@@ -16488,7 +16470,7 @@
         "memory_zone": "Amber",
         "youth_safety": "Review",
         "semantic_scores": {
-          "belonging": 1.0,
+          "belonging": 1,
           "anger": 0.96,
           "loneliness": 0.918,
           "connection": 0.9,
@@ -16602,7 +16584,8 @@
             "youth"
           ]
         }
-      }
+      },
+      "music_room": "james-bondage"
     },
     {
       "id": "nine-inch-nails-closer-glastonbury-2026",
@@ -16658,7 +16641,6 @@
         "Startle Sensitivity": 0.16
       },
       "trajectory": "Taboo / desire → confrontation → embodied intensity → ambiguous shadow integration.",
-      "radio_handoff": "house",
       "safety": {
         "youth_safety": "Caution",
         "memory_zone": "Amber",
@@ -16983,9 +16965,9 @@
           "selected_track_id": "nine-inch-nails-closer-glastonbury-2026",
           "local_video_file": null,
           "youtube_id": null,
-          "radio_handoff": "house",
           "presentation": "live_video",
-          "source_record_url": "https://app.notion.com/p/3987b9c99c5681258a12d13afd7ad877"
+          "source_record_url": "https://app.notion.com/p/3987b9c99c5681258a12d13afd7ad877",
+          "music_room": "james-bondage"
         }
       },
       "notion_export": {
@@ -17256,7 +17238,7 @@
         "memory_zone": "Amber",
         "youth_safety": "Caution",
         "semantic_scores": {
-          "shadow": 1.0,
+          "shadow": 1,
           "shame": 0.98,
           "activation": 0.96,
           "sensuality": 0.943,
@@ -17378,7 +17360,8 @@
             "desire"
           ]
         }
-      }
+      },
+      "music_room": "james-bondage"
     },
     {
       "id": "sasha-ibiza-boat-at-sunset-freqways",
@@ -17432,7 +17415,6 @@
         "Startle Sensitivity": 0.02
       },
       "trajectory": "Arrival and curiosity -> progressive lift -> horizon-scale awe -> reflective integration.",
-      "radio_handoff": "chill",
       "safety": {
         "youth_safety": "Safe",
         "memory_zone": "Green",
@@ -17592,10 +17574,10 @@
           "selected_track_id": "sasha-ibiza-boat-at-sunset-freqways",
           "local_video_file": "a s s e t s/d j  s e t s/ Sasha - Ibiza Boat at Sunset - Freqways.mp4",
           "youtube_video_id": "gNyXablzYyc",
-          "radio_handoff": "chill",
           "presentation": "live_dj_set",
           "source_record_url": "https://app.notion.com/39d7b9c99c5681e19640e36066ee0671",
-          "media_class": "long_form_dj_set"
+          "media_class": "long_form_dj_set",
+          "music_room": "champagne-bohemia"
         }
       },
       "notion_export": {
@@ -17977,7 +17959,8 @@
             "movement"
           ]
         }
-      }
+      },
+      "music_room": "champagne-bohemia"
     },
     {
       "id": "ben-bohmer-cappadocia-cercle",
@@ -18031,7 +18014,6 @@
         "Startle Sensitivity": 0.02
       },
       "trajectory": "Quiet ascent -> melodic openness -> emotional altitude -> grounded return.",
-      "radio_handoff": "chill",
       "safety": {
         "youth_safety": "Safe",
         "memory_zone": "Green",
@@ -18191,10 +18173,10 @@
           "selected_track_id": "ben-bohmer-cappadocia-cercle",
           "local_video_file": "a s s e t s/d j  s e t s/Ben Böhmer live - Cappadocia, Turkey - Cercle.mp4",
           "youtube_video_id": "",
-          "radio_handoff": "chill",
           "presentation": "live_dj_set",
           "source_record_url": "https://app.notion.com/39d7b9c99c5681e69c9cc60c6543bcfc",
-          "media_class": "long_form_dj_set"
+          "media_class": "long_form_dj_set",
+          "music_room": "champagne-bohemia"
         }
       },
       "notion_export": {
@@ -18591,7 +18573,8 @@
             "overload"
           ]
         }
-      }
+      },
+      "music_room": "champagne-bohemia"
     },
     {
       "id": "peggy-gou-palais-des-beaux-arts-cercle",
@@ -18645,7 +18628,6 @@
         "Startle Sensitivity": 0.02
       },
       "trajectory": "Stylish invitation -> social synchrony -> confident peak -> buoyant release.",
-      "radio_handoff": "house",
       "safety": {
         "youth_safety": "Safe",
         "memory_zone": "Green",
@@ -18805,10 +18787,10 @@
           "selected_track_id": "peggy-gou-palais-des-beaux-arts-cercle",
           "local_video_file": "a s s e t s/d j  s e t s/Peggy Gou - Cercle - Palais des Beaux - Cercle.mp4",
           "youtube_video_id": "",
-          "radio_handoff": "house",
           "presentation": "live_dj_set",
           "source_record_url": "https://app.notion.com/39d7b9c99c5681bcb06ece71627b51bd",
-          "media_class": "long_form_dj_set"
+          "media_class": "long_form_dj_set",
+          "music_room": "modul8-infinity"
         }
       },
       "notion_export": {
@@ -19199,7 +19181,8 @@
             "youth"
           ]
         }
-      }
+      },
+      "music_room": "modul8-infinity"
     },
     {
       "id": "miss-monique-biosphere-montreal-cercle",
@@ -19253,7 +19236,6 @@
         "Startle Sensitivity": 0.04
       },
       "trajectory": "Focused entry -> progressive tension -> spatial expansion -> high-agency peak.",
-      "radio_handoff": "house",
       "safety": {
         "youth_safety": "Safe",
         "memory_zone": "Green",
@@ -19413,10 +19395,10 @@
           "selected_track_id": "miss-monique-biosphere-montreal-cercle",
           "local_video_file": "a s s e t s/d j  s e t s/Miss Monique - Biosphere Museum in Montreal, Canada - Cercle.mp4",
           "youtube_video_id": "",
-          "radio_handoff": "house",
           "presentation": "live_dj_set",
           "source_record_url": "https://app.notion.com/39d7b9c99c5681559e1fc818e202c14d",
-          "media_class": "long_form_dj_set"
+          "media_class": "long_form_dj_set",
+          "music_room": "modul8-infinity"
         }
       },
       "notion_export": {
@@ -19796,7 +19778,8 @@
             "movement"
           ]
         }
-      }
+      },
+      "music_room": "modul8-infinity"
     },
     {
       "id": "nina-kraviz-eiffel-tower-cercle",
@@ -19850,7 +19833,6 @@
         "Startle Sensitivity": 0.12
       },
       "trajectory": "Uncanny entry -> mechanical focus -> escalating tension -> high-altitude release without full soothing.",
-      "radio_handoff": "house",
       "safety": {
         "youth_safety": "Review",
         "memory_zone": "Amber",
@@ -20010,10 +19992,10 @@
           "selected_track_id": "nina-kraviz-eiffel-tower-cercle",
           "local_video_file": "a s s e t s/d j  s e t s/Nina Kraviz - Eiffel Tower, Paris, France - Cercle.mp4",
           "youtube_video_id": "oFvqo1dil7M",
-          "radio_handoff": "house",
           "presentation": "live_dj_set",
           "source_record_url": "https://app.notion.com/39d7b9c99c5681cab39bcf45bb5ddd01",
-          "media_class": "long_form_dj_set"
+          "media_class": "long_form_dj_set",
+          "music_room": "modul8-infinity"
         }
       },
       "notion_export": {
@@ -20423,7 +20405,8 @@
             "intense"
           ]
         }
-      }
+      },
+      "music_room": "modul8-infinity"
     },
     {
       "id": "nastia-drum-bass-sunset-the-lab-ibiza",
@@ -20477,7 +20460,6 @@
         "Startle Sensitivity": 0.12
       },
       "trajectory": "Immediate velocity -> playful variation -> sunset peak -> energised social release.",
-      "radio_handoff": "house",
       "safety": {
         "youth_safety": "Review",
         "memory_zone": "Green",
@@ -20637,10 +20619,10 @@
           "selected_track_id": "nastia-drum-bass-sunset-the-lab-ibiza",
           "local_video_file": "a s s e t s/d j  s e t s/NASTIA - Ibiza at Sunset - The Lab.mp4",
           "youtube_video_id": "",
-          "radio_handoff": "house",
           "presentation": "live_dj_set",
           "source_record_url": "https://app.notion.com/39d7b9c99c5681a4b140e02e8ae91c2c",
-          "media_class": "long_form_dj_set"
+          "media_class": "long_form_dj_set",
+          "music_room": "modul8-infinity"
         }
       },
       "notion_export": {
@@ -21047,7 +21029,8 @@
             "youth"
           ]
         }
-      }
+      },
+      "music_room": "modul8-infinity"
     },
     {
       "id": "carl-cox-chateau-de-chambord-cercle",
@@ -21101,7 +21084,6 @@
         "Startle Sensitivity": 0.06
       },
       "trajectory": "Welcoming authority -> rhythmic gathering -> sustained communal peak -> triumphant release.",
-      "radio_handoff": "house",
       "safety": {
         "youth_safety": "Safe",
         "memory_zone": "Green",
@@ -21261,10 +21243,10 @@
           "selected_track_id": "carl-cox-chateau-de-chambord-cercle",
           "local_video_file": "a s s e t s/d j  s e t s/Carl Cox - Château de Chambord, France - Cercle.mp4",
           "youtube_video_id": "ZdAwiV4T22I",
-          "radio_handoff": "house",
           "presentation": "live_dj_set",
           "source_record_url": "https://app.notion.com/39d7b9c99c568144860aea936897a44d",
-          "media_class": "long_form_dj_set"
+          "media_class": "long_form_dj_set",
+          "music_room": "modul8-infinity"
         }
       },
       "notion_export": {
@@ -21660,7 +21642,8 @@
             "movement"
           ]
         }
-      }
+      },
+      "music_room": "modul8-infinity"
     }
   ],
   "export_notes": {
@@ -21880,11 +21863,14 @@
       "nts-otaku",
       "nts-low-key"
     ],
-    "selection_contract": "Rank within the inferred calm, chill or house stage gate using citizen-needs fit, explicit work context, group context, personal affinity, continuity and adjacent exploration.",
+    "selection_contract": "When the selected extended-session format is radio, rank only approved stations assigned to the selected music room using citizen-needs fit, stated intent and taste, explicit work or group context, personal affinity, continuity and adjacent exploration.",
     "private_demo_approval": "All eleven sources approved by Ben for password-locked internal demo use. The four NTS Infinite Mixtapes require official permission before any public release.",
-    "handoff_contract": "A completed Party continues into the best-fit live radio station; a solo citizen may switch immediately, while a joined audio room records a shared next-item vote.",
+    "handoff_contract": "A completed video or Party may continue into the best-fit approved live radio station inside the selected music room; a solo citizen may switch immediately, while a joined audio room records a shared next-item vote.",
     "exploration_rate": 0.28,
-    "party_radio_prior": {"parties": 0.7, "radio": 0.3}
+    "party_radio_prior": {
+      "parties": 0.7,
+      "radio": 0.3
+    }
   },
   "long_form_dj_sets": {
     "schema": "um_dj_set_tensor_approved_v1.0",
@@ -21901,5 +21887,97 @@
     "gold_calibration_unchanged": true,
     "playback_contract": "Immediate silent visual switch; preserve the continuous audio programme",
     "human_review_required": true
+  },
+  "music_rooms": {
+    "inner-planes": {
+      "id": "inner-planes",
+      "name": "Inner Planes",
+      "identity": "ambient / sleep / sunrise",
+      "allowed_formats": [
+        "videos",
+        "parties",
+        "radio"
+      ],
+      "station_pool": [
+        "cafe-del-mar-calm",
+        "nts-slow-focus"
+      ],
+      "catalogue_status": "ready"
+    },
+    "champagne-bohemia": {
+      "id": "champagne-bohemia",
+      "name": "Champagne Bohemia",
+      "identity": "Balearic / sunset / chillout",
+      "allowed_formats": [
+        "videos",
+        "parties",
+        "radio"
+      ],
+      "station_pool": [
+        "cafe-del-mar-chill",
+        "groove-salad",
+        "groove-salad-classic",
+        "nts-poolside"
+      ],
+      "catalogue_status": "ready"
+    },
+    "modul8-infinity": {
+      "id": "modul8-infinity",
+      "name": "modul8 infinity",
+      "identity": "rave / house / techno / future bass / future psychedelic beats / hiphop",
+      "allowed_formats": [
+        "videos",
+        "parties",
+        "radio"
+      ],
+      "station_pool": [
+        "cafe-del-mar-house",
+        "nts-otaku",
+        "nts-low-key"
+      ],
+      "catalogue_status": "ready"
+    },
+    "james-bondage": {
+      "id": "james-bondage",
+      "name": "james bondage",
+      "identity": "minimal / electro / EBM",
+      "allowed_formats": [
+        "videos",
+        "parties",
+        "radio"
+      ],
+      "station_pool": [
+        "sanctuary-dark-electro"
+      ],
+      "catalogue_status": "ready"
+    },
+    "safety-cushion": {
+      "id": "safety-cushion",
+      "name": "safety cushion",
+      "identity": "80s nu wave",
+      "allowed_formats": [
+        "videos"
+      ],
+      "station_pool": [],
+      "music_video_only": true,
+      "catalogue_status": "pending_ready_assets"
+    }
+  },
+  "extended_session_format_policy": {
+    "journey": [
+      "check_in",
+      "needs_matched_vod_music_video",
+      "needs_matched_extended_livestream",
+      "manual_portal_exploration"
+    ],
+    "weights": {
+      "parties": 0.8,
+      "radio": 0.1,
+      "videos": 0.1
+    },
+    "assignment": "stable_visitor_and_recommendation_slot",
+    "needs_matching": "choose the compatible room and approved Ready source within the assigned format",
+    "safety_and_readiness_override": true,
+    "safety_cushion_rule": "Videos only; peak anxiety may favour this room only when approved Ready assets are attached and editorially suitable."
   }
 }

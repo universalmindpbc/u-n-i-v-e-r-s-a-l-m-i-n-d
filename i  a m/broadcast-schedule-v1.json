@@ -1,7 +1,23 @@
 {
   "version": "broadcast_schedule_v1.3",
-  "stage": "four_editorial_music_channels",
+  "stage": "five_music_rooms_safety_cushion_pending_assets",
   "epoch_utc": "2026-07-24T00:00:00.000Z",
+  "extended_session_format_policy": {
+    "journey": [
+      "check_in",
+      "needs_matched_vod_music_video",
+      "needs_matched_extended_livestream",
+      "manual_portal_exploration"
+    ],
+    "weights": {
+      "parties": 0.8,
+      "radio": 0.1,
+      "videos": 0.1
+    },
+    "assignment": "stable_visitor_and_recommendation_slot",
+    "eligibility_override": true,
+    "safety_cushion_rule": "videos_only_and_approved_ready_assets_required"
+  },
   "planning_markets": [
     {
       "name": "Sydney",
@@ -24,12 +40,21 @@
       "energy_id": "restore",
       "editorial_id": "inner-planes",
       "name": "Inner Planes",
-      "descriptor": "sunrise ambient",
-      "description": "Ambient · beatless · electronica",
+      "descriptor": "ambient / sleep / sunrise",
+      "description": "Ambient · sleep · sunrise",
       "schedule": [
-        { "track_id": "madonna-frozen", "duration_seconds": 329 },
-        { "track_id": "bjork-hyperballad", "duration_seconds": 239.29 },
-        { "track_id": "flume-tiny-cities", "duration_seconds": 236.59 }
+        {
+          "track_id": "madonna-frozen",
+          "duration_seconds": 329
+        },
+        {
+          "track_id": "bjork-hyperballad",
+          "duration_seconds": 239.29
+        },
+        {
+          "track_id": "flume-tiny-cities",
+          "duration_seconds": 236.59
+        }
       ]
     },
     {
@@ -39,14 +64,29 @@
       "energy_id": "social-uplift",
       "editorial_id": "champagne-bohemia",
       "name": "Champagne Bohemia",
-      "descriptor": "sunset Balearic",
-      "description": "Balearic · chillout · electronica",
+      "descriptor": "Balearic / sunset / chillout",
+      "description": "Balearic · sunset · chillout",
       "schedule": [
-        { "track_id": "solange-cranes-in-the-sky", "duration_seconds": 272.198 },
-        { "track_id": "nightmares-on-wax-shape-the-future", "duration_seconds": 247.5 },
-        { "track_id": "rihanna-diamonds", "duration_seconds": 282.79 },
-        { "track_id": "tame-impala-the-less-i-know-the-better", "duration_seconds": 342.79 },
-        { "track_id": "dua-lipa-be-the-one-glastonbury-2017", "duration_seconds": 209.298 }
+        {
+          "track_id": "solange-cranes-in-the-sky",
+          "duration_seconds": 272.198
+        },
+        {
+          "track_id": "nightmares-on-wax-shape-the-future",
+          "duration_seconds": 247.5
+        },
+        {
+          "track_id": "rihanna-diamonds",
+          "duration_seconds": 282.79
+        },
+        {
+          "track_id": "tame-impala-the-less-i-know-the-better",
+          "duration_seconds": 342.79
+        },
+        {
+          "track_id": "dua-lipa-be-the-one-glastonbury-2017",
+          "duration_seconds": 209.298
+        }
       ]
     },
     {
@@ -56,18 +96,45 @@
       "energy_id": "underground-intensity",
       "editorial_id": "modul8-infinity",
       "name": "modul8 infinity",
-      "descriptor": "rave × mindfulness",
-      "description": "House · techno · rave · future bass",
+      "descriptor": "rave / house / techno / future bass / future psychedelic beats / hiphop",
+      "description": "Rave · house · techno · future bass · future psychedelic beats · hiphop",
       "schedule": [
-        { "track_id": "madonna-ray-of-light", "duration_seconds": 306.994 },
-        { "track_id": "flume-never-be-like-you-laneway", "duration_seconds": 336.79 },
-        { "track_id": "sampa-the-great-energy", "duration_seconds": 307.9 },
-        { "track_id": "pinkpantheress-illegal-glastonbury-2025", "duration_seconds": 141.1 },
-        { "track_id": "caroline-polachek-welcome-to-my-island", "duration_seconds": 236.092 },
-        { "track_id": "little-simz-gorilla", "duration_seconds": 244.494 },
-        { "track_id": "the-prodigy-everybody-in-the-place", "duration_seconds": 231 },
-        { "track_id": "mia-borders", "duration_seconds": 282.7 },
-        { "track_id": "sampa-the-great-final-form", "duration_seconds": 215 }
+        {
+          "track_id": "madonna-ray-of-light",
+          "duration_seconds": 306.994
+        },
+        {
+          "track_id": "flume-never-be-like-you-laneway",
+          "duration_seconds": 336.79
+        },
+        {
+          "track_id": "sampa-the-great-energy",
+          "duration_seconds": 307.9
+        },
+        {
+          "track_id": "pinkpantheress-illegal-glastonbury-2025",
+          "duration_seconds": 141.1
+        },
+        {
+          "track_id": "caroline-polachek-welcome-to-my-island",
+          "duration_seconds": 236.092
+        },
+        {
+          "track_id": "little-simz-gorilla",
+          "duration_seconds": 244.494
+        },
+        {
+          "track_id": "the-prodigy-everybody-in-the-place",
+          "duration_seconds": 231
+        },
+        {
+          "track_id": "mia-borders",
+          "duration_seconds": 282.7
+        },
+        {
+          "track_id": "sampa-the-great-final-form",
+          "duration_seconds": 215
+        }
       ]
     },
     {
@@ -77,14 +144,29 @@
       "energy_id": "underground-intensity",
       "editorial_id": "james-bondage",
       "name": "james bondage",
-      "descriptor": "sex × mindfulness",
-      "description": "Tantra · sex ed · EBM · minimal",
+      "descriptor": "minimal / electro / EBM",
+      "description": "Minimal · electro · EBM",
       "schedule": [
-        { "track_id": "grimes-genesis", "duration_seconds": 332.298 },
-        { "track_id": "u2-numb", "duration_seconds": 260.39 },
-        { "track_id": "charli-xcx-house-john-cale", "duration_seconds": 196 },
-        { "track_id": "linkin-park-numb-official", "duration_seconds": 187.094 },
-        { "track_id": "linkin-park-numb-live-2024", "duration_seconds": 192.098 }
+        {
+          "track_id": "grimes-genesis",
+          "duration_seconds": 332.298
+        },
+        {
+          "track_id": "u2-numb",
+          "duration_seconds": 260.39
+        },
+        {
+          "track_id": "charli-xcx-house-john-cale",
+          "duration_seconds": 196
+        },
+        {
+          "track_id": "linkin-park-numb-official",
+          "duration_seconds": 187.094
+        },
+        {
+          "track_id": "linkin-park-numb-live-2024",
+          "duration_seconds": 192.098
+        }
       ]
     },
     {
@@ -94,11 +176,17 @@
       "energy_id": "restore",
       "editorial_id": "inner-planes",
       "name": "Inner Planes",
-      "descriptor": "sunrise ambient",
-      "description": "Ambient · beatless · electronica",
+      "descriptor": "ambient / sleep / sunrise",
+      "description": "Ambient · sleep · sunrise",
       "schedule": [
-        { "track_id": "max-richter-cercle-odyssey-paris", "duration_seconds": 3729.19 },
-        { "track_id": "olafur-arnalds-hafursey-iceland-cercle", "duration_seconds": 5242.2 }
+        {
+          "track_id": "max-richter-cercle-odyssey-paris",
+          "duration_seconds": 3729.19
+        },
+        {
+          "track_id": "olafur-arnalds-hafursey-iceland-cercle",
+          "duration_seconds": 5242.2
+        }
       ]
     },
     {
@@ -108,11 +196,17 @@
       "energy_id": "social-uplift",
       "editorial_id": "champagne-bohemia",
       "name": "Champagne Bohemia",
-      "descriptor": "sunset Balearic",
-      "description": "Balearic · chillout · electronica",
+      "descriptor": "Balearic / sunset / chillout",
+      "description": "Balearic · sunset · chillout",
       "schedule": [
-        { "track_id": "sasha-ibiza-boat-at-sunset-freqways", "duration_seconds": 5273.194 },
-        { "track_id": "ben-bohmer-cappadocia-cercle", "duration_seconds": 5068.1 }
+        {
+          "track_id": "sasha-ibiza-boat-at-sunset-freqways",
+          "duration_seconds": 5273.194
+        },
+        {
+          "track_id": "ben-bohmer-cappadocia-cercle",
+          "duration_seconds": 5068.1
+        }
       ]
     },
     {
@@ -122,14 +216,29 @@
       "energy_id": "underground-intensity",
       "editorial_id": "modul8-infinity",
       "name": "modul8 infinity",
-      "descriptor": "rave × mindfulness",
-      "description": "House · techno · rave · future bass",
+      "descriptor": "rave / house / techno / future bass / future psychedelic beats / hiphop",
+      "description": "Rave · house · techno · future bass · future psychedelic beats · hiphop",
       "schedule": [
-        { "track_id": "peggy-gou-palais-des-beaux-arts-cercle", "duration_seconds": 6500 },
-        { "track_id": "miss-monique-biosphere-montreal-cercle", "duration_seconds": 7985.5 },
-        { "track_id": "nina-kraviz-eiffel-tower-cercle", "duration_seconds": 6762.9 },
-        { "track_id": "nastia-drum-bass-sunset-the-lab-ibiza", "duration_seconds": 5135.2 },
-        { "track_id": "carl-cox-chateau-de-chambord-cercle", "duration_seconds": 7986.09 }
+        {
+          "track_id": "peggy-gou-palais-des-beaux-arts-cercle",
+          "duration_seconds": 6500
+        },
+        {
+          "track_id": "miss-monique-biosphere-montreal-cercle",
+          "duration_seconds": 7985.5
+        },
+        {
+          "track_id": "nina-kraviz-eiffel-tower-cercle",
+          "duration_seconds": 6762.9
+        },
+        {
+          "track_id": "nastia-drum-bass-sunset-the-lab-ibiza",
+          "duration_seconds": 5135.2
+        },
+        {
+          "track_id": "carl-cox-chateau-de-chambord-cercle",
+          "duration_seconds": 7986.09
+        }
       ]
     },
     {
@@ -139,12 +248,18 @@
       "energy_id": "underground-intensity",
       "editorial_id": "james-bondage",
       "name": "james bondage",
-      "descriptor": "sex × mindfulness",
-      "description": "Perlon · minimal · microhouse",
+      "descriptor": "minimal / electro / EBM",
+      "description": "Minimal · electro · EBM",
       "visual_channel_id": "fashion-underground-intensity",
       "schedule": [
-        { "track_id": "zip-perlon-air-festival-2007", "duration_seconds": 11255.780136 },
-        { "track_id": "zip-sammy-d-perlon-betalounge-2000", "duration_seconds": 13194.739229 }
+        {
+          "track_id": "zip-perlon-air-festival-2007",
+          "duration_seconds": 11255.780136
+        },
+        {
+          "track_id": "zip-sammy-d-perlon-betalounge-2000",
+          "duration_seconds": 13194.739229
+        }
       ]
     },
     {
@@ -154,22 +269,58 @@
       "energy_id": "restore",
       "editorial_id": "inner-planes",
       "name": "Inner Planes",
-      "descriptor": "sunrise ambient",
-      "description": "Ambient · beatless · electronica",
+      "descriptor": "ambient / sleep / sunrise",
+      "description": "Ambient · sleep · sunrise",
       "visual_channel_id": "radio-visual-inner-planes",
       "schedule": [
-        { "station_id": "cafe-del-mar-calm", "duration_seconds": 7200 },
-        { "station_id": "nts-slow-focus", "duration_seconds": 7200 },
-        { "station_id": "nts-low-key", "duration_seconds": 7200 },
-        { "station_id": "cafe-del-mar-calm", "duration_seconds": 7200 },
-        { "station_id": "nts-slow-focus", "duration_seconds": 7200 },
-        { "station_id": "nts-low-key", "duration_seconds": 7200 },
-        { "station_id": "cafe-del-mar-calm", "duration_seconds": 7200 },
-        { "station_id": "nts-slow-focus", "duration_seconds": 7200 },
-        { "station_id": "nts-low-key", "duration_seconds": 7200 },
-        { "station_id": "cafe-del-mar-calm", "duration_seconds": 7200 },
-        { "station_id": "nts-slow-focus", "duration_seconds": 7200 },
-        { "station_id": "nts-low-key", "duration_seconds": 7200 }
+        {
+          "station_id": "cafe-del-mar-calm",
+          "duration_seconds": 7200
+        },
+        {
+          "station_id": "nts-slow-focus",
+          "duration_seconds": 7200
+        },
+        {
+          "station_id": "cafe-del-mar-calm",
+          "duration_seconds": 7200
+        },
+        {
+          "station_id": "nts-slow-focus",
+          "duration_seconds": 7200
+        },
+        {
+          "station_id": "cafe-del-mar-calm",
+          "duration_seconds": 7200
+        },
+        {
+          "station_id": "nts-slow-focus",
+          "duration_seconds": 7200
+        },
+        {
+          "station_id": "cafe-del-mar-calm",
+          "duration_seconds": 7200
+        },
+        {
+          "station_id": "nts-slow-focus",
+          "duration_seconds": 7200
+        },
+        {
+          "station_id": "cafe-del-mar-calm",
+          "duration_seconds": 7200
+        },
+        {
+          "station_id": "nts-slow-focus",
+          "duration_seconds": 7200
+        },
+        {
+          "station_id": "cafe-del-mar-calm",
+          "duration_seconds": 7200
+        },
+        {
+          "station_id": "nts-slow-focus",
+          "duration_seconds": 7200
+        }
       ]
     },
     {
@@ -179,22 +330,58 @@
       "energy_id": "social-uplift",
       "editorial_id": "champagne-bohemia",
       "name": "Champagne Bohemia",
-      "descriptor": "sunset Balearic",
-      "description": "Balearic · chillout · electronica",
+      "descriptor": "Balearic / sunset / chillout",
+      "description": "Balearic · sunset · chillout",
       "visual_channel_id": "fashion-restore",
       "schedule": [
-        { "station_id": "cafe-del-mar-chill", "duration_seconds": 7200 },
-        { "station_id": "nts-poolside", "duration_seconds": 7200 },
-        { "station_id": "groove-salad", "duration_seconds": 7200 },
-        { "station_id": "groove-salad-classic", "duration_seconds": 7200 },
-        { "station_id": "cafe-del-mar-chill", "duration_seconds": 7200 },
-        { "station_id": "nts-poolside", "duration_seconds": 7200 },
-        { "station_id": "groove-salad", "duration_seconds": 7200 },
-        { "station_id": "groove-salad-classic", "duration_seconds": 7200 },
-        { "station_id": "cafe-del-mar-chill", "duration_seconds": 7200 },
-        { "station_id": "nts-poolside", "duration_seconds": 7200 },
-        { "station_id": "groove-salad", "duration_seconds": 7200 },
-        { "station_id": "groove-salad-classic", "duration_seconds": 7200 }
+        {
+          "station_id": "cafe-del-mar-chill",
+          "duration_seconds": 7200
+        },
+        {
+          "station_id": "groove-salad",
+          "duration_seconds": 7200
+        },
+        {
+          "station_id": "groove-salad-classic",
+          "duration_seconds": 7200
+        },
+        {
+          "station_id": "nts-poolside",
+          "duration_seconds": 7200
+        },
+        {
+          "station_id": "cafe-del-mar-chill",
+          "duration_seconds": 7200
+        },
+        {
+          "station_id": "groove-salad",
+          "duration_seconds": 7200
+        },
+        {
+          "station_id": "groove-salad-classic",
+          "duration_seconds": 7200
+        },
+        {
+          "station_id": "nts-poolside",
+          "duration_seconds": 7200
+        },
+        {
+          "station_id": "cafe-del-mar-chill",
+          "duration_seconds": 7200
+        },
+        {
+          "station_id": "groove-salad",
+          "duration_seconds": 7200
+        },
+        {
+          "station_id": "groove-salad-classic",
+          "duration_seconds": 7200
+        },
+        {
+          "station_id": "nts-poolside",
+          "duration_seconds": 7200
+        }
       ]
     },
     {
@@ -204,22 +391,58 @@
       "energy_id": "underground-intensity",
       "editorial_id": "modul8-infinity",
       "name": "modul8 infinity",
-      "descriptor": "rave × mindfulness",
-      "description": "House · techno · rave · future bass",
+      "descriptor": "rave / house / techno / future bass / future psychedelic beats / hiphop",
+      "description": "Rave · house · techno · future bass · future psychedelic beats · hiphop",
       "visual_channel_id": "fashion-social-uplift",
       "schedule": [
-        { "station_id": "cafe-del-mar-house", "duration_seconds": 7200 },
-        { "station_id": "nts-otaku", "duration_seconds": 7200 },
-        { "station_id": "cafe-del-mar-house", "duration_seconds": 7200 },
-        { "station_id": "nts-otaku", "duration_seconds": 7200 },
-        { "station_id": "cafe-del-mar-house", "duration_seconds": 7200 },
-        { "station_id": "nts-otaku", "duration_seconds": 7200 },
-        { "station_id": "cafe-del-mar-house", "duration_seconds": 7200 },
-        { "station_id": "nts-otaku", "duration_seconds": 7200 },
-        { "station_id": "cafe-del-mar-house", "duration_seconds": 7200 },
-        { "station_id": "nts-otaku", "duration_seconds": 7200 },
-        { "station_id": "cafe-del-mar-house", "duration_seconds": 7200 },
-        { "station_id": "nts-otaku", "duration_seconds": 7200 }
+        {
+          "station_id": "cafe-del-mar-house",
+          "duration_seconds": 7200
+        },
+        {
+          "station_id": "nts-otaku",
+          "duration_seconds": 7200
+        },
+        {
+          "station_id": "nts-low-key",
+          "duration_seconds": 7200
+        },
+        {
+          "station_id": "cafe-del-mar-house",
+          "duration_seconds": 7200
+        },
+        {
+          "station_id": "nts-otaku",
+          "duration_seconds": 7200
+        },
+        {
+          "station_id": "nts-low-key",
+          "duration_seconds": 7200
+        },
+        {
+          "station_id": "cafe-del-mar-house",
+          "duration_seconds": 7200
+        },
+        {
+          "station_id": "nts-otaku",
+          "duration_seconds": 7200
+        },
+        {
+          "station_id": "nts-low-key",
+          "duration_seconds": 7200
+        },
+        {
+          "station_id": "cafe-del-mar-house",
+          "duration_seconds": 7200
+        },
+        {
+          "station_id": "nts-otaku",
+          "duration_seconds": 7200
+        },
+        {
+          "station_id": "nts-low-key",
+          "duration_seconds": 7200
+        }
       ]
     },
     {
@@ -229,22 +452,58 @@
       "energy_id": "underground-intensity",
       "editorial_id": "james-bondage",
       "name": "james bondage",
-      "descriptor": "sex × mindfulness",
-      "description": "Tantra · sex ed · EBM · minimal",
+      "descriptor": "minimal / electro / EBM",
+      "description": "Minimal · electro · EBM",
       "visual_channel_id": "fashion-underground-intensity",
       "schedule": [
-        { "station_id": "sanctuary-dark-electro", "duration_seconds": 7200 },
-        { "station_id": "sanctuary-retro", "duration_seconds": 7200 },
-        { "station_id": "sanctuary-dark-electro", "duration_seconds": 7200 },
-        { "station_id": "sanctuary-retro", "duration_seconds": 7200 },
-        { "station_id": "sanctuary-dark-electro", "duration_seconds": 7200 },
-        { "station_id": "sanctuary-retro", "duration_seconds": 7200 },
-        { "station_id": "sanctuary-dark-electro", "duration_seconds": 7200 },
-        { "station_id": "sanctuary-retro", "duration_seconds": 7200 },
-        { "station_id": "sanctuary-dark-electro", "duration_seconds": 7200 },
-        { "station_id": "sanctuary-retro", "duration_seconds": 7200 },
-        { "station_id": "sanctuary-dark-electro", "duration_seconds": 7200 },
-        { "station_id": "sanctuary-retro", "duration_seconds": 7200 }
+        {
+          "station_id": "sanctuary-dark-electro",
+          "duration_seconds": 7200
+        },
+        {
+          "station_id": "sanctuary-dark-electro",
+          "duration_seconds": 7200
+        },
+        {
+          "station_id": "sanctuary-dark-electro",
+          "duration_seconds": 7200
+        },
+        {
+          "station_id": "sanctuary-dark-electro",
+          "duration_seconds": 7200
+        },
+        {
+          "station_id": "sanctuary-dark-electro",
+          "duration_seconds": 7200
+        },
+        {
+          "station_id": "sanctuary-dark-electro",
+          "duration_seconds": 7200
+        },
+        {
+          "station_id": "sanctuary-dark-electro",
+          "duration_seconds": 7200
+        },
+        {
+          "station_id": "sanctuary-dark-electro",
+          "duration_seconds": 7200
+        },
+        {
+          "station_id": "sanctuary-dark-electro",
+          "duration_seconds": 7200
+        },
+        {
+          "station_id": "sanctuary-dark-electro",
+          "duration_seconds": 7200
+        },
+        {
+          "station_id": "sanctuary-dark-electro",
+          "duration_seconds": 7200
+        },
+        {
+          "station_id": "sanctuary-dark-electro",
+          "duration_seconds": 7200
+        }
       ]
     },
     {
@@ -255,10 +514,14 @@
       "energy_id": "restore",
       "editorial_id": "inner-planes",
       "name": "Inner Planes Radio Visual",
-      "description": "Private Earth-at-night visual for the Inner Planes Radio broadcast.",
+      "description": "Ambient · sleep · sunrise",
       "schedule": [
-        { "runway_id": "inner-planes-radio-blue-pearl", "duration_seconds": 10045.51 }
-      ]
+        {
+          "runway_id": "inner-planes-radio-blue-pearl",
+          "duration_seconds": 10045.51
+        }
+      ],
+      "descriptor": "ambient / sleep / sunrise"
     },
     {
       "id": "fashion-restore",
@@ -268,8 +531,14 @@
       "name": "Restore",
       "description": "Spacious, composed and restorative shared fashion films.",
       "schedule": [
-        { "runway_id": "jacquemus-le-coup-de-soleil", "duration_seconds": 900 },
-        { "runway_id": "chanel-paris-rooftops", "duration_seconds": 900 }
+        {
+          "runway_id": "jacquemus-le-coup-de-soleil",
+          "duration_seconds": 900
+        },
+        {
+          "runway_id": "chanel-paris-rooftops",
+          "duration_seconds": 900
+        }
       ]
     },
     {
@@ -280,8 +549,14 @@
       "name": "Social Uplift",
       "description": "Expressive, celebratory and communal shared fashion films.",
       "schedule": [
-        { "runway_id": "annies-ibiza-runway", "duration_seconds": 900 },
-        { "runway_id": "dolce-gabbana-valley-of-the-temples", "duration_seconds": 900 }
+        {
+          "runway_id": "annies-ibiza-runway",
+          "duration_seconds": 900
+        },
+        {
+          "runway_id": "dolce-gabbana-valley-of-the-temples",
+          "duration_seconds": 900
+        }
       ]
     },
     {
@@ -292,9 +567,71 @@
       "name": "Underground Intensity",
       "description": "Darker, sensual and higher-activation shared fashion films.",
       "schedule": [
-        { "runway_id": "wolford-sergio-rossi-capsule", "duration_seconds": 900 },
-        { "runway_id": "mugler-fall-winter-2021", "duration_seconds": 900 }
+        {
+          "runway_id": "wolford-sergio-rossi-capsule",
+          "duration_seconds": 900
+        },
+        {
+          "runway_id": "mugler-fall-winter-2021",
+          "duration_seconds": 900
+        }
       ]
+    }
+  ],
+  "music_rooms": [
+    {
+      "id": "inner-planes",
+      "name": "Inner Planes",
+      "identity": "ambient / sleep / sunrise",
+      "allowed_formats": [
+        "videos",
+        "parties",
+        "radio"
+      ],
+      "catalogue_status": "ready"
+    },
+    {
+      "id": "champagne-bohemia",
+      "name": "Champagne Bohemia",
+      "identity": "Balearic / sunset / chillout",
+      "allowed_formats": [
+        "videos",
+        "parties",
+        "radio"
+      ],
+      "catalogue_status": "ready"
+    },
+    {
+      "id": "modul8-infinity",
+      "name": "modul8 infinity",
+      "identity": "rave / house / techno / future bass / future psychedelic beats / hiphop",
+      "allowed_formats": [
+        "videos",
+        "parties",
+        "radio"
+      ],
+      "catalogue_status": "ready"
+    },
+    {
+      "id": "james-bondage",
+      "name": "james bondage",
+      "identity": "minimal / electro / EBM",
+      "allowed_formats": [
+        "videos",
+        "parties",
+        "radio"
+      ],
+      "catalogue_status": "ready"
+    },
+    {
+      "id": "safety-cushion",
+      "name": "safety cushion",
+      "identity": "80s nu wave",
+      "allowed_formats": [
+        "videos"
+      ],
+      "music_video_only": true,
+      "catalogue_status": "pending_ready_assets"
     }
   ]
 }

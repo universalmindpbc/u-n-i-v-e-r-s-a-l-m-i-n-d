@@ -2,7 +2,7 @@
 
 ## Intent
 
-Create a new homepage-derived journey where the citizen self-reports before any streaming radio starts. The system infers current needs with Adaptive Inference Engine system prompt v2.22, selects one contextual hero music video for a youth electronic dance music audience, then dissolves into the recommended Universal Mind radio station.
+Create a homepage-derived journey where the citizen self-reports before an extended streaming session starts. The system infers current needs with Adaptive Inference Engine system prompt v4.44, selects one contextual hero music video, then continues into an eligible Universal Mind music room and format.
 
 ## Production Flow
 
@@ -10,10 +10,11 @@ Create a new homepage-derived journey where the citizen self-reports before any 
    - Collect the short `I am ...` self-report.
    - Add privacy-preserving local context from `local-context.js`: time, weather, broad location label and context role.
    - Send to the existing citizen needs inference worker.
-   - The worker imports `adaptive-inference-system-prompt-v2-22.js`, generated from `i n f e r e n c e  e n g i n e  -  s y s t e m  p r o m p t  v  2 . 2 2.md`.
+   - The worker imports `adaptive-inference-system-prompt-v4-44.js`, generated from the canonical v4.44 markdown.
 
 2. Needs JSON
-   - Return the existing `soundtrack_stage_gate` contract: `calm`, `chill` or `house`.
+   - Return `selected_music_room`, `selected_format`, `source_id`, `catalogue_ready`, `music_room_confidence` and `music_room_reason`.
+   - The canonical rooms are inner planes, champagne bohemia, modul8 infinity, james bondage and safety cushion. Safety cushion is music videos only and unavailable until approved ready assets are attached.
    - Keep `clinical_status: not_a_diagnosis`.
    - Store the result under `iamLatestInference` and `citizenNeedsLatestInference` so `adaptive-environment.js` can continue to own the radio station handoff.
 
@@ -26,14 +27,12 @@ Create a new homepage-derived journey where the citizen self-reports before any 
    - `videos.list` validation should confirm `status.embeddable=true` and public status before the browser receives a playable embed.
 
 4. GPT review
-   - Review the candidate set against few-shot policy examples:
-     - Calm: lower density, restorative, no threat escalation.
-     - Chill: expansive, warm, connected, aesthetically rich.
-     - House: kinetic, joyful, agency-building, no strong downshift signals.
+   - Review the candidate set against musical identity, stated intent and taste, constructive trajectory, needs, context, continuity, safety, format eligibility and catalogue readiness.
+   - Calm remains a Citizen Needs signal; chillout and house remain genres, not recommendation categories.
    - Prefer approved Universal Mind artist roster candidates first, then world-class adjacent artists, then underground discoveries.
 
 5. Final structured JSON
-   - Return exactly one hero video plus one radio station handoff.
+   - Return exactly one hero video plus one eligible extended session, or no extended session when no approved ready source exists.
    - Include candidate audit, source signals, safety filters, uncertainty and YouTube delivery policy.
 
 6. Playback
@@ -41,15 +40,15 @@ Create a new homepage-derived journey where the citizen self-reports before any 
    - Use the cinematic prototype frame when a candidate is unverified, known blocked, or the IFrame API returns an embed error.
    - Use `youtube-nocookie.com`, `playsinline=1`, `rel=0` and `iv_load_policy=3` for a cleaner compliant embed.
    - Do not block, hide, remove or modify YouTube-served ads. For guaranteed ad-free playback, use licensed direct video assets, Vimeo/pro first-party hosting, YouTube Premium user context where applicable, or a commercial licensing path.
-   - On `YT.PlayerState.ENDED`, dissolve the player and call `window.__iamAdaptiveEnvironment.startRadio()`.
-   - On YouTube player errors `100`, `101`, `150` or related failure states, render the prototype fallback frame and continue the radio handoff rather than leaving a broken embed visible.
+   - On `YT.PlayerState.ENDED`, dissolve the player and start the selected eligible format.
+   - On YouTube player errors `100`, `101`, `150` or related failure states, render the prototype fallback frame and continue only when an eligible ready session exists.
 
 ## Prototype Files
 
 - `adaptive-music-video.html`: homepage-derived page.
 - `adaptive-music-video.js`: local prototype recommendation engine, YouTube player handoff and JSON output.
 - `adaptive-music-artist-catalogue.json`: editable Universal Mind seed catalogue and first hero-candidate metadata.
-- `adaptive-inference-engine-system-prompt-v2.22.html`: codebase page that loads the v2.22 markdown and provides the raw source link.
+- `adaptive-inference-engine-system-prompt-v4.44.html`: codebase page that loads the current markdown and provides the raw source link.
 - `styles.css`: page-specific layout while preserving the existing homepage/video dimensions.
 - `cloudflare/adaptive-music-intelligence-worker.js`: server-side provider adapter skeleton for YouTube search/validation and future Gracenote, Cyanite and Musixmatch calls.
 

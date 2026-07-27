@@ -3,7 +3,7 @@
   "generated_at": "2026-07-22T00:00:00+10:00",
   "source_data_source": "collection://6993ebc6-bb6e-44c3-933a-18c5d6ad44bc",
   "source_database_url": "https://app.notion.com/p/35a14a98ae5f4f6a8950beefc7c5fb5f?v=1c16436b5c0545a4b553e985ab770c40",
-  "source_contract": "Export only Approved rows whose Media Class is Radio Station. Station ID, Station Stream URL, Station Player URL, Stream Transport, Stage Gate Fit and Permission Scope are explicit Notion properties.",
+  "source_contract": "Export only Approved rows whose Media Class is Radio Station. Station ID, Station Stream URL, Station Player URL, Stream Transport, Music Room Fit and Permission Scope are explicit Notion properties.",
   "approval": "Approved by Ben for password-locked internal demo use. Public release requires official station permission and confirmed production stream paths.",
   "record_count": 11,
   "media_class": "radio_station",
@@ -19,20 +19,52 @@
       "player_url": "https://cafedelmar.com/radio/",
       "stream_format": "MP3 live stream",
       "stream_transport": "Direct MP3",
-      "stage_gate_fit": ["calm"],
       "permission_scope": "Internal demo only",
       "notion_page_url": "https://app.notion.com/p/3a37b9c99c568109befcf6212f933596",
       "status": "Approved",
       "editorial_priority": 1,
       "primary_environmental_function": "Soul + Restoration",
-      "secondary_environmental_functions": ["Focus + Flow"],
-      "top_needs": ["Calm", "Recovery", "Psychological Safety", "Anxiety"],
-      "need_scores": {"Calm": 0.96, "Recovery": 0.94, "Psychological Safety": 0.93, "Anxiety": 0.92, "Stress": 0.94, "Fatigue": 0.86, "Hypervigilance": 0.9, "Sleep Pressure": 0.72, "Clarity": 0.62, "Trust": 0.78, "Startle Sensitivity": 0.86, "Arousal": 0.18},
-      "context": {"work_fit": 0.82, "group_fit": 0.46, "high_load_fit": 0.96, "intensity": "low", "density": "sparse", "trajectory": "downshift"},
-      "card_palette": ["#506f88", "#c8d6d9"],
+      "secondary_environmental_functions": [
+        "Focus + Flow"
+      ],
+      "top_needs": [
+        "Calm",
+        "Recovery",
+        "Psychological Safety",
+        "Anxiety"
+      ],
+      "need_scores": {
+        "Calm": 0.96,
+        "Recovery": 0.94,
+        "Psychological Safety": 0.93,
+        "Anxiety": 0.92,
+        "Stress": 0.94,
+        "Fatigue": 0.86,
+        "Hypervigilance": 0.9,
+        "Sleep Pressure": 0.72,
+        "Clarity": 0.62,
+        "Trust": 0.78,
+        "Startle Sensitivity": 0.86,
+        "Arousal": 0.18
+      },
+      "context": {
+        "work_fit": 0.82,
+        "group_fit": 0.46,
+        "high_load_fit": 0.96,
+        "intensity": "low",
+        "density": "sparse",
+        "trajectory": "downshift"
+      },
+      "card_palette": [
+        "#506f88",
+        "#c8d6d9"
+      ],
       "suitable_citizen_state": "Stress, fatigue, sensory overload, anxiety, recovery, quiet work and a need for spacious regulation.",
       "not_suitable_citizen_state": "Citizens explicitly seeking high activation, cathartic movement or festival-scale social energy.",
-      "editorial_notes": "Existing Universal Mind live radio source. The station acts as the lowest-density radio stage gate. Station-level values describe the continuous channel rather than every individual song."
+      "editorial_notes": "Existing Universal Mind live radio source assigned to inner planes. Station-level values describe the continuous channel rather than every individual song.",
+      "music_room_fit": [
+        "inner-planes"
+      ]
     },
     {
       "id": "cafe-del-mar-chill",
@@ -45,20 +77,54 @@
       "player_url": "https://cafedelmar.com/radio/",
       "stream_format": "MP3 live stream",
       "stream_transport": "Direct MP3",
-      "stage_gate_fit": ["chill"],
       "permission_scope": "Internal demo only",
       "notion_page_url": "https://app.notion.com/p/3a37b9c99c56814b82fbd35c94a206c6",
       "status": "Approved",
       "editorial_priority": 1,
       "primary_environmental_function": "Soul + Restoration",
-      "secondary_environmental_functions": ["Joy + Affirmation", "Focus + Flow"],
-      "top_needs": ["Recovery", "Belonging", "Gratitude", "Trust"],
-      "need_scores": {"Recovery": 0.9, "Belonging": 0.78, "Gratitude": 0.84, "Trust": 0.86, "Calm": 0.88, "Connection": 0.72, "Hope": 0.74, "Clarity": 0.76, "Psychological Safety": 0.86, "Awe": 0.7, "Stress": 0.72, "Anxiety": 0.68, "Arousal": 0.38},
-      "context": {"work_fit": 0.88, "group_fit": 0.64, "high_load_fit": 0.82, "intensity": "low_to_moderate", "density": "open", "trajectory": "stabilise"},
-      "card_palette": ["#99815f", "#e3ceb3"],
+      "secondary_environmental_functions": [
+        "Joy + Affirmation",
+        "Focus + Flow"
+      ],
+      "top_needs": [
+        "Recovery",
+        "Belonging",
+        "Gratitude",
+        "Trust"
+      ],
+      "need_scores": {
+        "Recovery": 0.9,
+        "Belonging": 0.78,
+        "Gratitude": 0.84,
+        "Trust": 0.86,
+        "Calm": 0.88,
+        "Connection": 0.72,
+        "Hope": 0.74,
+        "Clarity": 0.76,
+        "Psychological Safety": 0.86,
+        "Awe": 0.7,
+        "Stress": 0.72,
+        "Anxiety": 0.68,
+        "Arousal": 0.38
+      },
+      "context": {
+        "work_fit": 0.88,
+        "group_fit": 0.64,
+        "high_load_fit": 0.82,
+        "intensity": "low_to_moderate",
+        "density": "open",
+        "trajectory": "stabilise"
+      },
+      "card_palette": [
+        "#99815f",
+        "#e3ceb3"
+      ],
       "suitable_citizen_state": "Balanced reflection, warm recovery, coastal openness, shared calm, gentle work and stable presence.",
       "not_suitable_citizen_state": "States requiring either near-silence or strong motivational activation.",
-      "editorial_notes": "Existing Universal Mind default radio continuation. Station-level values describe the continuous channel rather than every individual song."
+      "editorial_notes": "Existing Universal Mind default radio continuation. Station-level values describe the continuous channel rather than every individual song.",
+      "music_room_fit": [
+        "champagne-bohemia"
+      ]
     },
     {
       "id": "cafe-del-mar-house",
@@ -71,20 +137,53 @@
       "player_url": "https://cafedelmar.com/radio/",
       "stream_format": "MP3 live stream",
       "stream_transport": "Direct MP3",
-      "stage_gate_fit": ["house"],
       "permission_scope": "Internal demo only",
       "notion_page_url": "https://app.notion.com/p/3a37b9c99c5681b08752c7c18cbf7b77",
       "status": "Approved",
       "editorial_priority": 1,
       "primary_environmental_function": "Club Energy + Festival Activation",
-      "secondary_environmental_functions": ["Joy + Affirmation", "Grit + Agency"],
-      "top_needs": ["Joy", "Motivation", "Connection", "Arousal"],
-      "need_scores": {"Joy": 0.94, "Motivation": 0.91, "Connection": 0.86, "Arousal": 0.88, "Belonging": 0.82, "Self-Actualisation": 0.76, "Curiosity": 0.7, "Executive Function": 0.68, "Hope": 0.82, "Anger": 0.58, "Recovery": 0.32, "Stress": 0.34},
-      "context": {"work_fit": 0.42, "group_fit": 0.88, "high_load_fit": 0.28, "intensity": "high", "density": "layered", "trajectory": "activate"},
-      "card_palette": ["#8a4867", "#e6a99f"],
+      "secondary_environmental_functions": [
+        "Joy + Affirmation",
+        "Grit + Agency"
+      ],
+      "top_needs": [
+        "Joy",
+        "Motivation",
+        "Connection",
+        "Arousal"
+      ],
+      "need_scores": {
+        "Joy": 0.94,
+        "Motivation": 0.91,
+        "Connection": 0.86,
+        "Arousal": 0.88,
+        "Belonging": 0.82,
+        "Self-Actualisation": 0.76,
+        "Curiosity": 0.7,
+        "Executive Function": 0.68,
+        "Hope": 0.82,
+        "Anger": 0.58,
+        "Recovery": 0.32,
+        "Stress": 0.34
+      },
+      "context": {
+        "work_fit": 0.42,
+        "group_fit": 0.88,
+        "high_load_fit": 0.28,
+        "intensity": "high",
+        "density": "layered",
+        "trajectory": "activate"
+      },
+      "card_palette": [
+        "#8a4867",
+        "#e6a99f"
+      ],
       "suitable_citizen_state": "Joy, agency, movement, social connection, confidence and readiness for positive activation.",
       "not_suitable_citizen_state": "Acute sensory overload, high startle sensitivity, sleep onset or a stated need for quiet focus.",
-      "editorial_notes": "Existing Universal Mind activation radio source. Station-level values describe the continuous channel rather than every individual song."
+      "editorial_notes": "Existing Universal Mind activation radio source. Station-level values describe the continuous channel rather than every individual song.",
+      "music_room_fit": [
+        "modul8-infinity"
+      ]
     },
     {
       "id": "groove-salad",
@@ -97,20 +196,53 @@
       "player_url": "https://somafm.com/groovesalad/",
       "stream_format": "MP3 128kb live stream",
       "stream_transport": "Direct MP3",
-      "stage_gate_fit": ["calm", "chill"],
       "permission_scope": "Internal demo only",
       "notion_page_url": "https://app.notion.com/p/3a37b9c99c56817f99b7e60db6a4aa15",
       "status": "Approved",
       "editorial_priority": 1,
       "primary_environmental_function": "Focus + Flow",
-      "secondary_environmental_functions": ["Soul + Restoration", "Curiosity + Exploration"],
-      "top_needs": ["Attention", "Executive Function", "Calm", "Recovery"],
-      "need_scores": {"Attention": 0.92, "Executive Function": 0.88, "Calm": 0.86, "Recovery": 0.82, "Clarity": 0.9, "Curiosity": 0.72, "Stress": 0.78, "Anxiety": 0.72, "Fatigue": 0.68, "Mental Load": 0.84, "Awe": 0.62, "Arousal": 0.34},
-      "context": {"work_fit": 0.98, "group_fit": 0.54, "high_load_fit": 0.86, "intensity": "low_to_moderate", "density": "open", "trajectory": "focus"},
-      "card_palette": ["#526b52", "#cad4a4"],
+      "secondary_environmental_functions": [
+        "Soul + Restoration",
+        "Curiosity + Exploration"
+      ],
+      "top_needs": [
+        "Attention",
+        "Executive Function",
+        "Calm",
+        "Recovery"
+      ],
+      "need_scores": {
+        "Attention": 0.92,
+        "Executive Function": 0.88,
+        "Calm": 0.86,
+        "Recovery": 0.82,
+        "Clarity": 0.9,
+        "Curiosity": 0.72,
+        "Stress": 0.78,
+        "Anxiety": 0.72,
+        "Fatigue": 0.68,
+        "Mental Load": 0.84,
+        "Awe": 0.62,
+        "Arousal": 0.34
+      },
+      "context": {
+        "work_fit": 0.98,
+        "group_fit": 0.54,
+        "high_load_fit": 0.86,
+        "intensity": "low_to_moderate",
+        "density": "open",
+        "trajectory": "focus"
+      },
+      "card_palette": [
+        "#526b52",
+        "#cad4a4"
+      ],
       "suitable_citizen_state": "Work, sustained attention, creative flow, gentle recovery, reduced mental clutter and unobtrusive rhythmic movement.",
       "not_suitable_citizen_state": "Citizens asking for vocal affirmation, strong social activation or very low-stimulation sleep support.",
-      "editorial_notes": "Ambient and downtempo groove channel integrated for the private stakeholder demo. Station-level values describe the continuous channel rather than every individual song."
+      "editorial_notes": "Ambient and downtempo groove channel integrated for the private stakeholder demo. Station-level values describe the continuous channel rather than every individual song.",
+      "music_room_fit": [
+        "champagne-bohemia"
+      ]
     },
     {
       "id": "groove-salad-classic",
@@ -123,20 +255,53 @@
       "player_url": "https://somafm.com/gsclassic/",
       "stream_format": "MP3 128kb live stream",
       "stream_transport": "Direct MP3",
-      "stage_gate_fit": ["calm", "chill"],
       "permission_scope": "Internal demo only",
       "notion_page_url": "https://app.notion.com/p/3a37b9c99c568192ab7dc42942630dc1",
       "status": "Approved",
       "editorial_priority": 2,
       "primary_environmental_function": "Soul + Restoration",
-      "secondary_environmental_functions": ["Focus + Flow", "Joy + Affirmation"],
-      "top_needs": ["Belonging", "Gratitude", "Recovery", "Calm"],
-      "need_scores": {"Belonging": 0.88, "Gratitude": 0.84, "Recovery": 0.86, "Calm": 0.82, "Connection": 0.76, "Trust": 0.8, "Joy": 0.66, "Attention": 0.74, "Clarity": 0.72, "Loneliness": 0.74, "Hope": 0.7, "Arousal": 0.32},
-      "context": {"work_fit": 0.9, "group_fit": 0.68, "high_load_fit": 0.82, "intensity": "low_to_moderate", "density": "open", "trajectory": "warm_downshift"},
-      "card_palette": ["#725f50", "#c9b896"],
+      "secondary_environmental_functions": [
+        "Focus + Flow",
+        "Joy + Affirmation"
+      ],
+      "top_needs": [
+        "Belonging",
+        "Gratitude",
+        "Recovery",
+        "Calm"
+      ],
+      "need_scores": {
+        "Belonging": 0.88,
+        "Gratitude": 0.84,
+        "Recovery": 0.86,
+        "Calm": 0.82,
+        "Connection": 0.76,
+        "Trust": 0.8,
+        "Joy": 0.66,
+        "Attention": 0.74,
+        "Clarity": 0.72,
+        "Loneliness": 0.74,
+        "Hope": 0.7,
+        "Arousal": 0.32
+      },
+      "context": {
+        "work_fit": 0.9,
+        "group_fit": 0.68,
+        "high_load_fit": 0.82,
+        "intensity": "low_to_moderate",
+        "density": "open",
+        "trajectory": "warm_downshift"
+      },
+      "card_palette": [
+        "#725f50",
+        "#c9b896"
+      ],
       "suitable_citizen_state": "Warm nostalgia, belonging, familiar chillout culture, reflective work, recovery and reconnection with positive memory.",
       "not_suitable_citizen_state": "Citizens who find nostalgia ruminative or who explicitly need novel, high-energy material.",
-      "editorial_notes": "Classic early downtempo channel integrated for the private stakeholder demo. Station-level values describe the continuous channel rather than every individual song."
+      "editorial_notes": "Classic early downtempo channel integrated for the private stakeholder demo. Station-level values describe the continuous channel rather than every individual song.",
+      "music_room_fit": [
+        "champagne-bohemia"
+      ]
     },
     {
       "id": "sanctuary-dark-electro",
@@ -149,20 +314,55 @@
       "player_url": "https://www.sanctuaryradio.com/site/DarkElectroPlayer.html",
       "stream_format": "MP3 320kb live stream",
       "stream_transport": "Direct MP3",
-      "stage_gate_fit": ["house"],
       "permission_scope": "Internal demo only",
       "notion_page_url": "https://app.notion.com/p/3a37b9c99c5681fe8ddee8631a066a66",
       "status": "Approved",
       "editorial_priority": 2,
       "primary_environmental_function": "Grit + Agency",
-      "secondary_environmental_functions": ["Curiosity + Exploration", "Club Energy + Festival Activation"],
-      "top_needs": ["Anger", "Motivation", "Self-Actualisation", "Curiosity"],
-      "need_scores": {"Anger": 0.9, "Motivation": 0.86, "Self-Actualisation": 0.82, "Curiosity": 0.88, "Arousal": 0.84, "Clarity": 0.7, "Purpose": 0.78, "Connection": 0.62, "Belonging": 0.68, "Emotional Numbing": 0.82, "Avoidance": 0.72, "Stress": 0.32, "Hypervigilance": 0.2, "Startle Sensitivity": 0.16},
-      "context": {"work_fit": 0.36, "group_fit": 0.82, "high_load_fit": 0.18, "intensity": "high", "density": "intense", "trajectory": "catharsis"},
-      "card_palette": ["#312e42", "#9c6da6"],
+      "secondary_environmental_functions": [
+        "Curiosity + Exploration",
+        "Club Energy + Festival Activation"
+      ],
+      "top_needs": [
+        "Anger",
+        "Motivation",
+        "Self-Actualisation",
+        "Curiosity"
+      ],
+      "need_scores": {
+        "Anger": 0.9,
+        "Motivation": 0.86,
+        "Self-Actualisation": 0.82,
+        "Curiosity": 0.88,
+        "Arousal": 0.84,
+        "Clarity": 0.7,
+        "Purpose": 0.78,
+        "Connection": 0.62,
+        "Belonging": 0.68,
+        "Emotional Numbing": 0.82,
+        "Avoidance": 0.72,
+        "Stress": 0.32,
+        "Hypervigilance": 0.2,
+        "Startle Sensitivity": 0.16
+      },
+      "context": {
+        "work_fit": 0.36,
+        "group_fit": 0.82,
+        "high_load_fit": 0.18,
+        "intensity": "high",
+        "density": "intense",
+        "trajectory": "catharsis"
+      },
+      "card_palette": [
+        "#312e42",
+        "#9c6da6"
+      ],
       "suitable_citizen_state": "Anger moving toward agency, fierce identity, emotional numbing, curiosity, cathartic embodiment and readiness for darker electronic intensity.",
       "not_suitable_citizen_state": "Acute hypervigilance, high startle sensitivity, sensory overload, sleep pressure or a stated need for calm.",
-      "editorial_notes": "Dark Electro, Industrial, EBM, Synthpop and Goth channel integrated for the private stakeholder demo. Edge is treated as a route into power and identity, not pathologised."
+      "editorial_notes": "Dark Electro, Industrial, EBM, Synthpop and Goth channel integrated for the private stakeholder demo. Edge is treated as a route into power and identity, not pathologised.",
+      "music_room_fit": [
+        "james-bondage"
+      ]
     },
     {
       "id": "sanctuary-retro",
@@ -175,20 +375,51 @@
       "player_url": "https://www.sanctuaryradio.com/site/RetroPlayer.html",
       "stream_format": "MP3 320kb live stream",
       "stream_transport": "Direct MP3",
-      "stage_gate_fit": ["chill", "house"],
       "permission_scope": "Internal demo only",
       "notion_page_url": "https://app.notion.com/p/3a37b9c99c5681859341cb72d45ca15c",
       "status": "Approved",
       "editorial_priority": 2,
       "primary_environmental_function": "Joy + Affirmation",
-      "secondary_environmental_functions": ["Melancholy + Honesty", "Soul + Restoration"],
-      "top_needs": ["Belonging", "Joy", "Gratitude", "Connection"],
-      "need_scores": {"Belonging": 0.92, "Joy": 0.84, "Gratitude": 0.8, "Connection": 0.88, "Love": 0.72, "Trust": 0.76, "Hope": 0.78, "Loneliness": 0.82, "Recovery": 0.68, "Curiosity": 0.62, "Arousal": 0.58, "Attention": 0.56},
-      "context": {"work_fit": 0.66, "group_fit": 0.88, "high_load_fit": 0.58, "intensity": "moderate", "density": "layered", "trajectory": "warm_downshift"},
-      "card_palette": ["#355c67", "#d57c72"],
+      "secondary_environmental_functions": [
+        "Melancholy + Honesty",
+        "Soul + Restoration"
+      ],
+      "top_needs": [
+        "Belonging",
+        "Joy",
+        "Gratitude",
+        "Connection"
+      ],
+      "need_scores": {
+        "Belonging": 0.92,
+        "Joy": 0.84,
+        "Gratitude": 0.8,
+        "Connection": 0.88,
+        "Love": 0.72,
+        "Trust": 0.76,
+        "Hope": 0.78,
+        "Loneliness": 0.82,
+        "Recovery": 0.68,
+        "Curiosity": 0.62,
+        "Arousal": 0.58,
+        "Attention": 0.56
+      },
+      "context": {
+        "work_fit": 0.66,
+        "group_fit": 0.88,
+        "high_load_fit": 0.58,
+        "intensity": "moderate",
+        "density": "layered",
+        "trajectory": "warm_downshift"
+      },
+      "card_palette": [
+        "#355c67",
+        "#d57c72"
+      ],
       "suitable_citizen_state": "Belonging, shared cultural memory, identity affirmation, joy, connection and the warmth of familiar New Wave and alternative 80s music.",
       "not_suitable_citizen_state": "Citizens who find era-linked nostalgia painful or who require sparse, non-vocal focus music.",
-      "editorial_notes": "New Wave and alternative 80s channel integrated for the private stakeholder demo. Station-level values describe the continuous channel rather than every individual song."
+      "editorial_notes": "New Wave and alternative 80s channel integrated for the private stakeholder demo. Station-level values describe the continuous channel rather than every individual song.",
+      "music_room_fit": []
     },
     {
       "id": "nts-slow-focus",
@@ -201,20 +432,56 @@
       "player_url": "https://www.nts.live/infinite-mixtapes/slow-focus",
       "stream_format": "Buffered HLS audio segments",
       "stream_transport": "Buffered HLS scheduler",
-      "stage_gate_fit": ["calm"],
       "permission_scope": "Internal demo only",
       "notion_page_url": "https://app.notion.com/p/3a57b9c99c5681939290c70934f02394",
       "status": "Approved",
       "editorial_priority": 2,
       "primary_environmental_function": "Soul + Restoration",
-      "secondary_environmental_functions": ["Focus + Flow", "Curiosity + Exploration"],
-      "top_needs": ["Calm", "Recovery", "Attention", "Awe"],
-      "need_scores": {"Calm": 0.97, "Recovery": 0.95, "Attention": 0.87, "Awe": 0.88, "Psychological Safety": 0.92, "Stress": 0.94, "Anxiety": 0.91, "Mental Load": 0.9, "Hypervigilance": 0.88, "Fatigue": 0.82, "Sleep Pressure": 0.8, "Rumination": 0.86, "Clarity": 0.78, "Arousal": 0.12, "Curiosity": 0.62},
-      "context": {"work_fit": 0.93, "group_fit": 0.32, "high_load_fit": 0.98, "intensity": "low", "density": "sparse", "trajectory": "downshift"},
-      "card_palette": ["#3c4660", "#aebbd0"],
+      "secondary_environmental_functions": [
+        "Focus + Flow",
+        "Curiosity + Exploration"
+      ],
+      "top_needs": [
+        "Calm",
+        "Recovery",
+        "Attention",
+        "Awe"
+      ],
+      "need_scores": {
+        "Calm": 0.97,
+        "Recovery": 0.95,
+        "Attention": 0.87,
+        "Awe": 0.88,
+        "Psychological Safety": 0.92,
+        "Stress": 0.94,
+        "Anxiety": 0.91,
+        "Mental Load": 0.9,
+        "Hypervigilance": 0.88,
+        "Fatigue": 0.82,
+        "Sleep Pressure": 0.8,
+        "Rumination": 0.86,
+        "Clarity": 0.78,
+        "Arousal": 0.12,
+        "Curiosity": 0.62
+      },
+      "context": {
+        "work_fit": 0.93,
+        "group_fit": 0.32,
+        "high_load_fit": 0.98,
+        "intensity": "low",
+        "density": "sparse",
+        "trajectory": "downshift"
+      },
+      "card_palette": [
+        "#3c4660",
+        "#aebbd0"
+      ],
       "suitable_citizen_state": "Sensory overload, anxiety, mental fatigue, focused work, sleep pressure, rumination and a need for a spacious downshift.",
       "not_suitable_citizen_state": "Citizens explicitly seeking vocal familiarity, strong social energy, catharsis or high-arousal movement.",
-      "editorial_notes": "NTS Infinite Mixtape profiled as the sparsest calm gate: ambient, minimal and contemplative programming for regulation, attention and recovery. Internal demo use only; public release requires official permission."
+      "editorial_notes": "NTS Infinite Mixtape assigned to inner planes for ambient, minimal and contemplative programming supporting regulation, attention and recovery. Internal demo use only; public release requires official permission.",
+      "music_room_fit": [
+        "inner-planes"
+      ]
     },
     {
       "id": "nts-poolside",
@@ -227,20 +494,54 @@
       "player_url": "https://www.nts.live/infinite-mixtapes/poolside",
       "stream_format": "Buffered HLS audio segments",
       "stream_transport": "Buffered HLS scheduler",
-      "stage_gate_fit": ["chill", "house"],
       "permission_scope": "Internal demo only",
       "notion_page_url": "https://app.notion.com/p/3a57b9c99c5681ada4d0feeb3b8a328b",
       "status": "Approved",
       "editorial_priority": 2,
       "primary_environmental_function": "Joy + Affirmation",
-      "secondary_environmental_functions": ["Soul + Restoration", "Club Energy + Festival Activation"],
-      "top_needs": ["Joy", "Gratitude", "Connection", "Belonging"],
-      "need_scores": {"Joy": 0.94, "Gratitude": 0.87, "Connection": 0.88, "Belonging": 0.86, "Hope": 0.84, "Calm": 0.62, "Arousal": 0.68, "Motivation": 0.7, "Trust": 0.78, "Recovery": 0.58, "Self-Actualisation": 0.7, "Stress": 0.28, "Psychological Safety": 0.82},
-      "context": {"work_fit": 0.58, "group_fit": 0.9, "high_load_fit": 0.42, "intensity": "moderate", "density": "open", "trajectory": "warm_uplift"},
-      "card_palette": ["#2f7890", "#f2c978"],
+      "secondary_environmental_functions": [
+        "Soul + Restoration",
+        "Club Energy + Festival Activation"
+      ],
+      "top_needs": [
+        "Joy",
+        "Gratitude",
+        "Connection",
+        "Belonging"
+      ],
+      "need_scores": {
+        "Joy": 0.94,
+        "Gratitude": 0.87,
+        "Connection": 0.88,
+        "Belonging": 0.86,
+        "Hope": 0.84,
+        "Calm": 0.62,
+        "Arousal": 0.68,
+        "Motivation": 0.7,
+        "Trust": 0.78,
+        "Recovery": 0.58,
+        "Self-Actualisation": 0.7,
+        "Stress": 0.28,
+        "Psychological Safety": 0.82
+      },
+      "context": {
+        "work_fit": 0.58,
+        "group_fit": 0.9,
+        "high_load_fit": 0.42,
+        "intensity": "moderate",
+        "density": "open",
+        "trajectory": "warm_uplift"
+      },
+      "card_palette": [
+        "#2f7890",
+        "#f2c978"
+      ],
       "suitable_citizen_state": "Social warmth, lightness, optimism, summer memory, connection, belonging and readiness for a gently energising shared environment.",
       "not_suitable_citizen_state": "Acute sensory overload, high startle sensitivity, sleep onset or a request for sparse concentration music.",
-      "editorial_notes": "NTS Infinite Mixtape profiled as a warm bridge between chill and house: buoyant, social and sunlit without requiring peak club intensity. Internal demo use only; public release requires official permission."
+      "editorial_notes": "NTS Infinite Mixtape assigned to champagne bohemia for buoyant, social and sunlit Balearic programming without requiring peak club intensity. Internal demo use only; public release requires official permission.",
+      "music_room_fit": [
+        "champagne-bohemia"
+      ]
     },
     {
       "id": "nts-otaku",
@@ -253,20 +554,54 @@
       "player_url": "https://www.nts.live/infinite-mixtapes/otaku",
       "stream_format": "Buffered HLS audio segments",
       "stream_transport": "Buffered HLS scheduler",
-      "stage_gate_fit": ["chill", "house"],
       "permission_scope": "Internal demo only",
       "notion_page_url": "https://app.notion.com/p/3a57b9c99c5681a3993bfa4ab169df46",
       "status": "Approved",
       "editorial_priority": 2,
       "primary_environmental_function": "Curiosity + Exploration",
-      "secondary_environmental_functions": ["Joy + Affirmation", "Focus + Flow"],
-      "top_needs": ["Curiosity", "Awe", "Joy", "Self-Actualisation"],
-      "need_scores": {"Curiosity": 0.98, "Awe": 0.92, "Joy": 0.82, "Self-Actualisation": 0.88, "Attention": 0.76, "Motivation": 0.72, "Belonging": 0.7, "Connection": 0.64, "Hope": 0.8, "Arousal": 0.62, "Recovery": 0.45, "Stress": 0.25, "Psychological Safety": 0.68},
-      "context": {"work_fit": 0.62, "group_fit": 0.72, "high_load_fit": 0.38, "intensity": "variable", "density": "variable", "trajectory": "exploration"},
-      "card_palette": ["#392d70", "#79d5cf"],
+      "secondary_environmental_functions": [
+        "Joy + Affirmation",
+        "Focus + Flow"
+      ],
+      "top_needs": [
+        "Curiosity",
+        "Awe",
+        "Joy",
+        "Self-Actualisation"
+      ],
+      "need_scores": {
+        "Curiosity": 0.98,
+        "Awe": 0.92,
+        "Joy": 0.82,
+        "Self-Actualisation": 0.88,
+        "Attention": 0.76,
+        "Motivation": 0.72,
+        "Belonging": 0.7,
+        "Connection": 0.64,
+        "Hope": 0.8,
+        "Arousal": 0.62,
+        "Recovery": 0.45,
+        "Stress": 0.25,
+        "Psychological Safety": 0.68
+      },
+      "context": {
+        "work_fit": 0.62,
+        "group_fit": 0.72,
+        "high_load_fit": 0.38,
+        "intensity": "variable",
+        "density": "variable",
+        "trajectory": "exploration"
+      },
+      "card_palette": [
+        "#392d70",
+        "#79d5cf"
+      ],
       "suitable_citizen_state": "Curiosity, imaginative exploration, identity play, novelty seeking, creative work and readiness for an animated or game-adjacent sonic world.",
       "not_suitable_citizen_state": "Acute overload, strict predictability needs, sleep onset or a stated need for emotionally neutral background sound.",
-      "editorial_notes": "NTS Infinite Mixtape profiled as the catalogue's strongest curiosity and identity-exploration station, spanning chill and house trajectories. Internal demo use only; public release requires official permission."
+      "editorial_notes": "NTS Infinite Mixtape assigned to modul8 infinity for curiosity, identity exploration and animated future-facing sound. Internal demo use only; public release requires official permission.",
+      "music_room_fit": [
+        "modul8-infinity"
+      ]
     },
     {
       "id": "nts-low-key",
@@ -279,20 +614,56 @@
       "player_url": "https://www.nts.live/infinite-mixtapes/100-percent-hip-hop",
       "stream_format": "Buffered HLS audio segments",
       "stream_transport": "Buffered HLS scheduler",
-      "stage_gate_fit": ["calm", "chill"],
       "permission_scope": "Internal demo only",
       "notion_page_url": "https://app.notion.com/p/3a57b9c99c56817c9295cb1d902c9213",
       "status": "Approved",
       "editorial_priority": 2,
       "primary_environmental_function": "Soul + Restoration",
-      "secondary_environmental_functions": ["Focus + Flow", "Joy + Affirmation"],
-      "top_needs": ["Calm", "Attention", "Belonging", "Connection"],
-      "need_scores": {"Calm": 0.88, "Attention": 0.86, "Belonging": 0.84, "Connection": 0.82, "Recovery": 0.8, "Trust": 0.78, "Clarity": 0.76, "Joy": 0.72, "Loneliness": 0.78, "Stress": 0.74, "Anxiety": 0.7, "Arousal": 0.38, "Motivation": 0.58, "Executive Function": 0.8, "Psychological Safety": 0.78},
-      "context": {"work_fit": 0.88, "group_fit": 0.7, "high_load_fit": 0.82, "intensity": "low_to_moderate", "density": "open", "trajectory": "stabilise"},
-      "card_palette": ["#53423d", "#c5ab89"],
+      "secondary_environmental_functions": [
+        "Focus + Flow",
+        "Joy + Affirmation"
+      ],
+      "top_needs": [
+        "Calm",
+        "Attention",
+        "Belonging",
+        "Connection"
+      ],
+      "need_scores": {
+        "Calm": 0.88,
+        "Attention": 0.86,
+        "Belonging": 0.84,
+        "Connection": 0.82,
+        "Recovery": 0.8,
+        "Trust": 0.78,
+        "Clarity": 0.76,
+        "Joy": 0.72,
+        "Loneliness": 0.78,
+        "Stress": 0.74,
+        "Anxiety": 0.7,
+        "Arousal": 0.38,
+        "Motivation": 0.58,
+        "Executive Function": 0.8,
+        "Psychological Safety": 0.78
+      },
+      "context": {
+        "work_fit": 0.88,
+        "group_fit": 0.7,
+        "high_load_fit": 0.82,
+        "intensity": "low_to_moderate",
+        "density": "open",
+        "trajectory": "stabilise"
+      },
+      "card_palette": [
+        "#53423d",
+        "#c5ab89"
+      ],
       "suitable_citizen_state": "Low-pressure focus, grounded connection, familiar hip-hop language, calm social presence, belonging and a need for steady rather than sleepy regulation.",
       "not_suitable_citizen_state": "Citizens asking for near-silence, strongly non-vocal material, peak dance energy or highly abstract novelty.",
-      "editorial_notes": "NTS Low Key, served through its official 100 Percent Hip-Hop Infinite Mixtape path, is profiled as grounded calm-to-chill focus and belonging. Internal demo use only; public release requires official permission."
+      "editorial_notes": "NTS Low Key, served through its official 100 Percent Hip-Hop Infinite Mixtape path, is assigned to modul8 infinity for grounded future-facing beats, focus and belonging. Internal demo use only; public release requires official permission.",
+      "music_room_fit": [
+        "modul8-infinity"
+      ]
     }
   ]
 }

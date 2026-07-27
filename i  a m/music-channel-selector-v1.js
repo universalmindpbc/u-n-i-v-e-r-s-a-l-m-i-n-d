@@ -4,6 +4,13 @@
     "Anxiety", "Stress", "Fear", "Hypervigilance", "Startle Sensitivity",
     "Intrusions", "Mental Load", "Fatigue", "Sleep Pressure", "Sleep Disturbance",
   ];
+  const MUSIC_ROOM_FORMATS = {
+    "inner-planes": ["videos", "parties", "radio"],
+    "champagne-bohemia": ["videos", "parties", "radio"],
+    "modul8-infinity": ["videos", "parties", "radio"],
+    "james-bondage": ["videos", "parties", "radio"],
+    "safety-cushion": ["videos"],
+  };
 
   function clamp(value, min = 0, max = 1) {
     return Math.max(min, Math.min(max, Number(value) || 0));
@@ -86,7 +93,14 @@
     const taste = options.tasteAffinities || {};
     const recent = Array.isArray(options.recentIds) ? options.recentIds : [];
     const seed = String(options.seed || "universal-mind");
-    const ranked = (records || []).map((record, editorialIndex) => {
+    const eligibleRecords = (records || []).filter((record) => {
+      const musicRoom = record.editorial_id || record.editorialId || record.music_room || record.musicRoom;
+      const allowedFormats = record.allowed_formats || MUSIC_ROOM_FORMATS[musicRoom];
+      if (Array.isArray(allowedFormats) && !allowedFormats.includes(mode)) return false;
+      if (musicRoom === "safety-cushion" && record.catalogue_status !== "ready") return false;
+      return true;
+    });
+    const ranked = eligibleRecords.map((record, editorialIndex) => {
       const id = String(record.id || record.station_id || record.track_id || editorialIndex);
       const tensor = needFit(record, options.citizenNeeds);
       const contextual = contextFit(record, context);

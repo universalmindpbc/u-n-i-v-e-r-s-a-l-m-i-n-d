@@ -26,7 +26,7 @@
         return window.top.__iamAdaptiveEnvironment?.stopRadio?.();
       },
       chooseStation() {
-        return window.top.__iamAdaptiveEnvironment?.chooseStation?.() || "chill";
+        return window.top.__iamAdaptiveEnvironment?.chooseStation?.() || "";
       },
       audio: null,
     };
@@ -39,23 +39,28 @@
   }
 
   const stations = {
-    calm: {
-      label: "Calm",
+    "inner-planes": {
+      label: "Inner Planes · Radio · Cafe Del Mar — Calm",
       url: "https://streamer.radio.co/sb748f24ad/listen",
     },
-    chill: {
-      label: "Chill",
+    "champagne-bohemia": {
+      label: "Champagne Bohemia · Radio · Cafe Del Mar — Chill",
       url: "https://streams.radio.co/se1a320b47/listen",
     },
-    house: {
-      label: "House",
+    "modul8-infinity": {
+      label: "modul8 infinity · Radio · Cafe Del Mar — House",
       url: "https://s4.radio.co/seeae9c220/listen",
+    },
+    "james-bondage": {
+      label: "james bondage · Radio · Sanctuary — Dark Electro",
+      url: "https://stream.sanctuaryradio.com/mainchannel_hq",
     },
   };
   const streamHosts = [
     "https://streamer.radio.co",
     "https://streams.radio.co",
     "https://s4.radio.co",
+    "https://stream.sanctuaryradio.com",
   ];
 
   const stateKey = "iamAdaptiveEnvironmentState";
@@ -76,7 +81,7 @@
   radio.volume = 0;
   document.documentElement.dataset.adaptiveEnvironment = "ready";
 
-  let selectedStation = "chill";
+  let selectedStation = "";
   let started = false;
   let fadeFrame = 0;
   let restoreTimer = 0;
@@ -225,10 +230,10 @@
 
     if (typeof value === "object") {
       return stationKeyFromValue(
-        value.stage_gate ||
-        value.stageGate ||
+        value.selected_music_room ||
+        value.music_room ||
+        value.musicRoom ||
         value.station ||
-        value.genre ||
         value.channel ||
         value.label ||
         value.name
@@ -236,24 +241,21 @@
     }
 
     const normalized = String(value).trim().toLowerCase();
-    if (/\bcalm\b/.test(normalized)) return "calm";
-    if (/\bchill\b/.test(normalized)) return "chill";
-    if (/\bhouse\b/.test(normalized)) return "house";
+    if (/\binner[ -]planes\b/.test(normalized)) return "inner-planes";
+    if (/\bchampagne[ -]bohemia\b/.test(normalized)) return "champagne-bohemia";
+    if (/\bmodul8[ -]infinity\b/.test(normalized)) return "modul8-infinity";
+    if (/\bjames[ -]bondage\b/.test(normalized)) return "james-bondage";
 
     return "";
   }
 
   function explicitStationFromInference(inference = {}) {
     const candidates = [
-      inference.soundtrack_stage_gate,
-      inference.soundtrackStageGate,
+      inference.selected_music_room,
+      inference.music_room,
+      inference.musicRoom,
       inference.adaptive_environment,
       inference.adaptiveEnvironment,
-      inference.soundtrack,
-      inference.radio,
-      inference.radioStation,
-      inference.station,
-      inference.genre,
       inference.channel,
     ];
 
@@ -269,29 +271,12 @@
     const explicitStation = explicitStationFromInference(inference);
     if (explicitStation) return explicitStation;
 
-    const highlights = listFromValue(inference.highlights);
-    const signal = [
-      inference.checkin,
-      inference.status,
-      inference.human_review_relevance,
-      inference.interpretation_type,
-      ...highlights,
-    ].join(" ").toLowerCase();
-
-    if (/\b(anxious|anxiety|panic|worried|worry|fear|afraid|scared|stress|stressed|strain|pressure|tense|overwhelmed|hypervigilance|intrusion|flashback|anger|angry|rage|shame|ashamed|guilt|lonely|alone|isolated|fatigue|tired|exhausted|burnt|burned|sleep|restless|numb)\b/.test(signal)) {
-      return "calm";
-    }
-
-    if (/\b(joy|happy|delight|excited|energised|energized|motivated|motivation|activated|arousal|wired|alive|purpose|mission|driven|ready|curious|curiosity)\b/.test(signal)) {
-      return "house";
-    }
-
-    return "chill";
+    return "";
   }
 
   function updateStationSurface() {
     document.querySelectorAll("[data-adaptive-station]").forEach((node) => {
-      const label = stations[selectedStation].label;
+      const label = stations[selectedStation]?.label || "No extended session selected";
       node.dataset.adaptiveTypewriterText = label;
       if (!node.classList.contains("is-typing") && !node.classList.contains("is-typed")) {
         node.textContent = label;
@@ -302,7 +287,8 @@
   function primeRadio() {
     if (started) return;
 
-    const station = stations[selectedStation] || stations.chill;
+    const station = stations[selectedStation];
+    if (!station) return;
     if (radio.src !== station.url) {
       radio.src = station.url;
     }
@@ -317,7 +303,7 @@
   function refreshStationSelection(options = {}) {
     const nextStation = chooseStation();
     const previousStation = selectedStation;
-    selectedStation = stations[nextStation] ? nextStation : "chill";
+    selectedStation = stations[nextStation] ? nextStation : "";
     updateStationSurface();
 
     if (options.switchLive && started && previousStation !== selectedStation) {
@@ -351,7 +337,8 @@
   }
 
   async function switchStation(stationName) {
-    const station = stations[stationName] || stations.chill;
+    const station = stations[stationName];
+    if (!station) return false;
     await fadeTo(0, 450);
     radio.src = station.url;
 
@@ -366,11 +353,12 @@
 
   function startRadio() {
     refreshStationSelection();
+    if (!selectedStation) return Promise.resolve(false);
     dismissOverlay();
     document.body.classList.add("adaptive-typewriter-complete");
     scheduleFlowerCue();
 
-    const station = stations[selectedStation] || stations.chill;
+    const station = stations[selectedStation];
     if (radio.src !== station.url) {
       radio.src = station.url;
     }

@@ -40,7 +40,7 @@ Example:
   },
   "engagement_signals": {
     "video_completion_ratio": 0.92,
-    "radio_listen_minutes": 12,
+    "extended_session_listen_minutes": 12,
     "dwell_seconds": 210,
     "click_count": 0,
     "emoji_engagement": {
@@ -60,17 +60,16 @@ Example:
 ## Crossed Features
 
 - `video_completion`: watched most or all of the music video.
-- `radio_listening`: listened to the streaming radio handoff.
+- `extended_session_listening`: listened to an eligible Parties, Radio or Videos continuation. Legacy radio signal names remain accepted as input aliases.
 - `soft_dwell`: time on page crossed with low click count.
 - `returning_interest`: repeated sessions or return visits.
 - `emoji_need_fit`: emoji interactions crossed with the candidate song tensor.
 - `survey_fit`: voluntary light feedback such as felt seen, settled, helped or
   too intense.
 - `video_x_soft_dwell`: video completion crossed with calm dwell.
-- `radio_x_handoff`: radio listening crossed with calm/chill/house handoff.
+- `extended_session_x_room_continuity`: extended-session listening crossed with a valid music-room continuation.
 - `emoji_x_track_needs`: emoji warmth crossed with candidate needs.
-- `house_activation_fit`: repeat/video interest for house activation, reduced by
-  friction.
+- `music_room_return_fit`: repeat/video interest crossed with an assigned music room, reduced by friction. Music-room identity never acts as an activation ladder.
 
 ## Emoji Affinities
 

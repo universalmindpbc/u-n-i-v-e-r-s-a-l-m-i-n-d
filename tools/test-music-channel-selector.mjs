@@ -15,11 +15,15 @@ assert.equal(selector.feedbackWeight("explicit_select"), 1);
 assert.equal(selector.feedbackWeight("quick_switch"), -.2);
 
 const sample = [
-  { id: "calm", mode: "radio", need_scores: { Calm: .96 }, context: { work_fit: .9, group_fit: .3, high_load_fit: .9 }, editorial_priority: 1 },
+  { id: "inner-planes", mode: "radio", need_scores: { Calm: .96 }, context: { work_fit: .9, group_fit: .3, high_load_fit: .9 }, editorial_priority: 1 },
   { id: "party", mode: "radio", need_scores: { Calm: .12 }, context: { work_fit: .2, group_fit: .9, high_load_fit: .1 }, editorial_priority: 1 },
 ];
 const ranked = selector.rank(sample, { mode: "radio", atWork: true, citizenNeeds: { Calm: 1 }, seed: "rank", limit: 2 });
-assert.equal(ranked.ranked[0].id, "calm");
+assert.equal(ranked.ranked[0].id, "inner-planes");
+const safetyCushionPending = { id: "safety", editorial_id: "safety-cushion", catalogue_status: "pending_ready_assets" };
+assert.equal(selector.rank([safetyCushionPending], { mode: "videos" }).recommendations.length, 0);
+assert.equal(selector.rank([{ ...safetyCushionPending, catalogue_status: "ready" }], { mode: "videos" }).recommendations.length, 1);
+assert.equal(selector.rank([{ ...safetyCushionPending, catalogue_status: "ready" }], { mode: "radio" }).recommendations.length, 0);
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const radioTensor = JSON.parse(fs.readFileSync(path.join(root, "i  a m", "radio-station-tensor-notion-export-v1.0.json"), "utf8"));

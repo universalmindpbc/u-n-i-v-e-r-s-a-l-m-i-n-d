@@ -1,5 +1,7 @@
 # Adaptive Soundtrack Stage Gates
 
+> **Superseded.** Calm / Chill / House were the literal names of the original Cafe Del Mar radio stations, not the Universal Mind recommendation architecture. Current extended streaming sessions use the five canonical music rooms in `adaptive-music-room-selection-guide-v1.0.json`. This file remains only as a historical implementation record and must not be imported by current runtime code.
+
 ## Canonical MVP Fields
 
 The GPT inference response records the adaptive soundtrack as flat fields on the same payload as the radar highlights:

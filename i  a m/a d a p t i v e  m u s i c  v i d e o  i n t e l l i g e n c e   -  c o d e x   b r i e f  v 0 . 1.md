@@ -6,7 +6,7 @@ Sandbox feature brief for Codex.
 
 This page defines a new experimental page and pipeline for Universal Mind's adaptive music experience.
 
-The feature explores how a citizen's latest check-in, Citizen Needs radar profile, environment context, and music metadata combine to select a hero music video before dissolving into a streaming radio environment.
+The feature explores how a citizen's latest check-in, Citizen Needs radar profile, environment context, and music metadata combine to select a hero VOD music video before continuing into a needs-matched extended livestream.
 
 This is a sandbox feature, not the core homepage.
 
@@ -23,7 +23,7 @@ The page demonstrates:
 3. Context-aware adaptive environment logic.
 4. Music Intelligence search.
 5. Hero music video selection.
-6. Seamless dissolve into streaming radio.
+6. Seamless transition into the application-assigned extended livestream: Parties 80%, Radio 10%, Videos 10%.
 
 The objective is not simple music recommendation.
 
@@ -50,7 +50,9 @@ Hero Music Video
         ↓
 Seamless dissolve
         ↓
-Streaming Radio
+Needs-Matched Extended Livestream
+        ↓
+Manual Portal Exploration
 ```
 
 ---
@@ -69,7 +71,7 @@ The page remains cinematic, dark, premium and minimal.
 
 The system reveals only enough temporary text to demonstrate the adaptive logic.
 
-After the hero music video plays, dissolve into the selected streaming radio station.
+After the hero music video plays, transition into the selected approved Ready livestream inside the assigned Parties, Radio or Videos branch.
 
 Avoid a visible popup player.
 
@@ -83,79 +85,21 @@ Avoid recommendation-card UI.
 
 ## Step 1 — Check-In
 
-The citizen completes the existing **I am...** check-in flow.
+The citizen completes the existing **I am...** check-in flow. Example: *I am grateful but tired after surfing.*
 
-Example:
+## Step 2 — Needs-Matched VOD Music Video
 
-> I am grateful but tired after surfing.
+Send the check-in and available consented context to the Adaptive Inference Engine. Music Intelligence and the Editorial Layer select one safe VOD music video from the approved catalogue. Gracenote, Cyanite, Musixmatch and YouTube may supply metadata or candidates; Universal Mind makes the final choice.
 
-## Step 2 — Needs Analysis
+## Step 3 — Needs-Matched Extended Livestream
 
-Send the check-in plus available context to the Adaptive Inference Engine.
+After the opening video, the application assigns the eligible format from a stable visitor-and-recommendation slot: Parties 80%, Radio 10%, Videos 10%. Within that branch, select the compatible music room and approved Ready source from Citizen Needs, taste, context, continuity and editorial suitability. Examples include ambient `inner planes` Radio late at night, chillout `champagne bohemia` Radio in the morning, and—only in the Videos branch—`safety cushion` during peak anxiety when approved Ready assets are attached and suitable.
 
-Inputs:
+Return safe structured JSON containing the hero video, fallback video, extended-session format, music room, source ID, readiness, format-policy audit, environment function, editorial safety notes, confidence and reason.
 
-- self-report text
-- local time
-- approximate location
-- weather
-- temperature
-- Citizen Needs radar labels
+## Step 4 — Manual Portal Exploration
 
-Output:
-
-Structured JSON containing:
-
-- top Citizen Needs highlights
-- dominant domains
-- confidence
-- environment function
-- soundtrack mode
-- search metadata
-
-## Step 3 — Music Intelligence Search
-
-Use APIs to search for candidate hero music videos.
-
-Priority APIs:
-
-1. Gracenote — genre, mood, style, metadata.
-2. Cyanite — contingency metadata call if Gracenote fails.
-3. Musixmatch — lyrics and lyric-context analysis.
-4. YouTube API — video discovery and playback candidates.
-
-## Step 4 — GPT Review
-
-GPT reviews candidate videos using:
-
-- Citizen Needs output
-- environment context
-- music metadata
-- lyric metadata where available
-- artist roster priority
-- editorial layer
-- few-shot examples
-
-## Step 5 — Final Output
-
-Return safe structured JSON with:
-
-- selected hero music video
-- fallback video
-- selected streaming radio station
-- selected radio mode
-- environment function
-- editorial safety notes
-- confidence
-- reason
-
-## Step 6 — Playback
-
-Play the hero music video.
-
-Then dissolve into the selected streaming radio station.
-
-The transition must feel seamless and cinematic.
+After the extended-session handoff, the citizen may manually explore the portal's music and education content. The transition from the opening VOD into the livestream must feel seamless and cinematic.
 
 ---
 
@@ -196,8 +140,9 @@ Track:
 - skip rate
 - replay rate
 - time watched
-- transition-to-radio rate
-- radio continuation time
+- transition-to-extended-livestream rate
+- Parties / Radio / Videos traffic distribution against the 80/10/10 target
+- extended-session duration by format and music room
 - user feedback
 - post-video check-in change
 - return visits
@@ -452,69 +397,23 @@ Not:
 
 ---
 
-# Adaptive Environment Stage Gate
+# Extended Streaming Music Rooms
 
-The first streaming radio system uses Cafe Del Mar Radio.
+The adaptive environment routes eligible extended sessions through five canonical music rooms:
 
-Initial modes:
+- `inner planes` — ambient / sleep / sunrise.
+- `champagne bohemia` — Balearic / sunset / chillout.
+- `modul8 infinity` — rave / house / techno / future bass / future psychedelic beats / hiphop, including Brainfeeder-adjacent work.
+- `james bondage` — minimal / electro / EBM.
+- `safety cushion` — 80s nu wave, music videos only.
 
-- Calm
-- Chill
-- House
+These are music rooms, not three energy levels. Calm remains a Citizen Needs signal. Chillout and house remain genres inside their relevant rooms. The literal Cafe Del Mar Radio station names may remain as source titles, but Calm, Chill and House must not be used as recommendation categories.
 
-## Calm
+Choose a room and eligible format from catalogue readiness and format, safety and age boundaries, stated intent and taste, constructive trajectory, present needs, context, continuity and editorial confidence. Time, weather and location may refine the choice; they never override the citizen's expressed state.
 
-Use when the radar profile favours downshift, regulation, reduced density or safety.
+`safety cushion` must never route to Parties or Radio and must not be recommended until approved ready music-video assets are attached. If no eligible ready source exists, return no extended session instead of forcing a default.
 
-Typical signals:
-
-- anxiety
-- stress
-- fatigue
-- hypervigilance
-- sleep pressure
-- emotional numbing
-- fear
-- shame
-- startle sensitivity
-- intrusions
-
-## Chill
-
-Use when the radar profile favours balance, warmth, recovery or stable presence.
-
-Typical signals:
-
-- calm
-- gratitude
-- belonging
-- recovery
-- clarity
-- connection
-- hope
-- psychological safety
-- trust
-- awe
-
-## House
-
-Use when the radar profile favours activation, joy, agency or positive energy.
-
-Typical signals:
-
-- joy
-- motivation
-- curiosity
-- self-actualisation
-- arousal
-- love
-- connection
-- executive function
-- confidence
-
-Time, weather and location modify the choice.
-
-They do not override the citizen's expressed state.
+The canonical journey is check-in → needs-matched VOD music video → needs-matched extended livestream → manual portal exploration. Across eligible extended sessions, the application assigns Parties 80% of the time, Radio 10% and Videos 10% using a stable visitor-and-recommendation slot. The chosen format is then matched to the compatible room and approved Ready source. Radio examples include `inner planes` ambient radio late at night and `champagne bohemia` chillout radio in the morning. In the Videos slot, peak anxiety may favour `safety cushion` only after its approved Ready music-video assets are attached and editorially suitable.
 
 ---
 
@@ -535,8 +434,8 @@ Context is not clinical evidence.
 
 Examples:
 
-- late evening increases preference for Calm or Chill unless citizen state strongly supports activation
-- early morning favours Calm, Chill or focused Flow depending on state
+- late evening may favour lower density, but does not determine a music room
+- early morning may favour sunrise, spacious or focused selections depending on state and taste
 - clear coastal context supports Balearic, open, spacious or warm music
 - rain supports reflective or lower-density selections
 - city context may support kinetic, urban or focused energy
@@ -554,14 +453,14 @@ Adaptive Environment | Soundtrack
 
 Based on your latest check-in
 
-Cafe Del Mar Radio
+champagne bohemia
 
-CHILL
+RADIO · CAFE DEL MAR — CHILL
 ```
 
 This copy animates on screen briefly.
 
-It dissolves away when the hero video or radio experience begins.
+It dissolves away when the hero video or extended livestream begins.
 
 Keep copy minimal.
 
@@ -649,11 +548,18 @@ Prioritise official videos, artist-approved uploads, and high-quality embeds.
     "selection_confidence": 0.0,
     "selection_reason": "Concise reason for chosen hero video."
   },
-  "streaming_radio_continuation": {
-    "source": "Cafe Del Mar Radio",
-    "selected_mode": "Calm | Chill | House",
-    "soundtrack_confidence": 0.0,
-    "reason": "Concise reason for radio continuation."
+  "extended_streaming_session": {
+    "music_room": "inner-planes | champagne-bohemia | modul8-infinity | james-bondage | safety-cushion | null",
+    "format": "videos | parties | radio | null",
+    "source_id": null,
+    "catalogue_ready": false,
+    "format_policy": {
+      "weights": {"parties": 0.8, "radio": 0.1, "videos": 0.1},
+      "assignment": "stable_visitor_and_recommendation_slot",
+      "safety_and_readiness_override": true
+    },
+    "music_room_confidence": 0.0,
+    "reason": "Concise reason for the eligible extended session."
   },
   "editorial_layer": {
     "emotionally_honest": true,
@@ -668,8 +574,8 @@ Prioritise official videos, artist-approved uploads, and high-quality embeds.
   },
   "fallbacks": {
     "fallback_video_id": null,
-    "fallback_radio_mode": "Chill",
-    "fallback_reason": "Use safe default if confidence or API quality is low."
+    "fallback_music_room": null,
+    "fallback_reason": "Return no room when confidence, catalogue readiness or API quality is insufficient."
   }
 }
 ```
@@ -690,7 +596,7 @@ Demonstrate:
 
 - hero video selection
 - adaptive copy
-- dissolve to radio mode
+- dissolve into the assigned Parties, Radio or Videos livestream branch
 
 ## Stage 2 — GPT JSON Integration
 
@@ -774,7 +680,8 @@ The following sections need to be added later to **Adaptive Inference Engine —
     - Compare completion, skip, replay, continuation and post-check-in outcomes.
 6. **Adaptive Environment Output JSON**
     - Add hero music video object.
-    - Add streaming radio continuation object.
+    - Add extended livestream object with the application-assigned 80% Parties / 10% Radio / 10% Videos format policy.
+    - Add music-room, approved Ready source and format-eligibility fields.
     - Add editorial layer object.
     - Add fallback logic.
 7. **Context-Aware Music Logic**
@@ -844,7 +751,7 @@ Nodes connect through:
 - related labels
 - suitable Citizen Needs states
 - suitable environment contexts
-- suitable soundtrack stage gates
+- suitable music rooms and eligible formats
 
 Example node:
 
@@ -898,7 +805,7 @@ Neural ranking / retrieval layer
         ↓
 Adaptive Music Intelligence
         ↓
-Hero music video + streaming radio continuation
+Hero music video + eligible extended streaming session
 ```
 
 The neural layer learns from:
@@ -908,7 +815,7 @@ The neural layer learns from:
 - emotional function tags
 - environment context
 - watch / skip / completion behaviour
-- radio continuation time
+- extended-session duration by format and music room
 - explicit feedback
 - post-video check-in shift
 - editorial review
@@ -953,10 +860,14 @@ Each catalogue item can later receive structured metadata.
     "home",
     "travel"
   ],
-  "stage_gate_fit": [
-    "Calm",
-    "Chill",
-    "House"
+  "music_room_fit": [
+    "inner-planes",
+    "champagne-bohemia"
+  ],
+  "eligible_extended_formats": [
+    "videos",
+    "parties",
+    "radio"
   ],
   "related_nodes": [
     "XL Recordings",

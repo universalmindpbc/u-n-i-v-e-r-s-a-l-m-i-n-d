@@ -454,16 +454,18 @@ async function requestAdaptiveMusicVideoSelection(phrase, inferenceRecord = {}) 
     : inferenceRecord.highlights;
   const payload = {
     citizen_checkin: phrase,
-    interpretation_summary: inferenceRecord.soundtrack_reason || inferenceRecord.interpretation_summary || "",
-    soundtrack_stage_gate: inferenceRecord.soundtrack_stage_gate || "",
+    interpretation_summary: inferenceRecord.music_room_reason || inferenceRecord.interpretation_summary || "",
+    selected_music_room: inferenceRecord.selected_music_room || null,
+    selected_format: inferenceRecord.selected_format || null,
+    catalogue_ready: inferenceRecord.catalogue_ready === true,
     human_review_relevance: inferenceRecord.human_review_relevance,
     citizen_needs: {
       top_highlights: Array.isArray(highlights) ? highlights : [],
       top_needs_used: Array.isArray(highlights) ? highlights : [],
       needs_scorecard: inferenceRecord.needs_scorecard || null,
       safety_flags: Array.isArray(inferenceRecord.safety_flags) ? inferenceRecord.safety_flags : [],
-      interpretation_summary: inferenceRecord.soundtrack_reason || "",
-      soundtrack_stage_gate: inferenceRecord.soundtrack_stage_gate || "",
+      interpretation_summary: inferenceRecord.music_room_reason || "",
+      selected_music_room: inferenceRecord.selected_music_room || null,
     },
     needs_scorecard: inferenceRecord.needs_scorecard || null,
     environment_context: inferenceRecord.environment_context || await currentEnvironmentContext(),

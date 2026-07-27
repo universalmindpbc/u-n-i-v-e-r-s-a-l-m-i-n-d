@@ -18,15 +18,15 @@ const phpFallback = read("i  a m/api/realtime-client-secret.php");
 const stagingDeploy = read("deploy-panthur-staging.sh");
 
 assert.match(guide, /preferred collective name is “Seeding Sessions”/);
-for (const name of ["Inner Planes", "Champagne Bohemia", "modul8 infinity", "james bondage"]) {
+for (const name of ["Inner Planes", "Champagne Bohemia", "modul8 infinity", "james bondage", "safety cushion"]) {
   assert.match(guide, new RegExp(name.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")));
 }
 
 const expectedEditorial = new Map([
-  ["inner-planes", ["sunrise ambient", "Ambient · beatless · electronica"]],
-  ["champagne-bohemia", ["sunset Balearic", "Balearic · chillout · electronica"]],
-  ["modul8-infinity", ["rave × mindfulness", "House · techno · rave · future bass"]],
-  ["james-bondage", ["sex × mindfulness", "Tantra · sex ed · EBM · minimal"]],
+  ["inner-planes", ["ambient / sleep / sunrise", "Ambient · sleep · sunrise"]],
+  ["champagne-bohemia", ["Balearic / sunset / chillout", "Balearic · sunset · chillout"]],
+  ["modul8-infinity", ["rave / house / techno / future bass / future psychedelic beats / hiphop", "Rave · house · techno · future bass · future psychedelic beats · hiphop"]],
+  ["james-bondage", ["minimal / electro / EBM", "Minimal · electro · EBM"]],
 ]);
 
 for (const [editorialId, [descriptor, description]] of expectedEditorial) {
@@ -37,6 +37,11 @@ for (const [editorialId, [descriptor, description]] of expectedEditorial) {
   assert.ok(formats.every((channel) => channel.descriptor === descriptor));
   assert.ok(formats.some((channel) => channel.description === description));
 }
+const safetyCushion = schedule.music_rooms.find((room) => room.id === "safety-cushion");
+assert.deepEqual(safetyCushion.allowed_formats, ["videos"]);
+assert.equal(safetyCushion.catalogue_status, "pending_ready_assets");
+assert.deepEqual(schedule.extended_session_format_policy.weights, { parties: 0.8, radio: 0.1, videos: 0.1 });
+assert.match(guide, /Parties 80% of the time, Radio 10% and Videos 10%/);
 
 assert.match(index, /James Bondage Health · sex-ed/);
 assert.equal((index.match(/data-sex-ed-card(?:\s|>)/g) || []).length, 5);

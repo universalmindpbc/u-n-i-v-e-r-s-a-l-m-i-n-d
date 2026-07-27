@@ -5,9 +5,9 @@ import {
   SYSTEM_PROMPT_VERSION,
 } from "./adaptive-inference-system-prompt-v4-44.js";
 import {
-  ADAPTIVE_SOUNDTRACK_SELECTION_GUIDE,
-  SOUNDTRACK_SELECTION_GUIDE_VERSION,
-} from "./adaptive-soundtrack-selection-guide-v2-22.js";
+  ADAPTIVE_MUSIC_ROOM_SELECTION_GUIDE,
+  MUSIC_ROOM_SELECTION_GUIDE_VERSION,
+} from "./adaptive-music-room-selection-guide-v1.js";
 import UNIVERSAL_ONE_PORTAL_GUIDE from "../i  a m/universal-one-portal-guide-v1.txt";
 import UNIVERSAL_ONE_WELLBEING_SUPPORT_GUIDE from "../i  a m/universal-one-wellbeing-support-guide-v1.txt";
 import UNIVERSAL_ONE_PROGRAMME_GUIDE from "../i  a m/universal-one-programme-guide-v1.txt";
@@ -66,7 +66,8 @@ const allowedHighlights = [
   "Startle Sensitivity",
 ];
 
-const allowedSoundtrackStageGates = ["calm", "chill", "house"];
+const allowedMusicRooms = ["inner-planes", "champagne-bohemia", "modul8-infinity", "james-bondage", "safety-cushion"];
+const allowedMusicFormats = ["videos", "parties", "radio"];
 const allowedLocationPrecisions = ["none", "approximate", "precise"];
 const allowedDomains = ["Emotion", "Social", "Cognitive", "Physiological", "Threat", "Clinical Risk"];
 
@@ -147,14 +148,19 @@ const inferenceInstructions = [
     "- Also score the complete 144-field needs_scorecard. Every field must be a number from 0.00 to 1.00.",
     "- Treat needs_scorecard values as present-state relevance signals for adaptive music matching, not as clinical facts.",
     "- The four highlights remain the hero vectors. They should be the four strongest or most decision-relevant human_needs_radar signals.",
-    "- Select one adaptive soundtrack stage gate: calm, chill, or house.",
-    "- Use calm to downshift threat, stress, overload, fatigue, sleep pressure, rumination, or clinical-risk language.",
-    "- Use chill to hold balanced, reflective, connected, grateful, hopeful, clear, trusting, or awe-based states.",
-    "- Use house to lift joy, motivation, curiosity, agency, self-actualisation, and healthy activation.",
+    "- Recommend an extended streaming session through the canonical music rooms only: inner planes, champagne bohemia, modul8 infinity, james bondage, or safety cushion.",
+    "- Calm, chill, and house are not recommendation categories. Calm remains a human-needs signal; chillout and house remain genres inside the relevant rooms.",
+    "- Select a room from musical identity, stated intent and taste, constructive trajectory, context, continuity, and catalogue eligibility. Do not reduce room selection to an arousal ladder.",
+    "- The UX sequence is check-in, needs-matched VOD music video, needs-matched extended livestream, then manual portal exploration.",
+    "- The application enforces the extended-session traffic mix: Parties 80%, Radio 10%, Videos 10%, using a stable visitor-and-recommendation slot. Treat selected_format as the eligible format supplied or enforced by the application, not a free-form GPT traffic decision.",
+    "- Within the assigned format, match the room and source to citizen needs, taste, context, continuity and editorial suitability. Radio may mean inner planes ambient late at night or champagne bohemia chillout in the morning.",
+    "- In a Videos slot, peak anxiety may favour safety cushion only when approved Ready assets are present and suitable. Safety and catalogue eligibility override the traffic target.",
+    "- The first four rooms have approved video, party, and/or radio sources. Safety cushion is music videos only and is unavailable until approved ready assets are supplied by the catalogue.",
+    "- Never return safety-cushion with parties or radio. Never invent a source ID. If there is no eligible ready source, return null for selected_music_room and selected_format.",
     "- Treat local time, weather, temperature, and location as adaptive-environment-only modifiers.",
     "- Environmental context never creates clinical evidence and never overrides citizen self-report.",
-    "- Return top_needs_used, dominant_domains, and context_modifiers_used as the audit trail for soundtrack selection.",
-    `Soundtrack selection JSON guide: ${JSON.stringify(ADAPTIVE_SOUNDTRACK_SELECTION_GUIDE)}`,
+    "- Return top_needs_used, dominant_domains, and context_modifiers_used as the audit trail for music-room selection.",
+    `Music-room selection JSON guide: ${JSON.stringify(ADAPTIVE_MUSIC_ROOM_SELECTION_GUIDE)}`,
     "- Obey the API-provided strict JSON schema exactly. Do not add, omit, or rename scorecard fields.",
     "- Treat the output as language-theme mapping for adaptive interface exploration.",
     "- Do not diagnose, prescribe, claim certainty, or provide clinical advice.",
@@ -301,11 +307,16 @@ function validateInference(result, model) {
   return {
     highlights: result.highlights,
     confidence: typeof result.confidence === "number" ? result.confidence : 0,
-    soundtrack_stage_gate: allowedSoundtrackStageGates.includes(result.soundtrack_stage_gate)
-      ? result.soundtrack_stage_gate
-      : "chill",
-    soundtrack_confidence: typeof result.soundtrack_confidence === "number" ? result.soundtrack_confidence : 0,
-    soundtrack_reason: typeof result.soundtrack_reason === "string" ? result.soundtrack_reason : "",
+    selected_music_room: allowedMusicRooms.includes(result.selected_music_room)
+      ? result.selected_music_room
+      : null,
+    selected_format: allowedMusicFormats.includes(result.selected_format)
+      ? result.selected_format
+      : null,
+    source_id: typeof result.source_id === "string" && result.source_id.trim() ? result.source_id.trim() : null,
+    catalogue_ready: result.catalogue_ready === true,
+    music_room_confidence: typeof result.music_room_confidence === "number" ? result.music_room_confidence : 0,
+    music_room_reason: typeof result.music_room_reason === "string" ? result.music_room_reason : "",
     needs_scorecard: normalizeNeedsScorecard(result.needs_scorecard),
     dominant_domains: dominantDomains,
     top_needs_used: topNeedsUsed.length ? topNeedsUsed : result.highlights,
@@ -318,7 +329,7 @@ function validateInference(result, model) {
     prompt_version: SYSTEM_PROMPT_VERSION,
     prompt_sha256: SYSTEM_PROMPT_SHA256,
     prompt_source: SYSTEM_PROMPT_SOURCE,
-    soundtrack_selection_guide_version: SOUNDTRACK_SELECTION_GUIDE_VERSION,
+    music_room_selection_guide_version: MUSIC_ROOM_SELECTION_GUIDE_VERSION,
   };
 }
 
@@ -378,7 +389,7 @@ async function handleInference(request, env) {
             `Needs scorecard domains and fields: ${JSON.stringify(scorecardDomains)}`,
             "Score every needs_scorecard field from 0.00 to 1.00. Use 0.00 when there is no evidence; use higher scores only when the check-in or adaptive context supports present-state relevance.",
             "Keep the four highlights aligned with the most salient human_needs_radar scores, but do not hide important lower-level signals from the full scorecard.",
-            `Pick exactly one soundtrack stage gate: ${allowedSoundtrackStageGates.join(", ")}.`,
+            `Choose an eligible music room from: ${allowedMusicRooms.join(", ")}; otherwise return null. Choose an eligible format from: ${allowedMusicFormats.join(", ")}; otherwise return null.`,
             "Use high scores only as stronger present-state relevance, never as diagnosis.",
             `Environment context JSON: ${JSON.stringify(environmentContext)}`,
             `Citizen check-in: ${checkin}`,
@@ -408,16 +419,26 @@ async function handleInference(request, env) {
                 minimum: 0,
                 maximum: 1,
               },
-              soundtrack_stage_gate: {
-                type: "string",
-                enum: allowedSoundtrackStageGates,
+              selected_music_room: {
+                type: ["string", "null"],
+                enum: [...allowedMusicRooms, null],
               },
-              soundtrack_confidence: {
+              selected_format: {
+                type: ["string", "null"],
+                enum: [...allowedMusicFormats, null],
+              },
+              source_id: {
+                type: ["string", "null"],
+              },
+              catalogue_ready: {
+                type: "boolean",
+              },
+              music_room_confidence: {
                 type: "number",
                 minimum: 0,
                 maximum: 1,
               },
-              soundtrack_reason: {
+              music_room_reason: {
                 type: "string",
               },
               needs_scorecard: scorecardSchema,
@@ -476,9 +497,12 @@ async function handleInference(request, env) {
             required: [
               "highlights",
               "confidence",
-              "soundtrack_stage_gate",
-              "soundtrack_confidence",
-              "soundtrack_reason",
+              "selected_music_room",
+              "selected_format",
+              "source_id",
+              "catalogue_ready",
+              "music_room_confidence",
+              "music_room_reason",
               "needs_scorecard",
               "dominant_domains",
               "top_needs_used",
@@ -511,7 +535,9 @@ async function handleInference(request, env) {
       prompt_version: result.prompt_version,
       prompt_sha256: result.prompt_sha256,
       highlights: result.highlights,
-      soundtrack_stage_gate: result.soundtrack_stage_gate,
+      selected_music_room: result.selected_music_room,
+      selected_format: result.selected_format,
+      catalogue_ready: result.catalogue_ready,
       human_review_relevance: result.human_review_relevance,
     });
     return jsonResponse(request, 200, result);

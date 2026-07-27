@@ -20,18 +20,18 @@ const editorial = {
   "nts-low-key": { zone: "Amber", valence: "Bittersweet", memory: "Belonging", specificity: "Familiar cultural memory", nostalgia: .48, agency: "Same / neutral", hero: "New Ordinary", dadirri: "Presence", meditative: "Dadirri", supporting: ["Compassion Without Fixing"] },
 };
 
-const stageGate = {
-  "cafe-del-mar-calm": ["calm"],
-  "cafe-del-mar-chill": ["chill"],
-  "cafe-del-mar-house": ["house"],
-  "groove-salad": ["calm", "chill"],
-  "groove-salad-classic": ["calm", "chill"],
-  "sanctuary-dark-electro": ["house"],
-  "sanctuary-retro": ["chill", "house"],
-  "nts-slow-focus": ["calm"],
-  "nts-poolside": ["chill", "house"],
-  "nts-otaku": ["chill", "house"],
-  "nts-low-key": ["calm", "chill"],
+const musicRoomFit = {
+  "cafe-del-mar-calm": ["inner-planes"],
+  "cafe-del-mar-chill": ["champagne-bohemia"],
+  "cafe-del-mar-house": ["modul8-infinity"],
+  "groove-salad": ["champagne-bohemia"],
+  "groove-salad-classic": ["champagne-bohemia"],
+  "sanctuary-dark-electro": ["james-bondage"],
+  "sanctuary-retro": [],
+  "nts-slow-focus": ["inner-planes"],
+  "nts-poolside": ["champagne-bohemia"],
+  "nts-otaku": ["modul8-infinity"],
+  "nts-low-key": ["modul8-infinity"],
 };
 
 const pages = source.records.map((station) => {
@@ -47,7 +47,7 @@ const pages = source.records.map((station) => {
     "Station Stream URL": station.stream_url,
     "Station Player URL": station.player_url,
     "Stream Transport": station.stream_transport,
-    "Stage Gate Fit": stageGate[station.id],
+    "Music Room Fit": musicRoomFit[station.id],
     "Permission Scope": station.permission_scope,
     "Music Video": "__NO__",
     "Lyrics Source": "Unavailable",
@@ -92,7 +92,7 @@ const pages = source.records.map((station) => {
     "Writers": "Continuous curated station; writers vary by programme.",
     "Sensitive Audience Use Notes": station.not_suitable_citizen_state,
     "Human Variability Notes": "Station programming varies over time; explicit choices, listening duration, skips and returns refine personal affinity without locking the citizen into one pattern.",
-    "JSON Profile": JSON.stringify(JSON.stringify({ media_class: "radio_station", station_id: station.id, provider: station.provider, stream_url: station.stream_url, player_url: station.player_url, stream_transport: station.stream_transport, stage_gate_fit: stageGate[station.id], permission_scope: station.permission_scope, selector_policy: "music_channel_selector_v1.0" })),
+    "JSON Profile": JSON.stringify(JSON.stringify({ media_class: "radio_station", station_id: station.id, provider: station.provider, stream_url: station.stream_url, player_url: station.player_url, stream_transport: station.stream_transport, music_room_fit: musicRoomFit[station.id], permission_scope: station.permission_scope, selector_policy: "music_channel_selector_v1.0" })),
     ...station.need_scores,
   };
   const content = [
@@ -100,7 +100,7 @@ const pages = source.records.map((station) => {
     "",
     `- **Media class:** \`radio_station\``,
     `- **24/7 mode:** Radio`,
-    `- **Adaptive stage gates:** ${stageGate[station.id].join(", ")}`,
+    `- **Music room fit:** ${musicRoomFit[station.id].join(", ") || "Unassigned source"}`,
     `- **Primary function:** ${station.primary_environmental_function}`,
     `- **Public player:** [Open the station player](${station.player_url})`,
     `- **Runtime stream:** ${station.stream_url}`,
