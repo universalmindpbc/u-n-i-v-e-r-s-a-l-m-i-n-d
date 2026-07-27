@@ -48,7 +48,8 @@ assert.deepEqual(schedule.extended_session_format_policy.weights, { parties: 0.8
 assert.match(guide, /Parties 80% of the time, Radio 10% and Videos 10%/);
 
 assert.match(index, /James Bondage Health · sex-ed/);
-assert.equal((index.match(/data-sex-ed-card(?:\s|>)/g) || []).length, 5);
+assert.equal((index.match(/data-sex-ed-card(?:\s|>)/g) || []).length, 6);
+assert.match(index, /data-sex-ed-episode="06"[\s\S]{0,900}Healing Through Solo Rope &amp; Self Pleasure/);
 for (const episode of sources.episode_sources) {
   assert.equal(episode.transcript_verified, true);
   assert.match(guide, new RegExp(`EPISODE ${episode.episode}`));
