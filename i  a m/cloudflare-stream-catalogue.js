@@ -17,6 +17,7 @@
     "From Doula to Stripper - Reclaiming the Forbidden Feminine with Caitlin Erica.mp4": "55930437b1aeff8960fb73aee334fd71",
     "Globe Landing Page Video - Sunscreem - Perfection Motion for RMU.mp4": "fd142ca0e1672dd7a92729857db1facd",
     "Grimes - Genesis.mp4": "e6a813342812c4039b48aff744f64304",
+    "Healthy Sexuality Vs. Healing Sexuality - Teal Swan.mp4": "b35b5890ca38c7b99bfc7adaae5bc16c",
     "Homepage - Hero Background Video - Chanel 2020 Runway Show.mp4": "d86c877dafcfacfcda49aa40ed08ab57",
     "ISS - The Blue Pearl.mp4": "08d6983ef6584f2b8659ceaf0cfa248a",
     "JACQUEMUS - SS20 LE COUP DE SOLEIL.mp4": "00fe2d47012a31b3b0796fcf2e544360",

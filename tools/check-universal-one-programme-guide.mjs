@@ -39,7 +39,7 @@ for (const [editorialId, [descriptor, description]] of expectedEditorial) {
 }
 
 assert.match(index, /James Bondage Health · sex-ed/);
-assert.equal((index.match(/data-sex-ed-card(?:\s|>)/g) || []).length, 4);
+assert.equal((index.match(/data-sex-ed-card(?:\s|>)/g) || []).length, 5);
 for (const episode of sources.episode_sources) {
   assert.equal(episode.transcript_verified, true);
   assert.match(guide, new RegExp(`EPISODE ${episode.episode}`));

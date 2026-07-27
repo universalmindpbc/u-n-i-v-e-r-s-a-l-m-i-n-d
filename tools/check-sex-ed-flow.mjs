@@ -17,16 +17,18 @@ assert.match(index, /class="adaptive-television-sex-ed-link" href="#sex-ed-shelf
 assert.match(index, /data-now-playing[\s\S]*data-sex-ed-link/);
 assert.match(index, /data-now-playing-secondary-label>VISUAL</);
 assert.match(index, /class="adaptive-television-fashion-shelf adaptive-television-music-shelf adaptive-television-sex-ed-shelf"/);
-assert.equal((index.match(/data-sex-ed-card(?:\s|>)/g) || []).length, 4);
+assert.equal((index.match(/data-sex-ed-card(?:\s|>)/g) || []).length, 5);
 assert.match(index, /data-sex-ed-episode="01"[\s\S]{0,300}data-sex-ed-start-time="139"/);
 assert.match(index, /data-sex-ed-episode="02"/);
 assert.match(index, /data-sex-ed-episode="03"/);
 assert.match(index, /data-sex-ed-episode="04"/);
+assert.match(index, /data-sex-ed-episode="05"/);
 assert.match(index, /<strong>Reclaiming the Forbidden Feminine<\/strong>/);
 assert.match(index, /<strong>The Truth About Tantra &amp; Embodied Wealth<\/strong>/);
 assert.match(index, /<strong>Power, Sex &amp; Intimacy<\/strong>/);
 assert.match(index, /<strong>Expanding the Window of Pleasure<\/strong>/);
-assert.match(index, /1–4 \/ 4/);
+assert.match(index, /<strong>Healthy Sexuality vs\. Healing Sexuality<\/strong>/);
+assert.match(index, /1–4 \/ 5/);
 assert.match(index, /James Bondage Health · sex-ed/);
 assert.match(index, /data-television-live-pill/);
 assert.match(index, /data-reaction-wallet/);
@@ -115,6 +117,7 @@ for (const [fileName, uid] of [
   ["The Truth About Tantra, Sacred Union & Embodied Wealth - Sofia Sundari.mp4", "a821a9447efb3dd9381008eafac0ff78"],
   ["Femininity Explored - Power, Sex, & Intimacy, with Vylana.mp4", "ef8bbcd95a067bbc294d0d493b93fabc"],
   ["The Psychology of boring sex with Shashi Solluna - Tantra - Expanding The Window of Pleasure.mp4", "af6f972e12eb0e9317a0d4e0d694b382"],
+  ["Healthy Sexuality Vs. Healing Sexuality - Teal Swan.mp4", "b35b5890ca38c7b99bfc7adaae5bc16c"],
 ]) {
   assert.ok(catalogue.includes(`"${fileName}": "${uid}"`), `${fileName} must map to its ready Cloudflare Stream upload.`);
 }
@@ -131,4 +134,4 @@ for (const position of [2, 5]) {
   assert.equal(readFileSync(path, { encoding: null }).subarray(0, 3).toString(), "GIF");
 }
 
-console.log("Sex-ed four-episode shelf and shell-native show preflight passed.");
+console.log("Sex-ed five-episode shelf and shell-native show preflight passed.");
