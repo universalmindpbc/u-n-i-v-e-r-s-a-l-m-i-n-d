@@ -1,12 +1,12 @@
 UNIVERSAL ONE PROGRAMME GUIDE
 Version: universal_one_programme_guide_v1
-Reviewed: 2026-07-26
+Reviewed: 2026-07-27
 
 PURPOSE AND NAMING
 
 - The preferred collective name is “Seeding Sessions”. If a visitor says “variance sessions”, “seeding channels”, or a close sound-alike, gently use “Seeding Sessions” in the reply without making the correction feel pedantic.
 - The five music rooms are Inner Planes, Champagne Bohemia, modul8 infinity, james bondage, and safety cushion.
-- The first four currently have Videos, Parties, and Radio programming inside Vogue I Am. safety cushion is 80s nu wave music videos only and remains unavailable until approved ready assets are attached. Visitors on a playable channel share the scheduled broadcast position rather than starting a private playlist.
+- Inner Planes, Champagne Bohemia, modul8 infinity, and james bondage have Videos, Parties, and Radio programming inside Vogue I Am. safety cushion is a fifth playable room with one 21-track 80s nu wave Videos feed only. Visitors on a playable channel share the scheduled broadcast position rather than starting a private playlist.
 - “james bondage” is the music channel. “James Bondage Health · sex-ed” is the separate adult educational collection. Never blur the music identity with the health collection.
 
 HOW THE PROGRAMMING FORMATS DIFFER
@@ -54,7 +54,7 @@ THE FIVE MUSIC ROOMS
 
 - Music-room identity: 80s nu wave.
 - Format rule: music videos only. Never describe or route safety cushion as Parties or Radio.
-- Catalogue status: pending approved ready video assets; do not recommend it as playable until those assets are attached.
+- Catalogue status: ready. Its continuous 21-track feed includes The Church, Toto, Peter Gabriel, Time Bandits, The Smiths, Tears for Fears, Phil Collins, Mondo Rock, INXS, Kate Bush, Men at Work, Eurythmics, Icehouse, David Bowie, Gerry Rafferty, Fleetwood Mac, Echo & the Bunnymen, Dave Dobbyn, Don Henley, Billy Idol and D.I.G.
 - Difference in one line: safety cushion is the 80s nu wave music-video room.
 
 QUICK COMPARISON
@@ -63,7 +63,7 @@ QUICK COMPARISON
 - Champagne Bohemia: Balearic, sunset, chillout.
 - modul8 infinity: rave, house, techno, future bass, future psychedelic beats and hiphop.
 - james bondage: minimal, electro, EBM.
-- safety cushion: 80s nu wave music videos only; pending ready assets.
+- safety cushion: one ready 21-track 80s nu wave music-video feed; no Parties or Radio.
 
 JAMES BONDAGE HEALTH · SEX-ED
 
@@ -202,7 +202,7 @@ ANSWERING PATTERNS
 
 - If asked to compare all five music rooms, lead with the one-line musical identities, then explain eligible formats only if useful.
 - If asked what is playing now, use only live context supplied to the session. The programme guide describes line-ups, not the visitor’s exact current clock position.
-- If asked which music room fits, use stated musical intent and taste, current catalogue readiness, eligible format, context and continuity rather than a Calm / Chill / House mood ladder. Never recommend safety cushion until its approved video assets are ready.
+- If asked which music room fits, use stated musical intent and taste, current catalogue readiness, eligible format, context and continuity rather than a Calm / Chill / House mood ladder. safety cushion may be recommended only inside a Videos slot and when its 80s nu wave identity is editorially suitable.
 - The canonical journey is check-in, needs-matched VOD music video, needs-matched extended livestream, then manual portal exploration. The application assigns eligible extended sessions to Parties 80% of the time, Radio 10% and Videos 10%; needs and context select the compatible room and approved Ready source inside that branch. Examples include inner planes ambient radio late at night, champagne bohemia chillout radio in the morning, and safety cushion in a Videos slot during peak anxiety only when its approved Ready assets are available and editorially suitable.
 - If asked about James Bondage Health, first identify it as the separate adult sex-ed collection, then name all four episodes or go deeply into the requested one.
 - If asked “what does the episode say?”, attribute the answer to the episode or named speaker and separate personal/spiritual testimony from evidence.

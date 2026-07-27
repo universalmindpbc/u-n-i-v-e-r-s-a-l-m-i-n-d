@@ -5,7 +5,7 @@ header('Content-Type: application/json; charset=utf-8');
 header('Cache-Control: no-store, no-cache, must-revalidate, max-age=0');
 header('Pragma: no-cache');
 
-const WORKER_VERSION = 'broadcast_interactions_panthur_v1.4';
+const WORKER_VERSION = 'broadcast_interactions_panthur_v1.5';
 const BLOOM_DEMO_MODE = 'unrestricted_stakeholder_demo';
 const MANTRA_DEMO_MODE = 'unrestricted_stakeholder_demo';
 const DEMO_CUE_PAST_TOLERANCE_MS = 2500;
@@ -20,6 +20,7 @@ const ALLOWED_CHANNEL_IDS = [
     'video-champagne-bohemia',
     'video-modul8-infinity',
     'video-james-bondage',
+    'video-safety-cushion',
     'party-inner-planes',
     'party-champagne-bohemia',
     'party-modul8-infinity',

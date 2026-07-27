@@ -39,7 +39,11 @@ for (const [editorialId, [descriptor, description]] of expectedEditorial) {
 }
 const safetyCushion = schedule.music_rooms.find((room) => room.id === "safety-cushion");
 assert.deepEqual(safetyCushion.allowed_formats, ["videos"]);
-assert.equal(safetyCushion.catalogue_status, "pending_ready_assets");
+assert.equal(safetyCushion.catalogue_status, "ready");
+const safetyCushionChannels = schedule.channels.filter((channel) => channel.editorial_id === "safety-cushion");
+assert.deepEqual(safetyCushionChannels.map((channel) => channel.format), ["videos"]);
+assert.equal(safetyCushionChannels[0].schedule.length, 21);
+assert.match(guide, /one ready 21-track 80s nu wave music-video feed/);
 assert.deepEqual(schedule.extended_session_format_policy.weights, { parties: 0.8, radio: 0.1, videos: 0.1 });
 assert.match(guide, /Parties 80% of the time, Radio 10% and Videos 10%/);
 

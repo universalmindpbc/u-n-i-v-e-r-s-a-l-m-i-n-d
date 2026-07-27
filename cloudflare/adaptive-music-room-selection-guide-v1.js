@@ -46,7 +46,7 @@ export const ADAPTIVE_MUSIC_ROOM_SELECTION_GUIDE = {
       music_identity: ["80s nu wave"],
       allowed_formats: ["videos"],
       music_video_only: true,
-      catalogue_status: "pending_ready_assets",
+      catalogue_status: "ready",
     },
   },
   decision_hierarchy: [

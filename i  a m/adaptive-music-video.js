@@ -27,7 +27,7 @@
   const forceLiveVideoAllowed = searchParams.get("forceLiveVideo") === "1";
   const liveMusicAllowed = searchParams.get("mockMusic") !== "1";
   const MUSIC_INTELLIGENCE_VERSION = "adaptive_music_intelligence_v0.1";
-  const CATALOGUE_URL = "adaptive-music-video-catalogue-v1.11.json?v=music-video-catalogue-e9e88062e024";
+  const CATALOGUE_URL = "adaptive-music-video-catalogue-v1.11.json?v=music-video-catalogue-bd93dfd7e117";
 
   const stations = {
     "inner-planes": {
@@ -1038,7 +1038,7 @@
         few_shot_examples_applied: [
           "Choose the music room from musical identity, stated intent and taste, constructive trajectory, context and eligible catalogue sources.",
           "Calm remains a Citizen Needs signal; chillout and house remain genres, not room categories.",
-          "Safety Cushion is 80s nu wave music videos only and remains unavailable until approved ready assets are attached.",
+          "Safety Cushion is one ready 21-track 80s nu wave music-video feed and remains Videos only.",
         ],
         reviewed_candidate_count: reviewedCandidates.length,
         top_candidates: reviewedCandidates.slice(0, 4).map((candidate) => ({

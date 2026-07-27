@@ -1,5 +1,5 @@
 (function () {
-  const SCHEDULE_URL = "broadcast-schedule-v1.json?v=broadcast-schedule-933dcbb30ad9";
+  const SCHEDULE_URL = "broadcast-schedule-v1.json?v=broadcast-schedule-b46741ff14b6";
   const CLOCK_URL = "api/broadcast-clock.php";
   const CLOCK_PROBES = 3;
   let schedule = null;

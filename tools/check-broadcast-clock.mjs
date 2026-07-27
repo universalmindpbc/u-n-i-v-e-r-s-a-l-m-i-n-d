@@ -8,12 +8,37 @@ const IAM_DIR = path.join(ROOT, "i  a m");
 const schedule = JSON.parse(await fs.readFile(path.join(IAM_DIR, "broadcast-schedule-v1.json"), "utf8"));
 const controller = await fs.readFile(path.join(IAM_DIR, "adaptive-environment-television.js"), "utf8");
 const clockController = await fs.readFile(path.join(IAM_DIR, "broadcast-clock-v1.js"), "utf8");
+const streamCatalogue = await fs.readFile(path.join(IAM_DIR, "cloudflare-stream-catalogue.js"), "utf8");
 const index = await fs.readFile(path.join(IAM_DIR, "index.html"), "utf8");
 const endpoint = await fs.readFile(path.join(IAM_DIR, "api", "broadcast-clock.php"), "utf8");
 const stationTensor = JSON.parse(await fs.readFile(path.join(IAM_DIR, "radio-station-tensor-notion-export-v1.0.json"), "utf8"));
 
-const playableEditorialIds = ["inner-planes", "champagne-bohemia", "modul8-infinity", "james-bondage"];
-const canonicalMusicRoomIds = [...playableEditorialIds, "safety-cushion"];
+const crossFormatEditorialIds = ["inner-planes", "champagne-bohemia", "modul8-infinity", "james-bondage"];
+const playableEditorialIds = [...crossFormatEditorialIds, "safety-cushion"];
+const canonicalMusicRoomIds = playableEditorialIds;
+const safetyCushionVideoAssets = [
+  { trackId: "the-church-under-the-milky-way", fileName: "The Church - Under The Milky Way.mp4", uid: "19712d560f74ab319f60a224686dc7e1", duration: 298.396 },
+  { trackId: "toto-africa", fileName: "Toto - Africa.mp4", uid: "e9e7a71c6463d30ad68153a87caf8666", duration: 271.298 },
+  { trackId: "peter-gabriel-sledgehammer", fileName: "Peter Gabriel - Sledgehammer.mp4", uid: "d27b2cbadecf9e82bb1ae4f87566bb0f", duration: 337 },
+  { trackId: "time-bandits-im-only-shooting-love", fileName: "Time Bandits - I'm Only Shooting Love.mp4", uid: "5df603b212bf6f86012b33afb42208bd", duration: 255.39 },
+  { trackId: "the-smiths-how-soon-is-now", fileName: "The Smiths - How Soon Is Now.mp4", uid: "868cb171465d3b5f9987e3525ff9853e", duration: 215.9 },
+  { trackId: "tears-for-fears-head-over-heels", fileName: "Tears For Fears - Head Over Heels.mp4", uid: "c172b678ede9d181b364254edb950468", duration: 255.39 },
+  { trackId: "phil-collins-in-the-air-tonight", fileName: "Phil Collins - In The Air Tonight.mp4", uid: "d75e5205f40538c5ea95774d0fc879a4", duration: 293.09 },
+  { trackId: "mondo-rock-come-said-the-boy", fileName: "Mondo Rock - Come Said The Boy.mp4", uid: "46dfff07c7055ea713be6fe202e2d297", duration: 282 },
+  { trackId: "inxs-dont-change", fileName: "INXS - Don't Change.mp4", uid: "c2798773d4d87e3c8b4d7e9e02bdb83f", duration: 270.1 },
+  { trackId: "kate-bush-running-up-that-hill", fileName: "Kate Bush - Running Up That Hill.mp4", uid: "d2b7246f4e982309ad26f079716ce915", duration: 295.79 },
+  { trackId: "men-at-work-who-can-it-be-now", fileName: "Men At Work - Who Can It Be Now.mp4", uid: "4eb95e6ed02bb1ba4370d5ce8ce54fd0", duration: 207.79 },
+  { trackId: "eurythmics-here-comes-the-rain-again", fileName: "Eurythmics - Here Comes The Rain Again.mp4", uid: "a4f7350e7ef712c8e12d41edcff93c27", duration: 283.5 },
+  { trackId: "icehouse-electric-blue", fileName: "ICEHOUSE - Electric Blue.mp4", uid: "e268a70974dc3fe8e57d73cbb45ab9f6", duration: 276.276 },
+  { trackId: "david-bowie-fashion", fileName: "David Bowie - Fashion.mp4", uid: "61aa02fa6544ab7b2ccd5be88fc274f6", duration: 207.79 },
+  { trackId: "gerry-rafferty-baker-street", fileName: "Gerry Rafferty - Baker Street.mp4", uid: "38d0a05ae045cf99f369277b09e91ab7", duration: 343.8 },
+  { trackId: "fleetwood-mac-everywhere", fileName: "Fleetwood Mac - Everywhere.mp4", uid: "aa4e1c6c9d63e4ed6a92037d753134da", duration: 219.496 },
+  { trackId: "echo-and-the-bunnymen-the-killing-moon", fileName: "Echo & The Bunnymen - The Killing Moon.mp4", uid: "edbb056c0a295753a79c8b41d5122b2e", duration: 294.09 },
+  { trackId: "dave-dobbyn-slice-of-heaven", fileName: "Dave Dobbyn - Slice of Heaven.mp4", uid: "fd1197c35a1d050846124def4d79c04d", duration: 250.39 },
+  { trackId: "don-henley-the-boys-of-summer", fileName: "Don Henley - The Boys Of Summer.mp4", uid: "79a793ca8abc307e78a14221bc4ecb34", duration: 285.594 },
+  { trackId: "billy-idol-eyes-without-a-face", fileName: "Billy Idol - Eyes Without A Face.mp4", uid: "6079e8e9ff406dc5e3b036f9df8242ce", duration: 294.492 },
+  { trackId: "dig-two-way-dreamtime", fileName: "D I G Two Way Dreamtime.mp4", uid: "ff80e2452cc9a8781c09070ba7b6882e", duration: 239.2 },
+];
 const videoDurations = new Map([
   ["madonna-frozen", 329],
   ["madonna-ray-of-light", 306.994],
@@ -37,6 +62,7 @@ const videoDurations = new Map([
   ["u2-numb", 260.39],
   ["linkin-park-numb-official", 187.094],
   ["linkin-park-numb-live-2024", 192.098],
+  ...safetyCushionVideoAssets.map(({ trackId, duration }) => [trackId, duration]),
 ]);
 const djDurations = new Map([
   ["sasha-ibiza-boat-at-sunset-freqways", 5273.194],
@@ -66,12 +92,15 @@ const approvedStationIds = new Set(
     .map((station) => station.id)
 );
 
-assert.equal(schedule.stage, "five_music_rooms_safety_cushion_pending_assets");
+assert.equal(schedule.stage, "five_music_rooms_live_safety_cushion_ready");
 assert.deepEqual(schedule.music_rooms.map((room) => room.id), canonicalMusicRoomIds);
 const safetyCushion = schedule.music_rooms.find((room) => room.id === "safety-cushion");
 assert.deepEqual(safetyCushion.allowed_formats, ["videos"]);
-assert.equal(safetyCushion.catalogue_status, "pending_ready_assets");
-assert.ok(!schedule.channels.some((channel) => channel.editorial_id === "safety-cushion"), "Safety Cushion must remain unavailable until approved ready videos are attached.");
+assert.equal(safetyCushion.catalogue_status, "ready");
+const safetyCushionChannel = schedule.channels.find((channel) => channel.id === "video-safety-cushion");
+assert.ok(safetyCushionChannel, "Safety Cushion must expose its approved Videos channel.");
+assert.equal(safetyCushionChannel.format, "videos");
+assert.equal(safetyCushionChannel.media_type, "video");
 assert.ok(Number.isFinite(Date.parse(schedule.epoch_utc)), "The shared UTC epoch must be valid.");
 assert.deepEqual(
   schedule.planning_markets.map((market) => market.name),
@@ -81,15 +110,18 @@ assert.deepEqual(
   schedule.planning_markets.map((market) => market.time_zone),
   ["Australia/Sydney", "America/Los_Angeles", "Europe/Madrid"]
 );
-assert.equal(schedule.channels.length, 16, "The schedule must expose twelve public Music channels, three public Fashion channels and one private Radio visual channel.");
+assert.equal(schedule.channels.length, 17, "The schedule must expose thirteen public Music channels, three public Fashion channels and one private Radio visual channel.");
 
 for (const format of ["videos", "parties", "radio"]) {
   const channels = schedule.channels.filter((channel) => channel.format === format);
-  assert.equal(channels.length, 4, `${format} must expose the four named editorial channels.`);
-  assert.deepEqual(channels.map((channel) => channel.editorial_id), playableEditorialIds);
+  const expectedEditorialIds = format === "videos" ? playableEditorialIds : crossFormatEditorialIds;
+  assert.equal(channels.length, expectedEditorialIds.length, `${format} must expose its eligible editorial channels.`);
+  assert.deepEqual(channels.map((channel) => channel.editorial_id), expectedEditorialIds);
   assert.deepEqual(
     channels.map((channel) => channel.name),
-    ["Inner Planes", "Champagne Bohemia", "modul8 infinity", "james bondage"]
+    format === "videos"
+      ? ["Inner Planes", "Champagne Bohemia", "modul8 infinity", "james bondage", "safety cushion"]
+      : ["Inner Planes", "Champagne Bohemia", "modul8 infinity", "james bondage"]
   );
 }
 assert.deepEqual(
@@ -180,8 +212,17 @@ for (const channel of schedule.channels) {
   }
 }
 
-assert.deepEqual(new Set(scheduledVideos), new Set(videoDurations.keys()), "All 22 verified music videos must belong to exactly one shared channel.");
+assert.deepEqual(new Set(scheduledVideos), new Set(videoDurations.keys()), "All 43 verified music videos must belong to exactly one shared channel.");
 assert.equal(scheduledVideos.length, videoDurations.size, "A music video cannot belong to more than one shared channel.");
+assert.deepEqual(
+  safetyCushionChannel.schedule.map((entry) => entry.track_id),
+  safetyCushionVideoAssets.map((asset) => asset.trackId),
+  "Safety Cushion must contain the exact 21 approved videos in one continuous cycle."
+);
+for (const asset of safetyCushionVideoAssets) {
+  assert.ok(controller.includes(`id: "${asset.trackId}"`) && controller.includes(`a s s e t s/${asset.fileName}`), `${asset.trackId} must resolve to its approved player filename.`);
+  assert.ok(streamCatalogue.includes(`${JSON.stringify(asset.fileName)}: ${JSON.stringify(asset.uid)}`), `${asset.fileName} must resolve to its exact Cloudflare Stream UID.`);
+}
 assert.ok(!scheduledVideos.includes("nine-inch-nails-closer-glastonbury-2026"), "The unverified Nine Inch Nails item must stay outside the shared broadcast.");
 assert.deepEqual(new Set(scheduledDjSets), new Set(djDurations.keys()), "All ten approved DJ sets and mixes must belong to exactly one shared channel.");
 assert.equal(scheduledDjSets.length, djDurations.size, "A DJ set cannot belong to more than one shared channel.");
@@ -234,4 +275,4 @@ assert.match(index, /broadcast-clock-v1\.js/);
 assert.match(endpoint, /microtime\(true\) \* 1000/);
 assert.match(endpoint, /Cache-Control: no-store/);
 
-console.log("Broadcast clock preflight passed: five canonical music rooms are encoded; four have live Videos, Parties and Radio; Safety Cushion remains video-only and pending ready assets.");
+console.log("Broadcast clock preflight passed: five canonical music rooms are live; Safety Cushion has one ready 21-track Videos feed and no Parties or Radio.");

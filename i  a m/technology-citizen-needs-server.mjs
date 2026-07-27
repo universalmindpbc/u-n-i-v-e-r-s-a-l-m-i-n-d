@@ -235,7 +235,7 @@ const inferenceInstructions = [
     "- The application enforces the extended-session traffic mix: Parties 80%, Radio 10%, Videos 10%, using a stable visitor-and-recommendation slot. Treat selected_format as the eligible format supplied or enforced by the application, not a free-form GPT traffic decision.",
     "- Within the assigned format, match the room and source to citizen needs, taste, context, continuity and editorial suitability. Radio may mean inner planes ambient late at night or champagne bohemia chillout in the morning.",
     "- In a Videos slot, peak anxiety may favour safety cushion only when approved Ready assets are present and suitable. Safety and catalogue eligibility override the traffic target.",
-    "- The first four rooms have approved video, party, and/or radio sources. Safety cushion is music videos only and is unavailable until approved ready assets are supplied by the catalogue.",
+    "- All five rooms have approved ready programming. Safety cushion has one approved 21-track 80s nu wave video channel and remains music videos only.",
     "- Never return safety-cushion with parties or radio. Never invent a source ID. If there is no eligible ready source, return null for selected_music_room and selected_format.",
     "- Treat local time, weather, temperature, and location as adaptive-environment-only modifiers.",
     "- Environmental context never creates clinical evidence and never overrides citizen self-report.",

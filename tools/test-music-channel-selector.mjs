@@ -22,8 +22,9 @@ const ranked = selector.rank(sample, { mode: "radio", atWork: true, citizenNeeds
 assert.equal(ranked.ranked[0].id, "inner-planes");
 const safetyCushionPending = { id: "safety", editorial_id: "safety-cushion", catalogue_status: "pending_ready_assets" };
 assert.equal(selector.rank([safetyCushionPending], { mode: "videos" }).recommendations.length, 0);
-assert.equal(selector.rank([{ ...safetyCushionPending, catalogue_status: "ready" }], { mode: "videos" }).recommendations.length, 1);
-assert.equal(selector.rank([{ ...safetyCushionPending, catalogue_status: "ready" }], { mode: "radio" }).recommendations.length, 0);
+const safetyCushionReady = { ...safetyCushionPending, catalogue_status: "ready" };
+assert.equal(selector.rank([safetyCushionReady], { mode: "videos" }).recommendations.length, 1);
+assert.equal(selector.rank([safetyCushionReady], { mode: "radio" }).recommendations.length, 0);
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const radioTensor = JSON.parse(fs.readFileSync(path.join(root, "i  a m", "radio-station-tensor-notion-export-v1.0.json"), "utf8"));

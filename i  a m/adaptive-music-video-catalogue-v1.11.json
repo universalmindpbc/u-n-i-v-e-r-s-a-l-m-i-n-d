@@ -21960,7 +21960,7 @@
       ],
       "station_pool": [],
       "music_video_only": true,
-      "catalogue_status": "pending_ready_assets"
+      "catalogue_status": "ready"
     }
   },
   "extended_session_format_policy": {

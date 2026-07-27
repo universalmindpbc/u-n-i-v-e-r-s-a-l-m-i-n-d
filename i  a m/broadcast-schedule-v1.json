@@ -1,6 +1,6 @@
 {
-  "version": "broadcast_schedule_v1.3",
-  "stage": "five_music_rooms_safety_cushion_pending_assets",
+  "version": "broadcast_schedule_v1.4",
+  "stage": "five_music_rooms_live_safety_cushion_ready",
   "epoch_utc": "2026-07-24T00:00:00.000Z",
   "extended_session_format_policy": {
     "journey": [
@@ -166,6 +166,102 @@
         {
           "track_id": "linkin-park-numb-live-2024",
           "duration_seconds": 192.098
+        }
+      ]
+    },
+    {
+      "id": "video-safety-cushion",
+      "format": "videos",
+      "media_type": "video",
+      "energy_id": "restore",
+      "editorial_id": "safety-cushion",
+      "name": "safety cushion",
+      "descriptor": "80s nu wave",
+      "description": "80s nu wave",
+      "schedule": [
+        {
+          "track_id": "the-church-under-the-milky-way",
+          "duration_seconds": 298.396
+        },
+        {
+          "track_id": "toto-africa",
+          "duration_seconds": 271.298
+        },
+        {
+          "track_id": "peter-gabriel-sledgehammer",
+          "duration_seconds": 337
+        },
+        {
+          "track_id": "time-bandits-im-only-shooting-love",
+          "duration_seconds": 255.39
+        },
+        {
+          "track_id": "the-smiths-how-soon-is-now",
+          "duration_seconds": 215.9
+        },
+        {
+          "track_id": "tears-for-fears-head-over-heels",
+          "duration_seconds": 255.39
+        },
+        {
+          "track_id": "phil-collins-in-the-air-tonight",
+          "duration_seconds": 293.09
+        },
+        {
+          "track_id": "mondo-rock-come-said-the-boy",
+          "duration_seconds": 282
+        },
+        {
+          "track_id": "inxs-dont-change",
+          "duration_seconds": 270.1
+        },
+        {
+          "track_id": "kate-bush-running-up-that-hill",
+          "duration_seconds": 295.79
+        },
+        {
+          "track_id": "men-at-work-who-can-it-be-now",
+          "duration_seconds": 207.79
+        },
+        {
+          "track_id": "eurythmics-here-comes-the-rain-again",
+          "duration_seconds": 283.5
+        },
+        {
+          "track_id": "icehouse-electric-blue",
+          "duration_seconds": 276.276
+        },
+        {
+          "track_id": "david-bowie-fashion",
+          "duration_seconds": 207.79
+        },
+        {
+          "track_id": "gerry-rafferty-baker-street",
+          "duration_seconds": 343.8
+        },
+        {
+          "track_id": "fleetwood-mac-everywhere",
+          "duration_seconds": 219.496
+        },
+        {
+          "track_id": "echo-and-the-bunnymen-the-killing-moon",
+          "duration_seconds": 294.09
+        },
+        {
+          "track_id": "dave-dobbyn-slice-of-heaven",
+          "duration_seconds": 250.39
+        },
+        {
+          "track_id": "don-henley-the-boys-of-summer",
+          "duration_seconds": 285.594
+        },
+        {
+          "track_id": "billy-idol-eyes-without-a-face",
+          "duration_seconds": 294.492
+        },
+        {
+          "track_id": "dig-two-way-dreamtime",
+          "duration_seconds": 239.2
         }
       ]
     },
@@ -631,7 +727,7 @@
         "videos"
       ],
       "music_video_only": true,
-      "catalogue_status": "pending_ready_assets"
+      "catalogue_status": "ready"
     }
   ]
 }
