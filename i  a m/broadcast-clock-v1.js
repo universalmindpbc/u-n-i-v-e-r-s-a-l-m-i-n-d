@@ -1,7 +1,11 @@
 (function () {
-  const SCHEDULE_URL = "broadcast-schedule-v1.json?v=broadcast-schedule-b46741ff14b6";
+  const SCHEDULE_URL = "broadcast-schedule-v1.json?v=broadcast-schedule-144d67514823";
   const CLOCK_URL = "api/broadcast-clock.php";
   const CLOCK_PROBES = 3;
+  const requestedQaOffsetSeconds = Number(new URLSearchParams(window.location.search).get("broadcast_qa_offset_seconds"));
+  const qaOffsetSeconds = window.location.hostname === "staging.universalmind.tv" && Number.isFinite(requestedQaOffsetSeconds)
+    ? Math.max(-3600, Math.min(3600, requestedQaOffsetSeconds))
+    : 0;
   let schedule = null;
   let clockOffsetMs = 0;
   let clockSource = "device_fallback";
@@ -107,7 +111,7 @@
   }
 
   function nowMs() {
-    return Date.now() + clockOffsetMs;
+    return Date.now() + clockOffsetMs + (qaOffsetSeconds * 1000);
   }
 
   function channelForId(channelId) {
@@ -198,6 +202,7 @@
     document.body.dataset.broadcastClockState = "ready";
     document.body.dataset.broadcastClockSource = clockSource;
     document.body.dataset.broadcastClockOffsetMs = clockOffsetMs.toFixed(1);
+    if (qaOffsetSeconds) document.body.dataset.broadcastClockQaOffsetSeconds = qaOffsetSeconds.toFixed(3);
     if (clockRoundTripMs !== null) document.body.dataset.broadcastClockRoundTripMs = String(clockRoundTripMs);
     window.dispatchEvent(new CustomEvent("iam:broadcast-clock-ready", {
       detail: { version: schedule.version, clockSource },
@@ -243,6 +248,7 @@
         clockSource,
         clockOffsetMs,
         clockRoundTripMs,
+        qaOffsetSeconds,
       };
     },
   };

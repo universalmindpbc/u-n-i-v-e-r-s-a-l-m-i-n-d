@@ -19,7 +19,7 @@ const canonicalMusicRoomIds = playableEditorialIds;
 const safetyCushionVideoAssets = [
   { trackId: "the-church-under-the-milky-way", fileName: "The Church - Under The Milky Way.mp4", uid: "19712d560f74ab319f60a224686dc7e1", duration: 298.396 },
   { trackId: "toto-africa", fileName: "Toto - Africa.mp4", uid: "e9e7a71c6463d30ad68153a87caf8666", duration: 271.298 },
-  { trackId: "peter-gabriel-sledgehammer", fileName: "Peter Gabriel - Sledgehammer.mp4", uid: "d27b2cbadecf9e82bb1ae4f87566bb0f", duration: 337 },
+  { trackId: "peter-gabriel-sledgehammer", fileName: "Peter Gabriel - Sledgehammer.mp4", uid: "d27b2cbadecf9e82bb1ae4f87566bb0f", duration: 345 },
   { trackId: "time-bandits-im-only-shooting-love", fileName: "Time Bandits - I'm Only Shooting Love.mp4", uid: "5df603b212bf6f86012b33afb42208bd", duration: 255.39 },
   { trackId: "the-smiths-how-soon-is-now", fileName: "The Smiths - How Soon Is Now.mp4", uid: "868cb171465d3b5f9987e3525ff9853e", duration: 215.9 },
   { trackId: "tears-for-fears-head-over-heels", fileName: "Tears For Fears - Head Over Heels.mp4", uid: "c172b678ede9d181b364254edb950468", duration: 255.39 },
@@ -31,7 +31,7 @@ const safetyCushionVideoAssets = [
   { trackId: "eurythmics-here-comes-the-rain-again", fileName: "Eurythmics - Here Comes The Rain Again.mp4", uid: "a4f7350e7ef712c8e12d41edcff93c27", duration: 283.5 },
   { trackId: "icehouse-electric-blue", fileName: "ICEHOUSE - Electric Blue.mp4", uid: "e268a70974dc3fe8e57d73cbb45ab9f6", duration: 276.276 },
   { trackId: "david-bowie-fashion", fileName: "David Bowie - Fashion.mp4", uid: "61aa02fa6544ab7b2ccd5be88fc274f6", duration: 207.79 },
-  { trackId: "gerry-rafferty-baker-street", fileName: "Gerry Rafferty - Baker Street.mp4", uid: "38d0a05ae045cf99f369277b09e91ab7", duration: 343.8 },
+  { trackId: "gerry-rafferty-baker-street", fileName: "Gerry Rafferty - Baker Street.mp4", uid: "38d0a05ae045cf99f369277b09e91ab7", duration: 371.8 },
   { trackId: "fleetwood-mac-everywhere", fileName: "Fleetwood Mac - Everywhere.mp4", uid: "aa4e1c6c9d63e4ed6a92037d753134da", duration: 219.496 },
   { trackId: "echo-and-the-bunnymen-the-killing-moon", fileName: "Echo & The Bunnymen - The Killing Moon.mp4", uid: "edbb056c0a295753a79c8b41d5122b2e", duration: 294.09 },
   { trackId: "dave-dobbyn-slice-of-heaven", fileName: "Dave Dobbyn - Slice of Heaven.mp4", uid: "fd1197c35a1d050846124def4d79c04d", duration: 250.39 },
@@ -239,6 +239,14 @@ assert.match(clockController, /previousRunwayId/, "The shared clock must expose 
 assert.match(controller, /channels\?\.\(mode\)/, "Videos, DJ Sets, Radio and Fashion must all resolve through the shared clock.");
 assert.match(controller, /absoluteDrift > 1\.25/, "Shared video playback must hard-correct material drift.");
 assert.match(controller, /localVideo\.playbackRate = driftSeconds > 0 \? \.98 : 1\.02/, "Shared video playback must gently correct smaller drift.");
+assert.match(controller, /MUSIC_HANDOFF_PRELOAD_LEAD_SECONDS = 45/, "Every video channel must prepare its next programme before rollover.");
+assert.match(controller, /preloadUpcomingMusicVideo\(state\)/, "Shared video playback must preload the next scheduled music video.");
+assert.match(controller, /activateBufferedMusicHandoff/, "Shared video playback must activate a buffered incoming video instead of detaching the outgoing picture first.");
+assert.match(controller, /waitForAlignedMusicVideo/, "The incoming video must be clock-aligned before it is revealed.");
+assert.match(controller, /oldVideo\.pause\(\)[\s\S]*localVideo = incoming/, "The outgoing video must remain active until the incoming video is ready.");
+assert.match(controller, /broadcastHandoffPlaybackRate = incoming\.playbackRate\.toFixed\(2\)/, "Completed handoffs must expose their locked playback rate for live QA.");
+assert.match(clockController, /window\.location\.hostname === "staging\.universalmind\.tv"/, "Accelerated transition QA must remain staging-only.");
+assert.match(clockController, /broadcast_qa_offset_seconds/, "Staging must support deterministic all-channel rollover proof.");
 assert.match(controller, /broadcastCorrection = "live_station_locked"/, "Shared Radio must retain the station selected by the timetable.");
 assert.match(controller, /\["parties", "radio", "videos"\]\.includes\(extendedSession\.format\)/, "The personal opening video must honour the assigned 80/10/10 extended-session format.");
 assert.match(controller, /item\.editorialId === selectedRoom/, "The extended livestream must remain inside the needs-matched music room.");
@@ -275,4 +283,4 @@ assert.match(index, /broadcast-clock-v1\.js/);
 assert.match(endpoint, /microtime\(true\) \* 1000/);
 assert.match(endpoint, /Cache-Control: no-store/);
 
-console.log("Broadcast clock preflight passed: five canonical music rooms are live; Safety Cushion has one ready 21-track Videos feed and no Parties or Radio.");
+console.log("Broadcast clock preflight passed: five canonical music rooms use buffered, clock-aligned video handoffs; Safety Cushion has one ready 21-track Videos feed and no Parties or Radio.");
