@@ -1,16 +1,16 @@
 {
-  "version": "universal_one_programme_sources_v1",
-  "reviewed": "2026-07-26",
+  "version": "universal_one_programme_sources_v1.1",
+  "reviewed": "2026-07-27",
   "use_policy": {
     "assistant_surface": "Universal One Realtime voice",
-    "storage": "Transcript-derived editorial briefing only; full third-party transcripts are not stored in the website repository.",
+    "storage": "Source-derived editorial briefing only; full third-party transcripts are not stored in the website repository.",
     "response_rule": "Paraphrase and attribute by default. Do not reproduce long transcript passages.",
     "health_rule": "Episode viewpoints are educational source material, not diagnosis, treatment, obstetric advice, trauma therapy, financial advice, or established medical fact."
   },
   "programme_sources": [
     {
       "id": "seeding-sessions",
-      "title": "Four Seeding Sessions programming",
+      "title": "Four Seeding Sessions plus the additional Safety Cushion channel",
       "source_type": "first_party_schedule",
       "path": "broadcast-schedule-v1.json",
       "verified": true
@@ -20,6 +20,13 @@
       "title": "James Bondage Health sex-ed collection",
       "source_type": "first_party_interface",
       "path": "index.html",
+      "verified": true
+    },
+    {
+      "id": "james-bondage-shop",
+      "title": "James Bondage Shop and giving model",
+      "source_type": "first_party_interface",
+      "path": "shop.html",
       "verified": true
     }
   ],
@@ -56,6 +63,28 @@
       "url": "https://www.youtube.com/watch?v=o3Mo1bt3qmU",
       "transcript_source": "YouTube transcript panel",
       "transcript_verified": true
+    },
+    {
+      "episode": "05",
+      "title": "Healthy Sexuality Vs. Healing Sexuality",
+      "publisher": "Teal Swan",
+      "url": "https://www.youtube.com/watch?v=9Feb6b1kIsw",
+      "companion_source": "https://tealswan.com/resources/articles/what-is-healthy-sexuality-r319/",
+      "transcript_source": "YouTube auto-transcript cross-checked against the official companion article",
+      "transcript_verified": true,
+      "source_verified": true
+    },
+    {
+      "episode": "06",
+      "title": "#81 Healing through BDSM, Solo-rope bondage and Self pleasure for more sensual fulfillment with Jaqueline Michelle",
+      "collection_display_name": "Healing Through Solo Rope & Self Pleasure with Jacqueline Michelle",
+      "publisher": "Soul Naked by Tanja Hirsch",
+      "url": "https://creators.spotify.com/pod/profile/tanja-hirsch",
+      "source_type": "publisher episode page and chapter notes",
+      "source_verified": true,
+      "transcript_verified": false,
+      "coverage_note": "The briefing is limited to the publisher summary and published topic markers; Universal One must not invent unsupported episode detail.",
+      "visual_layer": "Karl Lagerfeld - The Making of the 2011 Pirelli Calendar; subtle background editorial only, not the episode source or subject."
     }
   ]
 }

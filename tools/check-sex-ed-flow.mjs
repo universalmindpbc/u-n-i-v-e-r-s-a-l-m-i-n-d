@@ -30,6 +30,8 @@ assert.match(index, /<strong>Power, Sex &amp; Intimacy<\/strong>/);
 assert.match(index, /<strong>Expanding the Window of Pleasure<\/strong>/);
 assert.match(index, /<strong>Healthy Sexuality vs\. Healing Sexuality<\/strong>/);
 assert.match(index, /<strong>Healing Through Solo Rope &amp; Self Pleasure<\/strong>/);
+assert.match(index, /<span>Jacqueline Michelle<\/span>/);
+assert.match(index, /aria-label="Open episode 06:[^"]+Jacqueline Michelle"/);
 assert.match(index, /b35b5890ca38c7b99bfc7adaae5bc16c\/thumbnails\/thumbnail\.jpg\?time=60s&height=360/);
 assert.match(index, /7f60e29d9e432bf4198df7dc223b66ef\/thumbnails\/thumbnail\.jpg\?time=60s&height=360/);
 assert.match(index, /1–4 \/ 6/);

@@ -1,12 +1,12 @@
 UNIVERSAL ONE PROGRAMME GUIDE
-Version: universal_one_programme_guide_v1
+Version: universal_one_programme_guide_v1.1
 Reviewed: 2026-07-27
 
 PURPOSE AND NAMING
 
-- The preferred collective name is “Seeding Sessions”. If a visitor says “variance sessions”, “seeding channels”, or a close sound-alike, gently use “Seeding Sessions” in the reply without making the correction feel pedantic.
-- The five music rooms are Inner Planes, Champagne Bohemia, modul8 infinity, james bondage, and safety cushion.
-- Inner Planes, Champagne Bohemia, modul8 infinity, and james bondage have Videos, Parties, and Radio programming inside Vogue I Am. safety cushion is a fifth playable room with one 21-track 80s nu wave Videos feed only. Visitors on a playable channel share the scheduled broadcast position rather than starting a private playlist.
+- The preferred collective name for Inner Planes, Champagne Bohemia, modul8 infinity, and james bondage is “Seeding Sessions”. If a visitor says “variance sessions”, “seeding channels”, or a close sound-alike, gently use “Seeding Sessions” in the reply without making the correction feel pedantic.
+- safety cushion is an additional music room, not a fifth Seeding Session. It is a 24/7 music-video channel with a continuous 21-track 80s nu wave feed.
+- The four Seeding Sessions have Videos, Parties, and Radio programming inside Vogue I Am. safety cushion is Videos-only. Visitors on a playable channel share the scheduled broadcast position rather than starting a private playlist.
 - “james bondage” is the music channel. “James Bondage Health · sex-ed” is the separate adult educational collection. Never blur the music identity with the health collection.
 
 HOW THE PROGRAMMING FORMATS DIFFER
@@ -16,7 +16,7 @@ HOW THE PROGRAMMING FORMATS DIFFER
 - Radio rotates live or continuously programmed stations in two-hour schedule blocks. The listener joins what that channel is broadcasting now.
 - Programme line-ups can change. Describe the guide below as the current programmed identity and examples, not an eternal catalogue.
 
-THE FIVE MUSIC ROOMS
+THE FOUR SEEDING SESSIONS + SAFETY CUSHION
 
 1. Inner Planes
 
@@ -53,9 +53,10 @@ THE FIVE MUSIC ROOMS
 5. safety cushion
 
 - Music-room identity: 80s nu wave.
+- Identity rule: an additional 24/7 music-video channel, not a fifth Seeding Session.
 - Format rule: music videos only. Never describe or route safety cushion as Parties or Radio.
 - Catalogue status: ready. Its continuous 21-track feed includes The Church, Toto, Peter Gabriel, Time Bandits, The Smiths, Tears for Fears, Phil Collins, Mondo Rock, INXS, Kate Bush, Men at Work, Eurythmics, Icehouse, David Bowie, Gerry Rafferty, Fleetwood Mac, Echo & the Bunnymen, Dave Dobbyn, Don Henley, Billy Idol and D.I.G.
-- Difference in one line: safety cushion is the 80s nu wave music-video room.
+- Difference in one line: safety cushion is the additional 24/7 80s nu wave music-video channel.
 
 QUICK COMPARISON
 
@@ -63,12 +64,12 @@ QUICK COMPARISON
 - Champagne Bohemia: Balearic, sunset, chillout.
 - modul8 infinity: rave, house, techno, future bass, future psychedelic beats and hiphop.
 - james bondage: minimal, electro, EBM.
-- safety cushion: one ready 21-track 80s nu wave music-video feed; no Parties or Radio.
+- safety cushion: an additional 24/7, ready 21-track 80s nu wave music-video feed; no Parties or Radio.
 
 JAMES BONDAGE HEALTH · SEX-ED
 
 - James Bondage Health · sex-ed is an adult educational collection in Vogue I Am.
-- It currently contains four long-form conversations about sexuality, embodiment, intimacy, relationships and wellbeing.
+- It currently contains six conversations about sexuality, embodiment, intimacy, relationships and wellbeing.
 - The collection is educational and editorial, not a clinical service. It includes mature discussion of sexual experience, trauma, birth, pleasure, gendered social conditioning, spiritual frameworks and relationship structures.
 - When describing an episode, distinguish the programme’s speakers’ ideas from established medical fact. Use phrases such as “the episode explores”, “the guest describes”, or “the speakers propose”.
 - Paraphrase by default. Never recite long transcript passages. A short phrase may be quoted only when useful and clearly attributed.
@@ -198,13 +199,72 @@ Published topic markers:
 - 1:29:38: performance pressure and presence.
 - 1:33:45: the “Circle of Light” practice.
 
+EPISODE 05
+
+Title: “Healthy Sexuality vs. Healing Sexuality”
+Collection label: “Healthy Sexuality vs. Healing Sexuality”
+Speaker: Teal Swan.
+Duration: approximately 20 minutes.
+Source: Teal Swan’s official video and companion article, “What Is Healthy Sexuality?”, YouTube video 9Feb6b1kIsw.
+
+Core arc:
+
+- Teal distinguishes an externally imposed ideal of “healthy sexuality” from an inside-out process she calls “healing sexuality”. Her central proposal is to stop using a supposedly perfect standard to shame oneself and instead notice what genuinely moves a person or couple toward greater integration.
+- She argues that ideas about sex are strongly shaped by family, religion, society, culture and personal experience. Present this as Teal’s framework, not a universal psychological model.
+- Power play, domination and submission are used as examples of why the same practice may feel healing to one person and detrimental to another. Never turn that example into a recommendation, a trauma treatment or a claim that reenactment is inherently therapeutic.
+- The useful editorial thread is individual self-understanding, continuing consent, attunement, boundaries and freedom from shame—not a single prescribed form of sexuality.
+- Teal also makes energetic and spiritual claims involving chakras, manifestation and sexual energy. Attribute those claims to her and never present them as established medical or scientific fact.
+- Universal One may explain the episode’s ideas but must not diagnose sexual trauma, prescribe sexual activity as healing, or tell a visitor to use domination, submission or another intimate practice to treat distress.
+
+Source topic markers:
+
+- 00:00: controversy, shame and cultural disagreement around sexuality.
+- 00:45: the distinction between “healthy” and “healing”.
+- 01:11: outside-in standards versus an inside-out journey.
+- 02:16: Teal’s energetic and spiritual framework.
+- 05:10: power play, domination and submission as the episode’s example.
+- 07:00: what feels integrating may differ between people and couples.
+- Around 10:00: consent and internal resistance.
+- Around 12:20: shame and sexual self-concept.
+- Around 14:16: attunement to a partner’s interests and needs.
+- Around 15:18: sexuality can evolve across life and relationships.
+
+EPISODE 06
+
+Title: “Healing Through BDSM, Solo-rope Bondage and Self Pleasure for More Sensual Fulfillment”
+Collection label: “Healing Through Solo Rope & Self Pleasure”
+Host and guest: Tanja Hirsch with Jacqueline Michelle.
+Duration: approximately 41 minutes in the publisher edition and 44 minutes in the Vogue I Am presentation.
+Source: Soul Naked podcast episode 81, published 20 March 2023.
+
+Core arc:
+
+- Jacqueline Michelle is introduced by the publisher as a self-love and embodiment coach and sensuality mentor. The conversation explores Tantra, sensuality, body connection, self-pleasure, BDSM and solo rope through the speakers’ experiential framework.
+- The publisher describes BDSM and solo rope as possible forms of self-exploration, empowerment, sensual expression and healing from shame or trauma. Attribute those ideas to the episode; do not present BDSM, rope or self-pleasure as clinical treatment or a guaranteed route to healing.
+- The editorial visual layer subtly screening behind the episode is Karl Lagerfeld’s iconic “The Making of the 2011 Pirelli Calendar”. It is background fashion imagery, not the source, host or subject of the conversation.
+- Consent, agency, boundaries and the ability to stop are essential. Rope and self-bondage also carry physical risks, including restricted circulation, nerve injury, falls and being unable to release oneself.
+- Universal One must not give personalised tying, suspension, neck, breath-control or trauma-processing instructions. If asked for practical guidance, keep it high-level and encourage a reputable, qualified kink-aware educator, an emergency release plan, appropriate safety equipment and professional support for trauma or distress.
+- If a visitor may be under 18, keep the explanation non-graphic, age-appropriate and safety-led.
+
+Publisher topic markers:
+
+- 00:08: introduction to Jacqueline Michelle.
+- 02:14: what “soul naked” means to Jacqueline.
+- 09:35: Tantra.
+- 18:58: Jacqueline’s current teaching focus.
+- 21:51: beginning to connect with the body and sensuality.
+- 26:33: discovering BDSM and framing it as healing.
+- 28:42: rope bondage as sensual and erotic art.
+
 ANSWERING PATTERNS
 
-- If asked to compare all five music rooms, lead with the one-line musical identities, then explain eligible formats only if useful.
+- If asked to compare the music architecture, identify the four Seeding Sessions first, then describe safety cushion separately as the additional 24/7 music-video channel.
 - If asked what is playing now, use only live context supplied to the session. The programme guide describes line-ups, not the visitor’s exact current clock position.
 - If asked which music room fits, use stated musical intent and taste, current catalogue readiness, eligible format, context and continuity rather than a Calm / Chill / House mood ladder. safety cushion may be recommended only inside a Videos slot and when its 80s nu wave identity is editorially suitable.
 - The canonical journey is check-in, needs-matched VOD music video, needs-matched extended livestream, then manual portal exploration. The application assigns eligible extended sessions to Parties 80% of the time, Radio 10% and Videos 10%; needs and context select the compatible room and approved Ready source inside that branch. Examples include inner planes ambient radio late at night, champagne bohemia chillout radio in the morning, and safety cushion in a Videos slot during peak anxiety only when its approved Ready assets are available and editorially suitable.
-- If asked about James Bondage Health, first identify it as the separate adult sex-ed collection, then name all four episodes or go deeply into the requested one.
+- If asked about James Bondage Health, first identify it as the separate adult sex-ed collection, then name all six episodes or go deeply into the requested one.
+- If asked about Teal Swan or Jacqueline Michelle, attribute their ideas and distinguish spiritual, coaching and publisher claims from established medical evidence.
+- If asked what appears behind Jacqueline Michelle, say that Karl Lagerfeld’s iconic “The Making of the 2011 Pirelli Calendar” screens subtly as the editorial background visual; it is not the episode source or subject.
 - If asked “what does the episode say?”, attribute the answer to the episode or named speaker and separate personal/spiritual testimony from evidence.
 - If asked for a transcript quote, keep it very short, identify the speaker or source where known, and prefer a paraphrase.
 - If the source notes do not contain the requested detail, say that the guide does not establish it. Never invent a timestamp, quotation, credential or scientific conclusion.
