@@ -27,6 +27,10 @@ import {
   evaluateCollectiveUnlock,
   publicPilotConfig,
 } from "../cloudflare/happiness-pilot-core.js";
+import {
+  buildDeploymentPlan,
+  parseDisplayUnits,
+} from "./prepare-happiness-deployment.mjs";
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const read = (relative) => fs.readFileSync(path.join(root, relative), "utf8");
@@ -35,6 +39,8 @@ const style = read("i  a m/wallet.css");
 const script = read("i  a m/wallet.js");
 const architecture = read("cloudflare/happiness-rewards-architecture.md");
 const contract = read("contracts/HappinessRewards.sol");
+const oracleContract = read("contracts/HappinessCommunityOracle.sol");
+const deploymentConfig = JSON.parse(read("contracts/happiness-testnet-deployment.config.json"));
 const htaccess = read(".htaccess");
 const redirects = read("_redirects");
 const demoWallet = JSON.parse(read("i  a m/happiness-wallet-demo-v1.json"));
@@ -46,6 +52,7 @@ const television = read("i  a m/adaptive-environment-television.js");
 
 assert.equal(HAPPINESS_ARCHITECTURE.currency.name, "HAPPINESS");
 assert.equal(HAPPINESS_ARCHITECTURE.currency.symbol, "[ I o H ]");
+assert.equal(HAPPINESS_ARCHITECTURE.currency.ledgerSymbol, "IOH");
 assert.equal(HAPPINESS_ARCHITECTURE.currency.symbolMeaning, "Internet of Happiness");
 assert.equal(HAPPINESS_ARCHITECTURE.ledger.network, "polygon-amoy");
 assert.equal(HAPPINESS_ARCHITECTURE.ledger.memberTransfersEnabled, false);
@@ -53,7 +60,8 @@ assert.equal(HAPPINESS_ARCHITECTURE.ledger.cashRedemptionEnabled, false);
 assert.equal(HAPPINESS_ARCHITECTURE.reserve.enabled, false);
 assert.equal(HAPPINESS_ARCHITECTURE.reserve.backed, false);
 assert.equal(HAPPINESS_ARCHITECTURE.reserve.pegClaimEnabled, false);
-assert.equal(HAPPINESS_ARCHITECTURE.oracle.provider, "chainlink-functions");
+assert.equal(HAPPINESS_ARCHITECTURE.oracle.provider, "chainlink-cre");
+assert.equal(HAPPINESS_ARCHITECTURE.oracle.executionModel, "cre-workflow");
 assert.equal(HAPPINESS_ARCHITECTURE.oracle.enabled, false);
 assert.equal(HAPPINESS_ARCHITECTURE.oracle.purpose, "collective_emissions_and_stage_gated_impact_financing");
 assert.equal(HAPPINESS_ARCHITECTURE.oracle.evidencePolicy, "cohort_impact_milestones_not_individual_scoring");
@@ -67,11 +75,37 @@ assert.equal(HAPPINESS_PILOT_POLICY.baseline.designatedEventAttendanceBps, 5100)
 assert.equal(HAPPINESS_PILOT_POLICY.baseline.weeklyMinutes, 120);
 assert.equal(HAPPINESS_PILOT_POLICY.baseline.enhancedWeeklyMinutes, 240);
 assert.equal(HAPPINESS_PILOT_POLICY.guardrails.employmentVerification, false);
+assert.equal(deploymentConfig.deployer_address, "0xA83623eF867Bb651EF8f546632fa49d51FFad5ca");
+assert.equal(deploymentConfig.supply_cap_units, null);
+assert.equal(deploymentConfig.production.enabled, false);
+assert.equal(deploymentConfig.chainlink_cre.deployment_stage, "early_access");
+assert.equal(deploymentConfig.networks["polygon-amoy"].cre_chain_name, "polygon-testnet-amoy");
+assert.equal(deploymentConfig.networks["polygon-amoy"].cre_keystone_forwarder, "0x76c9cf548b4179F8901cda1f8623568b58215E62");
+assert.equal(parseDisplayUnits("1000000").toString(), "1000000000000");
+assert.equal(parseDisplayUnits("1.000001").toString(), "1000001");
+assert.throws(() => parseDisplayUnits("1.0000001"), /invalid_testnet_supply_cap/);
+assert.throws(() => buildDeploymentPlan({ network: "polygon-amoy" }), /invalid_testnet_supply_cap/);
+const amoyDeploymentPlan = buildDeploymentPlan({ network: "polygon-amoy", supplyCap: "1000000" });
+assert.equal(amoyDeploymentPlan.chain_id, 80002);
+assert.equal(amoyDeploymentPlan.currency.ledger_symbol, "IOH");
+assert.equal(amoyDeploymentPlan.private_key_required_by_plan, false);
+assert.equal(amoyDeploymentPlan.wallet_signature_required_at_deployment, true);
+assert.equal(amoyDeploymentPlan.initial_role_policy.future_cre_role, "COMMUNITY_ISSUER_ROLE_only");
 
 assert.equal(parseHappinessUnits("12.345").toString(), "12345000");
 assert.equal(formatHappinessUnits("12345000"), "12.345");
 assert.throws(() => parseHappinessUnits("1.0000001"), /happiness_precision_exceeded/);
 assert.throws(() => assertMutationReady({}), /happiness_mutations_disabled/);
+assert.throws(() => assertMutationReady({
+  HAPPINESS_MUTATIONS_ENABLED: "true",
+  HAPPINESS_POLYGON_CONTRACT_ADDRESS: "0x1111111111111111111111111111111111111111",
+  HAPPINESS_SIGNER_KEY: "must-never-be-accepted",
+}), /raw_happiness_signer_key_forbidden/);
+assert.throws(() => assertMutationReady({
+  HAPPINESS_MUTATIONS_ENABLED: "true",
+  HAPPINESS_POLYGON_CONTRACT_ADDRESS: "0x1111111111111111111111111111111111111111",
+  HAPPINESS_SIGNER_KEY_REFERENCE: "managed-secret:test",
+}), /happiness_issuer_not_configured/);
 assert.throws(() => assertOracleReady({}), /happiness_oracle_disabled/);
 assert.throws(() => assertImpactFundingReady({}), /happiness_impact_funding_disabled/);
 assert.throws(() => assertCollectiveEmissionReady({}), /happiness_collective_emissions_disabled/);
@@ -80,11 +114,13 @@ const collectiveRule = assertCollectiveEmissionReady({
   HAPPINESS_COLLECTIVE_EMISSIONS_ENABLED: "true",
   HAPPINESS_MUTATIONS_ENABLED: "true",
   HAPPINESS_POLYGON_CONTRACT_ADDRESS: "0x1111111111111111111111111111111111111111",
-  HAPPINESS_SIGNER_KEY: "configured-secret-reference",
+  HAPPINESS_ISSUER_ADDRESS: "0x4444444444444444444444444444444444444444",
+  HAPPINESS_SIGNER_KEY_REFERENCE: "managed-secret:happiness-testnet-issuer",
   HAPPINESS_CHAINLINK_ENABLED: "true",
-  HAPPINESS_CHAINLINK_DON_ID: "fun-polygon-amoy-1",
-  HAPPINESS_CHAINLINK_SUBSCRIPTION_ID: "1",
-  HAPPINESS_CHAINLINK_SOURCE_HASH: `0x${"a".repeat(64)}`,
+  HAPPINESS_CHAINLINK_CRE_ENABLED: "true",
+  HAPPINESS_CHAINLINK_CRE_WORKFLOW_ID: "happiness-collective-emission-v1",
+  HAPPINESS_CHAINLINK_CRE_WORKFLOW_HASH: `0x${"a".repeat(64)}`,
+  HAPPINESS_CHAINLINK_CRE_CAPABILITY_CONFIG_HASH: `0x${"b".repeat(64)}`,
   HAPPINESS_ORACLE_CONSUMER_ADDRESS: "0x2222222222222222222222222222222222222222",
   HAPPINESS_COMMUNITY_TREASURY_ADDRESS: "0x3333333333333333333333333333333333333333",
   HAPPINESS_COLLECTIVE_MIN_UNIQUE_CHECKINS: "100",
@@ -291,12 +327,29 @@ assert.match(architecture, /not a channel for agents to use, simulate or bot the
 assert.match(architecture, /no rewards for check-ins, clicks, engagement, referrals, sessions or screen time/i);
 assert.match(architecture, /rolling 91-day window/i);
 assert.match(architecture, /must not be invented in code/i);
+assert.match(architecture, /Chainlink CRE is the planned orchestration layer/i);
+assert.match(architecture, /can never mint directly to a citizen or agent address/i);
+assert.match(architecture, /CRE workflow deployment is currently Early Access/i);
+assert.match(architecture, /KeystoneForwarder/);
 assert.match(architecture, /Four hours is an optional enhanced-participation pathway, never an employment-status test/i);
 assert.match(contract, /contract HappinessRewards is ERC20, AccessControl, Pausable/);
-assert.match(contract, /ERC20\("HAPPINESS", "\[ I o H \]"\)/);
+assert.match(contract, /ERC20\("HAPPINESS", "IOH"\)/);
+assert.match(contract, /MEMBER_ISSUER_ROLE/);
+assert.match(contract, /COMMUNITY_ISSUER_ROLE/);
+assert.match(contract, /onlyRole\(MEMBER_ISSUER_ROLE\)/);
+assert.match(contract, /onlyRole\(COMMUNITY_ISSUER_ROLE\)/);
+assert.match(contract, /bytes32 laneId/);
 assert.match(contract, /return 6;/);
 assert.match(contract, /MemberTransfersDisabled/);
 assert.match(contract, /totalSupply\(\) \+ amount > supplyCap/);
+assert.match(oracleContract, /contract HappinessCommunityOracle is IReceiver, AccessControl, Pausable/);
+assert.match(oracleContract, /metadata\.length != 64/);
+assert.match(oracleContract, /expectedWorkflowId/);
+assert.match(oracleContract, /expectedWorkflowAuthor/);
+assert.match(oracleContract, /WorkflowIdentityAlreadyConfigured/);
+assert.match(oracleContract, /MAX_REPORT_VALIDITY_WINDOW = 30 days/);
+assert.match(oracleContract, /amount > maxAmountPerEpoch/);
+assert.match(oracleContract, /happiness\.issueCommunityPool\(amount, epochId\)/);
 assert.doesNotMatch(contract, /mood|diagnosis|patient|clinical|mRNA/i);
 assert.match(htaccess, /RewriteRule \^wallet\/\?\$ \/vogue\/iam\/wallet\.html \[L\]/);
 assert.match(redirects, /^\/wallet\/ \/vogue\/iam\/wallet\.html 200$/m);

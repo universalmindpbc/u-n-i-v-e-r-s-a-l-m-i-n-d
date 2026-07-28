@@ -4,6 +4,7 @@
 
 - Currency name: **HAPPINESS**
 - Ticker: **[ I o H ]**
+- ERC-20 ledger symbol: **IOH**
 - Meaning: **Internet of Happiness**
 - Customer-facing icon: the Universal Mind flower without the Ethereum diamond
 - Primary experience: desktop and tablet at `/wallet/`
@@ -62,7 +63,9 @@ For the RCT pathway, Triall is the planned integrity and provenance origin. Tria
 
 The exact Triall integration remains `interface_pending_vendor_diligence`. We must confirm whether the production handoff is a public event, proof-verification API, signed export or another supported interface before implementing the adapter. Chainlink will consume only the verified proof reference and the authorised aggregate conclusion.
 
-Chainlink Functions is the planned first adapter because it can fetch approved evidence and run custom computation, and its official release notes confirm Polygon Amoy support. The Functions source must be content-hash pinned, secrets must stay outside source, and the funding contract must reject duplicate, expired or unauthorised attestations. Automation may later perform recovery or settlement housekeeping; it does not decide scientific efficacy and it cannot create or compel sponsor money.
+Chainlink CRE is the planned orchestration layer. A versioned CRE workflow can retrieve approved aggregate evidence, validate the pinned attestation schema and submit only the authorised on-chain action. The workflow artifact and capability configuration must both be content-hash pinned, secrets must stay outside source, and the receiving contract must reject duplicate, expired or unauthorised attestations. CRE does not decide scientific efficacy and it cannot create or compel sponsor money. CRE workflow deployment is currently Early Access, so the adapter remains fail-closed until Universal Mind has deployment access and has completed simulation and review.
+
+The CRE workflow submits a signed report through Chainlink's network-specific `KeystoneForwarder` to `HappinessCommunityOracle`. The consumer pins the forwarder at construction and permits a one-time pin of the workflow ID and workflow author, enforces expiry, replay protection and an immutable per-epoch cap, then calls only the community-pool issuance path. A workflow identity change requires a new consumer deployment and an explicit role rotation. The consumer contract receives only the community-pool issuer role. It can never mint directly to a citizen or agent address. Member and agent rewards remain behind the separately governed member-issuer role.
 
 ## Ledger path
 
@@ -93,16 +96,17 @@ Adding USDC infrastructure does not itself make HAPPINESS a stablecoin. Backing,
 
 - reviewed contract and verified test suite;
 - Polygon Amoy deployment and contract verification;
-- managed issuer key stored as a secret, never in source;
+- a separate scoped issuer address backed by a managed secret or KMS reference, never the deployer key and never in source;
 - non-transferable member balances, immutable supply cap and emergency pause;
 - idempotent earn and redeem intents;
 - reorg and failed-transaction handling;
 - independent security review before Polygon mainnet.
 
-### Chainlink oracle
+### Chainlink CRE oracle
 
-- Functions subscription and DON configuration on Polygon Amoy;
-- source code hash pinned in configuration;
+- CRE account and deployment access;
+- Chainlink's current Polygon Amoy `KeystoneForwarder` pinned in the consumer deployment configuration;
+- workflow identifier, workflow artifact hash and capability-configuration hash pinned in configuration;
 - private API authentication stored as encrypted secret material;
 - versioned cohort-impact attestation schema and pre-agreed funding stages;
 - independent evaluator identity and methodology commitments;
@@ -166,9 +170,8 @@ The desktop wallet, Apple pass service, Polygon ledger adapter and future reserv
 
 - [Agent2Agent Protocol 1.0 specification](https://a2a-protocol.org/latest/specification/)
 - [A2A Agent Discovery and Agent Cards](https://a2a-protocol.org/latest/topics/agent-discovery/)
-- [Chainlink Functions overview](https://docs.chain.link/chainlink-functions)
-- [Chainlink Functions releases and Polygon Amoy support](https://docs.chain.link/chainlink-functions/resources/release-notes)
-- [Chainlink Automation overview](https://docs.chain.link/chainlink-automation)
+- [Chainlink CRE overview](https://docs.chain.link/cre)
+- [Chainlink CRE getting started](https://docs.chain.link/cre/getting-started/overview)
 - [Circle Wallets supported blockchains](https://developers.circle.com/wallets/supported-blockchains)
 - [Circle USDC contract addresses](https://developers.circle.com/stablecoins/usdc-contract-addresses)
 - [Triall description of its Verifiable Proof API](https://medium.com/triall/triall-product-spotlight-reporting-analytics-9fb133837cfb)

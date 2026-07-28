@@ -1,0 +1,43 @@
+{
+  "schema_version": "happiness_testnet_deployment_v1",
+  "contract": "HappinessRewards",
+  "currency_name": "HAPPINESS",
+  "ledger_symbol": "IOH",
+  "display_ticker": "[ I o H ]",
+  "decimals": 6,
+  "deployer_address": "0xA83623eF867Bb651EF8f546632fa49d51FFad5ca",
+  "initial_admin_address": "0xA83623eF867Bb651EF8f546632fa49d51FFad5ca",
+  "testnet_community_treasury_address": "0xA83623eF867Bb651EF8f546632fa49d51FFad5ca",
+  "supply_cap_units": null,
+  "supply_cap_status": "citizen_governance_configuration_required",
+  "networks": {
+    "ethereum-sepolia": {
+      "chain_id": 11155111,
+      "gas_symbol": "SepoliaETH",
+      "cre_chain_name": "ethereum-testnet-sepolia",
+      "cre_keystone_forwarder": "0xF8344CFd5c43616a4366C34E3EEE75af79a74482",
+      "explorer": "https://sepolia.etherscan.io/",
+      "status": "funded_ready_for_wallet_signed_deployment"
+    },
+    "polygon-amoy": {
+      "chain_id": 80002,
+      "gas_symbol": "POL",
+      "cre_chain_name": "polygon-testnet-amoy",
+      "cre_keystone_forwarder": "0x76c9cf548b4179F8901cda1f8623568b58215E62",
+      "rpc_url": "https://polygon-amoy.drpc.org",
+      "explorer": "https://amoy.polygonscan.com/",
+      "status": "funded_ready_for_wallet_signed_deployment"
+    }
+  },
+  "chainlink_cre": {
+    "deployment_stage": "early_access",
+    "forwarder_source": "https://docs.chain.link/cre/supported-networks",
+    "source_checked_at": "2026-07-28"
+  },
+  "production": {
+    "enabled": false,
+    "requires_multisig": true,
+    "requires_security_audit": true,
+    "requires_legal_review": true
+  }
+}

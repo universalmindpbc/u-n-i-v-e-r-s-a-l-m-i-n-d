@@ -3,6 +3,7 @@ export const HAPPINESS_ARCHITECTURE = Object.freeze({
   currency: Object.freeze({
     name: "HAPPINESS",
     symbol: "[ I o H ]",
+    ledgerSymbol: "IOH",
     symbolMeaning: "Internet of Happiness",
     decimals: 6,
     iconAsset: "Universal Mind flower",
@@ -17,7 +18,8 @@ export const HAPPINESS_ARCHITECTURE = Object.freeze({
     mode: "architecture_ready_not_deployed",
   }),
   oracle: Object.freeze({
-    provider: "chainlink-functions",
+    provider: "chainlink-cre",
+    executionModel: "cre-workflow",
     network: "polygon-amoy",
     enabled: false,
     consumerContractAddress: null,
@@ -111,7 +113,11 @@ export function publicHappinessConfig() {
 export function assertMutationReady(env = {}) {
   if (String(env.HAPPINESS_MUTATIONS_ENABLED || "false") !== "true") throw new Error("happiness_mutations_disabled");
   if (!env.HAPPINESS_POLYGON_CONTRACT_ADDRESS) throw new Error("happiness_contract_not_configured");
-  if (!env.HAPPINESS_SIGNER_KEY) throw new Error("happiness_signer_not_configured");
+  if (env.HAPPINESS_SIGNER_KEY) throw new Error("raw_happiness_signer_key_forbidden");
+  if (!/^0x[a-f0-9]{40}$/i.test(String(env.HAPPINESS_ISSUER_ADDRESS || ""))) {
+    throw new Error("happiness_issuer_not_configured");
+  }
+  if (!env.HAPPINESS_SIGNER_KEY_REFERENCE) throw new Error("happiness_managed_signer_reference_not_configured");
 }
 
 const A2A_CONTRIBUTION_TYPES = new Set([
@@ -341,9 +347,14 @@ export function validateImpactFundingAttestation(attestation = {}) {
 
 export function assertOracleReady(env = {}) {
   if (String(env.HAPPINESS_CHAINLINK_ENABLED || "false") !== "true") throw new Error("happiness_oracle_disabled");
-  if (!env.HAPPINESS_CHAINLINK_DON_ID) throw new Error("happiness_oracle_don_not_configured");
-  if (!env.HAPPINESS_CHAINLINK_SUBSCRIPTION_ID) throw new Error("happiness_oracle_subscription_not_configured");
-  if (!env.HAPPINESS_CHAINLINK_SOURCE_HASH) throw new Error("happiness_oracle_source_not_pinned");
+  if (String(env.HAPPINESS_CHAINLINK_CRE_ENABLED || "false") !== "true") throw new Error("happiness_cre_disabled");
+  if (!env.HAPPINESS_CHAINLINK_CRE_WORKFLOW_ID) throw new Error("happiness_cre_workflow_not_configured");
+  if (!IMPACT_COMMITMENT_PATTERN.test(String(env.HAPPINESS_CHAINLINK_CRE_WORKFLOW_HASH || ""))) {
+    throw new Error("happiness_cre_workflow_not_pinned");
+  }
+  if (!IMPACT_COMMITMENT_PATTERN.test(String(env.HAPPINESS_CHAINLINK_CRE_CAPABILITY_CONFIG_HASH || ""))) {
+    throw new Error("happiness_cre_capability_config_not_pinned");
+  }
   if (!env.HAPPINESS_ORACLE_CONSUMER_ADDRESS) throw new Error("happiness_oracle_consumer_not_configured");
 }
 
