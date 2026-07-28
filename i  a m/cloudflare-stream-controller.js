@@ -434,6 +434,19 @@
     });
   }
 
+  function applyConstrainedStartupPriority() {
+    const estimatedKbps = estimatedBandwidthKbps();
+    if (!(estimatedKbps > 0 && estimatedKbps <= 1500)) return;
+    const primaryMusic = Array.from(states.values()).find((candidate) => (
+      candidate.role === "music" && candidate.video.dataset.streamPriority === "primary"
+    ));
+    if (!primaryMusic) return;
+    states.forEach((candidate) => {
+      if (candidate.role !== "fashion" || candidate.video.dataset.streamPriority === "primary") return;
+      setAuxiliaryLoadingSuspended(candidate, true, "constrained_primary_music_startup");
+    });
+  }
+
   function fashionHasRecoveryMargin(state) {
     if (!state.hls?.levels?.length) return true;
     const target = levelAtOrBelow(state, Math.min(720, configuredCapFor("fashion", state.video)));
@@ -740,6 +753,7 @@
     video.dataset.streamPlaybackRate = finiteNumber(video.playbackRate, 1).toFixed(3);
     video.dataset.streamSeekCount = "0";
     video.dataset.streamControlledSeekCount = "0";
+    applyConstrainedStartupPriority();
     video.crossOrigin = "anonymous";
     stageVideoReveal(video, role);
 
@@ -840,7 +854,7 @@
     if (Hls?.isSupported?.()) {
       const throttleKbps = qaThrottleKbps();
       const hlsConfig = {
-        autoStartLoad: state.wantsPlayback || state.preloadRequested,
+        autoStartLoad: (state.wantsPlayback || state.preloadRequested) && !state.auxiliarySuspended,
         capLevelToPlayerSize: role === "fashion",
         startLevel: 0,
         maxLiveSyncPlaybackRate: 1,
@@ -988,12 +1002,7 @@
     if (!state || priority !== "primary") return;
     setAuxiliaryLoadingSuspended(state, false, "promoted_to_primary");
     if (state.role !== "music") return;
-    const estimatedKbps = estimatedBandwidthKbps();
-    if (!(estimatedKbps > 0 && estimatedKbps <= 1500)) return;
-    states.forEach((candidate) => {
-      if (candidate.role !== "fashion" || candidate.video.dataset.streamPriority === "primary") return;
-      setAuxiliaryLoadingSuspended(candidate, true, "constrained_primary_music_startup");
-    });
+    applyConstrainedStartupPriority();
   }
 
   function noteControlledSeek(media, details = {}) {
