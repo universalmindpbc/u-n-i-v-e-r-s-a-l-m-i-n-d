@@ -187,7 +187,7 @@ const introCallPosition = controller.lastIndexOf('runIntro();');
 const roomOpenPosition = controller.indexOf('document.body.classList.add("television-room-open");');
 const pointerCountdownPosition = controller.indexOf('startReactionWalletPointerUnlockCountdown();');
 const settlingWalletRule = televisionCss.match(/body\.television-wallet-settling \.adaptive-television-reaction-wallet(?:\[data-wallet-view="closed"\])?,[\s\S]*?\{([\s\S]*?)\}/)?.[1] ?? '';
-const safariLiveTextRule = televisionCss.match(/\.adaptive-television-player video\s*\{([\s\S]*?)\}/)?.[1] ?? '';
+const safariLiveTextRule = televisionCss.match(/\.adaptive-television-player video,\s*\.adaptive-television-sex-ed-episode\s*\{([\s\S]*?)\}/)?.[1] ?? '';
 const nowPlayingCssStart = televisionCss.indexOf('/* Fixed primary wallet with a quiet, readable programme ticker. */');
 const nowPlayingCss = televisionCss.slice(
   nowPlayingCssStart,

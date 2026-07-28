@@ -364,7 +364,8 @@ body.television-page-view-open.television-wallet-page-open .adaptive-television-
 /* Keep Safari Live Text from placing its recognition control over the
    continuous full-screen broadcast. The wallet and player controls remain
    separate interactive elements above this media layer. */
-.adaptive-television-player video {
+.adaptive-television-player video,
+.adaptive-television-sex-ed-episode {
   -webkit-user-select: none;
   user-select: none;
   -webkit-user-drag: none;
