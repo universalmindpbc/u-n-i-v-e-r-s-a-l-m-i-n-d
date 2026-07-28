@@ -8,8 +8,9 @@
   "deployer_address": "0xA83623eF867Bb651EF8f546632fa49d51FFad5ca",
   "initial_admin_address": "0xA83623eF867Bb651EF8f546632fa49d51FFad5ca",
   "testnet_community_treasury_address": "0xA83623eF867Bb651EF8f546632fa49d51FFad5ca",
-  "supply_cap_units": null,
-  "supply_cap_status": "citizen_governance_configuration_required",
+  "supply_cap_display": "10000000",
+  "supply_cap_units": "10000000000000",
+  "supply_cap_status": "approved_for_testnet_2026-07-28",
   "networks": {
     "ethereum-sepolia": {
       "chain_id": 11155111,
