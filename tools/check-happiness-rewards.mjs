@@ -20,6 +20,13 @@ import {
 } from "../cloudflare/happiness-rewards-core.js";
 import happinessWorker from "../cloudflare/happiness-rewards-worker.js";
 import {
+  CIRCLE_RESERVE_PROFILE,
+  assertCircleReserveReadReady,
+  assertCircleSettlementDisabled,
+  circleReserveReadiness,
+  fetchCircleReserveSnapshot,
+} from "../cloudflare/happiness-circle-reserve.js";
+import {
   HAPPINESS_PILOT_POLICY,
   createSimulatedLedger,
   evaluateBaselineEligibility,
@@ -41,6 +48,9 @@ const architecture = read("cloudflare/happiness-rewards-architecture.md");
 const contract = read("contracts/HappinessRewards.sol");
 const oracleContract = read("contracts/HappinessCommunityOracle.sol");
 const deploymentConfig = JSON.parse(read("contracts/happiness-testnet-deployment.config.json"));
+const oracleDeploymentConfig = JSON.parse(read("contracts/happiness-oracle-testnet-deployment.config.json"));
+const appleRegistration = JSON.parse(read("apple-wallet/happiness-pass-registration.json"));
+const wrangler = read("cloudflare/wrangler.happiness-rewards.toml");
 const htaccess = read(".htaccess");
 const redirects = read("_redirects");
 const demoWallet = JSON.parse(read("i  a m/happiness-wallet-demo-v1.json"));
@@ -55,11 +65,17 @@ assert.equal(HAPPINESS_ARCHITECTURE.currency.symbol, "[ I o H ]");
 assert.equal(HAPPINESS_ARCHITECTURE.currency.ledgerSymbol, "IOH");
 assert.equal(HAPPINESS_ARCHITECTURE.currency.symbolMeaning, "Internet of Happiness");
 assert.equal(HAPPINESS_ARCHITECTURE.ledger.network, "polygon-amoy");
+assert.equal(HAPPINESS_ARCHITECTURE.ledger.contractAddress, "0x616EF64C03D79630ECA03b5Cea4ea58a252dB68a");
+assert.equal(HAPPINESS_ARCHITECTURE.ledger.mode, "amoy_deployed_zero_supply");
 assert.equal(HAPPINESS_ARCHITECTURE.ledger.memberTransfersEnabled, false);
 assert.equal(HAPPINESS_ARCHITECTURE.ledger.cashRedemptionEnabled, false);
 assert.equal(HAPPINESS_ARCHITECTURE.reserve.enabled, false);
 assert.equal(HAPPINESS_ARCHITECTURE.reserve.backed, false);
 assert.equal(HAPPINESS_ARCHITECTURE.reserve.pegClaimEnabled, false);
+assert.equal(HAPPINESS_ARCHITECTURE.reserve.blockchain, "MATIC-AMOY");
+assert.equal(HAPPINESS_ARCHITECTURE.reserve.usdcTokenAddress, "0x41E94Eb019C0762f9Bfcf9Fb1E58725BfB0e7582");
+assert.equal(HAPPINESS_ARCHITECTURE.appleWallet.passTypeIdentifier, "pass.tv.universalmind.happiness");
+assert.equal(HAPPINESS_ARCHITECTURE.appleWallet.mode, "identifier_registered_certificate_pending");
 assert.equal(HAPPINESS_ARCHITECTURE.oracle.provider, "chainlink-cre");
 assert.equal(HAPPINESS_ARCHITECTURE.oracle.executionModel, "cre-workflow");
 assert.equal(HAPPINESS_ARCHITECTURE.oracle.enabled, false);
@@ -83,6 +99,13 @@ assert.equal(deploymentConfig.production.enabled, false);
 assert.equal(deploymentConfig.chainlink_cre.deployment_stage, "early_access");
 assert.equal(deploymentConfig.networks["polygon-amoy"].cre_chain_name, "polygon-testnet-amoy");
 assert.equal(deploymentConfig.networks["polygon-amoy"].cre_keystone_forwarder, "0x76c9cf548b4179F8901cda1f8623568b58215E62");
+assert.equal(oracleDeploymentConfig.status, "prepared_not_deployed");
+assert.equal(oracleDeploymentConfig.happiness_contract_address, "0x616EF64C03D79630ECA03b5Cea4ea58a252dB68a");
+assert.equal(oracleDeploymentConfig.keystone_forwarder, "0x76c9cf548b4179F8901cda1f8623568b58215E62");
+assert.equal(oracleDeploymentConfig.role_grant.required, true);
+assert.equal(appleRegistration.pass_type_identifier, "pass.tv.universalmind.happiness");
+assert.equal(appleRegistration.team_identifier, "3458V3D263");
+assert.equal(appleRegistration.status, "identifier_registered_certificate_pending");
 assert.equal(parseDisplayUnits("1000000").toString(), "1000000000000");
 assert.equal(parseDisplayUnits("1.000001").toString(), "1000001");
 assert.throws(() => parseDisplayUnits("1.0000001"), /invalid_testnet_supply_cap/);
@@ -262,11 +285,53 @@ assert.equal(publicPilotConfig().baseline.award_units, null);
 assert.deepEqual(reserveState({}), {
   adapter: "circle-usdc",
   requested: false,
+  api_reads_requested: false,
+  api_connected: false,
   enabled: false,
   backed: false,
   peg_claim_enabled: false,
   settlement_enabled: false,
 });
+assert.equal(CIRCLE_RESERVE_PROFILE.mode, "read-only-reserve-reconciliation");
+assert.equal(CIRCLE_RESERVE_PROFILE.blockchain, "MATIC-AMOY");
+assert.equal(CIRCLE_RESERVE_PROFILE.usdcTokenAddress, "0x41E94Eb019C0762f9Bfcf9Fb1E58725BfB0e7582");
+assert.equal(circleReserveReadiness({}).api_reads_enabled, false);
+assert.equal(circleReserveReadiness({ HAPPINESS_USDC_BACKING_CONFIRMED: "true" }).backing_confirmed, false);
+assert.throws(() => assertCircleReserveReadReady({}), /happiness_circle_api_reads_disabled/);
+assert.throws(() => assertCircleSettlementDisabled({ HAPPINESS_USDC_SETTLEMENT_ENABLED: "true" }), /happiness_usdc_settlement_not_implemented/);
+const circleTestEnv = {
+  HAPPINESS_CIRCLE_API_READS_ENABLED: "true",
+  CIRCLE_API_KEY: "TEST_API_KEY_DO_NOT_LOG",
+  HAPPINESS_CIRCLE_WALLET_ID: "wallet-001",
+  HAPPINESS_USDC_TREASURY_ADDRESS: "0x1111111111111111111111111111111111111111",
+  HAPPINESS_CIRCLE_BLOCKCHAIN: "MATIC-AMOY",
+  HAPPINESS_CIRCLE_USDC_TOKEN_ADDRESS: "0x41E94Eb019C0762f9Bfcf9Fb1E58725BfB0e7582",
+};
+const circleSnapshot = await fetchCircleReserveSnapshot(circleTestEnv, async (url, options) => {
+  assert.equal(url, "https://api.circle.com/v1/w3s/developer/wallets/balances");
+  assert.equal(options.method, "GET");
+  assert.equal(options.headers.Authorization, "Bearer TEST_API_KEY_DO_NOT_LOG");
+  return new Response(JSON.stringify({
+    data: {
+      wallets: [{
+        id: "wallet-001",
+        address: "0x1111111111111111111111111111111111111111",
+        blockchain: "MATIC-AMOY",
+        tokenBalances: [{
+          amount: "0",
+          token: { tokenAddress: "0x41E94Eb019C0762f9Bfcf9Fb1E58725BfB0e7582" },
+        }],
+      }],
+    },
+  }), { status: 200, headers: { "Content-Type": "application/json" } });
+});
+assert.equal(circleSnapshot.usdc_amount, "0");
+assert.equal(circleSnapshot.backing_confirmed, false);
+assert.equal(circleSnapshot.settlement_enabled, false);
+assert.doesNotMatch(JSON.stringify(circleSnapshot), /TEST_API_KEY_DO_NOT_LOG/);
+assert.match(wrangler, /HAPPINESS_CIRCLE_API_READS_ENABLED = "false"/);
+assert.match(wrangler, /HAPPINESS_USDC_SETTLEMENT_ENABLED = "false"/);
+assert.match(wrangler, /HAPPINESS_APPLE_PASS_TYPE_IDENTIFIER = "pass\.tv\.universalmind\.happiness"/);
 assert.equal(publicHappinessConfig().programme.cash_value, false);
 
 assert.match(wallet, /<h1 id="happiness-title">HAPPINESS<\/h1>/);
@@ -332,6 +397,8 @@ assert.match(architecture, /must not be invented in code/i);
 assert.match(architecture, /Chainlink CRE is the planned orchestration layer/i);
 assert.match(architecture, /can never mint directly to a citizen or agent address/i);
 assert.match(architecture, /CRE workflow deployment is currently Early Access/i);
+assert.match(architecture, /Circle Wallets read-only reserve reconciliation adapter is implemented/i);
+assert.match(architecture, /HappinessCommunityOracle` remains prepared but not deployed/i);
 assert.match(architecture, /KeystoneForwarder/);
 assert.match(architecture, /Four hours is an optional enhanced-participation pathway, never an employment-status test/i);
 assert.match(contract, /contract HappinessRewards is ERC20, AccessControl, Pausable/);
@@ -366,7 +433,17 @@ for (const asset of ["icon.png", "icon@2x.png", "icon@3x.png"]) {
 
 const healthResponse = await happinessWorker.fetch(new Request("https://rewards.example/health"), {});
 assert.equal(healthResponse.status, 200);
-assert.equal((await healthResponse.json()).ledger, "architecture_ready_not_deployed");
+assert.equal((await healthResponse.json()).ledger, "amoy_deployed_zero_supply");
+
+const circleUnauthorizedResponse = await happinessWorker.fetch(new Request("https://rewards.example/internal/circle/reserve"), {});
+assert.equal(circleUnauthorizedResponse.status, 401);
+assert.equal((await circleUnauthorizedResponse.json()).error, "not_authorized");
+
+const circleDisabledResponse = await happinessWorker.fetch(new Request("https://rewards.example/internal/circle/reserve", {
+  headers: { Authorization: "Bearer test-internal-token" },
+}), { HAPPINESS_INTERNAL_TOKEN: "test-internal-token" });
+assert.equal(circleDisabledResponse.status, 503);
+assert.equal((await circleDisabledResponse.json()).error, "happiness_circle_api_reads_disabled");
 
 const earnResponse = await happinessWorker.fetch(new Request("https://rewards.example/v1/earn", {
   method: "POST",

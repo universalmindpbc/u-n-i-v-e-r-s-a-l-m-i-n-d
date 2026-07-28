@@ -13,9 +13,9 @@ const requiredAssets = ["icon.png", "icon@2x.png", "icon@3x.png"];
 const assets = path.join(root, "apple-wallet", "assets");
 
 const values = {
-  PASS_TYPE_IDENTIFIER: process.env.HAPPINESS_APPLE_PASS_TYPE_IDENTIFIER || "pass.com.universalmind.happiness.preview",
+  PASS_TYPE_IDENTIFIER: process.env.HAPPINESS_APPLE_PASS_TYPE_IDENTIFIER || "pass.tv.universalmind.happiness",
   SERIAL_NUMBER: process.env.HAPPINESS_APPLE_SERIAL_NUMBER || "UM-000001-PREVIEW",
-  TEAM_IDENTIFIER: process.env.HAPPINESS_APPLE_TEAM_IDENTIFIER || "PREVIEWTEAM",
+  TEAM_IDENTIFIER: process.env.HAPPINESS_APPLE_TEAM_IDENTIFIER || "3458V3D263",
   WEB_SERVICE_URL: process.env.HAPPINESS_APPLE_WEB_SERVICE_URL || "https://rewards.universalmind.tv/apple-wallet",
   AUTHENTICATION_TOKEN: process.env.HAPPINESS_APPLE_AUTHENTICATION_TOKEN || "unsigned-preview-not-for-installation",
   BALANCE: process.env.HAPPINESS_APPLE_BALANCE || "0",

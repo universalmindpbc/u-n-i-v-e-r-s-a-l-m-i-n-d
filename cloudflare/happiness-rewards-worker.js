@@ -16,6 +16,10 @@ import {
   pilotReadiness,
   publicPilotConfig,
 } from "./happiness-pilot-core.js";
+import {
+  circleReserveReadiness,
+  fetchCircleReserveSnapshot,
+} from "./happiness-circle-reserve.js";
 
 const ALLOWED_ORIGINS = new Set([
   "https://staging.universalmind.tv",
@@ -124,7 +128,10 @@ export default {
           managed_signer_reference_configured: Boolean(env.HAPPINESS_SIGNER_KEY_REFERENCE),
           raw_signer_key_present: Boolean(env.HAPPINESS_SIGNER_KEY),
         },
-        reserve: reserveState(env),
+        reserve: {
+          ...reserveState(env),
+          circle: circleReserveReadiness(env),
+        },
         oracle: {
           provider: HAPPINESS_ARCHITECTURE.oracle.provider,
           execution_model: HAPPINESS_ARCHITECTURE.oracle.executionModel,
@@ -188,6 +195,15 @@ export default {
         return json({ ok: false, error: error.message }, 503, origin);
       }
       return json({ ok: false, error: "impact_funding_adapter_not_activated" }, 501, origin);
+    }
+
+    if (request.method === "GET" && url.pathname === "/internal/circle/reserve") {
+      if (!internalAuthorized(request, env)) return json({ ok: false, error: "not_authorized" }, 401, origin);
+      try {
+        return json({ ok: true, reserve: await fetchCircleReserveSnapshot(env) }, 200, origin);
+      } catch (error) {
+        return json({ ok: false, error: error.message }, 503, origin);
+      }
     }
 
     if (request.method === "POST" && url.pathname === "/internal/collective-emission") {

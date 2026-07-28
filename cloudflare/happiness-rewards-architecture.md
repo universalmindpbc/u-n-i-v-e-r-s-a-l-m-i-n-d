@@ -16,7 +16,9 @@ HAPPINESS launches as a rewards programme. It is not currently backed, pegged, c
 
 Members may receive a genuine ERC-20 balance once the contract is activated, but this version is non-transferable, free to earn and usable only for approved programme rewards. It carries no promise of appreciation, USDC conversion, cash value, investment return or migration into a later backed version.
 
-The code remains fail-closed: reward mutations, Chainlink attestation, Polygon signing, Apple-pass issuance and USDC settlement are disabled until their required configuration is deliberately supplied.
+The HAPPINESS ERC-20 is deployed on Polygon Amoy at `0x616EF64C03D79630ECA03b5Cea4ea58a252dB68a` with an immutable 10,000,000 IOH cap and zero current supply. Issuance remains disabled. The Apple Pass Type ID `pass.tv.universalmind.happiness` is registered, while its signing certificate and private key are not yet created.
+
+The code remains fail-closed: reward mutations, Chainlink attestation, Apple-pass issuance and USDC settlement are disabled until their required configuration is deliberately supplied.
 
 ## Pilot earning pipeline
 
@@ -63,7 +65,7 @@ For the RCT pathway, Triall is the planned integrity and provenance origin. Tria
 
 The exact Triall integration remains `interface_pending_vendor_diligence`. We must confirm whether the production handoff is a public event, proof-verification API, signed export or another supported interface before implementing the adapter. Chainlink will consume only the verified proof reference and the authorised aggregate conclusion.
 
-Chainlink CRE is the planned orchestration layer. A versioned CRE workflow can retrieve approved aggregate evidence, validate the pinned attestation schema and submit only the authorised on-chain action. The workflow artifact and capability configuration must both be content-hash pinned, secrets must stay outside source, and the receiving contract must reject duplicate, expired or unauthorised attestations. CRE does not decide scientific efficacy and it cannot create or compel sponsor money. CRE workflow deployment is currently Early Access, so the adapter remains fail-closed until Universal Mind has deployment access and has completed simulation and review.
+Chainlink CRE is the planned orchestration layer. A versioned CRE workflow can retrieve approved aggregate evidence, validate the pinned attestation schema and submit only the authorised on-chain action. The workflow artifact and capability configuration must both be content-hash pinned, secrets must stay outside source, and the receiving contract must reject duplicate, expired or unauthorised attestations. CRE does not decide scientific efficacy and it cannot create or compel sponsor money. CRE workflow deployment is currently Early Access, so the adapter remains fail-closed until Universal Mind has deployment access and has completed simulation and review. `HappinessCommunityOracle` remains prepared but not deployed: its Amoy forwarder and HAPPINESS address are pinned, but the per-epoch cap, CRE workflow identity, deployment and issuer-role grant remain deliberately unset.
 
 The CRE workflow submits a signed report through Chainlink's network-specific `KeystoneForwarder` to `HappinessCommunityOracle`. The consumer pins the forwarder at construction and permits a one-time pin of the workflow ID and workflow author, enforces expiry, replay protection and an immutable per-epoch cap, then calls only the community-pool issuance path. A workflow identity change requires a new consumer deployment and an explicit role rotation. The consumer contract receives only the community-pool issuer role. It can never mint directly to a citizen or agent address. Member and agent rewards remain behind the separately governed member-issuer role.
 
@@ -77,9 +79,11 @@ The CRE workflow submits a signed report through Chainlink's network-specific `K
 
 The Polygon address-to-member mapping stays private. Public events contain pseudonymous addresses, amounts and non-sensitive programme references only.
 
-## Future USDC reserve adapter
+## Circle / USDC reserve adapter
 
-The reserve boundary is deliberately separate from HAPPINESS issuance. A later Chainlink plus Circle/USDC adapter may:
+The reserve boundary is deliberately separate from HAPPINESS issuance. The Circle Wallets read-only reserve reconciliation adapter is implemented for developer-controlled wallets on `MATIC-AMOY`, pinned to Amoy USDC at `0x41E94Eb019C0762f9Bfcf9Fb1E58725BfB0e7582`. It can read and reconcile one explicitly configured treasury wallet after a Circle API key, wallet ID and treasury address are stored as secrets or environment configuration. It cannot create a wallet, move USDC, mint HAPPINESS, confirm backing or enable settlement.
+
+A later Chainlink plus Circle/USDC activation may:
 
 - verify privacy-safe cohort milestones against an agreed methodology;
 - release only sponsor USDC that is already escrowed, approved or contractually committed;
@@ -88,14 +92,14 @@ The reserve boundary is deliberately separate from HAPPINESS issuance. A later C
 - gate any future redemption or stability claim on actual available reserves; and
 - produce an auditable reserve report.
 
-Adding USDC infrastructure does not itself make HAPPINESS a stablecoin. Backing, legal rights, treasury controls, independent review and regulatory approval must exist before any peg or redemption claim is enabled.
+Adding USDC infrastructure does not itself make HAPPINESS a stablecoin. Backing, legal rights, treasury controls, independent review and regulatory approval must exist before any peg or redemption claim is enabled. Circle entity-secret registration is required only when Universal Mind deliberately adds developer-controlled wallet creation or transaction operations; no such write operation exists in this version.
 
 ## Activation gates
 
 ### Polygon ERC-20
 
 - reviewed contract and verified test suite;
-- Polygon Amoy deployment and contract verification;
+- Polygon Amoy deployment completed at `0x616EF64C03D79630ECA03b5Cea4ea58a252dB68a`, with read-only state verified;
 - a separate scoped issuer address backed by a managed secret or KMS reference, never the deployer key and never in source;
 - non-transferable member balances, immutable supply cap and emergency pause;
 - idempotent earn and redeem intents;
@@ -129,7 +133,7 @@ Adding USDC infrastructure does not itself make HAPPINESS a stablecoin. Backing,
 
 ### Apple Wallet
 
-- Apple Developer Pass Type ID;
+- Apple Developer Pass Type ID registered as `pass.tv.universalmind.happiness`;
 - production signing certificate;
 - personalised pass generator;
 - HTTPS registration and update endpoints;
@@ -155,6 +159,8 @@ Adding USDC infrastructure does not itself make HAPPINESS a stablecoin. Backing,
 
 ### Circle / USDC
 
+- read-only Circle Wallets balance adapter implemented and disabled by default;
+- Circle standard API key, developer-controlled wallet ID and exact treasury address configured outside source before reserve reads;
 - actual reserve treasury;
 - sponsor/investment funds received;
 - legal and accounting treatment agreed;

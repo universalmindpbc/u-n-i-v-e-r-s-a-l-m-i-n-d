@@ -1,0 +1,12 @@
+{
+  "schema_version": "happiness_apple_pass_registration_v1",
+  "description": "Universal Mind HAPPINESS",
+  "pass_type_identifier": "pass.tv.universalmind.happiness",
+  "team_identifier": "3458V3D263",
+  "registered_on": "2026-07-28",
+  "status": "identifier_registered_certificate_pending",
+  "pass_type_certificate_created": false,
+  "signing_private_key_created": false,
+  "web_service_enabled": false,
+  "secrets_in_source": false
+}

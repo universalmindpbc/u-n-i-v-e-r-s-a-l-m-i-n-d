@@ -12,10 +12,10 @@ export const HAPPINESS_ARCHITECTURE = Object.freeze({
     standard: "ERC-20",
     network: "polygon-amoy",
     chainId: 80002,
-    contractAddress: null,
+    contractAddress: "0x616EF64C03D79630ECA03b5Cea4ea58a252dB68a",
     memberTransfersEnabled: false,
     cashRedemptionEnabled: false,
-    mode: "architecture_ready_not_deployed",
+    mode: "amoy_deployed_zero_supply",
   }),
   oracle: Object.freeze({
     provider: "chainlink-cre",
@@ -57,14 +57,19 @@ export const HAPPINESS_ARCHITECTURE = Object.freeze({
   }),
   reserve: Object.freeze({
     adapter: "circle-usdc",
+    provider: "circle-wallets",
+    custodyModel: "developer-controlled",
+    connectionMode: "read-only-reserve-reconciliation",
+    blockchain: "MATIC-AMOY",
+    usdcTokenAddress: "0x41E94Eb019C0762f9Bfcf9Fb1E58725BfB0e7582",
     enabled: false,
     backed: false,
     pegClaimEnabled: false,
     settlementEnabled: false,
   }),
   appleWallet: Object.freeze({
-    mode: "prepared_not_issued",
-    passTypeIdentifier: null,
+    mode: "identifier_registered_certificate_pending",
+    passTypeIdentifier: "pass.tv.universalmind.happiness",
     updateServiceEnabled: false,
   }),
 });
@@ -420,10 +425,14 @@ export function evaluateCollectiveEmission(metrics = {}, rule) {
 
 export function reserveState(env = {}) {
   const requested = String(env.HAPPINESS_USDC_RESERVE_ENABLED || "false") === "true";
+  const apiReadsRequested = String(env.HAPPINESS_CIRCLE_API_READS_ENABLED || "false") === "true";
+  const apiConfigured = Boolean(env.CIRCLE_API_KEY) && Boolean(env.HAPPINESS_CIRCLE_WALLET_ID);
   return {
     adapter: "circle-usdc",
     requested,
-    enabled: requested && Boolean(env.CIRCLE_API_KEY) && Boolean(env.HAPPINESS_USDC_TREASURY_ADDRESS),
+    api_reads_requested: apiReadsRequested,
+    api_connected: apiReadsRequested && apiConfigured,
+    enabled: requested && apiConfigured && Boolean(env.HAPPINESS_USDC_TREASURY_ADDRESS),
     backed: false,
     peg_claim_enabled: false,
     settlement_enabled: false,
