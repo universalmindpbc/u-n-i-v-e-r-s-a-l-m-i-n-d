@@ -312,6 +312,38 @@ body.television-support-card-open .adaptive-television-support-card {
   background: transparent;
 }
 
+.adaptive-television-page-close {
+  position: absolute;
+  z-index: 2;
+  top: clamp(18px, 2.2vh, 34px);
+  right: clamp(18px, 1.8vw, 34px);
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  padding: 0 0 2px;
+  border: 0;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.34);
+  color: rgba(255, 255, 255, 0.9);
+  cursor: pointer;
+  font: 300 23px/1 "Helvetica Neue", Helvetica, Arial, sans-serif;
+  opacity: 0;
+  pointer-events: none;
+  transition: background 240ms ease, opacity 240ms ease;
+}
+
+body.television-page-view-open.television-wallet-page-open .adaptive-television-page-close {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.adaptive-television-page-close:hover,
+.adaptive-television-page-close:focus-visible {
+  background: rgba(255, 255, 255, 0.1);
+  outline: 0;
+}
+
 .adaptive-television-player,
 .adaptive-television-local-video-frame,
 .adaptive-television-local-video,

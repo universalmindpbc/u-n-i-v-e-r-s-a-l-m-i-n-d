@@ -139,6 +139,7 @@
   const playerMount = document.querySelector("[data-television-player]");
   const pageView = document.querySelector("[data-television-page-view]");
   const pageFrame = document.querySelector("[data-television-page-frame]");
+  const pageClose = document.querySelector("[data-television-page-close]");
   const siteShell = document.querySelector(".site-shell");
   const flowerTrigger = document.querySelector(".global-nav-trigger");
   const learnCue = document.querySelector("[data-homepage-radar-trigger]");
@@ -7318,6 +7319,7 @@
   });
   learnCue?.addEventListener("click", openVideoRadar);
   radarClose?.addEventListener("click", closeVideoRadar);
+  pageClose?.addEventListener("click", () => returnToTelevisionRoom());
   supportClose?.addEventListener("click", closeSupportCard);
   playerMount.addEventListener("click", () => {
     if (document.body.classList.contains("television-radio-continuation")) return;
