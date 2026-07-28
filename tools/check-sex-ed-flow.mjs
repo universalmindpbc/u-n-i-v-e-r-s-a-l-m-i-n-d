@@ -114,7 +114,7 @@ assert.match(televisionCss, /\.adaptive-television-sex-ed-casing[\s\S]*padding: 
 assert.match(televisionCss, /\.adaptive-television-sex-ed-episode[\s\S]*width: var\(--emdr-gif-front-width\)/);
 assert.match(televisionCss, /\.adaptive-television-sex-ed-episode[\s\S]*height: var\(--emdr-gif-front-height\)/);
 assert.match(televisionCss, /body\[data-sex-ed-presentation="fullscreen"\] \.adaptive-television-sex-ed-grid/);
-assert.match(televisionCss, /body\[data-sex-ed-presentation="fullscreen"\] \.adaptive-television-sex-ed-episode[\s\S]*object-fit: contain/);
+assert.match(televisionCss, /body\[data-sex-ed-presentation="fullscreen"\] \.adaptive-television-sex-ed-episode[\s\S]*object-fit: cover[\s\S]*object-position: center center/);
 assert.match(televisionCss, /body\.television-sex-ed-active \.adaptive-television-timecode \{\s*opacity: 1 !important;/);
 assert.match(televisionJs, /const source = document\.body\.classList\.contains\("television-sex-ed-active"\)[\s\S]*\? sexEdEpisodeVideo[\s\S]*: localVideo;/);
 assert.match(televisionJs, /sexEdEpisodeVideo\?\.addEventListener\("loadedmetadata", updateTimecode\)/);
