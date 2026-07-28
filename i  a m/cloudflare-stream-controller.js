@@ -985,7 +985,15 @@
     if (!video) return;
     video.dataset.streamPriority = String(priority || "optional");
     const state = states.get(video);
-    if (state && priority === "primary") setAuxiliaryLoadingSuspended(state, false, "promoted_to_primary");
+    if (!state || priority !== "primary") return;
+    setAuxiliaryLoadingSuspended(state, false, "promoted_to_primary");
+    if (state.role !== "music") return;
+    const estimatedKbps = estimatedBandwidthKbps();
+    if (!(estimatedKbps > 0 && estimatedKbps <= 1500)) return;
+    states.forEach((candidate) => {
+      if (candidate.role !== "fashion" || candidate.video.dataset.streamPriority === "primary") return;
+      setAuxiliaryLoadingSuspended(candidate, true, "constrained_primary_music_startup");
+    });
   }
 
   function noteControlledSeek(media, details = {}) {

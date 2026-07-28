@@ -53,6 +53,7 @@ assert.match(streamController, /estimatedKbps > 0 && estimatedKbps <= 1500\) ret
 assert.match(streamController, /estimatedKbps > 0 && estimatedKbps <= 3000\) return 480/);
 assert.match(streamController, /fragLoadPolicy = \{/);
 assert.match(streamController, /maxLoadTimeMs: 600000/);
+assert.match(streamController, /constrained_primary_music_startup/);
 assert.match(streamController, /MUSIC_HIGH_QUALITY_BUFFER_SECONDS = 24/);
 assert.match(streamController, /setAuxiliaryLoadingSuspended\(state, true/);
 assert.match(streamController, /simulateNetworkOutage/);
