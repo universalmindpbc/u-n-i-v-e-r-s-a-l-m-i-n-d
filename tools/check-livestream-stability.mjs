@@ -35,6 +35,7 @@ assert.doesNotMatch(`${television}\n${shop}`, /fastSeek|soft_slow|soft_catchup|h
 assert.match(television, /BROADCAST_REJOIN_BUFFER_SECONDS = 12/);
 assert.match(television, /BROADCAST_REJOIN_REQUIRED_SAMPLES = 3/);
 assert.match(television, /BROADCAST_REJOIN_COOLDOWN_MS = 30000/);
+assert.match(television, /entry_seek_cooldown/);
 assert.match(television, /media\.paused \|\|[\s\S]{0,180}media\.seeking[\s\S]{0,220}bufferSeconds < BROADCAST_REJOIN_BUFFER_SECONDS/);
 assert.match(television, /performControlledBroadcastSeek\(media, targetSeconds, options, "controlled_rejoin"\)/);
 assert.match(television, /BROADCAST_REJOIN_FADE_OUT_MS = 120/);

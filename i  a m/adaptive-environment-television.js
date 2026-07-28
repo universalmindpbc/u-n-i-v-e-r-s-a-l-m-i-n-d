@@ -4101,7 +4101,7 @@
       media.playbackRate = 1;
       if (wasPlaying && media.paused) media.play().catch(() => {});
       if (shouldFade) animateVoiceAssistantProgramVolume(media, originalVolume, BROADCAST_REJOIN_FADE_IN_MS);
-      if (reason === "controlled_rejoin") syncState.lastSeekAt = broadcastSyncNow();
+      syncState.lastSeekAt = broadcastSyncNow();
       syncState.largeDriftSamples = 0;
       syncState.recovering = false;
       publishBroadcastCorrection(media, syncState, options, reason, {
@@ -4132,6 +4132,10 @@
     options.driftSeconds = driftSeconds;
 
     if (options.forceSeek) {
+      if (syncState.lastSeekAt > 0 && broadcastSyncNow() - syncState.lastSeekAt < BROADCAST_REJOIN_COOLDOWN_MS) {
+        publishBroadcastCorrection(media, syncState, options, "entry_seek_cooldown", { driftSeconds, bufferSeconds });
+        return "entry_seek_cooldown";
+      }
       await performControlledBroadcastSeek(media, targetSeconds, options, "entry_seek");
       return "entry_seek";
     }
