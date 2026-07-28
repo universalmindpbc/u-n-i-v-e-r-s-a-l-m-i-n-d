@@ -159,7 +159,8 @@ assert.match(shop, /data-shop-live-band[\s\S]*data-stream-role="fashion"[\s\S]*a
 assert.match(shop, /cloudflare-stream-controller\.js[\s\S]*broadcast-clock-v1\.js[\s\S]*shop\.js/, "The live band must reuse the established stream controller and broadcast clock");
 assert.match(shopScript, /stateAt\("fashion-underground-intensity"\)/, "The live band must follow the James Bondage fashion channel");
 assert.match(shopScript, /wolford-sergio-rossi-capsule[\s\S]*mugler-fall-winter-2021/, "The first live channel proof must rotate between Wolford and Mugler");
-assert.match(shopScript, /shopLiveDriftSeconds[\s\S]*entry_seek[\s\S]*hard_seek[\s\S]*soft_catchup/, "The live band must remain locked to the shared broadcast clock");
+assert.match(shopScript, /shopLiveDriftSeconds[\s\S]*entry_seek[\s\S]*recovery_buffering[\s\S]*rejoin_confirming[\s\S]*controlled_rejoin/, "The live band must remain rate-locked with one buffered, confirmed rejoin");
+assert.doesNotMatch(shopScript, /fastSeek|soft_catchup|soft_slow|playbackRate = drift/, "The live band must never change tempo to chase the clock");
 assert.match(shopStyle, /height:\s*clamp\(430px, 66svh, 760px\)/, "The live masthead must remain a full-width two-thirds-height band");
 assert.match(shop, /data-shop-silent-video[\s\S]*bordelle-look83-waspie-home\.mp4/, "The supplied Bordelle Look83 film must replace the duplicate product still");
 assert.doesNotMatch(shop, /player\.vimeo\.com\/video\/987002812/, "The slow remote Bordelle Vimeo must not remain on the homepage");

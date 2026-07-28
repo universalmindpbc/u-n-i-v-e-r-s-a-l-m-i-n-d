@@ -272,10 +272,10 @@ requireCondition((nowPlayingCss.match(/font-weight: 400;/g) || []).length >= 2, 
 requireCondition(controller.includes('preloadTargetSeconds: 12'), 'fashion no longer preloads toward a twelve-second buffer');
 requireCondition(controller.includes('const FASHION_REVEAL_BUFFER_SECONDS = 8;'), 'fashion reveal no longer requires an eight-second buffer floor');
 requireCondition(controller.includes('const RADIO_FASHION_REVEAL_BUFFER_SECONDS = 4;') && controller.includes('revealMinimumSeconds: RADIO_FASHION_REVEAL_BUFFER_SECONDS'), 'Radio no longer receives its faster Fashion-first visual handoff');
-requireCondition(controller.includes('const radioFashionPreloadPool = new Map();') && controller.includes('preloadRadioFashionRunways'), 'Radio Fashion channels are no longer warmed before selection');
+requireCondition(controller.includes('const radioFashionPreloadPool = new Map();') && controller.includes('releaseUnusedRadioFashionRunways'), 'Radio Fashion no longer retains only the active or imminent visual');
 requireCondition(controller.includes('let radioVisualVideo = null;') && controller.includes('function createRadioVisualVideo(runwayIndex)'), 'Radio no longer owns an independent visual layer beneath public Fashion');
 requireCondition(controller.includes('async function joinRadioVisualBroadcastChannel(channelId, options = {})') && controller.includes('await joinRadioVisualBroadcastChannel(state.visualChannelId'), 'Radio can once again replace the public Fashion broadcast layer');
-requireCondition(controller.includes('async function synchronizeRadioVisualBroadcastPlayback(forceSeek = false)') && controller.includes('radioVisualVideo.playbackRate = driftSeconds > 0 ? .98 : 1.02;'), 'the Radio visual no longer keeps its own shared-clock correction');
+requireCondition(controller.includes('async function synchronizeRadioVisualBroadcastPlayback(forceSeek = false)') && controller.includes('synchronizeBroadcastMedia(radioVisualVideo, targetSeconds'), 'the Radio visual no longer uses the rate-locked controlled rejoin policy');
 requireCondition(controller.includes('const radioVisualVisible = Boolean(radioActive && radioRunway && requestedVideoBlend >= 99.5);'), 'Now Playing can still report the paused opening music video at the Radio endpoint');
 requireCondition(controller.includes('radioIsActiveProgramme ? "radio-visual" : "music"'), 'the crossfader right endpoint can still resolve to the opening music video during Radio');
 requireCondition(!controller.includes('const preloadedEntry = radioFashionPreloadPool.get(nextRunway.assetKey);'), 'public Fashion can still steal a preloaded Radio visual element');
@@ -448,8 +448,8 @@ const musicBufferManager = streamController.slice(
   streamController.indexOf('function manageFashionQualityFromMusic'),
   streamController.indexOf('function beginFreeze')
 );
-requireCondition(!streamController.includes('deprioritizeFashion'), 'the retired music-triggered fashion pause path has returned');
-requireCondition(!musicBufferManager.includes('pauseFashion') && !musicBufferManager.includes('.pause('), 'low music buffer can still pause fashion');
+requireCondition(musicBufferManager.includes('setAuxiliaryLoadingSuspended(state, true'), 'low primary buffer no longer suspends optional Fashion loading');
+requireCondition(streamController.includes('state.video.dataset.streamPriority === "primary"'), 'visible primary Fashion can be suspended as optional media');
 requireCondition(!streamController.includes('outside_viewport') && !streamController.includes('document_hidden'), 'a visibility change can still automatically pause fashion');
 requireCondition(streamController.includes('const FASHION_PRELOAD_TARGET_SECONDS = 12;'), 'stream controller preload target is no longer twelve seconds');
 requireCondition(streamController.includes('const FASHION_REVEAL_MINIMUM_SECONDS = 8;'), 'stream controller reveal floor is no longer eight seconds');
@@ -465,6 +465,9 @@ requireCondition(streamController.includes('buffer_depth: bufferedAhead(state.vi
 requireCondition(streamController.includes('pause_source: pauseSource'), 'pause-source telemetry is missing');
 requireCondition(streamController.includes('freeze_duration_ms:'), 'freeze-duration telemetry is missing');
 requireCondition(streamController.includes('const HLS_ERROR_TELEMETRY_THROTTLE_MS = 15000;'), 'repeating HLS errors can flood Cloudflare telemetry');
+requireCondition(streamController.includes('hls.js@1.6.16') && streamController.includes('maxLiveSyncPlaybackRate: 1'), 'HLS.js is not on the rate-locked maintenance version');
+requireCondition(streamController.includes('playback_rate:') && streamController.includes('hidden_loading_media_count') && streamController.includes('controller_seek_count'), 'broadcast correction and inactive-media telemetry is incomplete');
+requireCondition(streamController.includes('if (video.hasAttribute("data-stream-deferred")) return;'), 'deferred hidden media can still auto-attach at page load');
 requireCondition(streamController.includes('window.location.hostname !== "staging.universalmind.tv"'), 'the deliberate network throttle is not restricted to staging');
 requireCondition(streamController.includes('hlsConfig.fLoader = createQaThrottledFragmentLoader'), 'the staging throttle no longer controls HLS fragment delivery');
 requireCondition(streamController.includes('video.dataset.streamStartupMs'), 'music startup timing diagnostics are missing');

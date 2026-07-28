@@ -76,6 +76,10 @@
   const catalogueChunkSize = 24;
   let liveBandSyncTimer = 0;
   let liveBandRunwayId = "";
+  let liveBandLargeDriftSamples = 0;
+  let liveBandLastSeekAt = 0;
+  let liveBandSeekCount = 0;
+  let liveBandSeekInFlight = null;
 
   const liveRunways = Object.freeze({
     "wolford-sergio-rossi-capsule": {
@@ -130,21 +134,42 @@
     });
   }
 
-  function seekLiveBand(blockOffsetSeconds) {
-    if (!liveBand || !Number.isFinite(Number(blockOffsetSeconds))) return;
-    const seek = () => {
-      const duration = Number(liveBand.duration || 0);
-      if (!Number.isFinite(duration) || duration <= 0) return;
-      const target = ((Number(blockOffsetSeconds) % duration) + duration) % duration;
-      try {
-        if (typeof liveBand.fastSeek === "function") liveBand.fastSeek(target);
-        else liveBand.currentTime = target;
-      } catch {
-        // The next clock pass will retry once the stream is seekable.
-      }
-    };
-    if (liveBand.readyState >= 1) seek();
-    else liveBand.addEventListener("loadedmetadata", seek, { once: true });
+  function seekLiveBand(blockOffsetSeconds, reason = "entry_seek", state = null) {
+    if (!liveBand || !Number.isFinite(Number(blockOffsetSeconds))) return Promise.resolve(false);
+    if (liveBandSeekInFlight) return liveBandSeekInFlight;
+    liveBandSeekInFlight = new Promise((resolve) => {
+      const seek = () => {
+        const duration = Number(liveBand.duration || 0);
+        if (!Number.isFinite(duration) || duration <= 0) {
+          resolve(false);
+          return;
+        }
+        const target = ((Number(blockOffsetSeconds) % duration) + duration) % duration;
+        liveBand.playbackRate = 1;
+        liveBandSeekCount += 1;
+        window.IAMStreamController?.noteControlledSeek?.(liveBand, {
+          role: "fashion",
+          programme_instance_id: state?.programmeInstanceId || "",
+          broadcast_channel_id: state?.channelId || "fashion-underground-intensity",
+          seek_reason: reason,
+          controller_seek_count: liveBandSeekCount,
+        });
+        try {
+          liveBand.currentTime = target;
+        } catch {
+          resolve(false);
+          return;
+        }
+        liveBandLargeDriftSamples = 0;
+        if (reason === "controlled_rejoin") liveBandLastSeekAt = window.performance?.now?.() || Date.now();
+        resolve(true);
+      };
+      if (liveBand.readyState >= 1) seek();
+      else liveBand.addEventListener("loadedmetadata", seek, { once: true });
+    }).finally(() => {
+      liveBandSeekInFlight = null;
+    });
+    return liveBandSeekInFlight;
   }
 
   async function synchronizeLiveBand(forceSeek = false) {
@@ -183,7 +208,7 @@
 
     const duration = Number(liveBand.duration || 0);
     if (!Number.isFinite(duration) || duration <= 0) {
-      if (forceSeek) seekLiveBand(state.offsetSeconds);
+      if (forceSeek) await seekLiveBand(state.offsetSeconds, "entry_seek", state);
       return state;
     }
     const target = ((state.offsetSeconds % duration) + duration) % duration;
@@ -191,17 +216,35 @@
     if (Math.abs(drift) > duration / 2) drift += drift > 0 ? -duration : duration;
     document.body.dataset.shopLiveTargetSeconds = target.toFixed(3);
     document.body.dataset.shopLiveDriftSeconds = drift.toFixed(3);
-    if (forceSeek || Math.abs(drift) > 1.25) {
-      seekLiveBand(state.offsetSeconds);
-      liveBand.playbackRate = 1;
-      document.body.dataset.shopLiveCorrection = forceSeek ? "entry_seek" : "hard_seek";
-    } else if (Math.abs(drift) > .35) {
-      liveBand.playbackRate = drift > 0 ? .98 : 1.02;
-      document.body.dataset.shopLiveCorrection = drift > 0 ? "soft_slow" : "soft_catchup";
-    } else {
-      liveBand.playbackRate = 1;
+    liveBand.playbackRate = 1;
+    const bufferSeconds = window.IAMStreamController.bufferedAhead(liveBand);
+    if (forceSeek) {
+      await seekLiveBand(state.offsetSeconds, "entry_seek", state);
+      document.body.dataset.shopLiveCorrection = "entry_seek";
+    } else if (Math.abs(drift) <= 1) {
+      liveBandLargeDriftSamples = 0;
       document.body.dataset.shopLiveCorrection = "locked";
+    } else if (
+      Math.abs(drift) < 1.5 ||
+      liveBand.paused ||
+      liveBand.seeking ||
+      liveBand.readyState < HTMLMediaElement.HAVE_FUTURE_DATA ||
+      bufferSeconds < 12
+    ) {
+      liveBandLargeDriftSamples = 0;
+      document.body.dataset.shopLiveCorrection = Math.abs(drift) < 1.5 ? "within_tolerance" : "recovery_buffering";
+    } else if ((window.performance?.now?.() || Date.now()) - liveBandLastSeekAt < 30000) {
+      document.body.dataset.shopLiveCorrection = "rejoin_cooldown";
+    } else {
+      liveBandLargeDriftSamples += 1;
+      document.body.dataset.shopLiveCorrection = "rejoin_confirming";
+      if (liveBandLargeDriftSamples >= 3) {
+        await seekLiveBand(state.offsetSeconds, "controlled_rejoin", state);
+        document.body.dataset.shopLiveCorrection = "controlled_rejoin";
+      }
     }
+    document.body.dataset.shopLivePlaybackRate = liveBand.playbackRate.toFixed(3);
+    document.body.dataset.shopLiveRejoinSamples = String(liveBandLargeDriftSamples);
     return state;
   }
 

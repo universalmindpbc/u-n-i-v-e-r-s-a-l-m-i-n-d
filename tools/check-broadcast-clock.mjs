@@ -233,12 +233,19 @@ assert.equal(scheduledRunways.length, fashionRunwayIds.size, "A Fashion film can
 assert.ok(!scheduledRunways.some((runwayId) => privateRadioVisualIds.has(runwayId)), "Pearl must never enter the public Fashion shelf.");
 
 assert.match(clockController, /serverNowMs - \(\(startedAt \+ endedAt\) \/ 2\)/, "Clock sync must compensate for request round-trip latency.");
+assert.match(clockController, /clockAnchorServerMs \+ \(performanceNow - clockAnchorPerformanceMs\)/, "The shared clock must advance from a monotonic performance anchor.");
+assert.match(clockController, /CLOCK_RESYNC_INTERVAL_MS = 60000/, "The server clock must be reprobed periodically.");
+assert.match(clockController, /CLOCK_SMOOTHING_FACTOR = \.25/, "Periodic clock corrections must be smoothed instead of stepping playback.");
 assert.match(clockController, /positiveModulo\(elapsedSeconds, channel\.cycleSeconds\)/, "Channel state must repeat continuously from the shared epoch.");
 assert.match(clockController, /channels\(format = ""\)/, "The clock must expose channels by media format.");
 assert.match(clockController, /previousRunwayId/, "The shared clock must expose the previous Fashion programme.");
 assert.match(controller, /channels\?\.\(mode\)/, "Videos, DJ Sets, Radio and Fashion must all resolve through the shared clock.");
-assert.match(controller, /absoluteDrift > 1\.25/, "Shared video playback must hard-correct material drift.");
-assert.match(controller, /localVideo\.playbackRate = driftSeconds > 0 \? \.98 : 1\.02/, "Shared video playback must gently correct smaller drift.");
+assert.doesNotMatch(controller, /fastSeek|soft_slow|soft_catchup|playbackRate = driftSeconds/, "Shared playback must not use approximate seeks or audible tempo correction.");
+assert.match(controller, /BROADCAST_REJOIN_DRIFT_SECONDS = 1\.5/, "Shared playback must ignore small drift and reserve seeks for material divergence.");
+assert.match(controller, /BROADCAST_REJOIN_REQUIRED_SAMPLES = 3/, "A controlled rejoin must require consecutive drift samples.");
+assert.match(controller, /BROADCAST_REJOIN_BUFFER_SECONDS = 12/, "A controlled rejoin must wait for a safe buffer.");
+assert.match(controller, /BROADCAST_REJOIN_COOLDOWN_MS = 30000/, "Controlled rejoins must have a seek-storm cooldown.");
+assert.match(controller, /media\.currentTime = targetSeconds/, "Controlled rejoins must use a precise currentTime assignment.");
 assert.match(controller, /MUSIC_HANDOFF_PRELOAD_LEAD_SECONDS = 45/, "Every video channel must prepare its next programme before rollover.");
 assert.match(controller, /preloadUpcomingMusicVideo\(state\)/, "Shared video playback must preload the next scheduled music video.");
 assert.match(controller, /activateBufferedMusicHandoff/, "Shared video playback must activate a buffered incoming video instead of detaching the outgoing picture first.");
@@ -255,7 +262,7 @@ assert.match(controller, /musicContinuationReason = "personal_opening_complete"/
 assert.match(controller, /radio_energy_match/, "Shared Radio must automatically pair with the matching Fashion energy channel.");
 assert.match(controller, /joinRadioVisualBroadcastChannel/, "Shared Radio must use an independent visual layer instead of replacing public Fashion.");
 assert.match(controller, /synchronizeRadioVisualBroadcastPlayback/, "The independent Radio visual must retain shared-clock synchronization.");
-assert.match(controller, /radioVisualVideo\.playbackRate = driftSeconds > 0 \? \.98 : 1\.02/, "The independent Radio visual must gently correct smaller drift.");
+assert.match(controller, /synchronizeBroadcastMedia\(radioVisualVideo, targetSeconds/, "The independent Radio visual must use the same rate-locked rejoin policy.");
 assert.match(controller, /radioIsActiveProgramme \? "radio-visual" : "music"/, "The crossfader right endpoint must remain the Radio visual while Radio is playing.");
 assert.match(controller, /revealMinimumSeconds:\s*RADIO_FASHION_REVEAL_BUFFER_SECONDS/, "Shared Radio must begin its Fashion picture before the station safety buffer.");
 assert.match(controller, /audio_party_visual_pair/, "James Bondage audio-led parties must pair with the Fashion broadcast clock.");

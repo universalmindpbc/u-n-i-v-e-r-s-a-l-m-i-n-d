@@ -54,6 +54,16 @@ function writePlaybackEvent(dataset, event) {
       text(event.freeze_source, 80),
       text(event.recovery_source, 80),
       text(event.schema_version, 80),
+      text(event.broadcast_mode, 40),
+      text(event.broadcast_channel_id, 100),
+      text(event.programme_instance_id, 160),
+      text(event.correction, 80),
+      text(event.seek_reason, 80),
+      text(event.stream_priority, 40),
+      text(event.clock_source, 80),
+      text(event.auxiliary_reason, 120),
+      text(event.release_reason, 80),
+      text(event.transport, 40),
     ],
     doubles: [
       number(event.event_time_ms),
@@ -72,6 +82,10 @@ function writePlaybackEvent(dataset, event) {
       number(event.reveal_wait_ms),
       number(event.buffered_segments),
       number(event.startup_ms),
+      number(event.playback_rate),
+      number(event.drift_seconds),
+      number(event.seek_duration_ms),
+      number(event.controller_seek_count),
     ],
   });
 }
@@ -106,6 +120,25 @@ function writeStructuredLog(event) {
     reveal_wait_ms: number(event.reveal_wait_ms),
     buffered_segments: number(event.buffered_segments),
     startup_ms: number(event.startup_ms),
+    playback_rate: number(event.playback_rate),
+    drift_seconds: number(event.drift_seconds),
+    correction: text(event.correction, 80),
+    buffer_before_correction: number(event.buffer_before_correction),
+    seeking: Boolean(event.seeking),
+    seek_reason: text(event.seek_reason, 80),
+    seek_duration_ms: number(event.seek_duration_ms),
+    seek_count: number(event.seek_count),
+    controller_seek_count: number(event.controller_seek_count),
+    broadcast_mode: text(event.broadcast_mode, 40),
+    broadcast_channel_id: text(event.broadcast_channel_id, 100),
+    programme_instance_id: text(event.programme_instance_id, 160),
+    stream_priority: text(event.stream_priority, 40),
+    clock_source: text(event.clock_source, 80),
+    document_media_count: number(event.document_media_count),
+    active_media_count: number(event.active_media_count),
+    hidden_active_media_count: number(event.hidden_active_media_count),
+    hidden_loading_media_count: number(event.hidden_loading_media_count),
+    attached_stream_count: number(event.attached_stream_count),
   }));
 }
 
@@ -120,7 +153,7 @@ export default {
     }
 
     if (request.method === "GET" && url.pathname === "/health") {
-      return jsonResponse({ ok: true, service: "iam-playback-telemetry", schema: "iam_playback_telemetry_v1" }, 200, origin);
+      return jsonResponse({ ok: true, service: "iam-playback-telemetry", schema: "iam_playback_telemetry_v2" }, 200, origin);
     }
 
     if (request.method !== "POST" || url.pathname !== "/events") {

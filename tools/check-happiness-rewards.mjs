@@ -263,8 +263,8 @@ assert.match(script, /window\.parent\.postMessage\(\{ type: "iam:return-to-telev
 assert.match(script, /url\.searchParams\.set\("musicTelevisionFrame", "1"\)/);
 assert.doesNotMatch(wallet.match(/<nav class="global-nav-menu"[\s\S]*?<\/nav>/)?.[0] || "", /wallet\.html|\/wallet\//i);
 assert.equal((home.match(/data-happiness-wallet-category=/g) || []).length, 4);
-assert.match(home, /adaptive-environment-television\.js\?v=music-tv-8c63c616bf2d/);
-assert.match(televisionPage, /adaptive-environment-television\.js\?v=music-tv-8c63c616bf2d/);
+assert.match(home, /adaptive-environment-television\.js\?v=music-tv-74c3c8f01bc4/);
+assert.match(televisionPage, /adaptive-environment-television\.js\?v=music-tv-74c3c8f01bc4/);
 assert.match(television, /document\.querySelectorAll\("\[data-happiness-wallet-category\]"\)/);
 assert.match(television, /walletLink\.setAttribute\("href", `wallet\.html#\$\{category\}`\)/);
 assert.match(television, /openInVideoPageLayer\(walletLink\)/);
@@ -277,7 +277,7 @@ assert.match(televisionCss, /television-page-view-open\.television-wallet-page-o
 assert.doesNotMatch(wallet, /(?:href|src)="a s s e t s\//);
 assert.match(wallet, /data-stream-file="a s s e t s\/Globe Landing Page Video - Sunscreem - Perfection Motion for RMU\.mp4"/);
 assert.match(wallet, /Ethereum Diamond Rainbow \[ e o r a \] 3\.png/);
-assert.match(wallet, /cloudflare-stream-controller\.js\?v=stream-controller-8/);
+assert.match(wallet, /cloudflare-stream-controller\.js\?v=stream-controller-0438499ced97/);
 assert.match(style, /\.happiness-background-shade\s*\{[^}]*background:\s*rgba\(0, 0, 0, 0\.77\)/s);
 assert.match(style, /\.happiness-card__member img\s*\{[^}]*width:\s*clamp\(54px, 4\.8vw, 75px\)/s);
 assert.match(architecture, /It is not currently backed, pegged, cash redeemable/i);

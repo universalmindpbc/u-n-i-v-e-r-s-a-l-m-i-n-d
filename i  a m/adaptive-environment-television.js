@@ -95,6 +95,14 @@
   const MUSIC_HANDOFF_PRELOAD_LEAD_SECONDS = 45;
   const MUSIC_HANDOFF_BUFFER_SECONDS = 12;
   const MUSIC_HANDOFF_CROSSFADE_MS = 1100;
+  const BROADCAST_SYNC_INTERVAL_MS = 3000;
+  const BROADCAST_LOCK_TOLERANCE_SECONDS = 1;
+  const BROADCAST_REJOIN_DRIFT_SECONDS = 1.5;
+  const BROADCAST_REJOIN_BUFFER_SECONDS = 12;
+  const BROADCAST_REJOIN_REQUIRED_SAMPLES = 3;
+  const BROADCAST_REJOIN_COOLDOWN_MS = 30000;
+  const BROADCAST_REJOIN_FADE_OUT_MS = 120;
+  const BROADCAST_REJOIN_FADE_IN_MS = 180;
   const BROADCAST_ENERGY_ORDER = ["restore", "social-uplift", "underground-intensity"];
   const BROADCAST_EDITORIAL_ORDER = ["inner-planes", "champagne-bohemia", "modul8-infinity", "james-bondage", "safety-cushion"];
   const BROADCAST_ENERGY_PROFILES = {
@@ -184,6 +192,7 @@
   const sexEdEpisodeVideo = document.querySelector("[data-sex-ed-shell-video]");
   const sexEdEpisodeStart = document.querySelector("[data-sex-ed-shell-start]");
   const sexEdLoopVideos = Array.from(document.querySelectorAll(".adaptive-television-sex-ed-grid video"));
+  const sexEdLoopImages = Array.from(document.querySelectorAll(".adaptive-television-sex-ed-grid img"));
   const videoModeButtons = Array.from(document.querySelectorAll("[data-video-mode]"));
   const videoMixControls = document.querySelector("[data-video-mix-controls]");
   const videoCrossfader = document.querySelector("[data-video-crossfader]");
@@ -345,6 +354,7 @@
   let fashionTensorRecords = [];
   let fashionDwellTimer = 0;
   const radioFashionPreloadPool = new Map();
+  const broadcastMediaSyncStates = new WeakMap();
   let requestedVideoBlend = Number(videoCrossfader?.value || 100);
   let fashionRevealGeneration = 0;
   let pendingFashionRevealPromise = null;
@@ -425,7 +435,7 @@
   } catch {
     // The adaptive recommendation remains available when session storage is restricted.
   }
-  const RADIO_HLS_LIBRARY_URL = "https://cdn.jsdelivr.net/npm/hls.js@1.6.13/dist/hls.min.js";
+  const RADIO_HLS_LIBRARY_URL = "https://cdn.jsdelivr.net/npm/hls.js@1.6.16/dist/hls.min.js";
   const FASHION_REVEAL_BUFFER_SECONDS = 8;
   const RADIO_FASHION_REVEAL_BUFFER_SECONDS = 4;
   const RADIO_READY_BUFFER_SECONDS = 24;
@@ -947,6 +957,7 @@
     video.__iamFashionSource = runway.videoSrc;
     video.dataset.streamMaxHeight = "720";
     video.dataset.streamPreloadTarget = "12";
+    video.dataset.streamPriority = "optional";
     video.setAttribute("aria-hidden", "true");
     return video;
   }
@@ -957,6 +968,7 @@
     const video = createFashionVideo(runwayIndex);
     video.className = "adaptive-television-radio-visual-video";
     video.dataset.radioVisualRunwayId = runway.assetKey;
+    video.dataset.streamPriority = "handoff";
     return video;
   }
 
@@ -1101,7 +1113,6 @@
     playerMount.append(fashionHeroFrame);
     playerMount.append(timecode);
     attachAdaptiveStream(localVideo, track.localVideoSrc, "music");
-    if (televisionPlaybackRequested) ensureFashionStreamAttached();
     return localVideo;
   }
 
@@ -1161,21 +1172,32 @@
     return entry.promise;
   }
 
-  function preloadRadioFashionRunways() {
+  function releaseUnusedRadioFashionRunways(allowedAssetKeys = new Set()) {
+    radioFashionPreloadPool.forEach((entry, assetKey) => {
+      if (allowedAssetKeys.has(assetKey) || entry.video === radioVisualVideo) return;
+      window.IAMStreamController?.release?.(entry.video, "radio_visual_not_imminent");
+      entry.video?.remove?.();
+      radioFashionPreloadPool.delete(assetKey);
+    });
+    updateRadioFashionPreloadDiagnostics(allowedAssetKeys.size);
+  }
+
+  function preloadRadioFashionRunways(channelId = broadcastChannelId) {
     Promise.resolve(window.IAMBroadcastClock?.ready)
       .then(() => {
-        const runwayIds = new Set(
-          (window.IAMBroadcastClock?.channels?.("radio") || [])
-            .map((channel) => window.IAMBroadcastClock?.stateAt(channel.visualChannelId)?.runwayId)
-            .filter(Boolean)
-        );
-        const runwayIndexes = Array.from(runwayIds)
-          .map((runwayId) => fashionRunways.findIndex((runway) => runway.assetKey === runwayId))
-          .filter((index) => index >= 0);
-        updateRadioFashionPreloadDiagnostics(runwayIndexes.length);
-        runwayIndexes.forEach((runwayIndex, position) => {
-          window.setTimeout(() => preloadRadioFashionRunway(runwayIndex), position * 180);
-        });
+        const radioState = window.IAMBroadcastClock?.stateAt(channelId);
+        const visualChannelId = radioState?.mediaType === "radio"
+          ? radioState.visualChannelId
+          : radioVisualBroadcastChannelId;
+        const visualState = visualChannelId ? window.IAMBroadcastClock?.stateAt(visualChannelId) : null;
+        const runwayIndex = fashionRunways.findIndex((runway) => runway.assetKey === visualState?.runwayId);
+        if (runwayIndex < 0) {
+          releaseUnusedRadioFashionRunways(new Set());
+          return null;
+        }
+        const allowed = new Set([fashionRunways[runwayIndex].assetKey]);
+        releaseUnusedRadioFashionRunways(allowed);
+        return preloadRadioFashionRunway(runwayIndex);
       })
       .catch((error) => {
         document.body.dataset.radioFashionPreloadError = String(error?.message || error).slice(0, 140);
@@ -1230,6 +1252,8 @@
     video.disablePictureInPicture = true;
     video.setAttribute("aria-label", `${candidate.artist} - ${candidate.title}`);
     video.dataset.musicTrackId = candidate.id;
+    video.dataset.streamPriority = options.standby ? "handoff" : "primary";
+    if (options.standby) video.setAttribute("data-stream-standby", "");
 
     if (options.standby) {
       video.setAttribute("aria-hidden", "true");
@@ -1336,10 +1360,19 @@
     });
   }
 
-  function seekIncomingMusicVideo(video, targetSeconds) {
+  function seekIncomingMusicVideo(video, targetSeconds, state = null) {
     if (!video || !Number.isFinite(targetSeconds)) return;
     const seek = () => {
-      try { video.currentTime = targetSeconds; } catch {}
+      window.IAMStreamController?.noteControlledSeek?.(video, {
+        role: "music",
+        programme_instance_id: state?.programmeInstanceId || "",
+        broadcast_channel_id: state?.channelId || broadcastChannelId,
+        seek_reason: "handoff_alignment",
+      });
+      try {
+        video.currentTime = targetSeconds;
+        if (state?.programmeInstanceId) video.dataset.musicHandoffAlignedInstance = state.programmeInstanceId;
+      } catch {}
     };
     if (video.readyState >= 1) seek();
     else video.addEventListener("loadedmetadata", seek, { once: true });
@@ -1369,7 +1402,7 @@
       preload: true,
       preloadTargetSeconds: MUSIC_HANDOFF_BUFFER_SECONDS,
     })
-      .then(() => window.IAMStreamController?.preloadFashion?.(video, {
+      .then(() => window.IAMStreamController?.preloadMedia?.(video, {
         targetSeconds: MUSIC_HANDOFF_BUFFER_SECONDS,
       }))
       .then((readiness) => {
@@ -1424,7 +1457,7 @@
       video.remove();
       return null;
     }
-    seekIncomingMusicVideo(video, state.offsetSeconds);
+    seekIncomingMusicVideo(video, state.offsetSeconds, state);
     video.playbackRate = 1;
     video.muted = true;
     video.defaultMuted = true;
@@ -1466,7 +1499,10 @@
       incoming.remove();
       return null;
     }
-    seekIncomingMusicVideo(incoming, state.offsetSeconds);
+    const incomingDrift = Number(incoming.currentTime || 0) - state.offsetSeconds;
+    if (incoming.dataset.musicHandoffAlignedInstance !== state.programmeInstanceId || Math.abs(incomingDrift) > .5) {
+      seekIncomingMusicVideo(incoming, state.offsetSeconds, state);
+    }
     incoming.playbackRate = 1;
     incoming.muted = true;
     incoming.defaultMuted = true;
@@ -1488,6 +1524,9 @@
     oldVideo.setAttribute("aria-hidden", "true");
     localVideo = incoming;
     track = nextTrack;
+    incoming.removeAttribute("data-stream-standby");
+    window.IAMStreamController?.setPriority?.(incoming, "primary");
+    window.IAMStreamController?.setPriority?.(oldVideo, "optional");
     incoming.removeAttribute("aria-hidden");
     incoming.style.pointerEvents = "";
     incoming.defaultMuted = false;
@@ -2524,13 +2563,12 @@
     }));
 
     try {
-      await ensureFashionStreamAttached(fashionVideo);
       if (shouldPlay) {
+        await ensureFashionStreamAttached(fashionVideo);
         await revealFashionWhenReady(fashionVideo, revealGeneration, {
           minimumSeconds: options.revealMinimumSeconds,
         });
       } else {
-        window.IAMStreamController?.preloadFashion(fashionVideo, { targetSeconds: 12 });
         fashionVideo.classList.add("is-fashion-active");
       }
     } catch {
@@ -3924,40 +3962,224 @@
     delete document.body.dataset.broadcastTargetSeconds;
     delete document.body.dataset.broadcastDriftSeconds;
     delete document.body.dataset.broadcastCorrection;
+    delete document.body.dataset.broadcastProgrammeInstanceId;
+    delete document.body.dataset.broadcastPlaybackRate;
+    delete document.body.dataset.broadcastRejoinSamples;
+    delete document.body.dataset.broadcastControllerSeekCount;
     delete document.body.dataset.broadcastHandoffTrackId;
     delete document.body.dataset.broadcastHandoffPlaybackRate;
     delete document.body.dataset.broadcastHandoffBufferSeconds;
   }
 
-  function seekBroadcastVideo(video, targetSeconds) {
-    if (!video || !Number.isFinite(targetSeconds)) return;
-    const seek = () => {
-      try {
-        if (typeof video.fastSeek === "function") video.fastSeek(targetSeconds);
-        else video.currentTime = targetSeconds;
-      } catch {}
+  function broadcastSyncNow() {
+    return window.performance?.now?.() || Date.now();
+  }
+
+  function broadcastMediaBufferedAhead(media) {
+    const controllerDepth = window.IAMStreamController?.bufferedAhead?.(media);
+    if (Number.isFinite(controllerDepth)) return controllerDepth;
+    if (!media?.buffered?.length) return 0;
+    const currentTime = Number(media.currentTime || 0);
+    for (let index = 0; index < media.buffered.length; index += 1) {
+      if (currentTime + .12 >= media.buffered.start(index) && currentTime <= media.buffered.end(index) + .12) {
+        return Math.max(0, media.buffered.end(index) - currentTime);
+      }
+    }
+    return 0;
+  }
+
+  function broadcastMediaSyncState(media) {
+    let syncState = broadcastMediaSyncStates.get(media);
+    if (syncState) return syncState;
+    syncState = {
+      programmeInstanceId: "",
+      largeDriftSamples: 0,
+      lastSeekAt: 0,
+      seekCount: 0,
+      seekInFlight: null,
+      recovering: false,
+      lastCorrection: "",
     };
-    if (video.readyState >= 1) seek();
-    else video.addEventListener("loadedmetadata", seek, { once: true });
+    const beginRecovery = () => {
+      if (syncState.seekInFlight) return;
+      syncState.recovering = true;
+      syncState.largeDriftSamples = 0;
+    };
+    media.addEventListener("waiting", beginRecovery);
+    media.addEventListener("stalled", beginRecovery);
+    media.addEventListener("ratechange", () => {
+      if (Math.abs(Number(media.playbackRate || 1) - 1) > .0001) media.playbackRate = 1;
+    });
+    broadcastMediaSyncStates.set(media, syncState);
+    return syncState;
+  }
+
+  function setBroadcastSyncDiagnostic(scope, suffix, value) {
+    const key = `${scope}${suffix}`;
+    if (value === null || typeof value === "undefined" || value === "") delete document.body.dataset[key];
+    else document.body.dataset[key] = String(value);
+  }
+
+  function publishBroadcastCorrection(media, syncState, options, correction, details = {}) {
+    setBroadcastSyncDiagnostic(options.scope, "Correction", correction);
+    setBroadcastSyncDiagnostic(options.scope, "PlaybackRate", Number(media.playbackRate || 1).toFixed(3));
+    setBroadcastSyncDiagnostic(options.scope, "RejoinSamples", syncState.largeDriftSamples);
+    setBroadcastSyncDiagnostic(options.scope, "ControllerSeekCount", syncState.seekCount);
+    if (syncState.lastCorrection === correction && !details.forceTelemetry) return;
+    syncState.lastCorrection = correction;
+    window.IAMStreamController?.recordMediaEvent?.(media, "broadcast_sync_state", {
+      role: options.role || media.dataset.streamRole || "music",
+      programme_instance_id: options.programmeInstanceId || "",
+      broadcast_channel_id: options.channelId || "",
+      correction,
+      playback_rate: Number(media.playbackRate || 1),
+      drift_seconds: Number(details.driftSeconds || 0),
+      buffer_before_correction: Number(details.bufferSeconds ?? broadcastMediaBufferedAhead(media)),
+      controller_seek_count: syncState.seekCount,
+      seeking: Boolean(media.seeking),
+    });
+  }
+
+  async function waitForBroadcastMetadata(media) {
+    if (media.readyState >= 1) return true;
+    return new Promise((resolve) => {
+      let settled = false;
+      const finish = (ready) => {
+        if (settled) return;
+        settled = true;
+        window.clearTimeout(timeout);
+        media.removeEventListener("loadedmetadata", onMetadata);
+        resolve(ready);
+      };
+      const onMetadata = () => finish(true);
+      const timeout = window.setTimeout(() => finish(false), 4500);
+      media.addEventListener("loadedmetadata", onMetadata, { once: true });
+    });
+  }
+
+  async function performControlledBroadcastSeek(media, targetSeconds, options, reason) {
+    const syncState = broadcastMediaSyncState(media);
+    if (syncState.seekInFlight) return syncState.seekInFlight;
+    syncState.seekInFlight = (async () => {
+      if (!await waitForBroadcastMetadata(media)) return false;
+      const wasPlaying = !media.paused;
+      const originalVolume = Number(media.volume || 0);
+      const shouldFade = wasPlaying && !media.muted && originalVolume > .001;
+      const bufferBeforeCorrection = broadcastMediaBufferedAhead(media);
+      media.playbackRate = 1;
+      if (shouldFade) {
+        animateVoiceAssistantProgramVolume(media, 0, BROADCAST_REJOIN_FADE_OUT_MS);
+        await wait(BROADCAST_REJOIN_FADE_OUT_MS);
+      }
+      syncState.seekCount += 1;
+      window.IAMStreamController?.noteControlledSeek?.(media, {
+        role: options.role || media.dataset.streamRole || "music",
+        programme_instance_id: options.programmeInstanceId || "",
+        broadcast_channel_id: options.channelId || "",
+        seek_reason: reason,
+        drift_seconds: Number(options.driftSeconds || 0),
+        buffer_before_correction: bufferBeforeCorrection,
+        controller_seek_count: syncState.seekCount,
+      });
+      await new Promise((resolve) => {
+        let settled = false;
+        const finish = () => {
+          if (settled) return;
+          settled = true;
+          window.clearTimeout(timeout);
+          media.removeEventListener("seeked", finish);
+          resolve();
+        };
+        const timeout = window.setTimeout(finish, 2500);
+        media.addEventListener("seeked", finish, { once: true });
+        try {
+          media.currentTime = targetSeconds;
+        } catch {
+          finish();
+        }
+      });
+      media.playbackRate = 1;
+      if (wasPlaying && media.paused) media.play().catch(() => {});
+      if (shouldFade) animateVoiceAssistantProgramVolume(media, originalVolume, BROADCAST_REJOIN_FADE_IN_MS);
+      if (reason === "controlled_rejoin") syncState.lastSeekAt = broadcastSyncNow();
+      syncState.largeDriftSamples = 0;
+      syncState.recovering = false;
+      publishBroadcastCorrection(media, syncState, options, reason, {
+        driftSeconds: options.driftSeconds,
+        bufferSeconds: bufferBeforeCorrection,
+        forceTelemetry: true,
+      });
+      return true;
+    })().finally(() => {
+      syncState.seekInFlight = null;
+    });
+    return syncState.seekInFlight;
+  }
+
+  async function synchronizeBroadcastMedia(media, targetSeconds, options = {}) {
+    if (!media || !Number.isFinite(targetSeconds)) return "unavailable";
+    const syncState = broadcastMediaSyncState(media);
+    media.playbackRate = 1;
+    if (syncState.programmeInstanceId !== options.programmeInstanceId) {
+      syncState.programmeInstanceId = options.programmeInstanceId || "";
+      syncState.largeDriftSamples = 0;
+      syncState.recovering = false;
+      syncState.lastSeekAt = 0;
+    }
+    const driftSeconds = Number(media.currentTime || 0) - targetSeconds;
+    const absoluteDrift = Math.abs(driftSeconds);
+    const bufferSeconds = broadcastMediaBufferedAhead(media);
+    options.driftSeconds = driftSeconds;
+
+    if (options.forceSeek) {
+      await performControlledBroadcastSeek(media, targetSeconds, options, "entry_seek");
+      return "entry_seek";
+    }
+    if (absoluteDrift <= BROADCAST_LOCK_TOLERANCE_SECONDS) {
+      syncState.largeDriftSamples = 0;
+      syncState.recovering = false;
+      publishBroadcastCorrection(media, syncState, options, "locked", { driftSeconds, bufferSeconds });
+      return "locked";
+    }
+    if (absoluteDrift < BROADCAST_REJOIN_DRIFT_SECONDS) {
+      syncState.largeDriftSamples = 0;
+      publishBroadcastCorrection(media, syncState, options, "within_tolerance", { driftSeconds, bufferSeconds });
+      return "within_tolerance";
+    }
+    if (
+      media.paused ||
+      media.seeking ||
+      media.readyState < HTMLMediaElement.HAVE_FUTURE_DATA ||
+      bufferSeconds < BROADCAST_REJOIN_BUFFER_SECONDS
+    ) {
+      syncState.recovering = true;
+      syncState.largeDriftSamples = 0;
+      publishBroadcastCorrection(media, syncState, options, "recovery_buffering", { driftSeconds, bufferSeconds });
+      return "recovery_buffering";
+    }
+    if (broadcastSyncNow() - syncState.lastSeekAt < BROADCAST_REJOIN_COOLDOWN_MS) {
+      publishBroadcastCorrection(media, syncState, options, "rejoin_cooldown", { driftSeconds, bufferSeconds });
+      return "rejoin_cooldown";
+    }
+    syncState.largeDriftSamples += 1;
+    if (syncState.largeDriftSamples < BROADCAST_REJOIN_REQUIRED_SAMPLES) {
+      publishBroadcastCorrection(media, syncState, options, "rejoin_confirming", { driftSeconds, bufferSeconds });
+      return "rejoin_confirming";
+    }
+    await performControlledBroadcastSeek(media, targetSeconds, options, "controlled_rejoin");
+    return "controlled_rejoin";
   }
 
   function fashionChannelIdForEnergy(energyId) {
     return `fashion-${BROADCAST_ENERGY_ORDER.includes(energyId) ? energyId : "restore"}`;
   }
 
-  function seekFashionBroadcastVideo(video, blockOffsetSeconds) {
-    if (!video || !Number.isFinite(Number(blockOffsetSeconds))) return;
-    const seek = () => {
-      const duration = Number(video.duration || 0);
-      if (!Number.isFinite(duration) || duration <= 0) return;
-      const targetSeconds = ((Number(blockOffsetSeconds) % duration) + duration) % duration;
-      try {
-        if (typeof video.fastSeek === "function") video.fastSeek(targetSeconds);
-        else video.currentTime = targetSeconds;
-      } catch {}
-    };
-    if (video.readyState >= 1) seek();
-    else video.addEventListener("loadedmetadata", seek, { once: true });
+  async function seekBroadcastVideo(video, targetSeconds, options = {}) {
+    return performControlledBroadcastSeek(video, targetSeconds, {
+      scope: "broadcast",
+      role: video?.dataset?.streamRole || "music",
+      ...options,
+    }, options.reason || "entry_seek");
   }
 
   async function synchronizeFashionBroadcastPlayback(forceSeek = false) {
@@ -3978,7 +4200,6 @@
     if (fashionVideo.paused) await playWhenStreamAttached(fashionVideo, "fashion").catch(() => {});
     const duration = Number(fashionVideo.duration || 0);
     if (!Number.isFinite(duration) || duration <= 0) {
-      if (forceSeek) seekFashionBroadcastVideo(fashionVideo, state.offsetSeconds);
       return state;
     }
     const targetSeconds = ((state.offsetSeconds % duration) + duration) % duration;
@@ -3986,17 +4207,13 @@
     if (Math.abs(driftSeconds) > duration / 2) driftSeconds += driftSeconds > 0 ? -duration : duration;
     document.body.dataset.fashionBroadcastTargetSeconds = targetSeconds.toFixed(3);
     document.body.dataset.fashionBroadcastDriftSeconds = driftSeconds.toFixed(3);
-    if (forceSeek || Math.abs(driftSeconds) > 1.25) {
-      seekFashionBroadcastVideo(fashionVideo, state.offsetSeconds);
-      fashionVideo.playbackRate = 1;
-      document.body.dataset.fashionBroadcastCorrection = forceSeek ? "entry_seek" : "hard_seek";
-    } else if (Math.abs(driftSeconds) > .35) {
-      fashionVideo.playbackRate = driftSeconds > 0 ? .98 : 1.02;
-      document.body.dataset.fashionBroadcastCorrection = driftSeconds > 0 ? "soft_slow" : "soft_catchup";
-    } else {
-      fashionVideo.playbackRate = 1;
-      document.body.dataset.fashionBroadcastCorrection = "locked";
-    }
+    await synchronizeBroadcastMedia(fashionVideo, targetSeconds, {
+      forceSeek,
+      scope: "fashionBroadcast",
+      role: "fashion",
+      channelId: fashionBroadcastChannelId,
+      programmeInstanceId: state.programmeInstanceId,
+    });
     return state;
   }
 
@@ -4006,7 +4223,7 @@
       synchronizeFashionBroadcastPlayback(false).catch((error) => {
         document.body.dataset.fashionBroadcastSyncError = String(error?.message || error).slice(0, 140);
       });
-    }, 3000);
+    }, BROADCAST_SYNC_INTERVAL_MS);
   }
 
   function stopFashionBroadcastPlayback(reason = "fashion_broadcast_stopped") {
@@ -4041,9 +4258,11 @@
       window.IAMStreamController?.setFashionActive(radioVisualVideo, false, "radio_visual_switch");
       try { radioVisualVideo.pause(); } catch {}
       if (Math.abs(Number(radioVisualVideo.playbackRate || 1) - 1) > .001) radioVisualVideo.playbackRate = 1;
+      window.IAMStreamController?.setPriority?.(radioVisualVideo, "optional");
     }
 
     radioVisualVideo = nextVideo;
+    window.IAMStreamController?.setPriority?.(radioVisualVideo, "primary");
     radioVisualRunwayIndex = nextIndex;
     await ensureFashionStreamAttached(radioVisualVideo);
     const readiness = await window.IAMStreamController?.prepareFashionReveal(radioVisualVideo, {
@@ -4056,6 +4275,7 @@
     if (readiness?.cancelled) return false;
     await playWhenStreamAttached(radioVisualVideo, "fashion").catch(() => {});
     radioVisualVideo.classList.add("is-radio-visual-active");
+    releaseUnusedRadioFashionRunways(new Set([nextRunway.assetKey]));
     playerMount.dataset.radioVisualRunwayId = nextRunway.assetKey;
     document.body.dataset.radioVisualRunwayId = nextRunway.assetKey;
     window.IAMStreamController?.noteFashionReveal(radioVisualVideo);
@@ -4082,7 +4302,6 @@
     if (radioVisualVideo.paused) await playWhenStreamAttached(radioVisualVideo, "fashion").catch(() => {});
     const duration = Number(radioVisualVideo.duration || 0);
     if (!Number.isFinite(duration) || duration <= 0) {
-      if (forceSeek) seekFashionBroadcastVideo(radioVisualVideo, state.offsetSeconds);
       return state;
     }
     const targetSeconds = ((state.offsetSeconds % duration) + duration) % duration;
@@ -4090,17 +4309,13 @@
     if (Math.abs(driftSeconds) > duration / 2) driftSeconds += driftSeconds > 0 ? -duration : duration;
     document.body.dataset.radioVisualBroadcastTargetSeconds = targetSeconds.toFixed(3);
     document.body.dataset.radioVisualBroadcastDriftSeconds = driftSeconds.toFixed(3);
-    if (forceSeek || Math.abs(driftSeconds) > 1.25) {
-      seekFashionBroadcastVideo(radioVisualVideo, state.offsetSeconds);
-      radioVisualVideo.playbackRate = 1;
-      document.body.dataset.radioVisualBroadcastCorrection = forceSeek ? "entry_seek" : "hard_seek";
-    } else if (Math.abs(driftSeconds) > .35) {
-      radioVisualVideo.playbackRate = driftSeconds > 0 ? .98 : 1.02;
-      document.body.dataset.radioVisualBroadcastCorrection = driftSeconds > 0 ? "soft_slow" : "soft_catchup";
-    } else {
-      radioVisualVideo.playbackRate = 1;
-      document.body.dataset.radioVisualBroadcastCorrection = "locked";
-    }
+    await synchronizeBroadcastMedia(radioVisualVideo, targetSeconds, {
+      forceSeek,
+      scope: "radioVisualBroadcast",
+      role: "fashion",
+      channelId: radioVisualBroadcastChannelId,
+      programmeInstanceId: state.programmeInstanceId,
+    });
     return state;
   }
 
@@ -4110,7 +4325,7 @@
       synchronizeRadioVisualBroadcastPlayback(false).catch((error) => {
         document.body.dataset.radioVisualBroadcastSyncError = String(error?.message || error).slice(0, 140);
       });
-    }, 3000);
+    }, BROADCAST_SYNC_INTERVAL_MS);
   }
 
   function stopRadioVisualBroadcastPlayback(reason = "radio_visual_stopped") {
@@ -4127,6 +4342,7 @@
     radioVisualBroadcastChannelId = "";
     radioVisualRunwayIndex = -1;
     radioVisualVideo = null;
+    releaseUnusedRadioFashionRunways(new Set());
     delete playerMount.dataset.radioVisualRunwayId;
     document.body.dataset.radioVisualBroadcastMode = "stopped";
     document.body.dataset.radioVisualBroadcastExitReason = reason;
@@ -4211,6 +4427,7 @@
     window.IAMBroadcastInteractions?.setBroadcast?.(state);
     document.body.dataset.broadcastChannelId = broadcastChannelId;
     document.body.dataset.broadcastRemainingSeconds = state.remainingSeconds.toFixed(3);
+    document.body.dataset.broadcastProgrammeInstanceId = state.programmeInstanceId;
     if (state.mediaType !== "video") {
       clearMusicHandoffTimer();
       if (preloadedMusicVideo) discardPreloadedMusicVideo("non_video_broadcast");
@@ -4259,19 +4476,14 @@
       }
       if (continuationAudio.readyState < 1) return state;
       const driftSeconds = Number(continuationAudio.currentTime || 0) - state.offsetSeconds;
-      const absoluteDrift = Math.abs(driftSeconds);
       document.body.dataset.broadcastDriftSeconds = driftSeconds.toFixed(3);
-      if (forceSeek || absoluteDrift > 1.25) {
-        seekBroadcastVideo(continuationAudio, state.offsetSeconds);
-        continuationAudio.playbackRate = 1;
-        document.body.dataset.broadcastCorrection = forceSeek ? "entry_seek" : "hard_seek";
-      } else if (absoluteDrift > .35) {
-        continuationAudio.playbackRate = driftSeconds > 0 ? .98 : 1.02;
-        document.body.dataset.broadcastCorrection = driftSeconds > 0 ? "soft_slow" : "soft_catchup";
-      } else {
-        continuationAudio.playbackRate = 1;
-        document.body.dataset.broadcastCorrection = "locked";
-      }
+      await synchronizeBroadcastMedia(continuationAudio, state.offsetSeconds, {
+        forceSeek,
+        scope: "broadcast",
+        role: "audio",
+        channelId: broadcastChannelId,
+        programmeInstanceId: state.programmeInstanceId,
+      });
       return state;
     }
     const scheduledTrack = findTrack(state.trackId);
@@ -4293,19 +4505,14 @@
     }
     if (localVideo.readyState < 1) return state;
     const driftSeconds = Number(localVideo.currentTime || 0) - state.offsetSeconds;
-    const absoluteDrift = Math.abs(driftSeconds);
     document.body.dataset.broadcastDriftSeconds = driftSeconds.toFixed(3);
-    if (forceSeek || absoluteDrift > 1.25) {
-      seekBroadcastVideo(localVideo, state.offsetSeconds);
-      localVideo.playbackRate = 1;
-      document.body.dataset.broadcastCorrection = forceSeek ? "entry_seek" : "hard_seek";
-    } else if (absoluteDrift > .35) {
-      localVideo.playbackRate = driftSeconds > 0 ? .98 : 1.02;
-      document.body.dataset.broadcastCorrection = driftSeconds > 0 ? "soft_slow" : "soft_catchup";
-    } else {
-      localVideo.playbackRate = 1;
-      document.body.dataset.broadcastCorrection = "locked";
-    }
+    await synchronizeBroadcastMedia(localVideo, state.offsetSeconds, {
+      forceSeek,
+      scope: "broadcast",
+      role: "music",
+      channelId: broadcastChannelId,
+      programmeInstanceId: state.programmeInstanceId,
+    });
     return state;
   }
 
@@ -4315,7 +4522,7 @@
       synchronizeBroadcastPlayback(false).catch((error) => {
         document.body.dataset.broadcastSyncError = String(error?.message || error).slice(0, 140);
       });
-    }, 3000);
+    }, BROADCAST_SYNC_INTERVAL_MS);
   }
 
   async function joinBroadcastChannel(channelId, options = {}) {
@@ -4438,9 +4645,15 @@
       setMusicTelevisionMetadata();
       if (options.broadcastChannelId && !bufferedHandoff) {
         const currentBroadcastState = window.IAMBroadcastClock?.stateAt(options.broadcastChannelId);
-        if (currentBroadcastState?.trackId === track.id) seekBroadcastVideo(video, currentBroadcastState.offsetSeconds);
+        if (currentBroadcastState?.trackId === track.id) {
+          await seekBroadcastVideo(video, currentBroadcastState.offsetSeconds, {
+            reason: "entry_seek",
+            channelId: options.broadcastChannelId,
+            programmeInstanceId: currentBroadcastState.programmeInstanceId,
+          });
+        }
       } else if (Number.isFinite(Number(options.startAt))) {
-        seekBroadcastVideo(video, Math.max(0, Number(options.startAt)));
+        await seekBroadcastVideo(video, Math.max(0, Number(options.startAt)), { reason: "personal_restore" });
       }
       if (!bufferedHandoff) playLocalVideo(video);
       window.IAMEMDR?.setTimelineSource?.({
@@ -4513,7 +4726,14 @@
       const state = options.broadcastChannelId
         ? window.IAMBroadcastClock?.stateAt(options.broadcastChannelId)
         : null;
-      if (state?.trackId === nextTrack.id) seekBroadcastVideo(continuationAudio, state.offsetSeconds);
+      if (state?.trackId === nextTrack.id) {
+        await seekBroadcastVideo(continuationAudio, state.offsetSeconds, {
+          reason: "entry_seek",
+          role: "audio",
+          channelId: options.broadcastChannelId,
+          programmeInstanceId: state.programmeInstanceId,
+        });
+      }
       continuationAudio.loop = false;
       continuationAudio.muted = false;
       continuationAudio.playbackRate = 1;
@@ -4801,6 +5021,14 @@
     const musicAmount = Math.max(0, Math.min(100, Number(value) || 0));
     const fashionOpacity = 1 - (musicAmount / 100);
     const radioIsActiveProgramme = document.body.classList.contains("television-radio-continuation");
+    window.IAMStreamController?.setPriority?.(localVideo, "primary");
+    window.IAMStreamController?.setPriority?.(fashionVideo, musicAmount < 99.5 ? "primary" : "optional");
+    if (radioVisualVideo) {
+      window.IAMStreamController?.setPriority?.(
+        radioVisualVideo,
+        radioIsActiveProgramme && musicAmount >= .5 ? "primary" : "optional"
+      );
+    }
     playerMount.style.setProperty("--fashion-video-opacity", fashionOpacity.toFixed(3));
     playerMount.dataset.videoBlend = musicAmount <= 0
       ? "fashion"
@@ -4816,6 +5044,7 @@
 
   async function revealFashionWhenReady(video, generation, options = {}) {
     if (!video) return;
+    window.IAMStreamController?.setPriority?.(video, "primary");
     await ensureFashionStreamAttached(video);
     const readiness = await window.IAMStreamController?.prepareFashionReveal(video, {
       minimumSeconds: Number.isFinite(Number(options.minimumSeconds))
@@ -4850,9 +5079,7 @@
       }
       if (fashionVideo) {
         window.IAMStreamController?.setFashionActive(fashionVideo, false, "music_selected");
-        ensureFashionStreamAttached(fashionVideo)
-          .then(() => window.IAMStreamController?.preloadFashion(fashionVideo, { targetSeconds: 12 }))
-          .catch(() => {});
+        window.IAMStreamController?.release?.(fashionVideo, "music_selected");
       }
       return;
     }
@@ -5507,6 +5734,7 @@
     const fileName = video.dataset.streamFile || "";
     if (!fileName) return false;
     try {
+      window.IAMStreamController?.setPriority?.(video, "primary");
       await window.IAMStreamController?.attach?.(video, {
         fileName,
         role,
@@ -5521,23 +5749,51 @@
     }
   }
 
+  function activateSexEdLoopVideos() {
+    sexEdLoopImages.forEach((image) => {
+      if (!image.getAttribute("src") && image.dataset.src) image.src = image.dataset.src;
+    });
+    sexEdLoopVideos.forEach((video) => {
+      const source = video.dataset.src || "";
+      if (source && !video.getAttribute("src")) {
+        video.src = source;
+        video.preload = "auto";
+        video.load();
+      }
+      video.muted = true;
+      video.loop = true;
+      video.play()?.catch?.(() => {});
+    });
+  }
+
+  function releaseSexEdLoopVideos() {
+    sexEdLoopImages.forEach((image) => image.removeAttribute("src"));
+    sexEdLoopVideos.forEach((video) => {
+      try {
+        video.pause();
+        video.removeAttribute("src");
+        video.preload = "none";
+        video.load();
+      } catch {}
+    });
+  }
+
   function configureSexEdEpisode(episode = "01") {
     const card = sexEdCards.find((candidate) => candidate.dataset.sexEdEpisode === String(episode).padStart(2, "0")) || sexEdCards[0];
     if (!card || !sexEdEpisodeVideo) return;
     const fileName = card.dataset.sexEdFile || "";
     if (sexEdEpisodeVideo.dataset.streamFile !== fileName) {
-      try { sexEdEpisodeVideo.pause(); } catch {}
-      window.IAMStreamController?.detach?.(sexEdEpisodeVideo);
+      window.IAMStreamController?.release?.(sexEdEpisodeVideo, "sex_ed_episode_changed");
       sexEdEpisodeVideo.dataset.streamFile = fileName;
     }
     const backgroundFileName = card.dataset.sexEdBackgroundFile || SEX_ED_DEFAULT_BACKGROUND_FILE;
     if (sexEdBackground && sexEdBackground.dataset.streamFile !== backgroundFileName) {
-      try { sexEdBackground.pause(); } catch {}
-      window.IAMStreamController?.detach?.(sexEdBackground);
+      window.IAMStreamController?.release?.(sexEdBackground, "sex_ed_background_changed");
       sexEdBackground.dataset.streamFile = backgroundFileName;
     }
     const image = card.querySelector("img");
-    if (image?.src) sexEdEpisodeVideo.poster = image.src.replace("height=360", "height=1080");
+    const poster = image?.src || sexEdEpisodeVideo.dataset.poster || "";
+    if (poster) sexEdEpisodeVideo.poster = poster.replace("height=360", "height=1080");
     const title = card.querySelector("strong")?.textContent?.trim() || "Sex-ed";
     const guest = card.querySelector(".adaptive-television-fashion-card__copy span")?.textContent?.trim() || "";
     const presentation = card.dataset.sexEdPresentation || "editorial";
@@ -5607,11 +5863,9 @@
     document.body.classList.remove("television-sex-ed-active");
     sexEdWorld?.setAttribute("aria-hidden", "true");
     updateTimecode();
-    try { sexEdEpisodeVideo?.pause(); } catch {}
-    try { sexEdBackground?.pause(); } catch {}
-    sexEdLoopVideos.forEach((video) => {
-      try { video.pause(); } catch {}
-    });
+    window.IAMStreamController?.release?.(sexEdEpisodeVideo, "sex_ed_closed");
+    window.IAMStreamController?.release?.(sexEdBackground, "sex_ed_closed");
+    releaseSexEdLoopVideos();
     if (sexEdEpisodeStart) sexEdEpisodeStart.hidden = false;
     sexEdNeedsInitialSeek = true;
     delete document.body.dataset.sexEdEpisode;
@@ -5666,10 +5920,8 @@
     setProgrammeMixLevel(SEX_ED_PROGRAMME_MIX_LEVEL);
     const radioStation = document.body.dataset.sexEdRadioStation || "";
     if (radioStation) {
-      try { sexEdBackground?.pause(); } catch {}
-      sexEdLoopVideos.forEach((video) => {
-        try { video.pause(); } catch {}
-      });
+      window.IAMStreamController?.release?.(sexEdBackground, "sex_ed_radio_presentation");
+      releaseSexEdLoopVideos();
       startRadioStation(radioStation, { source: "sex_ed_instruction" })
         .then(() => {
           if (
@@ -5690,11 +5942,7 @@
         sexEdBackground.loop = true;
         (window.IAMStreamController?.play?.(sexEdBackground) || sexEdBackground.play())?.catch?.(() => {});
       });
-      sexEdLoopVideos.forEach((video) => {
-        video.muted = true;
-        video.loop = true;
-        video.play()?.catch?.(() => {});
-      });
+      activateSexEdLoopVideos();
     }
     await playSexEdEpisode();
   }
@@ -5720,9 +5968,6 @@
       if (video.paused) playWhenStreamAttached(video, "music").catch(() => {});
     });
     startSoundResearchLayer();
-    ensureFashionStreamAttached()
-      .then(() => window.IAMStreamController?.preloadFashion(fashionVideo, { targetSeconds: 12 }))
-      .catch(() => {});
     window.setTimeout(preloadRadioFashionRunways, 900);
 
     if (playAttempt?.catch) {
@@ -7218,11 +7463,11 @@
   document.addEventListener("visibilitychange", () => {
     if (!document.hidden) {
       loadSoundResearchSettings();
-      synchronizeBroadcastPlayback(true).catch(() => null);
+      synchronizeBroadcastPlayback(false).catch(() => null);
     }
   });
   window.addEventListener("focus", () => {
-    synchronizeBroadcastPlayback(true).catch(() => null);
+    synchronizeBroadcastPlayback(false).catch(() => null);
   });
   researchRolloverHosts.forEach((host) => {
     const moreButton = host.querySelector(".adaptive-television-research-tooltip__more");

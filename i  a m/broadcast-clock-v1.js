@@ -2,6 +2,9 @@
   const SCHEDULE_URL = "broadcast-schedule-v1.json?v=broadcast-schedule-144d67514823";
   const CLOCK_URL = "api/broadcast-clock.php";
   const CLOCK_PROBES = 3;
+  const CLOCK_RESYNC_INTERVAL_MS = 60000;
+  const CLOCK_SMOOTHING_FACTOR = .25;
+  const CLOCK_MAX_SMOOTHING_STEP_MS = 120;
   const requestedQaOffsetSeconds = Number(new URLSearchParams(window.location.search).get("broadcast_qa_offset_seconds"));
   const qaOffsetSeconds = window.location.hostname === "staging.universalmind.tv" && Number.isFinite(requestedQaOffsetSeconds)
     ? Math.max(-3600, Math.min(3600, requestedQaOffsetSeconds))
@@ -10,6 +13,10 @@
   let clockOffsetMs = 0;
   let clockSource = "device_fallback";
   let clockRoundTripMs = null;
+  let clockAnchorServerMs = Date.now();
+  let clockAnchorPerformanceMs = window.performance?.now?.() || 0;
+  let clockLastSynchronizedAt = 0;
+  let clockResyncTimer = 0;
 
   function positiveModulo(value, divisor) {
     return ((value % divisor) + divisor) % divisor;
@@ -80,20 +87,38 @@
 
   async function probeClock() {
     const startedAt = Date.now();
+    const startedPerformanceAt = window.performance?.now?.() || 0;
     const response = await fetch(`${CLOCK_URL}?probe=${startedAt}`, {
       cache: "no-store",
       credentials: "same-origin",
       headers: { Accept: "application/json" },
     });
     const endedAt = Date.now();
+    const endedPerformanceAt = window.performance?.now?.() || startedPerformanceAt;
     if (!response.ok) throw new Error(`Broadcast clock request failed (${response.status}).`);
     const payload = await response.json();
     const serverNowMs = Number(payload?.server_now_ms);
     if (!Number.isFinite(serverNowMs)) throw new Error("Broadcast clock response is invalid.");
     return {
       offsetMs: serverNowMs - ((startedAt + endedAt) / 2),
-      roundTripMs: endedAt - startedAt,
+      roundTripMs: Math.max(0, endedPerformanceAt - startedPerformanceAt),
     };
+  }
+
+  function monotonicClientNowMs() {
+    const performanceNow = window.performance?.now?.();
+    if (!Number.isFinite(performanceNow)) return Date.now() + clockOffsetMs;
+    return clockAnchorServerMs + (performanceNow - clockAnchorPerformanceMs);
+  }
+
+  function publishClockDiagnostics() {
+    document.body.dataset.broadcastClockSource = clockSource;
+    document.body.dataset.broadcastClockOffsetMs = clockOffsetMs.toFixed(1);
+    document.body.dataset.broadcastClockAnchor = "performance_monotonic";
+    document.body.dataset.broadcastClockLastSyncMs = String(clockLastSynchronizedAt || 0);
+    if (clockRoundTripMs !== null) {
+      document.body.dataset.broadcastClockRoundTripMs = clockRoundTripMs.toFixed(1);
+    }
   }
 
   async function synchronizeClock() {
@@ -104,14 +129,39 @@
       .filter((result) => result.status === "fulfilled")
       .map((result) => result.value)
       .sort((a, b) => a.roundTripMs - b.roundTripMs);
-    if (!successful.length) return;
-    clockOffsetMs = successful[0].offsetMs;
-    clockRoundTripMs = successful[0].roundTripMs;
-    clockSource = "server_midpoint";
+    if (!successful.length) return false;
+    const sample = successful[0];
+    const performanceNow = window.performance?.now?.() || 0;
+    const sampledServerNowMs = Date.now() + sample.offsetMs;
+    if (clockSource === "device_fallback") {
+      clockAnchorServerMs = sampledServerNowMs;
+    } else {
+      const currentServerNowMs = monotonicClientNowMs();
+      const requestedCorrectionMs = (sampledServerNowMs - currentServerNowMs) * CLOCK_SMOOTHING_FACTOR;
+      const appliedCorrectionMs = Math.max(
+        -CLOCK_MAX_SMOOTHING_STEP_MS,
+        Math.min(CLOCK_MAX_SMOOTHING_STEP_MS, requestedCorrectionMs)
+      );
+      clockAnchorServerMs = currentServerNowMs + appliedCorrectionMs;
+    }
+    clockAnchorPerformanceMs = performanceNow;
+    clockOffsetMs = clockAnchorServerMs - Date.now();
+    clockRoundTripMs = sample.roundTripMs;
+    clockSource = "server_midpoint_monotonic";
+    clockLastSynchronizedAt = Date.now();
+    publishClockDiagnostics();
+    return true;
   }
 
   function nowMs() {
-    return Date.now() + clockOffsetMs + (qaOffsetSeconds * 1000);
+    return monotonicClientNowMs() + (qaOffsetSeconds * 1000);
+  }
+
+  function startClockResynchronization() {
+    if (clockResyncTimer) window.clearInterval(clockResyncTimer);
+    clockResyncTimer = window.setInterval(() => {
+      synchronizeClock().catch(() => null);
+    }, CLOCK_RESYNC_INTERVAL_MS);
   }
 
   function channelForId(channelId) {
@@ -199,11 +249,10 @@
     if (!scheduleResponse.ok) throw new Error(`Broadcast schedule request failed (${scheduleResponse.status}).`);
     schedule = normalizeSchedule(await scheduleResponse.json());
     await synchronizeClock().catch(() => null);
+    startClockResynchronization();
     document.body.dataset.broadcastClockState = "ready";
-    document.body.dataset.broadcastClockSource = clockSource;
-    document.body.dataset.broadcastClockOffsetMs = clockOffsetMs.toFixed(1);
+    publishClockDiagnostics();
     if (qaOffsetSeconds) document.body.dataset.broadcastClockQaOffsetSeconds = qaOffsetSeconds.toFixed(3);
-    if (clockRoundTripMs !== null) document.body.dataset.broadcastClockRoundTripMs = String(clockRoundTripMs);
     window.dispatchEvent(new CustomEvent("iam:broadcast-clock-ready", {
       detail: { version: schedule.version, clockSource },
     }));
@@ -211,7 +260,7 @@
   }
 
   const api = {
-    version: "broadcast_clock_v1.2",
+    version: "broadcast_clock_v1.3",
     ready: null,
     nowMs,
     stateAt,
@@ -248,12 +297,19 @@
         clockSource,
         clockOffsetMs,
         clockRoundTripMs,
+        clockAnchor: "performance_monotonic",
+        clockLastSynchronizedAt,
+        clockResyncIntervalMs: CLOCK_RESYNC_INTERVAL_MS,
         qaOffsetSeconds,
       };
     },
   };
 
   window.IAMBroadcastClock = api;
+  window.addEventListener("pagehide", () => {
+    if (clockResyncTimer) window.clearInterval(clockResyncTimer);
+    clockResyncTimer = 0;
+  }, { once: true });
   document.body.dataset.broadcastClockState = "loading";
   api.ready = initialize().catch((error) => {
     document.body.dataset.broadcastClockState = "error";

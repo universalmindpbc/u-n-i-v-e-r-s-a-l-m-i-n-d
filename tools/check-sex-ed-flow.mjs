@@ -69,7 +69,7 @@ assert.match(televisionJs, /dataset\.programmeFixedMixLevel = String\(programmeF
 assert.match(televisionJs, /joinBroadcastChannel\("party-james-bondage", \{ source: "sex_ed_episode" \}\)/);
 assert.match(televisionJs, /startRadioStation\(radioStation, \{ source: "sex_ed_instruction" \}\)/);
 assert.match(televisionJs, /fadeContinuationAudio\(programmeFixedMixLevel \?\? \.68, 1200\)/);
-assert.match(televisionJs, /if \(radioStation\) \{[\s\S]*sexEdBackground\?\.pause\(\)[\s\S]*video\.pause\(\)/);
+assert.match(televisionJs, /if \(radioStation\) \{[\s\S]*release\?\.\(sexEdBackground, "sex_ed_radio_presentation"\)[\s\S]*releaseSexEdLoopVideos\(\)/);
 assert.match(televisionJs, /sexEdEpisodeVideo\.volume = 1/);
 assert.match(televisionJs, /card\.dataset\.sexEdBackgroundFile \|\| SEX_ED_DEFAULT_BACKGROUND_FILE/);
 assert.match(televisionJs, /card\.dataset\.sexEdPresentation \|\| "editorial"/);
