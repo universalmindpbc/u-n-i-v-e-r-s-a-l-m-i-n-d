@@ -26,10 +26,10 @@ Any future backed or transferable version must use a separately approved migrati
 
 The public deployment configuration is in `happiness-testnet-deployment.config.json`. It records the Universal Mind deployer address and both test networks, but deliberately contains no private key or recovery phrase.
 
-Create a wallet-signing plan only after the testnet supply cap has been explicitly approved:
+The approved testnet-only supply cap is `10,000,000 IOH` (`10,000,000,000,000` base units at six decimals). Create the wallet-signing plan with:
 
 ```sh
-node tools/prepare-happiness-deployment.mjs --network polygon-amoy --supply-cap <approved-display-cap>
+node tools/prepare-happiness-deployment.mjs --network polygon-amoy --supply-cap 10000000
 ```
 
 The plan outputs constructor arguments for a MetaMask-signed deployment. It cannot deploy, mint, spend gas or access the wallet by itself. The initial testnet community treasury is the deployer address; production requires a separate multisignature treasury.
