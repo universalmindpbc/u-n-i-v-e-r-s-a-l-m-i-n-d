@@ -58,6 +58,8 @@ assert.match(streamController, /constrained_primary_music_startup/);
 assert.match(streamController, /autoStartLoad: \(state\.wantsPlayback \|\| state\.preloadRequested\) && !state\.auxiliarySuspended/);
 assert.match(streamController, /MUSIC_HIGH_QUALITY_BUFFER_SECONDS = 24/);
 assert.match(streamController, /averageBitrate: finiteNumber\(level\.averageBitrate, 0\)/);
+assert.match(streamController, /if \(qaBandwidth > 0\) return qaBandwidth \* 1000/);
+assert.match(streamController, /const estimate = recoveryBandwidthEstimate\(musicState\)/);
 assert.match(streamController, /const sustainedBitrate = finiteNumber\(targetLevel\?\.averageBitrate, 0\) \|\| finiteNumber\(targetLevel\?\.bitrate, 0\)/);
 assert.match(streamController, /abrBandWidthUpFactor: \.72/);
 assert.match(streamController, /streamRecoveryRequiredBandwidth/);

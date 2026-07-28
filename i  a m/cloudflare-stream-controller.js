@@ -72,6 +72,12 @@
     return downlinkMbps > 0 ? downlinkMbps * 1000 : 0;
   }
 
+  function recoveryBandwidthEstimate(state) {
+    const qaBandwidth = qaThrottleKbps();
+    if (qaBandwidth > 0) return qaBandwidth * 1000;
+    return finiteNumber(state?.hls?.bandwidthEstimate, 0);
+  }
+
   function createQaThrottledFragmentLoader(Hls, kilobitsPerSecond) {
     const BaseLoader = Hls.DefaultConfig.loader;
     return class QaThrottledFragmentLoader extends BaseLoader {
@@ -497,9 +503,10 @@
       ? configuredMaximum
       : Math.min(720, configuredMaximum);
     const targetLevel = levelAtOrBelow(musicState, nextMusicCap);
-    const estimate = finiteNumber(musicState.hls?.bandwidthEstimate, 0);
+    const estimate = recoveryBandwidthEstimate(musicState);
     const sustainedBitrate = finiteNumber(targetLevel?.averageBitrate, 0) || finiteNumber(targetLevel?.bitrate, 0);
     const requiredBandwidth = sustainedBitrate * QUALITY_THROUGHPUT_MARGIN;
+    musicState.video.dataset.streamRecoveryBandwidthEstimate = String(Math.round(estimate));
     musicState.video.dataset.streamRecoveryTargetBitrate = String(Math.round(sustainedBitrate));
     musicState.video.dataset.streamRecoveryRequiredBandwidth = String(Math.round(requiredBandwidth));
     if (!sustainedBitrate || estimate >= requiredBandwidth) {
