@@ -263,8 +263,8 @@ assert.match(script, /window\.parent\.postMessage\(\{ type: "iam:return-to-telev
 assert.match(script, /url\.searchParams\.set\("musicTelevisionFrame", "1"\)/);
 assert.doesNotMatch(wallet.match(/<nav class="global-nav-menu"[\s\S]*?<\/nav>/)?.[0] || "", /wallet\.html|\/wallet\//i);
 assert.equal((home.match(/data-happiness-wallet-category=/g) || []).length, 4);
-assert.match(home, /adaptive-environment-television\.js\?v=music-tv-05a41ea84cbd/);
-assert.match(televisionPage, /adaptive-environment-television\.js\?v=music-tv-05a41ea84cbd/);
+assert.match(home, /adaptive-environment-television\.js\?v=music-tv-8c63c616bf2d/);
+assert.match(televisionPage, /adaptive-environment-television\.js\?v=music-tv-8c63c616bf2d/);
 assert.match(television, /document\.querySelectorAll\("\[data-happiness-wallet-category\]"\)/);
 assert.match(television, /walletLink\.setAttribute\("href", `wallet\.html#\$\{category\}`\)/);
 assert.match(television, /openInVideoPageLayer\(walletLink\)/);

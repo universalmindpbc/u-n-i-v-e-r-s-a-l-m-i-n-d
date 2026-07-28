@@ -9,7 +9,7 @@
       document.head.append(script);
     });
   }
-  window.IAMStreamReady = load("cloudflare-stream-catalogue.js?v=stream-catalogue-fe1b6e3a8db6")
+  window.IAMStreamReady = load("cloudflare-stream-catalogue.js?v=stream-catalogue-325aa1e085b3")
     .then(() => load("cloudflare-stream-controller.js?v=stream-controller-4819c6737cd4"))
     .catch(() => null);
 }());

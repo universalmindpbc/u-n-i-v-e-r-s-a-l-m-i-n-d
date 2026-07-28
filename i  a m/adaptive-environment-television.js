@@ -4615,7 +4615,7 @@
     continuationAudio.play()
       .then(() => {
         document.body.dataset.radioPlaybackState = "playing";
-        fadeContinuationAudio(.68, 1200);
+        fadeContinuationAudio(programmeFixedMixLevel ?? .68, 1200);
         updateNowPlaying();
       })
       .catch((error) => {
@@ -5540,6 +5540,8 @@
     if (image?.src) sexEdEpisodeVideo.poster = image.src.replace("height=360", "height=1080");
     const title = card.querySelector("strong")?.textContent?.trim() || "Sex-ed";
     const guest = card.querySelector(".adaptive-television-fashion-card__copy span")?.textContent?.trim() || "";
+    const presentation = card.dataset.sexEdPresentation || "editorial";
+    const radioStation = card.dataset.sexEdRadioStation || "";
     sexEdActiveEpisode = card.dataset.sexEdEpisode || "01";
     sexEdStartTime = Math.max(0, Number(card.dataset.sexEdStartTime || 0));
     sexEdNeedsInitialSeek = true;
@@ -5547,6 +5549,9 @@
     document.body.dataset.sexEdEpisodeStart = String(sexEdStartTime);
     document.body.dataset.sexEdEpisodeTitle = title;
     document.body.dataset.sexEdEpisodeGuest = guest;
+    document.body.dataset.sexEdPresentation = presentation;
+    if (radioStation) document.body.dataset.sexEdRadioStation = radioStation;
+    else delete document.body.dataset.sexEdRadioStation;
     sexEdEpisodeVideo.setAttribute("aria-label", guest ? `${title} — ${guest}` : title);
     if (timecode) timecode.textContent = formatTime(sexEdStartTime);
     document.title = `${title} | Sex-ed`;
@@ -5613,6 +5618,8 @@
     delete document.body.dataset.sexEdEpisodeStart;
     delete document.body.dataset.sexEdEpisodeTitle;
     delete document.body.dataset.sexEdEpisodeGuest;
+    delete document.body.dataset.sexEdPresentation;
+    delete document.body.dataset.sexEdRadioStation;
     if (wasActive) {
       setProgrammeMixLevel(null);
       updateNowPlaying();
@@ -5657,20 +5664,38 @@
       }
     }
     setProgrammeMixLevel(SEX_ED_PROGRAMME_MIX_LEVEL);
-    if (broadcastChannelId !== "party-james-bondage") {
-      joinBroadcastChannel("party-james-bondage", { source: "sex_ed_episode" }).catch(() => {});
+    const radioStation = document.body.dataset.sexEdRadioStation || "";
+    if (radioStation) {
+      try { sexEdBackground?.pause(); } catch {}
+      sexEdLoopVideos.forEach((video) => {
+        try { video.pause(); } catch {}
+      });
+      startRadioStation(radioStation, { source: "sex_ed_instruction" })
+        .then(() => {
+          if (
+            document.body.classList.contains("television-sex-ed-active") &&
+            document.body.dataset.sexEdRadioStation === radioStation
+          ) {
+            setProgrammeMixLevel(SEX_ED_PROGRAMME_MIX_LEVEL);
+          }
+        })
+        .catch(() => {});
+    } else {
+      if (broadcastChannelId !== "party-james-bondage") {
+        joinBroadcastChannel("party-james-bondage", { source: "sex_ed_episode" }).catch(() => {});
+      }
+      ensureSexEdStream(sexEdBackground, "fashion").then(() => {
+        if (!sexEdBackground) return;
+        sexEdBackground.muted = true;
+        sexEdBackground.loop = true;
+        (window.IAMStreamController?.play?.(sexEdBackground) || sexEdBackground.play())?.catch?.(() => {});
+      });
+      sexEdLoopVideos.forEach((video) => {
+        video.muted = true;
+        video.loop = true;
+        video.play()?.catch?.(() => {});
+      });
     }
-    ensureSexEdStream(sexEdBackground, "fashion").then(() => {
-      if (!sexEdBackground) return;
-      sexEdBackground.muted = true;
-      sexEdBackground.loop = true;
-      (window.IAMStreamController?.play?.(sexEdBackground) || sexEdBackground.play())?.catch?.(() => {});
-    });
-    sexEdLoopVideos.forEach((video) => {
-      video.muted = true;
-      video.loop = true;
-      video.play()?.catch?.(() => {});
-    });
     await playSexEdEpisode();
   }
 

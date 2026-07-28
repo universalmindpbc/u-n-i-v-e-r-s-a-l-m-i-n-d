@@ -673,6 +673,24 @@ body.television-sex-ed-active .adaptive-television-sex-ed-world {
   transform: translate(-50%, -50%);
 }
 
+body[data-sex-ed-presentation="fullscreen"] .adaptive-television-sex-ed-background,
+body[data-sex-ed-presentation="fullscreen"] .adaptive-television-sex-ed-grid,
+body[data-sex-ed-presentation="fullscreen"] .adaptive-television-sex-ed-casing {
+  display: none;
+}
+
+body[data-sex-ed-presentation="fullscreen"] .adaptive-television-sex-ed-world {
+  background: #08080a;
+}
+
+body[data-sex-ed-presentation="fullscreen"] .adaptive-television-sex-ed-episode {
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  transform: none;
+}
+
 .adaptive-television-sex-ed-start {
   position: absolute;
   top: 50%;

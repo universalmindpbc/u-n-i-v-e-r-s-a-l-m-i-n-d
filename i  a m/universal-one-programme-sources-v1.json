@@ -1,6 +1,6 @@
 {
-  "version": "universal_one_programme_sources_v1.1",
-  "reviewed": "2026-07-27",
+  "version": "universal_one_programme_sources_v1.2",
+  "reviewed": "2026-07-28",
   "use_policy": {
     "assistant_surface": "Universal One Realtime voice",
     "storage": "Source-derived editorial briefing only; full third-party transcripts are not stored in the website repository.",
@@ -85,6 +85,30 @@
       "transcript_verified": false,
       "coverage_note": "The briefing is limited to the publisher summary and published topic markers; Universal One must not invent unsupported episode detail.",
       "visual_layer": "Karl Lagerfeld - The Making of the 2011 Pirelli Calendar; subtle background editorial only, not the episode source or subject."
+    },
+    {
+      "episode": "07",
+      "title": "30-Minute Yoga Sequence to Activate Your Sexual Energy",
+      "collection_display_name": "Yoga to Increase Your Sexual Energy with Ashton August",
+      "publisher": "YouAligned",
+      "url": "https://youaligned.com/yoga/sex-drive-sexual-energy/",
+      "source_type": "official publisher class guide",
+      "source_verified": true,
+      "transcript_verified": false,
+      "coverage_note": "The briefing uses the official class overview and pose list; traditional spiritual-energy language remains attributed and is not treated as clinical evidence.",
+      "presentation": "Full-screen instruction with no square tiles or background video; Cafe del Mar Chill live feed mixed at approximately 15%."
+    },
+    {
+      "episode": "08",
+      "title": "Take This Short and Sweet 35-Minute Vinyasa Yoga Flow",
+      "collection_display_name": "Vinyasa Yoga Flow with Ashton August",
+      "publisher": "YouAligned",
+      "url": "https://youaligned.com/yoga/vinyasa-yoga-free-yoga-video/",
+      "source_type": "official publisher class guide",
+      "source_verified": true,
+      "transcript_verified": false,
+      "coverage_note": "The briefing uses the official class overview, sequence outline and participation modifications rather than an unsupported transcript.",
+      "presentation": "Full-screen instruction with no square tiles or background video; Cafe del Mar Chill live feed mixed at approximately 15%."
     }
   ]
 }

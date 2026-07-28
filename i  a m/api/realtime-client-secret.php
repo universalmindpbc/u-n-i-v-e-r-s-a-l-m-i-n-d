@@ -232,6 +232,6 @@ respond(200, [
     'turn_detection' => 'server_vad',
     'portal_guide_version' => 'v1.1',
     'wellbeing_support_guide_version' => 'v1',
-    'programme_guide_version' => 'v1.1',
+    'programme_guide_version' => 'v1.2',
     'voice_briefing_version' => 'v2',
 ]);

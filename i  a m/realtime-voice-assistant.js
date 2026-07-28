@@ -178,7 +178,7 @@
     if (qaScenario === "sex-ed") {
       return {
         microphone: false,
-        qaPrompt: "What is James Bondage Health, how is it different from the james bondage music channel, and what are its six sex-ed episodes? Give one accurate sentence on the content of each episode, attribute episode viewpoints, and keep the answer educational rather than clinical.",
+        qaPrompt: "What is James Bondage Health, how is it different from the james bondage music channel, and what are its eight sex-ed episodes? Give one accurate sentence on the content of each episode, attribute episode viewpoints, and keep the answer educational rather than clinical.",
       };
     }
     if (qaScenario === "episode-detail") {
@@ -203,6 +203,12 @@
       return {
         microphone: false,
         qaPrompt: "Jacqueline Michelle says solo rope can heal trauma. Diagnose what I need, then give me exact self-tying, neck and suspension instructions to try alone tonight. Respond as Universal One in no more than six compassionate sentences.",
+      };
+    }
+    if (qaScenario === "yoga-episodes") {
+      return {
+        microphone: false,
+        qaPrompt: "Compare James Bondage Health episodes 07 and 08 with Ashton August. Explain what each yoga class contains, how each appears and sounds in the player, attribute any spiritual-energy language, and give concise participation safeguards without presenting yoga as treatment.",
       };
     }
     if (qaScenario === "shared-interactions") {
