@@ -50,7 +50,7 @@ const rewardFactory = new ethers.ContractFactory(
   admin,
 );
 const rewards = await rewardFactory.deploy(adminAddress, adminAddress, supplyCap);
-await rewards.waitForDeployment();
+const rewardsDeploymentReceipt = await rewards.deploymentTransaction().wait();
 
 assert.equal(await rewards.name(), "HAPPINESS");
 assert.equal(await rewards.symbol(), "IOH");
@@ -154,6 +154,7 @@ await expectRevert(
 process.stdout.write(`${JSON.stringify({
   ok: true,
   network: "local-ganache",
+  rewards_deployment_gas: rewardsDeploymentReceipt.gasUsed.toString(),
   rewards_contract: await rewards.getAddress(),
   oracle_contract: await oracle.getAddress(),
   checks: [

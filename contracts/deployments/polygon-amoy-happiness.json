@@ -1,0 +1,45 @@
+{
+  "schema_version": "happiness_contract_deployment_v1",
+  "network": "polygon-amoy",
+  "chain_id": 80002,
+  "contract": "HappinessRewards",
+  "contract_address": "0x616EF64C03D79630ECA03b5Cea4ea58a252dB68a",
+  "deployment_tx_hash": "0x8a3f7e885ce7f67a381f6548c7a6e1881e7c5f7b1401747498e87c9425b65173",
+  "deployment_block": 43409908,
+  "deployment_block_hash": "0xeb76d4374491bb22d1015ff6aa6e5d82c95517a98c607112dddb7a59a63ea438",
+  "deployed_at_utc": "2026-07-28T08:45:49.000Z",
+  "deployer_address": "0xA83623eF867Bb651EF8f546632fa49d51FFad5ca",
+  "community_treasury_address": "0xA83623eF867Bb651EF8f546632fa49d51FFad5ca",
+  "currency": {
+    "name": "HAPPINESS",
+    "symbol": "IOH",
+    "display_ticker": "[ I o H ]",
+    "decimals": 6,
+    "supply_cap_display": "10000000",
+    "supply_cap_units": "10000000000000",
+    "initial_supply_units": "0"
+  },
+  "deployment_receipt": {
+    "status": 1,
+    "gas_used": "1310626"
+  },
+  "runtime": {
+    "bytecode_bytes": 4852,
+    "bytecode_keccak256": "0xd3858eea8800fec68ab23a7f7c2f01aad2ed04151361930e50cf7d5642980ad1"
+  },
+  "verified_reads": {
+    "name": "HAPPINESS",
+    "symbol": "IOH",
+    "decimals": "6",
+    "supply_cap": "10000000000000",
+    "total_supply": "0",
+    "community_treasury": "0xA83623eF867Bb651EF8f546632fa49d51FFad5ca",
+    "paused": false,
+    "deployer_has_default_admin_role": true,
+    "deployer_has_member_issuer_role": true,
+    "deployer_has_community_issuer_role": true
+  },
+  "explorer": "https://amoy.polygonscan.com/address/0x616EF64C03D79630ECA03b5Cea4ea58a252dB68a",
+  "verification_mode": "public_rpc_read_only",
+  "production": false
+}
