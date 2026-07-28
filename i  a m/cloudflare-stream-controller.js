@@ -1035,6 +1035,41 @@
     return true;
   }
 
+  function installQaOutageControl() {
+    if (window.location.hostname !== "staging.universalmind.tv") return;
+    if (new URLSearchParams(window.location.search).get("qaOutage") !== "1") return;
+    if (document.querySelector("[data-stream-qa-outage]")) return;
+    const button = document.createElement("button");
+    button.type = "button";
+    button.textContent = "QA: force 3s stream outage";
+    button.dataset.streamQaOutage = "";
+    button.style.cssText = "position:fixed;right:12px;bottom:12px;z-index:2147483647;padding:8px 10px;border:1px solid #fff;background:#111;color:#fff;font:12px sans-serif";
+    button.addEventListener("click", () => {
+      const state = Array.from(states.values()).find((candidate) => (
+        candidate.role === "music" &&
+        candidate.video.dataset.streamPriority === "primary" &&
+        !candidate.video.paused
+      ));
+      if (!state) {
+        button.textContent = "QA: no active primary stream";
+        return;
+      }
+      const ranges = state.video.buffered;
+      if (ranges?.length) {
+        const bufferEnd = ranges.end(ranges.length - 1);
+        if (bufferEnd > state.video.currentTime + 0.5) state.video.currentTime = Math.max(0, bufferEnd - 0.15);
+      }
+      recordTelemetry(state, "qa_buffer_exhaustion", { outage_duration_ms: 3000 });
+      simulateNetworkOutage(state.video, 3000);
+      button.disabled = true;
+      button.textContent = "QA: outage running";
+      window.setTimeout(() => {
+        button.textContent = "QA: outage complete";
+      }, 3200);
+    }, { once: true });
+    document.body.append(button);
+  }
+
   function setFashionActive(video, active, source = "user_selection") {
     const state = states.get(video);
     if (!state || state.role !== "fashion") return;
@@ -1159,7 +1194,9 @@
 
   if (document.readyState === "loading") {
     document.addEventListener("DOMContentLoaded", () => upgradeDocumentVideos(), { once: true });
+    document.addEventListener("DOMContentLoaded", installQaOutageControl, { once: true });
   } else {
     upgradeDocumentVideos();
+    installQaOutageControl();
   }
 }());

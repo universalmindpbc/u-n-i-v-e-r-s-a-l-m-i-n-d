@@ -58,6 +58,8 @@ assert.match(streamController, /autoStartLoad: \(state\.wantsPlayback \|\| state
 assert.match(streamController, /MUSIC_HIGH_QUALITY_BUFFER_SECONDS = 24/);
 assert.match(streamController, /setAuxiliaryLoadingSuspended\(state, true/);
 assert.match(streamController, /simulateNetworkOutage/);
+assert.match(streamController, /data-stream-qa-outage/);
+assert.match(streamController, /qa_buffer_exhaustion/);
 
 const sexEdWorld = index.match(/<div class="adaptive-television-sex-ed-world"[\s\S]*?<button class="adaptive-television-sex-ed-start"/)?.[0] || "";
 assert.match(sexEdWorld, /data-stream-deferred/);
