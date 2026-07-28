@@ -64,6 +64,14 @@
     return requested > 0 ? Math.max(128, Math.min(20000, requested)) : 0;
   }
 
+  function estimatedBandwidthKbps() {
+    const qaBandwidth = qaThrottleKbps();
+    if (qaBandwidth > 0) return qaBandwidth;
+    const connection = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
+    const downlinkMbps = finiteNumber(connection?.downlink, 0);
+    return downlinkMbps > 0 ? downlinkMbps * 1000 : 0;
+  }
+
   function createQaThrottledFragmentLoader(Hls, kilobitsPerSecond) {
     const BaseLoader = Hls.DefaultConfig.loader;
     return class QaThrottledFragmentLoader extends BaseLoader {
@@ -121,6 +129,9 @@
 
   function initialAdaptiveCap(role) {
     if (role === "fashion") return 360;
+    const estimatedKbps = estimatedBandwidthKbps();
+    if (estimatedKbps > 0 && estimatedKbps <= 1500) return 360;
+    if (estimatedKbps > 0 && estimatedKbps <= 3000) return 480;
     return connectionIsConstrained() ? 480 : 720;
   }
 
@@ -841,6 +852,26 @@
       };
       if (throttleKbps > 0) {
         hlsConfig.fLoader = createQaThrottledFragmentLoader(Hls, throttleKbps);
+        // The staging loader releases a completed fragment only after its
+        // simulated transfer time. Give that deterministic delay enough room
+        // to finish even at the 1 Mbps proof profile instead of tripping the
+        // normal request deadline and turning the test into a retry loop.
+        hlsConfig.fragLoadPolicy = {
+          default: {
+            maxTimeToFirstByteMs: 30000,
+            maxLoadTimeMs: 600000,
+            timeoutRetry: {
+              maxNumRetry: 2,
+              retryDelayMs: 0,
+              maxRetryDelayMs: 0,
+            },
+            errorRetry: {
+              maxNumRetry: 4,
+              retryDelayMs: 1000,
+              maxRetryDelayMs: 8000,
+            },
+          },
+        };
         video.dataset.streamQaThrottleKbps = String(throttleKbps);
       }
       const hls = new Hls(hlsConfig);
