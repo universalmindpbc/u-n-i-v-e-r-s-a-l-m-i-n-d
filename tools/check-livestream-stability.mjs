@@ -40,6 +40,8 @@ assert.match(television, /media\.paused \|\|[\s\S]{0,180}media\.seeking[\s\S]{0,
 assert.match(television, /performControlledBroadcastSeek\(media, targetSeconds, options, "controlled_rejoin"\)/);
 assert.match(television, /BROADCAST_REJOIN_FADE_OUT_MS = 120/);
 assert.match(television, /BROADCAST_REJOIN_FADE_IN_MS = 180/);
+assert.match(television, /if \(!joinSource\.startsWith\("sex_ed"\)\)[\s\S]{0,240}releaseSexEdLoopVideos\(\)/);
+assert.match(television, /video\.dataset\.streamPriority = "primary";[\s\S]{0,180}attachAdaptiveStream\(video, track\.localVideoSrc, "music"\);[\s\S]{0,160}setPriority\?\.\(video, "primary"\)/);
 
 assert.match(clock, /clockAnchorServerMs \+ \(performanceNow - clockAnchorPerformanceMs\)/);
 assert.match(clock, /CLOCK_RESYNC_INTERVAL_MS = 60000/);

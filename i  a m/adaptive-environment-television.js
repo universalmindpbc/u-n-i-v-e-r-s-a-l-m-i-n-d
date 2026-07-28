@@ -4530,6 +4530,14 @@
   }
 
   async function joinBroadcastChannel(channelId, options = {}) {
+    const joinSource = String(options.source || "broadcast_join");
+    if (!joinSource.startsWith("sex_ed")) {
+      if (document.body.classList.contains("television-sex-ed-active")) {
+        stopSexEdEpisode({ restoreProgramme: false });
+      } else {
+        releaseSexEdLoopVideos();
+      }
+    }
     window.IAMMantraSampler?.armSharedAudio?.();
     try {
       await window.IAMBroadcastClock?.ready;
@@ -4641,8 +4649,10 @@
         setVoiceAssistantProgramVolume(video, 1, voiceAssistantDuckActive ? 260 : 0);
         video.setAttribute("aria-label", `${track.artist} - ${track.title}`);
         video.dataset.musicTrackId = track.id;
+        video.dataset.streamPriority = "primary";
         try { video.currentTime = 0; } catch {}
         await attachAdaptiveStream(video, track.localVideoSrc, "music");
+        window.IAMStreamController?.setPriority?.(video, "primary");
       }
       track = nextTrack;
       syncSelectedTrackCopy();
