@@ -83,14 +83,21 @@ assert.equal(productKernel.counts.brands, 24, "Fashion kernel must retain all 24
 assert.equal(productKernel.products.length, 309, "Fashion kernel must contain exactly 309 approved canonical product URLs from Notion");
 assert.equal(new Set(productKernel.products.map((product) => product.canonicalUrl)).size, 309, "Fashion kernel product URLs must be canonical and unique");
 assert.equal(new Set(productKernel.products.map((product) => `${product.brand}:${product.slug}`)).size, 309, "Fashion kernel product slugs must be unique within each brand");
-assert.equal(productKernel.products.filter((product) => product.metadataStatus === "Metadata ready").length, 36, "All 36 approved ERES records must be metadata-ready");
+assert.equal(productKernel.products.filter((product) => product.metadataStatus === "Metadata ready").length, 306, "All retailer-verifiable records must be metadata-ready");
+assert.equal(productKernel.products.filter((product) => product.description?.trim()).length, 308, "Retailer-authored descriptions must be retained wherever published");
+assert.equal(productKernel.products.filter((product) => product.price?.trim()).length, 307, "Verified display prices must be retained wherever published");
+assert.equal(productKernel.products.filter((product) => product.requiresReview).length, 3, "Only the three retailer-unpublished metadata gaps may remain review items");
+assert.ok(
+  productKernel.products.filter((product) => product.subjectPresent === true || product.brand === "ERES").length / productKernel.products.length >= 0.9,
+  "At least 90% of the approved catalogue must use an official retailer image featuring a person"
+);
 assert.equal(productKernel.products.filter((product) => product.listedOnShop).length, 309, "Every approved product record must be listed");
 assert.equal(productKernel.products.filter((product) => product.image).length, 309, "Every approved product record must carry an approved hero image");
 assert.ok(productKernel.products.every((product) => product.retailerUrl?.startsWith("https://")), "Every tensor product must retain its exact retailer URL");
 assert.equal(productKernel.authority.policy, "exact_notion_product_urls_only", "Notion must remain the sole product authority");
 const emilioProduct = productKernel.products.find((product) => product.brand === "Emilio Cavallini");
 assert.equal(emilioProduct?.retailerUrl, "https://www.emiliocavallini.com/en/engeneered-body.html", "Emilio Cavallini must retain Ben's exact approved product URL");
-assert.equal(emilioProduct?.metadataStatus, "Inventory only", "The Emilio catalogue card must remain fail-closed until retailer metadata is fully verified");
+assert.equal(emilioProduct?.metadataStatus, "Metadata ready", "The Emilio catalogue card must use the retailer-verified metadata");
 for (const product of productKernel.products) {
   assert.ok(product.slug, `Missing stable product slug: ${product.id}`);
   assert.ok(fs.existsSync(path.join(iam, product.image)), `Missing approved catalogue image: ${product.image}`);
@@ -200,13 +207,14 @@ assert.match(shop, /data-catalogue-brand[\s\S]*data-catalogue-type[\s\S]*data-ca
 assert.match(shop, /price \/ low to high[\s\S]*price \/ high to low/, "Combined catalogue must expose both price sort directions");
 assert.match(shopScript, /catalogueProductHash\(slug\)/, "Expanded product state must have a shareable retailer-agnostic hash route");
 assert.match(shopScript, /shop-product-kernel-v1\.json/, "Shop catalogue must render from the Notion-backed product kernel");
-assert.match(shopScript, /metadataStatus === "Metadata ready" && Boolean\(product\.image\)/, "Shop must fail closed before adding expanded detail");
+assert.match(shopScript, /function productHasFullDetail\(product\)[\s\S]*return Boolean\(product\.image\)/, "Every approved image card must receive the internal expanded view");
 assert.match(shopScript, /activeCatalogueLead[\s\S]*visibleProducts\.findIndex[\s\S]*visibleProducts\.unshift/, "Homepage campaigns must deterministically move their approved product into slot one");
 assert.match(shopScript, /function productHasImage[\s\S]*Boolean\(product\.image\)/, "Inventory-only cards must still show their approved exact-source image");
 assert.match(shopScript, /catalogueChunkSize = 24/, "Catalogue must use the approved 24-product loading rhythm");
 assert.match(shopScript, /load \$\{remaining\} more/, "Catalogue must expose progressive load-more control rather than endless scroll");
 assert.match(shopScript, /roundRobinByBrand/, "Universal editorial ordering must surface brand diversity rather than one full brand at a time");
-assert.match(shopScript, /price at retailer/, "Inventory-only cards must disclose that current pricing remains with the retailer");
+assert.doesNotMatch(shopScript, /price at retailer/i, "Unpublished prices must remain blank rather than becoming customer-facing filler");
+assert.doesNotMatch(shopScript, /form\.textContent\s*=\s*product\.(?:type|form|category)/, "Customer-facing cards must not repeat internal type metadata");
 assert.match(shopScript, /catalogueLoadMore\?\.addEventListener\("click"/, "Catalogue must advance only through the explicit load-more control");
 assert.match(shopScript, /IntersectionObserver[\s\S]*data-shop-silent-video|silentEditorialVideos[\s\S]*IntersectionObserver/, "Homepage films must only play while they are near the viewport");
 assert.match(shopScript, /productDialog\.showModal\(\)/, "Product cards must open the accessible expanded view");
@@ -216,10 +224,18 @@ assert.match(shopScript, /catalogueReturnScrollY = window\.scrollY/, "Opening an
 assert.match(shopScript, /restoreCatalogueScroll[\s\S]*window\.setTimeout\(restoreCatalogueScroll, 50\)/, "Closing an expanded product must restore the viewer's precise catalogue position after native dialog focus returns");
 assert.match(shopScript, /enteringCatalogue[\s\S]*scrollBehavior = "auto"[\s\S]*window\.scrollTo\(\{ top: 0, left: 0, behavior: "auto" \}\)/, "Entering ERES from the brand ledger must reset immediately to the editorial header");
 
+assert.match(shop, /shop-footer[\s\S]*james-bondage-lower-masthead\.mp4/, "Homepage and catalogue routes must end with the supplied silent James Bondage masthead");
+assert.ok(fs.existsSync(path.join(iam, "a s s e t s/shop-mockup/james-bondage-lower-masthead.mp4")), "Missing supplied lower masthead video");
+assert.match(shop, /adaptive-television-fullscreen shop-hero__fullscreen[\s\S]*data-shop-hero-fullscreen/, "Shop fullscreen must reuse the Music Television control language");
+assert.match(shopScript, /IAMTelevisionRoom\?\.requestShopFullscreen[\s\S]*iam:shop-fullscreen-request/, "Embedded Shop fullscreen must delegate to the Universal Mind shell");
+assert.match(shopScript, /shop-shell-is-fullscreen[\s\S]*heroFullscreen\.hidden/, "Fullscreen control must disappear while the shell is fullscreen");
+assert.match(television, /function requestShopFullscreen[\s\S]*requestViewingFullscreen\(localVideo\)/, "Shop fullscreen must request the complete Universal Mind shell rather than only its iframe video");
+
 assert.match(shopScript, /iam:shop-music-request/, "Shop must request music through the persistent Music Television shell");
 assert.match(television, /iam:shop-music-request/, "Music Television must respond to Shop music requests");
-assert.match(television, /joinBroadcastChannel\("party-james-bondage", \{ source: "shop_default" \}\)/, "A quiet Shop session must join the current James Bondage Parties broadcast");
-assert.match(television, /if \(currentStatus\.playing\)[\s\S]*return true;[\s\S]*joinBroadcastChannel/, "Shop must preserve existing music before starting the Parties channel");
+assert.match(television, /function pauseShopMusic[\s\S]*continuationAudio\.pause\(\)[\s\S]*playbackRate = 1/, "Shop music control must provide a real pause action at normal playback speed");
+assert.match(television, /async function requestShopMusic[\s\S]*if \(currentStatus\.playing\)[\s\S]*pauseShopMusic[\s\S]*startAudioLedParty\(shopTrack, \{ source: "shop_independent" \}\)/, "A quiet Shop session must toggle the independent James Bondage Parties transport");
+assert.doesNotMatch(television, /joinBroadcastChannel\("party-james-bondage", \{ source: "shop_default" \}\)/, "Shop playback must not rejoin the clock-corrected shared transport");
 assert.doesNotMatch(shop, /Café del Mar Chill/, "Shop controls must no longer advertise Café del Mar as the quiet default");
 assert.match(index, /data-nav-item="shop"/, "Music Television navigation must expose Shop");
 assert.match(index, /data-nav-item="contact"[^>]*>contact<\/a>\s*<a[^>]*data-nav-item="shop"[^>]*>shop<\/a>/, "Shop must be the final global navigation item after Contact");
@@ -229,7 +245,8 @@ assert.match(redirects, /^\/shop /m, "Root /shop route is missing from static re
 assert.match(architecture, /adaptive scoring remains review-gated/i, "Fashion Tensor recommendation logic must remain approval-gated");
 assert.match(architecture, /No diagnosis, treatment claim/i, "Fashion Tensor roadmap is missing the clinical boundary");
 assert.match(architecture, /Commercial value must not override citizen fit/i, "Fashion Tensor roadmap is missing the commercial-conflict boundary");
-assert.match(architecture, /default catalogue thumbnail is always the retailer's first official product hero/i, "Catalogue is missing the deterministic first-hero thumbnail rule");
+assert.match(architecture, /Prefer the first official frame with a person[\s\S]*visible face or forward-facing model[\s\S]*first official hero/i, "Catalogue is missing the approved human-first official-gallery rule");
+assert.match(architecture, /Retailer-authored copy is preserved rather than AI-rewritten/i, "Catalogue architecture must preserve signed-off retailer copy");
 assert.match(architecture, /Notion page \*\*`j a m e s  b o n d a g e  \[ s h o p \]`\*\*[\s\S]*?canonical master registry/i, "Catalogue architecture must make the approved Notion registry authoritative");
 assert.match(architecture, /fail-closed catalogue inventory/i, "Catalogue architecture must retain a fail-closed staging projection");
 assert.match(architecture, /neither GPT nor an ingestion process may discover, infer, replace or add a product/i, "Catalogue architecture must prohibit generated or discovered products");

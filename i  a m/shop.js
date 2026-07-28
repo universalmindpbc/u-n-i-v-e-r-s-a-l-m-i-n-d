@@ -29,7 +29,6 @@
   const themeButton = document.querySelector("[data-shop-theme-toggle]");
   const themeLabel = document.querySelector("[data-shop-theme-label]");
   const liveBand = document.querySelector("[data-shop-live-band]");
-  const hero = document.querySelector(".shop-hero");
   const heroFullscreen = document.querySelector("[data-shop-hero-fullscreen]");
   const liveTitle = document.querySelector("[data-shop-live-title]");
   const musicButton = document.querySelector("[data-shop-music]");
@@ -448,11 +447,37 @@
   }
 
   function productHasFullDetail(product) {
-    return product.metadataStatus === "Metadata ready" && Boolean(product.image);
+    return Boolean(product.image);
   }
 
   function productHasImage(product) {
     return Boolean(product.image);
+  }
+
+  function customerProductName(product) {
+    let name = String(product?.name || "").trim();
+    const brand = String(product?.brand || "").trim();
+    if (!name) return "";
+
+    if (/^nike$/i.test(brand)) name = name.replace(/^Nike(?:SKIMS)?\s+/i, "");
+    else if (/^adidas$/i.test(brand)) name = name.replace(/^adidas\s+/i, "");
+    else if (/^skims$/i.test(brand)) name = name.replace(/^SKIMS\s+/i, "");
+    else if (/^nagnata$/i.test(brand)) name = name.replace(/^NAGNATA\s+/i, "");
+    else {
+      const escapedBrand = brand.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+      if (escapedBrand) name = name.replace(new RegExp(`^${escapedBrand}\\s+`, "i"), "");
+    }
+
+    return name
+      .replace(/\s+Release Date$/i, "")
+      .replace(/\s+-\s+[^-]+\s+-\s+Size\s+[^-]+$/i, "")
+      .trim();
+  }
+
+  function customerProductColour(product) {
+    if (product?.color) return String(product.color).trim();
+    const match = String(product?.name || "").match(/\s+-\s+([^-]+)\s+-\s+Size\s+[^-]+$/i);
+    return match?.[1]?.trim() || "";
   }
 
   function updateCatalogueHeader(visibleProducts) {
@@ -493,23 +518,16 @@
     const fullDetail = productHasFullDetail(product);
     article.dataset.metadataState = fullDetail ? "ready" : "inventory";
 
-    const control = document.createElement(fullDetail ? "button" : "a");
-    if (fullDetail) {
-      control.type = "button";
-      control.dataset.catalogueProductOpen = product.slug;
-      control.setAttribute("aria-label", `Expand ${product.brand} ${product.name}`);
-    } else {
-      control.href = product.retailerUrl;
-      control.target = "_blank";
-      control.rel = "noopener noreferrer";
-      control.setAttribute("aria-label", `View ${product.brand} ${product.name} at the retailer`);
-    }
+    const control = document.createElement("button");
+    control.type = "button";
+    control.dataset.catalogueProductOpen = product.slug;
+    control.setAttribute("aria-label", `View details for ${product.brand} ${customerProductName(product)}`);
 
     const figure = document.createElement("figure");
     if (hasImage) {
       const image = document.createElement("img");
       image.src = product.image;
-      image.alt = product.imageAlt || `${product.brand} ${product.name}`;
+      image.alt = product.imageAlt || `${product.brand} ${customerProductName(product)}`;
       image.loading = index < 6 ? "eager" : "lazy";
       figure.append(image);
     } else {
@@ -524,13 +542,15 @@
     const brand = document.createElement("p");
     brand.textContent = product.brand;
     const name = document.createElement("h3");
-    name.textContent = product.name;
+    name.textContent = customerProductName(product);
     const form = document.createElement("span");
-    form.textContent = product.color || normalisedProductType(product) || labelCategories(product.forms);
+    form.textContent = customerProductColour(product);
+    form.hidden = !form.textContent;
     const price = document.createElement("strong");
-    price.textContent = fullDetail ? product.price : "price at retailer";
+    price.textContent = product.price || "";
+    price.hidden = !price.textContent;
     const expand = document.createElement("em");
-    expand.textContent = fullDetail ? "+" : "↗";
+    expand.textContent = "+";
     copy.append(brand, name, form, price, expand);
     control.append(figure, copy);
     article.append(control);
@@ -593,8 +613,7 @@
     }
     updateCatalogueHeader(visibleProducts);
     if (catalogueStatus) {
-      const fullDetailCount = visibleProducts.filter(productHasFullDetail).length;
-      catalogueStatus.textContent = `showing ${displayedProducts.length} of ${visibleProducts.length} / ${fullDetailCount} with full detail`;
+      catalogueStatus.textContent = `showing ${displayedProducts.length} of ${visibleProducts.length}`;
     }
     const hasMore = displayedProducts.length < visibleProducts.length;
     if (catalogueMoreWrap) catalogueMoreWrap.hidden = !hasMore;
@@ -615,15 +634,22 @@
     if (!productDialog || !product) return;
     if (productDialogImage) {
       productDialogImage.src = product.image;
-      productDialogImage.alt = product.imageAlt || `${product.brand} ${product.name}`;
+      productDialogImage.alt = product.imageAlt || `${product.brand} ${customerProductName(product)}`;
     }
     if (productDialogBrand) productDialogBrand.textContent = product.brand;
-    if (productDialogTitle) productDialogTitle.textContent = product.name;
-    if (productDialogDescription) productDialogDescription.textContent = product.description || "";
-    if (productDialogForm) {
-      productDialogForm.textContent = [product.color, labelCategories(product.categories)].filter(Boolean).join(" / ");
+    if (productDialogTitle) productDialogTitle.textContent = customerProductName(product);
+    if (productDialogDescription) {
+      productDialogDescription.textContent = product.description || "";
+      productDialogDescription.hidden = !productDialogDescription.textContent;
     }
-    if (productDialogPrice) productDialogPrice.textContent = product.price;
+    if (productDialogForm) {
+      productDialogForm.textContent = customerProductColour(product);
+      productDialogForm.hidden = !productDialogForm.textContent;
+    }
+    if (productDialogPrice) {
+      productDialogPrice.textContent = product.price || "";
+      productDialogPrice.hidden = !productDialogPrice.textContent;
+    }
     if (productDialogRetailer) productDialogRetailer.href = product.retailerUrl;
     if (productDialogRetailerLabel) productDialogRetailerLabel.textContent = "view at " + product.brand;
     if (!productDialog.open) productDialog.showModal();
@@ -805,19 +831,34 @@
     liveBand.pause();
   }
 
-  heroFullscreen?.addEventListener("click", async () => {
-    try {
-      if (document.fullscreenElement || document.webkitFullscreenElement) {
-        if (document.exitFullscreen) await document.exitFullscreen();
-        else if (document.webkitExitFullscreen) document.webkitExitFullscreen();
-        return;
+  function updateFullscreenStatus(active) {
+    document.documentElement.classList.toggle("shop-shell-is-fullscreen", Boolean(active));
+    if (!heroFullscreen) return;
+    heroFullscreen.hidden = Boolean(active);
+    heroFullscreen.setAttribute("aria-label", "Enter full screen");
+  }
+
+  heroFullscreen?.addEventListener("click", () => {
+    if (!inMusicTelevisionFrame) {
+      const target = document.documentElement;
+      try {
+        if (target.requestFullscreen) target.requestFullscreen({ navigationUI: "hide" }).catch(() => null);
+        else if (target.webkitRequestFullscreen) target.webkitRequestFullscreen();
+      } catch {
+        // Fullscreen remains optional on browsers that restrict it.
       }
-      if (hero?.requestFullscreen) await hero.requestFullscreen();
-      else if (hero?.webkitRequestFullscreen) hero.webkitRequestFullscreen();
-    } catch {
-      // Fullscreen remains an optional enhancement on browsers that restrict it.
+      return;
     }
+    try {
+      if (window.parent.IAMTelevisionRoom?.requestShopFullscreen?.()) return;
+    } catch {
+      // The message route below remains available if frame access is restricted.
+    }
+    window.parent.postMessage({ type: "iam:shop-fullscreen-request" }, window.location.origin);
   });
+
+  document.addEventListener("fullscreenchange", () => updateFullscreenStatus(Boolean(document.fullscreenElement)));
+  document.addEventListener("webkitfullscreenchange", () => updateFullscreenStatus(Boolean(document.webkitFullscreenElement)));
 
   function updateMusicStatus(detail = {}) {
     if (!musicButton || !musicLabel) return;
@@ -847,12 +888,14 @@
   });
 
   window.addEventListener("message", (event) => {
-    if (event.origin !== window.location.origin || event.data?.type !== "iam:shop-music-status") return;
-    updateMusicStatus(event.data);
+    if (event.origin !== window.location.origin) return;
+    if (event.data?.type === "iam:shop-music-status") updateMusicStatus(event.data);
+    if (event.data?.type === "iam:shop-fullscreen-status") updateFullscreenStatus(Boolean(event.data.active));
   });
 
   if (inMusicTelevisionFrame) {
     window.parent.postMessage({ type: "iam:shop-music-status-request" }, window.location.origin);
+    window.parent.postMessage({ type: "iam:shop-fullscreen-status-request" }, window.location.origin);
   }
 
   applyFilters();

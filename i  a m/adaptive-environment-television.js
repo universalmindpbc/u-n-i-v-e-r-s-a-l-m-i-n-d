@@ -6781,9 +6781,21 @@
     }
   }
 
+  function postShopFullscreenStatus(targetWindow = pageFrame?.contentWindow) {
+    const active = Boolean(document.fullscreenElement || document.webkitFullscreenElement);
+    targetWindow?.postMessage({ type: "iam:shop-fullscreen-status", active }, window.location.origin);
+  }
+
+  function requestShopFullscreen(targetWindow = pageFrame?.contentWindow) {
+    requestViewingFullscreen(localVideo);
+    window.setTimeout(() => postShopFullscreenStatus(targetWindow), 80);
+    return true;
+  }
+
   function syncFullscreenState() {
     const fullscreenElement = document.fullscreenElement || document.webkitFullscreenElement;
     document.body.classList.toggle("television-is-fullscreen", Boolean(fullscreenElement));
+    postShopFullscreenStatus();
     if (document.body.classList.contains("television-room-open") || document.body.classList.contains("television-room-opening")) {
       startFlowerSpin();
     }
@@ -6915,16 +6927,64 @@
     targetWindow?.postMessage({ type: "iam:shop-music-status", ...shopMusicStatus() }, window.location.origin);
   }
 
-  function requestShopMusic(targetWindow = pageFrame?.contentWindow) {
+  function pauseShopMusic(targetWindow = pageFrame?.contentWindow) {
+    stopBroadcastPlayback("shop_pause");
+    if (continuationAudio && !continuationAudio.paused) {
+      continuationAudio.pause();
+      continuationAudio.playbackRate = 1;
+      document.body.dataset.audioPartyPlaybackState = "paused";
+      document.body.dataset.radioPlaybackState = "paused";
+    }
+    if (localVideo && !localVideo.paused) {
+      localVideo.pause();
+    }
+    postShopMusicStatus(targetWindow);
+    return true;
+  }
+
+  async function requestShopMusic(targetWindow = pageFrame?.contentWindow) {
     const currentStatus = shopMusicStatus();
     if (currentStatus.playing) {
+      return pauseShopMusic(targetWindow);
+    }
+
+    if (
+      continuationAudio &&
+      document.body.classList.contains("television-audio-party") &&
+      document.body.dataset.audioPartyPlaybackState === "paused"
+    ) {
+      try {
+        continuationAudio.playbackRate = 1;
+        continuationAudio.muted = false;
+        await continuationAudio.play();
+        document.body.dataset.audioPartyPlaybackState = "playing";
+        document.body.dataset.radioPlaybackState = "playing";
+      } catch (error) {
+        document.body.dataset.audioPartyPlaybackState = "error";
+        document.body.dataset.audioPartyPlaybackError = String(error?.message || error).slice(0, 140);
+      }
       postShopMusicStatus(targetWindow);
       return true;
     }
 
-    joinBroadcastChannel("party-james-bondage", { source: "shop_default" })
-      .then(() => postShopMusicStatus(targetWindow))
-      .catch(() => postShopMusicStatus(targetWindow));
+    let shopTrack = null;
+    try {
+      await window.IAMBroadcastClock?.ready;
+      const state = window.IAMBroadcastClock?.stateAt("party-james-bondage");
+      const scheduledTrack = findTrack(state?.trackId);
+      if (scheduledTrack?.audioOnly) shopTrack = scheduledTrack;
+    } catch {
+      // The independent shop transport can still use the approved fallback set.
+    }
+    if (!shopTrack) {
+      shopTrack = TRACK_CATALOGUE.find((candidate) => candidate.musicRoom === "james-bondage" && candidate.audioOnly) || null;
+    }
+
+    if (shopTrack) {
+      await startAudioLedParty(shopTrack, { source: "shop_independent" });
+      if (continuationAudio) continuationAudio.playbackRate = 1;
+    }
+    postShopMusicStatus(targetWindow);
     return true;
   }
 
@@ -7714,6 +7774,14 @@
       requestShopMusic(event.source);
       return;
     }
+    if (event.data?.type === "iam:shop-fullscreen-status-request") {
+      postShopFullscreenStatus(event.source);
+      return;
+    }
+    if (event.data?.type === "iam:shop-fullscreen-request") {
+      requestShopFullscreen(event.source);
+      return;
+    }
     if (event.data?.type === "iam:open-sex-ed-episode") {
       openSexEdEpisode(event.data.episode || "01");
       return;
@@ -7763,6 +7831,9 @@
     },
     requestShopMusic() {
       return requestShopMusic(pageFrame?.contentWindow);
+    },
+    requestShopFullscreen() {
+      return requestShopFullscreen(pageFrame?.contentWindow);
     },
   };
   window.IAMStreamReady?.then(() => {

@@ -55,6 +55,7 @@ put_file() {
 
   encoded_path="$(encode_path "$(remote_target "$remote_path")")"
   curl --globoff --fail --silent --show-error --ftp-create-dirs \
+    --retry 5 --retry-delay 2 --retry-max-time 180 --retry-all-errors \
     --user "$FTP_USER:$FTP_PASS" \
     --upload-file "$source_file" \
     "ftp://$FTP_HOST/$encoded_path"
