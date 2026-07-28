@@ -63,7 +63,6 @@ button, a { font: inherit; }
   min-height: 70px;
 }
 
-.happiness-header > p,
 .happiness-kicker,
 .happiness-apple__copy > p:first-child,
 .happiness-activity > div > p {
@@ -92,21 +91,6 @@ button, a { font: inherit; }
   object-fit: contain;
   animation: mark-spin 3s linear infinite;
 }
-
-.happiness-brand .brand-lockup {
-  display: flex;
-  align-items: baseline;
-  color: rgba(255, 255, 255, 0.94);
-  font-size: clamp(28px, 2.05vw, 42px);
-  line-height: 1;
-  letter-spacing: 0.28em;
-  white-space: nowrap;
-}
-
-.happiness-brand .brand-name { margin-right: 8px; font-weight: 100; }
-.happiness-brand .brand-suffix { display: inline-flex; letter-spacing: 0; }
-.happiness-brand .brand-slash { margin-right: 14px; font-weight: 100; }
-.happiness-brand .brand-iam { font-weight: 700; letter-spacing: 0; }
 
 .global-nav-trigger {
   position: absolute;
@@ -564,7 +548,6 @@ body.nav-open .global-nav-trigger { opacity: 0; pointer-events: none; }
 
 @media (max-width: 680px) {
   .happiness-shell { padding: 18px 16px 42px; }
-  .happiness-header > p { display: none; }
   .happiness-hero { padding-top: 44px; }
   .happiness-card { min-height: 300px; }
   .happiness-card__footer { align-items: flex-start; flex-direction: column; gap: 7px; }
@@ -590,7 +573,6 @@ body.nav-open .global-nav-trigger { opacity: 0; pointer-events: none; }
 @media (max-width: 760px) {
   .happiness-brand { gap: 13px; }
   .happiness-brand .brand-mark { width: 48px; height: 48px; }
-  .happiness-brand .brand-lockup { font-size: 21px; letter-spacing: 0.16em; }
   .global-nav-trigger { width: min(88vw, 420px); height: 58px; }
   .global-nav-brand { top: var(--brand-top); left: var(--brand-left); gap: 13px; }
   .global-nav-mark { width: 48px; height: 48px; }
