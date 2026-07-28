@@ -187,6 +187,7 @@ const introCallPosition = controller.lastIndexOf('runIntro();');
 const roomOpenPosition = controller.indexOf('document.body.classList.add("television-room-open");');
 const pointerCountdownPosition = controller.indexOf('startReactionWalletPointerUnlockCountdown();');
 const settlingWalletRule = televisionCss.match(/body\.television-wallet-settling \.adaptive-television-reaction-wallet(?:\[data-wallet-view="closed"\])?,[\s\S]*?\{([\s\S]*?)\}/)?.[1] ?? '';
+const safariLiveTextRule = televisionCss.match(/\.adaptive-television-player video\s*\{([\s\S]*?)\}/)?.[1] ?? '';
 const nowPlayingCssStart = televisionCss.indexOf('/* Fixed primary wallet with a quiet, readable programme ticker. */');
 const nowPlayingCss = televisionCss.slice(
   nowPlayingCssStart,
@@ -279,6 +280,7 @@ requireCondition(controller.includes('const radioVisualVisible = Boolean(radioAc
 requireCondition(controller.includes('radioIsActiveProgramme ? "radio-visual" : "music"'), 'the crossfader right endpoint can still resolve to the opening music video during Radio');
 requireCondition(!controller.includes('const preloadedEntry = radioFashionPreloadPool.get(nextRunway.assetKey);'), 'public Fashion can still steal a preloaded Radio visual element');
 requireCondition(televisionCss.includes('.adaptive-television-radio-visual-video') && televisionCss.includes('body.television-radio-continuation .adaptive-television-fashion-video {\n  z-index: 3;'), 'Radio and public Fashion no longer retain independent stacked visual layers');
+requireCondition(safariLiveTextRule.includes('-webkit-user-select: none;') && safariLiveTextRule.includes('user-select: none;') && safariLiveTextRule.includes('-webkit-user-drag: none;') && safariLiveTextRule.includes('-webkit-touch-callout: none;'), 'Safari Live Text can cover the full-screen broadcast media');
 requireCondition(televisionCss.includes('padding-top: 5px;'), 'the recommended-channel label can be clipped by the shelf rollover');
 requireCondition(controller.includes('firstFallbackMs: 1250'), 'fashion reveal no longer falls to 480p after 1.25 seconds');
 requireCondition(controller.includes('secondFallbackMs: 2000'), 'fashion reveal no longer falls progressively to 360p');

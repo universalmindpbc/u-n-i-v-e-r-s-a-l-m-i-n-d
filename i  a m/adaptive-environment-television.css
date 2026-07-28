@@ -361,6 +361,16 @@ body.television-page-view-open.television-wallet-page-open .adaptive-television-
   --fashion-video-opacity: 0;
 }
 
+/* Keep Safari Live Text from placing its recognition control over the
+   continuous full-screen broadcast. The wallet and player controls remain
+   separate interactive elements above this media layer. */
+.adaptive-television-player video {
+  -webkit-user-select: none;
+  user-select: none;
+  -webkit-user-drag: none;
+  -webkit-touch-callout: none;
+}
+
 .adaptive-television-local-video-frame {
   z-index: 1;
   overflow: hidden;
