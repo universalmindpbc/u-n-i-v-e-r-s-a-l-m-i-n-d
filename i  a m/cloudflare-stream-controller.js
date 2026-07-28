@@ -204,7 +204,10 @@
         index,
         height: finiteNumber(level.height, 0),
         bitrate: finiteNumber(level.bitrate || level.maxBitrate, 0),
-        averageBitrate: finiteNumber(level.averageBitrate, 0),
+        // HLS.js can replace averageBitrate with its measured fragment bitrate.
+        // Keep Cloudflare's immutable AVERAGE-BANDWIDTH as the recovery gate so
+        // a stable 5 Mbps connection is not incorrectly held below 720p.
+        averageBitrate: finiteNumber(level.attrs?.["AVERAGE-BANDWIDTH"], 0) || finiteNumber(level.averageBitrate, 0),
       }))
       .filter((level) => level.height && level.height <= maximumHeight)
       .sort((left, right) => right.height - left.height)[0] || null;
@@ -410,6 +413,16 @@
     state.adaptiveCap = nextCap;
     state.video.dataset.streamAdaptiveCap = String(nextCap);
     capHlsLevel(state);
+    if (state.hls && nextCap > previousCap) {
+      const promotedLevel = levelAtOrBelow(state, nextCap);
+      const currentHeight = currentQualityHeight(state);
+      if (promotedLevel && promotedLevel.height > currentHeight) {
+        // Force only the next fragment at the newly approved level. HLS.js
+        // returns to its automatic load-level decision immediately afterward.
+        state.hls.nextLoadLevel = promotedLevel.index;
+        state.video.dataset.streamRecoveryPromotedHeight = String(promotedLevel.height);
+      }
+    }
     recordTelemetry(state, "quality_cap_change", {
       previous_quality_cap: previousCap,
       quality_cap: nextCap,
