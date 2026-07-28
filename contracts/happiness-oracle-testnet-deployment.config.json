@@ -1,0 +1,28 @@
+{
+  "schema_version": "happiness_oracle_testnet_deployment_v1",
+  "contract": "HappinessCommunityOracle",
+  "status": "prepared_not_deployed",
+  "network": "polygon-amoy",
+  "chain_id": 80002,
+  "admin_address": "0xA83623eF867Bb651EF8f546632fa49d51FFad5ca",
+  "happiness_contract_address": "0x616EF64C03D79630ECA03b5Cea4ea58a252dB68a",
+  "keystone_forwarder": "0x76c9cf548b4179F8901cda1f8623568b58215E62",
+  "max_amount_per_epoch_units": null,
+  "workflow_identity": {
+    "workflow_id": null,
+    "workflow_author": null,
+    "status": "governance_and_cre_access_required"
+  },
+  "role_grant": {
+    "role": "COMMUNITY_ISSUER_ROLE",
+    "required": true,
+    "grantee": null,
+    "status": "must_follow_oracle_deployment_and_workflow_configuration"
+  },
+  "activation": {
+    "cre_workflow_deployed": false,
+    "consumer_deployed": false,
+    "issuer_role_granted": false,
+    "enabled": false
+  }
+}

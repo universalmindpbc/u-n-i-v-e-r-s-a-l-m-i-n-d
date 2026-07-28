@@ -18,6 +18,8 @@ The ERC-20 ledger symbol is `IOH`; customer-facing artwork and copy render the t
 
 `HappinessCommunityOracle.sol` is the separate Chainlink CRE consumer. It accepts only 64-byte production metadata from the configured `KeystoneForwarder`, requires a one-time-pinned workflow ID and author, enforces report expiry, replay protection and an immutable per-epoch cap, and can call only the community-pool issuance path. Grant it `COMMUNITY_ISSUER_ROLE` only after its workflow identity is configured and tested. A workflow identity change requires a new consumer deployment and an explicit role rotation.
 
+`happiness-oracle-testnet-deployment.config.json` records the prepared Polygon Amoy boundary. The consumer is not deployed and the issuer role is not granted: the per-epoch amount and CRE workflow identity still require approval, simulation and deployment access.
+
 The first deployment target is Polygon Amoy. A testnet deployment is not production activation. Polygon mainnet deployment requires a professional smart-contract audit, Australian digital-asset legal review, controlled issuer key management and an approved rewards economy.
 
 The first wallet-signed Amoy deployment is recorded in `deployments/polygon-amoy-happiness.json` at `0x616EF64C03D79630ECA03b5Cea4ea58a252dB68a`. The deployment starts with zero IOH issued; the `10,000,000 IOH` figure is an immutable ceiling, not a pre-mint.
