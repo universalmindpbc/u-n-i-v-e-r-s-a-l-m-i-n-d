@@ -198,6 +198,7 @@
         index,
         height: finiteNumber(level.height, 0),
         bitrate: finiteNumber(level.bitrate || level.maxBitrate, 0),
+        averageBitrate: finiteNumber(level.averageBitrate, 0),
       }))
       .filter((level) => level.height && level.height <= maximumHeight)
       .sort((left, right) => right.height - left.height)[0] || null;
@@ -497,7 +498,11 @@
       : Math.min(720, configuredMaximum);
     const targetLevel = levelAtOrBelow(musicState, nextMusicCap);
     const estimate = finiteNumber(musicState.hls?.bandwidthEstimate, 0);
-    if (!targetLevel?.bitrate || estimate >= targetLevel.bitrate * QUALITY_THROUGHPUT_MARGIN) {
+    const sustainedBitrate = finiteNumber(targetLevel?.averageBitrate, 0) || finiteNumber(targetLevel?.bitrate, 0);
+    const requiredBandwidth = sustainedBitrate * QUALITY_THROUGHPUT_MARGIN;
+    musicState.video.dataset.streamRecoveryTargetBitrate = String(Math.round(sustainedBitrate));
+    musicState.video.dataset.streamRecoveryRequiredBandwidth = String(Math.round(requiredBandwidth));
+    if (!sustainedBitrate || estimate >= requiredBandwidth) {
       if (setAdaptiveQualityCap(musicState, nextMusicCap, "sustained_buffer_and_throughput_recovery")) {
         musicState.healthySince = timestamp;
       }
@@ -859,7 +864,11 @@
         startLevel: 0,
         maxLiveSyncPlaybackRate: 1,
         abrBandWidthFactor: .75,
-        abrBandWidthUpFactor: .6,
+        // Keep enough headroom for a peak segment while allowing a sustained
+        // 5 Mbps connection to reach Cloudflare's 720p rendition. The custom
+        // recovery gate below still requires a healthy reservoir and 1.55x
+        // the manifest's average bitrate before this HLS.js gate can engage.
+        abrBandWidthUpFactor: .72,
         maxBufferLength: role === "fashion" ? 24 : 30,
         maxMaxBufferLength: role === "fashion" ? 30 : 60,
         backBufferLength: role === "fashion" ? 10 : 30,
