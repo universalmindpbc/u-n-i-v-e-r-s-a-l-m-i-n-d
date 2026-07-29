@@ -155,6 +155,7 @@
         "secretsmanager:CreateSecret",
         "secretsmanager:DeleteSecret",
         "secretsmanager:DescribeSecret",
+        "secretsmanager:GetRandomPassword",
         "secretsmanager:GetSecretValue",
         "secretsmanager:TagResource",
         "secretsmanager:UntagResource",
