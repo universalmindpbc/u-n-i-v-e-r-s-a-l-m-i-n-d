@@ -2854,6 +2854,11 @@ body.induction-page {
   line-height: 1.45;
 }
 
+.induction-permission p strong {
+  color: rgba(247, 251, 249, .92);
+  font-weight: 700;
+}
+
 .induction-permission__actions {
   grid-column: 2;
   display: flex;
