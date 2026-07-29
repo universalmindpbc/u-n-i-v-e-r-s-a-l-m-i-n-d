@@ -93,6 +93,7 @@
   const programScroll = document.querySelector("[data-program-scroll]");
   const programScrim = document.querySelector(".program-scrim");
   const moreButton = document.querySelector("[data-program-more]");
+  const roomSwitcher = document.querySelector(".program-room-switcher");
   const roomButtons = Array.from(document.querySelectorAll("[data-room]"));
   const zoneButtons = Array.from(document.querySelectorAll("[data-zone]"));
   const walletPanels = Array.from(document.querySelectorAll("[data-wallet-panel]"));
@@ -273,7 +274,9 @@
 
     const activeRoomButton = roomButtons.find((button) => button.dataset.room === activeRoom);
     window.requestAnimationFrame(() => {
-      activeRoomButton?.scrollIntoView({ block: "nearest", inline: "center" });
+      if (!activeRoomButton || !roomSwitcher) return;
+      const centredLeft = activeRoomButton.offsetLeft - ((roomSwitcher.clientWidth - activeRoomButton.offsetWidth) / 2);
+      roomSwitcher.scrollLeft = Math.max(0, centredLeft);
     });
 
     backgroundFor(current.track);
