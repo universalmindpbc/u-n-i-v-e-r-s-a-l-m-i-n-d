@@ -51,6 +51,16 @@
       }
     },
     {
+      "Sid": "ManageCitizenDataServiceArtifactOnly",
+      "Effect": "Allow",
+      "Action": [
+        "s3:GetObject",
+        "s3:GetObjectVersion",
+        "s3:PutObject"
+      ],
+      "Resource": "arn:aws:s3:::universal-mind-citizen-dat-*/service-artifacts/*"
+    },
+    {
       "Sid": "InspectPrototypeBudgets",
       "Effect": "Allow",
       "Action": "budgets:ViewBudget",
@@ -143,9 +153,69 @@
         "s3:PutBucketTagging",
         "s3:PutBucketVersioning",
         "secretsmanager:CreateSecret",
+        "secretsmanager:DeleteSecret",
         "secretsmanager:DescribeSecret",
         "secretsmanager:GetSecretValue",
-        "secretsmanager:TagResource"
+        "secretsmanager:TagResource",
+        "secretsmanager:UntagResource",
+        "secretsmanager:UpdateSecret"
+      ],
+      "Resource": "*"
+    },
+    {
+      "Sid": "ManageCitizenDataLambdaOnly",
+      "Effect": "Allow",
+      "Action": [
+        "lambda:AddPermission",
+        "lambda:CreateFunction",
+        "lambda:CreateFunctionUrlConfig",
+        "lambda:DeleteFunction",
+        "lambda:DeleteFunctionUrlConfig",
+        "lambda:DeleteFunctionConcurrency",
+        "lambda:GetFunction",
+        "lambda:GetFunctionConfiguration",
+        "lambda:GetFunctionUrlConfig",
+        "lambda:GetPolicy",
+        "lambda:ListTags",
+        "lambda:PutFunctionConcurrency",
+        "lambda:RemovePermission",
+        "lambda:TagResource",
+        "lambda:UntagResource",
+        "lambda:UpdateFunctionCode",
+        "lambda:UpdateFunctionConfiguration",
+        "lambda:UpdateFunctionUrlConfig"
+      ],
+      "Resource": "arn:aws:lambda:ap-southeast-2:*:function:universal-mind-citizen-data-staging"
+    },
+    {
+      "Sid": "ManageCitizenDataLambdaRoleOnly",
+      "Effect": "Allow",
+      "Action": [
+        "iam:CreateRole",
+        "iam:DeleteRole",
+        "iam:DeleteRolePolicy",
+        "iam:GetRole",
+        "iam:GetRolePolicy",
+        "iam:ListRolePolicies",
+        "iam:PassRole",
+        "iam:PutRolePolicy",
+        "iam:TagRole",
+        "iam:UntagRole",
+        "iam:UpdateAssumeRolePolicy"
+      ],
+      "Resource": "arn:aws:iam::*:role/universal-mind-citizen-data-staging-service"
+    },
+    {
+      "Sid": "ManageCitizenDataLambdaLogsOnly",
+      "Effect": "Allow",
+      "Action": [
+        "logs:CreateLogGroup",
+        "logs:DeleteLogGroup",
+        "logs:DescribeLogGroups",
+        "logs:ListTagsForResource",
+        "logs:PutRetentionPolicy",
+        "logs:TagResource",
+        "logs:UntagResource"
       ],
       "Resource": "*"
     },

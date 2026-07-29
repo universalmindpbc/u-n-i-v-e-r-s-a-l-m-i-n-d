@@ -1,8 +1,8 @@
 AWSTemplateFormatVersion: "2010-09-09"
 Description: >-
-  Disabled-by-default Universal Mind citizen data staging foundation: dedicated VPC,
-  KMS-encrypted S3 storage and Aurora PostgreSQL Serverless v2 with the RDS Data API.
-  Deploy only after founder cost approval and IAM Identity Center authentication.
+  Universal Mind consent-led citizen data staging foundation and HMAC-gated Lambda service:
+  dedicated VPC, KMS-encrypted S3 storage and Aurora PostgreSQL Serverless v2 with
+  the RDS Data API. Deploy only after founder cost approval and IAM Identity Center authentication.
 
 Parameters:
   EnvironmentName:
@@ -40,6 +40,14 @@ Parameters:
     Default: 14
     MinValue: 7
     MaxValue: 35
+  CitizenDataServiceCodeKey:
+    Type: String
+    Default: service-artifacts/citizen-data-service.zip
+    AllowedPattern: "^service-artifacts/[A-Za-z0-9._/-]+\\.zip$"
+  CitizenDataServiceCodeVersion:
+    Type: String
+    Description: Exact version identifier of the KMS-encrypted Lambda package in the private object bucket.
+    MinLength: 1
 
 Resources:
   CitizenDataKey:
@@ -318,6 +326,149 @@ Resources:
         - Key: environment
           Value: !Ref EnvironmentName
 
+  CitizenDataEdgeSecret:
+    Type: AWS::SecretsManager::Secret
+    DeletionPolicy: Retain
+    UpdateReplacePolicy: Retain
+    Properties:
+      Description: HMAC secret shared only by the staging Cloudflare edge and citizen data Lambda
+      GenerateSecretString:
+        ExcludePunctuation: true
+        PasswordLength: 48
+      Tags:
+        - Key: application
+          Value: universal-mind
+        - Key: environment
+          Value: !Ref EnvironmentName
+        - Key: purpose
+          Value: citizen-data-edge-authentication
+
+  CitizenDataServiceRole:
+    Type: AWS::IAM::Role
+    Properties:
+      RoleName: !Sub universal-mind-citizen-data-${EnvironmentName}-service
+      AssumeRolePolicyDocument:
+        Version: "2012-10-17"
+        Statement:
+          - Effect: Allow
+            Principal:
+              Service: lambda.amazonaws.com
+            Action: sts:AssumeRole
+      Policies:
+        - PolicyName: citizen-data-runtime
+          PolicyDocument:
+            Version: "2012-10-17"
+            Statement:
+              - Sid: WriteStructuredLogsWithoutPayloads
+                Effect: Allow
+                Action:
+                  - logs:CreateLogStream
+                  - logs:PutLogEvents
+                Resource: !Sub arn:${AWS::Partition}:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/lambda/universal-mind-citizen-data-${EnvironmentName}:*
+              - Sid: UseCitizenDataApi
+                Effect: Allow
+                Action:
+                  - rds-data:BeginTransaction
+                  - rds-data:CommitTransaction
+                  - rds-data:ExecuteStatement
+                  - rds-data:RollbackTransaction
+                Resource: !GetAtt CitizenDataCluster.DBClusterArn
+              - Sid: ReadManagedDatabaseCredential
+                Effect: Allow
+                Action: secretsmanager:GetSecretValue
+                Resource: !GetAtt CitizenDataCluster.MasterUserSecret.SecretArn
+              - Sid: UseCitizenEnvelopeKey
+                Effect: Allow
+                Action:
+                  - kms:Decrypt
+                  - kms:GenerateDataKey
+                Resource: !GetAtt CitizenDataKey.Arn
+              - Sid: StoreCitizenCiphertextOnly
+                Effect: Allow
+                Action:
+                  - s3:DeleteObjectVersion
+                  - s3:GetObjectVersion
+                  - s3:PutObject
+                Resource:
+                  - !Sub ${CitizenDataObjectBucket.Arn}/citizens/*
+                  - !Sub ${CitizenDataObjectBucket.Arn}/exports/*
+      Tags:
+        - Key: application
+          Value: universal-mind
+        - Key: environment
+          Value: !Ref EnvironmentName
+
+  CitizenDataServiceLogGroup:
+    Type: AWS::Logs::LogGroup
+    DeletionPolicy: Retain
+    UpdateReplacePolicy: Retain
+    Properties:
+      LogGroupName: !Sub /aws/lambda/universal-mind-citizen-data-${EnvironmentName}
+      RetentionInDays: 14
+      Tags:
+        - Key: application
+          Value: universal-mind
+        - Key: environment
+          Value: !Ref EnvironmentName
+
+  CitizenDataServiceFunction:
+    Type: AWS::Lambda::Function
+    DependsOn:
+      - CitizenDataServiceLogGroup
+    Properties:
+      FunctionName: !Sub universal-mind-citizen-data-${EnvironmentName}
+      Description: Staging-only consent-led citizen data service; accepts HMAC-signed edge requests only
+      Architectures:
+        - arm64
+      Code:
+        S3Bucket: !Ref CitizenDataObjectBucket
+        S3Key: !Ref CitizenDataServiceCodeKey
+        S3ObjectVersion: !Ref CitizenDataServiceCodeVersion
+      Environment:
+        Variables:
+          CITIZEN_DATA_RESOURCE_ARN: !GetAtt CitizenDataCluster.DBClusterArn
+          CITIZEN_DATA_DATABASE_SECRET_ARN: !GetAtt CitizenDataCluster.MasterUserSecret.SecretArn
+          CITIZEN_DATA_DATABASE_NAME: !Ref DatabaseName
+          CITIZEN_DATA_OBJECT_BUCKET: !Ref CitizenDataObjectBucket
+          CITIZEN_DATA_KMS_KEY_ARN: !GetAtt CitizenDataKey.Arn
+          CITIZEN_DATA_EDGE_SHARED_SECRET: !Sub "{{resolve:secretsmanager:${CitizenDataEdgeSecret}:SecretString}}"
+      Handler: database/infrastructure/aws/citizen-data-lambda.handler
+      MemorySize: 256
+      ReservedConcurrentExecutions: 2
+      Role: !GetAtt CitizenDataServiceRole.Arn
+      Runtime: nodejs22.x
+      Timeout: 60
+      TracingConfig:
+        Mode: PassThrough
+      Tags:
+        - Key: application
+          Value: universal-mind
+        - Key: environment
+          Value: !Ref EnvironmentName
+
+  CitizenDataServiceUrl:
+    Type: AWS::Lambda::Url
+    Properties:
+      AuthType: NONE
+      InvokeMode: BUFFERED
+      TargetFunctionArn: !GetAtt CitizenDataServiceFunction.Arn
+
+  CitizenDataServiceUrlPermission:
+    Type: AWS::Lambda::Permission
+    Properties:
+      Action: lambda:InvokeFunctionUrl
+      FunctionName: !Ref CitizenDataServiceFunction
+      FunctionUrlAuthType: NONE
+      Principal: "*"
+
+  CitizenDataServiceInvokePermission:
+    Type: AWS::Lambda::Permission
+    Properties:
+      Action: lambda:InvokeFunction
+      FunctionName: !Ref CitizenDataServiceFunction
+      InvokedViaFunctionUrl: true
+      Principal: "*"
+
 Outputs:
   DatabaseClusterArn:
     Description: Aurora cluster ARN for the RDS Data API
@@ -333,3 +484,9 @@ Outputs:
     Value: !Ref CitizenDataObjectBucket
   DatabaseName:
     Value: !Ref DatabaseName
+  CitizenDataServiceUrl:
+    Description: Private-in-practice staging backend URL; requests require the edge HMAC secret
+    Value: !GetAtt CitizenDataServiceUrl.FunctionUrl
+  CitizenDataEdgeSecretArn:
+    Description: Generated secret copied directly into the staging edge secret store; never expose its value
+    Value: !Ref CitizenDataEdgeSecret

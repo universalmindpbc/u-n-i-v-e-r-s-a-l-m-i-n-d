@@ -58,10 +58,71 @@ async function requestJson(request, maxBytes = 32768) {
 
 function assertTrustedMutation(request) {
   const origin = request.headers.get("Origin") || "";
-  if (!ALLOWED_ORIGINS.has(origin)) throw new Error("citizen_data_origin_forbidden");
+  const requestOrigin = new URL(request.url).origin;
+  if (!ALLOWED_ORIGINS.has(origin) || origin !== requestOrigin) {
+    throw new Error("citizen_data_origin_forbidden");
+  }
   if (request.headers.get("X-Universal-Mind-Request") !== "citizen-data-v1") {
     throw new Error("citizen_data_request_header_required");
   }
+}
+
+function bytesToHex(bytes) {
+  return [...new Uint8Array(bytes)].map((byte) => byte.toString(16).padStart(2, "0")).join("");
+}
+
+async function signBackendBody(secret, timestamp, nonce, body) {
+  const key = await crypto.subtle.importKey(
+    "raw",
+    new TextEncoder().encode(secret),
+    { name: "HMAC", hash: "SHA-256" },
+    false,
+    ["sign"],
+  );
+  const signature = await crypto.subtle.sign(
+    "HMAC",
+    key,
+    new TextEncoder().encode(`${timestamp}\n${nonce}\n${body}`),
+  );
+  return bytesToHex(signature);
+}
+
+export function createRemoteCitizenDataService(env, backendFetch = fetch) {
+  const backendUrl = String(env?.CITIZEN_DATA_BACKEND_URL || "").trim();
+  const sharedSecret = String(env?.CITIZEN_DATA_BACKEND_SHARED_SECRET || "").trim();
+  if (!backendUrl || !sharedSecret) throw new Error("citizen_data_backend_not_configured");
+
+  async function invoke(operation, credential = "", payload = {}) {
+    const body = JSON.stringify({ operation, credential, payload });
+    const timestamp = String(Date.now());
+    const nonce = crypto.randomUUID();
+    const signature = await signBackendBody(sharedSecret, timestamp, nonce, body);
+    const backendResponse = await backendFetch(backendUrl, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "X-Universal-Mind-Edge-Timestamp": timestamp,
+        "X-Universal-Mind-Edge-Nonce": nonce,
+        "X-Universal-Mind-Edge-Signature": signature,
+      },
+      body,
+      redirect: "error",
+    });
+    const result = await backendResponse.json().catch(() => ({}));
+    if (!backendResponse.ok) throw new Error(result.error || "citizen_data_backend_unavailable");
+    return result;
+  }
+
+  return Object.freeze({
+    consentStatus: (credential) => invoke("consentStatus", credential),
+    acceptCoreConsent: (payload) => invoke("acceptCoreConsent", "", payload),
+    startSession: (credential, payload) => invoke("startSession", credential, payload),
+    recordCheckin: (credential, payload) => invoke("recordCheckin", credential, payload),
+    startConversation: (credential, payload) => invoke("startConversation", credential, payload),
+    recordConversationTurn: (credential, payload) => invoke("recordConversationTurn", credential, payload),
+    requestExport: (credential) => invoke("requestExport", credential),
+    requestErasure: (credential) => invoke("requestErasure", credential),
+  });
 }
 
 export function createCitizenDataWorker({ serviceFactory }) {
@@ -75,6 +136,11 @@ export function createCitizenDataWorker({ serviceFactory }) {
 
       const url = new URL(request.url);
       if (request.method === "OPTIONS") return new Response(null, { status: 204 });
+      if (env?.CITIZEN_DATA_RATE_LIMITER?.limit) {
+        const rateKey = request.headers.get("CF-Connecting-IP") || "unidentified";
+        const rate = await env.CITIZEN_DATA_RATE_LIMITER.limit({ key: rateKey });
+        if (!rate?.success) return response(429, { error: "citizen_data_rate_limited" });
+      }
       const service = await serviceFactory(env);
       const credential = parseCookie(request);
 
@@ -132,10 +198,6 @@ export function createCitizenDataWorker({ serviceFactory }) {
   };
 }
 
-const disabledServiceFactory = async () => {
-  throw new Error("citizen_data_runtime_not_configured");
-};
-
-export default createCitizenDataWorker({ serviceFactory: disabledServiceFactory });
+export default createCitizenDataWorker({ serviceFactory: createRemoteCitizenDataService });
 
 export { COOKIE_NAME, createCitizenDataService };

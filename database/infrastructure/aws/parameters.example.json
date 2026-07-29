@@ -22,5 +22,13 @@
   {
     "ParameterKey": "BackupRetentionDays",
     "ParameterValue": "14"
+  },
+  {
+    "ParameterKey": "CitizenDataServiceCodeKey",
+    "ParameterValue": "service-artifacts/citizen-data-service.zip"
+  },
+  {
+    "ParameterKey": "CitizenDataServiceCodeVersion",
+    "ParameterValue": "REPLACE_WITH_EXACT_S3_VERSION_ID"
   }
 ]

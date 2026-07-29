@@ -1,4 +1,5 @@
 import assert from "node:assert/strict";
+import crypto from "node:crypto";
 import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
@@ -8,12 +9,14 @@ import {
   createCitizenDataService,
 } from "../cloudflare/citizen-data-core.js";
 import { createEnvelopeVault } from "../cloudflare/citizen-data-vault.js";
-import { createCitizenDataWorker } from "../cloudflare/citizen-data-worker.js";
+import { createCitizenDataWorker, createRemoteCitizenDataService } from "../cloudflare/citizen-data-worker.js";
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const read = (relative) => fs.readFileSync(path.join(root, relative), "utf8");
 const sql = read("database/migrations/0001_citizen_data_foundation.sql");
 const sql0002 = read("database/migrations/0002_encrypted_object_versions.sql");
+const sql0003 = read("database/migrations/0003_arrival_consent_v1.sql");
+const arrivalConsentCopy = read("database/consent/arrival-consent-v1.txt");
 const contract = JSON.parse(read("database/citizen-data-contract-v0.1.json"));
 const readme = read("database/README.md");
 const wrangler = read("cloudflare/wrangler.citizen-data.toml");
@@ -21,11 +24,15 @@ const inferenceWorker = read("cloudflare/iam-citizen-needs-worker.js");
 const awsTemplate = read("database/infrastructure/aws/citizen-data-staging.yaml");
 const awsReadme = read("database/infrastructure/aws/README.md");
 const identityCenterPolicy = JSON.parse(read("database/infrastructure/aws/identity-center-permission-policy.json"));
+const checkinPage = read("i  a m/vogue-self-report.html");
+const citizenDataClient = read("i  a m/citizen-data-client.js");
+const citizenDataConsent = read("i  a m/citizen-data-consent.js");
+const globe = read("i  a m/globe.js");
 
 assert.equal(CITIZEN_DATA_ARCHITECTURE.schemaVersion, "universal_mind_citizen_data_v0.1");
 assert.equal(CITIZEN_DATA_ARCHITECTURE.rewardsPermissionIncluded, false);
 assert.deepEqual(REQUIRED_CORE_PURPOSES, ["core_checkin_processing", "cross_session_memory"]);
-assert.equal(contract.status, "foundation_disabled_synthetic_only");
+assert.equal(contract.status, "staging_browser_consent_pilot");
 assert.equal(contract.core_consent.placement, "before_checkin");
 assert.equal(contract.core_consent.rewards_permission_included, false);
 assert.equal(contract.sensitive_payload_storage.plaintext_database_columns, false);
@@ -68,16 +75,35 @@ assert.match(sql, /HAPPINESS permissions are intentionally absent/);
 assert.doesNotMatch(sql, /purpose_code IN \([^)]*(?:happiness|reward)/is);
 assert.doesNotMatch(sql, /(?:checkin_text|conversation_turn|inference_result)\s+text/i);
 assert.match(sql0002, /ADD COLUMN object_version_id text/);
+assert.match(sql0003, /arrival-consent-v1/);
+assert.match(sql0003, new RegExp(crypto.createHash("sha256").update(arrivalConsentCopy).digest("hex")));
 assert.match(readme, /Existing browser `localStorage` check-ins are never silently uploaded/);
 assert.match(wrangler, /CITIZEN_DATA_ENABLED = "false"/);
+assert.match(wrangler, /\[env\.staging\.vars\][\s\S]*CITIZEN_DATA_ENABLED = "true"/);
+assert.match(wrangler, /staging\.universalmind\.tv\/vogue\/iam\/api\/citizen-data\/\*/);
 assert.match(wrangler, /CITIZEN_DATA_ZAMA_SHADOW_ENABLED = "false"/);
 assert.match(wrangler, /CITIZEN_DATA_HEALTHOMICS_WRITES_ENABLED = "false"/);
 assert.match(inferenceWorker, /store: false/);
+assert.match(checkinPage, /data-arrival-consent/);
+assert.match(checkinPage, /HAPPINESS rewards are separate/);
+assert.match(checkinPage, /data-iam-form[^>]*aria-disabled="true"[^>]*inert/);
+assert.match(checkinPage, /citizen-data-client\.js/);
+assert.match(checkinPage, /citizen-data-consent\.js/);
+assert.match(citizenDataClient, /staging\.universalmind\.tv/);
+assert.match(citizenDataClient, /credentials: "same-origin"/);
+assert.match(citizenDataClient, /window\.crypto\.randomUUID\(\)/);
+assert.match(citizenDataConsent, /Nothing has been collected/);
+assert.match(globe, /await citizenDataClient\.recordCheckin\(phrase\)/);
+assert.match(globe, /citizenDataClient\?\.enabled\s*\? \[window\.sessionStorage\]/);
 
 assert.match(awsTemplate, /AuroraPostgresEngineVersion:\n\s+Type: String/);
 assert.doesNotMatch(awsTemplate, /AuroraPostgresEngineVersion:\n(?: {4}.*\n)* {4}Default:/);
 assert.match(awsTemplate, /DeletionPolicy: Retain/);
 assert.match(awsTemplate, /UpdateReplacePolicy: Retain/);
+assert.match(awsTemplate, /Type: AWS::Lambda::Function/);
+assert.match(awsTemplate, /ReservedConcurrentExecutions: 2/);
+assert.match(awsTemplate, /CITIZEN_DATA_EDGE_SHARED_SECRET/);
+assert.match(awsTemplate, /InvokedViaFunctionUrl: true/);
 assert.match(awsTemplate, /EnableKeyRotation: true/);
 assert.match(awsTemplate, /DeletionProtection: true/);
 assert.match(awsTemplate, /EnableHttpEndpoint: true/);
@@ -86,8 +112,8 @@ assert.match(awsTemplate, /Default: 0\n\s+MinValue: 0/);
 assert.match(awsTemplate, /SecondsUntilAutoPause: !Ref DatabaseIdleSecondsBeforePause/);
 assert.doesNotMatch(awsTemplate, /SecurityGroupIngress:/);
 assert.doesNotMatch(awsTemplate, /(?:AccessKeyId|SecretAccessKey):/i);
-assert.match(awsReadme, /current synthetic-only staging\s+deployment is recorded/);
-assert.match(awsReadme, /future changes remain\s+billable and require review/);
+assert.match(awsReadme, /Staging browser service path/);
+assert.match(awsReadme, /future changes remain\s+billable and\s+require review/);
 assert.doesNotMatch(awsReadme, /\b\d{12}\b/);
 assert.doesNotMatch(awsReadme, /https:\/\/[^\s`]*awsapps\.com\/start/i);
 const identityCenterActions = identityCenterPolicy.Statement.flatMap((statement) => (
@@ -98,7 +124,10 @@ assert.ok(identityCenterActions.includes("rds-data:ExecuteStatement"));
 assert.ok(identityCenterActions.includes("secretsmanager:GetSecretValue"));
 assert.ok(identityCenterActions.includes("s3:DeleteObjectVersion"));
 assert.ok(identityCenterActions.includes("s3:GetObjectVersion"));
+assert.ok(identityCenterActions.includes("lambda:CreateFunction"));
+assert.ok(identityCenterActions.includes("iam:PassRole"));
 assert.match(JSON.stringify(identityCenterPolicy), /universal-mind-citizen-dat-\*\/synthetic-service-validation/);
+assert.match(JSON.stringify(identityCenterPolicy), /universal-mind-citizen-dat-\*\/service-artifacts/);
 assert.doesNotMatch(JSON.stringify(identityCenterPolicy), /universal-mind-citizen-da-\*/);
 assert.equal(identityCenterActions.includes("iam:CreateAccessKey"), false);
 assert.equal(identityCenterActions.includes("iam:CreateUser"), false);
@@ -365,5 +394,45 @@ assert.equal(workerTurnResponse.status, 202);
 assert.equal(workerRepository.state.conversationThreads.length, 1);
 assert.equal(workerRepository.state.conversationTurns.length, 1);
 assert.equal(JSON.stringify(workerRepository.state).includes("Synthetic Worker conversation route proof."), false);
+
+const crossOriginResponse = await worker.fetch(new Request("https://staging.universalmind.tv/v1/sessions", {
+  method: "POST",
+  headers: {
+    ...workerMutationHeaders,
+    "Origin": "https://universalmind.tv",
+  },
+  body: JSON.stringify({ locale: "en-AU" }),
+}), { CITIZEN_DATA_ENABLED: "true" });
+assert.equal(crossOriginResponse.status, 400);
+assert.equal((await crossOriginResponse.json()).error, "citizen_data_origin_forbidden");
+
+let signedBackendRequest = null;
+const remoteService = createRemoteCitizenDataService({
+  CITIZEN_DATA_BACKEND_URL: "https://synthetic-backend.invalid/",
+  CITIZEN_DATA_BACKEND_SHARED_SECRET: "synthetic-shared-secret-for-unit-test",
+}, async (url, options) => {
+  signedBackendRequest = { url, options };
+  return Response.json({ granted: false, reason: "no_credential" });
+});
+assert.deepEqual(await remoteService.consentStatus(""), { granted: false, reason: "no_credential" });
+assert.equal(signedBackendRequest.url, "https://synthetic-backend.invalid/");
+assert.match(signedBackendRequest.options.headers["X-Universal-Mind-Edge-Timestamp"], /^\d{13}$/);
+assert.match(signedBackendRequest.options.headers["X-Universal-Mind-Edge-Nonce"], /^[0-9a-f-]{36}$/);
+assert.match(signedBackendRequest.options.headers["X-Universal-Mind-Edge-Signature"], /^[0-9a-f]{64}$/);
+assert.equal(signedBackendRequest.options.body.includes("synthetic-shared-secret"), false);
+
+const rateLimitedWorker = createCitizenDataWorker({
+  serviceFactory: async () => {
+    throw new Error("service_should_not_be_created_after_rate_limit");
+  },
+});
+const rateLimitedResponse = await rateLimitedWorker.fetch(
+  new Request("https://staging.universalmind.tv/v1/consent/status"),
+  {
+    CITIZEN_DATA_ENABLED: "true",
+    CITIZEN_DATA_RATE_LIMITER: { limit: async () => ({ success: false }) },
+  },
+);
+assert.equal(rateLimitedResponse.status, 429);
 
 console.log("Citizen data foundation checks passed.");

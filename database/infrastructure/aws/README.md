@@ -1,8 +1,9 @@
 # AWS staging foundation
 
-These files define the AWS infrastructure. The current synthetic-only staging
-deployment is recorded in `DEPLOYMENT-2026-07-29.md`; future changes remain
-billable and require review against the same cost boundary.
+These files define the AWS infrastructure. The foundation deployment is recorded
+in `DEPLOYMENT-2026-07-29.md` and the first synthetic application-flow proof in
+`DEPLOYMENT-2026-07-30-SERVICE-FLOW.md`; future changes remain billable and
+require review against the same cost boundary.
 
 Read `TEARDOWN.md` before executing a change set. The database, buckets and KMS
 key are retained by design, so deleting the CloudFormation stack alone is not a
@@ -42,7 +43,10 @@ AWS CloudShell is an acceptable bootstrap alternative because it inherits the si
 - one `db.serverless` writer;
 - automatic pause to 0 ACUs after 5 idle minutes, using a compatible engine version;
 - an AWS-managed database password in Secrets Manager;
-- RDS Data API access, avoiding a public database endpoint or a long-lived database credential outside AWS.
+- RDS Data API access, avoiding a public database endpoint or a long-lived database credential outside AWS;
+- one staging-only Lambda service with an AWS execution role, two-execution concurrency cap and 14-day structured-log retention;
+- one generated edge-to-Lambda HMAC secret in Secrets Manager;
+- one Lambda function URL that rejects every request without a fresh valid edge signature.
 
 Every stateful resource uses `DeletionPolicy: Retain`. The database has deletion protection enabled. No public ingress rule is created.
 
@@ -68,6 +72,32 @@ Secrets Manager and data transfer. The customer-managed KMS key starts at USD
 $1 per month, plus chargeable requests. Prices must be refreshed immediately
 before any change set is executed. Automatic pause introduces a resume delay, so
 the performance benchmark must record cold and warm timings separately.
+
+The Lambda service uses 256 MB memory and reserves at most two concurrent
+executions. Lambda request and compute charges are usage-based and expected to be
+negligible during staging. The Cloudflare edge rate limiter additionally caps
+browser requests before they reach AWS. These controls reduce accidental spend;
+they do not turn the USD $30 budget alert into a hard billing stop.
+
+## Staging browser service path
+
+The browser calls a same-origin route under
+`/vogue/iam/api/citizen-data/v1/`. A staging-only Cloudflare Worker handles the
+secure pseudonymous cookie, checks the page origin and rate-limits requests. It
+then signs a short-lived HMAC request to Lambda. The browser never receives the
+Lambda URL, HMAC secret, AWS credentials, database credential, citizen UUID or
+encryption key.
+
+Lambda uses its AWS execution role to call the RDS Data API, KMS and the private
+versioned object bucket. No long-lived AWS access key is created. The Lambda URL
+is publicly routable at the network layer, but unsigned or stale requests fail
+before any database or storage operation. Reserved concurrency provides a small
+prototype blast-radius cap.
+
+`build-citizen-data-lambda.mjs` creates the minimal Lambda zip in a temporary
+directory. Upload the package with KMS encryption to the exact
+`CitizenDataServiceCodeKey`, record its S3 version identifier, and pass that
+identifier as `CitizenDataServiceCodeVersion` in the reviewed change set.
 
 ## Why Hyperdrive is not in the first AWS stack
 
@@ -102,19 +132,21 @@ default-deny row isolation, append-only consent evidence, export bookkeeping and
 erasure. It removes every uploaded synthetic object version and its temporary
 database role before returning success.
 
-`validate-live-service-flow.mjs` drives the application service boundary with a
+`validate-live-service-flow.mjs` drives the operator-side application service boundary with a
 fictional consent receipt, pseudonymous browser credential, encrypted check-in,
 two encrypted Universal One turns, encrypted export, withdrawal and completed
 erasure. Its object access is restricted to the
 `synthetic-service-validation/` prefix, it records exact S3 version identifiers,
 and it removes each version before returning success. It is an operator-side
 staging validator, not the browser runtime and not an authorization to collect
-real visitor data.
+real visitor data. The browser runtime has a separate consent-first proof path
+and must be tested with fictional wording during release verification.
 
 ## Deliberately absent
 
 - production resources;
-- real citizen data;
+- production citizen-data collection;
+- collection before published arrival consent;
 - Pinecone or Vertex indexes;
 - Storj dual writes;
 - Fhenix deployment or reward issuance;

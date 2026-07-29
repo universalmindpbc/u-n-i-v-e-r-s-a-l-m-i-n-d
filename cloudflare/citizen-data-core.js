@@ -72,7 +72,7 @@ function requireOrdinal(value) {
 
 export const CITIZEN_DATA_ARCHITECTURE = Object.freeze({
   schemaVersion: "universal_mind_citizen_data_v0.1",
-  status: "foundation_disabled_synthetic_only",
+  status: "staging_browser_consent_pilot",
   requiredCorePurposes: REQUIRED_CORE_PURPOSES,
   rewardsPermissionIncluded: false,
   rawPayloadDatabaseColumns: false,

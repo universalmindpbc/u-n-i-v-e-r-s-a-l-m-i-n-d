@@ -1,6 +1,6 @@
 {
   "schema_version": "universal_mind_citizen_data_v0.1",
-  "status": "foundation_disabled_synthetic_only",
+  "status": "staging_browser_consent_pilot",
   "canonical_store": "aurora_postgresql",
   "identity": {
     "mode": "pseudonymous_cookie_first",

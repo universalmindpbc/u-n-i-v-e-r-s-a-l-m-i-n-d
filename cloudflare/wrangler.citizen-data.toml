@@ -28,3 +28,28 @@ namespace_id = "1003"
   [ratelimits.simple]
   limit = 30
   period = 60
+
+[env.staging]
+name = "universal-mind-citizen-data-staging"
+workers_dev = false
+preview_urls = false
+
+[env.staging.vars]
+CITIZEN_DATA_ENABLED = "true"
+CITIZEN_DATA_REGION = "ap-southeast-2"
+CITIZEN_DATA_STORAGE_PROVIDER = "aws_s3"
+CITIZEN_DATA_RAG_PROVIDER = "disabled"
+CITIZEN_DATA_ZAMA_SHADOW_ENABLED = "false"
+CITIZEN_DATA_HEALTHOMICS_WRITES_ENABLED = "false"
+
+[[env.staging.routes]]
+pattern = "staging.universalmind.tv/vogue/iam/api/citizen-data/*"
+zone_name = "universalmind.tv"
+
+[[env.staging.ratelimits]]
+name = "CITIZEN_DATA_RATE_LIMITER"
+namespace_id = "1003"
+
+  [env.staging.ratelimits.simple]
+  limit = 30
+  period = 60

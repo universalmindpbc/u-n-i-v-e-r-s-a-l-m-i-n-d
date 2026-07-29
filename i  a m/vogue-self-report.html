@@ -22,7 +22,7 @@
     <link rel="preconnect" href="https://streams.radio.co" crossorigin>
     <link rel="preconnect" href="https://s4.radio.co" crossorigin>
     <link rel="preload" as="image" href="a s s e t s/Vogue - Front Cover - Optimised.jpg?v=cover-2" fetchpriority="high">
-    <link rel="stylesheet" href="vogue-self-report.css?v=vogue-video-visible-9dc9dba73681">
+    <link rel="stylesheet" href="vogue-self-report.css?v=vogue-consent-efc77f81d95f">
   </head>
   <body data-iam-next-page="index.html?v=direct-home-community-globe-1" data-iam-skip-transfer="true">
     <main class="vogue-report-page" data-iam-next-page="index.html?v=direct-home-community-globe-1" data-iam-skip-transfer="true" aria-label="Vogue I Am self report">
@@ -44,13 +44,52 @@
 
       <div class="vogue-page-shade" aria-hidden="true"></div>
 
+      <section
+        class="arrival-consent"
+        data-arrival-consent
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="arrival-consent-title"
+        aria-describedby="arrival-consent-intro arrival-consent-privacy"
+        aria-hidden="false"
+      >
+        <div class="arrival-consent-panel" data-arrival-consent-panel tabindex="-1">
+          <p class="arrival-consent-eyebrow">UNIVERSAL MIND</p>
+          <h1 id="arrival-consent-title">Before we begin</h1>
+          <p id="arrival-consent-intro" class="arrival-consent-lead">
+            Universal Mind would like your permission to remember your check-ins and Universal One conversations across visits, so we can offer you more helpful and beautiful experiences.
+          </p>
+          <p id="arrival-consent-privacy">
+            Privacy comes first. Your information is encrypted, you can ask to export or erase it, and you remain the owner of your data.
+          </p>
+          <p>
+            Our long-term intention is for Universal Citizens to share in the value created by collective learning. HAPPINESS rewards are separate; we will only ask about them if you choose Rewards inside the experience.
+          </p>
+          <details class="arrival-consent-details">
+            <summary>What this permission covers</summary>
+            <ul>
+              <li>A pseudonymous Universal Citizen identity—no name or email at arrival.</li>
+              <li>Your check-ins and Universal One conversations across visits.</li>
+              <li>Encrypted payloads plus consent, session and data-use records.</li>
+              <li>Your right to withdraw permission and ask for export or erasure.</li>
+            </ul>
+          </details>
+          <div class="arrival-consent-actions">
+            <button type="button" data-consent-accept disabled>I agree — continue</button>
+            <a href="index.html?arrival=without-checkin" data-consent-continue-without>Continue without checking in</a>
+          </div>
+          <p class="arrival-consent-status" data-consent-status role="status" aria-live="polite">Checking your privacy choice…</p>
+          <a class="arrival-consent-privacy-link" href="privacy-first.html">Read our privacy approach</a>
+        </div>
+      </section>
+
       <section class="vogue-report-lockup" aria-label="Vogue I Am check-in">
         <img class="vogue-logo" src="a s s e t s/Vogue logo - large - higher res.png" alt="Vogue">
         <p class="vogue-url">VOGUE.COM/<strong>IAM</strong></p>
 
         <div class="vogue-checkin-stage">
           <img class="vogue-flora" src="a s s e t s/Universal Mind [ I o H ] Logo.PNG" alt="">
-          <form class="vogue-iam-form landing-enter landing-iam-control" data-iam-form aria-label="I am check-in" autocomplete="off">
+          <form class="vogue-iam-form landing-enter landing-iam-control" data-iam-form aria-label="I am check-in" aria-disabled="true" autocomplete="off" inert>
             <button class="iam-record-dot" type="button" data-iam-start aria-label="Begin check-in"></button>
             <label class="iam-control-text" data-iam-control>
               <span class="iam-entry-cursor" aria-hidden="true"></span>
@@ -66,17 +105,19 @@
                 maxlength="80"
                 autocomplete="off"
                 spellcheck="true"
+                disabled
               >
             </label>
           </form>
           <div class="iam-joining-loader" role="status" aria-label="Preparing your global check-in" aria-hidden="true">
             <span></span><span></span><span></span>
           </div>
+          <p class="iam-data-status" data-citizen-data-status role="status" aria-live="polite"></p>
         </div>
 
         <div class="vogue-report-copy" aria-label="Check-in invitation">
           <p class="vogue-check-line"><strong>CHECK IN.</strong> UNLOCK <strong>EXCLUSIVE CONTENT.</strong></p>
-          <p class="vogue-privacy-line">PRIVACY FIRST. YOU OWN YOUR DATA. NO INTERNET CONNECTION REQUIRED.</p>
+          <p class="vogue-privacy-line">PRIVACY FIRST. ENCRYPTED. YOU OWN YOUR DATA.</p>
         </div>
       </section>
 
@@ -163,7 +204,9 @@
     <script src="cloudflare-stream-controller.js?v=stream-controller-e6ed1b827651"></script>
     <script src="local-context.js?v=local-context-3"></script>
     <script src="adaptive-environment.js?v=adaptive-env-345dc0e22ae1"></script>
-    <script src="globe.js?v=globe-ba871211513f"></script>
+    <script src="citizen-data-client.js?v=citizen-data-client-b525fa4d3027"></script>
+    <script src="citizen-data-consent.js?v=citizen-data-consent-8bf943055d9a"></script>
+    <script src="globe.js?v=globe-900ab3eedc78"></script>
     <script src="vogue-self-report.js?v=vogue-video-resume-6733d5763202"></script>
   </body>
 </html>

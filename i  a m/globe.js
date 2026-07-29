@@ -10,6 +10,8 @@ const iamReflection = document.querySelector("[data-iam-reflection]");
 const iamReflectionFlora = document.querySelector("[data-iam-reflection-flora]");
 const iamReflectionText = document.querySelector("[data-iam-reflection-text]");
 const iamTransfer = document.querySelector("[data-iam-transfer]");
+const citizenDataStatus = document.querySelector("[data-citizen-data-status]");
+const citizenDataClient = window.IAMCitizenData;
 const globePage = document.querySelector(".globe-page");
 const isCommunityOverlay = document.documentElement.classList.contains("iam-community-overlay");
 const communityMonogramTextureUrl = "a s s e t s/universal-mind-flora-travel-monogram-leather-v1.webp";
@@ -222,13 +224,19 @@ function readStoredValue(store, key) {
   }
 }
 
+function sensitiveStorageTargets() {
+  return citizenDataClient?.enabled
+    ? [window.sessionStorage]
+    : [window.sessionStorage, window.localStorage];
+}
+
 function queuePendingCheckInPipeline(phrase) {
   const record = {
     phrase: normalizeCheckInPhrase(phrase),
     queuedAt: Date.now(),
   };
   const serialized = JSON.stringify(record);
-  [window.sessionStorage, window.localStorage].forEach((store) => {
+  sensitiveStorageTargets().forEach((store) => {
     writeStoredValue(store, pendingCheckInPipelineKey, serialized);
   });
   return record;
@@ -266,7 +274,7 @@ function persistLatestCheckIn(phrase, inference = {}, status = "pending") {
     ...inference,
   };
   const serializedRecord = JSON.stringify(record);
-  const stores = [window.sessionStorage, window.localStorage];
+  const stores = sensitiveStorageTargets();
 
   stores.forEach((store) => {
     writeStoredValue(store, "iamLatestCheckinValue", phrase);
@@ -988,11 +996,37 @@ async function submitIamCheckIn() {
 
   isSubmitRunning = true;
   const phrase = `I am ${response}`;
+  iamInput.blur();
+  iamInput.readOnly = true;
+
+  if (citizenDataClient?.enabled) {
+    setIamState("joining", "Encrypting your check-in…");
+    if (citizenDataStatus) {
+      citizenDataStatus.textContent = "Saving only with your permission.";
+      citizenDataStatus.dataset.state = "pending";
+    }
+    try {
+      await citizenDataClient.recordCheckin(phrase);
+      if (citizenDataStatus) {
+        citizenDataStatus.textContent = "Encrypted and remembered.";
+        citizenDataStatus.dataset.state = "complete";
+      }
+    } catch {
+      if (citizenDataStatus) {
+        citizenDataStatus.textContent = "We could not securely save this check-in. It was not used. Please try again.";
+        citizenDataStatus.dataset.state = "error";
+      }
+      setIamState("typing");
+      iamInput.readOnly = false;
+      isSubmitRunning = false;
+      iamInput.focus({ preventScroll: true });
+      return;
+    }
+  }
+
   stopActiveAdaptiveMedia();
   clearStoredMusicTelevisionSelection();
   persistLatestCheckIn(phrase, {}, "pending");
-  iamInput.blur();
-  iamInput.readOnly = true;
   await transitionIamState("thanks", "✓ Thank you.", iamTiming.thankYouHold);
 
   const shouldSkipTransfer =
