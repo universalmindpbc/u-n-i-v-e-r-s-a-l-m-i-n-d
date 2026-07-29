@@ -326,6 +326,8 @@
   let pageViewPreviousBlend = null;
   let shopEntryActivated = false;
   let shopEntryFrameReady = false;
+  let shopEntryMediaReady = false;
+  let shopEntryMediaFallbackTimer = 0;
   let learnCueShown = false;
   let learnCueUnlocked = false;
   let walletOnboardingEngaged = false;
@@ -7036,7 +7038,8 @@
   }
 
   function completeShopEntry() {
-    if (!shopEntryActivated || !shopEntryFrameReady) return;
+    if (!shopEntryActivated || !shopEntryFrameReady || !shopEntryMediaReady) return;
+    window.clearTimeout(shopEntryMediaFallbackTimer);
     document.documentElement.dataset.shopEntry = "entered";
     shopEntryScreen?.setAttribute("aria-hidden", "true");
     window.setTimeout(() => {
@@ -7049,10 +7052,10 @@
     if (!shopShellRequested || shopEntryActivated) return;
     shopEntryActivated = true;
     document.documentElement.dataset.shopEntry = "entering";
-    if (shopEntryLabel) shopEntryLabel.textContent = "enter";
+    if (shopEntryLabel) shopEntryLabel.textContent = shopEntryMediaReady ? "explore" : "loading";
     requestShopFullscreen(pageFrame?.contentWindow);
     requestShopMusic(pageFrame?.contentWindow, { ensurePlaying: true }).catch(() => {
-      if (shopEntryLabel) shopEntryLabel.textContent = "enter";
+      if (shopEntryLabel && !shopEntryMediaReady) shopEntryLabel.textContent = "loading";
     });
     completeShopEntry();
   }
@@ -7219,8 +7222,17 @@
     event.stopPropagation();
     requestViewingFullscreen(localVideo || mountPlayer());
   });
-  reactionWallet?.addEventListener("pointerenter", () => {
+  reactionWallet?.addEventListener("pointerenter", (event) => {
     setAudioWalletInteracting(true);
+    if (
+      walletView === "closed" &&
+      !audioWalletMode &&
+      document.body.classList.contains("television-room-open") &&
+      !document.body.classList.contains("television-wallet-pointer-locked") &&
+      (!event.pointerType || event.pointerType === "mouse")
+    ) {
+      openReactionWallet();
+    }
   });
   reactionWallet?.addEventListener("pointerleave", () => {
     setAudioWalletInteracting(false);
@@ -7825,6 +7837,12 @@
       requestShopFullscreen(event.source);
       return;
     }
+    if (event.data?.type === "iam:shop-opening-media-ready") {
+      shopEntryMediaReady = true;
+      if (shopEntryLabel) shopEntryLabel.textContent = "explore";
+      completeShopEntry();
+      return;
+    }
     if (event.data?.type === "iam:open-sex-ed-episode") {
       openSexEdEpisode(event.data.episode || "01");
       return;
@@ -7852,6 +7870,13 @@
     postShopMusicStatus();
     if (shopShellRequested) {
       shopEntryFrameReady = true;
+      pageFrame?.contentWindow?.postMessage({ type: "iam:shop-preload-opening" }, window.location.origin);
+      window.clearTimeout(shopEntryMediaFallbackTimer);
+      shopEntryMediaFallbackTimer = window.setTimeout(() => {
+        shopEntryMediaReady = true;
+        if (shopEntryLabel) shopEntryLabel.textContent = "explore";
+        completeShopEntry();
+      }, 10000);
       if (!shopEntryActivated) document.documentElement.dataset.shopEntry = "ready";
       completeShopEntry();
     }

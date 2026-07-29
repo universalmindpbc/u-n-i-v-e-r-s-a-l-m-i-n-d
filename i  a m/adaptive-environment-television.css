@@ -238,9 +238,21 @@ html[data-shop-entry] .shop-entry .shop-entry__play {
   display: block;
   width: clamp(76px, 8vw, 108px);
   height: clamp(76px, 8vw, 108px);
+  border: 0;
+  background: transparent;
+  padding: 0;
+  filter: none;
   opacity: 1;
   pointer-events: auto;
   transform: none;
+  cursor: pointer;
+}
+
+html[data-shop-entry] .shop-entry .shop-entry__play img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
 }
 
 html[data-shop-entry] .shop-entry .shop-entry__play:hover,
@@ -275,10 +287,6 @@ html[data-shop-entry] .shop-entry .shop-entry__play:focus-visible {
 html[data-shop-entry="ready"] .site-shell,
 html[data-shop-entry="entering"] .site-shell,
 html[data-shop-entry="entered"] .site-shell { visibility: visible; }
-
-html[data-shop-entry="entering"] .shop-entry span::after {
-  content: "ing";
-}
 
 html[data-shop-entry="entered"] .shop-entry {
   opacity: 0;

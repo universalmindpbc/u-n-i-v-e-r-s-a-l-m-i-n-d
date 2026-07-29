@@ -63,6 +63,8 @@
   const sexEdViewport = document.querySelector("[data-shop-sex-ed-viewport]");
   const sexEdPrevious = document.querySelector("[data-shop-sex-ed-previous]");
   const sexEdNext = document.querySelector("[data-shop-sex-ed-next]");
+  const openingEditorialVideo = document.querySelector(".shop-looks [data-shop-silent-video]");
+  const openingEditorialImages = Array.from(document.querySelectorAll(".shop-looks img")).slice(0, 2);
   const themeKey = "iamShopThemeV1";
   let activeCategory = "all";
   let activeCatalogueBrand = "all";
@@ -82,6 +84,7 @@
   let liveBandLastSeekAt = 0;
   let liveBandSeekCount = 0;
   let liveBandSeekInFlight = null;
+  let openingPreloadPromise = null;
 
   const liveRunways = Object.freeze({
     "wolford-sergio-rossi-capsule": {
@@ -134,6 +137,55 @@
     document.addEventListener("visibilitychange", () => {
       if (document.hidden) silentEditorialVideos.forEach((video) => video.pause());
     });
+  }
+
+  function openingAssetReady(element, readyEvent, timeout = 8000) {
+    if (!element) return Promise.resolve();
+    if (element instanceof HTMLImageElement && element.complete && element.naturalWidth > 0) return Promise.resolve();
+    if (element instanceof HTMLVideoElement && element.readyState >= HTMLMediaElement.HAVE_CURRENT_DATA) return Promise.resolve();
+
+    return new Promise((resolve) => {
+      let settled = false;
+      const finish = () => {
+        if (settled) return;
+        settled = true;
+        window.clearTimeout(timer);
+        element.removeEventListener(readyEvent, finish);
+        element.removeEventListener("error", finish);
+        resolve();
+      };
+      const timer = window.setTimeout(finish, timeout);
+      element.addEventListener(readyEvent, finish, { once: true });
+      element.addEventListener("error", finish, { once: true });
+    });
+  }
+
+  function preloadOpeningAssets() {
+    if (openingPreloadPromise) return openingPreloadPromise;
+    document.body.dataset.shopOpeningPreload = "loading";
+
+    if (openingEditorialVideo) {
+      openingEditorialVideo.preload = "auto";
+      openingEditorialVideo.muted = true;
+      openingEditorialVideo.defaultMuted = true;
+      if (openingEditorialVideo.readyState < HTMLMediaElement.HAVE_CURRENT_DATA) openingEditorialVideo.load();
+    }
+
+    openingEditorialImages.forEach((image) => {
+      image.loading = "eager";
+      image.fetchPriority = "high";
+    });
+
+    openingPreloadPromise = Promise.all([
+      openingAssetReady(liveBand, "loadeddata"),
+      openingAssetReady(openingEditorialVideo, "loadeddata"),
+      ...openingEditorialImages.map((image) => openingAssetReady(image, "load")),
+    ]).then(() => {
+      document.body.dataset.shopOpeningPreload = "ready";
+      window.parent.postMessage({ type: "iam:shop-opening-media-ready" }, window.location.origin);
+    });
+
+    return openingPreloadPromise;
   }
 
   function seekLiveBand(blockOffsetSeconds, reason = "entry_seek", state = null) {
@@ -894,6 +946,7 @@
     if (event.origin !== window.location.origin) return;
     if (event.data?.type === "iam:shop-music-status") updateMusicStatus(event.data);
     if (event.data?.type === "iam:shop-fullscreen-status") updateFullscreenStatus(Boolean(event.data.active));
+    if (event.data?.type === "iam:shop-preload-opening") preloadOpeningAssets();
   });
 
   if (inMusicTelevisionFrame) {
@@ -917,6 +970,7 @@
   renderRoute();
   loadCatalogue();
   startLiveBand();
+  preloadOpeningAssets();
 
   window.addEventListener("pagehide", () => {
     if (liveBandSyncTimer) window.clearInterval(liveBandSyncTimer);

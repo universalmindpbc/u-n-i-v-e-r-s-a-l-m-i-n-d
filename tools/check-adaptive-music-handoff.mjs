@@ -277,6 +277,7 @@ requireCondition(controller.includes('nowPlayingInteractiveAt = Date.now() + 420
 requireCondition(controller.includes('nowPlaying.setAttribute("aria-hidden", String(!active));'), 'the hidden Now Playing rail remains in the accessibility tree');
 requireCondition(controller.includes('nowPlayingResizeObserver = new ResizeObserver(updateNowPlayingOverflow);'), 'the Now Playing rail measures overflow before the wallet settles');
 requireCondition(controller.includes('reactionWalletTrigger?.addEventListener("pointerdown", beginReactionWalletOpenGesture, true);'), 'the taller primary wallet can activate a category during its opening pointer gesture');
+requireCondition(controller.includes('reactionWallet?.addEventListener("pointerenter", (event) => {') && controller.includes('openReactionWallet();'), 'the wallet can still reveal an empty casing before its hierarchy is populated');
 requireCondition(controller.includes('nowPlayingInteractiveAt = Date.now() + 1400;'), 'the primary wallet opening gesture is not guarded for its full expansion transition');
 requireCondition(controller.includes('requestedVideoBlend < 99.5'), 'the Now Playing rail no longer reports the visible Fashion layer');
 requireCondition(controller.includes('function setNowPlayingTickerView(nextView)'), 'the music and Fashion labels no longer share a rotating ticker slot');
