@@ -88,6 +88,12 @@ Hyperdrive remains a possible later performance layer, but direct access would r
 9. Apply the SQL migration using the RDS Data API.
 10. Run synthetic consent, RLS, encryption, export and erasure checks.
 
+`run-data-api-migration.mjs` splits PostgreSQL safely around quoted and
+dollar-quoted function bodies, executes one statement per Data API request in a
+single transaction, and rolls the transaction back if any statement fails. Pass
+the cluster ARN, managed-secret ARN and database name from CloudFormation
+outputs at runtime; never copy those identifiers or the secret value into Git.
+
 ## Deliberately absent
 
 - production resources;
