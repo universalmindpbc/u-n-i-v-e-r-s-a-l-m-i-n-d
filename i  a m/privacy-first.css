@@ -693,6 +693,13 @@ body.nav-open .privacy-masthead {
   font-weight: 540;
 }
 
+.privacy-storj-mark {
+  width: 1.55em;
+  height: 0.9em;
+  flex: 0 0 auto;
+  object-fit: contain;
+}
+
 .privacy-technology--aws {
   font-family: Georgia, serif;
   font-weight: 600;
