@@ -11,7 +11,11 @@ const outputFlag = process.argv.indexOf("--output");
 const output = outputFlag >= 0 ? path.resolve(process.argv[outputFlag + 1]) : path.join(os.tmpdir(), "happiness-pass-preview");
 const archiveFlag = process.argv.indexOf("--archive");
 const archive = archiveFlag >= 0 ? path.resolve(process.argv[archiveFlag + 1]) : null;
-const requiredAssets = ["icon.png", "icon@2x.png", "icon@3x.png"];
+const requiredAssets = [
+  "icon.png", "icon@2x.png", "icon@3x.png",
+  "logo.png", "logo@2x.png", "logo@3x.png",
+  "strip.png", "strip@2x.png", "strip@3x.png",
+];
 const assets = path.join(root, "apple-wallet", "assets");
 
 const values = {

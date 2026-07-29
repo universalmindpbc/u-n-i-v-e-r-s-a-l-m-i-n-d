@@ -55,6 +55,7 @@ const htaccess = read(".htaccess");
 const redirects = read("_redirects");
 const demoWallet = JSON.parse(read("i  a m/happiness-wallet-demo-v1.json"));
 const passTemplate = read("apple-wallet/happiness-pass.template.json");
+const passBuilder = read("tools/build-happiness-apple-pass.mjs");
 const home = read("i  a m/index.html");
 const televisionPage = read("i  a m/adaptive-environment-television.html");
 const televisionCss = read("i  a m/adaptive-environment-television.css");
@@ -357,6 +358,12 @@ assert.match(wallet, /href="\/vogue\/iam\/apple-wallet\/pass\.php"/);
 assert.match(wallet, /data-happiness-demo-award/);
 assert.match(script, /pass\.php\?balance=25/);
 assert.match(passTemplate, /"label": "UNIVERSAL CITIZEN"/);
+assert.match(passTemplate, /"key": "brand", "label": "", "value": "HAPPINESS"/);
+assert.match(passTemplate, /\{\{BALANCE\}\} \[ I o H \]/);
+for (const asset of ["logo.png", "logo@2x.png", "logo@3x.png", "strip.png", "strip@2x.png", "strip@3x.png"]) {
+  assert.match(passBuilder, new RegExp(asset.replace(".", "\\.")));
+  assert.ok(fs.existsSync(path.join(root, "apple-wallet", "assets", asset)));
+}
 assert.match(wallet, /class="happiness-brand"[^>]*>[\s\S]*class="brand-mark"/);
 const walletHeader = wallet.match(/<header class="happiness-header">[\s\S]*?<\/header>/)?.[0] || "";
 assert.doesNotMatch(walletHeader, /brand-lockup|universalmind|internet of happiness/i);

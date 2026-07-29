@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="375" height="375" viewBox="0 0 375 375">
+  <defs>
+    <linearGradient id="card" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#5d6861"/>
+      <stop offset="0.48" stop-color="#263a31"/>
+      <stop offset="1" stop-color="#615d59"/>
+    </linearGradient>
+    <linearGradient id="ethTop" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#ffe94e"/>
+      <stop offset="1" stop-color="#ff9590"/>
+    </linearGradient>
+    <linearGradient id="ethBottom" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#51ced8"/>
+      <stop offset="1" stop-color="#5799ed"/>
+    </linearGradient>
+  </defs>
+  <g transform="translate(0 115.5)">
+  <rect width="375" height="144" fill="url(#card)"/>
+
+  <!-- The approved Universal Mind bloom, enlarged and softened behind the fields. -->
+  <g opacity="0.16">
+    <circle cx="290" cy="57" r="53" fill="#c4aa45"/>
+    <circle cx="337" cy="78" r="53" fill="#d9d09a"/>
+    <circle cx="337" cy="128" r="53" fill="#e9e2cf"/>
+    <circle cx="290" cy="143" r="53" fill="#d8cb58"/>
+    <circle cx="244" cy="128" r="53" fill="#b98758"/>
+    <circle cx="244" cy="78" r="53" fill="#9a8bab"/>
+  </g>
+
+  <!-- Rainbow Ethereum brand mark, deliberately small and secondary. -->
+  <g transform="translate(331 91) scale(.76)" fill="none" stroke-linejoin="miter">
+    <path d="M16 0 1 26 16 35Z" stroke="#ffe94e" stroke-width="2.3"/>
+    <path d="M16 0 31 26 16 35Z" stroke="#ff9590" stroke-width="2.3"/>
+    <path d="M1 26 16 18 31 26" stroke="url(#ethTop)" stroke-width="2.3"/>
+    <path d="M1 31 16 48 16 38Z" stroke="#51ced8" stroke-width="2.3"/>
+    <path d="M31 31 16 48 16 38Z" stroke="#5799ed" stroke-width="2.3"/>
+  </g>
+  </g>
+</svg>
