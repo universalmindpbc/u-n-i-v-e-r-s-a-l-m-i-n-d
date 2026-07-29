@@ -13,6 +13,27 @@
       "Resource": "*"
     },
     {
+      "Sid": "InspectRdsPrototypeCatalog",
+      "Effect": "Allow",
+      "Action": [
+        "rds:DescribeDBEngineVersions",
+        "rds:DescribeOrderableDBInstanceOptions"
+      ],
+      "Resource": "*"
+    },
+    {
+      "Sid": "InspectPrototypeBudgets",
+      "Effect": "Allow",
+      "Action": "budgets:ViewBudget",
+      "Resource": "arn:aws:budgets::*:budget/*"
+    },
+    {
+      "Sid": "ManagePrototypeBudget",
+      "Effect": "Allow",
+      "Action": "budgets:ModifyBudget",
+      "Resource": "arn:aws:budgets::*:budget/universal-mind-prototype-monthly"
+    },
+    {
       "Sid": "ManageCitizenDataCloudFormation",
       "Effect": "Allow",
       "Action": [

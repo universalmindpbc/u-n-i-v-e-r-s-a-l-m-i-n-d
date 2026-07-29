@@ -24,15 +24,15 @@ Parameters:
     Type: Number
     Default: 0
     MinValue: 0
-    MaxValue: 1
+    MaxValue: 0.5
   DatabaseMaxCapacity:
     Type: Number
-    Default: 1
+    Default: 0.5
     MinValue: 0.5
-    MaxValue: 4
+    MaxValue: 0.5
   DatabaseIdleSecondsBeforePause:
     Type: Number
-    Default: 900
+    Default: 300
     MinValue: 300
     MaxValue: 86400
   BackupRetentionDays:

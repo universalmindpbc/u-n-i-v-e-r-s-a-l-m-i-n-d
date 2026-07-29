@@ -34,7 +34,7 @@ AWS CloudShell is an acceptable bootstrap alternative because it inherits the si
 - one isolated VPC with two non-public subnets;
 - one private Aurora PostgreSQL Serverless v2 cluster;
 - one `db.serverless` writer;
-- automatic pause to 0 ACUs after 15 idle minutes, using a compatible engine version;
+- automatic pause to 0 ACUs after 5 idle minutes, using a compatible engine version;
 - an AWS-managed database password in Secrets Manager;
 - RDS Data API access, avoiding a public database endpoint or a long-lived database credential outside AWS.
 
@@ -43,9 +43,16 @@ Every stateful resource uses `DeletionPolicy: Retain`. The database has deletion
 ## Cost boundary
 
 The AWS Price List API returned **USD $0.20 per ACU-hour** for Aurora PostgreSQL
-Serverless v2 in Sydney on 2026-07-29. With the proposed 0-to-1 ACU range, the
-instance-capacity charge is zero while fully paused. If continuously awake, 0.5
-ACU is about USD $73 per 730-hour month and 1 ACU is about USD $146 per month.
+Serverless v2 in Sydney on 2026-07-29. The prototype is constrained to a
+0-to-0.5 ACU range and pauses after five idle minutes. Instance-capacity cost is
+zero while fully paused and about USD $0.10 per active hour. The continuous-awake
+ceiling is about USD $73 per 730-hour month, but that is not the intended mode.
+
+The separately configured monthly AWS cost budget is USD $30, with actual-cost
+email alerts at USD $10, $20, $25 and $30. AWS Budgets is an alerting boundary,
+not a real-time hard stop, because billing data can be delayed. The database
+change set must remain unexecuted until the payment method is current and the
+founder explicitly approves execution.
 
 Those figures exclude Aurora storage and I/O, backup storage, S3, CloudWatch,
 Secrets Manager and data transfer. The customer-managed KMS key starts at USD

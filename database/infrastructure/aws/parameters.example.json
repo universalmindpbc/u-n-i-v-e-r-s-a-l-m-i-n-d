@@ -13,11 +13,11 @@
   },
   {
     "ParameterKey": "DatabaseMaxCapacity",
-    "ParameterValue": "1"
+    "ParameterValue": "0.5"
   },
   {
     "ParameterKey": "DatabaseIdleSecondsBeforePause",
-    "ParameterValue": "900"
+    "ParameterValue": "300"
   },
   {
     "ParameterKey": "BackupRetentionDays",
