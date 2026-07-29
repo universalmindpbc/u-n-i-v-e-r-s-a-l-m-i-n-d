@@ -94,6 +94,12 @@ single transaction, and rolls the transaction back if any statement fails. Pass
 the cluster ARN, managed-secret ARN and database name from CloudFormation
 outputs at runtime; never copy those identifiers or the secret value into Git.
 
+`validate-deployed-foundation.mjs` uses fictional data only. It exercises
+KMS-backed envelope encryption, versioned S3 storage, consent lineage,
+default-deny row isolation, append-only consent evidence, export bookkeeping and
+erasure. It removes every uploaded synthetic object version and its temporary
+database role before returning success.
+
 ## Deliberately absent
 
 - production resources;
