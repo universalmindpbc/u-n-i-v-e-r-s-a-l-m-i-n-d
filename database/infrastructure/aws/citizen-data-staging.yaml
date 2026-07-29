@@ -447,7 +447,9 @@ Resources:
                 Effect: Allow
                 Action:
                   - dynamodb:GetItem
+                  - dynamodb:PutItem
                   - dynamodb:TransactWriteItems
+                  - dynamodb:UpdateItem
                 Resource: !GetAtt CitizenDataConsentLedger.Arn
               - Sid: ReadConsentProjectionStream
                 Effect: Allow
