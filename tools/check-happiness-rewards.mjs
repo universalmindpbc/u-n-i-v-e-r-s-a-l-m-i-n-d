@@ -352,7 +352,7 @@ assert.match(style, /grid-template-columns:\s*repeat\(12, 1fr\)/);
 assert.match(style, /@media \(max-width: 980px\)/);
 assert.match(wallet, /happiness-wallet-qr-staging\.png/);
 assert.match(script, /happiness-wallet-qr-production\.png/);
-assert.match(wallet, /href="\/vogue\/iam\/wallet\.css\?v=happiness-wallet-9"/);
+assert.match(wallet, /href="\/vogue\/iam\/wallet\.css\?v=happiness-wallet-9-technology-submenu-half-type-1"/);
 assert.match(wallet, /src="\/vogue\/iam\/wallet\.js\?v=happiness-wallet-5"/);
 assert.match(wallet, /href="\/vogue\/iam\/apple-wallet\/pass\.php"/);
 assert.match(wallet, /data-happiness-demo-award/);

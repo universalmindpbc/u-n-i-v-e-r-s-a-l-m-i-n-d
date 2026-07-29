@@ -248,7 +248,7 @@ body.nav-open .global-nav-trigger { opacity: 0; pointer-events: none; }
 }
 
 .global-nav-submenu.is-open { max-height: 150px; margin-top: calc((var(--global-nav-row-gap) - var(--global-nav-sub-gap)) * -1); margin-bottom: calc((var(--global-nav-row-gap) - var(--global-nav-sub-gap)) * -1); opacity: 1; pointer-events: auto; transform: translateY(0); }
-.global-nav-submenu a { font-size: clamp(15px, 1.12vw, 22px); font-weight: 700; letter-spacing: .38em; }
+.global-nav-submenu a { font-size: clamp(7.5px, .56vw, 11px); font-weight: 700; letter-spacing: .38em; }
 
 .global-nav-citation { position: absolute; left: 50%; bottom: clamp(26px, 3.65vh, 44px); width: min(940px, calc(100vw - 48px)); margin: 0; color: rgba(255,255,255,.88); font-size: clamp(13px, .9vw, 17px); font-weight: 300; line-height: 1.35; text-align: center; transform: translateX(-50%); pointer-events: auto; }
 .global-nav-citation a { color: inherit; text-decoration: underline; text-underline-offset: 2px; }
@@ -574,7 +574,7 @@ body.nav-open .global-nav-trigger { opacity: 0; pointer-events: none; }
   .global-nav-menu { --global-nav-row-gap: 24px; --global-nav-sub-gap: 16px; left: clamp(42px, 12vw, 92px); top: 112px; max-height: calc(100dvh - 210px); padding-bottom: 12px; }
   .global-nav-item { font-size: clamp(24px, 7vw, 34px); letter-spacing: .26em; line-height: 1.05; }
   .global-nav-submenu { margin-left: clamp(34px, 9vw, 58px); }
-  .global-nav-submenu a { max-width: calc(100vw - 96px); font-size: clamp(13px, 4vw, 18px); letter-spacing: .2em; line-height: 1.35; white-space: normal; }
+  .global-nav-submenu a { max-width: calc(100vw - 96px); font-size: clamp(6.5px, 2vw, 9px); letter-spacing: .2em; line-height: 1.35; white-space: normal; }
   .global-nav-citation { bottom: 20px; font-size: 11px; line-height: 1.4; }
 }
 
@@ -598,7 +598,7 @@ body.nav-open .global-nav-trigger { opacity: 0; pointer-events: none; }
   }
   .global-nav-item { font-size: clamp(24px, 7vw, 34px); letter-spacing: 0.26em; line-height: 1.05; }
   .global-nav-submenu { gap: var(--global-nav-sub-gap); margin-left: clamp(34px, 9vw, 58px); }
-  .global-nav-submenu a { max-width: calc(100vw - 96px); font-size: clamp(13px, 4vw, 18px); letter-spacing: 0.2em; line-height: 1.35; white-space: normal; }
+  .global-nav-submenu a { max-width: calc(100vw - 96px); font-size: clamp(6.5px, 2vw, 9px); letter-spacing: 0.2em; line-height: 1.35; white-space: normal; }
   .global-nav-citation { bottom: 24px; font-size: 11px; line-height: 1.4; }
 }
 

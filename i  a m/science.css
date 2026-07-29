@@ -1049,7 +1049,7 @@ a {
 }
 
 .global-nav-submenu a {
-  font-size: clamp(15px, 1.12vw, 22px);
+  font-size: clamp(7.5px, 0.56vw, 11px);
   font-weight: 700;
   letter-spacing: 0.34em;
 }
@@ -1270,7 +1270,7 @@ body.nav-open {
 
   .global-nav-submenu a {
     max-width: calc(100vw - 88px);
-    font-size: clamp(12px, 3.5vw, 16px);
+    font-size: clamp(6px, 1.75vw, 8px);
     letter-spacing: 0.16em;
     line-height: 1.35;
   }

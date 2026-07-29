@@ -1513,7 +1513,7 @@ body.iam-page-transitioning .site-shell {
 
 .global-nav-submenu a,
 .global-nav-submenu button {
-  font-size: clamp(15px, 1.12vw, 22px);
+  font-size: clamp(7.5px, 0.56vw, 11px);
   font-weight: 700;
   letter-spacing: 0.38em;
 }
@@ -3259,7 +3259,7 @@ body.induction-page {
   .global-nav-submenu a,
   .global-nav-submenu button {
     max-width: calc(100vw - 96px);
-    font-size: clamp(13px, 4vw, 18px);
+    font-size: clamp(6.5px, 2vw, 9px);
     letter-spacing: 0.2em;
     line-height: 1.35;
     white-space: normal;
