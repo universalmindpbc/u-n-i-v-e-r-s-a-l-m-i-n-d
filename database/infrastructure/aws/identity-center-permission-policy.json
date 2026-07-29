@@ -22,6 +22,12 @@
       "Resource": "*"
     },
     {
+      "Sid": "InspectCitizenDataCapacityMetric",
+      "Effect": "Allow",
+      "Action": "cloudwatch:GetMetricStatistics",
+      "Resource": "*"
+    },
+    {
       "Sid": "InspectPrototypeBudgets",
       "Effect": "Allow",
       "Action": "budgets:ViewBudget",
