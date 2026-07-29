@@ -213,7 +213,6 @@ async function main() {
         ...awsBase,
         "--bucket", args.bucket,
         "--key", fixture.objectKey,
-        "--version-id", fixture.versionId,
       ]);
       if (head.ServerSideEncryption !== "aws:kms" || head.ContentLength !== fixture.byteLength) {
         throw new Error("s3_encryption_or_length_verification_failed");
@@ -581,8 +580,16 @@ async function main() {
     for (const key of dataKeys) key.fill(0);
     fs.rmSync(temporaryDirectory, { recursive: true, force: true });
     try {
-      dataApi.execute(`DROP OWNED BY ${runtimeRole};`);
-      dataApi.execute(`DROP ROLE IF EXISTS ${runtimeRole};`);
+      dataApi.execute(`
+        DO $$
+        BEGIN
+          IF EXISTS (SELECT 1 FROM pg_roles WHERE rolname = ${literal(runtimeRole)}) THEN
+            DROP OWNED BY ${runtimeRole};
+            DROP ROLE ${runtimeRole};
+          END IF;
+        END
+        $$;
+      `);
     } catch {
       console.error("synthetic_runtime_role_cleanup_failed=true");
     }
