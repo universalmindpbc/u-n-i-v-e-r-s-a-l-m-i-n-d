@@ -95,6 +95,12 @@ const singleShellNavigationPagePaths = [
   path.join(IAM_DIR, 'about.html'),
 ];
 
+const htmlPageNames = (await fs.readdir(IAM_DIR)).filter((name) => name.endsWith('.html'));
+const privacyNavigationPages = (await Promise.all(htmlPageNames.map(async (name) => ({
+  pagePath: path.join(IAM_DIR, name),
+  source: await fs.readFile(path.join(IAM_DIR, name), 'utf8'),
+})))).filter(({ source }) => source.includes('data-nav-item="privacy-first"'));
+
 function requireCondition(condition, message) {
   if (!condition) throw new Error(`Adaptive music handoff preflight failed: ${message}`);
 }
@@ -378,7 +384,13 @@ requireCondition(citizenNeedsWorkerConfig.includes('required = [ "OPENAI_API_KEY
 requireCondition(citizenNeedsWorkerConfig.includes('name = "REALTIME_RATE_LIMITER"'), 'the Worker has no native Realtime rate-limit binding');
 requireCondition(citizenNeedsWorkerConfig.includes('type = "Text"') && citizenNeedsWorkerConfig.includes('globs = [ "**/*.txt" ]'), 'the Worker no longer bundles the Universal One portal guide');
 requireCondition(realtimeVoicePortalGuide.includes('GLOBAL NAVIGATION') && realtimeVoicePortalGuide.includes('TELEVISION ROOM'), 'the Universal One portal guide no longer covers the site and player journeys');
-requireCondition(realtimeVoicePortalGuide.includes('Privacy first and Go to market') && realtimeVoicePortalGuide.includes('currently disabled'), 'Universal One can misdescribe roadmap navigation as live');
+requireCondition(realtimeVoicePortalGuide.includes('Privacy first opens the Privacy First page') && realtimeVoicePortalGuide.includes('Go to market remains a visible roadmap label and is currently disabled'), 'Universal One can misdescribe Privacy First as inactive or Go to market as live');
+requireCondition(privacyNavigationPages.length > 0, 'no Privacy First navigation entries were found');
+for (const { pagePath, source } of privacyNavigationPages) {
+  const label = path.relative(ROOT, pagePath);
+  const privacyLink = source.match(/<a\b(?=[^>]*\bhref="privacy-first\.html")(?=[^>]*\bdata-nav-item="privacy-first")(?![^>]*\baria-disabled=)[^>]*>/);
+  requireCondition(privacyLink, `${label} does not expose Privacy First as an active privacy-first.html link`);
+}
 requireCondition(realtimeVoicePortalGuide.includes('Bloom, Mix, Circle, Care and Collect') && realtimeVoicePortalGuide.includes('10-minute Nervous System Reset research feature'), 'Universal One no longer knows the television wallet and research feature');
 requireCondition(realtimeVoicePortalGuide.includes('Partner lists are invitations or proposed ideal partners'), 'Universal One can misstate proposed partnerships as confirmed');
 requireCondition(realtimeVoiceWellbeingGuide.includes('Even though I\'m feeling [the visitor\'s own words], I choose to be kind to myself right now.'), 'Universal One no longer has the approved default Even though EFT setup statement');
