@@ -1,10 +1,11 @@
 :root {
   --privacy-black: #050505;
-  --privacy-paper: #f2efe7;
-  --privacy-signal: #e2ff3f;
-  --privacy-pink: #d64d91;
-  --privacy-line: rgba(242, 239, 231, 0.74);
-  --privacy-line-soft: rgba(242, 239, 231, 0.18);
+  --privacy-paper: #f1eee5;
+  --privacy-ink: #0a0a0a;
+  --privacy-signal: #dcff36;
+  --privacy-pink: #d75792;
+  --privacy-line: rgba(241, 238, 229, 0.72);
+  --privacy-line-soft: rgba(241, 238, 229, 0.16);
   --privacy-sans: "Helvetica Neue", Helvetica, Arial, sans-serif;
   --privacy-mono: "SFMono-Regular", "SF Mono", Menlo, Consolas, monospace;
 }
@@ -26,6 +27,12 @@ body.privacy-first-page {
   font-family: var(--privacy-sans);
   letter-spacing: 0;
   text-rendering: optimizeLegibility;
+}
+
+.privacy-first-page *,
+.privacy-first-page *::before,
+.privacy-first-page *::after {
+  box-sizing: border-box;
 }
 
 .privacy-first-page button,
@@ -65,7 +72,7 @@ body.privacy-first-page {
   align-items: center;
   justify-content: space-between;
   padding: 0 clamp(22px, 3.15vw, 64px);
-  border-bottom: 1px solid rgba(242, 239, 231, 0.12);
+  border-bottom: 1px solid rgba(241, 238, 229, 0.12);
   color: var(--privacy-paper);
   transition: opacity 280ms ease;
 }
@@ -87,13 +94,13 @@ body.privacy-first-page {
   width: clamp(60px, 4.35vw, 88px);
   height: clamp(60px, 4.35vw, 88px);
   object-fit: contain;
-  animation: privacy-mark-spin 24s linear infinite;
+  animation: privacy-clockwise-turn 28s linear infinite;
 }
 
 .privacy-brand .brand-lockup {
   display: flex;
   align-items: baseline;
-  color: rgba(242, 239, 231, 0.94);
+  color: rgba(241, 238, 229, 0.96);
   font-size: clamp(24px, 2vw, 40px);
   letter-spacing: 0.28em;
   line-height: 1;
@@ -125,11 +132,18 @@ body.privacy-first-page {
   outline-offset: 8px;
 }
 
-.privacy-masthead-label {
+.privacy-masthead-label,
+.privacy-title-index,
+.privacy-title-note,
+.privacy-editorial-index,
+.privacy-diagram-heading > p,
+.privacy-proposal {
   font-family: var(--privacy-mono);
-  font-size: clamp(9px, 0.72vw, 12px);
+  font-size: clamp(9px, 0.7vw, 12px);
   font-weight: 700;
   letter-spacing: 0.18em;
+  line-height: 1.5;
+  text-transform: uppercase;
 }
 
 body.nav-open .privacy-masthead {
@@ -137,7 +151,7 @@ body.nav-open .privacy-masthead {
   pointer-events: none;
 }
 
-@keyframes privacy-mark-spin {
+@keyframes privacy-clockwise-turn {
   to { transform: rotate(360deg); }
 }
 
@@ -145,115 +159,188 @@ body.nav-open .privacy-masthead {
   width: 100%;
 }
 
-.privacy-hero {
+.privacy-title-panel {
+  position: relative;
+  display: grid;
+  min-height: max(760px, 100svh);
+  grid-template-columns: minmax(160px, 0.3fr) minmax(0, 1fr) minmax(190px, 0.32fr);
+  align-items: center;
+  gap: clamp(24px, 5vw, 96px);
+  padding: clamp(150px, 13vw, 220px) clamp(22px, 4.5vw, 88px) clamp(70px, 8vw, 130px);
+  background:
+    linear-gradient(rgba(241, 238, 229, 0.055) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(241, 238, 229, 0.055) 1px, transparent 1px),
+    var(--privacy-black);
+  background-size: min(11vw, 168px) min(11vw, 168px);
+}
+
+.privacy-title-index {
+  align-self: start;
+  padding-top: clamp(18px, 2.2vw, 36px);
+  color: var(--privacy-signal);
+}
+
+.privacy-title-panel h1 {
+  max-width: 1220px;
+  margin: 0;
+  font-size: clamp(62px, 7.5vw, 150px);
+  font-weight: 630;
+  letter-spacing: -0.062em;
+  line-height: 0.84;
+}
+
+.privacy-title-note {
+  align-self: end;
+  margin: 0 0 clamp(14px, 2vw, 34px);
+  color: rgba(241, 238, 229, 0.56);
+  writing-mode: vertical-rl;
+  justify-self: end;
+}
+
+.privacy-editorial {
+  display: grid;
+  min-height: min(78svh, 860px);
+  grid-template-columns: minmax(180px, 0.28fr) minmax(0, 1fr);
+  align-items: start;
+  gap: clamp(36px, 8vw, 150px);
+  padding: clamp(82px, 10vw, 180px) clamp(22px, 7.5vw, 150px) clamp(90px, 11vw, 200px);
+  background: var(--privacy-paper);
+  color: var(--privacy-ink);
+}
+
+.privacy-editorial-index {
+  padding-top: 0.75em;
+  color: rgba(10, 10, 10, 0.52);
+}
+
+.privacy-editorial-copy {
+  width: min(100%, 1320px);
+}
+
+.privacy-editorial-copy p {
+  margin: 0;
+  font-size: clamp(33px, 4.15vw, 78px);
+  font-weight: 440;
+  letter-spacing: -0.047em;
+  line-height: 1.02;
+}
+
+.privacy-editorial-copy p + p {
+  margin-top: clamp(64px, 9vw, 160px);
+  padding-top: clamp(30px, 4vw, 70px);
+  border-top: 1px solid rgba(10, 10, 10, 0.3);
+}
+
+.privacy-diagram {
   position: relative;
   min-height: 100svh;
   overflow: hidden;
-  padding: clamp(150px, 13vw, 220px) clamp(22px, 4.5vw, 88px) clamp(58px, 7vw, 118px);
-  background: var(--privacy-black);
+  background: #000;
   isolation: isolate;
 }
 
-.privacy-grid {
+.privacy-stage-video,
+.privacy-stage-veil,
+.privacy-stage-grid {
   position: absolute;
-  z-index: -3;
   inset: 0;
-  opacity: 0.2;
-  background-image:
-    linear-gradient(rgba(242, 239, 231, 0.08) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(242, 239, 231, 0.08) 1px, transparent 1px);
-  background-size: min(11vw, 168px) min(11vw, 168px);
-  mask-image: linear-gradient(to bottom, transparent 0, #000 18%, #000 90%, transparent 100%);
+  width: 100%;
+  height: 100%;
 }
 
-.privacy-background-flower {
-  position: absolute;
+.privacy-stage-video {
+  z-index: -4;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 900ms ease;
+}
+
+.privacy-stage-video[data-stream-reveal="ready"],
+.privacy-stage-video[data-stream-reveal="fallback"] {
+  opacity: 1;
+}
+
+.privacy-stage-veil {
+  z-index: -3;
+  background: rgba(0, 0, 0, 0.77);
+}
+
+.privacy-stage-grid {
   z-index: -2;
-  top: 46%;
-  left: 50%;
-  width: min(112vw, 1660px);
-  max-width: none;
-  opacity: 0.035;
-  pointer-events: none;
-  transform: translate(-50%, -50%);
-  animation: privacy-background-turn 80s linear infinite;
+  opacity: 0.62;
+  background-image:
+    linear-gradient(rgba(241, 238, 229, 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(241, 238, 229, 0.08) 1px, transparent 1px);
+  background-size: min(10vw, 160px) min(10vw, 160px);
+  mask-image: linear-gradient(to bottom, transparent, #000 11%, #000 90%, transparent);
 }
 
-@keyframes privacy-background-turn {
-  to { transform: translate(-50%, -50%) rotate(360deg); }
-}
-
-.privacy-heading {
+.privacy-diagram-inner {
   position: relative;
-  z-index: 3;
-  width: min(100%, 1400px);
-  margin: 0 auto clamp(38px, 5vw, 82px);
+  z-index: 2;
+  width: 100%;
+  padding: clamp(70px, 7vw, 130px) clamp(22px, 3.8vw, 76px) clamp(64px, 7vw, 130px);
+}
+
+.privacy-diagram-heading {
+  display: grid;
+  width: min(100%, 1920px);
+  grid-template-columns: 1fr auto 1fr;
+  align-items: end;
+  gap: 24px;
+  margin: 0 auto clamp(42px, 4vw, 78px);
+  padding-bottom: clamp(22px, 2vw, 38px);
+  border-bottom: 1px solid rgba(241, 238, 229, 0.22);
+}
+
+.privacy-diagram-heading > p {
+  margin: 0;
+  color: var(--privacy-signal);
+}
+
+.privacy-diagram-heading h2 {
+  margin: 0;
+  font-size: clamp(52px, 6vw, 112px);
+  font-weight: 620;
+  letter-spacing: -0.06em;
+  line-height: 0.8;
   text-align: center;
-}
-
-.privacy-lockup {
-  display: inline-flex;
-  align-items: center;
-  gap: 14px;
-  margin-bottom: clamp(16px, 1.8vw, 28px);
-  color: rgba(242, 239, 231, 0.86);
-  font-size: clamp(17px, 1.55vw, 27px);
-  font-weight: 200;
-  letter-spacing: 0.34em;
-  line-height: 1;
-}
-
-.privacy-lockup img {
-  width: clamp(34px, 3.1vw, 54px);
-  height: clamp(34px, 3.1vw, 54px);
-  object-fit: contain;
-}
-
-.privacy-lockup strong {
-  font-weight: 700;
-}
-
-.privacy-heading h1 {
-  max-width: 1280px;
-  margin: 0 auto;
-  font-size: clamp(42px, 4.8vw, 88px);
-  font-weight: 650;
-  letter-spacing: -0.045em;
-  line-height: 0.96;
+  text-transform: uppercase;
 }
 
 .privacy-sequence-control {
-  position: absolute;
-  z-index: 8;
-  top: clamp(154px, 14vw, 226px);
-  right: clamp(22px, 4.5vw, 88px);
-  padding: 0 0 10px;
+  justify-self: end;
+  padding: 0 0 9px;
   border: 0;
-  border-bottom: 1px solid rgba(242, 239, 231, 0.5);
+  border-bottom: 1px solid rgba(241, 238, 229, 0.52);
   background: transparent;
-  color: rgba(242, 239, 231, 0.78);
+  color: rgba(241, 238, 229, 0.8);
   cursor: pointer;
   font-family: var(--privacy-mono);
   font-size: 10px;
-  font-weight: 600;
+  font-weight: 700;
   letter-spacing: 0.16em;
   text-transform: uppercase;
 }
 
 .privacy-stage {
   position: relative;
-  z-index: 2;
   display: grid;
-  width: min(100%, 1660px);
-  grid-template-columns: minmax(170px, 0.28fr) minmax(620px, 1fr) minmax(170px, 0.28fr);
+  width: min(100%, 1920px);
+  grid-template-columns:
+    minmax(145px, 0.62fr)
+    minmax(155px, 0.68fr)
+    minmax(610px, 3.4fr)
+    minmax(155px, 0.68fr)
+    minmax(145px, 0.62fr);
   align-items: center;
-  gap: clamp(10px, 2.8vw, 50px);
+  gap: clamp(14px, 1.8vw, 36px);
   margin: 0 auto;
 }
 
 .privacy-orbit {
   position: relative;
-  grid-column: 2;
+  grid-column: 3;
   width: 100%;
   aspect-ratio: 1;
   margin: auto;
@@ -266,228 +353,141 @@ body.nav-open .privacy-masthead {
   width: 100%;
   height: 100%;
   overflow: visible;
-  color: var(--privacy-signal);
 }
 
-.privacy-ring,
-.privacy-arc {
+.privacy-orbit-track {
   fill: none;
   vector-effect: non-scaling-stroke;
 }
 
-.privacy-ring {
-  transform: rotate(-90deg);
-  transform-origin: 400px 400px;
-  stroke-dasharray: 2200;
-  stroke-dashoffset: 2200;
-  transition: stroke-dashoffset 1800ms cubic-bezier(0.22, 1, 0.36, 1);
+.privacy-orbit-track path {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  vector-effect: non-scaling-stroke;
+  transition: stroke-dashoffset 1050ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-.privacy-stage.is-running .privacy-ring,
-.privacy-stage.is-complete .privacy-ring {
-  stroke-dashoffset: 0;
-}
-
-.privacy-ring--outer {
-  stroke: var(--privacy-signal);
-  stroke-width: 1.8;
-  transition-delay: 220ms;
-}
-
-.privacy-ring--middle {
-  stroke: rgba(242, 239, 231, 0.62);
-  stroke-width: 1.4;
-  transition-delay: 520ms;
-}
-
-.privacy-ring--inner {
-  stroke: rgba(242, 239, 231, 0.72);
-  stroke-width: 1.25;
-  transition-delay: 820ms;
-}
-
-.privacy-arc {
+.privacy-orbit-track--outer {
+  color: var(--privacy-signal);
   stroke: currentColor;
-  stroke-width: 1.7;
-  stroke-dasharray: 760;
-  stroke-dashoffset: 760;
-  transition: stroke-dashoffset 1400ms cubic-bezier(0.22, 1, 0.36, 1);
+  stroke-width: 1.85;
 }
 
-.privacy-arc--paper-one,
-.privacy-arc--paper-two,
-.privacy-arc--paper-three,
-.privacy-arc--paper-four {
-  color: rgba(242, 239, 231, 0.82);
-  stroke-width: 1.25;
+.privacy-orbit-track--inner {
+  color: rgba(241, 238, 229, 0.78);
+  stroke: currentColor;
+  stroke-width: 1.3;
 }
 
-.privacy-stage.is-running .privacy-arc,
-.privacy-stage.is-complete .privacy-arc {
+.privacy-stage.is-running .privacy-orbit-track path,
+.privacy-stage.is-complete .privacy-orbit-track path {
   stroke-dashoffset: 0;
 }
 
-.privacy-arc--one { transition-delay: 1500ms; }
-.privacy-arc--two { transition-delay: 1750ms; }
-.privacy-arc--three { transition-delay: 2000ms; }
-.privacy-arc--four { transition-delay: 2250ms; }
-.privacy-arc--paper-one { transition-delay: 2450ms; }
-.privacy-arc--paper-two { transition-delay: 2600ms; }
-.privacy-arc--paper-three { transition-delay: 2750ms; }
-.privacy-arc--paper-four { transition-delay: 2900ms; }
-
-.privacy-reveal {
-  opacity: 0;
-  transform: translateY(14px);
-  transition: opacity 720ms ease, transform 720ms cubic-bezier(0.22, 1, 0.36, 1);
-}
-
-.privacy-reveal.is-visible,
-.privacy-stage.is-complete .privacy-reveal {
-  opacity: 1;
-  transform: translateY(0);
-}
+.privacy-orbit-track path:nth-child(1) { transition-delay: 250ms; }
+.privacy-orbit-track path:nth-child(2) { transition-delay: 1050ms; }
+.privacy-orbit-track path:nth-child(3) { transition-delay: 1850ms; }
+.privacy-orbit-track path:nth-child(4) { transition-delay: 2650ms; }
+.privacy-orbit-track--inner path:nth-child(1) { transition-delay: 520ms; }
+.privacy-orbit-track--inner path:nth-child(2) { transition-delay: 1320ms; }
+.privacy-orbit-track--inner path:nth-child(3) { transition-delay: 2120ms; }
+.privacy-orbit-track--inner path:nth-child(4) { transition-delay: 2920ms; }
 
 .privacy-node,
-.privacy-boundary {
+.privacy-boundary,
+.privacy-partner {
+  position: relative;
+  z-index: 3;
+}
+
+.privacy-node {
   position: absolute;
-  z-index: 4;
-  display: grid;
-  justify-items: center;
-  color: var(--privacy-paper);
+  display: flex;
+  width: 18%;
+  min-width: 92px;
+  align-items: center;
+  flex-direction: column;
   text-align: center;
 }
 
-.privacy-node h2,
-.privacy-boundary h2 {
-  margin: 8px 0 0;
-  font-size: clamp(11px, 1.28vw, 22px);
-  font-weight: 600;
-  letter-spacing: -0.025em;
-  line-height: 1.06;
-}
-
 .privacy-node--biometrics {
-  top: 1.5%;
+  top: 0;
   left: 50%;
-  transform: translate(-50%, 14px);
-}
-
-.privacy-node--biometrics.is-visible,
-.privacy-stage.is-complete .privacy-node--biometrics {
-  transform: translate(-50%, 0);
-}
-
-.privacy-node--social {
-  top: 50%;
-  left: 22.5%;
-  transform: translate(-50%, calc(-50% + 14px));
-}
-
-.privacy-node--social.is-visible,
-.privacy-stage.is-complete .privacy-node--social {
-  transform: translate(-50%, -50%);
+  transform: translateX(-50%);
 }
 
 .privacy-node--video {
   top: 50%;
-  right: 22.5%;
-  transform: translate(50%, calc(-50% + 14px));
-}
-
-.privacy-node--video.is-visible,
-.privacy-stage.is-complete .privacy-node--video {
-  transform: translate(50%, -50%);
+  right: 0;
+  transform: translateY(-50%);
 }
 
 .privacy-node--genomic {
-  bottom: 1.5%;
+  bottom: 0;
   left: 50%;
-  transform: translate(-50%, 14px);
+  transform: translateX(-50%);
 }
 
-.privacy-node--genomic.is-visible,
-.privacy-stage.is-complete .privacy-node--genomic {
-  transform: translate(-50%, 0);
-}
-
-.privacy-node--genomic h2 {
-  order: -1;
-  margin: 0 0 8px;
-}
-
-.privacy-boundary--blockchain {
+.privacy-node--social {
   top: 50%;
-  left: -10%;
-  width: 20%;
-  transform: translateY(calc(-50% + 14px));
-}
-
-.privacy-boundary--blockchain.is-visible,
-.privacy-stage.is-complete .privacy-boundary--blockchain {
+  left: 0;
   transform: translateY(-50%);
 }
 
-.privacy-boundary--file {
-  top: 50%;
-  right: -10%;
-  width: 20%;
-  transform: translateY(calc(-50% + 14px));
-}
-
-.privacy-boundary--file.is-visible,
-.privacy-stage.is-complete .privacy-boundary--file {
-  transform: translateY(-50%);
-}
-
-.privacy-boundary h2 strong {
-  color: var(--privacy-signal);
-  font-weight: 700;
-}
-
-.privacy-boundary p {
-  margin: 7px 0 0;
-  color: rgba(242, 239, 231, 0.7);
-  font-size: clamp(7px, 0.58vw, 10px);
-  font-weight: 600;
-  letter-spacing: 0.01em;
-  white-space: nowrap;
-}
-
-.privacy-icon-circle {
-  display: grid;
-  width: clamp(50px, 6vw, 98px);
-  height: clamp(50px, 6vw, 98px);
-  place-items: center;
-  border: 1.5px solid var(--privacy-signal);
-  border-radius: 50%;
+.privacy-node h3,
+.privacy-boundary h3 {
+  margin: 9px 0 0;
   color: var(--privacy-paper);
+  font-size: clamp(12px, 1.05vw, 20px);
+  font-weight: 650;
+  letter-spacing: -0.02em;
+  line-height: 1.04;
 }
 
-.privacy-icon-circle svg {
-  width: 56%;
-  height: 56%;
+.privacy-node--genomic h3 {
+  margin: 0 0 9px;
+}
+
+.privacy-medallion {
+  position: relative;
+  display: grid;
+  width: clamp(86px, 7.25vw, 132px);
+  aspect-ratio: 1;
+  place-items: center;
+}
+
+.privacy-medallion img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  opacity: 0.92;
+  animation: privacy-clockwise-turn 30s linear infinite;
+}
+
+.privacy-medallion svg {
+  position: relative;
+  z-index: 2;
+  width: 45%;
+  height: 45%;
   fill: none;
-  stroke: currentColor;
+  stroke: #fff;
   stroke-linecap: round;
   stroke-linejoin: round;
-  stroke-width: 2.25;
+  stroke-width: 2;
+  filter: drop-shadow(0 2px 3px rgba(0, 0, 0, 0.95));
 }
 
 .privacy-centre {
   position: absolute;
-  z-index: 3;
+  z-index: 2;
   top: 50%;
   left: 50%;
   display: grid;
-  width: 43%;
+  width: 36%;
   aspect-ratio: 1;
   place-items: center;
-  transform: translate(-50%, calc(-50% + 14px));
-}
-
-.privacy-centre.is-visible,
-.privacy-stage.is-complete .privacy-centre {
   transform: translate(-50%, -50%);
 }
 
@@ -497,55 +497,79 @@ body.nav-open .privacy-masthead {
   width: 100%;
   height: 100%;
   object-fit: contain;
-  opacity: 0.66;
+  opacity: 0.86;
+  animation: privacy-clockwise-turn 58s linear infinite;
 }
 
-.privacy-centre::after {
+.privacy-centre-halo {
   position: absolute;
-  inset: 24%;
-  border: 1.4px solid var(--privacy-signal);
+  z-index: 1;
+  width: 67%;
+  aspect-ratio: 1;
+  border: 1.5px solid rgba(220, 255, 54, 0.82);
   border-radius: 50%;
-  content: "";
 }
 
 .privacy-person {
   position: absolute;
   z-index: 2;
-  top: 23%;
-  width: 19%;
+  top: 29%;
+  width: 17%;
   fill: none;
-  stroke: var(--privacy-paper);
+  stroke: #fff;
   stroke-linecap: round;
   stroke-linejoin: round;
-  stroke-width: 2.4;
+  stroke-width: 2;
+  filter: drop-shadow(0 2px 4px #000);
 }
 
 .privacy-centre strong {
-  position: relative;
+  position: absolute;
   z-index: 2;
-  margin-top: 22%;
-  color: var(--privacy-paper);
-  font-size: clamp(22px, 3vw, 54px);
-  font-weight: 500;
-  letter-spacing: 0.01em;
-  line-height: 0.98;
+  top: 51%;
+  color: #fff;
+  font-size: clamp(24px, 3.15vw, 62px);
+  font-weight: 660;
+  letter-spacing: -0.06em;
+  line-height: 0.82;
+  text-align: center;
+  text-shadow: 0 2px 5px #000;
+}
+
+.privacy-boundary {
+  display: flex;
+  min-width: 0;
+  align-items: center;
+  flex-direction: column;
+  justify-self: center;
   text-align: center;
 }
 
-.privacy-partner {
-  position: relative;
-  z-index: 4;
-  align-self: center;
+.privacy-boundary--blockchain {
+  grid-column: 2;
 }
 
-.privacy-partner > p {
-  margin: 0 0 24px;
+.privacy-boundary--file {
+  grid-column: 4;
+}
+
+.privacy-boundary h3 strong {
   color: var(--privacy-signal);
+  font-weight: 720;
+}
+
+.privacy-definition {
+  margin: 10px 0 0;
+  color: rgba(241, 238, 229, 0.58);
   font-family: var(--privacy-mono);
-  font-size: clamp(8px, 0.58vw, 10px);
-  font-weight: 700;
-  letter-spacing: 0.14em;
-  line-height: 1.45;
+  font-size: clamp(7px, 0.48vw, 9px);
+  line-height: 1.3;
+  white-space: nowrap;
+}
+
+.privacy-partner {
+  min-width: 0;
+  align-self: center;
 }
 
 .privacy-partner--humane {
@@ -553,20 +577,28 @@ body.nav-open .privacy-masthead {
 }
 
 .privacy-partner--un {
-  grid-column: 3;
-  text-align: right;
+  grid-column: 5;
+  text-align: center;
+}
+
+.privacy-proposal {
+  margin: 0 0 clamp(22px, 2.2vw, 40px);
+  color: var(--privacy-signal);
+  font-size: clamp(7px, 0.55vw, 10px);
+  line-height: 1.65;
 }
 
 .humane-wordmark {
   position: relative;
-  display: inline-grid;
-  min-height: 118px;
+  display: flex;
+  min-height: 148px;
   align-items: center;
-  padding: 9px 23px;
-  font-size: clamp(17px, 1.45vw, 25px);
+  padding: 20px 24px;
+  color: #fff;
+  font-size: clamp(18px, 1.38vw, 27px);
   font-weight: 500;
-  letter-spacing: -0.035em;
-  line-height: 1.15;
+  letter-spacing: -0.04em;
+  line-height: 1.02;
 }
 
 .humane-wordmark::before,
@@ -574,53 +606,39 @@ body.nav-open .privacy-masthead {
   position: absolute;
   top: 0;
   bottom: 0;
-  width: 12px;
-  border-top: 2px solid var(--privacy-paper);
-  border-bottom: 2px solid var(--privacy-paper);
+  width: 14px;
+  border-top: 2px solid #fff;
+  border-bottom: 2px solid #fff;
   content: "";
 }
 
 .humane-wordmark::before {
   left: 0;
-  border-left: 2px solid var(--privacy-paper);
+  border-left: 2px solid #fff;
 }
 
 .humane-wordmark::after {
   right: 0;
-  border-right: 2px solid var(--privacy-paper);
+  border-right: 2px solid #fff;
 }
 
-.un-mark {
-  display: inline-grid;
-  justify-items: center;
-  gap: 8px;
-}
-
-.un-mark svg {
-  width: clamp(112px, 10vw, 172px);
-  fill: none;
-  stroke: var(--privacy-paper);
-  stroke-linecap: round;
-  stroke-linejoin: round;
-  stroke-width: 1.5;
-}
-
-.un-mark span {
-  font-family: var(--privacy-mono);
-  font-size: 9px;
-  font-weight: 700;
-  letter-spacing: 0.2em;
+.un-mark img {
+  display: block;
+  width: min(100%, 170px);
+  max-height: 180px;
+  margin: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.92));
 }
 
 .privacy-interoperability {
-  position: relative;
-  z-index: 3;
-  max-width: 1320px;
-  margin: clamp(26px, 3vw, 54px) auto 0;
-  color: rgba(242, 239, 231, 0.72);
-  font-size: clamp(18px, 2.15vw, 38px);
-  font-weight: 200;
+  width: min(100%, 1420px);
+  margin: clamp(58px, 6vw, 104px) auto 0;
+  color: rgba(241, 238, 229, 0.7);
+  font-size: clamp(18px, 2.15vw, 42px);
+  font-weight: 230;
   letter-spacing: -0.025em;
+  line-height: 1.1;
   text-align: center;
 }
 
@@ -629,88 +647,140 @@ body.nav-open .privacy-masthead {
 .privacy-interoperability span:nth-of-type(3) { color: var(--privacy-pink); }
 
 .privacy-technology-chain {
-  position: relative;
-  z-index: 3;
   display: flex;
-  max-width: 1460px;
+  width: min(100%, 1460px);
   align-items: center;
   justify-content: center;
-  gap: clamp(12px, 1.9vw, 32px);
-  margin: clamp(28px, 3vw, 52px) auto 0;
-  color: var(--privacy-paper);
+  gap: clamp(14px, 1.8vw, 34px);
+  margin: clamp(32px, 3vw, 58px) auto 0;
+  padding-top: clamp(28px, 2.6vw, 50px);
+  border-top: 1px solid rgba(241, 238, 229, 0.18);
+  color: #fff;
 }
 
-.privacy-technology-chain > b {
-  color: rgba(242, 239, 231, 0.74);
-  font-size: clamp(24px, 2.8vw, 48px);
-  font-weight: 200;
+.privacy-technology-chain b {
+  color: rgba(241, 238, 229, 0.46);
+  font-size: clamp(24px, 2vw, 38px);
+  font-weight: 300;
 }
 
 .privacy-technology {
   display: inline-flex;
   align-items: center;
-  gap: 10px;
-  font-size: clamp(18px, 2.2vw, 38px);
+  gap: 8px;
+  font-size: clamp(18px, 1.8vw, 34px);
   font-weight: 650;
-  letter-spacing: -0.04em;
+  letter-spacing: -0.035em;
   line-height: 0.9;
   white-space: nowrap;
 }
 
 .privacy-technology small {
-  font-size: clamp(8px, 0.78vw, 13px);
-  font-weight: 600;
+  font-size: clamp(7px, 0.62vw, 11px);
+  font-weight: 650;
   letter-spacing: 0;
-  line-height: 1.1;
+  line-height: 1.05;
 }
 
 .privacy-technology--indy {
-  display: grid;
-  font-size: clamp(18px, 2vw, 34px);
-  font-weight: 300;
-  letter-spacing: -0.03em;
-}
-
-.privacy-technology--indy small {
-  font-size: clamp(7px, 0.58vw, 10px);
-  letter-spacing: 0.04em;
+  flex-direction: column;
+  gap: 0;
 }
 
 .privacy-technology--fhenix {
   font-family: var(--privacy-mono);
-  font-weight: 500;
-}
-
-.privacy-technology--storj {
-  font-weight: 500;
+  font-weight: 540;
 }
 
 .privacy-technology--aws {
-  font-size: clamp(26px, 3vw, 52px);
-  font-weight: 400;
+  font-family: Georgia, serif;
+  font-weight: 600;
 }
 
 .privacy-technology--aws small {
-  font-size: clamp(7px, 0.72vw, 12px);
+  font-family: var(--privacy-sans);
 }
 
-@media (max-width: 1100px) {
+.privacy-reveal {
+  opacity: 0;
+  transition: opacity 620ms ease, filter 620ms ease;
+  filter: blur(4px);
+}
+
+.privacy-reveal.is-visible {
+  opacity: 1;
+  filter: blur(0);
+}
+
+@media (max-width: 1400px) {
   .privacy-stage {
-    grid-template-columns: minmax(120px, 0.2fr) minmax(540px, 1fr) minmax(120px, 0.2fr);
-    gap: 4px;
+    grid-template-columns: minmax(120px, 0.5fr) minmax(140px, 0.62fr) minmax(560px, 3fr) minmax(140px, 0.62fr) minmax(120px, 0.5fr);
   }
 
-  .privacy-boundary--blockchain { left: -8%; }
-  .privacy-boundary--file { right: -8%; }
-  .privacy-partner > p { letter-spacing: 0.08em; }
-  .humane-wordmark { padding-right: 17px; padding-left: 17px; }
+  .humane-wordmark {
+    min-height: 130px;
+    padding: 18px;
+  }
 }
 
-@media (max-width: 820px) {
+@media (max-width: 1120px) {
+  .privacy-title-panel {
+    grid-template-columns: 1fr;
+    align-content: center;
+  }
+
+  .privacy-title-index {
+    align-self: auto;
+    padding: 0;
+  }
+
+  .privacy-title-note {
+    align-self: auto;
+    justify-self: start;
+    writing-mode: horizontal-tb;
+  }
+
+  .privacy-stage {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    align-items: start;
+    gap: 38px 24px;
+  }
+
+  .privacy-orbit {
+    grid-column: 1 / -1;
+    grid-row: 1;
+    width: min(100%, 820px);
+  }
+
+  .privacy-partner--humane,
+  .privacy-boundary--blockchain,
+  .privacy-boundary--file,
+  .privacy-partner--un {
+    grid-row: 2;
+  }
+
+  .privacy-partner--humane { grid-column: 1; }
+  .privacy-boundary--blockchain { grid-column: 2; }
+  .privacy-boundary--file { grid-column: 3; }
+  .privacy-partner--un { grid-column: 4; }
+
+  .privacy-proposal {
+    min-height: 3em;
+  }
+
+  .privacy-definition {
+    white-space: normal;
+  }
+}
+
+@media (max-width: 760px) {
   .privacy-masthead {
-    position: absolute;
-    height: 76px;
+    height: 86px;
     padding: 0 18px;
+  }
+
+  .privacy-brand {
+    gap: 10px;
   }
 
   .privacy-brand .brand-mark {
@@ -719,84 +789,8 @@ body.nav-open .privacy-masthead {
   }
 
   .privacy-brand .brand-lockup {
-    font-size: 21px;
-    letter-spacing: 0.21em;
-  }
-
-  .privacy-masthead-label {
-    display: none;
-  }
-
-  .privacy-hero {
-    padding: 114px 16px 74px;
-  }
-
-  .privacy-heading {
-    margin-bottom: 30px;
-  }
-
-  .privacy-heading h1 {
-    max-width: 620px;
-    font-size: clamp(38px, 9.5vw, 64px);
-  }
-
-  .privacy-lockup {
-    gap: 9px;
-    letter-spacing: 0.23em;
-  }
-
-  .privacy-sequence-control {
-    position: relative;
-    top: auto;
-    right: auto;
-    display: block;
-    margin: 0 0 30px auto;
-  }
-
-  .privacy-stage {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 36px 18px;
-  }
-
-  .privacy-orbit {
-    grid-column: 1 / -1;
-    width: min(100%, 680px);
-    grid-row: 1;
-  }
-
-  .privacy-partner {
-    align-self: start;
-  }
-
-  .privacy-partner--humane {
-    grid-column: 1;
-    grid-row: 2;
-  }
-
-  .privacy-partner--un {
-    grid-column: 2;
-    grid-row: 2;
-  }
-
-  .privacy-partner > p {
-    min-height: 31px;
-    margin-bottom: 14px;
-  }
-
-  .privacy-boundary--blockchain { left: -7%; }
-  .privacy-boundary--file { right: -7%; }
-
-  .privacy-technology-chain {
-    flex-wrap: wrap;
-    row-gap: 18px;
-  }
-}
-
-@media (max-width: 540px) {
-  .privacy-brand .brand-lockup {
-    font-size: 17px;
-    letter-spacing: 0.18em;
+    font-size: 18px;
+    letter-spacing: 0.19em;
   }
 
   .privacy-brand .brand-name {
@@ -804,108 +798,203 @@ body.nav-open .privacy-masthead {
   }
 
   .privacy-brand .brand-slash {
-    margin-right: 8px;
+    margin-right: 7px;
   }
 
-  .privacy-heading h1 {
-    font-size: clamp(34px, 10.5vw, 50px);
-    line-height: 0.98;
-  }
-
-  .privacy-lockup {
-    font-size: 13px;
-  }
-
-  .privacy-lockup img {
-    width: 30px;
-    height: 30px;
-  }
-
-  .privacy-orbit {
-    width: calc(100vw - 24px);
-    margin-left: -4px;
-  }
-
-  .privacy-ring--outer { stroke-width: 1.2; }
-  .privacy-ring--middle,
-  .privacy-ring--inner { stroke-width: 1; }
-  .privacy-arc { stroke-width: 1.1; }
-
-  .privacy-icon-circle {
-    width: clamp(41px, 13vw, 58px);
-    height: clamp(41px, 13vw, 58px);
-    border-width: 1.2px;
-  }
-
-  .privacy-node h2,
-  .privacy-boundary h2 {
-    font-size: clamp(8px, 2.45vw, 12px);
-  }
-
-  .privacy-boundary p {
+  .privacy-masthead-label {
     display: none;
   }
 
-  .privacy-boundary--blockchain,
-  .privacy-boundary--file { width: 18%; }
+  .privacy-title-panel {
+    min-height: max(680px, 100svh);
+    gap: 28px;
+    padding: 132px 20px 70px;
+    background-size: 72px 72px;
+  }
 
-  .privacy-boundary--blockchain { left: 0; }
-  .privacy-boundary--file { right: 0; }
+  .privacy-title-panel h1 {
+    font-size: clamp(54px, 16vw, 88px);
+    line-height: 0.88;
+  }
 
-  .privacy-node--social { left: 24%; }
-  .privacy-node--video { right: 24%; }
+  .privacy-editorial {
+    grid-template-columns: 1fr;
+    gap: 46px;
+    padding: 74px 20px 90px;
+  }
+
+  .privacy-editorial-copy p {
+    font-size: clamp(32px, 9.25vw, 52px);
+    line-height: 1.01;
+  }
+
+  .privacy-editorial-copy p + p {
+    margin-top: 72px;
+    padding-top: 28px;
+  }
+
+  .privacy-diagram-inner {
+    padding: 66px 14px 76px;
+  }
+
+  .privacy-diagram-heading {
+    grid-template-columns: 1fr auto;
+    align-items: center;
+    margin-bottom: 34px;
+  }
+
+  .privacy-diagram-heading h2 {
+    grid-column: 1 / -1;
+    grid-row: 2;
+    margin-top: 28px;
+    font-size: clamp(58px, 18vw, 96px);
+  }
+
+  .privacy-sequence-control {
+    grid-column: 2;
+    grid-row: 1;
+  }
+
+  .privacy-stage {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 54px 18px;
+  }
+
+  .privacy-orbit {
+    width: min(100%, 650px);
+    max-width: none;
+    margin: 0 auto;
+    transform: none;
+  }
+
+  .privacy-node {
+    width: 20%;
+    min-width: 58px;
+  }
+
+  .privacy-node h3,
+  .privacy-boundary h3 {
+    font-size: clamp(9px, 2.7vw, 13px);
+  }
+
+  .privacy-medallion {
+    width: clamp(60px, 16vw, 82px);
+  }
 
   .privacy-centre strong {
-    font-size: clamp(18px, 6vw, 29px);
+    font-size: clamp(22px, 8vw, 44px);
+  }
+
+  .privacy-partner--humane,
+  .privacy-boundary--blockchain,
+  .privacy-boundary--file,
+  .privacy-partner--un {
+    grid-row: auto;
+  }
+
+  .privacy-boundary--blockchain {
+    grid-column: 1;
+    grid-row: 2;
+  }
+
+  .privacy-boundary--file {
+    grid-column: 2;
+    grid-row: 2;
+  }
+
+  .privacy-partner--humane {
+    grid-column: 1;
+    grid-row: 3;
+    width: 100%;
+  }
+
+  .privacy-partner--un {
+    grid-column: 2;
+    grid-row: 3;
+    width: 100%;
+  }
+
+  .privacy-proposal {
+    min-height: 3.5em;
+    margin-bottom: 20px;
+    font-size: 7px;
+  }
+
+  .privacy-definition {
+    width: 100%;
+    max-width: 150px;
+    font-size: 5.5px;
+    letter-spacing: -0.03em;
+    white-space: normal;
+  }
+
+  .humane-wordmark {
+    min-height: 112px;
+    padding: 16px 20px;
+    font-size: 18px;
+  }
+
+  .un-mark img {
+    width: min(100%, 120px);
+    max-height: 120px;
   }
 
   .privacy-interoperability {
-    max-width: 360px;
-    font-size: 20px;
-    line-height: 1.14;
+    margin-top: 76px;
+    padding: 0 12px;
+    font-size: 23px;
   }
 
   .privacy-technology-chain {
     display: grid;
-    grid-template-columns: 1fr;
-    justify-items: center;
-    gap: 12px;
-    padding: 26px 0 0;
-    border-top: 1px solid var(--privacy-line-soft);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 22px 16px;
+    margin-top: 40px;
+    padding: 36px 12px 0;
   }
 
-  .privacy-technology-chain > b {
-    line-height: 0.5;
-    transform: rotate(90deg);
+  .privacy-technology-chain b {
+    display: none;
   }
 
   .privacy-technology {
-    font-size: 28px;
+    justify-self: center;
+    font-size: 22px;
   }
 
-  .privacy-technology--indy { font-size: 27px; }
-  .privacy-technology--aws { font-size: 40px; }
+  .privacy-technology--aws {
+    grid-column: 1 / -1;
+  }
+}
 
-  .privacy-partner > p {
-    font-size: 7px;
+@media (max-width: 410px) {
+  .privacy-brand .brand-lockup {
+    font-size: 16px;
   }
 
-  .humane-wordmark {
-    min-height: 96px;
-    padding: 8px 14px;
-    font-size: clamp(14px, 4vw, 18px);
+  .privacy-title-panel h1 {
+    font-size: 53px;
   }
 
-  .un-mark svg {
-    width: clamp(88px, 28vw, 118px);
+  .privacy-node h3 {
+    font-size: 9px;
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  html { scroll-behavior: auto; }
+  html {
+    scroll-behavior: auto;
+  }
+
   .privacy-brand .brand-mark,
-  .privacy-background-flower { animation: none; }
-  .privacy-ring,
-  .privacy-arc,
-  .privacy-reveal { transition: none; }
+  .privacy-medallion img,
+  .privacy-centre > img {
+    animation: none;
+  }
+
+  .privacy-stage-video,
+  .privacy-orbit-track path,
+  .privacy-reveal {
+    transition-duration: 1ms;
+  }
 }
