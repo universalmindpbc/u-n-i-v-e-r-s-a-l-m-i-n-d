@@ -40,7 +40,6 @@
         "cloudformation:CreateChangeSet",
         "cloudformation:CreateStack",
         "cloudformation:DeleteChangeSet",
-        "cloudformation:DeleteStack",
         "cloudformation:DescribeChangeSet",
         "cloudformation:DescribeStackEvents",
         "cloudformation:DescribeStacks",
@@ -57,7 +56,6 @@
       "Sid": "ProvisionCitizenDataFoundation",
       "Effect": "Allow",
       "Action": [
-        "ec2:AuthorizeSecurityGroupEgress",
         "ec2:CreateSecurityGroup",
         "ec2:CreateSubnet",
         "ec2:CreateTags",
@@ -71,11 +69,9 @@
         "ec2:DescribeVpcs",
         "ec2:ModifySubnetAttribute",
         "ec2:ModifyVpcAttribute",
-        "ec2:RevokeSecurityGroupEgress",
         "kms:CreateAlias",
         "kms:CreateGrant",
         "kms:CreateKey",
-        "kms:DeleteAlias",
         "kms:Decrypt",
         "kms:DescribeKey",
         "kms:Encrypt",
@@ -94,7 +90,6 @@
         "rds:CreateDBCluster",
         "rds:CreateDBInstance",
         "rds:CreateDBSubnetGroup",
-        "rds:DeleteDBSubnetGroup",
         "rds:DescribeDBClusters",
         "rds:DescribeDBInstances",
         "rds:DescribeDBSubnetGroups",
@@ -105,7 +100,6 @@
         "rds-data:ExecuteStatement",
         "rds-data:RollbackTransaction",
         "s3:CreateBucket",
-        "s3:DeleteBucketPolicy",
         "s3:GetBucketLocation",
         "s3:GetBucketPolicy",
         "s3:GetBucketVersioning",
@@ -125,6 +119,45 @@
         "secretsmanager:TagResource"
       ],
       "Resource": "*"
+    },
+    {
+      "Sid": "DeleteCitizenDataStagingStackOnly",
+      "Effect": "Allow",
+      "Action": "cloudformation:DeleteStack",
+      "Resource": "arn:aws:cloudformation:ap-southeast-2:*:stack/universal-mind-citizen-data-staging/*"
+    },
+    {
+      "Sid": "ManageCitizenDataSecurityGroupEgressOnly",
+      "Effect": "Allow",
+      "Action": [
+        "ec2:AuthorizeSecurityGroupEgress",
+        "ec2:RevokeSecurityGroupEgress"
+      ],
+      "Resource": "arn:aws:ec2:ap-southeast-2:*:security-group/*",
+      "Condition": {
+        "StringEquals": {
+          "ec2:ResourceTag/application": "universal-mind",
+          "ec2:ResourceTag/environment": "staging"
+        }
+      }
+    },
+    {
+      "Sid": "DeleteCitizenDataSubnetGroupOnly",
+      "Effect": "Allow",
+      "Action": "rds:DeleteDBSubnetGroup",
+      "Resource": "arn:aws:rds:ap-southeast-2:*:subgrp:universal-mind-citizen-data-staging-*"
+    },
+    {
+      "Sid": "DeleteCitizenDataKeyAliasOnly",
+      "Effect": "Allow",
+      "Action": "kms:DeleteAlias",
+      "Resource": "arn:aws:kms:ap-southeast-2:*:alias/universal-mind-citizen-data-staging"
+    },
+    {
+      "Sid": "DeleteCitizenDataBucketPoliciesOnly",
+      "Effect": "Allow",
+      "Action": "s3:DeleteBucketPolicy",
+      "Resource": "arn:aws:s3:::universal-mind-citizen-da-*"
     },
     {
       "Sid": "CreateRdsServiceLinkedRoleOnly",
