@@ -353,9 +353,9 @@ assert.match(wallet, /happiness-wallet-qr-staging\.png/);
 assert.match(script, /happiness-wallet-qr-production\.png/);
 assert.match(wallet, /href="\/vogue\/iam\/wallet\.css\?v=happiness-wallet-9"/);
 assert.match(wallet, /src="\/vogue\/iam\/wallet\.js\?v=happiness-wallet-5"/);
-assert.match(wallet, /href="\/vogue\/iam\/apple-wallet\/HAPPINESS\.pkpass"/);
+assert.match(wallet, /href="\/vogue\/iam\/apple-wallet\/pass\.php"/);
 assert.match(wallet, /data-happiness-demo-award/);
-assert.match(script, /HAPPINESS-DEMO-25\.pkpass/);
+assert.match(script, /pass\.php\?balance=25/);
 assert.match(passTemplate, /"label": "UNIVERSAL CITIZEN"/);
 assert.match(wallet, /class="happiness-brand"[^>]*>[\s\S]*class="brand-mark"/);
 const walletHeader = wallet.match(/<header class="happiness-header">[\s\S]*?<\/header>/)?.[0] || "";
@@ -441,6 +441,9 @@ for (const passFile of ["HAPPINESS.pkpass", "HAPPINESS-DEMO-25.pkpass"]) {
   assert.equal(bytes.subarray(0, 2).toString("ascii"), "PK", `Invalid Apple Wallet archive: ${passFile}`);
 }
 assert.match(htaccess, /AddType application\/vnd\.apple\.pkpass \.pkpass/);
+const passDelivery = read("i  a m/apple-wallet/pass.php");
+assert.match(passDelivery, /application\/vnd\.apple\.pkpass/);
+assert.match(passDelivery, /HAPPINESS-DEMO-25\.pkpass/);
 
 const healthResponse = await happinessWorker.fetch(new Request("https://rewards.example/health"), {});
 assert.equal(healthResponse.status, 200);

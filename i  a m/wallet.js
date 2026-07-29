@@ -117,7 +117,7 @@
     demoAward.addEventListener("click", () => {
       balanceNodes.forEach((node) => { node.textContent = "25"; });
       if (appleStatus) appleStatus.textContent = "25 demo HAPPINESS awarded · install the refreshed card";
-      const updatedPass = "/vogue/iam/apple-wallet/HAPPINESS-DEMO-25.pkpass";
+      const updatedPass = "/vogue/iam/apple-wallet/pass.php?balance=25";
       if (installLink) {
         installLink.href = updatedPass;
         installLink.textContent = "Refresh Apple Wallet";
