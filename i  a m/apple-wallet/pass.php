@@ -8,6 +8,18 @@ $ledger = json_decode((string) @file_get_contents($ledgerPath), true);
 $path = __DIR__ . '/HAPPINESS.pkpass';
 if (is_array($ledger) && happiness_apple_ready()) {
     try {
+        $authenticationToken = $ledger['member']['apple_authentication_token'] ?? '';
+        if (!is_string($authenticationToken) || strlen($authenticationToken) < 32) {
+            $ledger['member']['apple_authentication_token'] = bin2hex(random_bytes(32));
+            $ledger['updated_at'] = gmdate('c');
+            $encodedLedger = json_encode($ledger, JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT) . "\n";
+            $temporaryLedger = $ledgerPath . '.tmp-' . bin2hex(random_bytes(5));
+            if (@file_put_contents($temporaryLedger, $encodedLedger, LOCK_EX) === false || !@rename($temporaryLedger, $ledgerPath)) {
+                @unlink($temporaryLedger);
+                throw new RuntimeException('apple_pass_token_write_failed');
+            }
+            @chmod($ledgerPath, 0600);
+        }
         $path = happiness_apple_build_pass($ledger);
     } catch (Throwable $error) {
         http_response_code(503);

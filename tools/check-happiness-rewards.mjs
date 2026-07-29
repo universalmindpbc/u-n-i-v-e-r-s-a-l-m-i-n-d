@@ -463,6 +463,7 @@ for (const passFile of ["HAPPINESS.pkpass", "HAPPINESS-DEMO-25.pkpass"]) {
 assert.match(htaccess, /AddType application\/vnd\.apple\.pkpass \.pkpass/);
 assert.match(applePassDelivery, /application\/vnd\.apple\.pkpass/);
 assert.match(applePassDelivery, /happiness_apple_build_pass/);
+assert.match(applePassDelivery, /apple_authentication_token/);
 assert.match(applePassLibrary, /webServiceURL/);
 assert.match(applePassLibrary, /authenticationToken/);
 assert.match(applePassLibrary, /api\.push\.apple\.com\/3\/device/);
