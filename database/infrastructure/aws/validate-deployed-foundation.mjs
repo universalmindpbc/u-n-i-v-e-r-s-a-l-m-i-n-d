@@ -580,16 +580,19 @@ async function main() {
     for (const key of dataKeys) key.fill(0);
     fs.rmSync(temporaryDirectory, { recursive: true, force: true });
     try {
-      dataApi.execute(`
-        DO $$
-        BEGIN
-          IF EXISTS (SELECT 1 FROM pg_roles WHERE rolname = ${literal(runtimeRole)}) THEN
-            DROP OWNED BY ${runtimeRole};
-            DROP ROLE ${runtimeRole};
-          END IF;
-        END
-        $$;
-      `);
+      const roleRows = dataApi.execute(`
+        SELECT EXISTS (
+          SELECT 1 FROM pg_roles WHERE rolname = ${literal(runtimeRole)}
+        ) AS role_exists;
+      `, null, true);
+      if (roleRows?.[0]?.role_exists === true) {
+        // Aurora's master user has CREATEROLE but is not automatically made a
+        // member of roles it creates. PostgreSQL requires that membership
+        // before DROP OWNED can revoke the temporary role's grants.
+        dataApi.execute(`GRANT ${runtimeRole} TO CURRENT_USER;`);
+        dataApi.execute(`DROP OWNED BY ${runtimeRole};`);
+        dataApi.execute(`DROP ROLE ${runtimeRole};`);
+      }
     } catch {
       console.error("synthetic_runtime_role_cleanup_failed=true");
     }
