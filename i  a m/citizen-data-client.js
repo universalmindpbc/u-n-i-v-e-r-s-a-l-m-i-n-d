@@ -3,7 +3,7 @@
 
   const isStaging = window.location.hostname === "staging.universalmind.tv";
   const endpoint = "/vogue/iam/api/citizen-data/v1";
-  const documentVersion = "arrival-consent-v1";
+  const documentVersion = "arrival-consent-v2";
   const purposes = Object.freeze([
     "core_checkin_processing",
     "cross_session_memory",
