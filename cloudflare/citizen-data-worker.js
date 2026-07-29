@@ -106,8 +106,11 @@ export function createRemoteCitizenDataService(env, backendFetch = fetch) {
         "X-Universal-Mind-Edge-Signature": signature,
       },
       body,
-      redirect: "error",
+      redirect: "manual",
     });
+    if (backendResponse.status >= 300 && backendResponse.status < 400) {
+      throw new Error("citizen_data_backend_redirect_forbidden");
+    }
     const result = await backendResponse.json().catch(() => ({}));
     if (!backendResponse.ok) throw new Error(result.error || "citizen_data_backend_unavailable");
     return result;

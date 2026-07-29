@@ -420,6 +420,19 @@ assert.match(signedBackendRequest.options.headers["X-Universal-Mind-Edge-Timesta
 assert.match(signedBackendRequest.options.headers["X-Universal-Mind-Edge-Nonce"], /^[0-9a-f-]{36}$/);
 assert.match(signedBackendRequest.options.headers["X-Universal-Mind-Edge-Signature"], /^[0-9a-f]{64}$/);
 assert.equal(signedBackendRequest.options.body.includes("synthetic-shared-secret"), false);
+assert.equal(signedBackendRequest.options.redirect, "manual");
+
+const redirectingRemoteService = createRemoteCitizenDataService({
+  CITIZEN_DATA_BACKEND_URL: "https://synthetic-backend.invalid/",
+  CITIZEN_DATA_BACKEND_SHARED_SECRET: "synthetic-shared-secret-for-unit-test",
+}, async () => new Response(null, {
+  status: 302,
+  headers: { Location: "https://redirect.invalid/" },
+}));
+await assert.rejects(
+  () => redirectingRemoteService.consentStatus(""),
+  /citizen_data_backend_redirect_forbidden/,
+);
 
 const rateLimitedWorker = createCitizenDataWorker({
   serviceFactory: async () => {
