@@ -189,6 +189,39 @@
       "Resource": "arn:aws:lambda:ap-southeast-2:*:function:universal-mind-citizen-data-staging"
     },
     {
+      "Sid": "ManageCitizenDataEventSourceMapping",
+      "Effect": "Allow",
+      "Action": [
+        "lambda:CreateEventSourceMapping",
+        "lambda:DeleteEventSourceMapping",
+        "lambda:GetEventSourceMapping",
+        "lambda:ListEventSourceMappings",
+        "lambda:UpdateEventSourceMapping"
+      ],
+      "Resource": "*"
+    },
+    {
+      "Sid": "ManageCitizenDataConsentLedgerOnly",
+      "Effect": "Allow",
+      "Action": [
+        "dynamodb:CreateTable",
+        "dynamodb:DeleteTable",
+        "dynamodb:DescribeContinuousBackups",
+        "dynamodb:DescribeTable",
+        "dynamodb:DescribeTimeToLive",
+        "dynamodb:ListTagsOfResource",
+        "dynamodb:TagResource",
+        "dynamodb:UntagResource",
+        "dynamodb:UpdateContinuousBackups",
+        "dynamodb:UpdateTable",
+        "dynamodb:UpdateTimeToLive"
+      ],
+      "Resource": [
+        "arn:aws:dynamodb:ap-southeast-2:*:table/universal-mind-consent-ledger-staging",
+        "arn:aws:dynamodb:ap-southeast-2:*:table/universal-mind-consent-ledger-staging/stream/*"
+      ]
+    },
+    {
       "Sid": "ManageCitizenDataLambdaRoleOnly",
       "Effect": "Allow",
       "Action": [

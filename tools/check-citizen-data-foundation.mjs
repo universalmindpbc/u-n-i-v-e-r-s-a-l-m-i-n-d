@@ -17,13 +17,16 @@ const sql = read("database/migrations/0001_citizen_data_foundation.sql");
 const sql0002 = read("database/migrations/0002_encrypted_object_versions.sql");
 const sql0003 = read("database/migrations/0003_arrival_consent_v1.sql");
 const sql0004 = read("database/migrations/0004_arrival_consent_v2.sql");
+const sql0005 = read("database/migrations/0005_arrival_consent_v3.sql");
 const arrivalConsentCopy = read("database/consent/arrival-consent-v1.txt");
 const arrivalConsentCopyV2 = read("database/consent/arrival-consent-v2.txt");
+const arrivalConsentCopyV3 = read("database/consent/arrival-consent-v3.txt");
 const contract = JSON.parse(read("database/citizen-data-contract-v0.1.json"));
 const readme = read("database/README.md");
 const wrangler = read("cloudflare/wrangler.citizen-data.toml");
 const inferenceWorker = read("cloudflare/iam-citizen-needs-worker.js");
 const awsTemplate = read("database/infrastructure/aws/citizen-data-staging.yaml");
+const awsLambda = read("database/infrastructure/aws/citizen-data-lambda.mjs");
 const awsReadme = read("database/infrastructure/aws/README.md");
 const identityCenterPolicy = JSON.parse(read("database/infrastructure/aws/identity-center-permission-policy.json"));
 const inductionPage = read("i  a m/induction.html");
@@ -82,6 +85,8 @@ assert.match(sql0003, /arrival-consent-v1/);
 assert.match(sql0003, new RegExp(crypto.createHash("sha256").update(arrivalConsentCopy).digest("hex")));
 assert.match(sql0004, /arrival-consent-v2/);
 assert.match(sql0004, new RegExp(crypto.createHash("sha256").update(arrivalConsentCopyV2).digest("hex")));
+assert.match(sql0005, /arrival-consent-v3/);
+assert.match(sql0005, new RegExp(crypto.createHash("sha256").update(arrivalConsentCopyV3).digest("hex")));
 assert.match(readme, /Existing browser `localStorage` check-ins are never silently uploaded/);
 assert.match(wrangler, /CITIZEN_DATA_ENABLED = "false"/);
 assert.match(wrangler, /\[env\.staging\.vars\][\s\S]*CITIZEN_DATA_ENABLED = "true"/);
@@ -92,11 +97,11 @@ assert.match(inferenceWorker, /store: false/);
 assert.match(inductionPage, /data-induction-enter/);
 assert.match(inductionPage, /data-arrival-consent/);
 assert.match(inductionPage, /<h2 id="arrival-consent-title">Permissions<\/h2>/);
-assert.match(inductionPage, /Universal Mind remembers your check-ins and usage across sessions, so we can understand your mental health and delivery customised customised music television to meet you where you’re at\./);
-assert.match(inductionPage, /You own your data\. Your data is encrypted\. You can export or erase it at any time\./);
+assert.match(inductionPage, /Universal Mind remembers your check-ins and usage across sessions, so we can understand your mental health and deliver customised customised music television to meet you where you’re at\./);
+assert.match(inductionPage, /<strong>You own your data\. Your data is encrypted\. You can export or erase it at any time\.<\/strong>/);
 assert.match(inductionPage, /data-consent-accept disabled>Allow<\/button>/);
 assert.match(inductionPage, /data-consent-continue-without>Not Now<\/a>/);
-assert.match(inductionPage, /href="privacy-first\.html">How your data works<\/a>/);
+assert.match(inductionPage, /href="privacy-first\.html" target="_blank" rel="noopener noreferrer">How your data works<\/a>/);
 assert.doesNotMatch(inductionPage, /Before we begin|What this permission covers|HAPPINESS rewards are separate|pseudonymous Universal Citizen/);
 assert.doesNotMatch(checkinPage, /data-arrival-consent|arrival-consent-title/);
 assert.match(checkinPage, /data-iam-form[^>]*aria-disabled="true"[^>]*inert/);
@@ -105,12 +110,13 @@ assert.match(inductionPage, /citizen-data-consent\.js/);
 assert.match(checkinPage, /citizen-data-client\.js/);
 assert.match(checkinPage, /citizen-data-consent\.js/);
 assert.match(citizenDataClient, /staging\.universalmind\.tv/);
-assert.match(citizenDataClient, /arrival-consent-v2/);
+assert.match(citizenDataClient, /arrival-consent-v3/);
 assert.match(citizenDataClient, /credentials: "same-origin"/);
 assert.match(citizenDataClient, /window\.crypto\.randomUUID\(\)/);
 assert.match(citizenDataConsent, /Nothing has been collected/);
 assert.match(citizenDataConsent, /data-induction-enter/);
 assert.match(citizenDataConsent, /permission=required/);
+assert.doesNotMatch(citizenDataConsent, /setTimeout\(completeConsent/);
 assert.match(globe, /await citizenDataClient\.recordCheckin\(phrase\)/);
 assert.match(globe, /citizenDataClient\?\.enabled\s*\? \[window\.sessionStorage\]/);
 
@@ -121,6 +127,15 @@ assert.match(awsTemplate, /UpdateReplacePolicy: Retain/);
 assert.match(awsTemplate, /Type: AWS::Lambda::Function/);
 assert.match(awsTemplate, /ReservedConcurrentExecutions: 2/);
 assert.match(awsTemplate, /CITIZEN_DATA_EDGE_SHARED_SECRET/);
+assert.match(awsTemplate, /Type: AWS::DynamoDB::Table/);
+assert.match(awsTemplate, /BillingMode: PAY_PER_REQUEST/);
+assert.match(awsTemplate, /PointInTimeRecoveryEnabled: true/);
+assert.match(awsTemplate, /StreamViewType: NEW_IMAGE/);
+assert.match(awsTemplate, /Type: AWS::Lambda::EventSourceMapping/);
+assert.match(awsTemplate, /CITIZEN_DATA_CONSENT_DOCUMENT_VERSION: arrival-consent-v3/);
+assert.match(awsLambda, /TransactWriteItemsCommand/);
+assert.match(awsLambda, /consent_projection_event/);
+assert.match(awsLambda, /projectConsentLedgerRecords/);
 assert.match(awsTemplate, /InvokedViaFunctionUrl: true/);
 assert.match(awsTemplate, /EnableKeyRotation: true/);
 assert.match(awsTemplate, /DeletionProtection: true/);
@@ -143,6 +158,8 @@ assert.ok(identityCenterActions.includes("secretsmanager:GetSecretValue"));
 assert.ok(identityCenterActions.includes("s3:DeleteObjectVersion"));
 assert.ok(identityCenterActions.includes("s3:GetObjectVersion"));
 assert.ok(identityCenterActions.includes("lambda:CreateFunction"));
+assert.ok(identityCenterActions.includes("lambda:CreateEventSourceMapping"));
+assert.ok(identityCenterActions.includes("dynamodb:CreateTable"));
 assert.ok(identityCenterActions.includes("iam:PassRole"));
 assert.match(JSON.stringify(identityCenterPolicy), /universal-mind-citizen-dat-\*\/synthetic-service-validation/);
 assert.match(JSON.stringify(identityCenterPolicy), /universal-mind-citizen-dat-\*\/service-artifacts/);
@@ -347,6 +364,38 @@ await assert.rejects(
   () => service.startSession(accepted.rawCredential, {}),
   /citizen_data_credential_invalid/,
 );
+
+const hotRepository = createMemoryRepository();
+const hotVault = createSyntheticVaultFixture();
+let hotGrantWrites = 0;
+let relationalEnsures = 0;
+let hotErasureWrites = 0;
+hotRepository.grantCoreConsent = async ({ citizen, receipt, credential }) => {
+  hotGrantWrites += 1;
+  await hotRepository.createCitizen(citizen);
+  await hotRepository.appendConsentReceipt(receipt);
+  await hotRepository.createBrowserCredential(credential);
+};
+hotRepository.ensureRelationalConsent = async () => { relationalEnsures += 1; };
+hotRepository.requestCoreErasure = async ({ citizenId, withdrawalReceipt, rightsRequest }) => {
+  hotErasureWrites += 1;
+  if (withdrawalReceipt) await hotRepository.appendConsentReceipt(withdrawalReceipt);
+  await hotRepository.revokeBrowserCredentials(citizenId, rightsRequest.requestedAt);
+  await hotRepository.markCitizenErasurePending(citizenId);
+  await hotRepository.createDataRightsRequest(rightsRequest);
+};
+const hotService = createCitizenDataService({ repository: hotRepository, vault: hotVault.vault, now: fixedNow, uuid });
+const hotAccepted = await hotService.acceptCoreConsent({
+  documentVersion: "founder-draft-test-v1",
+  purposes: [...REQUIRED_CORE_PURPOSES, "universal_one_conversation_memory"],
+});
+assert.equal(hotGrantWrites, 1);
+assert.equal((await hotService.consentStatus(hotAccepted.rawCredential)).granted, true);
+await hotService.startSession(hotAccepted.rawCredential, { locale: "en-AU" });
+assert.equal(relationalEnsures, 1);
+await hotService.requestErasure(hotAccepted.rawCredential);
+assert.equal(hotErasureWrites, 1);
+assert.equal((await hotService.consentStatus(hotAccepted.rawCredential)).granted, false);
 
 const disabledWorker = createCitizenDataWorker({ serviceFactory: async () => service });
 const disabledResponse = await disabledWorker.fetch(new Request("https://staging.universalmind.tv/v1/consent/status"), {

@@ -81,7 +81,7 @@
     try {
       if (!existingConsent) await citizenData.acceptConsent();
       announce("Thank you. Your private space is ready.", "complete");
-      window.setTimeout(completeConsent, 240);
+      completeConsent();
     } catch {
       allowRetry("We could not open your private space just now. Nothing has been collected. Please try again.");
     }

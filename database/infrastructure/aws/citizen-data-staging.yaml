@@ -1,8 +1,9 @@
 AWSTemplateFormatVersion: "2010-09-09"
 Description: >-
   Universal Mind consent-led citizen data staging foundation and HMAC-gated Lambda service:
-  dedicated VPC, KMS-encrypted S3 storage and Aurora PostgreSQL Serverless v2 with
-  the RDS Data API. Deploy only after founder cost approval and IAM Identity Center authentication.
+  dedicated VPC, KMS-encrypted S3 storage, a DynamoDB hot consent ledger and Aurora
+  PostgreSQL Serverless v2 with the RDS Data API. Deploy only after founder cost
+  approval and IAM Identity Center authentication.
 
 Parameters:
   EnvironmentName:
@@ -343,6 +344,42 @@ Resources:
         - Key: purpose
           Value: citizen-data-edge-authentication
 
+  CitizenDataConsentLedger:
+    Type: AWS::DynamoDB::Table
+    DeletionPolicy: Retain
+    UpdateReplacePolicy: Retain
+    Properties:
+      TableName: !Sub universal-mind-consent-ledger-${EnvironmentName}
+      BillingMode: PAY_PER_REQUEST
+      AttributeDefinitions:
+        - AttributeName: pk
+          AttributeType: S
+        - AttributeName: sk
+          AttributeType: S
+      KeySchema:
+        - AttributeName: pk
+          KeyType: HASH
+        - AttributeName: sk
+          KeyType: RANGE
+      PointInTimeRecoverySpecification:
+        PointInTimeRecoveryEnabled: true
+      SSESpecification:
+        SSEEnabled: true
+        SSEType: KMS
+        KMSMasterKeyId: !GetAtt CitizenDataKey.Arn
+      StreamSpecification:
+        StreamViewType: NEW_IMAGE
+      TimeToLiveSpecification:
+        AttributeName: expires_at_epoch
+        Enabled: true
+      Tags:
+        - Key: application
+          Value: universal-mind
+        - Key: data-class
+          Value: consent-and-pseudonymous-identity
+        - Key: environment
+          Value: !Ref EnvironmentName
+
   CitizenDataServiceRole:
     Type: AWS::IAM::Role
     Properties:
@@ -392,6 +429,20 @@ Resources:
                 Resource:
                   - !Sub ${CitizenDataObjectBucket.Arn}/citizens/*
                   - !Sub ${CitizenDataObjectBucket.Arn}/exports/*
+              - Sid: UseHotConsentLedger
+                Effect: Allow
+                Action:
+                  - dynamodb:GetItem
+                  - dynamodb:TransactWriteItems
+                Resource: !GetAtt CitizenDataConsentLedger.Arn
+              - Sid: ReadConsentProjectionStream
+                Effect: Allow
+                Action:
+                  - dynamodb:DescribeStream
+                  - dynamodb:GetRecords
+                  - dynamodb:GetShardIterator
+                  - dynamodb:ListStreams
+                Resource: !Sub ${CitizenDataConsentLedger.Arn}/stream/*
       Tags:
         - Key: application
           Value: universal-mind
@@ -432,6 +483,10 @@ Resources:
           CITIZEN_DATA_OBJECT_BUCKET: !Ref CitizenDataObjectBucket
           CITIZEN_DATA_KMS_KEY_ARN: !GetAtt CitizenDataKey.Arn
           CITIZEN_DATA_EDGE_SHARED_SECRET: !Sub "{{resolve:secretsmanager:${CitizenDataEdgeSecret}:SecretString}}"
+          CITIZEN_DATA_CONSENT_LEDGER_TABLE: !Ref CitizenDataConsentLedger
+          CITIZEN_DATA_CONSENT_DOCUMENT_ID: 438d3749-269e-4fa0-820a-b56f2b45368d
+          CITIZEN_DATA_CONSENT_DOCUMENT_VERSION: arrival-consent-v3
+          CITIZEN_DATA_CONSENT_DOCUMENT_SHA256: 52f5a4e51b6d4642e87b4ee05afd928c3a6f208a1ea949fe48c3900c45761bc1
       Handler: database/infrastructure/aws/citizen-data-lambda.handler
       MemorySize: 256
       ReservedConcurrentExecutions: 2
@@ -445,6 +500,21 @@ Resources:
           Value: universal-mind
         - Key: environment
           Value: !Ref EnvironmentName
+
+  CitizenDataConsentProjection:
+    Type: AWS::Lambda::EventSourceMapping
+    Properties:
+      BatchSize: 1
+      BisectBatchOnFunctionError: true
+      Enabled: true
+      EventSourceArn: !GetAtt CitizenDataConsentLedger.StreamArn
+      FilterCriteria:
+        Filters:
+          - Pattern: '{"eventName":["INSERT"],"dynamodb":{"NewImage":{"entity":{"S":["consent_projection_event"]}}}}'
+      FunctionName: !Ref CitizenDataServiceFunction
+      MaximumBatchingWindowInSeconds: 0
+      MaximumRetryAttempts: 10
+      StartingPosition: LATEST
 
   CitizenDataServiceUrl:
     Type: AWS::Lambda::Url
@@ -490,3 +560,6 @@ Outputs:
   CitizenDataEdgeSecretArn:
     Description: Generated secret copied directly into the staging edge secret store; never expose its value
     Value: !Ref CitizenDataEdgeSecret
+  CitizenDataConsentLedgerName:
+    Description: KMS-encrypted on-demand table authoritative for active staging consent
+    Value: !Ref CitizenDataConsentLedger

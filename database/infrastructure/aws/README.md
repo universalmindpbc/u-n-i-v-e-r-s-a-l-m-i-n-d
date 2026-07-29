@@ -47,6 +47,8 @@ AWS Secrets Manager is the canonical vault for service credentials and third-par
 - an AWS-managed database password in Secrets Manager;
 - RDS Data API access, avoiding a public database endpoint or a long-lived database credential outside AWS;
 - one staging-only Lambda service with an AWS execution role, two-execution concurrency cap and 14-day structured-log retention;
+- one KMS-encrypted DynamoDB on-demand table that is authoritative for active consent and pseudonymous browser credentials;
+- one filtered DynamoDB Stream projection that copies consent evidence into Aurora asynchronously, so the arrival interface never waits for Aurora to resume;
 - one generated edge-to-Lambda HMAC secret in Secrets Manager;
 - one Lambda function URL that rejects every request without a fresh valid edge signature.
 
@@ -72,8 +74,11 @@ the founder explicitly approves execution.
 Those figures exclude Aurora storage and I/O, backup storage, S3, CloudWatch,
 Secrets Manager and data transfer. The customer-managed KMS key starts at USD
 $1 per month, plus chargeable requests. Prices must be refreshed immediately
-before any change set is executed. Automatic pause introduces a resume delay, so
-the performance benchmark must record cold and warm timings separately.
+before any change set is executed. Automatic pause introduces a resume delay.
+The browser consent path therefore writes durably to DynamoDB first and returns
+without waiting for Aurora; the asynchronous projection may wake Aurora after
+the visitor has continued. Benchmarks record the browser hot path and the
+background Aurora projection separately.
 
 The Lambda service uses 256 MB memory and reserves at most two concurrent
 executions. Lambda request and compute charges are usage-based and expected to be
@@ -90,8 +95,12 @@ then signs a short-lived HMAC request to Lambda. The browser never receives the
 Lambda URL, HMAC secret, AWS credentials, database credential, citizen UUID or
 encryption key.
 
-Lambda uses its AWS execution role to call the RDS Data API, KMS and the private
-versioned object bucket. No long-lived AWS access key is created. The Lambda URL
+Lambda uses its AWS execution role to call DynamoDB, the RDS Data API, KMS and
+the private versioned object bucket. New consent grants and credential checks
+use the on-demand DynamoDB ledger. DynamoDB Streams projects the same immutable
+evidence into Aurora in the background; Aurora remains the relational metadata
+store for sessions, check-ins, conversations, data-use events and rights
+workflows. No long-lived AWS access key is created. The Lambda URL
 is publicly routable at the network layer, but unsigned or stale requests fail
 before any database or storage operation. Reserved concurrency provides a small
 prototype blast-radius cap.

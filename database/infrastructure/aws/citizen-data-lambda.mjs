@@ -7,6 +7,11 @@ import {
 } from "@aws-sdk/client-rds-data";
 import { GenerateDataKeyCommand, KMSClient } from "@aws-sdk/client-kms";
 import { DeleteObjectCommand, PutObjectCommand, S3Client } from "@aws-sdk/client-s3";
+import {
+  DynamoDBClient,
+  GetItemCommand,
+  TransactWriteItemsCommand,
+} from "@aws-sdk/client-dynamodb";
 import { createCitizenDataService } from "../../../cloudflare/citizen-data-core.js";
 import { createEnvelopeVault } from "../../../cloudflare/citizen-data-vault.js";
 
@@ -17,9 +22,17 @@ const database = process.env.CITIZEN_DATA_DATABASE_NAME;
 const bucket = process.env.CITIZEN_DATA_OBJECT_BUCKET;
 const keyArn = process.env.CITIZEN_DATA_KMS_KEY_ARN;
 const edgeSharedSecret = process.env.CITIZEN_DATA_EDGE_SHARED_SECRET;
+const consentLedgerTable = process.env.CITIZEN_DATA_CONSENT_LEDGER_TABLE;
+const currentConsentDocument = Object.freeze({
+  id: process.env.CITIZEN_DATA_CONSENT_DOCUMENT_ID,
+  version: process.env.CITIZEN_DATA_CONSENT_DOCUMENT_VERSION,
+  copySha256: process.env.CITIZEN_DATA_CONSENT_DOCUMENT_SHA256,
+  status: "published",
+});
 const rds = new RDSDataClient({ region });
 const kms = new KMSClient({ region });
 const s3 = new S3Client({ region });
+const dynamodb = new DynamoDBClient({ region });
 
 const literal = (value) => `'${String(value).replaceAll("'", "''")}'`;
 const nullableLiteral = (value) => (value == null || value === "" ? "NULL" : literal(value));
@@ -77,7 +90,8 @@ function createRepository(dataApi) {
           (id, status, residency_region, created_at)
         VALUES
           (${literal(record.id)}::uuid, ${literal(record.status)},
-           ${literal(record.residencyRegion)}, ${literal(record.createdAt)}::timestamptz);
+           ${literal(record.residencyRegion)}, ${literal(record.createdAt)}::timestamptz)
+        ON CONFLICT (id) DO NOTHING;
       `, transactionId);
     },
     async appendConsentReceipt(record, transactionId) {
@@ -90,14 +104,16 @@ function createRepository(dataApi) {
            ${literal(record.documentId)}::uuid, ${literal(record.action)},
            ${record.supersedesReceiptId ? `${literal(record.supersedesReceiptId)}::uuid` : "NULL"},
            ${literal(record.evidenceNonce)}::uuid, ${literal(record.source)},
-           ${literal(record.occurredAt)}::timestamptz);
+           ${literal(record.occurredAt)}::timestamptz)
+        ON CONFLICT (id) DO NOTHING;
       `, transactionId);
       for (const purpose of record.purposes || []) {
         await dataApi.execute(`
           INSERT INTO citizen_data.consent_receipt_purposes
             (receipt_id, citizen_id, purpose_code)
           VALUES
-            (${literal(record.id)}::uuid, ${literal(record.citizenId)}::uuid, ${literal(purpose)});
+            (${literal(record.id)}::uuid, ${literal(record.citizenId)}::uuid, ${literal(purpose)})
+          ON CONFLICT (receipt_id, purpose_code) DO NOTHING;
         `, transactionId);
       }
     },
@@ -108,7 +124,8 @@ function createRepository(dataApi) {
         VALUES
           (${literal(record.id)}::uuid, ${literal(record.citizenId)}::uuid,
            ${literal(record.tokenSha256)}, ${literal(record.createdAt)}::timestamptz,
-           ${literal(record.expiresAt)}::timestamptz);
+           ${literal(record.expiresAt)}::timestamptz)
+        ON CONFLICT (id) DO NOTHING;
       `, transactionId);
     },
     async createExperienceSession(record, transactionId) {
@@ -195,7 +212,8 @@ function createRepository(dataApi) {
            ${literal(record.eventType)}, ${literal(record.aggregateType)},
            ${literal(record.aggregateId)}::uuid,
            ${literal(JSON.stringify(record.metadata || {}))}::jsonb,
-           ${literal(record.createdAt)}::timestamptz);
+           ${literal(record.createdAt)}::timestamptz)
+        ON CONFLICT (id) DO NOTHING;
       `, transactionId);
     },
     async createDataRightsRequest(record, transactionId) {
@@ -205,7 +223,8 @@ function createRepository(dataApi) {
         VALUES
           (${literal(record.id)}::uuid, ${literal(record.citizenId)}::uuid,
            ${literal(record.requestType)}, ${literal(record.status)},
-           ${literal(record.requestedAt)}::timestamptz);
+           ${literal(record.requestedAt)}::timestamptz)
+        ON CONFLICT (id) DO NOTHING;
       `, transactionId);
     },
     async revokeBrowserCredentials(citizenId, revokedAt, transactionId) {
@@ -224,6 +243,12 @@ function createRepository(dataApi) {
     },
   };
   const writeMethods = Object.keys(operations);
+
+  async function projectGrant(tx, projection) {
+    await tx.createCitizen(projection.citizen);
+    await tx.appendConsentReceipt(projection.receipt);
+    await tx.createBrowserCredential(projection.credential);
+  }
 
   return {
     async transaction(work) {
@@ -249,6 +274,37 @@ function createRepository(dataApi) {
         LIMIT 1;
       `, null, true);
       return rows[0] || null;
+    },
+    async projectConsentEvent(projection) {
+      if (!projection || typeof projection !== "object") {
+        throw new Error("citizen_data_projection_invalid");
+      }
+      if (projection.type === "consent_granted") {
+        await this.transaction((tx) => projectGrant(tx, projection));
+        return;
+      }
+      if (projection.type === "consent_withdrawn") {
+        await this.transaction(async (tx) => {
+          await projectGrant(tx, projection.grantProjection);
+          if (projection.withdrawalReceipt) {
+            await tx.appendConsentReceipt(projection.withdrawalReceipt);
+          }
+          await tx.revokeBrowserCredentials(projection.citizenId, projection.requestedAt);
+          await tx.markCitizenErasurePending(projection.citizenId);
+          await tx.createDataRightsRequest(projection.rightsRequest);
+          await tx.appendOutboxEvent({
+            id: projection.outboxEventId,
+            citizenId: projection.citizenId,
+            eventType: "erasure_requested",
+            aggregateType: "data_rights_request",
+            aggregateId: projection.rightsRequest.id,
+            metadata: { schema_version: "citizen_erasure_request_v1" },
+            createdAt: projection.requestedAt,
+          });
+        });
+        return;
+      }
+      throw new Error("citizen_data_projection_type_invalid");
     },
     async resolveCredential(tokenSha256, isoNow) {
       const rows = await dataApi.execute(`
@@ -316,8 +372,244 @@ function createRepository(dataApi) {
   };
 }
 
+const dynamoString = (value) => ({ S: String(value) });
+const dynamoNumber = (value) => ({ N: String(value) });
+const dynamoStringList = (values) => ({ L: values.map((value) => dynamoString(value)) });
+
+function dynamoValue(item, key) {
+  return item?.[key]?.S || "";
+}
+
+function dynamoList(item, key) {
+  return Array.isArray(item?.[key]?.L) ? item[key].L.map((value) => value.S).filter(Boolean) : [];
+}
+
+function uniquePut(item) {
+  return {
+    Put: {
+      TableName: consentLedgerTable,
+      Item: item,
+      ConditionExpression: "attribute_not_exists(#pk)",
+      ExpressionAttributeNames: { "#pk": "pk" },
+    },
+  };
+}
+
+async function getLedgerItem(pk, sk) {
+  if (!consentLedgerTable) throw new Error("citizen_data_consent_ledger_unavailable");
+  const result = await dynamodb.send(new GetItemCommand({
+    TableName: consentLedgerTable,
+    Key: { pk: dynamoString(pk), sk: dynamoString(sk) },
+    ConsistentRead: true,
+  }));
+  return result.Item || null;
+}
+
+function createConsentLedgerRepository(aurora) {
+  async function currentConsent(citizenId) {
+    return getLedgerItem(`CITIZEN#${citizenId}`, "CONSENT#CURRENT");
+  }
+
+  return {
+    ...aurora,
+    async getPublishedConsentDocument(version) {
+      if (version === currentConsentDocument.version
+          && currentConsentDocument.id
+          && /^[0-9a-f]{64}$/i.test(currentConsentDocument.copySha256 || "")) {
+        return currentConsentDocument;
+      }
+      return aurora.getPublishedConsentDocument(version);
+    },
+    async grantCoreConsent({ citizen, receipt, credential }) {
+      const projection = { type: "consent_granted", citizen, receipt, credential };
+      const projectionJson = JSON.stringify(projection);
+      const citizenPk = `CITIZEN#${citizen.id}`;
+      const credentialPk = `CREDENTIAL#${credential.tokenSha256}`;
+      await dynamodb.send(new TransactWriteItemsCommand({
+        TransactItems: [
+          uniquePut({
+            pk: dynamoString(citizenPk),
+            sk: dynamoString("PROFILE"),
+            entity: dynamoString("citizen_profile"),
+            citizen_id: dynamoString(citizen.id),
+            status: dynamoString(citizen.status),
+            residency_region: dynamoString(citizen.residencyRegion),
+            created_at: dynamoString(citizen.createdAt),
+          }),
+          uniquePut({
+            pk: dynamoString(citizenPk),
+            sk: dynamoString("CONSENT#CURRENT"),
+            entity: dynamoString("current_consent"),
+            state: dynamoString("granted"),
+            receipt_id: dynamoString(receipt.id),
+            document_id: dynamoString(receipt.documentId),
+            document_version: dynamoString(receipt.documentVersion),
+            purposes: dynamoStringList(receipt.purposes),
+            occurred_at: dynamoString(receipt.occurredAt),
+            projection_json: dynamoString(projectionJson),
+          }),
+          uniquePut({
+            pk: dynamoString(credentialPk),
+            sk: dynamoString("CREDENTIAL"),
+            entity: dynamoString("browser_credential"),
+            citizen_id: dynamoString(citizen.id),
+            status: dynamoString("active"),
+            created_at: dynamoString(credential.createdAt),
+            expires_at: dynamoString(credential.expiresAt),
+            expires_at_epoch: dynamoNumber(Math.floor(new Date(credential.expiresAt).getTime() / 1000)),
+          }),
+          uniquePut({
+            pk: dynamoString(citizenPk),
+            sk: dynamoString(`CONSENT_EVENT#${receipt.occurredAt}#${receipt.id}`),
+            entity: dynamoString("consent_projection_event"),
+            action: dynamoString("granted"),
+            receipt_id: dynamoString(receipt.id),
+            occurred_at: dynamoString(receipt.occurredAt),
+            projection_json: dynamoString(projectionJson),
+          }),
+        ],
+      }));
+    },
+    async resolveCredential(tokenSha256, isoNow) {
+      const item = await getLedgerItem(`CREDENTIAL#${tokenSha256}`, "CREDENTIAL");
+      if (item) {
+        const active = dynamoValue(item, "status") === "active";
+        const unexpired = Date.parse(dynamoValue(item, "expires_at")) > Date.parse(isoNow);
+        return active && unexpired
+          ? { citizenId: dynamoValue(item, "citizen_id"), status: "active" }
+          : null;
+      }
+      return aurora.resolveCredential(tokenSha256, isoNow);
+    },
+    async getActiveConsent(citizenId, requiredPurposes) {
+      const item = await currentConsent(citizenId);
+      if (item) {
+        if (dynamoValue(item, "state") !== "granted") return null;
+        const purposes = dynamoList(item, "purposes");
+        if (!requiredPurposes.every((purpose) => purposes.includes(purpose))) return null;
+        return {
+          id: dynamoValue(item, "receipt_id"),
+          documentId: dynamoValue(item, "document_id"),
+          documentVersion: dynamoValue(item, "document_version"),
+          purposes,
+        };
+      }
+      return aurora.getActiveConsent(citizenId, requiredPurposes);
+    },
+    async ensureRelationalConsent(citizenId, receiptId) {
+      const item = await currentConsent(citizenId);
+      if (!item || dynamoValue(item, "receipt_id") !== receiptId) return;
+      const projection = JSON.parse(dynamoValue(item, "projection_json"));
+      await aurora.projectConsentEvent(projection);
+    },
+    async requestCoreErasure({ citizenId, tokenSha256, withdrawalReceipt, rightsRequest }) {
+      const item = await currentConsent(citizenId);
+      if (!item) {
+        await aurora.transaction(async (tx) => {
+          if (withdrawalReceipt) await tx.appendConsentReceipt(withdrawalReceipt);
+          await tx.revokeBrowserCredentials(citizenId, rightsRequest.requestedAt);
+          await tx.markCitizenErasurePending(citizenId);
+          await tx.createDataRightsRequest(rightsRequest);
+          await tx.appendOutboxEvent({
+            id: crypto.randomUUID(),
+            citizenId,
+            eventType: "erasure_requested",
+            aggregateType: "data_rights_request",
+            aggregateId: rightsRequest.id,
+            metadata: { schema_version: "citizen_erasure_request_v1" },
+            createdAt: rightsRequest.requestedAt,
+          });
+        });
+        return;
+      }
+
+      const grantProjection = JSON.parse(dynamoValue(item, "projection_json"));
+      const outboxEventId = crypto.randomUUID();
+      const projection = {
+        type: "consent_withdrawn",
+        citizenId,
+        requestedAt: rightsRequest.requestedAt,
+        grantProjection,
+        withdrawalReceipt,
+        rightsRequest,
+        outboxEventId,
+      };
+      const projectionJson = JSON.stringify(projection);
+      const citizenPk = `CITIZEN#${citizenId}`;
+      const eventId = withdrawalReceipt?.id || rightsRequest.id;
+      await dynamodb.send(new TransactWriteItemsCommand({
+        TransactItems: [
+          {
+            Update: {
+              TableName: consentLedgerTable,
+              Key: { pk: dynamoString(citizenPk), sk: dynamoString("CONSENT#CURRENT") },
+              UpdateExpression: "SET #state = :withdrawn, withdrawal_receipt_id = :withdrawal, updated_at = :updated, projection_json = :projection",
+              ConditionExpression: "#state = :granted AND receipt_id = :receipt",
+              ExpressionAttributeNames: { "#state": "state" },
+              ExpressionAttributeValues: {
+                ":withdrawn": dynamoString("withdrawn"),
+                ":granted": dynamoString("granted"),
+                ":withdrawal": dynamoString(eventId),
+                ":updated": dynamoString(rightsRequest.requestedAt),
+                ":receipt": dynamoString(dynamoValue(item, "receipt_id")),
+                ":projection": dynamoString(projectionJson),
+              },
+            },
+          },
+          {
+            Update: {
+              TableName: consentLedgerTable,
+              Key: { pk: dynamoString(citizenPk), sk: dynamoString("PROFILE") },
+              UpdateExpression: "SET #status = :pending, updated_at = :updated",
+              ConditionExpression: "attribute_exists(pk)",
+              ExpressionAttributeNames: { "#status": "status" },
+              ExpressionAttributeValues: {
+                ":pending": dynamoString("erasure_pending"),
+                ":updated": dynamoString(rightsRequest.requestedAt),
+              },
+            },
+          },
+          {
+            Update: {
+              TableName: consentLedgerTable,
+              Key: { pk: dynamoString(`CREDENTIAL#${tokenSha256}`), sk: dynamoString("CREDENTIAL") },
+              UpdateExpression: "SET #status = :revoked, revoked_at = :updated",
+              ConditionExpression: "#status = :active",
+              ExpressionAttributeNames: { "#status": "status" },
+              ExpressionAttributeValues: {
+                ":revoked": dynamoString("revoked"),
+                ":active": dynamoString("active"),
+                ":updated": dynamoString(rightsRequest.requestedAt),
+              },
+            },
+          },
+          uniquePut({
+            pk: dynamoString(citizenPk),
+            sk: dynamoString(`RIGHTS#${rightsRequest.requestedAt}#${rightsRequest.id}`),
+            entity: dynamoString("data_rights_request"),
+            request_id: dynamoString(rightsRequest.id),
+            request_type: dynamoString(rightsRequest.requestType),
+            status: dynamoString(rightsRequest.status),
+            requested_at: dynamoString(rightsRequest.requestedAt),
+          }),
+          uniquePut({
+            pk: dynamoString(citizenPk),
+            sk: dynamoString(`CONSENT_EVENT#${rightsRequest.requestedAt}#${eventId}`),
+            entity: dynamoString("consent_projection_event"),
+            action: dynamoString("withdrawn"),
+            receipt_id: dynamoString(eventId),
+            occurred_at: dynamoString(rightsRequest.requestedAt),
+            projection_json: dynamoString(projectionJson),
+          }),
+        ],
+      }));
+    },
+  };
+}
+
 const dataApi = createDataApi();
-const repository = createRepository(dataApi);
+const auroraRepository = createRepository(dataApi);
+const repository = createConsentLedgerRepository(auroraRepository);
 const vault = createEnvelopeVault({
   keyManager: {
     async generateDataKey({ citizenId, recordId, dataClass }) {
@@ -407,7 +699,21 @@ function safeErrorCode(error) {
   return String(error?.message || "citizen_data_unavailable").split(":")[0];
 }
 
+async function projectConsentLedgerRecords(records) {
+  for (const record of records) {
+    const image = record?.dynamodb?.NewImage;
+    if (dynamoValue(image, "entity") !== "consent_projection_event") continue;
+    const projectionJson = dynamoValue(image, "projection_json");
+    if (!projectionJson) throw new Error("citizen_data_projection_missing");
+    await auroraRepository.projectConsentEvent(JSON.parse(projectionJson));
+  }
+  return { projected: records.length };
+}
+
 export async function handler(event) {
+  if (Array.isArray(event?.Records)) {
+    return projectConsentLedgerRecords(event.Records);
+  }
   if (event?.requestContext?.http?.method !== "POST") {
     return jsonResponse(405, { error: "citizen_data_method_not_allowed" });
   }

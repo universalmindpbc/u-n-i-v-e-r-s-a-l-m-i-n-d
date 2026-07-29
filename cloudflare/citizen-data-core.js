@@ -97,7 +97,7 @@ export function createCitizenDataService({
     const tokenSha256 = await sha256Hex(rawCredential);
     const identity = await repository.resolveCredential(tokenSha256, now().toISOString());
     if (!identity || identity.status !== "active") throw new Error("citizen_data_credential_invalid");
-    return identity;
+    return { ...identity, tokenSha256 };
   }
 
   async function requireConsent(citizenId, requiredPurposes) {
@@ -124,31 +124,41 @@ export function createCitizenDataService({
       const tokenSha256 = await sha256Hex(rawCredential);
       const expiresAt = new Date(createdAt.getTime() + browserCredentialLifetimeDays * 86400000);
 
-      await repository.transaction(async (tx) => {
-        await tx.createCitizen({
-          id: citizenId,
-          status: "active",
-          residencyRegion: cleanString(residencyRegion, 16) || "AU",
-          createdAt: createdAt.toISOString(),
+      const citizen = {
+        id: citizenId,
+        status: "active",
+        residencyRegion: cleanString(residencyRegion, 16) || "AU",
+        createdAt: createdAt.toISOString(),
+      };
+      const receipt = {
+        id: receiptId,
+        citizenId,
+        documentId: document.id,
+        documentVersion: document.version,
+        documentCopySha256: document.copySha256 || document.copy_sha256 || null,
+        action: "granted",
+        evidenceNonce,
+        source: "arrival_consent",
+        purposes,
+        occurredAt: createdAt.toISOString(),
+      };
+      const credential = {
+        id: credentialId,
+        citizenId,
+        tokenSha256,
+        createdAt: createdAt.toISOString(),
+        expiresAt: expiresAt.toISOString(),
+      };
+
+      if (repository.grantCoreConsent) {
+        await repository.grantCoreConsent({ citizen, receipt, credential });
+      } else {
+        await repository.transaction(async (tx) => {
+          await tx.createCitizen(citizen);
+          await tx.appendConsentReceipt(receipt);
+          await tx.createBrowserCredential(credential);
         });
-        await tx.appendConsentReceipt({
-          id: receiptId,
-          citizenId,
-          documentId: document.id,
-          action: "granted",
-          evidenceNonce,
-          source: "arrival_consent",
-          purposes,
-          occurredAt: createdAt.toISOString(),
-        });
-        await tx.createBrowserCredential({
-          id: credentialId,
-          citizenId,
-          tokenSha256,
-          createdAt: createdAt.toISOString(),
-          expiresAt: expiresAt.toISOString(),
-        });
-      });
+      }
 
       return {
         rawCredential,
@@ -180,6 +190,9 @@ export function createCitizenDataService({
       assertNoRewardFields(input);
       const identity = await identityForCredential(rawCredential);
       const consent = await requireConsent(identity.citizenId, REQUIRED_CORE_PURPOSES);
+      if (repository.ensureRelationalConsent) {
+        await repository.ensureRelationalConsent(identity.citizenId, consent.id);
+      }
       const session = {
         id: uuid(),
         citizenId: identity.citizenId,
@@ -333,6 +346,10 @@ export function createCitizenDataService({
 
     async requestExport(rawCredential) {
       const identity = await identityForCredential(rawCredential);
+      const consent = await repository.getActiveConsent(identity.citizenId, []);
+      if (repository.ensureRelationalConsent && consent) {
+        await repository.ensureRelationalConsent(identity.citizenId, consent.id);
+      }
       const requestedAt = now().toISOString();
       const requestId = uuid();
       await repository.transaction(async (tx) => {
@@ -361,29 +378,41 @@ export function createCitizenDataService({
       const consent = await repository.getActiveConsent(identity.citizenId, []);
       const requestedAt = now().toISOString();
       const requestId = uuid();
+      const withdrawalReceipt = consent ? {
+        id: uuid(),
+        citizenId: identity.citizenId,
+        documentId: consent.documentId,
+        documentVersion: consent.documentVersion,
+        action: "withdrawn",
+        supersedesReceiptId: consent.id,
+        evidenceNonce: uuid(),
+        source: "my_data",
+        purposes: consent.purposes,
+        occurredAt: requestedAt,
+      } : null;
+      const rightsRequest = {
+        id: requestId,
+        citizenId: identity.citizenId,
+        requestType: "erase",
+        status: "received",
+        requestedAt,
+      };
+
+      if (repository.requestCoreErasure) {
+        await repository.requestCoreErasure({
+          citizenId: identity.citizenId,
+          tokenSha256: identity.tokenSha256,
+          withdrawalReceipt,
+          rightsRequest,
+        });
+        return { id: requestId, status: "received", consentWithdrawn: Boolean(consent), requestedAt };
+      }
+
       await repository.transaction(async (tx) => {
-        if (consent) {
-          await tx.appendConsentReceipt({
-            id: uuid(),
-            citizenId: identity.citizenId,
-            documentId: consent.documentId,
-            action: "withdrawn",
-            supersedesReceiptId: consent.id,
-            evidenceNonce: uuid(),
-            source: "my_data",
-            purposes: consent.purposes,
-            occurredAt: requestedAt,
-          });
-        }
+        if (withdrawalReceipt) await tx.appendConsentReceipt(withdrawalReceipt);
         await tx.revokeBrowserCredentials(identity.citizenId, requestedAt);
         await tx.markCitizenErasurePending(identity.citizenId);
-        await tx.createDataRightsRequest({
-          id: requestId,
-          citizenId: identity.citizenId,
-          requestType: "erase",
-          status: "received",
-          requestedAt,
-        });
+        await tx.createDataRightsRequest(rightsRequest);
         await tx.appendOutboxEvent({
           id: uuid(),
           citizenId: identity.citizenId,
