@@ -420,6 +420,20 @@ Resources:
                   - kms:Decrypt
                   - kms:GenerateDataKey
                 Resource: !GetAtt CitizenDataKey.Arn
+              - Sid: UseCitizenConsentLedgerKeyThroughDynamoDb
+                Effect: Allow
+                Action:
+                  - kms:CreateGrant
+                  - kms:Decrypt
+                  - kms:DescribeKey
+                  - kms:Encrypt
+                  - kms:GenerateDataKey*
+                  - kms:ReEncrypt*
+                Resource: !GetAtt CitizenDataKey.Arn
+                Condition:
+                  StringEquals:
+                    kms:CallerAccount: !Ref AWS::AccountId
+                    kms:ViaService: !Sub dynamodb.${AWS::Region}.${AWS::URLSuffix}
               - Sid: StoreCitizenCiphertextOnly
                 Effect: Allow
                 Action:

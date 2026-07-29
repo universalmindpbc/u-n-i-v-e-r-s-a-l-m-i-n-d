@@ -254,6 +254,19 @@
       "Resource": "*"
     },
     {
+      "Sid": "ReadCitizenDataLambdaLogsOnly",
+      "Effect": "Allow",
+      "Action": [
+        "logs:DescribeLogStreams",
+        "logs:FilterLogEvents",
+        "logs:GetLogEvents"
+      ],
+      "Resource": [
+        "arn:aws:logs:ap-southeast-2:*:log-group:/aws/lambda/universal-mind-citizen-data-staging",
+        "arn:aws:logs:ap-southeast-2:*:log-group:/aws/lambda/universal-mind-citizen-data-staging:log-stream:*"
+      ]
+    },
+    {
       "Sid": "DeleteCitizenDataStagingStackOnly",
       "Effect": "Allow",
       "Action": "cloudformation:DeleteStack",
