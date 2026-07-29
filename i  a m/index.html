@@ -19,6 +19,19 @@
     <meta property="og:image" content="https://universalmind.tv/vogue/iam/a%20s%20s%20e%20t%20s/Universal%20Mind%20%5B%20I%20o%20H%20%5D%20Logo%20512.png">
     <meta name="twitter:card" content="summary">
     <title>Home | I Am</title>
+    <script>
+      if (new URLSearchParams(window.location.search).get("shop") === "1") {
+        document.documentElement.dataset.shopEntry = "requested";
+      }
+    </script>
+    <style>
+      html[data-shop-entry] { background: #000; }
+      html[data-shop-entry] body { background: #000; }
+      .shop-entry { display: none; }
+      html[data-shop-entry="requested"] .site-shell,
+      html[data-shop-entry="loading"] .site-shell { visibility: hidden; }
+      html[data-shop-entry] .shop-entry { display: grid; }
+    </style>
     <link rel="icon" type="image/png" sizes="32x32" href="/vogue/iam/favicon.png?v=iam-favicon-4">
     <link rel="shortcut icon" type="image/png" href="/vogue/iam/favicon.png?v=iam-favicon-4">
     <link rel="apple-touch-icon" sizes="180x180" href="/vogue/iam/apple-touch-icon.png?v=iam-favicon-4">
@@ -30,12 +43,22 @@
     <script src="music-television-frame-context.js?v=music-tv-frame-14ebf4459d03"></script>
     <link rel="stylesheet" href="styles.css?v=global-nav-single-shell-2-technology-submenu-half-type-1">
     <link rel="preload" as="image" href="a s s e t s/Universal Mind [ I o H ] Logo 512.png" fetchpriority="high">
-    <link rel="stylesheet" href="adaptive-environment-television.css?v=music-tv-css-f49ecc4f4b49">
+    <link rel="stylesheet" href="adaptive-environment-television.css?v=music-tv-css-aff29ce621c9">
     <link rel="stylesheet" href="circle-audio-rooms.css?v=circle-rooms-css-9cb7b0860284">
     <link rel="stylesheet" href="mantra-sampler.css?v=mantra-sampler-css-fa5e34089bf9">
     <link rel="stylesheet" href="realtime-voice-assistant.css?v=realtime-voice-css-3dbe2f94acaa">
   </head>
   <body class="adaptive-television-page">
+    <section class="shop-entry" data-shop-entry-screen aria-labelledby="shop-entry-title">
+      <div class="shop-entry__inner">
+        <h1 id="shop-entry-title">james bondage</h1>
+        <button class="adaptive-environment__play shop-entry__play" type="button" data-shop-entry-button aria-label="Enter the James Bondage shop in full screen with music">
+          <img src="a s s e t s/iconmonstr-video play button - white -16-240.png" alt="">
+        </button>
+        <p>This is a full screen music first, shopping experience</p>
+        <span data-shop-entry-label>enter</span>
+      </div>
+    </section>
     <main class="site-shell" aria-label="Universal Mind i am adaptive environment music television">
       <section class="scene" aria-label="Opening scene">
         <div class="background-video" aria-hidden="true">
@@ -934,6 +957,14 @@
       ) {
         window.IAM_CITIZEN_NEEDS_INFERENCE_ENDPOINT = "/api/citizen-needs-inference";
       }
+
+      if (document.documentElement.dataset.shopEntry) {
+        document.documentElement.dataset.shopEntry = "loading";
+        document.querySelectorAll("video[data-stream-file]").forEach((video) => {
+          video.setAttribute("data-stream-deferred", "");
+          video.removeAttribute("autoplay");
+        });
+      }
     </script>
     <script src="local-context.js?v=local-context-4"></script>
     <script src="script.js?v=adaptive-env-stream-4a4badd4d6cd"></script>
@@ -953,7 +984,7 @@
     <script src="circle-audio-rooms.js?v=circle-rooms-4bcb0602f8f3"></script>
     <script src="mantra-audio-fx.js?v=mantra-audio-fx-5e1fdfbadb04"></script>
     <script src="mantra-sampler.js?v=mantra-sampler-6402cc9d89a2"></script>
-    <script src="adaptive-environment-television.js?v=music-tv-b24d2022755b"></script>
+    <script src="adaptive-environment-television.js?v=music-tv-a8395c7e0b4c"></script>
     <script src="realtime-voice-assistant.js?v=realtime-voice-98dbaed545af"></script>
     <script src="adaptive-page-metadata-v1.js"></script>
     <script async data-agora-rtc-sdk src="https://download.agora.io/sdk/release/AgoraRTC_N-4.24.6.js"></script>

@@ -60,6 +60,9 @@
   const productDialogPrice = document.querySelector("[data-shop-product-dialog-price]");
   const productDialogRetailer = document.querySelector("[data-shop-product-dialog-retailer]");
   const productDialogRetailerLabel = document.querySelector("[data-shop-product-dialog-retailer-label]");
+  const sexEdViewport = document.querySelector("[data-shop-sex-ed-viewport]");
+  const sexEdPrevious = document.querySelector("[data-shop-sex-ed-previous]");
+  const sexEdNext = document.querySelector("[data-shop-sex-ed-next]");
   const themeKey = "iamShopThemeV1";
   let activeCategory = "all";
   let activeCatalogueBrand = "all";
@@ -484,7 +487,7 @@
     const brand = currentBrandRecord();
     const displayName = brand?.brand || "SHOP";
     if (catalogueBrandTitle) catalogueBrandTitle.textContent = displayName;
-    if (catalogueBrandKicker) catalogueBrandKicker.textContent = brand?.brand || `all ${catalogueKernel?.brandOrder?.length || 24} brands`;
+    if (catalogueBrandKicker) catalogueBrandKicker.textContent = brand?.brand || `all ${catalogueKernel?.brandOrder?.length || 26} brands`;
     if (catalogueAsideBrand) catalogueAsideBrand.textContent = brand?.brand || "James Bondage";
     if (catalogueAsideForm) {
       catalogueAsideForm.textContent = activeCatalogueType === "all"
@@ -788,7 +791,7 @@
 
   async function loadCatalogue() {
     try {
-      const response = await fetch("shop-product-kernel-v1.json?v=shop-universal-catalogue-16", { credentials: "same-origin" });
+      const response = await fetch("shop-product-kernel-v1.json?v=shop-universal-catalogue-18", { credentials: "same-origin" });
       if (!response.ok) throw new Error(`Catalogue request failed: ${response.status}`);
       catalogueKernel = await response.json();
       catalogueProducts = Array.isArray(catalogueKernel.products)
@@ -897,6 +900,17 @@
     window.parent.postMessage({ type: "iam:shop-music-status-request" }, window.location.origin);
     window.parent.postMessage({ type: "iam:shop-fullscreen-status-request" }, window.location.origin);
   }
+
+  function moveSexEdShelf(direction) {
+    if (!sexEdViewport) return;
+    sexEdViewport.scrollBy({
+      left: direction * Math.max(280, sexEdViewport.clientWidth * .82),
+      behavior: "smooth",
+    });
+  }
+
+  sexEdPrevious?.addEventListener("click", () => moveSexEdShelf(-1));
+  sexEdNext?.addEventListener("click", () => moveSexEdShelf(1));
 
   applyFilters();
   prepareSilentEditorialVideos();

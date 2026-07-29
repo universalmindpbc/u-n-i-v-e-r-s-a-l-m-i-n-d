@@ -20,11 +20,11 @@ const redirects = read("_redirects");
 
 for (const required of [
   "James Bondage",
-  "24 brands",
-  "309",
-  "affiliate relationships are proposed",
+  "26 brands",
+  "359",
+  "JAMES BONDAGE / UNIVERSAL MIND",
   "Bordelle",
-  "Signature Waspie",
+  "Angela Dress",
   "WARDROBE.NYC",
   "KARLA ŠPETIĆ",
   "The Upside",
@@ -46,8 +46,8 @@ for (const absent of [
 ]) {
   assert.doesNotMatch(shop, absent, `Current shop must not contain ${absent}`);
 }
-assert.equal((shop.match(/<li(?:\s+class="[^"]*")?><span>/g) || []).length, 24, "Brand ledger must contain all 24 retailers");
-assert.equal((shop.match(/data-product(?:\s|>)/g) || []).length, 11, "Opening edit must contain the restrained 11 authorized hero pieces");
+assert.equal((shop.match(/<li(?:\s+class="[^"]*")?><span>/g) || []).length, 26, "Brand ledger must contain all 26 retailers");
+assert.equal((shop.match(/data-product(?:\s|>)/g) || []).length, 12, "Opening edit must contain the restrained 12 authorized hero pieces");
 
 assert.equal(catalogue.products.length, 36, "Finished ERES catalogue must contain all 36 approved product URLs");
 assert.equal(new Set(catalogue.products.map((product) => product.id)).size, 36, "Catalogue product IDs must be unique");
@@ -79,20 +79,20 @@ for (const product of catalogue.products) {
   assert.match(product.price, /^AU\$ (?:\d{3}|\d\.\d{3})$/, `ERES catalogue product must keep its verified AUD price: ${product.id}`);
 }
 
-assert.equal(productKernel.counts.brands, 24, "Fashion kernel must retain all 24 approved retailers");
-assert.equal(productKernel.products.length, 309, "Fashion kernel must contain exactly 309 approved canonical product URLs from Notion");
-assert.equal(new Set(productKernel.products.map((product) => product.canonicalUrl)).size, 309, "Fashion kernel product URLs must be canonical and unique");
-assert.equal(new Set(productKernel.products.map((product) => `${product.brand}:${product.slug}`)).size, 309, "Fashion kernel product slugs must be unique within each brand");
-assert.equal(productKernel.products.filter((product) => product.metadataStatus === "Metadata ready").length, 306, "All retailer-verifiable records must be metadata-ready");
-assert.equal(productKernel.products.filter((product) => product.description?.trim()).length, 308, "Retailer-authored descriptions must be retained wherever published");
-assert.equal(productKernel.products.filter((product) => product.price?.trim()).length, 307, "Verified display prices must be retained wherever published");
+assert.equal(productKernel.counts.brands, 26, "Fashion kernel must retain all 26 approved retailers");
+assert.equal(productKernel.products.length, 359, "Fashion kernel must contain exactly 359 approved canonical product URLs from Notion");
+assert.equal(new Set(productKernel.products.map((product) => product.canonicalUrl)).size, 359, "Fashion kernel product URLs must be canonical and unique");
+assert.equal(new Set(productKernel.products.map((product) => `${product.brand}:${product.slug}`)).size, 359, "Fashion kernel product slugs must be unique within each brand");
+assert.equal(productKernel.products.filter((product) => product.metadataStatus === "Metadata ready").length, 356, "All retailer-verifiable records must be metadata-ready");
+assert.equal(productKernel.products.filter((product) => product.description?.trim()).length, 358, "Retailer-authored descriptions must be retained wherever published");
+assert.equal(productKernel.products.filter((product) => product.price?.trim()).length, 357, "Verified display prices must be retained wherever published");
 assert.equal(productKernel.products.filter((product) => product.requiresReview).length, 3, "Only the three retailer-unpublished metadata gaps may remain review items");
 assert.ok(
   productKernel.products.filter((product) => product.subjectPresent === true || product.brand === "ERES").length / productKernel.products.length >= 0.9,
   "At least 90% of the approved catalogue must use an official retailer image featuring a person"
 );
-assert.equal(productKernel.products.filter((product) => product.listedOnShop).length, 309, "Every approved product record must be listed");
-assert.equal(productKernel.products.filter((product) => product.image).length, 309, "Every approved product record must carry an approved hero image");
+assert.equal(productKernel.products.filter((product) => product.listedOnShop).length, 359, "Every approved product record must be listed");
+assert.equal(productKernel.products.filter((product) => product.image).length, 359, "Every approved product record must carry an approved hero image");
 assert.ok(productKernel.products.every((product) => product.retailerUrl?.startsWith("https://")), "Every tensor product must retain its exact retailer URL");
 assert.equal(productKernel.authority.policy, "exact_notion_product_urls_only", "Notion must remain the sole product authority");
 const emilioProduct = productKernel.products.find((product) => product.brand === "Emilio Cavallini");
@@ -101,6 +101,11 @@ assert.equal(emilioProduct?.metadataStatus, "Metadata ready", "The Emilio catalo
 for (const product of productKernel.products) {
   assert.ok(product.slug, `Missing stable product slug: ${product.id}`);
   assert.ok(fs.existsSync(path.join(iam, product.image)), `Missing approved catalogue image: ${product.image}`);
+}
+for (const brand of ["Free People", "Lisa Marie Fernandez"]) {
+  const products = productKernel.products.filter((product) => product.brand === brand);
+  assert.ok(products.length > 0, `${brand} must be populated from the approved Notion intake`);
+  assert.ok(products.every((product) => product.notionPageId && product.imageSource === "notion_first_hero"), `${brand} must preserve the exact Notion source record and first hero`);
 }
 
 const assetMatches = [...shop.matchAll(/src="(a s s e t s\/shop-mockup\/[^"]+)"/g)].map((match) => match[1]);
@@ -137,6 +142,8 @@ for (const suppliedSilentVideo of [
 }
 assert.match(shop, /href="#catalogue\/nagnata"[^>]*>[\s\S]*?nagnata-home-silent-1\.mp4[\s\S]*?nagnata-home-silent-2\.mp4[\s\S]*?<div class="shop-product__copy shop-product__copy--brand-only"><p>NAGNATA<\/p><em>view edit<\/em><\/div>/, "Nagnata films must link to the brand shopfront without a product name");
 assert.match(shop, /pucci-vivara-editorial\.jpg/, "The supplied Pucci Vivara editorial still must replace the previous homepage image");
+assert.match(shop, /lisa-marie-fernandez-bella-hadid\.jpeg[\s\S]*Bella Hadid wears Lisa Marie Fernandez[\s\S]*Shop The Look/, "Bella Hadid must introduce the Lisa Marie Fernandez edit");
+assert.match(shop, /free-people-scuba\.jpeg[\s\S]*<p>Free People<\/p>/, "The supplied Free People scuba portrait must open the brand edit");
 
 for (const suppliedReference of [
   "https://eu.bordelle.co.uk/products/signature-waspie-cream?variant=43656648884396",
@@ -163,6 +170,7 @@ for (const featuredReference of [
 }
 
 assert.match(shop, /data-shop-live-band[\s\S]*data-stream-role="fashion"[\s\S]*autoplay[\s\S]*muted/, "Every Shop route must open with the silent live fashion band");
+assert.match(shop, /data-shop-live-band[\s\S]*data-stream-max-height="240"/, "Shop hero must use the reduced 240p stream cap");
 assert.match(shop, /cloudflare-stream-controller\.js[\s\S]*broadcast-clock-v1\.js[\s\S]*shop\.js/, "The live band must reuse the established stream controller and broadcast clock");
 assert.match(shopScript, /stateAt\("fashion-underground-intensity"\)/, "The live band must follow the James Bondage fashion channel");
 assert.match(shopScript, /wolford-sergio-rossi-capsule[\s\S]*mugler-fall-winter-2021/, "The first live channel proof must rotate between Wolford and Mugler");
@@ -193,13 +201,16 @@ assert.doesNotMatch(shop, /prefersNight/, "System colour preference must not rep
 assert.match(shopScript, /iamShopThemeV1/, "Shop must remember the viewer's day/night choice");
 assert.match(shopScript, /dataset\.shopTheme \|\| "night"/, "Shop script fallback must remain night-first");
 assert.equal((shop.match(/data-filter-category=/g) || []).length, 6, "James Bondage edit must expose the six restrained form filters");
-assert.match(shop, /href="#shop-about">about<\/a>[\s\S]*data-shop-menu[\s\S]*href="#giving-back">giving back<\/a>/i, "Shop masthead must use the approved About / Shop / Giving Back hierarchy");
+assert.match(shop, /href="#shop-about">about<\/a>[\s\S]*data-shop-menu[\s\S]*href="#giving-back">giving back<\/a>[\s\S]*href="#sex-ed">sex ed<\/a>/i, "Shop masthead must use the approved About / Shop / Giving Back / Sex Ed hierarchy");
 assert.equal((shop.match(/data-shop-catalogue-type=/g) || []).length, 6, "Shop menu must expose the six functional type routes");
+for (const priorityBrand of ["eres", "bordelle", "wardrobenyc", "annies-ibiza"]) {
+  assert.match(shop, new RegExp(`href="#catalogue/${priorityBrand}"`, "i"), `Shop menu must expose priority brand ${priorityBrand}`);
+}
 assert.match(shop, /James Bondage is 24\/7 electronic music television broadcasting sex x mindfulness/i, "Shop About must use the approved 24/7 electronic music television copy");
 assert.match(shop, /Our James Bondage Health series \[ sex-ed \] shares female lead conversations/i, "Shop About must preserve the approved James Bondage Health distinction");
 assert.match(shop, /All profits from affiliate revenue are invested in mental health\./i, "Giving Back must state the approved affiliate profit formula");
-assert.match(shop, /<li>youth mental health outreach<\/li>[\s\S]*<li>youth mental health research<\/li>[\s\S]*<li>women’s mental health<\/li>[\s\S]*<li>veteran’s mental health<\/li>/i, "Giving Back must preserve the four approved wallet choices as separate lines");
-assert.match(shop, /href="#catalogue\/eres"[^>]*data-shop-catalogue-link/, "ERES must open from the 24-brand ledger");
+assert.match(shop, /href="https:\/\/headspace\.org\.au"[\s\S]*href="https:\/\/www\.orygen\.org\.au"[\s\S]*href="https:\/\/www\.herspace\.org\.au"[\s\S]*href="https:\/\/www\.phoenixaustralia\.org"/i, "Giving Back must link the four approved mental-health partners");
+assert.match(shop, /href="#catalogue\/eres"[^>]*data-shop-catalogue-link/, "ERES must open from the 26-brand ledger");
 assert.match(shop, /data-catalogue-editorial-header/, "ERES catalogue must open with the approved editorial header");
 assert.match(shop, /data-shop-product-dialog/, "Catalogue must expose the quiet expanded product view");
 assert.match(shop, /data-shop-product-dialog-description/, "Expanded product view must prioritize retailer-sourced product context");
@@ -224,7 +235,19 @@ assert.match(shopScript, /catalogueReturnScrollY = window\.scrollY/, "Opening an
 assert.match(shopScript, /restoreCatalogueScroll[\s\S]*window\.setTimeout\(restoreCatalogueScroll, 50\)/, "Closing an expanded product must restore the viewer's precise catalogue position after native dialog focus returns");
 assert.match(shopScript, /enteringCatalogue[\s\S]*scrollBehavior = "auto"[\s\S]*window\.scrollTo\(\{ top: 0, left: 0, behavior: "auto" \}\)/, "Entering ERES from the brand ledger must reset immediately to the editorial header");
 
+assert.equal((shop.match(/href="index\.html\?sexEdEpisode=0[1-8]"/g) || []).length, 8, "Shop must surface exactly eight canonical Sex Ed episode links");
+assert.match(shop, /data-shop-sex-ed-viewport[\s\S]*data-shop-sex-ed-previous[\s\S]*data-shop-sex-ed-next|data-shop-sex-ed-previous[\s\S]*data-shop-sex-ed-next[\s\S]*data-shop-sex-ed-viewport/, "Sex Ed section must provide an accessible horizontal browsing control");
+assert.match(shopScript, /function moveSexEdShelf[\s\S]*sexEdViewport\.scrollBy/, "Sex Ed shelf controls must scroll the episode track");
+assert.match(television, /requestedSexEdEpisode[\s\S]*bootstrapRequestedSexEd[\s\S]*openSexEdEpisode\(requestedSexEdEpisode\)/, "Sex Ed links must deep-link each episode into its established player");
+
+assert.match(index, /data-shop-entry-screen[\s\S]*james bondage[\s\S]*data-shop-entry-button[\s\S]*This is a full screen music first, shopping experience[\s\S]*data-shop-entry-label>enter/, "Direct Shop entry must use the approved black music-first splash copy");
+assert.match(index, /dataset\.shopEntry = "requested"/, "Direct Shop entry must activate before the Universal Mind homepage can paint");
+assert.match(television, /function activateShopEntry[\s\S]*requestShopFullscreen[\s\S]*requestShopMusic\([^\n]*ensurePlaying: true[\s\S]*completeShopEntry/, "The Shop splash gesture must request full screen and start audio before revealing the shop");
+assert.match(television, /DOMContentLoaded", bootstrapRequestedShop/, "The direct Shop journey must preload before the full homepage load event");
+
 assert.match(shop, /shop-footer[\s\S]*james-bondage-lower-masthead\.mp4/, "Homepage and catalogue routes must end with the supplied silent James Bondage masthead");
+assert.match(shop, /shop-footer__legal[\s\S]*JAMES BONDAGE \/ UNIVERSAL MIND/, "Shop footer must use the final Universal Mind ownership line");
+assert.doesNotMatch(shop, /presentation mock-up|affiliate relationships are proposed/i, "Shop footer must no longer describe the live shop as a mock-up or proposal");
 assert.ok(fs.existsSync(path.join(iam, "a s s e t s/shop-mockup/james-bondage-lower-masthead.mp4")), "Missing supplied lower masthead video");
 assert.match(shop, /adaptive-television-fullscreen shop-hero__fullscreen[\s\S]*data-shop-hero-fullscreen/, "Shop fullscreen must reuse the Music Television control language");
 assert.match(shopScript, /IAMTelevisionRoom\?\.requestShopFullscreen[\s\S]*iam:shop-fullscreen-request/, "Embedded Shop fullscreen must delegate to the Universal Mind shell");

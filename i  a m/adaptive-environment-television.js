@@ -270,7 +270,14 @@
   const typewriterLines = Array.from(document.querySelectorAll("[data-adaptive-typewriter]"));
   const contextLines = Array.from(document.querySelectorAll("[data-local-context-line]"));
   const televisionPageTitle = document.title;
-  const shopShellRequested = new URLSearchParams(window.location.search).get("shop") === "1";
+  const entryParams = new URLSearchParams(window.location.search);
+  const shopShellRequested = entryParams.get("shop") === "1";
+  const requestedSexEdEpisode = /^0[1-8]$/.test(entryParams.get("sexEdEpisode") || "")
+    ? entryParams.get("sexEdEpisode")
+    : "";
+  const shopEntryScreen = document.querySelector("[data-shop-entry-screen]");
+  const shopEntryButton = document.querySelector("[data-shop-entry-button]");
+  const shopEntryLabel = document.querySelector("[data-shop-entry-label]");
 
   if (!playButton || !room || !playerMount) return;
 
@@ -317,6 +324,8 @@
   let hasOpened = false;
   let televisionPlaybackRequested = false;
   let pageViewPreviousBlend = null;
+  let shopEntryActivated = false;
+  let shopEntryFrameReady = false;
   let learnCueShown = false;
   let learnCueUnlocked = false;
   let walletOnboardingEngaged = false;
@@ -6942,9 +6951,13 @@
     return true;
   }
 
-  async function requestShopMusic(targetWindow = pageFrame?.contentWindow) {
+  async function requestShopMusic(targetWindow = pageFrame?.contentWindow, options = {}) {
     const currentStatus = shopMusicStatus();
     if (currentStatus.playing) {
+      if (options.ensurePlaying) {
+        postShopMusicStatus(targetWindow);
+        return true;
+      }
       return pauseShopMusic(targetWindow);
     }
 
@@ -7017,12 +7030,42 @@
     setReactionWalletOpen(false);
     room.setAttribute("aria-hidden", "false");
     playButton.setAttribute("aria-expanded", "true");
-    const video = mountPlayer();
-    try { video.pause(); } catch {}
-    video.muted = true;
     document.body.classList.add("television-room-open");
     startFlowerSpin();
     openInVideoPageLayer(shopLink);
+  }
+
+  function completeShopEntry() {
+    if (!shopEntryActivated || !shopEntryFrameReady) return;
+    document.documentElement.dataset.shopEntry = "entered";
+    shopEntryScreen?.setAttribute("aria-hidden", "true");
+    window.setTimeout(() => {
+      if (shopEntryScreen) shopEntryScreen.hidden = true;
+      pageFrame?.contentWindow?.postMessage({ type: "iam:shop-music-status-request" }, window.location.origin);
+    }, 680);
+  }
+
+  function activateShopEntry() {
+    if (!shopShellRequested || shopEntryActivated) return;
+    shopEntryActivated = true;
+    document.documentElement.dataset.shopEntry = "entering";
+    if (shopEntryLabel) shopEntryLabel.textContent = "enter";
+    requestShopFullscreen(pageFrame?.contentWindow);
+    requestShopMusic(pageFrame?.contentWindow, { ensurePlaying: true }).catch(() => {
+      if (shopEntryLabel) shopEntryLabel.textContent = "enter";
+    });
+    completeShopEntry();
+  }
+
+  function bootstrapRequestedSexEd() {
+    if (!requestedSexEdEpisode) return;
+    hasOpened = true;
+    televisionPlaybackRequested = true;
+    room.setAttribute("aria-hidden", "false");
+    playButton.setAttribute("aria-expanded", "true");
+    document.body.classList.add("television-room-open");
+    startFlowerSpin();
+    openSexEdEpisode(requestedSexEdEpisode).catch(() => {});
   }
 
   function returnToTelevisionRoom(options = {}) {
@@ -7807,7 +7850,13 @@
   pageFrame?.addEventListener("load", () => {
     syncPageLayerMetadata();
     postShopMusicStatus();
+    if (shopShellRequested) {
+      shopEntryFrameReady = true;
+      if (!shopEntryActivated) document.documentElement.dataset.shopEntry = "ready";
+      completeShopEntry();
+    }
   });
+  shopEntryButton?.addEventListener("click", activateShopEntry, true);
   setMusicTelevisionMetadata();
   updateNowPlaying();
   if (window.ResizeObserver && nowPlayingViewport && nowPlayingTrack) {
@@ -7839,6 +7888,12 @@
   window.IAMStreamReady?.then(() => {
     if (!selectionIsLoading) primeLocalVideo();
   });
-  if (shopShellRequested) window.addEventListener("load", bootstrapRequestedShop, { once: true });
+  if (shopShellRequested) {
+    if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", bootstrapRequestedShop, { once: true });
+    else bootstrapRequestedShop();
+  } else if (requestedSexEdEpisode) {
+    if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", bootstrapRequestedSexEd, { once: true });
+    else bootstrapRequestedSexEd();
+  }
   runIntro();
 }());
