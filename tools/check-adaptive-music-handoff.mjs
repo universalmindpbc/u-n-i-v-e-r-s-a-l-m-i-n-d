@@ -10,10 +10,13 @@ const globeControllerPath = path.join(IAM_DIR, 'globe.js');
 const streamControllerPath = path.join(IAM_DIR, 'cloudflare-stream-controller.js');
 const streamCataloguePath = path.join(IAM_DIR, 'cloudflare-stream-catalogue.js');
 const shellControllerPath = path.join(IAM_DIR, 'script.js');
+const globalNavigationControllerPath = path.join(IAM_DIR, 'global-navigation.js');
+const globalNavigationCssPath = path.join(IAM_DIR, 'global-navigation.css');
 const adaptiveEnvironmentPath = path.join(IAM_DIR, 'adaptive-environment.js');
 const aboutControllerPath = path.join(IAM_DIR, 'about.js');
 const frameContextPath = path.join(IAM_DIR, 'music-television-frame-context.js');
 const sharedStylesPath = path.join(IAM_DIR, 'styles.css');
+const privacyCssPath = path.join(IAM_DIR, 'privacy-first.css');
 const scienceControllerPath = path.join(IAM_DIR, 'science.js');
 const scienceCssPath = path.join(IAM_DIR, 'science.css');
 const djSetManifestPath = path.join(ROOT, 'cloudflare-stream-djset-upload-manifest.json');
@@ -94,12 +97,20 @@ const singleShellNavigationPagePaths = [
   path.join(IAM_DIR, 'technology-citizen-needs.html'),
   path.join(IAM_DIR, 'about.html'),
 ];
-
-const htmlPageNames = (await fs.readdir(IAM_DIR)).filter((name) => name.endsWith('.html'));
-const privacyNavigationPages = (await Promise.all(htmlPageNames.map(async (name) => ({
-  pagePath: path.join(IAM_DIR, name),
-  source: await fs.readFile(path.join(IAM_DIR, name), 'utf8'),
-})))).filter(({ source }) => source.includes('data-nav-item="privacy-first"'));
+const globalNavigationPagePaths = [
+  path.join(IAM_DIR, 'index.html'),
+  path.join(IAM_DIR, 'adaptive-environment-television.html'),
+  path.join(IAM_DIR, 'adaptive-music-video.html'),
+  path.join(IAM_DIR, 'cafe-del-mar-home.html'),
+  path.join(IAM_DIR, 'about.html'),
+  path.join(IAM_DIR, 'science.html'),
+  path.join(IAM_DIR, 'our-team.html'),
+  path.join(IAM_DIR, 'our-team-concept.html'),
+  path.join(IAM_DIR, 'privacy-first.html'),
+  path.join(IAM_DIR, 'technology-citizen-needs.html'),
+  path.join(IAM_DIR, 'shop.html'),
+  path.join(IAM_DIR, 'wallet.html'),
+];
 
 function requireCondition(condition, message) {
   if (!condition) throw new Error(`Adaptive music handoff preflight failed: ${message}`);
@@ -110,10 +121,13 @@ const globeController = await fs.readFile(globeControllerPath, 'utf8');
 const streamController = await fs.readFile(streamControllerPath, 'utf8');
 const streamCatalogue = await fs.readFile(streamCataloguePath, 'utf8');
 const shellController = await fs.readFile(shellControllerPath, 'utf8');
+const globalNavigationController = await fs.readFile(globalNavigationControllerPath, 'utf8');
+const globalNavigationCss = await fs.readFile(globalNavigationCssPath, 'utf8');
 const adaptiveEnvironment = await fs.readFile(adaptiveEnvironmentPath, 'utf8');
 const aboutController = await fs.readFile(aboutControllerPath, 'utf8');
 const frameContext = await fs.readFile(frameContextPath, 'utf8');
 const sharedStyles = await fs.readFile(sharedStylesPath, 'utf8');
+const privacyCss = await fs.readFile(privacyCssPath, 'utf8');
 const scienceController = await fs.readFile(scienceControllerPath, 'utf8');
 const scienceCss = await fs.readFile(scienceCssPath, 'utf8');
 const djSetManifest = JSON.parse(await fs.readFile(djSetManifestPath, 'utf8'));
@@ -166,6 +180,10 @@ const aboutLinkPages = await Promise.all(aboutLinkPagePaths.map(async (pagePath)
   source: await fs.readFile(pagePath, 'utf8'),
 })));
 const singleShellNavigationPages = await Promise.all(singleShellNavigationPagePaths.map(async (pagePath) => ({
+  pagePath,
+  source: await fs.readFile(pagePath, 'utf8'),
+})));
+const globalNavigationPages = await Promise.all(globalNavigationPagePaths.map(async (pagePath) => ({
   pagePath,
   source: await fs.readFile(pagePath, 'utf8'),
 })));
@@ -385,11 +403,18 @@ requireCondition(citizenNeedsWorkerConfig.includes('name = "REALTIME_RATE_LIMITE
 requireCondition(citizenNeedsWorkerConfig.includes('type = "Text"') && citizenNeedsWorkerConfig.includes('globs = [ "**/*.txt" ]'), 'the Worker no longer bundles the Universal One portal guide');
 requireCondition(realtimeVoicePortalGuide.includes('GLOBAL NAVIGATION') && realtimeVoicePortalGuide.includes('TELEVISION ROOM'), 'the Universal One portal guide no longer covers the site and player journeys');
 requireCondition(realtimeVoicePortalGuide.includes('Privacy first opens the Privacy First page') && realtimeVoicePortalGuide.includes('Go to market remains a visible roadmap label and is currently disabled'), 'Universal One can misdescribe Privacy First as inactive or Go to market as live');
-requireCondition(privacyNavigationPages.length > 0, 'no Privacy First navigation entries were found');
-for (const { pagePath, source } of privacyNavigationPages) {
+requireCondition(globalNavigationController.includes('const VERSION = "global-navigation-canonical-1"'), 'the canonical global navigation version is missing');
+requireCondition(globalNavigationController.includes('href="privacy-first.html" data-nav-item="privacy-first"'), 'the canonical global navigation does not expose Privacy First');
+requireCondition(globalNavigationController.includes('href="shop.html" data-nav-item="shop"'), 'the canonical global navigation does not expose Shop');
+requireCondition(globalNavigationController.includes('data-nav-item="go-to-market" aria-disabled="true"'), 'the canonical global navigation no longer keeps Go to market disabled');
+requireCondition(globalNavigationCss.includes('font-size: clamp(28px, 2.25vw, 46px);') && globalNavigationCss.includes('font-weight: 700;') && globalNavigationCss.includes('letter-spacing: 0.46em;'), 'the canonical global navigation type scale has drifted');
+requireCondition(privacyCss.includes('animation: privacy-clockwise-turn 3s linear infinite;'), 'the Privacy First flower no longer matches the canonical three-second rotation');
+for (const { pagePath, source } of globalNavigationPages) {
   const label = path.relative(ROOT, pagePath);
-  const privacyLink = source.match(/<a\b(?=[^>]*\bhref="privacy-first\.html")(?=[^>]*\bdata-nav-item="privacy-first")(?![^>]*\baria-disabled=)[^>]*>/);
-  requireCondition(privacyLink, `${label} does not expose Privacy First as an active privacy-first.html link`);
+  requireCondition((source.match(/data-global-nav-host/g) || []).length === 1, `${label} does not contain exactly one canonical global-navigation host`);
+  requireCondition((source.match(/global-navigation\.js\?v=global-navigation-canonical-1/g) || []).length === 1, `${label} does not load exactly one canonical global-navigation component`);
+  requireCondition(!source.includes('data-nav-item='), `${label} still contains a copied global-navigation menu`);
+  requireCondition(!source.includes('data-global-nav aria-hidden='), `${label} still contains copied global-navigation markup`);
 }
 requireCondition(realtimeVoicePortalGuide.includes('Bloom, Mix, Circle, Care and Collect') && realtimeVoicePortalGuide.includes('10-minute Nervous System Reset research feature'), 'Universal One no longer knows the television wallet and research feature');
 requireCondition(realtimeVoicePortalGuide.includes('Partner lists are invitations or proposed ideal partners'), 'Universal One can misstate proposed partnerships as confirmed');
@@ -431,8 +456,9 @@ for (const { pagePath, source } of adaptiveEnvironmentPages) {
 
 for (const { pagePath, source } of aboutLinkPages) {
   const label = path.relative(ROOT, pagePath);
-  requireCondition(source.includes('href="about.html?aboutTopLevel=1" data-nav-item="about"'), `${label} does not force a fresh complete About handoff`);
+  requireCondition(source.includes('global-navigation.js?v=global-navigation-canonical-1'), `${label} does not load the canonical About navigation handoff`);
 }
+requireCondition(globalNavigationController.includes('href="about.html?aboutTopLevel=1" data-nav-item="about"'), 'the canonical navigation does not force a fresh complete About handoff');
 
 const aboutPage = aboutLinkPages.find(({ pagePath }) => pagePath.endsWith('about.html'))?.source || '';
 const aboutControllerMatch = aboutPage.match(/about\.js\?v=([^"']+)/);

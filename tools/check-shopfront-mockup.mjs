@@ -9,6 +9,8 @@ const read = (relative) => fs.readFileSync(path.join(root, relative), "utf8");
 const shop = read("i  a m/shop.html");
 const shopStyle = read("i  a m/shop.css");
 const shopScript = read("i  a m/shop.js");
+const globalNavigation = read("i  a m/global-navigation.js");
+const globalNavigationStyle = read("i  a m/global-navigation.css");
 const catalogue = JSON.parse(read("i  a m/shop-catalogue-v1.json"));
 const productKernel = JSON.parse(read("i  a m/shop-product-kernel-v1.json"));
 const approvedProducts = JSON.parse(read("i  a m/shop-approved-products-v1.json"));
@@ -189,10 +191,12 @@ assert.ok((shop.match(/james-bondage-handdrawn-faces-b\.png/g) || []).length >= 
 assert.match(shop, /james-bondage-handdrawn-wordmark-b\.png/, "The B-version hero must use the isolated yellow hand-drawn wordmark");
 assert.ok(fs.existsSync(path.join(iam, "a s s e t s/shop-mockup/james-bondage-handdrawn-wordmark-b.png")), "Missing isolated B-version wordmark");
 assert.ok(fs.existsSync(path.join(iam, "a s s e t s/shop-mockup/james-bondage-handdrawn-faces-b.png")), "Missing isolated B-version face mark");
-assert.match(shop, /data-shop-return-music[\s\S]*Universal Mind \[ I o H \] Logo 512\.png/, "Standalone Shop proof must reserve the Universal Mind flower position");
+assert.match(shop, /class="shop-universal-nav global-nav-trigger"[\s\S]*Universal Mind \[ I o H \] Logo 512\.png/, "Standalone Shop proof must reserve the Universal Mind flower position");
 assert.match(shopScript, /iam:return-to-television/, "The Shop flower must return framed visitors to their continuing Music Television room");
-assert.match(shop, /class="global-nav"[\s\S]*data-nav-item="contact"[^>]*>contact<\/a>\s*<a[^>]*data-nav-item="shop"/, "Shop must include the full shared global navigation with Shop last after Contact");
-assert.match(shopStyle, /global-nav-mark[\s\S]*animation:\s*shop-universal-flower-spin/, "The shared navigation flower must keep rotating");
+assert.match(shop, /data-global-nav-host[\s\S]*global-navigation\.js\?v=global-navigation-canonical-1/, "Shop must load the canonical global navigation");
+assert.match(globalNavigation, /class="global-nav"[\s\S]*data-nav-item="contact"[^>]*>contact<\/a>\s*<a[^>]*data-nav-item="shop"/, "Shop must use the full shared global navigation with Shop last after Contact");
+assert.match(shopStyle, /\.shop-universal-nav img[\s\S]*animation:\s*shop-universal-flower-spin/, "The standalone Shop flower must keep rotating");
+assert.match(globalNavigationStyle, /\.global-nav-mark\s*\{[^}]*animation:\s*none/s, "The shared navigation mark must retain the canonical static treatment");
 assert.match(shopStyle, /data-music-television-frame="embedded"\] \.shop-universal-nav,[\s\S]*data-music-television-frame="embedded"\] \.global-nav[\s\S]*display:\s*none/, "The embedded Shop must hide its duplicate flower and defer to the outer Music Television navigation");
 assert.match(television, /function bootstrapRequestedShop\(\)[\s\S]*classList\.add\("television-room-open"\);\s*startFlowerSpin\(\);\s*openInVideoPageLayer/, "The direct Shop journey must start the existing spinning outer-shell flower");
 assert.match(shop, /data-shop-theme-toggle/, "Shop must expose the day/night control");
@@ -260,8 +264,8 @@ assert.match(television, /function pauseShopMusic[\s\S]*continuationAudio\.pause
 assert.match(television, /async function requestShopMusic[\s\S]*if \(currentStatus\.playing\)[\s\S]*pauseShopMusic[\s\S]*startAudioLedParty\(shopTrack, \{ source: "shop_independent" \}\)/, "A quiet Shop session must toggle the independent James Bondage Parties transport");
 assert.doesNotMatch(television, /joinBroadcastChannel\("party-james-bondage", \{ source: "shop_default" \}\)/, "Shop playback must not rejoin the clock-corrected shared transport");
 assert.doesNotMatch(shop, /Café del Mar Chill/, "Shop controls must no longer advertise Café del Mar as the quiet default");
-assert.match(index, /data-nav-item="shop"/, "Music Television navigation must expose Shop");
-assert.match(index, /data-nav-item="contact"[^>]*>contact<\/a>\s*<a[^>]*data-nav-item="shop"[^>]*>shop<\/a>/, "Shop must be the final global navigation item after Contact");
+assert.match(globalNavigation, /data-nav-item="shop"/, "Music Television navigation must expose Shop");
+assert.match(globalNavigation, /data-nav-item="contact"[^>]*>contact<\/a>\s*<a[^>]*data-nav-item="shop"[^>]*>shop<\/a>/, "Shop must be the final global navigation item after Contact");
 assert.match(htaccess, /RewriteRule \^shop\/\?\$/, "Root /shop route is missing from Apache redirects");
 assert.match(redirects, /^\/shop /m, "Root /shop route is missing from static redirects");
 

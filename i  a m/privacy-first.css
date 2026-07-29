@@ -94,7 +94,7 @@ body.privacy-first-page {
   width: clamp(60px, 4.35vw, 88px);
   height: clamp(60px, 4.35vw, 88px);
   object-fit: contain;
-  animation: privacy-clockwise-turn 28s linear infinite;
+  animation: privacy-clockwise-turn 3s linear infinite;
 }
 
 .privacy-brand .brand-lockup {
