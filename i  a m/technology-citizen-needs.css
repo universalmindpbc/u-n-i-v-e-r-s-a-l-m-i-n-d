@@ -317,7 +317,7 @@ body.tensor-kernel-open .kernel-video-backdrop {
 }
 
 .global-nav-submenu a {
-  font-size: clamp(7.5px, 0.56vw, 11px);
+  font-size: clamp(9.15px, 0.6832vw, 13.42px);
   font-weight: 700;
   letter-spacing: 0.38em;
 }
@@ -3155,7 +3155,7 @@ body.is-homepage-radar-frame .need-card-leader-layer {
 
   .global-nav-submenu a {
     max-width: calc(100vw - 96px);
-    font-size: clamp(6.5px, 2vw, 9px);
+    font-size: clamp(7.93px, 2.44vw, 10.98px);
     letter-spacing: 0.2em;
     line-height: 1.35;
     white-space: normal;
