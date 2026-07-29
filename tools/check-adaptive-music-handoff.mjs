@@ -21,6 +21,8 @@ const scienceControllerPath = path.join(IAM_DIR, 'science.js');
 const scienceCssPath = path.join(IAM_DIR, 'science.css');
 const djSetManifestPath = path.join(ROOT, 'cloudflare-stream-djset-upload-manifest.json');
 const televisionCssPath = path.join(IAM_DIR, 'adaptive-environment-television.css');
+const programmeGuidePath = path.join(IAM_DIR, 'programme-guide.js');
+const programmeGuideCssPath = path.join(IAM_DIR, 'programme-guide.css');
 const realtimeVoiceControllerPath = path.join(IAM_DIR, 'realtime-voice-assistant.js');
 const realtimeVoiceCssPath = path.join(IAM_DIR, 'realtime-voice-assistant.css');
 const realtimeVoiceEndpointPath = path.join(IAM_DIR, 'api', 'realtime-client-secret.php');
@@ -132,6 +134,8 @@ const scienceController = await fs.readFile(scienceControllerPath, 'utf8');
 const scienceCss = await fs.readFile(scienceCssPath, 'utf8');
 const djSetManifest = JSON.parse(await fs.readFile(djSetManifestPath, 'utf8'));
 const televisionCss = await fs.readFile(televisionCssPath, 'utf8');
+const programmeGuide = await fs.readFile(programmeGuidePath, 'utf8');
+const programmeGuideCss = await fs.readFile(programmeGuideCssPath, 'utf8');
 const realtimeVoiceController = await fs.readFile(realtimeVoiceControllerPath, 'utf8');
 const realtimeVoiceCss = await fs.readFile(realtimeVoiceCssPath, 'utf8');
 const realtimeVoiceEndpoint = await fs.readFile(realtimeVoiceEndpointPath, 'utf8');
@@ -217,8 +221,25 @@ const nowPlayingCss = televisionCss.slice(
   nowPlayingCssStart,
   televisionCss.indexOf('.adaptive-television-wallet-category {', nowPlayingCssStart)
 );
+const indexPage = pages.find(({ pagePath }) => pagePath === path.join(IAM_DIR, 'index.html'))?.source || '';
 
 requireCondition(controller.includes(explicitSelectionMarker), 'the home controller no longer reads selected_track_id from the URL');
+requireCondition(indexPage.includes('programme-guide.css?v=programme-guide-app-1'), 'the live I AM app no longer loads the Program design');
+requireCondition(indexPage.includes('programme-guide.js?v=programme-guide-app-1'), 'the live I AM app no longer loads the Program controller');
+requireCondition(indexPage.includes('class="adaptive-television-program-button"') && indexPage.includes('data-program-open'), 'the Music wallet no longer exposes Program');
+requireCondition(indexPage.includes('PROGRAM <em>/ PARTIES</em>') && indexPage.includes('data-program-more'), 'the Program popup has lost the approved Parties and 24-hour controls');
+requireCondition((indexPage.match(/data-room="(?:inner-planes|champagne-bohemia|modul8-infinity|james-bondage)"/g) || []).length === 4, 'the Program popup no longer exposes the four canonical Parties rooms');
+requireCondition((indexPage.match(/data-zone="(?:local|Australia\/Sydney|America\/Los_Angeles|Europe\/Madrid)"/g) || []).length === 4, 'the Program popup no longer exposes Local, Sydney, Los Angeles and Ibiza time');
+requireCondition(programmeGuideCss.includes('bottom: calc(var(--program-wallet-bottom) + var(--program-wallet-height) + var(--program-wallet-gap));'), 'the Program casing is no longer anchored above the wallet');
+requireCondition(programmeGuideCss.includes('max-height: calc(100dvh - var(--program-top-inset) - var(--program-wallet-bottom) - var(--program-wallet-height) - var(--program-wallet-gap));'), 'the Program casing can no longer grow upward within the browser');
+requireCondition(programmeGuideCss.includes('.program-scroll {') && programmeGuideCss.includes('min-height: 0;') && programmeGuideCss.includes('overflow-y: auto;'), 'the Program schedule no longer scrolls inside its fixed casing');
+requireCondition(programmeGuideCss.includes('justify-content: center;') && programmeGuideCss.includes('min-height: 30px;'), 'the More / View 24 Hours label is no longer vertically centred');
+requireCondition(programmeGuide.includes('fetch("broadcast-schedule-v1.json?v=programme-guide-app-1"') && programmeGuide.includes('cache: "no-store"'), 'the Program popup no longer reads the live no-cache broadcast schedule');
+requireCondition(programmeGuide.includes('fetch("adaptive-music-video-catalogue-v1.11.json?v=programme-guide-app-1"'), 'newly catalogued DJ sets can no longer populate Program automatically');
+requireCondition(programmeGuide.includes('window.IAMBroadcastClock?.nowMs?.()'), 'Program is no longer aligned to the shared live clock');
+requireCondition(programmeGuide.includes('horizonHours = horizonHours === 6 ? 24 : 6;'), 'Program no longer switches between six and 24 hours');
+requireCondition(programmeGuide.includes('const joinRequest = window.IAMMusicChannels.joinBroadcast(channelId);') && programmeGuide.includes('closeProgram(null, { restoreFocus: false });'), 'Enter Live no longer joins the selected shared Parties broadcast and closes Program into playback');
+requireCondition(programmeGuide.includes('programPanel.addEventListener("click", (event) => event.stopPropagation());'), 'using Program can once again collapse the Music wallet underneath it');
 requireCondition(shellController.includes('function bindStandaloneAboutNavigation()'), 'the shared navigation no longer forces About into a complete top-level document');
 requireCondition(shellController.includes('window.top.location.href = url.href;'), 'embedded global navigation can no longer escape to the complete About page');
 requireCondition(shellController.includes('document.body.classList.contains("television-room-open")'), 'About can still bypass the persistent television page layer');

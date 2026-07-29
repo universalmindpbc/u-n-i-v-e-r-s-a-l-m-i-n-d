@@ -45,6 +45,7 @@
     <link rel="stylesheet" href="styles.css?v=global-nav-single-shell-2-technology-submenu-133pct-normal-1">
     <link rel="preload" as="image" href="a s s e t s/Universal Mind [ I o H ] Logo 512.png" fetchpriority="high">
     <link rel="stylesheet" href="adaptive-environment-television.css?v=music-tv-css-038602e428f9">
+    <link rel="stylesheet" href="programme-guide.css?v=programme-guide-app-1">
     <link rel="stylesheet" href="circle-audio-rooms.css?v=circle-rooms-css-9cb7b0860284">
     <link rel="stylesheet" href="mantra-sampler.css?v=mantra-sampler-css-fa5e34089bf9">
     <link rel="stylesheet" href="realtime-voice-assistant.css?v=realtime-voice-css-3dbe2f94acaa">
@@ -564,6 +565,81 @@
               <p class="mantra-orbit__scope">private research mockup · source samples to be licensed before public use</p>
             </div>
           </section>
+          <button class="program-scrim" type="button" data-program-close aria-label="Close Program" hidden></button>
+
+          <section class="program-panel" id="program-panel" data-program-panel role="dialog" aria-modal="false" aria-labelledby="program-title" aria-hidden="true" inert>
+            <header class="program-panel__header">
+              <div class="program-heading">
+                <span>UM / LIVE NETWORK</span>
+                <h1 id="program-title">PROGRAM <em>/ PARTIES</em></h1>
+              </div>
+
+              <div class="program-zone-switcher" role="group" aria-label="Display schedule in a city time zone">
+                <button type="button" data-zone="local" aria-pressed="true">LOCAL</button>
+                <button type="button" data-zone="Australia/Sydney" aria-pressed="false">SYD</button>
+                <button type="button" data-zone="America/Los_Angeles" aria-pressed="false">LA</button>
+                <button type="button" data-zone="Europe/Madrid" aria-pressed="false">IBIZA</button>
+              </div>
+
+              <button class="program-panel__close" type="button" data-program-close aria-label="Close Program">×</button>
+            </header>
+
+            <div class="program-context" aria-live="polite">
+              <span data-zone-label>LOCAL TIME</span>
+              <span data-date-label>THU 30 JUL 2026</span>
+              <span data-clock-source>LIVE CLOCK</span>
+            </div>
+
+            <nav class="program-room-switcher" aria-label="Choose a music room">
+              <button type="button" data-room="inner-planes" aria-current="false">Inner Planes</button>
+              <button type="button" data-room="champagne-bohemia" aria-current="false">Champagne Bohemia</button>
+              <button type="button" data-room="modul8-infinity" aria-current="true">modul8 infinity</button>
+              <button type="button" data-room="james-bondage" aria-current="false">james bondage</button>
+            </nav>
+
+            <div class="program-scroll" data-program-scroll>
+              <article class="program-now" aria-labelledby="program-now-label">
+                <div class="program-now__time">
+                  <span id="program-now-label">NOW</span>
+                  <time data-now-time>00:00</time>
+                  <small data-now-remaining>00 MIN REMAIN</small>
+                </div>
+                <div class="program-now__editorial">
+                  <span data-now-room>modul8 infinity</span>
+                  <h2 data-now-artist>PEGGY GOU</h2>
+                  <p data-now-title>Palais des Beaux-Arts, Lille</p>
+                </div>
+                <button class="program-enter" type="button" data-enter-live>ENTER LIVE</button>
+              </article>
+
+              <section class="program-next" aria-labelledby="program-next-label">
+                <span id="program-next-label">UP NEXT</span>
+                <time data-next-time>00:00</time>
+                <div>
+                  <strong data-next-artist>MISS MONIQUE</strong>
+                  <small data-next-title>Biosphere, Montreal</small>
+                </div>
+                <em data-next-duration>2H 13M</em>
+              </section>
+
+              <section class="program-later" aria-labelledby="program-later-label">
+                <header>
+                  <h2 id="program-later-label">LATER</h2>
+                  <span data-horizon-label>NEXT 6 HOURS</span>
+                </header>
+                <ol data-later-list></ol>
+              </section>
+            </div>
+
+            <footer class="program-panel__footer">
+              <button type="button" data-program-more aria-expanded="false">
+                <span data-more-label>MORE</span>
+                <small data-more-range>VIEW 24 HOURS</small>
+              </button>
+              <p>Times shown for <span data-footer-zone>your local time</span>.</p>
+            </footer>
+          </section>
+
           <div class="adaptive-television-reaction-wallet" data-reaction-wallet data-wallet-view="closed" data-wallet-resume-view="categories" data-emdr-controls-view="neutral" aria-label="Universal Mind wallet">
             <button class="adaptive-television-reaction-trigger" type="button" data-reaction-wallet-trigger aria-label="Open Universal Mind wallet" aria-expanded="false">
               <span class="adaptive-television-reaction__glyph adaptive-television-reaction__glyph--ioh-logo adaptive-television-reaction__glyph--flora-trigger" aria-hidden="true"></span>
@@ -746,6 +822,7 @@
                 </button>
                 <button class="adaptive-television-music-selector__arrow" type="button" data-music-next aria-label="Next Music recommendation"><span aria-hidden="true">&rsaquo;</span></button>
               </div>
+              <button class="adaptive-television-program-button" type="button" data-program-open aria-haspopup="dialog" aria-controls="program-panel">Program</button>
             </div>
             <div class="adaptive-television-emdr-controls" data-wallet-panel="emdr" data-emdr-controls aria-hidden="true">
               <button class="adaptive-television-wallet-home" type="button" data-wallet-home data-wallet-tooltip="wallet home" aria-label="Return to wallet home">
@@ -953,6 +1030,7 @@
     <script src="mantra-audio-fx.js?v=mantra-audio-fx-5e1fdfbadb04"></script>
     <script src="mantra-sampler.js?v=mantra-sampler-6402cc9d89a2"></script>
     <script src="adaptive-environment-television.js?v=music-tv-5321df1fc513"></script>
+    <script src="programme-guide.js?v=programme-guide-app-1"></script>
     <script src="realtime-voice-assistant.js?v=realtime-voice-98dbaed545af"></script>
     <script src="adaptive-page-metadata-v1.js"></script>
     <script async data-agora-rtc-sdk src="https://download.agora.io/sdk/release/AgoraRTC_N-4.24.6.js"></script>
