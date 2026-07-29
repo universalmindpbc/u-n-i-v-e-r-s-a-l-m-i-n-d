@@ -20,11 +20,15 @@ function assertVaultDataClass(dataClass) {
 export function createEnvelopeVault({
   keyManager,
   objectStore,
+  objectKeyPrefix = "citizens",
   now = () => new Date(),
   randomBytes = (length) => crypto.getRandomValues(new Uint8Array(length)),
 }) {
   if (!keyManager?.generateDataKey) throw new Error("citizen_data_key_manager_required");
   if (!objectStore?.put || !objectStore?.delete) throw new Error("citizen_data_object_store_required");
+  if (!/^[a-z0-9][a-z0-9/_-]{0,79}$/i.test(objectKeyPrefix)) {
+    throw new Error("citizen_data_object_prefix_invalid");
+  }
 
   return Object.freeze({
     async storeJson({ citizenId, recordId, dataClass, value, contentType = "application/json" }) {
@@ -54,7 +58,7 @@ export function createEnvelopeVault({
         ciphertext.set(iv, 0);
         ciphertext.set(encrypted, iv.byteLength);
         const ciphertextSha256 = await sha256Hex(ciphertext);
-        const objectKey = `citizens/${citizenId}/${dataClass}/${recordId}-${bytesToBase64Url(randomBytes(9))}.umenc`;
+        const objectKey = `${objectKeyPrefix}/${citizenId}/${dataClass}/${recordId}-${bytesToBase64Url(randomBytes(9))}.umenc`;
         const stored = await objectStore.put({
           objectKey,
           body: ciphertext,
@@ -72,6 +76,7 @@ export function createEnvelopeVault({
           storageProvider: stored.provider,
           bucketName: stored.bucket,
           objectKey,
+          objectVersionId: stored.versionId || null,
           ciphertextSha256,
           wrappedDataKey: generatedKey.wrappedKey,
           kmsKeyArn: generatedKey.keyArn,
@@ -89,7 +94,7 @@ export function createEnvelopeVault({
 
     async delete(storedObject) {
       if (!storedObject?.objectKey) return;
-      await objectStore.delete({ objectKey: storedObject.objectKey });
+      await objectStore.delete({ objectKey: storedObject.objectKey, versionId: storedObject.objectVersionId || null });
     },
   });
 }

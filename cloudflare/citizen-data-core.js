@@ -54,6 +54,22 @@ function requireUuid(value, errorCode) {
   return normalized;
 }
 
+function requireConversationRole(value) {
+  const normalized = cleanString(value, 32);
+  if (!new Set(["citizen", "universal_one"]).has(normalized)) {
+    throw new Error("citizen_data_conversation_role_invalid");
+  }
+  return normalized;
+}
+
+function requireOrdinal(value) {
+  const normalized = Number(value);
+  if (!Number.isInteger(normalized) || normalized < 0 || normalized > 1000000) {
+    throw new Error("citizen_data_conversation_ordinal_invalid");
+  }
+  return normalized;
+}
+
 export const CITIZEN_DATA_ARCHITECTURE = Object.freeze({
   schemaVersion: "universal_mind_citizen_data_v0.1",
   status: "foundation_disabled_synthetic_only",
@@ -235,6 +251,84 @@ export function createCitizenDataService({
       }
 
       return { id: checkinId, sessionId, createdAt, inferenceStatus: "queued" };
+    },
+
+    async startConversation(rawCredential, input = {}) {
+      assertNoRewardFields(input);
+      const identity = await identityForCredential(rawCredential);
+      const consent = await requireConsent(identity.citizenId, ["universal_one_conversation_memory"]);
+      const sessionId = requireUuid(input.sessionId, "citizen_data_session_id_required");
+      await repository.assertSessionOwnership(identity.citizenId, sessionId);
+      const thread = {
+        id: uuid(),
+        citizenId: identity.citizenId,
+        sessionId,
+        consentReceiptId: consent.id,
+        createdAt: now().toISOString(),
+      };
+      await repository.transaction((tx) => tx.createConversationThread(thread));
+      return { id: thread.id, sessionId, createdAt: thread.createdAt };
+    },
+
+    async recordConversationTurn(rawCredential, input = {}) {
+      assertNoRewardFields(input);
+      const identity = await identityForCredential(rawCredential);
+      await requireConsent(identity.citizenId, ["universal_one_conversation_memory"]);
+      const threadId = requireUuid(input.threadId, "citizen_data_conversation_thread_id_required");
+      const role = requireConversationRole(input.role);
+      const ordinal = requireOrdinal(input.ordinal);
+      const text = cleanString(input.text, 8000);
+      if (!text) throw new Error("citizen_data_conversation_text_required");
+      await repository.assertConversationThreadOwnership(identity.citizenId, threadId);
+
+      const turnId = uuid();
+      const objectId = uuid();
+      const createdAt = now().toISOString();
+      const storedObject = await vault.storeJson({
+        citizenId: identity.citizenId,
+        recordId: objectId,
+        dataClass: "conversation_turn",
+        value: { schema_version: "universal_one_conversation_turn_v1", role, text },
+      });
+
+      try {
+        await repository.transaction(async (tx) => {
+          await tx.createEncryptedObject(storedObject);
+          await tx.createConversationTurn({
+            id: turnId,
+            citizenId: identity.citizenId,
+            threadId,
+            payloadObjectId: objectId,
+            role,
+            ordinal,
+            createdAt,
+          });
+          await tx.appendDataUseEvent({
+            id: uuid(),
+            citizenId: identity.citizenId,
+            purposeCode: "universal_one_conversation_memory",
+            systemName: "universal_mind_citizen_data",
+            operation: "remember",
+            sourceRecordType: "conversation_turn",
+            sourceRecordId: turnId,
+            occurredAt: createdAt,
+          });
+          await tx.appendOutboxEvent({
+            id: uuid(),
+            citizenId: identity.citizenId,
+            eventType: "conversation_turn_recorded",
+            aggregateType: "conversation_turn",
+            aggregateId: turnId,
+            metadata: { schema_version: "conversation_turn_recorded_v1", object_id: objectId, role, ordinal },
+            createdAt,
+          });
+        });
+      } catch (error) {
+        await vault.delete(storedObject).catch(() => {});
+        throw error;
+      }
+
+      return { id: turnId, threadId, role, ordinal, createdAt };
     },
 
     async requestExport(rawCredential) {

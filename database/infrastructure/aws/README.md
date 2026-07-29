@@ -1,6 +1,8 @@
 # AWS staging foundation
 
-These files prepare AWS infrastructure but do not create it. The template is intentionally billable and must not be deployed until its change set and cost boundary are approved.
+These files define the AWS infrastructure. The current synthetic-only staging
+deployment is recorded in `DEPLOYMENT-2026-07-29.md`; future changes remain
+billable and require review against the same cost boundary.
 
 Read `TEARDOWN.md` before executing a change set. The database, buckets and KMS
 key are retained by design, so deleting the CloudFormation stack alone is not a
@@ -28,7 +30,7 @@ AWS CloudShell is an acceptable bootstrap alternative because it inherits the si
 - Citizen data resources are intended for `ap-southeast-2` after data-residency review.
 - The region is always supplied explicitly during validation and deployment.
 
-## Proposed staging stack
+## Staging stack
 
 `citizen-data-staging.yaml` creates:
 
@@ -57,9 +59,9 @@ but that is not the intended mode and would exceed the prototype budget.
 
 The separately configured monthly AWS cost budget is USD $30, with actual-cost
 email alerts at USD $10, $20, $25 and $30. AWS Budgets is an alerting boundary,
-not a real-time hard stop, because billing data can be delayed. The database
-change set must remain unexecuted until the payment method is current and the
-founder explicitly approves execution.
+not a real-time hard stop, because billing data can be delayed. Any future
+billable change set must remain unexecuted until its cost impact is reviewed and
+the founder explicitly approves execution.
 
 Those figures exclude Aurora storage and I/O, backup storage, S3, CloudWatch,
 Secrets Manager and data transfer. The customer-managed KMS key starts at USD
@@ -71,7 +73,7 @@ the performance benchmark must record cold and warm timings separately.
 
 Hyperdrive remains a possible later performance layer, but direct access would require a separately reviewed private-network or database-credential path. The first staging foundation keeps Aurora private and uses IAM-authorised RDS Data API calls from AWS compute. Any future Hyperdrive binding for citizen data must have query caching disabled and must not make the database public.
 
-## Required review before deployment
+## Required review before a future deployment or update
 
 1. Confirm the target AWS region.
 2. Review the AWS Pricing Calculator estimate for the minimum and maximum Aurora capacity.
@@ -99,6 +101,15 @@ KMS-backed envelope encryption, versioned S3 storage, consent lineage,
 default-deny row isolation, append-only consent evidence, export bookkeeping and
 erasure. It removes every uploaded synthetic object version and its temporary
 database role before returning success.
+
+`validate-live-service-flow.mjs` drives the application service boundary with a
+fictional consent receipt, pseudonymous browser credential, encrypted check-in,
+two encrypted Universal One turns, encrypted export, withdrawal and completed
+erasure. Its object access is restricted to the
+`synthetic-service-validation/` prefix, it records exact S3 version identifiers,
+and it removes each version before returning success. It is an operator-side
+staging validator, not the browser runtime and not an authorization to collect
+real visitor data.
 
 ## Deliberately absent
 

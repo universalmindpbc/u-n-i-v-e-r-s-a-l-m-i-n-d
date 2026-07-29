@@ -105,6 +105,14 @@ export function createCitizenDataWorker({ serviceFactory }) {
           return response(202, await service.recordCheckin(credential, await requestJson(request)));
         }
 
+        if (request.method === "POST" && url.pathname.endsWith("/v1/conversations")) {
+          return response(201, await service.startConversation(credential, await requestJson(request)));
+        }
+
+        if (request.method === "POST" && url.pathname.endsWith("/v1/conversation-turns")) {
+          return response(202, await service.recordConversationTurn(credential, await requestJson(request)));
+        }
+
         if (request.method === "POST" && url.pathname.endsWith("/v1/data/export")) {
           return response(202, await service.requestExport(credential));
         }

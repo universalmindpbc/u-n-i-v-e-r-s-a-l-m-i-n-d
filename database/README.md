@@ -27,6 +27,7 @@ arrival
   -> encrypted check-in object
   -> check-in metadata transaction
   -> inference outbox event
+  -> separately consented encrypted Universal One conversation turns
   -> encrypted inference result
   -> explicitly approved, revocable projections
 ```
@@ -71,5 +72,6 @@ An erasure request immediately withdraws future consent and revokes browser cred
 ## Files
 
 - `migrations/0001_citizen_data_foundation.sql` — first PostgreSQL schema and default-deny RLS.
+- `migrations/0002_encrypted_object_versions.sql` — exact version lineage for physical object erasure.
 - `citizen-data-contract-v0.1.json` — machine-readable data-boundary contract.
 - `infrastructure/aws/` — disabled infrastructure templates and SSO instructions.

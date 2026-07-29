@@ -31,6 +31,7 @@
       "aws_s3",
       "storj_s3"
     ],
+    "exact_object_version_recorded": true,
     "dual_write_enabled": false
   },
   "database_classes": {

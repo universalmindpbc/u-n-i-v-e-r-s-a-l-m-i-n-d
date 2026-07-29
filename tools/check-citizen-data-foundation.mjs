@@ -13,6 +13,7 @@ import { createCitizenDataWorker } from "../cloudflare/citizen-data-worker.js";
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const read = (relative) => fs.readFileSync(path.join(root, relative), "utf8");
 const sql = read("database/migrations/0001_citizen_data_foundation.sql");
+const sql0002 = read("database/migrations/0002_encrypted_object_versions.sql");
 const contract = JSON.parse(read("database/citizen-data-contract-v0.1.json"));
 const readme = read("database/README.md");
 const wrangler = read("cloudflare/wrangler.citizen-data.toml");
@@ -28,6 +29,7 @@ assert.equal(contract.status, "foundation_disabled_synthetic_only");
 assert.equal(contract.core_consent.placement, "before_checkin");
 assert.equal(contract.core_consent.rewards_permission_included, false);
 assert.equal(contract.sensitive_payload_storage.plaintext_database_columns, false);
+assert.equal(contract.sensitive_payload_storage.exact_object_version_recorded, true);
 assert.equal(contract.sensitive_payload_storage.dual_write_enabled, false);
 assert.equal(contract.projections.fhenix, "separate_happiness_rewards_service_only");
 
@@ -65,6 +67,7 @@ assert.match(sql, /FOREIGN KEY \(request_id, citizen_id\)/);
 assert.match(sql, /HAPPINESS permissions are intentionally absent/);
 assert.doesNotMatch(sql, /purpose_code IN \([^)]*(?:happiness|reward)/is);
 assert.doesNotMatch(sql, /(?:checkin_text|conversation_turn|inference_result)\s+text/i);
+assert.match(sql0002, /ADD COLUMN object_version_id text/);
 assert.match(readme, /Existing browser `localStorage` check-ins are never silently uploaded/);
 assert.match(wrangler, /CITIZEN_DATA_ENABLED = "false"/);
 assert.match(wrangler, /CITIZEN_DATA_ZAMA_SHADOW_ENABLED = "false"/);
@@ -83,7 +86,8 @@ assert.match(awsTemplate, /Default: 0\n\s+MinValue: 0/);
 assert.match(awsTemplate, /SecondsUntilAutoPause: !Ref DatabaseIdleSecondsBeforePause/);
 assert.doesNotMatch(awsTemplate, /SecurityGroupIngress:/);
 assert.doesNotMatch(awsTemplate, /(?:AccessKeyId|SecretAccessKey):/i);
-assert.match(awsReadme, /must not be deployed until its change set and cost boundary are approved/);
+assert.match(awsReadme, /current synthetic-only staging\s+deployment is recorded/);
+assert.match(awsReadme, /future changes remain\s+billable and require review/);
 assert.doesNotMatch(awsReadme, /\b\d{12}\b/);
 assert.doesNotMatch(awsReadme, /https:\/\/[^\s`]*awsapps\.com\/start/i);
 const identityCenterActions = identityCenterPolicy.Statement.flatMap((statement) => (
@@ -109,6 +113,8 @@ function createMemoryRepository() {
     sessions: [],
     objects: [],
     checkins: [],
+    conversationThreads: [],
+    conversationTurns: [],
     dataUseEvents: [],
     outbox: [],
     rightsRequests: [],
@@ -152,6 +158,18 @@ function createMemoryRepository() {
       }
       state.checkins.push(record);
     },
+    async createConversationThread(record) { state.conversationThreads.push(record); },
+    async assertConversationThreadOwnership(citizenId, threadId) {
+      if (!state.conversationThreads.some((item) => item.id === threadId && item.citizenId === citizenId)) {
+        throw new Error("citizen_data_conversation_thread_not_found");
+      }
+    },
+    async createConversationTurn(record) {
+      if (state.conversationTurns.some((item) => item.threadId === record.threadId && item.ordinal === record.ordinal)) {
+        throw new Error("citizen_data_duplicate_conversation_turn");
+      }
+      state.conversationTurns.push(record);
+    },
     async appendDataUseEvent(record) { state.dataUseEvents.push(record); },
     async appendOutboxEvent(record) { state.outbox.push(record); },
     async createDataRightsRequest(record) { state.rightsRequests.push(record); },
@@ -182,7 +200,7 @@ function createSyntheticVaultFixture() {
     objectStore: {
       async put({ objectKey, body }) {
         objects.set(objectKey, body.slice());
-        return { provider: "synthetic_test", bucket: "synthetic-citizen-data" };
+        return { provider: "synthetic_test", bucket: "synthetic-citizen-data", versionId: `version-${objects.size}` };
       },
       async delete({ objectKey }) { objects.delete(objectKey); },
     },
@@ -237,6 +255,37 @@ assert.equal(JSON.stringify(repository.state).includes(sensitiveCheckin), false)
 const ciphertext = [...vaultFixture.objects.values()][0];
 assert.equal(new TextDecoder().decode(ciphertext).includes(sensitiveCheckin), false);
 
+const conversation = await service.startConversation(accepted.rawCredential, { sessionId: session.id });
+const syntheticCitizenTurn = "This fictional citizen turn tests encrypted conversation memory.";
+const syntheticUniversalOneTurn = "This fictional Universal One response tests the same privacy boundary.";
+await service.recordConversationTurn(accepted.rawCredential, {
+  threadId: conversation.id,
+  role: "citizen",
+  ordinal: 0,
+  text: syntheticCitizenTurn,
+});
+await service.recordConversationTurn(accepted.rawCredential, {
+  threadId: conversation.id,
+  role: "universal_one",
+  ordinal: 1,
+  text: syntheticUniversalOneTurn,
+});
+assert.equal(repository.state.conversationThreads.length, 1);
+assert.equal(repository.state.conversationTurns.length, 2);
+assert.equal(repository.state.objects.length, 3);
+assert.equal(JSON.stringify(repository.state).includes(syntheticCitizenTurn), false);
+assert.equal(JSON.stringify(repository.state).includes(syntheticUniversalOneTurn), false);
+for (const encryptedPayload of vaultFixture.objects.values()) {
+  const decoded = new TextDecoder().decode(encryptedPayload);
+  assert.equal(decoded.includes(syntheticCitizenTurn), false);
+  assert.equal(decoded.includes(syntheticUniversalOneTurn), false);
+}
+assert.deepEqual(
+  repository.state.dataUseEvents.map((event) => event.purposeCode),
+  ["core_checkin_processing", "universal_one_conversation_memory", "universal_one_conversation_memory"],
+);
+assert.equal(repository.state.outbox.filter((event) => event.eventType === "conversation_turn_recorded").length, 2);
+
 const exportRequest = await service.requestExport(accepted.rawCredential);
 assert.equal(exportRequest.status, "received");
 const eraseRequest = await service.requestErasure(accepted.rawCredential);
@@ -266,7 +315,10 @@ const consentResponse = await worker.fetch(new Request("https://staging.universa
     "Origin": "https://staging.universalmind.tv",
     "X-Universal-Mind-Request": "citizen-data-v1",
   },
-  body: JSON.stringify({ documentVersion: "founder-draft-test-v1", purposes: REQUIRED_CORE_PURPOSES }),
+  body: JSON.stringify({
+    documentVersion: "founder-draft-test-v1",
+    purposes: [...REQUIRED_CORE_PURPOSES, "universal_one_conversation_memory"],
+  }),
 }), { CITIZEN_DATA_ENABLED: "true" });
 assert.equal(consentResponse.status, 201);
 assert.match(consentResponse.headers.get("Set-Cookie"), /Secure; HttpOnly; SameSite=Strict/);
@@ -274,5 +326,40 @@ assert.match(consentResponse.headers.get("Set-Cookie"), /__Host-um_citizen_sessi
 const consentResponseBody = await consentResponse.json();
 assert.equal(JSON.stringify(consentResponseBody).includes("rawCredential"), false);
 assert.equal(Object.hasOwn(consentResponseBody, "citizen_id"), false);
+const workerCookie = consentResponse.headers.get("Set-Cookie").split(";", 1)[0];
+const workerMutationHeaders = {
+  "Content-Type": "application/json",
+  "Cookie": workerCookie,
+  "Origin": "https://staging.universalmind.tv",
+  "X-Universal-Mind-Request": "citizen-data-v1",
+};
+const workerSessionResponse = await worker.fetch(new Request("https://staging.universalmind.tv/v1/sessions", {
+  method: "POST",
+  headers: workerMutationHeaders,
+  body: JSON.stringify({ locale: "en-AU", timezone: "Australia/Sydney" }),
+}), { CITIZEN_DATA_ENABLED: "true" });
+assert.equal(workerSessionResponse.status, 201);
+const workerSession = await workerSessionResponse.json();
+const workerConversationResponse = await worker.fetch(new Request("https://staging.universalmind.tv/v1/conversations", {
+  method: "POST",
+  headers: workerMutationHeaders,
+  body: JSON.stringify({ sessionId: workerSession.id }),
+}), { CITIZEN_DATA_ENABLED: "true" });
+assert.equal(workerConversationResponse.status, 201);
+const workerConversation = await workerConversationResponse.json();
+const workerTurnResponse = await worker.fetch(new Request("https://staging.universalmind.tv/v1/conversation-turns", {
+  method: "POST",
+  headers: workerMutationHeaders,
+  body: JSON.stringify({
+    threadId: workerConversation.id,
+    role: "citizen",
+    ordinal: 0,
+    text: "Synthetic Worker conversation route proof.",
+  }),
+}), { CITIZEN_DATA_ENABLED: "true" });
+assert.equal(workerTurnResponse.status, 202);
+assert.equal(workerRepository.state.conversationThreads.length, 1);
+assert.equal(workerRepository.state.conversationTurns.length, 1);
+assert.equal(JSON.stringify(workerRepository.state).includes("Synthetic Worker conversation route proof."), false);
 
 console.log("Citizen data foundation checks passed.");
