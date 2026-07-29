@@ -16,7 +16,7 @@ HAPPINESS launches as a rewards programme. It is not currently backed, pegged, c
 
 Members may receive a genuine ERC-20 balance once the contract is activated, but this version is non-transferable, free to earn and usable only for approved programme rewards. It carries no promise of appreciation, USDC conversion, cash value, investment return or migration into a later backed version.
 
-The HAPPINESS ERC-20 is deployed on Polygon Amoy at `0x616EF64C03D79630ECA03b5Cea4ea58a252dB68a` with an immutable 10,000,000 IOH cap and zero current supply. Issuance remains disabled. The Apple Pass Type ID `pass.tv.universalmind.happiness` is registered, while its signing certificate and private key are not yet created.
+The HAPPINESS ERC-20 is deployed on Polygon Amoy at `0x616EF64C03D79630ECA03b5Cea4ea58a252dB68a` with an immutable 10,000,000 IOH cap and zero current supply. Issuance remains disabled. The Apple Pass Type ID `pass.tv.universalmind.happiness` is registered and a matching signing certificate has been created. Signing keys remain outside Git and deployment credentials.
 
 The code remains fail-closed: reward mutations, Chainlink attestation, Apple-pass issuance and USDC settlement are disabled until their required configuration is deliberately supplied.
 
@@ -134,12 +134,12 @@ Adding USDC infrastructure does not itself make HAPPINESS a stablecoin. Backing,
 ### Apple Wallet
 
 - Apple Developer Pass Type ID registered as `pass.tv.universalmind.happiness`;
-- production signing certificate;
+- signed static demonstration pass with the matching Pass Type certificate;
 - personalised pass generator;
 - HTTPS registration and update endpoints;
 - artistic QR handoff with a normal scannable quiet zone;
 - balance update after confirmed ledger events.
-- unsigned source-bundle generation for design QA before credentials exist;
+- unsigned source-bundle generation for design QA and signed `.pkpass` archive generation for installation;
 - SHA-1 manifest generation and PKCS #7 detached signing when the Pass Type certificate, private key and Apple WWDR certificate are supplied;
 - Apple-standard registration, update, unregister and pass-delivery routes, all disabled until authenticated storage and signing are active.
 

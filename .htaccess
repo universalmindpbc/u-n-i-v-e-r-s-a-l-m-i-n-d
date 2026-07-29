@@ -1,5 +1,6 @@
 Options -MultiViews
 DirectoryIndex index.html
+AddType application/vnd.apple.pkpass .pkpass
 
 RewriteEngine On
 

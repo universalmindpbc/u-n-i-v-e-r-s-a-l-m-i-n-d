@@ -75,7 +75,7 @@ assert.equal(HAPPINESS_ARCHITECTURE.reserve.pegClaimEnabled, false);
 assert.equal(HAPPINESS_ARCHITECTURE.reserve.blockchain, "MATIC-AMOY");
 assert.equal(HAPPINESS_ARCHITECTURE.reserve.usdcTokenAddress, "0x41E94Eb019C0762f9Bfcf9Fb1E58725BfB0e7582");
 assert.equal(HAPPINESS_ARCHITECTURE.appleWallet.passTypeIdentifier, "pass.tv.universalmind.happiness");
-assert.equal(HAPPINESS_ARCHITECTURE.appleWallet.mode, "identifier_registered_certificate_pending");
+assert.equal(HAPPINESS_ARCHITECTURE.appleWallet.mode, "signed_static_demo_ready");
 assert.equal(HAPPINESS_ARCHITECTURE.oracle.provider, "chainlink-cre");
 assert.equal(HAPPINESS_ARCHITECTURE.oracle.executionModel, "cre-workflow");
 assert.equal(HAPPINESS_ARCHITECTURE.oracle.enabled, false);
@@ -105,7 +105,9 @@ assert.equal(oracleDeploymentConfig.keystone_forwarder, "0x76c9cf548b4179F8901cd
 assert.equal(oracleDeploymentConfig.role_grant.required, true);
 assert.equal(appleRegistration.pass_type_identifier, "pass.tv.universalmind.happiness");
 assert.equal(appleRegistration.team_identifier, "3458V3D263");
-assert.equal(appleRegistration.status, "identifier_registered_certificate_pending");
+assert.equal(appleRegistration.status, "signed_static_demo_ready");
+assert.equal(appleRegistration.pass_type_certificate_created, true);
+assert.equal(appleRegistration.signing_private_key_created, true);
 assert.equal(parseDisplayUnits("1000000").toString(), "1000000000000");
 assert.equal(parseDisplayUnits("1.000001").toString(), "1000001");
 assert.throws(() => parseDisplayUnits("1.0000001"), /invalid_testnet_supply_cap/);
@@ -349,8 +351,12 @@ assert.match(style, /grid-template-columns:\s*repeat\(12, 1fr\)/);
 assert.match(style, /@media \(max-width: 980px\)/);
 assert.match(wallet, /happiness-wallet-qr-staging\.png/);
 assert.match(script, /happiness-wallet-qr-production\.png/);
-assert.match(wallet, /href="\/vogue\/iam\/wallet\.css\?v=happiness-wallet-8"/);
-assert.match(wallet, /src="\/vogue\/iam\/wallet\.js\?v=happiness-wallet-4"/);
+assert.match(wallet, /href="\/vogue\/iam\/wallet\.css\?v=happiness-wallet-9"/);
+assert.match(wallet, /src="\/vogue\/iam\/wallet\.js\?v=happiness-wallet-5"/);
+assert.match(wallet, /href="\/vogue\/iam\/apple-wallet\/HAPPINESS\.pkpass"/);
+assert.match(wallet, /data-happiness-demo-award/);
+assert.match(script, /HAPPINESS-DEMO-25\.pkpass/);
+assert.match(passTemplate, /"label": "UNIVERSAL CITIZEN"/);
 assert.match(wallet, /class="happiness-brand"[^>]*>[\s\S]*class="brand-mark"/);
 const walletHeader = wallet.match(/<header class="happiness-header">[\s\S]*?<\/header>/)?.[0] || "";
 assert.doesNotMatch(walletHeader, /brand-lockup|universalmind|internet of happiness/i);
@@ -430,6 +436,11 @@ assert.match(passTemplate, /\{\{PASS_TYPE_IDENTIFIER\}\}/);
 for (const asset of ["icon.png", "icon@2x.png", "icon@3x.png"]) {
   assert.ok(fs.existsSync(path.join(root, "apple-wallet/assets", asset)), `Missing Apple Wallet asset: ${asset}`);
 }
+for (const passFile of ["HAPPINESS.pkpass", "HAPPINESS-DEMO-25.pkpass"]) {
+  const bytes = fs.readFileSync(path.join(root, "i  a m/apple-wallet", passFile));
+  assert.equal(bytes.subarray(0, 2).toString("ascii"), "PK", `Invalid Apple Wallet archive: ${passFile}`);
+}
+assert.match(htaccess, /AddType application\/vnd\.apple\.pkpass \.pkpass/);
 
 const healthResponse = await happinessWorker.fetch(new Request("https://rewards.example/health"), {});
 assert.equal(healthResponse.status, 200);

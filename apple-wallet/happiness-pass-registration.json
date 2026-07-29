@@ -4,9 +4,12 @@
   "pass_type_identifier": "pass.tv.universalmind.happiness",
   "team_identifier": "3458V3D263",
   "registered_on": "2026-07-28",
-  "status": "identifier_registered_certificate_pending",
-  "pass_type_certificate_created": false,
-  "signing_private_key_created": false,
+  "status": "signed_static_demo_ready",
+  "pass_type_certificate_created": true,
+  "pass_type_certificate_id": "B2M5JMQY4B",
+  "pass_type_certificate_expires_on": "2027-08-27",
+  "signing_private_key_created": true,
+  "signing_private_key_storage": "local_ignored_file",
   "web_service_enabled": false,
   "secrets_in_source": false
 }

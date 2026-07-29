@@ -11,6 +11,9 @@
   const title = document.querySelector("[data-happiness-category-title]");
   const copy = document.querySelector("[data-happiness-category-copy]");
   const qrImage = document.querySelector("[data-happiness-qr-image]");
+  const qrLink = document.querySelector("[data-happiness-qr]");
+  const installLink = document.querySelector("[data-apple-wallet-install]");
+  const demoAward = document.querySelector("[data-happiness-demo-award]");
   const shell = document.querySelector("[data-happiness-state]");
   const balanceNodes = Array.from(document.querySelectorAll("[data-happiness-balance]"));
   const memberNode = document.querySelector("[data-happiness-member]");
@@ -106,6 +109,21 @@
 
   if (qrImage && /^(www\.)?universalmind\.tv$/i.test(window.location.hostname)) {
     qrImage.src = "/vogue/iam/a s s e t s/happiness-wallet-qr-production.png";
+  }
+
+  const isStaging = /^staging\.universalmind\.tv$/i.test(window.location.hostname);
+  if (demoAward && isStaging && embeddedParams.get("demo") === "1") {
+    demoAward.hidden = false;
+    demoAward.addEventListener("click", () => {
+      balanceNodes.forEach((node) => { node.textContent = "25"; });
+      if (appleStatus) appleStatus.textContent = "25 demo HAPPINESS awarded · install the refreshed card";
+      const updatedPass = "/vogue/iam/apple-wallet/HAPPINESS-DEMO-25.pkpass";
+      if (installLink) {
+        installLink.href = updatedPass;
+        installLink.textContent = "Refresh Apple Wallet";
+      }
+      if (qrLink) qrLink.href = updatedPass;
+    });
   }
 
   async function loadWalletState() {

@@ -9,18 +9,16 @@
   "foregroundColor": "rgb(247, 244, 237)",
   "backgroundColor": "rgb(31, 39, 35)",
   "labelColor": "rgb(195, 208, 197)",
-  "webServiceURL": "{{WEB_SERVICE_URL}}",
-  "authenticationToken": "{{AUTHENTICATION_TOKEN}}",
   "storeCard": {
     "primaryFields": [
       { "key": "balance", "label": "AVAILABLE", "value": "{{BALANCE}}", "changeMessage": "Your HAPPINESS balance is now %@." }
     ],
     "secondaryFields": [
       { "key": "ticker", "label": "INTERNET OF HAPPINESS", "value": "[ I o H ]" },
-      { "key": "member", "label": "FOUNDING CITIZEN", "value": "{{MEMBER_DISPLAY_ID}}" }
+      { "key": "member", "label": "UNIVERSAL CITIZEN", "value": "{{MEMBER_DISPLAY_ID}}" }
     ],
     "backFields": [
-      { "key": "programme", "label": "HAPPINESS", "value": "A Universal Mind rewards programme. It has no cash value and is not available for cash redemption." }
+      { "key": "programme", "label": "HAPPINESS", "value": "A Universal Mind rewards programme. It has no cash value, does not represent shares or ownership, and is not available for cash redemption." }
     ]
   },
   "barcodes": [

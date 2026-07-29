@@ -68,7 +68,7 @@ export const HAPPINESS_ARCHITECTURE = Object.freeze({
     settlementEnabled: false,
   }),
   appleWallet: Object.freeze({
-    mode: "identifier_registered_certificate_pending",
+    mode: "signed_static_demo_ready",
     passTypeIdentifier: "pass.tv.universalmind.happiness",
     updateServiceEnabled: false,
   }),

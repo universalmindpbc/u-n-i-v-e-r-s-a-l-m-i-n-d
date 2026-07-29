@@ -3,7 +3,7 @@
   "mode": "staging_preview",
   "member": {
     "display_id": "UM · 000 001",
-    "status": "FOUNDING CITIZEN"
+    "status": "UNIVERSAL CITIZEN"
   },
   "balance": {
     "available_display": "0",
@@ -26,6 +26,6 @@
     "empty_message": "Your first eligible participation will appear here after sign-in is activated."
   },
   "apple_wallet": {
-    "status": "Pass design prepared · Apple signing pending"
+    "status": "Signed Apple Wallet demo ready · scan to add"
   }
 }

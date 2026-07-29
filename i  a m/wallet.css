@@ -459,6 +459,14 @@ body.nav-open .global-nav-trigger { opacity: 0; pointer-events: none; }
 
 .happiness-apple__copy > p:not(:first-child) { max-width: 35rem; margin: 18px 0 0; color: var(--muted); font-size: 14px; line-height: 1.5; }
 .happiness-apple__copy > span { display: block; margin-top: 20px; color: rgba(255,255,255,.46); font-size: 11px; letter-spacing: .08em; }
+.happiness-apple__install,
+.happiness-apple__demo { display: inline-flex; align-items: center; min-height: 42px; margin-top: 22px; padding: 0 18px; border: 1px solid rgba(255,255,255,.3); border-radius: 999px; background: rgba(255,255,255,.09); color: #fff; font: inherit; font-size: 12px; letter-spacing: .08em; text-decoration: none; cursor: pointer; }
+.happiness-apple__demo { margin-left: 8px; }
+.happiness-apple__demo[hidden] { display: none; }
+.happiness-apple__install:hover,
+.happiness-apple__install:focus-visible,
+.happiness-apple__demo:hover,
+.happiness-apple__demo:focus-visible { background: rgba(255,255,255,.16); outline: 0; }
 
 .happiness-qr { position: relative; display: grid; place-items: center; flex: 0 0 auto; width: 178px; height: 178px; overflow: hidden; border: 12px solid rgba(255,255,255,.92); border-radius: 28px; background: #fff; box-shadow: 0 18px 44px rgba(0,0,0,.3); }
 .happiness-qr > img:first-child { width: 100%; height: 100%; object-fit: contain; image-rendering: pixelated; }
