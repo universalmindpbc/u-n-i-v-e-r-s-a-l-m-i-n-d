@@ -65,6 +65,7 @@ const television = read("i  a m/adaptive-environment-television.js");
 const happinessControl = read("i  a m/happiness-control.html");
 const happinessControlScript = read("i  a m/happiness-control.js");
 const happinessAutomation = read("i  a m/api/happiness-automation.php");
+assert.doesNotMatch(happinessAutomation, /'member'\s*=>\s*\$ledger\['member'\]/);
 const applePassDelivery = read("i  a m/apple-wallet/pass.php");
 const applePassService = read("i  a m/apple-wallet/service.php");
 const applePassLibrary = read("i  a m/apple-wallet/happiness-apple-lib.php");

@@ -305,11 +305,17 @@ function happiness_format_units(string $units): string
 function happiness_public_state(array $ledger, bool $authenticated = false): array
 {
     $configuration = happiness_environment_ready();
+    $member = [
+        'display_id' => $ledger['member']['display_id'] ?? 'UM · 000 001',
+        'status' => $ledger['member']['status'] ?? 'UNIVERSAL CITIZEN',
+        'polygon_address' => $ledger['member']['polygon_address'] ?? HAPPINESS_CITIZEN_ADDRESS,
+        'pass_serial' => $ledger['member']['pass_serial'] ?? 'UM-000001',
+    ];
     $state = [
         'ok' => true,
         'authenticated' => $authenticated,
         'schema_version' => $ledger['schema_version'],
-        'member' => $ledger['member'],
+        'member' => $member,
         'balance' => $ledger['balance'],
         'automation' => array_merge($ledger['automation'], [
             'configured' => $configuration['ready'],
