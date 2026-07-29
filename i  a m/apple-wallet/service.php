@@ -36,12 +36,12 @@ if ($route === 'log' && $method === 'POST') {
     exit;
 }
 
-if (!apple_service_authorized($ledger)) apple_service_json(['error' => 'not_authorized'], 401);
-
 if ($route === 'register' && in_array($method, ['POST', 'DELETE'], true)) {
     $device = (string) ($_GET['device'] ?? '');
     $serial = (string) ($_GET['serial'] ?? '');
-    if ($serial !== $ledger['member']['pass_serial'] || !preg_match('/^[A-Za-z0-9._-]{8,256}$/', $device)) {
+    $passType = (string) ($_GET['passType'] ?? '');
+    if (!apple_service_authorized($ledger)) apple_service_json(['error' => 'not_authorized'], 401);
+    if ($passType !== HAPPINESS_APPLE_PASS_TYPE || $serial !== $ledger['member']['pass_serial'] || !preg_match('/^[A-Za-z0-9._-]{8,256}$/', $device)) {
         apple_service_json(['error' => 'registration_invalid'], 400);
     }
     $registrations = happiness_apple_registrations();
@@ -63,13 +63,31 @@ if ($route === 'register' && in_array($method, ['POST', 'DELETE'], true)) {
 }
 
 if ($route === 'serials' && $method === 'GET') {
+    $device = (string) ($_GET['device'] ?? '');
+    $passType = (string) ($_GET['passType'] ?? '');
+    if ($passType !== HAPPINESS_APPLE_PASS_TYPE || !preg_match('/^[A-Za-z0-9._-]{8,256}$/', $device)) apple_service_json(['error' => 'registration_invalid'], 400);
+    $registrations = happiness_apple_registrations();
+    $registered = false;
+    foreach ($registrations['devices'] ?? [] as $registration) {
+        if (($registration['device'] ?? '') === $device && ($registration['serial'] ?? '') === $ledger['member']['pass_serial']) {
+            $registered = true;
+            break;
+        }
+    }
+    if (!$registered) apple_service_json(['error' => 'not_registered'], 401);
     $updatedSince = (string) ($_GET['passesUpdatedSince'] ?? '');
     $updatedAt = (string) ($ledger['updated_at'] ?? gmdate('c'));
     $serials = ($updatedSince === '' || strtotime($updatedAt) > (int) $updatedSince) ? [$ledger['member']['pass_serial']] : [];
+    if ($serials === []) {
+        http_response_code(204);
+        exit;
+    }
     apple_service_json(['serialNumbers' => $serials, 'lastUpdated' => (string) strtotime($updatedAt)]);
 }
 
 if ($route === 'pass' && $method === 'GET') {
+    if (!apple_service_authorized($ledger)) apple_service_json(['error' => 'not_authorized'], 401);
+    if ((string) ($_GET['passType'] ?? '') !== HAPPINESS_APPLE_PASS_TYPE) apple_service_json(['error' => 'pass_not_found'], 404);
     if ((string) ($_GET['serial'] ?? '') !== $ledger['member']['pass_serial']) apple_service_json(['error' => 'pass_not_found'], 404);
     require __DIR__ . '/pass.php';
     exit;

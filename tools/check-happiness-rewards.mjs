@@ -470,6 +470,7 @@ assert.match(applePassLibrary, /authenticationToken/);
 assert.match(applePassLibrary, /api\.push\.apple\.com\/3\/device/);
 assert.match(applePassService, /ApplePass /);
 assert.match(applePassService, /pushToken/);
+assert.match(applePassService, /not_registered/);
 assert.match(happinessControl, /ONE ACTION \/ ONE OUTCOME/);
 assert.match(happinessControl, /Circle managed signer/);
 assert.match(happinessControlScript, /action: "reconcile"/);
