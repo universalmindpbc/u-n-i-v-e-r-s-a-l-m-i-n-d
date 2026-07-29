@@ -1,0 +1,24 @@
+{
+  "schema_version": "happiness_automated_ledger_v1",
+  "mode": "polygon_amoy",
+  "member": {
+    "display_id": "UM · 000 001",
+    "status": "UNIVERSAL CITIZEN",
+    "polygon_address": "0xA83623eF867Bb651EF8f546632fa49d51FFad5ca",
+    "pass_serial": "UM-000001"
+  },
+  "balance": {
+    "available_units": "0",
+    "available_display": "0",
+    "ticker": "[ I o H ]"
+  },
+  "automation": {
+    "state": "configuration_required",
+    "last_confirmed_at": null,
+    "last_polygon_tx": null,
+    "last_apple_push_at": null
+  },
+  "pending": null,
+  "activity": [],
+  "updated_at": null
+}

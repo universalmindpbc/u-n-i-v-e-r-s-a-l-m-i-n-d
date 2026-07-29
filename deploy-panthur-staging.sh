@@ -29,6 +29,7 @@ fi
 "$NODE_BIN" --check "$ROOT_DIR/cloudflare/citizen-data-worker.js"
 "$NODE_BIN" --check "$ROOT_DIR/research/privacy-lab/healthomics-adapter.mjs"
 "$NODE_BIN" --check "$ROOT_DIR/i  a m/globe.js"
+"$NODE_BIN" --check "$ROOT_DIR/i  a m/happiness-control.js"
 "$NODE_BIN" "$ROOT_DIR/tools/check-adaptive-music-handoff.mjs"
 "$NODE_BIN" "$ROOT_DIR/tools/check-owner-state-persistence.mjs"
 "$NODE_BIN" "$ROOT_DIR/tools/check-broadcast-clock.mjs"
@@ -47,6 +48,10 @@ if command -v php >/dev/null 2>&1; then
   php -l "$ROOT_DIR/i  a m/api/broadcast-clock.php"
   php -l "$ROOT_DIR/i  a m/api/broadcast-interactions.php"
   php -l "$ROOT_DIR/i  a m/api/realtime-client-secret.php"
+  php -l "$ROOT_DIR/i  a m/api/happiness-automation.php"
+  php -l "$ROOT_DIR/i  a m/apple-wallet/happiness-apple-lib.php"
+  php -l "$ROOT_DIR/i  a m/apple-wallet/pass.php"
+  php -l "$ROOT_DIR/i  a m/apple-wallet/service.php"
 fi
 
 export FTP_HOST="${FTP_HOST:-sh00023.pa.smartservers.com.au}"

@@ -1,0 +1,7 @@
+Options -Indexes
+RewriteEngine On
+RewriteRule ^happiness-apple-registrations\.json$ - [F,L]
+RewriteRule ^v1/devices/([^/]+)/registrations/([^/]+)/([^/]+)$ service.php?route=register&device=$1&passType=$2&serial=$3 [B,L,QSA]
+RewriteRule ^v1/devices/([^/]+)/registrations/([^/]+)$ service.php?route=serials&device=$1&passType=$2 [B,L,QSA]
+RewriteRule ^v1/passes/([^/]+)/([^/]+)$ service.php?route=pass&passType=$1&serial=$2 [B,L,QSA]
+RewriteRule ^v1/log$ service.php?route=log [L,QSA]

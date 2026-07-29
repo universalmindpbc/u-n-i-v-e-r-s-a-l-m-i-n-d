@@ -70,7 +70,7 @@ should_skip_iam_source() {
   local relative_path="${source_file#"$IAM_DIR"/}"
 
   case "$relative_path" in
-    "api/mantra-library.json"|"api/quantum-tree-settings.json"|"api/.owner-state-history/"*|"a s s e t s/m a n t r a [ u p l o a d s ]/"*)
+    "api/mantra-library.json"|"api/quantum-tree-settings.json"|"api/happiness-ledger.json"|"apple-wallet/happiness-apple-registrations.json"|"api/.owner-state-history/"*|"api/.happiness-private/"*|"a s s e t s/m a n t r a [ u p l o a d s ]/"*)
       return 0
       ;;
   esac
@@ -94,7 +94,7 @@ remote_file_exists() {
 deploy_owner_state_seeds() {
   local relative_path
 
-  for relative_path in "api/mantra-library.json" "api/quantum-tree-settings.json"; do
+  for relative_path in "api/mantra-library.json" "api/quantum-tree-settings.json" "api/happiness-ledger.json" "apple-wallet/happiness-apple-registrations.json"; do
     if remote_file_exists "vogue/iam/$relative_path"; then
       echo "Owner state already exists; preserved: $relative_path"
       continue

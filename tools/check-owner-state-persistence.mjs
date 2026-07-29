@@ -16,6 +16,8 @@ const apiHtaccess = read("i  a m/api/.htaccess");
 for (const protectedPath of [
   "api/mantra-library.json",
   "api/quantum-tree-settings.json",
+  "api/happiness-ledger.json",
+  "apple-wallet/happiness-apple-registrations.json",
   "api/.owner-state-history/",
   "a s s e t s/m a n t r a [ u p l o a d s ]/",
 ]) {
