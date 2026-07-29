@@ -7,6 +7,10 @@
   --ink-muted: rgba(224, 246, 211, 0.54);
   --panel-black: rgba(2, 7, 3, 0.86);
   --edge: rgba(173, 255, 118, 0.38);
+  --program-top-inset: clamp(22px, 2.5vw, 40px);
+  --wallet-bottom: clamp(30px, 4.4vw, 62px);
+  --wallet-height: 66px;
+  --wallet-panel-gap: clamp(28px, 2.4vw, 42px);
   --sans: "Helvetica Neue", Helvetica, Arial, sans-serif;
   --mono: ui-monospace, "SFMono-Regular", Menlo, Monaco, Consolas, monospace;
   --editorial: Didot, "Bodoni 72", "Times New Roman", serif;
@@ -132,12 +136,12 @@ button {
 .program-panel {
   position: absolute;
   left: 50%;
-  top: 50%;
+  bottom: calc(var(--wallet-bottom) + var(--wallet-height) + var(--wallet-panel-gap));
   z-index: 7;
   display: flex;
   flex-direction: column;
   width: min(1040px, calc(100vw - 84px));
-  max-height: min(720px, calc(100dvh - 190px));
+  max-height: calc(100dvh - var(--program-top-inset) - var(--wallet-bottom) - var(--wallet-height) - var(--wallet-panel-gap));
   overflow: hidden;
   border: 1px solid var(--edge);
   border-radius: 12px;
@@ -148,7 +152,7 @@ button {
   -webkit-backdrop-filter: blur(24px) saturate(0.72);
   opacity: 0;
   pointer-events: none;
-  transform: translate(-50%, calc(-50% + 12px)) scale(0.99);
+  transform: translate(-50%, 12px) scale(0.99);
   transition:
     opacity 220ms ease,
     transform 380ms cubic-bezier(0.22, 0.72, 0.18, 1);
@@ -181,7 +185,7 @@ button {
 body.program-is-open .program-panel {
   opacity: 1;
   pointer-events: auto;
-  transform: translate(-50%, -50%) scale(1);
+  transform: translate(-50%, 0) scale(1);
 }
 
 .program-panel__header {
@@ -322,6 +326,7 @@ body.program-is-open .program-panel {
 }
 
 .program-scroll {
+  min-height: 0;
   overflow-x: hidden;
   overflow-y: auto;
   overscroll-behavior: contain;
@@ -549,6 +554,7 @@ body.program-is-open .program-panel {
 }
 
 .program-panel__footer {
+  flex: 0 0 auto;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -590,7 +596,7 @@ body.program-is-open .program-panel {
 .wallet-prototype {
   position: absolute;
   left: 50%;
-  bottom: clamp(30px, 4.4vw, 62px);
+  bottom: var(--wallet-bottom);
   z-index: 8;
   display: flex;
   align-items: center;
@@ -739,6 +745,12 @@ body[data-wallet-view="music"] [data-wallet-panel="music"] {
 }
 
 @media (max-width: 720px) {
+  :root {
+    --program-top-inset: 80px;
+    --wallet-bottom: 20px;
+    --wallet-panel-gap: 24px;
+  }
+
   .program-global-knob {
     top: 18px;
     left: 17px;
@@ -759,9 +771,7 @@ body[data-wallet-view="music"] [data-wallet-panel="music"] {
   }
 
   .program-panel {
-    top: 80px;
     width: calc(100vw - 28px);
-    max-height: calc(100dvh - 180px);
     border-radius: 10px;
     transform: translate(-50%, 12px) scale(0.99);
   }
@@ -877,10 +887,6 @@ body[data-wallet-view="music"] [data-wallet-panel="music"] {
     display: none;
   }
 
-  .wallet-prototype {
-    bottom: 20px;
-  }
-
   body[data-wallet-view]:not([data-wallet-view="closed"]) .wallet-prototype {
     width: calc(100vw - 28px);
   }
@@ -925,12 +931,10 @@ body[data-wallet-view="music"] [data-wallet-panel="music"] {
 }
 
 @media (max-height: 690px) and (min-width: 721px) {
-  .program-panel {
-    max-height: calc(100dvh - 150px);
-  }
-
-  .wallet-prototype {
-    bottom: 20px;
+  :root {
+    --program-top-inset: 18px;
+    --wallet-bottom: 20px;
+    --wallet-panel-gap: 22px;
   }
 }
 
