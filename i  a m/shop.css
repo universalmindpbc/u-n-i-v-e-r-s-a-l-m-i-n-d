@@ -229,9 +229,9 @@ body.nav-open .shop-universal-nav {
 }
 
 .global-nav-submenu a {
-  font-size: clamp(9.15px, 0.6832vw, 13.42px);
+  font-size: clamp(12.17px, 0.9087vw, 17.85px);
   font-weight: 700;
-  letter-spacing: .38em;
+  letter-spacing: normal;
 }
 
 .global-nav-citation {
@@ -1667,7 +1667,7 @@ body[data-shop-view="catalogue"] [data-shop-editorial] { display: none !importan
   }
   .global-nav-item { font-size: clamp(24px, 7vw, 34px); letter-spacing: .26em; line-height: 1.05; }
   .global-nav-submenu { gap: var(--global-nav-sub-gap); margin-left: clamp(34px, 9vw, 58px); }
-  .global-nav-submenu a { max-width: calc(100vw - 96px); font-size: clamp(7.93px, 2.44vw, 10.98px); letter-spacing: .2em; line-height: 1.35; white-space: normal; }
+  .global-nav-submenu a { max-width: calc(100vw - 96px); font-size: clamp(10.55px, 3.2452vw, 14.6px); letter-spacing: normal; line-height: 1.35; white-space: normal; }
   .global-nav-citation { bottom: 24px; font-size: 11px; line-height: 1.4; }
 
   .shop-theme,

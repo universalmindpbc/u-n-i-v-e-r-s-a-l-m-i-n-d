@@ -317,9 +317,9 @@ body.tensor-kernel-open .kernel-video-backdrop {
 }
 
 .global-nav-submenu a {
-  font-size: clamp(9.15px, 0.6832vw, 13.42px);
+  font-size: clamp(12.17px, 0.9087vw, 17.85px);
   font-weight: 700;
-  letter-spacing: 0.38em;
+  letter-spacing: normal;
 }
 
 .global-nav-citation {
@@ -3155,8 +3155,8 @@ body.is-homepage-radar-frame .need-card-leader-layer {
 
   .global-nav-submenu a {
     max-width: calc(100vw - 96px);
-    font-size: clamp(7.93px, 2.44vw, 10.98px);
-    letter-spacing: 0.2em;
+    font-size: clamp(10.55px, 3.2452vw, 14.6px);
+    letter-spacing: normal;
     line-height: 1.35;
     white-space: normal;
   }
