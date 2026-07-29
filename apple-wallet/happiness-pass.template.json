@@ -13,9 +13,12 @@
       { "key": "brand", "label": "", "value": "HAPPINESS" }
     ],
     "primaryFields": [
-      { "key": "balance", "label": "AVAILABLE", "value": "{{BALANCE}} [ I o H ]", "changeMessage": "Your HAPPINESS balance is now %@." }
+      { "key": "balance", "label": "AVAILABLE", "value": "{{BALANCE}}", "changeMessage": "Your HAPPINESS balance is now %@." }
     ],
     "secondaryFields": [
+      { "key": "ticker", "label": "", "value": "[ I o H ]" }
+    ],
+    "auxiliaryFields": [
       { "key": "member", "label": "UNIVERSAL CITIZEN", "value": "{{MEMBER_DISPLAY_ID}}" }
     ],
     "backFields": [
@@ -23,6 +26,6 @@
     ]
   },
   "barcodes": [
-    { "format": "PKBarcodeFormatQR", "message": "{{WALLET_URL}}", "messageEncoding": "iso-8859-1", "altText": "Open HAPPINESS wallet" }
+    { "format": "PKBarcodeFormatQR", "message": "{{WALLET_URL}}", "messageEncoding": "iso-8859-1", "altText": "Redeem HAPPINESS In-store" }
   ]
 }

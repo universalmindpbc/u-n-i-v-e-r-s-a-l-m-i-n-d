@@ -359,7 +359,9 @@ assert.match(wallet, /data-happiness-demo-award/);
 assert.match(script, /pass\.php\?balance=25/);
 assert.match(passTemplate, /"label": "UNIVERSAL CITIZEN"/);
 assert.match(passTemplate, /"key": "brand", "label": "", "value": "HAPPINESS"/);
-assert.match(passTemplate, /\{\{BALANCE\}\} \[ I o H \]/);
+assert.match(passTemplate, /"key": "balance", "label": "AVAILABLE", "value": "\{\{BALANCE\}\}"/);
+assert.match(passTemplate, /"key": "ticker", "label": "", "value": "\[ I o H \]"/);
+assert.match(passTemplate, /"altText": "Redeem HAPPINESS In-store"/);
 for (const asset of ["logo.png", "logo@2x.png", "logo@3x.png", "strip.png", "strip@2x.png", "strip@3x.png"]) {
   assert.match(passBuilder, new RegExp(asset.replace(".", "\\.")));
   assert.ok(fs.existsSync(path.join(root, "apple-wallet", "assets", asset)));
