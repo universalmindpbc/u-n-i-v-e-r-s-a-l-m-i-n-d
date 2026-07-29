@@ -699,6 +699,16 @@ function safeErrorCode(error) {
   return String(error?.message || "citizen_data_unavailable").split(":")[0];
 }
 
+function safeErrorDiagnostic(error) {
+  const message = String(error?.message || "");
+  return {
+    code: safeErrorCode(error),
+    name: String(error?.name || error?.code || "unknown").slice(0, 80),
+    action: message.match(/not authorized to perform:\s*([A-Za-z0-9:*]+)/i)?.[1] || null,
+    status: Number(error?.$metadata?.httpStatusCode || 0) || null,
+  };
+}
+
 async function projectConsentLedgerRecords(records) {
   for (const record of records) {
     const image = record?.dynamodb?.NewImage;
@@ -751,7 +761,7 @@ export async function handler(event) {
       : /active_consent/.test(code) ? 403
         : /required|invalid|not_allowed|forbidden|not_published|not_found/.test(code) ? 400
           : 503;
-    console.error("Citizen data Lambda request failed", { code });
+    console.error("Citizen data Lambda request failed", safeErrorDiagnostic(error));
     return jsonResponse(status, { error: status === 503 ? "citizen_data_unavailable" : code });
   }
 }
