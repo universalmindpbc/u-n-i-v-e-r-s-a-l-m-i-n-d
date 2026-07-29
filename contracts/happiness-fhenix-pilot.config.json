@@ -1,0 +1,20 @@
+{
+  "schema_version": "happiness_fhenix_confidential_pilot_v1",
+  "status": "contract_scaffolded_not_deployed",
+  "purpose": "happiness_confidential_rewards_benchmark",
+  "production_happiness_contract_replaced": false,
+  "rewards_only": true,
+  "mental_health_data_allowed": false,
+  "member_transfers_enabled": false,
+  "issuance_enabled": false,
+  "supported_testnets": [
+    "ethereum-sepolia",
+    "arbitrum-sepolia",
+    "base-sepolia"
+  ],
+  "selected_testnet": null,
+  "contract_address": null,
+  "issuer_address": null,
+  "cofhe_sdk_version": "0.6.0",
+  "cofhe_contracts_version": "0.1.4"
+}

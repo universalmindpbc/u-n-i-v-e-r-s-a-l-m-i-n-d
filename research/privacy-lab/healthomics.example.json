@@ -1,0 +1,17 @@
+{
+  "schema_version": "universal_mind_healthomics_configuration_v1",
+  "status": "wired_read_only_not_activated",
+  "AWS_HEALTHOMICS_REGION": "ap-southeast-2",
+  "AWS_HEALTHOMICS_READS_ENABLED": "false",
+  "AWS_HEALTHOMICS_WRITES_ENABLED": "false",
+  "AWS_HEALTHOMICS_SEQUENCE_STORE_ID": null,
+  "AWS_HEALTHOMICS_KMS_KEY_ARN": null,
+  "UNIVERSAL_MIND_HORIZON_2_ENABLED": "false",
+  "UNIVERSAL_MIND_HORIZON_3_ENABLED": "false",
+  "allowed_sequence_store_data": [
+    "validated_horizon_3_omics_read_set",
+    "approved_horizon_2_omics_derived_research_artifact"
+  ],
+  "generic_biometrics_store": false,
+  "live_data_present": false
+}

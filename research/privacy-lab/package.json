@@ -1,0 +1,19 @@
+{
+  "name": "universal-mind-privacy-lab",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "check": "node ../../tools/check-privacy-research-foundations.mjs"
+  },
+  "dependencies": {
+    "@aws-sdk/client-omics": "3.1090.0"
+  },
+  "devDependencies": {
+    "@cofhe/sdk": "0.6.0",
+    "@fhenixprotocol/cofhe-contracts": "0.1.4"
+  }
+}

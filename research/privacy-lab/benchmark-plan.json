@@ -1,0 +1,58 @@
+{
+  "schema_version": "universal_mind_fhe_benchmark_plan_v1",
+  "fixture_policy": "synthetic_only_until_separate_privacy_and_security_approval",
+  "zama": {
+    "purpose": "sensitive_inference_insight_benchmark",
+    "implementation": "tfhe-rs",
+    "dimensions": 144,
+    "score_encoding": "unsigned_integer_0_to_1000",
+    "operations": [
+      "key_generation",
+      "encrypt_vector",
+      "encrypted_aggregate",
+      "decrypt_result",
+      "reference_correctness_check"
+    ],
+    "metrics": [
+      "key_generation_ms",
+      "encryption_ms",
+      "encrypted_compute_ms",
+      "decryption_ms",
+      "end_to_end_ms",
+      "peak_memory_mb",
+      "ciphertext_bytes",
+      "hardware_profile",
+      "correctness"
+    ],
+    "live_citizen_shadow_traffic": false,
+    "latency_budget_ms": null
+  },
+  "fhenix": {
+    "purpose": "happiness_confidential_rewards_benchmark",
+    "implementation": "cofhe",
+    "data_boundary": "rewards_only",
+    "networks": [
+      "ethereum-sepolia",
+      "arbitrum-sepolia",
+      "base-sepolia"
+    ],
+    "operations": [
+      "encrypt_reward_amount",
+      "credit_non_transferable_balance",
+      "read_encrypted_balance_handle",
+      "authorised_decryption"
+    ],
+    "metrics": [
+      "client_encryption_ms",
+      "transaction_confirmation_ms",
+      "coprocessor_completion_ms",
+      "authorised_decryption_ms",
+      "gas_used",
+      "ciphertext_bytes",
+      "correctness"
+    ],
+    "mental_health_data_allowed": false,
+    "issuance_enabled": false,
+    "deployed_contract_address": null
+  }
+}

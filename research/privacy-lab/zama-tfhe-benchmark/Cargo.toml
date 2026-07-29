@@ -1,0 +1,8 @@
+[package]
+name = "universal-mind-zama-sensitive-insight-benchmark"
+version = "0.1.0"
+edition = "2021"
+publish = false
+
+[dependencies]
+tfhe = { version = "1", features = ["integer"] }

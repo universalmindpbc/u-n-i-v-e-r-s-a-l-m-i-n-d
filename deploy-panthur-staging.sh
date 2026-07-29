@@ -23,6 +23,8 @@ fi
 "$NODE_BIN" --check "$ROOT_DIR/cloudflare/agora-audio-room-worker.js"
 "$NODE_BIN" --check "$ROOT_DIR/i  a m/realtime-voice-assistant.js"
 "$NODE_BIN" --check "$ROOT_DIR/cloudflare/iam-citizen-needs-worker.js"
+"$NODE_BIN" --check "$ROOT_DIR/cloudflare/privacy-research-foundations.js"
+"$NODE_BIN" --check "$ROOT_DIR/research/privacy-lab/healthomics-adapter.mjs"
 "$NODE_BIN" --check "$ROOT_DIR/i  a m/globe.js"
 "$NODE_BIN" "$ROOT_DIR/tools/check-adaptive-music-handoff.mjs"
 "$NODE_BIN" "$ROOT_DIR/tools/check-owner-state-persistence.mjs"
@@ -32,6 +34,7 @@ fi
 "$NODE_BIN" "$ROOT_DIR/tools/check-public-crawler-surface.mjs"
 "$NODE_BIN" "$ROOT_DIR/tools/check-shopfront-mockup.mjs"
 "$NODE_BIN" "$ROOT_DIR/tools/check-happiness-rewards.mjs"
+"$NODE_BIN" "$ROOT_DIR/tools/check-privacy-research-foundations.mjs"
 "$NODE_BIN" "$ROOT_DIR/tools/check-universal-one-programme-guide.mjs"
 
 if command -v php >/dev/null 2>&1; then
