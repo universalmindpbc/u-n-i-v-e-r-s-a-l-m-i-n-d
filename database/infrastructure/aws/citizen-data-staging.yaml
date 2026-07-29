@@ -24,12 +24,12 @@ Parameters:
     Type: Number
     Default: 0
     MinValue: 0
-    MaxValue: 0.5
+    MaxValue: 0
   DatabaseMaxCapacity:
     Type: Number
-    Default: 0.5
-    MinValue: 0.5
-    MaxValue: 0.5
+    Default: 1
+    MinValue: 1
+    MaxValue: 1
   DatabaseIdleSecondsBeforePause:
     Type: Number
     Default: 300

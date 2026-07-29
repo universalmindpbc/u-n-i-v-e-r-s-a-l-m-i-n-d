@@ -13,7 +13,7 @@
   },
   {
     "ParameterKey": "DatabaseMaxCapacity",
-    "ParameterValue": "0.5"
+    "ParameterValue": "1"
   },
   {
     "ParameterKey": "DatabaseIdleSecondsBeforePause",

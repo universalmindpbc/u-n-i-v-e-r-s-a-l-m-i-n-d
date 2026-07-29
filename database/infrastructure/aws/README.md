@@ -47,10 +47,13 @@ Every stateful resource uses `DeletionPolicy: Retain`. The database has deletion
 ## Cost boundary
 
 The AWS Price List API returned **USD $0.20 per ACU-hour** for Aurora PostgreSQL
-Serverless v2 in Sydney on 2026-07-29. The prototype is constrained to a
-0-to-0.5 ACU range and pauses after five idle minutes. Instance-capacity cost is
-zero while fully paused and about USD $0.10 per active hour. The continuous-awake
-ceiling is about USD $73 per 730-hour month, but that is not the intended mode.
+Serverless v2 in Sydney on 2026-07-29. AWS rejected a 0-to-0.5 ACU range during
+the first synthetic-only creation rehearsal because this platform requires the
+maximum capacity to be at least 1 ACU. The approved prototype is therefore
+constrained to an exact 0-to-1 ACU range and pauses after five idle minutes.
+Instance-capacity cost is zero while fully paused and no more than USD $0.20 per
+active hour. The continuous-awake ceiling is about USD $146 per 730-hour month,
+but that is not the intended mode and would exceed the prototype budget.
 
 The separately configured monthly AWS cost budget is USD $30, with actual-cost
 email alerts at USD $10, $20, $25 and $30. AWS Budgets is an alerting boundary,
