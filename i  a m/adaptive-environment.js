@@ -1052,6 +1052,14 @@
       const url = internalPageUrlFromEvent(event);
       if (!url) return;
 
+      const currentUrl = new URL(window.location.href);
+      const isCurrentPageLink = url.pathname === currentUrl.pathname && !url.search && !url.hash;
+      if (isCurrentPageLink) {
+        event.preventDefault();
+        closeGlobalNav();
+        return;
+      }
+
       event.preventDefault();
       navigateInPlace(url);
     });

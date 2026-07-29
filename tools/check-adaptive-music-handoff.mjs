@@ -204,6 +204,7 @@ requireCondition(shellController.includes('url.searchParams.set("musicTelevision
 requireCondition(adaptiveEnvironment.includes('const standalonePages = new Set(["about.html"]);'), 'About is no longer classified as a standalone destination');
 requireCondition(!adaptiveEnvironment.match(/const framePages = new Set\([^;]*about\.html/), 'About can still be rendered inside the undersized adaptive frame');
 requireCondition(adaptiveEnvironment.includes('!standalonePages.has(pageName)'), 'standalone destinations are no longer recognised by shared navigation');
+requireCondition(adaptiveEnvironment.includes('const isCurrentPageLink = url.pathname === currentUrl.pathname && !url.search && !url.hash;') && adaptiveEnvironment.includes('if (isCurrentPageLink) {\n        event.preventDefault();\n        closeGlobalNav();\n        return;\n      }'), 'the active navigation destination can still create an undersized nested frame');
 requireCondition(aboutController.includes('window.top.location.replace(routingUrl.href);'), 'a framed About page can no longer promote itself to the full browser window');
 requireCondition(aboutController.includes('const musicTelevisionFrame = window.self !== window.top'), 'About no longer distinguishes the persistent television frame from broken generic frames');
 requireCondition(aboutController.includes('window.__iamMusicTelevisionFrame = true;'), 'About no longer retains television continuity after cleaning its URL');
