@@ -25,6 +25,8 @@ aws sts get-caller-identity --profile universal-mind-staging
 
 AWS CloudShell is an acceptable bootstrap alternative because it inherits the signed-in console session and does not require exporting an access key.
 
+AWS Secrets Manager is the canonical vault for service credentials and third-party API keys. Edge or application platforms may receive only the minimum runtime secret they require; that value is a managed mirror, not a second source of truth. Future credential work should inventory names and rotation state without reading values, migrate remaining local or hosting copies into AWS, and automate narrowly scoped rotation from AWS to each approved runtime.
+
 ## Region split
 
 - IAM Identity Center remains in its configured primary region.
