@@ -11,6 +11,7 @@ Scope: staging only. Production was not modified.
 - Scoped KMS and operator diagnostics: `2ae832b`
 - Payload-free Lambda diagnostic fields: `b0e391a`
 - Transaction item permissions: `7d40a1a`
+- Visible ownership emphasis: `e8a2512`
 - Consent document: `arrival-consent-v3`
 - Approved-copy SHA-256: `52f5a4e51b6d4642e87b4ee05afd928c3a6f208a1ea949fe48c3900c45761bc1`
 
@@ -30,7 +31,7 @@ Scope: staging only. Production was not modified.
 - The permissions panel opens on the induction page after Enter the portal is selected.
 - The background remains sharp; the panel is compact and app-like with left-aligned copy.
 - The sentence uses `deliver`, not `delivery`.
-- The full ownership sentence is bold.
+- The full ownership sentence has a verified computed weight of 700.
 - `How your data works` is a native new-tab link with `noopener noreferrer`.
 - The destination page loads the DynamoDB-v3 client and consent controller with an updated cache key.
 
@@ -60,4 +61,3 @@ The 15-second Aurora resume delay is removed from visitor consent. The one-time 
 - DynamoDB remains on-demand with no provisioned read or write capacity.
 - No provisioned Lambda concurrency was added.
 - Aurora remains configured for 0-1 ACU with automatic pause.
-
