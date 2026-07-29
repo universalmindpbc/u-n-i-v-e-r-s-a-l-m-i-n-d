@@ -492,18 +492,22 @@ body.television-program-open .program-panel {
 .adaptive-television-program-button {
   flex: 0 0 82px;
   height: 27px;
-  border: 1px solid rgba(173, 255, 118, 0.55);
+  border: 1px solid rgba(255, 255, 255, 0.22);
   border-radius: 8px;
-  color: var(--program-signal);
+  background: rgba(0, 0, 0, 0.2);
+  color: rgba(255, 255, 255, 0.62);
   font: 600 9px/1 var(--program-sans);
-  letter-spacing: 0.025em;
+  letter-spacing: 0.075em;
   padding: 0 10px;
+  text-transform: uppercase;
+  transition: background 220ms ease, border-color 220ms ease, color 220ms ease;
 }
 
 .adaptive-television-program-button:hover,
 .adaptive-television-program-button:focus-visible {
-  background: var(--program-signal);
-  color: #071006;
+  border-color: rgba(255, 255, 255, 0.34);
+  background: rgba(255, 255, 255, 0.08);
+  color: #fff;
   outline: 0;
 }
 

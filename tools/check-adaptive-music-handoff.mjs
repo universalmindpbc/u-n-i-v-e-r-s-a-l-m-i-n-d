@@ -224,9 +224,9 @@ const nowPlayingCss = televisionCss.slice(
 const indexPage = pages.find(({ pagePath }) => pagePath === path.join(IAM_DIR, 'index.html'))?.source || '';
 
 requireCondition(controller.includes(explicitSelectionMarker), 'the home controller no longer reads selected_track_id from the URL');
-requireCondition(indexPage.includes('programme-guide.css?v=programme-guide-app-1'), 'the live I AM app no longer loads the Program design');
+requireCondition(indexPage.includes('programme-guide.css?v=programme-guide-app-2'), 'the live I AM app no longer loads the subdued Program design');
 requireCondition(indexPage.includes('programme-guide.js?v=programme-guide-app-1'), 'the live I AM app no longer loads the Program controller');
-requireCondition(indexPage.includes('class="adaptive-television-program-button"') && indexPage.includes('data-program-open'), 'the Music wallet no longer exposes Program');
+requireCondition(indexPage.includes('class="adaptive-television-program-button"') && indexPage.includes('data-program-open') && indexPage.includes('>PROGRAM</button>'), 'the Music wallet no longer exposes the uppercase Program control');
 requireCondition(indexPage.includes('PROGRAM <em>/ PARTIES</em>') && indexPage.includes('data-program-more'), 'the Program popup has lost the approved Parties and 24-hour controls');
 requireCondition((indexPage.match(/data-room="(?:inner-planes|champagne-bohemia|modul8-infinity|james-bondage)"/g) || []).length === 4, 'the Program popup no longer exposes the four canonical Parties rooms');
 requireCondition((indexPage.match(/data-zone="(?:local|Australia\/Sydney|America\/Los_Angeles|Europe\/Madrid)"/g) || []).length === 4, 'the Program popup no longer exposes Local, Sydney, Los Angeles and Ibiza time');
@@ -234,6 +234,8 @@ requireCondition(programmeGuideCss.includes('bottom: calc(var(--program-wallet-b
 requireCondition(programmeGuideCss.includes('max-height: calc(100dvh - var(--program-top-inset) - var(--program-wallet-bottom) - var(--program-wallet-height) - var(--program-wallet-gap));'), 'the Program casing can no longer grow upward within the browser');
 requireCondition(programmeGuideCss.includes('.program-scroll {') && programmeGuideCss.includes('min-height: 0;') && programmeGuideCss.includes('overflow-y: auto;'), 'the Program schedule no longer scrolls inside its fixed casing');
 requireCondition(programmeGuideCss.includes('justify-content: center;') && programmeGuideCss.includes('min-height: 30px;'), 'the More / View 24 Hours label is no longer vertically centred');
+requireCondition(programmeGuideCss.includes('border: 1px solid rgba(255, 255, 255, 0.22);') && programmeGuideCss.includes('color: rgba(255, 255, 255, 0.62);') && programmeGuideCss.includes('text-transform: uppercase;'), 'the Program control no longer matches the neutral Music-button casing and typography');
+requireCondition(programmeGuideCss.includes('.adaptive-television-program-button:hover,') && programmeGuideCss.includes('background: rgba(255, 255, 255, 0.08);') && !programmeGuideCss.includes('border: 1px solid rgba(173, 255, 118, 0.55);'), 'the Program control has lost its standard neutral rollover or regained green emphasis');
 requireCondition(programmeGuide.includes('fetch("broadcast-schedule-v1.json?v=programme-guide-app-1"') && programmeGuide.includes('cache: "no-store"'), 'the Program popup no longer reads the live no-cache broadcast schedule');
 requireCondition(programmeGuide.includes('fetch("adaptive-music-video-catalogue-v1.11.json?v=programme-guide-app-1"'), 'newly catalogued DJ sets can no longer populate Program automatically');
 requireCondition(programmeGuide.includes('window.IAMBroadcastClock?.nowMs?.()'), 'Program is no longer aligned to the shared live clock');
