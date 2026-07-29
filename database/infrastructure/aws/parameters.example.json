@@ -1,0 +1,26 @@
+[
+  {
+    "ParameterKey": "EnvironmentName",
+    "ParameterValue": "staging"
+  },
+  {
+    "ParameterKey": "DatabaseName",
+    "ParameterValue": "universal_mind_citizen_data"
+  },
+  {
+    "ParameterKey": "DatabaseMinCapacity",
+    "ParameterValue": "0"
+  },
+  {
+    "ParameterKey": "DatabaseMaxCapacity",
+    "ParameterValue": "1"
+  },
+  {
+    "ParameterKey": "DatabaseIdleSecondsBeforePause",
+    "ParameterValue": "900"
+  },
+  {
+    "ParameterKey": "BackupRetentionDays",
+    "ParameterValue": "14"
+  }
+]

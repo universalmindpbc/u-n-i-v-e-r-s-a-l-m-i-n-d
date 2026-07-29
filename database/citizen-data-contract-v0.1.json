@@ -1,0 +1,67 @@
+{
+  "schema_version": "universal_mind_citizen_data_v0.1",
+  "status": "foundation_disabled_synthetic_only",
+  "canonical_store": "aurora_postgresql",
+  "identity": {
+    "mode": "pseudonymous_cookie_first",
+    "names_required": false,
+    "email_required": false,
+    "browser_fingerprinting": false,
+    "cross_device_recovery": "future_optional_passkey"
+  },
+  "core_consent": {
+    "placement": "before_checkin",
+    "persistent_receipt": true,
+    "required_purposes": [
+      "core_checkin_processing",
+      "cross_session_memory"
+    ],
+    "optional_purposes": [
+      "universal_one_conversation_memory",
+      "consented_engagement_understanding",
+      "deidentified_collective_learning"
+    ],
+    "rewards_permission_included": false
+  },
+  "sensitive_payload_storage": {
+    "plaintext_database_columns": false,
+    "envelope_encryption": "AES-256-GCM",
+    "key_management": "AWS KMS customer-managed key",
+    "object_store_adapter": [
+      "aws_s3",
+      "storj_s3"
+    ],
+    "dual_write_enabled": false
+  },
+  "database_classes": {
+    "plaintext_metadata": [
+      "pseudonymous identifiers",
+      "consent version and purpose",
+      "timestamps",
+      "object lineage",
+      "model and prompt version",
+      "erasure state"
+    ],
+    "encrypted_objects": [
+      "checkin text",
+      "Universal One conversation turns",
+      "inference results",
+      "citizen export bundles"
+    ]
+  },
+  "projections": {
+    "rag": "derived_revocable_projection_not_source_of_truth",
+    "zama": "synthetic_benchmark_only_until_separately_approved",
+    "healthomics": "disabled_horizon_2_3_omics_only",
+    "fhenix": "separate_happiness_rewards_service_only"
+  },
+  "prohibited_in_citizen_data": [
+    "happiness reward balance",
+    "reward issuance amount",
+    "wallet private key",
+    "transferable token balance",
+    "raw IP address",
+    "browser fingerprint",
+    "third-party advertising identifier"
+  ]
+}

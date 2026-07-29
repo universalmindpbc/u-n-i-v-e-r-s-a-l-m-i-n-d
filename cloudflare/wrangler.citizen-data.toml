@@ -1,0 +1,30 @@
+name = "universal-mind-citizen-data"
+main = "citizen-data-worker.js"
+compatibility_date = "2026-07-29"
+compatibility_flags = [ "nodejs_compat" ]
+workers_dev = false
+preview_urls = false
+
+[vars]
+CITIZEN_DATA_ENABLED = "false"
+CITIZEN_DATA_REGION = "ap-southeast-2"
+CITIZEN_DATA_STORAGE_PROVIDER = "aws_s3"
+CITIZEN_DATA_RAG_PROVIDER = "disabled"
+CITIZEN_DATA_ZAMA_SHADOW_ENABLED = "false"
+CITIZEN_DATA_HEALTHOMICS_WRITES_ENABLED = "false"
+
+# No binding or secret in this file activates a live database. Future staging-only
+# configuration requires a founder-approved consent document and separately created:
+# HYPERDRIVE_FRESH (caching disabled)
+# CITIZEN_DATA_KMS_KEY_ARN
+# CITIZEN_DATA_OBJECT_BUCKET
+# CITIZEN_DATA_CONSENT_DOCUMENT_VERSION
+# CITIZEN_DATA_CONSENT_COPY_SHA256
+
+[[ratelimits]]
+name = "CITIZEN_DATA_RATE_LIMITER"
+namespace_id = "1003"
+
+  [ratelimits.simple]
+  limit = 30
+  period = 60

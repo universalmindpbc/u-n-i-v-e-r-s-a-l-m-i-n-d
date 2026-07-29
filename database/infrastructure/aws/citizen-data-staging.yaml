@@ -1,0 +1,335 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Description: >-
+  Disabled-by-default Universal Mind citizen data staging foundation: dedicated VPC,
+  KMS-encrypted S3 storage and Aurora PostgreSQL Serverless v2 with the RDS Data API.
+  Deploy only after founder cost approval and IAM Identity Center authentication.
+
+Parameters:
+  EnvironmentName:
+    Type: String
+    Default: staging
+    AllowedValues:
+      - staging
+  DatabaseName:
+    Type: String
+    Default: universal_mind_citizen_data
+    AllowedPattern: "^[a-z][a-z0-9_]{2,62}$"
+  AuroraPostgresEngineVersion:
+    Type: String
+    Description: >-
+      A currently supported Aurora PostgreSQL Serverless v2 version in the deployment
+      region. Resolve with AWS before creating the change set; do not guess or pin stale data.
+    AllowedPattern: "^[0-9]+\\.[0-9]+(?:\\.[0-9]+)?$"
+  DatabaseMinCapacity:
+    Type: Number
+    Default: 0
+    MinValue: 0
+    MaxValue: 1
+  DatabaseMaxCapacity:
+    Type: Number
+    Default: 1
+    MinValue: 0.5
+    MaxValue: 4
+  DatabaseIdleSecondsBeforePause:
+    Type: Number
+    Default: 900
+    MinValue: 300
+    MaxValue: 86400
+  BackupRetentionDays:
+    Type: Number
+    Default: 14
+    MinValue: 7
+    MaxValue: 35
+
+Resources:
+  CitizenDataKey:
+    Type: AWS::KMS::Key
+    DeletionPolicy: Retain
+    UpdateReplacePolicy: Retain
+    Properties:
+      Description: Universal Mind staging citizen data encryption key
+      EnableKeyRotation: true
+      PendingWindowInDays: 30
+      KeyPolicy:
+        Version: "2012-10-17"
+        Statement:
+          - Sid: AllowAccountAdministration
+            Effect: Allow
+            Principal:
+              AWS: !Sub arn:${AWS::Partition}:iam::${AWS::AccountId}:root
+            Action: kms:*
+            Resource: "*"
+      Tags:
+        - Key: application
+          Value: universal-mind
+        - Key: data-class
+          Value: sensitive-citizen-data
+        - Key: environment
+          Value: !Ref EnvironmentName
+
+  CitizenDataKeyAlias:
+    Type: AWS::KMS::Alias
+    Properties:
+      AliasName: !Sub alias/universal-mind-citizen-data-${EnvironmentName}
+      TargetKeyId: !Ref CitizenDataKey
+
+  CitizenDataAccessLogBucket:
+    Type: AWS::S3::Bucket
+    DeletionPolicy: Retain
+    UpdateReplacePolicy: Retain
+    Properties:
+      BucketEncryption:
+        ServerSideEncryptionConfiguration:
+          - ServerSideEncryptionByDefault:
+              SSEAlgorithm: AES256
+      LifecycleConfiguration:
+        Rules:
+          - Id: expire-access-logs
+            Status: Enabled
+            ExpirationInDays: 365
+            NoncurrentVersionExpiration:
+              NoncurrentDays: 90
+      OwnershipControls:
+        Rules:
+          - ObjectOwnership: BucketOwnerPreferred
+      PublicAccessBlockConfiguration:
+        BlockPublicAcls: true
+        BlockPublicPolicy: true
+        IgnorePublicAcls: true
+        RestrictPublicBuckets: true
+      VersioningConfiguration:
+        Status: Enabled
+      Tags:
+        - Key: application
+          Value: universal-mind
+        - Key: environment
+          Value: !Ref EnvironmentName
+        - Key: purpose
+          Value: citizen-data-access-logs
+
+  CitizenDataAccessLogBucketPolicy:
+    Type: AWS::S3::BucketPolicy
+    Properties:
+      Bucket: !Ref CitizenDataAccessLogBucket
+      PolicyDocument:
+        Version: "2012-10-17"
+        Statement:
+          - Sid: S3ServerAccessLogsPolicy
+            Effect: Allow
+            Principal:
+              Service: logging.s3.amazonaws.com
+            Action: s3:PutObject
+            Resource: !Sub ${CitizenDataAccessLogBucket.Arn}/s3-access-logs/*
+            Condition:
+              ArnLike:
+                aws:SourceArn: !GetAtt CitizenDataObjectBucket.Arn
+              StringEquals:
+                aws:SourceAccount: !Ref AWS::AccountId
+          - Sid: DenyInsecureTransport
+            Effect: Deny
+            Principal: "*"
+            Action: s3:*
+            Resource:
+              - !GetAtt CitizenDataAccessLogBucket.Arn
+              - !Sub ${CitizenDataAccessLogBucket.Arn}/*
+            Condition:
+              Bool:
+                aws:SecureTransport: false
+
+  CitizenDataObjectBucket:
+    Type: AWS::S3::Bucket
+    DeletionPolicy: Retain
+    UpdateReplacePolicy: Retain
+    Properties:
+      BucketEncryption:
+        ServerSideEncryptionConfiguration:
+          - BucketKeyEnabled: true
+            ServerSideEncryptionByDefault:
+              KMSMasterKeyID: !GetAtt CitizenDataKey.Arn
+              SSEAlgorithm: aws:kms
+      LoggingConfiguration:
+        DestinationBucketName: !Ref CitizenDataAccessLogBucket
+        LogFilePrefix: s3-access-logs/
+      LifecycleConfiguration:
+        Rules:
+          - Id: abort-incomplete-uploads
+            Status: Enabled
+            AbortIncompleteMultipartUpload:
+              DaysAfterInitiation: 7
+          - Id: expire-temporary-exports
+            Status: Enabled
+            Prefix: exports/
+            ExpirationInDays: 7
+            NoncurrentVersionExpiration:
+              NoncurrentDays: 7
+      OwnershipControls:
+        Rules:
+          - ObjectOwnership: BucketOwnerEnforced
+      PublicAccessBlockConfiguration:
+        BlockPublicAcls: true
+        BlockPublicPolicy: true
+        IgnorePublicAcls: true
+        RestrictPublicBuckets: true
+      VersioningConfiguration:
+        Status: Enabled
+      Tags:
+        - Key: application
+          Value: universal-mind
+        - Key: data-class
+          Value: sensitive-citizen-data
+        - Key: environment
+          Value: !Ref EnvironmentName
+
+  CitizenDataObjectBucketPolicy:
+    Type: AWS::S3::BucketPolicy
+    Properties:
+      Bucket: !Ref CitizenDataObjectBucket
+      PolicyDocument:
+        Version: "2012-10-17"
+        Statement:
+          - Sid: DenyInsecureTransport
+            Effect: Deny
+            Principal: "*"
+            Action: s3:*
+            Resource:
+              - !GetAtt CitizenDataObjectBucket.Arn
+              - !Sub ${CitizenDataObjectBucket.Arn}/*
+            Condition:
+              Bool:
+                aws:SecureTransport: false
+          - Sid: DenyUnencryptedObjectUploads
+            Effect: Deny
+            Principal: "*"
+            Action: s3:PutObject
+            Resource: !Sub ${CitizenDataObjectBucket.Arn}/*
+            Condition:
+              StringNotEquals:
+                s3:x-amz-server-side-encryption: aws:kms
+
+  CitizenDataVpc:
+    Type: AWS::EC2::VPC
+    Properties:
+      CidrBlock: 10.42.0.0/16
+      EnableDnsHostnames: true
+      EnableDnsSupport: true
+      Tags:
+        - Key: Name
+          Value: !Sub universal-mind-citizen-data-${EnvironmentName}
+        - Key: application
+          Value: universal-mind
+        - Key: environment
+          Value: !Ref EnvironmentName
+
+  CitizenDataSubnetA:
+    Type: AWS::EC2::Subnet
+    Properties:
+      AvailabilityZone: !Select [0, !GetAZs ""]
+      CidrBlock: 10.42.10.0/24
+      MapPublicIpOnLaunch: false
+      VpcId: !Ref CitizenDataVpc
+      Tags:
+        - Key: Name
+          Value: !Sub universal-mind-citizen-data-${EnvironmentName}-a
+
+  CitizenDataSubnetB:
+    Type: AWS::EC2::Subnet
+    Properties:
+      AvailabilityZone: !Select [1, !GetAZs ""]
+      CidrBlock: 10.42.20.0/24
+      MapPublicIpOnLaunch: false
+      VpcId: !Ref CitizenDataVpc
+      Tags:
+        - Key: Name
+          Value: !Sub universal-mind-citizen-data-${EnvironmentName}-b
+
+  CitizenDataDbSubnetGroup:
+    Type: AWS::RDS::DBSubnetGroup
+    Properties:
+      DBSubnetGroupDescription: Universal Mind citizen data private subnets
+      SubnetIds:
+        - !Ref CitizenDataSubnetA
+        - !Ref CitizenDataSubnetB
+
+  CitizenDataDbSecurityGroup:
+    Type: AWS::EC2::SecurityGroup
+    Properties:
+      GroupDescription: No-ingress Aurora group; staging uses the signed RDS Data API
+      SecurityGroupEgress:
+        - IpProtocol: "-1"
+          CidrIp: 127.0.0.1/32
+          Description: Deliberately non-routable egress placeholder
+      VpcId: !Ref CitizenDataVpc
+      Tags:
+        - Key: application
+          Value: universal-mind
+        - Key: environment
+          Value: !Ref EnvironmentName
+
+  CitizenDataCluster:
+    Type: AWS::RDS::DBCluster
+    DeletionPolicy: Retain
+    UpdateReplacePolicy: Retain
+    Properties:
+      BackupRetentionPeriod: !Ref BackupRetentionDays
+      CopyTagsToSnapshot: true
+      DatabaseName: !Ref DatabaseName
+      DBSubnetGroupName: !Ref CitizenDataDbSubnetGroup
+      DeletionProtection: true
+      EnableCloudwatchLogsExports:
+        - postgresql
+      EnableHttpEndpoint: true
+      Engine: aurora-postgresql
+      EngineMode: provisioned
+      EngineLifecycleSupport: open-source-rds-extended-support-disabled
+      EngineVersion: !Ref AuroraPostgresEngineVersion
+      KmsKeyId: !GetAtt CitizenDataKey.Arn
+      ManageMasterUserPassword: true
+      MasterUserSecret:
+        KmsKeyId: !GetAtt CitizenDataKey.Arn
+      MasterUsername: um_migration_admin
+      Port: 5432
+      ServerlessV2ScalingConfiguration:
+        MinCapacity: !Ref DatabaseMinCapacity
+        MaxCapacity: !Ref DatabaseMaxCapacity
+        SecondsUntilAutoPause: !Ref DatabaseIdleSecondsBeforePause
+      StorageEncrypted: true
+      VpcSecurityGroupIds:
+        - !Ref CitizenDataDbSecurityGroup
+      Tags:
+        - Key: application
+          Value: universal-mind
+        - Key: data-class
+          Value: sensitive-citizen-data
+        - Key: environment
+          Value: !Ref EnvironmentName
+
+  CitizenDataWriter:
+    Type: AWS::RDS::DBInstance
+    DeletionPolicy: Retain
+    UpdateReplacePolicy: Retain
+    Properties:
+      DBClusterIdentifier: !Ref CitizenDataCluster
+      DBInstanceClass: db.serverless
+      Engine: aurora-postgresql
+      PubliclyAccessible: false
+      Tags:
+        - Key: application
+          Value: universal-mind
+        - Key: environment
+          Value: !Ref EnvironmentName
+
+Outputs:
+  DatabaseClusterArn:
+    Description: Aurora cluster ARN for the RDS Data API
+    Value: !GetAtt CitizenDataCluster.DBClusterArn
+  DatabaseSecretArn:
+    Description: AWS-managed master credential secret ARN; never copy the secret value into source
+    Value: !GetAtt CitizenDataCluster.MasterUserSecret.SecretArn
+  CitizenDataKeyArn:
+    Description: KMS key ARN for envelope encryption and at-rest encryption
+    Value: !GetAtt CitizenDataKey.Arn
+  CitizenDataObjectBucketName:
+    Description: Private encrypted object bucket
+    Value: !Ref CitizenDataObjectBucket
+  DatabaseName:
+    Value: !Ref DatabaseName
