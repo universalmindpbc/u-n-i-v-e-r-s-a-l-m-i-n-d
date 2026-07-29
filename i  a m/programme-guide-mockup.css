@@ -561,7 +561,7 @@ body.program-is-open .program-panel {
 
 .program-panel__footer button {
   display: flex;
-  align-items: baseline;
+  align-items: center;
   gap: 12px;
   min-height: 28px;
   border: 1px solid var(--edge);

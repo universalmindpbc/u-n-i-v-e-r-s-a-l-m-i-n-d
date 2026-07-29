@@ -25,6 +25,7 @@ assert.match(html, /data-zone="Europe\/Madrid"/);
 assert.match(html, /ISOLATED DESIGN STUDY · CURRENT WALLET UNCHANGED/);
 assert.match(css, /--signal: #adff76/);
 assert.match(css, /max-height: min\(720px, calc\(100dvh - 190px\)\)/);
+assert.match(css, /\.program-panel__footer button \{[\s\S]*?align-items: center;/);
 assert.match(js, /broadcast-schedule-v1\.json/);
 assert.match(js, /horizonHours === 6 \? 24 : 6/);
 assert.match(js, /Intl\.DateTimeFormat\(\)\.resolvedOptions\(\)\.timeZone/);
