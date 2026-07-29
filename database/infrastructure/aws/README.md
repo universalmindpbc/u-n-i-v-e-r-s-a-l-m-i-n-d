@@ -2,6 +2,10 @@
 
 These files prepare AWS infrastructure but do not create it. The template is intentionally billable and must not be deployed until its change set and cost boundary are approved.
 
+Read `TEARDOWN.md` before executing a change set. The database, buckets and KMS
+key are retained by design, so deleting the CloudFormation stack alone is not a
+complete cost stop or erasure procedure.
+
 ## Authentication
 
 Use AWS IAM Identity Center and temporary credentials. Never create or paste a root access key or long-lived IAM user key.
