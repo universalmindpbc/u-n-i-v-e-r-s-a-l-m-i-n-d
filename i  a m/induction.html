@@ -59,7 +59,7 @@
     <link rel="icon" type="image/png" sizes="32x32" href="/vogue/iam/favicon.png?v=iam-favicon-3">
     <link rel="shortcut icon" type="image/png" href="/vogue/iam/favicon.png?v=iam-favicon-3">
     <link rel="apple-touch-icon" sizes="180x180" href="/vogue/iam/apple-touch-icon.png?v=iam-favicon-3">
-    <link rel="stylesheet" href="styles.css?v=induction-editorial-ff83cc100d82-technology-submenu-133pct-normal-1">
+    <link rel="stylesheet" href="styles.css?v=induction-permission-3a736128cfc9">
     <link rel="stylesheet" href="mobile-editorial-surface.css?v=mobile-editorial-20260728-2">
     <script src="mobile-editorial-surface.js?v=mobile-editorial-20260728-2"></script>
     <script>
@@ -198,7 +198,7 @@
               </p>
 
               <div class="induction-enter-wrap">
-                <a class="induction-enter" href="vogue-self-report.html" aria-label="Enter the I Am portal">
+                <a class="induction-enter" href="vogue-self-report.html" aria-label="Enter the I Am portal" data-induction-enter>
                   <span>Enter the portal</span>
                   <span class="induction-enter-arrow" aria-hidden="true">→</span>
                 </a>
@@ -208,8 +208,37 @@
         </div>
       </section>
     </main>
+    <section
+      class="induction-permission"
+      data-arrival-consent
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="arrival-consent-title"
+      aria-describedby="arrival-consent-intro arrival-consent-ownership"
+      aria-hidden="true"
+      hidden
+    >
+      <div class="induction-permission__panel" data-arrival-consent-panel tabindex="-1">
+        <span class="induction-permission__mark" aria-hidden="true"><i></i></span>
+        <h2 id="arrival-consent-title">Permissions</h2>
+        <p id="arrival-consent-intro">
+          Universal Mind remembers your check-ins and usage across sessions, so we can understand your mental health and delivery customised customised music television to meet you where you’re at.
+        </p>
+        <p id="arrival-consent-ownership">
+          You own your data. Your data is encrypted. You can export or erase it at any time.
+        </p>
+        <div class="induction-permission__actions">
+          <button type="button" data-consent-accept disabled>Allow</button>
+          <a href="index.html?arrival=without-checkin" data-consent-continue-without>Not Now</a>
+        </div>
+        <a class="induction-permission__privacy" href="privacy-first.html">How your data works</a>
+        <p class="induction-permission__status" data-consent-status role="status" aria-live="polite"></p>
+      </div>
+    </section>
     <script>window.IAMMobileEditorial?.apply();</script>
     <script src="cloudflare-stream-catalogue.js?v=stream-catalogue-9c3eb91a8b7c"></script>
     <script src="cloudflare-stream-controller.js?v=stream-controller-e6ed1b827651"></script>
+    <script src="citizen-data-client.js?v=citizen-data-client-5675cafd5d36"></script>
+    <script src="citizen-data-consent.js?v=citizen-data-consent-722bc4a606a6"></script>
   </body>
 </html>
