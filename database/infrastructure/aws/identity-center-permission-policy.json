@@ -36,13 +36,13 @@
         "s3:GetObject",
         "s3:PutObject"
       ],
-      "Resource": "arn:aws:s3:::universal-mind-citizen-da-*/synthetic-service-validation/*"
+      "Resource": "arn:aws:s3:::universal-mind-citizen-dat-*/synthetic-service-validation/*"
     },
     {
       "Sid": "InspectSyntheticCitizenObjectVersionsOnly",
       "Effect": "Allow",
       "Action": "s3:ListBucketVersions",
-      "Resource": "arn:aws:s3:::universal-mind-citizen-da-*",
+      "Resource": "arn:aws:s3:::universal-mind-citizen-dat-*",
       "Condition": {
         "StringLike": {
           "s3:prefix": "synthetic-service-validation/*"
@@ -197,7 +197,7 @@
       "Sid": "DeleteCitizenDataBucketPoliciesOnly",
       "Effect": "Allow",
       "Action": "s3:DeleteBucketPolicy",
-      "Resource": "arn:aws:s3:::universal-mind-citizen-da-*"
+      "Resource": "arn:aws:s3:::universal-mind-citizen-dat-*"
     },
     {
       "Sid": "CreateRdsServiceLinkedRoleOnly",

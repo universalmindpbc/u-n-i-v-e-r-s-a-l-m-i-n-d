@@ -96,6 +96,9 @@ const identityCenterActions = identityCenterPolicy.Statement.flatMap((statement)
 assert.ok(identityCenterActions.includes("iam:CreateServiceLinkedRole"));
 assert.ok(identityCenterActions.includes("rds-data:ExecuteStatement"));
 assert.ok(identityCenterActions.includes("secretsmanager:GetSecretValue"));
+assert.ok(identityCenterActions.includes("s3:DeleteObjectVersion"));
+assert.match(JSON.stringify(identityCenterPolicy), /universal-mind-citizen-dat-\*\/synthetic-service-validation/);
+assert.doesNotMatch(JSON.stringify(identityCenterPolicy), /universal-mind-citizen-da-\*/);
 assert.equal(identityCenterActions.includes("iam:CreateAccessKey"), false);
 assert.equal(identityCenterActions.includes("iam:CreateUser"), false);
 
