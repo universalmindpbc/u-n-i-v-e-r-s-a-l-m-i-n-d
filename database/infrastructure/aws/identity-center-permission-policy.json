@@ -154,6 +154,18 @@
       "Resource": "arn:aws:kms:ap-southeast-2:*:alias/universal-mind-citizen-data-staging"
     },
     {
+      "Sid": "DeleteCitizenDataAliasFromTaggedKeyOnly",
+      "Effect": "Allow",
+      "Action": "kms:DeleteAlias",
+      "Resource": "arn:aws:kms:ap-southeast-2:*:key/*",
+      "Condition": {
+        "StringEquals": {
+          "aws:ResourceTag/application": "universal-mind",
+          "aws:ResourceTag/environment": "staging"
+        }
+      }
+    },
+    {
       "Sid": "DeleteCitizenDataBucketPoliciesOnly",
       "Effect": "Allow",
       "Action": "s3:DeleteBucketPolicy",
