@@ -26,7 +26,7 @@ f5523d0d103367606e5c786fdefe6a1a560975a214ebe5188405469ec5619e09	tools/analyze-v
 f1670bb15260c563cfe508ea2be7ddfe2f1b9260e0f3ab2f1015343345b5d177	i  a m.md
 b138f9bdc1319d701216c017e906e10c1efdaf790031ee78f7c57cb7bec26772	community-globe.html
 95811f319fe8fd80719921ccffdb063f417f77fcec50b3eac90c319d9cc84dce	mantra-samples-v1.json
-9c9f7cf1a6f5cdf84bc0a7763b0365bb420b04c6d1cbcb64b116457b467861be	index.html
+6b34a2bd547a91810c5916554ab2d7fab388eed8caedc215bcb1465af356c751	index.html
 5b1dbd845eafe3258456d3d179c5f8aa599032fb88a66bf1d8bf1628cdbb05dc	shop.css
 6402cc9d89a20b6e4b48802930edbbe616be2186f1a2e3688736d2e05e5b6231	mantra-sampler.js
 1aaa3cfaf7b894f033bf45848bc6b103b7ef2b4b0870d211f8f4b7ca77158b23	mobile-editorial-surface.js
@@ -68,7 +68,7 @@ e98001a1504264b56ff7a895704818c451940b48b7c9aac15d011e2253fc3427	i n f e r e n c
 cd82f086dfc6cead3897233504559d9de7f298ee2d8f7218e4ae943d916c0e7e	wallet.css
 72108e0785cba2e253da994bac6fadf514343a7b092a78c50b3bbb5e642e1fe5	dj-set-tensor-approved-notion-export-v1.0.json
 61340da7b8fa1b223e87b55c88134f33f832a6d660db9e570b747f21f09a2d40	adaptive-music-video-strategy.md
-e6fa88bd4e3545c2f1a3621e56e30ab5d9b7a8290e301dc14eebc833f3f7fe58	universal-one-portal-guide-v1.txt
+8bd8e802be77b1a3e84b7d05fc143f266e90abcd951fed48c81bf0134c8ab7e2	universal-one-portal-guide-v1.txt
 6c83291433e1b52af874b5e4ec2241c585794118c48873c8004fa404e99de838	quantum-tree-control.html
 b922c0ed559272b40cd18d8a3aaea60a4b7ffd04e036e9817f5ba3bfdc8145b5	adaptive-soundtrack-selection-guide-v2.22.json
 4bcb0602f8f38d51d56484295122631856cc0d8488027da096d2b1235c189b9f	circle-audio-rooms.js
@@ -632,6 +632,7 @@ c7ac8ecaf94a5eed65b1c3da2bb06ddbfbb4d03592b74b32b6f9ed03e07f89d4	a s s e t s/sto
 42696e9d82cce1333c571c6b749e7d50daa3e258bdd1cd8b70ac59e604f1ccad	a s s e t s/q a/quantum-tree-next-pass-sasha-typical-56-percent.wav
 f8e58c5d47ca7b7708d9bf2be677b2811887fd16d997cf09971f1fc5cf7bd4fe	a s s e t s/q a/quantum-tree-current-sasha-typical-0.73-percent.wav
 02eba9b37349d2c376b9bac7cfffdc73f8079c7e57b8503f58d144e1cc6239a6	a s s e t s/q a/quantum-tree-sasha-typical-44-percent.wav
+04b850c23124ed8e8d3aae1c897a16d8aef94d5e890ff5a698785735cf34997b	a s s e t s/TV icon.png
 e5d291b702dd7b25a96599093c93f893da9fb4bca13f5aeaa56d731544f8d37f	a s s e t s/Vogue - Front Cover - Optimised.jpg
 7d9a37c820e2b499537da9299991a41903538164221e222d001007c20b3fa4f0	a s s e t s/v i d e o _ u r l s.md
 25f5a871ec4fb26ba75d49bde1daa88dbda625c8eae00dc14cafe06137a51746	a s s e t s/wallet-rewards-card.png
