@@ -27,7 +27,7 @@ f1670bb15260c563cfe508ea2be7ddfe2f1b9260e0f3ab2f1015343345b5d177	i  a m.md
 b138f9bdc1319d701216c017e906e10c1efdaf790031ee78f7c57cb7bec26772	community-globe.html
 95811f319fe8fd80719921ccffdb063f417f77fcec50b3eac90c319d9cc84dce	mantra-samples-v1.json
 d595fdff36074c3bf28bcdbdbfa817989f8a817016e8146723ff56b88cf6098e	index.html
-24eba230ee522afc712be2c1e5c1292beb6949a6a4f403949ebc9dfc8f84af1a	shop.css
+830a44c65bc41c1302939ca6610a952b1914e415f5185d007f4337e2eaee734f	shop.css
 6402cc9d89a20b6e4b48802930edbbe616be2186f1a2e3688736d2e05e5b6231	mantra-sampler.js
 1aaa3cfaf7b894f033bf45848bc6b103b7ef2b4b0870d211f8f4b7ca77158b23	mobile-editorial-surface.js
 6733d57632028171b99f89270ff8237c250411f62166ebe1a2f36a80fe88833f	vogue-self-report.js
@@ -85,14 +85,14 @@ dc0fdf6ee77c7a4d1295e53843a4c3f6e64fcf6ec8166e2d182063fe90b8e83f	programme-guide
 c1c822706963fd43a4320f7212c399503fb2a4f64206a3bf75e13b34f83e784a	adaptive-inference-engine-system-prompt-v2.22-content.js
 2d617f2ef088b89c73c02cfc5f4fa7f418ce6a79a270d2d4c1950323c8246d08	emdr-vector-worlds.js
 beb34584876306e5825ba720c8cfb01b871065791c48be5add2ce5cc6d75f59f	adaptive-inference-engine-system-prompt-v1.11.html
-dfa572e191539b9326e4aee8c4b2468027047679feae41378ae2e9aaa3ea3d12	shop.html
+2dc00b1db88459b2b0f5ffb108577c55b54e3f4f41512df71e8451b78ab9510f	shop.html
 98dbaed545afb562209b525af16d09f0dad7b0ef2c7b018b295d7f285b6a645a	realtime-voice-assistant.js
 3862c4481721b08403d25024626930de4c0a2b265ccc336e99b830bb3133825e	c h a n g e l o g.md
 5e1fdfbadb0466e1997b206c6197cba92f566d211a16f31bd627da4cfb976b4b	mantra-audio-fx.js
 1c5d23b954a58cd67f51a7c32adddbb22dfb58fa34fae89c593a5bae97fd8d54	happiness-control.html
 e12eb24c367d2ac6f67963f434a729027e75b914e450b6260f47c01b9bd1ef58	i  a m  c h e c k i n  -  f o r m  -  b r i e f.md
 b89467d63bab7000ddda479156834f13fc30e5840f2dedc55a91e18f47fda51e	citizen-data-client.js
-4c574e35d8bf69ebe8a0faef80a92e367c0f58a636185ea889b79be15218f2dd	shop-product-kernel-v1.json
+968c1ac56332e3dd8357a250d7d068d488e9c58c4c7c73bf9e26cabd7cd00a2a	shop-product-kernel-v1.json
 2ce0d0a5afb4d9961eec772a296e17f9c703d89182648b6d35ee6007c776d59f	science-research-data-v1.js
 f89cebb043a21aa77133c9cd40875d6703eefcb3b8fab637931e1da119eb01f7	shop-approved-products-v1.json
 fa5e34089bf9beb5efdf29d28d82e758d766a3e078ab1f271fb7e4fb698c0367	mantra-sampler.css
@@ -103,7 +103,7 @@ bd93dfd7e117b2a7d265e3f57dcc99568c0026613f28b027b292220df0f6c3fc	adaptive-music-
 4a4badd4d6cd61b01a274c2e85cd7bb875cc6b8b79186b86f097cdcfe4deaf5b	script.js
 8ea0432ffcd62efe867482b520f0f7d2f005cc43117cb5424ca7097d7f5ad936	stakeholders/budget/index.html
 0f32e3f59c3045259d45f6db8dd9ebb9fcac04da5b8a2982912baae86d7e14f2	stakeholders/budget/iamvogue-stakeholder-budget-v1.xlsx
-aec0b507237eaea0585631d5e85b28ef4c187df45b22813d2bcd2706d04cf9ed	shopfront-architecture.md
+9be8a0c757a231d8250bf9e0f42743d25932265d1486a1ce12a63611722f481f	shopfront-architecture.md
 6b4dabad0c6b29d40d4d7abe7661345cdcc0d9103705a3bf2233a632a1c3192b	adaptive-soundtrack-selection-guide-v1.11.json
 d7b0c8c14b00152e1be5a74c0d51dd9e31ea33fb6c0b0dbc5febc6f903aaa89d	favicon.png
 cb1b29386bb61f875d22f83de35c53a285a30ff7433e9cb58a9940914231d52e	adaptive-inference-engine-system-prompt-v2.22.html
@@ -143,7 +143,7 @@ e4f89461e10f3e317b5d97873023c7607bb356e673a89a175612c9df4ddb8b85	api/owner-state
 86a4918f5eb7eba0eb55eb8be9b192b54c8a37b05d31996781f139fc8649ddc1	api/happiness-automation.php
 35461a8ea56b4c2564920f290a5d02fb2f5e709dcabe7a6763cbf9a5851e8e28	api/.htaccess
 325aa1e085b318097db19027243acebe556dfa2804ac14f0f34063d005e5cab5	cloudflare-stream-catalogue.js
-d9e00d6ebde0d1085bd34145e7054c6ffaa53cce5876781b8cfaf75c3e5fde43	shop.js
+b548f2cce790c6ac65621d17d82c4343e24c352e5f898ffaa6abea6b324e4a43	shop.js
 db213ad178d17d3b7092436c17048a426e2ac2cc8cedaa1a4a1740b1c0184bec	video-beat-grid-v1.json
 a379f3df1307f5ae0ccae6126371a26ec29402a6f1d99c059d41cb7a3414afde	our-team-concept.html
 785c1fb0b7095ba4b05d31cb7c5f6adab72172b7ece152645e42b6e997014df2	technology-citizen-needs.css
@@ -378,6 +378,7 @@ b37984b8ebcab510a732e76e2fcf014c6f68b588e3c0c5bdf7c130178d0a32f6	a s s e t s/sho
 f858c356c231ca98d6311fca999556415373fc4d01a6c07af42c5dcceda7cfaa	a s s e t s/shop-mockup/product-catalogue/wolford/jb-0072-jamaika-string-body-750864870.webp
 db1d6cf0c5839ecb792595eac601a371bc18619e40af81f8c41251cee93cf062	a s s e t s/shop-mockup/product-catalogue/wolford/jb-0070-metallic-jacquard-body-771147125.webp
 4479f44219bb560ba185791b636739d639a0ca9c02c22dc858f9c5b0bd387889	a s s e t s/shop-mockup/product-catalogue/wolford/jb-0071-shade-sleeveless-string-body-771267005.webp
+3b650bbe5c2cfcc63cab5e8d0ce46e048e9b8abd33f9fb1b44a00e8bdf641952	a s s e t s/shop-mockup/product-catalogue/emilio-cavallini/jb-0313-bouganvillea-tights-hires-v2.webp
 81f244cad9c3f48befabb9875ef8740a6a06183fdea07ffe0c6ec7c67c2b34cb	a s s e t s/shop-mockup/product-catalogue/emilio-cavallini/jb-0313-bouganvillea-tights.webp
 ed4ecb4dddf3033ab865a03c3a53def4cb8c29f94dacd45942f0add19ede391f	a s s e t s/shop-mockup/product-catalogue/emilio-cavallini/jb-0309-engeneered-body.webp
 466b4eac7ca911a4465a4a2b8df6773a3c5f7dd2c1309d26028c26059d8ef32c	a s s e t s/shop-mockup/product-catalogue/kiini/jb-0165-bea-scoop-bikini-top.webp
@@ -582,7 +583,17 @@ c88391560d9470f8bd430a81582d19eebca6daa75480ac08f07a9a4ca3ba79c6	a s s e t s/sho
 2565a0173a0d4fdcb21b34803356230b94edb76a60014ff144d97281962892ee	a s s e t s/shop-mockup/sir-montparnasse.jpg
 6236122bb6fbe45000a65c49cf6dac6dbf8589ed88756b6369e3496d2737ec57	a s s e t s/shop-mockup/sir-montparnasse-portrait.png
 e18099cc1820d9f2a59480e8653bc7cd6604610391e7cec06a8b3ecaeb9b4b2c	a s s e t s/shop-mockup/upside-kefi-hero.png
+67aa6f8d8c739dddd8519b5b1f413cc5565519c8a1a6b38b7ee636fb0f7b7486	a s s e t s/shop-mockup/iris-van-herpen/sonic-starquakes-hero-poster.jpg
+b3a64a2bf077b832dd765ba0f9be2ac7312d31248e78d93299bcba24fccf4434	a s s e t s/shop-mockup/iris-van-herpen/sonic-starquakes-1343.jpg
+fdb252768d31927d53619573551f502a55d7ec49be3ef244b1ffc2e1edd68e65	a s s e t s/shop-mockup/iris-van-herpen/sonic-starquakes-1743.jpg
+d8bab115df3b702b11b8e2293242259279f37e80e9923512a20465f4df473671	a s s e t s/shop-mockup/iris-van-herpen/sonic-starquakes-1024.jpg
+3a366a7e76fb68ba1e0ef6df1e3953f76f0ecd2d7be704c2d1ad369d33ca3666	a s s e t s/shop-mockup/iris-van-herpen/sonic-starquakes-1411.jpg
+90650f79dd64f2c6ffd45bc2e1917bd8a7247b2b7592fe01ebc52ba9e30fd19f	a s s e t s/shop-mockup/iris-van-herpen/sonic-starquakes-0453.jpg
+9070592d76908c286705a9a7d518a0c860f925855556cab819e0772fed29f365	a s s e t s/shop-mockup/iris-van-herpen/sonic-starquakes-1677.jpg
 05336a7580a0042c83ae79aac61fa41f579c65d9bd85469ce8662bb18ad4b822	a s s e t s/shop-mockup/upside-kefi-hero-optimized-v1.jpg
+466be9361e9859d843bb817c26f40c64044ed115fcb7ffe7213ed89027d8790b	a s s e t s/shop-mockup/annies-ibiza/sforza-skirt-poster.jpg
+06ce71e09a031485b9318d8ce2c0efda28b0a949dbe63225a26a049596aff963	a s s e t s/shop-mockup/annies-ibiza/joan-of-arc-armour-runway.jpg
+11aecf6f2ae86759309b4e92ae39058edec622924b68d6b5e1279aeb5b70c1aa	a s s e t s/shop-mockup/annies-ibiza/cobweb-gown-poster.jpg
 f3b92f6900a679472947166dc0bcb665be81198a1b1d2c3d58c3a2fa66206540	a s s e t s/shop-mockup/karla-neon-tiger.jpg
 6350f82d3e08f8f3740790570d438203a5360141ebf99478f159808439780654	a s s e t s/shop-mockup/lisa-marie-fernandez-bella-hadid.jpeg
 bb7ba5971885b0979cead959182fdc750b53b996ef511a7462b1863f62fa0628	a s s e t s/shop-mockup/bordelle-waspie-dynamic.jpg
