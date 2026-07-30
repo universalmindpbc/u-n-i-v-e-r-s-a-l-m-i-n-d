@@ -223,6 +223,7 @@
   const musicShelfSubtitle = document.querySelector("[data-music-shelf-subtitle]");
   const musicShelfStatus = document.querySelector("[data-music-shelf-status]");
   const musicShelfCloseButtons = Array.from(document.querySelectorAll("[data-music-shelf-close]"));
+  const programOpenButtons = Array.from(document.querySelectorAll("[data-program-open]"));
   const musicModeButtons = Array.from(document.querySelectorAll("[data-music-mode]"));
   const musicSelector = document.querySelector("[data-music-selector]");
   const musicSelectorPrevious = document.querySelector("[data-music-previous]");
@@ -7354,6 +7355,9 @@
   });
   fashionShelfViewport?.addEventListener("pointercancel", () => {
     fashionShelfSwipeStartX = null;
+  });
+  programOpenButtons.forEach((button) => {
+    button.addEventListener("click", () => closeMusicShelf(false), true);
   });
   musicModeButtons.forEach((button) => {
     button.addEventListener("click", (event) => {

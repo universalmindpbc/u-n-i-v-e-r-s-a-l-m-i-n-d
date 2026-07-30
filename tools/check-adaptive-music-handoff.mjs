@@ -243,6 +243,7 @@ requireCondition(programmeGuide.includes('window.IAMBroadcastClock?.nowMs?.()'),
 requireCondition(programmeGuide.includes('horizonHours = horizonHours === 6 ? 24 : 6;'), 'Program no longer switches between six and 24 hours');
 requireCondition(programmeGuide.includes('const joinRequest = window.IAMMusicChannels.joinBroadcast(channelId);') && programmeGuide.includes('closeProgram(null, { restoreFocus: false });'), 'Enter Live no longer joins the selected shared Parties broadcast and closes Program into playback');
 requireCondition(programmeGuide.includes('programPanel.addEventListener("click", (event) => event.stopPropagation());'), 'using Program can once again collapse the Music wallet underneath it');
+requireCondition(controller.includes('const programOpenButtons = Array.from(document.querySelectorAll("[data-program-open]"));') && controller.includes('button.addEventListener("click", () => closeMusicShelf(false), true);'), 'Program no longer closes the Videos, Parties or Radio shared-channels overlay before opening');
 requireCondition(shellController.includes('function bindStandaloneAboutNavigation()'), 'the shared navigation no longer forces About into a complete top-level document');
 requireCondition(shellController.includes('window.top.location.href = url.href;'), 'embedded global navigation can no longer escape to the complete About page');
 requireCondition(shellController.includes('document.body.classList.contains("television-room-open")'), 'About can still bypass the persistent television page layer');
