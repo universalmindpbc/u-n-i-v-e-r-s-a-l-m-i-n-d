@@ -60,6 +60,8 @@ for (const absent of [
 }
 assert.equal((shop.match(/<li(?:\s+class="[^"]*")?><span>/g) || []).length, 27, "Brand ledger must contain all 27 retailers");
 assert.equal((shop.match(/data-product(?:\s|>)/g) || []).length, 12, "Opening edit must contain the restrained 12 authorized hero pieces");
+assert.match(shop, /<title>James Bondage \| Shop<\/title>/, "Standalone Shop title must use the approved pipe separator");
+assert.match(index, /document\.title = "James Bondage \| Shop"/, "Shop splash title must use the approved pipe separator");
 
 assert.equal(catalogue.products.length, 36, "Finished ERES catalogue must contain all 36 approved product URLs");
 assert.equal(new Set(catalogue.products.map((product) => product.id)).size, 36, "Catalogue product IDs must be unique");
@@ -252,7 +254,8 @@ assert.match(shop, /All profits from affiliate revenue are invested in mental he
 assert.match(shop, /href="https:\/\/headspace\.org\.au"[\s\S]*href="https:\/\/www\.orygen\.org\.au"[\s\S]*href="https:\/\/www\.herspace\.org\.au"[\s\S]*href="https:\/\/www\.phoenixaustralia\.org"/i, "Giving Back must link the four approved mental-health partners");
 assert.match(shop, /href="#catalogue\/eres"[^>]*data-shop-catalogue-link/, "ERES must open from the 27-brand ledger");
 assert.match(shop, /shop-brands[\s\S]*shop-iris-film[\s\S]*shop-context shop-context--about/, "Iris film must sit between 03 / brands and 04 / about");
-assert.match(shop, /sonic-starquakes-hero-640x288\.mp4[\s\S]*Sonic Starquakes \/ AW26/, "Homepage must use the local, silent Iris Sonic Starquakes film");
+assert.match(shop, /sonic-starquakes-hero-1280x576-v2\.mp4[\s\S]*Sonic Starquakes \/ AW26/, "Homepage must use the local 720-class Iris Sonic Starquakes film");
+assert.ok(fs.existsSync(path.join(iam, "a s s e t s/shop-mockup/iris-van-herpen/sonic-starquakes-hero-1280x576-v2.mp4")), "Missing the 00:20–05:30 Iris hero master");
 assert.doesNotMatch(shop, /browse edit/i, "The brand ledger must not single out ERES with redundant Browse Edit copy");
 assert.match(shop, /data-catalogue-editorial-header/, "ERES catalogue must open with the approved editorial header");
 assert.match(shop, /data-shop-product-dialog/, "Catalogue must expose the quiet expanded product view");
@@ -262,7 +265,10 @@ assert.match(shop, /price \/ low to high[\s\S]*price \/ high to low/, "Combined 
 assert.match(shopScript, /catalogueProductHash\(slug\)/, "Expanded product state must have a shareable retailer-agnostic hash route");
 assert.match(shopScript, /shop-product-kernel-v1\.json/, "Shop catalogue must render from the Notion-backed product kernel");
 assert.match(shopScript, /function productHasFullDetail\(product\)[\s\S]*return Boolean\(product\.image \|\| product\.video \|\| product\.gallery\?\.length\)/, "Every approved media card must receive the internal expanded view");
-assert.match(shopScript, /function renderProductDialogMedia[\s\S]*product\.gallery[\s\S]*product\.video/, "Expanded product view must support the Iris gallery and silent Annie’s films");
+assert.match(shopScript, /function galleryDisplayProducts[\s\S]*--image-\$\{index \+ 1\}[\s\S]*galleryViewCount/, "Iris must render its six supplied images as six separately addressable catalogue tiles");
+assert.match(shopScript, /activeCatalogueBrand === "iris-van-herpen"[\s\S]*visibleProducts\.flatMap\(galleryDisplayProducts\)/, "The Iris brand route must expand its canonical gallery into individual tiles");
+assert.match(shopScript, /function productFromRoute[\s\S]*galleryDisplayProducts\(exactProduct\)\[0\][\s\S]*--image-/, "Every Iris tile route must open one image rather than the combined gallery");
+assert.match(shopScript, /function renderProductDialogMedia[\s\S]*product\.video/, "Expanded product view must preserve silent Annie’s product films");
 assert.match(shopScript, /activeCatalogueLead[\s\S]*visibleProducts\.findIndex[\s\S]*visibleProducts\.unshift/, "Homepage campaigns must deterministically move their approved product into slot one");
 assert.match(shopScript, /function productHasImage[\s\S]*Boolean\(product\.image\)/, "Inventory-only cards must still show their approved exact-source image");
 assert.match(shopScript, /catalogueChunkSize = 24/, "Catalogue must use the approved 24-product loading rhythm");
@@ -274,7 +280,10 @@ assert.match(shopScript, /catalogueLoadMore\?\.addEventListener\("click"/, "Cata
 assert.match(shopScript, /IntersectionObserver[\s\S]*data-shop-silent-video|silentEditorialVideos[\s\S]*IntersectionObserver/, "Homepage films must only play while they are near the viewport");
 assert.match(shopScript, /productDialog\.showModal\(\)/, "Product cards must open the accessible expanded view");
 assert.match(shopScript, /productDialogPrice\.textContent = product\.price/, "Expanded product view must carry the verified price");
-assert.match(shopScript, /productDialogDescription\.textContent = product\.description/, "Expanded product view must carry the retailer-sourced description");
+assert.match(shopScript, /description\.split\(\/\\n\\s\*\\n\/\)[\s\S]*productDialogDescription\.replaceChildren/, "Expanded product view must preserve retailer-authored paragraph breaks");
+assert.match(shopScript, /\? "order haute couture"/, "Iris expanded views must expose the approved retailer call to action");
+assert.match(shopStyle, /data-catalogue-brand="iris-van-herpen"[\s\S]*bottom:\s*clamp\(20px, 2\.2vw, 34px\)/, "Iris View the Collection link must sit below the oversized wordmark");
+assert.match(shopStyle, /\.shop-product-dialog__copy\s*\{[\s\S]*overflow-y:\s*auto/, "Long product descriptions must scroll without hiding the retailer call to action");
 assert.match(shopScript, /catalogueReturnScrollY = window\.scrollY/, "Opening an expanded product must remember the viewer's catalogue position");
 assert.match(shopScript, /restoreCatalogueScroll[\s\S]*window\.setTimeout\(restoreCatalogueScroll, 50\)/, "Closing an expanded product must restore the viewer's precise catalogue position after native dialog focus returns");
 assert.match(shopScript, /enteringCatalogue[\s\S]*scrollBehavior = "auto"[\s\S]*window\.scrollTo\(\{ top: 0, left: 0, behavior: "auto" \}\)/, "Entering ERES from the brand ledger must reset immediately to the editorial header");

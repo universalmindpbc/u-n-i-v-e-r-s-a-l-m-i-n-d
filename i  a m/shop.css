@@ -1290,6 +1290,14 @@ body[data-shop-view="catalogue"] [data-shop-editorial] { display: none !importan
   text-transform: uppercase;
 }
 
+.shop-catalogue__editorial[data-catalogue-brand="iris-van-herpen"] .shop-catalogue__editorial-aside > a {
+  position: absolute;
+  z-index: 3;
+  right: clamp(28px, 5vw, 88px);
+  bottom: clamp(20px, 2.2vw, 34px);
+  margin-top: 0;
+}
+
 .shop-catalogue__filters {
   display: grid;
   grid-template-columns: repeat(3, minmax(150px, 1fr)) auto;
@@ -1599,11 +1607,18 @@ body[data-shop-view="catalogue"] [data-shop-editorial] { display: none !importan
 .shop-product-dialog__details {
   display: flex;
   flex-direction: column;
-  justify-content: center;
   min-height: 0;
   height: 100%;
-  overflow: hidden;
   padding: clamp(42px, 4.5vw, 76px);
+}
+
+.shop-product-dialog__copy {
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding-right: 10px;
+  scrollbar-width: thin;
 }
 
 .shop-product-dialog__details p {
@@ -1613,7 +1628,7 @@ body[data-shop-view="catalogue"] [data-shop-editorial] { display: none !importan
   text-transform: uppercase;
 }
 
-.shop-product-dialog__details p:first-child { font-weight: 600; }
+.shop-product-dialog__details [data-shop-product-dialog-brand] { font-weight: 600; }
 
 .shop-product-dialog__details h2 {
   margin: 12px 0 30px;
@@ -1626,11 +1641,18 @@ body[data-shop-view="catalogue"] [data-shop-editorial] { display: none !importan
 }
 
 .shop-product-dialog__description {
+  display: grid;
+  gap: 1em;
   max-width: 520px;
+}
+
+.shop-product-dialog__description p {
+  margin: 0;
   font-family: var(--shop-serif);
   font-size: clamp(16px, 1.25vw, 20px) !important;
   letter-spacing: -.01em !important;
   line-height: 1.42;
+  white-space: pre-line;
   text-transform: none !important;
 }
 
@@ -1655,6 +1677,7 @@ body[data-shop-view="catalogue"] [data-shop-editorial] { display: none !importan
   align-items: center;
   width: min(100%, 390px);
   margin-top: clamp(32px, 5vh, 54px);
+  flex: 0 0 auto;
   border: 1px solid var(--shop-ink);
   padding: 16px 18px;
   background: var(--shop-ink);
@@ -1953,9 +1976,9 @@ body[data-shop-view="catalogue"] [data-shop-editorial] { display: none !importan
 
   .shop-product-dialog__layout {
     display: block;
-    height: auto;
-    min-height: 100%;
-    overflow: auto;
+    height: 100%;
+    min-height: 0;
+    overflow-y: auto;
     scrollbar-width: none;
   }
 
@@ -1965,7 +1988,8 @@ body[data-shop-view="catalogue"] [data-shop-editorial] { display: none !importan
   .shop-product-dialog figure.has-gallery { height: 64svh; }
   .shop-product-dialog__gallery { grid-template-columns: 1fr; }
   .shop-product-dialog__gallery img:first-child { grid-column: auto; }
-  .shop-product-dialog__details { min-height: 42svh; height: auto; overflow: visible; padding: 34px 22px 44px; }
+  .shop-product-dialog__details { min-height: 42svh; height: auto; padding: 34px 22px 44px; }
+  .shop-product-dialog__copy { overflow: visible; padding-right: 0; }
   .shop-product-dialog__details h2 { margin: 10px 0 24px; font-size: 16px; }
   .shop-product-dialog__description { font-size: 17px !important; }
   .shop-product-dialog__details a { width: 100%; margin-top: 32px; }

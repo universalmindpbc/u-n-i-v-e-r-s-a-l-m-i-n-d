@@ -454,6 +454,7 @@
   function updateCatalogueHeader(visibleProducts) {
     const brand = currentBrandRecord();
     const displayName = brand?.brand || "SHOP";
+    if (catalogueHeader) catalogueHeader.dataset.catalogueBrand = activeCatalogueBrand;
     if (catalogueBrandTitle) catalogueBrandTitle.textContent = displayName;
     if (catalogueBrandKicker) catalogueBrandKicker.textContent = brand?.brand || `all ${catalogueKernel?.brandOrder?.length || 27} brands`;
     if (catalogueAsideBrand) catalogueAsideBrand.textContent = brand?.brand || "James Bondage";
@@ -462,7 +463,7 @@
         ? "lingerie / swim / movement"
         : activeCatalogueType.replace(/-/g, " ");
     }
-    if (catalogueCount) catalogueCount.textContent = String(visibleProducts.length).padStart(2, "0");
+    if (catalogueCount) catalogueCount.textContent = String(brand?.count ?? visibleProducts.length).padStart(2, "0");
     if (catalogueBrandSelect) catalogueBrandSelect.value = activeCatalogueBrand;
     if (catalogueTypeSelect) catalogueTypeSelect.value = activeCatalogueType;
     if (catalogueSortSelect) catalogueSortSelect.value = activeCatalogueSort;
@@ -500,7 +501,10 @@
     const control = document.createElement("button");
     control.type = "button";
     control.dataset.catalogueProductOpen = product.slug;
-    control.setAttribute("aria-label", `View details for ${product.brand} ${customerProductName(product)}`);
+    const galleryViewLabel = product.galleryViewCount
+      ? `, image ${product.galleryViewIndex + 1} of ${product.galleryViewCount}`
+      : "";
+    control.setAttribute("aria-label", `View details for ${product.brand} ${customerProductName(product)}${galleryViewLabel}`);
 
     const figure = document.createElement("figure");
     if (hasImage) {
@@ -570,6 +574,21 @@
     return ordered;
   }
 
+  function galleryDisplayProducts(product) {
+    if (!product?.gallery?.length) return [product];
+    return product.gallery.map((source, index) => ({
+      ...product,
+      slug: `${product.slug}--image-${index + 1}`,
+      sourceSlug: product.slug,
+      image: source,
+      imageAlt: `${product.imageAlt || `${product.brand} ${customerProductName(product)}`} / view ${index + 1} of ${product.gallery.length}`,
+      gallery: [],
+      video: "",
+      galleryViewIndex: index,
+      galleryViewCount: product.gallery.length,
+    }));
+  }
+
   function renderCatalogue() {
     if (!catalogueGrid || !catalogueKernel) return;
     const brand = currentBrandRecord();
@@ -594,6 +613,10 @@
         const [leadProduct] = visibleProducts.splice(leadIndex, 1);
         visibleProducts.unshift(leadProduct);
       }
+    }
+
+    if (activeCatalogueBrand === "iris-van-herpen") {
+      visibleProducts = visibleProducts.flatMap(galleryDisplayProducts);
     }
 
     lastCatalogueResultCount = visibleProducts.length;
@@ -623,7 +646,14 @@
   function productFromRoute(route) {
     if (!route?.product) return null;
     const slug = route.product;
-    return catalogueProducts.find((product) => product.slug === slug) || null;
+    const exactProduct = catalogueProducts.find((product) => product.slug === slug);
+    if (exactProduct) return galleryDisplayProducts(exactProduct)[0];
+
+    const galleryRoute = slug.match(/^(.*)--image-(\d+)$/);
+    if (!galleryRoute) return null;
+    const sourceProduct = catalogueProducts.find((product) => product.slug === galleryRoute[1]);
+    const galleryProduct = sourceProduct ? galleryDisplayProducts(sourceProduct)[Number(galleryRoute[2]) - 1] : null;
+    return galleryProduct || null;
   }
 
   function renderProductDialogMedia(product) {
@@ -673,8 +703,16 @@
     if (productDialogBrand) productDialogBrand.textContent = product.brand;
     if (productDialogTitle) productDialogTitle.textContent = customerProductName(product);
     if (productDialogDescription) {
-      productDialogDescription.textContent = product.description || "";
-      productDialogDescription.hidden = !productDialogDescription.textContent;
+      const description = String(product.description || "").trim();
+      const paragraphs = description
+        ? description.split(/\n\s*\n/).map((copy) => {
+          const paragraph = document.createElement("p");
+          paragraph.textContent = copy.trim();
+          return paragraph;
+        })
+        : [];
+      productDialogDescription.replaceChildren(...paragraphs);
+      productDialogDescription.hidden = !paragraphs.length;
     }
     if (productDialogForm) {
       productDialogForm.textContent = customerProductColour(product);
@@ -687,7 +725,7 @@
     if (productDialogRetailer) productDialogRetailer.href = product.retailerUrl;
     if (productDialogRetailerLabel) {
       productDialogRetailerLabel.textContent = product.brand === "Iris van Herpen"
-        ? "explore bespoke at Iris van Herpen"
+        ? "order haute couture"
         : "view at " + product.brand;
     }
     if (!productDialog.open) productDialog.showModal();
@@ -826,7 +864,7 @@
 
   async function loadCatalogue() {
     try {
-      const response = await fetch("shop-product-kernel-v1.json?v=shop-iris-annies-2", { credentials: "same-origin" });
+      const response = await fetch("shop-product-kernel-v1.json?v=shop-iris-layout-3", { credentials: "same-origin" });
       if (!response.ok) throw new Error(`Catalogue request failed: ${response.status}`);
       catalogueKernel = await response.json();
       catalogueProducts = Array.isArray(catalogueKernel.products)
