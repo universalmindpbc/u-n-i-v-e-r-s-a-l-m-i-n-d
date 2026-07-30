@@ -3090,6 +3090,9 @@
 
   function openMusicShelf() {
     if (!musicShelf || musicShelfOpen) return;
+    if (document.body.classList.contains("television-program-open")) {
+      window.IAMProgrammeGuide?.close?.(null, { restoreFocus: false });
+    }
     if (fashionShelfOpen) closeFashionShelf(false);
     if (sexEdShelfOpen) closeSexEdShelf(false);
     musicShelfOpen = true;
