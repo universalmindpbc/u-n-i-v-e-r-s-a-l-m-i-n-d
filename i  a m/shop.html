@@ -21,7 +21,8 @@
       document.documentElement.dataset.shopBrandInk = shopBrandInk === "white" ? "white" : "black";
     </script>
     <script src="music-television-frame-context.js?v=music-tv-frame-14ebf4459d03"></script>
-    <link rel="stylesheet" href="shop.css?v=shop-finish-19-technology-submenu-133pct-normal-1">
+    <link rel="preload" as="image" href="a s s e t s/shop-mockup/wolford-sergio-rossi-hero-poster-v1.jpg" fetchpriority="high">
+    <link rel="stylesheet" href="shop.css?v=shop-local-hero-phase-1">
     <link rel="stylesheet" href="mobile-editorial-surface.css?v=mobile-editorial-20260728-2">
     <script src="mobile-editorial-surface.js?v=mobile-editorial-20260728-2"></script>
   </head>
@@ -99,20 +100,26 @@
 
     <main>
       <section class="shop-hero" id="top" aria-labelledby="shop-title">
-        <div class="shop-hero__film" aria-label="James Bondage live fashion channel">
+        <div class="shop-hero__film" data-shop-hero-playlist aria-label="James Bondage fashion film">
           <video
-            data-shop-live-band
-            data-stream-file="a s s e t s/f a s h i o n [ r u n w a y ]/Wolford x Sergio Rossi.mp4"
-            data-stream-role="fashion"
-            data-stream-max-height="240"
-            data-stream-keep-alive
+            class="is-active"
+            data-shop-hero-video
+            data-shop-hero-film="wolford-sergio-rossi"
             autoplay
             muted
             playsinline
-            loop
             preload="auto"
+            poster="a s s e t s/shop-mockup/wolford-sergio-rossi-hero-poster-v1.jpg"
             aria-hidden="true"
-          ></video>
+          ><source src="a s s e t s/shop-mockup/wolford-sergio-rossi-hero-360-v1.mp4" type="video/mp4"></video>
+          <video
+            data-shop-hero-video
+            data-shop-hero-film="mugler-fall-winter-2021"
+            muted
+            playsinline
+            preload="metadata"
+            aria-hidden="true"
+          ><source src="a s s e t s/shop-mockup/mugler-fall-winter-2021-hero-360-v1.mp4" type="video/mp4"></video>
         </div>
         <div class="shop-hero__veil" aria-hidden="true"></div>
         <h1 id="shop-title"><span>James</span><span>Bondage</span></h1>
@@ -185,7 +192,7 @@
           </article>
           <article class="shop-product shop-product--cinematic shop-product--upside-kefi" data-product data-categories="movement second-skin">
             <a href="#catalogue/the-upside?lead=kefi-25in-midi-pant-oyster-usw226087" data-shop-brand-lead="kefi-25in-midi-pant-oyster-usw226087">
-              <figure><img src="a s s e t s/shop-mockup/upside-kefi-hero.png" alt="The Upside Kefi pant styled on a model inside a green cabin" loading="lazy"></figure>
+              <figure><img src="a s s e t s/shop-mockup/upside-kefi-hero-optimized-v1.jpg" alt="The Upside Kefi pant styled on a model inside a green cabin" loading="lazy"></figure>
               <div class="shop-product__copy"><p>The Upside</p><h3>Kefi 25in Midi Pant</h3><em>view edit</em></div>
             </a>
           </article>
@@ -268,7 +275,7 @@
           <li><span><a href="#catalogue/bordelle">Bordelle</a></span><b>23</b></li>
           <li><span><a href="#catalogue/calvin-klein">Calvin Klein</a></span><b>9</b></li>
           <li><span><a href="#catalogue/emilio-cavallini">Emilio Cavallini</a></span><b>2</b></li>
-          <li class="shop-brand-ledger__active"><span><a href="#catalogue/eres" data-shop-catalogue-link>ERES <em>browse edit</em></a></span><b>36</b></li>
+          <li class="shop-brand-ledger__active"><span><a href="#catalogue/eres" data-shop-catalogue-link>ERES</a></span><b>36</b></li>
           <li><span><a href="#catalogue/fleur-of-england">Fleur of England</a></span><b>4</b></li>
           <li><span><a href="#catalogue/free-people">Free People</a></span><b>16</b></li>
           <li><span><a href="#catalogue/karla-spetic">KARLA ŠPETIĆ</a></span><b>12</b></li>
@@ -400,9 +407,6 @@
     </footer>
 
     <script>window.IAMMobileEditorial?.apply();</script>
-    <script src="cloudflare-stream-catalogue.js?v=stream-catalogue-1"></script>
-    <script src="cloudflare-stream-controller.js?v=stream-controller-e6ed1b827651"></script>
-    <script src="broadcast-clock-v1.js?v=broadcast-clock-e0b14e5023b5"></script>
-    <script src="shop.js?v=shop-finish-19"></script>
+    <script src="shop.js?v=shop-local-hero-phase-1"></script>
   </body>
 </html>

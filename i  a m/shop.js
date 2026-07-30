@@ -28,9 +28,8 @@
   const filterStatus = document.querySelector("[data-filter-status]");
   const themeButton = document.querySelector("[data-shop-theme-toggle]");
   const themeLabel = document.querySelector("[data-shop-theme-label]");
-  const liveBand = document.querySelector("[data-shop-live-band]");
+  const heroVideos = Array.from(document.querySelectorAll("[data-shop-hero-video]"));
   const heroFullscreen = document.querySelector("[data-shop-hero-fullscreen]");
-  const liveTitle = document.querySelector("[data-shop-live-title]");
   const musicButton = document.querySelector("[data-shop-music]");
   const musicLabel = document.querySelector("[data-shop-music-label]");
   const catalogueSection = document.querySelector("[data-shop-catalogue]");
@@ -78,24 +77,8 @@
   let catalogueReturnScrollY = 0;
   let lastCatalogueResultCount = 0;
   const catalogueChunkSize = 24;
-  let liveBandSyncTimer = 0;
-  let liveBandRunwayId = "";
-  let liveBandLargeDriftSamples = 0;
-  let liveBandLastSeekAt = 0;
-  let liveBandSeekCount = 0;
-  let liveBandSeekInFlight = null;
+  let activeHeroVideoIndex = 0;
   let openingPreloadPromise = null;
-
-  const liveRunways = Object.freeze({
-    "wolford-sergio-rossi-capsule": {
-      file: "a s s e t s/f a s h i o n [ r u n w a y ]/Wolford x Sergio Rossi.mp4",
-      title: "Wolford × Sergio Rossi",
-    },
-    "mugler-fall-winter-2021": {
-      file: "a s s e t s/f a s h i o n [ r u n w a y ]/Mugler - Fall Winter 2021.mp4",
-      title: "Mugler FW21",
-    },
-  });
 
   function prepareSilentEditorialVideos() {
     if (!silentEditorialVideos.length) return;
@@ -176,11 +159,15 @@
       image.fetchPriority = "high";
     });
 
-    openingPreloadPromise = Promise.all([
-      openingAssetReady(liveBand, "loadeddata"),
-      openingAssetReady(openingEditorialVideo, "loadeddata"),
-      ...openingEditorialImages.map((image) => openingAssetReady(image, "load")),
-    ]).then(() => {
+    const openingHeroVideo = heroVideos[0];
+    if (openingHeroVideo) {
+      openingHeroVideo.preload = "auto";
+      openingHeroVideo.muted = true;
+      openingHeroVideo.defaultMuted = true;
+      if (openingHeroVideo.readyState < HTMLMediaElement.HAVE_CURRENT_DATA) openingHeroVideo.load();
+    }
+
+    openingPreloadPromise = openingAssetReady(openingHeroVideo, "loadeddata", 2500).then(() => {
       document.body.dataset.shopOpeningPreload = "ready";
       window.parent.postMessage({ type: "iam:shop-opening-media-ready" }, window.location.origin);
     });
@@ -188,137 +175,66 @@
     return openingPreloadPromise;
   }
 
-  function seekLiveBand(blockOffsetSeconds, reason = "entry_seek", state = null) {
-    if (!liveBand || !Number.isFinite(Number(blockOffsetSeconds))) return Promise.resolve(false);
-    if (liveBandSeekInFlight) return liveBandSeekInFlight;
-    liveBandSeekInFlight = new Promise((resolve) => {
-      const seek = () => {
-        const duration = Number(liveBand.duration || 0);
-        if (!Number.isFinite(duration) || duration <= 0) {
-          resolve(false);
-          return;
-        }
-        const target = ((Number(blockOffsetSeconds) % duration) + duration) % duration;
-        liveBand.playbackRate = 1;
-        liveBandSeekCount += 1;
-        window.IAMStreamController?.noteControlledSeek?.(liveBand, {
-          role: "fashion",
-          programme_instance_id: state?.programmeInstanceId || "",
-          broadcast_channel_id: state?.channelId || "fashion-underground-intensity",
-          seek_reason: reason,
-          controller_seek_count: liveBandSeekCount,
-        });
-        try {
-          liveBand.currentTime = target;
-        } catch {
-          resolve(false);
-          return;
-        }
-        liveBandLargeDriftSamples = 0;
-        if (reason === "controlled_rejoin") liveBandLastSeekAt = window.performance?.now?.() || Date.now();
-        resolve(true);
-      };
-      if (liveBand.readyState >= 1) seek();
-      else liveBand.addEventListener("loadedmetadata", seek, { once: true });
-    }).finally(() => {
-      liveBandSeekInFlight = null;
+  function startHeroPlaylist() {
+    if (!heroVideos.length) return;
+    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    const primeNextVideo = () => {
+      const nextVideo = heroVideos[(activeHeroVideoIndex + 1) % heroVideos.length];
+      if (!nextVideo) return;
+      nextVideo.preload = "auto";
+      nextVideo.muted = true;
+      nextVideo.defaultMuted = true;
+      if (nextVideo.readyState === HTMLMediaElement.HAVE_NOTHING) nextVideo.load();
+    };
+
+    const showVideo = (index) => {
+      activeHeroVideoIndex = (index + heroVideos.length) % heroVideos.length;
+      heroVideos.forEach((video, videoIndex) => {
+        const active = videoIndex === activeHeroVideoIndex;
+        video.classList.toggle("is-active", active);
+        video.muted = true;
+        video.defaultMuted = true;
+        video.playsInline = true;
+        if (!active) video.pause();
+      });
+
+      const activeVideo = heroVideos[activeHeroVideoIndex];
+      document.body.dataset.shopHeroState = "playing";
+      document.body.dataset.shopHeroFilm = activeVideo.dataset.shopHeroFilm || "";
+      if (activeVideo.ended || activeVideo.currentTime >= activeVideo.duration - .2) activeVideo.currentTime = 0;
+      if (!reducedMotion && !document.hidden) activeVideo.play().catch(() => null);
+      primeNextVideo();
+    };
+
+    heroVideos.forEach((video, index) => {
+      video.muted = true;
+      video.defaultMuted = true;
+      video.playsInline = true;
+      video.addEventListener("playing", () => {
+        if (index === activeHeroVideoIndex) primeNextVideo();
+      });
+      video.addEventListener("ended", () => {
+        if (index === activeHeroVideoIndex) showVideo(index + 1);
+      });
+      video.addEventListener("error", () => {
+        if (index === activeHeroVideoIndex && heroVideos.length > 1) showVideo(index + 1);
+      });
     });
-    return liveBandSeekInFlight;
-  }
 
-  async function synchronizeLiveBand(forceSeek = false) {
-    if (!liveBand || !window.IAMBroadcastClock || !window.IAMStreamController) return null;
-    await window.IAMBroadcastClock.ready;
-    const state = window.IAMBroadcastClock.stateAt("fashion-underground-intensity");
-    const runway = liveRunways[state?.runwayId];
-    if (!state || !runway) throw new Error("James Bondage live fashion programme unavailable.");
-
-    const programmeChanged = liveBandRunwayId !== state.runwayId;
-    if (programmeChanged) {
-      liveBandRunwayId = state.runwayId;
-      window.IAMStreamController.detach(liveBand);
-      liveBand.pause();
-      liveBand.dataset.streamFile = runway.file;
-      liveBand.dataset.shopLiveRunway = state.runwayId;
-      if (liveTitle) liveTitle.textContent = runway.title;
-      await window.IAMStreamController.attach(liveBand, {
-        fileName: runway.file,
-        role: "fashion",
-        autoplay: !window.matchMedia("(prefers-reduced-motion: reduce)").matches,
-      });
-      forceSeek = true;
-    } else if (!liveBand.dataset.streamUid) {
-      await window.IAMStreamController.attach(liveBand, {
-        fileName: runway.file,
-        role: "fashion",
-        autoplay: !window.matchMedia("(prefers-reduced-motion: reduce)").matches,
-      });
+    if (reducedMotion) {
+      document.body.dataset.shopHeroState = "poster";
+      heroVideos.forEach((video) => video.pause());
+      return;
     }
 
-    document.body.dataset.shopLiveState = "ready";
-    document.body.dataset.shopLiveChannel = state.channelId;
-    document.body.dataset.shopLiveRunway = state.runwayId;
-    document.body.dataset.shopLiveRemainingSeconds = state.remainingSeconds.toFixed(3);
-
-    const duration = Number(liveBand.duration || 0);
-    if (!Number.isFinite(duration) || duration <= 0) {
-      if (forceSeek) await seekLiveBand(state.offsetSeconds, "entry_seek", state);
-      return state;
-    }
-    const target = ((state.offsetSeconds % duration) + duration) % duration;
-    let drift = Number(liveBand.currentTime || 0) - target;
-    if (Math.abs(drift) > duration / 2) drift += drift > 0 ? -duration : duration;
-    document.body.dataset.shopLiveTargetSeconds = target.toFixed(3);
-    document.body.dataset.shopLiveDriftSeconds = drift.toFixed(3);
-    liveBand.playbackRate = 1;
-    const bufferSeconds = window.IAMStreamController.bufferedAhead(liveBand);
-    if (forceSeek) {
-      await seekLiveBand(state.offsetSeconds, "entry_seek", state);
-      document.body.dataset.shopLiveCorrection = "entry_seek";
-    } else if (Math.abs(drift) <= 1) {
-      liveBandLargeDriftSamples = 0;
-      document.body.dataset.shopLiveCorrection = "locked";
-    } else if (
-      Math.abs(drift) < 1.5 ||
-      liveBand.paused ||
-      liveBand.seeking ||
-      liveBand.readyState < HTMLMediaElement.HAVE_FUTURE_DATA ||
-      bufferSeconds < 12
-    ) {
-      liveBandLargeDriftSamples = 0;
-      document.body.dataset.shopLiveCorrection = Math.abs(drift) < 1.5 ? "within_tolerance" : "recovery_buffering";
-    } else if ((window.performance?.now?.() || Date.now()) - liveBandLastSeekAt < 30000) {
-      document.body.dataset.shopLiveCorrection = "rejoin_cooldown";
-    } else {
-      liveBandLargeDriftSamples += 1;
-      document.body.dataset.shopLiveCorrection = "rejoin_confirming";
-      if (liveBandLargeDriftSamples >= 3) {
-        await seekLiveBand(state.offsetSeconds, "controlled_rejoin", state);
-        document.body.dataset.shopLiveCorrection = "controlled_rejoin";
-      }
-    }
-    document.body.dataset.shopLivePlaybackRate = liveBand.playbackRate.toFixed(3);
-    document.body.dataset.shopLiveRejoinSamples = String(liveBandLargeDriftSamples);
-    return state;
-  }
-
-  async function startLiveBand() {
-    if (!liveBand) return;
-    try {
-      await synchronizeLiveBand(true);
-      if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-        await window.IAMStreamController.play(liveBand).catch(() => null);
-      }
-      liveBandSyncTimer = window.setInterval(() => {
-        synchronizeLiveBand(false).catch((error) => {
-          document.body.dataset.shopLiveState = "error";
-          document.body.dataset.shopLiveError = String(error?.message || error).slice(0, 140);
-        });
-      }, 3000);
-    } catch (error) {
-      document.body.dataset.shopLiveState = "error";
-      document.body.dataset.shopLiveError = String(error?.message || error).slice(0, 140);
-    }
+    showVideo(0);
+    document.addEventListener("visibilitychange", () => {
+      const activeVideo = heroVideos[activeHeroVideoIndex];
+      if (!activeVideo) return;
+      if (document.hidden) activeVideo.pause();
+      else activeVideo.play().catch(() => null);
+    });
   }
 
   function setPressed(buttons, activeButton) {
@@ -881,11 +797,6 @@
 
   applyTheme(document.documentElement.dataset.shopTheme || "night");
 
-  if (liveBand && window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-    liveBand.autoplay = false;
-    liveBand.pause();
-  }
-
   function updateFullscreenStatus(active) {
     document.documentElement.classList.toggle("shop-shell-is-fullscreen", Boolean(active));
     if (!heroFullscreen) return;
@@ -969,10 +880,6 @@
   prepareSilentEditorialVideos();
   renderRoute();
   loadCatalogue();
-  startLiveBand();
+  startHeroPlaylist();
   preloadOpeningAssets();
-
-  window.addEventListener("pagehide", () => {
-    if (liveBandSyncTimer) window.clearInterval(liveBandSyncTimer);
-  }, { once: true });
 }());

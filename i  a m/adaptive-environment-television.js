@@ -7883,7 +7883,7 @@
         shopEntryMediaReady = true;
         if (shopEntryLabel) shopEntryLabel.textContent = "explore";
         completeShopEntry();
-      }, 10000);
+      }, 4000);
       if (!shopEntryActivated) document.documentElement.dataset.shopEntry = "ready";
       completeShopEntry();
     }

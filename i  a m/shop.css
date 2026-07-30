@@ -445,12 +445,18 @@ html[data-shop-theme="night"] .shop-theme__disc {
 }
 
 .shop-hero__film video {
+  position: absolute;
+  inset: 0;
   width: 100%;
   height: 100%;
   border: 0;
   object-fit: cover;
   object-position: center 36%;
+  opacity: 0;
+  transition: opacity 720ms cubic-bezier(.2, .72, .2, 1);
 }
+
+.shop-hero__film video.is-active { opacity: 1; }
 
 .shop-hero__veil {
   position: absolute;

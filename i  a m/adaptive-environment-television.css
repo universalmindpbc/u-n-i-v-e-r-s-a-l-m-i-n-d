@@ -217,17 +217,17 @@ body.adaptive-typewriter-complete .adaptive-television-cta {
 .shop-entry__inner {
   display: grid;
   justify-items: center;
-  gap: clamp(18px, 3vh, 34px);
+  gap: 0;
   width: min(620px, 100%);
 }
 
 .shop-entry h1 {
   margin: 0;
   font-family: "Times New Roman", Times, serif;
-  font-size: clamp(52px, 8vw, 118px);
+  font-size: clamp(58px, 8.4vw, 124px);
   font-weight: 400;
-  letter-spacing: -.065em;
-  line-height: .86;
+  letter-spacing: -.055em;
+  line-height: .94;
   text-transform: lowercase;
 }
 
@@ -246,6 +246,7 @@ html[data-shop-entry] .shop-entry .shop-entry__play {
   pointer-events: auto;
   transform: none;
   cursor: pointer;
+  margin-top: clamp(48px, 7.5vh, 92px);
 }
 
 html[data-shop-entry] .shop-entry .shop-entry__play img {
@@ -268,16 +269,19 @@ html[data-shop-entry] .shop-entry .shop-entry__play:focus-visible {
 }
 
 .shop-entry p {
-  max-width: 420px;
-  color: rgba(255, 255, 255, .76);
-  font-size: clamp(13px, 1.1vw, 16px);
-  font-weight: 300;
-  letter-spacing: .02em;
-  line-height: 1.45;
+  max-width: 360px;
+  margin-top: 16px;
+  color: rgba(255, 255, 255, .48);
+  font-size: 9px;
+  font-weight: 500;
+  letter-spacing: .15em;
+  line-height: 1.5;
+  text-transform: uppercase;
 }
 
 .shop-entry span {
-  font-size: 10px;
+  margin-top: clamp(40px, 6.5vh, 70px);
+  font-size: 11px;
   font-weight: 600;
   letter-spacing: .26em;
   text-indent: .26em;

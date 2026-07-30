@@ -171,14 +171,24 @@ for (const featuredReference of [
   assert.ok(productKernel.products.some((product) => product.retailerUrl === featuredReference), `Featured homepage product is missing from the canonical kernel: ${featuredReference}`);
 }
 
-assert.match(shop, /data-shop-live-band[\s\S]*data-stream-role="fashion"[\s\S]*autoplay[\s\S]*muted/, "Every Shop route must open with the silent live fashion band");
-assert.match(shop, /data-shop-live-band[\s\S]*data-stream-max-height="240"/, "Shop hero must use the reduced 240p stream cap");
-assert.match(shop, /cloudflare-stream-controller\.js[\s\S]*broadcast-clock-v1\.js[\s\S]*shop\.js/, "The live band must reuse the established stream controller and broadcast clock");
-assert.match(shopScript, /stateAt\("fashion-underground-intensity"\)/, "The live band must follow the James Bondage fashion channel");
-assert.match(shopScript, /wolford-sergio-rossi-capsule[\s\S]*mugler-fall-winter-2021/, "The first live channel proof must rotate between Wolford and Mugler");
-assert.match(shopScript, /shopLiveDriftSeconds[\s\S]*entry_seek[\s\S]*recovery_buffering[\s\S]*rejoin_confirming[\s\S]*controlled_rejoin/, "The live band must remain rate-locked with one buffered, confirmed rejoin");
-assert.doesNotMatch(shopScript, /fastSeek|soft_catchup|soft_slow|playbackRate = drift/, "The live band must never change tempo to chase the clock");
+assert.match(shop, /data-shop-hero-playlist[\s\S]*wolford-sergio-rossi-hero-360-v1\.mp4[\s\S]*mugler-fall-winter-2021-hero-360-v1\.mp4/, "Every Shop route must open with the local Wolford then Mugler playlist");
+assert.match(shop, /data-shop-hero-film="wolford-sergio-rossi"[\s\S]*autoplay[\s\S]*muted[\s\S]*playsinline[\s\S]*poster="a s s e t s\/shop-mockup\/wolford-sergio-rossi-hero-poster-v1\.jpg"/, "The local hero must begin silently with an immediate Wolford poster");
+assert.match(shopScript, /function startHeroPlaylist\(\)[\s\S]*primeNextVideo[\s\S]*addEventListener\("ended"[\s\S]*showVideo\(index \+ 1\)/, "The local hero must preload and advance through its films sequentially");
+assert.doesNotMatch(shop, /data-shop-live-band|data-stream-role="fashion"|cloudflare-stream-controller\.js|broadcast-clock-v1\.js/, "The Shop hero must not retain synchronized streaming infrastructure");
+assert.doesNotMatch(shopScript, /IAMBroadcastClock|IAMStreamController|shopLiveDriftSeconds|entry_seek|controlled_rejoin|playbackRate = drift/, "The Shop hero must not synchronize, seek, or alter playback rate");
 assert.match(shopStyle, /height:\s*clamp\(430px, 66svh, 760px\)/, "The live masthead must remain a full-width two-thirds-height band");
+assert.match(shopStyle, /\.shop-hero__film video\.is-active\s*\{\s*opacity:\s*1/, "Only the active local hero film may be visible");
+for (const localHeroAsset of [
+  "wolford-sergio-rossi-hero-360-v1.mp4",
+  "mugler-fall-winter-2021-hero-360-v1.mp4",
+  "wolford-sergio-rossi-hero-poster-v1.jpg",
+]) {
+  assert.ok(fs.existsSync(path.join(iam, "a s s e t s/shop-mockup", localHeroAsset)), `Missing local hero asset: ${localHeroAsset}`);
+}
+assert.ok(fs.statSync(path.join(iam, "a s s e t s/shop-mockup/wolford-sergio-rossi-hero-360-v1.mp4")).size < 3_000_000, "Wolford hero derivative must remain below 3 MB");
+assert.ok(fs.statSync(path.join(iam, "a s s e t s/shop-mockup/mugler-fall-winter-2021-hero-360-v1.mp4")).size < 12_000_000, "Mugler hero derivative must remain below 12 MB");
+assert.match(shop, /upside-kefi-hero-optimized-v1\.jpg/, "The Upside homepage image must use its optimized derivative");
+assert.ok(fs.statSync(path.join(iam, "a s s e t s/shop-mockup/upside-kefi-hero-optimized-v1.jpg")).size < 600_000, "The Upside homepage image must remain below 600 KB");
 assert.match(shop, /data-shop-silent-video[\s\S]*bordelle-look83-waspie-home\.mp4/, "The supplied Bordelle Look83 film must replace the duplicate product still");
 assert.doesNotMatch(shop, /player\.vimeo\.com\/video\/987002812/, "The slow remote Bordelle Vimeo must not remain on the homepage");
 assert.match(shop, /shopBrandVariant === "b" \? "handdrawn" : "a"/, "The hand-drawn brand test must remain a switchable B variant");
@@ -215,6 +225,7 @@ assert.match(shop, /Our James Bondage Health series \[ sex-ed \] shares female l
 assert.match(shop, /All profits from affiliate revenue are invested in mental health\./i, "Giving Back must state the approved affiliate profit formula");
 assert.match(shop, /href="https:\/\/headspace\.org\.au"[\s\S]*href="https:\/\/www\.orygen\.org\.au"[\s\S]*href="https:\/\/www\.herspace\.org\.au"[\s\S]*href="https:\/\/www\.phoenixaustralia\.org"/i, "Giving Back must link the four approved mental-health partners");
 assert.match(shop, /href="#catalogue\/eres"[^>]*data-shop-catalogue-link/, "ERES must open from the 26-brand ledger");
+assert.doesNotMatch(shop, /browse edit/i, "The brand ledger must not single out ERES with redundant Browse Edit copy");
 assert.match(shop, /data-catalogue-editorial-header/, "ERES catalogue must open with the approved editorial header");
 assert.match(shop, /data-shop-product-dialog/, "Catalogue must expose the quiet expanded product view");
 assert.match(shop, /data-shop-product-dialog-description/, "Expanded product view must prioritize retailer-sourced product context");
@@ -244,10 +255,11 @@ assert.match(shop, /data-shop-sex-ed-viewport[\s\S]*data-shop-sex-ed-previous[\s
 assert.match(shopScript, /function moveSexEdShelf[\s\S]*sexEdViewport\.scrollBy/, "Sex Ed shelf controls must scroll the episode track");
 assert.match(television, /requestedSexEdEpisode[\s\S]*bootstrapRequestedSexEd[\s\S]*openSexEdEpisode\(requestedSexEdEpisode\)/, "Sex Ed links must deep-link each episode into its established player");
 
-assert.match(index, /data-shop-entry-screen[\s\S]*james bondage[\s\S]*data-shop-entry-button[\s\S]*This is a full screen music first, shopping experience[\s\S]*data-shop-entry-label>explore/, "Direct Shop entry must use the approved black music-first splash copy");
+assert.match(index, /data-shop-entry-screen[\s\S]*james bondage[\s\S]*data-shop-entry-button[\s\S]*data-shop-entry-label>explore<\/span>[\s\S]*opens full screen · starts music/, "Direct Shop entry must use the approved spacious black splash hierarchy");
 assert.doesNotMatch(index, /class="adaptive-environment__play shop-entry__play"/, "The Shop splash play control must not inherit the television-room blur state");
-assert.match(shopScript, /function preloadOpeningAssets[\s\S]*iam:shop-opening-media-ready/, "The Shop must preload its opening video and imagery behind the splash");
+assert.match(shopScript, /function preloadOpeningAssets[\s\S]*openingAssetReady\(openingHeroVideo, "loadeddata", 2500\)[\s\S]*iam:shop-opening-media-ready/, "The Shop must prioritize its opening local hero behind the splash");
 assert.match(television, /shopEntryMediaReady[\s\S]*iam:shop-opening-media-ready[\s\S]*completeShopEntry/, "The splash must wait for opening Shop media readiness before revealing the page");
+assert.match(television, /shopEntryMediaFallbackTimer = window\.setTimeout\([\s\S]*?4000\)/, "Shop entry must retain a bounded four-second fallback");
 assert.match(index, /dataset\.shopEntry = "requested"/, "Direct Shop entry must activate before the Universal Mind homepage can paint");
 assert.match(television, /function activateShopEntry[\s\S]*requestShopFullscreen[\s\S]*requestShopMusic\([^\n]*ensurePlaying: true[\s\S]*completeShopEntry/, "The Shop splash gesture must request full screen and start audio before revealing the shop");
 assert.match(television, /DOMContentLoaded", bootstrapRequestedShop/, "The direct Shop journey must preload before the full homepage load event");
