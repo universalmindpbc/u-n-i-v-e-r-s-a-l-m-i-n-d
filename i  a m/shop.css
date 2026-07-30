@@ -407,6 +407,7 @@ html[data-shop-theme="night"] .shop-theme__disc {
 .shop-product img,
 .shop-product video,
 .shop-catalogue-card img,
+.shop-catalogue-card video,
 .shop-look img,
 .shop-look video,
 .shop-campaign img,
@@ -646,6 +647,7 @@ html[data-shop-brand-variant="handdrawn"][data-shop-theme="night"] .shop-b-face-
 
 .shop-look video,
 .shop-product video,
+.shop-catalogue-card video,
 .shop-campaign video,
 .shop-video-pair video {
   display: block;
@@ -654,6 +656,48 @@ html[data-shop-brand-variant="handdrawn"][data-shop-theme="night"] .shop-b-face-
   background: #000;
   object-fit: cover;
 }
+
+.shop-iris-film {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  background: #000;
+  color: #fff;
+}
+
+.shop-iris-film figure {
+  height: clamp(440px, 72svh, 900px);
+  margin: 0;
+  overflow: hidden;
+  background: #000;
+}
+
+.shop-iris-film video {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.shop-iris-film p {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  justify-content: space-between;
+  gap: 24px;
+  margin: 0;
+  padding: 70px clamp(18px, 3.4vw, 62px) clamp(22px, 3vw, 46px);
+  background: linear-gradient(transparent, rgba(0, 0, 0, .74));
+  font-size: 9px;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+}
+
+.shop-iris-film p strong { font-weight: 600; }
+.shop-iris-film p span { color: rgba(255, 255, 255, .72); }
 
 .shop-look:hover img,
 .shop-look:focus-visible img,
@@ -1367,7 +1411,9 @@ body[data-shop-view="catalogue"] [data-shop-editorial] { display: none !importan
 }
 
 .shop-catalogue-card button:hover img,
-.shop-catalogue-card button:focus-visible img { transform: scale(1.018); }
+.shop-catalogue-card button:focus-visible img,
+.shop-catalogue-card button:hover video,
+.shop-catalogue-card button:focus-visible video { transform: scale(1.018); }
 
 .shop-catalogue-card__copy {
   display: grid;
@@ -1517,10 +1563,38 @@ body[data-shop-view="catalogue"] [data-shop-editorial] { display: none !importan
   background: var(--shop-soft);
 }
 
-.shop-product-dialog figure img {
+.shop-product-dialog figure > img,
+.shop-product-dialog figure > video {
+  display: block;
+  width: 100%;
+  height: 100%;
   object-fit: contain;
   object-position: center;
 }
+
+.shop-product-dialog figure.has-gallery {
+  overflow-y: auto;
+  scrollbar-width: none;
+}
+
+.shop-product-dialog figure.has-gallery::-webkit-scrollbar { display: none; }
+
+.shop-product-dialog__gallery {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1px;
+  background: var(--shop-line);
+}
+
+.shop-product-dialog__gallery img {
+  display: block;
+  width: 100%;
+  height: auto;
+  min-height: 0;
+  background: var(--shop-soft);
+}
+
+.shop-product-dialog__gallery img:first-child { grid-column: 1 / -1; }
 
 .shop-product-dialog__details {
   display: flex;
@@ -1888,6 +1962,9 @@ body[data-shop-view="catalogue"] [data-shop-editorial] { display: none !importan
   .shop-product-dialog__layout::-webkit-scrollbar { display: none; }
 
   .shop-product-dialog figure { height: 58svh; }
+  .shop-product-dialog figure.has-gallery { height: 64svh; }
+  .shop-product-dialog__gallery { grid-template-columns: 1fr; }
+  .shop-product-dialog__gallery img:first-child { grid-column: auto; }
   .shop-product-dialog__details { min-height: 42svh; height: auto; overflow: visible; padding: 34px 22px 44px; }
   .shop-product-dialog__details h2 { margin: 10px 0 24px; font-size: 16px; }
   .shop-product-dialog__description { font-size: 17px !important; }
@@ -2153,6 +2230,8 @@ body[data-shop-view="catalogue"] [data-shop-editorial] { display: none !importan
 
   .shop-campaign { padding: 1px 0 0; }
   .shop-campaign figure { height: 68svh; }
+  .shop-iris-film figure { height: 58svh; }
+  .shop-iris-film p { padding: 60px 16px 20px; }
   .shop-video-pair { display: grid; grid-template-columns: 1fr; padding: 1px 0 0; }
   .shop-video-pair header { margin: 0; padding: 28px 16px; }
   .shop-video-pair h2 { margin: 0; font-size: 48px; }

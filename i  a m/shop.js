@@ -51,7 +51,7 @@
   const catalogueProgress = document.querySelector("[data-catalogue-progress]");
   const productDialog = document.querySelector("[data-shop-product-dialog]");
   const productDialogClose = document.querySelector("[data-shop-product-dialog-close]");
-  const productDialogImage = document.querySelector("[data-shop-product-dialog-image]");
+  const productDialogMedia = document.querySelector("[data-shop-product-dialog-media]");
   const productDialogBrand = document.querySelector("[data-shop-product-dialog-brand]");
   const productDialogTitle = document.querySelector("[data-shop-product-dialog-title]");
   const productDialogDescription = document.querySelector("[data-shop-product-dialog-description]");
@@ -418,7 +418,7 @@
   }
 
   function productHasFullDetail(product) {
-    return Boolean(product.image);
+    return Boolean(product.image || product.video || product.gallery?.length);
   }
 
   function productHasImage(product) {
@@ -455,7 +455,7 @@
     const brand = currentBrandRecord();
     const displayName = brand?.brand || "SHOP";
     if (catalogueBrandTitle) catalogueBrandTitle.textContent = displayName;
-    if (catalogueBrandKicker) catalogueBrandKicker.textContent = brand?.brand || `all ${catalogueKernel?.brandOrder?.length || 26} brands`;
+    if (catalogueBrandKicker) catalogueBrandKicker.textContent = brand?.brand || `all ${catalogueKernel?.brandOrder?.length || 27} brands`;
     if (catalogueAsideBrand) catalogueAsideBrand.textContent = brand?.brand || "James Bondage";
     if (catalogueAsideForm) {
       catalogueAsideForm.textContent = activeCatalogueType === "all"
@@ -469,7 +469,15 @@
 
     const brandImages = activeCatalogueBrand === "all"
       ? []
-      : visibleProducts.filter(productHasImage).slice(0, 2);
+      : visibleProducts.flatMap((product) => {
+        const sources = product.gallery?.length ? product.gallery : [product.image];
+        return sources.filter(Boolean).map((image) => ({
+          image,
+          imageAlt: product.imageAlt,
+          brand: product.brand,
+          name: product.name,
+        }));
+      }).slice(0, 2);
     const hasBrandImages = brandImages.length >= 2;
     catalogueHeader?.classList.toggle("is-text-only", !hasBrandImages);
     if (hasBrandImages && catalogueLeadImage && catalogueAsideImage) {
@@ -496,11 +504,26 @@
 
     const figure = document.createElement("figure");
     if (hasImage) {
-      const image = document.createElement("img");
-      image.src = product.image;
-      image.alt = product.imageAlt || `${product.brand} ${customerProductName(product)}`;
-      image.loading = index < 6 ? "eager" : "lazy";
-      figure.append(image);
+      if (product.video) {
+        const video = document.createElement("video");
+        video.src = product.video;
+        video.poster = product.image;
+        video.muted = true;
+        video.defaultMuted = true;
+        video.loop = true;
+        video.autoplay = true;
+        video.playsInline = true;
+        video.preload = index < 6 ? "auto" : "metadata";
+        video.setAttribute("aria-hidden", "true");
+        figure.append(video);
+        video.play().catch(() => null);
+      } else {
+        const image = document.createElement("img");
+        image.src = product.image;
+        image.alt = product.imageAlt || `${product.brand} ${customerProductName(product)}`;
+        image.loading = index < 6 ? "eager" : "lazy";
+        figure.append(image);
+      }
     } else {
       figure.className = "shop-catalogue-card__placeholder";
       const inventoryBrand = document.createElement("span");
@@ -556,6 +579,8 @@
       .sort((a, b) => {
         if (activeCatalogueSort === "price-asc") return (a.priceValue ?? Number.MAX_SAFE_INTEGER) - (b.priceValue ?? Number.MAX_SAFE_INTEGER);
         if (activeCatalogueSort === "price-desc") return (b.priceValue ?? -1) - (a.priceValue ?? -1);
+        const editorialRank = (a.editorialRank ?? Number.MAX_SAFE_INTEGER) - (b.editorialRank ?? Number.MAX_SAFE_INTEGER);
+        if (editorialRank) return editorialRank;
         return String(a.id).localeCompare(String(b.id));
       });
 
@@ -601,12 +626,50 @@
     return catalogueProducts.find((product) => product.slug === slug) || null;
   }
 
+  function renderProductDialogMedia(product) {
+    if (!productDialogMedia) return;
+    productDialogMedia.classList.toggle("has-gallery", Boolean(product.gallery?.length));
+    productDialogMedia.classList.toggle("has-video", Boolean(product.video));
+
+    if (product.gallery?.length) {
+      const gallery = document.createElement("div");
+      gallery.className = "shop-product-dialog__gallery";
+      product.gallery.forEach((source, index) => {
+        const image = document.createElement("img");
+        image.src = source;
+        image.alt = `${product.imageAlt || `${product.brand} ${customerProductName(product)}`} / view ${index + 1} of ${product.gallery.length}`;
+        image.loading = index < 2 ? "eager" : "lazy";
+        gallery.append(image);
+      });
+      productDialogMedia.replaceChildren(gallery);
+      return;
+    }
+
+    if (product.video) {
+      const video = document.createElement("video");
+      video.src = product.video;
+      video.poster = product.image;
+      video.muted = true;
+      video.defaultMuted = true;
+      video.loop = true;
+      video.autoplay = true;
+      video.playsInline = true;
+      video.preload = "auto";
+      video.setAttribute("aria-label", product.imageAlt || `${product.brand} ${customerProductName(product)} product film`);
+      productDialogMedia.replaceChildren(video);
+      video.play().catch(() => null);
+      return;
+    }
+
+    const image = document.createElement("img");
+    image.src = product.image;
+    image.alt = product.imageAlt || `${product.brand} ${customerProductName(product)}`;
+    productDialogMedia.replaceChildren(image);
+  }
+
   function showProduct(product) {
     if (!productDialog || !product) return;
-    if (productDialogImage) {
-      productDialogImage.src = product.image;
-      productDialogImage.alt = product.imageAlt || `${product.brand} ${customerProductName(product)}`;
-    }
+    renderProductDialogMedia(product);
     if (productDialogBrand) productDialogBrand.textContent = product.brand;
     if (productDialogTitle) productDialogTitle.textContent = customerProductName(product);
     if (productDialogDescription) {
@@ -622,7 +685,11 @@
       productDialogPrice.hidden = !productDialogPrice.textContent;
     }
     if (productDialogRetailer) productDialogRetailer.href = product.retailerUrl;
-    if (productDialogRetailerLabel) productDialogRetailerLabel.textContent = "view at " + product.brand;
+    if (productDialogRetailerLabel) {
+      productDialogRetailerLabel.textContent = product.brand === "Iris van Herpen"
+        ? "explore bespoke at Iris van Herpen"
+        : "view at " + product.brand;
+    }
     if (!productDialog.open) productDialog.showModal();
   }
 
@@ -759,7 +826,7 @@
 
   async function loadCatalogue() {
     try {
-      const response = await fetch("shop-product-kernel-v1.json?v=shop-universal-catalogue-18", { credentials: "same-origin" });
+      const response = await fetch("shop-product-kernel-v1.json?v=shop-iris-annies-2", { credentials: "same-origin" });
       if (!response.ok) throw new Error(`Catalogue request failed: ${response.status}`);
       catalogueKernel = await response.json();
       catalogueProducts = Array.isArray(catalogueKernel.products)
