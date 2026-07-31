@@ -800,26 +800,28 @@
     }
 
     window.setTimeout(() => {
-      const retailerWindow = window.open("", emilioRetailerTabName);
+      const retailerWindow = window.open(retailerUrl, emilioRetailerTabName);
       if (!retailerWindow) {
         restoreRetailerLinkSafety();
         return;
       }
 
-      let retried = false;
-      try {
-        retailerWindow.location.href = retailerUrl;
-        retried = true;
-      } catch {}
-
-      if (retried) {
+      window.setTimeout(() => {
+        let retried = false;
         try {
-          retailerWindow.opener = null;
+          retailerWindow.location.href = retailerUrl;
+          retried = true;
         } catch {}
-        markEmilioCurrencyRecoveryReady();
-      }
-      restoreRetailerLinkSafety();
-    }, emilioCurrencyRecoveryDelay);
+
+        if (retried) {
+          try {
+            retailerWindow.opener = null;
+          } catch {}
+          markEmilioCurrencyRecoveryReady();
+        }
+        restoreRetailerLinkSafety();
+      }, emilioCurrencyRecoveryDelay);
+    }, 0);
   }
 
   function closeProduct(options = {}) {

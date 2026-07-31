@@ -65,10 +65,10 @@ assert.match(shop, /<title>James Bondage \| Shop<\/title>/, "Standalone Shop tit
 assert.match(index, /document\.title = "James Bondage \| Shop"/, "Shop splash title must use the approved pipe separator");
 assert.match(
   television,
-  /const SHOP_SHELL_VERSION = "shop-champagne-bohemia-2-emilio-safari-2";[\s\S]*function frameHref\(link\)[\s\S]*url\.searchParams\.set\("v", SHOP_SHELL_VERSION\)/,
+  /const SHOP_SHELL_VERSION = "shop-champagne-bohemia-2-emilio-safari-3";[\s\S]*function frameHref\(link\)[\s\S]*url\.searchParams\.set\("v", SHOP_SHELL_VERSION\)/,
   "The real Shop entry must cache-bust its embedded Shop shell to the current Champagne Bohemia version",
 );
-assert.match(index, /adaptive-environment-television\.js\?v=music-tv-6d400242c2a4/, "The homepage must load the Shop cache-bust controller");
+assert.match(index, /adaptive-environment-television\.js\?v=music-tv-29d779bf819f/, "The homepage must load the Shop cache-bust controller");
 
 assert.equal(catalogue.products.length, 36, "Finished ERES catalogue must contain all 36 approved product URLs");
 assert.equal(new Set(catalogue.products.map((product) => product.id)).size, 36, "Catalogue product IDs must be unique");
@@ -155,8 +155,8 @@ assert.doesNotMatch(
 );
 assert.match(
   emilioRecoveryHandler,
-  /window\.setTimeout\(\(\) => \{[\s\S]*window\.open\("", emilioRetailerTabName\)[\s\S]*retailerWindow\.location\.href = retailerUrl;[\s\S]*retailerWindow\.opener = null;[\s\S]*markEmilioCurrencyRecoveryReady\(\);/,
-  "The existing named retailer tab must receive the exact product URL again and then release its opener",
+  /window\.setTimeout\(\(\) => \{[\s\S]*window\.open\(retailerUrl, emilioRetailerTabName\)[\s\S]*window\.setTimeout\(\(\) => \{[\s\S]*retailerWindow\.location\.href = retailerUrl;[\s\S]*retailerWindow\.opener = null;[\s\S]*markEmilioCurrencyRecoveryReady\(\);[\s\S]*emilioCurrencyRecoveryDelay\);[\s\S]*\}, 0\);/,
+  "The ordinary named retailer tab must be captured and restarted before Safari clears its cross-site name, then receive the exact product URL again and release its opener",
 );
 assert.match(
   shopScript,
