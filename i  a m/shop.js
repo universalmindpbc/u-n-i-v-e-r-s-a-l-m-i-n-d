@@ -384,22 +384,19 @@
     return catalogueKernel.brandCounts.find((entry) => brandSlug(entry.brand) === activeCatalogueBrand) || null;
   }
 
+  function currentCatalogueTypeLabel() {
+    return catalogueKernel?.shopTaxonomy?.visibleOptions
+      ?.find((option) => option.value === activeCatalogueType)?.label
+      || activeCatalogueType.replace(/-/g, " ");
+  }
+
   function catalogueBrandName(product) {
     return product.catalogueBrand || product.brand;
   }
 
-  function normalisedProductType(product) {
-    if (product.productType && product.productType !== "Pending") return product.productType;
-    if (product.categories?.includes("bras")) return "Bra";
-    if (product.categories?.includes("briefs")) return "Briefs";
-    if (product.categories?.includes("bodysuits")) return "Bodysuit";
-    return "Other";
-  }
-
   function productMatchesType(product) {
     if (activeCatalogueType === "all") return true;
-    if (brandSlug(normalisedProductType(product)) === activeCatalogueType) return true;
-    return Array.isArray(product.forms) && product.forms.some((form) => brandSlug(form) === activeCatalogueType);
+    return Array.isArray(product.shopTypes) && product.shopTypes.includes(activeCatalogueType);
   }
 
   function option(value, label) {
@@ -418,15 +415,12 @@
       );
     }
     if (catalogueTypeSelect) {
-      const productTypes = Array.from(new Set(
-        [
-          ...catalogueKernel.products.map(normalisedProductType),
-          ...catalogueKernel.products.flatMap((product) => product.forms || []),
-        ].filter((type) => type && type !== "Pending" && type !== "Other"),
-      )).sort((a, b) => a.localeCompare(b));
+      const productTypes = Array.isArray(catalogueKernel.shopTaxonomy?.visibleOptions)
+        ? catalogueKernel.shopTaxonomy.visibleOptions
+        : [];
       catalogueTypeSelect.replaceChildren(
-        option("all", "all types"),
-        ...productTypes.map((type) => option(brandSlug(type), type)),
+        option("all", "all categories / types"),
+        ...productTypes.map((type) => option(type.value, type.label)),
       );
     }
     if (catalogueColourSelect && catalogueFilter) {
@@ -481,7 +475,7 @@
     if (catalogueAsideForm) {
       catalogueAsideForm.textContent = activeCatalogueType === "all"
         ? (brand?.formLabel || "lingerie / swim / movement")
-        : activeCatalogueType.replace(/-/g, " ");
+        : currentCatalogueTypeLabel();
     }
     const hasNarrowedEdit = activeCatalogueType !== "all"
       || activeCatalogueColour !== "all"
@@ -923,7 +917,9 @@
     }
     const validBrand = route.brand === "all" || catalogueKernel?.brandCounts.some((entry) => brandSlug(entry.brand) === route.brand);
     activeCatalogueBrand = validBrand ? route.brand : "all";
-    activeCatalogueType = route.type || "all";
+    const validType = route.type === "all"
+      || catalogueKernel?.shopTaxonomy?.visibleOptions?.some((option) => option.value === route.type);
+    activeCatalogueType = validType ? route.type : "all";
     activeCatalogueQuery = route.query || "";
     activeCatalogueColour = catalogueFilter?.COLOUR_OPTIONS.some((entry) => entry.value === route.colour)
       ? route.colour
@@ -1040,8 +1036,8 @@
   async function loadCatalogue() {
     try {
       const [kernelResponse, champagneResponse] = await Promise.all([
-        fetch("shop-product-kernel-v1.json?v=shop-colour-audit-2", { credentials: "same-origin" }),
-        fetch("shop-champagne-bohemia-products-v1.json?v=shop-colour-audit-2", { credentials: "same-origin" }),
+        fetch("shop-product-kernel-v1.json?v=shop-colour-audit-2-taxonomy-1", { credentials: "same-origin" }),
+        fetch("shop-champagne-bohemia-products-v1.json?v=shop-colour-audit-2-taxonomy-1", { credentials: "same-origin" }),
       ]);
       if (!kernelResponse.ok) throw new Error(`Catalogue request failed: ${kernelResponse.status}`);
       if (!champagneResponse.ok) throw new Error(`Champagne Bohemia request failed: ${champagneResponse.status}`);

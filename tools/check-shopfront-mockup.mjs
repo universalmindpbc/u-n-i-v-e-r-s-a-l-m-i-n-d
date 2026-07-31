@@ -65,10 +65,10 @@ assert.match(shop, /<title>James Bondage \| Shop<\/title>/, "Standalone Shop tit
 assert.match(index, /document\.title = "James Bondage \| Shop"/, "Shop splash title must use the approved pipe separator");
 assert.match(
   television,
-  /const SHOP_SHELL_VERSION = "shop-champagne-bohemia-2-emilio-safari-3-search-colour-3";[\s\S]*function frameHref\(link\)[\s\S]*url\.searchParams\.set\("v", SHOP_SHELL_VERSION\)/,
+  /const SHOP_SHELL_VERSION = "shop-champagne-bohemia-2-emilio-safari-3-search-colour-3-taxonomy-1";[\s\S]*function frameHref\(link\)[\s\S]*url\.searchParams\.set\("v", SHOP_SHELL_VERSION\)/,
   "The real Shop entry must cache-bust its embedded Shop shell to the current Champagne Bohemia version",
 );
-assert.match(index, /adaptive-environment-television\.js\?v=music-tv-10c586ca6571/, "The homepage must load the Shop cache-bust controller");
+assert.match(index, /adaptive-environment-television\.js\?v=music-tv-f48e3286a95e/, "The homepage must load the Shop cache-bust controller");
 
 assert.equal(catalogue.products.length, 36, "Finished ERES catalogue must contain all 36 approved product URLs");
 assert.equal(new Set(catalogue.products.map((product) => product.id)).size, 36, "Catalogue product IDs must be unique");
@@ -116,6 +116,37 @@ assert.equal(productKernel.products.filter((product) => product.listedOnShop).le
 assert.equal(productKernel.products.filter((product) => product.image).length, 363, "Every approved product record must carry an approved hero image");
 assert.ok(productKernel.products.every((product) => product.retailerUrl?.startsWith("https://")), "Every tensor product must retain its exact retailer URL");
 assert.equal(productKernel.authority.policy, "exact_notion_product_urls_only", "Notion must remain the sole product authority");
+const expectedShopTaxonomy = [
+  ["lingerie-all", "lingerie (all)"],
+  ["swimwear-all", "swimwear (all)"],
+  ["athleisure-all", "athleisure (all)"],
+  ["ready-to-wear-all", "ready to wear (all)"],
+  ["haute-couture-all", "haute couture (all)"],
+  ["bra", "bra"],
+  ["brief", "brief"],
+  ["bodysuit", "bodysuit"],
+  ["hosiery", "hosiery"],
+  ["robe", "robe"],
+  ["after-dark", "after dark"],
+  ["swimsuit", "swimsuit"],
+  ["bikini", "bikini"],
+  ["rash-vest", "rash vest"],
+  ["coverup", "coverup"],
+  ["jumpsuit", "jumpsuit"],
+  ["dress", "dress"],
+  ["shorts", "shorts"],
+  ["pants", "pants"],
+  ["leggings", "leggings"],
+  ["crop", "crop"],
+  ["accessories", "accessories"],
+].map(([value, label]) => ({ value, label }));
+assert.equal(productKernel.shopTaxonomy.version, "jb-shop-taxonomy-v1", "Shop taxonomy version must stay explicit");
+assert.deepEqual(productKernel.shopTaxonomy.visibleOptions, expectedShopTaxonomy, "Shop taxonomy order and labels must match the approved dropdown exactly");
+assert.deepEqual(champagneCatalogue.shopTaxonomy.visibleOptions, expectedShopTaxonomy, "Champagne Bohemia must use the same Shop taxonomy contract");
+assert.ok([...productKernel.products, ...champagneCatalogue.products].every((product) => product.shopTypes?.length), "Every Shop product must carry the Notion-backed taxonomy projection");
+const wolfordTights = productKernel.products.find((product) => product.id === "JB-0069");
+assert.ok(wolfordTights?.shopTypes.includes("hosiery"), "Wolford tights must appear under hosiery");
+assert.ok(!wolfordTights?.shopTypes.includes("leggings"), "Wolford tights must not also appear under leggings");
 const emilioProduct = productKernel.products.find((product) => product.brand === "Emilio Cavallini");
 assert.equal(emilioProduct?.retailerUrl, "https://www.emiliocavallini.com/en/engeneered-body.html", "Emilio Cavallini must retain Ben's exact approved product URL");
 assert.equal(emilioProduct?.metadataStatus, "Metadata ready", "The Emilio catalogue card must use the retailer-verified metadata");
@@ -341,6 +372,9 @@ assert.match(shopScript, /dataset\.shopTheme \|\| "night"/, "Shop script fallbac
 assert.equal((shop.match(/data-filter-category=/g) || []).length, 6, "James Bondage edit must expose the six restrained form filters");
 assert.match(shop, /href="#shop-about">about<\/a>[\s\S]*data-shop-menu[\s\S]*href="#giving-back">giving back<\/a>[\s\S]*href="#sex-ed">sex ed<\/a>/i, "Shop masthead must use the approved About / Shop / Giving Back / Sex Ed hierarchy");
 assert.equal((shop.match(/data-shop-catalogue-type=/g) || []).length, 6, "Shop menu must expose the six functional type routes");
+for (const [value, label] of expectedShopTaxonomy.slice(0, 5).map(({ value, label }) => [value, label])) {
+  assert.ok(shop.includes(`href="#catalogue/all/type/${value}" data-shop-catalogue-type="${value}">${label}</a>`), `Shop menu must expose the broad ${label} route`);
+}
 for (const priorityBrand of ["eres", "bordelle", "wardrobenyc", "annies-ibiza", "iris-van-herpen", "champagne-bohemia"]) {
   assert.match(shop, new RegExp(`href="#catalogue/${priorityBrand}"`, "i"), `Shop menu must expose priority brand ${priorityBrand}`);
 }
@@ -357,6 +391,10 @@ assert.match(shop, /data-catalogue-editorial-header/, "ERES catalogue must open 
 assert.match(shop, /data-shop-product-dialog/, "Catalogue must expose the quiet expanded product view");
 assert.match(shop, /data-shop-product-dialog-description/, "Expanded product view must prioritize retailer-sourced product context");
 assert.match(shop, /data-catalogue-search[\s\S]*data-catalogue-brand[\s\S]*data-catalogue-type[\s\S]*data-catalogue-colour[\s\S]*data-catalogue-sort/, "Combined catalogue must expose quiet search, brand, product type, colour and sort controls");
+assert.match(shop, /<span>category \/ type<\/span><select data-catalogue-type aria-label="Shop by category or product type">/, "Shop taxonomy control must use the approved category / type label");
+assert.match(shopScript, /catalogueKernel\.shopTaxonomy\?\.visibleOptions[\s\S]*all categories \/ types[\s\S]*type\.value, type\.label/, "Shop must render the exact ordered taxonomy contract from the Tensor projection");
+assert.match(shopScript, /product\.shopTypes\.includes\(activeCatalogueType\)/, "Shop category filtering must use the synced taxonomy values");
+assert.match(shopScript, /validType[\s\S]*shopTaxonomy\?\.visibleOptions\?\.some[\s\S]*activeCatalogueType = validType \? route\.type : "all"/, "Unknown and legacy taxonomy routes must fail closed to the full edit");
 assert.match(shop, /type="search"[^>]*aria-label="Search the catalogue"[^>]*autocomplete="off"/, "Catalogue search must be accessible without noisy search chrome");
 assert.match(shop, /shop-catalogue-filter-v1\.js\?v=shop-search-colour-3/, "Shop must load the current deterministic search and colour module before the catalogue");
 assert.match(shop, /price \/ low to high[\s\S]*price \/ high to low/, "Combined catalogue must expose both price sort directions");

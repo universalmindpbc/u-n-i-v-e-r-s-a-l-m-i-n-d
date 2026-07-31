@@ -46,6 +46,17 @@ function parseForms(value) {
   return ["swim"];
 }
 
+function parseShopTypes(value) {
+  try {
+    const parsed = JSON.parse(value || "[]");
+    if (Array.isArray(parsed) && parsed.length) {
+      const labelToValue = new Map((kernel.shopTaxonomy?.visibleOptions || []).map((option) => [option.label, option.value]));
+      return parsed.map((label) => labelToValue.get(label)).filter(Boolean);
+    }
+  } catch {}
+  return [];
+}
+
 function priceLabel(product) {
   const amount = Number(product["Price AUD"]);
   if (!Number.isFinite(amount)) return "";
@@ -79,6 +90,7 @@ for (const notionProduct of source.products) {
     name: notionProduct.Product,
     productType: notionProduct["Product Type"] || "",
     forms: parseForms(notionProduct.Forms),
+    shopTypes: parseShopTypes(notionProduct["Shop Taxonomy"]),
     retailerUrl: notionProduct["Retailer URL"],
     canonicalUrl,
     sourceOccurrences: 1,
@@ -102,6 +114,7 @@ for (const notionProduct of source.products) {
     forwardFacing: notionProduct["Forward-facing"] === "Yes",
     notionPageId: notionProduct.id,
   });
+  if (!additions.at(-1).shopTypes.length) throw new Error(`Missing Shop Taxonomy: ${canonicalUrl}`);
   existingIds.add(id);
   existingUrls.add(canonicalUrl);
 }

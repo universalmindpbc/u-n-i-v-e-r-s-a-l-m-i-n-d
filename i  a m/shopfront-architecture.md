@@ -56,6 +56,14 @@ Possible record layers:
 
 The online tensor would be a versioned, machine-readable projection of approved Notion records—not a second uncontrolled source of truth. Product placement logic could then rank or sequence approved candidates while preserving editorial diversity and providing an understandable reason for the ordering.
 
+## Controlled Shop category / type taxonomy
+
+The customer-facing category / type control is the ordered `jb-shop-taxonomy-v1` projection of the Notion Fashion Tensor's `Shop Taxonomy` field. Its exact public vocabulary is: lingerie (all), swimwear (all), athleisure (all), ready to wear (all), haute couture (all), bra, brief, bodysuit, hosiery, robe, after dark, swimsuit, bikini, rash vest, coverup, jumpsuit, dress, shorts, pants, leggings, crop and accessories. Products can hold more than one controlled value so a bikini can appear in both swimwear (all) and bikini without duplicating its canonical record.
+
+The runtime kernels preserve these values in `shopTypes`; the Shop renders the dropdown from the kernel's ordered taxonomy contract rather than reconstructing options from legacy Forms or Product Type values. Notion remains authoritative, the two product kernels are its fail-closed online projection, and every listed product must have at least one controlled value. New intake is incomplete until Notion, the relevant product kernel and staging filtering agree.
+
+Specific product evidence takes precedence when neighbouring categories could overlap: tights, stockings, socks and explicit hosiery belong to hosiery rather than leggings. Other catalogue edge cases can be corrected in the same Notion-backed field without changing the public vocabulary.
+
 ## Search and controlled colour layer
 
 Search and colour are quiet catalogue-navigation tools, not discovery engines. The desktop catalogue holds one compact sticky rail in this order: search, brand, type, colour, sort and result count. On mobile, search spans the rail above the two-column controls. There is no search drawer, predictive overlay, fuzzy recommendation or decorative icon chrome.

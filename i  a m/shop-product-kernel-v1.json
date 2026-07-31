@@ -357,7 +357,8 @@
       "colourSourceUrl": "https://www.eresparis.com/eu/en/lingerie/60650-00996.html",
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
-      "colourTaxonomyVersion": "jb-colour-taxonomy-v1"
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": ["lingerie-all","bra"]
     },
     {
       "id": "JB-0002",
@@ -396,7 +397,8 @@
       "colourSourceUrl": "https://www.eresparis.com/us/en-US/lingerie/60653-01062.html",
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
-      "colourTaxonomyVersion": "jb-colour-taxonomy-v1"
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": ["lingerie-all","bra"]
     },
     {
       "id": "JB-0003",
@@ -435,7 +437,8 @@
       "colourSourceUrl": "https://www.eresparis.com/eu/en/lingerie/60651-01062.html",
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
-      "colourTaxonomyVersion": "jb-colour-taxonomy-v1"
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": ["lingerie-all","bra"]
     },
     {
       "id": "JB-0004",
@@ -474,7 +477,8 @@
       "colourSourceUrl": "https://www.eresparis.com/eu/en/lingerie/60953-00996.html",
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
-      "colourTaxonomyVersion": "jb-colour-taxonomy-v1"
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": ["lingerie-all","bra"]
     },
     {
       "id": "JB-0005",
@@ -513,7 +517,8 @@
       "colourSourceUrl": "https://www.eresparis.com/eu/en/lingerie/60973-0022.html",
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
-      "colourTaxonomyVersion": "jb-colour-taxonomy-v1"
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": ["lingerie-all","bra"]
     },
     {
       "id": "JB-0006",
@@ -552,7 +557,8 @@
       "colourSourceUrl": "https://www.eresparis.com/eu/en/lingerie/60973-00996.html",
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
-      "colourTaxonomyVersion": "jb-colour-taxonomy-v1"
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": ["lingerie-all","bra"]
     },
     {
       "id": "JB-0007",
@@ -591,7 +597,8 @@
       "colourSourceUrl": "https://www.eresparis.com/eu/en/lingerie/60954-00996.html",
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
-      "colourTaxonomyVersion": "jb-colour-taxonomy-v1"
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": ["lingerie-all","bra"]
     },
     {
       "id": "JB-0008",
@@ -630,7 +637,8 @@
       "colourSourceUrl": "https://www.eresparis.com/eu/en/lingerie/612415-00996.html",
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
-      "colourTaxonomyVersion": "jb-colour-taxonomy-v1"
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": ["lingerie-all","brief"]
     },
     {
       "id": "JB-0009",
@@ -669,7 +677,8 @@
       "colourSourceUrl": "https://www.eresparis.com/eu/en/lingerie/60970-00996.html",
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
-      "colourTaxonomyVersion": "jb-colour-taxonomy-v1"
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": ["lingerie-all","bra"]
     },
     {
       "id": "JB-0010",
@@ -708,7 +717,8 @@
       "colourSourceUrl": "https://www.eresparis.com/eu/en/lingerie/612416-00996.html",
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
-      "colourTaxonomyVersion": "jb-colour-taxonomy-v1"
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": ["lingerie-all","brief"]
     },
     {
       "id": "JB-0011",
@@ -747,7 +757,8 @@
       "colourSourceUrl": "https://www.eresparis.com/eu/en/lingerie/60973-01062.html",
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
-      "colourTaxonomyVersion": "jb-colour-taxonomy-v1"
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": ["lingerie-all","bra"]
     },
     {
       "id": "JB-0012",
@@ -786,7 +797,8 @@
       "colourSourceUrl": "https://www.eresparis.com/eu/en/lingerie/60953-01062.html",
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
-      "colourTaxonomyVersion": "jb-colour-taxonomy-v1"
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": ["lingerie-all","bra"]
     },
     {
       "id": "JB-0014",
@@ -825,7 +837,8 @@
       "colourSourceUrl": "https://www.eresparis.com/eu/en/lingerie/60985-01618.html",
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
-      "colourTaxonomyVersion": "jb-colour-taxonomy-v1"
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": ["lingerie-all","bra"]
     },
     {
       "id": "JB-0015",
@@ -864,7 +877,8 @@
       "colourSourceUrl": "https://www.eresparis.com/eu/en/lingerie/60985-01623.html",
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
-      "colourTaxonomyVersion": "jb-colour-taxonomy-v1"
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": ["lingerie-all","bra"]
     },
     {
       "id": "JB-0016",
@@ -903,7 +917,8 @@
       "colourSourceUrl": "https://www.eresparis.com/eu/en/lingerie/612518-01605.html",
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
-      "colourTaxonomyVersion": "jb-colour-taxonomy-v1"
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": ["lingerie-all","brief"]
     },
     {
       "id": "JB-0017",
@@ -943,7 +958,8 @@
       "colourSourceUrl": "https://www.eresparis.com/eu/en/lingerie/612519-01605.html",
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
-      "colourTaxonomyVersion": "jb-colour-taxonomy-v1"
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": ["lingerie-all","brief"]
     },
     {
       "id": "JB-0018",
@@ -983,7 +999,8 @@
       "colourSourceUrl": "https://www.eresparis.com/eu/en/lingerie/60986-01562.html",
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
-      "colourTaxonomyVersion": "jb-colour-taxonomy-v1"
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": ["lingerie-all","bra"]
     },
     {
       "id": "JB-0019",
@@ -1023,7 +1040,8 @@
       "colourSourceUrl": "https://www.eresparis.com/eu/en/lingerie/612519-01562.html",
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
-      "colourTaxonomyVersion": "jb-colour-taxonomy-v1"
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": ["lingerie-all","brief"]
     },
     {
       "id": "JB-0020",
@@ -1063,7 +1081,8 @@
       "colourSourceUrl": "https://www.eresparis.com/eu/en/lingerie/60985-01562.html",
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
-      "colourTaxonomyVersion": "jb-colour-taxonomy-v1"
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": ["lingerie-all","bra"]
     },
     {
       "id": "JB-0021",
@@ -1103,7 +1122,8 @@
       "colourSourceUrl": "https://www.eresparis.com/eu/en/lingerie/612603-0022.html",
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
-      "colourTaxonomyVersion": "jb-colour-taxonomy-v1"
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": ["lingerie-all","brief"]
     },
     {
       "id": "JB-0022",
@@ -1143,7 +1163,8 @@
       "colourSourceUrl": "https://www.eresparis.com/eu/en/lingerie/60986-01548.html",
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
-      "colourTaxonomyVersion": "jb-colour-taxonomy-v1"
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": ["lingerie-all","bra"]
     },
     {
       "id": "JB-0023",
@@ -1182,7 +1203,8 @@
       "colourSourceUrl": "https://www.eresparis.com/eu/en/lingerie/612606-01566.html",
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
-      "colourTaxonomyVersion": "jb-colour-taxonomy-v1"
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": ["lingerie-all","brief"]
     },
     {
       "id": "JB-0024",
@@ -1222,7 +1244,8 @@
       "colourSourceUrl": "https://www.eresparis.com/eu/en/lingerie/612606-01547.html",
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
-      "colourTaxonomyVersion": "jb-colour-taxonomy-v1"
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": ["lingerie-all","brief"]
     },
     {
       "id": "JB-0025",
@@ -1262,7 +1285,8 @@
       "colourSourceUrl": "https://www.eresparis.com/eu/en/lingerie/60997-1001.html",
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
-      "colourTaxonomyVersion": "jb-colour-taxonomy-v1"
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": ["lingerie-all","bra"]
     },
     {
       "id": "JB-0026",
@@ -1302,7 +1326,8 @@
       "colourSourceUrl": "https://www.eresparis.com/eu/en/lingerie/60985-01516.html",
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
-      "colourTaxonomyVersion": "jb-colour-taxonomy-v1"
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": ["lingerie-all","bra"]
     },
     {
       "id": "JB-0027",
@@ -1342,7 +1367,8 @@
       "colourSourceUrl": "https://www.eresparis.com/eu/en/lingerie/612519-01516.html",
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
-      "colourTaxonomyVersion": "jb-colour-taxonomy-v1"
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": ["lingerie-all","brief"]
     },
     {
       "id": "JB-0028",
@@ -1382,7 +1408,8 @@
       "colourSourceUrl": "https://www.eresparis.com/eu/en/lingerie/60986-01516.html",
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
-      "colourTaxonomyVersion": "jb-colour-taxonomy-v1"
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": ["lingerie-all","bra"]
     },
     {
       "id": "JB-0029",
@@ -1422,7 +1449,8 @@
       "colourSourceUrl": "https://www.eresparis.com/eu/en/swimwear/012646-01624.html",
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
-      "colourTaxonomyVersion": "jb-colour-taxonomy-v1"
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": ["swimwear-all","swimsuit"]
     },
     {
       "id": "JB-0030",
@@ -1462,7 +1490,8 @@
       "colourSourceUrl": "https://www.eresparis.com/eu/en/swimwear/012643-01627.html",
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
-      "colourTaxonomyVersion": "jb-colour-taxonomy-v1"
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": ["swimwear-all","swimsuit"]
     },
     {
       "id": "JB-0031",
@@ -1502,7 +1531,8 @@
       "colourSourceUrl": "https://www.eresparis.com/eu/en/swimwear/012642-01625.html",
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
-      "colourTaxonomyVersion": "jb-colour-taxonomy-v1"
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": ["swimwear-all","swimsuit"]
     },
     {
       "id": "JB-0032",
@@ -1542,7 +1572,8 @@
       "colourSourceUrl": "https://www.eresparis.com/eu/en/swimwear/032631-01627.html",
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
-      "colourTaxonomyVersion": "jb-colour-taxonomy-v1"
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": ["swimwear-all","bikini"]
     },
     {
       "id": "JB-0033",
@@ -1582,7 +1613,8 @@
       "colourSourceUrl": "https://www.eresparis.com/eu/en/swimwear/012641-01618.html",
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
-      "colourTaxonomyVersion": "jb-colour-taxonomy-v1"
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": ["swimwear-all","swimsuit"]
     },
     {
       "id": "JB-0034",
@@ -1622,7 +1654,8 @@
       "colourSourceUrl": "https://www.eresparis.com/eu/en/swimwear/042631-01618.html",
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
-      "colourTaxonomyVersion": "jb-colour-taxonomy-v1"
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": ["swimwear-all","brief"]
     },
     {
       "id": "JB-0035",
@@ -1663,7 +1696,8 @@
       "colourSourceUrl": "https://www.eresparis.com/eu/en/swimwear/012627-01598.html",
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
-      "colourTaxonomyVersion": "jb-colour-taxonomy-v1"
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": ["swimwear-all","swimsuit"]
     },
     {
       "id": "JB-0036",
@@ -1703,7 +1737,8 @@
       "colourSourceUrl": "https://www.eresparis.com/eu/en/swimwear/011402-01605.html",
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
-      "colourTaxonomyVersion": "jb-colour-taxonomy-v1"
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": ["swimwear-all","swimsuit"]
     },
     {
       "id": "JB-0037",
@@ -1743,7 +1778,8 @@
       "colourSourceUrl": "https://www.eresparis.com/eu/en/swimwear/011401-01563.html",
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
-      "colourTaxonomyVersion": "jb-colour-taxonomy-v1"
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": ["swimwear-all","swimsuit"]
     },
     {
       "id": "JB-0038",
@@ -1786,7 +1822,8 @@
       "colourSourceUrl": "https://fashion.mugler.com/collections/bodysuits/products/black-tuxedo-bodysuit",
       "colourSourceType": "Retailer page",
       "colourCheckedAt": "2026-07-31",
-      "colourTaxonomyVersion": "jb-colour-taxonomy-v1"
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": ["ready-to-wear-all","bodysuit","after-dark"]
     },
     {
       "id": "JB-0039",
@@ -1829,7 +1866,8 @@
       "colourSourceUrl": "https://fashion.mugler.com/collections/bodysuits/products/off-white-knit-buttoned-bodyshort",
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
-      "colourTaxonomyVersion": "jb-colour-taxonomy-v1"
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": ["ready-to-wear-all","bodysuit","after-dark"]
     },
     {
       "id": "JB-0040",
@@ -1872,7 +1910,8 @@
       "colourSourceUrl": "https://fashion.mugler.com/collections/bodysuits/products/black-sleeveless-tuxedo-bodysuit",
       "colourSourceType": "Retailer page",
       "colourCheckedAt": "2026-07-31",
-      "colourTaxonomyVersion": "jb-colour-taxonomy-v1"
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": ["ready-to-wear-all","bodysuit","after-dark"]
     },
     {
       "id": "JB-0041",
@@ -1915,7 +1954,8 @@
       "colourSourceUrl": "https://fashion.mugler.com/collections/bodysuits/products/brown-knit-buttoned-bodyshort",
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
-      "colourTaxonomyVersion": "jb-colour-taxonomy-v1"
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": ["ready-to-wear-all","bodysuit","after-dark"]
     },
     {
       "id": "JB-0042",
@@ -1957,7 +1997,8 @@
       "colourSourceUrl": "https://fashion.mugler.com/collections/view-all/products/cashmere-v-neck-knit-top-1",
       "colourSourceType": "Retailer page",
       "colourCheckedAt": "2026-07-31",
-      "colourTaxonomyVersion": "jb-colour-taxonomy-v1"
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": ["ready-to-wear-all","after-dark"]
     },
     {
       "id": "JB-0043",
@@ -1999,7 +2040,8 @@
       "colourSourceUrl": "https://fashion.mugler.com/collections/view-all/products/off-white-ribbed-tank-top-1",
       "colourSourceType": "Retailer page",
       "colourCheckedAt": "2026-07-31",
-      "colourTaxonomyVersion": "jb-colour-taxonomy-v1"
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": ["ready-to-wear-all","after-dark"]
     },
     {
       "id": "JB-0045",
@@ -2043,7 +2085,8 @@
       "colourSourceUrl": "https://www.laperla.com/en-fe/products/when-summer-comes-slip-donna-ss-rosso-05p0059150f214",
       "colourSourceType": "Retailer page",
       "colourCheckedAt": "2026-07-31",
-      "colourTaxonomyVersion": "jb-colour-taxonomy-v1"
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": ["lingerie-all","swimwear-all","brief","after-dark","bikini"]
     },
     {
       "id": "JB-0046",
@@ -2086,7 +2129,8 @@
       "colourSourceUrl": "https://www.laperla.com/en-fe/products/shape-allure-reggiseno-ss-bianco-01l9058450031?pr_prod_strat=jac&pr_rec_id=ee904fbed&pr_rec_pid=15923794870606&pr_ref_pid=15883045863758&pr_seq=uniform",
       "colourSourceType": "Retailer page",
       "colourCheckedAt": "2026-07-31",
-      "colourTaxonomyVersion": "jb-colour-taxonomy-v1"
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": ["lingerie-all","bra","after-dark"]
     },
     {
       "id": "JB-0047",
@@ -2130,7 +2174,8 @@
       "colourSourceUrl": "https://www.laperla.com/en-fe/products/when-summer-comes-slip-donna-ss-nero-05p0059150b010?pr_prod_strat=e5_desc&pr_rec_id=ee904fbed&pr_rec_pid=15883045470542&pr_ref_pid=15883045863758&pr_seq=uniform",
       "colourSourceType": "Retailer page",
       "colourCheckedAt": "2026-07-31",
-      "colourTaxonomyVersion": "jb-colour-taxonomy-v1"
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": ["lingerie-all","swimwear-all","brief","after-dark","bikini"]
     },
     {
       "id": "JB-0048",
@@ -2174,7 +2219,8 @@
       "colourSourceUrl": "https://www.laperla.com/en-fe/products/when-summer-comes-slip-donna-ss-bianco-05p0059150a001?pr_prod_strat=e5_desc&pr_rec_id=ee904fbed&pr_rec_pid=15883045175630&pr_ref_pid=15883045863758&pr_seq=uniform",
       "colourSourceType": "Retailer page",
       "colourCheckedAt": "2026-07-31",
-      "colourTaxonomyVersion": "jb-colour-taxonomy-v1"
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": ["lingerie-all","swimwear-all","brief","after-dark","bikini"]
     },
     {
       "id": "JB-0049",
@@ -2218,7 +2264,8 @@
       "colourSourceUrl": "https://www.laperla.com/en-fe/products/when-summer-comes-reggiseno-ss-rosso-04p0059110f214?pr_prod_strat=jac&pr_rec_id=ee904fbed&pr_rec_pid=15883041866062&pr_ref_pid=15883045863758&pr_seq=uniform",
       "colourSourceType": "Retailer page",
       "colourCheckedAt": "2026-07-31",
-      "colourTaxonomyVersion": "jb-colour-taxonomy-v1"
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": ["lingerie-all","swimwear-all","after-dark","bikini"]
     },
     {
       "id": "JB-0050",
@@ -2262,7 +2309,8 @@
       "colourSourceUrl": "https://www.laperla.com/en-fe/products/when-summer-comes-costume-ss-bianco-06p0061170a001",
       "colourSourceType": "Retailer page",
       "colourCheckedAt": "2026-07-31",
-      "colourTaxonomyVersion": "jb-colour-taxonomy-v1"
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": ["lingerie-all","swimwear-all","after-dark","swimsuit"]
     },
     {
       "id": "JB-0051",
@@ -2306,7 +2354,8 @@
       "colourSourceUrl": "https://www.laperla.com/en-fe/products/when-summer-comes-slip-donna-ss-rosso-05p0059120f214",
       "colourSourceType": "Retailer page",
       "colourCheckedAt": "2026-07-31",
-      "colourTaxonomyVersion": "jb-colour-taxonomy-v1"
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": ["lingerie-all","swimwear-all","brief","after-dark","bikini"]
     },
     {
       "id": "JB-0052",
@@ -2349,7 +2398,8 @@
       "colourSourceUrl": "https://www.laperla.com/en-fe/products/when-summer-comes-slip-donna-ss-bianco-05p0059120a001?pr_prod_strat=e5_desc&pr_rec_id=3eac91357&pr_rec_pid=15883043963214&pr_ref_pid=15883044487502&pr_seq=uniform",
       "colourSourceType": "Retailer page",
       "colourCheckedAt": "2026-07-31",
-      "colourTaxonomyVersion": "jb-colour-taxonomy-v1"
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": ["lingerie-all","bra","brief","after-dark"]
     },
     {
       "id": "JB-0053",
@@ -2392,7 +2442,8 @@
       "colourSourceUrl": "https://www.laperla.com/en-fe/products/shape-allure-reggiseno-ss-beige-01l9058450030",
       "colourSourceType": "Retailer page",
       "colourCheckedAt": "2026-07-31",
-      "colourTaxonomyVersion": "jb-colour-taxonomy-v1"
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": ["lingerie-all","bra","after-dark"]
     },
     {
       "id": "JB-0054",
@@ -2435,7 +2486,8 @@
       "colourSourceUrl": "https://www.laperla.com/en-fe/products/shape-allure-bustier-ss-beige-09l9058460030",
       "colourSourceType": "Retailer page",
       "colourCheckedAt": "2026-07-31",
-      "colourTaxonomyVersion": "jb-colour-taxonomy-v1"
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": ["lingerie-all","bra","after-dark"]
     },
     {
       "id": "JB-0055",
@@ -2478,7 +2530,8 @@
       "colourSourceUrl": "https://www.laperla.com/en-fe/products/shape-allure-cintura-ss-beige-02l00170160030",
       "colourSourceType": "Retailer page",
       "colourCheckedAt": "2026-07-31",
-      "colourTaxonomyVersion": "jb-colour-taxonomy-v1"
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": ["lingerie-all","after-dark","accessories"]
     },
     {
       "id": "JB-0056",
@@ -2521,7 +2574,8 @@
       "colourSourceUrl": "https://www.laperla.com/en-fe/products/shape-allure-reggiseno-ss-beige-01l9058920030",
       "colourSourceType": "Retailer page",
       "colourCheckedAt": "2026-07-31",
-      "colourTaxonomyVersion": "jb-colour-taxonomy-v1"
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": ["lingerie-all","bra","after-dark"]
     },
     {
       "id": "JB-0057",
@@ -2564,7 +2618,8 @@
       "colourSourceUrl": "https://www.laperla.com/en-fe/products/ambra-reggiseno-ss-giallo-01p004645d103",
       "colourSourceType": "Retailer page",
       "colourCheckedAt": "2026-07-31",
-      "colourTaxonomyVersion": "jb-colour-taxonomy-v1"
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": ["lingerie-all","bra","after-dark"]
     },
     {
       "id": "JB-0059",
@@ -2608,7 +2663,8 @@
       "colourSourceUrl": "https://www.laperla.com/en-fe/products/maison-contouring-bodysuit-ss-nero-03l004316b010",
       "colourSourceType": "Retailer page",
       "colourCheckedAt": "2026-07-31",
-      "colourTaxonomyVersion": "jb-colour-taxonomy-v1"
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": ["lingerie-all","ready-to-wear-all","bodysuit","after-dark"]
     },
     {
       "id": "JB-0060",
@@ -2652,7 +2708,8 @@
       "colourSourceUrl": "https://www.laperla.com/en-fe/products/silk-short-ss-nero-10l00202900002",
       "colourSourceType": "Retailer page",
       "colourCheckedAt": "2026-07-31",
-      "colourTaxonomyVersion": "jb-colour-taxonomy-v1"
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": ["lingerie-all","ready-to-wear-all","after-dark","shorts"]
     },
     {
       "id": "JB-0061",
@@ -2696,7 +2753,8 @@
       "colourSourceUrl": "https://www.laperla.com/en-fe/products/silk-vestaglia-ss-nero-11l0020293co0002",
       "colourSourceType": "Retailer page",
       "colourCheckedAt": "2026-07-31",
-      "colourTaxonomyVersion": "jb-colour-taxonomy-v1"
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": ["lingerie-all","ready-to-wear-all","robe","after-dark"]
     },
     {
       "id": "JB-0062",
@@ -2740,7 +2798,8 @@
       "colourSourceUrl": "https://www.laperla.com/en-fe/products/angel-kiss-short-ss-fantasia-10p0056950w271",
       "colourSourceType": "Retailer page",
       "colourCheckedAt": "2026-07-31",
-      "colourTaxonomyVersion": "jb-colour-taxonomy-v1"
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": ["lingerie-all","ready-to-wear-all","after-dark","shorts"]
     },
     {
       "id": "JB-0063",
@@ -2784,7 +2843,8 @@
       "colourSourceUrl": "https://www.laperla.com/en-fe/products/souple-short-ss-nero-10l00210560002",
       "colourSourceType": "Retailer page",
       "colourCheckedAt": "2026-07-31",
-      "colourTaxonomyVersion": "jb-colour-taxonomy-v1"
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": ["lingerie-all","ready-to-wear-all","after-dark","shorts"]
     },
     {
       "id": "JB-0064",
@@ -2828,7 +2888,8 @@
       "colourSourceUrl": "https://www.laperla.com/en-fe/products/midnight-botanica-body-ss-bianco-03p005568a018",
       "colourSourceType": "Retailer page",
       "colourCheckedAt": "2026-07-31",
-      "colourTaxonomyVersion": "jb-colour-taxonomy-v1"
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": ["lingerie-all","ready-to-wear-all","bodysuit","after-dark"]
     },
     {
       "id": "JB-0065",
@@ -2871,7 +2932,8 @@
       "colourSourceUrl": "https://fleurofengland.com/en-au/products/onyx-silk-robe",
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
-      "colourTaxonomyVersion": "jb-colour-taxonomy-v1"
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": ["lingerie-all","robe","after-dark"]
     },
     {
       "id": "JB-0066",
@@ -2914,7 +2976,8 @@
       "colourSourceUrl": "https://fleurofengland.com/en-au/products/signature-silk-robe-black",
       "colourSourceType": "Retailer page",
       "colourCheckedAt": "2026-07-31",
-      "colourTaxonomyVersion": "jb-colour-taxonomy-v1"
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": ["lingerie-all","robe","after-dark"]
     },
     {
       "id": "JB-0067",
@@ -2957,7 +3020,8 @@
       "colourSourceUrl": "https://fleurofengland.com/en-au/products/audrey-silk-robe",
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
-      "colourTaxonomyVersion": "jb-colour-taxonomy-v1"
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": ["lingerie-all","robe","after-dark"]
     },
     {
       "id": "JB-0068",
@@ -2991,7 +3055,8 @@
       "priceValue": 499,
       "currency": "AUD",
       "subjectPresent": true,
-      "forwardFacing": true
+      "forwardFacing": true,
+      "shopTypes": ["lingerie-all","bra","brief","after-dark"]
     },
     {
       "id": "JB-0069",
@@ -3025,7 +3090,8 @@
       "priceValue": 65,
       "currency": "AUD",
       "subjectPresent": false,
-      "forwardFacing": false
+      "forwardFacing": false,
+      "shopTypes": ["ready-to-wear-all","hosiery"]
     },
     {
       "id": "JB-0070",
@@ -3058,7 +3124,8 @@
       "priceValue": 650,
       "currency": "AUD",
       "subjectPresent": true,
-      "forwardFacing": true
+      "forwardFacing": true,
+      "shopTypes": ["ready-to-wear-all","bodysuit"]
     },
     {
       "id": "JB-0071",
@@ -3091,7 +3158,8 @@
       "priceValue": 435,
       "currency": "AUD",
       "subjectPresent": true,
-      "forwardFacing": true
+      "forwardFacing": true,
+      "shopTypes": ["ready-to-wear-all","bodysuit"]
     },
     {
       "id": "JB-0072",
@@ -3124,7 +3192,8 @@
       "priceValue": 415,
       "currency": "AUD",
       "subjectPresent": true,
-      "forwardFacing": true
+      "forwardFacing": true,
+      "shopTypes": ["ready-to-wear-all","bodysuit"]
     },
     {
       "id": "JB-0073",
@@ -3158,7 +3227,8 @@
       "priceValue": 135,
       "currency": "AUD",
       "subjectPresent": true,
-      "forwardFacing": true
+      "forwardFacing": true,
+      "shopTypes": ["lingerie-all","ready-to-wear-all","brief"]
     },
     {
       "id": "JB-0074",
@@ -3191,7 +3261,8 @@
       "priceValue": 2189,
       "currency": "AUD",
       "subjectPresent": true,
-      "forwardFacing": true
+      "forwardFacing": true,
+      "shopTypes": ["lingerie-all","brief"]
     },
     {
       "id": "JB-0075",
@@ -3222,7 +3293,8 @@
       "priceValue": 4377,
       "currency": "AUD",
       "subjectPresent": true,
-      "forwardFacing": true
+      "forwardFacing": true,
+      "shopTypes": ["ready-to-wear-all","bra"]
     },
     {
       "id": "JB-0076",
@@ -3253,7 +3325,8 @@
       "priceValue": 6955,
       "currency": "AUD",
       "subjectPresent": true,
-      "forwardFacing": true
+      "forwardFacing": true,
+      "shopTypes": ["ready-to-wear-all","dress"]
     },
     {
       "id": "JB-0077",
@@ -3284,7 +3357,8 @@
       "priceValue": 3599,
       "currency": "AUD",
       "subjectPresent": true,
-      "forwardFacing": true
+      "forwardFacing": true,
+      "shopTypes": ["ready-to-wear-all"]
     },
     {
       "id": "JB-0078",
@@ -3315,7 +3389,8 @@
       "priceValue": 10700,
       "currency": "AUD",
       "subjectPresent": true,
-      "forwardFacing": true
+      "forwardFacing": true,
+      "shopTypes": ["ready-to-wear-all","dress"]
     },
     {
       "id": "JB-0079",
@@ -3348,7 +3423,8 @@
       "priceValue": 1654,
       "currency": "AUD",
       "subjectPresent": true,
-      "forwardFacing": true
+      "forwardFacing": true,
+      "shopTypes": ["ready-to-wear-all","hosiery"]
     },
     {
       "id": "JB-0080",
@@ -3388,7 +3464,8 @@
       "colourSourceUrl": "https://anniesibiza.com/collections/bridal/products/angels-of-florence-veil",
       "colourSourceType": "Retailer page",
       "colourCheckedAt": "2026-07-31",
-      "colourTaxonomyVersion": "jb-colour-taxonomy-v1"
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": ["accessories"]
     },
     {
       "id": "JB-0081",
@@ -3419,7 +3496,8 @@
       "priceValue": 4377,
       "currency": "AUD",
       "subjectPresent": true,
-      "forwardFacing": false
+      "forwardFacing": false,
+      "shopTypes": ["ready-to-wear-all","dress"]
     },
     {
       "id": "JB-0082",
@@ -3450,7 +3528,8 @@
       "priceValue": 3492,
       "currency": "AUD",
       "subjectPresent": true,
-      "forwardFacing": false
+      "forwardFacing": false,
+      "shopTypes": ["accessories"]
     },
     {
       "id": "JB-0083",
@@ -3481,7 +3560,8 @@
       "priceValue": 7743,
       "currency": "AUD",
       "subjectPresent": true,
-      "forwardFacing": true
+      "forwardFacing": true,
+      "shopTypes": ["ready-to-wear-all","dress"]
     },
     {
       "id": "JB-0084",
@@ -3521,7 +3601,8 @@
       "colourSourceUrl": "https://anniesibiza.com/collections/clio-peppiatt-x-annies-ibiza/products/achilles-mini-dress-aurous",
       "colourSourceType": "Retailer page",
       "colourCheckedAt": "2026-07-31",
-      "colourTaxonomyVersion": "jb-colour-taxonomy-v1"
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": ["ready-to-wear-all","dress"]
     },
     {
       "id": "JB-0086",
@@ -3561,7 +3642,8 @@
       "colourSourceUrl": "https://www.pucci.com/en-au/products/iride-print-short-dress-6hjg356h757011",
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
-      "colourTaxonomyVersion": "jb-colour-taxonomy-v1"
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": ["ready-to-wear-all","dress"]
     },
     {
       "id": "JB-0087",
@@ -3603,7 +3685,8 @@
       "colourSourceUrl": "https://www.pucci.com/en-au/products/vivara-print-triangle-bikini-top-6hmx096h895p20",
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
-      "colourTaxonomyVersion": "jb-colour-taxonomy-v1"
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": ["swimwear-all","bikini"]
     },
     {
       "id": "JB-0088",
@@ -3645,7 +3728,8 @@
       "colourSourceUrl": "https://www.pucci.com/en-au/products/vivara-print-cross-strap-swimsuit-6hmc316h895p20",
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
-      "colourTaxonomyVersion": "jb-colour-taxonomy-v1"
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": ["swimwear-all","swimsuit"]
     },
     {
       "id": "JB-0089",
@@ -3688,7 +3772,8 @@
       "colourSourceUrl": "https://eu.bordelle.co.uk/products/signature-silk-longline-bodice-bra-cream?variant=43656644559020",
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
-      "colourTaxonomyVersion": "jb-colour-taxonomy-v1"
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": ["lingerie-all","bra","after-dark"]
     },
     {
       "id": "JB-0090",
@@ -3731,7 +3816,8 @@
       "colourSourceUrl": "https://eu.bordelle.co.uk/products/signature-silk-longline-bodice-bra-burnt-red?variant=43656644329644",
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
-      "colourTaxonomyVersion": "jb-colour-taxonomy-v1"
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": ["lingerie-all","bra","after-dark"]
     },
     {
       "id": "JB-0091",
@@ -3774,7 +3860,8 @@
       "colourSourceUrl": "https://eu.bordelle.co.uk/products/signature-silk-longline-bodice-bra-black?variant=43656644067500",
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
-      "colourTaxonomyVersion": "jb-colour-taxonomy-v1"
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": ["lingerie-all","bra","after-dark"]
     },
     {
       "id": "JB-0092",
@@ -3817,7 +3904,8 @@
       "colourSourceUrl": "https://eu.bordelle.co.uk/products/signature-silk-longline-bodice-bra-caramel?variant=55209267265912",
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
-      "colourTaxonomyVersion": "jb-colour-taxonomy-v1"
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": ["lingerie-all","bra","after-dark"]
     },
     {
       "id": "JB-0093",
@@ -3860,7 +3948,8 @@
       "colourSourceUrl": "https://eu.bordelle.co.uk/products/signature-waspie-cream?variant=43656648884396",
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
-      "colourTaxonomyVersion": "jb-colour-taxonomy-v1"
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": ["lingerie-all","ready-to-wear-all","after-dark"]
     },
     {
       "id": "JB-0094",
@@ -3903,7 +3992,8 @@
       "colourSourceUrl": "https://eu.bordelle.co.uk/products/signature-waspie-black?variant=43656648425644",
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
-      "colourTaxonomyVersion": "jb-colour-taxonomy-v1"
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": ["lingerie-all","ready-to-wear-all","after-dark"]
     },
     {
       "id": "JB-0095",
@@ -3946,7 +4036,8 @@
       "colourSourceUrl": "https://eu.bordelle.co.uk/products/signature-waspie-burnt-red?variant=43656648655020",
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
-      "colourTaxonomyVersion": "jb-colour-taxonomy-v1"
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": ["lingerie-all","ready-to-wear-all","after-dark"]
     },
     {
       "id": "JB-0096",
@@ -3989,7 +4080,8 @@
       "colourSourceUrl": "https://eu.bordelle.co.uk/products/signature-angela-dress-cream?variant=43656630075564",
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
-      "colourTaxonomyVersion": "jb-colour-taxonomy-v1"
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": ["lingerie-all","ready-to-wear-all","after-dark","dress"]
     },
     {
       "id": "JB-0097",
@@ -4032,7 +4124,8 @@
       "colourSourceUrl": "https://eu.bordelle.co.uk/products/signature-angela-dress-burnt-red?variant=43656629846188",
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
-      "colourTaxonomyVersion": "jb-colour-taxonomy-v1"
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": ["lingerie-all","ready-to-wear-all","after-dark","dress"]
     },
     {
       "id": "JB-0098",
@@ -4075,7 +4168,8 @@
       "colourSourceUrl": "https://eu.bordelle.co.uk/products/signature-angela-dress-black?variant=43656629649580",
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
-      "colourTaxonomyVersion": "jb-colour-taxonomy-v1"
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": ["lingerie-all","ready-to-wear-all","after-dark","dress"]
     },
     {
       "id": "JB-0099",
@@ -4118,7 +4212,8 @@
       "colourSourceUrl": "https://eu.bordelle.co.uk/products/signature-wide-strap-garters-pair-cream?variant=43656649441452",
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
-      "colourTaxonomyVersion": "jb-colour-taxonomy-v1"
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": ["lingerie-all","after-dark","accessories"]
     },
     {
       "id": "JB-0100",
@@ -4161,7 +4256,8 @@
       "colourSourceUrl": "https://eu.bordelle.co.uk/products/signature-balconette-wire-bra-cream?variant=43656630698156#complete-the-look",
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
-      "colourTaxonomyVersion": "jb-colour-taxonomy-v1"
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": ["lingerie-all","bra","after-dark"]
     },
     {
       "id": "JB-0101",
@@ -4204,7 +4300,8 @@
       "colourSourceUrl": "https://eu.bordelle.co.uk/products/signature-mesh-wrap-suspender-cream?variant=43656639479980",
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
-      "colourTaxonomyVersion": "jb-colour-taxonomy-v1"
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": ["lingerie-all","after-dark","accessories"]
     },
     {
       "id": "JB-0102",
@@ -4247,7 +4344,8 @@
       "colourSourceUrl": "https://eu.bordelle.co.uk/products/signature-mesh-brief-cream?variant=43656633417900",
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
-      "colourTaxonomyVersion": "jb-colour-taxonomy-v1"
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": ["lingerie-all","brief","after-dark"]
     },
     {
       "id": "JB-0103",
@@ -4290,7 +4388,8 @@
       "colourSourceUrl": "https://eu.bordelle.co.uk/products/signature-crop-top-bra-cream?variant=43656631287980#complete-the-look",
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
-      "colourTaxonomyVersion": "jb-colour-taxonomy-v1"
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": ["lingerie-all","ready-to-wear-all","bra","after-dark","crop"]
     },
     {
       "id": "JB-0104",
@@ -4333,7 +4432,8 @@
       "colourSourceUrl": "https://eu.bordelle.co.uk/products/signature-panelled-suspender-brief-cream?variant=43656643281068",
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
-      "colourTaxonomyVersion": "jb-colour-taxonomy-v1"
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": ["lingerie-all","brief","after-dark"]
     },
     {
       "id": "JB-0105",
@@ -4376,7 +4476,8 @@
       "colourSourceUrl": "https://eu.bordelle.co.uk/products/signature-wide-strap-collar-cream?variant=43656649277612",
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
-      "colourTaxonomyVersion": "jb-colour-taxonomy-v1"
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": ["lingerie-all","after-dark","accessories"]
     },
     {
       "id": "JB-0106",
@@ -4419,7 +4520,8 @@
       "colourSourceUrl": "https://eu.bordelle.co.uk/products/siren-ouvert-wire-bra-black?variant=55324698280312#complete-the-look",
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
-      "colourTaxonomyVersion": "jb-colour-taxonomy-v1"
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": ["lingerie-all","bra","after-dark"]
     },
     {
       "id": "JB-0107",
@@ -4462,7 +4564,8 @@
       "colourSourceUrl": "https://eu.bordelle.co.uk/products/signature-strap-body-harness-navy?variant=55522776088952#complete-the-look",
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
-      "colourTaxonomyVersion": "jb-colour-taxonomy-v1"
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": ["lingerie-all","after-dark","accessories"]
     },
     {
       "id": "JB-0108",
@@ -4505,7 +4608,8 @@
       "colourSourceUrl": "https://eu.bordelle.co.uk/products/24k-gold-plated-nipplets-gold?variant=39610673660076",
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
-      "colourTaxonomyVersion": "jb-colour-taxonomy-v1"
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": ["lingerie-all","after-dark","accessories"]
     },
     {
       "id": "JB-0109",
@@ -4548,7 +4652,8 @@
       "colourSourceUrl": "https://eu.bordelle.co.uk/products/signature-ouvert-wire-bra-navy?variant=55522775368056",
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
-      "colourTaxonomyVersion": "jb-colour-taxonomy-v1"
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": ["lingerie-all","bra","after-dark"]
     },
     {
       "id": "JB-0110",
@@ -4591,7 +4696,8 @@
       "colourSourceUrl": "https://eu.bordelle.co.uk/products/signature-mesh-thong-navy?variant=55522774483320",
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
-      "colourTaxonomyVersion": "jb-colour-taxonomy-v1"
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": ["lingerie-all","brief","after-dark"]
     },
     {
       "id": "JB-0111",
@@ -4635,7 +4741,8 @@
       "colourSourceUrl": "https://www.calvinklein.com.au/icon-cotton-modal-lightly-lined-triangle-bralette-white-qf8498100",
       "colourSourceType": "Retailer page",
       "colourCheckedAt": "2026-07-31",
-      "colourTaxonomyVersion": "jb-colour-taxonomy-v1"
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": ["lingerie-all","bra"]
     },
     {
       "id": "JB-0112",
@@ -4679,7 +4786,8 @@
       "colourSourceUrl": "https://www.calvinklein.com.au/ck-black-bridal-bodysuit-antique-white-qf8744yac",
       "colourSourceType": "Retailer page",
       "colourCheckedAt": "2026-07-31",
-      "colourTaxonomyVersion": "jb-colour-taxonomy-v1"
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": ["ready-to-wear-all","bodysuit"]
     },
     {
       "id": "JB-0113",
@@ -4723,7 +4831,8 @@
       "colourSourceUrl": "https://www.calvinklein.com.au/ck-black-bridal-bodysuit-black-qf8744ub1",
       "colourSourceType": "Retailer page",
       "colourCheckedAt": "2026-07-31",
-      "colourTaxonomyVersion": "jb-colour-taxonomy-v1"
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": ["ready-to-wear-all","bodysuit"]
     },
     {
       "id": "JB-0114",
@@ -4768,7 +4877,8 @@
       "colourSourceUrl": "https://www.calvinklein.com.au/signature-satin-unlined-triangle-bra-tidal-animal-botanical-brown-qf83924uk",
       "colourSourceType": "Retailer page",
       "colourCheckedAt": "2026-07-31",
-      "colourTaxonomyVersion": "jb-colour-taxonomy-v1"
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": ["lingerie-all","bra"]
     },
     {
       "id": "JB-0115",
@@ -4812,7 +4922,8 @@
       "colourSourceUrl": "https://www.calvinklein.com.au/signature-modal-mesh-thong-blue-tulip-qf873144j",
       "colourSourceType": "Retailer page",
       "colourCheckedAt": "2026-07-31",
-      "colourTaxonomyVersion": "jb-colour-taxonomy-v1"
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": ["lingerie-all","brief"]
     },
     {
       "id": "JB-0116",
@@ -4856,7 +4967,8 @@
       "colourSourceUrl": "https://www.calvinklein.com.au/icon-cotton-modal-metallic-thong-botanical-brown-qf8826pjs",
       "colourSourceType": "Retailer page",
       "colourCheckedAt": "2026-07-31",
-      "colourTaxonomyVersion": "jb-colour-taxonomy-v1"
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": ["lingerie-all","brief"]
     },
     {
       "id": "JB-0117",
@@ -4900,7 +5012,8 @@
       "colourSourceUrl": "https://www.calvinklein.com.au/ck-black-bridal-thong-antique-white-qf8631yac",
       "colourSourceType": "Retailer page",
       "colourCheckedAt": "2026-07-31",
-      "colourTaxonomyVersion": "jb-colour-taxonomy-v1"
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": ["lingerie-all","brief"]
     },
     {
       "id": "JB-0118",
@@ -4944,7 +5057,8 @@
       "colourSourceUrl": "https://www.calvinklein.com.au/icon-cotton-modal-t-shirt-bralette-cradle-pink-qf84958z6",
       "colourSourceType": "Retailer page",
       "colourCheckedAt": "2026-07-31",
-      "colourTaxonomyVersion": "jb-colour-taxonomy-v1"
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": ["lingerie-all","bra"]
     },
     {
       "id": "JB-0119",
@@ -4988,7 +5102,8 @@
       "colourSourceUrl": "https://www.calvinklein.com.au/icon-cotton-modal-lightly-lined-triangle-bralette-black-qf8498ub1",
       "colourSourceType": "Retailer page",
       "colourCheckedAt": "2026-07-31",
-      "colourTaxonomyVersion": "jb-colour-taxonomy-v1"
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": ["lingerie-all","bra"]
     },
     {
       "id": "JB-0120",
@@ -5034,7 +5149,8 @@
       "colourSourceUrl": "https://skims.com/en-au/products/hosiery-sheer-tights-onyx?variant=47896870879585&utm_source=google&utm_medium=cpc&utm_campaign=AU_PMax_NonBrand_XX_XX&utm_term=&utm_content=&gad_source=1&gad_campaignid=18953802144&gbraid=0AAAAABXxPQIeRNZbPsjs6RkTl0qflOe6r&gclid=EAIaIQobChMI0e2C44XulQMVa14PAh0RsAP2EAQYBSABEgKl-PD_BwE",
       "colourSourceType": "Retailer page",
       "colourCheckedAt": "2026-07-31",
-      "colourTaxonomyVersion": "jb-colour-taxonomy-v1"
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": ["lingerie-all","athleisure-all","ready-to-wear-all","hosiery"]
     },
     {
       "id": "JB-0121",
@@ -5079,7 +5195,8 @@
       "colourSourceUrl": "https://skims.com/en-au/products/the-essential-collection-high-waisted-hot-short-obsidian",
       "colourSourceType": "Retailer page",
       "colourCheckedAt": "2026-07-31",
-      "colourTaxonomyVersion": "jb-colour-taxonomy-v1"
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": ["athleisure-all","ready-to-wear-all","shorts"]
     },
     {
       "id": "JB-0122",
@@ -5124,7 +5241,8 @@
       "colourSourceUrl": "https://skims.com/en-au/products/skims-ultimate-teardrop-push-up-bra-onyx",
       "colourSourceType": "Retailer page",
       "colourCheckedAt": "2026-07-31",
-      "colourTaxonomyVersion": "jb-colour-taxonomy-v1"
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": ["lingerie-all","ready-to-wear-all","bra"]
     },
     {
       "id": "JB-0123",
@@ -5169,7 +5287,8 @@
       "colourSourceUrl": "https://skims.com/en-au/products/skims-body-unlined-plunge-thong-bodysuit-onyx",
       "colourSourceType": "Retailer page",
       "colourCheckedAt": "2026-07-31",
-      "colourTaxonomyVersion": "jb-colour-taxonomy-v1"
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": ["lingerie-all","ready-to-wear-all","brief","bodysuit"]
     },
     {
       "id": "JB-0124",
@@ -5214,7 +5333,8 @@
       "colourSourceUrl": "https://skims.com/en-au/products/skims-body-core-sculpt-plunge-thong-bodysuit-onyx",
       "colourSourceType": "Retailer page",
       "colourCheckedAt": "2026-07-31",
-      "colourTaxonomyVersion": "jb-colour-taxonomy-v1"
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": ["lingerie-all","ready-to-wear-all","brief","bodysuit"]
     },
     {
       "id": "JB-0125",
@@ -5259,7 +5379,8 @@
       "colourSourceUrl": "https://skims.com/en-au/products/iconic-swim-racerback-one-piece-cobalt?variant=47897534955873",
       "colourSourceType": "Retailer page",
       "colourCheckedAt": "2026-07-31",
-      "colourTaxonomyVersion": "jb-colour-taxonomy-v1"
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": ["swimwear-all","ready-to-wear-all","swimsuit"]
     },
     {
       "id": "JB-0126",
@@ -5292,7 +5413,8 @@
       "priceValue": 1550,
       "currency": "USD",
       "subjectPresent": false,
-      "forwardFacing": false
+      "forwardFacing": false,
+      "shopTypes": ["ready-to-wear-all","after-dark","dress"]
     },
     {
       "id": "JB-0127",
@@ -5326,7 +5448,8 @@
       "priceValue": 1210,
       "currency": "AUD",
       "subjectPresent": false,
-      "forwardFacing": false
+      "forwardFacing": false,
+      "shopTypes": ["swimwear-all","after-dark","swimsuit"]
     },
     {
       "id": "JB-0128",
@@ -5360,7 +5483,8 @@
       "priceValue": 1350,
       "currency": "AUD",
       "subjectPresent": true,
-      "forwardFacing": false
+      "forwardFacing": false,
+      "shopTypes": ["ready-to-wear-all","bodysuit","after-dark"]
     },
     {
       "id": "JB-0129",
@@ -5394,7 +5518,8 @@
       "priceValue": 1625,
       "currency": "AUD",
       "subjectPresent": true,
-      "forwardFacing": false
+      "forwardFacing": false,
+      "shopTypes": ["ready-to-wear-all","bodysuit","after-dark"]
     },
     {
       "id": "JB-0130",
@@ -5436,7 +5561,8 @@
       "colourSourceUrl": "https://www.lucashugh.com/products/technical-knit-leggings-black",
       "colourSourceType": "Retailer page",
       "colourCheckedAt": "2026-07-31",
-      "colourTaxonomyVersion": "jb-colour-taxonomy-v1"
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": ["athleisure-all","ready-to-wear-all","leggings"]
     },
     {
       "id": "JB-0131",
@@ -5479,7 +5605,8 @@
       "colourSourceUrl": "https://www.lucashugh.com/products/kubrick-one-piece-multi",
       "colourSourceType": "Retailer page",
       "colourCheckedAt": "2026-07-31",
-      "colourTaxonomyVersion": "jb-colour-taxonomy-v1"
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": ["swimwear-all","athleisure-all","swimsuit"]
     },
     {
       "id": "JB-0132",
@@ -5522,7 +5649,8 @@
       "colourSourceUrl": "https://www.lucashugh.com/products/odyssey-leggings-black-multi",
       "colourSourceType": "Retailer page",
       "colourCheckedAt": "2026-07-31",
-      "colourTaxonomyVersion": "jb-colour-taxonomy-v1"
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": ["athleisure-all","ready-to-wear-all","leggings"]
     },
     {
       "id": "JB-0133",
@@ -5557,7 +5685,8 @@
       "priceValue": 130,
       "currency": "AUD",
       "subjectPresent": true,
-      "forwardFacing": true
+      "forwardFacing": true,
+      "shopTypes": ["swimwear-all","athleisure-all","ready-to-wear-all","swimsuit"]
     },
     {
       "id": "JB-0134",
@@ -5600,7 +5729,8 @@
       "colourSourceUrl": "https://www.nike.com/au/t/nikeskims-studio-stretch-womens-66cm-leggings-approx-JR6NVNV4/IR8680-054",
       "colourSourceType": "Retailer page",
       "colourCheckedAt": "2026-07-31",
-      "colourTaxonomyVersion": "jb-colour-taxonomy-v1"
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": ["athleisure-all","ready-to-wear-all","leggings"]
     },
     {
       "id": "JB-0135",
@@ -5643,7 +5773,8 @@
       "colourSourceUrl": "https://www.nike.com/au/t/nikeskims-matte-womens-high-waisted-corset-66cm-approx-leggings-Pfd8Icgx/IU2207-108",
       "colourSourceType": "Retailer page",
       "colourCheckedAt": "2026-07-31",
-      "colourTaxonomyVersion": "jb-colour-taxonomy-v1"
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": ["athleisure-all","ready-to-wear-all","bra","leggings"]
     },
     {
       "id": "JB-0136",
@@ -5686,7 +5817,8 @@
       "colourSourceUrl": "https://www.nike.com/au/t/one-seamless-front-womens-high-waisted-full-length-leggings-wPPdbktd/HJ9195-013",
       "colourSourceType": "Retailer page",
       "colourCheckedAt": "2026-07-31",
-      "colourTaxonomyVersion": "jb-colour-taxonomy-v1"
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": ["athleisure-all","ready-to-wear-all","leggings"]
     },
     {
       "id": "JB-0137",
@@ -5721,7 +5853,8 @@
       "subjectPresent": true,
       "forwardFacing": true,
       "requiresReview": true,
-      "reviewNotes": "Retailer page publishes no current price."
+      "reviewNotes": "Retailer page publishes no current price.",
+      "shopTypes": ["athleisure-all","ready-to-wear-all","jumpsuit"]
     },
     {
       "id": "JB-0138",
@@ -5764,7 +5897,8 @@
       "colourSourceUrl": "https://www.nike.com/au/t/jordan-brooklyn-womens-bodysuit-nZh4yxyG/IM6875-100",
       "colourSourceType": "Retailer page",
       "colourCheckedAt": "2026-07-31",
-      "colourTaxonomyVersion": "jb-colour-taxonomy-v1"
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": ["athleisure-all","ready-to-wear-all","bodysuit"]
     },
     {
       "id": "JB-0139",
@@ -5807,7 +5941,8 @@
       "colourSourceUrl": "https://www.nike.com/au/t/nikeskims-matte-womens-corset-73-5cm-approx-bodysuit-2R1yVcdQ/IU2203-054",
       "colourSourceType": "Retailer page",
       "colourCheckedAt": "2026-07-31",
-      "colourTaxonomyVersion": "jb-colour-taxonomy-v1"
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": ["athleisure-all","ready-to-wear-all","bra","bodysuit"]
     },
     {
       "id": "JB-0140",
@@ -5849,7 +5984,8 @@
       "colourSourceUrl": "https://www.nike.com/au/t/sportswear-airreverent-womens-trench-coat-39DRj87K/II3949-010",
       "colourSourceType": "Retailer page",
       "colourCheckedAt": "2026-07-31",
-      "colourTaxonomyVersion": "jb-colour-taxonomy-v1"
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": ["athleisure-all","ready-to-wear-all"]
     },
     {
       "id": "JB-0141",
@@ -5892,7 +6028,8 @@
       "colourSourceUrl": "https://www.nike.com/au/t/nikeskims-airy-womens-tracksuit-jacket-06mj9gy4/IR5052-408",
       "colourSourceType": "Retailer page",
       "colourCheckedAt": "2026-07-31",
-      "colourTaxonomyVersion": "jb-colour-taxonomy-v1"
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": ["athleisure-all","ready-to-wear-all"]
     },
     {
       "id": "JB-0142",
@@ -5936,7 +6073,8 @@
       "colourSourceUrl": "https://www.adidas.com.au/adidas-by-stella-mccartney-running-onesie/KF8817.html",
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
-      "colourTaxonomyVersion": "jb-colour-taxonomy-v1"
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": ["athleisure-all","ready-to-wear-all","jumpsuit"]
     },
     {
       "id": "JB-0143",
@@ -5980,7 +6118,8 @@
       "colourSourceUrl": "https://www.adidas.com.au/adidas-originals-sport-superstar-7-8-leggings/KU3680.html",
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
-      "colourTaxonomyVersion": "jb-colour-taxonomy-v1"
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": ["athleisure-all","ready-to-wear-all","leggings"]
     },
     {
       "id": "JB-0144",
@@ -6026,7 +6165,8 @@
       "colourSourceUrl": "https://www.adidas.com.au/adidas-x-farm-rio-optime-leggings/KR0230.html",
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
-      "colourTaxonomyVersion": "jb-colour-taxonomy-v1"
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": ["athleisure-all","ready-to-wear-all","leggings"]
     },
     {
       "id": "JB-0145",
@@ -6070,7 +6210,8 @@
       "colourSourceUrl": "https://www.adidas.com.au/adi365-climacool_-running-7-8-leggings/KA0135.html?pr=taxonomy_rr&slot=2&rec=mt",
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
-      "colourTaxonomyVersion": "jb-colour-taxonomy-v1"
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": ["athleisure-all","ready-to-wear-all","leggings"]
     },
     {
       "id": "JB-0146",
@@ -6114,7 +6255,8 @@
       "colourSourceUrl": "https://www.adidas.com.au/adizero-short-leggings/KA0149.html",
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
-      "colourTaxonomyVersion": "jb-colour-taxonomy-v1"
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": ["athleisure-all","ready-to-wear-all","leggings"]
     },
     {
       "id": "JB-0147",
@@ -6160,7 +6302,8 @@
       "colourSourceUrl": "https://www.adidas.com.au/adidas-x-farm-rio-bike-shorts/KD4613.html",
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
-      "colourTaxonomyVersion": "jb-colour-taxonomy-v1"
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": ["athleisure-all","ready-to-wear-all","shorts"]
     },
     {
       "id": "JB-0148",
@@ -6207,7 +6350,8 @@
       "colourSourceUrl": "https://www.adidas.com.au/one-piece-swimsuit/GL6146.html",
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
-      "colourTaxonomyVersion": "jb-colour-taxonomy-v1"
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": ["swimwear-all","athleisure-all","swimsuit"]
     },
     {
       "id": "JB-0149",
@@ -6252,7 +6396,8 @@
       "colourSourceUrl": "https://www.adidas.com.au/3-stripes-c-back-swimsuit/JY4719.html",
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
-      "colourTaxonomyVersion": "jb-colour-taxonomy-v1"
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": ["swimwear-all","athleisure-all","swimsuit"]
     },
     {
       "id": "JB-0150",
@@ -6298,7 +6443,8 @@
       "colourSourceUrl": "https://www.adidas.com.au/3-stripes-swimsuit-kids/JX5644.html",
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
-      "colourTaxonomyVersion": "jb-colour-taxonomy-v1"
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": ["swimwear-all","athleisure-all","swimsuit"]
     },
     {
       "id": "JB-0151",
@@ -6343,7 +6489,8 @@
       "colourSourceUrl": "https://www.adidas.com.au/v-back-swimsuit/JM8152.html",
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
-      "colourTaxonomyVersion": "jb-colour-taxonomy-v1"
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": ["swimwear-all","athleisure-all","swimsuit"]
     },
     {
       "id": "JB-0152",
@@ -6386,7 +6533,8 @@
       "colourSourceUrl": "https://rashiworld.com/products/one-piece-swimsuit-police-vibes-copy",
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
-      "colourTaxonomyVersion": "jb-colour-taxonomy-v1"
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": ["swimwear-all","swimsuit"]
     },
     {
       "id": "JB-0153",
@@ -6429,7 +6577,8 @@
       "colourSourceUrl": "https://rashiworld.com/products/short-sleeve-bodysuit-front-zip-nero-bianco",
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
-      "colourTaxonomyVersion": "jb-colour-taxonomy-v1"
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": ["ready-to-wear-all","bodysuit"]
     },
     {
       "id": "JB-0154",
@@ -6462,7 +6611,8 @@
       "priceValue": 120,
       "currency": "AUD",
       "subjectPresent": true,
-      "forwardFacing": true
+      "forwardFacing": true,
+      "shopTypes": ["swimwear-all","bikini"]
     },
     {
       "id": "JB-0155",
@@ -6495,7 +6645,8 @@
       "priceValue": 150,
       "currency": "AUD",
       "subjectPresent": true,
-      "forwardFacing": true
+      "forwardFacing": true,
+      "shopTypes": ["athleisure-all","ready-to-wear-all","crop"]
     },
     {
       "id": "JB-0156",
@@ -6528,7 +6679,8 @@
       "priceValue": 220,
       "currency": "AUD",
       "subjectPresent": true,
-      "forwardFacing": true
+      "forwardFacing": true,
+      "shopTypes": ["ready-to-wear-all","bodysuit"]
     },
     {
       "id": "JB-0157",
@@ -6561,7 +6713,8 @@
       "priceValue": 295,
       "currency": "AUD",
       "subjectPresent": true,
-      "forwardFacing": true
+      "forwardFacing": true,
+      "shopTypes": ["ready-to-wear-all","bodysuit"]
     },
     {
       "id": "JB-0158",
@@ -6603,7 +6756,8 @@
       "colourSourceUrl": "https://rashiworld.com/products/womens-string-bikini-bottom-nero",
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
-      "colourTaxonomyVersion": "jb-colour-taxonomy-v1"
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": ["swimwear-all","bikini"]
     },
     {
       "id": "JB-0159",
@@ -6645,7 +6799,8 @@
       "colourSourceUrl": "https://kiini.com/collections/all-kiini/products/ro-scoop-bikini-top",
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
-      "colourTaxonomyVersion": "jb-colour-taxonomy-v1"
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": ["swimwear-all","bikini"]
     },
     {
       "id": "JB-0160",
@@ -6687,7 +6842,8 @@
       "colourSourceUrl": "https://kiini.com/collections/all-kiini/products/wren-bikini-top",
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
-      "colourTaxonomyVersion": "jb-colour-taxonomy-v1"
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": ["swimwear-all","bikini"]
     },
     {
       "id": "JB-0161",
@@ -6727,7 +6883,8 @@
       "colourSourceUrl": "https://kiini.com/collections/all-kiini/products/wren-one-shoulder-top",
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
-      "colourTaxonomyVersion": "jb-colour-taxonomy-v1"
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": ["ready-to-wear-all"]
     },
     {
       "id": "JB-0162",
@@ -6770,7 +6927,8 @@
       "colourSourceUrl": "https://kiini.com/collections/all-kiini/products/aura-bikini-top",
       "colourSourceType": "Retailer page",
       "colourCheckedAt": "2026-07-31",
-      "colourTaxonomyVersion": "jb-colour-taxonomy-v1"
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": ["swimwear-all","bikini"]
     },
     {
       "id": "JB-0163",
@@ -6811,7 +6969,8 @@
       "colourSourceUrl": "https://kiini.com/collections/all-kiini/products/aura-one-shoulder-top",
       "colourSourceType": "Retailer page",
       "colourCheckedAt": "2026-07-31",
-      "colourTaxonomyVersion": "jb-colour-taxonomy-v1"
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": ["ready-to-wear-all"]
     },
     {
       "id": "JB-0164",
@@ -6854,7 +7013,8 @@
       "colourSourceUrl": "https://kiini.com/collections/all-kiini/products/aura-bikini-bottom",
       "colourSourceType": "Retailer page",
       "colourCheckedAt": "2026-07-31",
-      "colourTaxonomyVersion": "jb-colour-taxonomy-v1"
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": ["swimwear-all","bikini"]
     },
     {
       "id": "JB-0165",
@@ -6897,7 +7057,8 @@
       "colourSourceUrl": "https://kiini.com/collections/all-kiini/products/bea-scoop-bikini-top",
       "colourSourceType": "Retailer page",
       "colourCheckedAt": "2026-07-31",
-      "colourTaxonomyVersion": "jb-colour-taxonomy-v1"
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": ["swimwear-all","bikini"]
     },
     {
       "id": "JB-0166",
@@ -6940,7 +7101,8 @@
       "colourSourceUrl": "https://kiini.com/collections/all-kiini/products/chacha-top",
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
-      "colourTaxonomyVersion": "jb-colour-taxonomy-v1"
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": ["swimwear-all","bikini"]
     },
     {
       "id": "JB-0167",
@@ -6981,7 +7143,8 @@
       "colourSourceUrl": "https://kiini.com/collections/all-kiini/products/chacha-one-shoulder-top",
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
-      "colourTaxonomyVersion": "jb-colour-taxonomy-v1"
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": ["ready-to-wear-all"]
     },
     {
       "id": "JB-0168",
@@ -7022,7 +7185,8 @@
       "colourSourceUrl": "https://kiini.com/collections/all-kiini/products/chacha-one-shoulder-maillot",
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
-      "colourTaxonomyVersion": "jb-colour-taxonomy-v1"
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": ["swimwear-all","swimsuit"]
     },
     {
       "id": "JB-0169",
@@ -7064,7 +7228,8 @@
       "colourSourceUrl": "https://kiini.com/collections/all-kiini/products/liv-bikini-top",
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
-      "colourTaxonomyVersion": "jb-colour-taxonomy-v1"
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": ["swimwear-all","bikini"]
     },
     {
       "id": "JB-0170",
@@ -7106,7 +7271,8 @@
       "colourSourceUrl": "https://kiini.com/collections/all-kiini/products/liv-scoop-bikini-top",
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
-      "colourTaxonomyVersion": "jb-colour-taxonomy-v1"
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": ["swimwear-all","bikini"]
     },
     {
       "id": "JB-0171",
@@ -7148,7 +7314,8 @@
       "colourSourceUrl": "https://kiini.com/collections/all-kiini/products/liv-bikini-bottom",
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
-      "colourTaxonomyVersion": "jb-colour-taxonomy-v1"
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": ["swimwear-all","bikini"]
     },
     {
       "id": "JB-0172",
@@ -7190,7 +7357,8 @@
       "colourSourceUrl": "https://kiini.com/collections/all-kiini/products/tuesday-top",
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
-      "colourTaxonomyVersion": "jb-colour-taxonomy-v1"
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": ["swimwear-all","bikini"]
     },
     {
       "id": "JB-0173",
@@ -7232,7 +7400,8 @@
       "colourSourceUrl": "https://kiini.com/collections/all-kiini/products/tuesday-scoop-bikini-top",
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
-      "colourTaxonomyVersion": "jb-colour-taxonomy-v1"
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": ["swimwear-all","bikini"]
     },
     {
       "id": "JB-0174",
@@ -7274,7 +7443,8 @@
       "colourSourceUrl": "https://kiini.com/collections/all-kiini/products/tuesday-bottom",
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
-      "colourTaxonomyVersion": "jb-colour-taxonomy-v1"
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": ["swimwear-all","bikini"]
     },
     {
       "id": "JB-0175",
@@ -7314,7 +7484,8 @@
       "colourSourceUrl": "https://kiini.com/collections/all-kiini/products/tuesday-one-shoulder-top",
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
-      "colourTaxonomyVersion": "jb-colour-taxonomy-v1"
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": ["ready-to-wear-all"]
     },
     {
       "id": "JB-0176",
@@ -7354,7 +7525,8 @@
       "colourSourceUrl": "https://kiini.com/collections/all-kiini/products/tuesday-high-rise-bottom",
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
-      "colourTaxonomyVersion": "jb-colour-taxonomy-v1"
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": ["ready-to-wear-all"]
     },
     {
       "id": "JB-0177",
@@ -7396,7 +7568,8 @@
       "colourSourceUrl": "https://kiini.com/collections/all-kiini/products/yaz-scoop-bikini-top",
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
-      "colourTaxonomyVersion": "jb-colour-taxonomy-v1"
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": ["swimwear-all","bikini"]
     },
     {
       "id": "JB-0178",
@@ -7438,7 +7611,8 @@
       "colourSourceUrl": "https://kiini.com/collections/all-kiini/products/yaz-top",
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
-      "colourTaxonomyVersion": "jb-colour-taxonomy-v1"
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": ["swimwear-all","bikini"]
     },
     {
       "id": "JB-0179",
@@ -7478,7 +7652,8 @@
       "colourSourceUrl": "https://kiini.com/collections/all-kiini/products/yaz-one-shoulder-top",
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
-      "colourTaxonomyVersion": "jb-colour-taxonomy-v1"
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": ["ready-to-wear-all"]
     },
     {
       "id": "JB-0180",
@@ -7520,7 +7695,8 @@
       "colourSourceUrl": "https://kiini.com/collections/all-kiini/products/yaz-bottom",
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
-      "colourTaxonomyVersion": "jb-colour-taxonomy-v1"
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": ["swimwear-all","bikini"]
     },
     {
       "id": "JB-0181",
@@ -7562,7 +7738,8 @@
       "colourSourceUrl": "https://kiini.com/collections/all-kiini/products/yaz-boyshort-bottom",
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
-      "colourTaxonomyVersion": "jb-colour-taxonomy-v1"
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": ["lingerie-all","brief"]
     },
     {
       "id": "JB-0182",
@@ -7602,7 +7779,8 @@
       "colourSourceUrl": "https://kiini.com/collections/all-kiini/products/yaz-high-rise-bottom",
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
-      "colourTaxonomyVersion": "jb-colour-taxonomy-v1"
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": ["ready-to-wear-all"]
     },
     {
       "id": "JB-0183",
@@ -7645,7 +7823,8 @@
       "colourSourceUrl": "https://kiini.com/collections/all-kiini/products/valentine-scoop-bikini-top",
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
-      "colourTaxonomyVersion": "jb-colour-taxonomy-v1"
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": ["swimwear-all","bikini"]
     },
     {
       "id": "JB-0184",
@@ -7688,7 +7867,8 @@
       "colourSourceUrl": "https://nagnata.com/products/pinstripe-wool-bodysuit-obsidian",
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
-      "colourTaxonomyVersion": "jb-colour-taxonomy-v1"
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": ["athleisure-all","ready-to-wear-all","bodysuit"]
     },
     {
       "id": "JB-0185",
@@ -7731,7 +7911,8 @@
       "colourSourceUrl": "https://nagnata.com/products/pinstripe-wool-bodysuit-mulberry",
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
-      "colourTaxonomyVersion": "jb-colour-taxonomy-v1"
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": ["athleisure-all","ready-to-wear-all","bodysuit"]
     },
     {
       "id": "JB-0186",
@@ -7764,7 +7945,8 @@
       "priceValue": 255,
       "currency": "AUD",
       "subjectPresent": true,
-      "forwardFacing": true
+      "forwardFacing": true,
+      "shopTypes": ["athleisure-all","ready-to-wear-all","leggings"]
     },
     {
       "id": "JB-0187",
@@ -7806,7 +7988,8 @@
       "colourSourceUrl": "https://nagnata.com/products/organic-rydell-short-2-0-mulberry",
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
-      "colourTaxonomyVersion": "jb-colour-taxonomy-v1"
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": ["athleisure-all","ready-to-wear-all","shorts"]
     },
     {
       "id": "JB-0188",
@@ -7849,7 +8032,8 @@
       "colourSourceUrl": "https://nagnata.com/products/organic-colour-block-bralet-mulberry",
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
-      "colourTaxonomyVersion": "jb-colour-taxonomy-v1"
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": ["lingerie-all","athleisure-all","bra"]
     },
     {
       "id": "JB-0189",
@@ -7892,7 +8076,8 @@
       "colourSourceUrl": "https://nagnata.com/products/halter-wool-bralet-obsidian",
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
-      "colourTaxonomyVersion": "jb-colour-taxonomy-v1"
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": ["lingerie-all","athleisure-all","bra"]
     },
     {
       "id": "JB-0190",
@@ -7935,7 +8120,8 @@
       "colourSourceUrl": "https://nagnata.com/products/organic-colour-block-bralet-sky",
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
-      "colourTaxonomyVersion": "jb-colour-taxonomy-v1"
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": ["lingerie-all","athleisure-all","bra"]
     },
     {
       "id": "JB-0191",
@@ -7977,7 +8163,8 @@
       "colourSourceUrl": "https://nagnata.com/products/retro-short-2-0-sky",
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
-      "colourTaxonomyVersion": "jb-colour-taxonomy-v1"
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": ["athleisure-all","ready-to-wear-all","shorts"]
     },
     {
       "id": "JB-0192",
@@ -8019,7 +8206,8 @@
       "colourSourceUrl": "https://nagnata.com/products/organic-rydell-short-2-0-sky",
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
-      "colourTaxonomyVersion": "jb-colour-taxonomy-v1"
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": ["athleisure-all","ready-to-wear-all","shorts"]
     },
     {
       "id": "JB-0193",
@@ -8053,7 +8241,8 @@
       "priceValue": 225,
       "currency": "AUD",
       "subjectPresent": true,
-      "forwardFacing": true
+      "forwardFacing": true,
+      "shopTypes": ["athleisure-all","ready-to-wear-all","bodysuit"]
     },
     {
       "id": "JB-0194",
@@ -8086,7 +8275,8 @@
       "priceValue": 170,
       "currency": "AUD",
       "subjectPresent": true,
-      "forwardFacing": true
+      "forwardFacing": true,
+      "shopTypes": ["athleisure-all","ready-to-wear-all","shorts"]
     },
     {
       "id": "JB-0195",
@@ -8120,7 +8310,8 @@
       "priceValue": 170,
       "currency": "AUD",
       "subjectPresent": true,
-      "forwardFacing": true
+      "forwardFacing": true,
+      "shopTypes": ["lingerie-all","athleisure-all","bra"]
     },
     {
       "id": "JB-0196",
@@ -8153,7 +8344,8 @@
       "priceValue": 40,
       "currency": "AUD",
       "subjectPresent": true,
-      "forwardFacing": true
+      "forwardFacing": true,
+      "shopTypes": ["athleisure-all","hosiery"]
     },
     {
       "id": "JB-0197",
@@ -8188,7 +8380,8 @@
       "subjectPresent": true,
       "forwardFacing": true,
       "requiresReview": true,
-      "reviewNotes": "Retailer page publishes no product description."
+      "reviewNotes": "Retailer page publishes no product description.",
+      "shopTypes": ["athleisure-all","accessories"]
     },
     {
       "id": "JB-0198",
@@ -8221,7 +8414,8 @@
       "priceValue": 190,
       "currency": "AUD",
       "subjectPresent": true,
-      "forwardFacing": true
+      "forwardFacing": true,
+      "shopTypes": ["athleisure-all","ready-to-wear-all","shorts"]
     },
     {
       "id": "JB-0199",
@@ -8264,7 +8458,8 @@
       "colourSourceUrl": "https://www.pe-nation.com/products/scout-sports-bra-in-deep-blue",
       "colourSourceType": "Retailer page",
       "colourCheckedAt": "2026-07-31",
-      "colourTaxonomyVersion": "jb-colour-taxonomy-v1"
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": ["lingerie-all","athleisure-all","bra"]
     },
     {
       "id": "JB-0200",
@@ -8306,7 +8501,8 @@
       "colourSourceUrl": "https://www.pe-nation.com/products/radar-halter-tank-in-deep-blue",
       "colourSourceType": "Retailer page",
       "colourCheckedAt": "2026-07-31",
-      "colourTaxonomyVersion": "jb-colour-taxonomy-v1"
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": ["athleisure-all"]
     },
     {
       "id": "JB-0201",
@@ -8348,7 +8544,8 @@
       "colourSourceUrl": "https://www.pe-nation.com/products/scout-full-zip-in-deep-blue",
       "colourSourceType": "Retailer page",
       "colourCheckedAt": "2026-07-31",
-      "colourTaxonomyVersion": "jb-colour-taxonomy-v1"
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": ["athleisure-all"]
     },
     {
       "id": "JB-0202",
@@ -8391,7 +8588,8 @@
       "colourSourceUrl": "https://www.pe-nation.com/products/vita-full-length-legging-in-coffee-whisper-white",
       "colourSourceType": "Retailer page",
       "colourCheckedAt": "2026-07-31",
-      "colourTaxonomyVersion": "jb-colour-taxonomy-v1"
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": ["athleisure-all","ready-to-wear-all","leggings"]
     },
     {
       "id": "JB-0203",
@@ -8433,7 +8631,8 @@
       "colourSourceUrl": "https://www.pe-nation.com/products/signature-full-length-legging-in-dark-navy",
       "colourSourceType": "Retailer page",
       "colourCheckedAt": "2026-07-31",
-      "colourTaxonomyVersion": "jb-colour-taxonomy-v1"
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": ["athleisure-all","ready-to-wear-all","leggings"]
     },
     {
       "id": "JB-0204",
@@ -8475,7 +8674,8 @@
       "colourSourceUrl": "https://www.pe-nation.com/products/fairmont-full-length-legging-in-mahogany-shine",
       "colourSourceType": "Retailer page",
       "colourCheckedAt": "2026-07-31",
-      "colourTaxonomyVersion": "jb-colour-taxonomy-v1"
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": ["athleisure-all","ready-to-wear-all","leggings"]
     },
     {
       "id": "JB-0205",
@@ -8517,7 +8717,8 @@
       "colourSourceUrl": "https://www.pe-nation.com/products/signature-7-8-legging-in-dark-navy",
       "colourSourceType": "Retailer page",
       "colourCheckedAt": "2026-07-31",
-      "colourTaxonomyVersion": "jb-colour-taxonomy-v1"
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": ["athleisure-all","ready-to-wear-all","leggings"]
     },
     {
       "id": "JB-0206",
@@ -8559,7 +8760,8 @@
       "colourSourceUrl": "https://www.pe-nation.com/products/fairmont-full-length-legging-in-silver-shine",
       "colourSourceType": "Retailer page",
       "colourCheckedAt": "2026-07-31",
-      "colourTaxonomyVersion": "jb-colour-taxonomy-v1"
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": ["athleisure-all","ready-to-wear-all","leggings"]
     },
     {
       "id": "JB-0207",
@@ -8602,7 +8804,8 @@
       "colourSourceUrl": "https://www.pe-nation.com/products/lumify-sports-bra-in-marine-blue",
       "colourSourceType": "Retailer page",
       "colourCheckedAt": "2026-07-31",
-      "colourTaxonomyVersion": "jb-colour-taxonomy-v1"
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": ["lingerie-all","athleisure-all","bra"]
     },
     {
       "id": "JB-0208",
@@ -8645,7 +8848,8 @@
       "colourSourceUrl": "https://www.pe-nation.com/products/activate-sports-bra-in-coffee",
       "colourSourceType": "Retailer page",
       "colourCheckedAt": "2026-07-31",
-      "colourTaxonomyVersion": "jb-colour-taxonomy-v1"
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": ["lingerie-all","athleisure-all","bra"]
     },
     {
       "id": "JB-0209",
@@ -8689,7 +8893,8 @@
       "colourSourceUrl": "https://www.pe-nation.com/products/spectrum-sports-bra-in-cosmo-pink-whisper-white",
       "colourSourceType": "Retailer page",
       "colourCheckedAt": "2026-07-31",
-      "colourTaxonomyVersion": "jb-colour-taxonomy-v1"
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": ["lingerie-all","athleisure-all","bra"]
     },
     {
       "id": "JB-0210",
@@ -8732,7 +8937,8 @@
       "colourSourceUrl": "https://www.pe-nation.com/products/lumen-sports-bra-in-iron-shine",
       "colourSourceType": "Retailer page",
       "colourCheckedAt": "2026-07-31",
-      "colourTaxonomyVersion": "jb-colour-taxonomy-v1"
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": ["lingerie-all","athleisure-all","bra"]
     },
     {
       "id": "JB-0211",
@@ -8775,7 +8981,8 @@
       "colourSourceUrl": "https://www.pe-nation.com/products/reveal-sports-bra-in-dark-navy",
       "colourSourceType": "Retailer page",
       "colourCheckedAt": "2026-07-31",
-      "colourTaxonomyVersion": "jb-colour-taxonomy-v1"
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": ["lingerie-all","athleisure-all","bra"]
     },
     {
       "id": "JB-0212",
@@ -8818,7 +9025,8 @@
       "colourSourceUrl": "https://www.pe-nation.com/products/fairmont-scoop-sports-bra-in-black",
       "colourSourceType": "Retailer page",
       "colourCheckedAt": "2026-07-31",
-      "colourTaxonomyVersion": "jb-colour-taxonomy-v1"
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": ["lingerie-all","athleisure-all","bra"]
     },
     {
       "id": "JB-0213",
@@ -8861,7 +9069,8 @@
       "colourSourceUrl": "https://www.pe-nation.com/products/signature-racer-sports-bra-in-black",
       "colourSourceType": "Retailer page",
       "colourCheckedAt": "2026-07-31",
-      "colourTaxonomyVersion": "jb-colour-taxonomy-v1"
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": ["lingerie-all","athleisure-all","bra"]
     },
     {
       "id": "JB-0214",
@@ -8904,7 +9113,8 @@
       "colourSourceUrl": "https://www.pe-nation.com/products/dynamic-sports-bra-in-college-green",
       "colourSourceType": "Retailer page",
       "colourCheckedAt": "2026-07-31",
-      "colourTaxonomyVersion": "jb-colour-taxonomy-v1"
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": ["lingerie-all","athleisure-all","bra"]
     },
     {
       "id": "JB-0215",
@@ -8947,7 +9157,8 @@
       "colourSourceUrl": "https://www.theupside.com.au/neptune-cassandra-bodysuit-sapphire-usw126044/",
       "colourSourceType": "Retailer page",
       "colourCheckedAt": "2026-07-31",
-      "colourTaxonomyVersion": "jb-colour-taxonomy-v1"
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": ["athleisure-all","ready-to-wear-all","bodysuit"]
     },
     {
       "id": "JB-0216",
@@ -8980,7 +9191,8 @@
       "priceValue": 160,
       "currency": "AUD",
       "subjectPresent": true,
-      "forwardFacing": true
+      "forwardFacing": true,
+      "shopTypes": ["athleisure-all","ready-to-wear-all","jumpsuit"]
     },
     {
       "id": "JB-0217",
@@ -9022,7 +9234,8 @@
       "colourSourceUrl": "https://www.theupside.com.au/racquet-maxine-mini-dress-racing-green-usw226008/",
       "colourSourceType": "Retailer page",
       "colourCheckedAt": "2026-07-31",
-      "colourTaxonomyVersion": "jb-colour-taxonomy-v1"
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": ["athleisure-all","ready-to-wear-all","dress"]
     },
     {
       "id": "JB-0218",
@@ -9064,7 +9277,8 @@
       "colourSourceUrl": "https://www.theupside.com.au/lyon-pia-racerback-dress-cream-usw226001/",
       "colourSourceType": "Retailer page",
       "colourCheckedAt": "2026-07-31",
-      "colourTaxonomyVersion": "jb-colour-taxonomy-v1"
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": ["athleisure-all","ready-to-wear-all","dress"]
     },
     {
       "id": "JB-0219",
@@ -9106,7 +9320,8 @@
       "colourSourceUrl": "https://www.theupside.com.au/kova-racerback-dress-cream-usw326029/",
       "colourSourceType": "Retailer page",
       "colourCheckedAt": "2026-07-31",
-      "colourTaxonomyVersion": "jb-colour-taxonomy-v1"
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": ["athleisure-all","ready-to-wear-all","dress"]
     },
     {
       "id": "JB-0220",
@@ -9148,7 +9363,8 @@
       "colourSourceUrl": "https://www.theupside.com.au/javan-28in-high-rise-pant-leopard-usw326146/",
       "colourSourceType": "Retailer page",
       "colourCheckedAt": "2026-07-31",
-      "colourTaxonomyVersion": "jb-colour-taxonomy-v1"
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": ["athleisure-all","ready-to-wear-all","pants"]
     },
     {
       "id": "JB-0221",
@@ -9190,7 +9406,8 @@
       "colourSourceUrl": "https://www.theupside.com.au/salvador-25in-midi-pant-navy-usw326071/",
       "colourSourceType": "Retailer page",
       "colourCheckedAt": "2026-07-31",
-      "colourTaxonomyVersion": "jb-colour-taxonomy-v1"
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": ["athleisure-all","ready-to-wear-all","pants"]
     },
     {
       "id": "JB-0222",
@@ -9232,7 +9449,8 @@
       "colourSourceUrl": "https://www.theupside.com.au/rio-25in-midi-pant-tie-dye-usw326073/",
       "colourSourceType": "Retailer page",
       "colourCheckedAt": "2026-07-31",
-      "colourTaxonomyVersion": "jb-colour-taxonomy-v1"
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": ["athleisure-all","ready-to-wear-all","pants"]
     },
     {
       "id": "JB-0223",
@@ -9274,7 +9492,8 @@
       "colourSourceUrl": "https://www.theupside.com.au/toscan-25in-high-midi-pant-navy-usw226091/",
       "colourSourceType": "Retailer page",
       "colourCheckedAt": "2026-07-31",
-      "colourTaxonomyVersion": "jb-colour-taxonomy-v1"
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": ["athleisure-all","ready-to-wear-all","pants"]
     },
     {
       "id": "JB-0224",
@@ -9316,7 +9535,8 @@
       "colourSourceUrl": "https://www.theupside.com.au/kefi-25in-midi-pant-oyster-usw226087/",
       "colourSourceType": "Retailer page",
       "colourCheckedAt": "2026-07-31",
-      "colourTaxonomyVersion": "jb-colour-taxonomy-v1"
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": ["athleisure-all","ready-to-wear-all","pants"]
     },
     {
       "id": "JB-0225",
@@ -9358,7 +9578,8 @@
       "colourSourceUrl": "https://www.theupside.com.au/racquet-25in-pocket-midi-pant-racing-green-usw226007/",
       "colourSourceType": "Retailer page",
       "colourCheckedAt": "2026-07-31",
-      "colourTaxonomyVersion": "jb-colour-taxonomy-v1"
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": ["athleisure-all","ready-to-wear-all","pants"]
     },
     {
       "id": "JB-0226",
@@ -9400,7 +9621,8 @@
       "colourSourceUrl": "https://www.theupside.com.au/oxford-25in-midi-pant-olive-usw126124/",
       "colourSourceType": "Retailer page",
       "colourCheckedAt": "2026-07-31",
-      "colourTaxonomyVersion": "jb-colour-taxonomy-v1"
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": ["athleisure-all","ready-to-wear-all","pants"]
     },
     {
       "id": "JB-0227",
@@ -9443,7 +9665,8 @@
       "colourSourceUrl": "https://www.theupside.com.au/rio-badu-crossback-bra-tie-dye-usw326072/",
       "colourSourceType": "Retailer page",
       "colourCheckedAt": "2026-07-31",
-      "colourTaxonomyVersion": "jb-colour-taxonomy-v1"
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": ["lingerie-all","athleisure-all","bra"]
     },
     {
       "id": "JB-0228",
@@ -9486,7 +9709,8 @@
       "colourSourceUrl": "https://www.theupside.com.au/javan-jade-bra-leopard-usw326147/",
       "colourSourceType": "Retailer page",
       "colourCheckedAt": "2026-07-31",
-      "colourTaxonomyVersion": "jb-colour-taxonomy-v1"
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": ["lingerie-all","athleisure-all","bra"]
     },
     {
       "id": "JB-0229",
@@ -9529,7 +9753,8 @@
       "colourSourceUrl": "https://www.theupside.com.au/salvador-zoe-bra-navy-usw326070/",
       "colourSourceType": "Retailer page",
       "colourCheckedAt": "2026-07-31",
-      "colourTaxonomyVersion": "jb-colour-taxonomy-v1"
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": ["lingerie-all","athleisure-all","bra"]
     },
     {
       "id": "JB-0230",
@@ -9572,7 +9797,8 @@
       "colourSourceUrl": "https://www.theupside.com.au/oxford-hutton-scoop-bra-cocoa-usw226139/",
       "colourSourceType": "Retailer page",
       "colourCheckedAt": "2026-07-31",
-      "colourTaxonomyVersion": "jb-colour-taxonomy-v1"
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": ["lingerie-all","athleisure-all","bra"]
     },
     {
       "id": "JB-0231",
@@ -9615,7 +9841,8 @@
       "colourSourceUrl": "https://www.theupside.com.au/toscan-harley-scoop-bra-navy-usw226090/",
       "colourSourceType": "Retailer page",
       "colourCheckedAt": "2026-07-31",
-      "colourTaxonomyVersion": "jb-colour-taxonomy-v1"
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": ["lingerie-all","athleisure-all","bra"]
     },
     {
       "id": "JB-0232",
@@ -9658,7 +9885,8 @@
       "colourSourceUrl": "https://www.theupside.com.au/isla-racerback-vala-bra-botanical-usw226053/",
       "colourSourceType": "Retailer page",
       "colourCheckedAt": "2026-07-31",
-      "colourTaxonomyVersion": "jb-colour-taxonomy-v1"
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": ["lingerie-all","athleisure-all","bra"]
     },
     {
       "id": "JB-0233",
@@ -9701,7 +9929,8 @@
       "colourSourceUrl": "https://www.theupside.com.au/racquet-scoop-danni-bra-racquet-usw226009/",
       "colourSourceType": "Retailer page",
       "colourCheckedAt": "2026-07-31",
-      "colourTaxonomyVersion": "jb-colour-taxonomy-v1"
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": ["lingerie-all","athleisure-all","bra"]
     },
     {
       "id": "JB-0234",
@@ -9743,7 +9972,8 @@
       "colourSourceUrl": "https://www.theupside.com.au/arcadia-sophie-crop-top-black-usw126084/",
       "colourSourceType": "Retailer page",
       "colourCheckedAt": "2026-07-31",
-      "colourTaxonomyVersion": "jb-colour-taxonomy-v1"
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": ["athleisure-all","ready-to-wear-all","crop"]
     },
     {
       "id": "JB-0235",
@@ -9786,7 +10016,8 @@
       "colourSourceUrl": "https://www.theupside.com.au/maneki-jetta-racerback-bra-racing-green-usw425048/",
       "colourSourceType": "Retailer page",
       "colourCheckedAt": "2026-07-31",
-      "colourTaxonomyVersion": "jb-colour-taxonomy-v1"
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": ["lingerie-all","athleisure-all","bra"]
     },
     {
       "id": "JB-0236",
@@ -9828,7 +10059,8 @@
       "colourSourceUrl": "https://www.theupside.com.au/naxos-elyse-crop-stripe-usw425097/",
       "colourSourceType": "Retailer page",
       "colourCheckedAt": "2026-07-31",
-      "colourTaxonomyVersion": "jb-colour-taxonomy-v1"
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": ["athleisure-all","ready-to-wear-all","crop"]
     },
     {
       "id": "JB-0237",
@@ -9870,7 +10102,8 @@
       "colourSourceUrl": "https://www.theupside.com.au/flash-5in-spin-short-grey-marle-usw926014/",
       "colourSourceType": "Retailer page",
       "colourCheckedAt": "2026-07-31",
-      "colourTaxonomyVersion": "jb-colour-taxonomy-v1"
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": ["athleisure-all","ready-to-wear-all","shorts"]
     },
     {
       "id": "JB-0238",
@@ -9912,7 +10145,8 @@
       "colourSourceUrl": "https://www.theupside.com.au/ludlow-billie-run-short-leopard-usw226094/",
       "colourSourceType": "Retailer page",
       "colourCheckedAt": "2026-07-31",
-      "colourTaxonomyVersion": "jb-colour-taxonomy-v1"
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": ["athleisure-all","ready-to-wear-all","shorts"]
     },
     {
       "id": "JB-0239",
@@ -9954,7 +10188,8 @@
       "colourSourceUrl": "https://www.theupside.com.au/peached-2-5in-spin-short-white-usw024025/",
       "colourSourceType": "Retailer page",
       "colourCheckedAt": "2026-07-31",
-      "colourTaxonomyVersion": "jb-colour-taxonomy-v1"
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": ["athleisure-all","ready-to-wear-all","shorts"]
     },
     {
       "id": "JB-0240",
@@ -9996,7 +10231,8 @@
       "colourSourceUrl": "https://www.theupside.com.au/seamless-5in-spin-short-multi-usw126104/",
       "colourSourceType": "Retailer page",
       "colourCheckedAt": "2026-07-31",
-      "colourTaxonomyVersion": "jb-colour-taxonomy-v1"
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": ["athleisure-all","ready-to-wear-all","shorts"]
     },
     {
       "id": "JB-0241",
@@ -10029,7 +10265,8 @@
       "priceValue": 290,
       "currency": "AUD",
       "subjectPresent": true,
-      "forwardFacing": true
+      "forwardFacing": true,
+      "shopTypes": ["swimwear-all","bikini"]
     },
     {
       "id": "JB-0242",
@@ -10060,7 +10297,8 @@
       "priceValue": 125,
       "currency": "AUD",
       "subjectPresent": true,
-      "forwardFacing": true
+      "forwardFacing": true,
+      "shopTypes": ["swimwear-all","swimsuit"]
     },
     {
       "id": "JB-0243",
@@ -10093,7 +10331,8 @@
       "priceValue": 290,
       "currency": "AUD",
       "subjectPresent": true,
-      "forwardFacing": true
+      "forwardFacing": true,
+      "shopTypes": ["swimwear-all","bikini"]
     },
     {
       "id": "JB-0244",
@@ -10139,7 +10378,8 @@
       "colourSourceUrl": "https://karlaspetic.com/product/no-iv-high-cross-over-tube-bikini/",
       "colourSourceType": "Retailer page",
       "colourCheckedAt": "2026-07-31",
-      "colourTaxonomyVersion": "jb-colour-taxonomy-v1"
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": ["swimwear-all","bikini"]
     },
     {
       "id": "JB-0245",
@@ -10183,7 +10423,8 @@
       "colourSourceUrl": "https://karlaspetic.com/product/no-v-neon-tiger-bikini/",
       "colourSourceType": "Retailer page",
       "colourCheckedAt": "2026-07-31",
-      "colourTaxonomyVersion": "jb-colour-taxonomy-v1"
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": ["swimwear-all","bikini"]
     },
     {
       "id": "JB-0246",
@@ -10229,7 +10470,8 @@
       "colourSourceUrl": "https://karlaspetic.com/product/no-i-multi-blue-bikini/",
       "colourSourceType": "Retailer page",
       "colourCheckedAt": "2026-07-31",
-      "colourTaxonomyVersion": "jb-colour-taxonomy-v1"
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": ["swimwear-all","bikini"]
     },
     {
       "id": "JB-0247",
@@ -10271,7 +10513,8 @@
       "colourSourceUrl": "https://karlaspetic.com/product/demeter-wrap-bikini/",
       "colourSourceType": "Retailer page",
       "colourCheckedAt": "2026-07-31",
-      "colourTaxonomyVersion": "jb-colour-taxonomy-v1"
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": ["swimwear-all","bikini"]
     },
     {
       "id": "JB-0248",
@@ -10315,7 +10558,8 @@
       "colourSourceUrl": "https://karlaspetic.com/product/cut-out-bikini/",
       "colourSourceType": "Retailer page",
       "colourCheckedAt": "2026-07-31",
-      "colourTaxonomyVersion": "jb-colour-taxonomy-v1"
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": ["swimwear-all","bikini"]
     },
     {
       "id": "JB-0249",
@@ -10359,7 +10603,8 @@
       "colourSourceUrl": "https://karlaspetic.com/product/string-bikini/",
       "colourSourceType": "Retailer page",
       "colourCheckedAt": "2026-07-31",
-      "colourTaxonomyVersion": "jb-colour-taxonomy-v1"
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": ["swimwear-all","bikini"]
     },
     {
       "id": "JB-0250",
@@ -10399,7 +10644,8 @@
       "colourSourceUrl": "https://karlaspetic.com/product/blossom-slice-dress/",
       "colourSourceType": "Retailer page",
       "colourCheckedAt": "2026-07-31",
-      "colourTaxonomyVersion": "jb-colour-taxonomy-v1"
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": ["ready-to-wear-all","dress"]
     },
     {
       "id": "JB-0251",
@@ -10439,7 +10685,8 @@
       "colourSourceUrl": "https://karlaspetic.com/product/love-is-all-you-need-dress-2/",
       "colourSourceType": "Retailer page",
       "colourCheckedAt": "2026-07-31",
-      "colourTaxonomyVersion": "jb-colour-taxonomy-v1"
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": ["ready-to-wear-all","dress"]
     },
     {
       "id": "JB-0252",
@@ -10479,7 +10726,8 @@
       "colourSourceUrl": "https://karlaspetic.com/product/fluorite-tunic-dress/",
       "colourSourceType": "Retailer page",
       "colourCheckedAt": "2026-07-31",
-      "colourTaxonomyVersion": "jb-colour-taxonomy-v1"
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": ["ready-to-wear-all","dress"]
     },
     {
       "id": "JB-0253",
@@ -10513,7 +10761,8 @@
       "priceValue": 120,
       "currency": "AUD",
       "subjectPresent": true,
-      "forwardFacing": true
+      "forwardFacing": true,
+      "shopTypes": ["lingerie-all","swimwear-all","brief","bikini"]
     },
     {
       "id": "JB-0254",
@@ -10546,7 +10795,8 @@
       "priceValue": 120,
       "currency": "AUD",
       "subjectPresent": true,
-      "forwardFacing": true
+      "forwardFacing": true,
+      "shopTypes": ["swimwear-all","bikini"]
     },
     {
       "id": "JB-0255",
@@ -10588,7 +10838,8 @@
       "colourSourceUrl": "https://sirthelabel.com/collections/swim/products/calypso-string-triangle-top-sorbet-stripe",
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
-      "colourTaxonomyVersion": "jb-colour-taxonomy-v1"
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": ["swimwear-all","bikini"]
     },
     {
       "id": "JB-0256",
@@ -10631,7 +10882,8 @@
       "colourSourceUrl": "https://sirthelabel.com/collections/swim/products/calypso-string-brief-sorbet-stripe",
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
-      "colourTaxonomyVersion": "jb-colour-taxonomy-v1"
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": ["lingerie-all","swimwear-all","brief","bikini"]
     },
     {
       "id": "JB-0257",
@@ -10665,7 +10917,8 @@
       "priceValue": 120,
       "currency": "AUD",
       "subjectPresent": true,
-      "forwardFacing": true
+      "forwardFacing": true,
+      "shopTypes": ["lingerie-all","swimwear-all","brief","bikini"]
     },
     {
       "id": "JB-0258",
@@ -10696,7 +10949,8 @@
       "priceValue": 120,
       "currency": "AUD",
       "subjectPresent": true,
-      "forwardFacing": true
+      "forwardFacing": true,
+      "shopTypes": ["swimwear-all","ready-to-wear-all"]
     },
     {
       "id": "JB-0259",
@@ -10736,7 +10990,8 @@
       "colourSourceUrl": "https://sirthelabel.com/collections/swim/products/kylie-halter-triangle-top-electric-blue",
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
-      "colourTaxonomyVersion": "jb-colour-taxonomy-v1"
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": ["swimwear-all","ready-to-wear-all"]
     },
     {
       "id": "JB-0260",
@@ -10779,7 +11034,8 @@
       "colourSourceUrl": "https://sirthelabel.com/collections/swim/products/kylie-string-brief-electric-blue",
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
-      "colourTaxonomyVersion": "jb-colour-taxonomy-v1"
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": ["lingerie-all","swimwear-all","brief","bikini"]
     },
     {
       "id": "JB-0261",
@@ -10820,7 +11076,8 @@
       "colourSourceUrl": "https://sirthelabel.com/collections/swim/products/lilou-string-triangle-top-liora-charcoal-blue",
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
-      "colourTaxonomyVersion": "jb-colour-taxonomy-v1"
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": ["swimwear-all","ready-to-wear-all"]
     },
     {
       "id": "JB-0262",
@@ -10864,7 +11121,8 @@
       "colourSourceUrl": "https://sirthelabel.com/collections/swim/products/lilou-string-brief-liora-charcoal-blue",
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
-      "colourTaxonomyVersion": "jb-colour-taxonomy-v1"
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": ["lingerie-all","swimwear-all","brief","bikini"]
     },
     {
       "id": "JB-0263",
@@ -10906,7 +11164,8 @@
       "colourSourceUrl": "https://sirthelabel.com/collections/swim/products/lucie-gathered-string-top-washed-blue",
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
-      "colourTaxonomyVersion": "jb-colour-taxonomy-v1"
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": ["swimwear-all","ready-to-wear-all","bikini"]
     },
     {
       "id": "JB-0264",
@@ -10949,7 +11208,8 @@
       "colourSourceUrl": "https://sirthelabel.com/collections/swim/products/lucie-string-brief-washed-blue",
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
-      "colourTaxonomyVersion": "jb-colour-taxonomy-v1"
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": ["lingerie-all","swimwear-all","brief","bikini"]
     },
     {
       "id": "JB-0265",
@@ -10989,7 +11249,8 @@
       "colourSourceUrl": "https://sirthelabel.com/collections/swim/products/hendry-string-triangle-top",
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
-      "colourTaxonomyVersion": "jb-colour-taxonomy-v1"
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": ["swimwear-all","ready-to-wear-all"]
     },
     {
       "id": "JB-0266",
@@ -11031,7 +11292,8 @@
       "colourSourceUrl": "https://sirthelabel.com/collections/swim/products/hendry-string-brief",
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
-      "colourTaxonomyVersion": "jb-colour-taxonomy-v1"
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": ["lingerie-all","swimwear-all","brief"]
     },
     {
       "id": "JB-0267",
@@ -11073,7 +11335,8 @@
       "colourSourceUrl": "https://sirthelabel.com/collections/swim/products/hendry-classic-high-brief",
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
-      "colourTaxonomyVersion": "jb-colour-taxonomy-v1"
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": ["lingerie-all","swimwear-all","brief"]
     },
     {
       "id": "JB-0268",
@@ -11113,7 +11376,8 @@
       "colourSourceUrl": "https://sirthelabel.com/collections/dress/products/montparnasse-gown-ivory",
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
-      "colourTaxonomyVersion": "jb-colour-taxonomy-v1"
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": ["ready-to-wear-all","dress"]
     },
     {
       "id": "JB-0269",
@@ -11154,7 +11418,8 @@
       "colourSourceUrl": "https://sirthelabel.com/collections/dress/products/lisander-long-sleeve-dress-polka-dot-nero",
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
-      "colourTaxonomyVersion": "jb-colour-taxonomy-v1"
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": ["ready-to-wear-all","dress"]
     },
     {
       "id": "JB-0270",
@@ -11194,7 +11459,8 @@
       "colourSourceUrl": "https://sirthelabel.com/collections/dress/products/strobe-long-sleeve-dress-bone",
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
-      "colourTaxonomyVersion": "jb-colour-taxonomy-v1"
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": ["ready-to-wear-all","dress"]
     },
     {
       "id": "JB-0271",
@@ -11225,7 +11491,8 @@
       "priceValue": 360,
       "currency": "AUD",
       "subjectPresent": true,
-      "forwardFacing": true
+      "forwardFacing": true,
+      "shopTypes": ["ready-to-wear-all","dress"]
     },
     {
       "id": "JB-0272",
@@ -11256,7 +11523,8 @@
       "priceValue": 420,
       "currency": "AUD",
       "subjectPresent": true,
-      "forwardFacing": true
+      "forwardFacing": true,
+      "shopTypes": ["ready-to-wear-all","dress"]
     },
     {
       "id": "JB-0273",
@@ -11296,7 +11564,8 @@
       "colourSourceUrl": "https://sirthelabel.com/collections/dress/products/lilou-halter-mini-dress-liora-blue",
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
-      "colourTaxonomyVersion": "jb-colour-taxonomy-v1"
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": ["ready-to-wear-all","dress"]
     },
     {
       "id": "JB-0274",
@@ -11336,7 +11605,8 @@
       "colourSourceUrl": "https://sirthelabel.com/collections/dress/products/noemi-halter-mini-dress-ivory",
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
-      "colourTaxonomyVersion": "jb-colour-taxonomy-v1"
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": ["ready-to-wear-all","dress"]
     },
     {
       "id": "JB-0275",
@@ -11367,7 +11637,8 @@
       "priceValue": 520,
       "currency": "AUD",
       "subjectPresent": true,
-      "forwardFacing": true
+      "forwardFacing": true,
+      "shopTypes": ["ready-to-wear-all","dress"]
     },
     {
       "id": "JB-0276",
@@ -11398,7 +11669,8 @@
       "priceValue": 620,
       "currency": "AUD",
       "subjectPresent": true,
-      "forwardFacing": true
+      "forwardFacing": true,
+      "shopTypes": ["ready-to-wear-all","dress"]
     },
     {
       "id": "JB-0277",
@@ -11438,7 +11710,8 @@
       "colourSourceUrl": "https://sirthelabel.com/collections/dress/products/zaria-shirt-dress-ivory",
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
-      "colourTaxonomyVersion": "jb-colour-taxonomy-v1"
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": ["ready-to-wear-all","dress"]
     },
     {
       "id": "JB-0278",
@@ -11478,7 +11751,8 @@
       "colourSourceUrl": "https://sirthelabel.com/collections/dress/products/alizee-structured-mini-dress-black",
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
-      "colourTaxonomyVersion": "jb-colour-taxonomy-v1"
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": ["ready-to-wear-all","dress"]
     },
     {
       "id": "JB-0279",
@@ -11518,7 +11792,8 @@
       "colourSourceUrl": "https://sirthelabel.com/collections/dress/products/noemi-halter-mini-dress-chocolate",
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
-      "colourTaxonomyVersion": "jb-colour-taxonomy-v1"
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": ["ready-to-wear-all","dress"]
     },
     {
       "id": "JB-0281",
@@ -11560,7 +11835,8 @@
       "colourSourceUrl": "https://triangl.com/en-au/products/minni-sert-terry-towelling-mini-dress?variant=42555423719520",
       "colourSourceType": "Retailer page",
       "colourCheckedAt": "2026-07-31",
-      "colourTaxonomyVersion": "jb-colour-taxonomy-v1"
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": ["ready-to-wear-all","dress"]
     },
     {
       "id": "JB-0282",
@@ -11600,7 +11876,8 @@
       "colourSourceUrl": "https://triangl.com/en-au/products/minni-loni-stripe-crochet-mini-dress?variant=42465795473504",
       "colourSourceType": "Retailer page",
       "colourCheckedAt": "2026-07-31",
-      "colourTaxonomyVersion": "jb-colour-taxonomy-v1"
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": ["ready-to-wear-all","dress"]
     },
     {
       "id": "JB-0283",
@@ -11642,7 +11919,8 @@
       "colourSourceUrl": "https://triangl.com/en-au/products/maia-alina-pink-crochet-scoop-bikini-set",
       "colourSourceType": "Retailer page",
       "colourCheckedAt": "2026-07-31",
-      "colourTaxonomyVersion": "jb-colour-taxonomy-v1"
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": ["swimwear-all","bikini"]
     },
     {
       "id": "JB-0284",
@@ -11685,7 +11963,8 @@
       "colourSourceUrl": "https://triangl.com/en-au/products/este-panda-white-neoprene-halter-bikini-set",
       "colourSourceType": "Retailer page",
       "colourCheckedAt": "2026-07-31",
-      "colourTaxonomyVersion": "jb-colour-taxonomy-v1"
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": ["swimwear-all","ready-to-wear-all","bikini","crop"]
     },
     {
       "id": "JB-0285",
@@ -11728,7 +12007,8 @@
       "colourSourceUrl": "https://triangl.com/en-au/products/mima-sala-blue-crop-bikini-set",
       "colourSourceType": "Retailer page",
       "colourCheckedAt": "2026-07-31",
-      "colourTaxonomyVersion": "jb-colour-taxonomy-v1"
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": ["swimwear-all","ready-to-wear-all","bikini","crop"]
     },
     {
       "id": "JB-0286",
@@ -11770,7 +12050,8 @@
       "colourSourceUrl": "https://triangl.com/en-au/products/mima-silver-sparkle-crop-bikini-set",
       "colourSourceType": "Retailer page",
       "colourCheckedAt": "2026-07-31",
-      "colourTaxonomyVersion": "jb-colour-taxonomy-v1"
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": ["swimwear-all","ready-to-wear-all","bikini","crop"]
     },
     {
       "id": "JB-0287",
@@ -11814,7 +12095,8 @@
       "colourSourceUrl": "https://triangl.com/en-au/products/richi-sun-sprinkle-polka-dot-short?variant=42863861956704",
       "colourSourceType": "Retailer page",
       "colourCheckedAt": "2026-07-31",
-      "colourTaxonomyVersion": "jb-colour-taxonomy-v1"
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": ["ready-to-wear-all","shorts"]
     },
     {
       "id": "JB-0288",
@@ -11856,7 +12138,8 @@
       "colourSourceUrl": "https://wardrobe.nyc/collections/dresses/products/sheer-dress-midi-w5091f25nydkb",
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
-      "colourTaxonomyVersion": "jb-colour-taxonomy-v1"
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": ["ready-to-wear-all","dress"]
     },
     {
       "id": "JB-0289",
@@ -11898,7 +12181,8 @@
       "colourSourceUrl": "https://wardrobe.nyc/collections/skirts/products/sheer-skirt-w3010s25nyblk",
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
-      "colourTaxonomyVersion": "jb-colour-taxonomy-v1"
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": ["ready-to-wear-all"]
     },
     {
       "id": "JB-0290",
@@ -11940,7 +12224,8 @@
       "colourSourceUrl": "https://wardrobe.nyc/collections/skirts/products/rhw-web-skirt-w3027h26knblk",
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
-      "colourTaxonomyVersion": "jb-colour-taxonomy-v1"
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": ["ready-to-wear-all"]
     },
     {
       "id": "JB-0291",
@@ -11982,7 +12267,8 @@
       "colourSourceUrl": "https://wardrobe.nyc/collections/skirts/products/exclusive-contour-mini-skirtw3004s26wolem",
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
-      "colourTaxonomyVersion": "jb-colour-taxonomy-v1"
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": ["ready-to-wear-all"]
     },
     {
       "id": "JB-0292",
@@ -12024,7 +12310,8 @@
       "colourSourceUrl": "https://wardrobe.nyc/collections/skirts/products/sheer-skirt-w3010s25nydkb",
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
-      "colourTaxonomyVersion": "jb-colour-taxonomy-v1"
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": ["ready-to-wear-all"]
     },
     {
       "id": "JB-0293",
@@ -12067,7 +12354,8 @@
       "colourSourceUrl": "https://wardrobe.nyc/collections/skirts/products/lace-skirt-w3010s25mebsi",
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
-      "colourTaxonomyVersion": "jb-colour-taxonomy-v1"
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": ["ready-to-wear-all"]
     },
     {
       "id": "JB-0294",
@@ -12100,7 +12388,8 @@
       "priceValue": 600,
       "currency": "AUD",
       "subjectPresent": true,
-      "forwardFacing": true
+      "forwardFacing": true,
+      "shopTypes": ["ready-to-wear-all"]
     },
     {
       "id": "JB-0295",
@@ -12143,7 +12432,8 @@
       "colourSourceUrl": "https://wardrobe.nyc/collections/leggings/products/opaque-stirrup-legging-w2245w25jeblk",
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
-      "colourTaxonomyVersion": "jb-colour-taxonomy-v1"
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": ["ready-to-wear-all","leggings"]
     },
     {
       "id": "JB-0296",
@@ -12186,7 +12476,8 @@
       "colourSourceUrl": "https://wardrobe.nyc/collections/leggings/products/opaque-stirrup-legging-w2245w25jeash",
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
-      "colourTaxonomyVersion": "jb-colour-taxonomy-v1"
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": ["ready-to-wear-all","leggings"]
     },
     {
       "id": "JB-0297",
@@ -12228,7 +12519,8 @@
       "colourSourceUrl": "https://wardrobe.nyc/collections/bodysuits/products/sheer-bodysuit-w5043f25nytau",
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
-      "colourTaxonomyVersion": "jb-colour-taxonomy-v1"
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": ["ready-to-wear-all","bodysuit"]
     },
     {
       "id": "JB-0298",
@@ -12270,7 +12562,8 @@
       "colourSourceUrl": "https://wardrobe.nyc/collections/bodysuits/products/sheer-bodysuit-w5043f25nybut",
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
-      "colourTaxonomyVersion": "jb-colour-taxonomy-v1"
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": ["ready-to-wear-all","bodysuit"]
     },
     {
       "id": "JB-0299",
@@ -12312,7 +12605,8 @@
       "colourSourceUrl": "https://wardrobe.nyc/collections/bodysuits/products/lace-bodysuit-w5051f25lcblk",
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
-      "colourTaxonomyVersion": "jb-colour-taxonomy-v1"
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": ["ready-to-wear-all","bodysuit"]
     },
     {
       "id": "JB-0300",
@@ -12354,7 +12648,8 @@
       "colourSourceUrl": "https://wardrobe.nyc/collections/bodysuits/products/sheer-bodysuit-w5043f25nyblk",
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
-      "colourTaxonomyVersion": "jb-colour-taxonomy-v1"
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": ["ready-to-wear-all","bodysuit"]
     },
     {
       "id": "JB-0301",
@@ -12396,7 +12691,8 @@
       "colourSourceUrl": "https://wardrobe.nyc/collections/bodysuits/products/sheer-bodysuit-w5043f25nydkb",
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
-      "colourTaxonomyVersion": "jb-colour-taxonomy-v1"
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": ["ready-to-wear-all","bodysuit"]
     },
     {
       "id": "JB-0302",
@@ -12438,7 +12734,8 @@
       "colourSourceUrl": "https://wardrobe.nyc/collections/bodysuits/products/lace-bodysuit-w5051f25lcofw",
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
-      "colourTaxonomyVersion": "jb-colour-taxonomy-v1"
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": ["ready-to-wear-all","bodysuit"]
     },
     {
       "id": "JB-0303",
@@ -12481,7 +12778,8 @@
       "colourSourceUrl": "https://wardrobe.nyc/collections/bodysuits/products/lace-bodysuit-w5051f25mebsi",
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
-      "colourTaxonomyVersion": "jb-colour-taxonomy-v1"
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": ["ready-to-wear-all","bodysuit"]
     },
     {
       "id": "JB-0304",
@@ -12524,7 +12822,8 @@
       "colourSourceUrl": "https://wardrobe.nyc/collections/bodysuits/products/lace-tank-bodysuit-w1119s25mebsi",
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
-      "colourTaxonomyVersion": "jb-colour-taxonomy-v1"
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": ["ready-to-wear-all","bodysuit"]
     },
     {
       "id": "JB-0305",
@@ -12566,7 +12865,8 @@
       "colourSourceUrl": "https://wardrobe.nyc/collections/bodysuits/products/sheer-tank-bodysuit-w1119s25nyblk",
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
-      "colourTaxonomyVersion": "jb-colour-taxonomy-v1"
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": ["ready-to-wear-all","bodysuit"]
     },
     {
       "id": "JB-0306",
@@ -12599,7 +12899,8 @@
       "priceValue": 860,
       "currency": "AUD",
       "subjectPresent": true,
-      "forwardFacing": true
+      "forwardFacing": true,
+      "shopTypes": ["ready-to-wear-all","bodysuit"]
     },
     {
       "id": "JB-0307",
@@ -12641,7 +12942,8 @@
       "colourSourceUrl": "https://wardrobe.nyc/collections/bodysuits/products/translucent-bodysuit-w1178h26nysky",
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
-      "colourTaxonomyVersion": "jb-colour-taxonomy-v1"
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": ["ready-to-wear-all","bodysuit"]
     },
     {
       "id": "JB-0308",
@@ -12683,7 +12985,8 @@
       "colourSourceUrl": "https://wardrobe.nyc/collections/bodysuits/products/rhw-web-tank-bodysuit-w1166h26knblk",
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
-      "colourTaxonomyVersion": "jb-colour-taxonomy-v1"
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": ["ready-to-wear-all","bodysuit"]
     },
     {
       "id": "JB-0309",
@@ -12721,7 +13024,8 @@
       "subjectPresent": true,
       "forwardFacing": false,
       "requiresReview": false,
-      "reviewNotes": ""
+      "reviewNotes": "",
+      "shopTypes": ["ready-to-wear-all","bodysuit","after-dark"]
     },
     {
       "id": "JB-0310",
@@ -12754,7 +13058,8 @@
       "priceValue": 4767,
       "currency": "AUD",
       "subjectPresent": true,
-      "forwardFacing": true
+      "forwardFacing": true,
+      "shopTypes": ["ready-to-wear-all","after-dark","dress"]
     },
     {
       "id": "JB-0311",
@@ -12798,7 +13103,8 @@
       "colourSourceUrl": "https://skims.com/en-au/products/fits-everybody-lace-scoop-bralette-onyx",
       "colourSourceType": "Retailer page",
       "colourCheckedAt": "2026-07-31",
-      "colourTaxonomyVersion": "jb-colour-taxonomy-v1"
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": ["lingerie-all","bra"]
     },
     {
       "id": "JB-0312",
@@ -12841,7 +13147,8 @@
       "colourSourceUrl": "https://eu.bordelle.co.uk/products/signature-harness-angela-dress-burnt-red?variant=43656631681196",
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
-      "colourTaxonomyVersion": "jb-colour-taxonomy-v1"
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": ["lingerie-all","ready-to-wear-all","after-dark","dress","accessories"]
     },
     {
       "id": "JB-0313",
@@ -12877,7 +13184,8 @@
       "subjectPresent": false,
       "forwardFacing": false,
       "requiresReview": false,
-      "reviewNotes": ""
+      "reviewNotes": "",
+      "shopTypes": ["ready-to-wear-all","hosiery","after-dark"]
     },
     {
       "id": "JB-0314",
@@ -12919,7 +13227,8 @@
       "colourSourceUrl": "https://triangl.com/en-au/products/celeste-jett-black-short?variant=42685752049760",
       "colourSourceType": "Retailer page",
       "colourCheckedAt": "2026-07-31",
-      "colourTaxonomyVersion": "jb-colour-taxonomy-v1"
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": ["swimwear-all","bikini","shorts"]
     },
     {
       "id": "JB-0315",
@@ -12960,7 +13269,8 @@
       "colourSourceUrl": "https://www.freepeople.com/france/fpmovement/shop/montce-micro-surf-shorts/?color=002&searchparams=epik%3Ddj0yJnU9YThzY3NpaXE0RzNRN0VyT0h1MXctLWZFVGpVakNMR0UmcD0wJm49cG1zZk1EZ1RIVHZ2dUdfRGp3eUdrQSZ0PUFBQUFBR3BwRnBv%26q%3Dsurf&new_tab=1&a15_rid=c76767ebd9ae%2FZmCq6uxCL1-7331437",
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
-      "colourTaxonomyVersion": "jb-colour-taxonomy-v1"
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": ["swimwear-all","bikini"]
     },
     {
       "id": "JB-0316",
@@ -12992,7 +13302,8 @@
       "sourceImageUrl": "https://images.urbndata.com/is/image/FreePeople/104449665_002_a/?$a15-pdp-detail-shot$&fit=constrain&qlt=80&wid=640",
       "subjectPresent": true,
       "forwardFacing": true,
-      "notionPageId": "3ac7b9c9-9c56-81ec-b40e-cc017951a1d4"
+      "notionPageId": "3ac7b9c9-9c56-81ec-b40e-cc017951a1d4",
+      "shopTypes": ["swimwear-all","swimsuit"]
     },
     {
       "id": "JB-0317",
@@ -13033,7 +13344,8 @@
       "colourSourceUrl": "https://www.freepeople.com/france/fpmovement/shop/toast-signature-surf-suit/?color=030&searchparams=epik%3Ddj0yJnU9YThzY3NpaXE0RzNRN0VyT0h1MXctLWZFVGpVakNMR0UmcD0wJm49cG1zZk1EZ1RIVHZ2dUdfRGp3eUdrQSZ0PUFBQUFBR3BwRnBv%26q%3Dsurf&new_tab=1&a15_rid=c76767ebd9ae%2FZmCq6uxCL1-7331437",
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
-      "colourTaxonomyVersion": "jb-colour-taxonomy-v1"
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": ["swimwear-all","swimsuit"]
     },
     {
       "id": "JB-0318",
@@ -13076,7 +13388,8 @@
       "colourSourceUrl": "https://www.freepeople.com/france/fpmovement/shop/watskin-zoe-quarter-sleeve-surf-suit/?color=041&searchparams=epik%3Ddj0yJnU9YThzY3NpaXE0RzNRN0VyT0h1MXctLWZFVGpVakNMR0UmcD0wJm49cG1zZk1EZ1RIVHZ2dUdfRGp3eUdrQSZ0PUFBQUFBR3BwRnBv%26q%3Dsurf&new_tab=1&a15_rid=c76767ebd9ae%2FZmCq6uxCL1-7331437",
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
-      "colourTaxonomyVersion": "jb-colour-taxonomy-v1"
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": ["swimwear-all","swimsuit"]
     },
     {
       "id": "JB-0319",
@@ -13108,7 +13421,8 @@
       "sourceImageUrl": "https://images.urbndata.com/is/image/FreePeople/110704103_008_0/?$a15-pdp-detail-shot$&fit=constrain&qlt=80&wid=640",
       "subjectPresent": true,
       "forwardFacing": true,
-      "notionPageId": "3ac7b9c9-9c56-8118-bfad-d0d8e2239654"
+      "notionPageId": "3ac7b9c9-9c56-8118-bfad-d0d8e2239654",
+      "shopTypes": ["swimwear-all","swimsuit"]
     },
     {
       "id": "JB-0320",
@@ -13149,7 +13463,8 @@
       "colourSourceUrl": "https://www.freepeople.com/france/fpmovement/shop/acacia-oliver-ribbed-one-piece-surf-suit/?color=040&searchparams=epik%3Ddj0yJnU9YThzY3NpaXE0RzNRN0VyT0h1MXctLWZFVGpVakNMR0UmcD0wJm49cG1zZk1EZ1RIVHZ2dUdfRGp3eUdrQSZ0PUFBQUFBR3BwRnBv%26q%3Dsurf&new_tab=1&a15_rid=c76767ebd9ae%2FZmCq6uxCL1-7331437",
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
-      "colourTaxonomyVersion": "jb-colour-taxonomy-v1"
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": ["swimwear-all","swimsuit"]
     },
     {
       "id": "JB-0321",
@@ -13190,7 +13505,8 @@
       "colourSourceUrl": "https://www.freepeople.com/france/fpmovement/shop/abysse-malia-surf-bottom2/?color=026&searchparams=epik%3Ddj0yJnU9YThzY3NpaXE0RzNRN0VyT0h1MXctLWZFVGpVakNMR0UmcD0wJm49cG1zZk1EZ1RIVHZ2dUdfRGp3eUdrQSZ0PUFBQUFBR3BwRnBv%26q%3Dsurf&new_tab=1&a15_rid=c76767ebd9ae%2FZmCq6uxCL1-7331437",
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
-      "colourTaxonomyVersion": "jb-colour-taxonomy-v1"
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": ["swimwear-all","bikini"]
     },
     {
       "id": "JB-0322",
@@ -13222,7 +13538,8 @@
       "sourceImageUrl": "https://images.urbndata.com/is/image/FreePeople/111726592_080_f/?$a15-pdp-detail-shot$&fit=constrain&qlt=80&wid=640",
       "subjectPresent": true,
       "forwardFacing": true,
-      "notionPageId": "3ac7b9c9-9c56-8114-9788-ceaa7ee7a8a0"
+      "notionPageId": "3ac7b9c9-9c56-8114-9788-ceaa7ee7a8a0",
+      "shopTypes": ["swimwear-all","bikini"]
     },
     {
       "id": "JB-0323",
@@ -13254,7 +13571,8 @@
       "sourceImageUrl": "https://images.urbndata.com/is/image/FreePeople/111726162_072_b/?$a15-pdp-detail-shot$&fit=constrain&qlt=80&wid=640",
       "subjectPresent": true,
       "forwardFacing": true,
-      "notionPageId": "3ac7b9c9-9c56-8101-850b-e0b801fb021d"
+      "notionPageId": "3ac7b9c9-9c56-8101-850b-e0b801fb021d",
+      "shopTypes": ["swimwear-all","bikini"]
     },
     {
       "id": "JB-0324",
@@ -13286,7 +13604,8 @@
       "sourceImageUrl": "https://images.urbndata.com/is/image/FreePeople/79665501_001_a/?$a15-pdp-detail-shot$&fit=constrain&qlt=80&wid=640",
       "subjectPresent": true,
       "forwardFacing": true,
-      "notionPageId": "3ac7b9c9-9c56-816a-a7ee-ebc5874db10a"
+      "notionPageId": "3ac7b9c9-9c56-816a-a7ee-ebc5874db10a",
+      "shopTypes": ["swimwear-all","swimsuit"]
     },
     {
       "id": "JB-0325",
@@ -13327,7 +13646,8 @@
       "colourSourceUrl": "https://www.freepeople.com/france/fpmovement/shop/seea-caroline-one-piece-surf-suit/?color=001&searchparams=epik%3Ddj0yJnU9YThzY3NpaXE0RzNRN0VyT0h1MXctLWZFVGpVakNMR0UmcD0wJm49cG1zZk1EZ1RIVHZ2dUdfRGp3eUdrQSZ0PUFBQUFBR3BwRnBv%26q%3Dsurf&new_tab=1&a15_rid=c76767ebd9ae%2FZmCq6uxCL1-7331437",
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
-      "colourTaxonomyVersion": "jb-colour-taxonomy-v1"
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": ["swimwear-all","swimsuit"]
     },
     {
       "id": "JB-0326",
@@ -13368,7 +13688,8 @@
       "colourSourceUrl": "https://www.freepeople.com/france/fpmovement/shop/strait-the-label-tide-eco-surf-suit/?color=001&searchparams=epik%3Ddj0yJnU9YThzY3NpaXE0RzNRN0VyT0h1MXctLWZFVGpVakNMR0UmcD0wJm49cG1zZk1EZ1RIVHZ2dUdfRGp3eUdrQSZ0PUFBQUFBR3BwRnBv%26q%3Dsurf&new_tab=1&a15_rid=c76767ebd9ae%2FZmCq6uxCL1-7331437",
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
-      "colourTaxonomyVersion": "jb-colour-taxonomy-v1"
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": ["swimwear-all","swimsuit"]
     },
     {
       "id": "JB-0327",
@@ -13409,7 +13730,8 @@
       "colourSourceUrl": "https://www.freepeople.com/france/fpmovement/shop/abysse-jenna-surf-top/?color=011&searchparams=epik%3Ddj0yJnU9YThzY3NpaXE0RzNRN0VyT0h1MXctLWZFVGpVakNMR0UmcD0wJm49cG1zZk1EZ1RIVHZ2dUdfRGp3eUdrQSZ0PUFBQUFBR3BwRnBv%26q%3Dsurf&new_tab=1&a15_rid=c76767ebd9ae%2FZmCq6uxCL1-7331437",
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
-      "colourTaxonomyVersion": "jb-colour-taxonomy-v1"
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": ["swimwear-all","bikini"]
     },
     {
       "id": "JB-0328",
@@ -13450,7 +13772,8 @@
       "colourSourceUrl": "https://www.freepeople.com/france/fpmovement/shop/strait-the-label-native-one-piece-surf-suit/?color=001&searchparams=epik%3Ddj0yJnU9YThzY3NpaXE0RzNRN0VyT0h1MXctLWZFVGpVakNMR0UmcD0wJm49cG1zZk1EZ1RIVHZ2dUdfRGp3eUdrQSZ0PUFBQUFBR3BwRnBv%26q%3Dsurf&new_tab=1&a15_rid=c76767ebd9ae%2FZmCq6uxCL1-7331437",
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
-      "colourTaxonomyVersion": "jb-colour-taxonomy-v1"
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": ["swimwear-all","swimsuit"]
     },
     {
       "id": "JB-0329",
@@ -13482,7 +13805,8 @@
       "sourceImageUrl": "https://images.urbndata.com/is/image/FreePeople/104464706_001_a/?$a15-pdp-detail-shot$&fit=constrain&qlt=80&wid=640",
       "subjectPresent": true,
       "forwardFacing": true,
-      "notionPageId": "3ac7b9c9-9c56-8196-8999-c0450448c39d"
+      "notionPageId": "3ac7b9c9-9c56-8196-8999-c0450448c39d",
+      "shopTypes": ["swimwear-all","bikini"]
     },
     {
       "id": "JB-0330",
@@ -13514,7 +13838,8 @@
       "sourceImageUrl": "https://images.urbndata.com/is/image/FreePeople/111726832_060_n/?$a15-pdp-detail-shot$&fit=constrain&qlt=80&wid=640",
       "subjectPresent": true,
       "forwardFacing": true,
-      "notionPageId": "3ac7b9c9-9c56-819b-8e3f-ca74d1e9a679"
+      "notionPageId": "3ac7b9c9-9c56-819b-8e3f-ca74d1e9a679",
+      "shopTypes": ["swimwear-all","ready-to-wear-all"]
     },
     {
       "id": "JB-0331",
@@ -13555,7 +13880,8 @@
       "colourSourceUrl": "https://lisamariefernandez.com/products/2025core566-bn",
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
-      "colourTaxonomyVersion": "jb-colour-taxonomy-v1"
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": ["swimwear-all","swimsuit"]
     },
     {
       "id": "JB-0332",
@@ -13596,7 +13922,8 @@
       "colourSourceUrl": "https://lisamariefernandez.com/products/2025core558-nn",
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
-      "colourTaxonomyVersion": "jb-colour-taxonomy-v1"
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": ["swimwear-all","swimsuit","bikini"]
     },
     {
       "id": "JB-0333",
@@ -13637,7 +13964,8 @@
       "colourSourceUrl": "https://lisamariefernandez.com/products/2025core001-nn",
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
-      "colourTaxonomyVersion": "jb-colour-taxonomy-v1"
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": ["swimwear-all","swimsuit","bikini"]
     },
     {
       "id": "JB-0334",
@@ -13678,7 +14006,8 @@
       "colourSourceUrl": "https://lisamariefernandez.com/products/2025core001-rn",
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
-      "colourTaxonomyVersion": "jb-colour-taxonomy-v1"
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": ["swimwear-all","swimsuit","bikini"]
     },
     {
       "id": "JB-0335",
@@ -13719,7 +14048,8 @@
       "colourSourceUrl": "https://lisamariefernandez.com/products/2025core557-bn",
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
-      "colourTaxonomyVersion": "jb-colour-taxonomy-v1"
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": ["swimwear-all","swimsuit","bikini"]
     },
     {
       "id": "JB-0336",
@@ -13762,7 +14092,8 @@
       "colourSourceUrl": "https://lisamariefernandez.com/products/2025core557-nbcbn",
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
-      "colourTaxonomyVersion": "jb-colour-taxonomy-v1"
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": ["swimwear-all","swimsuit","bikini"]
     },
     {
       "id": "JB-0337",
@@ -13805,7 +14136,8 @@
       "colourSourceUrl": "https://lisamariefernandez.com/products/2025core557-rbcbn",
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
-      "colourTaxonomyVersion": "jb-colour-taxonomy-v1"
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": ["swimwear-all","swimsuit","bikini"]
     },
     {
       "id": "JB-0338",
@@ -13846,7 +14178,8 @@
       "colourSourceUrl": "https://lisamariefernandez.com/products/the-magdalena-high-waist-bikini-in-white-textured-jacquard",
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
-      "colourTaxonomyVersion": "jb-colour-taxonomy-v1"
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": ["swimwear-all","swimsuit","bikini"]
     },
     {
       "id": "JB-0339",
@@ -13887,7 +14220,8 @@
       "colourSourceUrl": "https://lisamariefernandez.com/products/2025core549-nn",
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
-      "colourTaxonomyVersion": "jb-colour-taxonomy-v1"
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": ["swimwear-all","swimsuit","bikini"]
     },
     {
       "id": "JB-0340",
@@ -13928,7 +14262,8 @@
       "colourSourceUrl": "https://lisamariefernandez.com/products/2025core549-rn",
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
-      "colourTaxonomyVersion": "jb-colour-taxonomy-v1"
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": ["swimwear-all","swimsuit","bikini"]
     },
     {
       "id": "JB-0341",
@@ -13969,7 +14304,8 @@
       "colourSourceUrl": "https://lisamariefernandez.com/products/2025core563-rn",
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
-      "colourTaxonomyVersion": "jb-colour-taxonomy-v1"
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": ["swimwear-all","swimsuit","bikini"]
     },
     {
       "id": "JB-0342",
@@ -14010,7 +14346,8 @@
       "colourSourceUrl": "https://lisamariefernandez.com/products/2025core564-bn",
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
-      "colourTaxonomyVersion": "jb-colour-taxonomy-v1"
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": ["swimwear-all","swimsuit","bikini"]
     },
     {
       "id": "JB-0343",
@@ -14051,7 +14388,8 @@
       "colourSourceUrl": "https://lisamariefernandez.com/products/2025core564-nn",
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
-      "colourTaxonomyVersion": "jb-colour-taxonomy-v1"
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": ["swimwear-all","swimsuit","bikini"]
     },
     {
       "id": "JB-0344",
@@ -14092,7 +14430,8 @@
       "colourSourceUrl": "https://lisamariefernandez.com/products/2025core564-rn",
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
-      "colourTaxonomyVersion": "jb-colour-taxonomy-v1"
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": ["swimwear-all","swimsuit","bikini"]
     },
     {
       "id": "JB-0345",
@@ -14133,7 +14472,8 @@
       "colourSourceUrl": "https://lisamariefernandez.com/products/2025core559-bn",
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
-      "colourTaxonomyVersion": "jb-colour-taxonomy-v1"
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": ["swimwear-all","swimsuit","bikini"]
     },
     {
       "id": "JB-0346",
@@ -14174,7 +14514,8 @@
       "colourSourceUrl": "https://lisamariefernandez.com/products/2025core559-nn",
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
-      "colourTaxonomyVersion": "jb-colour-taxonomy-v1"
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": ["swimwear-all","swimsuit","bikini"]
     },
     {
       "id": "JB-0347",
@@ -14215,7 +14556,8 @@
       "colourSourceUrl": "https://lisamariefernandez.com/products/2025core559-rn",
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
-      "colourTaxonomyVersion": "jb-colour-taxonomy-v1"
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": ["swimwear-all","swimsuit","bikini"]
     },
     {
       "id": "JB-0348",
@@ -14256,7 +14598,8 @@
       "colourSourceUrl": "https://lisamariefernandez.com/products/2025core548zh-bn",
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
-      "colourTaxonomyVersion": "jb-colour-taxonomy-v1"
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": ["swimwear-all","swimsuit","bikini"]
     },
     {
       "id": "JB-0349",
@@ -14297,7 +14640,8 @@
       "colourSourceUrl": "https://lisamariefernandez.com/products/2025core558-bn",
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
-      "colourTaxonomyVersion": "jb-colour-taxonomy-v1"
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": ["swimwear-all","swimsuit","bikini"]
     },
     {
       "id": "JB-0350",
@@ -14338,7 +14682,8 @@
       "colourSourceUrl": "https://lisamariefernandez.com/products/2025core558-rn",
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
-      "colourTaxonomyVersion": "jb-colour-taxonomy-v1"
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": ["swimwear-all","swimsuit","bikini"]
     },
     {
       "id": "JB-0351",
@@ -14379,7 +14724,8 @@
       "colourSourceUrl": "https://lisamariefernandez.com/products/2025core547-bn",
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
-      "colourTaxonomyVersion": "jb-colour-taxonomy-v1"
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": ["swimwear-all","swimsuit"]
     },
     {
       "id": "JB-0352",
@@ -14420,7 +14766,8 @@
       "colourSourceUrl": "https://lisamariefernandez.com/products/2025core563-bn",
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
-      "colourTaxonomyVersion": "jb-colour-taxonomy-v1"
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": ["swimwear-all","swimsuit","bikini"]
     },
     {
       "id": "JB-0353",
@@ -14461,7 +14808,8 @@
       "colourSourceUrl": "https://lisamariefernandez.com/products/farrah-black-rubberized-neoprene-maillot",
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
-      "colourTaxonomyVersion": "jb-colour-taxonomy-v1"
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": ["swimwear-all","swimsuit"]
     },
     {
       "id": "JB-0354",
@@ -14502,7 +14850,8 @@
       "colourSourceUrl": "https://lisamariefernandez.com/products/the-farrah-in-navy-neoprene",
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
-      "colourTaxonomyVersion": "jb-colour-taxonomy-v1"
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": ["swimwear-all","swimsuit"]
     },
     {
       "id": "JB-0355",
@@ -14543,7 +14892,8 @@
       "colourSourceUrl": "https://lisamariefernandez.com/products/farrah-black-bonded-maillot",
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
-      "colourTaxonomyVersion": "jb-colour-taxonomy-v1"
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": ["swimwear-all","swimsuit"]
     },
     {
       "id": "JB-0356",
@@ -14584,7 +14934,8 @@
       "colourSourceUrl": "https://lisamariefernandez.com/products/the-halter-maillot-in-black-terry-cloth",
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
-      "colourTaxonomyVersion": "jb-colour-taxonomy-v1"
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": ["swimwear-all","swimsuit"]
     },
     {
       "id": "JB-0357",
@@ -14626,7 +14977,8 @@
       "colourSourceUrl": "https://lisamariefernandez.com/products/the-halter-maillot-in-natural-sand-striped-seersucker",
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
-      "colourTaxonomyVersion": "jb-colour-taxonomy-v1"
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": ["swimwear-all","swimsuit"]
     },
     {
       "id": "JB-0358",
@@ -14667,7 +15019,8 @@
       "colourSourceUrl": "https://lisamariefernandez.com/products/2025core551-bn",
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
-      "colourTaxonomyVersion": "jb-colour-taxonomy-v1"
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": ["swimwear-all","swimsuit"]
     },
     {
       "id": "JB-0359",
@@ -14710,7 +15063,8 @@
       "colourSourceUrl": "https://lisamariefernandez.com/products/2025core556-nbcbn",
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
-      "colourTaxonomyVersion": "jb-colour-taxonomy-v1"
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": ["swimwear-all","swimsuit"]
     },
     {
       "id": "JB-0360",
@@ -14751,7 +15105,8 @@
       "colourSourceUrl": "https://lisamariefernandez.com/products/the-marilyn-maillot-in-black-seersucker-1",
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
-      "colourTaxonomyVersion": "jb-colour-taxonomy-v1"
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": ["swimwear-all","swimsuit"]
     },
     {
       "id": "JB-0361",
@@ -14792,7 +15147,8 @@
       "colourSourceUrl": "https://lisamariefernandez.com/products/2025core566-nn",
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
-      "colourTaxonomyVersion": "jb-colour-taxonomy-v1"
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": ["swimwear-all","swimsuit"]
     },
     {
       "id": "JB-0362",
@@ -14833,7 +15189,8 @@
       "colourSourceUrl": "https://lisamariefernandez.com/products/2025core566-rn",
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
-      "colourTaxonomyVersion": "jb-colour-taxonomy-v1"
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": ["swimwear-all","swimsuit"]
     },
     {
       "id": "JB-0363",
@@ -14874,7 +15231,8 @@
       "colourSourceUrl": "https://lisamariefernandez.com/products/2025core551-nn",
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
-      "colourTaxonomyVersion": "jb-colour-taxonomy-v1"
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": ["swimwear-all","swimsuit"]
     },
     {
       "id": "JB-0364",
@@ -14916,7 +15274,8 @@
       "colourSourceUrl": "https://lisamariefernandez.com/products/the-marilyn-maillot-in-blue-striped-seersucker",
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
-      "colourTaxonomyVersion": "jb-colour-taxonomy-v1"
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": ["swimwear-all","swimsuit"]
     },
     {
       "id": "JB-0365",
@@ -14960,7 +15319,8 @@
       "colourSourceUrl": "https://anniesibiza.com/products/sforza-skirt",
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
-      "colourTaxonomyVersion": "jb-colour-taxonomy-v1"
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": ["ready-to-wear-all","after-dark"]
     },
     {
       "id": "JB-0366",
@@ -15003,7 +15363,8 @@
       "colourSourceUrl": "https://anniesibiza.com/products/joan-of-arc-armour-suit",
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
-      "colourTaxonomyVersion": "jb-colour-taxonomy-v1"
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": ["ready-to-wear-all","after-dark","dress"]
     },
     {
       "id": "JB-0367",
@@ -15046,7 +15407,8 @@
       "colourSourceUrl": "https://anniesibiza.com/products/cobweb-black-gown-gown",
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
-      "colourTaxonomyVersion": "jb-colour-taxonomy-v1"
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": ["ready-to-wear-all","after-dark","dress"]
     },
     {
       "id": "JB-0368",
@@ -15086,7 +15448,8 @@
       "sourceImageUrl": "user-supplied:Molly-SJ-Lowe_Show_Sonic-Starquakes_IvHAW26",
       "subjectPresent": true,
       "forwardFacing": true,
-      "notionPageId": "3ad7b9c9-9c56-819c-9745-d285b60f8ac7"
+      "notionPageId": "3ad7b9c9-9c56-819c-9745-d285b60f8ac7",
+      "shopTypes": ["ready-to-wear-all","haute-couture-all","after-dark","dress"]
     }
   ],
   "imagePolicy": {
@@ -15105,5 +15468,101 @@
     "price": "retailer_verified_display_currency",
     "unresolved": "fail_closed_for_human_review",
     "retrievedAt": "2026-07-28"
+  },
+  "shopTaxonomy": {
+    "version": "jb-shop-taxonomy-v1",
+    "authority": "Shop Taxonomy in James Bondage Fashion Tensor Kernel [ shop ] in Notion",
+    "orderPolicy": "editorial_fixed",
+    "matchingPolicy": "products_match_any_assigned_taxonomy_value",
+    "visibleOptions": [
+      {
+        "value": "lingerie-all",
+        "label": "lingerie (all)"
+      },
+      {
+        "value": "swimwear-all",
+        "label": "swimwear (all)"
+      },
+      {
+        "value": "athleisure-all",
+        "label": "athleisure (all)"
+      },
+      {
+        "value": "ready-to-wear-all",
+        "label": "ready to wear (all)"
+      },
+      {
+        "value": "haute-couture-all",
+        "label": "haute couture (all)"
+      },
+      {
+        "value": "bra",
+        "label": "bra"
+      },
+      {
+        "value": "brief",
+        "label": "brief"
+      },
+      {
+        "value": "bodysuit",
+        "label": "bodysuit"
+      },
+      {
+        "value": "hosiery",
+        "label": "hosiery"
+      },
+      {
+        "value": "robe",
+        "label": "robe"
+      },
+      {
+        "value": "after-dark",
+        "label": "after dark"
+      },
+      {
+        "value": "swimsuit",
+        "label": "swimsuit"
+      },
+      {
+        "value": "bikini",
+        "label": "bikini"
+      },
+      {
+        "value": "rash-vest",
+        "label": "rash vest"
+      },
+      {
+        "value": "coverup",
+        "label": "coverup"
+      },
+      {
+        "value": "jumpsuit",
+        "label": "jumpsuit"
+      },
+      {
+        "value": "dress",
+        "label": "dress"
+      },
+      {
+        "value": "shorts",
+        "label": "shorts"
+      },
+      {
+        "value": "pants",
+        "label": "pants"
+      },
+      {
+        "value": "leggings",
+        "label": "leggings"
+      },
+      {
+        "value": "crop",
+        "label": "crop"
+      },
+      {
+        "value": "accessories",
+        "label": "accessories"
+      }
+    ]
   }
 }
