@@ -81,7 +81,8 @@ export function classifyShopProduct(product) {
     || isRashVest;
   const isReadyToWear = forms.has("second skin")
     || ["bodysuit", "dress", "jumpsuit", "legging", "shorts", "skirt", "top"].includes(productType)
-    || hasAny(identityText, [/\bpants?\b/, /\bcrop(?:ped)?\b/, /\bcoat\b/, /\bjacket\b/, /\bonesie\b/]);
+    || (productType !== "bikini bottom"
+      && hasAny(identityText, [/\bpants?\b/, /\bcrop(?:ped)?\b/, /\bcoat\b/, /\bjacket\b/, /\bonesie\b/]));
 
   const athleisureBrands = new Set([
     "lucas hugh",
@@ -101,7 +102,7 @@ export function classifyShopProduct(product) {
   if (isHauteCouture) types.add("haute-couture-all");
 
   if ((productType === "bra" && !/\b(?:hosiery|tights?|stockings?)\b/.test(identityText)) || /\b(?:bra|bralet|bralette|brassiere|bustier|corset)\b/.test(identityText)) types.add("bra");
-  if (productType === "briefs" || /\b(?:briefs?|thong|tanga|knicker|panty|panties|shorties)\b/.test(identityText) || (productType === "other" && /\bshorties\b/.test(descriptionText))) types.add("brief");
+  if (["briefs", "bikini bottom"].includes(productType) || /\b(?:briefs?|thong|tanga|knicker|panty|panties|shorties)\b/.test(identityText) || (productType === "other" && /\bshorties\b/.test(descriptionText))) types.add("brief");
   if (productType === "bodysuit" || /\b(?:bodysuit|bodyshort)\b/.test(identityText) || /\b(?:string|jacquard|sleeveless|engineered) body\b/.test(identityText)) types.add("bodysuit");
   if (productType === "hosiery" || /\b(?:hosiery|tights?|stockings?|socks?)\b/.test(identityText)) types.add("hosiery");
   if (productType === "robe" || /\brobe\b/.test(identityText)) types.add("robe");
@@ -109,12 +110,12 @@ export function classifyShopProduct(product) {
   if (productType === "swimsuit" || (isSwim && hasAny(identityText, [/\bone[ -]piece\b/, /\bswimmer suit\b/, /\bmaillot\b/]))) types.add("swimsuit");
   if (["bikini top", "bikini bottom", "swim set"].includes(productType) || /\bbikini\b/.test(identityText)) types.add("bikini");
   if (isRashVest) types.add("rash-vest");
-  if (isSwim && (productType === "dress" || hasAny(identityText, [/\bcover[ -]?up\b/, /\bkaftan\b/, /\bcaftan\b/, /\bsarong\b/]))) types.add("coverup");
+  if (isSwim && (["dress", "top", "shorts"].includes(productType) || hasAny(identityText, [/\bcover[ -]?up\b/, /\bkaftan\b/, /\bcaftan\b/, /\bsarong\b/]))) types.add("coverup");
   if (productType === "jumpsuit" || /\b(?:jumpsuit|onesie)\b/.test(identityText)) types.add("jumpsuit");
   if (productType === "dress" || /\b(?:dress|gown)\b/.test(identityText)) types.add("dress");
   const shortIsModifier = hasAny(nameText, [/\bshort robe\b/, /\bshort sleeve\b/, /\bshort dress\b/, /\bbodyshort\b/]);
   if ((productType === "shorts" && !shortIsModifier) || /\bshorts\b/.test(nameText) || /\bshort\b(?:\s*[-\[]|$)/.test(nameText)) types.add("shorts");
-  if (/\bpants?\b/.test(identityText)) types.add("pants");
+  if (productType !== "bikini bottom" && /\bpants?\b/.test(identityText)) types.add("pants");
   if ((productType === "legging" && !/\bpants?\b/.test(identityText)) || /\bleggings?\b/.test(identityText)) types.add("leggings");
   if (/\bcrop(?:ped)?\b/.test(identityText)) types.add("crop");
   if (productType === "accessory" || hasAny(identityText, [/\b(?:accessor(?:y|ies)|veil|cape|harness|nipplets?|cap)\b/])) types.add("accessories");
@@ -161,8 +162,8 @@ for (const kernelPath of kernelPaths) {
   }
 }
 
-assert.equal(allProducts.length, 384, "The combined Shop taxonomy must cover all 384 canonical products");
-assert.equal(new Set(allProducts.map((product) => product.id)).size, 384, "Shop taxonomy product IDs must remain unique");
+assert.equal(allProducts.length, 392, "The combined Shop taxonomy must cover all 392 canonical products");
+assert.equal(new Set(allProducts.map((product) => product.id)).size, 392, "Shop taxonomy product IDs must remain unique");
 assert.ok(allProducts.every((product) => product.shopTypes?.length), "Every Shop product must have at least one taxonomy value");
 assert.ok(allProducts.every((product) => product.shopTypes.every((value) => taxonomyOrder.has(value))), "Every Shop taxonomy value must be controlled");
 

@@ -95,7 +95,7 @@ const runtimeProducts = kernel.products.map(filter.prepareProduct);
 assert.equal(runtimeProducts.length, kernel.counts.products, "Every runtime product must remain searchable");
 assert.ok(runtimeProducts.every((product) => typeof product._catalogueSearchText === "string"), "Search text must be prepared once per product");
 const champagneProducts = champagne.products.map(filter.prepareProduct);
-assert.equal(champagneProducts.length, 21, "The concurrent Champagne extension must retain all 21 products");
+assert.equal(champagneProducts.length, 29, "The Champagne extension must retain all 29 products");
 assert.ok(champagneProducts.every((product) => filter.colourFamilies(product).length > 0), "Every supplied Champagne raw colour must map without image inference");
 assert.ok(filter.matchesSearch(champagneProducts[0], champagneProducts[0].brand), "Champagne products must search by their maker brand");
 assert.ok(
@@ -103,11 +103,11 @@ assert.ok(
   "Umbrella route metadata must not replace maker-brand search evidence",
 );
 const combinedProducts = [...runtimeProducts, ...champagneProducts];
-assert.equal(combinedProducts.length, 384, "Search and colour QA must cover the complete reconciled catalogue");
+assert.equal(combinedProducts.length, 392, "Search and colour QA must cover the complete reconciled catalogue");
 assert.equal(combinedProducts.slice(0, 24).length, 24, "Initial catalogue rhythm must remain 24 products");
 const verifiedColourProducts = combinedProducts.filter((product) => product.colourEvidenceStatus === "Verified");
 const allowedColourFamilies = new Set(filter.COLOUR_OPTIONS.map(({ value }) => value));
-assert.equal(verifiedColourProducts.length, 327, "The evidence-backed colour projection must retain all 327 verified products");
+assert.equal(verifiedColourProducts.length, 335, "The evidence-backed colour projection must retain all 335 verified products");
 assert.equal(combinedProducts.filter((product) => filter.colourFamilies(product).length === 0).length, 57, "Unverified colours must remain explicitly unmapped");
 assert.ok(verifiedColourProducts.every((product) => product.colourSourceUrl?.startsWith("https://")), "Every verified colour projection must retain its source URL");
 assert.ok(verifiedColourProducts.every((product) => product.colourCheckedAt === "2026-07-31"), "Every verified colour projection must carry its audit date");

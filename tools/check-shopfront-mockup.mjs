@@ -33,7 +33,7 @@ assert.ok(
 for (const required of [
   "James Bondage",
   "28 brands",
-  "384",
+  "392",
   "JAMES BONDAGE / UNIVERSAL MIND",
   "Bordelle",
   "Angela Dress",
@@ -65,10 +65,10 @@ assert.match(shop, /<title>James Bondage \| Shop<\/title>/, "Standalone Shop tit
 assert.match(index, /document\.title = "James Bondage \| Shop"/, "Shop splash title must use the approved pipe separator");
 assert.match(
   television,
-  /const SHOP_SHELL_VERSION = "shop-champagne-bohemia-2-emilio-safari-3-search-colour-3-taxonomy-2-look-1";[\s\S]*function frameHref\(link\)[\s\S]*url\.searchParams\.set\("v", SHOP_SHELL_VERSION\)/,
+  /const SHOP_SHELL_VERSION = "shop-champagne-bohemia-3-emilio-safari-3-search-colour-4-taxonomy-3-look-1";[\s\S]*function frameHref\(link\)[\s\S]*url\.searchParams\.set\("v", SHOP_SHELL_VERSION\)/,
   "The real Shop entry must cache-bust its embedded Shop shell to the current Champagne Bohemia version",
 );
-assert.match(index, /adaptive-environment-television\.js\?v=music-tv-7ecb5e150404/, "The homepage must load the Shop cache-bust controller");
+assert.match(index, /adaptive-environment-television\.js\?v=music-tv-373e05642399/, "The homepage must load the Shop cache-bust controller");
 
 assert.equal(catalogue.products.length, 36, "Finished ERES catalogue must contain all 36 approved product URLs");
 assert.equal(new Set(catalogue.products.map((product) => product.id)).size, 36, "Catalogue product IDs must be unique");
@@ -218,15 +218,15 @@ for (const product of productKernel.products) {
 assert.equal(champagneCatalogue.catalogue.brand, "Champagne Bohemia", "Champagne Bohemia must remain one umbrella shopfront");
 assert.equal(champagneCatalogue.catalogue.placementAfter, "WARDROBE.NYC", "Champagne Bohemia must remain immediately after WARDROBE.NYC");
 assert.equal(champagneCatalogue.catalogue.route, "#catalogue/champagne-bohemia", "Champagne Bohemia must retain its dedicated route");
-assert.equal(champagneCatalogue.products.length, 21, "Champagne Bohemia must contain the 21 approved Notion products");
+assert.equal(champagneCatalogue.products.length, 29, "Champagne Bohemia must contain the 29 approved Notion products");
 assert.deepEqual(
   champagneCatalogue.products.map((product) => product.id),
-  Array.from({ length: 21 }, (_, index) => `JB-${String(index + 369).padStart(4, "0")}`),
-  "Champagne Bohemia product IDs must remain the contiguous JB-0369 through JB-0389 intake",
+  Array.from({ length: 29 }, (_, index) => `JB-${String(index + 369).padStart(4, "0")}`),
+  "Champagne Bohemia product IDs must remain the contiguous JB-0369 through JB-0397 intake",
 );
-assert.equal(new Set(champagneCatalogue.products.map((product) => product.slug)).size, 21, "Champagne Bohemia product slugs must be unique");
-assert.equal(new Set(champagneCatalogue.products.map((product) => product.canonicalUrl)).size, 21, "Champagne Bohemia canonical product URLs must be unique");
-assert.equal(new Set([...productKernel.products, ...champagneCatalogue.products].map((product) => product.canonicalUrl)).size, 384, "The combined shop tensor must contain 384 unique canonical product URLs");
+assert.equal(new Set(champagneCatalogue.products.map((product) => product.slug)).size, 29, "Champagne Bohemia product slugs must be unique");
+assert.equal(new Set(champagneCatalogue.products.map((product) => product.canonicalUrl)).size, 29, "Champagne Bohemia canonical product URLs must be unique");
+assert.equal(new Set([...productKernel.products, ...champagneCatalogue.products].map((product) => product.canonicalUrl)).size, 392, "The combined shop tensor must contain 392 unique canonical product URLs");
 assert.ok(champagneCatalogue.products.every((product) => product.catalogueBrand === "Champagne Bohemia"), "Every Champagne product must retain the umbrella catalogue brand");
 assert.ok(champagneCatalogue.products.every((product) => product.shopRoute === "#catalogue/champagne-bohemia"), "Every Champagne product must retain the umbrella route");
 assert.ok(champagneCatalogue.products.every((product) => product.forms?.includes("swim")), "Every Champagne product must remain in the swim and cover-up edit");
@@ -252,13 +252,21 @@ assert.deepEqual(
       champagneCatalogue.products.filter((product) => new URL(product.retailerUrl).hostname.replace(/^www\./, "") === host).length,
     ]),
   ),
-  { FWRD: 19, "NET-A-PORTER": 1, "Monte & Lou": 1 },
-  "Champagne Bohemia must retain the audited 19 FWRD / 1 NET-A-PORTER / 1 Monte & Lou destination split",
+  { FWRD: 19, "NET-A-PORTER": 1, "Monte & Lou": 9 },
+  "Champagne Bohemia must retain the audited 19 FWRD / 1 NET-A-PORTER / 9 Monte & Lou destination split",
 );
-const monteAndLouProduct = champagneCatalogue.products.find((product) => product.id === "JB-0389");
-assert.equal(monteAndLouProduct?.image, "a s s e t s/shop-mockup/product-catalogue/champagne-bohemia/jb-0389-monte-lou-plunge-in-situ.webp", "Monte & Lou must use Ben's supplied in-situ image");
-assert.equal(monteAndLouProduct?.imageSource, "user_supplied_editorial_override", "Monte & Lou must identify Ben's supplied image as an editorial override");
-assert.equal(monteAndLouProduct?.inSitu, true, "Monte & Lou supplied image must be recorded as in situ");
+const monteAndLouPlunge = champagneCatalogue.products.find((product) => product.id === "JB-0389");
+assert.equal(monteAndLouPlunge?.image, "a s s e t s/shop-mockup/product-catalogue/champagne-bohemia/jb-0389-monte-lou-plunge-in-situ.webp", "Monte & Lou plunge must retain Ben's supplied in-situ image");
+assert.equal(monteAndLouPlunge?.imageSource, "user_supplied_editorial_override", "Monte & Lou plunge must identify Ben's supplied image as an editorial override");
+assert.equal(monteAndLouPlunge?.inSitu, true, "Monte & Lou plunge image must remain in situ");
+const monteAndLouMaya = champagneCatalogue.products.filter((product) => /^JB-039[0-7]$/.test(product.id));
+assert.equal(monteAndLouMaya.length, 8, "The complete eight-item Monte & Lou Maya batch must be present");
+assert.deepEqual(monteAndLouMaya.map((product) => product.priceValue), [290, 160, 115, 125, 115, 160, 120, 230], "The Maya batch must retain its verified AUD prices");
+assert.ok(monteAndLouMaya.every((product) => product.color === "Maya"), "Every Maya record must retain the exact retailer colourway");
+assert.ok(monteAndLouMaya.every((product) => product.notionPageId), "Every Maya product must retain its exact Notion tensor record");
+const mayaShirt = monteAndLouMaya.find((product) => product.id === "JB-0390");
+assert.equal(mayaShirt?.imageSource, "user_supplied_editorial_override", "The Maya Linen Shirt must use Ben's supplied portrait");
+assert.equal(mayaShirt?.inSitu, true, "The Maya Linen Shirt portrait must be recorded as in situ");
 
 const anniesAdditions = productKernel.products.filter((product) => ["JB-0365", "JB-0366", "JB-0367"].includes(product.id));
 assert.equal(anniesAdditions.length, 3, "Annie’s new products must form the approved three-card row");
@@ -413,7 +421,7 @@ assert.match(shop, /price \/ low to high[\s\S]*price \/ high to low/, "Combined 
 assert.match(shopScript, /catalogueProductHash\(slug\)/, "Expanded product state must have a shareable retailer-agnostic hash route");
 assert.match(shopScript, /shop-product-kernel-v1\.json/, "Shop catalogue must render from the Notion-backed product kernel");
 assert.match(shopScript, /shop-champagne-bohemia-products-v1\.json/, "Shop catalogue must load the approved Champagne Bohemia tensor extension");
-assert.equal((shopScript.match(/shop-colour-audit-2-taxonomy-2-look-1/g) || []).length, 2, "Both catalogue projections must use the current colour, taxonomy and look cache token");
+assert.equal((shopScript.match(/shop-colour-audit-3-taxonomy-3-look-1-monte-lou-1/g) || []).length, 2, "Both catalogue projections must use the current colour, taxonomy and look cache token");
 assert.match(shopScript, /product\.retailer \|\| product\.brand/, "Product CTAs must prefer the destination retailer rather than the maker brand");
 assert.match(shopScript, /function catalogueBrandName\(product\)[\s\S]*product\.catalogueBrand \|\| product\.brand/, "Umbrella routing must preserve each product's maker brand");
 assert.match(shopScript, /function productHasFullDetail\(product\)[\s\S]*return Boolean\(product\.image \|\| product\.video \|\| product\.gallery\?\.length\)/, "Every approved media card must receive the internal expanded view");

@@ -97,7 +97,7 @@
     },
     "projectionUpdatedAt": "2026-07-31",
     "projectionScope": "shop-product-kernel-v1.json + shop-champagne-bohemia-products-v1.json",
-    "verifiedCatalogueProductCount": 327,
+    "verifiedCatalogueProductCount": 335,
     "unknownCatalogueProductCount": 57
   },
   "searchProjection": {
@@ -6813,7 +6813,7 @@
       "currency": "AUD",
       "subjectPresent": true,
       "forwardFacing": true,
-      "shopTypes": ["swimwear-all","athleisure-all","ready-to-wear-all","rash-vest","crop"]
+      "shopTypes": ["swimwear-all","athleisure-all","ready-to-wear-all","rash-vest","coverup","crop"]
     },
     {
       "id": "JB-0156",
@@ -6924,7 +6924,7 @@
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["swimwear-all","bikini"]
+      "shopTypes": ["swimwear-all","brief","bikini"]
     },
     {
       "id": "JB-0159",
@@ -7181,7 +7181,7 @@
       "colourSourceType": "Retailer page",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["swimwear-all","bikini"]
+      "shopTypes": ["swimwear-all","brief","bikini"]
     },
     {
       "id": "JB-0165",
@@ -7482,7 +7482,7 @@
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["swimwear-all","bikini"]
+      "shopTypes": ["swimwear-all","brief","bikini"]
     },
     {
       "id": "JB-0172",
@@ -7611,7 +7611,7 @@
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["swimwear-all","bikini"]
+      "shopTypes": ["swimwear-all","brief","bikini"]
     },
     {
       "id": "JB-0175",
@@ -7863,7 +7863,7 @@
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["swimwear-all","bikini"]
+      "shopTypes": ["swimwear-all","brief","bikini"]
     },
     {
       "id": "JB-0181",
@@ -11117,7 +11117,7 @@
       "currency": "AUD",
       "subjectPresent": true,
       "forwardFacing": true,
-      "shopTypes": ["swimwear-all","ready-to-wear-all"]
+      "shopTypes": ["swimwear-all","ready-to-wear-all","coverup"]
     },
     {
       "id": "JB-0259",
@@ -11158,7 +11158,7 @@
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["swimwear-all","ready-to-wear-all"]
+      "shopTypes": ["swimwear-all","ready-to-wear-all","coverup"]
     },
     {
       "id": "JB-0260",
@@ -11244,7 +11244,7 @@
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["swimwear-all","ready-to-wear-all"]
+      "shopTypes": ["swimwear-all","ready-to-wear-all","coverup"]
     },
     {
       "id": "JB-0262",
@@ -11332,7 +11332,7 @@
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["swimwear-all","ready-to-wear-all","bikini"]
+      "shopTypes": ["swimwear-all","ready-to-wear-all","bikini","coverup"]
     },
     {
       "id": "JB-0264",
@@ -11417,7 +11417,7 @@
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["swimwear-all","ready-to-wear-all"]
+      "shopTypes": ["swimwear-all","ready-to-wear-all","coverup"]
     },
     {
       "id": "JB-0266",
@@ -13437,7 +13437,7 @@
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["swimwear-all","bikini"]
+      "shopTypes": ["swimwear-all","brief","bikini"]
     },
     {
       "id": "JB-0316",
@@ -13673,7 +13673,7 @@
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["swimwear-all","bikini"]
+      "shopTypes": ["swimwear-all","brief","bikini"]
     },
     {
       "id": "JB-0322",
@@ -13706,7 +13706,7 @@
       "subjectPresent": true,
       "forwardFacing": true,
       "notionPageId": "3ac7b9c9-9c56-8114-9788-ceaa7ee7a8a0",
-      "shopTypes": ["swimwear-all","bikini"]
+      "shopTypes": ["swimwear-all","brief","bikini"]
     },
     {
       "id": "JB-0323",
@@ -13739,7 +13739,7 @@
       "subjectPresent": true,
       "forwardFacing": true,
       "notionPageId": "3ac7b9c9-9c56-8101-850b-e0b801fb021d",
-      "shopTypes": ["swimwear-all","bikini"]
+      "shopTypes": ["swimwear-all","brief","bikini"]
     },
     {
       "id": "JB-0324",
@@ -14006,7 +14006,7 @@
       "subjectPresent": true,
       "forwardFacing": true,
       "notionPageId": "3ac7b9c9-9c56-819b-8e3f-ca74d1e9a679",
-      "shopTypes": ["swimwear-all","ready-to-wear-all","rash-vest"]
+      "shopTypes": ["swimwear-all","ready-to-wear-all","rash-vest","coverup"]
     },
     {
       "id": "JB-0331",
