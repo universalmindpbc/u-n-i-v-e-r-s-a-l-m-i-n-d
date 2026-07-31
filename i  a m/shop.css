@@ -2537,13 +2537,41 @@ body[data-shop-view="catalogue"] [data-shop-editorial] { display: none !importan
 }
 
 @media (max-width: 700px) {
-  .shop-masthead__nav { gap: 10px; }
+  .shop-masthead__nav { gap: 6px; }
   .shop-masthead__nav > a,
   .shop-menu > summary { font-size: 7px; }
+  .shop-masthead__actions { gap: 0; }
+  .shop-theme,
+  .shop-music {
+    width: 28px;
+    min-width: 28px;
+    height: 44px;
+    justify-content: center;
+    gap: 0;
+    padding: 0;
+  }
+  .shop-theme [data-shop-theme-label],
+  .shop-music [data-shop-music-label] { font-size: 0; }
+  .shop-music [data-shop-music-label]::after { content: none; }
   .shop-menu__panel { left: 25%; width: min(430px, calc(100vw - 16px)); }
   .shop-sex-ed { padding-top: 60px; }
   .shop-sex-ed > header { grid-template-columns: 1fr; padding-right: 16px; padding-left: 16px; }
   .shop-sex-ed h2 { font-size: 38px; }
   .shop-sex-ed__controls { justify-self: end; }
   .shop-sex-ed__track { grid-auto-columns: 82vw; }
+}
+
+@media (max-width: 375px) {
+  .shop-masthead__nav { gap: 4px; }
+}
+
+@media (max-width: 340px) {
+  .shop-masthead {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: 54px 36px;
+    min-height: 90px;
+  }
+  .shop-masthead__nav { grid-column: 1; grid-row: 1; }
+  .shop-masthead__actions { grid-column: 1; grid-row: 2; justify-self: end; }
+  .shop-menu__panel { top: 90px; }
 }
