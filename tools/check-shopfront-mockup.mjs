@@ -384,6 +384,17 @@ assert.match(television, /DOMContentLoaded", bootstrapRequestedShop/, "The direc
 
 assert.match(shop, /shop-footer[\s\S]*james-bondage-lower-masthead\.mp4/, "Homepage and catalogue routes must end with the supplied silent James Bondage masthead");
 assert.match(shop, /shop-footer__legal[\s\S]*JAMES BONDAGE \/ UNIVERSAL MIND/, "Shop footer must use the final Universal Mind ownership line");
+assert.match(
+  shop,
+  /shop-masthead__nav[\s\S]*?<a href="#top" data-shop-home[^>]*>home<\/a>[\s\S]*?<a href="#shop-about">about<\/a>[\s\S]*?<summary>shop<\/summary>[\s\S]*?<a href="#giving-back">giving back<\/a>[\s\S]*?<a href="#sex-ed">sex ed<\/a>/,
+  "The sticky Shop navigation must begin with Home and preserve the approved Home / About / Shop / Giving Back / Sex Ed order",
+);
+assert.match(
+  shop,
+  /shop-footer__legal[\s\S]*?<p>JAMES BONDAGE \/ UNIVERSAL MIND<\/p>[\s\S]*?<a href="#top" data-shop-home[^>]*>home<\/a>/,
+  "The Shop footer must provide a direct Home route",
+);
+assert.equal((shop.match(/data-shop-home/g) || []).length, 2, "Shop Home must appear exactly once in the sticky navigation and once in the footer");
 assert.doesNotMatch(shop, /presentation mock-up|affiliate relationships are proposed/i, "Shop footer must no longer describe the live shop as a mock-up or proposal");
 assert.ok(fs.existsSync(path.join(iam, "a s s e t s/shop-mockup/james-bondage-lower-masthead.mp4")), "Missing supplied lower masthead video");
 assert.match(shop, /adaptive-television-fullscreen shop-hero__fullscreen[\s\S]*data-shop-hero-fullscreen/, "Shop fullscreen must reuse the Music Television control language");
