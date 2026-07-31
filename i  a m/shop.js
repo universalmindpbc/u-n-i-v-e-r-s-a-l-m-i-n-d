@@ -731,7 +731,10 @@
       productDialogPrice.textContent = product.price || "";
       productDialogPrice.hidden = !productDialogPrice.textContent;
     }
-    if (productDialogRetailer) productDialogRetailer.href = product.retailerUrl;
+    if (productDialogRetailer) {
+      productDialogRetailer.href = product.retailerUrl;
+      prepareRetailerLinkForCurrencyRecovery(product.retailerUrl);
+    }
     if (productDialogRetailerLabel) {
       productDialogRetailerLabel.textContent = product.brand === "Iris van Herpen"
         ? "order haute couture"
@@ -754,6 +757,29 @@
     emilioCurrencyRecoveryReady = true;
   }
 
+  function restoreRetailerLinkSafety() {
+    if (!productDialogRetailer) return;
+    productDialogRetailer.target = "_blank";
+    productDialogRetailer.rel = "noopener noreferrer";
+  }
+
+  function prepareRetailerLinkForCurrencyRecovery(retailerUrl) {
+    restoreRetailerLinkSafety();
+    if (!needsEmilioCurrencyRecovery(retailerUrl) || !productDialogRetailer) return;
+    productDialogRetailer.target = emilioRetailerTabName;
+    productDialogRetailer.removeAttribute("rel");
+  }
+
+  function restoreModifiedRetailerClick(event) {
+    if (
+      event.button !== 0
+      || event.metaKey
+      || event.ctrlKey
+      || event.shiftKey
+      || event.altKey
+    ) restoreRetailerLinkSafety();
+  }
+
   function openRetailerWithCurrencyRecovery(event) {
     if (
       event.defaultPrevented
@@ -762,29 +788,37 @@
       || event.ctrlKey
       || event.shiftKey
       || event.altKey
-    ) return;
+    ) {
+      restoreRetailerLinkSafety();
+      return;
+    }
 
     const retailerUrl = productDialogRetailer?.href || "";
-    if (!needsEmilioCurrencyRecovery(retailerUrl)) return;
-
-    const retailerWindow = window.open("", emilioRetailerTabName);
-    if (!retailerWindow) return;
-
-    event.preventDefault();
-    try {
-      retailerWindow.opener = null;
-      retailerWindow.location.href = retailerUrl;
-    } catch {
-      window.open(retailerUrl, emilioRetailerTabName);
+    if (!needsEmilioCurrencyRecovery(retailerUrl)) {
+      restoreRetailerLinkSafety();
+      return;
     }
 
     window.setTimeout(() => {
+      const retailerWindow = window.open("", emilioRetailerTabName);
+      if (!retailerWindow) {
+        restoreRetailerLinkSafety();
+        return;
+      }
+
+      let retried = false;
       try {
         retailerWindow.location.href = retailerUrl;
-      } catch {
-        window.open(retailerUrl, emilioRetailerTabName);
+        retried = true;
+      } catch {}
+
+      if (retried) {
+        try {
+          retailerWindow.opener = null;
+        } catch {}
+        markEmilioCurrencyRecoveryReady();
       }
-      markEmilioCurrencyRecoveryReady();
+      restoreRetailerLinkSafety();
     }, emilioCurrencyRecoveryDelay);
   }
 
@@ -917,6 +951,7 @@
   productDialog?.addEventListener("click", (event) => {
     if (event.target === productDialog) closeProduct({ updateRoute: true });
   });
+  productDialogRetailer?.addEventListener("pointerdown", restoreModifiedRetailerClick);
   productDialogRetailer?.addEventListener("click", openRetailerWithCurrencyRecovery);
   window.addEventListener("hashchange", renderRoute);
 

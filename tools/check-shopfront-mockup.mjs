@@ -65,10 +65,10 @@ assert.match(shop, /<title>James Bondage \| Shop<\/title>/, "Standalone Shop tit
 assert.match(index, /document\.title = "James Bondage \| Shop"/, "Shop splash title must use the approved pipe separator");
 assert.match(
   television,
-  /const SHOP_SHELL_VERSION = "shop-champagne-bohemia-2-emilio-retry-1";[\s\S]*function frameHref\(link\)[\s\S]*url\.searchParams\.set\("v", SHOP_SHELL_VERSION\)/,
+  /const SHOP_SHELL_VERSION = "shop-champagne-bohemia-2-emilio-safari-2";[\s\S]*function frameHref\(link\)[\s\S]*url\.searchParams\.set\("v", SHOP_SHELL_VERSION\)/,
   "The real Shop entry must cache-bust its embedded Shop shell to the current Champagne Bohemia version",
 );
-assert.match(index, /adaptive-environment-television\.js\?v=music-tv-eee557e70b16/, "The homepage must load the Shop cache-bust controller");
+assert.match(index, /adaptive-environment-television\.js\?v=music-tv-6d400242c2a4/, "The homepage must load the Shop cache-bust controller");
 
 assert.equal(catalogue.products.length, 36, "Finished ERES catalogue must contain all 36 approved product URLs");
 assert.equal(new Set(catalogue.products.map((product) => product.id)).size, 36, "Catalogue product IDs must be unique");
@@ -136,13 +136,32 @@ assert.match(
 );
 assert.match(
   shopScript,
-  /function openRetailerWithCurrencyRecovery\(event\)[\s\S]*window\.open\("", emilioRetailerTabName\)[\s\S]*retailerWindow\.location\.href = retailerUrl;[\s\S]*window\.setTimeout\(\(\) => \{[\s\S]*retailerWindow\.location\.href = retailerUrl;[\s\S]*markEmilioCurrencyRecoveryReady\(\);/,
-  "The Emilio retailer tab must automatically repeat the exact product navigation after its broken first currency redirect",
+  /function prepareRetailerLinkForCurrencyRecovery\(retailerUrl\)[\s\S]*productDialogRetailer\.target = emilioRetailerTabName;[\s\S]*productDialogRetailer\.removeAttribute\("rel"\);/,
+  "The first Emilio click must use an ordinary named retailer link that Safari will not block as a popup",
 );
 assert.match(
   shopScript,
-  /productDialogRetailer\?\.addEventListener\("click", openRetailerWithCurrencyRecovery\)/,
-  "The retailer CTA must install the Emilio-only currency recovery handler",
+  /function restoreModifiedRetailerClick\(event\)[\s\S]*event\.button !== 0[\s\S]*restoreRetailerLinkSafety\(\);/,
+  "Modified and middle retailer clicks must retain the normal safe blank-tab behavior",
+);
+const emilioRecoveryHandler = shopScript.slice(
+  shopScript.indexOf("function openRetailerWithCurrencyRecovery"),
+  shopScript.indexOf("function closeProduct"),
+);
+assert.doesNotMatch(
+  emilioRecoveryHandler,
+  /event\.preventDefault\(\)/,
+  "The Safari-safe recovery must allow the ordinary retailer anchor to create its tab",
+);
+assert.match(
+  emilioRecoveryHandler,
+  /window\.setTimeout\(\(\) => \{[\s\S]*window\.open\("", emilioRetailerTabName\)[\s\S]*retailerWindow\.location\.href = retailerUrl;[\s\S]*retailerWindow\.opener = null;[\s\S]*markEmilioCurrencyRecoveryReady\(\);/,
+  "The existing named retailer tab must receive the exact product URL again and then release its opener",
+);
+assert.match(
+  shopScript,
+  /productDialogRetailer\?\.addEventListener\("pointerdown", restoreModifiedRetailerClick\);[\s\S]*productDialogRetailer\?\.addEventListener\("click", openRetailerWithCurrencyRecovery\)/,
+  "The retailer CTA must install both the modified-click safety guard and Emilio-only recovery handler",
 );
 for (const product of productKernel.products) {
   assert.ok(product.slug, `Missing stable product slug: ${product.id}`);
