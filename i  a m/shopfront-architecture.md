@@ -64,6 +64,8 @@ The runtime kernels preserve these values in `shopTypes`; the Shop renders the d
 
 Specific product evidence takes precedence when neighbouring categories could overlap: tights, stockings, socks and explicit hosiery belong to hosiery rather than leggings. Other catalogue edge cases can be corrected in the same Notion-backed field without changing the public vocabulary.
 
+Haute Couture is exclusive of Ready to Wear in the public taxonomy. The canonical Iris van Herpen bespoke record and all six of its approved gallery views are Haute Couture only; those six views expand on both the Iris brand route and the universal Haute Couture edit. Annie’s Ibiza records enter Haute Couture only when their authorised retailer description explicitly says Made To Order or combines pre-order availability with being lovingly handmade; neighbouring Annie’s pieces without that evidence remain in their ordinary types. Rash vest includes the exact thin, water-ready rashguard, surf-top and surf-suit records reviewed across Rashi World, Free People and Lisa Marie Fernandez. Wetsuit-weight 1.5–2 mm neoprene records remain excluded.
+
 ## Search and controlled colour layer
 
 Search and colour are quiet catalogue-navigation tools, not discovery engines. The desktop catalogue holds one compact sticky rail in this order: search, brand, type, colour, sort and result count. On mobile, search spans the rail above the two-column controls. There is no search drawer, predictive overlay, fuzzy recommendation or decorative icon chrome.

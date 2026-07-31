@@ -640,7 +640,8 @@
       }
     }
 
-    if (activeCatalogueBrand === "iris-van-herpen") {
+    if (activeCatalogueBrand === "iris-van-herpen"
+      || (activeCatalogueBrand === "all" && activeCatalogueType === "haute-couture-all")) {
       visibleProducts = visibleProducts.flatMap(galleryDisplayProducts);
     }
 
@@ -1036,8 +1037,8 @@
   async function loadCatalogue() {
     try {
       const [kernelResponse, champagneResponse] = await Promise.all([
-        fetch("shop-product-kernel-v1.json?v=shop-colour-audit-2-taxonomy-1", { credentials: "same-origin" }),
-        fetch("shop-champagne-bohemia-products-v1.json?v=shop-colour-audit-2-taxonomy-1", { credentials: "same-origin" }),
+        fetch("shop-product-kernel-v1.json?v=shop-colour-audit-2-taxonomy-2", { credentials: "same-origin" }),
+        fetch("shop-champagne-bohemia-products-v1.json?v=shop-colour-audit-2-taxonomy-2", { credentials: "same-origin" }),
       ]);
       if (!kernelResponse.ok) throw new Error(`Catalogue request failed: ${kernelResponse.status}`);
       if (!champagneResponse.ok) throw new Error(`Champagne Bohemia request failed: ${champagneResponse.status}`);

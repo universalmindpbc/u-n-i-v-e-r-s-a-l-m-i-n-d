@@ -36,6 +36,17 @@ export const SHOP_TAXONOMY_OPTIONS = [
 
 const taxonomyOrder = new Map(SHOP_TAXONOMY_OPTIONS.map((option, index) => [option.value, index]));
 
+// User-reviewed thin rash/surf constructions. These exact records are backed by
+// their retailer descriptions; 1.5 mm and 2 mm wetsuit-style pieces stay out.
+export const VERIFIED_RASH_VEST_PRODUCT_IDS = new Set([
+  // Rashi World: ECONYL swimweight rashguards, beach tops and bodysuits.
+  "JB-0153", "JB-0155", "JB-0156", "JB-0157",
+  // Free People: non-wetsuit surf suits/tops plus the Rashi World surf vest.
+  "JB-0316", "JB-0317", "JB-0318", "JB-0319", "JB-0320", "JB-0325", "JB-0329", "JB-0330",
+  // Lisa Marie Fernandez: thin 1.0 mm long-sleeve water-sport pieces.
+  "JB-0331", "JB-0342", "JB-0343", "JB-0344", "JB-0361", "JB-0362",
+]);
+
 function normalise(value = "") {
   return String(value).normalize("NFKD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
 }
@@ -56,9 +67,18 @@ export function classifyShopProduct(product) {
     product.canonicalUrl,
   ].filter(Boolean).join(" "));
   const descriptionText = normalise(product.description);
+  const hasMadeToOrderEvidence = /\bmade to order\b/.test(descriptionText)
+    || (/\bpre[ -]*orders?\b|\bavailable to pre order\b/.test(descriptionText)
+      && /\blovingly handmade\b/.test(descriptionText));
+  const isHauteCouture = brand === "iris van herpen"
+    || /\bhaute couture\b/.test(identityText)
+    || (brand === "annie’s ibiza" && hasMadeToOrderEvidence);
+  const isRashVest = VERIFIED_RASH_VEST_PRODUCT_IDS.has(product.id)
+    || /\brash[ -]?(?:vest|guard)\b/.test(identityText);
   const isSwim = forms.has("swim")
     || ["swimsuit", "bikini top", "bikini bottom", "swim set"].includes(productType)
-    || hasAny(identityText, [/\bswim(?:suit|wear|mer)?\b/, /\bbikini\b/, /\bmaillot\b/, /\brash[ -]?(?:vest|guard)\b/]);
+    || hasAny(identityText, [/\bswim(?:suit|wear|mer)?\b/, /\bbikini\b/, /\bmaillot\b/])
+    || isRashVest;
   const isReadyToWear = forms.has("second skin")
     || ["bodysuit", "dress", "jumpsuit", "legging", "shorts", "skirt", "top"].includes(productType)
     || hasAny(identityText, [/\bpants?\b/, /\bcrop(?:ped)?\b/, /\bcoat\b/, /\bjacket\b/, /\bonesie\b/]);
@@ -77,8 +97,8 @@ export function classifyShopProduct(product) {
   if (forms.has("lingerie")) types.add("lingerie-all");
   if (isSwim) types.add("swimwear-all");
   if (forms.has("movement") && athleisureBrands.has(brand)) types.add("athleisure-all");
-  if (isReadyToWear) types.add("ready-to-wear-all");
-  if (brand === "iris van herpen" || /\bhaute couture\b/.test(identityText)) types.add("haute-couture-all");
+  if (isReadyToWear && !isHauteCouture) types.add("ready-to-wear-all");
+  if (isHauteCouture) types.add("haute-couture-all");
 
   if ((productType === "bra" && !/\b(?:hosiery|tights?|stockings?)\b/.test(identityText)) || /\b(?:bra|bralet|bralette|brassiere|bustier|corset)\b/.test(identityText)) types.add("bra");
   if (productType === "briefs" || /\b(?:briefs?|thong|tanga|knicker|panty|panties|shorties)\b/.test(identityText) || (productType === "other" && /\bshorties\b/.test(descriptionText))) types.add("brief");
@@ -88,7 +108,7 @@ export function classifyShopProduct(product) {
   if (forms.has("after dark")) types.add("after-dark");
   if (productType === "swimsuit" || (isSwim && hasAny(identityText, [/\bone[ -]piece\b/, /\bswimmer suit\b/, /\bmaillot\b/]))) types.add("swimsuit");
   if (["bikini top", "bikini bottom", "swim set"].includes(productType) || /\bbikini\b/.test(identityText)) types.add("bikini");
-  if (/\brash[ -]?(?:vest|guard)\b/.test(identityText)) types.add("rash-vest");
+  if (isRashVest) types.add("rash-vest");
   if (isSwim && (productType === "dress" || hasAny(identityText, [/\bcover[ -]?up\b/, /\bkaftan\b/, /\bcaftan\b/, /\bsarong\b/]))) types.add("coverup");
   if (productType === "jumpsuit" || /\b(?:jumpsuit|onesie)\b/.test(identityText)) types.add("jumpsuit");
   if (productType === "dress" || /\b(?:dress|gown)\b/.test(identityText)) types.add("dress");
@@ -145,6 +165,31 @@ assert.equal(allProducts.length, 384, "The combined Shop taxonomy must cover all
 assert.equal(new Set(allProducts.map((product) => product.id)).size, 384, "Shop taxonomy product IDs must remain unique");
 assert.ok(allProducts.every((product) => product.shopTypes?.length), "Every Shop product must have at least one taxonomy value");
 assert.ok(allProducts.every((product) => product.shopTypes.every((value) => taxonomyOrder.has(value))), "Every Shop taxonomy value must be controlled");
+
+const irisCouture = allProducts.filter((product) => product.brand === "Iris van Herpen");
+assert.equal(irisCouture.length, 1, "The six Iris tiles must remain one canonical couture record");
+assert.equal(irisCouture[0].gallery?.length, 6, "The canonical Iris record must retain all six approved couture views");
+assert.ok(irisCouture[0].shopTypes.includes("haute-couture-all"), "Every Iris view must inherit Haute Couture");
+assert.ok(!irisCouture[0].shopTypes.includes("ready-to-wear-all"), "Iris must not appear under Ready to Wear");
+
+const anniesCouture = allProducts.filter((product) => product.brand === "Annie’s Ibiza" && product.shopTypes.includes("haute-couture-all"));
+assert.deepEqual(
+  anniesCouture.map((product) => product.id).sort(),
+  ["JB-0074", "JB-0075", "JB-0076", "JB-0078", "JB-0079", "JB-0080", "JB-0082", "JB-0083", "JB-0310", "JB-0366"],
+  "Only Annie’s records with explicit made-to-order or lovingly-handmade pre-order evidence belong to Haute Couture",
+);
+assert.ok(anniesCouture.every((product) => !product.shopTypes.includes("ready-to-wear-all")), "Made-to-order Annie’s pieces must not remain Ready to Wear");
+
+const rashVests = allProducts.filter((product) => product.shopTypes.includes("rash-vest"));
+assert.deepEqual(
+  rashVests.map((product) => product.id).sort(),
+  [...VERIFIED_RASH_VEST_PRODUCT_IDS].sort(),
+  "Rash vest must contain only the exact retailer-evidenced thin constructions",
+);
+assert.ok(rashVests.every((product) => product.shopTypes.includes("swimwear-all")), "Every rash vest must also appear in Swimwear");
+["JB-0326", "JB-0327", "JB-0328", "JB-0353", "JB-0354"].forEach((id) => {
+  assert.ok(!allProducts.find((product) => product.id === id)?.shopTypes.includes("rash-vest"), `${id} wetsuit-weight neoprene must stay outside Rash Vest`);
+});
 
 const counts = Object.fromEntries(SHOP_TAXONOMY_OPTIONS.map(({ value }) => [
   value,

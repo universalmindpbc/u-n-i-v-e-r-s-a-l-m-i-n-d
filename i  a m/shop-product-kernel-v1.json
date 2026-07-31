@@ -3262,7 +3262,7 @@
       "currency": "AUD",
       "subjectPresent": true,
       "forwardFacing": true,
-      "shopTypes": ["lingerie-all","brief"]
+      "shopTypes": ["lingerie-all","haute-couture-all","brief"]
     },
     {
       "id": "JB-0075",
@@ -3294,7 +3294,7 @@
       "currency": "AUD",
       "subjectPresent": true,
       "forwardFacing": true,
-      "shopTypes": ["ready-to-wear-all","bra"]
+      "shopTypes": ["haute-couture-all","bra"]
     },
     {
       "id": "JB-0076",
@@ -3326,7 +3326,7 @@
       "currency": "AUD",
       "subjectPresent": true,
       "forwardFacing": true,
-      "shopTypes": ["ready-to-wear-all","dress"]
+      "shopTypes": ["haute-couture-all","dress"]
     },
     {
       "id": "JB-0077",
@@ -3390,7 +3390,7 @@
       "currency": "AUD",
       "subjectPresent": true,
       "forwardFacing": true,
-      "shopTypes": ["ready-to-wear-all","dress"]
+      "shopTypes": ["haute-couture-all","dress"]
     },
     {
       "id": "JB-0079",
@@ -3424,7 +3424,7 @@
       "currency": "AUD",
       "subjectPresent": true,
       "forwardFacing": true,
-      "shopTypes": ["ready-to-wear-all","hosiery"]
+      "shopTypes": ["haute-couture-all","hosiery"]
     },
     {
       "id": "JB-0080",
@@ -3465,7 +3465,7 @@
       "colourSourceType": "Retailer page",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["accessories"]
+      "shopTypes": ["haute-couture-all","accessories"]
     },
     {
       "id": "JB-0081",
@@ -3529,7 +3529,7 @@
       "currency": "AUD",
       "subjectPresent": true,
       "forwardFacing": false,
-      "shopTypes": ["accessories"]
+      "shopTypes": ["haute-couture-all","accessories"]
     },
     {
       "id": "JB-0083",
@@ -3561,7 +3561,7 @@
       "currency": "AUD",
       "subjectPresent": true,
       "forwardFacing": true,
-      "shopTypes": ["ready-to-wear-all","dress"]
+      "shopTypes": ["haute-couture-all","dress"]
     },
     {
       "id": "JB-0084",
@@ -6578,7 +6578,7 @@
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["ready-to-wear-all","bodysuit"]
+      "shopTypes": ["swimwear-all","ready-to-wear-all","bodysuit","rash-vest"]
     },
     {
       "id": "JB-0154",
@@ -6646,7 +6646,7 @@
       "currency": "AUD",
       "subjectPresent": true,
       "forwardFacing": true,
-      "shopTypes": ["athleisure-all","ready-to-wear-all","crop"]
+      "shopTypes": ["swimwear-all","athleisure-all","ready-to-wear-all","rash-vest","crop"]
     },
     {
       "id": "JB-0156",
@@ -6680,7 +6680,7 @@
       "currency": "AUD",
       "subjectPresent": true,
       "forwardFacing": true,
-      "shopTypes": ["ready-to-wear-all","bodysuit"]
+      "shopTypes": ["swimwear-all","ready-to-wear-all","bodysuit","rash-vest"]
     },
     {
       "id": "JB-0157",
@@ -6714,7 +6714,7 @@
       "currency": "AUD",
       "subjectPresent": true,
       "forwardFacing": true,
-      "shopTypes": ["ready-to-wear-all","bodysuit"]
+      "shopTypes": ["swimwear-all","ready-to-wear-all","bodysuit","rash-vest"]
     },
     {
       "id": "JB-0158",
@@ -13059,7 +13059,7 @@
       "currency": "AUD",
       "subjectPresent": true,
       "forwardFacing": true,
-      "shopTypes": ["ready-to-wear-all","after-dark","dress"]
+      "shopTypes": ["haute-couture-all","after-dark","dress"]
     },
     {
       "id": "JB-0311",
@@ -13303,7 +13303,7 @@
       "subjectPresent": true,
       "forwardFacing": true,
       "notionPageId": "3ac7b9c9-9c56-81ec-b40e-cc017951a1d4",
-      "shopTypes": ["swimwear-all","swimsuit"]
+      "shopTypes": ["swimwear-all","swimsuit","rash-vest"]
     },
     {
       "id": "JB-0317",
@@ -13345,7 +13345,7 @@
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["swimwear-all","swimsuit"]
+      "shopTypes": ["swimwear-all","swimsuit","rash-vest"]
     },
     {
       "id": "JB-0318",
@@ -13389,7 +13389,7 @@
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["swimwear-all","swimsuit"]
+      "shopTypes": ["swimwear-all","swimsuit","rash-vest"]
     },
     {
       "id": "JB-0319",
@@ -13422,7 +13422,7 @@
       "subjectPresent": true,
       "forwardFacing": true,
       "notionPageId": "3ac7b9c9-9c56-8118-bfad-d0d8e2239654",
-      "shopTypes": ["swimwear-all","swimsuit"]
+      "shopTypes": ["swimwear-all","swimsuit","rash-vest"]
     },
     {
       "id": "JB-0320",
@@ -13464,7 +13464,7 @@
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["swimwear-all","swimsuit"]
+      "shopTypes": ["swimwear-all","swimsuit","rash-vest"]
     },
     {
       "id": "JB-0321",
@@ -13647,7 +13647,7 @@
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["swimwear-all","swimsuit"]
+      "shopTypes": ["swimwear-all","swimsuit","rash-vest"]
     },
     {
       "id": "JB-0326",
@@ -13806,7 +13806,7 @@
       "subjectPresent": true,
       "forwardFacing": true,
       "notionPageId": "3ac7b9c9-9c56-8196-8999-c0450448c39d",
-      "shopTypes": ["swimwear-all","bikini"]
+      "shopTypes": ["swimwear-all","bikini","rash-vest"]
     },
     {
       "id": "JB-0330",
@@ -13839,7 +13839,7 @@
       "subjectPresent": true,
       "forwardFacing": true,
       "notionPageId": "3ac7b9c9-9c56-819b-8e3f-ca74d1e9a679",
-      "shopTypes": ["swimwear-all","ready-to-wear-all"]
+      "shopTypes": ["swimwear-all","ready-to-wear-all","rash-vest"]
     },
     {
       "id": "JB-0331",
@@ -13881,7 +13881,7 @@
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["swimwear-all","swimsuit"]
+      "shopTypes": ["swimwear-all","swimsuit","rash-vest"]
     },
     {
       "id": "JB-0332",
@@ -14347,7 +14347,7 @@
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["swimwear-all","swimsuit","bikini"]
+      "shopTypes": ["swimwear-all","swimsuit","bikini","rash-vest"]
     },
     {
       "id": "JB-0343",
@@ -14389,7 +14389,7 @@
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["swimwear-all","swimsuit","bikini"]
+      "shopTypes": ["swimwear-all","swimsuit","bikini","rash-vest"]
     },
     {
       "id": "JB-0344",
@@ -14431,7 +14431,7 @@
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["swimwear-all","swimsuit","bikini"]
+      "shopTypes": ["swimwear-all","swimsuit","bikini","rash-vest"]
     },
     {
       "id": "JB-0345",
@@ -15148,7 +15148,7 @@
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["swimwear-all","swimsuit"]
+      "shopTypes": ["swimwear-all","swimsuit","rash-vest"]
     },
     {
       "id": "JB-0362",
@@ -15190,7 +15190,7 @@
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["swimwear-all","swimsuit"]
+      "shopTypes": ["swimwear-all","swimsuit","rash-vest"]
     },
     {
       "id": "JB-0363",
@@ -15364,7 +15364,7 @@
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["ready-to-wear-all","after-dark","dress"]
+      "shopTypes": ["haute-couture-all","after-dark","dress"]
     },
     {
       "id": "JB-0367",
@@ -15449,7 +15449,7 @@
       "subjectPresent": true,
       "forwardFacing": true,
       "notionPageId": "3ad7b9c9-9c56-819c-9745-d285b60f8ac7",
-      "shopTypes": ["ready-to-wear-all","haute-couture-all","after-dark","dress"]
+      "shopTypes": ["haute-couture-all","after-dark","dress"]
     }
   ],
   "imagePolicy": {

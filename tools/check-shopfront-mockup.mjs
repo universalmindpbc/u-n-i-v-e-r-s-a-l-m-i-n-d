@@ -65,10 +65,10 @@ assert.match(shop, /<title>James Bondage \| Shop<\/title>/, "Standalone Shop tit
 assert.match(index, /document\.title = "James Bondage \| Shop"/, "Shop splash title must use the approved pipe separator");
 assert.match(
   television,
-  /const SHOP_SHELL_VERSION = "shop-champagne-bohemia-2-emilio-safari-3-search-colour-3-taxonomy-1";[\s\S]*function frameHref\(link\)[\s\S]*url\.searchParams\.set\("v", SHOP_SHELL_VERSION\)/,
+  /const SHOP_SHELL_VERSION = "shop-champagne-bohemia-2-emilio-safari-3-search-colour-3-taxonomy-2";[\s\S]*function frameHref\(link\)[\s\S]*url\.searchParams\.set\("v", SHOP_SHELL_VERSION\)/,
   "The real Shop entry must cache-bust its embedded Shop shell to the current Champagne Bohemia version",
 );
-assert.match(index, /adaptive-environment-television\.js\?v=music-tv-f48e3286a95e/, "The homepage must load the Shop cache-bust controller");
+assert.match(index, /adaptive-environment-television\.js\?v=music-tv-c59e53316a6b/, "The homepage must load the Shop cache-bust controller");
 
 assert.equal(catalogue.products.length, 36, "Finished ERES catalogue must contain all 36 approved product URLs");
 assert.equal(new Set(catalogue.products.map((product) => product.id)).size, 36, "Catalogue product IDs must be unique");
@@ -147,6 +147,13 @@ assert.ok([...productKernel.products, ...champagneCatalogue.products].every((pro
 const wolfordTights = productKernel.products.find((product) => product.id === "JB-0069");
 assert.ok(wolfordTights?.shopTypes.includes("hosiery"), "Wolford tights must appear under hosiery");
 assert.ok(!wolfordTights?.shopTypes.includes("leggings"), "Wolford tights must not also appear under leggings");
+const irisCouture = productKernel.products.find((product) => product.brand === "Iris van Herpen");
+assert.equal(irisCouture?.gallery?.length, 6, "The canonical Iris couture record must retain all six approved tiles");
+assert.ok(irisCouture?.shopTypes.includes("haute-couture-all"), "All six Iris tiles must inherit Haute Couture");
+assert.ok(!irisCouture?.shopTypes.includes("ready-to-wear-all"), "Iris must not appear under Ready to Wear");
+assert.equal(productKernel.products.filter((product) => product.brand === "Annie’s Ibiza" && product.shopTypes.includes("haute-couture-all")).length, 10, "Only the ten retailer-evidenced made-to-order Annie’s records belong to Haute Couture");
+assert.equal(productKernel.products.filter((product) => product.shopTypes.includes("rash-vest")).length, 18, "Rash Vest must contain the eighteen reviewed thin rash/surf constructions");
+assert.ok(productKernel.products.filter((product) => product.shopTypes.includes("rash-vest")).every((product) => product.shopTypes.includes("swimwear-all")), "Every Rash Vest record must also belong to Swimwear");
 const emilioProduct = productKernel.products.find((product) => product.brand === "Emilio Cavallini");
 assert.equal(emilioProduct?.retailerUrl, "https://www.emiliocavallini.com/en/engeneered-body.html", "Emilio Cavallini must retain Ben's exact approved product URL");
 assert.equal(emilioProduct?.metadataStatus, "Metadata ready", "The Emilio catalogue card must use the retailer-verified metadata");
@@ -406,7 +413,7 @@ assert.match(shopScript, /product\.retailer \|\| product\.brand/, "Product CTAs 
 assert.match(shopScript, /function catalogueBrandName\(product\)[\s\S]*product\.catalogueBrand \|\| product\.brand/, "Umbrella routing must preserve each product's maker brand");
 assert.match(shopScript, /function productHasFullDetail\(product\)[\s\S]*return Boolean\(product\.image \|\| product\.video \|\| product\.gallery\?\.length\)/, "Every approved media card must receive the internal expanded view");
 assert.match(shopScript, /function galleryDisplayProducts[\s\S]*--image-\$\{index \+ 1\}[\s\S]*galleryViewCount/, "Iris must render its six supplied images as six separately addressable catalogue tiles");
-assert.match(shopScript, /activeCatalogueBrand === "iris-van-herpen"[\s\S]*visibleProducts\.flatMap\(galleryDisplayProducts\)/, "The Iris brand route must expand its canonical gallery into individual tiles");
+assert.match(shopScript, /activeCatalogueBrand === "iris-van-herpen"[\s\S]*activeCatalogueBrand === "all" && activeCatalogueType === "haute-couture-all"[\s\S]*visibleProducts\.flatMap\(galleryDisplayProducts\)/, "The Iris brand route and universal Haute Couture edit must expand the canonical gallery into six individual tiles");
 assert.match(shopScript, /function productFromRoute[\s\S]*galleryDisplayProducts\(exactProduct\)\[0\][\s\S]*--image-/, "Every Iris tile route must open one image rather than the combined gallery");
 assert.match(shopScript, /function renderProductDialogMedia[\s\S]*product\.video/, "Expanded product view must preserve silent Annie’s product films");
 assert.match(shopScript, /activeCatalogueLead[\s\S]*visibleProducts\.findIndex[\s\S]*visibleProducts\.unshift/, "Homepage campaigns must deterministically move their approved product into slot one");
