@@ -63,6 +63,12 @@ assert.equal((shop.match(/<li(?:\s+class="[^"]*")?><span>/g) || []).length, 28, 
 assert.equal((shop.match(/data-product(?:\s|>)/g) || []).length, 12, "Opening edit must contain the restrained 12 authorized hero pieces");
 assert.match(shop, /<title>James Bondage \| Shop<\/title>/, "Standalone Shop title must use the approved pipe separator");
 assert.match(index, /document\.title = "James Bondage \| Shop"/, "Shop splash title must use the approved pipe separator");
+assert.match(
+  television,
+  /const SHOP_SHELL_VERSION = "shop-champagne-bohemia-2";[\s\S]*function frameHref\(link\)[\s\S]*url\.searchParams\.set\("v", SHOP_SHELL_VERSION\)/,
+  "The real Shop entry must cache-bust its embedded Shop shell to the current Champagne Bohemia version",
+);
+assert.match(index, /adaptive-environment-television\.js\?v=music-tv-7cf2dfc01f27/, "The homepage must load the Shop cache-bust controller");
 
 assert.equal(catalogue.products.length, 36, "Finished ERES catalogue must contain all 36 approved product URLs");
 assert.equal(new Set(catalogue.products.map((product) => product.id)).size, 36, "Catalogue product IDs must be unique");
