@@ -21,14 +21,14 @@ c90972bd413ee0e9c332f9d57b6479b8dcbab2bdaf88fa252f144d673575e0d4	adaptive-enviro
 4346298ed8bb5e39c9e9a96fb7044e0872e545cccba221717a7e0704eed25671	apple-wallet/pass.php
 d7780363fba376ba141596e91cec1d84137249c8e74ab2a0087103a28389a7be	apple-wallet/.htaccess
 4038bcfd6d3f28f5371df0af02e944e560ade22ed39b438ed080d75c5edb0362	cafe-del-mar-home.html
-9f4772bad8c878c4064b599d21401cbb7c9cb190ed4a5b3c813c43f9bea45452	shop-champagne-bohemia-products-v1.json
+d5ca8a89859cdecc3a2cf32ad92c6fb5232c0003609e160ae0d12f67447d7145	shop-champagne-bohemia-products-v1.json
 62f23ca2948ff7a8812f84eff9984acf30c2379682fe37d3e5f5bcdc54c7d88f	a d a p t i v e  m u s i c  v i d e o  i n t e l l i g e n c e   -  c o d e x   b r i e f  v 0 . 1.md
 f5523d0d103367606e5c786fdefe6a1a560975a214ebe5188405469ec5619e09	tools/analyze-video-beats.py
 f1670bb15260c563cfe508ea2be7ddfe2f1b9260e0f3ab2f1015343345b5d177	i  a m.md
 b138f9bdc1319d701216c017e906e10c1efdaf790031ee78f7c57cb7bec26772	community-globe.html
 95811f319fe8fd80719921ccffdb063f417f77fcec50b3eac90c319d9cc84dce	mantra-samples-v1.json
-8529d0c20687182a74b2f05d72f607fb850f29e3af22bd15656c1d49bf5b66c9	index.html
-29db9b5ca95f61d66319eb6a2943a4cb66cd4baf0152c04721ece19255dede08	shop.css
+00abde9fb79e48d39d418993a4efb112b965f66ffeab08a588c7c910cf4f6a92	index.html
+ff1ad81a4f5b2b4273785abc70d065531066ed309735489677514bd8aba2de77	shop.css
 6402cc9d89a20b6e4b48802930edbbe616be2186f1a2e3688736d2e05e5b6231	mantra-sampler.js
 1aaa3cfaf7b894f033bf45848bc6b103b7ef2b4b0870d211f8f4b7ca77158b23	mobile-editorial-surface.js
 6733d57632028171b99f89270ff8237c250411f62166ebe1a2f36a80fe88833f	vogue-self-report.js
@@ -86,7 +86,7 @@ dc0fdf6ee77c7a4d1295e53843a4c3f6e64fcf6ec8166e2d182063fe90b8e83f	programme-guide
 c1c822706963fd43a4320f7212c399503fb2a4f64206a3bf75e13b34f83e784a	adaptive-inference-engine-system-prompt-v2.22-content.js
 2d617f2ef088b89c73c02cfc5f4fa7f418ce6a79a270d2d4c1950323c8246d08	emdr-vector-worlds.js
 beb34584876306e5825ba720c8cfb01b871065791c48be5add2ce5cc6d75f59f	adaptive-inference-engine-system-prompt-v1.11.html
-38a08cda754cce4605d7a87058243f83f7c689492f835571a5903cae0edc9993	shop.html
+377debab0c015e7f19c3d7509727204c7e9ade7b9c4f0cba92e92c6b615c6b23	shop.html
 98dbaed545afb562209b525af16d09f0dad7b0ef2c7b018b295d7f285b6a645a	realtime-voice-assistant.js
 3862c4481721b08403d25024626930de4c0a2b265ccc336e99b830bb3133825e	c h a n g e l o g.md
 5e1fdfbadb0466e1997b206c6197cba92f566d211a16f31bd627da4cfb976b4b	mantra-audio-fx.js
@@ -98,9 +98,9 @@ b89467d63bab7000ddda479156834f13fc30e5840f2dedc55a91e18f47fda51e	citizen-data-cl
 f89cebb043a21aa77133c9cd40875d6703eefcb3b8fab637931e1da119eb01f7	shop-approved-products-v1.json
 fa5e34089bf9beb5efdf29d28d82e758d766a3e078ab1f271fb7e4fb698c0367	mantra-sampler.css
 bd93dfd7e117b2a7d265e3f57dcc99568c0026613f28b027b292220df0f6c3fc	adaptive-music-video-catalogue-v1.11.json
-c73b26d8d2c044dec36f7c2fb78ddcb45865cbff888c5859bb7d895ebc294e86	adaptive-environment-television.js
+7cf2dfc01f27598c5dfb96c16cc29a7a1fa072ac5f0b7592a2c6971d5b36ce98	adaptive-environment-television.js
 21018b071ae34b685b6ee42f98207b3b1af59b53977f6ce26345fcf1b1224c35	technology.html
-5dacbcdfde9c383ee4de2dc3978c341c045028bf0c07c29e073a9ae13c556fd8	adaptive-environment-television.html
+15fd8c3d6519e0668b2a50aebbd15a6a960a9b26a5ac4beb5bf38e358a0b9b72	adaptive-environment-television.html
 4a4badd4d6cd61b01a274c2e85cd7bb875cc6b8b79186b86f097cdcfe4deaf5b	script.js
 8ea0432ffcd62efe867482b520f0f7d2f005cc43117cb5424ca7097d7f5ad936	stakeholders/budget/index.html
 0f32e3f59c3045259d45f6db8dd9ebb9fcac04da5b8a2982912baae86d7e14f2	stakeholders/budget/iamvogue-stakeholder-budget-v1.xlsx
@@ -144,7 +144,7 @@ e4f89461e10f3e317b5d97873023c7607bb356e673a89a175612c9df4ddb8b85	api/owner-state
 86a4918f5eb7eba0eb55eb8be9b192b54c8a37b05d31996781f139fc8649ddc1	api/happiness-automation.php
 35461a8ea56b4c2564920f290a5d02fb2f5e709dcabe7a6763cbf9a5851e8e28	api/.htaccess
 325aa1e085b318097db19027243acebe556dfa2804ac14f0f34063d005e5cab5	cloudflare-stream-catalogue.js
-72fb5ad9cd0d77e517604ec3246f42757eab32737649baf223a38bfc89dc3b8d	shop.js
+0684e76f336811000462df4952c5ab25e677de99c079e7b4662eec3342dfa6a9	shop.js
 db213ad178d17d3b7092436c17048a426e2ac2cc8cedaa1a4a1740b1c0184bec	video-beat-grid-v1.json
 a379f3df1307f5ae0ccae6126371a26ec29402a6f1d99c059d41cb7a3414afde	our-team-concept.html
 785c1fb0b7095ba4b05d31cb7c5f6adab72172b7ece152645e42b6e997014df2	technology-citizen-needs.css
@@ -188,6 +188,9 @@ f0cf686dd585bab3a0e110c4674e760a4c222e42c98f455d6762a879b10ae176	a s s e t s/r e
 396bef934cc6463037d7f9c7d15e542ab6da07305474a3d1c89ffac8114a1ac6	a s s e t s/q u a n t u m [ t r e e ].m4a
 bd50add6f527566ad4dafc056c2ca1cabea1bd2f910ba446759d0bf2f8d9965c	a s s e t s/shop-mockup/triangl-celeste-jett.png
 aa6d7faff16abfac983dcb88cba9e0273f5a34e580beebb99ac013cc0425d972	a s s e t s/shop-mockup/wardrobe-lace.webp
+61face964b9b6852cee7e1a83187c73e109c5238161b03a889290ea87734cd13	a s s e t s/shop-mockup/champagne-bohemia-home/versace-silver-one-piece-vsac-wx220.jpg
+c78055550766008f889d734426d34646ec5d029c39845f95bcc5b53b55f17eea	a s s e t s/shop-mockup/champagne-bohemia-home/versace-silver-bikini-vsac-wx218.jpg
+88290566d538a2fc11e4002aeb7d0ffd00f7c6decd1a32e656029ebbee10ff7c	a s s e t s/shop-mockup/champagne-bohemia-home/monte-lou-cut-out-plunge-one-piece.webp
 3e1a9bb6f8cc54a2c5aa7ce61856b50e1d0c2b1192d348b0fbc9757a3a167a08	a s s e t s/shop-mockup/wolford-sergio-rossi-hero-poster-v1.jpg
 84e852d5b7ef5b0813d31e6aabbe5ffcb334005200dcdb75fffd76f9b6dc565d	a s s e t s/shop-mockup/nike-skims-airy.png
 0478aa0b4e99927b18486879c3355fa81094d3496d9c902a228e74f950811974	a s s e t s/shop-mockup/pucci-vivara-triangle.png
@@ -576,6 +579,7 @@ ec90bc79ef33cc1c0bfc739559c0d48ab5b254ff46d0cd063f9e6d71acf46f7a	a s s e t s/sho
 03330c2407cfe368dbc2414e7cb7d522643b722b7a58c7b7f7274cdaf6038a00	a s s e t s/shop-mockup/product-catalogue/triangl/jb-0283-maia-alina-pink-crochet-scoop-bikini-set.webp
 db6b290a85900886149c524de6a13678e5922b45afbe816dbbca2cd17c6302ce	a s s e t s/shop-mockup/product-catalogue/champagne-bohemia/jb-0380-pucci-pink-panther.jpg
 bf5e3f1a95ed2eef4e846d6aba5168dfaaa8460633c98b2d41a40d08b451323b	a s s e t s/shop-mockup/product-catalogue/champagne-bohemia/jb-0370-vix-alix.jpg
+88290566d538a2fc11e4002aeb7d0ffd00f7c6decd1a32e656029ebbee10ff7c	a s s e t s/shop-mockup/product-catalogue/champagne-bohemia/jb-0389-monte-lou-plunge-in-situ.webp
 e644b9591deb788dc9beb4f9bf3d2e59ea521a1b8dd40b11147a8e45e9bd843d	a s s e t s/shop-mockup/product-catalogue/champagne-bohemia/jb-0372-vix-tammy-renee.jpg
 61face964b9b6852cee7e1a83187c73e109c5238161b03a889290ea87734cd13	a s s e t s/shop-mockup/product-catalogue/champagne-bohemia/jb-0374-versace-one-piece.jpg
 7b00e220cbc5a2e1957fb5719d90ea0a1d14d9b54957cefb64c6429ccf02d5ef	a s s e t s/shop-mockup/product-catalogue/champagne-bohemia/jb-0386-haight-isadora.jpg
