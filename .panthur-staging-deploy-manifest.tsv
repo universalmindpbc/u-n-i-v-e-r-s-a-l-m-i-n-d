@@ -21,6 +21,7 @@ c90972bd413ee0e9c332f9d57b6479b8dcbab2bdaf88fa252f144d673575e0d4	adaptive-enviro
 4346298ed8bb5e39c9e9a96fb7044e0872e545cccba221717a7e0704eed25671	apple-wallet/pass.php
 d7780363fba376ba141596e91cec1d84137249c8e74ab2a0087103a28389a7be	apple-wallet/.htaccess
 4038bcfd6d3f28f5371df0af02e944e560ade22ed39b438ed080d75c5edb0362	cafe-del-mar-home.html
+9f4772bad8c878c4064b599d21401cbb7c9cb190ed4a5b3c813c43f9bea45452	shop-champagne-bohemia-products-v1.json
 62f23ca2948ff7a8812f84eff9984acf30c2379682fe37d3e5f5bcdc54c7d88f	a d a p t i v e  m u s i c  v i d e o  i n t e l l i g e n c e   -  c o d e x   b r i e f  v 0 . 1.md
 f5523d0d103367606e5c786fdefe6a1a560975a214ebe5188405469ec5619e09	tools/analyze-video-beats.py
 f1670bb15260c563cfe508ea2be7ddfe2f1b9260e0f3ab2f1015343345b5d177	i  a m.md
@@ -85,7 +86,7 @@ dc0fdf6ee77c7a4d1295e53843a4c3f6e64fcf6ec8166e2d182063fe90b8e83f	programme-guide
 c1c822706963fd43a4320f7212c399503fb2a4f64206a3bf75e13b34f83e784a	adaptive-inference-engine-system-prompt-v2.22-content.js
 2d617f2ef088b89c73c02cfc5f4fa7f418ce6a79a270d2d4c1950323c8246d08	emdr-vector-worlds.js
 beb34584876306e5825ba720c8cfb01b871065791c48be5add2ce5cc6d75f59f	adaptive-inference-engine-system-prompt-v1.11.html
-8cc16bbca9a36a7515042c6b629cbc928643e8e2548f88170bae7fef1ae356f2	shop.html
+38a08cda754cce4605d7a87058243f83f7c689492f835571a5903cae0edc9993	shop.html
 98dbaed545afb562209b525af16d09f0dad7b0ef2c7b018b295d7f285b6a645a	realtime-voice-assistant.js
 3862c4481721b08403d25024626930de4c0a2b265ccc336e99b830bb3133825e	c h a n g e l o g.md
 5e1fdfbadb0466e1997b206c6197cba92f566d211a16f31bd627da4cfb976b4b	mantra-audio-fx.js
@@ -143,7 +144,7 @@ e4f89461e10f3e317b5d97873023c7607bb356e673a89a175612c9df4ddb8b85	api/owner-state
 86a4918f5eb7eba0eb55eb8be9b192b54c8a37b05d31996781f139fc8649ddc1	api/happiness-automation.php
 35461a8ea56b4c2564920f290a5d02fb2f5e709dcabe7a6763cbf9a5851e8e28	api/.htaccess
 325aa1e085b318097db19027243acebe556dfa2804ac14f0f34063d005e5cab5	cloudflare-stream-catalogue.js
-dae2697e9d71ab891b420a9d0801f69ffe1472411107bdc6c7309fcfa5f0e237	shop.js
+72fb5ad9cd0d77e517604ec3246f42757eab32737649baf223a38bfc89dc3b8d	shop.js
 db213ad178d17d3b7092436c17048a426e2ac2cc8cedaa1a4a1740b1c0184bec	video-beat-grid-v1.json
 a379f3df1307f5ae0ccae6126371a26ec29402a6f1d99c059d41cb7a3414afde	our-team-concept.html
 785c1fb0b7095ba4b05d31cb7c5f6adab72172b7ece152645e42b6e997014df2	technology-citizen-needs.css
@@ -573,6 +574,26 @@ ca4424431845d09a8f32bbe1a31e307aa23d61cf0c03a960e41fc96bd337b017	a s s e t s/sho
 f5740150a92dd88765cf17519d193dd83ec55b844c6c5c03483911b3dd884e7f	a s s e t s/shop-mockup/product-catalogue/triangl/jb-0287-richi-sun-sprinkle-polka-dot-short.webp
 ec90bc79ef33cc1c0bfc739559c0d48ab5b254ff46d0cd063f9e6d71acf46f7a	a s s e t s/shop-mockup/product-catalogue/triangl/jb-0286-mima-silver-sparkle-crop-bikini-set.webp
 03330c2407cfe368dbc2414e7cb7d522643b722b7a58c7b7f7274cdaf6038a00	a s s e t s/shop-mockup/product-catalogue/triangl/jb-0283-maia-alina-pink-crochet-scoop-bikini-set.webp
+db6b290a85900886149c524de6a13678e5922b45afbe816dbbca2cd17c6302ce	a s s e t s/shop-mockup/product-catalogue/champagne-bohemia/jb-0380-pucci-pink-panther.jpg
+bf5e3f1a95ed2eef4e846d6aba5168dfaaa8460633c98b2d41a40d08b451323b	a s s e t s/shop-mockup/product-catalogue/champagne-bohemia/jb-0370-vix-alix.jpg
+e644b9591deb788dc9beb4f9bf3d2e59ea521a1b8dd40b11147a8e45e9bd843d	a s s e t s/shop-mockup/product-catalogue/champagne-bohemia/jb-0372-vix-tammy-renee.jpg
+61face964b9b6852cee7e1a83187c73e109c5238161b03a889290ea87734cd13	a s s e t s/shop-mockup/product-catalogue/champagne-bohemia/jb-0374-versace-one-piece.jpg
+7b00e220cbc5a2e1957fb5719d90ea0a1d14d9b54957cefb64c6429ccf02d5ef	a s s e t s/shop-mockup/product-catalogue/champagne-bohemia/jb-0386-haight-isadora.jpg
+1a1b998f4015c7b00a2baaeb51218e1ea41a74e32eb67e4d854ddb51a365d8b6	a s s e t s/shop-mockup/product-catalogue/champagne-bohemia/jb-0382-saint-laurent-v-neck.jpg
+b6d91476f33fff8e72398d1e7cfbe37694268d299d0bf956d01b8d8050ff5581	a s s e t s/shop-mockup/product-catalogue/champagne-bohemia/jb-0384-norma-kamali-fishtail.jpg
+00dac4e7d3ba60bc825dee6b35de77f9ae2be83ad976d75c87f6c69093672dbc	a s s e t s/shop-mockup/product-catalogue/champagne-bohemia/jb-0378-seroya-emeri.jpg
+85915f620e8b33095d6f13ef7414bc4bb47a054465a835b80a4bcf4e8d8893a0	a s s e t s/shop-mockup/product-catalogue/champagne-bohemia/jb-0388-kiki-la-sirene.jpg
+82ad01ea910421eca42cea33a611aa5f903aabff1ef11a76577e3d59dc46672f	a s s e t s/shop-mockup/product-catalogue/champagne-bohemia/jb-0389-monte-lou-plunge.jpg
+886c4673f4517164ed4a33d0f623cc1b0bc0c684945a904a96f35fd9f936a5d1	a s s e t s/shop-mockup/product-catalogue/champagne-bohemia/jb-0371-johanna-ortiz-whispering-horizons.jpg
+687d1a8d24e518cd46e08ee1a21743de98074f9827a8cb2a0e46459dc350c760	a s s e t s/shop-mockup/product-catalogue/champagne-bohemia/jb-0369-vix-louane.jpg
+bebdca93f035fd5411307dce2e0ced59d76dff488a8c422cdd2c6253371cc262	a s s e t s/shop-mockup/product-catalogue/champagne-bohemia/jb-0379-attico-zebra.jpg
+c4cc9f25a122167024a8e04ecd359520045310c42dc0f81cb6797dd6d549b660	a s s e t s/shop-mockup/product-catalogue/champagne-bohemia/jb-0383-same-double-ruffle.jpg
+9a587bf5ac48ce9d3ab16c0f6e51e1745caf6896a3ea97bab900c9799ff3fd8f	a s s e t s/shop-mockup/product-catalogue/champagne-bohemia/jb-0387-same-twist.jpg
+c78055550766008f889d734426d34646ec5d029c39845f95bcc5b53b55f17eea	a s s e t s/shop-mockup/product-catalogue/champagne-bohemia/jb-0375-versace-bikini.jpg
+4f43c1b3ca5577db6920cb320fc6540fe0ac86b4183304d19237af8996f44d63	a s s e t s/shop-mockup/product-catalogue/champagne-bohemia/jb-0373-attico-metallic.jpg
+aa5e30a22be3cff2716285554701329faf35a3f47eca24fd647693dcdc2a15e5	a s s e t s/shop-mockup/product-catalogue/champagne-bohemia/jb-0381-hunza-g-square-neck.jpg
+2ddea77a8363490c6c299f23083c34cd4983bcbf61b259d55d0e257b9d809baa	a s s e t s/shop-mockup/product-catalogue/champagne-bohemia/jb-0385-loveshackfancy-tawnie.jpg
+f050b8e90fd7549ed5f37b2900a5062fca462e93fc160361dbe0de86b8c465ec	a s s e t s/shop-mockup/product-catalogue/champagne-bohemia/jb-0377-montce-bella.jpg
 cafaa898e04ec88239a3bd8f8e44a58693a73e5d86892a3e034ca55e3882888f	a s s e t s/shop-mockup/product-catalogue/pucci/jb-0086-iride-print-short-dress-6hjg356h757011.webp
 04cbbf8d3c4fa5dc0f6fd75bafc7d0bfd798713ced199c332689b76c3604768b	a s s e t s/shop-mockup/product-catalogue/pucci/jb-0087-vivara-print-triangle-bikini-top-6hmx096h895p20.webp
 895cc606ddcdf1f7147da6861b3918c3c2b78635aeec61825ae4fcbf473b3b7c	a s s e t s/shop-mockup/product-catalogue/pucci/jb-0088-vivara-print-cross-strap-swimsuit-6hmc316h895p20.webp
