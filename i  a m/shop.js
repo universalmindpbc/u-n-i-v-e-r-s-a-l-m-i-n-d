@@ -374,6 +374,10 @@
     return catalogueKernel.brandCounts.find((entry) => brandSlug(entry.brand) === activeCatalogueBrand) || null;
   }
 
+  function catalogueBrandName(product) {
+    return product.catalogueBrand || product.brand;
+  }
+
   function normalisedProductType(product) {
     if (product.productType && product.productType !== "Pending") return product.productType;
     if (product.categories?.includes("bras")) return "Bra";
@@ -460,7 +464,7 @@
     if (catalogueAsideBrand) catalogueAsideBrand.textContent = brand?.brand || "James Bondage";
     if (catalogueAsideForm) {
       catalogueAsideForm.textContent = activeCatalogueType === "all"
-        ? "lingerie / swim / movement"
+        ? (brand?.formLabel || "lingerie / swim / movement")
         : activeCatalogueType.replace(/-/g, " ");
     }
     if (catalogueCount) catalogueCount.textContent = String(brand?.count ?? visibleProducts.length).padStart(2, "0");
@@ -558,8 +562,9 @@
   function roundRobinByBrand(productsToOrder) {
     const buckets = new Map(catalogueKernel.brandOrder.map((brand) => [brand, []]));
     productsToOrder.forEach((product) => {
-      if (!buckets.has(product.brand)) buckets.set(product.brand, []);
-      buckets.get(product.brand).push(product);
+      const catalogueBrand = catalogueBrandName(product);
+      if (!buckets.has(catalogueBrand)) buckets.set(catalogueBrand, []);
+      buckets.get(catalogueBrand).push(product);
     });
     const ordered = [];
     let added = true;
@@ -593,7 +598,7 @@
     if (!catalogueGrid || !catalogueKernel) return;
     const brand = currentBrandRecord();
     let visibleProducts = catalogueProducts
-      .filter((product) => activeCatalogueBrand === "all" || brandSlug(product.brand) === activeCatalogueBrand)
+      .filter((product) => activeCatalogueBrand === "all" || brandSlug(catalogueBrandName(product)) === activeCatalogueBrand)
       .filter(productMatchesType)
       .sort((a, b) => {
         if (activeCatalogueSort === "price-asc") return (a.priceValue ?? Number.MAX_SAFE_INTEGER) - (b.priceValue ?? Number.MAX_SAFE_INTEGER);
@@ -864,9 +869,53 @@
 
   async function loadCatalogue() {
     try {
-      const response = await fetch("shop-product-kernel-v1.json?v=shop-iris-layout-3", { credentials: "same-origin" });
-      if (!response.ok) throw new Error(`Catalogue request failed: ${response.status}`);
-      catalogueKernel = await response.json();
+      const [kernelResponse, champagneResponse] = await Promise.all([
+        fetch("shop-product-kernel-v1.json?v=shop-champagne-bohemia-1", { credentials: "same-origin" }),
+        fetch("shop-champagne-bohemia-products-v1.json?v=shop-champagne-bohemia-1", { credentials: "same-origin" }),
+      ]);
+      if (!kernelResponse.ok) throw new Error(`Catalogue request failed: ${kernelResponse.status}`);
+      if (!champagneResponse.ok) throw new Error(`Champagne Bohemia request failed: ${champagneResponse.status}`);
+
+      catalogueKernel = await kernelResponse.json();
+      const champagneCatalogue = await champagneResponse.json();
+      const champagneProducts = Array.isArray(champagneCatalogue.products)
+        ? champagneCatalogue.products.filter((product) => (
+          product.metadataStatus === "Metadata ready"
+          && product.listedOnShop === true
+          && product.retailerUrl?.startsWith("https://")
+        ))
+        : [];
+      const existingIds = new Set((catalogueKernel.products || []).map((product) => product.id));
+      const existingUrls = new Set((catalogueKernel.products || []).map((product) => product.canonicalUrl));
+      const uniqueChampagneProducts = champagneProducts.filter((product) => (
+        !existingIds.has(product.id) && !existingUrls.has(product.canonicalUrl)
+      ));
+      const champagneBrand = champagneCatalogue.catalogue?.brand || "Champagne Bohemia";
+      const reorderedBrands = (catalogueKernel.brandOrder || [])
+        .filter((brand) => brand !== champagneBrand && brand !== "WARDROBE.NYC");
+      reorderedBrands.push("WARDROBE.NYC", champagneBrand);
+      catalogueKernel.brandOrder = reorderedBrands;
+      catalogueKernel.brandCounts = [
+        ...(catalogueKernel.brandCounts || []).filter((entry) => entry.brand !== champagneBrand),
+        {
+          brand: champagneBrand,
+          count: uniqueChampagneProducts.length,
+          ready: uniqueChampagneProducts.length,
+          route: champagneCatalogue.catalogue?.route || "#catalogue/champagne-bohemia",
+          formLabel: champagneCatalogue.catalogue?.formLabel || "swim / cover-ups",
+        },
+      ].sort((a, b) => catalogueKernel.brandOrder.indexOf(a.brand) - catalogueKernel.brandOrder.indexOf(b.brand));
+      catalogueKernel.products = [...(catalogueKernel.products || []), ...uniqueChampagneProducts];
+      catalogueKernel.counts = {
+        ...(catalogueKernel.counts || {}),
+        sourceReferences: Number(catalogueKernel.counts?.sourceReferences || 0) + uniqueChampagneProducts.length,
+        canonicalRecords: Number(catalogueKernel.counts?.canonicalRecords || 0) + uniqueChampagneProducts.length,
+        products: catalogueKernel.products.length,
+        brands: catalogueKernel.brandOrder.length,
+        metadataReady: Number(catalogueKernel.counts?.metadataReady || 0) + uniqueChampagneProducts.length,
+        imageReady: Number(catalogueKernel.counts?.imageReady || 0) + uniqueChampagneProducts.length,
+        listedOnShop: Number(catalogueKernel.counts?.listedOnShop || 0) + uniqueChampagneProducts.length,
+      };
       catalogueProducts = Array.isArray(catalogueKernel.products)
         ? catalogueKernel.products.filter((product) => product.retailerUrl?.startsWith("https://"))
         : [];

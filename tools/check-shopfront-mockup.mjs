@@ -13,6 +13,7 @@ const globalNavigation = read("i  a m/global-navigation.js");
 const globalNavigationStyle = read("i  a m/global-navigation.css");
 const catalogue = JSON.parse(read("i  a m/shop-catalogue-v1.json"));
 const productKernel = JSON.parse(read("i  a m/shop-product-kernel-v1.json"));
+const champagneCatalogue = JSON.parse(read("i  a m/shop-champagne-bohemia-products-v1.json"));
 const approvedProducts = JSON.parse(read("i  a m/shop-approved-products-v1.json"));
 const architecture = read("i  a m/shopfront-architecture.md");
 const television = read("i  a m/adaptive-environment-television.js");
@@ -31,8 +32,8 @@ assert.ok(
 
 for (const required of [
   "James Bondage",
-  "27 brands",
-  "363",
+  "28 brands",
+  "384",
   "JAMES BONDAGE / UNIVERSAL MIND",
   "Bordelle",
   "Angela Dress",
@@ -40,13 +41,13 @@ for (const required of [
   "KARLA ŠPETIĆ",
   "The Upside",
   "Iris van Herpen",
+  "Champagne Bohemia",
 ]) {
   assert.match(shop, new RegExp(required.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"), "i"), `Missing shop presentation text: ${required}`);
 }
 
 assert.match(shop, /<h1 id="shop-title"><span>James<\/span><span>Bondage<\/span><\/h1>/, "Fashion masthead must remain James Bondage, not James Bondage Health");
 for (const absent of [
-  /Champagne Bohemia/i,
   /inner planes/i,
   /modul8 infinity/i,
   /Designed as a quieter way to browse/i,
@@ -58,7 +59,7 @@ for (const absent of [
 ]) {
   assert.doesNotMatch(shop, absent, `Current shop must not contain ${absent}`);
 }
-assert.equal((shop.match(/<li(?:\s+class="[^"]*")?><span>/g) || []).length, 27, "Brand ledger must contain all 27 retailers");
+assert.equal((shop.match(/<li(?:\s+class="[^"]*")?><span>/g) || []).length, 28, "Brand ledger must contain all 28 shopfront edits");
 assert.equal((shop.match(/data-product(?:\s|>)/g) || []).length, 12, "Opening edit must contain the restrained 12 authorized hero pieces");
 assert.match(shop, /<title>James Bondage \| Shop<\/title>/, "Standalone Shop title must use the approved pipe separator");
 assert.match(index, /document\.title = "James Bondage \| Shop"/, "Shop splash title must use the approved pipe separator");
@@ -119,6 +120,30 @@ for (const product of productKernel.products) {
   for (const galleryImage of product.gallery || []) {
     assert.ok(fs.existsSync(path.join(iam, galleryImage)), `Missing approved gallery image: ${galleryImage}`);
   }
+}
+
+assert.equal(champagneCatalogue.catalogue.brand, "Champagne Bohemia", "Champagne Bohemia must remain one umbrella shopfront");
+assert.equal(champagneCatalogue.catalogue.placementAfter, "WARDROBE.NYC", "Champagne Bohemia must remain immediately after WARDROBE.NYC");
+assert.equal(champagneCatalogue.catalogue.route, "#catalogue/champagne-bohemia", "Champagne Bohemia must retain its dedicated route");
+assert.equal(champagneCatalogue.products.length, 21, "Champagne Bohemia must contain the 21 approved Notion products");
+assert.deepEqual(
+  champagneCatalogue.products.map((product) => product.id),
+  Array.from({ length: 21 }, (_, index) => `JB-${String(index + 369).padStart(4, "0")}`),
+  "Champagne Bohemia product IDs must remain the contiguous JB-0369 through JB-0389 intake",
+);
+assert.equal(new Set(champagneCatalogue.products.map((product) => product.slug)).size, 21, "Champagne Bohemia product slugs must be unique");
+assert.equal(new Set(champagneCatalogue.products.map((product) => product.canonicalUrl)).size, 21, "Champagne Bohemia canonical product URLs must be unique");
+assert.equal(new Set([...productKernel.products, ...champagneCatalogue.products].map((product) => product.canonicalUrl)).size, 384, "The combined shop tensor must contain 384 unique canonical product URLs");
+assert.ok(champagneCatalogue.products.every((product) => product.catalogueBrand === "Champagne Bohemia"), "Every Champagne product must retain the umbrella catalogue brand");
+assert.ok(champagneCatalogue.products.every((product) => product.shopRoute === "#catalogue/champagne-bohemia"), "Every Champagne product must retain the umbrella route");
+assert.ok(champagneCatalogue.products.every((product) => product.forms?.includes("swim")), "Every Champagne product must remain in the swim and cover-up edit");
+assert.ok(champagneCatalogue.products.every((product) => product.currency === "AUD" && Number.isFinite(product.priceValue)), "Every Champagne product must retain its verified AUD price");
+assert.ok(champagneCatalogue.products.every((product) => product.description?.trim()), "Every Champagne product must retain its exact retailer-authored description");
+assert.ok(champagneCatalogue.products.every((product) => product.subjectPresent === true && product.forwardFacing === true), "Every Champagne lead image must contain a forward-facing person");
+assert.ok(champagneCatalogue.products.every((product) => product.notionPageId), "Every Champagne product must retain its exact Notion tensor record");
+for (const product of champagneCatalogue.products) {
+  assert.ok(fs.existsSync(path.join(iam, product.image)), `Missing Champagne Bohemia lead image: ${product.image}`);
+  assert.match(product.retailerUrl, /^https:\/\//, `Champagne Bohemia product must retain its exact retailer URL: ${product.id}`);
 }
 
 const anniesAdditions = productKernel.products.filter((product) => ["JB-0365", "JB-0366", "JB-0367"].includes(product.id));
@@ -245,14 +270,14 @@ assert.match(shopScript, /dataset\.shopTheme \|\| "night"/, "Shop script fallbac
 assert.equal((shop.match(/data-filter-category=/g) || []).length, 6, "James Bondage edit must expose the six restrained form filters");
 assert.match(shop, /href="#shop-about">about<\/a>[\s\S]*data-shop-menu[\s\S]*href="#giving-back">giving back<\/a>[\s\S]*href="#sex-ed">sex ed<\/a>/i, "Shop masthead must use the approved About / Shop / Giving Back / Sex Ed hierarchy");
 assert.equal((shop.match(/data-shop-catalogue-type=/g) || []).length, 6, "Shop menu must expose the six functional type routes");
-for (const priorityBrand of ["eres", "bordelle", "wardrobenyc", "annies-ibiza", "iris-van-herpen"]) {
+for (const priorityBrand of ["eres", "bordelle", "wardrobenyc", "annies-ibiza", "iris-van-herpen", "champagne-bohemia"]) {
   assert.match(shop, new RegExp(`href="#catalogue/${priorityBrand}"`, "i"), `Shop menu must expose priority brand ${priorityBrand}`);
 }
 assert.match(shop, /James Bondage is 24\/7 electronic music television broadcasting sex x mindfulness/i, "Shop About must use the approved 24/7 electronic music television copy");
 assert.match(shop, /Our James Bondage Health series \[ sex-ed \] shares female lead conversations/i, "Shop About must preserve the approved James Bondage Health distinction");
 assert.match(shop, /All profits from affiliate revenue are invested in mental health\./i, "Giving Back must state the approved affiliate profit formula");
 assert.match(shop, /href="https:\/\/headspace\.org\.au"[\s\S]*href="https:\/\/www\.orygen\.org\.au"[\s\S]*href="https:\/\/www\.herspace\.org\.au"[\s\S]*href="https:\/\/www\.phoenixaustralia\.org"/i, "Giving Back must link the four approved mental-health partners");
-assert.match(shop, /href="#catalogue\/eres"[^>]*data-shop-catalogue-link/, "ERES must open from the 27-brand ledger");
+assert.match(shop, /href="#catalogue\/eres"[^>]*data-shop-catalogue-link/, "ERES must open from the 28-brand ledger");
 assert.match(shop, /shop-brands[\s\S]*shop-iris-film[\s\S]*shop-context shop-context--about/, "Iris film must sit between 03 / brands and 04 / about");
 assert.match(shop, /sonic-starquakes-hero-1280x576-v2\.mp4[\s\S]*Sonic Starquakes \/ AW26/, "Homepage must use the local 720-class Iris Sonic Starquakes film");
 assert.ok(fs.existsSync(path.join(iam, "a s s e t s/shop-mockup/iris-van-herpen/sonic-starquakes-hero-1280x576-v2.mp4")), "Missing the 00:20–05:30 Iris hero master");
@@ -264,6 +289,8 @@ assert.match(shop, /data-catalogue-brand[\s\S]*data-catalogue-type[\s\S]*data-ca
 assert.match(shop, /price \/ low to high[\s\S]*price \/ high to low/, "Combined catalogue must expose both price sort directions");
 assert.match(shopScript, /catalogueProductHash\(slug\)/, "Expanded product state must have a shareable retailer-agnostic hash route");
 assert.match(shopScript, /shop-product-kernel-v1\.json/, "Shop catalogue must render from the Notion-backed product kernel");
+assert.match(shopScript, /shop-champagne-bohemia-products-v1\.json/, "Shop catalogue must load the approved Champagne Bohemia tensor extension");
+assert.match(shopScript, /function catalogueBrandName\(product\)[\s\S]*product\.catalogueBrand \|\| product\.brand/, "Umbrella routing must preserve each product's maker brand");
 assert.match(shopScript, /function productHasFullDetail\(product\)[\s\S]*return Boolean\(product\.image \|\| product\.video \|\| product\.gallery\?\.length\)/, "Every approved media card must receive the internal expanded view");
 assert.match(shopScript, /function galleryDisplayProducts[\s\S]*--image-\$\{index \+ 1\}[\s\S]*galleryViewCount/, "Iris must render its six supplied images as six separately addressable catalogue tiles");
 assert.match(shopScript, /activeCatalogueBrand === "iris-van-herpen"[\s\S]*visibleProducts\.flatMap\(galleryDisplayProducts\)/, "The Iris brand route must expand its canonical gallery into individual tiles");
