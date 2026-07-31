@@ -101,6 +101,8 @@
       product.materials,
       product.collection,
       product.collections,
+      product.lookProperty,
+      product.lookProperties,
       familyLabels,
     ];
     const searchable = normalise(fields.flat(Infinity).filter(Boolean).join(" "));

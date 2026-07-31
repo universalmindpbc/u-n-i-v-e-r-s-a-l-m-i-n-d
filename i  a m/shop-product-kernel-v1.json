@@ -109,10 +109,17 @@
       "color",
       "colourFamilies",
       "material",
-      "collection"
+      "collection",
+      "lookProperties"
     ],
     "matching": "normalised_case_insensitive_all_tokens",
-    "internalCategoriesExposed": false
+    "internalCategoriesExposed": false,
+    "transparencyEquivalence": [
+      "transparent",
+      "translucent",
+      "sheer",
+      "see through"
+    ]
   },
   "generatedAt": "2026-07-30",
   "counts": {
@@ -358,7 +365,15 @@
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["lingerie-all","bra"]
+      "shopTypes": ["lingerie-all","bra"],
+      "lookProperties": [
+        "transparent"
+      ],
+      "lookEvidenceStatus": "Verified",
+      "lookEvidenceText": "Ben supplied: Eden, Providence, Indiscrète, Idole, Singulière, Diva, Promesse and Bambin have a transparent look.",
+      "lookSourceType": "Ben supplied",
+      "lookCheckedAt": "2026-07-31",
+      "lookTaxonomyVersion": "jb-look-taxonomy-v1"
     },
     {
       "id": "JB-0002",
@@ -398,7 +413,15 @@
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["lingerie-all","bra"]
+      "shopTypes": ["lingerie-all","bra"],
+      "lookProperties": [
+        "transparent"
+      ],
+      "lookEvidenceStatus": "Verified",
+      "lookEvidenceText": "Ben supplied: Eden, Providence, Indiscrète, Idole, Singulière, Diva, Promesse and Bambin have a transparent look.",
+      "lookSourceType": "Ben supplied",
+      "lookCheckedAt": "2026-07-31",
+      "lookTaxonomyVersion": "jb-look-taxonomy-v1"
     },
     {
       "id": "JB-0003",
@@ -438,7 +461,15 @@
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["lingerie-all","bra"]
+      "shopTypes": ["lingerie-all","bra"],
+      "lookProperties": [
+        "transparent"
+      ],
+      "lookEvidenceStatus": "Verified",
+      "lookEvidenceText": "Ben supplied: Eden, Providence, Indiscrète, Idole, Singulière, Diva, Promesse and Bambin have a transparent look.",
+      "lookSourceType": "Ben supplied",
+      "lookCheckedAt": "2026-07-31",
+      "lookTaxonomyVersion": "jb-look-taxonomy-v1"
     },
     {
       "id": "JB-0004",
@@ -478,7 +509,15 @@
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["lingerie-all","bra"]
+      "shopTypes": ["lingerie-all","bra"],
+      "lookProperties": [
+        "transparent"
+      ],
+      "lookEvidenceStatus": "Verified",
+      "lookEvidenceText": "Ben supplied: Eden, Providence, Indiscrète, Idole, Singulière, Diva, Promesse and Bambin have a transparent look.",
+      "lookSourceType": "Ben supplied",
+      "lookCheckedAt": "2026-07-31",
+      "lookTaxonomyVersion": "jb-look-taxonomy-v1"
     },
     {
       "id": "JB-0005",
@@ -518,7 +557,15 @@
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["lingerie-all","bra"]
+      "shopTypes": ["lingerie-all","bra"],
+      "lookProperties": [
+        "transparent"
+      ],
+      "lookEvidenceStatus": "Verified",
+      "lookEvidenceText": "Ben supplied: Eden, Providence, Indiscrète, Idole, Singulière, Diva, Promesse and Bambin have a transparent look.",
+      "lookSourceType": "Ben supplied",
+      "lookCheckedAt": "2026-07-31",
+      "lookTaxonomyVersion": "jb-look-taxonomy-v1"
     },
     {
       "id": "JB-0006",
@@ -558,7 +605,15 @@
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["lingerie-all","bra"]
+      "shopTypes": ["lingerie-all","bra"],
+      "lookProperties": [
+        "transparent"
+      ],
+      "lookEvidenceStatus": "Verified",
+      "lookEvidenceText": "Ben supplied: Eden, Providence, Indiscrète, Idole, Singulière, Diva, Promesse and Bambin have a transparent look.",
+      "lookSourceType": "Ben supplied",
+      "lookCheckedAt": "2026-07-31",
+      "lookTaxonomyVersion": "jb-look-taxonomy-v1"
     },
     {
       "id": "JB-0007",
@@ -678,7 +733,15 @@
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["lingerie-all","bra"]
+      "shopTypes": ["lingerie-all","bra"],
+      "lookProperties": [
+        "transparent"
+      ],
+      "lookEvidenceStatus": "Verified",
+      "lookEvidenceText": "Ben supplied: Eden, Providence, Indiscrète, Idole, Singulière, Diva, Promesse and Bambin have a transparent look.",
+      "lookSourceType": "Ben supplied",
+      "lookCheckedAt": "2026-07-31",
+      "lookTaxonomyVersion": "jb-look-taxonomy-v1"
     },
     {
       "id": "JB-0010",
@@ -758,7 +821,15 @@
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["lingerie-all","bra"]
+      "shopTypes": ["lingerie-all","bra"],
+      "lookProperties": [
+        "transparent"
+      ],
+      "lookEvidenceStatus": "Verified",
+      "lookEvidenceText": "Ben supplied: Eden, Providence, Indiscrète, Idole, Singulière, Diva, Promesse and Bambin have a transparent look.",
+      "lookSourceType": "Ben supplied",
+      "lookCheckedAt": "2026-07-31",
+      "lookTaxonomyVersion": "jb-look-taxonomy-v1"
     },
     {
       "id": "JB-0012",
@@ -798,7 +869,15 @@
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["lingerie-all","bra"]
+      "shopTypes": ["lingerie-all","bra"],
+      "lookProperties": [
+        "transparent"
+      ],
+      "lookEvidenceStatus": "Verified",
+      "lookEvidenceText": "Ben supplied: Eden, Providence, Indiscrète, Idole, Singulière, Diva, Promesse and Bambin have a transparent look.",
+      "lookSourceType": "Ben supplied",
+      "lookCheckedAt": "2026-07-31",
+      "lookTaxonomyVersion": "jb-look-taxonomy-v1"
     },
     {
       "id": "JB-0014",
@@ -838,7 +917,15 @@
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["lingerie-all","bra"]
+      "shopTypes": ["lingerie-all","bra"],
+      "lookProperties": [
+        "transparent"
+      ],
+      "lookEvidenceStatus": "Verified",
+      "lookEvidenceText": "Ben supplied: Eden, Providence, Indiscrète, Idole, Singulière, Diva, Promesse and Bambin have a transparent look.",
+      "lookSourceType": "Ben supplied",
+      "lookCheckedAt": "2026-07-31",
+      "lookTaxonomyVersion": "jb-look-taxonomy-v1"
     },
     {
       "id": "JB-0015",
@@ -878,7 +965,15 @@
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["lingerie-all","bra"]
+      "shopTypes": ["lingerie-all","bra"],
+      "lookProperties": [
+        "transparent"
+      ],
+      "lookEvidenceStatus": "Verified",
+      "lookEvidenceText": "Ben supplied: Eden, Providence, Indiscrète, Idole, Singulière, Diva, Promesse and Bambin have a transparent look.",
+      "lookSourceType": "Ben supplied",
+      "lookCheckedAt": "2026-07-31",
+      "lookTaxonomyVersion": "jb-look-taxonomy-v1"
     },
     {
       "id": "JB-0016",
@@ -918,7 +1013,15 @@
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["lingerie-all","brief"]
+      "shopTypes": ["lingerie-all","brief"],
+      "lookProperties": [
+        "transparent"
+      ],
+      "lookEvidenceStatus": "Verified",
+      "lookEvidenceText": "Ben supplied: Eden, Providence, Indiscrète, Idole, Singulière, Diva, Promesse and Bambin have a transparent look.",
+      "lookSourceType": "Ben supplied",
+      "lookCheckedAt": "2026-07-31",
+      "lookTaxonomyVersion": "jb-look-taxonomy-v1"
     },
     {
       "id": "JB-0017",
@@ -959,7 +1062,15 @@
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["lingerie-all","brief"]
+      "shopTypes": ["lingerie-all","brief"],
+      "lookProperties": [
+        "transparent"
+      ],
+      "lookEvidenceStatus": "Verified",
+      "lookEvidenceText": "Ben supplied: Eden, Providence, Indiscrète, Idole, Singulière, Diva, Promesse and Bambin have a transparent look.",
+      "lookSourceType": "Ben supplied",
+      "lookCheckedAt": "2026-07-31",
+      "lookTaxonomyVersion": "jb-look-taxonomy-v1"
     },
     {
       "id": "JB-0018",
@@ -1000,7 +1111,15 @@
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["lingerie-all","bra"]
+      "shopTypes": ["lingerie-all","bra"],
+      "lookProperties": [
+        "transparent"
+      ],
+      "lookEvidenceStatus": "Verified",
+      "lookEvidenceText": "Ben supplied: Eden, Providence, Indiscrète, Idole, Singulière, Diva, Promesse and Bambin have a transparent look.",
+      "lookSourceType": "Ben supplied",
+      "lookCheckedAt": "2026-07-31",
+      "lookTaxonomyVersion": "jb-look-taxonomy-v1"
     },
     {
       "id": "JB-0019",
@@ -1041,7 +1160,15 @@
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["lingerie-all","brief"]
+      "shopTypes": ["lingerie-all","brief"],
+      "lookProperties": [
+        "transparent"
+      ],
+      "lookEvidenceStatus": "Verified",
+      "lookEvidenceText": "Ben supplied: Eden, Providence, Indiscrète, Idole, Singulière, Diva, Promesse and Bambin have a transparent look.",
+      "lookSourceType": "Ben supplied",
+      "lookCheckedAt": "2026-07-31",
+      "lookTaxonomyVersion": "jb-look-taxonomy-v1"
     },
     {
       "id": "JB-0020",
@@ -1082,7 +1209,15 @@
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["lingerie-all","bra"]
+      "shopTypes": ["lingerie-all","bra"],
+      "lookProperties": [
+        "transparent"
+      ],
+      "lookEvidenceStatus": "Verified",
+      "lookEvidenceText": "Ben supplied: Eden, Providence, Indiscrète, Idole, Singulière, Diva, Promesse and Bambin have a transparent look.",
+      "lookSourceType": "Ben supplied",
+      "lookCheckedAt": "2026-07-31",
+      "lookTaxonomyVersion": "jb-look-taxonomy-v1"
     },
     {
       "id": "JB-0021",
@@ -1164,7 +1299,15 @@
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["lingerie-all","bra"]
+      "shopTypes": ["lingerie-all","bra"],
+      "lookProperties": [
+        "transparent"
+      ],
+      "lookEvidenceStatus": "Verified",
+      "lookEvidenceText": "Ben supplied: Eden, Providence, Indiscrète, Idole, Singulière, Diva, Promesse and Bambin have a transparent look.",
+      "lookSourceType": "Ben supplied",
+      "lookCheckedAt": "2026-07-31",
+      "lookTaxonomyVersion": "jb-look-taxonomy-v1"
     },
     {
       "id": "JB-0023",
@@ -1327,7 +1470,15 @@
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["lingerie-all","bra"]
+      "shopTypes": ["lingerie-all","bra"],
+      "lookProperties": [
+        "transparent"
+      ],
+      "lookEvidenceStatus": "Verified",
+      "lookEvidenceText": "Ben supplied: Eden, Providence, Indiscrète, Idole, Singulière, Diva, Promesse and Bambin have a transparent look.",
+      "lookSourceType": "Ben supplied",
+      "lookCheckedAt": "2026-07-31",
+      "lookTaxonomyVersion": "jb-look-taxonomy-v1"
     },
     {
       "id": "JB-0027",
@@ -1368,7 +1519,15 @@
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["lingerie-all","brief"]
+      "shopTypes": ["lingerie-all","brief"],
+      "lookProperties": [
+        "transparent"
+      ],
+      "lookEvidenceStatus": "Verified",
+      "lookEvidenceText": "Ben supplied: Eden, Providence, Indiscrète, Idole, Singulière, Diva, Promesse and Bambin have a transparent look.",
+      "lookSourceType": "Ben supplied",
+      "lookCheckedAt": "2026-07-31",
+      "lookTaxonomyVersion": "jb-look-taxonomy-v1"
     },
     {
       "id": "JB-0028",
@@ -1409,7 +1568,15 @@
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["lingerie-all","bra"]
+      "shopTypes": ["lingerie-all","bra"],
+      "lookProperties": [
+        "transparent"
+      ],
+      "lookEvidenceStatus": "Verified",
+      "lookEvidenceText": "Ben supplied: Eden, Providence, Indiscrète, Idole, Singulière, Diva, Promesse and Bambin have a transparent look.",
+      "lookSourceType": "Ben supplied",
+      "lookCheckedAt": "2026-07-31",
+      "lookTaxonomyVersion": "jb-look-taxonomy-v1"
     },
     {
       "id": "JB-0029",
@@ -15564,5 +15731,28 @@
         "label": "accessories"
       }
     ]
+  },
+  "lookTaxonomy": {
+    "version": "jb-look-taxonomy-v1",
+    "authority": "Look Properties in James Bondage Fashion Tensor Kernel [ shop ] in Notion",
+    "mappingPolicy": "retailer_notion_or_ben_supplied_evidence_only",
+    "imageInference": false,
+    "publicColourFilter": false,
+    "searchTerms": [
+      "transparent",
+      "translucent",
+      "sheer",
+      "see through"
+    ],
+    "projectionFields": {
+      "lookProperties": "approved controlled values used by keyword search",
+      "lookEvidenceStatus": "Verified, Unknown or Needs review",
+      "lookEvidenceText": "exact retailer, Notion or Ben-supplied evidence",
+      "lookSourceType": "Retailer page, Notion registry, Ben supplied or Legacy kernel",
+      "lookCheckedAt": "last human or deterministic evidence check",
+      "lookTaxonomyVersion": "controlled vocabulary version"
+    },
+    "projectionUpdatedAt": "2026-07-31",
+    "verifiedCatalogueProductCount": 20
   }
 }

@@ -393,8 +393,8 @@ assert.match(script, /window\.parent\.postMessage\(\{ type: "iam:return-to-telev
 assert.match(script, /url\.searchParams\.set\("musicTelevisionFrame", "1"\)/);
 assert.doesNotMatch(globalNavigation.match(/<nav class="global-nav-menu"[\s\S]*?<\/nav>/)?.[0] || "", /wallet\.html|\/wallet\//i);
 assert.equal((home.match(/data-happiness-wallet-category=/g) || []).length, 4);
-assert.match(home, /adaptive-environment-television\.js\?v=music-tv-c59e53316a6b/);
-assert.match(televisionPage, /adaptive-environment-television\.js\?v=music-tv-c59e53316a6b/);
+assert.match(home, /adaptive-environment-television\.js\?v=music-tv-7ecb5e150404/);
+assert.match(televisionPage, /adaptive-environment-television\.js\?v=music-tv-7ecb5e150404/);
 assert.match(television, /document\.querySelectorAll\("\[data-happiness-wallet-category\]"\)/);
 assert.match(television, /walletLink\.setAttribute\("href", `wallet\.html#\$\{category\}`\)/);
 assert.match(television, /openInVideoPageLayer\(walletLink\)/);

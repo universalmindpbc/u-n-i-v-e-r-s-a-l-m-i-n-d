@@ -81,6 +81,16 @@ const transparentLookFixture = filter.prepareProduct({
 });
 assert.ok(!filter.matchesSearch(fixture, "transparent"), "Transparency search must not infer the property without retailer evidence");
 
+const projectedTransparentLookFixture = filter.prepareProduct({
+  brand: "ERES",
+  name: "Eden Full-cup bra",
+  description: "Retailer-authored product copy without an opacity adjective.",
+  lookProperties: ["transparent"],
+});
+["transparent", "translucent", "sheer", "see through"].forEach((query) => {
+  assert.ok(filter.matchesSearch(projectedTransparentLookFixture, query), `${query} must find an evidence-backed look projection`);
+});
+
 const runtimeProducts = kernel.products.map(filter.prepareProduct);
 assert.equal(runtimeProducts.length, kernel.counts.products, "Every runtime product must remain searchable");
 assert.ok(runtimeProducts.every((product) => typeof product._catalogueSearchText === "string"), "Search text must be prepared once per product");
@@ -105,10 +115,24 @@ assert.ok(verifiedColourProducts.every((product) => product.colourTaxonomyVersio
 assert.ok(verifiedColourProducts.every((product) => product.colourFamilies.every((family) => allowedColourFamilies.has(family))), "No internal or invented family may enter the public projection");
 const calvinKlein = combinedProducts.filter((product) => product.brand === "Calvin Klein");
 const eres = combinedProducts.filter((product) => product.brand === "ERES");
+const transparentEresIds = [
+  "JB-0001", "JB-0002", "JB-0003", "JB-0004", "JB-0005", "JB-0006", "JB-0009", "JB-0011", "JB-0012", "JB-0014",
+  "JB-0015", "JB-0016", "JB-0017", "JB-0018", "JB-0019", "JB-0020", "JB-0022", "JB-0026", "JB-0027", "JB-0028",
+];
+const transparentEres = eres.filter((product) => filter.matchesSearch(product, "transparent"));
 assert.equal(calvinKlein.length, 9, "The complete Calvin Klein catalogue must remain present");
 assert.ok(calvinKlein.filter((product) => filter.matchesColour(product, "white")).length >= 3, "Calvin Klein white products must be filterable");
 assert.ok(eres.filter((product) => filter.matchesColour(product, "white")).length >= 3, "ERES Lys and near-white Panama products must be filterable");
 assert.ok(eres.every((product) => filter.colourFamilies(product).length > 0), "Every ERES house colour in the catalogue must have a verified controlled family");
+assert.deepEqual(transparentEres.map((product) => product.id).sort(), [...transparentEresIds].sort(), "Transparent ERES search must return all and only Ben's approved model variants");
+for (const query of ["translucent", "sheer", "see through"]) {
+  assert.deepEqual(eres.filter((product) => filter.matchesSearch(product, query)).map((product) => product.id).sort(), [...transparentEresIds].sort(), `${query} must resolve the same approved ERES look set`);
+}
+assert.ok(transparentEres.every((product) => product.lookEvidenceStatus === "Verified"), "Every transparent ERES projection must be verified");
+assert.ok(transparentEres.every((product) => product.lookSourceType === "Ben supplied"), "Every transparent ERES projection must retain Ben as its evidence source");
+assert.ok(transparentEres.every((product) => product.lookCheckedAt === "2026-07-31"), "Every transparent ERES projection must retain its audit date");
+assert.ok(transparentEres.every((product) => product.lookTaxonomyVersion === "jb-look-taxonomy-v1"), "Every transparent ERES projection must use the controlled look taxonomy");
+assert.ok(!eres.find((product) => product.id === "JB-0007")?.lookProperties?.includes("transparent"), "Non-approved ERES models must not acquire a transparent look tag");
 assert.deepEqual(
   kernel.colourTaxonomy.visibleOptions,
   filter.COLOUR_OPTIONS,

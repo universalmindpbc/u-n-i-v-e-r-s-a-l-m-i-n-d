@@ -65,16 +65,21 @@ assert.match(shop, /<title>James Bondage \| Shop<\/title>/, "Standalone Shop tit
 assert.match(index, /document\.title = "James Bondage \| Shop"/, "Shop splash title must use the approved pipe separator");
 assert.match(
   television,
-  /const SHOP_SHELL_VERSION = "shop-champagne-bohemia-2-emilio-safari-3-search-colour-3-taxonomy-2";[\s\S]*function frameHref\(link\)[\s\S]*url\.searchParams\.set\("v", SHOP_SHELL_VERSION\)/,
+  /const SHOP_SHELL_VERSION = "shop-champagne-bohemia-2-emilio-safari-3-search-colour-3-taxonomy-2-look-1";[\s\S]*function frameHref\(link\)[\s\S]*url\.searchParams\.set\("v", SHOP_SHELL_VERSION\)/,
   "The real Shop entry must cache-bust its embedded Shop shell to the current Champagne Bohemia version",
 );
-assert.match(index, /adaptive-environment-television\.js\?v=music-tv-c59e53316a6b/, "The homepage must load the Shop cache-bust controller");
+assert.match(index, /adaptive-environment-television\.js\?v=music-tv-7ecb5e150404/, "The homepage must load the Shop cache-bust controller");
 
 assert.equal(catalogue.products.length, 36, "Finished ERES catalogue must contain all 36 approved product URLs");
 assert.equal(new Set(catalogue.products.map((product) => product.id)).size, 36, "Catalogue product IDs must be unique");
 assert.equal(new Set(catalogue.products.map((product) => product.slug)).size, 36, "Catalogue product slugs must be unique");
 assert.ok(catalogue.products.every((product) => product.brand === "ERES"), "Finished ERES catalogue must remain a singular ERES edit");
 assert.ok(catalogue.products.every((product) => product.imageSource === "retailer_gallery_index_0"), "Every bulk-ingested catalogue image must use the first retailer hero");
+const transparentEresNames = new Set(["Eden", "Providence", "Indiscrète", "Idole", "Singulière", "Diva", "Promesse", "Bambin"]);
+const transparentEresCatalogue = catalogue.products.filter((product) => product.lookProperties?.includes("transparent"));
+assert.equal(transparentEresCatalogue.length, 20, "The ERES audit projection must contain all 20 approved transparent model variants");
+assert.ok(transparentEresCatalogue.every((product) => transparentEresNames.has(product.name.split(" ")[0])), "Only the eight approved ERES model families may carry the transparent look tag");
+assert.ok(transparentEresCatalogue.every((product) => product.lookEvidenceStatus === "Verified" && product.lookSourceType === "Ben supplied"), "Every transparent ERES audit record must retain its human evidence source");
 assert.equal(catalogue.priceCurrency, "AUD", "ERES proof must display the requested Australian pricing");
 assert.equal(catalogue.thumbnailPolicy, "retailer_gallery_index_0_only", "ERES proof must use the deterministic first-image policy");
 assert.equal(catalogue.pricesCheckedAt, "2026-07-27", "ERES prices must carry their live verification date");
@@ -403,12 +408,12 @@ assert.match(shopScript, /catalogueKernel\.shopTaxonomy\?\.visibleOptions[\s\S]*
 assert.match(shopScript, /product\.shopTypes\.includes\(activeCatalogueType\)/, "Shop category filtering must use the synced taxonomy values");
 assert.match(shopScript, /validType[\s\S]*shopTaxonomy\?\.visibleOptions\?\.some[\s\S]*activeCatalogueType = validType \? route\.type : "all"/, "Unknown and legacy taxonomy routes must fail closed to the full edit");
 assert.match(shop, /type="search"[^>]*aria-label="Search the catalogue"[^>]*autocomplete="off"/, "Catalogue search must be accessible without noisy search chrome");
-assert.match(shop, /shop-catalogue-filter-v1\.js\?v=shop-search-colour-3/, "Shop must load the current deterministic search and colour module before the catalogue");
+assert.match(shop, /shop-catalogue-filter-v1\.js\?v=shop-search-colour-4/, "Shop must load the current deterministic search, colour and look module before the catalogue");
 assert.match(shop, /price \/ low to high[\s\S]*price \/ high to low/, "Combined catalogue must expose both price sort directions");
 assert.match(shopScript, /catalogueProductHash\(slug\)/, "Expanded product state must have a shareable retailer-agnostic hash route");
 assert.match(shopScript, /shop-product-kernel-v1\.json/, "Shop catalogue must render from the Notion-backed product kernel");
 assert.match(shopScript, /shop-champagne-bohemia-products-v1\.json/, "Shop catalogue must load the approved Champagne Bohemia tensor extension");
-assert.equal((shopScript.match(/shop-colour-audit-2/g) || []).length, 2, "Both catalogue projections must use the current colour-audit cache token");
+assert.equal((shopScript.match(/shop-colour-audit-2-taxonomy-2-look-1/g) || []).length, 2, "Both catalogue projections must use the current colour, taxonomy and look cache token");
 assert.match(shopScript, /product\.retailer \|\| product\.brand/, "Product CTAs must prefer the destination retailer rather than the maker brand");
 assert.match(shopScript, /function catalogueBrandName\(product\)[\s\S]*product\.catalogueBrand \|\| product\.brand/, "Umbrella routing must preserve each product's maker brand");
 assert.match(shopScript, /function productHasFullDetail\(product\)[\s\S]*return Boolean\(product\.image \|\| product\.video \|\| product\.gallery\?\.length\)/, "Every approved media card must receive the internal expanded view");
