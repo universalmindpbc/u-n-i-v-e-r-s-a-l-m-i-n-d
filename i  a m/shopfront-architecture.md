@@ -56,6 +56,19 @@ Possible record layers:
 
 The online tensor would be a versioned, machine-readable projection of approved Notion records—not a second uncontrolled source of truth. Product placement logic could then rank or sequence approved candidates while preserving editorial diversity and providing an understandable reason for the ordering.
 
+## Search and controlled colour layer
+
+Search and colour are quiet catalogue-navigation tools, not discovery engines. The desktop catalogue holds one compact sticky rail in this order: search, brand, type, colour, sort and result count. On mobile, search spans the rail above the two-column controls. There is no search drawer, predictive overlay, fuzzy recommendation or decorative icon chrome.
+
+- The public colour vocabulary is deliberately short: black, white, nude / neutral, brown, grey, red, orange, yellow, green, blue, cobalt, purple, pink, silver, gold and multi-colour / print.
+- `Unknown` is an internal evidence state only. It is never offered as a customer filter and never printed on a product card.
+- A colour family may be assigned only from exact retailer or Notion evidence. Explicit compound colours may belong to more than one family. Cobalt remains distinct from blue. Creative colour names that do not contain reliable colour evidence remain unknown; product imagery is never used to infer colour.
+- The Notion Fashion Tensor remains authoritative. Its audit projection uses `Colour Family`, `Colour Evidence Status`, `Colour Evidence Text`, `Colour Source URL`, `Colour Source Type`, `Colour Checked At` and `Colour Taxonomy Version`; optional material and collection evidence remain separate fields.
+- The online kernel publishes the same `jb-colour-v1` vocabulary and the source/audit field contract. Legacy records retain exact `color` evidence and the authorized `retailerUrl`; the browser maps only explicit colour words and fails closed on uncertain names.
+- Search is deterministic, case-insensitive and diacritic-insensitive. Every entered token must occur across approved brand, product name, retailer-authored description, raw colour, controlled colour family, material or collection metadata. Internal product categories are excluded from the search surface.
+- Search and colour state are retained in the catalogue hash query alongside brand, type, sort and loaded count. Any changed search or filter returns the grid to 24 pieces; **load 24 more** remains the only progressive expansion.
+- A zero-result edit says only **No pieces match this edit.** and offers one quiet control to clear search and filters. Brand-specific routes do not repeat the same brand name on every card.
+
 ## Adaptive experience principles
 
 - Browsing should become more relevant, not more coercive.

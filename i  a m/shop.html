@@ -399,9 +399,11 @@
             <a href="#catalogue-grid">view the collection <span aria-hidden="true">↓</span></a>
           </div>
         </header>
-        <div class="shop-catalogue__filters" aria-label="Filter and sort the James Bondage catalogue">
+        <div class="shop-catalogue__filters" aria-label="Search, filter and sort the James Bondage catalogue">
+          <label class="shop-catalogue__search"><span>search</span><input type="search" data-catalogue-search aria-label="Search the catalogue" placeholder="search the edit" autocomplete="off" enterkeyhint="search"></label>
           <label><span>brand</span><select data-catalogue-brand aria-label="Shop by brand"></select></label>
           <label><span>type</span><select data-catalogue-type aria-label="Shop by product type"></select></label>
+          <label><span>colour</span><select data-catalogue-colour aria-label="Shop by colour"></select></label>
           <label><span>sort</span><select data-catalogue-sort aria-label="Sort products"><option value="editorial">editorial</option><option value="price-asc">price / low to high</option><option value="price-desc">price / high to low</option></select></label>
           <p data-catalogue-status aria-live="polite">showing 24 of 36</p>
         </div>
@@ -464,6 +466,7 @@
     </footer>
 
     <script>window.IAMMobileEditorial?.apply();</script>
-    <script src="shop.js?v=shop-champagne-bohemia-2-emilio-safari-3"></script>
+    <script src="shop-catalogue-filter-v1.js?v=shop-search-colour-1"></script>
+    <script src="shop.js?v=shop-champagne-bohemia-2-emilio-safari-3-search-colour-1"></script>
   </body>
 </html>

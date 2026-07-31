@@ -37,8 +37,10 @@
   const catalogueGrid = document.querySelector("[data-catalogue-grid]");
   const catalogueCount = document.querySelector("[data-catalogue-count]");
   const catalogueStatus = document.querySelector("[data-catalogue-status]");
+  const catalogueSearchInput = document.querySelector("[data-catalogue-search]");
   const catalogueBrandSelect = document.querySelector("[data-catalogue-brand]");
   const catalogueTypeSelect = document.querySelector("[data-catalogue-type]");
+  const catalogueColourSelect = document.querySelector("[data-catalogue-colour]");
   const catalogueSortSelect = document.querySelector("[data-catalogue-sort]");
   const catalogueBrandTitle = document.querySelector("[data-catalogue-brand-title]");
   const catalogueBrandKicker = document.querySelector("[data-catalogue-brand-kicker]");
@@ -70,8 +72,10 @@
   const emilioRetailerTabName = "iam-emilio-cavallini";
   let emilioCurrencyRecoveryReady = false;
   let activeCategory = "all";
+  let activeCatalogueQuery = "";
   let activeCatalogueBrand = "all";
   let activeCatalogueType = "all";
+  let activeCatalogueColour = "all";
   let activeCatalogueSort = "editorial";
   let activeCatalogueLead = "";
   let activeCatalogueLimit = 24;
@@ -81,6 +85,8 @@
   let catalogueReturnScrollY = 0;
   let lastCatalogueResultCount = 0;
   const catalogueChunkSize = 24;
+  const catalogueFilter = window.IAMShopCatalogueFilter;
+  let catalogueSearchTimer = 0;
   let activeHeroVideoIndex = 0;
   let openingPreloadPromise = null;
 
@@ -423,6 +429,12 @@
         ...productTypes.map((type) => option(brandSlug(type), type)),
       );
     }
+    if (catalogueColourSelect && catalogueFilter) {
+      catalogueColourSelect.replaceChildren(
+        option("all", "all colours"),
+        ...catalogueFilter.COLOUR_OPTIONS.map((colour) => option(colour.value, colour.label)),
+      );
+    }
   }
 
   function productHasFullDetail(product) {
@@ -471,9 +483,16 @@
         ? (brand?.formLabel || "lingerie / swim / movement")
         : activeCatalogueType.replace(/-/g, " ");
     }
-    if (catalogueCount) catalogueCount.textContent = String(brand?.count ?? visibleProducts.length).padStart(2, "0");
+    const hasNarrowedEdit = activeCatalogueType !== "all"
+      || activeCatalogueColour !== "all"
+      || Boolean(activeCatalogueQuery);
+    if (catalogueCount) {
+      catalogueCount.textContent = String(hasNarrowedEdit ? visibleProducts.length : brand?.count ?? visibleProducts.length).padStart(2, "0");
+    }
+    if (catalogueSearchInput && catalogueSearchInput.value !== activeCatalogueQuery) catalogueSearchInput.value = activeCatalogueQuery;
     if (catalogueBrandSelect) catalogueBrandSelect.value = activeCatalogueBrand;
     if (catalogueTypeSelect) catalogueTypeSelect.value = activeCatalogueType;
+    if (catalogueColourSelect) catalogueColourSelect.value = activeCatalogueColour;
     if (catalogueSortSelect) catalogueSortSelect.value = activeCatalogueSort;
 
     const brandImages = activeCatalogueBrand === "all"
@@ -547,6 +566,7 @@
     copy.className = "shop-catalogue-card__copy";
     const brand = document.createElement("p");
     brand.textContent = product.brand;
+    brand.hidden = activeCatalogueBrand !== "all" && brandSlug(product.brand) === activeCatalogueBrand;
     const name = document.createElement("h3");
     name.textContent = customerProductName(product);
     const form = document.createElement("span");
@@ -604,6 +624,8 @@
     let visibleProducts = catalogueProducts
       .filter((product) => activeCatalogueBrand === "all" || brandSlug(catalogueBrandName(product)) === activeCatalogueBrand)
       .filter(productMatchesType)
+      .filter((product) => catalogueFilter?.matchesColour(product, activeCatalogueColour) ?? true)
+      .filter((product) => catalogueFilter?.matchesSearch(product, activeCatalogueQuery) ?? true)
       .sort((a, b) => {
         if (activeCatalogueSort === "price-asc") return (a.priceValue ?? Number.MAX_SAFE_INTEGER) - (b.priceValue ?? Number.MAX_SAFE_INTEGER);
         if (activeCatalogueSort === "price-desc") return (b.priceValue ?? -1) - (a.priceValue ?? -1);
@@ -634,9 +656,15 @@
     if (displayedProducts.length) {
       catalogueGrid.replaceChildren(...displayedProducts.map(buildCatalogueCard));
     } else {
-      const empty = document.createElement("p");
+      const empty = document.createElement("div");
       empty.className = "shop-catalogue__empty";
-      empty.textContent = brand ? brand.brand + " / the edit is being prepared." : "The edit is being prepared.";
+      const message = document.createElement("p");
+      message.textContent = "No pieces match this edit.";
+      const clear = document.createElement("button");
+      clear.type = "button";
+      clear.dataset.catalogueClear = "";
+      clear.textContent = "clear search & filters";
+      empty.append(message, clear);
       catalogueGrid.replaceChildren(empty);
     }
     updateCatalogueHeader(visibleProducts);
@@ -851,6 +879,8 @@
       type: typeIndex >= 0 ? decodeURIComponent(parts[typeIndex + 1] || "all") : decodeURIComponent(search.get("type") || "all"),
       product: productIndex >= 0 ? decodeURIComponent(parts[productIndex + 1] || "") : "",
       sort: search.get("sort") || "editorial",
+      query: search.get("q") || "",
+      colour: search.get("colour") || "all",
       lead: search.get("lead") || "",
       count: Number(search.get("count") || catalogueChunkSize),
     };
@@ -861,6 +891,8 @@
       ? `#catalogue/${activeCatalogueBrand}`
       : `#catalogue/${activeCatalogueBrand}/type/${activeCatalogueType}`;
     const search = new URLSearchParams();
+    if (activeCatalogueQuery) search.set("q", activeCatalogueQuery);
+    if (activeCatalogueColour !== "all") search.set("colour", activeCatalogueColour);
     if (activeCatalogueSort !== "editorial") search.set("sort", activeCatalogueSort);
     if (activeCatalogueLead) search.set("lead", activeCatalogueLead);
     if (activeCatalogueLimit > catalogueChunkSize) search.set("count", String(activeCatalogueLimit));
@@ -871,6 +903,8 @@
   function catalogueProductHash(slug) {
     const search = new URLSearchParams();
     if (activeCatalogueType !== "all") search.set("type", activeCatalogueType);
+    if (activeCatalogueQuery) search.set("q", activeCatalogueQuery);
+    if (activeCatalogueColour !== "all") search.set("colour", activeCatalogueColour);
     if (activeCatalogueSort !== "editorial") search.set("sort", activeCatalogueSort);
     if (activeCatalogueLead) search.set("lead", activeCatalogueLead);
     if (activeCatalogueLimit > catalogueChunkSize) search.set("count", String(activeCatalogueLimit));
@@ -890,6 +924,10 @@
     const validBrand = route.brand === "all" || catalogueKernel?.brandCounts.some((entry) => brandSlug(entry.brand) === route.brand);
     activeCatalogueBrand = validBrand ? route.brand : "all";
     activeCatalogueType = route.type || "all";
+    activeCatalogueQuery = route.query || "";
+    activeCatalogueColour = catalogueFilter?.COLOUR_OPTIONS.some((entry) => entry.value === route.colour)
+      ? route.colour
+      : "all";
     activeCatalogueSort = ["editorial", "price-asc", "price-desc"].includes(route.sort) ? route.sort : "editorial";
     activeCatalogueLead = route.lead || "";
     activeCatalogueLimit = Number.isFinite(route.count)
@@ -908,6 +946,20 @@
   }
 
   catalogueGrid?.addEventListener("click", (event) => {
+    const clear = event.target.closest("[data-catalogue-clear]");
+    if (clear) {
+      activeCatalogueQuery = "";
+      activeCatalogueBrand = "all";
+      activeCatalogueType = "all";
+      activeCatalogueColour = "all";
+      activeCatalogueSort = "editorial";
+      activeCatalogueLead = "";
+      activeCatalogueLimit = catalogueChunkSize;
+      window.history.replaceState(null, "", catalogueBrowseHash());
+      renderCatalogue();
+      catalogueSearchInput?.focus();
+      return;
+    }
     const trigger = event.target.closest("[data-catalogue-product-open]");
     if (!trigger) return;
     const slug = trigger.dataset.catalogueProductOpen;
@@ -929,6 +981,34 @@
     activeCatalogueLead = "";
     activeCatalogueLimit = catalogueChunkSize;
     window.location.hash = catalogueBrowseHash();
+  });
+
+  catalogueColourSelect?.addEventListener("change", () => {
+    activeCatalogueColour = catalogueColourSelect.value || "all";
+    activeCatalogueLead = "";
+    activeCatalogueLimit = catalogueChunkSize;
+    window.history.replaceState(null, "", catalogueBrowseHash());
+    renderCatalogue();
+  });
+
+  catalogueSearchInput?.addEventListener("input", () => {
+    window.clearTimeout(catalogueSearchTimer);
+    catalogueSearchTimer = window.setTimeout(() => {
+      activeCatalogueQuery = catalogueSearchInput.value.trim();
+      activeCatalogueLead = "";
+      activeCatalogueLimit = catalogueChunkSize;
+      window.history.replaceState(null, "", catalogueBrowseHash());
+      renderCatalogue();
+    }, 140);
+  });
+
+  catalogueSearchInput?.addEventListener("search", () => {
+    window.clearTimeout(catalogueSearchTimer);
+    activeCatalogueQuery = catalogueSearchInput.value.trim();
+    activeCatalogueLead = "";
+    activeCatalogueLimit = catalogueChunkSize;
+    window.history.replaceState(null, "", catalogueBrowseHash());
+    renderCatalogue();
   });
 
   catalogueSortSelect?.addEventListener("change", () => {
@@ -1007,7 +1087,9 @@
         listedOnShop: Number(catalogueKernel.counts?.listedOnShop || 0) + uniqueChampagneProducts.length,
       };
       catalogueProducts = Array.isArray(catalogueKernel.products)
-        ? catalogueKernel.products.filter((product) => product.retailerUrl?.startsWith("https://"))
+        ? catalogueKernel.products
+          .filter((product) => product.retailerUrl?.startsWith("https://"))
+          .map((product) => catalogueFilter?.prepareProduct(product) || product)
         : [];
       populateCatalogueControls();
       renderRoute();

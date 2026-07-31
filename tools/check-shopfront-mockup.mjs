@@ -356,7 +356,9 @@ assert.doesNotMatch(shop, /browse edit/i, "The brand ledger must not single out 
 assert.match(shop, /data-catalogue-editorial-header/, "ERES catalogue must open with the approved editorial header");
 assert.match(shop, /data-shop-product-dialog/, "Catalogue must expose the quiet expanded product view");
 assert.match(shop, /data-shop-product-dialog-description/, "Expanded product view must prioritize retailer-sourced product context");
-assert.match(shop, /data-catalogue-brand[\s\S]*data-catalogue-type[\s\S]*data-catalogue-sort/, "Combined catalogue must expose brand, product type and sort controls");
+assert.match(shop, /data-catalogue-search[\s\S]*data-catalogue-brand[\s\S]*data-catalogue-type[\s\S]*data-catalogue-colour[\s\S]*data-catalogue-sort/, "Combined catalogue must expose quiet search, brand, product type, colour and sort controls");
+assert.match(shop, /type="search"[^>]*aria-label="Search the catalogue"[^>]*autocomplete="off"/, "Catalogue search must be accessible without noisy search chrome");
+assert.match(shop, /shop-catalogue-filter-v1\.js/, "Shop must load the deterministic search and colour module before the catalogue");
 assert.match(shop, /price \/ low to high[\s\S]*price \/ high to low/, "Combined catalogue must expose both price sort directions");
 assert.match(shopScript, /catalogueProductHash\(slug\)/, "Expanded product state must have a shareable retailer-agnostic hash route");
 assert.match(shopScript, /shop-product-kernel-v1\.json/, "Shop catalogue must render from the Notion-backed product kernel");
@@ -371,6 +373,11 @@ assert.match(shopScript, /function renderProductDialogMedia[\s\S]*product\.video
 assert.match(shopScript, /activeCatalogueLead[\s\S]*visibleProducts\.findIndex[\s\S]*visibleProducts\.unshift/, "Homepage campaigns must deterministically move their approved product into slot one");
 assert.match(shopScript, /function productHasImage[\s\S]*Boolean\(product\.image\)/, "Inventory-only cards must still show their approved exact-source image");
 assert.match(shopScript, /catalogueChunkSize = 24/, "Catalogue must use the approved 24-product loading rhythm");
+assert.match(shopScript, /search\.set\("q", activeCatalogueQuery\)[\s\S]*search\.set\("colour", activeCatalogueColour\)/, "Search and colour state must remain shareable in catalogue URLs");
+assert.match(shopScript, /activeCatalogueLimit = catalogueChunkSize[\s\S]*renderCatalogue\(\)/, "A changed edit must reset the progressive catalogue rhythm");
+assert.match(shopScript, /No pieces match this edit\.[\s\S]*clear search & filters/, "No-result edits must offer a restrained recovery action");
+assert.match(shopScript, /brand\.hidden = activeCatalogueBrand !== "all" && brandSlug\(product\.brand\) === activeCatalogueBrand/, "Single-brand routes must not repeat the brand on every product card");
+assert.match(shopStyle, /\.shop-catalogue__search\s*\{\s*grid-column:\s*1\s*\/\s*-1/, "Mobile search must sit above the compact filter grid");
 assert.match(shopScript, /load \$\{remaining\} more/, "Catalogue must expose progressive load-more control rather than endless scroll");
 assert.match(shopScript, /roundRobinByBrand/, "Universal editorial ordering must surface brand diversity rather than one full brand at a time");
 assert.doesNotMatch(shopScript, /price at retailer/i, "Unpublished prices must remain blank rather than becoming customer-facing filler");

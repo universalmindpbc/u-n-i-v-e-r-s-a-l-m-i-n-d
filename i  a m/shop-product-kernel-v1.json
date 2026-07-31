@@ -6,6 +6,110 @@
     "policy": "exact_notion_product_urls_only",
     "metadataPolicy": "render_only_verified_metadata"
   },
+  "colourTaxonomy": {
+    "version": "jb-colour-v1",
+    "authority": "James Bondage Fashion Tensor Kernel [ shop ] in Notion",
+    "mappingPolicy": "retailer_or_notion_evidence_only",
+    "unknownPolicy": "internal_only_never_exposed_as_a_filter",
+    "rawSourceField": "color",
+    "sourceUrlField": "retailerUrl",
+    "visibleOptions": [
+      {
+        "value": "black",
+        "label": "black"
+      },
+      {
+        "value": "white",
+        "label": "white"
+      },
+      {
+        "value": "nude-neutral",
+        "label": "nude / neutral"
+      },
+      {
+        "value": "brown",
+        "label": "brown"
+      },
+      {
+        "value": "grey",
+        "label": "grey"
+      },
+      {
+        "value": "red",
+        "label": "red"
+      },
+      {
+        "value": "orange",
+        "label": "orange"
+      },
+      {
+        "value": "yellow",
+        "label": "yellow"
+      },
+      {
+        "value": "green",
+        "label": "green"
+      },
+      {
+        "value": "blue",
+        "label": "blue"
+      },
+      {
+        "value": "cobalt",
+        "label": "cobalt"
+      },
+      {
+        "value": "purple",
+        "label": "purple"
+      },
+      {
+        "value": "pink",
+        "label": "pink"
+      },
+      {
+        "value": "silver",
+        "label": "silver"
+      },
+      {
+        "value": "gold",
+        "label": "gold"
+      },
+      {
+        "value": "multi-print",
+        "label": "multi-colour / print"
+      }
+    ],
+    "projectionFields": {
+      "colourFamilies": "approved controlled values used by the public filter",
+      "colourEvidenceStatus": "Verified, Unknown or Needs review",
+      "colourEvidenceText": "exact retailer or Notion colour evidence",
+      "colourSourceUrl": "authorized product URL supporting the evidence",
+      "colourSourceType": "Retailer page, Notion registry, Ben supplied or Legacy kernel",
+      "colourCheckedAt": "last human or deterministic evidence check",
+      "colourTaxonomyVersion": "controlled vocabulary version"
+    },
+    "legacyProjection": {
+      "status": "source_fields_preserved",
+      "evidenceTextField": "color",
+      "sourceUrlField": "retailerUrl",
+      "uncertainColourNames": "unknown",
+      "imageInference": false
+    }
+  },
+  "searchProjection": {
+    "version": "jb-catalogue-search-v1",
+    "fields": [
+      "brand",
+      "name",
+      "description",
+      "color",
+      "colourFamilies",
+      "material",
+      "collection"
+    ],
+    "matching": "normalised_case_insensitive_all_tokens",
+    "internalCategoriesExposed": false
+  },
   "generatedAt": "2026-07-30",
   "counts": {
     "sourceReferences": 371,
