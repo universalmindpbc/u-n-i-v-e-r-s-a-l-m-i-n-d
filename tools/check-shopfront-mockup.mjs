@@ -141,10 +141,31 @@ assert.ok(champagneCatalogue.products.every((product) => product.currency === "A
 assert.ok(champagneCatalogue.products.every((product) => product.description?.trim()), "Every Champagne product must retain its exact retailer-authored description");
 assert.ok(champagneCatalogue.products.every((product) => product.subjectPresent === true && product.forwardFacing === true), "Every Champagne lead image must contain a forward-facing person");
 assert.ok(champagneCatalogue.products.every((product) => product.notionPageId), "Every Champagne product must retain its exact Notion tensor record");
+const verifiedChampagneRetailers = new Map([
+  ["fwrd.com", "FWRD"],
+  ["net-a-porter.com", "NET-A-PORTER"],
+  ["monteandlou.com", "Monte & Lou"],
+]);
 for (const product of champagneCatalogue.products) {
   assert.ok(fs.existsSync(path.join(iam, product.image)), `Missing Champagne Bohemia lead image: ${product.image}`);
   assert.match(product.retailerUrl, /^https:\/\//, `Champagne Bohemia product must retain its exact retailer URL: ${product.id}`);
+  const retailerHost = new URL(product.retailerUrl).hostname.replace(/^www\./, "");
+  assert.equal(product.retailer, verifiedChampagneRetailers.get(retailerHost), `Champagne Bohemia CTA retailer must match its destination hostname: ${product.id}`);
 }
+assert.deepEqual(
+  Object.fromEntries(
+    [...verifiedChampagneRetailers.entries()].map(([host, retailer]) => [
+      retailer,
+      champagneCatalogue.products.filter((product) => new URL(product.retailerUrl).hostname.replace(/^www\./, "") === host).length,
+    ]),
+  ),
+  { FWRD: 19, "NET-A-PORTER": 1, "Monte & Lou": 1 },
+  "Champagne Bohemia must retain the audited 19 FWRD / 1 NET-A-PORTER / 1 Monte & Lou destination split",
+);
+const monteAndLouProduct = champagneCatalogue.products.find((product) => product.id === "JB-0389");
+assert.equal(monteAndLouProduct?.image, "a s s e t s/shop-mockup/product-catalogue/champagne-bohemia/jb-0389-monte-lou-plunge-in-situ.webp", "Monte & Lou must use Ben's supplied in-situ image");
+assert.equal(monteAndLouProduct?.imageSource, "user_supplied_editorial_override", "Monte & Lou must identify Ben's supplied image as an editorial override");
+assert.equal(monteAndLouProduct?.inSitu, true, "Monte & Lou supplied image must be recorded as in situ");
 
 const anniesAdditions = productKernel.products.filter((product) => ["JB-0365", "JB-0366", "JB-0367"].includes(product.id));
 assert.equal(anniesAdditions.length, 3, "Annie’s new products must form the approved three-card row");
@@ -290,6 +311,7 @@ assert.match(shop, /price \/ low to high[\s\S]*price \/ high to low/, "Combined 
 assert.match(shopScript, /catalogueProductHash\(slug\)/, "Expanded product state must have a shareable retailer-agnostic hash route");
 assert.match(shopScript, /shop-product-kernel-v1\.json/, "Shop catalogue must render from the Notion-backed product kernel");
 assert.match(shopScript, /shop-champagne-bohemia-products-v1\.json/, "Shop catalogue must load the approved Champagne Bohemia tensor extension");
+assert.match(shopScript, /product\.retailer \|\| product\.brand/, "Product CTAs must prefer the destination retailer rather than the maker brand");
 assert.match(shopScript, /function catalogueBrandName\(product\)[\s\S]*product\.catalogueBrand \|\| product\.brand/, "Umbrella routing must preserve each product's maker brand");
 assert.match(shopScript, /function productHasFullDetail\(product\)[\s\S]*return Boolean\(product\.image \|\| product\.video \|\| product\.gallery\?\.length\)/, "Every approved media card must receive the internal expanded view");
 assert.match(shopScript, /function galleryDisplayProducts[\s\S]*--image-\$\{index \+ 1\}[\s\S]*galleryViewCount/, "Iris must render its six supplied images as six separately addressable catalogue tiles");
