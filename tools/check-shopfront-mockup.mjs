@@ -65,10 +65,10 @@ assert.match(shop, /<title>James Bondage \| Shop<\/title>/, "Standalone Shop tit
 assert.match(index, /document\.title = "James Bondage \| Shop"/, "Shop splash title must use the approved pipe separator");
 assert.match(
   television,
-  /const SHOP_SHELL_VERSION = "shop-champagne-bohemia-2";[\s\S]*function frameHref\(link\)[\s\S]*url\.searchParams\.set\("v", SHOP_SHELL_VERSION\)/,
+  /const SHOP_SHELL_VERSION = "shop-champagne-bohemia-2-emilio-retry-1";[\s\S]*function frameHref\(link\)[\s\S]*url\.searchParams\.set\("v", SHOP_SHELL_VERSION\)/,
   "The real Shop entry must cache-bust its embedded Shop shell to the current Champagne Bohemia version",
 );
-assert.match(index, /adaptive-environment-television\.js\?v=music-tv-7cf2dfc01f27/, "The homepage must load the Shop cache-bust controller");
+assert.match(index, /adaptive-environment-television\.js\?v=music-tv-eee557e70b16/, "The homepage must load the Shop cache-bust controller");
 
 assert.equal(catalogue.products.length, 36, "Finished ERES catalogue must contain all 36 approved product URLs");
 assert.equal(new Set(catalogue.products.map((product) => product.id)).size, 36, "Catalogue product IDs must be unique");
@@ -119,6 +119,31 @@ assert.equal(productKernel.authority.policy, "exact_notion_product_urls_only", "
 const emilioProduct = productKernel.products.find((product) => product.brand === "Emilio Cavallini");
 assert.equal(emilioProduct?.retailerUrl, "https://www.emiliocavallini.com/en/engeneered-body.html", "Emilio Cavallini must retain Ben's exact approved product URL");
 assert.equal(emilioProduct?.metadataStatus, "Metadata ready", "The Emilio catalogue card must use the retailer-verified metadata");
+assert.deepEqual(
+  productKernel.products
+    .filter((product) => product.brand === "Emilio Cavallini")
+    .map((product) => product.retailerUrl),
+  [
+    "https://www.emiliocavallini.com/en/engeneered-body.html",
+    "https://www.emiliocavallini.com/en/bouganvillea-tights.html",
+  ],
+  "Both Emilio products must retain their exact approved retailer URLs",
+);
+assert.match(
+  shopScript,
+  /const emilioCurrencyRecoveryHost = "www\.emiliocavallini\.com";[\s\S]*const emilioCurrencyRecoveryDelay = 1800;[\s\S]*let emilioCurrencyRecoveryReady = false;[\s\S]*function needsEmilioCurrencyRecovery\(retailerUrl\)[\s\S]*return !emilioCurrencyRecoveryReady;/,
+  "The Emilio recovery must be limited to the retailer host and to the first Shop-page click",
+);
+assert.match(
+  shopScript,
+  /function openRetailerWithCurrencyRecovery\(event\)[\s\S]*window\.open\("", emilioRetailerTabName\)[\s\S]*retailerWindow\.location\.href = retailerUrl;[\s\S]*window\.setTimeout\(\(\) => \{[\s\S]*retailerWindow\.location\.href = retailerUrl;[\s\S]*markEmilioCurrencyRecoveryReady\(\);/,
+  "The Emilio retailer tab must automatically repeat the exact product navigation after its broken first currency redirect",
+);
+assert.match(
+  shopScript,
+  /productDialogRetailer\?\.addEventListener\("click", openRetailerWithCurrencyRecovery\)/,
+  "The retailer CTA must install the Emilio-only currency recovery handler",
+);
 for (const product of productKernel.products) {
   assert.ok(product.slug, `Missing stable product slug: ${product.id}`);
   assert.ok(fs.existsSync(path.join(iam, product.image)), `Missing approved catalogue image: ${product.image}`);

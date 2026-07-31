@@ -65,6 +65,10 @@
   const openingEditorialVideo = document.querySelector(".shop-looks [data-shop-silent-video]");
   const openingEditorialImages = Array.from(document.querySelectorAll(".shop-looks img")).slice(0, 2);
   const themeKey = "iamShopThemeV1";
+  const emilioCurrencyRecoveryHost = "www.emiliocavallini.com";
+  const emilioCurrencyRecoveryDelay = 1800;
+  const emilioRetailerTabName = "iam-emilio-cavallini";
+  let emilioCurrencyRecoveryReady = false;
   let activeCategory = "all";
   let activeCatalogueBrand = "all";
   let activeCatalogueType = "all";
@@ -736,6 +740,54 @@
     if (!productDialog.open) productDialog.showModal();
   }
 
+  function needsEmilioCurrencyRecovery(retailerUrl) {
+    try {
+      const destination = new URL(retailerUrl, window.location.href);
+      if (destination.hostname !== emilioCurrencyRecoveryHost) return false;
+      return !emilioCurrencyRecoveryReady;
+    } catch {
+      return false;
+    }
+  }
+
+  function markEmilioCurrencyRecoveryReady() {
+    emilioCurrencyRecoveryReady = true;
+  }
+
+  function openRetailerWithCurrencyRecovery(event) {
+    if (
+      event.defaultPrevented
+      || event.button !== 0
+      || event.metaKey
+      || event.ctrlKey
+      || event.shiftKey
+      || event.altKey
+    ) return;
+
+    const retailerUrl = productDialogRetailer?.href || "";
+    if (!needsEmilioCurrencyRecovery(retailerUrl)) return;
+
+    const retailerWindow = window.open("", emilioRetailerTabName);
+    if (!retailerWindow) return;
+
+    event.preventDefault();
+    try {
+      retailerWindow.opener = null;
+      retailerWindow.location.href = retailerUrl;
+    } catch {
+      window.open(retailerUrl, emilioRetailerTabName);
+    }
+
+    window.setTimeout(() => {
+      try {
+        retailerWindow.location.href = retailerUrl;
+      } catch {
+        window.open(retailerUrl, emilioRetailerTabName);
+      }
+      markEmilioCurrencyRecoveryReady();
+    }, emilioCurrencyRecoveryDelay);
+  }
+
   function closeProduct(options = {}) {
     if (productDialog?.open) productDialog.close();
     if (options.updateRoute && window.location.hash.includes("/product/")) {
@@ -865,6 +917,7 @@
   productDialog?.addEventListener("click", (event) => {
     if (event.target === productDialog) closeProduct({ updateRoute: true });
   });
+  productDialogRetailer?.addEventListener("click", openRetailerWithCurrencyRecovery);
   window.addEventListener("hashchange", renderRoute);
 
   async function loadCatalogue() {
