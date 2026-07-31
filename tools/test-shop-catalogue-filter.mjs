@@ -35,7 +35,14 @@ const colourCases = [
   ["Cobalt", ["cobalt"]],
   ["Royal Blue", ["blue"]],
   ["Cream White / Multicolor", ["white", "nude-neutral", "multi-print"]],
-  ["Make Up", []],
+  ["Make Up", ["nude-neutral"]],
+  ["Lys", ["white"]],
+  ["Ultra", ["black"]],
+  ["Lassi", ["pink"]],
+  ["Scarabée", ["green"]],
+  ["Palmeraie", ["green"]],
+  ["Panama", ["nude-neutral", "white"]],
+  ["Alligator / argent", ["green", "silver"]],
 ];
 colourCases.forEach(([color, expected]) => {
   assert.deepEqual(
@@ -76,6 +83,20 @@ assert.ok(
 const combinedProducts = [...runtimeProducts, ...champagneProducts];
 assert.equal(combinedProducts.length, 384, "Search and colour QA must cover the complete reconciled catalogue");
 assert.equal(combinedProducts.slice(0, 24).length, 24, "Initial catalogue rhythm must remain 24 products");
+const verifiedColourProducts = combinedProducts.filter((product) => product.colourEvidenceStatus === "Verified");
+const allowedColourFamilies = new Set(filter.COLOUR_OPTIONS.map(({ value }) => value));
+assert.equal(verifiedColourProducts.length, 327, "The evidence-backed colour projection must retain all 327 verified products");
+assert.equal(combinedProducts.filter((product) => filter.colourFamilies(product).length === 0).length, 57, "Unverified colours must remain explicitly unmapped");
+assert.ok(verifiedColourProducts.every((product) => product.colourSourceUrl?.startsWith("https://")), "Every verified colour projection must retain its source URL");
+assert.ok(verifiedColourProducts.every((product) => product.colourCheckedAt === "2026-07-31"), "Every verified colour projection must carry its audit date");
+assert.ok(verifiedColourProducts.every((product) => product.colourTaxonomyVersion === "jb-colour-taxonomy-v1"), "Every verified colour projection must use the current controlled taxonomy");
+assert.ok(verifiedColourProducts.every((product) => product.colourFamilies.every((family) => allowedColourFamilies.has(family))), "No internal or invented family may enter the public projection");
+const calvinKlein = combinedProducts.filter((product) => product.brand === "Calvin Klein");
+const eres = combinedProducts.filter((product) => product.brand === "ERES");
+assert.equal(calvinKlein.length, 9, "The complete Calvin Klein catalogue must remain present");
+assert.ok(calvinKlein.filter((product) => filter.matchesColour(product, "white")).length >= 3, "Calvin Klein white products must be filterable");
+assert.ok(eres.filter((product) => filter.matchesColour(product, "white")).length >= 3, "ERES Lys and near-white Panama products must be filterable");
+assert.ok(eres.every((product) => filter.colourFamilies(product).length > 0), "Every ERES house colour in the catalogue must have a verified controlled family");
 assert.deepEqual(
   kernel.colourTaxonomy.visibleOptions,
   filter.COLOUR_OPTIONS,
