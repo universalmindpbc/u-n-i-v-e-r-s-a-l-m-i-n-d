@@ -87,6 +87,9 @@
     if (streamAsset) Object.assign(candidate, { streamUid: streamAsset.uid, hlsVideoSrc: streamAsset.hls });
   });
   const DEFAULT_TRACK_ID = "madonna-frozen";
+  const SHOP_ARRIVAL_TRACK_ID = "zip-perlon-air-festival-2007";
+  const SHOP_ARRIVAL_START_SECONDS = 88 * 60;
+  const SHOP_ARRIVAL_FADE_IN_MS = 2400;
   const IOH_LOGO_SRC = "a s s e t s/Universal Mind [ I o H ] Logo.PNG";
   const DEFAULT_EDGE_SCALE = 1.12;
   const MAX_DETECTED_EDGE_SCALE = 1.85;
@@ -479,6 +482,7 @@
   let programmeFixedMixLevel = null;
   const voiceAssistantBaseVolumes = new Map();
   const voiceAssistantVolumeFrames = new Map();
+  let shopArrivalFadeTimer = 0;
   let soundResearchAudio = null;
   let soundResearchGainFrame = 0;
   let soundResearchMediaLevel = 0;
@@ -1124,7 +1128,9 @@
     playerMount.append(fashionVideo);
     playerMount.append(fashionHeroFrame);
     playerMount.append(timecode);
-    attachAdaptiveStream(localVideo, track.localVideoSrc, "music");
+    attachAdaptiveStream(localVideo, track.localVideoSrc, "music", {
+      autoplay: shopShellRequested ? false : undefined,
+    });
     return localVideo;
   }
 
@@ -3878,6 +3884,7 @@
   }
 
   function stopContinuationAudioImmediately() {
+    clearShopArrivalFade();
     destroyContinuationHls();
     if (continuationAudio) {
       try {
@@ -4708,8 +4715,18 @@
 
   async function startAudioLedParty(nextTrack, options = {}) {
     if (!nextTrack?.audioOnly || musicSwitching) return false;
+    clearShopArrivalFade();
     clearMusicHandoffTimer();
     if (preloadedMusicVideo) discardPreloadedMusicVideo("audio_party_start");
+    const shopIndependent = options.source === "shop_independent";
+    const requestedStartSeconds = shopIndependent
+      ? SHOP_ARRIVAL_START_SECONDS
+      : Number(options.startAt);
+    const hasRequestedStart = Number.isFinite(requestedStartSeconds);
+    const requestedFadeInMs = Math.max(
+      0,
+      shopIndependent ? SHOP_ARRIVAL_FADE_IN_MS : Number(options.fadeInMs) || 0
+    );
     const streamAsset = window.IAMCloudflareStream?.assetFor(nextTrack.localVideoSrc);
     const source = nextTrack.hlsVideoSrc || streamAsset?.hls || "";
     if (!source) {
@@ -4762,16 +4779,36 @@
           channelId: options.broadcastChannelId,
           programmeInstanceId: state.programmeInstanceId,
         });
+      } else if (hasRequestedStart) {
+        await seekBroadcastVideo(continuationAudio, Math.max(0, requestedStartSeconds), {
+          reason: shopIndependent ? "shop_cue" : "requested_start",
+          role: "audio",
+        });
       }
       continuationAudio.loop = false;
       continuationAudio.muted = false;
       continuationAudio.playbackRate = 1;
-      setVoiceAssistantProgramVolume(
-        continuationAudio,
-        programmeFixedMixLevel ?? .68,
-        voiceAssistantDuckActive ? 260 : 0
-      );
+      const targetProgrammeLevel = programmeFixedMixLevel ?? .68;
+      if (requestedFadeInMs > 0) {
+        continuationAudio.volume = 0;
+        document.body.dataset.audioPartyFadeInMs = String(requestedFadeInMs);
+      } else {
+        delete document.body.dataset.audioPartyFadeInMs;
+        setVoiceAssistantProgramVolume(
+          continuationAudio,
+          targetProgrammeLevel,
+          voiceAssistantDuckActive ? 260 : 0
+        );
+      }
+      if (hasRequestedStart) {
+        document.body.dataset.audioPartyStartSeconds = Math.max(0, requestedStartSeconds).toFixed(3);
+      } else {
+        delete document.body.dataset.audioPartyStartSeconds;
+      }
       await continuationAudio.play();
+      if (requestedFadeInMs > 0) {
+        fadeShopArrivalProgrammeVolume(continuationAudio, targetProgrammeLevel, requestedFadeInMs);
+      }
       document.body.dataset.radioPlaybackState = "playing";
       document.body.dataset.audioPartyPlaybackState = "playing";
       window.IAMEMDR?.setTimelineSource?.({ media: continuationAudio, bpm: 124, firstDownbeatSeconds: 0, fallbackBpm: 124 });
@@ -5583,6 +5620,40 @@
     voiceAssistantVolumeFrames.set(media, window.requestAnimationFrame(frame));
   }
 
+  function clearShopArrivalFade() {
+    if (shopArrivalFadeTimer) window.clearInterval(shopArrivalFadeTimer);
+    shopArrivalFadeTimer = 0;
+  }
+
+  function fadeShopArrivalProgrammeVolume(media, baseVolume, duration) {
+    if (!media) return;
+    clearShopArrivalFade();
+    const baseline = Math.max(0, Math.min(1, Number(baseVolume) || 0));
+    if (voiceAssistantDuckActive) voiceAssistantBaseVolumes.set(media, baseline);
+    const target = baseline * (voiceAssistantDuckActive ? .15 : 1);
+    const startVolume = Number(media.volume) || 0;
+    const startedAt = Date.now();
+    const fadeDuration = Math.max(0, Number(duration) || 0);
+    document.body.dataset.audioPartyFadeState = fadeDuration > 0 ? "running" : "complete";
+
+    const applyFadeStep = () => {
+      const progress = fadeDuration > 0
+        ? Math.max(0, Math.min(1, (Date.now() - startedAt) / fadeDuration))
+        : 1;
+      const eased = 1 - Math.pow(1 - progress, 3);
+      media.volume = Math.max(0, Math.min(1, startVolume + ((target - startVolume) * eased)));
+      document.body.dataset.audioPartyVolume = media.volume.toFixed(3);
+      document.body.dataset.audioPartyMuted = String(media.muted);
+      if (progress >= 1) {
+        clearShopArrivalFade();
+        document.body.dataset.audioPartyFadeState = "complete";
+      }
+    };
+
+    applyFadeStep();
+    if (fadeDuration > 0) shopArrivalFadeTimer = window.setInterval(applyFadeStep, 50);
+  }
+
   function setVoiceAssistantProgramVolume(media, baseVolume, duration = 0) {
     if (!media) return;
     const baseline = Math.max(0, Math.min(1, Number(baseVolume) || 0));
@@ -6327,6 +6398,7 @@
   }
 
   function stopTelevisionMedia() {
+    clearShopArrivalFade();
     window.__iamAdaptiveEnvironment?.stopRadio?.();
     stopBroadcastPlayback("television_closed");
     stopFashionBroadcastPlayback("television_closed");
@@ -6943,6 +7015,7 @@
   }
 
   function pauseShopMusic(targetWindow = pageFrame?.contentWindow) {
+    clearShopArrivalFade();
     stopBroadcastPlayback("shop_pause");
     if (continuationAudio && !continuationAudio.paused) {
       continuationAudio.pause();
@@ -6960,17 +7033,19 @@
   async function requestShopMusic(targetWindow = pageFrame?.contentWindow, options = {}) {
     const currentStatus = shopMusicStatus();
     if (currentStatus.playing) {
-      if (options.ensurePlaying) {
+      const shopMixIsPlaying = currentStatus.source === "party" && track.id === SHOP_ARRIVAL_TRACK_ID;
+      if (options.ensurePlaying && shopMixIsPlaying) {
         postShopMusicStatus(targetWindow);
         return true;
       }
-      return pauseShopMusic(targetWindow);
+      if (!options.ensurePlaying) return pauseShopMusic(targetWindow);
     }
 
     if (
       continuationAudio &&
       document.body.classList.contains("television-audio-party") &&
-      document.body.dataset.audioPartyPlaybackState === "paused"
+      document.body.dataset.audioPartyPlaybackState === "paused" &&
+      track.id === SHOP_ARRIVAL_TRACK_ID
     ) {
       try {
         continuationAudio.playbackRate = 1;
@@ -6986,18 +7061,7 @@
       return true;
     }
 
-    let shopTrack = null;
-    try {
-      await window.IAMBroadcastClock?.ready;
-      const state = window.IAMBroadcastClock?.stateAt("party-james-bondage");
-      const scheduledTrack = findTrack(state?.trackId);
-      if (scheduledTrack?.audioOnly) shopTrack = scheduledTrack;
-    } catch {
-      // The independent shop transport can still use the approved fallback set.
-    }
-    if (!shopTrack) {
-      shopTrack = TRACK_CATALOGUE.find((candidate) => candidate.musicRoom === "james-bondage" && candidate.audioOnly) || null;
-    }
+    const shopTrack = findTrack(SHOP_ARRIVAL_TRACK_ID);
 
     if (shopTrack) {
       await startAudioLedParty(shopTrack, { source: "shop_independent" });
@@ -7036,6 +7100,9 @@
     setReactionWalletOpen(false);
     room.setAttribute("aria-hidden", "false");
     playButton.setAttribute("aria-expanded", "true");
+    const video = mountPlayer();
+    try { video.pause(); } catch {}
+    video.muted = true;
     document.body.classList.add("television-room-open");
     startFlowerSpin();
     openInVideoPageLayer(shopLink);
