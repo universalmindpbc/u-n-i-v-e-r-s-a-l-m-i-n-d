@@ -65,10 +65,10 @@ assert.match(shop, /<title>James Bondage \| Shop<\/title>/, "Standalone Shop tit
 assert.match(index, /document\.title = "James Bondage \| Shop"/, "Shop splash title must use the approved pipe separator");
 assert.match(
   television,
-  /const SHOP_SHELL_VERSION = "shop-champagne-bohemia-2-emilio-safari-3-search-colour-2";[\s\S]*function frameHref\(link\)[\s\S]*url\.searchParams\.set\("v", SHOP_SHELL_VERSION\)/,
+  /const SHOP_SHELL_VERSION = "shop-champagne-bohemia-2-emilio-safari-3-search-colour-3";[\s\S]*function frameHref\(link\)[\s\S]*url\.searchParams\.set\("v", SHOP_SHELL_VERSION\)/,
   "The real Shop entry must cache-bust its embedded Shop shell to the current Champagne Bohemia version",
 );
-assert.match(index, /adaptive-environment-television\.js\?v=music-tv-d5b3e21a8e7f/, "The homepage must load the Shop cache-bust controller");
+assert.match(index, /adaptive-environment-television\.js\?v=music-tv-10c586ca6571/, "The homepage must load the Shop cache-bust controller");
 
 assert.equal(catalogue.products.length, 36, "Finished ERES catalogue must contain all 36 approved product URLs");
 assert.equal(new Set(catalogue.products.map((product) => product.id)).size, 36, "Catalogue product IDs must be unique");
@@ -358,7 +358,7 @@ assert.match(shop, /data-shop-product-dialog/, "Catalogue must expose the quiet 
 assert.match(shop, /data-shop-product-dialog-description/, "Expanded product view must prioritize retailer-sourced product context");
 assert.match(shop, /data-catalogue-search[\s\S]*data-catalogue-brand[\s\S]*data-catalogue-type[\s\S]*data-catalogue-colour[\s\S]*data-catalogue-sort/, "Combined catalogue must expose quiet search, brand, product type, colour and sort controls");
 assert.match(shop, /type="search"[^>]*aria-label="Search the catalogue"[^>]*autocomplete="off"/, "Catalogue search must be accessible without noisy search chrome");
-assert.match(shop, /shop-catalogue-filter-v1\.js\?v=shop-search-colour-2/, "Shop must load the current deterministic search and colour module before the catalogue");
+assert.match(shop, /shop-catalogue-filter-v1\.js\?v=shop-search-colour-3/, "Shop must load the current deterministic search and colour module before the catalogue");
 assert.match(shop, /price \/ low to high[\s\S]*price \/ high to low/, "Combined catalogue must expose both price sort directions");
 assert.match(shopScript, /catalogueProductHash\(slug\)/, "Expanded product state must have a shareable retailer-agnostic hash route");
 assert.match(shopScript, /shop-product-kernel-v1\.json/, "Shop catalogue must render from the Notion-backed product kernel");

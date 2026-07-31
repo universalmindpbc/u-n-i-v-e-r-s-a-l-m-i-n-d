@@ -49,6 +49,8 @@
     ["gold", /\b(gold|aurous|24k)\b/],
     ["multi-print", /\b(multi|multicolor|multicolour|multi color|multi colour|print|printed|imprime|stripe|striped|polka|colorblock|colourblock)\b/],
   ]);
+  const TRANSPARENCY_LOOK_PATTERN = /\b(transparent|translucent|sheer|see through)\b/;
+  const TRANSPARENCY_LOOK_SEARCH_TERMS = "transparent translucent sheer see through";
 
   function normalise(value) {
     return String(value ?? "")
@@ -101,7 +103,9 @@
       product.collections,
       familyLabels,
     ];
-    return normalise(fields.flat(Infinity).filter(Boolean).join(" "));
+    const searchable = normalise(fields.flat(Infinity).filter(Boolean).join(" "));
+    if (!TRANSPARENCY_LOOK_PATTERN.test(searchable)) return searchable;
+    return `${searchable} ${TRANSPARENCY_LOOK_SEARCH_TERMS}`;
   }
 
   function matchesSearch(product, query) {

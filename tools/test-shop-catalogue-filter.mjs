@@ -20,6 +20,7 @@ assert.deepEqual(
   "The public colour vocabulary must stay short and controlled",
 );
 assert.ok(!filter.COLOUR_OPTIONS.some(({ value }) => value === "unknown"), "Unknown must remain internal");
+assert.ok(!filter.COLOUR_OPTIONS.some(({ value }) => value === "transparent"), "Transparency is a look property, not a colour family");
 
 const colourCases = [
   ["Noir", ["black"]],
@@ -68,6 +69,17 @@ assert.ok(filter.matchesSearch(fixture, "eres cobalt studio"), "Search tokens mu
 assert.ok(!filter.matchesSearch(fixture, "eres silver"), "Every query token must match");
 assert.equal(filter.matchesColour(fixture, "cobalt"), true);
 assert.equal(filter.matchesColour(fixture, "blue"), false);
+
+const transparentLookFixture = filter.prepareProduct({
+  brand: "SEROYA",
+  name: "Knit dress",
+  description: "Sheer fully fashioned knit",
+  color: "Gold",
+});
+["transparent", "translucent", "sheer"].forEach((query) => {
+  assert.ok(filter.matchesSearch(transparentLookFixture, query), `${query} must find retailer-authored transparency evidence`);
+});
+assert.ok(!filter.matchesSearch(fixture, "transparent"), "Transparency search must not infer the property without retailer evidence");
 
 const runtimeProducts = kernel.products.map(filter.prepareProduct);
 assert.equal(runtimeProducts.length, kernel.counts.products, "Every runtime product must remain searchable");
