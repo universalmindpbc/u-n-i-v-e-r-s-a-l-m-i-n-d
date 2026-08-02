@@ -27,7 +27,7 @@ f5523d0d103367606e5c786fdefe6a1a560975a214ebe5188405469ec5619e09	tools/analyze-v
 f1670bb15260c563cfe508ea2be7ddfe2f1b9260e0f3ab2f1015343345b5d177	i  a m.md
 b138f9bdc1319d701216c017e906e10c1efdaf790031ee78f7c57cb7bec26772	community-globe.html
 95811f319fe8fd80719921ccffdb063f417f77fcec50b3eac90c319d9cc84dce	mantra-samples-v1.json
-00cd76fca45e8085b33c6f60cc14a28d9622cbbe6cc2bdbc65967de01655eaf2	index.html
+c3b717a049a8731c91a642bf69861f5752d871741d6610de7fe366df4196922f	index.html
 20dc50b64abe690d2c5a0dca3de5f7c8bc696efb00d24372b56104644b7fe0b2	shop.css
 6402cc9d89a20b6e4b48802930edbbe616be2186f1a2e3688736d2e05e5b6231	mantra-sampler.js
 1aaa3cfaf7b894f033bf45848bc6b103b7ef2b4b0870d211f8f4b7ca77158b23	mobile-editorial-surface.js
@@ -86,25 +86,25 @@ dc0fdf6ee77c7a4d1295e53843a4c3f6e64fcf6ec8166e2d182063fe90b8e83f	programme-guide
 c1c822706963fd43a4320f7212c399503fb2a4f64206a3bf75e13b34f83e784a	adaptive-inference-engine-system-prompt-v2.22-content.js
 2d617f2ef088b89c73c02cfc5f4fa7f418ce6a79a270d2d4c1950323c8246d08	emdr-vector-worlds.js
 beb34584876306e5825ba720c8cfb01b871065791c48be5add2ce5cc6d75f59f	adaptive-inference-engine-system-prompt-v1.11.html
-28d6e6e13d9181053542982c582a8d6c0c995b7bcc0fd6168494920ef602ebbb	shop.html
+6273de3c84b315748698ea0899468ed608a474613dea343be050508752f1f130	shop.html
 98dbaed545afb562209b525af16d09f0dad7b0ef2c7b018b295d7f285b6a645a	realtime-voice-assistant.js
 3862c4481721b08403d25024626930de4c0a2b265ccc336e99b830bb3133825e	c h a n g e l o g.md
 5e1fdfbadb0466e1997b206c6197cba92f566d211a16f31bd627da4cfb976b4b	mantra-audio-fx.js
 1c5d23b954a58cd67f51a7c32adddbb22dfb58fa34fae89c593a5bae97fd8d54	happiness-control.html
 e12eb24c367d2ac6f67963f434a729027e75b914e450b6260f47c01b9bd1ef58	i  a m  c h e c k i n  -  f o r m  -  b r i e f.md
 b89467d63bab7000ddda479156834f13fc30e5840f2dedc55a91e18f47fda51e	citizen-data-client.js
-644847b887c02db7db30f4098e4234b62b6a582254df56f5beef1a0969ca6713	shop-product-kernel-v1.json
+8424235d148c02264b0ed296436893c560d94a163ef4de394d4362d4a9c3e581	shop-product-kernel-v1.json
 2ce0d0a5afb4d9961eec772a296e17f9c703d89182648b6d35ee6007c776d59f	science-research-data-v1.js
 f89cebb043a21aa77133c9cd40875d6703eefcb3b8fab637931e1da119eb01f7	shop-approved-products-v1.json
 fa5e34089bf9beb5efdf29d28d82e758d766a3e078ab1f271fb7e4fb698c0367	mantra-sampler.css
 bd93dfd7e117b2a7d265e3f57dcc99568c0026613f28b027b292220df0f6c3fc	adaptive-music-video-catalogue-v1.11.json
-373e0564239936015eebca99b29d70511b6b3d17cf7362da6bcc57377cc20093	adaptive-environment-television.js
+965c46c957d65b37d94ecd8e01f9071c65602cd84d3c723de89ff1df333a8e94	adaptive-environment-television.js
 21018b071ae34b685b6ee42f98207b3b1af59b53977f6ce26345fcf1b1224c35	technology.html
-626a95d1aaf8439f849a7e775007bebc57ffab53b2bfddee0d0f389b727fd3a5	adaptive-environment-television.html
+a8a2acd7b65dc6c462ab564f090ad222d76af87e934e87fed20de49a365d85af	adaptive-environment-television.html
 4a4badd4d6cd61b01a274c2e85cd7bb875cc6b8b79186b86f097cdcfe4deaf5b	script.js
 8ea0432ffcd62efe867482b520f0f7d2f005cc43117cb5424ca7097d7f5ad936	stakeholders/budget/index.html
 0f32e3f59c3045259d45f6db8dd9ebb9fcac04da5b8a2982912baae86d7e14f2	stakeholders/budget/iamvogue-stakeholder-budget-v1.xlsx
-5c2a47ec0554f7cc19409e27c31477153b65f6bc4effa87b1f0b03216025d45f	shopfront-architecture.md
+70043781a551e8e149cf4f9d92ae12c2e1a32a975e5f394db84267eb1968ef7e	shopfront-architecture.md
 6b4dabad0c6b29d40d4d7abe7661345cdcc0d9103705a3bf2233a632a1c3192b	adaptive-soundtrack-selection-guide-v1.11.json
 d7b0c8c14b00152e1be5a74c0d51dd9e31ea33fb6c0b0dbc5febc6f903aaa89d	favicon.png
 cb1b29386bb61f875d22f83de35c53a285a30ff7433e9cb58a9940914231d52e	adaptive-inference-engine-system-prompt-v2.22.html
@@ -145,7 +145,7 @@ e4f89461e10f3e317b5d97873023c7607bb356e673a89a175612c9df4ddb8b85	api/owner-state
 35461a8ea56b4c2564920f290a5d02fb2f5e709dcabe7a6763cbf9a5851e8e28	api/.htaccess
 325aa1e085b318097db19027243acebe556dfa2804ac14f0f34063d005e5cab5	cloudflare-stream-catalogue.js
 34a1b1de69324c0ca7a5f9ed61fab6deedaec63132c74f5785752f922ccb99ec	shop-catalogue-filter-v1.js
-877219f5acbd44d532bc34e7f774cadef678a673ff47ab57834bb19eea2fc491	shop.js
+e757b0e880d9d496960fe5ced32f5bf4ddfcf49f361f82cde77b053b784e9c3f	shop.js
 db213ad178d17d3b7092436c17048a426e2ac2cc8cedaa1a4a1740b1c0184bec	video-beat-grid-v1.json
 a379f3df1307f5ae0ccae6126371a26ec29402a6f1d99c059d41cb7a3414afde	our-team-concept.html
 785c1fb0b7095ba4b05d31cb7c5f6adab72172b7ece152645e42b6e997014df2	technology-citizen-needs.css
@@ -465,10 +465,22 @@ c81f7c96c9eb5416adc30b8c362a234d7f7bcd361a8fcf0b9a43d0a6ba0a58e3	a s s e t s/sho
 72d8a13f2511b755c82b3fdb4c5d7ace8985e3ecc645ee0e262e15aa4aa86db1	a s s e t s/shop-mockup/product-catalogue/pe-nation/jb-0214-dynamic-sports-bra-in-college-green.webp
 2509d7f42614670717368dcecae40ad98d0fbc09d4be9c649ffecee9cc490f04	a s s e t s/shop-mockup/product-catalogue/pe-nation/jb-0211-reveal-sports-bra-in-dark-navy.webp
 22948287598cbe4f09c04a0bfca98a6b4794b052f93b2426f74eb2fe6da273fe	a s s e t s/shop-mockup/product-catalogue/pe-nation/jb-0207-lumify-sports-bra-in-marine-blue.webp
+017696c622ee2e0012dfede9850646143d66d9b471e9b26e33e28612e35f2cba	a s s e t s/shop-mockup/product-catalogue/calvin-klein/jb-0415-icon-cotton-modal-bikini-brief-cradle-pink.jpg
 0ab9d7acf8f61f4c3f0931f486560834c10edcae6d3e99e9f9c66e2eb55e8bfd	a s s e t s/shop-mockup/product-catalogue/calvin-klein/jb-0115-signature-modal-mesh-thong-blue-tulip-qf873144j.webp
+82d0ff5dede50870bc0b0b09cc9c848a592adfc55ff2c47230e34fd5e99a9bcd	a s s e t s/shop-mockup/product-catalogue/calvin-klein/jb-0414-icon-cotton-modal-thong-cradle-pink.jpg
+b86d04c6b72268d90d9069a957ac92087b12196e2cbc89b913e3d93bd7e2db5d	a s s e t s/shop-mockup/product-catalogue/calvin-klein/jb-0417-icon-cotton-modal-unlined-bralette-cradle-pink.jpg
+9e6b73047b30b54f8dd1014d2a85cc34044214273e192eb89b6d7638a1e5ab18	a s s e t s/shop-mockup/product-catalogue/calvin-klein/jb-0416-icon-cotton-modal-boyshort-cradle-pink.jpg
 ed78e3926cfd8cd67061dff4a39da6e0f3e4b8f5bbeda49f89b7f1b98f650503	a s s e t s/shop-mockup/product-catalogue/calvin-klein/jb-0112-ck-black-bridal-bodysuit-antique-white-qf8744yac.webp
 97bffde034f29c9e379ed4eacaecac4c0b16d10a50b7829141fb3acc9c1ea664	a s s e t s/shop-mockup/product-catalogue/calvin-klein/jb-0111-icon-cotton-modal-lightly-lined-triangle-bralette-white-qf8498100.webp
 e7bf986b4406e8c0b33a27c919c8babe7c9d4dcf13be2d0ac7dc904ba55d7ec6	a s s e t s/shop-mockup/product-catalogue/calvin-klein/jb-0117-ck-black-bridal-thong-antique-white-qf8631yac.webp
+ba6df2abe7b5d1d207d85c6db9cdb32dc7f456ef2fb9a097e392d38b89373b10	a s s e t s/shop-mockup/product-catalogue/calvin-klein/jb-0407-icon-cotton-modal-bikini-brief-white.jpg
+1175239c8df8e71fc934da2e299e1d324b6ad5fbeac39e3a2ddab0c44a5e5c49	a s s e t s/shop-mockup/product-catalogue/calvin-klein/jb-0412-icon-cotton-modal-metallic-triangle-bralette-black.jpg
+619b6d634edd14b636ed39bc74c8bf72af703fdc74e04c3cf3935aea00c93c05	a s s e t s/shop-mockup/product-catalogue/calvin-klein/jb-0406-icon-cotton-modal-thong-white.jpg
+a01ad1029613d94923b35bc7e19a6d5ace4bc56560674a6b1f24e37576fedb95	a s s e t s/shop-mockup/product-catalogue/calvin-klein/jb-0408-icon-cotton-modal-boyshort-white.jpg
+b0c7a1cb9f8aad1b4ec511f6edf5e770a3f880b3f2c0e89d4e093e82f5d1a330	a s s e t s/shop-mockup/product-catalogue/calvin-klein/jb-0411-icon-cotton-modal-metallic-thong-black.jpg
+1cea7e288c09d46384467d44af11dd5329d5400186e387a3d4b23cb2a4040cad	a s s e t s/shop-mockup/product-catalogue/calvin-klein/jb-0410-icon-cotton-modal-unlined-bralette-white.jpg
+75ee2b1461ae87c1baf79de678a225f500f4fcd4a4e0c62e2e89e58a34cb81da	a s s e t s/shop-mockup/product-catalogue/calvin-klein/jb-0409-icon-cotton-modal-long-sleeve-tee-bralette-white.jpg
+fd4dfddb7c9d33e79dd55495dbdb62f2b0be66a84d9269d92d06e79c1ccaf0a8	a s s e t s/shop-mockup/product-catalogue/calvin-klein/jb-0413-icon-cotton-modal-metallic-bikini-briefs-black.jpg
 43a614baf48ca609040d4dda42a2c6921637ccb5e5d192c32fa959a4d18f304d	a s s e t s/shop-mockup/product-catalogue/calvin-klein/jb-0116-icon-cotton-modal-metallic-thong-botanical-brown-qf8826pjs.webp
 564c710d71557a863d3dbd87eee99c44c738f2763b5822589ce1924ab6d09809	a s s e t s/shop-mockup/product-catalogue/calvin-klein/jb-0119-icon-cotton-modal-lightly-lined-triangle-bralette-black-qf8498ub1.webp
 a55d6fa62713bea711964385f6dc132a4f2868437ce8afd059d5a1201704069d	a s s e t s/shop-mockup/product-catalogue/calvin-klein/jb-0114-signature-satin-unlined-triangle-bra-tidal-animal-botanical-brown-qf83924uk.webp
@@ -579,20 +591,28 @@ f5740150a92dd88765cf17519d193dd83ec55b844c6c5c03483911b3dd884e7f	a s s e t s/sho
 ec90bc79ef33cc1c0bfc739559c0d48ab5b254ff46d0cd063f9e6d71acf46f7a	a s s e t s/shop-mockup/product-catalogue/triangl/jb-0286-mima-silver-sparkle-crop-bikini-set.webp
 03330c2407cfe368dbc2414e7cb7d522643b722b7a58c7b7f7274cdaf6038a00	a s s e t s/shop-mockup/product-catalogue/triangl/jb-0283-maia-alina-pink-crochet-scoop-bikini-set.webp
 2ea3cd734cad3bbefd31f9545c935b5633e234fc2914724092efac8fdd2b69da	a s s e t s/shop-mockup/product-catalogue/champagne-bohemia/jb-0393-monte-lou-maya-avoca-slide-tri.webp
+235e7a3d39c3cbba954e2369236a1ab5db150678005483083f3ebe15abe1d1e5	a s s e t s/shop-mockup/product-catalogue/champagne-bohemia/jb-0402-eres-aquarelle-menthe-givree.jpg
 db6b290a85900886149c524de6a13678e5922b45afbe816dbbca2cd17c6302ce	a s s e t s/shop-mockup/product-catalogue/champagne-bohemia/jb-0380-pucci-pink-panther.jpg
+77aef0e8d3b130780fe7bcc71d80c086eb46148357207a64e225c2682341fef4	a s s e t s/shop-mockup/product-catalogue/champagne-bohemia/jb-0404-pucci-vivara-triangle-bikini-top-orange.jpg
 bf5e3f1a95ed2eef4e846d6aba5168dfaaa8460633c98b2d41a40d08b451323b	a s s e t s/shop-mockup/product-catalogue/champagne-bohemia/jb-0370-vix-alix.jpg
+778e1ffcd0bcbbfe0288a02a6faaf3ee44d91f0320258cd18d4c3fe60802b602	a s s e t s/shop-mockup/product-catalogue/champagne-bohemia/jb-0398-fleur-du-mal-juliet-lace-button-down.jpg
+8671784c83929faf4b3a343cf621291c6de83f87509899052ea097448e3c0f24	a s s e t s/shop-mockup/product-catalogue/champagne-bohemia/jb-0401-ioana-ciolacu-split-cuffs-shirt.webp
 88290566d538a2fc11e4002aeb7d0ffd00f7c6decd1a32e656029ebbee10ff7c	a s s e t s/shop-mockup/product-catalogue/champagne-bohemia/jb-0389-monte-lou-plunge-in-situ.webp
 e644b9591deb788dc9beb4f9bf3d2e59ea521a1b8dd40b11147a8e45e9bd843d	a s s e t s/shop-mockup/product-catalogue/champagne-bohemia/jb-0372-vix-tammy-renee.jpg
 61face964b9b6852cee7e1a83187c73e109c5238161b03a889290ea87734cd13	a s s e t s/shop-mockup/product-catalogue/champagne-bohemia/jb-0374-versace-one-piece.jpg
+c799d438e3d00738edad404efe88c8a9d1064785a29925cd9d32f9b22bf02c9e	a s s e t s/shop-mockup/product-catalogue/champagne-bohemia/jb-0400-nili-lotan-yorke-shirt.jpg
 7b00e220cbc5a2e1957fb5719d90ea0a1d14d9b54957cefb64c6429ccf02d5ef	a s s e t s/shop-mockup/product-catalogue/champagne-bohemia/jb-0386-haight-isadora.jpg
 1a1b998f4015c7b00a2baaeb51218e1ea41a74e32eb67e4d854ddb51a365d8b6	a s s e t s/shop-mockup/product-catalogue/champagne-bohemia/jb-0382-saint-laurent-v-neck.jpg
 b6d91476f33fff8e72398d1e7cfbe37694268d299d0bf956d01b8d8050ff5581	a s s e t s/shop-mockup/product-catalogue/champagne-bohemia/jb-0384-norma-kamali-fishtail.jpg
 bc920a104f2d19ba4a190e0b8f6367892f45d4640d14347c3820b706183d2a48	a s s e t s/shop-mockup/product-catalogue/champagne-bohemia/jb-0397-monte-lou-maya-linen-shorts.webp
 e42015ce6b9e96d883bcf58a9fd2bb162462e9330f5c311f85e3c25ee0b5f0c5	a s s e t s/shop-mockup/product-catalogue/champagne-bohemia/jb-0391-monte-lou-maya-dd-longline-tri.webp
+915a6a3699ba96a15c8080ac3e70629f5adff6864fcb78ef767ce720d0e9e223	a s s e t s/shop-mockup/product-catalogue/champagne-bohemia/jb-0403-pucci-vivara-bikini-bottom-turquoise.jpg
+b331891c533bf789ce527c9aaf4cca174f345a715d7973f62ce6f01261b48969	a s s e t s/shop-mockup/product-catalogue/champagne-bohemia/jb-0405-pucci-vivara-bikini-bottom-orange.jpg
 00dac4e7d3ba60bc825dee6b35de77f9ae2be83ad976d75c87f6c69093672dbc	a s s e t s/shop-mockup/product-catalogue/champagne-bohemia/jb-0378-seroya-emeri.jpg
 85915f620e8b33095d6f13ef7414bc4bb47a054465a835b80a4bcf4e8d8893a0	a s s e t s/shop-mockup/product-catalogue/champagne-bohemia/jb-0388-kiki-la-sirene.jpg
 82ad01ea910421eca42cea33a611aa5f903aabff1ef11a76577e3d59dc46672f	a s s e t s/shop-mockup/product-catalogue/champagne-bohemia/jb-0389-monte-lou-plunge.jpg
 886c4673f4517164ed4a33d0f623cc1b0bc0c684945a904a96f35fd9f936a5d1	a s s e t s/shop-mockup/product-catalogue/champagne-bohemia/jb-0371-johanna-ortiz-whispering-horizons.jpg
+a89af3dc61f5ac52a858f79f768cd751ad20fc5a30a996f786e729768848e9c6	a s s e t s/shop-mockup/product-catalogue/champagne-bohemia/jb-0399-saint-laurent-oversized-shirt.jpg
 687d1a8d24e518cd46e08ee1a21743de98074f9827a8cb2a0e46459dc350c760	a s s e t s/shop-mockup/product-catalogue/champagne-bohemia/jb-0369-vix-louane.jpg
 bebdca93f035fd5411307dce2e0ced59d76dff488a8c422cdd2c6253371cc262	a s s e t s/shop-mockup/product-catalogue/champagne-bohemia/jb-0379-attico-zebra.jpg
 19c061545b2413d9091b475a4c46ce59ab750e0ea1b57df7ec2a5c28de742d1f	a s s e t s/shop-mockup/product-catalogue/champagne-bohemia/jb-0392-monte-lou-maya-newport-pant.webp
@@ -701,6 +721,7 @@ fced9b0b1646855e6805c8045fd36efb83b47f13a3863663d8b79144676715de	happiness-contr
 1fd1d080543650c2ed3089ce9291666b8f3deb2bb23d8dcc246a970024731771	demo.html
 679377272b40ed6baf4d3baefc4fc769c709fa13ece2835156491623ae971105	i n f e r e n c e  e n g i n e  -  s y s t e m  p r o m p t  v  1 . 0.md
 eb150dea9248bed6d9ab5b7c376fbd3766ce1aea1b1d3ea233cce0ecd903fb8e	cloudflare-stream-controller.js
+db1a35969d9e18cc0ca6b4ef696b52e1f6d0f9b8a45116e53bd8359aea23fd51	shop-radio-edits-v1.json
 acf56762e5df2265d00df0e4e3cbdd9fd76c48fcc94a83b2749f0abde95bdf33	happiness-control.js
 48827949511057e78be51bd6400e3d59b822dfa3a7f7a03bdf4172c719af6e7a	adaptive-music-api-setup.md
 29f4ce3ee8177ddf7e1a70c4fd18efb018c7d018e6547add174ba01d21eecf09	programme-guide-mockup.js
