@@ -35,7 +35,7 @@ for (const required of [
   "James Bondage",
   "29 brands",
   "412",
-  "JAMES BONDAGE / UNIVERSAL MIND",
+  "Universal Mind TV, Public Benefit Corporation t/a James Bondage Health",
   "Bordelle",
   "Angela Dress",
   "WARDROBE.NYC",
@@ -511,7 +511,8 @@ assert.match(television, /function activateShopEntry[\s\S]*requestShopFullscreen
 assert.match(television, /DOMContentLoaded", bootstrapRequestedShop/, "The direct Shop journey must preload before the full homepage load event");
 
 assert.match(shop, /shop-footer[\s\S]*james-bondage-lower-masthead\.mp4/, "Homepage and catalogue routes must end with the supplied silent James Bondage masthead");
-assert.match(shop, /shop-footer__legal[\s\S]*JAMES BONDAGE \/ UNIVERSAL MIND/, "Shop footer must use the final Universal Mind ownership line");
+assert.match(shop, /shop-footer__legal[\s\S]*shop-footer__legal-identity">Universal Mind TV, Public Benefit Corporation t\/a James Bondage Health<\/p>/, "Shop footer must use the final Universal Mind legal identity on its own line");
+assert.doesNotMatch(shop, /JAMES BONDAGE \/ UNIVERSAL MIND/, "Shop footer must not retain the superseded ownership line");
 assert.match(
   shop,
   /shop-footer__acknowledgement[\s\S]*Australian Aboriginal flag[\s\S]*Universal Mind acknowledge the original custodians of the land, on which we live and operate\. Sovereignty is, was, and never will be ceded\. This will always be Gadigal, Eora Country \| Together, we are one \| Thanks and Namaste x \| 2026\./,
@@ -525,11 +526,12 @@ assert.match(
 );
 assert.match(
   shop,
-  /shop-footer__legal[\s\S]*?<p>JAMES BONDAGE \/ UNIVERSAL MIND<\/p>[\s\S]*?<a href="#top" data-shop-home[^>]*>home<\/a>/,
+  /shop-footer__legal[\s\S]*?<p class="shop-footer__legal-identity">Universal Mind TV, Public Benefit Corporation t\/a James Bondage Health<\/p>[\s\S]*?shop-footer__acknowledgement[\s\S]*?<a href="#top" data-shop-home[^>]*>home<\/a>/,
   "The Shop footer must provide a direct Home route",
 );
+assert.match(shopStyle, /\.shop-footer__legal-identity\s*\{[\s\S]*grid-column:\s*1 \/ -1[\s\S]*text-transform:\s*none/, "The legal identity must occupy its own footer line without changing the supplied casing");
 assert.equal((shop.match(/data-shop-home/g) || []).length, 2, "Shop Home must appear exactly once in the sticky navigation and once in the footer");
-assert.match(shop, /shop\.css\?v=011842b23426/, "The acknowledgement of country release must load the content-derived Shop stylesheet revision");
+assert.match(shop, /shop\.css\?v=f0c43677c3a1/, "The Mugler crop and footer legal-copy release must load the content-derived Shop stylesheet revision");
 assert.match(shop, /shop\.js\?v=e757b0e880d9/, "The Shop shell must load the content-derived catalogue runtime");
 assert.match(
   shopStyle,
@@ -538,6 +540,9 @@ assert.match(
 );
 assert.doesNotMatch(shop, /presentation mock-up|affiliate relationships are proposed/i, "Shop footer must no longer describe the live shop as a mock-up or proposal");
 assert.ok(fs.existsSync(path.join(iam, "a s s e t s/shop-mockup/james-bondage-lower-masthead.mp4")), "Missing supplied lower masthead video");
+assert.match(shopStyle, /\.shop-body-diversity__film figure\s*\{\s*aspect-ratio:\s*160 \/ 63;\s*\}/, "The new 16:9 Mugler film must remove exactly 15% from both top and bottom");
+assert.match(shopStyle, /\.shop-body-diversity__film video\s*\{\s*object-position:\s*center;\s*\}/, "The cinematic Mugler crop must remain vertically centred");
+assert.doesNotMatch(shopStyle, /\.shop-body-diversity__film figure\s*\{\s*aspect-ratio:\s*(?:16 \/ 9|4 \/ 5);\s*\}/, "The Mugler film must not retain its uncropped desktop or portrait mobile frame");
 assert.match(shop, /adaptive-television-fullscreen shop-hero__fullscreen[\s\S]*data-shop-hero-fullscreen/, "Shop fullscreen must reuse the Music Television control language");
 assert.match(shopScript, /IAMTelevisionRoom\?\.requestShopFullscreen[\s\S]*iam:shop-fullscreen-request/, "Embedded Shop fullscreen must delegate to the Universal Mind shell");
 assert.match(shopScript, /shop-shell-is-fullscreen[\s\S]*heroFullscreen\.hidden/, "Fullscreen control must disappear while the shell is fullscreen");

@@ -1761,20 +1761,33 @@ body[data-shop-view="catalogue"] [data-shop-editorial] { display: none !importan
 
 .shop-footer__legal {
   display: grid;
-  grid-template-columns: minmax(180px, .65fr) minmax(320px, 1.5fr) auto;
+  grid-template-columns: minmax(0, 1fr) auto;
   align-items: start;
-  gap: 24px;
+  column-gap: 24px;
+  row-gap: 14px;
   padding: 22px clamp(22px, 3.2vw, 56px) 28px;
+}
+
+.shop-footer__legal-identity {
+  grid-column: 1 / -1;
+  line-height: 1.45;
+  text-transform: none;
 }
 
 .shop-footer__acknowledgement {
   display: flex;
+  grid-column: 1;
   align-items: flex-start;
   gap: 10px;
   max-width: 760px;
   line-height: 1.55;
   letter-spacing: .08em;
   text-transform: none;
+}
+
+.shop-footer__legal > a {
+  grid-column: 2;
+  align-self: start;
 }
 
 .shop-footer__country-flag {
@@ -2080,6 +2093,9 @@ body[data-shop-view="catalogue"] [data-shop-editorial] { display: none !importan
 
   .shop-footer__masthead { height: 110px; }
   .shop-footer__legal { grid-template-columns: 1fr; gap: 12px; padding: 20px 17px 26px; line-height: 1.5; }
+  .shop-footer__legal-identity,
+  .shop-footer__acknowledgement,
+  .shop-footer__legal > a { grid-column: 1; grid-row: auto; }
   .shop-footer__acknowledgement { max-width: 620px; }
 }
 
@@ -2294,7 +2310,8 @@ body[data-shop-view="catalogue"] [data-shop-editorial] { display: none !importan
 }
 
 .shop-body-diversity__card figure { aspect-ratio: 4 / 5; }
-.shop-body-diversity__film figure { aspect-ratio: 16 / 9; }
+/* 16:9 source with 15% removed from both top and bottom: 16 / (9 × .7) = 160 / 63. */
+.shop-body-diversity__film figure { aspect-ratio: 160 / 63; }
 
 .shop-body-diversity img,
 .shop-body-diversity video {
@@ -2303,6 +2320,8 @@ body[data-shop-view="catalogue"] [data-shop-editorial] { display: none !importan
   height: 100%;
   object-fit: cover;
 }
+
+.shop-body-diversity__film video { object-position: center; }
 
 .shop-body-diversity__card:nth-child(2) img { object-position: center center; }
 
@@ -2496,7 +2515,6 @@ body[data-shop-view="catalogue"] [data-shop-editorial] { display: none !importan
   .shop-campaign { padding: 1px 0 0; }
   .shop-campaign figure { height: 68svh; }
   .shop-body-diversity__grid { grid-template-columns: 1fr; }
-  .shop-body-diversity__film figure { aspect-ratio: 4 / 5; }
   .shop-iris-film figure { height: 58svh; }
   .shop-iris-film p { padding: 60px 16px 20px; }
   .shop-video-pair { display: grid; grid-template-columns: 1fr; padding: 1px 0 0; }
