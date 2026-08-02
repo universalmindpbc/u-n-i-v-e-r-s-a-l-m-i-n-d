@@ -58,7 +58,10 @@ assert.match(
   /const shopMastheadTiming = \{\s*nameIn: 1000,\s*fadeOut: 7600,\s*nextLanguage: 9000,\s*\}/,
   "The real Shop masthead must use the homepage brand timing",
 );
+assert.match(shopScript, /function startShopMastheadCycle\(\)[\s\S]*shopMastheadSceneIndex = 0;[\s\S]*runShopMastheadCycle\(\);/, "Every Shop arrival must reset the masthead to its first English scene");
 assert.match(shopScript, /shopMastheadSceneIndex = \(shopMastheadSceneIndex \+ 1\) % shopMastheadScenes\.length;/, "The real Shop masthead must rotate its three scenes infinitely");
+assert.match(shopScript, /iam:shop-masthead-start[\s\S]*startShopMastheadCycle\(\)/, "The embedded Shop masthead must wait for the outer shell reveal signal");
+assert.match(shopScript, /if \(!inMusicTelevisionFrame\) startShopMastheadCycle\(\);/, "A standalone Shop page must still start its masthead in English immediately");
 assert.match(shopStyle, /\.shop-hero__masthead-scene\s*\{[\s\S]*position:\s*absolute;[\s\S]*inset:\s*0;[\s\S]*opacity:\s*0;[\s\S]*filter:\s*blur\(7px\);[\s\S]*transition:\s*opacity 2s ease, filter 2s ease;/, "The real Shop masthead scenes must dissolve cinematically in one fixed layer");
 for (const absent of [
   /modul8 infinity/i,
@@ -80,10 +83,10 @@ assert.doesNotMatch(index, /data-shop-entry-language|initShopEntryMastheadCycle|
 assert.match(index, /html\[data-shop-entry\] \.shop-entry h1 \{[\s\S]*white-space: nowrap;/, "The static Russian splash title must remain on one line without moving the controls");
 assert.match(
   television,
-  /const SHOP_SHELL_VERSION = "76763c8f6f8d";[\s\S]*function frameHref\(link\)[\s\S]*url\.searchParams\.set\("v", SHOP_SHELL_VERSION\)/,
+  /const SHOP_SHELL_VERSION = "a8eb46322243";[\s\S]*function frameHref\(link\)[\s\S]*url\.searchParams\.set\("v", SHOP_SHELL_VERSION\)/,
   "The real Shop entry must cache-bust its embedded Shop shell to the current radio-edit version",
 );
-assert.match(index, /adaptive-environment-television\.js\?v=music-tv-0afc832558aa/, "The homepage must load the combined Shop continuity, Privacy First, and programme catalogue controller");
+assert.match(index, /adaptive-environment-television\.js\?v=music-tv-a92be7590e1c/, "The homepage must load the combined Shop reveal, Privacy First, and programme catalogue controller");
 
 assert.equal(catalogue.products.length, 36, "Finished ERES catalogue must contain all 36 approved product URLs");
 assert.equal(new Set(catalogue.products.map((product) => product.id)).size, 36, "Catalogue product IDs must be unique");
@@ -531,6 +534,8 @@ assert.match(television, /shopEntryMediaReady[\s\S]*iam:shop-opening-media-ready
 assert.match(television, /shopEntryMediaFallbackTimer = window\.setTimeout\([\s\S]*?4000\)/, "Shop entry must retain a bounded four-second fallback");
 assert.match(index, /dataset\.shopEntry = "requested"/, "Direct Shop entry must activate before the Universal Mind homepage can paint");
 assert.match(television, /function activateShopEntry[\s\S]*requestShopFullscreen[\s\S]*requestShopMusic\([^\n]*ensurePlaying: true[\s\S]*completeShopEntry/, "The Shop splash gesture must request full screen and start audio before revealing the shop");
+assert.match(television, /function completeShopEntry[\s\S]*dataset\.shopEntry = "entered";[\s\S]*iam:shop-masthead-start/, "The static Russian splash must start the English-first Shop masthead only when the Shop is revealed");
+assert.match(television, /shopFrameLoaded &&[\s\S]*!shopShellRequested \|\| document\.documentElement\.dataset\.shopEntry === "entered"[\s\S]*iam:shop-masthead-start[\s\S]*shopShellRequested && shopFrameLoaded/, "The hidden direct-entry Shop preload must not start the language cycle before Explore");
 assert.match(television, /DOMContentLoaded", bootstrapRequestedShop/, "The direct Shop journey must preload before the full homepage load event");
 
 assert.match(shop, /shop-footer[\s\S]*james-bondage-lower-masthead\.mp4/, "Homepage and catalogue routes must end with the supplied silent James Bondage masthead");
@@ -556,7 +561,7 @@ assert.match(shopStyle, /\.shop-footer__legal\s*\{[\s\S]*grid-template-columns:\
 assert.equal((shop.match(/data-shop-home/g) || []).length, 2, "Shop Home must appear exactly once in the sticky navigation and once in the footer");
 assert.match(shopStyle, /\.shop-product__copy--brand-only\s*\{\s*min-height:\s*76px;/, "Brand-only edit cards must fill the shared caption row without exposing a grey strip");
 assert.match(shop, /shop\.css\?v=063614dd1451/, "The Shop shell must load the content-derived grey-gap repair stylesheet revision");
-assert.match(shop, /shop\.js\?v=be32e497dfaa/, "The Shop shell must load the content-derived navigation continuity runtime");
+assert.match(shop, /shop\.js\?v=a1a88a94b6ea/, "The Shop shell must load the content-derived English-first masthead runtime");
 assert.match(
   shopStyle,
   /@media \(max-width: 700px\)[\s\S]*?\.shop-masthead__nav \{ gap: 6px; \}[\s\S]*?\.shop-masthead__actions \{ gap: 0; \}[\s\S]*?\.shop-theme,[\s\S]*?\.shop-music \{[\s\S]*?width: 28px;[\s\S]*?height: 44px;[\s\S]*?\.shop-theme \[data-shop-theme-label\],[\s\S]*?\.shop-music \[data-shop-music-label\] \{ font-size: 0; \}/,

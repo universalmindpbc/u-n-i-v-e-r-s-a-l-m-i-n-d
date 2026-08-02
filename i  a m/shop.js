@@ -104,8 +104,13 @@
     shopMastheadTimers.push(window.setTimeout(callback, delay));
   }
 
-  function initShopMastheadCycle() {
+  function startShopMastheadCycle() {
     if (!shopMasthead || !shopMastheadScenes.length) return;
+
+    shopMastheadTimers.forEach((timer) => window.clearTimeout(timer));
+    shopMastheadTimers = [];
+    shopMastheadSceneIndex = 0;
+    shopMastheadScenes.forEach((scene) => scene.classList.remove("is-visible"));
 
     function runShopMastheadCycle() {
       shopMastheadTimers.forEach((timer) => window.clearTimeout(timer));
@@ -1272,6 +1277,7 @@
     if (event.data?.type === "iam:shop-music-status") updateMusicStatus(event.data);
     if (event.data?.type === "iam:shop-fullscreen-status") updateFullscreenStatus(Boolean(event.data.active));
     if (event.data?.type === "iam:shop-preload-opening") preloadOpeningAssets();
+    if (event.data?.type === "iam:shop-masthead-start") startShopMastheadCycle();
   });
 
   if (inMusicTelevisionFrame) {
@@ -1291,7 +1297,7 @@
   sexEdNext?.addEventListener("click", () => moveSexEdShelf(1));
 
   applyFilters();
-  initShopMastheadCycle();
+  if (!inMusicTelevisionFrame) startShopMastheadCycle();
   prepareSilentEditorialVideos();
   renderRoute();
   loadCatalogue();

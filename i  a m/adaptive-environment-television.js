@@ -114,7 +114,7 @@
   const SHOP_ARRIVAL_TRACK_ID = "zip-perlon-air-festival-2007";
   const SHOP_ARRIVAL_START_SECONDS = 88 * 60;
   const SHOP_ARRIVAL_FADE_IN_MS = 2400;
-  const SHOP_SHELL_VERSION = "76763c8f6f8d";
+  const SHOP_SHELL_VERSION = "a8eb46322243";
   const IOH_LOGO_SRC = "a s s e t s/Universal Mind [ I o H ] Logo.PNG";
   const DEFAULT_EDGE_SCALE = 1.12;
   const MAX_DETECTED_EDGE_SCALE = 1.85;
@@ -7148,10 +7148,16 @@
   }
 
   function completeShopEntry() {
-    if (!shopEntryActivated || !shopEntryFrameReady || !shopEntryMediaReady) return;
+    if (
+      !shopEntryActivated ||
+      !shopEntryFrameReady ||
+      !shopEntryMediaReady ||
+      document.documentElement.dataset.shopEntry === "entered"
+    ) return;
     window.clearTimeout(shopEntryMediaFallbackTimer);
     document.documentElement.dataset.shopEntry = "entered";
     shopEntryScreen?.setAttribute("aria-hidden", "true");
+    pageFrame?.contentWindow?.postMessage({ type: "iam:shop-masthead-start" }, window.location.origin);
     window.setTimeout(() => {
       if (shopEntryScreen) shopEntryScreen.hidden = true;
       pageFrame?.contentWindow?.postMessage({ type: "iam:shop-music-status-request" }, window.location.origin);
@@ -7988,7 +7994,19 @@
     if (document.body.classList.contains("television-page-view-open")) {
       startFlowerSpin({ restart: true });
     }
-    if (shopShellRequested) {
+    let shopFrameLoaded = false;
+    try {
+      shopFrameLoaded = /\/shop\.html$/i.test(new URL(pageFrame.src, window.location.href).pathname);
+    } catch {
+      shopFrameLoaded = false;
+    }
+    if (
+      shopFrameLoaded &&
+      (!shopShellRequested || document.documentElement.dataset.shopEntry === "entered")
+    ) {
+      pageFrame?.contentWindow?.postMessage({ type: "iam:shop-masthead-start" }, window.location.origin);
+    }
+    if (shopShellRequested && shopFrameLoaded) {
       shopEntryFrameReady = true;
       pageFrame?.contentWindow?.postMessage({ type: "iam:shop-preload-opening" }, window.location.origin);
       window.clearTimeout(shopEntryMediaFallbackTimer);
