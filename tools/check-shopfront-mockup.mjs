@@ -511,7 +511,7 @@ assert.match(television, /function activateShopEntry[\s\S]*requestShopFullscreen
 assert.match(television, /DOMContentLoaded", bootstrapRequestedShop/, "The direct Shop journey must preload before the full homepage load event");
 
 assert.match(shop, /shop-footer[\s\S]*james-bondage-lower-masthead\.mp4/, "Homepage and catalogue routes must end with the supplied silent James Bondage masthead");
-assert.match(shop, /shop-footer__legal[\s\S]*shop-footer__legal-identity">Universal Mind TV, Public Benefit Corporation t\/a James Bondage Health<\/p>/, "Shop footer must use the final Universal Mind legal identity on its own line");
+assert.match(shop, /shop-footer__legal[\s\S]*shop-footer__acknowledgement[\s\S]*shop-footer__legal-identity">Universal Mind TV, Public Benefit Corporation t\/a James Bondage Health<\/p>/, "Shop footer must place the acknowledgement before the Universal Mind legal identity");
 assert.doesNotMatch(shop, /JAMES BONDAGE \/ UNIVERSAL MIND/, "Shop footer must not retain the superseded ownership line");
 assert.match(
   shop,
@@ -526,12 +526,12 @@ assert.match(
 );
 assert.match(
   shop,
-  /shop-footer__legal[\s\S]*?<p class="shop-footer__legal-identity">Universal Mind TV, Public Benefit Corporation t\/a James Bondage Health<\/p>[\s\S]*?shop-footer__acknowledgement[\s\S]*?<a href="#top" data-shop-home[^>]*>home<\/a>/,
+  /shop-footer__legal[\s\S]*?shop-footer__acknowledgement[\s\S]*?<p class="shop-footer__legal-identity">Universal Mind TV, Public Benefit Corporation t\/a James Bondage Health<\/p>[\s\S]*?<a href="#top" data-shop-home[^>]*>home<\/a>/,
   "The Shop footer must provide a direct Home route",
 );
-assert.match(shopStyle, /\.shop-footer__legal-identity\s*\{[\s\S]*grid-column:\s*1 \/ -1[\s\S]*text-transform:\s*none/, "The legal identity must occupy its own footer line without changing the supplied casing");
+assert.match(shopStyle, /\.shop-footer__legal\s*\{[\s\S]*grid-template-columns:\s*minmax\(0, 1\.6fr\) minmax\(260px, \.8fr\) auto[\s\S]*\.shop-footer__legal-identity\s*\{[\s\S]*grid-column:\s*2[\s\S]*text-transform:\s*none[\s\S]*\.shop-footer__acknowledgement\s*\{[\s\S]*grid-column:\s*1/, "Wide Shop footers must keep the acknowledgement and legal identity on the same row, with the acknowledgement first");
 assert.equal((shop.match(/data-shop-home/g) || []).length, 2, "Shop Home must appear exactly once in the sticky navigation and once in the footer");
-assert.match(shop, /shop\.css\?v=f0c43677c3a1/, "The Mugler crop and footer legal-copy release must load the content-derived Shop stylesheet revision");
+assert.match(shop, /shop\.css\?v=51e1ab0bb4f7/, "The corrected footer hierarchy release must load the content-derived Shop stylesheet revision");
 assert.match(shop, /shop\.js\?v=e757b0e880d9/, "The Shop shell must load the content-derived catalogue runtime");
 assert.match(
   shopStyle,

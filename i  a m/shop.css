@@ -1761,16 +1761,15 @@ body[data-shop-view="catalogue"] [data-shop-editorial] { display: none !importan
 
 .shop-footer__legal {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) auto;
+  grid-template-columns: minmax(0, 1.6fr) minmax(260px, .8fr) auto;
   align-items: start;
   column-gap: 24px;
-  row-gap: 14px;
   padding: 22px clamp(22px, 3.2vw, 56px) 28px;
 }
 
 .shop-footer__legal-identity {
-  grid-column: 1 / -1;
-  line-height: 1.45;
+  grid-column: 2;
+  line-height: 1.55;
   text-transform: none;
 }
 
@@ -1786,7 +1785,7 @@ body[data-shop-view="catalogue"] [data-shop-editorial] { display: none !importan
 }
 
 .shop-footer__legal > a {
-  grid-column: 2;
+  grid-column: 3;
   align-self: start;
 }
 
