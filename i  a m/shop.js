@@ -99,6 +99,8 @@
     fadeOut: 7600,
     nextLanguage: 9000,
   };
+  const shopMastheadDissolveDuration = 2000;
+  const shopMastheadInitialPhaseOffset = shopMastheadTiming.nameIn + shopMastheadDissolveDuration;
 
   function scheduleShopMastheadTimer(callback, delay) {
     shopMastheadTimers.push(window.setTimeout(callback, delay));
@@ -110,7 +112,7 @@
     shopMastheadTimers.forEach((timer) => window.clearTimeout(timer));
     shopMastheadTimers = [];
     shopMastheadSceneIndex = 0;
-    function runShopMastheadCycle({ immediate = false } = {}) {
+    function runShopMastheadCycle({ immediate = false, phaseOffset = 0 } = {}) {
       shopMastheadTimers.forEach((timer) => window.clearTimeout(timer));
       shopMastheadTimers = [];
 
@@ -122,11 +124,17 @@
       shopMastheadSceneIndex = (shopMastheadSceneIndex + 1) % shopMastheadScenes.length;
 
       if (!immediate) scheduleShopMastheadTimer(() => scene.classList.add("is-visible"), shopMastheadTiming.nameIn);
-      scheduleShopMastheadTimer(() => scene.classList.remove("is-visible"), shopMastheadTiming.fadeOut);
-      scheduleShopMastheadTimer(runShopMastheadCycle, shopMastheadTiming.nextLanguage);
+      scheduleShopMastheadTimer(
+        () => scene.classList.remove("is-visible"),
+        Math.max(0, shopMastheadTiming.fadeOut - phaseOffset),
+      );
+      scheduleShopMastheadTimer(
+        runShopMastheadCycle,
+        Math.max(0, shopMastheadTiming.nextLanguage - phaseOffset),
+      );
     }
 
-    runShopMastheadCycle({ immediate: true });
+    runShopMastheadCycle({ immediate: true, phaseOffset: shopMastheadInitialPhaseOffset });
   }
 
   function prepareSilentEditorialVideos() {

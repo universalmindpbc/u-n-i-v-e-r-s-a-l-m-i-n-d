@@ -59,7 +59,8 @@ assert.match(
   /const shopMastheadTiming = \{\s*nameIn: 1000,\s*fadeOut: 7600,\s*nextLanguage: 9000,\s*\}/,
   "The real Shop masthead must use the homepage brand timing",
 );
-assert.match(shopScript, /function startShopMastheadCycle\(\)[\s\S]*shopMastheadSceneIndex = 0;[\s\S]*function runShopMastheadCycle\(\{ immediate = false \} = \{\}\)[\s\S]*classList\.toggle\("is-visible", immediate && candidate === scene\)[\s\S]*if \(!immediate\) scheduleShopMastheadTimer\([\s\S]*shopMastheadTiming\.nameIn\)[\s\S]*runShopMastheadCycle\(\{ immediate: true \}\);/, "Every Shop arrival must already show its first English scene, without animating it onto the page");
+assert.match(shopScript, /const shopMastheadDissolveDuration = 2000;\s*const shopMastheadInitialPhaseOffset = shopMastheadTiming\.nameIn \+ shopMastheadDissolveDuration;/, "The already-resolved first English frame must enter at the same phase where later language dissolves reach full opacity");
+assert.match(shopScript, /function startShopMastheadCycle\(\)[\s\S]*shopMastheadSceneIndex = 0;[\s\S]*function runShopMastheadCycle\(\{ immediate = false, phaseOffset = 0 \} = \{\}\)[\s\S]*classList\.toggle\("is-visible", immediate && candidate === scene\)[\s\S]*shopMastheadTiming\.fadeOut - phaseOffset[\s\S]*shopMastheadTiming\.nextLanguage - phaseOffset[\s\S]*runShopMastheadCycle\(\{ immediate: true, phaseOffset: shopMastheadInitialPhaseOffset \}\);/, "Every Shop arrival must show English immediately without extending its hold beyond the steady language cycle");
 assert.match(shopScript, /shopMastheadSceneIndex = \(shopMastheadSceneIndex \+ 1\) % shopMastheadScenes\.length;/, "The real Shop masthead must rotate its three scenes infinitely");
 assert.match(shopScript, /iam:shop-masthead-start[\s\S]*startShopMastheadCycle\(\)/, "The embedded Shop masthead must wait for the outer shell reveal signal");
 assert.match(shopScript, /if \(!inMusicTelevisionFrame\) startShopMastheadCycle\(\);/, "A standalone Shop page must still start its masthead in English immediately");
@@ -84,10 +85,10 @@ assert.doesNotMatch(index, /data-shop-entry-language|initShopEntryMastheadCycle|
 assert.match(index, /html\[data-shop-entry\] \.shop-entry h1 \{[\s\S]*white-space: nowrap;/, "The static Russian splash title must remain on one line without moving the controls");
 assert.match(
   television,
-  /const SHOP_SHELL_VERSION = "0428d86de797";[\s\S]*function frameHref\(link\)[\s\S]*url\.searchParams\.set\("v", SHOP_SHELL_VERSION\)/,
+  /const SHOP_SHELL_VERSION = "b0f7869cb090";[\s\S]*function frameHref\(link\)[\s\S]*url\.searchParams\.set\("v", SHOP_SHELL_VERSION\)/,
   "The real Shop entry must cache-bust its embedded Shop shell to the current radio-edit version",
 );
-assert.match(index, /adaptive-environment-television\.js\?v=music-tv-a1f5be4a066c/, "The homepage must load the combined immediate-Shop, Privacy First, and programme catalogue controller");
+assert.match(index, /adaptive-environment-television\.js\?v=music-tv-bd481dd53682/, "The homepage must load the combined phase-aligned Shop, Privacy First, and programme catalogue controller");
 
 assert.equal(catalogue.products.length, 36, "Finished ERES catalogue must contain all 36 approved product URLs");
 assert.equal(new Set(catalogue.products.map((product) => product.id)).size, 36, "Catalogue product IDs must be unique");
@@ -562,7 +563,7 @@ assert.match(shopStyle, /\.shop-footer__legal\s*\{[\s\S]*grid-template-columns:\
 assert.equal((shop.match(/data-shop-home/g) || []).length, 2, "Shop Home must appear exactly once in the sticky navigation and once in the footer");
 assert.match(shopStyle, /\.shop-product__copy--brand-only\s*\{\s*min-height:\s*76px;/, "Brand-only edit cards must fill the shared caption row without exposing a grey strip");
 assert.match(shop, /shop\.css\?v=063614dd1451/, "The Shop shell must load the content-derived grey-gap repair stylesheet revision");
-assert.match(shop, /shop\.js\?v=d97dccbe91a4/, "The Shop shell must load the content-derived immediate-English masthead runtime");
+assert.match(shop, /shop\.js\?v=dce0b06c419f/, "The Shop shell must load the content-derived phase-aligned masthead runtime");
 assert.match(
   shopStyle,
   /@media \(max-width: 700px\)[\s\S]*?\.shop-masthead__nav \{ gap: 6px; \}[\s\S]*?\.shop-masthead__actions \{ gap: 0; \}[\s\S]*?\.shop-theme,[\s\S]*?\.shop-music \{[\s\S]*?width: 28px;[\s\S]*?height: 44px;[\s\S]*?\.shop-theme \[data-shop-theme-label\],[\s\S]*?\.shop-music \[data-shop-music-label\] \{ font-size: 0; \}/,
