@@ -954,10 +954,21 @@
     return `#catalogue/${activeCatalogueBrand}/product/${encodeURIComponent(slug)}` + (query ? `?${query}` : "");
   }
 
+  function refreshOuterNavigationFlower() {
+    if (!inMusicTelevisionFrame) return;
+    try {
+      if (window.parent.IAMTelevisionRoom?.refreshNavigationFlower?.()) return;
+    } catch {
+      // The message route below remains available if frame access is restricted.
+    }
+    window.parent.postMessage({ type: "iam:shop-navigation" }, window.location.origin);
+  }
+
   function renderRoute() {
     const route = catalogueRoute();
     const enteringCatalogue = Boolean(route) && document.body.dataset.shopView !== "catalogue";
     document.body.dataset.shopView = route ? "catalogue" : "editorial";
+    refreshOuterNavigationFlower();
     if (catalogueSection) catalogueSection.hidden = !route;
     if (!route) {
       closeProduct();

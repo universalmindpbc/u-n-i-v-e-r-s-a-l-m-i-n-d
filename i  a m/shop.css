@@ -2296,7 +2296,7 @@ body[data-shop-view="catalogue"] [data-shop-editorial] { display: none !importan
 }
 
 .shop-product__copy--brand-only {
-  min-height: 48px;
+  min-height: 76px;
   align-items: center;
 }
 

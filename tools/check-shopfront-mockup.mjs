@@ -80,10 +80,10 @@ assert.doesNotMatch(index, /data-shop-entry-language|initShopEntryMastheadCycle|
 assert.match(index, /html\[data-shop-entry\] \.shop-entry h1 \{[\s\S]*white-space: nowrap;/, "The static Russian splash title must remain on one line without moving the controls");
 assert.match(
   television,
-  /const SHOP_SHELL_VERSION = "6273de3c84b3";[\s\S]*function frameHref\(link\)[\s\S]*url\.searchParams\.set\("v", SHOP_SHELL_VERSION\)/,
+  /const SHOP_SHELL_VERSION = "76763c8f6f8d";[\s\S]*function frameHref\(link\)[\s\S]*url\.searchParams\.set\("v", SHOP_SHELL_VERSION\)/,
   "The real Shop entry must cache-bust its embedded Shop shell to the current radio-edit version",
 );
-assert.match(index, /adaptive-environment-television\.js\?v=music-tv-965c46c957d6/, "The homepage must load the Shop cache-bust controller");
+assert.match(index, /adaptive-environment-television\.js\?v=music-tv-e05db992e0ef/, "The homepage must load the Shop navigation-continuity controller");
 
 assert.equal(catalogue.products.length, 36, "Finished ERES catalogue must contain all 36 approved product URLs");
 assert.equal(new Set(catalogue.products.map((product) => product.id)).size, 36, "Catalogue product IDs must be unique");
@@ -436,6 +436,15 @@ assert.match(shopStyle, /\.shop-universal-nav img[\s\S]*animation:\s*shop-univer
 assert.match(globalNavigationStyle, /\.global-nav-mark\s*\{[^}]*animation:\s*none/s, "The shared navigation mark must retain the canonical static treatment");
 assert.match(shopStyle, /data-music-television-frame="embedded"\] \.shop-universal-nav,[\s\S]*data-music-television-frame="embedded"\] \.global-nav[\s\S]*display:\s*none/, "The embedded Shop must hide its duplicate flower and defer to the outer Music Television navigation");
 assert.match(television, /function bootstrapRequestedShop\(\)[\s\S]*classList\.add\("television-room-open"\);\s*startFlowerSpin\(\);\s*openInVideoPageLayer/, "The direct Shop journey must start the existing spinning outer-shell flower");
+assert.match(
+  television,
+  /async function startFlowerSpin\(options = \{\}\)[\s\S]*restart = options\.restart === true[\s\S]*cancelAnimationFrame\(flowerCanvasFrame\)[\s\S]*brand\.querySelector\("canvas\.television-flower-canvas"\)/,
+  "The outer navigation flower must restart its existing canvas after Safari suspends a navigation frame",
+);
+assert.match(television, /function openInVideoPageLayer\(link\)[\s\S]*startFlowerSpin\(\{ restart: true \}\);\s*closeVideoNavigation\(\);/, "Cross-page navigation must resynchronise and restart the canonical flower");
+assert.match(shopScript, /function refreshOuterNavigationFlower\(\)[\s\S]*refreshNavigationFlower[\s\S]*iam:shop-navigation/, "Shop hash navigation must ask the persistent shell to restart its flower");
+assert.match(shopScript, /function renderRoute\(\)[\s\S]*document\.body\.dataset\.shopView = route \? "catalogue" : "editorial";\s*refreshOuterNavigationFlower\(\);/, "Every Shop view change must retain the canonical navigation flower");
+assert.match(television, /event\.data\?\.type === "iam:shop-navigation"[\s\S]*startFlowerSpin\(\{ restart: true \}\);/, "The television shell must accept the Shop navigation refresh fallback");
 assert.match(shop, /data-shop-theme-toggle/, "Shop must expose the day/night control");
 assert.match(shop, /savedTheme \|\| "night"/, "A first Shop visit must default to the night presentation");
 assert.doesNotMatch(shop, /prefersNight/, "System colour preference must not replace the night-first Shop default");
@@ -545,8 +554,9 @@ assert.match(
 );
 assert.match(shopStyle, /\.shop-footer__legal\s*\{[\s\S]*grid-template-columns:\s*minmax\(0, 1\.6fr\) minmax\(260px, \.8fr\) auto[\s\S]*\.shop-footer__legal-identity\s*\{[\s\S]*grid-column:\s*2[\s\S]*text-transform:\s*none[\s\S]*\.shop-footer__acknowledgement\s*\{[\s\S]*grid-column:\s*1/, "Wide Shop footers must keep the acknowledgement and legal identity on the same row, with the acknowledgement first");
 assert.equal((shop.match(/data-shop-home/g) || []).length, 2, "Shop Home must appear exactly once in the sticky navigation and once in the footer");
-assert.match(shop, /shop\.css\?v=49ca2924fafc/, "The Shop shell must load the content-derived fixed masthead stylesheet revision");
-assert.match(shop, /shop\.js\?v=b62aa38746e5/, "The Shop shell must load the content-derived rotating masthead runtime");
+assert.match(shopStyle, /\.shop-product__copy--brand-only\s*\{\s*min-height:\s*76px;/, "Brand-only edit cards must fill the shared caption row without exposing a grey strip");
+assert.match(shop, /shop\.css\?v=063614dd1451/, "The Shop shell must load the content-derived grey-gap repair stylesheet revision");
+assert.match(shop, /shop\.js\?v=be32e497dfaa/, "The Shop shell must load the content-derived navigation continuity runtime");
 assert.match(
   shopStyle,
   /@media \(max-width: 700px\)[\s\S]*?\.shop-masthead__nav \{ gap: 6px; \}[\s\S]*?\.shop-masthead__actions \{ gap: 0; \}[\s\S]*?\.shop-theme,[\s\S]*?\.shop-music \{[\s\S]*?width: 28px;[\s\S]*?height: 44px;[\s\S]*?\.shop-theme \[data-shop-theme-label\],[\s\S]*?\.shop-music \[data-shop-music-label\] \{ font-size: 0; \}/,

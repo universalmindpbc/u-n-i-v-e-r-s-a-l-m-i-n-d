@@ -90,7 +90,7 @@
   const SHOP_ARRIVAL_TRACK_ID = "zip-perlon-air-festival-2007";
   const SHOP_ARRIVAL_START_SECONDS = 88 * 60;
   const SHOP_ARRIVAL_FADE_IN_MS = 2400;
-  const SHOP_SHELL_VERSION = "6273de3c84b3";
+  const SHOP_SHELL_VERSION = "76763c8f6f8d";
   const IOH_LOGO_SRC = "a s s e t s/Universal Mind [ I o H ] Logo.PNG";
   const DEFAULT_EDGE_SCALE = 1.12;
   const MAX_DETECTED_EDGE_SCALE = 1.85;
@@ -5529,9 +5529,14 @@
     document.body.classList.add("flower-cue-visible");
   }
 
-  async function startFlowerSpin() {
+  async function startFlowerSpin(options = {}) {
     const flower = document.querySelector(".brand-mark");
     const brand = document.querySelector(".brand");
+    const restart = options.restart === true;
+    if (restart && flowerCanvasFrame) {
+      window.cancelAnimationFrame(flowerCanvasFrame);
+      flowerCanvasFrame = 0;
+    }
     if (!flower || !brand || flowerCanvasFrame || flowerCanvasStarting) return;
     flowerCanvasStarting = true;
 
@@ -5550,16 +5555,18 @@
     }
     flower.dataset.logoReady = "true";
 
-    const canvas = document.createElement("canvas");
+    let canvas = brand.querySelector("canvas.television-flower-canvas");
+    if (!canvas) {
+      canvas = document.createElement("canvas");
+      canvas.className = "television-flower-canvas";
+      canvas.setAttribute("aria-hidden", "true");
+      brand.insertBefore(canvas, flower.nextSibling);
+    }
     const context = canvas.getContext("2d");
     if (!context) {
       flowerCanvasStarting = false;
       return;
     }
-
-    canvas.className = "television-flower-canvas";
-    canvas.setAttribute("aria-hidden", "true");
-    brand.insertBefore(canvas, flower.nextSibling);
 
     function syncCanvasSize() {
       const size = Math.max(1, Math.round(flower.getBoundingClientRect().width || 90));
@@ -6885,7 +6892,7 @@
     document.body.classList.toggle("television-is-fullscreen", Boolean(fullscreenElement));
     postShopFullscreenStatus();
     if (document.body.classList.contains("television-room-open") || document.body.classList.contains("television-room-opening")) {
-      startFlowerSpin();
+      startFlowerSpin({ restart: true });
     }
   }
 
@@ -7091,6 +7098,7 @@
     pageView.setAttribute("aria-hidden", "false");
     document.body.classList.add("television-page-view-open");
     document.body.classList.toggle("television-wallet-page-open", isHappinessWallet);
+    startFlowerSpin({ restart: true });
     closeVideoNavigation();
   }
 
@@ -7921,6 +7929,10 @@
       completeShopEntry();
       return;
     }
+    if (event.data?.type === "iam:shop-navigation") {
+      startFlowerSpin({ restart: true });
+      return;
+    }
     if (event.data?.type === "iam:open-sex-ed-episode") {
       openSexEdEpisode(event.data.episode || "01");
       return;
@@ -7946,6 +7958,9 @@
   pageFrame?.addEventListener("load", () => {
     syncPageLayerMetadata();
     postShopMusicStatus();
+    if (document.body.classList.contains("television-page-view-open")) {
+      startFlowerSpin({ restart: true });
+    }
     if (shopShellRequested) {
       shopEntryFrameReady = true;
       pageFrame?.contentWindow?.postMessage({ type: "iam:shop-preload-opening" }, window.location.origin);
@@ -7986,6 +8001,10 @@
     },
     requestShopFullscreen() {
       return requestShopFullscreen(pageFrame?.contentWindow);
+    },
+    refreshNavigationFlower() {
+      startFlowerSpin({ restart: true });
+      return true;
     },
   };
   window.IAMStreamReady?.then(() => {
