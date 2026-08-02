@@ -175,6 +175,12 @@
         qaPrompt: "In a concise, conversational answer, compare the four Seeding Sessions by name and musical identity. Then describe safety cushion separately as the additional 24/7 music-video channel, explain how Videos, Parties and Radio differ, and do not call safety cushion a fifth Seeding Session.",
       };
     }
+    if (qaScenario === "programme-catalogue") {
+      return {
+        microphone: false,
+        qaPrompt: "From the current Universal One programme guide, explain where the new Rave episode, the full Nine Inch Noize Coachella set, the Closer live single, and the two Zip mixes belong. Preserve the exact room names and mention how many cue points Rave has. Keep the answer concise and do not invent a city-specific room.",
+      };
+    }
     if (qaScenario === "sex-ed") {
       return {
         microphone: false,

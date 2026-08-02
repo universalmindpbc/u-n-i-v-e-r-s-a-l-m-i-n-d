@@ -110,6 +110,7 @@ assert.match(phpFallback, /'voice_briefing_version' => 'v2'/);
 
 for (const scenario of [
   "seeding-sessions",
+  "programme-catalogue",
   "sex-ed",
   "episode-detail",
   "sex-ed-safety",
@@ -123,8 +124,8 @@ for (const scenario of [
   assert.match(realtimeClient, new RegExp(`qaScenario === "${scenario}"`));
 }
 assert.match(realtimeClient, /universal_one_realtime_v4/);
-assert.match(index, /realtime-voice-assistant\.js\?v=realtime-voice-98dbaed545af/);
-assert.match(alternateEntry, /realtime-voice-assistant\.js\?v=realtime-voice-98dbaed545af/);
+assert.match(index, /realtime-voice-assistant\.js\?v=realtime-voice-ca0e4fed9b9b/);
+assert.match(alternateEntry, /realtime-voice-assistant\.js\?v=realtime-voice-ca0e4fed9b9b/);
 assert.match(stagingDeploy, /check-universal-one-programme-guide\.mjs/);
 
 new vm.Script(realtimeClient, { filename: "realtime-voice-assistant.js" });
