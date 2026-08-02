@@ -24,6 +24,16 @@ assert.match(guide, /safety cushion is an additional music room, not a fifth See
 for (const name of ["Inner Planes", "Champagne Bohemia", "modul8 infinity", "james bondage", "safety cushion"]) {
   assert.match(guide, new RegExp(name.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")));
 }
+assert.match(guide, /Version: universal_one_programme_guide_v1\.2/);
+assert.match(guide, /Rave · Episode 1” programme with 18 cue points/);
+assert.match(guide, /22 verified programme additions/);
+assert.match(guide, /Nine Inch Noize performing “Closer” live at Coachella 2026/);
+assert.match(guide, /full Nine Inch Noize live set from Coachella 2026/);
+const programmeBatchSource = sources.programme_sources.find((source) => source.id === "programme-2026-07-30");
+assert.equal(programmeBatchSource?.ready_count, 25);
+assert.equal(programmeBatchSource?.hls_playback_verified_count, 25);
+assert.equal(programmeBatchSource?.duration_verified_count, 25);
+assert.equal(programmeBatchSource?.routing_verified, true);
 
 const expectedEditorial = new Map([
   ["inner-planes", ["ambient / sleep / sunrise", "Ambient · sleep · sunrise"]],

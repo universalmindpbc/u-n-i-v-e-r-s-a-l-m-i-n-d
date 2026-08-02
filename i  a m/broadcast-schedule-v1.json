@@ -1,5 +1,5 @@
 {
-  "version": "broadcast_schedule_v1.4",
+  "version": "broadcast_schedule_v1.5",
   "stage": "five_music_rooms_live_safety_cushion_ready",
   "epoch_utc": "2026-07-24T00:00:00.000Z",
   "extended_session_format_policy": {
@@ -134,6 +134,10 @@
         {
           "track_id": "sampa-the-great-final-form",
           "duration_seconds": 215
+        },
+        {
+          "track_id": "rave-episode-1-solyra",
+          "duration_seconds": 4613.57
         }
       ]
     },
@@ -166,6 +170,10 @@
         {
           "track_id": "linkin-park-numb-live-2024",
           "duration_seconds": 192.098
+        },
+        {
+          "track_id": "nine-inch-noize-closer-coachella-2026-live",
+          "duration_seconds": 344.29
         }
       ]
     },
@@ -334,13 +342,101 @@
         {
           "track_id": "carl-cox-chateau-de-chambord-cercle",
           "duration_seconds": 7986.09
+        },
+        {
+          "track_id": "boys-noize-coachella-2026-live",
+          "duration_seconds": 4553.85
+        },
+        {
+          "track_id": "pete-cannon-manchester",
+          "duration_seconds": 10593.78
+        },
+        {
+          "track_id": "lilly-palmer-stone-quarry-germany",
+          "duration_seconds": 3980.71
+        },
+        {
+          "track_id": "david-guetta-tomorrowland-2026",
+          "duration_seconds": 4575.72
+        },
+        {
+          "track_id": "charlotte-de-witte-tomorrowland-winter-2026",
+          "duration_seconds": 3619.34
+        },
+        {
+          "track_id": "maayan-nidam-boiler-room-bucharest",
+          "duration_seconds": 4258.77
+        },
+        {
+          "track_id": "anfisa-letyago-dj-mag-hq",
+          "duration_seconds": 3628.37
+        },
+        {
+          "track_id": "lilly-palmer-dj-mag-hq",
+          "duration_seconds": 3459.98
+        },
+        {
+          "track_id": "lilly-palmer-edc-las-vegas-2026",
+          "duration_seconds": 3660.97
+        },
+        {
+          "track_id": "sonja-moonear-tomorrowland-belgium-2016",
+          "duration_seconds": 5411.64
+        },
+        {
+          "track_id": "margaret-dygas-submarine",
+          "duration_seconds": 7878.44
+        },
+        {
+          "track_id": "cassy-sunday-school-miami",
+          "duration_seconds": 2512.52
+        },
+        {
+          "track_id": "ellen-allien-le-jardin-suspendu-paris",
+          "duration_seconds": 5224.72
+        },
+        {
+          "track_id": "ellen-allien-boiler-room-sydney",
+          "duration_seconds": 3866.31
+        },
+        {
+          "track_id": "sven-vath-boiler-room-marseille",
+          "duration_seconds": 7021.74
+        },
+        {
+          "track_id": "sven-vath-awakenings-festival-2017",
+          "duration_seconds": 3648.23
+        },
+        {
+          "track_id": "ricardo-villalobos-arpiar-circo-loco-ibiza",
+          "duration_seconds": 3273.57
+        },
+        {
+          "track_id": "ricardo-villalobos-sunwaves-romania",
+          "duration_seconds": 3238.6
+        },
+        {
+          "track_id": "ricardo-villalobos-franco-cinelli-house-music-special",
+          "duration_seconds": 12895.71
+        },
+        {
+          "track_id": "ricardo-villalobos-ruta-5-sacre-paris",
+          "duration_seconds": 12498.12
+        },
+        {
+          "track_id": "sven-vath-tomorrowland-belgium-2016",
+          "duration_seconds": 1864.26
+        },
+        {
+          "track_id": "sonja-moonear-trotamundo-lost-beach-club",
+          "duration_seconds": 4296.41
         }
       ]
     },
     {
       "id": "party-james-bondage",
       "format": "parties",
-      "media_type": "audio",
+      "media_type": "video",
       "energy_id": "underground-intensity",
       "editorial_id": "james-bondage",
       "name": "james bondage",
@@ -350,11 +446,18 @@
       "schedule": [
         {
           "track_id": "zip-perlon-air-festival-2007",
-          "duration_seconds": 11255.780136
+          "duration_seconds": 11255.780136,
+          "media_type": "audio"
         },
         {
           "track_id": "zip-sammy-d-perlon-betalounge-2000",
-          "duration_seconds": 13194.739229
+          "duration_seconds": 13194.739229,
+          "media_type": "audio"
+        },
+        {
+          "track_id": "nine-inch-noize-coachella-2026-live-set",
+          "duration_seconds": 2795.2,
+          "media_type": "video"
         }
       ]
     },

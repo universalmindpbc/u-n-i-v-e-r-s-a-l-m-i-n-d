@@ -1,6 +1,6 @@
 {
-  "version": "universal_one_programme_sources_v1.2",
-  "reviewed": "2026-07-28",
+  "version": "universal_one_programme_sources_v1.3",
+  "reviewed": "2026-08-02",
   "use_policy": {
     "assistant_surface": "Universal One Realtime voice",
     "storage": "Source-derived editorial briefing only; full third-party transcripts are not stored in the website repository.",
@@ -13,6 +13,20 @@
       "title": "Four Seeding Sessions plus the additional Safety Cushion channel",
       "source_type": "first_party_schedule",
       "path": "broadcast-schedule-v1.json",
+      "verified": true
+    },
+    {
+      "id": "programme-2026-07-30",
+      "title": "Twenty-five Ready programme additions with exact Videos and Parties routing",
+      "source_type": "first_party_verified_programme_batch",
+      "catalogue_path": "adaptive-music-video-catalogue-v1.11.json",
+      "stream_registry_path": "cloudflare-stream-catalogue.js",
+      "tensor_path": "programme-tensor-approved-notion-export-v1.0.json",
+      "notion_data_source_id": "6993ebc6-bb6e-44c3-933a-18c5d6ad44bc",
+      "ready_count": 25,
+      "hls_playback_verified_count": 25,
+      "duration_verified_count": 25,
+      "routing_verified": true,
       "verified": true
     },
     {

@@ -26,9 +26,16 @@
   },
   "adaptive_linear_channels": {
     "policy_version": "music_channel_selector_v1.0",
-    "modes": ["videos", "parties", "radio"],
+    "modes": [
+      "videos",
+      "parties",
+      "radio"
+    ],
     "opening_contract": "The check-in opens with one personalised music video.",
-    "post_video_prior": {"parties": 0.7, "radio": 0.3},
+    "post_video_prior": {
+      "parties": 0.7,
+      "radio": 0.3
+    },
     "post_video_overrides": {
       "explicit_work_context": "radio",
       "high_sensory_load": "radio",
@@ -37,7 +44,14 @@
     "party_completion": "Continue into the best-fit radio station for the citizen needs and the completed Party's musical context.",
     "solo_selection": "Switch immediately with continuous fashion and EMDR state.",
     "group_selection": "Record one shared next-item vote per citizen while preserving the common stream and timecode.",
-    "ranking_formula": ["citizen_needs_fit", "explicit_context_fit", "musical_continuity", "personal_affinity", "adjacent_exploration", "repetition_penalty"],
+    "ranking_formula": [
+      "citizen_needs_fit",
+      "explicit_context_fit",
+      "musical_continuity",
+      "personal_affinity",
+      "adjacent_exploration",
+      "repetition_penalty"
+    ],
     "adjacent_exploration_rate": 0.28,
     "station_tensor_source": "radio-station-tensor-notion-export-v1.0.json"
   },
@@ -204,6 +218,156 @@
       "activation_level": 3,
       "counts_as_uplift": true,
       "media_class": "long_form_dj_set"
+    },
+    "boys-noize-coachella-2026-live": {
+      "mode": "uplift",
+      "activation_level": 3,
+      "counts_as_uplift": true,
+      "media_class": "long_form_dj_set"
+    },
+    "pete-cannon-manchester": {
+      "mode": "restricted",
+      "activation_level": 3,
+      "counts_as_uplift": false,
+      "media_class": "long_form_dj_set"
+    },
+    "lilly-palmer-stone-quarry-germany": {
+      "mode": "restricted",
+      "activation_level": 3,
+      "counts_as_uplift": false,
+      "media_class": "long_form_dj_set"
+    },
+    "david-guetta-tomorrowland-2026": {
+      "mode": "uplift",
+      "activation_level": 3,
+      "counts_as_uplift": true,
+      "media_class": "long_form_dj_set"
+    },
+    "charlotte-de-witte-tomorrowland-winter-2026": {
+      "mode": "restricted",
+      "activation_level": 3,
+      "counts_as_uplift": false,
+      "media_class": "long_form_dj_set"
+    },
+    "maayan-nidam-boiler-room-bucharest": {
+      "mode": "uplift",
+      "activation_level": 2,
+      "counts_as_uplift": true,
+      "media_class": "long_form_dj_set"
+    },
+    "anfisa-letyago-dj-mag-hq": {
+      "mode": "restricted",
+      "activation_level": 3,
+      "counts_as_uplift": false,
+      "media_class": "long_form_dj_set"
+    },
+    "lilly-palmer-dj-mag-hq": {
+      "mode": "restricted",
+      "activation_level": 3,
+      "counts_as_uplift": false,
+      "media_class": "long_form_dj_set"
+    },
+    "lilly-palmer-edc-las-vegas-2026": {
+      "mode": "restricted",
+      "activation_level": 3,
+      "counts_as_uplift": false,
+      "media_class": "long_form_dj_set"
+    },
+    "sonja-moonear-tomorrowland-belgium-2016": {
+      "mode": "uplift",
+      "activation_level": 2,
+      "counts_as_uplift": true,
+      "media_class": "long_form_dj_set"
+    },
+    "margaret-dygas-submarine": {
+      "mode": "uplift",
+      "activation_level": 2,
+      "counts_as_uplift": true,
+      "media_class": "long_form_dj_set"
+    },
+    "cassy-sunday-school-miami": {
+      "mode": "uplift",
+      "activation_level": 2,
+      "counts_as_uplift": true,
+      "media_class": "long_form_dj_set"
+    },
+    "ellen-allien-le-jardin-suspendu-paris": {
+      "mode": "uplift",
+      "activation_level": 3,
+      "counts_as_uplift": true,
+      "media_class": "long_form_dj_set"
+    },
+    "ellen-allien-boiler-room-sydney": {
+      "mode": "uplift",
+      "activation_level": 3,
+      "counts_as_uplift": true,
+      "media_class": "long_form_dj_set"
+    },
+    "sven-vath-boiler-room-marseille": {
+      "mode": "uplift",
+      "activation_level": 3,
+      "counts_as_uplift": true,
+      "media_class": "long_form_dj_set"
+    },
+    "sven-vath-awakenings-festival-2017": {
+      "mode": "restricted",
+      "activation_level": 3,
+      "counts_as_uplift": false,
+      "media_class": "long_form_dj_set"
+    },
+    "ricardo-villalobos-arpiar-circo-loco-ibiza": {
+      "mode": "uplift",
+      "activation_level": 2,
+      "counts_as_uplift": true,
+      "media_class": "long_form_dj_set"
+    },
+    "ricardo-villalobos-sunwaves-romania": {
+      "mode": "uplift",
+      "activation_level": 2,
+      "counts_as_uplift": true,
+      "media_class": "long_form_dj_set"
+    },
+    "ricardo-villalobos-franco-cinelli-house-music-special": {
+      "mode": "uplift",
+      "activation_level": 2,
+      "counts_as_uplift": true,
+      "media_class": "long_form_dj_set"
+    },
+    "ricardo-villalobos-ruta-5-sacre-paris": {
+      "mode": "uplift",
+      "activation_level": 2,
+      "counts_as_uplift": true,
+      "media_class": "long_form_dj_set"
+    },
+    "sven-vath-tomorrowland-belgium-2016": {
+      "mode": "uplift",
+      "activation_level": 3,
+      "counts_as_uplift": true,
+      "media_class": "long_form_dj_set"
+    },
+    "sonja-moonear-trotamundo-lost-beach-club": {
+      "mode": "uplift",
+      "activation_level": 2,
+      "counts_as_uplift": true,
+      "media_class": "long_form_dj_set"
+    },
+    "nine-inch-noize-coachella-2026-live-set": {
+      "mode": "restricted",
+      "activation_level": 3,
+      "counts_as_uplift": false,
+      "media_class": "long_form_dj_set"
+    },
+    "rave-episode-1-solyra": {
+      "mode": "restricted",
+      "activation_level": 3,
+      "counts_as_uplift": false,
+      "media_class": "authored_music_video_programme"
+    },
+    "nine-inch-noize-closer-coachella-2026-live": {
+      "mode": "restricted",
+      "activation_level": 3,
+      "counts_as_uplift": false,
+      "media_class": "authored_music_video_programme"
     }
   }
 }

@@ -27,7 +27,7 @@
   const forceLiveVideoAllowed = searchParams.get("forceLiveVideo") === "1";
   const liveMusicAllowed = searchParams.get("mockMusic") !== "1";
   const MUSIC_INTELLIGENCE_VERSION = "adaptive_music_intelligence_v0.1";
-  const CATALOGUE_URL = "adaptive-music-video-catalogue-v1.11.json?v=music-video-catalogue-bd93dfd7e117";
+  const CATALOGUE_URL = "adaptive-music-video-catalogue-v1.11.json?v=music-video-catalogue-a93d901ed795";
 
   const stations = {
     "inner-planes": {

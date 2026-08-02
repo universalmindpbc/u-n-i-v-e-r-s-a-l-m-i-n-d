@@ -83,7 +83,7 @@ assert.match(
   /const SHOP_SHELL_VERSION = "76763c8f6f8d";[\s\S]*function frameHref\(link\)[\s\S]*url\.searchParams\.set\("v", SHOP_SHELL_VERSION\)/,
   "The real Shop entry must cache-bust its embedded Shop shell to the current radio-edit version",
 );
-assert.match(index, /adaptive-environment-television\.js\?v=music-tv-e05db992e0ef/, "The homepage must load the Shop navigation-continuity controller");
+assert.match(index, /adaptive-environment-television\.js\?v=music-tv-9fc0866aad1d/, "The homepage must load the combined Shop continuity and programme catalogue controller");
 
 assert.equal(catalogue.products.length, 36, "Finished ERES catalogue must contain all 36 approved product URLs");
 assert.equal(new Set(catalogue.products.map((product) => product.id)).size, 36, "Catalogue product IDs must be unique");

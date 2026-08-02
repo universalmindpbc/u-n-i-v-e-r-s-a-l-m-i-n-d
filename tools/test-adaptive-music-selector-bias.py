@@ -76,8 +76,10 @@ def main() -> None:
     catalogue = selector.load_catalogue(selector.DEFAULT_CATALOGUE_PATH)
     tracks = catalogue["tracks"]
     opening_tracks = [track for track in tracks if not selector.opening_catalogue_veto(track, {})[0]]
+    programme_tensor = json.loads((IAM_DIR / "programme-tensor-approved-notion-export-v1.0.json").read_text(encoding="utf-8"))
 
-    require(len(tracks) == 30, f"Expected the combined 30-item catalogue, found {len(tracks)}.")
+    require(len(programme_tensor["records"]) == 25, f"Expected the authorised 25-item programme batch, found {len(programme_tensor['records'])}.")
+    require(len(tracks) == 30 + len(programme_tensor["records"]), f"Expected the 30-item baseline plus the authorised programme batch, found {len(tracks)}.")
     require(len(opening_tracks) == 22, f"Opening selector must expose exactly 22 safe music videos, found {len(opening_tracks)}.")
     require(all(track.get("media_class") != "long_form_dj_set" for track in opening_tracks), "A DJ set leaked into the opening selector.")
     require(all(not selector.track_safety(track).get("requires_age_gate") for track in opening_tracks), "An age-gated track leaked into the opening selector.")

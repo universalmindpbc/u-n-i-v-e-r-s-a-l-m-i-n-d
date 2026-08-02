@@ -77,6 +77,12 @@ const djDurations = new Map([
   ["zip-perlon-air-festival-2007", 11255.780136],
   ["zip-sammy-d-perlon-betalounge-2000", 13194.739229],
 ]);
+const programmeTensor = JSON.parse(await fs.readFile(path.join(IAM_DIR, "programme-tensor-approved-notion-export-v1.0.json"), "utf8"));
+for (const record of programmeTensor.records) {
+  const profile = JSON.parse(record["JSON Profile"]);
+  const target = profile.broadcast_channel?.startsWith("video-") ? videoDurations : djDurations;
+  target.set(profile.selected_track_id, profile.duration_seconds);
+}
 const fashionRunwayIds = new Set([
   "chanel-paris-rooftops",
   "jacquemus-le-coup-de-soleil",
@@ -159,8 +165,9 @@ for (const channel of schedule.channels) {
       scheduledDjSets.push(entry.track_id);
     }
     if (channel.id === "party-james-bondage") {
-      assert.equal(channel.media_type, "audio");
+      assert.equal(channel.media_type, "video");
       assert.equal(channel.visual_channel_id, "fashion-underground-intensity");
+      assert.deepEqual(channel.schedule.map((entry) => entry.media_type), ["audio", "audio", "video"]);
     }
   } else if (channel.format === "radio") {
     assert.equal(channel.media_type, "radio");
