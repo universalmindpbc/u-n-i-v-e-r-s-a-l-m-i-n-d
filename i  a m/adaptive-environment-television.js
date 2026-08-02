@@ -114,7 +114,7 @@
   const SHOP_ARRIVAL_TRACK_ID = "zip-perlon-air-festival-2007";
   const SHOP_ARRIVAL_START_SECONDS = 88 * 60;
   const SHOP_ARRIVAL_FADE_IN_MS = 2400;
-  const SHOP_SHELL_VERSION = "a8eb46322243";
+  const SHOP_SHELL_VERSION = "0428d86de797";
   const IOH_LOGO_SRC = "a s s e t s/Universal Mind [ I o H ] Logo.PNG";
   const DEFAULT_EDGE_SCALE = 1.12;
   const MAX_DETECTED_EDGE_SCALE = 1.85;

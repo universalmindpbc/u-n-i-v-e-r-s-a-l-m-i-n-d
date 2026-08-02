@@ -110,23 +110,23 @@
     shopMastheadTimers.forEach((timer) => window.clearTimeout(timer));
     shopMastheadTimers = [];
     shopMastheadSceneIndex = 0;
-    shopMastheadScenes.forEach((scene) => scene.classList.remove("is-visible"));
-
-    function runShopMastheadCycle() {
+    function runShopMastheadCycle({ immediate = false } = {}) {
       shopMastheadTimers.forEach((timer) => window.clearTimeout(timer));
       shopMastheadTimers = [];
-      shopMastheadScenes.forEach((scene) => scene.classList.remove("is-visible"));
 
       const scene = shopMastheadScenes[shopMastheadSceneIndex];
+      shopMastheadScenes.forEach((candidate) => {
+        candidate.classList.toggle("is-visible", immediate && candidate === scene);
+      });
       shopMasthead.setAttribute("aria-label", scene.dataset.shopMastheadLabel || "James Bondage");
       shopMastheadSceneIndex = (shopMastheadSceneIndex + 1) % shopMastheadScenes.length;
 
-      scheduleShopMastheadTimer(() => scene.classList.add("is-visible"), shopMastheadTiming.nameIn);
+      if (!immediate) scheduleShopMastheadTimer(() => scene.classList.add("is-visible"), shopMastheadTiming.nameIn);
       scheduleShopMastheadTimer(() => scene.classList.remove("is-visible"), shopMastheadTiming.fadeOut);
       scheduleShopMastheadTimer(runShopMastheadCycle, shopMastheadTiming.nextLanguage);
     }
 
-    runShopMastheadCycle();
+    runShopMastheadCycle({ immediate: true });
   }
 
   function prepareSilentEditorialVideos() {
