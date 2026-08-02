@@ -81,6 +81,7 @@
   let activeCatalogueLimit = 24;
   let catalogueProducts = [];
   let catalogueKernel = null;
+  let catalogueEditProductIds = new Map();
   let catalogueReturnHash = "";
   let catalogueReturnScrollY = 0;
   let lastCatalogueResultCount = 0;
@@ -394,6 +395,19 @@
     return product.catalogueBrand || product.brand;
   }
 
+  function productBelongsToCatalogue(product) {
+    if (activeCatalogueBrand === "all") return true;
+    const editIds = catalogueEditProductIds.get(activeCatalogueBrand);
+    if (editIds) return editIds.has(product.id);
+    return brandSlug(product.brand) === activeCatalogueBrand;
+  }
+
+  function productEditorialRank(product) {
+    const editRank = product.editRanks?.[activeCatalogueBrand];
+    if (Number.isFinite(editRank)) return editRank;
+    return product.editorialRank ?? Number.MAX_SAFE_INTEGER;
+  }
+
   function productMatchesType(product) {
     if (activeCatalogueType === "all") return true;
     return Array.isArray(product.shopTypes) && product.shopTypes.includes(activeCatalogueType);
@@ -616,14 +630,14 @@
     if (!catalogueGrid || !catalogueKernel) return;
     const brand = currentBrandRecord();
     let visibleProducts = catalogueProducts
-      .filter((product) => activeCatalogueBrand === "all" || brandSlug(catalogueBrandName(product)) === activeCatalogueBrand)
+      .filter(productBelongsToCatalogue)
       .filter(productMatchesType)
       .filter((product) => catalogueFilter?.matchesColour(product, activeCatalogueColour) ?? true)
       .filter((product) => catalogueFilter?.matchesSearch(product, activeCatalogueQuery) ?? true)
       .sort((a, b) => {
         if (activeCatalogueSort === "price-asc") return (a.priceValue ?? Number.MAX_SAFE_INTEGER) - (b.priceValue ?? Number.MAX_SAFE_INTEGER);
         if (activeCatalogueSort === "price-desc") return (b.priceValue ?? -1) - (a.priceValue ?? -1);
-        const editorialRank = (a.editorialRank ?? Number.MAX_SAFE_INTEGER) - (b.editorialRank ?? Number.MAX_SAFE_INTEGER);
+        const editorialRank = productEditorialRank(a) - productEditorialRank(b);
         if (editorialRank) return editorialRank;
         return String(a.id).localeCompare(String(b.id));
       });
@@ -1036,17 +1050,20 @@
 
   async function loadCatalogue() {
     try {
-      const [kernelResponse, champagneResponse] = await Promise.all([
-        fetch("shop-product-kernel-v1.json?v=shop-colour-audit-3-taxonomy-3-look-1-monte-lou-1", { credentials: "same-origin" }),
-        fetch("shop-champagne-bohemia-products-v1.json?v=shop-colour-audit-3-taxonomy-3-look-1-monte-lou-1", { credentials: "same-origin" }),
+      const [kernelResponse, legacyChampagneResponse, radioEditsResponse] = await Promise.all([
+        fetch("shop-product-kernel-v1.json?v=8424235d148c", { credentials: "same-origin" }),
+        fetch("shop-champagne-bohemia-products-v1.json?v=0f0304457056", { credentials: "same-origin" }),
+        fetch("shop-radio-edits-v1.json?v=db1a35969d9e", { credentials: "same-origin" }),
       ]);
       if (!kernelResponse.ok) throw new Error(`Catalogue request failed: ${kernelResponse.status}`);
-      if (!champagneResponse.ok) throw new Error(`Champagne Bohemia request failed: ${champagneResponse.status}`);
+      if (!legacyChampagneResponse.ok) throw new Error(`Legacy catalogue request failed: ${legacyChampagneResponse.status}`);
+      if (!radioEditsResponse.ok) throw new Error(`Radio edits request failed: ${radioEditsResponse.status}`);
 
       catalogueKernel = await kernelResponse.json();
-      const champagneCatalogue = await champagneResponse.json();
-      const champagneProducts = Array.isArray(champagneCatalogue.products)
-        ? champagneCatalogue.products.filter((product) => (
+      const legacyChampagneCatalogue = await legacyChampagneResponse.json();
+      const radioEdits = await radioEditsResponse.json();
+      const legacyChampagneProducts = Array.isArray(legacyChampagneCatalogue.products)
+        ? legacyChampagneCatalogue.products.filter((product) => (
           product.metadataStatus === "Metadata ready"
           && product.listedOnShop === true
           && product.retailerUrl?.startsWith("https://")
@@ -1054,34 +1071,64 @@
         : [];
       const existingIds = new Set((catalogueKernel.products || []).map((product) => product.id));
       const existingUrls = new Set((catalogueKernel.products || []).map((product) => product.canonicalUrl));
-      const uniqueChampagneProducts = champagneProducts.filter((product) => (
+      const uniqueLegacyProducts = legacyChampagneProducts.filter((product) => (
         !existingIds.has(product.id) && !existingUrls.has(product.canonicalUrl)
       ));
-      const champagneBrand = champagneCatalogue.catalogue?.brand || "Champagne Bohemia";
+      catalogueKernel.products = [...(catalogueKernel.products || []), ...uniqueLegacyProducts];
+
+      const editCatalogues = Array.isArray(radioEdits.catalogues) ? radioEdits.catalogues : [];
+      const editBrands = new Set(editCatalogues.map((catalogue) => catalogue.brand));
       const reorderedBrands = (catalogueKernel.brandOrder || [])
-        .filter((brand) => brand !== champagneBrand && brand !== "WARDROBE.NYC");
-      reorderedBrands.push("WARDROBE.NYC", champagneBrand);
+        .filter((brand) => !editBrands.has(brand) && brand !== "WARDROBE.NYC");
+      reorderedBrands.push("WARDROBE.NYC", ...editCatalogues.map((catalogue) => catalogue.brand));
       catalogueKernel.brandOrder = reorderedBrands;
-      catalogueKernel.brandCounts = [
-        ...(catalogueKernel.brandCounts || []).filter((entry) => entry.brand !== champagneBrand),
-        {
-          brand: champagneBrand,
-          count: uniqueChampagneProducts.length,
-          ready: uniqueChampagneProducts.length,
-          route: champagneCatalogue.catalogue?.route || "#catalogue/champagne-bohemia",
-          formLabel: champagneCatalogue.catalogue?.formLabel || "swim / cover-ups",
-        },
-      ].sort((a, b) => catalogueKernel.brandOrder.indexOf(a.brand) - catalogueKernel.brandOrder.indexOf(b.brand));
-      catalogueKernel.products = [...(catalogueKernel.products || []), ...uniqueChampagneProducts];
+      const productById = new Map(catalogueKernel.products.map((product) => [product.id, product]));
+      catalogueEditProductIds = new Map();
+      editCatalogues.forEach((catalogue) => {
+        const ids = Array.isArray(catalogue.productIds) ? catalogue.productIds : [];
+        const idSet = new Set(ids);
+        catalogueEditProductIds.set(catalogue.slug || brandSlug(catalogue.brand), idSet);
+        ids.forEach((id, index) => {
+          const product = productById.get(id);
+          if (!product) return;
+          product.shopEdits = Array.from(new Set([...(product.shopEdits || []), catalogue.brand]));
+          product.editRanks = { ...(product.editRanks || {}), [catalogue.brand]: index + 1, [catalogue.slug]: index + 1 };
+        });
+      });
+
+      const makerBrands = reorderedBrands.filter((brand) => !editBrands.has(brand));
+      const makerCounts = makerBrands.map((brand) => {
+        const products = catalogueKernel.products.filter((product) => product.brand === brand && product.listedOnShop === true);
+        const prior = (catalogueKernel.brandCounts || []).find((entry) => entry.brand === brand);
+        return {
+          ...prior,
+          brand,
+          count: products.length,
+          ready: products.filter((product) => product.metadataStatus === "Metadata ready").length,
+          route: prior?.route || `#catalogue/${brandSlug(brand)}`,
+        };
+      });
+      const editCounts = editCatalogues.map((catalogue) => {
+        const products = (catalogue.productIds || []).map((id) => productById.get(id)).filter(Boolean);
+        return {
+          brand: catalogue.brand,
+          count: products.length,
+          ready: products.filter((product) => product.metadataStatus === "Metadata ready").length,
+          route: catalogue.route || `#catalogue/${catalogue.slug || brandSlug(catalogue.brand)}`,
+          formLabel: catalogue.formLabel || "editorial edit",
+        };
+      });
+      catalogueKernel.brandCounts = [...makerCounts, ...editCounts]
+        .sort((a, b) => catalogueKernel.brandOrder.indexOf(a.brand) - catalogueKernel.brandOrder.indexOf(b.brand));
       catalogueKernel.counts = {
         ...(catalogueKernel.counts || {}),
-        sourceReferences: Number(catalogueKernel.counts?.sourceReferences || 0) + uniqueChampagneProducts.length,
-        canonicalRecords: Number(catalogueKernel.counts?.canonicalRecords || 0) + uniqueChampagneProducts.length,
+        sourceReferences: Number(catalogueKernel.counts?.sourceReferences || 0) + uniqueLegacyProducts.length,
+        canonicalRecords: Number(catalogueKernel.counts?.canonicalRecords || 0) + uniqueLegacyProducts.length,
         products: catalogueKernel.products.length,
         brands: catalogueKernel.brandOrder.length,
-        metadataReady: Number(catalogueKernel.counts?.metadataReady || 0) + uniqueChampagneProducts.length,
-        imageReady: Number(catalogueKernel.counts?.imageReady || 0) + uniqueChampagneProducts.length,
-        listedOnShop: Number(catalogueKernel.counts?.listedOnShop || 0) + uniqueChampagneProducts.length,
+        metadataReady: catalogueKernel.products.filter((product) => product.metadataStatus === "Metadata ready").length,
+        imageReady: catalogueKernel.products.filter((product) => product.image).length,
+        listedOnShop: catalogueKernel.products.filter((product) => product.listedOnShop === true).length,
       };
       catalogueProducts = Array.isArray(catalogueKernel.products)
         ? catalogueKernel.products

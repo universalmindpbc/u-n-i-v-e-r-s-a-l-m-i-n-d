@@ -103,14 +103,15 @@ assert.ok(
   "Umbrella route metadata must not replace maker-brand search evidence",
 );
 const combinedProducts = [...runtimeProducts, ...champagneProducts];
-assert.equal(combinedProducts.length, 392, "Search and colour QA must cover the complete reconciled catalogue");
+assert.equal(combinedProducts.length, 412, "Search and colour QA must cover the complete reconciled catalogue");
 assert.equal(combinedProducts.slice(0, 24).length, 24, "Initial catalogue rhythm must remain 24 products");
 const verifiedColourProducts = combinedProducts.filter((product) => product.colourEvidenceStatus === "Verified");
 const allowedColourFamilies = new Set(filter.COLOUR_OPTIONS.map(({ value }) => value));
-assert.equal(verifiedColourProducts.length, 335, "The evidence-backed colour projection must retain all 335 verified products");
+assert.equal(verifiedColourProducts.length, 355, "The evidence-backed colour projection must include the 20 newly verified products");
 assert.equal(combinedProducts.filter((product) => filter.colourFamilies(product).length === 0).length, 57, "Unverified colours must remain explicitly unmapped");
 assert.ok(verifiedColourProducts.every((product) => product.colourSourceUrl?.startsWith("https://")), "Every verified colour projection must retain its source URL");
-assert.ok(verifiedColourProducts.every((product) => product.colourCheckedAt === "2026-07-31"), "Every verified colour projection must carry its audit date");
+assert.ok(verifiedColourProducts.every((product) => ["2026-07-31", "2026-08-02"].includes(product.colourCheckedAt)), "Every verified colour projection must carry its audit date");
+assert.ok(verifiedColourProducts.filter((product) => Number(product.id.slice(3)) >= 398).every((product) => product.colourCheckedAt === "2026-08-02"), "Every new edit product must carry the current colour evidence date");
 assert.ok(verifiedColourProducts.every((product) => product.colourTaxonomyVersion === "jb-colour-taxonomy-v1"), "Every verified colour projection must use the current controlled taxonomy");
 assert.ok(verifiedColourProducts.every((product) => product.colourFamilies.every((family) => allowedColourFamilies.has(family))), "No internal or invented family may enter the public projection");
 const calvinKlein = combinedProducts.filter((product) => product.brand === "Calvin Klein");
@@ -120,7 +121,7 @@ const transparentEresIds = [
   "JB-0015", "JB-0016", "JB-0017", "JB-0018", "JB-0019", "JB-0020", "JB-0022", "JB-0026", "JB-0027", "JB-0028",
 ];
 const transparentEres = eres.filter((product) => filter.matchesSearch(product, "transparent"));
-assert.equal(calvinKlein.length, 9, "The complete Calvin Klein catalogue must remain present");
+assert.equal(calvinKlein.length, 21, "The complete Calvin Klein catalogue must include all twelve new Inner Plains products");
 assert.ok(calvinKlein.filter((product) => filter.matchesColour(product, "white")).length >= 3, "Calvin Klein white products must be filterable");
 assert.ok(eres.filter((product) => filter.matchesColour(product, "white")).length >= 3, "ERES Lys and near-white Panama products must be filterable");
 assert.ok(eres.every((product) => filter.colourFamilies(product).length > 0), "Every ERES house colour in the catalogue must have a verified controlled family");

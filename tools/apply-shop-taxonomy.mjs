@@ -75,10 +75,11 @@ export function classifyShopProduct(product) {
     || (brand === "annie’s ibiza" && hasMadeToOrderEvidence);
   const isRashVest = VERIFIED_RASH_VEST_PRODUCT_IDS.has(product.id)
     || /\brash[ -]?(?:vest|guard)\b/.test(identityText);
-  const isSwim = forms.has("swim")
+  const isLingerieBikiniBrief = forms.has("lingerie") && !forms.has("swim") && /\bbikini briefs?\b/.test(identityText);
+  const isSwim = !isLingerieBikiniBrief && (forms.has("swim")
     || ["swimsuit", "bikini top", "bikini bottom", "swim set"].includes(productType)
     || hasAny(identityText, [/\bswim(?:suit|wear|mer)?\b/, /\bbikini\b/, /\bmaillot\b/])
-    || isRashVest;
+    || isRashVest);
   const isReadyToWear = forms.has("second skin")
     || ["bodysuit", "dress", "jumpsuit", "legging", "shorts", "skirt", "top"].includes(productType)
     || (productType !== "bikini bottom"
@@ -108,7 +109,7 @@ export function classifyShopProduct(product) {
   if (productType === "robe" || /\brobe\b/.test(identityText)) types.add("robe");
   if (forms.has("after dark")) types.add("after-dark");
   if (productType === "swimsuit" || (isSwim && hasAny(identityText, [/\bone[ -]piece\b/, /\bswimmer suit\b/, /\bmaillot\b/]))) types.add("swimsuit");
-  if (["bikini top", "bikini bottom", "swim set"].includes(productType) || /\bbikini\b/.test(identityText)) types.add("bikini");
+  if (!isLingerieBikiniBrief && (["bikini top", "bikini bottom", "swim set"].includes(productType) || /\bbikini\b/.test(identityText))) types.add("bikini");
   if (isRashVest) types.add("rash-vest");
   if (isSwim && (["dress", "top", "shorts"].includes(productType) || hasAny(identityText, [/\bcover[ -]?up\b/, /\bkaftan\b/, /\bcaftan\b/, /\bsarong\b/]))) types.add("coverup");
   if (productType === "jumpsuit" || /\b(?:jumpsuit|onesie)\b/.test(identityText)) types.add("jumpsuit");
@@ -162,8 +163,8 @@ for (const kernelPath of kernelPaths) {
   }
 }
 
-assert.equal(allProducts.length, 392, "The combined Shop taxonomy must cover all 392 canonical products");
-assert.equal(new Set(allProducts.map((product) => product.id)).size, 392, "Shop taxonomy product IDs must remain unique");
+assert.equal(allProducts.length, 412, "The combined Shop taxonomy must cover all 412 canonical products");
+assert.equal(new Set(allProducts.map((product) => product.id)).size, 412, "Shop taxonomy product IDs must remain unique");
 assert.ok(allProducts.every((product) => product.shopTypes?.length), "Every Shop product must have at least one taxonomy value");
 assert.ok(allProducts.every((product) => product.shopTypes.every((value) => taxonomyOrder.has(value))), "Every Shop taxonomy value must be controlled");
 

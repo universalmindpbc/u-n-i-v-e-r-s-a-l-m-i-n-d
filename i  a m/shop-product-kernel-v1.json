@@ -121,17 +121,17 @@
       "see through"
     ]
   },
-  "generatedAt": "2026-07-30",
+  "generatedAt": "2026-08-02",
   "counts": {
-    "sourceReferences": 371,
-    "canonicalRecords": 368,
-    "products": 363,
+    "sourceReferences": 391,
+    "canonicalRecords": 388,
+    "products": 383,
     "brandOrCollectionLinks": 5,
     "duplicateProductReferences": 3,
     "brands": 27,
-    "metadataReady": 360,
-    "imageReady": 363,
-    "listedOnShop": 363
+    "metadataReady": 380,
+    "imageReady": 383,
+    "listedOnShop": 383
   },
   "brandOrder": [
     "adidas",
@@ -183,8 +183,8 @@
     },
     {
       "brand": "Calvin Klein",
-      "count": 9,
-      "ready": 8,
+      "count": 21,
+      "ready": 20,
       "route": "#catalogue/calvin-klein"
     },
     {
@@ -195,8 +195,8 @@
     },
     {
       "brand": "ERES",
-      "count": 36,
-      "ready": 36,
+      "count": 37,
+      "ready": 37,
       "route": "#catalogue/eres"
     },
     {
@@ -273,8 +273,8 @@
     },
     {
       "brand": "PUCCI",
-      "count": 3,
-      "ready": 3,
+      "count": 6,
+      "ready": 6,
       "route": "#catalogue/pucci"
     },
     {
@@ -285,8 +285,8 @@
     },
     {
       "brand": "Saint Laurent",
-      "count": 4,
-      "ready": 4,
+      "count": 5,
+      "ready": 5,
       "route": "#catalogue/saint-laurent"
     },
     {
@@ -365,7 +365,10 @@
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["lingerie-all","bra"],
+      "shopTypes": [
+        "lingerie-all",
+        "bra"
+      ],
       "lookProperties": [
         "transparent"
       ],
@@ -413,7 +416,10 @@
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["lingerie-all","bra"],
+      "shopTypes": [
+        "lingerie-all",
+        "bra"
+      ],
       "lookProperties": [
         "transparent"
       ],
@@ -461,7 +467,10 @@
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["lingerie-all","bra"],
+      "shopTypes": [
+        "lingerie-all",
+        "bra"
+      ],
       "lookProperties": [
         "transparent"
       ],
@@ -509,7 +518,10 @@
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["lingerie-all","bra"],
+      "shopTypes": [
+        "lingerie-all",
+        "bra"
+      ],
       "lookProperties": [
         "transparent"
       ],
@@ -557,7 +569,10 @@
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["lingerie-all","bra"],
+      "shopTypes": [
+        "lingerie-all",
+        "bra"
+      ],
       "lookProperties": [
         "transparent"
       ],
@@ -605,7 +620,10 @@
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["lingerie-all","bra"],
+      "shopTypes": [
+        "lingerie-all",
+        "bra"
+      ],
       "lookProperties": [
         "transparent"
       ],
@@ -653,7 +671,10 @@
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["lingerie-all","bra"]
+      "shopTypes": [
+        "lingerie-all",
+        "bra"
+      ]
     },
     {
       "id": "JB-0008",
@@ -693,7 +714,10 @@
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["lingerie-all","brief"]
+      "shopTypes": [
+        "lingerie-all",
+        "brief"
+      ]
     },
     {
       "id": "JB-0009",
@@ -733,7 +757,10 @@
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["lingerie-all","bra"],
+      "shopTypes": [
+        "lingerie-all",
+        "bra"
+      ],
       "lookProperties": [
         "transparent"
       ],
@@ -781,7 +808,10 @@
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["lingerie-all","brief"]
+      "shopTypes": [
+        "lingerie-all",
+        "brief"
+      ]
     },
     {
       "id": "JB-0011",
@@ -821,7 +851,10 @@
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["lingerie-all","bra"],
+      "shopTypes": [
+        "lingerie-all",
+        "bra"
+      ],
       "lookProperties": [
         "transparent"
       ],
@@ -869,7 +902,10 @@
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["lingerie-all","bra"],
+      "shopTypes": [
+        "lingerie-all",
+        "bra"
+      ],
       "lookProperties": [
         "transparent"
       ],
@@ -917,7 +953,10 @@
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["lingerie-all","bra"],
+      "shopTypes": [
+        "lingerie-all",
+        "bra"
+      ],
       "lookProperties": [
         "transparent"
       ],
@@ -965,7 +1004,10 @@
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["lingerie-all","bra"],
+      "shopTypes": [
+        "lingerie-all",
+        "bra"
+      ],
       "lookProperties": [
         "transparent"
       ],
@@ -1013,7 +1055,10 @@
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["lingerie-all","brief"],
+      "shopTypes": [
+        "lingerie-all",
+        "brief"
+      ],
       "lookProperties": [
         "transparent"
       ],
@@ -1062,7 +1107,10 @@
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["lingerie-all","brief"],
+      "shopTypes": [
+        "lingerie-all",
+        "brief"
+      ],
       "lookProperties": [
         "transparent"
       ],
@@ -1111,7 +1159,10 @@
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["lingerie-all","bra"],
+      "shopTypes": [
+        "lingerie-all",
+        "bra"
+      ],
       "lookProperties": [
         "transparent"
       ],
@@ -1160,7 +1211,10 @@
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["lingerie-all","brief"],
+      "shopTypes": [
+        "lingerie-all",
+        "brief"
+      ],
       "lookProperties": [
         "transparent"
       ],
@@ -1209,7 +1263,10 @@
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["lingerie-all","bra"],
+      "shopTypes": [
+        "lingerie-all",
+        "bra"
+      ],
       "lookProperties": [
         "transparent"
       ],
@@ -1258,7 +1315,10 @@
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["lingerie-all","brief"]
+      "shopTypes": [
+        "lingerie-all",
+        "brief"
+      ]
     },
     {
       "id": "JB-0022",
@@ -1299,7 +1359,10 @@
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["lingerie-all","bra"],
+      "shopTypes": [
+        "lingerie-all",
+        "bra"
+      ],
       "lookProperties": [
         "transparent"
       ],
@@ -1347,7 +1410,10 @@
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["lingerie-all","brief"]
+      "shopTypes": [
+        "lingerie-all",
+        "brief"
+      ]
     },
     {
       "id": "JB-0024",
@@ -1388,7 +1454,10 @@
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["lingerie-all","brief"]
+      "shopTypes": [
+        "lingerie-all",
+        "brief"
+      ]
     },
     {
       "id": "JB-0025",
@@ -1429,7 +1498,10 @@
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["lingerie-all","bra"]
+      "shopTypes": [
+        "lingerie-all",
+        "bra"
+      ]
     },
     {
       "id": "JB-0026",
@@ -1470,7 +1542,10 @@
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["lingerie-all","bra"],
+      "shopTypes": [
+        "lingerie-all",
+        "bra"
+      ],
       "lookProperties": [
         "transparent"
       ],
@@ -1519,7 +1594,10 @@
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["lingerie-all","brief"],
+      "shopTypes": [
+        "lingerie-all",
+        "brief"
+      ],
       "lookProperties": [
         "transparent"
       ],
@@ -1568,7 +1646,10 @@
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["lingerie-all","bra"],
+      "shopTypes": [
+        "lingerie-all",
+        "bra"
+      ],
       "lookProperties": [
         "transparent"
       ],
@@ -1617,7 +1698,10 @@
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["swimwear-all","swimsuit"]
+      "shopTypes": [
+        "swimwear-all",
+        "swimsuit"
+      ]
     },
     {
       "id": "JB-0030",
@@ -1658,7 +1742,10 @@
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["swimwear-all","swimsuit"]
+      "shopTypes": [
+        "swimwear-all",
+        "swimsuit"
+      ]
     },
     {
       "id": "JB-0031",
@@ -1699,7 +1786,10 @@
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["swimwear-all","swimsuit"]
+      "shopTypes": [
+        "swimwear-all",
+        "swimsuit"
+      ]
     },
     {
       "id": "JB-0032",
@@ -1740,7 +1830,10 @@
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["swimwear-all","bikini"]
+      "shopTypes": [
+        "swimwear-all",
+        "bikini"
+      ]
     },
     {
       "id": "JB-0033",
@@ -1781,7 +1874,16 @@
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["swimwear-all","swimsuit"]
+      "shopTypes": [
+        "swimwear-all",
+        "swimsuit"
+      ],
+      "shopEdits": [
+        "Champagne Bohemia"
+      ],
+      "editRanks": {
+        "Champagne Bohemia": 5
+      }
     },
     {
       "id": "JB-0034",
@@ -1822,7 +1924,16 @@
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["swimwear-all","brief"]
+      "shopTypes": [
+        "swimwear-all",
+        "brief"
+      ],
+      "shopEdits": [
+        "Champagne Bohemia"
+      ],
+      "editRanks": {
+        "Champagne Bohemia": 6
+      }
     },
     {
       "id": "JB-0035",
@@ -1864,7 +1975,10 @@
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["swimwear-all","swimsuit"]
+      "shopTypes": [
+        "swimwear-all",
+        "swimsuit"
+      ]
     },
     {
       "id": "JB-0036",
@@ -1905,7 +2019,10 @@
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["swimwear-all","swimsuit"]
+      "shopTypes": [
+        "swimwear-all",
+        "swimsuit"
+      ]
     },
     {
       "id": "JB-0037",
@@ -1946,7 +2063,16 @@
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["swimwear-all","swimsuit"]
+      "shopTypes": [
+        "swimwear-all",
+        "swimsuit"
+      ],
+      "shopEdits": [
+        "Champagne Bohemia"
+      ],
+      "editRanks": {
+        "Champagne Bohemia": 8
+      }
     },
     {
       "id": "JB-0038",
@@ -1990,7 +2116,11 @@
       "colourSourceType": "Retailer page",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["ready-to-wear-all","bodysuit","after-dark"]
+      "shopTypes": [
+        "ready-to-wear-all",
+        "bodysuit",
+        "after-dark"
+      ]
     },
     {
       "id": "JB-0039",
@@ -2034,7 +2164,11 @@
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["ready-to-wear-all","bodysuit","after-dark"]
+      "shopTypes": [
+        "ready-to-wear-all",
+        "bodysuit",
+        "after-dark"
+      ]
     },
     {
       "id": "JB-0040",
@@ -2078,7 +2212,11 @@
       "colourSourceType": "Retailer page",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["ready-to-wear-all","bodysuit","after-dark"]
+      "shopTypes": [
+        "ready-to-wear-all",
+        "bodysuit",
+        "after-dark"
+      ]
     },
     {
       "id": "JB-0041",
@@ -2122,7 +2260,11 @@
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["ready-to-wear-all","bodysuit","after-dark"]
+      "shopTypes": [
+        "ready-to-wear-all",
+        "bodysuit",
+        "after-dark"
+      ]
     },
     {
       "id": "JB-0042",
@@ -2165,7 +2307,10 @@
       "colourSourceType": "Retailer page",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["ready-to-wear-all","after-dark"]
+      "shopTypes": [
+        "ready-to-wear-all",
+        "after-dark"
+      ]
     },
     {
       "id": "JB-0043",
@@ -2208,7 +2353,10 @@
       "colourSourceType": "Retailer page",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["ready-to-wear-all","after-dark"]
+      "shopTypes": [
+        "ready-to-wear-all",
+        "after-dark"
+      ]
     },
     {
       "id": "JB-0045",
@@ -2253,7 +2401,13 @@
       "colourSourceType": "Retailer page",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["lingerie-all","swimwear-all","brief","after-dark","bikini"]
+      "shopTypes": [
+        "lingerie-all",
+        "swimwear-all",
+        "brief",
+        "after-dark",
+        "bikini"
+      ]
     },
     {
       "id": "JB-0046",
@@ -2297,7 +2451,11 @@
       "colourSourceType": "Retailer page",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["lingerie-all","bra","after-dark"]
+      "shopTypes": [
+        "lingerie-all",
+        "bra",
+        "after-dark"
+      ]
     },
     {
       "id": "JB-0047",
@@ -2342,7 +2500,13 @@
       "colourSourceType": "Retailer page",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["lingerie-all","swimwear-all","brief","after-dark","bikini"]
+      "shopTypes": [
+        "lingerie-all",
+        "swimwear-all",
+        "brief",
+        "after-dark",
+        "bikini"
+      ]
     },
     {
       "id": "JB-0048",
@@ -2387,7 +2551,13 @@
       "colourSourceType": "Retailer page",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["lingerie-all","swimwear-all","brief","after-dark","bikini"]
+      "shopTypes": [
+        "lingerie-all",
+        "swimwear-all",
+        "brief",
+        "after-dark",
+        "bikini"
+      ]
     },
     {
       "id": "JB-0049",
@@ -2432,7 +2602,12 @@
       "colourSourceType": "Retailer page",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["lingerie-all","swimwear-all","after-dark","bikini"]
+      "shopTypes": [
+        "lingerie-all",
+        "swimwear-all",
+        "after-dark",
+        "bikini"
+      ]
     },
     {
       "id": "JB-0050",
@@ -2477,7 +2652,12 @@
       "colourSourceType": "Retailer page",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["lingerie-all","swimwear-all","after-dark","swimsuit"]
+      "shopTypes": [
+        "lingerie-all",
+        "swimwear-all",
+        "after-dark",
+        "swimsuit"
+      ]
     },
     {
       "id": "JB-0051",
@@ -2522,7 +2702,13 @@
       "colourSourceType": "Retailer page",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["lingerie-all","swimwear-all","brief","after-dark","bikini"]
+      "shopTypes": [
+        "lingerie-all",
+        "swimwear-all",
+        "brief",
+        "after-dark",
+        "bikini"
+      ]
     },
     {
       "id": "JB-0052",
@@ -2566,7 +2752,12 @@
       "colourSourceType": "Retailer page",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["lingerie-all","bra","brief","after-dark"]
+      "shopTypes": [
+        "lingerie-all",
+        "bra",
+        "brief",
+        "after-dark"
+      ]
     },
     {
       "id": "JB-0053",
@@ -2610,7 +2801,11 @@
       "colourSourceType": "Retailer page",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["lingerie-all","bra","after-dark"]
+      "shopTypes": [
+        "lingerie-all",
+        "bra",
+        "after-dark"
+      ]
     },
     {
       "id": "JB-0054",
@@ -2654,7 +2849,11 @@
       "colourSourceType": "Retailer page",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["lingerie-all","bra","after-dark"]
+      "shopTypes": [
+        "lingerie-all",
+        "bra",
+        "after-dark"
+      ]
     },
     {
       "id": "JB-0055",
@@ -2698,7 +2897,11 @@
       "colourSourceType": "Retailer page",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["lingerie-all","after-dark","accessories"]
+      "shopTypes": [
+        "lingerie-all",
+        "after-dark",
+        "accessories"
+      ]
     },
     {
       "id": "JB-0056",
@@ -2742,7 +2945,11 @@
       "colourSourceType": "Retailer page",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["lingerie-all","bra","after-dark"]
+      "shopTypes": [
+        "lingerie-all",
+        "bra",
+        "after-dark"
+      ]
     },
     {
       "id": "JB-0057",
@@ -2786,7 +2993,11 @@
       "colourSourceType": "Retailer page",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["lingerie-all","bra","after-dark"]
+      "shopTypes": [
+        "lingerie-all",
+        "bra",
+        "after-dark"
+      ]
     },
     {
       "id": "JB-0059",
@@ -2831,7 +3042,12 @@
       "colourSourceType": "Retailer page",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["lingerie-all","ready-to-wear-all","bodysuit","after-dark"]
+      "shopTypes": [
+        "lingerie-all",
+        "ready-to-wear-all",
+        "bodysuit",
+        "after-dark"
+      ]
     },
     {
       "id": "JB-0060",
@@ -2876,7 +3092,12 @@
       "colourSourceType": "Retailer page",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["lingerie-all","ready-to-wear-all","after-dark","shorts"]
+      "shopTypes": [
+        "lingerie-all",
+        "ready-to-wear-all",
+        "after-dark",
+        "shorts"
+      ]
     },
     {
       "id": "JB-0061",
@@ -2921,7 +3142,12 @@
       "colourSourceType": "Retailer page",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["lingerie-all","ready-to-wear-all","robe","after-dark"]
+      "shopTypes": [
+        "lingerie-all",
+        "ready-to-wear-all",
+        "robe",
+        "after-dark"
+      ]
     },
     {
       "id": "JB-0062",
@@ -2966,7 +3192,12 @@
       "colourSourceType": "Retailer page",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["lingerie-all","ready-to-wear-all","after-dark","shorts"]
+      "shopTypes": [
+        "lingerie-all",
+        "ready-to-wear-all",
+        "after-dark",
+        "shorts"
+      ]
     },
     {
       "id": "JB-0063",
@@ -3011,7 +3242,12 @@
       "colourSourceType": "Retailer page",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["lingerie-all","ready-to-wear-all","after-dark","shorts"]
+      "shopTypes": [
+        "lingerie-all",
+        "ready-to-wear-all",
+        "after-dark",
+        "shorts"
+      ]
     },
     {
       "id": "JB-0064",
@@ -3056,7 +3292,12 @@
       "colourSourceType": "Retailer page",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["lingerie-all","ready-to-wear-all","bodysuit","after-dark"]
+      "shopTypes": [
+        "lingerie-all",
+        "ready-to-wear-all",
+        "bodysuit",
+        "after-dark"
+      ]
     },
     {
       "id": "JB-0065",
@@ -3100,7 +3341,11 @@
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["lingerie-all","robe","after-dark"]
+      "shopTypes": [
+        "lingerie-all",
+        "robe",
+        "after-dark"
+      ]
     },
     {
       "id": "JB-0066",
@@ -3144,7 +3389,11 @@
       "colourSourceType": "Retailer page",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["lingerie-all","robe","after-dark"]
+      "shopTypes": [
+        "lingerie-all",
+        "robe",
+        "after-dark"
+      ]
     },
     {
       "id": "JB-0067",
@@ -3188,7 +3437,11 @@
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["lingerie-all","robe","after-dark"]
+      "shopTypes": [
+        "lingerie-all",
+        "robe",
+        "after-dark"
+      ]
     },
     {
       "id": "JB-0068",
@@ -3223,7 +3476,12 @@
       "currency": "AUD",
       "subjectPresent": true,
       "forwardFacing": true,
-      "shopTypes": ["lingerie-all","bra","brief","after-dark"]
+      "shopTypes": [
+        "lingerie-all",
+        "bra",
+        "brief",
+        "after-dark"
+      ]
     },
     {
       "id": "JB-0069",
@@ -3258,7 +3516,10 @@
       "currency": "AUD",
       "subjectPresent": false,
       "forwardFacing": false,
-      "shopTypes": ["ready-to-wear-all","hosiery"]
+      "shopTypes": [
+        "ready-to-wear-all",
+        "hosiery"
+      ]
     },
     {
       "id": "JB-0070",
@@ -3292,7 +3553,10 @@
       "currency": "AUD",
       "subjectPresent": true,
       "forwardFacing": true,
-      "shopTypes": ["ready-to-wear-all","bodysuit"]
+      "shopTypes": [
+        "ready-to-wear-all",
+        "bodysuit"
+      ]
     },
     {
       "id": "JB-0071",
@@ -3326,7 +3590,10 @@
       "currency": "AUD",
       "subjectPresent": true,
       "forwardFacing": true,
-      "shopTypes": ["ready-to-wear-all","bodysuit"]
+      "shopTypes": [
+        "ready-to-wear-all",
+        "bodysuit"
+      ]
     },
     {
       "id": "JB-0072",
@@ -3360,7 +3627,10 @@
       "currency": "AUD",
       "subjectPresent": true,
       "forwardFacing": true,
-      "shopTypes": ["ready-to-wear-all","bodysuit"]
+      "shopTypes": [
+        "ready-to-wear-all",
+        "bodysuit"
+      ]
     },
     {
       "id": "JB-0073",
@@ -3395,7 +3665,11 @@
       "currency": "AUD",
       "subjectPresent": true,
       "forwardFacing": true,
-      "shopTypes": ["lingerie-all","ready-to-wear-all","brief"]
+      "shopTypes": [
+        "lingerie-all",
+        "ready-to-wear-all",
+        "brief"
+      ]
     },
     {
       "id": "JB-0074",
@@ -3429,7 +3703,11 @@
       "currency": "AUD",
       "subjectPresent": true,
       "forwardFacing": true,
-      "shopTypes": ["lingerie-all","haute-couture-all","brief"]
+      "shopTypes": [
+        "lingerie-all",
+        "haute-couture-all",
+        "brief"
+      ]
     },
     {
       "id": "JB-0075",
@@ -3461,7 +3739,10 @@
       "currency": "AUD",
       "subjectPresent": true,
       "forwardFacing": true,
-      "shopTypes": ["haute-couture-all","bra"]
+      "shopTypes": [
+        "haute-couture-all",
+        "bra"
+      ]
     },
     {
       "id": "JB-0076",
@@ -3493,7 +3774,10 @@
       "currency": "AUD",
       "subjectPresent": true,
       "forwardFacing": true,
-      "shopTypes": ["haute-couture-all","dress"]
+      "shopTypes": [
+        "haute-couture-all",
+        "dress"
+      ]
     },
     {
       "id": "JB-0077",
@@ -3525,7 +3809,9 @@
       "currency": "AUD",
       "subjectPresent": true,
       "forwardFacing": true,
-      "shopTypes": ["ready-to-wear-all"]
+      "shopTypes": [
+        "ready-to-wear-all"
+      ]
     },
     {
       "id": "JB-0078",
@@ -3557,7 +3843,10 @@
       "currency": "AUD",
       "subjectPresent": true,
       "forwardFacing": true,
-      "shopTypes": ["haute-couture-all","dress"]
+      "shopTypes": [
+        "haute-couture-all",
+        "dress"
+      ]
     },
     {
       "id": "JB-0079",
@@ -3591,7 +3880,10 @@
       "currency": "AUD",
       "subjectPresent": true,
       "forwardFacing": true,
-      "shopTypes": ["haute-couture-all","hosiery"]
+      "shopTypes": [
+        "haute-couture-all",
+        "hosiery"
+      ]
     },
     {
       "id": "JB-0080",
@@ -3632,7 +3924,10 @@
       "colourSourceType": "Retailer page",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["haute-couture-all","accessories"]
+      "shopTypes": [
+        "haute-couture-all",
+        "accessories"
+      ]
     },
     {
       "id": "JB-0081",
@@ -3664,7 +3959,10 @@
       "currency": "AUD",
       "subjectPresent": true,
       "forwardFacing": false,
-      "shopTypes": ["ready-to-wear-all","dress"]
+      "shopTypes": [
+        "ready-to-wear-all",
+        "dress"
+      ]
     },
     {
       "id": "JB-0082",
@@ -3696,7 +3994,10 @@
       "currency": "AUD",
       "subjectPresent": true,
       "forwardFacing": false,
-      "shopTypes": ["haute-couture-all","accessories"]
+      "shopTypes": [
+        "haute-couture-all",
+        "accessories"
+      ]
     },
     {
       "id": "JB-0083",
@@ -3728,7 +4029,10 @@
       "currency": "AUD",
       "subjectPresent": true,
       "forwardFacing": true,
-      "shopTypes": ["haute-couture-all","dress"]
+      "shopTypes": [
+        "haute-couture-all",
+        "dress"
+      ]
     },
     {
       "id": "JB-0084",
@@ -3769,7 +4073,10 @@
       "colourSourceType": "Retailer page",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["ready-to-wear-all","dress"]
+      "shopTypes": [
+        "ready-to-wear-all",
+        "dress"
+      ]
     },
     {
       "id": "JB-0086",
@@ -3810,7 +4117,10 @@
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["ready-to-wear-all","dress"]
+      "shopTypes": [
+        "ready-to-wear-all",
+        "dress"
+      ]
     },
     {
       "id": "JB-0087",
@@ -3853,7 +4163,16 @@
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["swimwear-all","bikini"]
+      "shopTypes": [
+        "swimwear-all",
+        "bikini"
+      ],
+      "shopEdits": [
+        "Champagne Bohemia"
+      ],
+      "editRanks": {
+        "Champagne Bohemia": 12
+      }
     },
     {
       "id": "JB-0088",
@@ -3896,7 +4215,10 @@
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["swimwear-all","swimsuit"]
+      "shopTypes": [
+        "swimwear-all",
+        "swimsuit"
+      ]
     },
     {
       "id": "JB-0089",
@@ -3940,7 +4262,11 @@
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["lingerie-all","bra","after-dark"]
+      "shopTypes": [
+        "lingerie-all",
+        "bra",
+        "after-dark"
+      ]
     },
     {
       "id": "JB-0090",
@@ -3984,7 +4310,11 @@
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["lingerie-all","bra","after-dark"]
+      "shopTypes": [
+        "lingerie-all",
+        "bra",
+        "after-dark"
+      ]
     },
     {
       "id": "JB-0091",
@@ -4028,7 +4358,11 @@
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["lingerie-all","bra","after-dark"]
+      "shopTypes": [
+        "lingerie-all",
+        "bra",
+        "after-dark"
+      ]
     },
     {
       "id": "JB-0092",
@@ -4072,7 +4406,11 @@
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["lingerie-all","bra","after-dark"]
+      "shopTypes": [
+        "lingerie-all",
+        "bra",
+        "after-dark"
+      ]
     },
     {
       "id": "JB-0093",
@@ -4116,7 +4454,11 @@
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["lingerie-all","ready-to-wear-all","after-dark"]
+      "shopTypes": [
+        "lingerie-all",
+        "ready-to-wear-all",
+        "after-dark"
+      ]
     },
     {
       "id": "JB-0094",
@@ -4160,7 +4502,11 @@
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["lingerie-all","ready-to-wear-all","after-dark"]
+      "shopTypes": [
+        "lingerie-all",
+        "ready-to-wear-all",
+        "after-dark"
+      ]
     },
     {
       "id": "JB-0095",
@@ -4204,7 +4550,11 @@
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["lingerie-all","ready-to-wear-all","after-dark"]
+      "shopTypes": [
+        "lingerie-all",
+        "ready-to-wear-all",
+        "after-dark"
+      ]
     },
     {
       "id": "JB-0096",
@@ -4248,7 +4598,12 @@
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["lingerie-all","ready-to-wear-all","after-dark","dress"]
+      "shopTypes": [
+        "lingerie-all",
+        "ready-to-wear-all",
+        "after-dark",
+        "dress"
+      ]
     },
     {
       "id": "JB-0097",
@@ -4292,7 +4647,12 @@
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["lingerie-all","ready-to-wear-all","after-dark","dress"]
+      "shopTypes": [
+        "lingerie-all",
+        "ready-to-wear-all",
+        "after-dark",
+        "dress"
+      ]
     },
     {
       "id": "JB-0098",
@@ -4336,7 +4696,12 @@
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["lingerie-all","ready-to-wear-all","after-dark","dress"]
+      "shopTypes": [
+        "lingerie-all",
+        "ready-to-wear-all",
+        "after-dark",
+        "dress"
+      ]
     },
     {
       "id": "JB-0099",
@@ -4380,7 +4745,11 @@
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["lingerie-all","after-dark","accessories"]
+      "shopTypes": [
+        "lingerie-all",
+        "after-dark",
+        "accessories"
+      ]
     },
     {
       "id": "JB-0100",
@@ -4424,7 +4793,11 @@
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["lingerie-all","bra","after-dark"]
+      "shopTypes": [
+        "lingerie-all",
+        "bra",
+        "after-dark"
+      ]
     },
     {
       "id": "JB-0101",
@@ -4468,7 +4841,11 @@
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["lingerie-all","after-dark","accessories"]
+      "shopTypes": [
+        "lingerie-all",
+        "after-dark",
+        "accessories"
+      ]
     },
     {
       "id": "JB-0102",
@@ -4512,7 +4889,11 @@
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["lingerie-all","brief","after-dark"]
+      "shopTypes": [
+        "lingerie-all",
+        "brief",
+        "after-dark"
+      ]
     },
     {
       "id": "JB-0103",
@@ -4556,7 +4937,13 @@
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["lingerie-all","ready-to-wear-all","bra","after-dark","crop"]
+      "shopTypes": [
+        "lingerie-all",
+        "ready-to-wear-all",
+        "bra",
+        "after-dark",
+        "crop"
+      ]
     },
     {
       "id": "JB-0104",
@@ -4600,7 +4987,11 @@
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["lingerie-all","brief","after-dark"]
+      "shopTypes": [
+        "lingerie-all",
+        "brief",
+        "after-dark"
+      ]
     },
     {
       "id": "JB-0105",
@@ -4644,7 +5035,11 @@
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["lingerie-all","after-dark","accessories"]
+      "shopTypes": [
+        "lingerie-all",
+        "after-dark",
+        "accessories"
+      ]
     },
     {
       "id": "JB-0106",
@@ -4688,7 +5083,11 @@
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["lingerie-all","bra","after-dark"]
+      "shopTypes": [
+        "lingerie-all",
+        "bra",
+        "after-dark"
+      ]
     },
     {
       "id": "JB-0107",
@@ -4732,7 +5131,11 @@
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["lingerie-all","after-dark","accessories"]
+      "shopTypes": [
+        "lingerie-all",
+        "after-dark",
+        "accessories"
+      ]
     },
     {
       "id": "JB-0108",
@@ -4776,7 +5179,11 @@
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["lingerie-all","after-dark","accessories"]
+      "shopTypes": [
+        "lingerie-all",
+        "after-dark",
+        "accessories"
+      ]
     },
     {
       "id": "JB-0109",
@@ -4820,7 +5227,11 @@
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["lingerie-all","bra","after-dark"]
+      "shopTypes": [
+        "lingerie-all",
+        "bra",
+        "after-dark"
+      ]
     },
     {
       "id": "JB-0110",
@@ -4864,7 +5275,11 @@
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["lingerie-all","brief","after-dark"]
+      "shopTypes": [
+        "lingerie-all",
+        "brief",
+        "after-dark"
+      ]
     },
     {
       "id": "JB-0111",
@@ -4909,7 +5324,16 @@
       "colourSourceType": "Retailer page",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["lingerie-all","bra"]
+      "shopTypes": [
+        "lingerie-all",
+        "bra"
+      ],
+      "shopEdits": [
+        "Inner Plains"
+      ],
+      "editRanks": {
+        "Inner Plains": 1
+      }
     },
     {
       "id": "JB-0112",
@@ -4954,7 +5378,16 @@
       "colourSourceType": "Retailer page",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["ready-to-wear-all","bodysuit"]
+      "shopTypes": [
+        "ready-to-wear-all",
+        "bodysuit"
+      ],
+      "shopEdits": [
+        "Inner Plains"
+      ],
+      "editRanks": {
+        "Inner Plains": 7
+      }
     },
     {
       "id": "JB-0113",
@@ -4999,7 +5432,10 @@
       "colourSourceType": "Retailer page",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["ready-to-wear-all","bodysuit"]
+      "shopTypes": [
+        "ready-to-wear-all",
+        "bodysuit"
+      ]
     },
     {
       "id": "JB-0114",
@@ -5045,7 +5481,16 @@
       "colourSourceType": "Retailer page",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["lingerie-all","bra"]
+      "shopTypes": [
+        "lingerie-all",
+        "bra"
+      ],
+      "shopEdits": [
+        "Inner Plains"
+      ],
+      "editRanks": {
+        "Inner Plains": 8
+      }
     },
     {
       "id": "JB-0115",
@@ -5090,7 +5535,10 @@
       "colourSourceType": "Retailer page",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["lingerie-all","brief"]
+      "shopTypes": [
+        "lingerie-all",
+        "brief"
+      ]
     },
     {
       "id": "JB-0116",
@@ -5135,7 +5583,10 @@
       "colourSourceType": "Retailer page",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["lingerie-all","brief"]
+      "shopTypes": [
+        "lingerie-all",
+        "brief"
+      ]
     },
     {
       "id": "JB-0117",
@@ -5180,7 +5631,16 @@
       "colourSourceType": "Retailer page",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["lingerie-all","brief"]
+      "shopTypes": [
+        "lingerie-all",
+        "brief"
+      ],
+      "shopEdits": [
+        "Inner Plains"
+      ],
+      "editRanks": {
+        "Inner Plains": 12
+      }
     },
     {
       "id": "JB-0118",
@@ -5225,7 +5685,16 @@
       "colourSourceType": "Retailer page",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["lingerie-all","bra"]
+      "shopTypes": [
+        "lingerie-all",
+        "bra"
+      ],
+      "shopEdits": [
+        "Inner Plains"
+      ],
+      "editRanks": {
+        "Inner Plains": 13
+      }
     },
     {
       "id": "JB-0119",
@@ -5270,7 +5739,10 @@
       "colourSourceType": "Retailer page",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["lingerie-all","bra"]
+      "shopTypes": [
+        "lingerie-all",
+        "bra"
+      ]
     },
     {
       "id": "JB-0120",
@@ -5317,7 +5789,12 @@
       "colourSourceType": "Retailer page",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["lingerie-all","athleisure-all","ready-to-wear-all","hosiery"]
+      "shopTypes": [
+        "lingerie-all",
+        "athleisure-all",
+        "ready-to-wear-all",
+        "hosiery"
+      ]
     },
     {
       "id": "JB-0121",
@@ -5363,7 +5840,11 @@
       "colourSourceType": "Retailer page",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["athleisure-all","ready-to-wear-all","shorts"]
+      "shopTypes": [
+        "athleisure-all",
+        "ready-to-wear-all",
+        "shorts"
+      ]
     },
     {
       "id": "JB-0122",
@@ -5409,7 +5890,11 @@
       "colourSourceType": "Retailer page",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["lingerie-all","ready-to-wear-all","bra"]
+      "shopTypes": [
+        "lingerie-all",
+        "ready-to-wear-all",
+        "bra"
+      ]
     },
     {
       "id": "JB-0123",
@@ -5455,7 +5940,12 @@
       "colourSourceType": "Retailer page",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["lingerie-all","ready-to-wear-all","brief","bodysuit"]
+      "shopTypes": [
+        "lingerie-all",
+        "ready-to-wear-all",
+        "brief",
+        "bodysuit"
+      ]
     },
     {
       "id": "JB-0124",
@@ -5501,7 +5991,12 @@
       "colourSourceType": "Retailer page",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["lingerie-all","ready-to-wear-all","brief","bodysuit"]
+      "shopTypes": [
+        "lingerie-all",
+        "ready-to-wear-all",
+        "brief",
+        "bodysuit"
+      ]
     },
     {
       "id": "JB-0125",
@@ -5547,7 +6042,11 @@
       "colourSourceType": "Retailer page",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["swimwear-all","ready-to-wear-all","swimsuit"]
+      "shopTypes": [
+        "swimwear-all",
+        "ready-to-wear-all",
+        "swimsuit"
+      ]
     },
     {
       "id": "JB-0126",
@@ -5581,7 +6080,11 @@
       "currency": "USD",
       "subjectPresent": false,
       "forwardFacing": false,
-      "shopTypes": ["ready-to-wear-all","after-dark","dress"]
+      "shopTypes": [
+        "ready-to-wear-all",
+        "after-dark",
+        "dress"
+      ]
     },
     {
       "id": "JB-0127",
@@ -5616,7 +6119,11 @@
       "currency": "AUD",
       "subjectPresent": false,
       "forwardFacing": false,
-      "shopTypes": ["swimwear-all","after-dark","swimsuit"]
+      "shopTypes": [
+        "swimwear-all",
+        "after-dark",
+        "swimsuit"
+      ]
     },
     {
       "id": "JB-0128",
@@ -5651,7 +6158,11 @@
       "currency": "AUD",
       "subjectPresent": true,
       "forwardFacing": false,
-      "shopTypes": ["ready-to-wear-all","bodysuit","after-dark"]
+      "shopTypes": [
+        "ready-to-wear-all",
+        "bodysuit",
+        "after-dark"
+      ]
     },
     {
       "id": "JB-0129",
@@ -5686,7 +6197,11 @@
       "currency": "AUD",
       "subjectPresent": true,
       "forwardFacing": false,
-      "shopTypes": ["ready-to-wear-all","bodysuit","after-dark"]
+      "shopTypes": [
+        "ready-to-wear-all",
+        "bodysuit",
+        "after-dark"
+      ]
     },
     {
       "id": "JB-0130",
@@ -5729,7 +6244,17 @@
       "colourSourceType": "Retailer page",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["athleisure-all","ready-to-wear-all","leggings"]
+      "shopTypes": [
+        "athleisure-all",
+        "ready-to-wear-all",
+        "leggings"
+      ],
+      "shopEdits": [
+        "Champagne Bohemia"
+      ],
+      "editRanks": {
+        "Champagne Bohemia": 53
+      }
     },
     {
       "id": "JB-0131",
@@ -5773,7 +6298,17 @@
       "colourSourceType": "Retailer page",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["swimwear-all","athleisure-all","swimsuit"]
+      "shopTypes": [
+        "swimwear-all",
+        "athleisure-all",
+        "swimsuit"
+      ],
+      "shopEdits": [
+        "Champagne Bohemia"
+      ],
+      "editRanks": {
+        "Champagne Bohemia": 54
+      }
     },
     {
       "id": "JB-0132",
@@ -5817,7 +6352,17 @@
       "colourSourceType": "Retailer page",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["athleisure-all","ready-to-wear-all","leggings"]
+      "shopTypes": [
+        "athleisure-all",
+        "ready-to-wear-all",
+        "leggings"
+      ],
+      "shopEdits": [
+        "Champagne Bohemia"
+      ],
+      "editRanks": {
+        "Champagne Bohemia": 55
+      }
     },
     {
       "id": "JB-0133",
@@ -5853,7 +6398,12 @@
       "currency": "AUD",
       "subjectPresent": true,
       "forwardFacing": true,
-      "shopTypes": ["swimwear-all","athleisure-all","ready-to-wear-all","swimsuit"]
+      "shopTypes": [
+        "swimwear-all",
+        "athleisure-all",
+        "ready-to-wear-all",
+        "swimsuit"
+      ]
     },
     {
       "id": "JB-0134",
@@ -5897,7 +6447,11 @@
       "colourSourceType": "Retailer page",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["athleisure-all","ready-to-wear-all","leggings"]
+      "shopTypes": [
+        "athleisure-all",
+        "ready-to-wear-all",
+        "leggings"
+      ]
     },
     {
       "id": "JB-0135",
@@ -5941,7 +6495,12 @@
       "colourSourceType": "Retailer page",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["athleisure-all","ready-to-wear-all","bra","leggings"]
+      "shopTypes": [
+        "athleisure-all",
+        "ready-to-wear-all",
+        "bra",
+        "leggings"
+      ]
     },
     {
       "id": "JB-0136",
@@ -5985,7 +6544,11 @@
       "colourSourceType": "Retailer page",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["athleisure-all","ready-to-wear-all","leggings"]
+      "shopTypes": [
+        "athleisure-all",
+        "ready-to-wear-all",
+        "leggings"
+      ]
     },
     {
       "id": "JB-0137",
@@ -6021,7 +6584,11 @@
       "forwardFacing": true,
       "requiresReview": true,
       "reviewNotes": "Retailer page publishes no current price.",
-      "shopTypes": ["athleisure-all","ready-to-wear-all","jumpsuit"]
+      "shopTypes": [
+        "athleisure-all",
+        "ready-to-wear-all",
+        "jumpsuit"
+      ]
     },
     {
       "id": "JB-0138",
@@ -6065,7 +6632,11 @@
       "colourSourceType": "Retailer page",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["athleisure-all","ready-to-wear-all","bodysuit"]
+      "shopTypes": [
+        "athleisure-all",
+        "ready-to-wear-all",
+        "bodysuit"
+      ]
     },
     {
       "id": "JB-0139",
@@ -6109,7 +6680,12 @@
       "colourSourceType": "Retailer page",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["athleisure-all","ready-to-wear-all","bra","bodysuit"]
+      "shopTypes": [
+        "athleisure-all",
+        "ready-to-wear-all",
+        "bra",
+        "bodysuit"
+      ]
     },
     {
       "id": "JB-0140",
@@ -6152,7 +6728,10 @@
       "colourSourceType": "Retailer page",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["athleisure-all","ready-to-wear-all"]
+      "shopTypes": [
+        "athleisure-all",
+        "ready-to-wear-all"
+      ]
     },
     {
       "id": "JB-0141",
@@ -6196,7 +6775,10 @@
       "colourSourceType": "Retailer page",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["athleisure-all","ready-to-wear-all"]
+      "shopTypes": [
+        "athleisure-all",
+        "ready-to-wear-all"
+      ]
     },
     {
       "id": "JB-0142",
@@ -6241,7 +6823,11 @@
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["athleisure-all","ready-to-wear-all","jumpsuit"]
+      "shopTypes": [
+        "athleisure-all",
+        "ready-to-wear-all",
+        "jumpsuit"
+      ]
     },
     {
       "id": "JB-0143",
@@ -6286,7 +6872,11 @@
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["athleisure-all","ready-to-wear-all","leggings"]
+      "shopTypes": [
+        "athleisure-all",
+        "ready-to-wear-all",
+        "leggings"
+      ]
     },
     {
       "id": "JB-0144",
@@ -6333,7 +6923,11 @@
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["athleisure-all","ready-to-wear-all","leggings"]
+      "shopTypes": [
+        "athleisure-all",
+        "ready-to-wear-all",
+        "leggings"
+      ]
     },
     {
       "id": "JB-0145",
@@ -6378,7 +6972,11 @@
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["athleisure-all","ready-to-wear-all","leggings"]
+      "shopTypes": [
+        "athleisure-all",
+        "ready-to-wear-all",
+        "leggings"
+      ]
     },
     {
       "id": "JB-0146",
@@ -6423,7 +7021,11 @@
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["athleisure-all","ready-to-wear-all","leggings"]
+      "shopTypes": [
+        "athleisure-all",
+        "ready-to-wear-all",
+        "leggings"
+      ]
     },
     {
       "id": "JB-0147",
@@ -6470,7 +7072,11 @@
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["athleisure-all","ready-to-wear-all","shorts"]
+      "shopTypes": [
+        "athleisure-all",
+        "ready-to-wear-all",
+        "shorts"
+      ]
     },
     {
       "id": "JB-0148",
@@ -6518,7 +7124,11 @@
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["swimwear-all","athleisure-all","swimsuit"]
+      "shopTypes": [
+        "swimwear-all",
+        "athleisure-all",
+        "swimsuit"
+      ]
     },
     {
       "id": "JB-0149",
@@ -6564,7 +7174,11 @@
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["swimwear-all","athleisure-all","swimsuit"]
+      "shopTypes": [
+        "swimwear-all",
+        "athleisure-all",
+        "swimsuit"
+      ]
     },
     {
       "id": "JB-0150",
@@ -6611,7 +7225,11 @@
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["swimwear-all","athleisure-all","swimsuit"]
+      "shopTypes": [
+        "swimwear-all",
+        "athleisure-all",
+        "swimsuit"
+      ]
     },
     {
       "id": "JB-0151",
@@ -6657,7 +7275,11 @@
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["swimwear-all","athleisure-all","swimsuit"]
+      "shopTypes": [
+        "swimwear-all",
+        "athleisure-all",
+        "swimsuit"
+      ]
     },
     {
       "id": "JB-0152",
@@ -6701,7 +7323,16 @@
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["swimwear-all","swimsuit"]
+      "shopTypes": [
+        "swimwear-all",
+        "swimsuit"
+      ],
+      "shopEdits": [
+        "Champagne Bohemia"
+      ],
+      "editRanks": {
+        "Champagne Bohemia": 9
+      }
     },
     {
       "id": "JB-0153",
@@ -6745,7 +7376,18 @@
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["swimwear-all","ready-to-wear-all","bodysuit","rash-vest"]
+      "shopTypes": [
+        "swimwear-all",
+        "ready-to-wear-all",
+        "bodysuit",
+        "rash-vest"
+      ],
+      "shopEdits": [
+        "Champagne Bohemia"
+      ],
+      "editRanks": {
+        "Champagne Bohemia": 10
+      }
     },
     {
       "id": "JB-0154",
@@ -6779,7 +7421,10 @@
       "currency": "AUD",
       "subjectPresent": true,
       "forwardFacing": true,
-      "shopTypes": ["swimwear-all","bikini"]
+      "shopTypes": [
+        "swimwear-all",
+        "bikini"
+      ]
     },
     {
       "id": "JB-0155",
@@ -6813,7 +7458,14 @@
       "currency": "AUD",
       "subjectPresent": true,
       "forwardFacing": true,
-      "shopTypes": ["swimwear-all","athleisure-all","ready-to-wear-all","rash-vest","coverup","crop"]
+      "shopTypes": [
+        "swimwear-all",
+        "athleisure-all",
+        "ready-to-wear-all",
+        "rash-vest",
+        "coverup",
+        "crop"
+      ]
     },
     {
       "id": "JB-0156",
@@ -6847,7 +7499,18 @@
       "currency": "AUD",
       "subjectPresent": true,
       "forwardFacing": true,
-      "shopTypes": ["swimwear-all","ready-to-wear-all","bodysuit","rash-vest"]
+      "shopTypes": [
+        "swimwear-all",
+        "ready-to-wear-all",
+        "bodysuit",
+        "rash-vest"
+      ],
+      "shopEdits": [
+        "Champagne Bohemia"
+      ],
+      "editRanks": {
+        "Champagne Bohemia": 11
+      }
     },
     {
       "id": "JB-0157",
@@ -6881,7 +7544,12 @@
       "currency": "AUD",
       "subjectPresent": true,
       "forwardFacing": true,
-      "shopTypes": ["swimwear-all","ready-to-wear-all","bodysuit","rash-vest"]
+      "shopTypes": [
+        "swimwear-all",
+        "ready-to-wear-all",
+        "bodysuit",
+        "rash-vest"
+      ]
     },
     {
       "id": "JB-0158",
@@ -6924,7 +7592,11 @@
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["swimwear-all","brief","bikini"]
+      "shopTypes": [
+        "swimwear-all",
+        "brief",
+        "bikini"
+      ]
     },
     {
       "id": "JB-0159",
@@ -6967,7 +7639,10 @@
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["swimwear-all","bikini"]
+      "shopTypes": [
+        "swimwear-all",
+        "bikini"
+      ]
     },
     {
       "id": "JB-0160",
@@ -7010,7 +7685,10 @@
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["swimwear-all","bikini"]
+      "shopTypes": [
+        "swimwear-all",
+        "bikini"
+      ]
     },
     {
       "id": "JB-0161",
@@ -7051,7 +7729,9 @@
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["ready-to-wear-all"]
+      "shopTypes": [
+        "ready-to-wear-all"
+      ]
     },
     {
       "id": "JB-0162",
@@ -7095,7 +7775,10 @@
       "colourSourceType": "Retailer page",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["swimwear-all","bikini"]
+      "shopTypes": [
+        "swimwear-all",
+        "bikini"
+      ]
     },
     {
       "id": "JB-0163",
@@ -7137,7 +7820,9 @@
       "colourSourceType": "Retailer page",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["ready-to-wear-all"]
+      "shopTypes": [
+        "ready-to-wear-all"
+      ]
     },
     {
       "id": "JB-0164",
@@ -7181,7 +7866,11 @@
       "colourSourceType": "Retailer page",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["swimwear-all","brief","bikini"]
+      "shopTypes": [
+        "swimwear-all",
+        "brief",
+        "bikini"
+      ]
     },
     {
       "id": "JB-0165",
@@ -7225,7 +7914,10 @@
       "colourSourceType": "Retailer page",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["swimwear-all","bikini"]
+      "shopTypes": [
+        "swimwear-all",
+        "bikini"
+      ]
     },
     {
       "id": "JB-0166",
@@ -7269,7 +7961,10 @@
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["swimwear-all","bikini"]
+      "shopTypes": [
+        "swimwear-all",
+        "bikini"
+      ]
     },
     {
       "id": "JB-0167",
@@ -7311,7 +8006,9 @@
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["ready-to-wear-all"]
+      "shopTypes": [
+        "ready-to-wear-all"
+      ]
     },
     {
       "id": "JB-0168",
@@ -7353,7 +8050,10 @@
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["swimwear-all","swimsuit"]
+      "shopTypes": [
+        "swimwear-all",
+        "swimsuit"
+      ]
     },
     {
       "id": "JB-0169",
@@ -7396,7 +8096,10 @@
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["swimwear-all","bikini"]
+      "shopTypes": [
+        "swimwear-all",
+        "bikini"
+      ]
     },
     {
       "id": "JB-0170",
@@ -7439,7 +8142,10 @@
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["swimwear-all","bikini"]
+      "shopTypes": [
+        "swimwear-all",
+        "bikini"
+      ]
     },
     {
       "id": "JB-0171",
@@ -7482,7 +8188,11 @@
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["swimwear-all","brief","bikini"]
+      "shopTypes": [
+        "swimwear-all",
+        "brief",
+        "bikini"
+      ]
     },
     {
       "id": "JB-0172",
@@ -7525,7 +8235,10 @@
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["swimwear-all","bikini"]
+      "shopTypes": [
+        "swimwear-all",
+        "bikini"
+      ]
     },
     {
       "id": "JB-0173",
@@ -7568,7 +8281,10 @@
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["swimwear-all","bikini"]
+      "shopTypes": [
+        "swimwear-all",
+        "bikini"
+      ]
     },
     {
       "id": "JB-0174",
@@ -7611,7 +8327,11 @@
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["swimwear-all","brief","bikini"]
+      "shopTypes": [
+        "swimwear-all",
+        "brief",
+        "bikini"
+      ]
     },
     {
       "id": "JB-0175",
@@ -7652,7 +8372,9 @@
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["ready-to-wear-all"]
+      "shopTypes": [
+        "ready-to-wear-all"
+      ]
     },
     {
       "id": "JB-0176",
@@ -7693,7 +8415,9 @@
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["ready-to-wear-all"]
+      "shopTypes": [
+        "ready-to-wear-all"
+      ]
     },
     {
       "id": "JB-0177",
@@ -7736,7 +8460,10 @@
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["swimwear-all","bikini"]
+      "shopTypes": [
+        "swimwear-all",
+        "bikini"
+      ]
     },
     {
       "id": "JB-0178",
@@ -7779,7 +8506,10 @@
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["swimwear-all","bikini"]
+      "shopTypes": [
+        "swimwear-all",
+        "bikini"
+      ]
     },
     {
       "id": "JB-0179",
@@ -7820,7 +8550,9 @@
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["ready-to-wear-all"]
+      "shopTypes": [
+        "ready-to-wear-all"
+      ]
     },
     {
       "id": "JB-0180",
@@ -7863,7 +8595,11 @@
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["swimwear-all","brief","bikini"]
+      "shopTypes": [
+        "swimwear-all",
+        "brief",
+        "bikini"
+      ]
     },
     {
       "id": "JB-0181",
@@ -7906,7 +8642,10 @@
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["lingerie-all","brief"]
+      "shopTypes": [
+        "lingerie-all",
+        "brief"
+      ]
     },
     {
       "id": "JB-0182",
@@ -7947,7 +8686,9 @@
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["ready-to-wear-all"]
+      "shopTypes": [
+        "ready-to-wear-all"
+      ]
     },
     {
       "id": "JB-0183",
@@ -7991,7 +8732,10 @@
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["swimwear-all","bikini"]
+      "shopTypes": [
+        "swimwear-all",
+        "bikini"
+      ]
     },
     {
       "id": "JB-0184",
@@ -8035,7 +8779,11 @@
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["athleisure-all","ready-to-wear-all","bodysuit"]
+      "shopTypes": [
+        "athleisure-all",
+        "ready-to-wear-all",
+        "bodysuit"
+      ]
     },
     {
       "id": "JB-0185",
@@ -8079,7 +8827,11 @@
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["athleisure-all","ready-to-wear-all","bodysuit"]
+      "shopTypes": [
+        "athleisure-all",
+        "ready-to-wear-all",
+        "bodysuit"
+      ]
     },
     {
       "id": "JB-0186",
@@ -8113,7 +8865,11 @@
       "currency": "AUD",
       "subjectPresent": true,
       "forwardFacing": true,
-      "shopTypes": ["athleisure-all","ready-to-wear-all","leggings"]
+      "shopTypes": [
+        "athleisure-all",
+        "ready-to-wear-all",
+        "leggings"
+      ]
     },
     {
       "id": "JB-0187",
@@ -8156,7 +8912,11 @@
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["athleisure-all","ready-to-wear-all","shorts"]
+      "shopTypes": [
+        "athleisure-all",
+        "ready-to-wear-all",
+        "shorts"
+      ]
     },
     {
       "id": "JB-0188",
@@ -8200,7 +8960,11 @@
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["lingerie-all","athleisure-all","bra"]
+      "shopTypes": [
+        "lingerie-all",
+        "athleisure-all",
+        "bra"
+      ]
     },
     {
       "id": "JB-0189",
@@ -8244,7 +9008,11 @@
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["lingerie-all","athleisure-all","bra"]
+      "shopTypes": [
+        "lingerie-all",
+        "athleisure-all",
+        "bra"
+      ]
     },
     {
       "id": "JB-0190",
@@ -8288,7 +9056,11 @@
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["lingerie-all","athleisure-all","bra"]
+      "shopTypes": [
+        "lingerie-all",
+        "athleisure-all",
+        "bra"
+      ]
     },
     {
       "id": "JB-0191",
@@ -8331,7 +9103,11 @@
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["athleisure-all","ready-to-wear-all","shorts"]
+      "shopTypes": [
+        "athleisure-all",
+        "ready-to-wear-all",
+        "shorts"
+      ]
     },
     {
       "id": "JB-0192",
@@ -8374,7 +9150,11 @@
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["athleisure-all","ready-to-wear-all","shorts"]
+      "shopTypes": [
+        "athleisure-all",
+        "ready-to-wear-all",
+        "shorts"
+      ]
     },
     {
       "id": "JB-0193",
@@ -8409,7 +9189,11 @@
       "currency": "AUD",
       "subjectPresent": true,
       "forwardFacing": true,
-      "shopTypes": ["athleisure-all","ready-to-wear-all","bodysuit"]
+      "shopTypes": [
+        "athleisure-all",
+        "ready-to-wear-all",
+        "bodysuit"
+      ]
     },
     {
       "id": "JB-0194",
@@ -8443,7 +9227,11 @@
       "currency": "AUD",
       "subjectPresent": true,
       "forwardFacing": true,
-      "shopTypes": ["athleisure-all","ready-to-wear-all","shorts"]
+      "shopTypes": [
+        "athleisure-all",
+        "ready-to-wear-all",
+        "shorts"
+      ]
     },
     {
       "id": "JB-0195",
@@ -8478,7 +9266,11 @@
       "currency": "AUD",
       "subjectPresent": true,
       "forwardFacing": true,
-      "shopTypes": ["lingerie-all","athleisure-all","bra"]
+      "shopTypes": [
+        "lingerie-all",
+        "athleisure-all",
+        "bra"
+      ]
     },
     {
       "id": "JB-0196",
@@ -8512,7 +9304,10 @@
       "currency": "AUD",
       "subjectPresent": true,
       "forwardFacing": true,
-      "shopTypes": ["athleisure-all","hosiery"]
+      "shopTypes": [
+        "athleisure-all",
+        "hosiery"
+      ]
     },
     {
       "id": "JB-0197",
@@ -8548,7 +9343,10 @@
       "forwardFacing": true,
       "requiresReview": true,
       "reviewNotes": "Retailer page publishes no product description.",
-      "shopTypes": ["athleisure-all","accessories"]
+      "shopTypes": [
+        "athleisure-all",
+        "accessories"
+      ]
     },
     {
       "id": "JB-0198",
@@ -8582,7 +9380,11 @@
       "currency": "AUD",
       "subjectPresent": true,
       "forwardFacing": true,
-      "shopTypes": ["athleisure-all","ready-to-wear-all","shorts"]
+      "shopTypes": [
+        "athleisure-all",
+        "ready-to-wear-all",
+        "shorts"
+      ]
     },
     {
       "id": "JB-0199",
@@ -8626,7 +9428,17 @@
       "colourSourceType": "Retailer page",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["lingerie-all","athleisure-all","bra"]
+      "shopTypes": [
+        "lingerie-all",
+        "athleisure-all",
+        "bra"
+      ],
+      "shopEdits": [
+        "Champagne Bohemia"
+      ],
+      "editRanks": {
+        "Champagne Bohemia": 56
+      }
     },
     {
       "id": "JB-0200",
@@ -8669,7 +9481,15 @@
       "colourSourceType": "Retailer page",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["athleisure-all"]
+      "shopTypes": [
+        "athleisure-all"
+      ],
+      "shopEdits": [
+        "Champagne Bohemia"
+      ],
+      "editRanks": {
+        "Champagne Bohemia": 57
+      }
     },
     {
       "id": "JB-0201",
@@ -8712,7 +9532,15 @@
       "colourSourceType": "Retailer page",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["athleisure-all"]
+      "shopTypes": [
+        "athleisure-all"
+      ],
+      "shopEdits": [
+        "Champagne Bohemia"
+      ],
+      "editRanks": {
+        "Champagne Bohemia": 58
+      }
     },
     {
       "id": "JB-0202",
@@ -8756,7 +9584,17 @@
       "colourSourceType": "Retailer page",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["athleisure-all","ready-to-wear-all","leggings"]
+      "shopTypes": [
+        "athleisure-all",
+        "ready-to-wear-all",
+        "leggings"
+      ],
+      "shopEdits": [
+        "Champagne Bohemia"
+      ],
+      "editRanks": {
+        "Champagne Bohemia": 59
+      }
     },
     {
       "id": "JB-0203",
@@ -8799,7 +9637,17 @@
       "colourSourceType": "Retailer page",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["athleisure-all","ready-to-wear-all","leggings"]
+      "shopTypes": [
+        "athleisure-all",
+        "ready-to-wear-all",
+        "leggings"
+      ],
+      "shopEdits": [
+        "Champagne Bohemia"
+      ],
+      "editRanks": {
+        "Champagne Bohemia": 60
+      }
     },
     {
       "id": "JB-0204",
@@ -8842,7 +9690,17 @@
       "colourSourceType": "Retailer page",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["athleisure-all","ready-to-wear-all","leggings"]
+      "shopTypes": [
+        "athleisure-all",
+        "ready-to-wear-all",
+        "leggings"
+      ],
+      "shopEdits": [
+        "Champagne Bohemia"
+      ],
+      "editRanks": {
+        "Champagne Bohemia": 61
+      }
     },
     {
       "id": "JB-0205",
@@ -8885,7 +9743,17 @@
       "colourSourceType": "Retailer page",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["athleisure-all","ready-to-wear-all","leggings"]
+      "shopTypes": [
+        "athleisure-all",
+        "ready-to-wear-all",
+        "leggings"
+      ],
+      "shopEdits": [
+        "Champagne Bohemia"
+      ],
+      "editRanks": {
+        "Champagne Bohemia": 62
+      }
     },
     {
       "id": "JB-0206",
@@ -8928,7 +9796,17 @@
       "colourSourceType": "Retailer page",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["athleisure-all","ready-to-wear-all","leggings"]
+      "shopTypes": [
+        "athleisure-all",
+        "ready-to-wear-all",
+        "leggings"
+      ],
+      "shopEdits": [
+        "Champagne Bohemia"
+      ],
+      "editRanks": {
+        "Champagne Bohemia": 63
+      }
     },
     {
       "id": "JB-0207",
@@ -8972,7 +9850,17 @@
       "colourSourceType": "Retailer page",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["lingerie-all","athleisure-all","bra"]
+      "shopTypes": [
+        "lingerie-all",
+        "athleisure-all",
+        "bra"
+      ],
+      "shopEdits": [
+        "Champagne Bohemia"
+      ],
+      "editRanks": {
+        "Champagne Bohemia": 64
+      }
     },
     {
       "id": "JB-0208",
@@ -9016,7 +9904,17 @@
       "colourSourceType": "Retailer page",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["lingerie-all","athleisure-all","bra"]
+      "shopTypes": [
+        "lingerie-all",
+        "athleisure-all",
+        "bra"
+      ],
+      "shopEdits": [
+        "Champagne Bohemia"
+      ],
+      "editRanks": {
+        "Champagne Bohemia": 65
+      }
     },
     {
       "id": "JB-0209",
@@ -9061,7 +9959,17 @@
       "colourSourceType": "Retailer page",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["lingerie-all","athleisure-all","bra"]
+      "shopTypes": [
+        "lingerie-all",
+        "athleisure-all",
+        "bra"
+      ],
+      "shopEdits": [
+        "Champagne Bohemia"
+      ],
+      "editRanks": {
+        "Champagne Bohemia": 66
+      }
     },
     {
       "id": "JB-0210",
@@ -9105,7 +10013,17 @@
       "colourSourceType": "Retailer page",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["lingerie-all","athleisure-all","bra"]
+      "shopTypes": [
+        "lingerie-all",
+        "athleisure-all",
+        "bra"
+      ],
+      "shopEdits": [
+        "Champagne Bohemia"
+      ],
+      "editRanks": {
+        "Champagne Bohemia": 67
+      }
     },
     {
       "id": "JB-0211",
@@ -9149,7 +10067,17 @@
       "colourSourceType": "Retailer page",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["lingerie-all","athleisure-all","bra"]
+      "shopTypes": [
+        "lingerie-all",
+        "athleisure-all",
+        "bra"
+      ],
+      "shopEdits": [
+        "Champagne Bohemia"
+      ],
+      "editRanks": {
+        "Champagne Bohemia": 68
+      }
     },
     {
       "id": "JB-0212",
@@ -9193,7 +10121,17 @@
       "colourSourceType": "Retailer page",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["lingerie-all","athleisure-all","bra"]
+      "shopTypes": [
+        "lingerie-all",
+        "athleisure-all",
+        "bra"
+      ],
+      "shopEdits": [
+        "Champagne Bohemia"
+      ],
+      "editRanks": {
+        "Champagne Bohemia": 69
+      }
     },
     {
       "id": "JB-0213",
@@ -9237,7 +10175,17 @@
       "colourSourceType": "Retailer page",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["lingerie-all","athleisure-all","bra"]
+      "shopTypes": [
+        "lingerie-all",
+        "athleisure-all",
+        "bra"
+      ],
+      "shopEdits": [
+        "Champagne Bohemia"
+      ],
+      "editRanks": {
+        "Champagne Bohemia": 70
+      }
     },
     {
       "id": "JB-0214",
@@ -9281,7 +10229,17 @@
       "colourSourceType": "Retailer page",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["lingerie-all","athleisure-all","bra"]
+      "shopTypes": [
+        "lingerie-all",
+        "athleisure-all",
+        "bra"
+      ],
+      "shopEdits": [
+        "Champagne Bohemia"
+      ],
+      "editRanks": {
+        "Champagne Bohemia": 71
+      }
     },
     {
       "id": "JB-0215",
@@ -9325,7 +10283,17 @@
       "colourSourceType": "Retailer page",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["athleisure-all","ready-to-wear-all","bodysuit"]
+      "shopTypes": [
+        "athleisure-all",
+        "ready-to-wear-all",
+        "bodysuit"
+      ],
+      "shopEdits": [
+        "Champagne Bohemia"
+      ],
+      "editRanks": {
+        "Champagne Bohemia": 72
+      }
     },
     {
       "id": "JB-0216",
@@ -9359,7 +10327,17 @@
       "currency": "AUD",
       "subjectPresent": true,
       "forwardFacing": true,
-      "shopTypes": ["athleisure-all","ready-to-wear-all","jumpsuit"]
+      "shopTypes": [
+        "athleisure-all",
+        "ready-to-wear-all",
+        "jumpsuit"
+      ],
+      "shopEdits": [
+        "Champagne Bohemia"
+      ],
+      "editRanks": {
+        "Champagne Bohemia": 73
+      }
     },
     {
       "id": "JB-0217",
@@ -9402,7 +10380,17 @@
       "colourSourceType": "Retailer page",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["athleisure-all","ready-to-wear-all","dress"]
+      "shopTypes": [
+        "athleisure-all",
+        "ready-to-wear-all",
+        "dress"
+      ],
+      "shopEdits": [
+        "Champagne Bohemia"
+      ],
+      "editRanks": {
+        "Champagne Bohemia": 74
+      }
     },
     {
       "id": "JB-0218",
@@ -9445,7 +10433,17 @@
       "colourSourceType": "Retailer page",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["athleisure-all","ready-to-wear-all","dress"]
+      "shopTypes": [
+        "athleisure-all",
+        "ready-to-wear-all",
+        "dress"
+      ],
+      "shopEdits": [
+        "Champagne Bohemia"
+      ],
+      "editRanks": {
+        "Champagne Bohemia": 75
+      }
     },
     {
       "id": "JB-0219",
@@ -9488,7 +10486,17 @@
       "colourSourceType": "Retailer page",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["athleisure-all","ready-to-wear-all","dress"]
+      "shopTypes": [
+        "athleisure-all",
+        "ready-to-wear-all",
+        "dress"
+      ],
+      "shopEdits": [
+        "Champagne Bohemia"
+      ],
+      "editRanks": {
+        "Champagne Bohemia": 76
+      }
     },
     {
       "id": "JB-0220",
@@ -9531,7 +10539,17 @@
       "colourSourceType": "Retailer page",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["athleisure-all","ready-to-wear-all","pants"]
+      "shopTypes": [
+        "athleisure-all",
+        "ready-to-wear-all",
+        "pants"
+      ],
+      "shopEdits": [
+        "Champagne Bohemia"
+      ],
+      "editRanks": {
+        "Champagne Bohemia": 77
+      }
     },
     {
       "id": "JB-0221",
@@ -9574,7 +10592,17 @@
       "colourSourceType": "Retailer page",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["athleisure-all","ready-to-wear-all","pants"]
+      "shopTypes": [
+        "athleisure-all",
+        "ready-to-wear-all",
+        "pants"
+      ],
+      "shopEdits": [
+        "Champagne Bohemia"
+      ],
+      "editRanks": {
+        "Champagne Bohemia": 78
+      }
     },
     {
       "id": "JB-0222",
@@ -9617,7 +10645,17 @@
       "colourSourceType": "Retailer page",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["athleisure-all","ready-to-wear-all","pants"]
+      "shopTypes": [
+        "athleisure-all",
+        "ready-to-wear-all",
+        "pants"
+      ],
+      "shopEdits": [
+        "Champagne Bohemia"
+      ],
+      "editRanks": {
+        "Champagne Bohemia": 79
+      }
     },
     {
       "id": "JB-0223",
@@ -9660,7 +10698,17 @@
       "colourSourceType": "Retailer page",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["athleisure-all","ready-to-wear-all","pants"]
+      "shopTypes": [
+        "athleisure-all",
+        "ready-to-wear-all",
+        "pants"
+      ],
+      "shopEdits": [
+        "Champagne Bohemia"
+      ],
+      "editRanks": {
+        "Champagne Bohemia": 80
+      }
     },
     {
       "id": "JB-0224",
@@ -9703,7 +10751,17 @@
       "colourSourceType": "Retailer page",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["athleisure-all","ready-to-wear-all","pants"]
+      "shopTypes": [
+        "athleisure-all",
+        "ready-to-wear-all",
+        "pants"
+      ],
+      "shopEdits": [
+        "Champagne Bohemia"
+      ],
+      "editRanks": {
+        "Champagne Bohemia": 81
+      }
     },
     {
       "id": "JB-0225",
@@ -9746,7 +10804,17 @@
       "colourSourceType": "Retailer page",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["athleisure-all","ready-to-wear-all","pants"]
+      "shopTypes": [
+        "athleisure-all",
+        "ready-to-wear-all",
+        "pants"
+      ],
+      "shopEdits": [
+        "Champagne Bohemia"
+      ],
+      "editRanks": {
+        "Champagne Bohemia": 82
+      }
     },
     {
       "id": "JB-0226",
@@ -9789,7 +10857,17 @@
       "colourSourceType": "Retailer page",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["athleisure-all","ready-to-wear-all","pants"]
+      "shopTypes": [
+        "athleisure-all",
+        "ready-to-wear-all",
+        "pants"
+      ],
+      "shopEdits": [
+        "Champagne Bohemia"
+      ],
+      "editRanks": {
+        "Champagne Bohemia": 83
+      }
     },
     {
       "id": "JB-0227",
@@ -9833,7 +10911,17 @@
       "colourSourceType": "Retailer page",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["lingerie-all","athleisure-all","bra"]
+      "shopTypes": [
+        "lingerie-all",
+        "athleisure-all",
+        "bra"
+      ],
+      "shopEdits": [
+        "Champagne Bohemia"
+      ],
+      "editRanks": {
+        "Champagne Bohemia": 84
+      }
     },
     {
       "id": "JB-0228",
@@ -9877,7 +10965,17 @@
       "colourSourceType": "Retailer page",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["lingerie-all","athleisure-all","bra"]
+      "shopTypes": [
+        "lingerie-all",
+        "athleisure-all",
+        "bra"
+      ],
+      "shopEdits": [
+        "Champagne Bohemia"
+      ],
+      "editRanks": {
+        "Champagne Bohemia": 85
+      }
     },
     {
       "id": "JB-0229",
@@ -9921,7 +11019,17 @@
       "colourSourceType": "Retailer page",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["lingerie-all","athleisure-all","bra"]
+      "shopTypes": [
+        "lingerie-all",
+        "athleisure-all",
+        "bra"
+      ],
+      "shopEdits": [
+        "Champagne Bohemia"
+      ],
+      "editRanks": {
+        "Champagne Bohemia": 86
+      }
     },
     {
       "id": "JB-0230",
@@ -9965,7 +11073,17 @@
       "colourSourceType": "Retailer page",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["lingerie-all","athleisure-all","bra"]
+      "shopTypes": [
+        "lingerie-all",
+        "athleisure-all",
+        "bra"
+      ],
+      "shopEdits": [
+        "Champagne Bohemia"
+      ],
+      "editRanks": {
+        "Champagne Bohemia": 87
+      }
     },
     {
       "id": "JB-0231",
@@ -10009,7 +11127,17 @@
       "colourSourceType": "Retailer page",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["lingerie-all","athleisure-all","bra"]
+      "shopTypes": [
+        "lingerie-all",
+        "athleisure-all",
+        "bra"
+      ],
+      "shopEdits": [
+        "Champagne Bohemia"
+      ],
+      "editRanks": {
+        "Champagne Bohemia": 88
+      }
     },
     {
       "id": "JB-0232",
@@ -10053,7 +11181,17 @@
       "colourSourceType": "Retailer page",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["lingerie-all","athleisure-all","bra"]
+      "shopTypes": [
+        "lingerie-all",
+        "athleisure-all",
+        "bra"
+      ],
+      "shopEdits": [
+        "Champagne Bohemia"
+      ],
+      "editRanks": {
+        "Champagne Bohemia": 89
+      }
     },
     {
       "id": "JB-0233",
@@ -10097,7 +11235,17 @@
       "colourSourceType": "Retailer page",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["lingerie-all","athleisure-all","bra"]
+      "shopTypes": [
+        "lingerie-all",
+        "athleisure-all",
+        "bra"
+      ],
+      "shopEdits": [
+        "Champagne Bohemia"
+      ],
+      "editRanks": {
+        "Champagne Bohemia": 90
+      }
     },
     {
       "id": "JB-0234",
@@ -10140,7 +11288,17 @@
       "colourSourceType": "Retailer page",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["athleisure-all","ready-to-wear-all","crop"]
+      "shopTypes": [
+        "athleisure-all",
+        "ready-to-wear-all",
+        "crop"
+      ],
+      "shopEdits": [
+        "Champagne Bohemia"
+      ],
+      "editRanks": {
+        "Champagne Bohemia": 91
+      }
     },
     {
       "id": "JB-0235",
@@ -10184,7 +11342,17 @@
       "colourSourceType": "Retailer page",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["lingerie-all","athleisure-all","bra"]
+      "shopTypes": [
+        "lingerie-all",
+        "athleisure-all",
+        "bra"
+      ],
+      "shopEdits": [
+        "Champagne Bohemia"
+      ],
+      "editRanks": {
+        "Champagne Bohemia": 92
+      }
     },
     {
       "id": "JB-0236",
@@ -10227,7 +11395,17 @@
       "colourSourceType": "Retailer page",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["athleisure-all","ready-to-wear-all","crop"]
+      "shopTypes": [
+        "athleisure-all",
+        "ready-to-wear-all",
+        "crop"
+      ],
+      "shopEdits": [
+        "Champagne Bohemia"
+      ],
+      "editRanks": {
+        "Champagne Bohemia": 93
+      }
     },
     {
       "id": "JB-0237",
@@ -10270,7 +11448,17 @@
       "colourSourceType": "Retailer page",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["athleisure-all","ready-to-wear-all","shorts"]
+      "shopTypes": [
+        "athleisure-all",
+        "ready-to-wear-all",
+        "shorts"
+      ],
+      "shopEdits": [
+        "Champagne Bohemia"
+      ],
+      "editRanks": {
+        "Champagne Bohemia": 94
+      }
     },
     {
       "id": "JB-0238",
@@ -10313,7 +11501,17 @@
       "colourSourceType": "Retailer page",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["athleisure-all","ready-to-wear-all","shorts"]
+      "shopTypes": [
+        "athleisure-all",
+        "ready-to-wear-all",
+        "shorts"
+      ],
+      "shopEdits": [
+        "Champagne Bohemia"
+      ],
+      "editRanks": {
+        "Champagne Bohemia": 95
+      }
     },
     {
       "id": "JB-0239",
@@ -10356,7 +11554,17 @@
       "colourSourceType": "Retailer page",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["athleisure-all","ready-to-wear-all","shorts"]
+      "shopTypes": [
+        "athleisure-all",
+        "ready-to-wear-all",
+        "shorts"
+      ],
+      "shopEdits": [
+        "Champagne Bohemia"
+      ],
+      "editRanks": {
+        "Champagne Bohemia": 96
+      }
     },
     {
       "id": "JB-0240",
@@ -10399,7 +11607,17 @@
       "colourSourceType": "Retailer page",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["athleisure-all","ready-to-wear-all","shorts"]
+      "shopTypes": [
+        "athleisure-all",
+        "ready-to-wear-all",
+        "shorts"
+      ],
+      "shopEdits": [
+        "Champagne Bohemia"
+      ],
+      "editRanks": {
+        "Champagne Bohemia": 97
+      }
     },
     {
       "id": "JB-0241",
@@ -10433,7 +11651,10 @@
       "currency": "AUD",
       "subjectPresent": true,
       "forwardFacing": true,
-      "shopTypes": ["swimwear-all","bikini"]
+      "shopTypes": [
+        "swimwear-all",
+        "bikini"
+      ]
     },
     {
       "id": "JB-0242",
@@ -10465,7 +11686,10 @@
       "currency": "AUD",
       "subjectPresent": true,
       "forwardFacing": true,
-      "shopTypes": ["swimwear-all","swimsuit"]
+      "shopTypes": [
+        "swimwear-all",
+        "swimsuit"
+      ]
     },
     {
       "id": "JB-0243",
@@ -10499,7 +11723,10 @@
       "currency": "AUD",
       "subjectPresent": true,
       "forwardFacing": true,
-      "shopTypes": ["swimwear-all","bikini"]
+      "shopTypes": [
+        "swimwear-all",
+        "bikini"
+      ]
     },
     {
       "id": "JB-0244",
@@ -10546,7 +11773,10 @@
       "colourSourceType": "Retailer page",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["swimwear-all","bikini"]
+      "shopTypes": [
+        "swimwear-all",
+        "bikini"
+      ]
     },
     {
       "id": "JB-0245",
@@ -10591,7 +11821,10 @@
       "colourSourceType": "Retailer page",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["swimwear-all","bikini"]
+      "shopTypes": [
+        "swimwear-all",
+        "bikini"
+      ]
     },
     {
       "id": "JB-0246",
@@ -10638,7 +11871,10 @@
       "colourSourceType": "Retailer page",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["swimwear-all","bikini"]
+      "shopTypes": [
+        "swimwear-all",
+        "bikini"
+      ]
     },
     {
       "id": "JB-0247",
@@ -10681,7 +11917,10 @@
       "colourSourceType": "Retailer page",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["swimwear-all","bikini"]
+      "shopTypes": [
+        "swimwear-all",
+        "bikini"
+      ]
     },
     {
       "id": "JB-0248",
@@ -10726,7 +11965,10 @@
       "colourSourceType": "Retailer page",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["swimwear-all","bikini"]
+      "shopTypes": [
+        "swimwear-all",
+        "bikini"
+      ]
     },
     {
       "id": "JB-0249",
@@ -10771,7 +12013,10 @@
       "colourSourceType": "Retailer page",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["swimwear-all","bikini"]
+      "shopTypes": [
+        "swimwear-all",
+        "bikini"
+      ]
     },
     {
       "id": "JB-0250",
@@ -10812,7 +12057,10 @@
       "colourSourceType": "Retailer page",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["ready-to-wear-all","dress"]
+      "shopTypes": [
+        "ready-to-wear-all",
+        "dress"
+      ]
     },
     {
       "id": "JB-0251",
@@ -10853,7 +12101,10 @@
       "colourSourceType": "Retailer page",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["ready-to-wear-all","dress"]
+      "shopTypes": [
+        "ready-to-wear-all",
+        "dress"
+      ]
     },
     {
       "id": "JB-0252",
@@ -10894,7 +12145,10 @@
       "colourSourceType": "Retailer page",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["ready-to-wear-all","dress"]
+      "shopTypes": [
+        "ready-to-wear-all",
+        "dress"
+      ]
     },
     {
       "id": "JB-0253",
@@ -10929,7 +12183,12 @@
       "currency": "AUD",
       "subjectPresent": true,
       "forwardFacing": true,
-      "shopTypes": ["lingerie-all","swimwear-all","brief","bikini"]
+      "shopTypes": [
+        "lingerie-all",
+        "swimwear-all",
+        "brief",
+        "bikini"
+      ]
     },
     {
       "id": "JB-0254",
@@ -10963,7 +12222,10 @@
       "currency": "AUD",
       "subjectPresent": true,
       "forwardFacing": true,
-      "shopTypes": ["swimwear-all","bikini"]
+      "shopTypes": [
+        "swimwear-all",
+        "bikini"
+      ]
     },
     {
       "id": "JB-0255",
@@ -11006,7 +12268,10 @@
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["swimwear-all","bikini"]
+      "shopTypes": [
+        "swimwear-all",
+        "bikini"
+      ]
     },
     {
       "id": "JB-0256",
@@ -11050,7 +12315,12 @@
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["lingerie-all","swimwear-all","brief","bikini"]
+      "shopTypes": [
+        "lingerie-all",
+        "swimwear-all",
+        "brief",
+        "bikini"
+      ]
     },
     {
       "id": "JB-0257",
@@ -11085,7 +12355,12 @@
       "currency": "AUD",
       "subjectPresent": true,
       "forwardFacing": true,
-      "shopTypes": ["lingerie-all","swimwear-all","brief","bikini"]
+      "shopTypes": [
+        "lingerie-all",
+        "swimwear-all",
+        "brief",
+        "bikini"
+      ]
     },
     {
       "id": "JB-0258",
@@ -11117,7 +12392,11 @@
       "currency": "AUD",
       "subjectPresent": true,
       "forwardFacing": true,
-      "shopTypes": ["swimwear-all","ready-to-wear-all","coverup"]
+      "shopTypes": [
+        "swimwear-all",
+        "ready-to-wear-all",
+        "coverup"
+      ]
     },
     {
       "id": "JB-0259",
@@ -11158,7 +12437,11 @@
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["swimwear-all","ready-to-wear-all","coverup"]
+      "shopTypes": [
+        "swimwear-all",
+        "ready-to-wear-all",
+        "coverup"
+      ]
     },
     {
       "id": "JB-0260",
@@ -11202,7 +12485,12 @@
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["lingerie-all","swimwear-all","brief","bikini"]
+      "shopTypes": [
+        "lingerie-all",
+        "swimwear-all",
+        "brief",
+        "bikini"
+      ]
     },
     {
       "id": "JB-0261",
@@ -11244,7 +12532,11 @@
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["swimwear-all","ready-to-wear-all","coverup"]
+      "shopTypes": [
+        "swimwear-all",
+        "ready-to-wear-all",
+        "coverup"
+      ]
     },
     {
       "id": "JB-0262",
@@ -11289,7 +12581,12 @@
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["lingerie-all","swimwear-all","brief","bikini"]
+      "shopTypes": [
+        "lingerie-all",
+        "swimwear-all",
+        "brief",
+        "bikini"
+      ]
     },
     {
       "id": "JB-0263",
@@ -11332,7 +12629,12 @@
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["swimwear-all","ready-to-wear-all","bikini","coverup"]
+      "shopTypes": [
+        "swimwear-all",
+        "ready-to-wear-all",
+        "bikini",
+        "coverup"
+      ]
     },
     {
       "id": "JB-0264",
@@ -11376,7 +12678,12 @@
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["lingerie-all","swimwear-all","brief","bikini"]
+      "shopTypes": [
+        "lingerie-all",
+        "swimwear-all",
+        "brief",
+        "bikini"
+      ]
     },
     {
       "id": "JB-0265",
@@ -11417,7 +12724,11 @@
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["swimwear-all","ready-to-wear-all","coverup"]
+      "shopTypes": [
+        "swimwear-all",
+        "ready-to-wear-all",
+        "coverup"
+      ]
     },
     {
       "id": "JB-0266",
@@ -11460,7 +12771,11 @@
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["lingerie-all","swimwear-all","brief"]
+      "shopTypes": [
+        "lingerie-all",
+        "swimwear-all",
+        "brief"
+      ]
     },
     {
       "id": "JB-0267",
@@ -11503,7 +12818,11 @@
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["lingerie-all","swimwear-all","brief"]
+      "shopTypes": [
+        "lingerie-all",
+        "swimwear-all",
+        "brief"
+      ]
     },
     {
       "id": "JB-0268",
@@ -11544,7 +12863,10 @@
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["ready-to-wear-all","dress"]
+      "shopTypes": [
+        "ready-to-wear-all",
+        "dress"
+      ]
     },
     {
       "id": "JB-0269",
@@ -11586,7 +12908,10 @@
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["ready-to-wear-all","dress"]
+      "shopTypes": [
+        "ready-to-wear-all",
+        "dress"
+      ]
     },
     {
       "id": "JB-0270",
@@ -11627,7 +12952,10 @@
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["ready-to-wear-all","dress"]
+      "shopTypes": [
+        "ready-to-wear-all",
+        "dress"
+      ]
     },
     {
       "id": "JB-0271",
@@ -11659,7 +12987,10 @@
       "currency": "AUD",
       "subjectPresent": true,
       "forwardFacing": true,
-      "shopTypes": ["ready-to-wear-all","dress"]
+      "shopTypes": [
+        "ready-to-wear-all",
+        "dress"
+      ]
     },
     {
       "id": "JB-0272",
@@ -11691,7 +13022,10 @@
       "currency": "AUD",
       "subjectPresent": true,
       "forwardFacing": true,
-      "shopTypes": ["ready-to-wear-all","dress"]
+      "shopTypes": [
+        "ready-to-wear-all",
+        "dress"
+      ]
     },
     {
       "id": "JB-0273",
@@ -11732,7 +13066,10 @@
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["ready-to-wear-all","dress"]
+      "shopTypes": [
+        "ready-to-wear-all",
+        "dress"
+      ]
     },
     {
       "id": "JB-0274",
@@ -11773,7 +13110,10 @@
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["ready-to-wear-all","dress"]
+      "shopTypes": [
+        "ready-to-wear-all",
+        "dress"
+      ]
     },
     {
       "id": "JB-0275",
@@ -11805,7 +13145,10 @@
       "currency": "AUD",
       "subjectPresent": true,
       "forwardFacing": true,
-      "shopTypes": ["ready-to-wear-all","dress"]
+      "shopTypes": [
+        "ready-to-wear-all",
+        "dress"
+      ]
     },
     {
       "id": "JB-0276",
@@ -11837,7 +13180,10 @@
       "currency": "AUD",
       "subjectPresent": true,
       "forwardFacing": true,
-      "shopTypes": ["ready-to-wear-all","dress"]
+      "shopTypes": [
+        "ready-to-wear-all",
+        "dress"
+      ]
     },
     {
       "id": "JB-0277",
@@ -11878,7 +13224,10 @@
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["ready-to-wear-all","dress"]
+      "shopTypes": [
+        "ready-to-wear-all",
+        "dress"
+      ]
     },
     {
       "id": "JB-0278",
@@ -11919,7 +13268,10 @@
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["ready-to-wear-all","dress"]
+      "shopTypes": [
+        "ready-to-wear-all",
+        "dress"
+      ]
     },
     {
       "id": "JB-0279",
@@ -11960,7 +13312,10 @@
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["ready-to-wear-all","dress"]
+      "shopTypes": [
+        "ready-to-wear-all",
+        "dress"
+      ]
     },
     {
       "id": "JB-0281",
@@ -12003,7 +13358,10 @@
       "colourSourceType": "Retailer page",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["ready-to-wear-all","dress"]
+      "shopTypes": [
+        "ready-to-wear-all",
+        "dress"
+      ]
     },
     {
       "id": "JB-0282",
@@ -12044,7 +13402,10 @@
       "colourSourceType": "Retailer page",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["ready-to-wear-all","dress"]
+      "shopTypes": [
+        "ready-to-wear-all",
+        "dress"
+      ]
     },
     {
       "id": "JB-0283",
@@ -12087,7 +13448,10 @@
       "colourSourceType": "Retailer page",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["swimwear-all","bikini"]
+      "shopTypes": [
+        "swimwear-all",
+        "bikini"
+      ]
     },
     {
       "id": "JB-0284",
@@ -12131,7 +13495,12 @@
       "colourSourceType": "Retailer page",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["swimwear-all","ready-to-wear-all","bikini","crop"]
+      "shopTypes": [
+        "swimwear-all",
+        "ready-to-wear-all",
+        "bikini",
+        "crop"
+      ]
     },
     {
       "id": "JB-0285",
@@ -12175,7 +13544,12 @@
       "colourSourceType": "Retailer page",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["swimwear-all","ready-to-wear-all","bikini","crop"]
+      "shopTypes": [
+        "swimwear-all",
+        "ready-to-wear-all",
+        "bikini",
+        "crop"
+      ]
     },
     {
       "id": "JB-0286",
@@ -12218,7 +13592,12 @@
       "colourSourceType": "Retailer page",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["swimwear-all","ready-to-wear-all","bikini","crop"]
+      "shopTypes": [
+        "swimwear-all",
+        "ready-to-wear-all",
+        "bikini",
+        "crop"
+      ]
     },
     {
       "id": "JB-0287",
@@ -12263,7 +13642,10 @@
       "colourSourceType": "Retailer page",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["ready-to-wear-all","shorts"]
+      "shopTypes": [
+        "ready-to-wear-all",
+        "shorts"
+      ]
     },
     {
       "id": "JB-0288",
@@ -12306,7 +13688,10 @@
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["ready-to-wear-all","dress"]
+      "shopTypes": [
+        "ready-to-wear-all",
+        "dress"
+      ]
     },
     {
       "id": "JB-0289",
@@ -12349,7 +13734,9 @@
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["ready-to-wear-all"]
+      "shopTypes": [
+        "ready-to-wear-all"
+      ]
     },
     {
       "id": "JB-0290",
@@ -12392,7 +13779,9 @@
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["ready-to-wear-all"]
+      "shopTypes": [
+        "ready-to-wear-all"
+      ]
     },
     {
       "id": "JB-0291",
@@ -12435,7 +13824,9 @@
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["ready-to-wear-all"]
+      "shopTypes": [
+        "ready-to-wear-all"
+      ]
     },
     {
       "id": "JB-0292",
@@ -12478,7 +13869,9 @@
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["ready-to-wear-all"]
+      "shopTypes": [
+        "ready-to-wear-all"
+      ]
     },
     {
       "id": "JB-0293",
@@ -12522,7 +13915,9 @@
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["ready-to-wear-all"]
+      "shopTypes": [
+        "ready-to-wear-all"
+      ]
     },
     {
       "id": "JB-0294",
@@ -12556,7 +13951,9 @@
       "currency": "AUD",
       "subjectPresent": true,
       "forwardFacing": true,
-      "shopTypes": ["ready-to-wear-all"]
+      "shopTypes": [
+        "ready-to-wear-all"
+      ]
     },
     {
       "id": "JB-0295",
@@ -12600,7 +13997,10 @@
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["ready-to-wear-all","leggings"]
+      "shopTypes": [
+        "ready-to-wear-all",
+        "leggings"
+      ]
     },
     {
       "id": "JB-0296",
@@ -12644,7 +14044,10 @@
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["ready-to-wear-all","leggings"]
+      "shopTypes": [
+        "ready-to-wear-all",
+        "leggings"
+      ]
     },
     {
       "id": "JB-0297",
@@ -12687,7 +14090,10 @@
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["ready-to-wear-all","bodysuit"]
+      "shopTypes": [
+        "ready-to-wear-all",
+        "bodysuit"
+      ]
     },
     {
       "id": "JB-0298",
@@ -12730,7 +14136,10 @@
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["ready-to-wear-all","bodysuit"]
+      "shopTypes": [
+        "ready-to-wear-all",
+        "bodysuit"
+      ]
     },
     {
       "id": "JB-0299",
@@ -12773,7 +14182,10 @@
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["ready-to-wear-all","bodysuit"]
+      "shopTypes": [
+        "ready-to-wear-all",
+        "bodysuit"
+      ]
     },
     {
       "id": "JB-0300",
@@ -12816,7 +14228,10 @@
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["ready-to-wear-all","bodysuit"]
+      "shopTypes": [
+        "ready-to-wear-all",
+        "bodysuit"
+      ]
     },
     {
       "id": "JB-0301",
@@ -12859,7 +14274,10 @@
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["ready-to-wear-all","bodysuit"]
+      "shopTypes": [
+        "ready-to-wear-all",
+        "bodysuit"
+      ]
     },
     {
       "id": "JB-0302",
@@ -12902,7 +14320,10 @@
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["ready-to-wear-all","bodysuit"]
+      "shopTypes": [
+        "ready-to-wear-all",
+        "bodysuit"
+      ]
     },
     {
       "id": "JB-0303",
@@ -12946,7 +14367,10 @@
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["ready-to-wear-all","bodysuit"]
+      "shopTypes": [
+        "ready-to-wear-all",
+        "bodysuit"
+      ]
     },
     {
       "id": "JB-0304",
@@ -12990,7 +14414,10 @@
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["ready-to-wear-all","bodysuit"]
+      "shopTypes": [
+        "ready-to-wear-all",
+        "bodysuit"
+      ]
     },
     {
       "id": "JB-0305",
@@ -13033,7 +14460,10 @@
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["ready-to-wear-all","bodysuit"]
+      "shopTypes": [
+        "ready-to-wear-all",
+        "bodysuit"
+      ]
     },
     {
       "id": "JB-0306",
@@ -13067,7 +14497,10 @@
       "currency": "AUD",
       "subjectPresent": true,
       "forwardFacing": true,
-      "shopTypes": ["ready-to-wear-all","bodysuit"]
+      "shopTypes": [
+        "ready-to-wear-all",
+        "bodysuit"
+      ]
     },
     {
       "id": "JB-0307",
@@ -13110,7 +14543,10 @@
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["ready-to-wear-all","bodysuit"]
+      "shopTypes": [
+        "ready-to-wear-all",
+        "bodysuit"
+      ]
     },
     {
       "id": "JB-0308",
@@ -13153,7 +14589,10 @@
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["ready-to-wear-all","bodysuit"]
+      "shopTypes": [
+        "ready-to-wear-all",
+        "bodysuit"
+      ]
     },
     {
       "id": "JB-0309",
@@ -13192,7 +14631,11 @@
       "forwardFacing": false,
       "requiresReview": false,
       "reviewNotes": "",
-      "shopTypes": ["ready-to-wear-all","bodysuit","after-dark"]
+      "shopTypes": [
+        "ready-to-wear-all",
+        "bodysuit",
+        "after-dark"
+      ]
     },
     {
       "id": "JB-0310",
@@ -13226,7 +14669,11 @@
       "currency": "AUD",
       "subjectPresent": true,
       "forwardFacing": true,
-      "shopTypes": ["haute-couture-all","after-dark","dress"]
+      "shopTypes": [
+        "haute-couture-all",
+        "after-dark",
+        "dress"
+      ]
     },
     {
       "id": "JB-0311",
@@ -13271,7 +14718,10 @@
       "colourSourceType": "Retailer page",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["lingerie-all","bra"]
+      "shopTypes": [
+        "lingerie-all",
+        "bra"
+      ]
     },
     {
       "id": "JB-0312",
@@ -13315,7 +14765,13 @@
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["lingerie-all","ready-to-wear-all","after-dark","dress","accessories"]
+      "shopTypes": [
+        "lingerie-all",
+        "ready-to-wear-all",
+        "after-dark",
+        "dress",
+        "accessories"
+      ]
     },
     {
       "id": "JB-0313",
@@ -13352,7 +14808,11 @@
       "forwardFacing": false,
       "requiresReview": false,
       "reviewNotes": "",
-      "shopTypes": ["ready-to-wear-all","hosiery","after-dark"]
+      "shopTypes": [
+        "ready-to-wear-all",
+        "hosiery",
+        "after-dark"
+      ]
     },
     {
       "id": "JB-0314",
@@ -13395,7 +14855,11 @@
       "colourSourceType": "Retailer page",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["swimwear-all","bikini","shorts"]
+      "shopTypes": [
+        "swimwear-all",
+        "bikini",
+        "shorts"
+      ]
     },
     {
       "id": "JB-0315",
@@ -13437,7 +14901,17 @@
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["swimwear-all","brief","bikini"]
+      "shopTypes": [
+        "swimwear-all",
+        "brief",
+        "bikini"
+      ],
+      "shopEdits": [
+        "Champagne Bohemia"
+      ],
+      "editRanks": {
+        "Champagne Bohemia": 47
+      }
     },
     {
       "id": "JB-0316",
@@ -13470,7 +14944,17 @@
       "subjectPresent": true,
       "forwardFacing": true,
       "notionPageId": "3ac7b9c9-9c56-81ec-b40e-cc017951a1d4",
-      "shopTypes": ["swimwear-all","swimsuit","rash-vest"]
+      "shopTypes": [
+        "swimwear-all",
+        "swimsuit",
+        "rash-vest"
+      ],
+      "shopEdits": [
+        "Champagne Bohemia"
+      ],
+      "editRanks": {
+        "Champagne Bohemia": 44
+      }
     },
     {
       "id": "JB-0317",
@@ -13512,7 +14996,17 @@
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["swimwear-all","swimsuit","rash-vest"]
+      "shopTypes": [
+        "swimwear-all",
+        "swimsuit",
+        "rash-vest"
+      ],
+      "shopEdits": [
+        "Champagne Bohemia"
+      ],
+      "editRanks": {
+        "Champagne Bohemia": 43
+      }
     },
     {
       "id": "JB-0318",
@@ -13556,7 +15050,17 @@
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["swimwear-all","swimsuit","rash-vest"]
+      "shopTypes": [
+        "swimwear-all",
+        "swimsuit",
+        "rash-vest"
+      ],
+      "shopEdits": [
+        "Champagne Bohemia"
+      ],
+      "editRanks": {
+        "Champagne Bohemia": 46
+      }
     },
     {
       "id": "JB-0319",
@@ -13589,7 +15093,17 @@
       "subjectPresent": true,
       "forwardFacing": true,
       "notionPageId": "3ac7b9c9-9c56-8118-bfad-d0d8e2239654",
-      "shopTypes": ["swimwear-all","swimsuit","rash-vest"]
+      "shopTypes": [
+        "swimwear-all",
+        "swimsuit",
+        "rash-vest"
+      ],
+      "shopEdits": [
+        "Champagne Bohemia"
+      ],
+      "editRanks": {
+        "Champagne Bohemia": 42
+      }
     },
     {
       "id": "JB-0320",
@@ -13631,7 +15145,17 @@
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["swimwear-all","swimsuit","rash-vest"]
+      "shopTypes": [
+        "swimwear-all",
+        "swimsuit",
+        "rash-vest"
+      ],
+      "shopEdits": [
+        "Champagne Bohemia"
+      ],
+      "editRanks": {
+        "Champagne Bohemia": 45
+      }
     },
     {
       "id": "JB-0321",
@@ -13673,7 +15197,11 @@
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["swimwear-all","brief","bikini"]
+      "shopTypes": [
+        "swimwear-all",
+        "brief",
+        "bikini"
+      ]
     },
     {
       "id": "JB-0322",
@@ -13706,7 +15234,17 @@
       "subjectPresent": true,
       "forwardFacing": true,
       "notionPageId": "3ac7b9c9-9c56-8114-9788-ceaa7ee7a8a0",
-      "shopTypes": ["swimwear-all","brief","bikini"]
+      "shopTypes": [
+        "swimwear-all",
+        "brief",
+        "bikini"
+      ],
+      "shopEdits": [
+        "Champagne Bohemia"
+      ],
+      "editRanks": {
+        "Champagne Bohemia": 49
+      }
     },
     {
       "id": "JB-0323",
@@ -13739,7 +15277,17 @@
       "subjectPresent": true,
       "forwardFacing": true,
       "notionPageId": "3ac7b9c9-9c56-8101-850b-e0b801fb021d",
-      "shopTypes": ["swimwear-all","brief","bikini"]
+      "shopTypes": [
+        "swimwear-all",
+        "brief",
+        "bikini"
+      ],
+      "shopEdits": [
+        "Champagne Bohemia"
+      ],
+      "editRanks": {
+        "Champagne Bohemia": 51
+      }
     },
     {
       "id": "JB-0324",
@@ -13772,7 +15320,16 @@
       "subjectPresent": true,
       "forwardFacing": true,
       "notionPageId": "3ac7b9c9-9c56-816a-a7ee-ebc5874db10a",
-      "shopTypes": ["swimwear-all","swimsuit"]
+      "shopTypes": [
+        "swimwear-all",
+        "swimsuit"
+      ],
+      "shopEdits": [
+        "Champagne Bohemia"
+      ],
+      "editRanks": {
+        "Champagne Bohemia": 48
+      }
     },
     {
       "id": "JB-0325",
@@ -13814,7 +15371,11 @@
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["swimwear-all","swimsuit","rash-vest"]
+      "shopTypes": [
+        "swimwear-all",
+        "swimsuit",
+        "rash-vest"
+      ]
     },
     {
       "id": "JB-0326",
@@ -13856,7 +15417,10 @@
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["swimwear-all","swimsuit"]
+      "shopTypes": [
+        "swimwear-all",
+        "swimsuit"
+      ]
     },
     {
       "id": "JB-0327",
@@ -13898,7 +15462,16 @@
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["swimwear-all","bikini"]
+      "shopTypes": [
+        "swimwear-all",
+        "bikini"
+      ],
+      "shopEdits": [
+        "Champagne Bohemia"
+      ],
+      "editRanks": {
+        "Champagne Bohemia": 52
+      }
     },
     {
       "id": "JB-0328",
@@ -13940,7 +15513,10 @@
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["swimwear-all","swimsuit"]
+      "shopTypes": [
+        "swimwear-all",
+        "swimsuit"
+      ]
     },
     {
       "id": "JB-0329",
@@ -13973,7 +15549,11 @@
       "subjectPresent": true,
       "forwardFacing": true,
       "notionPageId": "3ac7b9c9-9c56-8196-8999-c0450448c39d",
-      "shopTypes": ["swimwear-all","bikini","rash-vest"]
+      "shopTypes": [
+        "swimwear-all",
+        "bikini",
+        "rash-vest"
+      ]
     },
     {
       "id": "JB-0330",
@@ -14006,7 +15586,18 @@
       "subjectPresent": true,
       "forwardFacing": true,
       "notionPageId": "3ac7b9c9-9c56-819b-8e3f-ca74d1e9a679",
-      "shopTypes": ["swimwear-all","ready-to-wear-all","rash-vest","coverup"]
+      "shopTypes": [
+        "swimwear-all",
+        "ready-to-wear-all",
+        "rash-vest",
+        "coverup"
+      ],
+      "shopEdits": [
+        "Champagne Bohemia"
+      ],
+      "editRanks": {
+        "Champagne Bohemia": 50
+      }
     },
     {
       "id": "JB-0331",
@@ -14048,7 +15639,11 @@
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["swimwear-all","swimsuit","rash-vest"]
+      "shopTypes": [
+        "swimwear-all",
+        "swimsuit",
+        "rash-vest"
+      ]
     },
     {
       "id": "JB-0332",
@@ -14090,7 +15685,17 @@
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["swimwear-all","swimsuit","bikini"]
+      "shopTypes": [
+        "swimwear-all",
+        "swimsuit",
+        "bikini"
+      ],
+      "shopEdits": [
+        "Champagne Bohemia"
+      ],
+      "editRanks": {
+        "Champagne Bohemia": 23
+      }
     },
     {
       "id": "JB-0333",
@@ -14132,7 +15737,17 @@
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["swimwear-all","swimsuit","bikini"]
+      "shopTypes": [
+        "swimwear-all",
+        "swimsuit",
+        "bikini"
+      ],
+      "shopEdits": [
+        "Champagne Bohemia"
+      ],
+      "editRanks": {
+        "Champagne Bohemia": 21
+      }
     },
     {
       "id": "JB-0334",
@@ -14174,7 +15789,17 @@
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["swimwear-all","swimsuit","bikini"]
+      "shopTypes": [
+        "swimwear-all",
+        "swimsuit",
+        "bikini"
+      ],
+      "shopEdits": [
+        "Champagne Bohemia"
+      ],
+      "editRanks": {
+        "Champagne Bohemia": 22
+      }
     },
     {
       "id": "JB-0335",
@@ -14216,7 +15841,17 @@
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["swimwear-all","swimsuit","bikini"]
+      "shopTypes": [
+        "swimwear-all",
+        "swimsuit",
+        "bikini"
+      ],
+      "shopEdits": [
+        "Champagne Bohemia"
+      ],
+      "editRanks": {
+        "Champagne Bohemia": 18
+      }
     },
     {
       "id": "JB-0336",
@@ -14260,7 +15895,17 @@
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["swimwear-all","swimsuit","bikini"]
+      "shopTypes": [
+        "swimwear-all",
+        "swimsuit",
+        "bikini"
+      ],
+      "shopEdits": [
+        "Champagne Bohemia"
+      ],
+      "editRanks": {
+        "Champagne Bohemia": 17
+      }
     },
     {
       "id": "JB-0337",
@@ -14304,7 +15949,17 @@
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["swimwear-all","swimsuit","bikini"]
+      "shopTypes": [
+        "swimwear-all",
+        "swimsuit",
+        "bikini"
+      ],
+      "shopEdits": [
+        "Champagne Bohemia"
+      ],
+      "editRanks": {
+        "Champagne Bohemia": 16
+      }
     },
     {
       "id": "JB-0338",
@@ -14346,7 +16001,11 @@
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["swimwear-all","swimsuit","bikini"]
+      "shopTypes": [
+        "swimwear-all",
+        "swimsuit",
+        "bikini"
+      ]
     },
     {
       "id": "JB-0339",
@@ -14388,7 +16047,17 @@
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["swimwear-all","swimsuit","bikini"]
+      "shopTypes": [
+        "swimwear-all",
+        "swimsuit",
+        "bikini"
+      ],
+      "shopEdits": [
+        "Champagne Bohemia"
+      ],
+      "editRanks": {
+        "Champagne Bohemia": 19
+      }
     },
     {
       "id": "JB-0340",
@@ -14430,7 +16099,17 @@
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["swimwear-all","swimsuit","bikini"]
+      "shopTypes": [
+        "swimwear-all",
+        "swimsuit",
+        "bikini"
+      ],
+      "shopEdits": [
+        "Champagne Bohemia"
+      ],
+      "editRanks": {
+        "Champagne Bohemia": 20
+      }
     },
     {
       "id": "JB-0341",
@@ -14472,7 +16151,17 @@
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["swimwear-all","swimsuit","bikini"]
+      "shopTypes": [
+        "swimwear-all",
+        "swimsuit",
+        "bikini"
+      ],
+      "shopEdits": [
+        "Champagne Bohemia"
+      ],
+      "editRanks": {
+        "Champagne Bohemia": 33
+      }
     },
     {
       "id": "JB-0342",
@@ -14514,7 +16203,18 @@
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["swimwear-all","swimsuit","bikini","rash-vest"]
+      "shopTypes": [
+        "swimwear-all",
+        "swimsuit",
+        "bikini",
+        "rash-vest"
+      ],
+      "shopEdits": [
+        "Champagne Bohemia"
+      ],
+      "editRanks": {
+        "Champagne Bohemia": 30
+      }
     },
     {
       "id": "JB-0343",
@@ -14556,7 +16256,18 @@
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["swimwear-all","swimsuit","bikini","rash-vest"]
+      "shopTypes": [
+        "swimwear-all",
+        "swimsuit",
+        "bikini",
+        "rash-vest"
+      ],
+      "shopEdits": [
+        "Champagne Bohemia"
+      ],
+      "editRanks": {
+        "Champagne Bohemia": 32
+      }
     },
     {
       "id": "JB-0344",
@@ -14598,7 +16309,18 @@
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["swimwear-all","swimsuit","bikini","rash-vest"]
+      "shopTypes": [
+        "swimwear-all",
+        "swimsuit",
+        "bikini",
+        "rash-vest"
+      ],
+      "shopEdits": [
+        "Champagne Bohemia"
+      ],
+      "editRanks": {
+        "Champagne Bohemia": 31
+      }
     },
     {
       "id": "JB-0345",
@@ -14640,7 +16362,17 @@
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["swimwear-all","swimsuit","bikini"]
+      "shopTypes": [
+        "swimwear-all",
+        "swimsuit",
+        "bikini"
+      ],
+      "shopEdits": [
+        "Champagne Bohemia"
+      ],
+      "editRanks": {
+        "Champagne Bohemia": 29
+      }
     },
     {
       "id": "JB-0346",
@@ -14682,7 +16414,17 @@
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["swimwear-all","swimsuit","bikini"]
+      "shopTypes": [
+        "swimwear-all",
+        "swimsuit",
+        "bikini"
+      ],
+      "shopEdits": [
+        "Champagne Bohemia"
+      ],
+      "editRanks": {
+        "Champagne Bohemia": 27
+      }
     },
     {
       "id": "JB-0347",
@@ -14724,7 +16466,17 @@
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["swimwear-all","swimsuit","bikini"]
+      "shopTypes": [
+        "swimwear-all",
+        "swimsuit",
+        "bikini"
+      ],
+      "shopEdits": [
+        "Champagne Bohemia"
+      ],
+      "editRanks": {
+        "Champagne Bohemia": 28
+      }
     },
     {
       "id": "JB-0348",
@@ -14766,7 +16518,17 @@
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["swimwear-all","swimsuit","bikini"]
+      "shopTypes": [
+        "swimwear-all",
+        "swimsuit",
+        "bikini"
+      ],
+      "shopEdits": [
+        "Champagne Bohemia"
+      ],
+      "editRanks": {
+        "Champagne Bohemia": 26
+      }
     },
     {
       "id": "JB-0349",
@@ -14808,7 +16570,17 @@
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["swimwear-all","swimsuit","bikini"]
+      "shopTypes": [
+        "swimwear-all",
+        "swimsuit",
+        "bikini"
+      ],
+      "shopEdits": [
+        "Champagne Bohemia"
+      ],
+      "editRanks": {
+        "Champagne Bohemia": 24
+      }
     },
     {
       "id": "JB-0350",
@@ -14850,7 +16622,17 @@
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["swimwear-all","swimsuit","bikini"]
+      "shopTypes": [
+        "swimwear-all",
+        "swimsuit",
+        "bikini"
+      ],
+      "shopEdits": [
+        "Champagne Bohemia"
+      ],
+      "editRanks": {
+        "Champagne Bohemia": 25
+      }
     },
     {
       "id": "JB-0351",
@@ -14892,7 +16674,16 @@
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["swimwear-all","swimsuit"]
+      "shopTypes": [
+        "swimwear-all",
+        "swimsuit"
+      ],
+      "shopEdits": [
+        "Champagne Bohemia"
+      ],
+      "editRanks": {
+        "Champagne Bohemia": 36
+      }
     },
     {
       "id": "JB-0352",
@@ -14934,7 +16725,17 @@
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["swimwear-all","swimsuit","bikini"]
+      "shopTypes": [
+        "swimwear-all",
+        "swimsuit",
+        "bikini"
+      ],
+      "shopEdits": [
+        "Champagne Bohemia"
+      ],
+      "editRanks": {
+        "Champagne Bohemia": 34
+      }
     },
     {
       "id": "JB-0353",
@@ -14976,7 +16777,10 @@
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["swimwear-all","swimsuit"]
+      "shopTypes": [
+        "swimwear-all",
+        "swimsuit"
+      ]
     },
     {
       "id": "JB-0354",
@@ -15018,7 +16822,10 @@
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["swimwear-all","swimsuit"]
+      "shopTypes": [
+        "swimwear-all",
+        "swimsuit"
+      ]
     },
     {
       "id": "JB-0355",
@@ -15060,7 +16867,10 @@
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["swimwear-all","swimsuit"]
+      "shopTypes": [
+        "swimwear-all",
+        "swimsuit"
+      ]
     },
     {
       "id": "JB-0356",
@@ -15102,7 +16912,10 @@
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["swimwear-all","swimsuit"]
+      "shopTypes": [
+        "swimwear-all",
+        "swimsuit"
+      ]
     },
     {
       "id": "JB-0357",
@@ -15145,7 +16958,16 @@
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["swimwear-all","swimsuit"]
+      "shopTypes": [
+        "swimwear-all",
+        "swimsuit"
+      ],
+      "shopEdits": [
+        "Champagne Bohemia"
+      ],
+      "editRanks": {
+        "Champagne Bohemia": 35
+      }
     },
     {
       "id": "JB-0358",
@@ -15187,7 +17009,16 @@
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["swimwear-all","swimsuit"]
+      "shopTypes": [
+        "swimwear-all",
+        "swimsuit"
+      ],
+      "shopEdits": [
+        "Champagne Bohemia"
+      ],
+      "editRanks": {
+        "Champagne Bohemia": 37
+      }
     },
     {
       "id": "JB-0359",
@@ -15231,7 +17062,10 @@
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["swimwear-all","swimsuit"]
+      "shopTypes": [
+        "swimwear-all",
+        "swimsuit"
+      ]
     },
     {
       "id": "JB-0360",
@@ -15273,7 +17107,10 @@
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["swimwear-all","swimsuit"]
+      "shopTypes": [
+        "swimwear-all",
+        "swimsuit"
+      ]
     },
     {
       "id": "JB-0361",
@@ -15315,7 +17152,17 @@
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["swimwear-all","swimsuit","rash-vest"]
+      "shopTypes": [
+        "swimwear-all",
+        "swimsuit",
+        "rash-vest"
+      ],
+      "shopEdits": [
+        "Champagne Bohemia"
+      ],
+      "editRanks": {
+        "Champagne Bohemia": 38
+      }
     },
     {
       "id": "JB-0362",
@@ -15357,7 +17204,17 @@
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["swimwear-all","swimsuit","rash-vest"]
+      "shopTypes": [
+        "swimwear-all",
+        "swimsuit",
+        "rash-vest"
+      ],
+      "shopEdits": [
+        "Champagne Bohemia"
+      ],
+      "editRanks": {
+        "Champagne Bohemia": 39
+      }
     },
     {
       "id": "JB-0363",
@@ -15399,7 +17256,16 @@
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["swimwear-all","swimsuit"]
+      "shopTypes": [
+        "swimwear-all",
+        "swimsuit"
+      ],
+      "shopEdits": [
+        "Champagne Bohemia"
+      ],
+      "editRanks": {
+        "Champagne Bohemia": 41
+      }
     },
     {
       "id": "JB-0364",
@@ -15442,7 +17308,16 @@
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["swimwear-all","swimsuit"]
+      "shopTypes": [
+        "swimwear-all",
+        "swimsuit"
+      ],
+      "shopEdits": [
+        "Champagne Bohemia"
+      ],
+      "editRanks": {
+        "Champagne Bohemia": 40
+      }
     },
     {
       "id": "JB-0365",
@@ -15487,7 +17362,10 @@
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["ready-to-wear-all","after-dark"]
+      "shopTypes": [
+        "ready-to-wear-all",
+        "after-dark"
+      ]
     },
     {
       "id": "JB-0366",
@@ -15531,7 +17409,11 @@
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["haute-couture-all","after-dark","dress"]
+      "shopTypes": [
+        "haute-couture-all",
+        "after-dark",
+        "dress"
+      ]
     },
     {
       "id": "JB-0367",
@@ -15575,7 +17457,11 @@
       "colourSourceType": "Notion registry",
       "colourCheckedAt": "2026-07-31",
       "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
-      "shopTypes": ["ready-to-wear-all","after-dark","dress"]
+      "shopTypes": [
+        "ready-to-wear-all",
+        "after-dark",
+        "dress"
+      ]
     },
     {
       "id": "JB-0368",
@@ -15616,7 +17502,1092 @@
       "subjectPresent": true,
       "forwardFacing": true,
       "notionPageId": "3ad7b9c9-9c56-819c-9745-d285b60f8ac7",
-      "shopTypes": ["haute-couture-all","after-dark","dress"]
+      "shopTypes": [
+        "haute-couture-all",
+        "after-dark",
+        "dress"
+      ]
+    },
+    {
+      "id": "JB-0398",
+      "brand": "Fleur du Mal",
+      "sourceBrandHeading": "Champagne Bohemia",
+      "sourceTitle": "Ivory Juliet Lace Button Down | Fleur du Mal",
+      "name": "Juliet Lace Button Down",
+      "productType": "Shirt",
+      "forms": [
+        "ready to wear"
+      ],
+      "retailer": "Fleur du Mal",
+      "retailerUrl": "https://fleurdumal.com/products/juliet-lace-button-down-ivory",
+      "canonicalUrl": "https://fleurdumal.com/products/juliet-lace-button-down-ivory",
+      "sourceOccurrences": 1,
+      "metadataStatus": "Metadata ready",
+      "listedOnShop": true,
+      "shopRoute": "#catalogue/champagne-bohemia",
+      "slug": "juliet-lace-button-down-ivory",
+      "color": "Ivory",
+      "description": "Our Juliet Lace Button Down, featuring cotton placket, collar and cuffs with front button closure. Unisex with a relaxed fit. Unlined. Looks chic layered over the Juliet Lace Bebe Bra and Juliet Lace Short.",
+      "material": "Lace with cotton placket, collar and cuffs",
+      "image": "a s s e t s/shop-mockup/product-catalogue/champagne-bohemia/jb-0398-fleur-du-mal-juliet-lace-button-down.jpg",
+      "imageAlt": "Fleur du Mal Juliet Lace Button Down in ivory on a forward-facing model",
+      "imageSource": "retailer_first_hero",
+      "sourcePageUrl": "https://fleurdumal.com/products/juliet-lace-button-down-ivory",
+      "sourceImageUrl": "https://fleurdumal.com/cdn/shop/files/FDM_050225_0088_full.jpg?v=1773176392",
+      "sourceImageIndex": 0,
+      "retrievedAt": "2026-08-02",
+      "price": "AU$ 690",
+      "priceValue": 690,
+      "currency": "AUD",
+      "subjectPresent": true,
+      "forwardFacing": true,
+      "colourFamilies": [
+        "white"
+      ],
+      "colourEvidenceStatus": "Verified",
+      "colourEvidenceText": "Ivory",
+      "colourSourceUrl": "https://fleurdumal.com/products/juliet-lace-button-down-ivory",
+      "colourSourceType": "Retailer page",
+      "colourCheckedAt": "2026-08-02",
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": [
+        "ready-to-wear-all"
+      ],
+      "notionPageId": "3b07b9c9-9c56-81eb-b3d2-d162197609a3",
+      "shopEdits": [
+        "Champagne Bohemia"
+      ],
+      "editRanks": {
+        "Champagne Bohemia": 1
+      }
+    },
+    {
+      "id": "JB-0399",
+      "brand": "Saint Laurent",
+      "sourceBrandHeading": "Champagne Bohemia",
+      "sourceTitle": "oversized shirt in cotton poplin in White | Saint Laurent | YSL AU",
+      "name": "Oversized Shirt in Cotton Poplin",
+      "productType": "Shirt",
+      "forms": [
+        "ready to wear"
+      ],
+      "retailer": "Saint Laurent",
+      "retailerUrl": "https://www.ysl.com/en-au/pr/oversized-shirt-in-cotton-poplin-865303Y1H489000.html",
+      "canonicalUrl": "https://www.ysl.com/en-au/pr/oversized-shirt-in-cotton-poplin-865303Y1H489000.html",
+      "sourceOccurrences": 1,
+      "metadataStatus": "Metadata ready",
+      "listedOnShop": true,
+      "shopRoute": "#catalogue/saint-laurent",
+      "slug": "oversized-shirt-cotton-poplin-865303y1h489000",
+      "color": "Blanc",
+      "description": "Oversized buttoned shirt featuring a pointed collar, exaggerated shoulders, and French cuffs.",
+      "material": "Cotton poplin",
+      "image": "a s s e t s/shop-mockup/product-catalogue/champagne-bohemia/jb-0399-saint-laurent-oversized-shirt.jpg",
+      "imageAlt": "Saint Laurent oversized cotton-poplin shirt in Blanc, official front product view",
+      "imageSource": "retailer_first_hero_product_only",
+      "sourcePageUrl": "https://www.ysl.com/en-au/pr/oversized-shirt-in-cotton-poplin-865303Y1H489000.html",
+      "sourceImageUrl": "https://saint-laurent.dam.kering.com/asset/1317005d-5805-42c6-8e6f-c9343733a8b0/Large/865303Y1H489000_A.jpg?v=2",
+      "sourceImageIndex": 0,
+      "retrievedAt": "2026-08-02",
+      "price": "AU$ 2,785",
+      "priceValue": 2785,
+      "currency": "AUD",
+      "subjectPresent": false,
+      "forwardFacing": false,
+      "colourFamilies": [
+        "white"
+      ],
+      "colourEvidenceStatus": "Verified",
+      "colourEvidenceText": "Blanc",
+      "colourSourceUrl": "https://www.ysl.com/en-au/pr/oversized-shirt-in-cotton-poplin-865303Y1H489000.html",
+      "colourSourceType": "Retailer page",
+      "colourCheckedAt": "2026-08-02",
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": [
+        "ready-to-wear-all"
+      ],
+      "notionPageId": "3b07b9c9-9c56-8123-9631-cc6a6bd400d0",
+      "shopEdits": [
+        "Champagne Bohemia"
+      ],
+      "editRanks": {
+        "Champagne Bohemia": 2
+      }
+    },
+    {
+      "id": "JB-0400",
+      "brand": "Nili Lotan",
+      "sourceBrandHeading": "Champagne Bohemia",
+      "sourceTitle": "Yorke Shirt | Women's Oversized Cotton Shirt | Nili Lotan",
+      "name": "Yorke Shirt",
+      "productType": "Shirt",
+      "forms": [
+        "ready to wear"
+      ],
+      "retailer": "Nili Lotan",
+      "retailerUrl": "https://www.nililotan.com/products/yorke-oversized-cotton-button-down-shirt?variant=40070804602998",
+      "canonicalUrl": "https://www.nililotan.com/products/yorke-oversized-cotton-button-down-shirt",
+      "sourceOccurrences": 1,
+      "metadataStatus": "Metadata ready",
+      "listedOnShop": true,
+      "shopRoute": "#catalogue/champagne-bohemia",
+      "slug": "yorke-oversized-cotton-button-down-shirt-white",
+      "color": "White",
+      "description": "Oversized button down shirt in Italian cotton poplin. Buttoned center front placket and sleeve cuff. Exaggerated shirt-tail hem & body length.",
+      "material": "100% cotton. Garment-dyed and washed in the USA.",
+      "image": "a s s e t s/shop-mockup/product-catalogue/champagne-bohemia/jb-0400-nili-lotan-yorke-shirt.jpg",
+      "imageAlt": "Nili Lotan Yorke Shirt in white on a forward-facing model",
+      "imageSource": "retailer_gallery_human_selected",
+      "sourcePageUrl": "https://www.nililotan.com/products/yorke-oversized-cotton-button-down-shirt?variant=40070804602998",
+      "sourceImageUrl": "https://www.nililotan.com/cdn/shop/files/NILI_LOTAN_PDP_Reshoot_LOOK_59_20190_c9924659-bd6b-46c4-b276-4c7d6b12e8fa_1800x.jpg?v=1770649945",
+      "sourceImageIndex": 2,
+      "retrievedAt": "2026-08-02",
+      "price": "AU$ 590",
+      "priceValue": 590,
+      "currency": "AUD",
+      "subjectPresent": true,
+      "forwardFacing": true,
+      "colourFamilies": [
+        "white"
+      ],
+      "colourEvidenceStatus": "Verified",
+      "colourEvidenceText": "White",
+      "colourSourceUrl": "https://www.nililotan.com/products/yorke-oversized-cotton-button-down-shirt?variant=40070804602998",
+      "colourSourceType": "Retailer page",
+      "colourCheckedAt": "2026-08-02",
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": [
+        "ready-to-wear-all"
+      ],
+      "notionPageId": "3b07b9c9-9c56-8161-94cd-f0f7cbb7a88e",
+      "shopEdits": [
+        "Champagne Bohemia"
+      ],
+      "editRanks": {
+        "Champagne Bohemia": 3
+      }
+    },
+    {
+      "id": "JB-0401",
+      "brand": "Ioana Ciolacu",
+      "sourceBrandHeading": "Champagne Bohemia",
+      "sourceTitle": "Ioana Ciolacu split-cuffs Cotton Shirt | White | FARFETCH AU",
+      "name": "Split-cuffs Cotton Shirt",
+      "productType": "Shirt",
+      "forms": [
+        "ready to wear"
+      ],
+      "retailer": "FARFETCH",
+      "retailerUrl": "https://www.farfetch.com/au/shopping/women/ioana-ciolacu-split-cuffs-cotton-shirt-item-20211145.aspx",
+      "canonicalUrl": "https://www.farfetch.com/au/shopping/women/ioana-ciolacu-split-cuffs-cotton-shirt-item-20211145.aspx",
+      "sourceOccurrences": 1,
+      "metadataStatus": "Metadata ready",
+      "listedOnShop": true,
+      "shopRoute": "#catalogue/champagne-bohemia",
+      "slug": "ioana-ciolacu-split-cuffs-cotton-shirt-20211145",
+      "color": "Off-white",
+      "description": "Off-white cotton shirt with an oversized pointed collar, front button fastening, long sleeves, split cuffs and a curved hem.",
+      "material": "Cotton 100%. Machine wash.",
+      "image": "a s s e t s/shop-mockup/product-catalogue/champagne-bohemia/jb-0401-ioana-ciolacu-split-cuffs-shirt.webp",
+      "imageAlt": "Ioana Ciolacu off-white split-cuffs cotton shirt on a forward-facing model",
+      "imageSource": "retailer_gallery_human_selected",
+      "sourcePageUrl": "https://www.farfetch.com/au/shopping/women/ioana-ciolacu-split-cuffs-cotton-shirt-item-20211145.aspx",
+      "sourceImageUrl": "https://cdn-images.farfetch-contents.com/20/21/11/45/20211145_50235445_1000.jpg?ov=true",
+      "sourceImageIndex": 1,
+      "retrievedAt": "2026-08-02",
+      "price": "AU$ 477",
+      "priceValue": 477,
+      "currency": "AUD",
+      "subjectPresent": true,
+      "forwardFacing": true,
+      "reviewNotes": "Current sale price AU$477; retailer also showed AU$711 before discount on 2026-08-02.",
+      "colourFamilies": [
+        "white"
+      ],
+      "colourEvidenceStatus": "Verified",
+      "colourEvidenceText": "Off-white",
+      "colourSourceUrl": "https://www.farfetch.com/au/shopping/women/ioana-ciolacu-split-cuffs-cotton-shirt-item-20211145.aspx",
+      "colourSourceType": "Retailer page",
+      "colourCheckedAt": "2026-08-02",
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": [
+        "ready-to-wear-all"
+      ],
+      "notionPageId": "3b07b9c9-9c56-8128-9696-f6bc3537c5ee",
+      "shopEdits": [
+        "Champagne Bohemia"
+      ],
+      "editRanks": {
+        "Champagne Bohemia": 4
+      }
+    },
+    {
+      "id": "JB-0402",
+      "brand": "ERES",
+      "sourceBrandHeading": "Champagne Bohemia",
+      "sourceTitle": "Aquarelle - Menthe givrée in Peau Douce Naturelle · Luxury Swim | ERES",
+      "name": "Aquarelle",
+      "productType": "Swimsuit",
+      "forms": [
+        "swim"
+      ],
+      "retailer": "ERES",
+      "retailerUrl": "https://www.eresparis.com/eu/en/swimwear/011402-01618.html",
+      "canonicalUrl": "https://www.eresparis.com/eu/en/swimwear/011402-01618.html",
+      "sourceOccurrences": 1,
+      "metadataStatus": "Metadata ready",
+      "listedOnShop": true,
+      "shopRoute": "#catalogue/eres",
+      "slug": "aquarelle-011402-01618",
+      "color": "Menthe givrée",
+      "description": "An iconic ERES style loved for its clean lines, this one-piece swimsuit features a straight neckline framed by delicate straps. It shows off all body types.",
+      "material": "Peau Douce Naturelle: 84% polyamide and 16% spandex.",
+      "image": "a s s e t s/shop-mockup/product-catalogue/champagne-bohemia/jb-0402-eres-aquarelle-menthe-givree.jpg",
+      "imageAlt": "ERES Aquarelle Menthe givrée one-piece swimsuit on a forward-facing model",
+      "imageSource": "retailer_first_hero",
+      "sourcePageUrl": "https://www.eresparis.com/eu/en/swimwear/011402-01618.html",
+      "sourceImageUrl": "https://www.eresparis.com/on/demandware.static/-/Sites-master/default/dw20c60a79/images/011402_01618_PDP_M_1.jpg",
+      "sourceImageIndex": 0,
+      "retrievedAt": "2026-08-02",
+      "price": "AU$ 690",
+      "priceValue": 690,
+      "currency": "AUD",
+      "subjectPresent": true,
+      "forwardFacing": true,
+      "colourFamilies": [
+        "green"
+      ],
+      "colourEvidenceStatus": "Verified",
+      "colourEvidenceText": "Menthe givrée",
+      "colourSourceUrl": "https://www.eresparis.com/eu/en/swimwear/011402-01618.html",
+      "colourSourceType": "Retailer page",
+      "colourCheckedAt": "2026-08-02",
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": [
+        "swimwear-all",
+        "swimsuit"
+      ],
+      "notionPageId": "3b07b9c9-9c56-81aa-b1a2-cbb7dee026bc",
+      "shopEdits": [
+        "Champagne Bohemia"
+      ],
+      "editRanks": {
+        "Champagne Bohemia": 7
+      }
+    },
+    {
+      "id": "JB-0403",
+      "brand": "PUCCI",
+      "sourceBrandHeading": "Champagne Bohemia",
+      "sourceTitle": "Vivara Print Bikini Bottom – PUCCI",
+      "name": "Vivara Print Bikini Bottom",
+      "productType": "Bikini Bottom",
+      "forms": [
+        "swim"
+      ],
+      "retailer": "PUCCI",
+      "retailerUrl": "https://www.pucci.com/en-au/products/vivara-print-bikini-bottom-6hmx126h895p20?xse_prod_code=9022991302811&xse=sm_el_pdp_ymal",
+      "canonicalUrl": "https://www.pucci.com/en-au/products/vivara-print-bikini-bottom-6hmx126h895p20",
+      "sourceOccurrences": 1,
+      "metadataStatus": "Metadata ready",
+      "listedOnShop": true,
+      "shopRoute": "#catalogue/pucci",
+      "slug": "vivara-print-bikini-bottom-6hmx126h895p20",
+      "color": "Turquoise and Blue",
+      "description": "A minimalist design that showcases the Vivara print with a balance of graphics and lightness. The low waist and thin adjustable side ties allow for a personalized fit, following naturally the body. Stretch Lycra ensures comfort and freedom of movement, while the Vivara print in shades of turquoise and blue introduces a bold and contemporary visual rhythm. A style designed to complete your bikini with character.\n\nTo offer you a unique Pucci garment, we use an all-over print that makes the product unrepeatable. Therefore, the pattern print may vary from the one displayed in the photo.\n\nMain material: 80% polyamide, 20% elastane. Stretch Lycra. Low waist. Adjustable side ties. Hand wash. Made in Italy. ID: 6HMX126H895P20.",
+      "material": "80% polyamide, 20% elastane",
+      "image": "a s s e t s/shop-mockup/product-catalogue/champagne-bohemia/jb-0403-pucci-vivara-bikini-bottom-turquoise.jpg",
+      "imageAlt": "PUCCI Vivara Print Bikini Bottom in turquoise and blue, official front product view",
+      "imageSource": "retailer_first_hero_product_only",
+      "sourcePageUrl": "https://www.pucci.com/en-au/products/vivara-print-bikini-bottom-6hmx126h895p20?xse_prod_code=9022991302811&xse=sm_el_pdp_ymal",
+      "sourceImageUrl": "https://www.pucci.com/cdn/shop/files/6HMX126H895P20_V1_51a3a8af-e9a4-4bb0-a239-441eb09d092c.jpg?v=1777543597&width=2048",
+      "sourceImageIndex": 0,
+      "retrievedAt": "2026-08-02",
+      "price": "AU$ 290",
+      "priceValue": 290,
+      "currency": "AUD",
+      "subjectPresent": false,
+      "forwardFacing": false,
+      "colourFamilies": [
+        "blue"
+      ],
+      "colourEvidenceStatus": "Verified",
+      "colourEvidenceText": "Turquoise and Blue",
+      "colourSourceUrl": "https://www.pucci.com/en-au/products/vivara-print-bikini-bottom-6hmx126h895p20?xse_prod_code=9022991302811&xse=sm_el_pdp_ymal",
+      "colourSourceType": "Retailer page",
+      "colourCheckedAt": "2026-08-02",
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": [
+        "swimwear-all",
+        "brief",
+        "bikini"
+      ],
+      "notionPageId": "3b07b9c9-9c56-818e-a950-d05eb74c7c4c",
+      "shopEdits": [
+        "Champagne Bohemia"
+      ],
+      "editRanks": {
+        "Champagne Bohemia": 13
+      }
+    },
+    {
+      "id": "JB-0404",
+      "brand": "PUCCI",
+      "sourceBrandHeading": "Champagne Bohemia",
+      "sourceTitle": "Vivara Print Triangle Bikini Top – PUCCI",
+      "name": "Vivara Print Triangle Bikini Top",
+      "productType": "Bikini Top",
+      "forms": [
+        "swim"
+      ],
+      "retailer": "PUCCI",
+      "retailerUrl": "https://www.pucci.com/en-au/products/vivara-print-triangle-bikini-top-6hmx046h895p19?xse_prod_code=8944551100571&xse=sm_el_pdp_ymal",
+      "canonicalUrl": "https://www.pucci.com/en-au/products/vivara-print-triangle-bikini-top-6hmx046h895p19",
+      "sourceOccurrences": 1,
+      "metadataStatus": "Metadata ready",
+      "listedOnShop": true,
+      "shopRoute": "#catalogue/pucci",
+      "slug": "vivara-print-triangle-bikini-top-6hmx046h895p19",
+      "color": "Orange and Black",
+      "description": "A triangle bikini top with a simple, feminine silhouette, enlivened by the graphic energy of the orange and black Vivara print. The thin, adjustable straps at the back allow you to customize the fit, offering comfort and support with a light, contemporary look. Made from Lycra and finished with an inner lining, this is an iconic and versatile style, perfect for pairing with matching briefs for a bold beachwear look.\n\nTo offer you a unique Pucci garment, we use an all-over print that makes the product unrepeatable. Therefore, the pattern print may vary from the one displayed in the photo.\n\nMain material: 80% polyamide, 20% elastane. Lining: 84% polyamide, 16% elastane. Triangle style. Thin adjustable straps at the back. Hand wash. Made in Italy. ID: 6HMX046H895P19.",
+      "material": "Main: 80% polyamide, 20% elastane. Lining: 84% polyamide, 16% elastane.",
+      "image": "a s s e t s/shop-mockup/product-catalogue/champagne-bohemia/jb-0404-pucci-vivara-triangle-bikini-top-orange.jpg",
+      "imageAlt": "PUCCI Vivara Print Triangle Bikini Top in orange and black, official front product view",
+      "imageSource": "retailer_first_hero_product_only",
+      "sourcePageUrl": "https://www.pucci.com/en-au/products/vivara-print-triangle-bikini-top-6hmx046h895p19?xse_prod_code=8944551100571&xse=sm_el_pdp_ymal",
+      "sourceImageUrl": "https://www.pucci.com/cdn/shop/files/6HMX046H895P19_V1_e71f1d04-667e-413e-a4c3-3b1211450a98.jpg?v=1773673153&width=2048",
+      "sourceImageIndex": 0,
+      "retrievedAt": "2026-08-02",
+      "price": "AU$ 340",
+      "priceValue": 340,
+      "currency": "AUD",
+      "subjectPresent": false,
+      "forwardFacing": false,
+      "colourFamilies": [
+        "orange",
+        "black"
+      ],
+      "colourEvidenceStatus": "Verified",
+      "colourEvidenceText": "Orange and Black",
+      "colourSourceUrl": "https://www.pucci.com/en-au/products/vivara-print-triangle-bikini-top-6hmx046h895p19?xse_prod_code=8944551100571&xse=sm_el_pdp_ymal",
+      "colourSourceType": "Retailer page",
+      "colourCheckedAt": "2026-08-02",
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": [
+        "swimwear-all",
+        "bikini"
+      ],
+      "notionPageId": "3b07b9c9-9c56-8123-ab14-e88995dd884d",
+      "shopEdits": [
+        "Champagne Bohemia"
+      ],
+      "editRanks": {
+        "Champagne Bohemia": 14
+      }
+    },
+    {
+      "id": "JB-0405",
+      "brand": "PUCCI",
+      "sourceBrandHeading": "Champagne Bohemia",
+      "sourceTitle": "Vivara Print Bikini Bottom – PUCCI",
+      "name": "Vivara Print Bikini Bottom",
+      "productType": "Bikini Bottom",
+      "forms": [
+        "swim"
+      ],
+      "retailer": "PUCCI",
+      "retailerUrl": "https://www.pucci.com/en-au/products/vivara-print-bikini-bottom-6hmx076h895p19?xse_prod_code=8944551133339&xse=sm_el_pdp_ymal",
+      "canonicalUrl": "https://www.pucci.com/en-au/products/vivara-print-bikini-bottom-6hmx076h895p19",
+      "sourceOccurrences": 1,
+      "metadataStatus": "Metadata ready",
+      "listedOnShop": true,
+      "shopRoute": "#catalogue/pucci",
+      "slug": "vivara-print-bikini-bottom-6hmx076h895p19",
+      "color": "Orange and Black",
+      "description": "Low-rise bikini bottoms with a minimalist cut, designed for a simple, contemporary look. The thin ties at the hips add a light, feminine detail, allowing you to adjust the fit naturally. The orange and black Vivara print adds energy and character, transforming this style into a statement piece perfect for bold, iconic beachwear.\n\nTo offer you a unique Pucci garment, we use an all-over print that makes the product unrepeatable. Therefore, the pattern print may vary from the one displayed in the photo.\n\nMain material: 80% polyamide, 20% elastane. Low waist. Minimalist cut. Thin ties at the hips. Hand wash. Made in Italy. ID: 6HMX076H895P19.",
+      "material": "80% polyamide, 20% elastane",
+      "image": "a s s e t s/shop-mockup/product-catalogue/champagne-bohemia/jb-0405-pucci-vivara-bikini-bottom-orange.jpg",
+      "imageAlt": "PUCCI Vivara Print Bikini Bottom in orange and black, official front product view",
+      "imageSource": "retailer_first_hero_product_only",
+      "sourcePageUrl": "https://www.pucci.com/en-au/products/vivara-print-bikini-bottom-6hmx076h895p19?xse_prod_code=8944551133339&xse=sm_el_pdp_ymal",
+      "sourceImageUrl": "https://www.pucci.com/cdn/shop/files/6HMX076H895P19_V1_f117238d-1b5b-4f7d-adbd-03090ceabe44.jpg?v=1773673167&width=2048",
+      "sourceImageIndex": 0,
+      "retrievedAt": "2026-08-02",
+      "price": "AU$ 290",
+      "priceValue": 290,
+      "currency": "AUD",
+      "subjectPresent": false,
+      "forwardFacing": false,
+      "colourFamilies": [
+        "orange",
+        "black"
+      ],
+      "colourEvidenceStatus": "Verified",
+      "colourEvidenceText": "Orange and Black",
+      "colourSourceUrl": "https://www.pucci.com/en-au/products/vivara-print-bikini-bottom-6hmx076h895p19?xse_prod_code=8944551133339&xse=sm_el_pdp_ymal",
+      "colourSourceType": "Retailer page",
+      "colourCheckedAt": "2026-08-02",
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": [
+        "swimwear-all",
+        "brief",
+        "bikini"
+      ],
+      "notionPageId": "3b07b9c9-9c56-8168-829b-c1bcb72591ae",
+      "shopEdits": [
+        "Champagne Bohemia"
+      ],
+      "editRanks": {
+        "Champagne Bohemia": 15
+      }
+    },
+    {
+      "id": "JB-0406",
+      "brand": "Calvin Klein",
+      "sourceBrandHeading": "Inner Plains",
+      "sourceTitle": "Icon Cotton Modal Thong | Calvin Klein",
+      "name": "Icon Cotton Modal Thong",
+      "productType": "Thong",
+      "forms": [
+        "lingerie"
+      ],
+      "retailer": "Calvin Klein",
+      "retailerUrl": "https://www.calvinklein.com.au/icon-cotton-modal-thong-white-qf8518100",
+      "canonicalUrl": "https://www.calvinklein.com.au/icon-cotton-modal-thong-white-qf8518100",
+      "sourceOccurrences": 1,
+      "metadataStatus": "Metadata ready",
+      "listedOnShop": true,
+      "shopRoute": "#catalogue/calvin-klein",
+      "slug": "icon-cotton-modal-thong-white-qf8518100",
+      "color": "White",
+      "description": "A Calvin Klein icon. Made with super soft cotton stretch blended with silky modal for a flexible fit and feel. Designed with our new Infinity Bond stitch-free band for seamless, ultimate comfort.\n\nThong cut with minimal back coverage. High leg line. Stitch-free Infinity Bond band. 100% cotton gusset.",
+      "material": "53% cotton, 35% modal, 12% elastane. Machine wash.",
+      "image": "a s s e t s/shop-mockup/product-catalogue/calvin-klein/jb-0406-icon-cotton-modal-thong-white.jpg",
+      "imageAlt": "Calvin Klein Icon Cotton Modal Thong in White on a forward-facing model",
+      "imageSource": "retailer_first_hero",
+      "sourcePageUrl": "https://www.calvinklein.com.au/icon-cotton-modal-thong-white-qf8518100",
+      "sourceImageUrl": "https://pvh-brands.imgix.net/catalog/product/media/QF8518_100_main.jpg?w=700&h=933&crop=top&fit=crop&auto=compress&auto=format",
+      "sourceImageIndex": 0,
+      "retrievedAt": "2026-08-02",
+      "price": "AU$ 34.95",
+      "priceValue": 34.95,
+      "currency": "AUD",
+      "subjectPresent": true,
+      "forwardFacing": true,
+      "colourFamilies": [
+        "white"
+      ],
+      "colourEvidenceStatus": "Verified",
+      "colourEvidenceText": "White",
+      "colourSourceUrl": "https://www.calvinklein.com.au/icon-cotton-modal-thong-white-qf8518100",
+      "colourSourceType": "Retailer page",
+      "colourCheckedAt": "2026-08-02",
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": [
+        "lingerie-all",
+        "brief"
+      ],
+      "notionPageId": "3b07b9c9-9c56-81d4-924b-ecca45a3b627",
+      "shopEdits": [
+        "Inner Plains"
+      ],
+      "editRanks": {
+        "Inner Plains": 2
+      }
+    },
+    {
+      "id": "JB-0407",
+      "brand": "Calvin Klein",
+      "sourceBrandHeading": "Inner Plains",
+      "sourceTitle": "Icon Cotton Modal Bikini Brief | Calvin Klein",
+      "name": "Icon Cotton Modal Bikini Brief",
+      "productType": "Briefs",
+      "forms": [
+        "lingerie"
+      ],
+      "retailer": "Calvin Klein",
+      "retailerUrl": "https://www.calvinklein.com.au/icon-cotton-modal-bikini-brief-white-qf8520100",
+      "canonicalUrl": "https://www.calvinklein.com.au/icon-cotton-modal-bikini-brief-white-qf8520100",
+      "sourceOccurrences": 1,
+      "metadataStatus": "Metadata ready",
+      "listedOnShop": true,
+      "shopRoute": "#catalogue/calvin-klein",
+      "slug": "icon-cotton-modal-bikini-brief-white-qf8520100",
+      "color": "White",
+      "description": "A Calvin Klein icon. Made with super soft cotton stretch blended with silky modal for a flexible fit and feel. Designed with our new Infinity Bond stitch-free band for seamless, ultimate comfort.\n\nBikini cut with full back coverage. Stitch-free Infinity Bond band. 100% cotton gusset.",
+      "material": "53% cotton, 35% modal, 12% elastane. Machine wash.",
+      "image": "a s s e t s/shop-mockup/product-catalogue/calvin-klein/jb-0407-icon-cotton-modal-bikini-brief-white.jpg",
+      "imageAlt": "Calvin Klein Icon Cotton Modal Bikini Brief in White on a forward-facing model",
+      "imageSource": "retailer_first_hero",
+      "sourcePageUrl": "https://www.calvinklein.com.au/icon-cotton-modal-bikini-brief-white-qf8520100",
+      "sourceImageUrl": "https://pvh-brands.imgix.net/catalog/product/media/QF8520_100_main.jpg?w=700&h=933&crop=top&fit=crop&auto=compress&auto=format",
+      "sourceImageIndex": 0,
+      "retrievedAt": "2026-08-02",
+      "price": "AU$ 34.95",
+      "priceValue": 34.95,
+      "currency": "AUD",
+      "subjectPresent": true,
+      "forwardFacing": true,
+      "colourFamilies": [
+        "white"
+      ],
+      "colourEvidenceStatus": "Verified",
+      "colourEvidenceText": "White",
+      "colourSourceUrl": "https://www.calvinklein.com.au/icon-cotton-modal-bikini-brief-white-qf8520100",
+      "colourSourceType": "Retailer page",
+      "colourCheckedAt": "2026-08-02",
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": [
+        "lingerie-all",
+        "brief"
+      ],
+      "notionPageId": "3b07b9c9-9c56-81eb-ba0d-c6a12dad7e4f",
+      "shopEdits": [
+        "Inner Plains"
+      ],
+      "editRanks": {
+        "Inner Plains": 3
+      }
+    },
+    {
+      "id": "JB-0408",
+      "brand": "Calvin Klein",
+      "sourceBrandHeading": "Inner Plains",
+      "sourceTitle": "Icon Cotton Modal Boyshort | Calvin Klein",
+      "name": "Icon Cotton Modal Boyshort",
+      "productType": "Briefs",
+      "forms": [
+        "lingerie"
+      ],
+      "retailer": "Calvin Klein",
+      "retailerUrl": "https://www.calvinklein.com.au/icon-cotton-modal-boyshort-white-qf8527100",
+      "canonicalUrl": "https://www.calvinklein.com.au/icon-cotton-modal-boyshort-white-qf8527100",
+      "sourceOccurrences": 1,
+      "metadataStatus": "Metadata ready",
+      "listedOnShop": true,
+      "shopRoute": "#catalogue/calvin-klein",
+      "slug": "icon-cotton-modal-boyshort-white-qf8527100",
+      "color": "White",
+      "description": "A Calvin Klein icon. Made with super soft cotton stretch blended with silky modal for a flexible fit and feel. Designed with our new Infinity Bond stitch-free band for seamless, ultimate comfort.\n\nBoyshort cut with a low rise waist. Stitch-free Infinity Bond band. 100% cotton gusset.",
+      "material": "53% cotton, 35% modal, 12% elastane. Machine wash.",
+      "image": "a s s e t s/shop-mockup/product-catalogue/calvin-klein/jb-0408-icon-cotton-modal-boyshort-white.jpg",
+      "imageAlt": "Calvin Klein Icon Cotton Modal Boyshort in White on a forward-facing model",
+      "imageSource": "retailer_first_hero",
+      "sourcePageUrl": "https://www.calvinklein.com.au/icon-cotton-modal-boyshort-white-qf8527100",
+      "sourceImageUrl": "https://pvh-brands.imgix.net/catalog/product/media/QF8527_100_main.jpg?w=700&h=933&crop=top&fit=crop&auto=compress&auto=format",
+      "sourceImageIndex": 0,
+      "retrievedAt": "2026-08-02",
+      "price": "AU$ 34.95",
+      "priceValue": 34.95,
+      "currency": "AUD",
+      "subjectPresent": true,
+      "forwardFacing": true,
+      "colourFamilies": [
+        "white"
+      ],
+      "colourEvidenceStatus": "Verified",
+      "colourEvidenceText": "White",
+      "colourSourceUrl": "https://www.calvinklein.com.au/icon-cotton-modal-boyshort-white-qf8527100",
+      "colourSourceType": "Retailer page",
+      "colourCheckedAt": "2026-08-02",
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": [
+        "lingerie-all",
+        "brief"
+      ],
+      "notionPageId": "3b07b9c9-9c56-81c8-bb04-ea116b5fc586",
+      "shopEdits": [
+        "Inner Plains"
+      ],
+      "editRanks": {
+        "Inner Plains": 4
+      }
+    },
+    {
+      "id": "JB-0409",
+      "brand": "Calvin Klein",
+      "sourceBrandHeading": "Inner Plains",
+      "sourceTitle": "Icon Cotton Modal Long Sleeve Tee Bralette | Calvin Klein",
+      "name": "Icon Cotton Modal Long Sleeve Tee Bralette",
+      "productType": "Bra",
+      "forms": [
+        "lingerie"
+      ],
+      "retailer": "Calvin Klein",
+      "retailerUrl": "https://www.calvinklein.com.au/icon-cotton-modal-long-sleeve-tee-bralette-white-qf8600100",
+      "canonicalUrl": "https://www.calvinklein.com.au/icon-cotton-modal-long-sleeve-tee-bralette-white-qf8600100",
+      "sourceOccurrences": 1,
+      "metadataStatus": "Metadata ready",
+      "listedOnShop": true,
+      "shopRoute": "#catalogue/calvin-klein",
+      "slug": "icon-cotton-modal-long-sleeve-tee-bralette-white-qf8600100",
+      "color": "White",
+      "description": "A Calvin Klein icon. Made with super soft cotton stretch blended with silky modal for a flexible fit and feel. Designed with our new Infinity Bond stitch-free band for seamless, ultimate comfort.\n\nPadded cups, crewneck and long sleeves. Hardware-free. For more coverage and a relaxed fit, size up.",
+      "material": "53% cotton, 35% modal, 12% elastane. Machine wash.",
+      "image": "a s s e t s/shop-mockup/product-catalogue/calvin-klein/jb-0409-icon-cotton-modal-long-sleeve-tee-bralette-white.jpg",
+      "imageAlt": "Calvin Klein Icon Cotton Modal Long Sleeve Tee Bralette in White on a forward-facing model",
+      "imageSource": "retailer_first_hero",
+      "sourcePageUrl": "https://www.calvinklein.com.au/icon-cotton-modal-long-sleeve-tee-bralette-white-qf8600100",
+      "sourceImageUrl": "https://pvh-brands.imgix.net/catalog/product/media/QF8600_100_main.jpg?w=700&h=933&crop=top&fit=crop&auto=compress&auto=format",
+      "sourceImageIndex": 0,
+      "retrievedAt": "2026-08-02",
+      "price": "AU$ 44.95",
+      "priceValue": 44.95,
+      "currency": "AUD",
+      "subjectPresent": true,
+      "forwardFacing": true,
+      "colourFamilies": [
+        "white"
+      ],
+      "colourEvidenceStatus": "Verified",
+      "colourEvidenceText": "White",
+      "colourSourceUrl": "https://www.calvinklein.com.au/icon-cotton-modal-long-sleeve-tee-bralette-white-qf8600100",
+      "colourSourceType": "Retailer page",
+      "colourCheckedAt": "2026-08-02",
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": [
+        "lingerie-all",
+        "bra"
+      ],
+      "notionPageId": "3b07b9c9-9c56-81cd-b4ac-f62456e4a612",
+      "shopEdits": [
+        "Inner Plains"
+      ],
+      "editRanks": {
+        "Inner Plains": 5
+      }
+    },
+    {
+      "id": "JB-0410",
+      "brand": "Calvin Klein",
+      "sourceBrandHeading": "Inner Plains",
+      "sourceTitle": "Icon Cotton Modal Unlined Bralette | Calvin Klein",
+      "name": "Icon Cotton Modal Unlined Bralette",
+      "productType": "Bra",
+      "forms": [
+        "lingerie"
+      ],
+      "retailer": "Calvin Klein",
+      "retailerUrl": "https://www.calvinklein.com.au/icon-cotton-modal-unlined-bralette-white-qf8493100",
+      "canonicalUrl": "https://www.calvinklein.com.au/icon-cotton-modal-unlined-bralette-white-qf8493100",
+      "sourceOccurrences": 1,
+      "metadataStatus": "Metadata ready",
+      "listedOnShop": true,
+      "shopRoute": "#catalogue/calvin-klein",
+      "slug": "icon-cotton-modal-unlined-bralette-white-qf8493100",
+      "color": "White",
+      "description": "A Calvin Klein icon. Made with super soft cotton stretch blended with silky modal for a flexible fit and feel. Designed with our new Infinity Bond stitch-free band for seamless, ultimate comfort.\n\nUnlined cups and an easy pullover racerback silhouette. Hardware-free. For more coverage and a relaxed fit, size up.",
+      "material": "53% cotton, 35% modal, 12% elastane. Machine wash.",
+      "image": "a s s e t s/shop-mockup/product-catalogue/calvin-klein/jb-0410-icon-cotton-modal-unlined-bralette-white.jpg",
+      "imageAlt": "Calvin Klein Icon Cotton Modal Unlined Bralette in White on a forward-facing model",
+      "imageSource": "retailer_first_hero",
+      "sourcePageUrl": "https://www.calvinklein.com.au/icon-cotton-modal-unlined-bralette-white-qf8493100",
+      "sourceImageUrl": "https://pvh-brands.imgix.net/catalog/product/media/QF8493_100_main.jpg?w=700&h=933&crop=top&fit=crop&auto=compress&auto=format",
+      "sourceImageIndex": 0,
+      "retrievedAt": "2026-08-02",
+      "price": "AU$ 49.95",
+      "priceValue": 49.95,
+      "currency": "AUD",
+      "subjectPresent": true,
+      "forwardFacing": true,
+      "colourFamilies": [
+        "white"
+      ],
+      "colourEvidenceStatus": "Verified",
+      "colourEvidenceText": "White",
+      "colourSourceUrl": "https://www.calvinklein.com.au/icon-cotton-modal-unlined-bralette-white-qf8493100",
+      "colourSourceType": "Retailer page",
+      "colourCheckedAt": "2026-08-02",
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": [
+        "lingerie-all",
+        "bra"
+      ],
+      "notionPageId": "3b07b9c9-9c56-811e-8543-f1f3ae9b2a14",
+      "shopEdits": [
+        "Inner Plains"
+      ],
+      "editRanks": {
+        "Inner Plains": 6
+      }
+    },
+    {
+      "id": "JB-0411",
+      "brand": "Calvin Klein",
+      "sourceBrandHeading": "Inner Plains",
+      "sourceTitle": "Icon Cotton Modal Metallic Thong | Calvin Klein",
+      "name": "Icon Cotton Modal Metallic Thong",
+      "productType": "Briefs",
+      "forms": [
+        "lingerie"
+      ],
+      "retailer": "Calvin Klein",
+      "retailerUrl": "https://www.calvinklein.com.au/icon-cotton-modal-metallic-thong-black-qf8826ub1",
+      "canonicalUrl": "https://www.calvinklein.com.au/icon-cotton-modal-metallic-thong-black-qf8826ub1",
+      "sourceOccurrences": 1,
+      "metadataStatus": "Metadata ready",
+      "listedOnShop": true,
+      "shopRoute": "#catalogue/calvin-klein",
+      "slug": "icon-cotton-modal-metallic-thong-black-qf8826ub1",
+      "color": "Black",
+      "description": "A Calvin Klein icon. Made with a super soft cotton stretch modal blend. Designed with a metallic logo band for lasting comfort.\n\nThong cut with minimal back coverage. Mid rise waist. 100% cotton gusset.",
+      "material": "53% cotton, 35% modal, 12% elastane. Machine wash.",
+      "image": "a s s e t s/shop-mockup/product-catalogue/calvin-klein/jb-0411-icon-cotton-modal-metallic-thong-black.jpg",
+      "imageAlt": "Calvin Klein Icon Cotton Modal Metallic Thong in Black on a forward-facing model",
+      "imageSource": "retailer_first_hero",
+      "sourcePageUrl": "https://www.calvinklein.com.au/icon-cotton-modal-metallic-thong-black-qf8826ub1",
+      "sourceImageUrl": "https://pvh-brands.imgix.net/catalog/product/media/QF8826_UB1_main.jpg?w=700&h=933&crop=top&fit=crop&auto=compress&auto=format",
+      "sourceImageIndex": 0,
+      "retrievedAt": "2026-08-02",
+      "price": "AU$ 34.95",
+      "priceValue": 34.95,
+      "currency": "AUD",
+      "subjectPresent": true,
+      "forwardFacing": true,
+      "colourFamilies": [
+        "black"
+      ],
+      "colourEvidenceStatus": "Verified",
+      "colourEvidenceText": "Black",
+      "colourSourceUrl": "https://www.calvinklein.com.au/icon-cotton-modal-metallic-thong-black-qf8826ub1",
+      "colourSourceType": "Retailer page",
+      "colourCheckedAt": "2026-08-02",
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": [
+        "lingerie-all",
+        "brief"
+      ],
+      "notionPageId": "3b07b9c9-9c56-812c-84c5-fba6235fbd6b",
+      "shopEdits": [
+        "Inner Plains"
+      ],
+      "editRanks": {
+        "Inner Plains": 9
+      }
+    },
+    {
+      "id": "JB-0412",
+      "brand": "Calvin Klein",
+      "sourceBrandHeading": "Inner Plains",
+      "sourceTitle": "Icon Cotton Modal Metallic Triangle Bralette | Calvin Klein",
+      "name": "Icon Cotton Modal Metallic Triangle Bralette",
+      "productType": "Bra",
+      "forms": [
+        "lingerie"
+      ],
+      "retailer": "Calvin Klein",
+      "retailerUrl": "https://www.calvinklein.com.au/icon-cotton-modal-metallic-triangle-bralette-black-qf8816ub1",
+      "canonicalUrl": "https://www.calvinklein.com.au/icon-cotton-modal-metallic-triangle-bralette-black-qf8816ub1",
+      "sourceOccurrences": 1,
+      "metadataStatus": "Metadata ready",
+      "listedOnShop": true,
+      "shopRoute": "#catalogue/calvin-klein",
+      "slug": "icon-cotton-modal-metallic-triangle-bralette-black-qf8816ub1",
+      "color": "Black",
+      "description": "A Calvin Klein icon. Made with super soft cotton stretch blended with silky modal for a flexible fit and feel. Designed with a metallic logo band for lasting comfort.\n\nLightly lined triangle cups with removable padding, adjustable straps and wirefree support.",
+      "material": "53% cotton, 35% modal, 12% elastane. Machine wash.",
+      "image": "a s s e t s/shop-mockup/product-catalogue/calvin-klein/jb-0412-icon-cotton-modal-metallic-triangle-bralette-black.jpg",
+      "imageAlt": "Calvin Klein Icon Cotton Modal Metallic Triangle Bralette in Black on a forward-facing model",
+      "imageSource": "retailer_first_hero",
+      "sourcePageUrl": "https://www.calvinklein.com.au/icon-cotton-modal-metallic-triangle-bralette-black-qf8816ub1",
+      "sourceImageUrl": "https://pvh-brands.imgix.net/catalog/product/media/QF8816_UB1_main.jpg?w=700&h=933&crop=top&fit=crop&auto=compress&auto=format",
+      "sourceImageIndex": 0,
+      "retrievedAt": "2026-08-02",
+      "price": "AU$ 69.95",
+      "priceValue": 69.95,
+      "currency": "AUD",
+      "subjectPresent": true,
+      "forwardFacing": true,
+      "colourFamilies": [
+        "black"
+      ],
+      "colourEvidenceStatus": "Verified",
+      "colourEvidenceText": "Black",
+      "colourSourceUrl": "https://www.calvinklein.com.au/icon-cotton-modal-metallic-triangle-bralette-black-qf8816ub1",
+      "colourSourceType": "Retailer page",
+      "colourCheckedAt": "2026-08-02",
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": [
+        "lingerie-all",
+        "bra"
+      ],
+      "notionPageId": "3b07b9c9-9c56-81c2-8141-d377eb80eeca",
+      "shopEdits": [
+        "Inner Plains"
+      ],
+      "editRanks": {
+        "Inner Plains": 10
+      }
+    },
+    {
+      "id": "JB-0413",
+      "brand": "Calvin Klein",
+      "sourceBrandHeading": "Inner Plains",
+      "sourceTitle": "Icon Cotton Modal Metallic Bikini Briefs | Calvin Klein",
+      "name": "Icon Cotton Modal Metallic Bikini Briefs",
+      "productType": "Briefs",
+      "forms": [
+        "lingerie"
+      ],
+      "retailer": "Calvin Klein",
+      "retailerUrl": "https://www.calvinklein.com.au/icon-cotton-modal-metallic-bikini-briefs-black-qf8827ub1",
+      "canonicalUrl": "https://www.calvinklein.com.au/icon-cotton-modal-metallic-bikini-briefs-black-qf8827ub1",
+      "sourceOccurrences": 1,
+      "metadataStatus": "Metadata ready",
+      "listedOnShop": true,
+      "shopRoute": "#catalogue/calvin-klein",
+      "slug": "icon-cotton-modal-metallic-bikini-briefs-black-qf8827ub1",
+      "color": "Black",
+      "description": "A Calvin Klein icon. Made with a super soft cotton stretch modal blend. Designed with a metallic logo band for lasting comfort.\n\nBikini cut with full back coverage. Mid rise waist. 100% cotton gusset.",
+      "material": "53% cotton, 35% modal, 12% elastane. Machine wash.",
+      "image": "a s s e t s/shop-mockup/product-catalogue/calvin-klein/jb-0413-icon-cotton-modal-metallic-bikini-briefs-black.jpg",
+      "imageAlt": "Calvin Klein Icon Cotton Modal Metallic Bikini Briefs in Black on a forward-facing model",
+      "imageSource": "retailer_first_hero",
+      "sourcePageUrl": "https://www.calvinklein.com.au/icon-cotton-modal-metallic-bikini-briefs-black-qf8827ub1",
+      "sourceImageUrl": "https://pvh-brands.imgix.net/catalog/product/media/QF8827_UB1_main.jpg?w=700&h=933&crop=top&fit=crop&auto=compress&auto=format",
+      "sourceImageIndex": 0,
+      "retrievedAt": "2026-08-02",
+      "price": "AU$ 34.95",
+      "priceValue": 34.95,
+      "currency": "AUD",
+      "subjectPresent": true,
+      "forwardFacing": true,
+      "colourFamilies": [
+        "black"
+      ],
+      "colourEvidenceStatus": "Verified",
+      "colourEvidenceText": "Black",
+      "colourSourceUrl": "https://www.calvinklein.com.au/icon-cotton-modal-metallic-bikini-briefs-black-qf8827ub1",
+      "colourSourceType": "Retailer page",
+      "colourCheckedAt": "2026-08-02",
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": [
+        "lingerie-all",
+        "brief"
+      ],
+      "notionPageId": "3b07b9c9-9c56-818c-9e06-fd5fd5c5d133",
+      "shopEdits": [
+        "Inner Plains"
+      ],
+      "editRanks": {
+        "Inner Plains": 11
+      }
+    },
+    {
+      "id": "JB-0414",
+      "brand": "Calvin Klein",
+      "sourceBrandHeading": "Inner Plains",
+      "sourceTitle": "Icon Cotton Modal Thong | Calvin Klein",
+      "name": "Icon Cotton Modal Thong",
+      "productType": "Briefs",
+      "forms": [
+        "lingerie"
+      ],
+      "retailer": "Calvin Klein",
+      "retailerUrl": "https://www.calvinklein.com.au/icon-cotton-modal-thong-cradle-pink-qf85188z6",
+      "canonicalUrl": "https://www.calvinklein.com.au/icon-cotton-modal-thong-cradle-pink-qf85188z6",
+      "sourceOccurrences": 1,
+      "metadataStatus": "Metadata ready",
+      "listedOnShop": true,
+      "shopRoute": "#catalogue/calvin-klein",
+      "slug": "icon-cotton-modal-thong-cradle-pink-qf85188z6",
+      "color": "Cradle Pink",
+      "description": "A Calvin Klein icon. Made with super soft cotton stretch blended with silky modal for a flexible fit and feel. Designed with our new Infinity Bond stitch-free band for seamless, ultimate comfort.\n\nThong cut with minimal back coverage. High leg line. Stitch-free Infinity Bond band. 100% cotton gusset.",
+      "material": "53% cotton, 35% modal, 12% elastane. Machine wash.",
+      "image": "a s s e t s/shop-mockup/product-catalogue/calvin-klein/jb-0414-icon-cotton-modal-thong-cradle-pink.jpg",
+      "imageAlt": "Calvin Klein Icon Cotton Modal Thong in Cradle Pink on a forward-facing model",
+      "imageSource": "retailer_first_hero",
+      "sourcePageUrl": "https://www.calvinklein.com.au/icon-cotton-modal-thong-cradle-pink-qf85188z6",
+      "sourceImageUrl": "https://pvh-brands.imgix.net/catalog/product/media/QF8518_8Z6_main.jpg?w=700&h=933&crop=top&fit=crop&auto=compress&auto=format",
+      "sourceImageIndex": 0,
+      "retrievedAt": "2026-08-02",
+      "price": "AU$ 34.95",
+      "priceValue": 34.95,
+      "currency": "AUD",
+      "subjectPresent": true,
+      "forwardFacing": true,
+      "colourFamilies": [
+        "pink"
+      ],
+      "colourEvidenceStatus": "Verified",
+      "colourEvidenceText": "Cradle Pink",
+      "colourSourceUrl": "https://www.calvinklein.com.au/icon-cotton-modal-thong-cradle-pink-qf85188z6",
+      "colourSourceType": "Retailer page",
+      "colourCheckedAt": "2026-08-02",
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": [
+        "lingerie-all",
+        "brief"
+      ],
+      "notionPageId": "3b07b9c9-9c56-81ac-b09e-f1027a9d2687",
+      "shopEdits": [
+        "Inner Plains"
+      ],
+      "editRanks": {
+        "Inner Plains": 14
+      }
+    },
+    {
+      "id": "JB-0415",
+      "brand": "Calvin Klein",
+      "sourceBrandHeading": "Inner Plains",
+      "sourceTitle": "Icon Cotton Modal Bikini Brief | Calvin Klein",
+      "name": "Icon Cotton Modal Bikini Brief",
+      "productType": "Briefs",
+      "forms": [
+        "lingerie"
+      ],
+      "retailer": "Calvin Klein",
+      "retailerUrl": "https://www.calvinklein.com.au/icon-cotton-modal-bikini-brief-cradle-pink-qf85208z6",
+      "canonicalUrl": "https://www.calvinklein.com.au/icon-cotton-modal-bikini-brief-cradle-pink-qf85208z6",
+      "sourceOccurrences": 1,
+      "metadataStatus": "Metadata ready",
+      "listedOnShop": true,
+      "shopRoute": "#catalogue/calvin-klein",
+      "slug": "icon-cotton-modal-bikini-brief-cradle-pink-qf85208z6",
+      "color": "Cradle Pink",
+      "description": "A Calvin Klein icon. Made with super soft cotton stretch blended with silky modal for a flexible fit and feel. Designed with our new Infinity Bond stitch-free band for seamless, ultimate comfort.\n\nBikini cut with full back coverage. Stitch-free Infinity Bond band. 100% cotton gusset.",
+      "material": "53% cotton, 35% modal, 12% elastane. Machine wash.",
+      "image": "a s s e t s/shop-mockup/product-catalogue/calvin-klein/jb-0415-icon-cotton-modal-bikini-brief-cradle-pink.jpg",
+      "imageAlt": "Calvin Klein Icon Cotton Modal Bikini Brief in Cradle Pink on a forward-facing model",
+      "imageSource": "retailer_first_hero",
+      "sourcePageUrl": "https://www.calvinklein.com.au/icon-cotton-modal-bikini-brief-cradle-pink-qf85208z6",
+      "sourceImageUrl": "https://pvh-brands.imgix.net/catalog/product/media/QF8520_8Z6_main.jpg?w=700&h=933&crop=top&fit=crop&auto=compress&auto=format",
+      "sourceImageIndex": 0,
+      "retrievedAt": "2026-08-02",
+      "price": "AU$ 34.95",
+      "priceValue": 34.95,
+      "currency": "AUD",
+      "subjectPresent": true,
+      "forwardFacing": true,
+      "colourFamilies": [
+        "pink"
+      ],
+      "colourEvidenceStatus": "Verified",
+      "colourEvidenceText": "Cradle Pink",
+      "colourSourceUrl": "https://www.calvinklein.com.au/icon-cotton-modal-bikini-brief-cradle-pink-qf85208z6",
+      "colourSourceType": "Retailer page",
+      "colourCheckedAt": "2026-08-02",
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": [
+        "lingerie-all",
+        "brief"
+      ],
+      "notionPageId": "3b07b9c9-9c56-81dc-b5fd-db579b98e720",
+      "shopEdits": [
+        "Inner Plains"
+      ],
+      "editRanks": {
+        "Inner Plains": 15
+      }
+    },
+    {
+      "id": "JB-0416",
+      "brand": "Calvin Klein",
+      "sourceBrandHeading": "Inner Plains",
+      "sourceTitle": "Icon Cotton Modal Boyshort | Calvin Klein",
+      "name": "Icon Cotton Modal Boyshort",
+      "productType": "Briefs",
+      "forms": [
+        "lingerie"
+      ],
+      "retailer": "Calvin Klein",
+      "retailerUrl": "https://www.calvinklein.com.au/icon-cotton-modal-boyshort-cradle-pink-qf85278z6",
+      "canonicalUrl": "https://www.calvinklein.com.au/icon-cotton-modal-boyshort-cradle-pink-qf85278z6",
+      "sourceOccurrences": 1,
+      "metadataStatus": "Metadata ready",
+      "listedOnShop": true,
+      "shopRoute": "#catalogue/calvin-klein",
+      "slug": "icon-cotton-modal-boyshort-cradle-pink-qf85278z6",
+      "color": "Cradle Pink",
+      "description": "A Calvin Klein icon. Made with super soft cotton stretch blended with silky modal for a flexible fit and feel. Designed with our new Infinity Bond stitch-free band for seamless, ultimate comfort.\n\nBoyshort cut with a low rise waist. Stitch-free Infinity Bond band. 100% cotton gusset.",
+      "material": "53% cotton, 35% modal, 12% elastane. Machine wash.",
+      "image": "a s s e t s/shop-mockup/product-catalogue/calvin-klein/jb-0416-icon-cotton-modal-boyshort-cradle-pink.jpg",
+      "imageAlt": "Calvin Klein Icon Cotton Modal Boyshort in Cradle Pink on a forward-facing model",
+      "imageSource": "retailer_first_hero",
+      "sourcePageUrl": "https://www.calvinklein.com.au/icon-cotton-modal-boyshort-cradle-pink-qf85278z6",
+      "sourceImageUrl": "https://pvh-brands.imgix.net/catalog/product/media/QF8527_8Z6_main.jpg?w=700&h=933&crop=top&fit=crop&auto=compress&auto=format",
+      "sourceImageIndex": 0,
+      "retrievedAt": "2026-08-02",
+      "price": "AU$ 34.95",
+      "priceValue": 34.95,
+      "currency": "AUD",
+      "subjectPresent": true,
+      "forwardFacing": true,
+      "colourFamilies": [
+        "pink"
+      ],
+      "colourEvidenceStatus": "Verified",
+      "colourEvidenceText": "Cradle Pink",
+      "colourSourceUrl": "https://www.calvinklein.com.au/icon-cotton-modal-boyshort-cradle-pink-qf85278z6",
+      "colourSourceType": "Retailer page",
+      "colourCheckedAt": "2026-08-02",
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": [
+        "lingerie-all",
+        "brief"
+      ],
+      "notionPageId": "3b07b9c9-9c56-8110-9123-d857215ed4fa",
+      "shopEdits": [
+        "Inner Plains"
+      ],
+      "editRanks": {
+        "Inner Plains": 16
+      }
+    },
+    {
+      "id": "JB-0417",
+      "brand": "Calvin Klein",
+      "sourceBrandHeading": "Inner Plains",
+      "sourceTitle": "Icon Cotton Modal Unlined Bralette | Calvin Klein",
+      "name": "Icon Cotton Modal Unlined Bralette",
+      "productType": "Bra",
+      "forms": [
+        "lingerie"
+      ],
+      "retailer": "Calvin Klein",
+      "retailerUrl": "https://www.calvinklein.com.au/icon-cotton-modal-unlined-bralette-cradle-pink-qf84938z6",
+      "canonicalUrl": "https://www.calvinklein.com.au/icon-cotton-modal-unlined-bralette-cradle-pink-qf84938z6",
+      "sourceOccurrences": 1,
+      "metadataStatus": "Metadata ready",
+      "listedOnShop": true,
+      "shopRoute": "#catalogue/calvin-klein",
+      "slug": "icon-cotton-modal-unlined-bralette-cradle-pink-qf84938z6",
+      "color": "Cradle Pink",
+      "description": "A Calvin Klein icon. Made with super soft cotton stretch blended with silky modal for a flexible fit and feel. Designed with our new Infinity Bond stitch-free band for seamless, ultimate comfort.\n\nUnlined cups and an easy pullover racerback silhouette. Hardware-free. For more coverage and a relaxed fit, size up.",
+      "material": "53% cotton, 35% modal, 12% elastane. Machine wash.",
+      "image": "a s s e t s/shop-mockup/product-catalogue/calvin-klein/jb-0417-icon-cotton-modal-unlined-bralette-cradle-pink.jpg",
+      "imageAlt": "Calvin Klein Icon Cotton Modal Unlined Bralette in Cradle Pink on a forward-facing model",
+      "imageSource": "retailer_first_hero",
+      "sourcePageUrl": "https://www.calvinklein.com.au/icon-cotton-modal-unlined-bralette-cradle-pink-qf84938z6",
+      "sourceImageUrl": "https://pvh-brands.imgix.net/catalog/product/media/QF8493_8Z6_main.jpg?w=700&h=933&crop=top&fit=crop&auto=compress&auto=format",
+      "sourceImageIndex": 0,
+      "retrievedAt": "2026-08-02",
+      "price": "AU$ 49.95",
+      "priceValue": 49.95,
+      "currency": "AUD",
+      "subjectPresent": true,
+      "forwardFacing": true,
+      "colourFamilies": [
+        "pink"
+      ],
+      "colourEvidenceStatus": "Verified",
+      "colourEvidenceText": "Cradle Pink",
+      "colourSourceUrl": "https://www.calvinklein.com.au/icon-cotton-modal-unlined-bralette-cradle-pink-qf84938z6",
+      "colourSourceType": "Retailer page",
+      "colourCheckedAt": "2026-08-02",
+      "colourTaxonomyVersion": "jb-colour-taxonomy-v1",
+      "shopTypes": [
+        "lingerie-all",
+        "bra"
+      ],
+      "notionPageId": "3b07b9c9-9c56-81a4-97ce-e26c1d665290",
+      "shopEdits": [
+        "Inner Plains"
+      ],
+      "editRanks": {
+        "Inner Plains": 17
+      }
     }
   ],
   "imagePolicy": {
@@ -15754,5 +18725,10 @@
     },
     "projectionUpdatedAt": "2026-07-31",
     "verifiedCatalogueProductCount": 20
+  },
+  "editorialEditAuthority": {
+    "version": "jb-radio-edits-v1",
+    "manifest": "shop-radio-edits-v1.json",
+    "membershipField": "shopEdits"
   }
 }
