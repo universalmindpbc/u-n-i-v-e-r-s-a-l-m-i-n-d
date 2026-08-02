@@ -10,7 +10,6 @@ const iamReflection = document.querySelector("[data-iam-reflection]");
 const iamReflectionFlora = document.querySelector("[data-iam-reflection-flora]");
 const iamReflectionText = document.querySelector("[data-iam-reflection-text]");
 const iamTransfer = document.querySelector("[data-iam-transfer]");
-const citizenDataStatus = document.querySelector("[data-citizen-data-status]");
 const citizenDataClient = window.IAMCitizenData;
 const globePage = document.querySelector(".globe-page");
 const isCommunityOverlay = document.documentElement.classList.contains("iam-community-overlay");
@@ -151,7 +150,6 @@ const iamTiming = {
   focusPause: 120,
   thankYouHold: 900,
   joiningHold: 900,
-  preparingHold: 520,
   transferDuration: 3600,
   transferTextRevealAt: 2400,
   reflectionFadeIn: 900,
@@ -999,31 +997,6 @@ async function submitIamCheckIn() {
   iamInput.blur();
   iamInput.readOnly = true;
 
-  if (citizenDataClient?.enabled) {
-    setIamState("joining", "Encrypting your check-in…");
-    if (citizenDataStatus) {
-      citizenDataStatus.textContent = "Saving only with your permission.";
-      citizenDataStatus.dataset.state = "pending";
-    }
-    try {
-      await citizenDataClient.recordCheckin(phrase);
-      if (citizenDataStatus) {
-        citizenDataStatus.textContent = "Encrypted and remembered.";
-        citizenDataStatus.dataset.state = "complete";
-      }
-    } catch {
-      if (citizenDataStatus) {
-        citizenDataStatus.textContent = "We could not securely save this check-in. It was not used. Please try again.";
-        citizenDataStatus.dataset.state = "error";
-      }
-      setIamState("typing");
-      iamInput.readOnly = false;
-      isSubmitRunning = false;
-      iamInput.focus({ preventScroll: true });
-      return;
-    }
-  }
-
   stopActiveAdaptiveMedia();
   clearStoredMusicTelevisionSelection();
   persistLatestCheckIn(phrase, {}, "pending");
@@ -1035,7 +1008,6 @@ async function submitIamCheckIn() {
 
   if (shouldSkipTransfer) {
     queuePendingCheckInPipeline(phrase);
-    await transitionIamState("joining", "Preparing your experience...", iamTiming.preparingHold);
     iamInput.readOnly = false;
     isSubmitRunning = false;
     loadMainHomepage();

@@ -34,6 +34,7 @@ const checkinPage = read("i  a m/vogue-self-report.html");
 const citizenDataClient = read("i  a m/citizen-data-client.js");
 const citizenDataConsent = read("i  a m/citizen-data-consent.js");
 const globe = read("i  a m/globe.js");
+const homepageCheckin = read("i  a m/homepage-checkin.js");
 
 assert.equal(CITIZEN_DATA_ARCHITECTURE.schemaVersion, "universal_mind_citizen_data_v0.1");
 assert.equal(CITIZEN_DATA_ARCHITECTURE.rewardsPermissionIncluded, false);
@@ -117,7 +118,11 @@ assert.match(citizenDataConsent, /Nothing has been collected/);
 assert.match(citizenDataConsent, /data-induction-enter/);
 assert.match(citizenDataConsent, /permission=required/);
 assert.doesNotMatch(citizenDataConsent, /setTimeout\(completeConsent/);
-assert.match(globe, /await citizenDataClient\.recordCheckin\(phrase\)/);
+assert.doesNotMatch(globe, /recordCheckin\(phrase\)/);
+assert.doesNotMatch(globe, /Encrypting your check-in|Preparing your experience|Saving only with your permission|Encrypted and remembered|We could not securely save this check-in/);
+assert.doesNotMatch(checkinPage, /data-citizen-data-status/);
+assert.match(homepageCheckin, /window\.IAMCitizenData\.recordCheckin\(pending\.phrase\)\.then/);
+assert.doesNotMatch(homepageCheckin, /await window\.IAMCitizenData\.recordCheckin/);
 assert.match(globe, /citizenDataClient\?\.enabled\s*\? \[window\.sessionStorage\]/);
 
 assert.match(awsTemplate, /AuroraPostgresEngineVersion:\n\s+Type: String/);
