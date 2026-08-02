@@ -32,6 +32,24 @@
       html[data-shop-entry="requested"] .site-shell,
       html[data-shop-entry="loading"] .site-shell { visibility: hidden; }
       html[data-shop-entry] .shop-entry { display: grid; }
+      html[data-shop-entry] .shop-entry h1.shop-entry__masthead {
+        opacity: 0;
+        filter: blur(7px);
+        text-transform: none;
+        white-space: pre;
+        transition: opacity 2s ease, filter 2s ease;
+      }
+      html[data-shop-entry] .shop-entry h1.shop-entry__masthead.is-visible {
+        opacity: 1;
+        filter: blur(0);
+      }
+      html[data-shop-entry] .shop-entry h1.shop-entry__masthead[data-current-lang="zh"] {
+        font-size: clamp(42px, 5.6vw, 82px);
+        letter-spacing: -.04em;
+      }
+      html[data-shop-entry] .shop-entry h1.shop-entry__masthead[data-current-lang="ru"] {
+        font-size: clamp(48px, 7.4vw, 108px);
+      }
     </style>
     <link rel="icon" type="image/png" sizes="32x32" href="/vogue/iam/favicon.png?v=iam-favicon-4">
     <link rel="shortcut icon" type="image/png" href="/vogue/iam/favicon.png?v=iam-favicon-4">
@@ -53,7 +71,7 @@
   <body class="adaptive-television-page">
     <section class="shop-entry" data-shop-entry-screen aria-labelledby="shop-entry-title">
       <div class="shop-entry__inner">
-        <h1 id="shop-entry-title">james bondage</h1>
+        <h1 class="shop-entry__masthead" id="shop-entry-title" data-shop-entry-language data-current-lang="en" lang="en" dir="ltr" aria-live="polite">James Bondage</h1>
         <button class="shop-entry__play" type="button" data-shop-entry-button aria-label="Explore the James Bondage shop in full screen with music">
           <img src="a s s e t s/iconmonstr-video play button - white -16-240.png" alt="">
         </button>
@@ -61,6 +79,48 @@
         <p>opens full screen · starts music</p>
       </div>
     </section>
+    <script>
+      (function initShopEntryMastheadCycle() {
+        const masthead = document.querySelector("[data-shop-entry-language]");
+        if (!masthead) return;
+
+        const languages = [
+          { text: "James Bondage", lang: "en", dir: "ltr" },
+          { text: "詹姆斯  邦德束缚", lang: "zh", dir: "ltr" },
+          { text: "Джеймс Бондаж", lang: "ru", dir: "ltr" },
+        ];
+        const brandTiming = {
+          nameIn: 1000,
+          fadeOut: 7600,
+          nextLanguage: 9000,
+        };
+        let languageIndex = 0;
+        let mastheadTimers = [];
+
+        function scheduleMastheadTimer(callback, delay) {
+          mastheadTimers.push(window.setTimeout(callback, delay));
+        }
+
+        function runMastheadCycle() {
+          mastheadTimers.forEach((timer) => window.clearTimeout(timer));
+          mastheadTimers = [];
+          masthead.classList.remove("is-visible");
+
+          const language = languages[languageIndex];
+          masthead.textContent = language.text;
+          masthead.lang = language.lang;
+          masthead.dir = language.dir;
+          masthead.dataset.currentLang = language.lang;
+          languageIndex = (languageIndex + 1) % languages.length;
+
+          scheduleMastheadTimer(() => masthead.classList.add("is-visible"), brandTiming.nameIn);
+          scheduleMastheadTimer(() => masthead.classList.remove("is-visible"), brandTiming.fadeOut);
+          scheduleMastheadTimer(runMastheadCycle, brandTiming.nextLanguage);
+        }
+
+        runMastheadCycle();
+      }());
+    </script>
     <main class="site-shell" aria-label="Universal Mind i am adaptive environment music television">
       <section class="scene" aria-label="Opening scene">
         <div class="background-video" aria-hidden="true">

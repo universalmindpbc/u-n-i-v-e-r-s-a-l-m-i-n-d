@@ -64,6 +64,17 @@ assert.equal((shop.match(/<li(?:\s+class="[^"]*")?><span>/g) || []).length, 29, 
 assert.equal((shop.match(/data-product(?:\s|>)/g) || []).length, 12, "Opening edit must contain the restrained 12 authorized hero pieces");
 assert.match(shop, /<title>James Bondage \| Shop<\/title>/, "Standalone Shop title must use the approved pipe separator");
 assert.match(index, /document\.title = "James Bondage \| Shop"/, "Shop splash title must use the approved pipe separator");
+assert.match(index, /data-shop-entry-language[^>]*>James Bondage<\/h1>/, "Shop entry masthead must begin with the English scene");
+for (const scene of ["James Bondage", "詹姆斯  邦德束缚", "Джеймс Бондаж"]) {
+  assert.ok(index.includes(`text: "${scene}"`), `Shop entry masthead is missing the ${scene} scene`);
+}
+assert.match(
+  index,
+  /const brandTiming = \{\s*nameIn: 1000,\s*fadeOut: 7600,\s*nextLanguage: 9000,\s*\}/,
+  "Shop entry masthead must use the homepage brand timing",
+);
+assert.match(index, /transition: opacity 2s ease, filter 2s ease;/, "Shop entry masthead must use the homepage cinematic dissolve");
+assert.match(index, /languageIndex = \(languageIndex \+ 1\) % languages\.length;/, "Shop entry masthead must rotate all scenes infinitely");
 assert.match(
   television,
   /const SHOP_SHELL_VERSION = "6273de3c84b3";[\s\S]*function frameHref\(link\)[\s\S]*url\.searchParams\.set\("v", SHOP_SHELL_VERSION\)/,
@@ -501,7 +512,7 @@ assert.match(shop, /data-shop-sex-ed-viewport[\s\S]*data-shop-sex-ed-previous[\s
 assert.match(shopScript, /function moveSexEdShelf[\s\S]*sexEdViewport\.scrollBy/, "Sex Ed shelf controls must scroll the episode track");
 assert.match(television, /requestedSexEdEpisode[\s\S]*bootstrapRequestedSexEd[\s\S]*openSexEdEpisode\(requestedSexEdEpisode\)/, "Sex Ed links must deep-link each episode into its established player");
 
-assert.match(index, /data-shop-entry-screen[\s\S]*james bondage[\s\S]*data-shop-entry-button[\s\S]*data-shop-entry-label>explore<\/span>[\s\S]*opens full screen · starts music/, "Direct Shop entry must use the approved spacious black splash hierarchy");
+assert.match(index, /data-shop-entry-screen[\s\S]*James Bondage[\s\S]*data-shop-entry-button[\s\S]*data-shop-entry-label>explore<\/span>[\s\S]*opens full screen · starts music/, "Direct Shop entry must use the approved spacious black splash hierarchy");
 assert.doesNotMatch(index, /class="adaptive-environment__play shop-entry__play"/, "The Shop splash play control must not inherit the television-room blur state");
 assert.match(shopScript, /function preloadOpeningAssets[\s\S]*openingAssetReady\(openingHeroVideo, "loadeddata", 2500\)[\s\S]*iam:shop-opening-media-ready/, "The Shop must prioritize its opening local hero behind the splash");
 assert.match(television, /shopEntryMediaReady[\s\S]*iam:shop-opening-media-ready[\s\S]*completeShopEntry/, "The splash must wait for opening Shop media readiness before revealing the page");
