@@ -48,7 +48,18 @@ for (const required of [
   assert.match(shop, new RegExp(required.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"), "i"), `Missing shop presentation text: ${required}`);
 }
 
-assert.match(shop, /<h1 id="shop-title"><span>James<\/span><span>Bondage<\/span><\/h1>/, "Fashion masthead must remain James Bondage, not James Bondage Health");
+assert.match(shop, /<h1 class="shop-hero__masthead" id="shop-title" data-shop-masthead aria-label="James Bondage"/, "The rotating Shop masthead must remain James Bondage, not James Bondage Health");
+assert.equal((shop.match(/data-shop-masthead-scene/g) || []).length, 3, "The Shop homepage and catalogue masthead must contain exactly three fixed scenes");
+for (const scene of ["James Bondage", "詹姆斯  邦德束缚", "Джеймс Бондаж"]) {
+  assert.ok(shop.includes(`data-shop-masthead-label="${scene}"`), `The Shop masthead is missing the ${scene} scene`);
+}
+assert.match(
+  shopScript,
+  /const shopMastheadTiming = \{\s*nameIn: 1000,\s*fadeOut: 7600,\s*nextLanguage: 9000,\s*\}/,
+  "The real Shop masthead must use the homepage brand timing",
+);
+assert.match(shopScript, /shopMastheadSceneIndex = \(shopMastheadSceneIndex \+ 1\) % shopMastheadScenes\.length;/, "The real Shop masthead must rotate its three scenes infinitely");
+assert.match(shopStyle, /\.shop-hero__masthead-scene\s*\{[\s\S]*position:\s*absolute;[\s\S]*inset:\s*0;[\s\S]*opacity:\s*0;[\s\S]*filter:\s*blur\(7px\);[\s\S]*transition:\s*opacity 2s ease, filter 2s ease;/, "The real Shop masthead scenes must dissolve cinematically in one fixed layer");
 for (const absent of [
   /modul8 infinity/i,
   /Designed as a quieter way to browse/i,
@@ -64,17 +75,8 @@ assert.equal((shop.match(/<li(?:\s+class="[^"]*")?><span>/g) || []).length, 29, 
 assert.equal((shop.match(/data-product(?:\s|>)/g) || []).length, 12, "Opening edit must contain the restrained 12 authorized hero pieces");
 assert.match(shop, /<title>James Bondage \| Shop<\/title>/, "Standalone Shop title must use the approved pipe separator");
 assert.match(index, /document\.title = "James Bondage \| Shop"/, "Shop splash title must use the approved pipe separator");
-assert.match(index, /data-shop-entry-language[^>]*>James Bondage<\/h1>/, "Shop entry masthead must begin with the English scene");
-for (const scene of ["James Bondage", "詹姆斯  邦德束缚", "Джеймс Бондаж"]) {
-  assert.ok(index.includes(`text: "${scene}"`), `Shop entry masthead is missing the ${scene} scene`);
-}
-assert.match(
-  index,
-  /const brandTiming = \{\s*nameIn: 1000,\s*fadeOut: 7600,\s*nextLanguage: 9000,\s*\}/,
-  "Shop entry masthead must use the homepage brand timing",
-);
-assert.match(index, /transition: opacity 2s ease, filter 2s ease;/, "Shop entry masthead must use the homepage cinematic dissolve");
-assert.match(index, /languageIndex = \(languageIndex \+ 1\) % languages\.length;/, "Shop entry masthead must rotate all scenes infinitely");
+assert.match(index, /<h1 id="shop-entry-title" lang="ru" dir="ltr">Джеймс Бондаж<\/h1>/, "The Shop splash must remain static in Russian");
+assert.doesNotMatch(index, /data-shop-entry-language|initShopEntryMastheadCycle|shop-entry__masthead/, "The Shop splash must not animate or carry rotating masthead state");
 assert.match(
   television,
   /const SHOP_SHELL_VERSION = "6273de3c84b3";[\s\S]*function frameHref\(link\)[\s\S]*url\.searchParams\.set\("v", SHOP_SHELL_VERSION\)/,
@@ -512,7 +514,7 @@ assert.match(shop, /data-shop-sex-ed-viewport[\s\S]*data-shop-sex-ed-previous[\s
 assert.match(shopScript, /function moveSexEdShelf[\s\S]*sexEdViewport\.scrollBy/, "Sex Ed shelf controls must scroll the episode track");
 assert.match(television, /requestedSexEdEpisode[\s\S]*bootstrapRequestedSexEd[\s\S]*openSexEdEpisode\(requestedSexEdEpisode\)/, "Sex Ed links must deep-link each episode into its established player");
 
-assert.match(index, /data-shop-entry-screen[\s\S]*James Bondage[\s\S]*data-shop-entry-button[\s\S]*data-shop-entry-label>explore<\/span>[\s\S]*opens full screen · starts music/, "Direct Shop entry must use the approved spacious black splash hierarchy");
+assert.match(index, /data-shop-entry-screen[\s\S]*Джеймс Бондаж[\s\S]*data-shop-entry-button[\s\S]*data-shop-entry-label>explore<\/span>[\s\S]*opens full screen · starts music/, "Direct Shop entry must use the approved static Russian splash hierarchy");
 assert.doesNotMatch(index, /class="adaptive-environment__play shop-entry__play"/, "The Shop splash play control must not inherit the television-room blur state");
 assert.match(shopScript, /function preloadOpeningAssets[\s\S]*openingAssetReady\(openingHeroVideo, "loadeddata", 2500\)[\s\S]*iam:shop-opening-media-ready/, "The Shop must prioritize its opening local hero behind the splash");
 assert.match(television, /shopEntryMediaReady[\s\S]*iam:shop-opening-media-ready[\s\S]*completeShopEntry/, "The splash must wait for opening Shop media readiness before revealing the page");
@@ -542,8 +544,8 @@ assert.match(
 );
 assert.match(shopStyle, /\.shop-footer__legal\s*\{[\s\S]*grid-template-columns:\s*minmax\(0, 1\.6fr\) minmax\(260px, \.8fr\) auto[\s\S]*\.shop-footer__legal-identity\s*\{[\s\S]*grid-column:\s*2[\s\S]*text-transform:\s*none[\s\S]*\.shop-footer__acknowledgement\s*\{[\s\S]*grid-column:\s*1/, "Wide Shop footers must keep the acknowledgement and legal identity on the same row, with the acknowledgement first");
 assert.equal((shop.match(/data-shop-home/g) || []).length, 2, "Shop Home must appear exactly once in the sticky navigation and once in the footer");
-assert.match(shop, /shop\.css\?v=51e1ab0bb4f7/, "The corrected footer hierarchy release must load the content-derived Shop stylesheet revision");
-assert.match(shop, /shop\.js\?v=e757b0e880d9/, "The Shop shell must load the content-derived catalogue runtime");
+assert.match(shop, /shop\.css\?v=49ca2924fafc/, "The Shop shell must load the content-derived fixed masthead stylesheet revision");
+assert.match(shop, /shop\.js\?v=b62aa38746e5/, "The Shop shell must load the content-derived rotating masthead runtime");
 assert.match(
   shopStyle,
   /@media \(max-width: 700px\)[\s\S]*?\.shop-masthead__nav \{ gap: 6px; \}[\s\S]*?\.shop-masthead__actions \{ gap: 0; \}[\s\S]*?\.shop-theme,[\s\S]*?\.shop-music \{[\s\S]*?width: 28px;[\s\S]*?height: 44px;[\s\S]*?\.shop-theme \[data-shop-theme-label\],[\s\S]*?\.shop-music \[data-shop-music-label\] \{ font-size: 0; \}/,

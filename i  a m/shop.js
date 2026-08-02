@@ -30,6 +30,8 @@
   const themeLabel = document.querySelector("[data-shop-theme-label]");
   const heroVideos = Array.from(document.querySelectorAll("[data-shop-hero-video]"));
   const heroFullscreen = document.querySelector("[data-shop-hero-fullscreen]");
+  const shopMasthead = document.querySelector("[data-shop-masthead]");
+  const shopMastheadScenes = Array.from(document.querySelectorAll("[data-shop-masthead-scene]"));
   const musicButton = document.querySelector("[data-shop-music]");
   const musicLabel = document.querySelector("[data-shop-music-label]");
   const catalogueSection = document.querySelector("[data-shop-catalogue]");
@@ -89,7 +91,38 @@
   const catalogueFilter = window.IAMShopCatalogueFilter;
   let catalogueSearchTimer = 0;
   let activeHeroVideoIndex = 0;
+  let shopMastheadSceneIndex = 0;
+  let shopMastheadTimers = [];
   let openingPreloadPromise = null;
+  const shopMastheadTiming = {
+    nameIn: 1000,
+    fadeOut: 7600,
+    nextLanguage: 9000,
+  };
+
+  function scheduleShopMastheadTimer(callback, delay) {
+    shopMastheadTimers.push(window.setTimeout(callback, delay));
+  }
+
+  function initShopMastheadCycle() {
+    if (!shopMasthead || !shopMastheadScenes.length) return;
+
+    function runShopMastheadCycle() {
+      shopMastheadTimers.forEach((timer) => window.clearTimeout(timer));
+      shopMastheadTimers = [];
+      shopMastheadScenes.forEach((scene) => scene.classList.remove("is-visible"));
+
+      const scene = shopMastheadScenes[shopMastheadSceneIndex];
+      shopMasthead.setAttribute("aria-label", scene.dataset.shopMastheadLabel || "James Bondage");
+      shopMastheadSceneIndex = (shopMastheadSceneIndex + 1) % shopMastheadScenes.length;
+
+      scheduleShopMastheadTimer(() => scene.classList.add("is-visible"), shopMastheadTiming.nameIn);
+      scheduleShopMastheadTimer(() => scene.classList.remove("is-visible"), shopMastheadTiming.fadeOut);
+      scheduleShopMastheadTimer(runShopMastheadCycle, shopMastheadTiming.nextLanguage);
+    }
+
+    runShopMastheadCycle();
+  }
 
   function prepareSilentEditorialVideos() {
     if (!silentEditorialVideos.length) return;
@@ -1247,6 +1280,7 @@
   sexEdNext?.addEventListener("click", () => moveSexEdShelf(1));
 
   applyFilters();
+  initShopMastheadCycle();
   prepareSilentEditorialVideos();
   renderRoute();
   loadCatalogue();
