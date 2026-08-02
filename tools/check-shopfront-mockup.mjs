@@ -514,6 +514,12 @@ assert.match(shop, /shop-footer[\s\S]*james-bondage-lower-masthead\.mp4/, "Homep
 assert.match(shop, /shop-footer__legal[\s\S]*JAMES BONDAGE \/ UNIVERSAL MIND/, "Shop footer must use the final Universal Mind ownership line");
 assert.match(
   shop,
+  /shop-footer__acknowledgement[\s\S]*Australian Aboriginal flag[\s\S]*Universal Mind acknowledge the original custodians of the land, on which we live and operate\. Sovereignty is, was, and never will be ceded\. This will always be Gadigal, Eora Country \| Together, we are one \| Thanks and Namaste x \| 2026\./,
+  "The shared Shop footer must carry UM's exact acknowledgement of country and Aboriginal flag",
+);
+assert.match(shopStyle, /\.shop-footer__country-flag[\s\S]*linear-gradient\(to bottom, #000 0 50%, #e03c31 50% 100%\)[\s\S]*\.shop-footer__country-flag::after[\s\S]*background: #ffc72c/, "The Shop acknowledgement must render the Aboriginal flag beside the statement");
+assert.match(
+  shop,
   /shop-masthead__nav[\s\S]*?<a href="#top" data-shop-home[^>]*>home<\/a>[\s\S]*?<a href="#shop-about">about<\/a>[\s\S]*?<summary>shop<\/summary>[\s\S]*?<a href="#giving-back">giving back<\/a>[\s\S]*?<a href="#sex-ed">sex ed<\/a>/,
   "The sticky Shop navigation must begin with Home and preserve the approved Home / About / Shop / Giving Back / Sex Ed order",
 );
@@ -523,7 +529,7 @@ assert.match(
   "The Shop footer must provide a direct Home route",
 );
 assert.equal((shop.match(/data-shop-home/g) || []).length, 2, "Shop Home must appear exactly once in the sticky navigation and once in the footer");
-assert.match(shop, /shop\.css\?v=shop-champagne-home-1-home-nav-2/, "The Shop Home navigation release must refresh the responsive Shop stylesheet");
+assert.match(shop, /shop\.css\?v=011842b23426/, "The acknowledgement of country release must load the content-derived Shop stylesheet revision");
 assert.match(shop, /shop\.js\?v=e757b0e880d9/, "The Shop shell must load the content-derived catalogue runtime");
 assert.match(
   shopStyle,
