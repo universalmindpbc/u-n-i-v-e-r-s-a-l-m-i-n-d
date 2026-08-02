@@ -90,6 +90,10 @@ body.privacy-first-page {
   text-align: left;
 }
 
+html[data-adaptive-frame="embedded"] .privacy-brand {
+  display: none;
+}
+
 .privacy-brand .brand-mark {
   width: clamp(60px, 4.35vw, 88px);
   height: clamp(60px, 4.35vw, 88px);
