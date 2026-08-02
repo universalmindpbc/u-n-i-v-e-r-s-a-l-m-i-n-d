@@ -32,7 +32,11 @@
       html[data-shop-entry="requested"] .site-shell,
       html[data-shop-entry="loading"] .site-shell { visibility: hidden; }
       html[data-shop-entry] .shop-entry { display: grid; }
-      html[data-shop-entry] .shop-entry h1 { text-transform: none; }
+      html[data-shop-entry] .shop-entry h1 {
+        font-size: clamp(48px, 7.4vw, 108px);
+        text-transform: none;
+        white-space: nowrap;
+      }
     </style>
     <link rel="icon" type="image/png" sizes="32x32" href="/vogue/iam/favicon.png?v=iam-favicon-4">
     <link rel="shortcut icon" type="image/png" href="/vogue/iam/favicon.png?v=iam-favicon-4">

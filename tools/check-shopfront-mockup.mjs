@@ -77,6 +77,7 @@ assert.match(shop, /<title>James Bondage \| Shop<\/title>/, "Standalone Shop tit
 assert.match(index, /document\.title = "James Bondage \| Shop"/, "Shop splash title must use the approved pipe separator");
 assert.match(index, /<h1 id="shop-entry-title" lang="ru" dir="ltr">Джеймс Бондаж<\/h1>/, "The Shop splash must remain static in Russian");
 assert.doesNotMatch(index, /data-shop-entry-language|initShopEntryMastheadCycle|shop-entry__masthead/, "The Shop splash must not animate or carry rotating masthead state");
+assert.match(index, /html\[data-shop-entry\] \.shop-entry h1 \{[\s\S]*white-space: nowrap;/, "The static Russian splash title must remain on one line without moving the controls");
 assert.match(
   television,
   /const SHOP_SHELL_VERSION = "6273de3c84b3";[\s\S]*function frameHref\(link\)[\s\S]*url\.searchParams\.set\("v", SHOP_SHELL_VERSION\)/,
