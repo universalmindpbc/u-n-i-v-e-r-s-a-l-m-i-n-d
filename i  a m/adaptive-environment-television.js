@@ -6978,6 +6978,9 @@
     if (/\/shop\.html$/i.test(url.pathname)) {
       url.searchParams.set("v", SHOP_SHELL_VERSION);
     }
+    if (/\/privacy-first\.html$/i.test(url.pathname)) {
+      url.searchParams.set("privacyFrame", "single-nav-2");
+    }
     url.searchParams.set("adaptiveFrame", "1");
     url.searchParams.set("musicTelevisionFrame", "1");
     url.searchParams.set("navigationShell", "1");
