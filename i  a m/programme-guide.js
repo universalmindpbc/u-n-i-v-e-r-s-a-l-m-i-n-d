@@ -106,7 +106,7 @@
 
   function eventsFor(channel, nowMs, requestedHours) {
     const entries = Array.isArray(channel?.schedule) ? channel.schedule : [];
-    const epochMs = Date.parse(schedule?.epoch_utc || "");
+    const epochMs = Date.parse(channel?.epoch_utc || schedule?.epoch_utc || "");
     const cycleSeconds = entries.reduce((sum, entry) => sum + Number(entry.duration_seconds || 0), 0);
     if (!entries.length || !Number.isFinite(epochMs) || cycleSeconds <= 0) return [];
 

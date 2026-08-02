@@ -34,6 +34,14 @@ const modul8Parties = [
   "sven-vath-tomorrowland-belgium-2016",
   "sonja-moonear-trotamundo-lost-beach-club",
 ];
+const legacyModul8Parties = [
+  "peggy-gou-palais-des-beaux-arts-cercle",
+  "miss-monique-biosphere-montreal-cercle",
+  "nina-kraviz-eiffel-tower-cercle",
+  "nastia-drum-bass-sunset-the-lab-ibiza",
+  "carl-cox-chateau-de-chambord-cercle",
+];
+const completeModul8Programme = new Set([...legacyModul8Parties, ...modul8Parties]);
 const raveId = "rave-episode-1-solyra";
 const fullNineInchNoizeId = "nine-inch-noize-coachella-2026-live-set";
 const closerId = "nine-inch-noize-closer-coachella-2026-live";
@@ -50,6 +58,7 @@ const guide = read("universal-one-programme-guide-v1.txt");
 const clock = read("broadcast-clock-v1.js");
 const index = read("index.html");
 const alternateEntry = read("adaptive-environment-television.html");
+const cafeDelMarEntry = read("cafe-del-mar-home.html");
 
 assert.equal(tensor.batch_id, "programme-2026-07-30");
 assert.equal(tensor.records.length, 25);
@@ -85,7 +94,26 @@ for (const track of programmeTracks) {
 }
 
 const channel = (id) => schedule.channels.find((candidate) => candidate.id === id);
-assert.deepEqual(channel("party-modul8-infinity").schedule.slice(-22).map((entry) => entry.track_id), modul8Parties);
+const modul8GlobalWeek = channel("party-modul8-infinity");
+assert.equal(schedule.version, "broadcast_schedule_v1.6");
+assert.equal(schedule.epoch_utc, "2026-07-24T00:00:00.000Z");
+assert.equal(modul8GlobalWeek.epoch_utc, "2026-08-02T14:00:00.000Z");
+assert.equal(modul8GlobalWeek.schedule.length, 108);
+assert.deepEqual(new Set(modul8GlobalWeek.schedule.map((entry) => entry.track_id)), completeModul8Programme);
+for (const trackId of completeModul8Programme) {
+  assert.equal(modul8GlobalWeek.schedule.filter((entry) => entry.track_id === trackId).length, 4, `${trackId} must play once in every pass.`);
+}
+for (let pass = 1; pass <= 4; pass += 1) {
+  const entries = modul8GlobalWeek.schedule.filter((entry) => entry.global_week_pass === pass);
+  assert.equal(entries.length, 27);
+  assert.deepEqual(new Set(entries.map((entry) => entry.track_id)), completeModul8Programme);
+  assert.deepEqual(entries.map((entry) => entry.global_week_position), Array.from({ length: 27 }, (_, index) => index + 1));
+}
+assert.equal(modul8GlobalWeek.global_week_programming?.strategy, "four_reordered_passes_global_daypart_arc");
+assert.equal(modul8GlobalWeek.global_week_programming?.priority_market, "Australia/Sydney");
+assert.equal(modul8GlobalWeek.global_week_programming?.cycle_seconds, 601325.8);
+assert.ok(Math.abs(modul8GlobalWeek.schedule.reduce((sum, entry) => sum + entry.duration_seconds, 0) - 601325.8) < .001);
+assert.equal(modul8GlobalWeek.descriptor, "rave / electronic / experimental");
 assert.equal(channel("video-modul8-infinity").schedule.at(-1).track_id, raveId);
 assert.equal(channel("video-james-bondage").schedule.at(-1).track_id, closerId);
 assert.deepEqual(channel("party-james-bondage").schedule.map((entry) => [entry.track_id, entry.media_type]), [
@@ -108,6 +136,15 @@ assert.equal(raveProfile.broadcast_channel, "video-modul8-infinity");
 assert.equal(tensorById.get(fullNineInchNoizeId).profile.broadcast_channel, "party-james-bondage");
 assert.equal(tensorById.get(closerId).profile.broadcast_channel, "video-james-bondage");
 assert.equal(programmeTracks.some((track) => track.shop_eligible === true), false, "No programme-batch asset may enter Shop.");
+assert.match(television, /function trackDisplayMetadataAt\(candidate, playbackSeconds = 0\)/);
+assert.match(television, /syncCurrentCuePresentation\(\)/);
+assert.match(television, /window\.IAMCueSheet = Object\.freeze\(\{/);
+assert.match(television, /video\.addEventListener\("seeked", \(\) => \{/);
+assert.match(television, /const display = musicItemDisplayMetadata\(item\)/);
+assert.match(television, /window\.clearTimeout\(reactionWalletCollapseTimer\);\n      setWalletView\("categories"\);\n      button\.blur\(\);/);
+for (const entry of [index, alternateEntry, cafeDelMarEntry]) {
+  assert.doesNotMatch(entry, /data-flower-cue|data-homepage-radar-trigger|how we understand your needs|learn how it works/i);
+}
 
 assert.match(guide, /Version: universal_one_programme_guide_v1\.2/);
 assert.match(guide, /22 verified programme additions/);
@@ -126,4 +163,4 @@ assert.ok(index.includes(clockToken) && alternateEntry.includes(clockToken));
 const televisionToken = `music-tv-${sha12("adaptive-environment-television.js")}`;
 assert.ok(index.includes(televisionToken) && alternateEntry.includes(televisionToken));
 
-console.log("Programme catalogue release checks passed: Notion 25/25, Tensor 25/25, exact routes, 18 Rave cues, Universal One, Stream and schedule.");
+console.log("Programme catalogue release checks passed: Notion/Tensor 25/25, exact routes, 18 live Rave cues, Bloom wallet recovery, and 108-occurrence modul8 infinity global week.");

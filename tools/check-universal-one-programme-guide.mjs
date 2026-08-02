@@ -38,7 +38,7 @@ assert.equal(programmeBatchSource?.routing_verified, true);
 const expectedEditorial = new Map([
   ["inner-planes", ["ambient / sleep / sunrise", "Ambient · sleep · sunrise"]],
   ["champagne-bohemia", ["Balearic / sunset / chillout", "Balearic · sunset · chillout"]],
-  ["modul8-infinity", ["rave / house / techno / future bass / future psychedelic beats / hiphop", "Rave · house · techno · future bass · future psychedelic beats · hiphop"]],
+  ["modul8-infinity", ["rave / electronic / experimental", "Rave · house · techno · future bass · future psychedelic beats · hiphop"]],
   ["james-bondage", ["minimal / electro / EBM", "Minimal · electro · EBM"]],
 ]);
 

@@ -178,7 +178,6 @@
   const pageClose = document.querySelector("[data-television-page-close]");
   const siteShell = document.querySelector(".site-shell");
   const flowerTrigger = document.querySelector(".global-nav-trigger");
-  const learnCue = document.querySelector("[data-homepage-radar-trigger]");
   const walletOnboarding = document.querySelector("[data-wallet-onboarding]");
   const radarClose = document.querySelector("[data-television-radar-close]");
   const fullscreenButton = document.querySelector("[data-television-fullscreen]");
@@ -357,15 +356,13 @@
   let shopEntryFrameReady = false;
   let shopEntryMediaReady = false;
   let shopEntryMediaFallbackTimer = 0;
-  let learnCueShown = false;
-  let learnCueUnlocked = false;
   let walletOnboardingEngaged = false;
   let walletOnboardingLineOneTimer = 0;
   let walletOnboardingLineTwoTimer = 0;
   let walletOnboardingDismissTimer = 0;
-  let learnCueAfterWalletTimer = 0;
   let localVideoFrame = null;
   let localVideo = null;
+  let activeCueIdentity = "";
   let preloadedMusicVideo = null;
   let preloadedMusicTrackId = "";
   let preloadedMusicPromise = null;
@@ -634,6 +631,76 @@
     )) || null;
   }
 
+  function trackDisplayMetadataAt(candidate, playbackSeconds = 0) {
+    const artist = candidate?.displayArtist || candidate?.artist || "Universal Mind";
+    const title = candidate?.displayTitle || candidate?.title || "Music Television";
+    const cuePoints = Array.isArray(candidate?.cuePoints) ? candidate.cuePoints : [];
+    const position = Math.max(0, Number(playbackSeconds) || 0);
+    let cuePoint = null;
+    for (const point of cuePoints) {
+      if (Number(point?.startSeconds) > position + .15) break;
+      cuePoint = point;
+    }
+    if (!cuePoint) return { artist, title, label: `${artist} — ${title}`, cueStartSeconds: null };
+    const cueArtist = String(cuePoint.artist || artist);
+    const cueTitle = String(cuePoint.title || title);
+    return {
+      artist: cueArtist,
+      title: cueTitle,
+      label: `${cueArtist} — ${cueTitle}`,
+      cueStartSeconds: Number(cuePoint.startSeconds) || 0,
+    };
+  }
+
+  function currentTrackPlaybackSeconds() {
+    if (localVideo?.dataset.musicTrackId === track.id) return Math.max(0, Number(localVideo.currentTime) || 0);
+    const state = broadcastChannelId ? window.IAMBroadcastClock?.stateAt?.(broadcastChannelId) : null;
+    return state?.trackId === track.id ? Math.max(0, Number(state.offsetSeconds) || 0) : 0;
+  }
+
+  function currentTrackDisplayMetadata() {
+    return trackDisplayMetadataAt(track, currentTrackPlaybackSeconds());
+  }
+
+  function musicItemDisplayMetadata(item) {
+    const candidate = item?.trackRef || findTrack(item?.broadcastState?.trackId || item?.id);
+    if (!candidate) {
+      const artist = item?.artist || item?.provider || item?.broadcastChannelName || "Universal Mind";
+      const title = item?.display_title || item?.title || "Music Television";
+      return { artist, title, label: `${artist} — ${title}`, cueStartSeconds: null };
+    }
+    const isActiveProgramme = candidate.id === track.id && item?.broadcastChannelId === broadcastChannelId;
+    const position = isActiveProgramme
+      ? currentTrackPlaybackSeconds()
+      : Math.max(0, Number(item?.broadcastState?.offsetSeconds) || 0);
+    return trackDisplayMetadataAt(candidate, position);
+  }
+
+  function syncCurrentCuePresentation(force = false) {
+    const metadata = currentTrackDisplayMetadata();
+    const identity = `${track.id}:${metadata.cueStartSeconds ?? "programme"}`;
+    if (!force && identity === activeCueIdentity) return;
+    activeCueIdentity = identity;
+    document.body.dataset.adaptiveCueArtist = metadata.artist;
+    document.body.dataset.adaptiveCueTitle = metadata.title;
+    document.body.dataset.adaptiveCueStartSeconds = metadata.cueStartSeconds === null ? "" : String(metadata.cueStartSeconds);
+    syncSelectedTrackCopy();
+    setMusicTelevisionMetadata();
+    updateMusicSelector();
+    if (musicShelfOpen) renderMusicShelf();
+  }
+
+  window.IAMCueSheet = Object.freeze({
+    version: "programme_cue_sheet_v1.0",
+    metadataAt(trackId, playbackSeconds = 0) {
+      const candidate = findTrack(trackId);
+      return candidate ? trackDisplayMetadataAt(candidate, playbackSeconds) : null;
+    },
+    current() {
+      return { trackId: track.id, playbackSeconds: currentTrackPlaybackSeconds(), ...currentTrackDisplayMetadata() };
+    },
+  });
+
   function readJsonStorage(key) {
     try {
       const raw = window.localStorage.getItem(key) || window.sessionStorage.getItem(key);
@@ -693,8 +760,9 @@
   function syncSelectedTrackCopy() {
     const artistLine = document.querySelector(".adaptive-environment__source");
     const titleLine = document.querySelector(".adaptive-environment__station");
-    const artistText = track.displayArtist || track.artist;
-    const titleText = track.displayTitle || track.title;
+    const display = currentTrackDisplayMetadata();
+    const artistText = display.artist;
+    const titleText = display.title;
     const params = new URLSearchParams(window.location.search);
     const selectionSource = params.get("selection_source") || (params.get("selected_track_id") ? "explicit_url" : "stored_or_default");
 
@@ -933,9 +1001,11 @@
   function setMusicTelevisionMetadata() {
     if (!("mediaSession" in window.navigator) || !window.MediaMetadata) return;
 
+    const display = currentTrackDisplayMetadata();
+
     window.navigator.mediaSession.metadata = new window.MediaMetadata({
-      title: track.title,
-      artist: track.artist,
+      title: display.title,
+      artist: display.artist,
       album: track.album || "Adaptive Environment Music Television",
     });
   }
@@ -1336,13 +1406,17 @@
     video.addEventListener("loadedmetadata", () => {
       if (video !== localVideo) return;
       updateTimecode();
+      syncCurrentCuePresentation(true);
       scheduleEdgeCropScan(video, 260);
     });
     video.addEventListener("timeupdate", () => {
       if (video !== localVideo) return;
       updateTimecode();
+      syncCurrentCuePresentation();
       scheduleEdgeCropScan(video, 0);
-      revealLearnCueWhenReady();
+    });
+    video.addEventListener("seeked", () => {
+      if (video === localVideo) syncCurrentCuePresentation(true);
     });
     video.addEventListener("ended", () => {
       if (video === localVideo) startTelevisionContinuation();
@@ -2044,9 +2118,10 @@
         label: station?.display_title || station?.title || "Universal Mind Radio",
       };
     }
+    const display = currentTrackDisplayMetadata();
     return {
       mode: track.presentation === "live_dj_set" ? "parties" : "videos",
-      label: `${track.displayArtist || track.artist} — ${track.displayTitle || track.title}`,
+      label: display.label,
     };
   }
 
@@ -2920,8 +2995,9 @@
     const order = musicShelfOrders[musicChannelMode] || [];
     const active = musicActiveItem();
     const position = Math.max(0, order.findIndex((item) => item.id === active?.id));
+    const display = active ? musicItemDisplayMetadata(active) : null;
     const label = active
-      ? `${active.broadcastChannelName} — ${musicChannelMode === "radio" ? active.display_title : active.artist}`
+      ? `${active.broadcastChannelName} — ${musicChannelMode === "radio" ? active.display_title : display.artist}`
       : musicModeLabel().toUpperCase();
     if (musicSelectorLabel) musicSelectorLabel.textContent = label;
     if (musicSelectorCount) musicSelectorCount.textContent = order.length ? `${position + 1} / ${order.length}` : "0 / 0";
@@ -3089,8 +3165,9 @@
     musicShelfTrack.innerHTML = order.map((item, position) => {
       const current = item.broadcastChannelId === activeBroadcastChannelIdForMode(musicChannelMode);
       const recommended = item.id === musicShelfRecommendationIds[musicChannelMode];
-      const provider = musicChannelMode === "radio" ? item.provider : item.artist;
-      const title = item.display_title || item.title;
+      const display = musicItemDisplayMetadata(item);
+      const provider = musicChannelMode === "radio" ? item.provider : display.artist;
+      const title = musicChannelMode === "radio" ? (item.display_title || item.title) : display.title;
       const action = item.unavailable ? "Programming soon" : "Open shared broadcast";
       const cardTitle = item.unavailable ? item.broadcastChannelName : musicChannelMode === "radio" ? item.title : provider;
       const cardDetail = item.unavailable ? "Programming soon" : musicChannelMode === "radio" ? item.provider : title;
@@ -5498,16 +5575,6 @@
     audioWalletInteracting = isInteracting;
   }
 
-  function revealLearnCueWhenReady() {
-    if (learnCueShown || !walletOnboardingEngaged || !learnCueUnlocked) return;
-    if (document.body.classList.contains("nav-open") || document.body.classList.contains("homepage-radar-open")) return;
-    if (document.body.classList.contains("television-page-view-open")) return;
-
-    learnCueShown = true;
-    learnCue?.setAttribute("aria-hidden", "false");
-    document.body.classList.add("flower-cue-visible");
-  }
-
   function beginWalletOnboarding() {
     if (!walletOnboarding || walletOnboardingEngaged) return;
     window.clearTimeout(walletOnboardingLineOneTimer);
@@ -5537,20 +5604,6 @@
     window.setTimeout(() => {
       walletOnboarding?.setAttribute("aria-hidden", "true");
     }, 950);
-    window.clearTimeout(learnCueAfterWalletTimer);
-    learnCueAfterWalletTimer = window.setTimeout(() => {
-      learnCueUnlocked = true;
-      revealLearnCueWhenReady();
-    }, 5000);
-  }
-
-  function showPersistentLearnCue() {
-    if (!learnCueShown) return;
-    if (document.body.classList.contains("nav-open") || document.body.classList.contains("homepage-radar-open")) return;
-    if (document.body.classList.contains("television-page-view-open")) return;
-
-    learnCue?.setAttribute("aria-hidden", "false");
-    document.body.classList.add("flower-cue-visible");
   }
 
   async function startFlowerSpin(options = {}) {
@@ -7205,12 +7258,10 @@
       pageViewPreviousBlend = null;
     }
     setProgrammeMixLevel(null);
-    learnCue?.setAttribute("aria-hidden", "true");
     document.querySelectorAll("[data-homepage-radar]").forEach((radar) => {
       radar.setAttribute("aria-hidden", "true");
     });
     closeVideoNavigation();
-    showPersistentLearnCue();
   }
 
   function openVideoRadar(event) {
@@ -7219,7 +7270,6 @@
 
     document.body.classList.remove("flower-cue-visible", "television-page-view-open", "television-wallet-page-open");
     document.body.classList.add("homepage-radar-open", "homepage-radar-arming");
-    learnCue?.setAttribute("aria-hidden", "true");
     pageView?.setAttribute("aria-hidden", "true");
 
     document.querySelectorAll("[data-homepage-radar]").forEach((radar) => {
@@ -7248,7 +7298,6 @@
     document.querySelectorAll(".homepage-radar-frame").forEach((frame) => {
       frame.contentWindow?.postMessage({ type: "iam:homepage-radar-disable" }, window.location.origin);
     });
-    showPersistentLearnCue();
   }
 
 
@@ -7820,14 +7869,9 @@
       const reactionType = button.dataset.televisionReaction || "daisy";
       releaseReactionFlood(reactionType);
       window.IAMBroadcastInteractions?.sendBloom?.(reactionType);
-      const walletIsActive =
-        audioWalletInteracting ||
-        reactionWallet?.matches(":hover") ||
-        reactionWallet?.contains(document.activeElement);
-      if (!walletIsActive) {
-        button.blur();
-        scheduleReactionWalletCollapse(120);
-      }
+      window.clearTimeout(reactionWalletCollapseTimer);
+      setWalletView("categories");
+      button.blur();
     });
   });
   window.addEventListener("iam:shared-bloom", (event) => {
@@ -7835,7 +7879,6 @@
     const density = Math.max(1, Math.min(3, Number(event.detail?.density) || 1));
     releaseReactionFlood(reactionType, { shared: true, density });
   });
-  learnCue?.addEventListener("click", openVideoRadar);
   radarClose?.addEventListener("click", closeVideoRadar);
   pageClose?.addEventListener("click", () => returnToTelevisionRoom());
   supportClose?.addEventListener("click", closeSupportCard);

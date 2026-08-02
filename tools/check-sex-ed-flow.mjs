@@ -46,7 +46,7 @@ assert.match(index, /James Bondage Health · sex-ed/);
 assert.match(index, /data-television-live-pill/);
 assert.match(index, /data-reaction-wallet/);
 assert.match(index, /data-community-globe-frame/);
-assert.match(index, /See how we understand your needs/);
+assert.doesNotMatch(index, /See how we understand your needs/);
 assert.match(televisionCss, /min-height: 106px/);
 assert.match(televisionCss, /\.adaptive-television-sex-ed-link \{/);
 assert.match(televisionCss, /border: 1px solid rgba\(255, 255, 255, 0\.3\)/);

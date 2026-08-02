@@ -1,5 +1,5 @@
 {
-  "version": "broadcast_schedule_v1.5",
+  "version": "broadcast_schedule_v1.6",
   "stage": "five_music_rooms_live_safety_cushion_ready",
   "epoch_utc": "2026-07-24T00:00:00.000Z",
   "extended_session_format_policy": {
@@ -96,7 +96,7 @@
       "energy_id": "underground-intensity",
       "editorial_id": "modul8-infinity",
       "name": "modul8 infinity",
-      "descriptor": "rave / house / techno / future bass / future psychedelic beats / hiphop",
+      "descriptor": "rave / electronic / experimental",
       "description": "Rave · house · techno · future bass · future psychedelic beats · hiphop",
       "schedule": [
         {
@@ -320,118 +320,673 @@
       "energy_id": "underground-intensity",
       "editorial_id": "modul8-infinity",
       "name": "modul8 infinity",
-      "descriptor": "rave / house / techno / future bass / future psychedelic beats / hiphop",
+      "descriptor": "rave / electronic / experimental",
       "description": "Rave · house · techno · future bass · future psychedelic beats · hiphop",
+      "epoch_utc": "2026-08-02T14:00:00.000Z",
       "schedule": [
         {
-          "track_id": "peggy-gou-palais-des-beaux-arts-cercle",
-          "duration_seconds": 6500
-        },
-        {
-          "track_id": "miss-monique-biosphere-montreal-cercle",
-          "duration_seconds": 7985.5
-        },
-        {
-          "track_id": "nina-kraviz-eiffel-tower-cercle",
-          "duration_seconds": 6762.9
-        },
-        {
-          "track_id": "nastia-drum-bass-sunset-the-lab-ibiza",
-          "duration_seconds": 5135.2
-        },
-        {
-          "track_id": "carl-cox-chateau-de-chambord-cercle",
-          "duration_seconds": 7986.09
-        },
-        {
-          "track_id": "boys-noize-coachella-2026-live",
-          "duration_seconds": 4553.85
-        },
-        {
-          "track_id": "pete-cannon-manchester",
-          "duration_seconds": 10593.78
-        },
-        {
-          "track_id": "lilly-palmer-stone-quarry-germany",
-          "duration_seconds": 3980.71
-        },
-        {
-          "track_id": "david-guetta-tomorrowland-2026",
-          "duration_seconds": 4575.72
-        },
-        {
-          "track_id": "charlotte-de-witte-tomorrowland-winter-2026",
-          "duration_seconds": 3619.34
-        },
-        {
-          "track_id": "maayan-nidam-boiler-room-bucharest",
-          "duration_seconds": 4258.77
-        },
-        {
-          "track_id": "anfisa-letyago-dj-mag-hq",
-          "duration_seconds": 3628.37
-        },
-        {
-          "track_id": "lilly-palmer-dj-mag-hq",
-          "duration_seconds": 3459.98
-        },
-        {
-          "track_id": "lilly-palmer-edc-las-vegas-2026",
-          "duration_seconds": 3660.97
-        },
-        {
-          "track_id": "sonja-moonear-tomorrowland-belgium-2016",
-          "duration_seconds": 5411.64
-        },
-        {
-          "track_id": "margaret-dygas-submarine",
-          "duration_seconds": 7878.44
-        },
-        {
-          "track_id": "cassy-sunday-school-miami",
-          "duration_seconds": 2512.52
+          "track_id": "sven-vath-tomorrowland-belgium-2016",
+          "duration_seconds": 1864.26,
+          "global_week_pass": 1,
+          "global_week_position": 1
         },
         {
           "track_id": "ellen-allien-le-jardin-suspendu-paris",
-          "duration_seconds": 5224.72
-        },
-        {
-          "track_id": "ellen-allien-boiler-room-sydney",
-          "duration_seconds": 3866.31
-        },
-        {
-          "track_id": "sven-vath-boiler-room-marseille",
-          "duration_seconds": 7021.74
-        },
-        {
-          "track_id": "sven-vath-awakenings-festival-2017",
-          "duration_seconds": 3648.23
-        },
-        {
-          "track_id": "ricardo-villalobos-arpiar-circo-loco-ibiza",
-          "duration_seconds": 3273.57
-        },
-        {
-          "track_id": "ricardo-villalobos-sunwaves-romania",
-          "duration_seconds": 3238.6
+          "duration_seconds": 5224.72,
+          "global_week_pass": 1,
+          "global_week_position": 2
         },
         {
           "track_id": "ricardo-villalobos-franco-cinelli-house-music-special",
-          "duration_seconds": 12895.71
+          "duration_seconds": 12895.71,
+          "global_week_pass": 1,
+          "global_week_position": 3
+        },
+        {
+          "track_id": "ricardo-villalobos-sunwaves-romania",
+          "duration_seconds": 3238.6,
+          "global_week_pass": 1,
+          "global_week_position": 4
+        },
+        {
+          "track_id": "ellen-allien-boiler-room-sydney",
+          "duration_seconds": 3866.31,
+          "global_week_pass": 1,
+          "global_week_position": 5
+        },
+        {
+          "track_id": "margaret-dygas-submarine",
+          "duration_seconds": 7878.44,
+          "global_week_pass": 1,
+          "global_week_position": 6
+        },
+        {
+          "track_id": "lilly-palmer-dj-mag-hq",
+          "duration_seconds": 3459.98,
+          "global_week_pass": 1,
+          "global_week_position": 7
+        },
+        {
+          "track_id": "sven-vath-awakenings-festival-2017",
+          "duration_seconds": 3648.23,
+          "global_week_pass": 1,
+          "global_week_position": 8
+        },
+        {
+          "track_id": "nastia-drum-bass-sunset-the-lab-ibiza",
+          "duration_seconds": 5135.2,
+          "global_week_pass": 1,
+          "global_week_position": 9
+        },
+        {
+          "track_id": "lilly-palmer-edc-las-vegas-2026",
+          "duration_seconds": 3660.97,
+          "global_week_pass": 1,
+          "global_week_position": 10
         },
         {
           "track_id": "ricardo-villalobos-ruta-5-sacre-paris",
-          "duration_seconds": 12498.12
+          "duration_seconds": 12498.12,
+          "global_week_pass": 1,
+          "global_week_position": 11
         },
         {
-          "track_id": "sven-vath-tomorrowland-belgium-2016",
-          "duration_seconds": 1864.26
+          "track_id": "nina-kraviz-eiffel-tower-cercle",
+          "duration_seconds": 6762.9,
+          "global_week_pass": 1,
+          "global_week_position": 12
+        },
+        {
+          "track_id": "anfisa-letyago-dj-mag-hq",
+          "duration_seconds": 3628.37,
+          "global_week_pass": 1,
+          "global_week_position": 13
+        },
+        {
+          "track_id": "charlotte-de-witte-tomorrowland-winter-2026",
+          "duration_seconds": 3619.34,
+          "global_week_pass": 1,
+          "global_week_position": 14
+        },
+        {
+          "track_id": "miss-monique-biosphere-montreal-cercle",
+          "duration_seconds": 7985.5,
+          "global_week_pass": 1,
+          "global_week_position": 15
+        },
+        {
+          "track_id": "peggy-gou-palais-des-beaux-arts-cercle",
+          "duration_seconds": 6500,
+          "global_week_pass": 1,
+          "global_week_position": 16
+        },
+        {
+          "track_id": "sven-vath-boiler-room-marseille",
+          "duration_seconds": 7021.74,
+          "global_week_pass": 1,
+          "global_week_position": 17
         },
         {
           "track_id": "sonja-moonear-trotamundo-lost-beach-club",
-          "duration_seconds": 4296.41
+          "duration_seconds": 4296.41,
+          "global_week_pass": 1,
+          "global_week_position": 18
+        },
+        {
+          "track_id": "lilly-palmer-stone-quarry-germany",
+          "duration_seconds": 3980.71,
+          "global_week_pass": 1,
+          "global_week_position": 19
+        },
+        {
+          "track_id": "carl-cox-chateau-de-chambord-cercle",
+          "duration_seconds": 7986.09,
+          "global_week_pass": 1,
+          "global_week_position": 20
+        },
+        {
+          "track_id": "cassy-sunday-school-miami",
+          "duration_seconds": 2512.52,
+          "global_week_pass": 1,
+          "global_week_position": 21
+        },
+        {
+          "track_id": "ricardo-villalobos-arpiar-circo-loco-ibiza",
+          "duration_seconds": 3273.57,
+          "global_week_pass": 1,
+          "global_week_position": 22
+        },
+        {
+          "track_id": "david-guetta-tomorrowland-2026",
+          "duration_seconds": 4575.72,
+          "global_week_pass": 1,
+          "global_week_position": 23
+        },
+        {
+          "track_id": "pete-cannon-manchester",
+          "duration_seconds": 10593.78,
+          "global_week_pass": 1,
+          "global_week_position": 24
+        },
+        {
+          "track_id": "maayan-nidam-boiler-room-bucharest",
+          "duration_seconds": 4258.77,
+          "global_week_pass": 1,
+          "global_week_position": 25
+        },
+        {
+          "track_id": "boys-noize-coachella-2026-live",
+          "duration_seconds": 4553.85,
+          "global_week_pass": 1,
+          "global_week_position": 26
+        },
+        {
+          "track_id": "sonja-moonear-tomorrowland-belgium-2016",
+          "duration_seconds": 5411.64,
+          "global_week_pass": 1,
+          "global_week_position": 27
+        },
+        {
+          "track_id": "charlotte-de-witte-tomorrowland-winter-2026",
+          "duration_seconds": 3619.34,
+          "global_week_pass": 2,
+          "global_week_position": 1
+        },
+        {
+          "track_id": "pete-cannon-manchester",
+          "duration_seconds": 10593.78,
+          "global_week_pass": 2,
+          "global_week_position": 2
+        },
+        {
+          "track_id": "nastia-drum-bass-sunset-the-lab-ibiza",
+          "duration_seconds": 5135.2,
+          "global_week_pass": 2,
+          "global_week_position": 3
+        },
+        {
+          "track_id": "sonja-moonear-trotamundo-lost-beach-club",
+          "duration_seconds": 4296.41,
+          "global_week_pass": 2,
+          "global_week_position": 4
+        },
+        {
+          "track_id": "cassy-sunday-school-miami",
+          "duration_seconds": 2512.52,
+          "global_week_pass": 2,
+          "global_week_position": 5
+        },
+        {
+          "track_id": "ricardo-villalobos-arpiar-circo-loco-ibiza",
+          "duration_seconds": 3273.57,
+          "global_week_pass": 2,
+          "global_week_position": 6
+        },
+        {
+          "track_id": "margaret-dygas-submarine",
+          "duration_seconds": 7878.44,
+          "global_week_pass": 2,
+          "global_week_position": 7
+        },
+        {
+          "track_id": "maayan-nidam-boiler-room-bucharest",
+          "duration_seconds": 4258.77,
+          "global_week_pass": 2,
+          "global_week_position": 8
+        },
+        {
+          "track_id": "lilly-palmer-edc-las-vegas-2026",
+          "duration_seconds": 3660.97,
+          "global_week_pass": 2,
+          "global_week_position": 9
+        },
+        {
+          "track_id": "ricardo-villalobos-ruta-5-sacre-paris",
+          "duration_seconds": 12498.12,
+          "global_week_pass": 2,
+          "global_week_position": 10
+        },
+        {
+          "track_id": "anfisa-letyago-dj-mag-hq",
+          "duration_seconds": 3628.37,
+          "global_week_pass": 2,
+          "global_week_position": 11
+        },
+        {
+          "track_id": "sven-vath-tomorrowland-belgium-2016",
+          "duration_seconds": 1864.26,
+          "global_week_pass": 2,
+          "global_week_position": 12
+        },
+        {
+          "track_id": "lilly-palmer-stone-quarry-germany",
+          "duration_seconds": 3980.71,
+          "global_week_pass": 2,
+          "global_week_position": 13
+        },
+        {
+          "track_id": "carl-cox-chateau-de-chambord-cercle",
+          "duration_seconds": 7986.09,
+          "global_week_pass": 2,
+          "global_week_position": 14
+        },
+        {
+          "track_id": "sven-vath-boiler-room-marseille",
+          "duration_seconds": 7021.74,
+          "global_week_pass": 2,
+          "global_week_position": 15
+        },
+        {
+          "track_id": "ellen-allien-boiler-room-sydney",
+          "duration_seconds": 3866.31,
+          "global_week_pass": 2,
+          "global_week_position": 16
+        },
+        {
+          "track_id": "david-guetta-tomorrowland-2026",
+          "duration_seconds": 4575.72,
+          "global_week_pass": 2,
+          "global_week_position": 17
+        },
+        {
+          "track_id": "boys-noize-coachella-2026-live",
+          "duration_seconds": 4553.85,
+          "global_week_pass": 2,
+          "global_week_position": 18
+        },
+        {
+          "track_id": "nina-kraviz-eiffel-tower-cercle",
+          "duration_seconds": 6762.9,
+          "global_week_pass": 2,
+          "global_week_position": 19
+        },
+        {
+          "track_id": "lilly-palmer-dj-mag-hq",
+          "duration_seconds": 3459.98,
+          "global_week_pass": 2,
+          "global_week_position": 20
+        },
+        {
+          "track_id": "ricardo-villalobos-franco-cinelli-house-music-special",
+          "duration_seconds": 12895.71,
+          "global_week_pass": 2,
+          "global_week_position": 21
+        },
+        {
+          "track_id": "ricardo-villalobos-sunwaves-romania",
+          "duration_seconds": 3238.6,
+          "global_week_pass": 2,
+          "global_week_position": 22
+        },
+        {
+          "track_id": "sven-vath-awakenings-festival-2017",
+          "duration_seconds": 3648.23,
+          "global_week_pass": 2,
+          "global_week_position": 23
+        },
+        {
+          "track_id": "sonja-moonear-tomorrowland-belgium-2016",
+          "duration_seconds": 5411.64,
+          "global_week_pass": 2,
+          "global_week_position": 24
+        },
+        {
+          "track_id": "miss-monique-biosphere-montreal-cercle",
+          "duration_seconds": 7985.5,
+          "global_week_pass": 2,
+          "global_week_position": 25
+        },
+        {
+          "track_id": "peggy-gou-palais-des-beaux-arts-cercle",
+          "duration_seconds": 6500,
+          "global_week_pass": 2,
+          "global_week_position": 26
+        },
+        {
+          "track_id": "ellen-allien-le-jardin-suspendu-paris",
+          "duration_seconds": 5224.72,
+          "global_week_pass": 2,
+          "global_week_position": 27
+        },
+        {
+          "track_id": "ricardo-villalobos-franco-cinelli-house-music-special",
+          "duration_seconds": 12895.71,
+          "global_week_pass": 3,
+          "global_week_position": 1
+        },
+        {
+          "track_id": "nina-kraviz-eiffel-tower-cercle",
+          "duration_seconds": 6762.9,
+          "global_week_pass": 3,
+          "global_week_position": 2
+        },
+        {
+          "track_id": "carl-cox-chateau-de-chambord-cercle",
+          "duration_seconds": 7986.09,
+          "global_week_pass": 3,
+          "global_week_position": 3
+        },
+        {
+          "track_id": "lilly-palmer-dj-mag-hq",
+          "duration_seconds": 3459.98,
+          "global_week_pass": 3,
+          "global_week_position": 4
+        },
+        {
+          "track_id": "pete-cannon-manchester",
+          "duration_seconds": 10593.78,
+          "global_week_pass": 3,
+          "global_week_position": 5
+        },
+        {
+          "track_id": "ellen-allien-boiler-room-sydney",
+          "duration_seconds": 3866.31,
+          "global_week_pass": 3,
+          "global_week_position": 6
+        },
+        {
+          "track_id": "ricardo-villalobos-ruta-5-sacre-paris",
+          "duration_seconds": 12498.12,
+          "global_week_pass": 3,
+          "global_week_position": 7
+        },
+        {
+          "track_id": "cassy-sunday-school-miami",
+          "duration_seconds": 2512.52,
+          "global_week_pass": 3,
+          "global_week_position": 8
+        },
+        {
+          "track_id": "margaret-dygas-submarine",
+          "duration_seconds": 7878.44,
+          "global_week_pass": 3,
+          "global_week_position": 9
+        },
+        {
+          "track_id": "ellen-allien-le-jardin-suspendu-paris",
+          "duration_seconds": 5224.72,
+          "global_week_pass": 3,
+          "global_week_position": 10
+        },
+        {
+          "track_id": "sonja-moonear-tomorrowland-belgium-2016",
+          "duration_seconds": 5411.64,
+          "global_week_pass": 3,
+          "global_week_position": 11
+        },
+        {
+          "track_id": "sven-vath-boiler-room-marseille",
+          "duration_seconds": 7021.74,
+          "global_week_pass": 3,
+          "global_week_position": 12
+        },
+        {
+          "track_id": "sonja-moonear-trotamundo-lost-beach-club",
+          "duration_seconds": 4296.41,
+          "global_week_pass": 3,
+          "global_week_position": 13
+        },
+        {
+          "track_id": "david-guetta-tomorrowland-2026",
+          "duration_seconds": 4575.72,
+          "global_week_pass": 3,
+          "global_week_position": 14
+        },
+        {
+          "track_id": "ricardo-villalobos-arpiar-circo-loco-ibiza",
+          "duration_seconds": 3273.57,
+          "global_week_pass": 3,
+          "global_week_position": 15
+        },
+        {
+          "track_id": "nastia-drum-bass-sunset-the-lab-ibiza",
+          "duration_seconds": 5135.2,
+          "global_week_pass": 3,
+          "global_week_position": 16
+        },
+        {
+          "track_id": "sven-vath-awakenings-festival-2017",
+          "duration_seconds": 3648.23,
+          "global_week_pass": 3,
+          "global_week_position": 17
+        },
+        {
+          "track_id": "peggy-gou-palais-des-beaux-arts-cercle",
+          "duration_seconds": 6500,
+          "global_week_pass": 3,
+          "global_week_position": 18
+        },
+        {
+          "track_id": "lilly-palmer-edc-las-vegas-2026",
+          "duration_seconds": 3660.97,
+          "global_week_pass": 3,
+          "global_week_position": 19
+        },
+        {
+          "track_id": "sven-vath-tomorrowland-belgium-2016",
+          "duration_seconds": 1864.26,
+          "global_week_pass": 3,
+          "global_week_position": 20
+        },
+        {
+          "track_id": "lilly-palmer-stone-quarry-germany",
+          "duration_seconds": 3980.71,
+          "global_week_pass": 3,
+          "global_week_position": 21
+        },
+        {
+          "track_id": "boys-noize-coachella-2026-live",
+          "duration_seconds": 4553.85,
+          "global_week_pass": 3,
+          "global_week_position": 22
+        },
+        {
+          "track_id": "ricardo-villalobos-sunwaves-romania",
+          "duration_seconds": 3238.6,
+          "global_week_pass": 3,
+          "global_week_position": 23
+        },
+        {
+          "track_id": "maayan-nidam-boiler-room-bucharest",
+          "duration_seconds": 4258.77,
+          "global_week_pass": 3,
+          "global_week_position": 24
+        },
+        {
+          "track_id": "miss-monique-biosphere-montreal-cercle",
+          "duration_seconds": 7985.5,
+          "global_week_pass": 3,
+          "global_week_position": 25
+        },
+        {
+          "track_id": "charlotte-de-witte-tomorrowland-winter-2026",
+          "duration_seconds": 3619.34,
+          "global_week_pass": 3,
+          "global_week_position": 26
+        },
+        {
+          "track_id": "anfisa-letyago-dj-mag-hq",
+          "duration_seconds": 3628.37,
+          "global_week_pass": 3,
+          "global_week_position": 27
+        },
+        {
+          "track_id": "ricardo-villalobos-arpiar-circo-loco-ibiza",
+          "duration_seconds": 3273.57,
+          "global_week_pass": 4,
+          "global_week_position": 1
+        },
+        {
+          "track_id": "sven-vath-boiler-room-marseille",
+          "duration_seconds": 7021.74,
+          "global_week_pass": 4,
+          "global_week_position": 2
+        },
+        {
+          "track_id": "sonja-moonear-trotamundo-lost-beach-club",
+          "duration_seconds": 4296.41,
+          "global_week_pass": 4,
+          "global_week_position": 3
+        },
+        {
+          "track_id": "ricardo-villalobos-sunwaves-romania",
+          "duration_seconds": 3238.6,
+          "global_week_pass": 4,
+          "global_week_position": 4
+        },
+        {
+          "track_id": "nina-kraviz-eiffel-tower-cercle",
+          "duration_seconds": 6762.9,
+          "global_week_pass": 4,
+          "global_week_position": 5
+        },
+        {
+          "track_id": "charlotte-de-witte-tomorrowland-winter-2026",
+          "duration_seconds": 3619.34,
+          "global_week_pass": 4,
+          "global_week_position": 6
+        },
+        {
+          "track_id": "lilly-palmer-dj-mag-hq",
+          "duration_seconds": 3459.98,
+          "global_week_pass": 4,
+          "global_week_position": 7
+        },
+        {
+          "track_id": "peggy-gou-palais-des-beaux-arts-cercle",
+          "duration_seconds": 6500,
+          "global_week_pass": 4,
+          "global_week_position": 8
+        },
+        {
+          "track_id": "ellen-allien-le-jardin-suspendu-paris",
+          "duration_seconds": 5224.72,
+          "global_week_pass": 4,
+          "global_week_position": 9
+        },
+        {
+          "track_id": "lilly-palmer-stone-quarry-germany",
+          "duration_seconds": 3980.71,
+          "global_week_pass": 4,
+          "global_week_position": 10
+        },
+        {
+          "track_id": "nastia-drum-bass-sunset-the-lab-ibiza",
+          "duration_seconds": 5135.2,
+          "global_week_pass": 4,
+          "global_week_position": 11
+        },
+        {
+          "track_id": "sven-vath-awakenings-festival-2017",
+          "duration_seconds": 3648.23,
+          "global_week_pass": 4,
+          "global_week_position": 12
+        },
+        {
+          "track_id": "david-guetta-tomorrowland-2026",
+          "duration_seconds": 4575.72,
+          "global_week_pass": 4,
+          "global_week_position": 13
+        },
+        {
+          "track_id": "lilly-palmer-edc-las-vegas-2026",
+          "duration_seconds": 3660.97,
+          "global_week_pass": 4,
+          "global_week_position": 14
+        },
+        {
+          "track_id": "margaret-dygas-submarine",
+          "duration_seconds": 7878.44,
+          "global_week_pass": 4,
+          "global_week_position": 15
+        },
+        {
+          "track_id": "sonja-moonear-tomorrowland-belgium-2016",
+          "duration_seconds": 5411.64,
+          "global_week_pass": 4,
+          "global_week_position": 16
+        },
+        {
+          "track_id": "ricardo-villalobos-ruta-5-sacre-paris",
+          "duration_seconds": 12498.12,
+          "global_week_pass": 4,
+          "global_week_position": 17
+        },
+        {
+          "track_id": "ricardo-villalobos-franco-cinelli-house-music-special",
+          "duration_seconds": 12895.71,
+          "global_week_pass": 4,
+          "global_week_position": 18
+        },
+        {
+          "track_id": "maayan-nidam-boiler-room-bucharest",
+          "duration_seconds": 4258.77,
+          "global_week_pass": 4,
+          "global_week_position": 19
+        },
+        {
+          "track_id": "cassy-sunday-school-miami",
+          "duration_seconds": 2512.52,
+          "global_week_pass": 4,
+          "global_week_position": 20
+        },
+        {
+          "track_id": "boys-noize-coachella-2026-live",
+          "duration_seconds": 4553.85,
+          "global_week_pass": 4,
+          "global_week_position": 21
+        },
+        {
+          "track_id": "ellen-allien-boiler-room-sydney",
+          "duration_seconds": 3866.31,
+          "global_week_pass": 4,
+          "global_week_position": 22
+        },
+        {
+          "track_id": "miss-monique-biosphere-montreal-cercle",
+          "duration_seconds": 7985.5,
+          "global_week_pass": 4,
+          "global_week_position": 23
+        },
+        {
+          "track_id": "sven-vath-tomorrowland-belgium-2016",
+          "duration_seconds": 1864.26,
+          "global_week_pass": 4,
+          "global_week_position": 24
+        },
+        {
+          "track_id": "pete-cannon-manchester",
+          "duration_seconds": 10593.78,
+          "global_week_pass": 4,
+          "global_week_position": 25
+        },
+        {
+          "track_id": "carl-cox-chateau-de-chambord-cercle",
+          "duration_seconds": 7986.09,
+          "global_week_pass": 4,
+          "global_week_position": 26
+        },
+        {
+          "track_id": "anfisa-letyago-dj-mag-hq",
+          "duration_seconds": 3628.37,
+          "global_week_pass": 4,
+          "global_week_position": 27
         }
-      ]
+      ],
+      "global_week_programming": {
+        "strategy": "four_reordered_passes_global_daypart_arc",
+        "anchor_utc": "2026-08-02T14:00:00.000Z",
+        "distinct_programmes": 27,
+        "plays_per_programme": 4,
+        "occurrence_count": 108,
+        "cycle_seconds": 601325.8,
+        "approximate_week_variance_seconds": -3474.1999999999534,
+        "priority_market": "Australia/Sydney",
+        "complementary_markets": [
+          "Europe/Madrid",
+          "America/Los_Angeles"
+        ]
+      }
     },
     {
       "id": "party-james-bondage",
@@ -590,7 +1145,7 @@
       "energy_id": "underground-intensity",
       "editorial_id": "modul8-infinity",
       "name": "modul8 infinity",
-      "descriptor": "rave / house / techno / future bass / future psychedelic beats / hiphop",
+      "descriptor": "rave / electronic / experimental",
       "description": "Rave · house · techno · future bass · future psychedelic beats · hiphop",
       "visual_channel_id": "fashion-social-uplift",
       "schedule": [

@@ -225,7 +225,7 @@ const indexPage = pages.find(({ pagePath }) => pagePath === path.join(IAM_DIR, '
 
 requireCondition(controller.includes(explicitSelectionMarker), 'the home controller no longer reads selected_track_id from the URL');
 requireCondition(indexPage.includes('programme-guide.css?v=programme-guide-app-2'), 'the live I AM app no longer loads the subdued Program design');
-requireCondition(indexPage.includes('programme-guide.js?v=programme-guide-app-1'), 'the live I AM app no longer loads the Program controller');
+requireCondition(indexPage.includes('programme-guide.js?v=programme-guide-93b2b74a0cbd'), 'the live I AM app no longer loads the Program controller');
 requireCondition(indexPage.includes('class="adaptive-television-program-button"') && indexPage.includes('data-program-open') && indexPage.includes('>PROGRAM</button>'), 'the Music wallet no longer exposes the uppercase Program control');
 requireCondition(indexPage.includes('data-wallet-category="video" data-wallet-tooltip="tv" aria-label="TV — open television options"') && indexPage.includes('src="a s s e t s/TV icon.png?v=tv-wallet-1"') && !indexPage.includes('data-wallet-tooltip="mix"'), 'the wallet no longer exposes the approved tv label and icon');
 requireCondition(indexPage.includes('PROGRAM <em>/ PARTIES</em>') && indexPage.includes('data-program-more'), 'the Program popup has lost the approved Parties and 24-hour controls');

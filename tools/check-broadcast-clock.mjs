@@ -143,6 +143,7 @@ assert.deepEqual(
 
 const scheduledVideos = [];
 const scheduledDjSets = [];
+const scheduledDjSetChannels = new Map();
 const scheduledStations = new Set();
 const scheduledRunways = [];
 for (const channel of schedule.channels) {
@@ -163,6 +164,9 @@ for (const channel of schedule.channels) {
       assert.equal(Number(entry.duration_seconds), djDurations.get(entry.track_id), `${entry.track_id} must use its encoded HLS duration.`);
       assert.match(controller, new RegExp(`id: "${entry.track_id}"`), `${entry.track_id} must exist in the player catalogue.`);
       scheduledDjSets.push(entry.track_id);
+      const owners = scheduledDjSetChannels.get(entry.track_id) || new Set();
+      owners.add(channel.id);
+      scheduledDjSetChannels.set(entry.track_id, owners);
     }
     if (channel.id === "party-james-bondage") {
       assert.equal(channel.media_type, "video");
@@ -232,7 +236,7 @@ for (const asset of safetyCushionVideoAssets) {
 }
 assert.ok(!scheduledVideos.includes("nine-inch-nails-closer-glastonbury-2026"), "The unverified Nine Inch Nails item must stay outside the shared broadcast.");
 assert.deepEqual(new Set(scheduledDjSets), new Set(djDurations.keys()), "All ten approved DJ sets and mixes must belong to exactly one shared channel.");
-assert.equal(scheduledDjSets.length, djDurations.size, "A DJ set cannot belong to more than one shared channel.");
+assert.ok([...scheduledDjSetChannels.values()].every((owners) => owners.size === 1), "A DJ set cannot belong to more than one shared channel.");
 assert.deepEqual(scheduledStations, new Set([...approvedStationIds].filter((id) => id !== "sanctuary-retro")), "Radio timetables must use the assigned music-room sources only.");
 assert.ok(!scheduledStations.has("sanctuary-retro"), "Sanctuary Retro must not be misclassified as the video-only Safety Cushion room.");
 assert.deepEqual(new Set(scheduledRunways), fashionRunwayIds, "All six Fashion films must belong to exactly one shared channel.");
@@ -241,6 +245,8 @@ assert.ok(!scheduledRunways.some((runwayId) => privateRadioVisualIds.has(runwayI
 
 assert.match(clockController, /serverNowMs - \(\(startedAt \+ endedAt\) \/ 2\)/, "Clock sync must compensate for request round-trip latency.");
 assert.match(clockController, /clockAnchorServerMs \+ \(performanceNow - clockAnchorPerformanceMs\)/, "The shared clock must advance from a monotonic performance anchor.");
+assert.match(clockController, /channel\.epochMs \+ \(\(cycleIndex \* channel\.cycleSeconds \+ cursor\) \* 1000\)/, "A room-specific programme epoch must not retime every other shared channel.");
+assert.match(clockController, /normalizedChannel\(channel, scheduleEpochMs\)/, "Shared channels must inherit the global epoch unless their room defines its own anchor.");
 assert.match(clockController, /CLOCK_RESYNC_INTERVAL_MS = 60000/, "The server clock must be reprobed periodically.");
 assert.match(clockController, /CLOCK_SMOOTHING_FACTOR = \.25/, "Periodic clock corrections must be smoothed instead of stepping playback.");
 assert.match(clockController, /positiveModulo\(elapsedSeconds, channel\.cycleSeconds\)/, "Channel state must repeat continuously from the shared epoch.");

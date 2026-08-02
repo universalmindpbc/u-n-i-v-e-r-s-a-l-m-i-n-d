@@ -1,5 +1,5 @@
 (function () {
-  const SCHEDULE_URL = "broadcast-schedule-v1.json?v=broadcast-schedule-769e6306e9c1";
+  const SCHEDULE_URL = "broadcast-schedule-v1.json?v=broadcast-schedule-b86b5d92887c";
   const CLOCK_URL = "api/broadcast-clock.php";
   const CLOCK_PROBES = 3;
   const CLOCK_RESYNC_INTERVAL_MS = 60000;
@@ -22,7 +22,7 @@
     return ((value % divisor) + divisor) % divisor;
   }
 
-  function normalizedChannel(channel) {
+  function normalizedChannel(channel, scheduleEpochMs) {
     const entries = Array.isArray(channel?.schedule) ? channel.schedule : [];
     const mediaType = ["audio", "radio", "fashion"].includes(channel?.media_type) ? channel.media_type : "video";
     const available = channel?.available !== false;
@@ -39,6 +39,8 @@
       };
     });
     const cycleSeconds = normalizedEntries.reduce((sum, entry) => sum + entry.durationSeconds, 0);
+    const requestedEpochMs = Date.parse(channel?.epoch_utc || "");
+    const epochMs = Number.isFinite(requestedEpochMs) ? requestedEpochMs : scheduleEpochMs;
     if (
       !channel?.id ||
       !channel?.format ||
@@ -62,6 +64,7 @@
       descriptor: channel.descriptor || "",
       description: channel.description || "",
       visualChannelId: channel.visual_channel_id || "",
+      epochMs,
       entries: normalizedEntries,
       cycleSeconds,
     };
@@ -70,7 +73,8 @@
   function normalizeSchedule(payload) {
     const epochMs = Date.parse(payload?.epoch_utc || "");
     if (!Number.isFinite(epochMs)) throw new Error("Invalid broadcast epoch.");
-    const channels = (Array.isArray(payload?.channels) ? payload.channels : []).map(normalizedChannel);
+    const channels = (Array.isArray(payload?.channels) ? payload.channels : [])
+      .map((channel) => normalizedChannel(channel, epochMs));
     if (!channels.length) throw new Error("Broadcast schedule contains no channels.");
     return {
       version: payload.version || "broadcast_schedule_v1",
@@ -172,7 +176,7 @@
     if (!schedule) return null;
     const channel = channelForId(channelId);
     if (!channel?.available) return null;
-    const elapsedSeconds = (Number(requestedNowMs) - schedule.epochMs) / 1000;
+    const elapsedSeconds = (Number(requestedNowMs) - channel.epochMs) / 1000;
     const cycleIndex = Math.floor(elapsedSeconds / channel.cycleSeconds);
     const cyclePositionSeconds = positiveModulo(elapsedSeconds, channel.cycleSeconds);
     let cursor = 0;
@@ -189,7 +193,7 @@
     const previousEntry = channel.entries[(entryIndex - 1 + channel.entries.length) % channel.entries.length];
     const nextEntry = channel.entries[(entryIndex + 1) % channel.entries.length];
     const offsetSeconds = Math.max(0, Math.min(entry.durationSeconds - 0.05, cyclePositionSeconds - cursor));
-    const programmeStartMs = Math.round(schedule.epochMs + ((cycleIndex * channel.cycleSeconds + cursor) * 1000));
+    const programmeStartMs = Math.round(channel.epochMs + ((cycleIndex * channel.cycleSeconds + cursor) * 1000));
     const programmeInstanceId = `${channel.id}.${entryIndex}.${programmeStartMs}`;
     return {
       channelId: channel.id,
