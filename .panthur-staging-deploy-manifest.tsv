@@ -25,9 +25,9 @@ d7780363fba376ba141596e91cec1d84137249c8e74ab2a0087103a28389a7be	apple-wallet/.h
 62f23ca2948ff7a8812f84eff9984acf30c2379682fe37d3e5f5bcdc54c7d88f	a d a p t i v e  m u s i c  v i d e o  i n t e l l i g e n c e   -  c o d e x   b r i e f  v 0 . 1.md
 f5523d0d103367606e5c786fdefe6a1a560975a214ebe5188405469ec5619e09	tools/analyze-video-beats.py
 f1670bb15260c563cfe508ea2be7ddfe2f1b9260e0f3ab2f1015343345b5d177	i  a m.md
-b138f9bdc1319d701216c017e906e10c1efdaf790031ee78f7c57cb7bec26772	community-globe.html
+23c87d0f49a6eec949df4190d80d663b384cca76f2dca4bdd1207a6cf34b2fe0	community-globe.html
 95811f319fe8fd80719921ccffdb063f417f77fcec50b3eac90c319d9cc84dce	mantra-samples-v1.json
-98c518719f4793468279d97ad89be39d0f9818ea4c30664bcdc000e567cb9d08	index.html
+3fdfa0c6dc2b105c9eb128feffab594140ebc3216773bc8fc59c2e38d7c1f197	index.html
 063614dd145167e7a280004730ce68ebec45d88ef94c1d6cff8ac3128a08e06e	shop.css
 6402cc9d89a20b6e4b48802930edbbe616be2186f1a2e3688736d2e05e5b6231	mantra-sampler.js
 1aaa3cfaf7b894f033bf45848bc6b103b7ef2b4b0870d211f8f4b7ca77158b23	mobile-editorial-surface.js
@@ -46,7 +46,7 @@ d2ebef23890dc87cd52bd3904022d2959a990ec0483d917a78b107b3d86183f0	mantra-voice-ds
 58844e527aa70a8b68b1cd92a6690f3098fc44cc7b4780c86900cae69f5cc324	styles.css
 0f2562e9d94029f185d95d0e1babeab028a25b246f97273b552ba587510f3b1d	b u i l d _ n o t e s.md
 a9d34c028f9cc4e6b790180d2fe539349392c5f24ecbc1f6530762079254f540	about.html
-900ab3eedc78666be3a6a5e9910aad94e900e4d5db505807a9c5ca13b367ae83	globe.js
+d8a6827cab5542a787e77f1f50524845cd45d153d87888a61ab2c08a4a752e55	globe.js
 ad39c95190c8ae84d0175f4fdab163043a68e3ad3177ecbc9daf81c48a0eff38	adaptive-music-room-selection-guide-v1.0.json
 38bcb07f1531a6ad879513e491428f285470cd63daf8c9851c9c510cb80f9602	programme-tensor-approved-notion-export-v1.0.json
 a7ec4d743e2aadb702450504543e6dd71262bd314b74e82775c97b1a3adf8e9e	emdr-three-art.js
@@ -80,7 +80,7 @@ b922c0ed559272b40cd18d8a3aaea60a4b7ffd04e036e9817f5ba3bfdc8145b5	adaptive-soundt
 9ae5176893ea899472b3a73e71de8f743b6bf59967e840a930bfadea8659ebdc	t e c h n o l o g y - c i t i z e n  n e e d s  —  i n t e r a c t i v e  d e m o - c o d e x  b r i e f.md
 14ebf4459d034e1c47ce14b478c54bf6f0f6ba52ddcdd53e1fb9c1b4ada987c4	music-television-frame-context.js
 7e7e808b9ebd39037d5f952f0beff1f63efe874fa93dbeceaf0d81c4401cdf94	privacy-first.html
-73e44c77609fa7a59256437ca142dff2e6bfae8c9915451456bf61a5e5562b24	homepage-checkin.js
+e60698d25b1e76d441b0fada19cdda4e6da3760398760c87ea2530ccdbc519d5	homepage-checkin.js
 b692b121b053af40a60b1cf1782aa95ca2648714aae914282844602a3a4e54c3	emdr-shader.js
 dc0fdf6ee77c7a4d1295e53843a4c3f6e64fcf6ec8166e2d182063fe90b8e83f	programme-guide.css
 903759c3fa1ac0857d0d6f7c9a9f79d6e9ba6651d1234361e81841cf9efd66b6	first-party-analytics.js
@@ -126,7 +126,7 @@ a30b10f90c54f9585f2fd57e4dd7894b1786e5dff57a67191dac55b6de55ac5f	induction.html
 97bd5fb1be714c9e356a43781e3da51e8432bb004b98b6399570649eac5f9a2c	global-navigation.css
 e3f9d0c235cfc80b7a4c5b3e639a5ca8d00c02cef20a781ce2bea02593736366	i n f e r e n c e  e n g i n e  -  s y s t e m  p r o m p t  v  4 . 4 4.md
 20ea963338ad8da7a04f985327168731b6b0f8d0251cd28fb69f61044aa98cf0	broadcast-interactions-v1.js
-9758d27b543886966d7bcb24763cd067bdc08c6cc1acc228216e4705cb83a3c2	globe.html
+5fc11590f1ee4539e84c37eea68b590093c60203411f23d3410fcf19386e8d21	globe.html
 345dc0e22ae1656241278121aa896880654e9ee6347b3cc4f9ee59bc72f115b8	adaptive-environment.js
 116566b435a3c107dcd5cfdebf6f666b145cebc44fdb207a0ae0d724973c65ef	our-team.html
 695fed6b80a6ebd71875d2add70b584aadad5ff18449082fac5ed9329de8a7e7	adaptive-music-trajectory-policy-v2.json
@@ -727,7 +727,7 @@ acf56762e5df2265d00df0e4e3cbdd9fd76c48fcc94a83b2749f0abde95bdf33	happiness-contr
 48827949511057e78be51bd6400e3d59b822dfa3a7f7a03bdf4172c719af6e7a	adaptive-music-api-setup.md
 29f4ce3ee8177ddf7e1a70c4fd18efb018c7d018e6547add174ba01d21eecf09	programme-guide-mockup.js
 ac9c8e80889615f37a3d95fe90998daeeaa23eec756e0ff320259e857734a69a	global-navigation.js
-9ac473853deaab1f7e95185a0423b9fb347f33f1bbf1b4673c43cc6c72db522b	vogue-self-report.html
+9fb87ed2fef67cc278434f40b9bf6319285d62cc675c269dc9e47d51e8ed2fb3	vogue-self-report.html
 09e8aad6f5d94c6c1189379f9f5fdb6ab443b19d6bc7591f9ec4b863b44b8d49	quantum-tree-control.css
 1f0a5e0d8e9cfba8c2cca2cd766dd9e7c7fbeea47667347abe7e341f0f7d2417	globe.css
 c3f897450a65ac6bc2dd5f2286dfcae78545a778e8d903b86131416f49120d6b	fashion-visual-tensor-notion-export-v1.0.json
