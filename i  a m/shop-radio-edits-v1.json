@@ -1,8 +1,8 @@
 {
   "version": 1,
-  "generatedAt": "2026-08-02",
+  "generatedAt": "2026-08-04",
   "authority": "Ben-supplied exact retailer URLs reconciled to the Notion Fashion Tensor and canonical Shop product kernel",
-  "sourceReference": "c b - n e w  a d d i t i o n s.md supplied 2026-08-02",
+  "sourceReference": "c b - n e w  a d d i t i o n s.md supplied 2026-08-02; i n n e r  p l a n e s - a d d i t i o n a l  g a r m e n t s.md supplied 2026-08-04",
   "catalogues": [
     {
       "brand": "Champagne Bohemia",
@@ -117,9 +117,9 @@
       "slug": "inner-plains",
       "route": "#catalogue/inner-plains",
       "placementAfter": "Champagne Bohemia",
-      "formLabel": "Calvin Klein / lingerie",
-      "suppliedCount": 18,
-      "uniqueCount": 17,
+      "formLabel": "Studio K / Calvin Klein / SKIMS",
+      "suppliedCount": 29,
+      "uniqueCount": 28,
       "duplicateProductIds": [
         "JB-0117"
       ],
@@ -140,7 +140,18 @@
         "JB-0414",
         "JB-0415",
         "JB-0416",
-        "JB-0417"
+        "JB-0417",
+        "JB-0418",
+        "JB-0419",
+        "JB-0420",
+        "JB-0421",
+        "JB-0422",
+        "JB-0423",
+        "JB-0424",
+        "JB-0425",
+        "JB-0426",
+        "JB-0427",
+        "JB-0428"
       ]
     }
   ]

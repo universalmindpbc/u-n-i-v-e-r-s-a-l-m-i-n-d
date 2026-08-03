@@ -1108,9 +1108,9 @@
   async function loadCatalogue() {
     try {
       const [kernelResponse, legacyChampagneResponse, radioEditsResponse] = await Promise.all([
-        fetch("shop-product-kernel-v1.json?v=8424235d148c", { credentials: "same-origin" }),
+        fetch("shop-product-kernel-v1.json?v=581febdd5697", { credentials: "same-origin" }),
         fetch("shop-champagne-bohemia-products-v1.json?v=0f0304457056", { credentials: "same-origin" }),
-        fetch("shop-radio-edits-v1.json?v=db1a35969d9e", { credentials: "same-origin" }),
+        fetch("shop-radio-edits-v1.json?v=1c02d8c4bf4a", { credentials: "same-origin" }),
       ]);
       if (!kernelResponse.ok) throw new Error(`Catalogue request failed: ${kernelResponse.status}`);
       if (!legacyChampagneResponse.ok) throw new Error(`Legacy catalogue request failed: ${legacyChampagneResponse.status}`);
