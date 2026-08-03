@@ -1,4 +1,5 @@
 import assert from "node:assert/strict";
+import { createHash } from "node:crypto";
 import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
@@ -21,6 +22,7 @@ const television = read("i  a m/adaptive-environment-television.js");
 const index = read("i  a m/index.html");
 const htaccess = read(".htaccess");
 const redirects = read("_redirects");
+const expectedTelevisionToken = `music-tv-${createHash("sha256").update(television).digest("hex").slice(0, 12)}`;
 
 const bouganvillea = productKernel.products.find((product) => product.id === "JB-0313");
 assert.equal(bouganvillea?.imageSource, "user_supplied_reference", "Bouganvillea Tights must use Ben's sharper supplied product shot");
@@ -88,7 +90,7 @@ assert.match(
   /const SHOP_SHELL_VERSION = "b0f7869cb090";[\s\S]*function frameHref\(link\)[\s\S]*url\.searchParams\.set\("v", SHOP_SHELL_VERSION\)/,
   "The real Shop entry must cache-bust its embedded Shop shell to the current radio-edit version",
 );
-assert.match(index, /adaptive-environment-television\.js\?v=music-tv-360b5ca17156/, "The homepage must load the combined phase-aligned Shop, Privacy First, and programme catalogue controller");
+assert.ok(index.includes(`adaptive-environment-television.js?v=${expectedTelevisionToken}`), "The homepage must load the combined phase-aligned Shop, Privacy First, and programme catalogue controller");
 
 assert.equal(catalogue.products.length, 36, "Finished ERES catalogue must contain all 36 approved product URLs");
 assert.equal(new Set(catalogue.products.map((product) => product.id)).size, 36, "Catalogue product IDs must be unique");

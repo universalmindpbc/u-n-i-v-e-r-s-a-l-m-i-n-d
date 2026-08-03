@@ -1,4 +1,5 @@
 import assert from "node:assert/strict";
+import { createHash } from "node:crypto";
 import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
@@ -62,6 +63,7 @@ const home = read("i  a m/index.html");
 const televisionPage = read("i  a m/adaptive-environment-television.html");
 const televisionCss = read("i  a m/adaptive-environment-television.css");
 const television = read("i  a m/adaptive-environment-television.js");
+const expectedTelevisionToken = `music-tv-${createHash("sha256").update(television).digest("hex").slice(0, 12)}`;
 const happinessControl = read("i  a m/happiness-control.html");
 const happinessControlScript = read("i  a m/happiness-control.js");
 const happinessAutomation = read("i  a m/api/happiness-automation.php");
@@ -393,8 +395,8 @@ assert.match(script, /window\.parent\.postMessage\(\{ type: "iam:return-to-telev
 assert.match(script, /url\.searchParams\.set\("musicTelevisionFrame", "1"\)/);
 assert.doesNotMatch(globalNavigation.match(/<nav class="global-nav-menu"[\s\S]*?<\/nav>/)?.[0] || "", /wallet\.html|\/wallet\//i);
 assert.equal((home.match(/data-happiness-wallet-category=/g) || []).length, 4);
-assert.match(home, /adaptive-environment-television\.js\?v=music-tv-360b5ca17156/);
-assert.match(televisionPage, /adaptive-environment-television\.js\?v=music-tv-360b5ca17156/);
+assert.ok(home.includes(`adaptive-environment-television.js?v=${expectedTelevisionToken}`));
+assert.ok(televisionPage.includes(`adaptive-environment-television.js?v=${expectedTelevisionToken}`));
 assert.match(television, /document\.querySelectorAll\("\[data-happiness-wallet-category\]"\)/);
 assert.match(television, /walletLink\.setAttribute\("href", `wallet\.html#\$\{category\}`\)/);
 assert.match(television, /openInVideoPageLayer\(walletLink\)/);

@@ -3263,7 +3263,7 @@ body.television-room-open.nav-open .global-nav-scrim {
 body .adaptive-television-reaction-wallet[data-wallet-view="categories"].is-reaction-wallet-open {
   flex-direction: column;
   gap: 0;
-  width: min(520px, calc(100vw - 48px));
+  width: min(590px, calc(100vw - 48px));
   min-height: 106px;
   border-color: rgba(255, 255, 255, 0.14);
   background: rgba(12, 12, 14, 0.1);
@@ -3278,7 +3278,7 @@ body .adaptive-television-reaction-wallet[data-wallet-view="categories"].is-reac
   display: flex;
   align-items: center;
   justify-content: center;
-  width: min(100%, 448px);
+  width: min(100%, 520px);
   height: 29px;
   border-top: 1px solid rgba(255, 255, 255, 0.15);
   opacity: 0;
@@ -3337,6 +3337,31 @@ body .adaptive-television-reaction-wallet[data-wallet-view="categories"].is-reac
   height: 15px;
   margin: 6px 11px 0 7px;
   background: rgba(255, 255, 255, 0.2);
+}
+
+.adaptive-television-home-program-button {
+  display: grid;
+  flex: 0 0 auto;
+  width: 54px;
+  height: 21px;
+  margin-top: 6px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.025);
+  color: rgba(255, 255, 255, 0.65);
+  font: 400 10px/1 "Helvetica Neue", Helvetica, Arial, sans-serif;
+  letter-spacing: 0;
+  place-items: center;
+  text-transform: lowercase;
+  transition: background 220ms ease, border-color 220ms ease, color 220ms ease;
+}
+
+.adaptive-television-home-program-button:hover,
+.adaptive-television-home-program-button:focus-visible {
+  border-color: rgba(255, 255, 255, 0.58);
+  background: rgba(255, 255, 255, 0.08);
+  color: rgba(255, 255, 255, 0.9);
+  outline: 0;
 }
 
 .adaptive-television-sex-ed-link {
@@ -3411,7 +3436,7 @@ body .adaptive-television-reaction-wallet[data-wallet-view="categories"].is-reac
   display: block;
   flex: 0 1 auto;
   width: auto;
-  max-width: 310px;
+  max-width: 350px;
   height: 12px;
   min-width: 0;
   overflow: hidden;
@@ -3500,7 +3525,7 @@ body .adaptive-television-reaction-wallet[data-wallet-view="categories"].is-reac
 
 @media (max-width: 520px) {
   body .adaptive-television-reaction-wallet[data-wallet-view="categories"].is-reaction-wallet-open {
-    width: min(520px, calc(100vw - 28px));
+    width: min(590px, calc(100vw - 28px));
     min-height: 106px;
     padding: 2px 14px 8px;
   }
@@ -3534,6 +3559,12 @@ body .adaptive-television-reaction-wallet[data-wallet-view="categories"].is-reac
 
   .adaptive-television-sex-ed-link {
     width: 42px;
+    height: 19px;
+    font-size: 8.8px;
+  }
+
+  .adaptive-television-home-program-button {
+    width: 48px;
     height: 19px;
     font-size: 8.8px;
   }

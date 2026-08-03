@@ -2611,10 +2611,10 @@
     const label = active ? `${active.broadcastChannelName} — ${active.artist}` : "FASHION CHANNELS";
     if (fashionRunwayLabel) fashionRunwayLabel.textContent = label;
     if (fashionRunwayCount) fashionRunwayCount.textContent = order.length ? `${position + 1} / ${order.length}` : "1 / 3";
-    fashionRunwaySelector.dataset.videoTooltip = "Fashion shared channels\nJoin whatever is on now, together as one.";
-    fashionShelfToggle?.setAttribute("aria-label", `Open Fashion shared channels${active ? `. Recommended: ${label}` : ""}`);
-    fashionRunwayPrevious?.setAttribute("aria-label", "Previous Fashion shared channel");
-    fashionRunwayNext?.setAttribute("aria-label", "Next Fashion shared channel");
+    fashionRunwaySelector.dataset.videoTooltip = "Fashion live channels\nJoin whatever is on now, together as one.";
+    fashionShelfToggle?.setAttribute("aria-label", `Open Fashion live channels${active ? `. Recommended: ${label}` : ""}`);
+    fashionRunwayPrevious?.setAttribute("aria-label", "Previous Fashion live channel");
+    fashionRunwayNext?.setAttribute("aria-label", "Next Fashion live channel");
     fashionRunwaySelector.dataset.fashionChannelId = active?.broadcastChannelId || "";
     if (document.body.classList.contains("television-emdr-gif-active")) {
       playerMount.dataset.emdrGifFashionRunway = fashionRunways[fashionRunwayIndex]?.assetKey || "";
@@ -2710,7 +2710,7 @@
       parties: "PARTIES",
       radio: "RADIO",
       fashion: "FASHION",
-    })[mode] || "SHARED CHANNEL";
+    })[mode] || "LIVE CHANNEL";
   }
 
   function fashionRunwayForId(runwayId) {
@@ -2947,6 +2947,9 @@
     updateFashionRunwayToggle();
     renderFashionShelf();
     renderMusicShelf();
+    window.dispatchEvent(new CustomEvent("iam:music-channels-ready", {
+      detail: { modes: BROADCAST_FORMATS.slice() },
+    }));
   }
 
   async function loadMusicRecommendations() {
@@ -3157,18 +3160,18 @@
     if (!musicShelfTrack) return;
     stopMusicShelfPreview();
     const order = musicShelfOrders[musicChannelMode] || [];
-    if (musicShelfTitle) musicShelfTitle.textContent = `${musicModeLabel()} · shared channels`;
+    if (musicShelfTitle) musicShelfTitle.textContent = `${musicModeLabel()} · live channels`;
     if (musicShelfSubtitle && !musicShelfSubtitle.dataset.temporaryStatus) {
       musicShelfSubtitle.textContent = "Join whatever is on now, together as one";
     }
-    musicShelfTrack.setAttribute("aria-label", `${musicModeLabel()} shared channel choices`);
+    musicShelfTrack.setAttribute("aria-label", `${musicModeLabel()} live channel choices`);
     musicShelfTrack.innerHTML = order.map((item, position) => {
       const current = item.broadcastChannelId === activeBroadcastChannelIdForMode(musicChannelMode);
       const recommended = item.id === musicShelfRecommendationIds[musicChannelMode];
       const display = musicItemDisplayMetadata(item);
       const provider = musicChannelMode === "radio" ? item.provider : display.artist;
       const title = musicChannelMode === "radio" ? (item.display_title || item.title) : display.title;
-      const action = item.unavailable ? "Programming soon" : "Open shared broadcast";
+      const action = item.unavailable ? "Programming soon" : "Open live channel";
       const cardTitle = item.unavailable ? item.broadcastChannelName : musicChannelMode === "radio" ? item.title : provider;
       const cardDetail = item.unavailable ? "Programming soon" : musicChannelMode === "radio" ? item.provider : title;
       return `<div class="adaptive-television-fashion-shelf__item" data-music-shelf-item role="listitem">
@@ -5156,6 +5159,40 @@
       setMusicMode(mode, { manual: true });
       return this.getState();
     },
+    programmeItems(mode = musicChannelMode) {
+      if (!MUSIC_BROADCAST_FORMATS.includes(mode)) return [];
+      const liveItems = musicItems(mode)
+        .slice()
+        .sort((a, b) => broadcastEditorialPosition(a) - broadcastEditorialPosition(b));
+      return liveItems.map((item) => {
+        const display = musicItemDisplayMetadata(item);
+        return {
+          id: item.id,
+          mode,
+          broadcastChannelId: item.broadcastChannelId,
+          broadcastChannelName: item.broadcastChannelName,
+          broadcastDescriptor: item.broadcastDescriptor,
+          broadcastDescription: item.broadcastDescription,
+          editorialId: item.editorialId,
+          artist: mode === "radio" ? (item.provider || item.artist) : display.artist,
+          title: mode === "radio" ? (item.display_title || item.title) : display.title,
+          unavailable: item.unavailable === true,
+          previewVideoSrc: item.previewVideoSrc || item.localVideoSrc || "",
+          previewStart: Number(item.previewStart || 8),
+          thumbnailUrl: mode === "radio" ? "" : musicThumbnailUrl(item),
+          radioLogoSrc: mode === "radio" ? String(item.logo_src || "") : "",
+          radioLogoAlt: mode === "radio" ? String(item.logo_alt || item.provider || "") : "",
+          radioBrandLogoSrc: mode === "radio" ? String(item.brand_logo_src || "") : "",
+          cardPalette: mode === "radio" && Array.isArray(item.card_palette) ? item.card_palette.slice(0, 2) : [],
+          audioOnly: item.audioOnly === true,
+        };
+      });
+    },
+    openChannels(mode = musicChannelMode) {
+      if (MUSIC_BROADCAST_FORMATS.includes(mode)) setMusicMode(mode, { manual: true });
+      openMusicShelf();
+      return this.getState();
+    },
     select(itemId) {
       const item = (musicShelfOrders[musicChannelMode] || []).find((candidate) => candidate.id === itemId);
       return selectMusicItem(item, { source: "runtime_api" });
@@ -6481,7 +6518,7 @@
     if (!localVideo) return;
     continueAdaptiveMusicProgramme().catch((error) => {
       document.body.dataset.musicContinuationError = String(error?.message || error).slice(0, 140);
-      showMusicShelfStatus("The shared channels are temporarily unavailable.", 3600);
+      showMusicShelfStatus("The live channels are temporarily unavailable.", 3600);
     });
   }
 

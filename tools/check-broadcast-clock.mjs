@@ -289,7 +289,7 @@ assert.match(index, /data-broadcast-entry-format/);
 assert.doesNotMatch(index, /data-broadcast-programme-(?:previous|now|next)/, "The noisy previous/now/next guide must stay out of the shared-channel view.");
 assert.doesNotMatch(index, /data-music-mode="fashion"/, "Fashion must stay outside the Videos, Parties and Radio selector.");
 assert.match(index, /data-video-mode="fashion"/, "Fashion must remain available through Mix.");
-assert.match(index, /Fashion · shared channels/, "Mix > Fashion must open the three synchronized Fashion channels.");
+assert.match(index, /Fashion · live channels/, "Mix > Fashion must open the three synchronized Fashion channels.");
 assert.match(controller, /MUSIC_BROADCAST_FORMATS = \["videos", "parties", "radio"\]/, "The Music selector must expose exactly Videos, Parties and Radio.");
 assert.match(controller, /is-current-broadcast/, "The exact joined channel must have a dedicated current state.");
 assert.match(controller, /activeBroadcastChannelIdForMode/, "Current state must resolve from the joined broadcast channel ID.");

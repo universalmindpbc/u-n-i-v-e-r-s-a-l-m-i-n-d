@@ -49,8 +49,8 @@
     <script src="music-television-frame-context.js?v=music-tv-frame-14ebf4459d03"></script>
     <link rel="stylesheet" href="styles.css?v=global-nav-single-shell-2-technology-submenu-133pct-normal-1">
     <link rel="preload" as="image" href="a s s e t s/Universal Mind [ I o H ] Logo 512.png" fetchpriority="high">
-    <link rel="stylesheet" href="adaptive-environment-television.css?v=music-tv-css-c90972bd413e">
-    <link rel="stylesheet" href="programme-guide.css?v=programme-guide-app-2">
+    <link rel="stylesheet" href="adaptive-environment-television.css?v=music-tv-css-61bba22f536e">
+    <link rel="stylesheet" href="programme-guide.css?v=programme-guide-css-d27d467cbbf9">
     <link rel="stylesheet" href="circle-audio-rooms.css?v=circle-rooms-css-9cb7b0860284">
     <link rel="stylesheet" href="mantra-sampler.css?v=mantra-sampler-css-fa5e34089bf9">
     <link rel="stylesheet" href="realtime-voice-assistant.css?v=realtime-voice-css-3dbe2f94acaa">
@@ -212,23 +212,23 @@
             </div>
           </section>
           <section class="adaptive-television-fashion-shelf" id="fashion-shelf" data-fashion-shelf aria-hidden="true" aria-labelledby="fashion-shelf-title" inert>
-            <button class="adaptive-television-fashion-shelf__backdrop" type="button" data-fashion-shelf-close tabindex="-1" aria-label="Close Fashion shared channels"></button>
+            <button class="adaptive-television-fashion-shelf__backdrop" type="button" data-fashion-shelf-close tabindex="-1" aria-label="Close Fashion live channels"></button>
             <div class="adaptive-television-fashion-shelf__panel" role="dialog" aria-modal="false">
               <header class="adaptive-television-fashion-shelf__header">
                 <div>
-                  <h2 id="fashion-shelf-title">Fashion · shared channels</h2>
+                  <h2 id="fashion-shelf-title">Fashion · live channels</h2>
                   <p>Join whatever is on now, together as one</p>
                 </div>
-                <button class="adaptive-television-fashion-shelf__close" type="button" data-fashion-shelf-close aria-label="Close Fashion shared channels">×</button>
+                <button class="adaptive-television-fashion-shelf__close" type="button" data-fashion-shelf-close aria-label="Close Fashion live channels">×</button>
               </header>
               <div class="adaptive-television-fashion-shelf__carousel">
-                <button class="adaptive-television-fashion-shelf__arrow adaptive-television-fashion-shelf__arrow--previous" type="button" data-fashion-shelf-previous aria-label="Previous Fashion shared channel">
+                <button class="adaptive-television-fashion-shelf__arrow adaptive-television-fashion-shelf__arrow--previous" type="button" data-fashion-shelf-previous aria-label="Previous Fashion live channel">
                   <span aria-hidden="true">&lsaquo;</span>
                 </button>
                 <div class="adaptive-television-fashion-shelf__viewport" data-fashion-shelf-viewport>
-                  <div class="adaptive-television-fashion-shelf__track" data-fashion-shelf-track role="list" aria-label="Fashion shared channel choices"></div>
+                  <div class="adaptive-television-fashion-shelf__track" data-fashion-shelf-track role="list" aria-label="Fashion live channel choices"></div>
                 </div>
-                <button class="adaptive-television-fashion-shelf__arrow adaptive-television-fashion-shelf__arrow--next" type="button" data-fashion-shelf-next aria-label="Next Fashion shared channel">
+                <button class="adaptive-television-fashion-shelf__arrow adaptive-television-fashion-shelf__arrow--next" type="button" data-fashion-shelf-next aria-label="Next Fashion live channel">
                   <span aria-hidden="true">&rsaquo;</span>
                 </button>
               </div>
@@ -576,7 +576,14 @@
             <header class="program-panel__header">
               <div class="program-heading">
                 <span>UM / LIVE NETWORK</span>
-                <h1 id="program-title">PROGRAM <em>/ PARTIES</em></h1>
+                <div class="program-heading__line">
+                  <h1 id="program-title">PROGRAM</h1>
+                  <div class="program-mode-switcher" role="tablist" aria-label="Choose a live programme">
+                    <button type="button" role="tab" data-program-mode="videos" aria-selected="true">VIDEOS</button>
+                    <button type="button" role="tab" data-program-mode="parties" aria-selected="false">PARTIES</button>
+                    <button type="button" role="tab" data-program-mode="radio" aria-selected="false">RADIO</button>
+                  </div>
+                </div>
               </div>
 
               <div class="program-zone-switcher" role="group" aria-label="Display schedule in a city time zone">
@@ -595,12 +602,13 @@
               <span data-clock-source>LIVE CLOCK</span>
             </div>
 
-            <nav class="program-room-switcher" aria-label="Choose a music room">
-              <button type="button" data-room="inner-planes" aria-current="false">Inner Planes</button>
-              <button type="button" data-room="champagne-bohemia" aria-current="false">Champagne Bohemia</button>
-              <button type="button" data-room="modul8-infinity" aria-current="true">modul8 infinity</button>
-              <button type="button" data-room="james-bondage" aria-current="false">james bondage</button>
-            </nav>
+            <section class="program-live" aria-labelledby="program-live-label">
+              <header>
+                <h2 id="program-live-label">LIVE NOW</h2>
+                <p>Select a room to inspect its programme</p>
+              </header>
+              <nav class="program-channel-rail" data-program-channel-rail aria-label="Live music channels"></nav>
+            </section>
 
             <div class="program-scroll" data-program-scroll>
               <article class="program-now" aria-labelledby="program-now-label">
@@ -616,6 +624,13 @@
                 </div>
                 <button class="program-enter" type="button" data-enter-live>ENTER LIVE</button>
               </article>
+
+              <section class="program-history" data-program-history aria-labelledby="program-history-label" hidden>
+                <header>
+                  <h2 id="program-history-label">JUST PLAYED</h2>
+                </header>
+                <ol data-history-list></ol>
+              </section>
 
               <section class="program-next" aria-labelledby="program-next-label">
                 <span id="program-next-label">UP NEXT</span>
@@ -637,10 +652,16 @@
             </div>
 
             <footer class="program-panel__footer">
-              <button type="button" data-program-more aria-expanded="false">
-                <span data-more-label>MORE</span>
-                <small data-more-range>VIEW 24 HOURS</small>
-              </button>
+              <div class="program-panel__footer-actions">
+                <button type="button" data-program-channels>
+                  <span>EXPLORE</span>
+                  <small>CHANNELS</small>
+                </button>
+                <button type="button" data-program-more aria-expanded="false">
+                  <span data-more-label>MORE</span>
+                  <small data-more-range>VIEW 24 HOURS</small>
+                </button>
+              </div>
               <p>Times shown for <span data-footer-zone>your local time</span>.</p>
             </footer>
           </section>
@@ -701,6 +722,8 @@
               </button>
             </div>
             <div class="adaptive-television-wallet-status-row" data-wallet-status-row>
+              <button class="adaptive-television-home-program-button" type="button" data-program-open aria-haspopup="dialog" aria-controls="program-panel">program</button>
+              <span class="adaptive-television-wallet-status-divider" aria-hidden="true"></span>
               <button class="adaptive-television-now-playing" type="button" data-now-playing aria-label="Open current Music recommendations" aria-hidden="true" tabindex="-1">
                 <time class="adaptive-television-now-playing__time" data-now-playing-time datetime="">00:00</time>
                 <span class="adaptive-television-now-playing__separator" aria-hidden="true">·</span>
@@ -793,15 +816,15 @@
               <button class="adaptive-television-video-mix-endpoint" type="button" data-video-mix-endpoint="fashion" data-video-tooltip="Watch a runway while the music continues uninterrupted." aria-label="Show Fashion — Watch a runway while the music continues uninterrupted">
                 <span class="adaptive-television-video-icon-stage" aria-hidden="true"><img class="adaptive-television-video-icon-reference adaptive-television-video-icon-reference--fashion" src="a s s e t s/wallet-fashion-reference.png?v=reference-2" alt=""></span>
               </button>
-              <div class="adaptive-television-fashion-runway-selector" data-fashion-runway-selector data-video-tooltip="Fashion shared channels&#10;Join whatever is on now, together as one." role="group" aria-label="Choose a Fashion shared channel">
-                <button class="adaptive-television-fashion-runway-arrow" type="button" data-fashion-runway-previous aria-label="Previous Fashion shared channel">
+              <div class="adaptive-television-fashion-runway-selector" data-fashion-runway-selector data-video-tooltip="Fashion live channels&#10;Join whatever is on now, together as one." role="group" aria-label="Choose a Fashion live channel">
+                <button class="adaptive-television-fashion-runway-arrow" type="button" data-fashion-runway-previous aria-label="Previous Fashion live channel">
                   <span aria-hidden="true">&lsaquo;</span>
                 </button>
-                <button class="adaptive-television-fashion-runway-current" type="button" data-fashion-shelf-toggle aria-haspopup="dialog" aria-expanded="false" aria-controls="fashion-shelf" aria-label="Open Fashion shared channels">
+                <button class="adaptive-television-fashion-runway-current" type="button" data-fashion-shelf-toggle aria-haspopup="dialog" aria-expanded="false" aria-controls="fashion-shelf" aria-label="Open Fashion live channels">
                   <span class="adaptive-television-fashion-runway-label" data-fashion-runway-label>FASHION CHANNELS</span>
                   <span class="adaptive-television-fashion-runway-count" data-fashion-runway-count aria-hidden="true">1 / 3</span>
                 </button>
-                <button class="adaptive-television-fashion-runway-arrow" type="button" data-fashion-runway-next aria-label="Next Fashion shared channel">
+                <button class="adaptive-television-fashion-runway-arrow" type="button" data-fashion-runway-next aria-label="Next Fashion live channel">
                   <span aria-hidden="true">&rsaquo;</span>
                 </button>
               </div>
@@ -819,7 +842,7 @@
                 <button type="button" role="tab" data-music-mode="parties" data-music-tooltip="24/7 livestream DJ sets, parties and festivals, together as one." aria-selected="false">Parties</button>
                 <button type="button" role="tab" data-music-mode="radio" data-music-tooltip="24/7 livestream electronic music radio — Balearic, chillout, house, ambient, electro, EBM and more." aria-selected="false">radio</button>
               </div>
-              <div class="adaptive-television-music-selector" data-music-selector data-video-tooltip="Videos&#10;Click for more recommendations." role="group" aria-label="Choose a shared channel">
+              <div class="adaptive-television-music-selector" data-music-selector data-video-tooltip="Videos&#10;Click for more recommendations." role="group" aria-label="Choose a live channel">
                 <button class="adaptive-television-music-selector__arrow" type="button" data-music-previous aria-label="Previous Music recommendation"><span aria-hidden="true">&lsaquo;</span></button>
                 <button class="adaptive-television-music-selector__current" type="button" data-music-shelf-toggle aria-haspopup="dialog" aria-expanded="false" aria-controls="music-shelf" aria-label="Click for more recommendations">
                   <span class="adaptive-television-music-selector__label" data-music-selector-label>VIDEOS</span>
@@ -1033,8 +1056,8 @@
     <script src="circle-audio-rooms.js?v=circle-rooms-4bcb0602f8f3"></script>
     <script src="mantra-audio-fx.js?v=mantra-audio-fx-5e1fdfbadb04"></script>
     <script src="mantra-sampler.js?v=mantra-sampler-6402cc9d89a2"></script>
-    <script src="adaptive-environment-television.js?v=music-tv-360b5ca17156"></script>
-    <script src="programme-guide.js?v=programme-guide-93b2b74a0cbd"></script>
+    <script src="adaptive-environment-television.js?v=music-tv-8c9e28a8d753"></script>
+    <script src="programme-guide.js?v=programme-guide-090942092021"></script>
     <script src="realtime-voice-assistant.js?v=realtime-voice-ca0e4fed9b9b"></script>
     <script src="adaptive-page-metadata-v1.js"></script>
     <script async data-agora-rtc-sdk src="https://download.agora.io/sdk/release/AgoraRTC_N-4.24.6.js"></script>
