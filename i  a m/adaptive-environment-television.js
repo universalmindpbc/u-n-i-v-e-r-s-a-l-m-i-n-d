@@ -7870,8 +7870,6 @@
       releaseReactionFlood(reactionType);
       window.IAMBroadcastInteractions?.sendBloom?.(reactionType);
       window.clearTimeout(reactionWalletCollapseTimer);
-      setWalletView("categories");
-      button.blur();
     });
   });
   window.addEventListener("iam:shared-bloom", (event) => {

@@ -141,7 +141,20 @@ assert.match(television, /syncCurrentCuePresentation\(\)/);
 assert.match(television, /window\.IAMCueSheet = Object\.freeze\(\{/);
 assert.match(television, /video\.addEventListener\("seeked", \(\) => \{/);
 assert.match(television, /const display = musicItemDisplayMetadata\(item\)/);
-assert.match(television, /window\.clearTimeout\(reactionWalletCollapseTimer\);\n      setWalletView\("categories"\);\n      button\.blur\(\);/);
+const bloomClickHandler = television.match(
+  /reactionButtons\.forEach\(\(button\) => \{\s*button\.addEventListener\("click", \(event\) => \{[\s\S]*?\n    \}\);\n  \}\);/,
+)?.[0];
+assert.ok(bloomClickHandler, "The Bloom click handler must remain identifiable for wallet-state regression coverage.");
+assert.match(
+  bloomClickHandler,
+  /releaseReactionFlood\(reactionType\);\s*window\.IAMBroadcastInteractions\?\.sendBloom\?\.\(reactionType\);\s*window\.clearTimeout\(reactionWalletCollapseTimer\);/,
+  "A Bloom tap must animate, send, and cancel any stale collapse without changing the open panel.",
+);
+assert.doesNotMatch(
+  bloomClickHandler,
+  /setWalletView|button\.blur\(/,
+  "Sending a Bloom must leave the Bloom wallet and focused control exactly where they are.",
+);
 for (const entry of [index, alternateEntry, cafeDelMarEntry]) {
   assert.doesNotMatch(entry, /data-flower-cue|data-homepage-radar-trigger|how we understand your needs|learn how it works/i);
 }
