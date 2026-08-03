@@ -626,6 +626,7 @@ requireCondition(controller.includes('const WALLET_RESUMABLE_VIEWS = new Set(["c
 requireCondition(controller.includes('let walletResumeView = "categories";') && controller.includes('function restoreReactionWalletView()'), 'the wallet no longer remembers and restores the last meaningful panel');
 requireCondition(controller.includes('setWalletView("closed", { remember: false });'), 'closing the wallet can overwrite its remembered panel');
 requireCondition(controller.includes('walletHomeButtons.forEach((button) => button.addEventListener("click", returnToWalletHome));'), 'the wallet-home flowers no longer share one state-preserving route home');
+requireCondition(controller.includes('window.clearTimeout(reactionWalletCollapseTimer);\n    reactionWalletCollapseTimer = 0;') && controller.includes('setWalletView("categories");\n    event?.currentTarget?.blur?.();'), 'wallet home can still inherit the Bloom collapse timer or retain focus in its hidden panel');
 requireCondition(controller.includes('if (walletResumeView === "categories") setReactionWalletOpen(true);'), 'a resumed panel can open during pointer-down and inherit the flower click');
 requireCondition(controller.includes('reactionWallet?.addEventListener("click", blockRestoredWalletClickThrough, true);'), 'a restored panel can inherit the completed flower click');
 requireCondition(!controller.includes('WALLET_RESUME_TIMEOUT'), 'wallet resume has regained an arbitrary time expiry');

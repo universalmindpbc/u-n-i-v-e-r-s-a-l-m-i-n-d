@@ -5521,11 +5521,14 @@
   function returnToWalletHome(event) {
     event?.preventDefault();
     event?.stopPropagation();
+    window.clearTimeout(reactionWalletCollapseTimer);
+    reactionWalletCollapseTimer = 0;
     audioWalletMode = false;
     window.IAMCircleRooms?.close?.();
     window.clearTimeout(circleTooltipArmTimer);
     reactionWallet?.classList.remove("is-circle-tooltip-armed");
     setWalletView("categories");
+    event?.currentTarget?.blur?.();
     syncAudioWallet();
   }
 

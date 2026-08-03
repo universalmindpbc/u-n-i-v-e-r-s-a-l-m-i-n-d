@@ -155,6 +155,15 @@ assert.doesNotMatch(
   /setWalletView|button\.blur\(/,
   "Sending a Bloom must leave the Bloom wallet and focused control exactly where they are.",
 );
+const walletHomeHandler = television.match(
+  /function returnToWalletHome\(event\) \{[\s\S]*?\n  \}/,
+)?.[0];
+assert.ok(walletHomeHandler, "The wallet-home handler must remain identifiable for transition regression coverage.");
+assert.match(
+  walletHomeHandler,
+  /window\.clearTimeout\(reactionWalletCollapseTimer\);\s*reactionWalletCollapseTimer = 0;[\s\S]*?setWalletView\("categories"\);\s*event\?\.currentTarget\?\.blur\?\.\(\);/,
+  "Returning from Bloom must cancel its delayed collapse, reveal wallet home, and release focus from the hidden home flower.",
+);
 for (const entry of [index, alternateEntry, cafeDelMarEntry]) {
   assert.doesNotMatch(entry, /data-flower-cue|data-homepage-radar-trigger|how we understand your needs|learn how it works/i);
 }
