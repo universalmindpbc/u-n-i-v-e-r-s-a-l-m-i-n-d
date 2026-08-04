@@ -3342,14 +3342,15 @@ body .adaptive-television-reaction-wallet[data-wallet-view="categories"].is-reac
 .adaptive-television-home-program-button {
   display: grid;
   flex: 0 0 auto;
-  width: 54px;
+  width: 62px;
   height: 21px;
   margin-top: 6px;
-  border: 1px solid rgba(255, 255, 255, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.38);
   border-radius: 999px;
-  background: rgba(255, 255, 255, 0.025);
-  color: rgba(255, 255, 255, 0.65);
-  font: 400 10px/1 "Helvetica Neue", Helvetica, Arial, sans-serif;
+  background: rgba(255, 255, 255, 0.14);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08), 0 3px 10px rgba(0, 0, 0, 0.16);
+  color: rgba(255, 255, 255, 0.92);
+  font: 600 10.5px/1 "Helvetica Neue", Helvetica, Arial, sans-serif;
   letter-spacing: 0;
   place-items: center;
   text-transform: lowercase;
@@ -3359,8 +3360,8 @@ body .adaptive-television-reaction-wallet[data-wallet-view="categories"].is-reac
 .adaptive-television-home-program-button:hover,
 .adaptive-television-home-program-button:focus-visible {
   border-color: rgba(255, 255, 255, 0.58);
-  background: rgba(255, 255, 255, 0.08);
-  color: rgba(255, 255, 255, 0.9);
+  background: rgba(255, 255, 255, 0.22);
+  color: #fff;
   outline: 0;
 }
 
@@ -3564,9 +3565,9 @@ body .adaptive-television-reaction-wallet[data-wallet-view="categories"].is-reac
   }
 
   .adaptive-television-home-program-button {
-    width: 48px;
+    width: 54px;
     height: 19px;
-    font-size: 8.8px;
+    font-size: 9.2px;
   }
 }
 

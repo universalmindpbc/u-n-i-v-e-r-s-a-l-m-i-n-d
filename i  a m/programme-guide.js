@@ -372,7 +372,7 @@
     artist.textContent = item.artist || channel.name;
     title.textContent = item.title || "Live now";
     live.className = "program-channel-card__live";
-    live.textContent = activeMode === "radio" ? "LIVE RADIO" : "ON NOW";
+    live.textContent = activeMode === "radio" ? "LIVE RADIO" : "LIVE";
     room.className = "program-channel-card__room";
     room.textContent = channel.name;
 
@@ -469,11 +469,9 @@
     const next = visibleEvents[1] || visibleEvents[0];
     if (!current || !next) return false;
 
-    const clockSource = window.IAMBroadcastClock?.diagnostics?.().clockSource || "device_fallback";
     programPanel.dataset.programMode = activeMode;
     setText("[data-zone-label]", ZONE_LABELS[activeZone] || ZONE_LABELS.local);
     setText("[data-date-label]", dateLabel(nowMs));
-    setText("[data-clock-source]", clockSource === "server_midpoint_monotonic" ? "LIVE CLOCK / SYNC" : "DEVICE CLOCK");
     setText("[data-footer-zone]", activeZone === "local"
       ? `your local time · ${timeZone()}`
       : `${(ZONE_LABELS[activeZone] || "TIME").toLowerCase()} · ${timeZone()}`);
