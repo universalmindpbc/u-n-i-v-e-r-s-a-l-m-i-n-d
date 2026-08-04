@@ -7,7 +7,7 @@
     { id: "tame-impala-the-less-i-know-the-better", artist: "Tame Impala", title: "The Less I Know The Better", localVideoSrc: "a s s e t s/Tame Impala - The Less I Know The Better.mp4", musicRoom: "champagne-bohemia" },
     { id: "flume-tiny-cities", artist: "Flume feat. Beck", title: "Tiny Cities", localVideoSrc: "a s s e t s/Flume - Tiny Cities feat. Beck.mp4", musicRoom: "inner-planes" },
     { id: "flume-never-be-like-you-laneway", artist: "Flume feat. Kai", title: "Never Be Like You [Live at Laneway Festival]", localVideoSrc: "a s s e t s/Flume - Never Be Like You feat. Kai [ Live at Laneway Festival ].mp4", musicRoom: "modul8-infinity" },
-    { id: "grimes-genesis", artist: "Grimes", title: "Genesis", localVideoSrc: "a s s e t s/Grimes - Genesis.mp4", musicRoom: "james-bondage" },
+    { id: "grimes-genesis", artist: "Grimes", title: "Genesis", localVideoSrc: "a s s e t s/Grimes - Genesis.mp4", musicRoom: "modul8-infinity" },
     { id: "solange-cranes-in-the-sky", artist: "Solange", title: "Cranes in the Sky", localVideoSrc: "a s s e t s/Solange - Cranes in the Sky.mp4", musicRoom: "champagne-bohemia" },
     { id: "little-simz-gorilla", artist: "Little Simz", title: "Gorilla", localVideoSrc: "a s s e t s/Little Simz - Gorilla.mp4", musicRoom: "modul8-infinity" },
     { id: "the-prodigy-everybody-in-the-place", artist: "The Prodigy", title: "Everybody In The Place", localVideoSrc: "a s s e t s/The Prodigy - Everybody In The Place.mp4", musicRoom: "modul8-infinity", edgeScale: 1.16 },

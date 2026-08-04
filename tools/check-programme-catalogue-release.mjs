@@ -119,6 +119,8 @@ assert.equal(channel("video-james-bondage").schedule.at(-1).track_id, closerId);
 const grimesGenesis = catalogue.tracks.find((track) => track.id === "grimes-genesis");
 assert.equal(grimesGenesis.music_room, "modul8-infinity");
 assert.equal(grimesGenesis.tensor_profile?.runtime_delivery?.music_room, "modul8-infinity");
+assert.match(television, /\{ id: "grimes-genesis",[^\n]+musicRoom: "modul8-infinity" \}/);
+assert.doesNotMatch(television, /\{ id: "grimes-genesis",[^\n]+musicRoom: "james-bondage" \}/);
 assert.deepEqual(channel("party-james-bondage").schedule.map((entry) => [entry.track_id, entry.media_type]), [
   ["zip-perlon-air-festival-2007", "audio"],
   ["zip-sammy-d-perlon-betalounge-2000", "audio"],
