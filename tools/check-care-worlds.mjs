@@ -29,6 +29,8 @@ assert.match(careHtml, /data-care-connect-action[^>]*>Connect</, "Connect must h
 assert.match(careHtml, /data-care-device="microphone"/, "Connect must have a microphone control");
 assert.match(careHtml, /data-care-device="camera"/, "Connect must have a camera control");
 assert.match(careHtml, /Talk live with mentors, peers and supportive communities\./, "Connect must repeat its single care invitation");
+assert.match(careHtml, /Coming soon: rostered mentors, peers and community hosts\./, "Connect must disclose its future roster model");
+assert.equal(count(careHtml, /Your camera is off/g), 2, "Connect and Talk must make the camera-off state immediately clear");
 assert.doesNotMatch(careHtml, /See me|Hear me|Don(?:&rsquo;|')t make me perform|Let me see you|Face to face|Voice only|Prepare private room|audio room/i, "Rejected mode and wireframe language must be removed from Care");
 
 for (const [file, description] of [
@@ -75,8 +77,10 @@ assert.match(css, /\.care-experience__backdrop\s*\{[\s\S]*?background:\s*rgba\(0
 assert.doesNotMatch(css, /\.care-experience__backdrop\s*\{[\s\S]*?background:\s*rgba\(0, 0, 0, 0\.77\)/, "The rejected 77% veil must not return");
 assert.ok(count(css, /Universal Mind \[ I o H \] Logo\.PNG/g) >= 4, "Human, camera, and microphone symbols must sit over the Universal Mind flower");
 assert.match(css, /\.care-call__screens\s*\{[\s\S]*?grid-template-columns:\s*repeat\(2/, "Connect must look like a two-person streaming room");
+assert.match(css, /\.care-call\s*\{[\s\S]*?background:\s*rgba\(248, 248, 246, 0\.96\)/, "Connect must use the translucent-white Care casing");
 assert.match(css, /\.care-call__connect\s*\{[\s\S]*?background:\s*#fff;[\s\S]*?color:\s*#111;/, "Connect must use the site's white CTA treatment");
 assert.match(css, /\.care-cart\s*\{[\s\S]*?background:\s*rgba\(248, 248, 246, 0\.96\)/, "Comfort must read as a light shopping cart");
+assert.match(css, /\.care-clinical-room,\s*\n\.care-support-now\s*\{[\s\S]*?background:\s*rgba\(248, 248, 246, 0\.96\)/, "Both Talk panels must use the translucent-white Care casing");
 assert.match(css, /\.care-urgent strong\s*\{[\s\S]*?font-size:\s*15px;/, "Urgent support must be readable above the fold");
 assert.match(css, /@media \(max-width: 680px\)/, "Care must include a mobile layout");
 assert.match(css, /@media \(prefers-reduced-motion: reduce\)/, "Care must honour reduced motion");

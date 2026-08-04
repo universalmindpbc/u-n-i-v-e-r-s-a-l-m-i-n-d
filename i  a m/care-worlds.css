@@ -148,10 +148,11 @@ body.care-experience-open { overflow: hidden; }
 .care-call {
   width: 100%;
   overflow: hidden;
-  border: 1px solid rgba(255, 255, 255, 0.18);
+  border: 1px solid rgba(255, 255, 255, 0.62);
   border-radius: 20px;
-  background: rgba(8, 9, 10, 0.56);
+  background: rgba(248, 248, 246, 0.96);
   box-shadow: 0 28px 90px rgba(0, 0, 0, 0.42);
+  color: #111;
 }
 
 .care-call__topbar {
@@ -168,7 +169,7 @@ body.care-experience-open { overflow: hidden; }
   gap: 2px;
   padding: 3px;
   border-radius: 999px;
-  background: rgba(255, 255, 255, 0.075);
+  background: rgba(0, 0, 0, 0.055);
 }
 
 .care-call__roles button {
@@ -176,19 +177,19 @@ body.care-experience-open { overflow: hidden; }
   border: 0;
   border-radius: 999px;
   background: transparent;
-  color: rgba(255, 255, 255, 0.5);
+  color: rgba(17, 17, 17, 0.56);
   cursor: pointer;
   font: 500 9px/1 "Helvetica Neue", Helvetica, Arial, sans-serif;
   padding: 0 12px;
 }
 
 .care-call__roles button[aria-pressed="true"] {
-  background: rgba(255, 255, 255, 0.94);
-  color: #111;
+  background: #111;
+  color: #fff;
 }
 
 .care-call__time {
-  color: rgba(255, 255, 255, 0.4);
+  color: rgba(17, 17, 17, 0.44);
   font-size: 10px;
   font-variant-numeric: tabular-nums;
   letter-spacing: 0.08em;
@@ -258,9 +259,9 @@ body.care-experience-open { overflow: hidden; }
 
 .care-call__camera-off {
   display: grid;
-  gap: 12px;
+  gap: 10px;
   justify-items: center;
-  color: rgba(255, 255, 255, 0.42);
+  color: rgba(255, 255, 255, 0.92);
 }
 
 .care-call__camera-off > span {
@@ -295,9 +296,11 @@ body.care-experience-open { overflow: hidden; }
   content: "";
 }
 
-.care-call__camera-off small {
-  font-size: 9px;
-  letter-spacing: 0.08em;
+.care-call__camera-off strong {
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  text-shadow: 0 1px 10px rgba(0, 0, 0, 0.72);
 }
 
 .care-call__screen--self > div:not(.care-call__camera-off) {
@@ -344,7 +347,7 @@ body.care-experience-open { overflow: hidden; }
   min-width: 58px;
   border: 0;
   background: transparent;
-  color: rgba(255, 255, 255, 0.66);
+  color: rgba(17, 17, 17, 0.68);
   cursor: pointer;
   font: 400 8px/1 "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
@@ -360,7 +363,7 @@ body.care-experience-open { overflow: hidden; }
 }
 
 .care-call__device[aria-pressed="true"] .care-call__device-icon {
-  box-shadow: 0 0 0 2px #fff;
+  box-shadow: 0 0 0 2px rgba(17, 17, 17, 0.32);
 }
 
 .care-call__device-icon--microphone::before {
@@ -412,9 +415,10 @@ body.care-experience-open { overflow: hidden; }
 .care-call__connect {
   min-width: 132px;
   min-height: 46px;
-  border: 0;
+  border: 1px solid rgba(17, 17, 17, 0.16);
   border-radius: 999px;
   background: #fff;
+  box-shadow: 0 7px 22px rgba(0, 0, 0, 0.09);
   color: #111;
   cursor: pointer;
   font: 600 11px/1 "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -440,10 +444,19 @@ body.care-experience-open { overflow: hidden; }
   margin: 0 0 9px;
   overflow: visible;
   clip: auto;
-  color: #fff;
+  color: #8a1f1f;
   font-size: 9px;
   text-align: center;
   white-space: normal;
+}
+
+.care-connect-stage__roster {
+  margin: 12px 0 0;
+  color: rgba(255, 255, 255, 0.82);
+  font-size: 10px;
+  letter-spacing: 0.025em;
+  text-align: center;
+  text-shadow: 0 1px 14px rgba(0, 0, 0, 0.72);
 }
 
 /* Comfort */
@@ -729,10 +742,11 @@ body.care-experience-open { overflow: hidden; }
 .care-clinical-room,
 .care-support-now {
   overflow: hidden;
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.62);
   border-radius: 20px;
-  background: rgba(8, 9, 10, 0.48);
+  background: rgba(248, 248, 246, 0.96);
   box-shadow: 0 24px 80px rgba(0, 0, 0, 0.26);
+  color: #111;
 }
 
 .care-clinical-room__screen {
@@ -740,8 +754,8 @@ body.care-experience-open { overflow: hidden; }
   min-height: 350px;
   overflow: hidden;
   background:
-    radial-gradient(circle at 46% 38%, rgba(255, 255, 255, 0.12), transparent 24%),
-    rgba(0, 0, 0, 0.34);
+    radial-gradient(circle at 46% 38%, rgba(255, 255, 255, 0.78), transparent 30%),
+    rgba(222, 222, 218, 0.72);
 }
 
 .care-clinical-room__portrait {
@@ -790,9 +804,9 @@ body.care-experience-open { overflow: hidden; }
   flex-direction: column;
 }
 
-.care-clinical-room__copy p { margin: 0 0 7px; color: var(--care-faint); font-size: 7px; letter-spacing: 0.13em; }
+.care-clinical-room__copy p { margin: 0 0 7px; color: rgba(17, 17, 17, 0.48); font-size: 7px; letter-spacing: 0.13em; }
 .care-clinical-room__copy strong { font-size: 18px; font-weight: 400; }
-.care-clinical-room__copy span { margin-top: 5px; color: var(--care-faint); font-size: 8px; }
+.care-clinical-room__copy span { margin-top: 5px; color: rgba(17, 17, 17, 0.52); font-size: 8px; }
 
 .care-clinical-room__self {
   position: absolute;
@@ -810,8 +824,7 @@ body.care-experience-open { overflow: hidden; }
   padding: 10px;
 }
 
-.care-clinical-room__self span { font-size: 7px; letter-spacing: 0.08em; }
-.care-clinical-room__self small { margin-top: 3px; color: var(--care-faint); font-size: 7px; }
+.care-clinical-room__self span { font-size: 8px; font-weight: 500; letter-spacing: 0.02em; }
 .care-clinical-room__copy + .care-clinical-room__self { top: 18px; bottom: auto; }
 
 .care-clinical-room__self > div {
@@ -829,8 +842,7 @@ body.care-experience-open { overflow: hidden; }
   object-fit: cover !important;
 }
 
-.care-clinical-room__self.is-camera-on > span,
-.care-clinical-room__self.is-camera-on > small { opacity: 0; }
+.care-clinical-room__self.is-camera-on > span { opacity: 0; }
 
 .care-clinical-room.is-connected .care-clinical-room__portrait {
   box-shadow: 0 0 0 4px rgba(45, 140, 255, 0.22);
@@ -848,9 +860,10 @@ body.care-experience-open { overflow: hidden; }
 .care-primary-action--talk {
   min-width: 132px;
   min-height: 46px;
-  border: 0;
+  border: 1px solid rgba(17, 17, 17, 0.16);
   border-radius: 999px;
   background: #fff;
+  box-shadow: 0 7px 22px rgba(0, 0, 0, 0.09);
   color: #111;
   cursor: pointer;
   font: 600 11px/1 "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -861,7 +874,7 @@ body.care-experience-open { overflow: hidden; }
 .care-action-status {
   min-height: 16px;
   margin: 9px 18px 14px;
-  color: var(--care-faint);
+  color: rgba(17, 17, 17, 0.48);
   font-size: 8px;
   line-height: 1.4;
   text-align: center;
@@ -875,14 +888,14 @@ body.care-experience-open { overflow: hidden; }
 
 .care-support-now__status {
   margin: 0;
-  color: #fff;
+  color: #111;
   font-size: 10px;
   letter-spacing: 0.13em;
 }
 
 .care-support-now__status span {
   margin-left: 8px;
-  border: 1px solid rgba(255, 255, 255, 0.3);
+  border: 1px solid rgba(17, 17, 17, 0.22);
   border-radius: 999px;
   padding: 4px 7px;
 }
@@ -896,7 +909,7 @@ body.care-experience-open { overflow: hidden; }
 
 .care-support-now > p:not([class]) {
   margin: 0;
-  color: var(--care-soft);
+  color: rgba(17, 17, 17, 0.66);
   font-size: 12px;
   line-height: 1.5;
 }
@@ -912,17 +925,17 @@ body.care-experience-open { overflow: hidden; }
   display: flex;
   flex-direction: column;
   min-height: 94px;
-  border: 1px solid rgba(255, 255, 255, 0.17);
+  border: 1px solid rgba(17, 17, 17, 0.13);
   border-radius: 10px;
-  background: rgba(255, 255, 255, 0.07);
-  color: #fff;
+  background: rgba(255, 255, 255, 0.68);
+  color: #111;
   padding: 15px;
   text-decoration: none;
 }
 
-.care-support-now__actions span { color: var(--care-faint); font-size: 7px; letter-spacing: 0.12em; }
+.care-support-now__actions span { color: rgba(17, 17, 17, 0.48); font-size: 7px; letter-spacing: 0.12em; }
 .care-support-now__actions strong { margin-top: 13px; font-size: 13px; font-weight: 500; }
-.care-support-now__actions small { margin-top: 4px; color: var(--care-faint); font-size: 7px; }
+.care-support-now__actions small { margin-top: 4px; color: rgba(17, 17, 17, 0.48); font-size: 7px; }
 
 .care-handoff {
   display: grid;
@@ -933,9 +946,9 @@ body.care-experience-open { overflow: hidden; }
   padding-top: 26px;
 }
 
-.care-handoff span { color: var(--care-faint); font-size: 7px; letter-spacing: 0.08em; }
-.care-handoff i { height: 1px; background: rgba(255, 255, 255, 0.18); }
-.care-support-now__truth { margin: 15px 0 0; color: var(--care-faint); font-size: 8px; line-height: 1.45; }
+.care-handoff span { color: rgba(17, 17, 17, 0.48); font-size: 7px; letter-spacing: 0.08em; }
+.care-handoff i { height: 1px; background: rgba(17, 17, 17, 0.14); }
+.care-support-now__truth { margin: 15px 0 0; color: rgba(17, 17, 17, 0.5); font-size: 8px; line-height: 1.45; }
 
 .care-urgent {
   display: flex;
@@ -1020,7 +1033,7 @@ body.care-experience-open { overflow: hidden; }
   .care-call__screen--self .care-call__camera-off > span { width: 46px; height: 46px; }
   .care-call__screen--self .care-call__camera-off > span::before { top: 16px; left: 12px; transform: scale(0.72); transform-origin: top left; }
   .care-call__screen--self .care-call__camera-off > span::after { top: 19px; right: 7px; transform: scale(0.72); transform-origin: top right; }
-  .care-call__screen--self .care-call__camera-off small { display: none; }
+  .care-call__screen--self .care-call__camera-off strong { display: none; }
   .care-call__screen--self .care-call__name { bottom: 6px; left: 6px; font-size: 7px; padding: 3px 5px; }
   .care-call__toolbar { min-height: 78px; gap: 10px; padding-right: 10px; padding-left: 10px; }
   .care-call__connect { min-width: 112px; }
