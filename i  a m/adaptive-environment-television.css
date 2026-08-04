@@ -1473,15 +1473,6 @@ body:not(.television-wallet-pointer-locked) .adaptive-television-reaction-wallet
   transform: translateX(-50%) translateY(6px) scale(0.98);
 }
 
-body.television-wallet-bloom-snapping .adaptive-television-reaction-wallet,
-body.television-wallet-bloom-snapping .adaptive-television-wallet-categories,
-body.television-wallet-bloom-snapping .adaptive-television-wallet-panel,
-body.television-wallet-bloom-snapping .adaptive-television-reaction-trigger,
-body.television-wallet-bloom-snapping .adaptive-television-reaction {
-  transition-duration: 90ms !important;
-  transition-delay: 0ms !important;
-}
-
 .adaptive-television-reaction__glyph {
   --icon-outline: rgba(0, 0, 0, 0.42);
   display: grid;
