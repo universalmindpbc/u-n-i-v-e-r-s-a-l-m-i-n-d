@@ -5471,6 +5471,25 @@
     document.body.classList.remove("television-wallet-pointer-locked");
   }
 
+  function releaseBloomWalletCloseGuardFromPointerMove(event) {
+    if (!bloomWalletCloseGuard || (event.pointerType && event.pointerType !== "mouse")) return;
+    const pointerX = Number(event.clientX);
+    const pointerY = Number(event.clientY);
+    if (
+      !Number.isFinite(pointerX) ||
+      !Number.isFinite(pointerY) ||
+      reactionWallet?.contains(event.target) ||
+      reactionWalletPointerAnchorX === null ||
+      reactionWalletPointerAnchorY === null
+    ) return;
+    const physicalDistance = Math.hypot(
+      pointerX - reactionWalletPointerAnchorX,
+      pointerY - reactionWalletPointerAnchorY
+    );
+    if (physicalDistance < REACTION_WALLET_POINTER_MOVE_PX) return;
+    releaseBloomWalletCloseGuard();
+  }
+
   function closeReactionWalletAfterBloom(button, event) {
     if (!reactionWallet || walletView !== "emoji") return;
     window.clearTimeout(reactionWalletCollapseTimer);
@@ -7887,6 +7906,7 @@
   researchDialogCopy?.addEventListener("pointerdown", (event) => event.stopPropagation());
   researchDialogCopy?.addEventListener("click", (event) => event.stopPropagation());
   document.addEventListener("pointermove", (event) => {
+    releaseBloomWalletCloseGuardFromPointerMove(event);
     researchRolloverHosts.forEach((host) => {
       if (!host.classList.contains("is-research-rollover-open")) return;
       if (host.contains(event.target) || researchRolloverCloseTimers.has(host)) return;
