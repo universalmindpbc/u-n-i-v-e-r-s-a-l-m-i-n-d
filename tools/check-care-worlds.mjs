@@ -11,6 +11,8 @@ const html = readFileSync(join(iamDir, "index.html"), "utf8");
 const css = readFileSync(join(iamDir, "care-worlds.css"), "utf8");
 const js = readFileSync(join(iamDir, "care-worlds.js"), "utf8");
 const televisionJs = readFileSync(join(iamDir, "adaptive-environment-television.js"), "utf8");
+const htaccess = readFileSync(join(root, ".htaccess"), "utf8");
+const deployScript = readFileSync(join(root, "deploy-panthurlive.sh"), "utf8");
 const careStart = html.indexOf('<section class="care-experience"');
 const careEnd = html.indexOf('<div class="adaptive-television-heart-field"', careStart);
 const careHtml = html.slice(careStart, careEnd);
@@ -99,6 +101,11 @@ assert.match(css, /\.care-world__intro\s*\{[^}]*margin:\s*0 0 clamp\(28px, 4vh, 
 assert.match(css, /\.care-urgent strong\s*\{[\s\S]*?font-size:\s*15px;/, "Urgent support must be readable above the fold");
 assert.match(css, /@media \(max-width: 680px\)/, "Care must include a mobile layout");
 assert.match(css, /@media \(prefers-reduced-motion: reduce\)/, "Care must honour reduced motion");
+
+for (const [source, label] of [[htaccess, "repository redirect layer"], [deployScript, "Panthur redirect deployment"]]) {
+  assert.match(source, /FilesMatch ["']\\?\.html\?\$["']/, `${label} must target HTML app shells`);
+  assert.match(source, /Cache-Control ["']no-store, no-cache, must-revalidate, max-age=0["']/, `${label} must prevent stale Care markup`);
+}
 
 const cssToken = hash(css);
 const jsToken = hash(js);

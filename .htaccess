@@ -2,6 +2,16 @@ Options -MultiViews
 DirectoryIndex index.html
 AddType application/vnd.apple.pkpass .pkpass
 
+# The app shell changes frequently during staging reviews. Keep HTML fresh while
+# content-hashed styles, scripts and media retain their normal cache behaviour.
+<IfModule mod_headers.c>
+  <FilesMatch "\.html?$">
+    Header always set Cache-Control "no-store, no-cache, must-revalidate, max-age=0"
+    Header always set Pragma "no-cache"
+    Header always set Expires "0"
+  </FilesMatch>
+</IfModule>
+
 RewriteEngine On
 
 # Smartphone visitors receive the lightweight editorial surface while the
