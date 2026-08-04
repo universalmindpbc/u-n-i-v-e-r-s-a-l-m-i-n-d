@@ -146,6 +146,13 @@
   const BROADCAST_REJOIN_FADE_IN_MS = 180;
   const BROADCAST_ENERGY_ORDER = ["restore", "social-uplift", "underground-intensity"];
   const BROADCAST_EDITORIAL_ORDER = ["inner-planes", "champagne-bohemia", "modul8-infinity", "james-bondage", "safety-cushion"];
+  const MUSIC_CHANNEL_NAMES = Object.freeze({
+    "inner-planes": "Inner Planes",
+    "champagne-bohemia": "Champagne Bohemia",
+    "modul8-infinity": "modul8 infinity",
+    "james-bondage": "james bondage",
+    "safety-cushion": "Safety Cushion",
+  });
   const BROADCAST_ENERGY_PROFILES = {
     restore: {
       need_scores: { Anxiety: 1, Stress: 1, Fear: .88, Recovery: 1, Calm: 1, Attention: .78, "Psychological Safety": .92 },
@@ -220,6 +227,9 @@
   const nowPlayingVisual = document.querySelector("[data-now-playing-visual]");
   const nowPlayingSecondaryLabel = document.querySelector("[data-now-playing-secondary-label]");
   const nowPlayingVisualTitle = document.querySelector("[data-now-playing-visual-title]");
+  const nowPlayingChannel = document.querySelector("[data-now-playing-channel]");
+  const nowPlayingChannelTitle = document.querySelector("[data-now-playing-channel-title]");
+  const nowPlayingAnnouncement = document.querySelector("[data-now-playing-announcement]");
   const sexEdLink = document.querySelector("[data-sex-ed-link]");
   const sexEdShelf = document.querySelector("[data-sex-ed-shelf]");
   const sexEdShelfTrack = document.querySelector("[data-sex-ed-shelf-track]");
@@ -580,6 +590,9 @@
   let nowPlayingResizeObserver = null;
   let nowPlayingTickerTimer = 0;
   let nowPlayingTickerView = "audio";
+  let nowPlayingTickerViews = ["audio"];
+  let nowPlayingTickerStatuses = { audio: "NOW PLAYING" };
+  let nowPlayingAnnouncementText = "";
   const REACTION_WALLET_POINTER_LOCK_MS = 10000;
   const REACTION_WALLET_POINTER_MOVE_PX = 2;
   let audioWalletMode = false;
@@ -2213,6 +2226,25 @@
     };
   }
 
+  function currentNowPlayingChannel(media = currentNowPlayingMedia()) {
+    const broadcastState = broadcastChannelId
+      ? window.IAMBroadcastClock?.stateAt?.(broadcastChannelId)
+      : null;
+    const station = media.mode === "radio"
+      ? (radioStationRecords.find((candidate) => candidate.id === activeRadioStationId) || stationForId(activeRadioStationId))
+      : null;
+    const stationRooms = station?.music_room_fit || station?.musicRoomFit || [];
+    const editorialId = String(
+      broadcastState?.editorialId ||
+      (media.mode === "radio" ? stationRooms[0] : track?.musicRoom) ||
+      ""
+    ).toLowerCase();
+    return {
+      editorialId,
+      name: broadcastState?.channelName || MUSIC_CHANNEL_NAMES[editorialId] || "",
+    };
+  }
+
   function updateNowPlayingClock() {
     if (!nowPlayingTime) return;
     const now = new Date();
@@ -2230,8 +2262,11 @@
       const activeContent = nowPlayingTrack.querySelector(
         ".adaptive-television-now-playing__item.is-active:not([hidden]) .adaptive-television-now-playing__content"
       );
-      const activeWidth = Math.min(310, Math.ceil(activeContent?.scrollWidth || 0));
-      nowPlayingViewport.style.width = activeWidth > 0 ? `${activeWidth}px` : "auto";
+      const availableContents = Array.from(nowPlayingTrack.querySelectorAll(
+        ".adaptive-television-now-playing__item:not([hidden]) .adaptive-television-now-playing__content"
+      ));
+      const stableWidth = Math.min(350, Math.max(0, ...availableContents.map((content) => Math.ceil(content.scrollWidth || 0))));
+      nowPlayingViewport.style.width = stableWidth > 0 ? `${stableWidth}px` : "auto";
       const overflow = Math.max(0, (activeContent?.scrollWidth || 0) - nowPlayingViewport.clientWidth);
       nowPlaying.classList.toggle("is-overflowing", overflow > 4);
       nowPlaying.style.setProperty("--now-playing-overflow", `${-Math.ceil(overflow)}px`);
@@ -2239,26 +2274,45 @@
   }
 
   function setNowPlayingTickerView(nextView) {
-    if (!nowPlaying || !nowPlayingAudio || !nowPlayingVisual) return;
-    const visualAvailable = !nowPlayingVisual.hidden;
-    nowPlayingTickerView = visualAvailable && nextView === "visual" ? "visual" : "audio";
-    const audioActive = nowPlayingTickerView === "audio";
-    nowPlayingAudio.classList.toggle("is-active", audioActive);
-    nowPlayingAudio.setAttribute("aria-hidden", String(!audioActive));
-    nowPlayingVisual.classList.toggle("is-active", !audioActive);
-    nowPlayingVisual.setAttribute("aria-hidden", String(audioActive));
+    if (!nowPlaying || !nowPlayingAudio || !nowPlayingVisual || !nowPlayingChannel) return;
+    const tickerItems = {
+      audio: nowPlayingAudio,
+      visual: nowPlayingVisual,
+      channel: nowPlayingChannel,
+    };
+    nowPlayingTickerView = nowPlayingTickerViews.includes(nextView)
+      ? nextView
+      : (nowPlayingTickerViews[0] || "audio");
+    Object.entries(tickerItems).forEach(([view, item]) => {
+      const active = view === nowPlayingTickerView;
+      item.classList.toggle("is-active", active);
+      item.setAttribute("aria-hidden", String(!active));
+    });
+    if (nowPlayingStatus) {
+      nowPlayingStatus.textContent = nowPlayingTickerStatuses[nowPlayingTickerView] || "NOW PLAYING";
+    }
     nowPlaying.dataset.nowPlayingTicker = nowPlayingTickerView;
     updateNowPlayingOverflow();
   }
 
-  function restartNowPlayingTicker(hasVisual) {
+  function restartNowPlayingTicker(views = ["audio"], statuses = { audio: "NOW PLAYING" }) {
     window.clearInterval(nowPlayingTickerTimer);
     nowPlayingTickerTimer = 0;
-    setNowPlayingTickerView("audio");
-    if (!hasVisual) return;
+    nowPlayingTickerViews = Array.from(new Set(views)).filter((view) => ["audio", "visual", "channel"].includes(view));
+    if (!nowPlayingTickerViews.length) nowPlayingTickerViews = ["audio"];
+    nowPlayingTickerStatuses = { audio: "NOW PLAYING", ...statuses };
+    setNowPlayingTickerView(nowPlayingTickerViews.includes("audio") ? "audio" : nowPlayingTickerViews[0]);
+    if (nowPlayingTickerViews.length < 2) return;
     nowPlayingTickerTimer = window.setInterval(() => {
-      setNowPlayingTickerView(nowPlayingTickerView === "audio" ? "visual" : "audio");
+      const currentIndex = Math.max(0, nowPlayingTickerViews.indexOf(nowPlayingTickerView));
+      setNowPlayingTickerView(nowPlayingTickerViews[(currentIndex + 1) % nowPlayingTickerViews.length]);
     }, 7000);
+  }
+
+  function announceNowPlaying(message) {
+    if (!nowPlayingAnnouncement || !message || message === nowPlayingAnnouncementText) return;
+    nowPlayingAnnouncementText = message;
+    nowPlayingAnnouncement.textContent = message;
   }
 
   function currentSexEdNowPlaying() {
@@ -2283,6 +2337,7 @@
   function updateNowPlaying() {
     if (!nowPlaying) return;
     const media = currentNowPlayingMedia();
+    const channel = currentNowPlayingChannel(media);
     const sexEdProgramme = currentSexEdNowPlaying();
     const radioState = document.body.dataset.radioPlaybackState || "stopped";
     const state = media.mode === "radio"
@@ -2296,25 +2351,45 @@
     const radioVisualVisible = Boolean(radioActive && radioRunway && requestedVideoBlend >= 99.5);
     const visibleRunway = fashionVisible ? activeRunway : radioVisualVisible ? radioRunway : null;
     const primaryLabel = sexEdProgramme?.label || media.label;
-    const secondaryLabel = sexEdProgramme ? "MUSIC" : "VISUAL";
+    const secondaryLabel = sexEdProgramme ? "MUSIC" : "FASHION";
     const secondaryTitle = sexEdProgramme ? media.label : (visibleRunway?.title || "");
     const secondaryAvailable = sexEdProgramme ? Boolean(media.label) : Boolean(visibleRunway);
+    const channelAvailable = !sexEdProgramme && Boolean(channel.name);
+    const tickerViews = ["audio"];
+    const tickerStatuses = {
+      audio: media.mode === "radio" && !sexEdProgramme ? "RADIO" : "NOW PLAYING",
+    };
+    if (secondaryAvailable) {
+      tickerViews.push("visual");
+      tickerStatuses.visual = secondaryLabel;
+    }
+    if (channelAvailable) {
+      tickerViews.push("channel");
+      tickerStatuses.channel = "CHANNEL";
+    }
 
-    if (nowPlayingStatus) nowPlayingStatus.textContent = "NOW PLAYING";
     if (nowPlayingTitle) nowPlayingTitle.textContent = primaryLabel;
     if (nowPlayingVisual) nowPlayingVisual.hidden = !secondaryAvailable;
     if (nowPlayingSecondaryLabel) nowPlayingSecondaryLabel.textContent = secondaryLabel;
     if (nowPlayingVisualTitle) nowPlayingVisualTitle.textContent = secondaryTitle;
+    if (nowPlayingChannel) nowPlayingChannel.hidden = !channelAvailable;
+    if (nowPlayingChannelTitle) nowPlayingChannelTitle.textContent = channel.name;
     nowPlaying.dataset.nowPlayingState = state;
     nowPlaying.dataset.nowPlayingMode = sexEdProgramme ? "sex-ed" : media.mode;
+    nowPlaying.dataset.nowPlayingChannel = channelAvailable ? channel.editorialId : "";
     nowPlaying.setAttribute(
       "aria-label",
       sexEdProgramme
         ? `Open sex-ed episodes. Now playing: ${sexEdProgramme.label}. Music: ${media.label}`
-        : `Open ${modeLabel.toLowerCase()} recommendations. Now playing: ${media.label}${visibleRunway ? `. Visual: ${visibleRunway.title}` : ""}`
+        : `Open ${modeLabel.toLowerCase()} recommendations. ${media.mode === "radio" ? "Radio" : "Now playing"}: ${media.label}${visibleRunway ? `. Fashion: ${visibleRunway.title}` : ""}${channelAvailable ? `. Channel: ${channel.name}` : ""}`
+    );
+    announceNowPlaying(
+      sexEdProgramme
+        ? `Now playing ${sexEdProgramme.label}. Music ${media.label}.`
+        : `${media.mode === "radio" ? "Radio" : "Now playing"} ${media.label}.${visibleRunway ? ` Fashion ${visibleRunway.title}.` : ""}${channelAvailable ? ` Channel ${channel.name}.` : ""}`
     );
     updateNowPlayingClock();
-    restartNowPlayingTicker(secondaryAvailable);
+    restartNowPlayingTicker(tickerViews, tickerStatuses);
   }
 
   function openNowPlayingRecommendations(event) {
@@ -2332,9 +2407,10 @@
   }
 
   window.IAMNowPlaying = {
-    version: "wallet_now_playing_v1.2",
+    version: "wallet_now_playing_v1.3",
     getState() {
       const media = currentNowPlayingMedia();
+      const channel = currentNowPlayingChannel(media);
       const sexEdProgramme = currentSexEdNowPlaying();
       return {
         time: nowPlayingTime?.textContent || "",
@@ -2344,6 +2420,9 @@
         secondaryLabel: nowPlayingVisual?.hidden ? "" : (nowPlayingSecondaryLabel?.textContent || ""),
         secondary: nowPlayingVisual?.hidden ? "" : (nowPlayingVisualTitle?.textContent || ""),
         visual: nowPlayingVisual?.hidden ? "" : (nowPlayingVisualTitle?.textContent || ""),
+        channelId: channel.editorialId,
+        channel: channel.name,
+        tickerViews: [...nowPlayingTickerViews],
         ticker: nowPlayingTickerView,
         overflow: Boolean(nowPlaying?.classList.contains("is-overflowing")),
       };
@@ -8275,6 +8354,7 @@
     nowPlayingResizeObserver.observe(nowPlayingViewport);
     if (nowPlayingTitle) nowPlayingResizeObserver.observe(nowPlayingTitle);
     if (nowPlayingVisualTitle) nowPlayingResizeObserver.observe(nowPlayingVisualTitle);
+    if (nowPlayingChannelTitle) nowPlayingResizeObserver.observe(nowPlayingChannelTitle);
   }
   window.setInterval(updateNowPlayingClock, 30000);
   syncFullscreenState();

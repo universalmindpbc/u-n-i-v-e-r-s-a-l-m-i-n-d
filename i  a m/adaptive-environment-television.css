@@ -3615,9 +3615,11 @@ body .adaptive-television-reaction-wallet[data-wallet-view="categories"].is-reac
 
 .adaptive-television-now-playing__status {
   flex: 0 0 auto;
+  min-width: 72px;
   color: #fff;
   font-weight: 400;
   letter-spacing: 0.09em;
+  text-align: center;
   white-space: nowrap;
 }
 
@@ -3641,8 +3643,8 @@ body .adaptive-television-reaction-wallet[data-wallet-view="categories"].is-reac
 .adaptive-television-now-playing__track {
   position: relative;
   display: grid;
-  grid-template-columns: max-content;
-  width: max-content;
+  grid-template-columns: minmax(0, 1fr);
+  width: 100%;
   max-width: 100%;
   height: 100%;
 }
@@ -3652,7 +3654,8 @@ body .adaptive-television-reaction-wallet[data-wallet-view="categories"].is-reac
   grid-area: 1 / 1;
   display: flex;
   align-items: center;
-  justify-content: flex-start;
+  justify-content: center;
+  width: 100%;
   max-width: 100%;
   color: #fff;
   opacity: 0;
@@ -3663,7 +3666,9 @@ body .adaptive-television-reaction-wallet[data-wallet-view="categories"].is-reac
   will-change: opacity, transform;
 }
 
-.adaptive-television-now-playing[data-now-playing-ticker="visual"] [data-now-playing-audio] {
+.adaptive-television-now-playing[data-now-playing-ticker="visual"] [data-now-playing-audio],
+.adaptive-television-now-playing[data-now-playing-ticker="channel"] [data-now-playing-audio],
+.adaptive-television-now-playing[data-now-playing-ticker="channel"] [data-now-playing-visual] {
   transform: translateX(-10px);
 }
 
@@ -3700,6 +3705,17 @@ body .adaptive-television-reaction-wallet[data-wallet-view="categories"].is-reac
 .adaptive-television-now-playing__slash {
   color: #fff;
   margin: 0 5px;
+}
+
+.adaptive-television-now-playing__announcement {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  overflow: hidden;
+  white-space: nowrap;
 }
 
 @keyframes television-now-playing-travel {
@@ -3741,6 +3757,10 @@ body .adaptive-television-reaction-wallet[data-wallet-view="categories"].is-reac
   .adaptive-television-now-playing__viewport {
     flex: 0 1 auto;
     width: auto;
+  }
+
+  .adaptive-television-now-playing__status {
+    min-width: 64px;
   }
 
   .adaptive-television-wallet-status-row {

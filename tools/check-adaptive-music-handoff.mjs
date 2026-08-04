@@ -410,9 +410,17 @@ requireCondition(controller.includes('nowPlayingInteractiveAt = Date.now() + 140
 requireCondition(controller.includes('requestedVideoBlend < 99.5'), 'the Now Playing rail no longer reports the visible Fashion layer');
 requireCondition(controller.includes('function setNowPlayingTickerView(nextView)'), 'the music and Fashion labels no longer share a rotating ticker slot');
 requireCondition(controller.includes('}, 7000);'), 'the quiet Now Playing ticker cadence has changed');
-requireCondition(controller.includes('nowPlayingViewport.style.width = activeWidth > 0'), 'the clock and active title no longer centre as one complete text unit');
+requireCondition(controller.includes('nowPlayingTickerViews[(currentIndex + 1) % nowPlayingTickerViews.length]'), 'the Now Playing ticker cannot rotate through content, Fashion and channel states');
+requireCondition(controller.includes('nowPlayingViewport.style.width = stableWidth > 0'), 'the clock and rotating ticker no longer retain a stable centred width');
+requireCondition(controller.includes('tickerStatuses.channel = "CHANNEL";'), 'the ticker no longer teaches the active editorial channel');
+requireCondition(controller.includes('tickerStatuses.visual = secondaryLabel;') && controller.includes('const secondaryLabel = sexEdProgramme ? "MUSIC" : "FASHION";'), 'the Radio ticker no longer identifies its visible Fashion programme');
+requireCondition(controller.includes('"safety-cushion": "Safety Cushion"') && !controller.includes('"safety-cushion": "The Safety Cushion"'), 'Safety Cushion no longer uses the approved two-word channel name');
+requireCondition(controller.includes('broadcastState?.channelName || MUSIC_CHANNEL_NAMES[editorialId]'), 'the ticker channel label is no longer metadata-driven');
+requireCondition(controller.includes('announceNowPlaying(') && controller.includes('message === nowPlayingAnnouncementText'), 'visual ticker cycling can repeatedly interrupt assistive technology');
 requireCondition(televisionCss.includes('.adaptive-television-now-playing.is-overflowing .adaptive-television-now-playing__item.is-active .adaptive-television-now-playing__content'), 'long Now Playing titles no longer receive overflow-only movement');
 requireCondition(televisionCss.includes('@media (prefers-reduced-motion: reduce)'), 'the Now Playing movement no longer respects reduced-motion preferences');
+requireCondition(nowPlayingCss.includes('.adaptive-television-now-playing__announcement {') && nowPlayingCss.includes('clip-path: inset(50%);'), 'genuine programme changes have no screen-reader-only announcement');
+requireCondition(nowPlayingCss.includes('min-width: 72px;') && nowPlayingCss.includes('justify-content: center;'), 'the rotating context label and shorter channel names can make the ticker jump');
 requireCondition(nowPlayingCss.includes('width: min(590px, calc(100vw - 48px));'), 'the primary wallet no longer holds the slightly wider Program and Now Playing line');
 requireCondition(nowPlayingCss.includes('.adaptive-television-home-program-button {') && nowPlayingCss.includes('width: 56px;') && nowPlayingCss.includes('width: 52px;'), 'the primary-wallet program pill no longer preserves its sex-ed-matched desktop and mobile casing');
 requireCondition(nowPlayingCss.includes('margin: 6px 9px 0;') && nowPlayingCss.includes('margin-right: 6px;') && nowPlayingCss.includes('margin-left: 6px;') && !nowPlayingCss.includes('margin: 6px 11px 0 7px;'), 'the programme and sex-ed pill gaps are no longer equal on both sides of their dividers');
@@ -605,6 +613,8 @@ requireCondition(homePage.includes('data-now-playing'), 'the primary wallet has 
 requireCondition(homePage.includes('data-now-playing-time'), 'the primary wallet has no 24-hour Now Playing clock');
 requireCondition(homePage.includes('data-now-playing-visual-title'), 'the primary wallet cannot name the visible Fashion runway');
 requireCondition(homePage.includes('data-now-playing-audio'), 'the primary wallet has no dedicated music ticker item');
+requireCondition(homePage.includes('data-now-playing-channel-title'), 'the primary wallet cannot name the active editorial channel');
+requireCondition(homePage.includes('data-now-playing-announcement') && homePage.includes('data-now-playing-track aria-hidden="true"'), 'the rotating ticker can repeatedly interrupt assistive technology');
 requireCondition(homePage.includes('adaptive-television-now-playing__separator--content'), 'the compact divider between Now Playing and the active title is missing');
 requireCondition(homePage.includes('EMDR Research Feature - 10min Nervous System Reset. Investigating whether an optional visual layer modulates short term transcriptional pathways, relevant to mental health.'), 'the EMDR rollover is missing the ten-minute nervous-system-reset terminology');
 requireCondition(inductionPage.includes('as electronic music and fashion, for young people, primarily aged 16-24.'), 'the Induction welcome copy has not adopted electronic music and fashion');
