@@ -522,7 +522,7 @@
   const RADIO_SEGMENT_CROSSFADE_SECONDS = .035;
   const RADIO_SEGMENT_POLL_MS = 3000;
   const SEX_ED_PROGRAMME_MIX_LEVEL = .15;
-  const VOICE_ASSISTANT_PROGRAMME_MIX_LEVEL = 0;
+  const VOICE_ASSISTANT_PROGRAMME_MIX_LEVEL = .15;
   const SEX_ED_DEFAULT_BACKGROUND_FILE = "a s s e t s/f a s h i o n [ r u n w a y ]/Mugler - Fall Winter 2021.mp4";
   let continuationAudio = null;
   let continuationHls = null;
@@ -4518,6 +4518,9 @@
       if (!await waitForBroadcastMetadata(media)) return false;
       const wasPlaying = !media.paused;
       const originalVolume = Number(media.volume || 0);
+      const restoreBaseVolume = voiceAssistantDuckActive
+        ? (voiceAssistantBaseVolumes.get(media) ?? originalVolume)
+        : originalVolume;
       const shouldFade = wasPlaying && !media.muted && originalVolume > .001;
       const bufferBeforeCorrection = broadcastMediaBufferedAhead(media);
       media.playbackRate = 1;
@@ -4554,7 +4557,7 @@
       });
       media.playbackRate = 1;
       if (wasPlaying && media.paused) media.play().catch(() => {});
-      if (shouldFade) setVoiceAssistantProgramVolume(media, originalVolume, BROADCAST_REJOIN_FADE_IN_MS);
+      if (shouldFade) setVoiceAssistantProgramVolume(media, restoreBaseVolume, BROADCAST_REJOIN_FADE_IN_MS);
       syncState.lastSeekAt = broadcastSyncNow();
       syncState.largeDriftSamples = 0;
       syncState.recovering = false;
@@ -6323,7 +6326,7 @@
     document.body.dataset.voiceDuckedMedia = nextActive
       ? programmeMedia.filter(Boolean).map((media) => media === continuationAudio ? "radio" : "video").join(",")
       : "";
-    document.body.dataset.voiceProgrammeSilenced = String(nextActive);
+    document.body.dataset.voiceProgrammeDucked = String(nextActive);
     return voiceAssistantDuckActive;
   }
 
@@ -6334,9 +6337,9 @@
     programmeFixedMixLevel = Number.isFinite(requested)
       ? Math.max(0, Math.min(1, requested))
       : null;
-    const target = (programmeFixedMixLevel ?? .68) * (voiceAssistantDuckActive ? VOICE_ASSISTANT_PROGRAMME_MIX_LEVEL : 1);
+    const target = programmeFixedMixLevel ?? .68;
     if (continuationAudio && !continuationAudio.muted) {
-      animateVoiceAssistantProgramVolume(continuationAudio, target, 420);
+      setVoiceAssistantProgramVolume(continuationAudio, target, 420);
     }
     if (programmeFixedMixLevel === null) {
       delete document.body.dataset.programmeFixedMixLevel;
@@ -7405,7 +7408,7 @@
       const nowPlayingState = window.IAMNowPlaying?.getState?.() || {};
       return {
         conversationActive: voiceAssistantDuckActive,
-        programmeSilenced: document.body.dataset.voiceProgrammeSilenced === "true",
+        programmeDucked: document.body.dataset.voiceProgrammeDucked === "true",
         mantraSampleActive: document.body.classList.contains("television-mantra-sample-active"),
         source: document.body.classList.contains("television-radio-continuation") ? "radio" : "video",
         title: nowPlayingState.title || `${track.displayArtist || track.artist} — ${track.displayTitle || track.title}`,
