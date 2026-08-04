@@ -41,6 +41,18 @@ Never deploy uncommitted or untracked website files. Never include another threa
 
 The staging update is not complete if deployment, verification, commit, or push fails.
 
+## Music proof URL hygiene
+
+The ordinary Music Television proof route is:
+
+`https://staging.universalmind.tv/vogue/iam/index.html`
+
+- Do not append `track`, `musicVideo`, `selected_track_id`, `video`, or `local_video_file` for generic staging QA or handoff.
+- Never use Madonna's "Frozen" as the fixed default test URL. This includes `madonna-frozen`, `Madonna - Frozen`, and equivalent encodings.
+- With no check-in, verify the random no-check-in path and its `no_checkin_random` source marker. With a check-in, verify the real selector result rather than overriding it in the URL.
+- Use a fixed track only for an explicit track-specific test. If deterministic media is otherwise required, select a task-relevant item, document the reason, and avoid repeatedly reusing the same song.
+- The URL returned to Ben must omit track-selection parameters unless his request names the exact track to proof.
+
 ## Production releases
 
 Only after Ben explicitly approves a staging version:
