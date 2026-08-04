@@ -68,6 +68,18 @@ This is the only website used for previews and proofing.
 - Do not return the production website as a preview.
 - Always provide the exact staging URL after every completed website update.
 
+## Music-test proof URLs
+
+Generic testing must exercise the real visitor experience instead of forcing the same song through the URL.
+
+- Use `https://staging.universalmind.tv/vogue/iam/index.html` without `track`, `musicVideo`, `selected_track_id`, `video`, or `local_video_file` parameters for ordinary staging proof.
+- Never hard-code `madonna-frozen`, `Madonna - Frozen`, or another spelling of Madonna's "Frozen" into a generic browser-test, screenshot, automation, or proof URL.
+- When no check-in exists, allow the site's random no-check-in selection to run. Verify `data-adaptive-selection-source="no_checkin_random"` and, when repeat behavior is relevant, verify that the next fresh visit does not immediately repeat the same song.
+- When check-in behavior is in scope, perform and verify the real check-in-to-selection journey. Do not bypass it with a track-selection query parameter.
+- A deterministic `selected_track_id` is allowed only when Ben explicitly requests that exact media item or the task specifically tests that item's asset, metadata, cue, schedule, beat grid, or playback. State why the fixed track is necessary.
+- For unrelated deterministic media testing, choose a task-relevant item and rotate away from the previous generic test track. Do not reuse Madonna's "Frozen" by habit.
+- Remove track-selection parameters from the URL handed to Ben unless he explicitly asked to proof a particular track.
+
 ## Production
 
 Production must never be modified unless Ben clearly instructs the agent to publish or deploy to production.
