@@ -344,6 +344,7 @@ requireCondition(televisionCss.includes('.adaptive-television-now-playing.is-ove
 requireCondition(televisionCss.includes('@media (prefers-reduced-motion: reduce)'), 'the Now Playing movement no longer respects reduced-motion preferences');
 requireCondition(nowPlayingCss.includes('width: min(590px, calc(100vw - 48px));'), 'the primary wallet no longer holds the slightly wider Program and Now Playing line');
 requireCondition(nowPlayingCss.includes('.adaptive-television-home-program-button {') && nowPlayingCss.includes('width: 56px;') && nowPlayingCss.includes('width: 52px;'), 'the primary-wallet program pill no longer preserves its sex-ed-matched desktop and mobile casing');
+requireCondition(nowPlayingCss.includes('margin: 6px 9px 0;') && nowPlayingCss.includes('margin-right: 6px;') && nowPlayingCss.includes('margin-left: 6px;') && !nowPlayingCss.includes('margin: 6px 11px 0 7px;'), 'the programme and sex-ed pill gaps are no longer equal on both sides of their dividers');
 requireCondition(nowPlayingCss.includes('min-height: 106px;'), 'the primary wallet no longer holds the approved compact Sex-ed height');
 requireCondition(nowPlayingCss.includes('padding: 2px 24px 8px;'), 'the primary wallet no longer holds the approved compact side and lower buffer');
 requireCondition(nowPlayingCss.includes('background: rgba(12, 12, 14, 0.1);'), 'the primary wallet casing has not retained its original translucent opacity');
