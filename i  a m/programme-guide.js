@@ -372,7 +372,7 @@
     artist.textContent = item.artist || channel.name;
     title.textContent = item.title || "Live now";
     live.className = "program-channel-card__live";
-    live.textContent = activeMode === "radio" ? "LIVE RADIO" : "LIVE";
+    live.textContent = "LIVE";
     room.className = "program-channel-card__room";
     room.textContent = channel.name;
 
