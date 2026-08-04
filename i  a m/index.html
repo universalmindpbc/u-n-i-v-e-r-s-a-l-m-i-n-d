@@ -52,7 +52,7 @@
     <link rel="stylesheet" href="adaptive-environment-television.css?v=music-tv-css-295a425f4c73">
     <link rel="stylesheet" href="programme-guide.css?v=programme-guide-css-35f9a5fee68b">
     <link rel="stylesheet" href="circle-audio-rooms.css?v=circle-rooms-css-9cb7b0860284">
-    <link rel="stylesheet" href="care-worlds.css?v=df3771c40878">
+    <link rel="stylesheet" href="care-worlds.css?v=3c1562e25a67">
     <link rel="stylesheet" href="mantra-sampler.css?v=mantra-sampler-css-fa5e34089bf9">
     <link rel="stylesheet" href="realtime-voice-assistant.css?v=realtime-voice-css-3dbe2f94acaa">
   </head>
@@ -989,125 +989,94 @@
 
             <div class="care-experience__worlds">
               <article class="care-world care-world--connect" id="care-panel-connect" data-care-panel="connect" role="tabpanel" aria-labelledby="care-tab-connect">
-                <div class="care-world__intro">
-                  <p class="care-world__eyebrow">HUMAN CONNECTION <span aria-hidden="true">/</span> PILOT NETWORK FORMING</p>
-                  <h2>See me. Hear me.<br>Don&rsquo;t make me perform.</h2>
-                  <p>Private one-to-one rooms for mentors and peers. Community remains audio-first, so the shared music stays at the centre.</p>
-                </div>
-
-                <div class="care-connect-layout">
-                  <section class="care-video-room" aria-label="Private Agora video room preview">
-                    <div class="care-video-room__remote">
-                      <div class="care-video-room__halo" aria-hidden="true"></div>
-                      <div class="care-video-room__human" aria-hidden="true"><span></span></div>
-                      <div class="care-video-room__remote-copy">
-                        <span data-care-remote-role>VERIFIED MENTOR</span>
-                        <strong>Human presence appears here</strong>
-                        <small>No people or availability are simulated.</small>
-                      </div>
+                <section class="care-call" aria-label="Private video call">
+                  <div class="care-call__topbar">
+                    <div class="care-call__roles" role="group" aria-label="Connect with">
+                      <button type="button" data-care-connect-role="mentor" aria-pressed="true">Mentor</button>
+                      <button type="button" data-care-connect-role="peer" aria-pressed="false">Peer</button>
+                      <button type="button" data-care-connect-role="community" aria-pressed="false">Community</button>
                     </div>
-                    <div class="care-video-room__self" data-care-camera-preview="connect" aria-label="Your private camera preview">
-                      <span>YOUR CAMERA</span>
-                      <small>off</small>
-                    </div>
-                    <div class="care-video-room__privacy">
-                      <span>1 : 1</span>
-                      <span>NOT RECORDED</span>
-                      <span>CAMERA OPTIONAL</span>
-                    </div>
-                  </section>
-
-                  <div class="care-connect-controls">
-                    <fieldset class="care-choice-group">
-                      <legend>Who would feel right today?</legend>
-                      <div class="care-choice-row care-choice-row--roles">
-                        <button type="button" data-care-connect-role="mentor" aria-pressed="true"><strong>Mentor</strong><span>guidance</span></button>
-                        <button type="button" data-care-connect-role="peer" aria-pressed="false"><strong>Peer</strong><span>lived experience</span></button>
-                        <button type="button" data-care-connect-role="community" aria-pressed="false"><strong>Community</strong><span>audio room</span></button>
-                      </div>
-                    </fieldset>
-
-                    <fieldset class="care-choice-group">
-                      <legend>How would you feel most comfortable?</legend>
-                      <div class="care-choice-row care-choice-row--modes" data-care-mode-group="connect">
-                        <button type="button" data-care-call-mode="face" aria-pressed="false"><span class="care-mode-icon care-mode-icon--video" aria-hidden="true"></span><strong>Face to face</strong><small>both cameras</small></button>
-                        <button type="button" data-care-call-mode="see" aria-pressed="true"><span class="care-mode-icon care-mode-icon--eye" aria-hidden="true"></span><strong>Let me see you</strong><small>my camera stays off</small></button>
-                        <button type="button" data-care-call-mode="voice" aria-pressed="false"><span class="care-mode-icon care-mode-icon--voice" aria-hidden="true"></span><strong>Voice only</strong><small>no cameras</small></button>
-                      </div>
-                    </fieldset>
-
-                    <button class="care-primary-action" type="button" data-care-prepare="connect">Prepare private room</button>
-                    <p class="care-action-status" data-care-status="connect" role="status">Room technology is ready. Mentor and peer availability is not yet live.</p>
+                    <span class="care-call__time" data-care-call-time>00:00</span>
                   </div>
-                </div>
 
-                <footer class="care-world__footer">
-                  <p><strong>ROOM TECHNOLOGY LIVE</strong><span>Mentor and peer network in development.</span></p>
-                  <p>Your camera is always your choice. Video previews stay on this device until a real pilot session begins.</p>
-                </footer>
+                  <div class="care-call__screens">
+                    <div class="care-call__screen care-call__screen--remote">
+                      <div class="care-call__person" aria-hidden="true"><span></span></div>
+                      <span class="care-call__name" data-care-remote-role>Mentor</span>
+                    </div>
+                    <div class="care-call__screen care-call__screen--self" data-care-camera-preview="connect" aria-label="Your camera preview">
+                      <div class="care-call__camera-off" data-care-camera-off>
+                        <span aria-hidden="true"></span>
+                        <small>Camera off</small>
+                      </div>
+                      <span class="care-call__name">You</span>
+                    </div>
+                  </div>
+
+                  <div class="care-call__toolbar">
+                    <button class="care-call__device" type="button" data-care-device="microphone" aria-pressed="false" aria-label="Turn microphone on">
+                      <span class="care-call__device-icon care-call__device-icon--microphone" aria-hidden="true"></span>
+                      <small>Mic</small>
+                    </button>
+                    <button class="care-call__connect" type="button" data-care-connect-action aria-pressed="false">Connect</button>
+                    <button class="care-call__device" type="button" data-care-device="camera" aria-pressed="false" aria-label="Turn camera on">
+                      <span class="care-call__device-icon care-call__device-icon--camera" aria-hidden="true"></span>
+                      <small>Camera</small>
+                    </button>
+                  </div>
+                  <p class="care-call__status" data-care-status="connect" role="status">Ready</p>
+                </section>
               </article>
 
               <article class="care-world care-world--comfort" id="care-panel-comfort" data-care-panel="comfort" role="tabpanel" aria-labelledby="care-tab-comfort" hidden>
-                <div class="care-world__intro">
-                  <p class="care-world__eyebrow">A PROPOSED I AM CARE SERVICE</p>
-                  <h2>A little kindness,<br>on its way.</h2>
-                  <p>Build a physical ritual of comfort: something warm, something grounding, something to wear and something to hear.</p>
-                </div>
+                <section class="care-cart" aria-labelledby="care-cart-title">
+                  <header class="care-cart__header">
+                    <div>
+                      <span>COMFORT</span>
+                      <h2 id="care-cart-title">Care package</h2>
+                    </div>
+                    <p><span>Total</span><strong>$0</strong></p>
+                  </header>
 
-                <div class="care-comfort-layout">
-                  <section class="care-package" aria-labelledby="care-package-title">
-                    <div class="care-package__lid">
-                      <span>I AM</span>
-                      <strong id="care-package-title">CARE PACKAGE</strong>
-                      <small>PROPOSED PILOT EDITION</small>
-                    </div>
-                    <div class="care-package__items">
-                      <button type="button" class="care-product" data-care-product="tea" aria-pressed="true">
-                        <span class="care-product__object care-product__object--photo" aria-hidden="true"><img src="a s s e t s/care/pukka-three-ginger-tea.webp" alt="" loading="lazy" decoding="async"></span>
-                        <span class="care-product__copy"><small>PUKKA</small><strong>Three Ginger tea</strong><em>ginger · galangal · turmeric</em></span>
-                      </button>
-                      <button type="button" class="care-product" data-care-product="incense" aria-pressed="true">
-                        <span class="care-product__object care-product__object--photo" aria-hidden="true"><img src="a s s e t s/care/organic-goodness-white-sage-incense.jpg" alt="" loading="lazy" decoding="async"></span>
-                        <span class="care-product__copy"><small>ORGANIC GOODNESS</small><strong>White Sage incense</strong><em>masala incense sticks</em></span>
-                      </button>
-                      <button type="button" class="care-product" data-care-product="hoodie" aria-pressed="true">
-                        <span class="care-product__object care-product__object--photo" aria-hidden="true"><img src="a s s e t s/care/acne-studios-pink-hoodie.webp" alt="" loading="lazy" decoding="async"></span>
-                        <span class="care-product__copy"><small>ACNE STUDIOS</small><strong>Pink hoodie</strong><em>size to be selected</em></span>
-                      </button>
-                      <button type="button" class="care-product" data-care-product="ugg boots" aria-pressed="true">
-                        <span class="care-product__object care-product__object--photo" aria-hidden="true"><img src="a s s e t s/care/ugg-boots.jpg" alt="" loading="lazy" decoding="async"></span>
-                        <span class="care-product__copy"><small>UGG BOOTS</small><strong>Warmth</strong><em>size to be selected</em></span>
-                      </button>
-                      <button type="button" class="care-product" data-care-product="music" aria-pressed="true">
-                        <span class="care-product__object care-product__object--music" aria-hidden="true"><i></i></span>
-                        <span class="care-product__copy"><small>APPLE MUSIC / BANDCAMP</small><strong>Listening ritual</strong><em>Flume · Fred again.. · Skrillex · Brian Eno · Radiohead</em></span>
-                      </button>
-                    </div>
-                    <div class="care-package__summary">
-                      <p><span data-care-product-count>5</span> pieces selected</p>
-                      <p data-care-product-summary>Pukka Three Ginger tea · Organic Goodness White Sage incense · Acne Studios pink hoodie · Ugg boots · Listening ritual</p>
-                    </div>
-                  </section>
+                  <div class="care-cart__products" aria-label="Care package contents">
+                    <article class="care-cart-product">
+                      <img src="a s s e t s/care/pukka-three-ginger-tea.webp" alt="Pukka Three Ginger tea" loading="lazy" decoding="async">
+                      <p><small>PUKKA</small><strong>Three Ginger tea</strong><span>1</span></p>
+                    </article>
+                    <article class="care-cart-product">
+                      <img src="a s s e t s/care/organic-goodness-white-sage-incense.jpg" alt="Organic Goodness White Sage incense" loading="lazy" decoding="async">
+                      <p><small>ORGANIC GOODNESS</small><strong>White Sage incense</strong><span>1</span></p>
+                    </article>
+                    <article class="care-cart-product">
+                      <img src="a s s e t s/care/acne-studios-pink-hoodie.webp" alt="Acne Studios pink hoodie" loading="lazy" decoding="async">
+                      <p><small>ACNE STUDIOS</small><strong>Pink hoodie</strong><span>1</span></p>
+                    </article>
+                    <article class="care-cart-product">
+                      <img src="a s s e t s/care/ugg-boots.jpg" alt="Tan Ugg boots" loading="lazy" decoding="async">
+                      <p><small>UGG BOOTS</small><strong>Warmth</strong><span>1</span></p>
+                    </article>
+                  </div>
 
-                  <aside class="care-delivery" aria-label="Proposed delivery model">
-                    <p class="care-delivery__label">PROPOSED DELIVERY MODEL</p>
-                    <div class="care-delivery__route">
-                      <div><span>01</span><strong>UNIVERSAL MIND</strong><small>curates the care package</small></div>
-                      <i aria-hidden="true"></i>
-                      <div class="care-partner-mark care-partner-mark--harris"><span>PROPOSED FULFILMENT</span><strong>HARRIS FARM<br>MARKETS</strong></div>
-                      <i aria-hidden="true"></i>
-                      <div class="care-partner-mark care-partner-mark--uber"><span>PROPOSED DELIVERY</span><strong>Uber<br>Direct</strong></div>
-                      <i aria-hidden="true"></i>
-                      <div><span>04</span><strong>YOUR DOOR</strong><small>target: within the hour in eligible areas</small></div>
-                    </div>
-                    <p class="care-delivery__truth">Prospective service architecture. Universal Mind does not yet have an active partnership with Harris Farm Markets or Uber Direct.</p>
-                  </aside>
-                </div>
+                  <div class="care-cart__music">
+                    <span class="care-cart__record" aria-hidden="true"><i></i></span>
+                    <p><small>APPLE MUSIC + BANDCAMP</small><strong>Exclusive listening</strong><span>Flume · Fred again.. · Skrillex · Brian Eno · Radiohead</span></p>
+                    <strong>$0</strong>
+                  </div>
 
-                <footer class="care-world__footer">
-                  <p><strong>SERVICE PROPOSAL</strong><span>Not yet available to order.</span></p>
-                  <p>Products, artists, stock, pricing, delivery areas and partner participation remain to be confirmed.</p>
-                </footer>
+                  <form class="care-cart__checkout" data-care-checkout>
+                    <label for="care-delivery-address">Delivery address</label>
+                    <div>
+                      <input id="care-delivery-address" name="delivery-address" type="text" autocomplete="street-address" placeholder="Enter your address" required data-care-address>
+                      <button type="submit">Continue <span>&mdash; $0</span></button>
+                    </div>
+                    <p data-care-checkout-status role="status">Target delivery: within one hour in eligible areas.</p>
+                  </form>
+
+                  <footer class="care-cart__footer">
+                    <span>Harris Farm Markets + Uber Direct</span>
+                    <small>Proposed pilot partners. No order is placed in this preview.</small>
+                  </footer>
+                </section>
               </article>
 
               <article class="care-world care-world--talk" id="care-panel-talk" data-care-panel="talk" role="tabpanel" aria-labelledby="care-tab-talk" hidden>
@@ -1128,13 +1097,18 @@
                       </div>
                       <div class="care-clinical-room__self" data-care-camera-preview="talk" aria-label="Your private camera preview"><span>YOUR CAMERA</span><small>off</small></div>
                     </div>
-                    <div class="care-choice-row care-choice-row--modes care-choice-row--talk" data-care-mode-group="talk">
-                      <button type="button" data-care-call-mode="face" aria-pressed="false"><strong>Face to face</strong><small>both cameras</small></button>
-                      <button type="button" data-care-call-mode="see" aria-pressed="true"><strong>Let me see you</strong><small>my camera stays off</small></button>
-                      <button type="button" data-care-call-mode="voice" aria-pressed="false"><strong>Voice only</strong><small>no cameras</small></button>
+                    <div class="care-clinical-room__toolbar">
+                      <button class="care-call__device" type="button" data-care-talk-device="microphone" aria-pressed="false" aria-label="Turn microphone on">
+                        <span class="care-call__device-icon care-call__device-icon--microphone" aria-hidden="true"></span>
+                        <small>Mic</small>
+                      </button>
+                      <button class="care-primary-action care-primary-action--talk" type="button" data-care-talk-action aria-pressed="false">Talk</button>
+                      <button class="care-call__device" type="button" data-care-talk-device="camera" aria-pressed="false" aria-label="Turn camera on">
+                        <span class="care-call__device-icon care-call__device-icon--camera" aria-hidden="true"></span>
+                        <small>Camera</small>
+                      </button>
                     </div>
-                    <button class="care-primary-action care-primary-action--talk" type="button" data-care-prepare="talk">Prepare future video room</button>
-                    <p class="care-action-status" data-care-status="talk" role="status">The Agora room can be prepared now. A clinician service integration is not yet active.</p>
+                    <p class="care-action-status" data-care-status="talk" role="status">Ready</p>
                   </section>
 
                   <section class="care-support-now" aria-labelledby="care-support-now-title">
@@ -1264,7 +1238,7 @@
     <script src="broadcast-clock-v1.js?v=broadcast-clock-a28d9d6c8acf"></script>
     <script src="broadcast-interactions-v1.js?v=broadcast-interactions-20ea963338ad"></script>
     <script src="circle-audio-rooms.js?v=circle-rooms-4bcb0602f8f3"></script>
-    <script src="care-worlds.js?v=6ef28f1c2158"></script>
+    <script src="care-worlds.js?v=c1e2b349d398"></script>
     <script src="mantra-audio-fx.js?v=mantra-audio-fx-5e1fdfbadb04"></script>
     <script src="mantra-sampler.js?v=mantra-sampler-6402cc9d89a2"></script>
     <script src="adaptive-environment-television.js?v=music-tv-2ed04f740b16"></script>

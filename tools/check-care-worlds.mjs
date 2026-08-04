@@ -10,14 +10,25 @@ const iamDir = join(root, "i  a m");
 const html = readFileSync(join(iamDir, "index.html"), "utf8");
 const css = readFileSync(join(iamDir, "care-worlds.css"), "utf8");
 const js = readFileSync(join(iamDir, "care-worlds.js"), "utf8");
+const careStart = html.indexOf('<section class="care-experience"');
+const careEnd = html.indexOf('<div class="adaptive-television-heart-field"', careStart);
+const careHtml = html.slice(careStart, careEnd);
 
 const count = (source, pattern) => [...source.matchAll(pattern)].length;
 const hash = (source) => createHash("sha256").update(source).digest("hex").slice(0, 12);
 
+assert.ok(careStart > 0 && careEnd > careStart, "Care dialog must be present in the television room");
 assert.equal(count(html, /data-care-open="(?:connect|comfort|talk)"/g), 3, "Care must expose three wallet entries");
-assert.equal(count(html, /data-care-tab="(?:connect|comfort|talk)"/g), 3, "Care must expose three tabs");
-assert.equal(count(html, /data-care-panel="(?:connect|comfort|talk)"/g), 3, "Care must expose three worlds");
-assert.match(html, /role="dialog"[^>]*aria-modal="true"/, "Care must open as an accessible in-app dialog");
+assert.equal(count(careHtml, /data-care-tab="(?:connect|comfort|talk)"/g), 3, "Care must expose three tabs");
+assert.equal(count(careHtml, /data-care-panel="(?:connect|comfort|talk)"/g), 3, "Care must expose three worlds");
+assert.match(careHtml, /role="dialog"[^>]*aria-modal="true"/, "Care must remain an accessible in-app dialog");
+
+assert.equal(count(careHtml, /class="care-call__screen(?:\s|\")/g), 2, "Connect must use two familiar video tiles");
+assert.equal(count(careHtml, /data-care-connect-role="(?:mentor|peer|community)"/g), 3, "Connect must keep one compact role selector");
+assert.match(careHtml, /data-care-connect-action[^>]*>Connect</, "Connect must have one primary action");
+assert.match(careHtml, /data-care-device="microphone"/, "Connect must have a microphone control");
+assert.match(careHtml, /data-care-device="camera"/, "Connect must have a camera control");
+assert.doesNotMatch(careHtml, /See me|Hear me|Don(?:&rsquo;|')t make me perform|Let me see you|Face to face|Voice only|Prepare private room|audio room/i, "Rejected mode and wireframe language must be removed from Care");
 
 for (const [file, description] of [
   ["pukka-three-ginger-tea.webp", "Pukka Three Ginger tea"],
@@ -26,44 +37,45 @@ for (const [file, description] of [
   ["ugg-boots.jpg", "Ugg boots"],
 ]) {
   const relativePath = `a s s e t s/care/${file}`;
-  assert.match(html, new RegExp(relativePath.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")), `${description} image must be wired into Comfort`);
-  assert.ok(statSync(join(iamDir, relativePath)).size > 10_000, `${description} image must be a real supplied asset`);
+  assert.match(careHtml, new RegExp(relativePath.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")), `${description} image must remain in the cart`);
+  assert.ok(statSync(join(iamDir, relativePath)).size > 10_000, `${description} must remain the supplied asset`);
 }
 
-assert.match(html, /Pukka[\s\S]*Three Ginger tea/i);
-assert.match(html, /Organic Goodness[\s\S]*White Sage incense/i);
-assert.match(html, /Acne Studios[\s\S]*Pink hoodie/i);
-assert.match(html, /data-care-product-count>5</, "The proposed package must begin with five pieces");
-assert.match(html, /Flume · Fred again\.\. · Skrillex · Brian Eno · Radiohead/, "The supplied music direction must remain visible");
+assert.match(careHtml, /<section class="care-cart"/, "Comfort must render as a shopping cart");
+assert.match(careHtml, /<strong>\$0<\/strong>/, "Comfort total must be $0");
+assert.match(careHtml, /data-care-address[^>]*|[^>]*data-care-address/, "Comfort must accept a delivery address");
+assert.match(careHtml, /autocomplete="street-address"/, "The delivery field must support address autofill");
+assert.match(careHtml, /Continue <span>&mdash; \$0<\/span>/, "The checkout action must show the zero price");
+assert.match(careHtml, /Flume · Fred again\.\. · Skrillex · Brian Eno · Radiohead/, "The supplied music direction must remain visible");
+assert.match(careHtml, /Proposed pilot partners\. No order is placed in this preview\./, "The prospective delivery boundary must remain concise and honest");
 
-assert.match(html, /does not yet have an active partnership with Harris Farm Markets or Uber Direct/i, "Prospective delivery relationships must be explicit");
-assert.match(html, /Not yet available to order/i, "Comfort must not imply live ordering");
-assert.match(html, /No people or availability are simulated/i, "Connect must not fake staffed people");
-assert.match(html, /Mentor and peer availability is not yet live/i, "Connect must disclose the pilot state");
+assert.match(careHtml, /data-care-talk-device="microphone"/, "Talk must use a familiar microphone control");
+assert.match(careHtml, /data-care-talk-device="camera"/, "Talk must use a familiar camera control");
+assert.match(careHtml, /Connect with eheadspace/);
+assert.match(careHtml, /12&ndash;25/);
+assert.match(careHtml, /tel:1800650890/);
+assert.match(careHtml, /headspace\.org\.au\/online-and-phone-support\/connect-with-us\//);
+assert.match(careHtml, /No information from your I AM check-in is shared with headspace/i);
+assert.match(careHtml, /tel:000/);
+assert.match(careHtml, /tel:131114/);
 
-assert.match(html, /Connect with eheadspace/);
-assert.match(html, /12&ndash;25/);
-assert.match(html, /tel:1800650890/);
-assert.match(html, /headspace\.org\.au\/online-and-phone-support\/connect-with-us\//);
-assert.match(html, /clinician service integration is not yet active/i, "Talk must disclose the integration state");
-assert.match(html, /No information from your I AM check-in is shared with headspace/i, "Talk must preserve the data boundary");
-assert.match(html, /tel:000/);
-assert.match(html, /tel:131114/);
+assert.match(js, /AgoraRTC\.createCameraVideoTrack/, "Camera controls must use Agora video");
+assert.match(js, /AgoraRTC\.createMicrophoneAudioTrack/, "Microphone controls must use Agora capture");
+assert.doesNotMatch(js, /createBufferSourceAudioTrack|AudioContext|webkitAudioContext|new Audio\s*\(/, "Care must not construct audio playback");
+assert.doesNotMatch(js, /microphoneTrack\.play|createClient\s*\(|\.join\s*\(|\.publish\s*\(/, "The pre-join UI must not output audio or claim a live room");
+assert.doesNotMatch(js, /requestFullscreen|webkitRequestFullscreen|mozRequestFullScreen|msRequestFullscreen/, "Care must never invoke native fullscreen");
+assert.match(js, /cameraTrack\.play\(room\.preview/, "Camera preview must render into the selected room tile");
+assert.match(js, /checkout\?\.addEventListener\("submit"/, "The $0 cart must behave like a form");
 
-assert.match(js, /AgoraRTC\.createCameraVideoTrack/, "One-to-one camera preview must use Agora video");
-assert.doesNotMatch(js, /createMicrophoneAudioTrack|createBufferSourceAudioTrack|AudioContext|webkitAudioContext|new Audio\s*\(/, "Care must not start or construct audio");
-assert.doesNotMatch(js, /requestFullscreen|webkitRequestFullscreen|mozRequestFullScreen|msRequestFullscreen/, "Care must remain in-app and never invoke native fullscreen");
-assert.match(js, /not being recorded or transmitted to another person/i, "Local camera preview boundary must be visible");
-assert.match(js, /querySelector\("\[data-audio-mode-open\]"\)\?\.click\(\)/, "Community must hand back to the existing audio-room entry");
-
-assert.match(css, /@media \(max-width: 620px\)/, "Care must include a mobile layout");
+assert.match(css, /\.care-experience__backdrop\s*\{[\s\S]*?background:\s*rgba\(0, 0, 0, 0\.77\)/, "The music video must bleed through a 77% black veil");
+assert.match(css, /\.care-call__screens\s*\{[\s\S]*?grid-template-columns:\s*repeat\(2/, "Connect must look like a two-person streaming room");
+assert.match(css, /\.care-cart\s*\{[\s\S]*?background:\s*rgba\(248, 248, 246, 0\.96\)/, "Comfort must read as a light shopping cart");
+assert.match(css, /@media \(max-width: 680px\)/, "Care must include a mobile layout");
 assert.match(css, /@media \(prefers-reduced-motion: reduce\)/, "Care must honour reduced motion");
-assert.match(css, /\.care-product__object--photo img/, "Comfort must style supplied product photography");
 
 const cssToken = hash(css);
 const jsToken = hash(js);
 assert.match(html, new RegExp(`care-worlds\\.css\\?v=${cssToken}`), "Care CSS cache token must match its content hash");
 assert.match(html, new RegExp(`care-worlds\\.js\\?v=${jsToken}`), "Care JS cache token must match its content hash");
-assert.doesNotMatch(html, /care-worlds-(?:css|js)-pending/, "Pending Care cache tokens must be resolved");
 
 console.log(`Care worlds preflight passed (CSS ${cssToken}, JS ${jsToken}).`);

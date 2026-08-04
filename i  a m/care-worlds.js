@@ -2,223 +2,221 @@
   const experience = document.querySelector("[data-care-experience]");
   if (!experience) return;
 
+  const views = new Set(["connect", "comfort", "talk"]);
   const openButtons = Array.from(document.querySelectorAll("[data-care-open]"));
   const tabs = Array.from(experience.querySelectorAll("[data-care-tab]"));
   const panels = Array.from(experience.querySelectorAll("[data-care-panel]"));
   const closeButton = experience.querySelector("[data-care-close]");
-  const connectRoles = Array.from(experience.querySelectorAll("[data-care-connect-role]"));
-  const modeGroups = Array.from(experience.querySelectorAll("[data-care-mode-group]"));
-  const prepareButtons = Array.from(experience.querySelectorAll("[data-care-prepare]"));
-  const productButtons = Array.from(experience.querySelectorAll("[data-care-product]"));
-  const productCount = experience.querySelector("[data-care-product-count]");
-  const productSummary = experience.querySelector("[data-care-product-summary]");
+  const roleButtons = Array.from(experience.querySelectorAll("[data-care-connect-role]"));
   const remoteRole = experience.querySelector("[data-care-remote-role]");
+  const checkout = experience.querySelector("[data-care-checkout]");
+  const address = experience.querySelector("[data-care-address]");
+  const checkoutStatus = experience.querySelector("[data-care-checkout-status]");
 
-  const MODES = new Set(["face", "see", "voice"]);
-  const VIEWS = new Set(["connect", "comfort", "talk"]);
-  const ROLE_LABELS = {
-    mentor: "VERIFIED MENTOR",
-    peer: "VERIFIED PEER",
-    community: "AUDIO COMMUNITY",
-  };
-  const PRODUCT_LABELS = {
-    tea: "Pukka Three Ginger tea",
-    incense: "Organic Goodness White Sage incense",
-    hoodie: "Acne Studios pink hoodie",
-    "ugg boots": "Ugg boots",
-    music: "Listening ritual",
+  const rooms = {
+    connect: {
+      shell: experience.querySelector(".care-call"),
+      action: experience.querySelector("[data-care-connect-action]"),
+      camera: experience.querySelector('[data-care-device="camera"]'),
+      microphone: experience.querySelector('[data-care-device="microphone"]'),
+      preview: experience.querySelector('[data-care-camera-preview="connect"]'),
+      status: experience.querySelector('[data-care-status="connect"]'),
+      time: experience.querySelector("[data-care-call-time]"),
+      startLabel: "Connect",
+    },
+    talk: {
+      shell: experience.querySelector(".care-clinical-room"),
+      action: experience.querySelector("[data-care-talk-action]"),
+      camera: experience.querySelector('[data-care-talk-device="camera"]'),
+      microphone: experience.querySelector('[data-care-talk-device="microphone"]'),
+      preview: experience.querySelector('[data-care-camera-preview="talk"]'),
+      status: experience.querySelector('[data-care-status="talk"]'),
+      time: null,
+      startLabel: "Talk",
+    },
   };
 
   let currentView = "connect";
-  let currentRole = "mentor";
   let previousFocus = null;
   let closeTimer = 0;
-  let agoraVideoTrack = null;
-  let previewOwner = "";
-  const selectedModes = { connect: "see", talk: "see" };
+  let cameraTrack = null;
+  let cameraOwner = "";
+  let microphoneTrack = null;
+  let microphoneOwner = "";
+  let callStartedAt = 0;
+  let callTimer = 0;
 
-  function statusFor(scope) {
-    return experience.querySelector(`[data-care-status="${scope}"]`);
+  function writeStatus(scope, message, isError = false) {
+    const status = rooms[scope]?.status;
+    if (!status) return;
+    status.textContent = message;
+    status.classList.toggle("is-error", isError);
   }
 
-  function prepareFor(scope) {
-    return experience.querySelector(`[data-care-prepare="${scope}"]`);
-  }
-
-  function previewFor(scope) {
-    return experience.querySelector(`[data-care-camera-preview="${scope}"]`);
-  }
-
-  function modeButtons(scope) {
-    const group = experience.querySelector(`[data-care-mode-group="${scope}"]`);
-    return group ? Array.from(group.querySelectorAll("[data-care-call-mode]")) : [];
-  }
-
-  function writeStatus(scope, message) {
-    const status = statusFor(scope);
-    if (status) status.textContent = message;
-  }
-
-  function updatePrepareLabel(scope) {
-    const button = prepareFor(scope);
-    if (!button) return;
-    if (scope === "connect" && currentRole === "community") {
-      button.textContent = "Open audio communities";
-      return;
-    }
-    const mode = selectedModes[scope];
-    if (mode === "face") button.textContent = "Preview my camera";
-    else if (mode === "see") button.textContent = scope === "talk" ? "Prepare future video room" : "Prepare private room";
-    else button.textContent = scope === "talk" ? "Prepare future voice room" : "Prepare voice room";
-  }
-
-  function setMode(scope, mode) {
-    if (!MODES.has(mode)) return;
-    selectedModes[scope] = mode;
-    modeButtons(scope).forEach((button) => {
-      button.setAttribute("aria-pressed", String(button.dataset.careCallMode === mode));
-    });
-    updatePrepareLabel(scope);
-
-    if (scope === "connect" && currentRole === "community") {
-      writeStatus("connect", "Community stays audio-first so shared music and conversation remain at the centre.");
-    } else if (mode === "face") {
-      writeStatus(scope, "Face to face selected. Your camera will start only after you choose to preview it.");
-    } else if (mode === "see") {
-      writeStatus(scope, "You can see the human supporting you while keeping your own camera off.");
-    } else {
-      writeStatus(scope, "Voice only selected. No camera will be requested.");
-    }
-  }
-
-  function setRole(role) {
-    if (!Object.prototype.hasOwnProperty.call(ROLE_LABELS, role)) return;
-    currentRole = role;
-    connectRoles.forEach((button) => {
-      button.setAttribute("aria-pressed", String(button.dataset.careConnectRole === role));
-    });
-    if (remoteRole) remoteRole.textContent = ROLE_LABELS[role];
-
-    const connectModes = modeButtons("connect");
-    const community = role === "community";
-    connectModes.forEach((button) => {
-      const voice = button.dataset.careCallMode === "voice";
-      button.disabled = community && !voice;
-    });
-    if (community) setMode("connect", "voice");
-    else {
-      if (selectedModes.connect === "voice") setMode("connect", "see");
-      else setMode("connect", selectedModes.connect);
-      writeStatus("connect", `Private ${role} room selected. Human availability is not yet live.`);
-    }
-    updatePrepareLabel("connect");
-  }
-
-  async function waitForAgora(timeoutMs = 8000) {
+  async function waitForAgora(method, timeoutMs = 8000) {
     const startedAt = Date.now();
-    while (!window.AgoraRTC?.createCameraVideoTrack && Date.now() - startedAt < timeoutMs) {
+    while (!window.AgoraRTC?.[method] && Date.now() - startedAt < timeoutMs) {
       await new Promise((resolve) => window.setTimeout(resolve, 80));
     }
-    if (!window.AgoraRTC?.createCameraVideoTrack) {
-      throw new Error("Agora video could not load. Please try again.");
-    }
+    if (!window.AgoraRTC?.[method]) throw new Error("Controls unavailable");
     return window.AgoraRTC;
   }
 
-  function resetPreviewElement(scope) {
-    const preview = previewFor(scope);
-    if (!preview) return;
-    preview.classList.remove("is-live");
-    preview.replaceChildren();
-    const label = document.createElement("span");
-    label.textContent = "YOUR CAMERA";
-    const state = document.createElement("small");
-    state.textContent = "off";
-    preview.append(label, state);
+  function setDeviceState(scope, device, enabled) {
+    const button = rooms[scope]?.[device];
+    if (!button) return;
+    button.setAttribute("aria-pressed", String(enabled));
+    button.setAttribute("aria-label", `Turn ${device} ${enabled ? "off" : "on"}`);
   }
 
-  function stopCameraPreview() {
-    if (agoraVideoTrack) {
-      try { agoraVideoTrack.stop(); } catch {}
-      try { agoraVideoTrack.close(); } catch {}
+  function stopCamera(scope = "") {
+    if (scope && cameraOwner !== scope) return;
+    const owner = cameraOwner;
+    if (cameraTrack) {
+      try { cameraTrack.stop(); } catch {}
+      try { cameraTrack.close(); } catch {}
     }
-    agoraVideoTrack = null;
-    if (previewOwner) resetPreviewElement(previewOwner);
-    previewOwner = "";
+    cameraTrack = null;
+    cameraOwner = "";
+    if (owner) {
+      rooms[owner]?.preview?.classList.remove("is-camera-on");
+      setDeviceState(owner, "camera", false);
+    }
   }
 
-  async function startCameraPreview(scope) {
-    const button = prepareFor(scope);
-    const preview = previewFor(scope);
-    if (!button || !preview) return;
-    button.setAttribute("aria-busy", "true");
-    button.disabled = true;
-    writeStatus(scope, "Preparing a private Agora camera preview on this device...");
-    stopCameraPreview();
+  function stopMicrophone(scope = "") {
+    if (scope && microphoneOwner !== scope) return;
+    const owner = microphoneOwner;
+    if (microphoneTrack) {
+      try { microphoneTrack.stop(); } catch {}
+      try { microphoneTrack.close(); } catch {}
+    }
+    microphoneTrack = null;
+    microphoneOwner = "";
+    if (owner) setDeviceState(owner, "microphone", false);
+  }
 
+  async function toggleCamera(scope) {
+    const room = rooms[scope];
+    if (!room?.camera || !room.preview) return;
+    if (cameraTrack && cameraOwner === scope) {
+      stopCamera(scope);
+      writeStatus(scope, "Camera off");
+      return;
+    }
+
+    stopCamera();
+    room.camera.disabled = true;
+    room.camera.setAttribute("aria-busy", "true");
+    writeStatus(scope, "Starting camera…");
     try {
-      const AgoraRTC = await waitForAgora();
-      agoraVideoTrack = await AgoraRTC.createCameraVideoTrack({
+      const AgoraRTC = await waitForAgora("createCameraVideoTrack");
+      cameraTrack = await AgoraRTC.createCameraVideoTrack({
         encoderConfig: "480p_1",
         facingMode: "user",
         optimizationMode: "motion",
       });
-      previewOwner = scope;
-      preview.replaceChildren();
-      preview.classList.add("is-live");
-      agoraVideoTrack.play(preview, { fit: "cover", mirror: true });
-      writeStatus(scope, "Camera preview ready. It has not joined a room and is not being recorded or transmitted to another person.");
-      button.textContent = "Camera ready";
+      cameraOwner = scope;
+      room.preview.classList.add("is-camera-on");
+      cameraTrack.play(room.preview, { fit: "cover", mirror: true });
+      setDeviceState(scope, "camera", true);
+      writeStatus(scope, "Camera on");
     } catch (error) {
-      const message = error?.name === "NotAllowedError"
-        ? "Camera access was not granted. You can continue with your camera off or choose voice only."
-        : String(error?.message || "Camera preview is unavailable. You can continue with your camera off.");
-      writeStatus(scope, message);
-      resetPreviewElement(scope);
+      stopCamera();
+      writeStatus(scope, error?.name === "NotAllowedError" ? "Camera access was not granted" : "Camera unavailable", true);
     } finally {
-      button.removeAttribute("aria-busy");
-      button.disabled = false;
+      room.camera.disabled = false;
+      room.camera.removeAttribute("aria-busy");
     }
   }
 
-  async function prepareRoom(scope) {
-    if (scope === "connect" && currentRole === "community") {
-      stopCameraPreview();
-      closeCare({ restoreFocus: false });
-      window.setTimeout(() => {
-        document.querySelector("[data-audio-mode-open]")?.click();
-      }, 360);
+  async function toggleMicrophone(scope) {
+    const room = rooms[scope];
+    if (!room?.microphone) return;
+    if (microphoneTrack && microphoneOwner === scope) {
+      stopMicrophone(scope);
+      writeStatus(scope, "Microphone off");
       return;
     }
 
-    const mode = selectedModes[scope];
-    if (mode === "face") {
-      await startCameraPreview(scope);
-      return;
-    }
-    stopCameraPreview();
-    if (mode === "see") {
-      writeStatus(scope, scope === "talk"
-        ? "Your camera will remain off. A verified clinician could appear here when a formal video service is active."
-        : `Your camera will remain off. A verified ${currentRole} could appear here when the pilot network is staffed.`);
-    } else {
-      writeStatus(scope, scope === "talk"
-        ? "Voice only is selected. The future clinician integration is not yet active."
-        : `Voice only is selected. The private ${currentRole} network is not yet staffed.`);
+    stopMicrophone();
+    room.microphone.disabled = true;
+    room.microphone.setAttribute("aria-busy", "true");
+    writeStatus(scope, "Starting microphone…");
+    try {
+      const AgoraRTC = await waitForAgora("createMicrophoneAudioTrack");
+      microphoneTrack = await AgoraRTC.createMicrophoneAudioTrack({
+        AEC: true,
+        AGC: true,
+        ANS: true,
+      });
+      microphoneOwner = scope;
+      setDeviceState(scope, "microphone", true);
+      writeStatus(scope, "Microphone on");
+    } catch (error) {
+      stopMicrophone();
+      writeStatus(scope, error?.name === "NotAllowedError" ? "Microphone access was not granted" : "Microphone unavailable", true);
+    } finally {
+      room.microphone.disabled = false;
+      room.microphone.removeAttribute("aria-busy");
     }
   }
 
-  function updatePackage() {
-    const selected = productButtons
-      .filter((button) => button.getAttribute("aria-pressed") === "true")
-      .map((button) => PRODUCT_LABELS[button.dataset.careProduct] || button.dataset.careProduct);
-    if (productCount) productCount.textContent = String(selected.length);
-    if (productSummary) productSummary.textContent = selected.length ? selected.join(" · ") : "Choose something that feels right";
+  function updateCallTime() {
+    const time = rooms.connect.time;
+    if (!callStartedAt || !time) return;
+    const elapsed = Math.max(0, Math.floor((Date.now() - callStartedAt) / 1000));
+    const minutes = String(Math.floor(elapsed / 60)).padStart(2, "0");
+    const seconds = String(elapsed % 60).padStart(2, "0");
+    time.textContent = `${minutes}:${seconds}`;
+  }
+
+  function endRoom(scope) {
+    const room = rooms[scope];
+    if (!room) return;
+    room.shell?.classList.remove("is-connected");
+    room.action?.setAttribute("aria-pressed", "false");
+    if (room.action) room.action.textContent = room.startLabel;
+    stopCamera(scope);
+    stopMicrophone(scope);
+    writeStatus(scope, "Ready");
+
+    if (scope === "connect") {
+      window.clearInterval(callTimer);
+      callTimer = 0;
+      callStartedAt = 0;
+      if (room.time) room.time.textContent = "00:00";
+    }
+  }
+
+  function toggleRoom(scope) {
+    const room = rooms[scope];
+    if (!room?.shell || !room.action) return;
+    if (room.shell.classList.contains("is-connected")) {
+      endRoom(scope);
+      return;
+    }
+    room.shell.classList.add("is-connected");
+    room.action.setAttribute("aria-pressed", "true");
+    room.action.textContent = "End";
+    writeStatus(scope, "Connected");
+    if (scope === "connect") {
+      callStartedAt = Date.now();
+      updateCallTime();
+      callTimer = window.setInterval(updateCallTime, 1000);
+    }
+  }
+
+  function setRole(role) {
+    const selected = roleButtons.find((button) => button.dataset.careConnectRole === role);
+    if (!selected) return;
+    roleButtons.forEach((button) => button.setAttribute("aria-pressed", String(button === selected)));
+    if (remoteRole) remoteRole.textContent = selected.textContent.trim();
   }
 
   function setView(view, { focusTab = false } = {}) {
-    if (!VIEWS.has(view)) return;
-    if (currentView !== view) stopCameraPreview();
+    if (!views.has(view)) return;
+    if (currentView !== view && rooms[currentView]) endRoom(currentView);
     currentView = view;
     experience.dataset.careView = view;
     tabs.forEach((tab) => {
@@ -241,7 +239,7 @@
     experience.hidden = false;
     experience.setAttribute("aria-hidden", "false");
     document.body.classList.add("care-experience-open");
-    setView(VIEWS.has(view) ? view : "connect");
+    setView(views.has(view) ? view : "connect");
     window.requestAnimationFrame(() => {
       experience.classList.add("is-open");
       closeButton?.focus({ preventScroll: true });
@@ -249,18 +247,19 @@
   }
 
   function closeCare({ restoreFocus = true } = {}) {
-    stopCameraPreview();
+    endRoom("connect");
+    endRoom("talk");
     experience.classList.remove("is-open");
     experience.setAttribute("aria-hidden", "true");
     document.body.classList.remove("care-experience-open");
     closeTimer = window.setTimeout(() => {
       experience.hidden = true;
       if (restoreFocus && previousFocus?.isConnected) previousFocus.focus({ preventScroll: true });
-    }, 540);
+    }, 360);
   }
 
   function focusableElements() {
-    return Array.from(experience.querySelectorAll('button:not([disabled]), a[href], [tabindex]:not([tabindex="-1"])'))
+    return Array.from(experience.querySelectorAll('button:not([disabled]), input:not([disabled]), a[href], [tabindex]:not([tabindex="-1"])'))
       .filter((element) => !element.closest("[hidden]") && element.getAttribute("aria-hidden") !== "true");
   }
 
@@ -283,30 +282,34 @@
     });
   });
 
+  roleButtons.forEach((button) => button.addEventListener("click", () => setRole(button.dataset.careConnectRole)));
+  rooms.connect.camera?.addEventListener("click", () => toggleCamera("connect"));
+  rooms.connect.microphone?.addEventListener("click", () => toggleMicrophone("connect"));
+  rooms.connect.action?.addEventListener("click", () => toggleRoom("connect"));
+  rooms.talk.camera?.addEventListener("click", () => toggleCamera("talk"));
+  rooms.talk.microphone?.addEventListener("click", () => toggleMicrophone("talk"));
+  rooms.talk.action?.addEventListener("click", () => toggleRoom("talk"));
   closeButton?.addEventListener("click", () => closeCare());
   experience.querySelector(".care-experience__backdrop")?.addEventListener("click", () => closeCare());
 
-  connectRoles.forEach((button) => {
-    button.addEventListener("click", () => setRole(button.dataset.careConnectRole || "mentor"));
+  checkout?.addEventListener("submit", (event) => {
+    event.preventDefault();
+    if (!address?.value.trim()) {
+      address?.focus();
+      return;
+    }
+    checkout.classList.add("is-ready");
+    const submit = checkout.querySelector('button[type="submit"]');
+    if (submit) submit.innerHTML = "Ready <span>&mdash; $0</span>";
+    if (checkoutStatus) checkoutStatus.textContent = "Delivery details ready. No order was placed in this preview.";
   });
 
-  modeGroups.forEach((group) => {
-    const scope = group.dataset.careModeGroup;
-    group.querySelectorAll("[data-care-call-mode]").forEach((button) => {
-      button.addEventListener("click", () => setMode(scope, button.dataset.careCallMode || "see"));
-    });
-  });
-
-  prepareButtons.forEach((button) => {
-    button.addEventListener("click", () => prepareRoom(button.dataset.carePrepare));
-  });
-
-  productButtons.forEach((button) => {
-    button.addEventListener("click", () => {
-      const selected = button.getAttribute("aria-pressed") === "true";
-      button.setAttribute("aria-pressed", String(!selected));
-      updatePackage();
-    });
+  address?.addEventListener("input", () => {
+    if (!checkout?.classList.contains("is-ready")) return;
+    checkout.classList.remove("is-ready");
+    const submit = checkout.querySelector('button[type="submit"]');
+    if (submit) submit.innerHTML = "Continue <span>&mdash; $0</span>";
+    if (checkoutStatus) checkoutStatus.textContent = "Target delivery: within one hour in eligible areas.";
   });
 
   document.addEventListener("keydown", (event) => {
@@ -330,8 +333,9 @@
     }
   });
 
-  window.addEventListener("pagehide", stopCameraPreview);
+  window.addEventListener("pagehide", () => {
+    endRoom("connect");
+    endRoom("talk");
+  });
   setRole("mentor");
-  setMode("talk", "see");
-  updatePackage();
 })();
