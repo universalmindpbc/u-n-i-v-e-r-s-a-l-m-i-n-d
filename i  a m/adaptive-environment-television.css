@@ -459,6 +459,88 @@ body.television-page-view-open.television-wallet-page-open .adaptive-television-
   --fashion-video-opacity: 0;
 }
 
+@keyframes adaptive-channel-loading-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.adaptive-television-channel-loading {
+  position: absolute;
+  inset: 0;
+  z-index: 12;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 11px;
+  padding: clamp(24px, 6vw, 72px);
+  color: #fff;
+  text-align: center;
+  background: radial-gradient(circle at center, rgba(0, 0, 0, 0.14), rgba(0, 0, 0, 0.34));
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 260ms ease, visibility 0s linear 260ms;
+}
+
+.adaptive-television-channel-loading.is-active {
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 180ms ease, visibility 0s linear 0s;
+}
+
+.adaptive-television-channel-loading__ring {
+  display: grid;
+  place-items: center;
+  width: clamp(50px, 5.2vw, 68px);
+  aspect-ratio: 1;
+  margin-bottom: 4px;
+  border: 2px solid rgba(255, 255, 255, 0.24);
+  border-top-color: rgba(255, 255, 255, 0.96);
+  border-radius: 50%;
+  box-shadow: 0 0 26px rgba(255, 255, 255, 0.08);
+  animation: adaptive-channel-loading-spin 900ms linear infinite;
+}
+
+.adaptive-television-channel-loading__title {
+  font-size: clamp(0.68rem, 0.82vw, 0.84rem);
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  line-height: 1.2;
+}
+
+.adaptive-television-channel-loading__label {
+  max-width: min(620px, 82vw);
+  font-size: clamp(0.7rem, 0.76vw, 0.8rem);
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  line-height: 1.45;
+  opacity: 0.72;
+}
+
+.adaptive-television-channel-loading.is-error .adaptive-television-channel-loading__ring {
+  border-color: rgba(255, 255, 255, 0.48);
+  animation: none;
+}
+
+.adaptive-television-channel-loading.is-error .adaptive-television-channel-loading__ring::after {
+  content: "!";
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .adaptive-television-channel-loading,
+  .adaptive-television-channel-loading.is-active {
+    transition-duration: 0.01ms;
+  }
+
+  .adaptive-television-channel-loading__ring {
+    animation: none;
+  }
+}
+
 /* Keep Safari Live Text from placing its recognition control over the
    continuous full-screen broadcast. The wallet and player controls remain
    separate interactive elements above this media layer. */

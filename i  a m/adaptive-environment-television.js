@@ -369,8 +369,16 @@
   let pendingBroadcastFormat = "videos";
   let broadcastEntryOpen = false;
   let broadcastSyncTimer = 0;
+  let broadcastJoinSequence = 0;
   let musicContinuationSequence = 0;
   let musicSwitching = false;
+  let channelLoadingOverlay = null;
+  let channelLoadingTitle = null;
+  let channelLoadingLabel = null;
+  let channelLoadingGeneration = 0;
+  let channelLoadingStartedAt = 0;
+  let channelLoadingStillTimer = 0;
+  let channelLoadingHideTimer = 0;
   let musicDwellTimer = 0;
   let musicRadioPreviousBlend = 100;
   let groupQueue = [];
@@ -1467,6 +1475,11 @@
       playerMount.classList.remove("is-local-video-waiting");
       video.dataset.televisionStreamPlay = "playing";
       delete video.dataset.televisionStreamError;
+      const loadingGeneration = Number(video.dataset.channelLoadingGeneration || 0);
+      if (loadingGeneration) {
+        delete video.dataset.channelLoadingGeneration;
+        finishChannelLoading(loadingGeneration);
+      }
       scheduleEdgeCropScan(video, 480);
     });
 
@@ -1474,6 +1487,11 @@
       if (video !== localVideo) {
         video.dataset.musicHandoffState = "error";
         return;
+      }
+      const loadingGeneration = Number(video.dataset.channelLoadingGeneration || 0);
+      if (loadingGeneration) {
+        delete video.dataset.channelLoadingGeneration;
+        failChannelLoading(loadingGeneration, channelLoadingDestination(track));
       }
       playerMount.classList.add("is-local-video-error");
       mountYouTubeFallback();
@@ -3429,6 +3447,131 @@
     }
   }
 
+  function ensureChannelLoadingOverlay() {
+    if (!channelLoadingOverlay) {
+      channelLoadingOverlay = document.createElement("div");
+      channelLoadingOverlay.className = "adaptive-television-channel-loading";
+      channelLoadingOverlay.dataset.channelLoadingOverlay = "";
+      channelLoadingOverlay.setAttribute("role", "status");
+      channelLoadingOverlay.setAttribute("aria-live", "polite");
+      channelLoadingOverlay.setAttribute("aria-atomic", "true");
+      channelLoadingOverlay.setAttribute("aria-hidden", "true");
+      channelLoadingOverlay.innerHTML = `
+        <span class="adaptive-television-channel-loading__ring" aria-hidden="true"></span>
+        <strong class="adaptive-television-channel-loading__title" data-channel-loading-title>TUNING CHANNEL</strong>
+        <span class="adaptive-television-channel-loading__label" data-channel-loading-label></span>
+      `;
+      channelLoadingTitle = channelLoadingOverlay.querySelector("[data-channel-loading-title]");
+      channelLoadingLabel = channelLoadingOverlay.querySelector("[data-channel-loading-label]");
+    }
+    if (channelLoadingOverlay.parentElement !== playerMount) playerMount.append(channelLoadingOverlay);
+    return channelLoadingOverlay;
+  }
+
+  function channelLoadingIsAutomatic(source = "") {
+    return new Set(["automatic_continuation", "broadcast_rollover"]).has(String(source));
+  }
+
+  function shouldShowChannelLoading(source = "") {
+    const normalizedSource = String(source || "manual");
+    return normalizedSource !== "shop_independent" && !normalizedSource.startsWith("sex_ed");
+  }
+
+  function channelLoadingDestination(item, channelName = "") {
+    const channel = String(channelName || item?.broadcastChannelName || "").trim();
+    const artist = String(item?.displayArtist || item?.artist || item?.provider || "").trim();
+    const title = String(item?.display_title || item?.displayTitle || item?.title || "").trim();
+    const programme = artist && title && artist.toLowerCase() !== title.toLowerCase()
+      ? `${artist} — ${title}`
+      : title || artist;
+    if (channel && programme && !programme.toLowerCase().includes(channel.toLowerCase())) {
+      return `${channel} · ${programme}`;
+    }
+    return channel || programme || "Shared live channel";
+  }
+
+  function beginChannelLoading({ mode = musicChannelMode, item = null, channelName = "", source = "manual" } = {}) {
+    if (!shouldShowChannelLoading(source)) return 0;
+    const overlay = ensureChannelLoadingOverlay();
+    const generation = ++channelLoadingGeneration;
+    channelLoadingStartedAt = window.performance?.now?.() || Date.now();
+    if (channelLoadingStillTimer) window.clearTimeout(channelLoadingStillTimer);
+    if (channelLoadingHideTimer) window.clearTimeout(channelLoadingHideTimer);
+    channelLoadingStillTimer = 0;
+    channelLoadingHideTimer = 0;
+    const heading = channelLoadingIsAutomatic(source) ? "LOADING NEXT SHOW" : "TUNING CHANNEL";
+    const destination = channelLoadingDestination(item, channelName);
+    if (channelLoadingTitle) channelLoadingTitle.textContent = heading;
+    if (channelLoadingLabel) channelLoadingLabel.textContent = destination;
+    overlay.classList.remove("is-error");
+    overlay.classList.add("is-active");
+    overlay.setAttribute("aria-hidden", "false");
+    overlay.dataset.channelLoadingMode = String(mode || "videos");
+    overlay.dataset.channelLoadingSource = String(source || "manual");
+    document.body.dataset.channelLoadingState = "loading";
+    document.body.dataset.channelLoadingMode = String(mode || "videos");
+    document.body.dataset.channelLoadingLabel = destination;
+    document.body.dataset.channelLoadingCopy = heading;
+    channelLoadingStillTimer = window.setTimeout(() => {
+      if (generation !== channelLoadingGeneration || !overlay.classList.contains("is-active")) return;
+      if (channelLoadingTitle) channelLoadingTitle.textContent = "STILL TUNING";
+      document.body.dataset.channelLoadingState = "still_tuning";
+      document.body.dataset.channelLoadingCopy = "STILL TUNING";
+    }, 18000);
+    return generation;
+  }
+
+  function finishChannelLoading(generation) {
+    if (!generation || generation !== channelLoadingGeneration || !channelLoadingOverlay) return;
+    if (channelLoadingStillTimer) window.clearTimeout(channelLoadingStillTimer);
+    channelLoadingStillTimer = 0;
+    const elapsed = (window.performance?.now?.() || Date.now()) - channelLoadingStartedAt;
+    const delay = Math.max(0, 480 - elapsed);
+    document.body.dataset.channelLoadingState = "ready";
+    channelLoadingHideTimer = window.setTimeout(() => {
+      if (generation !== channelLoadingGeneration || !channelLoadingOverlay) return;
+      channelLoadingOverlay.classList.remove("is-active", "is-error");
+      channelLoadingHideTimer = window.setTimeout(() => {
+        if (generation !== channelLoadingGeneration || !channelLoadingOverlay) return;
+        channelLoadingOverlay.setAttribute("aria-hidden", "true");
+        document.body.dataset.channelLoadingState = "idle";
+      }, 260);
+    }, delay);
+  }
+
+  function failChannelLoading(generation, destination = "") {
+    if (!generation || generation !== channelLoadingGeneration || !channelLoadingOverlay) return;
+    if (channelLoadingStillTimer) window.clearTimeout(channelLoadingStillTimer);
+    if (channelLoadingHideTimer) window.clearTimeout(channelLoadingHideTimer);
+    channelLoadingStillTimer = 0;
+    channelLoadingHideTimer = 0;
+    if (channelLoadingTitle) channelLoadingTitle.textContent = "CHANNEL UNAVAILABLE";
+    if (destination && channelLoadingLabel) channelLoadingLabel.textContent = destination;
+    channelLoadingOverlay.classList.add("is-active", "is-error");
+    channelLoadingOverlay.setAttribute("aria-hidden", "false");
+    document.body.dataset.channelLoadingState = "error";
+    document.body.dataset.channelLoadingCopy = "CHANNEL UNAVAILABLE";
+    channelLoadingHideTimer = window.setTimeout(() => {
+      if (generation !== channelLoadingGeneration || !channelLoadingOverlay) return;
+      channelLoadingOverlay.classList.remove("is-active", "is-error");
+      channelLoadingHideTimer = window.setTimeout(() => {
+        if (generation !== channelLoadingGeneration || !channelLoadingOverlay) return;
+        channelLoadingOverlay.setAttribute("aria-hidden", "true");
+      }, 260);
+    }, 3600);
+  }
+
+  function cancelChannelLoading(reason = "cancelled") {
+    channelLoadingGeneration += 1;
+    if (channelLoadingStillTimer) window.clearTimeout(channelLoadingStillTimer);
+    if (channelLoadingHideTimer) window.clearTimeout(channelLoadingHideTimer);
+    channelLoadingStillTimer = 0;
+    channelLoadingHideTimer = 0;
+    channelLoadingOverlay?.classList.remove("is-active", "is-error");
+    channelLoadingOverlay?.setAttribute("aria-hidden", "true");
+    document.body.dataset.channelLoadingState = reason;
+  }
+
   function recordMusicFeedback(item, type = "explicit_select") {
     const profile = readMusicTasteProfile();
     const weight = Number(window.IAMMusicChannelSelector?.feedbackWeight?.(type) ?? 1);
@@ -4847,6 +4990,7 @@
   }
 
   async function joinBroadcastChannel(channelId, options = {}) {
+    const joinSequence = ++broadcastJoinSequence;
     const joinSource = String(options.source || "broadcast_join");
     if (!joinSource.startsWith("sex_ed")) {
       if (document.body.classList.contains("television-sex-ed-active")) {
@@ -4872,6 +5016,17 @@
     const scheduledTrack = ["video", "audio"].includes(state?.mediaType) ? findTrack(state.trackId) : null;
     const scheduledStation = state?.mediaType === "radio" ? stationForId(state.stationId) : null;
     if (!state || (!scheduledTrack && !scheduledStation)) return false;
+    if (broadcastSyncTimer) {
+      window.clearInterval(broadcastSyncTimer);
+      broadcastSyncTimer = 0;
+    }
+    const loadingItem = scheduledTrack || scheduledStation;
+    const loadingGeneration = beginChannelLoading({
+      mode: state.format,
+      item: loadingItem,
+      channelName: state.channelName,
+      source: options.source || "broadcast_join",
+    });
     closeBroadcastEntry(false);
     pendingBroadcastChannelId = "";
     broadcastChannelId = channelId;
@@ -4886,30 +5041,45 @@
         pairingSource: `radio_${state.editorialId || state.energyId}`,
         revealMinimumSeconds: RADIO_FASHION_REVEAL_BUFFER_SECONDS,
       });
+      if (joinSequence !== broadcastJoinSequence || broadcastChannelId !== channelId) return false;
       if (!radioVisualReady) {
+        failChannelLoading(loadingGeneration, channelLoadingDestination(loadingItem, state.channelName));
         showMusicShelfStatus("The shared Radio visual is temporarily unavailable.", 3600);
         return false;
       }
       await startRadioStation(scheduledStation, {
         source: options.source || "broadcast_join",
         broadcastChannelId: channelId,
+        channelLoadingGeneration: loadingGeneration,
       });
+      if (joinSequence !== broadcastJoinSequence || broadcastChannelId !== channelId) return false;
     } else if (state.mediaType === "audio") {
       const started = await startAudioLedParty(scheduledTrack, {
         source: options.source || "broadcast_join",
         broadcastChannelId: channelId,
+        channelLoadingGeneration: loadingGeneration,
+        deferChannelLoadingFinish: true,
       });
+      if (joinSequence !== broadcastJoinSequence || broadcastChannelId !== channelId) return false;
       if (!started) return false;
-      await joinFashionBroadcastChannel(state.visualChannelId || "fashion-underground-intensity", {
+      const visualJoined = await joinFashionBroadcastChannel(state.visualChannelId || "fashion-underground-intensity", {
         source: "audio_party_visual_pair",
         pairingSource: `party_${state.editorialId || state.energyId}`,
       });
+      if (joinSequence !== broadcastJoinSequence || broadcastChannelId !== channelId) return false;
+      if (!visualJoined) {
+        failChannelLoading(loadingGeneration, channelLoadingDestination(loadingItem, state.channelName));
+        return false;
+      }
+      finishChannelLoading(loadingGeneration);
     } else {
       stopRadioVisualBroadcastPlayback("video_broadcast_start");
       await switchMusicTrack(scheduledTrack, {
         source: options.source || "broadcast_join",
         broadcastChannelId: channelId,
+        channelLoadingGeneration: loadingGeneration,
       });
+      if (joinSequence !== broadcastJoinSequence || broadcastChannelId !== channelId) return false;
     }
     startBroadcastSynchronization();
     await synchronizeBroadcastPlayback(true);
@@ -4925,6 +5095,11 @@
 
   async function switchMusicTrack(nextTrack, options = {}) {
     if (!nextTrack || musicSwitching) return;
+    const loadingGeneration = Number(options.channelLoadingGeneration) || beginChannelLoading({
+      mode: nextTrack.presentation === "live_dj_set" ? "parties" : "videos",
+      item: nextTrack,
+      source: options.source || "manual",
+    });
     musicSwitching = true;
     if (options.broadcastChannelId) {
       broadcastChannelId = options.broadcastChannelId;
@@ -4967,6 +5142,7 @@
         video.setAttribute("aria-label", `${track.artist} - ${track.title}`);
         video.dataset.musicTrackId = track.id;
         video.dataset.streamPriority = "primary";
+        if (loadingGeneration) video.dataset.channelLoadingGeneration = String(loadingGeneration);
         try { video.currentTime = 0; } catch {}
         await attachAdaptiveStream(video, track.localVideoSrc, "music");
         window.IAMStreamController?.setPriority?.(video, "primary");
@@ -4986,7 +5162,16 @@
       } else if (Number.isFinite(Number(options.startAt))) {
         await seekBroadcastVideo(video, Math.max(0, Number(options.startAt)), { reason: "personal_restore" });
       }
-      if (!bufferedHandoff) playLocalVideo(video);
+      if (bufferedHandoff) {
+        delete video.dataset.channelLoadingGeneration;
+        finishChannelLoading(loadingGeneration);
+      } else {
+        playLocalVideo(video);
+        if (!video.paused && video.readyState >= HTMLMediaElement.HAVE_CURRENT_DATA) {
+          delete video.dataset.channelLoadingGeneration;
+          finishChannelLoading(loadingGeneration);
+        }
+      }
       window.IAMEMDR?.setTimelineSource?.({
         media: video,
         bpm: Number(track.bpm) || 112,
@@ -4999,6 +5184,9 @@
       updateMusicSelector();
       renderMusicShelf();
       window.IAMFirstPartyAnalytics?.record?.("music_channel_start", { selected_item_id: track.id, music_mode: musicChannelMode, selection_source: options.source || "manual" });
+    } catch (error) {
+      failChannelLoading(loadingGeneration, channelLoadingDestination(nextTrack));
+      throw error;
     } finally {
       musicSwitching = false;
     }
@@ -5010,6 +5198,11 @@
 
   async function startAudioLedParty(nextTrack, options = {}) {
     if (!nextTrack?.audioOnly || musicSwitching) return false;
+    const loadingGeneration = Number(options.channelLoadingGeneration) || beginChannelLoading({
+      mode: "parties",
+      item: nextTrack,
+      source: options.source || "manual",
+    });
     clearShopArrivalFade();
     clearMusicHandoffTimer();
     if (preloadedMusicVideo) discardPreloadedMusicVideo("audio_party_start");
@@ -5026,6 +5219,7 @@
     const source = nextTrack.hlsVideoSrc || streamAsset?.hls || "";
     if (!source) {
       document.body.dataset.audioPartyPlaybackState = "encoding";
+      failChannelLoading(loadingGeneration, channelLoadingDestination(nextTrack));
       showMusicShelfStatus(`${nextTrack.displayArtist || nextTrack.artist} · broadcast encoding is finishing`, 4200);
       return false;
     }
@@ -5106,6 +5300,7 @@
       }
       document.body.dataset.radioPlaybackState = "playing";
       document.body.dataset.audioPartyPlaybackState = "playing";
+      if (!options.deferChannelLoadingFinish) finishChannelLoading(loadingGeneration);
       window.IAMEMDR?.setTimelineSource?.({ media: continuationAudio, bpm: 124, firstDownbeatSeconds: 0, fallbackBpm: 124 });
       if ("mediaSession" in window.navigator && window.MediaMetadata) {
         window.navigator.mediaSession.metadata = new window.MediaMetadata({
@@ -5127,6 +5322,7 @@
     } catch (error) {
       document.body.dataset.audioPartyPlaybackState = "error";
       document.body.dataset.audioPartyPlaybackError = String(error?.message || error).slice(0, 140);
+      failChannelLoading(loadingGeneration, channelLoadingDestination(nextTrack));
       showMusicShelfStatus(`${nextTrack.displayArtist || nextTrack.artist} · mix unavailable`, 3600);
       return false;
     } finally {
@@ -5144,6 +5340,11 @@
   async function startRadioStation(stationDecision, options = {}) {
     const station = stationForId(stationDecision?.id || stationDecision) || bestRadioStationForTrack();
     if (!station) return;
+    const loadingGeneration = Number(options.channelLoadingGeneration) || beginChannelLoading({
+      mode: "radio",
+      item: station,
+      source: options.source || "manual",
+    });
     clearMusicHandoffTimer();
     if (preloadedMusicVideo) discardPreloadedMusicVideo("radio_start");
     if (options.broadcastChannelId) {
@@ -5164,9 +5365,14 @@
     document.body.classList.remove("television-audio-party");
     document.body.dataset.audioPartyPlaybackState = "stopped";
     playerMount.classList.remove("is-local-video-awaiting-gesture");
-    await setVideoBlend(100);
-    if (radioVisualBroadcastChannelId) {
-      await synchronizeRadioVisualBroadcastPlayback(true);
+    try {
+      await setVideoBlend(100);
+      if (radioVisualBroadcastChannelId) {
+        await synchronizeRadioVisualBroadcastPlayback(true);
+      }
+    } catch (error) {
+      failChannelLoading(loadingGeneration, channelLoadingDestination(station));
+      throw error;
     }
     activeRadioStationId = station.id;
     musicChannelMode = "radio";
@@ -5178,6 +5384,7 @@
     } catch (error) {
       document.body.dataset.radioPlaybackState = "error";
       document.body.dataset.radioPlaybackError = String(error?.message || error).slice(0, 120);
+      failChannelLoading(loadingGeneration, channelLoadingDestination(station));
       updateNowPlaying();
       showMusicShelfStatus(`${station.display_title} · stream unavailable`, 3200);
       return;
@@ -5197,11 +5404,13 @@
       .then(() => {
         document.body.dataset.radioPlaybackState = "playing";
         fadeContinuationAudio(programmeFixedMixLevel ?? .68, 1200);
+        finishChannelLoading(loadingGeneration);
         updateNowPlaying();
       })
       .catch((error) => {
         document.body.dataset.radioPlaybackState = "error";
         document.body.dataset.radioPlaybackError = String(error?.message || error).slice(0, 120);
+        failChannelLoading(loadingGeneration, channelLoadingDestination(station));
         updateNowPlaying();
       });
     if ("mediaSession" in window.navigator && window.MediaMetadata) {
@@ -6829,6 +7038,7 @@
 
   function stopTelevisionMedia() {
     clearShopArrivalFade();
+    cancelChannelLoading("stopped");
     window.__iamAdaptiveEnvironment?.stopRadio?.();
     stopBroadcastPlayback("television_closed");
     stopFashionBroadcastPlayback("television_closed");
@@ -8181,6 +8391,7 @@
   pageClose?.addEventListener("click", () => returnToTelevisionRoom());
   supportClose?.addEventListener("click", closeSupportCard);
   playerMount.addEventListener("click", () => {
+    if (channelLoadingOverlay?.classList.contains("is-active")) return;
     if (document.body.classList.contains("television-radio-continuation")) return;
     if (!localVideo?.paused) return;
     playLocalVideo(localVideo);
