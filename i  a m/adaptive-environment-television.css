@@ -3339,41 +3339,11 @@ body .adaptive-television-reaction-wallet[data-wallet-view="categories"].is-reac
   background: rgba(255, 255, 255, 0.2);
 }
 
-.adaptive-television-home-program-button {
-  -webkit-appearance: none;
-  appearance: none;
-  box-sizing: border-box;
-  display: flex;
-  flex: 0 0 auto;
-  align-items: center;
-  justify-content: center;
-  width: 86px;
-  height: 28px;
-  margin-top: 1px;
-  padding: 0;
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  border-radius: 999px;
-  background: rgba(255, 255, 255, 0.025);
-  color: rgba(255, 255, 255, 0.65);
-  font: 400 10.5px/1 "Helvetica Neue", Helvetica, Arial, sans-serif;
-  letter-spacing: 0;
-  text-align: center;
-  text-transform: lowercase;
-  transition: background 220ms ease, border-color 220ms ease, color 220ms ease;
-}
-
-.adaptive-television-home-program-button:hover,
-.adaptive-television-home-program-button:focus-visible {
-  border-color: rgba(255, 255, 255, 0.58);
-  background: rgba(255, 255, 255, 0.08);
-  color: rgba(255, 255, 255, 0.9);
-  outline: 0;
-}
-
+.adaptive-television-home-program-button,
 .adaptive-television-sex-ed-link {
+  box-sizing: border-box;
   display: grid;
   flex: 0 0 auto;
-  width: 46px;
   height: 21px;
   margin-top: 6px;
   border: 1px solid rgba(255, 255, 255, 0.3);
@@ -3383,7 +3353,6 @@ body .adaptive-television-reaction-wallet[data-wallet-view="categories"].is-reac
   font: 400 10px/1 "Helvetica Neue", Helvetica, Arial, sans-serif;
   letter-spacing: 0;
   place-items: center;
-  text-decoration: none;
   text-transform: lowercase;
   transition:
     background 220ms ease,
@@ -3391,6 +3360,21 @@ body .adaptive-television-reaction-wallet[data-wallet-view="categories"].is-reac
     color 220ms ease;
 }
 
+.adaptive-television-home-program-button {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 56px;
+  padding: 0;
+  text-align: center;
+}
+
+.adaptive-television-sex-ed-link {
+  width: 46px;
+  text-decoration: none;
+}
+
+.adaptive-television-home-program-button:hover,
+.adaptive-television-home-program-button:focus-visible,
 .adaptive-television-sex-ed-link:hover,
 .adaptive-television-sex-ed-link:focus-visible {
   border-color: rgba(255, 255, 255, 0.58);
@@ -3563,17 +3547,18 @@ body .adaptive-television-reaction-wallet[data-wallet-view="categories"].is-reac
     margin-left: 5px;
   }
 
-  .adaptive-television-sex-ed-link {
-    width: 42px;
+  .adaptive-television-sex-ed-link,
+  .adaptive-television-home-program-button {
     height: 19px;
     font-size: 8.8px;
   }
 
+  .adaptive-television-sex-ed-link {
+    width: 42px;
+  }
+
   .adaptive-television-home-program-button {
-    width: 80px;
-    height: 26px;
-    margin-top: 2px;
-    font-size: 10px;
+    width: 52px;
   }
 }
 
