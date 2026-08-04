@@ -7955,14 +7955,22 @@
         return;
       }
 
-      if (link.dataset.navItem === "technology") {
+      const navItemName = link.dataset.navItem || "";
+      const navSubmenu = navItemName
+        ? document.querySelector(`[data-nav-submenu="${navItemName}"]`)
+        : null;
+      if (navSubmenu && !navSubmenu.hasAttribute("data-mobile-editorial-hidden")) {
         event.preventDefault();
         event.stopImmediatePropagation();
         document.querySelectorAll("[data-nav-item]").forEach((item) => {
           item.classList.toggle("is-active", item === link);
+          if (document.querySelector(`[data-nav-submenu="${item.dataset.navItem}"]`)) {
+            item.setAttribute("aria-expanded", String(item === link));
+          }
         });
-        link.setAttribute("aria-expanded", "true");
-        document.querySelector('[data-nav-submenu="technology"]')?.classList.add("is-open");
+        document.querySelectorAll("[data-nav-submenu]").forEach((submenu) => {
+          submenu.classList.toggle("is-open", submenu === navSubmenu);
+        });
         return;
       }
 

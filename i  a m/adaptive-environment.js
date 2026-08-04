@@ -793,20 +793,23 @@
     const link = event.target.closest?.("a[href]");
     if (!link || link.target || link.hasAttribute("download")) return null;
 
-    if (link.dataset.navItem === "technology") {
-      const technologySubmenu = document.querySelector('[data-nav-submenu="technology"]');
-      if (technologySubmenu) {
-        event.preventDefault();
-        document.querySelectorAll("[data-nav-item]").forEach((item) => {
-          const isActive = item.dataset.navItem === "technology";
-          item.classList.toggle("is-active", isActive);
-          if (item.dataset.navItem === "technology") {
-            item.setAttribute("aria-expanded", String(isActive));
-          }
-        });
-        technologySubmenu.classList.add("is-open");
-        return null;
-      }
+    const navItemName = link.dataset.navItem || "";
+    const navSubmenu = navItemName
+      ? document.querySelector(`[data-nav-submenu="${navItemName}"]`)
+      : null;
+    if (navSubmenu && !navSubmenu.hasAttribute("data-mobile-editorial-hidden")) {
+      event.preventDefault();
+      document.querySelectorAll("[data-nav-item]").forEach((item) => {
+        const isActive = item.dataset.navItem === navItemName;
+        item.classList.toggle("is-active", isActive);
+        if (document.querySelector(`[data-nav-submenu="${item.dataset.navItem}"]`)) {
+          item.setAttribute("aria-expanded", String(isActive));
+        }
+      });
+      document.querySelectorAll("[data-nav-submenu]").forEach((submenu) => {
+        submenu.classList.toggle("is-open", submenu === navSubmenu);
+      });
+      return null;
     }
 
     const url = new URL(link.getAttribute("href"), window.location.href);

@@ -1,5 +1,5 @@
 (() => {
-  const VERSION = "global-navigation-canonical-1";
+  const VERSION = "global-navigation-canonical-2";
   const scriptUrl = document.currentScript?.src || window.location.href;
   const stylesheetUrl = new URL(`global-navigation.css?v=${VERSION}`, scriptUrl).href;
 
@@ -68,7 +68,10 @@
             <a class="global-nav-item" href="vogue-self-report.html" data-nav-item="check-in">check in</a>
             <a class="global-nav-item" href="our-team.html" data-nav-item="our-team">our team</a>
             <a class="global-nav-item" href="mailto:bk@universalmind.tv?subject=I%20Am%20Vogue%20%7C%20Referral" data-nav-item="contact">contact</a>
-            <a class="global-nav-item" href="shop.html" data-nav-item="shop">shop</a>
+            <a class="global-nav-item" href="shop.html" data-nav-item="shop" aria-expanded="false">shop</a>
+            <div class="global-nav-submenu" data-nav-submenu="shop">
+              <a href="shop.html" data-nav-subitem="shop-james-bondage-health">james bondage health - now open</a>
+            </div>
           </nav>
           <p class="global-nav-citation">
             A Direct Response To Orygen + Phoenix Australia’s

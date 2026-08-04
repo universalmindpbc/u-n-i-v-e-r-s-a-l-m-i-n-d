@@ -27,7 +27,8 @@ const globalNav = document.querySelector("[data-global-nav]");
 const navOpenButtons = document.querySelectorAll("[data-nav-open]");
 const navCloseButtons = document.querySelectorAll("[data-nav-close]");
 const navItems = document.querySelectorAll("[data-nav-item]");
-const technologySubmenu = document.querySelector('[data-nav-submenu="technology"]');
+const navSubmenus = new Map(Array.from(document.querySelectorAll("[data-nav-submenu]"))
+  .map((submenu) => [submenu.dataset.navSubmenu, submenu]));
 const currentNavItem = document.body.dataset.currentNav || "technology";
 
 if (!isEmbeddedDocument && window.location.search) {
@@ -73,12 +74,14 @@ function setActiveNavItem(itemName) {
     const isActive = item.dataset.navItem === itemName;
     item.classList.toggle("is-active", isActive);
 
-    if (item.dataset.navItem === "technology") {
+    if (navSubmenus.has(item.dataset.navItem)) {
       item.setAttribute("aria-expanded", String(isActive));
     }
   });
 
-  technologySubmenu?.classList.toggle("is-open", itemName === "technology");
+  navSubmenus.forEach((submenu, name) => {
+    submenu.classList.toggle("is-open", itemName === name && !submenu.hasAttribute("data-mobile-editorial-hidden"));
+  });
 }
 
 function openGlobalNav(itemName = currentNavItem) {
@@ -2066,11 +2069,12 @@ if (!isHomepageRadarFrame) {
     item.addEventListener("mouseenter", () => setActiveNavItem(item.dataset.navItem));
     item.addEventListener("focus", () => setActiveNavItem(item.dataset.navItem));
 
-    if (item.tagName === "A" && item.dataset.navItem === "technology") {
+    if (item.tagName === "A" && navSubmenus.has(item.dataset.navItem)) {
       item.addEventListener("click", (event) => {
-        if (technologySubmenu) {
+        const submenu = navSubmenus.get(item.dataset.navItem);
+        if (submenu && !submenu.hasAttribute("data-mobile-editorial-hidden")) {
           event.preventDefault();
-          setActiveNavItem("technology");
+          setActiveNavItem(item.dataset.navItem);
         }
       });
     }

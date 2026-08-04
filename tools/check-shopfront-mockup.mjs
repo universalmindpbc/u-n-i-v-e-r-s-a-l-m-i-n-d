@@ -467,8 +467,9 @@ assert.ok(fs.existsSync(path.join(iam, "a s s e t s/shop-mockup/james-bondage-ha
 assert.ok(fs.existsSync(path.join(iam, "a s s e t s/shop-mockup/james-bondage-handdrawn-faces-b.png")), "Missing isolated B-version face mark");
 assert.match(shop, /class="shop-universal-nav global-nav-trigger"[\s\S]*Universal Mind \[ I o H \] Logo 512\.png/, "Standalone Shop proof must reserve the Universal Mind flower position");
 assert.match(shopScript, /iam:return-to-television/, "The Shop flower must return framed visitors to their continuing Music Television room");
-assert.match(shop, /data-global-nav-host[\s\S]*global-navigation\.js\?v=global-navigation-canonical-1/, "Shop must load the canonical global navigation");
+assert.match(shop, /data-global-nav-host[\s\S]*global-navigation\.js\?v=global-navigation-canonical-2/, "Shop must load the canonical global navigation");
 assert.match(globalNavigation, /class="global-nav"[\s\S]*data-nav-item="contact"[^>]*>contact<\/a>\s*<a[^>]*data-nav-item="shop"/, "Shop must use the full shared global navigation with Shop last after Contact");
+assert.match(globalNavigation, /data-nav-item="shop"[^>]*aria-expanded="false"[^>]*>shop<\/a>\s*<div class="global-nav-submenu" data-nav-submenu="shop">\s*<a href="shop\.html" data-nav-subitem="shop-james-bondage-health">james bondage health - now open<\/a>/, "Shop must expand to the James Bondage Health now-open destination");
 assert.match(shopStyle, /\.shop-universal-nav img[\s\S]*animation:\s*shop-universal-flower-spin/, "The standalone Shop flower must keep rotating");
 assert.match(globalNavigationStyle, /\.global-nav-mark\s*\{[^}]*animation:\s*none/s, "The shared navigation mark must retain the canonical static treatment");
 assert.match(shopStyle, /data-music-television-frame="embedded"\] \.shop-universal-nav,[\s\S]*data-music-television-frame="embedded"\] \.global-nav[\s\S]*display:\s*none/, "The embedded Shop must hide its duplicate flower and defer to the outer Music Television navigation");
@@ -603,7 +604,7 @@ assert.match(shopStyle, /\.shop-footer__legal\s*\{[\s\S]*grid-template-columns:\
 assert.equal((shop.match(/data-shop-home/g) || []).length, 2, "Shop Home must appear exactly once in the sticky navigation and once in the footer");
 assert.match(shopStyle, /\.shop-product__copy--brand-only\s*\{\s*min-height:\s*76px;/, "Brand-only edit cards must fill the shared caption row without exposing a grey strip");
 assert.match(shop, /shop\.css\?v=063614dd1451/, "The Shop shell must load the content-derived grey-gap repair stylesheet revision");
-assert.match(shop, /shop\.js\?v=c4bf5ba67ab4/, "The Shop shell must load the content-derived phase-aligned masthead runtime");
+assert.match(shop, /shop\.js\?v=shop-53d3f73f4f19/, "The Shop shell must load the content-derived phase-aligned masthead runtime");
 assert.match(
   shopStyle,
   /@media \(max-width: 700px\)[\s\S]*?\.shop-masthead__nav \{ gap: 6px; \}[\s\S]*?\.shop-masthead__actions \{ gap: 0; \}[\s\S]*?\.shop-theme,[\s\S]*?\.shop-music \{[\s\S]*?width: 28px;[\s\S]*?height: 44px;[\s\S]*?\.shop-theme \[data-shop-theme-label\],[\s\S]*?\.shop-music \[data-shop-music-label\] \{ font-size: 0; \}/,

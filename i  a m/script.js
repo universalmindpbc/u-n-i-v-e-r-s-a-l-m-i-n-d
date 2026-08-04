@@ -82,19 +82,19 @@
     runBrandCycle();
   }
 
-  function setActiveNavItem(navItems, technologySubmenu, itemName) {
+  function setActiveNavItem(navItems, navSubmenus, itemName) {
     navItems.forEach((item) => {
       const isActive = item.dataset.navItem === itemName;
       item.classList.toggle("is-active", isActive);
 
-      if (item.dataset.navItem === "technology") {
+      if (navSubmenus.has(item.dataset.navItem)) {
         item.setAttribute("aria-expanded", String(isActive));
       }
     });
 
-    if (technologySubmenu) {
-      technologySubmenu.classList.toggle("is-open", itemName === "technology");
-    }
+    navSubmenus.forEach((submenu, name) => {
+      submenu.classList.toggle("is-open", itemName === name && !submenu.hasAttribute("data-mobile-editorial-hidden"));
+    });
   }
 
   function initGlobalNav() {
@@ -102,8 +102,8 @@
     const navOpenButtons = document.querySelectorAll("[data-nav-open]");
     const navCloseButtons = document.querySelectorAll("[data-nav-close]");
     const navItems = document.querySelectorAll("[data-nav-item]");
-    const technologySubmenu = document.querySelector('[data-nav-submenu="technology"]');
-    const technologyItem = document.querySelector('[data-nav-item="technology"]');
+    const navSubmenus = new Map(Array.from(document.querySelectorAll("[data-nav-submenu]"))
+      .map((submenu) => [submenu.dataset.navSubmenu, submenu]));
     const pathName = window.location.pathname.split("/").pop() || "index.html";
     const inferredCurrentNav = pathName === "index.html"
       ? "home"
@@ -123,7 +123,7 @@
     function openGlobalNav(itemName = currentNavItem) {
       if (!globalNav) return;
 
-      setActiveNavItem(navItems, technologySubmenu, itemName);
+      setActiveNavItem(navItems, navSubmenus, itemName);
       document.body.classList.add("nav-open");
       globalNav.classList.add("is-open");
       globalNav.setAttribute("aria-hidden", "false");
@@ -158,18 +158,19 @@
     });
 
     navItems.forEach((item) => {
-      item.addEventListener("mouseenter", () => setActiveNavItem(navItems, technologySubmenu, item.dataset.navItem));
-      item.addEventListener("focus", () => setActiveNavItem(navItems, technologySubmenu, item.dataset.navItem));
+      item.addEventListener("mouseenter", () => setActiveNavItem(navItems, navSubmenus, item.dataset.navItem));
+      item.addEventListener("focus", () => setActiveNavItem(navItems, navSubmenus, item.dataset.navItem));
 
       if (item.tagName === "BUTTON") {
-        item.addEventListener("click", () => setActiveNavItem(navItems, technologySubmenu, item.dataset.navItem));
+        item.addEventListener("click", () => setActiveNavItem(navItems, navSubmenus, item.dataset.navItem));
       }
 
-      if (item.tagName === "A" && item.dataset.navItem === "technology") {
+      if (item.tagName === "A" && navSubmenus.has(item.dataset.navItem)) {
         item.addEventListener("click", (event) => {
-          if (technologySubmenu) {
+          const submenu = navSubmenus.get(item.dataset.navItem);
+          if (submenu && !submenu.hasAttribute("data-mobile-editorial-hidden")) {
             event.preventDefault();
-            setActiveNavItem(navItems, technologySubmenu, "technology");
+            setActiveNavItem(navItems, navSubmenus, item.dataset.navItem);
           }
         });
       }
@@ -177,7 +178,7 @@
       if (item.tagName === "A" && item.dataset.navItem === "go-to-market") {
         item.addEventListener("click", (event) => {
           event.preventDefault();
-          setActiveNavItem(navItems, technologySubmenu, "go-to-market");
+          setActiveNavItem(navItems, navSubmenus, "go-to-market");
         });
       }
     });
@@ -194,8 +195,9 @@
       window.requestAnimationFrame(() => {
         openGlobalNav(initialNavState);
 
-        if (initialNavState === "technology" && technologyItem) {
-          technologyItem.focus({ preventScroll: true });
+        const initialExpandedItem = document.querySelector(`[data-nav-item="${initialNavState}"]`);
+        if (navSubmenus.has(initialNavState) && initialExpandedItem) {
+          initialExpandedItem.focus({ preventScroll: true });
         }
       });
     }
