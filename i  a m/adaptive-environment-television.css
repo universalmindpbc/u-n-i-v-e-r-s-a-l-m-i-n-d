@@ -1182,29 +1182,42 @@ body.television-sex-ed-active .adaptive-television-timecode {
   position: relative;
   display: block;
   align-self: center;
-  height: 2px;
+  height: 8px;
   overflow: hidden;
-  background: rgba(228, 190, 132, 0.23);
+  border: 1px solid rgba(235, 199, 143, 0.46);
+  border-radius: 2px;
+  background: rgba(42, 26, 17, 0.58);
+  box-shadow:
+    inset 0 1px 2px rgba(7, 3, 1, 0.64),
+    0 0 10px rgba(215, 165, 93, 0.1);
 }
 
 .adaptive-television-community__unlock-track i {
   position: absolute;
   inset: 0 auto 0 0;
   width: var(--community-unlock-progress);
-  background: linear-gradient(90deg, rgba(206, 154, 83, 0.64), rgba(255, 226, 178, 0.98));
-  box-shadow: 0 0 9px rgba(235, 185, 109, 0.38);
+  border-radius: 1px;
+  background: linear-gradient(100deg, rgba(184, 124, 54, 0.82) 0%, rgba(238, 188, 111, 0.96) 34%, rgba(255, 235, 196, 1) 50%, rgba(206, 146, 72, 0.9) 67%, rgba(244, 199, 127, 0.96) 100%);
+  background-size: 220% 100%;
+  box-shadow: 0 0 12px rgba(239, 187, 108, 0.5);
   transition: width 1600ms cubic-bezier(0.22, 1, 0.36, 1);
+  animation:
+    community-unlock-flow 3200ms linear infinite,
+    community-unlock-fill-pulse 2600ms ease-in-out infinite;
 }
 
 .adaptive-television-community__unlock-track i::after {
   content: "";
   position: absolute;
-  top: -1px;
+  top: 50%;
   right: 0;
-  width: 18px;
-  height: 4px;
-  background: rgba(255, 240, 207, 0.76);
-  filter: blur(2px);
+  width: 4px;
+  height: 100%;
+  background: rgba(255, 248, 227, 0.98);
+  box-shadow:
+    -3px 0 8px rgba(255, 232, 188, 0.84),
+    0 0 10px rgba(255, 245, 219, 0.92);
+  transform: translateY(-50%);
   animation: community-unlock-breathe 2600ms ease-in-out infinite;
 }
 
@@ -1219,30 +1232,53 @@ body.television-sex-ed-active .adaptive-television-timecode {
 
 .adaptive-television-community__summary p {
   margin: 9px 0 0;
-  font-size: clamp(7px, 0.52vw, 9px);
+  font-size: clamp(10px, 0.8vw, 13px);
   font-weight: 400;
-  letter-spacing: 0.08em;
-  line-height: 1.3;
+  letter-spacing: 0.055em;
+  line-height: 1.4;
 }
 
 .adaptive-television-community__summary small {
   display: block;
-  margin-top: 3px;
-  color: rgba(231, 205, 166, 0.62);
-  font-size: clamp(6px, 0.43vw, 7px);
+  margin-top: 4px;
+  color: rgba(239, 215, 177, 0.76);
+  font-size: clamp(8px, 0.64vw, 10px);
   font-weight: 400;
-  letter-spacing: 0.08em;
-  line-height: 1.25;
+  letter-spacing: 0.055em;
+  line-height: 1.35;
+}
+
+@keyframes community-unlock-flow {
+  from {
+    background-position: 200% 50%;
+  }
+
+  to {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes community-unlock-fill-pulse {
+  0%,
+  100% {
+    filter: brightness(0.9) saturate(0.94);
+  }
+
+  50% {
+    filter: brightness(1.14) saturate(1.08);
+  }
 }
 
 @keyframes community-unlock-breathe {
   0%,
   100% {
-    opacity: 0.38;
+    opacity: 0.5;
+    transform: translateY(-50%) scaleY(0.68);
   }
 
   50% {
     opacity: 1;
+    transform: translateY(-50%) scaleY(1);
   }
 }
 
@@ -1315,15 +1351,19 @@ body.television-sex-ed-active .adaptive-television-timecode {
   }
 
   .adaptive-television-community__summary p {
-    margin-top: 7px;
-    font-size: 6px;
-    letter-spacing: 0.045em;
+    margin: 9px auto 0;
+    width: 94%;
+    font-size: 9px;
+    letter-spacing: 0.035em;
+    line-height: 1.4;
   }
 
   .adaptive-television-community__summary small {
-    margin-top: 2px;
-    font-size: 5px;
-    letter-spacing: 0.055em;
+    margin: 4px auto 0;
+    width: 94%;
+    font-size: 8px;
+    letter-spacing: 0.035em;
+    line-height: 1.35;
   }
 }
 
