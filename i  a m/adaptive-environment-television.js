@@ -564,12 +564,14 @@
   let reactionWalletPointerLockTimer = 0;
   let reactionWalletCollapseTimer = 0;
   let bloomWalletCloseGuard = false;
+  let bloomWalletCloseTimingTimer = 0;
   let nowPlayingInteractiveAt = 0;
   let nowPlayingResizeObserver = null;
   let nowPlayingTickerTimer = 0;
   let nowPlayingTickerView = "audio";
   const REACTION_WALLET_POINTER_LOCK_MS = 10000;
   const REACTION_WALLET_POINTER_MOVE_PX = 2;
+  const BLOOM_WALLET_CLOSE_MS = 1500;
   let audioWalletMode = false;
   let audioWalletJoined = false;
   let audioWalletMuted = false;
@@ -5469,6 +5471,12 @@
     document.body.classList.remove("television-wallet-pointer-locked");
   }
 
+  function finishBloomWalletCloseTiming() {
+    window.clearTimeout(bloomWalletCloseTimingTimer);
+    bloomWalletCloseTimingTimer = 0;
+    document.body.classList.remove("television-wallet-bloom-closing");
+  }
+
   function releaseBloomWalletCloseGuardFromPointerMove(event) {
     if (!bloomWalletCloseGuard || (event.pointerType && event.pointerType !== "mouse")) return;
     const pointerX = Number(event.clientX);
@@ -5493,9 +5501,15 @@
     window.clearTimeout(reactionWalletCollapseTimer);
     reactionWalletCollapseTimer = 0;
     bloomWalletCloseGuard = true;
+    finishBloomWalletCloseTiming();
+    document.body.classList.add("television-wallet-bloom-closing");
     armReactionWalletPointerLock(event);
     button?.blur?.();
     closeReactionWalletSoftly();
+    bloomWalletCloseTimingTimer = window.setTimeout(
+      finishBloomWalletCloseTiming,
+      BLOOM_WALLET_CLOSE_MS
+    );
   }
 
   function armReactionWalletPointerLock(event) {
