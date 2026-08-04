@@ -252,10 +252,13 @@ const products = [
     description: "The Calvin Klein original. Designed with an embroidered monogram logo at the hem, this timeless tee is made from pure cotton for a soft hand with breathable comfort. Cut in a classic fit.\n\n• Cotton jersey\n• Classic fit\n• Crew neckline\n• Short sleeves\n• Calvin Klein Underwear logo for a classic, signature touch\n\nOur model is 1.86m (6ft 1in) and is wearing a size M. Fits true to size.",
     material: "100% cotton. Machine wash.",
     image: "a s s e t s/shop-mockup/product-catalogue/calvin-klein/jb-0426-cotton-classics-three-pack-black-grey-white.jpg",
-    imageAlt: "Calvin Klein Cotton Classics Crewneck T-Shirt from the Black, Grey Heather and White three-pack on a forward-facing model",
-    imageSource: "retailer_gallery_human_selected",
-    sourceImageUrl: "https://pvh-brands.imgix.net/catalog/product/media/NB4051_MP1_alternate5.jpg?w=713&h=950&crop=top&fit=crop&auto=compress&auto=format",
-    sourceImageIndex: 1,
+    imageAlt: "Calvin Klein Cotton Classics Black, Grey Heather and White three-pack product shot without a model",
+    imageSource: "retailer_first_hero",
+    sourceImageUrl: "https://pvh-brands.imgix.net/catalog/product/media/NB4051_MP1_main.jpg?w=713&h=950&crop=top&fit=crop&auto=compress&auto=format",
+    sourceImageIndex: 0,
+    subjectPresent: false,
+    forwardFacing: false,
+    inSitu: false,
     price: "AU$ 79.95",
     priceValue: 79.95,
     colourFamilies: ["black", "grey", "white"],
@@ -280,10 +283,13 @@ const products = [
     description: "The Calvin Klein original. Designed with an embroidered monogram logo at the hem, this timeless tee is made from pure cotton for a soft hand with breathable comfort. Cut in a classic fit.\n\n• Cotton jersey\n• Classic fit\n• Crew neckline\n• Short sleeves\n• Calvin Klein Underwear logo for a classic, signature touch\n\nOur model is 1.86m (6ft 1in) and is wearing a size M. Fits true to size.",
     material: "100% cotton. Machine wash.",
     image: "a s s e t s/shop-mockup/product-catalogue/calvin-klein/jb-0427-cotton-classics-three-pack-white.jpg",
-    imageAlt: "Calvin Klein Cotton Classics Crewneck T-Shirt from the White three-pack on a forward-facing model",
-    imageSource: "retailer_gallery_human_selected",
-    sourceImageUrl: "https://pvh-brands.imgix.net/catalog/product/media/NB4051_100_MO-TP-F1_011.jpg?w=713&h=950&crop=top&fit=crop&auto=compress&auto=format",
-    sourceImageIndex: 2,
+    imageAlt: "Calvin Klein Cotton Classics White three-pack product shot without a model",
+    imageSource: "retailer_first_hero",
+    sourceImageUrl: "https://pvh-brands.imgix.net/catalog/product/media/NB4051_100_FL-ST-F1_011.jpg?w=713&h=950&crop=top&fit=crop&auto=compress&auto=format",
+    sourceImageIndex: 0,
+    subjectPresent: false,
+    forwardFacing: false,
+    inSitu: false,
     price: "AU$ 79.95",
     priceValue: 79.95,
     colourFamilies: ["white"],
@@ -328,8 +334,8 @@ const products = [
   listedOnShop: true,
   retrievedAt,
   currency: "AUD",
-  subjectPresent: true,
-  forwardFacing: true,
+  subjectPresent: product.subjectPresent ?? true,
+  forwardFacing: product.forwardFacing ?? true,
   colourEvidenceStatus: "Verified",
   colourSourceUrl: product.retailerUrl,
   colourSourceType: "Retailer page",
@@ -378,7 +384,10 @@ assert.equal(products.filter(({ brand }) => brand === "Studio K").length, 6, "St
 assert.ok(!kernel.brandOrder.includes("Studio K"), "Studio K must remain exclusive to the Inner Plains edit");
 assert.equal(products.filter(({ brand }) => brand === "Calvin Klein").length, 4, "Calvin Klein intake must contain four products");
 assert.equal(products.filter(({ brand }) => brand === "SKIMS").length, 1, "SKIMS intake must contain one product");
-assert.ok(products.every(({ priceValue, currency, description, subjectPresent, forwardFacing }) => Number.isFinite(priceValue) && currency === "AUD" && description && subjectPresent && forwardFacing), "Every new product must retain AUD price, exact description, and forward-facing human image evidence");
+assert.ok(products.every(({ priceValue, currency, description }) => Number.isFinite(priceValue) && currency === "AUD" && description), "Every new product must retain its AUD price and exact description");
+const personFreeCalvinTshirtIds = ["JB-0426", "JB-0427"];
+assert.deepEqual(products.filter(({ subjectPresent, forwardFacing }) => subjectPresent === false && forwardFacing === false).map(({ id }) => id), personFreeCalvinTshirtIds, "Only the two Calvin Klein T-shirt packs must use person-free product shots");
+assert.ok(products.filter(({ id }) => !personFreeCalvinTshirtIds.includes(id)).every(({ subjectPresent, forwardFacing }) => subjectPresent && forwardFacing), "Every other new product must retain forward-facing human image evidence");
 assert.equal(innerPlains.productIds.length, 28, "Inner Plains must contain 28 unique products");
 assert.equal(new Set(innerPlains.productIds).size, 28, "Inner Plains product IDs must remain unique");
 assert.ok(products.filter(({ brand }) => brand === "Calvin Klein").every(({ shopRoute }) => shopRoute === "#catalogue/calvin-klein"), "Calvin Klein products must retain the maker route");
