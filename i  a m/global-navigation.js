@@ -1,5 +1,5 @@
 (() => {
-  const VERSION = "global-navigation-canonical-7";
+  const VERSION = "global-navigation-canonical-8";
   const scriptUrl = document.currentScript?.src || window.location.href;
   const stylesheetUrl = new URL(`global-navigation.css?v=${VERSION}`, scriptUrl).href;
 
