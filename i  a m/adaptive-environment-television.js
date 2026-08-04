@@ -111,6 +111,8 @@
     if (streamAsset) Object.assign(candidate, { streamUid: streamAsset.uid, hlsVideoSrc: streamAsset.hls });
   });
   const NO_CHECKIN_RANDOM_LAST_TRACK_KEY = "iamNoCheckinRandomLastTrackId";
+  const NO_CHECKIN_CONTINUATION_INDEX_KEY = "iamNoCheckinContinuationIndex";
+  const EXTENDED_SESSION_VISITOR_ID_KEY = "iamAdaptiveMusicVisitorId";
   const NO_CHECKIN_RANDOM_EXCLUDED_TRACK_IDS = new Set(["madonna-frozen"]);
   let noCheckinRandomTrack = null;
   let resolvedSelectionSource = "";
@@ -5157,21 +5159,80 @@
     await selectMusicItem(next, { source: "wallet_arrow" });
   }
 
+  function extendedSessionVisitorId() {
+    try {
+      const existing = window.localStorage.getItem(EXTENDED_SESSION_VISITOR_ID_KEY);
+      if (existing) return existing;
+      const created = window.crypto?.randomUUID?.() || `visitor-${Date.now()}-${Math.random().toString(16).slice(2)}`;
+      window.localStorage.setItem(EXTENDED_SESSION_VISITOR_ID_KEY, created);
+      return created;
+    } catch {
+      return "anonymous";
+    }
+  }
+
+  function assignedNoCheckinContinuationFormat() {
+    let index = 0;
+    try {
+      const storedIndex = Number(window.localStorage.getItem(NO_CHECKIN_CONTINUATION_INDEX_KEY));
+      if (Number.isFinite(storedIndex) && storedIndex >= 0) index = Math.floor(storedIndex);
+      window.localStorage.setItem(NO_CHECKIN_CONTINUATION_INDEX_KEY, String(index + 1));
+    } catch {
+      index = musicContinuationSequence;
+    }
+    const draw = stableUnit(`extended-session-format-v1:${extendedSessionVisitorId()}:${index}`);
+    if (draw < .8) return "parties";
+    if (draw < .9) return "radio";
+    return "videos";
+  }
+
+  function noCheckinContinuationSession() {
+    const selectedRoom = String(track.musicRoom || "modul8-infinity").toLowerCase();
+    const assignedFormat = assignedNoCheckinContinuationFormat();
+    return {
+      music_room: selectedRoom,
+      format: selectedRoom === "safety-cushion" ? "videos" : assignedFormat,
+      source_id: "",
+      catalogue_ready: true,
+    };
+  }
+
+  function continuationChannelForFormat(format, selectedRoom, sourceId = "") {
+    const formatPool = musicShelfOrders[format] || [];
+    const recommendedId = musicShelfRecommendationIds[format];
+    return formatPool.find((item) => sourceId && (
+      item.id === sourceId || item.broadcastChannelId === sourceId
+    )) || formatPool.find((item) => item.editorialId === selectedRoom && !item.unavailable) ||
+      formatPool.find((item) => item.id === recommendedId && !item.unavailable) ||
+      formatPool.find((item) => !item.unavailable) || null;
+  }
+
   async function continueAdaptiveMusicProgramme() {
     if (broadcastChannelId) {
       await synchronizeBroadcastPlayback(true);
       return;
     }
     const storedSelection = readStoredSelection() || {};
-    const extendedSession = storedSelection.extended_session ||
+    let extendedSession = storedSelection.extended_session ||
       storedSelection.adaptive_music_intelligence?.extended_streaming_session || {};
-    const selectedFormat = ["parties", "radio", "videos"].includes(extendedSession.format)
+    let selectedFormat = ["parties", "radio", "videos"].includes(extendedSession.format)
       ? extendedSession.format
       : "";
-    const selectedRoom = String(extendedSession.music_room || "").toLowerCase();
-    const eligible = extendedSession.catalogue_ready === true && selectedFormat && selectedRoom;
+    let selectedRoom = String(extendedSession.music_room || "").toLowerCase();
+    let eligible = extendedSession.catalogue_ready === true && selectedFormat && selectedRoom;
+    let selectionSource = "stored_checkin";
+    const noCheckinJourney = ["no_checkin_random", "explicit_url"].includes(resolvedSelectionSource);
+    if (noCheckinJourney && (!eligible || (selectedRoom === "safety-cushion" && selectedFormat !== "videos"))) {
+      extendedSession = noCheckinContinuationSession();
+      selectedFormat = extendedSession.format;
+      selectedRoom = extendedSession.music_room;
+      eligible = true;
+      selectionSource = "no_checkin_80_10_10";
+    }
     document.body.dataset.musicContinuationDecision = eligible ? selectedFormat : "unavailable";
     document.body.dataset.musicContinuationReason = "personal_opening_complete";
+    document.body.dataset.musicContinuationSource = selectionSource;
+    document.body.dataset.musicContinuationRoom = selectedRoom;
     musicContinuationSequence += 1;
 
     if (!eligible || (selectedRoom === "safety-cushion" && selectedFormat !== "videos")) {
@@ -5179,19 +5240,25 @@
       return;
     }
 
-    const formatPool = musicShelfOrders[selectedFormat] || [];
     const sourceId = String(extendedSession.source_id || "");
-    const recommendedId = musicShelfRecommendationIds[selectedFormat];
-    const sharedChannel = formatPool.find((item) => sourceId && (
-      item.id === sourceId || item.broadcastChannelId === sourceId
-    )) || formatPool.find((item) => item.editorialId === selectedRoom && !item.unavailable) ||
-      formatPool.find((item) => item.id === recommendedId && !item.unavailable);
-
-    if (sharedChannel) {
-      await openBroadcastEntry(sharedChannel, { source: "automatic_continuation" });
+    const fallbackFormats = selectedRoom === "safety-cushion"
+      ? ["videos"]
+      : [selectedFormat, ...["parties", "radio", "videos"].filter((format) => format !== selectedFormat)];
+    const formats = selectionSource === "stored_checkin" ? [selectedFormat] : fallbackFormats;
+    for (const format of formats) {
+      const sharedChannel = continuationChannelForFormat(format, selectedRoom, format === selectedFormat ? sourceId : "");
+      if (!sharedChannel) continue;
+      const opened = await openBroadcastEntry(sharedChannel, { source: "automatic_continuation" });
+      if (!opened) continue;
+      document.body.dataset.musicContinuationDecision = format;
+      document.body.dataset.musicContinuationChannel = sharedChannel.broadcastChannelId;
+      document.body.dataset.musicContinuationFallback = String(format !== selectedFormat);
       return;
     }
+    document.body.dataset.musicContinuationDecision = "unavailable";
+    delete document.body.dataset.musicContinuationChannel;
     showMusicShelfStatus(`The needs-matched ${selectedFormat} livestream is temporarily unavailable.`, 3600);
+    if (selectionSource !== "stored_checkin") setMusicMode(selectedFormat, { manual: false, openShelf: true });
   }
 
   window.IAMMusicChannels = {

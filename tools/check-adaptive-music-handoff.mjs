@@ -346,6 +346,12 @@ requireCondition(controller.includes('candidate.presentation !== "live_dj_set"')
 requireCondition(controller.includes('candidate.id !== lastTrackId'), 'the no-check-in random pool can immediately repeat the previous song');
 requireCondition(controller.includes('resolvedSelectionSource = "no_checkin_random";'), 'the no-check-in random source is not exposed for browser verification');
 requireCondition(controller.includes('resolvedSelectionSource = "stored_checkin";'), 'a stored check-in selection can no longer remain authoritative');
+requireCondition(controller.includes('function assignedNoCheckinContinuationFormat()'), 'the no-check-in journey has no extended-session format assignment');
+requireCondition(controller.includes('if (draw < .8) return "parties";') && controller.includes('if (draw < .9) return "radio";') && controller.includes('return "videos";'), 'the no-check-in continuation no longer follows the existing 80/10/10 Parties, Radio and Videos policy');
+requireCondition(controller.includes('selectedRoom === "safety-cushion" ? "videos" : assignedFormat'), 'Safety Cushion can escape its Videos-only continuation rule');
+requireCondition(controller.includes('selectionSource = "no_checkin_80_10_10";'), 'the no-check-in continuation source is not exposed for browser verification');
+requireCondition(controller.includes('const fallbackFormats = selectedRoom === "safety-cushion"') && controller.includes('[selectedFormat, ...["parties", "radio", "videos"].filter'), 'a no-check-in continuation cannot recover through another ready live format');
+requireCondition(controller.includes('await openBroadcastEntry(sharedChannel, { source: "automatic_continuation" });'), 'the no-check-in session no longer opens the existing live-channel invitation after the video');
 requireCondition(controller.includes('function showRecommendationUnavailable()'), 'selector failures can silently present the default track again');
 requireCondition(!controller.includes('useRecommendationFallback'), 'selector failures still use a default-track fallback');
 requireCondition(globeController.includes('const persistedSelection = persistMusicTelevisionSelection(selection);'), 'the check-in pipeline does not validate persisted selector output');
