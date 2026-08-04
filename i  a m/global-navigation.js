@@ -1,5 +1,5 @@
 (() => {
-  const VERSION = "global-navigation-canonical-2";
+  const VERSION = "global-navigation-canonical-3";
   const scriptUrl = document.currentScript?.src || window.location.href;
   const stylesheetUrl = new URL(`global-navigation.css?v=${VERSION}`, scriptUrl).href;
 
@@ -33,6 +33,39 @@
       "shop.html": "shop",
     };
     return pageMap[page] || "";
+  }
+
+  function keepExpandedSubmenuVisible(navItem) {
+    const itemName = navItem?.dataset.navItem || "";
+    const submenu = itemName
+      ? document.querySelector(`[data-nav-submenu="${itemName}"]`)
+      : null;
+    if (!submenu || submenu.hasAttribute("data-mobile-editorial-hidden")) return;
+
+    const menu = navItem.closest(".global-nav-menu");
+    const destination = submenu.querySelector("a, button") || submenu;
+    if (!menu || !destination) return;
+
+    const reveal = () => {
+      if (!submenu.classList.contains("is-open")) return;
+      const menuRect = menu.getBoundingClientRect();
+      const destinationRect = destination.getBoundingClientRect();
+      const safeInset = 18;
+      const bottomOverflow = destinationRect.bottom - (menuRect.bottom - safeInset);
+      if (bottomOverflow > 0) menu.scrollTop += bottomOverflow;
+    };
+
+    window.requestAnimationFrame(reveal);
+    window.setTimeout(reveal, 560);
+  }
+
+  function bindSubmenuVisibility() {
+    if (window.__iamGlobalSubmenuVisibilityBound) return;
+    window.__iamGlobalSubmenuVisibilityBound = true;
+    document.addEventListener("click", (event) => {
+      const navItem = event.target.closest?.("[data-nav-item]");
+      if (navItem) keepExpandedSubmenuVisible(navItem);
+    }, true);
   }
 
   function render(host = document.querySelector("[data-global-nav-host]")) {
@@ -89,6 +122,7 @@
   }
 
   ensureStylesheet();
+  bindSubmenuVisibility();
   const api = { version: VERSION, render };
   window.IAMGlobalNavigation = api;
   render();
