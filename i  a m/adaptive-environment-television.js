@@ -554,6 +554,7 @@
   let reactionWalletPointerAnchorY = null;
   let reactionWalletPointerLockTimer = 0;
   let reactionWalletCollapseTimer = 0;
+  let bloomWalletCloseGuard = false;
   let nowPlayingInteractiveAt = 0;
   let nowPlayingResizeObserver = null;
   let nowPlayingTickerTimer = 0;
@@ -5409,6 +5410,28 @@
     }, delay);
   }
 
+  function releaseBloomWalletCloseGuard() {
+    if (!bloomWalletCloseGuard) return;
+    bloomWalletCloseGuard = false;
+    window.clearTimeout(reactionWalletPointerLockTimer);
+    reactionWalletPointerLockTimer = 0;
+    reactionWalletPointerReadyAt = Date.now();
+    reactionWalletPointerAnchorX = null;
+    reactionWalletPointerAnchorY = null;
+    document.body.classList.remove("television-wallet-bloom-snapping", "television-wallet-pointer-locked");
+  }
+
+  function closeReactionWalletAfterBloom(button, event) {
+    if (!reactionWallet || walletView !== "emoji") return;
+    window.clearTimeout(reactionWalletCollapseTimer);
+    reactionWalletCollapseTimer = 0;
+    bloomWalletCloseGuard = true;
+    document.body.classList.add("television-wallet-bloom-snapping");
+    armReactionWalletPointerLock(event);
+    button?.blur?.();
+    setWalletView("closed", { remember: false });
+  }
+
   function armReactionWalletPointerLock(event) {
     window.clearTimeout(reactionWalletPointerLockTimer);
     reactionWalletPointerReadyAt = Number.POSITIVE_INFINITY;
@@ -5473,6 +5496,7 @@
     if (!document.body.classList.contains("television-room-open")) return;
     event.preventDefault();
     event.stopPropagation();
+    releaseBloomWalletCloseGuard();
     setReactionWalletOpen(true);
   }
 
@@ -7441,6 +7465,7 @@
   });
   reactionWallet?.addEventListener("pointerleave", () => {
     setAudioWalletInteracting(false);
+    releaseBloomWalletCloseGuard();
     if (walletView === "emoji") scheduleReactionWalletCollapse(3000);
   });
   reactionWallet?.addEventListener("focusin", () => {
@@ -7909,7 +7934,7 @@
       const reactionType = button.dataset.televisionReaction || "daisy";
       releaseReactionFlood(reactionType);
       window.IAMBroadcastInteractions?.sendBloom?.(reactionType);
-      window.clearTimeout(reactionWalletCollapseTimer);
+      closeReactionWalletAfterBloom(event.currentTarget, event);
     });
   });
   window.addEventListener("iam:shared-bloom", (event) => {
