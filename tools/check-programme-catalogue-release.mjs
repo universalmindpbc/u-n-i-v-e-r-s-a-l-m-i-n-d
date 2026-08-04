@@ -95,7 +95,7 @@ for (const track of programmeTracks) {
 
 const channel = (id) => schedule.channels.find((candidate) => candidate.id === id);
 const modul8GlobalWeek = channel("party-modul8-infinity");
-assert.equal(schedule.version, "broadcast_schedule_v1.6");
+assert.equal(schedule.version, "broadcast_schedule_v1.7");
 assert.equal(schedule.epoch_utc, "2026-07-24T00:00:00.000Z");
 assert.equal(modul8GlobalWeek.epoch_utc, "2026-08-02T14:00:00.000Z");
 assert.equal(modul8GlobalWeek.schedule.length, 108);
@@ -116,6 +116,9 @@ assert.ok(Math.abs(modul8GlobalWeek.schedule.reduce((sum, entry) => sum + entry.
 assert.equal(modul8GlobalWeek.descriptor, "rave / electronic / experimental");
 assert.equal(channel("video-modul8-infinity").schedule.at(-1).track_id, raveId);
 assert.equal(channel("video-james-bondage").schedule.at(-1).track_id, closerId);
+const grimesGenesis = catalogue.tracks.find((track) => track.id === "grimes-genesis");
+assert.equal(grimesGenesis.music_room, "modul8-infinity");
+assert.equal(grimesGenesis.tensor_profile?.runtime_delivery?.music_room, "modul8-infinity");
 assert.deepEqual(channel("party-james-bondage").schedule.map((entry) => [entry.track_id, entry.media_type]), [
   ["zip-perlon-air-festival-2007", "audio"],
   ["zip-sammy-d-perlon-betalounge-2000", "audio"],

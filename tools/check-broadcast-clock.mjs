@@ -226,6 +226,13 @@ for (const channel of schedule.channels) {
 assert.deepEqual(new Set(scheduledVideos), new Set(videoDurations.keys()), "All 43 verified music videos must belong to exactly one shared channel.");
 assert.equal(scheduledVideos.length, videoDurations.size, "A music video cannot belong to more than one shared channel.");
 assert.deepEqual(
+  schedule.channels
+    .filter((channel) => channel.format === "videos" && channel.schedule.some((entry) => entry.track_id === "grimes-genesis"))
+    .map((channel) => channel.editorial_id),
+  ["modul8-infinity"],
+  "Grimes — Genesis must belong to modul8 infinity Videos only."
+);
+assert.deepEqual(
   safetyCushionChannel.schedule.map((entry) => entry.track_id),
   safetyCushionVideoAssets.map((asset) => asset.trackId),
   "Safety Cushion must contain the exact 21 approved videos in one continuous cycle."

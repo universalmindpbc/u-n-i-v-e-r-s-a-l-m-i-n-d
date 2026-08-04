@@ -1,5 +1,5 @@
 {
-  "version": "broadcast_schedule_v1.6",
+  "version": "broadcast_schedule_v1.7",
   "stage": "five_music_rooms_live_safety_cushion_ready",
   "epoch_utc": "2026-07-24T00:00:00.000Z",
   "extended_session_format_policy": {
@@ -136,6 +136,10 @@
           "duration_seconds": 215
         },
         {
+          "track_id": "grimes-genesis",
+          "duration_seconds": 332.298
+        },
+        {
           "track_id": "rave-episode-1-solyra",
           "duration_seconds": 4613.57
         }
@@ -151,10 +155,6 @@
       "descriptor": "minimal / electro / EBM",
       "description": "Minimal · electro · EBM",
       "schedule": [
-        {
-          "track_id": "grimes-genesis",
-          "duration_seconds": 332.298
-        },
         {
           "track_id": "u2-numb",
           "duration_seconds": 260.39
