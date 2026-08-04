@@ -55,14 +55,16 @@ The ordinary Music Television proof route is:
 
 ## Non-disruptive browser, fullscreen, and media QA
 
-All staging and production browser verification must avoid disrupting Ben's computer.
+All staging and production browser verification must avoid disrupting Ben's computer. This safety boundary overrides live-browser verification requirements when the available browser cannot meet it.
 
-- Run ordinary browser QA hidden or in the background. Do not take over Chrome, Safari, macOS, or another visible desktop application.
-- Validate fullscreen layouts in an isolated Codex-controlled browser with explicit viewport sizes and targeted DOM, media-state, and screenshot evidence. Native browser or macOS fullscreen requires Ben's explicit approval immediately before testing.
-- Start any automated browser that may encounter autoplaying media with process-level audio disabled, such as Chromium's `--mute-audio`, before navigation. If that suppression cannot be confirmed, do not begin playback and ask Ben first.
+- Keep ordinary browser QA hidden or in the background. Do not focus, operate, or take over Chrome, Safari, macOS, or another visible desktop application.
+- The Codex in-app browser is for non-playback DOM, layout, network, and screenshot checks only. Do not click play, enter a room when entry starts media, call `play()`, enable a microphone, or use a route known or likely to autoplay.
+- Validate fullscreen layouts with explicit viewport sizes and targeted DOM or screenshot evidence. Native browser or macOS fullscreen requires Ben's explicit approval immediately before testing.
+- Silent playback, volume, routing, streaming, and mix checks require a separate Playwright Chromium process launched with process-level audio disabled before navigation, including Chromium's `--mute-audio`. Headless or background operation alone is not proof of silence.
+- If that dedicated muted process cannot be positively confirmed, do not start playback. Use non-playback HTTP, source, DOM, or API verification, or ask Ben first.
 - Silent streaming checks may verify media requests, readiness, decoding, HLS or Stream state, advancing playback time, controls, routing, configured mix values, layout, and console errors.
-- Testing audible output or audio quality—including streaming audio, live playback, audio rooms, crossfades, or subjective mix behavior—requires Ben's explicit approval immediately before the test and must use only one audible tab or session.
-- Silent checks cannot establish subjective sound quality. Stop playback and close automated media tabs immediately after verification unless Ben asks to retain a proofing tab.
+- Any test that could send audible output to Ben's speakers requires his explicit approval immediately beforehand and must use only one audible tab or session.
+- Silent checks cannot establish subjective sound quality. Stop playback and close automated media tabs immediately after verification. Never leave parallel threads playing media.
 
 ## Production releases
 

@@ -82,16 +82,16 @@ Generic testing must exercise the real visitor experience instead of forcing the
 
 ## Non-disruptive browser, fullscreen, and media QA
 
-Website verification must not take over Ben's computer or produce unexpected audio.
+This is a safety boundary. It overrides any general instruction to perform live browser verification when the available browser cannot meet these conditions.
 
-- Keep automated browser work hidden or in the background by default. Do not open, focus, or control Ben's Chrome, Safari, or desktop for ordinary QA.
-- Test fullscreen layouts with an isolated Codex-controlled browser, explicit viewport dimensions, and targeted DOM, media-state, and screenshot checks.
-- Do not invoke native macOS or browser fullscreen, take over the display, or visibly operate desktop applications without Ben's explicit approval immediately before the test.
-- Before navigating to any page that may autoplay media, launch the automated browser with process-level audio output disabled, such as Chromium's `--mute-audio`. Muting only after playback starts is not sufficient.
-- If process-level audio suppression cannot be confirmed, do not start media playback. Stop and ask Ben first.
+- Keep ordinary browser QA hidden or in the background. Do not focus, operate, or take over Ben's Chrome, Safari, macOS desktop, or display.
+- Do not use the Codex in-app browser for media playback. It may be used only for non-playback DOM, layout, network, and screenshot checks. Never click a control that starts media, call `play()`, enter a room when entry starts playback, enable a microphone, or navigate it to a route known or likely to autoplay.
+- Test fullscreen layout with explicit viewport dimensions and targeted DOM or screenshot checks. Never invoke native browser or macOS fullscreen without Ben's explicit approval immediately before the test.
+- Silent playback, volume, routing, streaming, or mix QA is allowed only in a separate Playwright Chromium process launched with process-level audio disabled before navigation, including Chromium's `--mute-audio`. Headless or background operation alone is not proof of silence.
+- If the dedicated muted browser cannot be positively confirmed, do not start playback. Use non-playback HTTP, source, DOM, or API checks, or ask Ben first.
 - Silent technical media QA may verify requests, readiness, decoding, HLS or Stream state, `currentTime` advancement, controls, routing, configured mix values, layout, and relevant console errors.
-- Any test of audible output or audio quality—including streaming audio, live playback, audio rooms, crossfades, or subjective mix checks—requires Ben's explicit approval immediately before testing. Use no more than one audible tab or session at a time.
-- Do not claim subjective audible quality from silent checks. Close all automated media tabs and stop playback as soon as verification is complete unless Ben explicitly asks to retain a proofing tab.
+- Any test that could send audible output to Ben's speakers requires his explicit approval immediately beforehand and must use only one audible tab or session.
+- Silent checks cannot establish subjective sound quality. Pause and close every automated media tab immediately after verification. Never leave parallel threads playing media.
 
 ## Production
 
