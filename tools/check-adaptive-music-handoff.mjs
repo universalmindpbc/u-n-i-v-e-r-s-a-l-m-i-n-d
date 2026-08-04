@@ -439,19 +439,20 @@ requireCondition(citizenNeedsWorkerConfig.includes('name = "REALTIME_RATE_LIMITE
 requireCondition(citizenNeedsWorkerConfig.includes('type = "Text"') && citizenNeedsWorkerConfig.includes('globs = [ "**/*.txt" ]'), 'the Worker no longer bundles the Universal One portal guide');
 requireCondition(realtimeVoicePortalGuide.includes('GLOBAL NAVIGATION') && realtimeVoicePortalGuide.includes('TELEVISION ROOM'), 'the Universal One portal guide no longer covers the site and player journeys');
 requireCondition(realtimeVoicePortalGuide.includes('Privacy first opens the Privacy First page') && realtimeVoicePortalGuide.includes('Go to market remains a visible roadmap label and is currently disabled'), 'Universal One can misdescribe Privacy First as inactive or Go to market as live');
-requireCondition(globalNavigationController.includes('const VERSION = "global-navigation-canonical-4"'), 'the canonical global navigation version is missing');
+requireCondition(globalNavigationController.includes('const VERSION = "global-navigation-canonical-5"'), 'the canonical global navigation version is missing');
 requireCondition(globalNavigationController.includes('href="privacy-first.html" data-nav-item="privacy-first"'), 'the canonical global navigation does not expose Privacy First');
 requireCondition(globalNavigationController.includes('href="shop.html" data-nav-item="shop"'), 'the canonical global navigation does not expose Shop');
 requireCondition(globalNavigationController.includes('data-nav-submenu="shop"') && globalNavigationController.includes('data-nav-subitem="shop-james-bondage-health">james bondage health - now open</a>'), 'the canonical global navigation does not contextualise Shop as James Bondage Health');
 requireCondition(globalNavigationController.includes('function keepExpandedSubmenuVisible(navItem)') && globalNavigationController.includes('menu.scrollTop += bottomOverflow'), 'expanded global navigation destinations can be clipped below the visible menu area');
 requireCondition(globalNavigationCss.includes('padding: 0 34px 32px 0;') && globalNavigationCss.includes('scroll-padding-bottom: 32px;'), 'the global navigation lacks enough scroll clearance to reveal an expanded destination');
+requireCondition(globalNavigationCss.includes('.global-nav-submenu {\n  flex-shrink: 0;'), 'the global navigation can shrink an expanded submenu to zero height');
 requireCondition(globalNavigationController.includes('data-nav-item="go-to-market" aria-disabled="true"'), 'the canonical global navigation no longer keeps Go to market disabled');
 requireCondition(globalNavigationCss.includes('font-size: clamp(28px, 2.25vw, 46px);') && globalNavigationCss.includes('font-weight: 700;') && globalNavigationCss.includes('letter-spacing: 0.46em;'), 'the canonical global navigation type scale has drifted');
 requireCondition(privacyCss.includes('animation: privacy-clockwise-turn 3s linear infinite;'), 'the Privacy First flower no longer matches the canonical three-second rotation');
 for (const { pagePath, source } of globalNavigationPages) {
   const label = path.relative(ROOT, pagePath);
   requireCondition((source.match(/data-global-nav-host/g) || []).length === 1, `${label} does not contain exactly one canonical global-navigation host`);
-  requireCondition((source.match(/global-navigation\.js\?v=global-navigation-canonical-4/g) || []).length === 1, `${label} does not load exactly one canonical global-navigation component`);
+  requireCondition((source.match(/global-navigation\.js\?v=global-navigation-canonical-5/g) || []).length === 1, `${label} does not load exactly one canonical global-navigation component`);
   requireCondition(!source.includes('data-nav-item='), `${label} still contains a copied global-navigation menu`);
   requireCondition(!source.includes('data-global-nav aria-hidden='), `${label} still contains copied global-navigation markup`);
 }
@@ -495,7 +496,7 @@ for (const { pagePath, source } of adaptiveEnvironmentPages) {
 
 for (const { pagePath, source } of aboutLinkPages) {
   const label = path.relative(ROOT, pagePath);
-  requireCondition(source.includes('global-navigation.js?v=global-navigation-canonical-4'), `${label} does not load the canonical About navigation handoff`);
+  requireCondition(source.includes('global-navigation.js?v=global-navigation-canonical-5'), `${label} does not load the canonical About navigation handoff`);
 }
 requireCondition(globalNavigationController.includes('href="about.html?aboutTopLevel=1" data-nav-item="about"'), 'the canonical navigation does not force a fresh complete About handoff');
 

@@ -115,6 +115,11 @@ html[data-adaptive-frame="embedded"] .global-nav {
 }
 
 .global-nav .global-nav-item,
+.global-nav-submenu {
+  flex-shrink: 0;
+}
+
+.global-nav .global-nav-item,
 .global-nav-submenu a,
 .global-nav-submenu button {
   display: block;
