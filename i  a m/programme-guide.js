@@ -103,6 +103,13 @@
         title: String(record.title || humanizeTrackId(trackId)),
       };
     }
+    const runtimeMetadata = window.IAMCueSheet?.metadataAt?.(trackId, 0);
+    if (runtimeMetadata?.artist && runtimeMetadata?.title) {
+      return {
+        artist: String(runtimeMetadata.artist),
+        title: String(runtimeMetadata.title),
+      };
+    }
     return { artist: "Universal Mind", title: humanizeTrackId(trackId) };
   }
 

@@ -25,6 +25,7 @@ const djSetManifestPath = path.join(ROOT, 'cloudflare-stream-djset-upload-manife
 const televisionCssPath = path.join(IAM_DIR, 'adaptive-environment-television.css');
 const programmeGuidePath = path.join(IAM_DIR, 'programme-guide.js');
 const programmeGuideCssPath = path.join(IAM_DIR, 'programme-guide.css');
+const broadcastSchedulePath = path.join(IAM_DIR, 'broadcast-schedule-v1.json');
 const realtimeVoiceControllerPath = path.join(IAM_DIR, 'realtime-voice-assistant.js');
 const realtimeVoiceCssPath = path.join(IAM_DIR, 'realtime-voice-assistant.css');
 const realtimeVoiceEndpointPath = path.join(IAM_DIR, 'api', 'realtime-client-secret.php');
@@ -140,6 +141,7 @@ const djSetManifest = JSON.parse(await fs.readFile(djSetManifestPath, 'utf8'));
 const televisionCss = await fs.readFile(televisionCssPath, 'utf8');
 const programmeGuide = await fs.readFile(programmeGuidePath, 'utf8');
 const programmeGuideCss = await fs.readFile(programmeGuideCssPath, 'utf8');
+const broadcastSchedule = JSON.parse(await fs.readFile(broadcastSchedulePath, 'utf8'));
 const realtimeVoiceController = await fs.readFile(realtimeVoiceControllerPath, 'utf8');
 const realtimeVoiceCss = await fs.readFile(realtimeVoiceCssPath, 'utf8');
 const realtimeVoiceEndpoint = await fs.readFile(realtimeVoiceEndpointPath, 'utf8');
@@ -305,6 +307,16 @@ requireCondition(televisionCss.includes('.adaptive-television-home-program-butto
 requireCondition(televisionCss.includes('.adaptive-television-home-program-button {') && televisionCss.includes('width: 56px;') && televisionCss.includes('padding: 0;') && televisionCss.includes('.adaptive-television-sex-ed-link {\n  width: 46px;'), 'the program pill is no longer only ten pixels longer than the otherwise identical sex-ed pill');
 requireCondition(programmeGuide.includes('fetch("broadcast-schedule-v1.json?v=programme-guide-app-2"') && programmeGuide.includes('cache: "no-store"'), 'the Program popup no longer reads the live no-cache broadcast schedule');
 requireCondition(programmeGuide.includes('fetch("adaptive-music-video-catalogue-v1.11.json?v=programme-guide-app-2"') && programmeGuide.includes('fetch("radio-station-tensor-notion-export-v1.0.json?v=programme-guide-app-2"'), 'the Videos, Parties and Radio guides no longer read their canonical catalogues');
+requireCondition(programmeGuide.includes('window.IAMCueSheet?.metadataAt?.(trackId, 0)'), 'the Program schedule no longer resolves playback-catalogue metadata before using the Universal Mind fallback');
+const runtimeTrackMetadata = new Map(Array.from(controller.matchAll(/\{ id: "([^"]+)", artist: "([^"]+)", title: "([^"]+)"/g))
+  .map((match) => [match[1], { artist: match[2], title: match[3] }]));
+const safetyCushionSchedule = broadcastSchedule.channels
+  .find((channel) => channel.id === 'video-safety-cushion')?.schedule || [];
+requireCondition(safetyCushionSchedule.length === 21, 'the Safety Cushion schedule no longer contains its complete 21-video programme');
+safetyCushionSchedule.forEach(({ track_id: trackId }) => {
+  const metadata = runtimeTrackMetadata.get(trackId);
+  requireCondition(metadata?.artist && metadata.artist !== 'Universal Mind' && metadata?.title, `Safety Cushion track ${trackId} has no canonical artist/title metadata`);
+});
 requireCondition(programmeGuide.includes('window.IAMBroadcastClock?.nowMs?.()'), 'Program is no longer aligned to the shared live clock');
 requireCondition(!indexPage.includes('data-clock-source') && !indexPage.includes('LIVE CLOCK') && !programmeGuide.includes('data-clock-source') && programmeGuide.includes('live.textContent = "LIVE";') && !programmeGuide.includes('LIVE RADIO'), 'the Program guide has regained internal clock jargon or lost its consistent LIVE label');
 requireCondition(programmeGuide.includes('activeMode === "videos" ? 24 : (expanded ? 24 : 6)') && programmeGuide.includes('previousEvents(currentChannel, nowMs, 3)'), 'Program no longer supports the video day view, Just Played history and 6-to-24-hour live guides');
