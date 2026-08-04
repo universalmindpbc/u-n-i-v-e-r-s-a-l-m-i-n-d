@@ -8,10 +8,28 @@
     <link rel="icon" href="favicon.png" type="image/png">
     <script>
       try {
+        const themeParams = new URLSearchParams(window.location.search);
+        const requestedTheme = themeParams.get("shopTheme");
+        const requestedSource = themeParams.get("shopThemeSource");
+        const contextualTheme = window.self !== window.top
+          && ["day", "night"].includes(requestedTheme)
+          && ["direct", "music-room"].includes(requestedSource)
+          ? requestedTheme
+          : "";
         const savedTheme = window.localStorage.getItem("iamShopThemeV1");
-        document.documentElement.dataset.shopTheme = savedTheme || "night";
+        document.documentElement.dataset.shopTheme = window.self === window.top
+          ? "night"
+          : contextualTheme || savedTheme || "night";
+        document.documentElement.dataset.shopThemeSource = window.self === window.top
+          ? "direct"
+          : contextualTheme
+            ? requestedSource
+            : savedTheme
+              ? "saved"
+              : "default";
       } catch {
         document.documentElement.dataset.shopTheme = "night";
+        document.documentElement.dataset.shopThemeSource = "default";
       }
 
       const shopBrandParams = new URLSearchParams(window.location.search);

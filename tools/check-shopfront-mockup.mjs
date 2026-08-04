@@ -87,8 +87,8 @@ assert.doesNotMatch(index, /data-shop-entry-language|initShopEntryMastheadCycle|
 assert.match(index, /html\[data-shop-entry\] \.shop-entry h1 \{[\s\S]*white-space: nowrap;/, "The static Russian splash title must remain on one line without moving the controls");
 assert.match(
   television,
-  /const SHOP_SHELL_VERSION = "2383cc6091c5";[\s\S]*function frameHref\(link\)[\s\S]*url\.searchParams\.set\("v", SHOP_SHELL_VERSION\)/,
-  "The real Shop entry must cache-bust its embedded Shop shell to the current radio-edit version",
+  /const SHOP_SHELL_VERSION = "396e412d1a8a";[\s\S]*function frameHref\(link, options = \{\}\)[\s\S]*url\.searchParams\.set\("v", SHOP_SHELL_VERSION\)/,
+  "The real Shop entry must cache-bust its embedded Shop shell to the current contextual-theme version",
 );
 assert.ok(index.includes(`adaptive-environment-television.js?v=${expectedTelevisionToken}`), "The homepage must load the combined phase-aligned Shop, Privacy First, and programme catalogue controller");
 
@@ -482,15 +482,21 @@ assert.match(
   /async function startFlowerSpin\(options = \{\}\)[\s\S]*restart = options\.restart === true[\s\S]*cancelAnimationFrame\(flowerCanvasFrame\)[\s\S]*brand\.querySelector\("canvas\.television-flower-canvas"\)/,
   "The outer navigation flower must restart its existing canvas after Safari suspends a navigation frame",
 );
-assert.match(television, /function openInVideoPageLayer\(link\)[\s\S]*startFlowerSpin\(\{ restart: true \}\);\s*closeVideoNavigation\(\);/, "Cross-page navigation must resynchronise and restart the canonical flower");
+assert.match(television, /function openInVideoPageLayer\(link, options = \{\}\)[\s\S]*startFlowerSpin\(\{ restart: true \}\);\s*closeVideoNavigation\(\);/, "Cross-page navigation must resynchronise and restart the canonical flower");
 assert.match(shopScript, /function refreshOuterNavigationFlower\(\)[\s\S]*refreshNavigationFlower[\s\S]*iam:shop-navigation/, "Shop hash navigation must ask the persistent shell to restart its flower");
 assert.match(shopScript, /function renderRoute\(\)[\s\S]*document\.body\.dataset\.shopView = route \? "catalogue" : "editorial";\s*refreshOuterNavigationFlower\(\);/, "Every Shop view change must retain the canonical navigation flower");
 assert.match(television, /event\.data\?\.type === "iam:shop-navigation"[\s\S]*startFlowerSpin\(\{ restart: true \}\);/, "The television shell must accept the Shop navigation refresh fallback");
 assert.match(shop, /data-shop-theme-toggle/, "Shop must expose the day/night control");
-assert.match(shop, /savedTheme \|\| "night"/, "A first Shop visit must default to the night presentation");
+assert.match(shop, /window\.self === window\.top\s*\? "night"\s*:\s*contextualTheme \|\| savedTheme \|\| "night"/, "Direct Shop visits must open at night while framed music-room context overrides a saved theme");
+assert.match(shop, /\["day", "night"\]\.includes\(requestedTheme\)[\s\S]*\["direct", "music-room"\]\.includes\(requestedSource\)/, "Shop must accept only a validated contextual theme and source inside the Music Television frame");
 assert.doesNotMatch(shop, /prefersNight/, "System colour preference must not replace the night-first Shop default");
 assert.match(shopScript, /iamShopThemeV1/, "Shop must remember the viewer's day/night choice");
 assert.match(shopScript, /dataset\.shopTheme \|\| "night"/, "Shop script fallback must remain night-first");
+assert.match(television, /const SHOP_DAY_MODE_ROOMS = new Set\(\[\s*"inner-planes",\s*"champagne-bohemia",\s*"modul8-infinity",\s*"safety-cushion",\s*\]\)/, "The four lighter music rooms must map to Shop Day Mode");
+assert.match(television, /function activeShopMusicRoom\(\)[\s\S]*broadcastState\?\.editorialId \|\| track\?\.musicRoom/, "Shop theme selection must prefer the active broadcast room and fall back to the current track room");
+assert.match(television, /function contextualShopTheme\(\)[\s\S]*SHOP_DAY_MODE_ROOMS\.has\(musicRoom\) \? "day" : "night"/, "James Bondage and unclassified contexts must remain Night Mode");
+assert.match(television, /url\.searchParams\.set\("shopTheme", requestedTheme\)[\s\S]*url\.searchParams\.set\("shopThemeSource", options\.shopThemeSource === "direct" \? "direct" : "music-room"\)/, "Shop arrival context must be present before the embedded page paints");
+assert.match(television, /openInVideoPageLayer\(shopLink, \{ shopTheme: "night", shopThemeSource: "direct" \}\)/, "Direct Shop bootstrap must always open in Night Mode");
 assert.equal((shop.match(/data-filter-category=/g) || []).length, 6, "James Bondage edit must expose the six restrained form filters");
 assert.match(shop, /href="#shop-about">about<\/a>[\s\S]*data-shop-menu[\s\S]*href="#giving-back">giving back<\/a>[\s\S]*href="#sex-ed">sex ed<\/a>/i, "Shop masthead must use the approved About / Shop / Giving Back / Sex Ed hierarchy");
 assert.equal((shop.match(/data-shop-catalogue-type=/g) || []).length, 6, "Shop menu must expose the six functional type routes");

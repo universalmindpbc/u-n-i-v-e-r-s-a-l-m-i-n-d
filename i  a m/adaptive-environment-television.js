@@ -114,7 +114,13 @@
   const SHOP_ARRIVAL_TRACK_ID = "zip-perlon-air-festival-2007";
   const SHOP_ARRIVAL_START_SECONDS = 88 * 60;
   const SHOP_ARRIVAL_FADE_IN_MS = 2400;
-  const SHOP_SHELL_VERSION = "2383cc6091c5";
+  const SHOP_SHELL_VERSION = "396e412d1a8a";
+  const SHOP_DAY_MODE_ROOMS = new Set([
+    "inner-planes",
+    "champagne-bohemia",
+    "modul8-infinity",
+    "safety-cushion",
+  ]);
   const IOH_LOGO_SRC = "a s s e t s/Universal Mind [ I o H ] Logo.PNG";
   const DEFAULT_EDGE_SCALE = 1.12;
   const MAX_DETECTED_EDGE_SCALE = 1.85;
@@ -7090,10 +7096,13 @@
     }
   }
 
-  function frameHref(link) {
+  function frameHref(link, options = {}) {
     const url = new URL(link.getAttribute("href"), window.location.href);
     if (/\/shop\.html$/i.test(url.pathname)) {
       url.searchParams.set("v", SHOP_SHELL_VERSION);
+      const requestedTheme = options.shopTheme === "day" ? "day" : "night";
+      url.searchParams.set("shopTheme", requestedTheme);
+      url.searchParams.set("shopThemeSource", options.shopThemeSource === "direct" ? "direct" : "music-room");
     }
     if (/\/privacy-first\.html$/i.test(url.pathname)) {
       url.searchParams.set("privacyFrame", "single-nav-2");
@@ -7102,6 +7111,21 @@
     url.searchParams.set("musicTelevisionFrame", "1");
     url.searchParams.set("navigationShell", "1");
     return url.href;
+  }
+
+  function activeShopMusicRoom() {
+    const broadcastState = broadcastChannelId
+      ? window.IAMBroadcastClock?.stateAt(broadcastChannelId)
+      : null;
+    return String(broadcastState?.editorialId || track?.musicRoom || "").toLowerCase();
+  }
+
+  function contextualShopTheme() {
+    const musicRoom = activeShopMusicRoom();
+    return {
+      musicRoom,
+      theme: SHOP_DAY_MODE_ROOMS.has(musicRoom) ? "day" : "night",
+    };
   }
 
   function refreshOuterFavicon() {
@@ -7226,11 +7250,20 @@
     return true;
   }
 
-  function openInVideoPageLayer(link) {
+  function openInVideoPageLayer(link, options = {}) {
     if (!pageView || !pageFrame) return;
 
     const destination = new URL(link.href, window.location.href);
     const isHappinessWallet = /\/wallet\.html$/i.test(destination.pathname);
+    const isShop = /\/shop\.html$/i.test(destination.pathname);
+    const shopContext = isShop
+      ? (options.shopTheme
+        ? {
+          musicRoom: options.shopThemeSource === "direct" ? "direct" : activeShopMusicRoom(),
+          theme: options.shopTheme === "day" ? "day" : "night",
+        }
+        : contextualShopTheme())
+      : null;
 
     closeSexEdShelf(false);
     stopSexEdEpisode();
@@ -7238,7 +7271,14 @@
       pageViewPreviousBlend = Number(videoCrossfader?.value || 100);
     }
     setVideoBlend(0);
-    pageFrame.src = frameHref(link);
+    if (shopContext) {
+      document.body.dataset.shopArrivalTheme = shopContext.theme;
+      document.body.dataset.shopArrivalRoom = shopContext.musicRoom || "unclassified";
+    }
+    pageFrame.src = frameHref(link, {
+      shopTheme: shopContext?.theme,
+      shopThemeSource: options.shopThemeSource,
+    });
     pageView.setAttribute("aria-hidden", "false");
     document.body.classList.add("television-page-view-open");
     document.body.classList.toggle("television-wallet-page-open", isHappinessWallet);
@@ -7261,7 +7301,7 @@
     video.muted = true;
     document.body.classList.add("television-room-open");
     startFlowerSpin();
-    openInVideoPageLayer(shopLink);
+    openInVideoPageLayer(shopLink, { shopTheme: "night", shopThemeSource: "direct" });
   }
 
   function completeShopEntry() {
