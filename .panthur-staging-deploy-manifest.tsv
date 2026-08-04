@@ -7,7 +7,7 @@ c6ed3bc518a2267a85e1f1dc384a5dd3c1d40e981f860a6d5030fe02eb113253	technology-citi
 de9286750196a4afc7a62cd2a4f270e5f74137d09d6458a33ca054a43c9b40e6	adaptive-music-dcn-reranker.md
 bf9d5b34c0a44f22d671a072f841df801bac95f2ff7c163656e82e5ffc2e6697	mobile-editorial-surface.css
 1b0f89b2e05b7e28e469d37900e71a7ed709b9b3090f43a3643f1da23c32599f	adaptive-music-video-selector-subprompt-v1.11.md
-97118135244fcc54d8678192edd71d35136a53fcc211d9527166d1397bf2f639	science.html
+565bd2c7e53973afc853f5e277484014531a1d83ce065ffc67bea5aa54f66ca6	science.html
 3bac68ce279512e1d0dc690d1294b7ddadeedb773af4b8fd128d1dac4a83dd3f	vogue-self-report.css
 a28d9d6c8acf03374eb6432a69cd53fbdc203ae651832d5135ebd05f5d6f4d51	broadcast-clock-v1.js
 3dbe2f94acaafdad192b50067532b9cb420512bc6381c2fbcb9d838afbdb3972	realtime-voice-assistant.css
@@ -20,22 +20,22 @@ a28d9d6c8acf03374eb6432a69cd53fbdc203ae651832d5135ebd05f5d6f4d51	broadcast-clock
 9dfbf159540dd8c4acff22fbec993c940c9aecd6fcca9cdb81bbabd08333dd10	apple-wallet/HAPPINESS-DEMO-25.pkpass
 4346298ed8bb5e39c9e9a96fb7044e0872e545cccba221717a7e0704eed25671	apple-wallet/pass.php
 d7780363fba376ba141596e91cec1d84137249c8e74ab2a0087103a28389a7be	apple-wallet/.htaccess
-686565bf2d332f3ffbe626673d9f8d3a2a943649beb576e7c89a3ba8ff453587	cafe-del-mar-home.html
+e17d0c08faf400c556d90ed045efa842fd627ac5be351bb65a6e06b154ab4742	cafe-del-mar-home.html
 0f0304457056d1f394cab6c95b131220bb1018cd98ece985f9345016574e51c6	shop-champagne-bohemia-products-v1.json
 62f23ca2948ff7a8812f84eff9984acf30c2379682fe37d3e5f5bcdc54c7d88f	a d a p t i v e  m u s i c  v i d e o  i n t e l l i g e n c e   -  c o d e x   b r i e f  v 0 . 1.md
 f5523d0d103367606e5c786fdefe6a1a560975a214ebe5188405469ec5619e09	tools/analyze-video-beats.py
 f1670bb15260c563cfe508ea2be7ddfe2f1b9260e0f3ab2f1015343345b5d177	i  a m.md
 23c87d0f49a6eec949df4190d80d663b384cca76f2dca4bdd1207a6cf34b2fe0	community-globe.html
 95811f319fe8fd80719921ccffdb063f417f77fcec50b3eac90c319d9cc84dce	mantra-samples-v1.json
-0ae38f76362865ea644e52976fc8382847c30f6a9edb69dad2425cab9927706c	index.html
-063614dd145167e7a280004730ce68ebec45d88ef94c1d6cff8ac3128a08e06e	shop.css
+a649b291db5674709b5c7f657444f72ef3f9e7786ddaaa206fbcce430f8b40f5	index.html
+5c0ce741389df50e305a2894f90f92971057cffaa76ca3a71c992247c754178f	shop.css
 6402cc9d89a20b6e4b48802930edbbe616be2186f1a2e3688736d2e05e5b6231	mantra-sampler.js
 1aaa3cfaf7b894f033bf45848bc6b103b7ef2b4b0870d211f8f4b7ca77158b23	mobile-editorial-surface.js
 6733d57632028171b99f89270ff8237c250411f62166ebe1a2f36a80fe88833f	vogue-self-report.js
 8db79c73cc87c67ec83416ea86f2c9ceb53a9ac706eed513bbf7ac1c01f15a59	about.js
 90f3492e36d53a1c252af9546d4d8c0ea98179aa0be21414ef577ebce2c4208c	problem.html
 86ff0ffddf3e31fdfc630f82f0ac9d694f197259637f2d5cdecc47b2b61c9518	selector_benchmark.py
-3071a1eac9557f612deccf5fcd39a8c9905d7a7bc56ec8351db8b1bb500f9b3d	technology-citizen-needs.html
+924a8bfbcd61be889e8a73a90b6df3a406289f879ba912a87aa99e2f1638ece2	technology-citizen-needs.html
 032a0ff017539c7afcfd020a5bdb9aa47c708c1b5bf4831a310203a573e4d771	privacy-first.js
 85b77315c20dfe7222b9789b6c1a8337f7b320f684b46da216d3e5817ce92e74	adaptive-inference-engine-system-prompt-v4.44-content.js
 a9df7a90503204ef5a32c8362de562456a8799ed5d3084feba307dfd3dfdefb3	mantra-studio.js
@@ -45,7 +45,7 @@ d2ebef23890dc87cd52bd3904022d2959a990ec0483d917a78b107b3d86183f0	mantra-voice-ds
 5dd404dac78c800ddc877bfc570633ee6afb577efe5ff106008c7d9b7164187b	shop-catalogue-v1.json
 58844e527aa70a8b68b1cd92a6690f3098fc44cc7b4780c86900cae69f5cc324	styles.css
 0f2562e9d94029f185d95d0e1babeab028a25b246f97273b552ba587510f3b1d	b u i l d _ n o t e s.md
-7222ed8202b22c61cab645be4448f5f8ee64e5e6c860249d2f10ad0d6ef9390a	about.html
+c7232f56551cba0bd283f0cbe714b24348b5600a7205c333019a310efb663add	about.html
 d8a6827cab5542a787e77f1f50524845cd45d153d87888a61ab2c08a4a752e55	globe.js
 ad39c95190c8ae84d0175f4fdab163043a68e3ad3177ecbc9daf81c48a0eff38	adaptive-music-room-selection-guide-v1.0.json
 38bcb07f1531a6ad879513e491428f285470cd63daf8c9851c9c510cb80f9602	programme-tensor-approved-notion-export-v1.0.json
@@ -62,7 +62,7 @@ be6afd2616de54c103a21cdfc2f6b9c2cd3f1d1232cb86ce239fce5c803bba00	broadcast-sched
 5300b03dadcf37108e67e03e6cc4edd1e8d4a6c1386400c8496a2ba170df43aa	adaptive-music-video-catalogue-notion-export-v1.11.json
 f6b0bb8d02242808ab02d64d5625cf196572eb07b5e7d080028ff2fb4f213633	music-channel-selector-v1.js
 3112f6656eb2fad46e0d228af30abe4eef66f3707e67379159ca3dbcece803b8	semantic_compiler.py
-c1eaf51a919306cfce12dc262b815136f6b72d8d40534a7a8e0cd503ad92fa67	adaptive-music-video.html
+cd897a9c29df4d3a3c0e2f48d3c83ebc3b2712e1d95a7f8fb94f557766f78286	adaptive-music-video.html
 b7a2e613c395b1c88f6b9124dbf48169326d32b29b2d9312215019c400feb8ee	handover 1.12.md
 c1139bb6a79f25149c52f91cadfe266010ecdaf9d3b30437a219d1e29cbceca5	science.css
 9cb7b0860284400b04fa3d490ca624ea700abbfb3e38b2aa49b1b3ef48b8f200	circle-audio-rooms.css
@@ -80,7 +80,7 @@ b922c0ed559272b40cd18d8a3aaea60a4b7ffd04e036e9817f5ba3bfdc8145b5	adaptive-soundt
 148c030b341e5fbddf9729d20817d72343d73991456357b6871c828fac3f862e	programme-guide-mockup.html
 9ae5176893ea899472b3a73e71de8f743b6bf59967e840a930bfadea8659ebdc	t e c h n o l o g y - c i t i z e n  n e e d s  —  i n t e r a c t i v e  d e m o - c o d e x  b r i e f.md
 14ebf4459d034e1c47ce14b478c54bf6f0f6ba52ddcdd53e1fb9c1b4ada987c4	music-television-frame-context.js
-c315b29c4e3d371c785f135012fef48ed3867d4e35a12d3a06ab000dca787fb3	privacy-first.html
+41114181d2197c6d3889eceb8e9ab405bafd7eb0084bcc9740f5774b3fc10973	privacy-first.html
 e60698d25b1e76d441b0fada19cdda4e6da3760398760c87ea2530ccdbc519d5	homepage-checkin.js
 1a1390e4c4918e9522a6fed34b4d4dcd2f716c478b67590297685cc19efbb5d9	emdr-shader.js
 35f9a5fee68b6d8f323424f20bd345b75616186fcd79dd6c0cf276a681d9d094	programme-guide.css
@@ -88,21 +88,21 @@ e60698d25b1e76d441b0fada19cdda4e6da3760398760c87ea2530ccdbc519d5	homepage-checki
 c1c822706963fd43a4320f7212c399503fb2a4f64206a3bf75e13b34f83e784a	adaptive-inference-engine-system-prompt-v2.22-content.js
 2d617f2ef088b89c73c02cfc5f4fa7f418ce6a79a270d2d4c1950323c8246d08	emdr-vector-worlds.js
 beb34584876306e5825ba720c8cfb01b871065791c48be5add2ce5cc6d75f59f	adaptive-inference-engine-system-prompt-v1.11.html
-396e412d1a8a9207ef0bd5a906bf134c449c61ce3fd2b0758a127c7a56a01122	shop.html
+72d95c2f39a843dbbbced3c12e13278f1ff25241e17bdf4f6fcefe2a40684c53	shop.html
 ca0e4fed9b9bfebe0f43129f9f5005af1d89006ddde7a0acc4d0f5ebcddd4226	realtime-voice-assistant.js
 3862c4481721b08403d25024626930de4c0a2b265ccc336e99b830bb3133825e	c h a n g e l o g.md
 5e1fdfbadb0466e1997b206c6197cba92f566d211a16f31bd627da4cfb976b4b	mantra-audio-fx.js
 1c5d23b954a58cd67f51a7c32adddbb22dfb58fa34fae89c593a5bae97fd8d54	happiness-control.html
 e12eb24c367d2ac6f67963f434a729027e75b914e450b6260f47c01b9bd1ef58	i  a m  c h e c k i n  -  f o r m  -  b r i e f.md
 b89467d63bab7000ddda479156834f13fc30e5840f2dedc55a91e18f47fda51e	citizen-data-client.js
-5fc46d236e5ec76a27deea91535aced1dfe1609f5e8e92d2c8d340f9303035f6	shop-product-kernel-v1.json
+2d6637e8e9c3354eba6348f83a9a59abeeabb9c21b84e8bab73b257b9a54424e	shop-product-kernel-v1.json
 2ce0d0a5afb4d9961eec772a296e17f9c703d89182648b6d35ee6007c776d59f	science-research-data-v1.js
 f89cebb043a21aa77133c9cd40875d6703eefcb3b8fab637931e1da119eb01f7	shop-approved-products-v1.json
 fa5e34089bf9beb5efdf29d28d82e758d766a3e078ab1f271fb7e4fb698c0367	mantra-sampler.css
 6956af5338cba17886d8c47a0a9c4fa3839445dd16e828d40b36adca697477f7	adaptive-music-video-catalogue-v1.11.json
 2ed04f740b1641570e573aef04098af612f7499bb84d5c50ed81ada2b45b3ac0	adaptive-environment-television.js
 21018b071ae34b685b6ee42f98207b3b1af59b53977f6ce26345fcf1b1224c35	technology.html
-56df2a03ce31b32828e55a174b2d4d559e9e6f87739c03227d50d290b3ccfcbb	adaptive-environment-television.html
+c5215f5b40b1bfad52368404a721581459337184d4d45627d0eb1436624c1a4f	adaptive-environment-television.html
 5bf63ce97aa74d00efced7ea2364ff9fc986facec291660322ed49a7c638d554	script.js
 8ea0432ffcd62efe867482b520f0f7d2f005cc43117cb5424ca7097d7f5ad936	stakeholders/budget/index.html
 0f32e3f59c3045259d45f6db8dd9ebb9fcac04da5b8a2982912baae86d7e14f2	stakeholders/budget/iamvogue-stakeholder-budget-v1.xlsx
@@ -121,7 +121,7 @@ c0f1682ea406ad5fd3d2560bc23392b1914d54b6110f7a672f3595c3c391d1c5	happiness-walle
 a7238920f740f1a921237bb8466901c56a8628406fa29a185bcbbd6ecdb3aab4	mantra-studio.css
 809696402633707d2f5e4028f5fcfe92a6aa18c1ce9e0f16864e8797023938e7	about.css
 f18052424e8cb94b0a947ac5395df0daf781acc327edc5a26b8f4b023058d18b	wallet.js
-1647a7b800541943c8e01b83557f0f86920d3cc043be9e1575ae3b65eba7dfaa	wallet.html
+44ea2e0ffe5716db5e5765c2f1602db28a72134caaf858e22dd99a8004391bfc	wallet.html
 e24bbfeccbdd314199a321c9c6155e50388f996804af5d98b4e51929c1d2750c	technology-citizen-needs.js
 a30b10f90c54f9585f2fd57e4dd7894b1786e5dff57a67191dac55b6de55ac5f	induction.html
 5ca09fe837cb4c942d2c6c09101b2e5680fdf18df97ced30c6e42782b105c189	global-navigation.css
@@ -130,7 +130,7 @@ e3f9d0c235cfc80b7a4c5b3e639a5ca8d00c02cef20a781ce2bea02593736366	i n f e r e n c
 c1e2b349d398d0069f02a37864fd0392f31d1df24b2138d239f32c5efdf6e319	care-worlds.js
 e52bc25fc7087c32f75dd2752e7ad490f1bc1f3fe3eaf2021ffbf7d4f85a674c	globe.html
 81432208c25b1d80c87c272d6c93cca675be6ba06f6069f15a5b96af3cfcde17	adaptive-environment.js
-d6a2ba1d6f7c7743f95b0f2fe5ab7d0f7b17bbd0b9fb185285a5b4dcbc3d5c4e	our-team.html
+23e674046aa1650304ca22dc768848a8b8923121b1b49906ec9d11a5d34fe475	our-team.html
 695fed6b80a6ebd71875d2add70b584aadad5ff18449082fac5ed9329de8a7e7	adaptive-music-trajectory-policy-v2.json
 5bcbf61ff69c8db3466ce6d94c329e6bfa090d7a465814b9c9422942931da4d0	handover 1.11.md
 a08aea883abe8dc9aeb7dcb3d00d01f2383690c4589d1f1ad7b94e64df732317	api/adaptive-music-video-selection.php
@@ -148,9 +148,9 @@ e4f89461e10f3e317b5d97873023c7607bb356e673a89a175612c9df4ddb8b85	api/owner-state
 35461a8ea56b4c2564920f290a5d02fb2f5e709dcabe7a6763cbf9a5851e8e28	api/.htaccess
 20ad6337934cb96def4542700c5fe2a950a20f1ec42292dc1f54dee9b61e15c0	cloudflare-stream-catalogue.js
 34a1b1de69324c0ca7a5f9ed61fab6deedaec63132c74f5785752f922ccb99ec	shop-catalogue-filter-v1.js
-53d3f73f4f19955e5aaa083be426c12145cc415ff18f1daab6102b1e86fa01d7	shop.js
+021106c2aa869f1b9747c5705d735c93e449b7cc9e4ab0350d12d46f2b677b51	shop.js
 db213ad178d17d3b7092436c17048a426e2ac2cc8cedaa1a4a1740b1c0184bec	video-beat-grid-v1.json
-376acc0a6658ff260ee8c7ccf564d2160183dab71edc3a86c8ae1b6623263505	our-team-concept.html
+8692efdd812fb70da2e034e137f6cd55f19ddd357a8131b218e8ca88b0a21b5e	our-team-concept.html
 785c1fb0b7095ba4b05d31cb7c5f6adab72172b7ece152645e42b6e997014df2	technology-citizen-needs.css
 3fcb52d42e9eb585454095f2679d1c816cc6334caf1f479783b403aa5d9ceb9b	selector_core.py
 563c1eb40ae92ba459c53f3ae20ad427928c0075fb612fda91420788a9c966d1	sexed-wallet-mockup.html
@@ -552,6 +552,42 @@ ab2f512131da32af5597f958c49be6182664f866a661fe77c9e07d71c6aa929f	a s s e t s/sho
 da6f7733a0816e914476a049eab0800346aeb624c7d5388eec0320dc0348db25	a s s e t s/shop-mockup/product-catalogue/lisa-marie-fernandez/jb-0341-2025core563-rn.webp
 ce7270e3e265a547aac845f8964b354df8d29008b6fc4c4fb54a755fd05d653c	a s s e t s/shop-mockup/product-catalogue/lisa-marie-fernandez/jb-0332-2025core558-nn.webp
 4c53d163c57b5704544cd42500c026d7d608321d424e4d57063f69c6827778fa	a s s e t s/shop-mockup/product-catalogue/lisa-marie-fernandez/jb-0342-2025core564-bn.webp
+a1215336d1e270631510ffec7f9e69da5c04ed7146af021e1c11b3a425297048	a s s e t s/shop-mockup/product-catalogue/accessories-health/jb-0455-arkenstone-tanzanite.jpg
+32e82c645f5d629ebee5aa8b94aaf3a09370e38d9e4e80a71e96055b35da044d	a s s e t s/shop-mockup/product-catalogue/accessories-health/jb-0448-soltys-botanical-silk-wrap.jpg
+9e970fce1b2378af825bab96acf84929388c2c292acfe921f00f70121dd9ee66	a s s e t s/shop-mockup/product-catalogue/accessories-health/jb-0444-orchard-st-tealight-holder.jpg
+04602860db090c69e62ef187a3884adc2a81013adc1f6243d526742711c874f2	a s s e t s/shop-mockup/product-catalogue/accessories-health/jb-0456-arkenstone-elbaite-tourmaline-stilbite.jpg
+a97e596305bf6e36d073f438d8d3ef302e50502caea9453cf8ef5ec62b5d251a	a s s e t s/shop-mockup/product-catalogue/accessories-health/jb-0462-arkenstone-aquamarine-shigar.jpg
+659ecab1a8d404227898a41625941830846a6a2d89cc927d8fcfd9a3fb0a082a	a s s e t s/shop-mockup/product-catalogue/accessories-health/jb-0449-arkenstone-bournonite-fluorite.jpg
+c4fc6f6b1b19f16a8b314301cee7341a424dbaf372a0f72e9fd4ac89162726bf	a s s e t s/shop-mockup/product-catalogue/accessories-health/jb-0454-arkenstone-azurite.jpg
+ed4bac2ef8dc41420c3c041219db2ee42c1a84d226bc3da6bdacc9f9b4085a30	a s s e t s/shop-mockup/product-catalogue/accessories-health/jb-0442-orchard-st-silk-eye-pillow.jpg
+34a9b7edb0cd86acba21e2d36b92508665ef3bfb2bd06832c8ac97821a38992d	a s s e t s/shop-mockup/product-catalogue/accessories-health/jb-0458-arkenstone-aquamarine-albite.jpg
+f9c39cd02d09ce9ecd2c8294039b197794bce6b600476fd2611ec518e1dbd6a6	a s s e t s/shop-mockup/product-catalogue/accessories-health/jb-0461-arkenstone-scorodite.jpg
+ee3f61e13be36a7f64df50f7aeae843f5c569c0e44653f9a8f80e24baf1584e5	a s s e t s/shop-mockup/product-catalogue/accessories-health/jb-0464-song-of-india-patchouli.jpg
+8ce0a31265f7ad1e01914b15b8c2bf5a92697695878101dcdfbfb140d2aa9937	a s s e t s/shop-mockup/product-catalogue/accessories-health/jb-0440-song-of-india-sandalwood.jpg
+92020267ecc5166e88c77a6e7ce0fef35482197d70d8bde020d9b0f5dd972e89	a s s e t s/shop-mockup/product-catalogue/accessories-health/jb-0430-clair-continuous-hormone-monitor-pre-order.jpg
+a69c1baf00e3e34dfd82393f4598569ece5deb1085ce510bb988904b8fab6abe	a s s e t s/shop-mockup/product-catalogue/accessories-health/jb-0446-soltys-sita-silk-kimono.jpg
+7d911ca2f32b0001a1fbc8cbfe102547c4781813b99b2090883ed97f89b2868c	a s s e t s/shop-mockup/product-catalogue/accessories-health/jb-0436-pukka-lemon-ginger-manuka.jpg
+22e9f99be1d9676753df585cc8814b6bcee26eefebfb56c16ae2fe91ad3249ba	a s s e t s/shop-mockup/product-catalogue/accessories-health/jb-0431-blue-lotus-extract-200-1.png
+ec4f896046a291adb2ad33116acd824c2909b81ed79f3c2474e45df5f6a48a8b	a s s e t s/shop-mockup/product-catalogue/accessories-health/jb-0452-arkenstone-rhodonite.jpg
+090ef52fd63821c53b2d9bdc85a2c3b8ab843db03467369bf580426477c298e1	a s s e t s/shop-mockup/product-catalogue/accessories-health/jb-0450-arkenstone-clintonite.jpg
+e7f656c44c247219a2cd98b3a17586257ef8640eaaae5a9d7ac9f04827a20803	a s s e t s/shop-mockup/product-catalogue/accessories-health/jb-0438-pukka-three-ginger.webp
+d0ac03d46dea7cf71f3f38ab27595b83e9092aca7100406e8a3ede13266b98ee	a s s e t s/shop-mockup/product-catalogue/accessories-health/jb-0433-superfeast-masons-mushrooms.png
+25c7acba7203eff5261caeca9d9bfeabc0ff4474b1f38c21a0266dbcb8a07e5c	a s s e t s/shop-mockup/product-catalogue/accessories-health/jb-0441-orchard-st-silk-eye-mask.jpg
+8f5f7943c16afa00e8cad2dfbb1fe904c99c2e79a20eb0d3abddcdbc371a6946	a s s e t s/shop-mockup/product-catalogue/accessories-health/jb-0463-song-of-india-white-sage.jpg
+469d5e6d8f1e326df7b2b47c26fdecdb1dae25e181dfe32c2683269e9a239202	a s s e t s/shop-mockup/product-catalogue/accessories-health/jb-0435-superfeast-reishi.jpg
+66be536362154bbf748a6948cce6e311acdc39ede2a581a4e0dba5a0ae181b53	a s s e t s/shop-mockup/product-catalogue/accessories-health/jb-0451-arkenstone-fluorite-quartz.jpg
+dec6500c9af267dc1a5201dfb11a6da32bd18a7d70e92ea9cba9a95e2a8c75bf	a s s e t s/shop-mockup/product-catalogue/accessories-health/jb-0460-arkenstone-sperrylite.jpg
+ef1b30b5aef90a17d4bf31b48c7d6f967b7d226bf7ce819d3b9b07ce6485354c	a s s e t s/shop-mockup/product-catalogue/accessories-health/jb-0457-arkenstone-fluorite-calcite-video-poster.jpg
+49a650d2b472c74269f1cbfb7469132dd26b9f0704653f1e430bae8b8205a3d5	a s s e t s/shop-mockup/product-catalogue/accessories-health/jb-0465-song-of-india-arabian-oudh.jpg
+3ae0746a718cdcf56cbcad2fd624d9f84f86c689a248957f8ef1d20d38e04812	a s s e t s/shop-mockup/product-catalogue/accessories-health/jb-0437-pukka-chamomile-vanilla-manuka.jpg
+3882405e63d120bad5ad845af4f5362c5f6d6e7ff03a783d2a0a0631d38d1d55	a s s e t s/shop-mockup/product-catalogue/accessories-health/jb-0439-pukka-turmeric-active.png
+999c18766acda734ae64d69324880c876f89c48b84839bbb0019bea8536377bf	a s s e t s/shop-mockup/product-catalogue/accessories-health/jb-0445-leif-buddha-wood-hand-wash.jpg
+fe5048f41fb0bea910491e0276a8d8feca99c22e686c2d16f3d3d6429cdfada7	a s s e t s/shop-mockup/product-catalogue/accessories-health/jb-0443-orchard-st-ceremonial-cacao-cup.jpg
+6209933eb1575eafdec8c26a336b6df4506d5145590fdfe8d96e17b43728fca1	a s s e t s/shop-mockup/product-catalogue/accessories-health/jb-0453-arkenstone-adamite.jpg
+ab277a5426437e082073facc65bd899d5610dd60b2a1c901b60f62e09e79e1dc	a s s e t s/shop-mockup/product-catalogue/accessories-health/jb-0434-superfeast-lions-mane.png
+66394d44102c246038f0d35ee4cb1e0a689785d7a564b32ab245e9a33782c5c4	a s s e t s/shop-mockup/product-catalogue/accessories-health/jb-0432-superfeast-jing-blend.png
+7b3e77108a63bd49da94eb10c06d1720dfef72746d554eae5e06f71708dde2be	a s s e t s/shop-mockup/product-catalogue/accessories-health/jb-0429-ritual-oils-moringa-blue-lotus.jpg
+1070f54bbf04aefe71d191bce6d68427c181ae3f58107589f7ec688f4a9bc478	a s s e t s/shop-mockup/product-catalogue/accessories-health/jb-0447-soltys-hrasita-silk-kimono.jpg
 63bca622ac92fdc749903e24c749fb16d9d8b017587e3f2827dac8b74f846440	a s s e t s/shop-mockup/product-catalogue/lucas-hugh/jb-0132-odyssey-leggings-black-multi.webp
 a78eba32377d07fe5268e60937f630637e9c63c9a7fe9bde54951b17ff8e47ba	a s s e t s/shop-mockup/product-catalogue/lucas-hugh/jb-0131-kubrick-one-piece-multi.webp
 69d130a9638b592a9faf53ca208bb80889d51060fcf6ab0e5964e6055144c168	a s s e t s/shop-mockup/product-catalogue/lucas-hugh/jb-0130-technical-knit-leggings-black.webp
@@ -739,11 +775,11 @@ fced9b0b1646855e6805c8045fd36efb83b47f13a3863663d8b79144676715de	happiness-contr
 1fd1d080543650c2ed3089ce9291666b8f3deb2bb23d8dcc246a970024731771	demo.html
 679377272b40ed6baf4d3baefc4fc769c709fa13ece2835156491623ae971105	i n f e r e n c e  e n g i n e  -  s y s t e m  p r o m p t  v  1 . 0.md
 eb150dea9248bed6d9ab5b7c376fbd3766ce1aea1b1d3ea233cce0ecd903fb8e	cloudflare-stream-controller.js
-5b2e60f9eb26c9eff98e011df0e87a7396ee84767ba0732c359d9f641e6e197b	shop-radio-edits-v1.json
+98229089823ea2041f5c46b552148678a12d55f0622f086bc2d64cdc89c82fb3	shop-radio-edits-v1.json
 acf56762e5df2265d00df0e4e3cbdd9fd76c48fcc94a83b2749f0abde95bdf33	happiness-control.js
 48827949511057e78be51bd6400e3d59b822dfa3a7f7a03bdf4172c719af6e7a	adaptive-music-api-setup.md
 29f4ce3ee8177ddf7e1a70c4fd18efb018c7d018e6547add174ba01d21eecf09	programme-guide-mockup.js
-98c11f219ce12509eda3c306d3d56e18e01f7143689228624a398632ac3416d0	global-navigation.js
+a29dc157c3fe90e7258123d9faf0719af357c9ad62a806746604a40a899c61ba	global-navigation.js
 5b54f818f1bcd24520f933fa79ef2a29fc3137818e3f2a8e525cd0f6e02438b3	vogue-self-report.html
 09e8aad6f5d94c6c1189379f9f5fdb6ab443b19d6bc7591f9ec4b863b44b8d49	quantum-tree-control.css
 1f0a5e0d8e9cfba8c2cca2cd766dd9e7c7fbeea47667347abe7e341f0f7d2417	globe.css
