@@ -107,8 +107,9 @@ html[data-adaptive-frame="embedded"] .global-nav {
   align-items: flex-start;
   gap: var(--global-nav-row-gap);
   margin: 0;
-  padding: 0 34px 0 0;
+  padding: 0 34px 32px 0;
   overflow-y: auto;
+  scroll-padding-bottom: 32px;
   pointer-events: auto;
   scrollbar-width: thin;
 }
