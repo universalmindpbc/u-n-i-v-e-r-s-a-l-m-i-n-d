@@ -411,6 +411,7 @@ requireCondition(controller.includes('requestedVideoBlend < 99.5'), 'the Now Pla
 requireCondition(controller.includes('function setNowPlayingTickerView(nextView)'), 'the music and Fashion labels no longer share a rotating ticker slot');
 requireCondition(controller.includes('}, 7000);'), 'the quiet Now Playing ticker cadence has changed');
 requireCondition(controller.includes('nowPlayingTickerViews[(currentIndex + 1) % nowPlayingTickerViews.length]'), 'the Now Playing ticker cannot rotate through content, Fashion and channel states');
+requireCondition(controller.includes('const preserveCadence = nextContentKey === nowPlayingTickerContentKey') && controller.includes('if (preserveCadence) return;'), 'unchanged Radio metadata can reset the ticker before its channel state');
 requireCondition(controller.includes('nowPlayingViewport.style.width = stableWidth > 0'), 'the clock and rotating ticker no longer retain a stable centred width');
 requireCondition(controller.includes('tickerStatuses.channel = "CHANNEL";'), 'the ticker no longer teaches the active editorial channel');
 requireCondition(controller.includes('tickerStatuses.visual = secondaryLabel;') && controller.includes('const secondaryLabel = sexEdProgramme ? "MUSIC" : "FASHION";'), 'the Radio ticker no longer identifies its visible Fashion programme');
@@ -420,6 +421,7 @@ requireCondition(controller.includes('announceNowPlaying(') && controller.includ
 requireCondition(televisionCss.includes('.adaptive-television-now-playing.is-overflowing .adaptive-television-now-playing__item.is-active .adaptive-television-now-playing__content'), 'long Now Playing titles no longer receive overflow-only movement');
 requireCondition(televisionCss.includes('@media (prefers-reduced-motion: reduce)'), 'the Now Playing movement no longer respects reduced-motion preferences');
 requireCondition(nowPlayingCss.includes('.adaptive-television-now-playing__announcement {') && nowPlayingCss.includes('clip-path: inset(50%);'), 'genuine programme changes have no screen-reader-only announcement');
+requireCondition(nowPlayingCss.includes('.adaptive-television-now-playing__channel {') && nowPlayingCss.includes('justify-content: flex-start;'), 'channel identity no longer shares the artist and song left edge');
 requireCondition(nowPlayingCss.includes('min-width: 72px;') && nowPlayingCss.includes('justify-content: center;'), 'the rotating context label and shorter channel names can make the ticker jump');
 requireCondition(nowPlayingCss.includes('width: min(590px, calc(100vw - 48px));'), 'the primary wallet no longer holds the slightly wider Program and Now Playing line');
 requireCondition(nowPlayingCss.includes('.adaptive-television-home-program-button {') && nowPlayingCss.includes('width: 56px;') && nowPlayingCss.includes('width: 52px;'), 'the primary-wallet program pill no longer preserves its sex-ed-matched desktop and mobile casing');

@@ -592,6 +592,7 @@
   let nowPlayingTickerView = "audio";
   let nowPlayingTickerViews = ["audio"];
   let nowPlayingTickerStatuses = { audio: "NOW PLAYING" };
+  let nowPlayingTickerContentKey = "";
   let nowPlayingAnnouncementText = "";
   const REACTION_WALLET_POINTER_LOCK_MS = 10000;
   const REACTION_WALLET_POINTER_MOVE_PX = 2;
@@ -2295,12 +2296,23 @@
     updateNowPlayingOverflow();
   }
 
-  function restartNowPlayingTicker(views = ["audio"], statuses = { audio: "NOW PLAYING" }) {
+  function restartNowPlayingTicker(views = ["audio"], statuses = { audio: "NOW PLAYING" }, contentKey = "") {
+    const nextViews = Array.from(new Set(views)).filter((view) => ["audio", "visual", "channel"].includes(view));
+    if (!nextViews.length) nextViews.push("audio");
+    const nextStatuses = { audio: "NOW PLAYING", ...statuses };
+    const nextContentKey = String(contentKey || "");
+    const preserveCadence = nextContentKey === nowPlayingTickerContentKey
+      && nextViews.length === nowPlayingTickerViews.length
+      && nextViews.every((view, index) => view === nowPlayingTickerViews[index])
+      && nextViews.every((view) => nextStatuses[view] === nowPlayingTickerStatuses[view])
+      && nextViews.includes(nowPlayingTickerView);
+    if (preserveCadence) return;
+
     window.clearInterval(nowPlayingTickerTimer);
     nowPlayingTickerTimer = 0;
-    nowPlayingTickerViews = Array.from(new Set(views)).filter((view) => ["audio", "visual", "channel"].includes(view));
-    if (!nowPlayingTickerViews.length) nowPlayingTickerViews = ["audio"];
-    nowPlayingTickerStatuses = { audio: "NOW PLAYING", ...statuses };
+    nowPlayingTickerViews = nextViews;
+    nowPlayingTickerStatuses = nextStatuses;
+    nowPlayingTickerContentKey = nextContentKey;
     setNowPlayingTickerView(nowPlayingTickerViews.includes("audio") ? "audio" : nowPlayingTickerViews[0]);
     if (nowPlayingTickerViews.length < 2) return;
     nowPlayingTickerTimer = window.setInterval(() => {
@@ -2389,7 +2401,11 @@
         : `${media.mode === "radio" ? "Radio" : "Now playing"} ${media.label}.${visibleRunway ? ` Fashion ${visibleRunway.title}.` : ""}${channelAvailable ? ` Channel ${channel.name}.` : ""}`
     );
     updateNowPlayingClock();
-    restartNowPlayingTicker(tickerViews, tickerStatuses);
+    restartNowPlayingTicker(
+      tickerViews,
+      tickerStatuses,
+      [media.mode, primaryLabel, secondaryLabel, secondaryTitle, channel.editorialId, channel.name].join("\u241f")
+    );
   }
 
   function openNowPlayingRecommendations(event) {
