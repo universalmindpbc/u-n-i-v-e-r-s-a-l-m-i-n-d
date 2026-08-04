@@ -1849,10 +1849,6 @@
         liveNationsActiveValue = clamp(liveNationsActiveValue + Math.floor(Math.random() * 3) - 1, 24, 31);
       }
 
-      if (liveSimulationUpdates % 6 === 0 && liveSharedUnlockValue < 94) {
-        liveSharedUnlockValue += 1;
-      }
-
       renderLiveViewerCount();
       updateLiveCommunitySummary(liveViewerCountValue);
     }, 2400);

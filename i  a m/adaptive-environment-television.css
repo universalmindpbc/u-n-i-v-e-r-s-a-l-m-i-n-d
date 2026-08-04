@@ -1201,9 +1201,6 @@ body.television-sex-ed-active .adaptive-television-timecode {
   background-size: 220% 100%;
   box-shadow: 0 0 12px rgba(239, 187, 108, 0.5);
   transition: width 1600ms cubic-bezier(0.22, 1, 0.36, 1);
-  animation:
-    community-unlock-flow 3200ms linear infinite,
-    community-unlock-fill-pulse 2600ms ease-in-out infinite;
 }
 
 .adaptive-television-community__unlock-track i::after {
@@ -1217,8 +1214,19 @@ body.television-sex-ed-active .adaptive-television-timecode {
   box-shadow:
     -3px 0 8px rgba(255, 232, 188, 0.84),
     0 0 10px rgba(255, 245, 219, 0.92);
+  opacity: 0.5;
   transform: translateY(-50%);
-  animation: community-unlock-breathe 2600ms ease-in-out infinite;
+}
+
+body.community-globe-open .adaptive-television-community__unlock-track i {
+  animation:
+    community-unlock-arrive 1800ms cubic-bezier(0.22, 1, 0.36, 1) both,
+    community-unlock-flow 1800ms ease-out 1,
+    community-unlock-fill-pulse 3400ms ease-in-out 1800ms infinite;
+}
+
+body.community-globe-open .adaptive-television-community__unlock-track i::after {
+  animation: community-unlock-breathe 3400ms ease-in-out 1800ms infinite;
 }
 
 .adaptive-television-community__unlock > em {
@@ -1248,6 +1256,16 @@ body.television-sex-ed-active .adaptive-television-timecode {
   line-height: 1.35;
 }
 
+@keyframes community-unlock-arrive {
+  from {
+    width: 0;
+  }
+
+  to {
+    width: var(--community-unlock-progress);
+  }
+}
+
 @keyframes community-unlock-flow {
   from {
     background-position: 200% 50%;
@@ -1261,23 +1279,23 @@ body.television-sex-ed-active .adaptive-television-timecode {
 @keyframes community-unlock-fill-pulse {
   0%,
   100% {
-    filter: brightness(0.9) saturate(0.94);
+    filter: brightness(0.97) saturate(0.98);
   }
 
   50% {
-    filter: brightness(1.14) saturate(1.08);
+    filter: brightness(1.05) saturate(1.03);
   }
 }
 
 @keyframes community-unlock-breathe {
   0%,
   100% {
-    opacity: 0.5;
-    transform: translateY(-50%) scaleY(0.68);
+    opacity: 0.55;
+    transform: translateY(-50%) scaleY(0.84);
   }
 
   50% {
-    opacity: 1;
+    opacity: 0.9;
     transform: translateY(-50%) scaleY(1);
   }
 }
