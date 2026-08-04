@@ -24,14 +24,18 @@
 
   function normalizedChannel(channel, scheduleEpochMs) {
     const entries = Array.isArray(channel?.schedule) ? channel.schedule : [];
-    const mediaType = ["audio", "radio", "fashion"].includes(channel?.media_type) ? channel.media_type : "video";
+    const channelMediaType = ["audio", "radio", "fashion"].includes(channel?.media_type) ? channel.media_type : "video";
     const available = channel?.available !== false;
     const normalizedEntries = entries.map((entry) => {
+      const mediaType = ["audio", "radio", "fashion", "video"].includes(entry?.media_type)
+        ? entry.media_type
+        : channelMediaType;
       const trackId = String(entry.track_id || "");
       const stationId = String(entry.station_id || "");
       const runwayId = String(entry.runway_id || "");
       return {
         mediaId: mediaType === "radio" ? stationId : mediaType === "fashion" ? runwayId : trackId,
+        mediaType,
         trackId,
         stationId,
         runwayId,
@@ -56,7 +60,7 @@
     return {
       id: channel.id,
       format: channel.format,
-      mediaType,
+      mediaType: channelMediaType,
       available,
       energyId: channel.energy_id,
       editorialId: channel.editorial_id || channel.id,
@@ -198,7 +202,7 @@
     return {
       channelId: channel.id,
       format: channel.format,
-      mediaType: channel.mediaType,
+      mediaType: entry.mediaType,
       available: channel.available,
       energyId: channel.energyId,
       editorialId: channel.editorialId,

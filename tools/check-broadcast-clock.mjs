@@ -1,6 +1,7 @@
 import assert from "node:assert/strict";
 import fs from "node:fs/promises";
 import path from "node:path";
+import vm from "node:vm";
 import { fileURLToPath } from "node:url";
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
@@ -249,6 +250,62 @@ assert.ok(!scheduledStations.has("sanctuary-retro"), "Sanctuary Retro must not b
 assert.deepEqual(new Set(scheduledRunways), fashionRunwayIds, "All six Fashion films must belong to exactly one shared channel.");
 assert.equal(scheduledRunways.length, fashionRunwayIds.size, "A Fashion film cannot belong to more than one shared channel.");
 assert.ok(!scheduledRunways.some((runwayId) => privateRadioVisualIds.has(runwayId)), "Pearl must never enter the public Fashion shelf.");
+
+let performanceNow = 0;
+const clockWindow = {
+  location: { search: "", hostname: "staging.universalmind.tv" },
+  performance: { now: () => performanceNow += 1 },
+  setInterval: () => 1,
+  clearInterval: () => {},
+  addEventListener: () => {},
+  dispatchEvent: () => {},
+};
+const clockSandbox = {
+  window: clockWindow,
+  document: { body: { dataset: {} } },
+  URLSearchParams,
+  CustomEvent: class CustomEvent {
+    constructor(type, options = {}) {
+      this.type = type;
+      this.detail = options.detail;
+    }
+  },
+  fetch: async (url) => ({
+    ok: true,
+    status: 200,
+    json: async () => String(url).startsWith("api/broadcast-clock.php")
+      ? { server_now_ms: Date.now() }
+      : schedule,
+  }),
+};
+vm.runInNewContext(clockController, clockSandbox);
+await clockWindow.IAMBroadcastClock.ready;
+const jamesBondageChannel = schedule.channels.find((channel) => channel.id === "party-james-bondage");
+const jamesBondageEpochMs = Date.parse(jamesBondageChannel.epoch_utc || schedule.epoch_utc);
+let jamesBondageCursorSeconds = 0;
+const jamesBondageStates = jamesBondageChannel.schedule.map((entry) => {
+  const state = clockWindow.IAMBroadcastClock.stateAt(
+    jamesBondageChannel.id,
+    jamesBondageEpochMs + ((jamesBondageCursorSeconds + 1) * 1000)
+  );
+  jamesBondageCursorSeconds += Number(entry.duration_seconds);
+  return state;
+});
+assert.deepEqual(
+  jamesBondageStates.map((state) => state.mediaType),
+  ["audio", "audio", "video"],
+  "The clock runtime must preserve each James Bondage programme's audio or video player route."
+);
+assert.deepEqual(
+  jamesBondageStates.slice(0, 2).map((state) => state.visualChannelId),
+  ["fashion-underground-intensity", "fashion-underground-intensity"],
+  "Both Zip programmes must retain the synchronized underground-intensity moving visual."
+);
+assert.equal(
+  jamesBondageStates[2].trackId,
+  "nine-inch-noize-coachella-2026-live-set",
+  "Nine Inch Noize must retain its own video programme."
+);
 
 assert.match(clockController, /serverNowMs - \(\(startedAt \+ endedAt\) \/ 2\)/, "Clock sync must compensate for request round-trip latency.");
 assert.match(clockController, /clockAnchorServerMs \+ \(performanceNow - clockAnchorPerformanceMs\)/, "The shared clock must advance from a monotonic performance anchor.");
