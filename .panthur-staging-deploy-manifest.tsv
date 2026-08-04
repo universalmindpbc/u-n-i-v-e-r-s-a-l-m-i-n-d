@@ -27,7 +27,7 @@ f5523d0d103367606e5c786fdefe6a1a560975a214ebe5188405469ec5619e09	tools/analyze-v
 f1670bb15260c563cfe508ea2be7ddfe2f1b9260e0f3ab2f1015343345b5d177	i  a m.md
 23c87d0f49a6eec949df4190d80d663b384cca76f2dca4bdd1207a6cf34b2fe0	community-globe.html
 95811f319fe8fd80719921ccffdb063f417f77fcec50b3eac90c319d9cc84dce	mantra-samples-v1.json
-b819429d2e569ebe44ff51a41225b0bc3d05bf4e5784ef3e77d3a9345e275ea5	index.html
+639b9bc02725c8ec102cad0985455a51954e5a04dc4ba825935c7ea55c7fc668	index.html
 063614dd145167e7a280004730ce68ebec45d88ef94c1d6cff8ac3128a08e06e	shop.css
 6402cc9d89a20b6e4b48802930edbbe616be2186f1a2e3688736d2e05e5b6231	mantra-sampler.js
 1aaa3cfaf7b894f033bf45848bc6b103b7ef2b4b0870d211f8f4b7ca77158b23	mobile-editorial-surface.js
@@ -70,6 +70,7 @@ e98001a1504264b56ff7a895704818c451940b48b7c9aac15d011e2253fc3427	i n f e r e n c
 cd82f086dfc6cead3897233504559d9de7f298ee2d8f7218e4ae943d916c0e7e	wallet.css
 72108e0785cba2e253da994bac6fadf514343a7b092a78c50b3bbb5e642e1fe5	dj-set-tensor-approved-notion-export-v1.0.json
 61340da7b8fa1b223e87b55c88134f33f832a6d660db9e570b747f21f09a2d40	adaptive-music-video-strategy.md
+df3771c408787dcf2d8f4e5c198cb3c981d89939cefdfeba226fd4a95b00cfc9	care-worlds.css
 8bd8e802be77b1a3e84b7d05fc143f266e90abcd951fed48c81bf0134c8ab7e2	universal-one-portal-guide-v1.txt
 6c83291433e1b52af874b5e4ec2241c585794118c48873c8004fa404e99de838	quantum-tree-control.html
 b922c0ed559272b40cd18d8a3aaea60a4b7ffd04e036e9817f5ba3bfdc8145b5	adaptive-soundtrack-selection-guide-v2.22.json
@@ -126,6 +127,7 @@ a30b10f90c54f9585f2fd57e4dd7894b1786e5dff57a67191dac55b6de55ac5f	induction.html
 5ca09fe837cb4c942d2c6c09101b2e5680fdf18df97ced30c6e42782b105c189	global-navigation.css
 e3f9d0c235cfc80b7a4c5b3e639a5ca8d00c02cef20a781ce2bea02593736366	i n f e r e n c e  e n g i n e  -  s y s t e m  p r o m p t  v  4 . 4 4.md
 20ea963338ad8da7a04f985327168731b6b0f8d0251cd28fb69f61044aa98cf0	broadcast-interactions-v1.js
+6ef28f1c2158b9e07d26c89733038ac6ac01ddbe6bee5d03ffdfcf127960695c	care-worlds.js
 e52bc25fc7087c32f75dd2752e7ad490f1bc1f3fe3eaf2021ffbf7d4f85a674c	globe.html
 81432208c25b1d80c87c272d6c93cca675be6ba06f6069f15a5b96af3cfcde17	adaptive-environment.js
 d6a2ba1d6f7c7743f95b0f2fe5ab7d0f7b17bbd0b9fb185285a5b4dcbc3d5c4e	our-team.html
@@ -173,6 +175,10 @@ c5867686dabc6dbc1de98f6ef00d8c2ffc468a02b0445de86de141e8dc3f67e0	a s s e t s/hap
 0303bda1fca3cdbd2058fb401e46263f10613da58cd8c2c168ae440aa277a4cb	a s s e t s/un logo white.png
 30380f9ec0ba4064128e4c073e6b48325b2d709015c0a53cd4e00f238d711736	a s s e t s/Netflix logo.png
 d227d5fcc9dc77139732cb2266944b89112d2820dfeb2071477e7083b7acb1d0	a s s e t s/q u a n t u m [ t r e e ].wav
+5a30ce93aaac8c8c82418f0650c7900040f512938ec709e8d3c5d083ce7a19e5	a s s e t s/care/ugg-boots.jpg
+e7f656c44c247219a2cd98b3a17586257ef8640eaaae5a9d7ac9f04827a20803	a s s e t s/care/pukka-three-ginger-tea.webp
+15330056d352cf621bd3d366f3177133ca2d7b177562e99df13cea2670692f52	a s s e t s/care/acne-studios-pink-hoodie.webp
+410e03d2ca8be937de2e2b4f903508c1fc8d6ac853ddc763f3ed1156f59eea63	a s s e t s/care/organic-goodness-white-sage-incense.jpg
 711c8f56b9ca231c752e204f7c9d1b60ab910e7892bc2321ac3aa55fa7e51beb	a s s e t s/Vogue logo.png
 da8f7622a6eaeefb6c6d3c0c95e7ded2e0e854cda46a3e0faa4ae410d07e2927	a s s e t s/Citizen Needs | Adaptive Inference Engine - System Prompt Infographic.PNG
 4d6029031bfb437f61792c845d39c80659e44747cff742107ea56b31b52375a0	a s s e t s/r e f e r e n c e s/Screen 1.png
