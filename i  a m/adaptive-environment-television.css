@@ -510,15 +510,6 @@ body.television-page-view-open.television-wallet-page-open .adaptive-television-
   line-height: 1.2;
 }
 
-.adaptive-television-channel-loading__label {
-  max-width: min(620px, 82vw);
-  font-size: clamp(0.7rem, 0.76vw, 0.8rem);
-  font-weight: 400;
-  letter-spacing: 0.08em;
-  line-height: 1.45;
-  opacity: 0.72;
-}
-
 .adaptive-television-channel-loading.is-error .adaptive-television-channel-loading__ring {
   border-color: rgba(255, 255, 255, 0.48);
   animation: none;

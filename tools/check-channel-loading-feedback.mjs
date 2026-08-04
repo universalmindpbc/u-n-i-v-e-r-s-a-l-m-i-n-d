@@ -19,13 +19,16 @@ function shortHash(content) {
 }
 
 requireCondition(controller.includes('role", "status"') && controller.includes('aria-live", "polite"'), "channel loading feedback is not exposed as an accessible live status");
-requireCondition(controller.includes('"TUNING CHANNEL"') && controller.includes('"LOADING NEXT SHOW"'), "manual and automatic channel-loading copy is incomplete");
-requireCondition(controller.includes('"STILL TUNING"') && controller.includes("}, 18000);"), "the truthful long-wait state is missing");
+requireCondition(controller.includes('const heading = "LOADING"'), "the neutral channel-loading copy is missing");
+requireCondition(!controller.includes('TUNING CHANNEL') && !controller.includes('LOADING NEXT SHOW'), "the loading overlay still changes copy for manual and automatic starts");
+requireCondition(!controller.includes('data-channel-loading-label') && !controller.includes('channelLoadingDestination'), "the loading overlay still exposes redundant destination details");
+requireCondition(controller.includes('"STILL LOADING"') && controller.includes("}, 18000);"), "the truthful long-wait state is missing");
+requireCondition(controller.includes("identity === channelLoadingIdentity") && controller.includes("return channelLoadingGeneration;"), "same-programme loading starts are not deduplicated");
 requireCondition(controller.includes('document.body.dataset.channelLoadingState = "loading"') && controller.includes('document.body.dataset.channelLoadingState = "ready"') && controller.includes('document.body.dataset.channelLoadingState = "error"') && controller.includes('document.body.dataset.channelLoadingState = "idle"'), "the loading state machine is incomplete");
 requireCondition(controller.includes("Math.max(0, 480 - elapsed)") && controller.includes("}, 260);") && controller.includes("}, 3600);"), "minimum visibility, fade, or error timing has changed");
 requireCondition(controller.includes('video.addEventListener("playing"') && controller.includes("finishChannelLoading(loadingGeneration);"), "Videos no longer settle loading feedback from actual playback readiness");
 requireCondition(controller.includes("deferChannelLoadingFinish: true") && controller.includes("const visualJoined = await joinFashionBroadcastChannel"), "Parties no longer wait for both programme audio and the paired visual");
-requireCondition(controller.includes("continuationAudio.play()") && controller.includes("failChannelLoading(loadingGeneration, channelLoadingDestination(station));"), "Radio loading feedback is no longer bound to playback success and failure");
+requireCondition(controller.includes("continuationAudio.play()") && controller.includes("failChannelLoading(loadingGeneration);"), "Radio loading feedback is no longer bound to playback success and failure");
 requireCondition(controller.includes("let broadcastJoinSequence = 0;") && controller.includes("const joinSequence = ++broadcastJoinSequence;"), "rapid channel joins no longer invalidate stale asynchronous work");
 requireCondition(controller.includes("if (broadcastSyncTimer) {") && controller.includes("joinSequence !== broadcastJoinSequence || broadcastChannelId !== channelId"), "an older sync or join can overtake current channel loading feedback");
 requireCondition(controller.includes('normalizedSource !== "shop_independent"') && controller.includes('!normalizedSource.startsWith("sex_ed")'), "non-channel Shop or sex-ed playback is no longer excluded");
