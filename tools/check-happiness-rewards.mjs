@@ -384,7 +384,7 @@ assert.doesNotMatch(walletHeader, /brand-lockup|universalmind|internet of happin
 assert.match(wallet, /class="global-nav-trigger"[^>]*data-nav-open/);
 assert.match(wallet, /<strong>explore<\/strong>[\s\S]*learn about Universal Mind/);
 assert.match(wallet, /data-global-nav-host/);
-assert.match(wallet, /global-navigation\.js\?v=global-navigation-canonical-6/);
+assert.match(wallet, /global-navigation\.js\?v=global-navigation-canonical-7/);
 assert.match(globalNavigation, /data-global-nav[^>]*aria-hidden="true"/);
 assert.match(wallet, /music-television-frame-context\.js\?v=music-tv-frame-14ebf4459d03/);
 assert.match(style, /\.happiness-brand \.brand-mark\s*\{[^}]*width:\s*clamp\(64px, 4\.35vw, 90px\)[^}]*animation:\s*mark-spin 3s linear infinite/s);

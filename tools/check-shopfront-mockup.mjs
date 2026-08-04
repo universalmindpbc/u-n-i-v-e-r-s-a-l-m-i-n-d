@@ -494,9 +494,10 @@ assert.ok(fs.existsSync(path.join(iam, "a s s e t s/shop-mockup/james-bondage-ha
 assert.ok(fs.existsSync(path.join(iam, "a s s e t s/shop-mockup/james-bondage-handdrawn-faces-b.png")), "Missing isolated B-version face mark");
 assert.match(shop, /class="shop-universal-nav global-nav-trigger"[\s\S]*Universal Mind \[ I o H \] Logo 512\.png/, "Standalone Shop proof must reserve the Universal Mind flower position");
 assert.match(shopScript, /iam:return-to-television/, "The Shop flower must return framed visitors to their continuing Music Television room");
-assert.match(shop, /data-global-nav-host[\s\S]*global-navigation\.js\?v=global-navigation-canonical-6/, "Shop must load the canonical global navigation");
+assert.match(shop, /data-global-nav-host[\s\S]*global-navigation\.js\?v=global-navigation-canonical-7/, "Shop must load the canonical global navigation");
 assert.match(globalNavigation, /class="global-nav"[\s\S]*data-nav-item="contact"[^>]*>contact<\/a>\s*<a[^>]*data-nav-item="shop"/, "Shop must use the full shared global navigation with Shop last after Contact");
 assert.match(globalNavigation, /data-nav-item="shop"[^>]*aria-expanded="false"[^>]*>shop<\/a>\s*<div class="global-nav-submenu" data-nav-submenu="shop">\s*<a href="shop\.html" data-nav-subitem="shop-james-bondage-health">james bondage health - now open<\/a>/, "Shop must expand to the James Bondage Health now-open destination");
+assert.equal((globalNavigation.match(/data-nav-subitem="shop-/g) || []).length, 1, "The global Shop submenu must contain only James Bondage Health now open");
 assert.match(globalNavigation, /function keepExpandedSubmenuVisible\(navItem\)[\s\S]*menu\.scrollTop \+= bottomOverflow/, "Expanded Shop context must remain fully visible inside short navigation viewports");
 assert.match(globalNavigationStyle, /\.global-nav-menu\s*\{[^}]*padding:\s*0 34px 32px 0;[^}]*scroll-padding-bottom:\s*32px;/s, "Expanded Shop context must have enough bottom scroll clearance to become readable");
 assert.match(globalNavigationStyle, /\.global-nav \.global-nav-item,\s*\.global-nav-submenu\s*\{[^}]*flex-shrink:\s*0;/s, "Expanded Shop context must retain its rendered height inside the scrollable navigation");
@@ -560,7 +561,7 @@ assert.match(shopScript, /shop-champagne-bohemia-products-v1\.json/, "Shop catal
 assert.match(shopScript, /shop-radio-edits-v1\.json/, "Shop catalogue must load the exact Champagne Bohemia, Inner Planes and Accessories | Health memberships");
 assert.match(shop, /href="#catalogue\/inner-planes">Inner Planes<\/a>/, "Shop navigation and brand ledger must use the corrected Inner Planes route and label");
 assert.match(shop, /href="#catalogue\/accessories">Accessories \| Health<\/a>/, "Shop navigation and brand ledger must expose Accessories | Health after Inner Planes");
-assert.match(globalNavigation, /shop\.html#catalogue\/accessories[^>]*>accessories \| health<\/a>/, "The global Shop navigation must link directly to Accessories | Health");
+assert.doesNotMatch(globalNavigation, /shop\.html#catalogue\/accessories|shop-accessories-health/, "Accessories | Health must remain an internal Shop subsection, not a global-navigation destination");
 const misspeltInnerPlanesLabel = "Inner" + " Plains";
 assert.equal(shop.includes(misspeltInnerPlanesLabel), false, "Shop HTML must not expose the misspelt edit label");
 assert.equal(JSON.stringify(productKernel).includes(misspeltInnerPlanesLabel), false, "The canonical tensor must not expose the misspelt edit label");
