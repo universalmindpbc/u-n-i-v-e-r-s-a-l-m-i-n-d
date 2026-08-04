@@ -36,10 +36,10 @@ assert.equal(programmeBatchSource?.duration_verified_count, 25);
 assert.equal(programmeBatchSource?.routing_verified, true);
 
 const expectedEditorial = new Map([
-  ["inner-planes", ["ambient / sleep / sunrise", "Ambient · sleep · sunrise"]],
-  ["champagne-bohemia", ["Balearic / sunset / chillout", "Balearic · sunset · chillout"]],
-  ["modul8-infinity", ["rave / electronic / experimental", "Rave · house · techno · future bass · future psychedelic beats · hiphop"]],
-  ["james-bondage", ["minimal / electro / EBM", "Minimal · electro · EBM"]],
+  ["inner-planes", ["ambient | sleep | sunrise", "Ambient · sleep · sunrise"]],
+  ["champagne-bohemia", ["sunset | chill | eternity", "Balearic · sunset · chillout"]],
+  ["modul8-infinity", ["enlightenment thru rave", "Rave · house · techno · future bass · future psychedelic beats · hiphop"]],
+  ["james-bondage", ["sex x mindfulness", "Minimal · electro · EBM"]],
 ]);
 
 for (const [editorialId, [descriptor, description]] of expectedEditorial) {

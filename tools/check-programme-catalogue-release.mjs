@@ -113,7 +113,7 @@ assert.equal(modul8GlobalWeek.global_week_programming?.strategy, "four_reordered
 assert.equal(modul8GlobalWeek.global_week_programming?.priority_market, "Australia/Sydney");
 assert.equal(modul8GlobalWeek.global_week_programming?.cycle_seconds, 601325.8);
 assert.ok(Math.abs(modul8GlobalWeek.schedule.reduce((sum, entry) => sum + entry.duration_seconds, 0) - 601325.8) < .001);
-assert.equal(modul8GlobalWeek.descriptor, "rave / electronic / experimental");
+assert.equal(modul8GlobalWeek.descriptor, "enlightenment thru rave");
 assert.equal(channel("video-modul8-infinity").schedule.at(-1).track_id, raveId);
 assert.equal(channel("video-james-bondage").schedule.at(-1).track_id, closerId);
 const grimesGenesis = catalogue.tracks.find((track) => track.id === "grimes-genesis");
