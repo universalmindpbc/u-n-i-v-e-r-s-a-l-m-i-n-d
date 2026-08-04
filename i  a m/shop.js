@@ -1152,7 +1152,7 @@
   async function loadCatalogue() {
     try {
       const [kernelResponse, legacyChampagneResponse, radioEditsResponse] = await Promise.all([
-        fetch("shop-product-kernel-v1.json?v=08af8d3c6c5d", { credentials: "same-origin" }),
+        fetch("shop-product-kernel-v1.json?v=18ea30c4c8a9", { credentials: "same-origin" }),
         fetch("shop-champagne-bohemia-products-v1.json?v=0f0304457056", { credentials: "same-origin" }),
         fetch("shop-radio-edits-v1.json?v=98229089823e", { credentials: "same-origin" }),
       ]);
