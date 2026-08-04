@@ -564,14 +564,12 @@
   let reactionWalletPointerLockTimer = 0;
   let reactionWalletCollapseTimer = 0;
   let bloomWalletCloseGuard = false;
-  let bloomWalletCloseTimer = 0;
   let nowPlayingInteractiveAt = 0;
   let nowPlayingResizeObserver = null;
   let nowPlayingTickerTimer = 0;
   let nowPlayingTickerView = "audio";
   const REACTION_WALLET_POINTER_LOCK_MS = 10000;
   const REACTION_WALLET_POINTER_MOVE_PX = 2;
-  const BLOOM_WALLET_PANEL_CLOSE_MS = 720;
   let audioWalletMode = false;
   let audioWalletJoined = false;
   let audioWalletMuted = false;
@@ -5463,14 +5461,11 @@
   function releaseBloomWalletCloseGuard() {
     if (!bloomWalletCloseGuard) return;
     bloomWalletCloseGuard = false;
-    window.clearTimeout(bloomWalletCloseTimer);
-    bloomWalletCloseTimer = 0;
     window.clearTimeout(reactionWalletPointerLockTimer);
     reactionWalletPointerLockTimer = 0;
     reactionWalletPointerReadyAt = Date.now();
     reactionWalletPointerAnchorX = null;
     reactionWalletPointerAnchorY = null;
-    reactionWallet?.classList.remove("is-reaction-wallet-closing");
     document.body.classList.remove("television-wallet-pointer-locked");
   }
 
@@ -5498,26 +5493,9 @@
     window.clearTimeout(reactionWalletCollapseTimer);
     reactionWalletCollapseTimer = 0;
     bloomWalletCloseGuard = true;
-    const pointerX = Number(event?.clientX);
-    const pointerY = Number(event?.clientY);
-    const pointerSnapshot = {
-      clientX: Number.isFinite(pointerX) ? pointerX : null,
-      clientY: Number.isFinite(pointerY) ? pointerY : null,
-      pointerType: event?.pointerType || "",
-    };
-    reactionWalletPointerAnchorX = pointerSnapshot.clientX;
-    reactionWalletPointerAnchorY = pointerSnapshot.clientY;
+    armReactionWalletPointerLock(event);
     button?.blur?.();
-    window.clearTimeout(reactionWalletCollapseTimer);
-    reactionWalletCollapseTimer = 0;
-    setWalletView("closed", { remember: false });
-    reactionWallet.classList.add("is-reaction-wallet-closing");
-    window.clearTimeout(bloomWalletCloseTimer);
-    bloomWalletCloseTimer = window.setTimeout(() => {
-      bloomWalletCloseTimer = 0;
-      reactionWallet.classList.remove("is-reaction-wallet-closing");
-      if (bloomWalletCloseGuard) armReactionWalletPointerLock(pointerSnapshot);
-    }, BLOOM_WALLET_PANEL_CLOSE_MS);
+    closeReactionWalletSoftly();
   }
 
   function armReactionWalletPointerLock(event) {

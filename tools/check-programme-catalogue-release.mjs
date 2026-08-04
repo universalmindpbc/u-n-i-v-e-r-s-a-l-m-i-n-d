@@ -156,11 +156,11 @@ const bloomWalletCloseHandler = television.match(
 assert.ok(bloomWalletCloseHandler, "The cinematic Bloom wallet close must remain identifiable for regression coverage.");
 assert.match(
   bloomWalletCloseHandler,
-  /walletView !== "emoji"[\s\S]*?bloomWalletCloseGuard = true;[\s\S]*?button\?\.blur\?\.\(\);[\s\S]*?setWalletView\("closed", \{ remember: false \}\);[\s\S]*?is-reaction-wallet-closing[\s\S]*?window\.setTimeout[\s\S]*?armReactionWalletPointerLock\(pointerSnapshot\)[\s\S]*?BLOOM_WALLET_PANEL_CLOSE_MS/,
-  "A Bloom tap must fade its panel, close through the shared wallet shell rhythm, suppress accidental hover reopening, and preserve the saved Bloom panel.",
+  /walletView !== "emoji"[\s\S]*?bloomWalletCloseGuard = true;[\s\S]*?armReactionWalletPointerLock\(event\);[\s\S]*?button\?\.blur\?\.\(\);[\s\S]*?closeReactionWalletSoftly\(\);/,
+  "A Bloom tap must use the shared one-step wallet close, suppress accidental hover reopening, and preserve the saved Bloom panel.",
 );
 assert.match(television, /function releaseBloomWalletCloseGuard\(\) \{[\s\S]*?television-wallet-pointer-locked[\s\S]*?\n  \}/, "The Bloom close guard must release after the pointer leaves or the flower is deliberately reopened.");
-assert.match(television, /const BLOOM_WALLET_PANEL_CLOSE_MS = 720;/, "The Bloom panel must complete its approved transition before the wallet shell closes.");
+assert.doesNotMatch(bloomWalletCloseHandler, /is-reaction-wallet-closing|BLOOM_WALLET_PANEL_CLOSE_MS|bloomWalletCloseTimer/, "Bloom must not empty the wallet before closing its shell.");
 assert.doesNotMatch(television, /television-wallet-bloom-snapping|bloomWalletSnapTimer/, "Bloom must inherit the signed-off wallet close rhythm instead of using a separate fast-snap timer.");
 const walletHomeHandler = television.match(
   /function returnToWalletHome\(event\) \{[\s\S]*?\n  \}/,
