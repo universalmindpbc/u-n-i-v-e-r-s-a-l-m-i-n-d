@@ -87,7 +87,7 @@ assert.doesNotMatch(index, /data-shop-entry-language|initShopEntryMastheadCycle|
 assert.match(index, /html\[data-shop-entry\] \.shop-entry h1 \{[\s\S]*white-space: nowrap;/, "The static Russian splash title must remain on one line without moving the controls");
 assert.match(
   television,
-  /const SHOP_SHELL_VERSION = "ae98e612e354";[\s\S]*function frameHref\(link\)[\s\S]*url\.searchParams\.set\("v", SHOP_SHELL_VERSION\)/,
+  /const SHOP_SHELL_VERSION = "2383cc6091c5";[\s\S]*function frameHref\(link\)[\s\S]*url\.searchParams\.set\("v", SHOP_SHELL_VERSION\)/,
   "The real Shop entry must cache-bust its embedded Shop shell to the current radio-edit version",
 );
 assert.ok(index.includes(`adaptive-environment-television.js?v=${expectedTelevisionToken}`), "The homepage must load the combined phase-aligned Shop, Privacy First, and programme catalogue controller");
@@ -518,7 +518,7 @@ assert.match(shopScript, /catalogueProductHash\(slug\)/, "Expanded product state
 assert.match(shopScript, /shop-product-kernel-v1\.json/, "Shop catalogue must render from the Notion-backed product kernel");
 assert.match(shopScript, /shop-champagne-bohemia-products-v1\.json/, "Shop catalogue must preserve the earlier stocked Champagne product extension");
 assert.match(shopScript, /shop-radio-edits-v1\.json/, "Shop catalogue must load the exact Champagne Bohemia and Inner Plains memberships");
-assert.match(shopScript, /shop-product-kernel-v1\.json\?v=2dcca8815e4b/, "The canonical tensor fetch must use its content-derived cache token");
+assert.match(shopScript, /shop-product-kernel-v1\.json\?v=c4a5859e93d3/, "The canonical tensor fetch must use its content-derived cache token");
 assert.match(shopScript, /shop-champagne-bohemia-products-v1\.json\?v=0f0304457056/, "The stocked Champagne extension fetch must use its content-derived cache token");
 assert.match(shopScript, /shop-radio-edits-v1\.json\?v=1c02d8c4bf4a/, "The exact edit manifest fetch must use its content-derived cache token");
 assert.match(shopScript, /product\.retailer \|\| product\.brand/, "Product CTAs must prefer the destination retailer rather than the maker brand");
@@ -593,7 +593,7 @@ assert.match(shopStyle, /\.shop-footer__legal\s*\{[\s\S]*grid-template-columns:\
 assert.equal((shop.match(/data-shop-home/g) || []).length, 2, "Shop Home must appear exactly once in the sticky navigation and once in the footer");
 assert.match(shopStyle, /\.shop-product__copy--brand-only\s*\{\s*min-height:\s*76px;/, "Brand-only edit cards must fill the shared caption row without exposing a grey strip");
 assert.match(shop, /shop\.css\?v=063614dd1451/, "The Shop shell must load the content-derived grey-gap repair stylesheet revision");
-assert.match(shop, /shop\.js\?v=2ee05645e95b/, "The Shop shell must load the content-derived phase-aligned masthead runtime");
+assert.match(shop, /shop\.js\?v=0df0d4593c9d/, "The Shop shell must load the content-derived phase-aligned masthead runtime");
 assert.match(
   shopStyle,
   /@media \(max-width: 700px\)[\s\S]*?\.shop-masthead__nav \{ gap: 6px; \}[\s\S]*?\.shop-masthead__actions \{ gap: 0; \}[\s\S]*?\.shop-theme,[\s\S]*?\.shop-music \{[\s\S]*?width: 28px;[\s\S]*?height: 44px;[\s\S]*?\.shop-theme \[data-shop-theme-label\],[\s\S]*?\.shop-music \[data-shop-music-label\] \{ font-size: 0; \}/,
