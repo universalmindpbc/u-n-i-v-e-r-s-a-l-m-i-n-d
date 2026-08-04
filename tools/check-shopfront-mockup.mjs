@@ -530,7 +530,7 @@ assert.equal((shop.match(/data-shop-catalogue-type=/g) || []).length, 7, "Shop m
 for (const [value, label] of expectedShopTaxonomy.slice(0, 5).map(({ value, label }) => [value, label])) {
   assert.ok(shop.includes(`href="#catalogue/all/type/${value}" data-shop-catalogue-type="${value}">${label}</a>`), `Shop menu must expose the broad ${label} route`);
 }
-assert.ok(shop.includes('href="#catalogue/all/type/accessories" data-shop-catalogue-type="accessories">accessories | health (all)</a>'), "Shop by type must expose the exact Accessories | Health all-products route");
+assert.ok(shop.includes('href="#catalogue/accessories" data-shop-catalogue-type="accessories">accessories | health (all)</a>'), "Shop by type must expose the exact 36-product Accessories | Health route");
 for (const priorityBrand of ["eres", "bordelle", "wardrobenyc", "annies-ibiza", "iris-van-herpen", "champagne-bohemia"]) {
   assert.match(shop, new RegExp(`href="#catalogue/${priorityBrand}"`, "i"), `Shop menu must expose priority brand ${priorityBrand}`);
 }
