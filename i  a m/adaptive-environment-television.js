@@ -133,6 +133,8 @@
   const MUSIC_HANDOFF_BUFFER_SECONDS = 12;
   const MUSIC_HANDOFF_CROSSFADE_MS = 1100;
   const BROADCAST_SYNC_INTERVAL_MS = 3000;
+  const BROADCAST_ROLLOVER_WAIT_MS = 5000;
+  const BROADCAST_ROLLOVER_POLL_MS = 80;
   const BROADCAST_LOCK_TOLERANCE_SECONDS = 1;
   const BROADCAST_REJOIN_DRIFT_SECONDS = 1.5;
   const BROADCAST_REJOIN_BUFFER_SECONDS = 12;
@@ -381,6 +383,8 @@
   let preloadedMusicGeneration = 0;
   let musicHandoffTimer = 0;
   let musicHandoffProgrammeInstanceId = "";
+  let broadcastRolloverPromise = null;
+  let broadcastRolloverFromInstanceId = "";
   let fashionVideo = null;
   let fashionHeroFrame = null;
   let fashionHeroCanvas = null;
@@ -1485,6 +1489,49 @@
     musicHandoffProgrammeInstanceId = "";
   }
 
+  async function synchronizeBroadcastRollover(previousProgrammeInstanceId = "") {
+    if (!broadcastChannelId || !window.IAMBroadcastClock) return null;
+    const channelId = broadcastChannelId;
+    const previousInstanceId = String(previousProgrammeInstanceId || "");
+    if (broadcastRolloverPromise && broadcastRolloverFromInstanceId === previousInstanceId) {
+      return broadcastRolloverPromise;
+    }
+
+    const startedAt = window.performance?.now?.() || Date.now();
+    document.body.dataset.broadcastRolloverState = "waiting";
+    document.body.dataset.broadcastRolloverFromInstance = previousInstanceId;
+    const rolloverPromise = (async () => {
+      while (broadcastChannelId === channelId) {
+        const state = window.IAMBroadcastClock?.stateAt(channelId);
+        const elapsedMs = (window.performance?.now?.() || Date.now()) - startedAt;
+        if (state && (!previousInstanceId || state.programmeInstanceId !== previousInstanceId)) {
+          document.body.dataset.broadcastRolloverState = "ready";
+          document.body.dataset.broadcastRolloverWaitMs = String(Math.round(elapsedMs));
+          const synchronizedState = await synchronizeBroadcastPlayback(false);
+          document.body.dataset.broadcastRolloverState = "complete";
+          return synchronizedState;
+        }
+        if (elapsedMs >= BROADCAST_ROLLOVER_WAIT_MS) {
+          document.body.dataset.broadcastRolloverState = "timeout";
+          document.body.dataset.broadcastRolloverWaitMs = String(Math.round(elapsedMs));
+          return synchronizeBroadcastPlayback(false);
+        }
+        await wait(BROADCAST_ROLLOVER_POLL_MS);
+      }
+      return null;
+    })();
+    broadcastRolloverPromise = rolloverPromise;
+    broadcastRolloverFromInstanceId = previousInstanceId;
+    try {
+      return await rolloverPromise;
+    } finally {
+      if (broadcastRolloverPromise === rolloverPromise) {
+        broadcastRolloverPromise = null;
+        broadcastRolloverFromInstanceId = "";
+      }
+    }
+  }
+
   function discardPreloadedMusicVideo(reason = "cancelled") {
     const video = preloadedMusicVideo;
     preloadedMusicGeneration += 1;
@@ -1603,7 +1650,7 @@
       musicHandoffTimer = window.setTimeout(() => {
         musicHandoffTimer = 0;
         document.body.dataset.broadcastHandoffState = "rollover_due";
-        synchronizeBroadcastPlayback(false).catch((error) => {
+        synchronizeBroadcastRollover(state.programmeInstanceId).catch((error) => {
           document.body.dataset.broadcastSyncError = String(error?.message || error).slice(0, 140);
         });
       }, Math.max(80, Math.round((state.remainingSeconds + .04) * 1000)));
@@ -4594,6 +4641,10 @@
     if (!broadcastChannelId || !window.IAMBroadcastClock) return null;
     const state = window.IAMBroadcastClock.stateAt(broadcastChannelId);
     if (!state) return null;
+    const previousProgrammeInstanceId = document.body.dataset.broadcastProgrammeInstanceId || "";
+    const programmeChanged = Boolean(
+      previousProgrammeInstanceId && previousProgrammeInstanceId !== state.programmeInstanceId
+    );
     window.IAMBroadcastInteractions?.setBroadcast?.(state);
     document.body.dataset.broadcastChannelId = broadcastChannelId;
     document.body.dataset.broadcastRemainingSeconds = state.remainingSeconds.toFixed(3);
@@ -4662,8 +4713,10 @@
     document.body.dataset.broadcastTrackId = state.trackId;
     delete document.body.dataset.broadcastStationId;
     document.body.dataset.broadcastTargetSeconds = state.offsetSeconds.toFixed(3);
-    if (track.id !== scheduledTrack.id) {
-      document.body.dataset.broadcastCorrection = "programme_rollover";
+    if (track.id !== scheduledTrack.id || programmeChanged) {
+      document.body.dataset.broadcastCorrection = programmeChanged && track.id === scheduledTrack.id
+        ? "same_track_programme_rollover"
+        : "programme_rollover";
       if (!musicSwitching) {
         await switchMusicTrack(scheduledTrack, {
           source: "broadcast_rollover",
@@ -6596,7 +6649,12 @@
 
   function startTelevisionContinuation() {
     if (!localVideo) return;
-    continueAdaptiveMusicProgramme().catch((error) => {
+    const continuation = broadcastChannelId
+      ? synchronizeBroadcastRollover(
+        document.body.dataset.broadcastProgrammeInstanceId || musicHandoffProgrammeInstanceId
+      )
+      : continueAdaptiveMusicProgramme();
+    continuation.catch((error) => {
       document.body.dataset.musicContinuationError = String(error?.message || error).slice(0, 140);
       showMusicShelfStatus("The live channels are temporarily unavailable.", 3600);
     });

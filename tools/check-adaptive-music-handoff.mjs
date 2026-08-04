@@ -213,6 +213,54 @@ const expectedMantraVoiceDspToken = `mantra-voice-dsp-${createHash('sha256').upd
 const expectedMantraStudioCssToken = `mantra-studio-css-${createHash('sha256').update(mantraStudioCss).digest('hex').slice(0, 12)}`;
 const expectedStreamCatalogueToken = `stream-catalogue-${createHash('sha256').update(streamCatalogue).digest('hex').slice(0, 12)}`;
 const expectedStreamControllerToken = `stream-controller-${createHash('sha256').update(streamController).digest('hex').slice(0, 12)}`;
+
+const rolloverFunctionSource = controller.match(
+  /  async function synchronizeBroadcastRollover\(previousProgrammeInstanceId = ""\) \{[\s\S]*?\n  \}(?=\n\n  function discardPreloadedMusicVideo)/
+)?.[0];
+requireCondition(rolloverFunctionSource, 'the shared-video rollover function cannot be exercised');
+const runRolloverHarness = new Function(`
+  return async function runRolloverHarness() {
+    let simulatedNow = 0;
+    let stateReads = 0;
+    let synchronizeCalls = 0;
+    let broadcastChannelId = "videos-inner-planes";
+    let broadcastRolloverPromise = null;
+    let broadcastRolloverFromInstanceId = "";
+    const BROADCAST_ROLLOVER_WAIT_MS = 5000;
+    const BROADCAST_ROLLOVER_POLL_MS = 80;
+    const document = { body: { dataset: {} } };
+    const previousState = { channelId: broadcastChannelId, programmeInstanceId: "programme-a" };
+    const nextState = { channelId: broadcastChannelId, programmeInstanceId: "programme-b" };
+    const window = {
+      performance: { now: () => simulatedNow },
+      IAMBroadcastClock: {
+        stateAt() {
+          stateReads += 1;
+          return stateReads < 3 ? previousState : nextState;
+        },
+      },
+    };
+    function wait(ms) {
+      simulatedNow += ms;
+      return Promise.resolve();
+    }
+    async function synchronizeBroadcastPlayback() {
+      synchronizeCalls += 1;
+      return nextState;
+    }
+    ${rolloverFunctionSource}
+    const results = await Promise.all([
+      synchronizeBroadcastRollover(previousState.programmeInstanceId),
+      synchronizeBroadcastRollover(previousState.programmeInstanceId),
+    ]);
+    return { results, stateReads, synchronizeCalls, dataset: document.body.dataset };
+  };
+`)();
+const rolloverHarness = await runRolloverHarness();
+requireCondition(rolloverHarness.results.every((state) => state?.programmeInstanceId === 'programme-b'), 'the rollover wait did not resolve to the next programme');
+requireCondition(rolloverHarness.stateReads === 3, `the rollover wait read the live clock ${rolloverHarness.stateReads} times instead of polling to the next programme`);
+requireCondition(rolloverHarness.synchronizeCalls === 1, 'simultaneous ended and scheduled handoffs can switch the next programme twice');
+requireCondition(rolloverHarness.dataset.broadcastRolloverState === 'complete', 'the rollover wait did not publish a complete diagnostic state');
 const expectedShellControllerToken = `adaptive-env-stream-${createHash('sha256').update(shellController).digest('hex').slice(0, 12)}`;
 const expectedAdaptiveEnvironmentToken = `adaptive-env-${createHash('sha256').update(adaptiveEnvironment).digest('hex').slice(0, 12)}`;
 const expectedAboutControllerToken = `about-briefing-${createHash('sha256').update(aboutController).digest('hex').slice(0, 12)}`;
@@ -264,6 +312,11 @@ requireCondition(programmeGuide.includes('previewStart + 10') && programmeGuide.
 requireCondition(programmeGuide.includes('window.IAMMusicChannels?.programmeItems?.(activeMode)') && controller.includes('programmeItems(mode = musicChannelMode)'), 'Program cards no longer receive the canonical live room metadata');
 requireCondition(programmeGuide.includes('state.activeItemId || document.body.dataset.musicChannelItem') && programmeGuide.includes('activeRooms[activeMode] = roomIdForChannel(activeItemChannel);'), 'the main-wallet Program entry can forget the room that is visibly playing');
 requireCondition(controller.includes('const liveItems = musicItems(mode)') && programmeGuide.includes('renderTimer = window.setInterval(() =>') && programmeGuide.includes('renderCards();\n      renderSchedule();'), 'Program cards can go stale instead of following the same live clock as the schedule');
+requireCondition(controller.includes('async function synchronizeBroadcastRollover(previousProgrammeInstanceId = "")'), 'shared Videos no longer wait for the broadcast clock to roll before changing programme');
+requireCondition(controller.includes('state.programmeInstanceId !== previousInstanceId') && controller.includes('await wait(BROADCAST_ROLLOVER_POLL_MS);'), 'shared Videos can retry only the ended programme instead of polling for the next one');
+requireCondition(controller.includes('synchronizeBroadcastRollover(state.programmeInstanceId).catch((error) => {'), 'the scheduled video handoff no longer waits for the next programme instance');
+requireCondition(controller.includes('document.body.dataset.broadcastProgrammeInstanceId || musicHandoffProgrammeInstanceId'), 'an ended shared video can no longer enter the rollover-safe continuation path while Shop is open');
+requireCondition(controller.includes('if (track.id !== scheduledTrack.id || programmeChanged)') && controller.includes('"same_track_programme_rollover"'), 'consecutive programmes using the same video can stop instead of explicitly restarting');
 requireCondition(programmeGuide.includes('window.IAMMusicChannels?.openChannels?.(activeMode)') && controller.includes('openChannels(mode = musicChannelMode)'), 'Program no longer returns to the full visual channel explorer');
 requireCondition(programmeGuide.includes('const joinRequest = window.IAMMusicChannels.joinBroadcast(channelId);') && programmeGuide.includes('closeProgram(null, { restoreFocus: false });'), 'Enter Live no longer joins the inspected Videos, Parties or Radio room and closes Program into playback');
 requireCondition(programmeGuide.includes('programPanel.addEventListener("click", (event) => event.stopPropagation());'), 'using Program can once again collapse the Music wallet underneath it');
