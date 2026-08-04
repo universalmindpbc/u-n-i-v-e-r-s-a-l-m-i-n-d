@@ -5656,6 +5656,8 @@
     setWalletView("closed");
   }
 
+  window.addEventListener("iam:care-open", closeReactionWalletSoftly);
+
   function scheduleReactionWalletCollapse(delay = 1800) {
     window.clearTimeout(reactionWalletCollapseTimer);
     reactionWalletCollapseTimer = window.setTimeout(() => {

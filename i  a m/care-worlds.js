@@ -12,6 +12,7 @@
   const checkout = experience.querySelector("[data-care-checkout]");
   const address = experience.querySelector("[data-care-address]");
   const checkoutStatus = experience.querySelector("[data-care-checkout-status]");
+  const walletTrigger = document.querySelector("[data-reaction-wallet-trigger]");
 
   const rooms = {
     connect: {
@@ -235,7 +236,10 @@
 
   function openCare(view) {
     window.clearTimeout(closeTimer);
-    previousFocus = document.activeElement instanceof HTMLElement ? document.activeElement : null;
+    previousFocus = walletTrigger instanceof HTMLElement
+      ? walletTrigger
+      : (document.activeElement instanceof HTMLElement ? document.activeElement : null);
+    window.dispatchEvent(new CustomEvent("iam:care-open"));
     experience.hidden = false;
     experience.setAttribute("aria-hidden", "false");
     document.body.classList.add("care-experience-open");

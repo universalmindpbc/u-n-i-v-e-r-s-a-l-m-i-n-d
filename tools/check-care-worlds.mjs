@@ -10,6 +10,7 @@ const iamDir = join(root, "i  a m");
 const html = readFileSync(join(iamDir, "index.html"), "utf8");
 const css = readFileSync(join(iamDir, "care-worlds.css"), "utf8");
 const js = readFileSync(join(iamDir, "care-worlds.js"), "utf8");
+const televisionJs = readFileSync(join(iamDir, "adaptive-environment-television.js"), "utf8");
 const careStart = html.indexOf('<section class="care-experience"');
 const careEnd = html.indexOf('<div class="adaptive-television-heart-field"', careStart);
 const careHtml = html.slice(careStart, careEnd);
@@ -45,7 +46,8 @@ for (const [file, description] of [
 }
 
 assert.match(careHtml, /<section class="care-cart"/, "Comfort must render as a shopping cart");
-assert.match(careHtml, /A little kindness delivered to your door in the next hour\./, "Comfort must repeat its delivery promise");
+assert.match(careHtml, /<h2 id="care-cart-title">a little kindness delivered to your door in the next hour\.<\/h2>/, "Comfort must lead with its delivery promise");
+assert.doesNotMatch(careHtml, />Care package<|Care package contents/, "The rejected Care package headline must not return");
 assert.match(careHtml, /<strong>\$0<\/strong>/, "Comfort total must be $0");
 assert.match(careHtml, /data-care-address[^>]*|[^>]*data-care-address/, "Comfort must accept a delivery address");
 assert.match(careHtml, /autocomplete="street-address"/, "The delivery field must support address autofill");
@@ -56,8 +58,10 @@ assert.match(careHtml, /Proposed pilot partners\. No order is placed in this pre
 assert.match(careHtml, /data-care-talk-device="microphone"/, "Talk must use a familiar microphone control");
 assert.match(careHtml, /data-care-talk-device="camera"/, "Talk must use a familiar camera control");
 assert.match(careHtml, /Connect with eheadspace/);
-assert.match(careHtml, /3PM&ndash;10PM EVERY DAY <span>LOCAL TIME<\/span>/, "Talk must show current eheadspace operating hours");
-assert.match(careHtml, /12&ndash;25/);
+assert.match(careHtml, /3PM&ndash;10PM EVERY DAY <span>IN YOUR AUSTRALIAN TIME ZONE<\/span>/, "Talk must clarify eheadspace's local Australian operating hours");
+assert.equal(count(careHtml, /I AM members aged 18&ndash;25/g), 2, "Talk must respect I AM's adults-only age boundary");
+assert.doesNotMatch(careHtml, /aged 12&ndash;25|aged 15&ndash;25/, "Care must not offer the I AM pathway to under-18s");
+assert.match(careHtml, /Qualifications and service identity will appear here\./, "Talk must use committed future-facing clinician copy");
 assert.match(careHtml, /tel:1800650890/);
 assert.match(careHtml, /headspace\.org\.au\/online-and-phone-support\/connect-with-us\//);
 assert.match(careHtml, /No information from your I AM check-in is shared with headspace/i);
@@ -72,11 +76,14 @@ assert.doesNotMatch(js, /microphoneTrack\.play|createClient\s*\(|\.join\s*\(|\.p
 assert.doesNotMatch(js, /requestFullscreen|webkitRequestFullscreen|mozRequestFullScreen|msRequestFullscreen/, "Care must never invoke native fullscreen");
 assert.match(js, /cameraTrack\.play\(room\.preview/, "Camera preview must render into the selected room tile");
 assert.match(js, /checkout\?\.addEventListener\("submit"/, "The $0 cart must behave like a form");
+assert.match(js, /dispatchEvent\(new CustomEvent\("iam:care-open"\)\)/, "Opening Care must request the wallet to close");
+assert.match(televisionJs, /addEventListener\("iam:care-open", closeReactionWalletSoftly\)/, "The television wallet must honour the Care close request");
 
-assert.match(css, /\.care-experience__backdrop\s*\{[\s\S]*?background:\s*rgba\(0, 0, 0, 0\.34\)/, "The music video must bleed through a 34% black veil");
-assert.doesNotMatch(css, /\.care-experience__backdrop\s*\{[\s\S]*?background:\s*rgba\(0, 0, 0, 0\.77\)/, "The rejected 77% veil must not return");
+assert.match(css, /\.care-experience__backdrop\s*\{[^}]*background:\s*rgba\(0, 0, 0, 0\.34\)/, "The music video must bleed through a 34% black veil");
+assert.doesNotMatch(css, /\.care-experience__backdrop\s*\{[^}]*background:\s*rgba\(0, 0, 0, 0\.77\)/, "The 77% black belongs only to the Connect video tiles, not the full-screen veil");
 assert.ok(count(css, /Universal Mind \[ I o H \] Logo\.PNG/g) >= 4, "Human, camera, and microphone symbols must sit over the Universal Mind flower");
 assert.match(css, /\.care-call__screens\s*\{[\s\S]*?grid-template-columns:\s*repeat\(2/, "Connect must look like a two-person streaming room");
+assert.match(css, /\.care-call__screen\s*\{[\s\S]*?background:\s*rgba\(0, 0, 0, 0\.77\)/, "Connect's two video tiles must use 77%-opaque black");
 assert.match(css, /\.care-call\s*\{[\s\S]*?background:\s*rgba\(248, 248, 246, 0\.96\)/, "Connect must use the translucent-white Care casing");
 assert.match(css, /\.care-call__connect\s*\{[\s\S]*?background:\s*#fff;[\s\S]*?color:\s*#111;/, "Connect must use the site's white CTA treatment");
 assert.match(css, /\.care-cart\s*\{[\s\S]*?background:\s*rgba\(248, 248, 246, 0\.96\)/, "Comfort must read as a light shopping cart");

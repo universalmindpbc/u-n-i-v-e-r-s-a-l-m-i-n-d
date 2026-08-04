@@ -210,13 +210,13 @@ body.care-experience-open { overflow: hidden; }
   min-height: 0;
   place-items: center;
   overflow: hidden;
-  background: rgba(18, 20, 22, 0.56);
+  background: rgba(0, 0, 0, 0.77);
 }
 
 .care-call__screen--remote {
   background:
     radial-gradient(circle at 50% 42%, rgba(255, 255, 255, 0.08), transparent 30%),
-    rgba(15, 17, 19, 0.5);
+    rgba(0, 0, 0, 0.77);
 }
 
 .care-call__person {
@@ -489,6 +489,7 @@ body.care-experience-open { overflow: hidden; }
 }
 
 .care-cart__header h2 {
+  max-width: 760px;
   margin: 7px 0 0;
   font-size: clamp(27px, 3vw, 40px);
   font-weight: 400;
