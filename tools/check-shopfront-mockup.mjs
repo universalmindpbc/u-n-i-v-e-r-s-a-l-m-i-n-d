@@ -569,6 +569,7 @@ assert.match(shopScript, /shop-radio-edits-v1\.json\?v=98229089823e/, "The exact
 assert.match(shopScript, /product\.retailer \|\| product\.brand/, "Product CTAs must prefer the destination retailer rather than the maker brand");
 assert.match(shopScript, /function catalogueBrandName\(product\)[\s\S]*product\.catalogueBrand \|\| product\.brand/, "Umbrella routing must preserve each product's maker brand");
 assert.match(shopScript, /function productBelongsToCatalogue\(product\)[\s\S]*catalogueEditProductIds\.get\(activeCatalogueBrand\)[\s\S]*editIds\.has\(product\.id\)[\s\S]*brandSlug\(product\.brand\) === activeCatalogueBrand/, "Edit membership must coexist with maker-brand navigation without duplicated products");
+assert.match(shopScript, /function catalogueBrandSlug\(brand[\s\S]*record\?\.slug \|\| brandSlug\(brand\)[\s\S]*entry\.slug \|\| brandSlug\(entry\.brand\)/, "Custom edit slugs must remain valid direct routes and catalogue options");
 assert.match(shopScript, /reorderedBrands\.push\("WARDROBE\.NYC", \.\.\.editCatalogues\.map/, "Inner Planes must follow Champagne Bohemia at the end of the catalogue list");
 assert.match(shopScript, /function productHasFullDetail\(product\)[\s\S]*return Boolean\(product\.image \|\| product\.video \|\| product\.videoEmbed \|\| product\.gallery\?\.length\)/, "Every approved image or film card must receive the internal expanded view");
 assert.match(shopScript, /function galleryDisplayProducts[\s\S]*--image-\$\{index \+ 1\}[\s\S]*galleryViewCount/, "Iris must render its six supplied images as six separately addressable catalogue tiles");
@@ -640,7 +641,7 @@ assert.match(shopStyle, /\.shop-footer__legal\s*\{[\s\S]*grid-template-columns:\
 assert.equal((shop.match(/data-shop-home/g) || []).length, 2, "Shop Home must appear exactly once in the sticky navigation and once in the footer");
 assert.match(shopStyle, /\.shop-product__copy--brand-only\s*\{\s*min-height:\s*76px;/, "Brand-only edit cards must fill the shared caption row without exposing a grey strip");
 assert.match(shop, /shop\.css\?v=5c0ce741389d/, "The Shop shell must load the content-derived Accessories | Health stylesheet revision");
-assert.match(shop, /shop\.js\?v=shop-68349871069d/, "The Shop shell must load the content-derived Accessories | Health runtime");
+assert.match(shop, /shop\.js\?v=shop-021106c2aa86/, "The Shop shell must load the content-derived Accessories | Health runtime");
 assert.match(
   shopStyle,
   /@media \(max-width: 700px\)[\s\S]*?\.shop-masthead__nav \{ gap: 6px; \}[\s\S]*?\.shop-masthead__actions \{ gap: 0; \}[\s\S]*?\.shop-theme,[\s\S]*?\.shop-music \{[\s\S]*?width: 28px;[\s\S]*?height: 44px;[\s\S]*?\.shop-theme \[data-shop-theme-label\],[\s\S]*?\.shop-music \[data-shop-music-label\] \{ font-size: 0; \}/,

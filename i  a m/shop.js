@@ -432,9 +432,14 @@
       .replace(/-+/g, "-");
   }
 
+  function catalogueBrandSlug(brand = "") {
+    const record = catalogueKernel?.brandCounts?.find((entry) => entry.brand === brand);
+    return record?.slug || brandSlug(brand);
+  }
+
   function currentBrandRecord() {
     if (!catalogueKernel || activeCatalogueBrand === "all") return null;
-    return catalogueKernel.brandCounts.find((entry) => brandSlug(entry.brand) === activeCatalogueBrand) || null;
+    return catalogueKernel.brandCounts.find((entry) => (entry.slug || brandSlug(entry.brand)) === activeCatalogueBrand) || null;
   }
 
   function currentCatalogueTypeLabel() {
@@ -477,7 +482,7 @@
     if (catalogueBrandSelect) {
       catalogueBrandSelect.replaceChildren(
         option("all", `all ${catalogueKernel.brandOrder.length} brands`),
-        ...catalogueKernel.brandOrder.map((brand) => option(brandSlug(brand), brand)),
+        ...catalogueKernel.brandOrder.map((brand) => option(catalogueBrandSlug(brand), brand)),
       );
     }
     if (catalogueTypeSelect) {
@@ -1026,7 +1031,7 @@
       closeProduct();
       return;
     }
-    const validBrand = route.brand === "all" || catalogueKernel?.brandCounts.some((entry) => brandSlug(entry.brand) === route.brand);
+    const validBrand = route.brand === "all" || catalogueKernel?.brandCounts.some((entry) => (entry.slug || brandSlug(entry.brand)) === route.brand);
     activeCatalogueBrand = validBrand ? route.brand : "all";
     const validType = route.type === "all"
       || catalogueKernel?.shopTaxonomy?.visibleOptions?.some((option) => option.value === route.type);
@@ -1208,6 +1213,7 @@
         const products = (catalogue.productIds || []).map((id) => productById.get(id)).filter(Boolean);
         return {
           brand: catalogue.brand,
+          slug: catalogue.slug || brandSlug(catalogue.brand),
           count: products.length,
           ready: products.filter((product) => product.metadataStatus === "Metadata ready").length,
           route: catalogue.route || `#catalogue/${catalogue.slug || brandSlug(catalogue.brand)}`,
