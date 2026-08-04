@@ -80,6 +80,19 @@ Generic testing must exercise the real visitor experience instead of forcing the
 - For unrelated deterministic media testing, choose a task-relevant item and rotate away from the previous generic test track. Do not reuse Madonna's "Frozen" by habit.
 - Remove track-selection parameters from the URL handed to Ben unless he explicitly asked to proof a particular track.
 
+## Non-disruptive browser, fullscreen, and media QA
+
+Website verification must not take over Ben's computer or produce unexpected audio.
+
+- Keep automated browser work hidden or in the background by default. Do not open, focus, or control Ben's Chrome, Safari, or desktop for ordinary QA.
+- Test fullscreen layouts with an isolated Codex-controlled browser, explicit viewport dimensions, and targeted DOM, media-state, and screenshot checks.
+- Do not invoke native macOS or browser fullscreen, take over the display, or visibly operate desktop applications without Ben's explicit approval immediately before the test.
+- Before navigating to any page that may autoplay media, launch the automated browser with process-level audio output disabled, such as Chromium's `--mute-audio`. Muting only after playback starts is not sufficient.
+- If process-level audio suppression cannot be confirmed, do not start media playback. Stop and ask Ben first.
+- Silent technical media QA may verify requests, readiness, decoding, HLS or Stream state, `currentTime` advancement, controls, routing, configured mix values, layout, and relevant console errors.
+- Any test of audible output or audio quality—including streaming audio, live playback, audio rooms, crossfades, or subjective mix checks—requires Ben's explicit approval immediately before testing. Use no more than one audible tab or session at a time.
+- Do not claim subjective audible quality from silent checks. Close all automated media tabs and stop playback as soon as verification is complete unless Ben explicitly asks to retain a proofing tab.
+
 ## Production
 
 Production must never be modified unless Ben clearly instructs the agent to publish or deploy to production.

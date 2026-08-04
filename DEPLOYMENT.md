@@ -53,6 +53,17 @@ The ordinary Music Television proof route is:
 - Use a fixed track only for an explicit track-specific test. If deterministic media is otherwise required, select a task-relevant item, document the reason, and avoid repeatedly reusing the same song.
 - The URL returned to Ben must omit track-selection parameters unless his request names the exact track to proof.
 
+## Non-disruptive browser, fullscreen, and media QA
+
+All staging and production browser verification must avoid disrupting Ben's computer.
+
+- Run ordinary browser QA hidden or in the background. Do not take over Chrome, Safari, macOS, or another visible desktop application.
+- Validate fullscreen layouts in an isolated Codex-controlled browser with explicit viewport sizes and targeted DOM, media-state, and screenshot evidence. Native browser or macOS fullscreen requires Ben's explicit approval immediately before testing.
+- Start any automated browser that may encounter autoplaying media with process-level audio disabled, such as Chromium's `--mute-audio`, before navigation. If that suppression cannot be confirmed, do not begin playback and ask Ben first.
+- Silent streaming checks may verify media requests, readiness, decoding, HLS or Stream state, advancing playback time, controls, routing, configured mix values, layout, and console errors.
+- Testing audible output or audio quality—including streaming audio, live playback, audio rooms, crossfades, or subjective mix behavior—requires Ben's explicit approval immediately before the test and must use only one audible tab or session.
+- Silent checks cannot establish subjective sound quality. Stop playback and close automated media tabs immediately after verification unless Ben asks to retain a proofing tab.
+
 ## Production releases
 
 Only after Ben explicitly approves a staging version:
