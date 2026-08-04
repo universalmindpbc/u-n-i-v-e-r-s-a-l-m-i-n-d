@@ -110,7 +110,10 @@
     const streamAsset = window.IAMCloudflareStream?.assetFor(fileName);
     if (streamAsset) Object.assign(candidate, { streamUid: streamAsset.uid, hlsVideoSrc: streamAsset.hls });
   });
-  const DEFAULT_TRACK_ID = "madonna-frozen";
+  const NO_CHECKIN_RANDOM_LAST_TRACK_KEY = "iamNoCheckinRandomLastTrackId";
+  const NO_CHECKIN_RANDOM_EXCLUDED_TRACK_IDS = new Set(["madonna-frozen"]);
+  let noCheckinRandomTrack = null;
+  let resolvedSelectionSource = "";
   const SHOP_ARRIVAL_TRACK_ID = "zip-perlon-air-festival-2007";
   const SHOP_ARRIVAL_START_SECONDS = 88 * 60;
   const SHOP_ARRIVAL_FADE_IN_MS = 2400;
@@ -732,12 +735,52 @@
     ].filter(Boolean);
   }
 
+  function randomCatalogueIndex(length) {
+    if (length <= 1) return 0;
+    if (window.crypto?.getRandomValues) {
+      const randomValue = new Uint32Array(1);
+      window.crypto.getRandomValues(randomValue);
+      return randomValue[0] % length;
+    }
+    return Math.floor(Math.random() * length);
+  }
+
+  function resolveRandomNoCheckinTrack() {
+    if (noCheckinRandomTrack) return noCheckinRandomTrack;
+
+    const eligibleTracks = TRACK_CATALOGUE.filter((candidate) => (
+      candidate.presentation !== "live_dj_set" &&
+      !candidate.cuePoints &&
+      !NO_CHECKIN_RANDOM_EXCLUDED_TRACK_IDS.has(candidate.id)
+    ));
+    let lastTrackId = "";
+    try {
+      lastTrackId = window.localStorage.getItem(NO_CHECKIN_RANDOM_LAST_TRACK_KEY) || "";
+    } catch {
+      lastTrackId = "";
+    }
+
+    const freshTracks = eligibleTracks.filter((candidate) => candidate.id !== lastTrackId);
+    const randomPool = freshTracks.length ? freshTracks : eligibleTracks;
+    noCheckinRandomTrack = randomPool[randomCatalogueIndex(randomPool.length)] || TRACK_CATALOGUE[0];
+
+    try {
+      window.localStorage.setItem(NO_CHECKIN_RANDOM_LAST_TRACK_KEY, noCheckinRandomTrack.id);
+    } catch {
+      // The random no-check-in experience still works when device storage is unavailable.
+    }
+    return noCheckinRandomTrack;
+  }
+
   function resolveSelectedTrack() {
     const params = new URLSearchParams(window.location.search);
     const explicitTrack = params.get("track") || params.get("musicVideo") || params.get("selected_track_id");
     const explicitFile = params.get("video") || params.get("local_video_file");
     const explicit = findTrack(explicitTrack) || findTrack(explicitFile);
-    if (explicit) return explicit;
+    if (explicit) {
+      resolvedSelectionSource = "explicit_url";
+      return explicit;
+    }
 
     const storageKeys = [
       "iamMusicTelevisionSelection",
@@ -750,11 +793,15 @@
       const stored = readJsonStorage(key);
       for (const field of selectionTrackFields(stored)) {
         const candidate = findTrack(field);
-        if (candidate) return candidate;
+        if (candidate) {
+          resolvedSelectionSource = "stored_checkin";
+          return candidate;
+        }
       }
     }
 
-    return findTrack(DEFAULT_TRACK_ID) || TRACK_CATALOGUE[0];
+    resolvedSelectionSource = "no_checkin_random";
+    return resolveRandomNoCheckinTrack();
   }
 
   function syncSelectedTrackCopy() {
@@ -764,7 +811,7 @@
     const artistText = display.artist;
     const titleText = display.title;
     const params = new URLSearchParams(window.location.search);
-    const selectionSource = params.get("selection_source") || (params.get("selected_track_id") ? "explicit_url" : "stored_or_default");
+    const selectionSource = params.get("selection_source") || resolvedSelectionSource || "no_checkin_random";
 
     if (artistLine) {
       artistLine.dataset.adaptiveTypewriterText = artistText;
