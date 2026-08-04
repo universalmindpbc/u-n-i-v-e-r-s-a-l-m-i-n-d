@@ -498,7 +498,7 @@
   }
 
   function productHasFullDetail(product) {
-    return Boolean(product.image || product.video || product.gallery?.length);
+    return Boolean(product.image || product.video || product.videoEmbed || product.gallery?.length);
   }
 
   function productHasImage(product) {
@@ -614,6 +614,13 @@
         image.alt = product.imageAlt || `${product.brand} ${customerProductName(product)}`;
         image.loading = index < 6 ? "eager" : "lazy";
         figure.append(image);
+        if (product.videoEmbed) {
+          figure.classList.add("has-video-embed");
+          const filmLabel = document.createElement("span");
+          filmLabel.className = "shop-catalogue-card__film-label";
+          filmLabel.textContent = "play film";
+          figure.append(filmLabel);
+        }
       }
     } else {
       figure.className = "shop-catalogue-card__placeholder";
@@ -757,7 +764,7 @@
   function renderProductDialogMedia(product) {
     if (!productDialogMedia) return;
     productDialogMedia.classList.toggle("has-gallery", Boolean(product.gallery?.length));
-    productDialogMedia.classList.toggle("has-video", Boolean(product.video));
+    productDialogMedia.classList.toggle("has-video", Boolean(product.video || product.videoEmbed));
 
     if (product.gallery?.length) {
       const gallery = document.createElement("div");
@@ -770,6 +777,17 @@
         gallery.append(image);
       });
       productDialogMedia.replaceChildren(gallery);
+      return;
+    }
+
+    if (product.videoEmbed) {
+      const iframe = document.createElement("iframe");
+      iframe.src = product.videoEmbed;
+      iframe.title = product.imageAlt || `${product.brand} ${customerProductName(product)} product film`;
+      iframe.allow = "autoplay; fullscreen; picture-in-picture";
+      iframe.referrerPolicy = "strict-origin-when-cross-origin";
+      iframe.setAttribute("allowfullscreen", "");
+      productDialogMedia.replaceChildren(iframe);
       return;
     }
 
@@ -915,6 +933,10 @@
 
   function closeProduct(options = {}) {
     if (productDialog?.open) productDialog.close();
+    productDialogMedia?.querySelectorAll("video").forEach((video) => video.pause());
+    productDialogMedia?.querySelectorAll("iframe").forEach((iframe) => {
+      iframe.src = "about:blank";
+    });
     if (options.updateRoute && window.location.hash.includes("/product/")) {
       window.history.replaceState(null, "", catalogueReturnHash || catalogueBrowseHash());
       renderRoute();
@@ -1125,9 +1147,9 @@
   async function loadCatalogue() {
     try {
       const [kernelResponse, legacyChampagneResponse, radioEditsResponse] = await Promise.all([
-        fetch("shop-product-kernel-v1.json?v=5fc46d236e5e", { credentials: "same-origin" }),
+        fetch("shop-product-kernel-v1.json?v=2d6637e8e9c3", { credentials: "same-origin" }),
         fetch("shop-champagne-bohemia-products-v1.json?v=0f0304457056", { credentials: "same-origin" }),
-        fetch("shop-radio-edits-v1.json?v=5b2e60f9eb26", { credentials: "same-origin" }),
+        fetch("shop-radio-edits-v1.json?v=98229089823e", { credentials: "same-origin" }),
       ]);
       if (!kernelResponse.ok) throw new Error(`Catalogue request failed: ${kernelResponse.status}`);
       if (!legacyChampagneResponse.ok) throw new Error(`Legacy catalogue request failed: ${legacyChampagneResponse.status}`);

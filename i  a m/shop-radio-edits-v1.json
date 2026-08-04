@@ -2,7 +2,7 @@
   "version": 1,
   "generatedAt": "2026-08-04",
   "authority": "Ben-supplied exact retailer URLs reconciled to the Notion Fashion Tensor and canonical Shop product kernel",
-  "sourceReference": "c b - n e w  a d d i t i o n s.md supplied 2026-08-02; i n n e r  p l a n e s - a d d i t i o n a l  g a r m e n t s.md supplied 2026-08-04",
+  "sourceReference": "c b - n e w  a d d i t i o n s.md supplied 2026-08-02; i n n e r  p l a n e s - a d d i t i o n a l  g a r m e n t s.md supplied 2026-08-04; a c c e s s o r i e s      h e a l t h.md supplied 2026-08-04",
   "catalogues": [
     {
       "brand": "Champagne Bohemia",
@@ -152,6 +152,54 @@
         "JB-0426",
         "JB-0427",
         "JB-0428"
+      ]
+    },
+    {
+      "brand": "Accessories | Health",
+      "slug": "accessories",
+      "route": "#catalogue/accessories",
+      "placementAfter": "Inner Planes",
+      "formLabel": "ritual / wellbeing / objects / minerals",
+      "suppliedCount": 36,
+      "uniqueCount": 36,
+      "duplicateProductIds": [],
+      "productIds": [
+        "JB-0429",
+        "JB-0430",
+        "JB-0431",
+        "JB-0432",
+        "JB-0433",
+        "JB-0434",
+        "JB-0435",
+        "JB-0436",
+        "JB-0437",
+        "JB-0438",
+        "JB-0439",
+        "JB-0440",
+        "JB-0441",
+        "JB-0442",
+        "JB-0443",
+        "JB-0444",
+        "JB-0445",
+        "JB-0446",
+        "JB-0447",
+        "JB-0448",
+        "JB-0449",
+        "JB-0450",
+        "JB-0451",
+        "JB-0452",
+        "JB-0453",
+        "JB-0454",
+        "JB-0455",
+        "JB-0456",
+        "JB-0457",
+        "JB-0458",
+        "JB-0460",
+        "JB-0461",
+        "JB-0462",
+        "JB-0463",
+        "JB-0464",
+        "JB-0465"
       ]
     }
   ]

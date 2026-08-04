@@ -123,15 +123,15 @@
   },
   "generatedAt": "2026-08-04",
   "counts": {
-    "sourceReferences": 402,
-    "canonicalRecords": 399,
-    "products": 394,
+    "sourceReferences": 438,
+    "canonicalRecords": 435,
+    "products": 430,
     "brandOrCollectionLinks": 5,
     "duplicateProductReferences": 3,
     "brands": 28,
-    "metadataReady": 391,
-    "imageReady": 394,
-    "listedOnShop": 394
+    "metadataReady": 426,
+    "imageReady": 430,
+    "listedOnShop": 430
   },
   "brandOrder": [
     "adidas",
@@ -19186,6 +19186,1736 @@
       ],
       "editRanks": {
         "Inner Planes": 28
+      }
+    },
+    {
+      "id": "JB-0429",
+      "brand": "Ritual Oils",
+      "catalogueBrand": "Accessories | Health",
+      "sourceBrandHeading": "Accessories | Health",
+      "sourceTitle": "100% Pure Moringa Oil Infused With Blue Lotus",
+      "name": "100% Pure Moringa Oil Infused With Blue Lotus",
+      "productType": "Ritual oil",
+      "forms": [
+        "ritual",
+        "wellbeing"
+      ],
+      "retailer": "Ritual Oils",
+      "retailerUrl": "https://ritualoils.co/products/100-pure-moringa-oil-infused-with-blue-lotus",
+      "canonicalUrl": "https://ritualoils.co/products/100-pure-moringa-oil-infused-with-blue-lotus",
+      "shopRoute": "#catalogue/accessories",
+      "slug": "jb-0429-100-pure-moringa-oil-infused-with-blue-lotus",
+      "color": "",
+      "description": "A 60 ml topical blend of pure moringa oil infused with blue lotus, positioned for skin and ritual use.",
+      "material": "Moringa oil; blue lotus infusion",
+      "image": "a s s e t s/shop-mockup/product-catalogue/accessories-health/jb-0429-ritual-oils-moringa-blue-lotus.jpg",
+      "imageAlt": "Ritual Oils 100% Pure Moringa Oil Infused With Blue Lotus product shot",
+      "imageSource": "retailer_first_hero",
+      "sourceImageUrl": "https://ritualoils.co/cdn/shop/products/N4HxcfjQ_5.jpg?v=1668993112",
+      "sourceImageIndex": 0,
+      "price": "AU$ 77",
+      "priceValue": 77,
+      "colourFamilies": [],
+      "colourEvidenceText": "",
+      "shopTypes": [
+        "accessories"
+      ],
+      "notionPageId": "3b27b9c9-9c56-8152-8879-f9734a129fb7",
+      "sourcePageUrl": "https://ritualoils.co/products/100-pure-moringa-oil-infused-with-blue-lotus",
+      "sourceOccurrences": 1,
+      "metadataStatus": "Metadata ready",
+      "requiresReview": false,
+      "listedOnShop": true,
+      "retrievedAt": "2026-08-04",
+      "currency": "AUD",
+      "shopEdits": [
+        "Accessories | Health"
+      ],
+      "editRanks": {
+        "Accessories | Health": 1,
+        "accessories": 1
+      }
+    },
+    {
+      "id": "JB-0430",
+      "brand": "Clair Health",
+      "catalogueBrand": "Accessories | Health",
+      "sourceBrandHeading": "Accessories | Health",
+      "sourceTitle": "Clair Continuous Hormone Monitor — PRE-ORDER",
+      "name": "Clair Continuous Hormone Monitor — PRE-ORDER",
+      "productType": "Hormone monitor",
+      "forms": [
+        "ritual",
+        "wellbeing"
+      ],
+      "retailer": "Clair Health",
+      "retailerUrl": "https://wearclair.com/",
+      "canonicalUrl": "https://wearclair.com/",
+      "shopRoute": "#catalogue/accessories",
+      "slug": "jb-0430-clair-continuous-hormone-monitor-pre-order",
+      "color": "",
+      "description": "PRE-ORDER — A continuous hormone-monitoring system presented for tracking estrogen, progesterone and related cycle data.",
+      "material": "",
+      "image": "a s s e t s/shop-mockup/product-catalogue/accessories-health/jb-0430-clair-continuous-hormone-monitor-pre-order.jpg",
+      "imageAlt": "Clair Health Clair Continuous Hormone Monitor — PRE-ORDER product shot",
+      "imageSource": "retailer_first_hero",
+      "sourceImageUrl": "https://wearclair.com/og-hero.jpg?v=2",
+      "sourceImageIndex": 0,
+      "price": "AU$ 265.40",
+      "priceValue": 265.4,
+      "colourFamilies": [],
+      "colourEvidenceText": "",
+      "shopTypes": [
+        "accessories"
+      ],
+      "notionPageId": "3b27b9c9-9c56-8174-9309-d48ff5488ab0",
+      "sourcePageUrl": "https://wearclair.com/",
+      "sourceOccurrences": 1,
+      "metadataStatus": "Needs review",
+      "requiresReview": true,
+      "listedOnShop": true,
+      "retrievedAt": "2026-08-04",
+      "currency": "AUD",
+      "shopEdits": [
+        "Accessories | Health"
+      ],
+      "editRanks": {
+        "Accessories | Health": 2,
+        "accessories": 2
+      }
+    },
+    {
+      "id": "JB-0431",
+      "brand": "Blue Lotus Effect",
+      "catalogueBrand": "Accessories | Health",
+      "sourceBrandHeading": "Accessories | Health",
+      "sourceTitle": "Blue Lotus Extract 200:1 Potency",
+      "name": "Blue Lotus Extract 200:1 Potency",
+      "productType": "Botanical extract",
+      "forms": [
+        "ritual",
+        "wellbeing"
+      ],
+      "retailer": "Blue Lotus Effect",
+      "retailerUrl": "https://www.bluelotuseffect.com/products/blue-lotus-extract-200-1-potency",
+      "canonicalUrl": "https://www.bluelotuseffect.com/products/blue-lotus-extract-200-1-potency",
+      "shopRoute": "#catalogue/accessories",
+      "slug": "jb-0431-blue-lotus-extract-200-1-potency",
+      "color": "",
+      "description": "A concentrated 200:1 blue lotus botanical extract powder intended for adding in small amounts to drinks, smoothies or recipes as a daily ritual.",
+      "material": "",
+      "image": "a s s e t s/shop-mockup/product-catalogue/accessories-health/jb-0431-blue-lotus-extract-200-1.png",
+      "imageAlt": "Blue Lotus Effect Blue Lotus Extract 200:1 Potency product shot",
+      "imageSource": "retailer_first_hero",
+      "sourceImageUrl": "https://www.bluelotuseffect.com/cdn/shop/files/2001_extract_powder.png?v=1785290223&width=1254",
+      "sourceImageIndex": 0,
+      "price": "AU$ 67",
+      "priceValue": 67,
+      "colourFamilies": [],
+      "colourEvidenceText": "",
+      "shopTypes": [
+        "accessories"
+      ],
+      "notionPageId": "3b27b9c9-9c56-8154-8d53-d70de71323ab",
+      "sourcePageUrl": "https://www.bluelotuseffect.com/products/blue-lotus-extract-200-1-potency",
+      "sourceOccurrences": 1,
+      "metadataStatus": "Metadata ready",
+      "requiresReview": false,
+      "listedOnShop": true,
+      "retrievedAt": "2026-08-04",
+      "currency": "AUD",
+      "shopEdits": [
+        "Accessories | Health"
+      ],
+      "editRanks": {
+        "Accessories | Health": 3,
+        "accessories": 3
+      }
+    },
+    {
+      "id": "JB-0432",
+      "brand": "SuperFeast",
+      "catalogueBrand": "Accessories | Health",
+      "sourceBrandHeading": "Accessories | Health",
+      "sourceTitle": "JING Blend — 100g Miron Jar",
+      "name": "JING Blend — 100g Miron Jar",
+      "productType": "Herbal blend",
+      "forms": [
+        "ritual",
+        "wellbeing"
+      ],
+      "retailer": "SuperFeast Australia",
+      "retailerUrl": "https://www.superfeast.com.au/collections/womens-health/products/jing-herbs",
+      "canonicalUrl": "https://www.superfeast.com.au/collections/womens-health/products/jing-herbs",
+      "shopRoute": "#catalogue/accessories",
+      "slug": "jb-0432-jing-blend-100g-miron-jar",
+      "color": "",
+      "description": "A 100 g powdered herbal blend sold in a Miron glass jar and presented by SuperFeast for a tonic-herb ritual.",
+      "material": "Powdered herbal blend; Miron glass jar",
+      "image": "a s s e t s/shop-mockup/product-catalogue/accessories-health/jb-0432-superfeast-jing-blend.png",
+      "imageAlt": "SuperFeast JING Blend — 100g Miron Jar product shot",
+      "imageSource": "retailer_first_hero",
+      "sourceImageUrl": "https://www.superfeast.com.au/cdn/shop/files/JING_-_Product_Render_5a3ea9f6-a74f-4a46-8345-f581f269aacf.png?v=1765247341&width=700",
+      "sourceImageIndex": 0,
+      "price": "AU$ 67",
+      "priceValue": 67,
+      "colourFamilies": [],
+      "colourEvidenceText": "",
+      "shopTypes": [
+        "accessories"
+      ],
+      "notionPageId": "3b27b9c9-9c56-8119-81c8-e4614ecbba78",
+      "sourcePageUrl": "https://www.superfeast.com.au/collections/womens-health/products/jing-herbs",
+      "sourceOccurrences": 1,
+      "metadataStatus": "Metadata ready",
+      "requiresReview": false,
+      "listedOnShop": true,
+      "retrievedAt": "2026-08-04",
+      "currency": "AUD",
+      "shopEdits": [
+        "Accessories | Health"
+      ],
+      "editRanks": {
+        "Accessories | Health": 4,
+        "accessories": 4
+      }
+    },
+    {
+      "id": "JB-0433",
+      "brand": "SuperFeast",
+      "catalogueBrand": "Accessories | Health",
+      "sourceBrandHeading": "Accessories | Health",
+      "sourceTitle": "Mason's Mushrooms — 100g Jar",
+      "name": "Mason's Mushrooms — 100g Jar",
+      "productType": "Mushroom extract",
+      "forms": [
+        "ritual",
+        "wellbeing"
+      ],
+      "retailer": "SuperFeast Australia",
+      "retailerUrl": "https://www.superfeast.com.au/products/masons-mushrooms-powdered-extract-blend",
+      "canonicalUrl": "https://www.superfeast.com.au/products/masons-mushrooms-powdered-extract-blend",
+      "shopRoute": "#catalogue/accessories",
+      "slug": "jb-0433-mason-s-mushrooms-100g-jar",
+      "color": "",
+      "description": "A 100 g powdered functional-mushroom extract blend sold in a jar for hot drinks and food preparation.",
+      "material": "Powdered mushroom extract blend",
+      "image": "a s s e t s/shop-mockup/product-catalogue/accessories-health/jb-0433-superfeast-masons-mushrooms.png",
+      "imageAlt": "SuperFeast Mason's Mushrooms — 100g Jar product shot",
+      "imageSource": "retailer_first_hero",
+      "sourceImageUrl": "https://www.superfeast.com.au/cdn/shop/files/Masons_-_Product_Render.png?v=1760723915&width=700",
+      "sourceImageIndex": 0,
+      "price": "AU$ 70",
+      "priceValue": 70,
+      "colourFamilies": [],
+      "colourEvidenceText": "",
+      "shopTypes": [
+        "accessories"
+      ],
+      "notionPageId": "3b27b9c9-9c56-81a1-ac44-f5ab18a85878",
+      "sourcePageUrl": "https://www.superfeast.com.au/products/masons-mushrooms-powdered-extract-blend",
+      "sourceOccurrences": 1,
+      "metadataStatus": "Metadata ready",
+      "requiresReview": false,
+      "listedOnShop": true,
+      "retrievedAt": "2026-08-04",
+      "currency": "AUD",
+      "shopEdits": [
+        "Accessories | Health"
+      ],
+      "editRanks": {
+        "Accessories | Health": 5,
+        "accessories": 5
+      }
+    },
+    {
+      "id": "JB-0434",
+      "brand": "SuperFeast",
+      "catalogueBrand": "Accessories | Health",
+      "sourceBrandHeading": "Accessories | Health",
+      "sourceTitle": "Lion's Mane Mushroom Powder — 100g Jar",
+      "name": "Lion's Mane Mushroom Powder — 100g Jar",
+      "productType": "Mushroom extract",
+      "forms": [
+        "ritual",
+        "wellbeing"
+      ],
+      "retailer": "SuperFeast Australia",
+      "retailerUrl": "https://www.superfeast.com.au/products/lions-mane-mushroom-powdered-extract",
+      "canonicalUrl": "https://www.superfeast.com.au/products/lions-mane-mushroom-powdered-extract",
+      "shopRoute": "#catalogue/accessories",
+      "slug": "jb-0434-lion-s-mane-mushroom-powder-100g-jar",
+      "color": "",
+      "description": "A 100 g jar of powdered lion's mane mushroom extract intended for mixing into drinks or food.",
+      "material": "Powdered lion's mane mushroom extract",
+      "image": "a s s e t s/shop-mockup/product-catalogue/accessories-health/jb-0434-superfeast-lions-mane.png",
+      "imageAlt": "SuperFeast Lion's Mane Mushroom Powder — 100g Jar product shot",
+      "imageSource": "retailer_first_hero",
+      "sourceImageUrl": "https://www.superfeast.com.au/cdn/shop/files/Lion_s_Mane_-_Product_Render.png?v=1760652027&width=700",
+      "sourceImageIndex": 0,
+      "price": "AU$ 68",
+      "priceValue": 68,
+      "colourFamilies": [],
+      "colourEvidenceText": "",
+      "shopTypes": [
+        "accessories"
+      ],
+      "notionPageId": "3b27b9c9-9c56-81fd-ab0c-e1308ba28f3e",
+      "sourcePageUrl": "https://www.superfeast.com.au/products/lions-mane-mushroom-powdered-extract",
+      "sourceOccurrences": 1,
+      "metadataStatus": "Metadata ready",
+      "requiresReview": false,
+      "listedOnShop": true,
+      "retrievedAt": "2026-08-04",
+      "currency": "AUD",
+      "shopEdits": [
+        "Accessories | Health"
+      ],
+      "editRanks": {
+        "Accessories | Health": 6,
+        "accessories": 6
+      }
+    },
+    {
+      "id": "JB-0435",
+      "brand": "SuperFeast",
+      "catalogueBrand": "Accessories | Health",
+      "sourceBrandHeading": "Accessories | Health",
+      "sourceTitle": "Reishi Mushroom Powder — 100g Jar",
+      "name": "Reishi Mushroom Powder — 100g Jar",
+      "productType": "Mushroom extract",
+      "forms": [
+        "ritual",
+        "wellbeing"
+      ],
+      "retailer": "SuperFeast Australia",
+      "retailerUrl": "https://www.superfeast.com.au/products/reishi-powdered-extract",
+      "canonicalUrl": "https://www.superfeast.com.au/products/reishi-powdered-extract",
+      "shopRoute": "#catalogue/accessories",
+      "slug": "jb-0435-reishi-mushroom-powder-100g-jar",
+      "color": "",
+      "description": "A 100 g jar of powdered reishi mushroom extract intended for mixing into drinks or food.",
+      "material": "Powdered reishi mushroom extract",
+      "image": "a s s e t s/shop-mockup/product-catalogue/accessories-health/jb-0435-superfeast-reishi.jpg",
+      "imageAlt": "SuperFeast Reishi Mushroom Powder — 100g Jar product shot",
+      "imageSource": "retailer_first_hero",
+      "sourceImageUrl": "https://www.superfeast.com.au/cdn/shop/files/7._Web_Product_Reishi-13.jpg?v=1714424197&width=700",
+      "sourceImageIndex": 0,
+      "price": "AU$ 61",
+      "priceValue": 61,
+      "colourFamilies": [],
+      "colourEvidenceText": "",
+      "shopTypes": [
+        "accessories"
+      ],
+      "notionPageId": "3b27b9c9-9c56-8141-bc98-ff356fe7d062",
+      "sourcePageUrl": "https://www.superfeast.com.au/products/reishi-powdered-extract",
+      "sourceOccurrences": 1,
+      "metadataStatus": "Metadata ready",
+      "requiresReview": false,
+      "listedOnShop": true,
+      "retrievedAt": "2026-08-04",
+      "currency": "AUD",
+      "shopEdits": [
+        "Accessories | Health"
+      ],
+      "editRanks": {
+        "Accessories | Health": 7,
+        "accessories": 7
+      }
+    },
+    {
+      "id": "JB-0436",
+      "brand": "Pukka",
+      "catalogueBrand": "Accessories | Health",
+      "sourceBrandHeading": "Accessories | Health",
+      "sourceTitle": "Pukka Lemon, Ginger & Manuka Honey Tea — 20 Bags / 40g",
+      "name": "Pukka Lemon, Ginger & Manuka Honey Tea — 20 Bags / 40g",
+      "productType": "Herbal tea",
+      "forms": [
+        "ritual",
+        "wellbeing"
+      ],
+      "retailer": "Harris Farm Markets",
+      "retailerUrl": "https://www.harrisfarm.com.au/products/pukka-tea-lemon-ginger-manuka-honey-40g",
+      "canonicalUrl": "https://www.pukkaherbs.com/uk/en/products/lemon-ginger-and-manuka-honey-tea",
+      "shopRoute": "#catalogue/accessories",
+      "slug": "jb-0436-pukka-lemon-ginger-and-manuka-honey-tea-20-bags-40g",
+      "color": "",
+      "description": "A 20-bag, 40 g organic herbal tea blend with lemon, ginger and manuka honey flavour notes.",
+      "material": "20 herbal tea sachets",
+      "image": "a s s e t s/shop-mockup/product-catalogue/accessories-health/jb-0436-pukka-lemon-ginger-manuka.jpg",
+      "imageAlt": "Pukka Pukka Lemon, Ginger & Manuka Honey Tea — 20 Bags / 40g product shot",
+      "imageSource": "retailer_first_hero",
+      "sourceImageUrl": "https://www.harrisfarm.com.au/cdn/shop/products/Lemon_ginger_manuka_on_white-done.jpg?v=1569026272&width=1920",
+      "sourceImageIndex": 0,
+      "price": "AU$ 9",
+      "priceValue": 9,
+      "colourFamilies": [],
+      "colourEvidenceText": "",
+      "shopTypes": [
+        "accessories"
+      ],
+      "notionPageId": "3b27b9c9-9c56-8176-aa39-e739c0882aac",
+      "sourcePageUrl": "https://www.harrisfarm.com.au/products/pukka-tea-lemon-ginger-manuka-honey-40g",
+      "sourceOccurrences": 1,
+      "metadataStatus": "Metadata ready",
+      "requiresReview": false,
+      "listedOnShop": true,
+      "retrievedAt": "2026-08-04",
+      "currency": "AUD",
+      "shopEdits": [
+        "Accessories | Health"
+      ],
+      "editRanks": {
+        "Accessories | Health": 8,
+        "accessories": 8
+      }
+    },
+    {
+      "id": "JB-0437",
+      "brand": "Pukka",
+      "catalogueBrand": "Accessories | Health",
+      "sourceBrandHeading": "Accessories | Health",
+      "sourceTitle": "Pukka Chamomile, Vanilla & Manuka Honey Tea — 20 Bags / 32g",
+      "name": "Pukka Chamomile, Vanilla & Manuka Honey Tea — 20 Bags / 32g",
+      "productType": "Herbal tea",
+      "forms": [
+        "ritual",
+        "wellbeing"
+      ],
+      "retailer": "Harris Farm Markets",
+      "retailerUrl": "https://www.harrisfarm.com.au/products/pukka-chamomile-vanilla-and-manuka-honey-teabags-840319",
+      "canonicalUrl": "https://www.pukkaherbs.com/uk/en/products/chamomile-vanilla-and-manuka-honey-tea",
+      "shopRoute": "#catalogue/accessories",
+      "slug": "jb-0437-pukka-chamomile-vanilla-and-manuka-honey-tea-20-bags-32g",
+      "color": "",
+      "description": "A 20-bag, 32 g herbal tea blend with chamomile, vanilla and manuka honey flavour notes.",
+      "material": "20 herbal tea bags",
+      "image": "a s s e t s/shop-mockup/product-catalogue/accessories-health/jb-0437-pukka-chamomile-vanilla-manuka.jpg",
+      "imageAlt": "Pukka Pukka Chamomile, Vanilla & Manuka Honey Tea — 20 Bags / 32g product shot",
+      "imageSource": "retailer_first_hero",
+      "sourceImageUrl": "https://www.harrisfarm.com.au/cdn/shop/products/840319_-Pukka-Chamomile-Vanilla-and-Manuka-Honey-Teabags-x20-32g.jpg?v=1661824879&width=1920",
+      "sourceImageIndex": 0,
+      "price": "AU$ 9",
+      "priceValue": 9,
+      "colourFamilies": [],
+      "colourEvidenceText": "",
+      "shopTypes": [
+        "accessories"
+      ],
+      "notionPageId": "3b27b9c9-9c56-810b-b0e1-cfe333abc190",
+      "sourcePageUrl": "https://www.harrisfarm.com.au/products/pukka-chamomile-vanilla-and-manuka-honey-teabags-840319",
+      "sourceOccurrences": 1,
+      "metadataStatus": "Metadata ready",
+      "requiresReview": false,
+      "listedOnShop": true,
+      "retrievedAt": "2026-08-04",
+      "currency": "AUD",
+      "shopEdits": [
+        "Accessories | Health"
+      ],
+      "editRanks": {
+        "Accessories | Health": 9,
+        "accessories": 9
+      }
+    },
+    {
+      "id": "JB-0438",
+      "brand": "Pukka",
+      "catalogueBrand": "Accessories | Health",
+      "sourceBrandHeading": "Accessories | Health",
+      "sourceTitle": "Three Ginger Tea — 20 Bags",
+      "name": "Three Ginger Tea — 20 Bags",
+      "productType": "Herbal tea",
+      "forms": [
+        "ritual",
+        "wellbeing"
+      ],
+      "retailer": "HealthyLife",
+      "retailerUrl": "https://www.healthylife.com.au/products/pukka-three-ginger-tea-bags-20-pack",
+      "canonicalUrl": "https://www.pukkaherbs.com/uk/en/products/three-ginger-tea",
+      "shopRoute": "#catalogue/accessories",
+      "slug": "jb-0438-three-ginger-tea-20-bags",
+      "color": "",
+      "description": "An organic warming herbal tea blend built around three forms of ginger, packed as 20 tea bags.",
+      "material": "20 herbal tea bags",
+      "image": "a s s e t s/shop-mockup/product-catalogue/accessories-health/jb-0438-pukka-three-ginger.webp",
+      "imageAlt": "Pukka Three Ginger Tea — 20 Bags product shot",
+      "imageSource": "retailer_first_hero",
+      "sourceImageUrl": "https://images.ctfassets.net/jhcmej8zlqgw/Zf5E4JFfr3Xatw1DSsSuW/89708fa752a328a33c77cf35603434b2/packshot-three-ginger.webp",
+      "sourceImageIndex": 0,
+      "price": "AU$ 9.35",
+      "priceValue": 9.35,
+      "colourFamilies": [],
+      "colourEvidenceText": "",
+      "shopTypes": [
+        "accessories"
+      ],
+      "notionPageId": "3b27b9c9-9c56-814d-936d-d21700b289bb",
+      "sourcePageUrl": "https://www.healthylife.com.au/products/pukka-three-ginger-tea-bags-20-pack",
+      "sourceOccurrences": 1,
+      "metadataStatus": "Metadata ready",
+      "requiresReview": false,
+      "listedOnShop": true,
+      "retrievedAt": "2026-08-04",
+      "currency": "AUD",
+      "shopEdits": [
+        "Accessories | Health"
+      ],
+      "editRanks": {
+        "Accessories | Health": 10,
+        "accessories": 10
+      }
+    },
+    {
+      "id": "JB-0439",
+      "brand": "Pukka",
+      "catalogueBrand": "Accessories | Health",
+      "sourceBrandHeading": "Accessories | Health",
+      "sourceTitle": "Pukka Turmeric Active Tea — 20 Bags / 36g",
+      "name": "Pukka Turmeric Active Tea — 20 Bags / 36g",
+      "productType": "Herbal tea",
+      "forms": [
+        "ritual",
+        "wellbeing"
+      ],
+      "retailer": "Harris Farm Markets",
+      "retailerUrl": "https://www.harrisfarm.com.au/products/pukka-turmeric-active-tea-x20-36g-840318",
+      "canonicalUrl": "https://www.harrisfarm.com.au/products/pukka-turmeric-active-tea-x20-36g-840318",
+      "shopRoute": "#catalogue/accessories",
+      "slug": "jb-0439-pukka-turmeric-active-tea-20-bags-36g",
+      "color": "",
+      "description": "A 20-bag, 36 g organic herbal tea blend featuring turmeric, ginger and galangal.",
+      "material": "20 herbal tea bags",
+      "image": "a s s e t s/shop-mockup/product-catalogue/accessories-health/jb-0439-pukka-turmeric-active.png",
+      "imageAlt": "Pukka Pukka Turmeric Active Tea — 20 Bags / 36g product shot",
+      "imageSource": "retailer_first_hero",
+      "sourceImageUrl": "https://www.harrisfarm.com.au/cdn/shop/files/840318.png?v=1754528514&width=1920",
+      "sourceImageIndex": 0,
+      "price": "AU$ 9",
+      "priceValue": 9,
+      "colourFamilies": [],
+      "colourEvidenceText": "",
+      "shopTypes": [
+        "accessories"
+      ],
+      "notionPageId": "3b27b9c9-9c56-8107-8d24-f39f17e0abea",
+      "sourcePageUrl": "https://www.harrisfarm.com.au/products/pukka-turmeric-active-tea-x20-36g-840318",
+      "sourceOccurrences": 1,
+      "metadataStatus": "Metadata ready",
+      "requiresReview": false,
+      "listedOnShop": true,
+      "retrievedAt": "2026-08-04",
+      "currency": "AUD",
+      "shopEdits": [
+        "Accessories | Health"
+      ],
+      "editRanks": {
+        "Accessories | Health": 11,
+        "accessories": 11
+      }
+    },
+    {
+      "id": "JB-0440",
+      "brand": "Song of India",
+      "catalogueBrand": "Accessories | Health",
+      "sourceBrandHeading": "Accessories | Health",
+      "sourceTitle": "Organic Goodness Incense — Sandalwood",
+      "name": "Organic Goodness Incense — Sandalwood",
+      "productType": "Incense",
+      "forms": [
+        "ritual",
+        "wellbeing"
+      ],
+      "retailer": "Incense Australia",
+      "retailerUrl": "https://incenseaustralia.com.au/products/song-of-india-organic-goodness-sandalwood",
+      "canonicalUrl": "https://incenseaustralia.com.au/products/song-of-india-organic-goodness-sandalwood",
+      "shopRoute": "#catalogue/accessories",
+      "slug": "jb-0440-organic-goodness-incense-sandalwood",
+      "color": "",
+      "description": "A 15 g packet of approximately 15 hand-rolled sandalwood masala incense sticks, made in India, with an approximate burn time of 40–45 minutes per stick.",
+      "material": "",
+      "image": "a s s e t s/shop-mockup/product-catalogue/accessories-health/jb-0440-song-of-india-sandalwood.jpg",
+      "imageAlt": "Song of India Organic Goodness Incense — Sandalwood product shot",
+      "imageSource": "retailer_first_hero",
+      "sourceImageUrl": "https://incenseaustralia.com.au/cdn/shop/files/IMG_4806-compressed.jpg?v=1775699303",
+      "sourceImageIndex": 0,
+      "price": "AU$ 4.99",
+      "priceValue": 4.99,
+      "colourFamilies": [],
+      "colourEvidenceText": "",
+      "shopTypes": [
+        "accessories"
+      ],
+      "notionPageId": "3b27b9c9-9c56-81ef-81dc-f399cc193572",
+      "sourcePageUrl": "https://incenseaustralia.com.au/products/song-of-india-organic-goodness-sandalwood",
+      "sourceOccurrences": 1,
+      "metadataStatus": "Metadata ready",
+      "requiresReview": false,
+      "listedOnShop": true,
+      "retrievedAt": "2026-08-04",
+      "currency": "AUD",
+      "shopEdits": [
+        "Accessories | Health"
+      ],
+      "editRanks": {
+        "Accessories | Health": 12,
+        "accessories": 12
+      }
+    },
+    {
+      "id": "JB-0441",
+      "brand": "Orchard St.",
+      "catalogueBrand": "Accessories | Health",
+      "sourceBrandHeading": "Accessories | Health",
+      "sourceTitle": "Orchard St. Silk Eye Mask",
+      "name": "Orchard St. Silk Eye Mask",
+      "productType": "Eye mask",
+      "forms": [
+        "ritual",
+        "wellbeing"
+      ],
+      "retailer": "Orchard St.",
+      "retailerUrl": "https://orchardstreet.com.au/products/orchard-st-silk-eye-mask",
+      "canonicalUrl": "https://orchardstreet.com.au/products/orchard-st-silk-eye-mask",
+      "shopRoute": "#catalogue/accessories",
+      "slug": "jb-0441-orchard-st-silk-eye-mask",
+      "color": "",
+      "description": "A padded silk eye mask designed as a soft ritual and sleep accessory.",
+      "material": "Silk",
+      "image": "a s s e t s/shop-mockup/product-catalogue/accessories-health/jb-0441-orchard-st-silk-eye-mask.jpg",
+      "imageAlt": "Orchard St. Orchard St. Silk Eye Mask product shot",
+      "imageSource": "retailer_first_hero",
+      "sourceImageUrl": "https://orchardstreet.com.au/cdn/shop/files/WarmerMASK_DSF0403_1024x1024.jpg?v=1764646922",
+      "sourceImageIndex": 0,
+      "price": "AU$ 58",
+      "priceValue": 58,
+      "colourFamilies": [],
+      "colourEvidenceText": "",
+      "shopTypes": [
+        "accessories"
+      ],
+      "notionPageId": "3b27b9c9-9c56-8139-8e77-ca6e83d94d7f",
+      "sourcePageUrl": "https://orchardstreet.com.au/products/orchard-st-silk-eye-mask",
+      "sourceOccurrences": 1,
+      "metadataStatus": "Metadata ready",
+      "requiresReview": false,
+      "listedOnShop": true,
+      "retrievedAt": "2026-08-04",
+      "currency": "AUD",
+      "shopEdits": [
+        "Accessories | Health"
+      ],
+      "editRanks": {
+        "Accessories | Health": 13,
+        "accessories": 13
+      }
+    },
+    {
+      "id": "JB-0442",
+      "brand": "Orchard St.",
+      "catalogueBrand": "Accessories | Health",
+      "sourceBrandHeading": "Accessories | Health",
+      "sourceTitle": "Orchard St. Silk Eye Pillow",
+      "name": "Orchard St. Silk Eye Pillow",
+      "productType": "Eye pillow",
+      "forms": [
+        "ritual",
+        "wellbeing"
+      ],
+      "retailer": "Orchard St.",
+      "retailerUrl": "https://orchardstreet.com.au/products/orchard-st-silk-eye-pillow",
+      "canonicalUrl": "https://orchardstreet.com.au/products/orchard-st-silk-eye-pillow",
+      "shopRoute": "#catalogue/accessories",
+      "slug": "jb-0442-orchard-st-silk-eye-pillow",
+      "color": "",
+      "description": "A weighted silk eye pillow designed for rest, meditation and ritual use.",
+      "material": "Silk",
+      "image": "a s s e t s/shop-mockup/product-catalogue/accessories-health/jb-0442-orchard-st-silk-eye-pillow.jpg",
+      "imageAlt": "Orchard St. Orchard St. Silk Eye Pillow product shot",
+      "imageSource": "retailer_first_hero",
+      "sourceImageUrl": "https://orchardstreet.com.au/cdn/shop/files/WarmHeadpillow_DSF0396_1024x1024.jpg?v=1764646875",
+      "sourceImageIndex": 0,
+      "price": "AU$ 65",
+      "priceValue": 65,
+      "colourFamilies": [],
+      "colourEvidenceText": "",
+      "shopTypes": [
+        "accessories"
+      ],
+      "notionPageId": "3b27b9c9-9c56-8114-89f8-cd0da9864ab0",
+      "sourcePageUrl": "https://orchardstreet.com.au/products/orchard-st-silk-eye-pillow",
+      "sourceOccurrences": 1,
+      "metadataStatus": "Metadata ready",
+      "requiresReview": false,
+      "listedOnShop": true,
+      "retrievedAt": "2026-08-04",
+      "currency": "AUD",
+      "shopEdits": [
+        "Accessories | Health"
+      ],
+      "editRanks": {
+        "Accessories | Health": 14,
+        "accessories": 14
+      }
+    },
+    {
+      "id": "JB-0443",
+      "brand": "Orchard St.",
+      "catalogueBrand": "Accessories | Health",
+      "sourceBrandHeading": "Accessories | Health",
+      "sourceTitle": "Orchard St. Ceremonial Cacao Cup",
+      "name": "Orchard St. Ceremonial Cacao Cup",
+      "productType": "Ceremonial cup",
+      "forms": [
+        "ritual",
+        "wellbeing"
+      ],
+      "retailer": "Orchard St.",
+      "retailerUrl": "https://orchardstreet.com.au/products/orchard-st-ceremonial-cacao-cup",
+      "canonicalUrl": "https://orchardstreet.com.au/products/orchard-st-ceremonial-cacao-cup",
+      "shopRoute": "#catalogue/accessories",
+      "slug": "jb-0443-orchard-st-ceremonial-cacao-cup",
+      "color": "",
+      "description": "A small ceremonial cup made for serving cacao and other warm ritual drinks.",
+      "material": "Ceramic",
+      "image": "a s s e t s/shop-mockup/product-catalogue/accessories-health/jb-0443-orchard-st-ceremonial-cacao-cup.jpg",
+      "imageAlt": "Orchard St. Orchard St. Ceremonial Cacao Cup product shot",
+      "imageSource": "retailer_first_hero",
+      "sourceImageUrl": "https://orchardstreet.com.au/cdn/shop/files/WarmCup_DSF0575_1024x1024.jpg?v=1764644965",
+      "sourceImageIndex": 0,
+      "price": "AU$ 38",
+      "priceValue": 38,
+      "colourFamilies": [],
+      "colourEvidenceText": "",
+      "shopTypes": [
+        "accessories"
+      ],
+      "notionPageId": "3b27b9c9-9c56-81e3-bee3-e18901982148",
+      "sourcePageUrl": "https://orchardstreet.com.au/products/orchard-st-ceremonial-cacao-cup",
+      "sourceOccurrences": 1,
+      "metadataStatus": "Metadata ready",
+      "requiresReview": false,
+      "listedOnShop": true,
+      "retrievedAt": "2026-08-04",
+      "currency": "AUD",
+      "shopEdits": [
+        "Accessories | Health"
+      ],
+      "editRanks": {
+        "Accessories | Health": 15,
+        "accessories": 15
+      }
+    },
+    {
+      "id": "JB-0444",
+      "brand": "Orchard St.",
+      "catalogueBrand": "Accessories | Health",
+      "sourceBrandHeading": "Accessories | Health",
+      "sourceTitle": "Orchard St. Tealight Candle Holder",
+      "name": "Orchard St. Tealight Candle Holder",
+      "productType": "Candle holder",
+      "forms": [
+        "ritual",
+        "wellbeing"
+      ],
+      "retailer": "Orchard St.",
+      "retailerUrl": "https://orchardstreet.com.au/products/orchard-st-tealight-candle-holder",
+      "canonicalUrl": "https://orchardstreet.com.au/products/orchard-st-tealight-candle-holder",
+      "shopRoute": "#catalogue/accessories",
+      "slug": "jb-0444-orchard-st-tealight-candle-holder",
+      "color": "",
+      "description": "A compact tealight holder intended for altar, table and ambient ritual settings.",
+      "material": "",
+      "image": "a s s e t s/shop-mockup/product-catalogue/accessories-health/jb-0444-orchard-st-tealight-holder.jpg",
+      "imageAlt": "Orchard St. Orchard St. Tealight Candle Holder product shot",
+      "imageSource": "retailer_first_hero",
+      "sourceImageUrl": "https://orchardstreet.com.au/cdn/shop/files/WarmV_CH_Small2_1024x1024.jpg?v=1764646974",
+      "sourceImageIndex": 0,
+      "price": "AU$ 18",
+      "priceValue": 18,
+      "colourFamilies": [],
+      "colourEvidenceText": "",
+      "shopTypes": [
+        "accessories"
+      ],
+      "notionPageId": "3b27b9c9-9c56-8111-96e0-e4e7c511600c",
+      "sourcePageUrl": "https://orchardstreet.com.au/products/orchard-st-tealight-candle-holder",
+      "sourceOccurrences": 1,
+      "metadataStatus": "Metadata ready",
+      "requiresReview": false,
+      "listedOnShop": true,
+      "retrievedAt": "2026-08-04",
+      "currency": "AUD",
+      "shopEdits": [
+        "Accessories | Health"
+      ],
+      "editRanks": {
+        "Accessories | Health": 16,
+        "accessories": 16
+      }
+    },
+    {
+      "id": "JB-0445",
+      "brand": "LEIF",
+      "catalogueBrand": "Accessories | Health",
+      "sourceBrandHeading": "Accessories | Health",
+      "sourceTitle": "Limited Edition Gold Label Buddha Wood Hand Wash — 1.5L",
+      "name": "Limited Edition Gold Label Buddha Wood Hand Wash — 1.5L",
+      "productType": "Hand wash",
+      "forms": [
+        "ritual",
+        "wellbeing"
+      ],
+      "retailer": "circabc",
+      "retailerUrl": "https://www.circabc.com.au/products/limited-edition-gold-label-buddha-wood-hand-wash-by-leif",
+      "canonicalUrl": "https://www.circabc.com.au/products/limited-edition-gold-label-buddha-wood-hand-wash-by-leif",
+      "shopRoute": "#catalogue/accessories",
+      "slug": "jb-0445-limited-edition-gold-label-buddha-wood-hand-wash-1-5l",
+      "color": "",
+      "description": "A limited-edition 1.5 litre Buddha Wood hand wash presented in LEIF's gold-label format.",
+      "material": "Liquid hand wash; 1.5 L container",
+      "image": "a s s e t s/shop-mockup/product-catalogue/accessories-health/jb-0445-leif-buddha-wood-hand-wash.jpg",
+      "imageAlt": "LEIF Limited Edition Gold Label Buddha Wood Hand Wash — 1.5L product shot",
+      "imageSource": "retailer_first_hero",
+      "sourceImageUrl": "https://www.circabc.com.au/cdn/shop/files/LEIFLIMITEDEDITIONGOLDLABELBUDDHAWOODHANDWASH.jpg?v=1757234362&width=1920",
+      "sourceImageIndex": 0,
+      "price": "AU$ 99",
+      "priceValue": 99,
+      "colourFamilies": [],
+      "colourEvidenceText": "",
+      "shopTypes": [
+        "accessories"
+      ],
+      "notionPageId": "3b27b9c9-9c56-81c8-b999-efbb5eaeaff8",
+      "sourcePageUrl": "https://www.circabc.com.au/products/limited-edition-gold-label-buddha-wood-hand-wash-by-leif",
+      "sourceOccurrences": 1,
+      "metadataStatus": "Metadata ready",
+      "requiresReview": false,
+      "listedOnShop": true,
+      "retrievedAt": "2026-08-04",
+      "currency": "AUD",
+      "shopEdits": [
+        "Accessories | Health"
+      ],
+      "editRanks": {
+        "Accessories | Health": 17,
+        "accessories": 17
+      }
+    },
+    {
+      "id": "JB-0446",
+      "brand": "Soltys Label",
+      "catalogueBrand": "Accessories | Health",
+      "sourceBrandHeading": "Accessories | Health",
+      "sourceTitle": "Sita Silk Kimono by Soltys Label",
+      "name": "Sita Silk Kimono by Soltys Label",
+      "productType": "Silk kimono",
+      "forms": [
+        "ritual",
+        "wellbeing"
+      ],
+      "retailer": "circabc",
+      "retailerUrl": "https://www.circabc.com.au/products/sita-silk-kimono-by-soltys-label",
+      "canonicalUrl": "https://www.circabc.com.au/products/sita-silk-kimono-by-soltys-label",
+      "shopRoute": "#catalogue/accessories",
+      "slug": "jb-0446-sita-silk-kimono-by-soltys-label",
+      "color": "",
+      "description": "A made-to-order silk kimono by Soltys Label with an estimated production lead time of four to six weeks.",
+      "material": "Silk",
+      "image": "a s s e t s/shop-mockup/product-catalogue/accessories-health/jb-0446-soltys-sita-silk-kimono.jpg",
+      "imageAlt": "Soltys Label Sita Silk Kimono by Soltys Label product shot",
+      "imageSource": "retailer_first_hero",
+      "sourceImageUrl": "https://www.circabc.com.au/cdn/shop/files/SOLTYSLABELSITASILKKIMONO8.jpg?v=1756871750&width=1500",
+      "sourceImageIndex": 0,
+      "price": "AU$ 595",
+      "priceValue": 595,
+      "colourFamilies": [],
+      "colourEvidenceText": "",
+      "shopTypes": [
+        "accessories"
+      ],
+      "notionPageId": "3b27b9c9-9c56-8195-84c8-f4ff335a2250",
+      "sourcePageUrl": "https://www.circabc.com.au/products/sita-silk-kimono-by-soltys-label",
+      "sourceOccurrences": 1,
+      "metadataStatus": "Metadata ready",
+      "requiresReview": false,
+      "listedOnShop": true,
+      "retrievedAt": "2026-08-04",
+      "currency": "AUD",
+      "shopEdits": [
+        "Accessories | Health"
+      ],
+      "editRanks": {
+        "Accessories | Health": 18,
+        "accessories": 18
+      }
+    },
+    {
+      "id": "JB-0447",
+      "brand": "Soltys Label",
+      "catalogueBrand": "Accessories | Health",
+      "sourceBrandHeading": "Accessories | Health",
+      "sourceTitle": "Hrasita Silk Kimono by Soltys Label",
+      "name": "Hrasita Silk Kimono by Soltys Label",
+      "productType": "Silk kimono",
+      "forms": [
+        "ritual",
+        "wellbeing"
+      ],
+      "retailer": "circabc",
+      "retailerUrl": "https://www.circabc.com.au/products/hrasita-silk-kimono-by-soltys-label",
+      "canonicalUrl": "https://www.circabc.com.au/products/hrasita-silk-kimono-by-soltys-label",
+      "shopRoute": "#catalogue/accessories",
+      "slug": "jb-0447-hrasita-silk-kimono-by-soltys-label",
+      "color": "",
+      "description": "A made-to-order silk kimono by Soltys Label with an estimated production lead time of four to six weeks.",
+      "material": "Silk",
+      "image": "a s s e t s/shop-mockup/product-catalogue/accessories-health/jb-0447-soltys-hrasita-silk-kimono.jpg",
+      "imageAlt": "Soltys Label Hrasita Silk Kimono by Soltys Label product shot",
+      "imageSource": "editorial_override",
+      "sourceImageUrl": "https://www.circabc.com.au/cdn/shop/files/SOLTYSLABELHRASITASILKKIMONO14.jpg?v=1756873846&width=1500",
+      "sourceImageIndex": 0,
+      "price": "AU$ 495",
+      "priceValue": 495,
+      "colourFamilies": [],
+      "colourEvidenceText": "",
+      "shopTypes": [
+        "accessories"
+      ],
+      "notionPageId": "3b27b9c9-9c56-81b0-b4ff-ce8f85773a54",
+      "sourcePageUrl": "https://www.circabc.com.au/products/hrasita-silk-kimono-by-soltys-label",
+      "sourceOccurrences": 1,
+      "metadataStatus": "Metadata ready",
+      "requiresReview": false,
+      "listedOnShop": true,
+      "retrievedAt": "2026-08-04",
+      "currency": "AUD",
+      "shopEdits": [
+        "Accessories | Health"
+      ],
+      "editRanks": {
+        "Accessories | Health": 19,
+        "accessories": 19
+      }
+    },
+    {
+      "id": "JB-0448",
+      "brand": "Soltys Label",
+      "catalogueBrand": "Accessories | Health",
+      "sourceBrandHeading": "Accessories | Health",
+      "sourceTitle": "Botanical Silk Wrap by Soltys Label",
+      "name": "Botanical Silk Wrap by Soltys Label",
+      "productType": "Silk wrap",
+      "forms": [
+        "ritual",
+        "wellbeing"
+      ],
+      "retailer": "circabc",
+      "retailerUrl": "https://www.circabc.com.au/products/botanical-silk-wrap-by-soltys-label",
+      "canonicalUrl": "https://www.circabc.com.au/products/botanical-silk-wrap-by-soltys-label",
+      "shopRoute": "#catalogue/accessories",
+      "slug": "jb-0448-botanical-silk-wrap-by-soltys-label",
+      "color": "",
+      "description": "A made-to-order botanical silk wrap by Soltys Label, photographed as a translucent styling piece.",
+      "material": "Silk",
+      "image": "a s s e t s/shop-mockup/product-catalogue/accessories-health/jb-0448-soltys-botanical-silk-wrap.jpg",
+      "imageAlt": "Soltys Label Botanical Silk Wrap by Soltys Label product shot",
+      "imageSource": "retailer_first_hero",
+      "sourceImageUrl": "https://www.circabc.com.au/cdn/shop/files/SOLTYSLABELSILKPLANTWRAP5.jpg?v=1756860196&width=1500",
+      "sourceImageIndex": 0,
+      "price": "AU$ 89",
+      "priceValue": 89,
+      "colourFamilies": [],
+      "colourEvidenceText": "",
+      "shopTypes": [
+        "accessories"
+      ],
+      "notionPageId": "3b27b9c9-9c56-810e-9193-dd985707769d",
+      "sourcePageUrl": "https://www.circabc.com.au/products/botanical-silk-wrap-by-soltys-label",
+      "sourceOccurrences": 1,
+      "metadataStatus": "Metadata ready",
+      "requiresReview": false,
+      "listedOnShop": true,
+      "retrievedAt": "2026-08-04",
+      "currency": "AUD",
+      "shopEdits": [
+        "Accessories | Health"
+      ],
+      "editRanks": {
+        "Accessories | Health": 20,
+        "accessories": 20
+      }
+    },
+    {
+      "id": "JB-0449",
+      "brand": "The Arkenstone",
+      "catalogueBrand": "Accessories | Health",
+      "sourceBrandHeading": "Accessories | Health",
+      "sourceTitle": "Bournonite on Fluorite — SM26-113",
+      "name": "Bournonite on Fluorite — SM26-113",
+      "productType": "Mineral specimen",
+      "forms": [
+        "mineral"
+      ],
+      "retailer": "iRocks / The Arkenstone",
+      "retailerUrl": "https://www.irocks.com/minerals/specimen/54320",
+      "canonicalUrl": "https://www.irocks.com/minerals/specimen/54320",
+      "shopRoute": "#catalogue/accessories",
+      "slug": "jb-0449-bournonite-on-fluorite-sm26-113",
+      "color": "",
+      "description": "A bournonite-on-fluorite mineral specimen from Yaogangxian Mine, China, measuring 4.2 × 3.7 × 1.8 cm.",
+      "material": "",
+      "image": "a s s e t s/shop-mockup/product-catalogue/accessories-health/jb-0449-arkenstone-bournonite-fluorite.jpg",
+      "imageAlt": "The Arkenstone Bournonite on Fluorite — SM26-113 product shot",
+      "imageSource": "retailer_first_hero",
+      "sourceImageUrl": "https://www.irocks.com/storage/media/108138/sm26-113a-wm.jpg",
+      "sourceImageIndex": 0,
+      "price": "AU$ 2,582.28",
+      "priceValue": 2582.28,
+      "colourFamilies": [],
+      "colourEvidenceText": "",
+      "shopTypes": [
+        "accessories"
+      ],
+      "notionPageId": "3b27b9c9-9c56-815a-ad5a-c64fccf919f5",
+      "sourcePageUrl": "https://www.irocks.com/minerals/specimen/54320",
+      "sourceOccurrences": 1,
+      "metadataStatus": "Metadata ready",
+      "requiresReview": false,
+      "listedOnShop": true,
+      "retrievedAt": "2026-08-04",
+      "currency": "AUD",
+      "shopEdits": [
+        "Accessories | Health"
+      ],
+      "editRanks": {
+        "Accessories | Health": 21,
+        "accessories": 21
+      },
+      "mediaUsage": "Locked MVP image permission confirmed by Ben on 2026-08-04"
+    },
+    {
+      "id": "JB-0450",
+      "brand": "The Arkenstone",
+      "catalogueBrand": "Accessories | Health",
+      "sourceBrandHeading": "Accessories | Health",
+      "sourceTitle": "Clintonite — SM26-112",
+      "name": "Clintonite — SM26-112",
+      "productType": "Mineral specimen",
+      "forms": [
+        "mineral"
+      ],
+      "retailer": "iRocks / The Arkenstone",
+      "retailerUrl": "https://www.irocks.com/minerals/specimen/54319",
+      "canonicalUrl": "https://www.irocks.com/minerals/specimen/54319",
+      "shopRoute": "#catalogue/accessories",
+      "slug": "jb-0450-clintonite-sm26-112",
+      "color": "",
+      "description": "A clintonite mineral specimen from the Crestmore quarries, USA, measuring 2.8 × 2.0 × 1.6 cm.",
+      "material": "",
+      "image": "a s s e t s/shop-mockup/product-catalogue/accessories-health/jb-0450-arkenstone-clintonite.jpg",
+      "imageAlt": "The Arkenstone Clintonite — SM26-112 product shot",
+      "imageSource": "retailer_first_hero",
+      "sourceImageUrl": "https://www.irocks.com/storage/media/108136/sm26-112a-wm.jpg",
+      "sourceImageIndex": 0,
+      "price": "AU$ 1,793.25",
+      "priceValue": 1793.25,
+      "colourFamilies": [],
+      "colourEvidenceText": "",
+      "shopTypes": [
+        "accessories"
+      ],
+      "notionPageId": "3b27b9c9-9c56-81bd-8645-e08a2f4b8c80",
+      "sourcePageUrl": "https://www.irocks.com/minerals/specimen/54319",
+      "sourceOccurrences": 1,
+      "metadataStatus": "Metadata ready",
+      "requiresReview": false,
+      "listedOnShop": true,
+      "retrievedAt": "2026-08-04",
+      "currency": "AUD",
+      "shopEdits": [
+        "Accessories | Health"
+      ],
+      "editRanks": {
+        "Accessories | Health": 22,
+        "accessories": 22
+      },
+      "mediaUsage": "Locked MVP image permission confirmed by Ben on 2026-08-04"
+    },
+    {
+      "id": "JB-0451",
+      "brand": "The Arkenstone",
+      "catalogueBrand": "Accessories | Health",
+      "sourceBrandHeading": "Accessories | Health",
+      "sourceTitle": "Fluorite & Quartz — SM26-111",
+      "name": "Fluorite & Quartz — SM26-111",
+      "productType": "Mineral specimen",
+      "forms": [
+        "mineral"
+      ],
+      "retailer": "iRocks / The Arkenstone",
+      "retailerUrl": "https://www.irocks.com/minerals/specimen/54318",
+      "canonicalUrl": "https://www.irocks.com/minerals/specimen/54318",
+      "shopRoute": "#catalogue/accessories",
+      "slug": "jb-0451-fluorite-and-quartz-sm26-111",
+      "color": "",
+      "description": "A fluorite-and-quartz mineral specimen from the Huanggang Fe-Sn deposit, China, measuring 4.7 × 3.3 × 2.2 cm.",
+      "material": "",
+      "image": "a s s e t s/shop-mockup/product-catalogue/accessories-health/jb-0451-arkenstone-fluorite-quartz.jpg",
+      "imageAlt": "The Arkenstone Fluorite & Quartz — SM26-111 product shot",
+      "imageSource": "retailer_first_hero",
+      "sourceImageUrl": "https://www.irocks.com/storage/media/108132/sm26-111a-wm.jpg",
+      "sourceImageIndex": 0,
+      "price": "AU$ 1,793.25",
+      "priceValue": 1793.25,
+      "colourFamilies": [],
+      "colourEvidenceText": "",
+      "shopTypes": [
+        "accessories"
+      ],
+      "notionPageId": "3b27b9c9-9c56-81a0-aa95-d1a1b555cebc",
+      "sourcePageUrl": "https://www.irocks.com/minerals/specimen/54318",
+      "sourceOccurrences": 1,
+      "metadataStatus": "Metadata ready",
+      "requiresReview": false,
+      "listedOnShop": true,
+      "retrievedAt": "2026-08-04",
+      "currency": "AUD",
+      "shopEdits": [
+        "Accessories | Health"
+      ],
+      "editRanks": {
+        "Accessories | Health": 23,
+        "accessories": 23
+      },
+      "mediaUsage": "Locked MVP image permission confirmed by Ben on 2026-08-04"
+    },
+    {
+      "id": "JB-0452",
+      "brand": "The Arkenstone",
+      "catalogueBrand": "Accessories | Health",
+      "sourceBrandHeading": "Accessories | Health",
+      "sourceTitle": "Rhodonite — SM26-108",
+      "name": "Rhodonite — SM26-108",
+      "productType": "Mineral specimen",
+      "forms": [
+        "mineral"
+      ],
+      "retailer": "iRocks / The Arkenstone",
+      "retailerUrl": "https://www.irocks.com/minerals/specimen/54316",
+      "canonicalUrl": "https://www.irocks.com/minerals/specimen/54316",
+      "shopRoute": "#catalogue/accessories",
+      "slug": "jb-0452-rhodonite-sm26-108",
+      "color": "",
+      "description": "A rhodonite mineral specimen from Morro da Mina mine, Brazil, measuring 2.9 × 1.2 × 1.0 cm.",
+      "material": "",
+      "image": "a s s e t s/shop-mockup/product-catalogue/accessories-health/jb-0452-arkenstone-rhodonite.jpg",
+      "imageAlt": "The Arkenstone Rhodonite — SM26-108 product shot",
+      "imageSource": "retailer_first_hero",
+      "sourceImageUrl": "https://www.irocks.com/storage/media/108126/sm26-108a-wm.jpg",
+      "sourceImageIndex": 0,
+      "price": "AU$ 5,021.10",
+      "priceValue": 5021.1,
+      "colourFamilies": [],
+      "colourEvidenceText": "",
+      "shopTypes": [
+        "accessories"
+      ],
+      "notionPageId": "3b27b9c9-9c56-81f4-beb2-f8eaa40c39a1",
+      "sourcePageUrl": "https://www.irocks.com/minerals/specimen/54316",
+      "sourceOccurrences": 1,
+      "metadataStatus": "Metadata ready",
+      "requiresReview": false,
+      "listedOnShop": true,
+      "retrievedAt": "2026-08-04",
+      "currency": "AUD",
+      "shopEdits": [
+        "Accessories | Health"
+      ],
+      "editRanks": {
+        "Accessories | Health": 24,
+        "accessories": 24
+      },
+      "mediaUsage": "Locked MVP image permission confirmed by Ben on 2026-08-04"
+    },
+    {
+      "id": "JB-0453",
+      "brand": "The Arkenstone",
+      "catalogueBrand": "Accessories | Health",
+      "sourceBrandHeading": "Accessories | Health",
+      "sourceTitle": "Adamite (Cuprian and REE-enriched) — SM26-102",
+      "name": "Adamite (Cuprian and REE-enriched) — SM26-102",
+      "productType": "Mineral specimen",
+      "forms": [
+        "mineral"
+      ],
+      "retailer": "iRocks / The Arkenstone",
+      "retailerUrl": "https://www.irocks.com/minerals/specimen/54310",
+      "canonicalUrl": "https://www.irocks.com/minerals/specimen/54310",
+      "shopRoute": "#catalogue/accessories",
+      "slug": "jb-0453-adamite-cuprian-and-ree-enriched-sm26-102",
+      "color": "",
+      "description": "A cuprian and REE-enriched adamite specimen from Hilarion Mine, Greece, measuring 9.1 × 5.7 × 4.1 cm.",
+      "material": "",
+      "image": "a s s e t s/shop-mockup/product-catalogue/accessories-health/jb-0453-arkenstone-adamite.jpg",
+      "imageAlt": "The Arkenstone Adamite (Cuprian and REE-enriched) — SM26-102 product shot",
+      "imageSource": "retailer_first_hero",
+      "sourceImageUrl": "https://www.irocks.com/storage/media/108106/sm26-102a-wm.jpg",
+      "sourceImageIndex": 0,
+      "price": "AU$ 5,021.10",
+      "priceValue": 5021.1,
+      "colourFamilies": [],
+      "colourEvidenceText": "",
+      "shopTypes": [
+        "accessories"
+      ],
+      "notionPageId": "3b27b9c9-9c56-814c-a24d-d63e05837224",
+      "sourcePageUrl": "https://www.irocks.com/minerals/specimen/54310",
+      "sourceOccurrences": 1,
+      "metadataStatus": "Metadata ready",
+      "requiresReview": false,
+      "listedOnShop": true,
+      "retrievedAt": "2026-08-04",
+      "currency": "AUD",
+      "shopEdits": [
+        "Accessories | Health"
+      ],
+      "editRanks": {
+        "Accessories | Health": 25,
+        "accessories": 25
+      },
+      "mediaUsage": "Locked MVP image permission confirmed by Ben on 2026-08-04"
+    },
+    {
+      "id": "JB-0454",
+      "brand": "The Arkenstone",
+      "catalogueBrand": "Accessories | Health",
+      "sourceBrandHeading": "Accessories | Health",
+      "sourceTitle": "Azurite — SM26-100",
+      "name": "Azurite — SM26-100",
+      "productType": "Mineral specimen",
+      "forms": [
+        "mineral"
+      ],
+      "retailer": "iRocks / The Arkenstone",
+      "retailerUrl": "https://www.irocks.com/minerals/specimen/54308",
+      "canonicalUrl": "https://www.irocks.com/minerals/specimen/54308",
+      "shopRoute": "#catalogue/accessories",
+      "slug": "jb-0454-azurite-sm26-100",
+      "color": "",
+      "description": "An azurite mineral specimen from Malbunka Copper Mine, Australia, measuring 10.5 × 7.1 × 4.4 cm.",
+      "material": "",
+      "image": "a s s e t s/shop-mockup/product-catalogue/accessories-health/jb-0454-arkenstone-azurite.jpg",
+      "imageAlt": "The Arkenstone Azurite — SM26-100 product shot",
+      "imageSource": "retailer_first_hero",
+      "sourceImageUrl": "https://www.irocks.com/storage/media/108101/sm26-100a-wm.jpg",
+      "sourceImageIndex": 0,
+      "price": "AU$ 3,945.15",
+      "priceValue": 3945.15,
+      "colourFamilies": [],
+      "colourEvidenceText": "",
+      "shopTypes": [
+        "accessories"
+      ],
+      "notionPageId": "3b27b9c9-9c56-81ad-b27d-c6cd8dae50c7",
+      "sourcePageUrl": "https://www.irocks.com/minerals/specimen/54308",
+      "sourceOccurrences": 1,
+      "metadataStatus": "Metadata ready",
+      "requiresReview": false,
+      "listedOnShop": true,
+      "retrievedAt": "2026-08-04",
+      "currency": "AUD",
+      "shopEdits": [
+        "Accessories | Health"
+      ],
+      "editRanks": {
+        "Accessories | Health": 26,
+        "accessories": 26
+      },
+      "mediaUsage": "Locked MVP image permission confirmed by Ben on 2026-08-04"
+    },
+    {
+      "id": "JB-0455",
+      "brand": "The Arkenstone",
+      "catalogueBrand": "Accessories | Health",
+      "sourceBrandHeading": "Accessories | Health",
+      "sourceTitle": "Zoisite var. Tanzanite — SM26-098",
+      "name": "Zoisite var. Tanzanite — SM26-098",
+      "productType": "Mineral specimen",
+      "forms": [
+        "mineral"
+      ],
+      "retailer": "iRocks / The Arkenstone",
+      "retailerUrl": "https://www.irocks.com/minerals/specimen/54306",
+      "canonicalUrl": "https://www.irocks.com/minerals/specimen/54306",
+      "shopRoute": "#catalogue/accessories",
+      "slug": "jb-0455-zoisite-var-tanzanite-sm26-098",
+      "color": "",
+      "description": "A tanzanite-variety zoisite specimen from Merelani Hills, Tanzania, measuring 5.8 × 2.9 × 2.3 cm.",
+      "material": "",
+      "image": "a s s e t s/shop-mockup/product-catalogue/accessories-health/jb-0455-arkenstone-tanzanite.jpg",
+      "imageAlt": "The Arkenstone Zoisite var. Tanzanite — SM26-098 product shot",
+      "imageSource": "retailer_first_hero",
+      "sourceImageUrl": "https://www.irocks.com/storage/media/108097/sm26-098b-wm.jpg",
+      "sourceImageIndex": 0,
+      "price": "AU$ 4,016.88",
+      "priceValue": 4016.88,
+      "colourFamilies": [],
+      "colourEvidenceText": "",
+      "shopTypes": [
+        "accessories"
+      ],
+      "notionPageId": "3b27b9c9-9c56-81cf-8729-c4d4182c8f64",
+      "sourcePageUrl": "https://www.irocks.com/minerals/specimen/54306",
+      "sourceOccurrences": 1,
+      "metadataStatus": "Metadata ready",
+      "requiresReview": false,
+      "listedOnShop": true,
+      "retrievedAt": "2026-08-04",
+      "currency": "AUD",
+      "shopEdits": [
+        "Accessories | Health"
+      ],
+      "editRanks": {
+        "Accessories | Health": 27,
+        "accessories": 27
+      },
+      "mediaUsage": "Locked MVP image permission confirmed by Ben on 2026-08-04"
+    },
+    {
+      "id": "JB-0456",
+      "brand": "The Arkenstone",
+      "catalogueBrand": "Accessories | Health",
+      "sourceBrandHeading": "Accessories | Health",
+      "sourceTitle": "Elbaite Tourmaline and Stilbite — SM26-093",
+      "name": "Elbaite Tourmaline and Stilbite — SM26-093",
+      "productType": "Mineral specimen",
+      "forms": [
+        "mineral"
+      ],
+      "retailer": "iRocks / The Arkenstone",
+      "retailerUrl": "https://www.irocks.com/minerals/specimen/54301",
+      "canonicalUrl": "https://www.irocks.com/minerals/specimen/54301",
+      "shopRoute": "#catalogue/accessories",
+      "slug": "jb-0456-elbaite-tourmaline-and-stilbite-sm26-093",
+      "color": "",
+      "description": "An elbaite-tourmaline and stilbite specimen from Himalaya Mine, USA, measuring 5.3 × 2.9 × 2.5 cm.",
+      "material": "",
+      "image": "a s s e t s/shop-mockup/product-catalogue/accessories-health/jb-0456-arkenstone-elbaite-tourmaline-stilbite.jpg",
+      "imageAlt": "The Arkenstone Elbaite Tourmaline and Stilbite — SM26-093 product shot",
+      "imageSource": "retailer_first_hero",
+      "sourceImageUrl": "https://www.irocks.com/storage/media/108080/sm26-093e-wm.jpg",
+      "sourceImageIndex": 0,
+      "price": "AU$ 8,607.60",
+      "priceValue": 8607.6,
+      "colourFamilies": [],
+      "colourEvidenceText": "",
+      "shopTypes": [
+        "accessories"
+      ],
+      "notionPageId": "3b27b9c9-9c56-8162-ac80-f65f677c84cb",
+      "sourcePageUrl": "https://www.irocks.com/minerals/specimen/54301",
+      "sourceOccurrences": 1,
+      "metadataStatus": "Metadata ready",
+      "requiresReview": false,
+      "listedOnShop": true,
+      "retrievedAt": "2026-08-04",
+      "currency": "AUD",
+      "shopEdits": [
+        "Accessories | Health"
+      ],
+      "editRanks": {
+        "Accessories | Health": 28,
+        "accessories": 28
+      },
+      "mediaUsage": "Locked MVP image permission confirmed by Ben on 2026-08-04"
+    },
+    {
+      "id": "JB-0457",
+      "brand": "The Arkenstone",
+      "catalogueBrand": "Accessories | Health",
+      "sourceBrandHeading": "Accessories | Health",
+      "sourceTitle": "Fluorite on Calcite — HALP25-029",
+      "name": "Fluorite on Calcite — HALP25-029",
+      "productType": "Mineral specimen",
+      "forms": [
+        "mineral"
+      ],
+      "retailer": "iRocks / The Arkenstone",
+      "retailerUrl": "https://www.irocks.com/minerals/specimen/52697",
+      "canonicalUrl": "https://www.irocks.com/minerals/specimen/52697",
+      "shopRoute": "#catalogue/accessories",
+      "slug": "jb-0457-fluorite-on-calcite-halp25-029",
+      "color": "",
+      "description": "A fluorite-on-calcite mineral specimen from Nikolaevskiy Mine, Russia; the source page is led by a product video rather than a reusable still image.",
+      "material": "",
+      "image": "a s s e t s/shop-mockup/product-catalogue/accessories-health/jb-0457-arkenstone-fluorite-calcite-video-poster.jpg",
+      "imageAlt": "The Arkenstone Fluorite on Calcite — HALP25-029 video poster",
+      "imageSource": "retailer_video_poster",
+      "sourceImageUrl": "https://i.vimeocdn.com/video/2000668658-9287d86e8a0725c3e191d2a2ea8c37543050e6481515fdb4325444df3c51cd4d-d_1280x960?region=us",
+      "sourceImageIndex": 0,
+      "sourceVideoUrl": "https://vimeo.com/1071184405",
+      "videoEmbed": "https://player.vimeo.com/video/1071184405?autoplay=1&muted=1&loop=1&title=0&byline=0&portrait=0",
+      "price": "AU$ 53,797.50",
+      "priceValue": 53797.5,
+      "colourFamilies": [],
+      "colourEvidenceText": "",
+      "shopTypes": [
+        "accessories"
+      ],
+      "notionPageId": "3b27b9c9-9c56-81e2-8464-d5d2279ad09f",
+      "sourcePageUrl": "https://www.irocks.com/minerals/specimen/52697",
+      "sourceOccurrences": 1,
+      "metadataStatus": "Metadata ready",
+      "requiresReview": false,
+      "listedOnShop": true,
+      "retrievedAt": "2026-08-04",
+      "currency": "AUD",
+      "shopEdits": [
+        "Accessories | Health"
+      ],
+      "editRanks": {
+        "Accessories | Health": 29,
+        "accessories": 29
+      },
+      "mediaUsage": "Locked MVP image permission confirmed by Ben on 2026-08-04"
+    },
+    {
+      "id": "JB-0458",
+      "brand": "The Arkenstone",
+      "catalogueBrand": "Accessories | Health",
+      "sourceBrandHeading": "Accessories | Health",
+      "sourceTitle": "Beryl var. Aquamarine on Albite — SM22-24",
+      "name": "Beryl var. Aquamarine on Albite — SM22-24",
+      "productType": "Mineral specimen",
+      "forms": [
+        "mineral"
+      ],
+      "retailer": "iRocks / The Arkenstone",
+      "retailerUrl": "https://www.irocks.com/minerals/specimen/49923",
+      "canonicalUrl": "https://www.irocks.com/minerals/specimen/49923",
+      "shopRoute": "#catalogue/accessories",
+      "slug": "jb-0458-beryl-var-aquamarine-on-albite-sm22-24",
+      "color": "",
+      "description": "An aquamarine-variety beryl on albite specimen from Jaqueto mine, Brazil, measuring 13.3 × 4.6 × 3.9 cm.",
+      "material": "",
+      "image": "a s s e t s/shop-mockup/product-catalogue/accessories-health/jb-0458-arkenstone-aquamarine-albite.jpg",
+      "imageAlt": "The Arkenstone Beryl var. Aquamarine on Albite — SM22-24 product shot",
+      "imageSource": "retailer_first_hero",
+      "sourceImageUrl": "https://www.irocks.com/storage/media/98196/sm22-24b-wm.jpg",
+      "sourceImageIndex": 0,
+      "price": "AU$ 35,865",
+      "priceValue": 35865,
+      "colourFamilies": [],
+      "colourEvidenceText": "",
+      "shopTypes": [
+        "accessories"
+      ],
+      "notionPageId": "3b27b9c9-9c56-81a3-9ac5-f4187d94218a",
+      "sourcePageUrl": "https://www.irocks.com/minerals/specimen/49923",
+      "sourceOccurrences": 1,
+      "metadataStatus": "Metadata ready",
+      "requiresReview": false,
+      "listedOnShop": true,
+      "retrievedAt": "2026-08-04",
+      "currency": "AUD",
+      "shopEdits": [
+        "Accessories | Health"
+      ],
+      "editRanks": {
+        "Accessories | Health": 30,
+        "accessories": 30
+      },
+      "mediaUsage": "Locked MVP image permission confirmed by Ben on 2026-08-04"
+    },
+    {
+      "id": "JB-0460",
+      "brand": "The Arkenstone",
+      "catalogueBrand": "Accessories | Health",
+      "sourceBrandHeading": "Accessories | Health",
+      "sourceTitle": "Sperrylite — STAHL26-70",
+      "name": "Sperrylite — STAHL26-70",
+      "productType": "Mineral specimen",
+      "forms": [
+        "mineral"
+      ],
+      "retailer": "iRocks / The Arkenstone",
+      "retailerUrl": "https://www.irocks.com/minerals/specimen/54162",
+      "canonicalUrl": "https://www.irocks.com/minerals/specimen/54162",
+      "shopRoute": "#catalogue/accessories",
+      "slug": "jb-0460-sperrylite-stahl26-70",
+      "color": "",
+      "description": "A sperrylite mineral specimen from Oktyabrsky Mine, Russia, measuring 4.9 × 4.6 × 3.3 cm.",
+      "material": "",
+      "image": "a s s e t s/shop-mockup/product-catalogue/accessories-health/jb-0460-arkenstone-sperrylite.jpg",
+      "imageAlt": "The Arkenstone Sperrylite — STAHL26-70 product shot",
+      "imageSource": "retailer_first_hero",
+      "sourceImageUrl": "https://www.irocks.com/storage/media/107519/stahl26-70a1-wm.jpg",
+      "sourceImageIndex": 0,
+      "price": "AU$ 32,278.50",
+      "priceValue": 32278.5,
+      "colourFamilies": [],
+      "colourEvidenceText": "",
+      "shopTypes": [
+        "accessories"
+      ],
+      "notionPageId": "3b27b9c9-9c56-81a7-8e07-c113362f4ff7",
+      "sourcePageUrl": "https://www.irocks.com/minerals/specimen/54162",
+      "sourceOccurrences": 1,
+      "metadataStatus": "Metadata ready",
+      "requiresReview": false,
+      "listedOnShop": true,
+      "retrievedAt": "2026-08-04",
+      "currency": "AUD",
+      "shopEdits": [
+        "Accessories | Health"
+      ],
+      "editRanks": {
+        "Accessories | Health": 31,
+        "accessories": 31
+      },
+      "mediaUsage": "Locked MVP image permission confirmed by Ben on 2026-08-04"
+    },
+    {
+      "id": "JB-0461",
+      "brand": "The Arkenstone",
+      "catalogueBrand": "Accessories | Health",
+      "sourceBrandHeading": "Accessories | Health",
+      "sourceTitle": "Scorodite — TN26-21",
+      "name": "Scorodite — TN26-21",
+      "productType": "Mineral specimen",
+      "forms": [
+        "mineral"
+      ],
+      "retailer": "iRocks / The Arkenstone",
+      "retailerUrl": "https://www.irocks.com/minerals/specimen/54272",
+      "canonicalUrl": "https://www.irocks.com/minerals/specimen/54272",
+      "shopRoute": "#catalogue/accessories",
+      "slug": "jb-0461-scorodite-tn26-21",
+      "color": "",
+      "description": "A scorodite mineral specimen from Tsumeb Mine, Namibia, measuring 2.6 × 2.6 × 2.5 cm.",
+      "material": "",
+      "image": "a s s e t s/shop-mockup/product-catalogue/accessories-health/jb-0461-arkenstone-scorodite.jpg",
+      "imageAlt": "The Arkenstone Scorodite — TN26-21 product shot",
+      "imageSource": "retailer_first_hero",
+      "sourceImageUrl": "https://www.irocks.com/storage/media/107910/FIG-4-Scorodite.-Tsumeb-mine,-Oshitoko-Region,-Namibia.-2.7-cm.-Mauthner.jpg",
+      "sourceImageIndex": 0,
+      "price": "AU$ 28,692",
+      "priceValue": 28692,
+      "colourFamilies": [],
+      "colourEvidenceText": "",
+      "shopTypes": [
+        "accessories"
+      ],
+      "notionPageId": "3b27b9c9-9c56-819c-a4f4-ce40d76ea5ba",
+      "sourcePageUrl": "https://www.irocks.com/minerals/specimen/54272",
+      "sourceOccurrences": 1,
+      "metadataStatus": "Metadata ready",
+      "requiresReview": false,
+      "listedOnShop": true,
+      "retrievedAt": "2026-08-04",
+      "currency": "AUD",
+      "shopEdits": [
+        "Accessories | Health"
+      ],
+      "editRanks": {
+        "Accessories | Health": 32,
+        "accessories": 32
+      },
+      "mediaUsage": "Locked MVP image permission confirmed by Ben on 2026-08-04"
+    },
+    {
+      "id": "JB-0462",
+      "brand": "The Arkenstone",
+      "catalogueBrand": "Accessories | Health",
+      "sourceBrandHeading": "Accessories | Health",
+      "sourceTitle": "Beryl var. Aquamarine — SM21-213",
+      "name": "Beryl var. Aquamarine — SM21-213",
+      "productType": "Mineral specimen",
+      "forms": [
+        "mineral"
+      ],
+      "retailer": "iRocks / The Arkenstone",
+      "retailerUrl": "https://www.irocks.com/minerals/specimen/49819",
+      "canonicalUrl": "https://www.irocks.com/minerals/specimen/49819",
+      "shopRoute": "#catalogue/accessories",
+      "slug": "jb-0462-beryl-var-aquamarine-sm21-213",
+      "color": "",
+      "description": "An aquamarine-variety beryl specimen from Shigar Valley, Pakistan, measuring 10.1 × 4.4 × 3.2 cm.",
+      "material": "",
+      "image": "a s s e t s/shop-mockup/product-catalogue/accessories-health/jb-0462-arkenstone-aquamarine-shigar.jpg",
+      "imageAlt": "The Arkenstone Beryl var. Aquamarine — SM21-213 product shot",
+      "imageSource": "retailer_first_hero",
+      "sourceImageUrl": "https://www.irocks.com/storage/media/97846/sm21-213a-wm.jpg",
+      "sourceImageIndex": 0,
+      "price": "AU$ 27,974.70",
+      "priceValue": 27974.7,
+      "colourFamilies": [],
+      "colourEvidenceText": "",
+      "shopTypes": [
+        "accessories"
+      ],
+      "notionPageId": "3b27b9c9-9c56-810e-8e50-dc5a462039fc",
+      "sourcePageUrl": "https://www.irocks.com/minerals/specimen/49819",
+      "sourceOccurrences": 1,
+      "metadataStatus": "Metadata ready",
+      "requiresReview": false,
+      "listedOnShop": true,
+      "retrievedAt": "2026-08-04",
+      "currency": "AUD",
+      "shopEdits": [
+        "Accessories | Health"
+      ],
+      "editRanks": {
+        "Accessories | Health": 33,
+        "accessories": 33
+      },
+      "mediaUsage": "Locked MVP image permission confirmed by Ben on 2026-08-04"
+    },
+    {
+      "id": "JB-0463",
+      "brand": "Song of India",
+      "catalogueBrand": "Accessories | Health",
+      "sourceBrandHeading": "Accessories | Health",
+      "sourceTitle": "Organic Goodness Incense — White Sage",
+      "name": "Organic Goodness Incense — White Sage",
+      "productType": "Incense",
+      "forms": [
+        "ritual",
+        "wellbeing"
+      ],
+      "retailer": "Incense Australia",
+      "retailerUrl": "https://incenseaustralia.com.au/products/song-of-india-organic-goodness-white-sage",
+      "canonicalUrl": "https://incenseaustralia.com.au/products/song-of-india-organic-goodness-white-sage",
+      "shopRoute": "#catalogue/accessories",
+      "slug": "jb-0463-organic-goodness-incense-white-sage",
+      "color": "",
+      "description": "A 15 g packet of approximately 15 hand-rolled white sage masala incense sticks, made in India, with an approximate burn time of 40–45 minutes per stick.",
+      "material": "",
+      "image": "a s s e t s/shop-mockup/product-catalogue/accessories-health/jb-0463-song-of-india-white-sage.jpg",
+      "imageAlt": "Song of India Organic Goodness Incense — White Sage product shot",
+      "imageSource": "retailer_first_hero",
+      "sourceImageUrl": "https://incenseaustralia.com.au/cdn/shop/files/IMG_4790-compressed.jpg?v=1775699309",
+      "sourceImageIndex": 0,
+      "price": "AU$ 4.99",
+      "priceValue": 4.99,
+      "colourFamilies": [],
+      "colourEvidenceText": "",
+      "shopTypes": [
+        "accessories"
+      ],
+      "notionPageId": "3b27b9c9-9c56-8119-aeb2-d6309ab2ae7b",
+      "sourcePageUrl": "https://incenseaustralia.com.au/products/song-of-india-organic-goodness-white-sage",
+      "sourceOccurrences": 1,
+      "metadataStatus": "Metadata ready",
+      "requiresReview": false,
+      "listedOnShop": true,
+      "retrievedAt": "2026-08-04",
+      "currency": "AUD",
+      "shopEdits": [
+        "Accessories | Health"
+      ],
+      "editRanks": {
+        "Accessories | Health": 34,
+        "accessories": 34
+      }
+    },
+    {
+      "id": "JB-0464",
+      "brand": "Song of India",
+      "catalogueBrand": "Accessories | Health",
+      "sourceBrandHeading": "Accessories | Health",
+      "sourceTitle": "Organic Goodness Incense — Patchouli",
+      "name": "Organic Goodness Incense — Patchouli",
+      "productType": "Incense",
+      "forms": [
+        "ritual",
+        "wellbeing"
+      ],
+      "retailer": "Incense Australia",
+      "retailerUrl": "https://incenseaustralia.com.au/products/song-of-india-organic-goodness-patchouli",
+      "canonicalUrl": "https://incenseaustralia.com.au/products/song-of-india-organic-goodness-patchouli",
+      "shopRoute": "#catalogue/accessories",
+      "slug": "jb-0464-organic-goodness-incense-patchouli",
+      "color": "",
+      "description": "A 15 g packet of approximately 15 hand-rolled patchouli masala incense sticks, made in India, with an approximate burn time of 40–45 minutes per stick.",
+      "material": "",
+      "image": "a s s e t s/shop-mockup/product-catalogue/accessories-health/jb-0464-song-of-india-patchouli.jpg",
+      "imageAlt": "Song of India Organic Goodness Incense — Patchouli product shot",
+      "imageSource": "retailer_first_hero",
+      "sourceImageUrl": "https://incenseaustralia.com.au/cdn/shop/files/IMG_4800-compressed.jpg?v=1775699605",
+      "sourceImageIndex": 0,
+      "price": "AU$ 4.99",
+      "priceValue": 4.99,
+      "colourFamilies": [],
+      "colourEvidenceText": "",
+      "shopTypes": [
+        "accessories"
+      ],
+      "notionPageId": "3b27b9c9-9c56-815f-80b1-f5deceb6a680",
+      "sourcePageUrl": "https://incenseaustralia.com.au/products/song-of-india-organic-goodness-patchouli",
+      "sourceOccurrences": 1,
+      "metadataStatus": "Metadata ready",
+      "requiresReview": false,
+      "listedOnShop": true,
+      "retrievedAt": "2026-08-04",
+      "currency": "AUD",
+      "shopEdits": [
+        "Accessories | Health"
+      ],
+      "editRanks": {
+        "Accessories | Health": 35,
+        "accessories": 35
+      }
+    },
+    {
+      "id": "JB-0465",
+      "brand": "Song of India",
+      "catalogueBrand": "Accessories | Health",
+      "sourceBrandHeading": "Accessories | Health",
+      "sourceTitle": "Organic Goodness Incense — Arabian Oudh",
+      "name": "Organic Goodness Incense — Arabian Oudh",
+      "productType": "Incense",
+      "forms": [
+        "ritual",
+        "wellbeing"
+      ],
+      "retailer": "Incense Australia",
+      "retailerUrl": "https://incenseaustralia.com.au/products/song-of-india-organic-goodness-arabian-oudh",
+      "canonicalUrl": "https://incenseaustralia.com.au/products/song-of-india-organic-goodness-arabian-oudh",
+      "shopRoute": "#catalogue/accessories",
+      "slug": "jb-0465-organic-goodness-incense-arabian-oudh",
+      "color": "",
+      "description": "A 15 g packet of approximately 15 hand-rolled Arabian Oudh masala incense sticks, made in India, with an approximate burn time of 40–45 minutes per stick.",
+      "material": "",
+      "image": "a s s e t s/shop-mockup/product-catalogue/accessories-health/jb-0465-song-of-india-arabian-oudh.jpg",
+      "imageAlt": "Song of India Organic Goodness Incense — Arabian Oudh product shot",
+      "imageSource": "retailer_first_hero",
+      "sourceImageUrl": "https://incenseaustralia.com.au/cdn/shop/files/IMG_4802-compressed.jpg?v=1775699362",
+      "sourceImageIndex": 0,
+      "price": "AU$ 4.99",
+      "priceValue": 4.99,
+      "colourFamilies": [],
+      "colourEvidenceText": "",
+      "shopTypes": [
+        "accessories"
+      ],
+      "notionPageId": "3b27b9c9-9c56-81ea-b801-e6535e438829",
+      "sourcePageUrl": "https://incenseaustralia.com.au/products/song-of-india-organic-goodness-arabian-oudh",
+      "sourceOccurrences": 1,
+      "metadataStatus": "Metadata ready",
+      "requiresReview": false,
+      "listedOnShop": true,
+      "retrievedAt": "2026-08-04",
+      "currency": "AUD",
+      "shopEdits": [
+        "Accessories | Health"
+      ],
+      "editRanks": {
+        "Accessories | Health": 36,
+        "accessories": 36
       }
     }
   ],
