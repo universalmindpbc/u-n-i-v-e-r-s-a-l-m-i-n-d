@@ -123,9 +123,9 @@ for (const scenario of [
 ]) {
   assert.match(realtimeClient, new RegExp(`qaScenario === "${scenario}"`));
 }
-assert.match(realtimeClient, /universal_one_realtime_v4/);
-assert.match(index, /realtime-voice-assistant\.js\?v=realtime-voice-ca0e4fed9b9b/);
-assert.match(alternateEntry, /realtime-voice-assistant\.js\?v=realtime-voice-ca0e4fed9b9b/);
+assert.match(realtimeClient, /universal_one_realtime_v5/);
+assert.match(index, /realtime-voice-assistant\.js\?v=realtime-voice-f3ec3dac7bdf/);
+assert.match(alternateEntry, /realtime-voice-assistant\.js\?v=realtime-voice-f3ec3dac7bdf/);
 assert.match(stagingDeploy, /check-universal-one-programme-guide\.mjs/);
 
 new vm.Script(realtimeClient, { filename: "realtime-voice-assistant.js" });

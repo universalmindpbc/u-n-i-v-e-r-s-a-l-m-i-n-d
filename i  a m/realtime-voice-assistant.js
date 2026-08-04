@@ -5,6 +5,7 @@
   const params = new URLSearchParams(window.location.search);
   const qaMode = window.location.hostname === "staging.universalmind.tv" && params.get("qa") === "realtime-voice";
   const qaScenario = qaMode ? params.get("voice_test") : "";
+  const soundGateQaMode = qaMode && qaScenario === "sound-gate";
   const forceEntryPreflight = qaMode && params.get("voice_entry_test") === "1";
   const entryPreferenceKey = "iam-universal-one-entry-voice-v1";
   const endpoint = window.location.hostname === "staging.universalmind.tv"
@@ -13,12 +14,13 @@
         ? "https://iam-citizen-needs-inference.universalmind.workers.dev/realtime-client-secret"
         : "api/realtime-client-secret.php");
   const sessionLimitMs = 55 * 60 * 1000;
+  const microphoneReleaseDelayMs = 900;
   const poseSequence = ["tea-tablet", "meditate", "tea", "music", "rave"];
   let poseIndex = 0;
   let poseTimer = 0;
   let sessionTimer = 0;
   let disconnectTimer = 0;
-  let startupInputTimer = 0;
+  let microphoneReleaseTimer = 0;
   let peerConnection = null;
   let dataChannel = null;
   let microphoneStream = null;
@@ -36,6 +38,8 @@
   let active = false;
   let muted = false;
   let startupInputGate = false;
+  let assistantOutputGate = false;
+  let assistantOutputStarted = false;
   let captionsVisible = false;
   let lastAssistantTranscript = "";
   const transcriptLines = new Map();
@@ -396,6 +400,9 @@
     if (starting || active) return;
     starting = true;
     muted = false;
+    startupInputGate = false;
+    assistantOutputGate = false;
+    assistantOutputStarted = false;
     lastAssistantTranscript = "";
     transcript.replaceChildren();
     transcriptLines.clear();
@@ -555,21 +562,33 @@
     switch (event.type) {
       case "session.created":
       case "session.updated":
-        if (active && !muted && !startupInputGate) setState("listening", "I'm listening");
+        if (active && !muted && !startupInputGate && !assistantOutputGate) setState("listening", "I'm listening");
         break;
       case "input_audio_buffer.speech_started":
+        if (startupInputGate || assistantOutputGate) break;
         root.dataset.pose = "listen";
         setState("listening", "I'm listening");
         break;
       case "input_audio_buffer.speech_stopped":
-      case "response.created":
+        if (startupInputGate || assistantOutputGate) break;
         root.dataset.pose = "tea-tablet";
         setState("thinking", "Thinking…");
         break;
+      case "response.created":
+        engageAssistantOutputGate();
+        root.dataset.pose = "tea-tablet";
+        setState("thinking", "Thinking…");
+        break;
+      case "output_audio_buffer.started":
       case "response.output_audio.delta":
       case "response.audio.delta":
+        engageAssistantOutputGate({ outputStarted: true });
         root.dataset.pose = "wave";
         setState("speaking", "Speaking");
+        break;
+      case "output_audio_buffer.stopped":
+      case "output_audio_buffer.cleared":
+        releaseInputAfterAssistantAudio();
         break;
       case "conversation.item.input_audio_transcription.delta":
         appendTranscript("you", event.delta || "", true, event.item_id || "user-current");
@@ -609,12 +628,11 @@
           }
         }
         lastAssistantTranscript = "";
-        if (startupInputGate && microphoneStream) {
-          setState("connecting", "Opening the microphone…");
-          releaseStartupInputAfterGreeting();
-        } else {
-          if (!muted) setState("listening", microphoneStream ? "I'm listening" : "Staging voice check complete");
+        if (!microphoneStream) {
+          if (!muted) setState("listening", "Staging voice check complete");
           scheduleLifestylePose();
+        } else if (assistantOutputGate && !assistantOutputStarted) {
+          releaseInputAfterAssistantAudio();
         }
         break;
       case "error":
@@ -715,7 +733,7 @@
 
   function drawWaveformFrame(time) {
     const state = root.dataset.state || "idle";
-    const receivesInput = state === "listening" && active && !muted && !startupInputGate;
+    const receivesInput = state === "listening" && active && !muted && !startupInputGate && !assistantOutputGate;
     let samples = null;
     let level = 0;
 
@@ -855,19 +873,28 @@
   }
 
   function syncMicrophoneTrackState() {
-    const enabled = active && !muted && !startupInputGate;
+    const enabled = active && !muted && !startupInputGate && !assistantOutputGate;
     microphoneStream?.getAudioTracks().forEach((track) => { track.enabled = enabled; });
   }
 
-  function releaseStartupInputAfterGreeting() {
-    window.clearTimeout(startupInputTimer);
-    startupInputTimer = window.setTimeout(() => {
+  function engageAssistantOutputGate(options = {}) {
+    window.clearTimeout(microphoneReleaseTimer);
+    assistantOutputGate = true;
+    if (options.outputStarted) assistantOutputStarted = true;
+    syncMicrophoneTrackState();
+  }
+
+  function releaseInputAfterAssistantAudio() {
+    window.clearTimeout(microphoneReleaseTimer);
+    microphoneReleaseTimer = window.setTimeout(() => {
       if (!active || !microphoneStream) return;
+      assistantOutputGate = false;
+      assistantOutputStarted = false;
       startupInputGate = false;
       syncMicrophoneTrackState();
       setState(muted ? "muted" : "listening", muted ? "Mic muted" : "I'm listening");
       scheduleLifestylePose();
-    }, 1200);
+    }, microphoneReleaseDelayMs);
   }
 
   function handleStartError(error) {
@@ -898,8 +925,10 @@
     window.clearTimeout(sessionTimer);
     window.clearTimeout(poseTimer);
     window.clearTimeout(disconnectTimer);
-    window.clearTimeout(startupInputTimer);
+    window.clearTimeout(microphoneReleaseTimer);
     startupInputGate = false;
+    assistantOutputGate = false;
+    assistantOutputStarted = false;
     microphoneFullscreenRecoveryArmed = false;
     fullscreenResumeButton.hidden = true;
     const waiter = fullscreenResumeWaiter;
@@ -962,7 +991,7 @@
   }
 
   window.IAMRealtimeVoiceAssistant = {
-    version: "universal_one_realtime_v4",
+    version: "universal_one_realtime_v5",
     end: endConversation,
     shouldPreflightEntry,
     showEntryPreflight,
@@ -973,6 +1002,9 @@
         muted,
         captionsVisible,
         startupInputGate,
+        assistantOutputGate,
+        assistantOutputStarted,
+        microphoneTrackEnabled: Boolean(microphoneStream?.getAudioTracks().some((track) => track.enabled)),
         microphonePermissionState,
         entryPreflightState,
         waveformActive: Boolean(waveformAnalyser && waveformFrame),
@@ -985,6 +1017,23 @@
     },
     startStagingCheck: qaMode
       ? () => startConversation(stagingQaOptions())
+      : undefined,
+    startStagingSoundGateCheck: soundGateQaMode
+      ? () => startConversation({ microphone: true })
+      : undefined,
+    sendStagingSoundGateTurn: soundGateQaMode
+      ? (text = "Please answer this second turn in one short sentence.") => {
+          if (!active || assistantOutputGate) return false;
+          const itemCreated = sendRealtimeEvent({
+            type: "conversation.item.create",
+            item: {
+              type: "message",
+              role: "user",
+              content: [{ type: "input_text", text }],
+            },
+          });
+          return itemCreated && sendRealtimeEvent({ type: "response.create" });
+        }
       : undefined,
   };
 })();

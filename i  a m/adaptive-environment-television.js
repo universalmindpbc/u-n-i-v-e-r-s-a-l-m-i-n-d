@@ -514,6 +514,7 @@
   const RADIO_SEGMENT_CROSSFADE_SECONDS = .035;
   const RADIO_SEGMENT_POLL_MS = 3000;
   const SEX_ED_PROGRAMME_MIX_LEVEL = .15;
+  const VOICE_ASSISTANT_PROGRAMME_MIX_LEVEL = 0;
   const SEX_ED_DEFAULT_BACKGROUND_FILE = "a s s e t s/f a s h i o n [ r u n w a y ]/Mugler - Fall Winter 2021.mp4";
   let continuationAudio = null;
   let continuationHls = null;
@@ -4410,7 +4411,7 @@
       });
       media.playbackRate = 1;
       if (wasPlaying && media.paused) media.play().catch(() => {});
-      if (shouldFade) animateVoiceAssistantProgramVolume(media, originalVolume, BROADCAST_REJOIN_FADE_IN_MS);
+      if (shouldFade) setVoiceAssistantProgramVolume(media, originalVolume, BROADCAST_REJOIN_FADE_IN_MS);
       syncState.lastSeekAt = broadcastSyncNow();
       syncState.largeDriftSamples = 0;
       syncState.recovering = false;
@@ -6052,7 +6053,7 @@
     clearShopArrivalFade();
     const baseline = Math.max(0, Math.min(1, Number(baseVolume) || 0));
     if (voiceAssistantDuckActive) voiceAssistantBaseVolumes.set(media, baseline);
-    const target = baseline * (voiceAssistantDuckActive ? .15 : 1);
+    const target = baseline * (voiceAssistantDuckActive ? VOICE_ASSISTANT_PROGRAMME_MIX_LEVEL : 1);
     const startVolume = Number(media.volume) || 0;
     const startedAt = Date.now();
     const fadeDuration = Math.max(0, Number(duration) || 0);
@@ -6080,7 +6081,7 @@
     if (!media) return;
     const baseline = Math.max(0, Math.min(1, Number(baseVolume) || 0));
     if (voiceAssistantDuckActive) voiceAssistantBaseVolumes.set(media, baseline);
-    const duckFactor = voiceAssistantDuckActive ? .15 : 1;
+    const duckFactor = voiceAssistantDuckActive ? VOICE_ASSISTANT_PROGRAMME_MIX_LEVEL : 1;
     const target = baseline * duckFactor;
     animateVoiceAssistantProgramVolume(media, target, duration);
   }
@@ -6091,6 +6092,7 @@
     const radioIsActiveProgramme = document.body.classList.contains("television-radio-continuation");
     const programmeMedia = [localVideo];
     if (radioIsActiveProgramme) programmeMedia.push(continuationAudio);
+    if (sexEdEpisodeVideo && !sexEdEpisodeVideo.paused) programmeMedia.push(sexEdEpisodeVideo);
 
     if (nextActive) {
       programmeMedia.forEach((media) => {
@@ -6099,7 +6101,7 @@
           const fallback = media === continuationAudio ? .68 : 1;
           voiceAssistantBaseVolumes.set(media, Math.max(Number(media.volume) || 0, fallback));
         }
-        animateVoiceAssistantProgramVolume(media, voiceAssistantBaseVolumes.get(media) * .15, 800);
+        animateVoiceAssistantProgramVolume(media, voiceAssistantBaseVolumes.get(media) * VOICE_ASSISTANT_PROGRAMME_MIX_LEVEL, 800);
       });
     } else {
       voiceAssistantBaseVolumes.forEach((baseline, media) => {
@@ -6112,6 +6114,7 @@
     document.body.dataset.voiceDuckedMedia = nextActive
       ? programmeMedia.filter(Boolean).map((media) => media === continuationAudio ? "radio" : "video").join(",")
       : "";
+    document.body.dataset.voiceProgrammeSilenced = String(nextActive);
     return voiceAssistantDuckActive;
   }
 
@@ -6122,7 +6125,7 @@
     programmeFixedMixLevel = Number.isFinite(requested)
       ? Math.max(0, Math.min(1, requested))
       : null;
-    const target = programmeFixedMixLevel ?? .68;
+    const target = (programmeFixedMixLevel ?? .68) * (voiceAssistantDuckActive ? VOICE_ASSISTANT_PROGRAMME_MIX_LEVEL : 1);
     if (continuationAudio && !continuationAudio.muted) {
       animateVoiceAssistantProgramVolume(continuationAudio, target, 420);
     }
@@ -6363,7 +6366,7 @@
 
   async function playSexEdEpisode() {
     if (!sexEdEpisodeVideo) return false;
-    sexEdEpisodeVideo.volume = 1;
+    setVoiceAssistantProgramVolume(sexEdEpisodeVideo, 1, voiceAssistantDuckActive ? 260 : 0);
     await ensureSexEdStream(sexEdEpisodeVideo, "music");
     await seekSexEdEpisodeStart();
     sexEdEpisodeVideo.muted = false;
@@ -7192,6 +7195,7 @@
       const nowPlayingState = window.IAMNowPlaying?.getState?.() || {};
       return {
         conversationActive: voiceAssistantDuckActive,
+        programmeSilenced: document.body.dataset.voiceProgrammeSilenced === "true",
         mantraSampleActive: document.body.classList.contains("television-mantra-sample-active"),
         source: document.body.classList.contains("television-radio-continuation") ? "radio" : "video",
         title: nowPlayingState.title || `${track.displayArtist || track.artist} — ${track.displayTitle || track.title}`,
