@@ -590,8 +590,7 @@
   let walletResumeView = "categories";
   const emdrStyleNames = ["GIF", "stellar"];
   const emdrStyleValues = [7, 5];
-  let emdrStyleIndex = 1;
-  let emdrDefaultStarted = false;
+  let emdrStyleIndex = -1;
   let emdrGifPreviousVideoBlend = null;
   let emdrGifPreviousMusicMaxHeight = null;
   let emdrGifMusicMaxHeightCaptured = false;
@@ -7528,19 +7527,12 @@
       const mode = button.dataset.videoMode;
       if (mode === "emdr") {
         disarmVideoTooltips();
+        window.IAMEMDR?.setActive(false, { canvas: emdrCanvas, video: localVideo });
+        emdrStyleIndex = -1;
+        syncEmdrStyleButtons();
+        button.setAttribute("aria-pressed", "false");
         setSoundResearchEnabled(true);
         setWalletView("emdr");
-        if (!emdrDefaultStarted) {
-          emdrDefaultStarted = true;
-          const adaptation = applyEmdrAdaptation(1);
-          const active = window.IAMEMDR?.setActive(true, { canvas: emdrCanvas });
-          button.setAttribute("aria-pressed", String(Boolean(active)));
-          if (active) window.IAMEMDR?.setIntensity(adaptation.intensityJourney.start);
-          startSoundResearchLayer();
-        } else {
-          syncActiveEmdrControls();
-          button.setAttribute("aria-pressed", String(Boolean(window.IAMEMDR?.active)));
-        }
         return;
       }
       disarmVideoTooltips();
