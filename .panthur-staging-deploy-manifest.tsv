@@ -88,14 +88,14 @@ e60698d25b1e76d441b0fada19cdda4e6da3760398760c87ea2530ccdbc519d5	homepage-checki
 c1c822706963fd43a4320f7212c399503fb2a4f64206a3bf75e13b34f83e784a	adaptive-inference-engine-system-prompt-v2.22-content.js
 2d617f2ef088b89c73c02cfc5f4fa7f418ce6a79a270d2d4c1950323c8246d08	emdr-vector-worlds.js
 beb34584876306e5825ba720c8cfb01b871065791c48be5add2ce5cc6d75f59f	adaptive-inference-engine-system-prompt-v1.11.html
-72d95c2f39a843dbbbced3c12e13278f1ff25241e17bdf4f6fcefe2a40684c53	shop.html
+945c43483e5417c4937afd2f0eb7c08325e364e95e7d9158c033273323b79784	shop.html
 ca0e4fed9b9bfebe0f43129f9f5005af1d89006ddde7a0acc4d0f5ebcddd4226	realtime-voice-assistant.js
 3862c4481721b08403d25024626930de4c0a2b265ccc336e99b830bb3133825e	c h a n g e l o g.md
 5e1fdfbadb0466e1997b206c6197cba92f566d211a16f31bd627da4cfb976b4b	mantra-audio-fx.js
 1c5d23b954a58cd67f51a7c32adddbb22dfb58fa34fae89c593a5bae97fd8d54	happiness-control.html
 e12eb24c367d2ac6f67963f434a729027e75b914e450b6260f47c01b9bd1ef58	i  a m  c h e c k i n  -  f o r m  -  b r i e f.md
 b89467d63bab7000ddda479156834f13fc30e5840f2dedc55a91e18f47fda51e	citizen-data-client.js
-2d6637e8e9c3354eba6348f83a9a59abeeabb9c21b84e8bab73b257b9a54424e	shop-product-kernel-v1.json
+08af8d3c6c5dd7c84cc3e5b77eee8a0d8bfb595e11917c996a85f986af94f173	shop-product-kernel-v1.json
 2ce0d0a5afb4d9961eec772a296e17f9c703d89182648b6d35ee6007c776d59f	science-research-data-v1.js
 f89cebb043a21aa77133c9cd40875d6703eefcb3b8fab637931e1da119eb01f7	shop-approved-products-v1.json
 fa5e34089bf9beb5efdf29d28d82e758d766a3e078ab1f271fb7e4fb698c0367	mantra-sampler.css
@@ -148,7 +148,7 @@ e4f89461e10f3e317b5d97873023c7607bb356e673a89a175612c9df4ddb8b85	api/owner-state
 35461a8ea56b4c2564920f290a5d02fb2f5e709dcabe7a6763cbf9a5851e8e28	api/.htaccess
 20ad6337934cb96def4542700c5fe2a950a20f1ec42292dc1f54dee9b61e15c0	cloudflare-stream-catalogue.js
 34a1b1de69324c0ca7a5f9ed61fab6deedaec63132c74f5785752f922ccb99ec	shop-catalogue-filter-v1.js
-021106c2aa869f1b9747c5705d735c93e449b7cc9e4ab0350d12d46f2b677b51	shop.js
+458767d4e0655afa4c1b503cfc436bfbbff129b2715f09420aeb26afdfd96206	shop.js
 db213ad178d17d3b7092436c17048a426e2ac2cc8cedaa1a4a1740b1c0184bec	video-beat-grid-v1.json
 8692efdd812fb70da2e034e137f6cd55f19ddd357a8131b218e8ca88b0a21b5e	our-team-concept.html
 785c1fb0b7095ba4b05d31cb7c5f6adab72172b7ece152645e42b6e997014df2	technology-citizen-needs.css
@@ -585,7 +585,7 @@ ef1b30b5aef90a17d4bf31b48c7d6f967b7d226bf7ce819d3b9b07ce6485354c	a s s e t s/sho
 fe5048f41fb0bea910491e0276a8d8feca99c22e686c2d16f3d3d6429cdfada7	a s s e t s/shop-mockup/product-catalogue/accessories-health/jb-0443-orchard-st-ceremonial-cacao-cup.jpg
 6209933eb1575eafdec8c26a336b6df4506d5145590fdfe8d96e17b43728fca1	a s s e t s/shop-mockup/product-catalogue/accessories-health/jb-0453-arkenstone-adamite.jpg
 ab277a5426437e082073facc65bd899d5610dd60b2a1c901b60f62e09e79e1dc	a s s e t s/shop-mockup/product-catalogue/accessories-health/jb-0434-superfeast-lions-mane.png
-66394d44102c246038f0d35ee4cb1e0a689785d7a564b32ab245e9a33782c5c4	a s s e t s/shop-mockup/product-catalogue/accessories-health/jb-0432-superfeast-jing-blend.png
+d12a7e66f2c7fa34edb3a74c3952688e69e06093ef2596a46bc8e9805e364eb4	a s s e t s/shop-mockup/product-catalogue/accessories-health/jb-0432-superfeast-jing-blend.jpg
 7b3e77108a63bd49da94eb10c06d1720dfef72746d554eae5e06f71708dde2be	a s s e t s/shop-mockup/product-catalogue/accessories-health/jb-0429-ritual-oils-moringa-blue-lotus.jpg
 1070f54bbf04aefe71d191bce6d68427c181ae3f58107589f7ec688f4a9bc478	a s s e t s/shop-mockup/product-catalogue/accessories-health/jb-0447-soltys-hrasita-silk-kimono.jpg
 63bca622ac92fdc749903e24c749fb16d9d8b017587e3f2827dac8b74f846440	a s s e t s/shop-mockup/product-catalogue/lucas-hugh/jb-0132-odyssey-leggings-black-multi.webp
