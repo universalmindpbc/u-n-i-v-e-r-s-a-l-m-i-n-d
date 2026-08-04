@@ -3666,6 +3666,10 @@ body .adaptive-television-reaction-wallet[data-wallet-view="categories"].is-reac
   will-change: opacity, transform;
 }
 
+.adaptive-television-now-playing__channel {
+  justify-content: flex-start;
+}
+
 .adaptive-television-now-playing[data-now-playing-ticker="visual"] [data-now-playing-audio],
 .adaptive-television-now-playing[data-now-playing-ticker="channel"] [data-now-playing-audio],
 .adaptive-television-now-playing[data-now-playing-ticker="channel"] [data-now-playing-visual] {
