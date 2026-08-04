@@ -10,14 +10,14 @@ const kernel = JSON.parse(fs.readFileSync(kernelPath, "utf8"));
 const radioEdits = JSON.parse(fs.readFileSync(editsPath, "utf8"));
 
 const retrievedAt = "2026-08-04";
-const innerPlains = radioEdits.catalogues.find((catalogue) => catalogue.slug === "inner-plains");
-assert.ok(innerPlains, "Inner Plains edit manifest is required");
+const innerPlanes = radioEdits.catalogues.find((catalogue) => catalogue.slug === "inner-planes");
+assert.ok(innerPlanes, "Inner Planes edit manifest is required");
 
 const products = [
   {
     id: "JB-0418",
     brand: "Studio K",
-    sourceBrandHeading: "Inner Plains",
+    sourceBrandHeading: "Inner Planes",
     sourceTitle: "Studio K | Womens | Étudé Bodysuit | White | XXS - XXL",
     name: "Étudé Bodysuit",
     productType: "Bodysuit",
@@ -25,7 +25,7 @@ const products = [
     retailer: "Studio K",
     retailerUrl: "https://www.studiokatelier.au/products/etude-bodysuit-white",
     canonicalUrl: "https://www.studiokatelier.au/products/etude-bodysuit-white",
-    shopRoute: "#catalogue/inner-plains",
+    shopRoute: "#catalogue/inner-planes",
     slug: "etude-bodysuit-white",
     color: "White",
     description: "A continuous line\n\nOne-piece designed to move as a whole, fitted through the body with a second-skin feel.\n\nSoft structure that follows without holding too tightly, worn alone or layered into everyday dressing.\n\n• full-body fit\n• soft, contouring fabric\n• seamless feel\n• LENZING™ ECOVERO™ fabric\n\nMargaux is 175 cm / 5'7\" and wears size S. Dian is 174 cm / 5'7\" and wears size XS.",
@@ -45,7 +45,7 @@ const products = [
   {
     id: "JB-0419",
     brand: "Studio K",
-    sourceBrandHeading: "Inner Plains",
+    sourceBrandHeading: "Inner Planes",
     sourceTitle: "Studio K | Womens | Linea Leggings | Black | XXS - XXL",
     name: "Linea Leggings",
     productType: "Legging",
@@ -53,7 +53,7 @@ const products = [
     retailer: "Studio K",
     retailerUrl: "https://www.studiokatelier.au/products/linea-leggings-black?pr_prod_strat=pinned&pr_rec_id=c5ae0aff0&pr_rec_pid=10043633402096&pr_ref_pid=10043632320752&pr_seq=uniform",
     canonicalUrl: "https://www.studiokatelier.au/products/linea-leggings-black",
-    shopRoute: "#catalogue/inner-plains",
+    shopRoute: "#catalogue/inner-planes",
     slug: "linea-leggings-black",
     color: "Black",
     description: "Held close, without effort\n\nMid- to high-rise legging with a clean, close fit, designed to sit smoothly and follow the body.\n\nDouble-layered waistband that holds gently, and seamless through the front and sides for an uninterrupted fit.\n\nMade for movement and everyday wear.\n\n• double-layered waistband\n• seamless front and sides\n• smooth, contouring fabric\n• studio k logo at back\n• inseam length: size s – 61 cm / 25\"\n• LENZING™ ECOVERO™ fabric\n\nDian is 174 cm / 5'7\" and wears size XS.",
@@ -73,7 +73,7 @@ const products = [
   {
     id: "JB-0420",
     brand: "Studio K",
-    sourceBrandHeading: "Inner Plains",
+    sourceBrandHeading: "Inner Planes",
     sourceTitle: "Studio K | Womens | Beso Mini Tube | Black | XXS - XXL",
     name: "Beso Mini Tube",
     productType: "Top",
@@ -81,7 +81,7 @@ const products = [
     retailer: "Studio K",
     retailerUrl: "https://www.studiokatelier.au/products/beso-mini-tube-black",
     canonicalUrl: "https://www.studiokatelier.au/products/beso-mini-tube-black",
-    shopRoute: "#catalogue/inner-plains",
+    shopRoute: "#catalogue/inner-planes",
     slug: "beso-mini-tube-black",
     color: "Black",
     description: "Short, held in place\n\nCropped tube with a close, minimal fit, designed to sit securely and follow the body.\n\nElasticated at the top and bottom for a gentle sense of hold, simple and a little bold, easy to wear on its own or layered.\n\n• elasticated bands at top and bottom\n• cropped length\n• smooth, contouring fabric\n• LENZING™ ECOVERO™ fabric\n\nMargaux is 175 cm / 5'7\" and wears size S. Nina is 180 cm / 5'9\" and wears size M.",
@@ -101,7 +101,7 @@ const products = [
   {
     id: "JB-0421",
     brand: "Studio K",
-    sourceBrandHeading: "Inner Plains",
+    sourceBrandHeading: "Inner Planes",
     sourceTitle: "Studio K | Womens | Sheer T-shirt | Black | XS - XL",
     name: "No 102 / Sheer T-shirt",
     productType: "Top",
@@ -109,7 +109,7 @@ const products = [
     retailer: "Studio K",
     retailerUrl: "https://www.studiokatelier.au/products/no-102-sheer-t-shirt?pr_prod_strat=pinned&pr_rec_id=3639df44a&pr_rec_pid=10043630551280&pr_ref_pid=10043632910576&pr_seq=uniform",
     canonicalUrl: "https://www.studiokatelier.au/products/no-102-sheer-t-shirt",
-    shopRoute: "#catalogue/inner-plains",
+    shopRoute: "#catalogue/inner-planes",
     slug: "no-102-sheer-t-shirt",
     color: "Black",
     description: "An ethereal essential\n\nNo 102 is a timeless T-shirt designed to fall softly against the body. With a relaxed silhouette that skims without clinging, it layers effortlessly and moves with quiet ease. A refined staple made to be worn often.\n\nPolina is 180 cm / 5'9\" and wears size S.",
@@ -128,7 +128,7 @@ const products = [
   {
     id: "JB-0422",
     brand: "Studio K",
-    sourceBrandHeading: "Inner Plains",
+    sourceBrandHeading: "Inner Planes",
     sourceTitle: "Studio K | Womens | Sheer Long-sleeve | Black | XS - XL",
     name: "No 103 / Sheer Long-sleeve",
     productType: "Top",
@@ -136,7 +136,7 @@ const products = [
     retailer: "Studio K",
     retailerUrl: "https://www.studiokatelier.au/products/no-103-sheer-long-sleeve?pr_prod_strat=pinned&pr_rec_id=3639df44a&pr_rec_pid=10043630485744&pr_ref_pid=10043632910576&pr_seq=uniform",
     canonicalUrl: "https://www.studiokatelier.au/products/no-103-sheer-long-sleeve",
-    shopRoute: "#catalogue/inner-plains",
+    shopRoute: "#catalogue/inner-planes",
     slug: "no-103-sheer-long-sleeve",
     color: "Black",
     description: "A steady presence\n\nNo 103 is a timeless long-sleeve designed to fall softly against the body. With a relaxed silhouette that skims without clinging, it layers with ease and moves effortlessly through seasons. A refined staple made to last beyond the moment.\n\nPolina is 178 cm / 5'9\" and wears size S.",
@@ -155,7 +155,7 @@ const products = [
   {
     id: "JB-0423",
     brand: "Studio K",
-    sourceBrandHeading: "Inner Plains",
+    sourceBrandHeading: "Inner Planes",
     sourceTitle: "Studio K | Womens | Sheer Cami | Black | XS - XL",
     name: "No 101 / Sheer Cami",
     productType: "Top",
@@ -163,7 +163,7 @@ const products = [
     retailer: "Studio K",
     retailerUrl: "https://www.studiokatelier.au/products/no-101-sheer-cami?pr_prod_strat=pinned&pr_rec_id=3639df44a&pr_rec_pid=10043630518512&pr_ref_pid=10043632910576&pr_seq=uniform",
     canonicalUrl: "https://www.studiokatelier.au/products/no-101-sheer-cami",
-    shopRoute: "#catalogue/inner-plains",
+    shopRoute: "#catalogue/inner-planes",
     slug: "no-101-sheer-cami",
     color: "Black",
     description: "A delicate essential\n\nNo 101 is a timeless full-length camisole designed to fall softly against the body. With a relaxed silhouette that skims without clinging, it layers effortlessly and moves with quiet ease. A refined staple made to be worn often.\n\nPolina is 180 cm / 5'9\" and wears size S. Emiliya is 173 cm / 5'6\" and wears size S.",
@@ -182,7 +182,7 @@ const products = [
   {
     id: "JB-0424",
     brand: "Calvin Klein",
-    sourceBrandHeading: "Inner Plains",
+    sourceBrandHeading: "Inner Planes",
     sourceTitle: "Modern Terry Lounge Joggers | Calvin Klein",
     name: "Modern Terry Lounge Joggers",
     productType: "Other",
@@ -210,7 +210,7 @@ const products = [
   {
     id: "JB-0425",
     brand: "Calvin Klein",
-    sourceBrandHeading: "Inner Plains",
+    sourceBrandHeading: "Inner Planes",
     sourceTitle: "Icon Cotton Modal Unlined Bralette | Calvin Klein",
     name: "Icon Cotton Modal Unlined Bralette",
     productType: "Bra",
@@ -238,7 +238,7 @@ const products = [
   {
     id: "JB-0426",
     brand: "Calvin Klein",
-    sourceBrandHeading: "Inner Plains",
+    sourceBrandHeading: "Inner Planes",
     sourceTitle: "Cotton Classics 3 Pack Crewneck T-Shirts | Calvin Klein",
     name: "Cotton Classics 3 Pack Crewneck T-Shirts",
     productType: "Top",
@@ -269,7 +269,7 @@ const products = [
   {
     id: "JB-0427",
     brand: "Calvin Klein",
-    sourceBrandHeading: "Inner Plains",
+    sourceBrandHeading: "Inner Planes",
     sourceTitle: "Cotton Classics 3 Pack Crewneck T-Shirts | Calvin Klein",
     name: "Cotton Classics 3 Pack Crewneck T-Shirts",
     productType: "Top",
@@ -300,7 +300,7 @@ const products = [
   {
     id: "JB-0428",
     brand: "SKIMS",
-    sourceBrandHeading: "Inner Plains",
+    sourceBrandHeading: "Inner Planes",
     sourceTitle: "VOILE SLEEP BALLOON PANT | SNOW | SKIMS",
     name: "Voile Sleep Balloon Pant",
     productType: "Other",
@@ -341,8 +341,8 @@ const products = [
   colourSourceType: "Retailer page",
   colourCheckedAt: retrievedAt,
   colourTaxonomyVersion: "jb-colour-taxonomy-v1",
-  shopEdits: ["Inner Plains"],
-  editRanks: { "Inner Plains": 18 + index },
+  shopEdits: ["Inner Planes"],
+  editRanks: { "Inner Planes": 18 + index },
 }));
 
 const productIds = products.map(({ id }) => id);
@@ -373,27 +373,27 @@ updateBrandCount("SKIMS", 8, 8);
 
 radioEdits.generatedAt = retrievedAt;
 radioEdits.sourceReference = "c b - n e w  a d d i t i o n s.md supplied 2026-08-02; i n n e r  p l a n e s - a d d i t i o n a l  g a r m e n t s.md supplied 2026-08-04";
-innerPlains.formLabel = "Studio K / Calvin Klein / SKIMS";
-innerPlains.suppliedCount = 29;
-innerPlains.uniqueCount = 28;
-innerPlains.productIds = [...innerPlains.productIds.filter((id) => !productIds.includes(id)), ...productIds];
+innerPlanes.formLabel = "Studio K / Calvin Klein / SKIMS";
+innerPlanes.suppliedCount = 29;
+innerPlanes.uniqueCount = 28;
+innerPlanes.productIds = [...innerPlanes.productIds.filter((id) => !productIds.includes(id)), ...productIds];
 
 assert.equal(kernel.products.length, 394, "Fashion tensor must contain 394 canonical products");
 assert.equal(new Set(kernel.products.map(({ canonicalUrl }) => canonicalUrl)).size, 394, "Canonical product URLs must remain unique");
 assert.equal(products.filter(({ brand }) => brand === "Studio K").length, 6, "Studio K intake must contain six products");
-assert.ok(!kernel.brandOrder.includes("Studio K"), "Studio K must remain exclusive to the Inner Plains edit");
+assert.ok(!kernel.brandOrder.includes("Studio K"), "Studio K must remain exclusive to the Inner Planes edit");
 assert.equal(products.filter(({ brand }) => brand === "Calvin Klein").length, 4, "Calvin Klein intake must contain four products");
 assert.equal(products.filter(({ brand }) => brand === "SKIMS").length, 1, "SKIMS intake must contain one product");
 assert.ok(products.every(({ priceValue, currency, description }) => Number.isFinite(priceValue) && currency === "AUD" && description), "Every new product must retain its AUD price and exact description");
 const personFreeCalvinTshirtIds = ["JB-0426", "JB-0427"];
 assert.deepEqual(products.filter(({ subjectPresent, forwardFacing }) => subjectPresent === false && forwardFacing === false).map(({ id }) => id), personFreeCalvinTshirtIds, "Only the two Calvin Klein T-shirt packs must use person-free product shots");
 assert.ok(products.filter(({ id }) => !personFreeCalvinTshirtIds.includes(id)).every(({ subjectPresent, forwardFacing }) => subjectPresent && forwardFacing), "Every other new product must retain forward-facing human image evidence");
-assert.equal(innerPlains.productIds.length, 28, "Inner Plains must contain 28 unique products");
-assert.equal(new Set(innerPlains.productIds).size, 28, "Inner Plains product IDs must remain unique");
+assert.equal(innerPlanes.productIds.length, 28, "Inner Planes must contain 28 unique products");
+assert.equal(new Set(innerPlanes.productIds).size, 28, "Inner Planes product IDs must remain unique");
 assert.ok(products.filter(({ brand }) => brand === "Calvin Klein").every(({ shopRoute }) => shopRoute === "#catalogue/calvin-klein"), "Calvin Klein products must retain the maker route");
 assert.ok(products.filter(({ brand }) => brand === "SKIMS").every(({ shopRoute }) => shopRoute === "#catalogue/skims"), "SKIMS products must retain the maker route");
 
 fs.writeFileSync(kernelPath, `${JSON.stringify(kernel, null, 2)}\n`);
 fs.writeFileSync(editsPath, `${JSON.stringify(radioEdits, null, 2)}\n`);
 
-console.log(`Added ${products.length} products: ${kernel.products.length} Fashion Tensor products and ${innerPlains.productIds.length} Inner Plains products.`);
+console.log(`Added ${products.length} products: ${kernel.products.length} Fashion Tensor products and ${innerPlanes.productIds.length} Inner Planes products.`);

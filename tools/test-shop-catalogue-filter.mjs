@@ -112,7 +112,7 @@ assert.equal(combinedProducts.filter((product) => filter.colourFamilies(product)
 assert.ok(verifiedColourProducts.every((product) => product.colourSourceUrl?.startsWith("https://")), "Every verified colour projection must retain its source URL");
 assert.ok(verifiedColourProducts.every((product) => ["2026-07-31", "2026-08-02", "2026-08-04"].includes(product.colourCheckedAt)), "Every verified colour projection must carry its audit date");
 assert.ok(verifiedColourProducts.filter((product) => Number(product.id.slice(3)) >= 398 && Number(product.id.slice(3)) <= 417).every((product) => product.colourCheckedAt === "2026-08-02"), "The first radio-edit intake must retain its colour evidence date");
-assert.ok(verifiedColourProducts.filter((product) => Number(product.id.slice(3)) >= 418).every((product) => product.colourCheckedAt === "2026-08-04"), "The additional Inner Plains intake must carry the current colour evidence date");
+assert.ok(verifiedColourProducts.filter((product) => Number(product.id.slice(3)) >= 418).every((product) => product.colourCheckedAt === "2026-08-04"), "The additional Inner Planes intake must carry the current colour evidence date");
 assert.ok(verifiedColourProducts.every((product) => product.colourTaxonomyVersion === "jb-colour-taxonomy-v1"), "Every verified colour projection must use the current controlled taxonomy");
 assert.ok(verifiedColourProducts.every((product) => product.colourFamilies.every((family) => allowedColourFamilies.has(family))), "No internal or invented family may enter the public projection");
 const calvinKlein = combinedProducts.filter((product) => product.brand === "Calvin Klein");
@@ -124,9 +124,9 @@ const transparentEresIds = [
   "JB-0015", "JB-0016", "JB-0017", "JB-0018", "JB-0019", "JB-0020", "JB-0022", "JB-0026", "JB-0027", "JB-0028",
 ];
 const transparentEres = eres.filter((product) => filter.matchesSearch(product, "transparent"));
-assert.equal(calvinKlein.length, 25, "The complete Calvin Klein catalogue must include all sixteen Inner Plains additions");
-assert.equal(skims.length, 8, "The complete SKIMS catalogue must include the Inner Plains balloon pant");
-assert.equal(studioK.length, 6, "The Inner Plains edit must include all six Studio K products");
+assert.equal(calvinKlein.length, 25, "The complete Calvin Klein catalogue must include all sixteen Inner Planes additions");
+assert.equal(skims.length, 8, "The complete SKIMS catalogue must include the Inner Planes balloon pant");
+assert.equal(studioK.length, 6, "The Inner Planes edit must include all six Studio K products");
 assert.ok(calvinKlein.filter((product) => filter.matchesColour(product, "white")).length >= 3, "Calvin Klein white products must be filterable");
 assert.ok(eres.filter((product) => filter.matchesColour(product, "white")).length >= 3, "ERES Lys and near-white Panama products must be filterable");
 assert.ok(eres.every((product) => filter.colourFamilies(product).length > 0), "Every ERES house colour in the catalogue must have a verified controlled family");

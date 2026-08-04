@@ -69,6 +69,8 @@
   const openingEditorialVideo = document.querySelector(".shop-looks [data-shop-silent-video]");
   const openingEditorialImages = Array.from(document.querySelectorAll(".shop-looks img")).slice(0, 2);
   const themeKey = "iamShopThemeV1";
+  const canonicalInnerPlanesBrandSlug = "inner-planes";
+  const legacyInnerPlanesBrandSlug = "inner-plains";
   const emilioCurrencyRecoveryHost = "www.emiliocavallini.com";
   const emilioCurrencyRecoveryDelay = 1800;
   const emilioRetailerTabName = "iam-emilio-cavallini";
@@ -926,11 +928,22 @@
     const [path, query = ""] = window.location.hash.slice(1).split("?");
     const parts = path.split("/").filter(Boolean);
     if (parts[0] !== "catalogue" || !parts[1]) return null;
+    const requestedBrand = decodeURIComponent(parts[1] || "all");
+    const brand = requestedBrand === legacyInnerPlanesBrandSlug
+      ? canonicalInnerPlanesBrandSlug
+      : requestedBrand;
+    if (brand !== requestedBrand) {
+      const canonicalHash = window.location.hash.replace(
+        `#catalogue/${legacyInnerPlanesBrandSlug}`,
+        `#catalogue/${canonicalInnerPlanesBrandSlug}`,
+      );
+      window.history.replaceState(null, "", canonicalHash);
+    }
     const search = new URLSearchParams(query);
     const typeIndex = parts.indexOf("type");
     const productIndex = parts.indexOf("product");
     return {
-      brand: decodeURIComponent(parts[1] || "all"),
+      brand,
       type: typeIndex >= 0 ? decodeURIComponent(parts[typeIndex + 1] || "all") : decodeURIComponent(search.get("type") || "all"),
       product: productIndex >= 0 ? decodeURIComponent(parts[productIndex + 1] || "") : "",
       sort: search.get("sort") || "editorial",
@@ -1108,9 +1121,9 @@
   async function loadCatalogue() {
     try {
       const [kernelResponse, legacyChampagneResponse, radioEditsResponse] = await Promise.all([
-        fetch("shop-product-kernel-v1.json?v=c4a5859e93d3", { credentials: "same-origin" }),
+        fetch("shop-product-kernel-v1.json?v=5fc46d236e5e", { credentials: "same-origin" }),
         fetch("shop-champagne-bohemia-products-v1.json?v=0f0304457056", { credentials: "same-origin" }),
-        fetch("shop-radio-edits-v1.json?v=1c02d8c4bf4a", { credentials: "same-origin" }),
+        fetch("shop-radio-edits-v1.json?v=5b2e60f9eb26", { credentials: "same-origin" }),
       ]);
       if (!kernelResponse.ok) throw new Error(`Catalogue request failed: ${kernelResponse.status}`);
       if (!legacyChampagneResponse.ok) throw new Error(`Legacy catalogue request failed: ${legacyChampagneResponse.status}`);

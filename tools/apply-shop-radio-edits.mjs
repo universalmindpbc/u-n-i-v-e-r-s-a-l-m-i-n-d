@@ -27,7 +27,7 @@ const champagneIds = [
   "JB-0240",
 ];
 
-const innerPlainsIds = [
+const innerPlanesIds = [
   "JB-0111", "JB-0406", "JB-0407", "JB-0408", "JB-0409", "JB-0410", "JB-0112", "JB-0114",
   "JB-0411", "JB-0412", "JB-0413", "JB-0117", "JB-0118", "JB-0414", "JB-0415", "JB-0416",
   "JB-0417",
@@ -295,7 +295,7 @@ const additions = [
 
 const ckBase = {
   brand: "Calvin Klein",
-  sourceBrandHeading: "Inner Plains",
+  sourceBrandHeading: "Inner Planes",
   forms: ["lingerie"],
   retailer: "Calvin Klein",
   shopRoute: "#catalogue/calvin-klein",
@@ -340,8 +340,8 @@ for (const product of additions) product.notionPageId = notionPageIds.get(produc
 
 assert.equal(champagneIds.length, 97);
 assert.equal(new Set(champagneIds).size, 97);
-assert.equal(innerPlainsIds.length, 17);
-assert.equal(new Set(innerPlainsIds).size, 17);
+assert.equal(innerPlanesIds.length, 17);
+assert.equal(new Set(innerPlanesIds).size, 17);
 assert.equal(additions.length, 20);
 assert.equal(new Set(additions.map((product) => product.id)).size, 20);
 assert.ok(additions.every((product) => product.notionPageId), "Every new product must retain its live Notion tensor record");
@@ -355,7 +355,7 @@ kernel.products.sort((a, b) => Number(a.id.slice(3)) - Number(b.id.slice(3)));
 
 const editRanks = new Map([
   ...champagneIds.map((id, index) => [id, ["Champagne Bohemia", index + 1]]),
-  ...innerPlainsIds.map((id, index) => [id, ["Inner Plains", index + 1]]),
+  ...innerPlanesIds.map((id, index) => [id, ["Inner Planes", index + 1]]),
 ]);
 for (const product of kernel.products) {
   const edit = editRanks.get(product.id);
@@ -408,15 +408,15 @@ const edits = {
       productIds: champagneIds,
     },
     {
-      brand: "Inner Plains",
-      slug: "inner-plains",
-      route: "#catalogue/inner-plains",
+      brand: "Inner Planes",
+      slug: "inner-planes",
+      route: "#catalogue/inner-planes",
       placementAfter: "Champagne Bohemia",
       formLabel: "Calvin Klein / lingerie",
       suppliedCount: 18,
       uniqueCount: 17,
       duplicateProductIds: ["JB-0117"],
-      productIds: innerPlainsIds,
+      productIds: innerPlanesIds,
     },
   ],
 };
@@ -436,4 +436,4 @@ assert.ok(!kernel.brandOrder.includes("Ioana Ciolacu"));
 fs.writeFileSync(kernelPath, `${JSON.stringify(kernel, null, 2)}\n`);
 fs.writeFileSync(editsPath, `${JSON.stringify(edits, null, 2)}\n`);
 
-console.log(`Applied ${additions.length} new products, ${champagneIds.length} Champagne Bohemia placements and ${innerPlainsIds.length} unique Inner Plains placements.`);
+console.log(`Applied ${additions.length} new products, ${champagneIds.length} Champagne Bohemia placements and ${innerPlanesIds.length} unique Inner Planes placements.`);

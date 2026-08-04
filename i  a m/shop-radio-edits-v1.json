@@ -113,9 +113,9 @@
       ]
     },
     {
-      "brand": "Inner Plains",
-      "slug": "inner-plains",
-      "route": "#catalogue/inner-plains",
+      "brand": "Inner Planes",
+      "slug": "inner-planes",
+      "route": "#catalogue/inner-planes",
       "placementAfter": "Champagne Bohemia",
       "formLabel": "Studio K / Calvin Klein / SKIMS",
       "suppliedCount": 29,
