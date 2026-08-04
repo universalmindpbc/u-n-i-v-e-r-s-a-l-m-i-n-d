@@ -3340,18 +3340,24 @@ body .adaptive-television-reaction-wallet[data-wallet-view="categories"].is-reac
 }
 
 .adaptive-television-home-program-button {
-  display: grid;
+  -webkit-appearance: none;
+  appearance: none;
+  box-sizing: border-box;
+  display: flex;
   flex: 0 0 auto;
-  width: 46px;
-  height: 21px;
-  margin-top: 6px;
+  align-items: center;
+  justify-content: center;
+  width: 86px;
+  height: 28px;
+  margin-top: 1px;
+  padding: 0;
   border: 1px solid rgba(255, 255, 255, 0.3);
   border-radius: 999px;
   background: rgba(255, 255, 255, 0.025);
   color: rgba(255, 255, 255, 0.65);
-  font: 400 10px/1 "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font: 400 10.5px/1 "Helvetica Neue", Helvetica, Arial, sans-serif;
   letter-spacing: 0;
-  place-items: center;
+  text-align: center;
   text-transform: lowercase;
   transition: background 220ms ease, border-color 220ms ease, color 220ms ease;
 }
@@ -3564,9 +3570,10 @@ body .adaptive-television-reaction-wallet[data-wallet-view="categories"].is-reac
   }
 
   .adaptive-television-home-program-button {
-    width: 42px;
-    height: 19px;
-    font-size: 8.8px;
+    width: 80px;
+    height: 26px;
+    margin-top: 2px;
+    font-size: 10px;
   }
 }
 
