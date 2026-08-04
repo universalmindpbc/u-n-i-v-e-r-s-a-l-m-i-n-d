@@ -330,6 +330,10 @@ assert.ok(accessoriesProducts.every((product) => product.description?.trim() && 
 assert.ok(accessoriesProducts.every((product) => fs.existsSync(path.join(iam, product.image))), "Every Accessories | Health product must carry its approved local lead media");
 assert.equal(accessoriesProducts.find((product) => product.id === "JB-0430")?.name, "Clair Continuous Hormone Monitor — PRE-ORDER", "Clair must visibly retain PRE-ORDER");
 assert.equal(accessoriesProducts.find((product) => product.id === "JB-0431")?.priceValue, 67, "Blue Lotus must remain a normal A$67 catalogue product");
+const jing = accessoriesProducts.find((product) => product.id === "JB-0432");
+assert.match(jing?.image || "", /jb-0432-superfeast-jing-blend\.jpg$/, "JING must use Ben's supplied sticker-free JPEG");
+assert.equal(jing?.imageSource, "user_supplied_editorial_override", "JING must retain its supplied editorial-image provenance");
+assert.equal(jing?.userSuppliedFile, "superfeast-jing__97776_58740a6f-d6b3-49df-8adb-3ce2241af11d.jpg", "JING must retain the exact supplied-image filename");
 assert.equal(accessoriesProducts.find((product) => product.id === "JB-0445")?.priceValue, 99, "LEIF must remain a normal A$99 catalogue product");
 assert.match(accessoriesProducts.find((product) => product.id === "JB-0457")?.videoEmbed || "", /^https:\/\/player\.vimeo\.com\/video\/1071184405/, "Fluorite on Calcite must use Ben's selected product video");
 assert.ok(accessoriesProducts.filter((product) => product.brand === "The Arkenstone").every((product) => /Locked MVP image permission/.test(product.mediaUsage)), "Every iRocks mineral must retain its locked-MVP media permission boundary");
@@ -522,10 +526,11 @@ assert.match(television, /url\.searchParams\.set\("shopTheme", requestedTheme\)[
 assert.match(television, /openInVideoPageLayer\(shopLink, \{ shopTheme: "night", shopThemeSource: "direct" \}\)/, "Direct Shop bootstrap must always open in Night Mode");
 assert.equal((shop.match(/data-filter-category=/g) || []).length, 6, "James Bondage edit must expose the six restrained form filters");
 assert.match(shop, /href="#shop-about">about<\/a>[\s\S]*data-shop-menu[\s\S]*href="#giving-back">giving back<\/a>[\s\S]*href="#sex-ed">sex ed<\/a>/i, "Shop masthead must use the approved About / Shop / Giving Back / Sex Ed hierarchy");
-assert.equal((shop.match(/data-shop-catalogue-type=/g) || []).length, 6, "Shop menu must expose the six functional type routes");
+assert.equal((shop.match(/data-shop-catalogue-type=/g) || []).length, 7, "Shop menu must expose the seven functional type routes");
 for (const [value, label] of expectedShopTaxonomy.slice(0, 5).map(({ value, label }) => [value, label])) {
   assert.ok(shop.includes(`href="#catalogue/all/type/${value}" data-shop-catalogue-type="${value}">${label}</a>`), `Shop menu must expose the broad ${label} route`);
 }
+assert.ok(shop.includes('href="#catalogue/all/type/accessories" data-shop-catalogue-type="accessories">accessories | health (all)</a>'), "Shop by type must expose the exact Accessories | Health all-products route");
 for (const priorityBrand of ["eres", "bordelle", "wardrobenyc", "annies-ibiza", "iris-van-herpen", "champagne-bohemia"]) {
   assert.match(shop, new RegExp(`href="#catalogue/${priorityBrand}"`, "i"), `Shop menu must expose priority brand ${priorityBrand}`);
 }
@@ -563,7 +568,7 @@ assert.equal(JSON.stringify(radioEdits).includes(misspeltInnerPlanesLabel), fals
 assert.match(shopScript, /const canonicalInnerPlanesBrandSlug = "inner-planes";/, "Shop routing must identify the corrected canonical Inner Planes slug");
 assert.match(shopScript, /const legacyInnerPlanesBrandSlug = "inner-plains";/, "Existing misspelt bookmarks must remain recognized as a private compatibility alias");
 assert.match(shopScript, /window\.history\.replaceState\(null, "", canonicalHash\);/, "Legacy misspelt bookmarks must canonicalize without adding browser history");
-assert.match(shopScript, /shop-product-kernel-v1\.json\?v=2d6637e8e9c3/, "The canonical tensor fetch must use its content-derived cache token");
+assert.match(shopScript, /shop-product-kernel-v1\.json\?v=08af8d3c6c5d/, "The canonical tensor fetch must use its content-derived cache token");
 assert.match(shopScript, /shop-champagne-bohemia-products-v1\.json\?v=0f0304457056/, "The stocked Champagne extension fetch must use its content-derived cache token");
 assert.match(shopScript, /shop-radio-edits-v1\.json\?v=98229089823e/, "The exact edit manifest fetch must use its content-derived cache token");
 assert.match(shopScript, /product\.retailer \|\| product\.brand/, "Product CTAs must prefer the destination retailer rather than the maker brand");
@@ -641,7 +646,7 @@ assert.match(shopStyle, /\.shop-footer__legal\s*\{[\s\S]*grid-template-columns:\
 assert.equal((shop.match(/data-shop-home/g) || []).length, 2, "Shop Home must appear exactly once in the sticky navigation and once in the footer");
 assert.match(shopStyle, /\.shop-product__copy--brand-only\s*\{\s*min-height:\s*76px;/, "Brand-only edit cards must fill the shared caption row without exposing a grey strip");
 assert.match(shop, /shop\.css\?v=5c0ce741389d/, "The Shop shell must load the content-derived Accessories | Health stylesheet revision");
-assert.match(shop, /shop\.js\?v=shop-021106c2aa86/, "The Shop shell must load the content-derived Accessories | Health runtime");
+assert.match(shop, /shop\.js\?v=shop-458767d4e065/, "The Shop shell must load the content-derived Accessories | Health runtime");
 assert.match(
   shopStyle,
   /@media \(max-width: 700px\)[\s\S]*?\.shop-masthead__nav \{ gap: 6px; \}[\s\S]*?\.shop-masthead__actions \{ gap: 0; \}[\s\S]*?\.shop-theme,[\s\S]*?\.shop-music \{[\s\S]*?width: 28px;[\s\S]*?height: 44px;[\s\S]*?\.shop-theme \[data-shop-theme-label\],[\s\S]*?\.shop-music \[data-shop-music-label\] \{ font-size: 0; \}/,

@@ -14,6 +14,12 @@ fs.mkdirSync(assetDirectory, { recursive: true });
 
 async function download(record) {
   const destination = path.join(assetDirectory, record.asset);
+  if (record.userSuppliedFile) {
+    assert.ok(fs.existsSync(destination), `${record.id} supplied editorial image is missing`);
+    const bytes = fs.statSync(destination).size;
+    assert.ok(bytes > 1000, `${record.id} supplied editorial image is unexpectedly small`);
+    return { id: record.id, asset: record.asset, bytes, source: "user_supplied" };
+  }
   const response = await fetch(record.sourceImageUrl, {
     headers: { "User-Agent": "Universal Mind locked MVP product-media importer" },
     redirect: "follow",

@@ -59,7 +59,9 @@
     "description": "A 100 g powdered herbal blend sold in a Miron glass jar and presented by SuperFeast for a tonic-herb ritual.",
     "material": "Powdered herbal blend; Miron glass jar",
     "sourceImageUrl": "https://www.superfeast.com.au/cdn/shop/files/JING_-_Product_Render_5a3ea9f6-a74f-4a46-8345-f581f269aacf.png?v=1765247341&width=700",
-    "asset": "jb-0432-superfeast-jing-blend.png",
+    "asset": "jb-0432-superfeast-jing-blend.jpg",
+    "imageSource": "user_supplied_editorial_override",
+    "userSuppliedFile": "superfeast-jing__97776_58740a6f-d6b3-49df-8adb-3ce2241af11d.jpg",
     "metadataStatus": "Metadata ready",
     "notionPageId": "3b27b9c9-9c56-8119-81c8-e4614ecbba78"
   },

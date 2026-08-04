@@ -69,6 +69,7 @@ const products = intake.map((record, index) => {
     imageSource: record.imageSource || "retailer_first_hero",
     sourceImageUrl: record.sourceImageUrl,
     sourceImageIndex: 0,
+    ...(record.userSuppliedFile ? { userSuppliedFile: record.userSuppliedFile } : {}),
     ...(record.sourceVideoUrl ? { sourceVideoUrl: record.sourceVideoUrl } : {}),
     ...(record.videoEmbed ? { videoEmbed: record.videoEmbed } : {}),
     price: formatAud(record.priceValue),
