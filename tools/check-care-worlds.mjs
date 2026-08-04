@@ -78,13 +78,18 @@ assert.match(js, /cameraTrack\.play\(room\.preview/, "Camera preview must render
 assert.match(js, /checkout\?\.addEventListener\("submit"/, "The $0 cart must behave like a form");
 assert.match(js, /dispatchEvent\(new CustomEvent\("iam:care-open"\)\)/, "Opening Care must request the wallet to close");
 assert.match(televisionJs, /addEventListener\("iam:care-open", closeReactionWalletSoftly\)/, "The television wallet must honour the Care close request");
+assert.doesNotMatch(js, /previousFocus|walletTrigger/, "Closing Care must never refocus and reopen the wallet");
+assert.match(js, /experience\.contains\(document\.activeElement\)[\s\S]*?document\.activeElement\.blur\(\)/, "Closing Care must release dialog focus without opening another surface");
 
 assert.match(css, /\.care-experience__backdrop\s*\{[^}]*background:\s*rgba\(0, 0, 0, 0\.34\)/, "The music video must bleed through a 34% black veil");
 assert.doesNotMatch(css, /\.care-experience__backdrop\s*\{[^}]*background:\s*rgba\(0, 0, 0, 0\.77\)/, "The 77% black belongs only to the Connect video tiles, not the full-screen veil");
 assert.ok(count(css, /Universal Mind \[ I o H \] Logo\.PNG/g) >= 4, "Human, camera, and microphone symbols must sit over the Universal Mind flower");
 assert.match(css, /\.care-call__screens\s*\{[\s\S]*?grid-template-columns:\s*repeat\(2/, "Connect must look like a two-person streaming room");
 assert.match(css, /\.care-call__screen\s*\{[\s\S]*?background:\s*rgba\(0, 0, 0, 0\.77\)/, "Connect's two video tiles must use 77%-opaque black");
-assert.match(css, /\.care-call\s*\{[\s\S]*?background:\s*rgba\(248, 248, 246, 0\.96\)/, "Connect must use the translucent-white Care casing");
+assert.match(css, /\.care-call\s*\{[^}]*background:\s*transparent/, "Connect must not place white behind the transparent video tiles");
+assert.match(css, /\.care-call__screens\s*\{[^}]*background:\s*transparent/, "The video grid must reveal the music video beneath its black alpha");
+assert.match(css, /\.care-call__topbar\s*\{[^}]*background:\s*rgba\(248, 248, 246, 0\.96\)/, "Connect must keep its top casing white");
+assert.match(css, /\.care-call__toolbar\s*\{[^}]*background:\s*rgba\(248, 248, 246, 0\.96\)/, "Connect must keep its control casing white");
 assert.match(css, /\.care-call__connect\s*\{[\s\S]*?background:\s*#fff;[\s\S]*?color:\s*#111;/, "Connect must use the site's white CTA treatment");
 assert.match(css, /\.care-cart\s*\{[\s\S]*?background:\s*rgba\(248, 248, 246, 0\.96\)/, "Comfort must read as a light shopping cart");
 assert.match(css, /\.care-clinical-room,\s*\n\.care-support-now\s*\{[\s\S]*?background:\s*rgba\(248, 248, 246, 0\.96\)/, "Both Talk panels must use the translucent-white Care casing");

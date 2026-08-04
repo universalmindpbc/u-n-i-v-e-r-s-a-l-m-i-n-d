@@ -150,7 +150,7 @@ body.care-experience-open { overflow: hidden; }
   overflow: hidden;
   border: 1px solid rgba(255, 255, 255, 0.62);
   border-radius: 20px;
-  background: rgba(248, 248, 246, 0.96);
+  background: transparent;
   box-shadow: 0 28px 90px rgba(0, 0, 0, 0.42);
   color: #111;
 }
@@ -160,6 +160,7 @@ body.care-experience-open { overflow: hidden; }
   align-items: center;
   justify-content: space-between;
   min-height: 54px;
+  background: rgba(248, 248, 246, 0.96);
   padding: 0 18px;
 }
 
@@ -199,8 +200,8 @@ body.care-experience-open { overflow: hidden; }
   position: relative;
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 2px;
-  background: rgba(255, 255, 255, 0.12);
+  gap: 0;
+  background: transparent;
 }
 
 .care-call__screen {
@@ -217,6 +218,10 @@ body.care-experience-open { overflow: hidden; }
   background:
     radial-gradient(circle at 50% 42%, rgba(255, 255, 255, 0.08), transparent 30%),
     rgba(0, 0, 0, 0.77);
+}
+
+.care-call__screen--self {
+  border-left: 2px solid rgba(255, 255, 255, 0.82);
 }
 
 .care-call__person {
@@ -337,6 +342,7 @@ body.care-experience-open { overflow: hidden; }
   justify-content: center;
   gap: 18px;
   min-height: 88px;
+  background: rgba(248, 248, 246, 0.96);
   padding: 10px 20px 4px;
 }
 

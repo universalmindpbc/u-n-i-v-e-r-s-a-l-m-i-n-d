@@ -12,7 +12,6 @@
   const checkout = experience.querySelector("[data-care-checkout]");
   const address = experience.querySelector("[data-care-address]");
   const checkoutStatus = experience.querySelector("[data-care-checkout-status]");
-  const walletTrigger = document.querySelector("[data-reaction-wallet-trigger]");
 
   const rooms = {
     connect: {
@@ -38,7 +37,6 @@
   };
 
   let currentView = "connect";
-  let previousFocus = null;
   let closeTimer = 0;
   let cameraTrack = null;
   let cameraOwner = "";
@@ -236,9 +234,6 @@
 
   function openCare(view) {
     window.clearTimeout(closeTimer);
-    previousFocus = walletTrigger instanceof HTMLElement
-      ? walletTrigger
-      : (document.activeElement instanceof HTMLElement ? document.activeElement : null);
     window.dispatchEvent(new CustomEvent("iam:care-open"));
     experience.hidden = false;
     experience.setAttribute("aria-hidden", "false");
@@ -250,15 +245,17 @@
     });
   }
 
-  function closeCare({ restoreFocus = true } = {}) {
+  function closeCare() {
     endRoom("connect");
     endRoom("talk");
+    if (document.activeElement instanceof HTMLElement && experience.contains(document.activeElement)) {
+      document.activeElement.blur();
+    }
     experience.classList.remove("is-open");
     experience.setAttribute("aria-hidden", "true");
     document.body.classList.remove("care-experience-open");
     closeTimer = window.setTimeout(() => {
       experience.hidden = true;
-      if (restoreFocus && previousFocus?.isConnected) previousFocus.focus({ preventScroll: true });
     }, 360);
   }
 
