@@ -561,6 +561,7 @@
   let reactionWalletPointerLockTimer = 0;
   let reactionWalletCollapseTimer = 0;
   let bloomWalletCloseGuard = false;
+  let bloomWalletSnapTimer = 0;
   let nowPlayingInteractiveAt = 0;
   let nowPlayingResizeObserver = null;
   let nowPlayingTickerTimer = 0;
@@ -5424,7 +5425,7 @@
     reactionWalletPointerReadyAt = Date.now();
     reactionWalletPointerAnchorX = null;
     reactionWalletPointerAnchorY = null;
-    document.body.classList.remove("television-wallet-bloom-snapping", "television-wallet-pointer-locked");
+    document.body.classList.remove("television-wallet-pointer-locked");
   }
 
   function closeReactionWalletAfterBloom(button, event) {
@@ -5432,7 +5433,12 @@
     window.clearTimeout(reactionWalletCollapseTimer);
     reactionWalletCollapseTimer = 0;
     bloomWalletCloseGuard = true;
+    window.clearTimeout(bloomWalletSnapTimer);
     document.body.classList.add("television-wallet-bloom-snapping");
+    bloomWalletSnapTimer = window.setTimeout(() => {
+      bloomWalletSnapTimer = 0;
+      document.body.classList.remove("television-wallet-bloom-snapping");
+    }, 180);
     armReactionWalletPointerLock(event);
     button?.blur?.();
     setWalletView("closed", { remember: false });

@@ -159,7 +159,8 @@ assert.match(
   /walletView !== "emoji"[\s\S]*?reactionWalletCollapseTimer = 0;[\s\S]*?bloomWalletCloseGuard = true;[\s\S]*?armReactionWalletPointerLock\(event\);[\s\S]*?button\?\.blur\?\.\(\);[\s\S]*?setWalletView\("closed", \{ remember: false \}\);/,
   "A Bloom tap must snap shut from Bloom, release focus, suppress accidental hover reopening, and preserve the saved Bloom panel.",
 );
-assert.match(television, /function releaseBloomWalletCloseGuard\(\) \{[\s\S]*?television-wallet-bloom-snapping[\s\S]*?television-wallet-pointer-locked[\s\S]*?\n  \}/, "The Bloom close guard must release after the pointer leaves or the flower is deliberately reopened.");
+assert.match(television, /function releaseBloomWalletCloseGuard\(\) \{[\s\S]*?television-wallet-pointer-locked[\s\S]*?\n  \}/, "The Bloom close guard must release after the pointer leaves or the flower is deliberately reopened.");
+assert.match(bloomWalletCloseHandler, /television-wallet-bloom-snapping[\s\S]*?window\.setTimeout[\s\S]*?television-wallet-bloom-snapping[\s\S]*?, 180\);/, "The fast snap timing must survive the pointer leaving until the close transition completes.");
 const walletHomeHandler = television.match(
   /function returnToWalletHome\(event\) \{[\s\S]*?\n  \}/,
 )?.[0];
