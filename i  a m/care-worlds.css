@@ -705,6 +705,7 @@ body.care-experience-open { overflow: hidden; }
 .care-world--talk {
   width: min(1240px, 100%);
   margin: 0 auto;
+  padding-top: clamp(24px, 3vh, 38px);
 }
 
 .care-world__intro {
@@ -712,15 +713,7 @@ body.care-experience-open { overflow: hidden; }
   grid-template-columns: minmax(260px, 0.9fr) minmax(300px, 1.1fr);
   gap: clamp(28px, 6vw, 90px);
   align-items: end;
-  margin: 10px 0 clamp(28px, 4vh, 48px);
-}
-
-.care-world__eyebrow {
-  grid-column: 1 / -1;
-  margin: 0 0 -10px;
-  color: var(--care-faint);
-  font-size: 8px;
-  letter-spacing: 0.16em;
+  margin: 0 0 clamp(28px, 4vh, 48px);
 }
 
 .care-world__intro h2 {

@@ -62,6 +62,7 @@ assert.match(careHtml, /3PM&ndash;10PM EVERY DAY <span>IN YOUR AUSTRALIAN TIME Z
 assert.equal(count(careHtml, /I AM members aged 18&ndash;25/g), 2, "Talk must respect I AM's adults-only age boundary");
 assert.doesNotMatch(careHtml, /aged 12&ndash;25|aged 15&ndash;25/, "Care must not offer the I AM pathway to under-18s");
 assert.match(careHtml, /Qualifications and service identity will appear here\./, "Talk must use committed future-facing clinician copy");
+assert.doesNotMatch(careHtml, /QUALIFIED PROFESSIONAL SUPPORT|care-world__eyebrow/, "Talk must not waste above-fold space on the rejected eyebrow");
 assert.match(careHtml, /tel:1800650890/);
 assert.match(careHtml, /headspace\.org\.au\/online-and-phone-support\/connect-with-us\//);
 assert.match(careHtml, /No information from your I AM check-in is shared with headspace/i);
@@ -93,6 +94,8 @@ assert.match(css, /\.care-call__toolbar\s*\{[^}]*background:\s*rgba\(248, 248, 2
 assert.match(css, /\.care-call__connect\s*\{[\s\S]*?background:\s*#fff;[\s\S]*?color:\s*#111;/, "Connect must use the site's white CTA treatment");
 assert.match(css, /\.care-cart\s*\{[\s\S]*?background:\s*rgba\(248, 248, 246, 0\.96\)/, "Comfort must read as a light shopping cart");
 assert.match(css, /\.care-clinical-room,\s*\n\.care-support-now\s*\{[\s\S]*?background:\s*rgba\(248, 248, 246, 0\.96\)/, "Both Talk panels must use the translucent-white Care casing");
+assert.match(css, /\.care-world--talk\s*\{[^}]*padding-top:\s*clamp\(24px, 3vh, 38px\)/, "Talk must start high enough to centre its complete composition above the fold");
+assert.match(css, /\.care-world__intro\s*\{[^}]*margin:\s*0 0 clamp\(28px, 4vh, 48px\)/, "Talk must not retain the removed eyebrow's top spacing");
 assert.match(css, /\.care-urgent strong\s*\{[\s\S]*?font-size:\s*15px;/, "Urgent support must be readable above the fold");
 assert.match(css, /@media \(max-width: 680px\)/, "Care must include a mobile layout");
 assert.match(css, /@media \(prefers-reduced-motion: reduce\)/, "Care must honour reduced motion");
