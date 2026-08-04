@@ -6,6 +6,8 @@ import { fileURLToPath, pathToFileURL } from 'node:url';
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const IAM_DIR = path.join(ROOT, 'i  a m');
 const controllerPath = path.join(IAM_DIR, 'adaptive-environment-television.js');
+const emdrThreeArtPath = path.join(IAM_DIR, 'emdr-three-art.js');
+const emdrShaderPath = path.join(IAM_DIR, 'emdr-shader.js');
 const globeControllerPath = path.join(IAM_DIR, 'globe.js');
 const streamControllerPath = path.join(IAM_DIR, 'cloudflare-stream-controller.js');
 const streamCataloguePath = path.join(IAM_DIR, 'cloudflare-stream-catalogue.js');
@@ -119,6 +121,8 @@ function requireCondition(condition, message) {
 }
 
 const controller = await fs.readFile(controllerPath, 'utf8');
+const emdrThreeArt = await fs.readFile(emdrThreeArtPath, 'utf8');
+const emdrShader = await fs.readFile(emdrShaderPath, 'utf8');
 const globeController = await fs.readFile(globeControllerPath, 'utf8');
 const streamController = await fs.readFile(streamControllerPath, 'utf8');
 const streamCatalogue = await fs.readFile(streamCataloguePath, 'utf8');
@@ -193,6 +197,8 @@ const globalNavigationPages = await Promise.all(globalNavigationPagePaths.map(as
 })));
 
 const expectedCacheToken = `music-tv-${createHash('sha256').update(controller).digest('hex').slice(0, 12)}`;
+const expectedEmdrThreeArtToken = `emdr-three-${createHash('sha256').update(emdrThreeArt).digest('hex').slice(0, 12)}`;
+const expectedEmdrShaderToken = `emdr-shader-${createHash('sha256').update(emdrShader).digest('hex').slice(0, 12)}`;
 const expectedGlobeCacheToken = `globe-${createHash('sha256').update(globeController).digest('hex').slice(0, 12)}`;
 const expectedCssCacheToken = `music-tv-css-${createHash('sha256').update(televisionCss).digest('hex').slice(0, 12)}`;
 const expectedProgrammeToken = `programme-guide-${createHash('sha256').update(programmeGuide).digest('hex').slice(0, 12)}`;
@@ -224,6 +230,10 @@ const nowPlayingCss = televisionCss.slice(
   televisionCss.indexOf('.adaptive-television-wallet-category {', nowPlayingCssStart)
 );
 const indexPage = pages.find(({ pagePath }) => pagePath === path.join(IAM_DIR, 'index.html'))?.source || '';
+const emdrThreeArtMatch = indexPage.match(/emdr-three-art\.js\?v=([^"']+)/);
+const emdrShaderMatch = indexPage.match(/emdr-shader\.js\?v=([^"']+)/);
+requireCondition(emdrThreeArtMatch?.[1] === expectedEmdrThreeArtToken, `the Stellar artwork token does not match ${expectedEmdrThreeArtToken}`);
+requireCondition(emdrShaderMatch?.[1] === expectedEmdrShaderToken, `the EMDR shader token does not match ${expectedEmdrShaderToken}`);
 
 requireCondition(controller.includes(explicitSelectionMarker), 'the home controller no longer reads selected_track_id from the URL');
 requireCondition(indexPage.includes(`programme-guide.css?v=${expectedProgrammeCssToken}`), 'the live I AM app Program stylesheet cache token is stale');
@@ -660,8 +670,17 @@ requireCondition(televisionPage.includes('data-wallet-panel="emdr" data-emdr-con
 requireCondition(!televisionPage.includes('adaptive-television-emdr-menu') && !televisionPage.includes('nothing starts until you choose'), 'the superseded neutral EMDR hierarchy is still present');
 requireCondition(restoredEmdrPanel.includes('data-wallet-home') && restoredEmdrPanel.includes('aria-label="Return to wallet home"'), 'the restored EMDR wallet has lost its mandatory home flower');
 requireCondition(restoredEmdrPanel.includes('data-emdr-off') && restoredEmdrPanel.includes('data-emdr-react') && restoredEmdrPanel.includes('data-emdr-automate') && restoredEmdrPanel.includes('data-emdr-mantra-open') && restoredEmdrPanel.includes('data-emdr-intensity') && restoredEmdrPanel.includes('data-emdr-sound-research'), 'the restored EMDR wallet no longer contains the complete approved control hierarchy');
+requireCondition(restoredEmdrPanel.includes('data-emdr-style-index="1"') && restoredEmdrPanel.includes('aria-pressed="true" aria-label="Use stellar EMDR style (selected)"'), 'Stellar is no longer the selected EMDR default');
+requireCondition(restoredEmdrPanel.includes('data-emdr-react data-emdr-tooltip="React to the music." aria-pressed="false"'), 'music reaction no longer starts off');
+requireCondition(restoredEmdrPanel.includes('data-emdr-automate data-emdr-tooltip="Automate the movement." aria-pressed="false"'), 'automatic movement no longer starts off');
+requireCondition(restoredEmdrPanel.includes('value="80" step="1" data-emdr-intensity'), 'the Stellar manual baseline is no longer 80 percent');
 requireCondition(televisionPage.includes('adaptive-television-research-tooltip-host--sound') && televisionPage.includes('adaptive-television-research-tooltip--sound'), 'the approved two-stage Sound research rollover has not been restored');
-requireCondition(controller.includes('window.IAMEMDR?.setActive(false, { canvas: emdrCanvas, video: localVideo });') && controller.includes('emdrStyleIndex = -1;') && controller.includes('setSoundResearchEnabled(true);') && controller.includes('setWalletView("emdr");'), 'opening EMDR no longer follows the approved neutral entry path with Sound on');
+requireCondition(controller.includes('let emdrStyleIndex = 1;') && controller.includes('let emdrAutomateEnabled = false;') && controller.includes('let emdrUserIntensity = .8;'), 'the controller no longer starts Stellar manually at 80 percent');
+requireCondition(controller.includes('if (!emdrDefaultStarted)') && controller.includes('const adaptation = applyEmdrAdaptation(1);') && controller.includes('window.IAMEMDR?.setActive(true, { canvas: emdrCanvas });'), 'the first EMDR entry no longer starts Stellar directly');
+requireCondition(controller.includes('behavior: "fixed_manual_baseline_with_cinematic_choreography"') && !controller.includes('updateEmdrIntensityJourney'), 'automation can move the manual intensity baseline again');
+requireCondition(emdrThreeArt.includes('function automationComposition(automated, beatPosition)') && emdrThreeArt.includes('["gather", "open", "orbit", "resolve"]') && emdrThreeArt.includes('STELLA_AUTOMATION_PHRASE_BEATS = 64'), 'Stellar automation no longer has its four-scene phrase choreography');
+requireCondition(emdrThreeArt.includes('state.motionEnvelope.kick = settle') && emdrThreeArt.includes('state.motionEnvelope.snare = settle') && emdrThreeArt.includes('state.motionEnvelope.accent = settle'), 'Stellar music reaction no longer uses damped kick, snare, and accent gestures');
+requireCondition(emdrShader.includes('reactionEnabled: false') && emdrShader.includes('style: 5') && emdrShader.includes('intensity: 0.8'), 'the EMDR runtime defaults no longer match Stellar 80 with reaction off');
 requireCondition(controller.includes('localStorage.getItem("iamSoundResearchLayer") !== "off"'), 'the established Sound persistence behavior has not been restored');
 requireCondition(televisionPage.includes('Isochronic tone: 7.38088 Hz, carried on a 111.011 Hz sine wave, plus a separate constant 528.088 Hz sine wave, together as one.'), 'the Sound research lightbox no longer describes the approved frequencies exactly');
 requireCondition(!televisionPage.includes('constant 528.08 Hz sine wave'), 'the Sound research lightbox has regressed to the superseded 528.08 Hz value');
@@ -697,9 +716,9 @@ requireCondition(
 requireCondition(mantraSampler.includes('source.detune.linearRampToValueAtTime') && mantraSampler.includes('item.pitch_curve'), 'saved drawn pitch lines no longer shape sampler playback');
 requireCondition(mantraSampler.includes('document.body.classList.remove("mantra-sampler-open")') && controller.includes('window.addEventListener("iam:mantra-close"') && controller.includes('setWalletView("emdr");'), 'closing the full-screen sampler no longer returns to the restored EMDR wallet');
 requireCondition(controller.includes('emdrMantraOpen?.addEventListener("click"') && controller.includes('window.IAMMantraSampler?.open?.();') && !controller.includes('deactivateVisualEmdr();'), 'the Mantra extension no longer opens independently from the restored EMDR controls');
-requireCondition(controller.includes('emdrStyleIndex = -1;') && controller.includes('setSoundResearchEnabled(true);') && controller.includes('applyEmdrAdaptation(requestedStyleIndex)'), 'EMDR entry no longer waits for a manual GIF or stellar selection with Sound on');
+requireCondition(controller.includes('emdrDefaultStarted = true;') && controller.includes('setSoundResearchEnabled(true);') && controller.includes('applyEmdrAdaptation(requestedStyleIndex)'), 'EMDR entry no longer starts Stellar while preserving manual style changes and Sound');
 requireCondition(televisionCss.includes('width: min(960px, calc(100vw - 38px)) !important;'), 'the stellar EMDR wallet is no longer wide enough to contain its home and Sound controls');
-requireCondition(televisionPage.includes('data-emdr-controls-view="neutral"'), 'the EMDR wallet no longer starts in its compact neutral state');
+requireCondition(televisionPage.includes('data-emdr-controls-view="stellar"'), 'the EMDR wallet no longer starts in its Stellar control state');
 requireCondition(controller.includes('reactionWallet.dataset.emdrControlsView = emdrStyleIndex === 1') && controller.includes('? "stellar"') && controller.includes('emdrStyleIndex === 0 ? "gif" : "neutral"'), 'the EMDR wallet no longer discloses controls according to the selected experience');
 requireCondition(televisionCss.includes('[data-emdr-controls-view="neutral"] .adaptive-television-emdr-off') && televisionCss.includes('[data-emdr-controls-view="neutral"] .adaptive-television-emdr-react') && televisionCss.includes('[data-emdr-controls-view="gif"] .adaptive-television-emdr-react'), 'neutral and GIF EMDR views no longer keep unrelated advanced controls hidden');
 requireCondition(controller.includes('emdrStyleIndex = -1;\n    syncEmdrStyleButtons();\n    document.querySelector(\'[data-video-mode="emdr"]\')?.setAttribute("aria-pressed", "false");\n    setWalletView("emdr");'), 'the EMDR off button no longer returns to the compact EMDR picker');

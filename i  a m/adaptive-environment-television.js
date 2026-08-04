@@ -587,18 +587,14 @@
   let walletResumeView = "categories";
   const emdrStyleNames = ["GIF", "stellar"];
   const emdrStyleValues = [7, 5];
-  let emdrStyleIndex = -1;
+  let emdrStyleIndex = 1;
+  let emdrDefaultStarted = false;
   let emdrGifPreviousVideoBlend = null;
   let emdrGifPreviousMusicMaxHeight = null;
   let emdrGifMusicMaxHeightCaptured = false;
-  let emdrIntensityFrame = 0;
-  let emdrIntensityJourneyStartedAt = 0;
-  let emdrIntensityJourneyLastAt = 0;
-  let emdrIntensityJourneyCurrent = .22;
-  let emdrIntensityJourneyMinimum = .22;
-  let emdrAutomateEnabled = true;
-  let emdrUserIntensity = null;
-  const EMDR_INTENSITY_CYCLE_MS = 32000;
+  let emdrIntensityJourneyCurrent = .8;
+  let emdrAutomateEnabled = false;
+  let emdrUserIntensity = .8;
   const EMDR_INTENSITY_PHRASE_BEATS = 64;
 
   function shouldShowAudioWalletMock() {
@@ -6599,7 +6595,6 @@
 
     window.IAMEMDR?.setActive?.(false, { canvas: emdrCanvas, video: localVideo });
     window.IAMEMDR?.setTimelineSource?.({ media: null, fallbackBpm: 112 });
-    stopEmdrIntensityJourney();
     window.IAMEMDR?.setAudioSource?.(null);
     document.body.classList.remove("television-radio-continuation");
   }
@@ -6751,99 +6746,23 @@
     return (hash >>> 0) / 4294967295;
   }
 
-  function stopEmdrIntensityJourney() {
-    window.cancelAnimationFrame(emdrIntensityFrame);
-    emdrIntensityFrame = 0;
-  }
-
-  function emdrIntensityTimeline(now) {
-    const bpm = Number(track.bpm);
-    const downbeat = Number(track.firstDownbeatSeconds);
-    const videoTimed = localVideo &&
-      !document.body.classList.contains("television-radio-continuation") &&
-      Number.isFinite(bpm) && bpm > 0 &&
-      Number.isFinite(downbeat) && downbeat >= 0;
-
-    if (videoTimed) {
-      const relativeSeconds = Number(localVideo.currentTime) - downbeat;
-      const phraseSeconds = EMDR_INTENSITY_PHRASE_BEATS * 60 / bpm;
-      if (relativeSeconds <= 0) return { cycle: 0, phase: 0, source: "video_bpm_downbeat" };
-      return {
-        cycle: Math.floor(relativeSeconds / phraseSeconds),
-        phase: (relativeSeconds % phraseSeconds) / phraseSeconds,
-        source: "video_bpm_downbeat",
-      };
-    }
-
-    const elapsed = Math.max(0, now - emdrIntensityJourneyStartedAt);
-    return {
-      cycle: Math.floor(elapsed / EMDR_INTENSITY_CYCLE_MS),
-      phase: (elapsed % EMDR_INTENSITY_CYCLE_MS) / EMDR_INTENSITY_CYCLE_MS,
-      source: "cinematic_fallback",
-    };
-  }
-
-  function updateEmdrIntensityJourney(now) {
-    if (!window.IAMEMDR?.active || !emdrAutomateEnabled) {
-      emdrIntensityFrame = 0;
-      return;
-    }
-
-    const delta = Math.min(64, Math.max(0, now - emdrIntensityJourneyLastAt));
-    emdrIntensityJourneyLastAt = now;
-
-    const { cycle, phase } = emdrIntensityTimeline(now);
-    const humanArc = Math.sin(Math.PI * phase) ** 2;
-    const cyclePeak = .72 + stableUnit(`${track.id}:emdr-intensity:${cycle}`) * .05;
-    const target = emdrIntensityJourneyMinimum + (cyclePeak - emdrIntensityJourneyMinimum) * humanArc;
-    const glide = 1 - Math.exp(-delta / 680);
-    emdrIntensityJourneyCurrent += (target - emdrIntensityJourneyCurrent) * glide;
-
-    const intensity = Math.max(.22, Math.min(.77, emdrIntensityJourneyCurrent));
-    window.IAMEMDR.setIntensity(intensity);
-    if (emdrIntensity) emdrIntensity.value = String(Math.round(intensity * 100));
-    emdrIntensityFrame = window.requestAnimationFrame(updateEmdrIntensityJourney);
-  }
-
-  function startEmdrIntensityJourney(initialIntensity = .22, preserveCurrent = false) {
-    stopEmdrIntensityJourney();
-    if (!emdrAutomateEnabled) return;
-    const now = window.performance?.now?.() || Date.now();
-    if (!preserveCurrent) {
-      emdrIntensityJourneyMinimum = Math.max(.22, Math.min(.3, Number(initialIntensity) || .22));
-    }
-    emdrIntensityJourneyCurrent = preserveCurrent
-      ? Math.max(.22, Math.min(.77, Number(initialIntensity) || emdrIntensityJourneyMinimum))
-      : emdrIntensityJourneyMinimum;
-    const firstPeak = .72 + stableUnit(`${track.id}:emdr-intensity:0`) * .05;
-    const normalized = Math.max(0, Math.min(1, (emdrIntensityJourneyCurrent - emdrIntensityJourneyMinimum) / Math.max(.01, firstPeak - emdrIntensityJourneyMinimum)));
-    const phase = preserveCurrent ? Math.asin(Math.sqrt(normalized)) / Math.PI : 0;
-    emdrIntensityJourneyStartedAt = now - phase * EMDR_INTENSITY_CYCLE_MS;
-    emdrIntensityJourneyLastAt = now;
-    window.IAMEMDR?.setIntensity(emdrIntensityJourneyCurrent);
-    if (emdrIntensity) emdrIntensity.value = String(Math.round(emdrIntensityJourneyCurrent * 100));
-    emdrIntensityFrame = window.requestAnimationFrame(updateEmdrIntensityJourney);
-  }
-
   function setEmdrAutomateEnabled(enabled) {
     emdrAutomateEnabled = Boolean(enabled);
     emdrAutomate?.setAttribute("aria-pressed", String(emdrAutomateEnabled));
     emdrAutomate?.setAttribute("aria-label", emdrAutomateEnabled
-      ? "Turn automatic intensity movement off"
-      : "Turn automatic intensity movement on");
+      ? "Turn automatic movement off"
+      : "Turn automatic movement on");
 
-    const current = Math.max(.22, Math.min(.77, Number(emdrIntensity?.value) / 100 || emdrIntensityJourneyCurrent));
-    if (!emdrAutomateEnabled) {
-      emdrUserIntensity = current;
-      emdrIntensityJourneyCurrent = current;
-      stopEmdrIntensityJourney();
-      window.IAMEMDR?.setIntensity(current);
-      return false;
-    }
-
-    emdrUserIntensity = null;
-    if (window.IAMEMDR?.active) startEmdrIntensityJourney(current, true);
-    return true;
+    const storedBaseline = Number(emdrUserIntensity);
+    const sliderBaseline = Number(emdrIntensity?.value) / 100;
+    const baseline = Math.max(0, Math.min(1,
+      Number.isFinite(storedBaseline) ? storedBaseline : (Number.isFinite(sliderBaseline) ? sliderBaseline : .8)
+    ));
+    emdrUserIntensity = baseline;
+    emdrIntensityJourneyCurrent = baseline;
+    window.IAMEMDR?.setIntensity(baseline);
+    if (emdrIntensity) emdrIntensity.value = String(Math.round(baseline * 100));
+    return emdrAutomateEnabled;
   }
 
   function selectEmdrAdaptation() {
@@ -6873,7 +6792,7 @@
     const supportLevel = String(inference?.adaptive_support_relevance?.level || selection?.safety?.support_level || "none").toLowerCase();
     const reviewLevel = String(inference?.human_review_relevance?.level || "none").toLowerCase();
     const highConcern = ["high", "urgent"].includes(supportLevel) || ["recommended", "urgent"].includes(reviewLevel);
-    const styleIndex = 0;
+    const styleIndex = 1;
 
     const namedIntensity = { low: .28, low_to_moderate: .42, moderate: .58, high: .8, variable: .62 };
     const musicIntensity = namedIntensity[String(environment.intensity || "").toLowerCase()] ?? .52;
@@ -6915,10 +6834,7 @@
       adaptation.styleIndex = requestedStyleIndex;
       adaptation.style = emdrStyleNames[requestedStyleIndex];
     }
-    const adaptiveStartingIntensity = Math.max(.22, Math.min(.3, adaptation.intensity));
-    const startingIntensity = !emdrAutomateEnabled && Number.isFinite(emdrUserIntensity)
-      ? emdrUserIntensity
-      : adaptiveStartingIntensity;
+    const startingIntensity = Number.isFinite(emdrUserIntensity) ? emdrUserIntensity : .8;
     emdrStyleIndex = adaptation.styleIndex;
     window.IAMEMDR?.setTimelineSource?.({
       media: localVideo && !document.body.classList.contains("television-radio-continuation") ? localVideo : continuationAudio,
@@ -6932,10 +6848,11 @@
     if (emdrIntensity) emdrIntensity.value = String(Math.round(startingIntensity * 100));
     adaptation.intensityJourney = {
       start: startingIntensity,
-      minimum: adaptiveStartingIntensity,
-      maximum: .77,
+      minimum: startingIntensity,
+      maximum: startingIntensity,
       automated: emdrAutomateEnabled,
       phraseBeats: EMDR_INTENSITY_PHRASE_BEATS,
+      behavior: "fixed_manual_baseline_with_cinematic_choreography",
       timingSource: Number.isFinite(Number(track.bpm)) ? "video_bpm_downbeat" : "cinematic_fallback",
       bpm: Number(track.bpm) || null,
       firstDownbeatSeconds: Number.isFinite(Number(track.firstDownbeatSeconds)) ? Number(track.firstDownbeatSeconds) : null,
@@ -7545,13 +7462,19 @@
       const mode = button.dataset.videoMode;
       if (mode === "emdr") {
         disarmVideoTooltips();
-        window.IAMEMDR?.setActive(false, { canvas: emdrCanvas, video: localVideo });
-        stopEmdrIntensityJourney();
-        emdrStyleIndex = -1;
-        syncEmdrStyleButtons();
-        button.setAttribute("aria-pressed", "false");
         setSoundResearchEnabled(true);
         setWalletView("emdr");
+        if (!emdrDefaultStarted) {
+          emdrDefaultStarted = true;
+          const adaptation = applyEmdrAdaptation(1);
+          const active = window.IAMEMDR?.setActive(true, { canvas: emdrCanvas });
+          button.setAttribute("aria-pressed", String(Boolean(active)));
+          if (active) window.IAMEMDR?.setIntensity(adaptation.intensityJourney.start);
+          startSoundResearchLayer();
+        } else {
+          syncActiveEmdrControls();
+          button.setAttribute("aria-pressed", String(Boolean(window.IAMEMDR?.active)));
+        }
         return;
       }
       disarmVideoTooltips();
@@ -7811,7 +7734,6 @@
     event.preventDefault();
     event.stopPropagation();
     window.IAMEMDR?.setActive(false, { canvas: emdrCanvas, video: localVideo });
-    stopEmdrIntensityJourney();
     emdrStyleIndex = -1;
     syncEmdrStyleButtons();
     document.querySelector('[data-video-mode="emdr"]')?.setAttribute("aria-pressed", "false");
@@ -7825,8 +7747,7 @@
     const adaptation = applyEmdrAdaptation(requestedStyleIndex);
     const active = window.IAMEMDR?.setActive(true, { canvas: emdrCanvas });
     document.querySelector('[data-video-mode="emdr"]')?.setAttribute("aria-pressed", String(Boolean(active)));
-    if (active && emdrAutomateEnabled) startEmdrIntensityJourney(adaptation.intensityJourney.minimum);
-    else if (active) window.IAMEMDR?.setIntensity(adaptation.intensityJourney.start);
+    if (active) window.IAMEMDR?.setIntensity(adaptation.intensityJourney.start);
     startSoundResearchLayer();
   }));
   emdrReact?.addEventListener("click", (event) => {

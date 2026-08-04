@@ -24,12 +24,74 @@
     lastWidth: 0,
     lastHeight: 0,
     diagnosticFrame: 0,
+    lastRenderTime: 0,
+    motionEnvelope: { bass: 0, kick: 0, snare: 0, accent: 0 },
   };
 
   const THREE_URL = "https://unpkg.com/three@0.165.0/build/three.module.js";
   const STELLA_VISIBLE_TURN = Math.PI * 2 / 3;
   const STELLA_MANUAL_LOW_SECONDS = 10;
   const STELLA_MANUAL_HIGH_SECONDS = 2;
+  const STELLA_AUTOMATION_PHRASE_BEATS = 64;
+
+  function clamp01(value) {
+    return Math.max(0, Math.min(1, Number(value) || 0));
+  }
+
+  function smoothStep(value) {
+    const t = clamp01(value);
+    return t * t * (3 - 2 * t);
+  }
+
+  function cyclicKeyframe(phase, values) {
+    const segments = Math.max(1, values.length - 1);
+    const scaled = clamp01(phase) * segments;
+    const index = Math.min(segments - 1, Math.floor(scaled));
+    const mix = smoothStep(scaled - index);
+    return values[index] + (values[index + 1] - values[index]) * mix;
+  }
+
+  function settle(current, target, deltaSeconds, attackSeconds, releaseSeconds) {
+    const duration = target > current ? attackSeconds : releaseSeconds;
+    const glide = 1 - Math.exp(-Math.max(0, deltaSeconds) / Math.max(.001, duration));
+    return current + (target - current) * glide;
+  }
+
+  function updateMotionEnvelope(time, audio, rhythm) {
+    const deltaSeconds = state.lastRenderTime
+      ? Math.max(1 / 240, Math.min(.1, time - state.lastRenderTime))
+      : 1 / 60;
+    state.lastRenderTime = time;
+    const targets = {
+      bass: clamp01(rhythm ? rhythm[0] : (audio?.[0] || 0)),
+      kick: clamp01(rhythm?.[1]),
+      snare: clamp01(rhythm?.[2]),
+      accent: clamp01(rhythm?.[3]),
+    };
+    state.motionEnvelope.bass = settle(state.motionEnvelope.bass, targets.bass, deltaSeconds, .12, .72);
+    state.motionEnvelope.kick = settle(state.motionEnvelope.kick, targets.kick, deltaSeconds, .045, .48);
+    state.motionEnvelope.snare = settle(state.motionEnvelope.snare, targets.snare, deltaSeconds, .055, .64);
+    state.motionEnvelope.accent = settle(state.motionEnvelope.accent, targets.accent, deltaSeconds, .08, .88);
+    return state.motionEnvelope;
+  }
+
+  function automationComposition(automated, beatPosition) {
+    const wrappedBeat = ((Number(beatPosition) % STELLA_AUTOMATION_PHRASE_BEATS) + STELLA_AUTOMATION_PHRASE_BEATS) % STELLA_AUTOMATION_PHRASE_BEATS;
+    const phase = wrappedBeat / STELLA_AUTOMATION_PHRASE_BEATS;
+    const sceneIndex = Math.min(3, Math.floor(phase * 4));
+    if (!automated) {
+      return { phase, scene: "manual", bloom: 0, separation: 0, orbit: 0, camera: 0, light: 0 };
+    }
+    return {
+      phase,
+      scene: ["gather", "open", "orbit", "resolve"][sceneIndex],
+      bloom: cyclicKeyframe(phase, [.08, .42, 1, .62, .08]),
+      separation: cyclicKeyframe(phase, [.04, .3, 1, .58, .04]),
+      orbit: cyclicKeyframe(phase, [0, .28, .66, 1, 0]),
+      camera: cyclicKeyframe(phase, [0, .24, .7, .42, 0]),
+      light: cyclicKeyframe(phase, [.12, .55, 1, .72, .12]),
+    };
+  }
 
   function tetrahedronGeometry(THREE) {
     const apex = [0, 1.24, 0];
@@ -585,73 +647,94 @@
       return;
     }
     resize();
-    const bass = rhythm ? rhythm[0] : (audio?.[0] || 0);
-    const kick = rhythm ? rhythm[1] : 0;
-    const snare = rhythm ? rhythm[2] : 0;
-    const accent = rhythm ? rhythm[3] : 0;
+    const envelope = updateMotionEnvelope(time, audio, rhythm);
+    const bass = envelope.bass;
+    const kick = envelope.kick;
+    const snare = envelope.snare;
+    const accent = envelope.accent;
+    const movement = Math.max(.12, Math.min(1, Number(motion) || 1));
+    const composition = automationComposition(automated, beatPosition);
     const normalizedIntensity = Math.max(0, Math.min(1, intensity / .77));
     const manualLowPace = STELLA_VISIBLE_TURN / STELLA_MANUAL_LOW_SECONDS;
     const manualHighPace = STELLA_VISIBLE_TURN / STELLA_MANUAL_HIGH_SECONDS;
     const manualPace = manualLowPace + (manualHighPace - manualLowPace) * Math.pow(normalizedIntensity, 1.22);
-    const existingAutomatePace = .035 + intensity * .12;
-    const pace = (automated ? existingAutomatePace * 1.2 : manualPace) * motion;
+    const pace = manualPace * (1 + composition.orbit * .08) * movement;
     const rhythmicPulse = Math.max(kick, snare, accent);
-    const breath = .88
-      + bass * (.012 + normalizedIntensity * .018)
-      + rhythmicPulse * (.045 + normalizedIntensity * .04)
-      + Math.sin(time * .58) * .0035;
-    const separation = normalizedIntensity * .007 + rhythmicPulse * (.01 + normalizedIntensity * .012);
-    const sweepPosition = Math.sin(time * .42);
-    const flash = Math.pow(Math.max(0, Math.sin(time * .29 - 1.4)), 34);
+    const breathWave = .5 + .5 * Math.sin(time * .58);
+    const breath = Math.max(.82, Math.min(1.12,
+      .88
+      + breathWave * (.035 + normalizedIntensity * .025) * movement
+      + composition.bloom * .08 * movement
+      + bass * .025 * movement
+      - kick * .035 * movement
+      + snare * .018 * movement
+    ));
+    const separation = .012 + normalizedIntensity * .025
+      + composition.separation * .12 * movement
+      + snare * .09 * movement
+      + accent * .04 * movement
+      + kick * .018 * movement;
+    const phraseAngle = composition.phase * Math.PI * 2;
+    const automationTwist = automated ? Math.sin(phraseAngle) * .26 * composition.orbit * movement : 0;
+    const sweepPosition = Math.sin(time * .42) * .72 + Math.sin(phraseAngle) * composition.light * .28;
+    const flash = Math.pow(Math.max(0, Math.sin(time * .29 - 1.4)), 34) * (automated ? .9 : .4);
 
     state.sculpture.scale.setScalar(breath);
-    state.sculpture.rotation.x = .12 + Math.sin(time * .11) * .045;
-    state.sculpture.rotation.z = Math.sin(time * .075) * .018;
+    state.sculpture.rotation.x = .12 + Math.sin(time * .11) * .075 * movement + composition.camera * .035 * movement;
+    state.sculpture.rotation.z = Math.sin(time * .075) * .032 * movement + Math.sin(phraseAngle) * composition.orbit * .045 * movement;
     state.upPivot.position.y = separation;
     state.downPivot.position.y = -separation;
-    state.upPivot.scale.setScalar(1 + kick * (.05 + normalizedIntensity * .045) + snare * .018 + accent * .025);
-    state.downPivot.scale.setScalar(1 + snare * (.05 + normalizedIntensity * .045) + kick * .018 + accent * .025);
-    state.upPivot.rotation.y = time * pace;
-    state.downPivot.rotation.y = -time * pace * .74;
+    state.upPivot.scale.setScalar(1 + composition.bloom * .04 * movement - kick * (.055 + normalizedIntensity * .025) * movement + snare * .028 * movement + accent * .018 * movement);
+    state.downPivot.scale.setScalar(1 + composition.bloom * .04 * movement + snare * (.065 + normalizedIntensity * .025) * movement - kick * .025 * movement + accent * .018 * movement);
+    state.upPivot.rotation.x = composition.separation * .18 * movement + snare * .1 * movement;
+    state.downPivot.rotation.x = -composition.separation * .18 * movement - kick * .065 * movement;
+    state.upPivot.rotation.z = composition.orbit * .09 * movement + accent * .06 * movement;
+    state.downPivot.rotation.z = -composition.orbit * .09 * movement - accent * .06 * movement;
+    state.upPivot.rotation.y = time * pace + automationTwist;
+    state.downPivot.rotation.y = -time * pace * .74 - automationTwist * .82;
     state.nestedStars.forEach((star, index) => {
-      star.up.visible = intensity >= star.threshold;
-      star.down.visible = intensity >= star.threshold;
+      star.up.visible = normalizedIntensity >= star.threshold;
+      star.down.visible = normalizedIntensity >= star.threshold;
       if (!star.up.visible) return;
       const nestedPace = pace * (1.08 + index * .24);
       star.up.rotation.y = time * nestedPace + index * .72;
       star.down.rotation.y = -time * nestedPace * .9 - index * .64;
-      const nestedPulse = 1 + rhythmicPulse * (.055 + normalizedIntensity * .045 + index * .012);
+      const nestedPulse = 1
+        + composition.bloom * (.11 + index * .035) * movement
+        + snare * (.1 + index * .035) * movement
+        + accent * (.055 + index * .02) * movement
+        - kick * .035 * movement;
       star.up.scale.setScalar((index === 0 ? .27 : .69) * nestedPulse);
       star.down.scale.setScalar((index === 0 ? .27 : .69) * nestedPulse);
     });
-    state.camera.position.x = .25 + Math.sin(time * .085) * .2;
-    state.camera.position.y = .45 + Math.sin(time * .068) * .07;
-    state.camera.position.z = 6.16 + Math.cos(time * .055) * .08;
-    state.camera.lookAt(0, .04, 0);
+    state.camera.position.x = .25 + Math.sin(time * .085) * .3 * movement + Math.sin(phraseAngle) * composition.camera * .28 * movement;
+    state.camera.position.y = .45 + Math.sin(time * .068) * .1 * movement + composition.bloom * .08 * movement;
+    state.camera.position.z = 6.16 + Math.cos(time * .055) * .14 * movement - composition.camera * .32 * movement + kick * .04 * movement;
+    state.camera.lookAt(0, .04 + snare * .03 * movement, 0);
 
     state.lights.sweep.position.x = sweepPosition * 3.45;
     state.lights.sweep.position.y = 1.02 + Math.cos(time * .42) * .42;
-    state.lights.sweep.intensity = 10 + intensity * 8 + flash * 28 + snare * 2.2;
-    state.lights.key.intensity = 2.65 + intensity * .9 + flash * 7;
+    state.lights.sweep.intensity = 10 + intensity * 8 + composition.light * 8 + flash * 28 + snare * 7 + accent * 4;
+    state.lights.key.intensity = 2.65 + intensity * .9 + composition.bloom * 2.6 + flash * 7 + kick * 1.4;
     state.lights.crimson.position.x = -2.55 + Math.sin(time * .13) * .36;
     state.lights.violet.position.x = 2.55 - Math.sin(time * .13) * .36;
-    state.lights.rim.intensity = 7.5 + bass * 5 + intensity * 3;
+    state.lights.rim.intensity = 7.5 + bass * 7 + intensity * 3 + composition.light * 5 + snare * 3;
 
     state.materials.forEach((material) => {
       const role = material.userData.role;
       if (role === "outer") {
-        material.emissiveIntensity = material.userData.baseEmissive + intensity * .16 + flash * .18;
-        material.opacity = material.userData.baseOpacity * (.78 + intensity * .1);
+        material.emissiveIntensity = material.userData.baseEmissive + intensity * .16 + composition.light * .12 + flash * .18 + accent * .1;
+        material.opacity = material.userData.baseOpacity * (.78 + intensity * .1 + composition.bloom * .14);
       } else if (role === "inner") {
-        material.emissiveIntensity = material.userData.baseEmissive + intensity * .44 + bass * .18 + snare * .12;
-        material.opacity = material.userData.baseOpacity * (.86 + intensity * .42);
+        material.emissiveIntensity = material.userData.baseEmissive + intensity * .44 + bass * .24 + snare * .28 + composition.light * .2;
+        material.opacity = material.userData.baseOpacity * (.86 + intensity * .42 + composition.bloom * .28);
       } else if (role === "core") {
-        material.emissiveIntensity = material.userData.baseEmissive + intensity * .5 + bass * .42 + kick * .16 + flash * .3;
-        material.opacity = material.userData.baseOpacity * (.78 + intensity * .28);
+        material.emissiveIntensity = material.userData.baseEmissive + intensity * .5 + bass * .5 + kick * .3 + snare * .18 + composition.light * .32 + flash * .3;
+        material.opacity = material.userData.baseOpacity * (.78 + intensity * .28 + composition.bloom * .16);
       }
     });
     state.edgeMaterials.forEach((material, index) => {
-      material.opacity = Math.min(.72, material.userData.baseOpacity * (.72 + intensity * .52) + flash * .42 + snare * (index ? .08 : .13));
+      material.opacity = Math.min(.84, material.userData.baseOpacity * (.72 + intensity * .52 + composition.light * .38) + flash * .42 + snare * (index ? .18 : .28) + accent * .12);
     });
     state.facetMaterials.forEach((material) => {
       material.uniforms.uTime.value = time;
@@ -660,15 +743,17 @@
       material.uniforms.uFlash.value = flash;
     });
     if (state.core) {
-      const corePulse = 1 + bass * (.025 + intensity * .025) + kick * .014;
+      const corePulse = Math.max(.86, Math.min(1.16,
+        1 + breathWave * .03 * movement + composition.bloom * .06 * movement + bass * .06 * movement - kick * .09 * movement + snare * .04 * movement
+      ));
       state.core.scale.setScalar(corePulse);
       state.core.rotation.y = -time * pace * 1.35;
-      state.core.rotation.x = Math.PI / 4 + Math.sin(time * .12) * .12;
+      state.core.rotation.x = Math.PI / 4 + Math.sin(time * .12) * .12 * movement + composition.orbit * .16 * movement;
     }
     state.architecture.forEach((item) => {
-      item.mesh.position.y = item.baseY + Math.sin(time * .075 + item.phase) * .035;
-      item.mesh.rotation.y = Math.PI / 4 + Math.sin(time * .045 + item.phase) * .08;
-      item.material.opacity = item.baseOpacity * (.68 + intensity * .5) + flash * .008;
+      item.mesh.position.y = item.baseY + Math.sin(time * .075 + item.phase) * (.04 + composition.bloom * .04) * movement;
+      item.mesh.rotation.y = Math.PI / 4 + Math.sin(time * .045 + item.phase) * (.1 + composition.orbit * .08) * movement;
+      item.material.opacity = item.baseOpacity * (.68 + intensity * .5 + composition.light * .42) + flash * .008;
     });
     state.pearls.forEach((item) => {
       item.mesh.position.x = item.baseX + Math.sin(time * .055 + item.phase) * .34;
@@ -677,9 +762,9 @@
     });
     state.sparkles.forEach((item, index) => {
       const reveal = Math.pow(Math.max(0, Math.sin(time * .22 + item.phase)), 42);
-      const reactive = snare * intensity * (index % 3 === 0 ? .42 : .16);
-      item.material.opacity = Math.min(.95, reveal * (.24 + intensity * .58) + reactive + flash * .24);
-      const glintScale = .085 + reveal * .11 + reactive * .05;
+      const reactive = (snare * (index % 3 === 0 ? .68 : .28) + accent * (index % 2 === 0 ? .34 : .16)) * movement;
+      item.material.opacity = Math.min(.98, reveal * (.24 + intensity * .58 + composition.light * .28) + reactive + flash * .24);
+      const glintScale = .085 + reveal * .11 + reactive * .075;
       item.sprite.scale.set(glintScale, glintScale, 1);
     });
     state.seedMaterial.uniforms.uTime.value = time;
@@ -694,12 +779,21 @@
       state.canvas.dataset.emdrStellaVisibleTurnSeconds = (STELLA_VISIBLE_TURN / Math.max(pace, .0001)).toFixed(2);
       state.canvas.dataset.emdrStellaPulse = rhythmicPulse.toFixed(4);
       state.canvas.dataset.emdrStellaBeatPosition = Number(beatPosition).toFixed(3);
+      state.canvas.dataset.emdrStellaAutomationScene = composition.scene;
+      state.canvas.dataset.emdrStellaAutomationPhase = composition.phase.toFixed(3);
+      state.canvas.dataset.emdrStellaSeparation = separation.toFixed(4);
+      state.canvas.dataset.emdrStellaScale = breath.toFixed(4);
+      state.canvas.dataset.emdrStellaKickGesture = kick.toFixed(4);
+      state.canvas.dataset.emdrStellaSnareGesture = snare.toFixed(4);
+      state.canvas.dataset.emdrStellaAccentGesture = accent.toFixed(4);
     }
     state.renderer.render(state.scene, state.camera);
   }
 
   function setActive(active) {
     state.active = Boolean(active);
+    state.lastRenderTime = 0;
+    if (!state.active) state.motionEnvelope = { bass: 0, kick: 0, snare: 0, accent: 0 };
     const canvas = document.querySelector("[data-emdr-three-canvas]");
     canvas?.classList.toggle("is-active", state.active);
     if (state.active) init();
