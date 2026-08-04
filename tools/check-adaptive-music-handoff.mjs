@@ -285,6 +285,13 @@ requireCondition(aboutController.includes('const invalidEmbeddedRoute = !musicTe
 requireCondition(aboutController.includes('["adaptiveFrame", "musicTelevisionFrame", "aboutTopLevel"]'), 'About no longer removes its temporary routing parameters');
 requireCondition(controller.includes('id: "the-prodigy-everybody-in-the-place"'), 'the Prodigy track is missing from the television catalogue');
 requireCondition(controller.includes('document.body.dataset.adaptiveTrackId = track.id;'), 'the resolved track is not exposed for staging verification');
+requireCondition(!controller.includes('const DEFAULT_TRACK_ID = "madonna-frozen";'), 'the no-check-in experience still defaults to Madonna - Frozen');
+requireCondition(controller.includes('const NO_CHECKIN_RANDOM_EXCLUDED_TRACK_IDS = new Set(["madonna-frozen"]);'), 'Madonna - Frozen has not been removed from the no-check-in random pool');
+requireCondition(controller.includes('function resolveRandomNoCheckinTrack()'), 'the no-check-in experience has no random song resolver');
+requireCondition(controller.includes('candidate.presentation !== "live_dj_set"') && controller.includes('!candidate.cuePoints'), 'the no-check-in random pool can include long-form DJ sets or programmes');
+requireCondition(controller.includes('candidate.id !== lastTrackId'), 'the no-check-in random pool can immediately repeat the previous song');
+requireCondition(controller.includes('resolvedSelectionSource = "no_checkin_random";'), 'the no-check-in random source is not exposed for browser verification');
+requireCondition(controller.includes('resolvedSelectionSource = "stored_checkin";'), 'a stored check-in selection can no longer remain authoritative');
 requireCondition(controller.includes('function showRecommendationUnavailable()'), 'selector failures can silently present the default track again');
 requireCondition(!controller.includes('useRecommendationFallback'), 'selector failures still use a default-track fallback');
 requireCondition(globeController.includes('const persistedSelection = persistMusicTelevisionSelection(selection);'), 'the check-in pipeline does not validate persisted selector output');
