@@ -33,7 +33,7 @@ body.care-experience-open { overflow: hidden; }
   position: absolute;
   inset: 0;
   z-index: -1;
-  background: rgba(0, 0, 0, 0.77);
+  background: rgba(0, 0, 0, 0.34);
 }
 
 .care-experience__header {
@@ -129,12 +129,28 @@ body.care-experience-open { overflow: hidden; }
   place-items: center;
 }
 
-.care-call {
+.care-connect-stage {
   width: min(980px, 100%);
+}
+
+.care-connect-stage > h2 {
+  max-width: 760px;
+  margin: 0 auto clamp(18px, 3vh, 30px);
+  color: #fff;
+  font-size: clamp(24px, 3.2vw, 44px);
+  font-weight: 300;
+  letter-spacing: -0.035em;
+  line-height: 1.08;
+  text-align: center;
+  text-shadow: 0 2px 24px rgba(0, 0, 0, 0.42);
+}
+
+.care-call {
+  width: 100%;
   overflow: hidden;
   border: 1px solid rgba(255, 255, 255, 0.18);
   border-radius: 20px;
-  background: rgba(8, 9, 10, 0.88);
+  background: rgba(8, 9, 10, 0.56);
   box-shadow: 0 28px 90px rgba(0, 0, 0, 0.42);
 }
 
@@ -193,43 +209,46 @@ body.care-experience-open { overflow: hidden; }
   min-height: 0;
   place-items: center;
   overflow: hidden;
-  background: #17191b;
+  background: rgba(18, 20, 22, 0.56);
 }
 
 .care-call__screen--remote {
   background:
     radial-gradient(circle at 50% 42%, rgba(255, 255, 255, 0.08), transparent 30%),
-    #141618;
+    rgba(15, 17, 19, 0.5);
 }
 
 .care-call__person {
   position: relative;
-  width: clamp(72px, 9vw, 118px);
-  height: clamp(72px, 9vw, 118px);
+  width: clamp(88px, 10vw, 138px);
+  height: clamp(88px, 10vw, 138px);
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.08);
+  background: center / contain no-repeat url("a s s e t s/Universal Mind [ I o H ] Logo.PNG");
+  filter: drop-shadow(0 0 20px rgba(255, 255, 255, 0.16)) saturate(1.3);
 }
 
 .care-call__person::before {
   position: absolute;
-  top: 23%;
+  top: 28%;
   left: 50%;
-  width: 27%;
+  width: 23%;
   aspect-ratio: 1;
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.28);
+  background: #fff;
+  box-shadow: 0 1px 7px rgba(0, 0, 0, 0.28);
   content: "";
   transform: translateX(-50%);
 }
 
 .care-call__person::after {
   position: absolute;
-  right: 24%;
-  bottom: 18%;
-  left: 24%;
-  height: 31%;
+  right: 27%;
+  bottom: 22%;
+  left: 27%;
+  height: 29%;
   border-radius: 50% 50% 36% 36%;
-  background: rgba(255, 255, 255, 0.2);
+  background: #fff;
+  box-shadow: 0 1px 7px rgba(0, 0, 0, 0.24);
   content: "";
 }
 
@@ -249,7 +268,8 @@ body.care-experience-open { overflow: hidden; }
   width: 68px;
   height: 68px;
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.08);
+  background: center / contain no-repeat url("a s s e t s/Universal Mind [ I o H ] Logo.PNG");
+  filter: drop-shadow(0 0 12px rgba(255, 255, 255, 0.14)) saturate(1.3);
 }
 
 .care-call__camera-off > span::before {
@@ -258,7 +278,7 @@ body.care-experience-open { overflow: hidden; }
   left: 19px;
   width: 25px;
   height: 18px;
-  border: 2px solid rgba(255, 255, 255, 0.38);
+  border: 2px solid #fff;
   border-radius: 5px;
   content: "";
 }
@@ -269,7 +289,7 @@ body.care-experience-open { overflow: hidden; }
   right: 14px;
   width: 9px;
   height: 13px;
-  border: 2px solid rgba(255, 255, 255, 0.38);
+  border: 2px solid #fff;
   border-left: 0;
   border-radius: 0 4px 4px 0;
   content: "";
@@ -332,65 +352,61 @@ body.care-experience-open { overflow: hidden; }
 .care-call__device-icon {
   position: relative;
   display: block;
-  width: 42px;
-  height: 42px;
+  width: 48px;
+  height: 48px;
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.1);
+  background: center / contain no-repeat url("a s s e t s/Universal Mind [ I o H ] Logo.PNG");
+  filter: drop-shadow(0 0 11px rgba(255, 255, 255, 0.16)) saturate(1.3);
 }
 
 .care-call__device[aria-pressed="true"] .care-call__device-icon {
-  background: #fff;
+  box-shadow: 0 0 0 2px #fff;
 }
 
 .care-call__device-icon--microphone::before {
   position: absolute;
-  top: 10px;
-  left: 16px;
+  top: 13px;
+  left: 19px;
   width: 8px;
   height: 14px;
-  border: 2px solid rgba(255, 255, 255, 0.82);
+  border: 2px solid #fff;
   border-radius: 7px;
   content: "";
 }
 
 .care-call__device-icon--microphone::after {
   position: absolute;
-  top: 9px;
-  left: 12px;
+  top: 12px;
+  left: 15px;
   width: 16px;
   height: 21px;
   border: 2px solid transparent;
-  border-bottom-color: rgba(255, 255, 255, 0.82);
+  border-bottom-color: #fff;
   border-radius: 0 0 12px 12px;
   content: "";
 }
 
 .care-call__device-icon--camera::before {
   position: absolute;
-  top: 13px;
-  left: 10px;
+  top: 16px;
+  left: 13px;
   width: 19px;
   height: 15px;
-  border: 2px solid rgba(255, 255, 255, 0.82);
+  border: 2px solid #fff;
   border-radius: 4px;
   content: "";
 }
 
 .care-call__device-icon--camera::after {
   position: absolute;
-  top: 16px;
-  right: 7px;
+  top: 19px;
+  right: 10px;
   width: 8px;
   height: 9px;
-  border: 2px solid rgba(255, 255, 255, 0.82);
+  border: 2px solid #fff;
   border-left: 0;
   border-radius: 0 4px 4px 0;
   content: "";
-}
-
-.care-call__device[aria-pressed="true"] .care-call__device-icon::before,
-.care-call__device[aria-pressed="true"] .care-call__device-icon::after {
-  border-color: #111;
 }
 
 .care-call__connect {
@@ -398,25 +414,37 @@ body.care-experience-open { overflow: hidden; }
   min-height: 46px;
   border: 0;
   border-radius: 999px;
-  background: var(--care-blue);
-  color: #fff;
+  background: #fff;
+  color: #111;
   cursor: pointer;
   font: 600 11px/1 "Helvetica Neue", Helvetica, Arial, sans-serif;
   letter-spacing: 0.05em;
 }
 
-.care-call__connect[aria-pressed="true"] { background: #dd3d47; }
+.care-call__connect[aria-pressed="true"] { background: #fff; color: #111; }
 
 .care-call__status {
-  min-height: 16px;
-  margin: 0 0 9px;
-  color: rgba(255, 255, 255, 0.42);
-  font-size: 8px;
-  letter-spacing: 0.04em;
-  text-align: center;
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
 }
 
-.care-call__status.is-error { color: #ff9ca3; }
+.care-call__status.is-error {
+  position: static;
+  width: auto;
+  height: auto;
+  margin: 0 0 9px;
+  overflow: visible;
+  clip: auto;
+  color: #fff;
+  font-size: 9px;
+  text-align: center;
+  white-space: normal;
+}
 
 /* Comfort */
 .care-world--comfort {
@@ -452,6 +480,14 @@ body.care-experience-open { overflow: hidden; }
   font-size: clamp(27px, 3vw, 40px);
   font-weight: 400;
   letter-spacing: -0.04em;
+}
+
+.care-cart__header > div > p {
+  max-width: 520px;
+  margin: 7px 0 0;
+  color: rgba(0, 0, 0, 0.52);
+  font-size: 11px;
+  line-height: 1.35;
 }
 
 .care-cart__header > p {
@@ -695,7 +731,7 @@ body.care-experience-open { overflow: hidden; }
   overflow: hidden;
   border: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: 20px;
-  background: rgba(8, 9, 10, 0.64);
+  background: rgba(8, 9, 10, 0.48);
   box-shadow: 0 24px 80px rgba(0, 0, 0, 0.26);
 }
 
@@ -715,7 +751,8 @@ body.care-experience-open { overflow: hidden; }
   width: 150px;
   height: 150px;
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.07);
+  background: center / contain no-repeat url("a s s e t s/Universal Mind [ I o H ] Logo.PNG");
+  filter: drop-shadow(0 0 22px rgba(255, 255, 255, 0.14)) saturate(1.3);
   transform: translate(-50%, -54%);
 }
 
@@ -726,7 +763,8 @@ body.care-experience-open { overflow: hidden; }
   width: 42px;
   height: 42px;
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.24);
+  background: #fff;
+  box-shadow: 0 1px 7px rgba(0, 0, 0, 0.28);
   content: "";
 }
 
@@ -737,7 +775,8 @@ body.care-experience-open { overflow: hidden; }
   left: 37px;
   height: 51px;
   border-radius: 50% 50% 34% 34%;
-  background: rgba(255, 255, 255, 0.18);
+  background: #fff;
+  box-shadow: 0 1px 7px rgba(0, 0, 0, 0.24);
   content: "";
 }
 
@@ -811,13 +850,13 @@ body.care-experience-open { overflow: hidden; }
   min-height: 46px;
   border: 0;
   border-radius: 999px;
-  background: var(--care-blue);
-  color: #fff;
+  background: #fff;
+  color: #111;
   cursor: pointer;
   font: 600 11px/1 "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
-.care-primary-action--talk[aria-pressed="true"] { background: #dd3d47; }
+.care-primary-action--talk[aria-pressed="true"] { background: #fff; color: #111; }
 
 .care-action-status {
   min-height: 16px;
@@ -837,7 +876,7 @@ body.care-experience-open { overflow: hidden; }
 .care-support-now__status {
   margin: 0;
   color: #fff;
-  font-size: 8px;
+  font-size: 10px;
   letter-spacing: 0.13em;
 }
 
@@ -897,6 +936,44 @@ body.care-experience-open { overflow: hidden; }
 .care-handoff span { color: var(--care-faint); font-size: 7px; letter-spacing: 0.08em; }
 .care-handoff i { height: 1px; background: rgba(255, 255, 255, 0.18); }
 .care-support-now__truth { margin: 15px 0 0; color: var(--care-faint); font-size: 8px; line-height: 1.45; }
+
+.care-urgent {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  min-height: 58px;
+  box-sizing: border-box;
+  margin: 0 0 18px;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.94);
+  color: #111;
+  padding: 14px 20px;
+  box-shadow: 0 14px 42px rgba(0, 0, 0, 0.18);
+}
+
+.care-urgent strong {
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.care-urgent span {
+  font-size: 14px;
+}
+
+.care-urgent a {
+  color: #111;
+  font-weight: 700;
+  text-underline-offset: 2px;
+}
+
+.care-talk-disclosure {
+  margin: 14px 0 0;
+  color: rgba(255, 255, 255, 0.62);
+  font-size: 9px;
+  text-align: right;
+  text-shadow: 0 1px 12px rgba(0, 0, 0, 0.44);
+}
 
 .care-world__footer {
   display: flex;
@@ -970,6 +1047,11 @@ body.care-experience-open { overflow: hidden; }
   .care-support-now { min-height: 360px; padding: 22px; }
   .care-support-now__actions { grid-template-columns: 1fr; }
   .care-world__footer { align-items: flex-start; flex-direction: column; gap: 8px; }
+  .care-connect-stage > h2 { max-width: 330px; font-size: 27px; }
+  .care-urgent { align-items: flex-start; flex-direction: column; gap: 5px; min-height: 0; padding: 13px 15px; }
+  .care-urgent strong { font-size: 14px; }
+  .care-urgent span { font-size: 13px; }
+  .care-talk-disclosure { text-align: left; }
 }
 
 @media (prefers-reduced-motion: reduce) {

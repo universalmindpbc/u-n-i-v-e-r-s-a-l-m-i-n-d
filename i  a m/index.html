@@ -52,7 +52,7 @@
     <link rel="stylesheet" href="adaptive-environment-television.css?v=music-tv-css-295a425f4c73">
     <link rel="stylesheet" href="programme-guide.css?v=programme-guide-css-35f9a5fee68b">
     <link rel="stylesheet" href="circle-audio-rooms.css?v=circle-rooms-css-9cb7b0860284">
-    <link rel="stylesheet" href="care-worlds.css?v=3c1562e25a67">
+    <link rel="stylesheet" href="care-worlds.css?v=e0b63fb8a066">
     <link rel="stylesheet" href="mantra-sampler.css?v=mantra-sampler-css-fa5e34089bf9">
     <link rel="stylesheet" href="realtime-voice-assistant.css?v=realtime-voice-css-3dbe2f94acaa">
   </head>
@@ -989,7 +989,9 @@
 
             <div class="care-experience__worlds">
               <article class="care-world care-world--connect" id="care-panel-connect" data-care-panel="connect" role="tabpanel" aria-labelledby="care-tab-connect">
-                <section class="care-call" aria-label="Private video call">
+                <div class="care-connect-stage">
+                  <h2>Talk live with mentors, peers and supportive communities.</h2>
+                  <section class="care-call" aria-label="Private video call">
                   <div class="care-call__topbar">
                     <div class="care-call__roles" role="group" aria-label="Connect with">
                       <button type="button" data-care-connect-role="mentor" aria-pressed="true">Mentor</button>
@@ -1024,8 +1026,9 @@
                       <small>Camera</small>
                     </button>
                   </div>
-                  <p class="care-call__status" data-care-status="connect" role="status">Ready</p>
-                </section>
+                    <p class="care-call__status" data-care-status="connect" role="status">Ready</p>
+                  </section>
+                </div>
               </article>
 
               <article class="care-world care-world--comfort" id="care-panel-comfort" data-care-panel="comfort" role="tabpanel" aria-labelledby="care-tab-comfort" hidden>
@@ -1034,6 +1037,7 @@
                     <div>
                       <span>COMFORT</span>
                       <h2 id="care-cart-title">Care package</h2>
+                      <p>A little kindness delivered to your door in the next hour.</p>
                     </div>
                     <p><span>Total</span><strong>$0</strong></p>
                   </header>
@@ -1086,6 +1090,11 @@
                   <p>Video-forward one-to-one support is our proposed future. Phone and webchat access to eheadspace are available today for young people aged 12&ndash;25.</p>
                 </div>
 
+                <aside class="care-urgent" aria-label="Urgent mental health support">
+                  <strong>Need urgent help?</strong>
+                  <span>Call <a href="tel:000">000</a> or Lifeline <a href="tel:131114">13 11 14</a></span>
+                </aside>
+
                 <div class="care-talk-layout">
                   <section class="care-clinical-room" aria-label="Proposed private clinical video room">
                     <div class="care-clinical-room__screen">
@@ -1112,9 +1121,9 @@
                   </section>
 
                   <section class="care-support-now" aria-labelledby="care-support-now-title">
-                    <p class="care-support-now__status">AVAILABLE NOW <span>12&ndash;25</span></p>
+                    <p class="care-support-now__status">3PM&ndash;10PM EVERY DAY <span>LOCAL TIME</span></p>
                     <h3 id="care-support-now-title">Connect with eheadspace</h3>
-                    <p>Free phone and webchat support with qualified mental-health clinicians and peer workers. Availability and wait times apply.</p>
+                    <p>Free phone and webchat support with qualified mental-health clinicians and peer workers for young people aged 12&ndash;25. Wait times may apply.</p>
                     <div class="care-support-now__actions">
                       <a href="tel:1800650890"><span>PHONE</span><strong>1800 650 890</strong><small>Call eheadspace</small></a>
                       <a href="https://headspace.org.au/online-and-phone-support/connect-with-us/" target="_blank" rel="noopener noreferrer"><span>WEBCHAT</span><strong>Open eheadspace</strong><small>Continue on headspace.org.au</small></a>
@@ -1126,10 +1135,7 @@
                   </section>
                 </div>
 
-                <footer class="care-world__footer care-world__footer--urgent">
-                  <p><strong>NEED URGENT HELP?</strong><span>If there is immediate danger, call <a href="tel:000">000</a>. Lifeline: <a href="tel:131114">13 11 14</a>.</span></p>
-                  <p>Proposed video integration requires a formal clinical partnership, governance and consented secure handoff.</p>
-                </footer>
+                <p class="care-talk-disclosure">Proposed video integration requires a formal clinical partnership, governance and consented secure handoff.</p>
               </article>
             </div>
           </section>
