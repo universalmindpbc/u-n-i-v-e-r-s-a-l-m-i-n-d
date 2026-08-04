@@ -2534,14 +2534,14 @@
     fashionShelfTrack.innerHTML = order.map((item, position) => {
       const current = item.broadcastChannelId === fashionBroadcastChannelId;
       const recommended = item.id === recommendedId;
-      const recommendationLabel = recommended ? "Based on your check-in · ON NOW" : "ON NOW";
+      const recommendationLabel = recommended ? "Based on your check-in · LIVE" : "LIVE";
       return `
         <div class="adaptive-television-fashion-shelf__item" data-fashion-shelf-item role="listitem">
           <button class="adaptive-television-fashion-card adaptive-television-music-card${current ? " is-current-broadcast" : ""}${recommended ? " is-recommended" : ""}" type="button" data-fashion-card data-fashion-channel-id="${item.broadcastChannelId}" aria-pressed="${current}" aria-label="Open shared Fashion broadcast: ${item.broadcastChannelName} — ${item.artist} — ${item.display_title}">
             <span class="adaptive-television-fashion-card__media adaptive-television-music-card__media">
               <img src="${musicThumbnailUrl(item)}" alt="" loading="${position < 3 ? "eager" : "lazy"}">
               <span class="adaptive-television-fashion-card__preview-label">10s preview</span>
-              <span class="adaptive-television-music-card__live">ON NOW</span>
+              <span class="adaptive-television-music-card__live">LIVE</span>
               <span class="adaptive-television-music-card__mode">${item.broadcastChannelName}</span>
             </span>
             <span class="adaptive-television-fashion-card__copy">
@@ -3144,14 +3144,14 @@
           <img class="adaptive-television-radio-art__logo" src="${item.logo_src}" alt="${item.logo_alt || item.provider}">
           ${item.brand_logo_src ? `<img class="adaptive-television-radio-art__brand" src="${item.brand_logo_src}" alt="">` : ""}
         </span>
-        <span class="adaptive-television-music-card__live">ON NOW</span>
+        <span class="adaptive-television-music-card__live">LIVE</span>
         <span class="adaptive-television-music-card__mode">${item.broadcastChannelName}</span>
       </span>`;
     }
     return `<span class="adaptive-television-fashion-card__media adaptive-television-music-card__media">
       <img src="${musicThumbnailUrl(item)}" alt="" loading="${position < 4 ? "eager" : "lazy"}">
       <span class="adaptive-television-fashion-card__preview-label">10s preview</span>
-      <span class="adaptive-television-music-card__live">ON NOW</span>
+      <span class="adaptive-television-music-card__live">LIVE</span>
       <span class="adaptive-television-music-card__mode">${item.broadcastChannelName}</span>
     </span>`;
   }
