@@ -1096,53 +1096,154 @@ body.television-sex-ed-active .adaptive-television-timecode {
   background: transparent;
 }
 
-.adaptive-television-community__numbers.adaptive-television-live-popover {
+.adaptive-television-community__summary {
+  --community-unlock-progress: 77%;
+  position: absolute;
   top: auto;
   left: 50%;
-  bottom: clamp(24px, 4.2vh, 52px);
+  bottom: clamp(18px, 3.2vh, 40px);
   z-index: 2;
-  grid-template-columns: repeat(9, minmax(28px, 1fr));
-  column-gap: clamp(7px, 1.1vw, 18px);
-  row-gap: 0;
-  width: min(720px, calc(100vw - 96px));
-  border: 0;
+  width: min(940px, calc(100vw - 96px));
+  color: rgba(246, 225, 194, 0.88);
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  text-align: center;
+  text-shadow: 0 1px 3px rgba(31, 10, 3, 0.78);
+  pointer-events: none;
+  transform: translateX(-50%);
+}
+
+.adaptive-television-community__metrics {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   border-top: 1px solid rgba(219, 176, 108, 0.38);
   border-bottom: 1px solid rgba(219, 176, 108, 0.2);
-  border-radius: 0;
   background: linear-gradient(90deg, transparent, rgba(68, 33, 14, 0.26) 16%, rgba(21, 53, 48, 0.14) 84%, transparent);
-  box-shadow: none;
-  backdrop-filter: none;
-  opacity: 1;
-  padding: 10px 0 9px;
-  pointer-events: none;
-  transform: translateX(-50%) scale(1);
 }
 
-.adaptive-television-community__numbers.adaptive-television-live-popover span {
+.adaptive-television-community__metrics > span {
   display: grid;
-  grid-template-columns: 1fr;
-  justify-items: center;
-  min-height: 26px;
-  color: rgba(218, 240, 220, 0.8);
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-size: 9px;
-  letter-spacing: 0.14em;
+  gap: 5px;
+  place-items: center;
+  padding: 8px 18px 7px;
 }
 
-.adaptive-television-community__numbers.adaptive-television-live-popover b {
-  min-width: 0;
-  color: rgba(217, 177, 110, 0.88);
-  font-size: 8px;
+.adaptive-television-community__metrics > span + span {
+  border-left: 1px solid rgba(219, 176, 108, 0.2);
+}
+
+.adaptive-television-community__metrics b,
+.adaptive-television-community__unlock > b {
+  color: rgba(235, 206, 161, 0.88);
+  font-size: clamp(7px, 0.58vw, 10px);
   font-weight: 500;
-  letter-spacing: 0.16em;
-  text-shadow: none;
+  font-style: normal;
+  letter-spacing: 0.19em;
+  line-height: 1.2;
 }
 
-.adaptive-television-community__numbers.adaptive-television-live-popover em {
-  color: rgba(231, 244, 226, 0.9);
-  font-family: Georgia, "Times New Roman", serif;
-  font-size: 12px;
-  text-shadow: none;
+.adaptive-television-community__metrics em {
+  min-height: 18px;
+  color: rgba(255, 242, 219, 0.96);
+  font-size: clamp(13px, 1vw, 18px);
+  font-weight: 400;
+  font-style: normal;
+  letter-spacing: 0.16em;
+  line-height: 1;
+}
+
+.adaptive-television-community__happiness {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+}
+
+.adaptive-television-community__happiness img {
+  width: 16px;
+  height: 16px;
+  object-fit: contain;
+  opacity: 0.82;
+}
+
+.adaptive-television-community__unlock {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 5px 12px;
+  width: min(690px, 78%);
+  margin: 9px auto 0;
+  text-align: left;
+}
+
+.adaptive-television-community__unlock > b {
+  grid-column: 1 / -1;
+}
+
+.adaptive-television-community__unlock-track {
+  position: relative;
+  display: block;
+  align-self: center;
+  height: 2px;
+  overflow: hidden;
+  background: rgba(228, 190, 132, 0.23);
+}
+
+.adaptive-television-community__unlock-track i {
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: var(--community-unlock-progress);
+  background: linear-gradient(90deg, rgba(206, 154, 83, 0.64), rgba(255, 226, 178, 0.98));
+  box-shadow: 0 0 9px rgba(235, 185, 109, 0.38);
+  transition: width 1600ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.adaptive-television-community__unlock-track i::after {
+  content: "";
+  position: absolute;
+  top: -1px;
+  right: 0;
+  width: 18px;
+  height: 4px;
+  background: rgba(255, 240, 207, 0.76);
+  filter: blur(2px);
+  animation: community-unlock-breathe 2600ms ease-in-out infinite;
+}
+
+.adaptive-television-community__unlock > em {
+  min-width: 34px;
+  color: rgba(255, 242, 219, 0.96);
+  font-size: 11px;
+  font-weight: 400;
+  font-style: normal;
+  letter-spacing: 0.12em;
+}
+
+.adaptive-television-community__summary p {
+  margin: 9px 0 0;
+  font-size: clamp(7px, 0.52vw, 9px);
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  line-height: 1.3;
+}
+
+.adaptive-television-community__summary small {
+  display: block;
+  margin-top: 3px;
+  color: rgba(231, 205, 166, 0.62);
+  font-size: clamp(6px, 0.43vw, 7px);
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  line-height: 1.25;
+}
+
+@keyframes community-unlock-breathe {
+  0%,
+  100% {
+    opacity: 0.38;
+  }
+
+  50% {
+    opacity: 1;
+  }
 }
 
 .adaptive-television-community__close {
@@ -1172,19 +1273,65 @@ body.television-sex-ed-active .adaptive-television-timecode {
 }
 
 @media (max-width: 760px) {
-  .adaptive-television-community__numbers.adaptive-television-live-popover {
-    bottom: 18px;
-    column-gap: 4px;
+  .adaptive-television-community__summary {
+    bottom: 12px;
     width: calc(100vw - 36px);
-    padding: 8px 0 7px;
   }
 
-  .adaptive-television-community__numbers.adaptive-television-live-popover span {
-    font-size: 8px;
+  .adaptive-television-community__metrics > span {
+    gap: 4px;
+    padding: 6px 5px 5px;
   }
 
-  .adaptive-television-community__numbers.adaptive-television-live-popover em {
+  .adaptive-television-community__metrics b,
+  .adaptive-television-community__unlock > b {
+    font-size: 6px;
+    letter-spacing: 0.1em;
+  }
+
+  .adaptive-television-community__metrics em {
+    min-height: 13px;
     font-size: 11px;
+  }
+
+  .adaptive-television-community__happiness {
+    gap: 4px;
+  }
+
+  .adaptive-television-community__happiness img {
+    width: 12px;
+    height: 12px;
+  }
+
+  .adaptive-television-community__unlock {
+    gap: 4px 8px;
+    width: 88%;
+    margin-top: 7px;
+  }
+
+  .adaptive-television-community__unlock > em {
+    min-width: 29px;
+    font-size: 9px;
+  }
+
+  .adaptive-television-community__summary p {
+    margin-top: 7px;
+    font-size: 6px;
+    letter-spacing: 0.045em;
+  }
+
+  .adaptive-television-community__summary small {
+    margin-top: 2px;
+    font-size: 5px;
+    letter-spacing: 0.055em;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .adaptive-television-community__unlock-track i,
+  .adaptive-television-community__unlock-track i::after {
+    animation: none;
+    transition: none;
   }
 }
 

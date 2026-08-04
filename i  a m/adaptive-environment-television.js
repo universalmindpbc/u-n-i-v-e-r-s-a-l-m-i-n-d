@@ -192,7 +192,10 @@
   const fullscreenButton = document.querySelector("[data-television-fullscreen]");
   const livePill = document.querySelector("[data-television-live-pill]");
   const liveViewerCounts = Array.from(document.querySelectorAll("[data-live-viewer-count]"));
-  const liveRegionCounts = Array.from(document.querySelectorAll("[data-live-region-count]"));
+  const liveNationsActive = document.querySelector("[data-live-nations-active]");
+  const liveHappinessCreated = document.querySelector("[data-live-happiness-created]");
+  const liveSharedUnlock = document.querySelector("[data-live-shared-unlock]");
+  const liveSharedUnlockTrack = document.querySelector("[data-live-shared-unlock-track]");
   const communityOverlay = document.querySelector("[data-community-globe-overlay]");
   const communityGlobeFrame = document.querySelector("[data-community-globe-frame]");
   const communityGlobeBackdrop = document.querySelector("[data-community-globe-backdrop]");
@@ -555,7 +558,10 @@
   const floraReactionToken = document.createElement("span");
   floraReactionToken.className = "adaptive-television-reaction__glyph adaptive-television-reaction__glyph--ioh-logo adaptive-television-reaction__glyph--flora-flower";
   let liveViewerInterval = 0;
-  let liveViewerCountValue = 6;
+  let liveViewerCountValue = 333;
+  let liveNationsActiveValue = 27;
+  let liveSharedUnlockValue = 77;
+  let liveSimulationUpdates = 0;
   let communityPreviousFocus = null;
   let heartBurstActive = false;
   let reactionWalletPointerReadyAt = Number.POSITIVE_INFINITY;
@@ -1771,35 +1777,17 @@
     timecode.textContent = formatTime(source.currentTime);
   }
 
-  function updateLiveRegionCounts(total) {
-    if (!liveRegionCounts.length) return;
+  function updateLiveCommunitySummary(total) {
+    const roundedCitizens = Math.max(0, Math.round(total));
+    const happinessCreated = roundedCitizens * 3.33 * 77;
 
-    const roundedTotal = Math.max(0, Math.round(total));
-    const rawCounts = liveRegionCounts.map((count, index) => {
-      const baseWeight = Number(count.dataset.regionWeight || 0.1);
-      const shimmer = 0.88 + (Math.random() * 0.24);
-      const weighted = Math.max(0, Math.round(roundedTotal * baseWeight * shimmer));
-      return { count, index, value: weighted };
-    });
-
-    let runningTotal = rawCounts.reduce((sum, item) => sum + item.value, 0);
-
-    while (runningTotal !== roundedTotal) {
-      const needsIncrease = runningTotal < roundedTotal;
-      const candidate = rawCounts
-        .slice()
-        .sort((a, b) => needsIncrease ? b.value - a.value : a.value - b.value)
-        .find((item) => needsIncrease || item.value > 0) || rawCounts[0];
-
-      candidate.value += needsIncrease ? 1 : -1;
-      runningTotal += needsIncrease ? 1 : -1;
+    if (liveNationsActive) liveNationsActive.textContent = String(liveNationsActiveValue);
+    if (liveHappinessCreated) liveHappinessCreated.textContent = `${Math.ceil(happinessCreated / 1000)}K`;
+    if (liveSharedUnlock) liveSharedUnlock.textContent = `${liveSharedUnlockValue}%`;
+    if (liveSharedUnlockTrack) {
+      liveSharedUnlockTrack.style.setProperty("--community-unlock-progress", `${liveSharedUnlockValue}%`);
+      liveSharedUnlockTrack.setAttribute("aria-valuenow", String(liveSharedUnlockValue));
     }
-
-    rawCounts
-      .sort((a, b) => a.index - b.index)
-      .forEach((item) => {
-        item.count.textContent = String(item.value);
-      });
   }
 
   function renderLiveViewerCount() {
@@ -1818,6 +1806,7 @@
     event?.preventDefault();
     event?.stopPropagation();
     if (!communityOverlay) return;
+    startLiveViewerSimulation();
     ensureCommunityGlobeLoaded();
     communityPreviousFocus = document.activeElement;
     setReactionWalletOpen(false);
@@ -1844,23 +1833,28 @@
   function startLiveViewerSimulation() {
     if (!liveViewerCounts.length || liveViewerInterval) return;
 
-    liveViewerCountValue = 6;
+    liveViewerCountValue = 333;
+    liveNationsActiveValue = 27;
+    liveSharedUnlockValue = 77;
+    liveSimulationUpdates = 0;
     renderLiveViewerCount();
-    updateLiveRegionCounts(liveViewerCountValue);
+    updateLiveCommunitySummary(liveViewerCountValue);
 
     liveViewerInterval = window.setInterval(() => {
-      const distanceToCap = 333 - liveViewerCountValue;
-      const growth = distanceToCap > 70 ? 5 + Math.floor(Math.random() * 15) : Math.floor(Math.random() * 7);
-      const ebb = liveViewerCountValue > 42 && Math.random() < 0.28 ? Math.floor(Math.random() * 5) : 0;
-      const shimmer = Math.random() < 0.18 ? -1 : 0;
-      liveViewerCountValue = clamp(liveViewerCountValue + growth - ebb + shimmer, 6, 333);
+      liveSimulationUpdates += 1;
+      const audienceChange = Math.floor(Math.random() * 10) - 4;
+      liveViewerCountValue = clamp(liveViewerCountValue + audienceChange, 318, 348);
 
-      if (liveViewerCountValue >= 333 && Math.random() < 0.42) {
-        liveViewerCountValue = 330 + Math.floor(Math.random() * 4);
+      if (liveSimulationUpdates % 4 === 0 && Math.random() > 0.45) {
+        liveNationsActiveValue = clamp(liveNationsActiveValue + Math.floor(Math.random() * 3) - 1, 24, 31);
+      }
+
+      if (liveSimulationUpdates % 6 === 0 && liveSharedUnlockValue < 94) {
+        liveSharedUnlockValue += 1;
       }
 
       renderLiveViewerCount();
-      updateLiveRegionCounts(liveViewerCountValue);
+      updateLiveCommunitySummary(liveViewerCountValue);
     }, 2400);
   }
 
