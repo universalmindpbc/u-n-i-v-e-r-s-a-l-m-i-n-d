@@ -1480,6 +1480,7 @@ body.television-wallet-bloom-closing .adaptive-television-reaction-trigger,
 body.television-wallet-bloom-closing .adaptive-television-reaction {
   transition-duration: 1500ms !important;
   transition-delay: 0ms !important;
+  transition-timing-function: ease-in-out !important;
 }
 
 .adaptive-television-reaction__glyph {

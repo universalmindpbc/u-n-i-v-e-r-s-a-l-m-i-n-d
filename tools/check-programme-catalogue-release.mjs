@@ -162,7 +162,7 @@ assert.match(
 );
 assert.match(television, /function releaseBloomWalletCloseGuard\(\) \{[\s\S]*?television-wallet-pointer-locked[\s\S]*?\n  \}/, "The Bloom close guard must release after the pointer leaves or the flower is deliberately reopened.");
 assert.doesNotMatch(bloomWalletCloseHandler, /is-reaction-wallet-closing|BLOOM_WALLET_PANEL_CLOSE_MS|bloomWalletCloseTimer/, "Bloom must not empty the wallet before closing its shell.");
-assert.match(televisionCss, /body\.television-wallet-bloom-closing \.adaptive-television-reaction-wallet,[\s\S]*?transition-duration: 1500ms !important;/, "Bloom must close its visible contents and shell together over the approved 1.5 seconds.");
+assert.match(televisionCss, /body\.television-wallet-bloom-closing \.adaptive-television-reaction-wallet,[\s\S]*?transition-duration: 1500ms !important;[\s\S]*?transition-timing-function: ease-in-out !important;/, "Bloom must close its visible contents and shell smoothly across the approved 1.5 seconds.");
 assert.doesNotMatch(television, /television-wallet-bloom-snapping|bloomWalletSnapTimer/, "Bloom must inherit the signed-off wallet close rhythm instead of using a separate fast-snap timer.");
 const walletHomeHandler = television.match(
   /function returnToWalletHome\(event\) \{[\s\S]*?\n  \}/,
