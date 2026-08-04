@@ -27,7 +27,7 @@ f5523d0d103367606e5c786fdefe6a1a560975a214ebe5188405469ec5619e09	tools/analyze-v
 f1670bb15260c563cfe508ea2be7ddfe2f1b9260e0f3ab2f1015343345b5d177	i  a m.md
 23c87d0f49a6eec949df4190d80d663b384cca76f2dca4bdd1207a6cf34b2fe0	community-globe.html
 95811f319fe8fd80719921ccffdb063f417f77fcec50b3eac90c319d9cc84dce	mantra-samples-v1.json
-71d5b5fa5b0974086e3eb5d96da1b29c102bb78982b813602bddc90457a532ea	index.html
+9e3ff1213d6c355bbf49734248e453ade099691174da15d0bef36dbac22e2062	index.html
 063614dd145167e7a280004730ce68ebec45d88ef94c1d6cff8ac3128a08e06e	shop.css
 6402cc9d89a20b6e4b48802930edbbe616be2186f1a2e3688736d2e05e5b6231	mantra-sampler.js
 1aaa3cfaf7b894f033bf45848bc6b103b7ef2b4b0870d211f8f4b7ca77158b23	mobile-editorial-surface.js
@@ -87,21 +87,21 @@ d27d467cbbf9f996edc30f1a412dd58a700c1da7d0c5f22ca491af775ba232bd	programme-guide
 c1c822706963fd43a4320f7212c399503fb2a4f64206a3bf75e13b34f83e784a	adaptive-inference-engine-system-prompt-v2.22-content.js
 2d617f2ef088b89c73c02cfc5f4fa7f418ce6a79a270d2d4c1950323c8246d08	emdr-vector-worlds.js
 beb34584876306e5825ba720c8cfb01b871065791c48be5add2ce5cc6d75f59f	adaptive-inference-engine-system-prompt-v1.11.html
-603210cace1d7e5a9adcb61c5a68e65e5f0999d295a3697f269392bf2284b765	shop.html
+2383cc6091c50f5e4d994e3bdba00a73f0af8c9911b91738db4a4b700f14201f	shop.html
 ca0e4fed9b9bfebe0f43129f9f5005af1d89006ddde7a0acc4d0f5ebcddd4226	realtime-voice-assistant.js
 3862c4481721b08403d25024626930de4c0a2b265ccc336e99b830bb3133825e	c h a n g e l o g.md
 5e1fdfbadb0466e1997b206c6197cba92f566d211a16f31bd627da4cfb976b4b	mantra-audio-fx.js
 1c5d23b954a58cd67f51a7c32adddbb22dfb58fa34fae89c593a5bae97fd8d54	happiness-control.html
 e12eb24c367d2ac6f67963f434a729027e75b914e450b6260f47c01b9bd1ef58	i  a m  c h e c k i n  -  f o r m  -  b r i e f.md
 b89467d63bab7000ddda479156834f13fc30e5840f2dedc55a91e18f47fda51e	citizen-data-client.js
-581febdd56973fdd734afd5c1a984a6992a27839f7455c04997f71eabd381933	shop-product-kernel-v1.json
+c4a5859e93d361bf48889c9c87ecb06271110e53c5a96904fbcce4251d52d04b	shop-product-kernel-v1.json
 2ce0d0a5afb4d9961eec772a296e17f9c703d89182648b6d35ee6007c776d59f	science-research-data-v1.js
 f89cebb043a21aa77133c9cd40875d6703eefcb3b8fab637931e1da119eb01f7	shop-approved-products-v1.json
 fa5e34089bf9beb5efdf29d28d82e758d766a3e078ab1f271fb7e4fb698c0367	mantra-sampler.css
 a93d901ed795ab54f80e177561f8f5f626eb86973dd1626348af89011d9585c2	adaptive-music-video-catalogue-v1.11.json
-0380b7b80f0f8f52b96882ff96dd7aab943ba38d383fea74d90e2da2805201f9	adaptive-environment-television.js
+d0e0861ff871aa6448b50bb0dbc222cbe849969bece406b9ca79f342a3d45204	adaptive-environment-television.js
 21018b071ae34b685b6ee42f98207b3b1af59b53977f6ce26345fcf1b1224c35	technology.html
-86d09d9e9eecce8e1bc673905e193bf44bffcbb40c9f35017a2f08a7566b5713	adaptive-environment-television.html
+1fcd522ad67b8b4f9cd9dcd2e2ec591ab9b4913c4e77ec371867a5825fe5875f	adaptive-environment-television.html
 fc2a9736054912f67803c32ceac5c8fb32b84710fb7f036e44a0e3706b478359	script.js
 8ea0432ffcd62efe867482b520f0f7d2f005cc43117cb5424ca7097d7f5ad936	stakeholders/budget/index.html
 0f32e3f59c3045259d45f6db8dd9ebb9fcac04da5b8a2982912baae86d7e14f2	stakeholders/budget/iamvogue-stakeholder-budget-v1.xlsx
@@ -146,7 +146,7 @@ e4f89461e10f3e317b5d97873023c7607bb356e673a89a175612c9df4ddb8b85	api/owner-state
 35461a8ea56b4c2564920f290a5d02fb2f5e709dcabe7a6763cbf9a5851e8e28	api/.htaccess
 20ad6337934cb96def4542700c5fe2a950a20f1ec42292dc1f54dee9b61e15c0	cloudflare-stream-catalogue.js
 34a1b1de69324c0ca7a5f9ed61fab6deedaec63132c74f5785752f922ccb99ec	shop-catalogue-filter-v1.js
-5ffca0eb94985bf91f7aae83dbf8aa3bc224d66b045870aec7364a411a71ffb9	shop.js
+0df0d4593c9d12155062d49fbdb5a38a7f278c2d2c28ecd624e6839dd978cfce	shop.js
 db213ad178d17d3b7092436c17048a426e2ac2cc8cedaa1a4a1740b1c0184bec	video-beat-grid-v1.json
 0404f494771ab09fda12c18fa623691357745a3fb2e0d461e90d65f46f686e3f	our-team-concept.html
 785c1fb0b7095ba4b05d31cb7c5f6adab72172b7ece152645e42b6e997014df2	technology-citizen-needs.css
@@ -478,6 +478,7 @@ c81f7c96c9eb5416adc30b8c362a234d7f7bcd361a8fcf0b9a43d0a6ba0a58e3	a s s e t s/sho
 82d0ff5dede50870bc0b0b09cc9c848a592adfc55ff2c47230e34fd5e99a9bcd	a s s e t s/shop-mockup/product-catalogue/calvin-klein/jb-0414-icon-cotton-modal-thong-cradle-pink.jpg
 b86d04c6b72268d90d9069a957ac92087b12196e2cbc89b913e3d93bd7e2db5d	a s s e t s/shop-mockup/product-catalogue/calvin-klein/jb-0417-icon-cotton-modal-unlined-bralette-cradle-pink.jpg
 9e6b73047b30b54f8dd1014d2a85cc34044214273e192eb89b6d7638a1e5ab18	a s s e t s/shop-mockup/product-catalogue/calvin-klein/jb-0416-icon-cotton-modal-boyshort-cradle-pink.jpg
+bd5a65e8d397664a6533f87a2fc8177bc07a6f2f8fe0ac032b924cb7e87bdb95	a s s e t s/shop-mockup/product-catalogue/calvin-klein/jb-0426-cotton-classics-three-pack-black-grey-white-product-shot.jpg
 ed78e3926cfd8cd67061dff4a39da6e0f3e4b8f5bbeda49f89b7f1b98f650503	a s s e t s/shop-mockup/product-catalogue/calvin-klein/jb-0112-ck-black-bridal-bodysuit-antique-white-qf8744yac.webp
 97bffde034f29c9e379ed4eacaecac4c0b16d10a50b7829141fb3acc9c1ea664	a s s e t s/shop-mockup/product-catalogue/calvin-klein/jb-0111-icon-cotton-modal-lightly-lined-triangle-bralette-white-qf8498100.webp
 0329eec5e280a5794f8cb0da168179fa34f9d440034e771a689764ad3fbd2c61	a s s e t s/shop-mockup/product-catalogue/calvin-klein/jb-0424-modern-terry-lounge-joggers-grey-heather.jpg
@@ -491,12 +492,11 @@ b0c7a1cb9f8aad1b4ec511f6edf5e770a3f880b3f2c0e89d4e093e82f5d1a330	a s s e t s/sho
 75ee2b1461ae87c1baf79de678a225f500f4fcd4a4e0c62e2e89e58a34cb81da	a s s e t s/shop-mockup/product-catalogue/calvin-klein/jb-0409-icon-cotton-modal-long-sleeve-tee-bralette-white.jpg
 fd4dfddb7c9d33e79dd55495dbdb62f2b0be66a84d9269d92d06e79c1ccaf0a8	a s s e t s/shop-mockup/product-catalogue/calvin-klein/jb-0413-icon-cotton-modal-metallic-bikini-briefs-black.jpg
 43a614baf48ca609040d4dda42a2c6921637ccb5e5d192c32fa959a4d18f304d	a s s e t s/shop-mockup/product-catalogue/calvin-klein/jb-0116-icon-cotton-modal-metallic-thong-botanical-brown-qf8826pjs.webp
+78155af2a8398c917bb581da412cb4e62384cc7857f678e5da18e9a1218f8da1	a s s e t s/shop-mockup/product-catalogue/calvin-klein/jb-0427-cotton-classics-three-pack-white-product-shot.jpg
 564c710d71557a863d3dbd87eee99c44c738f2763b5822589ce1924ab6d09809	a s s e t s/shop-mockup/product-catalogue/calvin-klein/jb-0119-icon-cotton-modal-lightly-lined-triangle-bralette-black-qf8498ub1.webp
 5f172d9c53b6d39ec4d2be762d85c00b778826d68f22c79475fdf4e98b73cb82	a s s e t s/shop-mockup/product-catalogue/calvin-klein/jb-0425-icon-cotton-modal-unlined-bralette-grey-heather.jpg
 a55d6fa62713bea711964385f6dc132a4f2868437ce8afd059d5a1201704069d	a s s e t s/shop-mockup/product-catalogue/calvin-klein/jb-0114-signature-satin-unlined-triangle-bra-tidal-animal-botanical-brown-qf83924uk.webp
 975cd9b40aec03b4543dddfbecaf9375809615d89db35dce8e90fcd4823d0af0	a s s e t s/shop-mockup/product-catalogue/calvin-klein/jb-0113-ck-black-bridal-bodysuit-black-qf8744ub1.webp
-79570f216be338581ee266c1c938204f662bde9131f3c0e0b0ed9f577dbe2980	a s s e t s/shop-mockup/product-catalogue/calvin-klein/jb-0426-cotton-classics-three-pack-black-grey-white.jpg
-9f01fa9f6013398d860f9aa8d05d0191dec8eb39be1d385b1ea12e869b1db14b	a s s e t s/shop-mockup/product-catalogue/calvin-klein/jb-0427-cotton-classics-three-pack-white.jpg
 dae0a43f7e314c20a77f830cb8a6a0842ff60899079761a298aa30aef6a32280	a s s e t s/shop-mockup/product-catalogue/calvin-klein/jb-0118-icon-cotton-modal-t-shirt-bralette-cradle-pink-qf84958z6.webp
 9fc6c3e8ebd3655f448fb02f023b45e75e1170427385e783534c426bf0cfb98f	a s s e t s/shop-mockup/product-catalogue/adidas/jb-0150-jx5644.webp
 a484905e5eeba1aeb836521893d36c0a4646f39d8dc99b039dc188f79426f10f	a s s e t s/shop-mockup/product-catalogue/adidas/jb-0147-kd4613.webp
