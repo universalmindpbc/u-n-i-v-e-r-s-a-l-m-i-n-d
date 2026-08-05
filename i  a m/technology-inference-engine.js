@@ -1,10 +1,14 @@
 (() => {
   const body = document.body;
   const moduleOrder = ["music", "fashion", "brain", "mantra"];
+  const knownModules = [...moduleOrder, "core"];
+  const matrixExperience = document.querySelector("[data-matrix-experience]");
   const matrixStage = document.querySelector("[data-matrix-stage]");
-  const moduleButtons = Array.from(document.querySelectorAll("[data-module]"));
+  const moduleButtons = Array.from(document.querySelectorAll(".matrix-module[data-module]"));
   const moduleCards = Array.from(document.querySelectorAll("[data-module-card]"));
   const matrixCore = document.querySelector("[data-matrix-core]");
+  const moduleTriggers = [...moduleButtons, matrixCore].filter(Boolean);
+  const moduleCardLayer = document.querySelector("[data-module-card-layer]");
   const cardCloseButtons = document.querySelectorAll("[data-card-close]");
   const revealItems = document.querySelectorAll("[data-reveal]");
   const scrollProgress = document.querySelector("[data-scroll-progress]");
@@ -13,6 +17,7 @@
   let activeModule = "";
   let previewIndex = 0;
   let previewTimer = null;
+  let closeTimer = null;
   let lastModuleTrigger = null;
 
   function globalNav() {
@@ -66,8 +71,20 @@
     matrixStage.dataset.previewModule = moduleName;
   }
 
+  function cancelScheduledClose() {
+    window.clearTimeout(closeTimer);
+    closeTimer = null;
+  }
+
+  function scheduleModuleClose() {
+    if (!hoverQuery.matches || !activeModule) return;
+    cancelScheduledClose();
+    closeTimer = window.setTimeout(() => closeModule({ restoreFocus: false }), 520);
+  }
+
   function showModule(moduleName, { focusCard = false } = {}) {
-    if (!moduleOrder.includes(moduleName)) return;
+    if (!knownModules.includes(moduleName)) return;
+    cancelScheduledClose();
     activeModule = moduleName;
     body.classList.add("module-card-open");
     stopPreviewCycle();
@@ -77,7 +94,7 @@
       matrixStage.dataset.activeModule = activeModule;
     }
 
-    moduleButtons.forEach((button) => {
+    moduleTriggers.forEach((button) => {
       const isActive = button.dataset.module === moduleName && Boolean(activeModule);
       button.setAttribute("aria-expanded", String(isActive));
     });
@@ -95,9 +112,13 @@
     const trigger = lastModuleTrigger;
     activeModule = "";
     body.classList.remove("module-card-open");
-    moduleButtons.forEach((button) => button.setAttribute("aria-expanded", "false"));
+    cancelScheduledClose();
+    moduleTriggers.forEach((button) => button.setAttribute("aria-expanded", "false"));
     moduleCards.forEach((card) => { card.hidden = true; });
-    if (matrixStage) delete matrixStage.dataset.activeModule;
+    if (matrixStage) {
+      delete matrixStage.dataset.activeModule;
+      matrixStage.dataset.previewModule = moduleOrder[previewIndex];
+    }
     if (restoreFocus) trigger?.focus({ preventScroll: true });
     startPreviewCycle();
   }
@@ -144,37 +165,46 @@
     }
   });
 
-  moduleButtons.forEach((button) => {
-    button.addEventListener("click", () => {
+  moduleTriggers.forEach((button) => {
+    button.addEventListener("click", (event) => {
       lastModuleTrigger = button;
-      if (activeModule === button.dataset.module) {
+      if (!hoverQuery.matches && activeModule === button.dataset.module) {
         closeModule({ restoreFocus: false });
         return;
       }
-      showModule(button.dataset.module);
+      showModule(button.dataset.module, { focusCard: event.detail === 0 });
     });
 
     button.addEventListener("focus", () => {
-      previewModule(button.dataset.module);
+      if (!hoverQuery.matches && !button.matches(":focus-visible")) return;
+      lastModuleTrigger = button;
+      showModule(button.dataset.module);
     });
 
     if (hoverQuery.matches) {
       button.addEventListener("pointerenter", () => {
-        previewModule(button.dataset.module);
+        lastModuleTrigger = button;
+        showModule(button.dataset.module);
       });
     }
   });
 
-  matrixCore?.addEventListener("click", () => {
-    const current = activeModule || matrixStage?.dataset.previewModule || moduleOrder[0];
-    const next = moduleOrder[(moduleOrder.indexOf(current) + 1) % moduleOrder.length];
-    const nextButton = moduleButtons.find((button) => button.dataset.module === next);
-    lastModuleTrigger = nextButton || matrixCore;
-    showModule(next);
+  matrixStage?.addEventListener("pointerleave", scheduleModuleClose);
+  moduleCardLayer?.addEventListener("pointerenter", cancelScheduledClose);
+  moduleCardLayer?.addEventListener("pointerleave", scheduleModuleClose);
+  moduleCardLayer?.addEventListener("focusin", cancelScheduledClose);
+  matrixExperience?.addEventListener("focusout", (event) => {
+    if (event.relatedTarget && !matrixExperience.contains(event.relatedTarget)) scheduleModuleClose();
   });
 
   cardCloseButtons.forEach((button) => {
     button.addEventListener("click", () => closeModule());
+  });
+
+  document.addEventListener("pointerdown", (event) => {
+    if (hoverQuery.matches || !activeModule) return;
+    if (event.target.closest("[data-matrix-experience]")) return;
+    closeModule({ restoreFocus: false });
   });
 
   document.addEventListener("keydown", (event) => {
