@@ -133,6 +133,10 @@ button {
   transition: opacity 300ms ease;
 }
 
+html[data-music-television-frame="embedded"] .engine-brand {
+  display: none;
+}
+
 .engine-brand {
   display: inline-flex;
   align-items: center;
