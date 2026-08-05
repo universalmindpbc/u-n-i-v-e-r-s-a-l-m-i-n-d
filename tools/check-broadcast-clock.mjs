@@ -344,6 +344,18 @@ assert.match(controller, /radioIsActiveProgramme \? "radio-visual" : "music"/, "
 assert.match(controller, /revealMinimumSeconds:\s*RADIO_FASHION_REVEAL_BUFFER_SECONDS/, "Shared Radio must begin its Fashion picture before the station safety buffer.");
 assert.match(controller, /audio_party_visual_pair/, "James Bondage audio-led parties must pair with the Fashion broadcast clock.");
 assert.match(controller, /startAudioLedParty/, "The Zip and Sammy D mixes must use the audio-led party player.");
+const joinBroadcastSource = controller.slice(
+  controller.indexOf("async function joinBroadcastChannel"),
+  controller.indexOf("async function switchMusicTrack")
+);
+assert.ok(
+  joinBroadcastSource.indexOf("joinFashionBroadcastChannel(state.visualChannelId") < joinBroadcastSource.indexOf("startAudioLedParty(scheduledTrack"),
+  "James Bondage must activate its synchronized Mugler or Wolford visual before awaiting Zip audio startup."
+);
+assert.match(controller, /RADIO_HLS_LIBRARY_LOAD_TIMEOUT_MS = 6000/, "HLS library loading must have an explicit bounded failure.");
+assert.match(controller, /AUDIO_PARTY_START_TIMEOUT_MS = 18000/, "Audio-led James Bondage startup must settle inside the 30-second release gate.");
+assert.match(controller, /Promise\.race\(\[startup, timedOut\]\)/, "Audio-led party startup must not continue blocking after its deadline.");
+assert.match(controller, /audioPartyPlaybackState = "unavailable"[\s\S]*audioPartyRecovery = "select_james_bondage_again"/, "A failed Zip startup must expose a truthful retryable unavailable state.");
 assert.match(controller, /fashionBroadcastBlockRemainingSeconds/, "Fashion playback must remain locked to its 15-minute shared block.");
 assert.match(controller, /musicShelfRecommendationIds/, "The recommended channel must be stored independently from fixed shelf order.");
 assert.match(index, /data-broadcast-join>join the broadcast</);

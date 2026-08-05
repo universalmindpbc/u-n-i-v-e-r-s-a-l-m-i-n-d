@@ -370,6 +370,7 @@
   let broadcastEntryOpen = false;
   let broadcastSyncTimer = 0;
   let broadcastJoinSequence = 0;
+  let audioPartyStartSequence = 0;
   let musicContinuationSequence = 0;
   let musicSwitching = false;
   let channelLoadingOverlay = null;
@@ -509,11 +510,13 @@
     // The adaptive recommendation remains available when session storage is restricted.
   }
   const RADIO_HLS_LIBRARY_URL = "https://cdn.jsdelivr.net/npm/hls.js@1.6.16/dist/hls.min.js";
+  const RADIO_HLS_LIBRARY_LOAD_TIMEOUT_MS = 6000;
   const FASHION_REVEAL_BUFFER_SECONDS = 8;
   const RADIO_FASHION_REVEAL_BUFFER_SECONDS = 4;
   const RADIO_READY_BUFFER_SECONDS = 24;
   const RADIO_LOW_BUFFER_SECONDS = 12;
   const RADIO_BUFFER_WAIT_MS = 12000;
+  const AUDIO_PARTY_START_TIMEOUT_MS = 18000;
   const RADIO_LIVE_SYNC_SEGMENTS = 4;
   const RADIO_MAX_LIVE_LATENCY_SEGMENTS = 5;
   const RADIO_DIRECT_STALL_MS = 6000;
@@ -3615,14 +3618,34 @@
 
     radioHlsLibraryPromise = new Promise((resolve, reject) => {
       let script = document.querySelector("script[data-iam-hls-library], script[src*='hls.min.js']");
-      const handleLoad = () => window.Hls ? resolve(window.Hls) : reject(new Error("HLS library loaded without a browser API."));
-      const handleError = () => reject(new Error("HLS radio support could not be loaded."));
+      let settled = false;
+      let timeout = 0;
+      const finish = (error = null) => {
+        if (settled) return;
+        settled = true;
+        window.clearTimeout(timeout);
+        script?.removeEventListener("load", handleLoad);
+        script?.removeEventListener("error", handleError);
+        if (error) {
+          if (script?.dataset.iamHlsLibrary === "radio") script.remove();
+          reject(error);
+        } else {
+          resolve(window.Hls);
+        }
+      };
+      const handleLoad = () => window.Hls
+        ? finish()
+        : finish(new Error("HLS library loaded without a browser API."));
+      const handleError = () => finish(new Error("HLS radio support could not be loaded."));
+      timeout = window.setTimeout(() => {
+        finish(new Error("HLS radio support timed out. Please try the channel again."));
+      }, RADIO_HLS_LIBRARY_LOAD_TIMEOUT_MS);
 
       if (script) {
         script.addEventListener("load", handleLoad, { once: true });
         script.addEventListener("error", handleError, { once: true });
         window.setTimeout(() => {
-          if (window.Hls) resolve(window.Hls);
+          if (window.Hls) finish();
         }, 0);
         return;
       }
@@ -4924,10 +4947,16 @@
       ) {
         document.body.dataset.broadcastCorrection = "programme_rollover";
         if (!musicSwitching) {
-          await startAudioLedParty(scheduledTrack, {
-            source: "broadcast_rollover",
-            broadcastChannelId,
+          const visualJoined = await joinFashionBroadcastChannel(state.visualChannelId || "fashion-underground-intensity", {
+            source: "audio_party_visual_pair",
+            pairingSource: `party_${state.editorialId || state.energyId}`,
           });
+          if (visualJoined) {
+            await startAudioLedParty(scheduledTrack, {
+              source: "broadcast_rollover",
+              broadcastChannelId,
+            });
+          }
           rankMusicShelves();
         }
         return state;
@@ -5050,14 +5079,6 @@
       });
       if (joinSequence !== broadcastJoinSequence || broadcastChannelId !== channelId) return false;
     } else if (state.mediaType === "audio") {
-      const started = await startAudioLedParty(scheduledTrack, {
-        source: options.source || "broadcast_join",
-        broadcastChannelId: channelId,
-        channelLoadingGeneration: loadingGeneration,
-        deferChannelLoadingFinish: true,
-      });
-      if (joinSequence !== broadcastJoinSequence || broadcastChannelId !== channelId) return false;
-      if (!started) return false;
       const visualJoined = await joinFashionBroadcastChannel(state.visualChannelId || "fashion-underground-intensity", {
         source: "audio_party_visual_pair",
         pairingSource: `party_${state.editorialId || state.energyId}`,
@@ -5067,6 +5088,14 @@
         failChannelLoading(loadingGeneration);
         return false;
       }
+      const started = await startAudioLedParty(scheduledTrack, {
+        source: options.source || "broadcast_join",
+        broadcastChannelId: channelId,
+        channelLoadingGeneration: loadingGeneration,
+        deferChannelLoadingFinish: true,
+      });
+      if (joinSequence !== broadcastJoinSequence || broadcastChannelId !== channelId) return false;
+      if (!started) return false;
       finishChannelLoading(loadingGeneration);
     } else {
       stopRadioVisualBroadcastPlayback("video_broadcast_start");
@@ -5192,13 +5221,48 @@
     return radioStationRecords.find((station) => station.id === stationId) || null;
   }
 
+  function markAudioLedPartyUnavailable(nextTrack, loadingGeneration, error) {
+    stopContinuationAudioImmediately();
+    document.body.classList.remove("television-radio-continuation", "television-audio-party");
+    document.body.dataset.audioPartyPlaybackState = "unavailable";
+    document.body.dataset.audioPartyPlaybackError = String(error?.message || error).slice(0, 140);
+    document.body.dataset.audioPartyRecovery = "select_james_bondage_again";
+    failChannelLoading(loadingGeneration);
+    showMusicShelfStatus(`${nextTrack.displayArtist || nextTrack.artist} · mix unavailable — select james bondage to retry`, 6000);
+  }
+
   async function startAudioLedParty(nextTrack, options = {}) {
     if (!nextTrack?.audioOnly || musicSwitching) return false;
+    const startSequence = ++audioPartyStartSequence;
+    let timeout = 0;
+    const startup = startAudioLedPartyAttempt(nextTrack, options, startSequence);
+    const timedOut = new Promise((resolve) => {
+      timeout = window.setTimeout(() => {
+        if (startSequence !== audioPartyStartSequence) return;
+        audioPartyStartSequence += 1;
+        musicSwitching = false;
+        markAudioLedPartyUnavailable(
+          nextTrack,
+          Number(options.channelLoadingGeneration) || channelLoadingGeneration,
+          new Error("The mix did not become ready in time.")
+        );
+        resolve(false);
+      }, AUDIO_PARTY_START_TIMEOUT_MS);
+    });
+    const started = await Promise.race([startup, timedOut]);
+    window.clearTimeout(timeout);
+    return started;
+  }
+
+  async function startAudioLedPartyAttempt(nextTrack, options, startSequence) {
     const loadingGeneration = Number(options.channelLoadingGeneration) || beginChannelLoading({
       mode: "parties",
       item: nextTrack,
       source: options.source || "manual",
     });
+    const assertCurrentStart = () => {
+      if (startSequence !== audioPartyStartSequence) throw new Error("Audio party startup was cancelled.");
+    };
     clearShopArrivalFade();
     clearMusicHandoffTimer();
     if (preloadedMusicVideo) discardPreloadedMusicVideo("audio_party_start");
@@ -5239,10 +5303,15 @@
       document.body.classList.add("television-radio-continuation", "television-audio-party");
       document.body.dataset.audioPartyPlaybackState = "loading";
       document.body.dataset.audioPartyTrackId = nextTrack.id;
+      delete document.body.dataset.audioPartyPlaybackError;
+      delete document.body.dataset.audioPartyRecovery;
       playerMount.classList.remove("is-local-video-awaiting-gesture");
       await setVideoBlend(0);
+      assertCurrentStart();
       await ensureFashionStreamAttached();
+      assertCurrentStart();
       if (fashionVideo?.paused) await playWhenStreamAttached(fashionVideo, "fashion").catch(() => {});
+      assertCurrentStart();
       musicChannelMode = "parties";
       musicModeManuallySelected = options.source !== "automatic_continuation";
       track = nextTrack;
@@ -5254,6 +5323,7 @@
         label: nextTrack.displayTitle || nextTrack.title,
         src: source,
       });
+      assertCurrentStart();
       const state = options.broadcastChannelId
         ? window.IAMBroadcastClock?.stateAt(options.broadcastChannelId)
         : null;
@@ -5264,11 +5334,13 @@
           channelId: options.broadcastChannelId,
           programmeInstanceId: state.programmeInstanceId,
         });
+        assertCurrentStart();
       } else if (hasRequestedStart) {
         await seekBroadcastVideo(continuationAudio, Math.max(0, requestedStartSeconds), {
           reason: shopIndependent ? "shop_cue" : "requested_start",
           role: "audio",
         });
+        assertCurrentStart();
       }
       continuationAudio.loop = false;
       continuationAudio.muted = false;
@@ -5291,6 +5363,7 @@
         delete document.body.dataset.audioPartyStartSeconds;
       }
       await continuationAudio.play();
+      assertCurrentStart();
       if (requestedFadeInMs > 0) {
         fadeShopArrivalProgrammeVolume(continuationAudio, targetProgrammeLevel, requestedFadeInMs);
       }
@@ -5316,13 +5389,11 @@
       });
       return true;
     } catch (error) {
-      document.body.dataset.audioPartyPlaybackState = "error";
-      document.body.dataset.audioPartyPlaybackError = String(error?.message || error).slice(0, 140);
-      failChannelLoading(loadingGeneration);
-      showMusicShelfStatus(`${nextTrack.displayArtist || nextTrack.artist} · mix unavailable`, 3600);
+      if (startSequence !== audioPartyStartSequence) return false;
+      markAudioLedPartyUnavailable(nextTrack, loadingGeneration, error);
       return false;
     } finally {
-      musicSwitching = false;
+      if (startSequence === audioPartyStartSequence) musicSwitching = false;
     }
   }
 
