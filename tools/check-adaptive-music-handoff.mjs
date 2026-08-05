@@ -846,9 +846,11 @@ requireCondition(mantraStudioScript.includes('const NORMALISE_TARGET_DB = -12;')
 requireCondition(mantraStudioScript.includes('function createPeakLimiter(ctx)') && mantraStudioScript.includes('limiter.threshold.value = -1;') && mantraStudioScript.includes('limiter.connect(analyser).connect(ctx.destination)'), 'the Studio preview no longer contains high-gain peaks');
 requireCondition(
   mantraSampler.includes('Math.min(15.849, itemGain)')
-    && mantraSampler.includes('function outputLimiter(ctx)')
-    && mantraSampler.includes('masterLimiter.connect(ctx.destination)'),
-  'saved +24 dB polyphonic Mantra gain no longer reaches protected master-limited playback'
+    && mantraSampler.includes('function outputBus(ctx)')
+    && mantraSampler.includes('masterGain.connect(masterLimiter)')
+    && mantraSampler.includes('masterLimiter.connect(outputAnalyser)')
+    && mantraSampler.includes('outputAnalyser.connect(ctx.destination)'),
+  'saved +24 dB polyphonic Mantra gain no longer reaches volume-controlled, metered, master-limited playback'
 );
 requireCondition(mantraLibraryEndpoint.includes('const MANTRA_MAX_GAIN = 15.849;') && mantraLibraryEndpoint.includes('$gain > MANTRA_MAX_GAIN'), 'the owner API no longer accepts the Studio +24 dB gain range safely');
 requireCondition(!mantraStudioScript.includes('currentBank !== "ibiza"') && mantraStudioScript.includes('await uploadAudio(file, "vocoder", renderedVocoderDuration, target);'), 'Voice Lab can no longer save a render to a selected Tibet pad');

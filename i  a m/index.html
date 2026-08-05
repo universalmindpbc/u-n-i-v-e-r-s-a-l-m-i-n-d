@@ -53,7 +53,7 @@
     <link rel="stylesheet" href="programme-guide.css?v=programme-guide-css-35f9a5fee68b">
     <link rel="stylesheet" href="circle-audio-rooms.css?v=circle-rooms-css-9cb7b0860284">
     <link rel="stylesheet" href="care-worlds.css?v=1cbbd1a05843">
-    <link rel="stylesheet" href="mantra-sampler.css?v=mantra-sampler-css-fa5e34089bf9">
+    <link rel="stylesheet" href="mantra-sampler.css?v=mantra-sampler-css-8e56b03ada25">
     <link rel="stylesheet" href="realtime-voice-assistant.css?v=realtime-voice-css-3dbe2f94acaa">
   </head>
   <body class="adaptive-television-page">
@@ -585,9 +585,18 @@
                     <path pathLength="1" d="M500 500 166 307"></path>
                   </g>
                 </svg>
-                <div class="mantra-orbit__centre">
+                <div class="mantra-orbit__centre" data-mantra-volume-control role="slider" tabindex="0" aria-label="Mantra volume" aria-valuemin="0" aria-valuemax="100" aria-valuenow="77" aria-valuetext="77 percent">
+                  <span class="mantra-orbit__volume-leds" data-mantra-volume-leds aria-hidden="true"></span>
                   <span class="mantra-orbit__flower adaptive-television-reaction__glyph adaptive-television-reaction__glyph--ioh-logo adaptive-television-reaction__glyph--flora-trigger" aria-hidden="true"></span>
-                  <h2 id="mantra-orbit-title" data-mantra-bank-title>Tibet</h2>
+                  <span class="mantra-orbit__bank-copy">
+                    <h2 id="mantra-orbit-title" data-mantra-bank-title>Tibet</h2>
+                    <span class="mantra-orbit__volume-mobile-cue" aria-hidden="true">volume</span>
+                  </span>
+                  <span class="mantra-orbit__volume-copy" aria-hidden="true">
+                    <span class="mantra-orbit__volume-label">mantra volume</span>
+                    <span class="mantra-orbit__volume-value" data-mantra-volume-readout>77%</span>
+                    <span class="mantra-orbit__volume-hint">drag to adjust</span>
+                  </span>
                 </div>
                 <div class="mantra-orbit__nodes" data-mantra-nodes role="group" aria-label="Six mantra sample pads"></div>
               </div>
@@ -1248,7 +1257,7 @@
     <script src="circle-audio-rooms.js?v=circle-rooms-4bcb0602f8f3"></script>
     <script src="care-worlds.js?v=6856b7db8711"></script>
     <script src="mantra-audio-fx.js?v=mantra-audio-fx-5e1fdfbadb04"></script>
-    <script src="mantra-sampler.js?v=mantra-sampler-6402cc9d89a2"></script>
+    <script src="mantra-sampler.js?v=mantra-sampler-0bfc1d7667fe"></script>
     <script src="adaptive-environment-television.js?v=music-tv-010589142683"></script>
     <script src="programme-guide.js?v=programme-guide-5ec9d44785ef"></script>
     <script src="realtime-voice-assistant.js?v=realtime-voice-f3ec3dac7bdf"></script>

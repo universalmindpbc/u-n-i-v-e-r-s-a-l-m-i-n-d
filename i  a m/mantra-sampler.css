@@ -196,6 +196,7 @@ body.mantra-sampler-open .mantra-orbit__signals path {
 }
 
 .mantra-orbit__centre {
+  --mantra-signal-level: 0;
   position: absolute;
   left: 50%;
   top: 50%;
@@ -206,34 +207,101 @@ body.mantra-sampler-open .mantra-orbit__signals path {
   justify-content: center;
   width: min(230px, 27%);
   aspect-ratio: 1;
+  border-radius: 50%;
+  cursor: grab;
+  outline: none;
   text-align: center;
+  touch-action: none;
   transform: translate(-50%, -50%);
+  user-select: none;
 }
 
 .mantra-orbit__centre::before,
 .mantra-orbit__centre::after {
   content: "";
   position: absolute;
-  inset: 2%;
-  border: 1px solid rgba(164, 230, 234, 0.14);
+  pointer-events: none;
+}
+
+.mantra-orbit__centre::before {
+  inset: 13%;
+  border: 1px dashed rgba(164, 230, 234, 0.2);
   border-radius: 50%;
 }
 
 .mantra-orbit__centre::after {
-  inset: 12%;
-  border-style: dashed;
-  animation: mantra-centre-turn 18s linear infinite;
+  inset: -2%;
+  border: 1px solid rgba(216, 255, 66, calc(0.06 + (var(--mantra-signal-level) * 0.46)));
+  border-radius: 50%;
+  box-shadow:
+    0 0 calc(4px + (var(--mantra-signal-level) * 24px)) rgba(216, 255, 66, calc(var(--mantra-signal-level) * 0.36)),
+    inset 0 0 calc(3px + (var(--mantra-signal-level) * 16px)) rgba(164, 230, 234, calc(var(--mantra-signal-level) * 0.22));
+  opacity: calc(0.62 + (var(--mantra-signal-level) * 0.38));
+  transform: scale(calc(1 + (var(--mantra-signal-level) * 0.025)));
+  transition: opacity 80ms linear, box-shadow 80ms linear, transform 80ms linear;
 }
 
-@keyframes mantra-centre-turn {
-  to { transform: rotate(360deg); }
+.mantra-orbit__centre.is-adjusting {
+  cursor: grabbing;
+}
+
+.mantra-orbit__centre:focus-visible::after {
+  border-color: rgba(216, 255, 66, 0.78);
+  box-shadow: 0 0 0 4px rgba(216, 255, 66, 0.12);
+}
+
+.mantra-orbit__volume-leds,
+.mantra-orbit__volume-led {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.mantra-orbit__volume-led {
+  transform: rotate(var(--mantra-led-angle));
+}
+
+.mantra-orbit__volume-led::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 0;
+  width: 4px;
+  height: 12px;
+  border-radius: 999px;
+  background: rgba(164, 230, 234, 0.17);
+  box-shadow: 0 0 0 rgba(216, 255, 66, 0);
+  opacity: 0.72;
+  transform: translateX(-50%);
+  transition: background 110ms ease, box-shadow 80ms linear, opacity 110ms ease, transform 80ms linear;
+}
+
+.mantra-orbit__volume-led.is-active::before {
+  background: rgb(216, 255, 66);
+  box-shadow: 0 0 calc(4px + (var(--mantra-signal-level) * 12px)) rgba(216, 255, 66, calc(0.28 + (var(--mantra-signal-level) * 0.54)));
+  opacity: calc(0.7 + (var(--mantra-signal-level) * 0.3));
+  transform: translateX(-50%) scaleY(calc(1 + (var(--mantra-signal-level) * 0.42)));
+}
+
+.mantra-orbit__volume-led.is-current::before {
+  width: 5px;
+  opacity: 1;
 }
 
 .mantra-orbit__flower {
+  position: relative;
+  z-index: 2;
   width: 36px;
   height: 36px;
   margin-bottom: 9px;
   opacity: 0.74;
+  transition: opacity 180ms ease, transform 180ms ease;
+}
+
+.mantra-orbit__bank-copy {
+  position: relative;
+  z-index: 2;
+  transition: opacity 180ms ease, transform 180ms ease;
 }
 
 .mantra-orbit__centre h2 {
@@ -241,6 +309,64 @@ body.mantra-sampler-open .mantra-orbit__signals path {
   color: rgba(255, 255, 255, 0.97);
   font: 400 clamp(27px, 2.4vw, 42px)/1 "Iowan Old Style", "Baskerville", Georgia, serif;
   letter-spacing: -0.03em;
+}
+
+.mantra-orbit__volume-mobile-cue {
+  display: none;
+}
+
+.mantra-orbit__volume-copy {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  width: 70%;
+  opacity: 0;
+  pointer-events: none;
+  transform: translate(-50%, -46%) scale(0.96);
+  transition: opacity 180ms ease, transform 180ms ease;
+}
+
+.mantra-orbit__volume-label,
+.mantra-orbit__volume-hint {
+  color: rgba(255, 255, 255, 0.68);
+  font: 600 9px/1.1 "Helvetica Neue", Helvetica, Arial, sans-serif;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.mantra-orbit__volume-value {
+  margin: 5px 0 4px;
+  color: rgba(255, 255, 255, 0.98);
+  font: 400 clamp(26px, 2.2vw, 38px)/1 "Iowan Old Style", "Baskerville", Georgia, serif;
+  letter-spacing: -0.035em;
+}
+
+.mantra-orbit__volume-hint {
+  color: rgba(216, 255, 66, 0.72);
+  font-size: 8px;
+  letter-spacing: 0.07em;
+}
+
+.mantra-orbit__centre:hover .mantra-orbit__flower,
+.mantra-orbit__centre:focus .mantra-orbit__flower,
+.mantra-orbit__centre.is-adjusting .mantra-orbit__flower,
+.mantra-orbit__centre:hover .mantra-orbit__bank-copy,
+.mantra-orbit__centre:focus .mantra-orbit__bank-copy,
+.mantra-orbit__centre.is-adjusting .mantra-orbit__bank-copy {
+  opacity: 0;
+  transform: scale(0.94);
+}
+
+.mantra-orbit__centre:hover .mantra-orbit__volume-copy,
+.mantra-orbit__centre:focus .mantra-orbit__volume-copy,
+.mantra-orbit__centre.is-adjusting .mantra-orbit__volume-copy {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1);
 }
 
 .mantra-orbit__centre > p {
@@ -450,9 +576,50 @@ body.mantra-sampler-open .adaptive-television-fullscreen-toggle {
     transform: none;
   }
 
-  .mantra-orbit__energy,
-  .mantra-orbit__centre {
+  .mantra-orbit__energy {
     display: none;
+  }
+
+  .mantra-orbit__centre {
+    position: relative;
+    left: auto;
+    top: auto;
+    display: flex;
+    width: 132px;
+    margin: 0 auto 26px;
+    transform: none;
+  }
+
+  .mantra-orbit__centre h2 {
+    font-size: 22px;
+  }
+
+  .mantra-orbit__flower {
+    width: 27px;
+    height: 27px;
+    margin-bottom: 5px;
+  }
+
+  .mantra-orbit__volume-mobile-cue {
+    display: block;
+    margin-top: 4px;
+    color: rgba(216, 255, 66, 0.58);
+    font: 600 8px/1 "Helvetica Neue", Helvetica, Arial, sans-serif;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+  }
+
+  .mantra-orbit__volume-label {
+    font-size: 8px;
+  }
+
+  .mantra-orbit__volume-value {
+    margin: 3px 0;
+    font-size: 25px;
+  }
+
+  .mantra-orbit__volume-hint {
+    font-size: 7px;
   }
 
   .mantra-orbit__nodes {
@@ -516,5 +683,11 @@ body.mantra-sampler-open .adaptive-television-fullscreen-toggle {
   .mantra-orbit__node::after {
     animation: none !important;
     transition-duration: 1ms !important;
+  }
+
+  .mantra-orbit__centre::after,
+  .mantra-orbit__volume-led::before {
+    transition: none !important;
+    transform: none;
   }
 }

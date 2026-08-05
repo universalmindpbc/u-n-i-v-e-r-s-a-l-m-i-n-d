@@ -9,6 +9,9 @@
   const nodes = sampler.querySelector("[data-mantra-nodes]");
   const bankTitle = sampler.querySelector("[data-mantra-bank-title]");
   const status = sampler.querySelector("[data-mantra-status]");
+  const volumeControl = sampler.querySelector("[data-mantra-volume-control]");
+  const volumeReadout = sampler.querySelector("[data-mantra-volume-readout]");
+  const volumeLeds = sampler.querySelector("[data-mantra-volume-leds]");
   const bufferById = new Map();
   const sourceById = new Map();
   const itemById = new Map();
@@ -18,11 +21,25 @@
   const PROGRAMME_QUIET_RMS = 0.028;
   const PROGRAMME_LOUD_RMS = 0.09;
   const PROGRAMME_MAX_ATTENUATION_DB = -3;
+  const MANTRA_VOLUME_STORAGE_KEY = "iam:mantra-volume:v1";
+  const MANTRA_VOLUME_DEFAULT_PERCENT = 77;
+  const MANTRA_VOLUME_MAX_PERCENT = 100;
+  const MANTRA_VOLUME_MAX_HEADROOM_DB = 3;
+  const MANTRA_VOLUME_LED_COUNT = 28;
+  const MANTRA_VOLUME_ARC_START_DEG = 225;
+  const MANTRA_VOLUME_ARC_DEGREES = 270;
   let library = null;
   let currentBank = "tibet";
   let previousFocus = null;
   let audioContext = null;
+  let masterGain = null;
   let masterLimiter = null;
+  let outputAnalyser = null;
+  let analyserTimeDomain = null;
+  let meterFrame = null;
+  let mantraSignalRms = 0;
+  let mantraSignalLevel = 0;
+  let activeVolumePointerId = null;
   let adaptiveGainDb = 0;
   let programmeRms = null;
 
@@ -31,6 +48,85 @@
 
   function announce(message) {
     if (status) status.textContent = message;
+  }
+
+  function clamp(value, minimum, maximum) {
+    return Math.max(minimum, Math.min(maximum, value));
+  }
+
+  function storedVolumePercent() {
+    try {
+      const storedValue = window.localStorage.getItem(MANTRA_VOLUME_STORAGE_KEY);
+      if (storedValue === null) return MANTRA_VOLUME_DEFAULT_PERCENT;
+      const stored = Number(storedValue);
+      if (Number.isFinite(stored)) return clamp(Math.round(stored), 0, MANTRA_VOLUME_MAX_PERCENT);
+    } catch {
+      // Storage may be unavailable in privacy-restricted browser contexts.
+    }
+    return MANTRA_VOLUME_DEFAULT_PERCENT;
+  }
+
+  let mantraVolumePercent = storedVolumePercent();
+
+  function volumePercentToGain(percent) {
+    const normalised = clamp(Number(percent) || 0, 0, MANTRA_VOLUME_MAX_PERCENT);
+    if (normalised <= 0) return 0;
+    if (normalised <= MANTRA_VOLUME_DEFAULT_PERCENT) {
+      return (normalised / MANTRA_VOLUME_DEFAULT_PERCENT) ** 1.6;
+    }
+    const headroomDb = ((normalised - MANTRA_VOLUME_DEFAULT_PERCENT)
+      / (MANTRA_VOLUME_MAX_PERCENT - MANTRA_VOLUME_DEFAULT_PERCENT)) * MANTRA_VOLUME_MAX_HEADROOM_DB;
+    return 10 ** (headroomDb / 20);
+  }
+
+  function ensureVolumeLeds() {
+    if (!volumeLeds || volumeLeds.childElementCount === MANTRA_VOLUME_LED_COUNT) return;
+    volumeLeds.replaceChildren();
+    for (let index = 0; index < MANTRA_VOLUME_LED_COUNT; index += 1) {
+      const led = document.createElement("span");
+      const angle = MANTRA_VOLUME_ARC_START_DEG
+        + ((MANTRA_VOLUME_ARC_DEGREES * index) / (MANTRA_VOLUME_LED_COUNT - 1));
+      led.className = "mantra-orbit__volume-led";
+      led.style.setProperty("--mantra-led-angle", `${angle}deg`);
+      volumeLeds.append(led);
+    }
+  }
+
+  function renderVolumeControl() {
+    ensureVolumeLeds();
+    const gain = volumePercentToGain(mantraVolumePercent);
+    const litCount = Math.round((mantraVolumePercent / MANTRA_VOLUME_MAX_PERCENT) * MANTRA_VOLUME_LED_COUNT);
+    Array.from(volumeLeds?.children || []).forEach((led, index) => {
+      led.classList.toggle("is-active", index < litCount);
+      led.classList.toggle("is-current", litCount > 0 && index === litCount - 1);
+    });
+    if (volumeReadout) volumeReadout.textContent = `${mantraVolumePercent}%`;
+    volumeControl?.setAttribute("aria-valuenow", String(mantraVolumePercent));
+    volumeControl?.setAttribute("aria-valuetext", `${mantraVolumePercent} percent`);
+    sampler.style.setProperty("--mantra-volume-percent", String(mantraVolumePercent / 100));
+    document.body.dataset.mantraVolumePercent = String(mantraVolumePercent);
+    document.body.dataset.mantraVolumeGain = gain.toFixed(4);
+  }
+
+  function persistVolume() {
+    try {
+      window.localStorage.setItem(MANTRA_VOLUME_STORAGE_KEY, String(mantraVolumePercent));
+    } catch {
+      // The control remains session-functional when persistence is unavailable.
+    }
+  }
+
+  function setVolume(percent, { persist = true } = {}) {
+    mantraVolumePercent = clamp(Math.round(Number(percent) || 0), 0, MANTRA_VOLUME_MAX_PERCENT);
+    const gain = volumePercentToGain(mantraVolumePercent);
+    renderVolumeControl();
+    if (masterGain && audioContext) {
+      const now = audioContext.currentTime;
+      masterGain.gain.cancelScheduledValues(now);
+      masterGain.gain.setTargetAtTime(gain, now, 0.025);
+    }
+    if (persist) persistVolume();
+    return mantraVolumePercent;
   }
 
   function syncPlaybackState() {
@@ -66,16 +162,58 @@
     return audioContext;
   }
 
-  function outputLimiter(ctx) {
-    if (masterLimiter) return masterLimiter;
+  function outputBus(ctx) {
+    if (masterGain) return masterGain;
+    masterGain = ctx.createGain();
+    masterGain.gain.value = volumePercentToGain(mantraVolumePercent);
     masterLimiter = ctx.createDynamicsCompressor();
     masterLimiter.threshold.value = -1;
     masterLimiter.knee.value = 0;
     masterLimiter.ratio.value = 20;
     masterLimiter.attack.value = 0.003;
     masterLimiter.release.value = 0.08;
-    masterLimiter.connect(ctx.destination);
-    return masterLimiter;
+    outputAnalyser = ctx.createAnalyser();
+    outputAnalyser.fftSize = 256;
+    outputAnalyser.smoothingTimeConstant = 0.74;
+    analyserTimeDomain = new Float32Array(outputAnalyser.fftSize);
+    masterGain.connect(masterLimiter);
+    masterLimiter.connect(outputAnalyser);
+    outputAnalyser.connect(ctx.destination);
+    return masterGain;
+  }
+
+  function updateSignalMeter() {
+    let rms = 0;
+    if (outputAnalyser && analyserTimeDomain) {
+      outputAnalyser.getFloatTimeDomainData(analyserTimeDomain);
+      let sumSquares = 0;
+      for (let index = 0; index < analyserTimeDomain.length; index += 1) {
+        sumSquares += analyserTimeDomain[index] ** 2;
+      }
+      rms = Math.sqrt(sumSquares / analyserTimeDomain.length);
+    }
+    mantraSignalRms = rms;
+    const targetLevel = clamp((rms - 0.0025) / 0.16, 0, 1);
+    const smoothing = targetLevel > mantraSignalLevel ? 0.42 : 0.16;
+    mantraSignalLevel += (targetLevel - mantraSignalLevel) * smoothing;
+    if (mantraSignalLevel < 0.001) mantraSignalLevel = 0;
+    volumeControl?.style.setProperty("--mantra-signal-level", mantraSignalLevel.toFixed(4));
+    document.body.dataset.mantraSignalRms = mantraSignalRms.toFixed(5);
+    meterFrame = window.requestAnimationFrame(updateSignalMeter);
+  }
+
+  function startSignalMeter() {
+    if (meterFrame !== null) return;
+    meterFrame = window.requestAnimationFrame(updateSignalMeter);
+  }
+
+  function stopSignalMeter() {
+    if (meterFrame !== null) window.cancelAnimationFrame(meterFrame);
+    meterFrame = null;
+    mantraSignalRms = 0;
+    mantraSignalLevel = 0;
+    volumeControl?.style.setProperty("--mantra-signal-level", "0");
+    document.body.dataset.mantraSignalRms = "0.00000";
   }
 
   function sampleProgrammeLevel() {
@@ -199,7 +337,7 @@
     gain.gain.linearRampToValueAtTime(peak, scheduledContextTime + attack);
     gain.gain.setValueAtTime(peak, scheduledContextTime + Math.max(attack, outputDuration - release));
     gain.gain.linearRampToValueAtTime(0.0001, scheduledContextTime + outputDuration);
-    const limiter = outputLimiter(ctx);
+    const output = outputBus(ctx);
     let effectInput = gain;
     if (ctx.createStereoPanner) {
       const pan = ctx.createStereoPanner();
@@ -213,11 +351,11 @@
       window.IAMMantraAudioFX.connect({
         ctx,
         input: effectInput,
-        destination: limiter,
+        destination: output,
         state: item.fx,
       });
     } else {
-      effectInput.connect(limiter);
+      effectInput.connect(output);
     }
     source.onended = () => deactivate(item.id, source);
     const sources = sourceById.get(item.id) || new Set();
@@ -349,6 +487,8 @@
     sampler.setAttribute("aria-hidden", "false");
     document.querySelector("[data-emdr-mantra-open]")?.setAttribute("aria-expanded", "true");
     if (!library) await refresh();
+    renderVolumeControl();
+    startSignalMeter();
     window.requestAnimationFrame(() => {
       sampler.querySelector("[data-mantra-close]")?.focus({ preventScroll: true });
     });
@@ -356,6 +496,7 @@
 
   function close({ restoreFocus = true } = {}) {
     stopAll();
+    stopSignalMeter();
     document.body.classList.remove("mantra-sampler-open");
     sampler.setAttribute("aria-hidden", "true");
     sampler.setAttribute("inert", "");
@@ -370,6 +511,61 @@
     currentBank = requestedBank;
     renderBank();
   }));
+  function volumeFromPointer(event) {
+    if (!volumeControl) return mantraVolumePercent;
+    const bounds = volumeControl.getBoundingClientRect();
+    const x = event.clientX - (bounds.left + (bounds.width / 2));
+    const y = event.clientY - (bounds.top + (bounds.height / 2));
+    const degrees = ((Math.atan2(y, x) * 180 / Math.PI) + 90 + 360) % 360;
+    const deadZoneStart = (MANTRA_VOLUME_ARC_START_DEG + MANTRA_VOLUME_ARC_DEGREES) % 360;
+    if (degrees >= deadZoneStart && degrees <= MANTRA_VOLUME_ARC_START_DEG) {
+      return degrees < 180 ? MANTRA_VOLUME_MAX_PERCENT : 0;
+    }
+    const adjustedDegrees = degrees < MANTRA_VOLUME_ARC_START_DEG ? degrees + 360 : degrees;
+    const progress = clamp(
+      (adjustedDegrees - MANTRA_VOLUME_ARC_START_DEG) / MANTRA_VOLUME_ARC_DEGREES,
+      0,
+      1
+    );
+    return progress * MANTRA_VOLUME_MAX_PERCENT;
+  }
+
+  function finishVolumePointer(event) {
+    if (activeVolumePointerId === null || event.pointerId !== activeVolumePointerId) return;
+    try { volumeControl?.releasePointerCapture(activeVolumePointerId); } catch {}
+    activeVolumePointerId = null;
+    volumeControl?.classList.remove("is-adjusting");
+    persistVolume();
+  }
+
+  volumeControl?.addEventListener("pointerdown", (event) => {
+    if (event.pointerType === "mouse" && event.button !== 0) return;
+    event.preventDefault();
+    activeVolumePointerId = event.pointerId;
+    volumeControl.setPointerCapture(event.pointerId);
+    volumeControl.classList.add("is-adjusting");
+    volumeControl.focus({ preventScroll: true });
+    setVolume(volumeFromPointer(event), { persist: false });
+  });
+  volumeControl?.addEventListener("pointermove", (event) => {
+    if (activeVolumePointerId === null || event.pointerId !== activeVolumePointerId) return;
+    event.preventDefault();
+    setVolume(volumeFromPointer(event), { persist: false });
+  });
+  volumeControl?.addEventListener("pointerup", finishVolumePointer);
+  volumeControl?.addEventListener("pointercancel", finishVolumePointer);
+  volumeControl?.addEventListener("keydown", (event) => {
+    let nextVolume = mantraVolumePercent;
+    if (event.key === "ArrowRight" || event.key === "ArrowUp") nextVolume += event.shiftKey ? 5 : 1;
+    else if (event.key === "ArrowLeft" || event.key === "ArrowDown") nextVolume -= event.shiftKey ? 5 : 1;
+    else if (event.key === "PageUp") nextVolume += 10;
+    else if (event.key === "PageDown") nextVolume -= 10;
+    else if (event.key === "Home") nextVolume = 0;
+    else if (event.key === "End") nextVolume = MANTRA_VOLUME_MAX_PERCENT;
+    else return;
+    event.preventDefault();
+    setVolume(nextVolume);
+  });
   closeButtons.forEach((button) => button.addEventListener("click", (event) => {
     event.preventDefault();
     event.stopPropagation();
@@ -391,17 +587,19 @@
   const programmeSampler = window.setInterval(sampleProgrammeLevel, PROGRAMME_SAMPLE_MS);
   window.addEventListener("pagehide", () => {
     window.clearInterval(programmeSampler);
+    stopSignalMeter();
     stopAll();
   });
 
   window.IAMMantraSampler = {
-    version: "mantra_sampler_v2.6",
+    version: "mantra_sampler_v3.0",
     open,
     close,
     refresh,
     stopAll,
     armSharedAudio,
     playShared,
+    setVolume,
     getState() {
       return {
         bank: currentBank,
@@ -411,10 +609,18 @@
         programmeRms,
         adaptiveGainDb,
         maximumAdaptiveAttenuationDb: PROGRAMME_MAX_ATTENUATION_DB,
+        volumePercent: mantraVolumePercent,
+        defaultVolumePercent: MANTRA_VOLUME_DEFAULT_PERCENT,
+        volumeGain: volumePercentToGain(mantraVolumePercent),
+        appliedVolumeGain: masterGain?.gain.value ?? null,
+        maximumVolumeHeadroomDb: MANTRA_VOLUME_MAX_HEADROOM_DB,
+        signalRms: mantraSignalRms,
+        outputMeterReady: Boolean(outputAnalyser),
         sixNodeBanks: Object.fromEntries(Object.entries(library?.banks || {}).map(([name, items]) => [name, items.length])),
       };
     },
   };
 
+  renderVolumeControl();
   refresh();
 })();
