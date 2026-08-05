@@ -202,8 +202,9 @@
   });
 
   document.addEventListener("pointerdown", (event) => {
-    if (hoverQuery.matches || !activeModule) return;
+    if (!activeModule) return;
     if (event.target.closest("[data-matrix-experience]")) return;
+    if (hoverQuery.matches && event.pointerType !== "touch") return;
     closeModule({ restoreFocus: false });
   });
 
