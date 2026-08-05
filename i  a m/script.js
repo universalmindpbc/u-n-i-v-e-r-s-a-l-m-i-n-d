@@ -175,12 +175,6 @@
         });
       }
 
-      if (item.tagName === "A" && item.dataset.navItem === "go-to-market") {
-        item.addEventListener("click", (event) => {
-          event.preventDefault();
-          setActiveNavItem(navItems, navSubmenus, "go-to-market");
-        });
-      }
     });
 
     document.querySelectorAll("[data-nav-subitem]").forEach((item) => {

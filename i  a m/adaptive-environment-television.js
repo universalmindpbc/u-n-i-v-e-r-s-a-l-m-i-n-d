@@ -8545,12 +8545,6 @@
         return;
       }
 
-      if (link.dataset.navItem === "go-to-market") {
-        event.preventDefault();
-        event.stopImmediatePropagation();
-        return;
-      }
-
       if (link.classList.contains("global-nav-brand") && event.target.closest(".global-nav-mark")) {
         event.preventDefault();
         event.stopImmediatePropagation();
