@@ -1,5 +1,5 @@
 (() => {
-  const VERSION = "global-navigation-canonical-8";
+  const VERSION = "global-navigation-canonical-9";
   const scriptUrl = document.currentScript?.src || window.location.href;
   const stylesheetUrl = new URL(`global-navigation.css?v=${VERSION}`, scriptUrl).href;
 
@@ -25,6 +25,7 @@
       "cafe-del-mar-home.html": "home",
       "about.html": "about",
       "technology-citizen-needs.html": "technology",
+      "technology-inference-engine.html": "technology",
       "science.html": "science",
       "privacy-first.html": "privacy-first",
       "vogue-self-report.html": "check-in",
@@ -93,7 +94,8 @@
             <a class="global-nav-item" href="about.html?aboutTopLevel=1" data-nav-item="about">about</a>
             <a class="global-nav-item" href="technology-citizen-needs.html" data-nav-item="technology" aria-expanded="false">technology</a>
             <div class="global-nav-submenu" data-nav-submenu="technology">
-              <a href="technology-citizen-needs.html" data-nav-subitem="technology-ai">learn how we understand your needs with large language models (ai)</a>
+              <a href="technology-citizen-needs.html" data-nav-subitem="technology-needs">learn how we understand your needs</a>
+              <a href="technology-inference-engine.html" data-nav-subitem="technology-recommendations">learn how we recommend content</a>
             </div>
             <a class="global-nav-item" href="science.html" data-nav-item="science">science</a>
             <a class="global-nav-item" href="privacy-first.html" data-nav-item="privacy-first">privacy first</a>

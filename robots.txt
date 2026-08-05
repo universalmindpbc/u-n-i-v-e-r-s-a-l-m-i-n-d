@@ -53,6 +53,7 @@ Allow: /vogue/iam/about.html
 Allow: /vogue/iam/science.html
 Allow: /vogue/iam/our-team.html
 Allow: /vogue/iam/technology-citizen-needs.html
+Allow: /vogue/iam/technology-inference-engine.html
 
 # Resources needed to understand and render the approved public pages.
 Allow: /vogue/iam/styles.css
@@ -65,6 +66,7 @@ Allow: /vogue/iam/about.css
 Allow: /vogue/iam/science.css
 Allow: /vogue/iam/our-team-concept.css
 Allow: /vogue/iam/technology-citizen-needs.css
+Allow: /vogue/iam/technology-inference-engine.css
 Allow: /vogue/iam/science-research-data-v1.js
 Allow: /vogue/iam/science.js
 Allow: /vogue/iam/a%20s%20s%20e%20t%20s/Universal%20Mind%20%5B%20I%20o%20H%20%5D%20Logo%20512.png

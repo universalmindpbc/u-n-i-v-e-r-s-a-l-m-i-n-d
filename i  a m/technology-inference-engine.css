@@ -867,10 +867,10 @@ main {
 .matrix-core__cube {
   position: absolute;
   left: 50%;
-  top: 42%;
-  width: 68px;
-  height: 68px;
-  border: 1px solid rgba(255, 255, 255, 0.5);
+  top: 50%;
+  width: 58%;
+  height: 58%;
+  border: 1px solid rgba(255, 255, 255, 0.28);
   transform: translate(-50%, -50%) rotate(45deg);
   animation: cube-breathe 4.8s ease-in-out infinite;
 }
@@ -912,27 +912,39 @@ main {
 
 .matrix-core__copy {
   position: absolute;
+  z-index: 2;
   left: 50%;
-  bottom: 16%;
+  top: 50%;
   display: grid;
-  gap: 4px;
+  gap: 9px;
+  width: 92%;
   text-align: center;
-  transform: translateX(-50%);
+  transform: translate(-50%, -50%);
 }
 
 .matrix-core__copy small {
-  color: var(--engine-signal);
+  color: rgba(255, 255, 255, 0.78);
   font-family: var(--engine-mono);
-  font-size: 8px;
-  letter-spacing: 0.17em;
+  font-size: clamp(7px, 0.58vw, 10px);
+  font-weight: 560;
+  letter-spacing: 0.1em;
+  line-height: 1.25;
+  text-transform: uppercase;
 }
 
 .matrix-core__copy strong {
-  font-size: clamp(10px, 0.8vw, 14px);
-  font-weight: 500;
-  letter-spacing: 0.07em;
-  line-height: 1.18;
+  color: var(--engine-signal);
+  font-family: var(--engine-sans);
+  font-size: clamp(25px, 2.75vw, 46px);
+  font-weight: 760;
+  letter-spacing: -0.055em;
+  line-height: 0.9;
   text-transform: uppercase;
+  text-shadow:
+    0 0 5px rgba(216, 255, 66, 0.95),
+    0 0 18px rgba(216, 255, 66, 0.62),
+    0 0 40px rgba(216, 255, 66, 0.34);
+  animation: television-neon 4.2s ease-in-out infinite;
 }
 
 .matrix-instruction {
@@ -1188,16 +1200,16 @@ body.module-card-open .module-card-layer {
 .brainwave-map__head,
 .brainwave-map article {
   display: grid;
-  grid-template-columns: minmax(90px, 0.8fr) minmax(0, 1.7fr) 72px;
+  grid-template-columns: minmax(150px, 1.15fr) minmax(0, 1.35fr) 92px;
   gap: 14px;
   align-items: center;
 }
 
 .brainwave-map__head {
   padding: 10px 0 8px;
-  color: rgba(255, 255, 255, 0.38);
+  color: rgba(255, 255, 255, 0.68);
   font-family: var(--engine-mono);
-  font-size: 8px;
+  font-size: 9px;
   letter-spacing: 0.12em;
   text-transform: uppercase;
 }
@@ -1218,16 +1230,16 @@ body.module-card-open .module-card-layer {
 
 .brainwave-map article strong {
   color: rgba(255, 255, 255, 0.96);
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 620;
   text-transform: uppercase;
 }
 
 .brainwave-map article small {
-  color: rgba(255, 255, 255, 0.42);
+  color: rgba(255, 255, 255, 0.82);
   font-family: var(--engine-mono);
-  font-size: 8px;
-  font-weight: 400;
+  font-size: 10px;
+  font-weight: 520;
   letter-spacing: 0.06em;
   line-height: 1.35;
   text-transform: uppercase;
@@ -1235,9 +1247,9 @@ body.module-card-open .module-card-layer {
 
 .brainwave-map article > p {
   margin: 0;
-  color: rgba(255, 255, 255, 0.82);
-  font-size: 13px;
-  font-weight: 350;
+  color: rgba(255, 255, 255, 0.96);
+  font-size: 14px;
+  font-weight: 520;
   line-height: 1.35;
   text-transform: uppercase;
 }
@@ -1269,8 +1281,8 @@ body.module-card-open .module-card-layer {
 }
 
 .brainwave-evidence {
-  margin-top: 26px;
-  border-top: 1px solid rgba(192, 44, 255, 0.48);
+  margin-top: 0;
+  border-top: 0;
   border-bottom: 1px solid rgba(255, 255, 255, 0.14);
 }
 
@@ -1429,6 +1441,16 @@ body.module-card-open .module-card-layer {
   text-transform: uppercase;
 }
 
+.module-card__research-link--featured {
+  margin-top: 26px;
+  padding: 16px 0;
+  border-top: 1px solid rgba(192, 44, 255, 0.62);
+  border-bottom: 1px solid rgba(192, 44, 255, 0.62);
+  color: rgba(255, 255, 255, 0.96);
+  font-size: 10px;
+  font-weight: 650;
+}
+
 .explainability-section {
   position: relative;
   padding: clamp(140px, 15vw, 280px) clamp(22px, 5.8vw, 118px);
@@ -1574,6 +1596,17 @@ body.module-card-open .module-card-layer {
 @keyframes cube-breathe {
   0%, 100% { transform: translate(-50%, -50%) rotate(45deg) scale(0.92); opacity: 0.64; }
   50% { transform: translate(-50%, -50%) rotate(225deg) scale(1.04); opacity: 1; }
+}
+
+@keyframes television-neon {
+  0%, 100% {
+    opacity: 0.86;
+    text-shadow: 0 0 4px rgba(216, 255, 66, 0.82), 0 0 16px rgba(216, 255, 66, 0.48), 0 0 34px rgba(216, 255, 66, 0.24);
+  }
+  50% {
+    opacity: 1;
+    text-shadow: 0 0 7px rgba(216, 255, 66, 1), 0 0 24px rgba(216, 255, 66, 0.76), 0 0 52px rgba(216, 255, 66, 0.44);
+  }
 }
 
 @keyframes module-card-arrive {
@@ -1778,8 +1811,13 @@ body.module-card-open .module-card-layer {
   }
 
   .matrix-core__cube {
-    width: 52px;
-    height: 52px;
+    width: 58%;
+    height: 58%;
+  }
+
+  .matrix-core__copy strong {
+    font-size: 22px;
+    letter-spacing: -0.07em;
   }
 
   .module-card-layer {
@@ -1908,12 +1946,16 @@ body.module-card-open .module-card-layer {
 
   .brainwave-map__head,
   .brainwave-map article {
-    grid-template-columns: 82px minmax(0, 1fr) 48px;
+    grid-template-columns: minmax(112px, 1.15fr) minmax(0, 1fr) 58px;
     gap: 9px;
   }
 
   .brainwave-map article > p {
-    font-size: 11.5px;
+    font-size: 12px;
+  }
+
+  .brainwave-map article small {
+    font-size: 9px;
   }
 
   .brainwave-evidence summary {

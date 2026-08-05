@@ -25,6 +25,7 @@ Important context:
 - [Check in](https://universalmind.tv/vogue/iam/vogue-self-report.html): The voluntary self-report entry into I AM.
 - [Electronic music television](https://universalmind.tv/vogue/iam/index.html): The live adaptive music television experience, including content, participation, community and support pathways.
 - [Citizen Needs technology](https://universalmind.tv/vogue/iam/technology-citizen-needs.html): The public explanation of the privacy-first inference model used to interpret changing needs.
+- [Adaptive Content Matrix](https://universalmind.tv/vogue/iam/technology-inference-engine.html): Learn how Universal Mind recommends music, fashion, brain entrainment and mantra content in response to a voluntary check-in.
 
 ## Full research dossiers
 

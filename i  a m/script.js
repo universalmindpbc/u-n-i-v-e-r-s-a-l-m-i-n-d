@@ -223,7 +223,7 @@
     window.__iamCanonicalCitizenRadarNavigationBound = true;
 
     document.addEventListener("click", (event) => {
-      const link = event.target.closest?.('[data-nav-subitem="technology-ai"], .film-chapter-dropdown a[href="technology-citizen-needs.html"]');
+      const link = event.target.closest?.('[data-nav-subitem="technology-needs"], .film-chapter-dropdown a[href="technology-citizen-needs.html"]');
       if (!link) return;
 
       // Once music television is open, its persistent page layer owns all

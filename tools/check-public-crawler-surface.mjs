@@ -19,6 +19,7 @@ const publicPaths = [
   "/vogue/iam/science.html",
   "/vogue/iam/our-team.html",
   "/vogue/iam/technology-citizen-needs.html",
+  "/vogue/iam/technology-inference-engine.html",
 ];
 
 const researchPaths = [
@@ -86,6 +87,7 @@ const metadataPages = {
   "i  a m/science.html": "https://universalmind.tv/vogue/iam/science.html",
   "i  a m/our-team.html": "https://universalmind.tv/vogue/iam/our-team.html",
   "i  a m/technology-citizen-needs.html": "https://universalmind.tv/vogue/iam/technology-citizen-needs.html",
+  "i  a m/technology-inference-engine.html": "https://universalmind.tv/vogue/iam/technology-inference-engine.html",
 };
 
 for (const [relativePath, canonicalUrl] of Object.entries(metadataPages)) {

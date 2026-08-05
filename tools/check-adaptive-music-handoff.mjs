@@ -100,6 +100,7 @@ const singleShellNavigationPagePaths = [
   path.join(IAM_DIR, 'our-team.html'),
   path.join(IAM_DIR, 'science.html'),
   path.join(IAM_DIR, 'technology-citizen-needs.html'),
+  path.join(IAM_DIR, 'technology-inference-engine.html'),
   path.join(IAM_DIR, 'about.html'),
 ];
 const globalNavigationPagePaths = [
@@ -113,6 +114,7 @@ const globalNavigationPagePaths = [
   path.join(IAM_DIR, 'our-team-concept.html'),
   path.join(IAM_DIR, 'privacy-first.html'),
   path.join(IAM_DIR, 'technology-citizen-needs.html'),
+  path.join(IAM_DIR, 'technology-inference-engine.html'),
   path.join(IAM_DIR, 'shop.html'),
   path.join(IAM_DIR, 'wallet.html'),
 ];
@@ -391,6 +393,8 @@ requireCondition(televisionCss.includes('body.television-wallet-pointer-locked .
 requireCondition(televisionCss.includes('body.television-page-view-open .global-nav-trigger,\nbody.television-page-view-open .brand {\n  z-index: 30;\n}'), 'the persistent television navigation is no longer available above framed site pages');
 requireCondition(televisionCss.includes('body.television-page-view-open .brand-lockup {\n  display: flex;\n}'), 'framed pages no longer retain the canonical television navigation identity');
 requireCondition(frameContext.includes('document.documentElement.dataset.musicTelevisionFrame = "embedded";'), 'framed pages no longer share one early television context marker');
+requireCondition(frameContext.includes('destination.searchParams.set("adaptiveFrame", "1");') && frameContext.includes('destination.searchParams.set("musicTelevisionFrame", "1");') && frameContext.includes('destination.searchParams.set("navigationShell", "1");'), 'internal framed navigation no longer preserves the continuous television shell');
+requireCondition(frameContext.includes('window.parent.postMessage({ type: "iam:return-to-television" }'), 'framed Home navigation no longer returns to the playing television room');
 requireCondition(frameContext.includes('document.documentElement.dataset.adaptiveFrame = "embedded";'), 'framed pages can render a competing local navigation before the television shell appears');
 requireCondition(sharedStyles.includes('html[data-adaptive-frame="embedded"] .about-brand,'), 'About can render a competing navigation flower inside the television shell');
 requireCondition(scienceCss.includes('html[data-adaptive-frame="embedded"] .science-brand,'), 'Science can render a competing navigation flower inside the television shell');
@@ -550,7 +554,7 @@ requireCondition(citizenNeedsWorkerConfig.includes('name = "REALTIME_RATE_LIMITE
 requireCondition(citizenNeedsWorkerConfig.includes('type = "Text"') && citizenNeedsWorkerConfig.includes('globs = [ "**/*.txt" ]'), 'the Worker no longer bundles the Universal One portal guide');
 requireCondition(realtimeVoicePortalGuide.includes('GLOBAL NAVIGATION') && realtimeVoicePortalGuide.includes('TELEVISION ROOM'), 'the Universal One portal guide no longer covers the site and player journeys');
 requireCondition(realtimeVoicePortalGuide.includes('Privacy first opens the Privacy First page') && realtimeVoicePortalGuide.includes('Go to market remains a visible roadmap label and is currently disabled'), 'Universal One can misdescribe Privacy First as inactive or Go to market as live');
-requireCondition(globalNavigationController.includes('const VERSION = "global-navigation-canonical-8"'), 'the canonical global navigation version is missing');
+requireCondition(globalNavigationController.includes('const VERSION = "global-navigation-canonical-9"'), 'the canonical global navigation version is missing');
 requireCondition(globalNavigationController.includes('href="privacy-first.html" data-nav-item="privacy-first"'), 'the canonical global navigation does not expose Privacy First');
 requireCondition(globalNavigationController.includes('href="shop.html" data-nav-item="shop"'), 'the canonical global navigation does not expose Shop');
 requireCondition(globalNavigationController.includes('data-nav-submenu="shop"') && globalNavigationController.includes('data-nav-subitem="shop-james-bondage-health">james bondage health - now open</a>'), 'the canonical global navigation does not contextualise Shop as James Bondage Health');
@@ -564,7 +568,7 @@ requireCondition(privacyCss.includes('animation: privacy-clockwise-turn 3s linea
 for (const { pagePath, source } of globalNavigationPages) {
   const label = path.relative(ROOT, pagePath);
   requireCondition((source.match(/data-global-nav-host/g) || []).length === 1, `${label} does not contain exactly one canonical global-navigation host`);
-  requireCondition((source.match(/global-navigation\.js\?v=global-navigation-canonical-8/g) || []).length === 1, `${label} does not load exactly one canonical global-navigation component`);
+  requireCondition((source.match(/global-navigation\.js\?v=global-navigation-canonical-9/g) || []).length === 1, `${label} does not load exactly one canonical global-navigation component`);
   requireCondition(!source.includes('data-nav-item='), `${label} still contains a copied global-navigation menu`);
   requireCondition(!source.includes('data-global-nav aria-hidden='), `${label} still contains copied global-navigation markup`);
 }
@@ -608,7 +612,7 @@ for (const { pagePath, source } of adaptiveEnvironmentPages) {
 
 for (const { pagePath, source } of aboutLinkPages) {
   const label = path.relative(ROOT, pagePath);
-  requireCondition(source.includes('global-navigation.js?v=global-navigation-canonical-8'), `${label} does not load the canonical About navigation handoff`);
+  requireCondition(source.includes('global-navigation.js?v=global-navigation-canonical-9'), `${label} does not load the canonical About navigation handoff`);
 }
 requireCondition(globalNavigationController.includes('href="about.html?aboutTopLevel=1" data-nav-item="about"'), 'the canonical navigation does not force a fresh complete About handoff');
 
