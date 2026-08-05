@@ -30,6 +30,7 @@
   function openGlobalNav() {
     const nav = globalNav();
     if (!nav) return;
+    if (activeModule) closeModule({ restoreFocus: false });
     body.classList.add("nav-open");
     nav.classList.add("is-open");
     nav.setAttribute("aria-hidden", "false");
@@ -68,6 +69,7 @@
   function showModule(moduleName, { focusCard = false } = {}) {
     if (!moduleOrder.includes(moduleName)) return;
     activeModule = moduleName;
+    body.classList.add("module-card-open");
     stopPreviewCycle();
 
     if (matrixStage) {
@@ -92,6 +94,7 @@
   function closeModule({ restoreFocus = true } = {}) {
     const trigger = lastModuleTrigger;
     activeModule = "";
+    body.classList.remove("module-card-open");
     moduleButtons.forEach((button) => button.setAttribute("aria-expanded", "false"));
     moduleCards.forEach((card) => { card.hidden = true; });
     if (matrixStage) delete matrixStage.dataset.activeModule;

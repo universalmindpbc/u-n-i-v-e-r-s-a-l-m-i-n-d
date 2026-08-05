@@ -577,6 +577,10 @@ main {
   min-width: 0;
 }
 
+.matrix-experience.is-visible {
+  transform: none;
+}
+
 .matrix-stage {
   position: relative;
   width: min(62vw, 880px);
@@ -914,6 +918,15 @@ main {
   width: min(490px, 52%);
   transform: translateY(-50%);
   pointer-events: none;
+}
+
+body.module-card-open .module-card-layer {
+  position: fixed;
+  z-index: 80;
+  top: 50%;
+  right: clamp(22px, 5.8vw, 118px);
+  width: min(490px, calc(100vw - 48px));
+  transform: translateY(-50%);
 }
 
 .module-card {
@@ -1379,6 +1392,14 @@ main {
     right: auto;
     width: 100%;
     margin-top: 36px;
+    transform: none;
+  }
+
+  body.module-card-open .module-card-layer {
+    position: relative;
+    top: auto;
+    right: auto;
+    width: 100%;
     transform: none;
   }
 
