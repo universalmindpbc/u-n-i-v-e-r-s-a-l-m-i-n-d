@@ -23,6 +23,7 @@ const index = read("i  a m/index.html");
 const htaccess = read(".htaccess");
 const redirects = read("_redirects");
 const expectedTelevisionToken = `music-tv-${createHash("sha256").update(television).digest("hex").slice(0, 12)}`;
+const expectedShopStyleToken = createHash("sha256").update(shopStyle).digest("hex").slice(0, 12);
 
 const bouganvillea = productKernel.products.find((product) => product.id === "JB-0313");
 assert.equal(bouganvillea?.imageSource, "user_supplied_reference", "Bouganvillea Tights must use Ben's sharper supplied product shot");
@@ -655,7 +656,7 @@ assert.match(
 assert.match(shopStyle, /\.shop-footer__legal\s*\{[\s\S]*grid-template-columns:\s*minmax\(0, 1\.6fr\) minmax\(260px, \.8fr\) auto[\s\S]*\.shop-footer__legal-identity\s*\{[\s\S]*grid-column:\s*2[\s\S]*text-transform:\s*none[\s\S]*\.shop-footer__acknowledgement\s*\{[\s\S]*grid-column:\s*1/, "Wide Shop footers must keep the acknowledgement and legal identity on the same row, with the acknowledgement first");
 assert.equal((shop.match(/data-shop-home/g) || []).length, 2, "Shop Home must appear exactly once in the sticky navigation and once in the footer");
 assert.match(shopStyle, /\.shop-product__copy--brand-only\s*\{\s*min-height:\s*76px;/, "Brand-only edit cards must fill the shared caption row without exposing a grey strip");
-assert.match(shop, /shop\.css\?v=5c0ce741389d/, "The Shop shell must load the content-derived Accessories | Health stylesheet revision");
+assert.ok(shop.includes(`shop.css?v=${expectedShopStyleToken}`), "The Shop shell must load its content-derived stylesheet revision");
 assert.match(shop, /shop\.js\?v=shop-836f8a905982/, "The Shop shell must load the content-derived Accessories | Health runtime");
 assert.match(
   shopStyle,

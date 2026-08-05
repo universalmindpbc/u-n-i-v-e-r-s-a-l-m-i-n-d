@@ -65,7 +65,11 @@ html[data-adaptive-frame="embedded"] .global-nav {
   width: clamp(64px, 4.35vw, 90px);
   height: clamp(64px, 4.35vw, 90px);
   object-fit: contain;
-  animation: none;
+  animation: global-navigation-flower-spin 3s linear infinite;
+}
+
+@keyframes global-navigation-flower-spin {
+  to { transform: rotate(360deg); }
 }
 
 .global-nav-lockup {
@@ -275,6 +279,10 @@ html[data-adaptive-frame="embedded"] .global-nav {
     font-size: 11px;
     line-height: 1.4;
   }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .global-nav-mark { animation: none; }
 }
 
 @media (max-width: 760px) and (max-height: 740px) {

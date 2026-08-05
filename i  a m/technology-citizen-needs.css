@@ -118,7 +118,7 @@ body.tensor-kernel-open .kernel-video-backdrop {
   width: clamp(50px, 4.1vw, 84px);
   height: clamp(50px, 4.1vw, 84px);
   object-fit: contain;
-  animation: mark-spin 4.8s linear infinite;
+  animation: mark-spin 3s linear infinite;
 }
 
 .technology-lockup {

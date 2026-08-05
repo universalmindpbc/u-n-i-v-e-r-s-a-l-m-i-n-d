@@ -87,7 +87,7 @@ img {
   width: 100%;
   height: 100%;
   object-fit: contain;
-  animation: shop-universal-flower-spin 24s linear infinite;
+  animation: shop-universal-flower-spin 3s linear infinite;
 }
 
 html[data-music-television-frame="embedded"] .shop-universal-nav,
@@ -145,7 +145,7 @@ body.nav-open .shop-universal-nav {
   width: clamp(64px, 4.35vw, 90px);
   height: clamp(64px, 4.35vw, 90px);
   object-fit: contain;
-  animation: shop-universal-flower-spin 24s linear infinite;
+  animation: shop-universal-flower-spin 3s linear infinite;
 }
 
 .global-nav-lockup {

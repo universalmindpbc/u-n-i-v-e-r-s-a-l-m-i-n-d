@@ -1,7 +1,7 @@
 (() => {
   const VERSION = "global-navigation-canonical-9";
   const scriptUrl = document.currentScript?.src || window.location.href;
-  const stylesheetUrl = new URL(`global-navigation.css?v=${VERSION}`, scriptUrl).href;
+  const stylesheetUrl = new URL("global-navigation.css?v=a4fc9eb0ffc0", scriptUrl).href;
 
   function ensureStylesheet() {
     let stylesheet = document.querySelector("link[data-global-navigation-styles]");

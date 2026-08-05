@@ -3190,6 +3190,15 @@ body.television-page-view-open .brand {
   z-index: 30;
 }
 
+body.television-page-view-open .global-nav-trigger {
+  width: clamp(340px, 40vw, 820px);
+  height: clamp(68px, 5vw, 104px);
+}
+
+body.television-page-view-open.nav-open .adaptive-television-page-view {
+  pointer-events: none;
+}
+
 body.television-page-view-open .brand-lockup {
   display: flex;
 }

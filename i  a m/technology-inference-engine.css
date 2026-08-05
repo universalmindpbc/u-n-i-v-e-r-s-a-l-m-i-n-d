@@ -151,7 +151,7 @@ html[data-music-television-frame="embedded"] .engine-brand {
   width: clamp(50px, 4.1vw, 84px);
   height: clamp(50px, 4.1vw, 84px);
   object-fit: contain;
-  animation: engine-mark-spin 8s linear infinite;
+  animation: engine-mark-spin 3s linear infinite;
 }
 
 .engine-brand__lockup {

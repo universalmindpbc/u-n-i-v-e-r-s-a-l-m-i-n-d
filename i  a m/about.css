@@ -94,7 +94,7 @@ body.about-page {
   width: clamp(64px, 4.35vw, 90px);
   height: clamp(64px, 4.35vw, 90px);
   object-fit: contain;
-  animation: about-mark-spin 18s linear infinite;
+  animation: about-mark-spin 3s linear infinite;
 }
 
 .about-brand .brand-lockup {

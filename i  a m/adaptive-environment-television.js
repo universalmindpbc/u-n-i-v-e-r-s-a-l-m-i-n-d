@@ -135,6 +135,7 @@
   const MUSIC_HANDOFF_BUFFER_SECONDS = 12;
   const MUSIC_HANDOFF_CROSSFADE_MS = 1100;
   const BROADCAST_SYNC_INTERVAL_MS = 3000;
+  const HOMEPAGE_NAV_FLOWER_ROTATION_MS = 3000;
   const BROADCAST_ROLLOVER_WAIT_MS = 5000;
   const BROADCAST_ROLLOVER_POLL_MS = 80;
   const BROADCAST_LOCK_TOLERANCE_SECONDS = 1;
@@ -6273,7 +6274,7 @@
     function draw(now) {
       const size = syncCanvasSize();
       const center = size / 2;
-      const angle = ((now % 3000) / 3000) * Math.PI * 2;
+      const angle = ((now % HOMEPAGE_NAV_FLOWER_ROTATION_MS) / HOMEPAGE_NAV_FLOWER_ROTATION_MS) * Math.PI * 2;
 
       context.clearRect(0, 0, size, size);
       context.save();
@@ -7619,6 +7620,38 @@
     refreshOuterFavicon();
   }
 
+  function enforcePageLayerNavigationOwnership() {
+    if (!pageFrame?.contentDocument) return;
+
+    try {
+      const frameDocument = pageFrame.contentDocument;
+      frameDocument.documentElement.dataset.adaptiveFrame = "embedded";
+      frameDocument.documentElement.dataset.musicTelevisionFrame = "embedded";
+      frameDocument.body?.classList.remove("nav-open");
+
+      let ownershipStyle = frameDocument.querySelector("style[data-television-navigation-ownership]");
+      if (!ownershipStyle) {
+        ownershipStyle = frameDocument.createElement("style");
+        ownershipStyle.dataset.televisionNavigationOwnership = "outer-shell";
+        ownershipStyle.textContent = `
+          html[data-music-television-frame="embedded"] [data-nav-open],
+          html[data-music-television-frame="embedded"] [data-global-nav] {
+            display: none !important;
+          }
+        `;
+        frameDocument.head?.appendChild(ownershipStyle);
+      }
+
+      frameDocument.querySelectorAll("[data-global-nav]").forEach((nav) => {
+        nav.classList.remove("is-open");
+        nav.setAttribute("aria-hidden", "true");
+      });
+    } catch {
+      // All page-layer destinations are same-origin; keep the outer shell usable
+      // if a future external document is deliberately introduced.
+    }
+  }
+
   function shopMusicStatus() {
     const radioPlaybackState = document.body.dataset.radioPlaybackState || "stopped";
     const audioPartyPlaying = Boolean(
@@ -8616,6 +8649,7 @@
     }
   });
   pageFrame?.addEventListener("load", () => {
+    enforcePageLayerNavigationOwnership();
     syncPageLayerMetadata();
     postShopMusicStatus();
     if (document.body.classList.contains("television-page-view-open")) {
