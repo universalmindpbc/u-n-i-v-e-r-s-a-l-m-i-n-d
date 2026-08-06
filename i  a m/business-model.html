@@ -17,7 +17,7 @@
     <link rel="shortcut icon" type="image/png" href="/vogue/iam/favicon.png?v=iam-favicon-4">
     <link rel="apple-touch-icon" sizes="180x180" href="/vogue/iam/apple-touch-icon.png?v=iam-favicon-4">
     <script src="music-television-frame-context.js?v=music-tv-frame-1fc6ca029741"></script>
-    <link rel="stylesheet" href="business-model.css?v=business-model-c0b0432ee10a">
+    <link rel="stylesheet" href="business-model.css?v=business-model-c2bc6a1af8ff">
     <link rel="stylesheet" href="mobile-editorial-surface.css?v=mobile-editorial-20260728-2">
     <script src="mobile-editorial-surface.js?v=mobile-editorial-20260728-2"></script>
   </head>
@@ -39,10 +39,17 @@
 
     <main class="business-model-shell" id="business-model">
       <section class="model-summary" aria-labelledby="business-title">
-        <header class="page-heading">
-          <p>B U S I N E S S&nbsp;&nbsp; M O D E L</p>
-          <h1 id="business-title">Business Model</h1>
-          <span>Television Advertising</span>
+        <header class="model-intro-film">
+          <video autoplay muted loop playsinline preload="metadata" poster="a s s e t s/shop-mockup/iris-van-herpen/sonic-starquakes-hero-poster.jpg" aria-hidden="true">
+            <source src="a s s e t s/shop-mockup/iris-van-herpen/sonic-starquakes-hero-640x288.mp4" type="video/mp4">
+          </video>
+          <div class="model-intro-film__shade"></div>
+          <div class="page-heading">
+            <p>B U S I N E S S&nbsp;&nbsp; M O D E L</p>
+            <h1 id="business-title">Business Model</h1>
+            <span>Television Advertising</span>
+            <p class="model-introduction">Universal Mind is a free service for everyone, focused on distributing free digital mental health services to at-risk communities globally. We are not a subscription service like Netflix: we believe mental health should be accessible without asking people to pull out a credit card. Like free-to-air television, Universal Mind primarily covers its running costs and generates profit through television advertising. As a public benefit corporation, our net revenue is shared equally between the masthead, content and licensing rights holders, and mental-health organisations.</p>
+          </div>
         </header>
 
         <ol class="model-points">
@@ -59,7 +66,11 @@
             <div>
               <p>At 1M Viewers Per Day For 1 Hour, Each Stakeholder Group Receives</p>
               <p class="result-line"><strong>US$150,000 per day</strong><i>|</i><strong>US$4.5M per month</strong><i>|</i><strong>US$54.75M per annum</strong></p>
-              <small>Masthead, content/licensing and mental health — 33.3% each</small>
+              <ul class="result-share-list" aria-label="Net revenue recipients">
+                <li>Masthead <strong>33.3%</strong></li>
+                <li>Content + licensing rights holders <strong>33.3%</strong></li>
+                <li>Mental-health organisations <strong>33.3%</strong></li>
+              </ul>
             </div>
           </li>
           <li>
@@ -69,15 +80,81 @@
         </ol>
 
         <details class="quiet-detail" data-calculator-detail>
-          <summary>Open audience calculator</summary>
-          <div class="calculator" data-stakeholder-calculator>
-            <p>Daily viewers</p>
-            <div class="calculator-buttons" role="group" aria-label="Daily viewers">
-              <button type="button" data-calculator-audience="10000">10,000</button>
-              <button type="button" data-calculator-audience="100000">100,000</button>
-              <button class="is-selected" type="button" data-calculator-audience="1000000">1 million</button>
-            </div>
-            <p class="calculator-result" aria-live="polite">Each stakeholder group receives <strong data-calculator-day>US$150,000 per day</strong>, <strong data-calculator-month>US$4.5M per month</strong> and <strong data-calculator-year>US$54.75M per annum</strong>.</p>
+          <summary>Open revenue calculator</summary>
+          <div class="revenue-calculator" data-revenue-calculator>
+            <section class="calculator-stream calculator-stream--primary" aria-labelledby="advertising-calculator-title">
+              <div class="calculator-stream__heading">
+                <div>
+                  <p>Primary revenue</p>
+                  <h3 id="advertising-calculator-title">Television Advertising</h3>
+                </div>
+                <small>Four US$0.15 adverts per viewer per hour</small>
+              </div>
+              <div class="calculator-buttons" role="group" aria-label="Daily advertising viewers">
+                <button type="button" data-advertising-viewers="10000">10,000</button>
+                <button type="button" data-advertising-viewers="100000">100,000</button>
+                <button class="is-selected" type="button" data-advertising-viewers="1000000">1 million</button>
+              </div>
+              <div class="calculator-ledger" aria-live="polite">
+                <p><span>Gross advertising revenue</span><strong data-advertising-gross>US$600,000 per day</strong></p>
+                <p><span>Running costs</span><strong data-advertising-costs>US$150,000 per day</strong></p>
+                <p><span>Net revenue</span><strong data-advertising-net>US$450,000 per day</strong></p>
+                <p class="calculator-ledger__stakeholder"><span>Each 33.3% stakeholder group</span><strong data-advertising-share>US$150,000 per day</strong></p>
+              </div>
+              <p class="calculator-periods"><span data-advertising-share-month>US$4.5M per month</span><i>|</i><span data-advertising-share-year>US$54.75M per annum</span> for each stakeholder group.</p>
+            </section>
+
+            <section class="calculator-stream" aria-labelledby="government-calculator-title">
+              <div class="calculator-stream__heading">
+                <div>
+                  <p>Additional revenue</p>
+                  <h3 id="government-calculator-title">Government-Sponsored Seats</h3>
+                </div>
+                <small>US$1,000 per at-risk citizen per annum</small>
+              </div>
+              <div class="calculator-buttons" role="group" aria-label="Government-sponsored seats">
+                <button class="is-selected" type="button" data-government-seats="1000">1,000</button>
+                <button type="button" data-government-seats="5000">5,000</button>
+                <button type="button" data-government-seats="10000">10,000</button>
+                <button type="button" data-government-seats="100000">100,000</button>
+              </div>
+              <p class="calculator-result" aria-live="polite"><strong data-government-gross>US$1M gross annual revenue</strong> · <span data-government-costs>US$77,700 running costs</span> · <span data-government-net>US$922,300 net revenue</span></p>
+            </section>
+
+            <section class="calculator-stream" aria-labelledby="freemium-calculator-title">
+              <div class="calculator-stream__heading">
+                <div>
+                  <p>Additional revenue</p>
+                  <h3 id="freemium-calculator-title">Freemium Feature Unlocks</h3>
+                </div>
+                <small>US$100 per power user per annum</small>
+              </div>
+              <div class="calculator-buttons" role="group" aria-label="Freemium power users">
+                <button class="is-selected" type="button" data-freemium-users="1000">1,000</button>
+                <button type="button" data-freemium-users="10000">10,000</button>
+                <button type="button" data-freemium-users="100000">100,000</button>
+                <button type="button" data-freemium-users="1000000">1 million</button>
+              </div>
+              <p class="calculator-result" aria-live="polite"><strong data-freemium-revenue>US$100,000 gross annual revenue</strong></p>
+            </section>
+
+            <section class="calculator-stream" aria-labelledby="affiliate-calculator-title">
+              <div class="calculator-stream__heading">
+                <div>
+                  <p>Additional revenue</p>
+                  <h3 id="affiliate-calculator-title">Affiliate Retail Sales</h3>
+                </div>
+                <small>1% of viewers × US$500 average sale × 7.7% commission</small>
+              </div>
+              <div class="calculator-buttons" role="group" aria-label="Affiliate retail audience">
+                <button class="is-selected" type="button" data-affiliate-viewers="10000">10,000</button>
+                <button type="button" data-affiliate-viewers="100000">100,000</button>
+                <button type="button" data-affiliate-viewers="1000000">1 million</button>
+              </div>
+              <p class="calculator-result" aria-live="polite"><strong data-affiliate-revenue>US$3,850 gross annual revenue</strong> from <span data-affiliate-sales>100 sales</span>.</p>
+            </section>
+
+            <p class="calculator-note">Working assumptions for understanding scale; not an audited forecast.</p>
           </div>
         </details>
       </section>
@@ -88,10 +165,16 @@
           <h2 id="market-title">Go To Market</h2>
         </header>
 
+        <ol class="market-steps">
+          <li><span>a</span><p>Embed UM broadcasting technology within websites, platforms and apps that already have the youth demographic, in places youth already trust.</p></li>
+          <li><span>b</span><p>Feature live DJs, bands and artists with global audiences and fan bases.</p></li>
+          <li><span>c</span><p>Promote livestream music television events like a festival or concert.</p></li>
+        </ol>
+
         <div class="market-visuals">
           <figure class="attention-figure">
             <figcaption>
-              <strong>Existing Attention</strong>
+              <strong>Existing Trusted Audiences</strong>
               <span>Public audience signals from proposed partners</span>
             </figcaption>
             <div class="attention-bars" role="img" aria-label="Public audience signals: Vogue global 73.1 million, Boiler Room 63 million, VICE 10.7 million, Resident Advisor 8.51 million, Coachella 7.52 million and Tomorrowland 4.24 million">
@@ -107,34 +190,41 @@
 
           <figure class="festival-poster">
             <figcaption>PROPOSED GLOBAL BROADCAST</figcaption>
-            <p>UNIVERSAL<br>MIND</p>
-            <h3>LIVE MUSIC<br>TELEVISION</h3>
-            <div class="festival-lineup">
-              <strong>David Guetta</strong>
-              <strong>Dua Lipa</strong>
-              <strong>Rihanna</strong>
-              <strong>Solange</strong>
-              <span>Ricardo Villalobos</span>
-              <span>Carl Cox</span>
-              <span>Fred again..</span>
-              <span>Skrillex</span>
-              <span>Björk</span>
-              <span>Alison Wonderland (Whyte Fang)</span>
-              <span>Flume</span>
-              <span>Sampa the Great</span>
-              <span>Flying Lotus</span>
-              <span>Brian Eno</span>
-              <span>Charli XCX</span>
+            <div class="market-performance-loop">
+              <video data-market-performance="dua-lipa" autoplay muted loop playsinline preload="metadata" aria-hidden="true">
+                <source src="a s s e t s/business-model/dua-lipa-glastonbury-2017-silent-loop.mp4?v=d1f9a49c9e79" type="video/mp4">
+              </video>
             </div>
-            <small>Dream lineup / proposed talent</small>
+            <div class="market-performance-loop">
+              <video data-market-performance="david-guetta" autoplay muted loop playsinline preload="metadata" aria-hidden="true">
+                <source src="a s s e t s/business-model/david-guetta-tomorrowland-2026-silent-loop.mp4?v=0c04e13f28f0" type="video/mp4">
+              </video>
+            </div>
+            <div class="festival-poster__copy">
+              <p>UNIVERSAL MIND</p>
+              <h3>LIVE MUSIC TELEVISION</h3>
+              <div class="festival-lineup">
+                <strong>David Guetta</strong>
+                <strong>Dua Lipa</strong>
+                <strong>Rihanna</strong>
+                <strong>Solange</strong>
+                <span>Ricardo Villalobos</span>
+                <span>Carl Cox</span>
+                <span>Fred again..</span>
+                <span>Skrillex</span>
+                <span>Björk</span>
+                <span>Alison Wonderland (Whyte Fang)</span>
+                <span>Flume</span>
+                <span>Sampa the Great</span>
+                <span>Flying Lotus</span>
+                <span>Brian Eno</span>
+                <span>Charli XCX</span>
+              </div>
+              <small>Dream lineup / proposed talent</small>
+            </div>
           </figure>
         </div>
 
-        <ol class="market-steps">
-          <li><span>a</span><p>Embed UM broadcasting technology within websites, platforms and apps that already have the youth demographic, in places youth already trust.</p></li>
-          <li><span>b</span><p>Feature live DJs, bands and artists with global audiences and fan bases.</p></li>
-          <li><span>c</span><p>Promote livestream music television events like a festival or concert.</p></li>
-        </ol>
         <p class="proposal-note">All organisations, publications, platforms and talent shown are proposed examples only. No partnership, booking, affiliation or endorsement is implied.</p>
       </section>
 
@@ -145,8 +235,24 @@
         </header>
 
         <div class="share-layout">
-          <div class="share-pie" role="img" aria-label="Net revenue: 33.3 percent masthead, 33.3 percent content, 33.3 percent youth mental health and 0.1 percent reserved">
-            <span>33.3%<br>each</span>
+          <div class="share-pie-cluster" role="img" aria-label="Net revenue recipients: Vogue, VICE and Resident Advisor represent the 33.3 percent masthead share; DJs, music and yoga represent the 33.3 percent content and licensing share; Orygen and Headspace represent the 33.3 percent mental-health-organisations share; 0.1 percent is reserved">
+            <div class="share-pie">
+              <span>33.3%<br>each</span>
+            </div>
+            <div class="share-recipient-logos share-recipient-logos--masthead" aria-hidden="true">
+              <img src="a s s e t s/Vogue logo - large - higher res.png" alt="">
+              <img class="share-logo--vice" src="https://www.vice.com/wp-content/uploads/sites/2/2024/06/vice-logo_white@2x.png" alt="">
+              <b>RA</b>
+            </div>
+            <div class="share-recipient-logos share-recipient-logos--content" aria-hidden="true">
+              <img src="a s s e t s/about/about-icon-music.png" alt="">
+              <b>DJ</b>
+              <b class="share-yoga-symbol">ॐ</b>
+            </div>
+            <div class="share-recipient-logos share-recipient-logos--mental-health" aria-hidden="true">
+              <img src="https://www.orygen.org.au/App_Themes/Orygen2019/images/orygen_logo.svg" alt="">
+              <img src="https://headspace.org.au/_resources/themes/headspace/images/logo-dark.png" alt="">
+            </div>
           </div>
 
           <div class="share-groups">
@@ -162,7 +268,7 @@
             </article>
             <article>
               <h3><span>03</span>33.3% Youth Mental Health</h3>
-              <p>Research | outreach | Indigenous | creativity</p>
+              <p>Donated to mental-health organisations supporting research | outreach | Indigenous communities | creativity</p>
               <small>e.g. Orygen, Headspace, Black Rainbow, AIME</small>
             </article>
           </div>
@@ -193,15 +299,82 @@
         <details class="quiet-detail">
           <summary>Additional revenue + operating assumptions</summary>
           <div class="detail-copy">
-            <p>Additional revenue includes government-sponsored seats for at-risk communities, optional freemium feature unlocks and 7.77% affiliate retail revenue in the luxury category.</p>
-            <p>Clinical partnerships, moderation, peer support and Universal Mind team costs remain subject to agreement. Independent research maintains its own philanthropy and government-funded budget.</p>
+            <p>Government-sponsored seats are US$1,000 per at-risk citizen per annum. Optional freemium feature unlocks are US$100 per power user per annum. Affiliate revenue assumes 1% of the viewing audience completes one US$500 average retail sale per annum, returning 7.7% to Universal Mind.</p>
+            <p>Our working delivery vision is that clinicians are covered through Medicare bulk billing in groups of nine people; on-call clinicians are covered through a Headspace partnership; and moderators and peer support are voluntary programs between Universal Mind and Headspace.</p>
+            <p>Independent research maintains its own philanthropy and government-funded budget outside the Universal Mind operating budget.</p>
           </div>
         </details>
 
-        <details class="quiet-detail">
-          <summary>Detailed budget</summary>
-          <div class="detail-copy">
-            <a class="budget-link" href="stakeholders/budget/iamvogue-stakeholder-budget-v1.xlsx" download>Download the working budget</a>
+        <details class="quiet-detail budget-detail">
+          <summary>Open detailed budget</summary>
+          <div class="budget-sheet">
+            <header>
+              <p>Universal Mind / I Am</p>
+              <h3>Working Annual Budget</h3>
+              <span>All figures in USD. The live revenue calculator above provides selectable scenarios.</span>
+            </header>
+
+            <section>
+              <h4>Revenue Assumptions</h4>
+              <div class="budget-table-wrap">
+                <table>
+                  <thead><tr><th>Revenue stream</th><th>Working assumption</th><th>Unit revenue</th></tr></thead>
+                  <tbody>
+                    <tr><td>Television advertising</td><td>US$150 CPM / US$0.15 per qualified advert</td><td>US$0.60 per viewer hour at four adverts</td></tr>
+                    <tr><td>Government-sponsored seats</td><td>One at-risk citizen for one year</td><td>US$1,000 per seat</td></tr>
+                    <tr><td>Freemium feature unlocks</td><td>One power user for one year</td><td>US$100 per unlock</td></tr>
+                    <tr><td>Affiliate retail sales</td><td>1% conversion × US$500 average sale</td><td>7.7% commission / US$38.50 per sale</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </section>
+
+            <section>
+              <h4>Running Cost Assumptions</h4>
+              <div class="budget-table-wrap">
+                <table>
+                  <thead><tr><th>Cost</th><th>Per at-risk citizen / annum</th><th>Share of cost base</th></tr></thead>
+                  <tbody>
+                    <tr><td>Web hosting</td><td>US$54.39</td><td>70%</td></tr>
+                    <tr><td>Web development</td><td>US$15.54</td><td>20%</td></tr>
+                    <tr><td>Content management</td><td>US$7.77</td><td>10%</td></tr>
+                    <tr class="budget-total"><td>Total running cost</td><td>US$77.70</td><td>100%</td></tr>
+                  </tbody>
+                </table>
+              </div>
+              <p>For general-public viewing, one US$0.15 advert per viewer per day is the working running-cost allowance. At the four-advert hourly target, the remaining US$0.45 is net revenue.</p>
+            </section>
+
+            <section>
+              <h4>Net Revenue Distribution</h4>
+              <div class="budget-table-wrap">
+                <table>
+                  <thead><tr><th>Stakeholder group</th><th>Share</th><th>Purpose</th></tr></thead>
+                  <tbody>
+                    <tr><td>Masthead</td><td>33.3%</td><td>Host website, app, platform or influencer</td></tr>
+                    <tr><td>Content + licensing</td><td>33.3%</td><td>Rights holders, artists, clinicians and creative contributors</td></tr>
+                    <tr><td>Mental-health organisations</td><td>33.3%</td><td>Donations supporting research, outreach, Indigenous communities and creativity</td></tr>
+                    <tr><td>Reserved</td><td>0.1%</td><td>Structure to be confirmed</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </section>
+
+            <section>
+              <h4>Clinical + Community Delivery Vision</h4>
+              <div class="budget-table-wrap">
+                <table>
+                  <tbody>
+                    <tr><th>Clinicians</th><td>Covered through Medicare bulk billing in groups of nine people</td></tr>
+                    <tr><th>On-call clinicians</th><td>Covered through a Headspace partnership</td></tr>
+                    <tr><th>Moderators + peer support</th><td>Voluntary programs between Universal Mind and Headspace</td></tr>
+                    <tr><th>Independent research</th><td>Separately funded through philanthropy and government</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </section>
+
+            <p class="budget-sheet__note">Partnership assumptions remain proposals until formal agreements are in place. This working budget is for understanding the model and does not constitute an audited forecast.</p>
           </div>
         </details>
       </section>
@@ -215,7 +388,7 @@
     <div data-global-nav-host></div>
     <script src="global-navigation.js?v=global-navigation-canonical-10-8ca1757f462d"></script>
     <script>window.IAMMobileEditorial?.apply();</script>
-    <script src="business-model.js?v=business-model-f6a1c13917f6"></script>
+    <script src="business-model.js?v=business-model-26d4faa95c97"></script>
     <script src="script.js?v=adaptive-env-stream-b9673a04114d"></script>
   </body>
 </html>
