@@ -11,7 +11,7 @@
     costs: [
       { name: "TALENT", start: -90, end: 30, color: "#cad11c", description: ["DJs + hosts + licensing"], percentage: "33.3%" },
       { name: "TERRITORY", start: 30, end: 150, color: "#a93670", description: ["Media distribution", "traditional + influencers"], percentage: "33.3%" },
-      { name: "TECHNOLOGY", start: 150, end: 270, color: "#6359ef", description: ["Streaming + hosting + management"], percentage: "33.3%" },
+      { name: "TECHNOLOGY", start: 150, end: 270, color: "#6359ef", description: ["Streaming + hosting", "+ management"], percentage: "33.3%" },
     ],
   };
 
@@ -100,7 +100,7 @@
       faceLayer.append(group);
 
       const midpoint = (sector.start + sector.end) / 2;
-      const labelPoint = point(midpoint, 158, 112, -10);
+      const labelPoint = point(midpoint, 147, 106, -10);
       const titleOffset = sector.description.length > 1 ? -26 : -15;
       const text = makeSvgElement("text", { class: "pie-label", x: labelPoint.x.toFixed(2), y: (labelPoint.y + titleOffset).toFixed(2) });
       const title = makeSvgElement("tspan", { class: "pie-label__title", x: labelPoint.x.toFixed(2), dy: "0" });
@@ -177,6 +177,9 @@
 
   const setActivePanel = (panel) => {
     const panelIndex = panels.indexOf(panel);
+    document.querySelectorAll(".information-drawer[open]").forEach((details) => {
+      if (!panel.contains(details)) details.open = false;
+    });
     panels.forEach((candidate) => candidate.classList.toggle("is-current", candidate === panel));
     paginationLinks.forEach((link, index) => {
       const selected = index === panelIndex;
@@ -212,10 +215,49 @@
     if (currentPanel) setActivePanel(currentPanel);
   });
 
-  document.querySelectorAll(".information-drawer").forEach((details) => {
+  const informationDrawers = Array.from(document.querySelectorAll(".information-drawer"));
+  const closeInformationDrawer = (details, restoreFocus = true) => {
+    if (!details?.open) return;
+    details.open = false;
+    if (restoreFocus) window.requestAnimationFrame(() => details.querySelector("summary")?.focus({ preventScroll: true }));
+  };
+
+  informationDrawers.forEach((details, index) => {
+    const summary = details.querySelector("summary");
+    const panel = details.querySelector(".information-drawer__panel");
+    const heading = panel?.querySelector("h3");
+    if (!summary || !panel || !heading) return;
+
+    heading.id ||= `information-drawer-title-${index + 1}`;
+    panel.setAttribute("role", "dialog");
+    panel.setAttribute("aria-labelledby", heading.id);
+
+    const closeButton = document.createElement("button");
+    closeButton.type = "button";
+    closeButton.className = "information-drawer__close";
+    closeButton.textContent = "Close";
+    closeButton.setAttribute("aria-label", `Close ${heading.textContent.trim()}`);
+    panel.prepend(closeButton);
+
+    closeButton.addEventListener("click", () => closeInformationDrawer(details));
     details.addEventListener("toggle", () => {
       if (!details.open) return;
-      document.querySelectorAll(".information-drawer[open]").forEach((candidate) => { if (candidate !== details) candidate.open = false; });
+      informationDrawers.forEach((candidate) => { if (candidate !== details) candidate.open = false; });
+      window.requestAnimationFrame(() => closeButton.focus({ preventScroll: true }));
+    });
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key !== "Escape") return;
+    const openDrawer = informationDrawers.find((details) => details.open);
+    if (!openDrawer) return;
+    event.preventDefault();
+    closeInformationDrawer(openDrawer);
+  });
+
+  document.addEventListener("pointerdown", (event) => {
+    informationDrawers.forEach((details) => {
+      if (details.open && !details.contains(event.target)) closeInformationDrawer(details, false);
     });
   });
 
