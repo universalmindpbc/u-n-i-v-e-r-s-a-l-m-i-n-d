@@ -480,11 +480,26 @@ body.nav-open .brand { opacity: 0; pointer-events: none; }
   margin: 0;
 }
 
+.shared-model-label {
+  display: block;
+  color: var(--signal);
+  font-family: var(--mono);
+  font-size: clamp(11px, .76vw, 15px);
+  font-weight: 700;
+  letter-spacing: .16em;
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+
+.chart-editorial .shared-model-label { margin: 0 0 clamp(12px, 1.5vh, 18px); }
+.broadcast-heading .shared-model-label { margin-top: clamp(10px, 1.2vh, 15px); }
+
 .cost-impact {
   display: grid;
   margin: 0;
   padding-top: clamp(18px, 2.4vh, 28px);
   border-top: 1px solid var(--line);
+  color: var(--signal);
 }
 
 .cost-impact strong {
