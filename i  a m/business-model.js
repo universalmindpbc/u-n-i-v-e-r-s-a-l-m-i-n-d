@@ -164,8 +164,8 @@
   renderForecast(1);
 
   const panels = Array.from(document.querySelectorAll("[data-story-panel]"));
-  const reelVideos = Array.from(document.querySelectorAll("[data-reel-video]"));
   const stripVideos = Array.from(document.querySelectorAll("[data-strip-performance]"));
+  const stripVideosByKey = new Map(stripVideos.map((video) => [video.dataset.stripKey, video]));
   const paginationLinks = Array.from(document.querySelectorAll(".story-pagination a"));
   const reducedMotion = window.matchMedia?.("(prefers-reduced-motion: reduce)").matches;
 
@@ -175,8 +175,16 @@
     if (!reducedMotion && !document.hidden) video.play().catch(() => {});
   };
 
+  const mountStripVideos = (panel) => {
+    panel.querySelectorAll("[data-strip-video]").forEach((slot) => {
+      const video = stripVideosByKey.get(slot.dataset.stripVideo);
+      if (video && video.parentElement !== slot) slot.prepend(video);
+    });
+  };
+
   const setActivePanel = (panel) => {
     const panelIndex = panels.indexOf(panel);
+    mountStripVideos(panel);
     document.querySelectorAll(".information-drawer[open]").forEach((details) => {
       if (!panel.contains(details)) details.open = false;
     });
@@ -187,17 +195,12 @@
       if (selected) link.setAttribute("aria-current", "step");
       else link.removeAttribute("aria-current");
     });
-    reelVideos.forEach((video) => {
-      const active = panel.classList.contains("cinematic-panel") && video.dataset.reelVideo === panel.dataset.reel;
-      video.classList.toggle("is-active", active);
-      if (active) playVideo(video); else pauseVideo(video);
-    });
     stripVideos.forEach((video) => {
       if (panel.contains(video)) playVideo(video); else pauseVideo(video);
     });
   };
 
-  reelVideos.concat(stripVideos).forEach((video) => { video.muted = true; });
+  stripVideos.forEach((video) => { video.muted = true; });
   if (panels.length && "IntersectionObserver" in window) {
     const panelObserver = new IntersectionObserver((entries) => {
       const visible = entries.filter((entry) => entry.isIntersecting).sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
@@ -208,7 +211,7 @@
 
   document.addEventListener("visibilitychange", () => {
     if (document.hidden) {
-      reelVideos.concat(stripVideos).forEach(pauseVideo);
+      stripVideos.forEach(pauseVideo);
       return;
     }
     const currentPanel = panels.find((panel) => panel.classList.contains("is-current")) || panels[0];

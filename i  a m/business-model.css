@@ -37,6 +37,11 @@ body {
   text-rendering: optimizeLegibility;
 }
 
+html[data-adaptive-frame="embedded"] .brand,
+html[data-adaptive-frame="embedded"] .global-nav-trigger {
+  display: none !important;
+}
+
 button,
 select,
 summary { font: inherit; }
@@ -62,30 +67,16 @@ img, svg, video { display: block; }
 
 .business-model-skip:focus { transform: translateY(0); }
 
-.cinematic-reel {
+.broadcast-video-pool {
   position: fixed;
   z-index: 0;
-  inset: 0;
+  top: 0;
+  left: 0;
+  width: 1px;
+  height: 1px;
   overflow: hidden;
-  background: #000;
-  pointer-events: none;
-}
-
-.cinematic-reel__video {
-  position: absolute;
-  inset: -1%;
-  width: 102%;
-  height: 102%;
-  object-fit: cover;
   opacity: 0;
-  filter: brightness(.8) saturate(.96) contrast(1.05);
-  transform: scale(1.015);
-  transition: opacity 1.2s ease, transform 8s ease;
-}
-
-.cinematic-reel__video.is-active {
-  opacity: 1;
-  transform: scale(1.055);
+  pointer-events: none;
 }
 
 .brand {
@@ -330,6 +321,7 @@ body.nav-open .brand { opacity: 0; pointer-events: none; }
 }
 
 .broadcast-strip video {
+  display: block;
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -798,6 +790,5 @@ body.nav-open .brand { opacity: 0; pointer-events: none; }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   .brand-mark { animation: none; }
-  .cinematic-reel__video,
   .pie-sector { transition: none; }
 }
