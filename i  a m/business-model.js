@@ -1,5 +1,12 @@
 (() => {
-  const calculator = document.querySelector("[data-revenue-calculator]");
+  const scale = [
+    { viewers: 1_000, label: "1K" },
+    { viewers: 10_000, label: "10K" },
+    { viewers: 100_000, label: "100K" },
+    { viewers: 1_000_000, label: "1M" },
+    { viewers: 10_000_000, label: "10M" },
+  ];
+
   const exactUsd = new Intl.NumberFormat("en-US", {
     style: "currency",
     currency: "USD",
@@ -15,74 +22,104 @@
   });
   const integer = new Intl.NumberFormat("en-US", { maximumFractionDigits: 0 });
 
-  function formatUsd(value, compact = false) {
-    return `US${(compact ? compactUsd : exactUsd).format(value)}`;
+  const formatUsd = (value) => `US${exactUsd.format(value)}`;
+  const formatCompactUsd = (value) => `US${compactUsd.format(value)}`;
+  const setText = (selector, value) => {
+    document.querySelectorAll(selector).forEach((element) => {
+      element.textContent = value;
+    });
+  };
+
+  const viewerSelect = document.querySelector("[data-viewer-select]");
+  const viewerSlider = document.querySelector("[data-viewer-scale]");
+  const scaleButtons = Array.from(document.querySelectorAll("[data-scale-point]"));
+
+  function renderForecast(index) {
+    const safeIndex = Math.max(0, Math.min(scale.length - 1, Number(index) || 0));
+    const { viewers, label } = scale[safeIndex];
+    const adsDaily = viewers * 4 * 0.15;
+    const arcPeople = viewers * 0.1;
+    const arcDaily = (arcPeople * 1_000) / 365;
+    const subscriberPeople = viewers * 0.05;
+    const subscriptionsDaily = (subscriberPeople * 100) / 365;
+    const affiliateDaily = viewers * 0.385;
+    const dailyTotal = adsDaily + arcDaily + subscriptionsDaily + affiliateDaily;
+    const annualTotal = dailyTotal * 365;
+    const annualAllocation = annualTotal / 4;
+    const mentalHealthDaily = dailyTotal / 4;
+
+    if (viewerSelect) viewerSelect.value = String(safeIndex);
+    if (viewerSlider) {
+      viewerSlider.value = String(safeIndex);
+      viewerSlider.setAttribute("aria-valuetext", `${label} unique viewers per day`);
+    }
+    scaleButtons.forEach((button) => {
+      button.classList.toggle("is-selected", Number(button.dataset.scalePoint) === safeIndex);
+    });
+
+    setText("[data-viewer-label]", label);
+    setText("[data-viewer-count]", integer.format(viewers));
+    setText("[data-arc-count]", integer.format(arcPeople));
+    setText("[data-subs-count]", integer.format(subscriberPeople));
+    setText("[data-ads-total]", `${formatUsd(adsDaily)} / day`);
+    setText("[data-arc-total]", `${formatUsd(arcDaily)} / day`);
+    setText("[data-subs-total]", `${formatUsd(subscriptionsDaily)} / day`);
+    setText("[data-affiliate-total]", `${formatUsd(affiliateDaily)} / day`);
+    setText("[data-daily-total]", `${formatUsd(dailyTotal)} / day`);
+    setText("[data-annual-total]", `${formatCompactUsd(annualTotal)} / annum`);
+    setText("[data-allocation-profit]", formatCompactUsd(annualAllocation));
+    setText("[data-allocation-territory]", formatCompactUsd(annualAllocation));
+    setText("[data-allocation-talent]", formatCompactUsd(annualAllocation));
+    setText("[data-allocation-technology]", formatCompactUsd(annualAllocation));
+    setText("[data-mental-daily]", formatUsd(mentalHealthDaily));
+    setText("[data-mental-annual]", `${formatCompactUsd(annualAllocation)} per annum`);
   }
 
-  function setSelected(buttons, selected) {
-    buttons.forEach((button) => button.classList.toggle("is-selected", button === selected));
-  }
+  viewerSelect?.addEventListener("change", (event) => renderForecast(event.currentTarget.value));
+  viewerSlider?.addEventListener("input", (event) => renderForecast(event.currentTarget.value));
+  scaleButtons.forEach((button) => {
+    button.addEventListener("click", () => renderForecast(button.dataset.scalePoint));
+  });
 
-  function wireButtons(selector, render) {
-    const buttons = Array.from(calculator?.querySelectorAll(selector) || []);
-    buttons.forEach((button) => {
+  const reachChart = document.querySelector("[data-reach-chart]");
+  if (reachChart) {
+    const reachName = reachChart.querySelector("[data-reach-name]");
+    const reachNumber = reachChart.querySelector("[data-reach-number]");
+    const reachButtons = Array.from(reachChart.querySelectorAll("[data-reach-name-value]"));
+
+    reachButtons.forEach((button) => {
       button.addEventListener("click", () => {
-        setSelected(buttons, button);
-        render(Number(button.getAttribute(selector.slice(1, -1).split("=")[0])));
+        reachButtons.forEach((candidate) => {
+          const selected = candidate === button;
+          candidate.classList.toggle("is-selected", selected);
+          candidate.setAttribute("aria-pressed", String(selected));
+        });
+        if (reachName) reachName.textContent = button.dataset.reachNameValue || "";
+        if (reachNumber) reachNumber.textContent = button.dataset.reachNumberValue || "";
       });
     });
-    return buttons;
   }
 
-  if (calculator) {
-    const advertisingGross = calculator.querySelector("[data-advertising-gross]");
-    const advertisingCosts = calculator.querySelector("[data-advertising-costs]");
-    const advertisingNet = calculator.querySelector("[data-advertising-net]");
-    const advertisingShare = calculator.querySelector("[data-advertising-share]");
-    const advertisingShareMonth = calculator.querySelector("[data-advertising-share-month]");
-    const advertisingShareYear = calculator.querySelector("[data-advertising-share-year]");
+  const performanceLoops = Array.from(document.querySelectorAll("[data-market-performance]"));
+  const reducedMotion = window.matchMedia?.("(prefers-reduced-motion: reduce)").matches;
+  if (performanceLoops.length && !reducedMotion && "IntersectionObserver" in window) {
+    const mediaObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        const video = entry.target;
+        video.muted = true;
+        if (entry.isIntersecting && !document.hidden) {
+          video.play().catch(() => {});
+        } else {
+          video.pause();
+        }
+      });
+    }, { threshold: 0.18 });
 
-    function renderAdvertising(viewers) {
-      const grossDaily = viewers * 0.6;
-      const costsDaily = viewers * 0.15;
-      const netDaily = grossDaily - costsDaily;
-      const shareDaily = netDaily / 3;
-      advertisingGross.textContent = `${formatUsd(grossDaily)} per day`;
-      advertisingCosts.textContent = `${formatUsd(costsDaily)} per day`;
-      advertisingNet.textContent = `${formatUsd(netDaily)} per day`;
-      advertisingShare.textContent = `${formatUsd(shareDaily)} per day`;
-      advertisingShareMonth.textContent = `${formatUsd(shareDaily * 30, true)} per month`;
-      advertisingShareYear.textContent = `${formatUsd(shareDaily * 365, true)} per annum`;
-    }
-
-    function renderGovernment(seats) {
-      const gross = seats * 1000;
-      const costs = seats * 77.7;
-      calculator.querySelector("[data-government-gross]").textContent = `${formatUsd(gross, true)} gross annual revenue`;
-      calculator.querySelector("[data-government-costs]").textContent = `${formatUsd(costs)} running costs`;
-      calculator.querySelector("[data-government-net]").textContent = `${formatUsd(gross - costs)} net revenue`;
-    }
-
-    function renderFreemium(users) {
-      calculator.querySelector("[data-freemium-revenue]").textContent = `${formatUsd(users * 100, true)} gross annual revenue`;
-    }
-
-    function renderAffiliate(viewers) {
-      const sales = viewers * 0.01;
-      const revenue = sales * 500 * 0.077;
-      calculator.querySelector("[data-affiliate-revenue]").textContent = `${formatUsd(revenue)} gross annual revenue`;
-      calculator.querySelector("[data-affiliate-sales]").textContent = `${integer.format(sales)} sales`;
-    }
-
-    wireButtons("[data-advertising-viewers]", renderAdvertising);
-    wireButtons("[data-government-seats]", renderGovernment);
-    wireButtons("[data-freemium-users]", renderFreemium);
-    wireButtons("[data-affiliate-viewers]", renderAffiliate);
-
-    renderAdvertising(1000000);
-    renderGovernment(1000);
-    renderFreemium(1000);
-    renderAffiliate(10000);
+    performanceLoops.forEach((video) => mediaObserver.observe(video));
+    document.addEventListener("visibilitychange", () => {
+      if (document.hidden) performanceLoops.forEach((video) => video.pause());
+    });
   }
 
+  renderForecast(1);
 })();
