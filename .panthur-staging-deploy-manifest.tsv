@@ -64,7 +64,7 @@ f6b0bb8d02242808ab02d64d5625cf196572eb07b5e7d080028ff2fb4f213633	music-channel-s
 3112f6656eb2fad46e0d228af30abe4eef66f3707e67379159ca3dbcece803b8	semantic_compiler.py
 a3c31db4316c971de950d2e51bab79311e7804190dfbd1e4327cebab59a1e0f7	adaptive-music-video.html
 b7a2e613c395b1c88f6b9124dbf48169326d32b29b2d9312215019c400feb8ee	handover 1.12.md
-9fd2e2f74df96f3563d2a07afa63a121cc512d3d947f89f251b0516fc2c3b69c	business-model.html
+27d1ca6aab9c653be05a0cbd8f17e14e940f6a751c626d420c4faad1230a7550	business-model.html
 c1139bb6a79f25149c52f91cadfe266010ecdaf9d3b30437a219d1e29cbceca5	science.css
 9cb7b0860284400b04fa3d490ca624ea700abbfb3e38b2aa49b1b3ef48b8f200	circle-audio-rooms.css
 e98001a1504264b56ff7a895704818c451940b48b7c9aac15d011e2253fc3427	i n f e r e n c e  e n g i n e  -  s y s t e m  p r o m p t  v  2 . 2 2.md
@@ -85,7 +85,7 @@ b922c0ed559272b40cd18d8a3aaea60a4b7ffd04e036e9817f5ba3bfdc8145b5	adaptive-soundt
 68d161ec01d0b2e6ee33de21bba6fd315080325c7ba31d7714e7fd6c6bf481f3	privacy-first.html
 e60698d25b1e76d441b0fada19cdda4e6da3760398760c87ea2530ccdbc519d5	homepage-checkin.js
 1a1390e4c4918e9522a6fed34b4d4dcd2f716c478b67590297685cc19efbb5d9	emdr-shader.js
-69f6c083da7ca83f91b758175167d696d32967a1c42877b72924ad8a292e7c8d	business-model.css
+39305a5c1d43e8c89ce1c0fb039ac94aad3ad02cfad33155a4ccbe0bd4da76c5	business-model.css
 35f9a5fee68b6d8f323424f20bd345b75616186fcd79dd6c0cf276a681d9d094	programme-guide.css
 903759c3fa1ac0857d0d6f7c9a9f79d6e9ba6651d1234361e81841cf9efd66b6	first-party-analytics.js
 c1c822706963fd43a4320f7212c399503fb2a4f64206a3bf75e13b34f83e784a	adaptive-inference-engine-system-prompt-v2.22-content.js
@@ -105,7 +105,7 @@ f89cebb043a21aa77133c9cd40875d6703eefcb3b8fab637931e1da119eb01f7	shop-approved-p
 6956af5338cba17886d8c47a0a9c4fa3839445dd16e828d40b36adca697477f7	adaptive-music-video-catalogue-v1.11.json
 99fe31fdc9f04ece646574c0cad6df71925d24fa8648d225d9bc378a63a444be	adaptive-environment-television.js
 21018b071ae34b685b6ee42f98207b3b1af59b53977f6ce26345fcf1b1224c35	technology.html
-d1c04d3ae5f5e498fe77f7276ca27e91a44285c6730e22c1fa07b487b2301ea5	business-model.js
+72c01b59b555f249a5bf13c4773e854197c87d70b1a0be8101acaaddfa55fa75	business-model.js
 c3884f53c56cfa903a77fb04a1be040ff1d31de65a49d42ae5a6825c8e54d917	adaptive-environment-television.html
 1fbdaf68005cca2d7853810c27624a0c5fb78fda3c000359265b264708460a78	technology-inference-engine.js
 b9673a04114d385af4c9af70370c43ce1239736c6387e6a5013c938558570d37	script.js
@@ -185,6 +185,10 @@ e7f656c44c247219a2cd98b3a17586257ef8640eaaae5a9d7ac9f04827a20803	a s s e t s/car
 15330056d352cf621bd3d366f3177133ca2d7b177562e99df13cea2670692f52	a s s e t s/care/acne-studios-pink-hoodie.webp
 410e03d2ca8be937de2e2b4f903508c1fc8d6ac853ddc763f3ed1156f59eea63	a s s e t s/care/organic-goodness-white-sage-incense.jpg
 9f2b6796501192cedd34badd2dc905900a8d2e6aa9055936f2a7da17fa6a4257	a s s e t s/business-model/yoga-lotus.svg
+f91a02a1c7ddd16c37f7b44096b31d37abeb85dd193b4b046c6fc4fc477e6f2b	a s s e t s/business-model/headspace-logo.png
+189d1cdaf20e314eac56e46c4e63ea4fd1951c5e07088b483e462e95f01e1da9	a s s e t s/business-model/orygen-logo.svg
+715bd0b4be198c5667827405ac72bbb8820dc540780c28fb0ade570ded59aa53	a s s e t s/business-model/black-rainbow-logo.png
+cbb1cbd537adc95838ab038309e3a868f56b554509b3570fdfd6cecb48dfceb8	a s s e t s/business-model/aime-logo.svg
 711c8f56b9ca231c752e204f7c9d1b60ab910e7892bc2321ac3aa55fa7e51beb	a s s e t s/Vogue logo.png
 da8f7622a6eaeefb6c6d3c0c95e7ded2e0e854cda46a3e0faa4ae410d07e2927	a s s e t s/Citizen Needs | Adaptive Inference Engine - System Prompt Infographic.PNG
 4d6029031bfb437f61792c845d39c80659e44747cff742107ea56b31b52375a0	a s s e t s/r e f e r e n c e s/Screen 1.png
