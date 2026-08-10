@@ -241,8 +241,8 @@ body[data-adaptive-sound-engine="running"] .iam-sound-console__telemetry strong:
 }
 
 .iam-sound-module--diamond {
-  --vesica-diameter: min(30.5vw, 54vh);
-  --vesica-offset: min(10.7833784139849vw, 19.0918830920368vh);
+  --vesica-diameter: 30.5vw;
+  --vesica-offset: 10.7833784139849vw;
   position: fixed;
   inset: 0;
   z-index: 2;

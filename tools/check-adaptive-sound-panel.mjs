@@ -92,8 +92,8 @@ assert.match(panelCss, /\.iam-sound-diamond__point--delta \{[\s\S]*?rgba\(26, 14
 assert.match(panelCss, /\.iam-sound-diamond__point--theta \{[\s\S]*?rgba\(245, 177, 22, 0\.44\)/);
 assert.match(panelCss, /\.iam-sound-diamond__point--alpha \{[\s\S]*?rgba\(230, 45, 137, 0\.44\)/);
 assert.match(panelCss, /\.iam-sound-diamond__point--gamma \{[\s\S]*?rgba\(56, 201, 55, 0\.44\)/);
-assert.ok(panelCss.includes("--vesica-diameter: min(30.5vw, 54vh);"));
-assert.ok(panelCss.includes("--vesica-offset: min(10.7833784139849vw, 19.0918830920368vh);"));
+assert.ok(panelCss.includes("--vesica-diameter: 30.5vw;"));
+assert.ok(panelCss.includes("--vesica-offset: 10.7833784139849vw;"));
 assert.match(panelCss, /\.iam-sound-module--diamond \{[\s\S]*?pointer-events: none/);
 assert.match(panelCss, /\.iam-sound-channel-wave \{[\s\S]*?opacity: 0\.76[\s\S]*?iam-sound-wave-breathe 5\.6s/);
 assert.match(panelCss, /@keyframes iam-sound-wave-breathe/);
