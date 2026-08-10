@@ -1,16 +1,9 @@
 const planetHost = document.querySelector(".homepage-alternate__planet");
 const planetCanvas = document.querySelector("[data-homepage-context-planet]");
-const soundTrigger = document.querySelector("[data-homepage-sound-trigger]");
-const soundDialog = document.querySelector("[data-homepage-sound-dialog]");
-const soundPanel = document.querySelector("[data-homepage-sound-panel]");
-const soundCloseControls = Array.from(document.querySelectorAll("[data-homepage-sound-close]"));
-const playTrigger = document.querySelector("[data-television-play]");
 const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
 
 let planetFrame = 0;
-let dialogReturnTarget = null;
 
-initSoundDisclosure();
 applySoundSnapshot(window.IAMAdaptiveSoundSnapshot);
 window.addEventListener("iam:adaptive-sound-profile", (event) => applySoundSnapshot(event.detail));
 
@@ -330,60 +323,6 @@ function loadImage(source) {
   });
 }
 
-function initSoundDisclosure() {
-  if (!soundTrigger || !soundDialog || !soundPanel) return;
-
-  soundTrigger.addEventListener("click", openSoundDialog);
-  soundCloseControls.forEach((control) => control.addEventListener("click", closeSoundDialog));
-  playTrigger?.addEventListener("click", closeSoundDialog, { capture: true });
-
-  document.addEventListener("keydown", (event) => {
-    if (soundDialog.hidden) return;
-    if (event.key === "Escape") {
-      event.preventDefault();
-      closeSoundDialog();
-      return;
-    }
-    if (event.key !== "Tab") return;
-    const focusable = Array.from(soundPanel.querySelectorAll("button, [href], [tabindex]:not([tabindex='-1'])"))
-      .filter((element) => !element.disabled && !element.hidden);
-    if (!focusable.length) {
-      event.preventDefault();
-      soundPanel.focus();
-      return;
-    }
-    const first = focusable[0];
-    const last = focusable[focusable.length - 1];
-    if (event.shiftKey && document.activeElement === first) {
-      event.preventDefault();
-      last.focus();
-    } else if (!event.shiftKey && document.activeElement === last) {
-      event.preventDefault();
-      first.focus();
-    }
-  });
-}
-
-function openSoundDialog() {
-  if (!soundDialog || !soundTrigger) return;
-  dialogReturnTarget = document.activeElement;
-  soundDialog.hidden = false;
-  soundDialog.setAttribute("aria-hidden", "false");
-  soundTrigger.setAttribute("aria-expanded", "true");
-  document.body.classList.add("homepage-sound-dialog-open");
-  window.requestAnimationFrame(() => soundPanel?.focus());
-}
-
-function closeSoundDialog() {
-  if (!soundDialog || soundDialog.hidden) return;
-  soundDialog.hidden = true;
-  soundDialog.setAttribute("aria-hidden", "true");
-  soundTrigger?.setAttribute("aria-expanded", "false");
-  document.body.classList.remove("homepage-sound-dialog-open");
-  if (dialogReturnTarget instanceof HTMLElement) dialogReturnTarget.focus();
-  dialogReturnTarget = null;
-}
-
 function applySoundSnapshot(snapshot) {
   if (!snapshot || typeof snapshot !== "object") return;
   const lane = String(snapshot.dominant_lane || snapshot.dominantLane || "").trim().toLowerCase();
@@ -391,13 +330,9 @@ function applySoundSnapshot(snapshot) {
   const carrier = Number(snapshot.carrier_hz ?? snapshot.carrierHz);
   if (!lane || !Number.isFinite(rate) || !Number.isFinite(carrier)) return;
 
-  setText("[data-homepage-sound-lane]", `${lane}-dominant`);
+  setText("[data-homepage-sound-lane]", lane);
   setText("[data-homepage-sound-rate]", `${formatFrequency(rate)} Hz`);
   setText("[data-homepage-sound-carrier]", `${formatFrequency(carrier)} Hz`);
-  setText("[data-homepage-dialog-carrier]", `${formatFrequency(carrier)} Hz`);
-
-  const preview = document.querySelector("[data-homepage-sound-preview]");
-  if (preview) preview.hidden = snapshot.status === "playing" || snapshot.status === "armed";
 }
 
 function setText(selector, value) {
