@@ -9,7 +9,7 @@ window.addEventListener("iam:adaptive-sound-profile", (event) => applySoundSnaps
 
 if (planetHost && planetCanvas) {
   initContextPlanet().catch(() => {
-    planetHost.dataset.planetReady = "fallback";
+    planetHost.dataset.planetReady = "error";
   });
 }
 
