@@ -94,6 +94,12 @@ assert.match(panelCss, /\.iam-sound-diamond__point--alpha \{[\s\S]*?rgba\(230, 4
 assert.match(panelCss, /\.iam-sound-diamond__point--gamma \{[\s\S]*?rgba\(56, 201, 55, 0\.44\)/);
 assert.ok(panelCss.includes("--vesica-diameter: 30.5vw;"));
 assert.ok(panelCss.includes("--vesica-offset: 10.7833784139849vw;"));
+assert.ok(panelCss.includes("--quantum-group-width: clamp(102px, 6.7vw, 142px);"));
+assert.ok(panelCss.includes("--quantum-group-half: clamp(51px, 3.35vw, 71px);"));
+assert.match(panelCss, /\.iam-sound-quantum-frequency \{[\s\S]*?width: calc\(var\(--quantum-group-width\) \+ 44px\);[\s\S]*?text-align: center/);
+assert.match(panelCss, /\.iam-sound-console__footer p \{[\s\S]*?left: calc\(7\.1vw \+ var\(--quantum-group-offset\) \+ var\(--quantum-group-half\)\);[\s\S]*?text-align: center/);
+assert.ok(panelCss.includes("--microtext-scrim: rgba(0, 0, 0, 0.1);"));
+assert.match(panelCss, /\.iam-sound-quantum-frequency::before,[\s\S]*?background: var\(--microtext-scrim\);[\s\S]*?backdrop-filter: blur\(2px\)/);
 assert.match(panelCss, /\.iam-sound-module--diamond \{[\s\S]*?pointer-events: none/);
 assert.match(panelCss, /\.iam-sound-channel-wave \{[\s\S]*?opacity: 0\.76[\s\S]*?iam-sound-wave-breathe 5\.6s/);
 assert.match(panelCss, /@keyframes iam-sound-wave-breathe/);
