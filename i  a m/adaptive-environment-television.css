@@ -4845,7 +4845,8 @@ body.research-details-open .adaptive-television-research-tooltip-host.is-researc
 .adaptive-television-research-tooltip__primary,
 .adaptive-television-research-tooltip__more,
 .adaptive-television-research-tooltip__prompt,
-.adaptive-television-research-tooltip__secondary {
+.adaptive-television-research-tooltip__secondary,
+.adaptive-television-research-tooltip__full {
   display: block;
 }
 
@@ -4907,6 +4908,23 @@ button.adaptive-television-research-tooltip__more {
   margin-top: 7px;
   opacity: 1;
   transform: translateY(0);
+}
+
+.adaptive-television-research-tooltip__full {
+  margin-top: 2px;
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 10.5px;
+  font-weight: 600;
+  letter-spacing: 0.025em;
+  text-decoration: none;
+  text-underline-offset: 3px;
+}
+
+.adaptive-television-research-tooltip__full:hover,
+.adaptive-television-research-tooltip__full:focus-visible {
+  color: #fff;
+  outline: none;
+  text-decoration: underline;
 }
 
 .adaptive-television-research-tooltip-host--emdr .adaptive-television-research-tooltip--emdr {

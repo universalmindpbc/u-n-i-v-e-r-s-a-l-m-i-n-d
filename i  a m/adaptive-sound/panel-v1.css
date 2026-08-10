@@ -60,14 +60,104 @@
   pointer-events: none;
 }
 
-.iam-sound-console__header > div,
-.iam-sound-console__master {
+.iam-sound-console__header > div:first-of-type {
   display: none;
+}
+
+.iam-sound-console__nav {
+  position: absolute;
+  top: clamp(10px, 1.35vh, 20px);
+  left: clamp(16px, 1.4vw, 28px);
+  display: grid;
+  place-items: center;
+  width: clamp(44px, 3.1vw, 64px);
+  aspect-ratio: 1;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  pointer-events: auto;
+  cursor: pointer;
+}
+
+.iam-sound-console__nav img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  filter: drop-shadow(0 2px 12px rgba(0, 0, 0, 0.56));
+  animation: iam-sound-flower-spin 3s linear infinite;
+}
+
+.iam-sound-console__nav:focus-visible {
+  border-radius: 50%;
+  outline: 1px solid rgba(255, 255, 255, 0.7);
+  outline-offset: 5px;
+}
+
+@keyframes iam-sound-flower-spin {
+  to { transform: rotate(360deg); }
+}
+
+.iam-sound-console__master {
+  position: absolute;
+  top: clamp(11px, 1.45vh, 21px);
+  right: clamp(70px, 5vw, 104px);
+  display: flex;
+  pointer-events: auto;
+}
+
+.iam-sound-console__master > span {
+  display: none;
+}
+
+.iam-sound-console__master button {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  min-width: 58px;
+  min-height: 34px;
+  padding: 7px 12px;
+  border: 1px solid rgba(255, 255, 255, 0.38);
+  border-radius: 999px;
+  background: rgba(0, 0, 0, 0.12);
+  color: rgba(255, 255, 255, 0.94);
+  font: 650 11px/1 "Helvetica Neue", Helvetica, Arial, sans-serif;
+  letter-spacing: 0.12em;
+  cursor: pointer;
+  text-shadow: 0 1px 8px rgba(0, 0, 0, 0.84);
+  transition: opacity 220ms ease, background 220ms ease, border-color 220ms ease;
+}
+
+.iam-sound-console__master button i {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.9);
+}
+
+.iam-sound-console__master button b {
+  font: inherit;
+}
+
+.iam-sound-console__master button[aria-pressed="false"] {
+  opacity: 0.38;
+}
+
+.iam-sound-console__master button[aria-pressed="false"] i {
+  box-shadow: none;
+}
+
+.iam-sound-console__master button:hover,
+.iam-sound-console__master button:focus-visible {
+  border-color: rgba(255, 255, 255, 0.76);
+  background: rgba(255, 255, 255, 0.09);
+  outline: none;
 }
 
 .iam-sound-console__close {
   position: absolute;
-  top: clamp(20px, 2.8vh, 40px);
+  top: clamp(7px, 1vh, 14px);
   right: clamp(20px, 2.6vw, 44px);
   display: grid;
   place-items: center;
@@ -329,6 +419,136 @@ body[data-adaptive-sound-engine="running"] .iam-sound-console__telemetry strong:
   display: none;
 }
 
+.iam-sound-diamond__interaction {
+  position: absolute;
+  z-index: 4;
+  top: 48%;
+  left: 50%;
+  width: calc(var(--vesica-diameter) + (var(--vesica-offset) * 2));
+  aspect-ratio: 1;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+}
+
+.iam-sound-diamond__selector {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  pointer-events: auto;
+  cursor: pointer;
+}
+
+.iam-sound-diamond__selector--delta {
+  clip-path: polygon(0 0, 100% 0, 50% 50%);
+}
+
+.iam-sound-diamond__selector--theta {
+  clip-path: polygon(100% 0, 100% 100%, 50% 50%);
+}
+
+.iam-sound-diamond__selector--alpha {
+  clip-path: polygon(100% 100%, 0 100%, 50% 50%);
+}
+
+.iam-sound-diamond__selector--gamma {
+  clip-path: polygon(0 100%, 0 0, 50% 50%);
+}
+
+.iam-sound-diamond__selector:focus-visible {
+  outline: none;
+}
+
+.iam-sound-panel[data-profile="sleep_delta_80_v1"] .iam-sound-diamond__point--delta,
+.iam-sound-diamond:has(.iam-sound-diamond__selector--delta:hover) .iam-sound-diamond__point--delta,
+.iam-sound-diamond:has(.iam-sound-diamond__selector--delta:focus-visible) .iam-sound-diamond__point--delta {
+  box-shadow: inset 0 0 0 2px rgba(255, 255, 255, 0.48), 0 0 34px rgba(26, 146, 229, 0.3);
+}
+
+.iam-sound-panel[data-profile="mindfulness_theta_80_v1"] .iam-sound-diamond__point--theta,
+.iam-sound-diamond:has(.iam-sound-diamond__selector--theta:hover) .iam-sound-diamond__point--theta,
+.iam-sound-diamond:has(.iam-sound-diamond__selector--theta:focus-visible) .iam-sound-diamond__point--theta {
+  box-shadow: inset 0 0 0 2px rgba(255, 255, 255, 0.48), 0 0 34px rgba(245, 177, 22, 0.28);
+}
+
+.iam-sound-panel[data-profile="calm_alpha_80_v1"] .iam-sound-diamond__point--alpha,
+.iam-sound-diamond:has(.iam-sound-diamond__selector--alpha:hover) .iam-sound-diamond__point--alpha,
+.iam-sound-diamond:has(.iam-sound-diamond__selector--alpha:focus-visible) .iam-sound-diamond__point--alpha {
+  box-shadow: inset 0 0 0 2px rgba(255, 255, 255, 0.48), 0 0 34px rgba(230, 45, 137, 0.28);
+}
+
+.iam-sound-panel[data-profile="inspiration_gamma_80_v1"] .iam-sound-diamond__point--gamma,
+.iam-sound-diamond:has(.iam-sound-diamond__selector--gamma:hover) .iam-sound-diamond__point--gamma,
+.iam-sound-diamond:has(.iam-sound-diamond__selector--gamma:focus-visible) .iam-sound-diamond__point--gamma {
+  box-shadow: inset 0 0 0 2px rgba(255, 255, 255, 0.48), 0 0 34px rgba(56, 201, 55, 0.28);
+}
+
+.iam-sound-diamond__orbit {
+  --planet-orbit-radius: clamp(158px, 10.7vw, 226px);
+  position: absolute;
+  z-index: 4;
+  top: 48%;
+  left: 50%;
+  width: calc(var(--planet-orbit-radius) * 2);
+  aspect-ratio: 1;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  animation: iam-sound-planet-orbit 34s linear infinite;
+}
+
+.iam-sound-diamond__planet {
+  --planet-angle: 0deg;
+  --planet-counter-angle: 0deg;
+  --planet-size: 24px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  display: block;
+  width: var(--planet-size);
+  height: var(--planet-size);
+  border: 1px solid rgba(157, 213, 255, 0.5);
+  border-radius: 50%;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 31% 24%, rgba(255, 255, 255, 0.55), transparent 16%),
+    radial-gradient(circle at 36% 38%, #267fc4 0 22%, #0d4f8d 45%, #062b58 72%, #020e29 100%);
+  box-shadow: 0 5px 14px rgba(0, 8, 30, 0.42), 0 0 12px rgba(92, 176, 239, 0.2);
+  opacity: 0.86;
+  transform:
+    translate(-50%, -50%)
+    rotate(var(--planet-angle))
+    translateX(var(--planet-orbit-radius))
+    rotate(var(--planet-counter-angle));
+}
+
+.iam-sound-diamond__planet i {
+  position: absolute;
+  inset: -10% -45%;
+  display: block;
+  border-radius: 50%;
+  background:
+    radial-gradient(ellipse at 38% 46%, rgba(97, 188, 239, 0.62) 0 8%, transparent 9%),
+    radial-gradient(ellipse at 58% 63%, rgba(12, 47, 93, 0.8) 0 13%, transparent 14%),
+    linear-gradient(90deg, transparent, rgba(92, 175, 226, 0.24), transparent);
+  animation: iam-sound-planet-turn 11s linear infinite;
+}
+
+.iam-sound-diamond__planet--one { --planet-angle: 4deg; --planet-counter-angle: -4deg; --planet-size: 24px; }
+.iam-sound-diamond__planet--two { --planet-angle: 94deg; --planet-counter-angle: -94deg; --planet-size: 18px; opacity: 0.74; }
+.iam-sound-diamond__planet--three { --planet-angle: 186deg; --planet-counter-angle: -186deg; --planet-size: 27px; }
+.iam-sound-diamond__planet--four { --planet-angle: 276deg; --planet-counter-angle: -276deg; --planet-size: 20px; opacity: 0.78; }
+
+@keyframes iam-sound-planet-orbit {
+  to { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+@keyframes iam-sound-planet-turn {
+  to { transform: translateX(-30%); }
+}
+
 .iam-sound-diamond__core {
   position: absolute;
   z-index: 5;
@@ -346,45 +566,48 @@ body[data-adaptive-sound-engine="running"] .iam-sound-console__telemetry strong:
   border: 0;
   background: transparent;
   color: #fff;
-  cursor: default;
-  pointer-events: none;
+  cursor: pointer;
+  pointer-events: auto;
   text-align: center;
   text-shadow: 0 2px 14px rgba(0, 0, 0, 0.9);
   transform: translate(-50%, -50%);
 }
 
-.iam-sound-diamond__core:disabled {
-  cursor: default;
-  pointer-events: none;
-}
-
 .iam-sound-diamond__core > span {
-  order: 1;
   font-size: clamp(16px, 1.1vw, 22px);
   font-weight: 650;
   letter-spacing: 0.09em;
 }
 
-.iam-sound-diamond__core > small {
-  order: 2;
+.iam-sound-diamond__core select {
+  width: 116px;
+  min-height: 38px;
+  padding: 6px 28px 6px 14px;
+  border: 1px solid rgba(255, 255, 255, 0.34);
+  border-radius: 999px;
+  -webkit-appearance: none;
+  appearance: none;
+  background:
+    linear-gradient(45deg, transparent 50%, rgba(255, 255, 255, 0.82) 50%) calc(100% - 18px) 53% / 5px 5px no-repeat,
+    linear-gradient(135deg, rgba(255, 255, 255, 0.82) 50%, transparent 50%) calc(100% - 13px) 53% / 5px 5px no-repeat,
+    rgba(0, 0, 0, 0.12);
+  color: #fff;
   font-size: clamp(16px, 1.25vw, 23px);
   font-weight: 650;
   letter-spacing: 0.02em;
+  line-height: 1;
+  text-align: center;
+  text-align-last: center;
+  cursor: pointer;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.78);
+  transition: border-color 180ms ease, background-color 180ms ease;
 }
 
-.iam-sound-diamond__core > strong {
-  display: none;
-}
-
-.iam-sound-diamond__core:disabled > strong {
-  border-color: transparent;
-  background: transparent;
-}
-
-.iam-sound-diamond__core:hover:not(:disabled) > strong,
-.iam-sound-diamond__core:focus-visible:not(:disabled) > strong {
+.iam-sound-diamond__core:hover select,
+.iam-sound-diamond__core select:focus-visible {
   border-color: rgba(255, 255, 255, 0.8);
-  background: rgba(255, 255, 255, 0.12);
+  background-color: rgba(255, 255, 255, 0.09);
+  outline: none;
 }
 
 .iam-sound-module--control {
@@ -421,6 +644,29 @@ body[data-adaptive-sound-engine="running"] .iam-sound-console__telemetry strong:
   z-index: 1;
   display: block;
   min-height: 0;
+}
+
+.iam-sound-channel__hit {
+  position: absolute;
+  z-index: 5;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+}
+
+.iam-sound-channel__hit:focus-visible {
+  outline: 1px solid rgba(255, 255, 255, 0.72);
+  outline-offset: 4px;
+}
+
+.iam-sound-channel:has(.iam-sound-channel__hit:hover) > div,
+.iam-sound-channel:has(.iam-sound-channel__hit:focus-visible) > div,
+.iam-sound-channel:has(.iam-sound-channel__hit[aria-pressed="true"]) > div {
+  box-shadow: 0 0 22px rgba(var(--channel-rgb), 0.48), inset 0 0 0 1px rgba(255, 255, 255, 0.44);
 }
 
 .iam-sound-channel--delta { --channel-rgb: 26, 146, 229; }
@@ -509,6 +755,21 @@ body[data-adaptive-sound-engine="running"] .iam-sound-console__telemetry strong:
   stroke-linecap: round;
   stroke-linejoin: round;
   vector-effect: non-scaling-stroke;
+}
+
+.iam-sound-channel-wave__glow {
+  stroke-width: 13 !important;
+  opacity: calc(0.1 + (var(--wave-energy, 0.3) * 0.14));
+  filter: blur(2px);
+}
+
+.iam-sound-channel-wave__signal {
+  stroke-width: 7 !important;
+  opacity: calc(0.72 + (var(--wave-energy, 0.3) * 0.22));
+}
+
+.iam-sound-panel[data-sound-active="false"] .iam-sound-channel-wave {
+  opacity: 0.34;
 }
 
 @keyframes iam-sound-wave-breathe {
@@ -692,8 +953,23 @@ body.iam-sound-direct-page .global-nav-trigger {
     font-size: 9px;
   }
 
-  .iam-sound-diamond__core > small {
+  .iam-sound-diamond__core select {
+    width: 94px;
+    min-height: 34px;
     font-size: 15px;
+  }
+
+  .iam-sound-diamond__orbit {
+    --planet-orbit-radius: min(24vw, 98px);
+  }
+
+  .iam-sound-console__nav {
+    width: 38px;
+  }
+
+  .iam-sound-console__master {
+    top: 9px;
+    right: 64px;
   }
 
   .iam-sound-module--control {
@@ -773,8 +1049,14 @@ body.iam-sound-direct-page .global-nav-trigger {
     transition: none !important;
   }
 
-  .iam-sound-channel-wave {
+  .iam-sound-channel-wave,
+  .iam-sound-console__nav img,
+  .iam-sound-diamond__orbit,
+  .iam-sound-diamond__planet i {
     animation: none !important;
+  }
+
+  .iam-sound-channel-wave {
     opacity: 0.76;
   }
 }

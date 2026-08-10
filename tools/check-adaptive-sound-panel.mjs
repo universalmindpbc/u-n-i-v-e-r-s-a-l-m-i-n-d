@@ -23,23 +23,29 @@ const [page, televisionController, panelController, panelCss, worklet, dsp, prof
 assert.match(page, /id="iam-sound-panel"[^>]*role="dialog"[^>]*aria-modal="true"[^>]*aria-hidden="true"[^>]*inert/);
 assert.match(page, /data-emdr-sound-research[^>]*aria-haspopup="dialog"[^>]*aria-controls="iam-sound-panel"/);
 assert.match(page, /data-adaptive-sound-master[^>]*aria-pressed="true"/);
-assert.equal((page.match(/data-adaptive-profile=/g) || []).length, 4);
+assert.equal((page.match(/data-adaptive-profile=/g) || []).length, 8);
 assert.equal((page.match(/data-adaptive-lane-meter=/g) || []).length, 4);
 assert.equal((page.match(/data-adaptive-channel-meter=/g) || []).length, 4);
 assert.equal((page.match(/data-adaptive-channel-weight=/g) || []).length, 4);
 assert.equal((page.match(/data-quantum-tree-panel-meter/g) || []).length, 1);
 assert.equal((page.match(/data-quantum-channel-meter=/g) || []).length, 3);
 assert.equal((page.match(/data-adaptive-carrier=/g) || []).length, 5);
+assert.equal((page.match(/<option value="(?:111|222|444|555|999)"/g) || []).length, 5);
 assert.equal((page.match(/data-adaptive-lane-toggle=/g) || []).length, 4);
 assert.ok(page.includes("ENTRAINMENT FREQUENCIES"));
 assert.ok(page.includes(">Quantum Tree</h3>"));
 assert.ok(page.includes("7.38hz x 111hz <span>|</span> 528hz"));
 assert.ok(page.includes(">Carrier Frequency</span>"));
-assert.ok(page.includes("data-adaptive-carrier-center>444hz</small>"));
+assert.ok(page.includes("data-adaptive-carrier-select"));
 assert.ok(page.includes(">Isochronic Frequency Matrix</h3>"));
 assert.ok(page.includes("<strong>Oxytocin</strong>"));
 assert.ok(page.includes("<p>Research Target For Clinical Research</p>"));
-assert.equal((page.match(/data-adaptive-profile=[^>]+disabled/g) || []).length, 4);
+assert.equal((page.match(/class="iam-sound-diamond__point[^>]+disabled/g) || []).length, 4);
+assert.equal((page.match(/class="iam-sound-diamond__selector/g) || []).length, 4);
+assert.equal((page.match(/class="iam-sound-channel__hit"/g) || []).length, 4);
+assert.equal((page.match(/class="iam-sound-diamond__planet/g) || []).length, 4);
+assert.equal((page.match(/data-adaptive-wave-path/g) || []).length, 2);
+assert.ok(page.includes("data-adaptive-sound-nav"));
 assert.ok(page.includes("3.33 Hz"));
 assert.ok(page.includes("7.38 Hz"));
 assert.ok(page.includes("10.11 Hz"));
@@ -53,6 +59,8 @@ assert.match(page, /data-quantum-channel-meter="constant"[\s\S]*?<strong>86%<\/s
 assert.ok(page.includes("14,444 Hz LOW-PASS"));
 assert.ok(page.includes("MONO · IDENTICAL DUAL MONO"));
 assert.ok(page.includes("Delta brown · Theta white · Alpha pink · Gamma equal three-way split"));
+assert.ok(page.includes("full frequencies, genes + medical research →"));
+assert.ok(page.includes("111 Hz / SLC6A4; 222 Hz / CD38; 444 Hz / DOCK2; 555 Hz / OXTR; 999 Hz / DRD2"));
 assert.equal(page.includes("Sound Research Layer - Investigating whether an optional sound layer modulates short term transcriptional pathways"), false);
 assert.equal(page.includes("gene activated"), false);
 assert.equal(page.includes("brain entrained"), false);
@@ -67,17 +75,20 @@ assert.ok(panelController.includes("new AudioWorkletNode(context, PROCESSOR_NAME
 assert.ok(panelController.includes("outputChannelCount: [2]"));
 assert.ok(panelController.includes("window.IAMQuantumTree?.setEnabled?.(state.masterEnabled)"));
 assert.ok(panelController.includes('localStorage.getItem("iamSoundResearchLayer") !== "off"'));
-assert.ok(panelController.includes('localStorage.getItem("iamAdaptiveSoundLayer") === "on"'));
-assert.ok(panelController.includes("state.synthEnabled = false"));
+assert.ok(panelController.includes("synthEnabled: true"));
 assert.ok(panelController.includes('const directSoundPage = query.get("sound") === "1"'));
 assert.ok(panelController.includes('document.body.dataset.adaptiveSoundDirect = "true"'));
-assert.ok(panelController.includes('localStorage.setItem("iamAdaptiveSoundLayer", "off")'));
-assert.equal(panelController.includes('synthToggle?.addEventListener("click"'), false);
-assert.equal(panelController.includes('button.addEventListener("click", async () => {\n    const profileId = button.dataset.adaptiveProfile'), false);
-assert.ok(panelController.includes("window.IAMQuantumTree?.setAuditionMode?.(state.synthEnabled)"));
+assert.equal(panelController.includes("iamAdaptiveSoundLayer"), false);
+assert.ok(panelController.includes('await selectProfile(button.dataset.adaptiveProfile || "", "listener_selection")'));
+assert.ok(panelController.includes('carrierSelect?.addEventListener("change"'));
+assert.ok(panelController.includes('localStorage.setItem("iamAdaptiveSoundProfile", profileId)'));
+assert.ok(panelController.includes('return { profileId: DEFAULT_PROFILE_ID, authority: "neutral_alpha_default" }'));
+assert.ok(panelController.includes("window.IAMQuantumTree?.setAuditionMode?.(state.masterEnabled)"));
 assert.ok(panelController.includes("level: 0.77"));
 assert.ok(panelController.includes("level: 0.86"));
 assert.ok(panelController.includes('channelMeters[laneId]?.style.setProperty("--channel-meter", String(clamp(mixAllocation, 0, 1)))'));
+assert.ok(panelController.includes('waveform_source: "audio_thread_lane_diagnostics"'));
+assert.ok(panelController.includes("function updateWaveform(diagnostics)"));
 assert.ok(panelController.includes("phase1_explicit_lab_override") === false);
 assert.equal(/localVideo|programmeAudio|continuationAudio|soundResearchAudio/.test(panelController), false);
 
@@ -103,9 +114,18 @@ assert.match(panelCss, /\.iam-sound-quantum-frequency::before,[\s\S]*?background
 assert.match(panelCss, /\.iam-sound-module--diamond \{[\s\S]*?pointer-events: none/);
 assert.match(panelCss, /\.iam-sound-channel-wave \{[\s\S]*?opacity: 0\.76[\s\S]*?iam-sound-wave-breathe 5\.6s/);
 assert.match(panelCss, /@keyframes iam-sound-wave-breathe/);
-assert.match(panelCss, /\.iam-sound-diamond__core:disabled \{[\s\S]*?pointer-events: none/);
+assert.match(panelCss, /\.iam-sound-diamond__interaction \{[\s\S]*?width: calc\(var\(--vesica-diameter\) \+ \(var\(--vesica-offset\) \* 2\)\)/);
+assert.match(panelCss, /\.iam-sound-diamond__selector--delta \{[\s\S]*?clip-path:/);
+assert.match(panelCss, /\.iam-sound-diamond__core \{[\s\S]*?pointer-events: auto/);
+assert.match(panelCss, /\.iam-sound-diamond__core select \{[\s\S]*?appearance: none/);
+assert.match(panelCss, /\.iam-sound-diamond__orbit \{[\s\S]*?iam-sound-planet-orbit 34s/);
+assert.match(panelCss, /\.iam-sound-diamond__planet \{[\s\S]*?radial-gradient/);
+assert.match(panelCss, /\.iam-sound-channel__hit \{[\s\S]*?cursor: pointer/);
+assert.match(panelCss, /\.iam-sound-channel-wave__glow \{[\s\S]*?stroke-width: 13/);
 assert.match(panelCss, /\.iam-sound-carrier,[\s\S]*?display: none !important/);
-assert.match(panelCss, /\.iam-sound-console__master \{[\s\S]*?display: none/);
+assert.match(panelCss, /\.iam-sound-console__master \{[\s\S]*?display: flex/);
+assert.match(panelCss, /\.iam-sound-console__nav img \{[\s\S]*?iam-sound-flower-spin 3s/);
+assert.match(panelCss, /\.iam-sound-console__close \{[\s\S]*?top: clamp\(7px, 1vh, 14px\)/);
 assert.match(panelCss, /@media \(max-width: 900px\)/);
 assert.match(panelCss, /@media \(prefers-reduced-motion: reduce\)/);
 assert.match(panelCss, /:focus-visible/);
@@ -146,9 +166,9 @@ const sourceHash = createHash("sha256")
 
 console.log(JSON.stringify({
   passed: true,
-  panel: "locked_exact_vesica_feedback_dashboard",
-  portal_entry: "Sound button or ?sound=1 opens the read-only full-screen feedback dashboard without audible autoplay",
-  interaction_mode: "dashboard_open_close_only_pending_visual_approval",
+  panel: "locked_exact_vesica_interactive_sound_dashboard",
+  portal_entry: "Sound button or ?sound=1 opens the full-screen dashboard; sound is armed by default subject to browser autoplay rules",
+  interaction_mode: "master_power_primary_frequency_and_carrier_selection",
   quantum_tree_preserved: true,
   programme_audio_routed_through_synth: false,
   adaptive_default_requires_listener_start: true,

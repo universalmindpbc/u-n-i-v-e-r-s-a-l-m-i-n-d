@@ -49,8 +49,8 @@
     <script src="music-television-frame-context.js?v=music-tv-frame-1fc6ca029741"></script>
     <link rel="stylesheet" href="styles.css?v=global-nav-single-shell-2-technology-submenu-133pct-normal-1">
     <link rel="preload" as="image" href="a s s e t s/Universal Mind [ I o H ] Logo 512.png" fetchpriority="high">
-    <link rel="stylesheet" href="adaptive-environment-television.css?v=music-tv-css-1e14906fb30e">
-    <link rel="stylesheet" href="adaptive-sound/panel-v1.css?v=e8206d6d628f">
+    <link rel="stylesheet" href="adaptive-environment-television.css?v=music-tv-css-08d1f0a6214e">
+    <link rel="stylesheet" href="adaptive-sound/panel-v1.css?v=aafd31509932">
     <link rel="stylesheet" href="programme-guide.css?v=programme-guide-css-35f9a5fee68b">
     <link rel="stylesheet" href="circle-audio-rooms.css?v=circle-rooms-css-9cb7b0860284">
     <link rel="stylesheet" href="care-worlds.css?v=1cbbd1a05843">
@@ -240,6 +240,9 @@
             <button class="iam-sound-panel__backdrop" type="button" data-adaptive-sound-close tabindex="-1" aria-label="Close Sound Research Layer"></button>
             <div class="iam-sound-console" data-adaptive-sound-console tabindex="-1">
               <header class="iam-sound-console__header">
+                <button class="iam-sound-console__nav" type="button" data-adaptive-sound-nav aria-label="Open global navigation">
+                  <img src="a s s e t s/Universal Mind [ I o H ] Logo 512.png" alt="">
+                </button>
                 <div>
                   <p>UNIVERSAL MIND <span>//</span> SIGNAL RESEARCH</p>
                   <h2 id="iam-sound-panel-title">SOUND</h2>
@@ -292,21 +295,40 @@
                   <div class="iam-sound-diamond" data-adaptive-sound-diamond>
                     <span class="iam-sound-diamond__line iam-sound-diamond__line--a" aria-hidden="true"></span>
                     <span class="iam-sound-diamond__line iam-sound-diamond__line--b" aria-hidden="true"></span>
-                    <button class="iam-sound-diamond__point iam-sound-diamond__point--delta" type="button" data-adaptive-profile="sleep_delta_80_v1" aria-pressed="false" aria-disabled="true" disabled>
+                    <button class="iam-sound-diamond__point iam-sound-diamond__point--delta" type="button" aria-hidden="true" tabindex="-1" disabled>
                       <i data-adaptive-lane-meter="delta"></i><small>DELTA</small><strong>SLEEP</strong><span>3.33 Hz</span><b data-adaptive-lane-weight="delta">—</b>
                     </button>
-                    <button class="iam-sound-diamond__point iam-sound-diamond__point--theta" type="button" data-adaptive-profile="mindfulness_theta_80_v1" aria-pressed="false" aria-disabled="true" disabled>
+                    <button class="iam-sound-diamond__point iam-sound-diamond__point--theta" type="button" aria-hidden="true" tabindex="-1" disabled>
                       <i data-adaptive-lane-meter="theta"></i><small>THETA</small><strong>MINDFULNESS</strong><span>7.38 Hz</span><b data-adaptive-lane-weight="theta">—</b>
                     </button>
-                    <button class="iam-sound-diamond__point iam-sound-diamond__point--alpha" type="button" data-adaptive-profile="calm_alpha_80_v1" aria-pressed="false" aria-disabled="true" disabled>
+                    <button class="iam-sound-diamond__point iam-sound-diamond__point--alpha" type="button" aria-hidden="true" tabindex="-1" disabled>
                       <i data-adaptive-lane-meter="alpha"></i><small>ALPHA</small><strong>CALM</strong><span>10.11 Hz</span><b data-adaptive-lane-weight="alpha">—</b>
                     </button>
-                    <button class="iam-sound-diamond__point iam-sound-diamond__point--gamma" type="button" data-adaptive-profile="inspiration_gamma_80_v1" aria-pressed="false" aria-disabled="true" disabled>
+                    <button class="iam-sound-diamond__point iam-sound-diamond__point--gamma" type="button" aria-hidden="true" tabindex="-1" disabled>
                       <i data-adaptive-lane-meter="gamma"></i><small>GAMMA</small><strong>INSPIRATION</strong><span>111 Hz</span><b data-adaptive-lane-weight="gamma">—</b>
                     </button>
-                    <button class="iam-sound-diamond__core" type="button" data-adaptive-sound-toggle aria-pressed="false" disabled>
-                      <span>Carrier Frequency</span><strong data-adaptive-sound-toggle-label></strong><small data-adaptive-carrier-center>444hz</small>
-                    </button>
+                    <div class="iam-sound-diamond__interaction" role="group" aria-label="Choose a primary isochronic frequency">
+                      <button class="iam-sound-diamond__selector iam-sound-diamond__selector--delta" type="button" data-adaptive-profile="sleep_delta_80_v1" aria-pressed="false" aria-label="Make Delta 3.33 hertz the primary frequency"></button>
+                      <button class="iam-sound-diamond__selector iam-sound-diamond__selector--theta" type="button" data-adaptive-profile="mindfulness_theta_80_v1" aria-pressed="false" aria-label="Make Theta 7.38 hertz the primary frequency"></button>
+                      <button class="iam-sound-diamond__selector iam-sound-diamond__selector--alpha" type="button" data-adaptive-profile="calm_alpha_80_v1" aria-pressed="true" aria-label="Make Alpha 10.11 hertz the primary frequency"></button>
+                      <button class="iam-sound-diamond__selector iam-sound-diamond__selector--gamma" type="button" data-adaptive-profile="inspiration_gamma_80_v1" aria-pressed="false" aria-label="Make Gamma 111 hertz the primary frequency"></button>
+                    </div>
+                    <div class="iam-sound-diamond__orbit" aria-hidden="true">
+                      <span class="iam-sound-diamond__planet iam-sound-diamond__planet--one"><i></i></span>
+                      <span class="iam-sound-diamond__planet iam-sound-diamond__planet--two"><i></i></span>
+                      <span class="iam-sound-diamond__planet iam-sound-diamond__planet--three"><i></i></span>
+                      <span class="iam-sound-diamond__planet iam-sound-diamond__planet--four"><i></i></span>
+                    </div>
+                    <label class="iam-sound-diamond__core">
+                      <span>Carrier Frequency</span>
+                      <select data-adaptive-carrier-select aria-label="Carrier frequency">
+                        <option value="111">111hz</option>
+                        <option value="222">222hz</option>
+                        <option value="444" selected>444hz</option>
+                        <option value="555">555hz</option>
+                        <option value="999">999hz</option>
+                      </select>
+                    </label>
                   </div>
                   <div class="iam-sound-lane-switches" role="group" aria-label="Adaptive frequency lanes">
                     <button type="button" data-adaptive-lane-toggle="delta" aria-pressed="true" disabled>Δ <span>DELTA</span></button>
@@ -321,19 +343,24 @@
                     <h3 id="iam-sound-channel-matrix-title">Isochronic Frequency Matrix</h3>
                     <div class="iam-sound-channels">
                       <div class="iam-sound-channel iam-sound-channel--delta">
+                        <button class="iam-sound-channel__hit" type="button" data-adaptive-profile="sleep_delta_80_v1" aria-pressed="false" aria-label="Make Delta 3.33 hertz the primary frequency"></button>
                         <span>3.33hz</span><div><i data-adaptive-channel-meter="delta"></i></div><strong>Delta</strong><b data-adaptive-channel-weight="delta">—</b><small>sleep</small>
                       </div>
                       <div class="iam-sound-channel iam-sound-channel--theta">
+                        <button class="iam-sound-channel__hit" type="button" data-adaptive-profile="mindfulness_theta_80_v1" aria-pressed="false" aria-label="Make Theta 7.38 hertz the primary frequency"></button>
                         <span>7.38hz</span><div><i data-adaptive-channel-meter="theta"></i></div><strong>Theta</strong><b data-adaptive-channel-weight="theta">—</b><small>mindfulness</small>
                       </div>
                       <div class="iam-sound-channel iam-sound-channel--alpha">
+                        <button class="iam-sound-channel__hit" type="button" data-adaptive-profile="calm_alpha_80_v1" aria-pressed="true" aria-label="Make Alpha 10.11 hertz the primary frequency"></button>
                         <span>10.11hz</span><div><i data-adaptive-channel-meter="alpha"></i></div><strong>Alpha</strong><b data-adaptive-channel-weight="alpha">—</b><small>calm</small>
                       </div>
                       <div class="iam-sound-channel iam-sound-channel--gamma">
+                        <button class="iam-sound-channel__hit" type="button" data-adaptive-profile="inspiration_gamma_80_v1" aria-pressed="false" aria-label="Make Gamma 111 hertz the primary frequency"></button>
                         <span>111hz</span><div><i data-adaptive-channel-meter="gamma"></i></div><strong>Gamma</strong><b data-adaptive-channel-weight="gamma">—</b><small>inspiration</small>
                       </div>
                       <svg class="iam-sound-channel-wave" viewBox="0 0 120 80" preserveAspectRatio="none" aria-hidden="true">
-                        <path d="M2 44H24l7-10 8 22 9-45 10 60 10-38 9 29 9-18 8 11 8-11h16"></path>
+                        <path class="iam-sound-channel-wave__glow" data-adaptive-wave-path d="M2 44H24l7-10 8 22 9-45 10 60 10-38 9 29 9-18 8 11 8-11h16"></path>
+                        <path class="iam-sound-channel-wave__signal" data-adaptive-wave-path d="M2 44H24l7-10 8 22 9-45 10 60 10-38 9 29 9-18 8 11 8-11h16"></path>
                       </svg>
                     </div>
                   </section>
@@ -1062,7 +1089,7 @@
                 <span>intensity</span>
                 <input type="range" min="0" max="100" value="80" step="1" data-emdr-intensity aria-label="Dial in your own EMDR intensity">
               </label>
-              <span class="adaptive-television-research-tooltip-host adaptive-television-research-tooltip-host--sound" data-research-frequency="Isochronic tone: 7.38088 Hz, carried on a 111.011 Hz sine wave, plus a separate constant 528.088 Hz sine wave, together as one. Adaptive diamond: 3.33 / 7.38 / 10.11 / exactly 111 Hz." data-research-science-href="science.html#research-sound">
+              <span class="adaptive-television-research-tooltip-host adaptive-television-research-tooltip-host--sound" data-research-frequency="Isochronic tone: 7.38088 Hz, carried on a 111.011 Hz sine wave, plus a separate constant 528.088 Hz sine wave, together as one. Adaptive diamond: 3.33 / 7.38 / 10.11 / exactly 111 Hz. Carrier research conditions: 111 Hz / SLC6A4; 222 Hz / CD38; 444 Hz / DOCK2; 555 Hz / OXTR; 999 Hz / DRD2. These carrier-to-gene relationships are study hypotheses only within planned controlled transcriptomic research." data-research-science-href="science.html#research-sound">
                 <button class="adaptive-television-emdr-sound-research" type="button" data-emdr-sound-research aria-pressed="true" aria-haspopup="dialog" aria-controls="iam-sound-panel" aria-expanded="false" aria-label="Open Sound Research Layer controls">
                   <span>Sound</span>
                   <svg class="adaptive-television-emdr-sound-research-icon" viewBox="0 0 68 184" aria-hidden="true" focusable="false">
@@ -1080,6 +1107,7 @@
                     <span class="adaptive-television-research-tooltip__prompt">[ more info on the research ]</span>
                     <span class="adaptive-television-research-tooltip__secondary" id="sound-research-details">[ Frequencies and gene labels describe study hypotheses only. No medical, wellness, neurological or biological benefit is claimed. ]</span>
                   </button>
+                  <a class="adaptive-television-research-tooltip__full" href="science.html#research-sound">full frequencies, genes + medical research →</a>
                 </span>
               </span>
             </div>
@@ -1418,7 +1446,7 @@
     <script src="mantra-audio-fx.js?v=mantra-audio-fx-5e1fdfbadb04"></script>
     <script src="mantra-sampler.js?v=mantra-sampler-0bfc1d7667fe"></script>
     <script src="adaptive-environment-television.js?v=music-tv-c041b6c2aa42"></script>
-    <script type="module" src="adaptive-sound/controller-v1.js?v=1b4c5f914317"></script>
+    <script type="module" src="adaptive-sound/controller-v1.js?v=38685c063b3a"></script>
     <script src="programme-guide.js?v=programme-guide-5ec9d44785ef"></script>
     <script src="realtime-voice-assistant.js?v=realtime-voice-f3ec3dac7bdf"></script>
     <script src="adaptive-page-metadata-v1.js"></script>

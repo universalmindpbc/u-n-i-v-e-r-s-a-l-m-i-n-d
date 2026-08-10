@@ -32,8 +32,13 @@ const PROFILE_META = Object.freeze({
 });
 const CARRIER_SET = Object.freeze([111, 222, 444, 555, 999]);
 const LANE_IDS = Object.freeze(["delta", "theta", "alpha", "gamma"]);
+const DEFAULT_PROFILE_ID = "calm_alpha_80_v1";
 const DEFAULT_INTENSITY = 35;
 const TECHNICAL_OUTPUT_GAIN = 0.08;
+const WAVEFORM_POINTS = Object.freeze([
+  [2, 44], [24, 44], [31, 34], [39, 56], [48, 11], [58, 71],
+  [68, 33], [77, 62], [86, 44], [94, 55], [102, 44], [118, 44],
+]);
 
 const panel = document.querySelector("[data-adaptive-sound-panel]");
 const consoleElement = panel?.querySelector("[data-adaptive-sound-console]");
@@ -43,6 +48,7 @@ if (panel && consoleElement && soundButton) initializeAdaptiveSoundPanel();
 
 function initializeAdaptiveSoundPanel() {
   const closeButtons = Array.from(panel.querySelectorAll("[data-adaptive-sound-close]"));
+  const navigationButton = panel.querySelector("[data-adaptive-sound-nav]");
   const masterButton = panel.querySelector("[data-adaptive-sound-master]");
   const masterLabel = panel.querySelector("[data-adaptive-sound-master-label]");
   const engineLed = panel.querySelector("[data-adaptive-sound-engine-led]");
@@ -50,9 +56,6 @@ function initializeAdaptiveSoundPanel() {
   const conditionReadout = panel.querySelector("[data-adaptive-sound-condition]");
   const profileLabel = panel.querySelector("[data-adaptive-sound-profile-label]");
   const profileButtons = Array.from(panel.querySelectorAll("[data-adaptive-profile]"));
-  const synthToggle = panel.querySelector("[data-adaptive-sound-toggle]");
-  const synthToggleLabel = panel.querySelector("[data-adaptive-sound-toggle-label]");
-  const synthToggleSubLabel = synthToggle?.querySelector("small");
   const laneButtons = Array.from(panel.querySelectorAll("[data-adaptive-lane-toggle]"));
   const laneWeightReadouts = Object.fromEntries(LANE_IDS.map((laneId) => [
     laneId,
@@ -71,8 +74,8 @@ function initializeAdaptiveSoundPanel() {
     panel.querySelector(`[data-adaptive-channel-weight="${laneId}"]`),
   ]));
   const carrierButtons = Array.from(panel.querySelectorAll("[data-adaptive-carrier]"));
+  const carrierSelect = panel.querySelector("[data-adaptive-carrier-select]");
   const carrierReadout = panel.querySelector("[data-adaptive-carrier-readout]");
-  const carrierCenter = panel.querySelector("[data-adaptive-carrier-center]");
   const intensity = panel.querySelector("[data-adaptive-intensity]");
   const intensityReadout = panel.querySelector("[data-adaptive-intensity-readout]");
   const adaptiveMeter = panel.querySelector("[data-adaptive-output-meter]");
@@ -90,17 +93,21 @@ function initializeAdaptiveSoundPanel() {
   const envelopeButtons = Array.from(panel.querySelectorAll("[data-adaptive-envelope]"));
   const lowpassButtons = Array.from(panel.querySelectorAll("[data-adaptive-lowpass]"));
   const scienceLink = panel.querySelector('a[href="science.html#research-sound"]');
+  const waveform = panel.querySelector(".iam-sound-channel-wave");
+  const waveformPaths = Array.from(panel.querySelectorAll("[data-adaptive-wave-path]"));
   const storedProfile = localStorage.getItem("iamAdaptiveSoundProfile") || "";
   const storedCarrier = Number(localStorage.getItem("iamAdaptiveSoundCarrier"));
   const storedIntensityValue = localStorage.getItem("iamAdaptiveSoundIntensity");
   const storedIntensity = storedIntensityValue === null ? Number.NaN : Number(storedIntensityValue);
 
+  const initialProfile = resolveInitialProfile(storedProfile);
   const state = {
     open: false,
     previousFocus: null,
     masterEnabled: localStorage.getItem("iamSoundResearchLayer") !== "off",
-    synthEnabled: localStorage.getItem("iamAdaptiveSoundLayer") === "on",
-    profileId: PROFILE_META[storedProfile] ? storedProfile : "",
+    synthEnabled: true,
+    profileId: initialProfile.profileId,
+    profileAuthority: initialProfile.authority,
     carrierHz: CARRIER_SET.includes(storedCarrier) ? storedCarrier : 444,
     intensity: Number.isFinite(storedIntensity) ? clamp(storedIntensity, 0, 100) : DEFAULT_INTENSITY,
     masteringCondition: "engineering_on",
@@ -116,8 +123,6 @@ function initializeAdaptiveSoundPanel() {
     lastError: "",
   };
 
-  if (!state.profileId) state.synthEnabled = false;
-
   const query = new URLSearchParams(window.location.search);
   const soundLabEnabled = window.location.hostname === "staging.universalmind.tv"
     && query.get("soundLab") === "1";
@@ -132,7 +137,14 @@ function initializeAdaptiveSoundPanel() {
   window.addEventListener("iam:adaptive-sound-open", openPanel);
 
   closeButtons.forEach((button) => button.addEventListener("click", () => closePanel(true)));
+  navigationButton?.addEventListener("click", () => {
+    closePanel(false);
+    window.requestAnimationFrame(() => document.querySelector(".global-nav-trigger")?.click());
+  });
   masterButton?.addEventListener("click", () => setMasterEnabled(!state.masterEnabled));
+  profileButtons.forEach((button) => button.addEventListener("click", async () => {
+    await selectProfile(button.dataset.adaptiveProfile || "", "listener_selection");
+  }));
   laneButtons.forEach((button) => button.addEventListener("click", () => {
     const laneId = button.dataset.adaptiveLaneToggle || "";
     if (!LANE_IDS.includes(laneId) || !state.profileId) return;
@@ -153,6 +165,15 @@ function initializeAdaptiveSoundPanel() {
     syncInterface();
     if (state.synthEnabled && state.masterEnabled) await rebuildEngine("carrier_change");
   }));
+
+  carrierSelect?.addEventListener("change", async () => {
+    const carrierHz = Number(carrierSelect.value);
+    if (!CARRIER_SET.includes(carrierHz) || carrierHz === state.carrierHz) return;
+    state.carrierHz = carrierHz;
+    localStorage.setItem("iamAdaptiveSoundCarrier", String(carrierHz));
+    syncInterface();
+    if (state.synthEnabled && state.masterEnabled) await rebuildEngine("carrier_change");
+  });
 
   intensity?.addEventListener("input", () => {
     state.intensity = clamp(Number(intensity.value), 0, 100);
@@ -219,6 +240,7 @@ function initializeAdaptiveSoundPanel() {
     soundButton.setAttribute("aria-expanded", "true");
     document.body.classList.add("iam-sound-panel-open");
     document.body.dataset.adaptiveSoundPanelOpen = "true";
+    if (directSoundPage) window.IAMQuantumTree?.setAuditionMode?.(state.masterEnabled);
     startQuantumMonitor();
     syncInterface();
     window.requestAnimationFrame(() => consoleElement.focus({ preventScroll: true }));
@@ -227,7 +249,6 @@ function initializeAdaptiveSoundPanel() {
 
   function closePanel(restoreFocus = false) {
     if (!state.open) return;
-    if (directSoundPage && state.synthEnabled) setSynthEnabled(false);
     state.open = false;
     window.clearInterval(state.quantumTimer);
     state.quantumTimer = 0;
@@ -241,33 +262,33 @@ function initializeAdaptiveSoundPanel() {
 
   async function setMasterEnabled(enabled) {
     state.masterEnabled = Boolean(enabled);
+    localStorage.setItem("iamSoundResearchLayer", state.masterEnabled ? "on" : "off");
     window.IAMQuantumTree?.setEnabled?.(state.masterEnabled);
+    if (directSoundPage) window.IAMQuantumTree?.setAuditionMode?.(state.masterEnabled);
     if (!state.masterEnabled) {
       state.route?.node?.port.postMessage({ type: "set_master_enabled", enabled: false });
       setRouteGain(0, 0.08);
+      resetWaveform();
     } else if (state.synthEnabled && state.profileId) {
       await rebuildEngine("master_on");
     }
     syncInterface();
   }
 
-  async function setSynthEnabled(enabled) {
-    if (enabled && !state.profileId) return;
-    state.synthEnabled = Boolean(enabled);
-    localStorage.setItem("iamAdaptiveSoundLayer", state.synthEnabled ? "on" : "off");
-    if (state.synthEnabled && !state.masterEnabled) {
-      state.masterEnabled = true;
-      window.IAMQuantumTree?.setEnabled?.(true);
-    }
-    if (directSoundPage) window.IAMQuantumTree?.setAuditionMode?.(state.synthEnabled);
-    if (state.synthEnabled && state.masterEnabled) {
-      await rebuildEngine("adaptive_on");
-    } else {
-      state.route?.node?.port.postMessage({ type: "set_master_enabled", enabled: false });
-      setRouteGain(0, 0.08);
-      setStatus(state.profileId ? "READY" : "SELECT A FREQUENCY", false);
+  async function selectProfile(profileId, authority) {
+    if (!PROFILE_META[profileId]) return;
+    const changed = state.profileId !== profileId;
+    state.profileId = profileId;
+    state.profileAuthority = authority;
+    localStorage.setItem("iamAdaptiveSoundProfile", profileId);
+    if (changed) {
+      state.enabledLanes = Object.fromEntries(LANE_IDS.map((laneId) => [laneId, true]));
+      state.lastDiagnostics = null;
     }
     syncInterface();
+    if (state.masterEnabled && (changed || state.context?.state !== "running" || !state.route)) {
+      await rebuildEngine(changed ? "profile_change" : "profile_resume");
+    }
   }
 
   async function ensureAudioContext() {
@@ -276,7 +297,9 @@ function initializeAdaptiveSoundPanel() {
       if (!AudioContextConstructor) throw new Error("This browser does not support the adaptive sound engine");
       state.context = new AudioContextConstructor({ latencyHint: "interactive" });
       document.body.dataset.adaptiveSoundSampleRate = String(state.context.sampleRate);
+      state.context.addEventListener("statechange", syncInterface);
     }
+    if (state.context.state !== "running") await state.context.resume();
     if (!state.workletLoaded) {
       await state.context.audioWorklet.addModule(new URL("./worklet-v1.js?v=6c2022e83bc0", import.meta.url));
       state.workletLoaded = true;
@@ -360,8 +383,9 @@ function initializeAdaptiveSoundPanel() {
   function handleProcessorMessage(message, route) {
     if (!message || route !== state.route) return;
     if (message.type === "ready") {
-      document.body.dataset.adaptiveSoundEngine = "running";
-      setStatus("LIVE SIGNAL", true);
+      const running = state.context?.state === "running" && state.masterEnabled;
+      document.body.dataset.adaptiveSoundEngine = running ? "running" : "armed";
+      setStatus(running ? "LIVE SIGNAL" : "ARMED", running);
       return;
     }
     if (message.type === "diagnostics") {
@@ -397,6 +421,35 @@ function initializeAdaptiveSoundPanel() {
       const mixAllocation = state.enabledLanes[laneId] ? Number(lane?.power_weight || 0) : 0;
       channelMeters[laneId]?.style.setProperty("--channel-meter", String(clamp(mixAllocation, 0, 1)));
     }
+    updateWaveform(diagnostics);
+  }
+
+  function updateWaveform(diagnostics) {
+    if (!waveform || !waveformPaths.length || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    const laneEnergy = LANE_IDS.map((laneId) => {
+      const lane = diagnostics?.lanes?.[laneId];
+      return state.enabledLanes[laneId]
+        ? clamp(Number(lane?.envelope_gain || 0) * Math.sqrt(Number(lane?.power_weight || 0)) / Math.sqrt(0.8), 0, 1)
+        : 0;
+    });
+    const energy = laneEnergy.reduce((sum, value) => sum + value, 0) / laneEnergy.length;
+    const time = (window.performance?.now?.() || Date.now()) / 1000;
+    const points = WAVEFORM_POINTS.map(([x, baseY], index) => {
+      if (index < 2 || index === WAVEFORM_POINTS.length - 1) return [x, baseY];
+      const localEnergy = laneEnergy[(index - 2) % laneEnergy.length];
+      const scale = 0.84 + energy * 0.2 + localEnergy * 0.08;
+      const movement = Math.sin((time * 2.1) + (index * 0.92)) * (0.8 + localEnergy * 2.4);
+      return [x, clamp(44 + ((baseY - 44) * scale) + movement, 5, 75)];
+    });
+    const path = points.map(([x, y], index) => `${index ? "L" : "M"}${x} ${y.toFixed(2)}`).join(" ");
+    waveformPaths.forEach((element) => element.setAttribute("d", path));
+    waveform.style.setProperty("--wave-energy", String(energy));
+  }
+
+  function resetWaveform() {
+    const path = WAVEFORM_POINTS.map(([x, y], index) => `${index ? "L" : "M"}${x} ${y}`).join(" ");
+    waveformPaths.forEach((element) => element.setAttribute("d", path));
+    waveform?.style.setProperty("--wave-energy", "0");
   }
 
   function startQuantumMonitor() {
@@ -442,9 +495,10 @@ function initializeAdaptiveSoundPanel() {
     const profile = state.profileId ? PROFILE_CANDIDATES[state.profileId] : null;
     const meta = state.profileId ? PROFILE_META[state.profileId] : null;
     panel.dataset.profile = state.profileId;
+    panel.dataset.soundActive = String(state.masterEnabled && state.synthEnabled);
     profileButtons.forEach((button) => {
-      button.disabled = true;
-      button.setAttribute("aria-disabled", "true");
+      button.disabled = false;
+      button.setAttribute("aria-disabled", "false");
       button.setAttribute("aria-pressed", String(button.dataset.adaptiveProfile === state.profileId));
     });
     for (const laneId of LANE_IDS) {
@@ -459,7 +513,7 @@ function initializeAdaptiveSoundPanel() {
       if (!profile) {
         laneMeters[laneId]?.style.setProperty("--lane-meter", "0");
         channelMeters[laneId]?.style.setProperty("--channel-meter", "0");
-      } else if (!state.synthEnabled) {
+      } else if (!state.lastDiagnostics || state.context?.state !== "running" || !state.masterEnabled) {
         const restingLevel = state.enabledLanes[laneId]
           ? Math.sqrt(Number(weight || 0)) / Math.sqrt(0.8)
           : 0;
@@ -470,13 +524,9 @@ function initializeAdaptiveSoundPanel() {
     if (profileLabel) profileLabel.textContent = meta?.label || "CHOOSE A PROFILE";
     if (noiseLabel) noiseLabel.textContent = meta?.noiseLabel || "PROFILE DEPENDENT";
     if (noiseDetail) noiseDetail.textContent = meta?.noiseDetail || "Delta brown · Theta white · Alpha pink · Gamma equal three-way split";
-    if (synthToggle) synthToggle.disabled = true;
-    synthToggle?.setAttribute("aria-pressed", String(state.synthEnabled));
-    if (synthToggleLabel) synthToggleLabel.textContent = "";
-    if (synthToggleSubLabel) synthToggleSubLabel.textContent = "";
     carrierButtons.forEach((button) => button.setAttribute("aria-checked", String(Number(button.dataset.adaptiveCarrier) === state.carrierHz)));
+    if (carrierSelect) carrierSelect.value = String(state.carrierHz);
     if (carrierReadout) carrierReadout.textContent = `${state.carrierHz} Hz`;
-    if (carrierCenter) carrierCenter.textContent = `${state.carrierHz}hz`;
     if (intensity) {
       intensity.value = String(state.intensity);
       intensity.style.setProperty("--intensity", `${state.intensity}%`);
@@ -495,7 +545,7 @@ function initializeAdaptiveSoundPanel() {
     masterButton?.setAttribute("aria-label", state.masterEnabled
       ? "Turn the full Sound Research Layer off"
       : "Turn the full Sound Research Layer on");
-    if (masterLabel) masterLabel.textContent = state.masterEnabled ? "ON" : "OFF";
+    if (masterLabel) masterLabel.textContent = "ON";
     soundButton.setAttribute("aria-pressed", String(state.masterEnabled));
   }
 
@@ -506,7 +556,7 @@ function initializeAdaptiveSoundPanel() {
       return;
     }
     const path = state.masteringCondition === "engineering_on" ? "MASTERED" : "CLEAN REF";
-    if (conditionReadout) conditionReadout.textContent = `${state.profileId.toUpperCase()} / ${state.carrierHz} HZ / ${path}`;
+    if (conditionReadout) conditionReadout.textContent = `${state.profileId.toUpperCase()} / ${state.carrierHz} HZ / ${path} / ${state.profileAuthority.toUpperCase()}`;
     if (!state.synthEnabled && !state.lastError) setStatus("READY", false);
   }
 
@@ -528,6 +578,7 @@ function initializeAdaptiveSoundPanel() {
         master_enabled: state.masterEnabled,
         synth_enabled: state.synthEnabled,
         profile_id: state.profileId,
+        profile_authority: state.profileAuthority,
         carrier_hz: state.carrierHz,
         intensity_percent: state.intensity,
         mastering_condition: state.masteringCondition,
@@ -539,6 +590,7 @@ function initializeAdaptiveSoundPanel() {
         engine_state: document.body.dataset.adaptiveSoundEngine || "not_started",
         last_error: state.lastError,
         output_layout: "mono_source_identical_dual_mono",
+        waveform_source: "audio_thread_lane_diagnostics",
         quantum_tree: window.IAMQuantumTree?.diagnostics?.() || null,
       };
     },
@@ -547,11 +599,9 @@ function initializeAdaptiveSoundPanel() {
   panel.inert = true;
   document.body.dataset.adaptiveSoundPanel = "ready";
   document.body.dataset.adaptiveSoundPanelOpen = "false";
+  resetWaveform();
   syncInterface();
   if (directSoundPage) {
-    state.synthEnabled = false;
-    localStorage.setItem("iamAdaptiveSoundLayer", "off");
-    syncInterface();
     window.requestAnimationFrame(() => {
       document.body.append(panel);
       document.body.classList.add("iam-sound-direct-page");
@@ -559,6 +609,64 @@ function initializeAdaptiveSoundPanel() {
       openPanel();
     });
   }
+}
+
+function resolveInitialProfile(storedProfile) {
+  if (PROFILE_META[storedProfile]) {
+    return { profileId: storedProfile, authority: "listener_selection" };
+  }
+
+  const inference = readStoredInference();
+  const needs = flattenCitizenNeeds(inference);
+  if (!Object.keys(needs).length) {
+    return { profileId: DEFAULT_PROFILE_ID, authority: "neutral_alpha_default" };
+  }
+
+  const mean = (labels) => {
+    const values = labels.map((label) => needs[normalizedKey(label)]).filter(Number.isFinite);
+    return values.length ? values.reduce((sum, value) => sum + value, 0) / values.length : 0;
+  };
+  const scores = [
+    ["sleep_delta_80_v1", mean(["Sleep Pressure", "Fatigue", "Sleep Disturbance", "Emotional Numbing"])],
+    ["mindfulness_theta_80_v1", mean(["Recovery", "Self-Transcendence", "Reflection", "Calm"])],
+    ["calm_alpha_80_v1", mean(["Calm", "Attention", "Clarity", "Psychological Safety"])],
+    ["inspiration_gamma_80_v1", mean(["Joy", "Curiosity", "Motivation", "Awe", "Self-Actualisation"])],
+  ].sort((left, right) => right[1] - left[1]);
+
+  return scores[0][1] > 0
+    ? { profileId: scores[0][0], authority: "citizen_needs_context" }
+    : { profileId: DEFAULT_PROFILE_ID, authority: "neutral_alpha_default" };
+}
+
+function readStoredInference() {
+  for (const key of ["iamLatestInference", "citizenNeedsLatestInference"]) {
+    for (const store of [window.localStorage, window.sessionStorage]) {
+      try {
+        const value = JSON.parse(store.getItem(key) || "null");
+        if (value && typeof value === "object") return value;
+      } catch {
+        // A malformed or unavailable store cannot override the neutral profile.
+      }
+    }
+  }
+  return null;
+}
+
+function flattenCitizenNeeds(inference) {
+  const flattened = {};
+  const groups = inference?.citizen_needs || inference?.citizenNeeds || {};
+  Object.values(groups).forEach((group) => {
+    if (!group || typeof group !== "object" || Array.isArray(group)) return;
+    Object.entries(group).forEach(([label, value]) => {
+      const numeric = Number(value);
+      if (Number.isFinite(numeric)) flattened[normalizedKey(label)] = clamp(numeric, 0, 1);
+    });
+  });
+  return flattened;
+}
+
+function normalizedKey(value) {
+  return String(value || "").toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
 }
 
 function formatPercent(weight) {
