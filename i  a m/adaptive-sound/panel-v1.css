@@ -182,7 +182,7 @@ body[data-adaptive-sound-engine="running"] .iam-sound-console__telemetry strong:
   z-index: 1;
   width: calc(var(--quantum-group-width) + 44px);
   margin: clamp(30px, 4.5vh, 58px) 0 clamp(18px, 3.3vh, 38px);
-  margin-left: calc(var(--quantum-group-offset) - 22px);
+  margin-left: calc((var(--quantum-group-offset) / 2) - 22px);
   color: rgba(255, 255, 255, 0.88);
   font-size: clamp(10px, 0.72vw, 14px);
   font-weight: 600;
@@ -535,7 +535,7 @@ body[data-adaptive-sound-engine="running"] .iam-sound-console__telemetry strong:
 
 .iam-sound-console__footer p {
   position: absolute;
-  left: calc(7.1vw + var(--quantum-group-offset) + var(--quantum-group-half));
+  left: calc(7.1vw + (var(--quantum-group-offset) / 2) + var(--quantum-group-half));
   bottom: 8.2vh;
   width: 300px;
   margin: 0;
