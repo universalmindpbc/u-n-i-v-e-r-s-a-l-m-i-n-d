@@ -379,6 +379,7 @@ body[data-adaptive-sound-engine="running"] .iam-sound-console__telemetry strong:
 .iam-sound-module--control {
   position: relative;
   z-index: 4;
+  grid-column: 3;
   min-height: 0;
 }
 
