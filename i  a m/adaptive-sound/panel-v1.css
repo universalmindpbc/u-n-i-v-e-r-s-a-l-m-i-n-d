@@ -27,7 +27,7 @@
   margin: 0;
   padding: 0;
   border: 0;
-  background: linear-gradient(90deg, rgba(0, 0, 0, 0.29), rgba(0, 0, 0, 0.08) 46%, rgba(0, 0, 0, 0.31));
+  background: rgba(0, 0, 0, 0.08);
   cursor: default;
 }
 
@@ -89,20 +89,7 @@
 }
 
 .iam-sound-console__telemetry {
-  position: absolute;
-  z-index: 7;
-  left: 50%;
-  bottom: 3.2vh;
-  display: flex;
-  align-items: center;
-  gap: 9px;
-  min-height: 28px;
-  padding: 7px 12px;
-  border-radius: 999px;
-  background: rgba(0, 0, 0, 0.24);
-  color: rgba(255, 255, 255, 0.74);
-  transform: translateX(-50%);
-  text-shadow: 0 1px 8px rgba(0, 0, 0, 0.82);
+  display: none;
 }
 
 .iam-sound-console__telemetry > span,
@@ -136,9 +123,9 @@ body[data-adaptive-sound-engine="running"] .iam-sound-console__telemetry strong:
   inset: 0;
   z-index: 2;
   display: grid;
-  grid-template-columns: minmax(190px, 21vw) minmax(460px, 1fr) minmax(280px, 24vw);
-  gap: 1vw;
-  padding: clamp(62px, 7vh, 92px) clamp(36px, 4.4vw, 92px) clamp(60px, 6vh, 84px);
+  grid-template-columns: 14vw minmax(0, 1fr) 20.5vw;
+  gap: 0;
+  padding: 6.7vh 2.4vw 5.8vh 7.1vw;
 }
 
 .iam-sound-module {
@@ -162,6 +149,10 @@ body[data-adaptive-sound-engine="running"] .iam-sound-console__telemetry strong:
 }
 
 .iam-sound-module--quantum > header span {
+  display: none;
+}
+
+.iam-sound-module--quantum > header em {
   display: none;
 }
 
@@ -237,10 +228,7 @@ body[data-adaptive-sound-engine="running"] .iam-sound-console__telemetry strong:
 }
 
 .iam-sound-quantum-channel strong {
-  color: rgba(255, 255, 255, 0.9);
-  font-size: 10px;
-  font-weight: 600;
-  letter-spacing: 0.04em;
+  display: none;
 }
 
 .iam-sound-quantum-channel strong::before {
@@ -253,8 +241,13 @@ body[data-adaptive-sound-engine="running"] .iam-sound-console__telemetry strong:
 }
 
 .iam-sound-module--diamond {
-  position: relative;
+  --vesica-diameter: min(30.5vw, 54vh);
+  --vesica-offset: min(10.7833784139849vw, 19.0918830920368vh);
+  position: fixed;
+  inset: 0;
+  z-index: 2;
   min-height: 0;
+  pointer-events: none;
 }
 
 .iam-sound-module--diamond > header,
@@ -271,52 +264,54 @@ body[data-adaptive-sound-engine="running"] .iam-sound-console__telemetry strong:
 .iam-sound-diamond__point {
   position: absolute;
   z-index: 1;
-  width: min(31vw, 49vh);
+  width: var(--vesica-diameter);
   aspect-ratio: 1;
   margin: 0;
   padding: 0;
   border: 0;
   border-radius: 50%;
   color: transparent;
-  cursor: pointer;
-  transition: filter 280ms ease, box-shadow 280ms ease, transform 520ms cubic-bezier(0.2, 0.76, 0.2, 1);
+  cursor: default;
+  pointer-events: none;
 }
 
 .iam-sound-diamond__point--delta {
-  top: 0;
+  top: calc(48% - var(--vesica-offset));
   left: 50%;
   background: rgba(26, 146, 229, 0.44);
-  transform: translateX(-50%);
+  transform: translate(-50%, -50%);
 }
 
 .iam-sound-diamond__point--theta {
-  top: 27%;
-  right: 4%;
+  top: 48%;
+  left: calc(50% + var(--vesica-offset));
   background: rgba(245, 177, 22, 0.44);
+  transform: translate(-50%, -50%);
 }
 
 .iam-sound-diamond__point--alpha {
-  bottom: 0;
+  top: calc(48% + var(--vesica-offset));
   left: 50%;
   background: rgba(230, 45, 137, 0.44);
-  transform: translateX(-50%);
+  transform: translate(-50%, -50%);
 }
 
 .iam-sound-diamond__point--gamma {
-  top: 27%;
-  left: 4%;
+  top: 48%;
+  left: calc(50% - var(--vesica-offset));
   background: rgba(56, 201, 55, 0.44);
+  transform: translate(-50%, -50%);
 }
 
 .iam-sound-diamond__point:hover,
 .iam-sound-diamond__point:focus-visible {
-  filter: saturate(1.14) brightness(1.08);
+  filter: none;
   outline: none;
 }
 
 .iam-sound-diamond__point[aria-pressed="true"] {
-  box-shadow: 0 0 34px rgba(255, 255, 255, 0.12);
-  filter: saturate(1.15) brightness(1.08);
+  box-shadow: none;
+  filter: none;
 }
 
 .iam-sound-diamond__point > * {
@@ -326,7 +321,7 @@ body[data-adaptive-sound-engine="running"] .iam-sound-console__telemetry strong:
 .iam-sound-diamond__core {
   position: absolute;
   z-index: 5;
-  top: 50%;
+  top: 48%;
   left: 50%;
   display: flex;
   flex-direction: column;
@@ -340,7 +335,8 @@ body[data-adaptive-sound-engine="running"] .iam-sound-console__telemetry strong:
   border: 0;
   background: transparent;
   color: #fff;
-  cursor: pointer;
+  cursor: default;
+  pointer-events: none;
   text-align: center;
   text-shadow: 0 2px 14px rgba(0, 0, 0, 0.9);
   transform: translate(-50%, -50%);
@@ -366,15 +362,7 @@ body[data-adaptive-sound-engine="running"] .iam-sound-console__telemetry strong:
 }
 
 .iam-sound-diamond__core > strong {
-  order: 3;
-  margin-top: 7px;
-  padding: 6px 11px;
-  border: 1px solid rgba(255, 255, 255, 0.38);
-  border-radius: 999px;
-  background: rgba(0, 0, 0, 0.16);
-  font-size: 8px;
-  font-weight: 650;
-  letter-spacing: 0.13em;
+  display: none;
 }
 
 .iam-sound-diamond__core:disabled > strong {
@@ -389,6 +377,8 @@ body[data-adaptive-sound-engine="running"] .iam-sound-console__telemetry strong:
 }
 
 .iam-sound-module--control {
+  position: relative;
+  z-index: 4;
   min-height: 0;
 }
 
@@ -461,10 +451,7 @@ body[data-adaptive-sound-engine="running"] .iam-sound-console__telemetry strong:
 }
 
 .iam-sound-channel b {
-  color: rgba(255, 255, 255, 0.82);
-  font-size: clamp(9px, 0.64vw, 12px);
-  font-weight: 650;
-  letter-spacing: 0.03em;
+  display: none;
 }
 
 .iam-sound-channel small {
@@ -476,10 +463,10 @@ body[data-adaptive-sound-engine="running"] .iam-sound-console__telemetry strong:
 .iam-sound-channel-wave {
   position: absolute;
   z-index: 3;
-  top: 44%;
+  top: 32%;
   left: -3%;
   width: 106%;
-  height: 30%;
+  height: 40%;
   overflow: visible;
   opacity: 0.76;
   pointer-events: none;
@@ -490,7 +477,7 @@ body[data-adaptive-sound-engine="running"] .iam-sound-console__telemetry strong:
 .iam-sound-channel-wave path {
   fill: none;
   stroke: #fff;
-  stroke-width: 3.2;
+  stroke-width: 6;
   stroke-linecap: round;
   stroke-linejoin: round;
   vector-effect: non-scaling-stroke;
@@ -510,25 +497,35 @@ body[data-adaptive-sound-engine="running"] .iam-sound-console__telemetry strong:
 }
 
 .iam-sound-console__footer {
-  position: absolute;
+  position: fixed;
   z-index: 6;
-  left: clamp(36px, 4.4vw, 92px);
-  bottom: 2.5vh;
-  max-width: min(420px, 29vw);
+  inset: 0;
+  max-width: none;
+  pointer-events: none;
   text-shadow: 0 2px 12px rgba(0, 0, 0, 0.92);
 }
 
 .iam-sound-console__footer p {
+  position: absolute;
+  left: 3.7vw;
+  bottom: 3.8vh;
   margin: 0;
-  color: rgba(255, 255, 255, 0.58);
-  font-size: 8px;
-  font-weight: 550;
-  line-height: 1.45;
-  letter-spacing: 0.04em;
+  color: rgba(255, 255, 255, 0.92);
+  font-size: clamp(9px, 0.65vw, 13px);
+  font-weight: 650;
+  line-height: 1.2;
+  letter-spacing: 0.06em;
+  white-space: nowrap;
 }
 
-.iam-sound-console__footer a {
-  display: none;
+.iam-sound-console__footer strong {
+  position: absolute;
+  left: 8.7vw;
+  bottom: 7.1vh;
+  color: #fff;
+  font-size: clamp(17px, 1.25vw, 24px);
+  font-weight: 650;
+  letter-spacing: 0.07em;
 }
 
 body.iam-sound-panel-open {
@@ -537,12 +534,12 @@ body.iam-sound-panel-open {
 
 body.iam-sound-direct-page .background-video video {
   opacity: 1 !important;
-  filter: saturate(0.96) contrast(1.04) brightness(0.72) !important;
+  filter: saturate(0.96) contrast(1.02) brightness(0.9) !important;
 }
 
 body.iam-sound-direct-page .homepage-welcome-copy,
 body.iam-sound-direct-page .adaptive-environment,
-body.iam-sound-direct-page .brand-lockup,
+body.iam-sound-direct-page .brand,
 body.iam-sound-direct-page .global-nav-trigger {
   opacity: 0 !important;
   pointer-events: none !important;
@@ -612,15 +609,12 @@ body.iam-sound-direct-page .global-nav-trigger {
   }
 
   .iam-sound-quantum-channel strong {
-    position: relative;
-    z-index: 1;
-    display: block;
-    padding: 18px 5px 0;
-    font-size: 8px;
-    text-align: center;
+    display: none;
   }
 
   .iam-sound-module--diamond {
+    --vesica-diameter: min(56vw, 230px);
+    --vesica-offset: min(19.7989898732233vw, 81.3172798364529px);
     position: absolute;
     top: 148px;
     left: 0;
@@ -630,11 +624,8 @@ body.iam-sound-direct-page .global-nav-trigger {
   }
 
   .iam-sound-diamond__point {
-    width: min(56vw, 230px);
+    width: var(--vesica-diameter);
   }
-
-  .iam-sound-diamond__point--theta { right: 3%; }
-  .iam-sound-diamond__point--gamma { left: 3%; }
 
   .iam-sound-diamond__core {
     width: 150px;

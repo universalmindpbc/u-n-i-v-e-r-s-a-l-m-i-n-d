@@ -1,4 +1,4 @@
-# I AM Adaptive Sound — Phase 1 Staging Instrument
+# I AM Adaptive Sound — Phase 1 Staging Feedback Dashboard
 
 This directory is subordinate to the canonical blueprint:
 
@@ -15,7 +15,10 @@ defaults below; this worktree does not alter the primary workspace.
 ## Authority and scope
 
 This is a deterministic engineering laboratory presented through a
-near-finished staging audition instrument in the listener portal. It does not
+near-finished read-only feedback dashboard in the listener portal. The current
+design stage adds no listener choice between frequencies and no listener-facing
+audition control; interaction remains open until Ben approves the visual design.
+It does not
 modify Quantum Tree, route programme audio through the synth, establish a
 clinical or biological effect, provide a study-ready research protocol, or
 constitute a production release. The current downward-only output control uses
@@ -61,12 +64,16 @@ The Phase 1 implementation preserves these locked boundaries:
   silence allocation, and invariant limiter.
 - `worklet-v1.js` — fail-closed AudioWorklet adapter with objective meter
   diagnostics.
-- `controller-v1.js` — listener-action-only staging integration, dual-mono
-  output routing, Quantum Tree owner-controller coordination, diagnostic state,
-  fail-safe teardown, and the non-autoplay `?sound=1` direct entry.
+- `controller-v1.js` — dual-mono output routing, Quantum Tree owner-controller
+  coordination, diagnostic state, fail-safe teardown, and the non-autoplay
+  `?sound=1` direct entry. Profile and carrier controls are not listener-enabled
+  in the visual-design approval stage.
 - `panel-v1.css` — full-screen video composition with four overlapping vesica
   forms at exactly `44%` opacity, a four-lane isochronic mix matrix, and the
-  Quantum Tree baseline. The remembered Quantum Tree source balance is shown as
+  Quantum Tree baseline. All four circles are congruent and their centres are
+  locked to the four vertices of a square whose side is exactly one circle
+  radius, so every adjacent pair forms a mathematically exact vesica piscis at
+  every viewport height. The remembered Quantum Tree source balance is shown as
   `77%` for `7.38 Hz`, `77%` for `111 Hz`, and `86%` for `528 Hz`, with subtle
   independent visual modulation; the existing mastered recording is unchanged.
   Engineering controls remain visually absent from the listener experience.
@@ -107,6 +114,8 @@ matching before any research-condition or blinded comparison claim.
 
 ## Remaining gates
 
+- Ben's approval of the locked visual treatment before any interactive features
+  are designed or enabled.
 - Ben-controlled matched subjective audition for warmth and fatigue.
 - Selection of the final pulse candidate, compression calibration, and
   14,444 Hz low-pass topology.

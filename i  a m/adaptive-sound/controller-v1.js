@@ -101,7 +101,7 @@ function initializeAdaptiveSoundPanel() {
     masterEnabled: localStorage.getItem("iamSoundResearchLayer") !== "off",
     synthEnabled: localStorage.getItem("iamAdaptiveSoundLayer") === "on",
     profileId: PROFILE_META[storedProfile] ? storedProfile : "",
-    carrierHz: CARRIER_SET.includes(storedCarrier) ? storedCarrier : 111,
+    carrierHz: CARRIER_SET.includes(storedCarrier) ? storedCarrier : 444,
     intensity: Number.isFinite(storedIntensity) ? clamp(storedIntensity, 0, 100) : DEFAULT_INTENSITY,
     masteringCondition: "engineering_on",
     envelopeCandidateId: "raised_cosine_50_depth_80_v1",
@@ -133,18 +133,6 @@ function initializeAdaptiveSoundPanel() {
 
   closeButtons.forEach((button) => button.addEventListener("click", () => closePanel(true)));
   masterButton?.addEventListener("click", () => setMasterEnabled(!state.masterEnabled));
-  synthToggle?.addEventListener("click", () => setSynthEnabled(!state.synthEnabled));
-
-  profileButtons.forEach((button) => button.addEventListener("click", async () => {
-    const profileId = button.dataset.adaptiveProfile || "";
-    if (!PROFILE_META[profileId] || !PROFILE_CANDIDATES[profileId]) return;
-    state.profileId = profileId;
-    state.enabledLanes = Object.fromEntries(LANE_IDS.map((laneId) => [laneId, true]));
-    localStorage.setItem("iamAdaptiveSoundProfile", profileId);
-    syncInterface();
-    if (state.synthEnabled && state.masterEnabled) await rebuildEngine("profile_change");
-  }));
-
   laneButtons.forEach((button) => button.addEventListener("click", () => {
     const laneId = button.dataset.adaptiveLaneToggle || "";
     if (!LANE_IDS.includes(laneId) || !state.profileId) return;
@@ -454,7 +442,11 @@ function initializeAdaptiveSoundPanel() {
     const profile = state.profileId ? PROFILE_CANDIDATES[state.profileId] : null;
     const meta = state.profileId ? PROFILE_META[state.profileId] : null;
     panel.dataset.profile = state.profileId;
-    profileButtons.forEach((button) => button.setAttribute("aria-pressed", String(button.dataset.adaptiveProfile === state.profileId)));
+    profileButtons.forEach((button) => {
+      button.disabled = true;
+      button.setAttribute("aria-disabled", "true");
+      button.setAttribute("aria-pressed", String(button.dataset.adaptiveProfile === state.profileId));
+    });
     for (const laneId of LANE_IDS) {
       const weight = profile?.diamond_power_weights?.[laneId];
       if (laneWeightReadouts[laneId]) laneWeightReadouts[laneId].textContent = Number.isFinite(weight) ? formatPercent(weight) : "—";
@@ -478,13 +470,13 @@ function initializeAdaptiveSoundPanel() {
     if (profileLabel) profileLabel.textContent = meta?.label || "CHOOSE A PROFILE";
     if (noiseLabel) noiseLabel.textContent = meta?.noiseLabel || "PROFILE DEPENDENT";
     if (noiseDetail) noiseDetail.textContent = meta?.noiseDetail || "Delta brown · Theta white · Alpha pink · Gamma equal three-way split";
-    synthToggle?.toggleAttribute("disabled", !profile);
+    if (synthToggle) synthToggle.disabled = true;
     synthToggle?.setAttribute("aria-pressed", String(state.synthEnabled));
-    if (synthToggleLabel) synthToggleLabel.textContent = !profile ? "SELECT A FREQUENCY" : (state.synthEnabled ? "SOUND ON" : "LISTEN");
+    if (synthToggleLabel) synthToggleLabel.textContent = "";
     if (synthToggleSubLabel) synthToggleSubLabel.textContent = "";
     carrierButtons.forEach((button) => button.setAttribute("aria-checked", String(Number(button.dataset.adaptiveCarrier) === state.carrierHz)));
     if (carrierReadout) carrierReadout.textContent = `${state.carrierHz} Hz`;
-    if (carrierCenter) carrierCenter.textContent = `${state.carrierHz} Hz`;
+    if (carrierCenter) carrierCenter.textContent = `${state.carrierHz}hz`;
     if (intensity) {
       intensity.value = String(state.intensity);
       intensity.style.setProperty("--intensity", `${state.intensity}%`);
