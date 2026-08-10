@@ -24,8 +24,11 @@ assert.match(page, /id="iam-sound-panel"[^>]*role="dialog"[^>]*aria-modal="true"
 assert.match(page, /data-emdr-sound-research[^>]*aria-haspopup="dialog"[^>]*aria-controls="iam-sound-panel"/);
 assert.match(page, /data-adaptive-sound-master[^>]*aria-pressed="true"/);
 assert.equal((page.match(/data-adaptive-profile=/g) || []).length, 4);
+assert.equal((page.match(/data-adaptive-lane-meter=/g) || []).length, 4);
+assert.equal((page.match(/data-quantum-tree-panel-meter/g) || []).length, 1);
 assert.equal((page.match(/data-adaptive-carrier=/g) || []).length, 5);
 assert.equal((page.match(/data-adaptive-lane-toggle=/g) || []).length, 4);
+assert.ok(page.includes("ENTRAINMENT FREQUENCIES"));
 assert.ok(page.includes("3.33 Hz"));
 assert.ok(page.includes("7.38 Hz"));
 assert.ok(page.includes("10.11 Hz"));
@@ -61,11 +64,15 @@ assert.ok(worklet.includes('fail_safe: "adaptive_synth_off_quantum_tree_and_prog
 assert.ok(worklet.includes("for (const channel of output) channel[frame] = mono"));
 assert.ok(worklet.includes("output_peak: this.meterPeak"));
 
-assert.match(panelCss, /\.iam-sound-diamond/);
-assert.match(panelCss, /dark|#171a1a/i);
-assert.match(panelCss, /@media \(max-width: 700px\)/);
+assert.match(panelCss, /\.iam-sound-module--quantum \{[\s\S]*?display: grid/);
+assert.match(panelCss, /\.iam-sound-diamond \{[\s\S]*?display: grid/);
+assert.match(panelCss, /repeating-linear-gradient/);
+assert.match(panelCss, /#171816/i);
+assert.match(panelCss, /\.iam-sound-module--control,[\s\S]*?display: none !important/);
+assert.match(panelCss, /\.iam-sound-console__master \{[\s\S]*?display: none/);
+assert.match(panelCss, /@media \(max-width: 620px\)/);
 assert.match(panelCss, /@media \(prefers-reduced-motion: reduce\)/);
-assert.match(panelCss, /button:focus-visible/);
+assert.match(panelCss, /:focus-visible/);
 assert.equal(/Didot|Bodoni|Vogue logo|Neve logo|Raytheon logo/i.test(panelCss), false);
 
 assert.deepEqual(PROFILE_NOISE_DEFAULTS.sleep_delta_80_v1.power_weights, {
@@ -103,8 +110,8 @@ const sourceHash = createHash("sha256")
 
 console.log(JSON.stringify({
   passed: true,
-  panel: "near_finished_studio_instrument",
-  portal_entry: "Sound button opens panel; master control is inside",
+  panel: "minimal_quantum_tree_plus_four_frequency_led_bars",
+  portal_entry: "Sound button opens a calm five-bar page with one listen/stop control",
   quantum_tree_preserved: true,
   programme_audio_routed_through_synth: false,
   adaptive_default_requires_listener_start: true,

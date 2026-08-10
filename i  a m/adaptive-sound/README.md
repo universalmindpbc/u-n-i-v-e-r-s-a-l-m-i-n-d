@@ -64,9 +64,9 @@ The Phase 1 implementation preserves these locked boundaries:
 - `controller-v1.js` — listener-action-only staging integration, dual-mono
   output routing, Quantum Tree owner-controller coordination, diagnostic state,
   and fail-safe teardown.
-- `panel-v1.css` — responsive studio-instrument visual treatment for the
-  four-point diamond, carrier bank, lane meters, micro-noise, output trim, and
-  staging-only engineering comparisons.
+- `panel-v1.css` — calm responsive treatment with one prominent Quantum Tree
+  LED bar, four entrainment-frequency LED bars, and one listen/stop control.
+  Engineering controls remain visually absent from the listener experience.
 - `tools/check-adaptive-sound-dsp.mjs` — objective verification.
 - `tools/render-adaptive-sound-reference.mjs` — non-playing, hashed Float32 WAV
   reference renderer.
@@ -110,8 +110,8 @@ matching before any research-condition or blinded comparison claim.
 - Approval of the final noise insertion topology; the profile-colour defaults
   themselves are now locked.
 - Approval of the final new-synth ceiling after Ben-controlled subjective
-  audition; the staging panel exposes only downward adjustment from the
-  provisional technical ceiling.
+  audition; the staging build retains the provisional technical ceiling
+  internally without exposing an engineering control surface.
 - Phase 2 loudness/latency matching and configuration-fidelity work.
 - Separate later approval for public listener exposure, masking, Tensor
   integration, study mode, and production.

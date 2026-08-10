@@ -250,12 +250,16 @@ function initializeAdaptiveSoundPanel() {
     if (enabled && !state.profileId) return;
     state.synthEnabled = Boolean(enabled);
     localStorage.setItem("iamAdaptiveSoundLayer", state.synthEnabled ? "on" : "off");
+    if (state.synthEnabled && !state.masterEnabled) {
+      state.masterEnabled = true;
+      window.IAMQuantumTree?.setEnabled?.(true);
+    }
     if (state.synthEnabled && state.masterEnabled) {
       await rebuildEngine("adaptive_on");
     } else {
       state.route?.node?.port.postMessage({ type: "set_master_enabled", enabled: false });
       setRouteGain(0, 0.08);
-      setStatus(state.profileId ? "ADAPTIVE STANDBY" : "SELECT A DIAMOND POINT", false);
+      setStatus(state.profileId ? "READY" : "SELECT A FREQUENCY", false);
     }
     syncInterface();
   }
@@ -426,15 +430,22 @@ function initializeAdaptiveSoundPanel() {
       laneButton?.setAttribute("aria-pressed", String(Boolean(profile) && state.enabledLanes[laneId]));
       profileButtons.find((button) => button.dataset.adaptiveProfile?.includes(`_${laneId}_`))
         ?.classList.toggle("is-lane-off", Boolean(profile) && !state.enabledLanes[laneId]);
-      if (!profile) laneMeters[laneId]?.style.setProperty("--lane-meter", "0");
+      if (!profile) {
+        laneMeters[laneId]?.style.setProperty("--lane-meter", "0");
+      } else if (!state.synthEnabled) {
+        const restingLevel = state.enabledLanes[laneId]
+          ? Math.sqrt(Number(weight || 0)) / Math.sqrt(0.8)
+          : 0;
+        laneMeters[laneId]?.style.setProperty("--lane-meter", String(clamp(restingLevel, 0, 1)));
+      }
     }
     if (profileLabel) profileLabel.textContent = meta?.label || "CHOOSE A PROFILE";
     if (noiseLabel) noiseLabel.textContent = meta?.noiseLabel || "PROFILE DEPENDENT";
     if (noiseDetail) noiseDetail.textContent = meta?.noiseDetail || "Delta brown · Theta white · Alpha pink · Gamma equal three-way split";
     synthToggle?.toggleAttribute("disabled", !profile);
     synthToggle?.setAttribute("aria-pressed", String(state.synthEnabled));
-    if (synthToggleLabel) synthToggleLabel.textContent = !profile ? "SELECT" : (state.synthEnabled ? "LISTENING" : "START");
-    if (synthToggleSubLabel) synthToggleSubLabel.textContent = !profile ? "TO BEGIN" : (state.synthEnabled ? "LIVE SIGNAL" : "ADAPTIVE SYNTH");
+    if (synthToggleLabel) synthToggleLabel.textContent = !profile ? "SELECT A FREQUENCY" : (state.synthEnabled ? "SOUND ON" : "LISTEN");
+    if (synthToggleSubLabel) synthToggleSubLabel.textContent = "";
     carrierButtons.forEach((button) => button.setAttribute("aria-checked", String(Number(button.dataset.adaptiveCarrier) === state.carrierHz)));
     if (carrierReadout) carrierReadout.textContent = `${state.carrierHz} Hz`;
     if (intensity) {
@@ -462,12 +473,12 @@ function initializeAdaptiveSoundPanel() {
   function syncConditionReadout() {
     if (!state.profileId) {
       if (conditionReadout) conditionReadout.textContent = "NO CONDITION LOADED";
-      if (!state.lastError) setStatus("SELECT A DIAMOND POINT", false);
+      if (!state.lastError) setStatus("SELECT A FREQUENCY", false);
       return;
     }
     const path = state.masteringCondition === "engineering_on" ? "MASTERED" : "CLEAN REF";
     if (conditionReadout) conditionReadout.textContent = `${state.profileId.toUpperCase()} / ${state.carrierHz} HZ / ${path}`;
-    if (!state.synthEnabled && !state.lastError) setStatus("ADAPTIVE READY", false);
+    if (!state.synthEnabled && !state.lastError) setStatus("READY", false);
   }
 
   function setStatus(value, live) {
