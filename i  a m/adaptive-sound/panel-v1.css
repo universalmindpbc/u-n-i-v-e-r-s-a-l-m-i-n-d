@@ -480,8 +480,10 @@ body[data-adaptive-sound-engine="running"] .iam-sound-console__telemetry strong:
   width: 106%;
   height: 30%;
   overflow: visible;
+  opacity: 0.76;
   pointer-events: none;
   filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.42));
+  animation: iam-sound-wave-breathe 5.6s ease-in-out infinite;
 }
 
 .iam-sound-channel-wave path {
@@ -491,6 +493,11 @@ body[data-adaptive-sound-engine="running"] .iam-sound-console__telemetry strong:
   stroke-linecap: round;
   stroke-linejoin: round;
   vector-effect: non-scaling-stroke;
+}
+
+@keyframes iam-sound-wave-breathe {
+  0%, 100% { opacity: 0.68; }
+  50% { opacity: 0.84; }
 }
 
 .iam-sound-carrier,
@@ -706,5 +713,10 @@ body.iam-sound-direct-page .global-nav-trigger {
   .iam-sound-channel i,
   .iam-sound-quantum-channel i {
     transition: none !important;
+  }
+
+  .iam-sound-channel-wave {
+    animation: none !important;
+    opacity: 0.76;
   }
 }

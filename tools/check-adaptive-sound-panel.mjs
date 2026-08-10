@@ -83,6 +83,8 @@ assert.match(panelCss, /\.iam-sound-diamond__point--delta \{[\s\S]*?rgba\(26, 14
 assert.match(panelCss, /\.iam-sound-diamond__point--theta \{[\s\S]*?rgba\(245, 177, 22, 0\.44\)/);
 assert.match(panelCss, /\.iam-sound-diamond__point--alpha \{[\s\S]*?rgba\(230, 45, 137, 0\.44\)/);
 assert.match(panelCss, /\.iam-sound-diamond__point--gamma \{[\s\S]*?rgba\(56, 201, 55, 0\.44\)/);
+assert.match(panelCss, /\.iam-sound-channel-wave \{[\s\S]*?opacity: 0\.76[\s\S]*?iam-sound-wave-breathe 5\.6s/);
+assert.match(panelCss, /@keyframes iam-sound-wave-breathe/);
 assert.match(panelCss, /\.iam-sound-carrier,[\s\S]*?display: none !important/);
 assert.match(panelCss, /\.iam-sound-console__master \{[\s\S]*?display: none/);
 assert.match(panelCss, /@media \(max-width: 900px\)/);
