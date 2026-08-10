@@ -561,7 +561,7 @@ function initializeAdaptiveSoundPanel() {
     localStorage.setItem("iamAdaptiveSoundLayer", "off");
     syncInterface();
     window.requestAnimationFrame(() => {
-      document.querySelector("[data-television-room]")?.setAttribute("aria-hidden", "false");
+      document.body.append(panel);
       document.body.classList.add("iam-sound-direct-page");
       document.body.dataset.adaptiveSoundDirect = "true";
       openPanel();
