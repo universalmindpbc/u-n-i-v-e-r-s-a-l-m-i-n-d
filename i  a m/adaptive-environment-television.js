@@ -7052,7 +7052,13 @@
 
   function syncSoundResearchControl() {
     emdrSoundResearch?.setAttribute("aria-pressed", String(soundResearchEnabled));
-    emdrSoundResearch?.setAttribute("aria-label", soundResearchEnabled ? "Turn Sound Research Layer off" : "Turn Sound Research Layer on");
+    const adaptivePanelAvailable = Boolean(document.querySelector("[data-adaptive-sound-panel]"));
+    emdrSoundResearch?.setAttribute(
+      "aria-label",
+      adaptivePanelAvailable
+        ? "Open Sound Research Layer controls"
+        : (soundResearchEnabled ? "Turn Sound Research Layer off" : "Turn Sound Research Layer on")
+    );
   }
 
   function setSoundResearchEnabled(enabled, { persist = true } = {}) {
@@ -8358,7 +8364,11 @@
   emdrSoundResearch?.addEventListener("click", (event) => {
     event.preventDefault();
     event.stopPropagation();
-    setSoundResearchEnabled(!soundResearchEnabled);
+    if (document.querySelector("[data-adaptive-sound-panel]")) {
+      window.dispatchEvent(new CustomEvent("iam:adaptive-sound-open"));
+    } else {
+      setSoundResearchEnabled(!soundResearchEnabled);
+    }
   });
   syncEmdrStyleButtons();
   syncSoundResearchControl();
