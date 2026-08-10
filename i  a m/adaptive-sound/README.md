@@ -64,8 +64,11 @@ The Phase 1 implementation preserves these locked boundaries:
 - `controller-v1.js` — listener-action-only staging integration, dual-mono
   output routing, Quantum Tree owner-controller coordination, diagnostic state,
   fail-safe teardown, and the non-autoplay `?sound=1` direct entry.
-- `panel-v1.css` — calm responsive treatment with one prominent Quantum Tree
-  LED bar, four entrainment-frequency LED bars, and one listen/stop control.
+- `panel-v1.css` — full-screen video composition with four overlapping vesica
+  forms at exactly `44%` opacity, a four-lane isochronic mix matrix, and the
+  Quantum Tree baseline. The remembered Quantum Tree source balance is shown as
+  `77%` for `7.38 Hz`, `77%` for `111 Hz`, and `86%` for `528 Hz`, with subtle
+  independent visual modulation; the existing mastered recording is unchanged.
   Engineering controls remain visually absent from the listener experience.
 - `tools/check-adaptive-sound-dsp.mjs` — objective verification.
 - `tools/render-adaptive-sound-reference.mjs` — non-playing, hashed Float32 WAV

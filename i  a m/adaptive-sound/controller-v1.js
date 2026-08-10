@@ -62,13 +62,27 @@ function initializeAdaptiveSoundPanel() {
     laneId,
     panel.querySelector(`[data-adaptive-lane-meter="${laneId}"]`),
   ]));
+  const channelMeters = Object.fromEntries(LANE_IDS.map((laneId) => [
+    laneId,
+    panel.querySelector(`[data-adaptive-channel-meter="${laneId}"]`),
+  ]));
+  const channelWeightReadouts = Object.fromEntries(LANE_IDS.map((laneId) => [
+    laneId,
+    panel.querySelector(`[data-adaptive-channel-weight="${laneId}"]`),
+  ]));
   const carrierButtons = Array.from(panel.querySelectorAll("[data-adaptive-carrier]"));
   const carrierReadout = panel.querySelector("[data-adaptive-carrier-readout]");
+  const carrierCenter = panel.querySelector("[data-adaptive-carrier-center]");
   const intensity = panel.querySelector("[data-adaptive-intensity]");
   const intensityReadout = panel.querySelector("[data-adaptive-intensity-readout]");
   const adaptiveMeter = panel.querySelector("[data-adaptive-output-meter]");
   const quantumMeter = panel.querySelector("[data-quantum-tree-panel-meter]");
   const quantumState = panel.querySelector("[data-quantum-tree-panel-state]");
+  const quantumChannelMeters = Object.freeze([
+    { element: panel.querySelector('[data-quantum-channel-meter="isochronic"]'), level: 0.77, rate: 0.17, phase: 0.4 },
+    { element: panel.querySelector('[data-quantum-channel-meter="carrier"]'), level: 0.77, rate: 0.13, phase: 2.1 },
+    { element: panel.querySelector('[data-quantum-channel-meter="constant"]'), level: 0.86, rate: 0.11, phase: 4.2 },
+  ]);
   const noiseLabel = panel.querySelector("[data-adaptive-noise-label]");
   const noiseDetail = panel.querySelector("[data-adaptive-noise-detail]");
   const auditionPanel = panel.querySelector("[data-adaptive-sound-audition]");
@@ -225,6 +239,7 @@ function initializeAdaptiveSoundPanel() {
 
   function closePanel(restoreFocus = false) {
     if (!state.open) return;
+    if (directSoundPage && state.synthEnabled) setSynthEnabled(false);
     state.open = false;
     window.clearInterval(state.quantumTimer);
     state.quantumTimer = 0;
@@ -256,6 +271,7 @@ function initializeAdaptiveSoundPanel() {
       state.masterEnabled = true;
       window.IAMQuantumTree?.setEnabled?.(true);
     }
+    if (directSoundPage) window.IAMQuantumTree?.setAuditionMode?.(state.synthEnabled);
     if (state.synthEnabled && state.masterEnabled) {
       await rebuildEngine("adaptive_on");
     } else {
@@ -390,6 +406,8 @@ function initializeAdaptiveSoundPanel() {
         ? Number(lane?.envelope_gain || 0) * Math.sqrt(Number(lane?.power_weight || 0)) / Math.sqrt(0.8)
         : 0;
       laneMeters[laneId]?.style.setProperty("--lane-meter", String(clamp(weightedLevel, 0, 1)));
+      const mixAllocation = state.enabledLanes[laneId] ? Number(lane?.power_weight || 0) : 0;
+      channelMeters[laneId]?.style.setProperty("--channel-meter", String(clamp(mixAllocation, 0, 1)));
     }
   }
 
@@ -404,6 +422,7 @@ function initializeAdaptiveSoundPanel() {
     if (!diagnostics) {
       if (quantumState) quantumState.textContent = "BASELINE READY";
       setMeter(quantumMeter, 0);
+      updateQuantumChannelMeters(true);
       return;
     }
     state.masterEnabled = Boolean(diagnostics.enabled);
@@ -411,12 +430,24 @@ function initializeAdaptiveSoundPanel() {
       ? Number(diagnostics.currentVolume || 0) / Number(diagnostics.peakVolume)
       : 0;
     setMeter(quantumMeter, clamp(relativeLevel, 0, 1));
+    updateQuantumChannelMeters(Boolean(diagnostics.enabled));
     if (quantumState) {
       quantumState.textContent = diagnostics.playing
         ? (diagnostics.continuityActive ? "CONTINUITY ACTIVE" : "SIGNAL ACTIVE")
         : (diagnostics.enabled ? "READY" : "MASTER OFF");
     }
     syncMasterInterface();
+  }
+
+  function updateQuantumChannelMeters(enabled) {
+    const now = (window.performance?.now?.() || Date.now()) / 1000;
+    quantumChannelMeters.forEach(({ element, level, rate, phase }) => {
+      if (!element) return;
+      const slowLfo = Math.sin((now * Math.PI * 2 * rate) + phase) * 0.022;
+      const character = Math.sin((now * Math.PI * 2 * rate * 2.37) + (phase * 0.61)) * 0.009;
+      const displayedLevel = enabled ? clamp(level * (1 + slowLfo + character), 0, 1) : 0;
+      element.style.setProperty("--quantum-channel-meter", String(displayedLevel));
+    });
   }
 
   function syncInterface() {
@@ -427,6 +458,7 @@ function initializeAdaptiveSoundPanel() {
     for (const laneId of LANE_IDS) {
       const weight = profile?.diamond_power_weights?.[laneId];
       if (laneWeightReadouts[laneId]) laneWeightReadouts[laneId].textContent = Number.isFinite(weight) ? formatPercent(weight) : "—";
+      if (channelWeightReadouts[laneId]) channelWeightReadouts[laneId].textContent = Number.isFinite(weight) ? formatPercent(weight) : "—";
       const laneButton = laneButtons.find((button) => button.dataset.adaptiveLaneToggle === laneId);
       laneButton?.toggleAttribute("disabled", !profile);
       laneButton?.setAttribute("aria-pressed", String(Boolean(profile) && state.enabledLanes[laneId]));
@@ -434,11 +466,13 @@ function initializeAdaptiveSoundPanel() {
         ?.classList.toggle("is-lane-off", Boolean(profile) && !state.enabledLanes[laneId]);
       if (!profile) {
         laneMeters[laneId]?.style.setProperty("--lane-meter", "0");
+        channelMeters[laneId]?.style.setProperty("--channel-meter", "0");
       } else if (!state.synthEnabled) {
         const restingLevel = state.enabledLanes[laneId]
           ? Math.sqrt(Number(weight || 0)) / Math.sqrt(0.8)
           : 0;
         laneMeters[laneId]?.style.setProperty("--lane-meter", String(clamp(restingLevel, 0, 1)));
+        channelMeters[laneId]?.style.setProperty("--channel-meter", String(clamp(Number(weight || 0), 0, 1)));
       }
     }
     if (profileLabel) profileLabel.textContent = meta?.label || "CHOOSE A PROFILE";
@@ -450,6 +484,7 @@ function initializeAdaptiveSoundPanel() {
     if (synthToggleSubLabel) synthToggleSubLabel.textContent = "";
     carrierButtons.forEach((button) => button.setAttribute("aria-checked", String(Number(button.dataset.adaptiveCarrier) === state.carrierHz)));
     if (carrierReadout) carrierReadout.textContent = `${state.carrierHz} Hz`;
+    if (carrierCenter) carrierCenter.textContent = `${state.carrierHz} Hz`;
     if (intensity) {
       intensity.value = String(state.intensity);
       intensity.style.setProperty("--intensity", `${state.intensity}%`);
@@ -527,7 +562,7 @@ function initializeAdaptiveSoundPanel() {
     syncInterface();
     window.requestAnimationFrame(() => {
       document.querySelector("[data-television-room]")?.setAttribute("aria-hidden", "false");
-      document.body.classList.add("television-room-open", "iam-sound-direct-page");
+      document.body.classList.add("iam-sound-direct-page");
       document.body.dataset.adaptiveSoundDirect = "true";
       openPanel();
     });

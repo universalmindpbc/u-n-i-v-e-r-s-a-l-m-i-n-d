@@ -25,7 +25,10 @@ assert.match(page, /data-emdr-sound-research[^>]*aria-haspopup="dialog"[^>]*aria
 assert.match(page, /data-adaptive-sound-master[^>]*aria-pressed="true"/);
 assert.equal((page.match(/data-adaptive-profile=/g) || []).length, 4);
 assert.equal((page.match(/data-adaptive-lane-meter=/g) || []).length, 4);
+assert.equal((page.match(/data-adaptive-channel-meter=/g) || []).length, 4);
+assert.equal((page.match(/data-adaptive-channel-weight=/g) || []).length, 4);
 assert.equal((page.match(/data-quantum-tree-panel-meter/g) || []).length, 1);
+assert.equal((page.match(/data-quantum-channel-meter=/g) || []).length, 3);
 assert.equal((page.match(/data-adaptive-carrier=/g) || []).length, 5);
 assert.equal((page.match(/data-adaptive-lane-toggle=/g) || []).length, 4);
 assert.ok(page.includes("ENTRAINMENT FREQUENCIES"));
@@ -36,6 +39,9 @@ assert.ok(page.includes("111 Hz"));
 assert.ok(page.includes("7.38088 Hz"));
 assert.ok(page.includes("111.011 Hz"));
 assert.ok(page.includes("528.088 Hz"));
+assert.match(page, /data-quantum-channel-meter="isochronic"[\s\S]*?<strong>77%<\/strong>/);
+assert.match(page, /data-quantum-channel-meter="carrier"[\s\S]*?<strong>77%<\/strong>/);
+assert.match(page, /data-quantum-channel-meter="constant"[\s\S]*?<strong>86%<\/strong>/);
 assert.ok(page.includes("14,444 Hz LOW-PASS"));
 assert.ok(page.includes("MONO · IDENTICAL DUAL MONO"));
 assert.ok(page.includes("Delta brown · Theta white · Alpha pink · Gamma equal three-way split"));
@@ -59,6 +65,10 @@ assert.ok(panelController.includes("state.synthEnabled = false"));
 assert.ok(panelController.includes('const directSoundPage = query.get("sound") === "1"'));
 assert.ok(panelController.includes('document.body.dataset.adaptiveSoundDirect = "true"'));
 assert.ok(panelController.includes('localStorage.setItem("iamAdaptiveSoundLayer", "off")'));
+assert.ok(panelController.includes("window.IAMQuantumTree?.setAuditionMode?.(state.synthEnabled)"));
+assert.ok(panelController.includes("level: 0.77"));
+assert.ok(panelController.includes("level: 0.86"));
+assert.ok(panelController.includes('channelMeters[laneId]?.style.setProperty("--channel-meter", String(clamp(mixAllocation, 0, 1)))'));
 assert.ok(panelController.includes("phase1_explicit_lab_override") === false);
 assert.equal(/localVideo|programmeAudio|continuationAudio|soundResearchAudio/.test(panelController), false);
 
@@ -67,13 +77,15 @@ assert.ok(worklet.includes('fail_safe: "adaptive_synth_off_quantum_tree_and_prog
 assert.ok(worklet.includes("for (const channel of output) channel[frame] = mono"));
 assert.ok(worklet.includes("output_peak: this.meterPeak"));
 
-assert.match(panelCss, /\.iam-sound-module--quantum \{[\s\S]*?display: grid/);
-assert.match(panelCss, /\.iam-sound-diamond \{[\s\S]*?display: grid/);
-assert.match(panelCss, /repeating-linear-gradient/);
-assert.match(panelCss, /#171816/i);
-assert.match(panelCss, /\.iam-sound-module--control,[\s\S]*?display: none !important/);
+assert.match(panelCss, /\.iam-sound-console \{[\s\S]*?inset: 0;[\s\S]*?background: transparent/);
+assert.match(panelCss, /body\.iam-sound-direct-page \.background-video video \{[\s\S]*?opacity: 1 !important/);
+assert.match(panelCss, /\.iam-sound-diamond__point--delta \{[\s\S]*?rgba\(26, 146, 229, 0\.44\)/);
+assert.match(panelCss, /\.iam-sound-diamond__point--theta \{[\s\S]*?rgba\(245, 177, 22, 0\.44\)/);
+assert.match(panelCss, /\.iam-sound-diamond__point--alpha \{[\s\S]*?rgba\(230, 45, 137, 0\.44\)/);
+assert.match(panelCss, /\.iam-sound-diamond__point--gamma \{[\s\S]*?rgba\(56, 201, 55, 0\.44\)/);
+assert.match(panelCss, /\.iam-sound-carrier,[\s\S]*?display: none !important/);
 assert.match(panelCss, /\.iam-sound-console__master \{[\s\S]*?display: none/);
-assert.match(panelCss, /@media \(max-width: 620px\)/);
+assert.match(panelCss, /@media \(max-width: 900px\)/);
 assert.match(panelCss, /@media \(prefers-reduced-motion: reduce\)/);
 assert.match(panelCss, /:focus-visible/);
 assert.equal(/Didot|Bodoni|Vogue logo|Neve logo|Raytheon logo/i.test(panelCss), false);
@@ -113,8 +125,8 @@ const sourceHash = createHash("sha256")
 
 console.log(JSON.stringify({
   passed: true,
-  panel: "minimal_quantum_tree_plus_four_frequency_led_bars",
-  portal_entry: "Sound button or ?sound=1 opens a calm five-bar page with one listen/stop control",
+  panel: "full_screen_video_four_vesica_quantum_three_channel_four_lane_matrix",
+  portal_entry: "Sound button or ?sound=1 opens the full-screen video composition without audible autoplay",
   quantum_tree_preserved: true,
   programme_audio_routed_through_synth: false,
   adaptive_default_requires_listener_start: true,
