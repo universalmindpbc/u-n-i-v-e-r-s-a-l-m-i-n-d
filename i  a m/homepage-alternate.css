@@ -332,7 +332,7 @@ body.adaptive-typewriter-complete .homepage-alternate__frequency {
 }
 
 .homepage-alternate-page .adaptive-environment__play {
-  bottom: 8.8vh;
+  bottom: 13.8vh;
   width: clamp(96px, 7vw, 118px);
   height: clamp(96px, 7vw, 118px);
   border: 0;
@@ -345,7 +345,7 @@ body.adaptive-typewriter-complete .homepage-alternate__frequency {
 }
 
 .homepage-alternate-page .adaptive-television-cta {
-  bottom: 2.8vh;
+  bottom: 7.8vh;
   gap: 5px;
 }
 
@@ -401,7 +401,7 @@ body.television-room-open .homepage-alternate__frequency {
   }
 
   .homepage-alternate-page .adaptive-environment__play {
-    bottom: 8.1vh;
+    bottom: 13.1vh;
     width: 88px;
     height: 88px;
   }
@@ -501,13 +501,13 @@ body.television-room-open .homepage-alternate__frequency {
   }
 
   .homepage-alternate-page .adaptive-environment__play {
-    bottom: 8.2vh;
+    bottom: 11.2vh;
     width: 84px;
     height: 84px;
   }
 
   .homepage-alternate-page .adaptive-television-cta {
-    bottom: 1.7vh;
+    bottom: 4.7vh;
   }
 }
 
