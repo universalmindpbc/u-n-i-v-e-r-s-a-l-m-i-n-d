@@ -508,7 +508,7 @@ body[data-adaptive-sound-engine="running"] .iam-sound-console__telemetry strong:
 .iam-sound-console__footer p {
   position: absolute;
   left: 3.7vw;
-  bottom: 3.8vh;
+  bottom: 8.2vh;
   margin: 0;
   color: rgba(255, 255, 255, 0.92);
   font-size: clamp(9px, 0.65vw, 13px);
@@ -521,7 +521,7 @@ body[data-adaptive-sound-engine="running"] .iam-sound-console__telemetry strong:
 .iam-sound-console__footer strong {
   position: absolute;
   left: 8.7vw;
-  bottom: 7.1vh;
+  bottom: 13.2vh;
   color: #fff;
   font-size: clamp(17px, 1.25vw, 24px);
   font-weight: 650;
