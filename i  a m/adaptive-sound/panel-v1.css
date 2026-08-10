@@ -348,6 +348,7 @@ body[data-adaptive-sound-engine="running"] .iam-sound-console__telemetry strong:
 
 .iam-sound-diamond__core:disabled {
   cursor: default;
+  pointer-events: none;
 }
 
 .iam-sound-diamond__core > span {

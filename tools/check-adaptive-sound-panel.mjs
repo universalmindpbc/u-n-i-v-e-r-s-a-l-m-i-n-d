@@ -85,6 +85,7 @@ assert.match(panelCss, /\.iam-sound-diamond__point--alpha \{[\s\S]*?rgba\(230, 4
 assert.match(panelCss, /\.iam-sound-diamond__point--gamma \{[\s\S]*?rgba\(56, 201, 55, 0\.44\)/);
 assert.match(panelCss, /\.iam-sound-channel-wave \{[\s\S]*?opacity: 0\.76[\s\S]*?iam-sound-wave-breathe 5\.6s/);
 assert.match(panelCss, /@keyframes iam-sound-wave-breathe/);
+assert.match(panelCss, /\.iam-sound-diamond__core:disabled \{[\s\S]*?pointer-events: none/);
 assert.match(panelCss, /\.iam-sound-carrier,[\s\S]*?display: none !important/);
 assert.match(panelCss, /\.iam-sound-console__master \{[\s\S]*?display: none/);
 assert.match(panelCss, /@media \(max-width: 900px\)/);
