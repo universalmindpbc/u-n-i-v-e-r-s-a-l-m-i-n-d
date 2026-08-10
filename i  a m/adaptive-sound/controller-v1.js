@@ -78,7 +78,8 @@ function initializeAdaptiveSoundPanel() {
   const scienceLink = panel.querySelector('a[href="science.html#research-sound"]');
   const storedProfile = localStorage.getItem("iamAdaptiveSoundProfile") || "";
   const storedCarrier = Number(localStorage.getItem("iamAdaptiveSoundCarrier"));
-  const storedIntensity = Number(localStorage.getItem("iamAdaptiveSoundIntensity"));
+  const storedIntensityValue = localStorage.getItem("iamAdaptiveSoundIntensity");
+  const storedIntensity = storedIntensityValue === null ? Number.NaN : Number(storedIntensityValue);
 
   const state = {
     open: false,
