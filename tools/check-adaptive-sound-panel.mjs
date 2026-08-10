@@ -56,6 +56,9 @@ assert.ok(panelController.includes("window.IAMQuantumTree?.setEnabled?.(state.ma
 assert.ok(panelController.includes('localStorage.getItem("iamSoundResearchLayer") !== "off"'));
 assert.ok(panelController.includes('localStorage.getItem("iamAdaptiveSoundLayer") === "on"'));
 assert.ok(panelController.includes("state.synthEnabled = false"));
+assert.ok(panelController.includes('const directSoundPage = query.get("sound") === "1"'));
+assert.ok(panelController.includes('document.body.dataset.adaptiveSoundDirect = "true"'));
+assert.ok(panelController.includes('localStorage.setItem("iamAdaptiveSoundLayer", "off")'));
 assert.ok(panelController.includes("phase1_explicit_lab_override") === false);
 assert.equal(/localVideo|programmeAudio|continuationAudio|soundResearchAudio/.test(panelController), false);
 
@@ -111,7 +114,7 @@ const sourceHash = createHash("sha256")
 console.log(JSON.stringify({
   passed: true,
   panel: "minimal_quantum_tree_plus_four_frequency_led_bars",
-  portal_entry: "Sound button opens a calm five-bar page with one listen/stop control",
+  portal_entry: "Sound button or ?sound=1 opens a calm five-bar page with one listen/stop control",
   quantum_tree_preserved: true,
   programme_audio_routed_through_synth: false,
   adaptive_default_requires_listener_start: true,

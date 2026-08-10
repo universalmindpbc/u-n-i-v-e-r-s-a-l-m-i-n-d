@@ -63,7 +63,7 @@ The Phase 1 implementation preserves these locked boundaries:
   diagnostics.
 - `controller-v1.js` — listener-action-only staging integration, dual-mono
   output routing, Quantum Tree owner-controller coordination, diagnostic state,
-  and fail-safe teardown.
+  fail-safe teardown, and the non-autoplay `?sound=1` direct entry.
 - `panel-v1.css` — calm responsive treatment with one prominent Quantum Tree
   LED bar, four entrainment-frequency LED bars, and one listen/stop control.
   Engineering controls remain visually absent from the listener experience.

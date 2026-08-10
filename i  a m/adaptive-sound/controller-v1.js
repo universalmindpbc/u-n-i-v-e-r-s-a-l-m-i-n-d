@@ -104,8 +104,10 @@ function initializeAdaptiveSoundPanel() {
 
   if (!state.profileId) state.synthEnabled = false;
 
+  const query = new URLSearchParams(window.location.search);
   const soundLabEnabled = window.location.hostname === "staging.universalmind.tv"
-    && new URLSearchParams(window.location.search).get("soundLab") === "1";
+    && query.get("soundLab") === "1";
+  const directSoundPage = query.get("sound") === "1";
   if (auditionPanel) auditionPanel.hidden = !soundLabEnabled;
 
   soundButton.addEventListener("click", (event) => {
@@ -519,6 +521,17 @@ function initializeAdaptiveSoundPanel() {
   document.body.dataset.adaptiveSoundPanel = "ready";
   document.body.dataset.adaptiveSoundPanelOpen = "false";
   syncInterface();
+  if (directSoundPage) {
+    state.synthEnabled = false;
+    localStorage.setItem("iamAdaptiveSoundLayer", "off");
+    syncInterface();
+    window.requestAnimationFrame(() => {
+      document.querySelector("[data-television-room]")?.setAttribute("aria-hidden", "false");
+      document.body.classList.add("television-room-open", "iam-sound-direct-page");
+      document.body.dataset.adaptiveSoundDirect = "true";
+      openPanel();
+    });
+  }
 }
 
 function formatPercent(weight) {
