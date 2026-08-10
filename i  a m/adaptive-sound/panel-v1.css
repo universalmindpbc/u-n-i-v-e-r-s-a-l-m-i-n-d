@@ -328,8 +328,8 @@ body[data-adaptive-sound-engine="running"] .iam-sound-console__telemetry strong:
   align-items: center;
   justify-content: center;
   gap: 4px;
-  width: min(16vw, 230px);
-  min-width: 164px;
+  width: min(22vw, 320px);
+  min-width: 280px;
   min-height: 116px;
   padding: 16px;
   border: 0;
@@ -468,7 +468,7 @@ body[data-adaptive-sound-engine="running"] .iam-sound-console__telemetry strong:
 .iam-sound-channel small {
   position: absolute;
   left: 50%;
-  bottom: 0.7vh;
+  bottom: 1.5vh;
   color: rgba(255, 255, 255, 0.74);
   font-size: clamp(10px, 0.7vw, 14px);
   font-weight: 500;
