@@ -82,6 +82,8 @@ assert.ok(panelController.includes('document.body.dataset.adaptiveSoundDirect = 
 assert.equal(panelController.includes("iamAdaptiveSoundLayer"), false);
 assert.ok(panelController.includes('await selectProfile(button.dataset.adaptiveProfile || "", "listener_selection")'));
 assert.ok(panelController.includes('researchMoreButton?.click()'));
+assert.ok(panelController.includes('document.body.append(researchDialog)'));
+assert.ok(panelController.includes('document.body.append(globalNavigation)'));
 assert.equal(/navigationButton\?\.addEventListener\([\s\S]*?closePanel\(false\)/.test(panelController), false);
 assert.ok(panelController.includes('carrierSelect?.addEventListener("change"'));
 assert.ok(panelController.includes('localStorage.setItem("iamAdaptiveSoundProfile", profileId)'));

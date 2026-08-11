@@ -51,6 +51,7 @@ function initializeAdaptiveSoundPanel() {
   const navigationButton = panel.querySelector("[data-adaptive-sound-nav]");
   const researchButton = panel.querySelector("[data-adaptive-sound-research-open]");
   const researchMoreButton = document.querySelector(".adaptive-television-research-tooltip-host--sound .adaptive-television-research-tooltip__more");
+  const researchDialog = document.querySelector("[data-research-dialog]");
   const masterButton = panel.querySelector("[data-adaptive-sound-master]");
   const masterLabel = panel.querySelector("[data-adaptive-sound-master-label]");
   const engineLed = panel.querySelector("[data-adaptive-sound-engine-led]");
@@ -142,11 +143,14 @@ function initializeAdaptiveSoundPanel() {
   navigationButton?.addEventListener("click", (event) => {
     event.preventDefault();
     event.stopPropagation();
+    const globalNavigation = document.querySelector("[data-global-nav]");
+    if (globalNavigation && globalNavigation.parentElement !== document.body) document.body.append(globalNavigation);
     window.requestAnimationFrame(() => document.querySelector(".global-nav-trigger")?.click());
   });
   researchButton?.addEventListener("click", (event) => {
     event.preventDefault();
     event.stopPropagation();
+    if (researchDialog && researchDialog.parentElement !== document.body) document.body.append(researchDialog);
     researchMoreButton?.click();
   });
   masterButton?.addEventListener("click", () => setMasterEnabled(!state.masterEnabled));
