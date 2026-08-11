@@ -63,10 +63,15 @@ assert.match(page, /data-quantum-channel-meter="constant"[\s\S]*?<strong>86%<\/s
 assert.ok(page.includes("14,444 Hz LOW-PASS"));
 assert.ok(page.includes("MONO · IDENTICAL DUAL MONO"));
 assert.ok(page.includes("Delta brown · Theta white · Alpha pink · Gamma equal three-way split"));
-assert.ok(page.includes('data-research-frequency="Isochronic tone: 7.38088 Hz, carried on a 111.011 Hz sine wave, plus a separate constant 528.088 Hz sine wave, together as one. Adaptive diamond: 3.33 / 7.38 / 10.11 / exactly 111 Hz."'));
+assert.ok(page.includes('data-research-frequency="Isochronic tone: 7.38088 Hz, carried on a 111.011 Hz sine wave, plus a separate constant 528.088 Hz sine wave, together as one."'));
+assert.ok(page.includes("Sound Research Layer — Investigating whether an optional sound layer modulates short term transcriptional pathways, relevant to mental health."));
+assert.ok(page.includes('To learn more about the scientific research behind these selected frequencies, [<a href="science.html#research-sound" data-research-dialog-science-link>click here</a>].'));
+assert.ok(page.includes("[ Proposed double blinded RCT with mRNA sequencing via buccal swab and roadmap to CandyCollect lollypop. Target genes include NMDAR for cognition and memory, OXTR, SLC6A4, DRD2, IL6, NR3C1, DOCK2, CD38, together as one ]"));
+assert.equal(page.includes("Sound Research Layer — an optional exploratory layer of precisely logged acoustic conditions."), false);
+assert.equal(page.includes("Frequencies and gene labels describe study hypotheses only."), false);
+assert.equal(page.includes("Adaptive diamond: 3.33 / 7.38 / 10.11 / exactly 111 Hz."), false);
 assert.equal(page.includes("Carrier research conditions:"), false);
 assert.equal(page.includes("full frequencies, genes + medical research →"), false);
-assert.equal(page.includes("Sound Research Layer - Investigating whether an optional sound layer modulates short term transcriptional pathways"), false);
 assert.equal(page.includes("gene activated"), false);
 assert.equal(page.includes("brain entrained"), false);
 assert.equal(scienceData.includes("adaptiveProgramme"), false);
