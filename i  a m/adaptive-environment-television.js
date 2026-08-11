@@ -5935,6 +5935,9 @@
   }
 
   window.addEventListener("iam:care-open", closeReactionWalletSoftly);
+  window.addEventListener("iam:adaptive-sound-panel-opened", () => {
+    setReactionWalletOpen(false);
+  });
 
   function scheduleReactionWalletCollapse(delay = 1800) {
     window.clearTimeout(reactionWalletCollapseTimer);

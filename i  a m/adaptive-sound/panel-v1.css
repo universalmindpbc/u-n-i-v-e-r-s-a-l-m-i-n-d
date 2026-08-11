@@ -498,26 +498,26 @@ body[data-adaptive-sound-engine="running"] .iam-sound-console__telemetry strong:
   stroke: rgba(255, 255, 255, 0.92);
   stroke-width: 2.5;
   stroke-linecap: round;
-  stroke-dasharray: 440;
-  stroke-dashoffset: 440;
+  stroke-dasharray: var(--matrix-line-length, 440);
+  stroke-dashoffset: var(--matrix-line-length, 440);
   vector-effect: non-scaling-stroke;
   filter: drop-shadow(0 1px 5px rgba(0, 0, 0, 0.42));
 }
 
 .iam-sound-panel[aria-hidden="false"] .iam-sound-diamond__matrix-line--delta-theta {
-  animation: iam-sound-matrix-draw 720ms ease 3800ms forwards;
+  animation: iam-sound-matrix-draw 1080ms ease 3800ms forwards;
 }
 
 .iam-sound-panel[aria-hidden="false"] .iam-sound-diamond__matrix-line--theta-alpha {
-  animation: iam-sound-matrix-draw 720ms ease 4550ms forwards;
+  animation: iam-sound-matrix-draw 1080ms ease 4910ms forwards;
 }
 
 .iam-sound-panel[aria-hidden="false"] .iam-sound-diamond__matrix-line--alpha-gamma {
-  animation: iam-sound-matrix-draw 720ms ease 5300ms forwards;
+  animation: iam-sound-matrix-draw 1080ms ease 6020ms forwards;
 }
 
 .iam-sound-panel[aria-hidden="false"] .iam-sound-diamond__matrix-line--gamma-delta {
-  animation: iam-sound-matrix-draw 720ms ease 6050ms forwards;
+  animation: iam-sound-matrix-draw 1080ms ease 7130ms forwards;
 }
 
 @keyframes iam-sound-matrix-draw {
@@ -602,8 +602,8 @@ body[data-adaptive-sound-engine="running"] .iam-sound-console__telemetry strong:
 
 .iam-sound-panel[aria-hidden="false"] .iam-sound-diamond__orbit {
   animation:
-    iam-sound-orbit-reveal 720ms ease 6800ms forwards,
-    iam-sound-planet-orbit 34s linear 6800ms infinite;
+    iam-sound-orbit-reveal 720ms ease 8240ms forwards,
+    iam-sound-planet-orbit 34s linear 8240ms infinite;
 }
 
 .iam-sound-diamond__planet {
@@ -686,7 +686,7 @@ body[data-adaptive-sound-engine="running"] .iam-sound-console__telemetry strong:
 }
 
 .iam-sound-panel[aria-hidden="false"] .iam-sound-diamond__core {
-  animation: iam-sound-sequence-dissolve 720ms ease 6800ms forwards;
+  animation: iam-sound-sequence-dissolve 720ms ease 8240ms forwards;
 }
 
 .iam-sound-diamond__wave {
@@ -705,8 +705,8 @@ body[data-adaptive-sound-engine="running"] .iam-sound-console__telemetry strong:
 
 .iam-sound-panel[aria-hidden="false"] .iam-sound-diamond__wave {
   animation:
-    iam-sound-wave-reveal 720ms ease 7550ms forwards,
-    iam-sound-wave-breathe 5.6s ease-in-out 8270ms infinite;
+    iam-sound-wave-reveal 720ms ease 8990ms forwards,
+    iam-sound-wave-breathe 5.6s ease-in-out 9710ms infinite;
 }
 
 .iam-sound-diamond__wave path {
@@ -986,6 +986,13 @@ body[data-adaptive-sound-engine="running"] .iam-sound-console__telemetry strong:
 
 body.iam-sound-panel-open {
   overflow: hidden;
+}
+
+body.iam-sound-panel-open .brand,
+body.iam-sound-panel-open .global-nav-trigger {
+  opacity: 0 !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
 }
 
 body.iam-sound-panel-open.nav-open .global-nav {

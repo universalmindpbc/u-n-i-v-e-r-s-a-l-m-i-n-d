@@ -35,6 +35,7 @@ const LANE_IDS = Object.freeze(["delta", "theta", "alpha", "gamma"]);
 const DEFAULT_PROFILE_ID = "calm_alpha_80_v1";
 const DEFAULT_INTENSITY = 35;
 const TECHNICAL_OUTPUT_GAIN = 0.08;
+const MATRIX_LABEL_GAP_PX = 34;
 const WAVEFORM_POINTS = Object.freeze([
   [2, 44], [24, 44], [31, 34], [39, 56], [48, 11], [58, 71],
   [68, 33], [77, 62], [86, 44], [94, 55], [102, 44], [118, 44],
@@ -98,6 +99,29 @@ function initializeAdaptiveSoundPanel() {
   const scienceLink = panel.querySelector('a[href="science.html#research-sound"]');
   const waveform = panel.querySelector(".iam-sound-diamond__wave");
   const waveformPaths = Array.from(panel.querySelectorAll("[data-adaptive-wave-path]"));
+  const matrix = panel.querySelector(".iam-sound-diamond__matrix");
+  const matrixConnections = Object.freeze([
+    {
+      line: panel.querySelector(".iam-sound-diamond__matrix-line--delta-theta"),
+      from: panel.querySelector(".iam-sound-diamond__point--delta > small"),
+      to: panel.querySelector(".iam-sound-diamond__point--theta > small"),
+    },
+    {
+      line: panel.querySelector(".iam-sound-diamond__matrix-line--theta-alpha"),
+      from: panel.querySelector(".iam-sound-diamond__point--theta > small"),
+      to: panel.querySelector(".iam-sound-diamond__point--alpha > small"),
+    },
+    {
+      line: panel.querySelector(".iam-sound-diamond__matrix-line--alpha-gamma"),
+      from: panel.querySelector(".iam-sound-diamond__point--alpha > small"),
+      to: panel.querySelector(".iam-sound-diamond__point--gamma > small"),
+    },
+    {
+      line: panel.querySelector(".iam-sound-diamond__matrix-line--gamma-delta"),
+      from: panel.querySelector(".iam-sound-diamond__point--gamma > small"),
+      to: panel.querySelector(".iam-sound-diamond__point--delta > small"),
+    },
+  ]);
   const storedProfile = localStorage.getItem("iamAdaptiveSoundProfile") || "";
   const storedCarrier = Number(localStorage.getItem("iamAdaptiveSoundCarrier"));
   const storedIntensityValue = localStorage.getItem("iamAdaptiveSoundIntensity");
@@ -138,6 +162,11 @@ function initializeAdaptiveSoundPanel() {
     openPanel();
   }, true);
   window.addEventListener("iam:adaptive-sound-open", openPanel);
+  let matrixResizeFrame = 0;
+  window.addEventListener("resize", () => {
+    window.cancelAnimationFrame(matrixResizeFrame);
+    matrixResizeFrame = window.requestAnimationFrame(updateMatrixGeometry);
+  });
 
   closeButtons.forEach((button) => button.addEventListener("click", () => closePanel(true)));
   navigationButton?.addEventListener("click", (event) => {
@@ -248,15 +277,68 @@ function initializeAdaptiveSoundPanel() {
     state.masterEnabled = window.IAMQuantumTree?.diagnostics?.().enabled
       ?? (localStorage.getItem("iamSoundResearchLayer") !== "off");
     panel.inert = false;
+    updateMatrixGeometry();
     panel.setAttribute("aria-hidden", "false");
     soundButton.setAttribute("aria-expanded", "true");
     document.body.classList.add("iam-sound-panel-open");
     document.body.dataset.adaptiveSoundPanelOpen = "true";
+    window.dispatchEvent(new CustomEvent("iam:adaptive-sound-panel-opened"));
     if (directSoundPage) window.IAMQuantumTree?.setAuditionMode?.(state.masterEnabled);
     startQuantumMonitor();
     syncInterface();
-    window.requestAnimationFrame(() => consoleElement.focus({ preventScroll: true }));
+    window.requestAnimationFrame(() => {
+      updateMatrixGeometry();
+      consoleElement.focus({ preventScroll: true });
+    });
+    window.setTimeout(updateMatrixGeometry, 850);
     if (state.synthEnabled && state.profileId && state.masterEnabled) rebuildEngine("panel_open");
+  }
+
+  function updateMatrixGeometry() {
+    if (!matrix) return;
+    const matrixRect = matrix.getBoundingClientRect();
+    if (matrixRect.width <= 0 || matrixRect.height <= 0) return;
+
+    matrix.setAttribute("viewBox", `0 0 ${matrixRect.width.toFixed(2)} ${matrixRect.height.toFixed(2)}`);
+    matrixConnections.forEach(({ line, from, to }) => {
+      if (!line || !from || !to) return;
+      const fromRect = from.getBoundingClientRect();
+      const toRect = to.getBoundingClientRect();
+      const fromCenter = {
+        x: fromRect.left + (fromRect.width / 2) - matrixRect.left,
+        y: fromRect.top + (fromRect.height / 2) - matrixRect.top,
+      };
+      const toCenter = {
+        x: toRect.left + (toRect.width / 2) - matrixRect.left,
+        y: toRect.top + (toRect.height / 2) - matrixRect.top,
+      };
+      const deltaX = toCenter.x - fromCenter.x;
+      const deltaY = toCenter.y - fromCenter.y;
+      const centerDistance = Math.hypot(deltaX, deltaY);
+      if (centerDistance <= 0) return;
+      const unitX = deltaX / centerDistance;
+      const unitY = deltaY / centerDistance;
+      const fromInset = labelEdgeDistance(fromRect, unitX, unitY) + MATRIX_LABEL_GAP_PX;
+      const toInset = labelEdgeDistance(toRect, unitX, unitY) + MATRIX_LABEL_GAP_PX;
+      const startX = fromCenter.x + (unitX * fromInset);
+      const startY = fromCenter.y + (unitY * fromInset);
+      const endX = toCenter.x - (unitX * toInset);
+      const endY = toCenter.y - (unitY * toInset);
+      const lineLength = Math.hypot(endX - startX, endY - startY);
+
+      line.setAttribute("x1", startX.toFixed(2));
+      line.setAttribute("y1", startY.toFixed(2));
+      line.setAttribute("x2", endX.toFixed(2));
+      line.setAttribute("y2", endY.toFixed(2));
+      line.style.setProperty("--matrix-line-length", lineLength.toFixed(2));
+    });
+  }
+
+  function labelEdgeDistance(rect, unitX, unitY) {
+    const distances = [];
+    if (Math.abs(unitX) > 0.0001) distances.push((rect.width / 2) / Math.abs(unitX));
+    if (Math.abs(unitY) > 0.0001) distances.push((rect.height / 2) / Math.abs(unitY));
+    return Math.min(...distances);
   }
 
   function closePanel(restoreFocus = false) {
