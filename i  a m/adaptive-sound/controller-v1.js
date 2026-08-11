@@ -49,6 +49,8 @@ if (panel && consoleElement && soundButton) initializeAdaptiveSoundPanel();
 function initializeAdaptiveSoundPanel() {
   const closeButtons = Array.from(panel.querySelectorAll("[data-adaptive-sound-close]"));
   const navigationButton = panel.querySelector("[data-adaptive-sound-nav]");
+  const researchButton = panel.querySelector("[data-adaptive-sound-research-open]");
+  const researchMoreButton = document.querySelector(".adaptive-television-research-tooltip-host--sound .adaptive-television-research-tooltip__more");
   const masterButton = panel.querySelector("[data-adaptive-sound-master]");
   const masterLabel = panel.querySelector("[data-adaptive-sound-master-label]");
   const engineLed = panel.querySelector("[data-adaptive-sound-engine-led]");
@@ -137,9 +139,15 @@ function initializeAdaptiveSoundPanel() {
   window.addEventListener("iam:adaptive-sound-open", openPanel);
 
   closeButtons.forEach((button) => button.addEventListener("click", () => closePanel(true)));
-  navigationButton?.addEventListener("click", () => {
-    closePanel(false);
+  navigationButton?.addEventListener("click", (event) => {
+    event.preventDefault();
+    event.stopPropagation();
     window.requestAnimationFrame(() => document.querySelector(".global-nav-trigger")?.click());
+  });
+  researchButton?.addEventListener("click", (event) => {
+    event.preventDefault();
+    event.stopPropagation();
+    researchMoreButton?.click();
   });
   masterButton?.addEventListener("click", () => setMasterEnabled(!state.masterEnabled));
   profileButtons.forEach((button) => button.addEventListener("click", async () => {

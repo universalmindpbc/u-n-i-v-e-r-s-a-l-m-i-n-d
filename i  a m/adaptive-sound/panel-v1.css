@@ -66,12 +66,12 @@
 
 .iam-sound-console__nav {
   position: absolute;
-  top: clamp(10px, 1.35vh, 20px);
-  left: clamp(16px, 1.4vw, 28px);
+  top: var(--brand-top, clamp(14px, 1.35vw, 28px));
+  left: var(--brand-left, clamp(20px, 1.37vw, 28px));
   display: grid;
   place-items: center;
-  width: clamp(44px, 3.1vw, 64px);
-  aspect-ratio: 1;
+  width: clamp(64px, 4.35vw, 90px);
+  height: clamp(64px, 4.35vw, 90px);
   padding: 0;
   border: 0;
   background: transparent;
@@ -100,10 +100,12 @@
 
 .iam-sound-console__master {
   position: absolute;
-  top: clamp(11px, 1.45vh, 21px);
-  right: clamp(70px, 5vw, 104px);
+  top: max(10px, calc(48vh - 10.7833784139849vw - 15.25vw - 44px));
+  left: 50%;
+  right: auto;
   display: flex;
   pointer-events: auto;
+  transform: translateX(-50%);
 }
 
 .iam-sound-console__master > span {
@@ -374,6 +376,7 @@ body[data-adaptive-sound-engine="running"] .iam-sound-console__telemetry strong:
   color: transparent;
   cursor: default;
   pointer-events: none;
+  transition: background-color 420ms ease;
 }
 
 .iam-sound-diamond__point--delta {
@@ -462,28 +465,24 @@ body[data-adaptive-sound-engine="running"] .iam-sound-console__telemetry strong:
   outline: none;
 }
 
-.iam-sound-panel[data-profile="sleep_delta_80_v1"] .iam-sound-diamond__point--delta,
-.iam-sound-diamond:has(.iam-sound-diamond__selector--delta:hover) .iam-sound-diamond__point--delta,
-.iam-sound-diamond:has(.iam-sound-diamond__selector--delta:focus-visible) .iam-sound-diamond__point--delta {
-  box-shadow: inset 0 0 0 2px rgba(255, 255, 255, 0.48), 0 0 34px rgba(26, 146, 229, 0.3);
+.iam-sound-panel[data-profile="sleep_delta_80_v1"] .iam-sound-diamond__point--delta {
+  background-color: rgba(26, 146, 229, 0.97);
+  box-shadow: none;
 }
 
-.iam-sound-panel[data-profile="mindfulness_theta_80_v1"] .iam-sound-diamond__point--theta,
-.iam-sound-diamond:has(.iam-sound-diamond__selector--theta:hover) .iam-sound-diamond__point--theta,
-.iam-sound-diamond:has(.iam-sound-diamond__selector--theta:focus-visible) .iam-sound-diamond__point--theta {
-  box-shadow: inset 0 0 0 2px rgba(255, 255, 255, 0.48), 0 0 34px rgba(245, 177, 22, 0.28);
+.iam-sound-panel[data-profile="mindfulness_theta_80_v1"] .iam-sound-diamond__point--theta {
+  background-color: rgba(245, 177, 22, 0.97);
+  box-shadow: none;
 }
 
-.iam-sound-panel[data-profile="calm_alpha_80_v1"] .iam-sound-diamond__point--alpha,
-.iam-sound-diamond:has(.iam-sound-diamond__selector--alpha:hover) .iam-sound-diamond__point--alpha,
-.iam-sound-diamond:has(.iam-sound-diamond__selector--alpha:focus-visible) .iam-sound-diamond__point--alpha {
-  box-shadow: inset 0 0 0 2px rgba(255, 255, 255, 0.48), 0 0 34px rgba(230, 45, 137, 0.28);
+.iam-sound-panel[data-profile="calm_alpha_80_v1"] .iam-sound-diamond__point--alpha {
+  background-color: rgba(230, 45, 137, 0.97);
+  box-shadow: none;
 }
 
-.iam-sound-panel[data-profile="inspiration_gamma_80_v1"] .iam-sound-diamond__point--gamma,
-.iam-sound-diamond:has(.iam-sound-diamond__selector--gamma:hover) .iam-sound-diamond__point--gamma,
-.iam-sound-diamond:has(.iam-sound-diamond__selector--gamma:focus-visible) .iam-sound-diamond__point--gamma {
-  box-shadow: inset 0 0 0 2px rgba(255, 255, 255, 0.48), 0 0 34px rgba(56, 201, 55, 0.28);
+.iam-sound-panel[data-profile="inspiration_gamma_80_v1"] .iam-sound-diamond__point--gamma {
+  background-color: rgba(56, 201, 55, 0.97);
+  box-shadow: none;
 }
 
 .iam-sound-diamond__orbit {
@@ -666,7 +665,7 @@ body[data-adaptive-sound-engine="running"] .iam-sound-console__telemetry strong:
 .iam-sound-channel:has(.iam-sound-channel__hit:hover) > div,
 .iam-sound-channel:has(.iam-sound-channel__hit:focus-visible) > div,
 .iam-sound-channel:has(.iam-sound-channel__hit[aria-pressed="true"]) > div {
-  box-shadow: 0 0 22px rgba(var(--channel-rgb), 0.48), inset 0 0 0 1px rgba(255, 255, 255, 0.44);
+  box-shadow: 0 0 22px rgba(var(--channel-rgb), 0.48);
 }
 
 .iam-sound-channel--delta { --channel-rgb: 26, 146, 229; }
@@ -794,13 +793,18 @@ body[data-adaptive-sound-engine="running"] .iam-sound-console__telemetry strong:
   text-shadow: 0 2px 12px rgba(0, 0, 0, 0.92);
 }
 
-.iam-sound-console__footer p {
+.iam-sound-console__research {
   position: absolute;
   left: calc(7.1vw + (var(--quantum-group-offset) / 2) + var(--quantum-group-half));
   bottom: 8.2vh;
   width: 300px;
   margin: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
   color: rgba(255, 255, 255, 0.92);
+  cursor: pointer;
+  font-family: inherit;
   font-size: clamp(9px, 0.55vw, 11px);
   font-weight: 650;
   line-height: 1.2;
@@ -809,19 +813,29 @@ body[data-adaptive-sound-engine="running"] .iam-sound-console__telemetry strong:
   white-space: nowrap;
   transform: translateX(-50%);
   isolation: isolate;
+  pointer-events: auto;
+  transition: opacity 180ms ease;
+}
+
+.iam-sound-console__research:hover,
+.iam-sound-console__research:focus-visible {
+  opacity: 0.76;
+  outline: none;
+  text-decoration: underline;
+  text-underline-offset: 3px;
 }
 
 .iam-sound-quantum-frequency,
 .iam-sound-channel > span,
 .iam-sound-channel small,
-.iam-sound-console__footer p {
+.iam-sound-console__research {
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.98), 0 0 8px rgba(0, 0, 0, 0.82), 0 0 18px rgba(0, 0, 0, 0.58);
 }
 
 .iam-sound-quantum-frequency::before,
 .iam-sound-channel > span::before,
 .iam-sound-channel small::before,
-.iam-sound-console__footer p::before {
+.iam-sound-console__research::before {
   content: "";
   position: absolute;
   z-index: -1;
@@ -845,6 +859,20 @@ body[data-adaptive-sound-engine="running"] .iam-sound-console__telemetry strong:
 
 body.iam-sound-panel-open {
   overflow: hidden;
+}
+
+body.iam-sound-panel-open.nav-open .global-nav {
+  z-index: 1500;
+}
+
+body.iam-sound-panel-open.research-details-open .adaptive-television-research-dialog {
+  z-index: 1400;
+}
+
+body.iam-sound-panel-open.research-details-open .adaptive-television-research-dialog__copy {
+  top: 50%;
+  bottom: auto;
+  transform: translate(-50%, -50%);
 }
 
 body.iam-sound-direct-page .background-video video {
@@ -964,12 +992,14 @@ body.iam-sound-direct-page .global-nav-trigger {
   }
 
   .iam-sound-console__nav {
-    width: 38px;
+    width: 64px;
+    height: 64px;
   }
 
   .iam-sound-console__master {
-    top: 9px;
-    right: 64px;
+    top: 98px;
+    left: 50%;
+    right: auto;
   }
 
   .iam-sound-module--control {
@@ -1037,6 +1067,13 @@ body.iam-sound-direct-page .global-nav-trigger {
 
   .iam-sound-console__footer {
     display: none;
+  }
+}
+
+@media (max-width: 760px) {
+  .iam-sound-console__nav {
+    width: 48px;
+    height: 48px;
   }
 }
 
