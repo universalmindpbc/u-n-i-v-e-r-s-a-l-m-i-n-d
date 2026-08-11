@@ -96,7 +96,7 @@ function initializeAdaptiveSoundPanel() {
   const envelopeButtons = Array.from(panel.querySelectorAll("[data-adaptive-envelope]"));
   const lowpassButtons = Array.from(panel.querySelectorAll("[data-adaptive-lowpass]"));
   const scienceLink = panel.querySelector('a[href="science.html#research-sound"]');
-  const waveform = panel.querySelector(".iam-sound-channel-wave");
+  const waveform = panel.querySelector(".iam-sound-diamond__wave");
   const waveformPaths = Array.from(panel.querySelectorAll("[data-adaptive-wave-path]"));
   const storedProfile = localStorage.getItem("iamAdaptiveSoundProfile") || "";
   const storedCarrier = Number(localStorage.getItem("iamAdaptiveSoundCarrier"));
