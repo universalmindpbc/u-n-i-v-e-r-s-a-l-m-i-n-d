@@ -4567,17 +4567,17 @@ body.television-wallet-pointer-locked .adaptive-television-reaction-wallet[data-
 }
 
 .adaptive-television-wallet-panel--video .adaptive-television-video-choice--trinity .emdr-eye {
-  fill: rgba(84, 174, 50, 0.12);
-  stroke: #54ae32;
+  fill: rgba(255, 255, 255, 0.12);
+  stroke: rgba(255, 255, 255, 0.98);
 }
 
 .adaptive-television-wallet-panel--video .adaptive-television-video-choice--trinity .emdr-iris {
-  stroke: rgba(84, 174, 50, 0.74);
+  stroke: rgba(255, 255, 255, 0.78);
 }
 
 .adaptive-television-wallet-panel--video .adaptive-television-video-choice--trinity .emdr-focus {
-  fill: #54ae32;
-  filter: drop-shadow(0 0 3px rgba(84, 174, 50, 0.72));
+  fill: rgba(255, 255, 255, 0.98);
+  filter: drop-shadow(0 0 3px rgba(255, 255, 255, 0.62));
 }
 
 .adaptive-television-video-icon--sound path,
@@ -5889,10 +5889,17 @@ body.music-shelf-open .adaptive-television-fashion-shelf:not(.adaptive-televisio
 
 .adaptive-television-emdr-style {
   position: relative;
-  min-width: 78px;
+  min-width: 112px;
+  min-height: 48px;
   color: rgba(255, 255, 255, 0.48);
   background: rgba(255, 255, 255, 0.035);
+  font-size: 16px;
+  padding: 0 17px;
   transition: color 240ms ease, border-color 240ms ease, background 240ms ease, opacity 240ms ease;
+}
+
+.adaptive-television-research-tooltip-host--sound[data-sound-research-source][hidden] {
+  display: none !important;
 }
 
 .adaptive-television-emdr-style-group {
