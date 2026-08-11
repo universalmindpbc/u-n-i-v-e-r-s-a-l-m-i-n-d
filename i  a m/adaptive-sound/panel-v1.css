@@ -1006,7 +1006,9 @@ body.iam-sound-direct-page .adaptive-environment,
 body.iam-sound-direct-page .brand,
 body.iam-sound-direct-page .global-nav-trigger {
   opacity: 0 !important;
+  visibility: hidden !important;
   pointer-events: none !important;
+  transition: none !important;
 }
 
 @media (min-width: 901px) {

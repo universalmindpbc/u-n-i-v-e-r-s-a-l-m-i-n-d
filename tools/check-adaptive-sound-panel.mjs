@@ -122,6 +122,7 @@ assert.ok(worklet.includes("output_peak: this.meterPeak"));
 
 assert.match(panelCss, /\.iam-sound-console \{[\s\S]*?inset: 0;[\s\S]*?background: transparent/);
 assert.match(panelCss, /body\.iam-sound-direct-page \.background-video video \{[\s\S]*?opacity: 1 !important/);
+assert.match(panelCss, /body\.iam-sound-direct-page \.homepage-welcome-copy,[\s\S]*?visibility: hidden !important;[\s\S]*?transition: none !important/);
 assert.match(panelCss, /\.iam-sound-diamond__point--delta \{[\s\S]*?rgba\(26, 146, 229, 0\.44\)/);
 assert.match(panelCss, /\.iam-sound-diamond__point--theta \{[\s\S]*?rgba\(245, 177, 22, 0\.44\)/);
 assert.match(panelCss, /\.iam-sound-diamond__point--alpha \{[\s\S]*?rgba\(230, 45, 137, 0\.44\)/);
