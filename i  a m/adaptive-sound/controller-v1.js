@@ -422,6 +422,15 @@ function initializeAdaptiveSoundPanel() {
   function updateAdaptiveMeters(message) {
     const diagnostics = message.diagnostics;
     if (!diagnostics) return;
+    if (!state.masterEnabled || !state.synthEnabled) {
+      setMeter(adaptiveMeter, 0);
+      for (const laneId of LANE_IDS) {
+        laneMeters[laneId]?.style.setProperty("--lane-meter", "0");
+        channelMeters[laneId]?.style.setProperty("--channel-meter", "0");
+      }
+      resetWaveform();
+      return;
+    }
     const meterPeak = Number(message.meter?.output_peak || 0) * (state.intensity / 100);
     setMeter(adaptiveMeter, dbMeter(meterPeak));
     for (const laneId of LANE_IDS) {

@@ -97,6 +97,7 @@ assert.ok(panelController.includes('localStorage.setItem("iamAdaptiveSoundProfil
 assert.ok(panelController.includes('return { profileId: DEFAULT_PROFILE_ID, authority: "neutral_alpha_default" }'));
 assert.ok(panelController.includes("window.IAMQuantumTree?.setAuditionMode?.(state.masterEnabled)"));
 assert.ok(panelController.includes("if (!profile || !state.masterEnabled)"));
+assert.ok(panelController.includes("if (!state.masterEnabled || !state.synthEnabled)"));
 assert.ok(panelController.includes("level: 0.77"));
 assert.ok(panelController.includes("level: 0.86"));
 assert.ok(panelController.includes('channelMeters[laneId]?.style.setProperty("--channel-meter", String(clamp(mixAllocation, 0, 1)))'));
