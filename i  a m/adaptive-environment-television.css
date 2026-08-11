@@ -4398,13 +4398,46 @@ body.television-wallet-pointer-locked .adaptive-television-reaction-wallet[data-
   }
 }
 
-/* Mix panel: three flora-backed video modes. */
+/* TV panel: culture first, followed by the army-green EMDR / Sound / Mantra trinity. */
 .adaptive-television-reaction-wallet[data-wallet-view="video"] {
   width: min(500px, calc(100vw - 38px));
+  min-height: 122px;
 }
 
 .adaptive-television-wallet-panel--video {
-  gap: 14px;
+  display: grid;
+  grid-template-areas:
+    "home music fashion"
+    "emdr sound mantra";
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+  width: 100%;
+}
+
+.adaptive-television-wallet-panel--video > .adaptive-television-wallet-home {
+  grid-area: home;
+  justify-self: center;
+}
+
+.adaptive-television-wallet-panel--video > [data-video-mode="music"] {
+  grid-area: music;
+}
+
+.adaptive-television-wallet-panel--video > [data-video-mode="fashion"] {
+  grid-area: fashion;
+}
+
+.adaptive-television-wallet-panel--video > .adaptive-television-video-trinity-host {
+  grid-area: emdr;
+  width: 100%;
+}
+
+.adaptive-television-wallet-panel--video > [data-video-sound-open] {
+  grid-area: sound;
+}
+
+.adaptive-television-wallet-panel--video > [data-video-mantra-open] {
+  grid-area: mantra;
 }
 
 .adaptive-television-wallet-panel--video .adaptive-television-video-choice {
@@ -4422,6 +4455,33 @@ body.television-wallet-pointer-locked .adaptive-television-reaction-wallet[data-
   font: 700 16px/1 "Helvetica Neue", Helvetica, Arial, sans-serif;
   padding: 0 17px 0 13px;
   white-space: nowrap;
+  width: 100%;
+  min-width: 0;
+}
+
+.adaptive-television-wallet-panel--video .adaptive-television-video-choice--trinity {
+  border-color: rgba(84, 174, 50, 0.28);
+  background: rgba(84, 174, 50, 0.065);
+  color: #54ae32;
+  font-weight: 500;
+}
+
+.adaptive-television-wallet-panel--video .adaptive-television-video-choice--trinity > span:last-child {
+  color: #54ae32;
+  font-weight: 500;
+}
+
+.adaptive-television-wallet-panel--video .adaptive-television-video-choice--trinity:hover,
+.adaptive-television-wallet-panel--video .adaptive-television-video-choice--trinity:focus-visible {
+  border-color: rgba(84, 174, 50, 0.56);
+  background: rgba(84, 174, 50, 0.12);
+  outline: 0;
+}
+
+.adaptive-television-wallet-panel--video .adaptive-television-video-choice--trinity[data-video-mode="emdr"][aria-pressed="true"] {
+  border-color: rgba(84, 174, 50, 0.56);
+  background: rgba(84, 174, 50, 0.12);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08), 0 0 18px rgba(84, 174, 50, 0.1);
 }
 
 .adaptive-television-video-icon-stage {
@@ -4504,6 +4564,30 @@ body.television-wallet-pointer-locked .adaptive-television-reaction-wallet[data-
   transform-box: fill-box;
   transform-origin: center;
   animation: television-emdr-focus-scan 2100ms ease-in-out infinite alternate;
+}
+
+.adaptive-television-wallet-panel--video .adaptive-television-video-choice--trinity .emdr-eye {
+  fill: rgba(84, 174, 50, 0.12);
+  stroke: #54ae32;
+}
+
+.adaptive-television-wallet-panel--video .adaptive-television-video-choice--trinity .emdr-iris {
+  stroke: rgba(84, 174, 50, 0.74);
+}
+
+.adaptive-television-wallet-panel--video .adaptive-television-video-choice--trinity .emdr-focus {
+  fill: #54ae32;
+  filter: drop-shadow(0 0 3px rgba(84, 174, 50, 0.72));
+}
+
+.adaptive-television-video-icon--sound path,
+.adaptive-television-video-icon--mantra path,
+.adaptive-television-video-icon--mantra circle {
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 1.65;
 }
 
 @keyframes television-emdr-focus-scan {
@@ -6440,6 +6524,20 @@ body.music-shelf-open .adaptive-television-fashion-shelf:not(.adaptive-televisio
   }
 }
 
+@media (min-width: 901px) {
+  body .adaptive-television-reaction-wallet[data-wallet-view="video"] {
+    width: min(940px, calc(100vw - 38px)) !important;
+    min-height: 72px;
+    padding-inline: 24px;
+  }
+
+  .adaptive-television-wallet-panel--video {
+    grid-template-areas: "home music fashion emdr sound mantra";
+    grid-template-columns: 48px repeat(5, minmax(0, 1fr));
+    gap: 12px;
+  }
+}
+
 .adaptive-television-reaction-wallet[data-wallet-view="emdr"] {
   width: min(960px, calc(100vw - 38px)) !important;
 }
@@ -6544,6 +6642,37 @@ body.music-shelf-open .adaptive-television-fashion-shelf:not(.adaptive-televisio
 }
 
 @media (max-width: 760px) {
+  body .adaptive-television-reaction-wallet[data-wallet-view="video"] {
+    width: min(500px, calc(100vw - 24px)) !important;
+    min-height: 118px;
+    padding: 9px 10px !important;
+  }
+
+  .adaptive-television-wallet-panel--video .adaptive-television-video-choice {
+    gap: 5px;
+    min-height: 44px;
+    font-size: 11.5px;
+    padding: 0 6px;
+  }
+
+  .adaptive-television-wallet-panel--video .adaptive-television-video-icon-stage {
+    flex-basis: 30px;
+    width: 30px;
+    height: 30px;
+    background-size: 30px 30px;
+  }
+
+  .adaptive-television-wallet-panel--video .adaptive-television-video-icon,
+  .adaptive-television-wallet-panel--video .adaptive-television-video-icon-reference {
+    width: 23px;
+    height: 23px;
+  }
+
+  .adaptive-television-wallet-panel--video .adaptive-television-video-icon-reference--fashion {
+    width: 22px;
+    height: 25px;
+  }
+
   .adaptive-television-wallet-home {
     flex-basis: 38px;
     width: 38px !important;

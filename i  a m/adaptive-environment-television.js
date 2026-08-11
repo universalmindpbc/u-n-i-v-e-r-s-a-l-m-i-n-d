@@ -248,6 +248,8 @@
   const sexEdLoopVideos = Array.from(document.querySelectorAll(".adaptive-television-sex-ed-grid video"));
   const sexEdLoopImages = Array.from(document.querySelectorAll(".adaptive-television-sex-ed-grid img"));
   const videoModeButtons = Array.from(document.querySelectorAll("[data-video-mode]"));
+  const videoSoundOpen = document.querySelector("[data-video-sound-open]");
+  const videoMantraOpen = document.querySelector("[data-video-mantra-open]");
   const videoMixControls = document.querySelector("[data-video-mix-controls]");
   const videoCrossfader = document.querySelector("[data-video-crossfader]");
   const videoMixEndpoints = Array.from(document.querySelectorAll("[data-video-mix-endpoint]"));
@@ -626,6 +628,7 @@
   let walletControlsInteractiveAt = 0;
   const WALLET_RESUMABLE_VIEWS = new Set(["categories", "emoji", "video", "video-mix", "music", "emdr", "audio", "support", "collect"]);
   let walletResumeView = "categories";
+  let mantraReturnWalletView = "emdr";
   const emdrStyleNames = ["GIF", "stellar"];
   const emdrStyleValues = [7, 5];
   let emdrStyleIndex = -1;
@@ -8073,6 +8076,19 @@
       openFashionShelf();
     });
   });
+  videoSoundOpen?.addEventListener("click", (event) => {
+    event.preventDefault();
+    event.stopPropagation();
+    disarmVideoTooltips();
+    window.dispatchEvent(new CustomEvent("iam:adaptive-sound-open"));
+  });
+  videoMantraOpen?.addEventListener("click", (event) => {
+    event.preventDefault();
+    event.stopPropagation();
+    disarmVideoTooltips();
+    mantraReturnWalletView = "video";
+    window.IAMMantraSampler?.open?.();
+  });
   videoMixEndpoints.forEach((button) => {
     button.addEventListener("click", (event) => {
       event.preventDefault();
@@ -8352,10 +8368,13 @@
     event.preventDefault();
     event.stopPropagation();
     disarmVideoTooltips();
+    mantraReturnWalletView = "emdr";
     window.IAMMantraSampler?.open?.();
   });
   window.addEventListener("iam:mantra-close", () => {
-    setWalletView("emdr");
+    const returnView = mantraReturnWalletView;
+    mantraReturnWalletView = "emdr";
+    setWalletView(returnView);
   });
   emdrIntensity?.addEventListener("input", () => {
     const intensity = Number(emdrIntensity.value) / 100;

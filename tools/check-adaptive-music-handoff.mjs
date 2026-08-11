@@ -768,6 +768,22 @@ const restoredEmdrPanelEnd = televisionPage.indexOf('<div class="adaptive-televi
 const restoredEmdrPanel = restoredEmdrPanelStart >= 0 && restoredEmdrPanelEnd > restoredEmdrPanelStart
   ? televisionPage.slice(restoredEmdrPanelStart, restoredEmdrPanelEnd)
   : '';
+const tvChoicePositions = [
+  'data-video-mode="music"',
+  'data-video-mode="fashion"',
+  'data-video-mode="emdr"',
+  'data-video-sound-open',
+  'data-video-mantra-open',
+].map((marker) => televisionPage.indexOf(marker));
+requireCondition(tvChoicePositions.every((position) => position >= 0) && tvChoicePositions.every((position, index) => index === 0 || position > tvChoicePositions[index - 1]), 'the TV wallet no longer presents MUSIC, FASHION, EMDR, SOUND and MANTRA in the approved order');
+requireCondition(televisionPage.includes('<span>MUSIC</span>') && televisionPage.includes('<span>FASHION</span>') && televisionPage.includes('<span>SOUND</span>') && televisionPage.includes('<span>MANTRA</span>'), 'the five TV choices no longer preserve their approved uppercase labels');
+requireCondition((televisionPage.match(/adaptive-television-video-choice--trinity/g) || []).length === 3, 'the EMDR, SOUND and MANTRA trinity no longer shares one visual treatment');
+requireCondition(controller.includes('const videoSoundOpen = document.querySelector("[data-video-sound-open]");') && controller.includes('window.dispatchEvent(new CustomEvent("iam:adaptive-sound-open"));'), 'the early SOUND shortcut no longer opens the existing adaptive Sound panel');
+requireCondition(controller.includes('const videoMantraOpen = document.querySelector("[data-video-mantra-open]");') && controller.includes('mantraReturnWalletView = "video";') && controller.includes('window.IAMMantraSampler?.open?.();'), 'the early MANTRA shortcut no longer opens the existing sampler independently of EMDR');
+requireCondition(controller.includes('const returnView = mantraReturnWalletView;') && controller.includes('setWalletView(returnView);'), 'Mantra no longer returns to the wallet branch that opened it');
+requireCondition(televisionCss.includes('grid-template-areas: "home music fashion emdr sound mantra";') && televisionCss.includes('grid-template-columns: 48px repeat(5, minmax(0, 1fr));'), 'the wide TV wallet no longer gives all five choices equal space');
+requireCondition(televisionCss.includes('"home music fashion"') && televisionCss.includes('"emdr sound mantra"'), 'the compact TV wallet no longer keeps the trinity together on its own row');
+requireCondition(televisionCss.includes('color: #54ae32;') && televisionCss.includes('font-weight: 500;'), 'the trinity no longer uses the wallet army green and lighter label weight');
 requireCondition((televisionPage.match(/data-wallet-home/g) || []).length === 8, 'every secondary wallet branch must retain its wallet-home flower');
 requireCondition((televisionPage.match(/data-wallet-tooltip="wallet home"/g) || []).length === 8, 'the wallet-home flowers no longer expose the approved rollover');
 requireCondition((televisionPage.match(/aria-label="Return to wallet home"/g) || []).length === 8, 'the wallet-home flowers no longer expose the approved accessible label');
