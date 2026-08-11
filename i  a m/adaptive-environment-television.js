@@ -2194,6 +2194,12 @@
     showResearchDialog(host);
   }
 
+  function openSoundResearchDetails() {
+    const host = document.querySelector("[data-sound-research-source]");
+    if (!host) return;
+    openResearchDetails(host);
+  }
+
   function researchRolloverIsArmed() {
     return Boolean(reactionWallet?.classList.contains("is-video-tooltip-armed"));
   }
@@ -7561,6 +7567,21 @@
     globalNav.setAttribute("aria-hidden", "false");
   }
 
+  function openAdaptiveSoundNavigation() {
+    const globalNav = document.querySelector("[data-global-nav]");
+    if (globalNav && globalNav.parentElement !== document.body) document.body.append(globalNav);
+    if (document.body.classList.contains("television-room-open")) {
+      if (document.body.classList.contains("nav-open")) closeVideoNavigation();
+      else {
+        document.body.classList.add("nav-open");
+        globalNav?.classList.add("is-open");
+        globalNav?.setAttribute("aria-hidden", "false");
+      }
+      return;
+    }
+    flowerTrigger?.click();
+  }
+
   function closeVideoNavigation() {
     document.body.classList.remove("nav-open");
     document.querySelectorAll("[data-global-nav]").forEach((nav) => {
@@ -8005,6 +8026,8 @@
     flowerTrigger.setAttribute("aria-label", "Open global navigation");
     flowerTrigger.addEventListener("click", openVideoNavigation, true);
   }
+  window.addEventListener("iam:adaptive-sound-navigation", openAdaptiveSoundNavigation);
+  window.addEventListener("iam:adaptive-sound-research-open", openSoundResearchDetails);
   fullscreenButton?.addEventListener("click", (event) => {
     event.preventDefault();
     event.stopPropagation();

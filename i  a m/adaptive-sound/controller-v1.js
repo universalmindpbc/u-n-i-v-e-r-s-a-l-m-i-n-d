@@ -43,16 +43,15 @@ const WAVEFORM_POINTS = Object.freeze([
 
 const panel = document.querySelector("[data-adaptive-sound-panel]");
 const consoleElement = panel?.querySelector("[data-adaptive-sound-console]");
-const soundButton = document.querySelector("[data-emdr-sound-research]");
+const soundEntryButtons = Array.from(document.querySelectorAll("[data-video-sound-open], [data-emdr-sound-research]"));
+const legacySoundButton = document.querySelector("[data-emdr-sound-research]");
 
-if (panel && consoleElement && soundButton) initializeAdaptiveSoundPanel();
+if (panel && consoleElement) initializeAdaptiveSoundPanel();
 
 function initializeAdaptiveSoundPanel() {
   const closeButtons = Array.from(panel.querySelectorAll("[data-adaptive-sound-close]"));
   const navigationButton = panel.querySelector("[data-adaptive-sound-nav]");
   const researchButton = panel.querySelector("[data-adaptive-sound-research-open]");
-  const researchMoreButton = document.querySelector(".adaptive-television-research-tooltip-host--sound .adaptive-television-research-tooltip__more");
-  const researchDialog = document.querySelector("[data-research-dialog]");
   const masterButton = panel.querySelector("[data-adaptive-sound-master]");
   const masterLabel = panel.querySelector("[data-adaptive-sound-master-label]");
   const engineLed = panel.querySelector("[data-adaptive-sound-engine-led]");
@@ -156,7 +155,7 @@ function initializeAdaptiveSoundPanel() {
   const directSoundPage = query.get("sound") === "1";
   if (auditionPanel) auditionPanel.hidden = !soundLabEnabled;
 
-  soundButton.addEventListener("click", (event) => {
+  legacySoundButton?.addEventListener("click", (event) => {
     event.preventDefault();
     event.stopImmediatePropagation();
     openPanel();
@@ -172,15 +171,12 @@ function initializeAdaptiveSoundPanel() {
   navigationButton?.addEventListener("click", (event) => {
     event.preventDefault();
     event.stopPropagation();
-    const globalNavigation = document.querySelector("[data-global-nav]");
-    if (globalNavigation && globalNavigation.parentElement !== document.body) document.body.append(globalNavigation);
-    window.requestAnimationFrame(() => document.querySelector(".global-nav-trigger")?.click());
+    window.dispatchEvent(new CustomEvent("iam:adaptive-sound-navigation"));
   });
   researchButton?.addEventListener("click", (event) => {
     event.preventDefault();
     event.stopPropagation();
-    if (researchDialog && researchDialog.parentElement !== document.body) document.body.append(researchDialog);
-    researchMoreButton?.click();
+    window.dispatchEvent(new CustomEvent("iam:adaptive-sound-research-open"));
   });
   masterButton?.addEventListener("click", () => setMasterEnabled(!state.masterEnabled));
   profileButtons.forEach((button) => button.addEventListener("click", async () => {
@@ -273,13 +269,15 @@ function initializeAdaptiveSoundPanel() {
   function openPanel() {
     if (state.open) return;
     state.open = true;
-    state.previousFocus = document.activeElement instanceof HTMLElement ? document.activeElement : soundButton;
+    state.previousFocus = document.activeElement instanceof HTMLElement
+      ? document.activeElement
+      : (soundEntryButtons[0] || consoleElement);
     state.masterEnabled = window.IAMQuantumTree?.diagnostics?.().enabled
       ?? (localStorage.getItem("iamSoundResearchLayer") !== "off");
     panel.inert = false;
     updateMatrixGeometry();
     panel.setAttribute("aria-hidden", "false");
-    soundButton.setAttribute("aria-expanded", "true");
+    soundEntryButtons.forEach((button) => button.setAttribute("aria-expanded", "true"));
     document.body.classList.add("iam-sound-panel-open");
     document.body.dataset.adaptiveSoundPanelOpen = "true";
     window.dispatchEvent(new CustomEvent("iam:adaptive-sound-panel-opened"));
@@ -348,7 +346,7 @@ function initializeAdaptiveSoundPanel() {
     state.quantumTimer = 0;
     panel.setAttribute("aria-hidden", "true");
     panel.inert = true;
-    soundButton.setAttribute("aria-expanded", "false");
+    soundEntryButtons.forEach((button) => button.setAttribute("aria-expanded", "false"));
     document.body.classList.remove("iam-sound-panel-open");
     document.body.dataset.adaptiveSoundPanelOpen = "false";
     if (restoreFocus && state.previousFocus?.isConnected) state.previousFocus.focus({ preventScroll: true });
@@ -649,7 +647,7 @@ function initializeAdaptiveSoundPanel() {
       ? "Turn the full Sound Research Layer off"
       : "Turn the full Sound Research Layer on");
     if (masterLabel) masterLabel.textContent = "ON";
-    soundButton.setAttribute("aria-pressed", String(state.masterEnabled));
+    soundEntryButtons.forEach((button) => button.setAttribute("aria-pressed", String(state.masterEnabled)));
   }
 
   function syncConditionReadout() {

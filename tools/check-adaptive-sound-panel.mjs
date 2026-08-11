@@ -25,6 +25,8 @@ const [page, televisionController, televisionCss, panelController, panelCss, wor
 
 assert.match(page, /id="iam-sound-panel"[^>]*role="dialog"[^>]*aria-modal="true"[^>]*aria-hidden="true"[^>]*inert/);
 assert.match(page, /data-emdr-sound-research[^>]*aria-haspopup="dialog"[^>]*aria-controls="iam-sound-panel"/);
+assert.match(page, /data-video-sound-open[^>]*aria-haspopup="dialog"[^>]*aria-controls="iam-sound-panel"/);
+assert.match(page, /data-sound-research-source[^>]*hidden/);
 assert.match(page, /data-adaptive-sound-master[^>]*aria-pressed="true"/);
 assert.equal((page.match(/data-adaptive-profile=/g) || []).length, 8);
 assert.equal((page.match(/data-adaptive-lane-meter=/g) || []).length, 4);
@@ -82,6 +84,9 @@ assert.equal(scienceController.includes("research-boundary--adaptive-sound"), fa
 assert.equal(televisionCss.includes("adaptive-television-research-tooltip__full"), false);
 
 assert.ok(televisionController.includes('window.dispatchEvent(new CustomEvent("iam:adaptive-sound-open"))'));
+assert.ok(televisionController.includes('window.addEventListener("iam:adaptive-sound-research-open", openSoundResearchDetails)'));
+assert.ok(televisionController.includes('window.addEventListener("iam:adaptive-sound-navigation", openAdaptiveSoundNavigation)'));
+assert.ok(televisionController.includes('document.querySelector("[data-sound-research-source]")'));
 assert.ok(televisionController.includes('const SOUND_RESEARCH_DEFAULT_MAX_VOLUME = 0.055;'));
 assert.ok(televisionController.includes('const SOUND_RESEARCH_AUDIO_SRC = "a s s e t s/q u a n t u m [ t r e e ].m4a";'));
 assert.ok(televisionController.includes("window.IAMQuantumTree ="));
@@ -96,9 +101,10 @@ assert.ok(panelController.includes('const directSoundPage = query.get("sound") =
 assert.ok(panelController.includes('document.body.dataset.adaptiveSoundDirect = "true"'));
 assert.equal(panelController.includes("iamAdaptiveSoundLayer"), false);
 assert.ok(panelController.includes('await selectProfile(button.dataset.adaptiveProfile || "", "listener_selection")'));
-assert.ok(panelController.includes('researchMoreButton?.click()'));
-assert.ok(panelController.includes('document.body.append(researchDialog)'));
-assert.ok(panelController.includes('document.body.append(globalNavigation)'));
+assert.ok(panelController.includes('new CustomEvent("iam:adaptive-sound-research-open")'));
+assert.ok(panelController.includes('new CustomEvent("iam:adaptive-sound-navigation")'));
+assert.ok(panelController.includes('document.querySelectorAll("[data-video-sound-open], [data-emdr-sound-research]")'));
+assert.equal(panelController.includes('researchMoreButton?.click()'), false);
 assert.equal(/navigationButton\?\.addEventListener\([\s\S]*?closePanel\(false\)/.test(panelController), false);
 assert.ok(panelController.includes('carrierSelect?.addEventListener("change"'));
 assert.ok(panelController.includes('localStorage.setItem("iamAdaptiveSoundProfile", profileId)'));
