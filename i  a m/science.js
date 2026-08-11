@@ -48,14 +48,6 @@
   function layerMarkup(layer) {
     const panelId = `research-detail-${layer.id}`;
     const dossier = layer.dossier;
-    const adaptiveProgramme = layer.adaptiveProgramme
-      ? `<div class="research-boundary research-boundary--adaptive-sound">
-          <b>${escapeHtml(layer.adaptiveProgramme.title)}</b>
-          <p>${escapeHtml(layer.adaptiveProgramme.frequencies)}</p>
-          <p>${escapeHtml(layer.adaptiveProgramme.hypotheses)}</p>
-          <p>${escapeHtml(layer.adaptiveProgramme.methods)}</p>
-        </div>`
-      : "";
 
     return `
       <article class="research-layer" id="research-${escapeHtml(layer.id)}" data-research-layer="${escapeHtml(layer.id)}">
@@ -80,7 +72,6 @@
                 <b>Evidence boundary</b>
                 <p>${escapeHtml(layer.boundary)}</p>
               </div>
-              ${adaptiveProgramme}
               <div>
                 <span class="research-dossier-label">Original 2022 source collection</span>
                 <div class="research-dossier-stats">

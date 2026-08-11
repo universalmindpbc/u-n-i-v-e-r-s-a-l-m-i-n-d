@@ -77,12 +77,6 @@
         role: "Optional supportive sound / frequency research layer",
         summary: "Recent evidence supports qualified music interventions for anxiety and PTSD symptoms, while theta-frequency binaural-beat research provides a more direct signal for 5-8 Hz testing. A small 528 Hz study also reports short-term endocrine and mood changes that warrant replication.",
         boundary: "Music therapy, binaural beats and frequency-tuned listening are distinct interventions. The theta synthesis supports focused testing within the 5-8 Hz range, while the 528 Hz biomarker signal comes from nine healthy adults and must remain clearly labelled as preliminary.",
-        adaptiveProgramme: {
-          title: "Adaptive Sound research programme",
-          frequencies: "Primary isochronic conditions: Delta 3.33 Hz, Theta 7.38 Hz, Alpha 10.11 Hz and Gamma exactly 111 Hz. All four remain present, with one condition weighted as the primary frequency.",
-          hypotheses: "Carrier / candidate-gene study hypotheses: 111 Hz / SLC6A4; 222 Hz / CD38; 444 Hz / DOCK2; 555 Hz / OXTR; 999 Hz / DRD2.",
-          methods: "The planned programme uses precisely versioned acoustic conditions and investigates controlled subjective, clinical and buccal transcriptomic measurements. Carrier-to-gene relationships are hypotheses only; no medical, wellness or biological benefit is claimed.",
-        },
         dossier: {
           title: "Universal Mind [ I o H ] - Sound Medical Research",
           file: "a s s e t s/r e s e a r c h/Universal Mind [ I o H ] - Sound Medical Research.pdf",

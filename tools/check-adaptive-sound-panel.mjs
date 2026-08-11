@@ -10,14 +10,17 @@ import {
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const IAM = path.join(ROOT, "i  a m");
-const [page, televisionController, panelController, panelCss, worklet, dsp, profiles] = await Promise.all([
+const [page, televisionController, televisionCss, panelController, panelCss, worklet, dsp, profiles, scienceData, scienceController] = await Promise.all([
   fs.readFile(path.join(IAM, "index.html"), "utf8"),
   fs.readFile(path.join(IAM, "adaptive-environment-television.js"), "utf8"),
+  fs.readFile(path.join(IAM, "adaptive-environment-television.css"), "utf8"),
   fs.readFile(path.join(IAM, "adaptive-sound", "controller-v1.js"), "utf8"),
   fs.readFile(path.join(IAM, "adaptive-sound", "panel-v1.css"), "utf8"),
   fs.readFile(path.join(IAM, "adaptive-sound", "worklet-v1.js"), "utf8"),
   fs.readFile(path.join(IAM, "adaptive-sound", "dsp-v1.js"), "utf8"),
   fs.readFile(path.join(IAM, "adaptive-sound", "profiles-v1.js"), "utf8"),
+  fs.readFile(path.join(IAM, "science-research-data-v1.js"), "utf8"),
+  fs.readFile(path.join(IAM, "science.js"), "utf8"),
 ]);
 
 assert.match(page, /id="iam-sound-panel"[^>]*role="dialog"[^>]*aria-modal="true"[^>]*aria-hidden="true"[^>]*inert/);
@@ -60,11 +63,15 @@ assert.match(page, /data-quantum-channel-meter="constant"[\s\S]*?<strong>86%<\/s
 assert.ok(page.includes("14,444 Hz LOW-PASS"));
 assert.ok(page.includes("MONO · IDENTICAL DUAL MONO"));
 assert.ok(page.includes("Delta brown · Theta white · Alpha pink · Gamma equal three-way split"));
-assert.ok(page.includes("full frequencies, genes + medical research →"));
-assert.ok(page.includes("111 Hz / SLC6A4; 222 Hz / CD38; 444 Hz / DOCK2; 555 Hz / OXTR; 999 Hz / DRD2"));
+assert.ok(page.includes('data-research-frequency="Isochronic tone: 7.38088 Hz, carried on a 111.011 Hz sine wave, plus a separate constant 528.088 Hz sine wave, together as one. Adaptive diamond: 3.33 / 7.38 / 10.11 / exactly 111 Hz."'));
+assert.equal(page.includes("Carrier research conditions:"), false);
+assert.equal(page.includes("full frequencies, genes + medical research →"), false);
 assert.equal(page.includes("Sound Research Layer - Investigating whether an optional sound layer modulates short term transcriptional pathways"), false);
 assert.equal(page.includes("gene activated"), false);
 assert.equal(page.includes("brain entrained"), false);
+assert.equal(scienceData.includes("adaptiveProgramme"), false);
+assert.equal(scienceController.includes("research-boundary--adaptive-sound"), false);
+assert.equal(televisionCss.includes("adaptive-television-research-tooltip__full"), false);
 
 assert.ok(televisionController.includes('window.dispatchEvent(new CustomEvent("iam:adaptive-sound-open"))'));
 assert.ok(televisionController.includes('const SOUND_RESEARCH_DEFAULT_MAX_VOLUME = 0.055;'));
@@ -89,6 +96,7 @@ assert.ok(panelController.includes('carrierSelect?.addEventListener("change"'));
 assert.ok(panelController.includes('localStorage.setItem("iamAdaptiveSoundProfile", profileId)'));
 assert.ok(panelController.includes('return { profileId: DEFAULT_PROFILE_ID, authority: "neutral_alpha_default" }'));
 assert.ok(panelController.includes("window.IAMQuantumTree?.setAuditionMode?.(state.masterEnabled)"));
+assert.ok(panelController.includes("if (!profile || !state.masterEnabled)"));
 assert.ok(panelController.includes("level: 0.77"));
 assert.ok(panelController.includes("level: 0.86"));
 assert.ok(panelController.includes('channelMeters[laneId]?.style.setProperty("--channel-meter", String(clamp(mixAllocation, 0, 1)))'));
@@ -138,6 +146,8 @@ assert.match(panelCss, /data-profile="calm_alpha_80_v1"[\s\S]*?rgba\(230, 45, 13
 assert.match(panelCss, /data-profile="inspiration_gamma_80_v1"[\s\S]*?rgba\(56, 201, 55, 0\.97\)/);
 assert.match(panelCss, /body\.iam-sound-panel-open\.nav-open \.global-nav \{[\s\S]*?z-index: 1500/);
 assert.match(panelCss, /body\.iam-sound-panel-open\.research-details-open \.adaptive-television-research-dialog \{[\s\S]*?z-index: 1400/);
+assert.equal(panelCss.includes("body.iam-sound-panel-open.research-details-open .adaptive-television-research-dialog__copy"), false);
+assert.match(panelCss, /body:not\(\.television-is-fullscreen\) \.iam-sound-module--diamond \{[\s\S]*?--vesica-diameter: min\(30\.5vw,[\s\S]*?--vesica-offset: min\(10\.7833784139849vw/);
 assert.match(panelCss, /\.iam-sound-console__close \{[\s\S]*?top: clamp\(7px, 1vh, 14px\)/);
 assert.match(panelCss, /@media \(max-width: 900px\)/);
 assert.match(panelCss, /@media \(prefers-reduced-motion: reduce\)/);

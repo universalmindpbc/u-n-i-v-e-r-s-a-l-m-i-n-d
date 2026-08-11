@@ -522,10 +522,10 @@ function initializeAdaptiveSoundPanel() {
       laneButton?.setAttribute("aria-pressed", String(Boolean(profile) && state.enabledLanes[laneId]));
       profileButtons.find((button) => button.dataset.adaptiveProfile?.includes(`_${laneId}_`))
         ?.classList.toggle("is-lane-off", Boolean(profile) && !state.enabledLanes[laneId]);
-      if (!profile) {
+      if (!profile || !state.masterEnabled) {
         laneMeters[laneId]?.style.setProperty("--lane-meter", "0");
         channelMeters[laneId]?.style.setProperty("--channel-meter", "0");
-      } else if (!state.lastDiagnostics || state.context?.state !== "running" || !state.masterEnabled) {
+      } else if (!state.lastDiagnostics || state.context?.state !== "running") {
         const restingLevel = state.enabledLanes[laneId]
           ? Math.sqrt(Number(weight || 0)) / Math.sqrt(0.8)
           : 0;

@@ -869,12 +869,6 @@ body.iam-sound-panel-open.research-details-open .adaptive-television-research-di
   z-index: 1400;
 }
 
-body.iam-sound-panel-open.research-details-open .adaptive-television-research-dialog__copy {
-  top: 50%;
-  bottom: auto;
-  transform: translate(-50%, -50%);
-}
-
 body.iam-sound-direct-page .background-video video {
   opacity: 1 !important;
   filter: saturate(0.96) contrast(1.02) brightness(0.9) !important;
@@ -886,6 +880,13 @@ body.iam-sound-direct-page .brand,
 body.iam-sound-direct-page .global-nav-trigger {
   opacity: 0 !important;
   pointer-events: none !important;
+}
+
+@media (min-width: 901px) {
+  body:not(.television-is-fullscreen) .iam-sound-module--diamond {
+    --vesica-diameter: min(30.5vw, calc(56.2354980121829vh - 89.0395385192896px));
+    --vesica-offset: min(10.7833784139849vw, calc(19.8822509939086vh - 31.4802307403552px));
+  }
 }
 
 @media (max-width: 900px) {
