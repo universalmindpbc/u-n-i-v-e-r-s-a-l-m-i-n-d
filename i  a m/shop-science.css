@@ -132,7 +132,6 @@ body.nav-open .science-universal-nav {
 }
 
 .science-navigation__primary,
-.science-navigation__audio,
 .science-navigation__shortcuts {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 9px;
@@ -176,33 +175,6 @@ body.nav-open .science-universal-nav {
 .science-navigation__shop span {
   font-size: 12px;
   line-height: .6;
-}
-
-.science-navigation__audio {
-  grid-column: 3;
-  display: inline-flex;
-  align-items: center;
-  align-self: center;
-  justify-self: end;
-  gap: 8px;
-  min-width: 0;
-  margin: 0;
-  color: rgba(255, 255, 255, .78);
-  white-space: nowrap;
-}
-
-.science-navigation__audio-dot {
-  width: 7px;
-  height: 7px;
-  flex: 0 0 auto;
-  border: 1px solid currentColor;
-  border-radius: 50%;
-  background: transparent;
-}
-
-.science-navigation__audio.is-shop-context .science-navigation__audio-dot {
-  background: currentColor;
-  animation: science-audio-breathe 2.2s ease-in-out infinite;
 }
 
 .science-navigation__shortcuts {
@@ -1120,11 +1092,6 @@ body.nav-open .science-universal-nav {
   to { transform: rotate(1turn); }
 }
 
-@keyframes science-audio-breathe {
-  0%, 100% { opacity: .42; transform: scale(.82); }
-  50% { opacity: 1; transform: scale(1); }
-}
-
 @media (max-width: 1100px) {
   .science-editorial {
     grid-template-columns: minmax(230px, .7fr) minmax(330px, 1fr) minmax(230px, .7fr);
@@ -1148,20 +1115,6 @@ body.nav-open .science-universal-nav {
 
   .shop-material__methods {
     grid-template-columns: 1fr;
-  }
-}
-
-@media (max-width: 980px) {
-  .science-navigation__audio [data-science-audio-label] {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0, 0, 0, 0);
-    white-space: nowrap;
-    border: 0;
   }
 }
 
@@ -1193,13 +1146,6 @@ body.nav-open .science-universal-nav {
 
   .science-navigation__shop span {
     font-size: 10px;
-  }
-
-  .science-navigation__audio {
-    grid-column: 3;
-    width: 28px;
-    height: 44px;
-    justify-content: center;
   }
 
   .science-navigation__shortcuts {

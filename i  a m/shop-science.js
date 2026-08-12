@@ -12,8 +12,6 @@
   const researchIcon = root.querySelector("[data-science-summary-icon]");
   const silentVideos = Array.from(root.querySelectorAll("[data-science-silent-video]"));
   const researchLink = document.querySelector("[data-science-research-link]");
-  const audioStatus = document.querySelector(".science-navigation__audio");
-  const audioLabel = document.querySelector("[data-science-audio-label]");
 
   function element(tag, className, text) {
     const node = document.createElement(tag);
@@ -171,29 +169,6 @@
     });
   }
 
-  function cameFromShop() {
-    if (!document.referrer) return false;
-    try {
-      const referrer = new URL(document.referrer);
-      return referrer.origin === window.location.origin && referrer.pathname.endsWith("/shop.html");
-    } catch {
-      return false;
-    }
-  }
-
-  function describeShopAudio() {
-    const hasShopTab = cameFromShop();
-    audioStatus?.classList.toggle("is-shop-context", hasShopTab);
-    if (audioLabel) {
-      audioLabel.textContent = hasShopTab
-        ? "shop audio continues in the shop tab"
-        : "shop audio remains separate";
-    }
-    audioStatus?.setAttribute("aria-label", hasShopTab
-      ? "Shop audio, if playing, continues only in the original Shop tab. This Science page does not start another player."
-      : "This Science page does not start a music player.");
-  }
-
   function returnToShop(event) {
     const destination = event.currentTarget.href;
     event.preventDefault();
@@ -313,7 +288,6 @@
   renderStudies();
   renderBrands();
   renderMetadata();
-  describeShopAudio();
   bindScienceNavigation();
   prepareSilentFilm();
 })();
