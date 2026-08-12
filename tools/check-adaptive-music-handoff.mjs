@@ -473,6 +473,9 @@ requireCondition(controller.includes('const radioIsAudible = continuationAudio &
 requireCondition(controller.includes('media: videoIsAudible ? localVideo : (radioIsAudible ? continuationAudio : null),'), 'the Quantum Tree layer no longer selects the audible video or radio source');
 requireCondition(controller.includes('"https://streams.radiomast.io/052d2e3c-389c-44cf-a91a-8f5e1854f4c6"'), 'the canonical NTS Poolside Radio Mast mount is missing');
 requireCondition((controller.match(/stream_transport: "Buffered HLS scheduler"/g) || []).length === 4, 'the four NTS stations are not all using the buffered scheduler');
+requireCondition(controller.includes('id: "worldwide-fm"') && controller.includes('"https://worldwide-fm.radiocult.fm/stream"'), 'the official Worldwide FM closed-beta live relay is missing');
+requireCondition(controller.includes('fallback_station_id: "cafe-del-mar-chill"'), 'Worldwide FM no longer declares the approved Café del Mar Chill fallback');
+requireCondition(controller.includes('async function startScheduledRadioFallback') && controller.includes('radioRecoveryCount >= 3 && fallbackStationFor(continuationDecision)'), 'scheduled direct-stream fallback no longer covers startup and repeated recovery failures');
 requireCondition(controller.includes('const RADIO_SEGMENT_BUFFER_TARGET_SECONDS = 48;') && controller.includes('const RADIO_SEGMENT_CROSSFADE_SECONDS = .035;'), 'the NTS scheduler has lost its local reservoir or gap-masking crossfade');
 requireCondition(controller.includes('async function refreshBufferedNtsSegments') && controller.includes('context.decodeAudioData(encoded.slice(0))'), 'NTS segments are no longer fetched and decoded ahead of playback');
 requireCondition(controller.includes('scheduleDecodedRadioSegment(player, decoded, segmentUrl);') && controller.includes('audio.dataset.radioTransport = "buffered-hls-scheduler";'), 'the buffered NTS scheduler is no longer attached to the radio audio element');

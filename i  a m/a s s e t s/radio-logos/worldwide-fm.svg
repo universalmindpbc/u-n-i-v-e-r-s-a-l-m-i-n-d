@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 160" role="img" aria-labelledby="title">
+  <title id="title">Worldwide FM</title>
+  <rect width="320" height="160" rx="8" fill="#f1eadc"/>
+  <g fill="#141414" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="700" text-anchor="middle">
+    <text x="160" y="75" font-size="31" letter-spacing="1.8">WORLDWIDE</text>
+    <text x="160" y="119" font-size="44" letter-spacing="8">FM</text>
+  </g>
+</svg>

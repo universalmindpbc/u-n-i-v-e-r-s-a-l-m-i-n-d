@@ -174,18 +174,19 @@
     { id: "cafe-del-mar-house", musicRoomFit: ["modul8-infinity"], mode: "radio", provider: "Café del Mar Radio", title: "House", display_title: "Café del Mar — House", short_title: "HOUSE", stream_url: "https://s4.radio.co/seeae9c220/listen", logo_src: "a s s e t s/radio-logos/cafe-del-mar-house.svg", brand_logo_src: "a s s e t s/radio-logos/cafe-del-mar.svg", logo_alt: "Café del Mar House", primary_environmental_function: "Club Energy + Festival Activation", top_needs: ["Joy", "Motivation", "Connection", "Arousal"], card_palette: ["#8a4867", "#e6a99f"] },
     { id: "groove-salad", musicRoomFit: ["champagne-bohemia"], mode: "radio", provider: "SomaFM", title: "Groove Salad", display_title: "Groove Salad", short_title: "GROOVE SALAD", stream_url: "https://ice5.somafm.com/groovesalad-128-mp3", logo_src: "a s s e t s/radio-logos/groove-salad.png", logo_alt: "Groove Salad on SomaFM", primary_environmental_function: "Focus + Flow", top_needs: ["Attention", "Executive Function", "Calm", "Recovery"], card_palette: ["#526b52", "#cad4a4"] },
     { id: "groove-salad-classic", musicRoomFit: ["champagne-bohemia"], mode: "radio", provider: "SomaFM", title: "Groove Salad Classic", display_title: "Groove Salad Classic", short_title: "GS CLASSIC", stream_url: "https://ice5.somafm.com/gsclassic-128-mp3", logo_src: "a s s e t s/radio-logos/groove-salad-classic.jpg", logo_alt: "Groove Salad Classic on SomaFM", primary_environmental_function: "Soul + Restoration", top_needs: ["Belonging", "Gratitude", "Recovery", "Calm"], card_palette: ["#725f50", "#c9b896"] },
+    { id: "worldwide-fm", musicRoomFit: ["champagne-bohemia"], mode: "radio", provider: "Worldwide FM", title: "Worldwide FM", display_title: "Worldwide FM", short_title: "WORLDWIDE FM", stream_url: "https://worldwide-fm.radiocult.fm/stream", fallback_station_id: "cafe-del-mar-chill", logo_src: "a s s e t s/radio-logos/worldwide-fm.svg", logo_alt: "Worldwide FM", primary_environmental_function: "Global Culture + Discovery", top_needs: ["Curiosity", "Connection", "Belonging", "Joy"], card_palette: ["#141414", "#f1eadc"] },
     { id: "sanctuary-dark-electro", musicRoomFit: ["james-bondage"], mode: "radio", provider: "Sanctuary Radio", title: "Dark Electro", display_title: "Sanctuary — Dark Electro", short_title: "DARK ELECTRO", stream_url: "https://stream.sanctuaryradio.com/mainchannel_hq", logo_src: "a s s e t s/radio-logos/sanctuary-radio.jpg", logo_alt: "Sanctuary Radio", logo_crop: "sanctuary", primary_environmental_function: "Grit + Agency", top_needs: ["Anger", "Motivation", "Self-Actualisation", "Curiosity"], card_palette: ["#312e42", "#9c6da6"] },
     { id: "sanctuary-retro", musicRoomFit: [], mode: "radio", provider: "Sanctuary Radio", title: "Retro", display_title: "Sanctuary — Retro", short_title: "RETRO", stream_url: "https://stream.sanctuaryradio.com/retrochannel_hq", logo_src: "a s s e t s/radio-logos/sanctuary-radio.jpg", logo_alt: "Sanctuary Radio", logo_crop: "sanctuary", primary_environmental_function: "Joy + Affirmation", top_needs: ["Belonging", "Joy", "Gratitude", "Connection"], card_palette: ["#355c67", "#d57c72"] },
-    { id: "nts-slow-focus", musicRoomFit: ["inner-planes"], mode: "radio", provider: "NTS", title: "Slow Focus", display_title: "NTS — Slow Focus", short_title: "SLOW FOCUS", stream_url: "https://streams.radiomast.io/dfc76352-cda6-4a95-85dd-6f6609f83ba2", stream_transport: "Buffered HLS scheduler", logo_src: "a s s e t s/radio-logos/nts.svg", logo_alt: "NTS Radio", primary_environmental_function: "Soul + Restoration", top_needs: ["Calm", "Recovery", "Attention", "Awe"], card_palette: ["#3c4660", "#aebbd0"] },
+    { id: "nts-slow-focus", musicRoomFit: ["inner-planes", "champagne-bohemia"], mode: "radio", provider: "NTS", title: "Slow Focus", display_title: "NTS — Slow Focus", short_title: "SLOW FOCUS", stream_url: "https://streams.radiomast.io/dfc76352-cda6-4a95-85dd-6f6609f83ba2", stream_transport: "Buffered HLS scheduler", logo_src: "a s s e t s/radio-logos/nts.svg", logo_alt: "NTS Radio", primary_environmental_function: "Soul + Restoration", top_needs: ["Calm", "Recovery", "Attention", "Awe"], card_palette: ["#3c4660", "#aebbd0"] },
     { id: "nts-poolside", musicRoomFit: ["champagne-bohemia"], mode: "radio", provider: "NTS", title: "Poolside", display_title: "NTS — Poolside", short_title: "POOLSIDE", stream_url: "https://streams.radiomast.io/052d2e3c-389c-44cf-a91a-8f5e1854f4c6", stream_transport: "Buffered HLS scheduler", logo_src: "a s s e t s/radio-logos/nts.svg", logo_alt: "NTS Radio", primary_environmental_function: "Joy + Affirmation", top_needs: ["Joy", "Gratitude", "Connection", "Belonging"], card_palette: ["#2f7890", "#f2c978"] },
     { id: "nts-otaku", musicRoomFit: ["modul8-infinity"], mode: "radio", provider: "NTS", title: "Otaku", display_title: "NTS — Otaku", short_title: "OTAKU", stream_url: "https://streams.radiomast.io/7481798f-063c-42a2-8048-15ff98fe309e", stream_transport: "Buffered HLS scheduler", logo_src: "a s s e t s/radio-logos/nts.svg", logo_alt: "NTS Radio", primary_environmental_function: "Curiosity + Exploration", top_needs: ["Curiosity", "Awe", "Joy", "Self-Actualisation"], card_palette: ["#392d70", "#79d5cf"] },
-    { id: "nts-low-key", musicRoomFit: ["modul8-infinity"], mode: "radio", provider: "NTS", title: "Low Key", display_title: "NTS — Low Key", short_title: "LOW KEY", stream_url: "https://streams.radiomast.io/de114902-ee1b-441f-91bc-5468d1e77605", stream_transport: "Buffered HLS scheduler", logo_src: "a s s e t s/radio-logos/nts.svg", logo_alt: "NTS Radio", primary_environmental_function: "Soul + Restoration", top_needs: ["Calm", "Attention", "Belonging", "Connection"], card_palette: ["#53423d", "#c5ab89"] },
+    { id: "nts-low-key", musicRoomFit: ["champagne-bohemia", "modul8-infinity"], mode: "radio", provider: "NTS", title: "Low Key", display_title: "NTS — Low Key", short_title: "LOW KEY", stream_url: "https://streams.radiomast.io/de114902-ee1b-441f-91bc-5468d1e77605", stream_transport: "Buffered HLS scheduler", logo_src: "a s s e t s/radio-logos/nts.svg", logo_alt: "NTS Radio", primary_environmental_function: "Soul + Restoration", top_needs: ["Calm", "Attention", "Belonging", "Connection"], card_palette: ["#53423d", "#c5ab89"] },
   ];
   const continuation = {
     videoSrc: "a s s e t s/Homepage - Hero Background Video - Chanel 2020 Runway Show.mp4",
     roomPools: {
       "inner-planes": ["cafe-del-mar-calm", "nts-slow-focus"],
-      "champagne-bohemia": ["cafe-del-mar-chill", "groove-salad", "groove-salad-classic", "nts-poolside"],
+      "champagne-bohemia": ["cafe-del-mar-chill", "groove-salad", "groove-salad-classic", "worldwide-fm", "nts-poolside", "nts-low-key", "nts-slow-focus"],
       "modul8-infinity": ["cafe-del-mar-house", "nts-otaku", "nts-low-key"],
       "james-bondage": ["sanctuary-dark-electro"],
       "safety-cushion": [],
@@ -3171,7 +3172,7 @@
     try {
       const [catalogueResponse, stationsResponse] = await Promise.all([
         fetch("adaptive-music-video-catalogue-v1.11.json?v=music-video-catalogue-a93d901ed795", { cache: "no-store" }),
-        fetch("radio-station-tensor-notion-export-v1.0.json?v=radio-stations-6dd335662e4f", { cache: "no-store" }),
+        fetch("radio-station-tensor-notion-export-v1.0.json?v=radio-stations-44bcb7e5d5b1", { cache: "no-store" }),
       ]);
       if (!catalogueResponse.ok) throw new Error(`Music Tensor fetch failed (${catalogueResponse.status})`);
       if (!stationsResponse.ok) throw new Error(`Radio Tensor fetch failed (${stationsResponse.status})`);
@@ -4138,6 +4139,16 @@
       radioRecoveryCount += 1;
       document.body.dataset.radioRecoveryCount = String(radioRecoveryCount);
       document.body.dataset.radioRecoveryReason = reason;
+      if (radioRecoveryCount >= 3 && fallbackStationFor(continuationDecision)) {
+        startScheduledRadioFallback(continuationDecision, {
+          broadcastChannelId,
+          source: "direct_stream_recovery",
+        }, 0, new Error(reason)).catch((error) => {
+          document.body.dataset.radioPlaybackState = "error";
+          document.body.dataset.radioPlaybackError = String(error?.message || error).slice(0, 120);
+        });
+        return;
+      }
       document.body.dataset.radioPlaybackState = "reconnecting";
       try {
         audio.pause();
@@ -5231,6 +5242,31 @@
     return radioStationRecords.find((station) => station.id === stationId) || null;
   }
 
+  function fallbackStationFor(station) {
+    const fallbackId = String(station?.fallback_station_id || "");
+    if (!fallbackId || fallbackId === station?.id) return null;
+    return stationForId(fallbackId);
+  }
+
+  async function startScheduledRadioFallback(station, options = {}, loadingGeneration = 0, error = null) {
+    if (options.fallbackAttempted) return false;
+    const fallback = fallbackStationFor(station);
+    if (!fallback) return false;
+    document.body.dataset.radioFallbackFrom = station.id;
+    document.body.dataset.radioFallbackTo = fallback.id;
+    document.body.dataset.radioFallbackReason = String(error?.message || error || "station_unavailable").slice(0, 120);
+    document.body.dataset.radioScheduledStationId = station.id;
+    showMusicShelfStatus(`${station.display_title} · unavailable — ${fallback.display_title} now`, 5000);
+    await startRadioStation(fallback, {
+      ...options,
+      channelLoadingGeneration: Number(loadingGeneration) || undefined,
+      source: "scheduled_station_fallback",
+      fallbackAttempted: true,
+      scheduledStationId: station.id,
+    });
+    return true;
+  }
+
   function markAudioLedPartyUnavailable(nextTrack, loadingGeneration, error) {
     stopContinuationAudioImmediately();
     document.body.classList.remove("television-radio-continuation", "television-audio-party");
@@ -5417,6 +5453,12 @@
   async function startRadioStation(stationDecision, options = {}) {
     const station = stationForId(stationDecision?.id || stationDecision) || bestRadioStationForTrack();
     if (!station) return;
+    if (!options.fallbackAttempted) {
+      delete document.body.dataset.radioFallbackFrom;
+      delete document.body.dataset.radioFallbackTo;
+      delete document.body.dataset.radioFallbackReason;
+      delete document.body.dataset.radioScheduledStationId;
+    }
     const loadingGeneration = Number(options.channelLoadingGeneration) || beginChannelLoading({
       mode: "radio",
       item: station,
@@ -5459,6 +5501,7 @@
     try {
       await primeContinuationAudio(continuationDecision);
     } catch (error) {
+      if (await startScheduledRadioFallback(station, options, loadingGeneration, error)) return;
       document.body.dataset.radioPlaybackState = "error";
       document.body.dataset.radioPlaybackError = String(error?.message || error).slice(0, 120);
       failChannelLoading(loadingGeneration);
@@ -5484,7 +5527,8 @@
         finishChannelLoading(loadingGeneration);
         updateNowPlaying();
       })
-      .catch((error) => {
+      .catch(async (error) => {
+        if (error?.name !== "NotAllowedError" && await startScheduledRadioFallback(station, options, loadingGeneration, error)) return;
         document.body.dataset.radioPlaybackState = "error";
         document.body.dataset.radioPlaybackError = String(error?.message || error).slice(0, 120);
         failChannelLoading(loadingGeneration);

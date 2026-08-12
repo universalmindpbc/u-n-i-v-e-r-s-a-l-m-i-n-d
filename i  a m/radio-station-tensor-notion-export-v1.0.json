@@ -1,11 +1,12 @@
 {
-  "schema_version": "um_radio_station_tensor_approved_v1.0",
-  "generated_at": "2026-07-22T00:00:00+10:00",
+  "schema_version": "um_radio_station_tensor_approved_v1.1",
+  "generated_at": "2026-08-12T10:30:00+10:00",
   "source_data_source": "collection://6993ebc6-bb6e-44c3-933a-18c5d6ad44bc",
   "source_database_url": "https://app.notion.com/p/35a14a98ae5f4f6a8950beefc7c5fb5f?v=1c16436b5c0545a4b553e985ab770c40",
-  "source_contract": "Export only Approved rows whose Media Class is Radio Station. Station ID, Station Stream URL, Station Player URL, Stream Transport, Music Room Fit and Permission Scope are explicit Notion properties.",
-  "approval": "Approved by Ben for password-locked internal demo use. Public release requires official station permission and confirmed production stream paths.",
-  "record_count": 11,
+  "source_contract": "Export Approved Notion rows whose Media Class is Radio Station, plus explicitly identified supplemental closed-beta approvals. Station ID, Station Stream URL, Station Player URL, Stream Transport, Music Room Fit and Permission Scope remain explicit properties.",
+  "approval": "Approved by Ben for the closed beta. Worldwide FM and NTS public release remains gated on the confirmed financial partnerships.",
+  "supplemental_record_count": 1,
+  "record_count": 12,
   "media_class": "radio_station",
   "records": [
     {
@@ -304,6 +305,67 @@
       ]
     },
     {
+      "id": "worldwide-fm",
+      "mode": "radio",
+      "provider": "Worldwide FM",
+      "title": "Worldwide FM",
+      "display_title": "Worldwide FM",
+      "short_title": "WORLDWIDE FM",
+      "stream_url": "https://worldwide-fm.radiocult.fm/stream",
+      "player_url": "https://www.worldwidefm.net/",
+      "stream_format": "MP3 320kb live stream",
+      "stream_transport": "Direct MP3",
+      "fallback_station_id": "cafe-del-mar-chill",
+      "permission_scope": "Closed beta only; public launch partnership pending",
+      "approval_source": "Ben confirmed closed-beta permission on 2026-08-12",
+      "source_record_url": "https://www.worldwidefm.net/about",
+      "status": "Approved",
+      "editorial_priority": 1,
+      "primary_environmental_function": "Global Culture + Discovery",
+      "secondary_environmental_functions": [
+        "Curiosity + Exploration",
+        "Joy + Affirmation"
+      ],
+      "top_needs": [
+        "Curiosity",
+        "Connection",
+        "Belonging",
+        "Joy"
+      ],
+      "need_scores": {
+        "Curiosity": 0.96,
+        "Connection": 0.9,
+        "Belonging": 0.86,
+        "Joy": 0.82,
+        "Awe": 0.84,
+        "Self-Actualisation": 0.76,
+        "Trust": 0.74,
+        "Hope": 0.78,
+        "Attention": 0.72,
+        "Calm": 0.5,
+        "Arousal": 0.58,
+        "Recovery": 0.48
+      },
+      "context": {
+        "work_fit": 0.62,
+        "group_fit": 0.92,
+        "high_load_fit": 0.45,
+        "intensity": "variable",
+        "density": "variable",
+        "trajectory": "global_exploration"
+      },
+      "card_palette": [
+        "#141414",
+        "#f1eadc"
+      ],
+      "suitable_citizen_state": "Curiosity, cultural discovery, social connection and openness to a presenter-led global music programme.",
+      "not_suitable_citizen_state": "A stated need for predictable genre continuity, near-silence or a tightly controlled low-stimulation environment.",
+      "editorial_notes": "Worldwide FM is a fixed six-hour live relay inside Champagne Bohemia. Its own hosts and programmes provide the variation. If the station is unavailable, the runtime falls back to Café del Mar Chill without changing the public channel identity.",
+      "music_room_fit": [
+        "champagne-bohemia"
+      ]
+    },
+    {
       "id": "sanctuary-dark-electro",
       "mode": "radio",
       "provider": "Sanctuary Radio",
@@ -478,9 +540,10 @@
       ],
       "suitable_citizen_state": "Sensory overload, anxiety, mental fatigue, focused work, sleep pressure, rumination and a need for a spacious downshift.",
       "not_suitable_citizen_state": "Citizens explicitly seeking vocal familiarity, strong social energy, catharsis or high-arousal movement.",
-      "editorial_notes": "NTS Infinite Mixtape assigned to inner planes for ambient, minimal and contemplative programming supporting regulation, attention and recovery. Internal demo use only; public release requires official permission.",
+      "editorial_notes": "NTS Infinite Mixtape assigned to Inner Planes and the closing NTS slot in Champagne Bohemia for ambient, minimal and contemplative programming. Closed-beta use is approved; public launch remains partnership-gated.",
       "music_room_fit": [
-        "inner-planes"
+        "inner-planes",
+        "champagne-bohemia"
       ]
     },
     {
@@ -660,8 +723,9 @@
       ],
       "suitable_citizen_state": "Low-pressure focus, grounded connection, familiar hip-hop language, calm social presence, belonging and a need for steady rather than sleepy regulation.",
       "not_suitable_citizen_state": "Citizens asking for near-silence, strongly non-vocal material, peak dance energy or highly abstract novelty.",
-      "editorial_notes": "NTS Low Key, served through its official 100 Percent Hip-Hop Infinite Mixtape path, is assigned to modul8 infinity for grounded future-facing beats, focus and belonging. Internal demo use only; public release requires official permission.",
+      "editorial_notes": "NTS Low Key, served through its official 100 Percent Hip-Hop Infinite Mixtape path, is assigned to Champagne Bohemia and modul8 infinity for grounded beats, focus and belonging. Closed-beta use is approved; public launch remains partnership-gated.",
       "music_room_fit": [
+        "champagne-bohemia",
         "modul8-infinity"
       ]
     }

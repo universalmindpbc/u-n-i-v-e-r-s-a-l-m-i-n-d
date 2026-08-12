@@ -1,5 +1,5 @@
 {
-  "version": "broadcast_schedule_v1.7",
+  "version": "broadcast_schedule_v1.8",
   "stage": "five_music_rooms_live_safety_cushion_ready",
   "epoch_utc": "2026-07-24T00:00:00.000Z",
   "extended_session_format_policy": {
@@ -1090,6 +1090,22 @@
       "schedule": [
         {
           "station_id": "cafe-del-mar-chill",
+          "duration_seconds": 10800
+        },
+        {
+          "station_id": "groove-salad-classic",
+          "duration_seconds": 7200
+        },
+        {
+          "station_id": "nts-poolside",
+          "duration_seconds": 7200
+        },
+        {
+          "station_id": "worldwide-fm",
+          "duration_seconds": 21600
+        },
+        {
+          "station_id": "nts-low-key",
           "duration_seconds": 7200
         },
         {
@@ -1101,40 +1117,12 @@
           "duration_seconds": 7200
         },
         {
-          "station_id": "nts-poolside",
+          "station_id": "nts-slow-focus",
           "duration_seconds": 7200
         },
         {
           "station_id": "cafe-del-mar-chill",
-          "duration_seconds": 7200
-        },
-        {
-          "station_id": "groove-salad",
-          "duration_seconds": 7200
-        },
-        {
-          "station_id": "groove-salad-classic",
-          "duration_seconds": 7200
-        },
-        {
-          "station_id": "nts-poolside",
-          "duration_seconds": 7200
-        },
-        {
-          "station_id": "cafe-del-mar-chill",
-          "duration_seconds": 7200
-        },
-        {
-          "station_id": "groove-salad",
-          "duration_seconds": 7200
-        },
-        {
-          "station_id": "groove-salad-classic",
-          "duration_seconds": 7200
-        },
-        {
-          "station_id": "nts-poolside",
-          "duration_seconds": 7200
+          "duration_seconds": 10800
         }
       ]
     },

@@ -188,8 +188,27 @@ for (const channel of schedule.channels) {
       approvedRadioVisualChannels[channel.id],
       `${channel.name} Radio must retain its approved Fashion pairing.`
     );
+    const champagneBohemiaTimetable = [
+      ["cafe-del-mar-chill", 10800],
+      ["groove-salad-classic", 7200],
+      ["nts-poolside", 7200],
+      ["worldwide-fm", 21600],
+      ["nts-low-key", 7200],
+      ["groove-salad", 7200],
+      ["groove-salad-classic", 7200],
+      ["nts-slow-focus", 7200],
+      ["cafe-del-mar-chill", 10800],
+    ];
+    if (channel.id === "radio-champagne-bohemia") {
+      assert.deepEqual(
+        channel.schedule.map((entry) => [entry.station_id, Number(entry.duration_seconds)]),
+        champagneBohemiaTimetable,
+        "Champagne Bohemia must retain the approved 24-hour editorial arc."
+      );
+    } else {
+      assert.ok(channel.schedule.every((entry) => Number(entry.duration_seconds) === 7200), "The other Radio rooms must retain their two-hour blocks.");
+    }
     for (const entry of channel.schedule) {
-      assert.equal(Number(entry.duration_seconds), 7200, "Stage-one Radio blocks must be two hours.");
       assert.ok(approvedStationIds.has(entry.station_id), `${entry.station_id} must be an approved radio station.`);
       scheduledStations.add(entry.station_id);
     }
