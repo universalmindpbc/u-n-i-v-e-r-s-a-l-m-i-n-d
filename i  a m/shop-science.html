@@ -14,12 +14,14 @@
     <a class="science-skip" href="#science-main">Skip to the science</a>
 
     <header class="science-navigation">
-      <a class="science-navigation__brand" href="shop.html#top" aria-label="Return to James Bondage shop">
+      <a class="science-navigation__brand" href="shop.html?standalone=1#top" aria-label="Return to James Bondage shop">
         <span>james bondage</span>
         <small>[ health ]</small>
       </a>
       <p class="science-navigation__section">science</p>
-      <a class="science-navigation__return" href="shop.html#top">return to shop <span aria-hidden="true">↙</span></a>
+      <nav class="science-navigation__return" aria-label="Science page shortcuts">
+        <a href="#research">research</a><span aria-hidden="true"> · </span><a href="#fabric-science">fabric science</a><span aria-hidden="true"> · </span><a href="shop.html?standalone=1#top">return to shop <span aria-hidden="true">↙</span></a>
+      </nav>
       <img class="science-navigation__flower" src="a s s e t s/Universal Mind [ I o H ] Logo.PNG" alt="" aria-hidden="true">
     </header>
 
@@ -65,7 +67,7 @@
         <p class="shop-science__boundary">This hypothesis brings together established research on self-selection, body appreciation, agency, tactile comfort, fit and affect. The complete James Bondage <span>[ health ]</span> proposition is intended for future testing.</p>
       </section>
 
-      <details class="shop-science__research" data-science-research>
+      <details class="shop-science__research" id="research" data-science-research>
         <summary>
           <span class="shop-science__summary-flower" aria-hidden="true"><img src="a s s e t s/Universal Mind [ I o H ] Logo.PNG" alt=""></span>
           <span class="shop-science__summary-title">Explore the research<small>15 gold-standard studies · three evidence strands</small></span>
@@ -138,7 +140,7 @@
           </details>
         </div>
 
-        <section class="shop-material__ratings" aria-labelledby="shop-material-ratings-title">
+        <section class="shop-material__ratings" id="fabric-science" aria-labelledby="shop-material-ratings-title">
           <header>
             <p class="science-label">The James Bondage edit</p>
             <h2 id="shop-material-ratings-title">27 LABELS.<br><em>THE EVIDENCE,<br>IN COLOUR.</em></h2>
