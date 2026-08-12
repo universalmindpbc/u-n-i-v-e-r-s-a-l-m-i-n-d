@@ -31,6 +31,10 @@ assert.ok(server.includes('adaptive-inference-system-prompt-v4-45.js'));
 assert.ok(worker.includes('adaptive-inference-system-prompt-v4-45.js'));
 assert.ok(server.includes('type: "null"'));
 assert.ok(worker.includes('type: "null"'));
+assert.ok(!server.includes("allowedMusicFormats"));
+assert.ok(!worker.includes("allowedMusicFormats"));
+assert.ok(server.includes("The application owns extended-session format and exact source resolution."));
+assert.ok(worker.includes("The application owns extended-session format and exact source resolution."));
 assert.ok(subprompt.includes("Adaptive Music Television Selector Subprompt v1.12"));
 assert.ok(subprompt.includes("Resolve `source_id` from `broadcast-schedule-v1.json`"));
 
