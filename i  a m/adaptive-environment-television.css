@@ -3125,8 +3125,7 @@ body.television-room-open.flower-cue-visible .flower-begin-cue {
   top: 50%;
   z-index: 18;
   display: grid;
-  gap: 11px;
-  width: min(560px, calc(100vw - 48px));
+  width: min(840px, calc(100vw - 32px));
   color: rgba(255, 255, 255, 0.9);
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: clamp(15px, 1.3vw, 18px);
@@ -3139,6 +3138,32 @@ body.television-room-open.flower-cue-visible .flower-begin-cue {
   transform: translate(-50%, -50%);
 }
 
+.adaptive-television-wallet-onboarding__welcome,
+.adaptive-television-wallet-onboarding__instructions {
+  grid-area: 1 / 1;
+}
+
+.adaptive-television-wallet-onboarding__welcome {
+  align-self: center;
+  font-size: clamp(18px, 2vw, 30px);
+  font-weight: 600;
+  letter-spacing: 0;
+  line-height: 1.25;
+  white-space: nowrap;
+}
+
+.adaptive-television-wallet-onboarding__welcome span {
+  unicode-bidi: isolate;
+}
+
+.adaptive-television-wallet-onboarding__instructions {
+  display: grid;
+  align-self: center;
+  justify-self: center;
+  gap: 11px;
+  width: min(560px, 100%);
+}
+
 .adaptive-television-wallet-onboarding p {
   margin: 0;
   opacity: 0;
@@ -3148,10 +3173,17 @@ body.television-room-open.flower-cue-visible .flower-begin-cue {
     transform 1300ms cubic-bezier(0.22, 0.72, 0.18, 1);
 }
 
+.adaptive-television-wallet-onboarding.is-welcome-visible [data-wallet-onboarding-welcome],
 .adaptive-television-wallet-onboarding.is-line-one-visible [data-wallet-onboarding-line="one"],
 .adaptive-television-wallet-onboarding.is-line-two-visible [data-wallet-onboarding-line="two"] {
   opacity: 1;
   transform: translateY(0);
+}
+
+.adaptive-television-wallet-onboarding.is-welcome-exiting [data-wallet-onboarding-welcome] {
+  opacity: 0;
+  transform: translateY(-5px);
+  transition-duration: 900ms;
 }
 
 .adaptive-television-wallet-onboarding.is-dismissed [data-wallet-onboarding-line] {
@@ -3166,6 +3198,15 @@ body.homepage-radar-open .adaptive-television-wallet-onboarding,
 body.television-page-view-open .adaptive-television-wallet-onboarding {
   opacity: 0;
   visibility: hidden;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .adaptive-television-wallet-onboarding p,
+  .adaptive-television-wallet-onboarding.is-welcome-exiting [data-wallet-onboarding-welcome],
+  .adaptive-television-wallet-onboarding.is-dismissed [data-wallet-onboarding-line] {
+    transform: none;
+    transition: none;
+  }
 }
 
 body.television-room-open.flower-cue-visible .flower-begin-cue:hover,

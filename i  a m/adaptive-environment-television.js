@@ -201,6 +201,9 @@
   const siteShell = document.querySelector(".site-shell");
   const flowerTrigger = document.querySelector(".global-nav-trigger");
   const walletOnboarding = document.querySelector("[data-wallet-onboarding]");
+  const walletOnboardingWelcome = walletOnboarding?.querySelector("[data-wallet-onboarding-welcome]");
+  const walletOnboardingLineOne = walletOnboarding?.querySelector('[data-wallet-onboarding-line="one"]');
+  const walletOnboardingLineTwo = walletOnboarding?.querySelector('[data-wallet-onboarding-line="two"]');
   const radarClose = document.querySelector("[data-television-radar-close]");
   const fullscreenButton = document.querySelector("[data-television-fullscreen]");
   const livePill = document.querySelector("[data-television-live-pill]");
@@ -396,6 +399,7 @@
   let shopEntryMediaReady = false;
   let shopEntryMediaFallbackTimer = 0;
   let walletOnboardingEngaged = false;
+  let walletOnboardingWelcomeExitTimer = 0;
   let walletOnboardingLineOneTimer = 0;
   let walletOnboardingLineTwoTimer = 0;
   let walletOnboardingDismissTimer = 0;
@@ -6248,30 +6252,51 @@
 
   function beginWalletOnboarding() {
     if (!walletOnboarding || walletOnboardingEngaged) return;
+    const hasMultilingualWelcome = Boolean(walletOnboardingWelcome);
+    window.clearTimeout(walletOnboardingWelcomeExitTimer);
     window.clearTimeout(walletOnboardingLineOneTimer);
     window.clearTimeout(walletOnboardingLineTwoTimer);
     window.clearTimeout(walletOnboardingDismissTimer);
-    walletOnboarding.classList.remove("is-line-one-visible", "is-line-two-visible", "is-dismissed");
+    walletOnboarding.classList.remove("is-welcome-visible", "is-welcome-exiting", "is-line-one-visible", "is-line-two-visible", "is-dismissed");
     walletOnboarding.setAttribute("aria-hidden", "false");
+    walletOnboardingWelcome?.setAttribute("aria-hidden", "false");
+    walletOnboardingLineOne?.setAttribute("aria-hidden", "true");
+    walletOnboardingLineTwo?.setAttribute("aria-hidden", "true");
+    if (hasMultilingualWelcome) {
+      walletOnboarding.classList.add("is-welcome-visible");
+      walletOnboardingWelcomeExitTimer = window.setTimeout(() => {
+        if (walletOnboardingEngaged) return;
+        walletOnboarding.classList.remove("is-welcome-visible");
+        walletOnboarding.classList.add("is-welcome-exiting");
+        walletOnboardingWelcome.setAttribute("aria-hidden", "true");
+      }, 3200);
+    }
     walletOnboardingLineOneTimer = window.setTimeout(() => {
       if (walletOnboardingEngaged) return;
+      walletOnboarding.classList.remove("is-welcome-exiting");
       walletOnboarding.classList.add("is-line-one-visible");
-    }, 2500);
+      walletOnboardingLineOne?.setAttribute("aria-hidden", "false");
+    }, hasMultilingualWelcome ? 4500 : 2500);
     walletOnboardingLineTwoTimer = window.setTimeout(() => {
       if (walletOnboardingEngaged) return;
       walletOnboarding.classList.add("is-line-two-visible");
-    }, 4500);
-    walletOnboardingDismissTimer = window.setTimeout(completeWalletOnboarding, 14500);
+      walletOnboardingLineTwo?.setAttribute("aria-hidden", "false");
+    }, hasMultilingualWelcome ? 6500 : 4500);
+    walletOnboardingDismissTimer = window.setTimeout(completeWalletOnboarding, hasMultilingualWelcome ? 16500 : 14500);
   }
 
   function completeWalletOnboarding() {
     if (walletOnboardingEngaged) return;
     walletOnboardingEngaged = true;
+    window.clearTimeout(walletOnboardingWelcomeExitTimer);
     window.clearTimeout(walletOnboardingLineOneTimer);
     window.clearTimeout(walletOnboardingLineTwoTimer);
     window.clearTimeout(walletOnboardingDismissTimer);
-    walletOnboarding?.classList.remove("is-line-one-visible", "is-line-two-visible");
+    walletOnboarding?.classList.remove("is-welcome-visible", "is-welcome-exiting", "is-line-one-visible", "is-line-two-visible");
     walletOnboarding?.classList.add("is-dismissed");
+    walletOnboardingWelcome?.setAttribute("aria-hidden", "true");
+    walletOnboardingLineOne?.setAttribute("aria-hidden", "true");
+    walletOnboardingLineTwo?.setAttribute("aria-hidden", "true");
     window.setTimeout(() => {
       walletOnboarding?.setAttribute("aria-hidden", "true");
     }, 950);
