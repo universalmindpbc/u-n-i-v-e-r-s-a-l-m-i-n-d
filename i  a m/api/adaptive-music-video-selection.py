@@ -24,10 +24,16 @@ if os.environ.get("REQUEST_METHOD") != "POST":
 try:
     content_length = int(os.environ.get("CONTENT_LENGTH") or "0")
     request = json.loads(sys.stdin.read(content_length))
-    inference = request.get("v445_payload") or request.get("v444_payload") or request.get("inference") or request
+    inference = (
+        request.get("v555_payload")
+        or request.get("v445_payload")
+        or request.get("v444_payload")
+        or request.get("inference")
+        or request
+    )
     engagement = request.get("engagement_signals")
     if not isinstance(inference, dict):
-        raise ValueError("A v4.45 inference payload is required.")
+        raise ValueError("A v5.55 inference payload is required.")
     selection = select_from_file(inference, engagement_signals=engagement)
     respond("200 OK", selection)
 except (ValueError, json.JSONDecodeError) as error:

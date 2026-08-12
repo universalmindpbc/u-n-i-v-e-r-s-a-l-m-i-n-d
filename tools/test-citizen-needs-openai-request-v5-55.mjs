@@ -9,7 +9,7 @@ import {
   SYSTEM_PROMPT_SHA256,
   SYSTEM_PROMPT_SOURCE,
   SYSTEM_PROMPT_VERSION,
-} from "../cloudflare/adaptive-inference-system-prompt-v4-45.js";
+} from "../cloudflare/adaptive-inference-system-prompt-v5-55.js";
 import {
   ADAPTIVE_MUSIC_ROOM_SELECTION_GUIDE,
   MUSIC_ROOM_SELECTION_GUIDE_VERSION,
@@ -22,7 +22,7 @@ const wellbeingGuidePath = resolve(root, "i  a m/universal-one-wellbeing-support
 const programmeGuidePath = resolve(root, "i  a m/universal-one-programme-guide-v1.txt");
 
 const importPatterns = [
-  /import \{[\s\S]*?\} from "\.\/adaptive-inference-system-prompt-v4-45\.js";\n/,
+  /import \{[\s\S]*?\} from "\.\/adaptive-inference-system-prompt-v5-55\.js";\n/,
   /import \{[\s\S]*?\} from "\.\/adaptive-music-room-selection-guide-v1\.js";\n/,
   /import UNIVERSAL_ONE_PORTAL_GUIDE from "\.\.\/i  a m\/universal-one-portal-guide-v1\.txt";\n/,
   /import UNIVERSAL_ONE_WELLBEING_SUPPORT_GUIDE from "\.\.\/i  a m\/universal-one-wellbeing-support-guide-v1\.txt";\n/,

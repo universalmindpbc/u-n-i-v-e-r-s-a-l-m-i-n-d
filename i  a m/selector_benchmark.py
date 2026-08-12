@@ -40,14 +40,21 @@ def compare_outputs(selector_output: Mapping[str, Any], gpt_output: Optional[Map
 
 def main() -> None:
     parser = argparse.ArgumentParser(description="Compare deterministic selector output against optional GPT shadow output.")
-    parser.add_argument("fixture", help="Path to v4.44 payload JSON fixture.")
+    parser.add_argument("fixture", help="Path to v5.55 payload JSON fixture.")
     parser.add_argument("--gpt-shadow", help="Optional GPT shadow recommendation JSON for the same fixture.")
     parser.add_argument("--catalogue", default=str(Path(__file__).resolve().parent / "adaptive-music-video-catalogue-v1.11.json"))
     args = parser.parse_args()
 
     fixture = load_json(Path(args.fixture))
     gpt_shadow = load_json(Path(args.gpt_shadow)) if args.gpt_shadow else None
-    selector_output = select_from_file(fixture.get("v444_payload", fixture), Path(args.catalogue))
+    selector_output = select_from_file(
+        fixture.get("v555_payload")
+        or fixture.get("v445_payload")
+        or fixture.get("v444_payload")
+        or fixture.get("inference")
+        or fixture,
+        Path(args.catalogue),
+    )
 
     print(json.dumps({
         "schema_version": "adaptive_music_video_selector_benchmark_v1.11",

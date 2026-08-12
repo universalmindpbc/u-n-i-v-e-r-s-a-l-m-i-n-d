@@ -9,7 +9,7 @@ import {
   SYSTEM_PROMPT_SHA256,
   SYSTEM_PROMPT_SOURCE,
   SYSTEM_PROMPT_VERSION,
-} from "../cloudflare/adaptive-inference-system-prompt-v4-45.js";
+} from "../cloudflare/adaptive-inference-system-prompt-v5-55.js";
 import {
   ADAPTIVE_MUSIC_ROOM_SELECTION_GUIDE,
   MUSIC_ROOM_SELECTION_GUIDE_VERSION,
@@ -750,9 +750,8 @@ async function handleMusicVideoSelection(request, response) {
 
   try {
     const body = await readRequestJson(request);
-    const payload = body.v444_payload && typeof body.v444_payload === "object"
-      ? body.v444_payload
-      : body;
+    const payload = [body.v555_payload, body.v445_payload, body.v444_payload, body.inference, body]
+      .find((candidate) => candidate && typeof candidate === "object");
     const result = await runSelectorCore(payload);
     sendJson(response, 200, result);
   } catch (error) {

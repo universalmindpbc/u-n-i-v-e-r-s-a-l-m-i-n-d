@@ -2,7 +2,7 @@
 
 ## Intent
 
-Create a homepage-derived journey where the citizen self-reports before an extended streaming session starts. The system infers current needs with Adaptive Inference Engine system prompt v4.45, selects one contextual hero music video, then continues into an eligible Universal Mind music room and application-assigned format.
+Create a homepage-derived journey where the citizen self-reports before an extended streaming session starts. The system infers current needs with Adaptive Inference Engine system prompt v5.55, selects one contextual hero music video, then continues into an eligible Universal Mind music room and application-assigned format.
 
 ## Production Flow
 
@@ -10,7 +10,7 @@ Create a homepage-derived journey where the citizen self-reports before an exten
    - Collect the short `I am ...` self-report.
    - Add privacy-preserving local context from `local-context.js`: time, weather, broad location label and context role.
    - Send to the existing citizen needs inference worker.
-   - The worker imports `adaptive-inference-system-prompt-v4-45.js`, generated from the canonical v4.45 markdown.
+   - The worker imports `adaptive-inference-system-prompt-v5-55.js`, generated from the canonical v5.55 markdown.
 
 2. Needs JSON
    - Return `selected_music_room`, `selected_format`, `source_id`, `catalogue_ready`, `music_room_confidence` and `music_room_reason`.
@@ -48,7 +48,7 @@ Create a homepage-derived journey where the citizen self-reports before an exten
 - `adaptive-music-video.html`: homepage-derived page.
 - `adaptive-music-video.js`: local prototype recommendation engine, YouTube player handoff and JSON output.
 - `adaptive-music-artist-catalogue.json`: editable Universal Mind seed catalogue and first hero-candidate metadata.
-- `adaptive-inference-engine-system-prompt-v4.45.html`: codebase page that loads the current markdown and provides the raw source link.
+- `adaptive-inference-engine-system-prompt-v5.55.html`: codebase page that loads the current markdown and provides the raw source link.
 - `styles.css`: page-specific layout while preserving the existing homepage/video dimensions.
 - `cloudflare/adaptive-music-intelligence-worker.js`: server-side provider adapter skeleton for YouTube search/validation and future Gracenote, Cyanite and Musixmatch calls.
 

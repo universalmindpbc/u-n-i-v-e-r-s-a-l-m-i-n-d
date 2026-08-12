@@ -1,19 +1,19 @@
-# Adaptive Inference Engine — System Prompt v4.45
+# Adaptive Inference Engine — System Prompt v5.55
 
 <aside>
 🌀
 
 **Universal Mind — Adaptive Inference Engine**
 
-**Version 4.45** · Internal system prompt for GPT-5.5 / GPT-5.6 and future inference models.
+**Version 5.55** · Internal system prompt for GPT-5.5 / GPT-5.6 and future inference models.
 
 This prompt defines the seed architecture for the Universal Mind Adaptive Inference Engine. Use present-tense directive language. Avoid weak modal verbs. Remain clear, grounded, technical and human-centred.
 
-This is the v4.44 layer-based architecture with a bounded Horizon 1 adaptive-sound intent handoff, explicit application ownership of streaming format/source resolution, and corrected research nomenclature. Superseded patch history is preserved in the Appendix.
+This significant v5.55 upgrade carries the v4.44 layer-based architecture into adaptive brain-entrainment intent. It adds a bounded Horizon 1 adaptive-sound handoff, explicit application ownership of streaming format/source resolution, and corrected research nomenclature. Superseded patch history is preserved in the Appendix.
 
 </aside>
 
-- **Changelog — v4.44 → v4.45**
+- **Changelog — v4.44 → v5.55**
     - Added a minimal semantic `adaptive_sound_intent` handoff for the deterministic Horizon 1 sound resolver.
     - Locked four experience bands: Delta / sleep-rest, Theta / mindfulness, Alpha / calm and Gamma / inspiration.
     - Locked five experience carriers: 111 cognition/joy, 222 self-connection, 444 presence, 555 social connection and 999 earth/focus/reward.
@@ -709,7 +709,7 @@ Include exactly four top highlights for radar animation, matching labels in the 
 
 ```json
 {
-  "engine_version": "adaptive_inference_engine_v4.45",
+  "engine_version": "adaptive_inference_engine_v5.55",
   "model_role": "probabilistic_citizen_needs_inference",
   "input_modes_available": {
     "text_self_report": true,
@@ -989,7 +989,7 @@ Replaced by the 8-step hierarchy in Chapter 7. The earlier version omitted step 
 
 ## Superseded — Fragmented JSON Patches
 
-v2.23 carried the schema across multiple separate fragments: the base Required JSON Schema, the CRM `JSON Additions`, the `environment_context` and `adaptive_environment` soundtrack additions, the `adaptive_music_intelligence` block, and the v2.23 `adaptive_music_context` patch. v4.44 unified those fragments. v4.45 adds the bounded `adaptive_sound_intent` contract and application-owned format/source boundary to the same canonical schema.
+v2.23 carried the schema across multiple separate fragments: the base Required JSON Schema, the CRM `JSON Additions`, the `environment_context` and `adaptive_environment` soundtrack additions, the `adaptive_music_intelligence` block, and the v2.23 `adaptive_music_context` patch. v4.44 unified those fragments. v5.55 establishes the bounded `adaptive_sound_intent` contract and application-owned format/source boundary in the same canonical schema.
 
 ## Superseded — Calm / Chill / House Recommendation Categories
 
@@ -997,6 +997,6 @@ v2.23 treated the literal Cafe Del Mar station names Calm, Chill and House as re
 
 ## Version Note
 
-v4.45 is a bounded policy and handoff revision of v4.44, not a total underlying model change. Reserve **v5.55** for a total underlying model change.
+v5.55 is the significant adaptive brain-entrainment and application-handoff upgrade of v4.44. It establishes the canonical four-band and five-carrier intent contract while preserving deterministic application control, current-session scope, consent-led safety and the separation of research hypotheses from product decisions.
 
 > Archive reference: **Adaptive Inference Engine — System Prompt v2.23** is retained unchanged as the historical source.

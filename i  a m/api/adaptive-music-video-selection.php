@@ -18,10 +18,10 @@ if (!is_array($request)) {
     exit;
 }
 
-$inference = $request['v445_payload'] ?? $request['v444_payload'] ?? $request['inference'] ?? $request;
+$inference = $request['v555_payload'] ?? $request['v445_payload'] ?? $request['v444_payload'] ?? $request['inference'] ?? $request;
 if (!is_array($inference)) {
     http_response_code(400);
-    echo json_encode(['error' => 'A v4.45 inference payload is required.']);
+    echo json_encode(['error' => 'A v5.55 inference payload is required.']);
     exit;
 }
 

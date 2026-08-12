@@ -3,7 +3,7 @@ import {
   SYSTEM_PROMPT_SHA256,
   SYSTEM_PROMPT_SOURCE,
   SYSTEM_PROMPT_VERSION,
-} from "./adaptive-inference-system-prompt-v4-45.js";
+} from "./adaptive-inference-system-prompt-v5-55.js";
 import {
   ADAPTIVE_MUSIC_ROOM_SELECTION_GUIDE,
   MUSIC_ROOM_SELECTION_GUIDE_VERSION,

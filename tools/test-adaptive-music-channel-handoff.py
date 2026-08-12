@@ -39,6 +39,14 @@ def payload(room: str, visitor_id: str) -> dict:
 
 
 def main() -> None:
+    alias_payload = {"highlights": ["Calm"]}
+    for alias in selector.INFERENCE_PAYLOAD_ALIASES:
+        require(selector.unwrap_inference_payload({alias: alias_payload}) is alias_payload, f"{alias} request alias failed.")
+    require(
+        selector.unwrap_inference_payload({"v555_payload": alias_payload, "v445_payload": {"highlights": ["Legacy"]}}) is alias_payload,
+        "v5.55 request payload did not take precedence over a compatibility alias.",
+    )
+
     schedule = selector.load_broadcast_schedule()
     require(schedule["extended_session_format_policy"]["weights"] == selector.EXTENDED_SESSION_FORMAT_WEIGHTS, "Schedule and selector 80/10/10 weights drifted.")
     source_records = {channel["id"]: channel for channel in schedule["channels"]}
@@ -59,7 +67,7 @@ def main() -> None:
             )
             expected_source = f"{prefix}-{room}"
             require(result["format"] == extended_format, f"{room} did not preserve assigned {extended_format} slot.")
-            require(result["music_room"] == room, f"Nested v4.45 room did not resolve for {extended_format}.")
+            require(result["music_room"] == room, f"Nested v5.55 room did not resolve for {extended_format}.")
             require(result["source_id"] == expected_source, f"Expected {expected_source}, received {result['source_id']}.")
             require(result["catalogue_ready"] is True, f"{expected_source} was not marked ready.")
             require(source_records[expected_source]["format"] == extended_format, f"{expected_source} has the wrong registry format.")
@@ -109,6 +117,7 @@ def main() -> None:
 
     print(json.dumps({
         "schema_version": "adaptive_music_exact_channel_handoff_qa_v1",
+        "request_aliases_tested": list(selector.INFERENCE_PAYLOAD_ALIASES),
         "application_owned_weights": selector.EXTENDED_SESSION_FORMAT_WEIGHTS,
         "format_fixtures": visitor_ids,
         "exact_sources_tested": resolved,

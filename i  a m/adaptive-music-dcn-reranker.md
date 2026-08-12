@@ -1,7 +1,7 @@
 # Adaptive Music DCN Re-ranker v0.1
 
 This is the passive-feedback layer for the Universal Mind adaptive music selector.
-It is deliberately soft touch: the v4.44 human-needs radar and approved song
+It is deliberately soft touch: the v5.55 human-needs inference and approved song
 tensor remain primary, while engagement, survey and emoji signals gently re-rank
 close candidates.
 
@@ -24,7 +24,7 @@ This keeps the system mental-health-first:
 
 ## Accepted Input
 
-Pass an `engagement_signals` object beside the `v444_payload`, or include any of
+Pass an `engagement_signals` object beside the `v555_payload`, or include any of
 these objects inside the payload: `engagement_signals`, `passive_signals`,
 `analytics`, `web_analytics`, `ga4`, `survey_feedback`, `emoji_engagement`.
 
@@ -32,7 +32,7 @@ Example:
 
 ```json
 {
-  "v444_payload": {
+  "v555_payload": {
     "top_needs_used": ["Recovery", "Calm", "Psychological Safety"],
     "environment_context": {
       "time_of_day": "evening"

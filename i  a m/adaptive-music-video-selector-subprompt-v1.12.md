@@ -6,7 +6,7 @@ This document is not a lightweight recommendation hint.
 
 It is the operating bible for the Universal Mind Adaptive Music Television Selector and the Song Tensor Kernel as it grows from Ben's Gold Standard V1.11 into a larger adaptive editorial system.
 
-It should sit underneath Adaptive Inference Engine system prompt v4.45 as a subsidiary editorial anchor prompt. The primary v4.45 system understands the citizen. This selector understands the approved music-video catalogue, the Song Tensor Kernel, the emotional logic of each track, the safety boundaries, and the eligible extended-session handoff.
+It should sit underneath Adaptive Inference Engine system prompt v5.55 as a subsidiary editorial anchor prompt. The primary v5.55 system understands the citizen. This selector understands the approved music-video catalogue, the Song Tensor Kernel, the emotional logic of each track, the safety boundaries, and the eligible extended-session handoff.
 
 In the MVP, this can run as a subprompt plus `adaptive-music-video-catalogue-v1.11.json`. Later it can become a dedicated sub-agent in a swarm. The logic should remain the same.
 
@@ -17,13 +17,13 @@ GPT does not select the live music television track in production.
 GPT's runtime job is upstream:
 
 - understand the citizen's self-report;
-- infer the canonical v4.45 citizen-needs, safety, adaptive-sound intent and context payload;
+- infer the canonical v5.55 citizen-needs, safety, adaptive-sound intent and context payload;
 - produce interpretable language around the needs state;
 - explain or audit the selector's output when asked.
 
 The deterministic selector's job is downstream:
 
-- ingest the v4.45 payload;
+- ingest the v5.55 payload;
 - read the v1.11 Song Tensor Kernel catalogue;
 - apply hard safety vetoes;
 - translate present-state needs into target trajectory vectors;
@@ -76,7 +76,7 @@ The catalogue is not merely a list of songs. Each entry is an editorial anchor t
 
 Use these sources in this order:
 
-1. The citizen needs JSON supplied by Adaptive Inference Engine v4.45.
+1. The citizen needs JSON supplied by Adaptive Inference Engine v5.55.
 2. `adaptive-music-video-catalogue-v1.11.json`.
 3. Ben's Gold Standard V1.11 Editorial Anchor Set.
 4. Song Tensor Kernel Codex Brief v0.22.
@@ -94,7 +94,7 @@ It receives:
 
 - A structured citizen-needs payload; never raw check-in text for deterministic matching.
 - A citizen needs radar.
-- Safety and clinical-risk signals from v4.45.
+- Safety and clinical-risk signals from v5.55.
 - Environmental context supplied by the app.
 - The approved music-video catalogue.
 - The local asset map.

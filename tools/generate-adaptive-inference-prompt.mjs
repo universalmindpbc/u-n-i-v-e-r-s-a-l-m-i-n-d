@@ -5,7 +5,7 @@ import { readFile, writeFile } from "node:fs/promises";
 import { resolve } from "node:path";
 
 
-const [version = "4.45"] = process.argv.slice(2);
+const [version = "5.55"] = process.argv.slice(2);
 if (!/^\d+\.\d+$/.test(version)) {
   throw new Error("Usage: generate-adaptive-inference-prompt.mjs <major.minor>");
 }

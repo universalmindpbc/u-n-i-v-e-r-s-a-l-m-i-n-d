@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Deterministic Adaptive Music Television selector core.
 
-This module is the mathematical middle layer between the v4.45 citizen-needs
+This module is the mathematical middle layer between the v5.55 citizen-needs
 payload and the v1.11 music-video tensor catalogue. It deliberately avoids LLM
 matching: GPT can produce the citizen state, but this file chooses the track.
 """
@@ -16,6 +16,19 @@ import math
 import re
 from pathlib import Path
 from typing import Any, Dict, Iterable, List, Mapping, MutableMapping, Optional, Tuple
+
+
+INFERENCE_PAYLOAD_ALIASES = ("v555_payload", "v445_payload", "v444_payload", "inference")
+
+
+def unwrap_inference_payload(body: Any) -> Any:
+    if not isinstance(body, Mapping):
+        return body
+    for alias in INFERENCE_PAYLOAD_ALIASES:
+        candidate = body.get(alias)
+        if isinstance(candidate, Mapping):
+            return candidate
+    return body
 
 try:
     from semantic_compiler import SEMANTIC_LEXICON
@@ -337,7 +350,7 @@ def merge_signal_maps(target: MutableMapping[str, Any], source: Mapping[str, Any
 
 
 def extract_engagement_signals(
-    v444_payload: Mapping[str, Any],
+    inference_payload: Mapping[str, Any],
     explicit_signals: Optional[Mapping[str, Any]] = None,
 ) -> Dict[str, Any]:
     bundle: Dict[str, Any] = {}
@@ -353,7 +366,7 @@ def extract_engagement_signals(
         "survey_feedback",
         "emoji_engagement",
     ):
-        value = v444_payload.get(key)
+        value = inference_payload.get(key)
         if not isinstance(value, Mapping):
             continue
         if key in {"survey_feedback", "emoji_engagement"} and key not in value:
@@ -363,13 +376,13 @@ def extract_engagement_signals(
     return bundle
 
 
-def extract_highlights(v444_payload: Mapping[str, Any]) -> List[str]:
+def extract_highlights(inference_payload: Mapping[str, Any]) -> List[str]:
     candidates = (
-        v444_payload.get("top_highlights")
-        or v444_payload.get("highlights")
-        or v444_payload.get("top_needs_used")
-        or get_nested(v444_payload, ["citizen_needs", "top_highlights"])
-        or get_nested(v444_payload, ["citizen_needs", "top_needs_used"])
+        inference_payload.get("top_highlights")
+        or inference_payload.get("highlights")
+        or inference_payload.get("top_needs_used")
+        or get_nested(inference_payload, ["citizen_needs", "top_highlights"])
+        or get_nested(inference_payload, ["citizen_needs", "top_needs_used"])
         or []
     )
     highlights: List[str] = []
@@ -382,7 +395,7 @@ def extract_highlights(v444_payload: Mapping[str, Any]) -> List[str]:
     return highlights[:8]
 
 
-def extract_safety_flags(v444_payload: Mapping[str, Any]) -> List[str]:
+def extract_safety_flags(inference_payload: Mapping[str, Any]) -> List[str]:
     flags = []
     for path in (
         ["safety_flags"],
@@ -391,25 +404,25 @@ def extract_safety_flags(v444_payload: Mapping[str, Any]) -> List[str]:
         ["clinical_risk", "safety_flags"],
         ["adaptive_support_relevance", "flags"],
     ):
-        flags.extend(str(item) for item in as_list(get_nested(v444_payload, path)))
+        flags.extend(str(item) for item in as_list(get_nested(inference_payload, path)))
 
-    human_review = v444_payload.get("human_review_relevance")
+    human_review = inference_payload.get("human_review_relevance")
     if human_review:
         flags.append(str(human_review))
 
-    support_level = get_nested(v444_payload, ["adaptive_support_relevance", "level"])
+    support_level = get_nested(inference_payload, ["adaptive_support_relevance", "level"])
     if support_level:
         flags.append(str(support_level))
 
     return [flag.strip() for flag in flags if flag and flag.strip()]
 
 
-def extract_needs_scorecard(v444_payload: Mapping[str, Any]) -> Mapping[str, Any]:
+def extract_needs_scorecard(inference_payload: Mapping[str, Any]) -> Mapping[str, Any]:
     candidates = (
-        get_nested(v444_payload, ["citizen_needs", "needs_scorecard"], {}),
-        v444_payload.get("needs_scorecard") if isinstance(v444_payload.get("needs_scorecard"), Mapping) else {},
-        get_nested(v444_payload, ["citizen_needs", "full_needs_scorecard"], {}),
-        v444_payload.get("full_needs_scorecard") if isinstance(v444_payload.get("full_needs_scorecard"), Mapping) else {},
+        get_nested(inference_payload, ["citizen_needs", "needs_scorecard"], {}),
+        inference_payload.get("needs_scorecard") if isinstance(inference_payload.get("needs_scorecard"), Mapping) else {},
+        get_nested(inference_payload, ["citizen_needs", "full_needs_scorecard"], {}),
+        inference_payload.get("full_needs_scorecard") if isinstance(inference_payload.get("full_needs_scorecard"), Mapping) else {},
     )
     for candidate in candidates:
         if isinstance(candidate, Mapping) and candidate:
@@ -417,12 +430,12 @@ def extract_needs_scorecard(v444_payload: Mapping[str, Any]) -> Mapping[str, Any
     return {}
 
 
-def vectorise_state(v444_payload: Mapping[str, Any]) -> Dict[str, float]:
-    needs = v444_payload.get("citizen_needs") if isinstance(v444_payload.get("citizen_needs"), Mapping) else {}
-    radar_scores = v444_payload.get("radar_scores") if isinstance(v444_payload.get("radar_scores"), Mapping) else {}
-    scorecard = extract_needs_scorecard(v444_payload)
+def vectorise_state(inference_payload: Mapping[str, Any]) -> Dict[str, float]:
+    needs = inference_payload.get("citizen_needs") if isinstance(inference_payload.get("citizen_needs"), Mapping) else {}
+    radar_scores = inference_payload.get("radar_scores") if isinstance(inference_payload.get("radar_scores"), Mapping) else {}
+    scorecard = extract_needs_scorecard(inference_payload)
     scorecard_radar = scorecard.get("human_needs_radar") if isinstance(scorecard.get("human_needs_radar"), Mapping) else {}
-    source = needs or radar_scores or v444_payload
+    source = needs or radar_scores or inference_payload
     vector = {key: 0.0 for key in VECTOR_KEYS}
 
     for domain in RADAR_DOMAINS:
@@ -439,7 +452,7 @@ def vectorise_state(v444_payload: Mapping[str, Any]) -> Dict[str, float]:
         if isinstance(scorecard_radar, Mapping):
             vector[key] = max(vector[key], score_for_label(scorecard_radar, key))
 
-    for highlight in extract_highlights(v444_payload):
+    for highlight in extract_highlights(inference_payload):
         vector[highlight] = max(vector[highlight], 1.0)
 
     return vector
@@ -467,8 +480,8 @@ def cosine(left: Mapping[str, float], right: Mapping[str, float]) -> float:
     return max(0.0, min(1.0, dot / (left_norm * right_norm)))
 
 
-def detect_named_trajectories(v444_payload: Mapping[str, Any], highlights: List[str]) -> List[str]:
-    text = " ".join(structured_summary_fragments(v444_payload) + [" ".join(highlights)]).lower()
+def detect_named_trajectories(inference_payload: Mapping[str, Any], highlights: List[str]) -> List[str]:
+    text = " ".join(structured_summary_fragments(inference_payload) + [" ".join(highlights)]).lower()
     trajectories = []
     keyword_map = {
         "Heartbreak": ("heartbreak", "heartbroken", "breakup", "romantic pain"),
@@ -487,9 +500,9 @@ def detect_named_trajectories(v444_payload: Mapping[str, Any], highlights: List[
     return list(dict.fromkeys(trajectories))
 
 
-def build_target_trajectory(v444_payload: Mapping[str, Any], highlights: List[str]) -> Dict[str, float]:
+def build_target_trajectory(inference_payload: Mapping[str, Any], highlights: List[str]) -> Dict[str, float]:
     target = {key: 0.0 for key in VECTOR_KEYS}
-    trajectories = detect_named_trajectories(v444_payload, highlights)
+    trajectories = detect_named_trajectories(inference_payload, highlights)
     if not trajectories:
         for highlight in highlights:
             if highlight in target:
@@ -503,11 +516,11 @@ def build_target_trajectory(v444_payload: Mapping[str, Any], highlights: List[st
     return target
 
 
-def explicit_need_intensity(v444_payload: Mapping[str, Any], label: str) -> float:
+def explicit_need_intensity(inference_payload: Mapping[str, Any], label: str) -> float:
     """Read numeric intensity without promoting a categorical highlight to 1.0."""
-    needs = v444_payload.get("citizen_needs") if isinstance(v444_payload.get("citizen_needs"), Mapping) else {}
-    radar_scores = v444_payload.get("radar_scores") if isinstance(v444_payload.get("radar_scores"), Mapping) else {}
-    scorecard = extract_needs_scorecard(v444_payload)
+    needs = inference_payload.get("citizen_needs") if isinstance(inference_payload.get("citizen_needs"), Mapping) else {}
+    radar_scores = inference_payload.get("radar_scores") if isinstance(inference_payload.get("radar_scores"), Mapping) else {}
+    scorecard = extract_needs_scorecard(inference_payload)
     scorecard_radar = scorecard.get("human_needs_radar") if isinstance(scorecard.get("human_needs_radar"), Mapping) else {}
     values = [score_for_label(radar_scores, label), score_for_label(scorecard_radar, label)]
     if isinstance(needs, Mapping):
@@ -519,8 +532,8 @@ def explicit_need_intensity(v444_payload: Mapping[str, Any], label: str) -> floa
     return max(values, default=0.0)
 
 
-def is_acute_distress(v444_payload: Mapping[str, Any], user_vector: Mapping[str, float], safety_flags: List[str]) -> bool:
-    scorecard = extract_needs_scorecard(v444_payload)
+def is_acute_distress(inference_payload: Mapping[str, Any], user_vector: Mapping[str, float], safety_flags: List[str]) -> bool:
+    scorecard = extract_needs_scorecard(inference_payload)
     safety_domain = scorecard.get("mental_health_safety") if isinstance(scorecard.get("mental_health_safety"), Mapping) else {}
     if score_for_label(safety_domain, "Acute Distress") >= 0.75:
         return True
@@ -528,7 +541,7 @@ def is_acute_distress(v444_payload: Mapping[str, Any], user_vector: Mapping[str,
         return True
     if score_for_label(safety_domain, "Dissociation Risk") >= 0.85:
         return True
-    support_level = str(get_nested(v444_payload, ["adaptive_support_relevance", "level"], "")).lower()
+    support_level = str(get_nested(inference_payload, ["adaptive_support_relevance", "level"], "")).lower()
     if support_level in ACUTE_SUPPORT_LEVELS:
         return True
     flag_text = " ".join(safety_flags).lower()
@@ -603,14 +616,14 @@ def hard_veto_track(track: Mapping[str, Any], highlights: List[str], acute: bool
     return False, ""
 
 
-def selection_context(v444_payload: Mapping[str, Any]) -> Mapping[str, Any]:
-    context = v444_payload.get("selection_context")
+def selection_context(inference_payload: Mapping[str, Any]) -> Mapping[str, Any]:
+    context = inference_payload.get("selection_context")
     return context if isinstance(context, Mapping) else {}
 
 
-def opening_catalogue_veto(track: Mapping[str, Any], v444_payload: Mapping[str, Any]) -> Tuple[bool, str]:
+def opening_catalogue_veto(track: Mapping[str, Any], inference_payload: Mapping[str, Any]) -> Tuple[bool, str]:
     """Keep the opening recommendation inside its requested media and safety surface."""
-    context = selection_context(v444_payload)
+    context = selection_context(inference_payload)
     media_class = str(
         track.get("media_class")
         or get_nested(track, ["tensor_profile", "runtime_delivery", "media_class"])
@@ -662,8 +675,8 @@ def semantic_fit(track: Mapping[str, Any], highlights: List[str]) -> float:
     return semantic_fit_for_intent(track, highlights, {})
 
 
-def semantic_intent_from_payload(v444_payload: Mapping[str, Any], highlights: List[str]) -> Dict[str, float]:
-    text_fragments = structured_summary_fragments(v444_payload)
+def semantic_intent_from_payload(inference_payload: Mapping[str, Any], highlights: List[str]) -> Dict[str, float]:
+    text_fragments = structured_summary_fragments(inference_payload)
     text = " ".join(text_fragments + [" ".join(highlights)]).casefold()
     if not text.strip():
         return {}
@@ -681,22 +694,22 @@ def semantic_intent_from_payload(v444_payload: Mapping[str, Any], highlights: Li
     return scores
 
 
-def structured_summary_fragments(v444_payload: Mapping[str, Any]) -> List[str]:
+def structured_summary_fragments(inference_payload: Mapping[str, Any]) -> List[str]:
     """Return only GPT-produced summaries, never the raw citizen check-in."""
     fragments = [
-        v444_payload.get("interpretation_summary"),
-        v444_payload.get("music_room_reason"),
-        get_nested(v444_payload, ["citizen_needs", "interpretation_summary"]),
-        get_nested(v444_payload, ["citizen_needs", "summary"]),
-        get_nested(v444_payload, ["adaptive_music", "why_music"]),
+        inference_payload.get("interpretation_summary"),
+        inference_payload.get("music_room_reason"),
+        get_nested(inference_payload, ["citizen_needs", "interpretation_summary"]),
+        get_nested(inference_payload, ["citizen_needs", "summary"]),
+        get_nested(inference_payload, ["adaptive_music", "why_music"]),
     ]
     return [str(fragment or "").strip() for fragment in fragments if str(fragment or "").strip()]
 
 
-def extract_recent_track_ids(v444_payload: Mapping[str, Any]) -> List[str]:
+def extract_recent_track_ids(inference_payload: Mapping[str, Any]) -> List[str]:
     candidates = (
-        get_nested(v444_payload, ["selection_context", "recent_track_ids"], [])
-        or v444_payload.get("recent_track_ids")
+        get_nested(inference_payload, ["selection_context", "recent_track_ids"], [])
+        or inference_payload.get("recent_track_ids")
         or []
     )
     recent: List[str] = []
@@ -738,8 +751,8 @@ def scorecard_domain_cosine(human_domain: Mapping[str, Any], track_domain: Mappi
     return max(0.0, min(1.0, dot / (left_norm * right_norm)))
 
 
-def extended_scorecard_fit(track: Mapping[str, Any], v444_payload: Mapping[str, Any]) -> float:
-    scorecard = extract_needs_scorecard(v444_payload)
+def extended_scorecard_fit(track: Mapping[str, Any], inference_payload: Mapping[str, Any]) -> float:
+    scorecard = extract_needs_scorecard(inference_payload)
     if not scorecard:
         return 0.5
 
@@ -1005,11 +1018,11 @@ def infer_music_room(track: Mapping[str, Any], highlights: List[str]) -> Tuple[s
     return room, reasons[room]
 
 
-def assigned_extended_format(v444_input: Mapping[str, Any]) -> Tuple[str, float]:
+def assigned_extended_format(inference_input: Mapping[str, Any]) -> Tuple[str, float]:
     """Assign the 80/10/10 traffic slot outside GPT with a stable session key."""
-    context = selection_context(v444_input)
+    context = selection_context(inference_input)
     visitor_id = str(context.get("visitor_id") or "anonymous")
-    index = recommendation_index(v444_input, extract_recent_track_ids(v444_input))
+    index = recommendation_index(inference_input, extract_recent_track_ids(inference_input))
     draw = stable_hash_fraction("extended-session-format-v1", visitor_id, index)
     if draw < EXTENDED_SESSION_FORMAT_WEIGHTS["parties"]:
         return "parties", draw
@@ -1022,12 +1035,12 @@ def extended_session_contract(
     track: Mapping[str, Any],
     highlights: List[str],
     acute: bool,
-    v444_input: Mapping[str, Any],
+    inference_input: Mapping[str, Any],
     catalogue: Mapping[str, Any],
 ) -> Dict[str, Any]:
-    assigned_format, format_draw = assigned_extended_format(v444_input)
+    assigned_format, format_draw = assigned_extended_format(inference_input)
     track_room, track_room_reason = infer_music_room(track, highlights)
-    requested_room = selected_music_room(v444_input) or track_room
+    requested_room = selected_music_room(inference_input) or track_room
     broadcast_schedule = load_broadcast_schedule()
     room_definitions = {
         str(definition.get("id") or ""): definition
@@ -1059,7 +1072,7 @@ def extended_session_contract(
             and source_for(room, extended_format)
         )
 
-    user_vector = vectorise_state(v444_input)
+    user_vector = vectorise_state(inference_input)
     peak_anxiety = max(
         coerce_number(user_vector.get("Anxiety")),
         coerce_number(user_vector.get("Fear")),
@@ -1113,12 +1126,12 @@ def output_contract(
     highlights: List[str],
     score_parts: Mapping[str, float],
     acute: bool,
-    v444_input: Mapping[str, Any],
+    inference_input: Mapping[str, Any],
     catalogue: Mapping[str, Any],
 ) -> Dict[str, Any]:
     safety = track_safety(track)
-    extended_session = extended_session_contract(track, highlights, acute, v444_input, catalogue)
-    adaptive_sound = resolve_adaptive_sound(v444_input)
+    extended_session = extended_session_contract(track, highlights, acute, inference_input, catalogue)
+    adaptive_sound = resolve_adaptive_sound(inference_input)
     return {
         "schema_version": SELECTION_SCHEMA_VERSION,
         "selected_track_id": track.get("id") or get_nested(track, ["tensor_profile", "runtime_delivery", "selected_track_id"], ""),
@@ -1171,8 +1184,8 @@ def output_contract(
     }
 
 
-def attach_inference_provenance(result: Dict[str, Any], v444_payload: Mapping[str, Any]) -> Dict[str, Any]:
-    provenance = v444_payload.get("inference_provenance")
+def attach_inference_provenance(result: Dict[str, Any], inference_payload: Mapping[str, Any]) -> Dict[str, Any]:
+    provenance = inference_payload.get("inference_provenance")
     if isinstance(provenance, Mapping):
         result.setdefault("audit", {})["inference_provenance"] = {
             "model": str(provenance.get("model") or ""),
@@ -1206,8 +1219,8 @@ def trajectory_profile(track: Mapping[str, Any], policy: Mapping[str, Any]) -> D
     }
 
 
-def recommendation_index(v444_input: Mapping[str, Any], recent_track_ids: List[str]) -> int:
-    raw = get_nested(v444_input, ["selection_context", "recommendation_index"], len(recent_track_ids))
+def recommendation_index(inference_input: Mapping[str, Any], recent_track_ids: List[str]) -> int:
+    raw = get_nested(inference_input, ["selection_context", "recommendation_index"], len(recent_track_ids))
     try:
         return max(0, int(float(raw)))
     except (TypeError, ValueError):
@@ -1219,18 +1232,18 @@ def stable_hash_fraction(*parts: Any) -> float:
     return int.from_bytes(digest[:8], "big") / float((1 << 64) - 1)
 
 
-def inferred_state_fingerprint(v444_input: Mapping[str, Any]) -> str:
+def inferred_state_fingerprint(inference_input: Mapping[str, Any]) -> str:
     """Hash GPT-produced tensor state only; the raw citizen phrase is deliberately excluded."""
     state = {
-        "highlights": extract_highlights(v444_input),
-        "needs_scorecard": extract_needs_scorecard(v444_input),
+        "highlights": extract_highlights(inference_input),
+        "needs_scorecard": extract_needs_scorecard(inference_input),
     }
     serialized = json.dumps(state, sort_keys=True, separators=(",", ":"), ensure_ascii=True)
     return hashlib.sha256(serialized.encode("utf-8")).hexdigest()
 
 
 def recommendation_cycle(
-    v444_input: Mapping[str, Any],
+    inference_input: Mapping[str, Any],
     index: int,
     acute: bool,
     policy: Mapping[str, Any],
@@ -1244,7 +1257,7 @@ def recommendation_cycle(
         for slot in as_list(quota.get("state_led_slots_zero_indexed"))
     }
     diversity = policy.get("cold_start_diversity") if isinstance(policy.get("cold_start_diversity"), Mapping) else {}
-    visitor_id = str(selection_context(v444_input).get("visitor_id") or "")
+    visitor_id = str(selection_context(inference_input).get("visitor_id") or "")
     cycle_offset = 0
     if diversity.get("visitor_seeded_cycle_offset") and visitor_id:
         cycle_offset = int(stable_hash_fraction("quota-cycle", visitor_id) * window_size) % window_size
@@ -1255,7 +1268,7 @@ def recommendation_cycle(
 
 def choose_relevance_bounded_candidate(
     candidates: List[Tuple[float, float, Mapping[str, Any], Dict[str, Any]]],
-    v444_input: Mapping[str, Any],
+    inference_input: Mapping[str, Any],
     selection_index: int,
     policy: Mapping[str, Any],
 ) -> Tuple[Tuple[float, float, Mapping[str, Any], Dict[str, Any]], int, float]:
@@ -1269,9 +1282,9 @@ def choose_relevance_bounded_candidate(
     if len(fit_band) == 1:
         return fit_band[0], 1, 0.0
 
-    context = selection_context(v444_input)
+    context = selection_context(inference_input)
     visitor_id = str(context.get("visitor_id") or "anonymous")
-    state_fingerprint = inferred_state_fingerprint(v444_input)
+    state_fingerprint = inferred_state_fingerprint(inference_input)
     selected = max(
         fit_band,
         key=lambda item: (
@@ -1289,17 +1302,17 @@ def choose_relevance_bounded_candidate(
     return selected, len(fit_band), max(0.0, best_post_fit - selected[1])
 
 
-def selected_music_room(v444_input: Mapping[str, Any]) -> str:
+def selected_music_room(inference_input: Mapping[str, Any]) -> str:
     room = str(
-        v444_input.get("selected_music_room")
-        or get_nested(v444_input, ["citizen_needs", "selected_music_room"])
-        or get_nested(v444_input, ["adaptive_environment", "music_room", "selected_room"])
+        inference_input.get("selected_music_room")
+        or get_nested(inference_input, ["citizen_needs", "selected_music_room"])
+        or get_nested(inference_input, ["adaptive_environment", "music_room", "selected_room"])
         or ""
     ).strip().lower()
     return room if room in {"inner-planes", "champagne-bohemia", "modul8-infinity", "james-bondage", "safety-cushion"} else ""
 
 
-def target_activation_level(v444_input: Mapping[str, Any], user_vector: Mapping[str, float], acute: bool) -> int:
+def target_activation_level(inference_input: Mapping[str, Any], user_vector: Mapping[str, float], acute: bool) -> int:
     if acute:
         return 0
     depletion = max(
@@ -1351,7 +1364,7 @@ def constructive_trajectory_fit(
 
 
 def execute_v1_11_selection(
-    v444_input: Mapping[str, Any],
+    inference_input: Mapping[str, Any],
     catalogue: Mapping[str, Any],
     engagement_signals: Optional[Mapping[str, Any]] = None,
 ) -> Dict[str, Any]:
@@ -1359,26 +1372,26 @@ def execute_v1_11_selection(
     if not isinstance(tracks, list):
         raise ValueError("Catalogue must contain a tracks array.")
 
-    user_vector = vectorise_state(v444_input)
-    highlights = extract_highlights(v444_input)
-    safety_flags = extract_safety_flags(v444_input)
-    acute = is_acute_distress(v444_input, user_vector, safety_flags)
-    target_vector = build_target_trajectory(v444_input, highlights)
-    semantic_intent = semantic_intent_from_payload(v444_input, highlights)
-    environment_context = v444_input.get("environment_context") if isinstance(v444_input.get("environment_context"), Mapping) else {}
-    engagement_bundle = extract_engagement_signals(v444_input, engagement_signals)
-    recent_track_ids = extract_recent_track_ids(v444_input)
+    user_vector = vectorise_state(inference_input)
+    highlights = extract_highlights(inference_input)
+    safety_flags = extract_safety_flags(inference_input)
+    acute = is_acute_distress(inference_input, user_vector, safety_flags)
+    target_vector = build_target_trajectory(inference_input, highlights)
+    semantic_intent = semantic_intent_from_payload(inference_input, highlights)
+    environment_context = inference_input.get("environment_context") if isinstance(inference_input.get("environment_context"), Mapping) else {}
+    engagement_bundle = extract_engagement_signals(inference_input, engagement_signals)
+    recent_track_ids = extract_recent_track_ids(inference_input)
     trajectory_policy = load_trajectory_policy()
-    selection_index = recommendation_index(v444_input, recent_track_ids)
+    selection_index = recommendation_index(inference_input, recent_track_ids)
     quota_mode, quota_cycle_position, quota_cycle_offset = recommendation_cycle(
-        v444_input,
+        inference_input,
         selection_index,
         acute,
         trajectory_policy,
     )
-    activation_target = target_activation_level(v444_input, user_vector, acute)
-    music_room = selected_music_room(v444_input)
-    input_scorecard = extract_needs_scorecard(v444_input)
+    activation_target = target_activation_level(inference_input, user_vector, acute)
+    music_room = selected_music_room(inference_input)
+    input_scorecard = extract_needs_scorecard(inference_input)
     input_scorecard_dimensions = sum(
         1
         for domain in input_scorecard.values()
@@ -1391,7 +1404,7 @@ def execute_v1_11_selection(
     vetoed: List[Dict[str, str]] = []
 
     for track in tracks:
-        veto, reason = opening_catalogue_veto(track, v444_input)
+        veto, reason = opening_catalogue_veto(track, inference_input)
         if veto:
             vetoed.append({"track": str(track.get("id")), "reason": reason})
             continue
@@ -1407,7 +1420,7 @@ def execute_v1_11_selection(
         context_score = context_fit(track, environment_context)
         presentation_score = presentation_fit(track, highlights)
         semantic_score = semantic_fit_for_intent(track, highlights, semantic_intent)
-        scorecard_score = extended_scorecard_fit(track, v444_input)
+        scorecard_score = extended_scorecard_fit(track, inference_input)
         constructive_score = constructive_trajectory_fit(
             track,
             trajectory_policy,
@@ -1447,7 +1460,7 @@ def execute_v1_11_selection(
         fallback = next(
             (
                 track for track in tracks
-                if not opening_catalogue_veto(track, v444_input)[0]
+                if not opening_catalogue_veto(track, inference_input)[0]
                 and playable_media_available(track)
                 and not track_safety(track).get("requires_age_gate")
             ),
@@ -1455,7 +1468,7 @@ def execute_v1_11_selection(
         )
         if not fallback:
             raise ValueError("No tracks cleared current safety criteria.")
-        return attach_inference_provenance(output_contract(fallback, 0.0, highlights, {}, True, v444_input, catalogue), v444_input)
+        return attach_inference_provenance(output_contract(fallback, 0.0, highlights, {}, True, inference_input, catalogue), inference_input)
 
     # Tensor fit establishes eligibility. Engagement and recency can only choose
     # within this bounded pool; they can never introduce a lower-fit track.
@@ -1521,7 +1534,7 @@ def execute_v1_11_selection(
             artist_repeat_avoided = len(choice_pool) != len(fresh_candidates)
         selected_candidate, fit_band_rotation_size, fit_band_score_gap = choose_relevance_bounded_candidate(
             choice_pool,
-            v444_input,
+            inference_input,
             selection_index,
             trajectory_policy,
         )
@@ -1571,22 +1584,22 @@ def execute_v1_11_selection(
         "policy_candidate_count": float(len(mode_pool)),
         "fit_floor": float(fit_floor),
     }
-    return attach_inference_provenance(output_contract(best_track, best_score, highlights, score_parts, acute, v444_input, catalogue), v444_input)
+    return attach_inference_provenance(output_contract(best_track, best_score, highlights, score_parts, acute, inference_input, catalogue), inference_input)
 
 
 def select_from_file(
-    v444_input: Mapping[str, Any],
+    inference_input: Mapping[str, Any],
     catalogue_path: Path = DEFAULT_CATALOGUE_PATH,
     engagement_signals: Optional[Mapping[str, Any]] = None,
 ) -> Dict[str, Any]:
-    return execute_v1_11_selection(v444_input, load_catalogue(catalogue_path), engagement_signals)
+    return execute_v1_11_selection(inference_input, load_catalogue(catalogue_path), engagement_signals)
 
 
 def lambda_handler(event: Mapping[str, Any], context: Any = None) -> Dict[str, Any]:
     body = event.get("body", event) if isinstance(event, Mapping) else event
     if isinstance(body, str):
         body = json.loads(body or "{}")
-    payload = body.get("v444_payload") if isinstance(body, Mapping) and isinstance(body.get("v444_payload"), Mapping) else body
+    payload = unwrap_inference_payload(body)
     engagement = body.get("engagement_signals") if isinstance(body, Mapping) and isinstance(body.get("engagement_signals"), Mapping) else None
     result = select_from_file(payload, engagement_signals=engagement)
     return {
@@ -1601,14 +1614,21 @@ try:
     from pydantic import BaseModel
 
     class SelectionRequest(BaseModel):
-        v444_payload: Dict[str, Any]
+        v555_payload: Optional[Dict[str, Any]] = None
+        v445_payload: Optional[Dict[str, Any]] = None
+        v444_payload: Optional[Dict[str, Any]] = None
+        inference: Optional[Dict[str, Any]] = None
         engagement_signals: Optional[Dict[str, Any]] = None
 
     app = FastAPI(title="Universal Mind Adaptive Music Television Selector")
 
     @app.post("/adaptive-music-video-selection")
     def adaptive_music_video_selection(request: SelectionRequest) -> Dict[str, Any]:
-        return select_from_file(request.v444_payload, engagement_signals=request.engagement_signals)
+        request_body = request.model_dump() if hasattr(request, "model_dump") else request.dict()
+        payload = unwrap_inference_payload(request_body)
+        if payload is request_body:
+            raise ValueError("A v5.55 inference payload is required.")
+        return select_from_file(payload, engagement_signals=request.engagement_signals)
 
 except Exception:
     app = None
@@ -1618,8 +1638,8 @@ def main() -> None:
     parser = argparse.ArgumentParser(description="Run deterministic v1.11 adaptive music selection.")
     parser.add_argument("--catalogue", default=str(DEFAULT_CATALOGUE_PATH))
     parser.add_argument("--engagement", help="Optional engagement/survey analytics JSON payload for DCN re-ranking.")
-    parser.add_argument("--stdin", action="store_true", help="Read v4.44 payload JSON from stdin.")
-    parser.add_argument("payload", nargs="?", help="Inline v4.44 payload JSON.")
+    parser.add_argument("--stdin", action="store_true", help="Read a v5.55 inference payload JSON from stdin.")
+    parser.add_argument("payload", nargs="?", help="Inline v5.55 inference payload JSON.")
     args = parser.parse_args()
 
     if args.stdin:
@@ -1631,9 +1651,10 @@ def main() -> None:
     else:
         payload = {}
 
-    if isinstance(payload, Mapping) and isinstance(payload.get("v444_payload"), Mapping):
+    unwrapped_payload = unwrap_inference_payload(payload)
+    if unwrapped_payload is not payload:
         wrapper_engagement = payload.get("engagement_signals") if isinstance(payload.get("engagement_signals"), Mapping) else None
-        payload = payload["v444_payload"]
+        payload = unwrapped_payload
     else:
         wrapper_engagement = None
 
