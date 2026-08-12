@@ -10,11 +10,12 @@ import {
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const IAM = path.join(ROOT, "i  a m");
-const [page, televisionController, televisionCss, panelController, panelCss, worklet, dsp, profiles, scienceData, scienceController] = await Promise.all([
+const [page, televisionController, televisionCss, panelController, sessionController, panelCss, worklet, dsp, profiles, scienceData, scienceController] = await Promise.all([
   fs.readFile(path.join(IAM, "index.html"), "utf8"),
   fs.readFile(path.join(IAM, "adaptive-environment-television.js"), "utf8"),
   fs.readFile(path.join(IAM, "adaptive-environment-television.css"), "utf8"),
   fs.readFile(path.join(IAM, "adaptive-sound", "controller-v1.js"), "utf8"),
+  fs.readFile(path.join(IAM, "adaptive-sound", "session-v1.js"), "utf8"),
   fs.readFile(path.join(IAM, "adaptive-sound", "panel-v1.css"), "utf8"),
   fs.readFile(path.join(IAM, "adaptive-sound", "worklet-v1.js"), "utf8"),
   fs.readFile(path.join(IAM, "adaptive-sound", "dsp-v1.js"), "utf8"),
@@ -97,19 +98,26 @@ assert.ok(panelController.includes("new AudioWorkletNode(context, PROCESSOR_NAME
 assert.ok(panelController.includes("outputChannelCount: [2]"));
 assert.ok(panelController.includes("window.IAMQuantumTree?.setEnabled?.(state.masterEnabled)"));
 assert.ok(panelController.includes('localStorage.getItem("iamSoundResearchLayer") !== "off"'));
-assert.ok(panelController.includes("synthEnabled: true"));
+assert.ok(panelController.includes("initialSnapshot?.safety?.adaptive_frequencies_enabled"));
 assert.ok(panelController.includes('const directSoundPage = query.get("sound") === "1"'));
 assert.ok(panelController.includes('document.body.dataset.adaptiveSoundDirect = "true"'));
 assert.equal(panelController.includes("iamAdaptiveSoundLayer"), false);
-assert.ok(panelController.includes('await selectProfile(button.dataset.adaptiveProfile || "", "listener_selection")'));
+assert.ok(panelController.includes('await selectProfile(button.dataset.adaptiveProfile || "")'));
 assert.ok(panelController.includes('new CustomEvent("iam:adaptive-sound-research-open")'));
 assert.ok(panelController.includes('new CustomEvent("iam:adaptive-sound-navigation")'));
 assert.ok(panelController.includes('document.querySelectorAll("[data-video-sound-open], [data-emdr-sound-research]")'));
 assert.equal(panelController.includes('researchMoreButton?.click()'), false);
 assert.equal(/navigationButton\?\.addEventListener\([\s\S]*?closePanel\(false\)/.test(panelController), false);
 assert.ok(panelController.includes('carrierSelect?.addEventListener("change"'));
-assert.ok(panelController.includes('localStorage.setItem("iamAdaptiveSoundProfile", profileId)'));
-assert.ok(panelController.includes('return { profileId: DEFAULT_PROFILE_ID, authority: "neutral_alpha_default" }'));
+assert.equal(panelController.includes('localStorage.setItem("iamAdaptiveSoundProfile", profileId)'), false);
+assert.equal(panelController.includes('localStorage.setItem("iamAdaptiveSoundCarrier"'), false);
+assert.equal(panelController.includes("neutral_alpha_default"), false);
+assert.ok(panelController.includes("adaptiveSoundSession?.setSessionChoice?."));
+assert.ok(panelController.includes("session_snapshot: state.sessionSnapshot"));
+assert.ok(sessionController.includes('windowRef.sessionStorage, ADAPTIVE_SOUND_SESSION_CHOICE_KEY'));
+assert.equal(sessionController.includes('windowRef.localStorage, ADAPTIVE_SOUND_SESSION_CHOICE_KEY'), false);
+assert.ok(sessionController.includes('selection_basis: "insufficient_context"'));
+assert.ok(sessionController.includes('carrier_hz: null'));
 assert.ok(panelController.includes("window.IAMQuantumTree?.setAuditionMode?.(state.masterEnabled)"));
 assert.ok(panelController.includes("if (!profile || !state.masterEnabled)"));
 assert.ok(panelController.includes("if (!state.masterEnabled || !state.synthEnabled)"));

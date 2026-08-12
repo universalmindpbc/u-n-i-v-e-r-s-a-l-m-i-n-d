@@ -1,9 +1,12 @@
+import { startAdaptiveSoundSession } from "./adaptive-sound/session-v1.js?v=4554bb886c57";
+
 const planetHost = document.querySelector(".homepage-alternate__planet");
 const planetCanvas = document.querySelector("[data-homepage-context-planet]");
 const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
 
 let planetFrame = 0;
 
+startAdaptiveSoundSession();
 applySoundSnapshot(window.IAMAdaptiveSoundSnapshot);
 window.addEventListener("iam:adaptive-sound-profile", (event) => applySoundSnapshot(event.detail));
 
@@ -325,14 +328,50 @@ function loadImage(source) {
 
 function applySoundSnapshot(snapshot) {
   if (!snapshot || typeof snapshot !== "object") return;
-  const lane = String(snapshot.dominant_lane || snapshot.dominantLane || "").trim().toLowerCase();
-  const rate = Number(snapshot.isochronic_hz ?? snapshot.isochronicHz);
-  const carrier = Number(snapshot.carrier_hz ?? snapshot.carrierHz);
-  if (!lane || !Number.isFinite(rate) || !Number.isFinite(carrier)) return;
+  const readout = document.querySelector(".homepage-alternate__frequency");
+  const selectedState = document.querySelector("[data-homepage-sound-selected]");
+  const unselectedState = document.querySelector("[data-homepage-sound-unselected]");
+  const lane = String(snapshot.dominant_lane || "").trim().toLowerCase();
+  const rate = Number(snapshot.dominant_isochronic_hz);
+  const carrier = Number(snapshot.carrier_hz);
+  const selected = snapshot.selected === true && lane && Number.isFinite(rate) && Number.isFinite(carrier);
+  const safetyState = snapshot.safety?.state || "standard";
+  const frequenciesEnabled = snapshot.safety?.adaptive_frequencies_enabled === true;
+  const selectionBasis = String(snapshot.selection_basis || "insufficient_context");
+  const selectionAuthority = String(snapshot.authority?.selection_authority || "no_current_session_selection");
+  const auditProvenance = [
+    snapshot.audit?.source_event,
+    snapshot.authority?.prompt_version,
+    snapshot.policy_version,
+    snapshot.authority?.profile_registry,
+  ].filter(Boolean).join(" | ");
 
+  if (readout) {
+    readout.dataset.soundSelected = String(Boolean(selected));
+    readout.dataset.soundSafetyState = safetyState;
+    readout.dataset.soundFrequenciesEnabled = String(frequenciesEnabled);
+    readout.dataset.soundSelectionBasis = selectionBasis;
+    readout.dataset.soundAuthority = selectionAuthority;
+    readout.dataset.soundAuditProvenance = auditProvenance;
+  }
+
+  if (!selected) {
+    if (selectedState) selectedState.hidden = true;
+    if (unselectedState) unselectedState.hidden = false;
+    readout?.setAttribute("aria-label", "No adaptive sound frequency is selected for this session");
+    if (readout) readout.title = `${selectionAuthority} · ${auditProvenance || "current session"}`;
+    return;
+  }
+
+  if (selectedState) selectedState.hidden = false;
+  if (unselectedState) unselectedState.hidden = true;
   setText("[data-homepage-sound-lane]", lane);
   setText("[data-homepage-sound-rate]", `${formatFrequency(rate)} Hz`);
   setText("[data-homepage-sound-carrier]", `${formatFrequency(carrier)} Hz`);
+  setText("[data-homepage-sound-basis]", basisLabel(selectionBasis));
+  setText("[data-homepage-sound-state]", frequenciesEnabled ? "" : " · added frequencies off");
+  readout?.setAttribute("aria-label", `${lane} ${formatFrequency(rate)} hertz, carrier ${formatFrequency(carrier)} hertz, ${basisLabel(selectionBasis)}${frequenciesEnabled ? "" : ", added frequencies off"}`);
+  if (readout) readout.title = `${selectionAuthority} · ${auditProvenance || "current session"}`;
 }
 
 function setText(selector, value) {
@@ -344,4 +383,11 @@ function setText(selector, value) {
 function formatFrequency(value) {
   if (Number.isInteger(value)) return String(value);
   return String(Math.round(value * 100) / 100);
+}
+
+function basisLabel(value) {
+  if (value === "citizen_session_override") return "session choice";
+  if (value === "inference_semantic_intent") return "current check-in";
+  if (value === "deterministic_needs_scores") return "current needs";
+  return "current session";
 }
