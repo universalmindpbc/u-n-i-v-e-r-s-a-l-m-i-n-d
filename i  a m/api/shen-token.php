@@ -1,6 +1,43 @@
 <?php
 declare(strict_types=1);
 
+if (!function_exists('happiness_secret')) {
+    require_once __DIR__ . '/happiness-secret-store.php';
+}
+
+function shen_admin_key(): string
+{
+    $environment = getenv('SHENAI_ADMIN_KEY');
+    if (is_string($environment) && trim($environment) !== '') {
+        return trim($environment);
+    }
+
+    $server = $_SERVER['SHENAI_ADMIN_KEY'] ?? '';
+    if (is_string($server) && trim($server) !== '') {
+        return trim($server);
+    }
+
+    $environmentArray = $_ENV['SHENAI_ADMIN_KEY'] ?? '';
+    if (is_string($environmentArray) && trim($environmentArray) !== '') {
+        return trim($environmentArray);
+    }
+
+    return trim(happiness_secret('SHENAI_ADMIN_KEY'));
+}
+
+function shen_require_admin_key(): string
+{
+    $adminKey = shen_admin_key();
+    if ($adminKey === '') {
+        throw new RuntimeException('shen_admin_key_missing');
+    }
+    return $adminKey;
+}
+
+if (defined('IAM_SHEN_TOKEN_LIBRARY_ONLY') && IAM_SHEN_TOKEN_LIBRARY_ONLY === true) {
+    return;
+}
+
 header('Content-Type: application/json; charset=utf-8');
 header('Cache-Control: no-store, max-age=0');
 header('Pragma: no-cache');
@@ -70,11 +107,10 @@ if ($rateHandle !== false && flock($rateHandle, LOCK_EX)) {
     fclose($rateHandle);
 }
 
-$adminKey = trim((string) (
-    getenv('SHENAI_ADMIN_KEY')
-    ?: ($_SERVER['SHENAI_ADMIN_KEY'] ?? $_ENV['SHENAI_ADMIN_KEY'] ?? '')
-));
-if ($adminKey === '') {
+$adminKey = '';
+try {
+    $adminKey = shen_require_admin_key();
+} catch (RuntimeException $exception) {
     respond(503, ['error' => 'The heart-rate check is not configured on this environment yet.']);
 }
 

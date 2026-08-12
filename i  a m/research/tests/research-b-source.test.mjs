@@ -1,7 +1,9 @@
 import test from "node:test";
 import assert from "node:assert/strict";
+import { execFile } from "node:child_process";
 import { readFile } from "node:fs/promises";
 import { dirname, resolve } from "node:path";
+import { promisify } from "node:util";
 import { fileURLToPath } from "node:url";
 
 const testDirectory = dirname(fileURLToPath(import.meta.url));
@@ -9,6 +11,7 @@ const researchDirectory = resolve(testDirectory, "..");
 const iamDirectory = resolve(researchDirectory, "..");
 
 const read = (path) => readFile(path, "utf8");
+const execFileAsync = promisify(execFile);
 
 test("research check-in renders the canonical page instead of duplicating it", async () => {
   const source = await read(resolve(iamDirectory, "check-in-research.php"));
@@ -58,11 +61,30 @@ test("only the final heart-rate summary enters research session storage", async 
 test("short-term Shen token endpoint keeps the permanent credential server-side", async () => {
   const endpoint = await read(resolve(iamDirectory, "api", "shen-token.php"));
   assert.match(endpoint, /getenv\('SHENAI_ADMIN_KEY'\)/);
+  assert.match(endpoint, /require_once __DIR__ \. '\/happiness-secret-store\.php'/);
+  assert.match(endpoint, /happiness_secret\('SHENAI_ADMIN_KEY'\)/);
+  assert.match(endpoint, /shen_require_admin_key\(\)/);
+  assert.match(endpoint, /respond\(503, \['error' => 'The heart-rate check is not configured on this environment yet\.'\]\)/);
   assert.match(endpoint, /https:\/\/api\.shen\.ai\/v1\/token/);
   assert.match(endpoint, /'max_measurements'\s*=>\s*1/);
   assert.match(endpoint, /'single_device'\s*=>\s*true/);
   assert.match(endpoint, /'expires_in'\s*=>\s*900/);
   assert.doesNotMatch(endpoint, /SHENAI_ADMIN_KEY["']?\s*[:=]\s*["']sh_/i);
+});
+
+test("protected Shen secret resolution works and missing configuration fails closed", async (context) => {
+  const runtimeTest = resolve(testDirectory, "shen-token-secret-runtime.php");
+  try {
+    const { stdout, stderr } = await execFileAsync("php", [runtimeTest]);
+    assert.equal(stderr, "");
+    assert.match(stdout, /protected secret runtime regression passed/);
+  } catch (error) {
+    if (error?.code === "ENOENT") {
+      context.skip("PHP is unavailable in this environment.");
+      return;
+    }
+    throw error;
+  }
 });
 
 test("research response supplies the Web SDK isolation and camera boundaries", async () => {
