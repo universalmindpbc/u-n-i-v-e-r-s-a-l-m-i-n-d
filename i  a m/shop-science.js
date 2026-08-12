@@ -11,6 +11,9 @@
   const research = root.querySelector("[data-science-research]");
   const researchIcon = root.querySelector("[data-science-summary-icon]");
   const silentVideos = Array.from(root.querySelectorAll("[data-science-silent-video]"));
+  const researchLink = document.querySelector("[data-science-research-link]");
+  const audioStatus = document.querySelector(".science-navigation__audio");
+  const audioLabel = document.querySelector("[data-science-audio-label]");
 
   function element(tag, className, text) {
     const node = document.createElement(tag);
@@ -168,6 +171,112 @@
     });
   }
 
+  function cameFromShop() {
+    if (!document.referrer) return false;
+    try {
+      const referrer = new URL(document.referrer);
+      return referrer.origin === window.location.origin && referrer.pathname.endsWith("/shop.html");
+    } catch {
+      return false;
+    }
+  }
+
+  function describeShopAudio() {
+    const hasShopTab = cameFromShop();
+    audioStatus?.classList.toggle("is-shop-context", hasShopTab);
+    if (audioLabel) {
+      audioLabel.textContent = hasShopTab
+        ? "shop audio continues in the shop tab"
+        : "shop audio remains separate";
+    }
+    audioStatus?.setAttribute("aria-label", hasShopTab
+      ? "Shop audio, if playing, continues only in the original Shop tab. This Science page does not start another player."
+      : "This Science page does not start a music player.");
+  }
+
+  function returnToShop(event) {
+    const destination = event.currentTarget.href;
+    event.preventDefault();
+    window.close();
+    window.setTimeout(() => {
+      if (!window.closed) window.location.assign(destination);
+    }, 120);
+  }
+
+  function setActiveGlobalNavItem(itemName = "shop") {
+    const navItems = Array.from(document.querySelectorAll("[data-nav-item]"));
+    const navSubmenus = new Map(Array.from(document.querySelectorAll("[data-nav-submenu]"))
+      .map((submenu) => [submenu.dataset.navSubmenu, submenu]));
+    navItems.forEach((item) => {
+      const active = item.dataset.navItem === itemName;
+      item.classList.toggle("is-active", active);
+      if (navSubmenus.has(item.dataset.navItem)) item.setAttribute("aria-expanded", String(active));
+    });
+    navSubmenus.forEach((submenu, name) => {
+      submenu.classList.toggle("is-open", itemName === name && !submenu.hasAttribute("data-mobile-editorial-hidden"));
+    });
+  }
+
+  function closeGlobalNav(options = {}) {
+    document.body.classList.remove("nav-open");
+    const nav = document.querySelector("[data-global-nav]");
+    nav?.classList.remove("is-open");
+    nav?.setAttribute("aria-hidden", "true");
+    if (options.restoreFocus) document.querySelector("[data-nav-open]")?.focus({ preventScroll: true });
+  }
+
+  function bindScienceNavigation() {
+    document.querySelectorAll("[data-science-return-shop], [data-shop-return-music]").forEach((link) => {
+      link.addEventListener("click", returnToShop);
+    });
+
+    document.querySelectorAll("[data-nav-open]").forEach((button) => {
+      button.addEventListener("click", () => {
+        const nav = document.querySelector("[data-global-nav]");
+        if (!nav) return;
+        if (nav.classList.contains("is-open")) {
+          closeGlobalNav();
+          return;
+        }
+        setActiveGlobalNavItem("shop");
+        document.body.classList.add("nav-open");
+        nav.classList.add("is-open");
+        nav.setAttribute("aria-hidden", "false");
+      });
+    });
+
+    document.querySelectorAll("[data-nav-close]").forEach((button) => {
+      button.addEventListener("click", () => closeGlobalNav({ restoreFocus: true }));
+    });
+
+    document.querySelectorAll("[data-nav-item]").forEach((item) => {
+      item.addEventListener("mouseenter", () => setActiveGlobalNavItem(item.dataset.navItem));
+      item.addEventListener("focus", () => setActiveGlobalNavItem(item.dataset.navItem));
+      item.addEventListener("click", (event) => {
+        const submenu = document.querySelector(`[data-nav-submenu="${item.dataset.navItem}"]`);
+        if (!submenu || submenu.hasAttribute("data-mobile-editorial-hidden")) return;
+        event.preventDefault();
+        setActiveGlobalNavItem(item.dataset.navItem);
+      });
+    });
+
+    window.addEventListener("keydown", (event) => {
+      if (event.key === "Escape" && document.body.classList.contains("nav-open")) {
+        closeGlobalNav({ restoreFocus: true });
+      }
+    });
+
+    researchLink?.addEventListener("click", (event) => {
+      event.preventDefault();
+      research.open = true;
+      window.history.pushState(null, "", "#research");
+      window.requestAnimationFrame(() => {
+        research.scrollIntoView({ behavior: "smooth", block: "start" });
+        research.querySelector("summary")?.focus({ preventScroll: true });
+      });
+    });
+  }
+
   if (research && researchIcon) {
     research.addEventListener("toggle", () => {
       researchIcon.textContent = research.open ? "−" : "＋";
@@ -204,5 +313,7 @@
   renderStudies();
   renderBrands();
   renderMetadata();
+  describeShopAudio();
+  bindScienceNavigation();
   prepareSilentFilm();
 })();
