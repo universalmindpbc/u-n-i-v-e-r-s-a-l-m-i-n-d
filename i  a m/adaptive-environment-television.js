@@ -521,7 +521,8 @@
   const RADIO_HLS_LIBRARY_LOAD_TIMEOUT_MS = 6000;
   const FASHION_REVEAL_BUFFER_SECONDS = 8;
   const RADIO_FASHION_REVEAL_BUFFER_SECONDS = 4;
-  const RECORDED_PROGRAMME_READY_BUFFER_SECONDS = 4;
+  const RECORDED_PROGRAMME_PRIME_BUFFER_SECONDS = 4;
+  const RECORDED_PROGRAMME_READY_BUFFER_SECONDS = 24;
   const RADIO_READY_BUFFER_SECONDS = 24;
   const RADIO_LOW_BUFFER_SECONDS = 12;
   const RADIO_BUFFER_WAIT_MS = 12000;
@@ -4494,6 +4495,7 @@
     document.body.dataset.radioPlaybackState = "stopped";
     document.body.dataset.radioPreloadState = "stopped";
     delete document.body.dataset.audioPartyStreamSemantics;
+    delete document.body.dataset.audioPartyRevealBufferSeconds;
   }
 
   function closeBroadcastEntry(restoreFocus = false) {
@@ -5479,6 +5481,7 @@
       document.body.dataset.audioPartyTrackId = nextTrack.id;
       delete document.body.dataset.audioPartyPlaybackError;
       delete document.body.dataset.audioPartyRecovery;
+      delete document.body.dataset.audioPartyRevealBufferSeconds;
       playerMount.classList.remove("is-local-video-awaiting-gesture");
       await setVideoBlend(0);
       assertCurrentStart();
@@ -5530,6 +5533,17 @@
         });
         assertCurrentStart();
       }
+      const revealBufferSeconds = await waitForRadioBuffer(
+        continuationAudio,
+        RECORDED_PROGRAMME_READY_BUFFER_SECONDS
+      );
+      assertCurrentStart();
+      document.body.dataset.audioPartyRevealBufferSeconds = revealBufferSeconds.toFixed(1);
+      if (revealBufferSeconds + .15 < RECORDED_PROGRAMME_READY_BUFFER_SECONDS) {
+        throw new Error("The recorded programme could not rebuild its reveal buffer.");
+      }
+      window.clearTimeout(radioRecoveryTimer);
+      radioRecoveryTimer = 0;
       continuationAudio.loop = false;
       continuationAudio.muted = false;
       continuationAudio.playbackRate = 1;
@@ -7415,12 +7429,19 @@
       document.body.dataset.radioPreloadState = "muted";
     }
     await attachContinuationAudioSource(continuationAudio, source, options);
+    if (options.recordedProgramme && continuationAudio.paused) {
+      await continuationAudio.play();
+      continuationAudio.volume = 0;
+    }
     const readyBufferSeconds = options.recordedProgramme
-      ? RECORDED_PROGRAMME_READY_BUFFER_SECONDS
+      ? RECORDED_PROGRAMME_PRIME_BUFFER_SECONDS
       : continuationAudio.dataset.radioTransport === "buffered-hls-scheduler"
         ? RADIO_SEGMENT_STARTUP_BUFFER_SECONDS
         : RADIO_READY_BUFFER_SECONDS;
-    await waitForRadioBuffer(continuationAudio, readyBufferSeconds);
+    const initialBufferSeconds = await waitForRadioBuffer(continuationAudio, readyBufferSeconds);
+    if (options.recordedProgramme && initialBufferSeconds + .15 < readyBufferSeconds) {
+      throw new Error("The recorded programme could not build a safe startup buffer.");
+    }
     continuationAudio.volume = 0;
     window.IAMEMDR?.setAudioSource?.(continuationAudio);
 

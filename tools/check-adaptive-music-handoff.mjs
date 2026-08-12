@@ -550,7 +550,35 @@ requireCondition(controller.includes('document.body.dataset.radioRecoveryReason 
 requireCondition(controller.includes('bindDirectRadioPlaybackDiagnostics(audio, source);') && controller.includes('const RADIO_DIRECT_STALL_MS = 6000;'), 'generic direct-stream diagnostics have regressed');
 requireCondition(controller.includes('const RADIO_READY_BUFFER_SECONDS = 24;') && controller.includes('const RADIO_LIVE_SYNC_SEGMENTS = 4;'), 'the generic HLS radio fallback has lost its safety reservoir');
 requireCondition(controller.includes('hlsConfig.liveSyncDurationCount = RADIO_LIVE_SYNC_SEGMENTS') && controller.includes('fragLoadingMaxRetry: 8'), 'the generic HLS radio fallback has lost live-window or retry protection');
-requireCondition(controller.includes('await waitForRadioBuffer(continuationAudio, readyBufferSeconds);'), 'radio starts before transport-specific readiness completes');
+const continuationPrimeSource = controller.slice(
+  controller.indexOf('async function primeContinuationAudio'),
+  controller.indexOf('function selectRadioContinuation')
+);
+const audioPartyStartSource = controller.slice(
+  controller.indexOf('async function startAudioLedPartyAttempt'),
+  controller.indexOf('function bestRadioStationForTrack')
+);
+requireCondition(
+  controller.includes('const RECORDED_PROGRAMME_PRIME_BUFFER_SECONDS = 4;') &&
+    controller.includes('const RECORDED_PROGRAMME_READY_BUFFER_SECONDS = 24;'),
+  'recorded audio parties no longer separate fast hidden priming from the twenty-four-second reveal reservoir'
+);
+requireCondition(
+  continuationPrimeSource.indexOf('if (options.recordedProgramme && continuationAudio.paused)') < continuationPrimeSource.indexOf('const initialBufferSeconds = await waitForRadioBuffer'),
+  'recorded HLS can remain paused with only one fragment while its startup reservoir wait expires'
+);
+requireCondition(
+  continuationPrimeSource.includes('initialBufferSeconds + .15 < readyBufferSeconds') &&
+    continuationPrimeSource.includes('could not build a safe startup buffer'),
+  'recorded HLS can reveal after its startup buffer times out shallow'
+);
+requireCondition(
+  audioPartyStartSource.indexOf('const revealBufferSeconds = await waitForRadioBuffer') < audioPartyStartSource.indexOf('continuationAudio.muted = false;') &&
+    audioPartyStartSource.includes('audioPartyRevealBufferSeconds') &&
+    audioPartyStartSource.includes('could not rebuild its reveal buffer') &&
+    audioPartyStartSource.indexOf('window.clearTimeout(radioRecoveryTimer);') < audioPartyStartSource.indexOf('continuationAudio.muted = false;'),
+  'James Bondage can reveal before rebuilding a safe buffer after its final clock seek'
+);
 requireCondition(controller.includes('continuationAudioSource !== source') && controller.includes('const previousAudio = continuationAudio;'), 'radio source changes can once again inherit stale playback state from the previous station');
 requireCondition(controller.includes('measuredLevel * activeMedia.volume'), 'the Quantum Tree layer no longer follows the measured level of the active media source');
 requireCondition(!controller.includes('return radioLevel * SOUND_RESEARCH_MAX_VOLUME;'), 'radio playback has returned to a fixed Quantum Tree gain');
