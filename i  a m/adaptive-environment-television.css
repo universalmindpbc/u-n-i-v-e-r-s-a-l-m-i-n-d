@@ -543,6 +543,17 @@ body.television-page-view-open.television-wallet-page-open .adaptive-television-
   -webkit-touch-callout: none;
 }
 
+/* Safari can attach Live Text to the element that owns fullscreen rather than
+   the video itself, so carry the same suppression onto the viewing root. */
+.site-shell:fullscreen,
+.site-shell:-webkit-full-screen,
+body.television-is-fullscreen .site-shell {
+  -webkit-user-select: none;
+  user-select: none;
+  -webkit-user-drag: none;
+  -webkit-touch-callout: none;
+}
+
 .adaptive-television-local-video-frame {
   z-index: 1;
   overflow: hidden;

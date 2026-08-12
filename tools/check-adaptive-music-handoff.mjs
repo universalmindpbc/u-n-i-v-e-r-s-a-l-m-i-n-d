@@ -60,6 +60,11 @@ const pagePaths = [
   path.join(IAM_DIR, 'index.html'),
   path.join(IAM_DIR, 'adaptive-environment-television.html'),
 ];
+const televisionCssTokenPagePaths = [
+  path.join(IAM_DIR, 'index.html'),
+  path.join(IAM_DIR, 'index-alt.html'),
+  path.join(IAM_DIR, 'adaptive-environment-television.html'),
+];
 const globeScriptPagePaths = [
   path.join(IAM_DIR, 'index.html'),
   path.join(IAM_DIR, 'vogue-self-report.html'),
@@ -181,6 +186,10 @@ const quantumTreeSettingsEndpoint = await fs.readFile(quantumTreeSettingsEndpoin
 const quantumTreeSettingsData = JSON.parse(await fs.readFile(quantumTreeSettingsDataPath, 'utf8'));
 const quantumTreeAudioStat = await fs.stat(quantumTreeAudioPath);
 const pages = await Promise.all(pagePaths.map(async (pagePath) => ({
+  pagePath,
+  source: await fs.readFile(pagePath, 'utf8'),
+})));
+const televisionCssTokenPages = await Promise.all(televisionCssTokenPagePaths.map(async (pagePath) => ({
   pagePath,
   source: await fs.readFile(pagePath, 'utf8'),
 })));
@@ -352,6 +361,7 @@ const roomOpenPosition = controller.indexOf('document.body.classList.add("televi
 const pointerCountdownPosition = controller.indexOf('startReactionWalletPointerUnlockCountdown();');
 const settlingWalletRule = televisionCss.match(/body\.television-wallet-settling \.adaptive-television-reaction-wallet(?:\[data-wallet-view="closed"\])?,[\s\S]*?\{([\s\S]*?)\}/)?.[1] ?? '';
 const safariLiveTextRule = televisionCss.match(/\.adaptive-television-player video,\s*\.adaptive-television-sex-ed-episode\s*\{([\s\S]*?)\}/)?.[1] ?? '';
+const safariFullscreenLiveTextRule = televisionCss.match(/\.site-shell:fullscreen,\s*\.site-shell:-webkit-full-screen,\s*body\.television-is-fullscreen \.site-shell\s*\{([\s\S]*?)\}/)?.[1] ?? '';
 const nowPlayingCssStart = televisionCss.indexOf('/* Fixed primary wallet with a quiet, readable programme ticker. */');
 const nowPlayingCss = televisionCss.slice(
   nowPlayingCssStart,
@@ -527,6 +537,7 @@ requireCondition(controller.includes('radioIsActiveProgramme ? "radio-visual" : 
 requireCondition(!controller.includes('const preloadedEntry = radioFashionPreloadPool.get(nextRunway.assetKey);'), 'public Fashion can still steal a preloaded Radio visual element');
 requireCondition(televisionCss.includes('.adaptive-television-radio-visual-video') && televisionCss.includes('body.television-radio-continuation .adaptive-television-fashion-video {\n  z-index: 3;'), 'Radio and public Fashion no longer retain independent stacked visual layers');
 requireCondition(safariLiveTextRule.includes('-webkit-user-select: none;') && safariLiveTextRule.includes('user-select: none;') && safariLiveTextRule.includes('-webkit-user-drag: none;') && safariLiveTextRule.includes('-webkit-touch-callout: none;'), 'Safari Live Text can cover the full-screen broadcast media');
+requireCondition(safariFullscreenLiveTextRule.includes('-webkit-user-select: none;') && safariFullscreenLiveTextRule.includes('user-select: none;') && safariFullscreenLiveTextRule.includes('-webkit-user-drag: none;') && safariFullscreenLiveTextRule.includes('-webkit-touch-callout: none;'), 'Safari Live Text can reappear on the full-screen viewing root');
 requireCondition(televisionCss.includes('padding-top: 5px;'), 'the recommended-channel label can be clipped by the shelf rollover');
 requireCondition(controller.includes('firstFallbackMs: 1250'), 'fashion reveal no longer falls to 480p after 1.25 seconds');
 requireCondition(controller.includes('secondFallbackMs: 2000'), 'fashion reveal no longer falls progressively to 360p');
@@ -841,6 +852,13 @@ requireCondition(
 requireCondition(controller.includes('assetKey: "inner-planes-radio-blue-pearl"'), "Pearl is not available to the private Inner Planes Radio visual channel");
 requireCondition(controller.includes('privateVisual: true'), "Pearl is not marked private from the public Fashion experience");
 requireCondition(controller.includes('if (runway.privateVisual) return;'), "Private Radio visuals can leak into persisted public Fashion selection");
+
+for (const { pagePath, source } of televisionCssTokenPages) {
+  const label = path.relative(ROOT, pagePath);
+  const cssMatch = source.match(/adaptive-environment-television\.css\?v=([^"']+)/);
+  requireCondition(cssMatch, `${label} has no versioned television stylesheet`);
+  requireCondition(cssMatch[1] === expectedCssCacheToken, `${label} stylesheet cache token ${cssMatch[1]} does not match stylesheet content ${expectedCssCacheToken}`);
+}
 
 for (const { pagePath, source } of pages) {
   const label = path.relative(ROOT, pagePath);
