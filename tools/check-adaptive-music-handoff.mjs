@@ -579,6 +579,22 @@ requireCondition(
     audioPartyStartSource.indexOf('window.clearTimeout(radioRecoveryTimer);') < audioPartyStartSource.indexOf('continuationAudio.muted = false;'),
   'James Bondage can reveal before rebuilding a safe buffer after its final clock seek'
 );
+const hlsPlaybackDiagnosticsSource = controller.slice(
+  controller.indexOf('function bindRadioPlaybackDiagnostics'),
+  controller.indexOf('function waitForRadioBuffer')
+);
+requireCondition(
+  hlsPlaybackDiagnosticsSource.includes('audio.dataset.radioTransport === "recorded-hls-vod"') &&
+    hlsPlaybackDiagnosticsSource.indexOf('window.clearTimeout(radioRecoveryTimer);') < hlsPlaybackDiagnosticsSource.indexOf('document.body.dataset.radioPlaybackState = "playing";'),
+  'recorded HLS can fire a stale scheduled recovery after genuine playing resumes'
+);
+requireCondition(
+  controller.includes('function resolveHlsAudioRendition(playlist, masterUrl)') &&
+    controller.includes('document.body.dataset.radioRecordedRendition = "audio_only";') &&
+    controller.includes('hls.loadSource(playbackSource)') &&
+    controller.includes('throw new Error("The recorded programme has no audio rendition.")'),
+  'recorded audio parties can regress to downloading the combined video ladder through an audio element'
+);
 requireCondition(controller.includes('continuationAudioSource !== source') && controller.includes('const previousAudio = continuationAudio;'), 'radio source changes can once again inherit stale playback state from the previous station');
 requireCondition(controller.includes('measuredLevel * activeMedia.volume'), 'the Quantum Tree layer no longer follows the measured level of the active media source');
 requireCondition(!controller.includes('return radioLevel * SOUND_RESEARCH_MAX_VOLUME;'), 'radio playback has returned to a fixed Quantum Tree gain');

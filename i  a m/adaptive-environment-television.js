@@ -3826,6 +3826,10 @@
     const handlePlaying = () => {
       lastAdvanceAt = Date.now();
       lastPlaybackTime = Number(audio.currentTime) || 0;
+      if (audio.dataset.radioTransport === "recorded-hls-vod") {
+        window.clearTimeout(radioRecoveryTimer);
+        radioRecoveryTimer = 0;
+      }
       if (document.body.classList.contains("television-radio-continuation")) {
         document.body.dataset.radioPlaybackState = "playing";
         delete document.body.dataset.radioPlaybackError;
@@ -3943,6 +3947,14 @@
 
   function resolveHlsChildUrl(line, parentUrl) {
     try { return new URL(String(line || "").trim(), parentUrl).href; } catch { return ""; }
+  }
+
+  function resolveHlsAudioRendition(playlist, masterUrl) {
+    const audioDeclaration = String(playlist || "")
+      .split(/\r?\n/)
+      .find((line) => line.startsWith("#EXT-X-MEDIA:") && /(?:^|,)TYPE=AUDIO(?:,|$)/.test(line));
+    const uri = audioDeclaration?.match(/(?:^|,)URI="([^"]+)"/)?.[1] || "";
+    return resolveHlsChildUrl(uri, masterUrl);
   }
 
   function parseHlsSegmentUrls(playlist, mediaUrl) {
@@ -4344,7 +4356,7 @@
       "radioStalledCount", "radioRecoveryCount", "radioRecoveryReason", "radioLastHlsError",
       "radioLastMediaError", "radioManifestVariants", "radioBitrateKbps", "radioLiveSyncSegments",
       "radioInitialBufferSeconds", "radioInitialBufferState", "radioInitialSegmentCount", "radioSegmentCount",
-      "radioSegmentRetryCount", "radioSegmentLastError", "radioStreamSemantics",
+      "radioSegmentRetryCount", "radioSegmentLastError", "radioStreamSemantics", "radioRecordedRendition",
     ].forEach((key) => delete document.body.dataset[key]);
   }
 
@@ -4435,6 +4447,14 @@
       hlsConfig.liveMaxLatencyDurationCount = RADIO_MAX_LIVE_LATENCY_SEGMENTS;
       hlsConfig.maxLiveSyncPlaybackRate = 1;
     }
+    let playbackSource = source;
+    if (recordedProgramme) {
+      const masterPlaylist = await fetchRadioResource(source);
+      const audioRendition = resolveHlsAudioRendition(masterPlaylist, source);
+      if (!audioRendition) throw new Error("The recorded programme has no audio rendition.");
+      playbackSource = audioRendition;
+      document.body.dataset.radioRecordedRendition = "audio_only";
+    }
     const hls = new Hls(hlsConfig);
     continuationHls = hls;
     audio.dataset.radioTransport = expectedTransport;
@@ -4467,7 +4487,7 @@
       };
 
       hls.on(Hls.Events.ERROR, handleError);
-      hls.once(Hls.Events.MEDIA_ATTACHED, () => hls.loadSource(source));
+      hls.once(Hls.Events.MEDIA_ATTACHED, () => hls.loadSource(playbackSource));
       hls.once(Hls.Events.MANIFEST_PARSED, () => finish());
       hls.attachMedia(audio);
     }).catch((error) => {
