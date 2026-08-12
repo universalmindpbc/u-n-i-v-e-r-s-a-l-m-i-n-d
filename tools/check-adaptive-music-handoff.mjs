@@ -274,6 +274,73 @@ requireCondition(rolloverHarness.results.every((state) => state?.programmeInstan
 requireCondition(rolloverHarness.stateReads === 3, `the rollover wait read the live clock ${rolloverHarness.stateReads} times instead of polling to the next programme`);
 requireCondition(rolloverHarness.synchronizeCalls === 1, 'simultaneous ended and scheduled handoffs can switch the next programme twice');
 requireCondition(rolloverHarness.dataset.broadcastRolloverState === 'complete', 'the rollover wait did not publish a complete diagnostic state');
+const directRadioDiagnosticsSource = controller.match(
+  /  function bindDirectRadioPlaybackDiagnostics\(audio, source\) \{[\s\S]*?\n  \}(?=\n\n  function destroyContinuationHls)/
+)?.[0];
+requireCondition(directRadioDiagnosticsSource, 'the direct-stream diagnostic function cannot be exercised');
+const runDirectRadioResumeHarness = new Function(`
+  return function runDirectRadioResumeHarness() {
+    const document = { body: { dataset: {}, classList: { contains: () => true } } };
+    const clearedTimeouts = [];
+    let intervalCallback = null;
+    const window = {
+      clearTimeout: (timer) => { if (timer) clearedTimeouts.push(timer); },
+      setTimeout: () => 41,
+      setInterval: (callback) => { intervalCallback = callback; return 73; },
+    };
+    class FakeAudio {
+      constructor() {
+        this.currentTime = 0;
+        this.paused = false;
+        this.error = null;
+        this.listeners = new Map();
+      }
+      addEventListener(type, listener) { this.listeners.set(type, listener); }
+      removeEventListener(type) { this.listeners.delete(type); }
+      emit(type) { this.listeners.get(type)?.(); }
+      pause() { this.paused = true; }
+      load() {}
+      play() { this.paused = false; return Promise.resolve(); }
+    }
+    const audio = new FakeAudio();
+    const source = "https://example.test/live.mp3";
+    let continuationAudio = audio;
+    let continuationAudioSource = source;
+    let continuationDecision = null;
+    let broadcastChannelId = "radio-champagne-bohemia";
+    let radioRecoveryTimer = 0;
+    let radioBufferMonitor = 0;
+    let radioPlaybackCleanup = null;
+    let radioWaitingCount = 0;
+    let radioStalledCount = 0;
+    let radioRecoveryCount = 0;
+    let radioLastRecoveryAt = 0;
+    const RADIO_DIRECT_STALL_MS = 6000;
+    const clearRadioPlaybackDiagnostics = () => {};
+    const updateRadioBufferDiagnostics = () => 0;
+    const fallbackStationFor = () => null;
+    const startScheduledRadioFallback = () => Promise.resolve();
+    ${directRadioDiagnosticsSource}
+    bindDirectRadioPlaybackDiagnostics(audio, source);
+    audio.emit("playing");
+    audio.emit("waiting");
+    const pendingTimer = radioRecoveryTimer;
+    audio.currentTime = 1;
+    intervalCallback();
+    return {
+      pendingTimer,
+      recoveryTimer: radioRecoveryTimer,
+      playbackState: document.body.dataset.radioPlaybackState,
+      clearedTimeouts,
+      waitingCount: radioWaitingCount,
+    };
+  };
+`)();
+const directRadioResumeHarness = runDirectRadioResumeHarness();
+requireCondition(directRadioResumeHarness.pendingTimer === 41, 'a direct-stream waiting event did not schedule its guarded reconnect');
+requireCondition(directRadioResumeHarness.recoveryTimer === 0 && directRadioResumeHarness.clearedTimeouts.includes(41), 'resumed direct-stream advancement left a stale reconnect armed');
+requireCondition(directRadioResumeHarness.playbackState === 'playing', 'resumed direct-stream advancement remained latched in buffering');
+requireCondition(directRadioResumeHarness.waitingCount === 1, 'the direct-stream recovery diagnostic lost its waiting event count');
 const expectedShellControllerToken = `adaptive-env-stream-${createHash('sha256').update(shellController).digest('hex').slice(0, 12)}`;
 const expectedAdaptiveEnvironmentToken = `adaptive-env-${createHash('sha256').update(adaptiveEnvironment).digest('hex').slice(0, 12)}`;
 const expectedAboutControllerToken = `about-briefing-${createHash('sha256').update(aboutController).digest('hex').slice(0, 12)}`;

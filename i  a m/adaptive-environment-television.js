@@ -4230,6 +4230,15 @@
       if (currentTime > lastPlaybackTime + .04) {
         lastPlaybackTime = currentTime;
         lastAdvanceAt = Date.now();
+        if (playbackStarted && !audio.paused) {
+          window.clearTimeout(radioRecoveryTimer);
+          radioRecoveryTimer = 0;
+          const playbackState = document.body.dataset.radioPlaybackState;
+          if (playbackState === "buffering" || playbackState === "reconnecting") {
+            document.body.dataset.radioPlaybackState = "playing";
+            delete document.body.dataset.radioPlaybackError;
+          }
+        }
       } else if (playbackStarted && !audio.paused && Date.now() - lastAdvanceAt > RADIO_DIRECT_STALL_MS) {
         scheduleReconnect("direct_clock_stalled", 200);
       }
