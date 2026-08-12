@@ -549,8 +549,8 @@ requireCondition(controller.includes('scheduleDecodedRadioSegment(player, decode
 requireCondition(controller.includes('document.body.dataset.radioRecoveryReason = "segment_buffer_underrun";'), 'buffered NTS playback no longer records a genuine underrun');
 requireCondition(controller.includes('bindDirectRadioPlaybackDiagnostics(audio, source);') && controller.includes('const RADIO_DIRECT_STALL_MS = 6000;'), 'generic direct-stream diagnostics have regressed');
 requireCondition(controller.includes('const RADIO_READY_BUFFER_SECONDS = 24;') && controller.includes('const RADIO_LIVE_SYNC_SEGMENTS = 4;'), 'the generic HLS radio fallback has lost its safety reservoir');
-requireCondition(controller.includes('liveSyncDurationCount: RADIO_LIVE_SYNC_SEGMENTS') && controller.includes('fragLoadingMaxRetry: 8'), 'the generic HLS radio fallback has lost live-window or retry protection');
-requireCondition(controller.includes('await waitForRadioBuffer(continuationAudio);'), 'radio starts before transport-specific readiness completes');
+requireCondition(controller.includes('hlsConfig.liveSyncDurationCount = RADIO_LIVE_SYNC_SEGMENTS') && controller.includes('fragLoadingMaxRetry: 8'), 'the generic HLS radio fallback has lost live-window or retry protection');
+requireCondition(controller.includes('await waitForRadioBuffer(continuationAudio, readyBufferSeconds);'), 'radio starts before transport-specific readiness completes');
 requireCondition(controller.includes('continuationAudioSource !== source') && controller.includes('const previousAudio = continuationAudio;'), 'radio source changes can once again inherit stale playback state from the previous station');
 requireCondition(controller.includes('measuredLevel * activeMedia.volume'), 'the Quantum Tree layer no longer follows the measured level of the active media source');
 requireCondition(!controller.includes('return radioLevel * SOUND_RESEARCH_MAX_VOLUME;'), 'radio playback has returned to a fixed Quantum Tree gain');

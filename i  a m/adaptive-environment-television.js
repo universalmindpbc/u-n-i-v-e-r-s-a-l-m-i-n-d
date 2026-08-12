@@ -521,6 +521,7 @@
   const RADIO_HLS_LIBRARY_LOAD_TIMEOUT_MS = 6000;
   const FASHION_REVEAL_BUFFER_SECONDS = 8;
   const RADIO_FASHION_REVEAL_BUFFER_SECONDS = 4;
+  const RECORDED_PROGRAMME_READY_BUFFER_SECONDS = 4;
   const RADIO_READY_BUFFER_SECONDS = 24;
   const RADIO_LOW_BUFFER_SECONDS = 12;
   const RADIO_BUFFER_WAIT_MS = 12000;
@@ -528,6 +529,8 @@
   const RADIO_LIVE_SYNC_SEGMENTS = 4;
   const RADIO_MAX_LIVE_LATENCY_SEGMENTS = 5;
   const RADIO_DIRECT_STALL_MS = 6000;
+  const RADIO_SEGMENT_STARTUP_BUFFER_SECONDS = 12;
+  const RADIO_SEGMENT_STARTUP_COUNT = 2;
   const RADIO_SEGMENT_BUFFER_TARGET_SECONDS = 48;
   const RADIO_SEGMENT_START_DELAY_SECONDS = .35;
   const RADIO_SEGMENT_CROSSFADE_SECONDS = .035;
@@ -1596,28 +1599,64 @@
   function waitForAlignedMusicVideo(video, channelId, trackId, options = {}) {
     const minimumBufferSeconds = Math.max(0, Number(options.minimumBufferSeconds) || 0);
     const timeoutMs = Math.max(1000, Number(options.timeoutMs) || 12000);
+    const maximumCorrections = Math.max(1, Number(options.maximumCorrections) || 3);
     const startedAt = window.performance?.now?.() || Date.now();
     return new Promise((resolve) => {
+      let settled = false;
+      let correctionCount = 0;
+      let correctionInFlight = null;
+      const finish = (ready) => {
+        if (settled) return;
+        settled = true;
+        video.dataset.musicHandoffAlignmentCorrections = String(correctionCount);
+        document.body.dataset.broadcastHandoffAlignmentCorrections = String(correctionCount);
+        resolve(ready);
+      };
       const sample = () => {
+        if (settled || correctionInFlight) return;
         const state = window.IAMBroadcastClock?.stateAt(channelId);
         const elapsedMs = (window.performance?.now?.() || Date.now()) - startedAt;
         if (!state || state.trackId !== trackId) {
-          resolve(false);
+          finish(false);
           return;
         }
         const driftSeconds = Number(video.currentTime || 0) - state.offsetSeconds;
         const bufferSeconds = window.IAMStreamController?.bufferedAhead?.(video) || 0;
-        if (
-          !video.paused &&
-          video.readyState >= HTMLMediaElement.HAVE_CURRENT_DATA &&
-          Math.abs(driftSeconds) <= .5 &&
-          bufferSeconds + .15 >= minimumBufferSeconds
-        ) {
-          resolve(true);
-          return;
+        const mediaReady = !video.paused && video.readyState >= HTMLMediaElement.HAVE_CURRENT_DATA;
+        const bufferReady = bufferSeconds + .15 >= minimumBufferSeconds;
+        document.body.dataset.broadcastHandoffDriftSeconds = driftSeconds.toFixed(3);
+        document.body.dataset.broadcastHandoffCandidateBufferSeconds = bufferSeconds.toFixed(3);
+        if (mediaReady && bufferReady) {
+          if (Math.abs(driftSeconds) <= .5) {
+            video.dataset.musicHandoffState = "aligned";
+            document.body.dataset.broadcastHandoffState = "aligned_single_attach";
+            finish(true);
+            return;
+          }
+          if (!video.seeking && correctionCount < maximumCorrections) {
+            correctionCount += 1;
+            video.dataset.musicHandoffState = "correcting";
+            document.body.dataset.broadcastHandoffState = "correcting_single_attach";
+            correctionInFlight = seekBroadcastVideo(video, state.offsetSeconds, {
+              reason: "handoff_alignment",
+              channelId,
+              programmeInstanceId: state.programmeInstanceId,
+              driftSeconds,
+            })
+              .catch((error) => {
+                video.dataset.musicHandoffAlignmentError = String(error?.message || error).slice(0, 140);
+              })
+              .finally(() => {
+                correctionInFlight = null;
+                window.setTimeout(sample, 40);
+              });
+            return;
+          }
         }
         if (elapsedMs >= timeoutMs || video.error) {
-          resolve(false);
+          video.dataset.musicHandoffState = video.error ? "media_error" : "alignment_timeout";
+          document.body.dataset.broadcastHandoffState = video.error ? "media_error" : "alignment_timeout";
+          finish(false);
           return;
         }
         window.setTimeout(sample, 80);
@@ -1732,7 +1771,7 @@
     (window.IAMStreamController?.play?.(video) || video.play())?.catch?.(() => {});
     const aligned = await waitForAlignedMusicVideo(video, channelId, nextTrack.id, {
       minimumBufferSeconds: 4,
-      timeoutMs: 15000,
+      timeoutMs: 9000,
     });
     if (aligned) return video;
     try { video.pause(); } catch {}
@@ -3713,7 +3752,11 @@
       document.body.dataset.radioBandwidthKbps = String(Math.round(bandwidth / 1000));
     }
     const latency = Number(hls?.latency);
-    if (Number.isFinite(latency) && latency >= 0) document.body.dataset.radioLiveLatencySeconds = latency.toFixed(1);
+    if (audio.dataset.radioTransport === "hls-js" && Number.isFinite(latency) && latency >= 0) {
+      document.body.dataset.radioLiveLatencySeconds = latency.toFixed(1);
+    } else {
+      delete document.body.dataset.radioLiveLatencySeconds;
+    }
     return bufferSeconds;
   }
 
@@ -3857,7 +3900,9 @@
       document.body.dataset.radioInitialBufferState = bufferSeconds >= minimumSeconds ? "ready" : "partial";
       return Promise.resolve(bufferSeconds);
     }
-    if (audio?.dataset.radioTransport !== "hls-js") return Promise.resolve(radioBufferedAhead(audio));
+    if (!["hls-js", "recorded-hls-vod"].includes(audio?.dataset.radioTransport)) {
+      return Promise.resolve(radioBufferedAhead(audio));
+    }
     const startedAt = Date.now();
     document.body.dataset.radioPlaybackState = "buffering";
     return new Promise((resolve) => {
@@ -3968,9 +4013,12 @@
     updateBufferedNtsDiagnostics(player);
   }
 
-  async function refreshBufferedNtsSegments(player = continuationSegmentPlayer, forceMaster = false) {
+  async function refreshBufferedNtsSegments(player = continuationSegmentPlayer, forceMaster = false, options = {}) {
     if (!player || player.stopped || player !== continuationSegmentPlayer) return;
     if (player.refreshPromise) return player.refreshPromise;
+    const maximumNewSegments = Number.isFinite(Number(options.maximumNewSegments))
+      ? Math.max(1, Number(options.maximumNewSegments))
+      : Number.POSITIVE_INFINITY;
 
     player.refreshPromise = (async () => {
       try {
@@ -3998,6 +4046,31 @@
         }
 
         const segmentUrls = parseHlsSegmentUrls(media, player.mediaUrl);
+        if (Number.isFinite(maximumNewSegments)) {
+          const startupUrls = segmentUrls
+            .filter((segmentUrl) => !player.seen.has(segmentUrl))
+            .slice(0, maximumNewSegments);
+          startupUrls.forEach((segmentUrl) => player.seen.add(segmentUrl));
+          const decodedSegments = await Promise.all(startupUrls.map(async (segmentUrl) => {
+            try {
+              const encoded = await fetchRadioResource(segmentUrl, "arrayBuffer", 18000);
+              if (player.stopped || player !== continuationSegmentPlayer) return null;
+              const decoded = await player.context.decodeAudioData(encoded.slice(0));
+              return { decoded, segmentUrl };
+            } catch (error) {
+              player.seen.delete(segmentUrl);
+              player.retryCount += 1;
+              document.body.dataset.radioSegmentLastError = String(error?.message || error).slice(0, 140);
+              return null;
+            }
+          }));
+          decodedSegments.forEach((entry) => {
+            if (!entry || player.stopped || player !== continuationSegmentPlayer) return;
+            scheduleDecodedRadioSegment(player, entry.decoded, entry.segmentUrl);
+          });
+          return;
+        }
+        let newSegmentCount = 0;
         for (const segmentUrl of segmentUrls) {
           if (player.stopped || player !== continuationSegmentPlayer) return;
           if (player.seen.has(segmentUrl)) continue;
@@ -4007,6 +4080,8 @@
             if (player.stopped || player !== continuationSegmentPlayer) return;
             const decoded = await player.context.decodeAudioData(encoded.slice(0));
             scheduleDecodedRadioSegment(player, decoded, segmentUrl);
+            newSegmentCount += 1;
+            if (newSegmentCount >= maximumNewSegments) break;
           } catch (error) {
             player.seen.delete(segmentUrl);
             player.retryCount += 1;
@@ -4090,13 +4165,22 @@
       audio.removeEventListener("playing", handlePlaying);
     };
 
-    await refreshBufferedNtsSegments(player);
-    if (player !== continuationSegmentPlayer || player.scheduledCount < 2) {
+    await refreshBufferedNtsSegments(player, false, { maximumNewSegments: RADIO_SEGMENT_STARTUP_COUNT });
+    if (player !== continuationSegmentPlayer || player.scheduledCount < RADIO_SEGMENT_STARTUP_COUNT) {
       throw new Error("NTS could not build a safe audio buffer.");
     }
     const initialBuffer = updateBufferedNtsDiagnostics(player);
+    if (initialBuffer < RADIO_SEGMENT_STARTUP_BUFFER_SECONDS) {
+      throw new Error("NTS could not build the startup audio reservoir.");
+    }
     document.body.dataset.radioInitialBufferSeconds = initialBuffer.toFixed(1);
-    document.body.dataset.radioInitialBufferState = initialBuffer >= RADIO_READY_BUFFER_SECONDS ? "ready" : "partial";
+    document.body.dataset.radioInitialBufferState = "ready";
+    document.body.dataset.radioInitialSegmentCount = String(player.scheduledCount);
+
+    refreshBufferedNtsSegments(player).catch((error) => {
+      player.retryCount += 1;
+      document.body.dataset.radioSegmentLastError = String(error?.message || error).slice(0, 140);
+    });
 
     player.monitor = window.setInterval(() => {
       if (player.stopped || player !== continuationSegmentPlayer) return;
@@ -4258,14 +4342,26 @@
       "radioNetworkState", "radioBandwidthKbps", "radioLiveLatencySeconds", "radioWaitingCount",
       "radioStalledCount", "radioRecoveryCount", "radioRecoveryReason", "radioLastHlsError",
       "radioLastMediaError", "radioManifestVariants", "radioBitrateKbps", "radioLiveSyncSegments",
-      "radioInitialBufferSeconds", "radioInitialBufferState", "radioSegmentCount",
-      "radioSegmentRetryCount", "radioSegmentLastError",
+      "radioInitialBufferSeconds", "radioInitialBufferState", "radioInitialSegmentCount", "radioSegmentCount",
+      "radioSegmentRetryCount", "radioSegmentLastError", "radioStreamSemantics",
     ].forEach((key) => delete document.body.dataset[key]);
   }
 
-  async function attachContinuationAudioSource(audio, source) {
+  async function attachContinuationAudioSource(audio, source, options = {}) {
     if (!audio || !source) throw new Error("Radio station has no playable stream URL.");
-    if (continuationAudioSource === source && (continuationHls || continuationSegmentPlayer || audio.getAttribute("src") || audio.srcObject)) return audio;
+    const recordedProgramme = Boolean(options.recordedProgramme && isHlsRadioSource(source));
+    const expectedTransport = recordedProgramme
+      ? "recorded-hls-vod"
+      : isBufferedNtsRadioSource(source)
+        ? "buffered-hls-scheduler"
+        : isHlsRadioSource(source)
+          ? "hls-js"
+          : "direct-mp3";
+    if (
+      continuationAudioSource === source &&
+      audio.dataset.radioTransport === expectedTransport &&
+      (continuationHls || continuationSegmentPlayer || audio.getAttribute("src") || audio.srcObject)
+    ) return audio;
 
     destroyContinuationHls();
     const attachSequence = radioHlsAttachSequence;
@@ -4305,15 +4401,13 @@
       return audio;
     }
 
-    const hls = new Hls({
+    const hlsConfig = {
       enableWorker: true,
       lowLatencyMode: false,
       startFragPrefetch: true,
-      liveSyncDurationCount: RADIO_LIVE_SYNC_SEGMENTS,
-      liveMaxLatencyDurationCount: RADIO_MAX_LIVE_LATENCY_SEGMENTS,
-      maxLiveSyncPlaybackRate: 1,
-      maxBufferLength: 60,
-      maxMaxBufferLength: 90,
+      startLevel: 0,
+      maxBufferLength: recordedProgramme ? 30 : 60,
+      maxMaxBufferLength: recordedProgramme ? 60 : 90,
       backBufferLength: 15,
       maxBufferHole: 1.5,
       highBufferWatchdogPeriod: 1,
@@ -4331,11 +4425,29 @@
       fragLoadingMaxRetry: 8,
       fragLoadingRetryDelay: 1000,
       fragLoadingMaxRetryTimeout: 16000,
-    });
+    };
+    if (recordedProgramme) {
+      const startPosition = Number(options.startPositionSeconds);
+      if (Number.isFinite(startPosition) && startPosition >= 0) hlsConfig.startPosition = startPosition;
+    } else {
+      hlsConfig.liveSyncDurationCount = RADIO_LIVE_SYNC_SEGMENTS;
+      hlsConfig.liveMaxLatencyDurationCount = RADIO_MAX_LIVE_LATENCY_SEGMENTS;
+      hlsConfig.maxLiveSyncPlaybackRate = 1;
+    }
+    const hls = new Hls(hlsConfig);
     continuationHls = hls;
-    audio.dataset.radioTransport = "hls-js";
-    document.body.dataset.radioStreamTransport = "hls-js";
-    document.body.dataset.radioLiveSyncSegments = String(RADIO_LIVE_SYNC_SEGMENTS);
+    audio.dataset.radioTransport = expectedTransport;
+    document.body.dataset.radioStreamTransport = expectedTransport;
+    document.body.dataset.radioStreamSemantics = recordedProgramme ? "recorded_programme" : "live_station";
+    if (recordedProgramme) {
+      delete document.body.dataset.radioLiveSyncSegments;
+      const startPosition = Number(options.startPositionSeconds);
+      if (Number.isFinite(startPosition) && startPosition >= 0) {
+        audio.dataset.recordedProgrammeStartSeconds = startPosition.toFixed(3);
+      }
+    } else {
+      document.body.dataset.radioLiveSyncSegments = String(RADIO_LIVE_SYNC_SEGMENTS);
+    }
     bindRadioPlaybackDiagnostics(audio, hls, Hls);
 
     await new Promise((resolve, reject) => {
@@ -4381,6 +4493,7 @@
     continuationDecision = null;
     document.body.dataset.radioPlaybackState = "stopped";
     document.body.dataset.radioPreloadState = "stopped";
+    delete document.body.dataset.audioPartyStreamSemantics;
   }
 
   function closeBroadcastEntry(restoreFocus = false) {
@@ -5284,6 +5397,7 @@
     stopContinuationAudioImmediately();
     document.body.classList.remove("television-radio-continuation", "television-audio-party");
     document.body.dataset.audioPartyPlaybackState = "unavailable";
+    document.body.dataset.audioPartyStreamSemantics = "recorded_programme";
     document.body.dataset.audioPartyPlaybackError = String(error?.message || error).slice(0, 140);
     document.body.dataset.audioPartyRecovery = "select_james_bondage_again";
     failChannelLoading(loadingGeneration);
@@ -5361,27 +5475,42 @@
       delete document.body.dataset.radioStationProvider;
       document.body.classList.add("television-radio-continuation", "television-audio-party");
       document.body.dataset.audioPartyPlaybackState = "loading";
+      document.body.dataset.audioPartyStreamSemantics = "recorded_programme";
       document.body.dataset.audioPartyTrackId = nextTrack.id;
       delete document.body.dataset.audioPartyPlaybackError;
       delete document.body.dataset.audioPartyRecovery;
       playerMount.classList.remove("is-local-video-awaiting-gesture");
       await setVideoBlend(0);
       assertCurrentStart();
-      await ensureFashionStreamAttached();
-      assertCurrentStart();
-      if (fashionVideo?.paused) await playWhenStreamAttached(fashionVideo, "fashion").catch(() => {});
-      assertCurrentStart();
       musicChannelMode = "parties";
       musicModeManuallySelected = options.source !== "automatic_continuation";
       track = nextTrack;
       syncSelectedTrackCopy();
       setMusicTelevisionMetadata();
-      await primeContinuationAudio({
+      const initialBroadcastState = options.broadcastChannelId
+        ? window.IAMBroadcastClock?.stateAt(options.broadcastChannelId)
+        : null;
+      const initialStartSeconds = initialBroadcastState?.trackId === nextTrack.id
+        ? Math.max(0, Number(initialBroadcastState.offsetSeconds) || 0)
+        : hasRequestedStart
+          ? Math.max(0, requestedStartSeconds)
+          : undefined;
+      const visualStartup = (async () => {
+        await ensureFashionStreamAttached();
+        assertCurrentStart();
+        if (fashionVideo?.paused) await playWhenStreamAttached(fashionVideo, "fashion").catch(() => {});
+        assertCurrentStart();
+      })();
+      const audioStartup = primeContinuationAudio({
         id: nextTrack.id,
         track_id: nextTrack.id,
         label: nextTrack.displayTitle || nextTrack.title,
         src: source,
+      }, {
+        recordedProgramme: true,
+        startPositionSeconds: initialStartSeconds,
       });
+      await Promise.all([visualStartup, audioStartup]);
       assertCurrentStart();
       const state = options.broadcastChannelId
         ? window.IAMBroadcastClock?.stateAt(options.broadcastChannelId)
@@ -5416,7 +5545,9 @@
           voiceAssistantDuckActive ? 260 : 0
         );
       }
-      if (hasRequestedStart) {
+      if (state?.trackId === nextTrack.id) {
+        document.body.dataset.audioPartyStartSeconds = Math.max(0, Number(state.offsetSeconds) || 0).toFixed(3);
+      } else if (hasRequestedStart) {
         document.body.dataset.audioPartyStartSeconds = Math.max(0, requestedStartSeconds).toFixed(3);
       } else {
         delete document.body.dataset.audioPartyStartSeconds;
@@ -5496,6 +5627,7 @@
     document.body.classList.add("television-radio-continuation");
     document.body.classList.remove("television-audio-party");
     document.body.dataset.audioPartyPlaybackState = "stopped";
+    delete document.body.dataset.audioPartyStreamSemantics;
     playerMount.classList.remove("is-local-video-awaiting-gesture");
     try {
       await setVideoBlend(100);
@@ -7248,7 +7380,7 @@
 
   window.__iamStopAdaptiveMedia = stopTelevisionMedia;
 
-  async function primeContinuationAudio(radioDecision = selectRadioContinuation()) {
+  async function primeContinuationAudio(radioDecision = selectRadioContinuation(), options = {}) {
     continuationDecision = radioDecision;
     const source = radioDecision?.src || radioDecision?.stream_url;
     if (!source) return null;
@@ -7282,8 +7414,13 @@
       document.body.dataset.radioPlaybackState = "primed-muted";
       document.body.dataset.radioPreloadState = "muted";
     }
-    await attachContinuationAudioSource(continuationAudio, source);
-    await waitForRadioBuffer(continuationAudio);
+    await attachContinuationAudioSource(continuationAudio, source, options);
+    const readyBufferSeconds = options.recordedProgramme
+      ? RECORDED_PROGRAMME_READY_BUFFER_SECONDS
+      : continuationAudio.dataset.radioTransport === "buffered-hls-scheduler"
+        ? RADIO_SEGMENT_STARTUP_BUFFER_SECONDS
+        : RADIO_READY_BUFFER_SECONDS;
+    await waitForRadioBuffer(continuationAudio, readyBufferSeconds);
     continuationAudio.volume = 0;
     window.IAMEMDR?.setAudioSource?.(continuationAudio);
 
