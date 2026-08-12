@@ -89,7 +89,11 @@ test("protected Shen secret resolution works and missing configuration fails clo
 
 test("research response supplies the Web SDK isolation and camera boundaries", async () => {
   const page = await read(resolve(iamDirectory, "research.php"));
+  const sdkHeaders = await read(resolve(researchDirectory, "vendor", "shenai-sdk", ".htaccess"));
   assert.match(page, /Cross-Origin-Opener-Policy: same-origin/);
   assert.match(page, /Cross-Origin-Embedder-Policy: require-corp/);
   assert.match(page, /Permissions-Policy: camera=\(self\), microphone=\(\)/);
+  assert.match(sdkHeaders, /<Files "shenai_sdk\.mjs">/);
+  assert.match(sdkHeaders, /Cross-Origin-Embedder-Policy "require-corp"/);
+  assert.match(sdkHeaders, /Cross-Origin-Resource-Policy "same-origin"/);
 });

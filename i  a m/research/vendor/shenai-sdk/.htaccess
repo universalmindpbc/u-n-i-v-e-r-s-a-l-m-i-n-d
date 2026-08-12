@@ -1,0 +1,6 @@
+<IfModule mod_headers.c>
+  <Files "shenai_sdk.mjs">
+    Header always set Cross-Origin-Embedder-Policy "require-corp"
+    Header always set Cross-Origin-Resource-Policy "same-origin"
+  </Files>
+</IfModule>
