@@ -10,6 +10,10 @@ const read = (relative) => fs.readFileSync(path.join(root, relative), "utf8");
 const shop = read("i  a m/shop.html");
 const shopStyle = read("i  a m/shop.css");
 const shopScript = read("i  a m/shop.js");
+const shopSciencePage = read("i  a m/shop-science.html");
+const shopScienceStyle = read("i  a m/shop-science.css");
+const shopScienceData = read("i  a m/shop-science-data-v1.js");
+const shopScienceScript = read("i  a m/shop-science.js");
 const globalNavigation = read("i  a m/global-navigation.js");
 const globalNavigationStyle = read("i  a m/global-navigation.css");
 const catalogue = JSON.parse(read("i  a m/shop-catalogue-v1.json"));
@@ -24,6 +28,9 @@ const htaccess = read(".htaccess");
 const redirects = read("_redirects");
 const expectedTelevisionToken = `music-tv-${createHash("sha256").update(television).digest("hex").slice(0, 12)}`;
 const expectedShopStyleToken = createHash("sha256").update(shopStyle).digest("hex").slice(0, 12);
+const expectedShopScienceStyleToken = createHash("sha256").update(shopScienceStyle).digest("hex").slice(0, 12);
+const expectedShopScienceDataToken = createHash("sha256").update(shopScienceData).digest("hex").slice(0, 12);
+const expectedShopScienceScriptToken = createHash("sha256").update(shopScienceScript).digest("hex").slice(0, 12);
 
 const bouganvillea = productKernel.products.find((product) => product.id === "JB-0313");
 assert.equal(bouganvillea?.imageSource, "user_supplied_reference", "Bouganvillea Tights must use Ben's sharper supplied product shot");
@@ -536,7 +543,7 @@ assert.match(television, /function contextualShopTheme\(\)[\s\S]*SHOP_DAY_MODE_R
 assert.match(television, /url\.searchParams\.set\("shopTheme", requestedTheme\)[\s\S]*url\.searchParams\.set\("shopThemeSource", options\.shopThemeSource === "direct" \? "direct" : "music-room"\)/, "Shop arrival context must be present before the embedded page paints");
 assert.match(television, /openInVideoPageLayer\(shopLink, \{ shopTheme: "night", shopThemeSource: "direct" \}\)/, "Direct Shop bootstrap must always open in Night Mode");
 assert.equal((shop.match(/data-filter-category=/g) || []).length, 6, "James Bondage edit must expose the six restrained form filters");
-assert.match(shop, /href="#shop-about">about<\/a>[\s\S]*data-shop-menu[\s\S]*href="#giving-back">giving back<\/a>[\s\S]*href="#sex-ed">sex ed<\/a>/i, "Shop masthead must use the approved About / Shop / Giving Back / Sex Ed hierarchy");
+assert.match(shop, /href="#shop-about">about<\/a>[\s\S]*data-shop-menu[\s\S]*href="#giving-back">giving back<\/a>[\s\S]*href="#sex-ed">sex ed<\/a>[\s\S]*href="shop-science\.html" target="_blank" rel="noopener"[^>]*>science<\/a>/i, "Shop masthead must preserve the approved hierarchy and open SCIENCE in a dedicated tab");
 assert.equal((shop.match(/data-shop-catalogue-type=/g) || []).length, 7, "Shop menu must expose the seven functional type routes");
 for (const [value, label] of expectedShopTaxonomy.slice(0, 5).map(({ value, label }) => [value, label])) {
   assert.ok(shop.includes(`href="#catalogue/all/type/${value}" data-shop-catalogue-type="${value}">${label}</a>`), `Shop menu must expose the broad ${label} route`);
@@ -645,8 +652,8 @@ assert.match(
 assert.match(shopStyle, /\.shop-footer__country-flag[\s\S]*linear-gradient\(to bottom, #000 0 50%, #e03c31 50% 100%\)[\s\S]*\.shop-footer__country-flag::after[\s\S]*background: #ffc72c/, "The Shop acknowledgement must render the Aboriginal flag beside the statement");
 assert.match(
   shop,
-  /shop-masthead__nav[\s\S]*?<a href="#top" data-shop-home[^>]*>home<\/a>[\s\S]*?<a href="#shop-about">about<\/a>[\s\S]*?<summary>shop<\/summary>[\s\S]*?<a href="#giving-back">giving back<\/a>[\s\S]*?<a href="#sex-ed">sex ed<\/a>/,
-  "The sticky Shop navigation must begin with Home and preserve the approved Home / About / Shop / Giving Back / Sex Ed order",
+  /shop-masthead__nav[\s\S]*?<a href="#top" data-shop-home[^>]*>home<\/a>[\s\S]*?<a href="#shop-about">about<\/a>[\s\S]*?<summary>shop<\/summary>[\s\S]*?<a href="#giving-back">giving back<\/a>[\s\S]*?<a href="#sex-ed">sex ed<\/a>[\s\S]*?<a href="shop-science\.html" target="_blank" rel="noopener"[^>]*>science<\/a>/,
+  "The sticky Shop navigation must begin with Home and preserve the approved Home / About / Shop / Giving Back / Sex Ed / Science order",
 );
 assert.match(
   shop,
@@ -661,8 +668,12 @@ assert.match(shop, /shop\.js\?v=shop-836f8a905982/, "The Shop shell must load th
 assert.match(
   shopStyle,
   /@media \(max-width: 700px\)[\s\S]*?\.shop-masthead__nav \{ gap: 6px; \}[\s\S]*?\.shop-masthead__actions \{ gap: 0; \}[\s\S]*?\.shop-theme,[\s\S]*?\.shop-music \{[\s\S]*?width: 28px;[\s\S]*?height: 44px;[\s\S]*?\.shop-theme \[data-shop-theme-label\],[\s\S]*?\.shop-music \[data-shop-music-label\] \{ font-size: 0; \}/,
-  "Phone Shop navigation must keep all five destinations clear of the accessible icon-only theme and music controls",
+  "Phone Shop navigation must keep all six destinations clear of the accessible icon-only theme and music controls",
 );
+assert.doesNotMatch(shop, /data-shop-science|shop-science\.css|shop-science-data-v1\.js|shop-science\.js/, "Normal Shop must not carry the dedicated SCIENCE payload");
+assert.ok(shopSciencePage.includes(`shop-science.css?v=${expectedShopScienceStyleToken}`), "Dedicated SCIENCE page must cache-bust its visual system with its content hash");
+assert.ok(shopSciencePage.includes(`shop-science-data-v1.js?v=${expectedShopScienceDataToken}`), "Dedicated SCIENCE page must cache-bust the Notion-projected data with its content hash");
+assert.ok(shopSciencePage.includes(`shop-science.js?v=${expectedShopScienceScriptToken}`), "Dedicated SCIENCE page must cache-bust its renderer with its content hash");
 assert.doesNotMatch(shop, /presentation mock-up|affiliate relationships are proposed/i, "Shop footer must no longer describe the live shop as a mock-up or proposal");
 assert.ok(fs.existsSync(path.join(iam, "a s s e t s/shop-mockup/james-bondage-lower-masthead.mp4")), "Missing supplied lower masthead video");
 assert.match(shopStyle, /\.shop-body-diversity__film figure\s*\{\s*aspect-ratio:\s*160 \/ 63;\s*\}/, "The new 16:9 Mugler film must remove exactly 15% from both top and bottom");
