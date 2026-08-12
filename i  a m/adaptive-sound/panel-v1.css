@@ -75,8 +75,8 @@
   padding: 0;
   border: 0;
   background: transparent;
-  pointer-events: auto;
-  cursor: pointer;
+  pointer-events: none;
+  cursor: default;
 }
 
 .iam-sound-console__nav img {

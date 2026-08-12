@@ -54,7 +54,8 @@ assert.equal((page.match(/class="iam-sound-diamond__matrix-line/g) || []).length
 assert.equal((page.match(/data-adaptive-wave-path/g) || []).length, 2);
 assert.ok(page.includes('class="iam-sound-diamond__wave"'));
 assert.equal(page.includes("iam-sound-channel-wave"), false);
-assert.ok(page.includes("data-adaptive-sound-nav"));
+assert.equal(page.includes("data-adaptive-sound-nav"), false);
+assert.match(page, /<span class="iam-sound-console__nav" aria-hidden="true">/);
 assert.ok(page.includes("3.33 Hz"));
 assert.ok(page.includes("7.38 Hz"));
 assert.ok(page.includes("10.11 Hz"));
@@ -172,6 +173,7 @@ assert.match(panelCss, /\.iam-sound-carrier,[\s\S]*?display: none !important/);
 assert.match(panelCss, /\.iam-sound-console__master \{[\s\S]*?display: flex/);
 assert.match(panelCss, /\.iam-sound-console__master \{[\s\S]*?left: 50%;[\s\S]*?transform: translateX\(-50%\)/);
 assert.match(panelCss, /\.iam-sound-console__nav \{[\s\S]*?top: var\(--brand-top[\s\S]*?width: clamp\(64px, 4\.35vw, 90px\)/);
+assert.match(panelCss, /\.iam-sound-console__nav \{[\s\S]*?pointer-events: none;[\s\S]*?cursor: default/);
 assert.match(panelCss, /\.iam-sound-console__nav img \{[\s\S]*?iam-sound-flower-spin 3s/);
 assert.match(panelCss, /data-profile="sleep_delta_80_v1"[\s\S]*?rgba\(26, 146, 229, 0\.97\)/);
 assert.match(panelCss, /data-profile="mindfulness_theta_80_v1"[\s\S]*?rgba\(245, 177, 22, 0\.97\)/);
