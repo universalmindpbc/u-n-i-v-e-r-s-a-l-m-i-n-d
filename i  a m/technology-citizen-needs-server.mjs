@@ -9,7 +9,7 @@ import {
   SYSTEM_PROMPT_SHA256,
   SYSTEM_PROMPT_SOURCE,
   SYSTEM_PROMPT_VERSION,
-} from "../cloudflare/adaptive-inference-system-prompt-v4-44.js";
+} from "../cloudflare/adaptive-inference-system-prompt-v4-45.js";
 import {
   ADAPTIVE_MUSIC_ROOM_SELECTION_GUIDE,
   MUSIC_ROOM_SELECTION_GUIDE_VERSION,
@@ -65,7 +65,14 @@ const allowedHighlights = [
 ];
 
 const allowedMusicRooms = ["inner-planes", "champagne-bohemia", "modul8-infinity", "james-bondage", "safety-cushion"];
-const allowedMusicFormats = ["videos", "parties", "radio"];
+const allowedAdaptiveSoundBands = ["delta", "theta", "alpha", "gamma"];
+const allowedAdaptiveSoundCarriers = ["cognition_joy", "self_connection", "presence", "social_connection", "earth_focus_reward"];
+const allowedAdaptiveSoundCues = [
+  "sleep", "rest", "mindfulness", "calm", "inspiration", "cognition", "joy",
+  "connection to self", "body and mind", "personal love", "happiness", "presence", "self-awareness",
+  "connection to others", "community", "family", "unconditional nonjudgmental love",
+  "connection to earth", "breath", "hydration", "grounded", "on Country", "focus", "reward",
+];
 const allowedLocationPrecisions = ["none", "approximate", "precise"];
 const allowedDomains = ["Emotion", "Social", "Cognitive", "Physiological", "Threat", "Clinical Risk"];
 
@@ -232,11 +239,12 @@ const inferenceInstructions = [
     "- Calm, chill, and house are not recommendation categories. Calm remains a human-needs signal; chillout and house remain genres inside the relevant rooms.",
     "- Select a room from musical identity, stated intent and taste, constructive trajectory, context, continuity, and catalogue eligibility. Do not reduce room selection to an arousal ladder.",
     "- The UX sequence is check-in, needs-matched VOD music video, needs-matched extended livestream, then manual portal exploration.",
-    "- The application enforces the extended-session traffic mix: Parties 80%, Radio 10%, Videos 10%, using a stable visitor-and-recommendation slot. Treat selected_format as the eligible format supplied or enforced by the application, not a free-form GPT traffic decision.",
-    "- Within the assigned format, match the room and source to citizen needs, taste, context, continuity and editorial suitability. Radio may mean inner planes ambient late at night or champagne bohemia chillout in the morning.",
-    "- In a Videos slot, peak anxiety may favour safety cushion only when approved Ready assets are present and suitable. Safety and catalogue eligibility override the traffic target.",
-    "- All five rooms have approved ready programming. Safety cushion has one approved 21-track 80s nu wave video channel and remains music videos only.",
-    "- Never return safety-cushion with parties or radio. Never invent a source ID. If there is no eligible ready source, return null for selected_music_room and selected_format.",
+    "- Recommend the music room only. The application owns the stable Parties 80% / Radio 10% / Videos 10% slot, readiness validation and exact source ID resolution.",
+    "- Always return null for selected_format and source_id, and false for catalogue_ready. Never invent or resolve a channel source.",
+    "- Return adaptive_sound_intent as a minimal semantic current-check-in handoff: one band intent and one carrier intent, or relevant false with both null when context is insufficient.",
+    "- Band intents are delta sleep/rest, theta mindfulness, alpha calm and gamma inspiration. Carrier intents are cognition_joy, self_connection, presence, social_connection and earth_focus_reward.",
+    "- Do not output DSP settings or use biological targets, research hypotheses, music metadata, time, weather or location to choose adaptive sound in Horizon 1.",
+    "- High concern must set adaptive_sound_intent.safety_state to high_concern. The model never contacts any person; notification is consented authorised human-in-the-loop only.",
     "- Treat local time, weather, temperature, and location as adaptive-environment-only modifiers.",
     "- Environmental context never creates clinical evidence and never overrides citizen self-report.",
     "- Return top_needs_used, dominant_domains, and context_modifiers_used as the audit trail for music-room selection.",
@@ -384,11 +392,9 @@ function validateInference(result) {
     selected_music_room: allowedMusicRooms.includes(result.selected_music_room)
       ? result.selected_music_room
       : null,
-    selected_format: allowedMusicFormats.includes(result.selected_format)
-      ? result.selected_format
-      : null,
-    source_id: typeof result.source_id === "string" && result.source_id.trim() ? result.source_id.trim() : null,
-    catalogue_ready: result.catalogue_ready === true,
+    selected_format: null,
+    source_id: null,
+    catalogue_ready: false,
     music_room_confidence: typeof result.music_room_confidence === "number" ? result.music_room_confidence : 0,
     music_room_reason: typeof result.music_room_reason === "string" ? result.music_room_reason : "",
     needs_scorecard: normalizeNeedsScorecard(result.needs_scorecard),
@@ -397,6 +403,28 @@ function validateInference(result) {
     context_modifiers_used: contextModifiersUsed,
     uncertainty_notes: Array.isArray(result.uncertainty_notes) ? result.uncertainty_notes.slice(0, 3) : [],
     human_review_relevance: result.human_review_relevance || "not_indicated",
+    adaptive_sound_intent: {
+      relevant: result.adaptive_sound_intent?.relevant === true,
+      selection_basis: ["current_checkin", "citizen_session_choice", "insufficient_context"].includes(result.adaptive_sound_intent?.selection_basis)
+        ? result.adaptive_sound_intent.selection_basis
+        : "insufficient_context",
+      band_intent: allowedAdaptiveSoundBands.includes(result.adaptive_sound_intent?.band_intent)
+        ? result.adaptive_sound_intent.band_intent
+        : null,
+      carrier_intent: allowedAdaptiveSoundCarriers.includes(result.adaptive_sound_intent?.carrier_intent)
+        ? result.adaptive_sound_intent.carrier_intent
+        : null,
+      top_needs_used: Array.isArray(result.adaptive_sound_intent?.top_needs_used)
+        ? result.adaptive_sound_intent.top_needs_used.filter((need) => allowedHighlights.includes(need)).slice(0, 4)
+        : [],
+      explicit_cues_used: Array.isArray(result.adaptive_sound_intent?.explicit_cues_used)
+        ? result.adaptive_sound_intent.explicit_cues_used.filter((cue) => allowedAdaptiveSoundCues.includes(cue)).slice(0, 4)
+        : [],
+      confidence: typeof result.adaptive_sound_intent?.confidence === "number" ? result.adaptive_sound_intent.confidence : 0,
+      safety_state: result.adaptive_sound_intent?.safety_state === "high_concern" ? "high_concern" : "standard",
+      session_scope: "current_session_only",
+      research_boundary: "biological_targets_not_used_in_product_decisions",
+    },
     interpretation_type: result.interpretation_type || "language_theme_mapping",
     clinical_status: "not_a_diagnosis",
     model: CITIZEN_NEEDS_INFERENCE_MODEL,
@@ -511,14 +539,14 @@ async function handleInference(request, response) {
                   enum: [...allowedMusicRooms, null],
                 },
                 selected_format: {
-                  type: ["string", "null"],
-                  enum: [...allowedMusicFormats, null],
+                  type: "null",
                 },
                 source_id: {
-                  type: ["string", "null"],
+                  type: "null",
                 },
                 catalogue_ready: {
                   type: "boolean",
+                  enum: [false],
                 },
                 music_room_confidence: {
                   type: "number",
@@ -572,6 +600,53 @@ async function handleInference(request, response) {
                     "urgent_human_review",
                   ],
                 },
+                adaptive_sound_intent: {
+                  type: "object",
+                  additionalProperties: false,
+                  properties: {
+                    relevant: { type: "boolean" },
+                    selection_basis: {
+                      type: "string",
+                      enum: ["current_checkin", "citizen_session_choice", "insufficient_context"],
+                    },
+                    band_intent: {
+                      type: ["string", "null"],
+                      enum: [...allowedAdaptiveSoundBands, null],
+                    },
+                    carrier_intent: {
+                      type: ["string", "null"],
+                      enum: [...allowedAdaptiveSoundCarriers, null],
+                    },
+                    top_needs_used: {
+                      type: "array",
+                      minItems: 0,
+                      maxItems: 4,
+                      items: { type: "string", enum: allowedHighlights },
+                    },
+                    explicit_cues_used: {
+                      type: "array",
+                      minItems: 0,
+                      maxItems: 4,
+                      items: { type: "string", enum: allowedAdaptiveSoundCues },
+                    },
+                    confidence: { type: "number", minimum: 0, maximum: 1 },
+                    safety_state: { type: "string", enum: ["standard", "high_concern"] },
+                    session_scope: { type: "string", enum: ["current_session_only"] },
+                    research_boundary: { type: "string", enum: ["biological_targets_not_used_in_product_decisions"] },
+                  },
+                  required: [
+                    "relevant",
+                    "selection_basis",
+                    "band_intent",
+                    "carrier_intent",
+                    "top_needs_used",
+                    "explicit_cues_used",
+                    "confidence",
+                    "safety_state",
+                    "session_scope",
+                    "research_boundary",
+                  ],
+                },
                 interpretation_type: {
                   type: "string",
                   enum: ["language_theme_mapping"],
@@ -596,6 +671,7 @@ async function handleInference(request, response) {
                 "context_modifiers_used",
                 "uncertainty_notes",
                 "human_review_relevance",
+                "adaptive_sound_intent",
                 "interpretation_type",
                 "clinical_status",
               ],

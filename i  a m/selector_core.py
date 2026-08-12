@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Deterministic Adaptive Music Television selector core.
 
-This module is the mathematical middle layer between the v4.44 citizen-needs
+This module is the mathematical middle layer between the v4.45 citizen-needs
 payload and the v1.11 music-video tensor catalogue. It deliberately avoids LLM
 matching: GPT can produce the citizen state, but this file chooses the track.
 """
@@ -9,6 +9,7 @@ matching: GPT can produce the citizen state, but this file chooses the track.
 from __future__ import annotations
 
 import argparse
+from functools import lru_cache
 import hashlib
 import json
 import math
@@ -20,6 +21,8 @@ try:
     from semantic_compiler import SEMANTIC_LEXICON
 except Exception:
     SEMANTIC_LEXICON = {}
+
+from adaptive_sound_policy import resolve_adaptive_sound
 
 
 CATALOGUE_VERSION = "adaptive_music_video_catalogue_v1.11"
@@ -35,6 +38,7 @@ EXTENDED_SESSION_FORMAT_WEIGHTS = {
 BASE_DIR = Path(__file__).resolve().parent
 DEFAULT_CATALOGUE_PATH = BASE_DIR / "adaptive-music-video-catalogue-v1.11.json"
 DEFAULT_TRAJECTORY_POLICY_PATH = BASE_DIR / "adaptive-music-trajectory-policy-v2.json"
+DEFAULT_BROADCAST_SCHEDULE_PATH = BASE_DIR / "broadcast-schedule-v1.json"
 
 RADAR_DOMAINS = ["Emotion", "Social", "Cognitive", "Physiological", "Threat", "Clinical Risk"]
 RADAR_SCHEMA = {
@@ -1024,7 +1028,27 @@ def extended_session_contract(
     assigned_format, format_draw = assigned_extended_format(v444_input)
     track_room, track_room_reason = infer_music_room(track, highlights)
     requested_room = selected_music_room(v444_input) or track_room
-    room_definitions = catalogue.get("music_rooms") if isinstance(catalogue.get("music_rooms"), Mapping) else {}
+    broadcast_schedule = load_broadcast_schedule()
+    room_definitions = {
+        str(definition.get("id") or ""): definition
+        for definition in as_list(broadcast_schedule.get("music_rooms"))
+        if isinstance(definition, Mapping)
+    }
+    channels = {
+        str(channel.get("id") or ""): channel
+        for channel in as_list(broadcast_schedule.get("channels"))
+        if isinstance(channel, Mapping)
+    }
+
+    def source_for(room: str, extended_format: str) -> Optional[str]:
+        matches = [
+            source_id
+            for source_id, channel in channels.items()
+            if channel.get("editorial_id") == room
+            and channel.get("format") == extended_format
+            and as_list(channel.get("schedule"))
+        ]
+        return matches[0] if len(matches) == 1 else None
 
     def room_ready(room: str, extended_format: str) -> bool:
         definition = room_definitions.get(room) if isinstance(room_definitions.get(room), Mapping) else {}
@@ -1032,6 +1056,7 @@ def extended_session_contract(
             room
             and definition.get("catalogue_status") == "ready"
             and extended_format in as_list(definition.get("allowed_formats"))
+            and source_for(room, extended_format)
         )
 
     user_vector = vectorise_state(v444_input)
@@ -1048,7 +1073,8 @@ def extended_session_contract(
     elif not room_ready(selected_room, assigned_format):
         selected_room = track_room if room_ready(track_room, assigned_format) else ""
 
-    catalogue_ready = room_ready(selected_room, assigned_format)
+    source_id = source_for(selected_room, assigned_format) if room_ready(selected_room, assigned_format) else None
+    catalogue_ready = bool(source_id)
     reason = track_room_reason
     if selected_room == "safety-cushion":
         reason = "The Videos slot and peak anxiety signals support an approved Ready 80s nu wave continuation in safety cushion."
@@ -1060,7 +1086,7 @@ def extended_session_contract(
     return {
         "music_room": selected_room or None,
         "format": assigned_format if catalogue_ready else None,
-        "source_id": None,
+        "source_id": source_id,
         "catalogue_ready": catalogue_ready,
         "why_this_session": reason,
         "format_policy": {
@@ -1092,6 +1118,7 @@ def output_contract(
 ) -> Dict[str, Any]:
     safety = track_safety(track)
     extended_session = extended_session_contract(track, highlights, acute, v444_input, catalogue)
+    adaptive_sound = resolve_adaptive_sound(v444_input)
     return {
         "schema_version": SELECTION_SCHEMA_VERSION,
         "selected_track_id": track.get("id") or get_nested(track, ["tensor_profile", "runtime_delivery", "selected_track_id"], ""),
@@ -1106,6 +1133,7 @@ def output_contract(
         "trajectory": track.get("trajectory") or get_nested(track, ["tensor_profile", "musicianship_emotion", "Lyric Emotional Trajectory"], ""),
         "primary_environmental_function": track.get("primary_environmental_function") or get_nested(track, ["tensor_profile", "human_review_flow", "Primary Environmental Function"], ""),
         "extended_session": extended_session,
+        "adaptive_sound": adaptive_sound,
         "safety": {
             "support_card_required": bool(acute or safety.get("requires_support_card")),
             "age_gate_required": bool(safety.get("requires_age_gate")),
@@ -1155,6 +1183,11 @@ def attach_inference_provenance(result: Dict[str, Any], v444_payload: Mapping[st
 
 
 def load_catalogue(path: Path = DEFAULT_CATALOGUE_PATH) -> Dict[str, Any]:
+    return json.loads(path.read_text(encoding="utf-8"))
+
+
+@lru_cache(maxsize=1)
+def load_broadcast_schedule(path: Path = DEFAULT_BROADCAST_SCHEDULE_PATH) -> Dict[str, Any]:
     return json.loads(path.read_text(encoding="utf-8"))
 
 
@@ -1260,6 +1293,7 @@ def selected_music_room(v444_input: Mapping[str, Any]) -> str:
     room = str(
         v444_input.get("selected_music_room")
         or get_nested(v444_input, ["citizen_needs", "selected_music_room"])
+        or get_nested(v444_input, ["adaptive_environment", "music_room", "selected_room"])
         or ""
     ).strip().lower()
     return room if room in {"inner-planes", "champagne-bohemia", "modul8-infinity", "james-bondage", "safety-cushion"} else ""

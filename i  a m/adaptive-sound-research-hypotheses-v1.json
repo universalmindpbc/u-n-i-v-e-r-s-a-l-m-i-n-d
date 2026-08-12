@@ -1,0 +1,14 @@
+{
+  "schema_version": "iam_adaptive_sound_research_hypotheses_v1",
+  "status": "research_hypotheses_only_not_product_algorithm",
+  "measurement_domain": "exploratory_transcriptomics",
+  "algorithm_boundary": "This registry must never be imported, scored or read by the adaptive-sound product resolver.",
+  "claim_boundary": "No row establishes a biological mechanism, brain response, gene regulation, diagnosis, treatment or benefit.",
+  "hypotheses": [
+    { "carrier_hz": 111, "candidate_target": "SLC6A4", "evidence_status": "research_hypothesis" },
+    { "carrier_hz": 222, "candidate_target": "CD38", "evidence_status": "research_hypothesis" },
+    { "carrier_hz": 444, "candidate_target": "DOCK2", "evidence_status": "research_hypothesis" },
+    { "carrier_hz": 555, "candidate_target": "OXTR", "evidence_status": "research_hypothesis" },
+    { "carrier_hz": 999, "candidate_target": "DRD2", "evidence_status": "research_hypothesis" }
+  ]
+}

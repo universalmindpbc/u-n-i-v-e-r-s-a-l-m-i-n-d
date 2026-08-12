@@ -1,0 +1,154 @@
+{
+  "schema_version": "iam_adaptive_sound_intent_policy_v1",
+  "policy_version": "checkin_session_single_carrier_v1",
+  "status": "horizon_1_product_policy",
+  "purpose": "Resolve one auditable adaptive-sound condition from the current voluntary check-in.",
+  "claim_boundary": "experimental_adaptive_environment_not_brain_entrainment_diagnosis_treatment_or_proven_benefit",
+  "session_policy": {
+    "scope": "current_session_only",
+    "carrier_mode": "single",
+    "automatic_mid_session_morph": false,
+    "time_weather_location_adaptation": "deferred_to_horizon_2",
+    "no_checkin_rule": "no_adaptive_frequency_selection",
+    "manual_choice_authority": "current_session_override"
+  },
+  "isochronic_hz": {
+    "delta": 3.33,
+    "theta": 7.38,
+    "alpha": 10.11,
+    "gamma": 111
+  },
+  "allocation": {
+    "diamond_frequency_power_total": 0.9998,
+    "dominant_lane_power": 0.8,
+    "secondary_lane_power": 0.0666,
+    "noise_power": 0.0001,
+    "silence_power": 0.0001
+  },
+  "bands": {
+    "delta": {
+      "experience": "sleep_rest",
+      "profile_id": "sleep_delta_80_v1",
+      "diamond_power_weights": { "delta": 0.8, "theta": 0.0666, "alpha": 0.0666, "gamma": 0.0666 },
+      "need_weights": {
+        "Sleep Pressure": 1.0,
+        "Sleep Disturbance": 0.9,
+        "Fatigue": 0.8,
+        "Rest": 0.75,
+        "Recovery": 0.55
+      }
+    },
+    "theta": {
+      "experience": "mindfulness",
+      "profile_id": "mindfulness_theta_80_v1",
+      "diamond_power_weights": { "delta": 0.0666, "theta": 0.8, "alpha": 0.0666, "gamma": 0.0666 },
+      "need_weights": {
+        "Rumination": 0.8,
+        "Deep Listening": 0.8,
+        "Awareness": 0.7,
+        "Reflection": 0.7,
+        "Recovery": 0.5,
+        "Calm": 0.45
+      }
+    },
+    "alpha": {
+      "experience": "calm",
+      "profile_id": "calm_alpha_80_v1",
+      "diamond_power_weights": { "delta": 0.0666, "theta": 0.0666, "alpha": 0.8, "gamma": 0.0666 },
+      "need_weights": {
+        "Calm": 1.0,
+        "Psychological Safety": 0.8,
+        "Stress": 0.7,
+        "Anxiety": 0.65,
+        "Clarity": 0.55,
+        "Recovery": 0.5
+      }
+    },
+    "gamma": {
+      "experience": "inspiration",
+      "profile_id": "inspiration_gamma_80_v1",
+      "diamond_power_weights": { "delta": 0.0666, "theta": 0.0666, "alpha": 0.0666, "gamma": 0.8 },
+      "need_weights": {
+        "Curiosity": 1.0,
+        "Awe": 0.9,
+        "Self-Actualisation": 0.9,
+        "Motivation": 0.85,
+        "Purpose": 0.8,
+        "Joy": 0.65
+      }
+    }
+  },
+  "carriers": {
+    "cognition_joy": {
+      "carrier_hz": 111,
+      "experience": ["cognition", "joy"],
+      "need_weights": {
+        "Attention": 0.9,
+        "Clarity": 0.9,
+        "Executive Function": 0.75,
+        "Joy": 1.0,
+        "Curiosity": 0.55
+      }
+    },
+    "self_connection": {
+      "carrier_hz": 222,
+      "experience": ["connection_to_self", "body_and_mind", "personal_love", "happiness"],
+      "need_weights": {
+        "Calm": 0.75,
+        "Self-Actualisation": 0.7,
+        "Love": 0.7,
+        "Psychological Safety": 0.65,
+        "Recovery": 0.55
+      }
+    },
+    "presence": {
+      "carrier_hz": 444,
+      "experience": ["presence", "self_awareness"],
+      "need_weights": {
+        "Calm": 0.65,
+        "Attention": 0.6,
+        "Clarity": 0.55,
+        "Gratitude": 0.5,
+        "Awareness": 0.8
+      }
+    },
+    "social_connection": {
+      "carrier_hz": 555,
+      "experience": ["connection_to_others", "community", "family", "unconditional_nonjudgmental_love", "happiness"],
+      "need_weights": {
+        "Connection": 1.0,
+        "Belonging": 1.0,
+        "Love": 0.9,
+        "Empathy": 0.75,
+        "Trust": 0.7,
+        "Loneliness": 0.65
+      }
+    },
+    "earth_focus_reward": {
+      "carrier_hz": 999,
+      "experience": ["connection_to_earth", "breathe", "hydration", "grounded", "on_country", "focus", "reward"],
+      "need_weights": {
+        "Grounded on Country": 1.0,
+        "Attention": 0.75,
+        "Motivation": 0.75,
+        "Clarity": 0.65,
+        "Recovery": 0.55,
+        "Stress": 0.5
+      }
+    }
+  },
+  "safety_policy": {
+    "high_concern_support_levels": ["high", "urgent", "crisis", "acute"],
+    "high_concern_human_review_levels": ["human_review_recommended", "urgent_human_review", "recommended", "urgent"],
+    "quantum_tree": "on_unless_citizen_master_off_preference",
+    "high_concern_adaptive_frequencies_default": false,
+    "high_concern_session_opt_in_allowed": true,
+    "notification_authority": "consented_authorized_human_in_the_loop_only",
+    "model_must_not_contact_any_person": true
+  },
+  "research_separation": {
+    "biological_targets_used_in_selection": false,
+    "research_hypotheses_registry": "adaptive-sound-research-hypotheses-v1.json",
+    "registry_must_not_be_loaded_by_resolver": true
+  }
+}

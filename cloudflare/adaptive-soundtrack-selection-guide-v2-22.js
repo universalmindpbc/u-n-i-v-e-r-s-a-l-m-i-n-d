@@ -2,8 +2,8 @@ export const SOUNDTRACK_SELECTION_GUIDE_VERSION = "adaptive_soundtrack_selection
 
 export const ADAPTIVE_SOUNDTRACK_SELECTION_GUIDE = {
   guide_version: "adaptive_soundtrack_selection_guide_v2.22",
-  source_prompt_version: "adaptive-inference-engine-system-prompt-v4.44",
-  source_prompt: "i  a m/i n f e r e n c e  e n g i n e  -  s y s t e m  p r o m p t  v  4 . 4 4.md",
+  source_prompt_version: "adaptive-inference-engine-system-prompt-v4.45",
+  source_prompt: "i  a m/i n f e r e n c e  e n g i n e  -  s y s t e m  p r o m p t  v  4 . 4 5.md",
   context_rule: "GPT never fetches private context. The application supplies environment_context as adaptive_environment_only data.",
   inputs: {
     citizen_checkin: "required",
