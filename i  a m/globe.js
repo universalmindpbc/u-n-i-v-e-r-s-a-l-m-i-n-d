@@ -10,7 +10,6 @@ const iamReflection = document.querySelector("[data-iam-reflection]");
 const iamReflectionFlora = document.querySelector("[data-iam-reflection-flora]");
 const iamReflectionText = document.querySelector("[data-iam-reflection-text]");
 const iamTransfer = document.querySelector("[data-iam-transfer]");
-const citizenDataClient = window.IAMCitizenData;
 const globePage = document.querySelector(".globe-page");
 const isCommunityOverlay = document.documentElement.classList.contains("iam-community-overlay");
 const communityMonogramTextureUrl = "a s s e t s/universal-mind-flora-travel-monogram-leather-v1.webp";
@@ -38,6 +37,15 @@ const musicSelectionHistoryKey = "iamMusicTelevisionSelectionHistory";
 const musicSelectionCountKey = "iamMusicTelevisionSelectionCount";
 const musicVisitorIdKey = "iamAnonymousMusicVisitorId";
 const pendingCheckInPipelineKey = "iamPendingCheckInPipeline";
+const legacyCrossSessionCheckInKeys = Object.freeze([
+  "iamLatestCheckinValue",
+  "iamLatestCheckinUpdated",
+  "citizenNeedsLatestCheckinValue",
+  "citizenNeedsLatestCheckinUpdated",
+  "iamLatestInference",
+  "citizenNeedsLatestInference",
+  pendingCheckInPipelineKey,
+]);
 const resetMusicTelevisionSelection = new URLSearchParams(window.location.search).get("resetMusicTv") === "1";
 
 if (resetMusicTelevisionSelection) {
@@ -223,10 +231,20 @@ function readStoredValue(store, key) {
 }
 
 function sensitiveStorageTargets() {
-  return citizenDataClient?.enabled
-    ? [window.sessionStorage]
-    : [window.sessionStorage, window.localStorage];
+  return [window.sessionStorage];
 }
+
+function clearLegacyCrossSessionCheckIn() {
+  legacyCrossSessionCheckInKeys.forEach((key) => {
+    try {
+      window.localStorage?.removeItem(key);
+    } catch {
+      // Restricted storage modes remain supported.
+    }
+  });
+}
+
+clearLegacyCrossSessionCheckIn();
 
 function queuePendingCheckInPipeline(phrase) {
   const record = {
@@ -241,14 +259,12 @@ function queuePendingCheckInPipeline(phrase) {
 }
 
 function readPendingCheckInPipeline() {
-  for (const store of [window.sessionStorage, window.localStorage]) {
-    try {
-      const serialized = readStoredValue(store, pendingCheckInPipelineKey);
-      const record = serialized ? JSON.parse(serialized) : null;
-      if (record?.phrase) return record;
-    } catch {
-      // Try the other store when a pending record is unavailable or malformed.
-    }
+  try {
+    const serialized = readStoredValue(window.sessionStorage, pendingCheckInPipelineKey);
+    const record = serialized ? JSON.parse(serialized) : null;
+    if (record?.phrase) return record;
+  } catch {
+    // A missing or malformed session handoff behaves like no pending check-in.
   }
   return null;
 }
@@ -1977,9 +1993,7 @@ async function initGlobe() {
   const storedCheckIn =
     readUrlCheckIn() ||
     readStoredValue(window.sessionStorage, "iamLatestCheckinValue") ||
-    readStoredValue(window.localStorage, "iamLatestCheckinValue") ||
-    readStoredValue(window.sessionStorage, "citizenNeedsLatestCheckinValue") ||
-    readStoredValue(window.localStorage, "citizenNeedsLatestCheckinValue");
+    readStoredValue(window.sessionStorage, "citizenNeedsLatestCheckinValue");
 
   if (shouldAutoIntegrate && storedCheckIn) {
     window.setTimeout(async () => {

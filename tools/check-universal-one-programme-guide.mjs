@@ -1,4 +1,5 @@
 import assert from "node:assert/strict";
+import { createHash } from "node:crypto";
 import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
@@ -15,6 +16,7 @@ const index = read("i  a m/index.html");
 const shop = read("i  a m/shop.html");
 const alternateEntry = read("i  a m/adaptive-environment-television.html");
 const realtimeClient = read("i  a m/realtime-voice-assistant.js");
+const expectedRealtimeClientToken = `realtime-voice-${createHash("sha256").update(realtimeClient).digest("hex").slice(0, 12)}`;
 const worker = read("cloudflare/iam-citizen-needs-worker.js");
 const phpFallback = read("i  a m/api/realtime-client-secret.php");
 const stagingDeploy = read("deploy-panthur-staging.sh");
@@ -124,8 +126,8 @@ for (const scenario of [
   assert.match(realtimeClient, new RegExp(`qaScenario === "${scenario}"`));
 }
 assert.match(realtimeClient, /universal_one_realtime_v5/);
-assert.match(index, /realtime-voice-assistant\.js\?v=realtime-voice-f3ec3dac7bdf/);
-assert.match(alternateEntry, /realtime-voice-assistant\.js\?v=realtime-voice-f3ec3dac7bdf/);
+assert.match(index, new RegExp(`realtime-voice-assistant\\.js\\?v=${expectedRealtimeClientToken}`));
+assert.match(alternateEntry, new RegExp(`realtime-voice-assistant\\.js\\?v=${expectedRealtimeClientToken}`));
 assert.match(stagingDeploy, /check-universal-one-programme-guide\.mjs/);
 
 new vm.Script(realtimeClient, { filename: "realtime-voice-assistant.js" });

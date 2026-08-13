@@ -1,4 +1,7 @@
 (function () {
+  const permissionRecovery = window.IAMPermissionRecovery || installPermissionRecoveryCoordinator();
+  window.IAMPermissionRecovery = permissionRecovery;
+
   const room = document.querySelector("[data-television-room]");
   if (!room || !window.RTCPeerConnection) return;
 
@@ -6,8 +9,6 @@
   const qaMode = window.location.hostname === "staging.universalmind.tv" && params.get("qa") === "realtime-voice";
   const qaScenario = qaMode ? params.get("voice_test") : "";
   const soundGateQaMode = qaMode && qaScenario === "sound-gate";
-  const forceEntryPreflight = qaMode && params.get("voice_entry_test") === "1";
-  const entryPreferenceKey = "iam-universal-one-entry-voice-v1";
   const endpoint = window.location.hostname === "staging.universalmind.tv"
     ? "https://realtime-staging-iam-citizen-needs-inference.universalmind.workers.dev/realtime-client-secret"
     : (window.location.hostname.endsWith("universalmind.tv")
@@ -24,10 +25,8 @@
   let peerConnection = null;
   let dataChannel = null;
   let microphoneStream = null;
-  let fullscreenResumeWaiter = null;
-  let microphoneFullscreenRecoveryArmed = false;
+  let microphoneFullscreenRecovery = null;
   let microphonePermissionState = "unknown";
-  let entryPreflightState = "idle";
   let waveformAudioContext = null;
   let waveformSource = null;
   let waveformAnalyser = null;
@@ -94,7 +93,14 @@
           <small data-voice-status aria-live="polite">Ready when you are</small>
         </span>
       </div>
-      <button class="iam-realtime-voice__fullscreen-resume" type="button" data-voice-fullscreen-resume hidden>return to full screen &amp; begin</button>
+      <div class="iam-realtime-voice__fullscreen-recovery" data-voice-fullscreen-recovery role="status" aria-live="polite" hidden>
+        <strong data-voice-recovery-title>VOICE READY</strong>
+        <span data-voice-recovery-copy>Return to the experience.</span>
+        <button class="iam-realtime-voice__fullscreen-resume" type="button" data-voice-fullscreen-resume>
+          <span aria-hidden="true">⛶</span> RETURN TO FULL SCREEN
+        </button>
+        <small data-voice-recovery-reward hidden></small>
+      </div>
       <div class="iam-realtime-voice__transcript" data-voice-transcript aria-live="polite" aria-label="Voice conversation captions"></div>
       <div class="iam-realtime-voice__controls" aria-label="Voice conversation controls">
         <button type="button" data-voice-mute aria-pressed="false"><i aria-hidden="true"></i><span>mute</span></button>
@@ -108,32 +114,15 @@
   `;
   room.appendChild(root);
 
-  const entryHost = document.querySelector("[data-adaptive-environment]");
-  const entryPreflight = document.createElement("section");
-  entryPreflight.className = "iam-voice-entry-preflight";
-  entryPreflight.hidden = true;
-  entryPreflight.setAttribute("role", "dialog");
-  entryPreflight.setAttribute("aria-modal", "true");
-  entryPreflight.setAttribute("aria-labelledby", "iam-voice-entry-title");
-  entryPreflight.setAttribute("aria-describedby", "iam-voice-entry-copy");
-  entryPreflight.innerHTML = `
-    <span class="iam-voice-entry-preflight__mark" aria-hidden="true"><i></i></span>
-    <strong id="iam-voice-entry-title">Voice features are available</strong>
-    <p id="iam-voice-entry-copy">Chat with Universal One, your personal AI voice companion, or join a Circle audio room with other people. Allow microphone access now for an uninterrupted full-screen experience?</p>
-    <div class="iam-voice-entry-preflight__actions">
-      <button type="button" data-voice-entry-allow>allow microphone</button>
-      <button type="button" data-voice-entry-skip>enter without voice</button>
-    </div>
-    <small>The microphone is off outside a voice conversation or audio room.</small>
-    <p class="iam-voice-entry-preflight__error" data-voice-entry-error aria-live="polite" hidden></p>
-  `;
-  entryHost?.appendChild(entryPreflight);
-
   root.style.setProperty("--iam-mini-planet-texture", `url("${textureUrl}")`);
   const summonButton = root.querySelector(".iam-realtime-voice__summon");
   const panel = root.querySelector(".iam-realtime-voice__panel");
   const status = root.querySelector("[data-voice-status]");
   const waveformCanvas = root.querySelector("[data-voice-waveform]");
+  const fullscreenRecovery = root.querySelector("[data-voice-fullscreen-recovery]");
+  const recoveryTitle = root.querySelector("[data-voice-recovery-title]");
+  const recoveryCopy = root.querySelector("[data-voice-recovery-copy]");
+  const recoveryReward = root.querySelector("[data-voice-recovery-reward]");
   const fullscreenResumeButton = root.querySelector("[data-voice-fullscreen-resume]");
   const transcript = root.querySelector("[data-voice-transcript]");
   const muteButton = root.querySelector("[data-voice-mute]");
@@ -141,17 +130,7 @@
   const endButton = root.querySelector("[data-voice-end]");
   const qaButton = root.querySelector("[data-voice-qa]");
   const remoteAudio = root.querySelector("[data-voice-audio]");
-  const entryTitle = entryPreflight.querySelector("#iam-voice-entry-title");
-  const entryCopy = entryPreflight.querySelector("#iam-voice-entry-copy");
-  const entryAllowButton = entryPreflight.querySelector("[data-voice-entry-allow]");
-  const entrySkipButton = entryPreflight.querySelector("[data-voice-entry-skip]");
-  const entryError = entryPreflight.querySelector("[data-voice-entry-error]");
-
-  const storedEntryPreference = readEntryPreference();
-  if (!forceEntryPreflight && (storedEntryPreference === "allowed" || storedEntryPreference === "without-voice")) {
-    entryPreflightState = storedEntryPreference;
-  }
-  queryMicrophonePermission();
+  const voiceRecoveryPresenter = createVoiceRecoveryPresenter();
   drawWaveformIdle();
 
   function stagingQaOptions() {
@@ -253,27 +232,15 @@
     startConversation(options).catch(handleStartError);
   });
 
-  [panel, fullscreenResumeButton, muteButton, captionsButton, endButton, qaButton, entryPreflight].filter(Boolean).forEach((element) => {
+  [panel, fullscreenResumeButton, muteButton, captionsButton, endButton, qaButton].filter(Boolean).forEach((element) => {
     element.addEventListener("click", (event) => event.stopPropagation());
   });
 
-  entryAllowButton.addEventListener("click", handleEntryAllow);
-  entrySkipButton.addEventListener("click", handleEntrySkip);
-
   fullscreenResumeButton.addEventListener("click", async (event) => {
     event.preventDefault();
-    setState("connecting", "Returning to full screen…");
-    const requested = await requestViewerFullscreen();
-    await waitForFullscreenTransition();
-    if (!requested || !isViewingFullscreen()) {
-      setState("connecting", "Tap again to return to full screen");
-      fullscreenResumeButton.hidden = false;
-      return;
-    }
-    fullscreenResumeButton.hidden = true;
-    const waiter = fullscreenResumeWaiter;
-    fullscreenResumeWaiter = null;
-    waiter?.resolve(true);
+    const activationId = fullscreenRecovery.dataset.activationId || "";
+    if (!activationId) return;
+    await permissionRecovery.returnToFullscreen(activationId);
   });
 
   muteButton.addEventListener("click", () => {
@@ -297,103 +264,13 @@
   });
 
   window.addEventListener("pagehide", () => endConversation("", { quiet: true }));
-  document.addEventListener("fullscreenchange", handleVoiceFullscreenChange);
-  document.addEventListener("webkitfullscreenchange", handleVoiceFullscreenChange);
-
-  function readEntryPreference() {
-    try {
-      return window.sessionStorage.getItem(entryPreferenceKey) || "";
-    } catch {
-      return "";
-    }
-  }
-
-  function writeEntryPreference(value) {
-    if (forceEntryPreflight) return;
-    try { window.sessionStorage.setItem(entryPreferenceKey, value); } catch {}
-  }
-
-  async function queryMicrophonePermission() {
-    if (!navigator.permissions?.query) return;
-    try {
-      const permission = await navigator.permissions.query({ name: "microphone" });
-      microphonePermissionState = permission.state;
-      permission.addEventListener?.("change", () => {
-        microphonePermissionState = permission.state;
-      });
-    } catch {
-      microphonePermissionState = "unknown";
-    }
-  }
 
   function shouldPreflightEntry() {
-    if (!entryHost || !navigator.mediaDevices?.getUserMedia) return false;
-    if (document.body.classList.contains("television-room-open") || document.body.classList.contains("television-room-opening")) return false;
-    if (forceEntryPreflight) return entryPreflightState === "idle";
-    if (microphonePermissionState === "granted") return false;
-    return entryPreflightState === "idle";
+    return false;
   }
 
   function showEntryPreflight() {
-    if (!shouldPreflightEntry()) return false;
-    entryPreflight.hidden = false;
-    entryPreflight.dataset.state = "choice";
-    document.body.classList.add("iam-voice-entry-preflight-open");
-    entryAllowButton.disabled = false;
-    entryAllowButton.textContent = "allow microphone";
-    entrySkipButton.hidden = false;
-    entryError.hidden = true;
-    entryTitle.textContent = "Voice features are available";
-    entryCopy.textContent = "Chat with Universal One, your personal AI voice companion, or join a Circle audio room with other people. Allow microphone access now for an uninterrupted full-screen experience?";
-    window.setTimeout(() => entryAllowButton.focus({ preventScroll: true }), 30);
-    return true;
-  }
-
-  function hideEntryPreflight() {
-    entryPreflight.hidden = true;
-    document.body.classList.remove("iam-voice-entry-preflight-open");
-  }
-
-  async function handleEntryAllow(event) {
-    event.preventDefault();
-    if (entryPreflight.dataset.state === "ready") {
-      entryPreflightState = "allowed";
-      hideEntryPreflight();
-      window.IAMTelevisionRoom?.enterFromVoicePreflight?.();
-      return;
-    }
-
-    entryAllowButton.disabled = true;
-    entryAllowButton.textContent = "requesting…";
-    entryError.hidden = true;
-    try {
-      const permissionStream = await navigator.mediaDevices.getUserMedia(microphoneConstraints());
-      permissionStream.getTracks().forEach((track) => track.stop());
-      microphonePermissionState = "granted";
-      entryPreflightState = "ready";
-      writeEntryPreference("allowed");
-      entryPreflight.dataset.state = "ready";
-      entryTitle.textContent = "Microphone ready";
-      entryCopy.textContent = "Universal One and Circle are ready whenever you choose to speak.";
-      entryAllowButton.disabled = false;
-      entryAllowButton.textContent = "enter the room";
-      entrySkipButton.hidden = true;
-      entryAllowButton.focus({ preventScroll: true });
-    } catch (error) {
-      microphonePermissionState = error?.name === "NotAllowedError" ? "denied" : microphonePermissionState;
-      entryAllowButton.disabled = false;
-      entryAllowButton.textContent = "try again";
-      entryError.textContent = "Microphone access was not granted. You can enter without voice, or enable it in Safari’s website settings.";
-      entryError.hidden = false;
-    }
-  }
-
-  function handleEntrySkip(event) {
-    event.preventDefault();
-    entryPreflightState = "without-voice";
-    writeEntryPreference("without-voice");
-    hideEntryPreflight();
-    window.IAMTelevisionRoom?.enterFromVoicePreflight?.();
+    return false;
   }
 
   async function startConversation(options = {}) {
@@ -416,9 +293,20 @@
     try {
       if (options.microphone !== false) {
         if (!navigator.mediaDevices?.getUserMedia) throw new Error("This browser cannot open a microphone.");
-        const beganInFullscreen = isImmersiveViewing();
-        microphoneFullscreenRecoveryArmed = beganInFullscreen;
-        microphoneStream = await navigator.mediaDevices.getUserMedia(microphoneConstraints());
+        const recovery = await permissionRecovery.beginActivation({
+          surface: "universal-one",
+          devices: ["microphone"],
+          presenter: voiceRecoveryPresenter,
+          fullscreenTarget: room.closest(".site-shell") || document.querySelector(".site-shell") || document.documentElement,
+        });
+        microphoneFullscreenRecovery = recovery;
+        try {
+          microphoneStream = await navigator.mediaDevices.getUserMedia(microphoneConstraints());
+        } catch (error) {
+          permissionRecovery.cancelActivation(recovery);
+          microphoneFullscreenRecovery = null;
+          throw error;
+        }
         startupInputGate = true;
         microphoneStream.getAudioTracks().forEach((track) => {
           try { track.contentHint = "speech"; } catch {}
@@ -426,12 +314,13 @@
         syncMicrophoneTrackState();
         startMicrophoneWaveform(microphoneStream);
 
-        if (beganInFullscreen) await waitForFullscreenTransition();
-        if (beganInFullscreen && !isViewingFullscreen()) {
-          const shouldContinue = await waitForFullscreenReturn();
+        const recoveryResult = await permissionRecovery.completeActivation(recovery);
+        microphonePermissionState = recovery.permissionAfter?.microphone || "unknown";
+        if (recoveryResult.eligible) {
+          const shouldContinue = await recoveryResult.restored;
           if (!shouldContinue || !starting) return;
         }
-        microphoneFullscreenRecoveryArmed = false;
+        if (!recoveryResult.eligible) microphoneFullscreenRecovery = null;
       }
 
       const audioContext = window.IAMTelevisionAudio?.getState?.() || {};
@@ -822,54 +711,66 @@
     }, 14000);
   }
 
-  function isViewingFullscreen() {
-    return Boolean(document.fullscreenElement || document.webkitFullscreenElement);
-  }
-
-  function isImmersiveViewing() {
-    return isViewingFullscreen() || document.body.classList.contains("television-is-fullscreen");
-  }
-
-  function waitForFullscreenTransition() {
-    return new Promise((resolve) => window.setTimeout(resolve, 220));
-  }
-
-  function handleVoiceFullscreenChange() {
-    if (isViewingFullscreen()) {
-      if (!fullscreenResumeWaiter) return;
-      fullscreenResumeButton.hidden = true;
-      const waiter = fullscreenResumeWaiter;
-      fullscreenResumeWaiter = null;
-      waiter.resolve(true);
-      return;
+  function createVoiceRecoveryPresenter() {
+    function setReturnLabel(rewardEligible) {
+      fullscreenResumeButton.replaceChildren();
+      const icon = document.createElement("span");
+      icon.setAttribute("aria-hidden", "true");
+      icon.textContent = "⛶";
+      fullscreenResumeButton.append(icon, document.createTextNode(
+        rewardEligible ? " RETURN TO FULL SCREEN · +100 HAPPINESS" : " RETURN TO FULL SCREEN",
+      ));
     }
-    if (microphoneFullscreenRecoveryArmed && (starting || active)) {
-      waitForFullscreenReturn();
-    }
-  }
 
-  function requestViewerFullscreen() {
-    const fullscreenTarget = room.closest(".site-shell") || document.querySelector(".site-shell") || document.documentElement;
-    try {
-      if (fullscreenTarget.requestFullscreen) {
-        return fullscreenTarget.requestFullscreen({ navigationUI: "hide" }).then(() => true).catch(() => false);
-      }
-      if (fullscreenTarget.webkitRequestFullscreen) {
-        fullscreenTarget.webkitRequestFullscreen();
-        return Promise.resolve(true);
-      }
-    } catch {}
-    return Promise.resolve(false);
-  }
-
-  function waitForFullscreenReturn() {
-    setState("connecting", "Microphone ready");
-    fullscreenResumeButton.hidden = false;
-    if (fullscreenResumeWaiter?.promise) return fullscreenResumeWaiter.promise;
-    let resolveWaiter;
-    const promise = new Promise((resolve) => { resolveWaiter = resolve; });
-    fullscreenResumeWaiter = { promise, resolve: resolveWaiter };
-    return promise;
+    return {
+      showReady(detail) {
+        microphoneFullscreenRecovery = detail.activation;
+        fullscreenRecovery.hidden = false;
+        fullscreenRecovery.dataset.state = "ready";
+        fullscreenRecovery.dataset.activationId = detail.activationId;
+        recoveryTitle.textContent = detail.title;
+        recoveryCopy.textContent = "Return to the experience.";
+        recoveryCopy.hidden = false;
+        recoveryReward.hidden = true;
+        recoveryReward.textContent = "";
+        fullscreenResumeButton.hidden = false;
+        setReturnLabel(Boolean(detail.rewardEligible));
+        setState("connecting", "Microphone ready");
+      },
+      updateRewardEligibility(detail) {
+        if (fullscreenRecovery.dataset.activationId !== detail.activationId) return;
+        setReturnLabel(Boolean(detail.rewardEligible));
+      },
+      showReturning() {
+        setState("connecting", "Returning to full screen…");
+      },
+      showRetry() {
+        setState("connecting", "Tap again to return to full screen");
+      },
+      showRestored() {
+        fullscreenResumeButton.hidden = true;
+        fullscreenRecovery.dataset.state = "restored";
+        recoveryTitle.textContent = "WELCOME BACK";
+        recoveryCopy.hidden = true;
+      },
+      showReward(detail) {
+        recoveryReward.textContent = detail.text || "";
+        recoveryReward.hidden = !detail.text;
+      },
+      focusReturn() {
+        fullscreenResumeButton.focus({ preventScroll: true });
+      },
+      hide(detail) {
+        if (detail?.activationId && fullscreenRecovery.dataset.activationId !== detail.activationId) return;
+        fullscreenRecovery.hidden = true;
+        fullscreenRecovery.dataset.state = "idle";
+        delete fullscreenRecovery.dataset.activationId;
+        recoveryCopy.hidden = false;
+        recoveryReward.hidden = true;
+        fullscreenResumeButton.hidden = true;
+        if (microphoneFullscreenRecovery?.activationId === detail?.activationId) microphoneFullscreenRecovery = null;
+      },
+    };
   }
 
   function syncMicrophoneTrackState() {
@@ -899,6 +800,7 @@
 
   function handleStartError(error) {
     const micDenied = error?.name === "NotAllowedError" || error?.name === "PermissionDeniedError";
+    if (micDenied) microphonePermissionState = "denied";
     const message = micDenied
       ? "Microphone access is needed to chat"
       : (error?.code === "voice_not_configured" ? "Voice is awaiting its secure key" : (error?.message || "Voice is having a quiet moment"));
@@ -929,11 +831,9 @@
     startupInputGate = false;
     assistantOutputGate = false;
     assistantOutputStarted = false;
-    microphoneFullscreenRecoveryArmed = false;
-    fullscreenResumeButton.hidden = true;
-    const waiter = fullscreenResumeWaiter;
-    fullscreenResumeWaiter = null;
-    waiter?.resolve(false);
+    permissionRecovery.cancelActivation(microphoneFullscreenRecovery);
+    microphoneFullscreenRecovery = null;
+    voiceRecoveryPresenter.hide();
     try { dataChannel?.close(); } catch {}
     dataChannel = null;
     try { peerConnection?.close(); } catch {}
@@ -1006,10 +906,14 @@
         assistantOutputStarted,
         microphoneTrackEnabled: Boolean(microphoneStream?.getAudioTracks().some((track) => track.enabled)),
         microphonePermissionState,
-        entryPreflightState,
+        entryPreflightState: "removed",
         waveformActive: Boolean(waveformAnalyser && waveformFrame),
         waveformLevel: Number(waveformLevel.toFixed(4)),
-        awaitingFullscreenReturn: !fullscreenResumeButton.hidden,
+        awaitingFullscreenReturn: !fullscreenRecovery.hidden && !fullscreenResumeButton.hidden,
+        microphoneFullscreenRecoveryEligible: microphoneFullscreenRecovery?.eligible === true,
+        microphoneFullscreenRecoveryRestored: microphoneFullscreenRecovery?.restored === true,
+        happinessRecoveryState: microphoneFullscreenRecovery?.rewardState || "idle",
+        happinessRecoveryRecorded: microphoneFullscreenRecovery?.rewardState === "recorded",
         state: root.dataset.state,
         pose: root.dataset.pose,
         transcript: transcript.textContent.trim(),
@@ -1036,4 +940,321 @@
         }
       : undefined,
   };
+
+  function installPermissionRecoveryCoordinator() {
+    const storageKey = "iamPermissionFullscreenRecoveryMilestonesV1";
+    const activeActivations = new Map();
+    let lastReturnAttempt = null;
+    let consumedMilestones = readConsumedMilestones();
+
+    document.addEventListener("fullscreenchange", handleFullscreenChange);
+    document.addEventListener("webkitfullscreenchange", handleFullscreenChange);
+
+    function makeId() {
+      return window.crypto?.randomUUID?.() || `permission-recovery-${Date.now()}-${Math.random().toString(36).slice(2)}`;
+    }
+
+    function normalizeDevices(devices) {
+      return Array.from(new Set((Array.isArray(devices) ? devices : [devices])
+        .map((device) => String(device || "").toLowerCase())
+        .filter((device) => device === "microphone" || device === "camera")))
+        .sort((a, b) => a.localeCompare(b));
+    }
+
+    function isFullscreen() {
+      return Boolean(document.fullscreenElement || document.webkitFullscreenElement);
+    }
+
+    function readConsumedMilestones() {
+      try {
+        const parsed = JSON.parse(window.localStorage.getItem(storageKey) || "{}");
+        return parsed && typeof parsed === "object" ? parsed : {};
+      } catch {
+        return {};
+      }
+    }
+
+    function writeConsumedMilestones() {
+      try {
+        window.localStorage.setItem(storageKey, JSON.stringify(consumedMilestones));
+      } catch {
+        // The HAPPINESS integration remains the authoritative idempotency boundary.
+      }
+    }
+
+    async function permissionState(device) {
+      if (!navigator.permissions?.query) return "unknown";
+      try {
+        const result = await navigator.permissions.query({ name: device });
+        return ["prompt", "granted", "denied"].includes(result?.state) ? result.state : "unknown";
+      } catch {
+        return "unknown";
+      }
+    }
+
+    async function permissionStates(devices) {
+      const entries = await Promise.all(devices.map(async (device) => [device, await permissionState(device)]));
+      return Object.fromEntries(entries);
+    }
+
+    function titleFor(devices) {
+      if (devices.includes("camera") && devices.includes("microphone")) return "CAMERA + VOICE READY";
+      return devices.includes("camera") ? "CAMERA READY" : "VOICE READY";
+    }
+
+    function milestoneFor(devices) {
+      if (devices.length > 1) return "permission_fullscreen_recovery_camera_microphone_v1";
+      return devices[0] === "camera"
+        ? "permission_fullscreen_recovery_camera_v1"
+        : "permission_fullscreen_recovery_microphone_v1";
+    }
+
+    async function beginActivation({ surface, devices, presenter, fullscreenTarget } = {}) {
+      const normalizedDevices = normalizeDevices(devices);
+      if (!normalizedDevices.length) throw new Error("permission_recovery_device_required");
+      const activation = {
+        activationId: makeId(),
+        surface: String(surface || "unknown"),
+        devices: normalizedDevices,
+        presenter: presenter || null,
+        fullscreenTarget: fullscreenTarget || document.querySelector(".site-shell") || document.documentElement,
+        beganInFullscreen: isFullscreen(),
+        permissionBefore: {},
+        permissionAfter: {},
+        promptedDevices: [],
+        rewardDevices: [],
+        rewardMilestone: "",
+        rewardState: "idle",
+        interrupted: false,
+        eligible: false,
+        restored: false,
+        cancelled: false,
+        rewardRequested: false,
+        restoredPromise: Promise.resolve(false),
+        resolveRestored: null,
+      };
+      activation.permissionBefore = await permissionStates(normalizedDevices);
+      return activation;
+    }
+
+    async function completeActivation(activation) {
+      if (!activation || activation.cancelled) return { eligible: false, restored: Promise.resolve(false) };
+      activation.permissionAfter = await permissionStates(activation.devices);
+      if (activation.beganInFullscreen) await waitForFullscreenTransition();
+      activation.interrupted = activation.beganInFullscreen && !isFullscreen();
+      activation.promptedDevices = activation.devices.filter((device) => (
+        activation.permissionBefore[device] === "prompt" && activation.permissionAfter[device] === "granted"
+      ));
+      activation.eligible = activation.interrupted && activation.promptedDevices.length > 0;
+      if (!activation.eligible) {
+        activation.presenter?.hide?.({ activationId: activation.activationId });
+        return { eligible: false, restored: Promise.resolve(false) };
+      }
+
+      for (const existing of activeActivations.values()) {
+        if (existing.surface === activation.surface) cancelActivation(existing);
+      }
+      activation.rewardDevices = activation.promptedDevices.filter((device) => !consumedMilestones[device]);
+      activation.rewardMilestone = activation.rewardDevices.length ? milestoneFor(activation.rewardDevices) : "";
+      activation.restoredPromise = new Promise((resolve) => { activation.resolveRestored = resolve; });
+      activeActivations.set(activation.activationId, activation);
+      activation.presenter?.showReady?.({
+        activation,
+        activationId: activation.activationId,
+        surface: activation.surface,
+        devices: [...activation.devices],
+        title: titleFor(activation.devices),
+        rewardEligible: false,
+      });
+      window.requestAnimationFrame(() => activation.presenter?.focusReturn?.({ activationId: activation.activationId }));
+      void updateRewardOfferEligibility(activation);
+      return { eligible: true, restored: activation.restoredPromise };
+    }
+
+    async function updateRewardOfferEligibility(activation) {
+      if (!activation?.rewardMilestone || !activeActivations.has(activation.activationId)) return false;
+      const integration = window.IAMHappinessRewards;
+      if (typeof integration?.isMilestoneEligible !== "function") return false;
+      try {
+        const result = await integration.isMilestoneEligible({
+          milestone_id: activation.rewardMilestone,
+          amount: "100",
+          currency: "HAPPINESS",
+          idempotency_key: activation.rewardMilestone,
+          device_classes: [...activation.rewardDevices],
+        });
+        const eligible = result === true || result?.eligible === true;
+        if (!eligible || !activeActivations.has(activation.activationId)) return false;
+        activation.presenter?.updateRewardEligibility?.({ activationId: activation.activationId, rewardEligible: true });
+        return true;
+      } catch {
+        return false;
+      }
+    }
+
+    function cancelActivation(activation) {
+      if (!activation || activation.restored || activation.cancelled) return false;
+      activation.cancelled = true;
+      activeActivations.delete(activation.activationId);
+      activation.presenter?.hide?.({ activationId: activation.activationId });
+      activation.resolveRestored?.(false);
+      activation.resolveRestored = null;
+      return true;
+    }
+
+    async function returnToFullscreen(activationId) {
+      const activation = activeActivations.get(String(activationId || ""));
+      lastReturnAttempt = {
+        activationId: String(activationId || ""),
+        found: Boolean(activation),
+        eligible: activation?.eligible === true,
+        restored: activation?.restored === true,
+        cancelled: activation?.cancelled === true,
+      };
+      if (!activation?.eligible || activation.restored || activation.cancelled) return false;
+      activation.presenter?.showReturning?.({ activationId: activation.activationId });
+      const requested = requestFullscreen(activation.fullscreenTarget);
+      const requestSucceeded = await requested;
+      await waitForFullscreenTransition();
+      if (!requestSucceeded || !isFullscreen()) {
+        activation.presenter?.showRetry?.({ activationId: activation.activationId });
+        return false;
+      }
+      return completeRestoration(activation);
+    }
+
+    function requestFullscreen(target) {
+      try {
+        if (target?.requestFullscreen) {
+          return Promise.resolve(target.requestFullscreen({ navigationUI: "hide" })).then(() => true).catch(() => false);
+        }
+        if (target?.webkitRequestFullscreen) {
+          target.webkitRequestFullscreen();
+          return Promise.resolve(true);
+        }
+      } catch {}
+      return Promise.resolve(false);
+    }
+
+    function handleFullscreenChange() {
+      if (!isFullscreen()) return;
+      for (const activation of activeActivations.values()) completeRestoration(activation);
+    }
+
+    function completeRestoration(activation) {
+      if (!activation?.eligible || activation.restored || activation.cancelled || !isFullscreen()) return false;
+      if (!activeActivations.has(activation.activationId)) return false;
+      activation.restored = true;
+      activeActivations.delete(activation.activationId);
+      const restoredAt = new Date().toISOString();
+      activation.promptedDevices.forEach((device) => {
+        consumedMilestones[device] = {
+          activation_id: activation.activationId,
+          surface: activation.surface,
+          restored_at: restoredAt,
+          reward_milestone: activation.rewardMilestone || null,
+          reward_state: activation.rewardMilestone ? "pending" : "already_consumed",
+        };
+      });
+      writeConsumedMilestones();
+      activation.presenter?.showRestored?.({ activationId: activation.activationId, title: "WELCOME BACK" });
+      activation.resolveRestored?.(true);
+      activation.resolveRestored = null;
+
+      if (activation.rewardMilestone) void recordHappinessMilestone(activation);
+      else scheduleHide(activation);
+      return true;
+    }
+
+    async function recordHappinessMilestone(activation) {
+      if (!activation?.restored || activation.rewardRequested || !activation.rewardMilestone) return false;
+      activation.rewardRequested = true;
+      activation.rewardState = "recording";
+      activation.presenter?.showReward?.({ activationId: activation.activationId, state: "recording", text: "Recording HAPPINESS…" });
+      try {
+        const integration = window.IAMHappinessRewards;
+        if (typeof integration?.recordMilestone !== "function") throw new Error("happiness_reward_service_unavailable");
+        const receipt = await integration.recordMilestone({
+          milestone_id: activation.rewardMilestone,
+          amount: "100",
+          currency: "HAPPINESS",
+          idempotency_key: activation.rewardMilestone,
+          device_classes: [...activation.rewardDevices],
+        });
+        const recorded = receipt?.recorded === true || receipt?.status === "recorded";
+        const amount = String(receipt?.amount ?? "");
+        const milestone = String(receipt?.milestone_id ?? "");
+        if (!recorded || amount !== "100" || milestone !== activation.rewardMilestone) {
+          throw new Error(receipt?.error || "happiness_reward_not_recorded");
+        }
+        activation.rewardState = "recorded";
+        updateConsumedRewardState(activation, "recorded");
+        const publicReceipt = {
+          receipt_id: String(receipt.receipt_id || receipt.id || ""),
+          milestone_id: milestone,
+          amount,
+          recorded_at: String(receipt.recorded_at || new Date().toISOString()),
+        };
+        activation.presenter?.showReward?.({ activationId: activation.activationId, state: "recorded", text: "+100 HAPPINESS" });
+        window.dispatchEvent(new CustomEvent("iam:happiness-awarded", { detail: publicReceipt }));
+      } catch (error) {
+        activation.rewardState = "unavailable";
+        updateConsumedRewardState(activation, "unavailable");
+        activation.presenter?.showReward?.({
+          activationId: activation.activationId,
+          state: "unavailable",
+          text: "HAPPINESS unavailable — no reward recorded.",
+        });
+        window.dispatchEvent(new CustomEvent("iam:happiness-award-unavailable", {
+          detail: {
+            milestone_id: activation.rewardMilestone,
+            error: String(error?.message || error || "unavailable"),
+          },
+        }));
+      } finally {
+        scheduleHide(activation);
+      }
+      return activation.rewardState === "recorded";
+    }
+
+    function updateConsumedRewardState(activation, rewardState) {
+      activation.promptedDevices.forEach((device) => {
+        if (consumedMilestones[device]?.activation_id === activation.activationId) {
+          consumedMilestones[device].reward_state = rewardState;
+        }
+      });
+      writeConsumedMilestones();
+    }
+
+    function scheduleHide(activation) {
+      window.setTimeout(() => activation.presenter?.hide?.({ activationId: activation.activationId }), 3400);
+    }
+
+    function waitForFullscreenTransition() {
+      return new Promise((resolve) => window.setTimeout(resolve, 220));
+    }
+
+    return {
+      version: "permission_fullscreen_recovery_v1",
+      beginActivation,
+      completeActivation,
+      cancelActivation,
+      returnToFullscreen,
+      getState: () => ({
+        active: Array.from(activeActivations.values()).map((activation) => ({
+          activationId: activation.activationId,
+          surface: activation.surface,
+          devices: [...activation.devices],
+          eligible: activation.eligible,
+          restored: activation.restored,
+          cancelled: activation.cancelled,
+          fullscreenTargetTag: activation.fullscreenTarget?.tagName || "",
+          fullscreenRequestAvailable: typeof activation.fullscreenTarget?.requestFullscreen === "function",
+          rewardState: activation.rewardState,
+        })),
+        consumedDeviceMilestones: { ...consumedMilestones },
+        lastReturnAttempt: lastReturnAttempt ? { ...lastReturnAttempt } : null,
+      }),
+    };
+  }
 })();

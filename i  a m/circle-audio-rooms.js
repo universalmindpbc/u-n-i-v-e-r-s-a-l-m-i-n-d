@@ -25,6 +25,7 @@
   const endpoint = String(window.IAM_CIRCLE_ROOM_ENDPOINT || endpointMeta?.content || "").replace(/\/+$/, "");
   const catalogue = new Map();
   const walletWaveformCanvas = document.querySelector("[data-audio-wallet-waveform]");
+  const walletAudioControls = document.querySelector("[data-audio-wallet-controls]");
 
   let previousFocus = null;
   let selectedCircleId = "";
@@ -42,6 +43,7 @@
   let walletWaveformSamples = null;
   let walletWaveformFrame = 0;
   let walletWaveformLevel = 0;
+  let microphoneRecoveryActivation = null;
   let state = {
     selectorOpen: false,
     joined: false,
@@ -75,6 +77,109 @@
   }
 
   const sessionId = getSessionId();
+
+  function createCircleRecoveryPresenter() {
+    if (!walletAudioControls) return null;
+    const card = document.createElement("div");
+    card.className = "circle-permission-recovery";
+    card.setAttribute("role", "status");
+    card.setAttribute("aria-live", "polite");
+    card.hidden = true;
+    card.innerHTML = `
+      <strong data-circle-recovery-title>VOICE READY</strong>
+      <span data-circle-recovery-copy>Return to the experience.</span>
+      <button type="button" data-circle-recovery-return><span aria-hidden="true">⛶</span> RETURN TO FULL SCREEN</button>
+      <small data-circle-recovery-reward hidden></small>
+    `;
+    walletAudioControls.appendChild(card);
+    const title = card.querySelector("[data-circle-recovery-title]");
+    const copy = card.querySelector("[data-circle-recovery-copy]");
+    const button = card.querySelector("[data-circle-recovery-return]");
+    const reward = card.querySelector("[data-circle-recovery-reward]");
+
+    function setReturnLabel(rewardEligible) {
+      button.replaceChildren();
+      const icon = document.createElement("span");
+      icon.setAttribute("aria-hidden", "true");
+      icon.textContent = "⛶";
+      button.append(icon, document.createTextNode(
+        rewardEligible ? " RETURN TO FULL SCREEN · +100 HAPPINESS" : " RETURN TO FULL SCREEN",
+      ));
+    }
+
+    button.addEventListener("click", () => {
+      const activationId = card.dataset.activationId || "";
+      if (activationId) void window.IAMPermissionRecovery?.returnToFullscreen?.(activationId);
+    });
+
+    return {
+      showReady(detail) {
+        microphoneRecoveryActivation = detail.activation;
+        card.hidden = false;
+        card.dataset.state = "ready";
+        card.dataset.activationId = detail.activationId;
+        title.textContent = detail.title;
+        copy.textContent = "Return to the experience.";
+        copy.hidden = false;
+        button.hidden = false;
+        reward.hidden = true;
+        reward.textContent = "";
+        setReturnLabel(Boolean(detail.rewardEligible));
+      },
+      updateRewardEligibility(detail) {
+        if (card.dataset.activationId === detail.activationId) setReturnLabel(Boolean(detail.rewardEligible));
+      },
+      showReturning() {
+        copy.textContent = "Returning to the experience…";
+      },
+      showRetry() {
+        copy.textContent = "Tap again to return to the experience.";
+      },
+      showRestored() {
+        card.dataset.state = "restored";
+        title.textContent = "WELCOME BACK";
+        copy.hidden = true;
+        button.hidden = true;
+      },
+      showReward(detail) {
+        reward.textContent = detail.text || "";
+        reward.hidden = !detail.text;
+      },
+      focusReturn() {
+        button.focus({ preventScroll: true });
+      },
+      hide(detail) {
+        if (detail?.activationId && card.dataset.activationId !== detail.activationId) return;
+        card.hidden = true;
+        card.dataset.state = "idle";
+        delete card.dataset.activationId;
+        copy.hidden = false;
+        button.hidden = false;
+        reward.hidden = true;
+        if (!detail?.activationId || microphoneRecoveryActivation?.activationId === detail.activationId) {
+          microphoneRecoveryActivation = null;
+        }
+      },
+    };
+  }
+
+  const circleRecoveryPresenter = createCircleRecoveryPresenter();
+
+  async function beginMicrophoneRecovery() {
+    const coordinator = window.IAMPermissionRecovery;
+    if (typeof coordinator?.beginActivation !== "function") return null;
+    return coordinator.beginActivation({
+      surface: "circle",
+      devices: ["microphone"],
+      presenter: circleRecoveryPresenter,
+      fullscreenTarget: document.querySelector(".site-shell") || document.documentElement,
+    });
+  }
+
+  function cancelMicrophoneRecovery() {
+    window.IAMPermissionRecovery?.cancelActivation?.(microphoneRecoveryActivation);
+    microphoneRecoveryActivation = null;
+  }
 
   function circleForId(circleId) {
     return CIRCLES.find((circle) => circle.id === circleId) || null;
@@ -473,9 +578,11 @@
   async function toggleMute() {
     if (!state.joined || !client || operationPending) return;
     operationPending = true;
+    let recovery = null;
     try {
       if (state.muted) {
         if (!localTrack) {
+          recovery = await beginMicrophoneRecovery();
           localTrack = await window.AgoraRTC.createMicrophoneAudioTrack({
             AEC: true,
             AGC: true,
@@ -483,6 +590,7 @@
             encoderConfig: "speech_standard",
           });
           await client.publish([localTrack]);
+          if (recovery) await window.IAMPermissionRecovery?.completeActivation?.(recovery);
         } else {
           await localTrack.setMuted(false);
         }
@@ -496,6 +604,7 @@
       state.error = "";
       emitState();
     } catch (error) {
+      if (recovery) window.IAMPermissionRecovery?.cancelActivation?.(recovery);
       stopWalletWaveform(state.joined ? "muted" : "idle");
       setStatus(error.message || "Microphone access was not available.", true);
       open(document.querySelector("[data-audio-wallet-mic]"));
@@ -507,6 +616,7 @@
   async function leave() {
     if ((!state.joined && !reservation) || operationPending) return;
     operationPending = true;
+    cancelMicrophoneRecovery();
     intentionalDisconnect = true;
     const leavingReservation = reservation;
     reservation = null;
@@ -545,6 +655,7 @@
 
   async function handleUnexpectedDisconnect() {
     if (!state.joined) return;
+    cancelMicrophoneRecovery();
     intentionalDisconnect = true;
     stopWalletWaveform("idle");
     if (localTrack) {
@@ -604,6 +715,7 @@
     trapDialogFocus(event);
   });
   window.addEventListener("pagehide", () => {
+    cancelMicrophoneRecovery();
     stopWalletWaveform("idle");
     if (!reservation) return;
     intentionalDisconnect = true;

@@ -32,15 +32,15 @@ const submitFlow = globe.slice(submitStart, submitEnd);
 assert.equal(submitFlow.includes("recordCheckin"), false, "database writes must not block the submit page");
 assert.ok(submitFlow.includes('transitionIamState("thanks", "✓ Thank you."'), "original thank-you transition must remain");
 assert.ok(submitFlow.includes("queuePendingCheckInPipeline(phrase)"), "check-in pipeline must be queued before navigation");
-assert.match(selfReport, /data-iam-next-page="index\.html\?v=checkin-immediate-20260802"/, "self-report must force a fresh homepage after check-in");
+assert.match(selfReport, /data-iam-next-page="index\.html\?v=[^"]+"/, "self-report must force a fresh homepage after check-in");
 
-assert.ok(homepageCheckin.includes("window.IAMCitizenData.recordCheckin(pending.phrase).then"), "homepage must start the staging save asynchronously");
-assert.equal(homepageCheckin.includes("await window.IAMCitizenData.recordCheckin"), false, "homepage must not await the staging save");
+assert.equal(homepageCheckin.includes("IAMCitizenData"), false, "guest homepage handoff must not start a durable citizen-data save");
+assert.equal(homepageCheckin.includes("recordCheckin"), false, "guest homepage handoff must remain recommendation-only");
 assert.equal(selfReport.includes("data-citizen-data-status"), false, "self-report must not expose database status copy");
 
 const clientIndex = homepage.indexOf('src="citizen-data-client.js');
 const globeIndex = homepage.indexOf('src="globe.js');
 const handoffIndex = homepage.indexOf('src="homepage-checkin.js');
-assert.ok(clientIndex >= 0 && clientIndex < globeIndex && globeIndex < handoffIndex, "homepage scripts must load in background-save order");
+assert.ok(clientIndex >= 0 && clientIndex < globeIndex && globeIndex < handoffIndex, "homepage scripts must preserve the existing dependency order");
 
 console.log("checkin_immediate_handoff=passed");

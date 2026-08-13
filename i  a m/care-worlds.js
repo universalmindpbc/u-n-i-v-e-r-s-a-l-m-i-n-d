@@ -23,6 +23,8 @@
       status: experience.querySelector('[data-care-status="connect"]'),
       time: experience.querySelector("[data-care-call-time]"),
       startLabel: "Connect",
+      recovery: null,
+      recoveryActivation: null,
     },
     talk: {
       shell: experience.querySelector(".care-clinical-room"),
@@ -33,6 +35,8 @@
       status: experience.querySelector('[data-care-status="talk"]'),
       time: null,
       startLabel: "Talk",
+      recovery: null,
+      recoveryActivation: null,
     },
   };
 
@@ -44,6 +48,116 @@
   let microphoneOwner = "";
   let callStartedAt = 0;
   let callTimer = 0;
+
+  function createRecoveryPresenter(scope) {
+    const room = rooms[scope];
+    const toolbar = room?.shell?.querySelector(scope === "connect" ? ".care-call__toolbar" : ".care-clinical-room__toolbar");
+    if (!room?.shell || !toolbar) return null;
+    const card = document.createElement("div");
+    card.className = `care-permission-recovery care-permission-recovery--${scope}`;
+    card.setAttribute("role", "status");
+    card.setAttribute("aria-live", "polite");
+    card.hidden = true;
+    card.innerHTML = `
+      <strong data-care-recovery-title>VOICE READY</strong>
+      <span data-care-recovery-copy>Return to the experience.</span>
+      <button type="button" data-care-recovery-return><span aria-hidden="true">⛶</span> RETURN TO FULL SCREEN</button>
+      <small data-care-recovery-reward hidden></small>
+    `;
+    toolbar.before(card);
+    const title = card.querySelector("[data-care-recovery-title]");
+    const copy = card.querySelector("[data-care-recovery-copy]");
+    const button = card.querySelector("[data-care-recovery-return]");
+    const reward = card.querySelector("[data-care-recovery-reward]");
+
+    function setReturnLabel(rewardEligible) {
+      button.replaceChildren();
+      const icon = document.createElement("span");
+      icon.setAttribute("aria-hidden", "true");
+      icon.textContent = "⛶";
+      button.append(icon, document.createTextNode(
+        rewardEligible ? " RETURN TO FULL SCREEN · +100 HAPPINESS" : " RETURN TO FULL SCREEN",
+      ));
+    }
+
+    button.addEventListener("click", () => {
+      const activationId = card.dataset.activationId || "";
+      if (activationId) void window.IAMPermissionRecovery?.returnToFullscreen?.(activationId);
+    });
+
+    return {
+      showReady(detail) {
+        room.recoveryActivation = detail.activation;
+        card.hidden = false;
+        card.dataset.state = "ready";
+        card.dataset.activationId = detail.activationId;
+        title.textContent = detail.title;
+        copy.textContent = "Return to the experience.";
+        copy.hidden = false;
+        button.hidden = false;
+        reward.hidden = true;
+        reward.textContent = "";
+        setReturnLabel(Boolean(detail.rewardEligible));
+      },
+      updateRewardEligibility(detail) {
+        if (card.dataset.activationId === detail.activationId) setReturnLabel(Boolean(detail.rewardEligible));
+      },
+      showReturning() {
+        copy.textContent = "Returning to the experience…";
+      },
+      showRetry() {
+        copy.textContent = "Tap again to return to the experience.";
+      },
+      showRestored() {
+        card.dataset.state = "restored";
+        title.textContent = "WELCOME BACK";
+        copy.hidden = true;
+        button.hidden = true;
+      },
+      showReward(detail) {
+        reward.textContent = detail.text || "";
+        reward.hidden = !detail.text;
+      },
+      focusReturn() {
+        button.focus({ preventScroll: true });
+      },
+      hide(detail) {
+        if (detail?.activationId && card.dataset.activationId !== detail.activationId) return;
+        card.hidden = true;
+        card.dataset.state = "idle";
+        delete card.dataset.activationId;
+        copy.hidden = false;
+        button.hidden = false;
+        reward.hidden = true;
+        if (!detail?.activationId || room.recoveryActivation?.activationId === detail.activationId) {
+          room.recoveryActivation = null;
+        }
+      },
+    };
+  }
+
+  rooms.connect.recovery = createRecoveryPresenter("connect");
+  rooms.talk.recovery = createRecoveryPresenter("talk");
+
+  async function beginDeviceRecovery(scope, device) {
+    const coordinator = window.IAMPermissionRecovery;
+    if (typeof coordinator?.beginActivation !== "function") return null;
+    return coordinator.beginActivation({
+      surface: `care-${scope}`,
+      devices: [device],
+      presenter: rooms[scope]?.recovery,
+      fullscreenTarget: document.querySelector(".site-shell") || document.documentElement,
+    });
+  }
+
+  async function completeDeviceRecovery(activation) {
+    if (!activation) return { eligible: false };
+    return window.IAMPermissionRecovery?.completeActivation?.(activation) || { eligible: false };
+  }
+
+  function cancelDeviceRecovery(activation) {
+    if (activation) window.IAMPermissionRecovery?.cancelActivation?.(activation);
+  }
 
   function writeStatus(scope, message, isError = false) {
     const status = rooms[scope]?.status;
@@ -108,8 +222,10 @@
     room.camera.disabled = true;
     room.camera.setAttribute("aria-busy", "true");
     writeStatus(scope, "Starting camera…");
+    let recovery = null;
     try {
       const AgoraRTC = await waitForAgora("createCameraVideoTrack");
+      recovery = await beginDeviceRecovery(scope, "camera");
       cameraTrack = await AgoraRTC.createCameraVideoTrack({
         encoderConfig: "480p_1",
         facingMode: "user",
@@ -120,7 +236,9 @@
       cameraTrack.play(room.preview, { fit: "cover", mirror: true });
       setDeviceState(scope, "camera", true);
       writeStatus(scope, "Camera on");
+      await completeDeviceRecovery(recovery);
     } catch (error) {
+      cancelDeviceRecovery(recovery);
       stopCamera();
       writeStatus(scope, error?.name === "NotAllowedError" ? "Camera access was not granted" : "Camera unavailable", true);
     } finally {
@@ -142,8 +260,10 @@
     room.microphone.disabled = true;
     room.microphone.setAttribute("aria-busy", "true");
     writeStatus(scope, "Starting microphone…");
+    let recovery = null;
     try {
       const AgoraRTC = await waitForAgora("createMicrophoneAudioTrack");
+      recovery = await beginDeviceRecovery(scope, "microphone");
       microphoneTrack = await AgoraRTC.createMicrophoneAudioTrack({
         AEC: true,
         AGC: true,
@@ -152,7 +272,9 @@
       microphoneOwner = scope;
       setDeviceState(scope, "microphone", true);
       writeStatus(scope, "Microphone on");
+      await completeDeviceRecovery(recovery);
     } catch (error) {
+      cancelDeviceRecovery(recovery);
       stopMicrophone();
       writeStatus(scope, error?.name === "NotAllowedError" ? "Microphone access was not granted" : "Microphone unavailable", true);
     } finally {
@@ -173,6 +295,8 @@
   function endRoom(scope) {
     const room = rooms[scope];
     if (!room) return;
+    cancelDeviceRecovery(room.recoveryActivation);
+    room.recoveryActivation = null;
     room.shell?.classList.remove("is-connected");
     room.action?.setAttribute("aria-pressed", "false");
     if (room.action) room.action.textContent = room.startLabel;
