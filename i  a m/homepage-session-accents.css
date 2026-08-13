@@ -81,7 +81,7 @@
     transform 900ms cubic-bezier(.2, .72, .2, 1);
 }
 
-body.adaptive-typewriter-complete .homepage-universal-one-planet {
+[data-homepage-universal-one-planet][data-homepage-planet-ready="true"] {
   opacity: .82;
   transform: translateY(0);
 }

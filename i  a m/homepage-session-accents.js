@@ -4,14 +4,12 @@
 
   if (planet) {
     planet.style.setProperty("--iam-mini-planet-texture", `url("${makeMiniPlanetTexture(0)}")`);
+    planet.dataset.homepagePlanetReady = "true";
   }
 
   if (!frequency) return;
 
   let hasSelectedFrequency = false;
-  const bodyClassObserver = new MutationObserver(syncFrequencyVisibility);
-  bodyClassObserver.observe(document.body, { attributes: true, attributeFilter: ["class"] });
-
   window.addEventListener("iam:adaptive-sound-profile", (event) => {
     applySoundSnapshot(event.detail);
   });
@@ -37,6 +35,9 @@
 
     if (!selected) {
       hasSelectedFrequency = false;
+      setText("[data-adaptive-session-lane]", "");
+      setText("[data-adaptive-session-rate]", "");
+      setText("[data-adaptive-session-carrier]", "");
       syncFrequencyVisibility();
       frequency.removeAttribute("aria-label");
       return;
@@ -54,7 +55,7 @@
   }
 
   function syncFrequencyVisibility() {
-    frequency.hidden = !(hasSelectedFrequency && document.body.classList.contains("adaptive-typewriter-complete"));
+    frequency.hidden = !hasSelectedFrequency;
   }
 
   function setText(selector, value) {
