@@ -226,6 +226,7 @@
     try {
       const AgoraRTC = await waitForAgora("createCameraVideoTrack");
       recovery = await beginDeviceRecovery(scope, "camera");
+      window.IAMPermissionRecovery?.markDeviceRequestStarted?.(recovery);
       cameraTrack = await AgoraRTC.createCameraVideoTrack({
         encoderConfig: "480p_1",
         facingMode: "user",
@@ -264,6 +265,7 @@
     try {
       const AgoraRTC = await waitForAgora("createMicrophoneAudioTrack");
       recovery = await beginDeviceRecovery(scope, "microphone");
+      window.IAMPermissionRecovery?.markDeviceRequestStarted?.(recovery);
       microphoneTrack = await AgoraRTC.createMicrophoneAudioTrack({
         AEC: true,
         AGC: true,

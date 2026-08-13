@@ -583,6 +583,7 @@
       if (state.muted) {
         if (!localTrack) {
           recovery = await beginMicrophoneRecovery();
+          window.IAMPermissionRecovery?.markDeviceRequestStarted?.(recovery);
           localTrack = await window.AgoraRTC.createMicrophoneAudioTrack({
             AEC: true,
             AGC: true,

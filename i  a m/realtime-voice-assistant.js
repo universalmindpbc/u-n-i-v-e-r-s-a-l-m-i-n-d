@@ -301,6 +301,7 @@
         });
         microphoneFullscreenRecovery = recovery;
         try {
+          permissionRecovery.markDeviceRequestStarted(recovery);
           microphoneStream = await navigator.mediaDevices.getUserMedia(microphoneConstraints());
         } catch (error) {
           permissionRecovery.cancelActivation(recovery);
@@ -943,6 +944,7 @@
 
   function installPermissionRecoveryCoordinator() {
     const storageKey = "iamPermissionFullscreenRecoveryMilestonesV1";
+    const pendingDeviceRequests = new Map();
     const activeActivations = new Map();
     let lastReturnAttempt = null;
     let consumedMilestones = readConsumedMilestones();
@@ -1026,6 +1028,9 @@
         rewardMilestone: "",
         rewardState: "idle",
         interrupted: false,
+        deviceRequestStarted: false,
+        deviceAccessSucceeded: false,
+        fullscreenLostDuringRequest: false,
         eligible: false,
         restored: false,
         cancelled: false,
@@ -1037,14 +1042,31 @@
       return activation;
     }
 
+    function markDeviceRequestStarted(activation) {
+      if (!activation || activation.cancelled || activation.deviceRequestStarted) return false;
+      activation.deviceRequestStarted = true;
+      pendingDeviceRequests.set(activation.activationId, activation);
+      return true;
+    }
+
     async function completeActivation(activation) {
       if (!activation || activation.cancelled) return { eligible: false, restored: Promise.resolve(false) };
+      activation.deviceAccessSucceeded = activation.deviceRequestStarted;
       activation.permissionAfter = await permissionStates(activation.devices);
       if (activation.beganInFullscreen) await waitForFullscreenTransition();
-      activation.interrupted = activation.beganInFullscreen && !isFullscreen();
-      activation.promptedDevices = activation.devices.filter((device) => (
-        activation.permissionBefore[device] === "prompt" && activation.permissionAfter[device] === "granted"
-      ));
+      pendingDeviceRequests.delete(activation.activationId);
+      activation.interrupted = activation.beganInFullscreen
+        && activation.fullscreenLostDuringRequest
+        && activation.deviceAccessSucceeded
+        && !isFullscreen();
+      activation.promptedDevices = activation.devices.filter((device) => {
+        const before = activation.permissionBefore[device] || "unknown";
+        const after = activation.permissionAfter[device] || "unknown";
+        const permissionsApiPrompt = before === "prompt" && after === "granted";
+        const safariPromptSequence = activation.interrupted
+          && (before === "unknown" || (before === "prompt" && after === "unknown"));
+        return permissionsApiPrompt || safariPromptSequence;
+      });
       activation.eligible = activation.interrupted && activation.promptedDevices.length > 0;
       if (!activation.eligible) {
         activation.presenter?.hide?.({ activationId: activation.activationId });
@@ -1095,6 +1117,7 @@
     function cancelActivation(activation) {
       if (!activation || activation.restored || activation.cancelled) return false;
       activation.cancelled = true;
+      pendingDeviceRequests.delete(activation.activationId);
       activeActivations.delete(activation.activationId);
       activation.presenter?.hide?.({ activationId: activation.activationId });
       activation.resolveRestored?.(false);
@@ -1137,7 +1160,14 @@
     }
 
     function handleFullscreenChange() {
-      if (!isFullscreen()) return;
+      if (!isFullscreen()) {
+        for (const activation of pendingDeviceRequests.values()) {
+          if (activation.beganInFullscreen && activation.deviceRequestStarted && !activation.cancelled) {
+            activation.fullscreenLostDuringRequest = true;
+          }
+        }
+        return;
+      }
       for (const activation of activeActivations.values()) completeRestoration(activation);
     }
 
@@ -1237,6 +1267,7 @@
     return {
       version: "permission_fullscreen_recovery_v1",
       beginActivation,
+      markDeviceRequestStarted,
       completeActivation,
       cancelActivation,
       returnToFullscreen,
@@ -1248,6 +1279,7 @@
           eligible: activation.eligible,
           restored: activation.restored,
           cancelled: activation.cancelled,
+          fullscreenLostDuringRequest: activation.fullscreenLostDuringRequest,
           fullscreenTargetTag: activation.fullscreenTarget?.tagName || "",
           fullscreenRequestAvailable: typeof activation.fullscreenTarget?.requestFullscreen === "function",
           rewardState: activation.rewardState,

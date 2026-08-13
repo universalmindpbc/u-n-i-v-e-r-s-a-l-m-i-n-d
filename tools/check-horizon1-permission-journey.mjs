@@ -38,6 +38,7 @@ const careCss = read("i  a m/care-worlds.css");
 
 assert.doesNotMatch(induction, /data-arrival-consent|arrival-consent-title|data-consent-accept/);
 assert.match(induction, /href="privacy-first\.html"[^>]*>Privacy First<\/a>/);
+assert.match(induction, /<\/div>\s*<a class="induction-permission__privacy" href="privacy-first\.html"/);
 assert.doesNotMatch(consent, /consentStatus|acceptConsent|permission=required/);
 assert.match(consent, /durableAccountStorage: false/);
 assert.match(globe, /function sensitiveStorageTargets\(\) \{\s*return \[window\.sessionStorage\];/);
@@ -47,7 +48,8 @@ assert.doesNotMatch(homepageCheckin, /IAMCitizenData|recordCheckin/);
 assert.doesNotMatch(voice, /Voice features are available|allow microphone|navigator\.permissions.*query[^\n]*entry/i);
 assert.match(voice, /function shouldPreflightEntry\(\) \{\s*return false;/);
 assert.match(voice, /installPermissionRecoveryCoordinator/);
-assert.match(voice, /permissionBefore\[device\] === "prompt" && activation\.permissionAfter\[device\] === "granted"/);
+assert.match(voice, /fullscreenLostDuringRequest/);
+assert.match(voice, /markDeviceRequestStarted/);
 assert.match(voice, /permission_fullscreen_recovery_microphone_v1/);
 assert.match(voice, /permission_fullscreen_recovery_camera_v1/);
 assert.match(voice, /permission_fullscreen_recovery_camera_microphone_v1/);
@@ -55,13 +57,15 @@ assert.match(voice, /idempotency_key: activation\.rewardMilestone/);
 assert.match(voice, /HAPPINESS unavailable — no reward recorded\./);
 assert.doesNotMatch(voiceCss, /iam-voice-entry-preflight/);
 assert.match(circles, /muted: true/);
-assert.match(circles, /if \(state\.muted\)[\s\S]{0,180}createMicrophoneAudioTrack/);
+assert.match(circles, /if \(state\.muted\)[\s\S]{0,220}beginMicrophoneRecovery\(\)[\s\S]{0,140}markDeviceRequestStarted[\s\S]{0,140}createMicrophoneAudioTrack/);
 assert.match(circles, /beginMicrophoneRecovery\(\)/);
+assert.match(circles, /markDeviceRequestStarted/);
 assert.match(circles, /circle-permission-recovery/);
 assert.doesNotMatch(circles, /recordMilestone|permission_fullscreen_recovery_(?:microphone|camera)/);
 assert.match(circleCss, /\.circle-permission-recovery[\s\S]*bottom: calc\(100% \+ 14px\)/);
 assert.match(care, /beginDeviceRecovery\(scope, "camera"\)/);
 assert.match(care, /beginDeviceRecovery\(scope, "microphone"\)/);
+assert.match(care, /markDeviceRequestStarted/);
 assert.match(care, /care-permission-recovery/);
 assert.doesNotMatch(care, /recordMilestone|permission_fullscreen_recovery_(?:microphone|camera)/);
 assert.match(careCss, /\.care-permission-recovery[\s\S]*margin: 14px auto 0/);
@@ -143,6 +147,7 @@ const report = {
   circle: null,
   combined_recovery: null,
   recovery_guardrails: null,
+  safari_no_permissions_api: null,
   cleanup: false,
 };
 
@@ -161,6 +166,22 @@ try {
   report.circle = surfaces.circle;
   report.combined_recovery = await runCombinedRecoveryCheck();
   report.recovery_guardrails = await runRecoveryGuardrailChecks();
+  const safariDenial = await runVoiceDenialCheck({ permissionsApi: "unsupported" });
+  const safariVoice = await runVoiceRecoveryCheck({ rewardAvailable: true, permissionsApi: "unsupported" });
+  const safariLateFullscreenEvent = await runVoiceRecoveryCheck({
+    rewardAvailable: true,
+    permissionsApi: "unsupported",
+    fullscreenEventTiming: "after-device-resolution",
+  });
+  const safariSurfaces = await runCareAndCircleChecks({ permissionsApi: "unsupported" });
+  report.safari_no_permissions_api = {
+    denial: safariDenial,
+    universal_one: safariVoice,
+    universal_one_late_fullscreen_event: safariLateFullscreenEvent,
+    care_connect: safariSurfaces.careConnect,
+    care_talk: safariSurfaces.careTalk,
+    circle: safariSurfaces.circle,
+  };
   report.passed = true;
 } finally {
   await browser.close().catch(() => null);
@@ -179,6 +200,13 @@ async function runGuestJourney() {
   await page.goto(`${baseUrl}/induction.html?induction=show`, { waitUntil: "domcontentloaded" });
   assert.equal(await page.locator("[role='dialog'], [aria-modal='true']").count(), 0, "First visit must have no blocking app dialog");
   assert.equal(await page.locator("a[href='privacy-first.html']").count(), 1, "Privacy First must remain accessible");
+  const inductionGeometry = await page.locator(".induction-copy--prototype > p").evaluateAll((paragraphs) => paragraphs.map((paragraph) => {
+    const rect = paragraph.getBoundingClientRect();
+    return { left: rect.left, width: rect.width };
+  }));
+  assert.equal(inductionGeometry.length, 2, "Approved induction prototype paragraphs must remain intact");
+  assert.ok(inductionGeometry.every((paragraph) => paragraph.width > 500), `Induction paragraph collapsed: ${JSON.stringify(inductionGeometry)}`);
+  assert.ok(Math.abs(inductionGeometry[0].left - inductionGeometry[1].left) < 1, `Induction paragraphs no longer share their approved column: ${JSON.stringify(inductionGeometry)}`);
   await page.evaluate((keys) => keys.forEach((key) => localStorage.setItem(key, key.includes("Inference") ? '{"checkin":"I am stale"}' : "I am stale")), sensitiveKeys);
   await page.locator("[data-induction-enter]").click();
   await page.waitForURL(/vogue-self-report\.html/);
@@ -258,8 +286,8 @@ async function runDirectRoomEntryCheck() {
   return { app_preflight: false, microphone_calls: 0, permission_queries: 0 };
 }
 
-async function runVoiceDenialCheck() {
-  const page = await makeVoiceFixture({ microphoneMode: "deny", rewardAvailable: true });
+async function runVoiceDenialCheck({ permissionsApi = "supported" } = {}) {
+  const page = await makeVoiceFixture({ microphoneMode: "deny", rewardAvailable: true, permissionsApi });
   await page.evaluate(() => window.__voiceQa.setFullscreen(true));
   await page.evaluate(() => document.querySelector(".iam-realtime-voice__summon")?.click());
   await page.waitForTimeout(700);
@@ -273,8 +301,8 @@ async function runVoiceDenialCheck() {
   return { microphone_calls: 1, clean_error: true, reward_calls: 0, recovery_offer: false };
 }
 
-async function runVoiceRecoveryCheck({ rewardAvailable }) {
-  const page = await makeVoiceFixture({ microphoneMode: "success", rewardAvailable });
+async function runVoiceRecoveryCheck({ rewardAvailable, permissionsApi = "supported", fullscreenEventTiming = "during-request" }) {
+  const page = await makeVoiceFixture({ microphoneMode: "success", rewardAvailable, permissionsApi, fullscreenEventTiming });
   await page.evaluate(() => window.__voiceQa.setFullscreen(true));
   await page.evaluate(() => document.querySelector(".iam-realtime-voice__summon")?.click());
   await page.waitForFunction(() => {
@@ -344,8 +372,8 @@ async function runVoiceRecoveryCheck({ rewardAvailable }) {
   return result;
 }
 
-async function runCareAndCircleChecks() {
-  const page = await makeSurfaceFixture();
+async function runCareAndCircleChecks({ permissionsApi = "supported" } = {}) {
+  const page = await makeSurfaceFixture({ permissionsApi });
   await page.evaluate(() => window.__permissionQa.setFullscreen(true));
   await page.locator('[data-care-open="connect"]').click();
   await page.locator('[data-care-device="microphone"]').click();
@@ -454,6 +482,7 @@ async function runCombinedRecoveryCheck() {
       presenter: qa.presenter,
       fullscreenTarget: document.querySelector(".site-shell"),
     });
+    window.IAMPermissionRecovery.markDeviceRequestStarted(activation);
     qa.permission.camera = "granted";
     qa.permission.microphone = "granted";
     qa.setFullscreen(false);
@@ -491,6 +520,7 @@ async function runRecoveryGuardrailChecks() {
         presenter: qa.presenter,
         fullscreenTarget: document.querySelector(".site-shell"),
       });
+      window.IAMPermissionRecovery.markDeviceRequestStarted(activation);
       qa.permission.microphone = after;
       qa.setFullscreen(fullscreenAfter);
       return window.IAMPermissionRecovery.completeActivation(activation);
@@ -498,17 +528,33 @@ async function runRecoveryGuardrailChecks() {
     const preGranted = await exercise({ before: "granted", after: "granted", fullscreenAfter: false });
     const denied = await exercise({ before: "prompt", after: "denied", fullscreenAfter: false });
     const noLoss = await exercise({ before: "prompt", after: "granted", fullscreenAfter: true });
+    const safariPreGrantedNoLoss = await exercise({ before: "unknown", after: "unknown", fullscreenAfter: true });
     return {
       preGranted: preGranted.eligible,
       denied: denied.eligible,
       noLoss: noLoss.eligible,
+      safariPreGrantedNoLoss: safariPreGrantedNoLoss.eligible,
       readyStates: qa.presenterStates.filter((entry) => entry.state === "ready").length,
       rewardCalls: qa.rewardCalls,
     };
   });
-  assert.deepEqual(result, { preGranted: false, denied: false, noLoss: false, readyStates: 0, rewardCalls: 0 });
+  assert.deepEqual(result, {
+    preGranted: false,
+    denied: false,
+    noLoss: false,
+    safariPreGrantedNoLoss: false,
+    readyStates: 0,
+    rewardCalls: 0,
+  });
   await page.context().close();
-  return { pre_granted: false, denied: false, no_fullscreen_loss: false, recovery_cards: 0, reward_calls: 0 };
+  return {
+    pre_granted: false,
+    denied: false,
+    no_fullscreen_loss: false,
+    safari_unknown_pre_granted_no_loss: false,
+    recovery_cards: 0,
+    reward_calls: 0,
+  };
 }
 
 async function makeCoordinatorFixture({ rewardMode }) {
@@ -522,7 +568,7 @@ async function makeCoordinatorFixture({ rewardMode }) {
   return page;
 }
 
-async function makeSurfaceFixture() {
+async function makeSurfaceFixture({ permissionsApi = "supported" } = {}) {
   const context = await browser.newContext({ viewport: { width: 1280, height: 800 }, permissions: [], serviceWorkers: "block" });
   const page = await context.newPage();
   await page.goto(`${baseUrl}/privacy-first.html`, { waitUntil: "domcontentloaded" });
@@ -570,7 +616,7 @@ async function makeSurfaceFixture() {
       </section>
     </main>
   `);
-  await installPermissionHarness(page, { rewardMode: "recorded", withAgora: true });
+  await installPermissionHarness(page, { rewardMode: "recorded", withAgora: true, permissionsApi });
   await page.addStyleTag({ content: `${voiceCss}\n${careCss}\n${circleCss}` });
   await page.addScriptTag({ path: voiceSourcePath });
   await page.addScriptTag({ path: careSourcePath });
@@ -579,8 +625,8 @@ async function makeSurfaceFixture() {
   return page;
 }
 
-async function installPermissionHarness(page, { rewardMode, withAgora = false }) {
-  await page.evaluate(({ rewardMode, withAgora }) => {
+async function installPermissionHarness(page, { rewardMode, withAgora = false, permissionsApi = "supported" }) {
+  await page.evaluate(({ rewardMode, withAgora, permissionsApi }) => {
     const qa = {
       fullscreen: false,
       permission: { microphone: "prompt", camera: "prompt" },
@@ -605,7 +651,10 @@ async function installPermissionHarness(page, { rewardMode, withAgora = false })
       writable: true,
       value: async function requestFullscreen() { qa.setFullscreen(true); },
     });
-    navigator.permissions.query = async ({ name }) => ({ state: qa.permission[name] || "unknown", addEventListener() {} });
+    navigator.permissions.query = async ({ name }) => {
+      if (permissionsApi === "unsupported") throw new TypeError("permission_name_not_supported");
+      return { state: qa.permission[name] || "unknown", addEventListener() {} };
+    };
     class FakeDataChannel extends EventTarget {
       constructor() { super(); this.readyState = "open"; }
       send() {}
@@ -705,15 +754,20 @@ async function installPermissionHarness(page, { rewardMode, withAgora = false })
       }
       close() { this.dispatchEvent(new Event("close")); }
     };
-  }, { rewardMode, withAgora });
+  }, { rewardMode, withAgora, permissionsApi });
 }
 
-async function makeVoiceFixture({ microphoneMode, rewardAvailable }) {
+async function makeVoiceFixture({
+  microphoneMode,
+  rewardAvailable,
+  permissionsApi = "supported",
+  fullscreenEventTiming = "during-request",
+}) {
   const context = await browser.newContext({ viewport: { width: 1200, height: 760 }, permissions: [], serviceWorkers: "block" });
   const page = await context.newPage();
   await page.goto(`${baseUrl}/privacy-first.html`, { waitUntil: "domcontentloaded" });
   await page.setContent('<main class="site-shell"><section data-television-room></section></main>');
-  await page.evaluate(({ microphoneMode, rewardAvailable }) => {
+  await page.evaluate(({ microphoneMode, rewardAvailable, permissionsApi, fullscreenEventTiming }) => {
     const qa = {
       microphoneMode,
       permissionState: "prompt",
@@ -746,6 +800,7 @@ async function makeVoiceFixture({ microphoneMode, rewardAvailable }) {
     navigator.permissions.query = async ({ name }) => {
       if (name !== "microphone") throw new Error("unsupported_permission");
       qa.permissionQueries += 1;
+      if (permissionsApi === "unsupported") throw new TypeError("permission_name_not_supported");
       return { state: qa.permissionState, addEventListener() {} };
     };
     Object.defineProperty(navigator, "mediaDevices", {
@@ -755,8 +810,12 @@ async function makeVoiceFixture({ microphoneMode, rewardAvailable }) {
           qa.micCalls += 1;
           if (qa.microphoneMode === "deny") throw new DOMException("denied", "NotAllowedError");
           qa.permissionState = "granted";
-          qa.fullscreen = false;
-          document.dispatchEvent(new Event("fullscreenchange"));
+          const dispatchFullscreenLoss = () => {
+            qa.fullscreen = false;
+            document.dispatchEvent(new Event("fullscreenchange"));
+          };
+          if (fullscreenEventTiming === "after-device-resolution") window.setTimeout(dispatchFullscreenLoss, 20);
+          else dispatchFullscreenLoss();
           const track = { enabled: true, contentHint: "", stop() {} };
           return {
             getTracks: () => [track],
@@ -807,7 +866,7 @@ async function makeVoiceFixture({ microphoneMode, rewardAvailable }) {
         },
       };
     }
-  }, { microphoneMode, rewardAvailable });
+  }, { microphoneMode, rewardAvailable, permissionsApi, fullscreenEventTiming });
   await page.addStyleTag({ content: voiceCss });
   await page.addScriptTag({ path: voiceSourcePath });
   await page.waitForFunction(() => Boolean(window.IAMRealtimeVoiceAssistant));
