@@ -1,0 +1,131 @@
+.adaptive-television-page .adaptive-environment__session-frequency {
+  position: absolute;
+  left: 50%;
+  top: calc(100% + 16px);
+  z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  width: max-content;
+  max-width: calc(100vw - 48px);
+  margin: 0;
+  color: rgba(255, 255, 255, .94);
+  font: 300 15px/1.2 "Helvetica Neue", Helvetica, Arial, sans-serif;
+  letter-spacing: 0;
+  opacity: 0;
+  text-shadow:
+    0 1px 1px rgba(0, 0, 0, .98),
+    0 3px 12px rgba(0, 0, 0, .86);
+  transform: translate(-50%, 5px);
+  transition:
+    opacity 650ms ease,
+    transform 650ms cubic-bezier(.2, .72, .2, 1);
+  white-space: nowrap;
+}
+
+.adaptive-television-page .adaptive-environment__session-frequency::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  inset: -13px -24px;
+  background: radial-gradient(
+    ellipse at center,
+    rgba(5, 11, 13, .34) 0%,
+    rgba(5, 11, 13, .16) 50%,
+    rgba(5, 11, 13, 0) 82%
+  );
+  pointer-events: none;
+}
+
+.adaptive-television-page .adaptive-environment__session-frequency:not([hidden]) {
+  opacity: 1;
+  transform: translate(-50%, 0);
+}
+
+.adaptive-television-page .adaptive-environment__session-frequency[hidden] {
+  display: none;
+}
+
+.adaptive-environment__frequency-wave {
+  flex: 0 0 auto;
+  width: 52px;
+  height: 16px;
+  overflow: visible;
+  filter: drop-shadow(0 0 6px rgba(137, 231, 218, .28));
+}
+
+.adaptive-environment__frequency-wave path {
+  fill: none;
+  stroke: rgba(151, 231, 218, .92);
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 1.55;
+  vector-effect: non-scaling-stroke;
+}
+
+.homepage-universal-one-planet {
+  --iam-mini-planet-texture: none;
+  position: absolute;
+  right: max(clamp(24px, 3.1vw, 58px), env(safe-area-inset-right));
+  bottom: max(clamp(24px, 4.1vh, 54px), env(safe-area-inset-bottom));
+  z-index: 3;
+  width: 62px;
+  height: 62px;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(8px);
+  transition:
+    opacity 900ms ease,
+    filter 900ms ease,
+    transform 900ms cubic-bezier(.2, .72, .2, 1);
+}
+
+body.adaptive-typewriter-complete .homepage-universal-one-planet {
+  opacity: .82;
+  transform: translateY(0);
+}
+
+.homepage-universal-one-planet .iam-realtime-planet {
+  border-color: rgba(228, 190, 123, .42);
+  box-shadow:
+    0 9px 22px rgba(0, 0, 0, .36),
+    0 0 18px rgba(77, 174, 157, .08);
+}
+
+body.television-room-opening .homepage-universal-one-planet,
+body.television-room-open .homepage-universal-one-planet,
+body.nav-open .homepage-universal-one-planet,
+body.homepage-radar-open .homepage-universal-one-planet {
+  opacity: 0 !important;
+  transform: translateY(10px) scale(.86);
+}
+
+@media (max-width: 620px) {
+  .adaptive-television-page .adaptive-environment__session-frequency {
+    top: calc(100% + 13px);
+    gap: 7px;
+    max-width: calc(100vw - 32px);
+    font-size: 14px;
+  }
+
+  .adaptive-environment__frequency-wave {
+    width: 42px;
+    height: 14px;
+  }
+
+  .homepage-universal-one-planet {
+    right: max(18px, env(safe-area-inset-right));
+    bottom: max(22px, env(safe-area-inset-bottom));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .homepage-universal-one-planet,
+  .homepage-universal-one-planet *,
+  .adaptive-environment__session-frequency {
+    animation-duration: .001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .001ms !important;
+  }
+}

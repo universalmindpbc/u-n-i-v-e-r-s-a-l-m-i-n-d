@@ -56,6 +56,7 @@
     <link rel="stylesheet" href="care-worlds.css?v=1cbbd1a05843">
     <link rel="stylesheet" href="mantra-sampler.css?v=mantra-sampler-css-8e56b03ada25">
     <link rel="stylesheet" href="realtime-voice-assistant.css?v=realtime-voice-css-3dbe2f94acaa">
+    <link rel="stylesheet" href="homepage-session-accents.css?v=homepage-session-accents-1">
   </head>
   <body class="adaptive-television-page">
     <section class="shop-entry" data-shop-entry-screen aria-labelledby="shop-entry-title">
@@ -108,6 +109,12 @@
             <p class="adaptive-environment__basis adaptive-environment__line" data-adaptive-typewriter data-adaptive-typewriter-text="Based on your latest check-in">Based on your latest check-in</p>
             <p class="adaptive-environment__source adaptive-environment__line" data-adaptive-typewriter data-adaptive-typewriter-text=""></p>
             <p class="adaptive-environment__station adaptive-environment__line" data-adaptive-typewriter data-adaptive-typewriter-text=""></p>
+            <p class="adaptive-environment__session-frequency" data-adaptive-session-frequency hidden aria-live="polite">
+              <svg class="adaptive-environment__frequency-wave" viewBox="0 0 52 16" aria-hidden="true" focusable="false">
+                <path d="M1 8c4.2 0 4.2-5.5 8.4-5.5S13.6 13.5 17.8 13.5 22 2.5 26.2 2.5s4.2 11 8.4 11 4.2-11 8.4-11S47.2 8 51 8"></path>
+              </svg>
+              <span><span data-adaptive-session-lane></span> <span data-adaptive-session-rate></span> | carrier <span data-adaptive-session-carrier></span></span>
+            </p>
           </div>
           <button class="adaptive-environment__play" type="button" data-adaptive-play data-television-play aria-label="Expand the room and play full screen video">
             <span class="adaptive-environment__loading" aria-hidden="true"></span>
@@ -120,6 +127,13 @@
             <span class="adaptive-television-cta__loading">[ preparing your music ]</span>
           </div>
         </section>
+
+        <div class="homepage-universal-one-planet" data-homepage-universal-one-planet aria-hidden="true">
+          <span class="iam-realtime-planet">
+            <span class="iam-realtime-planet__surface"></span>
+            <span class="iam-realtime-planet__atmosphere"></span>
+          </span>
+        </div>
 
         <section class="adaptive-television-room" data-television-room aria-label="Full screen adaptive environment music television" aria-hidden="true">
           <div class="adaptive-television-player" data-television-player></div>
@@ -1470,6 +1484,7 @@
     <script src="mantra-sampler.js?v=mantra-sampler-0bfc1d7667fe"></script>
     <script src="adaptive-environment-television.js?v=music-tv-45e51ff31c10"></script>
     <script type="module" src="adaptive-sound/controller-v1.js?v=f1a1a64a405c"></script>
+    <script src="homepage-session-accents.js?v=homepage-session-accents-1"></script>
     <script src="programme-guide.js?v=programme-guide-5ec9d44785ef"></script>
     <script src="realtime-voice-assistant.js?v=realtime-voice-f3ec3dac7bdf"></script>
     <script src="adaptive-page-metadata-v1.js"></script>
