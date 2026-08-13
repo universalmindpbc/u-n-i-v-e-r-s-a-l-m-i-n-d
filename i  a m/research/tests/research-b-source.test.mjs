@@ -30,11 +30,21 @@ test("research page is the existing I AM scene with one compact native prompt", 
   assert.match(page, /Homepage - Hero Background Video - Chanel 2020 Runway Show\.mp4/);
   assert.match(page, /class="scene-veil"/);
   assert.match(page, /induction-permission__panel/);
-  assert.match(page, /Do you want to measure your heart rate\?/);
-  assert.match(page, /Optional · 10 seconds · uses your camera/);
+  assert.match(page, /What Colour Is Your Heart\?/);
+  assert.match(page, /video is processed live on this device and is never recorded or stored/);
+  assert.match(page, /heart-rate reading is used momentarily for the recommendation, then discarded/);
+  assert.match(page, /not a medical or mental-health diagnosis and should not replace professional care/);
+  assert.match(page, /Powered by Shen AI/);
+  assert.match(page, /data-heart-rate-loader/);
+  assert.match(page, /Universal Mind \[ I o H \] Logo 512\.png/);
+  assert.match(page, />Loading</);
   assert.equal((page.match(/role="dialog"/g) || []).length, 1);
-  assert.doesNotMatch(page, /type="checkbox"|What colour is your heart|Heart Light|paired result/i);
+  assert.equal((page.match(/not a medical or mental-health diagnosis/g) || []).length, 1);
+  assert.doesNotMatch(page, /type="checkbox"|Heart Light|paired result|shen-heart-rate-wellness/i);
   assert.match(css, /--scene-veil:\s*0\.44/);
+  assert.match(css, /--shen-canvas-size/);
+  assert.match(css, /width:\s*calc\(var\(--shen-canvas-size\) \* 0\.52\)/);
+  assert.match(css, /overflow:\s*hidden/);
   assert.doesNotMatch(css, /glasses|bubble|spectral|prism/i);
 });
 
@@ -45,17 +55,73 @@ test("browser controller delegates the visible experience to Shen Quick HR", asy
   assert.match(source, /MeasurementPreset\.QUICK_HR_MODE/);
   assert.match(source, /UiVersion\.V3/);
   assert.match(source, /showUserInterface:\s*true/);
-  assert.match(source, /showDisclaimer:\s*true/);
-  assert.match(source, /enableSummaryScreen:\s*true/);
+  assert.match(source, /showDisclaimer:\s*false/);
+  assert.match(source, /showInfoButton:\s*false/);
+  assert.match(source, /enableSummaryScreen:\s*false/);
+  assert.match(source, /showResultsFinishButton:\s*false/);
+  assert.match(source, /hideShenaiLogo:\s*true/);
+  assert.match(source, /enablePreloadDisplay:\s*false/);
+  assert.match(source, /onWasmLoadingProgress:\s*setLoadingProgress/);
   assert.doesNotMatch(source, /getUserMedia|MediaRecorder|ImageCapture|DeepAR|HRV|Stress Index/i);
   assert.doesNotMatch(source, /(?:api|license|secret)[_-]?key\s*[:=]\s*["'][A-Za-z0-9_-]{16,}/i);
 });
 
-test("only the final heart-rate summary enters research session storage", async () => {
+test("heart rate is momentary and only a non-biometric recommendation continues", async () => {
   const source = await read(resolve(researchDirectory, "shen-heart-rate.js"));
+  const recommendationSource = await read(resolve(researchDirectory, "shen-heart-recommendation.js"));
   assert.match(source, /heart_rate_bpm/);
-  assert.match(source, /average_signal_quality/);
+  assert.match(source, /momentaryHeartRate\s*=\s*null/);
+  assert.match(source, /measurementResult\s*=\s*null/);
+  assert.match(source, /ADAPTIVE_SOUND_SESSION_CHOICE_KEY/);
+  assert.match(source, /sessionStorage\.removeItem/);
+  assert.doesNotMatch(source, /average_signal_quality|measuredAt|provider|storeHeartRateResult|pseudonymousUserId/);
+  assert.doesNotMatch(source, /selection_needs/);
   assert.doesNotMatch(source, /heartbeats|hrv_|stress_index|photo|video|waveform|rrIntervals/i);
+  assert.doesNotMatch(recommendationSource, /bpm\s*:/i);
+  assert.match(recommendationSource, /scope:\s*"current_session_only"/);
+  assert.match(recommendationSource, /not a physiological or mental-health classification/);
+});
+
+test("heart-rate completion deterministically creates only the bounded sound handoff", async () => {
+  const {
+    deriveHeartCheckRecommendation,
+    writeEphemeralHeartCheckRecommendation,
+  } = await import("../shen-heart-recommendation.js");
+
+  assert.deepEqual(deriveHeartCheckRecommendation(55), {
+    band_intent: "gamma",
+    carrier_intent: "cognition_joy",
+    high_concern_session_opt_in: false,
+    scope: "current_session_only",
+  });
+  assert.deepEqual(deriveHeartCheckRecommendation(72), {
+    band_intent: "alpha",
+    carrier_intent: "presence",
+    high_concern_session_opt_in: false,
+    scope: "current_session_only",
+  });
+  assert.deepEqual(deriveHeartCheckRecommendation(95), {
+    band_intent: "theta",
+    carrier_intent: "self_connection",
+    high_concern_session_opt_in: false,
+    scope: "current_session_only",
+  });
+  assert.equal(deriveHeartCheckRecommendation(29), null);
+  assert.equal(deriveHeartCheckRecommendation("not-a-reading"), null);
+
+  const writes = [];
+  const storage = { setItem: (key, value) => writes.push({ key, value }) };
+  assert.equal(writeEphemeralHeartCheckRecommendation(72, storage, "adaptive-choice"), true);
+  assert.deepEqual(writes.map(({ key }) => key), ["adaptive-choice"]);
+  assert.deepEqual(JSON.parse(writes[0].value), {
+    band_intent: "alpha",
+    carrier_intent: "presence",
+    high_concern_session_opt_in: false,
+    scope: "current_session_only",
+  });
+  assert.doesNotMatch(writes[0].value, /heart|rate|bpm|72/i);
+  assert.equal(writeEphemeralHeartCheckRecommendation(null, storage, "adaptive-choice"), false);
+  assert.equal(writes.length, 1);
 });
 
 test("short-term Shen token endpoint keeps the permanent credential server-side", async () => {

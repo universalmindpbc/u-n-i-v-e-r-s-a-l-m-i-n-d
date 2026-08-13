@@ -5,16 +5,29 @@ import CreateShenaiSDK, {
   PrecisionMode,
   UiVersion,
 } from "./vendor/shenai-sdk/index.mjs";
+import { ADAPTIVE_SOUND_SESSION_CHOICE_KEY } from "../adaptive-sound/session-v1.js?v=3f39020ebeab";
+import { writeEphemeralHeartCheckRecommendation } from "./shen-heart-recommendation.js";
 
 const offer = document.querySelector("[data-heart-rate-offer]");
 const offerPanel = document.querySelector("[data-heart-rate-offer-panel]");
 const acceptButton = document.querySelector("[data-heart-rate-accept]");
 const skipButton = document.querySelector("[data-heart-rate-skip]");
 const stage = document.querySelector("[data-shen-stage]");
+const canvas = document.querySelector("#mxcanvas");
+const loader = document.querySelector("[data-heart-rate-loader]");
+const loadingLabel = document.querySelector("[data-heart-rate-loading-label]");
+const loadingTrack = document.querySelector("[data-heart-rate-loading-track]");
+const loadingProgress = document.querySelector("[data-heart-rate-loading-progress]");
 const status = document.querySelector("[data-shen-status]");
-const resultStorageKey = "iam.shenResearch.preHeartRate.v1";
+const legacyHeartDataKeys = Object.freeze([
+  "iam.shenResearch.preHeartRate.v1",
+  "iam.shenResearch.user.v1",
+]);
+
 let shenaiSDK = null;
+let transientMeasurementId = null;
 let isStarting = false;
+let isFinishing = false;
 
 function revealExistingBrand() {
   document.querySelector(".brand-name")?.classList.add("is-visible");
@@ -26,13 +39,15 @@ function revealExistingBrand() {
   });
 }
 
-function experienceUrl() {
+function experienceUrl({ heartCheckCompleted = false } = {}) {
   const target = new URL("index.html", window.location.href);
   const current = new URLSearchParams(window.location.search);
-  ["selected_track_id", "selection_source", "selection_needs"].forEach((name) => {
-    const value = current.get(name);
-    if (value) target.searchParams.set(name, value);
-  });
+  const selectedTrackId = current.get("selected_track_id");
+  if (selectedTrackId) target.searchParams.set("selected_track_id", selectedTrackId);
+  const selectionSource = heartCheckCompleted
+    ? "heart_check_recommendation"
+    : current.get("selection_source");
+  if (selectionSource) target.searchParams.set("selection_source", selectionSource);
   return target.href;
 }
 
@@ -53,42 +68,46 @@ function hideOffer() {
   offer.setAttribute("aria-hidden", "true");
 }
 
-function pseudonymousUserId() {
-  const key = "iam.shenResearch.user.v1";
+function clearLegacyHeartData() {
   try {
-    const stored = sessionStorage.getItem(key);
-    if (stored) return stored;
-    const value = crypto.randomUUID();
-    sessionStorage.setItem(key, value);
-    return value;
+    legacyHeartDataKeys.forEach((key) => sessionStorage.removeItem(key));
   } catch {
-    return "";
+    // Storage may be unavailable; this version never writes biometric data.
   }
 }
 
-function storeHeartRateResult() {
-  const result = shenaiSDK?.getMeasurementResults?.();
-  const bpm = Math.round(Number(result?.heart_rate_bpm));
-  if (!Number.isFinite(bpm) || bpm < 30 || bpm > 240) return;
+function createTransientMeasurementId() {
+  return globalThis.crypto?.randomUUID?.() || "";
+}
 
-  try {
-    sessionStorage.setItem(resultStorageKey, JSON.stringify({
-      metric: "heart_rate",
-      bpm,
-      averageSignalQuality: Number.isFinite(Number(result?.average_signal_quality))
-        ? Number(result.average_signal_quality)
-        : null,
-      measuredAt: new Date().toISOString(),
-      provider: "Shen AI",
-    }));
-  } catch {
-    // The Shen result remains visible even when session storage is unavailable.
-  }
+function setLoadingProgress(progress) {
+  const bounded = Math.max(0, Math.min(100, Number(progress) || 0));
+  loadingProgress.style.width = `${bounded}%`;
+  loadingTrack.setAttribute("aria-valuenow", String(Math.round(bounded)));
+}
+
+function showLoader(label, { showProgress = true } = {}) {
+  loadingLabel.textContent = label;
+  loadingTrack.hidden = !showProgress;
+  loader.hidden = false;
+}
+
+function showMeasurementInterface() {
+  stage.dataset.state = "measurement";
+  loader.hidden = true;
+  canvas.removeAttribute("aria-hidden");
+}
+
+function showRecommendationTransition() {
+  stage.dataset.state = "recommendation";
+  canvas.setAttribute("aria-hidden", "true");
+  showLoader("Finding your experience", { showProgress: false });
 }
 
 async function releaseShen() {
   const active = shenaiSDK;
   shenaiSDK = null;
+  transientMeasurementId = null;
   try {
     active?.deinitialize?.();
   } catch {
@@ -97,9 +116,27 @@ async function releaseShen() {
 }
 
 async function finishAndContinue() {
-  storeHeartRateResult();
+  if (isFinishing) return;
+  isFinishing = true;
+
+  let measurementResult = null;
+  let momentaryHeartRate = null;
+  try {
+    measurementResult = shenaiSDK?.getMeasurementResults?.() || null;
+    momentaryHeartRate = Number(measurementResult?.heart_rate_bpm);
+    writeEphemeralHeartCheckRecommendation(
+      momentaryHeartRate,
+      sessionStorage,
+      ADAPTIVE_SOUND_SESSION_CHOICE_KEY,
+    );
+  } finally {
+    momentaryHeartRate = null;
+    measurementResult = null;
+  }
+
+  showRecommendationTransition();
   await releaseShen();
-  window.location.assign(experienceUrl());
+  window.location.assign(experienceUrl({ heartCheckCompleted: true }));
 }
 
 async function requestShortTermToken() {
@@ -124,30 +161,32 @@ function initializeWithToken(token) {
       precisionMode: PrecisionMode.STRICT,
       uiVersion: UiVersion.V3,
       showUserInterface: true,
-      showDisclaimer: true,
-      showInfoButton: true,
+      showDisclaimer: false,
+      showInfoButton: false,
       showStartStopButton: true,
       showSignalQualityIndicator: true,
-      enableSummaryScreen: true,
-      showResultsFinishButton: true,
+      enableSummaryScreen: false,
+      showResultsFinishButton: false,
       enableStartAfterSuccess: false,
-      hideShenaiLogo: false,
+      hideShenaiLogo: true,
       showTrialMetricLabels: false,
       eventCallback(event) {
-        if (event === "MEASUREMENT_FINISHED") storeHeartRateResult();
-        if (event === "USER_FLOW_FINISHED") finishAndContinue();
+        if (event === "MEASUREMENT_FINISHED" || event === "USER_FLOW_FINISHED") {
+          void finishAndContinue();
+        }
       },
       onCameraError() {
-        showStatus("Camera access is needed for this optional heart-rate check.", { allowContinue: true });
+        showStatus("Camera access is needed for this optional Heart Check.", { allowContinue: true });
       },
     };
 
-    shenaiSDK.initialize(token, pseudonymousUserId(), settings, (result) => {
+    shenaiSDK.initialize(token, transientMeasurementId, settings, (result) => {
       if (result === InitializationResult.OK) {
+        showMeasurementInterface();
         resolve();
         return;
       }
-      reject(new Error("Shen could not start the heart-rate check."));
+      reject(new Error("The Heart Check could not start."));
     });
   });
 }
@@ -159,14 +198,17 @@ async function beginShenMeasurement() {
   skipButton.disabled = true;
   hideOffer();
   stage.hidden = false;
+  stage.dataset.state = "loading";
+  showLoader("Loading");
+  setLoadingProgress(0);
 
   try {
+    transientMeasurementId = createTransientMeasurementId();
     const tokenPromise = requestShortTermToken();
     shenaiSDK = await CreateShenaiSDK({
       enableErrorReporting: false,
-      enablePreloadDisplay: true,
-      preloadDisplayCanvasId: "mxcanvas",
-      hidePreloadDisplayLogo: false,
+      enablePreloadDisplay: false,
+      onWasmLoadingProgress: setLoadingProgress,
     });
     const token = await tokenPromise;
     await initializeWithToken(token);
@@ -183,5 +225,6 @@ acceptButton.addEventListener("click", beginShenMeasurement);
 skipButton.addEventListener("click", () => window.location.assign(experienceUrl()));
 window.addEventListener("pagehide", releaseShen);
 
+clearLegacyHeartData();
 revealExistingBrand();
 window.setTimeout(() => offerPanel.focus({ preventScroll: true }), 0);

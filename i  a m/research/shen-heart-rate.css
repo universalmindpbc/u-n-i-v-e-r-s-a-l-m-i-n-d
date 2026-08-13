@@ -7,40 +7,111 @@
   background: #000;
 }
 
-.shen-heart-rate-page .background-video::before {
-  opacity: 1;
-}
-
+.shen-heart-rate-page .background-video::before,
 .shen-heart-rate-page .background-video video {
   opacity: 1;
 }
 
 .shen-heart-rate-stage {
+  --shen-canvas-size: min(760px, 86svh, calc(92vw / 0.52));
   position: fixed;
   inset: 50% auto auto 50%;
   z-index: 8;
-  width: min(760px, 92vw);
-  height: min(760px, 86svh);
+  width: calc(var(--shen-canvas-size) * 0.52);
+  height: var(--shen-canvas-size);
+  overflow: hidden;
+  background: #fff;
   transform: translate(-50%, -50%);
 }
 
 .shen-heart-rate-stage canvas {
+  position: absolute;
+  inset: 50% auto auto 50%;
   display: block;
-  width: 100%;
+  width: var(--shen-canvas-size);
+  height: var(--shen-canvas-size);
+  max-width: none;
+  opacity: 0;
+  transform: translate(-50%, -50%);
+  transition: opacity 180ms ease;
+}
+
+.shen-heart-rate-stage[data-state="measurement"] canvas {
+  opacity: 1;
+}
+
+.shen-heart-rate-loader {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  display: grid;
+  place-content: center;
+  justify-items: center;
+  gap: 15px;
+  background: rgba(247, 247, 245, 0.98);
+  color: #0b1525;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+.shen-heart-rate-loader[hidden] {
+  display: none;
+}
+
+.shen-heart-rate-loader img {
+  width: clamp(58px, 9vw, 84px);
+  height: auto;
+}
+
+.shen-heart-rate-loader p {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 300;
+  letter-spacing: 0.08em;
+}
+
+.shen-heart-rate-loader__track {
+  width: min(210px, 62%);
+  height: 2px;
+  overflow: hidden;
+  background: rgba(11, 21, 37, 0.12);
+}
+
+.shen-heart-rate-loader__track[hidden] {
+  display: none;
+}
+
+.shen-heart-rate-loader__track span {
+  display: block;
+  width: 0;
   height: 100%;
+  background: rgba(44, 168, 184, 0.82);
+  transition: width 120ms linear;
 }
 
 .shen-heart-rate-offer .induction-permission__panel {
   bottom: 50%;
+  gap: 8px 12px;
+  width: min(510px, calc(100vw - 38px));
   transform: translate(-50%, 50%);
 }
 
 .shen-heart-rate-offer .induction-permission__mark {
-  grid-row: 1 / span 2;
+  grid-row: 1 / span 5;
 }
 
 .shen-heart-rate-offer .induction-permission__actions {
   margin-top: 7px;
+}
+
+.shen-heart-rate-offer .shen-heart-rate-disclaimer {
+  color: rgba(221, 234, 230, 0.62);
+  font-size: 8px;
+}
+
+.shen-heart-rate-offer .shen-heart-rate-attribution {
+  color: rgba(207, 222, 218, 0.44);
+  font-size: 7px;
+  letter-spacing: 0.02em;
 }
 
 .shen-heart-rate-status {
@@ -61,28 +132,12 @@
   color: inherit;
 }
 
-.shen-heart-rate-wellness {
-  position: fixed;
-  right: 18px;
-  bottom: 14px;
-  z-index: 8;
-  max-width: min(520px, calc(100vw - 36px));
-  margin: 0;
-  color: rgba(255, 255, 255, 0.48);
-  font-size: 8px;
-  line-height: 1.35;
-  text-align: right;
-}
-
 @media (max-width: 620px) {
   .shen-heart-rate-stage {
-    width: 100vw;
-    height: min(760px, 82svh);
+    --shen-canvas-size: min(760px, 82svh, calc(96vw / 0.52));
   }
 
-  .shen-heart-rate-wellness {
-    left: 18px;
-    right: 18px;
-    text-align: center;
+  .shen-heart-rate-offer .induction-permission__mark {
+    grid-row: 1;
   }
 }

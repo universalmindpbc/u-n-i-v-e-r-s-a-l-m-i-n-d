@@ -5,21 +5,25 @@ This B route reuses the canonical check-in at render time. It does not duplicate
 ## Route
 
 1. `check-in-research.php` renders `vogue-self-report.html` exactly as it currently exists and changes only its `data-iam-next-page` destination.
-2. The completed check-in reaches `research.php?offer=heart-rate`, preserving the existing adaptive track-selection parameters.
+2. The completed check-in reaches `research.php?offer=heart-rate`, preserving the selected song handoff.
 3. `research.php` reuses the homepage `styles.css`, Chanel background asset, cover fallback, `background-video`, `scene-veil` and brand components.
-4. The existing compact `induction-permission` component asks only: “Do you want to measure your heart rate?”
-5. Accepting the prompt invokes Shen’s embedded Web SDK UI on `#mxcanvas`. No Universal Mind replacement scanner is rendered.
-6. Skipping or completing Shen continues to the canonical `index.html` with the adaptive track-selection parameters intact.
+4. The existing compact `induction-permission` component contains the journey's single consent and wellness disclosure immediately before the deliberate camera action.
+5. Accepting the prompt shows a Universal Mind flower and Loading presentation, then invokes Shen’s embedded Web SDK UI on `#mxcanvas`. No replacement measurement engine is rendered.
+6. Skipping continues to the selected song without requesting a Shen token or camera permission.
+7. Completing the measurement immediately derives a current-session brain-entrainment choice, discards the heart-rate result and navigates to the canonical `index.html`. No Shen summary or result-options screen is shown.
 
 ## Shen configuration
 
 - Official Web SDK package: `@shenai/sdk` 3.1.9.
-- SDK UI: visible and unmodified.
+- SDK UI: visible and unmodified inside a portrait-cropped Universal Mind wrapper.
 - SDK theme: unchanged because brand colour customization is locked on Starter.
 - Measurement: `MeasurementPreset.QUICK_HR_MODE` — 10-second heart rate only.
 - Precision: strict.
 - Onboarding: hidden.
-- Shen disclaimer, information, signal-quality, start/stop and result UI: enabled.
+- Shen disclaimer, information and summary/result controls: disabled through supported SDK settings so the journey has one Universal Mind disclosure and no duplicate result screen.
+- Shen signal-quality and deliberate start/stop controls: enabled.
+- Shen logo is hidden through its supported setting; discreet `Powered by Shen AI` attribution remains in the Universal Mind consent panel.
+- The proprietary canvas and runtime bytes are unchanged.
 - No AR layer in this version.
 
 ## Credential boundary
@@ -42,6 +46,8 @@ The proprietary Shen runtime is kept at `research/vendor/shenai-sdk/` and retain
 
 The route must remain a PHP response or receive equivalent server headers if it is later mapped to `/research`.
 
-## Stored result
+## Ephemeral result and recommendation handoff
 
-On a completed measurement, the page stores only the final heart rate, Shen average signal-quality value, timestamp, provider and metric name in session storage under `iam.shenResearch.preHeartRate.v1`. No photo, video, raw waveform, heartbeat array, HRV or stress value is stored.
+The Shen camera stream is processed live and is never recorded or stored by this journey. On completion, the controller reads the final heart-rate value only in memory, applies a bounded exploratory pacing heuristic, writes only the resulting current-session `band_intent` and `carrier_intent` to the existing adaptive-sound session-choice contract, then clears its local result reference and releases Shen before navigation.
+
+No heart rate, signal quality, timestamp, provider, photo, video, raw waveform, heartbeat array, HRV, Stress Index, pseudonymous biometric identifier or research record is retained. Earlier prototype keys are removed if present. The continued handoff contains only the selected song and the derived brain-entrainment recommendation. The heuristic is an experimental environment choice, not a physiological or mental-health classification, diagnosis, treatment or validated benefit.
