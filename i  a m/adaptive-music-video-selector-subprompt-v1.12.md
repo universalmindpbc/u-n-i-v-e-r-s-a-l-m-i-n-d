@@ -17,7 +17,7 @@ GPT does not select the live music television track in production.
 The inference pipeline's runtime job is upstream:
 
 - GPT understands the citizen's current self-report, local time, weather and approximate location and returns the initial non-diagnostic v5.55 Inference, citizen-needs, safety and adaptive-sound intent payload;
-- the first-party privacy layer then reconciles the optional 10-second Heart Rate observation as supporting or conflicting current-session evidence without sending raw Heart Rate or a Heart Rate-derived health zone to GPT;
+- the first-party privacy layer then reconciles the optional 30-second Heart Rate observation as supporting or conflicting current-session evidence without sending raw Heart Rate or a Heart Rate-derived health zone to GPT;
 - produce interpretable language around the needs state;
 - explain or audit the selector's output when asked.
 
@@ -34,7 +34,7 @@ This boundary is what keeps the music match hallucination-free. The model may he
 
 Adaptive sound is a parallel deterministic policy, not a song-scoring feature. The music selector may carry the resolved `adaptive_sound` session contract in its output, but music metadata, songs, artists, rooms and engagement signals must not change its band or carrier. Biological research targets must never enter either product decision path.
 
-Heart Rate is never a direct song, band, carrier or DSP selector. The current product has one optional 10-second Shen measurement immediately after the text check-in, with no personal baseline, trend or cross-session comparison. Missing, declined, expired or invalid Heart Rate is safe and non-blocking. Use the word **Inference**, never Scenario.
+Heart Rate is never a direct song, band, carrier or DSP selector. The current product has one optional 30-second Shen measurement immediately after the text check-in, with no personal baseline, trend or cross-session comparison. Missing, declined, expired or invalid Heart Rate is safe and non-blocking. Use the word **Inference**, never Scenario.
 
 Time, weather and location materially influence every adaptive music and adaptive-sound intent decision across Horizons 1, 2 and 3. They modify the current inference, trajectory and context fit without overriding explicit self-report, hard safety vetoes, catalogue eligibility or human editorial authority. Record all three dimensions as used or unavailable; never invent missing context.
 

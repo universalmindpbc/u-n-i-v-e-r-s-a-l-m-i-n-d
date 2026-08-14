@@ -44,7 +44,8 @@ try {
   processProof = await verifyIsolatedBrowserProcess(profileDirectory, browserArgs);
   await installSafetyInstrumentation(context);
 
-  const localRouter = createLocalCandidateRouter();
+  const bridgeEvidence = [];
+  const localRouter = createLocalCandidateRouter(bridgeEvidence);
 
   const checkInPage = await context.newPage();
   await checkInPage.route("**/*", localRouter);
@@ -89,6 +90,17 @@ try {
   await acceptPage.addInitScript(() => {
     sessionStorage.setItem("iam.shenResearch.preHeartRate.v1", "legacy-biometric-data");
     sessionStorage.setItem("iam.shenResearch.user.v1", "legacy-user-id");
+    sessionStorage.setItem("iamLatestCheckinValue", "I am energised after surfing");
+    sessionStorage.setItem("iamLatestInference", JSON.stringify({
+      checkin: "I am energised after surfing",
+      environment_context: {
+        local_time: "08:12",
+        weather_condition: "clear",
+        temperature_celsius: 23,
+        location_label: "coastal",
+        location_precision: "approximate",
+      },
+    }));
   });
   await acceptPage.route("**/*", localRouter);
   acceptPage.on("pageerror", (error) => acceptEvidence.pageErrors.push(error.message));
@@ -212,6 +224,27 @@ try {
     result.hidden = true;
     result.querySelector("[data-heart-rate-result-value]").textContent = "";
   });
+  const bridgeResult = await acceptPage.evaluate(async () => {
+    const { reconcileHeartCheckInference } = await import("/vogue/iam/research/shen-heart-recommendation.js");
+    const result = await reconcileHeartCheckInference(72, {
+      storage: sessionStorage,
+      fetchImpl: (...args) => fetch(...args),
+    });
+    return {
+      result,
+      sessionInference: sessionStorage.getItem("iamLatestInference"),
+      localInference: localStorage.getItem("iamLatestInference"),
+    };
+  });
+  assert.equal(bridgeResult.result.status, "complete");
+  assert.equal(bridgeResult.result.inference.current_inference.heart_rate_role, "supporting");
+  assert.equal(bridgeEvidence.length, 1);
+  assert.equal(bridgeEvidence[0].momentary_physiology.heart_rate_bpm, 72);
+  assert.equal(bridgeEvidence[0].momentary_physiology.measurement_duration_seconds, 30);
+  assert.equal(bridgeEvidence[0].environment_context.location_label, "coastal");
+  assert.doesNotMatch(bridgeResult.sessionInference, /"heart_rate_bpm"|"bpm"/i);
+  assert.equal(bridgeResult.localInference, null);
+  assert.doesNotMatch(JSON.stringify(bridgeResult.result), /"heart_rate_bpm"|"bpm"/i);
   assert.equal(acceptEvidence.tokenPosts, 1);
   assert.equal(acceptEvidence.tokenStatus, 200);
   assert.ok(acceptEvidence.sdkRequests >= 3);
@@ -257,6 +290,12 @@ try {
       liveBpmPresentationFixture: 69,
       finalHeartRateDisplay: "ephemeral 2.2-second hold when available",
       finalBpmPresentationFixture: 69,
+      firstPartyInferenceBridge: {
+        requests: bridgeEvidence.length,
+        heartRateRole: bridgeResult.result.inference.current_inference.heart_rate_role,
+        rawBpmReturnedOrStored: false,
+        localStorageWrite: false,
+      },
       sdkBrandingControl,
       realFaceVisualizationProofRequired: true,
       noSyntheticPhysiologicalReadingClaimed: true,
@@ -311,7 +350,7 @@ async function installSafetyInstrumentation(browserContext) {
   });
 }
 
-function createLocalCandidateRouter() {
+function createLocalCandidateRouter(bridgeEvidence) {
   return async (route) => {
     const request = route.request();
     const url = new URL(request.url());
@@ -339,6 +378,28 @@ function createLocalCandidateRouter() {
         headers: pageHeaders(),
         contentType: "text/html; charset=utf-8",
         body: "<!doctype html><title>QA destination</title><p>Recommendation received.</p>",
+      });
+      return;
+    }
+
+    if (path === "/vogue/iam/api/citizen-needs-inference.php" && request.method() === "POST") {
+      bridgeEvidence.push(request.postDataJSON());
+      await route.fulfill({
+        status: 200,
+        headers: pageHeaders(),
+        contentType: "application/json; charset=utf-8",
+        body: JSON.stringify({
+          prompt_version: "adaptive-inference-engine-system-prompt-v5.55",
+          current_inference: {
+            inference_id: "active_energised",
+            heart_rate_role: "supporting",
+            heart_rate_zone: "mid_observed",
+            context_dimensions_considered: { time: true, weather: true, location: true },
+            horizons_considered: ["horizon_1", "horizon_2", "horizon_3"],
+            baseline_comparison_used: false,
+            clinical_status: "not_a_diagnosis",
+          },
+        }),
       });
       return;
     }

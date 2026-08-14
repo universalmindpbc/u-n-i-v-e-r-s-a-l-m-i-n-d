@@ -21,6 +21,7 @@ assert matrix["name"] == "Current Inference Matrix"
 assert matrix["language_rule"].startswith("Use Inference, never Scenario")
 assert all("scenario" not in row["id"] for row in matrix["inferences"])
 assert matrix["input_contract"]["momentary_physiology"]["baseline_available"] is False
+assert matrix["input_contract"]["momentary_physiology"]["measurement_duration_seconds"] == 30
 assert matrix["input_contract"]["momentary_physiology"]["future_after_platform_and_ux_validation"]["signals"] == [
     "blood_pressure",
     "heart_rate_variability",
@@ -53,6 +54,7 @@ compiled = module.compile_current_inference_input(
 assert compiled["momentary_physiology"]["heart_rate_bpm"] == 108
 assert compiled["momentary_physiology"]["heart_rate_zone"] == "elevated_observed"
 assert compiled["momentary_physiology"]["baseline_available"] is False
+assert compiled["momentary_physiology"]["measurement_duration_seconds"] == 30
 assert compiled["environment_context"]["context_role"] == "all_adaptive_decisions_all_horizons"
 
 audit = module.persistable_inference_audit(compiled)

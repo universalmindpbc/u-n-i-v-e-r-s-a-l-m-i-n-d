@@ -17,7 +17,7 @@
   "current_inference_contract": {
     "self_report_role": "primary_current_meaning",
     "heart_rate_role": "optional_supporting_or_conflicting_current_session_evidence",
-    "heart_rate_measurement_duration_seconds": 10,
+    "heart_rate_measurement_duration_seconds": 30,
     "heart_rate_baseline_available": false,
     "heart_rate_trend_available": false,
     "direct_heart_rate_threshold_to_band_carrier_or_dsp": false,

@@ -10,7 +10,7 @@ This B route reuses the canonical check-in at render time. It does not duplicate
 4. The existing compact `induction-permission` component contains the journey's single consent and wellness disclosure immediately before the deliberate camera action.
 5. Accepting the prompt shows a Universal Mind flower and Loading presentation, then invokes Shen’s embedded Web SDK UI on `#mxcanvas`. No replacement measurement engine is rendered.
 6. Skipping continues to the selected song without requesting a Shen token or camera permission.
-7. Completing the measurement immediately derives a current-session brain-entrainment choice, discards the heart-rate result and navigates to the canonical `index.html`. No Shen summary or result-options screen is shown.
+7. Completing the measurement reads the final BPM once, releases the camera, reconciles that ephemeral value through the first-party current-session inference endpoint, discards it and navigates to the canonical `index.html`. No Shen summary or result-options screen is shown.
 
 ## Shen configuration
 
@@ -47,8 +47,10 @@ The proprietary Shen runtime is kept at `research/vendor/shenai-sdk/` and retain
 
 The route must remain a PHP response or receive equivalent server headers if it is later mapped to `/research`.
 
-## Ephemeral result and recommendation handoff
+## Ephemeral result and inference handoff
 
-The Shen camera stream is processed live and is never recorded or stored by this journey. During measurement, a 4-second heart-rate value may be rendered ephemerally in the Universal Mind wrapper. On completion, the controller reads the final heart-rate value only in memory, applies the unchanged bounded exploratory pacing heuristic, writes only the resulting current-session `band_intent` and `carrier_intent` to the existing adaptive-sound session-choice contract, releases Shen, shows the final BPM for 2.2 seconds, then clears the displayed value before navigation.
+The Shen camera stream is processed live and is never recorded or stored by this journey. During the supported 30-second measurement, a 4-second heart-rate value may be rendered ephemerally in the Universal Mind wrapper. On completion, the controller reads the final heart-rate value once in memory, releases Shen, starts one same-origin first-party inference reconciliation, shows the final BPM for 2.2 seconds, then clears the displayed value before navigation.
 
-No heart rate, signal quality, timestamp, provider, photo, video, raw waveform, heartbeat array, HRV, Stress Index, pseudonymous biometric identifier or research record is retained. Earlier prototype keys are removed if present. The continued handoff contains only the selected song and the derived brain-entrainment recommendation. The heuristic is an experimental environment choice, not a physiological or mental-health classification, diagnosis, treatment or validated benefit.
+The first-party Worker strips raw BPM before constructing its OpenAI request, reconciles the model's current inference locally as supporting, conflicting or unavailable, and returns no raw BPM. The browser accepts and stores only that privacy-safe current-session inference. No BPM, signal quality, timestamp, provider, photo, video, raw waveform, heartbeat array, HRV, Stress Index, pseudonymous biometric identifier or research record is stored, logged, placed in a URL or sent to ordinary analytics. Earlier prototype keys are removed if present.
+
+Heart Rate never directly selects or writes a song, room, `band_intent`, `carrier_intent` or DSP value. Self-report and time, weather and approximate location remain the inference authority across Horizons 1, 2 and 3. Missing, declined, invalid or failed Heart Rate reconciliation remains safe and non-blocking.

@@ -3,7 +3,7 @@
 
 This module does not diagnose and does not select music, bands, carriers or DSP
 from Heart Rate thresholds. It prepares the current self-report, one optional
-10-second Heart Rate observation, and time/weather/location context for the
+30-second Heart Rate observation, and time/weather/location context for the
 inference model. The model returns semantic intent; deterministic selectors
 continue to resolve only approved catalogue and policy identifiers.
 """
@@ -59,7 +59,7 @@ def normalize_momentary_physiology(
     value: Any,
     matrix: Optional[Mapping[str, Any]] = None,
 ) -> Dict[str, Any]:
-    """Validate one optional 10-second Heart Rate input for this request only."""
+    """Validate one optional 30-second Heart Rate input for this request only."""
     selected_matrix = matrix or load_matrix()
     source = value if isinstance(value, Mapping) else {}
     bpm = _number(source.get("heart_rate_bpm"))

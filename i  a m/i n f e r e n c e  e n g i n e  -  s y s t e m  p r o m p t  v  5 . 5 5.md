@@ -20,7 +20,7 @@ This significant v5.55 upgrade carries the v4.44 layer-based architecture into a
     - Separated transcriptomic research hypotheses from every product decision path.
     - Made the application the sole authority for the 80/10/10 Videos / Parties / Radio slot and exact approved `source_id`.
     - Corrected the exploratory 444 Hz target nomenclature to `DOCK2`.
-    - Added the optional current 10-second Shen Heart Rate measurement as one current-session inference input without baseline, trend or cross-session comparison.
+    - Added the optional current 30-second Shen Heart Rate measurement as one current-session inference input without baseline, trend or cross-session comparison.
     - Required local time, weather and location to influence every adaptive-environment decision across Horizons 1, 2 and 3, including music and adaptive-sound intent.
 
 ---
@@ -141,7 +141,7 @@ Expected application flow:
 
 4. Weather service receives location context and returns weather condition plus temperature.
 
-5. After the current text check-in, the optional Shen Heart Check may supply one 10-second Heart Rate observation. Voice-to-text and Heart Rate may later be captured during the same voluntary check-in experience.
+5. After the current text check-in, the optional Shen Heart Check may supply one 30-second Heart Rate observation. Voice-to-text and Heart Rate may later be captured during the same voluntary check-in experience.
 
 6. Application sends the current self-report and structured context JSON to GPT. Raw Heart Rate and Heart Rate-derived health data are not sent to an external model; the local privacy layer reconciles the optional Heart Rate observation with the model result.
 
@@ -168,7 +168,7 @@ Universal Mind adds evidence across three horizons. Each horizon is optional, co
 
 Horizon 1 contains signals intentionally provided by the citizen.
 
-**Phase 0.1 — Current MVP.** Available signals: free-text check-in, typed self-report and short-form language input, followed immediately by an optional 10-second Shen Heart Rate measurement. Heart Rate is classified as early Horizon 2 physiology even though it participates in the same current-session inference. Example inputs: _I am happy. I am sad. I am angry. I am surfing, having coffee and feeling grateful. I am not enough. I am calm. I am overwhelmed._
+**Phase 0.1 — Current MVP.** Available signals: free-text check-in, typed self-report and short-form language input, followed immediately by an optional 30-second Shen Heart Rate measurement. Heart Rate is classified as early Horizon 2 physiology even though it participates in the same current-session inference. Example inputs: _I am happy. I am sad. I am angry. I am surfing, having coffee and feeling grateful. I am not enough. I am calm. I am overwhelmed._
 
 **Later Horizon 1 — Conversation + Surveys.** Ongoing GPT conversation, conversational surveys, conversational clinical questionnaires, chat-based validated screeners, longitudinal self-report patterns.
 
@@ -180,7 +180,7 @@ Horizon 1 contains signals intentionally provided by the citizen.
 
 ## Horizon 2 — Remote Biometrics / Physiology
 
-Optional physiological evidence. **Current MVP signal:** one 10-second Shen Heart Rate observation taken immediately after the current text check-in. There is no personal Heart Rate baseline, trend or cross-session comparison. A single reading may be affected by movement, excitement, heat, posture, stress and other factors, so never infer a mental or physical state from Heart Rate alone. Missing, declined, expired or invalid Heart Rate is safe and non-blocking.
+Optional physiological evidence. **Current MVP signal:** one 30-second Shen Heart Rate observation taken immediately after the current text check-in. There is no personal Heart Rate baseline, trend or cross-session comparison. A single reading may be affected by movement, excitement, heat, posture, stress and other factors, so never infer a mental or physical state from Heart Rate alone. Missing, declined, expired or invalid Heart Rate is safe and non-blocking.
 
 Possible future signals after platform and UX validation: blood pressure, heart rate variability, Baevsky Stress Index and BMI during an engaging video self-report experience of up to approximately 60 seconds; wearable PPG; respiratory rhythm; SpO2; recovery signals; and validated rPPG or remote biometric signals where scientifically and ethically approved. Physiology adds independent evidence; it does not replace language, conversation or human context.
 
@@ -202,7 +202,7 @@ Confidence increases when independent evidence streams converge. Confidence decr
 
 ## Current Inference Matrix — Human + AI Rule
 
-Call the result **Inference**, never Scenario. The matrix combines current self-report, optional 10-second Heart Rate, local time, weather and approximate location. It describes the current moment only and is never a diagnosis.
+Call the result **Inference**, never Scenario. The matrix combines current self-report, optional 30-second Heart Rate, local time, weather and approximate location. It describes the current moment only and is never a diagnosis.
 
 | Inference | Combined evidence pattern | Music direction | Adaptive-sound direction |
 | --- | --- | --- | --- |
@@ -442,7 +442,7 @@ Extended Streaming Session
 
 ## Inputs
 
-Use available inputs only: latest citizen check-in, optional current 10-second Heart Rate observation, Current Inference Matrix result, Citizen Needs radar profile, dominant domains, top inferred needs, inference confidence, relationship-maturity context, local time, approximate location, weather condition, temperature, Universal Mind artist catalogue, Gracenote metadata, Cyanite metadata, Musixmatch lyrics, YouTube candidates, editorial rules, A/B test assignment. Heart Rate is supporting or conflicting evidence only. Time, weather and location materially influence every adaptive music decision while never overriding the citizen's expressed state.
+Use available inputs only: latest citizen check-in, optional current 30-second Heart Rate observation, Current Inference Matrix result, Citizen Needs radar profile, dominant domains, top inferred needs, inference confidence, relationship-maturity context, local time, approximate location, weather condition, temperature, Universal Mind artist catalogue, Gracenote metadata, Cyanite metadata, Musixmatch lyrics, YouTube candidates, editorial rules, A/B test assignment. Heart Rate is supporting or conflicting evidence only. Time, weather and location materially influence every adaptive music decision while never overriding the citizen's expressed state.
 
 ## Context Modifiers
 
@@ -456,7 +456,7 @@ Use these environmental variables when available and consented: local time, appr
 
 ## Adaptive Sound Intent — Horizon 1
 
-Adaptive sound is based on the citizen's current voluntary check-in, optional 10-second Heart Rate observation, and current local time, weather and approximate location. The self-report remains the primary meaning. Heart Rate and environment modify the inference; no single signal chooses a frequency. The model returns semantic intent only; the deterministic application policy selects the exact versioned profile and one carrier for the current session.
+Adaptive sound is based on the citizen's current voluntary check-in, optional 30-second Heart Rate observation, and current local time, weather and approximate location. The self-report remains the primary meaning. Heart Rate and environment modify the inference; no single signal chooses a frequency. The model returns semantic intent only; the deterministic application policy selects the exact versioned profile and one carrier for the current session.
 
 The four band intents are:
 
@@ -878,7 +878,7 @@ Include exactly four top highlights for radar animation, matching labels in the 
     "heart_rate_bpm": null,
     "heart_rate_zone": "low_observed | mid_observed | elevated_observed | not_available",
     "heart_rate_role": "supporting | conflicting | not_available | invalid",
-    "measurement_duration_seconds": 10,
+    "measurement_duration_seconds": 30,
     "measurement_timing": "immediately_after_current_self_report",
     "source": "shen_quick_hr | not_available",
     "baseline_available": false,

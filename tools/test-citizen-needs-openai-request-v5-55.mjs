@@ -150,7 +150,7 @@ const request = new Request(
       },
       momentary_physiology: {
         heart_rate_bpm: 118,
-        measurement_duration_seconds: 10,
+        measurement_duration_seconds: 30,
         source: "shen_quick_hr",
       },
     }),
@@ -229,7 +229,7 @@ const conflictingResponse = await worker.fetch(new Request(
       },
       momentary_physiology: {
         heart_rate_bpm: 52,
-        measurement_duration_seconds: 10,
+        measurement_duration_seconds: 30,
         source: "shen_quick_hr",
       },
     }),

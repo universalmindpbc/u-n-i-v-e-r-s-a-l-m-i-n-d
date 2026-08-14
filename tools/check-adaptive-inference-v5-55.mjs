@@ -37,7 +37,7 @@ assert.equal(SYSTEM_PROMPT_SHA256, createHash("sha256").update(source).digest("h
 assert.ok(contentModule.includes(`window.__IAM_SYSTEM_PROMPT_V5_55 = ${JSON.stringify(source)};`));
 assert.ok(source.includes('"adaptive_sound_intent"'));
 assert.ok(source.includes("Current Inference Matrix — Human + AI Rule"));
-assert.ok(source.includes("optional current 10-second Heart Rate"));
+assert.ok(source.includes("optional current 30-second Heart Rate"));
 assert.ok(source.includes("Time, weather and location materially influence every adaptive music decision"));
 assert.equal(inferenceMatrix.name, "Current Inference Matrix");
 assert.equal(inferenceMatrix.input_contract.momentary_physiology.baseline_available, false);

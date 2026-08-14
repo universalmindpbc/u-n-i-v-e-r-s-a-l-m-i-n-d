@@ -6,8 +6,7 @@ import CreateShenaiSDK, {
   PrecisionMode,
   UiVersion,
 } from "./vendor/shenai-sdk/index.mjs";
-import { ADAPTIVE_SOUND_SESSION_CHOICE_KEY } from "../adaptive-sound/session-v1.js?v=3f39020ebeab";
-import { writeEphemeralHeartCheckRecommendation } from "./shen-heart-recommendation.js";
+import { reconcileHeartCheckInference } from "./shen-heart-recommendation.js?v=db4d107c66bd";
 
 const offer = document.querySelector("[data-heart-rate-offer]");
 const offerPanel = document.querySelector("[data-heart-rate-offer-panel]");
@@ -53,7 +52,7 @@ function experienceUrl({ heartCheckCompleted = false } = {}) {
   const selectedTrackId = current.get("selected_track_id");
   if (selectedTrackId) target.searchParams.set("selected_track_id", selectedTrackId);
   const selectionSource = heartCheckCompleted
-    ? "heart_check_recommendation"
+    ? "heart_check_inference"
     : current.get("selection_source");
   if (selectionSource) target.searchParams.set("selection_source", selectionSource);
   return target.href;
@@ -182,17 +181,18 @@ async function finishAndContinue() {
     measurementResult = shenaiSDK?.getMeasurementResults?.() || null;
     momentaryHeartRate = Number(measurementResult?.heart_rate_bpm);
     displayHeartRate = normalizedHeartRate(momentaryHeartRate);
-    writeEphemeralHeartCheckRecommendation(
-      momentaryHeartRate,
-      sessionStorage,
-      ADAPTIVE_SOUND_SESSION_CHOICE_KEY,
-    );
   } finally {
-    momentaryHeartRate = null;
     measurementResult = null;
   }
 
   await releaseShen();
+  const inferencePromise = displayHeartRate === null
+    ? Promise.resolve(null)
+    : reconcileHeartCheckInference(momentaryHeartRate, {
+      storage: sessionStorage,
+      fetchImpl: (...args) => fetch(...args),
+    }).catch(() => null);
+  momentaryHeartRate = null;
   if (displayHeartRate !== null) {
     showFinalHeartRate(displayHeartRate);
     await wait(FINAL_READING_HOLD_MS);
@@ -200,6 +200,7 @@ async function finishAndContinue() {
     displayHeartRate = null;
   }
   showRecommendationTransition();
+  await inferencePromise;
   window.location.assign(experienceUrl({ heartCheckCompleted: true }));
 }
 

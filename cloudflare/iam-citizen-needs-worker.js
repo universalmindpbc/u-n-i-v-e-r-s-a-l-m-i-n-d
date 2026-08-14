@@ -164,7 +164,7 @@ const inferenceInstructions = [
   [
     "Current live MVP endpoint constraint:",
     "- Use the short current self-report and supplied environment_context JSON to form the model-side current-session Inference.",
-    "- Privacy boundary: raw Heart Rate and Heart Rate-derived health data are not sent to the external model. Return heart_rate_role and heart_rate_zone as not_available; the local application layer reconciles the optional 10-second Heart Rate observation after the model response.",
+    "- Privacy boundary: raw Heart Rate and Heart Rate-derived health data are not sent to the external model. Return heart_rate_role and heart_rate_zone as not_available; the local application layer reconciles the optional 30-second Heart Rate observation after the model response.",
     "- Use the word Inference, never Scenario. Return one Current Inference Matrix ID: settled_resting, active_energised, strained_activated, low_energy_withdrawn, fatigued_recovering, mixed_uncertain, high_concern_support_first or insufficient_context.",
     "- Self-report is the primary current meaning. Heart Rate is supporting or conflicting evidence only. There is no personal baseline, trend or cross-session comparison.",
     "- Never infer stress, activity, mood, illness, a song, a band, a carrier or DSP from a Heart Rate threshold alone. Missing, declined or invalid Heart Rate is safe and non-blocking.",
@@ -279,7 +279,7 @@ function normalizeMomentaryPhysiology(value) {
   return {
     heart_rate_bpm: valid ? Math.round(heartRate) : null,
     heart_rate_zone: heartRateZone,
-    measurement_duration_seconds: 10,
+    measurement_duration_seconds: 30,
     measurement_timing: "immediately_after_current_self_report",
     source: valid ? "shen_quick_hr" : "not_available",
     baseline_available: false,

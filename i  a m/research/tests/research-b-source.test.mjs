@@ -42,7 +42,7 @@ test("research page is the existing I AM scene with one compact native prompt", 
   assert.match(page, /Universal Mind \[ I o H \] Logo 512\.png/);
   assert.match(page, />Loading</);
   assert.match(page, /shen-heart-rate\.css\?v=shen-heart-rate-css-ca569084e0a2/);
-  assert.match(page, /shen-heart-rate\.js\?v=shen-heart-rate-js-b557d61c1dae/);
+  assert.match(page, /shen-heart-rate\.js\?v=shen-heart-rate-js-d45c36d9bf66/);
   assert.equal((page.match(/role="dialog"/g) || []).length, 1);
   assert.equal((page.match(/not a medical or mental-health diagnosis/g) || []).length, 1);
   assert.doesNotMatch(page, /type="checkbox"|Heart Light|paired result|shen-heart-rate-wellness/i);
@@ -65,6 +65,7 @@ test("browser controller delegates a 30-second heart-rate-only measurement to Sh
   const runtime = await read(resolve(researchDirectory, "vendor", "shenai-sdk", "shenai_sdk.mjs"));
 
   assert.match(source, /\.\/vendor\/shenai-sdk\/index\.mjs/);
+  assert.match(source, /shen-heart-recommendation\.js\?v=db4d107c66bd/);
   assert.match(source, /MeasurementPreset\.CUSTOM/);
   assert.match(source, /setCustomMeasurementConfig\(customMeasurementConfig\)/);
   assert.match(source, /typeof shenaiSDK\.setCustomMeasurementConfig !== "function"/);
@@ -94,7 +95,7 @@ test("browser controller delegates a 30-second heart-rate-only measurement to Sh
   assert.doesNotMatch(source, /(?:api|license|secret)[_-]?key\s*[:=]\s*["'][A-Za-z0-9_-]{16,}/i);
 });
 
-test("heart rate is momentary and only a non-biometric recommendation continues", async () => {
+test("heart rate is momentary and only a privacy-safe current inference continues", async () => {
   const source = await read(resolve(researchDirectory, "shen-heart-rate.js"));
   const recommendationSource = await read(resolve(researchDirectory, "shen-heart-recommendation.js"));
   assert.match(source, /heart_rate_bpm/);
@@ -106,56 +107,109 @@ test("heart rate is momentary and only a non-biometric recommendation continues"
   assert.match(source, /finalHeartRateValue\.textContent\s*=\s*""/);
   assert.match(source, /momentaryHeartRate\s*=\s*null/);
   assert.match(source, /measurementResult\s*=\s*null/);
-  assert.match(source, /ADAPTIVE_SOUND_SESSION_CHOICE_KEY/);
+  assert.match(source, /reconcileHeartCheckInference/);
+  assert.doesNotMatch(source, /ADAPTIVE_SOUND_SESSION_CHOICE_KEY/);
   assert.match(source, /sessionStorage\.removeItem/);
   assert.doesNotMatch(source, /average_signal_quality|measuredAt|provider|storeHeartRateResult|pseudonymousUserId/);
   assert.doesNotMatch(source, /selection_needs/);
   assert.doesNotMatch(source, /heartbeats|hrv_|stress_index|photo|video|waveform|rrIntervals/i);
-  assert.doesNotMatch(recommendationSource, /bpm\s*:/i);
+  assert.match(recommendationSource, /heart_rate_bpm:\s*bpm/);
+  assert.match(recommendationSource, /measurement_duration_seconds:\s*30/);
+  assert.match(recommendationSource, /raw_heart_rate_sent_to_openai:\s*false/);
+  assert.match(recommendationSource, /direct_heart_rate_to_song_room_band_carrier_or_dsp:\s*false/);
+  assert.doesNotMatch(recommendationSource, /band_intent|carrier_intent|ADAPTIVE_SOUND_SESSION_CHOICE_KEY/);
   assert.match(recommendationSource, /scope:\s*"current_session_only"/);
-  assert.match(recommendationSource, /not a physiological or mental-health classification/);
+  assert.match(recommendationSource, /first-party Worker strips BPM before calling OpenAI/);
 });
 
-test("heart-rate completion deterministically creates only the bounded sound handoff", async () => {
+test("heart-rate completion reconciles only through the first-party current inference", async () => {
   const {
-    deriveHeartCheckRecommendation,
-    writeEphemeralHeartCheckRecommendation,
+    heartCheckInferencePrivacy,
+    reconcileHeartCheckInference,
   } = await import("../shen-heart-recommendation.js");
 
-  assert.deepEqual(deriveHeartCheckRecommendation(55), {
-    band_intent: "gamma",
-    carrier_intent: "cognition_joy",
-    high_concern_session_opt_in: false,
+  assert.deepEqual(heartCheckInferencePrivacy, {
+    measurement_duration_seconds: 30,
     scope: "current_session_only",
+    raw_heart_rate_sent_to_openai: false,
+    raw_heart_rate_returned: false,
+    raw_heart_rate_persisted: false,
+    direct_heart_rate_to_song_room_band_carrier_or_dsp: false,
   });
-  assert.deepEqual(deriveHeartCheckRecommendation(72), {
-    band_intent: "alpha",
-    carrier_intent: "presence",
-    high_concern_session_opt_in: false,
-    scope: "current_session_only",
-  });
-  assert.deepEqual(deriveHeartCheckRecommendation(95), {
-    band_intent: "theta",
-    carrier_intent: "self_connection",
-    high_concern_session_opt_in: false,
-    scope: "current_session_only",
-  });
-  assert.equal(deriveHeartCheckRecommendation(29), null);
-  assert.equal(deriveHeartCheckRecommendation("not-a-reading"), null);
 
+  const stored = new Map([
+    ["iamLatestInference", JSON.stringify({
+      checkin: "I am energised after surfing",
+      environment_context: {
+        local_time: "08:12",
+        weather_condition: "clear",
+        location_label: "coastal",
+      },
+    })],
+    ["iamLatestCheckinValue", "I am energised after surfing"],
+  ]);
   const writes = [];
-  const storage = { setItem: (key, value) => writes.push({ key, value }) };
-  assert.equal(writeEphemeralHeartCheckRecommendation(72, storage, "adaptive-choice"), true);
-  assert.deepEqual(writes.map(({ key }) => key), ["adaptive-choice"]);
-  assert.deepEqual(JSON.parse(writes[0].value), {
-    band_intent: "alpha",
-    carrier_intent: "presence",
-    high_concern_session_opt_in: false,
-    scope: "current_session_only",
+  const storage = {
+    getItem: (key) => stored.get(key) || null,
+    setItem: (key, value) => {
+      stored.set(key, value);
+      writes.push({ key, value });
+    },
+  };
+  const requests = [];
+  const fetchImpl = async (url, options) => {
+    requests.push({ url, options });
+    return {
+      ok: true,
+      json: async () => ({
+        prompt_version: "adaptive-inference-engine-system-prompt-v5.55",
+        current_inference: {
+          inference_id: "active_energised",
+          heart_rate_role: "supporting",
+          heart_rate_zone: "mid_observed",
+          horizons_considered: ["horizon_1", "horizon_2", "horizon_3"],
+          baseline_comparison_used: false,
+        },
+      }),
+    };
+  };
+
+  const result = await reconcileHeartCheckInference(72, { storage, fetchImpl });
+  assert.equal(result.status, "complete");
+  assert.equal(result.persisted, true);
+  assert.equal(requests.length, 1);
+  assert.equal(requests[0].url, "api/citizen-needs-inference.php");
+  const requestBody = JSON.parse(requests[0].options.body);
+  assert.equal(requestBody.momentary_physiology.heart_rate_bpm, 72);
+  assert.equal(requestBody.momentary_physiology.measurement_duration_seconds, 30);
+  assert.equal(requestBody.checkin, "I am energised after surfing");
+  assert.equal(requestBody.environment_context.location_label, "coastal");
+  assert.deepEqual(writes.map(({ key }) => key), ["iamLatestInference", "citizenNeedsLatestInference"]);
+  for (const { value } of writes) {
+    assert.doesNotMatch(value, /"heart_rate_bpm"|"bpm"/i);
+    assert.match(value, /"heart_rate_role":"supporting"/);
+    assert.match(value, /"horizons_considered":\["horizon_1","horizon_2","horizon_3"\]/);
+  }
+
+  const writeCount = writes.length;
+  assert.equal((await reconcileHeartCheckInference(29, { storage, fetchImpl })).status, "unavailable");
+  assert.equal((await reconcileHeartCheckInference("not-a-reading", { storage, fetchImpl })).status, "unavailable");
+  assert.equal(requests.length, 1);
+  assert.equal(writes.length, writeCount);
+
+  const unsafeResult = await reconcileHeartCheckInference(72, {
+    storage,
+    fetchImpl: async () => ({
+      ok: true,
+      json: async () => ({
+        current_inference: { inference_id: "active_energised" },
+        heart_rate_bpm: 72,
+      }),
+    }),
   });
-  assert.doesNotMatch(writes[0].value, /heart|rate|bpm|72/i);
-  assert.equal(writeEphemeralHeartCheckRecommendation(null, storage, "adaptive-choice"), false);
-  assert.equal(writes.length, 1);
+  assert.equal(unsafeResult.status, "failed");
+  assert.equal(unsafeResult.inference, null);
+  assert.equal(writes.length, writeCount);
 });
 
 test("short-term Shen token endpoint keeps the permanent credential server-side", async () => {

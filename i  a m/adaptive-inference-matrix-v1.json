@@ -2,7 +2,7 @@
   "schema_version": "iam_adaptive_inference_matrix_v1",
   "name": "Current Inference Matrix",
   "language_rule": "Use Inference, never Scenario. All labels describe the current moment and are not diagnoses.",
-  "purpose": "Combine the current self-report, one optional 10-second Heart Rate measurement, local time, weather and approximate location into one cautious current-session inference for music and adaptive-sound intent.",
+  "purpose": "Combine the current self-report, one optional 30-second Heart Rate measurement, local time, weather and approximate location into one cautious current-session inference for music and adaptive-sound intent.",
   "claim_boundary": "adaptive_environment_inference_not_diagnosis_treatment_or_proven_benefit",
   "input_contract": {
     "self_report": {
@@ -11,7 +11,7 @@
     },
     "momentary_physiology": {
       "available_now": ["heart_rate_bpm"],
-      "measurement_duration_seconds": 10,
+      "measurement_duration_seconds": 30,
       "measurement_timing": "immediately_after_current_self_report",
       "source": "shen_quick_hr",
       "future_after_platform_and_ux_validation": {
@@ -53,7 +53,7 @@
   },
   "horizon_context_rule": {
     "horizon_1": "Combine current self-report with time, weather and location for every adaptive music and adaptive-sound intent decision.",
-    "horizon_2": "Add the current 10-second Heart Rate now, and later validated BP, HRV, Baevsky Stress Index and BMI, while time, weather and location continue to modify every adaptive decision.",
+    "horizon_2": "Add the current 30-second Heart Rate now, and later validated BP, HRV, Baevsky Stress Index and BMI, while time, weather and location continue to modify every adaptive decision.",
     "horizon_3": "If future research-grade molecular evidence is ever validated and consented, time, weather and location still modify adaptive decisions; biological targets never select a band, carrier or song directly."
   },
   "inferences": [
