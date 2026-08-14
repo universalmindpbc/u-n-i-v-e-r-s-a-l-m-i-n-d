@@ -85,7 +85,6 @@ header('X-Robots-Tag: noindex, nofollow');
           <button type="button" data-heart-rate-accept>Measure heart rate</button>
           <button type="button" data-heart-rate-skip>Not now</button>
         </div>
-        <p class="shen-heart-rate-attribution">Powered by Shen AI</p>
       </div>
     </section>
 

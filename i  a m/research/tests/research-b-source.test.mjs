@@ -34,7 +34,7 @@ test("research page is the existing I AM scene with one compact native prompt", 
   assert.match(page, /video is processed live on this device and is never recorded or stored/);
   assert.match(page, /heart-rate reading is used momentarily for the recommendation, then discarded/);
   assert.match(page, /not a medical or mental-health diagnosis and should not replace professional care/);
-  assert.match(page, /Powered by Shen AI/);
+  assert.doesNotMatch(page, /Powered by Shen AI/);
   assert.match(page, /data-heart-rate-loader/);
   assert.match(page, /Universal Mind \[ I o H \] Logo 512\.png/);
   assert.match(page, />Loading</);
@@ -45,6 +45,11 @@ test("research page is the existing I AM scene with one compact native prompt", 
   assert.match(css, /--shen-canvas-size/);
   assert.match(css, /width:\s*calc\(var\(--shen-canvas-size\) \* 0\.52\)/);
   assert.match(css, /overflow:\s*hidden/);
+  assert.match(css, /width:\s*min\(638px, calc\(100vw - 38px\)\)/);
+  assert.match(css, /\.shen-heart-rate-offer h2\s*\{[^}]*font-size:\s*20px/s);
+  assert.match(css, /\.shen-heart-rate-offer p\s*\{[^}]*font-size:\s*12\.5px/s);
+  assert.match(css, /\.shen-heart-rate-offer \.induction-permission__actions button\s*\{[^}]*min-height:\s*38px[^}]*font-size:\s*11\.25px/s);
+  assert.doesNotMatch(css, /shen-heart-rate-attribution/);
   assert.doesNotMatch(css, /glasses|bubble|spectral|prism/i);
 });
 

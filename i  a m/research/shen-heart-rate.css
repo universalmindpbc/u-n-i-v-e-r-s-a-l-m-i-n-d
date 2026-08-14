@@ -90,28 +90,42 @@
 
 .shen-heart-rate-offer .induction-permission__panel {
   bottom: 50%;
-  gap: 8px 12px;
-  width: min(510px, calc(100vw - 38px));
+  grid-template-columns: 42px 1fr;
+  gap: 10px 15px;
+  width: min(638px, calc(100vw - 38px));
+  padding: 19px 21px 18px;
   transform: translate(-50%, 50%);
 }
 
 .shen-heart-rate-offer .induction-permission__mark {
   grid-row: 1 / span 5;
+  width: 38px;
+  height: 38px;
+}
+
+.shen-heart-rate-offer h2 {
+  font-size: 20px;
+}
+
+.shen-heart-rate-offer p {
+  font-size: 12.5px;
 }
 
 .shen-heart-rate-offer .induction-permission__actions {
-  margin-top: 7px;
+  gap: 9px;
+  margin-top: 9px;
+}
+
+.shen-heart-rate-offer .induction-permission__actions button {
+  min-height: 38px;
+  border-radius: 10px;
+  font-size: 11.25px;
+  padding: 9px 13px;
 }
 
 .shen-heart-rate-offer .shen-heart-rate-disclaimer {
   color: rgba(221, 234, 230, 0.62);
-  font-size: 8px;
-}
-
-.shen-heart-rate-offer .shen-heart-rate-attribution {
-  color: rgba(207, 222, 218, 0.44);
-  font-size: 7px;
-  letter-spacing: 0.02em;
+  font-size: 10px;
 }
 
 .shen-heart-rate-status {
