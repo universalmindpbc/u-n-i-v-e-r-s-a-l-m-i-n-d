@@ -1,6 +1,8 @@
 <?php
 declare(strict_types=1);
 
+require_once __DIR__ . '/heart-check-handoff-lib.php';
+
 header('Content-Type: application/json; charset=utf-8');
 header('Cache-Control: no-store');
 
@@ -16,6 +18,32 @@ if ($body === false || $body === '' || strlen($body) > 65536) {
     echo json_encode(['error' => 'Invalid request.']);
     exit;
 }
+
+$decodedBody = json_decode($body, true);
+$checkin = is_array($decodedBody) && is_string($decodedBody['checkin'] ?? null)
+    ? $decodedBody['checkin']
+    : null;
+$handoffIdentifier = $_COOKIE[IAM_HEART_CHECK_HANDOFF_COOKIE] ?? null;
+$momentaryPhysiology = null;
+
+if (is_string($handoffIdentifier) && $handoffIdentifier !== '') {
+    iam_heart_check_handoff_expire_cookie();
+    $handoffKey = null;
+    try {
+        $handoffKey = iam_heart_check_handoff_key();
+    } catch (Throwable $exception) {
+        $handoffKey = null;
+    }
+    $momentaryPhysiology = iam_heart_check_handoff_consume(
+        $handoffIdentifier,
+        $checkin,
+        $handoffKey
+    );
+} else {
+    iam_heart_check_handoff_purge_expired(iam_heart_check_handoff_storage_directory());
+}
+
+$body = iam_heart_check_handoff_prepare_worker_body($body, $momentaryPhysiology);
 
 $host = strtolower((string) ($_SERVER['HTTP_HOST'] ?? ''));
 $isStaging = str_starts_with($host, 'staging.universalmind.tv');
