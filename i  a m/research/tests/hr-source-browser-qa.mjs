@@ -135,7 +135,7 @@ try {
   await acceptPage.locator('[data-shen-stage][data-state="measurement"]').waitFor({ state: "visible", timeout: 90_000 });
   assert.equal(
     await acceptPage.locator("[data-shen-stage]").getAttribute("data-shen-visualization-config"),
-    "face-mask+blood-flow",
+    "blood-flow-only",
   );
   await acceptPage.waitForTimeout(1_000);
   const stageGeometry = await acceptPage.locator("[data-shen-stage]").evaluate((element) => {
@@ -211,7 +211,7 @@ try {
       cameraCalls: cameraEvidence.calls.length,
       videoTracks: cameraEvidence.tracks.filter(({ kind }) => kind === "video").length,
       audioTracks: cameraEvidence.tracks.filter(({ kind }) => kind === "audio").length,
-      visualizationsInitializedTogether: ["face-mask", "blood-flow"],
+      visualizationInitialized: "blood-flow-only",
       realFaceVisualizationProofRequired: true,
       noSyntheticPhysiologicalReadingClaimed: true,
     },

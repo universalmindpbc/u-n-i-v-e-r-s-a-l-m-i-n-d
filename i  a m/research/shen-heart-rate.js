@@ -94,7 +94,7 @@ function showLoader(label, { showProgress = true } = {}) {
 
 function showMeasurementInterface() {
   stage.dataset.state = "measurement";
-  stage.dataset.shenVisualizationConfig = "face-mask+blood-flow";
+  stage.dataset.shenVisualizationConfig = "blood-flow-only";
   loader.hidden = true;
   canvas.removeAttribute("aria-hidden");
 }
@@ -166,7 +166,7 @@ function initializeWithToken(token) {
       showInfoButton: false,
       showStartStopButton: true,
       showSignalQualityIndicator: true,
-      showFaceMask: true,
+      showFaceMask: false,
       showBloodFlow: true,
       enableSummaryScreen: false,
       showResultsFinishButton: false,

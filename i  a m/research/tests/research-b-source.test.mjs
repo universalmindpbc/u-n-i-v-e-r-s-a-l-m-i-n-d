@@ -38,7 +38,7 @@ test("research page is the existing I AM scene with one compact native prompt", 
   assert.match(page, /data-heart-rate-loader/);
   assert.match(page, /Universal Mind \[ I o H \] Logo 512\.png/);
   assert.match(page, />Loading</);
-  assert.match(page, /shen-heart-rate\.js\?v=shen-heart-rate-js-5284803bd60e/);
+  assert.match(page, /shen-heart-rate\.js\?v=shen-heart-rate-js-5c8b7496f136/);
   assert.equal((page.match(/role="dialog"/g) || []).length, 1);
   assert.equal((page.match(/not a medical or mental-health diagnosis/g) || []).length, 1);
   assert.doesNotMatch(page, /type="checkbox"|Heart Light|paired result|shen-heart-rate-wellness/i);
@@ -64,9 +64,9 @@ test("browser controller delegates the visible experience to Shen Quick HR", asy
   assert.match(source, /showUserInterface:\s*true/);
   assert.match(source, /showDisclaimer:\s*false/);
   assert.match(source, /showInfoButton:\s*false/);
-  assert.match(source, /showFaceMask:\s*true/);
+  assert.match(source, /showFaceMask:\s*false/);
   assert.match(source, /showBloodFlow:\s*true/);
-  assert.match(source, /shenVisualizationConfig\s*=\s*"face-mask\+blood-flow"/);
+  assert.match(source, /shenVisualizationConfig\s*=\s*"blood-flow-only"/);
   assert.doesNotMatch(source, /OperatingMode|setShenVisualization|visualizationMonitor/);
   assert.match(runtime, /SetShowFaceMask/);
   assert.match(runtime, /SetShowBloodFlow/);
