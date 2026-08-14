@@ -58,7 +58,7 @@ Universal Mind will expand the existing EMDR Sound Research Layer into a browser
 - Alpha / Calm: **10.11 Hz +/-**
 - Gamma / Inspiration: **exactly 111 Hz +/-**
 
-The four lanes coexist at different power weights. Horizon 1 uses four locked dominant profiles: 80% for the selected lane, 6.66% for each secondary lane, 0.01% deterministic noise and 0.01% silence reserve. The current voluntary self-report, optional current 30-second Heart Rate observation, local time, weather and approximate location contribute to one semantic inference; the deterministic policy then resolves one profile and one carrier for that session only. Time, weather and location influence the initial adaptive decision in Horizons 1, 2 and 3. Automatic mid-session profile morphing remains deferred until a later explicitly approved capability.
+The four lanes coexist at different power weights. Horizon 1 uses four locked dominant profiles: 80% for the selected lane, 6.66% for each secondary lane, 0.01% deterministic noise and 0.01% silence reserve. The current voluntary self-report, optional current 10-second Heart Rate observation, local time, weather and approximate location contribute to one semantic inference; the deterministic policy then resolves one profile and one carrier for that session only. Time, weather and location influence the initial adaptive decision in Horizons 1, 2 and 3. Automatic mid-session profile morphing remains deferred until a later explicitly approved capability.
 
 The carrier research set is **111, 222, 444, 555 and 999 Hz**. The initial transcriptomic mappings are hypotheses only:
 
@@ -764,7 +764,7 @@ The semantic inference and deterministic resolver use this order:
 
 1. Explicit citizen band/carrier choice for the current session.
 2. Semantic band/carrier intent derived from the current voluntary self-report plus available local time, weather and approximate location.
-3. The optional current 30-second Heart Rate observation may support or conflict with the semantic inference, but never selects a band, carrier or DSP profile by threshold.
+3. The optional current 10-second Heart Rate observation may support or conflict with the semantic inference, but never selects a band, carrier or DSP profile by threshold.
 4. Deterministic scoring of the structured Citizen Needs state when semantic intent is absent.
 5. Protective high-concern gating, which leaves adaptive frequencies off by default and prioritises human review.
 6. No selection when no structured inference intent or needs evidence exists.
@@ -1800,7 +1800,7 @@ The drawn symbols are visual/source notation. They must not be interpreted as bi
 | 2026-08-12 | Contact notification is consented authorised human-in-the-loop only | LOCKED |
 | 2026-08-12 | Homepage reads the canonical registry and resolved session profile | LOCKED architecture |
 | 2026-08-15 | Keep the Adaptive Inference Engine identity at v5.55 while adding current Heart Rate evidence | LOCKED naming and content update |
-| 2026-08-15 | One optional 30-second Shen Heart Rate result is current-session evidence only; no baseline, trend, cross-session retention or direct threshold-to-sound shortcut | LOCKED |
+| 2026-08-15 | One optional 10-second Shen Heart Rate result is current-session evidence only; no baseline, trend, cross-session retention or direct threshold-to-sound shortcut | LOCKED correction |
 | 2026-08-15 | Time, weather and location influence every adaptive decision across Horizons 1, 2 and 3 | LOCKED; supersedes Horizon 2 deferral |
 
 ---

@@ -150,7 +150,7 @@ const request = new Request(
       },
       momentary_physiology: {
         heart_rate_bpm: 118,
-        measurement_duration_seconds: 30,
+        measurement_duration_seconds: 10,
         source: "shen_quick_hr",
       },
     }),
@@ -182,6 +182,8 @@ assert.ok(!userMessage.includes("Choose an eligible format"));
 assert.ok(!userMessage.includes("118"), "Raw Heart Rate escaped into the external model request");
 assert.ok(!userMessage.includes("heart_rate_bpm"), "Heart Rate field escaped into the external model request");
 assert.ok(!workerSource.includes("allowedMusicFormats"));
+assert.ok(workerSource.includes("measurement_duration_seconds: 10"));
+assert.ok(!workerSource.includes("optional 30-second Heart Rate"));
 
 assert.equal(result.model, "gpt-5.5-test");
 assert.equal(result.prompt_version, SYSTEM_PROMPT_VERSION);
@@ -229,7 +231,7 @@ const conflictingResponse = await worker.fetch(new Request(
       },
       momentary_physiology: {
         heart_rate_bpm: 52,
-        measurement_duration_seconds: 30,
+        measurement_duration_seconds: 10,
         source: "shen_quick_hr",
       },
     }),
