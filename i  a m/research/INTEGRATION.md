@@ -22,7 +22,7 @@ This B route reuses the canonical check-in at render time. It does not duplicate
 - Onboarding: hidden.
 - Shen disclaimer, information and summary/result controls: disabled through supported SDK settings so the journey has one Universal Mind disclosure and no duplicate result screen.
 - Shen signal-quality and deliberate start/stop controls: enabled.
-- Visualization sequence: Shen's native 3D face mask remains visible while positioning; pressing Shen's Start control switches to its native blood-flow overlay for measurement, and stopping returns to the face mask.
+- Visualization test: Shen's native 3D face mask and blood-flow overlay are both enabled at SDK initialization. This avoids relying on a mid-scan runtime toggle that Quick HR / UI V3 did not visibly honor.
 - The duplicate Universal Mind `Powered by Shen AI` line is removed; any SDK-owned branding remains governed by the licensed Shen interface and plan.
 - The proprietary canvas and runtime bytes are unchanged.
 - The blood-flow overlay is Shen's rPPG visualization, not hyperspectral imaging. No AR glasses layer is included in this version.
