@@ -640,7 +640,12 @@ requireCondition(!realtimeVoiceController.includes('Voice features are available
 requireCondition(realtimeVoiceController.includes('function shouldPreflightEntry() {\n    return false;') && realtimeVoiceController.includes('function showEntryPreflight() {\n    return false;'), 'direct room entry no longer explicitly bypasses the app-authored microphone preflight');
 requireCondition(controller.includes('shouldPreflightEntry?.()') && controller.includes('enterFromVoicePreflight()'), 'the television controller compatibility path for the removed preflight has changed unexpectedly');
 requireCondition(realtimeVoiceController.includes('installPermissionRecoveryCoordinator') && realtimeVoiceController.includes('returnToFullscreen(activationId)'), 'the shared permission/fullscreen recovery coordinator is missing');
-requireCondition(realtimeVoiceController.includes('document.addEventListener("fullscreenchange", handleFullscreenChange)') && realtimeVoiceController.includes('document.addEventListener("webkitfullscreenchange", handleFullscreenChange)'), 'permission recovery no longer observes standard and Safari fullscreen restoration');
+requireCondition(
+  realtimeVoiceController.includes('document.addEventListener("fullscreenchange", handleFullscreenLifecycle)')
+    && realtimeVoiceController.includes('document.addEventListener("webkitfullscreenchange", handleFullscreenLifecycle)')
+    && realtimeVoiceController.includes('document.webkitIsFullScreen === true'),
+  'permission recovery no longer observes standard and Safari fullscreen restoration',
+);
 requireCondition(realtimeVoiceController.includes('startupInputGate = true') && !realtimeVoiceController.includes('releaseStartupInputAfterGreeting'), 'the startup microphone gate has regressed to the unsafe greeting-timer implementation');
 requireCondition(realtimeVoiceController.includes('case "response.created":\n        engageAssistantOutputGate();') && realtimeVoiceController.includes('case "output_audio_buffer.started":') && realtimeVoiceController.includes('case "output_audio_buffer.stopped":') && realtimeVoiceController.includes('releaseInputAfterAssistantAudio();'), 'every assistant response is no longer gated until the WebRTC output buffer drains');
 requireCondition(realtimeVoiceController.includes('const enabled = active && !muted && !startupInputGate && !assistantOutputGate;'), 'assistant output can once again leave the microphone track enabled');

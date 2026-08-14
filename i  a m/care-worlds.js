@@ -122,7 +122,7 @@
         button.focus({ preventScroll: true });
       },
       hide(detail) {
-        if (detail?.activationId && card.dataset.activationId !== detail.activationId) return;
+        if (detail?.activationId && card.dataset.activationId && card.dataset.activationId !== detail.activationId) return;
         card.hidden = true;
         card.dataset.state = "idle";
         delete card.dataset.activationId;
@@ -142,12 +142,14 @@
   async function beginDeviceRecovery(scope, device) {
     const coordinator = window.IAMPermissionRecovery;
     if (typeof coordinator?.beginActivation !== "function") return null;
-    return coordinator.beginActivation({
+    const activation = await coordinator.beginActivation({
       surface: `care-${scope}`,
       devices: [device],
       presenter: rooms[scope]?.recovery,
       fullscreenTarget: document.querySelector(".site-shell") || document.documentElement,
     });
+    if (rooms[scope]) rooms[scope].recoveryActivation = activation;
+    return activation;
   }
 
   async function completeDeviceRecovery(activation) {
@@ -213,6 +215,10 @@
     const room = rooms[scope];
     if (!room?.camera || !room.preview) return;
     if (cameraTrack && cameraOwner === scope) {
+      if (room.recoveryActivation?.devices?.includes("camera")) {
+        cancelDeviceRecovery(room.recoveryActivation);
+        room.recoveryActivation = null;
+      }
       stopCamera(scope);
       writeStatus(scope, "Camera off");
       return;
@@ -252,6 +258,10 @@
     const room = rooms[scope];
     if (!room?.microphone) return;
     if (microphoneTrack && microphoneOwner === scope) {
+      if (room.recoveryActivation?.devices?.includes("microphone")) {
+        cancelDeviceRecovery(room.recoveryActivation);
+        room.recoveryActivation = null;
+      }
       stopMicrophone(scope);
       writeStatus(scope, "Microphone off");
       return;

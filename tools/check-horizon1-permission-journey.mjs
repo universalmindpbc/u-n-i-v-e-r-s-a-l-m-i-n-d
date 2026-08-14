@@ -50,6 +50,10 @@ assert.match(voice, /function shouldPreflightEntry\(\) \{\s*return false;/);
 assert.match(voice, /installPermissionRecoveryCoordinator/);
 assert.match(voice, /fullscreenLostDuringRequest/);
 assert.match(voice, /markDeviceRequestStarted/);
+assert.match(voice, /delayedFullscreenAssociationMs = 30000/);
+assert.match(voice, /document\.webkitIsFullScreen === true/);
+assert.match(voice, /document\.addEventListener\("webkitfullscreenchange", handleFullscreenLifecycle\)/);
+assert.doesNotMatch(voice, /waitForFullscreenTransition/);
 assert.match(voice, /permission_fullscreen_recovery_microphone_v1/);
 assert.match(voice, /permission_fullscreen_recovery_camera_v1/);
 assert.match(voice, /permission_fullscreen_recovery_camera_microphone_v1/);
@@ -148,6 +152,7 @@ const report = {
   combined_recovery: null,
   recovery_guardrails: null,
   safari_no_permissions_api: null,
+  delayed_cancellation: null,
   cleanup: false,
 };
 
@@ -171,10 +176,16 @@ try {
   const safariLateFullscreenEvent = await runVoiceRecoveryCheck({
     rewardAvailable: true,
     permissionsApi: "unsupported",
-    fullscreenEventTiming: "after-device-resolution",
+    fullscreenEventTiming: "delayed-post-success",
+    fullscreenApiMode: "webkit-legacy",
   });
-  const safariSurfaces = await runCareAndCircleChecks({ permissionsApi: "unsupported" });
+  const safariSurfaces = await runCareAndCircleChecks({
+    permissionsApi: "unsupported",
+    fullscreenEventDelayMs: 650,
+    fullscreenApiMode: "webkit-legacy",
+  });
   report.safari_no_permissions_api = {
+    delayed_surface_fixture: { fullscreen_event_delay_ms: 650, fullscreen_lifecycle: "webkit-legacy" },
     denial: safariDenial,
     universal_one: safariVoice,
     universal_one_late_fullscreen_event: safariLateFullscreenEvent,
@@ -182,6 +193,7 @@ try {
     care_talk: safariSurfaces.careTalk,
     circle: safariSurfaces.circle,
   };
+  report.delayed_cancellation = await runDelayedCancellationCheck();
   report.passed = true;
 } finally {
   await browser.close().catch(() => null);
@@ -301,10 +313,33 @@ async function runVoiceDenialCheck({ permissionsApi = "supported" } = {}) {
   return { microphone_calls: 1, clean_error: true, reward_calls: 0, recovery_offer: false };
 }
 
-async function runVoiceRecoveryCheck({ rewardAvailable, permissionsApi = "supported", fullscreenEventTiming = "during-request" }) {
-  const page = await makeVoiceFixture({ microphoneMode: "success", rewardAvailable, permissionsApi, fullscreenEventTiming });
+async function runVoiceRecoveryCheck({
+  rewardAvailable,
+  permissionsApi = "supported",
+  fullscreenEventTiming = "during-request",
+  fullscreenApiMode = "standard",
+}) {
+  const page = await makeVoiceFixture({
+    microphoneMode: "success",
+    rewardAvailable,
+    permissionsApi,
+    fullscreenEventTiming,
+    fullscreenApiMode,
+  });
   await page.evaluate(() => window.__voiceQa.setFullscreen(true));
   await page.evaluate(() => document.querySelector(".iam-realtime-voice__summon")?.click());
+  if (fullscreenEventTiming === "delayed-post-success") {
+    await page.waitForFunction(() => {
+      const pending = window.IAMPermissionRecovery?.getState?.().pending || [];
+      return pending.length === 1
+        && pending[0].deviceRequestCompleted === true
+        && pending[0].deviceAccessSucceeded === true
+        && pending[0].pendingAssociation === true;
+    });
+    await page.waitForTimeout(300);
+    assert.equal(await page.locator("[data-voice-fullscreen-recovery]").isHidden(), true, "Recovery must remain hidden before the delayed Safari fullscreen loss");
+    assert.equal(await page.evaluate(() => window.__voiceQa.fullscreen), true, "Delayed Safari fixture must still be fullscreen beyond the retired 220ms window");
+  }
   await page.waitForFunction(() => {
     const card = document.querySelector("[data-voice-fullscreen-recovery]");
     return card && !card.hidden && card.dataset.activationId && card.querySelector("[data-voice-recovery-title]")?.textContent === "VOICE READY";
@@ -366,14 +401,57 @@ async function runVoiceRecoveryCheck({ rewardAvailable, permissionsApi = "suppor
   }
 
   const result = rewardAvailable
-    ? { permission_interruption: true, fullscreen_confirmed: true, reward_recorded: true, award: 100, replay_calls: 0 }
-    : { permission_interruption: true, fullscreen_confirmed: true, reward_recorded: false, truthful_failure: true };
+    ? {
+      permission_interruption: true,
+      fullscreen_confirmed: true,
+      reward_recorded: true,
+      award: 100,
+      replay_calls: 0,
+      fullscreen_event_delay_ms: fullscreenEventTiming === "delayed-post-success" ? 650 : 0,
+      fullscreen_lifecycle: fullscreenApiMode,
+    }
+    : {
+      permission_interruption: true,
+      fullscreen_confirmed: true,
+      reward_recorded: false,
+      truthful_failure: true,
+      fullscreen_event_delay_ms: fullscreenEventTiming === "delayed-post-success" ? 650 : 0,
+      fullscreen_lifecycle: fullscreenApiMode,
+    };
   await page.context().close();
   return result;
 }
 
-async function runCareAndCircleChecks({ permissionsApi = "supported" } = {}) {
-  const page = await makeSurfaceFixture({ permissionsApi });
+async function runDelayedCancellationCheck() {
+  const page = await makeVoiceFixture({
+    microphoneMode: "success",
+    rewardAvailable: true,
+    permissionsApi: "unsupported",
+    fullscreenEventTiming: "delayed-post-success",
+    fullscreenApiMode: "webkit-legacy",
+  });
+  await page.evaluate(() => window.__voiceQa.setFullscreen(true));
+  await page.evaluate(() => document.querySelector(".iam-realtime-voice__summon")?.click());
+  await page.waitForFunction(() => window.IAMPermissionRecovery?.getState?.().pending?.[0]?.pendingAssociation === true);
+  await page.evaluate(() => window.IAMRealtimeVoiceAssistant.end("cancelled", { quiet: true }));
+  await page.waitForTimeout(800);
+  const state = await page.evaluate(() => ({
+    cardHidden: document.querySelector("[data-voice-fullscreen-recovery]")?.hidden === true,
+    pending: window.IAMPermissionRecovery.getState().pending.length,
+    active: window.IAMPermissionRecovery.getState().active.length,
+    rewardCalls: window.__voiceQa.rewardCalls,
+  }));
+  assert.deepEqual(state, { cardHidden: true, pending: 0, active: 0, rewardCalls: 0 });
+  await page.context().close();
+  return { pending_cancelled: true, delayed_exit_ignored: true, recovery_cards: 0, reward_calls: 0 };
+}
+
+async function runCareAndCircleChecks({
+  permissionsApi = "supported",
+  fullscreenEventDelayMs = 0,
+  fullscreenApiMode = "standard",
+} = {}) {
+  const page = await makeSurfaceFixture({ permissionsApi, fullscreenEventDelayMs, fullscreenApiMode });
   await page.evaluate(() => window.__permissionQa.setFullscreen(true));
   await page.locator('[data-care-open="connect"]').click();
   await page.locator('[data-care-device="microphone"]').click();
@@ -546,6 +624,13 @@ async function runRecoveryGuardrailChecks() {
     readyStates: 0,
     rewardCalls: 0,
   });
+  await page.waitForTimeout(700);
+  const stableNoLoss = await page.evaluate(() => ({
+    fullscreen: window.__permissionQa.fullscreen,
+    readyStates: window.__permissionQa.presenterStates.filter((entry) => entry.state === "ready").length,
+    rewardCalls: window.__permissionQa.rewardCalls,
+  }));
+  assert.deepEqual(stableNoLoss, { fullscreen: true, readyStates: 0, rewardCalls: 0 });
   await page.context().close();
   return {
     pre_granted: false,
@@ -568,7 +653,11 @@ async function makeCoordinatorFixture({ rewardMode }) {
   return page;
 }
 
-async function makeSurfaceFixture({ permissionsApi = "supported" } = {}) {
+async function makeSurfaceFixture({
+  permissionsApi = "supported",
+  fullscreenEventDelayMs = 0,
+  fullscreenApiMode = "standard",
+} = {}) {
   const context = await browser.newContext({ viewport: { width: 1280, height: 800 }, permissions: [], serviceWorkers: "block" });
   const page = await context.newPage();
   await page.goto(`${baseUrl}/privacy-first.html`, { waitUntil: "domcontentloaded" });
@@ -616,7 +705,13 @@ async function makeSurfaceFixture({ permissionsApi = "supported" } = {}) {
       </section>
     </main>
   `);
-  await installPermissionHarness(page, { rewardMode: "recorded", withAgora: true, permissionsApi });
+  await installPermissionHarness(page, {
+    rewardMode: "recorded",
+    withAgora: true,
+    permissionsApi,
+    fullscreenEventDelayMs,
+    fullscreenApiMode,
+  });
   await page.addStyleTag({ content: `${voiceCss}\n${careCss}\n${circleCss}` });
   await page.addScriptTag({ path: voiceSourcePath });
   await page.addScriptTag({ path: careSourcePath });
@@ -625,8 +720,14 @@ async function makeSurfaceFixture({ permissionsApi = "supported" } = {}) {
   return page;
 }
 
-async function installPermissionHarness(page, { rewardMode, withAgora = false, permissionsApi = "supported" }) {
-  await page.evaluate(({ rewardMode, withAgora, permissionsApi }) => {
+async function installPermissionHarness(page, {
+  rewardMode,
+  withAgora = false,
+  permissionsApi = "supported",
+  fullscreenEventDelayMs = 0,
+  fullscreenApiMode = "standard",
+}) {
+  await page.evaluate(({ rewardMode, withAgora, permissionsApi, fullscreenEventDelayMs, fullscreenApiMode }) => {
     const qa = {
       fullscreen: false,
       permission: { microphone: "prompt", camera: "prompt" },
@@ -637,20 +738,33 @@ async function installPermissionHarness(page, { rewardMode, withAgora = false, p
       presenterStates: [],
       setFullscreen(value) {
         this.fullscreen = Boolean(value);
-        document.dispatchEvent(new Event("fullscreenchange"));
+        document.dispatchEvent(new Event(fullscreenApiMode === "webkit-legacy" ? "webkitfullscreenchange" : "fullscreenchange"));
       },
     };
     window.__permissionQa = qa;
     Object.defineProperty(document, "fullscreenElement", {
       configurable: true,
-      get: () => qa.fullscreen ? document.querySelector(".site-shell") : null,
+      get: () => fullscreenApiMode === "standard" && qa.fullscreen ? document.querySelector(".site-shell") : null,
     });
     Object.defineProperty(document, "webkitFullscreenElement", { configurable: true, get: () => null });
-    Object.defineProperty(HTMLElement.prototype, "requestFullscreen", {
+    Object.defineProperty(document, "webkitIsFullScreen", {
       configurable: true,
-      writable: true,
-      value: async function requestFullscreen() { qa.setFullscreen(true); },
+      get: () => fullscreenApiMode === "webkit-legacy" && qa.fullscreen,
     });
+    if (fullscreenApiMode === "webkit-legacy") {
+      Object.defineProperty(HTMLElement.prototype, "requestFullscreen", { configurable: true, writable: true, value: undefined });
+      Object.defineProperty(HTMLElement.prototype, "webkitRequestFullscreen", {
+        configurable: true,
+        writable: true,
+        value: function webkitRequestFullscreen() { qa.setFullscreen(true); },
+      });
+    } else {
+      Object.defineProperty(HTMLElement.prototype, "requestFullscreen", {
+        configurable: true,
+        writable: true,
+        value: async function requestFullscreen() { qa.setFullscreen(true); },
+      });
+    }
     navigator.permissions.query = async ({ name }) => {
       if (permissionsApi === "unsupported") throw new TypeError("permission_name_not_supported");
       return { state: qa.permission[name] || "unknown", addEventListener() {} };
@@ -715,14 +829,16 @@ async function installPermissionHarness(page, { rewardMode, withAgora = false, p
         qa.microphoneCalls += 1;
         if (qa.permission.microphone === "denied") throw new DOMException("denied", "NotAllowedError");
         qa.permission.microphone = "granted";
-        qa.setFullscreen(false);
+        if (fullscreenEventDelayMs > 0) window.setTimeout(() => qa.setFullscreen(false), fullscreenEventDelayMs);
+        else qa.setFullscreen(false);
         return fakeTrack();
       },
       async createCameraVideoTrack() {
         qa.cameraCalls += 1;
         if (qa.permission.camera === "denied") throw new DOMException("denied", "NotAllowedError");
         qa.permission.camera = "granted";
-        qa.setFullscreen(false);
+        if (fullscreenEventDelayMs > 0) window.setTimeout(() => qa.setFullscreen(false), fullscreenEventDelayMs);
+        else qa.setFullscreen(false);
         return fakeTrack();
       },
     };
@@ -754,7 +870,7 @@ async function installPermissionHarness(page, { rewardMode, withAgora = false, p
       }
       close() { this.dispatchEvent(new Event("close")); }
     };
-  }, { rewardMode, withAgora, permissionsApi });
+  }, { rewardMode, withAgora, permissionsApi, fullscreenEventDelayMs, fullscreenApiMode });
 }
 
 async function makeVoiceFixture({
@@ -762,12 +878,13 @@ async function makeVoiceFixture({
   rewardAvailable,
   permissionsApi = "supported",
   fullscreenEventTiming = "during-request",
+  fullscreenApiMode = "standard",
 }) {
   const context = await browser.newContext({ viewport: { width: 1200, height: 760 }, permissions: [], serviceWorkers: "block" });
   const page = await context.newPage();
   await page.goto(`${baseUrl}/privacy-first.html`, { waitUntil: "domcontentloaded" });
   await page.setContent('<main class="site-shell"><section data-television-room></section></main>');
-  await page.evaluate(({ microphoneMode, rewardAvailable, permissionsApi, fullscreenEventTiming }) => {
+  await page.evaluate(({ microphoneMode, rewardAvailable, permissionsApi, fullscreenEventTiming, fullscreenApiMode }) => {
     const qa = {
       microphoneMode,
       permissionState: "prompt",
@@ -782,21 +899,38 @@ async function makeVoiceFixture({
     window.__voiceQa = qa;
     Object.defineProperty(document, "fullscreenElement", {
       configurable: true,
-      get: () => qa.fullscreen ? document.querySelector(".site-shell") : null,
+      get: () => fullscreenApiMode === "standard" && qa.fullscreen ? document.querySelector(".site-shell") : null,
     });
     Object.defineProperty(document, "webkitFullscreenElement", {
       configurable: true,
       get: () => null,
     });
-    Object.defineProperty(HTMLElement.prototype, "requestFullscreen", {
+    Object.defineProperty(document, "webkitIsFullScreen", {
       configurable: true,
-      writable: true,
-      value: async function requestFullscreen() {
-        qa.fullscreenRequests += 1;
-        qa.fullscreen = true;
-        document.dispatchEvent(new Event("fullscreenchange"));
-      },
+      get: () => fullscreenApiMode === "webkit-legacy" && qa.fullscreen,
     });
+    if (fullscreenApiMode === "webkit-legacy") {
+      Object.defineProperty(HTMLElement.prototype, "requestFullscreen", { configurable: true, writable: true, value: undefined });
+      Object.defineProperty(HTMLElement.prototype, "webkitRequestFullscreen", {
+        configurable: true,
+        writable: true,
+        value: function webkitRequestFullscreen() {
+          qa.fullscreenRequests += 1;
+          qa.fullscreen = true;
+          document.dispatchEvent(new Event("webkitfullscreenchange"));
+        },
+      });
+    } else {
+      Object.defineProperty(HTMLElement.prototype, "requestFullscreen", {
+        configurable: true,
+        writable: true,
+        value: async function requestFullscreen() {
+          qa.fullscreenRequests += 1;
+          qa.fullscreen = true;
+          document.dispatchEvent(new Event("fullscreenchange"));
+        },
+      });
+    }
     navigator.permissions.query = async ({ name }) => {
       if (name !== "microphone") throw new Error("unsupported_permission");
       qa.permissionQueries += 1;
@@ -812,9 +946,9 @@ async function makeVoiceFixture({
           qa.permissionState = "granted";
           const dispatchFullscreenLoss = () => {
             qa.fullscreen = false;
-            document.dispatchEvent(new Event("fullscreenchange"));
+            document.dispatchEvent(new Event(fullscreenApiMode === "webkit-legacy" ? "webkitfullscreenchange" : "fullscreenchange"));
           };
-          if (fullscreenEventTiming === "after-device-resolution") window.setTimeout(dispatchFullscreenLoss, 20);
+          if (fullscreenEventTiming === "delayed-post-success") window.setTimeout(dispatchFullscreenLoss, 650);
           else dispatchFullscreenLoss();
           const track = { enabled: true, contentHint: "", stop() {} };
           return {
@@ -866,7 +1000,7 @@ async function makeVoiceFixture({
         },
       };
     }
-  }, { microphoneMode, rewardAvailable, permissionsApi, fullscreenEventTiming });
+  }, { microphoneMode, rewardAvailable, permissionsApi, fullscreenEventTiming, fullscreenApiMode });
   await page.addStyleTag({ content: voiceCss });
   await page.addScriptTag({ path: voiceSourcePath });
   await page.waitForFunction(() => Boolean(window.IAMRealtimeVoiceAssistant));

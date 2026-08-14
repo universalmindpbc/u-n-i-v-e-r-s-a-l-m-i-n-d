@@ -321,7 +321,7 @@
           const shouldContinue = await recoveryResult.restored;
           if (!shouldContinue || !starting) return;
         }
-        if (!recoveryResult.eligible) microphoneFullscreenRecovery = null;
+        if (!recoveryResult.eligible && !recoveryResult.pending) microphoneFullscreenRecovery = null;
       }
 
       const audioContext = window.IAMTelevisionAudio?.getState?.() || {};
@@ -762,7 +762,11 @@
         fullscreenResumeButton.focus({ preventScroll: true });
       },
       hide(detail) {
-        if (detail?.activationId && fullscreenRecovery.dataset.activationId !== detail.activationId) return;
+        if (
+          detail?.activationId
+          && fullscreenRecovery.dataset.activationId
+          && fullscreenRecovery.dataset.activationId !== detail.activationId
+        ) return;
         fullscreenRecovery.hidden = true;
         fullscreenRecovery.dataset.state = "idle";
         delete fullscreenRecovery.dataset.activationId;
@@ -944,13 +948,18 @@
 
   function installPermissionRecoveryCoordinator() {
     const storageKey = "iamPermissionFullscreenRecoveryMilestonesV1";
+    const delayedFullscreenAssociationMs = 30000;
+    const fullscreenObservationIntervalMs = 200;
     const pendingDeviceRequests = new Map();
     const activeActivations = new Map();
     let lastReturnAttempt = null;
     let consumedMilestones = readConsumedMilestones();
 
-    document.addEventListener("fullscreenchange", handleFullscreenChange);
-    document.addEventListener("webkitfullscreenchange", handleFullscreenChange);
+    document.addEventListener("fullscreenchange", handleFullscreenLifecycle);
+    document.addEventListener("webkitfullscreenchange", handleFullscreenLifecycle);
+    document.addEventListener("visibilitychange", handleFullscreenLifecycle);
+    window.addEventListener("focus", handleFullscreenLifecycle);
+    window.addEventListener("resize", handleFullscreenLifecycle, { passive: true });
 
     function makeId() {
       return window.crypto?.randomUUID?.() || `permission-recovery-${Date.now()}-${Math.random().toString(36).slice(2)}`;
@@ -964,7 +973,12 @@
     }
 
     function isFullscreen() {
-      return Boolean(document.fullscreenElement || document.webkitFullscreenElement);
+      return Boolean(
+        document.fullscreenElement
+        || document.webkitFullscreenElement
+        || document.webkitCurrentFullScreenElement
+        || document.webkitIsFullScreen === true
+      );
     }
 
     function readConsumedMilestones() {
@@ -1014,13 +1028,20 @@
     async function beginActivation({ surface, devices, presenter, fullscreenTarget } = {}) {
       const normalizedDevices = normalizeDevices(devices);
       if (!normalizedDevices.length) throw new Error("permission_recovery_device_required");
+      const normalizedSurface = String(surface || "unknown");
+      for (const existing of pendingDeviceRequests.values()) {
+        if (existing.surface === normalizedSurface) cancelActivation(existing);
+      }
+      for (const existing of activeActivations.values()) {
+        if (existing.surface === normalizedSurface) cancelActivation(existing);
+      }
       const activation = {
         activationId: makeId(),
-        surface: String(surface || "unknown"),
+        surface: normalizedSurface,
         devices: normalizedDevices,
         presenter: presenter || null,
         fullscreenTarget: fullscreenTarget || document.querySelector(".site-shell") || document.documentElement,
-        beganInFullscreen: isFullscreen(),
+        beganInFullscreen: isFullscreen() || document.body?.classList.contains("television-is-fullscreen") === true,
         permissionBefore: {},
         permissionAfter: {},
         promptedDevices: [],
@@ -1029,8 +1050,15 @@
         rewardState: "idle",
         interrupted: false,
         deviceRequestStarted: false,
+        deviceRequestCompleted: false,
         deviceAccessSucceeded: false,
         fullscreenLostDuringRequest: false,
+        fullscreenLossSource: "",
+        pendingAssociation: false,
+        associationExpiresAt: 0,
+        associationExpiryTimer: 0,
+        associationPollTimer: 0,
+        finalized: false,
         eligible: false,
         restored: false,
         cancelled: false,
@@ -1052,9 +1080,85 @@
     async function completeActivation(activation) {
       if (!activation || activation.cancelled) return { eligible: false, restored: Promise.resolve(false) };
       activation.deviceAccessSucceeded = activation.deviceRequestStarted;
+      activation.deviceRequestCompleted = true;
       activation.permissionAfter = await permissionStates(activation.devices);
-      if (activation.beganInFullscreen) await waitForFullscreenTransition();
+      if (activation.beganInFullscreen && !isFullscreen()) {
+        markFullscreenLoss(activation, "completion-state");
+      }
+      if (activation.fullscreenLostDuringRequest) return finalizeActivation(activation);
+      if (canAwaitDelayedFullscreenLoss(activation)) {
+        armDelayedFullscreenAssociation(activation);
+        return { eligible: false, pending: true, restored: Promise.resolve(false) };
+      }
+      return finalizeActivation(activation);
+    }
+
+    function canAwaitDelayedFullscreenLoss(activation) {
+      if (!activation?.beganInFullscreen || !activation.deviceAccessSucceeded || !isFullscreen()) return false;
+      return activation.devices.some((device) => {
+        const before = activation.permissionBefore[device] || "unknown";
+        const after = activation.permissionAfter[device] || "unknown";
+        if (after === "denied" || before === "granted") return false;
+        return before === "prompt" || before === "unknown";
+      });
+    }
+
+    function armDelayedFullscreenAssociation(activation) {
+      if (!activation || activation.cancelled || activation.finalized || activation.pendingAssociation) return false;
+      activation.pendingAssociation = true;
+      activation.associationExpiresAt = Date.now() + delayedFullscreenAssociationMs;
+      activation.associationExpiryTimer = window.setTimeout(() => expireDelayedFullscreenAssociation(activation), delayedFullscreenAssociationMs);
+      scheduleFullscreenObservation(activation);
+      return true;
+    }
+
+    function scheduleFullscreenObservation(activation) {
+      window.clearTimeout(activation?.associationPollTimer);
+      if (!activation?.pendingAssociation || activation.cancelled || activation.finalized) return;
+      activation.associationPollTimer = window.setTimeout(() => {
+        if (!activation.pendingAssociation || activation.cancelled || activation.finalized) return;
+        if (!isFullscreen()) {
+          markFullscreenLoss(activation, "bounded-observer");
+          return;
+        }
+        scheduleFullscreenObservation(activation);
+      }, fullscreenObservationIntervalMs);
+    }
+
+    function expireDelayedFullscreenAssociation(activation) {
+      if (!activation?.pendingAssociation || activation.cancelled || activation.finalized) return false;
+      clearPendingAssociation(activation);
+      activation.associationExpired = true;
+      activation.presenter?.hide?.({ activationId: activation.activationId });
+      return true;
+    }
+
+    function clearPendingAssociation(activation) {
+      if (!activation) return;
       pendingDeviceRequests.delete(activation.activationId);
+      window.clearTimeout(activation.associationExpiryTimer);
+      window.clearTimeout(activation.associationPollTimer);
+      activation.associationExpiryTimer = 0;
+      activation.associationPollTimer = 0;
+      activation.pendingAssociation = false;
+      activation.associationExpiresAt = 0;
+    }
+
+    function markFullscreenLoss(activation, source) {
+      if (!activation?.beganInFullscreen || !activation.deviceRequestStarted || activation.cancelled || activation.finalized) return false;
+      activation.fullscreenLostDuringRequest = true;
+      activation.fullscreenLossSource = String(source || "fullscreen-lifecycle");
+      if (activation.deviceRequestCompleted && activation.deviceAccessSucceeded) finalizeActivation(activation);
+      return true;
+    }
+
+    function finalizeActivation(activation) {
+      if (!activation || activation.cancelled) return { eligible: false, pending: false, restored: Promise.resolve(false) };
+      if (activation.finalized) {
+        return { eligible: activation.eligible, pending: false, restored: activation.restoredPromise };
+      }
+      activation.finalized = true;
+      clearPendingAssociation(activation);
       activation.interrupted = activation.beganInFullscreen
         && activation.fullscreenLostDuringRequest
         && activation.deviceAccessSucceeded
@@ -1070,7 +1174,7 @@
       activation.eligible = activation.interrupted && activation.promptedDevices.length > 0;
       if (!activation.eligible) {
         activation.presenter?.hide?.({ activationId: activation.activationId });
-        return { eligible: false, restored: Promise.resolve(false) };
+        return { eligible: false, pending: false, restored: Promise.resolve(false) };
       }
 
       for (const existing of activeActivations.values()) {
@@ -1090,7 +1194,7 @@
       });
       window.requestAnimationFrame(() => activation.presenter?.focusReturn?.({ activationId: activation.activationId }));
       void updateRewardOfferEligibility(activation);
-      return { eligible: true, restored: activation.restoredPromise };
+      return { eligible: true, pending: false, restored: activation.restoredPromise };
     }
 
     async function updateRewardOfferEligibility(activation) {
@@ -1117,7 +1221,7 @@
     function cancelActivation(activation) {
       if (!activation || activation.restored || activation.cancelled) return false;
       activation.cancelled = true;
-      pendingDeviceRequests.delete(activation.activationId);
+      clearPendingAssociation(activation);
       activeActivations.delete(activation.activationId);
       activation.presenter?.hide?.({ activationId: activation.activationId });
       activation.resolveRestored?.(false);
@@ -1138,8 +1242,8 @@
       activation.presenter?.showReturning?.({ activationId: activation.activationId });
       const requested = requestFullscreen(activation.fullscreenTarget);
       const requestSucceeded = await requested;
-      await waitForFullscreenTransition();
-      if (!requestSucceeded || !isFullscreen()) {
+      const fullscreenConfirmed = await waitForFullscreenState(true);
+      if (!requestSucceeded || !fullscreenConfirmed) {
         activation.presenter?.showRetry?.({ activationId: activation.activationId });
         return false;
       }
@@ -1159,12 +1263,10 @@
       return Promise.resolve(false);
     }
 
-    function handleFullscreenChange() {
+    function handleFullscreenLifecycle(event) {
       if (!isFullscreen()) {
         for (const activation of pendingDeviceRequests.values()) {
-          if (activation.beganInFullscreen && activation.deviceRequestStarted && !activation.cancelled) {
-            activation.fullscreenLostDuringRequest = true;
-          }
+          markFullscreenLoss(activation, event?.type || "fullscreen-lifecycle");
         }
         return;
       }
@@ -1260,18 +1362,44 @@
       window.setTimeout(() => activation.presenter?.hide?.({ activationId: activation.activationId }), 3400);
     }
 
-    function waitForFullscreenTransition() {
-      return new Promise((resolve) => window.setTimeout(resolve, 220));
+    function waitForFullscreenState(expected, timeoutMs = 3000) {
+      const startedAt = Date.now();
+      return new Promise((resolve) => {
+        const observe = () => {
+          if (isFullscreen() === expected) {
+            resolve(true);
+            return;
+          }
+          if (Date.now() - startedAt >= timeoutMs) {
+            resolve(false);
+            return;
+          }
+          window.setTimeout(observe, 50);
+        };
+        observe();
+      });
     }
 
     return {
-      version: "permission_fullscreen_recovery_v1",
+      version: "permission_fullscreen_recovery_v2",
       beginActivation,
       markDeviceRequestStarted,
       completeActivation,
       cancelActivation,
       returnToFullscreen,
       getState: () => ({
+        pending: Array.from(pendingDeviceRequests.values()).map((activation) => ({
+          activationId: activation.activationId,
+          surface: activation.surface,
+          devices: [...activation.devices],
+          beganInFullscreen: activation.beganInFullscreen,
+          deviceRequestCompleted: activation.deviceRequestCompleted,
+          deviceAccessSucceeded: activation.deviceAccessSucceeded,
+          pendingAssociation: activation.pendingAssociation,
+          associationExpiresAt: activation.associationExpiresAt,
+          fullscreenLostDuringRequest: activation.fullscreenLostDuringRequest,
+          fullscreenLossSource: activation.fullscreenLossSource,
+        })),
         active: Array.from(activeActivations.values()).map((activation) => ({
           activationId: activation.activationId,
           surface: activation.surface,

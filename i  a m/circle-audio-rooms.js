@@ -149,7 +149,7 @@
         button.focus({ preventScroll: true });
       },
       hide(detail) {
-        if (detail?.activationId && card.dataset.activationId !== detail.activationId) return;
+        if (detail?.activationId && card.dataset.activationId && card.dataset.activationId !== detail.activationId) return;
         card.hidden = true;
         card.dataset.state = "idle";
         delete card.dataset.activationId;
@@ -168,12 +168,14 @@
   async function beginMicrophoneRecovery() {
     const coordinator = window.IAMPermissionRecovery;
     if (typeof coordinator?.beginActivation !== "function") return null;
-    return coordinator.beginActivation({
+    const activation = await coordinator.beginActivation({
       surface: "circle",
       devices: ["microphone"],
       presenter: circleRecoveryPresenter,
       fullscreenTarget: document.querySelector(".site-shell") || document.documentElement,
     });
+    microphoneRecoveryActivation = activation;
+    return activation;
   }
 
   function cancelMicrophoneRecovery() {
@@ -598,6 +600,7 @@
         state.muted = false;
         startWalletWaveform(localTrack);
       } else {
+        cancelMicrophoneRecovery();
         await localTrack?.setMuted(true);
         state.muted = true;
         stopWalletWaveform("muted");
