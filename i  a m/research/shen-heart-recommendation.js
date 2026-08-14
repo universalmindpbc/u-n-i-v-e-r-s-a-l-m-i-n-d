@@ -110,7 +110,7 @@ export async function reconcileHeartCheckInference(heartRate, {
     environment_context: environmentContext(previousInference),
     momentary_physiology: {
       heart_rate_bpm: bpm,
-      measurement_duration_seconds: 30,
+      measurement_duration_seconds: 10,
       measurement_timing: "immediately_after_current_self_report",
       source: "shen_quick_hr",
     },
@@ -137,7 +137,7 @@ export async function reconcileHeartCheckInference(heartRate, {
 }
 
 export const heartCheckInferencePrivacy = Object.freeze({
-  measurement_duration_seconds: 30,
+  measurement_duration_seconds: 10,
   scope: "current_session_only",
   raw_heart_rate_sent_to_openai: false,
   raw_heart_rate_returned: false,

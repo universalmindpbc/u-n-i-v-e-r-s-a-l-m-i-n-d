@@ -38,11 +38,14 @@ test("research page is the existing I AM scene with one compact native prompt", 
   assert.match(page, /data-heart-rate-loader/);
   assert.match(page, /data-heart-rate-live/);
   assert.match(page, /data-heart-rate-result/);
+  assert.match(page, /data-heart-rate-ar-glasses/);
+  assert.match(page, /heart-check-glasses-lens/);
+  assert.match(page, /heart-check-glasses-frame/);
   assert.match(page, /Your heart rate/);
   assert.match(page, /Universal Mind \[ I o H \] Logo 512\.png/);
   assert.match(page, />Loading</);
-  assert.match(page, /shen-heart-rate\.css\?v=shen-heart-rate-css-ca569084e0a2/);
-  assert.match(page, /shen-heart-rate\.js\?v=shen-heart-rate-js-d45c36d9bf66/);
+  assert.match(page, /shen-heart-rate\.css\?v=shen-heart-rate-css-bc71eff45110/);
+  assert.match(page, /shen-heart-rate\.js\?v=shen-heart-rate-js-dba3b221c7ba/);
   assert.equal((page.match(/role="dialog"/g) || []).length, 1);
   assert.equal((page.match(/not a medical or mental-health diagnosis/g) || []).length, 1);
   assert.doesNotMatch(page, /type="checkbox"|Heart Light|paired result|shen-heart-rate-wellness/i);
@@ -52,24 +55,26 @@ test("research page is the existing I AM scene with one compact native prompt", 
   assert.match(css, /overflow:\s*hidden/);
   assert.match(css, /\.shen-heart-rate-live\s*\{/);
   assert.match(css, /\.shen-heart-rate-result\s*\{/);
+  assert.match(css, /\.shen-heart-rate-ar-glasses\s*\{/);
+  assert.match(css, /pointer-events:\s*none/);
   assert.match(css, /width:\s*min\(638px, calc\(100vw - 38px\)\)/);
   assert.match(css, /\.shen-heart-rate-offer h2\s*\{[^}]*font-size:\s*20px/s);
   assert.match(css, /\.shen-heart-rate-offer p\s*\{[^}]*font-size:\s*12\.5px/s);
   assert.match(css, /\.shen-heart-rate-offer \.induction-permission__actions button\s*\{[^}]*min-height:\s*38px[^}]*font-size:\s*11\.25px/s);
   assert.doesNotMatch(css, /shen-heart-rate-attribution/);
-  assert.doesNotMatch(css, /glasses|bubble|spectral|prism/i);
+  assert.doesNotMatch(page, /deepar\.js|licenseKey|bright-glasses\.deepar/i);
 });
 
-test("browser controller delegates a 30-second heart-rate-only measurement to Shen", async () => {
+test("browser controller delegates a 10-second heart-rate-only face-map measurement to Shen", async () => {
   const source = await read(resolve(researchDirectory, "shen-heart-rate.js"));
   const runtime = await read(resolve(researchDirectory, "vendor", "shenai-sdk", "shenai_sdk.mjs"));
 
   assert.match(source, /\.\/vendor\/shenai-sdk\/index\.mjs/);
-  assert.match(source, /shen-heart-recommendation\.js\?v=db4d107c66bd/);
+  assert.match(source, /shen-heart-recommendation\.js\?v=b3de95f8a562/);
   assert.match(source, /MeasurementPreset\.CUSTOM/);
   assert.match(source, /setCustomMeasurementConfig\(customMeasurementConfig\)/);
   assert.match(source, /typeof shenaiSDK\.setCustomMeasurementConfig !== "function"/);
-  assert.match(source, /durationSeconds:\s*30/);
+  assert.match(source, /durationSeconds:\s*10/);
   assert.match(source, /instantMetrics:\s*\[Metric\.HEART_RATE\]/);
   assert.match(source, /summaryMetrics:\s*\[Metric\.HEART_RATE\]/);
   assert.match(source, /realtimeHrPeriodSeconds:\s*4/);
@@ -77,9 +82,14 @@ test("browser controller delegates a 30-second heart-rate-only measurement to Sh
   assert.match(source, /showUserInterface:\s*true/);
   assert.match(source, /showDisclaimer:\s*false/);
   assert.match(source, /showInfoButton:\s*false/);
-  assert.match(source, /showFaceMask:\s*false/);
+  assert.match(source, /showFaceMask:\s*true/);
   assert.match(source, /showBloodFlow:\s*true/);
-  assert.match(source, /shenVisualizationConfig\s*=\s*"blood-flow-only"/);
+  assert.match(source, /shenVisualizationConfig\s*=\s*"face-map-and-blood-flow"/);
+  assert.match(source, /setShowFaceMask\?\.\(true\)/);
+  assert.match(source, /setShowBloodFlow\?\.\(true\)/);
+  assert.match(source, /getNormalizedFaceBbox/);
+  assert.match(source, /requestAnimationFrame\(positionArGlasses\)/);
+  assert.match(source, /stage\.addEventListener\("click", startArGlasses\)/);
   assert.doesNotMatch(source, /OperatingMode|setShenVisualization|visualizationMonitor/);
   assert.match(runtime, /SetShowFaceMask/);
   assert.match(runtime, /SetShowBloodFlow/);
@@ -91,7 +101,10 @@ test("browser controller delegates a 30-second heart-rate-only measurement to Sh
   assert.match(source, /enablePreloadDisplay:\s*false/);
   assert.match(source, /hidePreloadDisplayLogo:\s*true/);
   assert.match(source, /onWasmLoadingProgress:\s*setLoadingProgress/);
-  assert.doesNotMatch(source, /getUserMedia|MediaRecorder|ImageCapture|DeepAR|AR glasses|HRV|Stress Index/i);
+  assert.doesNotMatch(source, /getUserMedia|MediaRecorder|ImageCapture|DeepAR|HRV|Stress Index/i);
+  const arController = source.match(/function boundedUnit[\s\S]*?function normalizedHeartRate/)?.[0] || "";
+  assert.ok(arController);
+  assert.doesNotMatch(arController, /getHeartRate|BPM|heart.?rate.?band|threshold|inferred|weather|location|confidence/i);
   assert.doesNotMatch(source, /(?:api|license|secret)[_-]?key\s*[:=]\s*["'][A-Za-z0-9_-]{16,}/i);
 });
 
@@ -114,7 +127,7 @@ test("heart rate is momentary and only a privacy-safe current inference continue
   assert.doesNotMatch(source, /selection_needs/);
   assert.doesNotMatch(source, /heartbeats|hrv_|stress_index|photo|video|waveform|rrIntervals/i);
   assert.match(recommendationSource, /heart_rate_bpm:\s*bpm/);
-  assert.match(recommendationSource, /measurement_duration_seconds:\s*30/);
+  assert.match(recommendationSource, /measurement_duration_seconds:\s*10/);
   assert.match(recommendationSource, /raw_heart_rate_sent_to_openai:\s*false/);
   assert.match(recommendationSource, /direct_heart_rate_to_song_room_band_carrier_or_dsp:\s*false/);
   assert.doesNotMatch(recommendationSource, /band_intent|carrier_intent|ADAPTIVE_SOUND_SESSION_CHOICE_KEY/);
@@ -129,7 +142,7 @@ test("heart-rate completion reconciles only through the first-party current infe
   } = await import("../shen-heart-recommendation.js");
 
   assert.deepEqual(heartCheckInferencePrivacy, {
-    measurement_duration_seconds: 30,
+    measurement_duration_seconds: 10,
     scope: "current_session_only",
     raw_heart_rate_sent_to_openai: false,
     raw_heart_rate_returned: false,
@@ -181,7 +194,7 @@ test("heart-rate completion reconciles only through the first-party current infe
   assert.equal(requests[0].url, "api/citizen-needs-inference.php");
   const requestBody = JSON.parse(requests[0].options.body);
   assert.equal(requestBody.momentary_physiology.heart_rate_bpm, 72);
-  assert.equal(requestBody.momentary_physiology.measurement_duration_seconds, 30);
+  assert.equal(requestBody.momentary_physiology.measurement_duration_seconds, 10);
   assert.equal(requestBody.checkin, "I am energised after surfing");
   assert.equal(requestBody.environment_context.location_label, "coastal");
   assert.deepEqual(writes.map(({ key }) => key), ["iamLatestInference", "citizenNeedsLatestInference"]);

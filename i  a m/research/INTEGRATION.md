@@ -17,15 +17,16 @@ This B route reuses the canonical check-in at render time. It does not duplicate
 - Official Web SDK package: `@shenai/sdk` 3.1.9.
 - SDK UI: visible and unmodified inside a portrait-cropped Universal Mind wrapper.
 - SDK theme: unchanged because brand colour customization is locked on Starter.
-- Measurement: `MeasurementPreset.CUSTOM` — 30-second heart rate only, with 4-second live heart-rate feedback and the final heart rate shown momentarily before navigation.
+- Measurement: `MeasurementPreset.CUSTOM` — 10-second heart rate only, with 4-second live heart-rate feedback and the final heart rate shown momentarily before navigation.
 - Precision: strict.
 - Onboarding: hidden.
 - Shen disclaimer, information and summary/result controls: disabled through supported SDK settings so the journey has one Universal Mind disclosure and no duplicate result screen.
 - Shen signal-quality and deliberate start/stop controls: enabled.
-- Visualization test: Shen's native 3D face mask is disabled and its blood-flow overlay is enabled at SDK initialization. This isolates whether Quick HR / UI V3 exposes the coloured overlay without the white mesh taking precedence.
+- Visualization: Shen's native 3D face map and blood-flow overlay are both enabled at SDK initialization. The face map remains the visible alignment and signal-quality layer even when Starter / Quick HR does not expose a coloured blood-flow rendering.
 - Both preload and embedded Shen logo controls are requested through supported SDK settings, including one runtime retry after initialization. If Starter remote configuration still renders SDK-owned branding, the wrapper does not cover or alter it.
 - The proprietary canvas and runtime bytes are unchanged.
-- The blood-flow overlay is Shen's rPPG visualization, not hyperspectral imaging. No AR glasses layer is included in this version.
+- The blood-flow overlay is Shen's rPPG visualization, not hyperspectral imaging.
+- A fixed-colour Universal Mind glasses layer sits above the Shen canvas without intercepting camera controls. It uses Shen's transient normalized face box when available and a centred alignment-guide position otherwise; its geometry exists only in the live DOM and is cleared with the camera. It does not open a second camera stream, store facial geometry, import a DeepAR runtime/effect or contain any BPM/HR-band colour mapping. The DeepAR Bright Glasses project is the approved visual reference; a domain-bound DeepAR licence is still required before its proprietary effect can replace this task-owned vector rendition.
 
 ## Credential boundary
 
@@ -49,7 +50,7 @@ The route must remain a PHP response or receive equivalent server headers if it 
 
 ## Ephemeral result and inference handoff
 
-The Shen camera stream is processed live and is never recorded or stored by this journey. During the supported 30-second measurement, a 4-second heart-rate value may be rendered ephemerally in the Universal Mind wrapper. On completion, the controller reads the final heart-rate value once in memory, releases Shen, starts one same-origin first-party inference reconciliation, shows the final BPM for 2.2 seconds, then clears the displayed value before navigation.
+The Shen camera stream is processed live and is never recorded or stored by this journey. During the supported 10-second measurement, a 4-second heart-rate value may be rendered ephemerally in the Universal Mind wrapper. On completion, the controller reads the final heart-rate value once in memory, releases Shen, starts one same-origin first-party inference reconciliation, shows the final BPM for 2.2 seconds, then clears the displayed value before navigation.
 
 The first-party Worker strips raw BPM before constructing its OpenAI request, reconciles the model's current inference locally as supporting, conflicting or unavailable, and returns no raw BPM. The browser accepts and stores only that privacy-safe current-session inference. No BPM, signal quality, timestamp, provider, photo, video, raw waveform, heartbeat array, HRV, Stress Index, pseudonymous biometric identifier or research record is stored, logged, placed in a URL or sent to ordinary analytics. Earlier prototype keys are removed if present.
 

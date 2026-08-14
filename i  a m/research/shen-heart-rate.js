@@ -6,7 +6,7 @@ import CreateShenaiSDK, {
   PrecisionMode,
   UiVersion,
 } from "./vendor/shenai-sdk/index.mjs";
-import { reconcileHeartCheckInference } from "./shen-heart-recommendation.js?v=db4d107c66bd";
+import { reconcileHeartCheckInference } from "./shen-heart-recommendation.js?v=b3de95f8a562";
 
 const offer = document.querySelector("[data-heart-rate-offer]");
 const offerPanel = document.querySelector("[data-heart-rate-offer-panel]");
@@ -20,6 +20,7 @@ const loadingTrack = document.querySelector("[data-heart-rate-loading-track]");
 const loadingProgress = document.querySelector("[data-heart-rate-loading-progress]");
 const liveHeartRate = document.querySelector("[data-heart-rate-live]");
 const liveHeartRateValue = document.querySelector("[data-heart-rate-live-value]");
+const arGlasses = document.querySelector("[data-heart-rate-ar-glasses]");
 const finalHeartRate = document.querySelector("[data-heart-rate-result]");
 const finalHeartRateValue = document.querySelector("[data-heart-rate-result-value]");
 const status = document.querySelector("[data-shen-status]");
@@ -33,6 +34,8 @@ let transientMeasurementId = null;
 let isStarting = false;
 let isFinishing = false;
 let liveHeartRateTimer = 0;
+let arGlassesFrame = 0;
+let arGlassesActive = false;
 
 const FINAL_READING_HOLD_MS = 2200;
 
@@ -101,11 +104,85 @@ function showLoader(label, { showProgress = true } = {}) {
 
 function showMeasurementInterface() {
   stage.dataset.state = "measurement";
-  stage.dataset.shenVisualizationConfig = "blood-flow-only";
-  stage.dataset.shenMeasurement = "heart-rate-30-seconds";
+  stage.dataset.shenVisualizationConfig = "face-map-and-blood-flow";
+  stage.dataset.shenMeasurement = "heart-rate-10-seconds";
   loader.hidden = true;
   canvas.removeAttribute("aria-hidden");
   startLiveHeartRateMonitor();
+}
+
+function boundedUnit(value) {
+  const number = Number(value);
+  return Number.isFinite(number) ? Math.max(0, Math.min(1, number)) : null;
+}
+
+function normalizedFaceBox(value) {
+  if (!value) return null;
+  const candidate = value.boundingBox || value.bbox || value;
+  const values = Array.isArray(candidate) || ArrayBuffer.isView(candidate)
+    ? Array.from(candidate)
+    : null;
+  let left = values?.[0] ?? candidate.left ?? candidate.x ?? candidate.xMin ?? candidate.x_min;
+  let top = values?.[1] ?? candidate.top ?? candidate.y ?? candidate.yMin ?? candidate.y_min;
+  let width = values?.[2] ?? candidate.width ?? candidate.w;
+  let height = values?.[3] ?? candidate.height ?? candidate.h;
+
+  const right = candidate.right ?? candidate.xMax ?? candidate.x_max;
+  const bottom = candidate.bottom ?? candidate.yMax ?? candidate.y_max;
+  if (!values && width == null && right != null) width = Number(right) - Number(left);
+  if (!values && height == null && bottom != null) height = Number(bottom) - Number(top);
+
+  left = boundedUnit(left);
+  top = boundedUnit(top);
+  width = boundedUnit(width);
+  height = boundedUnit(height);
+  if (left === null || top === null || width === null || height === null) return null;
+  if (width < 0.08 || height < 0.1 || left + width > 1.05 || top + height > 1.05) return null;
+  return { left, top, width, height };
+}
+
+function positionArGlasses() {
+  if (!arGlassesActive) return;
+  let faceBox = null;
+  try {
+    faceBox = normalizedFaceBox(shenaiSDK?.getNormalizedFaceBbox?.());
+  } catch {
+    // Shen retains ownership of face detection; the centred guide remains safe.
+  }
+
+  if (faceBox) {
+    const centreX = faceBox.left + (faceBox.width / 2);
+    const eyeLine = faceBox.top + (faceBox.height * 0.39);
+    const glassesWidth = Math.max(0.24, Math.min(0.52, faceBox.width * 1.12));
+    arGlasses.style.setProperty("--ar-glasses-x", `${centreX * 100}%`);
+    arGlasses.style.setProperty("--ar-glasses-y", `${eyeLine * 100}%`);
+    arGlasses.style.setProperty("--ar-glasses-width", `${glassesWidth * 100}%`);
+    arGlasses.dataset.tracking = "face";
+  } else {
+    arGlasses.style.removeProperty("--ar-glasses-x");
+    arGlasses.style.removeProperty("--ar-glasses-y");
+    arGlasses.style.removeProperty("--ar-glasses-width");
+    arGlasses.dataset.tracking = "guide";
+  }
+  arGlassesFrame = window.requestAnimationFrame(positionArGlasses);
+}
+
+function startArGlasses() {
+  if (arGlassesActive || stage.dataset.state !== "measurement") return;
+  arGlassesActive = true;
+  arGlasses.hidden = false;
+  positionArGlasses();
+}
+
+function stopArGlasses() {
+  arGlassesActive = false;
+  window.cancelAnimationFrame(arGlassesFrame);
+  arGlassesFrame = 0;
+  arGlasses.hidden = true;
+  arGlasses.dataset.tracking = "guide";
+  arGlasses.style.removeProperty("--ar-glasses-x");
+  arGlasses.style.removeProperty("--ar-glasses-y");
+  arGlasses.style.removeProperty("--ar-glasses-width");
 }
 
 function normalizedHeartRate(value) {
@@ -162,6 +239,7 @@ async function releaseShen() {
   const active = shenaiSDK;
   shenaiSDK = null;
   stopLiveHeartRateMonitor();
+  stopArGlasses();
   transientMeasurementId = null;
   try {
     active?.deinitialize?.();
@@ -221,13 +299,13 @@ async function requestShortTermToken() {
 function initializeWithToken(token) {
   return new Promise((resolve, reject) => {
     const customMeasurementConfig = {
-      durationSeconds: 30,
+      durationSeconds: 10,
       instantMetrics: [Metric.HEART_RATE],
       summaryMetrics: [Metric.HEART_RATE],
       realtimeHrPeriodSeconds: 4,
     };
     if (typeof shenaiSDK.setCustomMeasurementConfig !== "function") {
-      reject(new Error("The 30-second Heart Check is unavailable in this SDK."));
+      reject(new Error("The 10-second Heart Check is unavailable in this SDK."));
       return;
     }
     shenaiSDK.setCustomMeasurementConfig(customMeasurementConfig);
@@ -242,7 +320,7 @@ function initializeWithToken(token) {
       showInfoButton: false,
       showStartStopButton: true,
       showSignalQualityIndicator: true,
-      showFaceMask: false,
+      showFaceMask: true,
       showBloodFlow: true,
       enableSummaryScreen: false,
       showResultsFinishButton: false,
@@ -262,6 +340,8 @@ function initializeWithToken(token) {
     shenaiSDK.initialize(token, transientMeasurementId, settings, (result) => {
       if (result === InitializationResult.OK) {
         stage.dataset.shenCustomMeasurement = "runtime-setter";
+        shenaiSDK.setShowFaceMask?.(true);
+        shenaiSDK.setShowBloodFlow?.(true);
         shenaiSDK.setHideShenaiLogo?.(true);
         stage.dataset.shenBranding = shenaiSDK.getHideShenaiLogo?.() === true
           ? "hidden"
@@ -308,6 +388,7 @@ async function beginShenMeasurement() {
 
 acceptButton.addEventListener("click", beginShenMeasurement);
 skipButton.addEventListener("click", () => window.location.assign(experienceUrl()));
+stage.addEventListener("click", startArGlasses);
 window.addEventListener("pagehide", releaseShen);
 
 clearLegacyHeartData();

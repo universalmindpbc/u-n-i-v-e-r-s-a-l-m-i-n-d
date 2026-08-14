@@ -40,6 +40,59 @@
   opacity: 1;
 }
 
+.shen-heart-rate-ar-glasses {
+  --ar-glasses-x: 50%;
+  --ar-glasses-y: 42%;
+  --ar-glasses-width: 48%;
+  position: absolute;
+  inset: 50% auto auto 50%;
+  z-index: 2;
+  width: var(--shen-canvas-size);
+  height: var(--shen-canvas-size);
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+}
+
+.shen-heart-rate-ar-glasses[hidden] {
+  display: none;
+}
+
+.shen-heart-rate-ar-glasses svg {
+  position: absolute;
+  left: var(--ar-glasses-x);
+  top: var(--ar-glasses-y);
+  width: var(--ar-glasses-width);
+  height: auto;
+  overflow: visible;
+  filter: drop-shadow(0 7px 8px rgba(7, 18, 19, 0.2));
+  transform: translate(-50%, -50%);
+  transform-origin: center;
+}
+
+.shen-heart-rate-ar-glasses__lens {
+  fill: url("#heart-check-glasses-lens");
+}
+
+.shen-heart-rate-ar-glasses__frame {
+  fill: none;
+  stroke: url("#heart-check-glasses-frame");
+  stroke-linejoin: round;
+  stroke-width: 8;
+}
+
+.shen-heart-rate-ar-glasses__lights {
+  fill: rgba(224, 255, 184, 0.9);
+  stroke: rgba(255, 249, 218, 0.82);
+  stroke-width: 1;
+}
+
+.shen-heart-rate-ar-glasses__shine {
+  fill: none;
+  stroke: rgba(255, 255, 255, 0.58);
+  stroke-linecap: round;
+  stroke-width: 5;
+}
+
 .shen-heart-rate-live {
   position: absolute;
   left: 50%;

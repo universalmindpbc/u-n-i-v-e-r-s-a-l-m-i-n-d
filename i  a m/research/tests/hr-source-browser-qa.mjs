@@ -147,11 +147,11 @@ try {
   await acceptPage.locator('[data-shen-stage][data-state="measurement"]').waitFor({ state: "visible", timeout: 90_000 });
   assert.equal(
     await acceptPage.locator("[data-shen-stage]").getAttribute("data-shen-visualization-config"),
-    "blood-flow-only",
+    "face-map-and-blood-flow",
   );
   assert.equal(
     await acceptPage.locator("[data-shen-stage]").getAttribute("data-shen-measurement"),
-    "heart-rate-30-seconds",
+    "heart-rate-10-seconds",
   );
   assert.equal(
     await acceptPage.locator("[data-shen-stage]").getAttribute("data-shen-custom-measurement"),
@@ -179,6 +179,7 @@ try {
   const stageBox = await acceptPage.locator("[data-shen-stage]").boundingBox();
   assert.ok(stageBox);
   await acceptPage.mouse.click(stageBox.x + (stageBox.width / 2), stageBox.y + (stageBox.height * 0.89));
+  await acceptPage.locator("[data-heart-rate-ar-glasses]").waitFor({ state: "visible", timeout: 4_000 });
   await acceptPage.waitForFunction(() => (
     (window.__hrQaMediaTracks?.length || 0) > 0
       || (window.__hrQaMediaErrors?.length || 0) > 0
@@ -195,6 +196,25 @@ try {
   assert.ok(cameraEvidence.tracks.filter(({ kind }) => kind === "video").length >= 1);
   assert.equal(cameraEvidence.tracks.filter(({ kind }) => kind === "audio").length, 0);
   await acceptPage.waitForTimeout(1_000);
+  const arGlassesEvidence = await acceptPage.locator("[data-heart-rate-ar-glasses]").evaluate((element) => {
+    const planeRect = element.getBoundingClientRect();
+    const glassesRect = element.querySelector("svg").getBoundingClientRect();
+    const styles = getComputedStyle(element);
+    return {
+      visible: !element.hidden,
+      tracking: element.dataset.tracking,
+      pointerEvents: styles.pointerEvents,
+      planeWidth: Math.round(planeRect.width),
+      glassesWidth: Math.round(glassesRect.width),
+      ledCount: element.querySelectorAll(".shen-heart-rate-ar-glasses__lights circle").length,
+    };
+  });
+  assert.equal(arGlassesEvidence.visible, true);
+  assert.ok(["guide", "face"].includes(arGlassesEvidence.tracking));
+  assert.equal(arGlassesEvidence.pointerEvents, "none");
+  assert.ok(arGlassesEvidence.glassesWidth > stageGeometry.stageWidth * 0.75);
+  assert.ok(arGlassesEvidence.glassesWidth < arGlassesEvidence.planeWidth);
+  assert.equal(arGlassesEvidence.ledCount, 20);
   await acceptPage.screenshot({ path: join(outputDirectory, "heart-check-camera.png"), fullPage: true });
   await acceptPage.evaluate(() => {
     const live = document.querySelector("[data-heart-rate-live]");
@@ -240,7 +260,7 @@ try {
   assert.equal(bridgeResult.result.inference.current_inference.heart_rate_role, "supporting");
   assert.equal(bridgeEvidence.length, 1);
   assert.equal(bridgeEvidence[0].momentary_physiology.heart_rate_bpm, 72);
-  assert.equal(bridgeEvidence[0].momentary_physiology.measurement_duration_seconds, 30);
+  assert.equal(bridgeEvidence[0].momentary_physiology.measurement_duration_seconds, 10);
   assert.equal(bridgeEvidence[0].environment_context.location_label, "coastal");
   assert.doesNotMatch(bridgeResult.sessionInference, /"heart_rate_bpm"|"bpm"/i);
   assert.equal(bridgeResult.localInference, null);
@@ -284,8 +304,9 @@ try {
       cameraCalls: cameraEvidence.calls.length,
       videoTracks: cameraEvidence.tracks.filter(({ kind }) => kind === "video").length,
       audioTracks: cameraEvidence.tracks.filter(({ kind }) => kind === "audio").length,
-      visualizationInitialized: "blood-flow-only",
-      measurementDurationSeconds: 30,
+      visualizationInitialized: "face-map-and-blood-flow",
+      measurementDurationSeconds: 10,
+      fixedArGlasses: arGlassesEvidence,
       liveHeartRateDisplay: "ephemeral 4-second metric when available",
       liveBpmPresentationFixture: 69,
       finalHeartRateDisplay: "ephemeral 2.2-second hold when available",
