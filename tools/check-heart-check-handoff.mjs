@@ -19,6 +19,10 @@ const globe = read("i  a m/globe.js");
 assert.match(endpoint, /\(\$_SERVER\['REQUEST_METHOD'\] \?\? ''\) !== 'POST'/);
 assert.match(endpoint, /hash_equals\('https:\/\/' \. \$host, \$origin\)/);
 assert.match(endpoint, /\$fetchSite !== '' && \$fetchSite !== 'same-origin'/);
+assert.ok(
+  endpoint.includes("$contentType = strtolower(trim((string) ($_SERVER['CONTENT_TYPE'] ?? '')));"),
+  "The Content-Type parser statement must remain exactly balanced even when PHP CLI is unavailable.",
+);
 assert.match(endpoint, /application\\\/json/);
 assert.match(endpoint, /strlen\(\$rawBody\) > 4096/);
 assert.match(endpoint, /has_exact_keys\(\$body, \['checkin', 'momentary_physiology'\]\)/);

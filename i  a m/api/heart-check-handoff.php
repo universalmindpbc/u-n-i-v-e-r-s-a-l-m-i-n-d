@@ -37,7 +37,7 @@ if ($fetchSite !== '' && $fetchSite !== 'same-origin') {
     iam_heart_check_handoff_respond(403, ['error' => 'same_origin_required']);
 }
 
-$contentType = strtolower(trim((string) ($_SERVER['CONTENT_TYPE'] ?? ''));
+$contentType = strtolower(trim((string) ($_SERVER['CONTENT_TYPE'] ?? '')));
 if (preg_match('/^application\/json(?:\s*;\s*charset=(?:utf-8|"utf-8"))?\s*$/D', $contentType) !== 1) {
     iam_heart_check_handoff_respond(415, ['error' => 'application_json_required']);
 }
