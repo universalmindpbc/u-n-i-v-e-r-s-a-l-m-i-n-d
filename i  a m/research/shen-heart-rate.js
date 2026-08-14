@@ -1,12 +1,11 @@
 import CreateShenaiSDK, {
   InitializationResult,
   MeasurementPreset,
-  Metric,
   OnboardingMode,
   PrecisionMode,
   UiVersion,
 } from "./vendor/shenai-sdk/index.mjs";
-import { reconcileHeartCheckInference } from "./shen-heart-recommendation.js?v=b3de95f8a562";
+import { handoffHeartCheckToHomepage } from "./shen-heart-recommendation.js?v=e61dcdb0f0e0";
 
 const offer = document.querySelector("[data-heart-rate-offer]");
 const offerPanel = document.querySelector("[data-heart-rate-offer-panel]");
@@ -38,6 +37,7 @@ let arGlassesFrame = 0;
 let arGlassesActive = false;
 
 const FINAL_READING_HOLD_MS = 2200;
+const FACE_EYE_LINE_RATIO = 0.3;
 
 function revealExistingBrand() {
   document.querySelector(".brand-name")?.classList.add("is-visible");
@@ -105,7 +105,7 @@ function showLoader(label, { showProgress = true } = {}) {
 function showMeasurementInterface() {
   stage.dataset.state = "measurement";
   stage.dataset.shenVisualizationConfig = "face-map-and-blood-flow";
-  stage.dataset.shenMeasurement = "heart-rate-10-seconds";
+  stage.dataset.shenMeasurement = "quick-heart-rate-10-seconds";
   loader.hidden = true;
   canvas.removeAttribute("aria-hidden");
   startLiveHeartRateMonitor();
@@ -152,7 +152,7 @@ function positionArGlasses() {
 
   if (faceBox) {
     const centreX = faceBox.left + (faceBox.width / 2);
-    const eyeLine = faceBox.top + (faceBox.height * 0.39);
+    const eyeLine = faceBox.top + (faceBox.height * FACE_EYE_LINE_RATIO);
     const glassesWidth = Math.max(0.24, Math.min(0.52, faceBox.width * 1.12));
     arGlasses.style.setProperty("--ar-glasses-x", `${centreX * 100}%`);
     arGlasses.style.setProperty("--ar-glasses-y", `${eyeLine * 100}%`);
@@ -229,10 +229,26 @@ function wait(milliseconds) {
   return new Promise((resolve) => window.setTimeout(resolve, milliseconds));
 }
 
-function showRecommendationTransition() {
-  stage.dataset.state = "recommendation";
-  canvas.setAttribute("aria-hidden", "true");
-  showLoader("Finding your experience", { showProgress: false });
+function measurementPresetValue(preset) {
+  return Number(preset?.value ?? preset);
+}
+
+async function confirmQuickHeartRatePreset() {
+  if (typeof shenaiSDK?.setMeasurementPreset !== "function"
+    || typeof shenaiSDK?.getMeasurementPreset !== "function") {
+    return false;
+  }
+  const expected = measurementPresetValue(MeasurementPreset.QUICK_HR_MODE);
+  shenaiSDK.setMeasurementPreset(MeasurementPreset.QUICK_HR_MODE);
+  let active = Number.NaN;
+  for (let attempt = 0; attempt < 10; attempt += 1) {
+    active = measurementPresetValue(shenaiSDK.getMeasurementPreset());
+    if (Number.isFinite(expected) && active === expected) break;
+    await wait(50);
+  }
+  stage.dataset.shenMeasurementPresetExpected = String(expected);
+  stage.dataset.shenMeasurementPresetActive = String(active);
+  return Number.isFinite(expected) && active === expected;
 }
 
 async function releaseShen() {
@@ -264,21 +280,21 @@ async function finishAndContinue() {
   }
 
   await releaseShen();
-  const inferencePromise = displayHeartRate === null
-    ? Promise.resolve(null)
-    : reconcileHeartCheckInference(momentaryHeartRate, {
-      storage: sessionStorage,
-      fetchImpl: (...args) => fetch(...args),
-    }).catch(() => null);
-  momentaryHeartRate = null;
-  if (displayHeartRate !== null) {
-    showFinalHeartRate(displayHeartRate);
-    await wait(FINAL_READING_HOLD_MS);
-    clearFinalHeartRate();
+  try {
+    if (displayHeartRate !== null) {
+      showFinalHeartRate(displayHeartRate);
+      await wait(FINAL_READING_HOLD_MS);
+      await handoffHeartCheckToHomepage(momentaryHeartRate, {
+        storage: sessionStorage,
+        fetchImpl: (...args) => fetch(...args),
+      });
+    }
+  } finally {
+    momentaryHeartRate = null;
     displayHeartRate = null;
+    clearFinalHeartRate();
   }
-  showRecommendationTransition();
-  await inferencePromise;
+  stage.dataset.state = "complete";
   window.location.assign(experienceUrl({ heartCheckCompleted: true }));
 }
 
@@ -298,20 +314,8 @@ async function requestShortTermToken() {
 
 function initializeWithToken(token) {
   return new Promise((resolve, reject) => {
-    const customMeasurementConfig = {
-      durationSeconds: 10,
-      instantMetrics: [Metric.HEART_RATE],
-      summaryMetrics: [Metric.HEART_RATE],
-      realtimeHrPeriodSeconds: 4,
-    };
-    if (typeof shenaiSDK.setCustomMeasurementConfig !== "function") {
-      reject(new Error("The 10-second Heart Check is unavailable in this SDK."));
-      return;
-    }
-    shenaiSDK.setCustomMeasurementConfig(customMeasurementConfig);
-
     const settings = {
-      measurementPreset: MeasurementPreset.CUSTOM,
+      measurementPreset: MeasurementPreset.QUICK_HR_MODE,
       onboardingMode: OnboardingMode.HIDDEN,
       precisionMode: PrecisionMode.STRICT,
       uiVersion: UiVersion.V3,
@@ -337,9 +341,14 @@ function initializeWithToken(token) {
       },
     };
 
-    shenaiSDK.initialize(token, transientMeasurementId, settings, (result) => {
+    shenaiSDK.initialize(token, transientMeasurementId, settings, async (result) => {
       if (result === InitializationResult.OK) {
-        stage.dataset.shenCustomMeasurement = "runtime-setter";
+        const quickHrConfirmed = await confirmQuickHeartRatePreset();
+        stage.dataset.shenMeasurementPreset = quickHrConfirmed ? "quick-hr-mode" : "unexpected";
+        if (!quickHrConfirmed) {
+          reject(new Error("The 10-second Heart Check could not be confirmed."));
+          return;
+        }
         shenaiSDK.setShowFaceMask?.(true);
         shenaiSDK.setShowBloodFlow?.(true);
         shenaiSDK.setHideShenaiLogo?.(true);

@@ -42,15 +42,15 @@
 
 .shen-heart-rate-ar-glasses {
   --ar-glasses-x: 50%;
-  --ar-glasses-y: 42%;
+  --ar-glasses-y: 39%;
   --ar-glasses-width: 48%;
   position: absolute;
-  inset: 50% auto auto 50%;
+  inset: 0 auto auto 50%;
   z-index: 2;
   width: var(--shen-canvas-size);
-  height: var(--shen-canvas-size);
+  height: calc(var(--shen-canvas-size) * 0.76);
   pointer-events: none;
-  transform: translate(-50%, -50%);
+  transform: translateX(-50%);
 }
 
 .shen-heart-rate-ar-glasses[hidden] {

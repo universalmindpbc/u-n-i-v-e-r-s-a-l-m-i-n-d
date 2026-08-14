@@ -20,7 +20,7 @@ header('X-Robots-Tag: noindex, nofollow');
     <title>Heart Check | I AM</title>
     <link rel="icon" type="image/png" sizes="32x32" href="/vogue/iam/favicon.png?v=iam-favicon-4">
     <link rel="stylesheet" href="styles.css?v=global-nav-single-shell-2-technology-submenu-133pct-normal-1">
-    <link rel="stylesheet" href="research/shen-heart-rate.css?v=shen-heart-rate-css-bc71eff45110">
+    <link rel="stylesheet" href="research/shen-heart-rate.css?v=shen-heart-rate-css-42c074185d53">
   </head>
   <body class="shen-heart-rate-page">
     <main class="site-shell" aria-label="Universal Mind I AM heart-rate research">
@@ -138,6 +138,6 @@ header('X-Robots-Tag: noindex, nofollow');
 
     <script src="cloudflare-stream-catalogue.js?v=stream-catalogue-20ad6337934c"></script>
     <script src="cloudflare-stream-controller.js?v=stream-controller-e6ed1b827651"></script>
-    <script type="module" src="research/shen-heart-rate.js?v=shen-heart-rate-js-dba3b221c7ba"></script>
+    <script type="module" src="research/shen-heart-rate.js?v=shen-heart-rate-js-2e680bcc10ec"></script>
   </body>
 </html>

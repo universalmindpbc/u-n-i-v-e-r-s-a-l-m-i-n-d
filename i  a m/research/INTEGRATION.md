@@ -10,14 +10,14 @@ This B route reuses the canonical check-in at render time. It does not duplicate
 4. The existing compact `induction-permission` component contains the journey's single consent and wellness disclosure immediately before the deliberate camera action.
 5. Accepting the prompt shows a Universal Mind flower and Loading presentation, then invokes Shen’s embedded Web SDK UI on `#mxcanvas`. No replacement measurement engine is rendered.
 6. Skipping continues to the selected song without requesting a Shen token or camera permission.
-7. Completing the measurement reads the final BPM once, releases the camera, reconciles that ephemeral value through the first-party current-session inference endpoint, discards it and navigates to the canonical `index.html`. No Shen summary or result-options screen is shown.
+7. Completing the measurement reads the final BPM once, releases the camera, holds the Universal Mind flower/result for 2.2 seconds, submits one bounded first-party handoff, discards the value and navigates immediately to the canonical `index.html`. No Shen summary, duplicate loading phase or result-options screen is shown.
 
 ## Shen configuration
 
 - Official Web SDK package: `@shenai/sdk` 3.1.9.
 - SDK UI: visible and unmodified inside a portrait-cropped Universal Mind wrapper.
 - SDK theme: unchanged because brand colour customization is locked on Starter.
-- Measurement: `MeasurementPreset.CUSTOM` — 10-second heart rate only, with 4-second live heart-rate feedback and the final heart rate shown momentarily before navigation.
+- Measurement: `MeasurementPreset.QUICK_HR_MODE` — Shen's supported 10-second heart-rate-only preset. The active SDK preset is verified after initialization; an unexpected preset fails closed instead of beginning a longer scan.
 - Precision: strict.
 - Onboarding: hidden.
 - Shen disclaimer, information and summary/result controls: disabled through supported SDK settings so the journey has one Universal Mind disclosure and no duplicate result screen.
@@ -26,7 +26,7 @@ This B route reuses the canonical check-in at render time. It does not duplicate
 - Both preload and embedded Shen logo controls are requested through supported SDK settings, including one runtime retry after initialization. If Starter remote configuration still renders SDK-owned branding, the wrapper does not cover or alter it.
 - The proprietary canvas and runtime bytes are unchanged.
 - The blood-flow overlay is Shen's rPPG visualization, not hyperspectral imaging.
-- A fixed-colour Universal Mind glasses layer sits above the Shen canvas without intercepting camera controls. It uses Shen's transient normalized face box when available and a centred alignment-guide position otherwise; its geometry exists only in the live DOM and is cleared with the camera. It does not open a second camera stream, store facial geometry, import a DeepAR runtime/effect or contain any BPM/HR-band colour mapping. The DeepAR Bright Glasses project is the approved visual reference; a domain-bound DeepAR licence is still required before its proprietary effect can replace this task-owned vector rendition.
+- A fixed-colour Universal Mind glasses layer sits above the Shen canvas without intercepting camera controls. Its coordinate plane is the upper 76% Shen V3 camera preview rather than the full square canvas/results area. It uses Shen's transient normalized face box at the upper-face eye line when available and a centred eye-line fallback otherwise; its geometry exists only in the live DOM and is cleared with the camera. It does not open a second camera stream, store facial geometry, import a DeepAR runtime/effect or contain any BPM/HR-band colour mapping. The DeepAR Bright Glasses project is the approved visual reference; a domain-bound DeepAR licence is still required before its proprietary effect can replace this task-owned vector rendition.
 
 ## Credential boundary
 
@@ -48,10 +48,10 @@ The proprietary Shen runtime is kept at `research/vendor/shenai-sdk/` and retain
 
 The route must remain a PHP response or receive equivalent server headers if it is later mapped to `/research`.
 
-## Ephemeral result and inference handoff
+## Ephemeral result and homepage handoff
 
-The Shen camera stream is processed live and is never recorded or stored by this journey. During the supported 10-second measurement, a 4-second heart-rate value may be rendered ephemerally in the Universal Mind wrapper. On completion, the controller reads the final heart-rate value once in memory, releases Shen, starts one same-origin first-party inference reconciliation, shows the final BPM for 2.2 seconds, then clears the displayed value before navigation.
+The Shen camera stream is processed live and is never recorded or stored by this journey. During the supported Quick HR measurement, a 4-second heart-rate value may be rendered ephemerally in the Universal Mind wrapper. On completion, the controller reads the final heart-rate value once in memory, releases Shen, shows the final BPM for exactly 2.2 seconds, then posts it with the current check-in to `api/heart-check-handoff.php`. The client waits at most 1.5 seconds for exact HTTP 202 JSON `{ "accepted": true }`, clears the value and navigates immediately. Timeout, network, malformed or unsafe responses degrade to the normal homepage pipeline without Heart Rate.
 
-The first-party Worker strips raw BPM before constructing its OpenAI request, reconciles the model's current inference locally as supporting, conflicting or unavailable, and returns no raw BPM. The browser accepts and stores only that privacy-safe current-session inference. No BPM, signal quality, timestamp, provider, photo, video, raw waveform, heartbeat array, HRV, Stress Index, pseudonymous biometric identifier or research record is stored, logged, placed in a URL or sent to ordinary analytics. Earlier prototype keys are removed if present.
+The first-party endpoint sets a single-use, short-lived opaque `Secure; HttpOnly; SameSite=Strict` cookie and never returns an id or raw BPM to JavaScript. The existing homepage pending-check-in pipeline remains canonical and is the journey's only `Tuning your experience` phase. Its first-party Worker consumes the opaque handoff, strips raw BPM before constructing its OpenAI request, and returns no raw BPM. No BPM, signal quality, timestamp, provider, photo, video, raw waveform, heartbeat array, HRV, Stress Index, pseudonymous biometric identifier or research record is stored in the browser, logged, placed in a URL or sent to ordinary analytics. Earlier prototype keys are removed if present.
 
 Heart Rate never directly selects or writes a song, room, `band_intent`, `carrier_intent` or DSP value. Self-report and time, weather and approximate location remain the inference authority across Horizons 1, 2 and 3. Missing, declined, invalid or failed Heart Rate reconciliation remains safe and non-blocking.

@@ -15,11 +15,11 @@ const iamDirectory = resolve(researchDirectory, "..");
 const sdkDirectory = resolve(researchDirectory, "vendor", "shenai-sdk");
 const chromiumExecutable = "/Users/benkorbel/Library/Caches/ms-playwright/chromium_headless_shell-1234/chrome-headless-shell-mac-arm64/chrome-headless-shell";
 const proofOrigin = "https://staging.universalmind.tv";
-const researchUrl = `${proofOrigin}/vogue/iam/research.php?offer=heart-rate&selected_track_id=hr-source-qa&selection_source=checkin`;
+const researchUrl = `${proofOrigin}/vogue/iam/research.php?offer=heart-rate&selection_source=checkin`;
 
 const profileDirectory = await mkdtemp(join(tmpdir(), "um-shen-qa-profile-"));
 const outputDirectory = await mkdtemp(join(tmpdir(), "um-shen-qa-output-"));
-const fakeCameraPath = join(profileDirectory, "synthetic-face.y4m");
+const fakeCameraPath = join(profileDirectory, "face-free-colour-field.y4m");
 const browserArgs = [
   "--mute-audio",
   "--use-fake-device-for-media-stream",
@@ -33,7 +33,7 @@ let processProof = [];
 let cleanupPassed = false;
 
 try {
-  await writeSyntheticFaceVideo(fakeCameraPath);
+  await writeFaceFreeVideo(fakeCameraPath);
   context = await chromium.launchPersistentContext(profileDirectory, {
     executablePath: chromiumExecutable,
     headless: true,
@@ -44,8 +44,8 @@ try {
   processProof = await verifyIsolatedBrowserProcess(profileDirectory, browserArgs);
   await installSafetyInstrumentation(context);
 
-  const bridgeEvidence = [];
-  const localRouter = createLocalCandidateRouter(bridgeEvidence);
+  const handoffEvidence = [];
+  const localRouter = createLocalCandidateRouter(handoffEvidence);
 
   const checkInPage = await context.newPage();
   await checkInPage.route("**/*", localRouter);
@@ -71,7 +71,6 @@ try {
   skipEvidence.cameraCalls = await skipPage.evaluate(() => window.__hrQaMediaCalls?.length || 0);
   assert.equal(skipEvidence.tokenPosts, 0);
   assert.equal(skipEvidence.cameraCalls, 0);
-  assert.match(skipEvidence.destination, /selected_track_id=hr-source-qa/);
   assert.match(skipEvidence.destination, /selection_source=checkin/);
   await skipPage.close();
 
@@ -144,18 +143,35 @@ try {
   assert.equal(await acceptPage.locator("[data-heart-rate-loading-label]").textContent(), "Loading");
   await acceptPage.screenshot({ path: join(outputDirectory, "heart-check-loading.png"), fullPage: true });
 
-  await acceptPage.locator('[data-shen-stage][data-state="measurement"]').waitFor({ state: "visible", timeout: 90_000 });
+  try {
+    await acceptPage.locator('[data-shen-stage][data-state="measurement"]').waitFor({ state: "visible", timeout: 30_000 });
+  } catch (error) {
+    const diagnosis = await acceptPage.locator("[data-shen-stage]").evaluate((element) => ({
+      state: element.dataset.state || "",
+      preset: element.dataset.shenMeasurementPreset || "",
+      expectedPreset: element.dataset.shenMeasurementPresetExpected || "",
+      activePreset: element.dataset.shenMeasurementPresetActive || "",
+      hidden: element.hidden,
+      status: document.querySelector("[data-shen-status]")?.textContent?.trim() || "",
+    }));
+    throw new Error(`Official Shen initialization did not reach measurement: ${JSON.stringify({
+      ...diagnosis,
+      tokenStatus: acceptEvidence.tokenStatus,
+      pageErrors: acceptEvidence.pageErrors,
+      consoleErrors: acceptEvidence.consoleErrors,
+    })}`, { cause: error });
+  }
   assert.equal(
     await acceptPage.locator("[data-shen-stage]").getAttribute("data-shen-visualization-config"),
     "face-map-and-blood-flow",
   );
   assert.equal(
     await acceptPage.locator("[data-shen-stage]").getAttribute("data-shen-measurement"),
-    "heart-rate-10-seconds",
+    "quick-heart-rate-10-seconds",
   );
   assert.equal(
-    await acceptPage.locator("[data-shen-stage]").getAttribute("data-shen-custom-measurement"),
-    "runtime-setter",
+    await acceptPage.locator("[data-shen-stage]").getAttribute("data-shen-measurement-preset"),
+    "quick-hr-mode",
   );
   const sdkBrandingControl = await acceptPage.locator("[data-shen-stage]").getAttribute("data-shen-branding");
   assert.ok(["hidden", "sdk-controlled"].includes(sdkBrandingControl));
@@ -244,27 +260,30 @@ try {
     result.hidden = true;
     result.querySelector("[data-heart-rate-result-value]").textContent = "";
   });
-  const bridgeResult = await acceptPage.evaluate(async () => {
-    const { reconcileHeartCheckInference } = await import("/vogue/iam/research/shen-heart-recommendation.js");
-    const result = await reconcileHeartCheckInference(72, {
+  const handoffResult = await acceptPage.evaluate(async () => {
+    const { handoffHeartCheckToHomepage } = await import("/vogue/iam/research/shen-heart-recommendation.js");
+    const beforeSessionInference = sessionStorage.getItem("iamLatestInference");
+    const result = await handoffHeartCheckToHomepage(72, {
       storage: sessionStorage,
       fetchImpl: (...args) => fetch(...args),
     });
     return {
       result,
-      sessionInference: sessionStorage.getItem("iamLatestInference"),
+      beforeSessionInference,
+      afterSessionInference: sessionStorage.getItem("iamLatestInference"),
       localInference: localStorage.getItem("iamLatestInference"),
     };
   });
-  assert.equal(bridgeResult.result.status, "complete");
-  assert.equal(bridgeResult.result.inference.current_inference.heart_rate_role, "supporting");
-  assert.equal(bridgeEvidence.length, 1);
-  assert.equal(bridgeEvidence[0].momentary_physiology.heart_rate_bpm, 72);
-  assert.equal(bridgeEvidence[0].momentary_physiology.measurement_duration_seconds, 10);
-  assert.equal(bridgeEvidence[0].environment_context.location_label, "coastal");
-  assert.doesNotMatch(bridgeResult.sessionInference, /"heart_rate_bpm"|"bpm"/i);
-  assert.equal(bridgeResult.localInference, null);
-  assert.doesNotMatch(JSON.stringify(bridgeResult.result), /"heart_rate_bpm"|"bpm"/i);
+  assert.deepEqual(handoffResult.result, { status: "accepted", accepted: true });
+  assert.equal(handoffEvidence.length, 1);
+  assert.equal(handoffEvidence[0].momentary_physiology.heart_rate_bpm, 72);
+  assert.equal(handoffEvidence[0].momentary_physiology.measurement_duration_seconds, 10);
+  assert.equal(handoffEvidence[0].momentary_physiology.measurement_timing, "immediately_after_current_self_report");
+  assert.equal(handoffEvidence[0].momentary_physiology.source, "shen_quick_hr");
+  assert.equal(handoffEvidence[0].checkin, "I am energised after surfing");
+  assert.equal(handoffResult.afterSessionInference, handoffResult.beforeSessionInference);
+  assert.equal(handoffResult.localInference, null);
+  assert.doesNotMatch(JSON.stringify(handoffResult.result), /"heart_rate_bpm"|"bpm"/i);
   assert.equal(acceptEvidence.tokenPosts, 1);
   assert.equal(acceptEvidence.tokenStatus, 200);
   assert.ok(acceptEvidence.sdkRequests >= 3);
@@ -305,15 +324,16 @@ try {
       videoTracks: cameraEvidence.tracks.filter(({ kind }) => kind === "video").length,
       audioTracks: cameraEvidence.tracks.filter(({ kind }) => kind === "audio").length,
       visualizationInitialized: "face-map-and-blood-flow",
+      measurementPreset: "quick-hr-mode",
       measurementDurationSeconds: 10,
       fixedArGlasses: arGlassesEvidence,
       liveHeartRateDisplay: "ephemeral 4-second metric when available",
       liveBpmPresentationFixture: 69,
       finalHeartRateDisplay: "ephemeral 2.2-second hold when available",
       finalBpmPresentationFixture: 69,
-      firstPartyInferenceBridge: {
-        requests: bridgeEvidence.length,
-        heartRateRole: bridgeResult.result.inference.current_inference.heart_rate_role,
+      firstPartyHomepageHandoff: {
+        requests: handoffEvidence.length,
+        accepted: handoffResult.result.accepted,
         rawBpmReturnedOrStored: false,
         localStorageWrite: false,
       },
@@ -371,7 +391,7 @@ async function installSafetyInstrumentation(browserContext) {
   });
 }
 
-function createLocalCandidateRouter(bridgeEvidence) {
+function createLocalCandidateRouter(handoffEvidence) {
   return async (route) => {
     const request = route.request();
     const url = new URL(request.url());
@@ -403,24 +423,13 @@ function createLocalCandidateRouter(bridgeEvidence) {
       return;
     }
 
-    if (path === "/vogue/iam/api/citizen-needs-inference.php" && request.method() === "POST") {
-      bridgeEvidence.push(request.postDataJSON());
+    if (path === "/vogue/iam/api/heart-check-handoff.php" && request.method() === "POST") {
+      handoffEvidence.push(request.postDataJSON());
       await route.fulfill({
-        status: 200,
+        status: 202,
         headers: pageHeaders(),
         contentType: "application/json; charset=utf-8",
-        body: JSON.stringify({
-          prompt_version: "adaptive-inference-engine-system-prompt-v5.55",
-          current_inference: {
-            inference_id: "active_energised",
-            heart_rate_role: "supporting",
-            heart_rate_zone: "mid_observed",
-            context_dimensions_considered: { time: true, weather: true, location: true },
-            horizons_considered: ["horizon_1", "horizon_2", "horizon_3"],
-            baseline_comparison_used: false,
-            clinical_status: "not_a_diagnosis",
-          },
-        }),
+        body: JSON.stringify({ accepted: true }),
       });
       return;
     }
@@ -522,7 +531,7 @@ async function readSdkIntegrity() {
   };
 }
 
-async function writeSyntheticFaceVideo(path) {
+async function writeFaceFreeVideo(path) {
   const width = 480;
   const height = 640;
   const frames = 120;
@@ -531,17 +540,23 @@ async function writeSyntheticFaceVideo(path) {
   try {
     await handle.write(`YUV4MPEG2 W${width} H${height} F${frameRate}:1 Ip A1:1 C420jpeg\n`);
     for (let frameIndex = 0; frameIndex < frames; frameIndex += 1) {
-      const y = Buffer.alloc(width * height, 185);
-      const u = Buffer.alloc((width / 2) * (height / 2), 128);
-      const v = Buffer.alloc((width / 2) * (height / 2), 128);
-      const pulse = Math.round(Math.sin((frameIndex / frameRate) * Math.PI * 2 * 1.18) * 3);
-      drawEllipse(y, width, height, width / 2, height * 0.48, 135, 185, 151 + pulse);
-      drawEllipse(y, width, height, width / 2, height * 0.30, 145, 75, 48);
-      drawEllipse(y, width, height, width * 0.43, height * 0.45, 18, 10, 38);
-      drawEllipse(y, width, height, width * 0.57, height * 0.45, 18, 10, 38);
-      drawEllipse(y, width, height, width * 0.50, height * 0.60, 48, 10, 72);
-      drawEllipse(u, width / 2, height / 2, width / 4, height * 0.24, 68, 93, 108);
-      drawEllipse(v, width / 2, height / 2, width / 4, height * 0.24, 68, 93, 150 + pulse);
+      const pulse = Math.round(Math.sin((frameIndex / frameRate) * Math.PI * 2 * 1.18) * 2);
+      const y = Buffer.alloc(width * height);
+      const u = Buffer.alloc((width / 2) * (height / 2));
+      const v = Buffer.alloc((width / 2) * (height / 2));
+      for (let row = 0; row < height; row += 1) {
+        for (let column = 0; column < width; column += 1) {
+          const band = Math.floor(column / 80) % 6;
+          y[(row * width) + column] = clamp(72 + (band * 24) + pulse);
+        }
+      }
+      for (let row = 0; row < height / 2; row += 1) {
+        for (let column = 0; column < width / 2; column += 1) {
+          const index = (row * (width / 2)) + column;
+          u[index] = clamp(72 + ((column / (width / 2)) * 112));
+          v[index] = clamp(184 - ((row / (height / 2)) * 112));
+        }
+      }
       await handle.write("FRAME\n");
       await handle.write(Buffer.concat([y, u, v]));
     }
@@ -550,18 +565,6 @@ async function writeSyntheticFaceVideo(path) {
   }
 }
 
-function drawEllipse(plane, width, height, centerX, centerY, radiusX, radiusY, value) {
-  const minX = Math.max(0, Math.floor(centerX - radiusX));
-  const maxX = Math.min(width - 1, Math.ceil(centerX + radiusX));
-  const minY = Math.max(0, Math.floor(centerY - radiusY));
-  const maxY = Math.min(height - 1, Math.ceil(centerY + radiusY));
-  for (let y = minY; y <= maxY; y += 1) {
-    for (let x = minX; x <= maxX; x += 1) {
-      const normalizedX = (x - centerX) / radiusX;
-      const normalizedY = (y - centerY) / radiusY;
-      if ((normalizedX * normalizedX) + (normalizedY * normalizedY) <= 1) {
-        plane[(y * width) + x] = Math.max(0, Math.min(255, value));
-      }
-    }
-  }
+function clamp(value) {
+  return Math.max(0, Math.min(255, Math.round(value)));
 }
