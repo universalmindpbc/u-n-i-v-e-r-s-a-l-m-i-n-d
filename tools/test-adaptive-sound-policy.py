@@ -46,10 +46,17 @@ def intent_payload(band: str, carrier: str, **extra: object) -> dict:
             "carrier_intent": carrier,
             "top_needs_used": ["Calm", "Connection"],
             "explicit_cues_used": [],
+            "context_modifiers_used": ["time:08:00", "weather:clear", "location:coastal"],
+            "horizons_considered": ["horizon_1", "horizon_2", "horizon_3"],
             "confidence": 0.82,
             "safety_state": "standard",
             "session_scope": "current_session_only",
             "research_boundary": "biological_targets_not_used_in_product_decisions",
+        },
+        "current_inference": {
+            "inference_id": "settled_resting",
+            "heart_rate_role": "supporting",
+            "heart_rate_zone": "mid_observed",
         },
         "citizen_needs": {
             "Emotion": {"Calm": 0.7},
@@ -103,6 +110,11 @@ def main() -> None:
         for target in RESEARCH_TARGETS:
             require(target not in decision_text, f"Research target leaked into {band}/{carrier} decision: {target}")
         require(result["explicit_cues_used"] == ["presence"], "Non-experiential cue leaked into the decision audit.")
+        require(result["audit"]["context_dimensions_considered"] == ["time", "weather", "location"], "Context dimensions were not audited.")
+        require(result["audit"]["horizons_considered"] == ["horizon_1", "horizon_2", "horizon_3"], "All horizons were not audited.")
+        require(result["audit"]["heart_rate_role"] == "supporting", "Heart Rate role was not carried safely.")
+        require(result["audit"]["raw_heart_rate_retained"] is False, "Raw Heart Rate leaked into sound audit.")
+        require(result["audit"]["baseline_comparison_used"] is False, "Baseline comparison was incorrectly enabled.")
         matrix.append(f"{band}:{result['carrier_hz']}")
 
     standard = sound.resolve_adaptive_sound(intent_payload("alpha", "presence"), policy)

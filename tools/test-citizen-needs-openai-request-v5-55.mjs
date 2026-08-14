@@ -68,6 +68,23 @@ const openAIFetch = async (url, options = {}) => {
     context_modifiers_used: [],
     uncertainty_notes: ["A short check-in provides limited context."],
     human_review_relevance: "not_indicated",
+    current_inference: {
+      inference_id: "active_energised",
+      human_label: "Active / energised",
+      summary: "The self-report suggests positive activation and readiness.",
+      confidence: 0.81,
+      heart_rate_role: "not_available",
+      heart_rate_zone: "not_available",
+      evidence_used: ["self-report:curious joyful ready for inspiration"],
+      context_dimensions_considered: {
+        time: true,
+        weather: false,
+        location: true,
+      },
+      horizons_considered: ["horizon_1", "horizon_2", "horizon_3"],
+      baseline_comparison_used: false,
+      clinical_status: "not_a_diagnosis",
+    },
     adaptive_sound_intent: {
       relevant: true,
       selection_basis: "current_checkin",
@@ -75,6 +92,8 @@ const openAIFetch = async (url, options = {}) => {
       carrier_intent: "cognition_joy",
       top_needs_used: ["Curiosity", "Joy"],
       explicit_cues_used: ["inspiration", "cognition", "joy"],
+      context_modifiers_used: ["time:10:30", "weather:unavailable", "location:Sydney"],
+      horizons_considered: ["horizon_1", "horizon_2", "horizon_3"],
       confidence: 0.84,
       safety_state: "standard",
       session_scope: "current_session_only",
@@ -129,6 +148,11 @@ const request = new Request(
         location_precision: "approximate",
         context_available: true,
       },
+      momentary_physiology: {
+        heart_rate_bpm: 118,
+        measurement_duration_seconds: 10,
+        source: "shen_quick_hr",
+      },
     }),
   },
 );
@@ -155,6 +179,8 @@ assert.ok(systemMessage.includes(ADAPTIVE_INFERENCE_SYSTEM_PROMPT));
 assert.ok(userMessage.includes("Choose an eligible music room from: inner-planes, champagne-bohemia, modul8-infinity, james-bondage, safety-cushion; otherwise return null."));
 assert.ok(userMessage.includes("The application owns extended-session format and exact source resolution."));
 assert.ok(!userMessage.includes("Choose an eligible format"));
+assert.ok(!userMessage.includes("118"), "Raw Heart Rate escaped into the external model request");
+assert.ok(!userMessage.includes("heart_rate_bpm"), "Heart Rate field escaped into the external model request");
 assert.ok(!workerSource.includes("allowedMusicFormats"));
 
 assert.equal(result.model, "gpt-5.5-test");
@@ -164,6 +190,12 @@ assert.equal(result.prompt_source, SYSTEM_PROMPT_SOURCE);
 assert.equal(result.selected_format, null);
 assert.equal(result.source_id, null);
 assert.equal(result.catalogue_ready, false);
+assert.equal(result.current_inference.inference_id, "active_energised");
+assert.equal(result.current_inference.heart_rate_role, "supporting");
+assert.equal(result.current_inference.heart_rate_zone, "elevated_observed");
+assert.equal(result.current_inference.baseline_comparison_used, false);
+assert.deepEqual(result.current_inference.horizons_considered, ["horizon_1", "horizon_2", "horizon_3"]);
+assert.ok(!JSON.stringify(result).includes("heart_rate_bpm"), "Raw Heart Rate escaped into the public response");
 assert.deepEqual(result.adaptive_sound_intent, {
   relevant: true,
   selection_basis: "current_checkin",
@@ -171,11 +203,54 @@ assert.deepEqual(result.adaptive_sound_intent, {
   carrier_intent: "cognition_joy",
   top_needs_used: ["Curiosity", "Joy"],
   explicit_cues_used: ["inspiration", "cognition", "joy"],
+  context_modifiers_used: ["time:10:30", "weather:unavailable", "location:Sydney"],
+  horizons_considered: ["horizon_1", "horizon_2", "horizon_3"],
   confidence: 0.84,
   safety_state: "standard",
   session_scope: "current_session_only",
   research_boundary: "biological_targets_not_used_in_product_decisions",
 });
+
+const conflictingResponse = await worker.fetch(new Request(
+  "https://realtime-staging-iam-citizen-needs-inference.universalmind.workers.dev/citizen-needs-inference",
+  {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      "Origin": "https://staging.universalmind.tv",
+    },
+    body: JSON.stringify({
+      checkin: "I am curious, joyful and ready for inspiration.",
+      environment_context: {
+        local_time: "10:30",
+        location_label: "Sydney",
+        location_precision: "approximate",
+        context_available: true,
+      },
+      momentary_physiology: {
+        heart_rate_bpm: 52,
+        measurement_duration_seconds: 10,
+        source: "shen_quick_hr",
+      },
+    }),
+  },
+), {
+  OPENAI_API_KEY: "test-only-key",
+  OPENAI_INFERENCE_MODEL: "gpt-5.5-test",
+});
+const conflictingResult = await conflictingResponse.json();
+const conflictingUserMessage = capturedOpenAIRequest.input[1].content;
+assert.equal(conflictingResponse.status, 200, JSON.stringify(conflictingResult));
+assert.ok(!conflictingUserMessage.includes("52"), "Raw conflicting Heart Rate escaped into the external model request");
+assert.ok(!conflictingUserMessage.includes("heart_rate_bpm"), "Conflicting Heart Rate field escaped into the external model request");
+assert.equal(conflictingResult.current_inference.heart_rate_role, "conflicting");
+assert.equal(conflictingResult.current_inference.heart_rate_zone, "low_observed");
+assert.equal(conflictingResult.current_inference.confidence, 0.73);
+assert.equal(conflictingResult.confidence, 0.82);
+assert.equal(conflictingResult.adaptive_sound_intent.confidence, 0.76);
+assert.equal(conflictingResult.adaptive_sound_intent.band_intent, "gamma");
+assert.equal(conflictingResult.adaptive_sound_intent.carrier_intent, "cognition_joy");
+assert.ok(!JSON.stringify(conflictingResult).includes("heart_rate_bpm"), "Raw conflicting Heart Rate escaped into the public response");
 
 process.stdout.write(`${JSON.stringify({
   schema_version: "citizen_needs_live_request_construction_qa_v1",
@@ -183,6 +258,7 @@ process.stdout.write(`${JSON.stringify({
   openai_request_captured: true,
   strict_schema_validated: true,
   response_validation_executed: true,
+  supporting_and_conflicting_heart_rate_reconciled_locally: true,
   prompt_version: result.prompt_version,
   prompt_sha256: result.prompt_sha256,
   adaptive_sound_intent: result.adaptive_sound_intent,

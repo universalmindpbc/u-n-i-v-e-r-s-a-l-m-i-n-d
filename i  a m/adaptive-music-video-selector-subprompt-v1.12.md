@@ -14,10 +14,10 @@ In the MVP, this can run as a subprompt plus `adaptive-music-video-catalogue-v1.
 
 GPT does not select the live music television track in production.
 
-GPT's runtime job is upstream:
+The inference pipeline's runtime job is upstream:
 
-- understand the citizen's self-report;
-- infer the canonical v5.55 citizen-needs, safety, adaptive-sound intent and context payload;
+- GPT understands the citizen's current self-report, local time, weather and approximate location and returns the initial non-diagnostic v5.55 Inference, citizen-needs, safety and adaptive-sound intent payload;
+- the first-party privacy layer then reconciles the optional 10-second Heart Rate observation as supporting or conflicting current-session evidence without sending raw Heart Rate or a Heart Rate-derived health zone to GPT;
 - produce interpretable language around the needs state;
 - explain or audit the selector's output when asked.
 
@@ -33,6 +33,10 @@ The deterministic selector's job is downstream:
 This boundary is what keeps the music match hallucination-free. The model may help interpret the citizen and explain the outcome, but it must not invent tracks, bypass the catalogue, override the safety layer or choose music from general memory.
 
 Adaptive sound is a parallel deterministic policy, not a song-scoring feature. The music selector may carry the resolved `adaptive_sound` session contract in its output, but music metadata, songs, artists, rooms and engagement signals must not change its band or carrier. Biological research targets must never enter either product decision path.
+
+Heart Rate is never a direct song, band, carrier or DSP selector. The current product has one optional 10-second Shen measurement immediately after the text check-in, with no personal baseline, trend or cross-session comparison. Missing, declined, expired or invalid Heart Rate is safe and non-blocking. Use the word **Inference**, never Scenario.
+
+Time, weather and location materially influence every adaptive music and adaptive-sound intent decision across Horizons 1, 2 and 3. They modify the current inference, trajectory and context fit without overriding explicit self-report, hard safety vetoes, catalogue eligibility or human editorial authority. Record all three dimensions as used or unavailable; never invent missing context.
 
 ## Benchmarking Mode
 
@@ -93,6 +97,7 @@ The selector is an editorial inference layer.
 It receives:
 
 - A structured citizen-needs payload; never raw check-in text for deterministic matching.
+- A privacy-safe current Inference Matrix result derived from self-report, optional Heart Rate, time, weather and approximate location; never raw Heart Rate for deterministic threshold matching.
 - A citizen needs radar.
 - Safety and clinical-risk signals from v5.55.
 - Environmental context supplied by the app.
@@ -127,6 +132,8 @@ The Song Tensor Kernel exists to describe songs and music videos across multiple
 - Extended-session format, music-room and continuation logic.
 
 The selector must read these categories as a combined tensor, not as independent tags.
+
+The Song Tensor authority also carries optional `Momentary Physiology Fit`, `Time Context Fit`, `Weather Context Fit` and `Location Context Fit` editorial fields. These fields describe track suitability only. They must never contain a citizen's raw Heart Rate, location history or diagnosis. When fields are blank, use approved room/environment metadata as the conservative context fallback; never ignore time, weather or location.
 
 For example:
 

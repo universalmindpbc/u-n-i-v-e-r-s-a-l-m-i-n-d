@@ -14,6 +14,18 @@
     "Do not simply mirror the citizen's current emotion. Infer the most helpful trajectory from the current state toward support, agency, clarity, belonging, recovery, joy or transformation.",
     "Use only the pre-approved editorial pool for MVP selection."
   ],
+  "current_inference_input_contract": {
+    "matrix_source": "adaptive-inference-matrix-v1.json",
+    "self_report_role": "primary_current_meaning",
+    "heart_rate_role": "optional_supporting_or_conflicting_current_session_evidence",
+    "heart_rate_measurement_duration_seconds": 10,
+    "heart_rate_baseline_available": false,
+    "direct_heart_rate_threshold_to_track": false,
+    "raw_heart_rate_stored_in_catalogue_or_notion": false,
+    "context_dimensions": ["time", "weather", "location"],
+    "context_rule": "Time, weather and location materially influence every eligible track decision across Horizons 1, 2 and 3 without overriding self-report, safety or editorial eligibility.",
+    "horizons": ["horizon_1", "horizon_2", "horizon_3"]
+  },
   "tensor_field_bible": {
     "source": "UM Song Tensor Kernel — Gold Training Set Notion views",
     "principle": "Preserve the full field surface. Do not collapse the tensor into generic mood tags.",
@@ -362,6 +374,26 @@
           "Memory Zone",
           "Why This Track",
           "GPT Interpretation",
+          "Editorial Notes"
+        ]
+      },
+      {
+        "view": "09 Current Inference Context Fit",
+        "purpose": "Human review of per-track suitability for the current Inference Matrix without storing citizen Heart Rate readings.",
+        "fields": [
+          "Track",
+          "Artist",
+          "Status",
+          "Priority",
+          "Primary Environmental Function",
+          "Energy / Body Response",
+          "Suitable Citizen State",
+          "Not Suitable Citizen State",
+          "Momentary Physiology Fit",
+          "Time Context Fit",
+          "Weather Context Fit",
+          "Location Context Fit",
+          "Human Variability Notes",
           "Editorial Notes"
         ]
       }

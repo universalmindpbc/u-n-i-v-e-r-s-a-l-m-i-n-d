@@ -75,6 +75,19 @@ const allowedAdaptiveSoundCues = [
 ];
 const allowedLocationPrecisions = ["none", "approximate", "precise"];
 const allowedDomains = ["Emotion", "Social", "Cognitive", "Physiological", "Threat", "Clinical Risk"];
+const allowedInferenceIds = [
+  "settled_resting",
+  "active_energised",
+  "strained_activated",
+  "low_energy_withdrawn",
+  "fatigued_recovering",
+  "mixed_uncertain",
+  "high_concern_support_first",
+  "insufficient_context",
+];
+const allowedHeartRateRoles = ["supporting", "conflicting", "not_available", "invalid"];
+const allowedHeartRateZones = ["low_observed", "mid_observed", "elevated_observed", "not_available"];
+const requiredInferenceHorizons = ["horizon_1", "horizon_2", "horizon_3"];
 
 const scorecardDomains = {
   human_needs_radar: allowedHighlights,
@@ -230,7 +243,11 @@ const inferenceInstructions = [
   ADAPTIVE_INFERENCE_SYSTEM_PROMPT,
   [
     "Current live MVP endpoint constraint:",
-    "- Use the short Horizon 1 self-report check-in supplied in this request plus the supplied environment_context JSON.",
+    "- Use the short current self-report and supplied environment_context JSON to form the model-side current-session Inference.",
+    "- Privacy boundary: raw Heart Rate and Heart Rate-derived health data are not sent to the external model. Return heart_rate_role and heart_rate_zone as not_available; the local application layer reconciles the optional 10-second Heart Rate observation after the model response.",
+    "- Use the word Inference, never Scenario. Return one Current Inference Matrix ID: settled_resting, active_energised, strained_activated, low_energy_withdrawn, fatigued_recovering, mixed_uncertain, high_concern_support_first or insufficient_context.",
+    "- Self-report is the primary current meaning. Heart Rate is supporting or conflicting evidence only. There is no personal baseline, trend or cross-session comparison.",
+    "- Never infer stress, activity, mood, illness, a song, a band, a carrier or DSP from a Heart Rate threshold alone. Missing, declined or invalid Heart Rate is safe and non-blocking.",
     "- Select exactly four labels from the existing UI radar label list.",
     "- Also score the complete needs_scorecard. Every field must be a number from 0.00 to 1.00.",
     "- Treat needs_scorecard values as present-state relevance signals for adaptive music matching, not as clinical facts.",
@@ -243,9 +260,10 @@ const inferenceInstructions = [
     "- Always return null for selected_format and source_id, and false for catalogue_ready. Never invent or resolve a channel source.",
     "- Return adaptive_sound_intent as a minimal semantic current-check-in handoff: one band intent and one carrier intent, or relevant false with both null when context is insufficient.",
     "- Band intents are delta sleep/rest, theta mindfulness, alpha calm and gamma inspiration. Carrier intents are cognition_joy, self_connection, presence, social_connection and earth_focus_reward.",
-    "- Do not output DSP settings or use biological targets, research hypotheses, music metadata, time, weather or location to choose adaptive sound in Horizon 1.",
+    "- Do not output DSP settings or use biological targets, research hypotheses or music metadata to choose adaptive sound.",
+    "- Time, weather and location must materially influence every adaptive music and adaptive-sound intent decision across Horizons 1, 2 and 3. Record all three as used or unavailable; never invent missing context.",
     "- High concern must set adaptive_sound_intent.safety_state to high_concern. The model never contacts any person; notification is consented authorised human-in-the-loop only.",
-    "- Treat local time, weather, temperature, and location as adaptive-environment-only modifiers.",
+    "- Treat local time, weather, temperature and location as required adaptive-environment modifiers for all three horizons, never as clinical evidence.",
     "- Environmental context never creates clinical evidence and never overrides citizen self-report.",
     "- Return top_needs_used, dominant_domains, and context_modifiers_used as the audit trail for music-room selection.",
     `Music-room selection JSON guide: ${JSON.stringify(ADAPTIVE_MUSIC_ROOM_SELECTION_GUIDE)}`,
@@ -316,6 +334,33 @@ function cleanContextNumber(value) {
   return Number.isFinite(number) ? Math.round(number * 10) / 10 : null;
 }
 
+function heartRateObservationZone(value) {
+  const heartRate = Number(value);
+  if (!Number.isFinite(heartRate) || heartRate < 30 || heartRate > 240) return "not_available";
+  if (heartRate < 60) return "low_observed";
+  if (heartRate <= 100) return "mid_observed";
+  return "elevated_observed";
+}
+
+function normalizeMomentaryPhysiology(value) {
+  const input = value && typeof value === "object" ? value : {};
+  const heartRate = Number(input.heart_rate_bpm ?? input.heartRateBpm);
+  const heartRateZone = heartRateObservationZone(heartRate);
+  const valid = heartRateZone !== "not_available";
+  return {
+    heart_rate_bpm: valid ? Math.round(heartRate) : null,
+    heart_rate_zone: heartRateZone,
+    measurement_duration_seconds: 10,
+    measurement_timing: "immediately_after_current_self_report",
+    source: valid ? "shen_quick_hr" : "not_available",
+    baseline_available: false,
+    trend_available: false,
+    valid,
+    optional_non_blocking: true,
+    scope: "current_inference_request_only",
+  };
+}
+
 function normalizeEnvironmentContext(value) {
   const input = value && typeof value === "object" ? value : {};
   const locationPrecision = cleanContextString(input.location_precision || input.locationPrecision, 24) || "none";
@@ -327,7 +372,7 @@ function normalizeEnvironmentContext(value) {
     weather_condition: cleanContextString(input.weather_condition || input.weatherCondition, 64),
     temperature_celsius: cleanContextNumber(input.temperature_celsius ?? input.temperatureCelsius),
     context_available: Boolean(input.context_available ?? input.contextAvailable),
-    context_role: "adaptive_environment_only",
+    context_role: "all_adaptive_decisions_all_horizons",
   };
 
   normalized.context_available = normalized.context_available ||
@@ -357,7 +402,24 @@ function normalizeNeedsScorecard(value) {
   );
 }
 
-function validateInference(result) {
+function contextDimensionAudit(environmentContext) {
+  return {
+    time: Boolean(environmentContext.local_time),
+    weather: Boolean(environmentContext.weather_condition || environmentContext.temperature_celsius !== null),
+    location: Boolean(environmentContext.location_label),
+  };
+}
+
+function reconcileHeartRateRole(inferenceId, heartRateZone, available) {
+  if (!available) return "not_available";
+  const lowerActivationInferences = new Set(["settled_resting", "low_energy_withdrawn", "fatigued_recovering"]);
+  const higherActivationInferences = new Set(["active_energised", "strained_activated"]);
+  if (lowerActivationInferences.has(inferenceId) && heartRateZone === "elevated_observed") return "conflicting";
+  if (higherActivationInferences.has(inferenceId) && heartRateZone === "low_observed") return "conflicting";
+  return "supporting";
+}
+
+function validateInference(result, environmentContext, momentaryPhysiology) {
   if (!result || !Array.isArray(result.highlights) || result.highlights.length !== 4) {
     throw new Error("The model response must include exactly four highlights.");
   }
@@ -379,16 +441,53 @@ function validateInference(result) {
   const dominantDomains = Array.isArray(result.dominant_domains)
     ? result.dominant_domains.filter((domain) => allowedDomains.includes(domain)).slice(0, 4)
     : [];
-  const contextModifiersUsed = Array.isArray(result.context_modifiers_used)
+  const reportedContextModifiers = Array.isArray(result.context_modifiers_used)
     ? result.context_modifiers_used
       .filter((modifier) => typeof modifier === "string" && modifier.trim())
       .map((modifier) => modifier.trim().replace(/\s+/g, " ").slice(0, 80))
-      .slice(0, 4)
+      .slice(0, 6)
     : [];
+  const requiredContextAudit = [
+    `time:${environmentContext.local_time || "unavailable"}`,
+    `weather:${environmentContext.weather_condition || (environmentContext.temperature_celsius !== null ? `${environmentContext.temperature_celsius}C` : "unavailable")}`,
+    `location:${environmentContext.location_label || "unavailable"}`,
+  ];
+  const contextModifiersUsed = [...requiredContextAudit, ...reportedContextModifiers]
+    .filter((value, index, values) => values.indexOf(value) === index)
+    .slice(0, 6);
+  const currentInference = result.current_inference && typeof result.current_inference === "object"
+    ? result.current_inference
+    : {};
+  const physiologyAvailable = momentaryPhysiology.valid === true;
+  const inferenceId = allowedInferenceIds.includes(currentInference.inference_id)
+    ? currentInference.inference_id
+    : "insufficient_context";
+  const heartRateRole = reconcileHeartRateRole(inferenceId, momentaryPhysiology.heart_rate_zone, physiologyAvailable);
+  const modelInferenceConfidence = typeof currentInference.confidence === "number" ? normalizeScore(currentInference.confidence) : 0;
+  const normalizedCurrentInference = {
+    inference_id: inferenceId,
+    human_label: typeof currentInference.human_label === "string" ? currentInference.human_label.slice(0, 80) : "Mixed / uncertain",
+    summary: typeof currentInference.summary === "string" ? currentInference.summary.slice(0, 320) : "",
+    confidence: heartRateRole === "conflicting" ? normalizeScore(modelInferenceConfidence - 0.08) : modelInferenceConfidence,
+    heart_rate_role: heartRateRole,
+    heart_rate_zone: physiologyAvailable ? momentaryPhysiology.heart_rate_zone : "not_available",
+    evidence_used: Array.isArray(currentInference.evidence_used)
+      ? currentInference.evidence_used.filter((value) => typeof value === "string" && value.trim()).map((value) => value.trim().slice(0, 120)).slice(0, 8)
+      : [],
+    context_dimensions_considered: contextDimensionAudit(environmentContext),
+    horizons_considered: [...requiredInferenceHorizons],
+    baseline_comparison_used: false,
+    clinical_status: "not_a_diagnosis",
+  };
+  const adaptiveSoundConfidence = typeof result.adaptive_sound_intent?.confidence === "number"
+    ? normalizeScore(result.adaptive_sound_intent.confidence)
+    : 0;
 
   return {
     highlights: result.highlights,
-    confidence: typeof result.confidence === "number" ? result.confidence : 0,
+    confidence: heartRateRole === "conflicting"
+      ? normalizeScore((typeof result.confidence === "number" ? result.confidence : 0) - 0.05)
+      : (typeof result.confidence === "number" ? result.confidence : 0),
     selected_music_room: allowedMusicRooms.includes(result.selected_music_room)
       ? result.selected_music_room
       : null,
@@ -401,6 +500,7 @@ function validateInference(result) {
     dominant_domains: dominantDomains,
     top_needs_used: topNeedsUsed.length ? topNeedsUsed : result.highlights,
     context_modifiers_used: contextModifiersUsed,
+    current_inference: normalizedCurrentInference,
     uncertainty_notes: Array.isArray(result.uncertainty_notes) ? result.uncertainty_notes.slice(0, 3) : [],
     human_review_relevance: result.human_review_relevance || "not_indicated",
     adaptive_sound_intent: {
@@ -420,7 +520,11 @@ function validateInference(result) {
       explicit_cues_used: Array.isArray(result.adaptive_sound_intent?.explicit_cues_used)
         ? result.adaptive_sound_intent.explicit_cues_used.filter((cue) => allowedAdaptiveSoundCues.includes(cue)).slice(0, 4)
         : [],
-      confidence: typeof result.adaptive_sound_intent?.confidence === "number" ? result.adaptive_sound_intent.confidence : 0,
+      context_modifiers_used: contextModifiersUsed,
+      horizons_considered: [...requiredInferenceHorizons],
+      confidence: heartRateRole === "conflicting"
+        ? normalizeScore(adaptiveSoundConfidence - 0.08)
+        : adaptiveSoundConfidence,
       safety_state: result.adaptive_sound_intent?.safety_state === "high_concern" ? "high_concern" : "standard",
       session_scope: "current_session_only",
       research_boundary: "biological_targets_not_used_in_product_decisions",
@@ -464,10 +568,12 @@ async function handleInference(request, response) {
 
   let checkin = "";
   let environmentContext = normalizeEnvironmentContext(null);
+  let momentaryPhysiology = normalizeMomentaryPhysiology(null);
   try {
     const body = await readRequestJson(request);
     checkin = typeof body.checkin === "string" ? body.checkin.trim() : "";
     environmentContext = normalizeEnvironmentContext(body.environment_context || body.environmentContext || body.context);
+    momentaryPhysiology = normalizeMomentaryPhysiology(body.momentary_physiology || body.momentaryPhysiology);
   } catch {
     sendJson(response, 400, { error: "Invalid JSON request." });
     return;
@@ -601,6 +707,55 @@ async function handleInference(request, response) {
                     "urgent_human_review",
                   ],
                 },
+                current_inference: {
+                  type: "object",
+                  additionalProperties: false,
+                  properties: {
+                    inference_id: { type: "string", enum: allowedInferenceIds },
+                    human_label: { type: "string" },
+                    summary: { type: "string" },
+                    confidence: { type: "number", minimum: 0, maximum: 1 },
+                    heart_rate_role: { type: "string", enum: allowedHeartRateRoles },
+                    heart_rate_zone: { type: "string", enum: allowedHeartRateZones },
+                    evidence_used: {
+                      type: "array",
+                      minItems: 1,
+                      maxItems: 8,
+                      items: { type: "string" },
+                    },
+                    context_dimensions_considered: {
+                      type: "object",
+                      additionalProperties: false,
+                      properties: {
+                        time: { type: "boolean" },
+                        weather: { type: "boolean" },
+                        location: { type: "boolean" },
+                      },
+                      required: ["time", "weather", "location"],
+                    },
+                    horizons_considered: {
+                      type: "array",
+                      minItems: 3,
+                      maxItems: 3,
+                      items: { type: "string", enum: requiredInferenceHorizons },
+                    },
+                    baseline_comparison_used: { type: "boolean", enum: [false] },
+                    clinical_status: { type: "string", enum: ["not_a_diagnosis"] },
+                  },
+                  required: [
+                    "inference_id",
+                    "human_label",
+                    "summary",
+                    "confidence",
+                    "heart_rate_role",
+                    "heart_rate_zone",
+                    "evidence_used",
+                    "context_dimensions_considered",
+                    "horizons_considered",
+                    "baseline_comparison_used",
+                    "clinical_status",
+                  ],
+                },
                 adaptive_sound_intent: {
                   type: "object",
                   additionalProperties: false,
@@ -630,6 +785,18 @@ async function handleInference(request, response) {
                       maxItems: 4,
                       items: { type: "string", enum: allowedAdaptiveSoundCues },
                     },
+                    context_modifiers_used: {
+                      type: "array",
+                      minItems: 3,
+                      maxItems: 6,
+                      items: { type: "string" },
+                    },
+                    horizons_considered: {
+                      type: "array",
+                      minItems: 3,
+                      maxItems: 3,
+                      items: { type: "string", enum: requiredInferenceHorizons },
+                    },
                     confidence: { type: "number", minimum: 0, maximum: 1 },
                     safety_state: { type: "string", enum: ["standard", "high_concern"] },
                     session_scope: { type: "string", enum: ["current_session_only"] },
@@ -642,6 +809,8 @@ async function handleInference(request, response) {
                     "carrier_intent",
                     "top_needs_used",
                     "explicit_cues_used",
+                    "context_modifiers_used",
+                    "horizons_considered",
                     "confidence",
                     "safety_state",
                     "session_scope",
@@ -672,6 +841,7 @@ async function handleInference(request, response) {
                 "context_modifiers_used",
                 "uncertainty_notes",
                 "human_review_relevance",
+                "current_inference",
                 "adaptive_sound_intent",
                 "interpretation_type",
                 "clinical_status",
@@ -691,7 +861,7 @@ async function handleInference(request, response) {
     }
 
     const result = {
-      ...validateInference(parseStructuredResponse(payload)),
+      ...validateInference(parseStructuredResponse(payload), environmentContext, momentaryPhysiology),
       environment_context: environmentContext,
     };
     console.info("Citizen needs inference QA", {

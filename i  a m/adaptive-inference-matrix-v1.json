@@ -1,0 +1,127 @@
+{
+  "schema_version": "iam_adaptive_inference_matrix_v1",
+  "name": "Current Inference Matrix",
+  "language_rule": "Use Inference, never Scenario. All labels describe the current moment and are not diagnoses.",
+  "purpose": "Combine the current self-report, one optional 10-second Heart Rate measurement, local time, weather and approximate location into one cautious current-session inference for music and adaptive-sound intent.",
+  "claim_boundary": "adaptive_environment_inference_not_diagnosis_treatment_or_proven_benefit",
+  "input_contract": {
+    "self_report": {
+      "role": "primary_current_meaning",
+      "required_for_personalised_selection": true
+    },
+    "momentary_physiology": {
+      "available_now": ["heart_rate_bpm"],
+      "measurement_duration_seconds": 10,
+      "measurement_timing": "immediately_after_current_self_report",
+      "source": "shen_quick_hr",
+      "future_after_platform_and_ux_validation": {
+        "signals": ["blood_pressure", "heart_rate_variability", "baevsky_stress_index", "body_mass_index"],
+        "target_capture_duration_seconds_max": 60,
+        "experience_rule": "Add engaging video self-report devices gradually so the longer voluntary measurement remains comfortable and clear."
+      },
+      "baseline_available": false,
+      "trend_available": false,
+      "comparison_rule": "Never compare with a personal baseline or another session. Never infer stress, activity, mood or illness from Heart Rate alone.",
+      "retention_rule": "Use inside the current-session local or first-party privacy layer only. Do not send raw Heart Rate or a Heart Rate-derived health zone to an external model. Do not write raw Heart Rate to localStorage, Notion or ordinary analytics.",
+      "optional_non_blocking": true
+    },
+    "environment_context": {
+      "required_fields_when_available": ["local_time", "weather_condition", "temperature_celsius", "location_label", "location_precision"],
+      "decision_rule": "Time, weather and location influence every adaptive-environment decision in Horizons 1, 2 and 3. They never create clinical evidence, override explicit self-report or fabricate missing evidence.",
+      "location_rule": "Prefer approximate location. Precise location requires explicit consent and value."
+    }
+  },
+  "heart_rate_observation_zones": {
+    "low_observed": {
+      "bpm_min": 30,
+      "bpm_max": 59,
+      "meaning": "A low momentary reading that requires self-report and context before interpretation."
+    },
+    "mid_observed": {
+      "bpm_min": 60,
+      "bpm_max": 100,
+      "meaning": "A middle momentary reading that may occur in many resting or active states and is not a baseline."
+    },
+    "elevated_observed": {
+      "bpm_min": 101,
+      "bpm_max": 240,
+      "meaning": "An elevated momentary reading that may reflect movement, excitement, heat, stress or other factors; never classify it alone."
+    },
+    "not_available": {
+      "meaning": "Declined, missing, expired or invalid Heart Rate remains safe and non-blocking."
+    }
+  },
+  "horizon_context_rule": {
+    "horizon_1": "Combine current self-report with time, weather and location for every adaptive music and adaptive-sound intent decision.",
+    "horizon_2": "Add the current 10-second Heart Rate now, and later validated BP, HRV, Baevsky Stress Index and BMI, while time, weather and location continue to modify every adaptive decision.",
+    "horizon_3": "If future research-grade molecular evidence is ever validated and consented, time, weather and location still modify adaptive decisions; biological targets never select a band, carrier or song directly."
+  },
+  "inferences": [
+    {
+      "id": "settled_resting",
+      "human_label": "Settled / resting",
+      "evidence_pattern": "Self-report expresses calm, ease, gratitude, rest or stillness; Heart Rate is compatible but never decisive; time, weather and location support a lower-demand setting.",
+      "music_direction": "Warm, spacious, lower-density or gently affirmative programming.",
+      "adaptive_sound_direction": "Prefer semantic calm, mindfulness, presence or self-connection according to the words and full context.",
+      "avoid": "Do not assume a low reading means calm."
+    },
+    {
+      "id": "active_energised",
+      "human_label": "Active / energised",
+      "evidence_pattern": "Self-report or location indicates movement, exercise, travel, dancing, surfing or positive activation; Heart Rate may be elevated; time and weather support activity.",
+      "music_direction": "Rhythmic, open, kinetic or celebratory programming matched to safety and editorial fit.",
+      "adaptive_sound_direction": "Prefer semantic inspiration, cognition/joy or earth/focus/reward when supported by the complete inference.",
+      "avoid": "Do not misread activity-related Heart Rate as stress."
+    },
+    {
+      "id": "strained_activated",
+      "human_label": "Strained / activated",
+      "evidence_pattern": "Self-report expresses overwhelm, pressure, anxiety, anger or strain; Heart Rate and non-activity context may support activation; time, heat, storm or dense location can increase the need for caution.",
+      "music_direction": "Stabilising, grounding, spacious or constructively releasing programming without mechanical mood mirroring.",
+      "adaptive_sound_direction": "Prefer semantic calm, mindfulness, presence, self-connection or grounding according to the full context.",
+      "avoid": "Do not diagnose stress from Heart Rate or weather."
+    },
+    {
+      "id": "low_energy_withdrawn",
+      "human_label": "Low-energy / withdrawn",
+      "evidence_pattern": "Self-report expresses flatness, sadness, disconnection or low motivation; Heart Rate may support low activation but is never required; time, weather and location shape whether validation, warmth or gentle lift is appropriate.",
+      "music_direction": "Emotionally honest programming that validates first and then supports warmth, connection, clarity or gentle agency.",
+      "adaptive_sound_direction": "Prefer semantic mindfulness, self-connection, social connection or gentle inspiration only when supported by the current inference.",
+      "avoid": "Do not label the citizen depressed or infer depression from a single check-in."
+    },
+    {
+      "id": "fatigued_recovering",
+      "human_label": "Fatigued / recovering",
+      "evidence_pattern": "Self-report expresses tiredness, sleep pressure, recovery or recent exertion; Heart Rate, time, weather and location refine whether rest, warmth, hydration, grounding or a gentle lift is appropriate.",
+      "music_direction": "Reduced intensity, warmth, body awareness and recovery-oriented pacing.",
+      "adaptive_sound_direction": "Use sleep/rest only when sleep or rest is explicit; otherwise prefer mindfulness, calm, self-connection, presence or earth/focus/reward.",
+      "avoid": "Do not treat one Heart Rate reading as recovery evidence."
+    },
+    {
+      "id": "mixed_uncertain",
+      "human_label": "Mixed / uncertain",
+      "evidence_pattern": "Self-report, Heart Rate and environment conflict, or important context is missing.",
+      "music_direction": "Choose the safest conservative trajectory with lower confidence, or return no personalised selection.",
+      "adaptive_sound_direction": "Return no semantic frequency intent when evidence is insufficient; never silently default to 444 Hz or another carrier.",
+      "avoid": "Do not force a neat label from conflicting evidence."
+    },
+    {
+      "id": "high_concern_support_first",
+      "human_label": "High concern / support first",
+      "evidence_pattern": "The self-report contains credible high-concern language. Heart Rate and environmental context may add uncertainty or urgency but never create high concern alone.",
+      "music_direction": "Human review and support take priority over adaptive environment selection.",
+      "adaptive_sound_direction": "Adaptive frequencies remain off by default unless the citizen explicitly opts in for the current session.",
+      "avoid": "The model never contacts another person and never presents diagnosis or certainty."
+    }
+  ],
+  "required_output_audit": {
+    "inference_id": true,
+    "inference_confidence": true,
+    "heart_rate_role": ["supporting", "conflicting", "not_available", "invalid"],
+    "heart_rate_zone": ["low_observed", "mid_observed", "elevated_observed", "not_available"],
+    "context_dimensions_considered": ["time", "weather", "location"],
+    "horizons_considered": ["horizon_1", "horizon_2", "horizon_3"],
+    "baseline_comparison_used": false,
+    "raw_heart_rate_retained": false
+  }
+}

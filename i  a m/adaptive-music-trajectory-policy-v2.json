@@ -2,6 +2,18 @@
   "schema_version": "adaptive_music_trajectory_policy_v2",
   "policy_version": "tensor_uplift_rotation_v3",
   "objective": "Prefer a safe constructive emotional trajectory over repeated emotional mirroring while preserving tensor fit and relevance-bounded cold-start variety.",
+  "current_inference_contract": {
+    "matrix_source": "adaptive-inference-matrix-v1.json",
+    "self_report_role": "primary_current_meaning",
+    "heart_rate_role": "optional_supporting_or_conflicting_current_session_evidence",
+    "heart_rate_measurement_duration_seconds": 10,
+    "heart_rate_baseline_available": false,
+    "direct_heart_rate_threshold_to_track": false,
+    "raw_heart_rate_retained_by_selector": false,
+    "context_dimensions": ["time", "weather", "location"],
+    "context_rule": "Time, weather and location materially influence every adaptive music decision across Horizons 1, 2 and 3 without overriding self-report, safety or catalogue eligibility.",
+    "horizons": ["horizon_1", "horizon_2", "horizon_3"]
+  },
   "uplift_quota": {
     "uplift_slots": 10,
     "window_size": 13,

@@ -503,16 +503,38 @@ def detect_named_trajectories(inference_payload: Mapping[str, Any], highlights: 
 def build_target_trajectory(inference_payload: Mapping[str, Any], highlights: List[str]) -> Dict[str, float]:
     target = {key: 0.0 for key in VECTOR_KEYS}
     trajectories = detect_named_trajectories(inference_payload, highlights)
+    current_inference = inference_payload.get("current_inference")
+    current_inference = current_inference if isinstance(current_inference, Mapping) else {}
+    inference_targets = {
+        "settled_resting": ["Calm", "Clarity", "Recovery", "Gratitude"],
+        "active_energised": ["Joy", "Motivation", "Arousal", "Curiosity"],
+        "strained_activated": ["Calm", "Recovery", "Clarity", "Psychological Safety"],
+        "low_energy_withdrawn": ["Hope", "Connection", "Motivation", "Trust"],
+        "fatigued_recovering": ["Recovery", "Calm", "Psychological Safety", "Sleep Pressure"],
+        "mixed_uncertain": ["Calm", "Clarity", "Psychological Safety"],
+        "high_concern_support_first": ["Psychological Safety", "Calm", "Trust"],
+    }
+    for key in inference_targets.get(str(current_inference.get("inference_id") or ""), []):
+        if key in target:
+            target[key] = max(target[key], 0.7)
     if not trajectories:
         for highlight in highlights:
             if highlight in target:
                 target[highlight] = 0.55
+        if str(current_inference.get("heart_rate_role") or "") == "conflicting":
+            target = {key: value * 0.75 for key, value in target.items()}
+            target["Calm"] = max(target.get("Calm", 0.0), 0.65)
+            target["Clarity"] = max(target.get("Clarity", 0.0), 0.65)
         return target
 
     for trajectory in trajectories:
         for key in TRAJECTORY_TARGETS.get(trajectory, []):
             if key in target:
                 target[key] = max(target[key], 1.0)
+    if str(current_inference.get("heart_rate_role") or "") == "conflicting":
+        target = {key: value * 0.75 for key, value in target.items()}
+        target["Calm"] = max(target.get("Calm", 0.0), 0.65)
+        target["Clarity"] = max(target.get("Clarity", 0.0), 0.65)
     return target
 
 
@@ -818,17 +840,83 @@ def context_fit(track: Mapping[str, Any], environment_context: Mapping[str, Any]
     room = str(track.get("music_room") or get_nested(track, ["tensor_profile", "runtime_delivery", "music_room"], "")).lower()
     time_text = str(environment_context.get("local_time") or environment_context.get("time_of_day") or "").lower()
     weather = str(environment_context.get("weather_condition") or "").lower()
+    location = str(environment_context.get("location_label") or environment_context.get("location_type") or "").lower()
     temp = environment_context.get("temperature_celsius")
+    time_fit_text = str(
+        track.get("Time Context Fit")
+        or track.get("time_context_fit")
+        or get_nested(track, ["tensor_profile", "current_inference_context_fit", "time"], "")
+    ).lower()
+    weather_fit_text = str(
+        track.get("Weather Context Fit")
+        or track.get("weather_context_fit")
+        or get_nested(track, ["tensor_profile", "current_inference_context_fit", "weather"], "")
+    ).lower()
+    location_fit_text = str(
+        track.get("Location Context Fit")
+        or track.get("location_context_fit")
+        or get_nested(track, ["tensor_profile", "current_inference_context_fit", "location"], "")
+    ).lower()
 
-    if ("sunrise" in time_text or "early" in time_text) and room == "inner-planes":
-        score += 0.16
-    if ("sunset" in time_text or "evening" in time_text) and room == "champagne-bohemia":
-        score += 0.16
+    hour_match = re.search(r"(?:^|\D)([01]?\d|2[0-3]):[0-5]\d", time_text)
+    hour = int(hour_match.group(1)) if hour_match else None
+    is_morning = any(word in time_text for word in ("sunrise", "early", "morning")) or (hour is not None and 5 <= hour < 12)
+    is_afternoon = "afternoon" in time_text or (hour is not None and 12 <= hour < 17)
+    is_evening = any(word in time_text for word in ("sunset", "evening")) or (hour is not None and 17 <= hour < 22)
+    is_night = any(word in time_text for word in ("night", "late")) or (hour is not None and (hour >= 22 or hour < 5))
+
+    if is_morning and (room == "inner-planes" or "morning" in time_fit_text or "sunrise" in time_fit_text):
+        score += 0.12
+    if is_afternoon and (room in {"modul8-infinity", "james-bondage"} or "afternoon" in time_fit_text):
+        score += 0.08
+    if is_evening and (room == "champagne-bohemia" or "evening" in time_fit_text or "sunset" in time_fit_text):
+        score += 0.12
+    if is_night and (room in {"inner-planes", "champagne-bohemia"} or "night" in time_fit_text):
+        score += 0.08
     if any(word in weather for word in ("rain", "storm", "wind")) and room in {"inner-planes", "champagne-bohemia"}:
         score += 0.12
+    if any(word in weather for word in ("rain", "storm", "wind", "clear", "sun", "cloud", "snow")) and any(
+        word in weather_fit_text for word in weather.split()
+    ):
+        score += 0.08
     if isinstance(temp, (int, float)) and temp >= 30 and room == "champagne-bohemia":
         score += 0.1
+    if any(word in location for word in ("coast", "beach", "ocean", "sea")) and room == "champagne-bohemia":
+        score += 0.12
+    if any(word in location for word in ("city", "urban", "club")) and room in {"modul8-infinity", "james-bondage"}:
+        score += 0.1
+    if any(word in location for word in ("home", "private", "bedroom")) and room == "inner-planes":
+        score += 0.1
+    if location and any(word in location_fit_text for word in location.split() if len(word) > 2):
+        score += 0.08
     return max(0.0, min(1.0, score))
+
+
+def current_inference_audit(inference_input: Mapping[str, Any]) -> Dict[str, Any]:
+    current = inference_input.get("current_inference")
+    current = current if isinstance(current, Mapping) else {}
+    environment = inference_input.get("environment_context")
+    environment = environment if isinstance(environment, Mapping) else {}
+    heart_rate_role = str(current.get("heart_rate_role") or "not_available")
+    if heart_rate_role not in {"supporting", "conflicting", "not_available", "invalid"}:
+        heart_rate_role = "invalid"
+    heart_rate_zone = str(current.get("heart_rate_zone") or "not_available")
+    if heart_rate_zone not in {"low_observed", "mid_observed", "elevated_observed", "not_available"}:
+        heart_rate_zone = "not_available"
+    return {
+        "matrix_schema_version": "iam_adaptive_inference_matrix_v1",
+        "inference_id": str(current.get("inference_id") or "insufficient_context"),
+        "heart_rate_role": heart_rate_role,
+        "heart_rate_zone": heart_rate_zone,
+        "raw_heart_rate_retained": False,
+        "baseline_comparison_used": False,
+        "context_dimensions_considered": {
+            "time": bool(environment.get("local_time") or environment.get("time_of_day")),
+            "weather": bool(environment.get("weather_condition") or environment.get("temperature_celsius") is not None),
+            "location": bool(environment.get("location_label") or environment.get("location_type")),
+        },
+        "horizons_considered": ["horizon_1", "horizon_2", "horizon_3"],
+    }
 
 
 def track_engagement_signals(track: Mapping[str, Any], bundle: Mapping[str, Any]) -> Dict[str, Any]:
@@ -1162,6 +1250,7 @@ def output_contract(
             "source": "Ben Gold Standard V1.11",
             "not_a_diagnosis": True,
             "human_review_required": bool(acute or safety.get("requires_age_gate")),
+            "current_inference": current_inference_audit(inference_input),
             "selector": {
                 "version": SELECTION_POLICY_VERSION,
                 "ranking_authority": "tensor_first",
@@ -1343,6 +1432,11 @@ def target_activation_level(inference_input: Mapping[str, Any], user_vector: Map
         target = 3
     else:
         target = 2
+
+    current_inference = inference_input.get("current_inference")
+    current_inference = current_inference if isinstance(current_inference, Mapping) else {}
+    if str(current_inference.get("heart_rate_role") or "") == "conflicting":
+        target = min(target, 1)
 
     return target
 

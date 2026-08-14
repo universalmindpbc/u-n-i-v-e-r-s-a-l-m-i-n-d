@@ -68,6 +68,7 @@ export function resolveAdaptiveSoundSession(inferenceInput = {}, policy, options
     prompt_version: promptIdentity.prompt_version,
     prompt_sha256: promptIdentity.prompt_sha256,
   };
+  const inferenceAudit = currentInferenceAudit(payload);
   const baseAudit = {
     source_event: String(options.sourceEvent || "session_initialization"),
     raw_checkin_text_used: false,
@@ -75,6 +76,7 @@ export function resolveAdaptiveSoundSession(inferenceInput = {}, policy, options
     automatic_mid_session_morph: false,
     current_session_only: true,
     session_choice_present: Boolean(sessionChoice?.band_intent || sessionChoice?.carrier_intent),
+    ...inferenceAudit,
   };
 
   if (!bandIntent || !carrierIntent) {
@@ -324,6 +326,33 @@ function resolveSafety(payload, policy) {
       authority: safetyPolicy.notification_authority,
       model_must_not_contact_any_person: true,
     },
+  };
+}
+
+function currentInferenceAudit(payload) {
+  const intent = objectValue(payload.adaptive_sound_intent);
+  const current = objectValue(payload.current_inference);
+  const validHeartRateRoles = new Set(["supporting", "conflicting", "not_available", "invalid"]);
+  const validHeartRateZones = new Set(["low_observed", "mid_observed", "elevated_observed", "not_available"]);
+  const validHorizons = new Set(["horizon_1", "horizon_2", "horizon_3"]);
+  const heartRateRole = String(current.heart_rate_role || "not_available");
+  const heartRateZone = String(current.heart_rate_zone || "not_available");
+  const horizonsConsidered = arrayValue(intent.horizons_considered)
+    .map(String)
+    .filter((value) => validHorizons.has(value));
+  return {
+    context_modifiers_used: arrayValue(intent.context_modifiers_used)
+      .map((value) => String(value || "").trim().slice(0, 80))
+      .filter(Boolean)
+      .slice(0, 6),
+    context_dimensions_considered: ["time", "weather", "location"],
+    horizons_considered: horizonsConsidered.length
+      ? horizonsConsidered
+      : ["horizon_1", "horizon_2", "horizon_3"],
+    heart_rate_role: validHeartRateRoles.has(heartRateRole) ? heartRateRole : "invalid",
+    heart_rate_zone: validHeartRateZones.has(heartRateZone) ? heartRateZone : "not_available",
+    raw_heart_rate_retained: false,
+    baseline_comparison_used: false,
   };
 }
 

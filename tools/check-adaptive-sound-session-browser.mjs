@@ -4,6 +4,10 @@ import assert from "node:assert/strict";
 import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
+import {
+  SYSTEM_PROMPT_SHA256,
+  SYSTEM_PROMPT_VERSION,
+} from "../cloudflare/adaptive-inference-system-prompt-v5-55.js";
 
 const playwrightModule = process.env.PLAYWRIGHT_MODULE || "playwright";
 const { chromium } = await import(playwrightModule);
@@ -11,8 +15,8 @@ const { chromium } = await import(playwrightModule);
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const IAM = path.join(ROOT, "i  a m");
 const BASE_URL = "https://staging.universalmind.tv/vogue/iam";
-const PROMPT_VERSION = "adaptive-inference-engine-system-prompt-v5.55";
-const PROMPT_SHA256 = "e259c7119d295b2406ebaabccf062914dba5fd77a665e95a6753abe1042a8327";
+const PROMPT_VERSION = SYSTEM_PROMPT_VERSION;
+const PROMPT_SHA256 = SYSTEM_PROMPT_SHA256;
 const BANDS = new Set(["delta", "theta", "alpha", "gamma"]);
 const CARRIERS = new Set([111, 222, 444, 555, 999]);
 const forbiddenTargets = ["SLC6A4", "CD38", "DOCK2", "OXTR", "DRD2"];

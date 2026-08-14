@@ -20,6 +20,8 @@ This significant v5.55 upgrade carries the v4.44 layer-based architecture into a
     - Separated transcriptomic research hypotheses from every product decision path.
     - Made the application the sole authority for the 80/10/10 Videos / Parties / Radio slot and exact approved `source_id`.
     - Corrected the exploratory 444 Hz target nomenclature to `DOCK2`.
+    - Added the optional current 10-second Shen Heart Rate measurement as one current-session inference input without baseline, trend or cross-session comparison.
+    - Required local time, weather and location to influence every adaptive-environment decision across Horizons 1, 2 and 3, including music and adaptive-sound intent.
 
 ---
 
@@ -139,16 +141,18 @@ Expected application flow:
 
 4. Weather service receives location context and returns weather condition plus temperature.
 
-5. Application sends structured context JSON to GPT with the citizen check-in.
+5. After the current text check-in, the optional Shen Heart Check may supply one 10-second Heart Rate observation. Voice-to-text and Heart Rate may later be captured during the same voluntary check-in experience.
 
-6. GPT factors the supplied context into adaptive environment output.
+6. Application sends the current self-report and structured context JSON to GPT. Raw Heart Rate and Heart Rate-derived health data are not sent to an external model; the local privacy layer reconciles the optional Heart Rate observation with the model result.
+
+7. The complete inference pipeline factors time, weather, location and the locally reconciled Heart Rate role into adaptive-environment decisions across Horizons 1, 2 and 3, including music and adaptive-sound intent.
 
 
 GPT analyses the context it receives. GPT does not independently fetch private context.
 
 ## Privacy Rule For Context
 
-Use the least precise context that delivers meaningful adaptive value. Approximate location is enough for soundtrack adaptation. Precise location requires explicit value and explicit consent. Weather and time support environmental adaptation only — they are not clinical evidence, they do not create diagnosis, and they do not override citizen self-report.
+Use the least precise context that delivers meaningful adaptive value. Approximate location is enough for adaptive music and sound. Precise location requires explicit value and explicit consent. Time, weather and location influence every adaptive-environment decision across all three horizons. They are not clinical evidence, they do not create diagnosis, and they do not override citizen self-report or fabricate missing evidence.
 
 ---
 
@@ -164,7 +168,7 @@ Universal Mind adds evidence across three horizons. Each horizon is optional, co
 
 Horizon 1 contains signals intentionally provided by the citizen.
 
-**Phase 0.1 — Current MVP.** Available signals: free-text check-in, typed self-report, short-form language input. Example inputs: _I am happy. I am sad. I am angry. I am surfing, having coffee and feeling grateful. I am not enough. I am calm. I am overwhelmed._
+**Phase 0.1 — Current MVP.** Available signals: free-text check-in, typed self-report and short-form language input, followed immediately by an optional 10-second Shen Heart Rate measurement. Heart Rate is classified as early Horizon 2 physiology even though it participates in the same current-session inference. Example inputs: _I am happy. I am sad. I am angry. I am surfing, having coffee and feeling grateful. I am not enough. I am calm. I am overwhelmed._
 
 **Later Horizon 1 — Conversation + Surveys.** Ongoing GPT conversation, conversational surveys, conversational clinical questionnaires, chat-based validated screeners, longitudinal self-report patterns.
 
@@ -176,13 +180,17 @@ Horizon 1 contains signals intentionally provided by the citizen.
 
 ## Horizon 2 — Remote Biometrics / Physiology
 
-Optional physiological evidence. Preferred early pathway: wearable PPG (Apple Watch or compatible signals where available). Possible future signals: heart rate, heart rate variability, respiratory rhythm, SpO2, blood pressure estimates, recovery signals, validated rPPG or remote biometric signals where scientifically and ethically approved. Physiology adds independent evidence; it does not replace language, conversation or human context.
+Optional physiological evidence. **Current MVP signal:** one 10-second Shen Heart Rate observation taken immediately after the current text check-in. There is no personal Heart Rate baseline, trend or cross-session comparison. A single reading may be affected by movement, excitement, heat, posture, stress and other factors, so never infer a mental or physical state from Heart Rate alone. Missing, declined, expired or invalid Heart Rate is safe and non-blocking.
+
+Possible future signals after platform and UX validation: blood pressure, heart rate variability, Baevsky Stress Index and BMI during an engaging video self-report experience of up to approximately 60 seconds; wearable PPG; respiratory rhythm; SpO2; recovery signals; and validated rPPG or remote biometric signals where scientifically and ethically approved. Physiology adds independent evidence; it does not replace language, conversation or human context.
 
 ## Horizon 3 — Contactless Molecular Inference
 
 A future research horizon. Research hypothesis: integrate hyperspectral imaging, autofluorescence and computer vision to investigate non-invasive inference of transcriptional activity associated with mental health-relevant biological pathways.
 
 Current research targets include OXTR, DRD2, SLC6A4, NMDAR, DOCK2, CD38, IL6, NR3C1. Horizon 3 signals represent research-grade evidence only after validation. They add evidence — they do not create diagnosis or certainty, and they require scientific validation, ethics review, peer review and clinical governance. Research targets never influence adaptive-sound band or carrier selection.
+
+Time, weather and location remain adaptive context at Horizon 3. They may modify the adaptive environment around validated research evidence, but they never become molecular evidence and biological targets never choose music, a band or a carrier directly.
 
 ## Evidence Weights & Convergence
 
@@ -191,6 +199,24 @@ Each signal receives a weight based on source, reliability, recency, consent lev
 Text self-report is valid evidence, yet limited. Conversational follow-up increases context. Validated surveys increase structure. Voice and video-selfie signals add optional multimodal evidence when voluntarily provided. Wearable PPG, rPPG and remote physiology add independent physiological evidence when validated and consented. Future autofluorescence inference adds research-grade biological evidence only after validation.
 
 Confidence increases when independent evidence streams converge. Confidence decreases when evidence conflicts. When signals conflict, represent uncertainty and request more context rather than forcing a conclusion. Evidence convergence never becomes certainty — it increases confidence only within the limits of validation.
+
+## Current Inference Matrix — Human + AI Rule
+
+Call the result **Inference**, never Scenario. The matrix combines current self-report, optional 10-second Heart Rate, local time, weather and approximate location. It describes the current moment only and is never a diagnosis.
+
+| Inference | Combined evidence pattern | Music direction | Adaptive-sound direction |
+| --- | --- | --- | --- |
+| Settled / resting | Calm, ease, gratitude, rest or stillness; Heart Rate may be compatible but is never decisive; time, weather and location support a lower-demand setting | Warm, spacious, lower-density or gently affirmative | Calm, mindfulness, presence or self-connection according to the full inference |
+| Active / energised | Self-report or location indicates movement, exercise, travel, dancing or surfing; Heart Rate may be elevated; time and weather support activity | Rhythmic, open, kinetic or celebratory | Inspiration, cognition/joy or earth/focus/reward when supported by the full inference |
+| Strained / activated | Self-report expresses overwhelm, pressure, anxiety, anger or strain; Heart Rate and non-activity context may support activation; heat, storm or dense location increase caution | Stabilising, grounding, spacious or constructively releasing | Calm, mindfulness, presence, self-connection or grounding according to the full inference |
+| Low-energy / withdrawn | Self-report expresses flatness, sadness, disconnection or low motivation; Heart Rate may support low activation but is never required; context shapes validation versus gentle lift | Emotionally honest, then warmth, connection, clarity or gentle agency | Mindfulness, self-connection, social connection or gentle inspiration when supported |
+| Fatigued / recovering | Self-report expresses tiredness, sleep pressure, recovery or recent exertion; Heart Rate and context refine rest, warmth, hydration or gentle lift | Reduced intensity, warmth, body awareness and recovery pacing | Sleep/rest only when explicit; otherwise mindfulness, calm, self-connection, presence or earth/focus/reward |
+| Mixed / uncertain | Self-report, Heart Rate and environment conflict, or important context is missing | Safest conservative trajectory with lower confidence, or no personalised selection | No frequency intent when evidence is insufficient; never silently default |
+| High concern / support first | Current self-report contains credible high-concern language; Heart Rate and environment may add uncertainty but never create high concern alone | Human review and support take priority | Adaptive frequencies off by default unless the citizen explicitly opts in for this session |
+
+Heart Rate observation zones are broad input descriptors only: `low_observed` 30–59 bpm, `mid_observed` 60–100 bpm, `elevated_observed` 101–240 bpm, or `not_available`. Never use a zone as a diagnosis, a personal baseline, or a direct threshold-to-song, band, carrier or DSP shortcut. Use `adaptive-inference-matrix-v1.json` as the machine-readable authority.
+
+For every adaptive decision, record whether time, weather and location were supplied and how they influenced the result. If a dimension is unavailable, record it as unavailable; do not invent it. Apply this rule at Horizons 1, 2 and 3.
 
 ---
 
@@ -416,11 +442,11 @@ Extended Streaming Session
 
 ## Inputs
 
-Use available inputs only: latest citizen check-in, Citizen Needs radar profile, dominant domains, top inferred needs, inference confidence, relationship-maturity context, local time, approximate location, weather condition, temperature, Universal Mind artist catalogue, Gracenote metadata, Cyanite metadata, Musixmatch lyrics, YouTube candidates, editorial rules, A/B test assignment. Context modifies the music environment; context never overrides the citizen's expressed state.
+Use available inputs only: latest citizen check-in, optional current 10-second Heart Rate observation, Current Inference Matrix result, Citizen Needs radar profile, dominant domains, top inferred needs, inference confidence, relationship-maturity context, local time, approximate location, weather condition, temperature, Universal Mind artist catalogue, Gracenote metadata, Cyanite metadata, Musixmatch lyrics, YouTube candidates, editorial rules, A/B test assignment. Heart Rate is supporting or conflicting evidence only. Time, weather and location materially influence every adaptive music decision while never overriding the citizen's expressed state.
 
 ## Context Modifiers
 
-Use these environmental variables when available and consented: local time, approximate location, weather condition, temperature. These are adaptive-environment signals, not clinical signals. They refine tone, tempo, intensity, density and atmosphere.
+Use these environmental variables when available and consented: local time, approximate location, weather condition, temperature. These are adaptive-environment signals, not clinical signals. They refine every music-room, trajectory, tone, tempo, intensity, density, atmosphere and adaptive-sound intent decision across Horizons 1, 2 and 3. Record each available dimension in the decision audit.
 
 **Time** — morning may support clarity, motivation or gentle activation; afternoon may support focus or balanced energy; evening may support downshift, reflection or recovery; late night may favour lower-density programming. Time can refine a room selection but never rename or replace the room taxonomy.
 
@@ -430,7 +456,7 @@ Use these environmental variables when available and consented: local time, appr
 
 ## Adaptive Sound Intent — Horizon 1
 
-Adaptive sound is based on the citizen's current voluntary check-in. The model returns semantic intent only; the deterministic application policy selects the exact versioned profile and one carrier for the current session.
+Adaptive sound is based on the citizen's current voluntary check-in, optional 10-second Heart Rate observation, and current local time, weather and approximate location. The self-report remains the primary meaning. Heart Rate and environment modify the inference; no single signal chooses a frequency. The model returns semantic intent only; the deterministic application policy selects the exact versioned profile and one carrier for the current session.
 
 The four band intents are:
 
@@ -449,7 +475,7 @@ The five carrier intents are:
 
 These labels are experience-design intentions, not proven effects. Return only the semantic identifiers, needs used, confidence and safety state. Do not output DSP weights, invent a frequency, choose multiple carriers, or claim brain entrainment, treatment, wellness or benefit. Do not use gene names, receptor names, transcriptomic hypotheses or other biological targets to choose or justify a band or carrier.
 
-Horizon 1 uses one carrier and one resolved profile for the current session only. It does not automatically morph by time, weather, location or changing mood. A citizen's explicit band/carrier choice may override the check-in result for that session only. If no structured check-in intent exists, return `relevant: false`; do not silently default to 444 Hz or any other carrier.
+Horizon 1 uses one carrier and one resolved profile for the current session only. Time, weather and location must influence the initial semantic intent at Horizon 1 and remain required context modifiers at Horizons 2 and 3. The resolved profile does not automatically morph mid-session; only a new current inference or explicit citizen session choice can resolve a new profile. A citizen's explicit band/carrier choice may override the inference for that session only. If no structured intent exists, return `relevant: false`; do not silently default to 444 Hz or any other carrier.
 
 If high concern is present, human review and support take priority. Keep the existing Quantum Tree available unless the citizen's saved master-off preference applies. Set the adaptive frequencies to high-concern state so the deterministic policy leaves them off by default; the citizen may explicitly opt in for that session. The model never contacts next of kin, a clinician or any other person. Any notification requires a consented, verified contact and an authorised human-in-the-loop action.
 
@@ -718,6 +744,7 @@ Include exactly four top highlights for radar animation, matching labels in the 
     "typing_behaviour": false,
     "voice": false,
     "video_selfie": false,
+    "quick_heart_rate": false,
     "wearable_ppg": false,
     "rppg": false,
     "autofluorescence": false
@@ -787,6 +814,7 @@ Include exactly four top highlights for radar animation, matching labels in the 
     "typing_behaviour": 0.0,
     "voice": 0.0,
     "video_selfie": 0.0,
+    "quick_heart_rate": 0.0,
     "wearable_ppg": 0.0,
     "rppg": 0.0,
     "autofluorescence": 0.0
@@ -797,6 +825,10 @@ Include exactly four top highlights for radar animation, matching labels in the 
       "citizen_needs",
       "signal_modality",
       "time",
+      "weather",
+      "location",
+      "momentary_physiology",
+      "current_inference",
       "evidence_weight",
       "confidence",
       "adaptive_environment",
@@ -842,6 +874,35 @@ Include exactly four top highlights for radar animation, matching labels in the 
     },
     "trust_preserving_action": "Describe how the next interaction preserves trust and avoids extraction."
   },
+  "momentary_physiology": {
+    "heart_rate_bpm": null,
+    "heart_rate_zone": "low_observed | mid_observed | elevated_observed | not_available",
+    "heart_rate_role": "supporting | conflicting | not_available | invalid",
+    "measurement_duration_seconds": 10,
+    "measurement_timing": "immediately_after_current_self_report",
+    "source": "shen_quick_hr | not_available",
+    "baseline_available": false,
+    "trend_available": false,
+    "scope": "current_inference_request_only",
+    "raw_heart_rate_retained": false
+  },
+  "current_inference": {
+    "inference_id": "settled_resting | active_energised | strained_activated | low_energy_withdrawn | fatigued_recovering | mixed_uncertain | high_concern_support_first | insufficient_context",
+    "human_label": "Concise current-moment Inference label; never use Scenario.",
+    "summary": "Concise non-diagnostic explanation combining self-report, optional Heart Rate, time, weather and location.",
+    "confidence": 0.0,
+    "heart_rate_role": "supporting | conflicting | not_available | invalid",
+    "heart_rate_zone": "low_observed | mid_observed | elevated_observed | not_available",
+    "evidence_used": [],
+    "context_dimensions_considered": {
+      "time": true,
+      "weather": true,
+      "location": true
+    },
+    "horizons_considered": ["horizon_1", "horizon_2", "horizon_3"],
+    "baseline_comparison_used": false,
+    "clinical_status": "not_a_diagnosis"
+  },
   "environment_context": {
     "local_time": null,
     "location_label": null,
@@ -849,7 +910,7 @@ Include exactly four top highlights for radar animation, matching labels in the 
     "weather_condition": null,
     "temperature_celsius": null,
     "context_available": false,
-    "context_role": "adaptive_environment_only"
+    "context_role": "all_adaptive_decisions_all_horizons"
   },
   "adaptive_environment": {
     "music_room": {
@@ -927,6 +988,8 @@ Include exactly four top highlights for radar animation, matching labels in the 
     "carrier_intent": "cognition_joy | self_connection | presence | social_connection | earth_focus_reward | null",
     "top_needs_used": [],
     "explicit_cues_used": [],
+    "context_modifiers_used": [],
+    "horizons_considered": ["horizon_1", "horizon_2", "horizon_3"],
     "confidence": 0.0,
     "safety_state": "standard | high_concern",
     "session_scope": "current_session_only",

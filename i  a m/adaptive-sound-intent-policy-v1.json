@@ -4,13 +4,28 @@
   "status": "horizon_1_product_policy",
   "purpose": "Resolve one auditable adaptive-sound condition from the current voluntary check-in.",
   "claim_boundary": "experimental_adaptive_environment_not_brain_entrainment_diagnosis_treatment_or_proven_benefit",
+  "inference_matrix": "adaptive-inference-matrix-v1.json",
   "session_policy": {
     "scope": "current_session_only",
     "carrier_mode": "single",
     "automatic_mid_session_morph": false,
-    "time_weather_location_adaptation": "deferred_to_horizon_2",
+    "time_weather_location_adaptation": "required_in_every_initial_adaptive_decision_horizons_1_2_3",
+    "automatic_mid_session_context_morph": false,
     "no_checkin_rule": "no_adaptive_frequency_selection",
     "manual_choice_authority": "current_session_override"
+  },
+  "current_inference_contract": {
+    "self_report_role": "primary_current_meaning",
+    "heart_rate_role": "optional_supporting_or_conflicting_current_session_evidence",
+    "heart_rate_measurement_duration_seconds": 10,
+    "heart_rate_baseline_available": false,
+    "heart_rate_trend_available": false,
+    "direct_heart_rate_threshold_to_band_carrier_or_dsp": false,
+    "raw_heart_rate_retained_by_sound_policy": false,
+    "context_dimensions_required_when_available": ["time", "weather", "location"],
+    "context_scope": ["horizon_1", "horizon_2", "horizon_3"],
+    "missing_heart_rate_rule": "safe_non_blocking",
+    "missing_context_rule": "record_unavailable_never_invent"
   },
   "isochronic_hz": {
     "delta": 3.33,

@@ -17,6 +17,8 @@ from typing import Any, Dict, Iterable, Mapping, Optional, Tuple
 
 BASE_DIR = Path(__file__).resolve().parent
 DEFAULT_POLICY_PATH = BASE_DIR / "adaptive-sound-intent-policy-v1.json"
+CONTEXT_DIMENSIONS = ("time", "weather", "location")
+HORIZONS = ("horizon_1", "horizon_2", "horizon_3")
 
 
 def _nested(value: Mapping[str, Any], path: Iterable[str], default: Any = None) -> Any:
@@ -174,6 +176,39 @@ def _safety_state(payload: Mapping[str, Any], policy: Mapping[str, Any]) -> Dict
     }
 
 
+def _inference_audit(payload: Mapping[str, Any]) -> Dict[str, Any]:
+    """Carry privacy-safe inference provenance; never retain raw Heart Rate."""
+    intent = payload.get("adaptive_sound_intent")
+    intent = intent if isinstance(intent, Mapping) else {}
+    current = payload.get("current_inference")
+    current = current if isinstance(current, Mapping) else {}
+    modifiers = [
+        str(value).strip()[:80]
+        for value in intent.get("context_modifiers_used") or []
+        if str(value).strip()
+    ][:6]
+    considered = [
+        str(value)
+        for value in intent.get("horizons_considered") or HORIZONS
+        if str(value) in HORIZONS
+    ]
+    heart_rate_role = str(current.get("heart_rate_role") or "not_available")
+    if heart_rate_role not in {"supporting", "conflicting", "not_available", "invalid"}:
+        heart_rate_role = "invalid"
+    heart_rate_zone = str(current.get("heart_rate_zone") or "not_available")
+    if heart_rate_zone not in {"low_observed", "mid_observed", "elevated_observed", "not_available"}:
+        heart_rate_zone = "not_available"
+    return {
+        "context_modifiers_used": modifiers,
+        "context_dimensions_considered": list(CONTEXT_DIMENSIONS),
+        "horizons_considered": considered or list(HORIZONS),
+        "heart_rate_role": heart_rate_role,
+        "heart_rate_zone": heart_rate_zone,
+        "raw_heart_rate_retained": False,
+        "baseline_comparison_used": False,
+    }
+
+
 def load_policy(path: Path = DEFAULT_POLICY_PATH) -> Dict[str, Any]:
     return json.loads(path.read_text(encoding="utf-8"))
 
@@ -200,6 +235,7 @@ def resolve_adaptive_sound(payload: Mapping[str, Any], policy: Optional[Mapping[
         carrier_id = _choose_scored(carrier_scores, fingerprint, "carrier")
 
     safety = _safety_state(payload, selected_policy)
+    inference_audit = _inference_audit(payload)
     if not band_id or not carrier_id:
         safety["adaptive_frequencies_enabled"] = False
         return {
@@ -211,7 +247,11 @@ def resolve_adaptive_sound(payload: Mapping[str, Any], policy: Optional[Mapping[
             "carrier_mode": "single",
             "safety": safety,
             "research_boundary": "biological_targets_not_loaded_or_used_by_product_resolver",
-            "audit": {"raw_checkin_text_used": False, "automatic_mid_session_morph": False},
+            "audit": {
+                "raw_checkin_text_used": False,
+                "automatic_mid_session_morph": False,
+                **inference_audit,
+            },
         }
 
     band = bands[band_id]
@@ -268,6 +308,7 @@ def resolve_adaptive_sound(payload: Mapping[str, Any], policy: Optional[Mapping[
             "raw_checkin_text_used": False,
             "research_hypotheses_registry_loaded": False,
             "current_session_only": True,
+            **inference_audit,
         },
     }
 

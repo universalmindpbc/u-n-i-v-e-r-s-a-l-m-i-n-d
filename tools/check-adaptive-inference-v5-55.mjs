@@ -17,6 +17,7 @@ const source = await readFile(resolve(root, SYSTEM_PROMPT_SOURCE), "utf8");
 const contentModule = await readFile(resolve(root, "i  a m/adaptive-inference-engine-system-prompt-v5.55-content.js"), "utf8");
 const server = await readFile(resolve(root, "i  a m/technology-citizen-needs-server.mjs"), "utf8");
 const worker = await readFile(resolve(root, "cloudflare/iam-citizen-needs-worker.js"), "utf8");
+const inferenceMatrix = JSON.parse(await readFile(resolve(root, "i  a m/adaptive-inference-matrix-v1.json"), "utf8"));
 const subprompt = await readFile(resolve(root, "i  a m/adaptive-music-video-selector-subprompt-v1.12.md"), "utf8");
 const technology = await readFile(resolve(root, "i  a m/technology-citizen-needs.html"), "utf8");
 const codePage = await readFile(resolve(root, "i  a m/adaptive-inference-engine-system-prompt-v5.55.html"), "utf8");
@@ -35,6 +36,13 @@ assert.equal(ADAPTIVE_INFERENCE_SYSTEM_PROMPT, source);
 assert.equal(SYSTEM_PROMPT_SHA256, createHash("sha256").update(source).digest("hex"));
 assert.ok(contentModule.includes(`window.__IAM_SYSTEM_PROMPT_V5_55 = ${JSON.stringify(source)};`));
 assert.ok(source.includes('"adaptive_sound_intent"'));
+assert.ok(source.includes("Current Inference Matrix — Human + AI Rule"));
+assert.ok(source.includes("optional current 10-second Heart Rate"));
+assert.ok(source.includes("Time, weather and location materially influence every adaptive music decision"));
+assert.equal(inferenceMatrix.name, "Current Inference Matrix");
+assert.equal(inferenceMatrix.input_contract.momentary_physiology.baseline_available, false);
+assert.equal(inferenceMatrix.required_output_audit.raw_heart_rate_retained, false);
+assert.deepEqual(Object.keys(inferenceMatrix.horizon_context_rule), ["horizon_1", "horizon_2", "horizon_3"]);
 assert.ok(source.includes('"selected_format": null'));
 assert.ok(source.includes('"source_id": null'));
 assert.ok(!source.includes("DOC2"));
@@ -46,6 +54,10 @@ assert.ok(!server.includes("allowedMusicFormats"));
 assert.ok(!worker.includes("allowedMusicFormats"));
 assert.ok(server.includes("The application owns extended-session format and exact source resolution."));
 assert.ok(worker.includes("The application owns extended-session format and exact source resolution."));
+assert.ok(server.includes("raw Heart Rate and Heart Rate-derived health data are not sent to the external model"));
+assert.ok(worker.includes("raw Heart Rate and Heart Rate-derived health data are not sent to the external model"));
+assert.ok(server.includes('context_role: "all_adaptive_decisions_all_horizons"'));
+assert.ok(worker.includes('context_role: "all_adaptive_decisions_all_horizons"'));
 assert.ok(subprompt.includes("Adaptive Music Television Selector Subprompt v1.12"));
 assert.ok(subprompt.includes("Resolve `source_id` from `broadcast-schedule-v1.json`"));
 assert.ok(globalNavigation.includes("learn how we understand your needs"));
@@ -73,6 +85,9 @@ process.stdout.write(`${JSON.stringify({
   generated_worker_prompt_exact: true,
   generated_browser_prompt_exact: true,
   semantic_adaptive_sound_intent: true,
+  current_heart_rate_inference_matrix: true,
+  context_all_horizons: true,
+  raw_heart_rate_exported_to_model: false,
   application_owned_format_and_source: true,
   corrected_target_nomenclature: true,
   technology_code_notion_markdown_chain: true,

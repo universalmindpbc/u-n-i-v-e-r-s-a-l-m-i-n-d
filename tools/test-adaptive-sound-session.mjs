@@ -12,6 +12,7 @@ import {
   resolveAdaptiveSoundSession,
   startAdaptiveSoundSession,
 } from "../i  a m/adaptive-sound/session-v1.js";
+import { SYSTEM_PROMPT_SHA256 } from "../cloudflare/adaptive-inference-system-prompt-v5-55.js";
 
 const root = fileURLToPath(new URL("../", import.meta.url));
 const policyPath = fileURLToPath(new URL("../i  a m/adaptive-sound-intent-policy-v1.json", import.meta.url));
@@ -42,13 +43,17 @@ for (const bandIntent of bands) {
     assert.equal(browser.session_scope, "current_session_only");
     assert.equal(browser.safety.adaptive_frequencies_enabled, true);
     assert.equal(browser.authority.prompt_version, "adaptive-inference-engine-system-prompt-v5.55");
-    assert.equal(browser.authority.prompt_sha256, "e259c7119d295b2406ebaabccf062914dba5fd77a665e95a6753abe1042a8327");
+    assert.equal(browser.authority.prompt_sha256, SYSTEM_PROMPT_SHA256);
     assert.equal(browser.audit.source_event, "matrix_fixture");
     assert.equal(browser.audit.raw_checkin_text_used, false);
     assert.equal(browser.audit.research_hypotheses_registry_loaded, false);
+    assert.deepEqual(browser.audit.context_dimensions_considered, ["time", "weather", "location"]);
+    assert.deepEqual(browser.audit.horizons_considered, ["horizon_1", "horizon_2", "horizon_3"]);
+    assert.equal(browser.audit.raw_heart_rate_retained, false);
+    assert.equal(browser.audit.baseline_comparison_used, false);
     assert.deepEqual(comparable(browser), comparable(python));
     assertNoTargetLeakage(browser);
-    assertions += 19;
+    assertions += 23;
   }
 }
 
@@ -200,7 +205,12 @@ function intentFixture(bandIntent, carrierIntent, safetyState = "standard") {
   return {
     engine_version: "adaptive_inference_engine_v5.55",
     prompt_version: "adaptive-inference-engine-system-prompt-v5.55",
-    prompt_sha256: "e259c7119d295b2406ebaabccf062914dba5fd77a665e95a6753abe1042a8327",
+    prompt_sha256: SYSTEM_PROMPT_SHA256,
+    current_inference: {
+      inference_id: "settled_resting",
+      heart_rate_role: "supporting",
+      heart_rate_zone: "mid_observed",
+    },
     adaptive_sound_intent: {
       relevant: true,
       selection_basis: "current_checkin",
@@ -208,6 +218,8 @@ function intentFixture(bandIntent, carrierIntent, safetyState = "standard") {
       carrier_intent: carrierIntent,
       top_needs_used: ["Calm"],
       explicit_cues_used: [],
+      context_modifiers_used: ["time:08:00", "weather:clear", "location:coastal"],
+      horizons_considered: ["horizon_1", "horizon_2", "horizon_3"],
       confidence: 0.91,
       safety_state: safetyState,
       session_scope: "current_session_only",
