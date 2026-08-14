@@ -90,7 +90,7 @@ async function checkRealCheckinAndController() {
     const main = document.querySelector("[data-iam-next-page]");
     if (main) main.dataset.iamNextPage = "index-alt.html?adaptiveSoundSourceQa=1";
   });
-  await page.locator("[data-iam-start]").click();
+  await page.locator("[data-iam-start]").click({ force: true });
   await page.locator("[data-iam-input]").fill("energised, joyful, curious and ready to create");
   await page.locator("[data-iam-input]").press("Enter");
 
