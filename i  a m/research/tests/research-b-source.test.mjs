@@ -36,9 +36,13 @@ test("research page is the existing I AM scene with one compact native prompt", 
   assert.match(page, /not a medical or mental-health diagnosis and should not replace professional care/);
   assert.doesNotMatch(page, /Powered by Shen AI/);
   assert.match(page, /data-heart-rate-loader/);
+  assert.match(page, /data-heart-rate-live/);
+  assert.match(page, /data-heart-rate-result/);
+  assert.match(page, /Your heart rate/);
   assert.match(page, /Universal Mind \[ I o H \] Logo 512\.png/);
   assert.match(page, />Loading</);
-  assert.match(page, /shen-heart-rate\.js\?v=shen-heart-rate-js-5c8b7496f136/);
+  assert.match(page, /shen-heart-rate\.css\?v=shen-heart-rate-css-ca569084e0a2/);
+  assert.match(page, /shen-heart-rate\.js\?v=shen-heart-rate-js-b557d61c1dae/);
   assert.equal((page.match(/role="dialog"/g) || []).length, 1);
   assert.equal((page.match(/not a medical or mental-health diagnosis/g) || []).length, 1);
   assert.doesNotMatch(page, /type="checkbox"|Heart Light|paired result|shen-heart-rate-wellness/i);
@@ -46,6 +50,8 @@ test("research page is the existing I AM scene with one compact native prompt", 
   assert.match(css, /--shen-canvas-size/);
   assert.match(css, /width:\s*calc\(var\(--shen-canvas-size\) \* 0\.52\)/);
   assert.match(css, /overflow:\s*hidden/);
+  assert.match(css, /\.shen-heart-rate-live\s*\{/);
+  assert.match(css, /\.shen-heart-rate-result\s*\{/);
   assert.match(css, /width:\s*min\(638px, calc\(100vw - 38px\)\)/);
   assert.match(css, /\.shen-heart-rate-offer h2\s*\{[^}]*font-size:\s*20px/s);
   assert.match(css, /\.shen-heart-rate-offer p\s*\{[^}]*font-size:\s*12\.5px/s);
@@ -54,12 +60,18 @@ test("research page is the existing I AM scene with one compact native prompt", 
   assert.doesNotMatch(css, /glasses|bubble|spectral|prism/i);
 });
 
-test("browser controller delegates the visible experience to Shen Quick HR", async () => {
+test("browser controller delegates a 30-second heart-rate-only measurement to Shen", async () => {
   const source = await read(resolve(researchDirectory, "shen-heart-rate.js"));
   const runtime = await read(resolve(researchDirectory, "vendor", "shenai-sdk", "shenai_sdk.mjs"));
 
   assert.match(source, /\.\/vendor\/shenai-sdk\/index\.mjs/);
-  assert.match(source, /MeasurementPreset\.QUICK_HR_MODE/);
+  assert.match(source, /MeasurementPreset\.CUSTOM/);
+  assert.match(source, /setCustomMeasurementConfig\(customMeasurementConfig\)/);
+  assert.match(source, /typeof shenaiSDK\.setCustomMeasurementConfig !== "function"/);
+  assert.match(source, /durationSeconds:\s*30/);
+  assert.match(source, /instantMetrics:\s*\[Metric\.HEART_RATE\]/);
+  assert.match(source, /summaryMetrics:\s*\[Metric\.HEART_RATE\]/);
+  assert.match(source, /realtimeHrPeriodSeconds:\s*4/);
   assert.match(source, /UiVersion\.V3/);
   assert.match(source, /showUserInterface:\s*true/);
   assert.match(source, /showDisclaimer:\s*false/);
@@ -73,7 +85,10 @@ test("browser controller delegates the visible experience to Shen Quick HR", asy
   assert.match(source, /enableSummaryScreen:\s*false/);
   assert.match(source, /showResultsFinishButton:\s*false/);
   assert.match(source, /hideShenaiLogo:\s*true/);
+  assert.match(source, /setHideShenaiLogo\?\.\(true\)/);
+  assert.match(source, /getHideShenaiLogo\?\.\(\)/);
   assert.match(source, /enablePreloadDisplay:\s*false/);
+  assert.match(source, /hidePreloadDisplayLogo:\s*true/);
   assert.match(source, /onWasmLoadingProgress:\s*setLoadingProgress/);
   assert.doesNotMatch(source, /getUserMedia|MediaRecorder|ImageCapture|DeepAR|AR glasses|HRV|Stress Index/i);
   assert.doesNotMatch(source, /(?:api|license|secret)[_-]?key\s*[:=]\s*["'][A-Za-z0-9_-]{16,}/i);
@@ -83,6 +98,12 @@ test("heart rate is momentary and only a non-biometric recommendation continues"
   const source = await read(resolve(researchDirectory, "shen-heart-rate.js"));
   const recommendationSource = await read(resolve(researchDirectory, "shen-heart-recommendation.js"));
   assert.match(source, /heart_rate_bpm/);
+  assert.match(source, /getHeartRate4s/);
+  assert.match(source, /FINAL_READING_HOLD_MS\s*=\s*2200/);
+  assert.match(source, /showFinalHeartRate\(displayHeartRate\)/);
+  assert.match(source, /clearFinalHeartRate\(\)/);
+  assert.match(source, /liveHeartRateValue\.textContent\s*=\s*""/);
+  assert.match(source, /finalHeartRateValue\.textContent\s*=\s*""/);
   assert.match(source, /momentaryHeartRate\s*=\s*null/);
   assert.match(source, /measurementResult\s*=\s*null/);
   assert.match(source, /ADAPTIVE_SOUND_SESSION_CHOICE_KEY/);

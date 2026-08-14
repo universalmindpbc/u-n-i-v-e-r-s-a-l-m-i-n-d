@@ -137,6 +137,18 @@ try {
     await acceptPage.locator("[data-shen-stage]").getAttribute("data-shen-visualization-config"),
     "blood-flow-only",
   );
+  assert.equal(
+    await acceptPage.locator("[data-shen-stage]").getAttribute("data-shen-measurement"),
+    "heart-rate-30-seconds",
+  );
+  assert.equal(
+    await acceptPage.locator("[data-shen-stage]").getAttribute("data-shen-custom-measurement"),
+    "runtime-setter",
+  );
+  const sdkBrandingControl = await acceptPage.locator("[data-shen-stage]").getAttribute("data-shen-branding");
+  assert.ok(["hidden", "sdk-controlled"].includes(sdkBrandingControl));
+  assert.equal(await acceptPage.locator("[data-heart-rate-live]").isHidden(), true);
+  assert.equal(await acceptPage.locator("[data-heart-rate-result]").isHidden(), true);
   await acceptPage.waitForTimeout(1_000);
   const stageGeometry = await acceptPage.locator("[data-shen-stage]").evaluate((element) => {
     const stageRect = element.getBoundingClientRect();
@@ -172,6 +184,34 @@ try {
   assert.equal(cameraEvidence.tracks.filter(({ kind }) => kind === "audio").length, 0);
   await acceptPage.waitForTimeout(1_000);
   await acceptPage.screenshot({ path: join(outputDirectory, "heart-check-camera.png"), fullPage: true });
+  await acceptPage.evaluate(() => {
+    const live = document.querySelector("[data-heart-rate-live]");
+    live.querySelector("[data-heart-rate-live-value]").textContent = "69";
+    live.hidden = false;
+  });
+  assert.equal(await acceptPage.locator("[data-heart-rate-live]").isVisible(), true);
+  await acceptPage.screenshot({ path: join(outputDirectory, "heart-check-live-bpm-fixture.png"), fullPage: true });
+  await acceptPage.evaluate(() => {
+    const live = document.querySelector("[data-heart-rate-live]");
+    live.hidden = true;
+    live.querySelector("[data-heart-rate-live-value]").textContent = "";
+  });
+  await acceptPage.evaluate(() => {
+    const stage = document.querySelector("[data-shen-stage]");
+    const result = document.querySelector("[data-heart-rate-result]");
+    stage.dataset.state = "result";
+    stage.querySelector("canvas").setAttribute("aria-hidden", "true");
+    result.querySelector("[data-heart-rate-result-value]").textContent = "69";
+    result.hidden = false;
+  });
+  assert.equal(await acceptPage.locator("[data-heart-rate-result]").isVisible(), true);
+  assert.equal(await acceptPage.locator("[data-heart-rate-result-value]").textContent(), "69");
+  await acceptPage.screenshot({ path: join(outputDirectory, "heart-check-final-bpm-fixture.png"), fullPage: true });
+  await acceptPage.evaluate(() => {
+    const result = document.querySelector("[data-heart-rate-result]");
+    result.hidden = true;
+    result.querySelector("[data-heart-rate-result-value]").textContent = "";
+  });
   assert.equal(acceptEvidence.tokenPosts, 1);
   assert.equal(acceptEvidence.tokenStatus, 200);
   assert.ok(acceptEvidence.sdkRequests >= 3);
@@ -212,6 +252,12 @@ try {
       videoTracks: cameraEvidence.tracks.filter(({ kind }) => kind === "video").length,
       audioTracks: cameraEvidence.tracks.filter(({ kind }) => kind === "audio").length,
       visualizationInitialized: "blood-flow-only",
+      measurementDurationSeconds: 30,
+      liveHeartRateDisplay: "ephemeral 4-second metric when available",
+      liveBpmPresentationFixture: 69,
+      finalHeartRateDisplay: "ephemeral 2.2-second hold when available",
+      finalBpmPresentationFixture: 69,
+      sdkBrandingControl,
       realFaceVisualizationProofRequired: true,
       noSyntheticPhysiologicalReadingClaimed: true,
     },

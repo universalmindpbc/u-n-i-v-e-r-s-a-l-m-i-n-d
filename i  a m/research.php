@@ -20,7 +20,7 @@ header('X-Robots-Tag: noindex, nofollow');
     <title>Heart Check | I AM</title>
     <link rel="icon" type="image/png" sizes="32x32" href="/vogue/iam/favicon.png?v=iam-favicon-4">
     <link rel="stylesheet" href="styles.css?v=global-nav-single-shell-2-technology-submenu-133pct-normal-1">
-    <link rel="stylesheet" href="research/shen-heart-rate.css?v=shen-heart-rate-css-236f179b84ea">
+    <link rel="stylesheet" href="research/shen-heart-rate.css?v=shen-heart-rate-css-ca569084e0a2">
   </head>
   <body class="shen-heart-rate-page">
     <main class="site-shell" aria-label="Universal Mind I AM heart-rate research">
@@ -50,6 +50,16 @@ header('X-Robots-Tag: noindex, nofollow');
             </div>
           </div>
           <canvas id="mxcanvas" aria-label="Heart-rate measurement interface"></canvas>
+          <div class="shen-heart-rate-live" data-heart-rate-live aria-live="polite" hidden>
+            <img src="a s s e t s/Universal Mind [ I o H ] Logo 512.png" alt="" decoding="async">
+            <span data-heart-rate-live-value></span>
+            <small>BPM</small>
+          </div>
+          <div class="shen-heart-rate-result" data-heart-rate-result role="status" aria-live="polite" hidden>
+            <img src="a s s e t s/Universal Mind [ I o H ] Logo 512.png" alt="" decoding="async">
+            <p>Your heart rate</p>
+            <strong><span data-heart-rate-result-value></span> <small>BPM</small></strong>
+          </div>
         </section>
 
         <p class="shen-heart-rate-status" data-shen-status role="status" aria-live="polite" hidden></p>
@@ -90,6 +100,6 @@ header('X-Robots-Tag: noindex, nofollow');
 
     <script src="cloudflare-stream-catalogue.js?v=stream-catalogue-20ad6337934c"></script>
     <script src="cloudflare-stream-controller.js?v=stream-controller-e6ed1b827651"></script>
-    <script type="module" src="research/shen-heart-rate.js?v=shen-heart-rate-js-5c8b7496f136"></script>
+    <script type="module" src="research/shen-heart-rate.js?v=shen-heart-rate-js-b557d61c1dae"></script>
   </body>
 </html>

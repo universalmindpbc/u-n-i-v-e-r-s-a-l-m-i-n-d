@@ -17,13 +17,13 @@ This B route reuses the canonical check-in at render time. It does not duplicate
 - Official Web SDK package: `@shenai/sdk` 3.1.9.
 - SDK UI: visible and unmodified inside a portrait-cropped Universal Mind wrapper.
 - SDK theme: unchanged because brand colour customization is locked on Starter.
-- Measurement: `MeasurementPreset.QUICK_HR_MODE` — 10-second heart rate only.
+- Measurement: `MeasurementPreset.CUSTOM` — 30-second heart rate only, with 4-second live heart-rate feedback and the final heart rate shown momentarily before navigation.
 - Precision: strict.
 - Onboarding: hidden.
 - Shen disclaimer, information and summary/result controls: disabled through supported SDK settings so the journey has one Universal Mind disclosure and no duplicate result screen.
 - Shen signal-quality and deliberate start/stop controls: enabled.
 - Visualization test: Shen's native 3D face mask is disabled and its blood-flow overlay is enabled at SDK initialization. This isolates whether Quick HR / UI V3 exposes the coloured overlay without the white mesh taking precedence.
-- The duplicate Universal Mind `Powered by Shen AI` line is removed; any SDK-owned branding remains governed by the licensed Shen interface and plan.
+- Both preload and embedded Shen logo controls are requested through supported SDK settings, including one runtime retry after initialization. If Starter remote configuration still renders SDK-owned branding, the wrapper does not cover or alter it.
 - The proprietary canvas and runtime bytes are unchanged.
 - The blood-flow overlay is Shen's rPPG visualization, not hyperspectral imaging. No AR glasses layer is included in this version.
 
@@ -49,6 +49,6 @@ The route must remain a PHP response or receive equivalent server headers if it 
 
 ## Ephemeral result and recommendation handoff
 
-The Shen camera stream is processed live and is never recorded or stored by this journey. On completion, the controller reads the final heart-rate value only in memory, applies a bounded exploratory pacing heuristic, writes only the resulting current-session `band_intent` and `carrier_intent` to the existing adaptive-sound session-choice contract, then clears its local result reference and releases Shen before navigation.
+The Shen camera stream is processed live and is never recorded or stored by this journey. During measurement, a 4-second heart-rate value may be rendered ephemerally in the Universal Mind wrapper. On completion, the controller reads the final heart-rate value only in memory, applies the unchanged bounded exploratory pacing heuristic, writes only the resulting current-session `band_intent` and `carrier_intent` to the existing adaptive-sound session-choice contract, releases Shen, shows the final BPM for 2.2 seconds, then clears the displayed value before navigation.
 
 No heart rate, signal quality, timestamp, provider, photo, video, raw waveform, heartbeat array, HRV, Stress Index, pseudonymous biometric identifier or research record is retained. Earlier prototype keys are removed if present. The continued handoff contains only the selected song and the derived brain-entrainment recommendation. The heuristic is an experimental environment choice, not a physiological or mental-health classification, diagnosis, treatment or validated benefit.

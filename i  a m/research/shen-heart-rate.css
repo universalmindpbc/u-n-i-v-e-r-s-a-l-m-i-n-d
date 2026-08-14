@@ -40,6 +40,87 @@
   opacity: 1;
 }
 
+.shen-heart-rate-live {
+  position: absolute;
+  left: 50%;
+  bottom: 112px;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  min-width: 104px;
+  padding: 8px 13px 8px 10px;
+  border: 1px solid rgba(255, 255, 255, 0.34);
+  border-radius: 999px;
+  background: rgba(5, 16, 27, 0.78);
+  color: #fff;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  transform: translateX(-50%);
+  backdrop-filter: blur(10px);
+}
+
+.shen-heart-rate-live[hidden],
+.shen-heart-rate-result[hidden] {
+  display: none;
+}
+
+.shen-heart-rate-live img {
+  width: 23px;
+  height: 23px;
+}
+
+.shen-heart-rate-live span {
+  min-width: 2ch;
+  font-size: 22px;
+  font-weight: 500;
+  line-height: 1;
+}
+
+.shen-heart-rate-live small {
+  align-self: flex-end;
+  padding-bottom: 2px;
+  font-size: 9px;
+  letter-spacing: 0.08em;
+}
+
+.shen-heart-rate-result {
+  position: absolute;
+  inset: 0;
+  z-index: 4;
+  display: grid;
+  place-content: center;
+  justify-items: center;
+  gap: 10px;
+  background: #f7f7f5;
+  color: #0b1525;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+.shen-heart-rate-result img {
+  width: 76px;
+  height: auto;
+  margin-bottom: 5px;
+}
+
+.shen-heart-rate-result p {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 300;
+  letter-spacing: 0.04em;
+}
+
+.shen-heart-rate-result strong {
+  font-size: 44px;
+  font-weight: 400;
+  line-height: 1;
+}
+
+.shen-heart-rate-result small {
+  font-size: 12px;
+  font-weight: 400;
+  letter-spacing: 0.08em;
+}
+
 .shen-heart-rate-loader {
   position: absolute;
   inset: 0;

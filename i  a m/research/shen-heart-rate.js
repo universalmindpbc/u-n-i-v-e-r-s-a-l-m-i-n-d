@@ -1,6 +1,7 @@
 import CreateShenaiSDK, {
   InitializationResult,
   MeasurementPreset,
+  Metric,
   OnboardingMode,
   PrecisionMode,
   UiVersion,
@@ -18,6 +19,10 @@ const loader = document.querySelector("[data-heart-rate-loader]");
 const loadingLabel = document.querySelector("[data-heart-rate-loading-label]");
 const loadingTrack = document.querySelector("[data-heart-rate-loading-track]");
 const loadingProgress = document.querySelector("[data-heart-rate-loading-progress]");
+const liveHeartRate = document.querySelector("[data-heart-rate-live]");
+const liveHeartRateValue = document.querySelector("[data-heart-rate-live-value]");
+const finalHeartRate = document.querySelector("[data-heart-rate-result]");
+const finalHeartRateValue = document.querySelector("[data-heart-rate-result-value]");
 const status = document.querySelector("[data-shen-status]");
 const legacyHeartDataKeys = Object.freeze([
   "iam.shenResearch.preHeartRate.v1",
@@ -28,6 +33,9 @@ let shenaiSDK = null;
 let transientMeasurementId = null;
 let isStarting = false;
 let isFinishing = false;
+let liveHeartRateTimer = 0;
+
+const FINAL_READING_HOLD_MS = 2200;
 
 function revealExistingBrand() {
   document.querySelector(".brand-name")?.classList.add("is-visible");
@@ -95,8 +103,54 @@ function showLoader(label, { showProgress = true } = {}) {
 function showMeasurementInterface() {
   stage.dataset.state = "measurement";
   stage.dataset.shenVisualizationConfig = "blood-flow-only";
+  stage.dataset.shenMeasurement = "heart-rate-30-seconds";
   loader.hidden = true;
   canvas.removeAttribute("aria-hidden");
+  startLiveHeartRateMonitor();
+}
+
+function normalizedHeartRate(value) {
+  const heartRate = Number(value);
+  return Number.isFinite(heartRate) && heartRate >= 30 && heartRate <= 220
+    ? Math.round(heartRate)
+    : null;
+}
+
+function updateLiveHeartRate() {
+  const heartRate = normalizedHeartRate(shenaiSDK?.getHeartRate4s?.());
+  if (heartRate === null) return;
+  liveHeartRateValue.textContent = String(heartRate);
+  liveHeartRate.hidden = false;
+}
+
+function startLiveHeartRateMonitor() {
+  window.clearInterval(liveHeartRateTimer);
+  updateLiveHeartRate();
+  liveHeartRateTimer = window.setInterval(updateLiveHeartRate, 1000);
+}
+
+function stopLiveHeartRateMonitor() {
+  window.clearInterval(liveHeartRateTimer);
+  liveHeartRateTimer = 0;
+  liveHeartRate.hidden = true;
+  liveHeartRateValue.textContent = "";
+}
+
+function showFinalHeartRate(heartRate) {
+  stage.dataset.state = "result";
+  loader.hidden = true;
+  canvas.setAttribute("aria-hidden", "true");
+  finalHeartRateValue.textContent = String(heartRate);
+  finalHeartRate.hidden = false;
+}
+
+function clearFinalHeartRate() {
+  finalHeartRate.hidden = true;
+  finalHeartRateValue.textContent = "";
+}
+
+function wait(milliseconds) {
+  return new Promise((resolve) => window.setTimeout(resolve, milliseconds));
 }
 
 function showRecommendationTransition() {
@@ -108,6 +162,7 @@ function showRecommendationTransition() {
 async function releaseShen() {
   const active = shenaiSDK;
   shenaiSDK = null;
+  stopLiveHeartRateMonitor();
   transientMeasurementId = null;
   try {
     active?.deinitialize?.();
@@ -122,9 +177,11 @@ async function finishAndContinue() {
 
   let measurementResult = null;
   let momentaryHeartRate = null;
+  let displayHeartRate = null;
   try {
     measurementResult = shenaiSDK?.getMeasurementResults?.() || null;
     momentaryHeartRate = Number(measurementResult?.heart_rate_bpm);
+    displayHeartRate = normalizedHeartRate(momentaryHeartRate);
     writeEphemeralHeartCheckRecommendation(
       momentaryHeartRate,
       sessionStorage,
@@ -135,8 +192,14 @@ async function finishAndContinue() {
     measurementResult = null;
   }
 
-  showRecommendationTransition();
   await releaseShen();
+  if (displayHeartRate !== null) {
+    showFinalHeartRate(displayHeartRate);
+    await wait(FINAL_READING_HOLD_MS);
+    clearFinalHeartRate();
+    displayHeartRate = null;
+  }
+  showRecommendationTransition();
   window.location.assign(experienceUrl({ heartCheckCompleted: true }));
 }
 
@@ -156,8 +219,20 @@ async function requestShortTermToken() {
 
 function initializeWithToken(token) {
   return new Promise((resolve, reject) => {
+    const customMeasurementConfig = {
+      durationSeconds: 30,
+      instantMetrics: [Metric.HEART_RATE],
+      summaryMetrics: [Metric.HEART_RATE],
+      realtimeHrPeriodSeconds: 4,
+    };
+    if (typeof shenaiSDK.setCustomMeasurementConfig !== "function") {
+      reject(new Error("The 30-second Heart Check is unavailable in this SDK."));
+      return;
+    }
+    shenaiSDK.setCustomMeasurementConfig(customMeasurementConfig);
+
     const settings = {
-      measurementPreset: MeasurementPreset.QUICK_HR_MODE,
+      measurementPreset: MeasurementPreset.CUSTOM,
       onboardingMode: OnboardingMode.HIDDEN,
       precisionMode: PrecisionMode.STRICT,
       uiVersion: UiVersion.V3,
@@ -185,6 +260,11 @@ function initializeWithToken(token) {
 
     shenaiSDK.initialize(token, transientMeasurementId, settings, (result) => {
       if (result === InitializationResult.OK) {
+        stage.dataset.shenCustomMeasurement = "runtime-setter";
+        shenaiSDK.setHideShenaiLogo?.(true);
+        stage.dataset.shenBranding = shenaiSDK.getHideShenaiLogo?.() === true
+          ? "hidden"
+          : "sdk-controlled";
         showMeasurementInterface();
         resolve();
         return;
@@ -211,6 +291,7 @@ async function beginShenMeasurement() {
     shenaiSDK = await CreateShenaiSDK({
       enableErrorReporting: false,
       enablePreloadDisplay: false,
+      hidePreloadDisplayLogo: true,
       onWasmLoadingProgress: setLoadingProgress,
     });
     const token = await tokenPromise;
