@@ -133,6 +133,7 @@ try {
   await acceptPage.screenshot({ path: join(outputDirectory, "heart-check-loading.png"), fullPage: true });
 
   await acceptPage.locator('[data-shen-stage][data-state="measurement"]').waitFor({ state: "visible", timeout: 90_000 });
+  assert.equal(await acceptPage.locator("[data-shen-stage]").getAttribute("data-shen-visualization"), "face-mask");
   await acceptPage.waitForTimeout(1_000);
   const stageGeometry = await acceptPage.locator("[data-shen-stage]").evaluate((element) => {
     const stageRect = element.getBoundingClientRect();
@@ -156,13 +157,23 @@ try {
       || (window.__hrQaMediaErrors?.length || 0) > 0
   ), null, { timeout: 12_000 });
 
+  let syntheticBloodFlowObserved = false;
+  try {
+    await acceptPage.waitForFunction(() => (
+      document.querySelector("[data-shen-stage]")?.dataset.shenVisualization === "blood-flow"
+    ), null, { timeout: 1_500 });
+    syntheticBloodFlowObserved = true;
+  } catch {
+    // The geometric fixture starts the camera but is not treated as a human physiological reading.
+  }
+
   const cameraEvidence = await acceptPage.evaluate(() => ({
     calls: window.__hrQaMediaCalls || [],
     tracks: window.__hrQaMediaTracks || [],
     errors: window.__hrQaMediaErrors || [],
   }));
   assert.ok(cameraEvidence.calls.length >= 1);
-  assert.deepEqual(cameraEvidence.errors, []);
+  assert.deepEqual(cameraEvidence.errors, [], JSON.stringify(cameraEvidence));
   assert.ok(cameraEvidence.calls.every((constraints) => constraints?.audio !== true));
   assert.ok(cameraEvidence.tracks.filter(({ kind }) => kind === "video").length >= 1);
   assert.equal(cameraEvidence.tracks.filter(({ kind }) => kind === "audio").length, 0);
@@ -207,6 +218,8 @@ try {
       cameraCalls: cameraEvidence.calls.length,
       videoTracks: cameraEvidence.tracks.filter(({ kind }) => kind === "video").length,
       audioTracks: cameraEvidence.tracks.filter(({ kind }) => kind === "audio").length,
+      visualizationSequenceConfigured: ["face-mask", "blood-flow"],
+      syntheticBloodFlowObserved,
       noSyntheticPhysiologicalReadingClaimed: true,
     },
     errors: {
@@ -389,10 +402,10 @@ async function readSdkIntegrity() {
 }
 
 async function writeSyntheticFaceVideo(path) {
-  const width = 640;
-  const height = 480;
+  const width = 480;
+  const height = 640;
   const frames = 120;
-  const frameRate = 10;
+  const frameRate = 30;
   const handle = await open(path, "w");
   try {
     await handle.write(`YUV4MPEG2 W${width} H${height} F${frameRate}:1 Ip A1:1 C420jpeg\n`);

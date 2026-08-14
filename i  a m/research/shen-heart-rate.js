@@ -2,6 +2,7 @@ import CreateShenaiSDK, {
   InitializationResult,
   MeasurementPreset,
   OnboardingMode,
+  OperatingMode,
   PrecisionMode,
   UiVersion,
 } from "./vendor/shenai-sdk/index.mjs";
@@ -28,6 +29,8 @@ let shenaiSDK = null;
 let transientMeasurementId = null;
 let isStarting = false;
 let isFinishing = false;
+let visualizationMonitor = 0;
+let activeVisualization = "";
 
 function revealExistingBrand() {
   document.querySelector(".brand-name")?.classList.add("is-visible");
@@ -98,6 +101,31 @@ function showMeasurementInterface() {
   canvas.removeAttribute("aria-hidden");
 }
 
+function setShenVisualization(mode) {
+  if (mode === activeVisualization) return;
+  const showBloodFlow = mode === "blood-flow";
+  shenaiSDK?.setShowFaceMask?.(!showBloodFlow);
+  shenaiSDK?.setShowBloodFlow?.(showBloodFlow);
+  stage.dataset.shenVisualization = mode;
+  activeVisualization = mode;
+}
+
+function syncShenVisualization() {
+  if (!shenaiSDK) return;
+  const operatingMode = shenaiSDK.getOperatingMode?.();
+  if (operatingMode === OperatingMode.MEASURE) {
+    setShenVisualization("blood-flow");
+  } else if (operatingMode === OperatingMode.POSITIONING) {
+    setShenVisualization("face-mask");
+  }
+}
+
+function startVisualizationMonitor() {
+  window.clearInterval(visualizationMonitor);
+  setShenVisualization("face-mask");
+  visualizationMonitor = window.setInterval(syncShenVisualization, 100);
+}
+
 function showRecommendationTransition() {
   stage.dataset.state = "recommendation";
   canvas.setAttribute("aria-hidden", "true");
@@ -107,6 +135,9 @@ function showRecommendationTransition() {
 async function releaseShen() {
   const active = shenaiSDK;
   shenaiSDK = null;
+  window.clearInterval(visualizationMonitor);
+  visualizationMonitor = 0;
+  activeVisualization = "";
   transientMeasurementId = null;
   try {
     active?.deinitialize?.();
@@ -165,6 +196,8 @@ function initializeWithToken(token) {
       showInfoButton: false,
       showStartStopButton: true,
       showSignalQualityIndicator: true,
+      showFaceMask: true,
+      showBloodFlow: false,
       enableSummaryScreen: false,
       showResultsFinishButton: false,
       enableStartAfterSuccess: false,
@@ -182,6 +215,7 @@ function initializeWithToken(token) {
 
     shenaiSDK.initialize(token, transientMeasurementId, settings, (result) => {
       if (result === InitializationResult.OK) {
+        startVisualizationMonitor();
         showMeasurementInterface();
         resolve();
         return;

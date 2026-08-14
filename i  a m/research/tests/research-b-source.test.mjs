@@ -38,6 +38,7 @@ test("research page is the existing I AM scene with one compact native prompt", 
   assert.match(page, /data-heart-rate-loader/);
   assert.match(page, /Universal Mind \[ I o H \] Logo 512\.png/);
   assert.match(page, />Loading</);
+  assert.match(page, /shen-heart-rate\.js\?v=shen-heart-rate-js-aad9a36edb27/);
   assert.equal((page.match(/role="dialog"/g) || []).length, 1);
   assert.equal((page.match(/not a medical or mental-health diagnosis/g) || []).length, 1);
   assert.doesNotMatch(page, /type="checkbox"|Heart Light|paired result|shen-heart-rate-wellness/i);
@@ -55,6 +56,7 @@ test("research page is the existing I AM scene with one compact native prompt", 
 
 test("browser controller delegates the visible experience to Shen Quick HR", async () => {
   const source = await read(resolve(researchDirectory, "shen-heart-rate.js"));
+  const runtime = await read(resolve(researchDirectory, "vendor", "shenai-sdk", "shenai_sdk.mjs"));
 
   assert.match(source, /\.\/vendor\/shenai-sdk\/index\.mjs/);
   assert.match(source, /MeasurementPreset\.QUICK_HR_MODE/);
@@ -62,12 +64,23 @@ test("browser controller delegates the visible experience to Shen Quick HR", asy
   assert.match(source, /showUserInterface:\s*true/);
   assert.match(source, /showDisclaimer:\s*false/);
   assert.match(source, /showInfoButton:\s*false/);
+  assert.match(source, /showFaceMask:\s*true/);
+  assert.match(source, /showBloodFlow:\s*false/);
+  assert.match(source, /OperatingMode\.MEASURE[\s\S]*setShenVisualization\("blood-flow"\)/);
+  assert.match(source, /OperatingMode\.POSITIONING[\s\S]*setShenVisualization\("face-mask"\)/);
+  assert.match(source, /setShowFaceMask\?\.\(!showBloodFlow\)/);
+  assert.match(source, /setShowBloodFlow\?\.\(showBloodFlow\)/);
+  assert.match(source, /setInterval\(syncShenVisualization, 100\)/);
+  assert.match(source, /clearInterval\(visualizationMonitor\)/);
+  assert.match(runtime, /SetShowFaceMask/);
+  assert.match(runtime, /SetShowBloodFlow/);
+  assert.match(runtime, /GetOperatingMode/);
   assert.match(source, /enableSummaryScreen:\s*false/);
   assert.match(source, /showResultsFinishButton:\s*false/);
   assert.match(source, /hideShenaiLogo:\s*true/);
   assert.match(source, /enablePreloadDisplay:\s*false/);
   assert.match(source, /onWasmLoadingProgress:\s*setLoadingProgress/);
-  assert.doesNotMatch(source, /getUserMedia|MediaRecorder|ImageCapture|DeepAR|HRV|Stress Index/i);
+  assert.doesNotMatch(source, /getUserMedia|MediaRecorder|ImageCapture|DeepAR|AR glasses|HRV|Stress Index/i);
   assert.doesNotMatch(source, /(?:api|license|secret)[_-]?key\s*[:=]\s*["'][A-Za-z0-9_-]{16,}/i);
 });
 
