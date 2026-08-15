@@ -228,16 +228,18 @@ async function releaseShen() {
   deepARPreview.setAttribute("aria-hidden", "true");
   delete stage.dataset.deeparReady;
   transientMeasurementId = null;
+  try {
+    // Shen synchronously releases the external track it was given. Let it do
+    // that first, then retain our own stop as the fallback for partial init.
+    active?.deinitialize?.();
+  } catch {
+    // The application-owned stream stop below remains authoritative.
+  }
   stopSharedVideoStream();
   try {
     await activeDeepAR?.cleanup?.();
   } catch {
     // Camera release remains authoritative if the display-only overlay fails.
-  }
-  try {
-    active?.deinitialize?.();
-  } catch {
-    // Page navigation still releases the browser camera and runtime.
   }
 }
 

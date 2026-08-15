@@ -27,6 +27,7 @@ test("research check-in renders the canonical page instead of duplicating it", a
 test("research page is the existing I AM scene with one compact native prompt", async () => {
   const page = await read(resolve(iamDirectory, "research.php"));
   const css = await read(resolve(researchDirectory, "shen-heart-rate.css"));
+  const controllerToken = (await sha256(resolve(researchDirectory, "shen-heart-rate.js"))).slice(0, 12);
 
   assert.match(page, /href="styles\.css/);
   assert.match(page, /Homepage - Hero Background Video - Chanel 2020 Runway Show\.mp4/);
@@ -47,7 +48,7 @@ test("research page is the existing I AM scene with one compact native prompt", 
   assert.match(page, /Universal Mind \[ I o H \] Logo 512\.png/);
   assert.match(page, />Loading</);
   assert.match(page, /shen-heart-rate\.css\?v=shen-heart-rate-css-40334628584a/);
-  assert.match(page, /shen-heart-rate\.js\?v=shen-heart-rate-js-b3f7350a61ea/);
+  assert.match(page, new RegExp(`shen-heart-rate\\.js\\?v=shen-heart-rate-js-${controllerToken}`));
   assert.equal((page.match(/role="dialog"/g) || []).length, 1);
   assert.equal((page.match(/not a medical or mental-health diagnosis/g) || []).length, 1);
   assert.doesNotMatch(page, /type="checkbox"|Heart Light|paired result|shen-heart-rate-wellness/i);
@@ -109,7 +110,12 @@ test("browser controller delegates the supported 10-second Quick HR face-map mea
   assert.match(source, /createDeepARBrightGlasses/);
   assert.match(
     source,
-    /async function releaseShen\(\)[\s\S]*?stopSharedVideoStream\(\);[\s\S]*?await activeDeepAR\?\.cleanup\?\.\(\)/,
+    /async function releaseShen\(\)[\s\S]*?active\?\.deinitialize\?\.\(\);[\s\S]*?stopSharedVideoStream\(\);[\s\S]*?await activeDeepAR\?\.cleanup\?\.\(\)/,
+  );
+  assert.equal(
+    source.indexOf("active?.deinitialize?.();", source.indexOf("async function releaseShen()"))
+      < source.indexOf("stopSharedVideoStream();", source.indexOf("async function releaseShen()")),
+    true,
   );
   assert.equal(
     source.indexOf("stopSharedVideoStream();", source.indexOf("async function releaseShen()"))

@@ -75,6 +75,7 @@ try {
   await page.screenshot({ path: join(outputDirectory, "quick-hr-shared-stream-overlay.png"), fullPage: true });
 
   await page.waitForURL(/\/vogue\/iam\/index\.html/, { timeout: 16_000 });
+  assert.equal(await page.evaluate(() => Number(sessionStorage.getItem("iam.qa.cameraTrackStopInvocations") || 0)), 1);
   assert.equal(handoffs.length, 1);
   assert.equal(handoffs[0].checkin, "I am energised after surfing");
   assert.equal(handoffs[0].momentary_physiology.heart_rate_bpm, 69);
@@ -133,6 +134,7 @@ try {
   assert.equal(failClosedState.statusHidden, false);
   assert.equal(await failClosed.locator("[data-shen-stage]").isHidden(), true);
   assert.equal(await failClosed.locator("[data-shen-stage]").getAttribute("data-shen-measurement-preset"), "unexpected");
+  assert.equal(await failClosed.evaluate(() => Number(sessionStorage.getItem("iam.qa.cameraTrackStopInvocations") || 0)), 1);
   assert.equal(trace.filter(({ name }) => name === "camera_track_ended").length, 2);
   await failClosed.close();
 
@@ -141,6 +143,7 @@ try {
   await pagehide.goto(`${researchUrl}&mock_release=pagehide`, { waitUntil: "domcontentloaded" });
   await pagehide.evaluate(() => {
     sessionStorage.setItem("iam.qa.cameraTrackStopCount", "0");
+    sessionStorage.setItem("iam.qa.cameraTrackStopInvocations", "0");
     sessionStorage.setItem("iam.qa.navigationLifecycle", "[]");
     sessionStorage.removeItem("iam.qa.deeparCleanupStarted");
     sessionStorage.removeItem("iam.qa.deeparCleanupResolved");
@@ -155,6 +158,7 @@ try {
     deepARCleanupResolved: sessionStorage.getItem("iam.qa.deeparCleanupResolved") === "true",
   }));
   assert.equal(navigationRelease.explicitTrackStops, 1);
+  assert.equal(await pagehide.evaluate(() => Number(sessionStorage.getItem("iam.qa.cameraTrackStopInvocations") || 0)), 1);
   assert.ok(navigationRelease.lifecycle.indexOf("beforeunload") >= 0, JSON.stringify(navigationRelease));
   assert.ok(navigationRelease.lifecycle.indexOf("pagehide") > navigationRelease.lifecycle.indexOf("beforeunload"), JSON.stringify(navigationRelease));
   assert.equal(navigationRelease.deepARCleanupStarted, true);
@@ -210,6 +214,9 @@ async function installInstrumentation(browserContext) {
     if (!sessionStorage.getItem("iam.qa.cameraTrackStopCount")) {
       sessionStorage.setItem("iam.qa.cameraTrackStopCount", "0");
     }
+    if (!sessionStorage.getItem("iam.qa.cameraTrackStopInvocations")) {
+      sessionStorage.setItem("iam.qa.cameraTrackStopInvocations", "0");
+    }
     if (!sessionStorage.getItem("iam.qa.navigationLifecycle")) {
       sessionStorage.setItem("iam.qa.navigationLifecycle", "[]");
     }
@@ -230,6 +237,8 @@ async function installInstrumentation(browserContext) {
         const originalStop = track.stop.bind(track);
         let stopRecorded = false;
         track.stop = () => {
+          const stopInvocations = Number(sessionStorage.getItem("iam.qa.cameraTrackStopInvocations") || 0);
+          sessionStorage.setItem("iam.qa.cameraTrackStopInvocations", String(stopInvocations + 1));
           if (!stopRecorded) {
             stopRecorded = true;
             const stopCount = Number(sessionStorage.getItem("iam.qa.cameraTrackStopCount") || 0);
@@ -363,8 +372,10 @@ export default async function CreateShenaiSDK() {
   let startedAt = 0;
   let finished = false;
   let stopped = false;
+  let sharedStream = null;
   return {
     setMediaStream(stream, facingUser) {
+      sharedStream = stream;
       window.recordHrRuntimeEvent({
         name: "shen_shared_stream",
         at: performance.now(),
@@ -417,6 +428,8 @@ export default async function CreateShenaiSDK() {
     deinitialize() {
       if (stopped) return;
       stopped = true;
+      sharedStream?.getTracks?.().forEach((track) => track.stop());
+      sharedStream = null;
       window.recordHrRuntimeEvent({ name: "sdk_deinitialized", at: performance.now() });
     },
   };
