@@ -228,6 +228,7 @@ async function releaseShen() {
   deepARPreview.setAttribute("aria-hidden", "true");
   delete stage.dataset.deeparReady;
   transientMeasurementId = null;
+  stopSharedVideoStream();
   try {
     await activeDeepAR?.cleanup?.();
   } catch {
@@ -238,7 +239,6 @@ async function releaseShen() {
   } catch {
     // Page navigation still releases the browser camera and runtime.
   }
-  stopSharedVideoStream();
 }
 
 async function finishAndContinue() {

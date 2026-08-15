@@ -101,6 +101,7 @@ try {
   const primaryCameraRequests = trace.filter(({ name }) => name === "camera_request").length;
   assert.equal(primaryCameraRequests, 1);
   assert.equal(trace.filter(({ name }) => name === "deepar_initialized").length, 1);
+  assert.equal(trace.filter(({ name }) => name === "camera_track_ended").length, 1);
   assert.equal(effectLoaded.path, "/vogue/iam/research/effects/bright-glasses/bright-glasses.deepar");
 
   const acquisitionMs = finished.at - started.at;
@@ -132,7 +133,25 @@ try {
   assert.equal(failClosedState.statusHidden, false);
   assert.equal(await failClosed.locator("[data-shen-stage]").isHidden(), true);
   assert.equal(await failClosed.locator("[data-shen-stage]").getAttribute("data-shen-measurement-preset"), "unexpected");
+  assert.equal(trace.filter(({ name }) => name === "camera_track_ended").length, 2);
   await failClosed.close();
+
+  const pagehide = await context.newPage();
+  await pagehide.route("**/*", createRouter([], { unresolvedDeepARCleanup: true }));
+  await pagehide.goto(`${researchUrl}&mock_release=pagehide`, { waitUntil: "domcontentloaded" });
+  await pagehide.locator("[data-heart-rate-accept]").click();
+  await pagehide.locator('[data-shen-stage][data-state="measurement"]').waitFor({ state: "visible" });
+  const pagehideStopsBefore = trace.filter(({ name }) => name === "camera_track_ended").length;
+  await pagehide.evaluate(() => window.dispatchEvent(new PageTransitionEvent("pagehide", { persisted: false })));
+  await pagehide.waitForTimeout(0);
+  const pagehideStopsAfterFirst = trace.filter(({ name }) => name === "camera_track_ended").length;
+  assert.equal(pagehideStopsAfterFirst, pagehideStopsBefore + 1);
+  assert.equal(trace.filter(({ name }) => name === "deepar_cleanup_started").length, 1);
+  assert.equal(trace.filter(({ name }) => name === "deepar_cleanup_resolved").length, 0);
+  await pagehide.evaluate(() => window.dispatchEvent(new PageTransitionEvent("pagehide", { persisted: false })));
+  await pagehide.waitForTimeout(0);
+  assert.equal(trace.filter(({ name }) => name === "camera_track_ended").length, pagehideStopsAfterFirst);
+  await pagehide.close();
 
   await page.close();
   await context.close();
@@ -163,6 +182,11 @@ try {
     handoff: { requests: handoffs.length, exact202Accepted: true, rawBpmStoredOrReturned: false },
     duplicateLoadingState: false,
     unexpectedPresetFailsClosed: true,
+    synchronousPagehideCameraRelease: {
+      explicitTrackStops: pagehideStopsAfterFirst - pagehideStopsBefore,
+      deepARCleanupResolved: false,
+      repeatedPagehideTrackStops: 0,
+    },
     screenshot: join(outputDirectory, "quick-hr-shared-stream-overlay.png"),
     cleanup,
     trace,
@@ -237,7 +261,7 @@ async function installInstrumentation(browserContext) {
   });
 }
 
-function createRouter(handoffEvidence) {
+function createRouter(handoffEvidence, { unresolvedDeepARCleanup = false } = {}) {
   return async (route) => {
     const request = route.request();
     const url = new URL(request.url());
@@ -267,6 +291,10 @@ function createRouter(handoffEvidence) {
     }
     if (path === "/vogue/iam/research/vendor/shenai-sdk/index.mjs") {
       await route.fulfill({ status: 200, headers: pageHeaders(), contentType: "text/javascript", body: mockSdkModule() });
+      return;
+    }
+    if (path === "/vogue/iam/research/deepar-bright-glasses.js" && unresolvedDeepARCleanup) {
+      await route.fulfill({ status: 200, headers: pageHeaders(), contentType: "text/javascript", body: mockUnresolvedDeepARControllerModule() });
       return;
     }
     if (path === "/vogue/iam/research/vendor/deepar-5.6.22/js/deepar.esm.js") {
@@ -420,6 +448,24 @@ export async function initialize(options) {
     },
     stopVideo() { window.recordHrRuntimeEvent({ name: "deepar_stopped", at: performance.now() }); },
     shutdown() { window.recordHrRuntimeEvent({ name: "deepar_shutdown", at: performance.now() }); },
+  };
+}`;
+}
+
+function mockUnresolvedDeepARControllerModule() {
+  return `
+export async function createDeepARBrightGlasses({ previewElement, videoElement, stream }) {
+  videoElement.srcObject = stream;
+  const canvas = document.createElement("canvas");
+  canvas.width = 760;
+  canvas.height = 578;
+  previewElement.append(canvas);
+  return {
+    async cleanup() {
+      window.recordHrRuntimeEvent({ name: "deepar_cleanup_started", at: performance.now() });
+      await new Promise(() => {});
+      window.recordHrRuntimeEvent({ name: "deepar_cleanup_resolved", at: performance.now() });
+    },
   };
 }`;
 }

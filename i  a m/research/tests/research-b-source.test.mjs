@@ -47,7 +47,7 @@ test("research page is the existing I AM scene with one compact native prompt", 
   assert.match(page, /Universal Mind \[ I o H \] Logo 512\.png/);
   assert.match(page, />Loading</);
   assert.match(page, /shen-heart-rate\.css\?v=shen-heart-rate-css-40334628584a/);
-  assert.match(page, /shen-heart-rate\.js\?v=shen-heart-rate-js-3c38c7b97641/);
+  assert.match(page, /shen-heart-rate\.js\?v=shen-heart-rate-js-eb4c558e178b/);
   assert.equal((page.match(/role="dialog"/g) || []).length, 1);
   assert.equal((page.match(/not a medical or mental-health diagnosis/g) || []).length, 1);
   assert.doesNotMatch(page, /type="checkbox"|Heart Light|paired result|shen-heart-rate-wellness/i);
@@ -107,6 +107,15 @@ test("browser controller delegates the supported 10-second Quick HR face-map mea
   assert.match(source, /videoTracks\.length !== 1 \|\| audioTracks\.length !== 0/);
   assert.match(source, /shenaiSDK\.setMediaStream\(sharedCameraStream, true\)/);
   assert.match(source, /createDeepARBrightGlasses/);
+  assert.match(
+    source,
+    /async function releaseShen\(\)[\s\S]*?stopSharedVideoStream\(\);[\s\S]*?await activeDeepAR\?\.cleanup\?\.\(\)/,
+  );
+  assert.equal(
+    source.indexOf("stopSharedVideoStream();", source.indexOf("async function releaseShen()"))
+      < source.indexOf("await activeDeepAR?.cleanup?.()", source.indexOf("async function releaseShen()")),
+    true,
+  );
   assert.doesNotMatch(source, /MediaRecorder|ImageCapture|takeScreenshot|startVideoRecording|\bHRV\b|Stress Index/i);
   assert.doesNotMatch(source, /(?:api|license|secret)[_-]?key\s*[:=]\s*["'][A-Za-z0-9_-]{16,}/i);
 });
