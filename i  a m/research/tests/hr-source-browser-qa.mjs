@@ -224,6 +224,7 @@ try {
     const canvasRect = element.querySelector("canvas").getBoundingClientRect();
     const styles = getComputedStyle(element);
     const shenStyles = getComputedStyle(document.querySelector("#mxcanvas"));
+    const percent = (name) => Number.parseFloat(styles.getPropertyValue(name));
     return {
       visible: !element.hidden,
       pointerEvents: styles.pointerEvents,
@@ -237,6 +238,14 @@ try {
       shenBlendMode: shenStyles.mixBlendMode,
       shenPointerEvents: shenStyles.pointerEvents,
       shenZIndex: shenStyles.zIndex,
+      watermark: {
+        x: percent("--deepar-watermark-x"),
+        y: percent("--deepar-watermark-y"),
+        radiusX: percent("--deepar-watermark-radius-x"),
+        radiusY: percent("--deepar-watermark-radius-y"),
+      },
+      liveZIndex: getComputedStyle(document.querySelector("[data-heart-rate-live]")).zIndex,
+      resultZIndex: getComputedStyle(document.querySelector("[data-heart-rate-result]")).zIndex,
       faceRegion: document.querySelector("[data-shen-stage]").dataset.deeparFaceRegion,
     };
   });
@@ -248,6 +257,26 @@ try {
   assert.equal(arGlassesEvidence.shenBlendMode, "normal");
   assert.equal(arGlassesEvidence.shenPointerEvents, "auto");
   assert.equal(arGlassesEvidence.shenZIndex, "2");
+  assert.equal(arGlassesEvidence.liveZIndex, "4");
+  assert.equal(arGlassesEvidence.resultZIndex, "5");
+  assert.deepEqual(arGlassesEvidence.watermark, { x: 70, y: 22, radiusX: 26, radiusY: 9 });
+  const watermarkOpaque = {
+    left: arGlassesEvidence.watermark.x - (arGlassesEvidence.watermark.radiusX * 0.7),
+    right: arGlassesEvidence.watermark.x + (arGlassesEvidence.watermark.radiusX * 0.7),
+    top: arGlassesEvidence.watermark.y - (arGlassesEvidence.watermark.radiusY * 0.7),
+    bottom: arGlassesEvidence.watermark.y + (arGlassesEvidence.watermark.radiusY * 0.7),
+  };
+  const officialWatermarkEnvelope = { left: 58, right: 84, top: 17, bottom: 27 };
+  assert.ok(watermarkOpaque.left <= officialWatermarkEnvelope.left);
+  assert.ok(watermarkOpaque.right >= officialWatermarkEnvelope.right);
+  assert.ok(watermarkOpaque.top <= officialWatermarkEnvelope.top);
+  assert.ok(watermarkOpaque.bottom >= officialWatermarkEnvelope.bottom);
+  const watermarkAperture = {
+    top: arGlassesEvidence.watermark.y - arGlassesEvidence.watermark.radiusY,
+    bottom: arGlassesEvidence.watermark.y + arGlassesEvidence.watermark.radiusY,
+  };
+  assert.ok(watermarkAperture.top > 12, "watermark aperture must remain below conditions/stars");
+  assert.ok(watermarkAperture.bottom < 60, "watermark aperture must remain above Start/waveform/BPM controls");
   assert.ok(["tracked", "centred-fallback"].includes(arGlassesEvidence.faceRegion));
   assert.equal(arGlassesEvidence.canvasWidth, arGlassesEvidence.planeWidth);
   assert.equal(arGlassesEvidence.canvasHeight, arGlassesEvidence.planeHeight);
@@ -271,6 +300,24 @@ try {
   await acceptPage.waitForTimeout(250);
   const mobileStage = await acceptPage.locator("[data-shen-stage]").boundingBox();
   assert.ok(mobileStage);
+  const mobileWatermark = await acceptPage.locator("[data-heart-rate-deepar]").evaluate((element) => {
+    const styles = getComputedStyle(element);
+    const percent = (name) => Number.parseFloat(styles.getPropertyValue(name));
+    return {
+      x: percent("--deepar-watermark-x"),
+      y: percent("--deepar-watermark-y"),
+      radiusX: percent("--deepar-watermark-radius-x"),
+      radiusY: percent("--deepar-watermark-radius-y"),
+      maskImage: styles.webkitMaskImage || styles.maskImage,
+    };
+  });
+  assert.deepEqual({
+    x: mobileWatermark.x,
+    y: mobileWatermark.y,
+    radiusX: mobileWatermark.radiusX,
+    radiusY: mobileWatermark.radiusY,
+  }, arGlassesEvidence.watermark);
+  assert.match(mobileWatermark.maskImage, /radial-gradient/i);
   const mobileHitTarget = await acceptPage.evaluate(({ x, y }) => {
     const target = document.elementFromPoint(x, y);
     return { id: target?.id || "", tagName: target?.tagName || "" };

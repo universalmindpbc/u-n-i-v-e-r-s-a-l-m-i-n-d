@@ -20,7 +20,7 @@ header('X-Robots-Tag: noindex, nofollow');
     <title>Heart Check | I AM</title>
     <link rel="icon" type="image/png" sizes="32x32" href="/vogue/iam/favicon.png?v=iam-favicon-4">
     <link rel="stylesheet" href="styles.css?v=global-nav-single-shell-2-technology-submenu-133pct-normal-1">
-    <link rel="stylesheet" href="research/shen-heart-rate.css?v=shen-heart-rate-css-7feba76fbaff">
+    <link rel="stylesheet" href="research/shen-heart-rate.css?v=shen-heart-rate-css-b1fba4757c9f">
   </head>
   <body class="shen-heart-rate-page">
     <main class="site-shell" aria-label="Universal Mind I AM heart-rate research">

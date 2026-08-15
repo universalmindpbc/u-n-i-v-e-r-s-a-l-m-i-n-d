@@ -161,6 +161,11 @@ test("official DeepAR Bright Glasses uses the same raw video stream and never ow
   assert.match(css, /pointer-events:\s*none/);
   assert.match(css, /z-index:\s*3/);
   assert.match(css, /--deepar-eye-x/);
+  assert.match(css, /--deepar-watermark-x:\s*70%/);
+  assert.match(css, /--deepar-watermark-y:\s*22%/);
+  assert.match(css, /--deepar-watermark-radius-x:\s*26%/);
+  assert.match(css, /--deepar-watermark-radius-y:\s*9%/);
+  assert.match(css, /ellipse var\(--deepar-watermark-radius-x\) var\(--deepar-watermark-radius-y\) at var\(--deepar-watermark-x\) var\(--deepar-watermark-y\)/);
   assert.match(css, /radial-gradient/);
   assert.doesNotMatch(css, /display:\s*none[^}]*deepar|clip-path/i);
 
