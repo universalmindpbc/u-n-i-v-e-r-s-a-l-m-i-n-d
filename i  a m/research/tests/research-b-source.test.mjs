@@ -107,6 +107,7 @@ test("browser controller delegates the supported 10-second Quick HR face-map mea
   assert.match(source, /audio:\s*false/);
   assert.match(source, /videoTracks\.length !== 1 \|\| audioTracks\.length !== 0/);
   assert.match(source, /shenaiSDK\.setMediaStream\(sharedCameraStream, true\)/);
+  assert.match(source, /shenaiSDK\.setMediaStream\(sharedCameraStream, true\);\s*shenOwnsSharedCameraStream = true/);
   assert.match(source, /createDeepARBrightGlasses/);
   assert.match(
     source,
@@ -117,6 +118,7 @@ test("browser controller delegates the supported 10-second Quick HR face-map mea
       < source.indexOf("stopSharedVideoStream();", source.indexOf("async function releaseShen()")),
     true,
   );
+  assert.match(source, /if \(shenReleaseStarted\) sharedCameraStream = null;\s*else stopSharedVideoStream\(\)/);
   assert.equal(
     source.indexOf("stopSharedVideoStream();", source.indexOf("async function releaseShen()"))
       < source.indexOf("await activeDeepAR?.cleanup?.()", source.indexOf("async function releaseShen()")),

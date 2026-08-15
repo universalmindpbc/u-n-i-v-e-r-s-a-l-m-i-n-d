@@ -37,6 +37,7 @@ let isStarting = false;
 let isFinishing = false;
 let liveHeartRateTimer = 0;
 let sharedCameraStream = null;
+let shenOwnsSharedCameraStream = false;
 let deepARSession = null;
 let cameraLifecycle = 0;
 
@@ -228,14 +229,17 @@ async function releaseShen() {
   deepARPreview.setAttribute("aria-hidden", "true");
   delete stage.dataset.deeparReady;
   transientMeasurementId = null;
+  const shenOwnedStream = shenOwnsSharedCameraStream;
+  shenOwnsSharedCameraStream = false;
+  let shenReleaseStarted = false;
   try {
-    // Shen synchronously releases the external track it was given. Let it do
-    // that first, then retain our own stop as the fallback for partial init.
     active?.deinitialize?.();
+    shenReleaseStarted = Boolean(active && shenOwnedStream);
   } catch {
-    // The application-owned stream stop below remains authoritative.
+    // The application-owned fallback below still releases the camera.
   }
-  stopSharedVideoStream();
+  if (shenReleaseStarted) sharedCameraStream = null;
+  else stopSharedVideoStream();
   try {
     await activeDeepAR?.cleanup?.();
   } catch {
@@ -328,6 +332,7 @@ function initializeWithToken(token) {
           return;
         }
         shenaiSDK.setMediaStream(sharedCameraStream, true);
+        shenOwnsSharedCameraStream = true;
         const quickHrConfirmed = await confirmQuickHeartRatePreset();
         stage.dataset.shenMeasurementPreset = quickHrConfirmed ? "quick-hr-mode" : "unexpected";
         if (!quickHrConfirmed) {
