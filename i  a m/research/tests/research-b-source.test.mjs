@@ -1,6 +1,7 @@
 import test from "node:test";
 import assert from "node:assert/strict";
 import { execFile } from "node:child_process";
+import { createHash } from "node:crypto";
 import { readFile } from "node:fs/promises";
 import { dirname, resolve } from "node:path";
 import { promisify } from "node:util";
@@ -12,6 +13,7 @@ const iamDirectory = resolve(researchDirectory, "..");
 
 const read = (path) => readFile(path, "utf8");
 const execFileAsync = promisify(execFile);
+const sha256 = async (path) => createHash("sha256").update(await readFile(path)).digest("hex");
 
 test("research check-in renders the canonical page instead of duplicating it", async () => {
   const source = await read(resolve(iamDirectory, "check-in-research.php"));
@@ -38,14 +40,14 @@ test("research page is the existing I AM scene with one compact native prompt", 
   assert.match(page, /data-heart-rate-loader/);
   assert.match(page, /data-heart-rate-live/);
   assert.match(page, /data-heart-rate-result/);
-  assert.match(page, /data-heart-rate-ar-glasses/);
-  assert.match(page, /heart-check-glasses-lens/);
-  assert.match(page, /heart-check-glasses-frame/);
+  assert.match(page, /data-heart-rate-deepar/);
+  assert.match(page, /data-heart-rate-deepar-preview/);
+  assert.match(page, /data-heart-rate-deepar-source/);
   assert.match(page, /Your heart rate/);
   assert.match(page, /Universal Mind \[ I o H \] Logo 512\.png/);
   assert.match(page, />Loading</);
-  assert.match(page, /shen-heart-rate\.css\?v=shen-heart-rate-css-42c074185d53/);
-  assert.match(page, /shen-heart-rate\.js\?v=shen-heart-rate-js-2e680bcc10ec/);
+  assert.match(page, /shen-heart-rate\.css\?v=shen-heart-rate-css-40334628584a/);
+  assert.match(page, /shen-heart-rate\.js\?v=shen-heart-rate-js-3c38c7b97641/);
   assert.equal((page.match(/role="dialog"/g) || []).length, 1);
   assert.equal((page.match(/not a medical or mental-health diagnosis/g) || []).length, 1);
   assert.doesNotMatch(page, /type="checkbox"|Heart Light|paired result|shen-heart-rate-wellness/i);
@@ -55,14 +57,16 @@ test("research page is the existing I AM scene with one compact native prompt", 
   assert.match(css, /overflow:\s*hidden/);
   assert.match(css, /\.shen-heart-rate-live\s*\{/);
   assert.match(css, /\.shen-heart-rate-result\s*\{/);
-  assert.match(css, /\.shen-heart-rate-ar-glasses\s*\{/);
+  assert.match(css, /\.shen-heart-rate-deepar\s*\{/);
+  assert.match(css, /\.shen-heart-rate-deepar__preview canvas/);
+  assert.match(css, /mix-blend-mode:\s*screen/);
   assert.match(css, /pointer-events:\s*none/);
   assert.match(css, /width:\s*min\(638px, calc\(100vw - 38px\)\)/);
   assert.match(css, /\.shen-heart-rate-offer h2\s*\{[^}]*font-size:\s*20px/s);
   assert.match(css, /\.shen-heart-rate-offer p\s*\{[^}]*font-size:\s*12\.5px/s);
   assert.match(css, /\.shen-heart-rate-offer \.induction-permission__actions button\s*\{[^}]*min-height:\s*38px[^}]*font-size:\s*11\.25px/s);
   assert.doesNotMatch(css, /shen-heart-rate-attribution/);
-  assert.doesNotMatch(page, /deepar\.js|licenseKey|bright-glasses\.deepar/i);
+  assert.doesNotMatch(page, /<svg|heart-check-glasses-lens|heart-check-glasses-frame|licenseKey/i);
 });
 
 test("browser controller delegates the supported 10-second Quick HR face-map measurement to Shen", async () => {
@@ -87,10 +91,6 @@ test("browser controller delegates the supported 10-second Quick HR face-map mea
   assert.match(source, /shenVisualizationConfig\s*=\s*"face-map-and-blood-flow"/);
   assert.match(source, /setShowFaceMask\?\.\(true\)/);
   assert.match(source, /setShowBloodFlow\?\.\(true\)/);
-  assert.match(source, /getNormalizedFaceBbox/);
-  assert.match(source, /FACE_EYE_LINE_RATIO\s*=\s*0\.3/);
-  assert.match(source, /requestAnimationFrame\(positionArGlasses\)/);
-  assert.match(source, /stage\.addEventListener\("click", startArGlasses\)/);
   assert.doesNotMatch(source, /OperatingMode|setShenVisualization|visualizationMonitor/);
   assert.match(runtime, /SetShowFaceMask/);
   assert.match(runtime, /SetShowBloodFlow/);
@@ -102,21 +102,47 @@ test("browser controller delegates the supported 10-second Quick HR face-map mea
   assert.match(source, /enablePreloadDisplay:\s*false/);
   assert.match(source, /hidePreloadDisplayLogo:\s*true/);
   assert.match(source, /onWasmLoadingProgress:\s*setLoadingProgress/);
-  assert.doesNotMatch(source, /getUserMedia|MediaRecorder|ImageCapture|DeepAR|\bHRV\b|Stress Index/i);
-  const arController = source.match(/function boundedUnit[\s\S]*?function normalizedHeartRate/)?.[0] || "";
-  assert.ok(arController);
-  assert.doesNotMatch(arController, /getHeartRate|BPM|heart.?rate.?band|threshold|inferred|weather|location|confidence/i);
+  assert.equal((source.match(/\.getUserMedia\(/g) || []).length, 1);
+  assert.match(source, /audio:\s*false/);
+  assert.match(source, /videoTracks\.length !== 1 \|\| audioTracks\.length !== 0/);
+  assert.match(source, /shenaiSDK\.setMediaStream\(sharedCameraStream, true\)/);
+  assert.match(source, /createDeepARBrightGlasses/);
+  assert.doesNotMatch(source, /MediaRecorder|ImageCapture|takeScreenshot|startVideoRecording|\bHRV\b|Stress Index/i);
   assert.doesNotMatch(source, /(?:api|license|secret)[_-]?key\s*[:=]\s*["'][A-Za-z0-9_-]{16,}/i);
 });
 
-test("glasses map the face box into the cropped Shen V3 camera viewport at eye level", async () => {
-  const source = await read(resolve(researchDirectory, "shen-heart-rate.js"));
+test("official DeepAR Bright Glasses uses the same raw video stream and never owns a camera", async () => {
+  const source = await read(resolve(researchDirectory, "deepar-bright-glasses.js"));
   const css = await read(resolve(researchDirectory, "shen-heart-rate.css"));
-  assert.match(source, /faceBox\.top \+ \(faceBox\.height \* FACE_EYE_LINE_RATIO\)/);
-  assert.match(css, /--ar-glasses-y:\s*39%/);
-  assert.match(css, /inset:\s*0 auto auto 50%/);
-  assert.match(css, /height:\s*calc\(var\(--shen-canvas-size\) \* 0\.76\)/);
-  assert.match(css, /transform:\s*translateX\(-50%\)/);
+  assert.match(source, /vendor\/deepar-5\.6\.22\/js\/deepar\.esm\.js/);
+  assert.match(source, /effects\/bright-glasses\/bright-glasses\.deepar/);
+  assert.match(source, /disableDefaultCamera:\s*true/);
+  assert.match(source, /deepAR\.setVideoElement\(videoElement, true\)/);
+  assert.match(source, /deepAR\.muteSound\?\.\(true\)/);
+  assert.match(source, /deepAR\.setFps\?\.\(24\)/);
+  assert.match(source, /deepAR\?\.stopVideo\?\.\(\)/);
+  assert.match(source, /deepAR\?\.shutdown\?\.\(\)/);
+  assert.match(source, /free_plan_watermark_visible:\s*true/);
+  assert.doesNotMatch(source, /getUserMedia|startCamera|takeScreenshot|startVideoRecording|MediaRecorder|localStorage|sessionStorage/);
+  assert.doesNotMatch(source, /heart.?rate|BPM|threshold|band_intent|carrier_intent|weather|location/i);
+  assert.match(css, /inset:\s*0 0 auto/);
+  assert.match(css, /width:\s*100%/);
+  assert.match(css, /height:\s*76%/);
+  assert.match(css, /pointer-events:\s*none/);
+  assert.doesNotMatch(css, /display:\s*none[^}]*deepar|clip-path|mask-image/i);
+
+  assert.equal(
+    await sha256(resolve(researchDirectory, "effects", "bright-glasses", "bright-glasses.deepar")),
+    "c24e7216d54cb9ecdb5557d808bd6b331a72d5932b3b25dbeadf098cb72728dd",
+  );
+  assert.equal(
+    await sha256(resolve(researchDirectory, "vendor", "deepar-5.6.22", "js", "deepar.esm.js")),
+    "bcd66c611d8c73f71ce3d7e0c93fb535972c24d72eb9ec4905b48820278eeb32",
+  );
+  assert.equal(
+    await sha256(resolve(researchDirectory, "vendor", "deepar-5.6.22", "wasm", "deepar.wasm")),
+    "f1312992c2d37f2428e6760ab21b77f7cc032d2b63133ca55de8e1aa88afe261",
+  );
 });
 
 test("heart rate is momentary and only a bounded privacy-safe homepage handoff continues", async () => {
@@ -137,7 +163,7 @@ test("heart rate is momentary and only a bounded privacy-safe homepage handoff c
   assert.match(source, /sessionStorage\.removeItem/);
   assert.doesNotMatch(source, /average_signal_quality|measuredAt|provider|storeHeartRateResult|pseudonymousUserId/);
   assert.doesNotMatch(source, /selection_needs/);
-  assert.doesNotMatch(source, /heartbeats|hrv_|stress_index|photo|video|waveform|rrIntervals/i);
+  assert.doesNotMatch(source, /heartbeats|hrv_|stress_index|photo|waveform|rrIntervals/i);
   assert.match(recommendationSource, /heart_rate_bpm:\s*bpm/);
   assert.match(recommendationSource, /measurement_duration_seconds:\s*10/);
   assert.match(recommendationSource, /measurement_timing:\s*"immediately_after_current_self_report"/);
@@ -269,13 +295,55 @@ test("protected Shen secret resolution works and missing configuration fails clo
   }
 });
 
-test("research response supplies the Web SDK isolation and camera boundaries", async () => {
+test("DeepAR browser licence is domain-bound and loaded only through the protected server adapter", async () => {
+  const endpoint = await read(resolve(iamDirectory, "api", "deepar-license.php"));
+  const controller = await read(resolve(researchDirectory, "deepar-bright-glasses.js"));
+  assert.match(endpoint, /getenv\('DEEPAR_WEB_KEY'\)/);
+  assert.match(endpoint, /require_once __DIR__ \. '\/happiness-secret-store\.php'/);
+  assert.match(endpoint, /happiness_secret\('DEEPAR_WEB_KEY'\)/);
+  assert.match(endpoint, /deepar_require_web_key\(\)/);
+  assert.match(endpoint, /respond\(503|deepar_respond\(503/);
+  assert.match(endpoint, /Cache-Control: no-store/);
+  assert.match(endpoint, /Cross-Origin-Resource-Policy: same-origin/);
+  assert.match(endpoint, /Cross-origin requests are not allowed/);
+  assert.match(endpoint, /Cross-site requests are not allowed/);
+  assert.match(endpoint, /deepar_respond\(200, \['license_key' => \$webKey\]\)/);
+  assert.doesNotMatch(endpoint, /DEEPAR_WEB_KEY["']?\s*[:=]\s*["'][A-Za-z0-9_-]{16,}/i);
+  assert.match(controller, /api\/deepar-license\.php/);
+  assert.match(controller, /credentials:\s*"same-origin"/);
+  assert.match(controller, /cache:\s*"no-store"/);
+  assert.doesNotMatch(controller, /licenseKey:\s*["'][A-Za-z0-9_-]{16,}/i);
+});
+
+test("protected DeepAR secret resolution works and missing configuration fails closed", async (context) => {
+  const runtimeTest = resolve(testDirectory, "deepar-license-secret-runtime.php");
+  try {
+    const { stdout, stderr } = await execFileAsync("php", [runtimeTest]);
+    assert.equal(stderr, "");
+    assert.match(stdout, /DeepAR protected secret runtime regression passed/);
+  } catch (error) {
+    if (error?.code === "ENOENT") {
+      context.skip("PHP is unavailable in this environment.");
+      return;
+    }
+    throw error;
+  }
+});
+
+test("research response supplies both Web SDK isolation and camera boundaries", async () => {
   const page = await read(resolve(iamDirectory, "research.php"));
   const sdkHeaders = await read(resolve(researchDirectory, "vendor", "shenai-sdk", ".htaccess"));
+  const deepARHeaders = await read(resolve(researchDirectory, "vendor", "deepar-5.6.22", ".htaccess"));
+  const effectHeaders = await read(resolve(researchDirectory, "effects", "bright-glasses", ".htaccess"));
   assert.match(page, /Cross-Origin-Opener-Policy: same-origin/);
   assert.match(page, /Cross-Origin-Embedder-Policy: require-corp/);
   assert.match(page, /Permissions-Policy: camera=\(self\), microphone=\(\)/);
   assert.match(sdkHeaders, /<Files "shenai_sdk\.mjs">/);
   assert.match(sdkHeaders, /Cross-Origin-Embedder-Policy "require-corp"/);
   assert.match(sdkHeaders, /Cross-Origin-Resource-Policy "same-origin"/);
+  assert.match(deepARHeaders, /AddType application\/wasm \.wasm/);
+  assert.match(deepARHeaders, /Cross-Origin-Embedder-Policy "require-corp"/);
+  assert.match(deepARHeaders, /Cross-Origin-Resource-Policy "same-origin"/);
+  assert.match(effectHeaders, /AddType application\/octet-stream \.deepar/);
+  assert.match(effectHeaders, /Cross-Origin-Resource-Policy "same-origin"/);
 });

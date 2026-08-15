@@ -1,0 +1,8 @@
+<IfModule mod_mime.c>
+  AddType application/octet-stream .deepar
+</IfModule>
+<IfModule mod_headers.c>
+  Header always set Cross-Origin-Embedder-Policy "require-corp"
+  Header always set Cross-Origin-Resource-Policy "same-origin"
+  Header always set X-Content-Type-Options "nosniff"
+</IfModule>

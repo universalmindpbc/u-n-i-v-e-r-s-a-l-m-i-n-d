@@ -20,7 +20,7 @@ header('X-Robots-Tag: noindex, nofollow');
     <title>Heart Check | I AM</title>
     <link rel="icon" type="image/png" sizes="32x32" href="/vogue/iam/favicon.png?v=iam-favicon-4">
     <link rel="stylesheet" href="styles.css?v=global-nav-single-shell-2-technology-submenu-133pct-normal-1">
-    <link rel="stylesheet" href="research/shen-heart-rate.css?v=shen-heart-rate-css-42c074185d53">
+    <link rel="stylesheet" href="research/shen-heart-rate.css?v=shen-heart-rate-css-40334628584a">
   </head>
   <body class="shen-heart-rate-page">
     <main class="site-shell" aria-label="Universal Mind I AM heart-rate research">
@@ -50,44 +50,10 @@ header('X-Robots-Tag: noindex, nofollow');
             </div>
           </div>
           <canvas id="mxcanvas" aria-label="Heart-rate measurement interface"></canvas>
-          <div class="shen-heart-rate-ar-glasses" data-heart-rate-ar-glasses data-tracking="guide" aria-hidden="true" hidden>
-            <svg viewBox="0 0 360 150" focusable="false">
-              <defs>
-                <linearGradient id="heart-check-glasses-lens" x1="0" y1="0" x2="1" y2="1">
-                  <stop offset="0" stop-color="#d8ff99" stop-opacity="0.58"></stop>
-                  <stop offset="0.48" stop-color="#72f3bb" stop-opacity="0.44"></stop>
-                  <stop offset="1" stop-color="#f5b9a5" stop-opacity="0.38"></stop>
-                </linearGradient>
-                <linearGradient id="heart-check-glasses-frame" x1="0" y1="0" x2="1" y2="0">
-                  <stop offset="0" stop-color="#f5d9aa"></stop>
-                  <stop offset="0.5" stop-color="#fff4ce"></stop>
-                  <stop offset="1" stop-color="#d5b77f"></stop>
-                </linearGradient>
-                <filter id="heart-check-glasses-glow" x="-20%" y="-40%" width="140%" height="180%">
-                  <feGaussianBlur stdDeviation="2.5" result="blur"></feGaussianBlur>
-                  <feMerge>
-                    <feMergeNode in="blur"></feMergeNode>
-                    <feMergeNode in="SourceGraphic"></feMergeNode>
-                  </feMerge>
-                </filter>
-              </defs>
-              <path class="shen-heart-rate-ar-glasses__lens" d="M14 31 Q180 -10 346 31 L338 104 Q334 132 304 138 L225 132 Q202 128 188 104 L180 89 L172 104 Q158 128 135 132 L56 138 Q26 132 22 104 Z"></path>
-              <path class="shen-heart-rate-ar-glasses__frame" d="M14 31 Q180 -10 346 31 L338 104 Q334 132 304 138 L225 132 Q202 128 188 104 L180 89 L172 104 Q158 128 135 132 L56 138 Q26 132 22 104 Z"></path>
-              <g class="shen-heart-rate-ar-glasses__lights" filter="url(#heart-check-glasses-glow)">
-                <circle cx="31" cy="45" r="3"></circle><circle cx="54" cy="34" r="3"></circle>
-                <circle cx="80" cy="27" r="3"></circle><circle cx="108" cy="20" r="3"></circle>
-                <circle cx="138" cy="15" r="3"></circle><circle cx="169" cy="12" r="3"></circle>
-                <circle cx="200" cy="13" r="3"></circle><circle cx="231" cy="17" r="3"></circle>
-                <circle cx="261" cy="22" r="3"></circle><circle cx="289" cy="29" r="3"></circle>
-                <circle cx="315" cy="38" r="3"></circle><circle cx="335" cy="51" r="3"></circle>
-                <circle cx="334" cy="82" r="3"></circle><circle cx="324" cy="112" r="3"></circle>
-                <circle cx="293" cy="131" r="3"></circle><circle cx="239" cy="126" r="3"></circle>
-                <circle cx="121" cy="127" r="3"></circle><circle cx="67" cy="132" r="3"></circle>
-                <circle cx="36" cy="114" r="3"></circle><circle cx="25" cy="82" r="3"></circle>
-              </g>
-              <path class="shen-heart-rate-ar-glasses__shine" d="M41 49 Q131 15 233 24"></path>
-            </svg>
+          <div class="shen-heart-rate-deepar" data-heart-rate-deepar aria-label="Bright Glasses augmented-reality preview" aria-hidden="true" hidden>
+            <div class="shen-heart-rate-deepar__preview" data-heart-rate-deepar-preview></div>
           </div>
+          <video class="shen-heart-rate-deepar__source" data-heart-rate-deepar-source muted playsinline aria-hidden="true"></video>
           <div class="shen-heart-rate-live" data-heart-rate-live aria-live="polite" hidden>
             <img src="a s s e t s/Universal Mind [ I o H ] Logo 512.png" alt="" decoding="async">
             <span data-heart-rate-live-value></span>
@@ -138,6 +104,6 @@ header('X-Robots-Tag: noindex, nofollow');
 
     <script src="cloudflare-stream-catalogue.js?v=stream-catalogue-20ad6337934c"></script>
     <script src="cloudflare-stream-controller.js?v=stream-controller-e6ed1b827651"></script>
-    <script type="module" src="research/shen-heart-rate.js?v=shen-heart-rate-js-2e680bcc10ec"></script>
+    <script type="module" src="research/shen-heart-rate.js?v=shen-heart-rate-js-3c38c7b97641"></script>
   </body>
 </html>

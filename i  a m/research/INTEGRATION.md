@@ -8,7 +8,7 @@ This B route reuses the canonical check-in at render time. It does not duplicate
 2. The completed check-in reaches `research.php?offer=heart-rate`, preserving the selected song handoff.
 3. `research.php` reuses the homepage `styles.css`, Chanel background asset, cover fallback, `background-video`, `scene-veil` and brand components.
 4. The existing compact `induction-permission` component contains the journey's single consent and wellness disclosure immediately before the deliberate camera action.
-5. Accepting the prompt shows a Universal Mind flower and Loading presentation, then invokes Shen’s embedded Web SDK UI on `#mxcanvas`. No replacement measurement engine is rendered.
+5. Accepting the prompt opens exactly one video-only raw camera stream, shows a Universal Mind flower and Loading presentation, then gives that same raw stream to Shen on `#mxcanvas` and to the official DeepAR Bright Glasses display layer. Shen remains the sole measurement engine and never receives DeepAR-rendered pixels.
 6. Skipping continues to the selected song without requesting a Shen token or camera permission.
 7. Completing the measurement reads the final BPM once, releases the camera, holds the Universal Mind flower/result for 2.2 seconds, submits one bounded first-party handoff, discards the value and navigates immediately to the canonical `index.html`. No Shen summary, duplicate loading phase or result-options screen is shown.
 
@@ -26,7 +26,9 @@ This B route reuses the canonical check-in at render time. It does not duplicate
 - Both preload and embedded Shen logo controls are requested through supported SDK settings, including one runtime retry after initialization. If Starter remote configuration still renders SDK-owned branding, the wrapper does not cover or alter it.
 - The proprietary canvas and runtime bytes are unchanged.
 - The blood-flow overlay is Shen's rPPG visualization, not hyperspectral imaging.
-- A fixed-colour Universal Mind glasses layer sits above the Shen canvas without intercepting camera controls. Its coordinate plane is the upper 76% Shen V3 camera preview rather than the full square canvas/results area. It uses Shen's transient normalized face box at the upper-face eye line when available and a centred eye-line fallback otherwise; its geometry exists only in the live DOM and is cleared with the camera. It does not open a second camera stream, store facial geometry, import a DeepAR runtime/effect or contain any BPM/HR-band colour mapping. The DeepAR Bright Glasses project is the approved visual reference; a domain-bound DeepAR licence is still required before its proprietary effect can replace this task-owned vector rendition.
+- The glasses are the genuine compiled DeepAR Bright Glasses effect, not a task-owned vector approximation. Official DeepAR Web SDK 5.6.22 tracks the effect on the face inside the upper 76% camera preview and never intercepts Shen's controls. The Shen canvas remains layered above it so the native face-map and blood-flow/signal-quality visualization remain visible. The display layer is fixed-colour and has no BPM, HR-band, inferred-state or adaptive colour mapping.
+- The browser makes one `getUserMedia` request only after Accept with `audio: false`. DeepAR's default camera is disabled and its `setVideoElement` input is an offscreen, muted `HTMLVideoElement` backed by the exact same raw `MediaStream` passed to Shen's `setMediaStream`. DeepAR output is display-only. No filtered canvas pixels, screenshot, recording or image are passed to Shen, uploaded or stored.
+- DeepAR's free-plan watermark is intentionally left visible for this staging proof. The wrapper does not hide, crop or cover it.
 
 ## Credential boundary
 
@@ -34,9 +36,13 @@ This B route reuses the canonical check-in at render time. It does not duplicate
 
 The environment owner must add `SHENAI_ADMIN_KEY` through the existing protected server-secret process. This source lane does not set it.
 
+`api/deepar-license.php` reads the staging-only domain-bound `DEEPAR_WEB_KEY` from the same protected server-secret process and returns it only to a same-origin, no-store POST. The Web App key is consumed by the browser as DeepAR requires, but it is not committed in HTML, JavaScript, Git, logs or fixtures. It is bound only to `staging.universalmind.tv`; no wildcard or production domain is authorized.
+
 ## Web SDK package boundary
 
 The proprietary Shen runtime is kept at `research/vendor/shenai-sdk/` and retains Shen’s licence notice. It comes directly from the official `@shenai/sdk@3.1.9` npm package available to the active Universal Mind Starter workspace.
+
+The proprietary DeepAR runtime is kept at `research/vendor/deepar-5.6.22/` with its official licence notices and original package structure. It comes directly from the official `deepar@5.6.22` npm package. The compiled Bright Glasses effect is kept at `research/effects/bright-glasses/bright-glasses.deepar`; `PROVENANCE.md` records its official project/download URL and exact SHA-256. Neither runtime nor effect bytes are modified.
 
 ## Browser headers
 

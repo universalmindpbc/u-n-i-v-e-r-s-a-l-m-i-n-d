@@ -5,6 +5,7 @@ import CreateShenaiSDK, {
   PrecisionMode,
   UiVersion,
 } from "./vendor/shenai-sdk/index.mjs";
+import { createDeepARBrightGlasses } from "./deepar-bright-glasses.js?v=deepar-bright-glasses-js-8ec4a6ea1ea1";
 import { handoffHeartCheckToHomepage } from "./shen-heart-recommendation.js?v=e61dcdb0f0e0";
 
 const offer = document.querySelector("[data-heart-rate-offer]");
@@ -19,7 +20,9 @@ const loadingTrack = document.querySelector("[data-heart-rate-loading-track]");
 const loadingProgress = document.querySelector("[data-heart-rate-loading-progress]");
 const liveHeartRate = document.querySelector("[data-heart-rate-live]");
 const liveHeartRateValue = document.querySelector("[data-heart-rate-live-value]");
-const arGlasses = document.querySelector("[data-heart-rate-ar-glasses]");
+const deepARPreview = document.querySelector("[data-heart-rate-deepar]");
+const deepARPreviewElement = document.querySelector("[data-heart-rate-deepar-preview]");
+const deepARVideoElement = document.querySelector("[data-heart-rate-deepar-source]");
 const finalHeartRate = document.querySelector("[data-heart-rate-result]");
 const finalHeartRateValue = document.querySelector("[data-heart-rate-result-value]");
 const status = document.querySelector("[data-shen-status]");
@@ -33,11 +36,11 @@ let transientMeasurementId = null;
 let isStarting = false;
 let isFinishing = false;
 let liveHeartRateTimer = 0;
-let arGlassesFrame = 0;
-let arGlassesActive = false;
+let sharedCameraStream = null;
+let deepARSession = null;
+let cameraLifecycle = 0;
 
 const FINAL_READING_HOLD_MS = 2200;
-const FACE_EYE_LINE_RATIO = 0.3;
 
 function revealExistingBrand() {
   document.querySelector(".brand-name")?.classList.add("is-visible");
@@ -108,81 +111,11 @@ function showMeasurementInterface() {
   stage.dataset.shenMeasurement = "quick-heart-rate-10-seconds";
   loader.hidden = true;
   canvas.removeAttribute("aria-hidden");
+  const hasDeepAR = Boolean(deepARSession);
+  stage.dataset.deeparReady = String(hasDeepAR);
+  deepARPreview.hidden = !hasDeepAR;
+  deepARPreview.setAttribute("aria-hidden", String(!hasDeepAR));
   startLiveHeartRateMonitor();
-}
-
-function boundedUnit(value) {
-  const number = Number(value);
-  return Number.isFinite(number) ? Math.max(0, Math.min(1, number)) : null;
-}
-
-function normalizedFaceBox(value) {
-  if (!value) return null;
-  const candidate = value.boundingBox || value.bbox || value;
-  const values = Array.isArray(candidate) || ArrayBuffer.isView(candidate)
-    ? Array.from(candidate)
-    : null;
-  let left = values?.[0] ?? candidate.left ?? candidate.x ?? candidate.xMin ?? candidate.x_min;
-  let top = values?.[1] ?? candidate.top ?? candidate.y ?? candidate.yMin ?? candidate.y_min;
-  let width = values?.[2] ?? candidate.width ?? candidate.w;
-  let height = values?.[3] ?? candidate.height ?? candidate.h;
-
-  const right = candidate.right ?? candidate.xMax ?? candidate.x_max;
-  const bottom = candidate.bottom ?? candidate.yMax ?? candidate.y_max;
-  if (!values && width == null && right != null) width = Number(right) - Number(left);
-  if (!values && height == null && bottom != null) height = Number(bottom) - Number(top);
-
-  left = boundedUnit(left);
-  top = boundedUnit(top);
-  width = boundedUnit(width);
-  height = boundedUnit(height);
-  if (left === null || top === null || width === null || height === null) return null;
-  if (width < 0.08 || height < 0.1 || left + width > 1.05 || top + height > 1.05) return null;
-  return { left, top, width, height };
-}
-
-function positionArGlasses() {
-  if (!arGlassesActive) return;
-  let faceBox = null;
-  try {
-    faceBox = normalizedFaceBox(shenaiSDK?.getNormalizedFaceBbox?.());
-  } catch {
-    // Shen retains ownership of face detection; the centred guide remains safe.
-  }
-
-  if (faceBox) {
-    const centreX = faceBox.left + (faceBox.width / 2);
-    const eyeLine = faceBox.top + (faceBox.height * FACE_EYE_LINE_RATIO);
-    const glassesWidth = Math.max(0.24, Math.min(0.52, faceBox.width * 1.12));
-    arGlasses.style.setProperty("--ar-glasses-x", `${centreX * 100}%`);
-    arGlasses.style.setProperty("--ar-glasses-y", `${eyeLine * 100}%`);
-    arGlasses.style.setProperty("--ar-glasses-width", `${glassesWidth * 100}%`);
-    arGlasses.dataset.tracking = "face";
-  } else {
-    arGlasses.style.removeProperty("--ar-glasses-x");
-    arGlasses.style.removeProperty("--ar-glasses-y");
-    arGlasses.style.removeProperty("--ar-glasses-width");
-    arGlasses.dataset.tracking = "guide";
-  }
-  arGlassesFrame = window.requestAnimationFrame(positionArGlasses);
-}
-
-function startArGlasses() {
-  if (arGlassesActive || stage.dataset.state !== "measurement") return;
-  arGlassesActive = true;
-  arGlasses.hidden = false;
-  positionArGlasses();
-}
-
-function stopArGlasses() {
-  arGlassesActive = false;
-  window.cancelAnimationFrame(arGlassesFrame);
-  arGlassesFrame = 0;
-  arGlasses.hidden = true;
-  arGlasses.dataset.tracking = "guide";
-  arGlasses.style.removeProperty("--ar-glasses-x");
-  arGlasses.style.removeProperty("--ar-glasses-y");
-  arGlasses.style.removeProperty("--ar-glasses-width");
 }
 
 function normalizedHeartRate(value) {
@@ -251,17 +184,61 @@ async function confirmQuickHeartRatePreset() {
   return Number.isFinite(expected) && active === expected;
 }
 
+async function acquireSharedVideoStream() {
+  if (!navigator.mediaDevices?.getUserMedia) {
+    throw new Error("This browser cannot open the camera for Heart Check.");
+  }
+  const stream = await navigator.mediaDevices.getUserMedia({
+    video: {
+      facingMode: { ideal: "user" },
+      width: { ideal: 1280 },
+      height: { ideal: 720 },
+    },
+    audio: false,
+  });
+  const videoTracks = stream.getVideoTracks();
+  const audioTracks = stream.getAudioTracks();
+  if (videoTracks.length !== 1 || audioTracks.length !== 0) {
+    stream.getTracks().forEach((track) => track.stop());
+    throw new Error("Heart Check requires one video-only camera stream.");
+  }
+  stage.dataset.cameraStreams = "1";
+  stage.dataset.cameraVideoTracks = "1";
+  stage.dataset.cameraAudioTracks = "0";
+  return stream;
+}
+
+function stopSharedVideoStream() {
+  const stream = sharedCameraStream;
+  sharedCameraStream = null;
+  if (!stream) return;
+  stream.getTracks().forEach((track) => {
+    if (track.readyState !== "ended") track.stop();
+  });
+}
+
 async function releaseShen() {
+  cameraLifecycle += 1;
   const active = shenaiSDK;
+  const activeDeepAR = deepARSession;
   shenaiSDK = null;
+  deepARSession = null;
   stopLiveHeartRateMonitor();
-  stopArGlasses();
+  deepARPreview.hidden = true;
+  deepARPreview.setAttribute("aria-hidden", "true");
+  delete stage.dataset.deeparReady;
   transientMeasurementId = null;
+  try {
+    await activeDeepAR?.cleanup?.();
+  } catch {
+    // Camera release remains authoritative if the display-only overlay fails.
+  }
   try {
     active?.deinitialize?.();
   } catch {
     // Page navigation still releases the browser camera and runtime.
   }
+  stopSharedVideoStream();
 }
 
 async function finishAndContinue() {
@@ -337,12 +314,18 @@ function initializeWithToken(token) {
         }
       },
       onCameraError() {
+        void releaseShen();
         showStatus("Camera access is needed for this optional Heart Check.", { allowContinue: true });
       },
     };
 
     shenaiSDK.initialize(token, transientMeasurementId, settings, async (result) => {
       if (result === InitializationResult.OK) {
+        if (typeof shenaiSDK?.setMediaStream !== "function" || !sharedCameraStream) {
+          reject(new Error("The shared Heart Check camera stream is unavailable."));
+          return;
+        }
+        shenaiSDK.setMediaStream(sharedCameraStream, true);
         const quickHrConfirmed = await confirmQuickHeartRatePreset();
         stage.dataset.shenMeasurementPreset = quickHrConfirmed ? "quick-hr-mode" : "unexpected";
         if (!quickHrConfirmed) {
@@ -355,7 +338,6 @@ function initializeWithToken(token) {
         stage.dataset.shenBranding = shenaiSDK.getHideShenaiLogo?.() === true
           ? "hidden"
           : "sdk-controlled";
-        showMeasurementInterface();
         resolve();
         return;
       }
@@ -367,6 +349,9 @@ function initializeWithToken(token) {
 async function beginShenMeasurement() {
   if (isStarting) return;
   isStarting = true;
+  const lifecycle = cameraLifecycle + 1;
+  cameraLifecycle = lifecycle;
+  let pendingDeepAR = null;
   acceptButton.disabled = true;
   skipButton.disabled = true;
   hideOffer();
@@ -377,7 +362,13 @@ async function beginShenMeasurement() {
 
   try {
     transientMeasurementId = createTransientMeasurementId();
+    sharedCameraStream = await acquireSharedVideoStream();
     const tokenPromise = requestShortTermToken();
+    pendingDeepAR = createDeepARBrightGlasses({
+      previewElement: deepARPreviewElement,
+      videoElement: deepARVideoElement,
+      stream: sharedCameraStream,
+    }).catch(() => null);
     shenaiSDK = await CreateShenaiSDK({
       enableErrorReporting: false,
       enablePreloadDisplay: false,
@@ -386,7 +377,20 @@ async function beginShenMeasurement() {
     });
     const token = await tokenPromise;
     await initializeWithToken(token);
+    const initializedDeepAR = await pendingDeepAR;
+    pendingDeepAR = null;
+    if (lifecycle !== cameraLifecycle) {
+      await initializedDeepAR?.cleanup?.();
+      return;
+    }
+    deepARSession = initializedDeepAR;
+    stage.dataset.deeparEffect = deepARSession
+      ? "official-bright-glasses"
+      : "unavailable";
+    showMeasurementInterface();
   } catch (error) {
+    const unusedDeepAR = await pendingDeepAR?.catch?.(() => null);
+    await unusedDeepAR?.cleanup?.();
     await releaseShen();
     stage.hidden = true;
     showStatus(error?.message || "The heart-rate check is unavailable right now.", { allowContinue: true });
@@ -397,7 +401,6 @@ async function beginShenMeasurement() {
 
 acceptButton.addEventListener("click", beginShenMeasurement);
 skipButton.addEventListener("click", () => window.location.assign(experienceUrl()));
-stage.addEventListener("click", startArGlasses);
 window.addEventListener("pagehide", releaseShen);
 
 clearLegacyHeartData();

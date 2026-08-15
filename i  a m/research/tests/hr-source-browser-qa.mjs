@@ -13,6 +13,7 @@ const testDirectory = dirname(fileURLToPath(import.meta.url));
 const researchDirectory = resolve(testDirectory, "..");
 const iamDirectory = resolve(researchDirectory, "..");
 const sdkDirectory = resolve(researchDirectory, "vendor", "shenai-sdk");
+const deepARDirectory = resolve(researchDirectory, "vendor", "deepar-5.6.22");
 const chromiumExecutable = "/Users/benkorbel/Library/Caches/ms-playwright/chromium_headless_shell-1234/chrome-headless-shell-mac-arm64/chrome-headless-shell";
 const proofOrigin = "https://staging.universalmind.tv";
 const researchUrl = `${proofOrigin}/vogue/iam/research.php?offer=heart-rate&selection_source=checkin`;
@@ -25,7 +26,7 @@ const browserArgs = [
   "--use-fake-device-for-media-stream",
   "--use-fake-ui-for-media-stream",
   `--use-file-for-fake-video-capture=${fakeCameraPath}`,
-  "--autoplay-policy=user-gesture-required",
+  "--autoplay-policy=no-user-gesture-required",
 ];
 
 let context = null;
@@ -78,6 +79,9 @@ try {
     tokenPosts: 0,
     tokenStatus: null,
     sdkRequests: 0,
+    deepARLicensePosts: 0,
+    deepARModuleRequests: 0,
+    deepAREffectRequests: 0,
     wasmRequests: 0,
     workerResponses: 0,
     workerHeaderFailures: 0,
@@ -109,7 +113,10 @@ try {
   acceptPage.on("request", (request) => {
     const url = request.url();
     if (url.endsWith("/api/shen-token.php") && request.method() === "POST") acceptEvidence.tokenPosts += 1;
+    if (url.endsWith("/api/deepar-license.php") && request.method() === "POST") acceptEvidence.deepARLicensePosts += 1;
     if (url.includes("/research/vendor/shenai-sdk/")) acceptEvidence.sdkRequests += 1;
+    if (url.endsWith("/research/vendor/deepar-5.6.22/js/deepar.esm.js")) acceptEvidence.deepARModuleRequests += 1;
+    if (url.endsWith("/research/effects/bright-glasses/bright-glasses.deepar")) acceptEvidence.deepAREffectRequests += 1;
   });
   acceptPage.on("requestfailed", (request) => {
     const url = request.url();
@@ -173,6 +180,8 @@ try {
     await acceptPage.locator("[data-shen-stage]").getAttribute("data-shen-measurement-preset"),
     "quick-hr-mode",
   );
+  assert.equal(await acceptPage.locator("[data-shen-stage]").getAttribute("data-deepar-ready"), "true");
+  assert.equal(await acceptPage.locator("[data-shen-stage]").getAttribute("data-deepar-effect"), "official-bright-glasses");
   const sdkBrandingControl = await acceptPage.locator("[data-shen-stage]").getAttribute("data-shen-branding");
   assert.ok(["hidden", "sdk-controlled"].includes(sdkBrandingControl));
   assert.equal(await acceptPage.locator("[data-heart-rate-live]").isHidden(), true);
@@ -195,7 +204,7 @@ try {
   const stageBox = await acceptPage.locator("[data-shen-stage]").boundingBox();
   assert.ok(stageBox);
   await acceptPage.mouse.click(stageBox.x + (stageBox.width / 2), stageBox.y + (stageBox.height * 0.89));
-  await acceptPage.locator("[data-heart-rate-ar-glasses]").waitFor({ state: "visible", timeout: 4_000 });
+  await acceptPage.locator("[data-heart-rate-deepar]").waitFor({ state: "visible", timeout: 4_000 });
   await acceptPage.waitForFunction(() => (
     (window.__hrQaMediaTracks?.length || 0) > 0
       || (window.__hrQaMediaErrors?.length || 0) > 0
@@ -206,31 +215,29 @@ try {
     tracks: window.__hrQaMediaTracks || [],
     errors: window.__hrQaMediaErrors || [],
   }));
-  assert.ok(cameraEvidence.calls.length >= 1);
+  assert.equal(cameraEvidence.calls.length, 1);
   assert.deepEqual(cameraEvidence.errors, [], JSON.stringify(cameraEvidence));
   assert.ok(cameraEvidence.calls.every((constraints) => constraints?.audio !== true));
   assert.ok(cameraEvidence.tracks.filter(({ kind }) => kind === "video").length >= 1);
   assert.equal(cameraEvidence.tracks.filter(({ kind }) => kind === "audio").length, 0);
   await acceptPage.waitForTimeout(1_000);
-  const arGlassesEvidence = await acceptPage.locator("[data-heart-rate-ar-glasses]").evaluate((element) => {
+  const arGlassesEvidence = await acceptPage.locator("[data-heart-rate-deepar]").evaluate((element) => {
     const planeRect = element.getBoundingClientRect();
-    const glassesRect = element.querySelector("svg").getBoundingClientRect();
+    const canvasRect = element.querySelector("canvas").getBoundingClientRect();
     const styles = getComputedStyle(element);
     return {
       visible: !element.hidden,
-      tracking: element.dataset.tracking,
       pointerEvents: styles.pointerEvents,
       planeWidth: Math.round(planeRect.width),
-      glassesWidth: Math.round(glassesRect.width),
-      ledCount: element.querySelectorAll(".shen-heart-rate-ar-glasses__lights circle").length,
+      planeHeight: Math.round(planeRect.height),
+      canvasWidth: Math.round(canvasRect.width),
+      canvasHeight: Math.round(canvasRect.height),
     };
   });
   assert.equal(arGlassesEvidence.visible, true);
-  assert.ok(["guide", "face"].includes(arGlassesEvidence.tracking));
   assert.equal(arGlassesEvidence.pointerEvents, "none");
-  assert.ok(arGlassesEvidence.glassesWidth > stageGeometry.stageWidth * 0.75);
-  assert.ok(arGlassesEvidence.glassesWidth < arGlassesEvidence.planeWidth);
-  assert.equal(arGlassesEvidence.ledCount, 20);
+  assert.equal(arGlassesEvidence.canvasWidth, arGlassesEvidence.planeWidth);
+  assert.equal(arGlassesEvidence.canvasHeight, arGlassesEvidence.planeHeight);
   await acceptPage.screenshot({ path: join(outputDirectory, "heart-check-camera.png"), fullPage: true });
   await acceptPage.evaluate(() => {
     const live = document.querySelector("[data-heart-rate-live]");
@@ -286,6 +293,9 @@ try {
   assert.doesNotMatch(JSON.stringify(handoffResult.result), /"heart_rate_bpm"|"bpm"/i);
   assert.equal(acceptEvidence.tokenPosts, 1);
   assert.equal(acceptEvidence.tokenStatus, 200);
+  assert.equal(acceptEvidence.deepARLicensePosts, 1);
+  assert.equal(acceptEvidence.deepARModuleRequests, 1);
+  assert.equal(acceptEvidence.deepAREffectRequests, 1);
   assert.ok(acceptEvidence.sdkRequests >= 3);
   assert.equal(acceptEvidence.wasmRequests, 1);
   assert.ok(acceptEvidence.workerResponses >= 1);
@@ -296,6 +306,11 @@ try {
 
   const sdkIntegrity = await readSdkIntegrity();
   assert.equal(sdkIntegrity.version, "3.1.9");
+  const deepARIntegrity = await readDeepARIntegrity();
+  assert.equal(deepARIntegrity.version, "5.6.22");
+  assert.equal(deepARIntegrity.moduleSha256, "bcd66c611d8c73f71ce3d7e0c93fb535972c24d72eb9ec4905b48820278eeb32");
+  assert.equal(deepARIntegrity.wasmSha256, "f1312992c2d37f2428e6760ab21b77f7cc032d2b63133ca55de8e1aa88afe261");
+  assert.equal(deepARIntegrity.effectSha256, "c24e7216d54cb9ecdb5557d808bd6b331a72d5932b3b25dbeadf098cb72728dd");
 
   await acceptPage.close();
   await context.close();
@@ -315,6 +330,10 @@ try {
       sdkVersion: sdkIntegrity.version,
       sdkEntrySha256: sdkIntegrity.entrySha256,
       sdkWasmSha256: sdkIntegrity.wasmSha256,
+      deepARSdkVersion: deepARIntegrity.version,
+      deepARModuleSha256: deepARIntegrity.moduleSha256,
+      deepARWasmSha256: deepARIntegrity.wasmSha256,
+      brightGlassesEffectSha256: deepARIntegrity.effectSha256,
       sdkRequests: acceptEvidence.sdkRequests,
       wasmRequests: acceptEvidence.wasmRequests,
       workerResponses: acceptEvidence.workerResponses,
@@ -326,7 +345,7 @@ try {
       visualizationInitialized: "face-map-and-blood-flow",
       measurementPreset: "quick-hr-mode",
       measurementDurationSeconds: 10,
-      fixedArGlasses: arGlassesEvidence,
+      genuineBrightGlassesPipeline: arGlassesEvidence,
       liveHeartRateDisplay: "ephemeral 4-second metric when available",
       liveBpmPresentationFixture: 69,
       finalHeartRateDisplay: "ephemeral 2.2-second hold when available",
@@ -366,6 +385,7 @@ async function installSafetyInstrumentation(browserContext) {
   await browserContext.addInitScript(() => {
     window.__hrQaMediaCalls = [];
     window.__hrQaMediaTracks = [];
+    window.__hrQaMediaTrackEnds = 0;
     window.__hrQaMediaErrors = [];
     const originalGetUserMedia = navigator.mediaDevices?.getUserMedia?.bind(navigator.mediaDevices);
     if (originalGetUserMedia) {
@@ -378,6 +398,9 @@ async function installSafetyInstrumentation(browserContext) {
             label: track.label ? "synthetic-device" : "",
             muted: track.muted,
           })));
+          stream.getTracks().forEach((track) => track.addEventListener("ended", () => {
+            window.__hrQaMediaTrackEnds += 1;
+          }, { once: true }));
           return stream;
         } catch (error) {
           window.__hrQaMediaErrors.push({ name: error?.name || "Error", message: error?.message || "" });
@@ -434,10 +457,36 @@ function createLocalCandidateRouter(handoffEvidence) {
       return;
     }
 
+    if (path === "/vogue/iam/api/deepar-license.php" && request.method() === "POST") {
+      await route.fulfill({
+        status: 200,
+        headers: pageHeaders(),
+        contentType: "application/json; charset=utf-8",
+        body: JSON.stringify({ license_key: "qa-staging-domain-bound-key" }),
+      });
+      return;
+    }
+
+    if (path === "/vogue/iam/research/vendor/deepar-5.6.22/js/deepar.esm.js") {
+      await route.fulfill({
+        status: 200,
+        headers: pageHeaders(),
+        contentType: "text/javascript; charset=utf-8",
+        body: mockDeepARModule(),
+      });
+      return;
+    }
+
+    if (path === "/vogue/iam/research/effects/bright-glasses/bright-glasses.deepar") {
+      await fulfillLocalFile(route, resolve(researchDirectory, "effects", "bright-glasses", "bright-glasses.deepar"), path);
+      return;
+    }
+
     const localFiles = new Map([
       ["/vogue/iam/styles.css", resolve(iamDirectory, "styles.css")],
       ["/vogue/iam/research/shen-heart-rate.css", resolve(researchDirectory, "shen-heart-rate.css")],
       ["/vogue/iam/research/shen-heart-rate.js", resolve(researchDirectory, "shen-heart-rate.js")],
+      ["/vogue/iam/research/deepar-bright-glasses.js", resolve(researchDirectory, "deepar-bright-glasses.js")],
       ["/vogue/iam/research/shen-heart-recommendation.js", resolve(researchDirectory, "shen-heart-recommendation.js")],
       ["/vogue/iam/adaptive-sound/session-v1.js", resolve(iamDirectory, "adaptive-sound", "session-v1.js")],
       ["/vogue/iam/adaptive-sound/profiles-v1.js", resolve(iamDirectory, "adaptive-sound", "profiles-v1.js")],
@@ -471,6 +520,34 @@ function createLocalCandidateRouter(handoffEvidence) {
 
     await route.continue();
   };
+}
+
+function mockDeepARModule() {
+  return `
+export async function initialize(options) {
+  if (options.additionalOptions?.cameraConfig?.disableDefaultCamera !== true) {
+    throw new Error("DeepAR default camera must remain disabled");
+  }
+  const effect = await fetch(options.effect);
+  if (!effect.ok) throw new Error("Bright Glasses effect unavailable");
+  await effect.arrayBuffer();
+  const canvas = document.createElement("canvas");
+  canvas.width = 760;
+  canvas.height = 578;
+  options.previewElement.append(canvas);
+  return {
+    muteSound() {},
+    setFps() {},
+    setVideoElement(videoElement) {
+      if (videoElement.srcObject?.getVideoTracks?.().length !== 1
+        || videoElement.srcObject?.getAudioTracks?.().length !== 0) {
+        throw new Error("DeepAR did not receive the one video-only shared stream");
+      }
+    },
+    stopVideo() {},
+    shutdown() {},
+  };
+}`;
 }
 
 async function fulfillLocalFile(route, filePath, urlPath, additionalHeaders = {}) {
@@ -525,9 +602,24 @@ async function readSdkIntegrity() {
     readFile(resolve(sdkDirectory, "shenai_sdk.wasm")),
   ]);
   return {
-    version: version.trim(),
+    version: version.match(/v?(\d+\.\d+\.\d+)/)?.[1] || version.trim(),
     entrySha256: createHash("sha256").update(entry).digest("hex"),
     wasmSha256: createHash("sha256").update(wasm).digest("hex"),
+  };
+}
+
+async function readDeepARIntegrity() {
+  const [version, module, wasm, effect] = await Promise.all([
+    readFile(resolve(deepARDirectory, "VERSION.txt"), "utf8"),
+    readFile(resolve(deepARDirectory, "js", "deepar.esm.js")),
+    readFile(resolve(deepARDirectory, "wasm", "deepar.wasm")),
+    readFile(resolve(researchDirectory, "effects", "bright-glasses", "bright-glasses.deepar")),
+  ]);
+  return {
+    version: version.match(/v?(\d+\.\d+\.\d+)/)?.[1] || version.trim(),
+    moduleSha256: createHash("sha256").update(module).digest("hex"),
+    wasmSha256: createHash("sha256").update(wasm).digest("hex"),
+    effectSha256: createHash("sha256").update(effect).digest("hex"),
   };
 }
 
