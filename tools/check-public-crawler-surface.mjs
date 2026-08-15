@@ -17,6 +17,7 @@ const publicPaths = [
   "/vogue/iam/vogue-self-report.html",
   "/vogue/iam/about.html",
   "/vogue/iam/science.html",
+  "/vogue/iam/sound-prototype-research.html",
   "/vogue/iam/our-team.html",
   "/vogue/iam/technology-citizen-needs.html",
   "/vogue/iam/technology-inference-engine.html",
@@ -85,6 +86,7 @@ const metadataPages = {
   "i  a m/vogue-self-report.html": "https://universalmind.tv/vogue/iam/vogue-self-report.html",
   "i  a m/about.html": "https://universalmind.tv/vogue/iam/about.html",
   "i  a m/science.html": "https://universalmind.tv/vogue/iam/science.html",
+  "i  a m/sound-prototype-research.html": "https://universalmind.tv/vogue/iam/sound-prototype-research.html",
   "i  a m/our-team.html": "https://universalmind.tv/vogue/iam/our-team.html",
   "i  a m/technology-citizen-needs.html": "https://universalmind.tv/vogue/iam/technology-citizen-needs.html",
   "i  a m/technology-inference-engine.html": "https://universalmind.tv/vogue/iam/technology-inference-engine.html",
@@ -103,7 +105,7 @@ for (const [relativePath, canonicalUrl] of Object.entries(metadataPages)) {
   assert.match(html, /<meta name="description" content="[^"]+">/, `${relativePath} must have a description`);
 }
 
-for (const relativePath of ["i  a m/induction.html", "i  a m/science.html"]) {
+for (const relativePath of ["i  a m/induction.html", "i  a m/science.html", "i  a m/sound-prototype-research.html"]) {
   const html = read(relativePath);
   const jsonLdBlocks = [...html.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)];
   assert.ok(jsonLdBlocks.length > 0, `${relativePath} must include JSON-LD`);

@@ -28,19 +28,29 @@
     const citationSlot = study.doi
       ? `<p class="hero-live-citations" data-doi="${escapeHtml(study.doi)}">Live citation count available on open</p>`
       : "";
+    const subtitle = study.subtitle
+      ? `<p class="hero-study-subtitle">${escapeHtml(study.subtitle)}</p>`
+      : "";
+    const result = study.result
+      ? `<p class="hero-study-result">${escapeHtml(study.result)}</p>`
+      : "";
+    const sourceLabel = study.sourceLabel || "Open peer-reviewed source ↗";
+    const articleClass = study.internal ? "hero-study hero-study--internal" : "hero-study";
 
     return `
-      <article class="hero-study">
+      <article class="${articleClass}">
         <div class="hero-study-meta">
           <span>${escapeHtml(study.type)}</span>
           <span>${escapeHtml(study.year)}</span>
           <span>${escapeHtml(study.journal)}</span>
         </div>
         <h4>${escapeHtml(study.title)}</h4>
+        ${subtitle}
+        ${result}
         <p>${escapeHtml(study.finding)}</p>
         <p class="hero-study-limit"><strong>Limit:</strong> ${escapeHtml(study.limitation)}</p>
         ${citationSlot}
-        <a href="${escapeHtml(study.url)}" target="_blank" rel="noopener noreferrer">Open peer-reviewed source ↗</a>
+        <a href="${escapeHtml(study.url)}" target="_blank" rel="noopener noreferrer">${escapeHtml(sourceLabel)}</a>
       </article>
     `;
   }
@@ -89,7 +99,7 @@
             </div>
 
             <div class="hero-studies">
-              <span class="hero-studies-label">Curated hero evidence / independently refreshable</span>
+              <span class="hero-studies-label">${escapeHtml(layer.heroStudiesLabel || "Curated hero evidence / independently refreshable")}</span>
               <div class="hero-study-list">
                 ${layer.heroStudies.map(heroStudyMarkup).join("")}
               </div>

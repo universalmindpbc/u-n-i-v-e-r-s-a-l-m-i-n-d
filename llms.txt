@@ -18,6 +18,7 @@ Important context:
 - [Induction](https://universalmind.tv/vogue/iam/induction.html): The invitation, intended audience, privacy principles and role of trusted cultural spaces.
 - [About I AM](https://universalmind.tv/vogue/iam/about.html): The complete public briefing on the problem, solution, experience, access model and research direction.
 - [Science](https://universalmind.tv/vogue/iam/science.html): The live evidence record, evidence grades, research limitations and clinical boundaries.
+- [I AM Sound prototype record](https://universalmind.tv/vogue/iam/sound-prototype-research.html): A de-identified, unpublished n=1 internal observation with all three recorded biometric sessions, the complete fixed intervention and full limitations.
 - [Our Team](https://universalmind.tv/vogue/iam/our-team.html): The people and experience behind Universal Mind.
 
 ## I AM experience

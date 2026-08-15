@@ -548,6 +548,7 @@ a {
 .research-row-button {
   width: 100%;
   min-height: 160px;
+  overflow: hidden;
   padding: 0;
   border: 0;
   background: transparent;
@@ -806,6 +807,28 @@ a {
   line-height: 1.18;
 }
 
+.hero-study-subtitle {
+  color: #686863 !important;
+  font-family: var(--science-mono);
+  font-size: 9px !important;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.hero-study-result {
+  padding: 15px 0;
+  border-top: 1px solid currentColor;
+  border-bottom: 1px solid currentColor;
+  color: inherit !important;
+  font-family: var(--science-mono);
+  font-size: clamp(18px, 1.55vw, 29px) !important;
+  font-weight: 700;
+  letter-spacing: -0.04em;
+  line-height: 1.02 !important;
+  text-transform: uppercase;
+}
+
 .hero-study p {
   margin: 0;
   color: #4f4f4b;
@@ -832,6 +855,30 @@ a {
 
 .hero-study a:hover {
   border-color: transparent;
+}
+
+.hero-study--internal {
+  background: var(--science-black);
+  color: #fff;
+}
+
+.hero-study--internal .hero-study-meta,
+.hero-study--internal .hero-study-subtitle,
+.hero-study--internal > p:not(.hero-study-result):not(.hero-study-limit) {
+  color: rgba(255, 255, 255, 0.7) !important;
+}
+
+.hero-study--internal .hero-study-result {
+  color: var(--science-signal) !important;
+}
+
+.hero-study--internal .hero-study-limit {
+  color: rgba(255, 255, 255, 0.52);
+}
+
+.hero-study--internal a {
+  border-color: var(--science-signal);
+  color: var(--science-signal);
 }
 
 .hero-live-citations {

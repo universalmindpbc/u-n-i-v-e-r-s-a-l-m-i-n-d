@@ -51,6 +51,7 @@ Allow: /vogue/iam/index.html
 Allow: /vogue/iam/vogue-self-report.html
 Allow: /vogue/iam/about.html
 Allow: /vogue/iam/science.html
+Allow: /vogue/iam/sound-prototype-research.html
 Allow: /vogue/iam/our-team.html
 Allow: /vogue/iam/technology-citizen-needs.html
 Allow: /vogue/iam/technology-inference-engine.html
@@ -64,6 +65,7 @@ Allow: /vogue/iam/realtime-voice-assistant.css
 Allow: /vogue/iam/vogue-self-report.css
 Allow: /vogue/iam/about.css
 Allow: /vogue/iam/science.css
+Allow: /vogue/iam/sound-prototype-research.css
 Allow: /vogue/iam/our-team-concept.css
 Allow: /vogue/iam/technology-citizen-needs.css
 Allow: /vogue/iam/technology-inference-engine.css
