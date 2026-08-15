@@ -42,19 +42,39 @@
 }
 
 .shen-heart-rate-stage[data-deepar-ready="true"][data-state="measurement"] #mxcanvas {
-  opacity: 0.32;
-  mix-blend-mode: screen;
+  opacity: 1;
+  mix-blend-mode: normal;
+  pointer-events: auto;
 }
 
 .shen-heart-rate-deepar {
+  --deepar-eye-x: 50%;
+  --deepar-eye-y: 43%;
+  --deepar-eye-radius-x: 40%;
+  --deepar-eye-radius-y: 18%;
   position: absolute;
   inset: 0 0 auto;
-  z-index: 1;
+  z-index: 3;
   width: 100%;
   height: 76%;
   overflow: hidden;
-  background: #101010;
   pointer-events: none;
+  -webkit-mask:
+    radial-gradient(
+      ellipse var(--deepar-eye-radius-x) var(--deepar-eye-radius-y) at var(--deepar-eye-x) var(--deepar-eye-y),
+      #000 0 78%,
+      transparent 100%
+    ),
+    radial-gradient(ellipse 28% 6.5% at 50% 22%, #000 0 70%, transparent 100%);
+  -webkit-mask-composite: source-over;
+  mask:
+    radial-gradient(
+      ellipse var(--deepar-eye-radius-x) var(--deepar-eye-radius-y) at var(--deepar-eye-x) var(--deepar-eye-y),
+      #000 0 78%,
+      transparent 100%
+    ),
+    radial-gradient(ellipse 28% 6.5% at 50% 22%, #000 0 70%, transparent 100%);
+  mask-composite: add;
 }
 
 .shen-heart-rate-deepar[hidden] {
@@ -82,7 +102,7 @@
   position: absolute;
   left: 50%;
   bottom: 112px;
-  z-index: 3;
+  z-index: 4;
   display: flex;
   align-items: center;
   gap: 7px;
@@ -124,7 +144,7 @@
 .shen-heart-rate-result {
   position: absolute;
   inset: 0;
-  z-index: 4;
+  z-index: 5;
   display: grid;
   place-content: center;
   justify-items: center;
@@ -162,7 +182,7 @@
 .shen-heart-rate-loader {
   position: absolute;
   inset: 0;
-  z-index: 2;
+  z-index: 6;
   display: grid;
   place-content: center;
   justify-items: center;
@@ -242,9 +262,27 @@
   padding: 9px 13px;
 }
 
-.shen-heart-rate-offer .shen-heart-rate-disclaimer {
-  color: rgba(221, 234, 230, 0.62);
-  font-size: 10px;
+.shen-heart-rate-offer .shen-heart-rate-offer__privacy {
+  color: rgba(221, 234, 230, 0.72);
+  font-size: 11.5px;
+}
+
+.shen-heart-rate-offer .induction-permission__actions .shen-heart-rate-offer__primary {
+  min-height: 46px;
+  min-width: 154px;
+  padding: 11px 16px;
+  font-size: 14.5px;
+  font-weight: 700;
+}
+
+.shen-heart-rate-offer .induction-permission__actions .shen-heart-rate-offer__secondary {
+  min-height: 36px;
+  align-self: center;
+  border-color: transparent;
+  background: transparent;
+  font-size: 10.5px;
+  font-weight: 400;
+  opacity: 0.8;
 }
 
 .shen-heart-rate-status {

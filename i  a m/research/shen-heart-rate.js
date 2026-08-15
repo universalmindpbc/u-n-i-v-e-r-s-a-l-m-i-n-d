@@ -5,7 +5,7 @@ import CreateShenaiSDK, {
   PrecisionMode,
   UiVersion,
 } from "./vendor/shenai-sdk/index.mjs";
-import { createDeepARBrightGlasses } from "./deepar-bright-glasses.js?v=deepar-bright-glasses-js-8ec4a6ea1ea1";
+import { createDeepARBrightGlasses } from "./deepar-bright-glasses.js?v=deepar-bright-glasses-js-24b4add88425";
 import { handoffHeartCheckToHomepage } from "./shen-heart-recommendation.js?v=e61dcdb0f0e0";
 
 const offer = document.querySelector("[data-heart-rate-offer]");
@@ -42,6 +42,12 @@ let deepARSession = null;
 let cameraLifecycle = 0;
 
 const FINAL_READING_HOLD_MS = 2200;
+const DEEPAR_FALLBACK_REGION = Object.freeze({
+  centerX: 0.5,
+  centerY: 0.43,
+  radiusX: 0.4,
+  radiusY: 0.18,
+});
 
 function revealExistingBrand() {
   document.querySelector(".brand-name")?.classList.add("is-visible");
@@ -114,9 +120,20 @@ function showMeasurementInterface() {
   canvas.removeAttribute("aria-hidden");
   const hasDeepAR = Boolean(deepARSession);
   stage.dataset.deeparReady = String(hasDeepAR);
+  stage.dataset.deeparComposite = hasDeepAR ? "tracked-effect-regions-only" : "unavailable";
   deepARPreview.hidden = !hasDeepAR;
   deepARPreview.setAttribute("aria-hidden", String(!hasDeepAR));
   startLiveHeartRateMonitor();
+}
+
+function setDeepARFaceRegion(region) {
+  const activeRegion = region || DEEPAR_FALLBACK_REGION;
+  const percent = (value) => `${(Number(value) * 100).toFixed(3)}%`;
+  deepARPreview.style.setProperty("--deepar-eye-x", percent(activeRegion.centerX));
+  deepARPreview.style.setProperty("--deepar-eye-y", percent(activeRegion.centerY));
+  deepARPreview.style.setProperty("--deepar-eye-radius-x", percent(activeRegion.radiusX));
+  deepARPreview.style.setProperty("--deepar-eye-radius-y", percent(activeRegion.radiusY));
+  stage.dataset.deeparFaceRegion = region ? "tracked" : "centred-fallback";
 }
 
 function normalizedHeartRate(value) {
@@ -228,6 +245,8 @@ async function releaseShen() {
   deepARPreview.hidden = true;
   deepARPreview.setAttribute("aria-hidden", "true");
   delete stage.dataset.deeparReady;
+  delete stage.dataset.deeparComposite;
+  delete stage.dataset.deeparFaceRegion;
   transientMeasurementId = null;
   const shenOwnedStream = shenOwnsSharedCameraStream;
   shenOwnsSharedCameraStream = false;
@@ -375,6 +394,7 @@ async function beginShenMeasurement() {
       previewElement: deepARPreviewElement,
       videoElement: deepARVideoElement,
       stream: sharedCameraStream,
+      onFaceRegion: setDeepARFaceRegion,
     }).catch(() => null);
     shenaiSDK = await CreateShenaiSDK({
       enableErrorReporting: false,
@@ -394,6 +414,7 @@ async function beginShenMeasurement() {
     stage.dataset.deeparEffect = deepARSession
       ? "official-bright-glasses"
       : "unavailable";
+    if (deepARSession && !stage.dataset.deeparFaceRegion) setDeepARFaceRegion(null);
     showMeasurementInterface();
   } catch (error) {
     const unusedDeepAR = await pendingDeepAR?.catch?.(() => null);

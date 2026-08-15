@@ -182,6 +182,7 @@ try {
   );
   assert.equal(await acceptPage.locator("[data-shen-stage]").getAttribute("data-deepar-ready"), "true");
   assert.equal(await acceptPage.locator("[data-shen-stage]").getAttribute("data-deepar-effect"), "official-bright-glasses");
+  assert.equal(await acceptPage.locator("[data-shen-stage]").getAttribute("data-deepar-composite"), "tracked-effect-regions-only");
   const sdkBrandingControl = await acceptPage.locator("[data-shen-stage]").getAttribute("data-shen-branding");
   assert.ok(["hidden", "sdk-controlled"].includes(sdkBrandingControl));
   assert.equal(await acceptPage.locator("[data-heart-rate-live]").isHidden(), true);
@@ -199,11 +200,8 @@ try {
   });
   assert.ok(stageGeometry.stageWidth < stageGeometry.canvasWidth);
   assert.ok(stageGeometry.stageWidth / stageGeometry.stageHeight < 0.65);
-  await acceptPage.screenshot({ path: join(outputDirectory, "heart-check-shen-ui.png"), fullPage: true });
-
   const stageBox = await acceptPage.locator("[data-shen-stage]").boundingBox();
   assert.ok(stageBox);
-  await acceptPage.mouse.click(stageBox.x + (stageBox.width / 2), stageBox.y + (stageBox.height * 0.89));
   await acceptPage.locator("[data-heart-rate-deepar]").waitFor({ state: "visible", timeout: 4_000 });
   await acceptPage.waitForFunction(() => (
     (window.__hrQaMediaTracks?.length || 0) > 0
@@ -225,19 +223,71 @@ try {
     const planeRect = element.getBoundingClientRect();
     const canvasRect = element.querySelector("canvas").getBoundingClientRect();
     const styles = getComputedStyle(element);
+    const shenStyles = getComputedStyle(document.querySelector("#mxcanvas"));
     return {
       visible: !element.hidden,
       pointerEvents: styles.pointerEvents,
+      zIndex: styles.zIndex,
+      maskImage: styles.webkitMaskImage || styles.maskImage,
       planeWidth: Math.round(planeRect.width),
       planeHeight: Math.round(planeRect.height),
       canvasWidth: Math.round(canvasRect.width),
       canvasHeight: Math.round(canvasRect.height),
+      shenOpacity: shenStyles.opacity,
+      shenBlendMode: shenStyles.mixBlendMode,
+      shenPointerEvents: shenStyles.pointerEvents,
+      shenZIndex: shenStyles.zIndex,
+      faceRegion: document.querySelector("[data-shen-stage]").dataset.deeparFaceRegion,
     };
   });
   assert.equal(arGlassesEvidence.visible, true);
   assert.equal(arGlassesEvidence.pointerEvents, "none");
+  assert.equal(arGlassesEvidence.zIndex, "3");
+  assert.match(arGlassesEvidence.maskImage, /radial-gradient/i);
+  assert.equal(arGlassesEvidence.shenOpacity, "1");
+  assert.equal(arGlassesEvidence.shenBlendMode, "normal");
+  assert.equal(arGlassesEvidence.shenPointerEvents, "auto");
+  assert.equal(arGlassesEvidence.shenZIndex, "2");
+  assert.ok(["tracked", "centred-fallback"].includes(arGlassesEvidence.faceRegion));
   assert.equal(arGlassesEvidence.canvasWidth, arGlassesEvidence.planeWidth);
   assert.equal(arGlassesEvidence.canvasHeight, arGlassesEvidence.planeHeight);
+  const startPoint = {
+    x: stageBox.x + (stageBox.width / 2),
+    y: stageBox.y + (stageBox.height * 0.70),
+  };
+  const startHitTarget = await acceptPage.evaluate(({ x, y }) => {
+    const target = document.elementFromPoint(x, y);
+    return { id: target?.id || "", tagName: target?.tagName || "" };
+  }, startPoint);
+  assert.deepEqual(startHitTarget, { id: "mxcanvas", tagName: "CANVAS" });
+  await acceptPage.evaluate(() => {
+    window.__hrQaShenCanvasClicks = 0;
+    document.querySelector("#mxcanvas").addEventListener("click", () => {
+      window.__hrQaShenCanvasClicks += 1;
+    });
+  });
+  await acceptPage.screenshot({ path: join(outputDirectory, "heart-check-shen-ui-desktop.png"), fullPage: true });
+  await acceptPage.setViewportSize({ width: 390, height: 844 });
+  await acceptPage.waitForTimeout(250);
+  const mobileStage = await acceptPage.locator("[data-shen-stage]").boundingBox();
+  assert.ok(mobileStage);
+  const mobileHitTarget = await acceptPage.evaluate(({ x, y }) => {
+    const target = document.elementFromPoint(x, y);
+    return { id: target?.id || "", tagName: target?.tagName || "" };
+  }, {
+    x: mobileStage.x + (mobileStage.width / 2),
+    y: mobileStage.y + (mobileStage.height * 0.70),
+  });
+  assert.deepEqual(mobileHitTarget, { id: "mxcanvas", tagName: "CANVAS" });
+  await acceptPage.screenshot({ path: join(outputDirectory, "heart-check-shen-ui-mobile.png"), fullPage: true });
+  await acceptPage.setViewportSize({ width: 1440, height: 1040 });
+  await acceptPage.waitForTimeout(250);
+  const restoredStage = await acceptPage.locator("[data-shen-stage]").boundingBox();
+  await acceptPage.mouse.click(
+    restoredStage.x + (restoredStage.width / 2),
+    restoredStage.y + (restoredStage.height * 0.70),
+  );
+  assert.equal(await acceptPage.evaluate(() => window.__hrQaShenCanvasClicks), 1);
   await acceptPage.screenshot({ path: join(outputDirectory, "heart-check-camera.png"), fullPage: true });
   await acceptPage.evaluate(() => {
     const live = document.querySelector("[data-heart-rate-live]");
@@ -322,7 +372,7 @@ try {
     status: "PASS",
     processFlagsVerifiedBeforeNavigation: processProof.length > 0,
     checkIn: "canonical renderer destination present",
-    disclosure: "one Universal Mind consent and wellness disclosure",
+    disclosure: "one concise Universal Mind camera and on-device privacy prompt",
     skip: skipEvidence,
     accept: {
       tokenPosts: acceptEvidence.tokenPosts,
@@ -376,8 +426,26 @@ try {
 async function assertSingleDisclosure(page) {
   const dialog = page.locator('[role="dialog"]');
   assert.equal(await dialog.count(), 1);
-  assert.equal(await dialog.getByRole("heading", { name: "What Colour Is Your Heart?" }).count(), 1);
-  assert.equal(await dialog.getByText("General wellness and research information only.", { exact: false }).count(), 1);
+  assert.equal(await dialog.getByRole("heading", { name: "What colour is your heart?" }).count(), 1);
+  assert.equal(await dialog.getByText("Look into your camera for a brief moment. We will translate your live pulse into a personalized music television ecosystem.", { exact: true }).count(), 1);
+  assert.equal(await dialog.getByText("Your video stream is processed entirely on-device and is never recorded or stored.", { exact: true }).count(), 1);
+  assert.equal(await dialog.getByRole("button", { name: "Scan my pulse" }).count(), 1);
+  assert.equal(await dialog.getByRole("button", { name: "Skip for now" }).count(), 1);
+  assert.equal(await dialog.getByText("General wellness and research information only.", { exact: false }).count(), 0);
+  const hierarchy = await dialog.evaluate((element) => {
+    const primary = getComputedStyle(element.querySelector("[data-heart-rate-accept]"));
+    const secondary = getComputedStyle(element.querySelector("[data-heart-rate-skip]"));
+    const privacy = getComputedStyle(element.querySelector("#heart-rate-privacy em"));
+    return {
+      primarySize: Number.parseFloat(primary.fontSize),
+      primaryWeight: Number(primary.fontWeight),
+      secondarySize: Number.parseFloat(secondary.fontSize),
+      privacyStyle: privacy.fontStyle,
+    };
+  });
+  assert.ok(hierarchy.primarySize > hierarchy.secondarySize, JSON.stringify(hierarchy));
+  assert.ok(hierarchy.primaryWeight >= 700, JSON.stringify(hierarchy));
+  assert.equal(hierarchy.privacyStyle, "italic");
   assert.equal(await page.locator(".shen-heart-rate-wellness").count(), 0);
 }
 

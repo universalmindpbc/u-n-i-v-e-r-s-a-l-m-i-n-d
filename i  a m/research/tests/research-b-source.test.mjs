@@ -27,16 +27,19 @@ test("research check-in renders the canonical page instead of duplicating it", a
 test("research page is the existing I AM scene with one compact native prompt", async () => {
   const page = await read(resolve(iamDirectory, "research.php"));
   const css = await read(resolve(researchDirectory, "shen-heart-rate.css"));
+  const cssToken = (await sha256(resolve(researchDirectory, "shen-heart-rate.css"))).slice(0, 12);
   const controllerToken = (await sha256(resolve(researchDirectory, "shen-heart-rate.js"))).slice(0, 12);
 
   assert.match(page, /href="styles\.css/);
   assert.match(page, /Homepage - Hero Background Video - Chanel 2020 Runway Show\.mp4/);
   assert.match(page, /class="scene-veil"/);
   assert.match(page, /induction-permission__panel/);
-  assert.match(page, /What Colour Is Your Heart\?/);
-  assert.match(page, /video is processed live on this device and is never recorded or stored/);
-  assert.match(page, /heart-rate reading is used momentarily for the recommendation, then discarded/);
-  assert.match(page, /not a medical or mental-health diagnosis and should not replace professional care/);
+  assert.match(page, /What colour is your heart\?/);
+  assert.match(page, /Look into your camera for a brief moment\. We will translate your live pulse into a personalized music television ecosystem\./);
+  assert.match(page, /<em>Your video stream is processed entirely on-device and is never recorded or stored\.<\/em>/);
+  assert.match(page, />Scan my pulse<\/button>/);
+  assert.match(page, />Skip for now<\/button>/);
+  assert.doesNotMatch(page, /General wellness and research information only|medical or mental-health diagnosis|Medical Disclaimer/);
   assert.doesNotMatch(page, /Powered by Shen AI/);
   assert.match(page, /data-heart-rate-loader/);
   assert.match(page, /data-heart-rate-live/);
@@ -47,10 +50,10 @@ test("research page is the existing I AM scene with one compact native prompt", 
   assert.match(page, /Your heart rate/);
   assert.match(page, /Universal Mind \[ I o H \] Logo 512\.png/);
   assert.match(page, />Loading</);
-  assert.match(page, /shen-heart-rate\.css\?v=shen-heart-rate-css-40334628584a/);
+  assert.match(page, new RegExp(`shen-heart-rate\\.css\\?v=shen-heart-rate-css-${cssToken}`));
   assert.match(page, new RegExp(`shen-heart-rate\\.js\\?v=shen-heart-rate-js-${controllerToken}`));
   assert.equal((page.match(/role="dialog"/g) || []).length, 1);
-  assert.equal((page.match(/not a medical or mental-health diagnosis/g) || []).length, 1);
+  assert.equal((page.match(/never recorded or stored/g) || []).length, 1);
   assert.doesNotMatch(page, /type="checkbox"|Heart Light|paired result|shen-heart-rate-wellness/i);
   assert.match(css, /--scene-veil:\s*0\.44/);
   assert.match(css, /--shen-canvas-size/);
@@ -60,12 +63,17 @@ test("research page is the existing I AM scene with one compact native prompt", 
   assert.match(css, /\.shen-heart-rate-result\s*\{/);
   assert.match(css, /\.shen-heart-rate-deepar\s*\{/);
   assert.match(css, /\.shen-heart-rate-deepar__preview canvas/);
-  assert.match(css, /mix-blend-mode:\s*screen/);
+  assert.match(css, /data-deepar-ready="true"[^}]*#mxcanvas\s*\{[^}]*opacity:\s*1[^}]*mix-blend-mode:\s*normal[^}]*pointer-events:\s*auto/s);
+  assert.doesNotMatch(css, /opacity:\s*0\.32|mix-blend-mode:\s*screen/);
   assert.match(css, /pointer-events:\s*none/);
+  assert.match(css, /-webkit-mask:[\s\S]*radial-gradient/);
+  assert.match(css, /mask-composite:\s*add/);
   assert.match(css, /width:\s*min\(638px, calc\(100vw - 38px\)\)/);
   assert.match(css, /\.shen-heart-rate-offer h2\s*\{[^}]*font-size:\s*20px/s);
   assert.match(css, /\.shen-heart-rate-offer p\s*\{[^}]*font-size:\s*12\.5px/s);
   assert.match(css, /\.shen-heart-rate-offer \.induction-permission__actions button\s*\{[^}]*min-height:\s*38px[^}]*font-size:\s*11\.25px/s);
+  assert.match(css, /\.shen-heart-rate-offer \.induction-permission__actions \.shen-heart-rate-offer__primary\s*\{[^}]*min-height:\s*46px[^}]*font-size:\s*14\.5px[^}]*font-weight:\s*700/s);
+  assert.match(css, /\.shen-heart-rate-offer \.induction-permission__actions \.shen-heart-rate-offer__secondary\s*\{[^}]*font-size:\s*10\.5px[^}]*font-weight:\s*400/s);
   assert.doesNotMatch(css, /shen-heart-rate-attribution/);
   assert.doesNotMatch(page, /<svg|heart-check-glasses-lens|heart-check-glasses-frame|licenseKey/i);
 });
@@ -139,6 +147,9 @@ test("official DeepAR Bright Glasses uses the same raw video stream and never ow
   assert.match(source, /deepAR\.setVideoElement\(videoElement, true\)/);
   assert.match(source, /deepAR\.muteSound\?\.\(true\)/);
   assert.match(source, /deepAR\.setFps\?\.\(24\)/);
+  assert.match(source, /deepAR\.callbacks\.onFaceTracked/);
+  assert.match(source, /normalizeDeepARFaceRegion/);
+  assert.match(source, /onFaceRegion/);
   assert.match(source, /deepAR\?\.stopVideo\?\.\(\)/);
   assert.match(source, /deepAR\?\.shutdown\?\.\(\)/);
   assert.match(source, /free_plan_watermark_visible:\s*true/);
@@ -148,7 +159,10 @@ test("official DeepAR Bright Glasses uses the same raw video stream and never ow
   assert.match(css, /width:\s*100%/);
   assert.match(css, /height:\s*76%/);
   assert.match(css, /pointer-events:\s*none/);
-  assert.doesNotMatch(css, /display:\s*none[^}]*deepar|clip-path|mask-image/i);
+  assert.match(css, /z-index:\s*3/);
+  assert.match(css, /--deepar-eye-x/);
+  assert.match(css, /radial-gradient/);
+  assert.doesNotMatch(css, /display:\s*none[^}]*deepar|clip-path/i);
 
   assert.equal(
     await sha256(resolve(researchDirectory, "effects", "bright-glasses", "bright-glasses.deepar")),
@@ -162,6 +176,21 @@ test("official DeepAR Bright Glasses uses the same raw video stream and never ow
     await sha256(resolve(researchDirectory, "vendor", "deepar-5.6.22", "wasm", "deepar.wasm")),
     "f1312992c2d37f2428e6760ab21b77f7cc032d2b63133ca55de8e1aa88afe261",
   );
+});
+
+test("DeepAR face rectangles become bounded eye-region masks without changing Shen UI", async () => {
+  const { normalizeDeepARFaceRegion } = await import("../deepar-bright-glasses.js");
+  const pixelRegion = normalizeDeepARFaceRegion([160, 90, 320, 360], 640, 720);
+  assert.ok(Math.abs(pixelRegion.centerX - 0.5) < 0.0001);
+  assert.ok(Math.abs(pixelRegion.centerY - 0.29) < 0.0001);
+  assert.ok(Math.abs(pixelRegion.radiusX - 0.39) < 0.0001);
+  assert.ok(Math.abs(pixelRegion.radiusY - 0.15) < 0.0001);
+
+  const normalizedRegion = normalizeDeepARFaceRegion([0.2, 0.1, 0.4, 0.5], 640, 720);
+  assert.ok(Math.abs(normalizedRegion.centerX - 0.4) < 0.0001);
+  assert.ok(Math.abs(normalizedRegion.centerY - 0.265) < 0.0001);
+  assert.equal(normalizeDeepARFaceRegion(null, 640, 720), null);
+  assert.equal(normalizeDeepARFaceRegion([0, 0, 0, 1], 640, 720), null);
 });
 
 test("heart rate is momentary and only a bounded privacy-safe homepage handoff continues", async () => {

@@ -47,14 +47,18 @@ try {
   assert.equal(await page.locator("[data-shen-stage]").getAttribute("data-shen-measurement"), "quick-heart-rate-10-seconds");
   assert.equal(await page.locator("[data-shen-stage]").getAttribute("data-deepar-ready"), "true");
   assert.equal(await page.locator("[data-shen-stage]").getAttribute("data-deepar-effect"), "official-bright-glasses");
+  assert.equal(await page.locator("[data-shen-stage]").getAttribute("data-deepar-composite"), "tracked-effect-regions-only");
+  await page.waitForFunction(() => document.querySelector("[data-shen-stage]")?.dataset.deeparFaceRegion === "tracked");
+  await page.waitForTimeout(250);
 
   const stageBox = await page.locator("[data-shen-stage]").boundingBox();
   assert.ok(stageBox);
-  await page.mouse.click(stageBox.x + (stageBox.width / 2), stageBox.y + (stageBox.height * 0.45));
   await page.locator("[data-heart-rate-deepar]").waitFor({ state: "visible" });
 
   const geometry = await page.locator("[data-heart-rate-deepar]").evaluate((element) => {
     const stage = document.querySelector("[data-shen-stage]").getBoundingClientRect();
+    const shenCanvas = document.querySelector("#mxcanvas");
+    const shenStyles = getComputedStyle(shenCanvas);
     const plane = element.getBoundingClientRect();
     const deepARCanvas = element.querySelector("canvas")?.getBoundingClientRect();
     return {
@@ -65,6 +69,13 @@ try {
       deepARCanvasWidth: deepARCanvas?.width || 0,
       deepARCanvasHeight: deepARCanvas?.height || 0,
       pointerEvents: getComputedStyle(element).pointerEvents,
+      deepARZIndex: getComputedStyle(element).zIndex,
+      deepARMask: getComputedStyle(element).webkitMaskImage || getComputedStyle(element).maskImage,
+      shenOpacity: shenStyles.opacity,
+      shenBlendMode: shenStyles.mixBlendMode,
+      shenPointerEvents: shenStyles.pointerEvents,
+      shenZIndex: shenStyles.zIndex,
+      faceRegion: document.querySelector("[data-shen-stage]").dataset.deeparFaceRegion,
     };
   });
   assert.ok(Math.abs(geometry.planeTop - geometry.stageTop) < 1);
@@ -72,7 +83,25 @@ try {
   assert.ok(geometry.deepARCanvasWidth > 0);
   assert.ok(geometry.deepARCanvasHeight > 0);
   assert.equal(geometry.pointerEvents, "none");
+  assert.equal(geometry.deepARZIndex, "3");
+  assert.match(geometry.deepARMask, /radial-gradient/i);
+  assert.equal(geometry.shenOpacity, "1");
+  assert.equal(geometry.shenBlendMode, "normal");
+  assert.equal(geometry.shenPointerEvents, "auto");
+  assert.equal(geometry.shenZIndex, "2");
+  assert.equal(geometry.faceRegion, "tracked");
+
+  const startTarget = await page.evaluate(({ x, y }) => {
+    const target = document.elementFromPoint(x, y);
+    return { id: target?.id || "", tagName: target?.tagName || "" };
+  }, {
+    x: stageBox.x + (stageBox.width / 2),
+    y: stageBox.y + (stageBox.height * 0.70),
+  });
+  assert.deepEqual(startTarget, { id: "mxcanvas", tagName: "CANVAS" });
   await page.screenshot({ path: join(outputDirectory, "quick-hr-shared-stream-overlay.png"), fullPage: true });
+  await page.mouse.click(stageBox.x + (stageBox.width / 2), stageBox.y + (stageBox.height * 0.70));
+  await page.waitForFunction(() => window.__qaShenStartAccepted === true);
 
   await page.waitForURL(/\/vogue\/iam\/index\.html/, { timeout: 16_000 });
   assert.equal(await page.evaluate(() => Number(sessionStorage.getItem("iam.qa.cameraTrackStopInvocations") || 0)), 1);
@@ -190,7 +219,15 @@ try {
       identicalRawStreamForShenAndDeepAR: shenStream.streamId === deepARStream.streamId,
       released: Boolean(cameraTrackEnded),
     },
-    overlay: { officialEffectPath: effectLoaded.path, viewportOfCanvas: 0.76, pointerEvents: geometry.pointerEvents },
+    overlay: {
+      officialEffectPath: effectLoaded.path,
+      viewportOfCanvas: 0.76,
+      pointerEvents: geometry.pointerEvents,
+      trackedEffectRegionMask: true,
+      shenCanvasOpacity: geometry.shenOpacity,
+      shenCanvasBlendMode: geometry.shenBlendMode,
+      startHitTarget: startTarget,
+    },
     handoff: { requests: handoffs.length, exact202Accepted: true, rawBpmStoredOrReturned: false },
     duplicateLoadingState: false,
     unexpectedPresetFailsClosed: true,
@@ -400,9 +437,26 @@ export default async function CreateShenaiSDK() {
       context.fillStyle = "#2f3033";
       context.beginPath(); context.ellipse(330, 182, 17, 9, 0, 0, Math.PI * 2); context.fill();
       context.beginPath(); context.ellipse(430, 182, 17, 9, 0, 0, Math.PI * 2); context.fill();
+      context.fillStyle = "#ffffff";
+      context.font = "24px sans-serif";
+      context.textAlign = "center";
+      context.fillText("MEASUREMENT CONDITIONS", 380, 34);
+      context.fillText("★ ★ ★ ★ ★", 380, 68);
+      context.fillStyle = "#f7f7f5";
+      context.fillRect(295, 500, 170, 72);
+      context.fillStyle = "#42aeb6";
+      context.font = "bold 30px sans-serif";
+      context.fillText("START", 380, 545);
+      context.strokeStyle = "#42aeb6";
+      context.lineWidth = 5;
+      context.beginPath();
+      context.moveTo(0, 738);
+      for (let x = 0; x <= 760; x += 10) context.lineTo(x, 738 + (Math.sin(x / 34) * 13));
+      context.stroke();
       canvas.addEventListener("click", () => {
         if (startedAt) return;
         startedAt = performance.now();
+        window.__qaShenStartAccepted = true;
         window.recordHrRuntimeEvent({ name: "sdk_running_signal_short", at: startedAt });
         setTimeout(() => window.recordHrRuntimeEvent({ name: "sdk_running_signal_good", at: performance.now() }), 100);
         setTimeout(() => {
@@ -464,9 +518,11 @@ export async function initialize(options) {
   context.lineWidth = 18;
   context.strokeRect(130, 190, 500, 170);
   options.previewElement.append(canvas);
-  return {
+  const api = {
+    callbacks: {},
     muteSound() {},
     setFps() {},
+    getCanvas() { return canvas; },
     setVideoElement(videoElement, mirror) {
       const stream = videoElement.srcObject;
       window.recordHrRuntimeEvent({
@@ -477,10 +533,18 @@ export async function initialize(options) {
         audioTracks: stream.getAudioTracks().length,
         mirror,
       });
+      setTimeout(() => {
+        api.callbacks.onFaceTrackingInitialized?.(42, 760, 578);
+        api.callbacks.onFaceTracked?.([{
+          detected: true,
+          faceRect: [130, 110, 500, 390],
+        }]);
+      }, 0);
     },
     stopVideo() { window.recordHrRuntimeEvent({ name: "deepar_stopped", at: performance.now() }); },
     shutdown() { window.recordHrRuntimeEvent({ name: "deepar_shutdown", at: performance.now() }); },
   };
+  return api;
 }`;
 }
 

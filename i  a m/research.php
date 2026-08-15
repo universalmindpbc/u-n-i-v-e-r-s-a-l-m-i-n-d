@@ -20,7 +20,7 @@ header('X-Robots-Tag: noindex, nofollow');
     <title>Heart Check | I AM</title>
     <link rel="icon" type="image/png" sizes="32x32" href="/vogue/iam/favicon.png?v=iam-favicon-4">
     <link rel="stylesheet" href="styles.css?v=global-nav-single-shell-2-technology-submenu-133pct-normal-1">
-    <link rel="stylesheet" href="research/shen-heart-rate.css?v=shen-heart-rate-css-40334628584a">
+    <link rel="stylesheet" href="research/shen-heart-rate.css?v=shen-heart-rate-css-7feba76fbaff">
   </head>
   <body class="shen-heart-rate-page">
     <main class="site-shell" aria-label="Universal Mind I AM heart-rate research">
@@ -87,23 +87,22 @@ header('X-Robots-Tag: noindex, nofollow');
       role="dialog"
       aria-modal="true"
       aria-labelledby="heart-rate-offer-title"
-      aria-describedby="heart-rate-offer-copy heart-rate-privacy heart-rate-disclaimer"
+      aria-describedby="heart-rate-offer-copy heart-rate-privacy"
     >
       <div class="induction-permission__panel" data-heart-rate-offer-panel tabindex="-1">
         <span class="induction-permission__mark" aria-hidden="true"><i></i></span>
-        <h2 id="heart-rate-offer-title">What Colour Is Your Heart?</h2>
-        <p id="heart-rate-offer-copy">This optional Heart Check uses a brief video selfie to measure your heart rate and help us recommend the best experience for you.</p>
-        <p id="heart-rate-privacy">Your video is processed live on this device and is never recorded or stored. Your heart-rate reading is used momentarily for the recommendation, then discarded.</p>
-        <p id="heart-rate-disclaimer" class="shen-heart-rate-disclaimer"><strong>General wellness and research information only.</strong> This Heart Check is not a medical or mental-health diagnosis and should not replace professional care.</p>
+        <h2 id="heart-rate-offer-title">What colour is your heart?</h2>
+        <p id="heart-rate-offer-copy">Look into your camera for a brief moment. We will translate your live pulse into a personalized music television ecosystem.</p>
+        <p id="heart-rate-privacy" class="shen-heart-rate-offer__privacy"><em>Your video stream is processed entirely on-device and is never recorded or stored.</em></p>
         <div class="induction-permission__actions">
-          <button type="button" data-heart-rate-accept>Measure heart rate</button>
-          <button type="button" data-heart-rate-skip>Not now</button>
+          <button class="shen-heart-rate-offer__primary" type="button" data-heart-rate-accept>Scan my pulse</button>
+          <button class="shen-heart-rate-offer__secondary" type="button" data-heart-rate-skip>Skip for now</button>
         </div>
       </div>
     </section>
 
     <script src="cloudflare-stream-catalogue.js?v=stream-catalogue-20ad6337934c"></script>
     <script src="cloudflare-stream-controller.js?v=stream-controller-e6ed1b827651"></script>
-    <script type="module" src="research/shen-heart-rate.js?v=shen-heart-rate-js-56028049c048"></script>
+    <script type="module" src="research/shen-heart-rate.js?v=shen-heart-rate-js-13be17dc9474"></script>
   </body>
 </html>
