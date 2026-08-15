@@ -47,8 +47,7 @@ try {
   assert.equal(await page.locator("[data-shen-stage]").getAttribute("data-shen-measurement"), "quick-heart-rate-10-seconds");
   assert.equal(await page.locator("[data-shen-stage]").getAttribute("data-deepar-ready"), "true");
   assert.equal(await page.locator("[data-shen-stage]").getAttribute("data-deepar-effect"), "official-bright-glasses");
-  assert.equal(await page.locator("[data-shen-stage]").getAttribute("data-deepar-composite"), "tracked-effect-regions-only");
-  await page.waitForFunction(() => document.querySelector("[data-shen-stage]")?.dataset.deeparFaceRegion === "tracked");
+  assert.equal(await page.locator("[data-shen-stage]").getAttribute("data-deepar-composite"), "full-frame-with-live-shen-pixel-planes");
   await page.waitForTimeout(250);
 
   const stageBox = await page.locator("[data-shen-stage]").boundingBox();
@@ -59,6 +58,8 @@ try {
     const stage = document.querySelector("[data-shen-stage]").getBoundingClientRect();
     const shenCanvas = document.querySelector("#mxcanvas");
     const shenStyles = getComputedStyle(shenCanvas);
+    const upper = document.querySelector('[data-shen-visual-plane="upper"]');
+    const lower = document.querySelector('[data-shen-visual-plane="lower"]');
     const plane = element.getBoundingClientRect();
     const deepARCanvas = element.querySelector("canvas")?.getBoundingClientRect();
     return {
@@ -75,7 +76,14 @@ try {
       shenBlendMode: shenStyles.mixBlendMode,
       shenPointerEvents: shenStyles.pointerEvents,
       shenZIndex: shenStyles.zIndex,
-      faceRegion: document.querySelector("[data-shen-stage]").dataset.deeparFaceRegion,
+      upperHidden: upper.hidden,
+      upperBlend: getComputedStyle(upper).mixBlendMode,
+      upperClip: getComputedStyle(upper).clipPath,
+      upperPointerEvents: getComputedStyle(upper).pointerEvents,
+      lowerHidden: lower.hidden,
+      lowerBlend: getComputedStyle(lower).mixBlendMode,
+      lowerClip: getComputedStyle(lower).clipPath,
+      lowerPointerEvents: getComputedStyle(lower).pointerEvents,
     };
   });
   assert.ok(Math.abs(geometry.planeTop - geometry.stageTop) < 1);
@@ -83,13 +91,20 @@ try {
   assert.ok(geometry.deepARCanvasWidth > 0);
   assert.ok(geometry.deepARCanvasHeight > 0);
   assert.equal(geometry.pointerEvents, "none");
-  assert.equal(geometry.deepARZIndex, "3");
-  assert.match(geometry.deepARMask, /radial-gradient/i);
-  assert.equal(geometry.shenOpacity, "1");
+  assert.equal(geometry.deepARZIndex, "1");
+  assert.equal(geometry.deepARMask, "none");
+  assert.equal(geometry.shenOpacity, "0");
   assert.equal(geometry.shenBlendMode, "normal");
   assert.equal(geometry.shenPointerEvents, "auto");
-  assert.equal(geometry.shenZIndex, "2");
-  assert.equal(geometry.faceRegion, "tracked");
+  assert.equal(geometry.shenZIndex, "3");
+  assert.equal(geometry.upperHidden, false);
+  assert.equal(geometry.upperBlend, "screen");
+  assert.equal(geometry.upperClip, "inset(0px 0px 24%)");
+  assert.equal(geometry.upperPointerEvents, "none");
+  assert.equal(geometry.lowerHidden, false);
+  assert.equal(geometry.lowerBlend, "normal");
+  assert.equal(geometry.lowerClip, "inset(76% 0px 0px)");
+  assert.equal(geometry.lowerPointerEvents, "none");
 
   const startTarget = await page.evaluate(({ x, y }) => {
     const target = document.elementFromPoint(x, y);
@@ -223,7 +238,8 @@ try {
       officialEffectPath: effectLoaded.path,
       viewportOfCanvas: 0.76,
       pointerEvents: geometry.pointerEvents,
-      trackedEffectRegionMask: true,
+      fullFrameUnmaskedDeepAR: true,
+      liveShenPixelPlanes: true,
       shenCanvasOpacity: geometry.shenOpacity,
       shenCanvasBlendMode: geometry.shenBlendMode,
       startHitTarget: startTarget,

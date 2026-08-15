@@ -20,7 +20,7 @@ header('X-Robots-Tag: noindex, nofollow');
     <title>Heart Check | I AM</title>
     <link rel="icon" type="image/png" sizes="32x32" href="/vogue/iam/favicon.png?v=iam-favicon-4">
     <link rel="stylesheet" href="styles.css?v=global-nav-single-shell-2-technology-submenu-133pct-normal-1">
-    <link rel="stylesheet" href="research/shen-heart-rate.css?v=shen-heart-rate-css-b1fba4757c9f">
+    <link rel="stylesheet" href="research/shen-heart-rate.css?v=shen-heart-rate-css-8feeb4e93652">
   </head>
   <body class="shen-heart-rate-page">
     <main class="site-shell" aria-label="Universal Mind I AM heart-rate research">
@@ -50,6 +50,8 @@ header('X-Robots-Tag: noindex, nofollow');
             </div>
           </div>
           <canvas id="mxcanvas" aria-label="Heart-rate measurement interface"></canvas>
+          <canvas class="shen-heart-rate-shen-plane shen-heart-rate-shen-plane--upper" data-shen-visual-plane="upper" aria-hidden="true" hidden></canvas>
+          <canvas class="shen-heart-rate-shen-plane shen-heart-rate-shen-plane--lower" data-shen-visual-plane="lower" aria-hidden="true" hidden></canvas>
           <div class="shen-heart-rate-deepar" data-heart-rate-deepar aria-label="Bright Glasses augmented-reality preview" aria-hidden="true" hidden>
             <div class="shen-heart-rate-deepar__preview" data-heart-rate-deepar-preview></div>
           </div>
@@ -103,6 +105,6 @@ header('X-Robots-Tag: noindex, nofollow');
 
     <script src="cloudflare-stream-catalogue.js?v=stream-catalogue-20ad6337934c"></script>
     <script src="cloudflare-stream-controller.js?v=stream-controller-e6ed1b827651"></script>
-    <script type="module" src="research/shen-heart-rate.js?v=shen-heart-rate-js-13be17dc9474"></script>
+    <script type="module" src="research/shen-heart-rate.js?v=shen-heart-rate-js-e6744d8bca21"></script>
   </body>
 </html>

@@ -42,51 +42,22 @@
 }
 
 .shen-heart-rate-stage[data-deepar-ready="true"][data-state="measurement"] #mxcanvas {
-  opacity: 1;
+  z-index: 3;
+  opacity: 0;
   mix-blend-mode: normal;
   pointer-events: auto;
+  transition: none;
 }
 
 .shen-heart-rate-deepar {
-  --deepar-eye-x: 50%;
-  --deepar-eye-y: 43%;
-  --deepar-eye-radius-x: 40%;
-  --deepar-eye-radius-y: 18%;
-  --deepar-watermark-x: 70%;
-  --deepar-watermark-y: 22%;
-  --deepar-watermark-radius-x: 26%;
-  --deepar-watermark-radius-y: 9%;
   position: absolute;
   inset: 0 0 auto;
-  z-index: 3;
+  z-index: 1;
   width: 100%;
   height: 76%;
   overflow: hidden;
+  background: #101010;
   pointer-events: none;
-  -webkit-mask:
-    radial-gradient(
-      ellipse var(--deepar-eye-radius-x) var(--deepar-eye-radius-y) at var(--deepar-eye-x) var(--deepar-eye-y),
-      #000 0 78%,
-      transparent 100%
-    ),
-    radial-gradient(
-      ellipse var(--deepar-watermark-radius-x) var(--deepar-watermark-radius-y) at var(--deepar-watermark-x) var(--deepar-watermark-y),
-      #000 0 70%,
-      transparent 100%
-    );
-  -webkit-mask-composite: source-over;
-  mask:
-    radial-gradient(
-      ellipse var(--deepar-eye-radius-x) var(--deepar-eye-radius-y) at var(--deepar-eye-x) var(--deepar-eye-y),
-      #000 0 78%,
-      transparent 100%
-    ),
-    radial-gradient(
-      ellipse var(--deepar-watermark-radius-x) var(--deepar-watermark-radius-y) at var(--deepar-watermark-x) var(--deepar-watermark-y),
-      #000 0 70%,
-      transparent 100%
-    );
-  mask-composite: add;
 }
 
 .shen-heart-rate-deepar[hidden] {
@@ -108,6 +79,33 @@
   height: 1px;
   opacity: 0;
   pointer-events: none;
+}
+
+.shen-heart-rate-shen-plane {
+  position: absolute;
+  inset: 50% auto auto 50%;
+  z-index: 2;
+  display: block;
+  width: var(--shen-canvas-size);
+  height: var(--shen-canvas-size);
+  max-width: none;
+  opacity: 1;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+
+.shen-heart-rate-shen-plane[hidden] {
+  display: none;
+}
+
+.shen-heart-rate-shen-plane--upper {
+  clip-path: inset(0 0 24% 0);
+  mix-blend-mode: screen;
+}
+
+.shen-heart-rate-shen-plane--lower {
+  clip-path: inset(76% 0 0 0);
+  mix-blend-mode: normal;
 }
 
 .shen-heart-rate-live {

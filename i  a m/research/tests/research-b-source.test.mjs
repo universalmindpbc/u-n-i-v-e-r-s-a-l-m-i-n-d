@@ -47,6 +47,7 @@ test("research page is the existing I AM scene with one compact native prompt", 
   assert.match(page, /data-heart-rate-deepar/);
   assert.match(page, /data-heart-rate-deepar-preview/);
   assert.match(page, /data-heart-rate-deepar-source/);
+  assert.equal((page.match(/data-shen-visual-plane=/g) || []).length, 2);
   assert.match(page, /Your heart rate/);
   assert.match(page, /Universal Mind \[ I o H \] Logo 512\.png/);
   assert.match(page, />Loading</);
@@ -63,11 +64,12 @@ test("research page is the existing I AM scene with one compact native prompt", 
   assert.match(css, /\.shen-heart-rate-result\s*\{/);
   assert.match(css, /\.shen-heart-rate-deepar\s*\{/);
   assert.match(css, /\.shen-heart-rate-deepar__preview canvas/);
-  assert.match(css, /data-deepar-ready="true"[^}]*#mxcanvas\s*\{[^}]*opacity:\s*1[^}]*mix-blend-mode:\s*normal[^}]*pointer-events:\s*auto/s);
-  assert.doesNotMatch(css, /opacity:\s*0\.32|mix-blend-mode:\s*screen/);
+  assert.match(css, /data-deepar-ready="true"[^}]*#mxcanvas\s*\{[^}]*z-index:\s*3[^}]*opacity:\s*0[^}]*mix-blend-mode:\s*normal[^}]*pointer-events:\s*auto/s);
+  assert.doesNotMatch(css, /opacity:\s*0\.32/);
   assert.match(css, /pointer-events:\s*none/);
-  assert.match(css, /-webkit-mask:[\s\S]*radial-gradient/);
-  assert.match(css, /mask-composite:\s*add/);
+  assert.match(css, /\.shen-heart-rate-shen-plane--upper\s*\{[^}]*clip-path:\s*inset\(0 0 24% 0\)[^}]*mix-blend-mode:\s*screen/s);
+  assert.match(css, /\.shen-heart-rate-shen-plane--lower\s*\{[^}]*clip-path:\s*inset\(76% 0 0 0\)[^}]*mix-blend-mode:\s*normal/s);
+  assert.doesNotMatch(css, /radial-gradient|mask-composite|--deepar-eye|--deepar-watermark/);
   assert.match(css, /width:\s*min\(638px, calc\(100vw - 38px\)\)/);
   assert.match(css, /\.shen-heart-rate-offer h2\s*\{[^}]*font-size:\s*20px/s);
   assert.match(css, /\.shen-heart-rate-offer p\s*\{[^}]*font-size:\s*12\.5px/s);
@@ -147,9 +149,6 @@ test("official DeepAR Bright Glasses uses the same raw video stream and never ow
   assert.match(source, /deepAR\.setVideoElement\(videoElement, true\)/);
   assert.match(source, /deepAR\.muteSound\?\.\(true\)/);
   assert.match(source, /deepAR\.setFps\?\.\(24\)/);
-  assert.match(source, /deepAR\.callbacks\.onFaceTracked/);
-  assert.match(source, /normalizeDeepARFaceRegion/);
-  assert.match(source, /onFaceRegion/);
   assert.match(source, /deepAR\?\.stopVideo\?\.\(\)/);
   assert.match(source, /deepAR\?\.shutdown\?\.\(\)/);
   assert.match(source, /free_plan_watermark_visible:\s*true/);
@@ -159,15 +158,11 @@ test("official DeepAR Bright Glasses uses the same raw video stream and never ow
   assert.match(css, /width:\s*100%/);
   assert.match(css, /height:\s*76%/);
   assert.match(css, /pointer-events:\s*none/);
-  assert.match(css, /z-index:\s*3/);
-  assert.match(css, /--deepar-eye-x/);
-  assert.match(css, /--deepar-watermark-x:\s*70%/);
-  assert.match(css, /--deepar-watermark-y:\s*22%/);
-  assert.match(css, /--deepar-watermark-radius-x:\s*26%/);
-  assert.match(css, /--deepar-watermark-radius-y:\s*9%/);
-  assert.match(css, /ellipse var\(--deepar-watermark-radius-x\) var\(--deepar-watermark-radius-y\) at var\(--deepar-watermark-x\) var\(--deepar-watermark-y\)/);
-  assert.match(css, /radial-gradient/);
-  assert.doesNotMatch(css, /display:\s*none[^}]*deepar|clip-path/i);
+  assert.match(css, /\.shen-heart-rate-deepar\s*\{[^}]*z-index:\s*1/s);
+  assert.match(source, /composition:\s*"full-frame-with-live-shen-pixel-planes"/);
+  assert.doesNotMatch(source, /normalizeDeepARFaceRegion|onFaceRegion/);
+  assert.doesNotMatch(css, /radial-gradient|mask-composite|--deepar-eye|--deepar-watermark/);
+  assert.doesNotMatch(css, /display:\s*none[^}]*deepar/i);
 
   assert.equal(
     await sha256(resolve(researchDirectory, "effects", "bright-glasses", "bright-glasses.deepar")),
@@ -183,19 +178,19 @@ test("official DeepAR Bright Glasses uses the same raw video stream and never ow
   );
 });
 
-test("DeepAR face rectangles become bounded eye-region masks without changing Shen UI", async () => {
-  const { normalizeDeepARFaceRegion } = await import("../deepar-bright-glasses.js");
-  const pixelRegion = normalizeDeepARFaceRegion([160, 90, 320, 360], 640, 720);
-  assert.ok(Math.abs(pixelRegion.centerX - 0.5) < 0.0001);
-  assert.ok(Math.abs(pixelRegion.centerY - 0.29) < 0.0001);
-  assert.ok(Math.abs(pixelRegion.radiusX - 0.39) < 0.0001);
-  assert.ok(Math.abs(pixelRegion.radiusY - 0.15) < 0.0001);
-
-  const normalizedRegion = normalizeDeepARFaceRegion([0.2, 0.1, 0.4, 0.5], 640, 720);
-  assert.ok(Math.abs(normalizedRegion.centerX - 0.4) < 0.0001);
-  assert.ok(Math.abs(normalizedRegion.centerY - 0.265) < 0.0001);
-  assert.equal(normalizeDeepARFaceRegion(null, 640, 720), null);
-  assert.equal(normalizeDeepARFaceRegion([0, 0, 0, 1], 640, 720), null);
+test("DeepAR uses the complete frame while live Shen pixel planes preserve the SDK UI", async () => {
+  const controller = await read(resolve(researchDirectory, "shen-heart-rate.js"));
+  assert.match(controller, /shenVisualPlanes = \[\.\.\.document\.querySelectorAll\("\[data-shen-visual-plane\]"\)\]/);
+  assert.match(controller, /SHEN_COMPOSITOR_FRAME_MS\s*=\s*1000\s*\/\s*24/);
+  assert.match(controller, /plane\.dataset\.shenVisualPlane === "upper"/);
+  assert.match(controller, /context\.drawImage\(canvas, 0, 0, canvas\.width, splitY/);
+  assert.match(controller, /const lowerHeight = canvas\.height - splitY/);
+  assert.match(controller, /context\.drawImage\([\s\S]*canvas,[\s\S]*splitY,[\s\S]*lowerHeight/);
+  assert.match(controller, /window\.requestAnimationFrame\(renderShenPixelPlanes\)/);
+  assert.match(controller, /stage\.dataset\.deeparComposite = compositorReady[\s\S]*"full-frame-with-live-shen-pixel-planes"/);
+  assert.match(controller, /stopShenPixelCompositor\(\)/);
+  assert.match(controller, /stage\.dataset\.deeparReady = "false"/);
+  assert.doesNotMatch(controller, /setDeepARFaceRegion|deeparFaceRegion/);
 });
 
 test("heart rate is momentary and only a bounded privacy-safe homepage handoff continues", async () => {
