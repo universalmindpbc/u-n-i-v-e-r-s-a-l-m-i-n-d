@@ -139,18 +139,26 @@ try {
   const pagehide = await context.newPage();
   await pagehide.route("**/*", createRouter([], { unresolvedDeepARCleanup: true }));
   await pagehide.goto(`${researchUrl}&mock_release=pagehide`, { waitUntil: "domcontentloaded" });
+  await pagehide.evaluate(() => {
+    sessionStorage.setItem("iam.qa.cameraTrackStopCount", "0");
+    sessionStorage.setItem("iam.qa.navigationLifecycle", "[]");
+    sessionStorage.removeItem("iam.qa.deeparCleanupStarted");
+    sessionStorage.removeItem("iam.qa.deeparCleanupResolved");
+  });
   await pagehide.locator("[data-heart-rate-accept]").click();
   await pagehide.locator('[data-shen-stage][data-state="measurement"]').waitFor({ state: "visible" });
-  const pagehideStopsBefore = trace.filter(({ name }) => name === "camera_track_ended").length;
-  await pagehide.evaluate(() => window.dispatchEvent(new PageTransitionEvent("pagehide", { persisted: false })));
-  await pagehide.waitForTimeout(0);
-  const pagehideStopsAfterFirst = trace.filter(({ name }) => name === "camera_track_ended").length;
-  assert.equal(pagehideStopsAfterFirst, pagehideStopsBefore + 1);
-  assert.equal(trace.filter(({ name }) => name === "deepar_cleanup_started").length, 1);
-  assert.equal(trace.filter(({ name }) => name === "deepar_cleanup_resolved").length, 0);
-  await pagehide.evaluate(() => window.dispatchEvent(new PageTransitionEvent("pagehide", { persisted: false })));
-  await pagehide.waitForTimeout(0);
-  assert.equal(trace.filter(({ name }) => name === "camera_track_ended").length, pagehideStopsAfterFirst);
+  await pagehide.goto(`${proofOrigin}/vogue/iam/index.html?qa=beforeunload-pagehide`, { waitUntil: "domcontentloaded" });
+  const navigationRelease = await pagehide.evaluate(() => ({
+    explicitTrackStops: Number(sessionStorage.getItem("iam.qa.cameraTrackStopCount") || 0),
+    lifecycle: JSON.parse(sessionStorage.getItem("iam.qa.navigationLifecycle") || "[]"),
+    deepARCleanupStarted: sessionStorage.getItem("iam.qa.deeparCleanupStarted") === "true",
+    deepARCleanupResolved: sessionStorage.getItem("iam.qa.deeparCleanupResolved") === "true",
+  }));
+  assert.equal(navigationRelease.explicitTrackStops, 1);
+  assert.ok(navigationRelease.lifecycle.indexOf("beforeunload") >= 0, JSON.stringify(navigationRelease));
+  assert.ok(navigationRelease.lifecycle.indexOf("pagehide") > navigationRelease.lifecycle.indexOf("beforeunload"), JSON.stringify(navigationRelease));
+  assert.equal(navigationRelease.deepARCleanupStarted, true);
+  assert.equal(navigationRelease.deepARCleanupResolved, false);
   await pagehide.close();
 
   await page.close();
@@ -182,11 +190,7 @@ try {
     handoff: { requests: handoffs.length, exact202Accepted: true, rawBpmStoredOrReturned: false },
     duplicateLoadingState: false,
     unexpectedPresetFailsClosed: true,
-    synchronousPagehideCameraRelease: {
-      explicitTrackStops: pagehideStopsAfterFirst - pagehideStopsBefore,
-      deepARCleanupResolved: false,
-      repeatedPagehideTrackStops: 0,
-    },
+    synchronousNavigationCameraRelease: navigationRelease,
     screenshot: join(outputDirectory, "quick-hr-shared-stream-overlay.png"),
     cleanup,
     trace,
@@ -203,6 +207,19 @@ async function installInstrumentation(browserContext) {
       checkin: "I am energised after surfing",
       status: "pending",
     }));
+    if (!sessionStorage.getItem("iam.qa.cameraTrackStopCount")) {
+      sessionStorage.setItem("iam.qa.cameraTrackStopCount", "0");
+    }
+    if (!sessionStorage.getItem("iam.qa.navigationLifecycle")) {
+      sessionStorage.setItem("iam.qa.navigationLifecycle", "[]");
+    }
+    const recordNavigationLifecycle = (name) => {
+      const lifecycle = JSON.parse(sessionStorage.getItem("iam.qa.navigationLifecycle") || "[]");
+      lifecycle.push(name);
+      sessionStorage.setItem("iam.qa.navigationLifecycle", JSON.stringify(lifecycle));
+    };
+    window.addEventListener("beforeunload", () => recordNavigationLifecycle("beforeunload"));
+    window.addEventListener("pagehide", () => recordNavigationLifecycle("pagehide"));
     const originalFetch = window.fetch.bind(window);
     const originalGetUserMedia = navigator.mediaDevices.getUserMedia.bind(navigator.mediaDevices);
     navigator.mediaDevices.getUserMedia = async (constraints) => {
@@ -215,6 +232,8 @@ async function installInstrumentation(browserContext) {
         track.stop = () => {
           if (!stopRecorded) {
             stopRecorded = true;
+            const stopCount = Number(sessionStorage.getItem("iam.qa.cameraTrackStopCount") || 0);
+            sessionStorage.setItem("iam.qa.cameraTrackStopCount", String(stopCount + 1));
             window.recordHrRuntimeEvent({ name: "camera_track_ended", at: performance.now() });
           }
           originalStop();
@@ -462,8 +481,10 @@ export async function createDeepARBrightGlasses({ previewElement, videoElement, 
   previewElement.append(canvas);
   return {
     async cleanup() {
+      sessionStorage.setItem("iam.qa.deeparCleanupStarted", "true");
       window.recordHrRuntimeEvent({ name: "deepar_cleanup_started", at: performance.now() });
       await new Promise(() => {});
+      sessionStorage.setItem("iam.qa.deeparCleanupResolved", "true");
       window.recordHrRuntimeEvent({ name: "deepar_cleanup_resolved", at: performance.now() });
     },
   };

@@ -401,6 +401,7 @@ async function beginShenMeasurement() {
 
 acceptButton.addEventListener("click", beginShenMeasurement);
 skipButton.addEventListener("click", () => window.location.assign(experienceUrl()));
+window.addEventListener("beforeunload", releaseShen);
 window.addEventListener("pagehide", releaseShen);
 
 clearLegacyHeartData();
