@@ -13,6 +13,7 @@ const scienceSource = read("i  a m/shop-science-data-v1.js");
 const scienceScript = read("i  a m/shop-science.js");
 const scienceStyle = read("i  a m/shop-science.css");
 const globalNavigation = read("i  a m/global-navigation.js");
+const htaccess = read(".htaccess");
 const styleToken = createHash("sha256").update(scienceStyle).digest("hex").slice(0, 12);
 const dataToken = createHash("sha256").update(scienceSource).digest("hex").slice(0, 12);
 const scriptToken = createHash("sha256").update(scienceScript).digest("hex").slice(0, 12);
@@ -20,6 +21,40 @@ const scriptToken = createHash("sha256").update(scienceScript).digest("hex").sli
 const context = { window: {} };
 vm.runInNewContext(scienceSource, context, { filename: "shop-science-data-v1.js" });
 const data = context.window.IAMShopScienceData;
+
+const mobileRetainedPageMatch = htaccess.match(
+  /^RewriteCond %\{REQUEST_URI\} !\^\/vogue\/iam\/\(([^)]+)\)\\\.html\$ \[NC\]$/m,
+);
+const smartphoneGate = [
+  "RewriteCond %{HTTP_USER_AGENT} !(iPad|Macintosh.*Mobile) [NC]",
+  "RewriteCond %{HTTP_USER_AGENT} \"(Mobile|iPhone|iPod|IEMobile|Opera Mini|BlackBerry|webOS)\" [NC]",
+  "RewriteCond %{QUERY_STRING} !(^|&)full=1(&|$) [NC]",
+].join("\n");
+
+assert.equal(
+  htaccess.split(smartphoneGate).length - 1,
+  3,
+  "All smartphone redirects must retain the full=1 escape hatch and iPad/Macintosh-mobile exclusions",
+);
+assert.ok(
+  htaccess.includes(`${smartphoneGate}\nRewriteRule ^shop/?$ /vogue/iam/shop.html [R=302,L,NE]`),
+  "The direct Shop smartphone redirect must remain unchanged",
+);
+assert.ok(
+  htaccess.includes(`${smartphoneGate}\nRewriteCond %{QUERY_STRING} (^|&)shop=1(&|$) [NC]\nRewriteRule ^vogue/iam/index\\.html$ /vogue/iam/shop.html [R=302,L,NE]`),
+  "The shop=1 smartphone redirect must remain unchanged",
+);
+assert.ok(mobileRetainedPageMatch, "The smartphone retained-page allowlist must remain explicit");
+assert.deepEqual(
+  mobileRetainedPageMatch[1].split("|"),
+  ["induction", "about", "science", "our-team", "shop", "shop-science"],
+  "Mobile must add only the dedicated Shop SCIENCE route to the five retained editorial pages",
+);
+assert.match(
+  htaccess,
+  /^RewriteRule \^vogue\/iam\/\.\*\\\.html\$ \/vogue\/iam\/induction\.html\?mobile=1 \[R=302,L,NE\]$/m,
+  "Other smartphone HTML routes must continue to redirect to the mobile induction page",
+);
 
 assert.ok(data, "Shop SCIENCE data projection must be available");
 assert.equal(data.evidenceVersion, "JB-SCIENCE-2026-08-12-v1", "SCIENCE evidence version must remain explicit");
