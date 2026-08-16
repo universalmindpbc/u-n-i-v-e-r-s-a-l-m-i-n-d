@@ -12,6 +12,8 @@ ROBOTS_FILE="${ROBOTS_FILE:-$ROOT_DIR/robots.txt}"
 REMOTE_ROOT="${REMOTE_ROOT:-}"
 REMOTE_ROOT="${REMOTE_ROOT#/}"
 REMOTE_ROOT="${REMOTE_ROOT%/}"
+OWNER_STATE_REFERENCE_ORIGIN="${OWNER_STATE_REFERENCE_ORIGIN:-https://staging.universalmind.tv/vogue/iam}"
+OWNER_STATE_REFERENCE_ORIGIN="${OWNER_STATE_REFERENCE_ORIGIN%/}"
 
 if [[ -f "$FTP_PASS_FILE" ]]; then
   FTP_PASS="$(cat "$FTP_PASS_FILE")"
@@ -89,6 +91,237 @@ remote_file_exists() {
     --user "$FTP_USER:$FTP_PASS" \
     "ftp://$FTP_HOST/$encoded_path" \
     --output /dev/null
+}
+
+download_remote_file() {
+  local remote_path="$1"
+  local destination="$2"
+  local encoded_path
+
+  encoded_path="$(encode_path "$(remote_target "$remote_path")")"
+  curl --globoff --fail --silent --show-error \
+    --retry 5 --retry-delay 2 --retry-max-time 180 --retry-all-errors \
+    --user "$FTP_USER:$FTP_PASS" \
+    "ftp://$FTP_HOST/$encoded_path" \
+    --output "$destination"
+}
+
+OWNER_STATE_SNAPSHOT_DIR=""
+OWNER_STATE_BEFORE=""
+OWNER_STATE_REFERENCE_BEFORE=""
+
+cleanup_owner_state_snapshot() {
+  if [[ -n "$OWNER_STATE_SNAPSHOT_DIR" && -d "$OWNER_STATE_SNAPSHOT_DIR" ]]; then
+    rm -rf -- "$OWNER_STATE_SNAPSHOT_DIR"
+  fi
+}
+
+trap cleanup_owner_state_snapshot EXIT
+
+snapshot_owner_runtime_state() {
+  local output_file="$1"
+  local phase="$2"
+  local scratch_dir json_path asset_list remote_path checksum index asset_path
+  local -a protected_json_paths=(
+    "api/mantra-library.json"
+    "api/quantum-tree-settings.json"
+    "api/happiness-ledger.json"
+    "apple-wallet/happiness-apple-registrations.json"
+  )
+
+  scratch_dir="$OWNER_STATE_SNAPSHOT_DIR/$phase"
+  mkdir -p "$scratch_dir"
+  : > "$output_file"
+  index=0
+
+  for remote_path in "${protected_json_paths[@]}"; do
+    json_path="$scratch_dir/state-$index.json"
+    if ! download_remote_file "vogue/iam/$remote_path" "$json_path"; then
+      echo "Release blocked: protected runtime state is unavailable: $remote_path" >&2
+      return 1
+    fi
+    checksum="$(file_hash "$json_path")"
+    printf '%s\t%s\n' "$checksum" "$remote_path" >> "$output_file"
+    index=$((index + 1))
+  done
+
+  json_path="$scratch_dir/state-0.json"
+  asset_list="$scratch_dir/mantra-upload-paths.txt"
+  if ! extract_mantra_upload_paths "$json_path" > "$asset_list"; then
+    echo "Release blocked: live Mantra owner state is invalid." >&2
+    return 1
+  fi
+  while IFS= read -r asset_path; do
+    [[ -n "$asset_path" ]] || continue
+    remote_path="$asset_path"
+    if ! download_remote_file "vogue/iam/$remote_path" "$scratch_dir/asset-$index"; then
+      echo "Release blocked: a live Mantra sample referenced by owner state is unavailable: $remote_path" >&2
+      return 1
+    fi
+    checksum="$(file_hash "$scratch_dir/asset-$index")"
+    printf '%s\t%s\n' "$checksum" "$remote_path" >> "$output_file"
+    index=$((index + 1))
+  done < "$asset_list"
+
+  LC_ALL=C sort -k2,2 "$output_file" -o "$output_file"
+}
+
+extract_mantra_upload_paths() {
+  python3 - "$1" <<'PY'
+import json
+import sys
+
+with open(sys.argv[1], "r", encoding="utf-8") as handle:
+    library = json.load(handle)
+
+banks = library.get("banks")
+if not isinstance(banks, dict) or not banks:
+    raise SystemExit("Mantra library has no banks")
+
+paths = set()
+for slots in banks.values():
+    if not isinstance(slots, list):
+        raise SystemExit("Mantra bank is not a list")
+    for slot in slots:
+        asset = slot.get("asset") if isinstance(slot, dict) else None
+        if isinstance(asset, str) and asset.startswith("a s s e t s/m a n t r a [ u p l o a d s ]/"):
+            if "\n" in asset or "\r" in asset or ".." in asset.split("/"):
+                raise SystemExit("Mantra asset path is unsafe")
+            paths.add(asset)
+
+for asset in sorted(paths):
+    print(asset)
+PY
+}
+
+download_reference_file() {
+  local relative_path="$1"
+  local destination="$2"
+  local encoded_path
+
+  encoded_path="$(encode_path "$relative_path")"
+  curl --globoff --fail --silent --show-error \
+    --retry 5 --retry-delay 2 --retry-max-time 180 --retry-all-errors \
+    -H 'Cache-Control: no-cache' \
+    "$OWNER_STATE_REFERENCE_ORIGIN/$encoded_path?ownerStateGuard=$(date +%s)" \
+    --output "$destination"
+}
+
+snapshot_reference_mantra_state() {
+  local output_file="$1"
+  local phase="$2"
+  local scratch_dir json_path asset_list asset_path checksum index
+
+  scratch_dir="$OWNER_STATE_SNAPSHOT_DIR/$phase"
+  mkdir -p "$scratch_dir"
+  json_path="$scratch_dir/mantra-library.json"
+  asset_list="$scratch_dir/mantra-upload-paths.txt"
+  : > "$output_file"
+
+  if ! download_reference_file "api/mantra-library.json" "$json_path"; then
+    echo "Release blocked: approved staging Mantra state is unavailable." >&2
+    return 1
+  fi
+  if ! extract_mantra_upload_paths "$json_path" > "$asset_list"; then
+    echo "Release blocked: approved staging Mantra state is invalid." >&2
+    return 1
+  fi
+
+  checksum="$(file_hash "$json_path")"
+  printf '%s\t%s\n' "$checksum" "api/mantra-library.json" >> "$output_file"
+  index=0
+  while IFS= read -r asset_path; do
+    [[ -n "$asset_path" ]] || continue
+    if ! download_reference_file "$asset_path" "$scratch_dir/asset-$index"; then
+      echo "Release blocked: approved staging Mantra sample is unavailable: $asset_path" >&2
+      return 1
+    fi
+    checksum="$(file_hash "$scratch_dir/asset-$index")"
+    printf '%s\t%s\n' "$checksum" "$asset_path" >> "$output_file"
+    index=$((index + 1))
+  done < "$asset_list"
+
+  LC_ALL=C sort -k2,2 "$output_file" -o "$output_file"
+}
+
+is_production_target() {
+  case "${OWNER_STATE_REFERENCE_REQUIRED:-auto}" in
+    1|true|yes)
+      return 0
+      ;;
+    0|false|no)
+      return 1
+      ;;
+  esac
+
+  [[ "$FTP_HOST" == "ftp.universalmind.tv" ]]
+}
+
+target_mantra_snapshot() {
+  local source_snapshot="$1"
+  local output_file="$2"
+
+  awk -F '\t' '$2 == "api/mantra-library.json" || index($2, "a s s e t s/m a n t r a [ u p l o a d s ]/") == 1' \
+    "$source_snapshot" > "$output_file"
+}
+
+verify_target_matches_reference() {
+  local target_snapshot="$1"
+  local reference_snapshot="$2"
+  local phase="$3"
+  local target_mantra="$OWNER_STATE_SNAPSHOT_DIR/target-mantra-$phase.tsv"
+
+  target_mantra_snapshot "$target_snapshot" "$target_mantra"
+  if ! cmp -s "$target_mantra" "$reference_snapshot"; then
+    echo "Release blocked: production Mantra state does not match the approved staging state ($phase)." >&2
+    diff -u "$reference_snapshot" "$target_mantra" >&2 || true
+    return 1
+  fi
+}
+
+deployment_requires_owner_state_guard() {
+  case "$1" in
+    iam|iam-fast|fast|media|changed|iam-changed|all|all-fast|all-changed)
+      return 0
+      ;;
+  esac
+  return 1
+}
+
+capture_owner_state_before_deploy() {
+  OWNER_STATE_SNAPSHOT_DIR="$(mktemp -d)"
+  OWNER_STATE_BEFORE="$OWNER_STATE_SNAPSHOT_DIR/before.tsv"
+  snapshot_owner_runtime_state "$OWNER_STATE_BEFORE" "before"
+  if is_production_target; then
+    OWNER_STATE_REFERENCE_BEFORE="$OWNER_STATE_SNAPSHOT_DIR/reference-before.tsv"
+    snapshot_reference_mantra_state "$OWNER_STATE_REFERENCE_BEFORE" "reference-before"
+    verify_target_matches_reference "$OWNER_STATE_BEFORE" "$OWNER_STATE_REFERENCE_BEFORE" "before"
+  fi
+  echo "Protected owner runtime state captured before deployment."
+}
+
+verify_owner_runtime_state_preserved() {
+  local after_snapshot="$OWNER_STATE_SNAPSHOT_DIR/after.tsv"
+  local reference_after="$OWNER_STATE_SNAPSHOT_DIR/reference-after.tsv"
+
+  snapshot_owner_runtime_state "$after_snapshot" "after"
+  if ! cmp -s "$OWNER_STATE_BEFORE" "$after_snapshot"; then
+    echo "Release failed: protected owner runtime state changed during deployment." >&2
+    diff -u "$OWNER_STATE_BEFORE" "$after_snapshot" >&2 || true
+    return 1
+  fi
+
+  if is_production_target; then
+    snapshot_reference_mantra_state "$reference_after" "reference-after"
+    if ! cmp -s "$OWNER_STATE_REFERENCE_BEFORE" "$reference_after"; then
+      echo "Release failed: approved staging Mantra state changed during deployment." >&2
+      diff -u "$OWNER_STATE_REFERENCE_BEFORE" "$reference_after" >&2 || true
+      return 1
+    fi
+    verify_target_matches_reference "$after_snapshot" "$reference_after" "after"
+  fi
+
+  echo "Protected owner runtime state verified unchanged after deployment."
 }
 
 deploy_owner_state_seeds() {
@@ -292,7 +525,13 @@ deploy_iam_changed() {
   echo "Changed non-video files uploaded: $upload_count; unchanged skipped: $skip_count"
 }
 
-case "${1:-iam}" in
+DEPLOY_MODE="${1:-iam}"
+
+if deployment_requires_owner_state_guard "$DEPLOY_MODE"; then
+  capture_owner_state_before_deploy
+fi
+
+case "$DEPLOY_MODE" in
   iam)
     deploy_iam "include-media"
     ;;
@@ -332,4 +571,8 @@ case "${1:-iam}" in
     ;;
 esac
 
-echo "Deploy complete: ${1:-iam}"
+if deployment_requires_owner_state_guard "$DEPLOY_MODE"; then
+  verify_owner_runtime_state_preserved
+fi
+
+echo "Deploy complete: $DEPLOY_MODE"

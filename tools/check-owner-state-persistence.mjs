@@ -26,6 +26,16 @@ for (const protectedPath of [
 
 assert.match(deploy, /seed-owner-state\)/, "Owner state has no explicit seed-only deployment mode");
 assert.match(deploy, /remote_file_exists/, "Seed-only deployment cannot protect an existing live file");
+assert.match(deploy, /snapshot_owner_runtime_state/, "Deployment does not fingerprint live owner state");
+assert.match(deploy, /capture_owner_state_before_deploy/, "Deployment does not capture owner state before upload");
+assert.match(deploy, /verify_owner_runtime_state_preserved/, "Deployment does not verify owner state after upload");
+assert.match(deploy, /cmp -s \"\$OWNER_STATE_BEFORE\" \"\$after_snapshot\"/, "Deployment does not fail on an owner-state mismatch");
+assert.match(deploy, /Mantra sample referenced by owner state is unavailable/, "Deployment does not fail closed when a referenced Mantra upload is missing");
+assert.match(deploy, /deployment_requires_owner_state_guard/, "Deployment modes can bypass the owner-state guard");
+assert.match(deploy, /OWNER_STATE_REFERENCE_ORIGIN/, "Production release has no approved staging Mantra reference");
+assert.match(deploy, /snapshot_reference_mantra_state/, "Production release does not fingerprint approved staging Mantra state");
+assert.match(deploy, /verify_target_matches_reference/, "Production release does not block a stale Mantra library before deployment");
+assert.match(deploy, /approved staging Mantra state changed during deployment/, "Production release does not fail when the staging reference moves");
 assert.match(stagingDeploy, /exec "\$ROOT_DIR\/deploy-panthurlive\.sh"/, "Staging no longer uses the protected shared deploy engine");
 
 for (const endpoint of [mantra, quantum]) {
