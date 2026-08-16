@@ -86,9 +86,10 @@ test("research page is the existing I AM scene with one compact native prompt", 
 test("browser controller delegates the supported 10-second Quick HR face-map measurement to Shen", async () => {
   const source = await read(resolve(researchDirectory, "shen-heart-rate.js"));
   const runtime = await read(resolve(researchDirectory, "vendor", "shenai-sdk", "shenai_sdk.mjs"));
+  const recommendationToken = (await sha256(resolve(researchDirectory, "shen-heart-recommendation.js"))).slice(0, 12);
 
   assert.match(source, /\.\/vendor\/shenai-sdk\/index\.mjs/);
-  assert.match(source, /shen-heart-recommendation\.js\?v=e61dcdb0f0e0/);
+  assert.match(source, new RegExp(`shen-heart-recommendation\\.js\\?v=${recommendationToken}`));
   assert.match(source, /MeasurementPreset\.QUICK_HR_MODE/);
   assert.match(source, /setMeasurementPreset\(MeasurementPreset\.QUICK_HR_MODE\)/);
   assert.match(source, /measurementPresetValue\(shenaiSDK\.getMeasurementPreset\(\)\)/);
@@ -196,7 +197,7 @@ test("DeepAR uses the complete frame while live Shen pixel planes preserve the S
   assert.doesNotMatch(controller, /setDeepARFaceRegion|deeparFaceRegion/);
 });
 
-test("heart rate is momentary and only a bounded privacy-safe homepage handoff continues", async () => {
+test("heart rate remains bounded to the first-party handoff and a current-tab display record", async () => {
   const source = await read(resolve(researchDirectory, "shen-heart-rate.js"));
   const recommendationSource = await read(resolve(researchDirectory, "shen-heart-recommendation.js"));
   assert.match(source, /heart_rate_bpm/);
@@ -212,7 +213,10 @@ test("heart rate is momentary and only a bounded privacy-safe homepage handoff c
   assert.doesNotMatch(source, /citizen-needs-inference|Finding your experience|Tuning your experience/);
   assert.doesNotMatch(source, /ADAPTIVE_SOUND_SESSION_CHOICE_KEY/);
   assert.match(source, /sessionStorage\.removeItem/);
-  assert.doesNotMatch(source, /average_signal_quality|measuredAt|provider|storeHeartRateResult|pseudonymousUserId/);
+  assert.match(source, /iamCurrentCheckinHeartRateV1/);
+  assert.match(source, /sessionStorage\.setItem\(currentHeartRateStorageKey/);
+  assert.match(source, /scope:\s*"current_tab_session"/);
+  assert.doesNotMatch(source, /localStorage\.setItem|average_signal_quality|provider|storeHeartRateResult|pseudonymousUserId/);
   assert.doesNotMatch(source, /selection_needs/);
   assert.doesNotMatch(source, /heartbeats|hrv_|stress_index|photo|waveform|rrIntervals/i);
   assert.match(recommendationSource, /heart_rate_bpm:\s*bpm/);
@@ -231,7 +235,7 @@ test("heart rate is momentary and only a bounded privacy-safe homepage handoff c
   assert.doesNotMatch(recommendationSource, /localStorage|sessionStorage|document\.cookie|citizen-needs-inference/);
 });
 
-test("heart-rate completion hands off once without storing or returning raw BPM", async () => {
+test("heart-rate completion hands off once without returning raw BPM from the endpoint", async () => {
   const {
     heartCheckHandoffPrivacy,
     handoffHeartCheckToHomepage,
@@ -245,7 +249,8 @@ test("heart-rate completion hands off once without storing or returning raw BPM"
     opaque_cookie_http_only: true,
     raw_heart_rate_sent_to_openai: false,
     raw_heart_rate_returned: false,
-    raw_heart_rate_persisted_in_browser: false,
+    current_tab_display_storage: true,
+    cross_session_storage: false,
     direct_heart_rate_to_song_room_band_carrier_or_dsp: false,
   });
 
@@ -315,6 +320,26 @@ test("heart-rate completion hands off once without storing or returning raw BPM"
   });
   assert.deepEqual(timeoutResult, { status: "unavailable", accepted: false });
   assert.ok(Date.now() - timeoutStarted < 100);
+});
+
+test("Citizen Needs imports the accepted current-tab Heart Rate into Latest Check In", async () => {
+  const page = await read(resolve(iamDirectory, "technology-citizen-needs.html"));
+  const controller = await read(resolve(iamDirectory, "technology-citizen-needs.js"));
+  const styles = await read(resolve(iamDirectory, "technology-citizen-needs.css"));
+  const statusStart = page.indexOf('<section class="checkin-status"');
+  const statusEnd = page.indexOf("</section>", statusStart);
+  const statusMarkup = page.slice(statusStart, statusEnd);
+
+  assert.ok(statusStart >= 0 && statusEnd > statusStart);
+  assert.match(statusMarkup, /data-checkin-heart-rate hidden>Heart Rate &middot;/);
+  assert.match(statusMarkup, /data-checkin-heart-rate-value/);
+  assert.doesNotMatch(statusMarkup, /Video Selfie|video selfie/);
+  assert.match(controller, /currentHeartRateStorageKey\s*=\s*"iamCurrentCheckinHeartRateV1"/);
+  assert.match(controller, /window\.sessionStorage\?\.getItem\(currentHeartRateStorageKey\)/);
+  assert.match(controller, /schema_version\s*===\s*"iam_current_checkin_heart_rate_v1"/);
+  assert.match(controller, /checkinHeartRateValue\.textContent\s*=\s*String\(heartRateRecord\.heartRate\)/);
+  assert.match(controller, /checkinHeartRate\.hidden\s*=\s*false/);
+  assert.match(styles, /\.checkin-status__line--heart-rate\s*\{/);
 });
 
 test("short-term Shen token endpoint keeps the permanent credential server-side", async () => {

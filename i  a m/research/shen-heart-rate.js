@@ -6,7 +6,7 @@ import CreateShenaiSDK, {
   UiVersion,
 } from "./vendor/shenai-sdk/index.mjs";
 import { createDeepARBrightGlasses } from "./deepar-bright-glasses.js?v=deepar-bright-glasses-js-527f474c6210";
-import { handoffHeartCheckToHomepage } from "./shen-heart-recommendation.js?v=e61dcdb0f0e0";
+import { handoffHeartCheckToHomepage } from "./shen-heart-recommendation.js?v=b3324d1c790c";
 
 const offer = document.querySelector("[data-heart-rate-offer]");
 const offerPanel = document.querySelector("[data-heart-rate-offer-panel]");
@@ -27,9 +27,11 @@ const shenVisualPlanes = [...document.querySelectorAll("[data-shen-visual-plane]
 const finalHeartRate = document.querySelector("[data-heart-rate-result]");
 const finalHeartRateValue = document.querySelector("[data-heart-rate-result-value]");
 const status = document.querySelector("[data-shen-status]");
+const currentHeartRateStorageKey = "iamCurrentCheckinHeartRateV1";
 const legacyHeartDataKeys = Object.freeze([
   "iam.shenResearch.preHeartRate.v1",
   "iam.shenResearch.user.v1",
+  currentHeartRateStorageKey,
 ]);
 
 let shenaiSDK = null;
@@ -91,7 +93,28 @@ function clearLegacyHeartData() {
   try {
     legacyHeartDataKeys.forEach((key) => sessionStorage.removeItem(key));
   } catch {
-    // Storage may be unavailable; this version never writes biometric data.
+    // Storage may be unavailable; Heart Check remains optional and non-blocking.
+  }
+}
+
+function storeCurrentCheckinHeartRate(heartRate) {
+  const normalized = normalizedHeartRate(heartRate);
+  if (normalized === null) return false;
+
+  const record = {
+    schema_version: "iam_current_checkin_heart_rate_v1",
+    heart_rate_bpm: normalized,
+    measured_at: Date.now(),
+    measurement_duration_seconds: 10,
+    source: "shen_quick_hr",
+    scope: "current_tab_session",
+  };
+
+  try {
+    sessionStorage.setItem(currentHeartRateStorageKey, JSON.stringify(record));
+    return true;
+  } catch {
+    return false;
   }
 }
 
@@ -348,10 +371,11 @@ async function finishAndContinue() {
     if (displayHeartRate !== null) {
       showFinalHeartRate(displayHeartRate);
       await wait(FINAL_READING_HOLD_MS);
-      await handoffHeartCheckToHomepage(momentaryHeartRate, {
+      const handoff = await handoffHeartCheckToHomepage(momentaryHeartRate, {
         storage: sessionStorage,
         fetchImpl: (...args) => fetch(...args),
       });
+      if (handoff.accepted) storeCurrentCheckinHeartRate(displayHeartRate);
     }
   } finally {
     momentaryHeartRate = null;

@@ -393,13 +393,22 @@ body.nav-open .checkin-status {
   animation-delay: 760ms;
 }
 
+.checkin-status__line--heart-rate {
+  margin-top: 6px;
+  color: rgba(255, 255, 255, 0.72);
+  font-size: clamp(14px, 1vw, 19px);
+  font-weight: 330;
+  line-height: 1.32;
+  animation-delay: 1140ms;
+}
+
 .checkin-status__line--meta {
   margin-top: 10px;
   color: rgba(255, 255, 255, 0.36);
   font-size: clamp(13px, 0.94vw, 18px);
   font-weight: 300;
   line-height: 1.32;
-  animation-delay: 1520ms;
+  animation-delay: 1900ms;
 }
 
 .technology-copy {

@@ -23,6 +23,9 @@ const shouldAutoOpenTensorKernel = searchParams.get("tensor") === "open";
 const autoTensorKernelLayer = searchParams.get("kernelLayer") || searchParams.get("kernel");
 const checkinValue = document.querySelector("[data-checkin-value]");
 const checkinUpdated = document.querySelector("[data-checkin-updated]");
+const checkinHeartRate = document.querySelector("[data-checkin-heart-rate]");
+const checkinHeartRateValue = document.querySelector("[data-checkin-heart-rate-value]");
+const currentHeartRateStorageKey = "iamCurrentCheckinHeartRateV1";
 const globalNav = document.querySelector("[data-global-nav]");
 const navOpenButtons = document.querySelectorAll("[data-nav-open]");
 const navCloseButtons = document.querySelectorAll("[data-nav-close]");
@@ -130,6 +133,30 @@ function storedJsonField(keys) {
   }
 }
 
+function currentHeartRateRecord() {
+  let record = null;
+  try {
+    const serialized = window.sessionStorage?.getItem(currentHeartRateStorageKey);
+    record = serialized ? JSON.parse(serialized) : null;
+  } catch {
+    return null;
+  }
+
+  const heartRate = Math.round(Number(record?.heart_rate_bpm));
+  const measuredAt = Number(record?.measured_at);
+  const isValid = record?.schema_version === "iam_current_checkin_heart_rate_v1"
+    && Number.isFinite(heartRate)
+    && heartRate >= 30
+    && heartRate <= 240
+    && Number.isFinite(measuredAt)
+    && measuredAt > 0
+    && record?.measurement_duration_seconds === 10
+    && record?.source === "shen_quick_hr"
+    && record?.scope === "current_tab_session";
+
+  return isValid ? { heartRate, measuredAt } : null;
+}
+
 function checkinFragment(value) {
   const cleaned = value?.trim().replace(/^i\s+am(?:\s+|$)/i, "") || "";
   return cleaned || "";
@@ -225,8 +252,13 @@ function initCheckinStatus() {
     ]);
   const nextCheckin = checkinFragment(incomingCheckin) || (isHomepageRadarFrame ? "strong" : "");
   const nextUpdated = incomingUpdated || (isHomepageRadarFrame ? String(Date.now()) : "");
+  const heartRateRecord = currentHeartRateRecord();
 
   if (nextCheckin && checkinValue) checkinValue.textContent = nextCheckin;
+  if (heartRateRecord && checkinHeartRate && checkinHeartRateValue) {
+    checkinHeartRateValue.textContent = String(heartRateRecord.heartRate);
+    checkinHeartRate.hidden = false;
+  }
   if (nextUpdated) {
     activeCheckinUpdatedValue = nextUpdated;
     refreshCheckinUpdated();

@@ -118,6 +118,7 @@ export const heartCheckHandoffPrivacy = Object.freeze({
   opaque_cookie_http_only: true,
   raw_heart_rate_sent_to_openai: false,
   raw_heart_rate_returned: false,
-  raw_heart_rate_persisted_in_browser: false,
+  current_tab_display_storage: true,
+  cross_session_storage: false,
   direct_heart_rate_to_song_room_band_carrier_or_dsp: false,
 });
