@@ -14,6 +14,7 @@ const scienceScript = read("i  a m/shop-science.js");
 const scienceStyle = read("i  a m/shop-science.css");
 const globalNavigation = read("i  a m/global-navigation.js");
 const htaccess = read(".htaccess");
+const stagingDeploy = read("deploy-panthurlive.sh");
 const styleToken = createHash("sha256").update(scienceStyle).digest("hex").slice(0, 12);
 const dataToken = createHash("sha256").update(scienceSource).digest("hex").slice(0, 12);
 const scriptToken = createHash("sha256").update(scienceScript).digest("hex").slice(0, 12);
@@ -49,6 +50,12 @@ assert.deepEqual(
   mobileRetainedPageMatch[1].split("|"),
   ["induction", "about", "science", "our-team", "shop", "shop-science"],
   "Mobile must add only the dedicated Shop SCIENCE route to the five retained editorial pages",
+);
+assert.ok(
+  stagingDeploy.includes(
+    "RewriteCond %{REQUEST_URI} !^/vogue/iam/(induction|about|science|our-team|shop|shop-science)\\.html$ [NC]",
+  ),
+  "The Panthur deployer must reproduce the exact Shop SCIENCE smartphone allowlist",
 );
 assert.match(
   htaccess,
