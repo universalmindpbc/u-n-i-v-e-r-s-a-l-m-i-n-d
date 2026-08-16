@@ -72,7 +72,7 @@ should_skip_iam_source() {
   local relative_path="${source_file#"$IAM_DIR"/}"
 
   case "$relative_path" in
-    "api/mantra-library.json"|"api/quantum-tree-settings.json"|"api/happiness-ledger.json"|"apple-wallet/happiness-apple-registrations.json"|"api/.owner-state-history/"*|"api/.happiness-private/"*|"a s s e t s/m a n t r a [ u p l o a d s ]/"*)
+    "api/mantra-library.json"|"api/quantum-tree-settings.json"|"api/happiness-ledger.json"|"apple-wallet/happiness-apple-registrations.json"|"api/.owner-state-history/"*|"api/.happiness-private/"*|"api/.runtime-private/"*|"a s s e t s/m a n t r a [ u p l o a d s ]/"*)
       return 0
       ;;
   esac

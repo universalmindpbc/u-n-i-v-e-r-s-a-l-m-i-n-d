@@ -5,5 +5,6 @@ AddHandler cgi-script .py
 RewriteEngine On
 RewriteRule ^\.owner-state-history(?:/|$) - [F,L]
 RewriteRule ^\.happiness-private(?:/|$) - [F,L]
+RewriteRule ^\.runtime-private(?:/|$) - [F,L]
 RewriteRule ^happiness-ledger\.json$ - [F,L]
 </IfModule>

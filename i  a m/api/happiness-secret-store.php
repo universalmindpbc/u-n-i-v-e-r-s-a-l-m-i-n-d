@@ -5,6 +5,8 @@ declare(strict_types=1);
  * Resolve a private runtime value without ever placing credentials in Git.
  * Panthur may provide values as environment variables. Shared-hosting installs
  * can instead provide api/.happiness-private/config.php returning an array.
+ * Restricted deployment accounts may use the separately denied
+ * api/.runtime-private/config.php fallback without weakening the primary store.
  */
 function happiness_secret(string $name): string
 {
@@ -13,9 +15,18 @@ function happiness_secret(string $name): string
 
     static $private = null;
     if ($private === null) {
-        $path = __DIR__ . '/.happiness-private/config.php';
-        $loaded = is_file($path) ? require $path : [];
-        $private = is_array($loaded) ? $loaded : [];
+        $private = [];
+        $paths = [
+            __DIR__ . '/.happiness-private/config.php',
+            __DIR__ . '/.runtime-private/config.php',
+        ];
+        foreach ($paths as $path) {
+            $loaded = is_file($path) ? require $path : [];
+            if (is_array($loaded)) {
+                // The original private store remains authoritative when both exist.
+                $private += $loaded;
+            }
+        }
     }
     $value = $private[$name] ?? '';
     return is_string($value) ? trim($value) : '';

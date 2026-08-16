@@ -12,6 +12,7 @@ const mantra = read("i  a m/api/mantra-library.php");
 const quantum = read("i  a m/api/quantum-tree-settings.php");
 const history = read("i  a m/api/owner-state-history.php");
 const apiHtaccess = read("i  a m/api/.htaccess");
+const secretStore = read("i  a m/api/happiness-secret-store.php");
 
 for (const protectedPath of [
   "api/mantra-library.json",
@@ -19,6 +20,7 @@ for (const protectedPath of [
   "api/happiness-ledger.json",
   "apple-wallet/happiness-apple-registrations.json",
   "api/.owner-state-history/",
+  "api/.runtime-private/",
   "a s s e t s/m a n t r a [ u p l o a d s ]/",
 ]) {
   assert.ok(deploy.includes(protectedPath), `Deployment does not preserve ${protectedPath}`);
@@ -48,5 +50,9 @@ assert.match(history, /'previous'/, "Owner history does not preserve the prior l
 assert.match(history, /'candidate'/, "Owner history does not preserve the candidate state before mutation");
 assert.match(history, /Require all denied/, "Runtime history does not create an Apache access denial");
 assert.match(apiHtaccess, /\.owner-state-history/, "The API directory does not deny direct history access");
+assert.match(apiHtaccess, /\.runtime-private/, "The API directory does not deny the restricted runtime secret fallback");
+assert.match(secretStore, /\.happiness-private\/config\.php/, "The primary private secret store was removed");
+assert.match(secretStore, /\.runtime-private\/config\.php/, "The restricted runtime secret fallback is not loaded");
+assert.match(secretStore, /\$private \+= \$loaded/, "The primary secret store no longer retains precedence");
 
 console.log("Owner-state persistence checks passed.");
