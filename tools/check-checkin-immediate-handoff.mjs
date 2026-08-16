@@ -32,7 +32,11 @@ const submitFlow = globe.slice(submitStart, submitEnd);
 assert.equal(submitFlow.includes("recordCheckin"), false, "database writes must not block the submit page");
 assert.ok(submitFlow.includes('transitionIamState("thanks", "✓ Thank you."'), "original thank-you transition must remain");
 assert.ok(submitFlow.includes("queuePendingCheckInPipeline(phrase)"), "check-in pipeline must be queued before navigation");
-assert.match(selfReport, /data-iam-next-page="index\.html\?v=[^"]+"/, "self-report must force a fresh homepage after check-in");
+assert.equal(
+  (selfReport.match(/data-iam-next-page="research\.php\?offer=heart-rate&amp;selection_source=checkin"/g) || []).length,
+  2,
+  "self-report must route every completed check-in through the optional Heart Check before the homepage",
+);
 
 assert.equal(homepageCheckin.includes("IAMCitizenData"), false, "guest homepage handoff must not start a durable citizen-data save");
 assert.equal(homepageCheckin.includes("recordCheckin"), false, "guest homepage handoff must remain recommendation-only");

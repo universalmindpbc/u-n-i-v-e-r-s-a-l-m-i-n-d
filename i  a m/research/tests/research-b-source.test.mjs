@@ -17,11 +17,14 @@ const sha256 = async (path) => createHash("sha256").update(await readFile(path))
 
 test("research check-in renders the canonical page instead of duplicating it", async () => {
   const source = await read(resolve(iamDirectory, "check-in-research.php"));
+  const canonical = await read(resolve(iamDirectory, "vogue-self-report.html"));
   assert.match(source, /file_get_contents\(\$canonicalPath\)/);
   assert.match(source, /vogue-self-report\.html/);
   assert.match(source, /data-iam-next-page/);
-  assert.match(source, /research\.php\?offer=heart-rate/);
+  assert.match(source, /research\.php\?offer=heart-rate&selection_source=checkin/);
   assert.doesNotMatch(source, /data-iam-form|vogue-report-lockup|How are you arriving/);
+  assert.equal((canonical.match(/data-iam-next-page="research\.php\?offer=heart-rate&amp;selection_source=checkin"/g) || []).length, 2);
+  assert.doesNotMatch(canonical, /data-iam-next-page="index\.html/);
 });
 
 test("research page is the existing I AM scene with one compact native prompt", async () => {

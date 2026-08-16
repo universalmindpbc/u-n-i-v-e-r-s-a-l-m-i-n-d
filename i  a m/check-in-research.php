@@ -14,14 +14,14 @@ if ($canonical === false) {
     exit;
 }
 
-$researchDestination = 'research.php?offer=heart-rate';
+$researchDestination = 'research.php?offer=heart-rate&selection_source=checkin';
 $rendered = preg_replace(
-    '/data-iam-next-page="index\.html[^\"]*"/',
+    '/data-iam-next-page="(?:index\.html|research\.php)[^\"]*"/',
     'data-iam-next-page="' . $researchDestination . '"',
     $canonical
 );
 
-if (!is_string($rendered) || $rendered === $canonical) {
+if (!is_string($rendered)) {
     http_response_code(503);
     echo 'The research check-in could not be prepared.';
     exit;

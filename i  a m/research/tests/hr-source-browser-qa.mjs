@@ -53,7 +53,10 @@ try {
   await checkInPage.goto(`${proofOrigin}/vogue/iam/check-in-research.php`, { waitUntil: "domcontentloaded" });
   assert.deepEqual(await checkInPage.locator("[data-iam-next-page]").evaluateAll((elements) => (
     elements.map((element) => element.getAttribute("data-iam-next-page"))
-  )), ["research.php?offer=heart-rate", "research.php?offer=heart-rate"]);
+  )), [
+    "research.php?offer=heart-rate&selection_source=checkin",
+    "research.php?offer=heart-rate&selection_source=checkin",
+  ]);
   assert.equal(await checkInPage.locator("[data-iam-form]").count(), 1);
   await checkInPage.close();
 
@@ -529,7 +532,7 @@ function createLocalCandidateRouter(handoffEvidence) {
     if (path === "/vogue/iam/check-in-research.php") {
       const canonical = await readFile(resolve(iamDirectory, "vogue-self-report.html"), "utf8");
       const rendered = canonical
-        .replace(/data-iam-next-page="index\.html[^"]*"/g, 'data-iam-next-page="research.php?offer=heart-rate"')
+        .replace(/data-iam-next-page="(?:index\.html|research\.php)[^"]*"/g, 'data-iam-next-page="research.php?offer=heart-rate&selection_source=checkin"')
         .replace("<title>Check In | I Am</title>", '<meta name="robots" content="noindex, nofollow">\n    <title>Research Check In | I Am</title>');
       await route.fulfill({ status: 200, headers: pageHeaders(), contentType: "text/html; charset=utf-8", body: rendered });
       return;
