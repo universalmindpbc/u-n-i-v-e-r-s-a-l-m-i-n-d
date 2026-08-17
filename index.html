@@ -8,6 +8,7 @@
     <link rel="icon" type="image/png" sizes="32x32" href="/vogue/iam/favicon.png?v=iam-favicon-3">
     <link rel="shortcut icon" type="image/png" href="/vogue/iam/favicon.png?v=iam-favicon-3">
     <link rel="apple-touch-icon" sizes="180x180" href="/vogue/iam/apple-touch-icon.png?v=iam-favicon-3">
+    <link rel="preload" as="image" href="/vogue/iam/a s s e t s/Universal Mind [ I o H ] Logo.PNG">
     <style>
       :root {
         color-scheme: dark;
@@ -80,6 +81,8 @@
       }
 
       .access-title {
+        position: relative;
+        z-index: 1;
         margin: 0 0 52px;
         font-family: "Bodoni 72", Didot, "Times New Roman", serif;
         font-size: clamp(15px, 2.3vw, 19px);
@@ -90,7 +93,20 @@
         text-shadow: 0 0 18px rgba(255, 255, 255, 0.2);
       }
 
+      .access-flower {
+        position: absolute;
+        z-index: 0;
+        top: 42px;
+        left: 50%;
+        width: 94px;
+        height: auto;
+        transform: translateX(-50%);
+        pointer-events: none;
+      }
+
       .access-form {
+        position: relative;
+        z-index: 1;
         display: grid;
         gap: 18px;
       }
@@ -128,8 +144,8 @@
         border-radius: 0;
         margin-top: 10px;
         padding: 12px 30px;
-        background: transparent;
-        color: #fff;
+        background: #fff;
+        color: #000;
         font: inherit;
         font-size: 11px;
         letter-spacing: 0.28em;
@@ -139,8 +155,8 @@
 
       .access-submit:hover,
       .access-submit:focus-visible {
-        background: #fff;
-        color: #000;
+        background: transparent;
+        color: #fff;
       }
 
       .access-error {
@@ -193,6 +209,11 @@
           font-size: 15px;
           letter-spacing: 0.28em;
         }
+
+        .access-flower {
+          top: 32px;
+          width: 82px;
+        }
       }
 
       @media (prefers-reduced-motion: no-preference) {
@@ -217,6 +238,13 @@
     <canvas class="rain-canvas" aria-hidden="true" data-rain-canvas></canvas>
     <div class="rain-vignette" aria-hidden="true"></div>
     <main class="access-shell">
+      <img
+        class="access-flower"
+        src="/vogue/iam/a s s e t s/Universal Mind [ I o H ] Logo.PNG"
+        alt=""
+        aria-hidden="true"
+        fetchpriority="high"
+      >
       <h1 class="access-title">u n i v e r s a l&nbsp;&nbsp;m i n d</h1>
       <form class="access-form" data-access-form novalidate>
         <label class="access-label" for="access-password">password</label>
