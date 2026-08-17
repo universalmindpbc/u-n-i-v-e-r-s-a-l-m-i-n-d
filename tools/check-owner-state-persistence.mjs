@@ -33,6 +33,8 @@ assert.match(deploy, /capture_owner_state_before_deploy/, "Deployment does not c
 assert.match(deploy, /verify_owner_runtime_state_preserved/, "Deployment does not verify owner state after upload");
 assert.match(deploy, /cmp -s \"\$OWNER_STATE_BEFORE\" \"\$after_snapshot\"/, "Deployment does not fail on an owner-state mismatch");
 assert.match(deploy, /Mantra sample referenced by owner state is unavailable/, "Deployment does not fail closed when a referenced Mantra upload is missing");
+assert.match(deploy, /remote_path" != "api\/mantra-library\.json"/, "The Mantra library is not treated as mandatory runtime state");
+assert.match(deploy, /printf '[^']*' "MISSING"/, "Optional absent owner state is not fingerprinted for pre/post comparison");
 assert.match(deploy, /deployment_requires_owner_state_guard/, "Deployment modes can bypass the owner-state guard");
 assert.match(deploy, /OWNER_STATE_REFERENCE_ORIGIN/, "Production release has no approved staging Mantra reference");
 assert.match(deploy, /snapshot_reference_mantra_state/, "Production release does not fingerprint approved staging Mantra state");

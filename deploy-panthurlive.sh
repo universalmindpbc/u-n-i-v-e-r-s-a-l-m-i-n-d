@@ -87,7 +87,7 @@ remote_file_exists() {
   local encoded_path
 
   encoded_path="$(encode_path "$(remote_target "$remote_path")")"
-  curl --globoff --fail --silent --show-error \
+  curl --globoff --fail --silent \
     --user "$FTP_USER:$FTP_PASS" \
     "ftp://$FTP_HOST/$encoded_path" \
     --output /dev/null
@@ -136,6 +136,11 @@ snapshot_owner_runtime_state() {
 
   for remote_path in "${protected_json_paths[@]}"; do
     json_path="$scratch_dir/state-$index.json"
+    if [[ "$remote_path" != "api/mantra-library.json" ]] && ! remote_file_exists "vogue/iam/$remote_path"; then
+      printf '%s\t%s\n' "MISSING" "$remote_path" >> "$output_file"
+      index=$((index + 1))
+      continue
+    fi
     if ! download_remote_file "vogue/iam/$remote_path" "$json_path"; then
       echo "Release blocked: protected runtime state is unavailable: $remote_path" >&2
       return 1
