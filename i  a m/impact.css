@@ -209,9 +209,9 @@ a { color: inherit; }
 .toc-column-title--technology { left: 13.35%; background: var(--impact-blue); }
 .toc-column-title--health { left: 45.08%; background: var(--impact-gold); }
 .toc-column-title--stigma { left: 76.55%; background: var(--impact-pink); }
-.toc-horizontal-arrow { position: absolute; top: 20.15%; font-size: 1.3cqw; line-height: 1; }
-.toc-horizontal-arrow--one { left: 31.75%; }
-.toc-horizontal-arrow--two { left: 63.3%; }
+.toc-horizontal-arrow { position: absolute; top: 20.15%; font-size: 1.3cqw; line-height: 1; transform: translateX(-50%); }
+.toc-horizontal-arrow--one { left: 34.25%; }
+.toc-horizontal-arrow--two { left: 65.75%; }
 .toc-row-label {
   position: absolute;
   z-index: 2;
@@ -311,7 +311,6 @@ a { color: inherit; }
 .impact-orb--engagement { fill: var(--impact-amber); }
 .impact-orb--health,
 .impact-orb--stigma { fill: var(--impact-green); }
-.funnel-title-panel { fill: var(--impact-funnel); }
 .funnel-step { position: absolute; top: 19.35%; width: 10.5%; height: 54.6%; text-align: center; }
 .funnel-step h3 { margin: 0; font-size: 1.28cqw; font-weight: 600; letter-spacing: -.02em; white-space: nowrap; }
 .funnel-step span { display: block; margin-top: 3.05cqh; color: rgba(255, 255, 255, .53); font-size: .72cqw; font-weight: 300; }
@@ -345,7 +344,7 @@ a { color: inherit; }
 .impact-index__stigma { top: 73.25%; }
 .impact-index p { position: absolute; left: 84.95%; top: 84.55%; margin: 0; font-size: .7cqw; line-height: 1.04; }
 .funnel-title-block { position: absolute; left: 41.3%; top: 84.06%; width: 17.4%; text-align: center; }
-.funnel-title-block h2 { display: flex; height: 5.55cqh; align-items: center; justify-content: center; margin: 0; font-size: 1.2cqw; font-weight: 600; }
+.funnel-title-block h2 { display: flex; height: 5.55cqh; align-items: center; justify-content: center; margin: 0; background: var(--impact-funnel); font-size: 1.2cqw; font-weight: 600; }
 .funnel-title-block p { margin: 3.7cqh 0 0; font-size: .82cqw; font-weight: 300; }
 
 .impact-pagination {
