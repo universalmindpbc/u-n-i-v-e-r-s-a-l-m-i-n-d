@@ -445,6 +445,12 @@ requireCondition(controller.includes('document.body.dataset.adaptiveTrackId = tr
 requireCondition(!controller.includes('const DEFAULT_TRACK_ID = "madonna-frozen";'), 'the no-check-in experience still defaults to Madonna - Frozen');
 requireCondition(controller.includes('const NO_CHECKIN_RANDOM_EXCLUDED_TRACK_IDS = new Set(["madonna-frozen"]);'), 'Madonna - Frozen has not been removed from the no-check-in random pool');
 requireCondition(controller.includes('function resolveRandomNoCheckinTrack()'), 'the no-check-in experience has no random song resolver');
+requireCondition(controller.includes('function beginTopLevelCheckIn(link)'), 'repeat check-in no longer has a dedicated top-level handoff');
+requireCondition(controller.includes('document.body.dataset.repeatCheckinHandoff = "top-level";'), 'repeat check-in does not expose its hard handoff for browser verification');
+requireCondition(controller.includes('["adaptiveFrame", "musicTelevisionFrame", "navigationShell"].forEach'), 'repeat check-in can retain stale frame routing parameters');
+requireCondition(controller.includes('stopTelevisionMedia();\n    window.location.assign(destination.href);'), 'repeat check-in does not stop the current programme before replacing the television shell');
+requireCondition(controller.includes('if (navItemName === "check-in")') && controller.includes('beginTopLevelCheckIn(link);'), 'the playing television navigation can still embed Check In');
+requireCondition(!controller.includes('stopBroadcastProgrammeTicker();') && controller.includes('setSoundResearchEnabled(false, { persist: false });'), 'the hard media stop can throw before repeat check-in navigation or leave Sound Research playing');
 requireCondition(controller.includes('candidate.presentation !== "live_dj_set"') && controller.includes('!candidate.cuePoints'), 'the no-check-in random pool can include long-form DJ sets or programmes');
 requireCondition(controller.includes('candidate.id !== lastTrackId'), 'the no-check-in random pool can immediately repeat the previous song');
 requireCondition(controller.includes('resolvedSelectionSource = "no_checkin_random";'), 'the no-check-in random source is not exposed for browser verification');

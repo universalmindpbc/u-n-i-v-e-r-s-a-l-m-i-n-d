@@ -7373,7 +7373,9 @@
     stopBroadcastPlayback("television_closed");
     stopFashionBroadcastPlayback("television_closed");
     stopRadioVisualBroadcastPlayback("television_closed");
-    stopBroadcastProgrammeTicker();
+    window.clearInterval(nowPlayingTickerTimer);
+    nowPlayingTickerTimer = 0;
+    setSoundResearchEnabled(false, { persist: false });
 
     const televisionVideos = new Set([
       localVideo,
@@ -7858,6 +7860,20 @@
     } catch {
       return false;
     }
+  }
+
+  function beginTopLevelCheckIn(link) {
+    const destination = new URL(link.getAttribute("href"), window.location.href);
+    ["adaptiveFrame", "musicTelevisionFrame", "navigationShell"].forEach((parameter) => {
+      destination.searchParams.delete(parameter);
+    });
+
+    document.body.dataset.repeatCheckinHandoff = "top-level";
+    televisionPlaybackRequested = false;
+    closeVideoNavigation();
+    exitFullscreenForNavigation();
+    stopTelevisionMedia();
+    window.location.assign(destination.href);
   }
 
   function frameHref(link, options = {}) {
@@ -8838,6 +8854,13 @@
       }
 
       const navItemName = link.dataset.navItem || "";
+      if (navItemName === "check-in") {
+        event.preventDefault();
+        event.stopImmediatePropagation();
+        beginTopLevelCheckIn(link);
+        return;
+      }
+
       const navSubmenu = navItemName
         ? document.querySelector(`[data-nav-submenu="${navItemName}"]`)
         : null;
