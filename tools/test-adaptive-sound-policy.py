@@ -165,6 +165,18 @@ def main() -> None:
     require(insufficient_result["selected"] is False, "Explicit insufficient context was overridden by fallback scores.")
     require("carrier_hz" not in insufficient_result, "Insufficient context silently selected 444 Hz.")
 
+    skipped_biometric = json.loads(json.dumps(insufficient))
+    skipped_biometric["checkin"] = "I am calm and taking this moment slowly."
+    skipped_biometric["current_inference"].update({
+        "heart_rate_role": "not_available",
+        "heart_rate_zone": "not_available",
+    })
+    skipped_result = sound.resolve_adaptive_sound(skipped_biometric, policy)
+    require(skipped_result["selected"] is True, "Accepted self-report was blocked when Heart Rate was skipped.")
+    require(skipped_result["selection_basis"] == "deterministic_needs_scores", "Skipped-Heart-Rate fallback authority was not audited.")
+    require(skipped_result["audit"]["heart_rate_role"] == "not_available", "Skipped Heart Rate was not carried as unavailable.")
+    require(skipped_result["audit"]["raw_checkin_text_used"] is False, "Self-report prose was used by the deterministic resolver.")
+
     manual_payload = intent_payload("delta", "cognition_joy")
     manual_payload["selection_context"]["adaptive_sound_session_choice"] = {
         "band_intent": "gamma",
@@ -199,6 +211,7 @@ def main() -> None:
         ],
         "research_targets_in_product_decisions": False,
         "no_checkin_default_carrier": False,
+        "accepted_self_report_without_heart_rate_selected": True,
     }, indent=2))
 
 

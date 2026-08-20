@@ -258,7 +258,8 @@ const inferenceInstructions = [
     "- The UX sequence is check-in, needs-matched VOD music video, needs-matched extended livestream, then manual portal exploration.",
     "- Recommend the music room only. The application owns the stable Parties 80% / Radio 10% / Videos 10% slot, readiness validation and exact source ID resolution.",
     "- Always return null for selected_format and source_id, and false for catalogue_ready. Never invent or resolve a channel source.",
-    "- Return adaptive_sound_intent as a minimal semantic current-check-in handoff: one band intent and one carrier intent, or relevant false with both null when context is insufficient.",
+    "- Every accepted non-empty self-report is sufficient for adaptive sound. Return adaptive_sound_intent with relevant true, selection_basis current_checkin, exactly one band intent and exactly one carrier intent.",
+    "- Heart Rate is optional refinement only. Missing, skipped, declined, expired or invalid Heart Rate never permits insufficient_context, null sound intents, a camera requirement or a withheld recommendation. Lower confidence for sparse context and choose the safest semantic fit from the self-report and structured needs scores.",
     "- Band intents are delta sleep/rest, theta mindfulness, alpha calm and gamma inspiration. Carrier intents are cognition_joy, self_connection, presence, social_connection and earth_focus_reward.",
     "- Do not output DSP settings or use biological targets, research hypotheses or music metadata to choose adaptive sound.",
     "- Time, weather and location must materially influence every adaptive music and adaptive-sound intent decision across Horizons 1, 2 and 3. Record all three as used or unavailable; never invent missing context.",
@@ -504,10 +505,8 @@ function validateInference(result, environmentContext, momentaryPhysiology) {
     uncertainty_notes: Array.isArray(result.uncertainty_notes) ? result.uncertainty_notes.slice(0, 3) : [],
     human_review_relevance: result.human_review_relevance || "not_indicated",
     adaptive_sound_intent: {
-      relevant: result.adaptive_sound_intent?.relevant === true,
-      selection_basis: ["current_checkin", "citizen_session_choice", "insufficient_context"].includes(result.adaptive_sound_intent?.selection_basis)
-        ? result.adaptive_sound_intent.selection_basis
-        : "insufficient_context",
+      relevant: true,
+      selection_basis: "current_checkin",
       band_intent: allowedAdaptiveSoundBands.includes(result.adaptive_sound_intent?.band_intent)
         ? result.adaptive_sound_intent.band_intent
         : null,
@@ -760,18 +759,18 @@ async function handleInference(request, response) {
                   type: "object",
                   additionalProperties: false,
                   properties: {
-                    relevant: { type: "boolean" },
+                    relevant: { type: "boolean", enum: [true] },
                     selection_basis: {
                       type: "string",
-                      enum: ["current_checkin", "citizen_session_choice", "insufficient_context"],
+                      enum: ["current_checkin"],
                     },
                     band_intent: {
-                      type: ["string", "null"],
-                      enum: [...allowedAdaptiveSoundBands, null],
+                      type: "string",
+                      enum: allowedAdaptiveSoundBands,
                     },
                     carrier_intent: {
-                      type: ["string", "null"],
-                      enum: [...allowedAdaptiveSoundCarriers, null],
+                      type: "string",
+                      enum: allowedAdaptiveSoundCarriers,
                     },
                     top_needs_used: {
                       type: "array",

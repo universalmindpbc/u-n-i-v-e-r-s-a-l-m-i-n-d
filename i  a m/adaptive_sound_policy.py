@@ -224,6 +224,7 @@ def resolve_adaptive_sound(payload: Mapping[str, Any], policy: Optional[Mapping[
     explicit_insufficient_context = (
         isinstance(semantic_intent, Mapping)
         and semantic_intent.get("relevant") is False
+        and not (isinstance(payload.get("checkin"), str) and payload["checkin"].strip())
         and basis != "citizen_session_override"
     )
 

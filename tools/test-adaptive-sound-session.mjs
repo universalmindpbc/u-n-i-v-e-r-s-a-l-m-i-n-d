@@ -83,6 +83,47 @@ assert.equal(insufficient.carrier_hz, null);
 assert.equal(insufficient.safety.adaptive_frequencies_enabled, false);
 assertions += 4;
 
+const skippedBiometric = resolveAdaptiveSoundSession({
+  checkin: "I am calm and taking this moment slowly.",
+  adaptive_sound_intent: {
+    relevant: false,
+    selection_basis: "insufficient_context",
+    band_intent: null,
+    carrier_intent: null,
+    safety_state: "standard",
+  },
+  current_inference: {
+    inference_id: "settled_resting",
+    heart_rate_role: "not_available",
+    heart_rate_zone: "not_available",
+  },
+  citizen_needs: { Emotion: { Calm: 1 }, Mindfulness: { Presence: 0.9 } },
+}, policy, { sourceEvent: "self_report_biometric_skipped" });
+const skippedBiometricPython = resolveWithPython({
+  checkin: "I am calm and taking this moment slowly.",
+  adaptive_sound_intent: {
+    relevant: false,
+    selection_basis: "insufficient_context",
+    band_intent: null,
+    carrier_intent: null,
+    safety_state: "standard",
+  },
+  current_inference: {
+    inference_id: "settled_resting",
+    heart_rate_role: "not_available",
+    heart_rate_zone: "not_available",
+  },
+  citizen_needs: { Emotion: { Calm: 1 }, Mindfulness: { Presence: 0.9 } },
+});
+assert.equal(skippedBiometric.selected, true);
+assert.equal(skippedBiometric.selection_basis, "deterministic_needs_scores");
+assert.notEqual(skippedBiometric.band_intent, null);
+assert.notEqual(skippedBiometric.carrier_hz, null);
+assert.equal(skippedBiometric.audit.heart_rate_role, "not_available");
+assert.equal(skippedBiometric.audit.raw_checkin_text_used, false);
+assert.deepEqual(comparable(skippedBiometric), comparable(skippedBiometricPython));
+assertions += 7;
+
 const highConcernFixture = intentFixture("alpha", "presence", "high_concern");
 highConcernFixture.adaptive_support_relevance = { level: "high" };
 highConcernFixture.human_review_relevance = { level: "recommended" };

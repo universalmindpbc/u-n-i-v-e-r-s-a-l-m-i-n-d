@@ -2,12 +2,14 @@
   "schema_version": "iam_adaptive_inference_matrix_v1",
   "name": "Current Inference Matrix",
   "language_rule": "Use Inference, never Scenario. All labels describe the current moment and are not diagnoses.",
-  "purpose": "Combine the current self-report, one optional 10-second Heart Rate measurement, local time, weather and approximate location into one cautious current-session inference for music and adaptive-sound intent.",
+  "purpose": "Use the current self-report as sufficient primary evidence for one cautious current-session music and adaptive-sound inference, optionally refined by one 10-second Heart Rate measurement plus local time, weather and approximate location.",
   "claim_boundary": "adaptive_environment_inference_not_diagnosis_treatment_or_proven_benefit",
   "input_contract": {
     "self_report": {
       "role": "primary_current_meaning",
-      "required_for_personalised_selection": true
+      "required_for_personalised_selection": true,
+      "sufficient_for_adaptive_sound_recommendation": true,
+      "accepted_non_empty_workflow_rule": "Return one current_checkin adaptive-sound band intent and one carrier intent even when optional Heart Rate is skipped or unavailable. Reduce confidence for sparse context; do not withhold the recommendation."
     },
     "momentary_physiology": {
       "available_now": ["heart_rate_bpm"],
@@ -23,7 +25,8 @@
       "trend_available": false,
       "comparison_rule": "Never compare with a personal baseline or another session. Never infer stress, activity, mood or illness from Heart Rate alone.",
       "retention_rule": "Use inside the current-session local or first-party privacy layer only. Do not send raw Heart Rate or a Heart Rate-derived health zone to an external model. Do not write raw Heart Rate to localStorage, Notion or ordinary analytics.",
-      "optional_non_blocking": true
+      "optional_non_blocking": true,
+      "skip_rule": "Skipping, declining, missing, expiring or failing Heart Rate must not request camera access again, block homepage entry or suppress a recommendation derived from an accepted self-report."
     },
     "environment_context": {
       "required_fields_when_available": ["local_time", "weather_condition", "temperature_celsius", "location_label", "location_precision"],
@@ -102,7 +105,7 @@
       "human_label": "Mixed / uncertain",
       "evidence_pattern": "Self-report, Heart Rate and environment conflict, or important context is missing.",
       "music_direction": "Choose the safest conservative trajectory with lower confidence, or return no personalised selection.",
-      "adaptive_sound_direction": "Return no semantic frequency intent when evidence is insufficient; never silently default to 444 Hz or another carrier.",
+      "adaptive_sound_direction": "If a non-empty self-report was accepted, resolve one cautious semantic band and carrier from that report and the structured needs scores at lower confidence; never silently default to 444 Hz or another carrier.",
       "avoid": "Do not force a neat label from conflicting evidence."
     },
     {
@@ -122,6 +125,8 @@
     "context_dimensions_considered": ["time", "weather", "location"],
     "horizons_considered": ["horizon_1", "horizon_2", "horizon_3"],
     "baseline_comparison_used": false,
-    "raw_heart_rate_retained": false
+    "raw_heart_rate_retained": false,
+    "accepted_self_report_requires_adaptive_sound_intent": true,
+    "heart_rate_required_for_adaptive_sound_intent": false
   }
 }

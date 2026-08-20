@@ -43,6 +43,7 @@ export function resolveAdaptiveSoundSession(inferenceInput = {}, policy, options
   const explicit = explicitSelection(payload, bands, carriers);
   const semanticIntent = objectValue(payload.adaptive_sound_intent);
   const explicitInsufficientContext = semanticIntent.relevant === false
+    && !hasAcceptedSelfReport(payload)
     && explicit.selection_basis !== "citizen_session_override";
   const fingerprint = stableStringify({
     needs: needScores,
@@ -401,6 +402,10 @@ function collectNeedScores(payload) {
     }
   }
   return scores;
+}
+
+function hasAcceptedSelfReport(payload) {
+  return typeof payload.checkin === "string" && payload.checkin.trim().length > 0;
 }
 
 function flattenScores(value, scores) {

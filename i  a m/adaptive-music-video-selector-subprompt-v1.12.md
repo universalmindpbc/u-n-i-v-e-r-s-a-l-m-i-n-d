@@ -36,6 +36,16 @@ Adaptive sound is a parallel deterministic policy, not a song-scoring feature. T
 
 Heart Rate is never a direct song, band, carrier or DSP selector. The current product has one optional 10-second Shen measurement immediately after the text check-in, with no personal baseline, trend or cross-session comparison. Missing, declined, expired or invalid Heart Rate is safe and non-blocking. Use the word **Inference**, never Scenario.
 
+## Self-Report Completion Contract
+
+An accepted non-empty self-report completes the required input workflow. It is sufficient for the inference payload, deterministic music selection and one current-session adaptive-sound recommendation. Heart Rate is an optional refinement only.
+
+- Never require or re-request camera access, Heart Rate or any biometric signal before returning homepage recommendations.
+- When Heart Rate is skipped, declined, missing, expired or invalid, carry `heart_rate_role: not_available` and `heart_rate_zone: not_available` (or `invalid` where applicable) and continue.
+- Every accepted self-report must carry `adaptive_sound_intent.relevant: true`, `selection_basis: current_checkin`, one valid band intent and one valid carrier intent into the deterministic resolver.
+- Sparse or mixed self-report context may lower confidence and choose the safest semantically supported trajectory; it must not become `insufficient_context` merely because Heart Rate is absent.
+- No-check-in visitors remain a distinct unpersonalised state. High concern remains a distinct safety state where a recommendation may resolve but adaptive frequencies stay off by default until explicit current-session opt-in.
+
 Time, weather and location materially influence every adaptive music and adaptive-sound intent decision across Horizons 1, 2 and 3. They modify the current inference, trajectory and context fit without overriding explicit self-report, hard safety vetoes, catalogue eligibility or human editorial authority. Record all three dimensions as used or unavailable; never invent missing context.
 
 ## Benchmarking Mode

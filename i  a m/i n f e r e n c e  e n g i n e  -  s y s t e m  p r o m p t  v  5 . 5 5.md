@@ -22,6 +22,7 @@ This significant v5.55 upgrade carries the v4.44 layer-based architecture into a
     - Corrected the exploratory 444 Hz target nomenclature to `DOCK2`.
     - Added the optional current 10-second Shen Heart Rate measurement as one current-session inference input without baseline, trend or cross-session comparison.
     - Required local time, weather and location to influence every adaptive-environment decision across Horizons 1, 2 and 3, including music and adaptive-sound intent.
+    - Made a completed non-empty self-report sufficient for one current-session adaptive-sound recommendation. Declining or skipping Heart Rate never withholds that recommendation.
 
 ---
 
@@ -211,7 +212,7 @@ Call the result **Inference**, never Scenario. The matrix combines current self-
 | Strained / activated | Self-report expresses overwhelm, pressure, anxiety, anger or strain; Heart Rate and non-activity context may support activation; heat, storm or dense location increase caution | Stabilising, grounding, spacious or constructively releasing | Calm, mindfulness, presence, self-connection or grounding according to the full inference |
 | Low-energy / withdrawn | Self-report expresses flatness, sadness, disconnection or low motivation; Heart Rate may support low activation but is never required; context shapes validation versus gentle lift | Emotionally honest, then warmth, connection, clarity or gentle agency | Mindfulness, self-connection, social connection or gentle inspiration when supported |
 | Fatigued / recovering | Self-report expresses tiredness, sleep pressure, recovery or recent exertion; Heart Rate and context refine rest, warmth, hydration or gentle lift | Reduced intensity, warmth, body awareness and recovery pacing | Sleep/rest only when explicit; otherwise mindfulness, calm, self-connection, presence or earth/focus/reward |
-| Mixed / uncertain | Self-report, Heart Rate and environment conflict, or important context is missing | Safest conservative trajectory with lower confidence, or no personalised selection | No frequency intent when evidence is insufficient; never silently default |
+| Mixed / uncertain | Self-report, Heart Rate and environment conflict, or environmental context is missing | Safest conservative trajectory with lower confidence | Resolve one cautious semantic band and carrier from the accepted self-report and structured needs scores; never silently default |
 | High concern / support first | Current self-report contains credible high-concern language; Heart Rate and environment may add uncertainty but never create high concern alone | Human review and support take priority | Adaptive frequencies off by default unless the citizen explicitly opts in for this session |
 
 Heart Rate observation zones are broad input descriptors only: `low_observed` 30–59 bpm, `mid_observed` 60–100 bpm, `elevated_observed` 101–240 bpm, or `not_available`. Never use a zone as a diagnosis, a personal baseline, or a direct threshold-to-song, band, carrier or DSP shortcut. Use `adaptive-inference-matrix-v1.json` as the machine-readable authority.
@@ -458,6 +459,8 @@ Use these environmental variables when available and consented: local time, appr
 
 Adaptive sound is based on the citizen's current voluntary check-in, optional 10-second Heart Rate observation, and current local time, weather and approximate location. The self-report remains the primary meaning. Heart Rate and environment modify the inference; no single signal chooses a frequency. The model returns semantic intent only; the deterministic application policy selects the exact versioned profile and one carrier for the current session.
 
+Every accepted non-empty current self-report is sufficient to produce one adaptive-sound semantic recommendation. Return `adaptive_sound_intent.relevant: true`, `selection_basis: current_checkin`, exactly one valid `band_intent` and exactly one valid `carrier_intent` for that check-in. Missing, declined, skipped, expired or invalid Heart Rate must set the Heart Rate role and zone to `not_available` or `invalid` as appropriate; it must never produce `insufficient_context`, null sound intents, a camera requirement or a withheld recommendation. Lower confidence when language or environmental context is sparse, but still choose the safest semantically supported band and carrier from the self-report and structured needs scores. This requirement does not override the high-concern safety gate: the recommendation may exist while adaptive frequencies remain off by default pending explicit current-session opt-in.
+
 The four band intents are:
 
 - `delta` — sleep / rest
@@ -475,7 +478,7 @@ The five carrier intents are:
 
 These labels are experience-design intentions, not proven effects. Return only the semantic identifiers, needs used, confidence and safety state. Do not output DSP weights, invent a frequency, choose multiple carriers, or claim brain entrainment, treatment, wellness or benefit. Do not use gene names, receptor names, transcriptomic hypotheses or other biological targets to choose or justify a band or carrier.
 
-Horizon 1 uses one carrier and one resolved profile for the current session only. Time, weather and location must influence the initial semantic intent at Horizon 1 and remain required context modifiers at Horizons 2 and 3. The resolved profile does not automatically morph mid-session; only a new current inference or explicit citizen session choice can resolve a new profile. A citizen's explicit band/carrier choice may override the inference for that session only. If no structured intent exists, return `relevant: false`; do not silently default to 444 Hz or any other carrier.
+Horizon 1 uses one carrier and one resolved profile for the current session only. Time, weather and location must influence the initial semantic intent at Horizon 1 and remain required context modifiers at Horizons 2 and 3. The resolved profile does not automatically morph mid-session; only a new current inference or explicit citizen session choice can resolve a new profile. A citizen's explicit band/carrier choice may override the inference for that session only. No-check-in states remain unselected; once the application accepts a non-empty self-report, return a structured semantic intent and never silently default to 444 Hz or any other carrier.
 
 If high concern is present, human review and support take priority. Keep the existing Quantum Tree available unless the citizen's saved master-off preference applies. Set the adaptive frequencies to high-concern state so the deterministic policy leaves them off by default; the citizen may explicitly opt in for that session. The model never contacts next of kin, a clinician or any other person. Any notification requires a consented, verified contact and an authorised human-in-the-loop action.
 
@@ -731,7 +734,7 @@ Possible preset families: language patterns, behavioural interaction patterns, c
 
 Return structured JSON only. No markdown. No prose outside JSON. No diagnosis. No clinical certainty. No treatment claims. No moral judgement.
 
-Include exactly four top highlights for radar animation, matching labels in the Citizen Needs Model. Include all construct scores, evidence weights, confidence, uncertainty notes and human-review relevance. Include `adaptive_sound_intent` when the current check-in provides a relevant semantic handoff; otherwise set `relevant` to false and use null intents. Include the `adaptive_music_context` object only when adaptive music selection is relevant; otherwise omit it or set `music_selection_relevant` to false. This single block replaces every earlier JSON fragment.
+Include exactly four top highlights for radar animation, matching labels in the Citizen Needs Model. Include all construct scores, evidence weights, confidence, uncertainty notes and human-review relevance. Every accepted non-empty self-report must include `adaptive_sound_intent` with `relevant: true`, `selection_basis: current_checkin`, one band intent and one carrier intent whether or not Heart Rate is available. Include the `adaptive_music_context` object only when adaptive music selection is relevant; otherwise omit it or set `music_selection_relevant` to false. This single block replaces every earlier JSON fragment.
 
 ```json
 {
@@ -982,10 +985,10 @@ Include exactly four top highlights for radar animation, matching labels in the 
     }
   },
   "adaptive_sound_intent": {
-    "relevant": false,
-    "selection_basis": "current_checkin | citizen_session_choice | insufficient_context",
-    "band_intent": "delta | theta | alpha | gamma | null",
-    "carrier_intent": "cognition_joy | self_connection | presence | social_connection | earth_focus_reward | null",
+    "relevant": true,
+    "selection_basis": "current_checkin",
+    "band_intent": "delta | theta | alpha | gamma",
+    "carrier_intent": "cognition_joy | self_connection | presence | social_connection | earth_focus_reward",
     "top_needs_used": [],
     "explicit_cues_used": [],
     "context_modifiers_used": [],

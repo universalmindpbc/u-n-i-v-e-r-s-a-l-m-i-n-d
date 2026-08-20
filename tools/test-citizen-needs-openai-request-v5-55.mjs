@@ -172,10 +172,17 @@ assert.deepEqual(capturedOpenAIRequest.text.format.schema.properties.selected_fo
 assert.deepEqual(capturedOpenAIRequest.text.format.schema.properties.source_id, { type: "null" });
 assert.deepEqual(capturedOpenAIRequest.text.format.schema.properties.catalogue_ready.enum, [false]);
 assert.ok(capturedOpenAIRequest.text.format.schema.required.includes("adaptive_sound_intent"));
+const adaptiveSoundSchema = capturedOpenAIRequest.text.format.schema.properties.adaptive_sound_intent;
+assert.deepEqual(adaptiveSoundSchema.properties.relevant, { type: "boolean", enum: [true] });
+assert.deepEqual(adaptiveSoundSchema.properties.selection_basis.enum, ["current_checkin"]);
+assert.equal(adaptiveSoundSchema.properties.band_intent.type, "string");
+assert.equal(adaptiveSoundSchema.properties.carrier_intent.type, "string");
 
 const systemMessage = capturedOpenAIRequest.input[0].content;
 const userMessage = capturedOpenAIRequest.input[1].content;
 assert.ok(systemMessage.includes(ADAPTIVE_INFERENCE_SYSTEM_PROMPT));
+assert.ok(systemMessage.includes("Every accepted non-empty self-report is sufficient for adaptive sound."));
+assert.ok(systemMessage.includes("Missing, skipped, declined, expired or invalid Heart Rate never permits insufficient_context"));
 assert.ok(userMessage.includes("Choose an eligible music room from: inner-planes, champagne-bohemia, modul8-infinity, james-bondage, safety-cushion; otherwise return null."));
 assert.ok(userMessage.includes("The application owns extended-session format and exact source resolution."));
 assert.ok(!userMessage.includes("Choose an eligible format"));
@@ -212,6 +219,39 @@ assert.deepEqual(result.adaptive_sound_intent, {
   session_scope: "current_session_only",
   research_boundary: "biological_targets_not_used_in_product_decisions",
 });
+
+const skippedBiometricResponse = await worker.fetch(new Request(
+  "https://realtime-staging-iam-citizen-needs-inference.universalmind.workers.dev/citizen-needs-inference",
+  {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      "Origin": "https://staging.universalmind.tv",
+    },
+    body: JSON.stringify({
+      checkin: "I am curious, joyful and ready for inspiration.",
+      environment_context: {
+        local_time: "10:30",
+        location_label: "Sydney",
+        location_precision: "approximate",
+        context_available: true,
+      },
+    }),
+  },
+), {
+  OPENAI_API_KEY: "test-only-key",
+  OPENAI_INFERENCE_MODEL: "gpt-5.5-test",
+});
+const skippedBiometricResult = await skippedBiometricResponse.json();
+const skippedBiometricUserMessage = capturedOpenAIRequest.input[1].content;
+assert.equal(skippedBiometricResponse.status, 200, JSON.stringify(skippedBiometricResult));
+assert.equal(skippedBiometricResult.current_inference.heart_rate_role, "not_available");
+assert.equal(skippedBiometricResult.current_inference.heart_rate_zone, "not_available");
+assert.equal(skippedBiometricResult.adaptive_sound_intent.relevant, true);
+assert.equal(skippedBiometricResult.adaptive_sound_intent.selection_basis, "current_checkin");
+assert.ok(skippedBiometricResult.adaptive_sound_intent.band_intent);
+assert.ok(skippedBiometricResult.adaptive_sound_intent.carrier_intent);
+assert.ok(!skippedBiometricUserMessage.includes("heart_rate_bpm"));
 
 const conflictingResponse = await worker.fetch(new Request(
   "https://realtime-staging-iam-citizen-needs-inference.universalmind.workers.dev/citizen-needs-inference",
@@ -261,6 +301,7 @@ process.stdout.write(`${JSON.stringify({
   strict_schema_validated: true,
   response_validation_executed: true,
   supporting_and_conflicting_heart_rate_reconciled_locally: true,
+  self_report_without_heart_rate_returns_adaptive_sound: true,
   prompt_version: result.prompt_version,
   prompt_sha256: result.prompt_sha256,
   adaptive_sound_intent: result.adaptive_sound_intent,
