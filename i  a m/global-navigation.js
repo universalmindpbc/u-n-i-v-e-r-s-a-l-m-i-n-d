@@ -1,5 +1,5 @@
 (() => {
-  const VERSION = "global-navigation-canonical-10";
+  const VERSION = "global-navigation-canonical-11";
   const scriptUrl = document.currentScript?.src || window.location.href;
   const stylesheetUrl = new URL("global-navigation.css?v=a4fc9eb0ffc0", scriptUrl).href;
 
@@ -28,6 +28,7 @@
       "technology-inference-engine.html": "technology",
       "science.html": "science",
       "business-model.html": "business-model",
+      "impact.html": "impact",
       "privacy-first.html": "privacy-first",
       "vogue-self-report.html": "check-in",
       "our-team.html": "our-team",
@@ -101,6 +102,7 @@
             <a class="global-nav-item" href="science.html" data-nav-item="science">science</a>
             <a class="global-nav-item" href="privacy-first.html" data-nav-item="privacy-first">privacy first</a>
             <a class="global-nav-item" href="business-model.html" data-nav-item="business-model">business model</a>
+            <a class="global-nav-item" href="impact.html" data-nav-item="impact">impact</a>
             <a class="global-nav-item" href="vogue-self-report.html" data-nav-item="check-in">check in</a>
             <a class="global-nav-item" href="our-team.html" data-nav-item="our-team">our team</a>
             <a class="global-nav-item" href="mailto:bk@universalmind.tv?subject=I%20Am%20Vogue%20%7C%20Referral" data-nav-item="contact">contact</a>
