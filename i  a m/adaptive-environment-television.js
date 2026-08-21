@@ -305,7 +305,7 @@
   const broadcastJoinButton = document.querySelector("[data-broadcast-join]");
   const broadcastChooseButton = document.querySelector("[data-broadcast-choose]");
   const emdrCanvas = document.querySelector("[data-emdr-canvas]");
-  const emdrOff = document.querySelector("[data-emdr-off]");
+  const emdrToggle = document.querySelector("[data-emdr-toggle]");
   const emdrStyleButtons = Array.from(document.querySelectorAll("[data-emdr-style]"));
   const emdrReact = document.querySelector("[data-emdr-react]");
   const emdrAutomate = document.querySelector("[data-emdr-automate]");
@@ -7891,6 +7891,18 @@
         ? "stellar"
         : (emdrStyleIndex === 0 ? "gif" : "neutral");
     }
+    const emdrActive = Boolean(window.IAMEMDR?.active);
+    const hasSelectedStyle = Number.isInteger(emdrStyleIndex) && Boolean(emdrStyleValues[emdrStyleIndex]);
+    if (emdrToggle) {
+      emdrToggle.disabled = !emdrActive && !hasSelectedStyle;
+      emdrToggle.setAttribute("aria-pressed", String(emdrActive));
+      emdrToggle.setAttribute(
+        "aria-label",
+        emdrActive
+          ? "Turn EMDR off"
+          : (hasSelectedStyle ? `Turn ${emdrStyleNames[emdrStyleIndex]} EMDR on` : "Choose GIF or stellar to turn EMDR on")
+      );
+    }
   }
 
   function applyEmdrAdaptation(requestedStyleIndex = null) {
@@ -8592,11 +8604,7 @@
       const mode = button.dataset.videoMode;
       if (mode === "emdr") {
         disarmVideoTooltips();
-        window.IAMEMDR?.setActive(false, { canvas: emdrCanvas, video: localVideo });
-        emdrStyleIndex = -1;
-        syncEmdrStyleButtons();
-        button.setAttribute("aria-pressed", "false");
-        setSoundResearchEnabled(true);
+        if (!syncActiveEmdrControls()) syncEmdrStyleButtons();
         setWalletView("emdr");
         return;
       }
@@ -8628,6 +8636,17 @@
       event.preventDefault();
       event.stopPropagation();
       const endpoint = button.dataset.videoMixEndpoint;
+      const emdrGifEndpoint = Boolean(button.closest("[data-emdr-gif-mix-controls]"));
+      if (emdrGifEndpoint) {
+        setWalletView("emdr");
+        if (endpoint === "fashion") {
+          if (fashionBroadcastChannelId) setVideoBlend(0);
+          else openFashionShelf(button);
+        } else if (endpoint === "music") {
+          setVideoBlend(100);
+        }
+        return;
+      }
       if (endpoint === "fashion") {
         if (fashionBroadcastChannelId) setVideoBlend(0);
         else openFashionShelf();
@@ -8875,13 +8894,21 @@
   emdrGifCrossfader?.addEventListener("input", () => {
     setVideoBlend(emdrGifCrossfader.value);
   });
-  emdrOff?.addEventListener("click", (event) => {
+  emdrToggle?.addEventListener("click", (event) => {
     event.preventDefault();
     event.stopPropagation();
-    window.IAMEMDR?.setActive(false, { canvas: emdrCanvas, video: localVideo });
-    emdrStyleIndex = -1;
+    const wasActive = Boolean(window.IAMEMDR?.active);
+    const hasSelectedStyle = Number.isInteger(emdrStyleIndex) && Boolean(emdrStyleValues[emdrStyleIndex]);
+    if (!wasActive && !hasSelectedStyle) {
+      syncEmdrStyleButtons();
+      return;
+    }
+    const active = wasActive
+      ? window.IAMEMDR?.setActive(false, { canvas: emdrCanvas, video: localVideo })
+      : window.IAMEMDR?.setActive(true, { canvas: emdrCanvas });
     syncEmdrStyleButtons();
-    document.querySelector('[data-video-mode="emdr"]')?.setAttribute("aria-pressed", "false");
+    document.querySelector('[data-video-mode="emdr"]')?.setAttribute("aria-pressed", String(Boolean(active)));
+    if (active) startSoundResearchLayer();
     setWalletView("emdr");
   });
   emdrStyleButtons.forEach((button) => button.addEventListener("click", (event) => {
@@ -8893,6 +8920,7 @@
     const active = window.IAMEMDR?.setActive(true, { canvas: emdrCanvas });
     document.querySelector('[data-video-mode="emdr"]')?.setAttribute("aria-pressed", String(Boolean(active)));
     if (active) window.IAMEMDR?.setIntensity(adaptation.intensityJourney.start);
+    syncEmdrStyleButtons();
     startSoundResearchLayer();
   }));
   emdrReact?.addEventListener("click", (event) => {

@@ -6018,19 +6018,12 @@ body.music-shelf-open .adaptive-television-fashion-shelf:not(.adaptive-televisio
   display: flex;
 }
 
-.adaptive-television-emdr-gif-crossfader {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  min-width: 0;
-  color: rgba(255, 255, 255, .78);
-  font: 600 9px/1 "Helvetica Neue", Helvetica, Arial, sans-serif;
-  letter-spacing: .05em;
-  text-transform: uppercase;
-  white-space: nowrap;
+.adaptive-television-emdr-gif-mix-controls > .adaptive-television-video-crossfader-wrap {
+  flex: 1 1 auto;
+  min-width: 120px;
 }
 
-.adaptive-television-emdr-gif-crossfader .adaptive-television-video-crossfader {
+.adaptive-television-emdr-gif-mix-controls > .adaptive-television-video-crossfader-wrap .adaptive-television-video-crossfader {
   width: min(190px, 20vw);
 }
 
@@ -6049,11 +6042,11 @@ body.music-shelf-open .adaptive-television-fashion-shelf:not(.adaptive-televisio
     order: 5;
   }
 
-  .adaptive-television-emdr-gif-crossfader {
+  .adaptive-television-emdr-gif-mix-controls > .adaptive-television-video-crossfader-wrap {
     flex: 1 1 auto;
   }
 
-  .adaptive-television-emdr-gif-crossfader .adaptive-television-video-crossfader {
+  .adaptive-television-emdr-gif-mix-controls > .adaptive-television-video-crossfader-wrap .adaptive-television-video-crossfader {
     width: 100%;
   }
 }
@@ -6065,19 +6058,31 @@ body.music-shelf-open .adaptive-television-fashion-shelf:not(.adaptive-televisio
 
   .adaptive-television-emdr-gif-mix-controls {
     display: grid !important;
-    grid-template-columns: minmax(0, 1fr);
+    grid-template-columns: 48px minmax(0, 1fr) 48px;
     gap: 8px;
   }
 
   .adaptive-television-fashion-runway-selector--emdr {
-    grid-column: 1;
-    grid-row: auto;
+    grid-column: 1 / 4;
+    grid-row: 1;
     width: min(244px, 100%);
     justify-self: center;
   }
 
-  .adaptive-television-emdr-gif-crossfader {
+  .adaptive-television-emdr-gif-mix-controls > .adaptive-television-video-mix-endpoint[data-video-mix-endpoint="fashion"] {
+    grid-column: 1;
+    grid-row: 2;
+  }
+
+  .adaptive-television-emdr-gif-mix-controls > .adaptive-television-video-crossfader-wrap {
+    grid-column: 2;
+    grid-row: 2;
     width: 100%;
+  }
+
+  .adaptive-television-emdr-gif-mix-controls > .adaptive-television-video-mix-endpoint[data-video-mix-endpoint="music"] {
+    grid-column: 3;
+    grid-row: 2;
   }
 }
 
@@ -6087,7 +6092,7 @@ body.music-shelf-open .adaptive-television-fashion-shelf:not(.adaptive-televisio
   pointer-events: none;
 }
 
-.adaptive-television-emdr-off,
+.adaptive-television-emdr-toggle,
 .adaptive-television-emdr-style,
 .adaptive-television-emdr-react,
 .adaptive-television-emdr-automate,
@@ -6103,12 +6108,13 @@ body.music-shelf-open .adaptive-television-fashion-shelf:not(.adaptive-televisio
   padding: 0 15px;
 }
 
-.adaptive-television-emdr-off {
+.adaptive-television-emdr-toggle {
+  min-width: 82px;
+  min-height: 48px;
   color: rgba(255, 255, 255, 0.72);
   font-weight: 500;
 }
 
-.adaptive-television-reaction-wallet[data-emdr-controls-view="neutral"] .adaptive-television-emdr-off,
 .adaptive-television-reaction-wallet[data-emdr-controls-view="neutral"] .adaptive-television-emdr-react,
 .adaptive-television-reaction-wallet[data-emdr-controls-view="neutral"] .adaptive-television-emdr-automate,
 .adaptive-television-reaction-wallet[data-emdr-controls-view="neutral"] .adaptive-television-emdr-intensity,
@@ -6145,6 +6151,17 @@ body.music-shelf-open .adaptive-television-fashion-shelf:not(.adaptive-televisio
   color: rgba(255, 255, 255, 0.98);
 }
 
+.adaptive-television-emdr-toggle[aria-pressed="true"] {
+  border-color: rgba(255, 255, 255, 0.34);
+  background: rgba(255, 255, 255, 0.15);
+  color: rgba(255, 255, 255, 0.98);
+}
+
+.adaptive-television-emdr-toggle:disabled {
+  cursor: default;
+  opacity: 0.42;
+}
+
 .adaptive-television-emdr-react,
 .adaptive-television-emdr-automate,
 .adaptive-television-emdr-mantra,
@@ -6174,8 +6191,8 @@ body.music-shelf-open .adaptive-television-fashion-shelf:not(.adaptive-televisio
   color: rgba(255, 255, 255, 0.96);
 }
 
-.adaptive-television-emdr-off:hover,
-.adaptive-television-emdr-off:focus-visible,
+.adaptive-television-emdr-toggle:not(:disabled):hover,
+.adaptive-television-emdr-toggle:not(:disabled):focus-visible,
 .adaptive-television-emdr-style:hover,
 .adaptive-television-emdr-style:focus-visible,
 .adaptive-television-emdr-react:hover,

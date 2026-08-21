@@ -49,7 +49,7 @@
     <script src="music-television-frame-context.js?v=music-tv-frame-1fc6ca029741"></script>
     <link rel="stylesheet" href="styles.css?v=global-nav-single-shell-2-technology-submenu-133pct-normal-1">
     <link rel="preload" as="image" href="a s s e t s/Universal Mind [ I o H ] Logo 512.png" fetchpriority="high">
-    <link rel="stylesheet" href="adaptive-environment-television.css?v=music-tv-css-3236f2cb6518">
+    <link rel="stylesheet" href="adaptive-environment-television.css?v=music-tv-css-751a06593fad">
     <link rel="stylesheet" href="adaptive-sound/panel-v1.css?v=8537857ca0d3">
     <link rel="stylesheet" href="programme-guide.css?v=programme-guide-css-35f9a5fee68b">
     <link rel="stylesheet" href="circle-audio-rooms.css?v=circle-rooms-css-26a3fe8531d9">
@@ -1086,7 +1086,7 @@
                 </button>
               </div>
               <span class="adaptive-television-video-crossfader-wrap" data-video-tooltip="Dial in the balance between music and fashion."><input class="adaptive-television-video-crossfader" type="range" min="0" max="100" value="100" step="1" data-video-crossfader aria-label="Dial in the balance between music and fashion"></span>
-              <button class="adaptive-television-video-mix-endpoint" type="button" data-video-mix-endpoint="music" data-video-tooltip="Stay with the original music video, dj set or live performance." aria-label="Show Music — Stay with the original music video, DJ set or live performance">
+              <button class="adaptive-television-video-mix-endpoint" type="button" data-video-mix-endpoint="music" data-video-tooltip="Stay with the original music video, DJ set, or live performance." aria-label="Show Music — Stay with the original music video, DJ set, or live performance">
                 <span class="adaptive-television-video-icon-stage" aria-hidden="true"><img class="adaptive-television-video-icon-reference adaptive-television-video-icon-reference--music" src="a s s e t s/wallet-turntable-reference.png?v=reference-2" alt=""></span>
               </button>
             </div>
@@ -1113,13 +1113,16 @@
               <button class="adaptive-television-wallet-home" type="button" data-wallet-home data-wallet-tooltip="wallet home" aria-label="Return to wallet home">
                 <span class="adaptive-television-reaction__glyph adaptive-television-reaction__glyph--ioh-logo adaptive-television-reaction__glyph--flora-trigger" aria-hidden="true"></span>
               </button>
-              <button class="adaptive-television-emdr-off" type="button" data-emdr-off>off</button>
+              <button class="adaptive-television-emdr-toggle" type="button" data-emdr-toggle aria-pressed="false" aria-label="Choose GIF or stellar to turn EMDR on" disabled>EMDR</button>
               <div class="adaptive-television-emdr-style-group" role="group" aria-label="Choose an EMDR style">
                 <button class="adaptive-television-emdr-style" type="button" data-emdr-style data-emdr-style-index="0" data-emdr-tooltip="Choose the editorial animated GIF experience." aria-pressed="false" aria-label="Use GIF EMDR style">GIF</button>
                 <button class="adaptive-television-emdr-style" type="button" data-emdr-style data-emdr-style-index="1" data-emdr-tooltip="Choose the stellar geometric experience." aria-pressed="false" aria-label="Use stellar EMDR style">stellar</button>
               </div>
               <div class="adaptive-television-emdr-gif-mix-controls" data-emdr-gif-mix-controls role="group" aria-label="Mix the current Fashion channel with the current music or party video">
-                <div class="adaptive-television-fashion-runway-selector adaptive-television-fashion-runway-selector--emdr" data-fashion-runway-selector role="group" aria-label="Choose a Fashion live channel for the GIF view">
+                <button class="adaptive-television-video-mix-endpoint" type="button" data-video-mix-endpoint="fashion" data-video-tooltip="Watch a runway while the music continues uninterrupted." aria-label="Show Fashion — Watch a runway while the music continues uninterrupted">
+                  <span class="adaptive-television-video-icon-stage" aria-hidden="true"><img class="adaptive-television-video-icon-reference adaptive-television-video-icon-reference--fashion" src="a s s e t s/wallet-fashion-reference.png?v=reference-2" alt=""></span>
+                </button>
+                <div class="adaptive-television-fashion-runway-selector adaptive-television-fashion-runway-selector--emdr" data-fashion-runway-selector data-video-tooltip="Fashion live channels&#10;Join whatever is on now, together as one." role="group" aria-label="Choose a Fashion live channel for the GIF view">
                   <button class="adaptive-television-fashion-runway-arrow" type="button" data-fashion-runway-previous aria-label="Previous Fashion live channel">
                     <span aria-hidden="true">&lsaquo;</span>
                   </button>
@@ -1131,11 +1134,10 @@
                     <span aria-hidden="true">&rsaquo;</span>
                   </button>
                 </div>
-                <label class="adaptive-television-emdr-gif-crossfader">
-                  <span>fashion</span>
-                  <input class="adaptive-television-video-crossfader" type="range" min="0" max="100" value="0" step="1" data-emdr-gif-crossfader aria-label="Crossfade the GIF screens from Fashion to the current music or party video">
-                  <span>music / party</span>
-                </label>
+                <span class="adaptive-television-video-crossfader-wrap" data-video-tooltip="Dial in the balance between music and fashion."><input class="adaptive-television-video-crossfader" type="range" min="0" max="100" value="0" step="1" data-emdr-gif-crossfader aria-label="Dial in the balance between music and fashion"></span>
+                <button class="adaptive-television-video-mix-endpoint" type="button" data-video-mix-endpoint="music" data-video-tooltip="Stay with the original music video, DJ set, or live performance." aria-label="Show Music — Stay with the original music video, DJ set, or live performance">
+                  <span class="adaptive-television-video-icon-stage" aria-hidden="true"><img class="adaptive-television-video-icon-reference adaptive-television-video-icon-reference--music" src="a s s e t s/wallet-turntable-reference.png?v=reference-2" alt=""></span>
+                </button>
               </div>
               <button class="adaptive-television-emdr-react" type="button" data-emdr-react data-emdr-tooltip="React to the music." aria-pressed="false" aria-label="Turn music reaction on">react <span aria-hidden="true">♫</span></button>
               <button class="adaptive-television-emdr-automate" type="button" data-emdr-automate data-emdr-tooltip="Automate the movement." aria-pressed="false" aria-label="Turn automatic movement on">automate <span aria-hidden="true">↔︎</span></button>
@@ -1501,7 +1503,7 @@
     <script src="care-worlds.js?v=edfca941922e"></script>
     <script src="mantra-audio-fx.js?v=mantra-audio-fx-5e1fdfbadb04"></script>
     <script src="mantra-sampler.js?v=mantra-sampler-0bfc1d7667fe"></script>
-    <script src="adaptive-environment-television.js?v=music-tv-3ab8a1e8df35"></script>
+    <script src="adaptive-environment-television.js?v=music-tv-f43a139178cc"></script>
     <script type="module" src="adaptive-sound/controller-v1.js?v=efd82506d58b"></script>
     <script src="homepage-session-accents.js?v=ee302671b0d5"></script>
     <script src="programme-guide.js?v=programme-guide-5ec9d44785ef"></script>
