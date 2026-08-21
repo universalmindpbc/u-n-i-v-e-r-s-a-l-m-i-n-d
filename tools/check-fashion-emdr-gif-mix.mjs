@@ -39,7 +39,7 @@ const emdrPanelEnd = html.indexOf('data-wallet-panel="audio"', emdrPanelStart);
 const emdrPanel = html.slice(emdrPanelStart, emdrPanelEnd);
 assert.ok(emdrPanel.indexOf("data-wallet-home") < emdrPanel.indexOf("data-emdr-toggle"), "the EMDR power control is not immediately after wallet home");
 assert.ok(emdrPanel.indexOf("data-emdr-toggle") < emdrPanel.indexOf("data-emdr-style-index=\"0\""), "the EMDR power control is not before GIF and stellar");
-assert.match(emdrPanel, /data-emdr-toggle aria-pressed="false" aria-label="Choose GIF or stellar to turn EMDR on" disabled>on\/off<\/button>/);
+assert.match(emdrPanel, /data-emdr-toggle aria-pressed="false" aria-label="Choose GIF or stellar to turn EMDR on" disabled>off<\/button>/);
 
 assert.match(controller, /querySelectorAll\("\[data-fashion-runway-selector\]"\)/);
 assert.match(controller, /fashionRunwayLabels\.forEach\(\(element\) => renderFashionIdentityLabel/);
@@ -58,6 +58,7 @@ assert.match(emdrNavigation, /setWalletView\("emdr"\);/);
 assert.doesNotMatch(emdrNavigation, /setActive\(false|emdrStyleIndex\s*=\s*-1|setSoundResearchEnabled/, "opening EMDR still changes active playback state");
 assert.match(controller, /emdrToggle\?\.addEventListener\("click"/);
 assert.match(controller, /const wasActive = Boolean\(window\.IAMEMDR\?\.active\);/);
+assert.match(controller, /emdrToggle\.textContent = emdrActive \? "on" : "off";/);
 assert.match(controller, /wasActive[\s\S]*?setActive\(false[\s\S]*?: window\.IAMEMDR\?\.setActive\(true/);
 assert.doesNotMatch(controller, /emdrToggle\?\.addEventListener\("click"[\s\S]{0,700}?emdrStyleIndex\s*=\s*-1/, "the EMDR power control forgets the selected GIF or stellar style");
 
@@ -66,7 +67,8 @@ assert.match(styles, /@keyframes adaptive-fashion-identity-channel/);
 assert.match(styles, /@keyframes adaptive-fashion-identity-brand/);
 assert.match(styles, /@media \(prefers-reduced-motion: reduce\)[\s\S]*?\.adaptive-television-fashion-runway-identity[\s\S]*?position:\s*static[\s\S]*?animation:\s*none/);
 assert.match(styles, /data-emdr-controls-view="gif"[\s\S]*?\.adaptive-television-emdr-gif-mix-controls[\s\S]*?display:\s*flex/);
-assert.match(styles, /\.adaptive-television-emdr-toggle\[aria-pressed="true"\]/);
+assert.match(styles, /\.adaptive-television-emdr-toggle\s*\{[\s\S]*?background:\s*rgba\(0, 0, 0, 0\.22\)[\s\S]*?box-shadow:\s*inset[\s\S]*?transform:\s*translateY\(1px\)/);
+assert.match(styles, /\.adaptive-television-emdr-toggle\[aria-pressed="true"\]\s*\{[\s\S]*?background:\s*rgba\(255, 255, 255, 0\.18\)[\s\S]*?box-shadow:[\s\S]*?0 0 18px[\s\S]*?transform:\s*none/);
 assert.match(styles, /grid-template-columns:\s*48px minmax\(0, 1fr\) 48px/);
 
 assert.match(controller, /const musicDrawn = requestedVideoBlend > 0 && drawMediaCover\(fashionHeroContext, localVideo/);

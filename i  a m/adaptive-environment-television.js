@@ -7896,6 +7896,7 @@
     if (emdrToggle) {
       emdrToggle.disabled = !emdrActive && !hasSelectedStyle;
       emdrToggle.setAttribute("aria-pressed", String(emdrActive));
+      emdrToggle.textContent = emdrActive ? "on" : "off";
       emdrToggle.setAttribute(
         "aria-label",
         emdrActive

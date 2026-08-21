@@ -119,7 +119,7 @@ try {
   assert.equal(gifNavigation.gifPressed, "true");
   assert.equal(gifNavigation.togglePressed, "true");
   assert.equal(gifNavigation.toggleDisabled, false);
-  assert.equal(gifNavigation.toggleText, "on/off");
+  assert.equal(gifNavigation.toggleText, "on");
   assert.equal(gifNavigation.toggleVisible, true);
   assert.equal(gifNavigation.toggleClipped, false);
   assert.equal(gifNavigation.gifPresentationActive, true);
@@ -140,7 +140,7 @@ try {
   assert.equal(stellarNavigation.controlsView, "stellar");
   assert.equal(stellarNavigation.stellarPressed, "true");
   assert.equal(stellarNavigation.togglePressed, "true");
-  assert.equal(stellarNavigation.toggleText, "on/off");
+  assert.equal(stellarNavigation.toggleText, "on");
   assert.equal(stellarNavigation.toggleVisible, true);
   assert.equal(stellarNavigation.toggleClipped, false);
 
@@ -152,7 +152,7 @@ try {
   assert.equal(poweredOff.stellarPressed, "true");
   assert.equal(poweredOff.togglePressed, "false");
   assert.equal(poweredOff.toggleDisabled, false);
-  assert.equal(poweredOff.toggleText, "on/off");
+  assert.equal(poweredOff.toggleText, "off");
 
   await click("[data-emdr-toggle]");
   const poweredOn = await inspect();
@@ -161,7 +161,7 @@ try {
   assert.equal(poweredOn.controlsView, "stellar");
   assert.equal(poweredOn.stellarPressed, "true");
   assert.equal(poweredOn.togglePressed, "true");
-  assert.equal(poweredOn.toggleText, "on/off");
+  assert.equal(poweredOn.toggleText, "on");
 
   console.log(JSON.stringify({ target, mutedProcess: true, gifNavigation, stellarNavigation, poweredOff, poweredOn }, null, 2));
 } finally {
