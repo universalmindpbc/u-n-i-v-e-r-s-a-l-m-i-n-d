@@ -258,14 +258,17 @@
   const videoMantraOpen = document.querySelector("[data-video-mantra-open]");
   const videoMixControls = document.querySelector("[data-video-mix-controls]");
   const videoCrossfader = document.querySelector("[data-video-crossfader]");
+  const emdrGifCrossfader = document.querySelector("[data-emdr-gif-crossfader]");
   const videoMixEndpoints = Array.from(document.querySelectorAll("[data-video-mix-endpoint]"));
-  const fashionRunwaySelector = document.querySelector("[data-fashion-runway-selector]");
-  const fashionRunwayPrevious = document.querySelector("[data-fashion-runway-previous]");
-  const fashionRunwayNext = document.querySelector("[data-fashion-runway-next]");
-  const fashionRunwayLabel = document.querySelector("[data-fashion-runway-label]");
-  const fashionRunwayCount = document.querySelector("[data-fashion-runway-count]");
+  const fashionRunwaySelectors = Array.from(document.querySelectorAll("[data-fashion-runway-selector]"));
+  const fashionRunwaySelector = fashionRunwaySelectors[0] || null;
+  const fashionRunwayPreviousButtons = Array.from(document.querySelectorAll("[data-fashion-runway-previous]"));
+  const fashionRunwayNextButtons = Array.from(document.querySelectorAll("[data-fashion-runway-next]"));
+  const fashionRunwayLabels = Array.from(document.querySelectorAll("[data-fashion-runway-label]"));
+  const fashionRunwayCounts = Array.from(document.querySelectorAll("[data-fashion-runway-count]"));
   const fashionShelf = document.querySelector("[data-fashion-shelf]");
-  const fashionShelfToggle = document.querySelector("[data-fashion-shelf-toggle]");
+  const fashionShelfToggles = Array.from(document.querySelectorAll("[data-fashion-shelf-toggle]"));
+  const fashionShelfToggle = fashionShelfToggles[0] || null;
   const fashionShelfTrack = document.querySelector("[data-fashion-shelf-track]");
   const fashionShelfViewport = document.querySelector("[data-fashion-shelf-viewport]");
   const fashionShelfPrevious = document.querySelector("[data-fashion-shelf-previous]");
@@ -426,11 +429,13 @@
   let fashionHeroVideoFrameSource = null;
   let fashionHeroGeneration = 0;
   let fashionHeroLastMediaTime = -1;
+  let fashionHeroLastBlend = -1;
   let fashionHeroDrawCount = 0;
   let fashionRunwayIndex = 0;
   let fashionRunwaySwitching = false;
   let fashionSelectionSource = "algorithm";
   let fashionShelfOpen = false;
+  let fashionShelfReturnTarget = null;
   let fashionShelfOffset = 0;
   let fashionShelfOrder = [0, 1, 2, 3, 4, 5];
   let fashionShelfPreviewVideo = null;
@@ -441,6 +446,8 @@
   const radioFashionPreloadPool = new Map();
   const broadcastMediaSyncStates = new WeakMap();
   let requestedVideoBlend = Number(videoCrossfader?.value || 100);
+  let emdrGifVideoBlend = Number(emdrGifCrossfader?.value || 0);
+  let fashionBroadcastJoinSequence = 0;
   let fashionRevealGeneration = 0;
   let pendingFashionRevealPromise = null;
   let pendingFashionRevealVideo = null;
@@ -1259,57 +1266,69 @@
     fashionHeroVideoFrame = 0;
     fashionHeroVideoFrameSource = null;
     fashionHeroLastMediaTime = -1;
+    fashionHeroLastBlend = -1;
     if (fashionHeroFrame) fashionHeroFrame.dataset.fashionHeroMirror = "inactive";
   }
 
+  function drawMediaCover(context, video, targetWidth, targetHeight, alpha = 1) {
+    if (!video || video.readyState < HTMLMediaElement.HAVE_CURRENT_DATA || !video.videoWidth || !video.videoHeight) return false;
+    const sourceRatio = video.videoWidth / video.videoHeight;
+    const targetRatio = targetWidth / targetHeight;
+    let cropX = 0;
+    let cropY = 0;
+    let cropWidth = video.videoWidth;
+    let cropHeight = video.videoHeight;
+    if (sourceRatio > targetRatio) {
+      cropWidth = video.videoHeight * targetRatio;
+      cropX = (video.videoWidth - cropWidth) / 2;
+    } else if (sourceRatio < targetRatio) {
+      cropHeight = video.videoWidth / targetRatio;
+      cropY = (video.videoHeight - cropHeight) / 2;
+    }
+    context.globalAlpha = Math.max(0, Math.min(1, Number(alpha) || 0));
+    context.drawImage(video, cropX, cropY, cropWidth, cropHeight, 0, 0, targetWidth, targetHeight);
+    context.globalAlpha = 1;
+    return true;
+  }
+
   function drawFashionHeroFrame(mediaTime = Number(fashionVideo?.currentTime || 0)) {
-    if (!fashionHeroCanvas || !fashionHeroContext || !fashionVideo || fashionVideo.readyState < 2) return;
-    const sourceWidth = fashionVideo.videoWidth;
-    const sourceHeight = fashionVideo.videoHeight;
+    if (!fashionHeroCanvas || !fashionHeroContext) return;
     const frameWidth = fashionHeroFrame?.clientWidth || 0;
     const frameHeight = fashionHeroFrame?.clientHeight || 0;
-    if (!sourceWidth || !sourceHeight || !frameWidth || !frameHeight) return;
+    if (!frameWidth || !frameHeight) return;
 
     const pixelRatio = Math.min(1.5, Math.max(1, window.devicePixelRatio || 1));
     const targetWidth = Math.max(1, Math.round(frameWidth * pixelRatio));
     const targetHeight = Math.max(1, Math.round(frameHeight * pixelRatio));
     const needsResize = fashionHeroCanvas.width !== targetWidth || fashionHeroCanvas.height !== targetHeight;
-    if (!needsResize && Math.abs(Number(mediaTime) - fashionHeroLastMediaTime) < 0.0005) return;
+    if (
+      !needsResize &&
+      Math.abs(Number(mediaTime) - fashionHeroLastMediaTime) < 0.0005 &&
+      Math.abs(requestedVideoBlend - fashionHeroLastBlend) < 0.001
+    ) return;
     if (needsResize) {
       fashionHeroCanvas.width = targetWidth;
       fashionHeroCanvas.height = targetHeight;
     }
 
-    const sourceRatio = sourceWidth / sourceHeight;
-    const targetRatio = targetWidth / targetHeight;
-    let cropX = 0;
-    let cropY = 0;
-    let cropWidth = sourceWidth;
-    let cropHeight = sourceHeight;
-    if (sourceRatio > targetRatio) {
-      cropWidth = sourceHeight * targetRatio;
-      cropX = (sourceWidth - cropWidth) / 2;
-    } else if (sourceRatio < targetRatio) {
-      cropHeight = sourceWidth / targetRatio;
-      cropY = (sourceHeight - cropHeight) / 2;
-    }
-
     try {
-      fashionHeroContext.clearRect(0, 0, targetWidth, targetHeight);
-      fashionHeroContext.drawImage(
+      fashionHeroContext.globalAlpha = 1;
+      fashionHeroContext.fillStyle = "#000";
+      fashionHeroContext.fillRect(0, 0, targetWidth, targetHeight);
+      const musicDrawn = requestedVideoBlend > 0 && drawMediaCover(fashionHeroContext, localVideo, targetWidth, targetHeight, 1);
+      const fashionDrawn = requestedVideoBlend < 100 && drawMediaCover(
+        fashionHeroContext,
         fashionVideo,
-        cropX,
-        cropY,
-        cropWidth,
-        cropHeight,
-        0,
-        0,
         targetWidth,
-        targetHeight
+        targetHeight,
+        1 - (requestedVideoBlend / 100)
       );
+      if (!musicDrawn && !fashionDrawn) return;
       fashionHeroLastMediaTime = Number(mediaTime);
+      fashionHeroLastBlend = requestedVideoBlend;
       fashionHeroDrawCount += 1;
       fashionHeroFrame.dataset.fashionHeroMirror = "ready";
+      fashionHeroFrame.dataset.emdrGifMusicAmount = requestedVideoBlend.toFixed(0);
       fashionHeroFrame.dataset.fashionHeroPixelRatio = pixelRatio.toFixed(2);
       fashionHeroFrame.dataset.fashionHeroDrawCount = String(fashionHeroDrawCount);
       fashionHeroFrame.dataset.fashionHeroMediaTime = fashionHeroLastMediaTime.toFixed(3);
@@ -1323,9 +1342,10 @@
   function scheduleFashionHeroMirror(generation) {
     if (generation !== fashionHeroGeneration || !document.body.classList.contains("television-emdr-gif-active")) return;
 
-    if (fashionVideo?.requestVideoFrameCallback && !fashionVideo.paused && fashionVideo.readyState >= 2) {
-      fashionHeroVideoFrameSource = fashionVideo;
-      fashionHeroVideoFrame = fashionVideo.requestVideoFrameCallback((_now, metadata) => {
+    const frameSource = requestedVideoBlend >= 99.5 ? localVideo : fashionVideo;
+    if (frameSource?.requestVideoFrameCallback && !frameSource.paused && frameSource.readyState >= 2) {
+      fashionHeroVideoFrameSource = frameSource;
+      fashionHeroVideoFrame = frameSource.requestVideoFrameCallback((_now, metadata) => {
         fashionHeroVideoFrame = 0;
         drawFashionHeroFrame(metadata?.mediaTime);
         scheduleFashionHeroMirror(generation);
@@ -1333,7 +1353,7 @@
       return;
     }
 
-    const fallbackDelay = fashionVideo?.paused ? 250 : 42;
+    const fallbackDelay = frameSource?.paused ? 250 : 42;
     fashionHeroFallbackTimer = window.setTimeout(() => {
       fashionHeroFallbackTimer = 0;
       drawFashionHeroFrame();
@@ -2891,15 +2911,16 @@
     window.requestAnimationFrame(() => updateFashionShelfPosition({ preview: fashionShelfOpen }));
   }
 
-  function openFashionShelf() {
+  function openFashionShelf(trigger = fashionShelfToggle) {
     if (!fashionShelf || fashionShelfOpen) return;
     if (musicShelfOpen) closeMusicShelf(false);
     if (sexEdShelfOpen) closeSexEdShelf(false);
     fashionShelfOpen = true;
+    fashionShelfReturnTarget = trigger || fashionShelfToggle;
     fashionShelfOffset = 0;
     fashionShelf.setAttribute("aria-hidden", "false");
     fashionShelf.removeAttribute("inert");
-    fashionShelfToggle?.setAttribute("aria-expanded", "true");
+    fashionShelfToggles.forEach((button) => button.setAttribute("aria-expanded", "true"));
     document.body.classList.add("fashion-shelf-open");
     renderFashionShelf();
     window.setTimeout(() => {
@@ -2916,30 +2937,55 @@
     fashionShelfOpen = false;
     fashionShelf.setAttribute("aria-hidden", "true");
     fashionShelf.setAttribute("inert", "");
-    fashionShelfToggle?.setAttribute("aria-expanded", "false");
+    fashionShelfToggles.forEach((button) => button.setAttribute("aria-expanded", "false"));
     document.body.classList.remove("fashion-shelf-open");
     stopFashionShelfPreview();
-    if (restoreFocus) fashionShelfToggle?.focus({ preventScroll: true });
+    if (restoreFocus) (fashionShelfReturnTarget || fashionShelfToggle)?.focus({ preventScroll: true });
+    fashionShelfReturnTarget = null;
   }
 
-  function toggleFashionShelf() {
+  function toggleFashionShelf(trigger = fashionShelfToggle) {
     if (fashionShelfOpen) closeFashionShelf();
-    else openFashionShelf();
+    else openFashionShelf(trigger);
+  }
+
+  function renderFashionIdentityLabel(element, channelName, brand) {
+    if (!element) return;
+    const channel = document.createElement("span");
+    channel.className = "adaptive-television-fashion-runway-identity adaptive-television-fashion-runway-identity--channel";
+    channel.textContent = channelName || "FASHION CHANNELS";
+    const runwayBrand = document.createElement("span");
+    runwayBrand.className = "adaptive-television-fashion-runway-identity adaptive-television-fashion-runway-identity--brand";
+    runwayBrand.textContent = brand || "LIVE RUNWAY";
+    element.replaceChildren(channel, runwayBrand);
+    element.title = [channelName, brand].filter(Boolean).join(" — ");
+    element.setAttribute("aria-hidden", "true");
   }
 
   function updateFashionRunwayToggle() {
-    if (!fashionRunwaySelector) return;
+    if (!fashionRunwaySelectors.length) return;
     const order = fashionSharedItems();
     const active = fashionSharedItem();
     const position = Math.max(0, order.findIndex((item) => item.id === active?.id));
     const label = active ? `${active.broadcastChannelName} — ${active.artist}` : "FASHION CHANNELS";
-    if (fashionRunwayLabel) fashionRunwayLabel.textContent = label;
-    if (fashionRunwayCount) fashionRunwayCount.textContent = order.length ? `${position + 1} / ${order.length}` : "1 / 3";
-    fashionRunwaySelector.dataset.videoTooltip = "Fashion live channels\nJoin whatever is on now, together as one.";
-    fashionShelfToggle?.setAttribute("aria-label", `Open Fashion live channels${active ? `. Recommended: ${label}` : ""}`);
-    fashionRunwayPrevious?.setAttribute("aria-label", "Previous Fashion live channel");
-    fashionRunwayNext?.setAttribute("aria-label", "Next Fashion live channel");
-    fashionRunwaySelector.dataset.fashionChannelId = active?.broadcastChannelId || "";
+    fashionRunwayLabels.forEach((element) => renderFashionIdentityLabel(
+      element,
+      active?.broadcastChannelName || "FASHION CHANNELS",
+      active?.artist || "LIVE RUNWAY"
+    ));
+    fashionRunwayCounts.forEach((element) => {
+      element.textContent = order.length ? `${position + 1} / ${order.length}` : "1 / 3";
+    });
+    fashionRunwaySelectors.forEach((selector) => {
+      selector.dataset.videoTooltip = "Fashion live channels\nJoin whatever is on now, together as one.";
+      selector.dataset.fashionChannelId = active?.broadcastChannelId || "";
+    });
+    fashionShelfToggles.forEach((button) => button.setAttribute(
+      "aria-label",
+      `Open Fashion live channels${active ? `. Current: ${label}` : ""}`
+    ));
+    fashionRunwayPreviousButtons.forEach((button) => button.setAttribute("aria-label", "Previous Fashion live channel"));
+    fashionRunwayNextButtons.forEach((button) => button.setAttribute("aria-label", "Next Fashion live channel"));
     if (document.body.classList.contains("television-emdr-gif-active")) {
       playerMount.dataset.emdrGifFashionRunway = fashionRunways[fashionRunwayIndex]?.assetKey || "";
     }
@@ -2947,78 +2993,147 @@
     updateNowPlaying();
   }
 
-  async function selectAdjacentFashionBroadcastItem(direction) {
+  async function selectAdjacentFashionBroadcastItem(direction, source = "fashion_wallet_arrow") {
     const order = fashionSharedItems();
     if (!order.length) return;
     const active = fashionSharedItem();
     const currentIndex = Math.max(0, order.findIndex((item) => item.id === active?.id));
     const next = order[(currentIndex + direction + order.length) % order.length];
-    await openBroadcastEntry(next, { source: "fashion_wallet_arrow" });
+    await openBroadcastEntry(next, { source });
+  }
+
+  function waitForFashionTargetFrame(video, targetSeconds, timeoutMs = 9000) {
+    return new Promise((resolve) => {
+      let settled = false;
+      let interval = 0;
+      const startedAt = window.performance?.now?.() || Date.now();
+      const finish = (ready, reason) => {
+        if (settled) return;
+        settled = true;
+        window.clearInterval(interval);
+        window.clearTimeout(timeout);
+        ["loadeddata", "canplay", "playing", "seeked", "timeupdate", "progress"].forEach((eventName) => {
+          video.removeEventListener(eventName, check);
+        });
+        video.dataset.fashionEntryReadiness = reason;
+        video.dataset.fashionEntryWaitMs = String(Math.round((window.performance?.now?.() || Date.now()) - startedAt));
+        resolve(ready);
+      };
+      const check = () => {
+        if (video.readyState < HTMLMediaElement.HAVE_CURRENT_DATA || video.seeking) return;
+        const duration = Number(video.duration || 0);
+        let drift = Math.abs(Number(video.currentTime || 0) - targetSeconds);
+        if (Number.isFinite(duration) && duration > 0 && drift > duration / 2) drift = duration - drift;
+        const bufferSeconds = Number(window.IAMStreamController?.bufferedAhead?.(video) || 0);
+        if (drift <= 1.5 && (bufferSeconds >= .2 || video.readyState >= HTMLMediaElement.HAVE_FUTURE_DATA)) {
+          video.dataset.fashionEntryTargetSeconds = targetSeconds.toFixed(3);
+          video.dataset.fashionEntryDriftSeconds = drift.toFixed(3);
+          finish(true, "decoded_at_target");
+        }
+      };
+      const timeout = window.setTimeout(() => finish(false, "timeout"), Math.max(2500, Number(timeoutMs) || 9000));
+      ["loadeddata", "canplay", "playing", "seeked", "timeupdate", "progress"].forEach((eventName) => {
+        video.addEventListener(eventName, check);
+      });
+      interval = window.setInterval(check, 120);
+      check();
+    });
+  }
+
+  async function prepareFashionBroadcastVideo(video, broadcastState, options = {}) {
+    if (!video || !broadcastState) return false;
+    await ensureFashionStreamAttached(video);
+    if (!await waitForBroadcastMetadata(video)) return false;
+    const duration = Number(video.duration || 0);
+    if (!Number.isFinite(duration) || duration <= 0) return false;
+    const targetSeconds = ((Number(broadcastState.offsetSeconds || 0) % duration) + duration) % duration;
+    await seekBroadcastVideo(video, targetSeconds, {
+      reason: "fashion_broadcast_entry_seek",
+      channelId: options.channelId || broadcastState.channelId || "",
+      programmeInstanceId: broadcastState.programmeInstanceId || "",
+    });
+    window.IAMStreamController?.prepareFashionReveal?.(video, {
+      minimumSeconds: Math.max(4, Number(options.revealMinimumSeconds) || 4),
+      firstFallbackMs: 900,
+      secondFallbackMs: 1500,
+    })?.catch?.(() => {});
+    await playWhenStreamAttached(video, "fashion").catch(() => {});
+    return waitForFashionTargetFrame(video, targetSeconds, options.readinessTimeoutMs);
   }
 
   async function setFashionRunway(index, options = {}) {
-    if (!fashionVideo || fashionRunwaySwitching) return;
+    if (!fashionVideo || fashionRunwaySwitching) return false;
     const nextIndex = ((index % fashionRunways.length) + fashionRunways.length) % fashionRunways.length;
     const source = options.source === "manual" ? "manual" : "algorithm";
     if (nextIndex === fashionRunwayIndex) {
+      if (options.broadcastState) {
+        const ready = await prepareFashionBroadcastVideo(fashionVideo, options.broadcastState, options);
+        if (!ready) return false;
+      }
       if (source === "manual") recordFashionSelectionFeedback(nextIndex, options.feedbackType);
       fashionSelectionSource = source;
       updateFashionRunwayToggle();
       renderFashionShelf();
-      return;
+      return true;
     }
 
     fashionRunwaySwitching = true;
-    fashionRunwayPrevious?.setAttribute("disabled", "");
-    fashionRunwayNext?.setAttribute("disabled", "");
+    fashionRunwayPreviousButtons.forEach((button) => button.setAttribute("disabled", ""));
+    fashionRunwayNextButtons.forEach((button) => button.setAttribute("disabled", ""));
 
     const previousVideo = fashionVideo;
-    const shouldPlay = requestedVideoBlend < 100;
-    const revealGeneration = ++fashionRevealGeneration;
-    previousVideo.classList.remove("is-fashion-active");
-
-    await new Promise((resolve) => window.setTimeout(resolve, 300));
-
-    window.IAMStreamController?.setFashionActive(previousVideo, false, "runway_switch");
-    try { previousVideo.pause(); } catch {}
-    window.IAMStreamController?.detach(previousVideo);
-    try {
-      previousVideo.removeAttribute("src");
-      previousVideo.load();
-    } catch {}
-    previousVideo.remove();
-
-    fashionRunwayIndex = nextIndex;
-    fashionSelectionSource = source;
-    fashionVideo = createFashionVideo(fashionRunwayIndex);
-    playerMount.insertBefore(fashionVideo, timecode || null);
-    if (document.body.classList.contains("television-emdr-gif-active")) startFashionHeroMirror();
-    updateFashionRunwayToggle();
-    if (source === "manual") recordFashionSelectionFeedback(nextIndex, options.feedbackType);
-    else if (requestedVideoBlend < 100) scheduleFashionDwellFeedback();
-    window.dispatchEvent(new CustomEvent("iam:fashion-runway-change", {
-      detail: {
-        assetKey: fashionRunways[fashionRunwayIndex].assetKey,
-        source,
-        emdrUsesCurrentFashion: true,
-      },
-    }));
+    const incomingVideo = createFashionVideo(nextIndex);
+    playerMount.insertBefore(incomingVideo, timecode || null);
+    fashionRevealGeneration += 1;
 
     try {
-      if (shouldPlay) {
-        await ensureFashionStreamAttached(fashionVideo);
-        await revealFashionWhenReady(fashionVideo, revealGeneration, {
-          minimumSeconds: options.revealMinimumSeconds,
-        });
+      let ready = true;
+      if (options.broadcastState) {
+        ready = await prepareFashionBroadcastVideo(incomingVideo, options.broadcastState, options);
+      } else if (requestedVideoBlend < 100 || document.body.classList.contains("television-emdr-gif-active")) {
+        await ensureFashionStreamAttached(incomingVideo);
+        await playWhenStreamAttached(incomingVideo, "fashion").catch(() => {});
+        ready = await waitForFashionTargetFrame(incomingVideo, Number(incomingVideo.currentTime || 0), options.readinessTimeoutMs);
       } else {
-        fashionVideo.classList.add("is-fashion-active");
+        await ensureFashionStreamAttached(incomingVideo);
       }
-    } catch {
-      fashionVideo.classList.add("is-fashion-active");
+      if (!ready) throw new Error("Fashion broadcast did not decode at the shared offset in time.");
+
+      fashionRunwayIndex = nextIndex;
+      fashionSelectionSource = source;
+      fashionVideo = incomingVideo;
+      incomingVideo.classList.add("is-fashion-active");
+      previousVideo.classList.remove("is-fashion-active");
+      applyVideoBlend(requestedVideoBlend);
+      if (document.body.classList.contains("television-emdr-gif-active")) startFashionHeroMirror();
+      updateFashionRunwayToggle();
+      renderFashionShelf();
+      if (source === "manual") recordFashionSelectionFeedback(nextIndex, options.feedbackType);
+      else if (requestedVideoBlend < 100) scheduleFashionDwellFeedback();
+      window.dispatchEvent(new CustomEvent("iam:fashion-runway-change", {
+        detail: {
+          assetKey: fashionRunways[fashionRunwayIndex].assetKey,
+          source,
+          emdrUsesCurrentFashion: true,
+        },
+      }));
+      window.setTimeout(() => {
+        window.IAMStreamController?.setFashionActive(previousVideo, false, "runway_switch_complete");
+        window.IAMStreamController?.detach(previousVideo);
+        previousVideo.remove();
+      }, 380);
+      return true;
+    } catch (error) {
+      window.IAMStreamController?.setFashionActive(incomingVideo, false, "runway_switch_failed");
+      window.IAMStreamController?.detach(incomingVideo);
+      incomingVideo.remove();
+      previousVideo.classList.add("is-fashion-active");
+      document.body.dataset.fashionBroadcastJoinError = String(error?.message || error).slice(0, 160);
+      return false;
     } finally {
       fashionRunwaySwitching = false;
-      fashionRunwayPrevious?.removeAttribute("disabled");
-      fashionRunwayNext?.removeAttribute("disabled");
+      fashionRunwayPreviousButtons.forEach((button) => button.removeAttribute("disabled"));
+      fashionRunwayNextButtons.forEach((button) => button.removeAttribute("disabled"));
       updateRadioFashionPreloadDiagnostics();
       window.setTimeout(preloadRadioFashionRunways, 480);
     }
@@ -5098,6 +5213,7 @@
   }
 
   async function joinFashionBroadcastChannel(channelId, options = {}) {
+    const joinSequence = ++fashionBroadcastJoinSequence;
     try {
       await window.IAMBroadcastClock?.ready;
     } catch {
@@ -5107,19 +5223,60 @@
     const state = window.IAMBroadcastClock?.stateAt(channelId);
     const scheduledRunway = fashionRunwayForId(state?.runwayId);
     if (!state || state.mediaType !== "fashion" || !scheduledRunway) return false;
+    const loadingItem = fashionSharedItems().find((item) => item.broadcastChannelId === channelId) || {
+      id: state.runwayId,
+      broadcastChannelName: state.channelName,
+    };
+    const loadingGeneration = Number(options.channelLoadingGeneration) || beginChannelLoading({
+      mode: "fashion",
+      item: loadingItem,
+      channelName: state.channelName,
+      source: options.source || "fashion_broadcast_join",
+    });
     closeBroadcastEntry(false);
     pendingBroadcastChannelId = "";
+    const previousFashionBroadcastChannelId = fashionBroadcastChannelId;
+    const previousFashionBroadcastPairingSource = fashionBroadcastPairingSource;
+    if (fashionBroadcastSyncTimer) {
+      window.clearInterval(fashionBroadcastSyncTimer);
+      fashionBroadcastSyncTimer = 0;
+    }
     fashionBroadcastChannelId = channelId;
     fashionBroadcastPairingSource = options.pairingSource || options.source || "fashion_broadcast";
     document.body.dataset.fashionBroadcastMode = "shared";
     document.body.dataset.fashionBroadcastPairingSource = fashionBroadcastPairingSource;
-    await setFashionRunway(fashionRunways.indexOf(scheduledRunway), {
+    delete document.body.dataset.fashionBroadcastJoinError;
+    const ready = await setFashionRunway(fashionRunways.indexOf(scheduledRunway), {
       source: "algorithm",
-      revealMinimumSeconds: options.revealMinimumSeconds,
+      broadcastState: state,
+      channelId,
+      revealMinimumSeconds: options.revealMinimumSeconds || 4,
+      readinessTimeoutMs: options.readinessTimeoutMs || 9000,
     });
-    setVideoBlend(0);
+    if (joinSequence !== fashionBroadcastJoinSequence || fashionBroadcastChannelId !== channelId) return false;
+    if (!ready) {
+      fashionBroadcastChannelId = previousFashionBroadcastChannelId;
+      fashionBroadcastPairingSource = previousFashionBroadcastPairingSource;
+      document.body.dataset.fashionBroadcastMode = previousFashionBroadcastChannelId ? "shared" : "personal";
+      if (previousFashionBroadcastPairingSource) {
+        document.body.dataset.fashionBroadcastPairingSource = previousFashionBroadcastPairingSource;
+      } else {
+        delete document.body.dataset.fashionBroadcastPairingSource;
+      }
+      if (!previousFashionBroadcastChannelId) {
+        delete document.body.dataset.fashionBroadcastChannelId;
+        delete document.body.dataset.fashionBroadcastRunwayId;
+        delete document.body.dataset.fashionBroadcastBlockRemainingSeconds;
+      }
+      if (previousFashionBroadcastChannelId) startFashionBroadcastSynchronization();
+      failChannelLoading(loadingGeneration);
+      showMusicShelfStatus("The shared Fashion channel is temporarily unavailable.", 3600);
+      return false;
+    }
+    setVideoBlend(document.body.classList.contains("television-emdr-gif-active") ? emdrGifVideoBlend : 0);
     startFashionBroadcastSynchronization();
-    await synchronizeFashionBroadcastPlayback(true);
+    await synchronizeFashionBroadcastPlayback(false);
+    if (joinSequence !== fashionBroadcastJoinSequence || fashionBroadcastChannelId !== channelId) return false;
     rankMusicShelves();
     window.IAMFirstPartyAnalytics?.record?.("fashion_broadcast_join", {
       channel_id: channelId,
@@ -5127,6 +5284,7 @@
       block_offset_seconds: state.offsetSeconds,
       pairing_source: fashionBroadcastPairingSource,
     });
+    if (!options.deferChannelLoadingFinish) finishChannelLoading(loadingGeneration);
     return true;
   }
 
@@ -5315,6 +5473,8 @@
       const visualJoined = await joinFashionBroadcastChannel(state.visualChannelId || "fashion-underground-intensity", {
         source: "audio_party_visual_pair",
         pairingSource: `party_${state.editorialId || state.energyId}`,
+        channelLoadingGeneration: loadingGeneration,
+        deferChannelLoadingFinish: true,
       });
       if (joinSequence !== broadcastJoinSequence || broadcastChannelId !== channelId) return false;
       if (!visualJoined) {
@@ -6072,6 +6232,11 @@
       ? musicAmount <= 0 ? "fashion" : musicAmount >= 100 ? "radio-visual" : "mixed"
       : "inactive";
     if (videoCrossfader) videoCrossfader.value = String(musicAmount);
+    if (emdrGifCrossfader) emdrGifCrossfader.value = String(musicAmount);
+    if (document.body.classList.contains("television-emdr-gif-active")) {
+      playerMount.dataset.emdrGifMusicAmount = musicAmount.toFixed(0);
+      drawFashionHeroFrame();
+    }
     updateNowPlaying();
   }
 
@@ -6101,6 +6266,8 @@
   function setVideoBlend(value) {
     const musicAmount = Math.max(0, Math.min(100, Number(value) || 0));
     requestedVideoBlend = musicAmount;
+    const emdrGifActive = document.body.classList.contains("television-emdr-gif-active");
+    if (emdrGifActive) emdrGifVideoBlend = musicAmount;
 
     if (musicAmount >= 100) {
       window.clearTimeout(fashionDwellTimer);
@@ -6109,6 +6276,11 @@
       if (document.body.classList.contains("television-radio-continuation") && radioVisualVideo) {
         radioVisualVideo.classList.add("is-radio-visual-active");
         playWhenStreamAttached(radioVisualVideo, "fashion").catch(() => {});
+      }
+      if (emdrGifActive && fashionVideo) {
+        window.IAMStreamController?.setPriority?.(fashionVideo, "optional");
+        playWhenStreamAttached(fashionVideo, "fashion").catch(() => {});
+        return;
       }
       if (fashionVideo) {
         window.IAMStreamController?.setFashionActive(fashionVideo, false, "music_selected");
@@ -6152,8 +6324,9 @@
         if (!controller?.setMaxHeight) localVideo.dataset.streamMaxHeight = "360";
         localVideo.dataset.emdrGifQualityCap = String(effectiveMaximum);
       }
-      setVideoBlend(0);
+      setVideoBlend(emdrGifVideoBlend);
       playerMount.dataset.emdrGifVideoLayers = "active";
+      playerMount.dataset.emdrGifMusicAmount = emdrGifVideoBlend.toFixed(0);
       playerMount.dataset.emdrGifFashionRunway = fashionRunways[fashionRunwayIndex]?.assetKey || "";
       playerMount.dataset.emdrGifFashionSelectionSource = fashionSelectionSource;
       startFashionHeroMirror();
@@ -6181,6 +6354,7 @@
       setVideoBlend(previousBlend);
     }
     delete playerMount.dataset.emdrGifVideoLayers;
+    delete playerMount.dataset.emdrGifMusicAmount;
     delete playerMount.dataset.emdrGifFashionRunway;
     delete playerMount.dataset.emdrGifFashionSelectionSource;
   }
@@ -8470,21 +8644,27 @@
       }
     });
   });
-  fashionRunwayPrevious?.addEventListener("click", (event) => {
+  fashionRunwayPreviousButtons.forEach((button) => button.addEventListener("click", (event) => {
     event.preventDefault();
     event.stopPropagation();
-    selectAdjacentFashionBroadcastItem(-1);
-  });
-  fashionRunwayNext?.addEventListener("click", (event) => {
+    selectAdjacentFashionBroadcastItem(
+      -1,
+      button.closest("[data-emdr-gif-mix-controls]") ? "fashion_emdr_gif_arrow" : "fashion_wallet_arrow"
+    );
+  }));
+  fashionRunwayNextButtons.forEach((button) => button.addEventListener("click", (event) => {
     event.preventDefault();
     event.stopPropagation();
-    selectAdjacentFashionBroadcastItem(1);
-  });
-  fashionShelfToggle?.addEventListener("click", (event) => {
+    selectAdjacentFashionBroadcastItem(
+      1,
+      button.closest("[data-emdr-gif-mix-controls]") ? "fashion_emdr_gif_arrow" : "fashion_wallet_arrow"
+    );
+  }));
+  fashionShelfToggles.forEach((button) => button.addEventListener("click", (event) => {
     event.preventDefault();
     event.stopPropagation();
-    toggleFashionShelf();
-  });
+    toggleFashionShelf(button);
+  }));
   fashionShelfCloseButtons.forEach((button) => {
     button.addEventListener("click", (event) => {
       event.preventDefault();
@@ -8691,6 +8871,9 @@
   });
   videoCrossfader?.addEventListener("input", () => {
     setVideoBlend(videoCrossfader.value);
+  });
+  emdrGifCrossfader?.addEventListener("input", () => {
+    setVideoBlend(emdrGifCrossfader.value);
   });
   emdrOff?.addEventListener("click", (event) => {
     event.preventDefault();

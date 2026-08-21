@@ -7,7 +7,7 @@ const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const IAM_DIR = path.join(ROOT, "i  a m");
 const controller = fs.readFileSync(path.join(IAM_DIR, "adaptive-environment-television.js"), "utf8");
 const styles = fs.readFileSync(path.join(IAM_DIR, "adaptive-environment-television.css"), "utf8");
-const pages = ["index.html", "adaptive-environment-television.html"]
+const pages = ["index.html", "index-alt.html", "adaptive-environment-television.html"]
   .map((fileName) => fs.readFileSync(path.join(IAM_DIR, fileName), "utf8"));
 
 function requireCondition(condition, message) {
@@ -28,6 +28,32 @@ requireCondition(controller.includes('document.body.dataset.channelLoadingState 
 requireCondition(controller.includes("Math.max(0, 480 - elapsed)") && controller.includes("}, 260);") && controller.includes("}, 3600);"), "minimum visibility, fade, or error timing has changed");
 requireCondition(controller.includes('video.addEventListener("playing"') && controller.includes("finishChannelLoading(loadingGeneration);"), "Videos no longer settle loading feedback from actual playback readiness");
 requireCondition(controller.includes("deferChannelLoadingFinish: true") && controller.includes("const visualJoined = await joinFashionBroadcastChannel"), "Parties no longer wait for both programme audio and the paired visual");
+requireCondition(
+  controller.includes("async function joinFashionBroadcastChannel") &&
+    controller.includes('beginChannelLoading({\n      mode: "fashion"') &&
+    controller.includes("finishChannelLoading(loadingGeneration)") &&
+    controller.includes("failChannelLoading(loadingGeneration)"),
+  "Fashion joins are no longer bound to the shared channel-loading lifecycle",
+);
+requireCondition(
+  controller.includes("async function prepareFashionBroadcastVideo") &&
+    controller.includes('reason: "fashion_broadcast_entry_seek"') &&
+    controller.includes("return waitForFashionTargetFrame(video, targetSeconds"),
+  "Fashion joins no longer seek to the shared offset before waiting for the decoded target frame",
+);
+requireCondition(
+  controller.includes("function waitForFashionTargetFrame") &&
+    controller.includes('finish(true, "decoded_at_target")') &&
+    controller.includes('finish(false, "timeout")') &&
+    controller.includes("readinessTimeoutMs: options.readinessTimeoutMs || 9000"),
+  "Fashion readiness is no longer decoded-frame-based and bounded",
+);
+requireCondition(
+  controller.includes("const previousVideo = fashionVideo;") &&
+    controller.includes("fashionVideo = incomingVideo;") &&
+    controller.indexOf("previousVideo.remove();") > controller.indexOf("fashionVideo = incomingVideo;"),
+  "Fashion channel changes no longer retain the outgoing image until the replacement is ready",
+);
 requireCondition(controller.includes("continuationAudio.play()") && controller.includes("failChannelLoading(loadingGeneration);"), "Radio loading feedback is no longer bound to playback success and failure");
 requireCondition(controller.includes("let broadcastJoinSequence = 0;") && controller.includes("const joinSequence = ++broadcastJoinSequence;"), "rapid channel joins no longer invalidate stale asynchronous work");
 requireCondition(controller.includes("if (broadcastSyncTimer) {") && controller.includes("joinSequence !== broadcastJoinSequence || broadcastChannelId !== channelId"), "an older sync or join can overtake current channel loading feedback");

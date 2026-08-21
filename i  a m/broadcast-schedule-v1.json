@@ -1,5 +1,5 @@
 {
-  "version": "broadcast_schedule_v1.8",
+  "version": "broadcast_schedule_v1.9",
   "stage": "five_music_rooms_live_safety_cushion_ready",
   "epoch_utc": "2026-07-24T00:00:00.000Z",
   "extended_session_format_policy": {
@@ -1270,7 +1270,7 @@
       "format": "fashion",
       "media_type": "fashion",
       "energy_id": "restore",
-      "name": "Restore",
+      "name": "Champagne Bohemia",
       "description": "Spacious, composed and restorative shared fashion films.",
       "schedule": [
         {
@@ -1288,7 +1288,7 @@
       "format": "fashion",
       "media_type": "fashion",
       "energy_id": "social-uplift",
-      "name": "Social Uplift",
+      "name": "Modulate Infinity",
       "description": "Expressive, celebratory and communal shared fashion films.",
       "schedule": [
         {
@@ -1306,7 +1306,7 @@
       "format": "fashion",
       "media_type": "fashion",
       "energy_id": "underground-intensity",
-      "name": "Underground Intensity",
+      "name": "James Bondage",
       "description": "Darker, sensual and higher-activation shared fashion films.",
       "schedule": [
         {
