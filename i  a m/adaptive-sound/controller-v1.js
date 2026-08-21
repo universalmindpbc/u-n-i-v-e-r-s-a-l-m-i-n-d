@@ -163,6 +163,7 @@ function initializeAdaptiveSoundPanel() {
     openPanel();
   }, true);
   window.addEventListener("iam:adaptive-sound-open", openPanel);
+  window.addEventListener("iam:adaptive-sound-close", () => closePanel(false));
   window.addEventListener(ADAPTIVE_SOUND_SESSION_EVENT, (event) => applySessionSnapshot(event.detail));
   let matrixResizeFrame = 0;
   window.addEventListener("resize", () => {

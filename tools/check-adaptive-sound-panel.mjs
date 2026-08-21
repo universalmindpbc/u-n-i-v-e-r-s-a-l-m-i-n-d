@@ -105,6 +105,7 @@ assert.equal(panelController.includes("iamAdaptiveSoundLayer"), false);
 assert.ok(panelController.includes('await selectProfile(button.dataset.adaptiveProfile || "")'));
 assert.ok(panelController.includes('new CustomEvent("iam:adaptive-sound-research-open")'));
 assert.ok(panelController.includes('new CustomEvent("iam:adaptive-sound-navigation")'));
+assert.ok(panelController.includes('window.addEventListener("iam:adaptive-sound-close", () => closePanel(false))'));
 assert.ok(panelController.includes('document.querySelectorAll("[data-video-sound-open], [data-emdr-sound-research]")'));
 assert.equal(panelController.includes('researchMoreButton?.click()'), false);
 assert.equal(/navigationButton\?\.addEventListener\([\s\S]*?closePanel\(false\)/.test(panelController), false);
@@ -190,6 +191,7 @@ assert.match(panelCss, /data-profile="inspiration_gamma_80_v1"[\s\S]*?rgba\(56, 
 assert.match(panelCss, /body\.iam-sound-panel-open\.nav-open \.global-nav \{[\s\S]*?z-index: 1500/);
 assert.match(panelCss, /body\.iam-sound-panel-open\.research-details-open \.adaptive-television-research-dialog \{[\s\S]*?z-index: 1400/);
 assert.match(panelCss, /body\.iam-sound-panel-open \.brand,[\s\S]*?body\.iam-sound-panel-open \.global-nav-trigger \{[\s\S]*?visibility: hidden !important/);
+assert.match(televisionController, /researchDialogScienceLink\?\.addEventListener\("click",[\s\S]*?closeAllResearchRollovers\(\);[\s\S]*?new CustomEvent\("iam:adaptive-sound-close"\)[\s\S]*?openInVideoPageLayer\(researchDialogScienceLink\)/);
 assert.equal(panelCss.includes("body.iam-sound-panel-open.research-details-open .adaptive-television-research-dialog__copy"), false);
 assert.match(televisionCss, /\.adaptive-television-research-dialog__backdrop \{[\s\S]*?background: rgba\(0, 0, 0, 0\.84\)/);
 assert.match(panelCss, /body:not\(\.television-is-fullscreen\) \.iam-sound-module--diamond \{[\s\S]*?--vesica-diameter: min\(30\.5vw,[\s\S]*?--vesica-offset: min\(10\.7833784139849vw/);

@@ -9189,6 +9189,7 @@
     event.preventDefault();
     event.stopImmediatePropagation();
     closeAllResearchRollovers();
+    window.dispatchEvent(new CustomEvent("iam:adaptive-sound-close"));
     openInVideoPageLayer(researchDialogScienceLink);
   });
   document.querySelectorAll("[data-nav-close]").forEach((button) => {
