@@ -541,8 +541,11 @@ requireCondition((nowPlayingCss.match(/font-weight: 400;/g) || []).length >= 2, 
 requireCondition(controller.includes('preloadTargetSeconds: 12'), 'fashion no longer preloads toward a twelve-second buffer');
 requireCondition(controller.includes('const FASHION_REVEAL_BUFFER_SECONDS = 8;'), 'fashion reveal no longer requires an eight-second buffer floor');
 requireCondition(controller.includes('const RADIO_FASHION_REVEAL_BUFFER_SECONDS = 4;') && controller.includes('revealMinimumSeconds: RADIO_FASHION_REVEAL_BUFFER_SECONDS'), 'Radio no longer receives its faster Fashion-first visual handoff');
+requireCondition(controller.includes('const resumeOutgoingVideoOnFailure = Boolean(localVideo && !localVideo.paused);') && controller.includes('window.IAMStreamController?.suspend?.(localVideo, "radio_visual_handoff");'), 'the outgoing music stream can still starve a constrained Radio Fashion startup');
+requireCondition(controller.includes('window.IAMStreamController?.suspend?.(video, "radio_visual_handoff");') && controller.includes('window.IAMStreamController?.suspend?.(backgroundVideo, "television_room_open");'), 'inactive Fashion and background streams can still compete with Radio visual startup');
 requireCondition(controller.includes('const radioFashionPreloadPool = new Map();') && controller.includes('releaseUnusedRadioFashionRunways'), 'Radio Fashion no longer retains only the active or imminent visual');
 requireCondition(controller.includes('let radioVisualVideo = null;') && controller.includes('function createRadioVisualVideo(runwayIndex)'), 'Radio no longer owns an independent visual layer beneath public Fashion');
+requireCondition(controller.includes('video.dataset.streamPriority = "primary";') && controller.includes('Boolean(radioVisualBroadcastChannelId && radioVisualVideo)'), 'the imminent Radio Fashion visual can still be suspended behind the outgoing music video');
 requireCondition(controller.includes('async function joinRadioVisualBroadcastChannel(channelId, options = {})') && controller.includes('await joinRadioVisualBroadcastChannel(state.visualChannelId'), 'Radio can once again replace the public Fashion broadcast layer');
 requireCondition(controller.includes('async function synchronizeRadioVisualBroadcastPlayback(forceSeek = false)') && controller.includes('synchronizeBroadcastMedia(radioVisualVideo, targetSeconds'), 'the Radio visual no longer uses the rate-locked controlled rejoin policy');
 requireCondition(controller.includes('const radioVisualVisible = Boolean(radioActive && radioRunway && requestedVideoBlend >= 99.5);'), 'Now Playing can still report the paused opening music video at the Radio endpoint');
@@ -813,6 +816,7 @@ const musicBufferManager = streamController.slice(
 );
 requireCondition(musicBufferManager.includes('setAuxiliaryLoadingSuspended(state, true'), 'low primary buffer no longer suspends optional Fashion loading');
 requireCondition(streamController.includes('state.video.dataset.streamPriority === "primary"'), 'visible primary Fashion can be suspended as optional media');
+requireCondition(streamController.includes('(suspended && state.video.dataset.streamPriority === "primary")'), 'promoting a previously suspended Fashion stream can no longer resume it');
 requireCondition(!streamController.includes('outside_viewport') && !streamController.includes('document_hidden'), 'a visibility change can still automatically pause fashion');
 requireCondition(streamController.includes('const FASHION_PRELOAD_TARGET_SECONDS = 12;'), 'stream controller preload target is no longer twelve seconds');
 requireCondition(streamController.includes('const FASHION_REVEAL_MINIMUM_SECONDS = 8;'), 'stream controller reveal floor is no longer eight seconds');
@@ -838,6 +842,8 @@ requireCondition(streamController.includes('video.dataset.streamWaitingCount'), 
 requireCondition(streamController.includes('video.dataset.streamStalledCount'), 'music stalled diagnostics are missing');
 requireCondition(streamController.includes('video.dataset.streamLastFreezeDurationMs'), 'music freeze-duration diagnostics are missing');
 requireCondition(streamController.includes('function setMaxHeight(video, maximumHeight = null'), 'the stream controller has no runtime quality cap');
+requireCondition(streamController.includes('function suspend(video, reason = "inactive_media")') && streamController.includes('state.loadingSuspended = true;') && streamController.includes('stream_loading_suspended'), 'inactive streams can no longer explicitly stop HLS fragment loading');
+requireCondition(streamController.includes('const loadingSuspended = video.dataset.streamLoadingState === "suspended";') && streamController.includes('!state.loadingSuspended'), 'a suspension requested during asynchronous Stream attachment can still be lost');
 requireCondition(controller.includes('controller.setMaxHeight(localVideo, 360, "emdr_gif_active")'), 'GIF mode no longer caps the hidden music stream at 360p');
 requireCondition(controller.includes('video.dataset.streamMaxHeight = "720";'), 'the fashion runway no longer retains its 720p ceiling');
 requireCondition(shellController.includes(`cloudflare-stream-catalogue.js?v=${expectedStreamCatalogueToken}`), 'the shared script does not cache-bust the current Stream catalogue');

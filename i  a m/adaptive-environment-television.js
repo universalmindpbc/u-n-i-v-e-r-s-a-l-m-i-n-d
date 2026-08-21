@@ -1250,7 +1250,10 @@
     const video = createFashionVideo(runwayIndex);
     video.className = "adaptive-television-radio-visual-video";
     video.dataset.radioVisualRunwayId = runway.assetKey;
-    video.dataset.streamPriority = "handoff";
+    // This is the imminent Radio picture, not an optional Fashion preview.
+    // Mark it primary before Stream attachment so constrained-startup policy
+    // cannot suspend the visual while the Radio join waits for its buffer.
+    video.dataset.streamPriority = "primary";
     return video;
   }
 
@@ -5449,6 +5452,24 @@
     document.body.dataset.broadcastMode = "shared";
     document.body.dataset.broadcastClockSource = window.IAMBroadcastClock.diagnostics().clockSource;
     if (scheduledStation) {
+      // The outgoing music stream must stop consuming the constrained startup
+      // budget before the incoming Radio picture builds its reveal buffer.
+      // Its last decoded frame stays mounted beneath the shared loader.
+      const resumeOutgoingVideoOnFailure = Boolean(localVideo && !localVideo.paused);
+      if (localVideo) {
+        try { localVideo.pause(); } catch {}
+        window.IAMStreamController?.setPriority?.(localVideo, "optional");
+        window.IAMStreamController?.suspend?.(localVideo, "radio_visual_handoff");
+      }
+      const inactiveVisuals = new Set([
+        fashionVideo,
+        ...document.querySelectorAll(".background-video video"),
+      ]);
+      inactiveVisuals.forEach((video) => {
+        if (!video) return;
+        window.IAMStreamController?.setFashionActive?.(video, false, "radio_visual_handoff");
+        window.IAMStreamController?.suspend?.(video, "radio_visual_handoff");
+      });
       // Put the silent runway on screen before the radio transport performs its
       // larger safety-buffer fill. A slow station must never hold the picture
       // behind a 12–30 second audio startup.
@@ -5459,6 +5480,10 @@
       });
       if (joinSequence !== broadcastJoinSequence || broadcastChannelId !== channelId) return false;
       if (!radioVisualReady) {
+        if (localVideo) {
+          window.IAMStreamController?.setPriority?.(localVideo, "primary");
+          if (resumeOutgoingVideoOnFailure) playLocalVideo(localVideo);
+        }
         failChannelLoading(loadingGeneration);
         showMusicShelfStatus("The shared Radio visual is temporarily unavailable.", 3600);
         return false;
@@ -6213,8 +6238,9 @@
   function applyVideoBlend(value) {
     const musicAmount = Math.max(0, Math.min(100, Number(value) || 0));
     const fashionOpacity = 1 - (musicAmount / 100);
-    const radioIsActiveProgramme = document.body.classList.contains("television-radio-continuation");
-    window.IAMStreamController?.setPriority?.(localVideo, "primary");
+    const radioIsActiveProgramme = document.body.classList.contains("television-radio-continuation") ||
+      Boolean(radioVisualBroadcastChannelId && radioVisualVideo);
+    window.IAMStreamController?.setPriority?.(localVideo, radioIsActiveProgramme ? "optional" : "primary");
     window.IAMStreamController?.setPriority?.(fashionVideo, musicAmount < 99.5 ? "primary" : "optional");
     if (radioVisualVideo) {
       window.IAMStreamController?.setPriority?.(
@@ -8496,6 +8522,7 @@
     document.body.classList.add("television-room-opening", "television-wallet-settling");
     document.querySelectorAll(".background-video video").forEach((backgroundVideo) => {
       window.IAMStreamController?.setFashionActive(backgroundVideo, false);
+      window.IAMStreamController?.suspend?.(backgroundVideo, "television_room_open");
     });
     room.setAttribute("aria-hidden", "false");
     playButton.setAttribute("aria-expanded", "true");

@@ -437,7 +437,7 @@
   }
 
   function setAuxiliaryLoadingSuspended(state, suspended, reason) {
-    if (state.role !== "fashion" || state.video.dataset.streamPriority === "primary") return;
+    if (state.role !== "fashion" || (suspended && state.video.dataset.streamPriority === "primary")) return;
     if (!suspended && (state.video.dataset.streamPriority || "optional") === "optional") return;
     if (Boolean(state.auxiliarySuspended) === Boolean(suspended)) return;
     state.auxiliarySuspended = Boolean(suspended);
@@ -733,13 +733,14 @@
     if (!asset) return null;
 
     const role = options.role === "fashion" ? "fashion" : "music";
+    const loadingSuspended = video.dataset.streamLoadingState === "suspended";
     const state = {
       video,
       asset,
       role,
       hls: null,
       isVisible: true,
-      wantsPlayback: Boolean(options.autoplay || video.autoplay),
+      wantsPlayback: !loadingSuspended && Boolean(options.autoplay || video.autoplay),
       preloadRequested: Boolean(options.preload),
       preloadTargetSeconds: finiteNumber(options.preloadTargetSeconds, FASHION_PRELOAD_TARGET_SECONDS),
       preloadPromise: null,
@@ -765,6 +766,7 @@
       controlledSeekCount: 0,
       seekingStartedAt: 0,
       auxiliarySuspended: false,
+      loadingSuspended,
     };
     states.set(video, state);
     video.dataset.streamRole = role;
@@ -857,7 +859,7 @@
 
     if (state.keepAlive) {
       const resumePersistentVideo = () => {
-        if (!state.wantsPlayback || state.auxiliarySuspended || document.hidden) return;
+        if (!state.wantsPlayback || state.auxiliarySuspended || state.loadingSuspended || document.hidden) return;
         state.hls?.startLoad?.();
         video.play().catch(() => {});
       };
@@ -879,7 +881,7 @@
     if (Hls?.isSupported?.()) {
       const throttleKbps = qaThrottleKbps();
       const hlsConfig = {
-        autoStartLoad: (state.wantsPlayback || state.preloadRequested) && !state.auxiliarySuspended,
+        autoStartLoad: (state.wantsPlayback || state.preloadRequested) && !state.auxiliarySuspended && !state.loadingSuspended,
         capLevelToPlayerSize: role === "fashion",
         startLevel: 0,
         maxLiveSyncPlaybackRate: 1,
@@ -967,10 +969,10 @@
         }
         if (role === "fashion" && (data?.details?.includes?.("buffer") || data?.type === Hls.ErrorTypes.NETWORK_ERROR)) {
           manageFashionBuffer(state, "hls_error");
-          if (!state.auxiliarySuspended) hls.startLoad();
+          if (!state.auxiliarySuspended && !state.loadingSuspended) hls.startLoad();
         }
         if (!data?.fatal) return;
-        if (data.type === Hls.ErrorTypes.NETWORK_ERROR && !state.auxiliarySuspended) hls.startLoad();
+        if (data.type === Hls.ErrorTypes.NETWORK_ERROR && !state.auxiliarySuspended && !state.loadingSuspended) hls.startLoad();
         else if (data.type === Hls.ErrorTypes.MEDIA_ERROR) hls.recoverMediaError();
       });
       hls.loadSource(asset.hls);
@@ -1024,11 +1026,27 @@
     video.dataset.televisionStreamAttach = "released";
   }
 
+  function suspend(video, reason = "inactive_media") {
+    if (!video) return false;
+    video.dataset.streamLoadingState = "suspended";
+    const state = states.get(video);
+    if (!state) return true;
+    state.loadingSuspended = true;
+    state.wantsPlayback = false;
+    state.hls?.stopLoad?.();
+    recordTelemetry(state, "stream_loading_suspended", {
+      suspension_reason: String(reason || "inactive_media").slice(0, 80),
+    });
+    return true;
+  }
+
   function setPriority(video, priority = "optional") {
     if (!video) return;
     video.dataset.streamPriority = String(priority || "optional");
     const state = states.get(video);
     if (!state || priority !== "primary") return;
+    state.loadingSuspended = false;
+    delete video.dataset.streamLoadingState;
     setAuxiliaryLoadingSuspended(state, false, "promoted_to_primary");
     if (state.role !== "music") return;
     applyConstrainedStartupPriority();
@@ -1103,7 +1121,11 @@
     const state = states.get(video);
     if (!state || state.role !== "fashion") return;
     state.wantsPlayback = Boolean(active);
-    if (active) resumeFashion(state);
+    if (active) {
+      state.loadingSuspended = false;
+      delete video.dataset.streamLoadingState;
+      resumeFashion(state);
+    }
     else pauseFashion(state, source);
   }
 
@@ -1111,6 +1133,8 @@
     const state = states.get(video);
     if (state) {
       state.wantsPlayback = true;
+      state.loadingSuspended = false;
+      delete video.dataset.streamLoadingState;
       state.hls?.startLoad?.();
     }
     return video.play();
@@ -1204,6 +1228,7 @@
     attach,
     detach,
     release,
+    suspend,
     play,
     setFashionActive,
     preloadMedia,
