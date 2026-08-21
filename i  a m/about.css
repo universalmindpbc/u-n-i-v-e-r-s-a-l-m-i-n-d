@@ -2387,6 +2387,7 @@ html {
 }
 
 .about-overview-refuge,
+.about-overview-adaptive,
 .about-overview-context,
 .about-overview-definition,
 .about-overview-partnerships,
@@ -2408,11 +2409,24 @@ html {
 
 .about-overview-context {
   max-width: 880px;
-  margin-bottom: clamp(42px, 4.8vw, 76px);
+  margin-bottom: clamp(22px, 2.5vw, 38px);
   color: #62625b;
   font-size: clamp(16px, 1.16vw, 20px);
   font-weight: 400;
   line-height: 1.48;
+}
+
+.about-overview-adaptive {
+  max-width: 1080px;
+  margin-bottom: clamp(42px, 4.8vw, 76px);
+  padding: clamp(24px, 2.5vw, 38px);
+  border: 1px solid var(--about-line);
+  border-left: clamp(6px, 0.5vw, 8px) solid var(--about-olive);
+  background: rgba(255, 255, 255, 0.34);
+  color: var(--about-ink);
+  font-size: clamp(19px, 1.45vw, 25px);
+  letter-spacing: -0.012em;
+  line-height: 1.38;
 }
 
 .about-overview-definition {
@@ -2682,6 +2696,7 @@ html {
   }
 
   .about-overview-refuge,
+  .about-overview-adaptive,
   .about-overview-partnerships,
   .about-overview-positioning {
     font-size: clamp(19px, 4.2vw, 24px);
@@ -2689,6 +2704,10 @@ html {
 
   .about-overview-definition {
     font-size: clamp(21px, 4.8vw, 27px);
+  }
+
+  .about-overview-adaptive {
+    padding: clamp(24px, 5.5vw, 34px);
   }
 
   .about-overview-support > p {
