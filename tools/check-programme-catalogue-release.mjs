@@ -95,7 +95,7 @@ for (const track of programmeTracks) {
 
 const channel = (id) => schedule.channels.find((candidate) => candidate.id === id);
 const modul8GlobalWeek = channel("party-modul8-infinity");
-assert.equal(schedule.version, "broadcast_schedule_v1.8");
+assert.equal(schedule.version, "broadcast_schedule_v1.9");
 assert.equal(schedule.epoch_utc, "2026-07-24T00:00:00.000Z");
 assert.equal(modul8GlobalWeek.epoch_utc, "2026-08-02T14:00:00.000Z");
 assert.equal(modul8GlobalWeek.schedule.length, 108);
