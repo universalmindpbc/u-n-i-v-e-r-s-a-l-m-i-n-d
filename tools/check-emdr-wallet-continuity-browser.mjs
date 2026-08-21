@@ -102,6 +102,9 @@ try {
       stellarPressed: document.querySelector('[data-emdr-style-index="1"]')?.getAttribute("aria-pressed"),
       togglePressed: document.querySelector("[data-emdr-toggle]")?.getAttribute("aria-pressed"),
       toggleDisabled: Boolean(document.querySelector("[data-emdr-toggle]")?.disabled),
+      toggleText: document.querySelector("[data-emdr-toggle]")?.textContent?.trim(),
+      toggleVisible: Boolean(document.querySelector("[data-emdr-toggle]")?.getClientRects().length),
+      toggleClipped: document.querySelector("[data-emdr-toggle]")?.scrollWidth > document.querySelector("[data-emdr-toggle]")?.clientWidth,
       gifPresentationActive: document.body.classList.contains("television-emdr-gif-active"),
     };
   });
@@ -116,6 +119,9 @@ try {
   assert.equal(gifNavigation.gifPressed, "true");
   assert.equal(gifNavigation.togglePressed, "true");
   assert.equal(gifNavigation.toggleDisabled, false);
+  assert.equal(gifNavigation.toggleText, "on/off");
+  assert.equal(gifNavigation.toggleVisible, true);
+  assert.equal(gifNavigation.toggleClipped, false);
   assert.equal(gifNavigation.gifPresentationActive, true);
 
   await click('[data-wallet-panel="emdr"] [data-wallet-home]');
@@ -134,6 +140,9 @@ try {
   assert.equal(stellarNavigation.controlsView, "stellar");
   assert.equal(stellarNavigation.stellarPressed, "true");
   assert.equal(stellarNavigation.togglePressed, "true");
+  assert.equal(stellarNavigation.toggleText, "on/off");
+  assert.equal(stellarNavigation.toggleVisible, true);
+  assert.equal(stellarNavigation.toggleClipped, false);
 
   await click("[data-emdr-toggle]");
   const poweredOff = await inspect();
@@ -143,6 +152,7 @@ try {
   assert.equal(poweredOff.stellarPressed, "true");
   assert.equal(poweredOff.togglePressed, "false");
   assert.equal(poweredOff.toggleDisabled, false);
+  assert.equal(poweredOff.toggleText, "on/off");
 
   await click("[data-emdr-toggle]");
   const poweredOn = await inspect();
@@ -151,6 +161,7 @@ try {
   assert.equal(poweredOn.controlsView, "stellar");
   assert.equal(poweredOn.stellarPressed, "true");
   assert.equal(poweredOn.togglePressed, "true");
+  assert.equal(poweredOn.toggleText, "on/off");
 
   console.log(JSON.stringify({ target, mutedProcess: true, gifNavigation, stellarNavigation, poweredOff, poweredOn }, null, 2));
 } finally {

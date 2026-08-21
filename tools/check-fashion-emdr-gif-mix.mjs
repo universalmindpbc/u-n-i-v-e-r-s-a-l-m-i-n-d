@@ -39,7 +39,7 @@ const emdrPanelEnd = html.indexOf('data-wallet-panel="audio"', emdrPanelStart);
 const emdrPanel = html.slice(emdrPanelStart, emdrPanelEnd);
 assert.ok(emdrPanel.indexOf("data-wallet-home") < emdrPanel.indexOf("data-emdr-toggle"), "the EMDR power control is not immediately after wallet home");
 assert.ok(emdrPanel.indexOf("data-emdr-toggle") < emdrPanel.indexOf("data-emdr-style-index=\"0\""), "the EMDR power control is not before GIF and stellar");
-assert.match(emdrPanel, /data-emdr-toggle aria-pressed="false" aria-label="Choose GIF or stellar to turn EMDR on" disabled>EMDR<\/button>/);
+assert.match(emdrPanel, /data-emdr-toggle aria-pressed="false" aria-label="Choose GIF or stellar to turn EMDR on" disabled>on\/off<\/button>/);
 
 assert.match(controller, /querySelectorAll\("\[data-fashion-runway-selector\]"\)/);
 assert.match(controller, /fashionRunwayLabels\.forEach\(\(element\) => renderFashionIdentityLabel/);
