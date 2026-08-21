@@ -3,17 +3,17 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Universal Mind's I AM is live electronic music television for mental health: check in, unlock exclusive content, and connect with community support and trusted referral pathways.">
+    <meta name="description" content="Universal Mind's I AM is live electronic music television for mental health: check in, watch together, connect with trusted referral pathways and participate in positive actions for mental health.">
     <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
     <link rel="canonical" href="https://universalmind.tv/vogue/iam/induction.html">
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="Universal Mind">
     <meta property="og:title" content="I AM | Universal Mind">
-    <meta property="og:description" content="Live electronic music television for mental health. Check in, unlock exclusive content and watch together as one.">
+    <meta property="og:description" content="Livestream electronic music television for mental health. Check in, watch together and participate in positive actions for mental health.">
     <meta property="og:url" content="https://universalmind.tv/vogue/iam/induction.html">
     <meta property="og:image" content="https://universalmind.tv/vogue/iam/a%20s%20s%20e%20t%20s/Universal%20Mind%20%5B%20I%20o%20H%20%5D%20Logo%20512.png">
     <meta name="twitter:card" content="summary">
-    <title>Induction | I Am</title>
+    <title>Induction | I AM</title>
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -42,7 +42,7 @@
             "@id": "https://universalmind.tv/vogue/iam/induction.html#iam",
             "name": "I AM",
             "url": "https://universalmind.tv/vogue/iam/induction.html",
-            "description": "Universal Mind's first experience: live electronic music television for mental health.",
+            "description": "Universal Mind's first experience: livestream electronic music television for mental health.",
             "applicationCategory": "MultimediaApplication",
             "operatingSystem": "Web",
             "isAccessibleForFree": true,
@@ -59,9 +59,13 @@
     <link rel="icon" type="image/png" sizes="32x32" href="/vogue/iam/favicon.png?v=iam-favicon-3">
     <link rel="shortcut icon" type="image/png" href="/vogue/iam/favicon.png?v=iam-favicon-3">
     <link rel="apple-touch-icon" sizes="180x180" href="/vogue/iam/apple-touch-icon.png?v=iam-favicon-3">
-    <link rel="stylesheet" href="styles.css?v=induction-permission-owner-bold-v4">
-    <link rel="stylesheet" href="mobile-editorial-surface.css?v=mobile-editorial-20260728-2">
-    <script src="mobile-editorial-surface.js?v=mobile-editorial-20260728-2"></script>
+    <link rel="preload" as="image" href="a s s e t s/Universal Mind [ I o H ] Logo 512.png" fetchpriority="high">
+    <link rel="stylesheet" href="induction-alternate.css?v=induction-alternate-20260821-5">
+    <style>
+      .induction-page .induction-alternate__veil {
+        background: rgba(5, 5, 7, 0.34);
+      }
+    </style>
     <script>
       (() => {
         const cookieName = "universalMindIAmInductionVisits";
@@ -69,8 +73,6 @@
         const cookieMaxAge = 60 * 60 * 24 * 365;
         const params = new URLSearchParams(window.location.search);
         const forceInduction = params.get("induction") === "show";
-
-        if (window.IAMMobileEditorial?.active) return;
 
         const getCookie = (name) => {
           const value = document.cookie
@@ -101,107 +103,112 @@
         }
       })();
     </script>
+    <script src="induction-alternate.js?v=induction-alternate-20260820-2" defer></script>
   </head>
-  <body class="induction-page">
-    <main class="induction-shell" aria-label="Universal Mind I Am induction">
-      <section class="induction-scene" aria-label="I Am portal introduction">
-        <div class="induction-background-video" aria-hidden="true">
-          <video
-            data-stream-file="a s s e t s/Globe Landing Page Video - Sunscreem - Perfection Motion for RMU.mp4"
-            data-stream-reveal="pending"
-            autoplay
-            muted
-            playsinline
-            loop
-            preload="metadata"
-          ></video>
-        </div>
+  <body class="induction-page induction-alternate-page">
+    <main class="induction-alternate" aria-label="Universal Mind I AM induction">
+      <div class="induction-alternate__media" aria-hidden="true">
+        <video
+          data-stream-file="a s s e t s/Globe Landing Page Video - Sunscreem - Perfection Motion for RMU.mp4"
+          data-stream-reveal="pending"
+          data-induction-alternate-video
+          data-initial-start="0"
+          data-initial-start-applied="false"
+          data-loop-start="0"
+          autoplay
+          muted
+          playsinline
+          loop
+          preload="metadata"
+        ></video>
+      </div>
 
-        <div class="induction-black-overlay" aria-hidden="true"></div>
+      <div class="induction-alternate__veil" aria-hidden="true"></div>
 
-        <div class="induction-content">
-          <header class="induction-response-banner">
-            <p>
-              <span class="induction-response-kicker">A Direct Response To</span>
-              <span class="induction-response-source">Orygen + Phoenix Australia’s</span>
-              <a href="https://www.orygen.org.au/Policy-Centre/Policy-Areas/Population-groups/The-next-post/Orygen_Young_veterans-Policy-paper_Mar2018edition_?ext=.pdf" target="_blank" rel="noreferrer">“The Next Post: Young people transitioning from military service and their mental health”</a>
-            </p>
-          </header>
+      <div class="induction-alternate__brand" role="img" aria-label="Universal Mind">
+        <img
+          class="induction-alternate__brand-mark"
+          src="a s s e t s/Universal Mind [ I o H ] Logo 512.png"
+          alt=""
+          decoding="async"
+          fetchpriority="high"
+          data-induction-alternate-logo
+          data-logo-ready="false"
+        >
+      </div>
 
-          <section class="mobile-experience-notice" id="mobile-experience" aria-labelledby="mobile-experience-title">
-            <p class="mobile-experience-notice__eyebrow">Mobile</p>
-            <h2 id="mobile-experience-title">THE FULL I AM EXPERIENCE</h2>
-            <p><strong>is currently available on desktop and tablet.</strong></p>
-            <p>An iOS SDK is in development, designed to bring Universal Mind experiences into many different apps.</p>
-            <p>Visit universalmind.tv on a desktop or tablet to enter the full experience.</p>
-            <nav aria-label="Explore Universal Mind on mobile">
-              <a href="induction.html?mobile=1" aria-current="page">induction</a>
-              <a href="about.html?aboutTopLevel=1">about</a>
-              <a href="science.html">science</a>
-              <a href="our-team.html">our team</a>
-              <a href="shop.html">shop</a>
-            </nav>
-          </section>
+      <div class="induction-alternate__content">
+        <header class="induction-alternate__response">
+          <p>
+            <span class="induction-alternate__response-kicker">A Direct Response To</span>
+            <span class="induction-alternate__response-source">Orygen + Phoenix Australia’s</span>
+            <a href="https://www.orygen.org.au/Policy-Centre/Policy-Areas/Population-groups/The-next-post/Orygen_Young_veterans-Policy-paper_Mar2018edition_?ext=.pdf" target="_blank" rel="noreferrer">“The Next Post: Young people transitioning from military service and their mental health”
+            </a>
+          </p>
+        </header>
 
-          <div class="induction-pages">
-            <section class="induction-copy induction-copy--intro" aria-label="Universal Mind I Am introduction">
-              <div class="induction-portal-identity" aria-label="Vogue Universal Mind I Am">
-                <img src="a s s e t s/Universal Mind [ I o H ] Logo.PNG" alt="" class="induction-portal-seal">
-                <div>
-                  <p class="induction-portal-kicker">VOGUE // UNIVERSAL MIND</p>
-                  <p class="induction-portal-name">I AM</p>
-                </div>
-              </div>
+        <section class="induction-alternate__introduction" aria-labelledby="induction-title">
+          <h1 id="induction-title">
+            Universal Mind is livestream electronic music television for mental health.
+          </h1>
 
-              <p class="induction-chapter">01 / THE INVITATION</p>
+          <div class="induction-flow-band">
+            <div class="induction-flow" role="img" aria-label="Check in, watch Music TV together, use referral pathways and receive rewards. Each positive action contributes to rewards.">
+              <ol class="induction-flow__steps">
+                <li class="induction-flow__step" data-flow-step="1">
+                  <span>Check In</span>
+                </li>
+                <li class="induction-flow__arrow" aria-hidden="true"></li>
+                <li class="induction-flow__step" data-flow-step="2">
+                  <span>Watch Music TV Together</span>
+                </li>
+                <li class="induction-flow__arrow" aria-hidden="true"></li>
+                <li class="induction-flow__step" data-flow-step="3">
+                  <span>Referral Pathways</span>
+                </li>
+                <li class="induction-flow__arrow" aria-hidden="true"></li>
+                <li class="induction-flow__step induction-flow__step--rewards" data-flow-step="4">
+                  <span>Rewards</span>
+                  <span class="induction-flow__reward-dots" aria-hidden="true">
+                    <i></i><i></i><i></i>
+                  </span>
+                </li>
+              </ol>
 
-              <h1 class="induction-heading">
-                <strong>Welcome to Universal Mind. We create livestream electronic music television for mental health.</strong>
-              </h1>
-
-              <p>
-                <strong>I Am is an invitation to make mental health feel as natural, beautiful and culturally relevant as electronic music and fashion, for young people, primarily aged 16-24.</strong>
-              </p>
-
-              <p>
-                Rather than asking young people to visit another mental health website, I Am brings support into the digital spaces they already love. <strong>Visitors can voluntarily check in using simple self-reporting and heart rate measurement, unlock an exclusive music television ecosystem, and - only with their permission - receive increasingly personalised content, community and support over time.</strong>
-              </p>
-
-              <p>
-                <strong>Our ambition is simple: create a world where technology quietly helps people feel more understood, while electronic music, fashion and culture become everyday pathways to better mental health.</strong>
-              </p>
-
-              <p>
-                This <strong>interactive portal</strong> imagines how the I AM experience might be created in partnership with Vogue, bringing our electronic music and mental health platform together with Vogue’s fashion and editorial world.
-              </p>
-            </section>
-
-            <section class="induction-copy induction-copy--prototype" aria-label="About this prototype">
-              <h2 class="induction-subheading">
-                02 / ABOUT THIS PROTOTYPE
-              </h2>
-
-              <p>
-                <strong>Universal Mind’s I Am is a transparent piece of technology that integrates with existing youth-focused communities online.</strong> We are not another mental health platform or app. We are the invisible layer that helps already trusted youth communities care for their people — with a deliberate focus on electronic music and fashion culture, industries we have spent our careers helping build.
-              </p>
-
-              <p>
-                <strong>This experience has been designed as a concept demonstration using Vogue as the creative environment, and young female veterans as our primary audience.</strong>
-              </p>
-
-              <div class="induction-enter-wrap">
-                <a class="induction-enter" href="vogue-self-report.html" aria-label="Enter the I Am portal" data-induction-enter>
-                  <span>Enter the portal</span>
-                  <span class="induction-enter-arrow" aria-hidden="true">→</span>
-                </a>
-              </div>
-            </section>
+              <span class="induction-flow__signal induction-flow__signal--one" aria-hidden="true"></span>
+              <span class="induction-flow__signal induction-flow__signal--two" aria-hidden="true"></span>
+              <span class="induction-flow__signal induction-flow__signal--three" aria-hidden="true"></span>
+            </div>
           </div>
-          <a class="induction-permission__privacy" href="privacy-first.html" target="_blank" rel="noopener noreferrer">Privacy First</a>
-        </div>
-      </section>
+
+          <div class="induction-alternate__product">
+            <p class="induction-alternate__network">
+              <span class="induction-alternate__network-lead">13 Stations. One World</span>
+              <span class="induction-alternate__separator" aria-hidden="true">|</span>
+              <span>ambient. balearic. rave. electro. nu wave. hyper pop. minimal. ebm. future bass +++</span>
+            </p>
+            <p class="induction-alternate__anthem">
+              <span>Together, let's beat as one</span>
+              <span class="induction-alternate__separator" aria-hidden="true">|</span>
+              <span class="induction-alternate__signature">Universal Mind</span>
+            </p>
+          </div>
+
+          <a class="induction-alternate__explore" href="vogue-self-report.html" aria-label="Explore the I AM experience" data-induction-enter>
+            <span>Explore</span>
+            <span aria-hidden="true">→</span>
+          </a>
+
+          <div class="induction-alternate__context">
+            <p>This portal proposes a music and fashion partnership with Vogue for mental health.</p>
+            <p>The primary audience is young female veterans aged 18–24 transitioning from military service, with the wider experience designed for music and fashion audiences worldwide.</p>
+          </div>
+        </section>
+
+        <a class="induction-alternate__privacy" href="privacy-first.html" target="_blank" rel="noopener noreferrer">Privacy First</a>
+      </div>
     </main>
-    <script>window.IAMMobileEditorial?.apply();</script>
+
     <script src="cloudflare-stream-catalogue.js?v=stream-catalogue-20ad6337934c"></script>
     <script src="cloudflare-stream-controller.js?v=stream-controller-e6ed1b827651"></script>
   </body>
