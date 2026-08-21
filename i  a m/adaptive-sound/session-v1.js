@@ -4,6 +4,10 @@ import {
   PRINCIPAL_CARRIER_HZ,
   PROFILE_CANDIDATES,
 } from "./profiles-v1.js?v=3f39020ebeab";
+import {
+  CURRENT_INFERENCE_FUSION_POLICY_VERSION,
+  resolvedAdaptiveSoundIntent,
+} from "../current-inference-fusion-v1.js?v=611b43aaaefb";
 
 export const ADAPTIVE_SOUND_SESSION_EVENT = "iam:adaptive-sound-profile";
 export const ADAPTIVE_SOUND_SESSION_STORAGE_KEY = "iamAdaptiveSoundSessionSnapshotV1";
@@ -41,7 +45,7 @@ export function resolveAdaptiveSoundSession(inferenceInput = {}, policy, options
   const bandScores = scoreOptions(bands, needScores);
   const carrierScores = scoreOptions(carriers, needScores);
   const explicit = explicitSelection(payload, bands, carriers);
-  const semanticIntent = objectValue(payload.adaptive_sound_intent);
+  const semanticIntent = objectValue(resolvedAdaptiveSoundIntent(payload));
   const explicitInsufficientContext = semanticIntent.relevant === false
     && !hasAcceptedSelfReport(payload)
     && explicit.selection_basis !== "citizen_session_override";
@@ -77,6 +81,9 @@ export function resolveAdaptiveSoundSession(inferenceInput = {}, policy, options
     automatic_mid_session_morph: false,
     current_session_only: true,
     session_choice_present: Boolean(sessionChoice?.band_intent || sessionChoice?.carrier_intent),
+    fusion_policy_version: String(inferenceAudit.fusion_policy_version || ""),
+    fusion_action: String(inferenceAudit.fusion_action || ""),
+    fusion_outputs_changed: [...inferenceAudit.fusion_outputs_changed],
     ...inferenceAudit,
   };
 
@@ -279,11 +286,17 @@ function explicitSelection(payload, bands, carriers) {
   if (Object.hasOwn(bands, choiceBand) && Object.hasOwn(carriers, choiceCarrier)) {
     return { band_intent: choiceBand, carrier_intent: choiceCarrier, selection_basis: "citizen_session_override" };
   }
-  const intent = objectValue(payload.adaptive_sound_intent);
+  const intent = objectValue(resolvedAdaptiveSoundIntent(payload));
   const bandIntent = String(intent.band_intent || "").toLowerCase();
   const carrierIntent = String(intent.carrier_intent || "").toLowerCase();
   if (intent.relevant !== false && Object.hasOwn(bands, bandIntent) && Object.hasOwn(carriers, carrierIntent)) {
-    return { band_intent: bandIntent, carrier_intent: carrierIntent, selection_basis: "inference_semantic_intent" };
+    return {
+      band_intent: bandIntent,
+      carrier_intent: carrierIntent,
+      selection_basis: intent.resolution_authority === "deterministic_local_fusion"
+        ? "fused_current_inference"
+        : "inference_semantic_intent",
+    };
   }
   return { band_intent: null, carrier_intent: null, selection_basis: "deterministic_needs_scores" };
 }
@@ -293,7 +306,7 @@ function resolveSafety(payload, policy) {
   const supportLevel = String(payload.adaptive_support_relevance?.level || "none").toLowerCase();
   const reviewValue = payload.human_review_relevance;
   const reviewLevel = String(typeof reviewValue === "object" ? reviewValue?.level || "none" : reviewValue || "none").toLowerCase();
-  const intentSafety = String(payload.adaptive_sound_intent?.safety_state || "standard").toLowerCase();
+  const intentSafety = String(resolvedAdaptiveSoundIntent(payload).safety_state || "standard").toLowerCase();
   const flagText = arrayValue(payload.safety_flags).map((flag) => String(flag).toLowerCase()).join(" ");
   const highConcern = safetyPolicy.high_concern_support_levels.includes(supportLevel)
     || safetyPolicy.high_concern_human_review_levels.includes(reviewLevel)
@@ -331,8 +344,9 @@ function resolveSafety(payload, policy) {
 }
 
 function currentInferenceAudit(payload) {
-  const intent = objectValue(payload.adaptive_sound_intent);
+  const intent = objectValue(resolvedAdaptiveSoundIntent(payload));
   const current = objectValue(payload.current_inference);
+  const fusion = objectValue(current.fusion);
   const validHeartRateRoles = new Set(["supporting", "conflicting", "not_available", "invalid"]);
   const validHeartRateZones = new Set(["low_observed", "mid_observed", "elevated_observed", "not_available"]);
   const validHorizons = new Set(["horizon_1", "horizon_2", "horizon_3"]);
@@ -354,6 +368,11 @@ function currentInferenceAudit(payload) {
     heart_rate_zone: validHeartRateZones.has(heartRateZone) ? heartRateZone : "not_available",
     raw_heart_rate_retained: false,
     baseline_comparison_used: false,
+    fusion_policy_version: fusion.policy_version === CURRENT_INFERENCE_FUSION_POLICY_VERSION
+      ? fusion.policy_version
+      : "",
+    fusion_action: String(fusion.action || ""),
+    fusion_outputs_changed: arrayValue(fusion.outputs_changed).map(String).slice(0, 4),
   };
 }
 

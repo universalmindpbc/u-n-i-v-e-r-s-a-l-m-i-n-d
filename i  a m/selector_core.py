@@ -42,6 +42,7 @@ CATALOGUE_VERSION = "adaptive_music_video_catalogue_v1.11"
 SELECTION_SCHEMA_VERSION = "adaptive_music_video_selection_v1.11"
 SELECTION_POLICY_VERSION = "tensor_uplift_rotation_v3"
 DCN_RERANKER_VERSION = "adaptive_music_engagement_dcn_reranker_v0.1"
+CURRENT_INFERENCE_FUSION_POLICY_VERSION = "iam_current_inference_fusion_v1.0"
 ALIGNED_NUMERIC_DIMENSIONS = 80
 EXTENDED_SESSION_FORMAT_WEIGHTS = {
     "parties": 0.80,
@@ -500,6 +501,40 @@ def detect_named_trajectories(inference_payload: Mapping[str, Any], highlights: 
     return list(dict.fromkeys(trajectories))
 
 
+def current_inference_fusion(inference_payload: Mapping[str, Any]) -> Dict[str, Any]:
+    current = inference_payload.get("current_inference")
+    current = current if isinstance(current, Mapping) else {}
+    fusion = current.get("fusion")
+    fusion = dict(fusion) if isinstance(fusion, Mapping) else {}
+    if fusion.get("policy_version") != CURRENT_INFERENCE_FUSION_POLICY_VERSION:
+        return {}
+    return fusion
+
+
+def apply_fusion_trajectory(
+    target: Dict[str, float],
+    inference_payload: Mapping[str, Any],
+    current_inference: Mapping[str, Any],
+) -> Dict[str, float]:
+    fusion = current_inference_fusion(inference_payload)
+    music_policy = fusion.get("music_selection") if isinstance(fusion.get("music_selection"), Mapping) else {}
+    if fusion:
+        scale = coerce_number(music_policy.get("trajectory_scale"))
+        scale = scale if scale > 0 else 1.0
+        adjusted = {key: value * scale for key, value in target.items()}
+        for label in as_list(music_policy.get("trajectory_emphasis")):
+            canonical = canonical_need(label)
+            if canonical in adjusted:
+                adjusted[canonical] = max(adjusted[canonical], 0.65)
+        return adjusted
+    if str(current_inference.get("heart_rate_role") or "") == "conflicting":
+        adjusted = {key: value * 0.75 for key, value in target.items()}
+        adjusted["Calm"] = max(adjusted.get("Calm", 0.0), 0.65)
+        adjusted["Clarity"] = max(adjusted.get("Clarity", 0.0), 0.65)
+        return adjusted
+    return target
+
+
 def build_target_trajectory(inference_payload: Mapping[str, Any], highlights: List[str]) -> Dict[str, float]:
     target = {key: 0.0 for key in VECTOR_KEYS}
     trajectories = detect_named_trajectories(inference_payload, highlights)
@@ -521,21 +556,13 @@ def build_target_trajectory(inference_payload: Mapping[str, Any], highlights: Li
         for highlight in highlights:
             if highlight in target:
                 target[highlight] = 0.55
-        if str(current_inference.get("heart_rate_role") or "") == "conflicting":
-            target = {key: value * 0.75 for key, value in target.items()}
-            target["Calm"] = max(target.get("Calm", 0.0), 0.65)
-            target["Clarity"] = max(target.get("Clarity", 0.0), 0.65)
-        return target
+        return apply_fusion_trajectory(target, inference_payload, current_inference)
 
     for trajectory in trajectories:
         for key in TRAJECTORY_TARGETS.get(trajectory, []):
             if key in target:
                 target[key] = max(target[key], 1.0)
-    if str(current_inference.get("heart_rate_role") or "") == "conflicting":
-        target = {key: value * 0.75 for key, value in target.items()}
-        target["Calm"] = max(target.get("Calm", 0.0), 0.65)
-        target["Clarity"] = max(target.get("Clarity", 0.0), 0.65)
-    return target
+    return apply_fusion_trajectory(target, inference_payload, current_inference)
 
 
 def explicit_need_intensity(inference_payload: Mapping[str, Any], label: str) -> float:
@@ -903,6 +930,7 @@ def current_inference_audit(inference_input: Mapping[str, Any]) -> Dict[str, Any
     heart_rate_zone = str(current.get("heart_rate_zone") or "not_available")
     if heart_rate_zone not in {"low_observed", "mid_observed", "elevated_observed", "not_available"}:
         heart_rate_zone = "not_available"
+    fusion = current_inference_fusion(inference_input)
     return {
         "matrix_schema_version": "iam_adaptive_inference_matrix_v1",
         "inference_id": str(current.get("inference_id") or "insufficient_context"),
@@ -910,6 +938,10 @@ def current_inference_audit(inference_input: Mapping[str, Any]) -> Dict[str, Any
         "heart_rate_zone": heart_rate_zone,
         "raw_heart_rate_retained": False,
         "baseline_comparison_used": False,
+        "fusion_policy_version": str(fusion.get("policy_version") or ""),
+        "fusion_action": str(fusion.get("action") or ""),
+        "fusion_outputs_changed": [str(value) for value in as_list(fusion.get("outputs_changed"))][:4],
+        "heart_rate_can_select_alone": False,
         "context_dimensions_considered": {
             "time": bool(environment.get("local_time") or environment.get("time_of_day")),
             "weather": bool(environment.get("weather_condition") or environment.get("temperature_celsius") is not None),
@@ -1220,6 +1252,7 @@ def output_contract(
     safety = track_safety(track)
     extended_session = extended_session_contract(track, highlights, acute, inference_input, catalogue)
     adaptive_sound = resolve_adaptive_sound(inference_input)
+    fusion = current_inference_fusion(inference_input)
     return {
         "schema_version": SELECTION_SCHEMA_VERSION,
         "selected_track_id": track.get("id") or get_nested(track, ["tensor_profile", "runtime_delivery", "selected_track_id"], ""),
@@ -1260,6 +1293,9 @@ def output_contract(
                 "quota_mode": str(score_parts.get("quota_mode") or "state_led"),
                 "selected_trajectory_mode": str(score_parts.get("selected_trajectory_mode") or "unclassified"),
                 "selected_music_room": str(score_parts.get("selected_music_room") or ""),
+                "fusion_policy_version": str(fusion.get("policy_version") or ""),
+                "fusion_action": str(fusion.get("action") or ""),
+                "fusion_outputs_changed": [str(value) for value in as_list(fusion.get("outputs_changed"))][:4],
                 "recency_policy": "hard_exclude_6_tracks_2_artists_then_relax_if_pool_exhausted",
             },
             "selector_score_parts": {key: round(value, 3) for key, value in score_parts.items() if isinstance(value, (int, float))},
@@ -1435,7 +1471,12 @@ def target_activation_level(inference_input: Mapping[str, Any], user_vector: Map
 
     current_inference = inference_input.get("current_inference")
     current_inference = current_inference if isinstance(current_inference, Mapping) else {}
-    if str(current_inference.get("heart_rate_role") or "") == "conflicting":
+    fusion = current_inference_fusion(inference_input)
+    music_policy = fusion.get("music_selection") if isinstance(fusion.get("music_selection"), Mapping) else {}
+    activation_cap = music_policy.get("activation_cap")
+    if isinstance(activation_cap, (int, float)) and not isinstance(activation_cap, bool):
+        target = min(target, max(0, min(3, int(activation_cap))))
+    elif not fusion and str(current_inference.get("heart_rate_role") or "") == "conflicting":
         target = min(target, 1)
 
     return target

@@ -14,6 +14,10 @@ import {
   ADAPTIVE_MUSIC_ROOM_SELECTION_GUIDE,
   MUSIC_ROOM_SELECTION_GUIDE_VERSION,
 } from "../cloudflare/adaptive-music-room-selection-guide-v1.js";
+import {
+  CURRENT_INFERENCE_FUSION_POLICY_VERSION,
+  resolveCurrentInferenceFusion,
+} from "../i  a m/current-inference-fusion-v1.js";
 
 const root = resolve(import.meta.dirname, "..");
 const workerPath = resolve(root, "cloudflare/iam-citizen-needs-worker.js");
@@ -24,6 +28,7 @@ const programmeGuidePath = resolve(root, "i  a m/universal-one-programme-guide-v
 const importPatterns = [
   /import \{[\s\S]*?\} from "\.\/adaptive-inference-system-prompt-v5-55\.js";\n/,
   /import \{[\s\S]*?\} from "\.\/adaptive-music-room-selection-guide-v1\.js";\n/,
+  /import \{[\s\S]*?\} from "\.\.\/i  a m\/current-inference-fusion-v1\.js";\n/,
   /import UNIVERSAL_ONE_PORTAL_GUIDE from "\.\.\/i  a m\/universal-one-portal-guide-v1\.txt";\n/,
   /import UNIVERSAL_ONE_WELLBEING_SUPPORT_GUIDE from "\.\.\/i  a m\/universal-one-wellbeing-support-guide-v1\.txt";\n/,
   /import UNIVERSAL_ONE_PROGRAMME_GUIDE from "\.\.\/i  a m\/universal-one-programme-guide-v1\.txt";\n/,
@@ -56,25 +61,23 @@ const openAIFetch = async (url, options = {}) => {
   const output = {
     highlights: ["Curiosity", "Joy", "Clarity", "Purpose"],
     confidence: 0.87,
-    selected_music_room: "inner-planes",
+    semantic_music_room: "modul8-infinity",
     selected_format: null,
     source_id: null,
     catalogue_ready: false,
-    music_room_confidence: 0.82,
-    music_room_reason: "A curious and inspired present-state fit.",
+    semantic_music_room_confidence: 0.82,
+    semantic_music_room_reason: "A curious and inspired present-state fit.",
     needs_scorecard: scorecard,
     dominant_domains: ["Emotion", "Cognitive"],
     top_needs_used: ["Curiosity", "Joy", "Clarity", "Purpose"],
     context_modifiers_used: [],
     uncertainty_notes: ["A short check-in provides limited context."],
     human_review_relevance: "not_indicated",
-    current_inference: {
+    semantic_current_inference: {
       inference_id: "active_energised",
       human_label: "Active / energised",
       summary: "The self-report suggests positive activation and readiness.",
       confidence: 0.81,
-      heart_rate_role: "not_available",
-      heart_rate_zone: "not_available",
       evidence_used: ["self-report:curious joyful ready for inspiration"],
       context_dimensions_considered: {
         time: true,
@@ -85,7 +88,7 @@ const openAIFetch = async (url, options = {}) => {
       baseline_comparison_used: false,
       clinical_status: "not_a_diagnosis",
     },
-    adaptive_sound_intent: {
+    semantic_adaptive_sound_intent: {
       relevant: true,
       selection_basis: "current_checkin",
       band_intent: "gamma",
@@ -113,6 +116,8 @@ const context = vm.createContext({
   SYSTEM_PROMPT_VERSION,
   ADAPTIVE_MUSIC_ROOM_SELECTION_GUIDE,
   MUSIC_ROOM_SELECTION_GUIDE_VERSION,
+  CURRENT_INFERENCE_FUSION_POLICY_VERSION,
+  resolveCurrentInferenceFusion,
   UNIVERSAL_ONE_PORTAL_GUIDE: await readFile(portalGuidePath, "utf8"),
   UNIVERSAL_ONE_WELLBEING_SUPPORT_GUIDE: await readFile(wellbeingGuidePath, "utf8"),
   UNIVERSAL_ONE_PROGRAMME_GUIDE: await readFile(programmeGuidePath, "utf8"),
@@ -171,8 +176,12 @@ assert.equal(capturedOpenAIRequest.text.format.strict, true);
 assert.deepEqual(capturedOpenAIRequest.text.format.schema.properties.selected_format, { type: "null" });
 assert.deepEqual(capturedOpenAIRequest.text.format.schema.properties.source_id, { type: "null" });
 assert.deepEqual(capturedOpenAIRequest.text.format.schema.properties.catalogue_ready.enum, [false]);
-assert.ok(capturedOpenAIRequest.text.format.schema.required.includes("adaptive_sound_intent"));
-const adaptiveSoundSchema = capturedOpenAIRequest.text.format.schema.properties.adaptive_sound_intent;
+assert.ok(capturedOpenAIRequest.text.format.schema.required.includes("semantic_adaptive_sound_intent"));
+assert.ok(capturedOpenAIRequest.text.format.schema.required.includes("semantic_current_inference"));
+assert.ok(capturedOpenAIRequest.text.format.schema.required.includes("semantic_music_room"));
+assert.equal(capturedOpenAIRequest.text.format.schema.properties.semantic_current_inference.properties.heart_rate_role, undefined);
+assert.equal(capturedOpenAIRequest.text.format.schema.properties.semantic_current_inference.properties.heart_rate_zone, undefined);
+const adaptiveSoundSchema = capturedOpenAIRequest.text.format.schema.properties.semantic_adaptive_sound_intent;
 assert.deepEqual(adaptiveSoundSchema.properties.relevant, { type: "boolean", enum: [true] });
 assert.deepEqual(adaptiveSoundSchema.properties.selection_basis.enum, ["current_checkin"]);
 assert.equal(adaptiveSoundSchema.properties.band_intent.type, "string");
@@ -183,7 +192,7 @@ const userMessage = capturedOpenAIRequest.input[1].content;
 assert.ok(systemMessage.includes(ADAPTIVE_INFERENCE_SYSTEM_PROMPT));
 assert.ok(systemMessage.includes("Every accepted non-empty self-report is sufficient for adaptive sound."));
 assert.ok(systemMessage.includes("Missing, skipped, declined, expired or invalid Heart Rate never permits insufficient_context"));
-assert.ok(userMessage.includes("Choose an eligible music room from: inner-planes, champagne-bohemia, modul8-infinity, james-bondage, safety-cushion; otherwise return null."));
+assert.ok(userMessage.includes("Return a semantic music-room affinity from: inner-planes, champagne-bohemia, modul8-infinity, james-bondage, safety-cushion; otherwise return null."));
 assert.ok(userMessage.includes("The application owns extended-session format and exact source resolution."));
 assert.ok(!userMessage.includes("Choose an eligible format"));
 assert.ok(!userMessage.includes("118"), "Raw Heart Rate escaped into the external model request");
@@ -199,26 +208,25 @@ assert.equal(result.prompt_source, SYSTEM_PROMPT_SOURCE);
 assert.equal(result.selected_format, null);
 assert.equal(result.source_id, null);
 assert.equal(result.catalogue_ready, false);
+assert.equal(result.selected_music_room, "modul8-infinity");
 assert.equal(result.current_inference.inference_id, "active_energised");
+assert.equal(result.current_inference.semantic_inference_id, "active_energised");
 assert.equal(result.current_inference.heart_rate_role, "supporting");
 assert.equal(result.current_inference.heart_rate_zone, "elevated_observed");
 assert.equal(result.current_inference.baseline_comparison_used, false);
+assert.equal(result.current_inference.raw_heart_rate_retained, false);
+assert.equal(result.current_inference.fusion.policy_version, CURRENT_INFERENCE_FUSION_POLICY_VERSION);
+assert.equal(result.current_inference.fusion.action, "supporting_semantic_preserved");
+assert.deepEqual(result.current_inference.fusion.outputs_changed, []);
 assert.deepEqual(result.current_inference.horizons_considered, ["horizon_1", "horizon_2", "horizon_3"]);
 assert.ok(!JSON.stringify(result).includes("heart_rate_bpm"), "Raw Heart Rate escaped into the public response");
-assert.deepEqual(result.adaptive_sound_intent, {
-  relevant: true,
-  selection_basis: "current_checkin",
-  band_intent: "gamma",
-  carrier_intent: "cognition_joy",
-  top_needs_used: ["Curiosity", "Joy"],
-  explicit_cues_used: ["inspiration", "cognition", "joy"],
-  context_modifiers_used: ["time:10:30", "weather:unavailable", "location:Sydney"],
-  horizons_considered: ["horizon_1", "horizon_2", "horizon_3"],
-  confidence: 0.84,
-  safety_state: "standard",
-  session_scope: "current_session_only",
-  research_boundary: "biological_targets_not_used_in_product_decisions",
-});
+assert.equal(result.adaptive_sound_intent.band_intent, "gamma");
+assert.equal(result.adaptive_sound_intent.carrier_intent, "cognition_joy");
+assert.equal(result.adaptive_sound_intent.resolution_authority, "deterministic_local_fusion");
+assert.equal(result.adaptive_sound_intent.fusion_policy_version, CURRENT_INFERENCE_FUSION_POLICY_VERSION);
+assert.equal(result.semantic_intents.music_room.room, "modul8-infinity");
+assert.equal(result.semantic_intents.adaptive_sound.band_intent, "gamma");
+assert.equal(result.semantic_intents.adaptive_sound.carrier_intent, "cognition_joy");
 
 const skippedBiometricResponse = await worker.fetch(new Request(
   "https://realtime-staging-iam-citizen-needs-inference.universalmind.workers.dev/citizen-needs-inference",
@@ -247,6 +255,8 @@ const skippedBiometricUserMessage = capturedOpenAIRequest.input[1].content;
 assert.equal(skippedBiometricResponse.status, 200, JSON.stringify(skippedBiometricResult));
 assert.equal(skippedBiometricResult.current_inference.heart_rate_role, "not_available");
 assert.equal(skippedBiometricResult.current_inference.heart_rate_zone, "not_available");
+assert.equal(skippedBiometricResult.current_inference.fusion.action, "unavailable_semantic_preserved");
+assert.equal(skippedBiometricResult.selected_music_room, "modul8-infinity");
 assert.equal(skippedBiometricResult.adaptive_sound_intent.relevant, true);
 assert.equal(skippedBiometricResult.adaptive_sound_intent.selection_basis, "current_checkin");
 assert.ok(skippedBiometricResult.adaptive_sound_intent.band_intent);
@@ -287,12 +297,61 @@ assert.ok(!conflictingUserMessage.includes("52"), "Raw conflicting Heart Rate es
 assert.ok(!conflictingUserMessage.includes("heart_rate_bpm"), "Conflicting Heart Rate field escaped into the external model request");
 assert.equal(conflictingResult.current_inference.heart_rate_role, "conflicting");
 assert.equal(conflictingResult.current_inference.heart_rate_zone, "low_observed");
+assert.equal(conflictingResult.current_inference.semantic_inference_id, "active_energised");
+assert.equal(conflictingResult.current_inference.inference_id, "mixed_uncertain");
+assert.equal(conflictingResult.current_inference.fusion.action, "bounded_conflict_downshift");
+assert.deepEqual(conflictingResult.current_inference.fusion.outputs_changed, [
+  "music_room",
+  "exact_music_selection",
+  "adaptive_sound_band",
+  "adaptive_sound_carrier",
+]);
 assert.equal(conflictingResult.current_inference.confidence, 0.73);
 assert.equal(conflictingResult.confidence, 0.82);
 assert.equal(conflictingResult.adaptive_sound_intent.confidence, 0.76);
-assert.equal(conflictingResult.adaptive_sound_intent.band_intent, "gamma");
-assert.equal(conflictingResult.adaptive_sound_intent.carrier_intent, "cognition_joy");
+assert.equal(conflictingResult.selected_music_room, "champagne-bohemia");
+assert.equal(conflictingResult.adaptive_sound_intent.band_intent, "alpha");
+assert.equal(conflictingResult.adaptive_sound_intent.carrier_intent, "presence");
+assert.equal(conflictingResult.semantic_intents.music_room.room, "modul8-infinity");
+assert.equal(conflictingResult.semantic_intents.adaptive_sound.band_intent, "gamma");
+assert.equal(conflictingResult.semantic_intents.adaptive_sound.carrier_intent, "cognition_joy");
 assert.ok(!JSON.stringify(conflictingResult).includes("heart_rate_bpm"), "Raw conflicting Heart Rate escaped into the public response");
+
+const heartRateAlone = resolveCurrentInferenceFusion({
+  acceptedSelfReport: false,
+  semanticInference: { inference_id: "insufficient_context" },
+  semanticMusicRoom: "modul8-infinity",
+  semanticAdaptiveSoundIntent: { relevant: true, band_intent: "gamma", carrier_intent: "cognition_joy" },
+  environmentContext: { local_time: "10:30", location_label: "Sydney" },
+  heartRateZone: "elevated_observed",
+  heartRateAvailable: true,
+});
+assert.equal(heartRateAlone.eligible, false);
+assert.equal(heartRateAlone.selected_music_room, null);
+assert.equal(heartRateAlone.adaptive_sound.band_intent, null);
+assert.equal(heartRateAlone.adaptive_sound.carrier_intent, null);
+assert.equal(heartRateAlone.heart_rate_can_select_alone, false);
+
+const contextExplainedConflict = resolveCurrentInferenceFusion({
+  acceptedSelfReport: true,
+  semanticInference: { inference_id: "active_energised" },
+  semanticMusicRoom: "modul8-infinity",
+  semanticAdaptiveSoundIntent: { relevant: true, band_intent: "gamma", carrier_intent: "cognition_joy" },
+  environmentContext: {
+    local_time: "14:00",
+    weather_condition: "clear",
+    temperature_celsius: 24,
+    location_label: "urban outdoor",
+  },
+  heartRateZone: "low_observed",
+  heartRateAvailable: true,
+});
+assert.equal(contextExplainedConflict.heart_rate_role, "conflicting");
+assert.equal(contextExplainedConflict.action, "conflict_context_explained_semantic_preserved");
+assert.equal(contextExplainedConflict.selected_music_room, "modul8-infinity");
+assert.equal(contextExplainedConflict.adaptive_sound.band_intent, "gamma");
+assert.equal(contextExplainedConflict.adaptive_sound.carrier_intent, "cognition_joy");
+assert.deepEqual(contextExplainedConflict.outputs_changed, []);
 
 process.stdout.write(`${JSON.stringify({
   schema_version: "citizen_needs_live_request_construction_qa_v1",
@@ -300,7 +359,10 @@ process.stdout.write(`${JSON.stringify({
   openai_request_captured: true,
   strict_schema_validated: true,
   response_validation_executed: true,
-  supporting_and_conflicting_heart_rate_reconciled_locally: true,
+  supporting_conflicting_and_unavailable_heart_rate_fused_locally: true,
+  identical_semantic_inputs_materially_changed_room_band_and_carrier_when_warranted: true,
+  heart_rate_alone_cannot_select: true,
+  context_can_explain_conflict_without_forcing_output_change: true,
   self_report_without_heart_rate_returns_adaptive_sound: true,
   prompt_version: result.prompt_version,
   prompt_sha256: result.prompt_sha256,

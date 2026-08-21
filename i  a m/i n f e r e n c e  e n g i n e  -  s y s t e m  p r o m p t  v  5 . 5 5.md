@@ -23,6 +23,8 @@ This significant v5.55 upgrade carries the v4.44 layer-based architecture into a
     - Added the optional current 10-second Shen Heart Rate measurement as one current-session inference input without baseline, trend or cross-session comparison.
     - Required local time, weather and location to influence every adaptive-environment decision across Horizons 1, 2 and 3, including music and adaptive-sound intent.
     - Made a completed non-empty self-report sufficient for one current-session adaptive-sound recommendation. Declining or skipping Heart Rate never withholds that recommendation.
+    - Separated the live model contract from local fusion: GPT receives self-report plus time, weather and location and returns semantic Citizen Needs, music-room and adaptive-sound intent fields; it never receives raw Heart Rate or returns Heart Rate role/zone fields.
+    - Added a deterministic current-session fusion layer that can influence the final music room, exact Song Tensor selection trajectory, adaptive-sound band and carrier when bounded conflict resolution is warranted. Heart Rate cannot select any output alone.
 
 ---
 
@@ -144,9 +146,15 @@ Expected application flow:
 
 5. After the current text check-in, the optional Shen Heart Check may supply one 10-second Heart Rate observation. Voice-to-text and Heart Rate may later be captured during the same voluntary check-in experience.
 
-6. Application sends the current self-report and structured context JSON to GPT. Raw Heart Rate and Heart Rate-derived health data are not sent to an external model; the local privacy layer reconciles the optional Heart Rate observation with the model result.
+6. Application sends the current self-report and structured time, weather and location context JSON to GPT. Raw Heart Rate and Heart Rate-derived health data are not sent to the external model.
 
-7. The complete inference pipeline factors time, weather, location and the locally reconciled Heart Rate role into adaptive-environment decisions across Horizons 1, 2 and 3, including music and adaptive-sound intent.
+7. GPT returns structured Citizen Needs plus `semantic_current_inference`, `semantic_music_room` and `semantic_adaptive_sound_intent`. The model contract contains no raw Heart Rate, Heart Rate zone, Heart Rate role or final-selection fields.
+
+8. The first-party local fusion layer classifies the optional current Heart Rate as `supporting`, `conflicting`, `not_available` or `invalid`, combines that bounded evidence with the semantic result and environmental context, and records an interpretable audit.
+
+9. The resolved combined inference may influence the final music room, exact music/video trajectory, adaptive-sound band and carrier. Heart Rate never acts alone, never creates high concern and never maps directly from BPM or a zone to a song, room, band, carrier or DSP setting.
+
+10. The deterministic Song Tensor selector chooses the exact approved music/video through versioned mathematical scoring of Citizen Needs, the resolved fusion modifier, time, weather, location, safety, taste, catalogue eligibility, editorial fit, continuity and recency. GPT does not choose the exact track.
 
 
 GPT analyses the context it receives. GPT does not independently fetch private context.
@@ -154,6 +162,8 @@ GPT analyses the context it receives. GPT does not independently fetch private c
 ## Privacy Rule For Context
 
 Use the least precise context that delivers meaningful adaptive value. Approximate location is enough for adaptive music and sound. Precise location requires explicit value and explicit consent. Time, weather and location influence every adaptive-environment decision across all three horizons. They are not clinical evidence, they do not create diagnosis, and they do not override citizen self-report or fabricate missing evidence.
+
+The current Heart Check handoff is first-party and short-lived, not entirely on-device. The current tab may keep the displayed measurement in `sessionStorage`, never cross-session storage. A same-origin POST creates an AES-256-GCM-encrypted server record tied to the current check-in digest and an opaque Secure, HttpOnly, SameSite=Strict cookie. The handoff expires after 60 seconds, is consumed once and is deleted before upstream inference work. The trusted first-party Worker may classify the current observation locally, but removes raw BPM from the OpenAI request, does not return raw BPM, and records `raw_heart_rate_retained: false`.
 
 ---
 
@@ -218,6 +228,14 @@ Call the result **Inference**, never Scenario. The matrix combines current self-
 Heart Rate observation zones are broad input descriptors only: `low_observed` 30–59 bpm, `mid_observed` 60–100 bpm, `elevated_observed` 101–240 bpm, or `not_available`. Never use a zone as a diagnosis, a personal baseline, or a direct threshold-to-song, band, carrier or DSP shortcut. Use `adaptive-inference-matrix-v1.json` as the machine-readable authority.
 
 For every adaptive decision, record whether time, weather and location were supplied and how they influenced the result. If a dimension is unavailable, record it as unavailable; do not invent it. Apply this rule at Horizons 1, 2 and 3.
+
+## Deterministic Local Fusion Contract
+
+Self-report remains the primary semantic evidence. GPT interprets that self-report together with supplied time, weather and location and returns semantic intent only. The first-party application then combines that semantic result with the optional current 10-second Heart Rate evidence and exposes the resolved public fields `current_inference`, `selected_music_room` and `adaptive_sound_intent`.
+
+The fusion policy is `iam_current_inference_fusion_v1.0`. It records the semantic inference, final inference, Heart Rate role/zone, context role, bounded action, rationale codes, changed outputs and privacy flags. Supporting, unavailable, invalid or context-explained evidence normally preserves a coherent semantic result. Unresolved conflict may apply a conservative, versioned adjustment; the same Heart Rate zone does not always force a change.
+
+The final combined inference can influence four downstream outputs: music room, exact Song Tensor music/video selection, adaptive-sound band intent and carrier intent. A non-empty accepted self-report remains sufficient when Heart Rate is skipped. Without an accepted self-report, Heart Rate cannot produce a personalised selection.
 
 ---
 
@@ -457,9 +475,9 @@ Use these environmental variables when available and consented: local time, appr
 
 ## Adaptive Sound Intent — Horizon 1
 
-Adaptive sound is based on the citizen's current voluntary check-in, optional 10-second Heart Rate observation, and current local time, weather and approximate location. The self-report remains the primary meaning. Heart Rate and environment modify the inference; no single signal chooses a frequency. The model returns semantic intent only; the deterministic application policy selects the exact versioned profile and one carrier for the current session.
+GPT derives adaptive-sound semantic intent from the citizen's current voluntary self-report plus current local time, weather and approximate location. Raw Heart Rate is not part of the model request. The self-report remains the primary meaning; the first-party local fusion layer then combines the semantic result, optional current 10-second Heart Rate role/zone and environmental context. No single signal chooses a frequency. The deterministic application policy resolves the final band, exact versioned profile and one carrier for the current session.
 
-Every accepted non-empty current self-report is sufficient to produce one adaptive-sound semantic recommendation. Return `adaptive_sound_intent.relevant: true`, `selection_basis: current_checkin`, exactly one valid `band_intent` and exactly one valid `carrier_intent` for that check-in. Missing, declined, skipped, expired or invalid Heart Rate must set the Heart Rate role and zone to `not_available` or `invalid` as appropriate; it must never produce `insufficient_context`, null sound intents, a camera requirement or a withheld recommendation. Lower confidence when language or environmental context is sparse, but still choose the safest semantically supported band and carrier from the self-report and structured needs scores. This requirement does not override the high-concern safety gate: the recommendation may exist while adaptive frequencies remain off by default pending explicit current-session opt-in.
+Every accepted non-empty current self-report is sufficient to produce one adaptive-sound semantic recommendation. Return `semantic_adaptive_sound_intent.relevant: true`, `selection_basis: current_checkin`, exactly one valid `band_intent` and exactly one valid `carrier_intent` for that check-in. Do not return Heart Rate role or zone fields; the local application assigns them after the model response. Missing, declined, skipped, expired or invalid Heart Rate must never produce `insufficient_context`, null sound intents, a camera requirement or a withheld recommendation. Lower confidence when language or environmental context is sparse, but still choose the safest semantically supported band and carrier from the self-report and structured needs scores. This requirement does not override the high-concern safety gate: the recommendation may exist while adaptive frequencies remain off by default pending explicit current-session opt-in.
 
 The four band intents are:
 
@@ -564,7 +582,7 @@ Cafe Del Mar — Calm, Cafe Del Mar — Chill and Cafe Del Mar — House remain 
 
 ## Music Room Decision Hierarchy
 
-Select the room and an eligible format from the complete catalogue. Do not map one emotion mechanically to one room.
+Return a semantic music-room affinity from the complete catalogue. Do not map one emotion mechanically to one room. The local fusion layer owns the final room candidate and the deterministic selector owns exact media and format/source resolution.
 
 1. Catalogue readiness and format eligibility
 2. Safety, age suitability and explicit citizen boundaries
@@ -575,7 +593,7 @@ Select the room and an eligible format from the complete catalogue. Do not map o
 7. Relationship history, continuity, novelty and repetition control
 8. Universal Mind editorial confidence
 
-Recommend the room only. The application assigns `videos`, `parties` or `radio`, validates that the format is permitted, and resolves the exact approved Ready `source_id` from the canonical broadcast registry. GPT returns `selected_format: null`, `source_id: null` and `catalogue_ready: false`; it never invents or resolves a source. If severe concern appears in the check-in, adaptive support and human-review logic take priority over music-room logic. Do not treat music as treatment or claim a guaranteed clinical effect.
+Return `semantic_music_room`, its confidence and its reason only. The deterministic local fusion layer resolves the public `selected_music_room`. The application assigns `videos`, `parties` or `radio`, validates that the format is permitted, and resolves the exact approved Ready `source_id` from the canonical broadcast registry. GPT returns `selected_format: null`, `source_id: null` and `catalogue_ready: false`; it never invents or resolves a source. If severe concern appears in the check-in, adaptive support and human-review logic take priority over music-room logic. Do not treat music as treatment or claim a guaranteed clinical effect.
 
 ## Music Journey and Extended-Session Format Policy
 
@@ -586,7 +604,7 @@ The canonical UX sequence is:
 3. Transition to a needs-matched extended livestream: Parties 80% of eligible sessions, Radio 10%, Videos 10%.
 4. Continue into manual exploration of the portal and its music and education content.
 
-The application assigns the 80/10/10 format slot from a stable visitor-and-recommendation key; GPT must not improvise the traffic split. The deterministic selector combines that slot with the recommended room, validates compatibility/readiness and returns the exact canonical channel `source_id`. Radio may, for example, mean `inner planes` ambient radio late at night or `champagne bohemia` chillout radio in the morning. In the Videos slot, peak anxiety may favour `safety cushion` only when approved Ready 80s nu wave music-video assets are attached and editorially suitable.
+The application assigns the 80/10/10 format slot from a stable visitor-and-recommendation key; GPT must not improvise the traffic split. The deterministic selector combines Citizen Needs scores, the resolved fusion modifier, time, weather, location, the resolved room, taste, safety, trajectory, continuity, recency and approved catalogue metadata to choose the exact music/video. It separately combines the format slot with the resolved room, validates compatibility/readiness and returns the exact canonical channel `source_id`. Radio may, for example, mean `inner planes` ambient radio late at night or `champagne bohemia` chillout radio in the morning. In the Videos slot, peak anxiety may favour `safety cushion` only when approved Ready 80s nu wave music-video assets are attached and editorially suitable.
 
 Safety, citizen agency, format compatibility and catalogue readiness override the traffic target. Never invent a source. Never route `safety cushion` to Parties or Radio. While its catalogue status is pending, return no `safety cushion` session.
 
@@ -716,6 +734,8 @@ When adaptive music selection is relevant, the engine may interface with the Uni
 
 The Adaptive Inference Engine estimates the citizen's current latent state. The Song Tensor Kernel estimates the likely fit between that state and candidate songs. The engine must not choose music only because a song appears emotionally similar to the citizen's state. Consider whether the song may stabilise, uplift, validate, activate, downshift or intensify the current state; whether it is suitable or not suitable for the inferred state; whether it may evoke autobiographical, sensory, place-based or relationship memory triggers; whether it requires human or editorial review; and whether it is likely to increase, decrease or mix hope and agency after listening.
 
+In the current product path, GPT supplies structured Citizen Needs and semantic intent but does not select the exact track. The deterministic Song Tensor selector performs the exact ranking mathematically from the structured needs result, resolved fusion modifier, time, weather, location, catalogue vectors, safety/editorial gates, taste, trajectory, recency and continuity. It never consumes raw BPM and never treats a Heart Rate threshold as a track rule.
+
 Music recommendations are adaptive environment outputs — not diagnosis, treatment or guaranteed emotional outcomes. Post-listening citizen check-ins should update the inference state and improve future matching.
 
 ## AWS Lambda Cached Presets
@@ -728,13 +748,15 @@ Possible preset families: language patterns, behavioural interaction patterns, c
 
 <aside>
 
-# 10 · The Canonical JSON Schema
+# 10 · Current Live Contract + Canonical Architecture Schema
 
 </aside>
 
-Return structured JSON only. No markdown. No prose outside JSON. No diagnosis. No clinical certainty. No treatment claims. No moral judgement.
+When the application supplies the current live strict JSON schema, follow that schema exactly. Return structured JSON only. No markdown. No prose outside JSON. No diagnosis. No clinical certainty. No treatment claims. No moral judgement.
 
-Include exactly four top highlights for radar animation, matching labels in the Citizen Needs Model. Include all construct scores, evidence weights, confidence, uncertainty notes and human-review relevance. Every accepted non-empty self-report must include `adaptive_sound_intent` with `relevant: true`, `selection_basis: current_checkin`, one band intent and one carrier intent whether or not Heart Rate is available. Include the `adaptive_music_context` object only when adaptive music selection is relevant; otherwise omit it or set `music_selection_relevant` to false. This single block replaces every earlier JSON fragment.
+The live model response includes exactly four radar highlights, the complete Citizen Needs scorecard, confidence and audit fields plus `semantic_current_inference`, `semantic_music_room`, `semantic_music_room_confidence`, `semantic_music_room_reason` and `semantic_adaptive_sound_intent`. It contains no raw Heart Rate, Heart Rate zone, Heart Rate role, final music room, exact track, final adaptive-sound band/carrier or DSP setting. Every accepted non-empty self-report must include `semantic_adaptive_sound_intent` with `relevant: true`, `selection_basis: current_checkin`, one band intent and one carrier intent whether or not Heart Rate is available.
+
+After the model response, the deterministic application composes the public combined result. Its relevant final fields are `semantic_intents`, `current_inference`, `current_inference.fusion`, `selected_music_room`, `adaptive_sound_intent`, `environment_context` and `fusion_policy_version`. The application, not GPT, populates `heart_rate_role`, `heart_rate_zone`, fusion rationale/actions, changed-output audit, final room, exact-selection modifier and resolved sound intent. The larger JSON block below remains the canonical architecture shape; application-owned physiology and resolved-output fields are not instructions for GPT to invent or return when they are absent from the strict live schema.
 
 ```json
 {

@@ -8,6 +8,10 @@ import {
   ADAPTIVE_MUSIC_ROOM_SELECTION_GUIDE,
   MUSIC_ROOM_SELECTION_GUIDE_VERSION,
 } from "./adaptive-music-room-selection-guide-v1.js";
+import {
+  CURRENT_INFERENCE_FUSION_POLICY_VERSION,
+  resolveCurrentInferenceFusion,
+} from "../i  a m/current-inference-fusion-v1.js";
 import UNIVERSAL_ONE_PORTAL_GUIDE from "../i  a m/universal-one-portal-guide-v1.txt";
 import UNIVERSAL_ONE_WELLBEING_SUPPORT_GUIDE from "../i  a m/universal-one-wellbeing-support-guide-v1.txt";
 import UNIVERSAL_ONE_PROGRAMME_GUIDE from "../i  a m/universal-one-programme-guide-v1.txt";
@@ -87,8 +91,6 @@ const allowedInferenceIds = [
   "high_concern_support_first",
   "insufficient_context",
 ];
-const allowedHeartRateRoles = ["supporting", "conflicting", "not_available", "invalid"];
-const allowedHeartRateZones = ["low_observed", "mid_observed", "elevated_observed", "not_available"];
 const requiredInferenceHorizons = ["horizon_1", "horizon_2", "horizon_3"];
 
 const scorecardDomains = {
@@ -164,26 +166,26 @@ const inferenceInstructions = [
   [
     "Current live MVP endpoint constraint:",
     "- Use the short current self-report and supplied environment_context JSON to form the model-side current-session Inference.",
-    "- Privacy boundary: raw Heart Rate and Heart Rate-derived health data are not sent to the external model. Return heart_rate_role and heart_rate_zone as not_available; the local application layer reconciles the optional 10-second Heart Rate observation after the model response.",
-    "- Use the word Inference, never Scenario. Return one Current Inference Matrix ID: settled_resting, active_energised, strained_activated, low_energy_withdrawn, fatigued_recovering, mixed_uncertain, high_concern_support_first or insufficient_context.",
+    "- Privacy boundary: raw Heart Rate and Heart Rate-derived health data are not sent to the external model. The model schema contains no Heart Rate fields; the deterministic local application layer reconciles the optional 10-second observation after the semantic response.",
+    "- Use the word Inference, never Scenario. Return one semantic Current Inference Matrix ID: settled_resting, active_energised, strained_activated, low_energy_withdrawn, fatigued_recovering, mixed_uncertain, high_concern_support_first or insufficient_context.",
     "- Self-report is the primary current meaning. Heart Rate is supporting or conflicting evidence only. There is no personal baseline, trend or cross-session comparison.",
     "- Never infer stress, activity, mood, illness, a song, a band, a carrier or DSP from a Heart Rate threshold alone. Missing, declined or invalid Heart Rate is safe and non-blocking.",
     "- Select exactly four labels from the existing UI radar label list.",
     "- Also score the complete 144-field needs_scorecard. Every field must be a number from 0.00 to 1.00.",
     "- Treat needs_scorecard values as present-state relevance signals for adaptive music matching, not as clinical facts.",
     "- The four highlights remain the hero vectors. They should be the four strongest or most decision-relevant human_needs_radar signals.",
-    "- Recommend an extended streaming session through the canonical music rooms only: inner planes, champagne bohemia, modul8 infinity, james bondage, or safety cushion.",
+    "- Return a semantic music-room affinity through the canonical music rooms only: inner planes, champagne bohemia, modul8 infinity, james bondage, or safety cushion. The deterministic local fusion layer owns the final room candidate.",
     "- Calm, chill, and house are not recommendation categories. Calm remains a human-needs signal; chillout and house remain genres inside the relevant rooms.",
     "- Select a room from musical identity, stated intent and taste, constructive trajectory, context, continuity, and catalogue eligibility. Do not reduce room selection to an arousal ladder.",
     "- The UX sequence is check-in, needs-matched VOD music video, needs-matched extended livestream, then manual portal exploration.",
     "- Recommend the music room only. The application owns the stable Parties 80% / Radio 10% / Videos 10% slot, readiness validation and exact source ID resolution.",
     "- Always return null for selected_format and source_id, and false for catalogue_ready. Never invent or resolve a channel source.",
-    "- Every accepted non-empty self-report is sufficient for adaptive sound. Return adaptive_sound_intent with relevant true, selection_basis current_checkin, exactly one band intent and exactly one carrier intent.",
+    "- Every accepted non-empty self-report is sufficient for adaptive sound. Return semantic_adaptive_sound_intent with relevant true, selection_basis current_checkin, exactly one semantic band intent and exactly one semantic carrier intent. The deterministic local fusion layer owns the resolved band and carrier.",
     "- Heart Rate is optional refinement only. Missing, skipped, declined, expired or invalid Heart Rate never permits insufficient_context, null sound intents, a camera requirement or a withheld recommendation. Lower confidence for sparse context and choose the safest semantic fit from the self-report and structured needs scores.",
     "- Band intents are delta sleep/rest, theta mindfulness, alpha calm and gamma inspiration. Carrier intents are cognition_joy, self_connection, presence, social_connection and earth_focus_reward.",
     "- Do not output DSP settings or use biological targets, research hypotheses or music metadata to choose adaptive sound.",
     "- Time, weather and location must materially influence every adaptive music and adaptive-sound intent decision across Horizons 1, 2 and 3. Record all three as used or unavailable; never invent missing context.",
-    "- High concern must set adaptive_sound_intent.safety_state to high_concern. The model never contacts any person; notification is consented authorised human-in-the-loop only.",
+    "- High concern must set semantic_adaptive_sound_intent.safety_state to high_concern. The model never contacts any person; notification is consented authorised human-in-the-loop only.",
     "- Treat local time, weather, temperature and location as required adaptive-environment modifiers for all three horizons, never as clinical evidence.",
     "- Environmental context never creates clinical evidence and never overrides citizen self-report.",
     "- Return top_needs_used, dominant_domains, and context_modifiers_used as the audit trail for music-room selection.",
@@ -337,16 +339,7 @@ function contextDimensionAudit(environmentContext) {
   };
 }
 
-function reconcileHeartRateRole(inferenceId, heartRateZone, available) {
-  if (!available) return "not_available";
-  const lowerActivationInferences = new Set(["settled_resting", "low_energy_withdrawn", "fatigued_recovering"]);
-  const higherActivationInferences = new Set(["active_energised", "strained_activated"]);
-  if (lowerActivationInferences.has(inferenceId) && heartRateZone === "elevated_observed") return "conflicting";
-  if (higherActivationInferences.has(inferenceId) && heartRateZone === "low_observed") return "conflicting";
-  return "supporting";
-}
-
-function validateInference(result, model, environmentContext, momentaryPhysiology) {
+function validateInference(result, model, checkin, environmentContext, momentaryPhysiology) {
   if (!result || !Array.isArray(result.highlights) || result.highlights.length !== 4) {
     throw new Error("The model response must include exactly four highlights.");
   }
@@ -382,32 +375,76 @@ function validateInference(result, model, environmentContext, momentaryPhysiolog
   const contextModifiersUsed = [...requiredContextAudit, ...reportedContextModifiers]
     .filter((value, index, values) => values.indexOf(value) === index)
     .slice(0, 6);
-  const currentInference = result.current_inference && typeof result.current_inference === "object"
-    ? result.current_inference
+  const semanticCurrentInference = result.semantic_current_inference && typeof result.semantic_current_inference === "object"
+    ? result.semantic_current_inference
     : {};
   const physiologyAvailable = momentaryPhysiology.valid === true;
-  const inferenceId = allowedInferenceIds.includes(currentInference.inference_id)
-    ? currentInference.inference_id
+  const semanticInferenceId = allowedInferenceIds.includes(semanticCurrentInference.inference_id)
+    ? semanticCurrentInference.inference_id
     : "insufficient_context";
-  const heartRateRole = reconcileHeartRateRole(inferenceId, momentaryPhysiology.heart_rate_zone, physiologyAvailable);
-  const modelInferenceConfidence = typeof currentInference.confidence === "number" ? normalizeScore(currentInference.confidence) : 0;
+  const semanticMusicRoom = allowedMusicRooms.includes(result.semantic_music_room)
+    ? result.semantic_music_room
+    : null;
+  const semanticAdaptiveSound = {
+    relevant: true,
+    selection_basis: "current_checkin",
+    band_intent: allowedAdaptiveSoundBands.includes(result.semantic_adaptive_sound_intent?.band_intent)
+      ? result.semantic_adaptive_sound_intent.band_intent
+      : null,
+    carrier_intent: allowedAdaptiveSoundCarriers.includes(result.semantic_adaptive_sound_intent?.carrier_intent)
+      ? result.semantic_adaptive_sound_intent.carrier_intent
+      : null,
+    top_needs_used: Array.isArray(result.semantic_adaptive_sound_intent?.top_needs_used)
+      ? result.semantic_adaptive_sound_intent.top_needs_used.filter((need) => allowedHighlights.includes(need)).slice(0, 4)
+      : [],
+    explicit_cues_used: Array.isArray(result.semantic_adaptive_sound_intent?.explicit_cues_used)
+      ? result.semantic_adaptive_sound_intent.explicit_cues_used.filter((cue) => allowedAdaptiveSoundCues.includes(cue)).slice(0, 4)
+      : [],
+    context_modifiers_used: contextModifiersUsed,
+    horizons_considered: [...requiredInferenceHorizons],
+    confidence: typeof result.semantic_adaptive_sound_intent?.confidence === "number"
+      ? normalizeScore(result.semantic_adaptive_sound_intent.confidence)
+      : 0,
+    safety_state: result.semantic_adaptive_sound_intent?.safety_state === "high_concern" ? "high_concern" : "standard",
+    session_scope: "current_session_only",
+    research_boundary: "biological_targets_not_used_in_product_decisions",
+  };
+  const fusion = resolveCurrentInferenceFusion({
+    acceptedSelfReport: typeof checkin === "string" && checkin.trim().length > 0,
+    semanticInference: { ...semanticCurrentInference, inference_id: semanticInferenceId },
+    semanticMusicRoom,
+    semanticAdaptiveSoundIntent: semanticAdaptiveSound,
+    environmentContext,
+    heartRateZone: physiologyAvailable ? momentaryPhysiology.heart_rate_zone : "not_available",
+    heartRateAvailable: physiologyAvailable,
+  });
+  const heartRateRole = fusion.heart_rate_role;
+  const modelInferenceConfidence = typeof semanticCurrentInference.confidence === "number"
+    ? normalizeScore(semanticCurrentInference.confidence)
+    : 0;
   const normalizedCurrentInference = {
-    inference_id: inferenceId,
-    human_label: typeof currentInference.human_label === "string" ? currentInference.human_label.slice(0, 80) : "Mixed / uncertain",
-    summary: typeof currentInference.summary === "string" ? currentInference.summary.slice(0, 320) : "",
+    inference_id: fusion.inference_id,
+    semantic_inference_id: fusion.semantic_inference_id,
+    human_label: fusion.inference_id === "mixed_uncertain"
+      ? "Mixed / uncertain"
+      : (typeof semanticCurrentInference.human_label === "string" ? semanticCurrentInference.human_label.slice(0, 80) : "Mixed / uncertain"),
+    summary: typeof semanticCurrentInference.summary === "string" ? semanticCurrentInference.summary.slice(0, 320) : "",
     confidence: heartRateRole === "conflicting" ? normalizeScore(modelInferenceConfidence - 0.08) : modelInferenceConfidence,
     heart_rate_role: heartRateRole,
-    heart_rate_zone: physiologyAvailable ? momentaryPhysiology.heart_rate_zone : "not_available",
-    evidence_used: Array.isArray(currentInference.evidence_used)
-      ? currentInference.evidence_used.filter((value) => typeof value === "string" && value.trim()).map((value) => value.trim().slice(0, 120)).slice(0, 8)
+    heart_rate_zone: fusion.heart_rate_zone,
+    evidence_used: Array.isArray(semanticCurrentInference.evidence_used)
+      ? semanticCurrentInference.evidence_used.filter((value) => typeof value === "string" && value.trim()).map((value) => value.trim().slice(0, 120)).slice(0, 8)
       : [],
     context_dimensions_considered: contextDimensionAudit(environmentContext),
     horizons_considered: [...requiredInferenceHorizons],
     baseline_comparison_used: false,
+    raw_heart_rate_retained: false,
+    fusion,
     clinical_status: "not_a_diagnosis",
   };
-  const adaptiveSoundConfidence = typeof result.adaptive_sound_intent?.confidence === "number"
-    ? normalizeScore(result.adaptive_sound_intent.confidence)
+  const adaptiveSoundConfidence = semanticAdaptiveSound.confidence;
+  const musicRoomConfidence = typeof result.semantic_music_room_confidence === "number"
+    ? normalizeScore(result.semantic_music_room_confidence)
     : 0;
 
   return {
@@ -415,14 +452,14 @@ function validateInference(result, model, environmentContext, momentaryPhysiolog
     confidence: heartRateRole === "conflicting"
       ? normalizeScore((typeof result.confidence === "number" ? result.confidence : 0) - 0.05)
       : (typeof result.confidence === "number" ? result.confidence : 0),
-    selected_music_room: allowedMusicRooms.includes(result.selected_music_room)
-      ? result.selected_music_room
-      : null,
+    selected_music_room: fusion.selected_music_room,
     selected_format: null,
     source_id: null,
     catalogue_ready: false,
-    music_room_confidence: typeof result.music_room_confidence === "number" ? result.music_room_confidence : 0,
-    music_room_reason: typeof result.music_room_reason === "string" ? result.music_room_reason : "",
+    music_room_confidence: heartRateRole === "conflicting"
+      ? normalizeScore(musicRoomConfidence - 0.08)
+      : musicRoomConfidence,
+    music_room_reason: typeof result.semantic_music_room_reason === "string" ? result.semantic_music_room_reason : "",
     needs_scorecard: normalizeNeedsScorecard(result.needs_scorecard),
     dominant_domains: dominantDomains,
     top_needs_used: topNeedsUsed.length ? topNeedsUsed : result.highlights,
@@ -431,28 +468,28 @@ function validateInference(result, model, environmentContext, momentaryPhysiolog
     uncertainty_notes: Array.isArray(result.uncertainty_notes) ? result.uncertainty_notes.slice(0, 3) : [],
     human_review_relevance: result.human_review_relevance || "not_indicated",
     adaptive_sound_intent: {
-      relevant: true,
-      selection_basis: "current_checkin",
-      band_intent: allowedAdaptiveSoundBands.includes(result.adaptive_sound_intent?.band_intent)
-        ? result.adaptive_sound_intent.band_intent
-        : null,
-      carrier_intent: allowedAdaptiveSoundCarriers.includes(result.adaptive_sound_intent?.carrier_intent)
-        ? result.adaptive_sound_intent.carrier_intent
-        : null,
-      top_needs_used: Array.isArray(result.adaptive_sound_intent?.top_needs_used)
-        ? result.adaptive_sound_intent.top_needs_used.filter((need) => allowedHighlights.includes(need)).slice(0, 4)
-        : [],
-      explicit_cues_used: Array.isArray(result.adaptive_sound_intent?.explicit_cues_used)
-        ? result.adaptive_sound_intent.explicit_cues_used.filter((cue) => allowedAdaptiveSoundCues.includes(cue)).slice(0, 4)
-        : [],
-      context_modifiers_used: contextModifiersUsed,
-      horizons_considered: [...requiredInferenceHorizons],
+      ...semanticAdaptiveSound,
+      band_intent: fusion.adaptive_sound.band_intent,
+      carrier_intent: fusion.adaptive_sound.carrier_intent,
       confidence: heartRateRole === "conflicting"
         ? normalizeScore(adaptiveSoundConfidence - 0.08)
         : adaptiveSoundConfidence,
-      safety_state: result.adaptive_sound_intent?.safety_state === "high_concern" ? "high_concern" : "standard",
-      session_scope: "current_session_only",
-      research_boundary: "biological_targets_not_used_in_product_decisions",
+      resolution_authority: "deterministic_local_fusion",
+      fusion_policy_version: fusion.policy_version,
+      fusion_action: fusion.action,
+    },
+    semantic_intents: {
+      current_inference: {
+        inference_id: semanticInferenceId,
+        human_label: typeof semanticCurrentInference.human_label === "string" ? semanticCurrentInference.human_label.slice(0, 80) : "Mixed / uncertain",
+        confidence: modelInferenceConfidence,
+      },
+      music_room: {
+        room: semanticMusicRoom,
+        confidence: musicRoomConfidence,
+        reason: typeof result.semantic_music_room_reason === "string" ? result.semantic_music_room_reason : "",
+      },
+      adaptive_sound: semanticAdaptiveSound,
     },
     interpretation_type: result.interpretation_type || "language_theme_mapping",
     clinical_status: "not_a_diagnosis",
@@ -461,6 +498,7 @@ function validateInference(result, model, environmentContext, momentaryPhysiolog
     prompt_sha256: SYSTEM_PROMPT_SHA256,
     prompt_source: SYSTEM_PROMPT_SOURCE,
     music_room_selection_guide_version: MUSIC_ROOM_SELECTION_GUIDE_VERSION,
+    fusion_policy_version: CURRENT_INFERENCE_FUSION_POLICY_VERSION,
   };
 }
 
@@ -522,7 +560,7 @@ async function handleInference(request, env) {
             `Needs scorecard domains and fields: ${JSON.stringify(scorecardDomains)}`,
             "Score every needs_scorecard field from 0.00 to 1.00. Use 0.00 when there is no evidence; use higher scores only when the check-in or adaptive context supports present-state relevance.",
             "Keep the four highlights aligned with the most salient human_needs_radar scores, but do not hide important lower-level signals from the full scorecard.",
-            `Choose an eligible music room from: ${allowedMusicRooms.join(", ")}; otherwise return null.`,
+            `Return a semantic music-room affinity from: ${allowedMusicRooms.join(", ")}; otherwise return null. The local fusion layer resolves the final room candidate.`,
             "The application owns extended-session format and exact source resolution. Return selected_format and source_id as null and catalogue_ready as false.",
             "Use high scores only as stronger present-state relevance, never as diagnosis.",
             `Environment context JSON: ${JSON.stringify(environmentContext)}`,
@@ -553,7 +591,7 @@ async function handleInference(request, env) {
                 minimum: 0,
                 maximum: 1,
               },
-              selected_music_room: {
+              semantic_music_room: {
                 type: ["string", "null"],
                 enum: [...allowedMusicRooms, null],
               },
@@ -567,12 +605,12 @@ async function handleInference(request, env) {
                 type: "boolean",
                 enum: [false],
               },
-              music_room_confidence: {
+              semantic_music_room_confidence: {
                 type: "number",
                 minimum: 0,
                 maximum: 1,
               },
-              music_room_reason: {
+              semantic_music_room_reason: {
                 type: "string",
               },
               needs_scorecard: scorecardSchema,
@@ -619,7 +657,7 @@ async function handleInference(request, env) {
                   "urgent_human_review",
                 ],
               },
-              current_inference: {
+              semantic_current_inference: {
                 type: "object",
                 additionalProperties: false,
                 properties: {
@@ -627,8 +665,6 @@ async function handleInference(request, env) {
                   human_label: { type: "string" },
                   summary: { type: "string" },
                   confidence: { type: "number", minimum: 0, maximum: 1 },
-                  heart_rate_role: { type: "string", enum: allowedHeartRateRoles },
-                  heart_rate_zone: { type: "string", enum: allowedHeartRateZones },
                   evidence_used: {
                     type: "array",
                     minItems: 1,
@@ -659,8 +695,6 @@ async function handleInference(request, env) {
                   "human_label",
                   "summary",
                   "confidence",
-                  "heart_rate_role",
-                  "heart_rate_zone",
                   "evidence_used",
                   "context_dimensions_considered",
                   "horizons_considered",
@@ -668,7 +702,7 @@ async function handleInference(request, env) {
                   "clinical_status",
                 ],
               },
-              adaptive_sound_intent: {
+              semantic_adaptive_sound_intent: {
                 type: "object",
                 additionalProperties: false,
                 properties: {
@@ -741,20 +775,20 @@ async function handleInference(request, env) {
             required: [
               "highlights",
               "confidence",
-              "selected_music_room",
+              "semantic_music_room",
               "selected_format",
               "source_id",
               "catalogue_ready",
-              "music_room_confidence",
-              "music_room_reason",
+              "semantic_music_room_confidence",
+              "semantic_music_room_reason",
               "needs_scorecard",
               "dominant_domains",
               "top_needs_used",
               "context_modifiers_used",
               "uncertainty_notes",
               "human_review_relevance",
-              "current_inference",
-              "adaptive_sound_intent",
+              "semantic_current_inference",
+              "semantic_adaptive_sound_intent",
               "interpretation_type",
               "clinical_status",
             ],
@@ -773,7 +807,7 @@ async function handleInference(request, env) {
 
   try {
     const result = {
-      ...validateInference(parseStructuredResponse(payload), model, environmentContext, momentaryPhysiology),
+      ...validateInference(parseStructuredResponse(payload), model, checkin, environmentContext, momentaryPhysiology),
       environment_context: environmentContext,
     };
     console.info("Citizen needs inference QA", {

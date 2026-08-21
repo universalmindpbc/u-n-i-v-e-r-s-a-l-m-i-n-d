@@ -124,6 +124,49 @@ assert.equal(skippedBiometric.audit.raw_checkin_text_used, false);
 assert.deepEqual(comparable(skippedBiometric), comparable(skippedBiometricPython));
 assertions += 7;
 
+const fusedConflictFixture = intentFixture("gamma", "cognition_joy");
+fusedConflictFixture.semantic_intents = {
+  adaptive_sound: structuredClone(fusedConflictFixture.adaptive_sound_intent),
+};
+fusedConflictFixture.current_inference = {
+  inference_id: "mixed_uncertain",
+  semantic_inference_id: "active_energised",
+  heart_rate_role: "conflicting",
+  heart_rate_zone: "low_observed",
+  fusion: {
+    policy_version: "iam_current_inference_fusion_v1.0",
+    action: "bounded_conflict_downshift",
+    adaptive_sound: {
+      band_intent: "alpha",
+      carrier_intent: "presence",
+    },
+    outputs_changed: [
+      "music_room",
+      "exact_music_selection",
+      "adaptive_sound_band",
+      "adaptive_sound_carrier",
+    ],
+  },
+};
+const fusedConflict = resolveAdaptiveSoundSession(fusedConflictFixture, policy, { sourceEvent: "fused_conflict" });
+const fusedConflictPython = resolveWithPython(fusedConflictFixture);
+assert.equal(fusedConflict.band_intent, "alpha");
+assert.equal(fusedConflict.carrier_intent, "presence");
+assert.equal(fusedConflict.carrier_hz, 444);
+assert.equal(fusedConflict.selection_basis, "fused_current_inference");
+assert.equal(fusedConflict.audit.fusion_policy_version, "iam_current_inference_fusion_v1.0");
+assert.equal(fusedConflict.audit.fusion_action, "bounded_conflict_downshift");
+assert.deepEqual(fusedConflict.audit.fusion_outputs_changed, [
+  "music_room",
+  "exact_music_selection",
+  "adaptive_sound_band",
+  "adaptive_sound_carrier",
+]);
+assert.equal(fusedConflict.audit.raw_heart_rate_retained, false);
+assert.deepEqual(comparable(fusedConflict), comparable(fusedConflictPython));
+assertNoTargetLeakage(fusedConflict);
+assertions += 10;
+
 const highConcernFixture = intentFixture("alpha", "presence", "high_concern");
 highConcernFixture.adaptive_support_relevance = { level: "high" };
 highConcernFixture.human_review_relevance = { level: "recommended" };

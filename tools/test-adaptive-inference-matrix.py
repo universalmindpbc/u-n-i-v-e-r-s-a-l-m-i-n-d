@@ -30,6 +30,21 @@ assert matrix["input_contract"]["momentary_physiology"]["future_after_platform_a
 ]
 assert matrix["input_contract"]["momentary_physiology"]["future_after_platform_and_ux_validation"]["target_capture_duration_seconds_max"] == 60
 assert matrix["required_output_audit"]["raw_heart_rate_retained"] is False
+assert matrix["local_fusion_policy"]["policy_version"] == "iam_current_inference_fusion_v1.0"
+assert matrix["local_fusion_policy"]["heart_rate_cannot_select_alone"] is True
+assert set(matrix["local_fusion_policy"]["bounded_actions"]) == {
+    "supporting_semantic_preserved",
+    "unavailable_semantic_preserved",
+    "invalid_semantic_preserved",
+    "conflict_context_explained_semantic_preserved",
+    "bounded_conflict_downshift",
+    "bounded_conflict_stabilise",
+    "conflicting_semantic_preserved",
+    "high_concern_semantic_and_safety_preserved",
+    "no_personalised_selection_without_self_report",
+}
+assert matrix["required_output_audit"]["fusion_policy_version"] == "iam_current_inference_fusion_v1.0"
+assert matrix["required_output_audit"]["heart_rate_can_select_alone"] is False
 assert set(matrix["horizon_context_rule"]) == {"horizon_1", "horizon_2", "horizon_3"}
 
 assert module.classify_heart_rate_zone(59, matrix) == "low_observed"

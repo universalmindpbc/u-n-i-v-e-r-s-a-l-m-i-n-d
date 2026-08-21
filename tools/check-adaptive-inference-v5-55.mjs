@@ -17,6 +17,7 @@ const source = await readFile(resolve(root, SYSTEM_PROMPT_SOURCE), "utf8");
 const contentModule = await readFile(resolve(root, "i  a m/adaptive-inference-engine-system-prompt-v5.55-content.js"), "utf8");
 const server = await readFile(resolve(root, "i  a m/technology-citizen-needs-server.mjs"), "utf8");
 const worker = await readFile(resolve(root, "cloudflare/iam-citizen-needs-worker.js"), "utf8");
+const fusionModule = await readFile(resolve(root, "i  a m/current-inference-fusion-v1.js"), "utf8");
 const inferenceMatrix = JSON.parse(await readFile(resolve(root, "i  a m/adaptive-inference-matrix-v1.json"), "utf8"));
 const subprompt = await readFile(resolve(root, "i  a m/adaptive-music-video-selector-subprompt-v1.12.md"), "utf8");
 const technology = await readFile(resolve(root, "i  a m/technology-citizen-needs.html"), "utf8");
@@ -39,7 +40,16 @@ assert.ok(source.includes('"adaptive_sound_intent"'));
 assert.ok(source.includes("Current Inference Matrix — Human + AI Rule"));
 assert.ok(source.includes("optional current 10-second Heart Rate"));
 assert.ok(source.includes("Every accepted non-empty current self-report is sufficient to produce one adaptive-sound semantic recommendation."));
-assert.ok(source.includes("it must never produce `insufficient_context`, null sound intents, a camera requirement or a withheld recommendation"));
+assert.ok(source.includes("Missing, declined, skipped, expired or invalid Heart Rate must never produce `insufficient_context`, null sound intents, a camera requirement or a withheld recommendation"));
+assert.ok(source.includes("`semantic_current_inference`, `semantic_music_room` and `semantic_adaptive_sound_intent`"));
+assert.ok(source.includes("The model contract contains no raw Heart Rate, Heart Rate zone, Heart Rate role or final-selection fields."));
+assert.ok(source.includes("The current Heart Check handoff is first-party and short-lived, not entirely on-device."));
+assert.ok(source.includes("The handoff expires after 60 seconds, is consumed once and is deleted before upstream inference work."));
+assert.ok(source.includes("removes raw BPM from the OpenAI request, does not return raw BPM"));
+assert.ok(source.includes("GPT does not choose the exact track."));
+assert.ok(source.includes("The deterministic Song Tensor selector performs the exact ranking mathematically"));
+assert.ok(source.includes("current_inference.fusion"));
+assert.ok(!source.includes("must set the Heart Rate role and zone"));
 assert.ok(!source.includes("30-second Heart Rate"));
 assert.ok(source.includes("Time, weather and location materially influence every adaptive music decision"));
 assert.equal(inferenceMatrix.name, "Current Inference Matrix");
@@ -50,6 +60,24 @@ assert.equal(inferenceMatrix.input_contract.momentary_physiology.optional_non_bl
 assert.match(inferenceMatrix.input_contract.momentary_physiology.skip_rule, /must not request camera access again, block homepage entry or suppress a recommendation/);
 assert.equal(inferenceMatrix.required_output_audit.heart_rate_required_for_adaptive_sound_intent, false);
 assert.equal(inferenceMatrix.required_output_audit.raw_heart_rate_retained, false);
+assert.equal(inferenceMatrix.required_output_audit.fusion_policy_version, "iam_current_inference_fusion_v1.0");
+assert.equal(inferenceMatrix.required_output_audit.heart_rate_can_select_alone, false);
+assert.deepEqual(inferenceMatrix.local_fusion_policy.semantic_model_fields, [
+  "semantic_current_inference",
+  "semantic_music_room",
+  "semantic_adaptive_sound_intent",
+]);
+assert.deepEqual(inferenceMatrix.local_fusion_policy.public_resolved_fields, [
+  "current_inference",
+  "selected_music_room",
+  "adaptive_sound_intent",
+]);
+assert.equal(inferenceMatrix.local_fusion_policy.heart_rate_cannot_select_alone, true);
+assert.deepEqual(inferenceMatrix.local_fusion_policy.context_roles, [
+  "downshift_supporting",
+  "activation_supporting",
+  "neutral_or_unavailable",
+]);
 assert.deepEqual(Object.keys(inferenceMatrix.horizon_context_rule), ["horizon_1", "horizon_2", "horizon_3"]);
 assert.ok(source.includes('"selected_format": null'));
 assert.ok(source.includes('"source_id": null'));
@@ -68,6 +96,14 @@ assert.ok(server.includes("measurement_duration_seconds: 10"));
 assert.ok(worker.includes("measurement_duration_seconds: 10"));
 assert.ok(worker.includes('relevant: { type: "boolean", enum: [true] }'));
 assert.ok(worker.includes('enum: ["current_checkin"]'));
+assert.ok(worker.includes("semantic_current_inference"));
+assert.ok(worker.includes("semantic_music_room"));
+assert.ok(worker.includes("semantic_adaptive_sound_intent"));
+assert.ok(!worker.includes("reconcileHeartRateRole"));
+assert.ok(!server.includes("reconcileHeartRateRole"));
+assert.ok(fusionModule.includes('CURRENT_INFERENCE_FUSION_POLICY_VERSION = "iam_current_inference_fusion_v1.0"'));
+assert.ok(fusionModule.includes("heart_rate_can_select_alone: false"));
+assert.ok(fusionModule.includes("raw_heart_rate_retained: false"));
 assert.ok(worker.includes("Missing, skipped, declined, expired or invalid Heart Rate never permits insufficient_context"));
 assert.ok(server.includes('context_role: "all_adaptive_decisions_all_horizons"'));
 assert.ok(worker.includes('context_role: "all_adaptive_decisions_all_horizons"'));
@@ -103,6 +139,9 @@ process.stdout.write(`${JSON.stringify({
   current_heart_rate_inference_matrix: true,
   context_all_horizons: true,
   raw_heart_rate_exported_to_model: false,
+  local_fusion_policy_version: inferenceMatrix.required_output_audit.fusion_policy_version,
+  heart_rate_can_select_alone: false,
+  canonical_prompt_documents_semantic_only_model_and_deterministic_exact_selection: true,
   application_owned_format_and_source: true,
   corrected_target_nomenclature: true,
   technology_code_notion_markdown_chain: true,

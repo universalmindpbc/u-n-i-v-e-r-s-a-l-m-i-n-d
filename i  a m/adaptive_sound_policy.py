@@ -19,6 +19,7 @@ BASE_DIR = Path(__file__).resolve().parent
 DEFAULT_POLICY_PATH = BASE_DIR / "adaptive-sound-intent-policy-v1.json"
 CONTEXT_DIMENSIONS = ("time", "weather", "location")
 HORIZONS = ("horizon_1", "horizon_2", "horizon_3")
+CURRENT_INFERENCE_FUSION_POLICY_VERSION = "iam_current_inference_fusion_v1.0"
 
 
 def _nested(value: Mapping[str, Any], path: Iterable[str], default: Any = None) -> Any:
@@ -41,6 +42,32 @@ def _number(value: Any) -> float:
         return max(0.0, min(1.0, float(value)))
     except (TypeError, ValueError):
         return 0.0
+
+
+def _resolved_adaptive_sound_intent(payload: Mapping[str, Any]) -> Dict[str, Any]:
+    """Read the privacy-safe local fusion result, falling back to semantic intent."""
+    semantic_intents = payload.get("semantic_intents")
+    semantic_intents = semantic_intents if isinstance(semantic_intents, Mapping) else {}
+    source = semantic_intents.get("adaptive_sound")
+    if not isinstance(source, Mapping):
+        source = payload.get("semantic_adaptive_sound_intent")
+    if not isinstance(source, Mapping):
+        source = payload.get("adaptive_sound_intent")
+    intent = dict(source) if isinstance(source, Mapping) else {}
+    fusion = _nested(payload, ["current_inference", "fusion"], {})
+    fusion = fusion if isinstance(fusion, Mapping) else {}
+    fused_sound = fusion.get("adaptive_sound") if isinstance(fusion.get("adaptive_sound"), Mapping) else {}
+    if fusion.get("policy_version") != CURRENT_INFERENCE_FUSION_POLICY_VERSION:
+        return intent
+
+    intent.update({
+        "band_intent": fused_sound.get("band_intent"),
+        "carrier_intent": fused_sound.get("carrier_intent"),
+        "resolution_authority": "deterministic_local_fusion",
+        "fusion_policy_version": fusion.get("policy_version"),
+        "fusion_action": str(fusion.get("action") or "")[:80],
+    })
+    return intent
 
 
 def _flatten_scores(value: Any, scores: Dict[str, float]) -> None:
@@ -81,7 +108,7 @@ def _score_options(options: Mapping[str, Any], need_scores: Mapping[str, float])
 
 
 def _state_fingerprint(payload: Mapping[str, Any], need_scores: Mapping[str, float]) -> str:
-    semantic_intent = payload.get("adaptive_sound_intent")
+    semantic_intent = _resolved_adaptive_sound_intent(payload)
     state = {
         "needs": need_scores,
         "intent": semantic_intent if isinstance(semantic_intent, Mapping) else {},
@@ -110,12 +137,13 @@ def _explicit_selection(payload: Mapping[str, Any], valid_bands: set[str], valid
         if band in valid_bands and carrier in valid_carriers:
             return band, carrier, "citizen_session_override"
 
-    intent = payload.get("adaptive_sound_intent")
+    intent = _resolved_adaptive_sound_intent(payload)
     if isinstance(intent, Mapping) and intent.get("relevant") is not False:
         band = str(intent.get("band_intent") or "").casefold()
         carrier = str(intent.get("carrier_intent") or "").casefold()
         if band in valid_bands and carrier in valid_carriers:
-            return band, carrier, "inference_semantic_intent"
+            basis = "fused_current_inference" if intent.get("resolution_authority") == "deterministic_local_fusion" else "inference_semantic_intent"
+            return band, carrier, basis
     return None, None, "deterministic_needs_scores"
 
 
@@ -127,7 +155,7 @@ def _safety_state(payload: Mapping[str, Any], policy: Mapping[str, Any]) -> Dict
         review_level = str(review_value.get("level") or "none").casefold()
     else:
         review_level = str(review_value).casefold()
-    intent_safety = str(_nested(payload, ["adaptive_sound_intent", "safety_state"], "standard")).casefold()
+    intent_safety = str(_resolved_adaptive_sound_intent(payload).get("safety_state") or "standard").casefold()
     flags = payload.get("safety_flags") or []
     flag_text = " ".join(str(flag).casefold() for flag in flags)
     high_concern = (
@@ -178,7 +206,7 @@ def _safety_state(payload: Mapping[str, Any], policy: Mapping[str, Any]) -> Dict
 
 def _inference_audit(payload: Mapping[str, Any]) -> Dict[str, Any]:
     """Carry privacy-safe inference provenance; never retain raw Heart Rate."""
-    intent = payload.get("adaptive_sound_intent")
+    intent = _resolved_adaptive_sound_intent(payload)
     intent = intent if isinstance(intent, Mapping) else {}
     current = payload.get("current_inference")
     current = current if isinstance(current, Mapping) else {}
@@ -198,6 +226,10 @@ def _inference_audit(payload: Mapping[str, Any]) -> Dict[str, Any]:
     heart_rate_zone = str(current.get("heart_rate_zone") or "not_available")
     if heart_rate_zone not in {"low_observed", "mid_observed", "elevated_observed", "not_available"}:
         heart_rate_zone = "not_available"
+    fusion = current.get("fusion") if isinstance(current.get("fusion"), Mapping) else {}
+    fusion_policy_version = str(fusion.get("policy_version") or "")
+    if fusion_policy_version != CURRENT_INFERENCE_FUSION_POLICY_VERSION:
+        fusion_policy_version = ""
     return {
         "context_modifiers_used": modifiers,
         "context_dimensions_considered": list(CONTEXT_DIMENSIONS),
@@ -206,6 +238,9 @@ def _inference_audit(payload: Mapping[str, Any]) -> Dict[str, Any]:
         "heart_rate_zone": heart_rate_zone,
         "raw_heart_rate_retained": False,
         "baseline_comparison_used": False,
+        "fusion_policy_version": fusion_policy_version,
+        "fusion_action": str(fusion.get("action") or "")[:80],
+        "fusion_outputs_changed": [str(value) for value in fusion.get("outputs_changed") or []][:4],
     }
 
 
@@ -220,7 +255,7 @@ def resolve_adaptive_sound(payload: Mapping[str, Any], policy: Optional[Mapping[
     need_scores = collect_need_scores(payload)
     fingerprint = _state_fingerprint(payload, need_scores)
     band_id, carrier_id, basis = _explicit_selection(payload, set(bands), set(carriers))
-    semantic_intent = payload.get("adaptive_sound_intent")
+    semantic_intent = _resolved_adaptive_sound_intent(payload)
     explicit_insufficient_context = (
         isinstance(semantic_intent, Mapping)
         and semantic_intent.get("relevant") is False

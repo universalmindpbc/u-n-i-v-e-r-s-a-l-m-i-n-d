@@ -74,10 +74,19 @@ async function checkRealCheckinAndController() {
   const context = await makeContext();
   const page = await context.newPage();
   monitor(page);
+  const inferenceRequestBodies = [];
+  page.on("request", (request) => {
+    if (request.method() !== "POST" || !request.url().includes("/api/citizen-needs-inference.php")) return;
+    inferenceRequestBodies.push(request.postData() || "");
+  });
   const inferenceResponsePromise = page.waitForResponse((response) => (
     response.request().method() === "POST"
     && response.url().includes("/api/citizen-needs-inference.php")
-  ), { timeout: 60000 });
+  ), { timeout: 120000 });
+  const selectionResponsePromise = page.waitForResponse((response) => (
+    response.request().method() === "POST"
+    && response.url().includes("/api/adaptive-music-video-selection.php")
+  ), { timeout: 120000 });
 
   await page.goto(`${BASE_URL}/vogue-self-report.html`, { waitUntil: "domcontentloaded" });
   await page.waitForFunction(() => {
@@ -85,60 +94,66 @@ async function checkRealCheckinAndController() {
     const input = document.querySelector("[data-iam-input]");
     return form && input && !form.inert && !input.disabled;
   });
-  await page.evaluate(() => {
-    document.body.dataset.iamNextPage = "index-alt.html?adaptiveSoundSourceQa=1";
-    const main = document.querySelector("[data-iam-next-page]");
-    if (main) main.dataset.iamNextPage = "index-alt.html?adaptiveSoundSourceQa=1";
-  });
   await page.locator("[data-iam-start]").click({ force: true });
   await page.locator("[data-iam-input]").fill("energised, joyful, curious and ready to create");
   await page.locator("[data-iam-input]").press("Enter");
+
+  await page.waitForURL(/research\.php\?offer=heart-rate/, { timeout: 30000 });
+  await page.locator("[data-heart-rate-skip]").click({ timeout: 30000 });
+  await page.waitForURL(/index\.html/, { timeout: 30000 });
 
   const inferenceResponse = await inferenceResponsePromise;
   assert.equal(inferenceResponse.status(), 200, "Real staging check-in inference must return HTTP 200");
   const inferencePayload = await inferenceResponse.json();
   assert.equal(inferencePayload.prompt_version, PROMPT_VERSION);
   assert.equal(inferencePayload.prompt_sha256, PROMPT_SHA256);
-  await page.waitForURL(/index-alt\.html/);
+  assert.equal(inferencePayload.current_inference?.heart_rate_role, "not_available");
+  assert.equal(inferencePayload.current_inference?.raw_heart_rate_retained, false);
+  assert.equal(inferenceRequestBodies.length, 1, "The skip journey must issue exactly one inference request");
+  assert.doesNotMatch(inferenceRequestBodies[0], /heart_rate|\bbpm\b/i, "Raw Heart Rate must not enter the skipped OpenAI request path");
+
+  const selectionResponse = await selectionResponsePromise;
+  assert.equal(selectionResponse.status(), 200, "The deterministic selector must return HTTP 200 after live GPT inference");
+  await page.waitForFunction(() => document.body.dataset.adaptiveSelectionState === "ready", null, { timeout: 60000 });
   await page.waitForFunction(() => window.IAMAdaptiveSoundSnapshot?.selected === true, null, { timeout: 60000 });
 
   const snapshot = await page.evaluate(() => window.IAMAdaptiveSoundSnapshot);
-  const readout = await readHomepageState(page);
+  const diagnostics = await page.evaluate(() => window.IAMAdaptiveSound.diagnostics());
+  const exactSelection = await page.evaluate(() => window.__iamLatestMusicTelevisionSelection);
   assert.ok(BANDS.has(snapshot.band_intent), "Real check-in must resolve an allowed band");
   assert.ok(CARRIERS.has(snapshot.carrier_hz), "Real check-in must resolve an allowed carrier");
-  assert.equal(snapshot.selection_basis, "inference_semantic_intent");
+  assert.equal(snapshot.selection_basis, "fused_current_inference");
   assert.equal(snapshot.session_scope, "current_session_only");
   assert.equal(snapshot.authority.prompt_version, PROMPT_VERSION);
   assert.equal(snapshot.authority.prompt_sha256, PROMPT_SHA256);
   assert.equal(snapshot.audit.raw_checkin_text_used, false);
   assertNoTargetLeakage(snapshot);
-  assert.equal(readout.selected, "true");
-  assert.equal(readout.basis, "inference_semantic_intent");
-  assert.match(readout.text, new RegExp(`${snapshot.band_intent}.*${snapshot.dominant_isochronic_hz} Hz.*${snapshot.carrier_hz} Hz`, "i"));
-  await assertMediaStillStopped(page);
-
-  await page.goto(`${BASE_URL}/index.html?adaptiveSoundControllerSourceQa=1`, { waitUntil: "domcontentloaded" });
-  await page.waitForFunction(() => window.IAMAdaptiveSound?.diagnostics?.().session_snapshot?.selected === true);
-  const diagnostics = await page.evaluate(() => window.IAMAdaptiveSound.diagnostics());
   assert.equal(diagnostics.profile_id, snapshot.profile_id);
   assert.equal(diagnostics.carrier_hz, snapshot.carrier_hz);
   assert.equal(diagnostics.selection_basis, snapshot.selection_basis);
   assert.equal(diagnostics.session_scope, "current_session_only");
   assert.equal(diagnostics.context_state, "not_created", "Controller must not start synth playback before the panel opens");
+  assert.equal(exactSelection?.schema_version, "adaptive_music_video_selection_v1.11");
+  assert.ok(exactSelection?.selected_track_id, "The deterministic selector must resolve an exact approved music/video");
   assertNoTargetLeakage(diagnostics.session_snapshot);
   await assertMediaStillStopped(page);
 
   const result = {
+    heart_rate_offer_skipped: true,
     inference_http_status: inferenceResponse.status(),
+    selector_http_status: selectionResponse.status(),
     prompt_version: inferencePayload.prompt_version,
     prompt_sha256: inferencePayload.prompt_sha256,
+    heart_rate_role: inferencePayload.current_inference.heart_rate_role,
+    raw_heart_rate_retained: inferencePayload.current_inference.raw_heart_rate_retained,
+    selected_music_room: inferencePayload.selected_music_room,
+    exact_track_id: exactSelection.selected_track_id,
     band_intent: snapshot.band_intent,
     dominant_isochronic_hz: snapshot.dominant_isochronic_hz,
     carrier_hz: snapshot.carrier_hz,
     selection_basis: snapshot.selection_basis,
     selection_authority: snapshot.authority.selection_authority,
     audit_source_event: snapshot.audit.source_event,
-    homepage_text: readout.text,
     controller_context_state: diagnostics.context_state,
   };
   await context.close();

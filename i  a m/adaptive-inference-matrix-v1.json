@@ -117,6 +117,43 @@
       "avoid": "The model never contacts another person and never presents diagnosis or certainty."
     }
   ],
+  "local_fusion_policy": {
+    "schema_version": "iam_current_inference_fusion_v1",
+    "policy_version": "iam_current_inference_fusion_v1.0",
+    "order": [
+      "semantic_current_inference_from_self_report_and_environment_context",
+      "local_heart_rate_role_and_zone",
+      "local_context_role",
+      "deterministic_bounded_resolution",
+      "downstream_room_exact_media_band_and_carrier_selection"
+    ],
+    "semantic_model_fields": [
+      "semantic_current_inference",
+      "semantic_music_room",
+      "semantic_adaptive_sound_intent"
+    ],
+    "public_resolved_fields": [
+      "current_inference",
+      "selected_music_room",
+      "adaptive_sound_intent"
+    ],
+    "context_roles": ["downshift_supporting", "activation_supporting", "neutral_or_unavailable"],
+    "bounded_actions": [
+      "supporting_semantic_preserved",
+      "unavailable_semantic_preserved",
+      "invalid_semantic_preserved",
+      "conflict_context_explained_semantic_preserved",
+      "bounded_conflict_downshift",
+      "bounded_conflict_stabilise",
+      "conflicting_semantic_preserved",
+      "high_concern_semantic_and_safety_preserved",
+      "no_personalised_selection_without_self_report"
+    ],
+    "heart_rate_cannot_select_alone": true,
+    "coherent_self_report_may_be_preserved_without_output_change": true,
+    "raw_heart_rate_retained": false,
+    "session_scope": "current_session_only"
+  },
   "required_output_audit": {
     "inference_id": true,
     "inference_confidence": true,
@@ -126,6 +163,10 @@
     "horizons_considered": ["horizon_1", "horizon_2", "horizon_3"],
     "baseline_comparison_used": false,
     "raw_heart_rate_retained": false,
+    "fusion_policy_version": "iam_current_inference_fusion_v1.0",
+    "fusion_action": true,
+    "fusion_outputs_changed": ["music_room", "exact_music_selection", "adaptive_sound_band", "adaptive_sound_carrier"],
+    "heart_rate_can_select_alone": false,
     "accepted_self_report_requires_adaptive_sound_intent": true,
     "heart_rate_required_for_adaptive_sound_intent": false
   }

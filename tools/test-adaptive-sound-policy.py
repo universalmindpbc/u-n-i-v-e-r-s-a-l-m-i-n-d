@@ -177,6 +177,38 @@ def main() -> None:
     require(skipped_result["audit"]["heart_rate_role"] == "not_available", "Skipped Heart Rate was not carried as unavailable.")
     require(skipped_result["audit"]["raw_checkin_text_used"] is False, "Self-report prose was used by the deterministic resolver.")
 
+    fused_conflict = intent_payload("gamma", "cognition_joy")
+    fused_conflict["semantic_intents"] = {
+        "adaptive_sound": json.loads(json.dumps(fused_conflict["adaptive_sound_intent"]))
+    }
+    fused_conflict["current_inference"].update({
+        "inference_id": "mixed_uncertain",
+        "semantic_inference_id": "active_energised",
+        "heart_rate_role": "conflicting",
+        "heart_rate_zone": "low_observed",
+        "fusion": {
+            "policy_version": "iam_current_inference_fusion_v1.0",
+            "action": "bounded_conflict_downshift",
+            "adaptive_sound": {
+                "band_intent": "alpha",
+                "carrier_intent": "presence",
+            },
+            "outputs_changed": [
+                "music_room",
+                "exact_music_selection",
+                "adaptive_sound_band",
+                "adaptive_sound_carrier",
+            ],
+        },
+    })
+    fused_result = sound.resolve_adaptive_sound(fused_conflict, policy)
+    require(fused_result["band_intent"] == "alpha", "Local fusion did not re-rank Gamma to Alpha.")
+    require(fused_result["carrier_intent"] == "presence", "Local fusion did not re-rank cognition/joy to presence.")
+    require(fused_result["selection_basis"] == "fused_current_inference", "Fused sound authority was not audited.")
+    require(fused_result["audit"]["fusion_policy_version"] == "iam_current_inference_fusion_v1.0", "Fusion policy version was not retained.")
+    require(fused_result["audit"]["fusion_action"] == "bounded_conflict_downshift", "Fusion action was not retained.")
+    require(fused_result["audit"]["raw_heart_rate_retained"] is False, "Raw Heart Rate leaked into fused sound audit.")
+
     manual_payload = intent_payload("delta", "cognition_joy")
     manual_payload["selection_context"]["adaptive_sound_session_choice"] = {
         "band_intent": "gamma",
@@ -212,6 +244,7 @@ def main() -> None:
         "research_targets_in_product_decisions": False,
         "no_checkin_default_carrier": False,
         "accepted_self_report_without_heart_rate_selected": True,
+        "conflicting_heart_rate_re_ranked_band_and_carrier": True,
     }, indent=2))
 
 

@@ -27,6 +27,27 @@
     "missing_heart_rate_rule": "safe_non_blocking",
     "missing_context_rule": "record_unavailable_never_invent"
   },
+  "local_fusion_contract": {
+    "schema_version": "iam_current_inference_fusion_v1",
+    "policy_version": "iam_current_inference_fusion_v1.0",
+    "semantic_source_field": "semantic_intents.adaptive_sound",
+    "resolved_source_field": "current_inference.fusion.adaptive_sound",
+    "resolution_authority": "deterministic_local_fusion",
+    "manual_session_choice_remains_higher_authority": true,
+    "bounded_active_conflict_resolution": {
+      "gamma_to_alpha_when_context_does_not_explain_low_observed_evidence": true,
+      "cognition_joy_to_presence_when_context_does_not_explain_low_observed_evidence": true,
+      "rule_requires_semantic_active_energised_inference": true
+    },
+    "bounded_lower_conflict_resolution": {
+      "delta_to_alpha_without_explicit_sleep_or_rest_cue": true,
+      "explicit_sleep_or_rest_cue_is_preserved": true,
+      "rule_requires_lower_activation_semantic_inference": true
+    },
+    "supporting_unavailable_or_invalid_default": "preserve_semantic_intent",
+    "heart_rate_cannot_select_alone": true,
+    "raw_heart_rate_retained": false
+  },
   "isochronic_hz": {
     "delta": 3.33,
     "theta": 7.38,
