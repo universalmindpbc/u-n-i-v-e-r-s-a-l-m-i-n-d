@@ -1,5 +1,5 @@
 (() => {
-  const VERSION = "global-navigation-canonical-11";
+  const VERSION = "global-navigation-canonical-12";
   const scriptUrl = document.currentScript?.src || window.location.href;
   const stylesheetUrl = new URL("global-navigation.css?v=a4fc9eb0ffc0", scriptUrl).href;
 
@@ -27,6 +27,7 @@
       "technology-citizen-needs.html": "technology",
       "technology-inference-engine.html": "technology",
       "science.html": "science",
+      "research.html": "research",
       "business-model.html": "business-model",
       "impact.html": "impact",
       "privacy-first.html": "privacy-first",
@@ -100,6 +101,7 @@
               <a href="technology-inference-engine.html" data-nav-subitem="technology-recommendations">learn how we recommend content</a>
             </div>
             <a class="global-nav-item" href="science.html" data-nav-item="science">science</a>
+            <a class="global-nav-item" href="research.html" data-nav-item="research">research</a>
             <a class="global-nav-item" href="privacy-first.html" data-nav-item="privacy-first">privacy first</a>
             <a class="global-nav-item" href="business-model.html" data-nav-item="business-model">business model</a>
             <a class="global-nav-item" href="impact.html" data-nav-item="impact">impact</a>

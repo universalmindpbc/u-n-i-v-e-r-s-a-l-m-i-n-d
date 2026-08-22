@@ -709,7 +709,7 @@ requireCondition(citizenNeedsWorkerConfig.includes('name = "REALTIME_RATE_LIMITE
 requireCondition(citizenNeedsWorkerConfig.includes('type = "Text"') && citizenNeedsWorkerConfig.includes('globs = [ "**/*.txt" ]'), 'the Worker no longer bundles the Universal One portal guide');
 requireCondition(realtimeVoicePortalGuide.includes('GLOBAL NAVIGATION') && realtimeVoicePortalGuide.includes('TELEVISION ROOM'), 'the Universal One portal guide no longer covers the site and player journeys');
 requireCondition(realtimeVoicePortalGuide.includes('Privacy first opens the Privacy First page') && realtimeVoicePortalGuide.includes('Business model opens the live stakeholder summary'), 'Universal One can misdescribe Privacy First or Business Model');
-requireCondition(globalNavigationController.includes('const VERSION = "global-navigation-canonical-11"'), 'the canonical global navigation version is missing');
+requireCondition(globalNavigationController.includes('const VERSION = "global-navigation-canonical-12"'), 'the canonical global navigation version is missing');
 const expectedGlobalNavigationCssToken = createHash('sha256').update(globalNavigationCss).digest('hex').slice(0, 12);
 const expectedGlobalNavigationControllerToken = createHash('sha256').update(globalNavigationController).digest('hex').slice(0, 12);
 requireCondition(globalNavigationController.includes(`global-navigation.css?v=${expectedGlobalNavigationCssToken}`), `the canonical navigation stylesheet cache token does not match ${expectedGlobalNavigationCssToken}`);
@@ -735,8 +735,8 @@ requireCondition(televisionCss.includes('body.television-page-view-open .global-
 for (const { pagePath, source } of globalNavigationPages) {
   const label = path.relative(ROOT, pagePath);
   requireCondition((source.match(/data-global-nav-host/g) || []).length === 1, `${label} does not contain exactly one canonical global-navigation host`);
-  requireCondition((source.match(/global-navigation\.js\?v=global-navigation-canonical-11/g) || []).length === 1, `${label} does not load exactly one canonical global-navigation component`);
-  const globalNavigationAssetMatch = source.match(/global-navigation\.js\?v=global-navigation-canonical-11-([a-f0-9]{12})/);
+  requireCondition((source.match(/global-navigation\.js\?v=global-navigation-canonical-12/g) || []).length === 1, `${label} does not load exactly one canonical global-navigation component`);
+  const globalNavigationAssetMatch = source.match(/global-navigation\.js\?v=global-navigation-canonical-12-([a-f0-9]{12})/);
   requireCondition(globalNavigationAssetMatch?.[1] === expectedGlobalNavigationControllerToken, `${label} global-navigation asset token does not match ${expectedGlobalNavigationControllerToken}`);
   requireCondition(!source.includes('data-nav-item='), `${label} still contains a copied global-navigation menu`);
   requireCondition(!source.includes('data-global-nav aria-hidden='), `${label} still contains copied global-navigation markup`);
@@ -781,7 +781,7 @@ for (const { pagePath, source } of adaptiveEnvironmentPages) {
 
 for (const { pagePath, source } of aboutLinkPages) {
   const label = path.relative(ROOT, pagePath);
-  requireCondition(source.includes('global-navigation.js?v=global-navigation-canonical-11'), `${label} does not load the canonical About navigation handoff`);
+  requireCondition(source.includes('global-navigation.js?v=global-navigation-canonical-12'), `${label} does not load the canonical About navigation handoff`);
 }
 requireCondition(globalNavigationController.includes('href="about.html?aboutTopLevel=1" data-nav-item="about"'), 'the canonical navigation does not force a fresh complete About handoff');
 
