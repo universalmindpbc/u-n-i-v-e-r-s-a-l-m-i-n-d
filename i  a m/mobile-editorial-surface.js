@@ -13,8 +13,24 @@
     "induction.html",
     "about.html",
     "science.html",
+    "research.html",
+    "privacy-first.html",
+    "business-model.html",
+    "impact.html",
     "our-team.html",
     "shop.html",
+  ]);
+  const visibleNavItems = new Set([
+    "induction",
+    "about",
+    "science",
+    "research",
+    "privacy-first",
+    "business-model",
+    "impact",
+    "our-team",
+    "contact",
+    "shop",
   ]);
   let linkGuardBound = false;
 
@@ -40,7 +56,7 @@
         item.removeAttribute("data-shop-return-music");
       }
 
-      if (["induction", "about", "science", "our-team", "shop"].includes(itemName)) {
+      if (visibleNavItems.has(itemName)) {
         item.removeAttribute("data-mobile-editorial-hidden");
       } else {
         item.setAttribute("data-mobile-editorial-hidden", "");

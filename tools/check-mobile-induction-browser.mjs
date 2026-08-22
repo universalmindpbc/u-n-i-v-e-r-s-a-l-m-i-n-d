@@ -64,10 +64,18 @@ try {
   await page.waitForTimeout(900);
   await assertMobileInduction(page, "mobile self-report redirect");
 
-  await page.locator('.mobile-experience-notice a[href^="about.html"]').click();
+  await page.locator('.mobile-experience-notice a[href="research.html"]').click();
   await page.waitForLoadState("domcontentloaded");
-  assert.match(page.url(), /\/about\.html(?:\?|$)/, "Mobile editorial navigation must reach About");
+  assert.match(page.url(), /\/research\.html(?:\?|$)/, "Mobile editorial navigation must reach Research directly");
   assert.equal(await page.locator("html").getAttribute("data-mobile-editorial"), "true");
+  await assertVisible(page.locator("#research-title"), "Research title");
+  await page.locator("[data-nav-open]").click();
+  const visibleNavItems = page.locator('[data-global-nav] [data-nav-item]:visible');
+  assert.deepEqual(
+    await visibleNavItems.allTextContents(),
+    ["induction", "about", "science", "research", "privacy first", "business model", "impact", "our team", "contact", "shop"],
+    "Mobile global navigation must expose all ten approved destinations",
+  );
   assert.equal(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth), true, "Mobile page must not overflow horizontally");
   assert.deepEqual(pageErrors, [], `Mobile induction must not raise page errors: ${pageErrors.join(" | ")}`);
 
@@ -76,7 +84,7 @@ try {
     playbackBlockedBeforeNavigation: true,
     viewport: "390x844",
     selfReportRedirectSettled: !skipServerRedirect,
-    editorialNavigation: "about.html",
+    editorialNavigation: "research.html",
     finalUrl: page.url(),
   }, null, 2));
 } finally {
@@ -98,8 +106,8 @@ async function assertMobileInduction(targetPage, label) {
   await assertHidden(targetPage.locator(".induction-alternate__explore"), `${label} Explore link`);
   assert.equal(
     await targetPage.locator(".mobile-experience-notice nav a").count(),
-    5,
-    `${label} must expose the five approved editorial destinations`,
+    10,
+    `${label} must expose the ten approved editorial destinations`,
   );
   assert.equal(await targetPage.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth), true, `${label} must not overflow horizontally`);
 }
