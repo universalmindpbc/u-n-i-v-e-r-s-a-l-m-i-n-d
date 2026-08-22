@@ -18,7 +18,7 @@ assert.deepEqual(
   fashionChannels.map(({ id, name, energy_id }) => ({ id, name, energy_id })),
   [
     { id: "fashion-restore", name: "Champagne Bohemia", energy_id: "restore" },
-    { id: "fashion-social-uplift", name: "Modulate Infinity", energy_id: "social-uplift" },
+    { id: "fashion-social-uplift", name: "modul8 infinity", energy_id: "social-uplift" },
     { id: "fashion-underground-intensity", name: "James Bondage", energy_id: "underground-intensity" },
   ],
   "Fashion public identities or stable internal energy ids drifted",
