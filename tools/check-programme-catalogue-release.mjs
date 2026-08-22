@@ -180,10 +180,12 @@ for (const entry of [index, alternateEntry, cafeDelMarEntry]) {
   assert.doesNotMatch(entry, /data-flower-cue|data-homepage-radar-trigger|how we understand your needs|learn how it works/i);
 }
 
-assert.match(guide, /Version: universal_one_programme_guide_v1\.2/);
+assert.match(guide, /Version: universal_one_programme_guide_v1\.3/);
 assert.match(guide, /22 verified programme additions/);
 assert.match(guide, /Rave · Episode 1” programme with 18 cue points/);
 assert.match(guide, /full Nine Inch Noize live set from Coachella 2026/);
+assert.match(guide, /Grimes “Genesis” belongs to modul8 infinity Videos, not james bondage/);
+assert.match(guide, /Worldwide FM/);
 const batchSource = sources.programme_sources.find((source) => source.id === "programme-2026-07-30");
 assert.deepEqual(
   [batchSource?.ready_count, batchSource?.hls_playback_verified_count, batchSource?.duration_verified_count, batchSource?.routing_verified],

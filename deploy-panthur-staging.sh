@@ -44,6 +44,7 @@ fi
 "$NODE_BIN" "$ROOT_DIR/tools/check-privacy-research-foundations.mjs"
 "$NODE_BIN" "$ROOT_DIR/tools/check-citizen-data-foundation.mjs"
 "$NODE_BIN" "$ROOT_DIR/tools/check-universal-one-programme-guide.mjs"
+"$NODE_BIN" "$ROOT_DIR/tools/check-universal-one-adaptive-guide.mjs"
 
 if command -v php >/dev/null 2>&1; then
   php -l "$ROOT_DIR/i  a m/api/mantra-library.php"

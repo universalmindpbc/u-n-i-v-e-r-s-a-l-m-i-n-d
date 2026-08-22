@@ -26,11 +26,13 @@ assert.match(guide, /safety cushion is an additional music room, not a fifth See
 for (const name of ["Inner Planes", "Champagne Bohemia", "modul8 infinity", "james bondage", "safety cushion"]) {
   assert.match(guide, new RegExp(name.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")));
 }
-assert.match(guide, /Version: universal_one_programme_guide_v1\.2/);
+assert.match(guide, /Version: universal_one_programme_guide_v1\.3/);
 assert.match(guide, /Rave · Episode 1” programme with 18 cue points/);
 assert.match(guide, /22 verified programme additions/);
 assert.match(guide, /Nine Inch Noize performing “Closer” live at Coachella 2026/);
 assert.match(guide, /full Nine Inch Noize live set from Coachella 2026/);
+assert.match(guide, /Grimes “Genesis” belongs to modul8 infinity Videos, not james bondage/);
+assert.match(guide, /Worldwide FM/);
 const programmeBatchSource = sources.programme_sources.find((source) => source.id === "programme-2026-07-30");
 assert.equal(programmeBatchSource?.ready_count, 25);
 assert.equal(programmeBatchSource?.hls_playback_verified_count, 25);
@@ -91,7 +93,10 @@ assert.deepEqual(
 assert.match(sources.use_policy.storage, /full third-party transcripts are not stored/);
 assert.ok(guide.length < 30000, "programme guide should remain a curated briefing rather than a transcript copy");
 
-assert.match(portalGuide, /Adaptive Inference Engine system prompt is version 4\.44/);
+assert.match(portalGuide, /Adaptive Inference Engine system prompt is version 5\.55/);
+assert.match(portalGuide, /TV opens five current controls: MUSIC, FASHION, EMDR, SOUND and MANTRA/);
+assert.match(portalGuide, /LIVE INPUTS IN DEVELOPMENT · CURRENT FIGURES ARE ILLUSTRATIVE/);
+assert.match(portalGuide, /Research opens The modul8 infinity Study stakeholder page/);
 assert.match(portalGuide, /Mantra Sampler is inspired by Sven Vath’s Sven Panel/);
 assert.match(portalGuide, /Blooms transmit to other visitors in the same programme/);
 assert.match(portalGuide, /24-brand world is James Bondage plus an edit from 23 retailers/);
@@ -101,14 +106,16 @@ assert.match(shop, /All profits from affiliate revenue are invested in mental he
 
 assert.match(worker, /import UNIVERSAL_ONE_PROGRAMME_GUIDE/);
 assert.match(worker, /# Programme and episode guide\n\$\{UNIVERSAL_ONE_PROGRAMME_GUIDE\}/);
-assert.match(worker, /portal_guide_version: "v1\.1"/);
-assert.match(worker, /programme_guide_version: "v1\.2"/);
-assert.match(worker, /voice_briefing_version: "v2"/);
+assert.match(worker, /portal_guide_version: "v1\.2"/);
+assert.match(worker, /adaptive_recommendation_guide_version: "v1"/);
+assert.match(worker, /programme_guide_version: "v1\.3"/);
+assert.match(worker, /voice_briefing_version: "v3"/);
 assert.match(phpFallback, /universal-one-programme-guide-v1\.txt/);
 assert.match(phpFallback, /# Programme and episode guide\n\{\$programmeGuide\}/);
-assert.match(phpFallback, /'portal_guide_version' => 'v1\.1'/);
-assert.match(phpFallback, /'programme_guide_version' => 'v1\.2'/);
-assert.match(phpFallback, /'voice_briefing_version' => 'v2'/);
+assert.match(phpFallback, /'portal_guide_version' => 'v1\.2'/);
+assert.match(phpFallback, /'adaptive_recommendation_guide_version' => 'v1'/);
+assert.match(phpFallback, /'programme_guide_version' => 'v1\.3'/);
+assert.match(phpFallback, /'voice_briefing_version' => 'v3'/);
 
 for (const scenario of [
   "seeding-sessions",
@@ -122,6 +129,11 @@ for (const scenario of [
   "shared-interactions",
   "shop",
   "system-alignment",
+  "adaptive-recommendations",
+  "heart-rate-privacy",
+  "sound-research",
+  "research-impact",
+  "programme-current",
 ]) {
   assert.match(realtimeClient, new RegExp(`qaScenario === "${scenario}"`));
 }

@@ -23,6 +23,7 @@ const root = resolve(import.meta.dirname, "..");
 const workerPath = resolve(root, "cloudflare/iam-citizen-needs-worker.js");
 const portalGuidePath = resolve(root, "i  a m/universal-one-portal-guide-v1.txt");
 const wellbeingGuidePath = resolve(root, "i  a m/universal-one-wellbeing-support-guide-v1.txt");
+const adaptiveRecommendationGuidePath = resolve(root, "i  a m/universal-one-adaptive-recommendation-guide-v1.txt");
 const programmeGuidePath = resolve(root, "i  a m/universal-one-programme-guide-v1.txt");
 
 const importPatterns = [
@@ -31,6 +32,7 @@ const importPatterns = [
   /import \{[\s\S]*?\} from "\.\.\/i  a m\/current-inference-fusion-v1\.js";\n/,
   /import UNIVERSAL_ONE_PORTAL_GUIDE from "\.\.\/i  a m\/universal-one-portal-guide-v1\.txt";\n/,
   /import UNIVERSAL_ONE_WELLBEING_SUPPORT_GUIDE from "\.\.\/i  a m\/universal-one-wellbeing-support-guide-v1\.txt";\n/,
+  /import UNIVERSAL_ONE_ADAPTIVE_RECOMMENDATION_GUIDE from "\.\.\/i  a m\/universal-one-adaptive-recommendation-guide-v1\.txt";\n/,
   /import UNIVERSAL_ONE_PROGRAMME_GUIDE from "\.\.\/i  a m\/universal-one-programme-guide-v1\.txt";\n/,
 ];
 
@@ -120,6 +122,7 @@ const context = vm.createContext({
   resolveCurrentInferenceFusion,
   UNIVERSAL_ONE_PORTAL_GUIDE: await readFile(portalGuidePath, "utf8"),
   UNIVERSAL_ONE_WELLBEING_SUPPORT_GUIDE: await readFile(wellbeingGuidePath, "utf8"),
+  UNIVERSAL_ONE_ADAPTIVE_RECOMMENDATION_GUIDE: await readFile(adaptiveRecommendationGuidePath, "utf8"),
   UNIVERSAL_ONE_PROGRAMME_GUIDE: await readFile(programmeGuidePath, "utf8"),
   Request,
   Response,

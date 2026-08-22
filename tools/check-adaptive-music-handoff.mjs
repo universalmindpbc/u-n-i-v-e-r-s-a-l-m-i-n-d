@@ -741,7 +741,7 @@ for (const { pagePath, source } of globalNavigationPages) {
   requireCondition(!source.includes('data-nav-item='), `${label} still contains a copied global-navigation menu`);
   requireCondition(!source.includes('data-global-nav aria-hidden='), `${label} still contains copied global-navigation markup`);
 }
-requireCondition(realtimeVoicePortalGuide.includes('Bloom, TV, Circle, Care and Collect') && realtimeVoicePortalGuide.includes('TV opens Music, Fashion and the optional EMDR Research Feature') && realtimeVoicePortalGuide.includes('10-minute Nervous System Reset research feature'), 'Universal One no longer knows the television wallet and research feature');
+requireCondition(realtimeVoicePortalGuide.includes('Bloom, TV, Circle, Care and Collect') && realtimeVoicePortalGuide.includes('TV opens five current controls: MUSIC, FASHION, EMDR, SOUND and MANTRA') && realtimeVoicePortalGuide.includes('10-minute Nervous System Reset research feature'), 'Universal One no longer knows the television wallet and research feature');
 requireCondition(realtimeVoicePortalGuide.includes('Partner lists are invitations or proposed ideal partners'), 'Universal One can misstate proposed partnerships as confirmed');
 requireCondition(realtimeVoiceWellbeingGuide.includes('Even though I\'m feeling [the visitor\'s own words], I choose to be kind to myself right now.'), 'Universal One no longer has the approved default Even though EFT setup statement');
 requireCondition(realtimeVoiceWellbeingGuide.includes('https://headspace.org.au/services/') && realtimeVoiceWellbeingGuide.includes('1800 650 890') && realtimeVoiceWellbeingGuide.includes('young people aged 12 to 25'), 'Universal One no longer has the source-grounded headspace service and contact guide');
