@@ -91,6 +91,7 @@ img { display: block; }
   letter-spacing: 0.28em;
   white-space: nowrap;
   text-shadow: 0 2px 18px rgba(0, 0, 0, 0.72);
+  mix-blend-mode: difference;
 }
 
 .research-brand__name {
@@ -119,6 +120,12 @@ body.nav-open .research-masthead {
 html[data-adaptive-frame="embedded"] .research-masthead,
 html[data-adaptive-frame="embedded"] .research-pagination {
   display: none !important;
+}
+
+.research-panel[id],
+main h1[id],
+main h2[id] {
+  scroll-margin-top: clamp(112px, 13vh, 152px);
 }
 
 .research-hero {
