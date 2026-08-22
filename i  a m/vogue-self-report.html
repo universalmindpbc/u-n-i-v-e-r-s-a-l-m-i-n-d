@@ -93,7 +93,7 @@
     </main>
 
     <script>
-      if (window.location.hostname === "staging.universalmind.tv") {
+      if (["staging.universalmind.tv", "universalmind.tv"].includes(window.location.hostname)) {
         window.IAM_CITIZEN_NEEDS_INFERENCE_ENDPOINT = "/vogue/iam/api/citizen-needs-inference.php";
       }
 

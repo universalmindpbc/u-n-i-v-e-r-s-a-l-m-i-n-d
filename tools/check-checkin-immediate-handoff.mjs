@@ -9,6 +9,7 @@ const read = (relativePath) => fs.readFileSync(path.join(root, relativePath), "u
 const globe = read("i  a m/globe.js");
 const homepageCheckin = read("i  a m/homepage-checkin.js");
 const homepage = read("i  a m/index.html");
+const alternateHomepage = read("i  a m/index-alt.html");
 const selfReport = read("i  a m/vogue-self-report.html");
 
 const forbiddenCopy = [
@@ -41,6 +42,19 @@ assert.equal(
 assert.equal(homepageCheckin.includes("IAMCitizenData"), false, "guest homepage handoff must not start a durable citizen-data save");
 assert.equal(homepageCheckin.includes("recordCheckin"), false, "guest homepage handoff must remain recommendation-only");
 assert.equal(selfReport.includes("data-citizen-data-status"), false, "self-report must not expose database status copy");
+
+const firstPartyHeartRateRoute = '["staging.universalmind.tv", "universalmind.tv"].includes(window.location.hostname)';
+for (const [label, source] of [
+  ["self-report", selfReport],
+  ["primary homepage", homepage],
+  ["alternate homepage", alternateHomepage],
+]) {
+  assert.ok(source.includes(firstPartyHeartRateRoute), `${label} must use the first-party inference proxy on staging and production`);
+  assert.ok(
+    source.includes('window.IAM_CITIZEN_NEEDS_INFERENCE_ENDPOINT = "/vogue/iam/api/citizen-needs-inference.php";'),
+    `${label} must preserve the encrypted single-use Heart Rate handoff consumer`,
+  );
+}
 
 const clientIndex = homepage.indexOf('src="citizen-data-client.js');
 const globeIndex = homepage.indexOf('src="globe.js');
