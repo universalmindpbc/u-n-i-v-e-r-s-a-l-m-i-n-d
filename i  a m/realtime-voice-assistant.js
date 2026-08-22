@@ -239,7 +239,7 @@
     if (qaScenario === "research-impact") {
       return {
         microphone: false,
-        qaPrompt: "How do I open How We Recommend Content, Research and Impact, and what does each page establish? Be explicit that the modul8 infinity Study is a proposed stage-gated RCT awaiting institutional and ethics onboarding, and that the Impact figures are illustrative live inputs in development rather than achieved results.",
+        qaPrompt: "How do I open How We Recommend Content, Research and Impact, and what does each page establish? Include the Research page's proposed geometric facial-ROI optimization, clearly label it proposed rather than deployed or validated, be explicit that the modul8 infinity Study is a proposed stage-gated RCT awaiting institutional and ethics onboarding, and state that the Impact figures are illustrative live inputs in development rather than achieved results.",
       };
     }
     if (qaScenario === "programme-current") {

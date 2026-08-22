@@ -91,8 +91,11 @@ assert.match(recommendationPage, /How We Recommend Content/);
 assert.match(recommendationPage, /The highest-ranked combination becomes the next television choice/);
 assert.match(research, /The modul8 infinity Study/);
 assert.match(research, /currently being presented to partner institutions for formal re-engagement, HREC ethics approval, and operational onboarding/);
+assert.match(research, /2D equilateral triangular meshes and 3D tetrahedral volumetric spatial modeling/);
 assert.match(impact, /LIVE INPUTS IN DEVELOPMENT · CURRENT FIGURES ARE ILLUSTRATIVE/);
 assert.match(guide, /proposed four-arm, double-blind, stage-gated RCT/);
+assert.match(guide, /2D equilateral triangular meshes and 3D tetrahedral volumetric models/);
+assert.match(guide, /proposed research architecture, not a deployed or validated feature/);
 assert.match(guide, /every displayed current figure is illustrative, not an achieved metric/);
 
 const champagneRadio = schedule.channels.find(
