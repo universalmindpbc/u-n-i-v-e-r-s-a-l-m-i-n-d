@@ -115,7 +115,8 @@ html[data-mobile-editorial="true"] .mobile-experience-notice nav a {
   text-transform: uppercase;
 }
 
-html[data-mobile-editorial="true"] .induction-page .induction-enter-wrap {
+html[data-mobile-editorial="true"] .induction-page .induction-enter-wrap,
+html[data-mobile-editorial="true"] .induction-page .induction-alternate__explore {
   display: none;
 }
 

@@ -61,6 +61,8 @@
     <link rel="apple-touch-icon" sizes="180x180" href="/vogue/iam/apple-touch-icon.png?v=iam-favicon-3">
     <link rel="preload" as="image" href="a s s e t s/Universal Mind [ I o H ] Logo 512.png" fetchpriority="high">
     <link rel="stylesheet" href="induction-alternate.css?v=induction-alternate-20260821-5">
+    <link rel="stylesheet" href="mobile-editorial-surface.css?v=mobile-editorial-20260823-3">
+    <script src="mobile-editorial-surface.js?v=mobile-editorial-20260728-2"></script>
     <style>
       .induction-page .induction-alternate__veil {
         background: rgba(5, 5, 7, 0.34);
@@ -73,6 +75,8 @@
         const cookieMaxAge = 60 * 60 * 24 * 365;
         const params = new URLSearchParams(window.location.search);
         const forceInduction = params.get("induction") === "show";
+
+        if (window.IAMMobileEditorial?.active) return;
 
         const getCookie = (name) => {
           const value = document.cookie
@@ -148,6 +152,21 @@
         </header>
 
         <section class="induction-alternate__introduction" aria-labelledby="induction-title">
+          <section class="mobile-experience-notice" id="mobile-experience" aria-labelledby="mobile-experience-title">
+            <p class="mobile-experience-notice__eyebrow">Mobile</p>
+            <h2 id="mobile-experience-title">THE FULL I AM EXPERIENCE</h2>
+            <p><strong>is currently available on desktop and tablet.</strong></p>
+            <p>An iOS SDK is in development, designed to bring Universal Mind experiences into many different apps.</p>
+            <p>Visit universalmind.tv on a desktop or tablet to enter the full experience.</p>
+            <nav aria-label="Explore Universal Mind on mobile">
+              <a href="induction.html?mobile=1" aria-current="page">induction</a>
+              <a href="about.html?aboutTopLevel=1">about</a>
+              <a href="science.html">science</a>
+              <a href="our-team.html">our team</a>
+              <a href="shop.html">shop</a>
+            </nav>
+          </section>
+
           <h1 id="induction-title">
             Universal Mind is livestream electronic music television for mental health.
           </h1>
@@ -209,6 +228,7 @@
       </div>
     </main>
 
+    <script>window.IAMMobileEditorial?.apply();</script>
     <script src="cloudflare-stream-catalogue.js?v=stream-catalogue-20ad6337934c"></script>
     <script src="cloudflare-stream-controller.js?v=stream-controller-e6ed1b827651"></script>
   </body>
