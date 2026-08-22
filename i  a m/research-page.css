@@ -61,6 +61,7 @@ img { display: block; }
   z-index: 42;
   top: clamp(14px, 1.35vw, 28px);
   left: clamp(20px, 1.37vw, 28px);
+  mix-blend-mode: difference;
 }
 
 .research-brand {
@@ -91,7 +92,6 @@ img { display: block; }
   letter-spacing: 0.28em;
   white-space: nowrap;
   text-shadow: 0 2px 18px rgba(0, 0, 0, 0.72);
-  mix-blend-mode: difference;
 }
 
 .research-brand__name {
