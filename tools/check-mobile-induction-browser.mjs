@@ -70,7 +70,8 @@ try {
   assert.equal(await page.locator("html").getAttribute("data-mobile-editorial"), "true");
   await assertVisible(page.locator("#research-title"), "Research title");
   await page.locator("[data-nav-open]").click();
-  const visibleNavItems = page.locator('[data-global-nav] [data-nav-item]:visible');
+  await page.locator("[data-global-nav]").waitFor({ state: "visible" });
+  const visibleNavItems = page.locator('[data-global-nav] [data-nav-item]:not([data-mobile-editorial-hidden])');
   assert.deepEqual(
     await visibleNavItems.allTextContents(),
     ["induction", "about", "science", "research", "privacy first", "business model", "impact", "our team", "contact", "shop"],
