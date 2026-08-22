@@ -143,7 +143,7 @@ EXPECTED_IN_ORDER = [
     "Research Hyperspectral Camera Hardware ~$25,000 AUD Dual-camera research setup (400–1000 nm facial ROI capture)",
     "Spectral Reconstruction SDK / API Access ~$8,000 AUD Voyage81 / RGB-to-31-band hyperspectral translation licensing",
     "Computer Vision & ML Pipeline Engineering ~$15,000 AUD Asynchronous model training: Optical spectra ↔ scRNA OXTR ground truth",
-    "TOTAL MODULE B R&D ADD-ON ~$48,000 AUD Unlocks proprietary IP for contact-free hyperspectral gene transcription inference via hyperspectral camera — and horizon to gene transcription inference via standard RGB smartphone camera",
+    "TOTAL MODULE B R&D ADD-ON ~$48,000 AUD Unlocks proprietary IP for contact-free gene transcription inference via hyperspectral camera — and horizon to gene transcription inference via standard RGB smartphone camera",
     "Total Program Funding Summary",
     "Module A (Core Clinical RCT - Phase 1): ~$35,150 AUD | $22,350 USD",
     "Module B (Hyperspectral AI Add-On - Phase 1): ~$48,000 AUD | $34,500 USD",
