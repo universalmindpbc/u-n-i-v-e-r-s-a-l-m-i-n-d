@@ -10,6 +10,7 @@ const induction = read("i  a m/induction.html");
 const mobileStyle = read("i  a m/mobile-editorial-surface.css");
 const mobileScript = read("i  a m/mobile-editorial-surface.js");
 const htaccess = read(".htaccess");
+const deployScript = read("deploy-panthurlive.sh");
 
 const mobileScriptIndex = induction.indexOf('src="mobile-editorial-surface.js');
 const visitCookieIndex = induction.indexOf('const cookieName = "universalMindIAmInductionVisits"');
@@ -68,6 +69,11 @@ assert.match(
   htaccess,
   /\(induction\|about\|science\|research\|privacy-first\|business-model\|impact\|our-team\|shop\|shop-science\)\\\.html/,
   "Smartphone server allowlist must retain all approved editorial pages",
+);
+assert.match(
+  deployScript,
+  /\(induction\|about\|science\|research\|privacy-first\|business-model\|impact\|our-team\|shop\|shop-science\)\\\.html/,
+  "Panthur redirect deployment must publish the approved smartphone allowlist",
 );
 assert.match(
   htaccess,
