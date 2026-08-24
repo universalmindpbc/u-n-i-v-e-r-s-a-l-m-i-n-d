@@ -425,7 +425,7 @@ deploy_redirects() {
     printf '%s\n' 'RewriteCond %{HTTP_USER_AGENT} !(iPad|Macintosh.*Mobile) [NC]'
     printf '%s\n' 'RewriteCond %{HTTP_USER_AGENT} "(Mobile|iPhone|iPod|IEMobile|Opera Mini|BlackBerry|webOS)" [NC]'
     printf '%s\n' 'RewriteCond %{QUERY_STRING} !(^|&)full=1(&|$) [NC]'
-    printf '%s\n' 'RewriteCond %{REQUEST_URI} !^/vogue/iam/(induction|about|science|research|privacy-first|business-model|impact|our-team|shop|shop-science)\.html$ [NC]'
+    printf '%s\n' 'RewriteCond %{REQUEST_URI} !^/vogue/iam/(induction|about|science|research|privacy-first|business-model|traction|impact|our-team|shop|shop-science)\.html$ [NC]'
     printf '%s\n' 'RewriteRule ^vogue/iam/.*\.html$ /vogue/iam/induction.html?mobile=1 [R=302,L,NE]'
     printf '\n'
     printf '%s\n' '# Password-free Universal Mind I AM entrypoints.'

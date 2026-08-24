@@ -31,7 +31,7 @@ RewriteRule ^vogue/iam/index\.html$ /vogue/iam/shop.html [R=302,L,NE]
 RewriteCond %{HTTP_USER_AGENT} !(iPad|Macintosh.*Mobile) [NC]
 RewriteCond %{HTTP_USER_AGENT} "(Mobile|iPhone|iPod|IEMobile|Opera Mini|BlackBerry|webOS)" [NC]
 RewriteCond %{QUERY_STRING} !(^|&)full=1(&|$) [NC]
-RewriteCond %{REQUEST_URI} !^/vogue/iam/(induction|about|science|research|privacy-first|business-model|impact|our-team|shop|shop-science)\.html$ [NC]
+RewriteCond %{REQUEST_URI} !^/vogue/iam/(induction|about|science|research|privacy-first|business-model|traction|impact|our-team|shop|shop-science)\.html$ [NC]
 RewriteRule ^vogue/iam/.*\.html$ /vogue/iam/induction.html?mobile=1 [R=302,L,NE]
 
 # Password-free Universal Mind I AM entrypoints.

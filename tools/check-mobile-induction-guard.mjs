@@ -21,6 +21,7 @@ const expectedMobileDestinations = [
   ["research.html", "research"],
   ["privacy-first.html", "privacy first"],
   ["business-model.html", "business model"],
+  ["traction.html", "traction"],
   ["impact.html", "impact"],
   ["our-team.html", "our team"],
   ["mailto:bk@universalmind.tv?subject=I%20Am%20Vogue%20%7C%20Referral", "contact"],
@@ -60,19 +61,19 @@ assert.match(
   /const active = !forcedFullExperience && \(forcedMobileEditorial \|\| \(coarsePointer && shortSide < 600\)\);/,
   "Mobile detection must preserve the full=1 escape hatch",
 );
-for (const page of ["research", "privacy-first", "business-model", "impact"]) {
+for (const page of ["research", "privacy-first", "business-model", "traction", "impact"]) {
   assert.ok(mobileScript.includes(`"${page}.html"`), `Mobile direct-route allowlist must include ${page}`);
   assert.ok(mobileScript.includes(`"${page}"`), `Mobile global navigation must include ${page}`);
 }
 assert.ok(mobileScript.includes('"contact"'), "Mobile global navigation must include Contact");
 assert.match(
   htaccess,
-  /\(induction\|about\|science\|research\|privacy-first\|business-model\|impact\|our-team\|shop\|shop-science\)\\\.html/,
+  /\(induction\|about\|science\|research\|privacy-first\|business-model\|traction\|impact\|our-team\|shop\|shop-science\)\\\.html/,
   "Smartphone server allowlist must retain all approved editorial pages",
 );
 assert.match(
   deployScript,
-  /\(induction\|about\|science\|research\|privacy-first\|business-model\|impact\|our-team\|shop\|shop-science\)\\\.html/,
+  /\(induction\|about\|science\|research\|privacy-first\|business-model\|traction\|impact\|our-team\|shop\|shop-science\)\\\.html/,
   "Panthur redirect deployment must publish the approved smartphone allowlist",
 );
 assert.match(
@@ -81,4 +82,4 @@ assert.match(
   "Media-heavy smartphone routes must remain gated to induction",
 );
 
-console.log("Mobile induction checks passed: ten destinations visible, stakeholder pages direct, media-heavy experience remains gated.");
+console.log("Mobile induction checks passed: eleven destinations visible, stakeholder pages direct, media-heavy experience remains gated.");

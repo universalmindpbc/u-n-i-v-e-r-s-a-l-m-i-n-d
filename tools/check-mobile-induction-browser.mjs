@@ -74,8 +74,8 @@ try {
   const visibleNavItems = page.locator('[data-global-nav] [data-nav-item]:not([data-mobile-editorial-hidden])');
   assert.deepEqual(
     await visibleNavItems.allTextContents(),
-    ["induction", "about", "science", "research", "privacy first", "business model", "impact", "our team", "contact", "shop"],
-    "Mobile global navigation must expose all ten approved destinations",
+    ["induction", "about", "science", "research", "privacy first", "business model", "traction", "impact", "our team", "contact", "shop"],
+    "Mobile global navigation must expose all eleven approved destinations",
   );
   assert.equal(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth), true, "Mobile page must not overflow horizontally");
   assert.deepEqual(pageErrors, [], `Mobile induction must not raise page errors: ${pageErrors.join(" | ")}`);
@@ -107,8 +107,8 @@ async function assertMobileInduction(targetPage, label) {
   await assertHidden(targetPage.locator(".induction-alternate__explore"), `${label} Explore link`);
   assert.equal(
     await targetPage.locator(".mobile-experience-notice nav a").count(),
-    10,
-    `${label} must expose the ten approved editorial destinations`,
+    11,
+    `${label} must expose the eleven approved editorial destinations`,
   );
   assert.equal(await targetPage.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth), true, `${label} must not overflow horizontally`);
 }
