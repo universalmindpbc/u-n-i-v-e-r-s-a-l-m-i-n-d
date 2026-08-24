@@ -108,7 +108,16 @@ button { font: inherit; }
   cursor: pointer;
 }
 .global-nav-trigger__label { display: none; }
-body.nav-open .traction-brand { opacity: 0; pointer-events: none; }
+body.traction-page.nav-open .traction-brand {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: none;
+}
+
+body.traction-page:not(.nav-open) .global-nav-brand {
+  visibility: hidden;
+}
 .global-nav:not(.is-open) { opacity: 0; visibility: hidden; pointer-events: none; }
 
 .traction-story { position: relative; z-index: 2; }
