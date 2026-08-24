@@ -1,5 +1,5 @@
 (() => {
-  const VERSION = "global-navigation-canonical-12";
+  const VERSION = "global-navigation-canonical-13";
   const scriptUrl = document.currentScript?.src || window.location.href;
   const stylesheetUrl = new URL("global-navigation.css?v=a4fc9eb0ffc0", scriptUrl).href;
 
@@ -29,6 +29,7 @@
       "science.html": "science",
       "research.html": "research",
       "business-model.html": "business-model",
+      "traction.html": "traction",
       "impact.html": "impact",
       "privacy-first.html": "privacy-first",
       "vogue-self-report.html": "check-in",
@@ -104,6 +105,7 @@
             <a class="global-nav-item" href="research.html" data-nav-item="research">research</a>
             <a class="global-nav-item" href="privacy-first.html" data-nav-item="privacy-first">privacy first</a>
             <a class="global-nav-item" href="business-model.html" data-nav-item="business-model">business model</a>
+            <a class="global-nav-item" href="traction.html" data-nav-item="traction">traction</a>
             <a class="global-nav-item" href="impact.html" data-nav-item="impact">impact</a>
             <a class="global-nav-item" href="vogue-self-report.html" data-nav-item="check-in">check in</a>
             <a class="global-nav-item" href="our-team.html" data-nav-item="our-team">our team</a>

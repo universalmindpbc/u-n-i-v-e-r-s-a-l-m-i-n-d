@@ -50,6 +50,7 @@ Allow: /vogue/iam/induction.html
 Allow: /vogue/iam/index.html
 Allow: /vogue/iam/vogue-self-report.html
 Allow: /vogue/iam/about.html
+Allow: /vogue/iam/traction.html
 Allow: /vogue/iam/science.html
 Allow: /vogue/iam/sound-prototype-research.html
 Allow: /vogue/iam/our-team.html
@@ -64,6 +65,13 @@ Allow: /vogue/iam/mantra-sampler.css
 Allow: /vogue/iam/realtime-voice-assistant.css
 Allow: /vogue/iam/vogue-self-report.css
 Allow: /vogue/iam/about.css
+Allow: /vogue/iam/traction.css
+Allow: /vogue/iam/traction.js
+Allow: /vogue/iam/global-navigation.css
+Allow: /vogue/iam/global-navigation.js
+Allow: /vogue/iam/mobile-editorial-surface.css
+Allow: /vogue/iam/mobile-editorial-surface.js
+Allow: /vogue/iam/script.js
 Allow: /vogue/iam/science.css
 Allow: /vogue/iam/sound-prototype-research.css
 Allow: /vogue/iam/our-team-concept.css
@@ -72,6 +80,7 @@ Allow: /vogue/iam/technology-inference-engine.css
 Allow: /vogue/iam/science-research-data-v1.js
 Allow: /vogue/iam/science.js
 Allow: /vogue/iam/a%20s%20s%20e%20t%20s/Universal%20Mind%20%5B%20I%20o%20H%20%5D%20Logo%20512.png
+Allow: /vogue/iam/a%20s%20s%20e%20t%20s/Ben%20Korbel%20portrait.jpg
 
 # Reviewed full research dossiers referenced by the Science page.
 Allow: /vogue/iam/a%20s%20s%20e%20t%20s/r%20e%20s%20e%20a%20r%20c%20h/Universal%20Mind%20%5B%20I%20o%20H%20%5D%20-%20EMDR%20Medical%20Research.pdf
