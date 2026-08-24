@@ -48,14 +48,14 @@ assert.ok(
 assert.ok(mobileRetainedPageMatch, "The smartphone retained-page allowlist must remain explicit");
 assert.deepEqual(
   mobileRetainedPageMatch[1].split("|"),
-  ["induction", "about", "science", "our-team", "shop", "shop-science"],
-  "Mobile must add only the dedicated Shop SCIENCE route to the five retained editorial pages",
+  ["induction", "about", "science", "research", "privacy-first", "business-model", "traction", "impact", "our-team", "shop", "shop-science"],
+  "Mobile must preserve the current stakeholder routes and dedicated Shop SCIENCE page",
 );
 assert.ok(
   stagingDeploy.includes(
-    "RewriteCond %{REQUEST_URI} !^/vogue/iam/(induction|about|science|our-team|shop|shop-science)\\.html$ [NC]",
+    "RewriteCond %{REQUEST_URI} !^/vogue/iam/(induction|about|science|research|privacy-first|business-model|traction|impact|our-team|shop|shop-science)\\.html$ [NC]",
   ),
-  "The Panthur deployer must reproduce the exact Shop SCIENCE smartphone allowlist",
+  "The Panthur deployer must reproduce the current smartphone retained-page allowlist",
 );
 assert.match(
   htaccess,
@@ -140,6 +140,15 @@ assert.doesNotMatch(globalNavigation, /href="shop\.html#science"/, "The Shop SCI
 assert.doesNotMatch(shop, /data-shop-science|shop-science\.css|shop-science-data-v1\.js|shop-science\.js/, "The normal Shop flow must not carry the heavy SCIENCE content or assets");
 assert.match(sciencePage, /id="shop-science-title"[\s\S]*THE SCIENCE<br>OF FEELING<br>LIKE YOURSELF/, "The dedicated page must include the approved public SCIENCE heading");
 assert.match(sciencePage, /Self-selected clothing can support how we feel in our bodies\./, "The dedicated page must include the frozen concise public claim");
+assert.match(
+  sciencePage,
+  /<section class="shop-science__vogue-vision"[\s\S]*Proposed research for publication with Vogue\.[\s\S]*Vogue logo - large - higher res\.png" alt="VOGUE"[\s\S]*proposed partnership - not yet confirmed/,
+  "The Vogue publication vision must retain the proposed, not-yet-confirmed boundary",
+);
+assert.ok(
+  fs.existsSync(path.join(root, "i  a m/a s s e t s/Vogue logo - large - higher res.png")),
+  "The Vogue publication vision must use the established high-resolution logo asset",
+);
 assert.match(sciencePage, /15 gold-standard studies/i, "Research expander must identify the complete 15-study spine");
 assert.match(sciencePage, /No PFAS-type finish indicated[\s\S]*not a laboratory-tested PFAS-free claim/, "PFAS wording must distinguish absence of an indicated finish from a laboratory-tested claim");
 assert.match(sciencePage, /Nylon is a synthetic fibre[\s\S]*One does not prove the other/, "Material primer must distinguish nylon from PFAS");
