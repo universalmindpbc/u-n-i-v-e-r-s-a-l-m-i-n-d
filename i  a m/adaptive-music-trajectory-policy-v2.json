@@ -1,6 +1,6 @@
 {
   "schema_version": "adaptive_music_trajectory_policy_v2",
-  "policy_version": "tensor_uplift_rotation_v3",
+  "policy_version": "tensor_uplift_rotation_v4",
   "objective": "Prefer a safe constructive emotional trajectory over repeated emotional mirroring while preserving tensor fit and relevance-bounded cold-start variety.",
   "current_inference_contract": {
     "matrix_source": "adaptive-inference-matrix-v1.json",
@@ -34,7 +34,8 @@
     "visitor_seeded_cycle_offset": true,
     "fit_band_max_score_gap": 0.05,
     "state_fingerprint_source": "gpt_highlights_and_needs_scorecard",
-    "rule": "Seed the 10-of-13 uplift cycle per anonymous visitor and rotate only within a 0.05 post-fit score band. Never use raw check-in text or admit a lower-fit track from outside the eligible tensor pool."
+    "request_nonce_source": "ephemeral_client_per_selection_not_persisted_server_side",
+    "rule": "Use fresh request entropy when browser history is unavailable, retain the anonymous visitor and recommendation cycle when history exists, and rotate only within a 0.05 post-fit score band. Never use raw check-in text or admit a lower-fit track from outside the eligible tensor pool."
   },
   "adaptive_linear_channels": {
     "policy_version": "music_channel_selector_v1.0",

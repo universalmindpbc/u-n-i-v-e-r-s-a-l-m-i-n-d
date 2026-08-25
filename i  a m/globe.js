@@ -382,6 +382,10 @@ function getAnonymousMusicVisitorId() {
   return visitorId;
 }
 
+function createMusicSelectionRequestNonce() {
+  return window.crypto?.randomUUID?.() || `selection-${Date.now()}-${Math.random().toString(36).slice(2)}`;
+}
+
 function readMusicSelectionHistory() {
   for (const store of [window.localStorage, window.sessionStorage]) {
     try {
@@ -500,6 +504,7 @@ async function requestAdaptiveMusicVideoSelection(phrase, inferenceRecord = {}) 
       visitor_id: getAnonymousMusicVisitorId(),
       recent_track_ids: readMusicSelectionHistory(),
       recommendation_index: readMusicSelectionCount(),
+      request_nonce: createMusicSelectionRequestNonce(),
     },
   };
 

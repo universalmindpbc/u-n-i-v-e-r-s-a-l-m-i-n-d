@@ -55,9 +55,15 @@ def require(condition: bool, message: str) -> None:
         raise AssertionError(message)
 
 
-def payload_for(name: str, visitor_id: str, index: int = 0, history: list[str] | None = None) -> dict:
+def payload_for(
+    name: str,
+    visitor_id: str,
+    index: int = 0,
+    history: list[str] | None = None,
+    request_nonce: str | None = None,
+) -> dict:
     fixture = STATE_FIXTURES[name]
-    return {
+    payload = {
         "top_needs_used": fixture["highlights"],
         "selected_music_room": fixture["music_room"],
         "needs_scorecard": {
@@ -70,6 +76,9 @@ def payload_for(name: str, visitor_id: str, index: int = 0, history: list[str] |
             "recommendation_index": index,
         },
     }
+    if request_nonce:
+        payload["selection_context"]["request_nonce"] = request_nonce
+    return payload
 
 
 def main() -> None:
@@ -116,13 +125,31 @@ def main() -> None:
     require(most_common_count / total_cases < 0.35, f"{most_common_track} still dominates {most_common_count / total_cases:.1%} of cold starts.")
     require(len(combined) >= 9, f"Cold-start QA reached only {len(combined)} opening tracks.")
 
-    deterministic_payload = payload_for("hungry", "determinism-check")
+    deterministic_payload = payload_for("hungry", "determinism-check", request_nonce="stable-retry")
     first_output = selector.execute_v1_11_selection(deterministic_payload, catalogue)
     second_output = selector.execute_v1_11_selection(deterministic_payload, catalogue)
     first = first_output["selected_track_id"]
     second = second_output["selected_track_id"]
-    require(first == second, "The same inferred state and anonymous visitor must remain deterministic.")
+    require(first == second, "Retrying the same request nonce must remain deterministic.")
+    require(
+        first_output["audit"]["selector"]["fresh_request_diversity"] == "ephemeral_request_nonce_within_relevance_band",
+        "The selector audit did not record fresh-request diversity.",
+    )
     require(first_output["audit"]["selector"]["selected_music_room"] == "inner-planes", "The selected music room did not reach the selector audit.")
+
+    cleared_history_tracks = [
+        selector.execute_v1_11_selection(
+            payload_for("happy", "same-anonymous-visitor", request_nonce=f"fresh-request-{request_index}"),
+            catalogue,
+        )["selected_track_id"]
+        for request_index in range(48)
+    ]
+    cleared_history_counts = Counter(cleared_history_tracks)
+    require(len(cleared_history_counts) >= 2, "Fresh identical self-reports still collapse to one cold-start track.")
+    require(
+        cleared_history_counts.most_common(1)[0][1] / len(cleared_history_tracks) < 0.75,
+        f"Fresh identical self-reports remain dominated by one track: {cleared_history_counts}.",
+    )
 
     happy_payload = payload_for("happy", "music-room-check")
     happy_output = selector.execute_v1_11_selection(happy_payload, catalogue)
@@ -154,7 +181,7 @@ def main() -> None:
     sequence: list[str] = []
     for index in range(13):
         output = selector.execute_v1_11_selection(
-            payload_for("hungry", "cycle-check", index, history),
+            payload_for("hungry", "cycle-check", index, history, request_nonce=f"cycle-request-{index}"),
             catalogue,
         )
         selected_id = output["selected_track_id"]
@@ -178,6 +205,7 @@ def main() -> None:
         "per_state": {name: counts.most_common() for name, counts in per_state.items()},
         "cycle_unique_tracks": len(set(sequence)),
         "cycle_sequence": sequence,
+        "fresh_identical_self_report_counts": cleared_history_counts,
         "quota_modes": quota_modes,
         "extended_session_format_counts": format_counts,
     }, indent=2))

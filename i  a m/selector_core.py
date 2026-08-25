@@ -40,7 +40,7 @@ from adaptive_sound_policy import resolve_adaptive_sound
 
 CATALOGUE_VERSION = "adaptive_music_video_catalogue_v1.11"
 SELECTION_SCHEMA_VERSION = "adaptive_music_video_selection_v1.11"
-SELECTION_POLICY_VERSION = "tensor_uplift_rotation_v3"
+SELECTION_POLICY_VERSION = "tensor_uplift_rotation_v4"
 DCN_RERANKER_VERSION = "adaptive_music_engagement_dcn_reranker_v0.1"
 CURRENT_INFERENCE_FUSION_POLICY_VERSION = "iam_current_inference_fusion_v1.0"
 ALIGNED_NUMERIC_DIMENSIONS = 80
@@ -1293,6 +1293,11 @@ def output_contract(
                 "quota_mode": str(score_parts.get("quota_mode") or "state_led"),
                 "selected_trajectory_mode": str(score_parts.get("selected_trajectory_mode") or "unclassified"),
                 "selected_music_room": str(score_parts.get("selected_music_room") or ""),
+                "fresh_request_diversity": (
+                    "ephemeral_request_nonce_within_relevance_band"
+                    if score_parts.get("request_diversity_applied")
+                    else "visitor_and_recommendation_index_fallback"
+                ),
                 "fusion_policy_version": str(fusion.get("policy_version") or ""),
                 "fusion_action": str(fusion.get("action") or ""),
                 "fusion_outputs_changed": [str(value) for value in as_list(fusion.get("outputs_changed"))][:4],
@@ -1352,6 +1357,14 @@ def recommendation_index(inference_input: Mapping[str, Any], recent_track_ids: L
         return len(recent_track_ids)
 
 
+def request_diversity_nonce(inference_input: Mapping[str, Any]) -> str:
+    """Return bounded, ephemeral rotation entropy without using the raw self-report."""
+    raw = selection_context(inference_input).get("request_nonce")
+    if not isinstance(raw, (str, int, float)) or isinstance(raw, bool):
+        return ""
+    return str(raw).strip()[:128]
+
+
 def stable_hash_fraction(*parts: Any) -> float:
     digest = hashlib.sha256("\u241f".join(str(part) for part in parts).encode("utf-8")).digest()
     return int.from_bytes(digest[:8], "big") / float((1 << 64) - 1)
@@ -1382,10 +1395,14 @@ def recommendation_cycle(
         for slot in as_list(quota.get("state_led_slots_zero_indexed"))
     }
     diversity = policy.get("cold_start_diversity") if isinstance(policy.get("cold_start_diversity"), Mapping) else {}
-    visitor_id = str(selection_context(inference_input).get("visitor_id") or "")
+    context = selection_context(inference_input)
+    visitor_id = str(context.get("visitor_id") or "")
+    request_nonce = request_diversity_nonce(inference_input)
+    recent_track_ids = extract_recent_track_ids(inference_input)
+    cycle_seed = request_nonce if request_nonce and not recent_track_ids and index == 0 else visitor_id
     cycle_offset = 0
-    if diversity.get("visitor_seeded_cycle_offset") and visitor_id:
-        cycle_offset = int(stable_hash_fraction("quota-cycle", visitor_id) * window_size) % window_size
+    if diversity.get("visitor_seeded_cycle_offset") and cycle_seed:
+        cycle_offset = int(stable_hash_fraction("quota-cycle", cycle_seed) * window_size) % window_size
     cycle_position = (index + cycle_offset) % window_size
     quota_mode = "state_led" if cycle_position in state_led_slots else "uplift"
     return quota_mode, cycle_position, cycle_offset
@@ -1409,13 +1426,15 @@ def choose_relevance_bounded_candidate(
 
     context = selection_context(inference_input)
     visitor_id = str(context.get("visitor_id") or "anonymous")
+    request_nonce = request_diversity_nonce(inference_input)
+    rotation_seed = request_nonce or visitor_id
     state_fingerprint = inferred_state_fingerprint(inference_input)
     selected = max(
         fit_band,
         key=lambda item: (
             stable_hash_fraction(
                 "fit-band",
-                visitor_id,
+                rotation_seed,
                 state_fingerprint,
                 selection_index,
                 str(item[2].get("id") or ""),
@@ -1713,6 +1732,7 @@ def execute_v1_11_selection(
         "fit_band_rotation_size": float(fit_band_rotation_size),
         "fit_band_score_gap": float(fit_band_score_gap),
         "fit_band_expanded": 1.0 if fit_band_expanded else 0.0,
+        "request_diversity_applied": 1.0 if request_diversity_nonce(inference_input) else 0.0,
         "selection_history_size": float(len(recent_track_ids)),
         "tensor_candidate_count": float(len(scored)),
         "eligible_candidate_count": float(len(eligible_pool)),

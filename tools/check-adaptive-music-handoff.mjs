@@ -469,6 +469,7 @@ requireCondition(controller.includes('await openBroadcastEntry(sharedChannel, { 
 requireCondition(controller.includes('function showRecommendationUnavailable()'), 'selector failures can silently present the default track again');
 requireCondition(!controller.includes('useRecommendationFallback'), 'selector failures still use a default-track fallback');
 requireCondition(globeController.includes('const persistedSelection = persistMusicTelevisionSelection(selection);'), 'the check-in pipeline does not validate persisted selector output');
+requireCondition(globeController.includes('request_nonce: createMusicSelectionRequestNonce(),'), 'fresh selector requests have lost their privacy-safe rotation nonce');
 requireCondition(globeController.includes('const isAdaptiveFrame = currentParams.get("adaptiveFrame") === "1";'), 'embedded repeat check-ins no longer detect their frame context');
 requireCondition(globeController.includes('(isAdaptiveFrame || isMusicTelevisionFrame)'), 'embedded repeat check-ins no longer return to the top-level homepage');
 requireCondition(!globeController.includes('if (window.location.hostname === "staging.universalmind.tv") return null;'), 'staging can still turn selector errors into a successful default-track result');
