@@ -21,6 +21,7 @@ fi
 "$NODE_BIN" --check "$ROOT_DIR/i  a m/mantra-studio.js"
 "$NODE_BIN" --check "$ROOT_DIR/i  a m/circle-audio-rooms.js"
 "$NODE_BIN" --check "$ROOT_DIR/i  a m/care-worlds.js"
+"$NODE_BIN" --check "$ROOT_DIR/i  a m/program-navigation.js"
 "$NODE_BIN" --check "$ROOT_DIR/cloudflare/agora-audio-room-worker.js"
 "$NODE_BIN" --check "$ROOT_DIR/i  a m/realtime-voice-assistant.js"
 "$NODE_BIN" --check "$ROOT_DIR/cloudflare/iam-citizen-needs-worker.js"
