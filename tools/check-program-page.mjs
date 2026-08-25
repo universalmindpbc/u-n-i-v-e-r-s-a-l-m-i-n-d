@@ -63,7 +63,8 @@ assert.match(pageCss, /body\.program-page/);
 assert.match(pageCss, /overflow-x: hidden/);
 assert.doesNotMatch(pageCss, /body\.program-page[\s\S]{0,220}overflow: hidden/);
 assert.match(pageCss, /\.program-worlds[\s\S]{0,160}grid-template-columns/);
-assert.match(pageCss, /\.program-schedule__list[\s\S]{0,160}grid-template-columns: repeat\(2/);
+assert.match(pageCss, /\.program-schedule__list[\s\S]{0,160}grid-template-columns: repeat\(3/);
+assert.match(pageCss, /@media \(max-width: 1250px\)[\s\S]*\.program-schedule__list[\s\S]{0,160}grid-template-columns: repeat\(2/);
 assert.match(pageCss, /@media \(max-width: 620px\)/);
 
 assert.match(guide, /const standalone = programPanel\?\.hasAttribute\("data-program-standalone"\)/);
