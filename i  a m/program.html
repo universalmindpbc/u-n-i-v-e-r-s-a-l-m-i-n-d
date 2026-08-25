@@ -16,12 +16,13 @@
     <link rel="icon" type="image/png" sizes="32x32" href="/vogue/iam/favicon.png?v=iam-favicon-4">
     <link rel="shortcut icon" type="image/png" href="/vogue/iam/favicon.png?v=iam-favicon-4">
     <link rel="apple-touch-icon" sizes="180x180" href="/vogue/iam/apple-touch-icon.png?v=iam-favicon-4">
-    <link rel="stylesheet" href="programme-guide.css?v=programme-guide-css-35f9a5fee68b">
-    <link rel="stylesheet" href="program-page.css?v=program-page-css-beeeff4f2c66">
+    <link rel="stylesheet" href="program-page.css?v=program-page-css-0ee96646fc9f">
     <link rel="stylesheet" href="mobile-editorial-surface.css?v=mobile-editorial-20260823-3">
     <script src="mobile-editorial-surface.js?v=mobile-editorial-fa8d72bdfaf9"></script>
   </head>
-  <body class="program-page" data-current-nav="program" data-music-channel-mode="videos">
+  <body class="program-page" data-current-nav="program" data-program-guide-state="loading">
+    <a class="program-page__skip" href="#program-guide">Skip to Program</a>
+
     <header class="program-page__masthead">
       <button class="program-page__brand" type="button" aria-label="Open global navigation" data-nav-open>
         <img class="program-page__mark" src="a s s e t s/Universal Mind [ I o H ] Logo.PNG" alt="">
@@ -35,97 +36,92 @@
     </header>
 
     <main class="program-page__main">
-      <section class="program-panel" data-program-panel data-program-standalone aria-labelledby="program-title">
-        <header class="program-panel__header">
-          <div class="program-heading">
-            <span>UM / LIVE NETWORK</span>
-            <div class="program-heading__line">
-              <h1 id="program-title">PROGRAM</h1>
-              <div class="program-mode-switcher" role="tablist" aria-label="Choose a live programme">
-                <button type="button" role="tab" data-program-mode="videos" aria-selected="true">VIDEOS</button>
-                <button type="button" role="tab" data-program-mode="parties" aria-selected="false">PARTIES</button>
-                <button type="button" role="tab" data-program-mode="radio" aria-selected="false">RADIO</button>
-              </div>
+      <section class="program-introduction" aria-labelledby="program-title">
+        <div class="program-introduction__title">
+          <p>UM / LIVE NETWORK</p>
+          <h1 id="program-title">PROGRAM</h1>
+        </div>
+
+        <div class="program-introduction__copy">
+          <p>I AM is live electronic music television for mental health, together as one.</p>
+          <p>Watch one of 13 livestream electronic music and fashion channels across our curated worlds - Inner Planes, Champagne Bohemia, modul8 infinity, James Bondage Health and Safety Cushion.</p>
+        </div>
+
+        <dl class="program-introduction__facts" aria-label="Program at a glance">
+          <div><dt>13</dt><dd>LIVESTREAM CHANNELS</dd></div>
+          <div><dt>5</dt><dd>CURATED WORLDS</dd></div>
+          <div><dt>3</dt><dd>VIDEOS / PARTIES / RADIO</dd></div>
+        </dl>
+      </section>
+
+      <section class="public-program" id="program-guide" data-program-guide aria-labelledby="public-program-title" aria-busy="true">
+        <header class="public-program__controls">
+          <div>
+            <p class="public-program__label" id="public-program-title">CHOOSE A PROGRAM</p>
+            <div class="program-mode-switcher" role="tablist" aria-label="Choose a live programme">
+              <button type="button" role="tab" data-program-mode="videos" aria-selected="true"><span>VIDEOS</span><small data-mode-count="videos">05</small></button>
+              <button type="button" role="tab" data-program-mode="parties" aria-selected="false"><span>PARTIES</span><small data-mode-count="parties">04</small></button>
+              <button type="button" role="tab" data-program-mode="radio" aria-selected="false"><span>RADIO</span><small data-mode-count="radio">04</small></button>
             </div>
           </div>
 
-          <div class="program-zone-switcher" role="group" aria-label="Display schedule in a city time zone">
-            <button type="button" data-zone="local" aria-pressed="true">LOCAL</button>
-            <button type="button" data-zone="Australia/Sydney" aria-pressed="false">SYD</button>
-            <button type="button" data-zone="America/Los_Angeles" aria-pressed="false">LA</button>
-            <button type="button" data-zone="Europe/Madrid" aria-pressed="false">IBIZA</button>
+          <div class="program-zone">
+            <p class="public-program__label">TIME</p>
+            <div class="program-zone-switcher" role="group" aria-label="Display schedule in a city time zone">
+              <button type="button" data-zone="local" aria-pressed="true">LOCAL</button>
+              <button type="button" data-zone="Australia/Sydney" aria-pressed="false">SYD</button>
+              <button type="button" data-zone="America/Los_Angeles" aria-pressed="false">LA</button>
+              <button type="button" data-zone="Europe/Madrid" aria-pressed="false">IBIZA</button>
+            </div>
           </div>
         </header>
 
-        <div class="program-context" aria-live="polite">
+        <div class="public-program__date" aria-live="polite">
           <span data-zone-label>LOCAL TIME</span>
-          <span data-date-label></span>
+          <time data-date-label></time>
         </div>
 
-        <section class="program-world" aria-live="polite">
-          <h2 data-world-name></h2>
-          <div>
-            <p data-world-descriptor></p>
-            <p data-world-description></p>
-          </div>
-        </section>
+        <nav class="program-worlds" data-program-worlds aria-label="Choose a musical world"></nav>
 
-        <section class="program-live" aria-labelledby="program-live-label">
-          <header>
-            <h2 id="program-live-label">LIVE NOW</h2>
-            <p>Select a room to inspect its programme</p>
-          </header>
-          <nav class="program-channel-rail" data-program-channel-rail aria-label="Live music channels"></nav>
-        </section>
+        <div class="program-workspace">
+          <article class="program-now" aria-labelledby="program-now-title">
+            <div class="program-now__identity">
+              <p class="public-program__label">LIVE NOW</p>
+              <h2 data-world-name></h2>
+              <p class="program-now__descriptor" data-world-descriptor></p>
+              <p class="program-now__description" data-world-description></p>
+            </div>
 
-        <div class="program-scroll" data-program-scroll>
-          <article class="program-now" aria-labelledby="program-now-label">
-            <div class="program-now__time">
-              <span id="program-now-label">NOW</span>
-              <time data-now-time>00:00</time>
-              <small data-now-remaining>00 MIN REMAIN</small>
+            <div class="program-now__broadcast">
+              <div class="program-now__clock">
+                <time data-now-time></time>
+                <span data-now-remaining></span>
+              </div>
+              <div>
+                <h3 id="program-now-title" data-now-artist></h3>
+                <p data-now-title></p>
+              </div>
             </div>
-            <div class="program-now__editorial">
-              <span data-now-room>modul8 infinity</span>
-              <h2 data-now-artist>PEGGY GOU</h2>
-              <p data-now-title>Palais des Beaux-Arts, Lille</p>
-            </div>
+
             <button class="program-enter" type="button" data-enter-live>ENTER LIVE</button>
           </article>
 
-          <section class="program-history" data-program-history aria-labelledby="program-history-label" hidden>
-            <header>
-              <h2 id="program-history-label">JUST PLAYED</h2>
+          <section class="program-schedule" aria-labelledby="program-schedule-title">
+            <header class="program-schedule__header">
+              <div>
+                <p class="public-program__label">PROGRAMME</p>
+                <h2 id="program-schedule-title" data-horizon-label>NEXT 8 VIDEOS</h2>
+              </div>
+              <div class="program-range-switcher" role="group" aria-label="Choose programme range">
+                <button type="button" data-program-range="short" aria-pressed="true" data-short-range-label>NEXT 8</button>
+                <button type="button" data-program-range="day" aria-pressed="false">FULL DAY</button>
+              </div>
             </header>
-            <ol data-history-list></ol>
-          </section>
-
-          <section class="program-next" aria-labelledby="program-next-label">
-            <span id="program-next-label">UP NEXT</span>
-            <time data-next-time>00:00</time>
-            <div>
-              <strong data-next-artist>MISS MONIQUE</strong>
-              <small data-next-title>Biosphere, Montreal</small>
-            </div>
-            <em data-next-duration>2H 13M</em>
-          </section>
-
-          <section class="program-later" aria-labelledby="program-later-label">
-            <header>
-              <h2 id="program-later-label">LATER</h2>
-              <span data-horizon-label>NEXT 6 HOURS</span>
-            </header>
-            <ol data-later-list></ol>
+            <ol class="program-schedule__list" data-program-list aria-live="polite"></ol>
           </section>
         </div>
 
-        <footer class="program-panel__footer">
-          <div class="program-panel__footer-actions">
-            <button type="button" data-program-more aria-expanded="false">
-              <span data-more-label>MORE</span>
-              <small data-more-range>VIEW 24 HOURS</small>
-            </button>
-          </div>
+        <footer class="public-program__footer">
           <p>Times shown for <span data-footer-zone>your local time</span>.</p>
         </footer>
       </section>
@@ -134,9 +130,7 @@
     <div data-global-nav-host></div>
     <script src="global-navigation.js?v=global-navigation-canonical-14-5b130825b35d"></script>
     <script>window.IAMMobileEditorial?.apply();</script>
-    <script src="program-page.js?v=program-page-js-1972ba2fc641"></script>
-    <script src="cloudflare-stream-catalogue.js?v=stream-catalogue-20ad6337934c"></script>
     <script src="broadcast-clock-v1.js?v=broadcast-clock-c5dbed9dcce0"></script>
-    <script src="programme-guide.js?v=programme-guide-218f10ba2b7d"></script>
+    <script src="program-page.js?v=program-page-js-07c43d36e836"></script>
   </body>
 </html>
