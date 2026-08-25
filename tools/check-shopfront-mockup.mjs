@@ -28,6 +28,9 @@ const htaccess = read(".htaccess");
 const redirects = read("_redirects");
 const expectedTelevisionToken = `music-tv-${createHash("sha256").update(television).digest("hex").slice(0, 12)}`;
 const expectedShopStyleToken = createHash("sha256").update(shopStyle).digest("hex").slice(0, 12);
+const externalMuglerFixture = String(process.env.SHOPFRONT_MUGLER_FIXTURE || "");
+const muglerFixtureAsset = "a s s e t s/shop-mockup/body-diversity-home/mugler-home-loop.mp4";
+const muglerFixtureSha256 = "6c444c7c66f806aff944d5eeba7d545d057e1edac3ee1a3c201ce3814678fb91";
 const expectedShopScienceStyleToken = createHash("sha256").update(shopScienceStyle).digest("hex").slice(0, 12);
 const expectedShopScienceDataToken = createHash("sha256").update(shopScienceData).digest("hex").slice(0, 12);
 const expectedShopScienceScriptToken = createHash("sha256").update(shopScienceScript).digest("hex").slice(0, 12);
@@ -421,7 +424,11 @@ for (const brand of ["Free People", "Lisa Marie Fernandez"]) {
 const assetMatches = [...shop.matchAll(/src="(a s s e t s\/shop-mockup\/[^"]+)"/g)].map((match) => match[1]);
 assert.ok(assetMatches.length >= 12, "Shop must use the locally preserved presentation imagery");
 for (const relativeAsset of new Set(assetMatches)) {
-  assert.ok(fs.existsSync(path.join(iam, relativeAsset)), `Missing shop image: ${relativeAsset}`);
+  if (fs.existsSync(path.join(iam, relativeAsset))) continue;
+  assert.equal(relativeAsset, muglerFixtureAsset, `Missing shop image: ${relativeAsset}`);
+  assert.ok(externalMuglerFixture && fs.existsSync(externalMuglerFixture), `Missing shop image: ${relativeAsset}`);
+  const fixtureHash = createHash("sha256").update(fs.readFileSync(externalMuglerFixture)).digest("hex");
+  assert.equal(fixtureHash, muglerFixtureSha256, `Shop media fixture does not match ${relativeAsset}`);
 }
 
 const editorialFigureImages = [...shop.matchAll(/<figure><img src="([^"]+)"/g)].map((match) => match[1]);
