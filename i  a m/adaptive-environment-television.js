@@ -36,8 +36,6 @@
   const NO_CHECKIN_RANDOM_LAST_TRACK_KEY = "iamNoCheckinRandomLastTrackId";
   const NO_CHECKIN_CONTINUATION_INDEX_KEY = "iamNoCheckinContinuationIndex";
   const EXTENDED_SESSION_VISITOR_ID_KEY = "iamAdaptiveMusicVisitorId";
-  const REPEAT_CHECKIN_RESUME_KEY = "iamRepeatCheckinResumeV1";
-  const REPEAT_CHECKIN_RESUME_TTL_MS = 15 * 60 * 1000;
   const NO_CHECKIN_RANDOM_EXCLUDED_TRACK_IDS = new Set(["madonna-frozen"]);
   let noCheckinRandomTrack = null;
   let resolvedSelectionSource = "";
@@ -321,7 +319,6 @@
   let selectionIsLoading = document.body.classList.contains("adaptive-music-selection-loading");
   let hasOpened = false;
   let televisionPlaybackRequested = false;
-  let repeatCheckinResumePending = readRepeatCheckinResumeRequest();
   let pageViewPreviousBlend = null;
   let shopEntryActivated = false;
   let shopEntryFrameReady = false;
@@ -699,42 +696,6 @@
     }
   }
 
-  function storeRepeatCheckinResumeRequest() {
-    try {
-      window.sessionStorage.setItem(REPEAT_CHECKIN_RESUME_KEY, JSON.stringify({
-        schema: "iam_repeat_checkin_resume_v1",
-        requested_at: Date.now(),
-      }));
-    } catch {
-      // The top-level check-in remains available when session storage is restricted.
-    }
-  }
-
-  function readRepeatCheckinResumeRequest() {
-    try {
-      const raw = window.sessionStorage.getItem(REPEAT_CHECKIN_RESUME_KEY);
-      const record = raw ? JSON.parse(raw) : null;
-      const requestedAt = Number(record?.requested_at || 0);
-      if (
-        record?.schema === "iam_repeat_checkin_resume_v1"
-        && requestedAt > 0
-        && Date.now() - requestedAt <= REPEAT_CHECKIN_RESUME_TTL_MS
-      ) return true;
-      window.sessionStorage.removeItem(REPEAT_CHECKIN_RESUME_KEY);
-    } catch {
-      // A malformed or unavailable marker must never force playback.
-    }
-    return false;
-  }
-
-  function clearRepeatCheckinResumeRequest() {
-    try {
-      window.sessionStorage.removeItem(REPEAT_CHECKIN_RESUME_KEY);
-    } catch {
-      // The one-time marker is also bounded by its short expiry.
-    }
-  }
-
   function selectionTrackFields(selection) {
     const hero = selection?.hero_music_video || selection?.final_output?.hero_music_video || selection?.adaptive_music_intelligence?.hero_music_video || {};
     const runtime = selection?.tensor_profile?.runtime_delivery || selection?.runtime_delivery || {};
@@ -877,34 +838,9 @@
     setMusicTelevisionMetadata();
     rankMusicShelves();
     window.IAMStreamReady?.then(() => primeLocalVideo());
-    resumeTelevisionAfterRepeatCheckIn();
-  }
-
-  function resumeTelevisionAfterRepeatCheckIn() {
-    const explicitTrackId = new URLSearchParams(window.location.search).get("selected_track_id") || "";
-    if (
-      !repeatCheckinResumePending
-      || selectionIsLoading
-      || hasOpened
-      || (resolvedSelectionSource !== "stored_checkin" && !explicitTrackId)
-    ) return false;
-
-    repeatCheckinResumePending = false;
-    clearRepeatCheckinResumeRequest();
-    document.body.dataset.repeatCheckinResume = "opening";
-    window.setTimeout(() => {
-      openRoom({
-        preventDefault() {},
-        stopImmediatePropagation() {},
-      }, { requestFullscreen: false });
-      document.body.dataset.repeatCheckinResume = "opened";
-    }, 0);
-    return true;
   }
 
   function showRecommendationUnavailable() {
-    repeatCheckinResumePending = false;
-    clearRepeatCheckinResumeRequest();
     const basisLine = document.querySelector(".adaptive-environment__basis");
     const artistLine = document.querySelector(".adaptive-environment__source");
     const titleLine = document.querySelector(".adaptive-environment__station");
@@ -8069,7 +8005,6 @@
     });
 
     document.body.dataset.repeatCheckinHandoff = "top-level";
-    storeRepeatCheckinResumeRequest();
     televisionPlaybackRequested = false;
     closeVideoNavigation();
     exitFullscreenForNavigation();
@@ -8418,7 +8353,7 @@
   }
 
 
-  function openRoom(event, { requestFullscreen = true } = {}) {
+  function openRoom(event) {
     event.preventDefault();
     event.stopImmediatePropagation();
 
@@ -8457,7 +8392,7 @@
     startFlowerSpin();
     startLiveViewerSimulation();
     window.setTimeout(ensureCommunityGlobeLoaded, 1200);
-    if (requestFullscreen) requestViewingFullscreen(video);
+    requestViewingFullscreen(video);
     playLocalVideo(video);
 
     window.setTimeout(() => {
@@ -9271,10 +9206,7 @@
     },
   };
   window.IAMStreamReady?.then(() => {
-    if (!selectionIsLoading) {
-      primeLocalVideo();
-      resumeTelevisionAfterRepeatCheckIn();
-    }
+    if (!selectionIsLoading) primeLocalVideo();
   });
   if (shopShellRequested) {
     if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", bootstrapRequestedShop, { once: true });
