@@ -28,7 +28,10 @@ assert.match(pageCss, /\.program-page__background[\s\S]{0,220}position: fixed/);
 assert.match(pageCss, /\.program-page__background video[\s\S]{0,180}object-fit: cover/);
 assert.match(pageCss, /\.program-introduction[\s\S]{0,420}background: rgba\(0, 0, 0, 0\.84\)/);
 
-assert.match(html, /I AM is live electronic music television for mental health, together as one\./);
+assert.match(html, /Universal Mind is live electronic music television for mental health, together as one\./);
+assert.match(html, /<strong>Videos:<\/strong> 24\/7 livestream electronic music videos\./);
+assert.match(html, /<strong>Parties:<\/strong> 24\/7 livestream DJ sets, live performances and festivals\./);
+assert.match(html, /<strong>Radio:<\/strong> a 24\/7 livestream mix of electronic music stations paired with fashion runway shows\./);
 assert.match(html, /Your voluntary check-in - <strong>self-report plus Heart Rate<\/strong> - helps I AM select a <strong>music channel and evidence-based brain entrainment profile<\/strong> for that moment\./);
 assert.match(html, /Watch one of 13 livestream electronic music and fashion channels across our curated worlds/);
 assert.doesNotMatch(html, /<dt>13<\/dt>|<dt>5<\/dt>|<dt>3<\/dt>|CURATED WORLDS|VIDEOS \/ PARTIES \/ RADIO/);

@@ -185,7 +185,8 @@ body.nav-open .program-page__masthead {
   align-items: start;
 }
 
-.program-introduction__copy p {
+.program-introduction__copy > p,
+.program-introduction__details p {
   margin: 0;
   color: rgba(248, 250, 245, 0.9);
   font-size: clamp(19px, 1.65vw, 26px);
@@ -193,11 +194,16 @@ body.nav-open .program-page__masthead {
   line-height: 1.38;
 }
 
-.program-introduction__copy p:first-child {
+.program-introduction__copy > p:first-child {
   color: #fff;
   font-family: var(--program-editorial);
   font-size: clamp(27px, 2.6vw, 40px);
   line-height: 1.12;
+}
+
+.program-introduction__details {
+  display: grid;
+  gap: clamp(18px, 1.8vw, 28px);
 }
 
 .program-introduction__copy strong {
@@ -280,14 +286,19 @@ html[data-mobile-editorial="true"] .program-page__main {
     gap: 18px;
   }
 
-  .program-introduction__copy p {
+  .program-introduction__copy > p,
+  .program-introduction__details p {
     font-size: 17px;
     line-height: 1.42;
   }
 
-  .program-introduction__copy p:first-child {
+  .program-introduction__copy > p:first-child {
     font-size: 29px;
     line-height: 1.1;
+  }
+
+  .program-introduction__details {
+    gap: 17px;
   }
 
   .program-panel[data-program-standalone] {
