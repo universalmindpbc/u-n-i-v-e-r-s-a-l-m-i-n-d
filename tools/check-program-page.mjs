@@ -21,7 +21,7 @@ const htaccess = read(".htaccess");
 const deployment = read("deploy-panthurlive.sh");
 const schedule = JSON.parse(read("i  a m/broadcast-schedule-v1.json"));
 
-assert.match(html, /<video autoplay muted playsinline loop preload="metadata" src="a s s e t s\/Homepage - Hero Background Video - Chanel 2020 Runway Show\.mp4"><\/video>/);
+assert.match(html, /<video autoplay muted playsinline loop preload="metadata" src="a s s e t s\/business-model\/dua-lipa-glastonbury-2017-silent-loop\.mp4\?v=154285b9dbe2"><\/video>/);
 assert.equal((html.match(/<video\b/g) || []).length, 1, "the only standalone autoplay video must be the silent decorative background");
 assert.match(pageCss, /\.program-page__background[\s\S]{0,220}position: fixed/);
 assert.match(pageCss, /\.program-page__background video[\s\S]{0,180}object-fit: cover/);
