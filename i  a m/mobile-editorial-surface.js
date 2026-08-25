@@ -12,6 +12,7 @@
   const allowedFiles = new Set([
     "induction.html",
     "about.html",
+    "program.html",
     "science.html",
     "research.html",
     "privacy-first.html",
@@ -24,6 +25,7 @@
   const visibleNavItems = new Set([
     "induction",
     "about",
+    "program",
     "science",
     "research",
     "privacy-first",

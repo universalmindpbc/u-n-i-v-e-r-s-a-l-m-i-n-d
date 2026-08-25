@@ -99,8 +99,8 @@ html[data-adaptive-frame="embedded"] .global-nav {
 }
 
 .global-nav-menu {
-  --global-nav-row-gap: clamp(18px, 2.25vh, 30px);
-  --global-nav-sub-gap: clamp(14px, 1.5vh, 22px);
+  --global-nav-row-gap: clamp(14px, 1.72vh, 24px);
+  --global-nav-sub-gap: clamp(11px, 1.2vh, 18px);
   position: absolute;
   left: clamp(92px, 6.95vw, 142px);
   top: clamp(112px, 13.2vh, 152px);
@@ -141,9 +141,9 @@ html[data-adaptive-frame="embedded"] .global-nav {
 }
 
 .global-nav .global-nav-item {
-  font-size: clamp(28px, 2.25vw, 46px);
+  font-size: clamp(21px, min(1.76vw, 3.05vh), 38px);
   font-weight: 700;
-  letter-spacing: 0.46em;
+  letter-spacing: 0.36em;
 }
 
 .global-nav .global-nav-item:focus-visible,
@@ -244,8 +244,8 @@ html[data-adaptive-frame="embedded"] .global-nav {
   }
 
   .global-nav-menu {
-    --global-nav-row-gap: 24px;
-    --global-nav-sub-gap: 16px;
+    --global-nav-row-gap: 18px;
+    --global-nav-sub-gap: 13px;
     left: clamp(42px, 12vw, 92px);
     top: 128px;
     gap: var(--global-nav-row-gap);
@@ -255,8 +255,8 @@ html[data-adaptive-frame="embedded"] .global-nav {
   }
 
   .global-nav .global-nav-item {
-    font-size: clamp(24px, 7vw, 34px);
-    letter-spacing: 0.26em;
+    font-size: clamp(20px, 5.6vw, 27px);
+    letter-spacing: 0.21em;
     line-height: 1.05;
   }
 
@@ -287,16 +287,16 @@ html[data-adaptive-frame="embedded"] .global-nav {
 
 @media (max-width: 760px) and (max-height: 740px) {
   .global-nav-menu {
-    --global-nav-row-gap: 18px;
-    --global-nav-sub-gap: 12px;
+    --global-nav-row-gap: 14px;
+    --global-nav-sub-gap: 10px;
     top: 112px;
     max-height: calc(100vh - 188px);
     max-height: calc(100dvh - 188px);
   }
 
   .global-nav .global-nav-item {
-    font-size: clamp(22px, 6.4vw, 30px);
-    letter-spacing: 0.22em;
+    font-size: clamp(18px, 5vw, 24px);
+    letter-spacing: 0.18em;
   }
 
   .global-nav-citation {

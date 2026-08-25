@@ -46,8 +46,9 @@
   const zoneButtons = Array.from(document.querySelectorAll("[data-program-panel] [data-zone]"));
   const openButtons = Array.from(document.querySelectorAll("[data-program-open]"));
   const enterLiveButton = document.querySelector("[data-enter-live]");
+  const standalone = programPanel?.hasAttribute("data-program-standalone") === true;
 
-  if (!programPanel || !programScroll || !programScrim || !cardRail || !moreButton || !channelsButton || !enterLiveButton) return;
+  if (!programPanel || !programScroll || !cardRail || !moreButton || !enterLiveButton || (!standalone && (!programScrim || !channelsButton))) return;
 
   let schedule = null;
   let catalogueTracks = new Map();
@@ -276,6 +277,14 @@
 
   function fallbackProgrammeItem(channel, nowMs) {
     const current = upcomingEvents(channel, nowMs, 1, 1)[0];
+    const trackId = String(current?.entry?.track_id || "");
+    const stationId = String(current?.entry?.station_id || "");
+    const track = catalogueTracks.get(trackId);
+    const station = radioStations.get(stationId);
+    const source = String(track?.local_video_file || track?.tensor_profile?.runtime_delivery?.local_video_file || "");
+    const asset = window.IAMCloudflareStream?.assetFor?.(source);
+    const uid = String(track?.stream_uid || asset?.uid || "");
+    const host = window.IAMCloudflareStream?.customerHost || "customer-1vpwglz3v6fiyaas.cloudflarestream.com";
     return {
       broadcastChannelId: channel.id,
       broadcastChannelName: channel.name,
@@ -286,10 +295,10 @@
       unavailable: channel.available === false,
       previewVideoSrc: "",
       previewStart: 8,
-      thumbnailUrl: "",
-      radioLogoSrc: "",
-      radioLogoAlt: "",
-      cardPalette: [],
+      thumbnailUrl: uid ? `https://${host}/${uid}/thumbnails/thumbnail.jpg?time=8s&height=360` : "",
+      radioLogoSrc: String(station?.logo_src || ""),
+      radioLogoAlt: String(station?.logo_alt || station?.provider || ""),
+      cardPalette: Array.isArray(station?.card_palette) ? station.card_palette.slice(0, 2) : [],
       audioOnly: false,
     };
   }
@@ -308,7 +317,7 @@
   }
 
   async function startCardPreview(card) {
-    if (!document.body.classList.contains("television-program-open") || !card || card === previewCard) return;
+    if (standalone || !document.body.classList.contains("television-program-open") || !card || card === previewCard) return;
     const item = (window.IAMMusicChannels?.programmeItems?.(activeMode) || [])
       .find((candidate) => candidate.broadcastChannelId === card.dataset.channelId) ||
       programmeItems.find((candidate) => candidate.broadcastChannelId === card.dataset.channelId);
@@ -383,16 +392,23 @@
     room.className = "program-channel-card__room";
     room.textContent = channel.name;
 
-    if (activeMode === "radio" && item.radioLogoSrc) {
+    if (activeMode === "radio") {
       const palette = Array.isArray(item.cardPalette) && item.cardPalette.length >= 2 ? item.cardPalette : ["#17231d", "#49564d"];
       media.style.setProperty("--program-card-a", palette[0]);
       media.style.setProperty("--program-card-b", palette[1]);
       media.classList.add("program-channel-card__media--radio");
-      const logo = document.createElement("img");
-      logo.src = item.radioLogoSrc;
-      logo.alt = item.radioLogoAlt || item.artist || channel.name;
-      logo.loading = position < 5 ? "eager" : "lazy";
-      media.append(logo);
+      if (item.radioLogoSrc) {
+        const logo = document.createElement("img");
+        logo.src = item.radioLogoSrc;
+        logo.alt = item.radioLogoAlt || item.artist || channel.name;
+        logo.loading = position < 5 ? "eager" : "lazy";
+        media.append(logo);
+      } else {
+        const placeholder = document.createElement("span");
+        placeholder.className = "program-channel-card__placeholder";
+        placeholder.textContent = item.artist || channel.name;
+        media.append(placeholder);
+      }
     } else if (item.thumbnailUrl) {
       const image = document.createElement("img");
       image.src = item.thumbnailUrl;
@@ -406,7 +422,7 @@
       media.append(placeholder);
     }
 
-    if (item.previewVideoSrc && activeMode !== "radio") {
+    if (!standalone && item.previewVideoSrc && activeMode !== "radio") {
       const previewLabel = document.createElement("span");
       previewLabel.className = "program-channel-card__preview-label";
       previewLabel.textContent = "10S LIVE PREVIEW";
@@ -415,14 +431,16 @@
     media.append(live, room);
     copy.append(descriptor, artist, title);
     card.append(media, copy);
-    card.addEventListener("pointerenter", () => startCardPreview(card));
-    card.addEventListener("pointerleave", () => {
-      if (previewCard === card) stopCardPreview();
-    });
-    card.addEventListener("focus", () => startCardPreview(card));
-    card.addEventListener("blur", () => {
-      if (previewCard === card) stopCardPreview();
-    });
+    if (!standalone) {
+      card.addEventListener("pointerenter", () => startCardPreview(card));
+      card.addEventListener("pointerleave", () => {
+        if (previewCard === card) stopCardPreview();
+      });
+      card.addEventListener("focus", () => startCardPreview(card));
+      card.addEventListener("blur", () => {
+        if (previewCard === card) stopCardPreview();
+      });
+    }
     card.addEventListener("click", (event) => {
       event.preventDefault();
       activeRooms[activeMode] = roomId;
@@ -477,6 +495,9 @@
     if (!current || !next) return false;
 
     programPanel.dataset.programMode = activeMode;
+    setText("[data-world-name]", String(currentChannel?.name || ""));
+    setText("[data-world-descriptor]", String(currentChannel?.descriptor || ""));
+    setText("[data-world-description]", String(currentChannel?.description || ""));
     setText("[data-zone-label]", ZONE_LABELS[activeZone] || ZONE_LABELS.local);
     setText("[data-date-label]", dateLabel(nowMs));
     setText("[data-footer-zone]", activeZone === "local"
@@ -579,12 +600,13 @@
   function closeProgram(event, { restoreFocus = true } = {}) {
     event?.preventDefault();
     event?.stopPropagation();
+    if (standalone) return;
     stopCardPreview();
     document.body.classList.remove("television-program-open");
     document.body.dataset.programGuideState = schedule ? "ready" : "loading";
     programPanel.setAttribute("aria-hidden", "true");
     programPanel.setAttribute("inert", "");
-    programScrim.hidden = true;
+    if (programScrim) programScrim.hidden = true;
     openButtons.forEach((button) => button.setAttribute("aria-expanded", "false"));
     if (restoreFocus) previouslyFocusedElement?.focus?.({ preventScroll: true });
   }
@@ -593,6 +615,12 @@
     event.preventDefault();
     event.stopPropagation();
     const channelId = channelForRoom()?.id || "";
+    if (standalone) {
+      document.body.dataset.programLiveState = "induction";
+      document.body.dataset.programLiveChannel = channelId;
+      window.location.assign("induction.html");
+      return;
+    }
     if (!channelId || !window.IAMMusicChannels?.joinBroadcast) return;
     enterLiveButton.disabled = true;
     enterLiveButton.textContent = "TUNING…";
@@ -623,6 +651,10 @@
   function exploreChannels(event) {
     event.preventDefault();
     event.stopPropagation();
+    if (standalone) {
+      window.location.assign("induction.html");
+      return;
+    }
     closeProgram(null, { restoreFocus: false });
     window.IAMMusicChannels?.openChannels?.(activeMode);
   }
@@ -646,7 +678,7 @@
     renderSchedule();
     if (!expanded) programScroll.scrollTop = 0;
   });
-  channelsButton.addEventListener("click", exploreChannels);
+  channelsButton?.addEventListener("click", exploreChannels);
   openButtons.forEach((button) => {
     button.setAttribute("aria-expanded", "false");
     button.addEventListener("click", openProgram);
@@ -654,10 +686,10 @@
   document.querySelectorAll("[data-program-close]").forEach((button) => {
     button.addEventListener("click", closeProgram);
   });
-  programPanel.addEventListener("click", (event) => event.stopPropagation());
+  if (!standalone) programPanel.addEventListener("click", (event) => event.stopPropagation());
   enterLiveButton.addEventListener("click", enterLive);
   document.addEventListener("keydown", (event) => {
-    if (event.key !== "Escape" || !document.body.classList.contains("television-program-open")) return;
+    if (standalone || event.key !== "Escape" || !document.body.classList.contains("television-program-open")) return;
     event.preventDefault();
     event.stopImmediatePropagation();
     closeProgram(event);
@@ -703,9 +735,13 @@
     syncFromLiveBroadcast();
     renderCards();
     renderSchedule();
+    if (standalone) {
+      programPanel.setAttribute("aria-hidden", "false");
+      programPanel.removeAttribute("inert");
+    }
     document.body.dataset.programGuideState = "ready";
     renderTimer = window.setInterval(() => {
-      if (!document.body.classList.contains("television-program-open")) return;
+      if (!standalone && !document.body.classList.contains("television-program-open")) return;
       renderCards();
       renderSchedule();
     }, 30000);
@@ -724,14 +760,15 @@
   }, { once: true });
 
   window.IAMProgrammeGuide = {
-    version: "programme_guide_live_destination_v2",
+    version: "programme_guide_live_destination_v3",
     ready,
     open: openProgram,
     close: closeProgram,
     selectMode,
     getState() {
       return {
-        open: document.body.classList.contains("television-program-open"),
+        open: standalone || document.body.classList.contains("television-program-open"),
+        standalone,
         activeMode,
         activeRoom: activeRoom(),
         activeChannelId: channelForRoom()?.id || "",

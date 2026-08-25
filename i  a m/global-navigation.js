@@ -1,7 +1,7 @@
 (() => {
-  const VERSION = "global-navigation-canonical-13";
+  const VERSION = "global-navigation-canonical-14";
   const scriptUrl = document.currentScript?.src || window.location.href;
-  const stylesheetUrl = new URL("global-navigation.css?v=a4fc9eb0ffc0", scriptUrl).href;
+  const stylesheetUrl = new URL("global-navigation.css?v=443a2fd35c95", scriptUrl).href;
 
   function ensureStylesheet() {
     let stylesheet = document.querySelector("link[data-global-navigation-styles]");
@@ -24,6 +24,7 @@
       "adaptive-music-video.html": "home",
       "cafe-del-mar-home.html": "home",
       "about.html": "about",
+      "program.html": "program",
       "technology-citizen-needs.html": "technology",
       "technology-inference-engine.html": "technology",
       "science.html": "science",
@@ -96,6 +97,7 @@
           <nav class="global-nav-menu" aria-label="Primary">
             <a class="global-nav-item" href="index.html" data-nav-item="home"${shopReturn}>home</a>
             <a class="global-nav-item" href="about.html?aboutTopLevel=1" data-nav-item="about">about</a>
+            <a class="global-nav-item" href="program.html" data-nav-item="program">program</a>
             <a class="global-nav-item" href="technology-citizen-needs.html" data-nav-item="technology" aria-expanded="false">technology</a>
             <div class="global-nav-submenu" data-nav-submenu="technology">
               <a href="technology-citizen-needs.html" data-nav-subitem="technology-needs">learn how we understand your needs</a>

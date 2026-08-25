@@ -31,6 +31,7 @@ fi
 "$NODE_BIN" --check "$ROOT_DIR/research/privacy-lab/healthomics-adapter.mjs"
 "$NODE_BIN" --check "$ROOT_DIR/i  a m/globe.js"
 "$NODE_BIN" --check "$ROOT_DIR/i  a m/happiness-control.js"
+"$NODE_BIN" --check "$ROOT_DIR/i  a m/program-page.js"
 "$NODE_BIN" "$ROOT_DIR/tools/check-adaptive-music-handoff.mjs"
 "$NODE_BIN" "$ROOT_DIR/tools/check-owner-state-persistence.mjs"
 "$NODE_BIN" "$ROOT_DIR/tools/check-broadcast-clock.mjs"
@@ -44,6 +45,7 @@ fi
 "$NODE_BIN" "$ROOT_DIR/tools/check-privacy-research-foundations.mjs"
 "$NODE_BIN" "$ROOT_DIR/tools/check-citizen-data-foundation.mjs"
 "$NODE_BIN" "$ROOT_DIR/tools/check-universal-one-programme-guide.mjs"
+"$NODE_BIN" "$ROOT_DIR/tools/check-program-page.mjs"
 "$NODE_BIN" "$ROOT_DIR/tools/check-universal-one-adaptive-guide.mjs"
 
 if command -v php >/dev/null 2>&1; then

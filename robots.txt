@@ -50,6 +50,7 @@ Allow: /vogue/iam/induction.html
 Allow: /vogue/iam/index.html
 Allow: /vogue/iam/vogue-self-report.html
 Allow: /vogue/iam/about.html
+Allow: /vogue/iam/program.html
 Allow: /vogue/iam/traction.html
 Allow: /vogue/iam/science.html
 Allow: /vogue/iam/sound-prototype-research.html
@@ -65,6 +66,15 @@ Allow: /vogue/iam/mantra-sampler.css
 Allow: /vogue/iam/realtime-voice-assistant.css
 Allow: /vogue/iam/vogue-self-report.css
 Allow: /vogue/iam/about.css
+Allow: /vogue/iam/program-page.css
+Allow: /vogue/iam/program-page.js
+Allow: /vogue/iam/programme-guide.css
+Allow: /vogue/iam/programme-guide.js
+Allow: /vogue/iam/broadcast-clock-v1.js
+Allow: /vogue/iam/broadcast-schedule-v1.json
+Allow: /vogue/iam/adaptive-music-video-catalogue-v1.11.json
+Allow: /vogue/iam/radio-station-tensor-notion-export-v1.0.json
+Allow: /vogue/iam/cloudflare-stream-catalogue.js
 Allow: /vogue/iam/traction.css
 Allow: /vogue/iam/traction.js
 Allow: /vogue/iam/global-navigation.css
