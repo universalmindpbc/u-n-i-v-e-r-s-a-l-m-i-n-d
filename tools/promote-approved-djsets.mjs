@@ -139,12 +139,18 @@ function replaceTelevisionCacheReference(source, cacheToken, label) {
   return source.replace(pattern, `adaptive-environment-television.js?v=${cacheToken}`);
 }
 
-function addTelevisionTracks(source, tracks) {
-  const marker = 'const TRACK_CATALOGUE = [';
+function replaceMusicTrackCatalogueCacheReference(source, cacheToken, label) {
+  const pattern = /music-track-catalogue-v1\.js\?v=[^"']+/g;
+  if (!source.match(pattern)?.length) throw new Error(`Could not find ${label} shared catalogue cache version.`);
+  return source.replace(pattern, `music-track-catalogue-v1.js?v=${cacheToken}`);
+}
+
+function addSharedTracks(source, tracks) {
+  const marker = 'const tracks = [';
   const start = source.indexOf(marker);
-  if (start < 0) throw new Error('Could not find TRACK_CATALOGUE in adaptive-environment-television.js.');
-  const end = source.indexOf('\n  ];', start);
-  if (end < 0) throw new Error('Could not find the end of TRACK_CATALOGUE.');
+  if (start < 0) throw new Error('Could not find tracks in music-track-catalogue-v1.js.');
+  const end = source.indexOf('\n];', start);
+  if (end < 0) throw new Error('Could not find the end of the shared music track catalogue.');
   const currentBlock = source.slice(start, end);
   const additions = tracks
     .filter((track) => !currentBlock.includes(`id: ${JSON.stringify(track.id)}`))
@@ -177,14 +183,16 @@ function updatePolicy(policy, promoted) {
   policy.track_profiles = entries;
 }
 
-const [sourceText, catalogueText, policyText, televisionText, adaptiveVideoText, indexText, televisionHtmlText, adaptiveVideoHtmlText, djFiles] = await Promise.all([
+const [sourceText, catalogueText, policyText, sharedTracksText, adaptiveVideoText, indexText, indexAltText, televisionHtmlText, programHtmlText, adaptiveVideoHtmlText, djFiles] = await Promise.all([
   fs.readFile(path.join(IAM_DIR, SOURCE_NAME), 'utf8'),
   fs.readFile(path.join(IAM_DIR, CATALOGUE_NAME), 'utf8'),
   fs.readFile(path.join(IAM_DIR, POLICY_NAME), 'utf8'),
-  fs.readFile(path.join(IAM_DIR, 'adaptive-environment-television.js'), 'utf8'),
+  fs.readFile(path.join(IAM_DIR, 'music-track-catalogue-v1.js'), 'utf8'),
   fs.readFile(path.join(IAM_DIR, 'adaptive-music-video.js'), 'utf8'),
   fs.readFile(path.join(IAM_DIR, 'index.html'), 'utf8'),
+  fs.readFile(path.join(IAM_DIR, 'index-alt.html'), 'utf8'),
   fs.readFile(path.join(IAM_DIR, 'adaptive-environment-television.html'), 'utf8'),
+  fs.readFile(path.join(IAM_DIR, 'program.html'), 'utf8'),
   fs.readFile(path.join(IAM_DIR, 'adaptive-music-video.html'), 'utf8'),
   fs.readdir(DJ_DIR),
 ]);
@@ -271,20 +279,24 @@ if (catalogue.notion_source_export && typeof catalogue.notion_source_export === 
 }
 updatePolicy(policy, promoted);
 
-const updatedTelevision = addTelevisionTracks(televisionText, promoted.map(({ track }) => track));
+const updatedSharedTracks = addSharedTracks(sharedTracksText, promoted.map(({ track }) => track));
 const updatedAdaptiveVideo = replaceVersion(adaptiveVideoText, /music-video-catalogue-\d+/g, 'music-video-catalogue-3', 'adaptive music catalogue');
-const televisionCacheToken = `music-tv-${createHash('sha256').update(updatedTelevision).digest('hex').slice(0, 12)}`;
-const updatedIndex = replaceTelevisionCacheReference(indexText, televisionCacheToken, 'index television');
-const updatedTelevisionHtml = replaceTelevisionCacheReference(televisionHtmlText, televisionCacheToken, 'television page');
+const sharedTracksCacheToken = `music-track-catalogue-${createHash('sha256').update(updatedSharedTracks).digest('hex').slice(0, 12)}`;
+const updatedIndex = replaceMusicTrackCatalogueCacheReference(indexText, sharedTracksCacheToken, 'index');
+const updatedIndexAlt = replaceMusicTrackCatalogueCacheReference(indexAltText, sharedTracksCacheToken, 'alternate index');
+const updatedTelevisionHtml = replaceMusicTrackCatalogueCacheReference(televisionHtmlText, sharedTracksCacheToken, 'television page');
+const updatedProgramHtml = replaceMusicTrackCatalogueCacheReference(programHtmlText, sharedTracksCacheToken, 'Program page');
 const updatedAdaptiveVideoHtml = replaceVersion(adaptiveVideoHtmlText, /adaptive-video-\d+/g, 'adaptive-video-10', 'adaptive video page');
 
 await Promise.all([
   fs.writeFile(path.join(IAM_DIR, CATALOGUE_NAME), `${JSON.stringify(catalogue, null, 2)}\n`),
   fs.writeFile(path.join(IAM_DIR, POLICY_NAME), `${JSON.stringify(policy, null, 2)}\n`),
-  fs.writeFile(path.join(IAM_DIR, 'adaptive-environment-television.js'), updatedTelevision),
+  fs.writeFile(path.join(IAM_DIR, 'music-track-catalogue-v1.js'), updatedSharedTracks),
   fs.writeFile(path.join(IAM_DIR, 'adaptive-music-video.js'), updatedAdaptiveVideo),
   fs.writeFile(path.join(IAM_DIR, 'index.html'), updatedIndex),
+  fs.writeFile(path.join(IAM_DIR, 'index-alt.html'), updatedIndexAlt),
   fs.writeFile(path.join(IAM_DIR, 'adaptive-environment-television.html'), updatedTelevisionHtml),
+  fs.writeFile(path.join(IAM_DIR, 'program.html'), updatedProgramHtml),
   fs.writeFile(path.join(IAM_DIR, 'adaptive-music-video.html'), updatedAdaptiveVideoHtml),
 ]);
 

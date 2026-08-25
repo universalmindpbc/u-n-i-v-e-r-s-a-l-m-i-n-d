@@ -97,7 +97,7 @@
       "editorial_id": "modul8-infinity",
       "name": "modul8 infinity",
       "descriptor": "enlightenment thru rave",
-      "description": "Rave · house · techno · future bass · future psychedelic beats · hiphop",
+      "description": "Rave · house · techno · future bass",
       "schedule": [
         {
           "track_id": "madonna-ray-of-light",
@@ -321,7 +321,7 @@
       "editorial_id": "modul8-infinity",
       "name": "modul8 infinity",
       "descriptor": "enlightenment thru rave",
-      "description": "Rave · house · techno · future bass · future psychedelic beats · hiphop",
+      "description": "Rave · house · techno · future bass",
       "epoch_utc": "2026-08-02T14:00:00.000Z",
       "schedule": [
         {
@@ -1134,7 +1134,7 @@
       "editorial_id": "modul8-infinity",
       "name": "modul8 infinity",
       "descriptor": "enlightenment thru rave",
-      "description": "Rave · house · techno · future bass · future psychedelic beats · hiphop",
+      "description": "Rave · house · techno · future bass",
       "visual_channel_id": "fashion-social-uplift",
       "schedule": [
         {
@@ -1346,7 +1346,7 @@
     {
       "id": "modul8-infinity",
       "name": "modul8 infinity",
-      "identity": "rave / house / techno / future bass / future psychedelic beats / hiphop",
+      "identity": "rave / house / techno / future bass",
       "allowed_formats": [
         "videos",
         "parties",

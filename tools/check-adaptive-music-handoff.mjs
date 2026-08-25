@@ -27,6 +27,7 @@ const scienceControllerPath = path.join(IAM_DIR, 'science.js');
 const scienceCssPath = path.join(IAM_DIR, 'science.css');
 const djSetManifestPath = path.join(ROOT, 'cloudflare-stream-djset-upload-manifest.json');
 const televisionCssPath = path.join(IAM_DIR, 'adaptive-environment-television.css');
+const musicTrackCataloguePath = path.join(IAM_DIR, 'music-track-catalogue-v1.js');
 const programmeGuidePath = path.join(IAM_DIR, 'programme-guide.js');
 const programmeGuideCssPath = path.join(IAM_DIR, 'programme-guide.css');
 const broadcastSchedulePath = path.join(IAM_DIR, 'broadcast-schedule-v1.json');
@@ -157,6 +158,7 @@ const scienceController = await fs.readFile(scienceControllerPath, 'utf8');
 const scienceCss = await fs.readFile(scienceCssPath, 'utf8');
 const djSetManifest = JSON.parse(await fs.readFile(djSetManifestPath, 'utf8'));
 const televisionCss = await fs.readFile(televisionCssPath, 'utf8');
+const musicTrackCatalogue = await fs.readFile(musicTrackCataloguePath, 'utf8');
 const programmeGuide = await fs.readFile(programmeGuidePath, 'utf8');
 const programmeGuideCss = await fs.readFile(programmeGuideCssPath, 'utf8');
 const broadcastSchedule = JSON.parse(await fs.readFile(broadcastSchedulePath, 'utf8'));
@@ -225,6 +227,7 @@ const expectedEmdrThreeArtToken = `emdr-three-${createHash('sha256').update(emdr
 const expectedEmdrShaderToken = `emdr-shader-${createHash('sha256').update(emdrShader).digest('hex').slice(0, 12)}`;
 const expectedGlobeCacheToken = `globe-${createHash('sha256').update(globeController).digest('hex').slice(0, 12)}`;
 const expectedCssCacheToken = `music-tv-css-${createHash('sha256').update(televisionCss).digest('hex').slice(0, 12)}`;
+const expectedMusicTrackCatalogueToken = `music-track-catalogue-${createHash('sha256').update(musicTrackCatalogue).digest('hex').slice(0, 12)}`;
 const expectedProgrammeToken = `programme-guide-${createHash('sha256').update(programmeGuide).digest('hex').slice(0, 12)}`;
 const expectedProgrammeCssToken = `programme-guide-css-${createHash('sha256').update(programmeGuideCss).digest('hex').slice(0, 12)}`;
 const expectedRealtimeVoiceToken = `realtime-voice-${createHash('sha256').update(realtimeVoiceController).digest('hex').slice(0, 12)}`;
@@ -379,6 +382,9 @@ requireCondition(emdrShaderMatch?.[1] === expectedEmdrShaderToken, `the EMDR sha
 requireCondition(controller.includes(explicitSelectionMarker), 'the home controller no longer reads selected_track_id from the URL');
 requireCondition(indexPage.includes(`programme-guide.css?v=${expectedProgrammeCssToken}`), 'the live I AM app Program stylesheet cache token is stale');
 requireCondition(indexPage.includes(`programme-guide.js?v=${expectedProgrammeToken}`), 'the live I AM app Program controller cache token is stale');
+requireCondition(indexPage.includes(`music-track-catalogue-v1.js?v=${expectedMusicTrackCatalogueToken}`), 'the live I AM app shared music catalogue cache token is stale');
+requireCondition(indexPage.indexOf('music-track-catalogue-v1.js') < indexPage.indexOf('adaptive-environment-television.js'), 'the shared music catalogue no longer loads before the television runtime');
+requireCondition(controller.includes('Array.isArray(window.IAMTrackCatalogue?.tracks)') && controller.includes('window.IAMTrackCatalogue.tracks.map((track) => ({ ...track }))'), 'the television runtime no longer reads the shared music catalogue');
 requireCondition(indexPage.includes('class="adaptive-television-program-button"') && indexPage.includes('data-program-open') && indexPage.includes('>PROGRAM</button>'), 'the Music wallet no longer exposes the uppercase Program control');
 requireCondition(indexPage.includes('class="adaptive-television-home-program-button"') && indexPage.includes('>program</button>'), 'the primary wallet no longer exposes the lowercase one-click program pill');
 requireCondition(indexPage.includes('data-wallet-category="video" data-wallet-tooltip="tv" aria-label="TV — open television options"') && indexPage.includes('src="a s s e t s/TV icon.png?v=tv-wallet-1"') && !indexPage.includes('data-wallet-tooltip="mix"'), 'the wallet no longer exposes the approved tv label and icon');
@@ -400,7 +406,7 @@ requireCondition(televisionCss.includes('.adaptive-television-home-program-butto
 requireCondition(programmeGuide.includes('fetch("broadcast-schedule-v1.json?v=programme-guide-app-2"') && programmeGuide.includes('cache: "no-store"'), 'the Program popup no longer reads the live no-cache broadcast schedule');
 requireCondition(programmeGuide.includes('fetch("adaptive-music-video-catalogue-v1.11.json?v=programme-guide-app-2"') && programmeGuide.includes('fetch("radio-station-tensor-notion-export-v1.0.json?v=programme-guide-app-2"'), 'the Videos, Parties and Radio guides no longer read their canonical catalogues');
 requireCondition(programmeGuide.includes('window.IAMCueSheet?.metadataAt?.(trackId, 0)'), 'the Program schedule no longer resolves playback-catalogue metadata before using the Universal Mind fallback');
-const runtimeTrackMetadata = new Map(Array.from(controller.matchAll(/\{ id: "([^"]+)", artist: "([^"]+)", title: "([^"]+)"/g))
+const runtimeTrackMetadata = new Map(Array.from(musicTrackCatalogue.matchAll(/\{ id: "([^"]+)", artist: "([^"]+)", title: "([^"]+)"/g))
   .map((match) => [match[1], { artist: match[2], title: match[3] }]));
 const safetyCushionSchedule = broadcastSchedule.channels
   .find((channel) => channel.id === 'video-safety-cushion')?.schedule || [];
@@ -441,7 +447,7 @@ requireCondition(aboutController.includes('const musicTelevisionFrame = window.s
 requireCondition(aboutController.includes('window.__iamMusicTelevisionFrame = true;'), 'About no longer retains television continuity after cleaning its URL');
 requireCondition(aboutController.includes('const invalidEmbeddedRoute = !musicTelevisionFrame'), 'About can still escape the active television player');
 requireCondition(aboutController.includes('["adaptiveFrame", "musicTelevisionFrame", "aboutTopLevel"]'), 'About no longer removes its temporary routing parameters');
-requireCondition(controller.includes('id: "the-prodigy-everybody-in-the-place"'), 'the Prodigy track is missing from the television catalogue');
+requireCondition(musicTrackCatalogue.includes('id: "the-prodigy-everybody-in-the-place"'), 'the Prodigy track is missing from the shared television catalogue');
 requireCondition(controller.includes('document.body.dataset.adaptiveTrackId = track.id;'), 'the resolved track is not exposed for staging verification');
 requireCondition(!controller.includes('const DEFAULT_TRACK_ID = "madonna-frozen";'), 'the no-check-in experience still defaults to Madonna - Frozen');
 requireCondition(controller.includes('const NO_CHECKIN_RANDOM_EXCLUDED_TRACK_IDS = new Set(["madonna-frozen"]);'), 'Madonna - Frozen has not been removed from the no-check-in random pool');
@@ -860,18 +866,18 @@ for (const djSet of djSetFiles) {
     streamCatalogue.includes(`${JSON.stringify(djSet.fileName)}: ${JSON.stringify(djSet.uid)}`),
     `${djSet.fileName} is not connected to its Cloudflare Stream UID`
   );
-  requireCondition(controller.includes(djSet.fileName), `${djSet.fileName} is not selectable in the television catalogue`);
+  requireCondition(musicTrackCatalogue.includes(djSet.fileName), `${djSet.fileName} is not selectable in the shared television catalogue`);
 }
 requireCondition(
   streamCatalogue.includes('"Max Richter live at Cercle Odyssey, Paris, France.mp4": "2519e10718345a02e793736dde912307"'),
   "Max Richter is not connected to the verified Cloudflare Stream UID"
 );
-requireCondition(controller.includes('id: "max-richter-cercle-odyssey-paris"'), "Max Richter is not selectable in Inner Planes Parties");
+requireCondition(musicTrackCatalogue.includes('id: "max-richter-cercle-odyssey-paris"'), "Max Richter is not selectable in Inner Planes Parties");
 requireCondition(
   streamCatalogue.includes('"Ólafur Arnalds live from Hafursey, in Iceland for Cercle.mp4": "ab3bad1d63041842c5a485b0e6f04381"'),
   "Ólafur Arnalds is not connected to the verified Cloudflare Stream UID"
 );
-requireCondition(controller.includes('id: "olafur-arnalds-hafursey-iceland-cercle"'), "Ólafur Arnalds is not selectable in Inner Planes Parties");
+requireCondition(musicTrackCatalogue.includes('id: "olafur-arnalds-hafursey-iceland-cercle"'), "Ólafur Arnalds is not selectable in Inner Planes Parties");
 requireCondition(
   streamCatalogue.includes('"ISS - The Blue Pearl.mp4": "08d6983ef6584f2b8659ceaf0cfa248a"'),
   "Pearl is not connected to the verified Cloudflare Stream UID"

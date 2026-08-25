@@ -53,6 +53,7 @@ const policy = readJson("adaptive-music-trajectory-policy-v2.json");
 const schedule = readJson("broadcast-schedule-v1.json");
 const sources = readJson("universal-one-programme-sources-v1.json");
 const television = read("adaptive-environment-television.js");
+const sharedTrackCatalogue = read("music-track-catalogue-v1.js");
 const streamCatalogue = read("cloudflare-stream-catalogue.js");
 const guide = read("universal-one-programme-guide-v1.txt");
 const clock = read("broadcast-clock-v1.js");
@@ -89,7 +90,7 @@ for (const track of programmeTracks) {
   assert.equal(track.source_record_url.startsWith("https://app.notion.com/"), true);
   assert.equal(track.shop_eligible, false);
   assert.ok(policy.tracks?.[track.id]);
-  assert.match(television, new RegExp(`id: ${JSON.stringify(track.id)}`));
+  assert.match(sharedTrackCatalogue, new RegExp(`id: ${JSON.stringify(track.id)}`));
   assert.ok(streamCatalogue.includes(track.stream_uid));
 }
 
@@ -119,8 +120,8 @@ assert.equal(channel("video-james-bondage").schedule.at(-1).track_id, closerId);
 const grimesGenesis = catalogue.tracks.find((track) => track.id === "grimes-genesis");
 assert.equal(grimesGenesis.music_room, "modul8-infinity");
 assert.equal(grimesGenesis.tensor_profile?.runtime_delivery?.music_room, "modul8-infinity");
-assert.match(television, /\{ id: "grimes-genesis",[^\n]+musicRoom: "modul8-infinity" \}/);
-assert.doesNotMatch(television, /\{ id: "grimes-genesis",[^\n]+musicRoom: "james-bondage" \}/);
+assert.match(sharedTrackCatalogue, /\{ id: "grimes-genesis",[^\n]+musicRoom: "modul8-infinity" \}/);
+assert.doesNotMatch(sharedTrackCatalogue, /\{ id: "grimes-genesis",[^\n]+musicRoom: "james-bondage" \}/);
 assert.deepEqual(channel("party-james-bondage").schedule.map((entry) => [entry.track_id, entry.media_type]), [
   ["zip-perlon-air-festival-2007", "audio"],
   ["zip-sammy-d-perlon-betalounge-2000", "audio"],
@@ -198,5 +199,7 @@ const clockToken = `broadcast-clock-${sha12("broadcast-clock-v1.js")}`;
 assert.ok(index.includes(clockToken) && alternateEntry.includes(clockToken));
 const televisionToken = `music-tv-${sha12("adaptive-environment-television.js")}`;
 assert.ok(index.includes(televisionToken) && alternateEntry.includes(televisionToken));
+const sharedTrackCatalogueToken = `music-track-catalogue-${sha12("music-track-catalogue-v1.js")}`;
+assert.ok(index.includes(sharedTrackCatalogueToken) && alternateEntry.includes(sharedTrackCatalogueToken));
 
 console.log("Programme catalogue release checks passed: Notion/Tensor 25/25, exact routes, 18 live Rave cues, Bloom wallet recovery, and 108-occurrence modul8 infinity global week.");

@@ -725,9 +725,20 @@
     schedule = await scheduleResponse.json();
     const catalogue = await catalogueResponse.json();
     const stations = await stationsResponse.json();
-    catalogueTracks = new Map((Array.isArray(catalogue?.tracks) ? catalogue.tracks : [])
+    const fetchedTracks = (Array.isArray(catalogue?.tracks) ? catalogue.tracks : [])
       .filter((track) => track?.id)
-      .map((track) => [String(track.id), track]));
+      .map((track) => [String(track.id), track]);
+    const sharedTracks = (Array.isArray(window.IAMTrackCatalogue?.tracks) ? window.IAMTrackCatalogue.tracks : [])
+      .filter((track) => track?.id)
+      .map((track) => [String(track.id), {
+        ...track,
+        artist: track.displayArtist || track.artist,
+        title: track.displayTitle || track.title,
+        local_video_file: track.localVideoSrc || track.local_video_file || "",
+        stream_uid: track.streamUid || track.stream_uid || "",
+      }]);
+    if (standalone && !sharedTracks.length) throw new Error("Shared music track catalogue unavailable");
+    catalogueTracks = new Map([...fetchedTracks, ...sharedTracks]);
     radioStations = new Map((Array.isArray(stations?.records) ? stations.records : [])
       .filter((station) => station?.id)
       .map((station) => [String(station.id), station]));
