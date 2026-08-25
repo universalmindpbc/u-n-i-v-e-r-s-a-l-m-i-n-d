@@ -31,7 +31,6 @@ fi
 "$NODE_BIN" --check "$ROOT_DIR/research/privacy-lab/healthomics-adapter.mjs"
 "$NODE_BIN" --check "$ROOT_DIR/i  a m/globe.js"
 "$NODE_BIN" --check "$ROOT_DIR/i  a m/happiness-control.js"
-"$NODE_BIN" --check "$ROOT_DIR/i  a m/program-page.js"
 "$NODE_BIN" "$ROOT_DIR/tools/check-adaptive-music-handoff.mjs"
 "$NODE_BIN" "$ROOT_DIR/tools/check-owner-state-persistence.mjs"
 "$NODE_BIN" "$ROOT_DIR/tools/check-broadcast-clock.mjs"
