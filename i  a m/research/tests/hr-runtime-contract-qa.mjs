@@ -374,6 +374,10 @@ function createRouter(handoffEvidence, { unresolvedDeepARCleanup = false } = {})
       await route.fulfill({ status: 200, headers: pageHeaders(), contentType: "text/javascript", body: mockSdkModule() });
       return;
     }
+    if (path === "/vogue/iam/research/vendor/shenai-sdk/shenai_sdk.wasm") {
+      await route.fulfill({ status: 200, headers: pageHeaders(), contentType: "application/wasm", body: "qa-shen-warmup" });
+      return;
+    }
     if (path === "/vogue/iam/research/deepar-bright-glasses.js" && unresolvedDeepARCleanup) {
       await route.fulfill({ status: 200, headers: pageHeaders(), contentType: "text/javascript", body: mockUnresolvedDeepARControllerModule() });
       return;
@@ -390,12 +394,17 @@ function createRouter(handoffEvidence, { unresolvedDeepARCleanup = false } = {})
       ["/vogue/iam/styles.css", resolve(iamDirectory, "styles.css")],
       ["/vogue/iam/research/shen-heart-rate.css", resolve(researchDirectory, "shen-heart-rate.css")],
       ["/vogue/iam/research/shen-heart-rate.js", resolve(researchDirectory, "shen-heart-rate.js")],
+      ["/vogue/iam/research/heart-check-preload.js", resolve(researchDirectory, "heart-check-preload.js")],
       ["/vogue/iam/research/deepar-bright-glasses.js", resolve(researchDirectory, "deepar-bright-glasses.js")],
       ["/vogue/iam/research/shen-heart-recommendation.js", resolve(researchDirectory, "shen-heart-recommendation.js")],
       ["/vogue/iam/a s s e t s/Universal Mind [ I o H ] Logo 512.png", resolve(iamDirectory, "a s s e t s", "Universal Mind [ I o H ] Logo 512.png")],
     ]);
     if (files.has(path)) {
       await route.fulfill({ status: 200, headers: pageHeaders(), contentType: contentType(path), body: await readFile(files.get(path)) });
+      return;
+    }
+    if (path.startsWith("/vogue/iam/research/vendor/deepar-5.6.22/")) {
+      await route.fulfill({ status: 200, headers: pageHeaders(), contentType: contentType(path), body: "qa-deepar-warmup" });
       return;
     }
     if (path.endsWith("cloudflare-stream-catalogue.js") || path.endsWith("cloudflare-stream-controller.js")) {

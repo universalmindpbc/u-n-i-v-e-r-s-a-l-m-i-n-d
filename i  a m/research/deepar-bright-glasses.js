@@ -1,7 +1,7 @@
 const DEEPAR_LICENSE_ENDPOINT = "api/deepar-license.php";
 const DEEPAR_SDK_ROOT = new URL("./vendor/deepar-5.6.22/", import.meta.url).href;
 const DEEPAR_MODULE_URL = new URL("./vendor/deepar-5.6.22/js/deepar.esm.js", import.meta.url).href;
-const BRIGHT_GLASSES_EFFECT_URL = new URL("./effects/bright-glasses/bright-glasses.deepar", import.meta.url).href;
+const BRIGHT_GLASSES_EFFECT_URL = new URL("./effects/bright-glasses/bright-glasses.deepar?v=bright-glasses-c24e7216d54c", import.meta.url).href;
 
 export const deepARBrightGlassesContract = Object.freeze({
   sdk_version: "5.6.22",

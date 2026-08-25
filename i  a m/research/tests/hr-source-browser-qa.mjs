@@ -49,7 +49,13 @@ try {
   const localRouter = createLocalCandidateRouter(handoffEvidence);
 
   const checkInPage = await context.newPage();
+  let checkInWarmupRequests = 0;
   await checkInPage.route("**/*", localRouter);
+  checkInPage.on("request", (request) => {
+    if (new URL(request.url()).pathname.endsWith("/research/vendor/shenai-sdk/shenai_sdk.wasm")) {
+      checkInWarmupRequests += 1;
+    }
+  });
   await checkInPage.goto(`${proofOrigin}/vogue/iam/check-in-research.php`, { waitUntil: "domcontentloaded" });
   assert.deepEqual(await checkInPage.locator("[data-iam-next-page]").evaluateAll((elements) => (
     elements.map((element) => element.getAttribute("data-iam-next-page"))
@@ -58,6 +64,14 @@ try {
     "research.php?offer=heart-rate&selection_source=checkin",
   ]);
   assert.equal(await checkInPage.locator("[data-iam-form]").count(), 1);
+  await checkInPage.locator("[data-iam-start]").dispatchEvent("pointerdown");
+  await checkInPage.waitForFunction(() => (
+    performance.getEntriesByName(
+      "https://staging.universalmind.tv/vogue/iam/research/vendor/shenai-sdk/shenai_sdk.wasm?v=3.1.9-fb17342b16ff",
+    ).length > 0
+  ), null, { timeout: 5_000 }).catch(() => {});
+  assert.equal(checkInWarmupRequests, 1);
+  assert.equal(await checkInPage.evaluate(() => window.__hrQaMediaCalls?.length || 0), 0);
   await checkInPage.close();
 
   const skipEvidence = { tokenPosts: 0, cameraCalls: 0, destination: "" };
@@ -119,7 +133,7 @@ try {
     if (url.endsWith("/api/deepar-license.php") && request.method() === "POST") acceptEvidence.deepARLicensePosts += 1;
     if (url.includes("/research/vendor/shenai-sdk/")) acceptEvidence.sdkRequests += 1;
     if (url.endsWith("/research/vendor/deepar-5.6.22/js/deepar.esm.js")) acceptEvidence.deepARModuleRequests += 1;
-    if (url.endsWith("/research/effects/bright-glasses/bright-glasses.deepar")) acceptEvidence.deepAREffectRequests += 1;
+    if (new URL(url).pathname.endsWith("/research/effects/bright-glasses/bright-glasses.deepar")) acceptEvidence.deepAREffectRequests += 1;
   });
   acceptPage.on("requestfailed", (request) => {
     const url = request.url();
@@ -131,7 +145,7 @@ try {
     if (url.endsWith("/api/shen-token.php") && response.request().method() === "POST") {
       acceptEvidence.tokenStatus = response.status();
     }
-    if (url.endsWith("/research/vendor/shenai-sdk/shenai_sdk.wasm")) acceptEvidence.wasmRequests += 1;
+    if (new URL(url).pathname.endsWith("/research/vendor/shenai-sdk/shenai_sdk.wasm")) acceptEvidence.wasmRequests += 1;
     if (url.endsWith("/research/vendor/shenai-sdk/shenai_sdk.mjs")) {
       acceptEvidence.workerResponses += 1;
       const headers = await response.allHeaders();
@@ -150,8 +164,30 @@ try {
 
   await acceptPage.locator("[data-heart-rate-accept]").click();
   await acceptPage.locator("[data-heart-rate-loader]").waitFor({ state: "visible" });
-  assert.equal(await acceptPage.locator("[data-heart-rate-loading-label]").textContent(), "Loading");
+  assert.equal(await acceptPage.locator("[data-heart-rate-loading-label]").textContent(), "Preparing your Heart Check");
+  const loadingExperience = await acceptPage.locator("[data-shen-stage]").evaluate((element) => {
+    const stageStyles = getComputedStyle(element);
+    const loader = element.querySelector("[data-heart-rate-loader]");
+    return {
+      stageBackground: stageStyles.backgroundColor,
+      stageWidth: Math.round(element.getBoundingClientRect().width),
+      viewportWidth: window.innerWidth,
+      loaderBackground: getComputedStyle(loader).backgroundColor,
+      spinnerVisible: Boolean(loader.querySelector(".shen-heart-rate-loader__spinner")),
+      chanelStillVisible: getComputedStyle(document.querySelector(".background-video video")).opacity !== "0",
+    };
+  });
+  assert.equal(loadingExperience.stageBackground, "rgba(0, 0, 0, 0)");
+  assert.equal(loadingExperience.stageWidth, loadingExperience.viewportWidth);
+  assert.equal(loadingExperience.spinnerVisible, true);
+  assert.equal(loadingExperience.chanelStillVisible, true);
   await acceptPage.screenshot({ path: join(outputDirectory, "heart-check-loading.png"), fullPage: true });
+  await acceptPage.setViewportSize({ width: 390, height: 844 });
+  const mobileLoading = await acceptPage.locator("[data-heart-rate-loader]").boundingBox();
+  assert.ok(mobileLoading);
+  assert.ok(mobileLoading.x >= 0 && mobileLoading.x + mobileLoading.width <= 390);
+  await acceptPage.screenshot({ path: join(outputDirectory, "heart-check-loading-mobile.png"), fullPage: true });
+  await acceptPage.setViewportSize({ width: 1440, height: 1040 });
 
   try {
     await acceptPage.locator('[data-shen-stage][data-state="measurement"]').waitFor({ state: "visible", timeout: 30_000 });
@@ -385,10 +421,10 @@ try {
   assert.equal(acceptEvidence.tokenPosts, 1);
   assert.equal(acceptEvidence.tokenStatus, 200);
   assert.equal(acceptEvidence.deepARLicensePosts, 1);
-  assert.equal(acceptEvidence.deepARModuleRequests, 1);
-  assert.equal(acceptEvidence.deepAREffectRequests, 1);
+  assert.ok(acceptEvidence.deepARModuleRequests >= 1);
+  assert.ok(acceptEvidence.deepAREffectRequests >= 1);
   assert.ok(acceptEvidence.sdkRequests >= 3);
-  assert.equal(acceptEvidence.wasmRequests, 1);
+  assert.ok(acceptEvidence.wasmRequests >= 1);
   assert.ok(acceptEvidence.workerResponses >= 1);
   assert.equal(acceptEvidence.workerHeaderFailures, 0);
   assert.deepEqual(acceptEvidence.sameOriginFailures, []);
@@ -412,7 +448,11 @@ try {
   process.stdout.write(`${JSON.stringify({
     status: "PASS",
     processFlagsVerifiedBeforeNavigation: processProof.length > 0,
-    checkIn: "canonical renderer destination present",
+    checkIn: {
+      canonicalRendererDestinationPresent: true,
+      shenWarmupStartedBeforeHeartCheck: checkInWarmupRequests === 1,
+      cameraCalls: 0,
+    },
     disclosure: "one concise Universal Mind camera and on-device privacy prompt",
     skip: skipEvidence,
     accept: {
@@ -595,6 +635,7 @@ function createLocalCandidateRouter(handoffEvidence) {
       ["/vogue/iam/styles.css", resolve(iamDirectory, "styles.css")],
       ["/vogue/iam/research/shen-heart-rate.css", resolve(researchDirectory, "shen-heart-rate.css")],
       ["/vogue/iam/research/shen-heart-rate.js", resolve(researchDirectory, "shen-heart-rate.js")],
+      ["/vogue/iam/research/heart-check-preload.js", resolve(researchDirectory, "heart-check-preload.js")],
       ["/vogue/iam/research/deepar-bright-glasses.js", resolve(researchDirectory, "deepar-bright-glasses.js")],
       ["/vogue/iam/research/shen-heart-recommendation.js", resolve(researchDirectory, "shen-heart-recommendation.js")],
       ["/vogue/iam/adaptive-sound/session-v1.js", resolve(iamDirectory, "adaptive-sound", "session-v1.js")],
@@ -614,6 +655,11 @@ function createLocalCandidateRouter(handoffEvidence) {
         "Cross-Origin-Embedder-Policy": "require-corp",
         "Cross-Origin-Resource-Policy": "same-origin",
       });
+      return;
+    }
+
+    if (path.startsWith("/vogue/iam/research/vendor/deepar-5.6.22/")) {
+      await route.fulfill({ status: 200, contentType: contentTypeFor(path), body: "qa-deepar-warmup" });
       return;
     }
 

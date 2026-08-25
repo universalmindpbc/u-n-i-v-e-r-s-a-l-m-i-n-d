@@ -5,4 +5,5 @@
   Header always set Cross-Origin-Embedder-Policy "require-corp"
   Header always set Cross-Origin-Resource-Policy "same-origin"
   Header always set X-Content-Type-Options "nosniff"
+  Header always set Cache-Control "public, max-age=31536000, immutable"
 </IfModule>

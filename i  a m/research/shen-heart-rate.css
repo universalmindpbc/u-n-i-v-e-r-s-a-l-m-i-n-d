@@ -24,6 +24,16 @@
   transform: translate(-50%, -50%);
 }
 
+.shen-heart-rate-stage[data-state="loading"] {
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  background: transparent;
+  transform: none;
+  pointer-events: none;
+}
+
 .shen-heart-rate-stage #mxcanvas {
   position: absolute;
   inset: 50% auto auto 50%;
@@ -190,51 +200,52 @@
 }
 
 .shen-heart-rate-loader {
-  position: absolute;
-  inset: 0;
+  position: fixed;
+  left: 50%;
+  bottom: max(42px, 7svh);
   z-index: 6;
-  display: grid;
-  place-content: center;
-  justify-items: center;
-  gap: 15px;
-  background: rgba(247, 247, 245, 0.98);
-  color: #0b1525;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  max-width: calc(100vw - 40px);
+  padding: 9px 14px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 999px;
+  background: rgba(5, 10, 16, 0.48);
+  color: rgba(255, 255, 255, 0.9);
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  transform: translateX(-50%);
+  backdrop-filter: blur(8px);
 }
 
 .shen-heart-rate-loader[hidden] {
   display: none;
 }
 
-.shen-heart-rate-loader img {
-  width: clamp(58px, 9vw, 84px);
-  height: auto;
+.shen-heart-rate-loader__spinner {
+  width: 13px;
+  height: 13px;
+  flex: 0 0 auto;
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  border-top-color: rgba(255, 255, 255, 0.94);
+  border-radius: 50%;
+  animation: shen-heart-rate-loader-spin 820ms linear infinite;
 }
 
 .shen-heart-rate-loader p {
+  min-width: 0;
   margin: 0;
-  font-size: 15px;
-  font-weight: 300;
-  letter-spacing: 0.08em;
-}
-
-.shen-heart-rate-loader__track {
-  width: min(210px, 62%);
-  height: 2px;
   overflow: hidden;
-  background: rgba(11, 21, 37, 0.12);
+  font-size: 11px;
+  font-weight: 300;
+  letter-spacing: 0.045em;
+  line-height: 1.35;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
-.shen-heart-rate-loader__track[hidden] {
-  display: none;
-}
-
-.shen-heart-rate-loader__track span {
-  display: block;
-  width: 0;
-  height: 100%;
-  background: rgba(44, 168, 184, 0.82);
-  transition: width 120ms linear;
+@keyframes shen-heart-rate-loader-spin {
+  to { transform: rotate(360deg); }
 }
 
 .shen-heart-rate-offer .induction-permission__panel {

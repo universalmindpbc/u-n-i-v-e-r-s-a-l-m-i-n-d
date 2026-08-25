@@ -20,7 +20,7 @@ header('X-Robots-Tag: noindex, nofollow');
     <title>Heart Check | I AM</title>
     <link rel="icon" type="image/png" sizes="32x32" href="/vogue/iam/favicon.png?v=iam-favicon-4">
     <link rel="stylesheet" href="styles.css?v=global-nav-single-shell-2-technology-submenu-133pct-normal-1">
-    <link rel="stylesheet" href="research/shen-heart-rate.css?v=shen-heart-rate-css-8feeb4e93652">
+    <link rel="stylesheet" href="research/shen-heart-rate.css?v=shen-heart-rate-css-444fb97bd4f9">
   </head>
   <body class="shen-heart-rate-page">
     <main class="site-shell" aria-label="Universal Mind I AM heart-rate research">
@@ -42,12 +42,9 @@ header('X-Robots-Tag: noindex, nofollow');
         <div class="scene-veil" aria-hidden="true"></div>
 
         <section class="shen-heart-rate-stage" data-shen-stage data-state="loading" aria-label="Heart-rate check" hidden>
-          <div class="shen-heart-rate-loader" data-heart-rate-loader aria-live="polite">
-            <img src="a s s e t s/Universal Mind [ I o H ] Logo 512.png" alt="" decoding="async">
-            <p data-heart-rate-loading-label>Loading</p>
-            <div class="shen-heart-rate-loader__track" data-heart-rate-loading-track role="progressbar" aria-label="Loading Heart Check" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
-              <span data-heart-rate-loading-progress></span>
-            </div>
+          <div class="shen-heart-rate-loader" data-heart-rate-loader aria-live="polite" aria-atomic="true">
+            <span class="shen-heart-rate-loader__spinner" aria-hidden="true"></span>
+            <p data-heart-rate-loading-label>Preparing your Heart Check</p>
           </div>
           <canvas id="mxcanvas" aria-label="Heart-rate measurement interface"></canvas>
           <canvas class="shen-heart-rate-shen-plane shen-heart-rate-shen-plane--upper" data-shen-visual-plane="upper" aria-hidden="true" hidden></canvas>
@@ -105,6 +102,6 @@ header('X-Robots-Tag: noindex, nofollow');
 
     <script src="cloudflare-stream-catalogue.js?v=stream-catalogue-20ad6337934c"></script>
     <script src="cloudflare-stream-controller.js?v=stream-controller-e6ed1b827651"></script>
-    <script type="module" src="research/shen-heart-rate.js?v=shen-heart-rate-js-0c2aad795417"></script>
+    <script type="module" src="research/shen-heart-rate.js?v=shen-heart-rate-js-35dfd7f791b8"></script>
   </body>
 </html>

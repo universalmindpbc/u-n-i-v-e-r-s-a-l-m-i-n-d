@@ -5,8 +5,12 @@ import CreateShenaiSDK, {
   PrecisionMode,
   UiVersion,
 } from "./vendor/shenai-sdk/index.mjs";
-import { createDeepARBrightGlasses } from "./deepar-bright-glasses.js?v=deepar-bright-glasses-js-527f474c6210";
+import { createDeepARBrightGlasses } from "./deepar-bright-glasses.js?v=deepar-bright-glasses-js-d622e574d883";
 import { handoffHeartCheckToHomepage } from "./shen-heart-recommendation.js?v=b3324d1c790c";
+import {
+  heartCheckShenWasmUrl,
+  warmHeartCheckAssets,
+} from "./heart-check-preload.js?v=heart-check-preload-78750d6b05f6";
 
 const offer = document.querySelector("[data-heart-rate-offer]");
 const offerPanel = document.querySelector("[data-heart-rate-offer-panel]");
@@ -16,8 +20,7 @@ const stage = document.querySelector("[data-shen-stage]");
 const canvas = document.querySelector("#mxcanvas");
 const loader = document.querySelector("[data-heart-rate-loader]");
 const loadingLabel = document.querySelector("[data-heart-rate-loading-label]");
-const loadingTrack = document.querySelector("[data-heart-rate-loading-track]");
-const loadingProgress = document.querySelector("[data-heart-rate-loading-progress]");
+const backgroundVideo = document.querySelector("[data-stream-role=\"fashion\"]");
 const liveHeartRate = document.querySelector("[data-heart-rate-live]");
 const liveHeartRateValue = document.querySelector("[data-heart-rate-live-value]");
 const deepARPreview = document.querySelector("[data-heart-rate-deepar]");
@@ -46,6 +49,7 @@ let cameraLifecycle = 0;
 let shenCompositorFrame = 0;
 let shenCompositorActive = false;
 let shenCompositorLastFrameAt = 0;
+let loadingSequenceTimers = [];
 
 const FINAL_READING_HOLD_MS = 2200;
 const SHEN_COMPOSITOR_FRAME_MS = 1000 / 24;
@@ -124,14 +128,31 @@ function createTransientMeasurementId() {
 
 function setLoadingProgress(progress) {
   const bounded = Math.max(0, Math.min(100, Number(progress) || 0));
-  loadingProgress.style.width = `${bounded}%`;
-  loadingTrack.setAttribute("aria-valuenow", String(Math.round(bounded)));
+  stage.dataset.shenLoadingProgress = String(Math.round(bounded));
+  if (bounded >= 92 && stage.dataset.state === "loading") {
+    loadingLabel.textContent = "Almost ready";
+  }
 }
 
-function showLoader(label, { showProgress = true } = {}) {
+function stopLoadingSequence() {
+  loadingSequenceTimers.forEach((timer) => window.clearTimeout(timer));
+  loadingSequenceTimers = [];
+}
+
+function showLoader(label) {
+  stopLoadingSequence();
   loadingLabel.textContent = label;
-  loadingTrack.hidden = !showProgress;
   loader.hidden = false;
+  loadingSequenceTimers = [
+    window.setTimeout(() => {
+      if (stage.dataset.state === "loading") {
+        loadingLabel.textContent = "Setting up private on-device processing";
+      }
+    }, 4200),
+    window.setTimeout(() => {
+      if (stage.dataset.state === "loading") loadingLabel.textContent = "Almost ready";
+    }, 9800),
+  ];
 }
 
 function stopShenPixelCompositor() {
@@ -200,6 +221,7 @@ function startShenPixelCompositor() {
 }
 
 function showMeasurementInterface() {
+  stopLoadingSequence();
   stage.dataset.state = "measurement";
   stage.dataset.shenVisualizationConfig = "face-map-and-blood-flow";
   stage.dataset.shenMeasurement = "quick-heart-rate-10-seconds";
@@ -326,6 +348,7 @@ async function releaseShen() {
   const activeDeepAR = deepARSession;
   shenaiSDK = null;
   deepARSession = null;
+  stopLoadingSequence();
   stopLiveHeartRateMonitor();
   stopShenPixelCompositor();
   deepARPreview.hidden = true;
@@ -469,8 +492,9 @@ async function beginShenMeasurement() {
   hideOffer();
   stage.hidden = false;
   stage.dataset.state = "loading";
-  showLoader("Loading");
+  showLoader("Preparing your Heart Check");
   setLoadingProgress(0);
+  void warmHeartCheckAssets();
 
   try {
     transientMeasurementId = createTransientMeasurementId();
@@ -486,6 +510,10 @@ async function beginShenMeasurement() {
       enablePreloadDisplay: false,
       hidePreloadDisplayLogo: true,
       onWasmLoadingProgress: setLoadingProgress,
+      locateFile(path, prefix) {
+        if (path === "shenai_sdk.wasm") return heartCheckShenWasmUrl;
+        return new URL(path, prefix || import.meta.url).href;
+      },
     });
     const token = await tokenPromise;
     await initializeWithToken(token);
@@ -518,4 +546,12 @@ window.addEventListener("pagehide", releaseShen);
 
 clearLegacyHeartData();
 revealExistingBrand();
+const beginWarmup = () => { void warmHeartCheckAssets(); };
+if (backgroundVideo?.readyState >= 2) beginWarmup();
+else {
+  ["loadeddata", "canplay", "playing"].forEach((eventName) => {
+    backgroundVideo?.addEventListener(eventName, beginWarmup, { once: true });
+  });
+  window.setTimeout(beginWarmup, 1800);
+}
 window.setTimeout(() => offerPanel.focus({ preventScroll: true }), 0);

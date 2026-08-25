@@ -18,12 +18,14 @@ const sha256 = async (path) => createHash("sha256").update(await readFile(path))
 test("research check-in renders the canonical page instead of duplicating it", async () => {
   const source = await read(resolve(iamDirectory, "check-in-research.php"));
   const canonical = await read(resolve(iamDirectory, "vogue-self-report.html"));
+  const preloadToken = (await sha256(resolve(researchDirectory, "heart-check-preload.js"))).slice(0, 12);
   assert.match(source, /file_get_contents\(\$canonicalPath\)/);
   assert.match(source, /vogue-self-report\.html/);
   assert.match(source, /data-iam-next-page/);
   assert.match(source, /research\.php\?offer=heart-rate&selection_source=checkin/);
   assert.doesNotMatch(source, /data-iam-form|vogue-report-lockup|How are you arriving/);
   assert.equal((canonical.match(/data-iam-next-page="research\.php\?offer=heart-rate&amp;selection_source=checkin"/g) || []).length, 2);
+  assert.match(canonical, new RegExp(`heart-check-preload\\.js\\?v=heart-check-preload-${preloadToken}`));
   assert.doesNotMatch(canonical, /data-iam-next-page="index\.html/);
 });
 
@@ -53,7 +55,8 @@ test("research page is the existing I AM scene with one compact native prompt", 
   assert.equal((page.match(/data-shen-visual-plane=/g) || []).length, 2);
   assert.match(page, /Your heart rate/);
   assert.match(page, /Universal Mind \[ I o H \] Logo 512\.png/);
-  assert.match(page, />Loading</);
+  assert.match(page, />Preparing your Heart Check</);
+  assert.doesNotMatch(page, /data-heart-rate-loading-track|data-heart-rate-loading-progress|>Loading</);
   assert.match(page, new RegExp(`shen-heart-rate\\.css\\?v=shen-heart-rate-css-${cssToken}`));
   assert.match(page, new RegExp(`shen-heart-rate\\.js\\?v=shen-heart-rate-js-${controllerToken}`));
   assert.equal((page.match(/role="dialog"/g) || []).length, 1);
@@ -63,6 +66,9 @@ test("research page is the existing I AM scene with one compact native prompt", 
   assert.match(css, /--shen-canvas-size/);
   assert.match(css, /width:\s*calc\(var\(--shen-canvas-size\) \* 0\.52\)/);
   assert.match(css, /overflow:\s*hidden/);
+  assert.match(css, /data-state="loading"[^}]*width:\s*100%[^}]*height:\s*100%[^}]*background:\s*transparent/s);
+  assert.match(css, /\.shen-heart-rate-loader__spinner\s*\{/);
+  assert.match(css, /@keyframes shen-heart-rate-loader-spin/);
   assert.match(css, /\.shen-heart-rate-live\s*\{/);
   assert.match(css, /\.shen-heart-rate-result\s*\{/);
   assert.match(css, /\.shen-heart-rate-deepar\s*\{/);
@@ -81,6 +87,35 @@ test("research page is the existing I AM scene with one compact native prompt", 
   assert.match(css, /\.shen-heart-rate-offer \.induction-permission__actions \.shen-heart-rate-offer__secondary\s*\{[^}]*font-size:\s*10\.5px[^}]*font-weight:\s*400/s);
   assert.doesNotMatch(css, /shen-heart-rate-attribution/);
   assert.doesNotMatch(page, /<svg|heart-check-glasses-lens|heart-check-glasses-frame|licenseKey/i);
+});
+
+test("Heart Check warms the versioned on-device engines before the scan and caches immutable vendor assets", async () => {
+  const page = await read(resolve(iamDirectory, "research.php"));
+  const selfReport = await read(resolve(iamDirectory, "vogue-self-report.html"));
+  const controller = await read(resolve(researchDirectory, "shen-heart-rate.js"));
+  const preloader = await read(resolve(researchDirectory, "heart-check-preload.js"));
+  const sdkHeaders = await read(resolve(researchDirectory, "vendor", "shenai-sdk", ".htaccess"));
+  const deepARHeaders = await read(resolve(researchDirectory, "vendor", "deepar-5.6.22", ".htaccess"));
+  const effectHeaders = await read(resolve(researchDirectory, "effects", "bright-glasses", ".htaccess"));
+
+  assert.match(selfReport, /research\/heart-check-preload\.js\?v=heart-check-preload-/);
+  assert.match(preloader, /pointerdown/);
+  assert.match(preloader, /data-iam-input/);
+  assert.match(preloader, /shenai_sdk\.wasm\?v=\$\{SHEN_BUILD\}/);
+  assert.match(preloader, /models\/face\/models-68-extreme\.bin/);
+  assert.match(preloader, /effects\/bright-glasses\/bright-glasses\.deepar/);
+  assert.match(preloader, /cache:\s*"force-cache"/);
+  assert.match(controller, /warmHeartCheckAssets/);
+  assert.match(controller, /loadeddata.*canplay.*playing/s);
+  assert.match(controller, /Preparing your Heart Check/);
+  assert.match(controller, /Setting up private on-device processing/);
+  assert.match(controller, /Almost ready/);
+  assert.match(controller, /locateFile\(path, prefix\)/);
+  assert.match(controller, /path === "shenai_sdk\.wasm"/);
+  assert.match(page, /shen-heart-rate-loader__spinner/);
+  [sdkHeaders, deepARHeaders, effectHeaders].forEach((headers) => {
+    assert.match(headers, /Cache-Control "public, max-age=31536000, immutable"/);
+  });
 });
 
 test("browser controller delegates the supported 10-second Quick HR face-map measurement to Shen", async () => {
