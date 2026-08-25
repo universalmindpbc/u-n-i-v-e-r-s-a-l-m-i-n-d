@@ -8,6 +8,7 @@ const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const IAM_DIR = path.join(ROOT, "i  a m");
 const schedule = JSON.parse(await fs.readFile(path.join(IAM_DIR, "broadcast-schedule-v1.json"), "utf8"));
 const controller = await fs.readFile(path.join(IAM_DIR, "adaptive-environment-television.js"), "utf8");
+const trackCatalogue = await fs.readFile(path.join(IAM_DIR, "music-track-catalogue-v1.js"), "utf8");
 const clockController = await fs.readFile(path.join(IAM_DIR, "broadcast-clock-v1.js"), "utf8");
 const streamCatalogue = await fs.readFile(path.join(IAM_DIR, "cloudflare-stream-catalogue.js"), "utf8");
 const index = await fs.readFile(path.join(IAM_DIR, "index.html"), "utf8");
@@ -156,14 +157,14 @@ for (const channel of schedule.channels) {
     assert.equal(channel.media_type, "video");
     for (const entry of channel.schedule) {
       assert.equal(Number(entry.duration_seconds), videoDurations.get(entry.track_id), `${entry.track_id} must use its measured HLS duration.`);
-      assert.match(controller, new RegExp(`id: "${entry.track_id}"`), `${entry.track_id} must exist in the player catalogue.`);
+      assert.match(trackCatalogue, new RegExp(`id: "${entry.track_id}"`), `${entry.track_id} must exist in the shared player catalogue.`);
       scheduledVideos.push(entry.track_id);
     }
   } else if (channel.format === "parties") {
     assert.ok(["video", "audio"].includes(channel.media_type));
     for (const entry of channel.schedule) {
       assert.equal(Number(entry.duration_seconds), djDurations.get(entry.track_id), `${entry.track_id} must use its encoded HLS duration.`);
-      assert.match(controller, new RegExp(`id: "${entry.track_id}"`), `${entry.track_id} must exist in the player catalogue.`);
+      assert.match(trackCatalogue, new RegExp(`id: "${entry.track_id}"`), `${entry.track_id} must exist in the shared player catalogue.`);
       scheduledDjSets.push(entry.track_id);
       const owners = scheduledDjSetChannels.get(entry.track_id) || new Set();
       owners.add(channel.id);
@@ -258,7 +259,7 @@ assert.deepEqual(
   "Safety Cushion must contain the exact 21 approved videos in one continuous cycle."
 );
 for (const asset of safetyCushionVideoAssets) {
-  assert.ok(controller.includes(`id: "${asset.trackId}"`) && controller.includes(`a s s e t s/${asset.fileName}`), `${asset.trackId} must resolve to its approved player filename.`);
+  assert.ok(trackCatalogue.includes(`id: "${asset.trackId}"`) && trackCatalogue.includes(`a s s e t s/${asset.fileName}`), `${asset.trackId} must resolve to its approved shared player filename.`);
   assert.ok(streamCatalogue.includes(`${JSON.stringify(asset.fileName)}: ${JSON.stringify(asset.uid)}`), `${asset.fileName} must resolve to its exact Cloudflare Stream UID.`);
 }
 assert.ok(!scheduledVideos.includes("nine-inch-nails-closer-glastonbury-2026"), "The unverified Nine Inch Nails item must stay outside the shared broadcast.");
