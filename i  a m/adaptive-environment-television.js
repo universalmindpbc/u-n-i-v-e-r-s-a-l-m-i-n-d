@@ -454,11 +454,12 @@
   const RADIO_FASHION_REVEAL_BUFFER_SECONDS = 4;
   const RECORDED_PROGRAMME_PRIME_BUFFER_SECONDS = 4;
   const RECORDED_PROGRAMME_READY_BUFFER_SECONDS = 24;
-  const SEX_ED_RECORDED_PROGRAMME_READY_BUFFER_SECONDS = 8;
+  const SEX_ED_RECORDED_PROGRAMME_READY_BUFFER_SECONDS = 4;
   const RADIO_READY_BUFFER_SECONDS = 24;
   const RADIO_LOW_BUFFER_SECONDS = 12;
   const RADIO_BUFFER_WAIT_MS = 12000;
   const AUDIO_PARTY_START_TIMEOUT_MS = 18000;
+  const SEX_ED_AUDIO_PARTY_START_TIMEOUT_MS = 30000;
   const RADIO_LIVE_SYNC_SEGMENTS = 4;
   const RADIO_MAX_LIVE_LATENCY_SEGMENTS = 5;
   const RADIO_DIRECT_STALL_MS = 6000;
@@ -469,6 +470,7 @@
   const RADIO_SEGMENT_CROSSFADE_SECONDS = .035;
   const RADIO_SEGMENT_POLL_MS = 3000;
   const SEX_ED_PROGRAMME_MIX_LEVEL = .15;
+  const SEX_ED_BROADCAST_CHANNEL_ID = "sex-ed";
   const VOICE_ASSISTANT_PROGRAMME_MIX_LEVEL = .15;
   const SEX_ED_DEFAULT_BACKGROUND_FILE = "a s s e t s/f a s h i o n [ r u n w a y ]/Mugler - Fall Winter 2021.mp4";
   let continuationAudio = null;
@@ -476,6 +478,7 @@
   let continuationSegmentPlayer = null;
   let continuationAudioSource = "";
   let radioHlsLibraryPromise = null;
+  const recordedProgrammeAudioRenditions = new Map();
   let radioHlsAttachSequence = 0;
   let radioPlaybackCleanup = null;
   let radioBufferMonitor = 0;
@@ -4003,6 +4006,24 @@
     return resolveHlsChildUrl(uri, masterUrl);
   }
 
+  function loadRecordedProgrammeAudioRendition(source) {
+    const cached = recordedProgrammeAudioRenditions.get(source);
+    if (cached) return cached;
+    const request = fetchRadioResource(source)
+      .then((masterPlaylist) => {
+        const audioRendition = resolveHlsAudioRendition(masterPlaylist, source);
+        if (!audioRendition) throw new Error("The recorded programme has no audio rendition.");
+        return audioRendition;
+      });
+    recordedProgrammeAudioRenditions.set(source, request);
+    request.catch(() => {
+      if (recordedProgrammeAudioRenditions.get(source) === request) {
+        recordedProgrammeAudioRenditions.delete(source);
+      }
+    });
+    return request;
+  }
+
   function parseHlsSegmentUrls(playlist, mediaUrl) {
     const lines = String(playlist || "").split(/\r?\n/);
     return lines
@@ -4495,10 +4516,7 @@
     }
     let playbackSource = source;
     if (recordedProgramme) {
-      const masterPlaylist = await fetchRadioResource(source);
-      const audioRendition = resolveHlsAudioRendition(masterPlaylist, source);
-      if (!audioRendition) throw new Error("The recorded programme has no audio rendition.");
-      playbackSource = audioRendition;
+      playbackSource = await loadRecordedProgrammeAudioRendition(source);
       document.body.dataset.radioRecordedRendition = "audio_only";
     }
     const hls = new Hls(hlsConfig);
@@ -5205,14 +5223,26 @@
       ) {
         document.body.dataset.broadcastCorrection = "programme_rollover";
         if (!musicSwitching) {
-          const visualJoined = await joinFashionBroadcastChannel(state.visualChannelId || "fashion-underground-intensity", {
+          const sexEdOwnsVisuals = broadcastChannelId === SEX_ED_BROADCAST_CHANNEL_ID;
+          const sexEdLoadingGeneration = sexEdOwnsVisuals ? beginChannelLoading({
+            mode: "sex-ed",
+            item: scheduledTrack,
+            channelName: "sex-ed",
+            source: "sex_ed_rollover",
+            force: true,
+          }) : 0;
+          const visualJoined = sexEdOwnsVisuals || await joinFashionBroadcastChannel(state.visualChannelId || "fashion-underground-intensity", {
             source: "audio_party_visual_pair",
             pairingSource: `party_${state.editorialId || state.energyId}`,
           });
           if (visualJoined) {
             await startAudioLedParty(scheduledTrack, {
-              source: "broadcast_rollover",
+              source: sexEdOwnsVisuals ? "sex_ed_rollover" : "broadcast_rollover",
               broadcastChannelId,
+              channelLoadingGeneration: sexEdLoadingGeneration || undefined,
+              visualAlreadyManaged: sexEdOwnsVisuals,
+              readyBufferSeconds: sexEdOwnsVisuals ? SEX_ED_RECORDED_PROGRAMME_READY_BUFFER_SECONDS : undefined,
+              startTimeoutMs: sexEdOwnsVisuals ? SEX_ED_AUDIO_PARTY_START_TIMEOUT_MS : undefined,
             });
           }
           rankMusicShelves();
@@ -5359,7 +5389,7 @@
       });
       if (joinSequence !== broadcastJoinSequence || broadcastChannelId !== channelId) return false;
     } else if (state.mediaType === "audio") {
-      const sexEdOwnsVisuals = options.source === "sex_ed_episode";
+      const sexEdOwnsVisuals = channelId === SEX_ED_BROADCAST_CHANNEL_ID || options.source === "sex_ed_episode";
       if (!sexEdOwnsVisuals) {
         const visualJoined = await joinFashionBroadcastChannel(state.visualChannelId || "fashion-underground-intensity", {
           source: "audio_party_visual_pair",
@@ -5380,6 +5410,7 @@
         deferChannelLoadingFinish: true,
         visualAlreadyManaged: sexEdOwnsVisuals,
         readyBufferSeconds: sexEdOwnsVisuals ? SEX_ED_RECORDED_PROGRAMME_READY_BUFFER_SECONDS : undefined,
+        startTimeoutMs: sexEdOwnsVisuals ? SEX_ED_AUDIO_PARTY_START_TIMEOUT_MS : undefined,
       });
       if (joinSequence !== broadcastJoinSequence || broadcastChannelId !== channelId) return false;
       if (!started) return false;
@@ -5534,14 +5565,16 @@
   }
 
   function markAudioLedPartyUnavailable(nextTrack, loadingGeneration, error) {
+    const sexEdProgramme = broadcastChannelId === SEX_ED_BROADCAST_CHANNEL_ID;
     stopContinuationAudioImmediately();
     document.body.classList.remove("television-radio-continuation", "television-audio-party");
     document.body.dataset.audioPartyPlaybackState = "unavailable";
     document.body.dataset.audioPartyStreamSemantics = "recorded_programme";
     document.body.dataset.audioPartyPlaybackError = String(error?.message || error).slice(0, 140);
-    document.body.dataset.audioPartyRecovery = "select_james_bondage_again";
+    document.body.dataset.audioPartyRecovery = sexEdProgramme ? "reopen_sex_ed_episode" : "select_james_bondage_again";
     failChannelLoading(loadingGeneration);
-    showMusicShelfStatus(`${nextTrack.displayArtist || nextTrack.artist} · mix unavailable — select james bondage to retry`, 6000);
+    const recoveryCopy = sexEdProgramme ? "reopen the sex-ed episode to retry" : "select james bondage to retry";
+    showMusicShelfStatus(`${nextTrack.displayArtist || nextTrack.artist} · mix unavailable — ${recoveryCopy}`, 6000);
   }
 
   async function startAudioLedParty(nextTrack, options = {}) {
@@ -5549,6 +5582,9 @@
     const startSequence = ++audioPartyStartSequence;
     let timeout = 0;
     const startup = startAudioLedPartyAttempt(nextTrack, options, startSequence);
+    const startTimeoutMs = Number.isFinite(Number(options.startTimeoutMs))
+      ? Math.max(AUDIO_PARTY_START_TIMEOUT_MS, Number(options.startTimeoutMs))
+      : AUDIO_PARTY_START_TIMEOUT_MS;
     const timedOut = new Promise((resolve) => {
       timeout = window.setTimeout(() => {
         if (startSequence !== audioPartyStartSequence) return;
@@ -5560,7 +5596,7 @@
           new Error("The mix did not become ready in time.")
         );
         resolve(false);
-      }, AUDIO_PARTY_START_TIMEOUT_MS);
+      }, startTimeoutMs);
     });
     const started = await Promise.race([startup, timedOut]);
     window.clearTimeout(timeout);
@@ -5588,6 +5624,10 @@
       0,
       shopIndependent ? SHOP_ARRIVAL_FADE_IN_MS : Number(options.fadeInMs) || 0
     );
+    if (!nextTrack.hlsVideoSrc && !window.IAMCloudflareStream && window.IAMStreamReady) {
+      try { await window.IAMStreamReady; } catch {}
+      assertCurrentStart();
+    }
     const streamAsset = window.IAMCloudflareStream?.assetFor(nextTrack.localVideoSrc);
     const source = nextTrack.hlsVideoSrc || streamAsset?.hls || "";
     if (!source) {
@@ -6914,10 +6954,25 @@
     sexEdShelf.removeAttribute("inert");
     document.body.classList.add("sex-ed-shelf-open");
     sexEdLink?.setAttribute("aria-expanded", "true");
+    prewarmSexEdAudioProgramme();
     window.setTimeout(() => {
       updateSexEdShelfPosition();
       sexEdCards[0]?.focus({ preventScroll: true });
     }, 90);
+  }
+
+  async function prewarmSexEdAudioProgramme() {
+    try {
+      await window.IAMStreamReady;
+      await window.IAMBroadcastClock?.ready;
+      const state = window.IAMBroadcastClock?.stateAt?.(SEX_ED_BROADCAST_CHANNEL_ID);
+      const scheduledTrack = state?.mediaType === "audio" ? findTrack(state.trackId) : null;
+      const streamAsset = scheduledTrack ? window.IAMCloudflareStream?.assetFor(scheduledTrack.localVideoSrc) : null;
+      const source = scheduledTrack?.hlsVideoSrc || streamAsset?.hls || "";
+      if (!source) return;
+      loadRadioHlsLibrary().catch(() => {});
+      loadRecordedProgrammeAudioRendition(source).catch(() => {});
+    } catch {}
   }
 
   function closeSexEdShelf(restoreFocus = true) {
@@ -7239,8 +7294,9 @@
         if (openSequence === sexEdOpenSequence) document.body.dataset[`sexEdLoading${name}`] = "error";
         return false;
       });
-    const readiness = [recordReadiness("Foreground", playSexEdEpisode())];
+    const readiness = [];
     if (radioStation) {
+      readiness.push(recordReadiness("Foreground", playSexEdEpisode()));
       window.IAMStreamController?.release?.(sexEdBackground, "sex_ed_radio_presentation");
       releaseSexEdLoopVideos();
       delete document.body.dataset.sexEdLoadingBackground;
@@ -7261,14 +7317,15 @@
     } else {
       document.body.dataset.sexEdLoadingBackground = "loading";
       document.body.dataset.sexEdLoadingTiles = "loading";
-      const partyAlreadyPlaying = broadcastChannelId === "party-james-bondage" &&
+      const sexEdAudioAlreadyPlaying = broadcastChannelId === SEX_ED_BROADCAST_CHANNEL_ID &&
         document.body.dataset.audioPartyPlaybackState === "playing";
-      const audioReady = recordReadiness("Audio", partyAlreadyPlaying || joinBroadcastChannel("party-james-bondage", {
+      const audioReady = recordReadiness("Audio", sexEdAudioAlreadyPlaying || joinBroadcastChannel(SEX_ED_BROADCAST_CHANNEL_ID, {
         source: "sex_ed_episode",
         channelLoadingGeneration: loadingGeneration,
         deferChannelLoadingFinish: true,
       }));
       readiness.push(audioReady);
+      readiness.push(recordReadiness("Foreground", audioReady.then((ready) => ready ? playSexEdEpisode() : false)));
       readiness.push(recordReadiness("Background", audioReady.then((ready) => ready ? playSexEdBackgroundVideo() : false)));
       readiness.push(recordReadiness("Tiles", audioReady.then((ready) => ready ? activateSexEdLoopVideos() : false)));
     }

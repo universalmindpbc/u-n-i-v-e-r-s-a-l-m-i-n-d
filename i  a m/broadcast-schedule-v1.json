@@ -1,5 +1,5 @@
 {
-  "version": "broadcast_schedule_v1.9",
+  "version": "broadcast_schedule_v1.10",
   "stage": "five_music_rooms_live_safety_cushion_ready",
   "epoch_utc": "2026-07-24T00:00:00.000Z",
   "extended_session_format_policy": {
@@ -1013,6 +1013,29 @@
           "track_id": "nine-inch-noize-coachella-2026-live-set",
           "duration_seconds": 2795.2,
           "media_type": "video"
+        }
+      ]
+    },
+    {
+      "id": "sex-ed",
+      "format": "sex-ed",
+      "media_type": "audio",
+      "energy_id": "underground-intensity",
+      "editorial_id": "james-bondage-sex-ed",
+      "name": "sex-ed",
+      "descriptor": "minimal sound for conversation",
+      "description": "Zip · Perlon · minimal",
+      "internal": true,
+      "schedule": [
+        {
+          "track_id": "zip-perlon-air-festival-2007",
+          "duration_seconds": 11255.780136,
+          "media_type": "audio"
+        },
+        {
+          "track_id": "zip-sammy-d-perlon-betalounge-2000",
+          "duration_seconds": 13194.739229,
+          "media_type": "audio"
         }
       ]
     },

@@ -118,7 +118,7 @@ assert.deepEqual(
   schedule.planning_markets.map((market) => market.time_zone),
   ["Australia/Sydney", "America/Los_Angeles", "Europe/Madrid"]
 );
-assert.equal(schedule.channels.length, 17, "The schedule must expose thirteen public Music channels, three public Fashion channels and one private Radio visual channel.");
+assert.equal(schedule.channels.length, 18, "The schedule must expose thirteen public Music channels, three public Fashion channels, one private Radio visual channel and one private Sex Ed audio channel.");
 
 for (const format of ["videos", "parties", "radio"]) {
   const channels = schedule.channels.filter((channel) => channel.format === format);
@@ -221,6 +221,23 @@ for (const channel of schedule.channels) {
       assert.ok(fashionRunwayIds.has(entry.runway_id), `${entry.runway_id} must be a verified Fashion runway.`);
       assert.match(controller, new RegExp(`assetKey: "${entry.runway_id}"`), `${entry.runway_id} must exist in the Fashion catalogue.`);
       scheduledRunways.push(entry.runway_id);
+    }
+  } else if (channel.format === "sex-ed") {
+    assert.equal(channel.id, "sex-ed");
+    assert.equal(channel.internal, true, "The Sex Ed audio channel must remain private.");
+    assert.equal(channel.media_type, "audio");
+    assert.equal(channel.visual_channel_id, undefined, "Sex Ed must retain its episode-owned visual layers.");
+    assert.deepEqual(
+      channel.schedule.map((entry) => [entry.track_id, Number(entry.duration_seconds), entry.media_type]),
+      [
+        ["zip-perlon-air-festival-2007", 11255.780136, "audio"],
+        ["zip-sammy-d-perlon-betalounge-2000", 13194.739229, "audio"],
+      ],
+      "Sex Ed must repeat only the two approved Zip-led Perlon programmes."
+    );
+    for (const entry of channel.schedule) {
+      assert.equal(Number(entry.duration_seconds), djDurations.get(entry.track_id), `${entry.track_id} must use its encoded HLS duration.`);
+      assert.match(trackCatalogue, new RegExp(`id: "${entry.track_id}"`), `${entry.track_id} must exist in the shared player catalogue.`);
     }
   } else {
     assert.equal(channel.format, "radio-visual");
@@ -326,6 +343,25 @@ assert.equal(
   "nine-inch-noize-coachella-2026-live-set",
   "Nine Inch Noize must retain its own video programme."
 );
+const sexEdChannel = schedule.channels.find((channel) => channel.id === "sex-ed");
+const sexEdEpochMs = Date.parse(sexEdChannel.epoch_utc || schedule.epoch_utc);
+let sexEdCursorSeconds = 0;
+const sexEdStates = sexEdChannel.schedule.map((entry) => {
+  const state = clockWindow.IAMBroadcastClock.stateAt(
+    sexEdChannel.id,
+    sexEdEpochMs + ((sexEdCursorSeconds + 1) * 1000)
+  );
+  sexEdCursorSeconds += Number(entry.duration_seconds);
+  return state;
+});
+assert.deepEqual(
+  sexEdStates.map((state) => [state.trackId, state.mediaType, state.visualChannelId]),
+  [
+    ["zip-perlon-air-festival-2007", "audio", ""],
+    ["zip-sammy-d-perlon-betalounge-2000", "audio", ""],
+  ],
+  "The private Sex Ed clock must alternate only the two Perlon audio programmes without a hidden Fashion pairing."
+);
 
 assert.match(clockController, /serverNowMs - \(\(startedAt \+ endedAt\) \/ 2\)/, "Clock sync must compensate for request round-trip latency.");
 assert.match(clockController, /clockAnchorServerMs \+ \(performanceNow - clockAnchorPerformanceMs\)/, "The shared clock must advance from a monotonic performance anchor.");
@@ -375,7 +411,7 @@ assert.ok(
 assert.match(controller, /RADIO_HLS_LIBRARY_LOAD_TIMEOUT_MS = 6000/, "HLS library loading must have an explicit bounded failure.");
 assert.match(controller, /AUDIO_PARTY_START_TIMEOUT_MS = 18000/, "Audio-led James Bondage startup must settle inside the 30-second release gate.");
 assert.match(controller, /Promise\.race\(\[startup, timedOut\]\)/, "Audio-led party startup must not continue blocking after its deadline.");
-assert.match(controller, /audioPartyPlaybackState = "unavailable"[\s\S]*audioPartyRecovery = "select_james_bondage_again"/, "A failed Zip startup must expose a truthful retryable unavailable state.");
+assert.match(controller, /audioPartyPlaybackState = "unavailable"[\s\S]*audioPartyRecovery = sexEdProgramme \? "reopen_sex_ed_episode" : "select_james_bondage_again"/, "A failed Zip startup must expose the correct retryable unavailable state for public Parties or private Sex Ed.");
 assert.match(controller, /fashionBroadcastBlockRemainingSeconds/, "Fashion playback must remain locked to its 15-minute shared block.");
 assert.match(controller, /musicShelfRecommendationIds/, "The recommended channel must be stored independently from fixed shelf order.");
 assert.match(index, /data-broadcast-join>join the broadcast</);

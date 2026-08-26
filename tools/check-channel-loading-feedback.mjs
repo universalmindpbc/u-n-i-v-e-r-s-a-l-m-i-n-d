@@ -72,10 +72,21 @@ requireCondition(
   "Sex Ed no longer owns one truthful aggregate loading lifecycle",
 );
 requireCondition(
-  controller.includes('const sexEdOwnsVisuals = options.source === "sex_ed_episode";') &&
+  controller.includes('const sexEdOwnsVisuals = channelId === SEX_ED_BROADCAST_CHANNEL_ID || options.source === "sex_ed_episode";') &&
     controller.includes('visualAlreadyManaged: sexEdOwnsVisuals') &&
     controller.includes('window.IAMStreamController?.suspend?.(localVideo, "sex_ed_audio_handoff");'),
   "Sex Ed audio can again wait behind a hidden Fashion join or the outgoing music stream",
+);
+requireCondition(
+  controller.includes('const sexEdOwnsVisuals = broadcastChannelId === SEX_ED_BROADCAST_CHANNEL_ID;') &&
+    controller.includes('source: sexEdOwnsVisuals ? "sex_ed_rollover" : "broadcast_rollover"') &&
+    controller.includes('force: true,'),
+  "The private Sex Ed channel rollover can lose its episode-owned visuals or truthful loading state",
+);
+requireCondition(
+  controller.includes('sexEdProgramme ? "reopen_sex_ed_episode" : "select_james_bondage_again"') &&
+    controller.includes('sexEdProgramme ? "reopen the sex-ed episode to retry" : "select james bondage to retry"'),
+  "A private Sex Ed audio failure still tells the visitor to retry the public James Bondage channel",
 );
 requireCondition(styles.includes("@keyframes adaptive-channel-loading-spin") && styles.includes(".adaptive-television-channel-loading.is-active"), "the circular loading treatment is missing");
 requireCondition(styles.includes("background: radial-gradient") && styles.includes("pointer-events: none"), "the loader no longer preserves the prior image without blocking controls");

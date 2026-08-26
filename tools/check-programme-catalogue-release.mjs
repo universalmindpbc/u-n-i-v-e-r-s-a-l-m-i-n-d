@@ -96,7 +96,7 @@ for (const track of programmeTracks) {
 
 const channel = (id) => schedule.channels.find((candidate) => candidate.id === id);
 const modul8GlobalWeek = channel("party-modul8-infinity");
-assert.equal(schedule.version, "broadcast_schedule_v1.9");
+assert.equal(schedule.version, "broadcast_schedule_v1.10");
 assert.equal(schedule.epoch_utc, "2026-07-24T00:00:00.000Z");
 assert.equal(modul8GlobalWeek.epoch_utc, "2026-08-02T14:00:00.000Z");
 assert.equal(modul8GlobalWeek.schedule.length, 108);
@@ -127,6 +127,13 @@ assert.deepEqual(channel("party-james-bondage").schedule.map((entry) => [entry.t
   ["zip-sammy-d-perlon-betalounge-2000", "audio"],
   [fullNineInchNoizeId, "video"],
 ]);
+assert.deepEqual(channel("sex-ed").schedule.map((entry) => [entry.track_id, entry.media_type]), [
+  ["zip-perlon-air-festival-2007", "audio"],
+  ["zip-sammy-d-perlon-betalounge-2000", "audio"],
+]);
+assert.equal(channel("sex-ed").internal, true);
+assert.equal(channel("sex-ed").format, "sex-ed");
+assert.equal(channel("sex-ed").visual_channel_id, undefined);
 assert.equal(channel("party-modul8-infinity").name, "modul8 infinity");
 assert.equal(channel("party-modul8-infinity").editorial_id, "modul8-infinity");
 assert.deepEqual(schedule.planning_markets, [

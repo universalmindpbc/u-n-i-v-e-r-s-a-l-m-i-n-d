@@ -4,6 +4,7 @@
   const episodeVideo = document.querySelector("[data-sex-ed-episode-video]");
   const episodeStart = document.querySelector("[data-sex-ed-episode-start]");
   const SEX_ED_PROGRAMME_MIX_LEVEL = .15;
+  const SEX_ED_BROADCAST_CHANNEL_ID = "sex-ed";
   let episodeNeedsInitialSeek = true;
 
   if (window.self !== window.top) {
@@ -27,8 +28,8 @@
       }
       window.top.IAMTelevisionRoom?.setProgrammeMixLevel?.(SEX_ED_PROGRAMME_MIX_LEVEL);
       const activeChannelId = window.top.IAMMusicChannels?.getState?.().broadcast?.channelId || "";
-      if (activeChannelId !== "party-james-bondage") {
-        await window.top.IAMMusicChannels?.joinBroadcast?.("party-james-bondage");
+      if (activeChannelId !== SEX_ED_BROADCAST_CHANNEL_ID) {
+        await window.top.IAMMusicChannels?.joinBroadcast?.(SEX_ED_BROADCAST_CHANNEL_ID);
       }
       window.top.IAMTelevisionRoom?.setProgrammeMixLevel?.(SEX_ED_PROGRAMME_MIX_LEVEL);
     } catch {
