@@ -95,7 +95,7 @@
             </span>
           </a>
           <nav class="global-nav-menu" aria-label="Primary">
-            <a class="global-nav-item" href="index.html" data-nav-item="home"${shopReturn}>home</a>
+            <a class="global-nav-item" href="index.html" data-nav-item="home"${shopReturn}>tv</a>
             <a class="global-nav-item" href="about.html?aboutTopLevel=1" data-nav-item="about">about</a>
             <a class="global-nav-item" href="program.html" data-nav-item="program">program</a>
             <a class="global-nav-item" href="technology-citizen-needs.html" data-nav-item="technology" aria-expanded="false">technology</a>
@@ -111,11 +111,11 @@
             <a class="global-nav-item" href="impact.html" data-nav-item="impact">impact</a>
             <a class="global-nav-item" href="vogue-self-report.html" data-nav-item="check-in">check in</a>
             <a class="global-nav-item" href="our-team.html" data-nav-item="our-team">our team</a>
-            <a class="global-nav-item" href="mailto:bk@universalmind.tv?subject=I%20Am%20Vogue%20%7C%20Referral" data-nav-item="contact">contact</a>
             <a class="global-nav-item" href="shop.html" data-nav-item="shop" aria-expanded="false">shop</a>
             <div class="global-nav-submenu" data-nav-submenu="shop">
               <a href="shop.html" data-nav-subitem="shop-james-bondage-health">james bondage health - now open</a>
             </div>
+            <a class="global-nav-item" href="mailto:bk@universalmind.tv?subject=I%20Am%20Vogue%20%7C%20Referral" data-nav-item="contact">contact</a>
           </nav>
           <p class="global-nav-citation">
             A Direct Response To Orygen + Phoenix Australia’s

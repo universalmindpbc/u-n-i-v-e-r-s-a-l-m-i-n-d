@@ -519,7 +519,7 @@ assert.ok(fs.existsSync(path.join(iam, "a s s e t s/shop-mockup/james-bondage-ha
 assert.match(shop, /class="shop-universal-nav global-nav-trigger"[\s\S]*Universal Mind \[ I o H \] Logo 512\.png/, "Standalone Shop proof must reserve the Universal Mind flower position");
 assert.match(shopScript, /iam:return-to-television/, "The Shop flower must return framed visitors to their continuing Music Television room");
 assert.match(shop, /data-global-nav-host[\s\S]*global-navigation\.js\?v=global-navigation-canonical-14/, "Shop must load the canonical global navigation");
-assert.match(globalNavigation, /class="global-nav"[\s\S]*data-nav-item="contact"[^>]*>contact<\/a>\s*<a[^>]*data-nav-item="shop"/, "Shop must use the full shared global navigation with Shop last after Contact");
+assert.match(globalNavigation, /class="global-nav"[\s\S]*data-nav-item="shop"[^>]*>shop<\/a>\s*<div class="global-nav-submenu" data-nav-submenu="shop">[\s\S]*?<\/div>\s*<a[^>]*data-nav-item="contact"[^>]*>contact<\/a>\s*<\/nav>/, "Shop must use the full shared global navigation with Shop immediately before final Contact");
 assert.match(globalNavigation, /data-nav-item="shop"[^>]*aria-expanded="false"[^>]*>shop<\/a>\s*<div class="global-nav-submenu" data-nav-submenu="shop">\s*<a href="shop\.html" data-nav-subitem="shop-james-bondage-health">james bondage health - now open<\/a>/, "Shop must expand to the James Bondage Health now-open destination");
 assert.equal((globalNavigation.match(/data-nav-subitem="shop-/g) || []).length, 1, "The global Shop submenu must contain only James Bondage Health now open");
 assert.match(globalNavigation, /function keepExpandedSubmenuVisible\(navItem\)[\s\S]*menu\.scrollTop \+= bottomOverflow/, "Expanded Shop context must remain fully visible inside short navigation viewports");
@@ -698,7 +698,7 @@ assert.match(television, /async function requestShopMusic[\s\S]*if \(currentStat
 assert.doesNotMatch(television, /joinBroadcastChannel\("party-james-bondage", \{ source: "shop_default" \}\)/, "Shop playback must not rejoin the clock-corrected shared transport");
 assert.doesNotMatch(shop, /Café del Mar Chill/, "Shop controls must no longer advertise Café del Mar as the quiet default");
 assert.match(globalNavigation, /data-nav-item="shop"/, "Music Television navigation must expose Shop");
-assert.match(globalNavigation, /data-nav-item="contact"[^>]*>contact<\/a>\s*<a[^>]*data-nav-item="shop"[^>]*>shop<\/a>/, "Shop must be the final global navigation item after Contact");
+assert.match(globalNavigation, /data-nav-item="shop"[^>]*>shop<\/a>[\s\S]*?data-nav-item="contact"[^>]*>contact<\/a>\s*<\/nav>/, "Shop must be immediately before final Contact in the global navigation");
 assert.match(htaccess, /RewriteRule \^shop\/\?\$/, "Root /shop route is missing from Apache redirects");
 assert.match(redirects, /^\/shop /m, "Root /shop route is missing from static redirects");
 

@@ -719,9 +719,14 @@ requireCondition(globalNavigationController.includes('const VERSION = "global-na
 const expectedGlobalNavigationCssToken = createHash('sha256').update(globalNavigationCss).digest('hex').slice(0, 12);
 const expectedGlobalNavigationControllerToken = createHash('sha256').update(globalNavigationController).digest('hex').slice(0, 12);
 requireCondition(globalNavigationController.includes(`global-navigation.css?v=${expectedGlobalNavigationCssToken}`), `the canonical navigation stylesheet cache token does not match ${expectedGlobalNavigationCssToken}`);
+requireCondition(globalNavigationController.includes('href="index.html" data-nav-item="home"${shopReturn}>tv</a>'), 'the canonical global navigation does not label the default television experience as tv');
 requireCondition(globalNavigationController.includes('href="privacy-first.html" data-nav-item="privacy-first"'), 'the canonical global navigation does not expose Privacy First');
 requireCondition(globalNavigationController.includes('href="shop.html" data-nav-item="shop"'), 'the canonical global navigation does not expose Shop');
 requireCondition(globalNavigationController.includes('data-nav-submenu="shop"') && globalNavigationController.includes('data-nav-subitem="shop-james-bondage-health">james bondage health - now open</a>'), 'the canonical global navigation does not contextualise Shop as James Bondage Health');
+const globalNavigationShopIndex = globalNavigationController.indexOf('href="shop.html" data-nav-item="shop"');
+const globalNavigationShopSubmenuIndex = globalNavigationController.indexOf('data-nav-submenu="shop"');
+const globalNavigationContactIndex = globalNavigationController.indexOf('data-nav-item="contact"');
+requireCondition(globalNavigationShopIndex >= 0 && globalNavigationShopSubmenuIndex > globalNavigationShopIndex && globalNavigationContactIndex > globalNavigationShopSubmenuIndex, 'the canonical global navigation does not place Shop and its submenu immediately before the final Contact item');
 requireCondition(!globalNavigationController.includes('shop-accessories-health') && !globalNavigationController.includes('shop.html#catalogue/accessories'), 'the canonical global navigation must not elevate the internal Accessories | Health subsection');
 requireCondition(globalNavigationController.includes('function keepExpandedSubmenuVisible(navItem)') && globalNavigationController.includes('menu.scrollTop += bottomOverflow'), 'expanded global navigation destinations can be clipped below the visible menu area');
 requireCondition(globalNavigationCss.includes('padding: 0 34px 32px 0;') && globalNavigationCss.includes('scroll-padding-bottom: 32px;'), 'the global navigation lacks enough scroll clearance to reveal an expanded destination');
