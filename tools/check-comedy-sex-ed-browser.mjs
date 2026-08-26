@@ -2,6 +2,7 @@ import assert from "node:assert/strict";
 import { chromium } from "/Users/benkorbel/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/playwright/index.mjs";
 
 const baseUrl = process.env.IAM_BROWSER_BASE_URL || "http://127.0.0.1:41783/i%20%20a%20m/";
+const baseHostname = new URL(baseUrl).hostname;
 const executablePath = process.env.PLAYWRIGHT_CHROMIUM_EXECUTABLE ||
   "/Users/benkorbel/Library/Caches/ms-playwright/chromium_headless_shell-1234/chrome-headless-shell-mac-arm64/chrome-headless-shell";
 const comedyNowMs = Date.parse("2026-07-24T00:00:00.000Z") + ((144.34 + 420) * 1000);
@@ -28,7 +29,7 @@ async function installClock(context) {
 async function blockRemoteMedia(context) {
   await context.route("**/*", async (route) => {
     const url = new URL(route.request().url());
-    if (url.hostname === "127.0.0.1" || url.hostname === "localhost") return route.fallback();
+    if (url.hostname === baseHostname || url.hostname === "127.0.0.1" || url.hostname === "localhost") return route.fallback();
     return route.abort();
   });
 }
