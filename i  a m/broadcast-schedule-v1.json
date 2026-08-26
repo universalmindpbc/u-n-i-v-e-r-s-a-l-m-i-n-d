@@ -1352,19 +1352,12 @@
       "descriptor": "Jarrad Wright multiverse",
       "description": "The Big Lez Show · Mike Nolan · Sassy the Sasquatch · Donny & Clarence",
       "schedule": [
-        { "track_id": "comedy-midnight-gospel-trailer", "duration_seconds": 144.34 },
         { "track_id": "comedy-big-lez-show", "duration_seconds": 17210.52 },
-        { "track_id": "comedy-midnight-gospel-trailer-2", "duration_seconds": 144.34 },
         { "track_id": "comedy-mike-nolan-show", "duration_seconds": 1620.16 },
-        { "track_id": "comedy-midnight-gospel-trailer-3", "duration_seconds": 144.34 },
         { "track_id": "comedy-mike-nolans-long-weekend", "duration_seconds": 1764.11 },
-        { "track_id": "comedy-midnight-gospel-trailer-4", "duration_seconds": 144.34 },
         { "track_id": "comedy-clarence-claymore", "duration_seconds": 960.28 },
-        { "track_id": "comedy-midnight-gospel-trailer-5", "duration_seconds": 144.34 },
         { "track_id": "comedy-sassy-the-sasquatch", "duration_seconds": 4784.36 },
-        { "track_id": "comedy-midnight-gospel-trailer-6", "duration_seconds": 144.34 },
         { "track_id": "comedy-donny-clarence-show", "duration_seconds": 2337.92 },
-        { "track_id": "comedy-midnight-gospel-trailer-7", "duration_seconds": 144.34 },
         { "track_id": "comedy-sassy-behind-the-scenes", "duration_seconds": 611.54 }
       ]
     }

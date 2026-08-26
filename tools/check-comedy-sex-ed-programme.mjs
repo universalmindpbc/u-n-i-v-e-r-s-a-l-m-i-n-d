@@ -20,35 +20,29 @@ const catalogue = sandbox.window.IAMProgrammeCatalogue;
 const comedy = Array.from(catalogue.comedyProgrammes);
 const sexEd = Array.from(catalogue.sexEdEpisodes);
 
-assert.equal(catalogue.totalComedySeconds, 30299.27, "The leading-trailer Comedy wheel must last 08:24:59.27.");
-assert.equal(comedy[0].artist, "Duncan Trussell", "The Midnight Gospel trailer must be credited to Duncan Trussell, not its broadcaster.");
+assert.equal(catalogue.totalComedySeconds, 29288.89, "The direct-entry Comedy wheel must last 08:08:08.89.");
+assert.equal(comedy[0].artist, "Jarrad Wright", "The live Comedy wheel must open directly in Jarrad Wright programming.");
 assert.deepEqual(
   comedy.map((item) => item.id),
   [
-    "comedy-midnight-gospel-trailer",
     "comedy-big-lez-show",
-    "comedy-midnight-gospel-trailer-2",
     "comedy-mike-nolan-show",
-    "comedy-midnight-gospel-trailer-3",
     "comedy-mike-nolans-long-weekend",
-    "comedy-midnight-gospel-trailer-4",
     "comedy-clarence-claymore",
-    "comedy-midnight-gospel-trailer-5",
     "comedy-sassy-the-sasquatch",
-    "comedy-midnight-gospel-trailer-6",
     "comedy-donny-clarence-show",
-    "comedy-midnight-gospel-trailer-7",
     "comedy-sassy-behind-the-scenes",
   ],
-  "The Midnight Gospel trailer must lead the wheel and separate every Comedy series block.",
+  "The live Comedy wheel must contain only the seven requested Jarrad Wright programme blocks.",
 );
+assert.equal(comedy.some((item) => item.id.includes("midnight-gospel")), false, "The Midnight Gospel trailer must remain out of the live wheel for now.");
 
 assert.deepEqual(Array.from(comedy.find((item) => item.id === "comedy-big-lez-show").segments, (item) => item.title), ["Season 1", "Season 2", "Season 3", "Season 4"]);
 assert.deepEqual(Array.from(comedy.find((item) => item.id === "comedy-mike-nolan-show").segments, (item) => item.title), ["Yeah Nah Yeah", "FTC", "Anotha Day Anotha Dolla", "Ding Dong Delli", "Lantana Bush"]);
 assert.deepEqual(Array.from(comedy.find((item) => item.id === "comedy-donny-clarence-show").segments, (item) => item.title), ["Prankz", "Thunda", "Put Em Up", "Fore", "Grit Mailman", "Sugar Glider"]);
 
 const uniqueComedyFiles = new Set(comedy.flatMap((item) => Array.from(item.segments).map((segment) => segment.fileName)));
-assert.equal(uniqueComedyFiles.size, 20, "Every requested Comedy source file must be represented once, with the trailer reused only as a separator.");
+assert.equal(uniqueComedyFiles.size, 19, "Every live Comedy source file must be represented exactly once.");
 assert.equal(sexEd.length, 14);
 assert.equal(Math.round(sexEd.reduce((sum, item) => sum + Number(item.durationSeconds || 0), 0) * 1000) / 1000, 41254.854, "All fourteen on-demand Sex-Ed lessons must retain their measured durations.");
 assert.deepEqual(sexEd.slice(8).map((item) => [item.episode, item.title, item.artist]), [
@@ -61,7 +55,7 @@ assert.deepEqual(sexEd.slice(8).map((item) => [item.episode, item.title, item.ar
 ]);
 assert.ok(sexEd.slice(8).every((item) => !item.presentation && !item.radioStation), "New Sex Ed episodes must use the standard EMDR presentation and private Sex Ed audio clock.");
 assert.deepEqual(sexEd.slice(6, 8).map((item) => item.radioStation), ["cafe-del-mar-chill", "cafe-del-mar-chill"], "Only the two existing yoga episodes retain Cafe del Mar Chill.");
-const newlyUploadedFiles = [...uniqueComedyFiles, ...sexEd.slice(8).map((item) => item.fileName)];
+const newlyUploadedFiles = ["The Midnight Gospel _ Official Trailer _ Netflix.mp4", ...uniqueComedyFiles, ...sexEd.slice(8).map((item) => item.fileName)];
 const newlyUploadedAssets = newlyUploadedFiles.map((fileName) => sandbox.window.IAMCloudflareStream.assetFor(fileName));
 assert.equal(newlyUploadedFiles.length, 26);
 assert.ok(newlyUploadedAssets.every((asset) => /^[a-f0-9]{32}$/.test(asset?.uid || "")), "All 26 requested source files must resolve to exact Cloudflare Stream UIDs.");
@@ -70,6 +64,7 @@ assert.equal(new Set(newlyUploadedAssets.map((asset) => asset.uid)).size, 26, "E
 const comedyChannel = schedule.channels.find((channel) => channel.id === "comedy-jarrad-wright");
 const sexEdAudioChannel = schedule.channels.find((channel) => channel.id === "sex-ed");
 assert.deepEqual(comedyChannel.schedule.map((entry) => entry.track_id), comedy.map((item) => item.id));
+assert.equal(comedyChannel.schedule.some((entry) => entry.track_id.includes("midnight-gospel")), false, "The public Comedy schedule must join live programming without a trailer interstitial.");
 assert.equal(schedule.channels.some((channel) => channel.id === "sex-ed-james-bondage"), false, "Sex-Ed must not be represented as a false public 24/7 schedule.");
 assert.equal(sexEdAudioChannel?.internal, true, "The private synchronized Zip audio channel must remain available to on-demand lessons.");
 assert.match(guide, /channel\?\.format === mode && channel\?\.internal !== true/, "The private Sex Ed audio clock must never appear as a second public Sex Ed card.");

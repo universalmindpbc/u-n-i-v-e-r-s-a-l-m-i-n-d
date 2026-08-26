@@ -1,16 +1,7 @@
 (() => {
   "use strict";
 
-  const comedyTrailer = {
-    id: "comedy-midnight-gospel-trailer",
-    title: "The Midnight Gospel trailer",
-    artist: "Duncan Trussell",
-    fileName: "The Midnight Gospel _ Official Trailer _ Netflix.mp4",
-    durationSeconds: 144.34,
-  };
-
   const comedyProgrammes = [
-    { ...comedyTrailer },
     {
       id: "comedy-big-lez-show",
       title: "The Big Lez Show · Seasons 1–4",
@@ -22,7 +13,6 @@
         { title: "Season 4", fileName: "THE BIG LEZ SHOW - ALL OF SEASON 4.mp4", durationSeconds: 6975.37 },
       ],
     },
-    { ...comedyTrailer, id: "comedy-midnight-gospel-trailer-2" },
     {
       id: "comedy-mike-nolan-show",
       title: "The Mike Nolan Show · Episodes 1–5",
@@ -35,7 +25,6 @@
         { title: "Lantana Bush", fileName: "The Mike Nolan Show ｜ EP05 ｜ Lantana Bush.mp4", durationSeconds: 384.78 },
       ],
     },
-    { ...comedyTrailer, id: "comedy-midnight-gospel-trailer-3" },
     {
       id: "comedy-mike-nolans-long-weekend",
       title: "Mike Nolan’s Long Weekend",
@@ -43,7 +32,6 @@
       fileName: "MIKE NOLAN'S LONG WEEKEND - ALL EPS.mp4",
       durationSeconds: 1764.11,
     },
-    { ...comedyTrailer, id: "comedy-midnight-gospel-trailer-4" },
     {
       id: "comedy-clarence-claymore",
       title: "On Location with Clarence Claymore",
@@ -51,7 +39,6 @@
       fileName: "ON LOCATION WITH CLARENCE CLAYMORE.mp4",
       durationSeconds: 960.28,
     },
-    { ...comedyTrailer, id: "comedy-midnight-gospel-trailer-5" },
     {
       id: "comedy-sassy-the-sasquatch",
       title: "Sassy the Sasquatch",
@@ -59,7 +46,6 @@
       fileName: "SASSY THE SASQUATCH - ALL EPS.mp4",
       durationSeconds: 4784.36,
     },
-    { ...comedyTrailer, id: "comedy-midnight-gospel-trailer-6" },
     {
       id: "comedy-donny-clarence-show",
       title: "The Donny & Clarence Show · Episodes 1–6",
@@ -73,7 +59,6 @@
         { title: "Sugar Glider", fileName: "THE DONNY & CLARENCE SHOW ｜ EP06 ｜ SUGAR GLIDER.mp4", durationSeconds: 491.01 },
       ],
     },
-    { ...comedyTrailer, id: "comedy-midnight-gospel-trailer-7" },
     {
       id: "comedy-sassy-behind-the-scenes",
       title: "Sassy Behind the Scenes",

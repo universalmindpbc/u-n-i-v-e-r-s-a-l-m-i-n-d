@@ -5,7 +5,7 @@ const baseUrl = process.env.IAM_BROWSER_BASE_URL || "http://127.0.0.1:41783/i%20
 const baseHostname = new URL(baseUrl).hostname;
 const executablePath = process.env.PLAYWRIGHT_CHROMIUM_EXECUTABLE ||
   "/Users/benkorbel/Library/Caches/ms-playwright/chromium_headless_shell-1234/chrome-headless-shell-mac-arm64/chrome-headless-shell";
-const comedyNowMs = Date.parse("2026-07-24T00:00:00.000Z") + ((144.34 + 420) * 1000);
+const comedyNowMs = Date.parse("2026-07-24T00:00:00.000Z") + (420 * 1000);
 
 const chromiumServer = await chromium.launchServer({
   executablePath,
