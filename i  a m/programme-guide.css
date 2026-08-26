@@ -152,6 +152,12 @@ body.television-program-open .adaptive-television-reaction-wallet {
   letter-spacing: 0.08em;
 }
 
+.program-mode-switcher button.program-mode-switcher__secondary {
+  min-width: 52px;
+  font-size: 8px;
+  letter-spacing: .055em;
+}
+
 .program-mode-switcher button[aria-selected="true"] {
   background: rgba(255, 255, 255, 0.94);
   color: #0b0e0b;
@@ -671,6 +677,10 @@ body.television-program-open .adaptive-television-reaction-wallet {
   padding: 0 10px;
 }
 
+.program-panel__footer button[hidden] {
+  display: none;
+}
+
 .program-panel__footer button small {
   color: inherit;
   font-size: 9px;
@@ -744,6 +754,7 @@ body.television-program-open .adaptive-television-reaction-wallet {
 
   .program-mode-switcher { width: 100%; }
   .program-mode-switcher button { flex: 1 1 0; min-width: 0; }
+  .program-mode-switcher button.program-mode-switcher__secondary { flex-grow: .82; min-width: 0; }
 
   .program-zone-switcher {
     grid-column: 1 / -1;

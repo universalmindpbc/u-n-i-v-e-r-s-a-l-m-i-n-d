@@ -1,0 +1,99 @@
+.adaptive-television-comedy-world {
+  position: absolute;
+  inset: 0;
+  z-index: 34;
+  overflow: hidden;
+  background: #000;
+  opacity: 0;
+  pointer-events: none;
+  visibility: hidden;
+  transition: opacity 320ms cubic-bezier(.22, .72, .18, 1), visibility 0s linear 320ms;
+}
+
+body.television-comedy-active .adaptive-television-comedy-world {
+  opacity: 1;
+  pointer-events: auto;
+  visibility: visible;
+  transition: opacity 320ms cubic-bezier(.22, .72, .18, 1), visibility 0s linear 0s;
+}
+
+.adaptive-television-comedy-video {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  background: #000;
+  object-fit: cover;
+  object-position: center center;
+  -webkit-user-select: none;
+  user-select: none;
+  -webkit-user-drag: none;
+  -webkit-touch-callout: none;
+}
+
+.adaptive-television-comedy-start {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 2;
+  display: grid;
+  place-items: center;
+  width: clamp(54px, 6vw, 82px);
+  aspect-ratio: 1;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, .45);
+  cursor: pointer;
+  transform: translate(-50%, -50%);
+}
+
+.adaptive-television-comedy-start[hidden] { display: none; }
+
+.adaptive-television-comedy-start img {
+  width: 47%;
+  height: 47%;
+  object-fit: contain;
+}
+
+.adaptive-television-comedy-now {
+  position: absolute;
+  z-index: 2;
+  left: clamp(18px, 2.5vw, 42px);
+  bottom: clamp(18px, 2.5vw, 42px);
+  margin: 0;
+  padding: 8px 11px;
+  background: rgba(0, 0, 0, .46);
+  color: rgba(255, 255, 255, .86);
+  font: 600 10px/1.2 "SFMono-Regular", Consolas, monospace;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+}
+
+.adaptive-television-comedy-close {
+  position: absolute;
+  z-index: 3;
+  top: clamp(18px, 2.5vw, 42px);
+  right: clamp(18px, 2.5vw, 42px);
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  padding: 0 0 2px;
+  border: 1px solid rgba(255, 255, 255, .34);
+  border-radius: 50%;
+  background: rgba(0, 0, 0, .42);
+  color: #fff;
+  cursor: pointer;
+  font: 300 24px/1 "Helvetica Neue", Arial, sans-serif;
+}
+
+@media (max-width: 760px) {
+  .adaptive-television-comedy-now { max-width: calc(100vw - 100px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .adaptive-television-comedy-world { transition-duration: .01ms; }
+}

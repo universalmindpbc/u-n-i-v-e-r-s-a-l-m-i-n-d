@@ -9,6 +9,7 @@ const IAM_DIR = path.join(ROOT, "i  a m");
 const schedule = JSON.parse(await fs.readFile(path.join(IAM_DIR, "broadcast-schedule-v1.json"), "utf8"));
 const controller = await fs.readFile(path.join(IAM_DIR, "adaptive-environment-television.js"), "utf8");
 const trackCatalogue = await fs.readFile(path.join(IAM_DIR, "music-track-catalogue-v1.js"), "utf8");
+const programmeCatalogue = await fs.readFile(path.join(IAM_DIR, "programme-catalogue-v1.js"), "utf8");
 const clockController = await fs.readFile(path.join(IAM_DIR, "broadcast-clock-v1.js"), "utf8");
 const streamCatalogue = await fs.readFile(path.join(IAM_DIR, "cloudflare-stream-catalogue.js"), "utf8");
 const index = await fs.readFile(path.join(IAM_DIR, "index.html"), "utf8");
@@ -118,7 +119,7 @@ assert.deepEqual(
   schedule.planning_markets.map((market) => market.time_zone),
   ["Australia/Sydney", "America/Los_Angeles", "Europe/Madrid"]
 );
-assert.equal(schedule.channels.length, 18, "The schedule must expose thirteen public Music channels, three public Fashion channels, one private Radio visual channel and one private Sex Ed audio channel.");
+assert.equal(schedule.channels.length, 20, "The schedule must expose thirteen public Music channels, Comedy, public Sex Ed, three public Fashion channels, one private Radio visual channel and one private Sex Ed audio channel.");
 
 for (const format of ["videos", "parties", "radio"]) {
   const channels = schedule.channels.filter((channel) => channel.format === format);
@@ -222,7 +223,7 @@ for (const channel of schedule.channels) {
       assert.match(controller, new RegExp(`assetKey: "${entry.runway_id}"`), `${entry.runway_id} must exist in the Fashion catalogue.`);
       scheduledRunways.push(entry.runway_id);
     }
-  } else if (channel.format === "sex-ed") {
+  } else if (channel.id === "sex-ed") {
     assert.equal(channel.id, "sex-ed");
     assert.equal(channel.internal, true, "The Sex Ed audio channel must remain private.");
     assert.equal(channel.media_type, "audio");
@@ -238,6 +239,13 @@ for (const channel of schedule.channels) {
     for (const entry of channel.schedule) {
       assert.equal(Number(entry.duration_seconds), djDurations.get(entry.track_id), `${entry.track_id} must use its encoded HLS duration.`);
       assert.match(trackCatalogue, new RegExp(`id: "${entry.track_id}"`), `${entry.track_id} must exist in the shared player catalogue.`);
+    }
+  } else if (["comedy", "sex-ed"].includes(channel.format)) {
+    assert.equal(channel.media_type, "video");
+    assert.equal(channel.id, channel.format === "comedy" ? "comedy-jarrad-wright" : "sex-ed-james-bondage");
+    for (const entry of channel.schedule) {
+      assert.ok(programmeCatalogue.includes(`id: "${entry.track_id}"`), `${entry.track_id} must exist in the shared Programme catalogue.`);
+      assert.ok(Number(entry.duration_seconds) > 0, `${entry.track_id} must use a measured duration.`);
     }
   } else {
     assert.equal(channel.format, "radio-visual");

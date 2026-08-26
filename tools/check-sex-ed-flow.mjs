@@ -17,7 +17,7 @@ assert.match(index, /class="adaptive-television-sex-ed-link" href="#sex-ed-shelf
 assert.match(index, /data-now-playing[\s\S]*data-sex-ed-link/);
 assert.match(index, /data-now-playing-secondary-label(?:\s+hidden)?>VISUAL</);
 assert.match(index, /class="adaptive-television-fashion-shelf adaptive-television-music-shelf adaptive-television-sex-ed-shelf"/);
-assert.equal((index.match(/data-sex-ed-card(?:\s|>)/g) || []).length, 8);
+assert.equal((index.match(/data-sex-ed-card(?:\s|>)/g) || []).length, 14);
 assert.match(index, /data-sex-ed-episode="01"[\s\S]{0,300}data-sex-ed-start-time="139"/);
 assert.match(index, /data-sex-ed-episode="02"/);
 assert.match(index, /data-sex-ed-episode="03"/);
@@ -26,6 +26,9 @@ assert.match(index, /data-sex-ed-episode="05"/);
 assert.match(index, /data-sex-ed-episode="06"[\s\S]{0,360}data-sex-ed-background-file="Karl Lagerfeld - The Making of the 2011 Pirelli Calendar\.mp4"/);
 assert.match(index, /data-sex-ed-episode="07"[\s\S]{0,520}data-sex-ed-presentation="fullscreen"[\s\S]{0,220}data-sex-ed-radio-station="cafe-del-mar-chill"/);
 assert.match(index, /data-sex-ed-episode="08"[\s\S]{0,520}data-sex-ed-presentation="fullscreen"[\s\S]{0,220}data-sex-ed-radio-station="cafe-del-mar-chill"/);
+for (const episode of ["09", "10", "11", "12", "13", "14"]) {
+  assert.match(index, new RegExp(`data-sex-ed-episode="${episode}"`));
+}
 assert.match(index, /<strong>Reclaiming the Forbidden Feminine<\/strong>/);
 assert.match(index, /<strong>The Truth About Tantra &amp; Embodied Wealth<\/strong>/);
 assert.match(index, /<strong>Power, Sex &amp; Intimacy<\/strong>/);
@@ -34,6 +37,11 @@ assert.match(index, /<strong>Healthy Sexuality vs\. Healing Sexuality<\/strong>/
 assert.match(index, /<strong>Healing Through Solo Rope &amp; Self Pleasure<\/strong>/);
 assert.match(index, /<strong>Yoga to Increase Your Sexual Energy<\/strong>/);
 assert.match(index, /<strong>Vinyasa Yoga Flow<\/strong>/);
+assert.match(index, /<strong>Five Stages of Subspace<\/strong>[\s\S]{0,90}<span>Alesandra Madison<\/span>/);
+assert.match(index, /<strong>Subspace &amp; Topspace<\/strong>[\s\S]{0,90}<span>Luna Agneya<\/span>/);
+assert.match(index, /<strong>Pleasuring a Woman<\/strong>[\s\S]{0,90}<span>Hitomi Mochizuki<\/span>/);
+assert.match(index, /<strong>BDSM: The New Religion\?<\/strong>[\s\S]{0,90}<span>Gemma Li &amp; Seraphyna<\/span>/);
+assert.match(index, /<strong>Submission &amp; the Male Brain<\/strong>[\s\S]{0,90}<span>Alla Mephistopheles<\/span>/);
 assert.equal((index.match(/<span>Ashton August<\/span>/g) || []).length, 2);
 assert.match(index, /aca91449b729422592f1a50b0be16f17\/thumbnails\/thumbnail\.jpg\?time=750s&height=360/);
 assert.match(index, /72faef830b2a04cf6d896d7d46183f49\/thumbnails\/thumbnail\.jpg\?time=1070s&height=360/);
@@ -41,7 +49,7 @@ assert.match(index, /<span>Jacqueline Michelle<\/span>/);
 assert.match(index, /aria-label="Open episode 06:[^"]+Jacqueline Michelle"/);
 assert.match(index, /b35b5890ca38c7b99bfc7adaae5bc16c\/thumbnails\/thumbnail\.jpg\?time=60s&height=360/);
 assert.match(index, /7f60e29d9e432bf4198df7dc223b66ef\/thumbnails\/thumbnail\.jpg\?time=60s&height=360/);
-assert.match(index, /1–4 \/ 8/);
+assert.match(index, /1–4 \/ 14/);
 assert.match(index, /James Bondage Health · sex-ed/);
 assert.match(index, /data-television-live-pill/);
 assert.match(index, /data-reaction-wallet/);
@@ -184,4 +192,4 @@ for (const position of [2, 5]) {
   assert.equal(readFileSync(path, { encoding: null }).subarray(0, 3).toString(), "GIF");
 }
 
-console.log("Sex-ed eight-episode shelf, editorial backgrounds, and full-screen instruction preflight passed.");
+console.log("Sex-ed fourteen-episode shelf, editorial backgrounds, and full-screen instruction preflight passed.");

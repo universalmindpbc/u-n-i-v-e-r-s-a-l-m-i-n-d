@@ -1,5 +1,5 @@
 (function () {
-  const SCHEDULE_URL = "broadcast-schedule-v1.json?v=broadcast-schedule-48e7372a4bf6";
+  const SCHEDULE_URL = "broadcast-schedule-v1.json?v=broadcast-schedule-d322ea58e834";
   const CLOCK_URL = "api/broadcast-clock.php";
   const CLOCK_PROBES = 3;
   const CLOCK_RESYNC_INTERVAL_MS = 60000;

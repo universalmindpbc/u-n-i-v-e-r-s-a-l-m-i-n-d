@@ -1,12 +1,14 @@
 (() => {
   "use strict";
 
-  const MODES = ["videos", "parties", "radio"];
-  const MODE_LABELS = { videos: "VIDEOS", parties: "PARTIES", radio: "RADIO" };
+  const MODES = ["videos", "parties", "radio", "sex-ed", "comedy"];
+  const MODE_LABELS = { videos: "VIDEOS", parties: "PARTIES", radio: "RADIO", "sex-ed": "SEX ED", comedy: "COMEDY" };
   const DEFAULT_ROOMS = {
     videos: "modul8-infinity",
     parties: "modul8-infinity",
     radio: "modul8-infinity",
+    "sex-ed": "sex-ed-james-bondage",
+    comedy: "comedy-jarrad-wright",
   };
   const localTimeZone = Intl.DateTimeFormat().resolvedOptions().timeZone || "Australia/Sydney";
   const TIME_ZONES = {
@@ -95,6 +97,13 @@
       };
     }
     const trackId = String(entry?.track_id || "");
+    const programme = window.IAMProgrammeCatalogue?.itemFor?.(trackId);
+    if (programme) {
+      return {
+        artist: String(programme.artist || "Universal Mind"),
+        title: String(programme.title || humanizeTrackId(trackId)),
+      };
+    }
     const editorial = EDITORIAL_TRACKS[trackId];
     if (editorial) return editorial;
     const record = catalogueTracks.get(trackId);
@@ -116,7 +125,7 @@
 
   function channelsForMode(mode = activeMode) {
     return (Array.isArray(schedule?.channels) ? schedule.channels : [])
-      .filter((channel) => channel?.format === mode);
+      .filter((channel) => channel?.format === mode && channel?.internal !== true);
   }
 
   function roomIdForChannel(channel) {
@@ -280,8 +289,15 @@
     const trackId = String(current?.entry?.track_id || "");
     const stationId = String(current?.entry?.station_id || "");
     const track = catalogueTracks.get(trackId);
+    const programme = window.IAMProgrammeCatalogue?.itemFor?.(trackId);
     const station = radioStations.get(stationId);
-    const source = String(track?.local_video_file || track?.tensor_profile?.runtime_delivery?.local_video_file || "");
+    const source = String(
+      programme?.fileName ||
+      programme?.segments?.[0]?.fileName ||
+      track?.local_video_file ||
+      track?.tensor_profile?.runtime_delivery?.local_video_file ||
+      ""
+    );
     const asset = window.IAMCloudflareStream?.assetFor?.(source);
     const uid = String(track?.stream_uid || asset?.uid || "");
     const host = window.IAMCloudflareStream?.customerHost || "customer-1vpwglz3v6fiyaas.cloudflarestream.com";
@@ -292,8 +308,8 @@
       broadcastDescription: channel.description,
       artist: current?.track.artist || channel.name,
       title: current?.track.title || "Live now",
-      unavailable: channel.available === false,
-      previewVideoSrc: "",
+      unavailable: channel.available === false || (Boolean(source) && Boolean(window.IAMCloudflareStream) && !uid),
+      previewVideoSrc: source,
       previewStart: 8,
       thumbnailUrl: uid ? `https://${host}/${uid}/thumbnails/thumbnail.jpg?time=8s&height=360` : "",
       radioLogoSrc: String(station?.logo_src || ""),
@@ -301,6 +317,11 @@
       cardPalette: Array.isArray(station?.card_palette) ? station.card_palette.slice(0, 2) : [],
       audioOnly: false,
     };
+  }
+
+  function liveProgrammeItems(mode = activeMode) {
+    if (mode === "comedy") return window.IAMComedyChannel?.programmeItems?.() || [];
+    return window.IAMMusicChannels?.programmeItems?.(mode) || [];
   }
 
   function stopCardPreview() {
@@ -318,7 +339,7 @@
 
   async function startCardPreview(card) {
     if (standalone || !document.body.classList.contains("television-program-open") || !card || card === previewCard) return;
-    const item = (window.IAMMusicChannels?.programmeItems?.(activeMode) || [])
+    const item = liveProgrammeItems(activeMode)
       .find((candidate) => candidate.broadcastChannelId === card.dataset.channelId) ||
       programmeItems.find((candidate) => candidate.broadcastChannelId === card.dataset.channelId);
     const media = card.querySelector(".program-channel-card__media");
@@ -455,7 +476,7 @@
 
   function renderCards() {
     const nowMs = serverNow();
-    const liveItems = window.IAMMusicChannels?.programmeItems?.(activeMode) || [];
+    const liveItems = liveProgrammeItems(activeMode);
     const itemByChannel = new Map(liveItems.map((item) => [item.broadcastChannelId, item]));
     const nextProgrammeItems = channelsForMode().map((channel) => itemByChannel.get(channel.id) || fallbackProgrammeItem(channel, nowMs));
     const nextSignature = JSON.stringify({
@@ -486,8 +507,9 @@
   function renderSchedule() {
     const nowMs = serverNow();
     const currentChannel = channelForRoom();
-    const requestedHours = activeMode === "videos" ? 24 : (expanded ? 24 : 6);
-    const maximumEvents = activeMode === "videos" ? (expanded ? 512 : 9) : (expanded ? 256 : 64);
+    const programmeMode = activeMode === "comedy" || activeMode === "sex-ed";
+    const requestedHours = activeMode === "videos" ? 24 : (programmeMode ? 12 : (expanded ? 24 : 6));
+    const maximumEvents = activeMode === "videos" ? (expanded ? 512 : 9) : (programmeMode ? 64 : (expanded ? 256 : 64));
     const events = upcomingEvents(currentChannel, nowMs, requestedHours, maximumEvents);
     const visibleEvents = activeMode === "videos" && !expanded ? events.slice(0, 9) : events;
     const current = visibleEvents[0];
@@ -515,15 +537,20 @@
     setText("[data-next-duration]", durationLabel(next.entry.duration_seconds));
 
     const videoDefault = activeMode === "videos" && !expanded;
-    setText("[data-horizon-label]", videoDefault ? "NEXT 8 VIDEOS" : (expanded ? "NEXT 24 HOURS" : "NEXT 6 HOURS"));
+    setText("[data-horizon-label]", videoDefault
+      ? "NEXT 8 VIDEOS"
+      : (programmeMode ? (activeMode === "comedy" ? "FULL COMEDY WHEEL" : "SEX ED CHANNEL") : (expanded ? "NEXT 24 HOURS" : "NEXT 6 HOURS")));
     setText("[data-more-label]", expanded ? "LESS" : "MORE");
-    setText("[data-more-range]", activeMode === "videos"
+    setText("[data-more-range]", programmeMode
+      ? "FULL CHANNEL"
+      : activeMode === "videos"
       ? (expanded ? "SHOW NEXT 8" : "VIEW FULL DAY")
       : (expanded ? "RETURN TO 6 HOURS" : "VIEW 24 HOURS"));
+    moreButton.hidden = programmeMode;
     moreButton.setAttribute("aria-expanded", String(expanded));
     renderList("[data-later-list]", visibleEvents.slice(2));
 
-    const showHistory = activeMode === "videos";
+    const showHistory = ["videos", "sex-ed", "comedy"].includes(activeMode);
     historySection.hidden = !showHistory;
     if (showHistory) renderList("[data-history-list]", previousEvents(currentChannel, nowMs, 3));
 
@@ -537,6 +564,16 @@
   }
 
   function syncFromLiveBroadcast() {
+    if (document.body.classList.contains("television-comedy-active")) {
+      activeMode = "comedy";
+      activeRooms.comedy = "comedy-jarrad-wright";
+      return;
+    }
+    if (document.body.classList.contains("television-sex-ed-active")) {
+      activeMode = "sex-ed";
+      activeRooms["sex-ed"] = "sex-ed-james-bondage";
+      return;
+    }
     const state = window.IAMMusicChannels?.getState?.() || {};
     activeMode = modeIs(state.mode || document.body.dataset.musicChannelMode);
     const activeItemId = String(state.activeItemId || document.body.dataset.musicChannelItem || "");
@@ -616,19 +653,35 @@
     event.stopPropagation();
     const channelId = channelForRoom()?.id || "";
     if (standalone) {
-      document.body.dataset.programLiveState = "induction";
+      document.body.dataset.programLiveState = activeMode === "comedy" || activeMode === "sex-ed" ? "channel-entry" : "induction";
       document.body.dataset.programLiveChannel = channelId;
-      window.location.assign("induction.html");
+      if (activeMode === "comedy") {
+        window.location.assign("index.html?comedy=1");
+      } else if (activeMode === "sex-ed") {
+        const currentEpisode = window.IAMProgrammeCatalogue?.itemFor?.(upcomingEvents(channelForRoom(), serverNow(), 1, 1)[0]?.entry?.track_id)?.episode || "01";
+        window.location.assign(`index.html?sexEdEpisode=${encodeURIComponent(currentEpisode)}`);
+      } else {
+        window.location.assign("induction.html");
+      }
       return;
     }
-    if (!channelId || !window.IAMMusicChannels?.joinBroadcast) return;
+    if (!channelId) return;
     enterLiveButton.disabled = true;
     enterLiveButton.textContent = "TUNING…";
     document.body.dataset.programLiveState = "tuning";
     document.body.dataset.programLiveChannel = channelId;
     try {
-      window.IAMMusicChannels.setMode?.(activeMode);
-      const joinRequest = window.IAMMusicChannels.joinBroadcast(channelId);
+      let joinRequest;
+      if (activeMode === "comedy") {
+        joinRequest = window.IAMComedyChannel?.joinBroadcast?.(channelId);
+      } else if (activeMode === "sex-ed") {
+        const currentEpisode = window.IAMProgrammeCatalogue?.itemFor?.(upcomingEvents(channelForRoom(), serverNow(), 1, 1)[0]?.entry?.track_id)?.episode || "01";
+        joinRequest = window.IAMSexEdProgramme?.openEpisode?.(currentEpisode);
+      } else {
+        window.IAMMusicChannels?.setMode?.(activeMode);
+        joinRequest = window.IAMMusicChannels?.joinBroadcast?.(channelId);
+      }
+      if (!joinRequest) throw new Error(`${MODE_LABELS[activeMode]} channel is unavailable`);
       document.body.dataset.programLiveState = "joining";
       enterLiveButton.disabled = false;
       enterLiveButton.textContent = "ENTER LIVE";
@@ -652,11 +705,15 @@
     event.preventDefault();
     event.stopPropagation();
     if (standalone) {
-      window.location.assign("induction.html");
+      if (activeMode === "comedy") window.location.assign("index.html?comedy=1");
+      else if (activeMode === "sex-ed") window.location.assign("index.html#sex-ed-shelf");
+      else window.location.assign("induction.html");
       return;
     }
     closeProgram(null, { restoreFocus: false });
-    window.IAMMusicChannels?.openChannels?.(activeMode);
+    if (activeMode === "comedy") window.IAMComedyChannel?.joinBroadcast?.();
+    else if (activeMode === "sex-ed") window.IAMSexEdProgramme?.openShelf?.();
+    else window.IAMMusicChannels?.openChannels?.(activeMode);
   }
 
   modeButtons.forEach((button) => {
@@ -698,6 +755,16 @@
     if (!schedule) return;
     renderCards();
     if (document.body.classList.contains("television-program-open")) renderSchedule();
+  });
+  window.addEventListener("iam:comedy-ready", () => {
+    if (!schedule) return;
+    renderCards();
+    if (document.body.classList.contains("television-program-open")) renderSchedule();
+  });
+  window.addEventListener("iam:comedy-programme-change", () => {
+    if (!schedule || activeMode !== "comedy") return;
+    renderCards();
+    renderSchedule();
   });
 
   async function initialize() {

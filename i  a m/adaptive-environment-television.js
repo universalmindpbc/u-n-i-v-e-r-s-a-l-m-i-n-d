@@ -259,7 +259,7 @@
   const televisionPageTitle = document.title;
   const entryParams = new URLSearchParams(window.location.search);
   const shopShellRequested = entryParams.get("shop") === "1";
-  const requestedSexEdEpisode = /^0[1-8]$/.test(entryParams.get("sexEdEpisode") || "")
+  const requestedSexEdEpisode = /^(?:0[1-9]|1[0-4])$/.test(entryParams.get("sexEdEpisode") || "")
     ? entryParams.get("sexEdEpisode")
     : "";
   const shopEntryScreen = document.querySelector("[data-shop-entry-screen]");
@@ -9398,7 +9398,7 @@
   window.setInterval(updateNowPlayingClock, 30000);
   syncFullscreenState();
   window.IAMTelevisionRoom = {
-    version: "sex_ed_programme_mix_v1",
+    version: "programme_presentations_v2",
     enterFromVoicePreflight() {
       openRoom({
         preventDefault() {},
@@ -9417,6 +9417,60 @@
     refreshNavigationFlower() {
       startFlowerSpin({ restart: true });
       return true;
+    },
+    preparePresentationEntry() {
+      hasOpened = true;
+      televisionPlaybackRequested = true;
+      room.setAttribute("aria-hidden", "false");
+      playButton.setAttribute("aria-expanded", "true");
+      document.body.classList.add("television-room-open");
+      startFlowerSpin();
+      return true;
+    },
+    suspendProgrammeForPresentation(source = "presentation") {
+      const returnProgramme = {
+        channelId: broadcastChannelId,
+        trackId: track?.id || "",
+        currentTime: Math.max(0, Number(localVideo?.currentTime || 0)),
+        videoBlend: Math.max(0, Math.min(100, Number(videoCrossfader?.value || 100))),
+      };
+      closeSexEdShelf(false);
+      if (document.body.classList.contains("television-sex-ed-active")) {
+        stopSexEdEpisode({ restoreProgramme: false });
+      }
+      try { localVideo?.pause?.(); } catch {}
+      stopContinuationAudioImmediately();
+      if (broadcastChannelId) stopBroadcastPlayback(`${source}_started`);
+      return returnProgramme;
+    },
+    async resumeProgrammeFromPresentation(returnProgramme = {}) {
+      if (returnProgramme.channelId) {
+        return joinBroadcastChannel(returnProgramme.channelId, { source: "presentation_return" });
+      }
+      const returnTrack = findTrack(returnProgramme.trackId);
+      if (!returnTrack) return false;
+      await switchMusicTrack(returnTrack, {
+        source: "presentation_return",
+        startAt: Math.max(0, Number(returnProgramme.currentTime || 0)),
+      });
+      setVideoBlend(returnProgramme.videoBlend);
+      return true;
+    },
+  };
+  window.IAMSexEdProgramme = {
+    version: "sex_ed_programme_v1",
+    openEpisode(episode = "01") {
+      return openSexEdEpisode(episode);
+    },
+    openShelf() {
+      openSexEdShelf();
+      return true;
+    },
+    getState() {
+      return {
+        active: document.body.classList.contains("television-sex-ed-active"),
+        episode: document.body.dataset.sexEdEpisode || "",
+      };
     },
   };
   window.IAMStreamReady?.then(() => {
