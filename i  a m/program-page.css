@@ -225,7 +225,7 @@ body.nav-open .program-page__masthead {
 }
 
 .program-panel[data-program-standalone] .program-panel__header {
-  grid-template-columns: minmax(360px, 1fr) auto;
+  grid-template-columns: minmax(360px, 1fr) auto auto;
 }
 
 html[data-mobile-editorial="true"] .program-page__main {
@@ -310,8 +310,14 @@ html[data-mobile-editorial="true"] .program-page__main {
     grid-template-columns: minmax(0, 1fr);
   }
 
+  .program-panel[data-program-standalone] .program-destination-switcher {
+    grid-column: 1;
+    grid-row: 2;
+  }
+
   .program-panel[data-program-standalone] .program-zone-switcher {
     grid-column: 1;
+    grid-row: 3;
   }
 }
 

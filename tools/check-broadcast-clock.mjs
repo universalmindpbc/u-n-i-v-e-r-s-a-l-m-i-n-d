@@ -119,7 +119,7 @@ assert.deepEqual(
   schedule.planning_markets.map((market) => market.time_zone),
   ["Australia/Sydney", "America/Los_Angeles", "Europe/Madrid"]
 );
-assert.equal(schedule.channels.length, 20, "The schedule must expose thirteen public Music channels, Comedy, public Sex Ed, three public Fashion channels, one private Radio visual channel and one private Sex Ed audio channel.");
+assert.equal(schedule.channels.length, 19, "The schedule must expose thirteen public Music channels, Comedy, three public Fashion channels, one private Radio visual channel and one private Sex Ed audio channel; Sex-Ed lessons remain on demand.");
 
 for (const format of ["videos", "parties", "radio"]) {
   const channels = schedule.channels.filter((channel) => channel.format === format);
@@ -240,9 +240,9 @@ for (const channel of schedule.channels) {
       assert.equal(Number(entry.duration_seconds), djDurations.get(entry.track_id), `${entry.track_id} must use its encoded HLS duration.`);
       assert.match(trackCatalogue, new RegExp(`id: "${entry.track_id}"`), `${entry.track_id} must exist in the shared player catalogue.`);
     }
-  } else if (["comedy", "sex-ed"].includes(channel.format)) {
+  } else if (channel.format === "comedy") {
     assert.equal(channel.media_type, "video");
-    assert.equal(channel.id, channel.format === "comedy" ? "comedy-jarrad-wright" : "sex-ed-james-bondage");
+    assert.equal(channel.id, "comedy-jarrad-wright");
     for (const entry of channel.schedule) {
       assert.ok(programmeCatalogue.includes(`id: "${entry.track_id}"`), `${entry.track_id} must exist in the shared Programme catalogue.`);
       assert.ok(Number(entry.duration_seconds) > 0, `${entry.track_id} must use a measured duration.`);

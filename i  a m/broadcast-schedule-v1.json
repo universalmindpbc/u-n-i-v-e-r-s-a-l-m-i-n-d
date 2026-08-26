@@ -1367,32 +1367,6 @@
         { "track_id": "comedy-midnight-gospel-trailer-7", "duration_seconds": 144.34 },
         { "track_id": "comedy-sassy-behind-the-scenes", "duration_seconds": 611.54 }
       ]
-    },
-    {
-      "id": "sex-ed-james-bondage",
-      "format": "sex-ed",
-      "media_type": "video",
-      "energy_id": "underground-intensity",
-      "editorial_id": "james-bondage-health",
-      "name": "Sex Ed",
-      "descriptor": "James Bondage Health",
-      "description": "Sexual health · embodiment · education",
-      "schedule": [
-        { "track_id": "sex-ed-01", "duration_seconds": 6718.59 },
-        { "track_id": "sex-ed-02", "duration_seconds": 6346.09 },
-        { "track_id": "sex-ed-03", "duration_seconds": 5186.7 },
-        { "track_id": "sex-ed-04", "duration_seconds": 6474.4 },
-        { "track_id": "sex-ed-05", "duration_seconds": 1224.29 },
-        { "track_id": "sex-ed-06", "duration_seconds": 2663 },
-        { "track_id": "sex-ed-07", "duration_seconds": 1519.996 },
-        { "track_id": "sex-ed-08", "duration_seconds": 2132.898 },
-        { "track_id": "sex-ed-09", "duration_seconds": 1713.31 },
-        { "track_id": "sex-ed-10", "duration_seconds": 530.99 },
-        { "track_id": "sex-ed-11", "duration_seconds": 1133.39 },
-        { "track_id": "sex-ed-12", "duration_seconds": 1986.28 },
-        { "track_id": "sex-ed-13", "duration_seconds": 1075.39 },
-        { "track_id": "sex-ed-14", "duration_seconds": 2549.53 }
-      ]
     }
   ],
   "music_rooms": [

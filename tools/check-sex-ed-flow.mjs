@@ -51,6 +51,8 @@ assert.match(index, /b35b5890ca38c7b99bfc7adaae5bc16c\/thumbnails\/thumbnail\.jp
 assert.match(index, /7f60e29d9e432bf4198df7dc223b66ef\/thumbnails\/thumbnail\.jpg\?time=60s&height=360/);
 assert.match(index, /1–4 \/ 14/);
 assert.match(index, /James Bondage Health · sex-ed/);
+assert.match(index, /<p>14 lessons<\/p>/);
+assert.match(index, /data-sex-ed-shell-start[^>]*hidden/);
 assert.match(index, /data-television-live-pill/);
 assert.match(index, /data-reaction-wallet/);
 assert.match(index, /data-community-globe-frame/);
@@ -113,9 +115,9 @@ assert.match(televisionJs, /openSexEdEpisode\(card\.dataset\.sexEdEpisode/);
 assert.match(televisionJs, /function currentSexEdNowPlaying\(\)/);
 assert.match(televisionJs, /dataset\.sexEdEpisodeTitle = title/);
 assert.match(televisionJs, /dataset\.sexEdEpisodeGuest = guest/);
-assert.match(televisionJs, /const primaryLabel = sexEdProgramme\?\.label \|\| media\.label/);
+assert.match(televisionJs, /const primaryLabel = comedyProgramme\?\.label \|\| sexEdProgramme\?\.label \|\| media\.label/);
 assert.match(televisionJs, /const secondaryLabel = sexEdProgramme \? "MUSIC" : "FASHION"/);
-assert.match(televisionJs, /nowPlaying\.dataset\.nowPlayingMode = sexEdProgramme \? "sex-ed" : media\.mode/);
+assert.match(televisionJs, /nowPlaying\.dataset\.nowPlayingMode = comedyProgramme \? "comedy" : \(sexEdProgramme \? "sex-ed" : media\.mode\)/);
 assert.match(televisionJs, /Open sex-ed episodes\. Now playing:/);
 assert.match(televisionJs, /if \(currentSexEdNowPlaying\(\)\) \{[\s\S]*?openSexEdShelf\(\)/);
 assert.match(televisionJs, /if \(wasActive\) \{[\s\S]*?setProgrammeMixLevel\(null\);[\s\S]*?updateNowPlaying\(\)/);
@@ -141,9 +143,10 @@ assert.match(televisionCss, /\.adaptive-television-sex-ed-episode[\s\S]*height: 
 assert.match(televisionCss, /body\[data-sex-ed-presentation="fullscreen"\] \.adaptive-television-sex-ed-grid/);
 assert.match(televisionCss, /body\[data-sex-ed-presentation="fullscreen"\] \.adaptive-television-sex-ed-episode[\s\S]*object-fit: cover[\s\S]*object-position: center center/);
 assert.match(televisionCss, /body\.television-sex-ed-active \.adaptive-television-timecode \{\s*opacity: 1 !important;/);
-assert.match(televisionJs, /const source = document\.body\.classList\.contains\("television-sex-ed-active"\)[\s\S]*\? sexEdEpisodeVideo[\s\S]*: localVideo;/);
+assert.match(televisionJs, /const source = document\.body\.classList\.contains\("television-comedy-active"\)[\s\S]*\? comedyVideo[\s\S]*classList\.contains\("television-sex-ed-active"\)[\s\S]*\? sexEdEpisodeVideo[\s\S]*: localVideo;/);
 assert.match(televisionJs, /sexEdEpisodeVideo\?\.addEventListener\("loadedmetadata", updateTimecode\)/);
 assert.match(televisionJs, /sexEdEpisodeVideo\?\.addEventListener\("timeupdate", updateTimecode\)/);
+assert.match(televisionJs, /sexEdEpisodeVideo\?\.addEventListener\("pause", \(\) => \{[\s\S]{0,120}sexEdEpisodeStart\.hidden = true/);
 
 assert.match(episode, /Mugler - Fall Winter 2021\.mp4/);
 assert.match(episode, /data-sex-ed-episode-video/);

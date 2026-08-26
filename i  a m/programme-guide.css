@@ -93,7 +93,7 @@ body.television-program-open .adaptive-television-reaction-wallet {
 .program-panel__header {
   flex: 0 0 auto;
   display: grid;
-  grid-template-columns: minmax(360px, 1fr) auto 34px;
+  grid-template-columns: minmax(360px, 1fr) auto auto 34px;
   align-items: center;
   gap: 20px;
   padding: 17px 24px 15px;
@@ -131,6 +131,7 @@ body.television-program-open .adaptive-television-reaction-wallet {
 }
 
 .program-mode-switcher button,
+.program-destination-switcher button,
 .program-zone-switcher button,
 .program-panel__close,
 .program-enter,
@@ -152,15 +153,40 @@ body.television-program-open .adaptive-television-reaction-wallet {
   letter-spacing: 0.08em;
 }
 
-.program-mode-switcher button.program-mode-switcher__secondary {
-  min-width: 52px;
-  font-size: 8px;
-  letter-spacing: .055em;
-}
-
 .program-mode-switcher button[aria-selected="true"] {
   background: rgba(255, 255, 255, 0.94);
   color: #0b0e0b;
+}
+
+.program-destination-switcher {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  justify-self: end;
+}
+
+.program-destination-switcher button {
+  min-width: 58px;
+  height: 27px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 4px;
+  color: rgba(235, 241, 230, 0.66);
+  font: 650 8px/1 var(--program-mono);
+  letter-spacing: 0.07em;
+  transition: border-color 180ms ease, background 180ms ease, color 180ms ease;
+}
+
+.program-destination-switcher button:hover,
+.program-destination-switcher button:focus-visible {
+  border-color: rgba(173, 255, 118, 0.52);
+  color: var(--program-ink);
+  outline: 0;
+}
+
+.program-destination-switcher button[aria-pressed="true"] {
+  border-color: rgba(173, 255, 118, 0.48);
+  background: rgba(173, 255, 118, 0.09);
+  color: var(--program-signal);
 }
 
 .program-zone-switcher {
@@ -754,11 +780,16 @@ body.television-program-open .adaptive-television-reaction-wallet {
 
   .program-mode-switcher { width: 100%; }
   .program-mode-switcher button { flex: 1 1 0; min-width: 0; }
-  .program-mode-switcher button.program-mode-switcher__secondary { flex-grow: .82; min-width: 0; }
+
+  .program-destination-switcher {
+    grid-column: 1 / -1;
+    grid-row: 2;
+    justify-self: end;
+  }
 
   .program-zone-switcher {
     grid-column: 1 / -1;
-    grid-row: 2;
+    grid-row: 3;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     width: 100%;

@@ -21,6 +21,7 @@ const comedy = Array.from(catalogue.comedyProgrammes);
 const sexEd = Array.from(catalogue.sexEdEpisodes);
 
 assert.equal(catalogue.totalComedySeconds, 30299.27, "The leading-trailer Comedy wheel must last 08:24:59.27.");
+assert.equal(comedy[0].artist, "Duncan Trussell", "The Midnight Gospel trailer must be credited to Duncan Trussell, not its broadcaster.");
 assert.deepEqual(
   comedy.map((item) => item.id),
   [
@@ -49,7 +50,7 @@ assert.deepEqual(Array.from(comedy.find((item) => item.id === "comedy-donny-clar
 const uniqueComedyFiles = new Set(comedy.flatMap((item) => Array.from(item.segments).map((segment) => segment.fileName)));
 assert.equal(uniqueComedyFiles.size, 20, "Every requested Comedy source file must be represented once, with the trailer reused only as a separator.");
 assert.equal(sexEd.length, 14);
-assert.equal(Math.round(sexEd.reduce((sum, item) => sum + Number(item.durationSeconds || 0), 0) * 1000) / 1000, 41254.854, "The full Sex Ed wheel must remain inside the 12-hour Program horizon.");
+assert.equal(Math.round(sexEd.reduce((sum, item) => sum + Number(item.durationSeconds || 0), 0) * 1000) / 1000, 41254.854, "All fourteen on-demand Sex-Ed lessons must retain their measured durations.");
 assert.deepEqual(sexEd.slice(8).map((item) => [item.episode, item.title, item.artist]), [
   ["09", "Five Stages of Subspace", "Alesandra Madison"],
   ["10", "Subspace & Topspace", "Luna Agneya"],
@@ -67,19 +68,27 @@ assert.ok(newlyUploadedAssets.every((asset) => /^[a-f0-9]{32}$/.test(asset?.uid 
 assert.equal(new Set(newlyUploadedAssets.map((asset) => asset.uid)).size, 26, "Every requested source file must resolve to its own Stream object.");
 
 const comedyChannel = schedule.channels.find((channel) => channel.id === "comedy-jarrad-wright");
-const sexEdChannel = schedule.channels.find((channel) => channel.id === "sex-ed-james-bondage");
+const sexEdAudioChannel = schedule.channels.find((channel) => channel.id === "sex-ed");
 assert.deepEqual(comedyChannel.schedule.map((entry) => entry.track_id), comedy.map((item) => item.id));
-assert.deepEqual(sexEdChannel.schedule.map((entry) => entry.track_id), sexEd.map((item) => item.id));
+assert.equal(schedule.channels.some((channel) => channel.id === "sex-ed-james-bondage"), false, "Sex-Ed must not be represented as a false public 24/7 schedule.");
+assert.equal(sexEdAudioChannel?.internal, true, "The private synchronized Zip audio channel must remain available to on-demand lessons.");
 assert.match(guide, /channel\?\.format === mode && channel\?\.internal !== true/, "The private Sex Ed audio clock must never appear as a second public Sex Ed card.");
 assert.equal((index.match(/data-program-mode="comedy"/g) || []).length, 1);
-assert.equal((index.match(/data-program-mode="sex-ed"/g) || []).length, 1);
+assert.equal((index.match(/data-program-sex-ed/g) || []).length, 1);
+assert.match(index, /data-program-mode="comedy"[^>]*>COMEDY<[\s\S]{0,180}data-program-sex-ed[^>]*>SEX-ED</);
 assert.equal((index.match(/data-sex-ed-card(?:\s|>)/g) || []).length, 14);
+assert.match(index, /<p>14 lessons<\/p>/);
 assert.match(comedyCss, /\.adaptive-television-comedy-video[\s\S]*?object-fit: cover/);
+assert.match(comedyCss, /--comedy-crop-scale/);
 assert.match(read("i  a m/programme-guide.css"), /\.program-panel__footer button\[hidden\][\s\S]*?display: none/, "Programme-only modes must not display the legacy MORE control.");
 assert.match(comedyController, /segmentOffset/);
 assert.match(comedyController, /currentTime = state\.segmentOffset/);
+assert.match(comedyController, /function analyseEncodedBars\(\)/);
+assert.match(comedyController, /leaveForNavigation/);
+assert.doesNotMatch(index, /data-comedy-close|data-comedy-now/);
 assert.match(guide, /IAMComedyChannel\?\.joinBroadcast/);
-assert.match(guide, /IAMSexEdProgramme\?\.openEpisode/);
+assert.match(guide, /IAMSexEdProgramme\?\.openShelf/);
+assert.doesNotMatch(guide, /IAMSexEdProgramme\?\.openEpisode/);
 assert.doesNotMatch(index, /__SEX_ED_\d+_UID__/);
 
 new vm.Script(comedyController, { filename: "comedy-channel-v1.js" });

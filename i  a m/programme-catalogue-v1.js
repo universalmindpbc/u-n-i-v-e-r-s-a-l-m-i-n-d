@@ -4,7 +4,7 @@
   const comedyTrailer = {
     id: "comedy-midnight-gospel-trailer",
     title: "The Midnight Gospel trailer",
-    artist: "Netflix",
+    artist: "Duncan Trussell",
     fileName: "The Midnight Gospel _ Official Trailer _ Netflix.mp4",
     durationSeconds: 144.34,
   };

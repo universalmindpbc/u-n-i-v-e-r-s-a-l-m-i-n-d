@@ -172,6 +172,7 @@
   const sexEdBackground = document.querySelector("[data-sex-ed-background]");
   const sexEdEpisodeVideo = document.querySelector("[data-sex-ed-shell-video]");
   const sexEdEpisodeStart = document.querySelector("[data-sex-ed-shell-start]");
+  const comedyVideo = document.querySelector("[data-comedy-video]");
   const sexEdLoopVideos = Array.from(document.querySelectorAll(".adaptive-television-sex-ed-grid video"));
   const sexEdLoopImages = Array.from(document.querySelectorAll(".adaptive-television-sex-ed-grid img"));
   const videoModeButtons = Array.from(document.querySelectorAll("[data-video-mode]"));
@@ -262,6 +263,7 @@
   const requestedSexEdEpisode = /^(?:0[1-9]|1[0-4])$/.test(entryParams.get("sexEdEpisode") || "")
     ? entryParams.get("sexEdEpisode")
     : "";
+  const requestedSexEdShelf = entryParams.get("sexEd") === "1" || window.location.hash === "#sex-ed-shelf";
   const shopEntryScreen = document.querySelector("[data-shop-entry-screen]");
   const shopEntryButton = document.querySelector("[data-shop-entry-button]");
   const shopEntryLabel = document.querySelector("[data-shop-entry-label]");
@@ -1855,9 +1857,11 @@
   }
 
   function updateTimecode() {
-    const source = document.body.classList.contains("television-sex-ed-active")
-      ? sexEdEpisodeVideo
-      : localVideo;
+    const source = document.body.classList.contains("television-comedy-active")
+      ? comedyVideo
+      : document.body.classList.contains("television-sex-ed-active")
+        ? sexEdEpisodeVideo
+        : localVideo;
     if (!timecode || !source) return;
 
     timecode.textContent = formatTime(source.currentTime);
@@ -2375,11 +2379,26 @@
     };
   }
 
+  function currentComedyNowPlaying() {
+    if (!document.body.classList.contains("television-comedy-active")) return null;
+    const programme = document.body.dataset.comedyProgrammeTitle || "";
+    const segment = document.body.dataset.comedySegmentTitle || "";
+    const label = document.body.dataset.comedyNowPlayingLabel || [programme, segment].filter(Boolean).join(" · ");
+    if (!label) return null;
+    return {
+      programme,
+      segment,
+      artist: document.body.dataset.comedyProgrammeArtist || "",
+      label,
+    };
+  }
+
   function updateNowPlaying() {
     if (!nowPlaying) return;
     const media = currentNowPlayingMedia();
     const channel = currentNowPlayingChannel(media);
     const sexEdProgramme = currentSexEdNowPlaying();
+    const comedyProgramme = currentComedyNowPlaying();
     const radioState = document.body.dataset.radioPlaybackState || "stopped";
     const state = media.mode === "radio"
       ? (radioState === "error" ? "error" : radioState === "loading" ? "loading" : "live")
@@ -2391,14 +2410,14 @@
     const fashionVisible = Boolean(activeRunway && requestedVideoBlend < 99.5);
     const radioVisualVisible = Boolean(radioActive && radioRunway && requestedVideoBlend >= 99.5);
     const visibleRunway = fashionVisible ? activeRunway : radioVisualVisible ? radioRunway : null;
-    const primaryLabel = sexEdProgramme?.label || media.label;
+    const primaryLabel = comedyProgramme?.label || sexEdProgramme?.label || media.label;
     const secondaryLabel = sexEdProgramme ? "MUSIC" : "FASHION";
     const secondaryTitle = sexEdProgramme ? media.label : (visibleRunway?.title || "");
-    const secondaryAvailable = sexEdProgramme ? Boolean(media.label) : Boolean(visibleRunway);
-    const channelAvailable = !sexEdProgramme && Boolean(channel.name);
+    const secondaryAvailable = comedyProgramme ? false : (sexEdProgramme ? Boolean(media.label) : Boolean(visibleRunway));
+    const channelAvailable = !comedyProgramme && !sexEdProgramme && Boolean(channel.name);
     const tickerViews = ["audio"];
     const tickerStatuses = {
-      audio: media.mode === "radio" && !sexEdProgramme ? "RADIO" : "NOW PLAYING",
+      audio: comedyProgramme ? "COMEDY" : (media.mode === "radio" && !sexEdProgramme ? "RADIO" : "NOW PLAYING"),
     };
     if (secondaryAvailable) {
       tickerViews.push("visual");
@@ -2416,16 +2435,20 @@
     if (nowPlayingChannel) nowPlayingChannel.hidden = !channelAvailable;
     if (nowPlayingChannelTitle) nowPlayingChannelTitle.textContent = channel.name;
     nowPlaying.dataset.nowPlayingState = state;
-    nowPlaying.dataset.nowPlayingMode = sexEdProgramme ? "sex-ed" : media.mode;
+    nowPlaying.dataset.nowPlayingMode = comedyProgramme ? "comedy" : (sexEdProgramme ? "sex-ed" : media.mode);
     nowPlaying.dataset.nowPlayingChannel = channelAvailable ? channel.editorialId : "";
     nowPlaying.setAttribute(
       "aria-label",
-      sexEdProgramme
+      comedyProgramme
+        ? `Open the Comedy programme. Now playing: ${comedyProgramme.label}`
+        : sexEdProgramme
         ? `Open sex-ed episodes. Now playing: ${sexEdProgramme.label}. Music: ${media.label}`
         : `Open ${modeLabel.toLowerCase()} recommendations. ${media.mode === "radio" ? "Radio" : "Now playing"}: ${media.label}${visibleRunway ? `. Fashion: ${visibleRunway.title}` : ""}${channelAvailable ? `. Channel: ${channel.name}` : ""}`
     );
     announceNowPlaying(
-      sexEdProgramme
+      comedyProgramme
+        ? `Comedy now playing ${comedyProgramme.label}.`
+        : sexEdProgramme
         ? `Now playing ${sexEdProgramme.label}. Music ${media.label}.`
         : `${media.mode === "radio" ? "Radio" : "Now playing"} ${media.label}.${visibleRunway ? ` Fashion ${visibleRunway.title}.` : ""}${channelAvailable ? ` Channel ${channel.name}.` : ""}`
     );
@@ -2433,7 +2456,7 @@
     restartNowPlayingTicker(
       tickerViews,
       tickerStatuses,
-      [media.mode, primaryLabel, secondaryLabel, secondaryTitle, channel.editorialId, channel.name].join("\u241f")
+      [comedyProgramme ? "comedy" : media.mode, primaryLabel, secondaryLabel, secondaryTitle, channel.editorialId, channel.name].join("\u241f")
     );
   }
 
@@ -2441,6 +2464,10 @@
     event?.preventDefault();
     event?.stopPropagation();
     if (Date.now() < nowPlayingInteractiveAt) return;
+    if (currentComedyNowPlaying()) {
+      window.IAMProgrammeGuide?.open?.(event);
+      return;
+    }
     if (currentSexEdNowPlaying()) {
       openSexEdShelf();
       return;
@@ -2457,11 +2484,12 @@
       const media = currentNowPlayingMedia();
       const channel = currentNowPlayingChannel(media);
       const sexEdProgramme = currentSexEdNowPlaying();
+      const comedyProgramme = currentComedyNowPlaying();
       return {
         time: nowPlayingTime?.textContent || "",
         status: nowPlayingStatus?.textContent || "",
-        mode: sexEdProgramme ? "sex-ed" : media.mode,
-        title: sexEdProgramme?.label || media.label,
+        mode: comedyProgramme ? "comedy" : (sexEdProgramme ? "sex-ed" : media.mode),
+        title: comedyProgramme?.label || sexEdProgramme?.label || media.label,
         secondaryLabel: nowPlayingVisual?.hidden ? "" : (nowPlayingSecondaryLabel?.textContent || ""),
         secondary: nowPlayingVisual?.hidden ? "" : (nowPlayingVisualTitle?.textContent || ""),
         visual: nowPlayingVisual?.hidden ? "" : (nowPlayingVisualTitle?.textContent || ""),
@@ -5304,6 +5332,9 @@
   }
 
   async function joinBroadcastChannel(channelId, options = {}) {
+    if (document.body.classList.contains("television-comedy-active")) {
+      await window.IAMComedyChannel?.leaveForNavigation?.();
+    }
     const joinSequence = ++broadcastJoinSequence;
     const joinSource = String(options.source || "broadcast_join");
     if (!joinSource.startsWith("sex_ed")) {
@@ -5439,6 +5470,9 @@
 
   async function switchMusicTrack(nextTrack, options = {}) {
     if (!nextTrack || musicSwitching) return;
+    if (document.body.classList.contains("television-comedy-active")) {
+      await window.IAMComedyChannel?.leaveForNavigation?.();
+    }
     const loadingGeneration = Number(options.channelLoadingGeneration) || beginChannelLoading({
       mode: nextTrack.presentation === "live_dj_set" ? "parties" : "videos",
       item: nextTrack,
@@ -7198,7 +7232,7 @@
       if (sexEdEpisodeStart) sexEdEpisodeStart.hidden = true;
       return waitForSexEdMediaPlayback(sexEdEpisodeVideo);
     } catch {
-      if (sexEdEpisodeStart) sexEdEpisodeStart.hidden = false;
+      if (sexEdEpisodeStart) sexEdEpisodeStart.hidden = true;
       return false;
     }
   }
@@ -7213,7 +7247,7 @@
     window.IAMStreamController?.release?.(sexEdEpisodeVideo, "sex_ed_closed");
     window.IAMStreamController?.release?.(sexEdBackground, "sex_ed_closed");
     releaseSexEdLoopVideos();
-    if (sexEdEpisodeStart) sexEdEpisodeStart.hidden = false;
+    if (sexEdEpisodeStart) sexEdEpisodeStart.hidden = true;
     sexEdNeedsInitialSeek = true;
     delete document.body.dataset.sexEdEpisode;
     delete document.body.dataset.sexEdEpisodeStart;
@@ -7252,6 +7286,9 @@
   }
 
   async function openSexEdEpisode(episode = "01") {
+    if (document.body.classList.contains("television-comedy-active")) {
+      await window.IAMComedyChannel?.leaveForNavigation?.();
+    }
     closeSexEdShelf(false);
     returnToTelevisionRoom({ preserveSexEd: true });
     cancelChannelLoading("sex_ed_transition");
@@ -8529,6 +8566,16 @@
     openSexEdEpisode(requestedSexEdEpisode).catch(() => {});
   }
 
+  function bootstrapRequestedSexEdShelf() {
+    if (!requestedSexEdShelf) return;
+    hasOpened = true;
+    room.setAttribute("aria-hidden", "false");
+    playButton.setAttribute("aria-expanded", "true");
+    document.body.classList.add("television-room-open", "flower-cue-visible");
+    startFlowerSpin();
+    openSexEdShelf();
+  }
+
   function returnToTelevisionRoom(options = {}) {
     closeSexEdShelf(false);
     if (!options.preserveSexEd) stopSexEdEpisode();
@@ -9372,9 +9419,7 @@
     if (sexEdEpisodeStart) sexEdEpisodeStart.hidden = true;
   });
   sexEdEpisodeVideo?.addEventListener("pause", () => {
-    if (document.body.classList.contains("television-sex-ed-active") && sexEdEpisodeStart) {
-      sexEdEpisodeStart.hidden = false;
-    }
+    if (sexEdEpisodeStart) sexEdEpisodeStart.hidden = true;
   });
   pageFrame?.addEventListener("load", () => {
     enforcePageLayerNavigationOwnership();
@@ -9441,6 +9486,11 @@
       startFlowerSpin({ restart: true });
       return true;
     },
+    refreshViewingState() {
+      updateTimecode();
+      updateNowPlaying();
+      return true;
+    },
     preparePresentationEntry() {
       hasOpened = true;
       televisionPlaybackRequested = true;
@@ -9505,6 +9555,9 @@
   } else if (requestedSexEdEpisode) {
     if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", bootstrapRequestedSexEd, { once: true });
     else bootstrapRequestedSexEd();
+  } else if (requestedSexEdShelf) {
+    if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", bootstrapRequestedSexEdShelf, { once: true });
+    else bootstrapRequestedSexEdShelf();
   }
   runIntro();
 }());

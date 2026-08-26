@@ -41,9 +41,10 @@ assert.doesNotMatch(html, /<dt>13<\/dt>|<dt>5<\/dt>|<dt>3<\/dt>|CURATED WORLDS|V
 
 assert.match(html, /<section class="program-panel" id="program-panel" data-program-panel data-program-standalone/);
 assert.match(html, /class="program-mode-switcher" role="tablist"/);
-assert.equal((html.match(/data-program-mode="(?:videos|parties|radio|sex-ed|comedy)"/g) || []).length, 5);
-assert.match(html, /data-program-mode="sex-ed"[^>]*>SEX ED/);
+assert.equal((html.match(/role="tab" data-program-mode="(?:videos|parties|radio)"/g) || []).length, 3);
 assert.match(html, /data-program-mode="comedy"[^>]*>COMEDY/);
+assert.match(html, /class="program-destination-switcher"[\s\S]{0,240}data-program-mode="comedy"[\s\S]{0,180}data-program-sex-ed[^>]*>SEX-ED/);
+assert.ok(html.indexOf('data-program-mode="comedy"') < html.indexOf("data-program-sex-ed"));
 assert.match(html, /data-program-channel-rail/);
 assert.match(html, /data-program-history/);
 assert.match(html, /data-later-list/);
@@ -56,7 +57,8 @@ assert.match(navigation, /submenus\.has\(itemName\)/);
 assert.ok(html.includes(`program-navigation.js?v=program-navigation-${sha12("i  a m/program-navigation.js")}`));
 assert.match(guideCss, /\.program-mode-switcher[\s\S]{0,180}border: 1px solid/);
 assert.match(guideCss, /\.program-mode-switcher button\[aria-selected="true"\][\s\S]{0,120}background: rgba\(255, 255, 255, 0\.94\)/);
-assert.match(guideCss, /button\.program-mode-switcher__secondary[\s\S]{0,140}min-width: 52px/);
+assert.match(guideCss, /\.program-destination-switcher[\s\S]{0,240}justify-self: end/);
+assert.match(guideCss, /\.program-destination-switcher button[\s\S]{0,280}font: 650 8px\/1/);
 assert.match(pageCss, /\.program-panel\[data-program-standalone\][\s\S]{0,260}width: min\(1240px, calc\(100vw - 64px\)\)/);
 assert.match(pageCss, /height: calc\(100dvh - \(var\(--program-top-inset\) \* 2\)\)/);
 assert.match(pageCss, /opacity: 1;[\s\S]{0,80}pointer-events: auto;[\s\S]{0,80}transform: none/);
@@ -97,7 +99,7 @@ assert.deepEqual(
 );
 assert.deepEqual(
   schedule.channels.filter((channel) => ["sex-ed", "comedy"].includes(channel.format) && channel.internal !== true).map((channel) => channel.id),
-  ["comedy-jarrad-wright", "sex-ed-james-bondage"],
+  ["comedy-jarrad-wright"],
 );
 assert.ok(schedule.channels.filter((channel) => channel.editorial_id === "modul8-infinity")
   .every((channel) => channel.description === "Rave · house · techno · future bass"));
@@ -105,13 +107,19 @@ assert.doesNotMatch(JSON.stringify(schedule), /future psychedelic beats|hiphop/i
 
 assert.match(guide, /const standalone = programPanel\?\.hasAttribute\("data-program-standalone"\)/);
 assert.match(guide, /window\.location\.assign\("index\.html\?comedy=1"\)/);
-assert.match(guide, /window\.location\.assign\(`index\.html\?sexEdEpisode=/);
+assert.match(guide, /window\.location\.assign\("index\.html\?sexEd=1"\)/);
+assert.match(guide, /window\.IAMSexEdProgramme\?\.openShelf\?\.\(\)/);
+assert.doesNotMatch(guide, /sexEdEpisode=/);
 assert.match(guide, /window\.location\.assign\("induction\.html"\)/);
 assert.match(guide, /if \(!standalone && item\.previewVideoSrc/);
 assert.match(index, /data-comedy-world/);
 assert.match(comedyCss, /\.adaptive-television-comedy-video[\s\S]{0,260}width: 100%;[\s\S]{0,120}height: 100%;[\s\S]{0,180}object-fit: cover/);
+assert.match(comedyCss, /transform: scale\(var\(--comedy-crop-scale, 1\)\)/);
+assert.doesNotMatch(index, /data-comedy-close|data-comedy-now/);
 assert.match(comedyChannel, /totalComedySeconds/);
 assert.match(comedyChannel, /suspendProgrammeForPresentation/);
+assert.match(comedyChannel, /analyseEncodedBars/);
+assert.match(comedyChannel, /leaveForNavigation/);
 assert.match(controller, /window\.IAMSexEdProgramme/);
 assert.match(globalNav, /href="about\.html\?aboutTopLevel=1"[\s\S]{0,180}href="program\.html"/);
 assert.equal((globalNav.match(/data-nav-item="program"/g) || []).length, 1);

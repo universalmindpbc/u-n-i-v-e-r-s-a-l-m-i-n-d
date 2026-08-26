@@ -1,13 +1,12 @@
 (() => {
   "use strict";
 
-  const MODES = ["videos", "parties", "radio", "sex-ed", "comedy"];
-  const MODE_LABELS = { videos: "VIDEOS", parties: "PARTIES", radio: "RADIO", "sex-ed": "SEX ED", comedy: "COMEDY" };
+  const MODES = ["videos", "parties", "radio", "comedy"];
+  const MODE_LABELS = { videos: "VIDEOS", parties: "PARTIES", radio: "RADIO", comedy: "COMEDY" };
   const DEFAULT_ROOMS = {
     videos: "modul8-infinity",
     parties: "modul8-infinity",
     radio: "modul8-infinity",
-    "sex-ed": "sex-ed-james-bondage",
     comedy: "comedy-jarrad-wright",
   };
   const localTimeZone = Intl.DateTimeFormat().resolvedOptions().timeZone || "Australia/Sydney";
@@ -45,6 +44,7 @@
   const channelsButton = document.querySelector("[data-program-channels]");
   const historySection = document.querySelector("[data-program-history]");
   const modeButtons = Array.from(document.querySelectorAll("[data-program-mode]"));
+  const sexEdButtons = Array.from(document.querySelectorAll("[data-program-sex-ed]"));
   const zoneButtons = Array.from(document.querySelectorAll("[data-program-panel] [data-zone]"));
   const openButtons = Array.from(document.querySelectorAll("[data-program-open]"));
   const enterLiveButton = document.querySelector("[data-enter-live]");
@@ -507,7 +507,7 @@
   function renderSchedule() {
     const nowMs = serverNow();
     const currentChannel = channelForRoom();
-    const programmeMode = activeMode === "comedy" || activeMode === "sex-ed";
+    const programmeMode = activeMode === "comedy";
     const requestedHours = activeMode === "videos" ? 24 : (programmeMode ? 12 : (expanded ? 24 : 6));
     const maximumEvents = activeMode === "videos" ? (expanded ? 512 : 9) : (programmeMode ? 64 : (expanded ? 256 : 64));
     const events = upcomingEvents(currentChannel, nowMs, requestedHours, maximumEvents);
@@ -539,7 +539,7 @@
     const videoDefault = activeMode === "videos" && !expanded;
     setText("[data-horizon-label]", videoDefault
       ? "NEXT 8 VIDEOS"
-      : (programmeMode ? (activeMode === "comedy" ? "FULL COMEDY WHEEL" : "SEX ED CHANNEL") : (expanded ? "NEXT 24 HOURS" : "NEXT 6 HOURS")));
+      : (programmeMode ? "FULL COMEDY WHEEL" : (expanded ? "NEXT 24 HOURS" : "NEXT 6 HOURS")));
     setText("[data-more-label]", expanded ? "LESS" : "MORE");
     setText("[data-more-range]", programmeMode
       ? "FULL CHANNEL"
@@ -550,12 +550,14 @@
     moreButton.setAttribute("aria-expanded", String(expanded));
     renderList("[data-later-list]", visibleEvents.slice(2));
 
-    const showHistory = ["videos", "sex-ed", "comedy"].includes(activeMode);
+    const showHistory = ["videos", "comedy"].includes(activeMode);
     historySection.hidden = !showHistory;
     if (showHistory) renderList("[data-history-list]", previousEvents(currentChannel, nowMs, 3));
 
     modeButtons.forEach((button) => {
-      button.setAttribute("aria-selected", String(button.dataset.programMode === activeMode));
+      const selected = button.dataset.programMode === activeMode;
+      if (button.getAttribute("role") === "tab") button.setAttribute("aria-selected", String(selected));
+      else button.setAttribute("aria-pressed", String(selected));
     });
     zoneButtons.forEach((button) => {
       button.setAttribute("aria-pressed", String(button.dataset.zone === activeZone));
@@ -567,11 +569,6 @@
     if (document.body.classList.contains("television-comedy-active")) {
       activeMode = "comedy";
       activeRooms.comedy = "comedy-jarrad-wright";
-      return;
-    }
-    if (document.body.classList.contains("television-sex-ed-active")) {
-      activeMode = "sex-ed";
-      activeRooms["sex-ed"] = "sex-ed-james-bondage";
       return;
     }
     const state = window.IAMMusicChannels?.getState?.() || {};
@@ -653,13 +650,10 @@
     event.stopPropagation();
     const channelId = channelForRoom()?.id || "";
     if (standalone) {
-      document.body.dataset.programLiveState = activeMode === "comedy" || activeMode === "sex-ed" ? "channel-entry" : "induction";
+      document.body.dataset.programLiveState = activeMode === "comedy" ? "channel-entry" : "induction";
       document.body.dataset.programLiveChannel = channelId;
       if (activeMode === "comedy") {
         window.location.assign("index.html?comedy=1");
-      } else if (activeMode === "sex-ed") {
-        const currentEpisode = window.IAMProgrammeCatalogue?.itemFor?.(upcomingEvents(channelForRoom(), serverNow(), 1, 1)[0]?.entry?.track_id)?.episode || "01";
-        window.location.assign(`index.html?sexEdEpisode=${encodeURIComponent(currentEpisode)}`);
       } else {
         window.location.assign("induction.html");
       }
@@ -674,9 +668,6 @@
       let joinRequest;
       if (activeMode === "comedy") {
         joinRequest = window.IAMComedyChannel?.joinBroadcast?.(channelId);
-      } else if (activeMode === "sex-ed") {
-        const currentEpisode = window.IAMProgrammeCatalogue?.itemFor?.(upcomingEvents(channelForRoom(), serverNow(), 1, 1)[0]?.entry?.track_id)?.episode || "01";
-        joinRequest = window.IAMSexEdProgramme?.openEpisode?.(currentEpisode);
       } else {
         window.IAMMusicChannels?.setMode?.(activeMode);
         joinRequest = window.IAMMusicChannels?.joinBroadcast?.(channelId);
@@ -706,14 +697,25 @@
     event.stopPropagation();
     if (standalone) {
       if (activeMode === "comedy") window.location.assign("index.html?comedy=1");
-      else if (activeMode === "sex-ed") window.location.assign("index.html#sex-ed-shelf");
       else window.location.assign("induction.html");
       return;
     }
     closeProgram(null, { restoreFocus: false });
     if (activeMode === "comedy") window.IAMComedyChannel?.joinBroadcast?.();
-    else if (activeMode === "sex-ed") window.IAMSexEdProgramme?.openShelf?.();
     else window.IAMMusicChannels?.openChannels?.(activeMode);
+  }
+
+  function openSexEdCatalogue(event) {
+    event?.preventDefault();
+    event?.stopPropagation();
+    document.body.dataset.programSexEdState = "opening-catalogue";
+    if (standalone) {
+      window.location.assign("index.html?sexEd=1");
+      return;
+    }
+    closeProgram(null, { restoreFocus: false });
+    const opened = window.IAMSexEdProgramme?.openShelf?.();
+    document.body.dataset.programSexEdState = opened ? "catalogue-open" : "unavailable";
   }
 
   modeButtons.forEach((button) => {
@@ -722,6 +724,7 @@
       selectMode(button.dataset.programMode || "videos");
     });
   });
+  sexEdButtons.forEach((button) => button.addEventListener("click", openSexEdCatalogue));
   zoneButtons.forEach((button) => {
     button.addEventListener("click", (event) => {
       event.preventDefault();
@@ -770,7 +773,7 @@
   async function initialize() {
     document.body.dataset.programGuideState = "loading";
     const [scheduleResponse, catalogueResponse, stationsResponse] = await Promise.all([
-      fetch("broadcast-schedule-v1.json?v=programme-guide-app-2", {
+      fetch("broadcast-schedule-v1.json?v=broadcast-schedule-8502d10a3362", {
         cache: "no-store",
         credentials: "same-origin",
         headers: { Accept: "application/json" },

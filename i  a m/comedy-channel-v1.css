@@ -1,7 +1,7 @@
 .adaptive-television-comedy-world {
   position: absolute;
   inset: 0;
-  z-index: 34;
+  z-index: 6;
   overflow: hidden;
   background: #000;
   opacity: 0;
@@ -27,6 +27,8 @@ body.television-comedy-active .adaptive-television-comedy-world {
   background: #000;
   object-fit: cover;
   object-position: center center;
+  transform: scale(var(--comedy-crop-scale, 1));
+  transform-origin: center center;
   -webkit-user-select: none;
   user-select: none;
   -webkit-user-drag: none;
@@ -37,7 +39,7 @@ body.television-comedy-active .adaptive-television-comedy-world {
   position: absolute;
   top: 50%;
   left: 50%;
-  z-index: 2;
+  z-index: 7;
   display: grid;
   place-items: center;
   width: clamp(54px, 6vw, 82px);
@@ -58,40 +60,8 @@ body.television-comedy-active .adaptive-television-comedy-world {
   object-fit: contain;
 }
 
-.adaptive-television-comedy-now {
-  position: absolute;
-  z-index: 2;
-  left: clamp(18px, 2.5vw, 42px);
-  bottom: clamp(18px, 2.5vw, 42px);
-  margin: 0;
-  padding: 8px 11px;
-  background: rgba(0, 0, 0, .46);
-  color: rgba(255, 255, 255, .86);
-  font: 600 10px/1.2 "SFMono-Regular", Consolas, monospace;
-  letter-spacing: .12em;
-  text-transform: uppercase;
-}
-
-.adaptive-television-comedy-close {
-  position: absolute;
-  z-index: 3;
-  top: clamp(18px, 2.5vw, 42px);
-  right: clamp(18px, 2.5vw, 42px);
-  display: grid;
-  place-items: center;
-  width: 34px;
-  height: 34px;
-  padding: 0 0 2px;
-  border: 1px solid rgba(255, 255, 255, .34);
-  border-radius: 50%;
-  background: rgba(0, 0, 0, .42);
-  color: #fff;
-  cursor: pointer;
-  font: 300 24px/1 "Helvetica Neue", Arial, sans-serif;
-}
-
-@media (max-width: 760px) {
-  .adaptive-television-comedy-now { max-width: calc(100vw - 100px); }
+body.television-comedy-active .adaptive-television-timecode {
+  opacity: 1 !important;
 }
 
 @media (prefers-reduced-motion: reduce) {
