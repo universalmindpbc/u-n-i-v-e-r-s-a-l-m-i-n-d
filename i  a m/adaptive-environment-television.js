@@ -285,6 +285,7 @@
   let sexEdStartTime = 139;
   let sexEdNeedsInitialSeek = true;
   let sexEdReturnProgramme = null;
+  let sexEdOpenSequence = 0;
   let musicCatalogueRecords = [];
   let radioStationRecords = DEFAULT_RADIO_STATIONS.map((station) => ({ ...station }));
   let musicShelfOrders = { videos: [], parties: [], radio: radioStationRecords.slice(), fashion: [] };
@@ -453,6 +454,7 @@
   const RADIO_FASHION_REVEAL_BUFFER_SECONDS = 4;
   const RECORDED_PROGRAMME_PRIME_BUFFER_SECONDS = 4;
   const RECORDED_PROGRAMME_READY_BUFFER_SECONDS = 24;
+  const SEX_ED_RECORDED_PROGRAMME_READY_BUFFER_SECONDS = 8;
   const RADIO_READY_BUFFER_SECONDS = 24;
   const RADIO_LOW_BUFFER_SECONDS = 12;
   const RADIO_BUFFER_WAIT_MS = 12000;
@@ -3565,7 +3567,8 @@
     return channelLoadingOverlay;
   }
 
-  function shouldShowChannelLoading(source = "") {
+  function shouldShowChannelLoading(source = "", force = false) {
+    if (force) return true;
     const normalizedSource = String(source || "manual");
     return !document.body.classList.contains("television-sex-ed-active") &&
       normalizedSource !== "shop_independent" &&
@@ -3577,8 +3580,8 @@
     return [String(mode || "videos"), String(channelName || item?.broadcastChannelName || "").trim(), mediaId].join(":");
   }
 
-  function beginChannelLoading({ mode = musicChannelMode, item = null, channelName = "", source = "manual" } = {}) {
-    if (!shouldShowChannelLoading(source)) return 0;
+  function beginChannelLoading({ mode = musicChannelMode, item = null, channelName = "", source = "manual", force = false } = {}) {
+    if (!shouldShowChannelLoading(source, force)) return 0;
     const overlay = ensureChannelLoadingOverlay();
     const identity = channelLoadingKey(mode, item, channelName);
     if (
@@ -5301,7 +5304,7 @@
       broadcastSyncTimer = 0;
     }
     const loadingItem = scheduledTrack || scheduledStation;
-    const loadingGeneration = beginChannelLoading({
+    const loadingGeneration = Number(options.channelLoadingGeneration) || beginChannelLoading({
       mode: state.format,
       item: loadingItem,
       channelName: state.channelName,
@@ -5356,26 +5359,31 @@
       });
       if (joinSequence !== broadcastJoinSequence || broadcastChannelId !== channelId) return false;
     } else if (state.mediaType === "audio") {
-      const visualJoined = await joinFashionBroadcastChannel(state.visualChannelId || "fashion-underground-intensity", {
-        source: "audio_party_visual_pair",
-        pairingSource: `party_${state.editorialId || state.energyId}`,
-        channelLoadingGeneration: loadingGeneration,
-        deferChannelLoadingFinish: true,
-      });
-      if (joinSequence !== broadcastJoinSequence || broadcastChannelId !== channelId) return false;
-      if (!visualJoined) {
-        failChannelLoading(loadingGeneration);
-        return false;
+      const sexEdOwnsVisuals = options.source === "sex_ed_episode";
+      if (!sexEdOwnsVisuals) {
+        const visualJoined = await joinFashionBroadcastChannel(state.visualChannelId || "fashion-underground-intensity", {
+          source: "audio_party_visual_pair",
+          pairingSource: `party_${state.editorialId || state.energyId}`,
+          channelLoadingGeneration: loadingGeneration,
+          deferChannelLoadingFinish: true,
+        });
+        if (joinSequence !== broadcastJoinSequence || broadcastChannelId !== channelId) return false;
+        if (!visualJoined) {
+          failChannelLoading(loadingGeneration);
+          return false;
+        }
       }
       const started = await startAudioLedParty(scheduledTrack, {
         source: options.source || "broadcast_join",
         broadcastChannelId: channelId,
         channelLoadingGeneration: loadingGeneration,
         deferChannelLoadingFinish: true,
+        visualAlreadyManaged: sexEdOwnsVisuals,
+        readyBufferSeconds: sexEdOwnsVisuals ? SEX_ED_RECORDED_PROGRAMME_READY_BUFFER_SECONDS : undefined,
       });
       if (joinSequence !== broadcastJoinSequence || broadcastChannelId !== channelId) return false;
       if (!started) return false;
-      finishChannelLoading(loadingGeneration);
+      if (!options.deferChannelLoadingFinish) finishChannelLoading(loadingGeneration);
     } else {
       stopRadioVisualBroadcastPlayback("video_broadcast_start");
       await switchMusicTrack(scheduledTrack, {
@@ -5600,6 +5608,15 @@
       if (localVideo) {
         try { localVideo.pause(); } catch {}
         localVideo.muted = true;
+        if (options.visualAlreadyManaged) {
+          window.IAMStreamController?.setPriority?.(localVideo, "optional");
+          window.IAMStreamController?.suspend?.(localVideo, "sex_ed_audio_handoff");
+        }
+      }
+      if (options.visualAlreadyManaged && fashionVideo) {
+        window.IAMStreamController?.setFashionActive?.(fashionVideo, false, "sex_ed_audio_handoff");
+        window.IAMStreamController?.setPriority?.(fashionVideo, "optional");
+        window.IAMStreamController?.suspend?.(fashionVideo, "sex_ed_audio_handoff");
       }
       stopRadioVisualBroadcastPlayback("audio_party_start");
       activeRadioStationId = "";
@@ -5613,7 +5630,7 @@
       delete document.body.dataset.audioPartyRecovery;
       delete document.body.dataset.audioPartyRevealBufferSeconds;
       playerMount.classList.remove("is-local-video-awaiting-gesture");
-      await setVideoBlend(0);
+      if (!options.visualAlreadyManaged) await setVideoBlend(0);
       assertCurrentStart();
       musicChannelMode = "parties";
       musicModeManuallySelected = options.source !== "automatic_continuation";
@@ -5628,12 +5645,14 @@
         : hasRequestedStart
           ? Math.max(0, requestedStartSeconds)
           : undefined;
-      const visualStartup = (async () => {
-        await ensureFashionStreamAttached();
-        assertCurrentStart();
-        if (fashionVideo?.paused) await playWhenStreamAttached(fashionVideo, "fashion").catch(() => {});
-        assertCurrentStart();
-      })();
+      const visualStartup = options.visualAlreadyManaged
+        ? Promise.resolve()
+        : (async () => {
+          await ensureFashionStreamAttached();
+          assertCurrentStart();
+          if (fashionVideo?.paused) await playWhenStreamAttached(fashionVideo, "fashion").catch(() => {});
+          assertCurrentStart();
+        })();
       const audioStartup = primeContinuationAudio({
         id: nextTrack.id,
         track_id: nextTrack.id,
@@ -5663,13 +5682,13 @@
         });
         assertCurrentStart();
       }
-      const revealBufferSeconds = await waitForRadioBuffer(
-        continuationAudio,
-        RECORDED_PROGRAMME_READY_BUFFER_SECONDS
-      );
+      const readyBufferSeconds = Number.isFinite(Number(options.readyBufferSeconds))
+        ? Math.max(RECORDED_PROGRAMME_PRIME_BUFFER_SECONDS, Number(options.readyBufferSeconds))
+        : RECORDED_PROGRAMME_READY_BUFFER_SECONDS;
+      const revealBufferSeconds = await waitForRadioBuffer(continuationAudio, readyBufferSeconds);
       assertCurrentStart();
       document.body.dataset.audioPartyRevealBufferSeconds = revealBufferSeconds.toFixed(1);
-      if (revealBufferSeconds + .15 < RECORDED_PROGRAMME_READY_BUFFER_SECONDS) {
+      if (revealBufferSeconds + .15 < readyBufferSeconds) {
         throw new Error("The recorded programme could not rebuild its reveal buffer.");
       }
       window.clearTimeout(radioRecoveryTimer);
@@ -5718,7 +5737,7 @@
       window.IAMFirstPartyAnalytics?.record?.("audio_party_start", {
         track_id: nextTrack.id,
         channel_id: options.broadcastChannelId || "",
-        visual_channel_id: "fashion-underground-intensity",
+        visual_channel_id: options.visualAlreadyManaged ? "sex-ed-background" : "fashion-underground-intensity",
         selection_source: options.source || "adaptive",
       });
       return true;
@@ -6932,11 +6951,51 @@
     }
   }
 
-  function activateSexEdLoopVideos() {
-    sexEdLoopImages.forEach((image) => {
+  function loadSexEdLoopImage(image) {
+    if (!image) return Promise.resolve(false);
+    if (image.complete && image.naturalWidth > 0) return Promise.resolve(true);
+    return new Promise((resolve) => {
+      let settled = false;
+      const finish = (ready) => {
+        if (settled) return;
+        settled = true;
+        window.clearTimeout(timeout);
+        image.removeEventListener("load", onLoad);
+        image.removeEventListener("error", onError);
+        resolve(ready);
+      };
+      const onLoad = () => finish(image.naturalWidth > 0);
+      const onError = () => finish(false);
+      const timeout = window.setTimeout(() => finish(image.complete && image.naturalWidth > 0), 12000);
+      image.addEventListener("load", onLoad, { once: true });
+      image.addEventListener("error", onError, { once: true });
       if (!image.getAttribute("src") && image.dataset.src) image.src = image.dataset.src;
     });
-    sexEdLoopVideos.forEach((video) => {
+  }
+
+  function waitForSexEdMediaPlayback(media, timeoutMs = 18000) {
+    if (!media) return Promise.resolve(false);
+    if (!media.paused && media.readyState >= HTMLMediaElement.HAVE_CURRENT_DATA) return Promise.resolve(true);
+    const startedAt = Date.now();
+    return new Promise((resolve) => {
+      const inspect = () => {
+        if (!media.paused && media.readyState >= HTMLMediaElement.HAVE_CURRENT_DATA) {
+          resolve(true);
+          return;
+        }
+        if (media.error || Date.now() - startedAt >= timeoutMs) {
+          resolve(false);
+          return;
+        }
+        window.setTimeout(inspect, 120);
+      };
+      inspect();
+    });
+  }
+
+  async function playSexEdLoopVideo(video) {
+    if (!video) return false;
+    try {
       const source = video.dataset.src || "";
       if (source && !video.getAttribute("src")) {
         video.src = source;
@@ -6945,7 +7004,55 @@
       }
       video.muted = true;
       video.loop = true;
-      video.play()?.catch?.(() => {});
+      await video.play();
+      return waitForSexEdMediaPlayback(video);
+    } catch {
+      return false;
+    }
+  }
+
+  async function activateSexEdLoopVideos() {
+    const readiness = await Promise.all([
+      ...sexEdLoopImages.map((image) => loadSexEdLoopImage(image)),
+      ...sexEdLoopVideos.map((video) => playSexEdLoopVideo(video)),
+    ]);
+    return readiness.every(Boolean);
+  }
+
+  async function playSexEdBackgroundVideo() {
+    if (!sexEdBackground) return false;
+    const attached = await ensureSexEdStream(sexEdBackground, "fashion");
+    if (!attached) return false;
+    sexEdBackground.muted = true;
+    sexEdBackground.loop = true;
+    try {
+      await (window.IAMStreamController?.play?.(sexEdBackground) || sexEdBackground.play());
+      return waitForSexEdMediaPlayback(sexEdBackground);
+    } catch {
+      return false;
+    }
+  }
+
+  function waitForSexEdAudioState(stateKey, timeoutMs = AUDIO_PARTY_START_TIMEOUT_MS) {
+    const startedAt = Date.now();
+    return new Promise((resolve) => {
+      const inspect = () => {
+        if (!document.body.classList.contains("television-sex-ed-active")) {
+          resolve(false);
+          return;
+        }
+        const state = document.body.dataset[stateKey] || "";
+        if (state === "playing") {
+          resolve(true);
+          return;
+        }
+        if (["error", "unavailable", "encoding"].includes(state) || Date.now() - startedAt >= timeoutMs) {
+          resolve(false);
+          return;
+        }
+        window.setTimeout(inspect, 120);
+      };
+      inspect();
     });
   }
 
@@ -7033,7 +7140,7 @@
     try {
       await (window.IAMStreamController?.play?.(sexEdEpisodeVideo) || sexEdEpisodeVideo.play());
       if (sexEdEpisodeStart) sexEdEpisodeStart.hidden = true;
-      return true;
+      return waitForSexEdMediaPlayback(sexEdEpisodeVideo);
     } catch {
       if (sexEdEpisodeStart) sexEdEpisodeStart.hidden = false;
       return false;
@@ -7043,6 +7150,7 @@
   function stopSexEdEpisode(options = {}) {
     const restoreProgramme = options.restoreProgramme !== false;
     const wasActive = document.body.classList.contains("television-sex-ed-active");
+    sexEdOpenSequence += 1;
     document.body.classList.remove("television-sex-ed-active");
     sexEdWorld?.setAttribute("aria-hidden", "true");
     updateTimecode();
@@ -7057,7 +7165,14 @@
     delete document.body.dataset.sexEdEpisodeGuest;
     delete document.body.dataset.sexEdPresentation;
     delete document.body.dataset.sexEdRadioStation;
+    delete document.body.dataset.sexEdLoadingState;
+    delete document.body.dataset.sexEdLoadingForeground;
+    delete document.body.dataset.sexEdLoadingBackground;
+    delete document.body.dataset.sexEdLoadingTiles;
+    delete document.body.dataset.sexEdLoadingAudio;
+    delete document.body.dataset.sexEdLoadingElapsedMs;
     if (wasActive) {
+      cancelChannelLoading("sex_ed_closed");
       setProgrammeMixLevel(null);
       updateNowPlaying();
       const returnProgramme = sexEdReturnProgramme;
@@ -7083,9 +7198,21 @@
   async function openSexEdEpisode(episode = "01") {
     closeSexEdShelf(false);
     returnToTelevisionRoom({ preserveSexEd: true });
+    cancelChannelLoading("sex_ed_transition");
     configureSexEdEpisode(episode);
     document.body.classList.add("television-sex-ed-active", "flower-cue-visible");
-    cancelChannelLoading("sex_ed_active");
+    const openSequence = ++sexEdOpenSequence;
+    const loadingStartedAt = window.performance?.now?.() || Date.now();
+    const loadingGeneration = beginChannelLoading({
+      mode: "sex-ed",
+      item: { id: `sex-ed-${sexEdActiveEpisode}` },
+      channelName: "sex-ed",
+      source: "sex_ed_episode",
+      force: true,
+    });
+    document.body.dataset.sexEdLoadingState = "loading";
+    document.body.dataset.sexEdLoadingForeground = "loading";
+    document.body.dataset.sexEdLoadingAudio = "loading";
     updateNowPlaying();
     sexEdWorld?.setAttribute("aria-hidden", "false");
     if (!sexEdReturnProgramme) {
@@ -7103,32 +7230,59 @@
     }
     setProgrammeMixLevel(SEX_ED_PROGRAMME_MIX_LEVEL);
     const radioStation = document.body.dataset.sexEdRadioStation || "";
+    const recordReadiness = (name, promise) => Promise.resolve(promise)
+      .then((ready) => {
+        if (openSequence === sexEdOpenSequence) document.body.dataset[`sexEdLoading${name}`] = ready ? "ready" : "error";
+        return Boolean(ready);
+      })
+      .catch(() => {
+        if (openSequence === sexEdOpenSequence) document.body.dataset[`sexEdLoading${name}`] = "error";
+        return false;
+      });
+    const readiness = [recordReadiness("Foreground", playSexEdEpisode())];
     if (radioStation) {
       window.IAMStreamController?.release?.(sexEdBackground, "sex_ed_radio_presentation");
       releaseSexEdLoopVideos();
-      startRadioStation(radioStation, { source: "sex_ed_instruction" })
-        .then(() => {
+      delete document.body.dataset.sexEdLoadingBackground;
+      delete document.body.dataset.sexEdLoadingTiles;
+      readiness.push(recordReadiness("Audio", (async () => {
+        await startRadioStation(radioStation, { source: "sex_ed_instruction" });
+        const ready = await waitForSexEdAudioState("radioPlaybackState");
+        if (ready) {
           if (
             document.body.classList.contains("television-sex-ed-active") &&
             document.body.dataset.sexEdRadioStation === radioStation
           ) {
             setProgrammeMixLevel(SEX_ED_PROGRAMME_MIX_LEVEL);
           }
-        })
-        .catch(() => {});
+        }
+        return ready;
+      })()));
     } else {
-      if (broadcastChannelId !== "party-james-bondage") {
-        joinBroadcastChannel("party-james-bondage", { source: "sex_ed_episode" }).catch(() => {});
-      }
-      ensureSexEdStream(sexEdBackground, "fashion").then(() => {
-        if (!sexEdBackground) return;
-        sexEdBackground.muted = true;
-        sexEdBackground.loop = true;
-        (window.IAMStreamController?.play?.(sexEdBackground) || sexEdBackground.play())?.catch?.(() => {});
-      });
-      activateSexEdLoopVideos();
+      document.body.dataset.sexEdLoadingBackground = "loading";
+      document.body.dataset.sexEdLoadingTiles = "loading";
+      const partyAlreadyPlaying = broadcastChannelId === "party-james-bondage" &&
+        document.body.dataset.audioPartyPlaybackState === "playing";
+      const audioReady = recordReadiness("Audio", partyAlreadyPlaying || joinBroadcastChannel("party-james-bondage", {
+        source: "sex_ed_episode",
+        channelLoadingGeneration: loadingGeneration,
+        deferChannelLoadingFinish: true,
+      }));
+      readiness.push(audioReady);
+      readiness.push(recordReadiness("Background", audioReady.then((ready) => ready ? playSexEdBackgroundVideo() : false)));
+      readiness.push(recordReadiness("Tiles", audioReady.then((ready) => ready ? activateSexEdLoopVideos() : false)));
     }
-    await playSexEdEpisode();
+    const ready = (await Promise.all(readiness)).every(Boolean);
+    if (
+      openSequence !== sexEdOpenSequence ||
+      !document.body.classList.contains("television-sex-ed-active") ||
+      document.body.dataset.sexEdEpisode !== sexEdActiveEpisode
+    ) return false;
+    document.body.dataset.sexEdLoadingElapsedMs = String(Math.round((window.performance?.now?.() || Date.now()) - loadingStartedAt));
+    document.body.dataset.sexEdLoadingState = ready ? "ready" : "error";
+    if (ready) finishChannelLoading(loadingGeneration);
+    else failChannelLoading(loadingGeneration);
+    return ready;
   }
 
   function playLocalVideo(video) {

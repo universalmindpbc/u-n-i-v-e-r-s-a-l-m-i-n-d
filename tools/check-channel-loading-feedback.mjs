@@ -57,12 +57,25 @@ requireCondition(
 requireCondition(controller.includes("continuationAudio.play()") && controller.includes("failChannelLoading(loadingGeneration);"), "Radio loading feedback is no longer bound to playback success and failure");
 requireCondition(controller.includes("let broadcastJoinSequence = 0;") && controller.includes("const joinSequence = ++broadcastJoinSequence;"), "rapid channel joins no longer invalidate stale asynchronous work");
 requireCondition(controller.includes("if (broadcastSyncTimer) {") && controller.includes("joinSequence !== broadcastJoinSequence || broadcastChannelId !== channelId"), "an older sync or join can overtake current channel loading feedback");
-const channelLoadingVisibility = controller.match(/function shouldShowChannelLoading\(source = ""\)[\s\S]*?\n  }/)?.[0] || "";
+const channelLoadingVisibility = controller.match(/function shouldShowChannelLoading\(source = "", force = false\)[\s\S]*?\n  }/)?.[0] || "";
 requireCondition(
-  channelLoadingVisibility.includes('document.body.classList.contains("television-sex-ed-active")') &&
+  channelLoadingVisibility.includes("if (force) return true;") &&
+    channelLoadingVisibility.includes('document.body.classList.contains("television-sex-ed-active")') &&
     channelLoadingVisibility.includes('normalizedSource !== "shop_independent"') &&
     channelLoadingVisibility.includes('!normalizedSource.startsWith("sex_ed")'),
   "non-channel Shop or sex-ed playback is no longer excluded",
+);
+requireCondition(
+  controller.includes('source: "sex_ed_episode",\n      force: true,') &&
+    controller.includes('document.body.dataset.sexEdLoadingState = "loading";') &&
+    controller.includes('document.body.dataset.sexEdLoadingState = ready ? "ready" : "error";'),
+  "Sex Ed no longer owns one truthful aggregate loading lifecycle",
+);
+requireCondition(
+  controller.includes('const sexEdOwnsVisuals = options.source === "sex_ed_episode";') &&
+    controller.includes('visualAlreadyManaged: sexEdOwnsVisuals') &&
+    controller.includes('window.IAMStreamController?.suspend?.(localVideo, "sex_ed_audio_handoff");'),
+  "Sex Ed audio can again wait behind a hidden Fashion join or the outgoing music stream",
 );
 requireCondition(styles.includes("@keyframes adaptive-channel-loading-spin") && styles.includes(".adaptive-television-channel-loading.is-active"), "the circular loading treatment is missing");
 requireCondition(styles.includes("background: radial-gradient") && styles.includes("pointer-events: none"), "the loader no longer preserves the prior image without blocking controls");
