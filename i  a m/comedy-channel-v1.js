@@ -9,6 +9,7 @@
   const catalogue = window.IAMProgrammeCatalogue;
   if (!world || !video || !startButton || !closeButton || !catalogue) return;
 
+  const COMEDY_SOUND_OUTPUT_MULTIPLIER = 0.11;
   const programmes = catalogue.comedyProgrammes;
   const cycleSeconds = Number(catalogue.totalComedySeconds || 0);
   const epochMs = Date.parse(catalogue.comedyEpochUtc);
@@ -89,8 +90,11 @@
   async function requestPlayback() {
     video.muted = false;
     video.volume = 1;
+    window.IAMEMDR?.setAudioSource?.(video);
     try {
-      await (window.IAMStreamController?.play?.(video) || video.play());
+      const playAttempt = window.IAMStreamController?.play?.(video) || video.play();
+      window.IAMQuantumTree?.ensurePlaying?.();
+      await playAttempt;
       startButton.hidden = true;
       document.body.dataset.comedyPlaybackState = "playing";
       return true;
@@ -158,6 +162,7 @@
       returnProgramme = window.IAMTelevisionRoom?.suspendProgrammeForPresentation?.("comedy") || null;
     }
     active = true;
+    document.body.dataset.comedySoundOutputMultiplier = COMEDY_SOUND_OUTPUT_MULTIPLIER.toFixed(2);
     document.body.classList.add("television-comedy-active");
     document.body.dataset.comedyChannel = catalogue.comedyChannelId;
     world.setAttribute("aria-hidden", "false");
@@ -176,6 +181,7 @@
     window.IAMStreamController?.release?.(video, "comedy_closed");
     activeSegmentFile = "";
     document.body.classList.remove("television-comedy-active");
+    delete document.body.dataset.comedySoundOutputMultiplier;
     world.setAttribute("aria-hidden", "true");
     delete document.body.dataset.comedyChannel;
     delete document.body.dataset.comedyProgramme;

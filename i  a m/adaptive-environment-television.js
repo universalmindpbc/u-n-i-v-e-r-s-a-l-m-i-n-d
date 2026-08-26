@@ -520,6 +520,7 @@
   const SOUND_RESEARCH_MASKING_CURVE = 0.75;
   const SOUND_RESEARCH_ATTACK_SMOOTHING = 0.05;
   const SOUND_RESEARCH_RELEASE_SMOOTHING = 0.12;
+  const SOUND_RESEARCH_COMEDY_OUTPUT_MULTIPLIER = 0.11;
   let soundResearchMaxVolume = SOUND_RESEARCH_DEFAULT_MAX_VOLUME;
   let continuationDecision = null;
   let flowerCanvasFrame = 0;
@@ -7373,12 +7374,27 @@
   }
 
   function soundResearchActiveMedia() {
+    const comedyVideo = document.querySelector("[data-comedy-video]");
+    const comedyIsAudible = document.body.classList.contains("television-comedy-active")
+      && comedyVideo
+      && !comedyVideo.paused
+      && !comedyVideo.muted
+      && comedyVideo.volume > 0;
     const videoIsAudible = localVideo && !localVideo.paused && !localVideo.muted && localVideo.volume > 0;
     const radioIsAudible = continuationAudio && !continuationAudio.paused && !continuationAudio.muted && continuationAudio.volume > 0;
+    if (comedyIsAudible) return { media: comedyVideo, source: "comedy" };
     return {
       media: videoIsAudible ? localVideo : (radioIsAudible ? continuationAudio : null),
       source: videoIsAudible ? "video" : (radioIsAudible ? "radio" : "none"),
     };
+  }
+
+  function soundResearchOutputMultiplier() {
+    if (!document.body.classList.contains("television-comedy-active")) return 1;
+    const configuredMultiplier = Number(document.body.dataset.comedySoundOutputMultiplier);
+    return Number.isFinite(configuredMultiplier)
+      ? clamp(configuredMultiplier, 0, 1)
+      : SOUND_RESEARCH_COMEDY_OUTPUT_MULTIPLIER;
   }
 
   function soundResearchMediaInterrupted(activeMedia) {
@@ -7396,11 +7412,12 @@
       soundResearchContinuityActive = false;
       return soundResearchMaxVolume;
     }
+    const outputMultiplier = soundResearchOutputMultiplier();
     const { media: activeMedia } = soundResearchActiveMedia();
     soundResearchContinuityActive = soundResearchMediaInterrupted(activeMedia);
     if (soundResearchContinuityActive) {
       soundResearchMediaLevel = 0;
-      return soundResearchMaxVolume;
+      return soundResearchMaxVolume * outputMultiplier;
     }
     if (activeMedia) {
       const measuredLevel = Number(window.IAMEMDR?.getAudioLevel?.());
@@ -7411,7 +7428,7 @@
         0,
         1
       );
-      return soundResearchMaxVolume * Math.pow(normalizedLevel, SOUND_RESEARCH_MASKING_CURVE);
+      return soundResearchMaxVolume * Math.pow(normalizedLevel, SOUND_RESEARCH_MASKING_CURVE) * outputMultiplier;
     }
     soundResearchMediaLevel = 0;
     return 0;
@@ -7434,6 +7451,7 @@
       targetVolume: soundResearchTargetLevel,
       currentVolume: Number(soundResearchAudio?.volume || 0),
       peakVolume: soundResearchMaxVolume,
+      outputMultiplier: soundResearchOutputMultiplier(),
       auditionMode: soundResearchAuditionMode,
       continuityActive: soundResearchContinuityActive,
       lastError: soundResearchLastError,
@@ -7682,6 +7700,11 @@
       return setSoundResearchPeakVolume(value, "runtime QA");
     },
     setEnabled: setSoundResearchEnabled,
+    ensurePlaying() {
+      if (!soundResearchEnabled) return false;
+      startSoundResearchLayer();
+      return true;
+    },
     setAuditionMode(enabled) {
       soundResearchAuditionMode = Boolean(enabled);
       if (soundResearchAuditionMode) startSoundResearchLayer();

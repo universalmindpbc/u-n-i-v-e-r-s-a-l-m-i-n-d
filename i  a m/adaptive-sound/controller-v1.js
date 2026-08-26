@@ -38,6 +38,7 @@ const CARRIER_SET = Object.freeze([111, 222, 444, 555, 999]);
 const LANE_IDS = Object.freeze(["delta", "theta", "alpha", "gamma"]);
 const DEFAULT_INTENSITY = 35;
 const TECHNICAL_OUTPUT_GAIN = 0.08;
+const COMEDY_OUTPUT_MULTIPLIER = 0.11;
 const MATRIX_LABEL_GAP_PX = 34;
 const WAVEFORM_POINTS = Object.freeze([
   [2, 44], [24, 44], [31, 34], [39, 56], [48, 11], [58, 71],
@@ -151,6 +152,35 @@ function initializeAdaptiveSoundPanel() {
     sessionSnapshot: initialSnapshot || null,
   };
 
+  function adaptiveProgrammeOutputMultiplier() {
+    if (!document.body.classList.contains("television-comedy-active")) return 1;
+    const configuredMultiplier = Number(document.body.dataset.comedySoundOutputMultiplier);
+    return Number.isFinite(configuredMultiplier)
+      ? clamp(configuredMultiplier, 0, 1)
+      : COMEDY_OUTPUT_MULTIPLIER;
+  }
+
+  function adaptiveRouteOutputGain() {
+    if (!state.synthEnabled || !state.masterEnabled) return 0;
+    return (state.intensity / 100) * adaptiveProgrammeOutputMultiplier();
+  }
+
+  let appliedProgrammeOutputMultiplier = null;
+  function syncAdaptiveRouteOutput(seconds = 0.42) {
+    const outputMultiplier = adaptiveProgrammeOutputMultiplier();
+    if (outputMultiplier === appliedProgrammeOutputMultiplier) return;
+    appliedProgrammeOutputMultiplier = outputMultiplier;
+    document.body.dataset.adaptiveSoundOutputMultiplier = outputMultiplier.toFixed(2);
+    setRouteGain(adaptiveRouteOutputGain(), seconds);
+  }
+
+  const comedyOutputObserver = new MutationObserver(() => syncAdaptiveRouteOutput());
+  comedyOutputObserver.observe(document.body, {
+    attributes: true,
+    attributeFilter: ["class", "data-comedy-sound-output-multiplier"],
+  });
+  syncAdaptiveRouteOutput(0);
+
   const query = new URLSearchParams(window.location.search);
   const soundLabEnabled = window.location.hostname === "staging.universalmind.tv"
     && query.get("soundLab") === "1";
@@ -213,7 +243,7 @@ function initializeAdaptiveSoundPanel() {
   intensity?.addEventListener("input", () => {
     state.intensity = clamp(Number(intensity.value), 0, 100);
     localStorage.setItem("iamAdaptiveSoundIntensity", String(state.intensity));
-    setRouteGain(state.synthEnabled && state.masterEnabled ? state.intensity / 100 : 0, 0.08);
+    setRouteGain(adaptiveRouteOutputGain(), 0.08);
     syncInterface();
   });
 
@@ -473,7 +503,7 @@ function initializeAdaptiveSoundPanel() {
       const now = context.currentTime;
       gain.gain.cancelScheduledValues(now);
       gain.gain.setValueAtTime(0, now);
-      gain.gain.linearRampToValueAtTime(state.intensity / 100, now + 0.42);
+      gain.gain.linearRampToValueAtTime(adaptiveRouteOutputGain(), now + 0.42);
       if (previousRoute) retireRoute(previousRoute, 0.46);
       document.body.dataset.adaptiveSoundEngine = "starting";
       document.body.dataset.adaptiveSoundProfile = state.profileId;
@@ -729,6 +759,8 @@ function initializeAdaptiveSoundPanel() {
         selection_basis: state.sessionSnapshot?.selection_basis || "insufficient_context",
         carrier_hz: state.carrierHz,
         intensity_percent: state.intensity,
+        programme_output_multiplier: adaptiveProgrammeOutputMultiplier(),
+        route_output_gain: adaptiveRouteOutputGain(),
         mastering_condition: state.masteringCondition,
         envelope_candidate_id: state.envelopeCandidateId,
         lowpass_candidate_id: state.lowpassCandidateId,
