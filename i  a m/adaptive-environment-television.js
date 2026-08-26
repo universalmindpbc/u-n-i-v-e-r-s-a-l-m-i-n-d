@@ -3567,7 +3567,9 @@
 
   function shouldShowChannelLoading(source = "") {
     const normalizedSource = String(source || "manual");
-    return normalizedSource !== "shop_independent" && !normalizedSource.startsWith("sex_ed");
+    return !document.body.classList.contains("television-sex-ed-active") &&
+      normalizedSource !== "shop_independent" &&
+      !normalizedSource.startsWith("sex_ed");
   }
 
   function channelLoadingKey(mode, item, channelName = "") {
@@ -7083,6 +7085,7 @@
     returnToTelevisionRoom({ preserveSexEd: true });
     configureSexEdEpisode(episode);
     document.body.classList.add("television-sex-ed-active", "flower-cue-visible");
+    cancelChannelLoading("sex_ed_active");
     updateNowPlaying();
     sexEdWorld?.setAttribute("aria-hidden", "false");
     if (!sexEdReturnProgramme) {
