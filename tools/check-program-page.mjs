@@ -90,6 +90,8 @@ assert.ok(html.indexOf("programme-catalogue-v1.js") < html.indexOf("programme-gu
 assert.match(guide, /Array\.isArray\(window\.IAMTrackCatalogue\?\.tracks\)/);
 assert.match(guide, /local_video_file: track\.localVideoSrc/);
 assert.match(guide, /stream_uid: track\.streamUid/);
+assert.match(guide, /setText\("\[data-now-time\]", timeLabel\(nowMs\)\)/, "The large NOW clock must show authoritative current city time.");
+assert.doesNotMatch(guide, /setText\("\[data-now-time\]", timeLabel\(current\.startMs\)\)/, "The large NOW clock must not show programme start time.");
 
 const publicChannels = schedule.channels.filter((channel) => ["videos", "parties", "radio"].includes(channel.format));
 assert.equal(publicChannels.length, 13);

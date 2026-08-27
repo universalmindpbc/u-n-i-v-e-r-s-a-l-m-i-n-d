@@ -526,7 +526,7 @@
       ? `your local time · ${timeZone()}`
       : `${(ZONE_LABELS[activeZone] || "TIME").toLowerCase()} · ${timeZone()}`);
 
-    setText("[data-now-time]", timeLabel(current.startMs));
+    setText("[data-now-time]", timeLabel(nowMs));
     setText("[data-now-remaining]", remainingLabel(current.endMs - nowMs));
     setText("[data-now-room]", roomName(activeRoom()));
     setText("[data-now-artist]", current.track.artist);

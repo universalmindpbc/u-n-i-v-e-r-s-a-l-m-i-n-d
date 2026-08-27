@@ -790,11 +790,28 @@ body.television-emdr-gif-active .adaptive-television-emdr-intensity {
   overflow: hidden;
   opacity: 0;
   pointer-events: none;
+  background: #08080a;
   transition: opacity 800ms cubic-bezier(0.22, 0.72, 0.18, 1);
 }
 
 body.television-sex-ed-active .adaptive-television-sex-ed-world {
   opacity: 1;
+}
+
+/* Sex-Ed owns the broadcast canvas while its aggregate loader is active.
+   Suppress the outgoing programme layer without hiding the canonical loading
+   overlay or elapsed-time display, so no prior portrait frame shows through. */
+body.television-sex-ed-active .adaptive-television-player > :not(.adaptive-television-channel-loading):not(.adaptive-television-timecode) {
+  opacity: 0 !important;
+  visibility: hidden !important;
+}
+
+/* The six-tile EMDR field is revealed only after its media is ready. Keeping
+   it out of the aggregate loading state prevents one empty centre column from
+   reading as a stray portrait player behind the episode. */
+body[data-sex-ed-loading-state="loading"] .adaptive-television-sex-ed-grid {
+  opacity: 0;
+  visibility: hidden;
 }
 
 .adaptive-television-sex-ed-background {

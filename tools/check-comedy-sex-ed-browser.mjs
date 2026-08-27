@@ -61,6 +61,13 @@ try {
   assert.ok(desktopProgram.destinations.x > desktopProgram.primary.x + desktopProgram.primary.width + 20, "Comedy and Sex-Ed must sit in a separate right-side hierarchy.");
   assert.ok(desktopProgram.zone.x > desktopProgram.destinations.x + desktopProgram.destinations.width, "The destination controls must remain distinct from the city clock.");
   assert.ok(desktopProgram.panelOverflow <= 1, "The desktop Program header must not overflow.");
+  await programPage.locator('[data-zone="Australia/Sydney"]').click();
+  const wallClockByMode = {};
+  for (const mode of ["videos", "parties", "radio", "comedy"]) {
+    await programPage.locator(`button[data-program-mode="${mode}"]`).click();
+    wallClockByMode[mode] = (await programPage.locator("[data-now-time]").textContent()).trim();
+  }
+  assert.deepEqual(Object.values(wallClockByMode), ["10:07", "10:07", "10:07", "10:07"], "Every Program mode must show the same server-synchronised Sydney wall clock.");
   await desktop.close();
 
   const mobile = await browser.newContext({ viewport: { width: 390, height: 844 }, isMobile: true, hasTouch: true });
@@ -93,14 +100,36 @@ try {
   assert.equal((await sexEdPage.locator("#sex-ed-shelf-title + p").textContent()).trim(), "14 lessons");
   await sexEdPage.locator("[data-sex-ed-card]").first().click();
   await sexEdPage.waitForFunction(() => document.body.classList.contains("television-sex-ed-active"));
-  const loaderState = await sexEdPage.evaluate(() => ({
-    staticStartHidden: document.querySelector("[data-sex-ed-shell-start]")?.hidden,
-    aggregateCount: document.querySelectorAll("[data-channel-loading-overlay]").length,
-    aggregateActive: document.querySelector("[data-channel-loading-overlay]")?.classList.contains("is-active") || false,
-  }));
+  const loaderState = await sexEdPage.evaluate(() => {
+    const player = document.querySelector("[data-television-player]");
+    const episode = document.querySelector("[data-sex-ed-shell-video]");
+    const world = document.querySelector("[data-sex-ed-world]");
+    const tileGrid = document.querySelector(".adaptive-television-sex-ed-grid");
+    const underlyingMedia = [...player.children]
+      .filter((element) => !element.matches(".adaptive-television-channel-loading, .adaptive-television-timecode"))
+      .map((element) => {
+        const style = getComputedStyle(element);
+        return { className: element.className, opacity: Number(style.opacity), visibility: style.visibility };
+      });
+    return {
+      staticStartHidden: document.querySelector("[data-sex-ed-shell-start]")?.hidden,
+      aggregateCount: document.querySelectorAll("[data-channel-loading-overlay]").length,
+      aggregateActive: document.querySelector("[data-channel-loading-overlay]")?.classList.contains("is-active") || false,
+      worldBackground: getComputedStyle(world).backgroundColor,
+      episodeVisibility: getComputedStyle(episode).visibility,
+      tileGridOpacity: Number(getComputedStyle(tileGrid).opacity),
+      tileGridVisibility: getComputedStyle(tileGrid).visibility,
+      underlyingMedia,
+    };
+  });
   assert.equal(loaderState.staticStartHidden, true, "The redundant static Sex-Ed play triangle must remain hidden.");
   assert.equal(loaderState.aggregateCount, 1, "Sex-Ed must use only the single aggregate loading overlay.");
   assert.equal(loaderState.aggregateActive, true, "The aggregate spinner must explain the episode transition.");
+  assert.equal(loaderState.worldBackground, "rgb(8, 8, 10)", "Sex-Ed loading must use a clean opaque black canvas.");
+  assert.equal(loaderState.episodeVisibility, "visible", "The intended Sex-Ed episode composition must remain visible.");
+  assert.equal(loaderState.tileGridOpacity, 0, "The six-tile EMDR field must not reveal an empty portrait column while loading.");
+  assert.equal(loaderState.tileGridVisibility, "hidden", "The six-tile EMDR field must remain hidden until loading completes.");
+  assert.ok(loaderState.underlyingMedia.every((item) => item.visibility === "hidden" && item.opacity === 0), "No outgoing portrait or programme media may show through the Sex-Ed loader.");
   await mobile.close();
 
   const comedyContext = await browser.newContext({ viewport: { width: 1440, height: 900 } });
@@ -188,6 +217,7 @@ try {
     passed: true,
     chromiumProcessMuted: true,
     desktopProgram,
+    wallClockByMode,
     mobileProgram,
     loaderState,
     comedyState: {

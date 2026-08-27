@@ -62,6 +62,9 @@ assert.match(televisionCss, /\.adaptive-television-sex-ed-link \{/);
 assert.match(televisionCss, /border: 1px solid rgba\(255, 255, 255, 0\.3\)/);
 assert.match(televisionCss, /color: rgba\(255, 255, 255, 0\.65\)/);
 assert.doesNotMatch(televisionCss, /\.adaptive-television-sex-ed-link[\s\S]{0,500}animation:/);
+assert.match(televisionCss, /\.adaptive-television-sex-ed-world \{[\s\S]{0,420}background: #08080a;/, "Sex-Ed loading must own an opaque black broadcast canvas.");
+assert.match(televisionCss, /body\.television-sex-ed-active \.adaptive-television-player > :not\(\.adaptive-television-channel-loading\):not\(\.adaptive-television-timecode\)[\s\S]{0,180}visibility: hidden !important;/, "Sex-Ed loading must suppress the outgoing programme without hiding its loader or timecode.");
+assert.match(televisionCss, /body\[data-sex-ed-loading-state="loading"\] \.adaptive-television-sex-ed-grid[\s\S]{0,120}opacity: 0;[\s\S]{0,80}visibility: hidden;/, "Sex-Ed loading must hide the incomplete tile field until its media is ready.");
 assert.match(televisionJs, /sexEdLink\?\.addEventListener\("click"/);
 assert.match(televisionJs, /openSexEdShelf\(\)/);
 assert.doesNotMatch(televisionJs, /openInVideoPageLayer\(sexEdLink\)/);
@@ -79,7 +82,8 @@ assert.match(televisionJs, /dataset\.programmeFixedMixLevel = String\(programmeF
 assert.match(televisionJs, /const SEX_ED_BROADCAST_CHANNEL_ID = "sex-ed"/);
 assert.match(televisionJs, /const SEX_ED_AUDIO_PARTY_START_TIMEOUT_MS = 30000/);
 assert.match(televisionJs, /const SEX_ED_RECORDED_PROGRAMME_READY_BUFFER_SECONDS = 4/);
-assert.match(televisionJs, /if \(!nextTrack\.hlsVideoSrc && !window\.IAMCloudflareStream && window\.IAMStreamReady\) \{[\s\S]{0,120}await window\.IAMStreamReady;[\s\S]{0,120}assertCurrentStart\(\);/);
+assert.match(televisionJs, /async function resolveScheduledAudioPartySource\(nextTrack\)[\s\S]{0,260}if \(!nextTrack\.hlsVideoSrc && !window\.IAMCloudflareStream && window\.IAMStreamReady\) \{[\s\S]{0,120}await window\.IAMStreamReady;/);
+assert.match(televisionJs, /async function startAudioLedPartyAttempt\(nextTrack, options, attemptContext\)[\s\S]{0,1200}const source = await resolveScheduledAudioPartySource\(nextTrack\);[\s\S]{0,80}assertCurrentStart\(\);/);
 assert.match(televisionJs, /function openSexEdShelf\(\)[\s\S]{0,900}prewarmSexEdAudioProgramme\(\);/);
 assert.match(televisionJs, /function prewarmSexEdAudioProgramme\(\)[\s\S]{0,900}loadRadioHlsLibrary\(\)[\s\S]{0,180}loadRecordedProgrammeAudioRendition\(source\)/);
 assert.match(televisionJs, /const recordedProgrammeAudioRenditions = new Map\(\)/);
@@ -88,7 +92,7 @@ assert.match(televisionJs, /joinBroadcastChannel\(SEX_ED_BROADCAST_CHANNEL_ID, \
 assert.match(televisionJs, /startRadioStation\(radioStation, \{ source: "sex_ed_instruction" \}\)/);
 assert.match(televisionJs, /function shouldShowChannelLoading\(source = "", force = false\)[\s\S]*?if \(force\) return true;[\s\S]*?classList\.contains\("television-sex-ed-active"\)/);
 assert.match(televisionJs, /cancelChannelLoading\("sex_ed_transition"\);[\s\S]{0,220}document\.body\.classList\.add\("television-sex-ed-active", "flower-cue-visible"\);[\s\S]{0,420}source: "sex_ed_episode",[\s\S]{0,120}force: true/);
-assert.match(televisionJs, /const sexEdOwnsVisuals = channelId === SEX_ED_BROADCAST_CHANNEL_ID \|\| options\.source === "sex_ed_episode";[\s\S]{0,120}if \(!sexEdOwnsVisuals\) \{[\s\S]*?const visualJoined = await joinFashionBroadcastChannel/);
+assert.match(televisionJs, /const sexEdOwnsVisuals = channelId === SEX_ED_BROADCAST_CHANNEL_ID \|\| options\.source === "sex_ed_episode";[\s\S]{0,120}const visualStartupPromise = sexEdOwnsVisuals[\s\S]{0,80}\? Promise\.resolve\(true\)[\s\S]{0,120}: joinFashionBroadcastChannel/);
 assert.match(televisionJs, /visualAlreadyManaged: sexEdOwnsVisuals/);
 assert.match(televisionJs, /readyBufferSeconds: sexEdOwnsVisuals \? SEX_ED_RECORDED_PROGRAMME_READY_BUFFER_SECONDS : undefined/);
 assert.match(televisionJs, /startTimeoutMs: sexEdOwnsVisuals \? SEX_ED_AUDIO_PARTY_START_TIMEOUT_MS : undefined/);
