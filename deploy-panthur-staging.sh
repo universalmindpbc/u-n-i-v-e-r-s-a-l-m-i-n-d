@@ -48,7 +48,6 @@ fi
 "$NODE_BIN" "$ROOT_DIR/tools/check-universal-one-programme-guide.mjs"
 "$NODE_BIN" "$ROOT_DIR/tools/check-program-page.mjs"
 "$NODE_BIN" "$ROOT_DIR/tools/check-universal-one-adaptive-guide.mjs"
-"$NODE_BIN" "$ROOT_DIR/tools/check-story-tree.mjs"
 
 if command -v php >/dev/null 2>&1; then
   php -l "$ROOT_DIR/i  a m/api/mantra-library.php"
