@@ -684,8 +684,8 @@ body.television-radio-continuation .adaptive-television-fashion-video {
   display: block;
 }
 
-/* Editorial GIF preset: six complete square animations surrounding one silent
-   runway source, mirrored exactly into the central black fashion casing. */
+/* The themed EMDR presets share six square animations around one silent runway
+   source, mirrored exactly into the central black fashion casing. */
 .adaptive-television-room {
   --emdr-gif-casing-gap: clamp(10px, .8vw, 24px);
   --emdr-gif-grid-gap: min(3.4vw, 5.6vh, 100px);
@@ -719,10 +719,19 @@ body.television-radio-continuation .adaptive-television-fashion-video {
   grid-template-rows: repeat(2, var(--emdr-gif-tile-size));
   gap: var(--emdr-gif-grid-gap);
   width: max-content;
+  opacity: 0;
+  visibility: hidden;
   transform: translate(-50%, -50%);
+  transition: opacity 420ms ease;
 }
 
-.adaptive-television-emdr-gif-grid img {
+.adaptive-television-emdr-gif-grid.is-active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.adaptive-television-emdr-gif-grid img,
+.adaptive-television-emdr-gif-grid video {
   display: block;
   width: var(--emdr-gif-tile-size);
   height: var(--emdr-gif-tile-size);
@@ -6140,12 +6149,12 @@ body.music-shelf-open .adaptive-television-fashion-shelf:not(.adaptive-televisio
 
 .adaptive-television-emdr-style {
   position: relative;
-  min-width: 112px;
+  min-width: 64px;
   min-height: 48px;
   color: rgba(255, 255, 255, 0.48);
   background: rgba(255, 255, 255, 0.035);
-  font-size: 16px;
-  padding: 0 17px;
+  font-size: 15px;
+  padding: 0 14px;
   transition: color 240ms ease, border-color 240ms ease, background 240ms ease, opacity 240ms ease;
 }
 
@@ -6156,7 +6165,13 @@ body.music-shelf-open .adaptive-television-fashion-shelf:not(.adaptive-televisio
 .adaptive-television-emdr-style-group {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
   gap: 8px;
+}
+
+.adaptive-television-emdr-style[data-emdr-preset="stella"] {
+  min-width: 82px;
 }
 
 .adaptive-television-emdr-style[aria-pressed="true"] {

@@ -18,6 +18,7 @@ const contentTypes = new Map([
   [".png", "image/png"],
   [".jpg", "image/jpeg"],
   [".jpeg", "image/jpeg"],
+  [".gif", "image/gif"],
   [".svg", "image/svg+xml"],
   [".webp", "image/webp"],
 ]);
@@ -98,8 +99,8 @@ try {
       activeCalls: [...state.activeCalls],
       walletView: wallet.dataset.walletView,
       controlsView: wallet.dataset.emdrControlsView,
-      gifPressed: document.querySelector('[data-emdr-style-index="0"]')?.getAttribute("aria-pressed"),
-      stellarPressed: document.querySelector('[data-emdr-style-index="1"]')?.getAttribute("aria-pressed"),
+      cbPressed: document.querySelector('[data-emdr-style-index="0"]')?.getAttribute("aria-pressed"),
+      stellaPressed: document.querySelector('[data-emdr-style-index="3"]')?.getAttribute("aria-pressed"),
       togglePressed: document.querySelector("[data-emdr-toggle]")?.getAttribute("aria-pressed"),
       toggleDisabled: Boolean(document.querySelector("[data-emdr-toggle]")?.disabled),
       toggleText: document.querySelector("[data-emdr-toggle]")?.textContent?.trim(),
@@ -116,7 +117,7 @@ try {
   assert.deepEqual(gifNavigation.activeCalls, []);
   assert.equal(gifNavigation.walletView, "emdr");
   assert.equal(gifNavigation.controlsView, "gif");
-  assert.equal(gifNavigation.gifPressed, "true");
+  assert.equal(gifNavigation.cbPressed, "true");
   assert.equal(gifNavigation.togglePressed, "true");
   assert.equal(gifNavigation.toggleDisabled, false);
   assert.equal(gifNavigation.toggleText, "on");
@@ -138,7 +139,7 @@ try {
   assert.deepEqual(stellarNavigation.activeCalls, []);
   assert.equal(stellarNavigation.walletView, "emdr");
   assert.equal(stellarNavigation.controlsView, "stellar");
-  assert.equal(stellarNavigation.stellarPressed, "true");
+  assert.equal(stellarNavigation.stellaPressed, "true");
   assert.equal(stellarNavigation.togglePressed, "true");
   assert.equal(stellarNavigation.toggleText, "on");
   assert.equal(stellarNavigation.toggleVisible, true);
@@ -149,7 +150,7 @@ try {
   assert.equal(poweredOff.active, false);
   assert.deepEqual(poweredOff.activeCalls, [false]);
   assert.equal(poweredOff.controlsView, "stellar");
-  assert.equal(poweredOff.stellarPressed, "true");
+  assert.equal(poweredOff.stellaPressed, "true");
   assert.equal(poweredOff.togglePressed, "false");
   assert.equal(poweredOff.toggleDisabled, false);
   assert.equal(poweredOff.toggleText, "off");
@@ -159,7 +160,7 @@ try {
   assert.equal(poweredOn.active, true);
   assert.deepEqual(poweredOn.activeCalls, [false, true]);
   assert.equal(poweredOn.controlsView, "stellar");
-  assert.equal(poweredOn.stellarPressed, "true");
+  assert.equal(poweredOn.stellaPressed, "true");
   assert.equal(poweredOn.togglePressed, "true");
   assert.equal(poweredOn.toggleText, "on");
 

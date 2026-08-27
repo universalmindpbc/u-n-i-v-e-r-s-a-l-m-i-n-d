@@ -585,8 +585,39 @@
   const WALLET_RESUMABLE_VIEWS = new Set(["categories", "emoji", "video", "video-mix", "music", "emdr", "audio", "support", "collect"]);
   let walletResumeView = "categories";
   let mantraReturnWalletView = "emdr";
-  const emdrStyleNames = ["GIF", "stellar"];
-  const emdrStyleValues = [7, 5];
+  const emdrPresets = [
+    {
+      key: "cb",
+      name: "Champagne Bohemia",
+      styleValue: 7,
+      gifPreset: "cb",
+      fashionChannelId: "fashion-restore",
+    },
+    {
+      key: "m8",
+      name: "modul8 infinity",
+      styleValue: 7,
+      gifPreset: "m8",
+      fashionChannelId: "fashion-social-uplift",
+    },
+    {
+      key: "jbh",
+      name: "James Bondage Health",
+      styleValue: 7,
+      gifPreset: "jbh",
+      fashionChannelId: "fashion-underground-intensity",
+    },
+    {
+      key: "stella",
+      name: "Stella",
+      styleValue: 5,
+      gifPreset: "",
+      fashionChannelId: "",
+    },
+  ];
+  const emdrStyleNames = emdrPresets.map((preset) => preset.name);
+  const emdrStyleValues = emdrPresets.map((preset) => preset.styleValue);
+  const STELLA_EMDR_PRESET_INDEX = emdrPresets.findIndex((preset) => preset.key === "stella");
   let emdrStyleIndex = -1;
   let emdrGifPreviousVideoBlend = null;
   let emdrGifPreviousMusicMaxHeight = null;
@@ -8228,7 +8259,7 @@
     const supportLevel = String(inference?.adaptive_support_relevance?.level || selection?.safety?.support_level || "none").toLowerCase();
     const reviewLevel = String(inference?.human_review_relevance?.level || "none").toLowerCase();
     const highConcern = ["high", "urgent"].includes(supportLevel) || ["recommended", "urgent"].includes(reviewLevel);
-    const styleIndex = 1;
+    const styleIndex = STELLA_EMDR_PRESET_INDEX;
 
     const namedIntensity = { low: .28, low_to_moderate: .42, moderate: .58, high: .8, variable: .62 };
     const musicIntensity = namedIntensity[String(environment.intensity || "").toLowerCase()] ?? .52;
@@ -8252,15 +8283,16 @@
   function syncEmdrStyleButtons() {
     emdrStyleButtons.forEach((button) => {
       const buttonIndex = Number(button.dataset.emdrStyleIndex);
-      const styleName = emdrStyleNames[buttonIndex] || "EMDR";
+      const styleName = emdrPresets[buttonIndex]?.name || "EMDR";
       const selected = buttonIndex === emdrStyleIndex;
       button.setAttribute("aria-pressed", String(selected));
-      button.setAttribute("aria-label", `Use ${styleName} EMDR style${selected ? " (selected)" : ""}`);
+      button.setAttribute("aria-label", `Use ${styleName} EMDR preset${selected ? " (selected)" : ""}`);
     });
     if (reactionWallet) {
-      reactionWallet.dataset.emdrControlsView = emdrStyleIndex === 1
-        ? "stellar"
-        : (emdrStyleIndex === 0 ? "gif" : "neutral");
+      const selectedPreset = emdrPresets[emdrStyleIndex];
+      reactionWallet.dataset.emdrControlsView = selectedPreset?.gifPreset
+        ? "gif"
+        : (selectedPreset?.key === "stella" ? "stellar" : "neutral");
     }
     const emdrActive = Boolean(window.IAMEMDR?.active);
     const hasSelectedStyle = Number.isInteger(emdrStyleIndex) && Boolean(emdrStyleValues[emdrStyleIndex]);
@@ -8272,7 +8304,7 @@
         "aria-label",
         emdrActive
           ? "Turn EMDR off"
-          : (hasSelectedStyle ? `Turn ${emdrStyleNames[emdrStyleIndex]} EMDR on` : "Choose GIF or stellar to turn EMDR on")
+          : (hasSelectedStyle ? `Turn ${emdrStyleNames[emdrStyleIndex]} EMDR on` : "Choose CB, M8, JBH or Stella to turn EMDR on")
       );
     }
   }
@@ -8285,6 +8317,11 @@
     }
     const startingIntensity = Number.isFinite(emdrUserIntensity) ? emdrUserIntensity : .8;
     emdrStyleIndex = adaptation.styleIndex;
+    const selectedPreset = emdrPresets[emdrStyleIndex];
+    if (selectedPreset) {
+      document.body.dataset.emdrPreset = selectedPreset.key;
+      if (selectedPreset.gifPreset) window.IAMEMDRGif?.setPreset?.(selectedPreset.gifPreset);
+    }
     window.IAMEMDR?.setTimelineSource?.({
       media: localVideo && !document.body.classList.contains("television-radio-continuation") ? localVideo : continuationAudio,
       bpm: Number(track.bpm) || 112,
@@ -8318,7 +8355,13 @@
     if (!window.IAMEMDR?.active) return false;
     const runtimeStyle = Math.round(Number(window.IAMEMDR.style) || 0);
     const currentStyleValue = runtimeStyle === 4 ? 2 : runtimeStyle;
-    const currentStyleIndex = emdrStyleValues.indexOf(currentStyleValue);
+    let currentStyleIndex = emdrStyleValues.indexOf(currentStyleValue);
+    if (currentStyleValue === 7) {
+      const gifPreset = String(window.IAMEMDRGif?.preset || "");
+      const presetIndex = emdrPresets.findIndex((preset) => preset.gifPreset === gifPreset);
+      if (presetIndex >= 0) currentStyleIndex = presetIndex;
+      else if (emdrStyleValues[emdrStyleIndex] === 7) currentStyleIndex = emdrStyleIndex;
+    }
     emdrStyleIndex = currentStyleIndex >= 0 ? currentStyleIndex : 0;
     const intensity = Math.max(0, Math.min(1, Number(window.IAMEMDR.intensity) || 0));
     syncEmdrStyleButtons();
@@ -9304,6 +9347,15 @@
     if (active) window.IAMEMDR?.setIntensity(adaptation.intensityJourney.start);
     syncEmdrStyleButtons();
     startSoundResearchLayer();
+    const selectedPreset = emdrPresets[requestedStyleIndex];
+    if (active && selectedPreset?.fashionChannelId) {
+      joinFashionBroadcastChannel(selectedPreset.fashionChannelId, {
+        source: "emdr_preset",
+        pairingSource: `emdr_${selectedPreset.key}`,
+      }).catch((error) => {
+        document.body.dataset.emdrPresetFashionError = String(error?.message || error).slice(0, 160);
+      });
+    }
   }));
   emdrReact?.addEventListener("click", (event) => {
     event.preventDefault();

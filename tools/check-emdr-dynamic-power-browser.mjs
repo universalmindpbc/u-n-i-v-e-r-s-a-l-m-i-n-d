@@ -18,6 +18,7 @@ const contentTypes = new Map([
   [".png", "image/png"],
   [".jpg", "image/jpeg"],
   [".jpeg", "image/jpeg"],
+  [".gif", "image/gif"],
   [".svg", "image/svg+xml"],
   [".webp", "image/webp"],
 ]);
@@ -168,8 +169,8 @@ async function runViewport(viewport) {
       activeCalls: [...state.activeCalls],
       walletView: wallet.dataset.walletView,
       controlsView: wallet.dataset.emdrControlsView,
-      gifPressed: document.querySelector('[data-emdr-style-index="0"]')?.getAttribute("aria-pressed"),
-      stellarPressed: document.querySelector('[data-emdr-style-index="1"]')?.getAttribute("aria-pressed"),
+      cbPressed: document.querySelector('[data-emdr-style-index="0"]')?.getAttribute("aria-pressed"),
+      stellaPressed: document.querySelector('[data-emdr-style-index="3"]')?.getAttribute("aria-pressed"),
       toggleText: toggle.textContent.trim(),
       togglePressed: toggle.getAttribute("aria-pressed"),
       toggleDisabled: toggle.disabled,
@@ -192,7 +193,7 @@ async function runViewport(viewport) {
   await click('[data-emdr-style-index="0"]');
   const gifOn = await inspect();
   assertPowerState(gifOn, { active: true, calls: [true], controlsView: "gif" });
-  assert.equal(gifOn.gifPressed, "true");
+  assert.equal(gifOn.cbPressed, "true");
 
   await page.evaluate(() => { document.querySelector("[data-reaction-wallet]").dataset.emdrControlsView = "neutral"; });
   await settle();
@@ -216,10 +217,10 @@ async function runViewport(viewport) {
   const gifOnNavigation = await inspect();
   assertPowerState(gifOnNavigation, { active: true, calls: [true, false, true], controlsView: "gif" });
 
-  await click('[data-emdr-style-index="1"]');
+  await click('[data-emdr-style-index="3"]');
   const stellarOn = await inspect();
   assertPowerState(stellarOn, { active: true, calls: [true, false, true, true], controlsView: "stellar" });
-  assert.equal(stellarOn.stellarPressed, "true");
+  assert.equal(stellarOn.stellaPressed, "true");
 
   await click("[data-emdr-toggle]");
   const stellarOff = await inspect();

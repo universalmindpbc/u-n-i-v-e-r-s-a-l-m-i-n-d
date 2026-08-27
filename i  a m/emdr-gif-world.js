@@ -1,13 +1,13 @@
 (() => {
   const BLANK_PIXEL = "data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=";
+  const DEFAULT_PRESET = "cb";
   const state = {
     active: false,
+    preset: DEFAULT_PRESET,
     root: null,
-    tiles: [],
-    sources: [],
-    blobs: [],
+    presets: new Map(),
+    preloadPromises: new Map(),
     objectUrls: [],
-    preloadPromise: null,
     generation: 0,
     resetTimer: 0,
   };
@@ -16,22 +16,58 @@
     if (state.root) return true;
     state.root = document.querySelector("[data-emdr-gif-world]");
     if (!state.root) return false;
-    state.tiles = Array.from(state.root.querySelectorAll("[data-emdr-gif-tile]"));
-    state.sources = state.tiles.map((tile) => new URL(tile.dataset.src, document.baseURI).href);
-    state.preloadPromise = Promise.all(state.sources.map(async (source) => {
+
+    Array.from(state.root.querySelectorAll("[data-emdr-gif-preset]")).forEach((panel) => {
+      const key = String(panel.dataset.emdrGifPreset || "").trim().toLowerCase();
+      if (!key) return;
+      const tiles = Array.from(panel.querySelectorAll("[data-emdr-gif-tile]"));
+      state.presets.set(key, {
+        key,
+        panel,
+        tiles,
+        sources: tiles.map((tile) => new URL(tile.dataset.src, document.baseURI).href),
+      });
+    });
+
+    if (!state.presets.has(state.preset)) {
+      state.preset = state.presets.keys().next().value || DEFAULT_PRESET;
+    }
+    state.root.dataset.emdrGifPreset = state.preset;
+    syncPresetPanels();
+    preloadPreset(state.preset);
+    return true;
+  }
+
+  function presetState(key = state.preset) {
+    return state.presets.get(String(key || "").toLowerCase()) || null;
+  }
+
+  function preloadPreset(key) {
+    const preset = presetState(key);
+    if (!preset) return Promise.resolve([]);
+    if (state.preloadPromises.has(preset.key)) return state.preloadPromises.get(preset.key);
+
+    const preloadPromise = Promise.all(preset.tiles.map(async (tile, index) => {
+      if (tile.tagName !== "IMG") return null;
       try {
-        const response = await fetch(source, { cache: "force-cache" });
+        const response = await fetch(preset.sources[index], { cache: "force-cache" });
         if (!response.ok) throw new Error(`GIF preload failed: ${response.status}`);
         return await response.blob();
       } catch {
         return null;
       }
     })).then((blobs) => {
-      state.blobs = blobs;
-      state.root.dataset.emdrGifReady = blobs.every(Boolean) ? "true" : "partial";
+      const imageIndexes = preset.tiles
+        .map((tile, index) => tile.tagName === "IMG" ? index : -1)
+        .filter((index) => index >= 0);
+      preset.panel.dataset.emdrGifReady = imageIndexes.every((index) => Boolean(blobs[index]))
+        ? "true"
+        : "partial";
       return blobs;
     });
-    return true;
+
+    state.preloadPromises.set(preset.key, preloadPromise);
+    return preloadPromise;
   }
 
   function releaseObjectUrls() {
@@ -39,30 +75,105 @@
     state.objectUrls = [];
   }
 
-  async function restartTiles(generation) {
-    const blobs = await state.preloadPromise;
-    if (!state.active || generation !== state.generation) return;
+  function resetTile(tile, { releaseSource = false } = {}) {
+    if (tile.tagName === "VIDEO") {
+      tile.pause();
+      try { tile.currentTime = 0; } catch {}
+      if (releaseSource) {
+        tile.removeAttribute("src");
+        tile.load();
+      }
+      return;
+    }
+    tile.src = BLANK_PIXEL;
+  }
 
-    releaseObjectUrls();
-    state.tiles.forEach((tile) => {
-      tile.src = BLANK_PIXEL;
+  function resetAllTiles(options = {}) {
+    state.presets.forEach((preset) => {
+      preset.tiles.forEach((tile) => resetTile(tile, options));
+      preset.panel.classList.remove("is-active");
+      preset.panel.setAttribute("aria-hidden", "true");
     });
+    releaseObjectUrls();
+  }
 
+  function syncPresetPanels() {
+    state.presets.forEach((preset) => {
+      const selected = preset.key === state.preset;
+      preset.panel.classList.toggle("is-selected", selected);
+      if (!state.active) preset.panel.setAttribute("aria-hidden", "true");
+    });
+  }
+
+  async function startVideoTile(tile, source) {
+    tile.muted = true;
+    tile.loop = true;
+    tile.playsInline = true;
+    if (tile.src !== source) {
+      tile.src = source;
+      tile.load();
+    }
+    try { tile.currentTime = 0; } catch {}
+    try {
+      await tile.play();
+      tile.dataset.emdrGifPlaying = "true";
+    } catch {
+      tile.dataset.emdrGifPlaying = "blocked";
+    }
+  }
+
+  async function restartTiles(generation) {
+    const preset = presetState();
+    if (!preset) return;
+    const blobs = await preloadPreset(preset.key);
+    if (!state.active || generation !== state.generation || preset.key !== state.preset) return;
+
+    resetAllTiles();
     window.requestAnimationFrame(() => {
-      if (!state.active || generation !== state.generation) return;
-      state.tiles.forEach((tile, index) => {
+      if (!state.active || generation !== state.generation || preset.key !== state.preset) return;
+      preset.tiles.forEach((tile, index) => {
+        const source = preset.sources[index];
+        if (tile.tagName === "VIDEO") {
+          startVideoTile(tile, source);
+          return;
+        }
         const blob = blobs[index];
         if (blob) {
           const objectUrl = URL.createObjectURL(blob);
           state.objectUrls.push(objectUrl);
           tile.src = objectUrl;
         } else {
-          tile.src = state.sources[index];
+          tile.src = source;
         }
       });
+      preset.panel.classList.add("is-active");
+      preset.panel.setAttribute("aria-hidden", "false");
       state.root.classList.add("is-active");
       state.root.dataset.emdrGifGeneration = String(generation);
+      state.root.dataset.emdrGifPreset = state.preset;
     });
+  }
+
+  function dispatchPresentationState() {
+    window.dispatchEvent(new CustomEvent("iam:emdr-gif-presentation", {
+      detail: { active: state.active, preset: state.preset },
+    }));
+  }
+
+  function setPreset(value) {
+    if (!init()) return false;
+    const preset = String(value || "").trim().toLowerCase();
+    if (!state.presets.has(preset)) return false;
+    if (preset === state.preset) return state.preset;
+
+    state.preset = preset;
+    state.generation += 1;
+    state.root.dataset.emdrGifPreset = preset;
+    syncPresetPanels();
+    preloadPreset(preset);
+    if (state.active) restartTiles(state.generation);
+    dispatchPresentationState();
+    return state.preset;
   }
 
   function setActive(value) {
@@ -74,9 +185,9 @@
     state.generation += 1;
     window.clearTimeout(state.resetTimer);
     document.body.classList.toggle("television-emdr-gif-active", active);
-    window.dispatchEvent(new CustomEvent("iam:emdr-gif-presentation", {
-      detail: { active },
-    }));
+    if (active) document.body.dataset.emdrGifPreset = state.preset;
+    else delete document.body.dataset.emdrGifPreset;
+    dispatchPresentationState();
 
     if (active) {
       state.root.setAttribute("aria-hidden", "false");
@@ -86,10 +197,7 @@
       state.root.setAttribute("aria-hidden", "true");
       state.resetTimer = window.setTimeout(() => {
         if (state.active) return;
-        state.tiles.forEach((tile) => {
-          tile.src = BLANK_PIXEL;
-        });
-        releaseObjectUrls();
+        resetAllTiles({ releaseSource: true });
       }, 950);
     }
     return state.active;
@@ -99,12 +207,17 @@
 
   window.IAMEMDRGif = {
     get active() { return state.active; },
+    get preset() { return state.preset; },
     setActive,
+    setPreset,
     diagnostics() {
+      const preset = presetState();
       return {
         active: state.active,
-        tiles: state.tiles.length,
-        ready: state.root?.dataset.emdrGifReady || "loading",
+        preset: state.preset,
+        presets: [...state.presets.keys()],
+        tiles: preset?.tiles.length || 0,
+        ready: preset?.panel.dataset.emdrGifReady || "loading",
         generation: state.generation,
       };
     },
