@@ -26,9 +26,13 @@ for (const page of [html, altHtml]) {
   expectedButtons.forEach(({ index, key, label }) => {
     assert.match(page, new RegExp(`data-emdr-style-index="${index}" data-emdr-preset="${key}"[^>]*>${label}<\\/button>`));
   });
-  assert.match(page, /data-emdr-preset="m8" data-emdr-tooltip="rave animated GIF experience\."/);
-  assert.match(page, /data-emdr-preset="jbh" data-emdr-tooltip="Bordelle video experience\."/);
+  assert.match(page, /data-emdr-preset="cb" data-emdr-tooltip="Champagne Bohemia — Xaviera Lopez’s animated GIF experience\."/);
+  assert.match(page, /data-emdr-preset="m8" data-emdr-tooltip="modul8 infinity — Rave animated GIF experience\."/);
+  assert.match(page, /data-emdr-preset="jbh" data-emdr-tooltip="James Bondage Health — Bordelle animated GIF experience\."/);
   assert.match(page, /data-emdr-preset="stella" data-emdr-tooltip="Stella geometric experience\."/);
+  assert.doesNotMatch(page, /data-emdr-tooltip="rave animated GIF experience\."/);
+  assert.doesNotMatch(page, /data-emdr-tooltip="Bordelle video experience\."/);
+  assert.doesNotMatch(page, /data-emdr-tooltip="[^"]*video experience\.?"/);
   assert.equal((page.match(/data-emdr-gif-preset-label=/g) || []).length, 3);
 }
 
