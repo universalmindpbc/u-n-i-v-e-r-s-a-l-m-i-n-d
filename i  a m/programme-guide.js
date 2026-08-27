@@ -41,19 +41,19 @@
     "caroline-chang-dreamy-ambient-techno-garden": { artist: "Caroline Chang (Techno Llama)", title: "Dreamy Ambient Techno In My Garden" },
     "caroline-chang-warm-cosmic-dub-techno": { artist: "Caroline Chang (Techno Llama)", title: "Warm Cosmic Dub Techno & Electronica To Remind You Everything Is Going To Be OK" },
     "caroline-chang-zen-mode-electronica-clarity": { artist: "Caroline Chang (Techno Llama)", title: "Zen Mode Electronica Mix For Clarity" },
-    "the-cranberries-zombie": { artist: "The Cranberries", title: "Zombie" },
+    "the-cranberries-zombie": { artist: "The Cranberries", title: "Zombie (Official Music Video)" },
     "soundgarden-black-hole-sun": { artist: "Soundgarden", title: "Black Hole Sun" },
-    "rage-against-the-machine-killing-in-the-name-live-1993": { artist: "Rage Against the Machine", title: "Killing in the Name (Live, 1993)" },
-    "nirvana-smells-like-teen-spirit": { artist: "Nirvana", title: "Smells Like Teen Spirit" },
-    "linkin-park-in-the-end": { artist: "Linkin Park", title: "In the End" },
+    "rage-against-the-machine-killing-in-the-name-live-1993": { artist: "Rage Against The Machine", title: "Killing In The Name - 1993" },
+    "nirvana-smells-like-teen-spirit": { artist: "Nirvana", title: "Smells Like Teen Spirit (Official Music Video)" },
+    "linkin-park-in-the-end": { artist: "Linkin Park", title: "In The End [Official HD Music Video]" },
     "justice-generator-accor-arena-2024": { artist: "Justice", title: "Generator (Live at Accor Arena 2024)" },
-    "evanescence-bring-me-to-life": { artist: "Evanescence", title: "Bring Me to Life" },
+    "evanescence-bring-me-to-life": { artist: "Evanescence", title: "Bring Me To Life (Official HD Music Video) ft. Paul McCoy" },
     "eminem-lose-yourself": { artist: "Eminem", title: "Lose Yourself" },
     "flume-coachella-2022-live": { artist: "Flume", title: "Live at Coachella 2022" },
-    "fred-again-thomas-bangalter-usb002-alexandra-palace-2026": { artist: "Fred again.. & Thomas Bangalter", title: "USB002, Alexandra Palace, London (27 February 2026)" },
-    "ricardo-villalobos-circoloco-dc10-ibiza-2026": { artist: "Ricardo Villalobos", title: "Circoloco DC-10 Ibiza (20 July 2026)" },
+    "fred-again-thomas-bangalter-usb002-alexandra-palace-2026": { artist: "Fred again.. & Thomas Bangalter", title: "(USB002, Alexandra Palace, London 27 February 2026)" },
+    "ricardo-villalobos-circoloco-dc10-ibiza-2026": { artist: "Ricardo Villalobos", title: "Live from Circoloco DC-10 Ibiza (20.07.26 Garden)" },
     "rihanna-global-citizens-festival-2016": { artist: "Rihanna", title: "Global Citizens Festival 2016" },
-    "skrillex-fred-again-four-tet-coachella": { artist: "Skrillex, Fred again.. & Four Tet", title: "Coachella" },
+    "skrillex-fred-again-four-tet-coachella": { artist: "Four Tet x Fred again x Skrillex", title: "Coachella 2023" },
     "lisa-rockstar-live": { artist: "Lisa", title: "Rockstar Live" },
   };
 
@@ -794,7 +794,7 @@
   async function initialize() {
     document.body.dataset.programGuideState = "loading";
     const [scheduleResponse, catalogueResponse, stationsResponse] = await Promise.all([
-      fetch("broadcast-schedule-v1.json?v=broadcast-schedule-03688bfac969", {
+      fetch("broadcast-schedule-v1.json?v=broadcast-schedule-9357efb8512a", {
         cache: "no-store",
         credentials: "same-origin",
         headers: { Accept: "application/json" },

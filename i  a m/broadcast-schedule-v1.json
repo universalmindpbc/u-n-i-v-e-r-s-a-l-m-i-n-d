@@ -1,5 +1,5 @@
 {
-  "version": "broadcast_schedule_v1.12",
+  "version": "broadcast_schedule_v1.13",
   "stage": "five_music_rooms_live_safety_cushion_ready",
   "epoch_utc": "2026-07-24T00:00:00.000Z",
   "extended_session_format_policy": {

@@ -1,0 +1,408 @@
+{
+  "version": "media_provenance_ledger_2026-08-27_v2",
+  "checkedAt": "2026-08-27",
+  "method": "Nineteen direct YouTube records were retrieved with yt-dlp and cross-checked against the supplied MP4 filenames and encoded Cloudflare durations. Sasha and Flume use Ben's explicit non-YouTube, source-neutral editorial resolution.",
+  "policy": "Preserve exact verified YouTube title/channel records for 19 masters. For Sasha and Flume, preserve the supplied programme title/master filename and make no host, URL, uploader, account, channel, or video-ID claim. Google Search is the discovery method; VK is only Ben's unverified recollection of the likely host.",
+  "resolvedCount": 21,
+  "verifiedYouTubeCount": 19,
+  "sourceNeutralCount": 2,
+  "unresolvedCount": 0,
+  "entries": {
+    "sasha-renaissance-engage-2020": {
+      "fileName": "Sasha - Live @ Renaissance Engage [10.05.2020].mp4",
+      "publicArtist": "Sasha",
+      "publicTitle": "Renaissance Engage (10 May 2020)",
+      "displayAuthority": "supplied_programme_title_source_neutral_non_youtube",
+      "provenance": {
+        "status": "source_neutral_non_youtube",
+        "discoveryMethod": "Google Search",
+        "likelyHost": "VK",
+        "likelyHostVerification": "unverified_user_recollection",
+        "verifiedUrl": null,
+        "verifiedUploader": null,
+        "evidence": "Ben confirms this master was not sourced from YouTube. He found it through Google Search and recalls VK as the likely host; no specific VK URL, uploader, account, channel, or video ID is verified or claimed."
+      },
+      "youtube": {
+        "status": "not_youtube_source",
+        "videoId": null,
+        "title": null,
+        "channel": null,
+        "channelId": null,
+        "url": null,
+        "durationSeconds": null,
+        "localDurationSeconds": 7766,
+        "durationDeltaSeconds": null,
+        "evidence": "Ben confirms this master was not sourced from YouTube; no YouTube provenance is claimed."
+      }
+    },
+    "caroline-chang-ambient-techno-soft-rave-energy": {
+      "fileName": "Ambient Techno And Soft Rave Energy.mp4",
+      "publicArtist": "Caroline Chang (Techno Llama)",
+      "publicTitle": "Ambient Techno And Soft Rave Energy",
+      "displayAuthority": "user_confirmed_creator_identity_plus_verified_youtube_channel",
+      "youtube": {
+        "status": "verified_title_channel_duration",
+        "videoId": "S6eVfsCfKT0",
+        "title": "Ambient Techno And Soft Rave Energy",
+        "channel": "Techno Llama",
+        "channelId": "UCU0kmMUZHvFEoYD_puAHQKQ",
+        "url": "https://www.youtube.com/watch?v=S6eVfsCfKT0",
+        "durationSeconds": 3867,
+        "localDurationSeconds": 3866.9,
+        "durationDeltaSeconds": 0.1,
+        "evidence": "Direct YouTube metadata; Caroline Chang identity supplied and corrected by Ben."
+      }
+    },
+    "caroline-chang-ambient-techno-zen-out": {
+      "fileName": "Ambient Techno To Zen Out To.mp4",
+      "publicArtist": "Caroline Chang (Techno Llama)",
+      "publicTitle": "Ambient Techno To Zen Out To",
+      "displayAuthority": "user_confirmed_creator_identity_plus_verified_youtube_channel",
+      "youtube": {
+        "status": "verified_title_channel_duration",
+        "videoId": "dO4_w4jq06o",
+        "title": "Ambient Techno To Zen Out To",
+        "channel": "Techno Llama",
+        "channelId": "UCU0kmMUZHvFEoYD_puAHQKQ",
+        "url": "https://www.youtube.com/watch?v=dO4_w4jq06o",
+        "durationSeconds": 3821,
+        "localDurationSeconds": 3820.6,
+        "durationDeltaSeconds": 0.4,
+        "evidence": "Direct YouTube metadata; Caroline Chang identity supplied and corrected by Ben."
+      }
+    },
+    "caroline-chang-cosy-ambient-techno-fireplace": {
+      "fileName": "Cosy Ambient Techno By My Fireplace.mp4",
+      "publicArtist": "Caroline Chang (Techno Llama)",
+      "publicTitle": "Cosy Ambient Techno By My Fireplace",
+      "displayAuthority": "user_confirmed_creator_identity_plus_verified_youtube_channel",
+      "youtube": {
+        "status": "verified_title_channel_duration",
+        "videoId": "l2HWW72nOu0",
+        "title": "Cosy Ambient Techno By My Fireplace",
+        "channel": "Techno Llama",
+        "channelId": "UCU0kmMUZHvFEoYD_puAHQKQ",
+        "url": "https://www.youtube.com/watch?v=l2HWW72nOu0",
+        "durationSeconds": 4249,
+        "localDurationSeconds": 4248.7,
+        "durationDeltaSeconds": 0.3,
+        "evidence": "Direct YouTube metadata; Caroline Chang identity supplied and corrected by Ben."
+      }
+    },
+    "caroline-chang-dreamy-ambient-techno-garden": {
+      "fileName": "Dreamy Ambient Techno In My Garden.mp4",
+      "publicArtist": "Caroline Chang (Techno Llama)",
+      "publicTitle": "Dreamy Ambient Techno In My Garden",
+      "displayAuthority": "user_confirmed_creator_identity_plus_verified_youtube_channel",
+      "youtube": {
+        "status": "verified_title_channel_duration",
+        "videoId": "XfrJTAW-lAs",
+        "title": "Dreamy Ambient Techno In My Garden",
+        "channel": "Techno Llama",
+        "channelId": "UCU0kmMUZHvFEoYD_puAHQKQ",
+        "url": "https://www.youtube.com/watch?v=XfrJTAW-lAs",
+        "durationSeconds": 3592,
+        "localDurationSeconds": 3591.7,
+        "durationDeltaSeconds": 0.3,
+        "evidence": "Direct YouTube metadata; Caroline Chang identity supplied and corrected by Ben."
+      }
+    },
+    "caroline-chang-warm-cosmic-dub-techno": {
+      "fileName": "Warm Cosmic Dub Techno & Electronica To Remind You Everything Is Going To Be OK.mp4",
+      "publicArtist": "Caroline Chang (Techno Llama)",
+      "publicTitle": "Warm Cosmic Dub Techno & Electronica To Remind You Everything Is Going To Be OK",
+      "displayAuthority": "user_confirmed_creator_identity_plus_verified_youtube_channel",
+      "youtube": {
+        "status": "verified_title_channel_duration",
+        "videoId": "TlKL0kWqg0Q",
+        "title": "Warm Cosmic Dub Techno & Electronica To Remind You Everything Is Going To Be OK",
+        "channel": "Techno Llama",
+        "channelId": "UCU0kmMUZHvFEoYD_puAHQKQ",
+        "url": "https://www.youtube.com/watch?v=TlKL0kWqg0Q",
+        "durationSeconds": 3398,
+        "localDurationSeconds": 3397.5,
+        "durationDeltaSeconds": 0.5,
+        "evidence": "Direct YouTube metadata; Caroline Chang identity supplied and corrected by Ben."
+      }
+    },
+    "caroline-chang-zen-mode-electronica-clarity": {
+      "fileName": "Zen Mode Electronica Mix For Clarity.mp4",
+      "publicArtist": "Caroline Chang (Techno Llama)",
+      "publicTitle": "Zen Mode Electronica Mix For Clarity",
+      "displayAuthority": "user_confirmed_creator_identity_plus_verified_youtube_channel",
+      "youtube": {
+        "status": "verified_title_channel_duration",
+        "videoId": "rUBsfWIrSw4",
+        "title": "Zen Mode Electronica Mix For Clarity",
+        "channel": "Techno Llama",
+        "channelId": "UCU0kmMUZHvFEoYD_puAHQKQ",
+        "url": "https://www.youtube.com/watch?v=rUBsfWIrSw4",
+        "durationSeconds": 3763,
+        "localDurationSeconds": 3762.9,
+        "durationDeltaSeconds": 0.1,
+        "evidence": "Direct YouTube metadata; Caroline Chang identity supplied and corrected by Ben."
+      }
+    },
+    "the-cranberries-zombie": {
+      "fileName": "The Cranberries - Zombie.mp4",
+      "publicArtist": "The Cranberries",
+      "publicTitle": "Zombie (Official Music Video)",
+      "displayAuthority": "verified_youtube_title_decomposition",
+      "youtube": {
+        "status": "verified_title_channel_duration",
+        "videoId": "6Ejga4kJUts",
+        "title": "The Cranberries - Zombie (Official Music Video)",
+        "channel": "TheCranberriesTV",
+        "channelId": "UCF9i903aeMcvcapmP1bS1oA",
+        "url": "https://www.youtube.com/watch?v=6Ejga4kJUts",
+        "durationSeconds": 307,
+        "localDurationSeconds": 307.1,
+        "durationDeltaSeconds": 0.1,
+        "evidence": "Direct YouTube metadata and duration match."
+      }
+    },
+    "soundgarden-black-hole-sun": {
+      "fileName": "Soundgarden - Black Hole Sun.mp4",
+      "publicArtist": "Soundgarden",
+      "publicTitle": "Black Hole Sun",
+      "displayAuthority": "verified_youtube_title_decomposition",
+      "youtube": {
+        "status": "verified_title_channel_duration",
+        "videoId": "3mbBbFH9fAg",
+        "title": "Soundgarden - Black Hole Sun",
+        "channel": "Soundgarden",
+        "channelId": "UCTSuGVPcfBRSZSdP3xQASqg",
+        "url": "https://www.youtube.com/watch?v=3mbBbFH9fAg",
+        "durationSeconds": 320,
+        "localDurationSeconds": 320,
+        "durationDeltaSeconds": 0,
+        "evidence": "Direct YouTube metadata and duration match."
+      }
+    },
+    "rage-against-the-machine-killing-in-the-name-live-1993": {
+      "fileName": "Rage Against The Machine - Killing In The Name (Live, 1993).mp4",
+      "publicArtist": "Rage Against The Machine",
+      "publicTitle": "Killing In The Name - 1993",
+      "displayAuthority": "verified_youtube_title_decomposition",
+      "youtube": {
+        "status": "verified_title_channel_duration",
+        "videoId": "8de2W3rtZsA",
+        "title": "Rage Against The Machine  -  Killing In The Name  -  1993",
+        "channel": "Raymond JE",
+        "channelId": "UCSiVjF5l4MBaQBaKMkUW0-Q",
+        "url": "https://www.youtube.com/watch?v=8de2W3rtZsA",
+        "durationSeconds": 331,
+        "localDurationSeconds": 330.6,
+        "durationDeltaSeconds": 0.4,
+        "evidence": "Direct YouTube metadata and duration match; source title does not claim Live."
+      }
+    },
+    "nirvana-smells-like-teen-spirit": {
+      "fileName": "Nirvana - Smells Like Teen Spirit.mp4",
+      "publicArtist": "Nirvana",
+      "publicTitle": "Smells Like Teen Spirit (Official Music Video)",
+      "displayAuthority": "verified_youtube_title_decomposition",
+      "youtube": {
+        "status": "verified_title_channel_duration",
+        "videoId": "hTWKbfoikeg",
+        "title": "Nirvana - Smells Like Teen Spirit (Official Music Video)",
+        "channel": "Nirvana",
+        "channelId": "UCzGrGrvf9g8CVVzh_LvGf-g",
+        "url": "https://www.youtube.com/watch?v=hTWKbfoikeg",
+        "durationSeconds": 278,
+        "localDurationSeconds": 278.3,
+        "durationDeltaSeconds": 0.3,
+        "evidence": "Direct YouTube metadata and duration match."
+      }
+    },
+    "linkin-park-in-the-end": {
+      "fileName": "Linkin Park - In The End.mp4",
+      "publicArtist": "Linkin Park",
+      "publicTitle": "In The End [Official HD Music Video]",
+      "displayAuthority": "verified_youtube_title_decomposition",
+      "youtube": {
+        "status": "verified_title_channel_duration",
+        "videoId": "eVTXPUF4Oz4",
+        "title": "In The End [Official HD Music Video] - Linkin Park",
+        "channel": "Linkin Park",
+        "channelId": "UCZU9T1ceaOgwfLRq7OKFU4Q",
+        "url": "https://www.youtube.com/watch?v=eVTXPUF4Oz4",
+        "durationSeconds": 218,
+        "localDurationSeconds": 218.2,
+        "durationDeltaSeconds": 0.2,
+        "evidence": "Direct YouTube metadata and duration match."
+      }
+    },
+    "justice-generator-accor-arena-2024": {
+      "fileName": "Justice - Generator (Live at Accor Arena 2024).mp4",
+      "publicArtist": "Justice",
+      "publicTitle": "Generator (Live at Accor Arena 2024)",
+      "displayAuthority": "verified_youtube_title_decomposition",
+      "youtube": {
+        "status": "verified_title_channel_duration",
+        "videoId": "zL8fMWUfRz8",
+        "title": "Justice - Generator (Live at Accor Arena 2024)",
+        "channel": "Justice",
+        "channelId": "UCQ5Ssrs48yJBfOesfDqXUeA",
+        "url": "https://www.youtube.com/watch?v=zL8fMWUfRz8",
+        "durationSeconds": 485,
+        "localDurationSeconds": 485.1,
+        "durationDeltaSeconds": 0.1,
+        "evidence": "Direct YouTube metadata and duration match."
+      }
+    },
+    "evanescence-bring-me-to-life": {
+      "fileName": "Evanescence - Bring Me To Life.mp4",
+      "publicArtist": "Evanescence",
+      "publicTitle": "Bring Me To Life (Official HD Music Video) ft. Paul McCoy",
+      "displayAuthority": "verified_youtube_title_decomposition",
+      "youtube": {
+        "status": "verified_title_channel_duration",
+        "videoId": "3YxaaGgTQYM",
+        "title": "Evanescence - Bring Me To Life (Official HD Music Video) ft. Paul McCoy",
+        "channel": "Evanescence",
+        "channelId": "UCDDmukrq0bwckrp09bNt-Rw",
+        "url": "https://www.youtube.com/watch?v=3YxaaGgTQYM",
+        "durationSeconds": 254,
+        "localDurationSeconds": 253.8,
+        "durationDeltaSeconds": 0.2,
+        "evidence": "Direct YouTube metadata and duration match."
+      }
+    },
+    "eminem-lose-yourself": {
+      "fileName": "Eminem - Lose Yourself.mp4",
+      "publicArtist": "Eminem",
+      "publicTitle": "Lose Yourself",
+      "displayAuthority": "verified_youtube_title_decomposition",
+      "youtube": {
+        "status": "verified_title_channel_duration",
+        "videoId": "xFYQQPAOz7Y",
+        "title": "Eminem - Lose Yourself",
+        "channel": "EminemMusic",
+        "channelId": "UCfM3zsQsOnfWNUppiycmBuw",
+        "url": "https://www.youtube.com/watch?v=xFYQQPAOz7Y",
+        "durationSeconds": 328,
+        "localDurationSeconds": 327.4,
+        "durationDeltaSeconds": 0.6,
+        "evidence": "Direct YouTube metadata and duration match."
+      }
+    },
+    "flume-coachella-2022-live": {
+      "fileName": "Flume - Live at Coachella 2022.mp4",
+      "publicArtist": "Flume",
+      "publicTitle": "Live at Coachella 2022",
+      "displayAuthority": "supplied_programme_title_source_neutral_non_youtube",
+      "provenance": {
+        "status": "source_neutral_non_youtube",
+        "discoveryMethod": "Google Search",
+        "likelyHost": "VK",
+        "likelyHostVerification": "unverified_user_recollection",
+        "verifiedUrl": null,
+        "verifiedUploader": null,
+        "evidence": "Ben confirms this master was not sourced from YouTube. He found it through Google Search and recalls VK as the likely host; no specific VK URL, uploader, account, channel, or video ID is verified or claimed."
+      },
+      "youtube": {
+        "status": "not_youtube_source",
+        "videoId": null,
+        "title": null,
+        "channel": null,
+        "channelId": null,
+        "url": null,
+        "durationSeconds": null,
+        "localDurationSeconds": 3673.9,
+        "durationDeltaSeconds": null,
+        "evidence": "Ben confirms this master was not sourced from YouTube; no YouTube provenance is claimed."
+      }
+    },
+    "fred-again-thomas-bangalter-usb002-alexandra-palace-2026": {
+      "fileName": "Fred again.. & Thomas Bangalter (USB002, Alexandra Palace, London 27 February 2026)_1.mp4",
+      "publicArtist": "Fred again.. & Thomas Bangalter",
+      "publicTitle": "(USB002, Alexandra Palace, London 27 February 2026)",
+      "displayAuthority": "verified_youtube_title_decomposition",
+      "youtube": {
+        "status": "verified_title_channel_duration",
+        "videoId": "gfF8jzBVWvM",
+        "title": "Fred again.. & Thomas Bangalter (USB002, Alexandra Palace, London 27 February 2026)",
+        "channel": "Fred again . .",
+        "channelId": "UCXF6DMVLIVRr2OQAqyfEGeg",
+        "url": "https://www.youtube.com/watch?v=gfF8jzBVWvM",
+        "durationSeconds": 6983,
+        "localDurationSeconds": 6983,
+        "durationDeltaSeconds": 0,
+        "evidence": "Direct YouTube metadata and duration match."
+      }
+    },
+    "ricardo-villalobos-circoloco-dc10-ibiza-2026": {
+      "fileName": "Ricardo Villalobos - Live from Circoloco DC-10 Ibiza (20.07.26 Garden).mp4",
+      "publicArtist": "Ricardo Villalobos",
+      "publicTitle": "Live from Circoloco DC-10 Ibiza (20.07.26 Garden)",
+      "displayAuthority": "verified_youtube_title_decomposition",
+      "youtube": {
+        "status": "verified_title_channel_duration",
+        "videoId": "Lat6ygwFyNE",
+        "title": "Ricardo Villalobos - Live from Circoloco DC-10 Ibiza (20.07.26 Garden)",
+        "channel": "CIRCOLOCO",
+        "channelId": "UCanV1p6ynx_FzdsraKLousQ",
+        "url": "https://www.youtube.com/watch?v=Lat6ygwFyNE",
+        "durationSeconds": 4584,
+        "localDurationSeconds": 4583.7,
+        "durationDeltaSeconds": 0.3,
+        "evidence": "Direct YouTube metadata and duration match."
+      }
+    },
+    "rihanna-global-citizens-festival-2016": {
+      "fileName": "Rihanna - Global Citizens Festival 2016_720p.mp4",
+      "publicArtist": "Rihanna",
+      "publicTitle": "Global Citizens Festival 2016",
+      "displayAuthority": "verified_youtube_title_decomposition",
+      "youtube": {
+        "status": "verified_title_channel_duration",
+        "videoId": "h1qDNYn46ys",
+        "title": "Rihanna - Global Citizens Festival 2016",
+        "channel": "GNIGHT",
+        "channelId": "UC2IIiyNcvgHtLyrSD6CR04g",
+        "url": "https://www.youtube.com/watch?v=h1qDNYn46ys",
+        "durationSeconds": 4075,
+        "localDurationSeconds": 4074.5,
+        "durationDeltaSeconds": 0.5,
+        "evidence": "Direct YouTube metadata and duration match."
+      }
+    },
+    "skrillex-fred-again-four-tet-coachella": {
+      "fileName": "Skrillex, Fred Again, Fourtet - Coachella.mp4",
+      "publicArtist": "Four Tet x Fred again x Skrillex",
+      "publicTitle": "Coachella 2023",
+      "displayAuthority": "verified_youtube_title_decomposition",
+      "youtube": {
+        "status": "verified_title_channel_duration",
+        "videoId": "mOWfB1_yM-c",
+        "title": "Four Tet x Fred again  x Skrillex  Coachella 2023",
+        "channel": "Brassado",
+        "channelId": "UCikU6EsMT1LsBMH4hlgtWHg",
+        "url": "https://www.youtube.com/watch?v=mOWfB1_yM-c",
+        "durationSeconds": 5433,
+        "localDurationSeconds": 5432.9,
+        "durationDeltaSeconds": 0.1,
+        "evidence": "Direct YouTube metadata and duration match."
+      }
+    },
+    "lisa-rockstar-live": {
+      "fileName": "LISA performing Rockstar live from the Victoria’s Secret Fashion Show 2024_1.mp4",
+      "publicArtist": "Lisa",
+      "publicTitle": "Rockstar Live",
+      "displayAuthority": "explicit_user_display_override_with_verified_youtube_source",
+      "youtube": {
+        "status": "verified_title_channel_duration",
+        "videoId": "mOLAtBo3mHk",
+        "title": "LISA performing Rockstar live from the Victoria’s Secret Fashion Show 2024",
+        "channel": "LLOUD Official",
+        "channelId": "UC6-BgjsBa5R3PZQ_kZ8hKPg",
+        "url": "https://www.youtube.com/watch?v=mOLAtBo3mHk",
+        "durationSeconds": 198,
+        "localDurationSeconds": 197.9,
+        "durationDeltaSeconds": 0.1,
+        "evidence": "Direct YouTube metadata and duration match; public display follows Ben's explicit Lisa Rockstar Live instruction."
+      }
+    }
+  }
+}

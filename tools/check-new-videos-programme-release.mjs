@@ -20,6 +20,7 @@ const shellSource = read("script.js");
 const televisionSource = read("adaptive-environment-television.js");
 const televisionCssSource = read("adaptive-environment-television.css");
 const manifest = JSON.parse(fs.readFileSync(path.join(root, "cloudflare-stream-new-videos-20260827-manifest.json"), "utf8"));
+const brandingLedger = JSON.parse(fs.readFileSync(path.join(root, "youtube-branding-ledger-20260827.json"), "utf8"));
 
 const trackSandbox = { window: {} };
 vm.runInNewContext(trackSource, trackSandbox, { filename: "music-track-catalogue-v1.js" });
@@ -53,10 +54,41 @@ const newIds = [
   "lisa-rockstar-live",
 ];
 
+const expectedYouTube = new Map([
+  ["sasha-renaissance-engage-2020", ["not_youtube_source", null, null, null, null]],
+  ["caroline-chang-ambient-techno-soft-rave-energy", ["verified_title_channel_duration", "S6eVfsCfKT0", "Ambient Techno And Soft Rave Energy", "Techno Llama", "UCU0kmMUZHvFEoYD_puAHQKQ"]],
+  ["caroline-chang-ambient-techno-zen-out", ["verified_title_channel_duration", "dO4_w4jq06o", "Ambient Techno To Zen Out To", "Techno Llama", "UCU0kmMUZHvFEoYD_puAHQKQ"]],
+  ["caroline-chang-cosy-ambient-techno-fireplace", ["verified_title_channel_duration", "l2HWW72nOu0", "Cosy Ambient Techno By My Fireplace", "Techno Llama", "UCU0kmMUZHvFEoYD_puAHQKQ"]],
+  ["caroline-chang-dreamy-ambient-techno-garden", ["verified_title_channel_duration", "XfrJTAW-lAs", "Dreamy Ambient Techno In My Garden", "Techno Llama", "UCU0kmMUZHvFEoYD_puAHQKQ"]],
+  ["caroline-chang-warm-cosmic-dub-techno", ["verified_title_channel_duration", "TlKL0kWqg0Q", "Warm Cosmic Dub Techno & Electronica To Remind You Everything Is Going To Be OK", "Techno Llama", "UCU0kmMUZHvFEoYD_puAHQKQ"]],
+  ["caroline-chang-zen-mode-electronica-clarity", ["verified_title_channel_duration", "rUBsfWIrSw4", "Zen Mode Electronica Mix For Clarity", "Techno Llama", "UCU0kmMUZHvFEoYD_puAHQKQ"]],
+  ["the-cranberries-zombie", ["verified_title_channel_duration", "6Ejga4kJUts", "The Cranberries - Zombie (Official Music Video)", "TheCranberriesTV", "UCF9i903aeMcvcapmP1bS1oA"]],
+  ["soundgarden-black-hole-sun", ["verified_title_channel_duration", "3mbBbFH9fAg", "Soundgarden - Black Hole Sun", "Soundgarden", "UCTSuGVPcfBRSZSdP3xQASqg"]],
+  ["rage-against-the-machine-killing-in-the-name-live-1993", ["verified_title_channel_duration", "8de2W3rtZsA", "Rage Against The Machine  -  Killing In The Name  -  1993", "Raymond JE", "UCSiVjF5l4MBaQBaKMkUW0-Q"]],
+  ["nirvana-smells-like-teen-spirit", ["verified_title_channel_duration", "hTWKbfoikeg", "Nirvana - Smells Like Teen Spirit (Official Music Video)", "Nirvana", "UCzGrGrvf9g8CVVzh_LvGf-g"]],
+  ["linkin-park-in-the-end", ["verified_title_channel_duration", "eVTXPUF4Oz4", "In The End [Official HD Music Video] - Linkin Park", "Linkin Park", "UCZU9T1ceaOgwfLRq7OKFU4Q"]],
+  ["justice-generator-accor-arena-2024", ["verified_title_channel_duration", "zL8fMWUfRz8", "Justice - Generator (Live at Accor Arena 2024)", "Justice", "UCQ5Ssrs48yJBfOesfDqXUeA"]],
+  ["evanescence-bring-me-to-life", ["verified_title_channel_duration", "3YxaaGgTQYM", "Evanescence - Bring Me To Life (Official HD Music Video) ft. Paul McCoy", "Evanescence", "UCDDmukrq0bwckrp09bNt-Rw"]],
+  ["eminem-lose-yourself", ["verified_title_channel_duration", "xFYQQPAOz7Y", "Eminem - Lose Yourself", "EminemMusic", "UCfM3zsQsOnfWNUppiycmBuw"]],
+  ["flume-coachella-2022-live", ["not_youtube_source", null, null, null, null]],
+  ["fred-again-thomas-bangalter-usb002-alexandra-palace-2026", ["verified_title_channel_duration", "gfF8jzBVWvM", "Fred again.. & Thomas Bangalter (USB002, Alexandra Palace, London 27 February 2026)", "Fred again . .", "UCXF6DMVLIVRr2OQAqyfEGeg"]],
+  ["ricardo-villalobos-circoloco-dc10-ibiza-2026", ["verified_title_channel_duration", "Lat6ygwFyNE", "Ricardo Villalobos - Live from Circoloco DC-10 Ibiza (20.07.26 Garden)", "CIRCOLOCO", "UCanV1p6ynx_FzdsraKLousQ"]],
+  ["rihanna-global-citizens-festival-2016", ["verified_title_channel_duration", "h1qDNYn46ys", "Rihanna - Global Citizens Festival 2016", "GNIGHT", "UC2IIiyNcvgHtLyrSD6CR04g"]],
+  ["skrillex-fred-again-four-tet-coachella", ["verified_title_channel_duration", "mOWfB1_yM-c", "Four Tet x Fred again  x Skrillex  Coachella 2023", "Brassado", "UCikU6EsMT1LsBMH4hlgtWHg"]],
+  ["lisa-rockstar-live", ["verified_title_channel_duration", "mOLAtBo3mHk", "LISA performing Rockstar live from the Victoria’s Secret Fashion Show 2024", "LLOUD Official", "UC6-BgjsBa5R3PZQ_kZ8hKPg"]],
+]);
+
 assert.equal(manifest.batchId, "new-videos-2026-08-27");
 assert.equal(manifest.assetCount, 21);
 assert.equal(manifest.readyToStreamCount, 21);
 assert.equal(Object.keys(manifest.files).length, 21);
+assert.equal(manifest.brandingLedger, "youtube-branding-ledger-20260827.json");
+assert.equal(brandingLedger.version, "media_provenance_ledger_2026-08-27_v2");
+assert.equal(brandingLedger.resolvedCount, 21);
+assert.equal(brandingLedger.verifiedYouTubeCount, 19);
+assert.equal(brandingLedger.sourceNeutralCount, 2);
+assert.equal(brandingLedger.unresolvedCount, 0);
+assert.equal(Object.keys(brandingLedger.entries).length, 21);
 for (const id of newIds) {
   const record = manifest.files[id];
   assert.ok(record, `${id} is absent from the release manifest`);
@@ -70,6 +102,21 @@ for (const id of newIds) {
   assert.equal(track.hlsVideoSrc, record.hls);
   assert.equal(track.musicRoom, record.musicRoom);
   assert.match(guideSource, new RegExp(`${JSON.stringify(id).replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}:`));
+  assert.deepEqual([track.artist, track.title], [record.publicArtist, record.publicTitle], `${id} public display differs from the verified manifest`);
+  const branding = brandingLedger.entries[id];
+  assert.ok(branding, `${id} is absent from the YouTube branding ledger`);
+  assert.deepEqual([branding.fileName, branding.publicArtist, branding.publicTitle], [record.fileName, record.publicArtist, record.publicTitle]);
+  assert.ok(Math.abs(branding.youtube.localDurationSeconds - record.duration) < 0.001, `${id} ledger duration differs from Stream`);
+  const [status, videoId, title, sourceChannel, channelId] = expectedYouTube.get(id);
+  assert.deepEqual(
+    [branding.youtube.status, branding.youtube.videoId, branding.youtube.title, branding.youtube.channel, branding.youtube.channelId],
+    [status, videoId, title, sourceChannel, channelId],
+    `${id} does not retain the audited YouTube title/channel record`,
+  );
+  if (status === "verified_title_channel_duration") {
+    assert.ok(branding.youtube.durationDeltaSeconds <= 1, `${id} does not duration-match its YouTube source`);
+    assert.equal(branding.youtube.url, `https://www.youtube.com/watch?v=${videoId}`);
+  }
 }
 
 const technoLlamaTitles = new Map([
@@ -87,6 +134,26 @@ for (const [id, title] of technoLlamaTitles) {
   assert.deepEqual([track.artist, track.title, track.displayTitle], ["Caroline Chang (Techno Llama)", title, title]);
   assert.ok(guideSource.includes(`${JSON.stringify(id)}: { artist: "Caroline Chang (Techno Llama)", title: ${JSON.stringify(title)} }`));
 }
+for (const id of ["sasha-renaissance-engage-2020", "flume-coachella-2022-live"]) {
+  const entry = brandingLedger.entries[id];
+  assert.equal(entry.provenance.status, "source_neutral_non_youtube");
+  assert.equal(entry.provenance.discoveryMethod, "Google Search");
+  assert.equal(entry.provenance.likelyHost, "VK");
+  assert.equal(entry.provenance.likelyHostVerification, "unverified_user_recollection");
+  assert.equal(entry.provenance.verifiedUrl, null);
+  assert.equal(entry.provenance.verifiedUploader, null);
+  assert.equal(entry.youtube.status, "not_youtube_source");
+  assert.equal(entry.youtube.videoId, null);
+  assert.equal(entry.youtube.channel, null);
+  assert.equal(entry.youtube.url, null);
+}
+assert.doesNotMatch(
+  JSON.stringify([brandingLedger.entries["sasha-renaissance-engage-2020"], brandingLedger.entries["flume-coachella-2022-live"]]),
+  /WatchTheDJ|OFNz5iaLJvI|youtube\.com|vk\.com/i,
+  "source-neutral records retain an invented or superseded provenance claim",
+);
+assert.equal(manifest.files["sasha-renaissance-engage-2020"].publicTitle, "Renaissance Engage (10 May 2020)");
+assert.equal(manifest.files["flume-coachella-2022-live"].publicTitle, "Live at Coachella 2022");
 const rejectedBrandingPattern = new RegExp([
   ["Caroline", "Chase"].join(" "),
   ["The", "Techno", "Llama"].join(" "),
@@ -94,6 +161,7 @@ const rejectedBrandingPattern = new RegExp([
 ].join("|"));
 for (const name of [
   "cloudflare-stream-new-videos-20260827-manifest.json",
+  "youtube-branding-ledger-20260827.json",
   "i  a m/broadcast-schedule-v1.json",
   "i  a m/music-track-catalogue-v1.js",
   "i  a m/programme-guide.js",
@@ -101,10 +169,10 @@ for (const name of [
   "tools/check-broadcast-clock.mjs",
   "tools/check-new-videos-programme-release.mjs",
 ]) {
-  assert.doesNotMatch(fs.readFileSync(path.join(root, name), "utf8"), rejectedBrandingPattern, `${name} retains rejected Caroline branding`);
+  assert.doesNotMatch(fs.readFileSync(path.join(root, name), "utf8"), rejectedBrandingPattern, `${name} retains rejected branding`);
 }
 
-assert.equal(schedule.version, "broadcast_schedule_v1.12");
+assert.equal(schedule.version, "broadcast_schedule_v1.13");
 assert.deepEqual(channel("party-champagne-bohemia").schedule.map(({ track_id }) => track_id), [
   "sasha-ibiza-boat-at-sunset-freqways",
   "sasha-renaissance-engage-2020",

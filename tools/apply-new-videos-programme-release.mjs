@@ -7,6 +7,7 @@ const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const iam = path.join(root, "i  a m");
 const uploadManifestPath = "/private/tmp/cloudflare-stream-new-videos-20260827-manifest.json";
 const releaseManifestPath = path.join(root, "cloudflare-stream-new-videos-20260827-manifest.json");
+const brandingLedgerPath = path.join(root, "youtube-branding-ledger-20260827.json");
 const customerHost = "customer-1vpwglz3v6fiyaas.cloudflarestream.com";
 const sha12 = (value) => crypto.createHash("sha256").update(value).digest("hex").slice(0, 12);
 
@@ -18,26 +19,28 @@ const definitions = [
   { id: "caroline-chang-dreamy-ambient-techno-garden", artist: "Caroline Chang (Techno Llama)", title: "Dreamy Ambient Techno In My Garden", room: "inner-planes", presentation: "live_dj_set", relativePath: "i n n e r  p l a n e s  -  p a r t i e s/Dreamy Ambient Techno In My Garden.mp4" },
   { id: "caroline-chang-warm-cosmic-dub-techno", artist: "Caroline Chang (Techno Llama)", title: "Warm Cosmic Dub Techno & Electronica To Remind You Everything Is Going To Be OK", room: "inner-planes", presentation: "live_dj_set", relativePath: "i n n e r  p l a n e s  -  p a r t i e s/Warm Cosmic Dub Techno & Electronica To Remind You Everything Is Going To Be OK.mp4" },
   { id: "caroline-chang-zen-mode-electronica-clarity", artist: "Caroline Chang (Techno Llama)", title: "Zen Mode Electronica Mix For Clarity", room: "inner-planes", presentation: "live_dj_set", relativePath: "i n n e r  p l a n e s  -  p a r t i e s/Zen Mode Electronica Mix For Clarity.mp4" },
-  { id: "the-cranberries-zombie", artist: "The Cranberries", title: "Zombie", room: "james-bondage", relativePath: "j a m e s  b o n d a g e  -  v i d e o s/The Cranberries - Zombie.mp4" },
+  { id: "the-cranberries-zombie", artist: "The Cranberries", title: "Zombie (Official Music Video)", room: "james-bondage", relativePath: "j a m e s  b o n d a g e  -  v i d e o s/The Cranberries - Zombie.mp4" },
   { id: "soundgarden-black-hole-sun", artist: "Soundgarden", title: "Black Hole Sun", room: "james-bondage", relativePath: "j a m e s  b o n d a g e  -  v i d e o s/Soundgarden - Black Hole Sun.mp4" },
-  { id: "rage-against-the-machine-killing-in-the-name-live-1993", artist: "Rage Against the Machine", title: "Killing in the Name (Live, 1993)", room: "james-bondage", relativePath: "j a m e s  b o n d a g e  -  v i d e o s/Rage Against The Machine - Killing In The Name (Live, 1993).mp4" },
-  { id: "nirvana-smells-like-teen-spirit", artist: "Nirvana", title: "Smells Like Teen Spirit", room: "james-bondage", relativePath: "j a m e s  b o n d a g e  -  v i d e o s/Nirvana - Smells Like Teen Spirit.mp4" },
-  { id: "linkin-park-in-the-end", artist: "Linkin Park", title: "In the End", room: "james-bondage", relativePath: "j a m e s  b o n d a g e  -  v i d e o s/Linkin Park - In The End.mp4" },
+  { id: "rage-against-the-machine-killing-in-the-name-live-1993", artist: "Rage Against The Machine", title: "Killing In The Name - 1993", room: "james-bondage", relativePath: "j a m e s  b o n d a g e  -  v i d e o s/Rage Against The Machine - Killing In The Name (Live, 1993).mp4" },
+  { id: "nirvana-smells-like-teen-spirit", artist: "Nirvana", title: "Smells Like Teen Spirit (Official Music Video)", room: "james-bondage", relativePath: "j a m e s  b o n d a g e  -  v i d e o s/Nirvana - Smells Like Teen Spirit.mp4" },
+  { id: "linkin-park-in-the-end", artist: "Linkin Park", title: "In The End [Official HD Music Video]", room: "james-bondage", relativePath: "j a m e s  b o n d a g e  -  v i d e o s/Linkin Park - In The End.mp4" },
   { id: "justice-generator-accor-arena-2024", artist: "Justice", title: "Generator (Live at Accor Arena 2024)", room: "james-bondage", relativePath: "j a m e s  b o n d a g e  -  v i d e o s/Justice - Generator (Live at Accor Arena 2024).mp4" },
-  { id: "evanescence-bring-me-to-life", artist: "Evanescence", title: "Bring Me to Life", room: "james-bondage", relativePath: "j a m e s  b o n d a g e  -  v i d e o s/Evanescence - Bring Me To Life.mp4" },
+  { id: "evanescence-bring-me-to-life", artist: "Evanescence", title: "Bring Me To Life (Official HD Music Video) ft. Paul McCoy", room: "james-bondage", relativePath: "j a m e s  b o n d a g e  -  v i d e o s/Evanescence - Bring Me To Life.mp4" },
   { id: "eminem-lose-yourself", artist: "Eminem", title: "Lose Yourself", room: "james-bondage", relativePath: "j a m e s  b o n d a g e  -  v i d e o s/Eminem - Lose Yourself.mp4" },
   { id: "flume-coachella-2022-live", artist: "Flume", title: "Live at Coachella 2022", room: "modul8-infinity", presentation: "live_dj_set", relativePath: "m o d u l 8 i n f i n i t y - p a r t i e s/Flume - Live at Coachella 2022.mp4" },
-  { id: "fred-again-thomas-bangalter-usb002-alexandra-palace-2026", artist: "Fred again.. & Thomas Bangalter", title: "USB002, Alexandra Palace, London (27 February 2026)", room: "modul8-infinity", presentation: "live_dj_set", relativePath: "m o d u l 8 i n f i n i t y - p a r t i e s/Fred again.. & Thomas Bangalter (USB002, Alexandra Palace, London 27 February 2026)_1.mp4" },
-  { id: "ricardo-villalobos-circoloco-dc10-ibiza-2026", artist: "Ricardo Villalobos", title: "Circoloco DC-10 Ibiza (20 July 2026)", room: "modul8-infinity", presentation: "live_dj_set", relativePath: "m o d u l 8 i n f i n i t y - p a r t i e s/Ricardo Villalobos - Live from Circoloco DC-10 Ibiza (20.07.26 Garden).mp4" },
+  { id: "fred-again-thomas-bangalter-usb002-alexandra-palace-2026", artist: "Fred again.. & Thomas Bangalter", title: "(USB002, Alexandra Palace, London 27 February 2026)", room: "modul8-infinity", presentation: "live_dj_set", relativePath: "m o d u l 8 i n f i n i t y - p a r t i e s/Fred again.. & Thomas Bangalter (USB002, Alexandra Palace, London 27 February 2026)_1.mp4" },
+  { id: "ricardo-villalobos-circoloco-dc10-ibiza-2026", artist: "Ricardo Villalobos", title: "Live from Circoloco DC-10 Ibiza (20.07.26 Garden)", room: "modul8-infinity", presentation: "live_dj_set", relativePath: "m o d u l 8 i n f i n i t y - p a r t i e s/Ricardo Villalobos - Live from Circoloco DC-10 Ibiza (20.07.26 Garden).mp4" },
   { id: "rihanna-global-citizens-festival-2016", artist: "Rihanna", title: "Global Citizens Festival 2016", room: "modul8-infinity", presentation: "live_dj_set", relativePath: "m o d u l 8 i n f i n i t y - p a r t i e s/Rihanna - Global Citizens Festival 2016_720p.mp4" },
-  { id: "skrillex-fred-again-four-tet-coachella", artist: "Skrillex, Fred again.. & Four Tet", title: "Coachella", room: "modul8-infinity", presentation: "live_dj_set", relativePath: "m o d u l 8 i n f i n i t y - p a r t i e s/Skrillex, Fred Again, Fourtet - Coachella.mp4" },
+  { id: "skrillex-fred-again-four-tet-coachella", artist: "Four Tet x Fred again x Skrillex", title: "Coachella 2023", room: "modul8-infinity", presentation: "live_dj_set", relativePath: "m o d u l 8 i n f i n i t y - p a r t i e s/Skrillex, Fred Again, Fourtet - Coachella.mp4" },
   { id: "lisa-rockstar-live", artist: "Lisa", title: "Rockstar Live", room: "modul8-infinity", relativePath: "m o d u l 8 i n f i n i t y - v i d e o s/LISA performing Rockstar live from the Victoria’s Secret Fashion Show 2024_1.mp4" },
 ].map((definition) => ({ ...definition, fileName: path.basename(definition.relativePath) }));
 
 const uploadManifest = JSON.parse(await fs.readFile(uploadManifestPath, "utf8"));
+const brandingLedger = JSON.parse(await fs.readFile(brandingLedgerPath, "utf8"));
 const records = new Map();
 for (const definition of definitions) {
-  const record = uploadManifest.files?.[definition.id];
+  const record = uploadManifest.files?.[definition.id]
+    || Object.values(uploadManifest.files || {}).find((candidate) => candidate.fileName === definition.fileName);
   if (!record?.uid?.match(/^[a-f0-9]{32}$/)) throw new Error(`${definition.id} has no valid Stream UID`);
   if (record.readyToStream !== true || record.status !== "ready") throw new Error(`${definition.id} is not readyToStream`);
   if (!(Number(record.duration) > 0)) throw new Error(`${definition.id} has no verified encoded duration`);
@@ -69,7 +72,7 @@ const trackLines = definitions.map((definition) => {
   return `  { ${fields.join(", ")} },`;
 }).join("\n");
 trackCatalogue = trackCatalogue
-  .replace("version: \"music_track_catalogue_v1.0\"", "version: \"music_track_catalogue_v1.1\"")
+  .replace(/version: "music_track_catalogue_v1\.\d+"/, 'version: "music_track_catalogue_v1.2"')
   .replace("\n];\n\n  window.IAMTrackCatalogue", `\n${trackLines}\n];\n\n  window.IAMTrackCatalogue`);
 await write("music-track-catalogue-v1.js", trackCatalogue);
 
@@ -95,7 +98,7 @@ await write("programme-guide.js", programmeGuide);
 
 const schedulePath = path.join(iam, "broadcast-schedule-v1.json");
 const schedule = JSON.parse(await fs.readFile(schedulePath, "utf8"));
-schedule.version = "broadcast_schedule_v1.12";
+schedule.version = "broadcast_schedule_v1.13";
 const channel = (id) => {
   const result = schedule.channels.find((candidate) => candidate.id === id);
   if (!result) throw new Error(`Missing schedule channel: ${id}`);
@@ -186,7 +189,9 @@ await fs.writeFile(durationCheckPath, durationCheck);
 const releaseManifest = {
   accountId: uploadManifest.accountId,
   batchId: "new-videos-2026-08-27",
-  sourceBoundary: "User-supplied local MP4 masters; public credits and titles are limited to Ben's request and the supplied filenames.",
+  sourceBoundary: "Nineteen exact YouTube title/channel records are verified in youtube-branding-ledger-20260827.json. Sasha and Flume are non-YouTube, source-neutral masters: Ben found them through Google Search and recalls VK as the likely host, but no host, URL, uploader, channel, account, or video ID is verified or claimed.",
+  brandingLedger: "youtube-branding-ledger-20260827.json",
+  brandingVerifiedAt: brandingLedger.checkedAt,
   assetCount: definitions.length,
   totalBytes: definitions.reduce((sum, definition) => sum + Number(records.get(definition.id).size || 0), 0),
   totalDurationSeconds: definitions.reduce((sum, definition) => sum + Number(records.get(definition.id).duration || 0), 0),

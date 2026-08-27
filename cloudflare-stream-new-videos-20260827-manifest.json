@@ -1,7 +1,9 @@
 {
   "accountId": "bef34a5ee69678e46332813cb7610012",
   "batchId": "new-videos-2026-08-27",
-  "sourceBoundary": "User-supplied local MP4 masters; public credits and titles are limited to Ben's request and the supplied filenames.",
+  "sourceBoundary": "Nineteen exact YouTube title/channel records are verified in youtube-branding-ledger-20260827.json. Sasha and Flume are non-YouTube, source-neutral masters: Ben found them through Google Search and recalls VK as the likely host, but no host, URL, uploader, channel, account, or video ID is verified or claimed.",
+  "brandingLedger": "youtube-branding-ledger-20260827.json",
+  "brandingVerifiedAt": "2026-08-27",
   "assetCount": 21,
   "totalBytes": 24605847410,
   "totalDurationSeconds": 57920.7,
@@ -95,7 +97,7 @@
     "the-cranberries-zombie": {
       "fileName": "The Cranberries - Zombie.mp4",
       "publicArtist": "The Cranberries",
-      "publicTitle": "Zombie",
+      "publicTitle": "Zombie (Official Music Video)",
       "musicRoom": "james-bondage",
       "format": "videos",
       "size": 102506661,
@@ -118,8 +120,8 @@
     },
     "rage-against-the-machine-killing-in-the-name-live-1993": {
       "fileName": "Rage Against The Machine - Killing In The Name (Live, 1993).mp4",
-      "publicArtist": "Rage Against the Machine",
-      "publicTitle": "Killing in the Name (Live, 1993)",
+      "publicArtist": "Rage Against The Machine",
+      "publicTitle": "Killing In The Name - 1993",
       "musicRoom": "james-bondage",
       "format": "videos",
       "size": 30825682,
@@ -131,7 +133,7 @@
     "nirvana-smells-like-teen-spirit": {
       "fileName": "Nirvana - Smells Like Teen Spirit.mp4",
       "publicArtist": "Nirvana",
-      "publicTitle": "Smells Like Teen Spirit",
+      "publicTitle": "Smells Like Teen Spirit (Official Music Video)",
       "musicRoom": "james-bondage",
       "format": "videos",
       "size": 68225997,
@@ -143,7 +145,7 @@
     "linkin-park-in-the-end": {
       "fileName": "Linkin Park - In The End.mp4",
       "publicArtist": "Linkin Park",
-      "publicTitle": "In the End",
+      "publicTitle": "In The End [Official HD Music Video]",
       "musicRoom": "james-bondage",
       "format": "videos",
       "size": 110461309,
@@ -167,7 +169,7 @@
     "evanescence-bring-me-to-life": {
       "fileName": "Evanescence - Bring Me To Life.mp4",
       "publicArtist": "Evanescence",
-      "publicTitle": "Bring Me to Life",
+      "publicTitle": "Bring Me To Life (Official HD Music Video) ft. Paul McCoy",
       "musicRoom": "james-bondage",
       "format": "videos",
       "size": 58706938,
@@ -203,7 +205,7 @@
     "fred-again-thomas-bangalter-usb002-alexandra-palace-2026": {
       "fileName": "Fred again.. & Thomas Bangalter (USB002, Alexandra Palace, London 27 February 2026)_1.mp4",
       "publicArtist": "Fred again.. & Thomas Bangalter",
-      "publicTitle": "USB002, Alexandra Palace, London (27 February 2026)",
+      "publicTitle": "(USB002, Alexandra Palace, London 27 February 2026)",
       "musicRoom": "modul8-infinity",
       "format": "parties",
       "size": 2651035896,
@@ -215,7 +217,7 @@
     "ricardo-villalobos-circoloco-dc10-ibiza-2026": {
       "fileName": "Ricardo Villalobos - Live from Circoloco DC-10 Ibiza (20.07.26 Garden).mp4",
       "publicArtist": "Ricardo Villalobos",
-      "publicTitle": "Circoloco DC-10 Ibiza (20 July 2026)",
+      "publicTitle": "Live from Circoloco DC-10 Ibiza (20.07.26 Garden)",
       "musicRoom": "modul8-infinity",
       "format": "parties",
       "size": 2381026791,
@@ -238,8 +240,8 @@
     },
     "skrillex-fred-again-four-tet-coachella": {
       "fileName": "Skrillex, Fred Again, Fourtet - Coachella.mp4",
-      "publicArtist": "Skrillex, Fred again.. & Four Tet",
-      "publicTitle": "Coachella",
+      "publicArtist": "Four Tet x Fred again x Skrillex",
+      "publicTitle": "Coachella 2023",
       "musicRoom": "modul8-infinity",
       "format": "parties",
       "size": 681050145,
