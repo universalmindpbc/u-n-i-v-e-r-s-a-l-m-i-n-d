@@ -73,6 +73,226 @@
       "verified": true
     }
   ],
+  "programme_addition_batch": {
+    "id": "programme-additions-2026-08-27",
+    "source_root": "a s s e t s/n e w   i m p o r t   v i d e o e s",
+    "source_type": "Ben-supplied local MP4 masters plus Ben-approved public catalogue facts",
+    "editorial_inventory_frozen": true,
+    "stream_uids_pending": true,
+    "knowledge_boundary": "The MP4 master, Ben's request and the supplied filename establish only the recorded public title, credit, event wording, route, format and duration. Do not infer tracklists, unnamed performers, venue or date facts, themes, mood, narrative, rights status or editorial claims.",
+    "inventory": [
+      {
+        "number": 1,
+        "credit": "Sasha",
+        "title": "Renaissance Engage (10 May 2020)",
+        "route": "party-champagne-bohemia",
+        "format": "live_set",
+        "duration_seconds": 7765.98,
+        "source_file": "c h a m p a g n e  b o h e m i a  -  p a r t i e s/Sasha - Live @ Renaissance Engage [10.05.2020].mp4",
+        "placement": "After Sasha - Ibiza Boat at Sunset (Freqways); before Ben Böhmer - Cappadocia, Turkey (Cercle)."
+      },
+      {
+        "number": 2,
+        "credit": "Caroline Chase (The Techno Llama)",
+        "title": "Ambient Techno and Soft Rave Energy",
+        "route": "party-inner-planes",
+        "format": "live_set",
+        "duration_seconds": 3866.96,
+        "source_file": "i n n e r  p l a n e s  -  p a r t i e s/Ambient Techno And Soft Rave Energy.mp4",
+        "placement": "Before Max Richter - Cercle Odyssey."
+      },
+      {
+        "number": 3,
+        "credit": "Caroline Chase (The Techno Llama)",
+        "title": "Ambient Techno to Zen Out To",
+        "route": "party-inner-planes",
+        "format": "live_set",
+        "duration_seconds": 3820.73,
+        "source_file": "i n n e r  p l a n e s  -  p a r t i e s/Ambient Techno To Zen Out To.mp4",
+        "placement": "After Max Richter - Cercle Odyssey; before Ólafur Arnalds - Hafursey (Cercle)."
+      },
+      {
+        "number": 4,
+        "credit": "Caroline Chase (The Techno Llama)",
+        "title": "Cosy Ambient Techno by My Fireplace",
+        "route": "party-inner-planes",
+        "format": "live_set",
+        "duration_seconds": 4248.79,
+        "source_file": "i n n e r  p l a n e s  -  p a r t i e s/Cosy Ambient Techno By My Fireplace.mp4",
+        "placement": "After Ólafur Arnalds - Hafursey (Cercle); before the Max Richter repeat."
+      },
+      {
+        "number": 5,
+        "credit": "Caroline Chase (The Techno Llama)",
+        "title": "Dreamy Ambient Techno in My Garden",
+        "route": "party-inner-planes",
+        "format": "live_set",
+        "duration_seconds": 3591.8,
+        "source_file": "i n n e r  p l a n e s  -  p a r t i e s/Dreamy Ambient Techno In My Garden.mp4",
+        "placement": "After the Max Richter repeat; before the Ólafur Arnalds repeat."
+      },
+      {
+        "number": 6,
+        "credit": "Caroline Chase (The Techno Llama)",
+        "title": "Warm Cosmic Dub Techno & Electronica to Remind You Everything Is Going to Be OK",
+        "route": "party-inner-planes",
+        "format": "live_set",
+        "duration_seconds": 3397.61,
+        "source_file": "i n n e r  p l a n e s  -  p a r t i e s/Warm Cosmic Dub Techno & Electronica To Remind You Everything Is Going To Be OK.mp4",
+        "placement": "After the Ólafur Arnalds repeat; before the second Max Richter repeat."
+      },
+      {
+        "number": 7,
+        "credit": "Caroline Chase (The Techno Llama)",
+        "title": "Zen Mode Electronica Mix for Clarity",
+        "route": "party-inner-planes",
+        "format": "live_set",
+        "duration_seconds": 3762.96,
+        "source_file": "i n n e r  p l a n e s  -  p a r t i e s/Zen Mode Electronica Mix For Clarity.mp4",
+        "placement": "After the second Max Richter repeat; before the final Ólafur Arnalds repeat."
+      },
+      {
+        "number": 8,
+        "credit": "The Cranberries",
+        "title": "Zombie",
+        "route": "video-james-bondage",
+        "format": "music_video",
+        "duration_seconds": 307.18,
+        "source_file": "j a m e s  b o n d a g e  -  v i d e o s/The Cranberries - Zombie.mp4",
+        "placement": "After U2 - Numb; before Soundgarden - Black Hole Sun."
+      },
+      {
+        "number": 9,
+        "credit": "Soundgarden",
+        "title": "Black Hole Sun",
+        "route": "video-james-bondage",
+        "format": "music_video",
+        "duration_seconds": 320.11,
+        "source_file": "j a m e s  b o n d a g e  -  v i d e o s/Soundgarden - Black Hole Sun.mp4",
+        "placement": "After The Cranberries - Zombie; before Nirvana - Smells Like Teen Spirit."
+      },
+      {
+        "number": 10,
+        "credit": "Rage Against the Machine",
+        "title": "Killing in the Name (Live, 1993)",
+        "route": "video-james-bondage",
+        "format": "live_performance",
+        "duration_seconds": 330.75,
+        "source_file": "j a m e s  b o n d a g e  -  v i d e o s/Rage Against The Machine - Killing In The Name (Live, 1993).mp4",
+        "placement": "After Nirvana - Smells Like Teen Spirit; before Linkin Park - In the End."
+      },
+      {
+        "number": 11,
+        "credit": "Nirvana",
+        "title": "Smells Like Teen Spirit",
+        "route": "video-james-bondage",
+        "format": "music_video",
+        "duration_seconds": 278.41,
+        "source_file": "j a m e s  b o n d a g e  -  v i d e o s/Nirvana - Smells Like Teen Spirit.mp4",
+        "placement": "After Soundgarden - Black Hole Sun; before Rage Against the Machine - Killing in the Name (Live, 1993)."
+      },
+      {
+        "number": 12,
+        "credit": "Linkin Park",
+        "title": "In the End",
+        "route": "video-james-bondage",
+        "format": "music_video",
+        "duration_seconds": 218.27,
+        "source_file": "j a m e s  b o n d a g e  -  v i d e o s/Linkin Park - In The End.mp4",
+        "placement": "Before the official and live-2024 Linkin Park - Numb programmes."
+      },
+      {
+        "number": 13,
+        "credit": "Justice",
+        "title": "Generator (Live at Accor Arena 2024)",
+        "route": "video-james-bondage",
+        "format": "live_performance",
+        "duration_seconds": 485.23,
+        "source_file": "j a m e s  b o n d a g e  -  v i d e o s/Justice - Generator (Live at Accor Arena 2024).mp4",
+        "placement": "After Charli XCX - House featuring John Cale; before Nine Inch Noize - Closer live."
+      },
+      {
+        "number": 14,
+        "credit": "Evanescence",
+        "title": "Bring Me to Life",
+        "route": "video-james-bondage",
+        "format": "music_video",
+        "duration_seconds": 253.93,
+        "source_file": "j a m e s  b o n d a g e  -  v i d e o s/Evanescence - Bring Me To Life.mp4",
+        "placement": "After Linkin Park - Numb live 2024; before Charli XCX - House featuring John Cale."
+      },
+      {
+        "number": 15,
+        "credit": "Eminem",
+        "title": "Lose Yourself",
+        "route": "video-james-bondage",
+        "format": "music_video",
+        "duration_seconds": 327.56,
+        "source_file": "j a m e s  b o n d a g e  -  v i d e o s/Eminem - Lose Yourself.mp4",
+        "placement": "After Nine Inch Noize - Closer live."
+      },
+      {
+        "number": 16,
+        "credit": "Flume",
+        "title": "Live at Coachella 2022",
+        "route": "party-modul8-infinity",
+        "format": "live_set",
+        "duration_seconds": 3673.9,
+        "source_file": "m o d u l 8 i n f i n i t y - p a r t i e s/Flume - Live at Coachella 2022.mp4",
+        "placement": "P2:02; replaces one Pete Cannon repeat."
+      },
+      {
+        "number": 17,
+        "credit": "Fred again.. & Thomas Bangalter",
+        "title": "USB002, Alexandra Palace, London (27 February 2026)",
+        "route": "party-modul8-infinity",
+        "format": "live_set",
+        "duration_seconds": 6983.1,
+        "source_file": "m o d u l 8 i n f i n i t y - p a r t i e s/Fred again.. & Thomas Bangalter (USB002, Alexandra Palace, London 27 February 2026)_1.mp4",
+        "placement": "P3:04; replaces one Lilly Palmer at DJ Mag HQ repeat."
+      },
+      {
+        "number": 18,
+        "credit": "Ricardo Villalobos",
+        "title": "Circoloco DC-10 Ibiza (20 July 2026)",
+        "route": "party-modul8-infinity",
+        "format": "live_set",
+        "duration_seconds": 4583.83,
+        "source_file": "m o d u l 8 i n f i n i t y - p a r t i e s/Ricardo Villalobos - Live from Circoloco DC-10 Ibiza (20.07.26 Garden).mp4",
+        "placement": "P1:21; replaces one Cassy at Sunday School repeat."
+      },
+      {
+        "number": 19,
+        "credit": "Rihanna",
+        "title": "Global Citizens Festival 2016",
+        "route": "party-modul8-infinity",
+        "format": "live_set",
+        "duration_seconds": 4074.57,
+        "source_file": "m o d u l 8 i n f i n i t y - p a r t i e s/Rihanna - Global Citizens Festival 2016_720p.mp4",
+        "placement": "P1:13; replaces one Anfisa Letyago at DJ Mag HQ repeat."
+      },
+      {
+        "number": 20,
+        "credit": "Skrillex, Fred again.. & Four Tet",
+        "title": "Coachella",
+        "route": "party-modul8-infinity",
+        "format": "live_set",
+        "duration_seconds": 5432.98,
+        "source_file": "m o d u l 8 i n f i n i t y - p a r t i e s/Skrillex, Fred Again, Fourtet - Coachella.mp4",
+        "placement": "P3:22; replaces one Boys Noize at Coachella repeat."
+      },
+      {
+        "number": 21,
+        "credit": "Lisa",
+        "title": "Lisa Rockstar Live",
+        "route": "video-modul8-infinity",
+        "format": "live_performance",
+        "duration_seconds": 197.97,
+        "source_file": "m o d u l 8 i n f i n i t y - v i d e o s/LISA performing Rockstar live from the Victoria’s Secret Fashion Show 2024_1.mp4",
+        "placement": "After Sampa the Great - Energy; before PinkPantheress - Illegal [Live at Glastonbury]."
+      }
+    ]
+  },
   "episode_sources": [
     {
       "episode": "01",

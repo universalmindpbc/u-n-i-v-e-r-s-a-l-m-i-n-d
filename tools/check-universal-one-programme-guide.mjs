@@ -40,6 +40,53 @@ assert.equal(programmeBatchSource?.hls_playback_verified_count, 25);
 assert.equal(programmeBatchSource?.duration_verified_count, 25);
 assert.equal(programmeBatchSource?.routing_verified, true);
 
+const additionBatch = sources.programme_addition_batch;
+assert.equal(additionBatch?.editorial_inventory_frozen, true);
+assert.equal(additionBatch?.stream_uids_pending, true);
+assert.equal(additionBatch?.inventory?.length, 21);
+assert.deepEqual(additionBatch.inventory.map((item) => item.number), Array.from({ length: 21 }, (_, index) => index + 1));
+assert.deepEqual(
+  Object.fromEntries(
+    Object.entries(Object.groupBy(additionBatch.inventory, (item) => item.route)).map(([route, items]) => [route, items.length]),
+  ),
+  {
+    "party-champagne-bohemia": 1,
+    "party-inner-planes": 6,
+    "video-james-bondage": 8,
+    "party-modul8-infinity": 5,
+    "video-modul8-infinity": 1,
+  },
+);
+assert.deepEqual(
+  additionBatch.inventory.map((item) => `${item.credit} — ${item.title}`),
+  [
+    "Sasha — Renaissance Engage (10 May 2020)",
+    "Caroline Chase (The Techno Llama) — Ambient Techno and Soft Rave Energy",
+    "Caroline Chase (The Techno Llama) — Ambient Techno to Zen Out To",
+    "Caroline Chase (The Techno Llama) — Cosy Ambient Techno by My Fireplace",
+    "Caroline Chase (The Techno Llama) — Dreamy Ambient Techno in My Garden",
+    "Caroline Chase (The Techno Llama) — Warm Cosmic Dub Techno & Electronica to Remind You Everything Is Going to Be OK",
+    "Caroline Chase (The Techno Llama) — Zen Mode Electronica Mix for Clarity",
+    "The Cranberries — Zombie",
+    "Soundgarden — Black Hole Sun",
+    "Rage Against the Machine — Killing in the Name (Live, 1993)",
+    "Nirvana — Smells Like Teen Spirit",
+    "Linkin Park — In the End",
+    "Justice — Generator (Live at Accor Arena 2024)",
+    "Evanescence — Bring Me to Life",
+    "Eminem — Lose Yourself",
+    "Flume — Live at Coachella 2022",
+    "Fred again.. & Thomas Bangalter — USB002, Alexandra Palace, London (27 February 2026)",
+    "Ricardo Villalobos — Circoloco DC-10 Ibiza (20 July 2026)",
+    "Rihanna — Global Citizens Festival 2016",
+    "Skrillex, Fred again.. & Four Tet — Coachella",
+    "Lisa — Lisa Rockstar Live",
+  ],
+);
+assert.match(additionBatch.knowledge_boundary, /Do not infer tracklists, unnamed performers/);
+assert.match(guide, /FROZEN 27 AUGUST 2026 PROGRAMME ADDITIONS/);
+assert.match(guide, /shared cycle remains 108 occurrences and 601,325\.68 seconds/);
+
 const catalogueWindow = {};
 new vm.Script(programmeCatalogueSource, { filename: "programme-catalogue-v1.js" }).runInNewContext({ window: catalogueWindow });
 const comedyProgrammes = catalogueWindow.IAMProgrammeCatalogue.comedyProgrammes;
@@ -126,7 +173,7 @@ assert.equal(sources.version, "universal_one_programme_sources_v1.4");
 assert.deepEqual(sources.episode_sources.map((episode) => episode.episode), ["01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14"]);
 assert.match(guide, /It currently contains fourteen conversations and instructional programmes/);
 assert.match(sources.use_policy.storage, /full third-party transcripts are not stored/);
-assert.ok(guide.length < 45000, "programme guide should remain a curated briefing rather than a transcript copy");
+assert.ok(guide.length < 50000, "programme guide should remain a curated briefing rather than a transcript copy");
 
 assert.match(portalGuide, /Adaptive Inference Engine system prompt is version 5\.55/);
 assert.match(portalGuide, /TV opens five current controls: MUSIC, FASHION, EMDR, SOUND and MANTRA/);
@@ -155,6 +202,7 @@ assert.match(phpFallback, /'voice_briefing_version' => 'v3'/);
 for (const scenario of [
   "seeding-sessions",
   "programme-catalogue",
+  "programme-additions",
   "comedy-programming",
   "sex-ed",
   "episode-detail",

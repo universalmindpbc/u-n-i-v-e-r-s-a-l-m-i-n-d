@@ -164,6 +164,12 @@
         qaPrompt: "From the current Universal One programme guide, explain where the new Rave episode, the full Nine Inch Noize Coachella set, the Closer live single, and the two Zip mixes belong. Preserve the exact room names and mention how many cue points Rave has. Keep the answer concise and do not invent a city-specific room.",
       };
     }
+    if (qaScenario === "programme-additions") {
+      return {
+        microphone: false,
+        qaPrompt: "From the frozen 27 August 2026 programme additions, group all 21 exact public titles and credits under Champagne Bohemia Parties, Inner Planes Parties, james bondage Videos, modul8 infinity Parties, and modul8 infinity Videos. Explain the strict Techno Llama/Cercle alternation, the strategic five-premiere modul8 weekly rotation, the Lisa placement, and the source boundary. Do not invent tracklists, unnamed performers, dates, venues, themes, rights or editorial claims beyond the guide.",
+      };
+    }
     if (qaScenario === "comedy-programming") {
       return {
         microphone: false,
