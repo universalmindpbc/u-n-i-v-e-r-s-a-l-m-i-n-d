@@ -41,7 +41,14 @@ const legacyModul8Parties = [
   "nastia-drum-bass-sunset-the-lab-ibiza",
   "carl-cox-chateau-de-chambord-cercle",
 ];
-const completeModul8Programme = new Set([...legacyModul8Parties, ...modul8Parties]);
+const newModul8Premieres = [
+  "flume-coachella-2022-live",
+  "fred-again-thomas-bangalter-usb002-alexandra-palace-2026",
+  "ricardo-villalobos-circoloco-dc10-ibiza-2026",
+  "rihanna-global-citizens-festival-2016",
+  "skrillex-fred-again-four-tet-coachella",
+];
+const completeModul8Programme = new Set([...legacyModul8Parties, ...modul8Parties, ...newModul8Premieres]);
 const raveId = "rave-episode-1-solyra";
 const fullNineInchNoizeId = "nine-inch-noize-coachella-2026-live-set";
 const closerId = "nine-inch-noize-closer-coachella-2026-live";
@@ -96,27 +103,54 @@ for (const track of programmeTracks) {
 
 const channel = (id) => schedule.channels.find((candidate) => candidate.id === id);
 const modul8GlobalWeek = channel("party-modul8-infinity");
-assert.equal(schedule.version, "broadcast_schedule_v1.11");
+assert.equal(schedule.version, "broadcast_schedule_v1.12");
 assert.equal(schedule.epoch_utc, "2026-07-24T00:00:00.000Z");
 assert.equal(modul8GlobalWeek.epoch_utc, "2026-08-02T14:00:00.000Z");
 assert.equal(modul8GlobalWeek.schedule.length, 108);
 assert.deepEqual(new Set(modul8GlobalWeek.schedule.map((entry) => entry.track_id)), completeModul8Programme);
-for (const trackId of completeModul8Programme) {
-  assert.equal(modul8GlobalWeek.schedule.filter((entry) => entry.track_id === trackId).length, 4, `${trackId} must play once in every pass.`);
+const rotatedExisting = [
+  "anfisa-letyago-dj-mag-hq",
+  "cassy-sunday-school-miami",
+  "pete-cannon-manchester",
+  "lilly-palmer-dj-mag-hq",
+  "boys-noize-coachella-2026-live",
+];
+for (const trackId of newModul8Premieres) assert.equal(modul8GlobalWeek.schedule.filter((entry) => entry.track_id === trackId).length, 1, `${trackId} must have one strategic premiere slot.`);
+for (const trackId of rotatedExisting) assert.equal(modul8GlobalWeek.schedule.filter((entry) => entry.track_id === trackId).length, 3, `${trackId} must yield one repeat to a strategic premiere.`);
+for (const trackId of [...legacyModul8Parties, ...modul8Parties].filter((trackId) => !rotatedExisting.includes(trackId))) {
+  assert.equal(modul8GlobalWeek.schedule.filter((entry) => entry.track_id === trackId).length, 4, `${trackId} must retain four weekly plays.`);
 }
 for (let pass = 1; pass <= 4; pass += 1) {
   const entries = modul8GlobalWeek.schedule.filter((entry) => entry.global_week_pass === pass);
   assert.equal(entries.length, 27);
-  assert.deepEqual(new Set(entries.map((entry) => entry.track_id)), completeModul8Programme);
   assert.deepEqual(entries.map((entry) => entry.global_week_position), Array.from({ length: 27 }, (_, index) => index + 1));
 }
-assert.equal(modul8GlobalWeek.global_week_programming?.strategy, "four_reordered_passes_global_daypart_arc");
+assert.deepEqual(
+  modul8GlobalWeek.schedule
+    .filter((entry) => newModul8Premieres.includes(entry.track_id))
+    .map((entry) => [entry.global_week_pass, entry.global_week_position, entry.track_id]),
+  [
+    [1, 13, "rihanna-global-citizens-festival-2016"],
+    [1, 21, "ricardo-villalobos-circoloco-dc10-ibiza-2026"],
+    [2, 2, "flume-coachella-2022-live"],
+    [3, 4, "fred-again-thomas-bangalter-usb002-alexandra-palace-2026"],
+    [3, 22, "skrillex-fred-again-four-tet-coachella"],
+  ],
+);
+assert.equal(modul8GlobalWeek.global_week_programming?.strategy, "four_reordered_passes_with_strategic_premieres_global_daypart_arc");
 assert.equal(modul8GlobalWeek.global_week_programming?.priority_market, "Australia/Sydney");
-assert.equal(modul8GlobalWeek.global_week_programming?.cycle_seconds, 601325.8);
-assert.ok(Math.abs(modul8GlobalWeek.schedule.reduce((sum, entry) => sum + entry.duration_seconds, 0) - 601325.8) < .001);
+assert.equal(modul8GlobalWeek.global_week_programming?.distinct_programmes, 32);
+assert.equal(modul8GlobalWeek.global_week_programming?.baseline_plays_per_programme, 4);
+assert.equal(modul8GlobalWeek.global_week_programming?.strategic_premiere_plays, 1);
+assert.equal(modul8GlobalWeek.global_week_programming?.rotated_existing_programmes, 5);
+assert.ok(Math.abs(modul8GlobalWeek.global_week_programming?.cycle_seconds - 601325.68) < 2);
+assert.ok(Math.abs(modul8GlobalWeek.schedule.reduce((sum, entry) => sum + entry.duration_seconds, 0) - modul8GlobalWeek.global_week_programming?.cycle_seconds) < .001);
 assert.equal(modul8GlobalWeek.descriptor, "enlightenment thru rave");
 assert.equal(channel("video-modul8-infinity").schedule.at(-1).track_id, raveId);
-assert.equal(channel("video-james-bondage").schedule.at(-1).track_id, closerId);
+assert.deepEqual(channel("video-james-bondage").schedule.slice(-2).map((entry) => entry.track_id), [
+  closerId,
+  "eminem-lose-yourself",
+]);
 const grimesGenesis = catalogue.tracks.find((track) => track.id === "grimes-genesis");
 assert.equal(grimesGenesis.music_room, "modul8-infinity");
 assert.equal(grimesGenesis.tensor_profile?.runtime_delivery?.music_room, "modul8-infinity");
@@ -209,4 +243,4 @@ assert.ok(index.includes(televisionToken) && alternateEntry.includes(televisionT
 const sharedTrackCatalogueToken = `music-track-catalogue-${sha12("music-track-catalogue-v1.js")}`;
 assert.ok(index.includes(sharedTrackCatalogueToken) && alternateEntry.includes(sharedTrackCatalogueToken));
 
-console.log("Programme catalogue release checks passed: Notion/Tensor 25/25, exact routes, 18 live Rave cues, Bloom wallet recovery, and 108-occurrence modul8 infinity global week.");
+console.log("Programme catalogue release checks passed: Notion/Tensor 25/25, exact routes, 18 live Rave cues, Bloom wallet recovery, and the 108-slot modul8 infinity global week with five strategic premieres.");

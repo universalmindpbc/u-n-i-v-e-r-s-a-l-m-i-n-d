@@ -65,6 +65,15 @@ const videoDurations = new Map([
   ["u2-numb", 260.39],
   ["linkin-park-numb-official", 187.094],
   ["linkin-park-numb-live-2024", 192.098],
+  ["the-cranberries-zombie", 307.1],
+  ["soundgarden-black-hole-sun", 320],
+  ["rage-against-the-machine-killing-in-the-name-live-1993", 330.6],
+  ["nirvana-smells-like-teen-spirit", 278.3],
+  ["linkin-park-in-the-end", 218.2],
+  ["justice-generator-accor-arena-2024", 485.1],
+  ["evanescence-bring-me-to-life", 253.8],
+  ["eminem-lose-yourself", 327.4],
+  ["lisa-rockstar-live", 197.9],
   ...safetyCushionVideoAssets.map(({ trackId, duration }) => [trackId, duration]),
 ]);
 const djDurations = new Map([
@@ -79,6 +88,18 @@ const djDurations = new Map([
   ["olafur-arnalds-hafursey-iceland-cercle", 5242.2],
   ["zip-perlon-air-festival-2007", 11255.780136],
   ["zip-sammy-d-perlon-betalounge-2000", 13194.739229],
+  ["sasha-renaissance-engage-2020", 7766],
+  ["caroline-chase-ambient-techno-soft-rave-energy", 3866.9],
+  ["caroline-chase-ambient-techno-zen-out", 3820.6],
+  ["caroline-chase-cosy-ambient-techno-fireplace", 4248.7],
+  ["caroline-chase-dreamy-ambient-techno-garden", 3591.7],
+  ["caroline-chase-warm-cosmic-dub-techno", 3397.5],
+  ["caroline-chase-zen-mode-electronica-clarity", 3762.9],
+  ["flume-coachella-2022-live", 3673.9],
+  ["fred-again-thomas-bangalter-usb002-alexandra-palace-2026", 6983],
+  ["ricardo-villalobos-circoloco-dc10-ibiza-2026", 4583.7],
+  ["rihanna-global-citizens-festival-2016", 4074.5],
+  ["skrillex-fred-again-four-tet-coachella", 5432.9],
 ]);
 const programmeTensor = JSON.parse(await fs.readFile(path.join(IAM_DIR, "programme-tensor-approved-notion-export-v1.0.json"), "utf8"));
 for (const record of programmeTensor.records) {

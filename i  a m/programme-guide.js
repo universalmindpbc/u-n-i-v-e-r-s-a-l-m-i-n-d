@@ -34,6 +34,27 @@
     "carl-cox-chateau-de-chambord-cercle": { artist: "Carl Cox", title: "Château de Chambord, France" },
     "zip-perlon-air-festival-2007": { artist: "Zip", title: "Perlon · Air Festival, 2007" },
     "zip-sammy-d-perlon-betalounge-2000": { artist: "Zip & Sammy D", title: "Perlon · Betalounge, 2000" },
+    "sasha-renaissance-engage-2020": { artist: "Sasha", title: "Renaissance Engage (10 May 2020)" },
+    "caroline-chase-ambient-techno-soft-rave-energy": { artist: "Caroline Chase (The Techno Llama)", title: "Ambient Techno and Soft Rave Energy" },
+    "caroline-chase-ambient-techno-zen-out": { artist: "Caroline Chase (The Techno Llama)", title: "Ambient Techno to Zen Out To" },
+    "caroline-chase-cosy-ambient-techno-fireplace": { artist: "Caroline Chase (The Techno Llama)", title: "Cosy Ambient Techno by My Fireplace" },
+    "caroline-chase-dreamy-ambient-techno-garden": { artist: "Caroline Chase (The Techno Llama)", title: "Dreamy Ambient Techno in My Garden" },
+    "caroline-chase-warm-cosmic-dub-techno": { artist: "Caroline Chase (The Techno Llama)", title: "Warm Cosmic Dub Techno & Electronica to Remind You Everything Is Going to Be OK" },
+    "caroline-chase-zen-mode-electronica-clarity": { artist: "Caroline Chase (The Techno Llama)", title: "Zen Mode Electronica Mix for Clarity" },
+    "the-cranberries-zombie": { artist: "The Cranberries", title: "Zombie" },
+    "soundgarden-black-hole-sun": { artist: "Soundgarden", title: "Black Hole Sun" },
+    "rage-against-the-machine-killing-in-the-name-live-1993": { artist: "Rage Against the Machine", title: "Killing in the Name (Live, 1993)" },
+    "nirvana-smells-like-teen-spirit": { artist: "Nirvana", title: "Smells Like Teen Spirit" },
+    "linkin-park-in-the-end": { artist: "Linkin Park", title: "In the End" },
+    "justice-generator-accor-arena-2024": { artist: "Justice", title: "Generator (Live at Accor Arena 2024)" },
+    "evanescence-bring-me-to-life": { artist: "Evanescence", title: "Bring Me to Life" },
+    "eminem-lose-yourself": { artist: "Eminem", title: "Lose Yourself" },
+    "flume-coachella-2022-live": { artist: "Flume", title: "Live at Coachella 2022" },
+    "fred-again-thomas-bangalter-usb002-alexandra-palace-2026": { artist: "Fred again.. & Thomas Bangalter", title: "USB002, Alexandra Palace, London (27 February 2026)" },
+    "ricardo-villalobos-circoloco-dc10-ibiza-2026": { artist: "Ricardo Villalobos", title: "Circoloco DC-10 Ibiza (20 July 2026)" },
+    "rihanna-global-citizens-festival-2016": { artist: "Rihanna", title: "Global Citizens Festival 2016" },
+    "skrillex-fred-again-four-tet-coachella": { artist: "Skrillex, Fred again.. & Four Tet", title: "Coachella" },
+    "lisa-rockstar-live": { artist: "Lisa", title: "Rockstar Live" },
   };
 
   const programPanel = document.querySelector("[data-program-panel]");
@@ -773,7 +794,7 @@
   async function initialize() {
     document.body.dataset.programGuideState = "loading";
     const [scheduleResponse, catalogueResponse, stationsResponse] = await Promise.all([
-      fetch("broadcast-schedule-v1.json?v=broadcast-schedule-ccf5eddadd7b", {
+      fetch("broadcast-schedule-v1.json?v=broadcast-schedule-46b51fe2facb", {
         cache: "no-store",
         credentials: "same-origin",
         headers: { Accept: "application/json" },

@@ -36,6 +36,7 @@ fi
 "$NODE_BIN" "$ROOT_DIR/tools/check-owner-state-persistence.mjs"
 "$NODE_BIN" "$ROOT_DIR/tools/check-broadcast-clock.mjs"
 "$NODE_BIN" "$ROOT_DIR/tools/check-programme-catalogue-release.mjs"
+"$NODE_BIN" "$ROOT_DIR/tools/check-new-videos-programme-release.mjs"
 "$NODE_BIN" "$ROOT_DIR/tools/check-broadcast-interactions.mjs"
 "$NODE_BIN" "$ROOT_DIR/tools/check-circle-rooms.mjs"
 "$NODE_BIN" "$ROOT_DIR/tools/check-care-worlds.mjs"

@@ -1,5 +1,5 @@
 {
-  "version": "broadcast_schedule_v1.11",
+  "version": "broadcast_schedule_v1.12",
   "stage": "five_music_rooms_live_safety_cushion_ready",
   "epoch_utc": "2026-07-24T00:00:00.000Z",
   "extended_session_format_policy": {
@@ -112,6 +112,10 @@
           "duration_seconds": 307.9
         },
         {
+          "track_id": "lisa-rockstar-live",
+          "duration_seconds": 197.9
+        },
+        {
           "track_id": "pinkpantheress-illegal-glastonbury-2025",
           "duration_seconds": 141.1
         },
@@ -160,8 +164,24 @@
           "duration_seconds": 260.39
         },
         {
-          "track_id": "charli-xcx-house-john-cale",
-          "duration_seconds": 196
+          "track_id": "the-cranberries-zombie",
+          "duration_seconds": 307.1
+        },
+        {
+          "track_id": "soundgarden-black-hole-sun",
+          "duration_seconds": 320
+        },
+        {
+          "track_id": "nirvana-smells-like-teen-spirit",
+          "duration_seconds": 278.3
+        },
+        {
+          "track_id": "rage-against-the-machine-killing-in-the-name-live-1993",
+          "duration_seconds": 330.6
+        },
+        {
+          "track_id": "linkin-park-in-the-end",
+          "duration_seconds": 218.2
         },
         {
           "track_id": "linkin-park-numb-official",
@@ -172,8 +192,24 @@
           "duration_seconds": 192.098
         },
         {
+          "track_id": "evanescence-bring-me-to-life",
+          "duration_seconds": 253.8
+        },
+        {
+          "track_id": "charli-xcx-house-john-cale",
+          "duration_seconds": 196
+        },
+        {
+          "track_id": "justice-generator-accor-arena-2024",
+          "duration_seconds": 485.1
+        },
+        {
           "track_id": "nine-inch-noize-closer-coachella-2026-live",
           "duration_seconds": 344.29
+        },
+        {
+          "track_id": "eminem-lose-yourself",
+          "duration_seconds": 327.4
         }
       ]
     },
@@ -284,8 +320,48 @@
       "description": "Ambient · sleep · sunrise",
       "schedule": [
         {
+          "track_id": "caroline-chase-ambient-techno-soft-rave-energy",
+          "duration_seconds": 3866.9
+        },
+        {
           "track_id": "max-richter-cercle-odyssey-paris",
           "duration_seconds": 3729.19
+        },
+        {
+          "track_id": "caroline-chase-ambient-techno-zen-out",
+          "duration_seconds": 3820.6
+        },
+        {
+          "track_id": "olafur-arnalds-hafursey-iceland-cercle",
+          "duration_seconds": 5242.2
+        },
+        {
+          "track_id": "caroline-chase-cosy-ambient-techno-fireplace",
+          "duration_seconds": 4248.7
+        },
+        {
+          "track_id": "max-richter-cercle-odyssey-paris",
+          "duration_seconds": 3729.19
+        },
+        {
+          "track_id": "caroline-chase-dreamy-ambient-techno-garden",
+          "duration_seconds": 3591.7
+        },
+        {
+          "track_id": "olafur-arnalds-hafursey-iceland-cercle",
+          "duration_seconds": 5242.2
+        },
+        {
+          "track_id": "caroline-chase-warm-cosmic-dub-techno",
+          "duration_seconds": 3397.5
+        },
+        {
+          "track_id": "max-richter-cercle-odyssey-paris",
+          "duration_seconds": 3729.19
+        },
+        {
+          "track_id": "caroline-chase-zen-mode-electronica-clarity",
+          "duration_seconds": 3762.9
         },
         {
           "track_id": "olafur-arnalds-hafursey-iceland-cercle",
@@ -306,6 +382,10 @@
         {
           "track_id": "sasha-ibiza-boat-at-sunset-freqways",
           "duration_seconds": 5273.194
+        },
+        {
+          "track_id": "sasha-renaissance-engage-2020",
+          "duration_seconds": 7766
         },
         {
           "track_id": "ben-bohmer-cappadocia-cercle",
@@ -397,8 +477,8 @@
           "global_week_position": 12
         },
         {
-          "track_id": "anfisa-letyago-dj-mag-hq",
-          "duration_seconds": 3628.37,
+          "track_id": "rihanna-global-citizens-festival-2016",
+          "duration_seconds": 4074.5,
           "global_week_pass": 1,
           "global_week_position": 13
         },
@@ -445,8 +525,8 @@
           "global_week_position": 20
         },
         {
-          "track_id": "cassy-sunday-school-miami",
-          "duration_seconds": 2512.52,
+          "track_id": "ricardo-villalobos-circoloco-dc10-ibiza-2026",
+          "duration_seconds": 4583.7,
           "global_week_pass": 1,
           "global_week_position": 21
         },
@@ -493,8 +573,8 @@
           "global_week_position": 1
         },
         {
-          "track_id": "pete-cannon-manchester",
-          "duration_seconds": 10593.78,
+          "track_id": "flume-coachella-2022-live",
+          "duration_seconds": 3673.9,
           "global_week_pass": 2,
           "global_week_position": 2
         },
@@ -667,8 +747,8 @@
           "global_week_position": 3
         },
         {
-          "track_id": "lilly-palmer-dj-mag-hq",
-          "duration_seconds": 3459.98,
+          "track_id": "fred-again-thomas-bangalter-usb002-alexandra-palace-2026",
+          "duration_seconds": 6983,
           "global_week_pass": 3,
           "global_week_position": 4
         },
@@ -775,8 +855,8 @@
           "global_week_position": 21
         },
         {
-          "track_id": "boys-noize-coachella-2026-live",
-          "duration_seconds": 4553.85,
+          "track_id": "skrillex-fred-again-four-tet-coachella",
+          "duration_seconds": 5432.9,
           "global_week_pass": 3,
           "global_week_position": 22
         },
@@ -974,13 +1054,15 @@
         }
       ],
       "global_week_programming": {
-        "strategy": "four_reordered_passes_global_daypart_arc",
+        "strategy": "four_reordered_passes_with_strategic_premieres_global_daypart_arc",
         "anchor_utc": "2026-08-02T14:00:00.000Z",
-        "distinct_programmes": 27,
-        "plays_per_programme": 4,
+        "distinct_programmes": 32,
+        "baseline_plays_per_programme": 4,
+        "strategic_premiere_plays": 1,
+        "rotated_existing_programmes": 5,
         "occurrence_count": 108,
-        "cycle_seconds": 601325.8,
-        "approximate_week_variance_seconds": -3474.1999999999534,
+        "cycle_seconds": 601325.2999999999,
+        "approximate_week_variance_seconds": -3474.70000000007,
         "priority_market": "Australia/Sydney",
         "complementary_markets": [
           "Europe/Madrid",
@@ -1352,13 +1434,34 @@
       "descriptor": "Jarrad Wright multiverse",
       "description": "The Big Lez Show · Mike Nolan · Sassy the Sasquatch · Donny & Clarence",
       "schedule": [
-        { "track_id": "comedy-big-lez-show", "duration_seconds": 17210.52 },
-        { "track_id": "comedy-mike-nolan-show", "duration_seconds": 1620.16 },
-        { "track_id": "comedy-mike-nolans-long-weekend", "duration_seconds": 1764.11 },
-        { "track_id": "comedy-clarence-claymore", "duration_seconds": 960.28 },
-        { "track_id": "comedy-sassy-the-sasquatch", "duration_seconds": 4784.36 },
-        { "track_id": "comedy-donny-clarence-show", "duration_seconds": 2337.92 },
-        { "track_id": "comedy-sassy-behind-the-scenes", "duration_seconds": 611.54 }
+        {
+          "track_id": "comedy-big-lez-show",
+          "duration_seconds": 17210.52
+        },
+        {
+          "track_id": "comedy-mike-nolan-show",
+          "duration_seconds": 1620.16
+        },
+        {
+          "track_id": "comedy-mike-nolans-long-weekend",
+          "duration_seconds": 1764.11
+        },
+        {
+          "track_id": "comedy-clarence-claymore",
+          "duration_seconds": 960.28
+        },
+        {
+          "track_id": "comedy-sassy-the-sasquatch",
+          "duration_seconds": 4784.36
+        },
+        {
+          "track_id": "comedy-donny-clarence-show",
+          "duration_seconds": 2337.92
+        },
+        {
+          "track_id": "comedy-sassy-behind-the-scenes",
+          "duration_seconds": 611.54
+        }
       ]
     }
   ],
