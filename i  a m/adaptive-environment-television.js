@@ -354,6 +354,7 @@
   let fashionHeroGeneration = 0;
   let fashionHeroLastMediaTime = -1;
   let fashionHeroLastBlend = -1;
+  let fashionHeroLastMusicScale = -1;
   let fashionHeroDrawCount = 0;
   let fashionRunwayIndex = 0;
   let fashionRunwaySwitching = false;
@@ -967,6 +968,7 @@
     playerMount.style.setProperty("--adaptive-video-edge-scale", resolvedScale.toFixed(3));
     playerMount.dataset.edgeCropScale = resolvedScale.toFixed(3);
     playerMount.dataset.edgeCropSource = source;
+    if (document.body.classList.contains("television-emdr-gif-active")) drawFashionHeroFrame();
   }
 
   function detectEdgeMatteScale(video) {
@@ -1177,10 +1179,11 @@
     fashionHeroVideoFrameSource = null;
     fashionHeroLastMediaTime = -1;
     fashionHeroLastBlend = -1;
+    fashionHeroLastMusicScale = -1;
     if (fashionHeroFrame) fashionHeroFrame.dataset.fashionHeroMirror = "inactive";
   }
 
-  function drawMediaCover(context, video, targetWidth, targetHeight, alpha = 1) {
+  function drawMediaCover(context, video, targetWidth, targetHeight, alpha = 1, edgeScale = 1) {
     if (!video || video.readyState < HTMLMediaElement.HAVE_CURRENT_DATA || !video.videoWidth || !video.videoHeight) return false;
     const sourceRatio = video.videoWidth / video.videoHeight;
     const targetRatio = targetWidth / targetHeight;
@@ -1194,6 +1197,15 @@
     } else if (sourceRatio < targetRatio) {
       cropHeight = video.videoWidth / targetRatio;
       cropY = (video.videoHeight - cropHeight) / 2;
+    }
+    const resolvedEdgeScale = Math.max(1, Number(edgeScale) || 1);
+    if (resolvedEdgeScale > 1) {
+      const scaledWidth = cropWidth / resolvedEdgeScale;
+      const scaledHeight = cropHeight / resolvedEdgeScale;
+      cropX += (cropWidth - scaledWidth) / 2;
+      cropY += (cropHeight - scaledHeight) / 2;
+      cropWidth = scaledWidth;
+      cropHeight = scaledHeight;
     }
     context.globalAlpha = Math.max(0, Math.min(1, Number(alpha) || 0));
     context.drawImage(video, cropX, cropY, cropWidth, cropHeight, 0, 0, targetWidth, targetHeight);
@@ -1210,11 +1222,17 @@
     const pixelRatio = Math.min(1.5, Math.max(1, window.devicePixelRatio || 1));
     const targetWidth = Math.max(1, Math.round(frameWidth * pixelRatio));
     const targetHeight = Math.max(1, Math.round(frameHeight * pixelRatio));
+    const musicEdgeScale = clamp(
+      Number(playerMount?.dataset.edgeCropScale || baseEdgeScale()),
+      1,
+      MAX_DETECTED_EDGE_SCALE
+    );
     const needsResize = fashionHeroCanvas.width !== targetWidth || fashionHeroCanvas.height !== targetHeight;
     if (
       !needsResize &&
       Math.abs(Number(mediaTime) - fashionHeroLastMediaTime) < 0.0005 &&
-      Math.abs(requestedVideoBlend - fashionHeroLastBlend) < 0.001
+      Math.abs(requestedVideoBlend - fashionHeroLastBlend) < 0.001 &&
+      Math.abs(musicEdgeScale - fashionHeroLastMusicScale) < 0.0005
     ) return;
     if (needsResize) {
       fashionHeroCanvas.width = targetWidth;
@@ -1225,7 +1243,7 @@
       fashionHeroContext.globalAlpha = 1;
       fashionHeroContext.fillStyle = "#000";
       fashionHeroContext.fillRect(0, 0, targetWidth, targetHeight);
-      const musicDrawn = requestedVideoBlend > 0 && drawMediaCover(fashionHeroContext, localVideo, targetWidth, targetHeight, 1);
+      const musicDrawn = requestedVideoBlend > 0 && drawMediaCover(fashionHeroContext, localVideo, targetWidth, targetHeight, 1, musicEdgeScale);
       const fashionDrawn = requestedVideoBlend < 100 && drawMediaCover(
         fashionHeroContext,
         fashionVideo,
@@ -1236,9 +1254,12 @@
       if (!musicDrawn && !fashionDrawn) return;
       fashionHeroLastMediaTime = Number(mediaTime);
       fashionHeroLastBlend = requestedVideoBlend;
+      fashionHeroLastMusicScale = musicEdgeScale;
       fashionHeroDrawCount += 1;
       fashionHeroFrame.dataset.fashionHeroMirror = "ready";
       fashionHeroFrame.dataset.emdrGifMusicAmount = requestedVideoBlend.toFixed(0);
+      fashionHeroFrame.dataset.emdrGifMusicEdgeScale = musicEdgeScale.toFixed(3);
+      fashionHeroFrame.dataset.emdrGifMusicEdgeSource = playerMount.dataset.edgeCropSource || "baseline";
       fashionHeroFrame.dataset.fashionHeroPixelRatio = pixelRatio.toFixed(2);
       fashionHeroFrame.dataset.fashionHeroDrawCount = String(fashionHeroDrawCount);
       fashionHeroFrame.dataset.fashionHeroMediaTime = fashionHeroLastMediaTime.toFixed(3);
