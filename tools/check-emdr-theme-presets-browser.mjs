@@ -123,7 +123,7 @@ async function runViewport(viewport) {
   const snapshots = [];
   for (const preset of [
     { index: 0, key: "cb", label: "CB", controlsView: "gif", tileVideos: 0, tileImages: 6 },
-    { index: 1, key: "m8", label: "M8", controlsView: "gif", tileVideos: 0, tileImages: 33 },
+    { index: 1, key: "m8", label: "M8", controlsView: "gif", tileVideos: 0, tileImages: 39 },
     { index: 2, key: "jbh", label: "JBH", controlsView: "gif", tileVideos: 4, tileImages: 2 },
     { index: 3, key: "stella", label: "Stella", controlsView: "stellar", tileVideos: 0, tileImages: 0 },
   ]) {
@@ -178,6 +178,7 @@ async function runViewport(viewport) {
         const currentPageElement = pages[currentPage];
         const currentPageRect = currentPageElement.getBoundingClientRect();
         const currentTiles = [...currentPageElement.querySelectorAll("[data-emdr-gif-tile]")];
+        const currentTileRects = currentTiles.map(rect);
         const currentTileBounds = union(currentTiles);
         const visiblePageIndexes = pageRects.flatMap((bounds, index) => (
           Math.min(bounds.bottom, panelRect.bottom) - Math.max(bounds.top, panelRect.top) > 1 ? [index] : []
@@ -196,6 +197,8 @@ async function runViewport(viewport) {
           pageHeights: pageRects.map((bounds) => bounds.height),
           tileCounts: pages.map((item) => item.querySelectorAll("[data-emdr-gif-tile]").length),
           currentPage,
+          currentSources: currentTiles.map((tile) => tile.dataset.src),
+          currentTileSquareDeltas: currentTileRects.map((bounds) => Math.abs(bounds.width - bounds.height)),
           visiblePageIndexes,
           visibleTileCount,
           centered: {
@@ -224,28 +227,38 @@ async function runViewport(viewport) {
       const after = await inspectM8();
       await page.evaluate(() => {
         const panel = document.querySelector('.adaptive-television-emdr-gif-grid[data-emdr-gif-preset="m8"]');
-        panel.scrollTop = panel.clientHeight * 5;
+        panel.scrollTop = panel.clientHeight * 6;
       });
       await page.waitForFunction(() => {
         const panel = document.querySelector('.adaptive-television-emdr-gif-grid[data-emdr-gif-preset="m8"]');
-        return Math.abs(panel.scrollTop - (panel.clientHeight * 5)) < 2;
+        return Math.abs(panel.scrollTop - (panel.clientHeight * 6)) < 2;
       }, null, { timeout: 10000 });
       const finalPage = await inspectM8();
       scrollEvidence = { before, after, finalPage };
-      assert.equal(before.pageCount, 6, JSON.stringify(scrollEvidence));
-      assert.deepEqual(before.tileCounts, [6, 6, 6, 6, 6, 3], JSON.stringify(scrollEvidence));
-      assert.ok(Math.abs(before.scrollHeight - (before.clientHeight * 6)) < 2, JSON.stringify(scrollEvidence));
+      assert.equal(before.pageCount, 7, JSON.stringify(scrollEvidence));
+      assert.deepEqual(before.tileCounts, [6, 6, 6, 6, 6, 6, 3], JSON.stringify(scrollEvidence));
+      assert.ok(Math.abs(before.scrollHeight - (before.clientHeight * 7)) < 2, JSON.stringify(scrollEvidence));
       assert.ok(before.pageHeights.every((height) => Math.abs(height - before.clientHeight) < 2), JSON.stringify(scrollEvidence));
       assert.deepEqual(before.visiblePageIndexes, [0], JSON.stringify(scrollEvidence));
       assert.equal(before.visibleTileCount, 6, JSON.stringify(scrollEvidence));
+      assert.deepEqual(before.currentSources, [
+        "a s s e t s/a n i m a t e d [ g i f s ]/m 8 - e m d r  g i f  - s l i d e  1/1.gif",
+        "a s s e t s/a n i m a t e d [ g i f s ]/m 8 - e m d r  g i f  - s l i d e  1/2.gif",
+        "a s s e t s/a n i m a t e d [ g i f s ]/m 8 - e m d r  g i f  - s l i d e  1/3.gif",
+        "a s s e t s/a n i m a t e d [ g i f s ]/m 8 - e m d r  g i f  - s l i d e  1/4.gif",
+        "a s s e t s/a n i m a t e d [ g i f s ]/m 8 - e m d r  g i f  - s l i d e  1/5.gif",
+        "a s s e t s/a n i m a t e d [ g i f s ]/m 8 - e m d r  g i f  - s l i d e  1/6.gif",
+      ], JSON.stringify(scrollEvidence));
+      assert.ok(before.currentTileSquareDeltas.every((delta) => delta < 1), JSON.stringify(scrollEvidence));
       assert.ok(before.centered.verticalDelta < 2 && before.centered.horizontalDelta < 2, JSON.stringify(scrollEvidence));
       assert.equal(after.currentPage, 1, JSON.stringify(scrollEvidence));
       assert.deepEqual(after.visiblePageIndexes, [1], JSON.stringify(scrollEvidence));
       assert.equal(after.visibleTileCount, 6, JSON.stringify(scrollEvidence));
       assert.ok(after.centered.verticalDelta < 2 && after.centered.horizontalDelta < 2, JSON.stringify(scrollEvidence));
-      assert.equal(finalPage.currentPage, 5, JSON.stringify(scrollEvidence));
-      assert.deepEqual(finalPage.visiblePageIndexes, [5], JSON.stringify(scrollEvidence));
+      assert.equal(finalPage.currentPage, 6, JSON.stringify(scrollEvidence));
+      assert.deepEqual(finalPage.visiblePageIndexes, [6], JSON.stringify(scrollEvidence));
       assert.equal(finalPage.visibleTileCount, 3, JSON.stringify(scrollEvidence));
+      assert.ok(finalPage.currentTileSquareDeltas.every((delta) => delta < 1), JSON.stringify(scrollEvidence));
       assert.ok(finalPage.centered.verticalDelta < 2 && finalPage.centered.horizontalDelta < 2, JSON.stringify(scrollEvidence));
       assert.deepEqual(finalPage.boxed, {
         visible: true,
@@ -306,10 +319,11 @@ async function runViewport(viewport) {
   const presetDescriptions = await page.$$eval("[data-emdr-style]", (buttons) => buttons.map((button) => button.dataset.emdrTooltip));
   assert.deepEqual(presetDescriptions, [
     "Champagne Bohemia — Xaviera Lopez’s animated GIF experience.",
-    "modul8 infinity — Rave animated GIF experience.",
+    "modul8 infinity — Hexeosis animated GIF experience.",
     "James Bondage Health — Bordelle animated GIF experience.",
     "Stella geometric experience.",
   ]);
+  assert.equal(presetDescriptions.some((description) => /Rave animated GIF experience/i.test(description)), false);
   assert.equal(presetDescriptions.some((description) => description.includes("video experience")), false);
   const safety = await page.evaluate(() => ({ ...window.__iamThemeSafety }));
   assert.equal(safety.fullscreenCalls, 0);
@@ -331,12 +345,21 @@ try {
   const librarySnapshot = await libraryPage.evaluate(() => ({
     figures: document.querySelectorAll("figure").length,
     leadSet: document.querySelectorAll('figure[data-current-m8="true"]').length,
+    leadSources: [...document.querySelectorAll('figure[data-current-m8="true"] img')].map((image) => image.getAttribute("src")),
     title: document.querySelector("h1")?.textContent.trim(),
     horizontalOverflow: document.documentElement.scrollWidth > window.innerWidth,
   }));
   assert.deepEqual(librarySnapshot, {
-    figures: 33,
+    figures: 39,
     leadSet: 6,
+    leadSources: [
+      "a s s e t s/a n i m a t e d [ g i f s ]/m 8 - e m d r  g i f  - s l i d e  1/1.gif",
+      "a s s e t s/a n i m a t e d [ g i f s ]/m 8 - e m d r  g i f  - s l i d e  1/2.gif",
+      "a s s e t s/a n i m a t e d [ g i f s ]/m 8 - e m d r  g i f  - s l i d e  1/3.gif",
+      "a s s e t s/a n i m a t e d [ g i f s ]/m 8 - e m d r  g i f  - s l i d e  1/4.gif",
+      "a s s e t s/a n i m a t e d [ g i f s ]/m 8 - e m d r  g i f  - s l i d e  1/5.gif",
+      "a s s e t s/a n i m a t e d [ g i f s ]/m 8 - e m d r  g i f  - s l i d e  1/6.gif",
+    ],
     title: "GIF source library",
     horizontalOverflow: false,
   });
