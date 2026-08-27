@@ -34,9 +34,12 @@
       "title": "The Midnight Gospel trailer",
       "source_type": "separate_uploaded_asset_and_official_title_page",
       "url": "https://www.netflix.com/title/80987903",
+      "companion_source": "https://media.netflix.com/en/only-on-netflix/80987903",
       "cloudflare_uid": "34acf7465e8ca30e8d7e2e4d39ca9f67",
       "duration_seconds": 144.34,
       "associated_creator": "Duncan Trussell",
+      "series_creators": ["Pendleton Ward", "Duncan Trussell"],
+      "animation_studio": "Titmouse",
       "current_comedy_wheel": false,
       "verified": true,
       "coverage_note": "Do not call Netflix the creator or describe this asset as a Comedy opener, loop, interstitial or current live-wheel programme."

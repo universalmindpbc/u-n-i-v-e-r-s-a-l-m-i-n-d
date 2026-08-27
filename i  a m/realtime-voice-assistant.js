@@ -167,7 +167,7 @@
     if (qaScenario === "comedy-programming") {
       return {
         microphone: false,
-        qaPrompt: "Describe the current Comedy channel as a shared linear Jarrad Wright wheel. Name all seven programme groups in exact order, include the internal order of The Mike Nolan Show and The Donny & Clarence Show, and keep Jarrad's spelling correct. Then explain exactly how the separately uploaded Midnight Gospel trailer relates to the live wheel and Wright's universe. Do not call Netflix the creator.",
+        qaPrompt: "Describe the current Comedy channel as a shared linear Jarrad Wright wheel. Name all seven programme groups in exact order, include the internal order of The Mike Nolan Show and The Donny & Clarence Show, and keep Jarrad's spelling correct. Then give The Midnight Gospel's premise and creators and explain exactly how its separately uploaded trailer relates to the live wheel and Wright's universe. Do not call Netflix the creator.",
       };
     }
     if (qaScenario === "sex-ed") {

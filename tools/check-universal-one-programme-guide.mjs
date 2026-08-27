@@ -61,6 +61,7 @@ assert.deepEqual(Array.from(comedyProgrammes[1].segments, (segment) => segment.t
 assert.deepEqual(Array.from(comedyProgrammes[5].segments, (segment) => segment.title), ["Prankz", "Thunda", "Put Em Up", "Fore", "Grit Mailman", "Sugar Glider"]);
 assert.doesNotMatch(programmeCatalogueSource, /midnight-gospel/i);
 assert.match(guide, /The Midnight Gospel trailer” is a separately uploaded/);
+assert.match(guide, /series was created by Pendleton Ward and Duncan Trussell and animated by Titmouse/);
 assert.match(guide, /deliberately not in the current Comedy live wheel/);
 assert.match(guide, /Netflix is the distributor\/platform named by the official trailer source, not the creator/);
 
