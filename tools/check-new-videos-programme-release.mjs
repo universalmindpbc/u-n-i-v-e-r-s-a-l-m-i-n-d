@@ -31,12 +31,12 @@ const channel = (id) => schedule.channels.find((candidate) => candidate.id === i
 
 const newIds = [
   "sasha-renaissance-engage-2020",
-  "caroline-chase-ambient-techno-soft-rave-energy",
-  "caroline-chase-ambient-techno-zen-out",
-  "caroline-chase-cosy-ambient-techno-fireplace",
-  "caroline-chase-dreamy-ambient-techno-garden",
-  "caroline-chase-warm-cosmic-dub-techno",
-  "caroline-chase-zen-mode-electronica-clarity",
+  "caroline-chang-ambient-techno-soft-rave-energy",
+  "caroline-chang-ambient-techno-zen-out",
+  "caroline-chang-cosy-ambient-techno-fireplace",
+  "caroline-chang-dreamy-ambient-techno-garden",
+  "caroline-chang-warm-cosmic-dub-techno",
+  "caroline-chang-zen-mode-electronica-clarity",
   "the-cranberries-zombie",
   "soundgarden-black-hole-sun",
   "rage-against-the-machine-killing-in-the-name-live-1993",
@@ -72,6 +72,38 @@ for (const id of newIds) {
   assert.match(guideSource, new RegExp(`${JSON.stringify(id).replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}:`));
 }
 
+const technoLlamaTitles = new Map([
+  ["caroline-chang-ambient-techno-soft-rave-energy", "Ambient Techno And Soft Rave Energy"],
+  ["caroline-chang-ambient-techno-zen-out", "Ambient Techno To Zen Out To"],
+  ["caroline-chang-cosy-ambient-techno-fireplace", "Cosy Ambient Techno By My Fireplace"],
+  ["caroline-chang-dreamy-ambient-techno-garden", "Dreamy Ambient Techno In My Garden"],
+  ["caroline-chang-warm-cosmic-dub-techno", "Warm Cosmic Dub Techno & Electronica To Remind You Everything Is Going To Be OK"],
+  ["caroline-chang-zen-mode-electronica-clarity", "Zen Mode Electronica Mix For Clarity"],
+]);
+for (const [id, title] of technoLlamaTitles) {
+  const record = manifest.files[id];
+  const track = tracks.find((candidate) => candidate.id === id);
+  assert.deepEqual([record.publicArtist, record.publicTitle], ["Caroline Chang (Techno Llama)", title]);
+  assert.deepEqual([track.artist, track.title, track.displayTitle], ["Caroline Chang (Techno Llama)", title, title]);
+  assert.ok(guideSource.includes(`${JSON.stringify(id)}: { artist: "Caroline Chang (Techno Llama)", title: ${JSON.stringify(title)} }`));
+}
+const rejectedBrandingPattern = new RegExp([
+  ["Caroline", "Chase"].join(" "),
+  ["The", "Techno", "Llama"].join(" "),
+  ["caroline", "chase"].join("-"),
+].join("|"));
+for (const name of [
+  "cloudflare-stream-new-videos-20260827-manifest.json",
+  "i  a m/broadcast-schedule-v1.json",
+  "i  a m/music-track-catalogue-v1.js",
+  "i  a m/programme-guide.js",
+  "tools/apply-new-videos-programme-release.mjs",
+  "tools/check-broadcast-clock.mjs",
+  "tools/check-new-videos-programme-release.mjs",
+]) {
+  assert.doesNotMatch(fs.readFileSync(path.join(root, name), "utf8"), rejectedBrandingPattern, `${name} retains rejected Caroline branding`);
+}
+
 assert.equal(schedule.version, "broadcast_schedule_v1.12");
 assert.deepEqual(channel("party-champagne-bohemia").schedule.map(({ track_id }) => track_id), [
   "sasha-ibiza-boat-at-sunset-freqways",
@@ -79,17 +111,17 @@ assert.deepEqual(channel("party-champagne-bohemia").schedule.map(({ track_id }) 
   "ben-bohmer-cappadocia-cercle",
 ]);
 assert.deepEqual(channel("party-inner-planes").schedule.map(({ track_id }) => track_id), [
-  "caroline-chase-ambient-techno-soft-rave-energy",
+  "caroline-chang-ambient-techno-soft-rave-energy",
   "max-richter-cercle-odyssey-paris",
-  "caroline-chase-ambient-techno-zen-out",
+  "caroline-chang-ambient-techno-zen-out",
   "olafur-arnalds-hafursey-iceland-cercle",
-  "caroline-chase-cosy-ambient-techno-fireplace",
+  "caroline-chang-cosy-ambient-techno-fireplace",
   "max-richter-cercle-odyssey-paris",
-  "caroline-chase-dreamy-ambient-techno-garden",
+  "caroline-chang-dreamy-ambient-techno-garden",
   "olafur-arnalds-hafursey-iceland-cercle",
-  "caroline-chase-warm-cosmic-dub-techno",
+  "caroline-chang-warm-cosmic-dub-techno",
   "max-richter-cercle-odyssey-paris",
-  "caroline-chase-zen-mode-electronica-clarity",
+  "caroline-chang-zen-mode-electronica-clarity",
   "olafur-arnalds-hafursey-iceland-cercle",
 ]);
 assert.deepEqual(channel("video-james-bondage").schedule.map(({ track_id }) => track_id), [

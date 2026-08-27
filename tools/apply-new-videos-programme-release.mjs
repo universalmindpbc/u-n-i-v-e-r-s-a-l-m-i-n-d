@@ -12,12 +12,12 @@ const sha12 = (value) => crypto.createHash("sha256").update(value).digest("hex")
 
 const definitions = [
   { id: "sasha-renaissance-engage-2020", artist: "Sasha", title: "Renaissance Engage (10 May 2020)", room: "champagne-bohemia", presentation: "live_dj_set", relativePath: "c h a m p a g n e  b o h e m i a  -  p a r t i e s/Sasha - Live @ Renaissance Engage [10.05.2020].mp4" },
-  { id: "caroline-chase-ambient-techno-soft-rave-energy", artist: "Caroline Chase (The Techno Llama)", title: "Ambient Techno and Soft Rave Energy", room: "inner-planes", presentation: "live_dj_set", relativePath: "i n n e r  p l a n e s  -  p a r t i e s/Ambient Techno And Soft Rave Energy.mp4" },
-  { id: "caroline-chase-ambient-techno-zen-out", artist: "Caroline Chase (The Techno Llama)", title: "Ambient Techno to Zen Out To", room: "inner-planes", presentation: "live_dj_set", relativePath: "i n n e r  p l a n e s  -  p a r t i e s/Ambient Techno To Zen Out To.mp4" },
-  { id: "caroline-chase-cosy-ambient-techno-fireplace", artist: "Caroline Chase (The Techno Llama)", title: "Cosy Ambient Techno by My Fireplace", room: "inner-planes", presentation: "live_dj_set", relativePath: "i n n e r  p l a n e s  -  p a r t i e s/Cosy Ambient Techno By My Fireplace.mp4" },
-  { id: "caroline-chase-dreamy-ambient-techno-garden", artist: "Caroline Chase (The Techno Llama)", title: "Dreamy Ambient Techno in My Garden", room: "inner-planes", presentation: "live_dj_set", relativePath: "i n n e r  p l a n e s  -  p a r t i e s/Dreamy Ambient Techno In My Garden.mp4" },
-  { id: "caroline-chase-warm-cosmic-dub-techno", artist: "Caroline Chase (The Techno Llama)", title: "Warm Cosmic Dub Techno & Electronica to Remind You Everything Is Going to Be OK", room: "inner-planes", presentation: "live_dj_set", relativePath: "i n n e r  p l a n e s  -  p a r t i e s/Warm Cosmic Dub Techno & Electronica To Remind You Everything Is Going To Be OK.mp4" },
-  { id: "caroline-chase-zen-mode-electronica-clarity", artist: "Caroline Chase (The Techno Llama)", title: "Zen Mode Electronica Mix for Clarity", room: "inner-planes", presentation: "live_dj_set", relativePath: "i n n e r  p l a n e s  -  p a r t i e s/Zen Mode Electronica Mix For Clarity.mp4" },
+  { id: "caroline-chang-ambient-techno-soft-rave-energy", artist: "Caroline Chang (Techno Llama)", title: "Ambient Techno And Soft Rave Energy", room: "inner-planes", presentation: "live_dj_set", relativePath: "i n n e r  p l a n e s  -  p a r t i e s/Ambient Techno And Soft Rave Energy.mp4" },
+  { id: "caroline-chang-ambient-techno-zen-out", artist: "Caroline Chang (Techno Llama)", title: "Ambient Techno To Zen Out To", room: "inner-planes", presentation: "live_dj_set", relativePath: "i n n e r  p l a n e s  -  p a r t i e s/Ambient Techno To Zen Out To.mp4" },
+  { id: "caroline-chang-cosy-ambient-techno-fireplace", artist: "Caroline Chang (Techno Llama)", title: "Cosy Ambient Techno By My Fireplace", room: "inner-planes", presentation: "live_dj_set", relativePath: "i n n e r  p l a n e s  -  p a r t i e s/Cosy Ambient Techno By My Fireplace.mp4" },
+  { id: "caroline-chang-dreamy-ambient-techno-garden", artist: "Caroline Chang (Techno Llama)", title: "Dreamy Ambient Techno In My Garden", room: "inner-planes", presentation: "live_dj_set", relativePath: "i n n e r  p l a n e s  -  p a r t i e s/Dreamy Ambient Techno In My Garden.mp4" },
+  { id: "caroline-chang-warm-cosmic-dub-techno", artist: "Caroline Chang (Techno Llama)", title: "Warm Cosmic Dub Techno & Electronica To Remind You Everything Is Going To Be OK", room: "inner-planes", presentation: "live_dj_set", relativePath: "i n n e r  p l a n e s  -  p a r t i e s/Warm Cosmic Dub Techno & Electronica To Remind You Everything Is Going To Be OK.mp4" },
+  { id: "caroline-chang-zen-mode-electronica-clarity", artist: "Caroline Chang (Techno Llama)", title: "Zen Mode Electronica Mix For Clarity", room: "inner-planes", presentation: "live_dj_set", relativePath: "i n n e r  p l a n e s  -  p a r t i e s/Zen Mode Electronica Mix For Clarity.mp4" },
   { id: "the-cranberries-zombie", artist: "The Cranberries", title: "Zombie", room: "james-bondage", relativePath: "j a m e s  b o n d a g e  -  v i d e o s/The Cranberries - Zombie.mp4" },
   { id: "soundgarden-black-hole-sun", artist: "Soundgarden", title: "Black Hole Sun", room: "james-bondage", relativePath: "j a m e s  b o n d a g e  -  v i d e o s/Soundgarden - Black Hole Sun.mp4" },
   { id: "rage-against-the-machine-killing-in-the-name-live-1993", artist: "Rage Against the Machine", title: "Killing in the Name (Live, 1993)", room: "james-bondage", relativePath: "j a m e s  b o n d a g e  -  v i d e o s/Rage Against The Machine - Killing In The Name (Live, 1993).mp4" },
@@ -106,17 +106,17 @@ const duration = (id) => Number(records.get(id)?.duration || oldDuration.get(id)
 const entry = (trackId) => ({ track_id: trackId, duration_seconds: duration(trackId) });
 
 channel("party-inner-planes").schedule = [
-  entry("caroline-chase-ambient-techno-soft-rave-energy"),
+  entry("caroline-chang-ambient-techno-soft-rave-energy"),
   entry("max-richter-cercle-odyssey-paris"),
-  entry("caroline-chase-ambient-techno-zen-out"),
+  entry("caroline-chang-ambient-techno-zen-out"),
   entry("olafur-arnalds-hafursey-iceland-cercle"),
-  entry("caroline-chase-cosy-ambient-techno-fireplace"),
+  entry("caroline-chang-cosy-ambient-techno-fireplace"),
   entry("max-richter-cercle-odyssey-paris"),
-  entry("caroline-chase-dreamy-ambient-techno-garden"),
+  entry("caroline-chang-dreamy-ambient-techno-garden"),
   entry("olafur-arnalds-hafursey-iceland-cercle"),
-  entry("caroline-chase-warm-cosmic-dub-techno"),
+  entry("caroline-chang-warm-cosmic-dub-techno"),
   entry("max-richter-cercle-odyssey-paris"),
-  entry("caroline-chase-zen-mode-electronica-clarity"),
+  entry("caroline-chang-zen-mode-electronica-clarity"),
   entry("olafur-arnalds-hafursey-iceland-cercle"),
 ];
 channel("party-champagne-bohemia").schedule = [
