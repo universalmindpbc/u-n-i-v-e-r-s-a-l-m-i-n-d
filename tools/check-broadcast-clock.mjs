@@ -407,19 +407,21 @@ assert.match(controller, /synchronizeBroadcastMedia\(radioVisualVideo, targetSec
 assert.match(controller, /radioIsActiveProgramme \? "radio-visual" : "music"/, "The crossfader right endpoint must remain the Radio visual while Radio is playing.");
 assert.match(controller, /revealMinimumSeconds:\s*RADIO_FASHION_REVEAL_BUFFER_SECONDS/, "Shared Radio must begin its Fashion picture before the station safety buffer.");
 assert.match(controller, /audio_party_visual_pair/, "James Bondage audio-led parties must pair with the Fashion broadcast clock.");
-assert.match(controller, /startAudioLedParty/, "The Zip and Sammy D mixes must use the audio-led party player.");
+assert.match(controller, /startAudioLedParty/, "Scheduled James Bondage mixes must use the audio-led party player.");
 const joinBroadcastSource = controller.slice(
   controller.indexOf("async function joinBroadcastChannel"),
   controller.indexOf("async function switchMusicTrack")
 );
 assert.ok(
-  joinBroadcastSource.indexOf("joinFashionBroadcastChannel(state.visualChannelId") < joinBroadcastSource.indexOf("startAudioLedParty(scheduledTrack"),
-  "James Bondage must activate its synchronized Mugler or Wolford visual before awaiting Zip audio startup."
+  joinBroadcastSource.indexOf("const visualStartupPromise = sexEdOwnsVisuals") < joinBroadcastSource.indexOf("startAudioLedParty(scheduledTrack") &&
+    joinBroadcastSource.includes("visualStartupPromise,"),
+  "James Bondage must prepare its scheduled audio concurrently with the synchronized visual."
 );
 assert.match(controller, /RADIO_HLS_LIBRARY_LOAD_TIMEOUT_MS = 6000/, "HLS library loading must have an explicit bounded failure.");
-assert.match(controller, /AUDIO_PARTY_START_TIMEOUT_MS = 18000/, "Audio-led James Bondage startup must settle inside the 30-second release gate.");
+assert.match(controller, /AUDIO_PARTY_START_TIMEOUT_MS = 60000/, "Audio-led James Bondage startup must have enough time to build its full reveal buffer.");
+assert.match(controller, /AUDIO_PARTY_MAX_START_ATTEMPTS = 2/, "A recoverable scheduled mix failure must receive one immediate retry.");
 assert.match(controller, /Promise\.race\(\[startup, timedOut\]\)/, "Audio-led party startup must not continue blocking after its deadline.");
-assert.match(controller, /audioPartyPlaybackState = "unavailable"[\s\S]*audioPartyRecovery = sexEdProgramme \? "reopen_sex_ed_episode" : "select_james_bondage_again"/, "A failed Zip startup must expose the correct retryable unavailable state for public Parties or private Sex Ed.");
+assert.match(controller, /audioPartyPlaybackState = "unavailable"[\s\S]*audioPartyRecovery = sexEdProgramme \? "reopen_sex_ed_episode" : "select_james_bondage_again"/, "An exhausted scheduled mix must expose the correct recovery state for public Parties or private Sex Ed.");
 assert.match(controller, /fashionBroadcastBlockRemainingSeconds/, "Fashion playback must remain locked to its 15-minute shared block.");
 assert.match(controller, /musicShelfRecommendationIds/, "The recommended channel must be stored independently from fixed shelf order.");
 assert.match(index, /data-broadcast-join>join the broadcast</);

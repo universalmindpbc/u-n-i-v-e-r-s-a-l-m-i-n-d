@@ -307,6 +307,7 @@
   let broadcastSyncTimer = 0;
   let broadcastJoinSequence = 0;
   let audioPartyStartSequence = 0;
+  let activeAudioPartyStart = null;
   let musicContinuationSequence = 0;
   let musicSwitching = false;
   let channelLoadingOverlay = null;
@@ -460,7 +461,10 @@
   const RADIO_READY_BUFFER_SECONDS = 24;
   const RADIO_LOW_BUFFER_SECONDS = 12;
   const RADIO_BUFFER_WAIT_MS = 12000;
-  const AUDIO_PARTY_START_TIMEOUT_MS = 18000;
+  const AUDIO_PARTY_START_TIMEOUT_MS = 60000;
+  const AUDIO_PARTY_MIN_START_TIMEOUT_MS = 12000;
+  const AUDIO_PARTY_MAX_START_ATTEMPTS = 2;
+  const AUDIO_PARTY_RETRY_DELAY_MS = 650;
   const SEX_ED_AUDIO_PARTY_START_TIMEOUT_MS = 30000;
   const RADIO_LIVE_SYNC_SEGMENTS = 4;
   const RADIO_MAX_LIVE_LATENCY_SEGMENTS = 5;
@@ -481,6 +485,7 @@
   let continuationAudioSource = "";
   let radioHlsLibraryPromise = null;
   const recordedProgrammeAudioRenditions = new Map();
+  const recordedProgrammeAudioPlaylistPrewarms = new Map();
   let radioHlsAttachSequence = 0;
   let radioPlaybackCleanup = null;
   let radioBufferMonitor = 0;
@@ -4053,6 +4058,67 @@
     return request;
   }
 
+  function prewarmRecordedProgrammeAudioPlaylist(source) {
+    const cached = recordedProgrammeAudioPlaylistPrewarms.get(source);
+    if (cached) return cached;
+    const request = Promise.all([
+      loadRadioHlsLibrary(),
+      loadRecordedProgrammeAudioRendition(source),
+    ]).then(async ([, audioRendition]) => {
+      const controller = new AbortController();
+      const timeout = window.setTimeout(() => controller.abort(), 20000);
+      try {
+        const response = await window.fetch(audioRendition, {
+          cache: "force-cache",
+          credentials: "omit",
+          signal: controller.signal,
+        });
+        if (!response.ok) throw new Error(`Recorded programme audio playlist failed (${response.status}).`);
+        await response.text();
+        return audioRendition;
+      } finally {
+        window.clearTimeout(timeout);
+      }
+    });
+    recordedProgrammeAudioPlaylistPrewarms.set(source, request);
+    request.catch(() => {
+      if (recordedProgrammeAudioPlaylistPrewarms.get(source) === request) {
+        recordedProgrammeAudioPlaylistPrewarms.delete(source);
+      }
+    });
+    return request;
+  }
+
+  async function resolveScheduledAudioPartySource(nextTrack) {
+    if (!nextTrack?.audioOnly) return "";
+    if (!nextTrack.hlsVideoSrc && !window.IAMCloudflareStream && window.IAMStreamReady) {
+      try { await window.IAMStreamReady; } catch {}
+    }
+    const streamAsset = window.IAMCloudflareStream?.assetFor(nextTrack.localVideoSrc);
+    return nextTrack.hlsVideoSrc || streamAsset?.hls || "";
+  }
+
+  async function prewarmScheduledAudioParty(channelId, state, nextTrack) {
+    if (state?.mediaType !== "audio" || !nextTrack?.audioOnly) return false;
+    const identity = [channelId, state.programmeInstanceId, nextTrack.id].filter(Boolean).join(":");
+    document.body.dataset.audioPartyPrewarmState = "starting";
+    document.body.dataset.audioPartyPrewarmIdentity = identity;
+    document.body.dataset.audioPartyPrewarmTrackId = nextTrack.id;
+    try {
+      const source = await resolveScheduledAudioPartySource(nextTrack);
+      if (!source) throw new Error("The scheduled programme stream is not ready yet.");
+      await prewarmRecordedProgrammeAudioPlaylist(source);
+      if (document.body.dataset.audioPartyPrewarmIdentity !== identity) return false;
+      document.body.dataset.audioPartyPrewarmState = "ready";
+      return true;
+    } catch (error) {
+      if (document.body.dataset.audioPartyPrewarmIdentity !== identity) return false;
+      document.body.dataset.audioPartyPrewarmState = "failed";
+      document.body.dataset.audioPartyPrewarmError = String(error?.message || error).slice(0, 140);
+      return false;
+    }
+  }
+
   function parseHlsSegmentUrls(playlist, mediaUrl) {
     const lines = String(playlist || "").split(/\r?\n/);
     return lines
@@ -4501,6 +4567,7 @@
     } catch (error) {
       if (!nativeHlsSupported) throw error;
     }
+    options.assertCurrentStart?.();
     if (attachSequence !== radioHlsAttachSequence || audio !== continuationAudio) return audio;
     if (!Hls?.isSupported?.()) {
       if (!nativeHlsSupported) throw new Error("This browser cannot play the station's HLS stream.");
@@ -4546,6 +4613,8 @@
     let playbackSource = source;
     if (recordedProgramme) {
       playbackSource = await loadRecordedProgrammeAudioRendition(source);
+      options.assertCurrentStart?.();
+      if (attachSequence !== radioHlsAttachSequence || audio !== continuationAudio) return audio;
       document.body.dataset.radioRecordedRendition = "audio_only";
     }
     const hls = new Hls(hlsConfig);
@@ -4587,6 +4656,7 @@
       if (continuationHls === hls) destroyContinuationHls();
       throw error;
     });
+    options.assertCurrentStart?.();
 
     return audio;
   }
@@ -4638,6 +4708,9 @@
     const currentRunway = state?.mediaType === "fashion" ? fashionRunwayForId(state.runwayId) : null;
     const currentMedia = currentTrack || currentStation || currentRunway;
     if (!state || !currentMedia) return false;
+    if (state.mediaType === "audio" && currentTrack?.audioOnly) {
+      prewarmScheduledAudioParty(item.broadcastChannelId, state, currentTrack).catch(() => false);
+    }
     pendingBroadcastChannelId = item.broadcastChannelId;
     pendingBroadcastFormat = state.format;
     if (!broadcastEntry) {
@@ -5245,13 +5318,22 @@
       document.body.dataset.broadcastTrackId = state.trackId;
       delete document.body.dataset.broadcastStationId;
       document.body.dataset.broadcastTargetSeconds = state.offsetSeconds.toFixed(3);
+      const startupExhausted = Boolean(
+        state.programmeInstanceId &&
+        document.body.dataset.audioPartyStartupExhaustedProgrammeInstanceId === state.programmeInstanceId &&
+        document.body.dataset.audioPartyTrackId === scheduledTrack.id
+      );
       if (
         continuationDecision?.track_id !== scheduledTrack.id ||
         !continuationAudio ||
         document.body.dataset.audioPartyPlaybackState === "stopped"
       ) {
+        if (startupExhausted) {
+          document.body.dataset.broadcastCorrection = "audio_startup_exhausted";
+          return state;
+        }
         document.body.dataset.broadcastCorrection = "programme_rollover";
-        if (!musicSwitching) {
+        if (!musicSwitching && !activeAudioPartyStart) {
           const sexEdOwnsVisuals = broadcastChannelId === SEX_ED_BROADCAST_CHANNEL_ID;
           const sexEdLoadingGeneration = sexEdOwnsVisuals ? beginChannelLoading({
             mode: "sex-ed",
@@ -5260,20 +5342,24 @@
             source: "sex_ed_rollover",
             force: true,
           }) : 0;
-          const visualJoined = sexEdOwnsVisuals || await joinFashionBroadcastChannel(state.visualChannelId || "fashion-underground-intensity", {
-            source: "audio_party_visual_pair",
-            pairingSource: `party_${state.editorialId || state.energyId}`,
-          });
-          if (visualJoined) {
-            await startAudioLedParty(scheduledTrack, {
-              source: sexEdOwnsVisuals ? "sex_ed_rollover" : "broadcast_rollover",
-              broadcastChannelId,
-              channelLoadingGeneration: sexEdLoadingGeneration || undefined,
-              visualAlreadyManaged: sexEdOwnsVisuals,
-              readyBufferSeconds: sexEdOwnsVisuals ? SEX_ED_RECORDED_PROGRAMME_READY_BUFFER_SECONDS : undefined,
-              startTimeoutMs: sexEdOwnsVisuals ? SEX_ED_AUDIO_PARTY_START_TIMEOUT_MS : undefined,
+          const visualStartupPromise = sexEdOwnsVisuals
+            ? Promise.resolve(true)
+            : joinFashionBroadcastChannel(state.visualChannelId || "fashion-underground-intensity", {
+              source: "audio_party_visual_pair",
+              pairingSource: `party_${state.editorialId || state.energyId}`,
+            }).then((visualJoined) => {
+              if (!visualJoined) throw new Error("The scheduled party visual is unavailable.");
+              return true;
             });
-          }
+          await startAudioLedParty(scheduledTrack, {
+            source: sexEdOwnsVisuals ? "sex_ed_rollover" : "broadcast_rollover",
+            broadcastChannelId,
+            channelLoadingGeneration: sexEdLoadingGeneration || undefined,
+            visualAlreadyManaged: sexEdOwnsVisuals,
+            visualStartupPromise,
+            readyBufferSeconds: sexEdOwnsVisuals ? SEX_ED_RECORDED_PROGRAMME_READY_BUFFER_SECONDS : undefined,
+            startTimeoutMs: sexEdOwnsVisuals ? SEX_ED_AUDIO_PARTY_START_TIMEOUT_MS : undefined,
+          });
           rankMusicShelves();
         }
         return state;
@@ -5335,6 +5421,7 @@
     if (document.body.classList.contains("television-comedy-active")) {
       await window.IAMComedyChannel?.leaveForNavigation?.();
     }
+    cancelActiveAudioPartyStart("broadcast_channel_changed");
     const joinSequence = ++broadcastJoinSequence;
     const joinSource = String(options.source || "broadcast_join");
     if (!joinSource.startsWith("sex_ed")) {
@@ -5422,25 +5509,24 @@
       if (joinSequence !== broadcastJoinSequence || broadcastChannelId !== channelId) return false;
     } else if (state.mediaType === "audio") {
       const sexEdOwnsVisuals = channelId === SEX_ED_BROADCAST_CHANNEL_ID || options.source === "sex_ed_episode";
-      if (!sexEdOwnsVisuals) {
-        const visualJoined = await joinFashionBroadcastChannel(state.visualChannelId || "fashion-underground-intensity", {
+      const visualStartupPromise = sexEdOwnsVisuals
+        ? Promise.resolve(true)
+        : joinFashionBroadcastChannel(state.visualChannelId || "fashion-underground-intensity", {
           source: "audio_party_visual_pair",
           pairingSource: `party_${state.editorialId || state.energyId}`,
           channelLoadingGeneration: loadingGeneration,
           deferChannelLoadingFinish: true,
+        }).then((visualJoined) => {
+          if (!visualJoined) throw new Error("The scheduled party visual is unavailable.");
+          return true;
         });
-        if (joinSequence !== broadcastJoinSequence || broadcastChannelId !== channelId) return false;
-        if (!visualJoined) {
-          failChannelLoading(loadingGeneration);
-          return false;
-        }
-      }
       const started = await startAudioLedParty(scheduledTrack, {
         source: options.source || "broadcast_join",
         broadcastChannelId: channelId,
         channelLoadingGeneration: loadingGeneration,
         deferChannelLoadingFinish: true,
         visualAlreadyManaged: sexEdOwnsVisuals,
+        visualStartupPromise,
         readyBufferSeconds: sexEdOwnsVisuals ? SEX_ED_RECORDED_PROGRAMME_READY_BUFFER_SECONDS : undefined,
         startTimeoutMs: sexEdOwnsVisuals ? SEX_ED_AUDIO_PARTY_START_TIMEOUT_MS : undefined,
       });
@@ -5599,53 +5685,144 @@
     return true;
   }
 
-  function markAudioLedPartyUnavailable(nextTrack, loadingGeneration, error) {
-    const sexEdProgramme = broadcastChannelId === SEX_ED_BROADCAST_CHANNEL_ID;
+  function setAudioPartyStartupStage(stage, context = activeAudioPartyStart) {
+    document.body.dataset.audioPartyStartupStage = stage;
+    if (!context) return;
+    document.body.dataset.audioPartyStartupAttempt = String(context.attemptNumber || 0);
+    document.body.dataset.audioPartyStartupMaxAttempts = String(context.maximumAttempts || 0);
+    document.body.dataset.audioPartyStartupElapsedMs = String(Math.max(0, Date.now() - context.startedAt));
+    if (context.trackId) document.body.dataset.audioPartyStartupTrackId = context.trackId;
+    if (context.channelId) document.body.dataset.audioPartyStartupChannelId = context.channelId;
+    if (context.programmeInstanceId) {
+      document.body.dataset.audioPartyStartupProgrammeInstanceId = context.programmeInstanceId;
+    }
+  }
+
+  function cancelActiveAudioPartyStart(reason = "superseded") {
+    const context = activeAudioPartyStart;
+    if (!context) return false;
+    context.cancelled = true;
+    context.attemptContext && (context.attemptContext.cancelled = true);
+    audioPartyStartSequence += 1;
+    activeAudioPartyStart = null;
+    musicSwitching = false;
+    stopContinuationAudioImmediately();
+    document.body.dataset.audioPartyStartupCancelReason = reason;
+    setAudioPartyStartupStage("cancelled", context);
+    return true;
+  }
+
+  function markAudioLedPartyUnavailable(nextTrack, loadingGeneration, error, context = activeAudioPartyStart) {
+    const sexEdProgramme = context?.channelId === SEX_ED_BROADCAST_CHANNEL_ID || broadcastChannelId === SEX_ED_BROADCAST_CHANNEL_ID;
     stopContinuationAudioImmediately();
     document.body.classList.remove("television-radio-continuation", "television-audio-party");
     document.body.dataset.audioPartyPlaybackState = "unavailable";
     document.body.dataset.audioPartyStreamSemantics = "recorded_programme";
     document.body.dataset.audioPartyPlaybackError = String(error?.message || error).slice(0, 140);
     document.body.dataset.audioPartyRecovery = sexEdProgramme ? "reopen_sex_ed_episode" : "select_james_bondage_again";
+    if (context?.programmeInstanceId) {
+      document.body.dataset.audioPartyStartupExhaustedProgrammeInstanceId = context.programmeInstanceId;
+    }
+    setAudioPartyStartupStage("unavailable", context);
     failChannelLoading(loadingGeneration);
     const recoveryCopy = sexEdProgramme ? "reopen the sex-ed episode to retry" : "select james bondage to retry";
     showMusicShelfStatus(`${nextTrack.displayArtist || nextTrack.artist} · mix unavailable — ${recoveryCopy}`, 6000);
   }
 
   async function startAudioLedParty(nextTrack, options = {}) {
-    if (!nextTrack?.audioOnly || musicSwitching) return false;
+    if (!nextTrack?.audioOnly) return false;
+    if (activeAudioPartyStart) cancelActiveAudioPartyStart("new_scheduled_programme");
+    if (musicSwitching) return false;
     const startSequence = ++audioPartyStartSequence;
-    let timeout = 0;
-    const startup = startAudioLedPartyAttempt(nextTrack, options, startSequence);
+    const initialState = options.broadcastChannelId
+      ? window.IAMBroadcastClock?.stateAt(options.broadcastChannelId)
+      : null;
+    const maximumAttempts = options.visualAlreadyManaged
+      ? 1
+      : Math.max(1, Number(options.maximumAttempts) || AUDIO_PARTY_MAX_START_ATTEMPTS);
     const startTimeoutMs = Number.isFinite(Number(options.startTimeoutMs))
-      ? Math.max(AUDIO_PARTY_START_TIMEOUT_MS, Number(options.startTimeoutMs))
+      ? Math.max(AUDIO_PARTY_MIN_START_TIMEOUT_MS, Number(options.startTimeoutMs))
       : AUDIO_PARTY_START_TIMEOUT_MS;
-    const timedOut = new Promise((resolve) => {
-      timeout = window.setTimeout(() => {
-        if (startSequence !== audioPartyStartSequence) return;
-        audioPartyStartSequence += 1;
-        musicSwitching = false;
+    const context = {
+      requestSequence: startSequence,
+      attemptNumber: 0,
+      maximumAttempts,
+      startedAt: Date.now(),
+      cancelled: false,
+      trackId: nextTrack.id,
+      channelId: options.broadcastChannelId || "",
+      programmeInstanceId: initialState?.trackId === nextTrack.id ? initialState.programmeInstanceId : "",
+      attemptContext: null,
+    };
+    activeAudioPartyStart = context;
+    delete document.body.dataset.audioPartyStartupCancelReason;
+    delete document.body.dataset.audioPartyStartupExhaustedProgrammeInstanceId;
+    setAudioPartyStartupStage("starting", context);
+    let lastError = null;
+    try {
+      for (let attemptNumber = 1; attemptNumber <= maximumAttempts; attemptNumber += 1) {
+        if (context.cancelled || startSequence !== audioPartyStartSequence) return false;
+        context.attemptNumber = attemptNumber;
+        const attemptContext = {
+          requestSequence: startSequence,
+          attemptNumber,
+          cancelled: false,
+        };
+        context.attemptContext = attemptContext;
+        setAudioPartyStartupStage(attemptNumber === 1 ? "starting" : "retrying", context);
+        let timeout = 0;
+        const startup = startAudioLedPartyAttempt(nextTrack, options, attemptContext);
+        startup.catch(() => false);
+        const timedOut = new Promise((_, reject) => {
+          timeout = window.setTimeout(() => {
+            if (context.cancelled || startSequence !== audioPartyStartSequence) return;
+            attemptContext.cancelled = true;
+            musicSwitching = false;
+            stopContinuationAudioImmediately();
+            reject(new Error("The scheduled mix did not become ready in time."));
+          }, startTimeoutMs);
+        });
+        try {
+          const started = await Promise.race([startup, timedOut]);
+          window.clearTimeout(timeout);
+          if (started) return true;
+          return false;
+        } catch (error) {
+          window.clearTimeout(timeout);
+          lastError = error;
+          if (context.cancelled || startSequence !== audioPartyStartSequence) return false;
+          stopContinuationAudioImmediately();
+          musicSwitching = false;
+          if (attemptNumber >= maximumAttempts) break;
+          setAudioPartyStartupStage("retry_wait", context);
+          await new Promise((resolve) => window.setTimeout(resolve, AUDIO_PARTY_RETRY_DELAY_MS));
+        }
+      }
+      if (!context.cancelled && startSequence === audioPartyStartSequence) {
         markAudioLedPartyUnavailable(
           nextTrack,
           Number(options.channelLoadingGeneration) || channelLoadingGeneration,
-          new Error("The mix did not become ready in time.")
+          lastError || new Error("The scheduled mix is unavailable."),
+          context
         );
-        resolve(false);
-      }, startTimeoutMs);
-    });
-    const started = await Promise.race([startup, timedOut]);
-    window.clearTimeout(timeout);
-    return started;
+      }
+      return false;
+    } finally {
+      if (activeAudioPartyStart === context) activeAudioPartyStart = null;
+      if (startSequence === audioPartyStartSequence) musicSwitching = false;
+    }
   }
 
-  async function startAudioLedPartyAttempt(nextTrack, options, startSequence) {
+  async function startAudioLedPartyAttempt(nextTrack, options, attemptContext) {
     const loadingGeneration = Number(options.channelLoadingGeneration) || beginChannelLoading({
       mode: "parties",
       item: nextTrack,
       source: options.source || "manual",
     });
     const assertCurrentStart = () => {
-      if (startSequence !== audioPartyStartSequence) throw new Error("Audio party startup was cancelled.");
+      if (attemptContext.cancelled || attemptContext.requestSequence !== audioPartyStartSequence) {
+        throw new Error("Audio party startup was cancelled.");
+      }
     };
     clearShopArrivalFade();
     clearMusicHandoffTimer();
@@ -5659,12 +5836,8 @@
       0,
       shopIndependent ? SHOP_ARRIVAL_FADE_IN_MS : Number(options.fadeInMs) || 0
     );
-    if (!nextTrack.hlsVideoSrc && !window.IAMCloudflareStream && window.IAMStreamReady) {
-      try { await window.IAMStreamReady; } catch {}
-      assertCurrentStart();
-    }
-    const streamAsset = window.IAMCloudflareStream?.assetFor(nextTrack.localVideoSrc);
-    const source = nextTrack.hlsVideoSrc || streamAsset?.hls || "";
+    const source = await resolveScheduledAudioPartySource(nextTrack);
+    assertCurrentStart();
     if (!source) {
       document.body.dataset.audioPartyPlaybackState = "encoding";
       failChannelLoading(loadingGeneration);
@@ -5701,6 +5874,7 @@
       document.body.dataset.audioPartyPlaybackState = "loading";
       document.body.dataset.audioPartyStreamSemantics = "recorded_programme";
       document.body.dataset.audioPartyTrackId = nextTrack.id;
+      setAudioPartyStartupStage("preparing", activeAudioPartyStart);
       delete document.body.dataset.audioPartyPlaybackError;
       delete document.body.dataset.audioPartyRecovery;
       delete document.body.dataset.audioPartyRevealBufferSeconds;
@@ -5720,14 +5894,16 @@
         : hasRequestedStart
           ? Math.max(0, requestedStartSeconds)
           : undefined;
-      const visualStartup = options.visualAlreadyManaged
-        ? Promise.resolve()
+      const visualStartup = options.visualStartupPromise || (options.visualAlreadyManaged
+        ? Promise.resolve(true)
         : (async () => {
           await ensureFashionStreamAttached();
           assertCurrentStart();
           if (fashionVideo?.paused) await playWhenStreamAttached(fashionVideo, "fashion").catch(() => {});
           assertCurrentStart();
-        })();
+          return true;
+        })());
+      setAudioPartyStartupStage("manifest", activeAudioPartyStart);
       const audioStartup = primeContinuationAudio({
         id: nextTrack.id,
         track_id: nextTrack.id,
@@ -5736,9 +5912,11 @@
       }, {
         recordedProgramme: true,
         startPositionSeconds: initialStartSeconds,
+        assertCurrentStart,
       });
       await Promise.all([visualStartup, audioStartup]);
       assertCurrentStart();
+      setAudioPartyStartupStage("synchronizing", activeAudioPartyStart);
       const state = options.broadcastChannelId
         ? window.IAMBroadcastClock?.stateAt(options.broadcastChannelId)
         : null;
@@ -5760,6 +5938,7 @@
       const readyBufferSeconds = Number.isFinite(Number(options.readyBufferSeconds))
         ? Math.max(RECORDED_PROGRAMME_PRIME_BUFFER_SECONDS, Number(options.readyBufferSeconds))
         : RECORDED_PROGRAMME_READY_BUFFER_SECONDS;
+      setAudioPartyStartupStage("safety_buffer", activeAudioPartyStart);
       const revealBufferSeconds = await waitForRadioBuffer(continuationAudio, readyBufferSeconds);
       assertCurrentStart();
       document.body.dataset.audioPartyRevealBufferSeconds = revealBufferSeconds.toFixed(1);
@@ -5790,6 +5969,7 @@
       } else {
         delete document.body.dataset.audioPartyStartSeconds;
       }
+      setAudioPartyStartupStage("starting_playback", activeAudioPartyStart);
       await continuationAudio.play();
       assertCurrentStart();
       if (requestedFadeInMs > 0) {
@@ -5797,13 +5977,22 @@
       }
       document.body.dataset.radioPlaybackState = "playing";
       document.body.dataset.audioPartyPlaybackState = "playing";
+      setAudioPartyStartupStage("playing", activeAudioPartyStart);
       if (!options.deferChannelLoadingFinish) finishChannelLoading(loadingGeneration);
-      window.IAMEMDR?.setTimelineSource?.({ media: continuationAudio, bpm: 124, firstDownbeatSeconds: 0, fallbackBpm: 124 });
+      const programmeBpm = Number(nextTrack.bpm) || 124;
+      const firstDownbeatSeconds = Math.max(0, Number(nextTrack.firstDownbeatSeconds) || 0);
+      window.IAMEMDR?.setTimelineSource?.({
+        media: continuationAudio,
+        bpm: programmeBpm,
+        firstDownbeatSeconds,
+        fallbackBpm: programmeBpm,
+      });
       if ("mediaSession" in window.navigator && window.MediaMetadata) {
+        const programmeChannelName = state?.channelName || "parties";
         window.navigator.mediaSession.metadata = new window.MediaMetadata({
           title: nextTrack.displayTitle || nextTrack.title,
           artist: nextTrack.displayArtist || nextTrack.artist,
-          album: "Universal Mind · james bondage",
+          album: `Universal Mind · ${programmeChannelName.toLowerCase()}`,
         });
       }
       updateMusicSelector();
@@ -5812,16 +6001,15 @@
       window.IAMFirstPartyAnalytics?.record?.("audio_party_start", {
         track_id: nextTrack.id,
         channel_id: options.broadcastChannelId || "",
-        visual_channel_id: options.visualAlreadyManaged ? "sex-ed-background" : "fashion-underground-intensity",
+        visual_channel_id: options.visualAlreadyManaged ? "sex-ed-background" : (state?.visualChannelId || ""),
         selection_source: options.source || "adaptive",
       });
       return true;
-    } catch (error) {
-      if (startSequence !== audioPartyStartSequence) return false;
-      markAudioLedPartyUnavailable(nextTrack, loadingGeneration, error);
-      return false;
     } finally {
-      if (startSequence === audioPartyStartSequence) musicSwitching = false;
+      if (
+        attemptContext.requestSequence === audioPartyStartSequence &&
+        activeAudioPartyStart?.attemptContext === attemptContext
+      ) musicSwitching = false;
     }
   }
 
@@ -7123,7 +7311,7 @@
     }
   }
 
-  function waitForSexEdAudioState(stateKey, timeoutMs = AUDIO_PARTY_START_TIMEOUT_MS) {
+  function waitForSexEdAudioState(stateKey, timeoutMs = 18000) {
     const startedAt = Date.now();
     return new Promise((resolve) => {
       const inspect = () => {
@@ -7848,8 +8036,10 @@
       document.body.dataset.radioPreloadState = "muted";
     }
     await attachContinuationAudioSource(continuationAudio, source, options);
+    options.assertCurrentStart?.();
     if (options.recordedProgramme && continuationAudio.paused) {
       await continuationAudio.play();
+      options.assertCurrentStart?.();
       continuationAudio.volume = 0;
     }
     const readyBufferSeconds = options.recordedProgramme
@@ -7858,6 +8048,7 @@
         ? RADIO_SEGMENT_STARTUP_BUFFER_SECONDS
         : RADIO_READY_BUFFER_SECONDS;
     const initialBufferSeconds = await waitForRadioBuffer(continuationAudio, readyBufferSeconds);
+    options.assertCurrentStart?.();
     if (options.recordedProgramme && initialBufferSeconds + .15 < readyBufferSeconds) {
       throw new Error("The recorded programme could not build a safe startup buffer.");
     }
