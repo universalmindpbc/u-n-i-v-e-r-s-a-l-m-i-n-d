@@ -692,7 +692,6 @@ body.television-radio-continuation .adaptive-television-fashion-video {
   --emdr-gif-tile-size: min(24vw, 42vh, 720px);
   --emdr-gif-front-width: min(45vw, 80vh);
   --emdr-gif-front-height: min(25.3125vw, 45vh);
-  --emdr-gif-scroll-edge: max(16px, calc((100vh - var(--emdr-gif-tile-size) - var(--emdr-gif-tile-size) - var(--emdr-gif-grid-gap)) / 2));
 }
 
 .adaptive-television-emdr-gif-world {
@@ -734,23 +733,39 @@ body.television-radio-continuation .adaptive-television-fashion-video {
 .adaptive-television-emdr-gif-grid[data-emdr-gif-scroll] {
   inset: 0;
   box-sizing: border-box;
-  grid-template-rows: none;
-  grid-auto-rows: var(--emdr-gif-tile-size);
-  align-content: start;
-  justify-content: center;
+  display: block;
   width: 100%;
   height: 100%;
-  padding-block: var(--emdr-gif-scroll-edge);
   overflow-x: hidden;
   overflow-y: auto;
   overscroll-behavior-y: contain;
+  scroll-snap-type: y mandatory;
   scrollbar-color: rgba(255, 255, 255, .42) transparent;
-  scrollbar-gutter: stable;
+  scrollbar-gutter: stable both-edges;
   scrollbar-width: thin;
   touch-action: pan-y;
   pointer-events: auto;
   transform: none;
   -webkit-overflow-scrolling: touch;
+}
+
+.adaptive-television-emdr-gif-page {
+  box-sizing: border-box;
+  display: grid;
+  grid-template-columns: repeat(3, var(--emdr-gif-tile-size));
+  grid-template-rows: repeat(2, var(--emdr-gif-tile-size));
+  align-content: center;
+  justify-content: center;
+  gap: var(--emdr-gif-grid-gap);
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+}
+
+.adaptive-television-emdr-gif-page:last-child {
+  grid-template-rows: var(--emdr-gif-tile-size);
 }
 
 .adaptive-television-emdr-gif-grid[data-emdr-gif-scroll]:focus-visible {
@@ -766,6 +781,14 @@ body.television-radio-continuation .adaptive-television-fashion-video {
   aspect-ratio: 1;
   object-fit: cover;
   opacity: .77;
+}
+
+.adaptive-television-emdr-gif-grid img[data-emdr-gif-boxed] {
+  box-sizing: border-box;
+  border: 1px solid rgba(255, 255, 255, .14);
+  background: #111114;
+  object-fit: cover;
+  opacity: 1;
 }
 
 .adaptive-television-emdr-gif-casing {

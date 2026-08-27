@@ -153,55 +153,115 @@ async function runViewport(viewport) {
     }
     let scrollEvidence = null;
     if (preset.key === "m8") {
-      const before = await page.evaluate(() => {
+      const inspectM8 = (reset = false) => page.evaluate((shouldReset) => {
         const panel = document.querySelector('.adaptive-television-emdr-gif-grid[data-emdr-gif-preset="m8"]');
         const player = document.querySelector("[data-television-player]");
         const casing = document.querySelector(".adaptive-television-emdr-gif-casing");
+        const pages = [...panel.querySelectorAll("[data-emdr-gif-page]")];
         const rect = (element) => {
           const bounds = element.getBoundingClientRect();
-          return { x: bounds.x, y: bounds.y, width: bounds.width, height: bounds.height };
+          return { x: bounds.x, y: bounds.y, top: bounds.top, right: bounds.right, bottom: bounds.bottom, left: bounds.left, width: bounds.width, height: bounds.height };
         };
-        panel.scrollTop = 0;
+        const union = (elements) => elements.reduce((bounds, element) => {
+          const next = element.getBoundingClientRect();
+          return {
+            top: Math.min(bounds.top, next.top),
+            right: Math.max(bounds.right, next.right),
+            bottom: Math.max(bounds.bottom, next.bottom),
+            left: Math.min(bounds.left, next.left),
+          };
+        }, { top: Infinity, right: -Infinity, bottom: -Infinity, left: Infinity });
+        if (shouldReset) panel.scrollTop = 0;
+        const panelRect = panel.getBoundingClientRect();
+        const pageRects = pages.map(rect);
+        const currentPage = Math.round(panel.scrollTop / panel.clientHeight);
+        const currentPageElement = pages[currentPage];
+        const currentPageRect = currentPageElement.getBoundingClientRect();
+        const currentTiles = [...currentPageElement.querySelectorAll("[data-emdr-gif-tile]")];
+        const currentTileBounds = union(currentTiles);
+        const visiblePageIndexes = pageRects.flatMap((bounds, index) => (
+          Math.min(bounds.bottom, panelRect.bottom) - Math.max(bounds.top, panelRect.top) > 1 ? [index] : []
+        ));
+        const visibleTileCount = [...panel.querySelectorAll("[data-emdr-gif-tile]")].filter((tile) => {
+          const bounds = tile.getBoundingClientRect();
+          return Math.min(bounds.bottom, panelRect.bottom) - Math.max(bounds.top, panelRect.top) > 1;
+        }).length;
+        const boxed = panel.querySelector("[data-emdr-gif-boxed]");
+        const boxedStyle = getComputedStyle(boxed);
         return {
           scrollTop: panel.scrollTop,
           scrollHeight: panel.scrollHeight,
           clientHeight: panel.clientHeight,
-          childCount: panel.children.length,
-          gridTemplateRows: getComputedStyle(panel).gridTemplateRows,
-          gridAutoRows: getComputedStyle(panel).gridAutoRows,
-          firstTile: rect(panel.firstElementChild),
-          lastTile: rect(panel.lastElementChild),
+          pageCount: pages.length,
+          pageHeights: pageRects.map((bounds) => bounds.height),
+          tileCounts: pages.map((item) => item.querySelectorAll("[data-emdr-gif-tile]").length),
+          currentPage,
+          visiblePageIndexes,
+          visibleTileCount,
+          centered: {
+            verticalDelta: Math.abs((currentTileBounds.top - currentPageRect.top) - (currentPageRect.bottom - currentTileBounds.bottom)),
+            horizontalDelta: Math.abs((currentTileBounds.left - currentPageRect.left) - (currentPageRect.right - currentTileBounds.right)),
+          },
+          boxed: {
+            visible: currentTiles.includes(boxed),
+            background: boxedStyle.backgroundColor,
+            borderStyle: boxedStyle.borderStyle,
+            borderWidth: boxedStyle.borderWidth,
+            opacity: boxedStyle.opacity,
+          },
           pageY: window.scrollY,
           player: rect(player),
           casing: rect(casing),
         };
-      });
-      await page.mouse.move(16, Math.round(viewport.height / 2));
-      await page.mouse.wheel(0, Math.max(720, viewport.height));
-      await page.waitForTimeout(320);
-      const after = await page.evaluate(() => {
+      }, reset);
+      const before = await inspectM8(true);
+      await page.mouse.move(Math.round(viewport.width / 2), Math.round(viewport.height / 2));
+      await page.mouse.wheel(0, viewport.height);
+      await page.waitForFunction(() => {
         const panel = document.querySelector('.adaptive-television-emdr-gif-grid[data-emdr-gif-preset="m8"]');
-        const player = document.querySelector("[data-television-player]");
-        const casing = document.querySelector(".adaptive-television-emdr-gif-casing");
-        const rect = (element) => {
-          const bounds = element.getBoundingClientRect();
-          return { x: bounds.x, y: bounds.y, width: bounds.width, height: bounds.height };
-        };
-        return {
-          scrollTop: panel.scrollTop,
-          pageY: window.scrollY,
-          player: rect(player),
-          casing: rect(casing),
-        };
+        return Math.abs(panel.scrollTop - panel.clientHeight) < 2;
+      }, null, { timeout: 10000 });
+      const after = await inspectM8();
+      await page.evaluate(() => {
+        const panel = document.querySelector('.adaptive-television-emdr-gif-grid[data-emdr-gif-preset="m8"]');
+        panel.scrollTop = panel.clientHeight * 5;
       });
-      scrollEvidence = { before, after };
-      assert.ok(before.scrollHeight > before.clientHeight, JSON.stringify(scrollEvidence));
-      assert.ok(after.scrollTop > before.scrollTop, JSON.stringify(scrollEvidence));
+      await page.waitForFunction(() => {
+        const panel = document.querySelector('.adaptive-television-emdr-gif-grid[data-emdr-gif-preset="m8"]');
+        return Math.abs(panel.scrollTop - (panel.clientHeight * 5)) < 2;
+      }, null, { timeout: 10000 });
+      const finalPage = await inspectM8();
+      scrollEvidence = { before, after, finalPage };
+      assert.equal(before.pageCount, 6, JSON.stringify(scrollEvidence));
+      assert.deepEqual(before.tileCounts, [6, 6, 6, 6, 6, 3], JSON.stringify(scrollEvidence));
+      assert.ok(Math.abs(before.scrollHeight - (before.clientHeight * 6)) < 2, JSON.stringify(scrollEvidence));
+      assert.ok(before.pageHeights.every((height) => Math.abs(height - before.clientHeight) < 2), JSON.stringify(scrollEvidence));
+      assert.deepEqual(before.visiblePageIndexes, [0], JSON.stringify(scrollEvidence));
+      assert.equal(before.visibleTileCount, 6, JSON.stringify(scrollEvidence));
+      assert.ok(before.centered.verticalDelta < 2 && before.centered.horizontalDelta < 2, JSON.stringify(scrollEvidence));
+      assert.equal(after.currentPage, 1, JSON.stringify(scrollEvidence));
+      assert.deepEqual(after.visiblePageIndexes, [1], JSON.stringify(scrollEvidence));
+      assert.equal(after.visibleTileCount, 6, JSON.stringify(scrollEvidence));
+      assert.ok(after.centered.verticalDelta < 2 && after.centered.horizontalDelta < 2, JSON.stringify(scrollEvidence));
+      assert.equal(finalPage.currentPage, 5, JSON.stringify(scrollEvidence));
+      assert.deepEqual(finalPage.visiblePageIndexes, [5], JSON.stringify(scrollEvidence));
+      assert.equal(finalPage.visibleTileCount, 3, JSON.stringify(scrollEvidence));
+      assert.ok(finalPage.centered.verticalDelta < 2 && finalPage.centered.horizontalDelta < 2, JSON.stringify(scrollEvidence));
+      assert.deepEqual(finalPage.boxed, {
+        visible: true,
+        background: "rgb(17, 17, 20)",
+        borderStyle: "solid",
+        borderWidth: "1px",
+        opacity: "1",
+      });
       assert.equal(after.pageY, before.pageY, JSON.stringify(scrollEvidence));
+      assert.equal(finalPage.pageY, before.pageY, JSON.stringify(scrollEvidence));
       const rectStayedFixed = (next, previous) => ["x", "y", "width", "height"]
         .every((key) => Math.abs(next[key] - previous[key]) < 1);
       assert.equal(rectStayedFixed(after.player, before.player), true, JSON.stringify(scrollEvidence));
       assert.equal(rectStayedFixed(after.casing, before.casing), true, JSON.stringify(scrollEvidence));
+      assert.equal(rectStayedFixed(finalPage.player, before.player), true, JSON.stringify(scrollEvidence));
+      assert.equal(rectStayedFixed(finalPage.casing, before.casing), true, JSON.stringify(scrollEvidence));
     }
     const snapshot = await page.evaluate((expected) => {
       const wallet = document.querySelector("[data-reaction-wallet]");
@@ -243,13 +303,21 @@ async function runViewport(viewport) {
     snapshots.push({ ...snapshot, scrollEvidence });
   }
 
+  const presetDescriptions = await page.$$eval("[data-emdr-style]", (buttons) => buttons.map((button) => button.dataset.emdrTooltip));
+  assert.deepEqual(presetDescriptions, [
+    "Champagne Bohemia — Xaviera Lopez’s animated GIF experience.",
+    "modul8 infinity — Rave animated GIF experience.",
+    "James Bondage Health — Bordelle animated GIF experience.",
+    "Stella geometric experience.",
+  ]);
+  assert.equal(presetDescriptions.some((description) => description.includes("video experience")), false);
   const safety = await page.evaluate(() => ({ ...window.__iamThemeSafety }));
   assert.equal(safety.fullscreenCalls, 0);
   assert.equal(safety.microphoneCalls, 0);
   assert.deepEqual(pageErrors, []);
   await page.evaluate(() => document.querySelectorAll("audio, video").forEach((media) => media.pause()));
   await context.close();
-  return { viewport, snapshots, safety, blockedMediaRequests, pageErrors };
+  return { viewport, snapshots, presetDescriptions, safety, blockedMediaRequests, pageErrors };
 }
 
 try {
