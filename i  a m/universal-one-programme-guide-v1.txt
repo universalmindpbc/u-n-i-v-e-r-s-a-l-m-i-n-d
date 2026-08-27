@@ -1,6 +1,6 @@
 UNIVERSAL ONE PROGRAMME GUIDE
-Version: universal_one_programme_guide_v1.3
-Reviewed: 2026-08-23
+Version: universal_one_programme_guide_v1.4
+Reviewed: 2026-08-27
 
 PURPOSE AND NAMING
 
@@ -68,10 +68,41 @@ QUICK COMPARISON
 - james bondage: minimal, electro, EBM.
 - safety cushion: an additional 24/7, ready 21-track 80s nu wave music-video feed; no Parties or Radio.
 
+COMEDY · JARRAD WRIGHT LIVE WHEEL
+
+- Comedy is a shared linear viewing channel. The Comedy button enters the current live Jarrad Wright wheel directly; it does not begin with a trailer, interstitial or private on-demand selection.
+- Describe this as the current public wheel. Do not imply that the line-up, rights or availability are permanent.
+- Jarrad Wright is the credited creator for all seven live-wheel programme groups below. Keep the spelling “Jarrad”, not “Jared”.
+
+Exact current public order:
+
+1. “The Big Lez Show · Seasons 1–4” — segment order: Season 1; Season 2; Season 3; Season 4.
+2. “The Mike Nolan Show · Episodes 1–5” — episode order: “Yeah Nah Yeah”; “FTC”; “Anotha Day Anotha Dolla”; “Ding Dong Delli”; “Lantana Bush”.
+3. “Mike Nolan’s Long Weekend”.
+4. “On Location with Clarence Claymore”.
+5. “Sassy the Sasquatch”.
+6. “The Donny & Clarence Show · Episodes 1–6” — episode order: “Prankz”; “Thunda”; “Put Em Up”; “Fore”; “Grit Mailman”; “Sugar Glider”.
+7. “Sassy Behind the Scenes”.
+
+Editorial orientation:
+
+- “The Big Lez Show” is the centre of Wright’s crude, surreal Australian animated world. Its alien protagonist Lez, his suburban relationships and conflicts, and encounters involving characters such as Mike Nolan and Sassy establish the wider universe from which the spin-offs branch.
+- “The Mike Nolan Show” and “Mike Nolan’s Long Weekend” follow Mike Nolan’s distinctive suburban-tradie perspective.
+- “Sassy the Sasquatch” follows Sassy’s side of the world; “Sassy Behind the Scenes” is the accompanying making-of programme.
+- Clarence Claymore appears in his own on-location programme and alongside Donny in “The Donny & Clarence Show”.
+- Keep summaries broad, attributed and non-inventive. The guide establishes the wheel, programme names and broad editorial relationship; it does not establish every plot beat or character biography.
+
+THE MIDNIGHT GOSPEL TRAILER · SEPARATE ASSET
+
+- “The Midnight Gospel trailer” is a separately uploaded 2 minute 24 second trailer asset associated with Duncan Trussell. It is deliberately not in the current Comedy live wheel.
+- Do not describe the trailer as a Comedy opener, loop, interstitial or current programme, and do not imply that the Comedy button plays it. Ben rejected that behaviour in favour of entering the Jarrad Wright wheel directly.
+- “The Midnight Gospel” is not part of Jarrad Wright’s universe. If comparing it with the live wheel, make that separation explicit.
+- Netflix is the distributor/platform named by the official trailer source, not the creator. Do not call Netflix the creator.
+
 JAMES BONDAGE HEALTH · SEX-ED
 
 - James Bondage Health · sex-ed is an adult educational collection in Vogue I Am.
-- It currently contains eight conversations and instructional programmes about sexuality, embodiment, intimacy, relationships and wellbeing.
+- It currently contains fourteen conversations and instructional programmes about sexuality, embodiment, intimacy, relationships and wellbeing.
 - The collection is educational and editorial, not a clinical service. It includes mature discussion of sexual experience, trauma, birth, pleasure, gendered social conditioning, spiritual frameworks and relationship structures.
 - When describing an episode, distinguish the programme’s speakers’ ideas from established medical fact. Use phrases such as “the episode explores”, “the guest describes”, or “the speakers propose”.
 - Paraphrase by default. Never recite long transcript passages. A short phrase may be quoted only when useful and clearly attributed.
@@ -290,16 +321,106 @@ Core arc:
 - The episode is practical movement instruction, so it plays full screen without the James Bondage Health square-tile or background-video treatment. Café del Mar Chill supplies a subtle live soundtrack at approximately 15% beneath the full-volume instruction.
 - Universal One may describe the episode as a yoga class, not a clinical intervention. It should avoid guaranteeing physical or mental-health outcomes and encourage viewers to adapt or stop if a movement is not comfortable or safe for them.
 
+EPISODE 09
+
+Title: “Five Stages of Subspace”
+Speaker: Alesandra Madison.
+Duration: approximately 28 minutes 33 seconds.
+Source: Dom Sub Living, “5 Stages of Subspace (And How to Get There Faster)”, YouTube video FH8083atfus, with the publisher’s companion article.
+
+Core arc:
+
+- The publisher presents subspace as a subjective altered or absorbed state that some submissive participants report during consensual BDSM, then organises the experience into five stages: mindset, drop-in, lock-in, deep subspace and surrender state.
+- The episode discusses trust, pre-negotiation, connection and aftercare as conditions that may help some people feel safe enough to enter or recover from this state. It also discusses “subdrop”, the difficult emotional or physical after-effects some participants report.
+- Treat the five stages as Alesandra’s educational framework, not a universal sequence, diagnosis or scientifically validated model. Attribute any neurochemical or nervous-system explanation to the speaker rather than stating it as settled medical fact.
+- Subspace can be associated with reduced communication or decision-making capacity. Consent, limits, safewords or non-verbal signals, physical risks and aftercare should be negotiated before a scene; do not encourage renegotiating risk while someone is impaired.
+- Universal One may explain the framework but must not coach breath restriction, neck pressure, suspension, restraint, impact or another high-risk practice. If someone is confused, injured, unable to respond or in distress, stop the activity and seek appropriate help.
+
+EPISODE 10
+
+Title: “Subspace & Topspace”
+Speaker: Luna Agneya.
+Duration: approximately 8 minutes 51 seconds.
+Source: Sensual Arts School, “All about Subspace and Topspace”, YouTube video MELP1mW2f3A.
+
+Core arc:
+
+- The short programme introduces subspace and topspace as subjective states of absorption, focus or flow that some submissive and dominant participants describe within consensual power exchange.
+- Its public source positions the video as an extract from Luna’s conscious-bondage teaching, where connection, consent, boundaries and body awareness are central.
+- Source coverage is limited to the publisher’s public description and course context. Do not invent a stage model, transcript detail, technique, physiological mechanism or outcome that the source does not establish.
+- Experiences vary and the labels are not diagnoses. Continuing consent, agreed signals, check-ins, the ability to stop and aftercare remain necessary; an altered state never makes a prior boundary optional.
+
+EPISODE 11
+
+Title: “Pleasuring a Woman”
+Speaker: Hitomi Mochizuki.
+Duration: approximately 18 minutes 53 seconds.
+Source: Hitomi Mochizuki on YouTube, video wswcf-gdL70.
+
+Core arc:
+
+- Hitomi combines practical sexual suggestions with guidance on being an attentive lover: allow time for foreplay, include clitoral and multisensory stimulation, vary speed and depth, use lubrication when helpful, consider hygiene and adapt to the individual’s anatomy and feedback.
+- The strongest educational thread is communication rather than a formula. Consent can change; partners should ask, listen, adjust and pause or co-regulate when discomfort arises.
+- The episode encourages reducing pressure to perform or reach orgasm and paying attention to the whole person rather than treating pleasure as a technical target.
+- Some physiological explanations are anecdotal or unverified, and the episode includes a sponsored product segment. Attribute those claims and disclose the commercial context rather than presenting the programme as independent medical guidance.
+- Do not universalise anatomy, sensation or what any woman wants. If pain, numbness, bleeding, fear or persistent concern is present, encourage stopping and seeking an appropriately qualified clinician when helpful.
+
+EPISODE 12
+
+Title: “BDSM: The New Religion?”
+Speakers: Gemma Li and Seraphyna.
+Duration: approximately 33 minutes 6 seconds.
+Source: Gemma Li and Seraphyna on YouTube, video EFYI_ELVYDo, corroborated by the published podcast listing “Is BDSM the New Religion? Ritual, Worship & Power Exchange”.
+
+Core arc:
+
+- The speakers compare BDSM with religion through themes including ritual, hierarchy, worship, confession, surrender and devotion.
+- They explore taboo, shame, intentional power, feminine authority, male submission, Dominants’ emotional lives, and the overlap between care and control.
+- This is an adult perspective and philosophical analogy, not a claim that BDSM is literally a religion, a medical treatment or a universal spiritual path.
+- Keep power exchange grounded in freely negotiated, continuing consent. Submission is not permission for coercion, exploitation or ignoring a limit; titles, ritual and devotion do not remove either person’s responsibility for safety and care.
+
+EPISODE 13
+
+Title: “Submission & the Male Brain”
+Speaker: Alla Mephistopheles.
+Duration: approximately 17 minutes 55 seconds.
+Source: Alla Mephistopheles on YouTube, video yjQc9GDh8l0.
+
+Core arc:
+
+- Alla argues that submission within a female-led dynamic can give some men motivation, structure and purpose through service.
+- The programme distinguishes reciprocal, chosen service from exploitation and rejects entitlement: submission does not create a claim on a dominant person’s time, labour, attention or intimacy.
+- Treat the “male brain”, reward and bonding language as the speaker’s personal philosophy with largely unsupported neuroscience claims, not evidence-based brain science or a universal account of men.
+- Do not prescribe submission for motivation, mental health or relationship repair. A healthy power-exchange relationship still requires mutual agreement, clear limits, ongoing consent and the freedom to leave.
+
+EPISODE 14
+
+Title: “Becoming NYC’s #1 Dominatrix”
+Featured guest: Mistress Seren.
+Duration: approximately 42 minutes 30 seconds.
+Source: Frich on YouTube, video VWCOYfe_RqM.
+
+Core arc:
+
+- The public programme description frames this as a career and money profile of a professional dominatrix, including earnings, a move from corporate America into the sex industry, and aspects of a working day.
+- The conversation also touches on gender, sexuality, power and money. Present these as the guest’s experience and the publisher’s framing, not as a universal account of sex work or professional domination.
+- Source coverage is limited to the public description. Do not invent client stories, business figures, practices, credentials or safety advice that the guide does not establish.
+- The programme is an adult career profile, not personalised kink instruction, financial advice or an invitation to imitate a practice without consent, preparation and appropriate professional knowledge.
+
 ANSWERING PATTERNS
 
 - If asked to compare the music architecture, identify the four Seeding Sessions first, then describe safety cushion separately as the additional 24/7 music-video channel.
 - If asked what is playing now, use only live context supplied to the session. The programme guide describes line-ups, not the visitor’s exact current clock position.
 - If asked which music room fits, use stated musical intent and taste, current catalogue readiness, eligible format, context and continuity rather than a Calm / Chill / House mood ladder. safety cushion may be recommended only inside a Videos slot and when its 80s nu wave identity is editorially suitable.
 - The canonical journey is check-in, needs-matched VOD music video, needs-matched extended livestream, then manual portal exploration. The application assigns eligible extended sessions to Parties 80% of the time, Radio 10% and Videos 10%; needs and context select the compatible room and approved Ready source inside that branch. Examples include inner planes ambient radio late at night, champagne bohemia chillout radio in the morning, and safety cushion in a Videos slot during peak anxiety only when its approved Ready assets are available and editorially suitable.
-- If asked about James Bondage Health, first identify it as the separate adult sex-ed collection, then name all eight episodes or go deeply into the requested one.
+- If asked about Comedy, identify it as a shared linear channel and give the seven live-wheel programme groups in their exact current order. Keep the internal season and episode orders intact when requested.
+- If asked about “The Midnight Gospel”, say that the uploaded trailer is a separate Duncan Trussell-associated asset and is not in the current Comedy live wheel or Jarrad Wright’s universe. Never describe Netflix as the creator.
+- If asked about James Bondage Health, first identify it as the separate adult sex-ed collection, then name all fourteen episodes or go deeply into the requested one.
 - If asked about the Ashton August episodes, identify “Yoga to Increase Your Sexual Energy” as episode 07 and “Vinyasa Yoga Flow” as episode 08. Explain that both are full-screen instructional yoga programmes with Café del Mar Chill mixed subtly underneath, and keep spiritual-energy claims attributed rather than medicalised.
 - If asked about Teal Swan or Jacqueline Michelle, attribute their ideas and distinguish spiritual, coaching and publisher claims from established medical evidence.
 - If asked what appears behind Jacqueline Michelle, say that Karl Lagerfeld’s iconic “The Making of the 2011 Pirelli Calendar” screens subtly as the editorial background visual; it is not the episode source or subject.
+- If asked to compare episodes 09 and 10, explain that both discuss subjective altered states in consensual BDSM, while episode 09 supplies Alesandra Madison’s five-stage framework and episode 10 is a shorter subspace/topspace introduction with more limited public source coverage. Centre prior negotiation, continuing consent, signals, stopping and aftercare; do not coach high-risk techniques.
+- If asked about episodes 11–14, disclose the evidence boundary: episode 11 includes anecdotal physiological claims and sponsorship; episode 12 is philosophical analogy; episode 13 uses largely unsupported neuroscience language; episode 14 is supported only by its public career-profile description.
 - If asked “what does the episode say?”, attribute the answer to the episode or named speaker and separate personal/spiritual testimony from evidence.
 - If asked for a transcript quote, keep it very short, identify the speaker or source where known, and prefer a paraphrase.
 - If the source notes do not contain the requested detail, say that the guide does not establish it. Never invent a timestamp, quotation, credential or scientific conclusion.

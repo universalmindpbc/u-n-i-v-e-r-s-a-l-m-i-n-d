@@ -242,6 +242,6 @@ respond(200, [
     'portal_guide_version' => 'v1.2',
     'wellbeing_support_guide_version' => 'v1',
     'adaptive_recommendation_guide_version' => 'v1',
-    'programme_guide_version' => 'v1.3',
+    'programme_guide_version' => 'v1.4',
     'voice_briefing_version' => 'v3',
 ]);

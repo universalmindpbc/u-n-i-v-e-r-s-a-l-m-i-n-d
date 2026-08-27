@@ -12,6 +12,7 @@ const guide = read("i  a m/universal-one-programme-guide-v1.txt");
 const portalGuide = read("i  a m/universal-one-portal-guide-v1.txt");
 const sources = JSON.parse(read("i  a m/universal-one-programme-sources-v1.json"));
 const schedule = JSON.parse(read("i  a m/broadcast-schedule-v1.json"));
+const programmeCatalogueSource = read("i  a m/programme-catalogue-v1.js");
 const index = read("i  a m/index.html");
 const shop = read("i  a m/shop.html");
 const alternateEntry = read("i  a m/adaptive-environment-television.html");
@@ -26,7 +27,7 @@ assert.match(guide, /safety cushion is an additional music room, not a fifth See
 for (const name of ["Inner Planes", "Champagne Bohemia", "modul8 infinity", "james bondage", "safety cushion"]) {
   assert.match(guide, new RegExp(name.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")));
 }
-assert.match(guide, /Version: universal_one_programme_guide_v1\.3/);
+assert.match(guide, /Version: universal_one_programme_guide_v1\.4/);
 assert.match(guide, /Rave · Episode 1” programme with 18 cue points/);
 assert.match(guide, /22 verified programme additions/);
 assert.match(guide, /Nine Inch Noize performing “Closer” live at Coachella 2026/);
@@ -38,6 +39,30 @@ assert.equal(programmeBatchSource?.ready_count, 25);
 assert.equal(programmeBatchSource?.hls_playback_verified_count, 25);
 assert.equal(programmeBatchSource?.duration_verified_count, 25);
 assert.equal(programmeBatchSource?.routing_verified, true);
+
+const catalogueWindow = {};
+new vm.Script(programmeCatalogueSource, { filename: "programme-catalogue-v1.js" }).runInNewContext({ window: catalogueWindow });
+const comedyProgrammes = catalogueWindow.IAMProgrammeCatalogue.comedyProgrammes;
+assert.deepEqual(
+  Array.from(comedyProgrammes, (programme) => programme.title),
+  [
+    "The Big Lez Show · Seasons 1–4",
+    "The Mike Nolan Show · Episodes 1–5",
+    "Mike Nolan’s Long Weekend",
+    "On Location with Clarence Claymore",
+    "Sassy the Sasquatch",
+    "The Donny & Clarence Show · Episodes 1–6",
+    "Sassy Behind the Scenes",
+  ],
+);
+assert.ok(comedyProgrammes.every((programme) => programme.artist === "Jarrad Wright"));
+assert.deepEqual(Array.from(comedyProgrammes[0].segments, (segment) => segment.title), ["Season 1", "Season 2", "Season 3", "Season 4"]);
+assert.deepEqual(Array.from(comedyProgrammes[1].segments, (segment) => segment.title), ["Yeah Nah Yeah", "FTC", "Anotha Day Anotha Dolla", "Ding Dong Delli", "Lantana Bush"]);
+assert.deepEqual(Array.from(comedyProgrammes[5].segments, (segment) => segment.title), ["Prankz", "Thunda", "Put Em Up", "Fore", "Grit Mailman", "Sugar Glider"]);
+assert.doesNotMatch(programmeCatalogueSource, /midnight-gospel/i);
+assert.match(guide, /The Midnight Gospel trailer” is a separately uploaded/);
+assert.match(guide, /deliberately not in the current Comedy live wheel/);
+assert.match(guide, /Netflix is the distributor\/platform named by the official trailer source, not the creator/);
 
 const expectedEditorial = new Map([
   ["inner-planes", ["ambient | sleep | sunrise", "Ambient · sleep · sunrise"]],
@@ -88,10 +113,19 @@ assert.deepEqual(
     "https://creators.spotify.com/pod/profile/tanja-hirsch",
     "https://youaligned.com/yoga/sex-drive-sexual-energy/",
     "https://youaligned.com/yoga/vinyasa-yoga-free-yoga-video/",
+    "https://www.youtube.com/watch?v=FH8083atfus",
+    "https://www.youtube.com/watch?v=MELP1mW2f3A",
+    "https://www.youtube.com/watch?v=wswcf-gdL70",
+    "https://www.youtube.com/watch?v=EFYI_ELVYDo",
+    "https://www.youtube.com/watch?v=yjQc9GDh8l0",
+    "https://www.youtube.com/watch?v=VWCOYfe_RqM",
   ],
 );
+assert.equal(sources.version, "universal_one_programme_sources_v1.4");
+assert.deepEqual(sources.episode_sources.map((episode) => episode.episode), ["01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14"]);
+assert.match(guide, /It currently contains fourteen conversations and instructional programmes/);
 assert.match(sources.use_policy.storage, /full third-party transcripts are not stored/);
-assert.ok(guide.length < 30000, "programme guide should remain a curated briefing rather than a transcript copy");
+assert.ok(guide.length < 45000, "programme guide should remain a curated briefing rather than a transcript copy");
 
 assert.match(portalGuide, /Adaptive Inference Engine system prompt is version 5\.55/);
 assert.match(portalGuide, /TV opens five current controls: MUSIC, FASHION, EMDR, SOUND and MANTRA/);
@@ -108,24 +142,27 @@ assert.match(worker, /import UNIVERSAL_ONE_PROGRAMME_GUIDE/);
 assert.match(worker, /# Programme and episode guide\n\$\{UNIVERSAL_ONE_PROGRAMME_GUIDE\}/);
 assert.match(worker, /portal_guide_version: "v1\.2"/);
 assert.match(worker, /adaptive_recommendation_guide_version: "v1"/);
-assert.match(worker, /programme_guide_version: "v1\.3"/);
+assert.match(worker, /programme_guide_version: "v1\.4"/);
 assert.match(worker, /voice_briefing_version: "v3"/);
 assert.match(phpFallback, /universal-one-programme-guide-v1\.txt/);
 assert.match(phpFallback, /# Programme and episode guide\n\{\$programmeGuide\}/);
 assert.match(phpFallback, /'portal_guide_version' => 'v1\.2'/);
 assert.match(phpFallback, /'adaptive_recommendation_guide_version' => 'v1'/);
-assert.match(phpFallback, /'programme_guide_version' => 'v1\.3'/);
+assert.match(phpFallback, /'programme_guide_version' => 'v1\.4'/);
 assert.match(phpFallback, /'voice_briefing_version' => 'v3'/);
 
 for (const scenario of [
   "seeding-sessions",
   "programme-catalogue",
+  "comedy-programming",
   "sex-ed",
   "episode-detail",
   "sex-ed-safety",
   "new-episodes",
   "new-episode-safety",
   "yoga-episodes",
+  "recent-sex-ed",
+  "subspace-safety",
   "shared-interactions",
   "shop",
   "system-alignment",

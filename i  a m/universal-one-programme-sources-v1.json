@@ -1,6 +1,6 @@
 {
-  "version": "universal_one_programme_sources_v1.3",
-  "reviewed": "2026-08-02",
+  "version": "universal_one_programme_sources_v1.4",
+  "reviewed": "2026-08-27",
   "use_policy": {
     "assistant_surface": "Universal One Realtime voice",
     "storage": "Source-derived editorial briefing only; full third-party transcripts are not stored in the website repository.",
@@ -14,6 +14,32 @@
       "source_type": "first_party_schedule",
       "path": "broadcast-schedule-v1.json",
       "verified": true
+    },
+    {
+      "id": "comedy-live-wheel",
+      "title": "Comedy live-wheel order and Jarrad Wright programme groups",
+      "source_type": "first_party_catalogue_and_runtime",
+      "catalogue_path": "programme-catalogue-v1.js",
+      "runtime_path": "comedy-channel-v1.js",
+      "verified": true,
+      "editorial_sources": [
+        "https://www.patreon.com/thebiglezshowofficial/about",
+        "https://biglezshowofficial.weebly.com/",
+        "https://www.abc.net.au/news/2018-02-17/big-lez-show-mike-nolan-jarrad-wright-australian-animation/9457130"
+      ],
+      "coverage_note": "The current live wheel contains seven Jarrad Wright programme groups. The separately uploaded Midnight Gospel trailer is deliberately excluded from that wheel."
+    },
+    {
+      "id": "midnight-gospel-trailer",
+      "title": "The Midnight Gospel trailer",
+      "source_type": "separate_uploaded_asset_and_official_title_page",
+      "url": "https://www.netflix.com/title/80987903",
+      "cloudflare_uid": "34acf7465e8ca30e8d7e2e4d39ca9f67",
+      "duration_seconds": 144.34,
+      "associated_creator": "Duncan Trussell",
+      "current_comedy_wheel": false,
+      "verified": true,
+      "coverage_note": "Do not call Netflix the creator or describe this asset as a Comedy opener, loop, interstitial or current live-wheel programme."
     },
     {
       "id": "programme-2026-07-30",
@@ -123,6 +149,75 @@
       "transcript_verified": false,
       "coverage_note": "The briefing uses the official class overview, sequence outline and participation modifications rather than an unsupported transcript.",
       "presentation": "Full-screen instruction with no square tiles or background video; Cafe del Mar Chill live feed mixed at approximately 15%."
+    },
+    {
+      "episode": "09",
+      "title": "Five Stages of Subspace",
+      "collection_display_name": "Five Stages of Subspace with Alesandra Madison",
+      "publisher": "Dom Sub Living",
+      "url": "https://www.youtube.com/watch?v=FH8083atfus",
+      "companion_source": "https://domsubliving.com/subspace-bdsm/",
+      "source_type": "publisher video description and official companion article",
+      "source_verified": true,
+      "transcript_verified": false,
+      "coverage_note": "The five-stage and neurochemical language is the publisher's educational framework, not a validated clinical model. The briefing adds consent and safety boundaries without inventing scene instructions."
+    },
+    {
+      "episode": "10",
+      "title": "Subspace & Topspace",
+      "collection_display_name": "Subspace & Topspace with Luna Agneya",
+      "publisher": "Sensual Arts School",
+      "url": "https://www.youtube.com/watch?v=MELP1mW2f3A",
+      "companion_source": "https://www.sensualarts.school/sensual-ropes",
+      "source_type": "publisher video description and course context",
+      "source_verified": true,
+      "transcript_verified": false,
+      "coverage_note": "Public coverage is limited. The guide does not invent stages, techniques, physiology or detailed claims beyond the source description."
+    },
+    {
+      "episode": "11",
+      "title": "Pleasuring a Woman",
+      "collection_display_name": "Pleasuring a Woman with Hitomi Mochizuki",
+      "publisher": "Hitomi Mochizuki",
+      "url": "https://www.youtube.com/watch?v=wswcf-gdL70",
+      "source_type": "YouTube transcript and public video metadata",
+      "source_verified": true,
+      "transcript_verified": true,
+      "coverage_note": "Editorial summary is transcript-supported. Anecdotal physiological claims remain attributed, and the sponsored product segment is disclosed."
+    },
+    {
+      "episode": "12",
+      "title": "BDSM: The New Religion?",
+      "collection_display_name": "BDSM: The New Religion? with Gemma Li & Seraphyna",
+      "publisher": "Gemma Li & Seraphyna",
+      "url": "https://www.youtube.com/watch?v=EFYI_ELVYDo",
+      "companion_source": "https://podcasts.apple.com/us/podcast/is-bdsm-the-new-religion-ritual-worship-power-exchange/id1812742779?i=1000718504771",
+      "source_type": "published description and chapter notes, corroborated by the publisher podcast listing",
+      "source_verified": true,
+      "transcript_verified": false,
+      "coverage_note": "The religion comparison is presented as adult perspective and philosophy, not a literal, spiritual or medical conclusion."
+    },
+    {
+      "episode": "13",
+      "title": "Submission & the Male Brain",
+      "collection_display_name": "Submission & the Male Brain with Alla Mephistopheles",
+      "publisher": "Alla Mephistopheles",
+      "url": "https://www.youtube.com/watch?v=yjQc9GDh8l0",
+      "source_type": "YouTube auto-captions and public video metadata",
+      "source_verified": true,
+      "transcript_verified": true,
+      "coverage_note": "The brain, reward and bonding language is the speaker's philosophy with largely unsupported neuroscience claims, not evidence-based brain science."
+    },
+    {
+      "episode": "14",
+      "title": "Becoming NYC's #1 Dominatrix",
+      "collection_display_name": "Becoming NYC's #1 Dominatrix with Mistress Seren",
+      "publisher": "Frich",
+      "url": "https://www.youtube.com/watch?v=VWCOYfe_RqM",
+      "source_type": "publisher video description and public metadata",
+      "source_verified": true,
+      "transcript_verified": false,
+      "coverage_note": "The briefing is limited to the publisher's career and money profile description; it does not invent client stories, earnings figures, practices or credentials."
     }
   ]
 }
