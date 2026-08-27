@@ -27,7 +27,13 @@ requireCondition(controller.includes("identity === channelLoadingIdentity") && c
 requireCondition(controller.includes('document.body.dataset.channelLoadingState = "loading"') && controller.includes('document.body.dataset.channelLoadingState = "ready"') && controller.includes('document.body.dataset.channelLoadingState = "error"') && controller.includes('document.body.dataset.channelLoadingState = "idle"'), "the loading state machine is incomplete");
 requireCondition(controller.includes("Math.max(0, 480 - elapsed)") && controller.includes("}, 260);") && controller.includes("}, 3600);"), "minimum visibility, fade, or error timing has changed");
 requireCondition(controller.includes('video.addEventListener("playing"') && controller.includes("finishChannelLoading(loadingGeneration);"), "Videos no longer settle loading feedback from actual playback readiness");
-requireCondition(controller.includes("deferChannelLoadingFinish: true") && controller.includes("const visualJoined = await joinFashionBroadcastChannel"), "Parties no longer wait for both programme audio and the paired visual");
+requireCondition(
+  controller.includes("deferChannelLoadingFinish: true") &&
+    controller.includes("const visualStartupPromise = sexEdOwnsVisuals") &&
+    controller.includes("visualStartupPromise,") &&
+    controller.includes("await Promise.all([visualStartup, audioStartup])"),
+  "Parties no longer wait for both concurrently prepared programme audio and paired visual",
+);
 requireCondition(
   controller.includes("async function joinFashionBroadcastChannel") &&
     controller.includes('beginChannelLoading({\n      mode: "fashion"') &&

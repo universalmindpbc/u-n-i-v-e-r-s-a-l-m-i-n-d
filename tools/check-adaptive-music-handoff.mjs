@@ -591,6 +591,98 @@ const audioPartyStartSource = controller.slice(
   controller.indexOf('async function startAudioLedPartyAttempt'),
   controller.indexOf('function bestRadioStationForTrack')
 );
+const audioPartyCoordinatorSource = controller.match(
+  /  async function startAudioLedParty\(nextTrack, options = \{\}\) \{[\s\S]*?\n  \}(?=\n\n  async function startAudioLedPartyAttempt)/
+)?.[0];
+requireCondition(audioPartyCoordinatorSource, 'the scheduled audio-party startup coordinator cannot be exercised');
+const runAudioPartyCoordinatorHarness = new Function(`
+  return async function runAudioPartyCoordinatorHarness(outcomes) {
+    let activeAudioPartyStart = null;
+    let audioPartyStartSequence = 0;
+    let musicSwitching = false;
+    let channelLoadingGeneration = 0;
+    let attemptCalls = 0;
+    let unavailableCalls = 0;
+    let stopCalls = 0;
+    const stages = [];
+    const document = { body: { dataset: {} } };
+    const window = {
+      IAMBroadcastClock: {
+        stateAt: () => ({
+          trackId: "scheduled-party-item",
+          programmeInstanceId: "programme-instance-42",
+        }),
+      },
+      setTimeout,
+      clearTimeout,
+    };
+    const AUDIO_PARTY_START_TIMEOUT_MS = 60000;
+    const AUDIO_PARTY_MIN_START_TIMEOUT_MS = 12000;
+    const AUDIO_PARTY_MAX_START_ATTEMPTS = 2;
+    const AUDIO_PARTY_RETRY_DELAY_MS = 0;
+    function setAudioPartyStartupStage(stage) { stages.push(stage); }
+    function stopContinuationAudioImmediately() { stopCalls += 1; }
+    function cancelActiveAudioPartyStart() { return false; }
+    function markAudioLedPartyUnavailable(_track, _loading, _error, context) {
+      unavailableCalls += 1;
+      document.body.dataset.audioPartyStartupExhaustedProgrammeInstanceId = context.programmeInstanceId;
+    }
+    async function startAudioLedPartyAttempt() {
+      const outcome = outcomes[attemptCalls] || "failure";
+      attemptCalls += 1;
+      if (outcome === "failure") throw new Error("simulated recoverable startup failure");
+      return outcome === "success";
+    }
+    ${audioPartyCoordinatorSource}
+    const started = await startAudioLedParty({ id: "scheduled-party-item", audioOnly: true }, {
+      broadcastChannelId: "parties-james-bondage",
+      channelLoadingGeneration: 7,
+    });
+    return {
+      started,
+      attemptCalls,
+      unavailableCalls,
+      stopCalls,
+      stages,
+      exhaustedProgrammeInstanceId: document.body.dataset.audioPartyStartupExhaustedProgrammeInstanceId || "",
+    };
+  };
+`)();
+const recoveredAudioParty = await runAudioPartyCoordinatorHarness(['failure', 'success']);
+requireCondition(recoveredAudioParty.started, 'a scheduled party item cannot recover on its immediate second startup attempt');
+requireCondition(recoveredAudioParty.attemptCalls === 2 && recoveredAudioParty.unavailableCalls === 0, 'a recovered scheduled party item is incorrectly declared unavailable');
+const exhaustedAudioParty = await runAudioPartyCoordinatorHarness(['failure', 'failure']);
+requireCondition(!exhaustedAudioParty.started, 'a twice-failed scheduled party item is incorrectly reported as playing');
+requireCondition(exhaustedAudioParty.attemptCalls === 2 && exhaustedAudioParty.unavailableCalls === 1, 'scheduled party unavailability is not deferred until both startup attempts are exhausted');
+requireCondition(exhaustedAudioParty.exhaustedProgrammeInstanceId === 'programme-instance-42', 'the exhausted scheduled programme instance is not guarded against hidden focus retries');
+const scheduledPartyPrewarmSource = controller.slice(
+  controller.indexOf('async function prewarmScheduledAudioParty'),
+  controller.indexOf('function parseHlsSegmentUrls')
+);
+requireCondition(
+  scheduledPartyPrewarmSource.includes('state.programmeInstanceId') &&
+    scheduledPartyPrewarmSource.includes('nextTrack.id') &&
+    scheduledPartyPrewarmSource.includes('resolveScheduledAudioPartySource(nextTrack)') &&
+    !scheduledPartyPrewarmSource.includes('zip-perlon') &&
+    !scheduledPartyPrewarmSource.includes('zip-sammy'),
+  'party prewarming is not derived generically from the item currently selected by the broadcast schedule'
+);
+requireCondition(
+  controller.includes('const AUDIO_PARTY_START_TIMEOUT_MS = 60000;') &&
+    controller.includes('const AUDIO_PARTY_MAX_START_ATTEMPTS = 2;') &&
+    controller.includes('audioPartyStartupExhaustedProgrammeInstanceId === state.programmeInstanceId') &&
+    controller.includes('if (!musicSwitching && !activeAudioPartyStart) {'),
+  'scheduled parties have lost their bounded readiness window, immediate retry, or exhausted-instance focus guard'
+);
+const audioBroadcastJoinSource = controller.slice(
+  controller.indexOf('async function joinBroadcastChannel'),
+  controller.indexOf('async function switchMusicTrack')
+);
+requireCondition(
+  audioBroadcastJoinSource.indexOf('const visualStartupPromise = sexEdOwnsVisuals') < audioBroadcastJoinSource.indexOf('const started = await startAudioLedParty') &&
+    audioBroadcastJoinSource.includes('visualStartupPromise,'),
+  'scheduled party audio no longer prepares concurrently with its independent visual layer'
+);
 requireCondition(
   controller.includes('const RECORDED_PROGRAMME_PRIME_BUFFER_SECONDS = 4;') &&
     controller.includes('const RECORDED_PROGRAMME_READY_BUFFER_SECONDS = 24;'),

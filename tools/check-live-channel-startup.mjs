@@ -47,10 +47,11 @@ assert.match(recordedAttach, /else \{[\s\S]*?hlsConfig\.liveSyncDurationCount = 
 assert.match(recordedAttach, /radioStreamSemantics = recordedProgramme \? "recorded_programme" : "live_station"/);
 
 const audioParty = functionSource("startAudioLedPartyAttempt", "startRadioStation");
-assert.match(audioParty, /const visualStartup = options\.visualAlreadyManaged[\s\S]*?\? Promise\.resolve\(\)[\s\S]*?: \(async \(\) =>/);
+assert.match(audioParty, /const visualStartup = options\.visualStartupPromise \|\| \(options\.visualAlreadyManaged[\s\S]*?\? Promise\.resolve\(true\)[\s\S]*?: \(async \(\) =>/);
 assert.match(audioParty, /const audioStartup = primeContinuationAudio/);
 assert.match(audioParty, /recordedProgramme: true/);
 assert.match(audioParty, /startPositionSeconds: initialStartSeconds/);
+assert.match(audioParty, /assertCurrentStart,/);
 assert.match(audioParty, /await Promise\.all\(\[visualStartup, audioStartup\]\)/);
 assert.match(audioParty, /await seekBroadcastVideo\(continuationAudio, state\.offsetSeconds/);
 
