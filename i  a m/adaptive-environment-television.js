@@ -456,7 +456,11 @@
   const FASHION_REVEAL_BUFFER_SECONDS = 8;
   const RADIO_FASHION_REVEAL_BUFFER_SECONDS = 4;
   const RECORDED_PROGRAMME_PRIME_BUFFER_SECONDS = 4;
-  const RECORDED_PROGRAMME_READY_BUFFER_SECONDS = 24;
+  // Start recorded Parties as soon as a short playable reservoir exists. HLS
+  // continues filling the larger background reservoir after sound begins.
+  const RECORDED_PROGRAMME_READY_BUFFER_SECONDS = 4;
+  const RECORDED_PROGRAMME_BACKGROUND_BUFFER_SECONDS = 30;
+  const RECORDED_PROGRAMME_FAST_ENTRY_DRIFT_SECONDS = 8;
   const SEX_ED_RECORDED_PROGRAMME_READY_BUFFER_SECONDS = 4;
   const RADIO_READY_BUFFER_SECONDS = 24;
   const RADIO_LOW_BUFFER_SECONDS = 12;
@@ -4582,7 +4586,7 @@
       lowLatencyMode: false,
       startFragPrefetch: true,
       startLevel: 0,
-      maxBufferLength: recordedProgramme ? 30 : 60,
+      maxBufferLength: recordedProgramme ? RECORDED_PROGRAMME_BACKGROUND_BUFFER_SECONDS : 60,
       maxMaxBufferLength: recordedProgramme ? 60 : 90,
       backBufferLength: 15,
       maxBufferHole: 1.5,
@@ -5543,7 +5547,10 @@
       if (joinSequence !== broadcastJoinSequence || broadcastChannelId !== channelId) return false;
     }
     startBroadcastSynchronization();
-    await synchronizeBroadcastPlayback(true);
+    // Recorded audio has already joined near the shared clock. Let it become
+    // audible immediately and allow the buffered background synchronizer to
+    // tighten any small entry drift without flushing the first playable span.
+    await synchronizeBroadcastPlayback(state.mediaType !== "audio");
     rankMusicShelves();
     window.IAMFirstPartyAnalytics?.record?.("broadcast_join", {
       channel_id: channelId,
@@ -5921,12 +5928,26 @@
         ? window.IAMBroadcastClock?.stateAt(options.broadcastChannelId)
         : null;
       if (state?.trackId === nextTrack.id) {
-        await seekBroadcastVideo(continuationAudio, state.offsetSeconds, {
-          reason: "entry_seek",
-          role: "audio",
-          channelId: options.broadcastChannelId,
-          programmeInstanceId: state.programmeInstanceId,
-        });
+        const entryDriftSeconds = Number(continuationAudio.currentTime || 0) - Number(state.offsetSeconds || 0);
+        document.body.dataset.audioPartyEntryDriftSeconds = entryDriftSeconds.toFixed(3);
+        if (Math.abs(entryDriftSeconds) > RECORDED_PROGRAMME_FAST_ENTRY_DRIFT_SECONDS) {
+          document.body.dataset.audioPartyEntryAlignment = "corrected";
+          await seekBroadcastVideo(continuationAudio, state.offsetSeconds, {
+            reason: "entry_seek",
+            role: "audio",
+            channelId: options.broadcastChannelId,
+            programmeInstanceId: state.programmeInstanceId,
+            driftSeconds: entryDriftSeconds,
+          });
+        } else {
+          document.body.dataset.audioPartyEntryAlignment = "fast_start_tolerance";
+          await synchronizeBroadcastMedia(continuationAudio, state.offsetSeconds, {
+            scope: "broadcast",
+            role: "audio",
+            channelId: options.broadcastChannelId,
+            programmeInstanceId: state.programmeInstanceId,
+          });
+        }
         assertCurrentStart();
       } else if (hasRequestedStart) {
         await seekBroadcastVideo(continuationAudio, Math.max(0, requestedStartSeconds), {

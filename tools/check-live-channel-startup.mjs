@@ -47,13 +47,22 @@ assert.match(recordedAttach, /else \{[\s\S]*?hlsConfig\.liveSyncDurationCount = 
 assert.match(recordedAttach, /radioStreamSemantics = recordedProgramme \? "recorded_programme" : "live_station"/);
 
 const audioParty = functionSource("startAudioLedPartyAttempt", "startRadioStation");
+const joinBroadcast = functionSource("joinBroadcastChannel", "switchMusicTrack");
 assert.match(audioParty, /const visualStartup = options\.visualStartupPromise \|\| \(options\.visualAlreadyManaged[\s\S]*?\? Promise\.resolve\(true\)[\s\S]*?: \(async \(\) =>/);
 assert.match(audioParty, /const audioStartup = primeContinuationAudio/);
 assert.match(audioParty, /recordedProgramme: true/);
 assert.match(audioParty, /startPositionSeconds: initialStartSeconds/);
 assert.match(audioParty, /assertCurrentStart,/);
 assert.match(audioParty, /await Promise\.all\(\[visualStartup, audioStartup\]\)/);
+assert.match(audioParty, /const entryDriftSeconds = Number\(continuationAudio\.currentTime \|\| 0\) - Number\(state\.offsetSeconds \|\| 0\)/);
+assert.match(audioParty, /Math\.abs\(entryDriftSeconds\) > RECORDED_PROGRAMME_FAST_ENTRY_DRIFT_SECONDS/);
+assert.match(audioParty, /audioPartyEntryAlignment = "fast_start_tolerance"/);
+assert.match(audioParty, /audioPartyEntryDriftSeconds = entryDriftSeconds\.toFixed\(3\)/);
+assert.match(audioParty, /await synchronizeBroadcastMedia\(continuationAudio, state\.offsetSeconds/);
 assert.match(audioParty, /await seekBroadcastVideo\(continuationAudio, state\.offsetSeconds/);
+assert.match(controller, /const RECORDED_PROGRAMME_READY_BUFFER_SECONDS = 4;/);
+assert.match(controller, /maxBufferLength: recordedProgramme \? RECORDED_PROGRAMME_BACKGROUND_BUFFER_SECONDS : 60/);
+assert.match(joinBroadcast, /synchronizeBroadcastPlayback\(state\.mediaType !== "audio"\)/);
 
 const radioBufferWait = functionSource("waitForRadioBuffer", "fetchRadioResource");
 assert.match(radioBufferWait, /\["hls-js", "recorded-hls-vod"\]/);

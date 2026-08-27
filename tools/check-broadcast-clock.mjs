@@ -418,7 +418,11 @@ assert.ok(
   "James Bondage must prepare its scheduled audio concurrently with the synchronized visual."
 );
 assert.match(controller, /RADIO_HLS_LIBRARY_LOAD_TIMEOUT_MS = 6000/, "HLS library loading must have an explicit bounded failure.");
-assert.match(controller, /AUDIO_PARTY_START_TIMEOUT_MS = 60000/, "Audio-led James Bondage startup must have enough time to build its full reveal buffer.");
+assert.match(controller, /AUDIO_PARTY_START_TIMEOUT_MS = 60000/, "Audio-led James Bondage startup must retain a bounded recovery window without delaying a healthy first attempt.");
+assert.match(controller, /RECORDED_PROGRAMME_READY_BUFFER_SECONDS = 4/, "Audio-led James Bondage playback must begin from a short four-second reservoir.");
+assert.match(controller, /RECORDED_PROGRAMME_BACKGROUND_BUFFER_SECONDS = 30/, "Recorded party HLS must keep filling a larger reservoir after playback begins.");
+assert.match(controller, /RECORDED_PROGRAMME_FAST_ENTRY_DRIFT_SECONDS = 8/, "A playable recorded party must begin before small entry drift is tightened in the background.");
+assert.match(controller, /synchronizeBroadcastPlayback\(state\.mediaType !== "audio"\)/, "Initial audio-party synchronization must not flush the first playable span.");
 assert.match(controller, /AUDIO_PARTY_MAX_START_ATTEMPTS = 2/, "A recoverable scheduled mix failure must receive one immediate retry.");
 assert.match(controller, /Promise\.race\(\[startup, timedOut\]\)/, "Audio-led party startup must not continue blocking after its deadline.");
 assert.match(controller, /audioPartyPlaybackState = "unavailable"[\s\S]*audioPartyRecovery = sexEdProgramme \? "reopen_sex_ed_episode" : "select_james_bondage_again"/, "An exhausted scheduled mix must expose the correct recovery state for public Parties or private Sex Ed.");

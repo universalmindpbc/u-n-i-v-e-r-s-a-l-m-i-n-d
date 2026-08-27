@@ -680,13 +680,17 @@ const audioBroadcastJoinSource = controller.slice(
 );
 requireCondition(
   audioBroadcastJoinSource.indexOf('const visualStartupPromise = sexEdOwnsVisuals') < audioBroadcastJoinSource.indexOf('const started = await startAudioLedParty') &&
-    audioBroadcastJoinSource.includes('visualStartupPromise,'),
+    audioBroadcastJoinSource.includes('visualStartupPromise,') &&
+    audioBroadcastJoinSource.includes('synchronizeBroadcastPlayback(state.mediaType !== "audio")'),
   'scheduled party audio no longer prepares concurrently with its independent visual layer'
 );
 requireCondition(
   controller.includes('const RECORDED_PROGRAMME_PRIME_BUFFER_SECONDS = 4;') &&
-    controller.includes('const RECORDED_PROGRAMME_READY_BUFFER_SECONDS = 24;'),
-  'recorded audio parties no longer separate fast hidden priming from the twenty-four-second reveal reservoir'
+    controller.includes('const RECORDED_PROGRAMME_READY_BUFFER_SECONDS = 4;') &&
+    controller.includes('const RECORDED_PROGRAMME_BACKGROUND_BUFFER_SECONDS = 30;') &&
+    controller.includes('const RECORDED_PROGRAMME_FAST_ENTRY_DRIFT_SECONDS = 8;') &&
+    controller.includes('maxBufferLength: recordedProgramme ? RECORDED_PROGRAMME_BACKGROUND_BUFFER_SECONDS : 60,'),
+  'recorded audio parties no longer start from a four-second playable reservoir while HLS fills thirty seconds in the background'
 );
 requireCondition(
   continuationPrimeSource.indexOf('if (options.recordedProgramme && continuationAudio.paused)') < continuationPrimeSource.indexOf('const initialBufferSeconds = await waitForRadioBuffer'),
@@ -698,11 +702,14 @@ requireCondition(
   'recorded HLS can reveal after its startup buffer times out shallow'
 );
 requireCondition(
-  audioPartyStartSource.indexOf('const revealBufferSeconds = await waitForRadioBuffer') < audioPartyStartSource.indexOf('continuationAudio.muted = false;') &&
+  audioPartyStartSource.includes('Math.abs(entryDriftSeconds) > RECORDED_PROGRAMME_FAST_ENTRY_DRIFT_SECONDS') &&
+    audioPartyStartSource.includes('audioPartyEntryAlignment = "fast_start_tolerance"') &&
+    audioPartyStartSource.includes('audioPartyEntryDriftSeconds = entryDriftSeconds.toFixed(3)') &&
+    audioPartyStartSource.indexOf('const revealBufferSeconds = await waitForRadioBuffer') < audioPartyStartSource.indexOf('continuationAudio.muted = false;') &&
     audioPartyStartSource.includes('audioPartyRevealBufferSeconds') &&
     audioPartyStartSource.includes('could not rebuild its reveal buffer') &&
     audioPartyStartSource.indexOf('window.clearTimeout(radioRecoveryTimer);') < audioPartyStartSource.indexOf('continuationAudio.muted = false;'),
-  'James Bondage can reveal before rebuilding a safe buffer after its final clock seek'
+  'James Bondage no longer preserves its playable first span or short safe buffer before immediate playback'
 );
 const hlsPlaybackDiagnosticsSource = controller.slice(
   controller.indexOf('function bindRadioPlaybackDiagnostics'),
