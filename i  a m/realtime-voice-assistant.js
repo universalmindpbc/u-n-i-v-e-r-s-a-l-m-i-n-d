@@ -42,6 +42,30 @@
   let captionsVisible = false;
   let lastAssistantTranscript = "";
   const transcriptLines = new Map();
+  const storyTreeToolNames = new Set(["story_tree_progress"]);
+  const storyTreeStages = new Set([
+    "CHALLENGE",
+    "CAUSE I",
+    "CAUSE II",
+    "CAUSE III",
+    "NERVOUS SYSTEM RESET",
+    "SOLUTION I",
+    "SOLUTION II",
+    "SOLUTION III",
+    "BEAUTIFUL NEW WORLD",
+  ]);
+  let activeExperience = "";
+  let experienceHandlers = null;
+  let effectiveSession = null;
+  let sessionCreatedWaiter = null;
+  let sessionUpdateWaiter = null;
+  let experienceMicrophonePaused = false;
+  let experienceMicrophoneSnapshot = null;
+  let storyTreeBasePromptPreserved = false;
+  let storyTreeToolsMerged = false;
+  let storyTreeFunctionCallsHandled = 0;
+  let storyTreeBasePromptCaptured = false;
+  let storyTreeSessionUpdatesSent = 0;
 
   const textureUrl = makeMiniPlanetTexture(0);
   const root = document.createElement("section");
@@ -304,12 +328,31 @@
   }
 
   async function startConversation(options = {}) {
-    if (starting || active) return;
+    if (starting || active) return false;
+    const storyTreeExperience = options.experience === "story_tree";
     starting = true;
     muted = false;
     startupInputGate = false;
     assistantOutputGate = false;
     assistantOutputStarted = false;
+    activeExperience = storyTreeExperience ? "story_tree" : "";
+    experienceHandlers = storyTreeExperience ? {
+      onFunctionCall: typeof options.onFunctionCall === "function" ? options.onFunctionCall : null,
+      onEvent: typeof options.onEvent === "function" ? options.onEvent : null,
+      onEnd: typeof options.onEnd === "function" ? options.onEnd : null,
+    } : null;
+    effectiveSession = null;
+    sessionCreatedWaiter = null;
+    sessionUpdateWaiter = null;
+    experienceMicrophonePaused = false;
+    experienceMicrophoneSnapshot = null;
+    storyTreeBasePromptPreserved = false;
+    storyTreeToolsMerged = false;
+    storyTreeFunctionCallsHandled = 0;
+    storyTreeBasePromptCaptured = false;
+    storyTreeSessionUpdatesSent = 0;
+    delete root.dataset.storyTreeBasePromptPreserved;
+    delete root.dataset.storyTreeToolsMerged;
     lastAssistantTranscript = "";
     transcript.replaceChildren();
     transcriptLines.clear();
@@ -426,7 +469,15 @@
       window.clearTimeout(sessionTimer);
       sessionTimer = window.setTimeout(() => endConversation("Let's pause here for now"), sessionLimitMs);
 
-      if (options.qaPrompt) {
+      if (storyTreeExperience) {
+        await configureStoryTreeSession(options);
+        sendRealtimeEvent({
+          type: "response.create",
+          response: {
+            instructions: options.initialResponse?.instructions || "Begin the Story Tree conversation now.",
+          },
+        });
+      } else if (options.qaPrompt) {
         sendRealtimeEvent({
           type: "conversation.item.create",
           item: {
@@ -444,6 +495,7 @@
           },
         });
       }
+      return true;
     } catch (error) {
       starting = false;
       throw error;
@@ -471,6 +523,204 @@
     return true;
   }
 
+  async function configureStoryTreeSession(options) {
+    const session = await waitForEffectiveSession();
+    const baseInstructions = typeof session.instructions === "string" ? session.instructions : "";
+    if (!baseInstructions.trim()) throw new Error("Universal One's effective instructions were unavailable.");
+    const additions = String(options.instructions || "").trim();
+    if (!additions) throw new Error("Story Tree's scoped instructions were unavailable.");
+    const existingTools = Array.isArray(session.tools) ? session.tools : [];
+    const storyTools = sanitiseStoryTreeTools(options.tools);
+    const existingNames = new Set(existingTools.map((tool) => String(tool?.name || "")).filter(Boolean));
+    if (existingNames.has("story_tree_progress")) {
+      throw new Error("Universal One already has a conflicting Story Tree tool.");
+    }
+    const mergedTools = existingTools.concat(storyTools);
+    const mergedInstructions = `${baseInstructions}\n\n${additions}`;
+    const eventId = `story-tree-session-${Date.now()}-${Math.random().toString(36).slice(2, 9)}`;
+    const updated = waitForStoryTreeSessionUpdate({
+      eventId,
+      baseInstructions,
+      additions,
+      existingTools,
+      storyTools,
+    });
+    if (!sendRealtimeEvent({
+      type: "session.update",
+      event_id: eventId,
+      session: {
+        type: "realtime",
+        instructions: mergedInstructions,
+        tools: mergedTools,
+        tool_choice: "auto",
+      },
+    })) throw new Error("Story Tree could not configure Universal One.");
+    storyTreeSessionUpdatesSent += 1;
+    await updated;
+  }
+
+  function sanitiseStoryTreeTools(tools) {
+    const supplied = Array.isArray(tools) ? tools : [];
+    const progress = supplied.find((tool) => tool?.type === "function" && tool?.name === "story_tree_progress");
+    if (!progress) throw new Error("Story Tree's progress tool was unavailable.");
+    return [{
+      type: "function",
+      name: "story_tree_progress",
+      description: String(progress.description || "Advance the active Story Tree to its next exact stage."),
+      parameters: {
+        type: "object",
+        additionalProperties: false,
+        properties: {
+          stage: {
+            type: "string",
+            enum: Array.from(storyTreeStages),
+          },
+        },
+        required: ["stage"],
+      },
+    }];
+  }
+
+  function waitForEffectiveSession() {
+    if (effectiveSession) return Promise.resolve(effectiveSession);
+    if (sessionCreatedWaiter?.promise) return sessionCreatedWaiter.promise;
+    let resolveWaiter;
+    let rejectWaiter;
+    const promise = new Promise((resolve, reject) => {
+      resolveWaiter = resolve;
+      rejectWaiter = reject;
+    });
+    const timeout = window.setTimeout(() => {
+      sessionCreatedWaiter = null;
+      rejectWaiter(new Error("Universal One's effective session took too long to arrive."));
+    }, 6000);
+    sessionCreatedWaiter = {
+      promise,
+      resolve(session) {
+        window.clearTimeout(timeout);
+        sessionCreatedWaiter = null;
+        resolveWaiter(session);
+      },
+      reject(error) {
+        window.clearTimeout(timeout);
+        sessionCreatedWaiter = null;
+        rejectWaiter(error);
+      },
+    };
+    return promise;
+  }
+
+  function waitForStoryTreeSessionUpdate(expected) {
+    if (sessionUpdateWaiter?.reject) sessionUpdateWaiter.reject(new Error("Story Tree session configuration restarted."));
+    return new Promise((resolve, reject) => {
+      const timeout = window.setTimeout(() => {
+        sessionUpdateWaiter = null;
+        reject(new Error("Universal One did not confirm the Story Tree session."));
+      }, 7000);
+      sessionUpdateWaiter = {
+        expected,
+        resolve(session) {
+          window.clearTimeout(timeout);
+          sessionUpdateWaiter = null;
+          resolve(session);
+        },
+        reject(error) {
+          window.clearTimeout(timeout);
+          sessionUpdateWaiter = null;
+          reject(error);
+        },
+      };
+    });
+  }
+
+  function captureEffectiveSession(event) {
+    if (activeExperience !== "story_tree") return;
+    const session = event?.session;
+    if (!session || typeof session !== "object") return;
+    if (event.type === "session.created") {
+      effectiveSession = session;
+      storyTreeBasePromptCaptured = Boolean(String(session.instructions || "").trim());
+      sessionCreatedWaiter?.resolve?.(session);
+      emitExperienceEvent("session_created", { baseInstructionsPresent: storyTreeBasePromptCaptured });
+      return;
+    }
+    if (event.type !== "session.updated" || !sessionUpdateWaiter) return;
+    const { expected } = sessionUpdateWaiter;
+    const instructions = String(session.instructions || "");
+    const toolIdentities = new Set((Array.isArray(session.tools) ? session.tools : []).map(realtimeToolIdentity).filter(Boolean));
+    const existingToolsPreserved = expected.existingTools.every((tool) => toolIdentities.has(realtimeToolIdentity(tool)));
+    const storyToolsPresent = expected.storyTools.every((tool) => toolIdentities.has(realtimeToolIdentity(tool)));
+    storyTreeBasePromptPreserved = instructions.includes(expected.baseInstructions) && instructions.includes(expected.additions);
+    storyTreeToolsMerged = existingToolsPreserved && storyToolsPresent;
+    root.dataset.storyTreeBasePromptPreserved = String(storyTreeBasePromptPreserved);
+    root.dataset.storyTreeToolsMerged = String(storyTreeToolsMerged);
+    if (!storyTreeBasePromptPreserved || !storyTreeToolsMerged) {
+      sessionUpdateWaiter.reject(new Error("Universal One did not preserve the complete Story Tree session contract."));
+      return;
+    }
+    effectiveSession = session;
+    emitExperienceEvent("session_updated", { basePromptPreserved: true, toolsMerged: true });
+    sessionUpdateWaiter.resolve(session);
+  }
+
+  function realtimeToolIdentity(tool) {
+    const type = String(tool?.type || "");
+    const identifier = type === "mcp"
+      ? String(tool?.server_label || "")
+      : String(tool?.name || "");
+    return type && identifier ? `${type}:${identifier}` : "";
+  }
+
+  function emitExperienceEvent(type, detail = {}) {
+    try { experienceHandlers?.onEvent?.({ type, ...detail }); } catch {}
+  }
+
+  async function routeExperienceFunctionCall(item) {
+    if (activeExperience !== "story_tree" || item?.type !== "function_call") return false;
+    const name = String(item.name || "");
+    const callId = String(item.call_id || "");
+    if (!callId) return true;
+    if (!storyTreeToolNames.has(name)) {
+      sendFunctionCallOutput(callId, { accepted: false, code: "unknown_story_tree_tool" }, true);
+      return true;
+    }
+    let args;
+    try { args = JSON.parse(item.arguments || "{}"); } catch { args = null; }
+    const keys = args && typeof args === "object" && !Array.isArray(args) ? Object.keys(args) : [];
+    const valid = keys.length === 1 && keys[0] === "stage" && storyTreeStages.has(String(args.stage || ""));
+    if (!valid) {
+      sendFunctionCallOutput(callId, { accepted: false, code: "invalid_story_tree_stage" }, true);
+      return true;
+    }
+    let result = {};
+    try {
+      result = await experienceHandlers?.onFunctionCall?.({ name, arguments: JSON.stringify({ stage: args.stage }) }) || {};
+    } catch {
+      result = { accepted: false, code: "story_tree_controller_error" };
+    }
+    const accepted = result.accepted !== false;
+    const output = accepted
+      ? { accepted: true, stage: args.stage }
+      : { accepted: false, code: String(result.code || "story_tree_stage_rejected").slice(0, 48) };
+    const outputSent = sendFunctionCallOutput(callId, output, result.continueResponse !== false);
+    if (accepted && outputSent) storyTreeFunctionCallsHandled += 1;
+    emitExperienceEvent("function_call_completed", { name, stage: args.stage, accepted });
+    return true;
+  }
+
+  function sendFunctionCallOutput(callId, output, continueResponse) {
+    const created = sendRealtimeEvent({
+      type: "conversation.item.create",
+      item: {
+        type: "function_call_output",
+        call_id: callId,
+        output: JSON.stringify(output),
+      },
+    });
+    if (created && continueResponse) sendRealtimeEvent({ type: "response.create" });
+    return created;
+  }
+
   function handleRealtimeEvent(message) {
     let event;
     try {
@@ -482,6 +732,7 @@
     switch (event.type) {
       case "session.created":
       case "session.updated":
+        captureEffectiveSession(event);
         if (active && !muted && !startupInputGate && !assistantOutputGate) setState("listening", "I'm listening");
         break;
       case "input_audio_buffer.speech_started":
@@ -508,6 +759,7 @@
         break;
       case "output_audio_buffer.stopped":
       case "output_audio_buffer.cleared":
+        emitExperienceEvent("assistant_audio_stopped");
         releaseInputAfterAssistantAudio();
         break;
       case "conversation.item.input_audio_transcription.delta":
@@ -530,6 +782,10 @@
         break;
       case "response.content_part.done":
       case "response.output_item.done": {
+        if (event.item?.type === "function_call") {
+          routeExperienceFunctionCall(event.item);
+          break;
+        }
         const completedTranscript = transcriptFromRealtimePayload(event.part || event.item);
         if (completedTranscript && completedTranscript !== lastAssistantTranscript.trim()) {
           lastAssistantTranscript = completedTranscript;
@@ -810,7 +1066,44 @@
 
   function syncMicrophoneTrackState() {
     const enabled = active && !muted && !startupInputGate && !assistantOutputGate;
-    microphoneStream?.getAudioTracks().forEach((track) => { track.enabled = enabled; });
+    const experienceEnabled = enabled && !experienceMicrophonePaused;
+    microphoneStream?.getAudioTracks().forEach((track) => { track.enabled = experienceEnabled; });
+  }
+
+  function setExperienceMicrophonePaused(paused, options = {}) {
+    if (activeExperience !== "story_tree" || !active || !microphoneStream) return false;
+    const tracks = microphoneStream.getAudioTracks();
+    const nextPaused = Boolean(paused);
+    if (nextPaused === experienceMicrophonePaused) return true;
+    if (nextPaused) {
+      experienceMicrophoneSnapshot = new Map(tracks.map((track) => [
+        track,
+        Boolean(track.enabled || (active && !muted && !startupInputGate && assistantOutputGate)),
+      ]));
+      experienceMicrophonePaused = true;
+      tracks.forEach((track) => { track.enabled = false; });
+      setState("muted", options.label || "Nervous System Reset");
+    } else {
+      experienceMicrophonePaused = false;
+      tracks.forEach((track) => {
+        const wasEnabled = experienceMicrophoneSnapshot?.get(track) === true;
+        track.enabled = wasEnabled && active && !muted && !startupInputGate && !assistantOutputGate;
+      });
+      experienceMicrophoneSnapshot = null;
+      setState(muted ? "muted" : "listening", muted ? "Mic muted" : (options.label || "I'm listening"));
+    }
+    return true;
+  }
+
+  function requestExperienceResponse(options = {}) {
+    if (activeExperience !== "story_tree" || !active) return false;
+    engageAssistantOutputGate();
+    const sent = sendRealtimeEvent({
+      type: "response.create",
+      response: options.instructions ? { instructions: String(options.instructions) } : undefined,
+    });
+    if (!sent) releaseInputAfterAssistantAudio();
+    return sent;
   }
 
   function engageAssistantOutputGate(options = {}) {
@@ -834,6 +1127,8 @@
   }
 
   function handleStartError(error) {
+    active = false;
+    starting = false;
     const micDenied = error?.name === "NotAllowedError" || error?.name === "PermissionDeniedError";
     if (micDenied) microphonePermissionState = "denied";
     const message = micDenied
@@ -842,6 +1137,7 @@
     setState("error", message);
     cleanupConnection();
     window.IAMTelevisionAudio?.setVoiceConversationActive?.(false);
+    finishExperience("error");
     window.setTimeout(() => {
       if (!active && !starting) resetInterface();
     }, 4500);
@@ -854,6 +1150,7 @@
     if (label && !options.quiet) setState("ended", label);
     cleanupConnection();
     window.IAMTelevisionAudio?.setVoiceConversationActive?.(false);
+    finishExperience(options.quiet ? "quiet" : "ended");
     if (hadSession && !options.quiet) window.setTimeout(resetInterface, 1100);
     else resetInterface();
   }
@@ -866,6 +1163,13 @@
     startupInputGate = false;
     assistantOutputGate = false;
     assistantOutputStarted = false;
+    experienceMicrophonePaused = false;
+    experienceMicrophoneSnapshot = null;
+    sessionCreatedWaiter?.reject?.(new Error("Universal One's session ended."));
+    sessionCreatedWaiter = null;
+    sessionUpdateWaiter?.reject?.(new Error("Universal One's session ended."));
+    sessionUpdateWaiter = null;
+    effectiveSession = null;
     permissionRecovery.cancelActivation(microphoneFullscreenRecovery);
     microphoneFullscreenRecovery = null;
     voiceRecoveryPresenter.hide();
@@ -878,6 +1182,22 @@
     microphoneStream = null;
     remoteAudio.pause();
     remoteAudio.srcObject = null;
+  }
+
+  function finishExperience(reason) {
+    const wasStoryTree = activeExperience === "story_tree";
+    const onEnd = experienceHandlers?.onEnd;
+    activeExperience = "";
+    experienceHandlers = null;
+    storyTreeBasePromptPreserved = false;
+    storyTreeToolsMerged = false;
+    delete root.dataset.storyTreeBasePromptPreserved;
+    delete root.dataset.storyTreeToolsMerged;
+    if (wasStoryTree) {
+      transcript.replaceChildren();
+      transcriptLines.clear();
+      try { onEnd?.({ reason }); } catch {}
+    }
   }
 
   function resetInterface() {
@@ -927,7 +1247,18 @@
 
   window.IAMRealtimeVoiceAssistant = {
     version: "universal_one_realtime_v5",
+    start(options = {}) {
+      const requested = options.experience === "story_tree"
+        ? options
+        : { microphone: options.microphone !== false };
+      return startConversation(requested).catch((error) => {
+        handleStartError(error);
+        throw error;
+      });
+    },
     end: endConversation,
+    setMicrophonePaused: setExperienceMicrophonePaused,
+    requestResponse: requestExperienceResponse,
     shouldPreflightEntry,
     showEntryPreflight,
     getState() {
@@ -952,6 +1283,13 @@
         state: root.dataset.state,
         pose: root.dataset.pose,
         transcript: transcript.textContent.trim(),
+        experience: activeExperience,
+        experienceMicrophonePaused,
+        storyTreeBasePromptPreserved,
+        storyTreeToolsMerged,
+        storyTreeFunctionCallsHandled,
+        storyTreeBasePromptCaptured,
+        storyTreeSessionUpdatesSent,
       };
     },
     startStagingCheck: qaMode

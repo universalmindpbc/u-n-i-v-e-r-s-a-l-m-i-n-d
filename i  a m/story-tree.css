@@ -1,0 +1,73 @@
+.adaptive-television-story-tree-button {
+  position: relative;
+  min-width: 114px;
+  min-height: 48px;
+  padding: 0 16px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.07);
+  color: rgba(255, 255, 255, 0.86);
+  font: 600 10px/1.1 var(--font-interface, Arial, sans-serif);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: color 180ms ease, border-color 180ms ease, background 180ms ease, box-shadow 280ms ease, transform 180ms ease;
+}
+
+.adaptive-television-story-tree-button:hover,
+.adaptive-television-story-tree-button:focus-visible,
+.adaptive-television-story-tree-button.is-active {
+  border-color: rgba(205, 247, 240, 0.72);
+  background: rgba(169, 231, 222, 0.15);
+  color: #fff;
+  box-shadow: 0 0 28px rgba(135, 239, 222, 0.18);
+  outline: none;
+}
+
+.adaptive-television-story-tree-button:active {
+  transform: translateY(1px);
+}
+
+.adaptive-television-story-tree-button[data-emdr-tooltip]::after {
+  position: absolute;
+  left: 50%;
+  bottom: calc(100% + 13px);
+  width: min(280px, 72vw);
+  padding: 10px 12px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 12px;
+  background: rgba(7, 10, 18, 0.94);
+  color: rgba(255, 255, 255, 0.9);
+  content: attr(data-emdr-tooltip);
+  font: 500 11px/1.45 var(--font-interface, Arial, sans-serif);
+  letter-spacing: 0.02em;
+  text-align: center;
+  text-transform: none;
+  white-space: normal;
+  opacity: 0;
+  pointer-events: none;
+  transform: translate(-50%, 7px);
+  transition: opacity 240ms ease, transform 360ms cubic-bezier(0.22, 0.72, 0.18, 1);
+  z-index: 16;
+}
+
+.adaptive-television-reaction-wallet.is-video-tooltip-armed .adaptive-television-story-tree-button[data-emdr-tooltip]:hover::after,
+.adaptive-television-reaction-wallet.is-video-tooltip-armed .adaptive-television-story-tree-button[data-emdr-tooltip]:focus-visible::after {
+  opacity: 1;
+  transform: translate(-50%, 0);
+}
+
+@media (max-width: 720px) {
+  .adaptive-television-story-tree-button {
+    min-width: 102px;
+    min-height: 44px;
+    padding: 0 13px;
+    font-size: 9px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .adaptive-television-story-tree-button {
+    transition-duration: 1ms !important;
+  }
+}

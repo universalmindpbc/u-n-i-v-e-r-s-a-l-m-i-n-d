@@ -503,6 +503,9 @@
   let programmeFixedMixLevel = null;
   const voiceAssistantBaseVolumes = new Map();
   const voiceAssistantVolumeFrames = new Map();
+  let storyTreeConversationMixTimer = 0;
+  let storyTreeConversationMixGeneration = 0;
+  let storyTreeConversationMixOverride = null;
   let shopArrivalFadeTimer = 0;
   let soundResearchAudio = null;
   let soundResearchGainFrame = 0;
@@ -6647,6 +6650,7 @@
   }
 
   window.addEventListener("iam:care-open", closeReactionWalletSoftly);
+  window.addEventListener("iam:story-tree-open", closeReactionWalletSoftly);
   window.addEventListener("iam:adaptive-sound-panel-opened", () => {
     setReactionWalletOpen(false);
   });
@@ -7066,7 +7070,7 @@
     clearShopArrivalFade();
     const baseline = Math.max(0, Math.min(1, Number(baseVolume) || 0));
     if (voiceAssistantDuckActive) voiceAssistantBaseVolumes.set(media, baseline);
-    const target = baseline * (voiceAssistantDuckActive ? VOICE_ASSISTANT_PROGRAMME_MIX_LEVEL : 1);
+    const target = baseline * (voiceAssistantDuckActive && storyTreeConversationMixOverride !== false ? VOICE_ASSISTANT_PROGRAMME_MIX_LEVEL : 1);
     const startVolume = Number(media.volume) || 0;
     const startedAt = Date.now();
     const fadeDuration = Math.max(0, Number(duration) || 0);
@@ -7095,17 +7099,17 @@
     const baseline = Math.max(0, Math.min(1, Number(baseVolume) || 0));
     if (voiceAssistantDuckActive) voiceAssistantBaseVolumes.set(media, baseline);
     const duckFactor = voiceAssistantDuckActive ? VOICE_ASSISTANT_PROGRAMME_MIX_LEVEL : 1;
-    const target = baseline * duckFactor;
+    const storyTreeDuckFactor = storyTreeConversationMixOverride === false ? 1 : duckFactor;
+    const target = baseline * storyTreeDuckFactor;
     animateVoiceAssistantProgramVolume(media, target, duration);
   }
 
   function setVoiceAssistantDucking(active) {
     const nextActive = Boolean(active);
+    clearStoryTreeConversationMixDelay();
+    storyTreeConversationMixOverride = null;
     voiceAssistantDuckActive = nextActive;
-    const radioIsActiveProgramme = document.body.classList.contains("television-radio-continuation");
-    const programmeMedia = [localVideo];
-    if (radioIsActiveProgramme) programmeMedia.push(continuationAudio);
-    if (sexEdEpisodeVideo && !sexEdEpisodeVideo.paused) programmeMedia.push(sexEdEpisodeVideo);
+    const programmeMedia = voiceAssistantProgrammeMedia();
 
     if (nextActive) {
       programmeMedia.forEach((media) => {
@@ -7128,7 +7132,70 @@
       ? programmeMedia.filter(Boolean).map((media) => media === continuationAudio ? "radio" : "video").join(",")
       : "";
     document.body.dataset.voiceProgrammeDucked = String(nextActive);
+    delete document.body.dataset.storyTreeProgrammeMix;
+    delete document.body.dataset.storyTreeProgrammeMixDelayMs;
+    delete document.body.dataset.storyTreeProgrammeMixDurationMs;
     return voiceAssistantDuckActive;
+  }
+
+  function voiceAssistantProgrammeMedia() {
+    const radioIsActiveProgramme = document.body.classList.contains("television-radio-continuation");
+    const programmeMedia = [localVideo];
+    if (radioIsActiveProgramme) programmeMedia.push(continuationAudio);
+    if (sexEdEpisodeVideo && !sexEdEpisodeVideo.paused) programmeMedia.push(sexEdEpisodeVideo);
+    return programmeMedia.filter(Boolean);
+  }
+
+  function clearStoryTreeConversationMixDelay() {
+    if (storyTreeConversationMixTimer) window.clearTimeout(storyTreeConversationMixTimer);
+    storyTreeConversationMixTimer = 0;
+    storyTreeConversationMixGeneration += 1;
+  }
+
+  function setStoryTreeConversationMix(options = {}) {
+    if (!voiceAssistantDuckActive) return false;
+    const ducked = options.ducked !== false;
+    const delayMs = Math.max(0, Number(options.delayMs) || 0);
+    const durationMs = Math.max(0, Number(options.durationMs) || 0);
+    clearStoryTreeConversationMixDelay();
+    const generation = storyTreeConversationMixGeneration;
+    document.body.dataset.storyTreeProgrammeMix = ducked ? "ducked" : "unducked";
+    document.body.dataset.storyTreeProgrammeMixDelayMs = String(delayMs);
+    document.body.dataset.storyTreeProgrammeMixDurationMs = String(durationMs);
+
+    const applyEnvelope = () => {
+      if (generation !== storyTreeConversationMixGeneration || !voiceAssistantDuckActive) return;
+      storyTreeConversationMixTimer = 0;
+      storyTreeConversationMixOverride = ducked;
+      voiceAssistantProgrammeMedia().forEach((media) => {
+        if (!media || media.muted) return;
+        if (!voiceAssistantBaseVolumes.has(media)) {
+          const fallback = media === continuationAudio ? .68 : 1;
+          voiceAssistantBaseVolumes.set(media, Math.max(Number(media.volume) || 0, fallback));
+        }
+        const baseline = voiceAssistantBaseVolumes.get(media);
+        const target = baseline * (ducked ? VOICE_ASSISTANT_PROGRAMME_MIX_LEVEL : 1);
+        animateVoiceAssistantProgramVolume(media, target, durationMs);
+      });
+    };
+
+    if (delayMs) storyTreeConversationMixTimer = window.setTimeout(applyEnvelope, delayMs);
+    else applyEnvelope();
+    return true;
+  }
+
+  function cancelStoryTreeConversationMix() {
+    clearStoryTreeConversationMixDelay();
+    storyTreeConversationMixOverride = null;
+    const ducked = voiceAssistantDuckActive;
+    voiceAssistantBaseVolumes.forEach((baseline, media) => {
+      const target = baseline * (ducked ? VOICE_ASSISTANT_PROGRAMME_MIX_LEVEL : 1);
+      animateVoiceAssistantProgramVolume(media, target, ducked ? 800 : 1000);
+    });
+    delete document.body.dataset.storyTreeProgrammeMix;
+    delete document.body.dataset.storyTreeProgrammeMixDelayMs;
+    delete document.body.dataset.storyTreeProgrammeMixDurationMs;
+    return true;
   }
 
   function setProgrammeMixLevel(level) {
@@ -8421,6 +8488,8 @@
   window.IAMTelevisionAudio = {
     version: "programme_meter_v1",
     setVoiceConversationActive: setVoiceAssistantDucking,
+    setStoryTreeConversationMix,
+    cancelStoryTreeConversationMix,
     getProgrammeLevel() {
       const { media, source } = soundResearchActiveMedia();
       const measuredLevel = Number(window.IAMEMDR?.getAudioLevel?.());
