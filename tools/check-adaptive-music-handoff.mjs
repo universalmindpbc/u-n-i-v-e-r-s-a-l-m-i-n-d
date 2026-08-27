@@ -1078,7 +1078,9 @@ requireCondition(!controller.includes('WALLET_RESUME_TIMEOUT'), 'wallet resume h
 requireCondition(televisionCss.includes('.adaptive-television-wallet-home::after {\n  content: attr(data-wallet-tooltip) !important;'), 'the wallet-home rollover is no longer rendered from its metadata');
 requireCondition((televisionPage.match(/data-emdr-style-index=/g) || []).length === 4, 'the EMDR wallet does not expose CB, M8, JBH and Stella');
 requireCondition(televisionPage.includes('data-emdr-tooltip="Champagne Bohemia — Xaviera Lopez’s animated GIF experience."'), 'the Champagne Bohemia rollover has not been preserved');
-requireCondition(televisionPage.includes('data-emdr-tooltip="Stella — existing stellar geometric experience."'), 'the Stella rollover has not been preserved');
+requireCondition(televisionPage.includes('data-emdr-tooltip="rave animated GIF experience."'), 'the M8 rollover does not use the approved description');
+requireCondition(televisionPage.includes('data-emdr-tooltip="Bordelle video experience."'), 'the JBH rollover does not use the approved description');
+requireCondition(televisionPage.includes('data-emdr-tooltip="Stella geometric experience."'), 'the Stella rollover does not use the approved description');
 requireCondition(televisionPage.includes('data-wallet-panel="emdr" data-emdr-controls') && !televisionPage.includes('data-wallet-panel="emdr-active"'), 'the approved single-panel EMDR hierarchy has not been restored');
 requireCondition(!televisionPage.includes('adaptive-television-emdr-menu') && !televisionPage.includes('nothing starts until you choose'), 'the superseded neutral EMDR hierarchy is still present');
 requireCondition(restoredEmdrPanel.includes('data-wallet-home') && restoredEmdrPanel.includes('aria-label="Return to wallet home"'), 'the restored EMDR wallet has lost its mandatory home flower');

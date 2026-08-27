@@ -26,6 +26,9 @@ for (const page of [html, altHtml]) {
   expectedButtons.forEach(({ index, key, label }) => {
     assert.match(page, new RegExp(`data-emdr-style-index="${index}" data-emdr-preset="${key}"[^>]*>${label}<\\/button>`));
   });
+  assert.match(page, /data-emdr-preset="m8" data-emdr-tooltip="rave animated GIF experience\."/);
+  assert.match(page, /data-emdr-preset="jbh" data-emdr-tooltip="Bordelle video experience\."/);
+  assert.match(page, /data-emdr-preset="stella" data-emdr-tooltip="Stella geometric experience\."/);
   assert.equal((page.match(/data-emdr-gif-preset-label=/g) || []).length, 3);
 }
 
@@ -36,14 +39,28 @@ const presetMarkup = (key) => gifWorldMarkup.match(new RegExp(`data-emdr-gif-pre
 const cbMarkup = presetMarkup("cb");
 const m8Markup = presetMarkup("m8");
 const jbhMarkup = presetMarkup("jbh");
+const altRootStart = altHtml.indexOf('data-emdr-gif-world');
+const altRootEnd = altHtml.indexOf('adaptive-television-emdr-gif-casing', altRootStart);
+const altGifWorldMarkup = altHtml.slice(altRootStart, altRootEnd);
+const altM8Markup = altGifWorldMarkup.match(/data-emdr-gif-preset="m8"[\s\S]*?(?=<div class="adaptive-television-emdr-gif-grid"|$)/)?.[0] || "";
 assert.equal((cbMarkup.match(/data-emdr-gif-tile/g) || []).length, 6);
-assert.equal((m8Markup.match(/data-emdr-gif-tile/g) || []).length, 6);
+assert.equal((m8Markup.match(/data-emdr-gif-tile/g) || []).length, 33);
+assert.equal((altM8Markup.match(/data-emdr-gif-tile/g) || []).length, 33);
 assert.equal((jbhMarkup.match(/data-emdr-gif-tile/g) || []).length, 6);
 assert.equal((jbhMarkup.match(/<video /g) || []).length, 4);
 assert.equal((jbhMarkup.match(/<img /g) || []).length, 2);
+assert.match(m8Markup, /data-emdr-gif-scroll/);
+assert.match(m8Markup, /data-emdr-gif-progressive/);
+assert.equal((m8Markup.match(/loading="eager"/g) || []).length, 6);
+assert.equal((m8Markup.match(/loading="lazy"/g) || []).length, 27);
 
 const m8LeadOrder = [...m8Markup.matchAll(/ioh-emdr-giphy-(\d{2})\.gif/g)].map((match) => match[1]);
-assert.deepEqual(m8LeadOrder, ["22", "03", "12", "01", "02", "04"]);
+assert.deepEqual(m8LeadOrder.slice(0, 6), ["22", "03", "12", "01", "02", "04"]);
+const m8Sources = [...m8Markup.matchAll(/ioh-emdr-(?:giphy-\d{2}|hexeosis)\.gif/g)].map((match) => match[0]);
+assert.equal(m8Sources.length, 33);
+assert.equal(new Set(m8Sources).size, 33);
+assert.equal(m8Sources.some((source) => source.includes("giphy-31")), false);
+assert.equal(m8Sources.at(-1), "ioh-emdr-hexeosis.gif");
 
 const fashionPairings = [
   ["fashion-restore", ["jacquemus-le-coup-de-soleil", "chanel-paris-rooftops"]],
@@ -60,8 +77,13 @@ fashionPairings.forEach(([channelId, expectedRunways]) => {
 assert.match(gifRuntime, /setPreset,/);
 assert.match(gifRuntime, /tile\.tagName === "VIDEO"/);
 assert.match(gifRuntime, /detail: \{ active: state\.active, preset: state\.preset \}/);
+assert.match(gifRuntime, /panel\.hasAttribute\("data-emdr-gif-progressive"\)/);
+assert.match(gifRuntime, /dataset\.emdrGifReady = "progressive"/);
 assert.match(styles, /\.adaptive-television-emdr-gif-grid\.is-active/);
 assert.match(styles, /\.adaptive-television-emdr-gif-grid img,[\s\S]*?\.adaptive-television-emdr-gif-grid video/);
+assert.match(styles, /\.adaptive-television-emdr-gif-grid\[data-emdr-gif-scroll\][\s\S]*?overflow-y: auto/);
+assert.match(styles, /overscroll-behavior-y: contain/);
+assert.match(styles, /touch-action: pan-y/);
 
 const gifFiles = fs.readdirSync(sourceDirectory).filter((name) => name.endsWith(".gif")).sort();
 assert.equal(gifFiles.length, 33);

@@ -26,6 +26,7 @@
         panel,
         tiles,
         sources: tiles.map((tile) => new URL(tile.dataset.src, document.baseURI).href),
+        progressive: panel.hasAttribute("data-emdr-gif-progressive"),
       });
     });
 
@@ -46,6 +47,13 @@
     const preset = presetState(key);
     if (!preset) return Promise.resolve([]);
     if (state.preloadPromises.has(preset.key)) return state.preloadPromises.get(preset.key);
+
+    if (preset.progressive) {
+      preset.panel.dataset.emdrGifReady = "progressive";
+      const progressivePromise = Promise.resolve(preset.tiles.map(() => null));
+      state.preloadPromises.set(preset.key, progressivePromise);
+      return progressivePromise;
+    }
 
     const preloadPromise = Promise.all(preset.tiles.map(async (tile, index) => {
       if (tile.tagName !== "IMG") return null;

@@ -684,7 +684,7 @@ body.television-radio-continuation .adaptive-television-fashion-video {
   display: block;
 }
 
-/* The themed EMDR presets share six square animations around one silent runway
+/* The themed EMDR presets place square animations around one silent runway
    source, mirrored exactly into the central black fashion casing. */
 .adaptive-television-room {
   --emdr-gif-casing-gap: clamp(10px, .8vw, 24px);
@@ -692,6 +692,7 @@ body.television-radio-continuation .adaptive-television-fashion-video {
   --emdr-gif-tile-size: min(24vw, 42vh, 720px);
   --emdr-gif-front-width: min(45vw, 80vh);
   --emdr-gif-front-height: min(25.3125vw, 45vh);
+  --emdr-gif-scroll-edge: max(16px, calc((100vh - var(--emdr-gif-tile-size) - var(--emdr-gif-tile-size) - var(--emdr-gif-grid-gap)) / 2));
 }
 
 .adaptive-television-emdr-gif-world {
@@ -730,6 +731,33 @@ body.television-radio-continuation .adaptive-television-fashion-video {
   visibility: visible;
 }
 
+.adaptive-television-emdr-gif-grid[data-emdr-gif-scroll] {
+  inset: 0;
+  box-sizing: border-box;
+  grid-template-rows: none;
+  grid-auto-rows: var(--emdr-gif-tile-size);
+  align-content: start;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  padding-block: var(--emdr-gif-scroll-edge);
+  overflow-x: hidden;
+  overflow-y: auto;
+  overscroll-behavior-y: contain;
+  scrollbar-color: rgba(255, 255, 255, .42) transparent;
+  scrollbar-gutter: stable;
+  scrollbar-width: thin;
+  touch-action: pan-y;
+  pointer-events: auto;
+  transform: none;
+  -webkit-overflow-scrolling: touch;
+}
+
+.adaptive-television-emdr-gif-grid[data-emdr-gif-scroll]:focus-visible {
+  outline: 2px solid rgba(255, 255, 255, .72);
+  outline-offset: -7px;
+}
+
 .adaptive-television-emdr-gif-grid img,
 .adaptive-television-emdr-gif-grid video {
   display: block;
@@ -750,6 +778,7 @@ body.television-radio-continuation .adaptive-television-fashion-video {
   height: var(--emdr-gif-front-height);
   background: rgba(0, 0, 0, .65);
   padding: var(--emdr-gif-casing-gap);
+  pointer-events: none;
   transform: translate(-50%, -50%);
 }
 
