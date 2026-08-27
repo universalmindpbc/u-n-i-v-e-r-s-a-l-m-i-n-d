@@ -167,7 +167,19 @@
     if (qaScenario === "programme-additions") {
       return {
         microphone: false,
-        qaPrompt: "From the frozen 27 August 2026 programme additions, group all 21 exact public titles and credits under Champagne Bohemia Parties, Inner Planes Parties, james bondage Videos, modul8 infinity Parties, and modul8 infinity Videos. Explain the strict Techno Llama/Cercle alternation, the strategic five-premiere modul8 weekly rotation, the Lisa placement, and the source boundary. Do not invent tracklists, unnamed performers, dates, venues, themes, rights or editorial claims beyond the guide.",
+        qaPrompt: "From the final 27 August 2026 programme additions, group all 21 exact public titles and credits under Champagne Bohemia Parties, Inner Planes Parties, james bondage Videos, modul8 infinity Parties, and modul8 infinity Videos. Explain the strict Techno Llama/Cercle alternation, the strategic five-premiere modul8 weekly rotation, the Lisa placement, and the evidence-safe source boundary. Do not invent tracklists, unnamed performers, themes, rights or editorial claims beyond the guide.",
+      };
+    }
+    if (qaScenario === "media-provenance") {
+      return {
+        microphone: false,
+        qaPrompt: "For the 21 Ready programme additions, state the exact public identities, Stream UIDs and encoded durations. Explain that 19 records have exact verified YouTube title/channel matches while Sasha and Flume are non-YouTube source-neutral masters. For Sasha and Flume, preserve the supplied titles and filenames, identify Google Search only as Ben's discovery method, treat VK only as his unverified recollection, and invent no host record.",
+      };
+    }
+    if (qaScenario === "emdr-live") {
+      return {
+        microphone: false,
+        qaPrompt: "Describe the four EMDR presets using their exact current tooltip strings. State which behaviour is implemented and live on staging, including the M8 39-GIF seven-page layout, the final boxed Hexeosis, the JBH media count, internal-only paging and the central viewer's 16:9 aspect-fill behaviour. Do not invent any unavailable control or session state.",
       };
     }
     if (qaScenario === "comedy-programming") {
@@ -252,6 +264,12 @@
       return {
         microphone: false,
         qaPrompt: "Does the entire Heart Rate recommendation flow stay on my device? Briefly distinguish camera-video processing from the current measurement handoff, including its first-party encryption, lifetime, single-use deletion, session storage and OpenAI boundary. Do not name the biometric vendor.",
+      };
+    }
+    if (qaScenario === "privacy-boundary") {
+      return {
+        microphone: false,
+        qaPrompt: "Tell me exactly what Universal One can and cannot see in this voice session. Be explicit about private self-report, raw Heart Rate, recommendation rationale, hidden inference state and unavailable session data, and do not claim access you have not received.",
       };
     }
     if (qaScenario === "sound-research") {

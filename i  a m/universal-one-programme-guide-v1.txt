@@ -22,7 +22,7 @@ THE FOUR SEEDING SESSIONS + SAFETY CUSHION
 
 - Music-room identity: ambient / sleep / sunrise.
 - Videos currently seed the identity with Madonna “Frozen”, Björk “Hyperballad”, and Flume “Tiny Cities”.
-- Parties alternate six Caroline Chase (The Techno Llama) live sets with the two existing Cercle programmes by Max Richter and Ólafur Arnalds. The two Cercle programmes repeat to preserve the strict Techno Llama → Cercle alternation.
+- Parties alternate six Caroline Chang (Techno Llama) live sets with the two existing Cercle programmes by Max Richter and Ólafur Arnalds. The two Cercle programmes repeat to preserve the strict Techno Llama → Cercle alternation.
 - Radio rotates Café del Mar Calm and NTS Slow Focus.
 - Difference in one line: Inner Planes is the ambient, sleep and sunrise room.
 
@@ -64,9 +64,10 @@ FROZEN 27 AUGUST 2026 PROGRAMME ADDITIONS
 
 Source boundary:
 
-- The authoritative source for these 21 programme records is Ben’s locally supplied MP4 master plus Ben’s requested public title, credit and routing. A filename establishes only the title/credit/event facts explicitly recorded below.
+- The authoritative playback records are the 21 Ready Cloudflare Stream encodes, the current programme catalogue, and the final media-provenance ledger. Nineteen records have an exact duration-matched YouTube title and channel. Sasha and Flume are explicitly non-YouTube, source-neutral masters.
+- Ben found the Sasha and Flume masters through Google Search and remembers VK as the likely host, but that recollection is unverified. Never claim a VK URL, host account, uploader, channel, video ID or verified provenance for either master. Preserve only their supplied programme titles and master filenames.
 - Do not infer a tracklist, unnamed performer, venue fact, date fact, theme, mood, narrative, rights position or editorial claim. If the guide does not state it, say that the supplied catalogue does not establish it.
-- All durations are approximate source-master durations. The schedule position describes the shared wheel, not proof that a particular item is playing at the visitor’s current moment.
+- The durations below are encoded Cloudflare durations. All 21 records are Ready and have verified public HLS and DASH playback. The schedule position describes the shared wheel, not proof that a particular item is playing at the visitor’s current moment.
 
 Champagne Bohemia · Parties:
 
@@ -75,37 +76,63 @@ Champagne Bohemia · Parties:
 
 Inner Planes · Parties:
 
-- All six new live sets are credited to Caroline Chase (The Techno Llama): “Ambient Techno and Soft Rave Energy” (about 1:04:27); “Ambient Techno to Zen Out To” (about 1:03:41); “Cosy Ambient Techno by My Fireplace” (about 1:10:49); “Dreamy Ambient Techno in My Garden” (about 59:52); “Warm Cosmic Dub Techno & Electronica to Remind You Everything Is Going to Be OK” (about 56:38); and “Zen Mode Electronica Mix for Clarity” (about 1:02:43).
+- All six new live sets are credited to Caroline Chang (Techno Llama), with exact Techno Llama channel titles: “Ambient Techno And Soft Rave Energy” (about 1:04:27); “Ambient Techno To Zen Out To” (about 1:03:41); “Cosy Ambient Techno By My Fireplace” (about 1:10:49); “Dreamy Ambient Techno In My Garden” (about 59:52); “Warm Cosmic Dub Techno & Electronica To Remind You Everything Is Going To Be OK” (about 56:38); and “Zen Mode Electronica Mix For Clarity” (about 1:02:43).
 - Exact merged wheel: Techno Llama “Ambient Techno and Soft Rave Energy” → Max Richter Cercle Odyssey → Techno Llama “Ambient Techno to Zen Out To” → Ólafur Arnalds Hafursey Cercle → Techno Llama “Cosy Ambient Techno by My Fireplace” → Max Richter → Techno Llama “Dreamy Ambient Techno in My Garden” → Ólafur Arnalds → Techno Llama “Warm Cosmic Dub Techno & Electronica to Remind You Everything Is Going to Be OK” → Max Richter → Techno Llama “Zen Mode Electronica Mix for Clarity” → Ólafur Arnalds.
 - The released source has two existing Cercle programmes. Repeating those two, rather than inventing a third, preserves Ben’s requested strict Techno Llama → Cercle alternation.
 
 james bondage · Videos:
 
-- The Cranberries — “Zombie” — music video — about 5:07.
+- The Cranberries — “Zombie (Official Music Video)” — music video — about 5:07.
 - Soundgarden — “Black Hole Sun” — music video — about 5:20.
-- Rage Against the Machine — “Killing in the Name (Live, 1993)” — live performance — about 5:31.
-- Nirvana — “Smells Like Teen Spirit” — music video — about 4:38.
-- Linkin Park — “In the End” — music video — about 3:38.
+- Rage Against The Machine — “Killing In The Name - 1993” — live performance — about 5:31.
+- Nirvana — “Smells Like Teen Spirit (Official Music Video)” — music video — about 4:38.
+- Linkin Park — “In The End [Official HD Music Video]” — music video — about 3:38.
 - Justice — “Generator (Live at Accor Arena 2024)” — live performance — about 8:05.
-- Evanescence — “Bring Me to Life” — music video — about 4:14.
+- Evanescence — “Bring Me To Life (Official HD Music Video) ft. Paul McCoy” — music video — about 4:14.
 - Eminem — “Lose Yourself” — music video — about 5:28.
 - Exact merged flow: U2 “Numb” → The Cranberries → Soundgarden → Nirvana → Rage Against the Machine → Linkin Park “In the End” → Linkin Park “Numb” official → Linkin Park “Numb” live 2024 → Evanescence → Charli XCX “House” featuring John Cale → Justice → Nine Inch Noize “Closer” live → Eminem.
 
 modul8 infinity · Parties:
 
 - Flume — “Live at Coachella 2022” — live set — about 1:01:14.
-- Fred again.. & Thomas Bangalter — “USB002, Alexandra Palace, London (27 February 2026)” — live set — about 1:56:23.
-- Ricardo Villalobos — “Circoloco DC-10 Ibiza (20 July 2026)” — live set — about 1:16:24.
+- Fred again.. & Thomas Bangalter — “(USB002, Alexandra Palace, London 27 February 2026)” — live set — about 1:56:23.
+- Ricardo Villalobos — “Live from Circoloco DC-10 Ibiza (20.07.26 Garden)” — live set — about 1:16:24.
 - Rihanna — “Global Citizens Festival 2016” — live set — about 1:07:55.
-- Skrillex, Fred again.. & Four Tet — “Coachella” — live set — about 1:30:33.
+- Four Tet x Fred again x Skrillex — “Coachella 2023” — live set — about 1:30:33.
 - These are strategic single-play premieres replacing one repeat each, not five additions at the end: Rihanna at P1:13; Ricardo Villalobos at P1:21; Flume at P2:02; Fred again.. & Thomas Bangalter at P3:04; Skrillex, Fred again.. & Four Tet at P3:22.
 - The five rotated existing programmes—Anfisa Letyago at DJ Mag HQ, Cassy at Sunday School, Pete Cannon, Lilly Palmer at DJ Mag HQ and Boys Noize at Coachella—retain three weekly plays. Each new premiere plays once; all other programmes retain four. The shared cycle remains 108 occurrences and 601,325.68 seconds.
 - Approximate premiere starts: Rihanna Monday 19:28 Sydney / 11:28 Ibiza / 02:28 Los Angeles; Ricardo Tuesday 08:06 Sydney / 00:06 Ibiza / Monday 15:06 Los Angeles; Flume Tuesday 19:27 Sydney / 11:27 Ibiza / 02:27 Los Angeles; Fred again.. & Thomas Bangalter Thursday 17:58 Sydney / 09:58 Ibiza / 00:58 Los Angeles; Skrillex, Fred again.. & Four Tet Friday 21:27 Sydney / 13:27 Ibiza / 04:27 Los Angeles.
 
 modul8 infinity · Videos:
 
-- Lisa — “Lisa Rockstar Live” — live performance — approximately 3 minutes 18 seconds.
+- Lisa — “Rockstar Live” — live performance — approximately 3 minutes 18 seconds.
 - Exact merged placement: after Sampa the Great “Energy” and before PinkPantheress “Illegal [Live at Glastonbury]”.
+
+Authoritative Ready Stream inventory and provenance:
+
+1. Sasha — “Renaissance Engage (10 May 2020)” — UID d9dd7eec6a9fdb8b43b4f3ab2cc41344 — 7766.0 seconds — source-neutral non-YouTube master; filename “Sasha - Live @ Renaissance Engage [10.05.2020].mp4”.
+2. Caroline Chang (Techno Llama) — “Ambient Techno And Soft Rave Energy” — UID 0c2fcc1ddcafa80e76adc7d843394cf9 — 3866.9 seconds — verified YouTube channel Techno Llama, video S6eVfsCfKT0.
+3. Caroline Chang (Techno Llama) — “Ambient Techno To Zen Out To” — UID d53efb58d29b044ad5140819bce72d21 — 3820.6 seconds — verified YouTube channel Techno Llama, video dO4_w4jq06o.
+4. Caroline Chang (Techno Llama) — “Cosy Ambient Techno By My Fireplace” — UID df1071665628a2365086ae293a304a46 — 4248.7 seconds — verified YouTube channel Techno Llama, video l2HWW72nOu0.
+5. Caroline Chang (Techno Llama) — “Dreamy Ambient Techno In My Garden” — UID 821c1e2fb1827c9465371baa2506077d — 3591.7 seconds — verified YouTube channel Techno Llama, video XfrJTAW-lAs.
+6. Caroline Chang (Techno Llama) — “Warm Cosmic Dub Techno & Electronica To Remind You Everything Is Going To Be OK” — UID cdf0e0493b8a9d8f3c475c1315f2a4c7 — 3397.5 seconds — verified YouTube channel Techno Llama, video TlKL0kWqg0Q.
+7. Caroline Chang (Techno Llama) — “Zen Mode Electronica Mix For Clarity” — UID 32d7f751c857c069a49d9a97663f6733 — 3762.9 seconds — verified YouTube channel Techno Llama, video rUBsfWIrSw4.
+8. The Cranberries — “Zombie (Official Music Video)” — UID a4c7f32d8a55b895f366415eab2a64ec — 307.1 seconds — verified YouTube channel TheCranberriesTV, video 6Ejga4kJUts.
+9. Soundgarden — “Black Hole Sun” — UID dcffe2ab7cd4d9ad0defc6eb6931cd7e — 320.0 seconds — verified YouTube channel Soundgarden, video 3mbBbFH9fAg.
+10. Rage Against The Machine — “Killing In The Name - 1993” — UID 580b95f8e44b4e4df3ae00a253dda78f — 330.6 seconds — verified YouTube channel Raymond JE, video 8de2W3rtZsA.
+11. Nirvana — “Smells Like Teen Spirit (Official Music Video)” — UID 63dd678d5b3b97d939c7574d34abd149 — 278.3 seconds — verified YouTube channel Nirvana, video hTWKbfoikeg.
+12. Linkin Park — “In The End [Official HD Music Video]” — UID 83c04d9f5c9b3da6593304ca218c55b9 — 218.2 seconds — verified YouTube channel Linkin Park, video eVTXPUF4Oz4.
+13. Justice — “Generator (Live at Accor Arena 2024)” — UID 01203217f312c66cf34b1e7dcb7b50fa — 485.1 seconds — verified YouTube channel Justice, video zL8fMWUfRz8.
+14. Evanescence — “Bring Me To Life (Official HD Music Video) ft. Paul McCoy” — UID 2fd05c7a92ddd5756382f2e8151c2e9d — 253.8 seconds — verified YouTube channel Evanescence, video 3YxaaGgTQYM.
+15. Eminem — “Lose Yourself” — UID 40fb4e0f25bbcccf5bd3c32dbc9032c2 — 327.4 seconds — verified YouTube channel EminemMusic, video xFYQQPAOz7Y.
+16. Flume — “Live at Coachella 2022” — UID b0de082228283cad4622f006441e9b6c — 3673.9 seconds — source-neutral non-YouTube master; filename “Flume - Live at Coachella 2022.mp4”.
+17. Fred again.. & Thomas Bangalter — “(USB002, Alexandra Palace, London 27 February 2026)” — UID d363baea8bab02bd0619f5fff9025656 — 6983.0 seconds — verified YouTube channel Fred again . ., video gfF8jzBVWvM.
+18. Ricardo Villalobos — “Live from Circoloco DC-10 Ibiza (20.07.26 Garden)” — UID bc66fdc01cfd6c4526e2ea4466e922c5 — 4583.7 seconds — verified YouTube channel CIRCOLOCO, video Lat6ygwFyNE.
+19. Rihanna — “Global Citizens Festival 2016” — UID 0fa0e0d86bb7e393a9ba5bc2583a1bc1 — 4074.5 seconds — verified YouTube channel GNIGHT, video h1qDNYn46ys.
+20. Four Tet x Fred again x Skrillex — “Coachella 2023” — UID b87f4940a585a3fac07374be9e38ddb7 — 5432.9 seconds — verified YouTube channel Brassado, video mOWfB1_yM-c.
+21. Lisa — “Rockstar Live” — UID 308967a1c2121caaa65455ddf60d8289 — 197.9 seconds — verified YouTube channel LLOUD Official, video mOLAtBo3mHk.
+
+- The first-party Stream manifest is the authority for UID, readiness and encoded duration. The media-provenance ledger is the authority for source branding. Never transfer a verified YouTube channel or video identity from one record to another.
 
 QUICK COMPARISON
 
@@ -456,6 +483,23 @@ Core arc:
 - Source coverage is limited to the public description. Do not invent client stories, business figures, practices, credentials or safety advice that the guide does not establish.
 - The programme is an adult career profile, not personalised kink instruction, financial advice or an invitation to imitate a practice without consent, preparation and appropriate professional knowledge.
 
+EMDR · LIVE PRESETS AND CENTRAL VIEWER
+
+- The EMDR presets and central-viewer aspect-fill behaviour described here are implemented and live on staging.
+- CB: exact tooltip “Champagne Bohemia — Xaviera Lopez’s animated GIF experience.” It is the Champagne Bohemia six-GIF experience.
+- M8: exact tooltip “modul8 infinity — Hexeosis animated GIF experience.” It contains 39 Hexeosis GIFs in exact order across seven discrete settled pages: six pages of six GIFs in a centred 3 × 2 grid, then one final centred page of three.
+- M8 scrolls internally while the page, player and casing remain fixed. At a settled page, no adjacent page or partial extra row is visible. The final transparent Hexeosis is contained in a dark bordered square.
+- JBH: exact tooltip “James Bondage Health — Bordelle animated GIF experience.” It contains four Bordelle videos and two GIFs.
+- Stella: exact tooltip “Stella geometric experience.”
+- The central music-video renderer uses aspect-fill inside the exact 16:9 frame across representative source aspect ratios and Fashion/Music crossfade positions, so the frame does not show pillarbox or letterbox edges.
+- Describe only these verified live controls and behaviours. Do not invent an unavailable control, session state, questionnaire, geometry or interaction.
+
+UNIVERSAL ONE VISIBILITY AND PRIVACY
+
+- Universal One can use only the public guides and the live context explicitly supplied to its current voice session.
+- It cannot see a visitor’s private self-report, raw Heart Rate, recommendation rationale, hidden inference state or unavailable session data. Never imply otherwise.
+- Current self-report remains the primary recommendation evidence. Optional current Heart Rate is bounded supporting or conflicting evidence; it cannot select content or sound alone, and skipping it does not block the experience.
+
 ANSWERING PATTERNS
 
 - If asked to compare the music architecture, identify the four Seeding Sessions first, then describe safety cushion separately as the additional 24/7 music-video channel.
@@ -470,6 +514,9 @@ ANSWERING PATTERNS
 - If asked what appears behind Jacqueline Michelle, say that Karl Lagerfeld’s iconic “The Making of the 2011 Pirelli Calendar” screens subtly as the editorial background visual; it is not the episode source or subject.
 - If asked to compare episodes 09 and 10, explain that both discuss subjective altered states in consensual BDSM, while episode 09 supplies Alesandra Madison’s five-stage framework and episode 10 is a shorter subspace/topspace introduction with more limited public source coverage. Centre prior negotiation, continuing consent, signals, stopping and aftercare; do not coach high-risk techniques.
 - If asked about episodes 11–14, disclose the evidence boundary: episode 11 includes anecdotal physiological claims and sponsorship; episode 12 is philosophical analogy; episode 13 uses largely unsupported neuroscience language; episode 14 is supported only by its public career-profile description.
+- If asked about the 27 August additions, use the final public identities, Ready Stream UIDs and encoded durations above. Say that 19 source records are exact YouTube matches and that Sasha and Flume are source-neutral, non-YouTube masters. Mention Google Search only as Ben’s discovery method and VK only as his unverified recollection; never invent a host record.
+- If asked about EMDR presets, use the four exact tooltip strings and describe the verified M8 39-GIF paging, boxed final Hexeosis, JBH four-video/two-GIF mix, and central-viewer aspect-fill behaviour as implemented and live on staging.
+- If asked what private information Universal One can see, say it does not receive the visitor’s private self-report, raw Heart Rate, recommendation rationale, hidden inference state or unavailable session data.
 - If asked “what does the episode say?”, attribute the answer to the episode or named speaker and separate personal/spiritual testimony from evidence.
 - If asked for a transcript quote, keep it very short, identify the speaker or source where known, and prefer a paraphrase.
 - If the source notes do not contain the requested detail, say that the guide does not establish it. Never invent a timestamp, quotation, credential or scientific conclusion.

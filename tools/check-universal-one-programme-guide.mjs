@@ -11,6 +11,8 @@ const read = (relativePath) => fs.readFileSync(path.join(root, relativePath), "u
 const guide = read("i  a m/universal-one-programme-guide-v1.txt");
 const portalGuide = read("i  a m/universal-one-portal-guide-v1.txt");
 const sources = JSON.parse(read("i  a m/universal-one-programme-sources-v1.json"));
+const mediaManifest = JSON.parse(read("cloudflare-stream-new-videos-20260827-manifest.json"));
+const provenanceLedger = JSON.parse(read("youtube-branding-ledger-20260827.json"));
 const schedule = JSON.parse(read("i  a m/broadcast-schedule-v1.json"));
 const programmeCatalogueSource = read("i  a m/programme-catalogue-v1.js");
 const index = read("i  a m/index.html");
@@ -42,7 +44,12 @@ assert.equal(programmeBatchSource?.routing_verified, true);
 
 const additionBatch = sources.programme_addition_batch;
 assert.equal(additionBatch?.editorial_inventory_frozen, true);
-assert.equal(additionBatch?.stream_uids_pending, true);
+assert.equal(additionBatch?.stream_uids_pending, false);
+assert.equal(additionBatch?.ready_count, 21);
+assert.equal(additionBatch?.hls_and_dash_verified_count, 21);
+assert.equal(additionBatch?.verified_youtube_count, 19);
+assert.equal(additionBatch?.source_neutral_non_youtube_count, 2);
+assert.equal(additionBatch?.unresolved_count, 0);
 assert.equal(additionBatch?.inventory?.length, 21);
 assert.deepEqual(additionBatch.inventory.map((item) => item.number), Array.from({ length: 21 }, (_, index) => index + 1));
 assert.deepEqual(
@@ -61,31 +68,44 @@ assert.deepEqual(
   additionBatch.inventory.map((item) => `${item.credit} — ${item.title}`),
   [
     "Sasha — Renaissance Engage (10 May 2020)",
-    "Caroline Chase (The Techno Llama) — Ambient Techno and Soft Rave Energy",
-    "Caroline Chase (The Techno Llama) — Ambient Techno to Zen Out To",
-    "Caroline Chase (The Techno Llama) — Cosy Ambient Techno by My Fireplace",
-    "Caroline Chase (The Techno Llama) — Dreamy Ambient Techno in My Garden",
-    "Caroline Chase (The Techno Llama) — Warm Cosmic Dub Techno & Electronica to Remind You Everything Is Going to Be OK",
-    "Caroline Chase (The Techno Llama) — Zen Mode Electronica Mix for Clarity",
-    "The Cranberries — Zombie",
+    "Caroline Chang (Techno Llama) — Ambient Techno And Soft Rave Energy",
+    "Caroline Chang (Techno Llama) — Ambient Techno To Zen Out To",
+    "Caroline Chang (Techno Llama) — Cosy Ambient Techno By My Fireplace",
+    "Caroline Chang (Techno Llama) — Dreamy Ambient Techno In My Garden",
+    "Caroline Chang (Techno Llama) — Warm Cosmic Dub Techno & Electronica To Remind You Everything Is Going To Be OK",
+    "Caroline Chang (Techno Llama) — Zen Mode Electronica Mix For Clarity",
+    "The Cranberries — Zombie (Official Music Video)",
     "Soundgarden — Black Hole Sun",
-    "Rage Against the Machine — Killing in the Name (Live, 1993)",
-    "Nirvana — Smells Like Teen Spirit",
-    "Linkin Park — In the End",
+    "Rage Against The Machine — Killing In The Name - 1993",
+    "Nirvana — Smells Like Teen Spirit (Official Music Video)",
+    "Linkin Park — In The End [Official HD Music Video]",
     "Justice — Generator (Live at Accor Arena 2024)",
-    "Evanescence — Bring Me to Life",
+    "Evanescence — Bring Me To Life (Official HD Music Video) ft. Paul McCoy",
     "Eminem — Lose Yourself",
     "Flume — Live at Coachella 2022",
-    "Fred again.. & Thomas Bangalter — USB002, Alexandra Palace, London (27 February 2026)",
-    "Ricardo Villalobos — Circoloco DC-10 Ibiza (20 July 2026)",
+    "Fred again.. & Thomas Bangalter — (USB002, Alexandra Palace, London 27 February 2026)",
+    "Ricardo Villalobos — Live from Circoloco DC-10 Ibiza (20.07.26 Garden)",
     "Rihanna — Global Citizens Festival 2016",
-    "Skrillex, Fred again.. & Four Tet — Coachella",
-    "Lisa — Lisa Rockstar Live",
+    "Four Tet x Fred again x Skrillex — Coachella 2023",
+    "Lisa — Rockstar Live",
   ],
 );
 assert.match(additionBatch.knowledge_boundary, /Do not infer tracklists, unnamed performers/);
 assert.match(guide, /FROZEN 27 AUGUST 2026 PROGRAMME ADDITIONS/);
 assert.match(guide, /shared cycle remains 108 occurrences and 601,325\.68 seconds/);
+assert.equal(mediaManifest.assetCount, 21);
+assert.equal(mediaManifest.readyToStreamCount, 21);
+assert.equal(provenanceLedger.verifiedYouTubeCount, 19);
+assert.equal(provenanceLedger.sourceNeutralCount, 2);
+assert.equal(provenanceLedger.unresolvedCount, 0);
+const manifestEntries = Object.values(mediaManifest.files);
+assert.deepEqual(additionBatch.inventory.map((item) => item.cloudflare_uid), manifestEntries.map((item) => item.uid));
+assert.deepEqual(additionBatch.inventory.map((item) => item.duration_seconds), manifestEntries.map((item) => item.duration));
+assert.ok(additionBatch.inventory.every((item) => item.stream_ready === true));
+assert.equal(additionBatch.inventory[0].provenance_status, "source_neutral_non_youtube");
+assert.equal(additionBatch.inventory[15].provenance_status, "source_neutral_non_youtube");
+assert.match(additionBatch.knowledge_boundary, /Google Search/);
+assert.match(additionBatch.knowledge_boundary, /VK is only Ben's unverified recollection/);
 
 const catalogueWindow = {};
 new vm.Script(programmeCatalogueSource, { filename: "programme-catalogue-v1.js" }).runInNewContext({ window: catalogueWindow });
@@ -175,6 +195,33 @@ assert.match(guide, /It currently contains fourteen conversations and instructio
 assert.match(sources.use_policy.storage, /full third-party transcripts are not stored/);
 assert.ok(guide.length < 50000, "programme guide should remain a curated briefing rather than a transcript copy");
 
+const emdrSource = sources.programme_sources.find((source) => source.id === "emdr-live-presets");
+const canonicalEmdrTooltips = [
+  "Champagne Bohemia — Xaviera Lopez’s animated GIF experience.",
+  "modul8 infinity — Hexeosis animated GIF experience.",
+  "James Bondage Health — Bordelle animated GIF experience.",
+  "Stella geometric experience.",
+];
+assert.equal(emdrSource?.implemented, true);
+assert.equal(emdrSource?.live_on_staging, true);
+assert.equal(emdrSource?.m8_gif_count, 39);
+assert.deepEqual(emdrSource?.m8_page_sizes, [6, 6, 6, 6, 6, 6, 3]);
+assert.deepEqual(emdrSource?.tooltips, canonicalEmdrTooltips);
+for (const tooltip of canonicalEmdrTooltips) {
+  const escaped = tooltip.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+  assert.match(guide, new RegExp(escaped));
+  assert.match(index, new RegExp(`data-emdr-tooltip="${escaped}"`));
+}
+assert.match(guide, /M8: exact tooltip[\s\S]{0,300}39 Hexeosis GIFs/);
+assert.match(guide, /six pages of six GIFs in a centred 3 × 2 grid, then one final centred page of three/);
+assert.match(guide, /four Bordelle videos and two GIFs/);
+assert.match(guide, /central music-video renderer uses aspect-fill inside the exact 16:9 frame/);
+assert.match(guide, /cannot see a visitor’s private self-report, raw Heart Rate, recommendation rationale, hidden inference state or unavailable session data/);
+for (const briefing of [guide, JSON.stringify(sources), realtimeClient, worker, phpFallback]) {
+  assert.doesNotMatch(briefing, /story[ _-]?tree/i);
+  assert.doesNotMatch(briefing, /Caroline Chase|The Techno Llama|caroline-chase/i);
+}
+
 assert.match(portalGuide, /Adaptive Inference Engine system prompt is version 5\.55/);
 assert.match(portalGuide, /TV opens five current controls: MUSIC, FASHION, EMDR, SOUND and MANTRA/);
 assert.match(portalGuide, /LIVE INPUTS IN DEVELOPMENT · CURRENT FIGURES ARE ILLUSTRATIVE/);
@@ -203,6 +250,8 @@ for (const scenario of [
   "seeding-sessions",
   "programme-catalogue",
   "programme-additions",
+  "media-provenance",
+  "emdr-live",
   "comedy-programming",
   "sex-ed",
   "episode-detail",
@@ -217,6 +266,7 @@ for (const scenario of [
   "system-alignment",
   "adaptive-recommendations",
   "heart-rate-privacy",
+  "privacy-boundary",
   "sound-research",
   "research-impact",
   "programme-current",
