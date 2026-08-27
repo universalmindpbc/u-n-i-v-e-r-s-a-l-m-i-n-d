@@ -173,7 +173,7 @@
     if (qaScenario === "media-provenance") {
       return {
         microphone: false,
-        qaPrompt: "For the 21 Ready programme additions, give the exact public identity, Stream UID and encoded duration only for Sasha, Flume, Caroline Chang's Ambient Techno And Soft Rave Energy, and The Cranberries' Zombie. Then state that 19 records have exact verified YouTube title/channel matches while Sasha and Flume are non-YouTube source-neutral masters. For Sasha and Flume, preserve the supplied titles and filenames, identify Google Search only as Ben's discovery method, treat VK only as his unverified recollection, and invent no host record. Keep the answer concise.",
+        qaPrompt: "Briefly explain the evidence-safe source branding for the 21 Ready additions. State that 19 records have exact verified YouTube title/channel matches while Sasha's Renaissance Engage (10 May 2020) and Flume's Live at Coachella 2022 are non-YouTube source-neutral masters. Preserve their supplied filenames, identify Google Search only as Ben's discovery method, treat VK only as his unverified recollection, and invent no host record. Also give Caroline Chang's exact public credit and verified channel name. Keep the answer under eight sentences.",
       };
     }
     if (qaScenario === "emdr-live") {
