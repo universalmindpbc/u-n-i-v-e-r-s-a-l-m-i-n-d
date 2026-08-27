@@ -127,8 +127,8 @@ try {
   assert.equal(loaderState.aggregateActive, true, "The aggregate spinner must explain the episode transition.");
   assert.equal(loaderState.worldBackground, "rgb(8, 8, 10)", "Sex-Ed loading must use a clean opaque black canvas.");
   assert.equal(loaderState.episodeVisibility, "visible", "The intended Sex-Ed episode composition must remain visible.");
-  assert.equal(loaderState.tileGridOpacity, 0, "The six-tile EMDR field must not reveal an empty portrait column while loading.");
-  assert.equal(loaderState.tileGridVisibility, "hidden", "The six-tile EMDR field must remain hidden until loading completes.");
+  assert.equal(loaderState.tileGridOpacity, 1, "The six-tile EMDR field must remain visible while Sex-Ed loads.");
+  assert.equal(loaderState.tileGridVisibility, "visible", "Sex-Ed loading must not hide or deprioritise the animated tiles.");
   assert.ok(loaderState.underlyingMedia.every((item) => item.visibility === "hidden" && item.opacity === 0), "No outgoing portrait or programme media may show through the Sex-Ed loader.");
   await mobile.close();
 

@@ -64,7 +64,7 @@ assert.match(televisionCss, /color: rgba\(255, 255, 255, 0\.65\)/);
 assert.doesNotMatch(televisionCss, /\.adaptive-television-sex-ed-link[\s\S]{0,500}animation:/);
 assert.match(televisionCss, /\.adaptive-television-sex-ed-world \{[\s\S]{0,420}background: #08080a;/, "Sex-Ed loading must own an opaque black broadcast canvas.");
 assert.match(televisionCss, /body\.television-sex-ed-active \.adaptive-television-player > :not\(\.adaptive-television-channel-loading\):not\(\.adaptive-television-timecode\)[\s\S]{0,180}visibility: hidden !important;/, "Sex-Ed loading must suppress the outgoing programme without hiding its loader or timecode.");
-assert.match(televisionCss, /body\[data-sex-ed-loading-state="loading"\] \.adaptive-television-sex-ed-grid[\s\S]{0,120}opacity: 0;[\s\S]{0,80}visibility: hidden;/, "Sex-Ed loading must hide the incomplete tile field until its media is ready.");
+assert.doesNotMatch(televisionCss, /body\[data-sex-ed-loading-state="loading"\] \.adaptive-television-sex-ed-grid/, "Sex-Ed loading must not hide or deprioritise the animated tile field.");
 assert.match(televisionJs, /sexEdLink\?\.addEventListener\("click"/);
 assert.match(televisionJs, /openSexEdShelf\(\)/);
 assert.doesNotMatch(televisionJs, /openInVideoPageLayer\(sexEdLink\)/);

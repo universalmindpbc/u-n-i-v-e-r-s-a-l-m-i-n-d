@@ -806,14 +806,6 @@ body.television-sex-ed-active .adaptive-television-player > :not(.adaptive-telev
   visibility: hidden !important;
 }
 
-/* The six-tile EMDR field is revealed only after its media is ready. Keeping
-   it out of the aggregate loading state prevents one empty centre column from
-   reading as a stray portrait player behind the episode. */
-body[data-sex-ed-loading-state="loading"] .adaptive-television-sex-ed-grid {
-  opacity: 0;
-  visibility: hidden;
-}
-
 .adaptive-television-sex-ed-background {
   position: absolute;
   inset: 0;
