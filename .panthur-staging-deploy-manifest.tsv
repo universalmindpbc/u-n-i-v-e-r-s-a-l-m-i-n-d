@@ -142,7 +142,7 @@ f1670bb15260c563cfe508ea2be7ddfe2f1b9260e0f3ab2f1015343345b5d177	i  a m.md
 0a521d3e884725d4f692e6b72557b8a0bf5ebbd2f59f54fbceb579352297af96	community-globe.html
 95811f319fe8fd80719921ccffdb063f417f77fcec50b3eac90c319d9cc84dce	mantra-samples-v1.json
 b5e1e20c12b7b529bcee841af49554af081f86385e0e098d641706ad0acf08a2	sound-prototype-research.css
-890b08270663002cb2177ceb7b74d73752e924ecd960ef6b6fababddffe24458	index.html
+0be6bba752d351008b2d97b532e106f82639e8133a4a3763fa58045ba863632f	index.html
 cb6e4bbc2ac3c0e76b470f56c8df007ebd61c1f0642bd9d91e87693acc5edc89	shop.css
 0bfc1d7667fed31bd7473b78403ccfc258bac1b861a9032b744c1980594a0d1a	mantra-sampler.js
 fa8d72bdfaf91ed67f194f32f40c31be21dc1315586daad48e8050e7735f5cd7	mobile-editorial-surface.js
@@ -208,14 +208,14 @@ fec539943e4e0a4448c7ac6c2d1d8eef17b7a955055a79041a332f1e0a0244e2	technology-infe
 73e44c77609fa7a59256437ca142dff2e6bfae8c9915451456bf61a5e5562b24	homepage-checkin.js
 1a1390e4c4918e9522a6fed34b4d4dcd2f716c478b67590297685cc19efbb5d9	emdr-shader.js
 a9eeb7c5decb53b67c5758cc5774ee721b2d505e941f954ae8e0390545632668	business-model.css
-3d24dffb81c80735720432186ebc2a22acb11d0f75e1371da1be38b2e0638e9d	index-alt.html
+06184cc545ecb96227db17f8a8293240bf36769c85e7dcf9c2d71645c72a8490	index-alt.html
 0de2cc1d4ce839ee79081c05c1b98e00e65a03d637906c85c0fa6064a27b017b	programme-guide.css
 903759c3fa1ac0857d0d6f7c9a9f79d6e9ba6651d1234361e81841cf9efd66b6	first-party-analytics.js
 c1c822706963fd43a4320f7212c399503fb2a4f64206a3bf75e13b34f83e784a	adaptive-inference-engine-system-prompt-v2.22-content.js
 2d617f2ef088b89c73c02cfc5f4fa7f418ce6a79a270d2d4c1950323c8246d08	emdr-vector-worlds.js
 beb34584876306e5825ba720c8cfb01b871065791c48be5add2ce5cc6d75f59f	adaptive-inference-engine-system-prompt-v1.11.html
 b942c9c3e4a43282a85d8ca30b30f80720985ecabe1c59f24655f54d799fea71	shop.html
-e17f6b97604bd4ebd573a4cde27f81d59cbe7cf77e9dd21e7f8d5af119fd7c53	emdr-modul8-gif-library.html
+b26c67724a5fbf011cdf25c902ad62d4af6f4bb17cbd0c0791021a4999cec255	emdr-modul8-gif-library.html
 15c2c7b83e59e44c9c0c20424aba4fcbf0573267162286c6489ee3e0532e599e	realtime-voice-assistant.js
 3862c4481721b08403d25024626930de4c0a2b265ccc336e99b830bb3133825e	c h a n g e l o g.md
 6178d9903cf8a1e90363ee3f98561fbb3f94ef389a23af3e3bd6d84fe572f6da	check-in-research.php
@@ -341,6 +341,12 @@ a06fa1c2f76ca37c1c55bcfcff1dd6edfd8b016c55ed0fd47dd6cabea6d8b304	a s s e t s/a n
 b3a53761cbdba474994f61ef697d6da6482488e688b25007fec82e6bfa409165	a s s e t s/a n i m a t e d [ g i f s ]/modul8 infinity [ i o h  e m d r ]/ioh-emdr-giphy-09.gif
 007fc45bece85ace31cbb108bda527931bf13de8c56b52d7a2c9cb4db19c0b1c	a s s e t s/a n i m a t e d [ g i f s ]/modul8 infinity [ i o h  e m d r ]/ioh-emdr-giphy-23.gif
 1d2cb7d6bdde513c35d251811d7dc7fbb30ad2ec8d6c975d0db090fc7bf19b01	a s s e t s/a n i m a t e d [ g i f s ]/modul8 infinity [ i o h  e m d r ]/ioh-emdr-giphy-22.gif
+7a18abf8550fefd3d83b31e0c4d1f4a72aa9876f416c18ce926e9dcb3c1e0544	a s s e t s/a n i m a t e d [ g i f s ]/m 8 - e m d r  g i f  - s l i d e  1/4.gif
+bea6e89235a1b6282120e1902cf67e7f200f23f1968f6ff5b5de0411e53afefa	a s s e t s/a n i m a t e d [ g i f s ]/m 8 - e m d r  g i f  - s l i d e  1/5.gif
+878ae5ebde15e1201bf42832949613af779bf899d862f27d1dff56dbf45b6471	a s s e t s/a n i m a t e d [ g i f s ]/m 8 - e m d r  g i f  - s l i d e  1/6.gif
+911515e8a61c4465abb340ffba3276b166e02a7fd584a2c75b5da82d03b2794c	a s s e t s/a n i m a t e d [ g i f s ]/m 8 - e m d r  g i f  - s l i d e  1/2.gif
+775ecd323a35c570aa584bf7d84b28760324dadade54ddcadb44e5a08fe39fab	a s s e t s/a n i m a t e d [ g i f s ]/m 8 - e m d r  g i f  - s l i d e  1/3.gif
+5a78676f3e825788edb52fda6742adb997843c8d63946433b5abbf8bb052e805	a s s e t s/a n i m a t e d [ g i f s ]/m 8 - e m d r  g i f  - s l i d e  1/1.gif
 33c4faaeb2abd10a9b73989678ee96756435fae2cc7f7ce78da0133fe180eea6	a s s e t s/a n i m a t e d [ g i f s ]/animation dance GIF by xavieralopez - position 2.gif
 0d988e1c5ac332bde61f56418cdcd72b02b24ddb1a15530e82bb0f78883af9d2	a s s e t s/a n i m a t e d [ g i f s ]/Animation Portrait GIF by xavieralopez - position 6.gif
 68fe9785317c57e9288f3ff5f8c5666874190e121684a9e2b8ecd7aaccc95dca	a s s e t s/a n i m a t e d [ g i f s ]/Self Portrait Art GIF by xavieralopez-2 - position 4.gif
