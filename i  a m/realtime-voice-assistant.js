@@ -173,7 +173,7 @@
     if (qaScenario === "media-provenance") {
       return {
         microphone: false,
-        qaPrompt: "For the 21 Ready programme additions, state the exact public identities, Stream UIDs and encoded durations. Explain that 19 records have exact verified YouTube title/channel matches while Sasha and Flume are non-YouTube source-neutral masters. For Sasha and Flume, preserve the supplied titles and filenames, identify Google Search only as Ben's discovery method, treat VK only as his unverified recollection, and invent no host record.",
+        qaPrompt: "For the 21 Ready programme additions, give the exact public identity, Stream UID and encoded duration only for Sasha, Flume, Caroline Chang's Ambient Techno And Soft Rave Energy, and The Cranberries' Zombie. Then state that 19 records have exact verified YouTube title/channel matches while Sasha and Flume are non-YouTube source-neutral masters. For Sasha and Flume, preserve the supplied titles and filenames, identify Google Search only as Ben's discovery method, treat VK only as his unverified recollection, and invent no host record. Keep the answer concise.",
       };
     }
     if (qaScenario === "emdr-live") {
