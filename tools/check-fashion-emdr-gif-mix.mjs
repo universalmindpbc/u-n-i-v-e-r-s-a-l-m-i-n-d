@@ -85,6 +85,11 @@ assert.match(controller, /const fashionDrawn = requestedVideoBlend < 100 && draw
 assert.match(controller, /if \(emdrGifActive && fashionVideo\)[\s\S]*?setPriority\?\.\(fashionVideo, "optional"\)[\s\S]*?playWhenStreamAttached\(fashionVideo, "fashion"\)/);
 assert.match(controller, /if \(active\)[\s\S]*?setVideoBlend\(emdrGifVideoBlend\)[\s\S]*?startFashionHeroMirror\(\)/);
 assert.match(controller, /if \(emdrGifPreviousVideoBlend !== null\)[\s\S]*?setVideoBlend\(previousBlend\)/);
+const musicHandoff = controller.slice(
+  controller.indexOf("async function activateBufferedMusicHandoff"),
+  controller.indexOf("function playWhenStreamAttached"),
+);
+assert.match(musicHandoff, /localVideo = incoming[\s\S]*?television-emdr-gif-active[\s\S]*?setMaxHeight\(incoming, 360, "emdr_gif_programme_handoff"\)[\s\S]*?startFashionHeroMirror\(\)/, "a programme video swap can leave the small EMDR foreground bound to the outgoing video");
 
 const scriptHash = createHash("sha256").update(controller).digest("hex").slice(0, 12);
 const styleHash = createHash("sha256").update(styles).digest("hex").slice(0, 12);

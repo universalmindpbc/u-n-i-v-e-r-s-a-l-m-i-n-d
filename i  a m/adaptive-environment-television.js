@@ -1857,6 +1857,15 @@
     playLocalVideo(incoming);
     incoming.playbackRate = 1;
     incoming.style.opacity = "";
+    if (document.body.classList.contains("television-emdr-gif-active")) {
+      const controller = window.IAMStreamController;
+      const effectiveMaximum = controller?.setMaxHeight
+        ? controller.setMaxHeight(incoming, 360, "emdr_gif_programme_handoff")
+        : 360;
+      if (!controller?.setMaxHeight) incoming.dataset.streamMaxHeight = "360";
+      incoming.dataset.emdrGifQualityCap = String(effectiveMaximum);
+      startFashionHeroMirror();
+    }
     document.body.dataset.broadcastPreloadState = "consumed";
     document.body.dataset.broadcastHandoffState = "complete";
     document.body.dataset.broadcastHandoffTrackId = nextTrack.id;
