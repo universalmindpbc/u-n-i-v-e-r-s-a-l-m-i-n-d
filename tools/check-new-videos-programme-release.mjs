@@ -172,7 +172,7 @@ for (const name of [
   assert.doesNotMatch(fs.readFileSync(path.join(root, name), "utf8"), rejectedBrandingPattern, `${name} retains rejected branding`);
 }
 
-assert.equal(schedule.version, "broadcast_schedule_v1.13");
+assert.equal(schedule.version, "broadcast_schedule_v1.14");
 assert.deepEqual(channel("party-champagne-bohemia").schedule.map(({ track_id }) => track_id), [
   "sasha-ibiza-boat-at-sunset-freqways",
   "sasha-renaissance-engage-2020",
@@ -216,34 +216,21 @@ const lisa = tracks.find(({ id }) => id === "lisa-rockstar-live");
 assert.deepEqual([lisa.artist, lisa.title], ["Lisa", "Rockstar Live"]);
 
 const modul8Parties = channel("party-modul8-infinity");
-assert.equal(modul8Parties.schedule.length, 108);
+assert.equal(modul8Parties.schedule.length, 128);
 assert.equal(new Set(modul8Parties.schedule.map(({ track_id }) => track_id)).size, 32);
-assert.equal(modul8Parties.global_week_programming.strategy, "four_reordered_passes_with_strategic_premieres_global_daypart_arc");
+assert.equal(modul8Parties.global_week_programming.strategy, "four_complete_32_programme_rotations_contextual_global_daypart_arc");
 assert.equal(modul8Parties.global_week_programming.priority_market, "Australia/Sydney");
 assert.deepEqual(modul8Parties.global_week_programming.complementary_markets, ["Europe/Madrid", "America/Los_Angeles"]);
-const expectedReplacements = new Map([
-  ["1:13", "rihanna-global-citizens-festival-2016"],
-  ["1:21", "ricardo-villalobos-circoloco-dc10-ibiza-2026"],
-  ["2:2", "flume-coachella-2022-live"],
-  ["3:4", "fred-again-thomas-bangalter-usb002-alexandra-palace-2026"],
-  ["3:22", "skrillex-fred-again-four-tet-coachella"],
-]);
-for (const [position, trackId] of expectedReplacements) {
-  const [pass, item] = position.split(":").map(Number);
-  assert.equal(modul8Parties.schedule.find(({ global_week_pass, global_week_position }) => global_week_pass === pass && global_week_position === item)?.track_id, trackId);
-  assert.equal(modul8Parties.schedule.filter(({ track_id }) => track_id === trackId).length, 1);
+for (const id of newIds.slice(15, 20)) assert.equal(modul8Parties.schedule.filter(({ track_id }) => track_id === id).length, 4);
+for (let pass = 1; pass <= 4; pass += 1) {
+  const passEntries = modul8Parties.schedule.filter(({ global_week_pass }) => global_week_pass === pass);
+  assert.equal(passEntries.length, 32);
+  assert.equal(new Set(passEntries.map(({ track_id }) => track_id)).size, 32);
+  assert.deepEqual(passEntries.map(({ global_week_position }) => global_week_position), Array.from({ length: 32 }, (_, index) => index + 1));
 }
-const rotatedExisting = [
-  "anfisa-letyago-dj-mag-hq",
-  "cassy-sunday-school-miami",
-  "pete-cannon-manchester",
-  "lilly-palmer-dj-mag-hq",
-  "boys-noize-coachella-2026-live",
-];
-for (const id of rotatedExisting) assert.equal(modul8Parties.schedule.filter(({ track_id }) => track_id === id).length, 3);
 const cycleSeconds = modul8Parties.schedule.reduce((sum, { duration_seconds }) => sum + Number(duration_seconds), 0);
 assert.ok(Math.abs(cycleSeconds - modul8Parties.global_week_programming.cycle_seconds) < 0.001);
-assert.ok(Math.abs(cycleSeconds - 601325.68) < 2, "The strategic replacement wheel must remain within two seconds of its planned near-week duration");
+assert.ok(Math.abs(cycleSeconds - 700317.8) < .01, "The restored 32 by 4 wheel must retain all full encoded durations");
 
 const scheduleToken = `broadcast-schedule-${sha12(scheduleSource)}`;
 assert.ok(clockSource.includes(scheduleToken));
@@ -273,4 +260,4 @@ for (const name of fs.readdirSync(iam).filter((candidate) => candidate.endsWith(
   if (source.includes("script.js?v=adaptive-env-stream-")) assert.ok(source.includes(shellToken), `${name} has a stale shell token`);
 }
 
-console.log("New videos release checks passed: 21/21 Ready, exact four-room routing, alternating Inner Planes, james bondage flow, Lisa placement, and a strategic 108-slot modul8 global week.");
+console.log("New videos release checks passed: 21/21 Ready, exact four-room routing, alternating Inner Planes, james bondage flow, Lisa placement, and a complete 128-slot modul8 global cycle.");

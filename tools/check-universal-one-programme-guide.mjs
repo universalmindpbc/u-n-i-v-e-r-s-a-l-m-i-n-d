@@ -29,9 +29,9 @@ assert.match(guide, /safety cushion is an additional music room, not a fifth See
 for (const name of ["Inner Planes", "Champagne Bohemia", "modul8 infinity", "james bondage", "safety cushion"]) {
   assert.match(guide, new RegExp(name.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")));
 }
-assert.match(guide, /Version: universal_one_programme_guide_v1\.4/);
+assert.match(guide, /Version: universal_one_programme_guide_v1\.5/);
 assert.match(guide, /Rave · Episode 1” programme with 18 cue points/);
-assert.match(guide, /22 verified programme additions/);
+assert.match(guide, /original 27 are restored/);
 assert.match(guide, /Nine Inch Noize performing “Closer” live at Coachella 2026/);
 assert.match(guide, /full Nine Inch Noize live set from Coachella 2026/);
 assert.match(guide, /Grimes “Genesis” belongs to modul8 infinity Videos, not james bondage/);
@@ -92,7 +92,11 @@ assert.deepEqual(
 );
 assert.match(additionBatch.knowledge_boundary, /Do not infer tracklists, unnamed performers/);
 assert.match(guide, /FROZEN 27 AUGUST 2026 PROGRAMME ADDITIONS/);
-assert.match(guide, /shared cycle remains 108 occurrences and 601,325\.68 seconds/);
+assert.match(guide, /all 32 complete programmes in four different 32-programme rotations/);
+assert.match(guide, /128-occurrence shared cycle/);
+assert.match(guide, /700,317\.8 seconds \(194 hours 31 minutes 58 seconds\)/);
+assert.match(guide, /no programme is truncated, omitted or overlapped/);
+assert.match(guide, /All five are additions, not replacements/);
 assert.equal(mediaManifest.assetCount, 21);
 assert.equal(mediaManifest.readyToStreamCount, 21);
 assert.equal(provenanceLedger.verifiedYouTubeCount, 19);
@@ -237,13 +241,13 @@ assert.match(worker, /import UNIVERSAL_ONE_PROGRAMME_GUIDE/);
 assert.match(worker, /# Programme and episode guide\n\$\{UNIVERSAL_ONE_PROGRAMME_GUIDE\}/);
 assert.match(worker, /portal_guide_version: "v1\.2"/);
 assert.match(worker, /adaptive_recommendation_guide_version: "v1"/);
-assert.match(worker, /programme_guide_version: "v1\.4"/);
+assert.match(worker, /programme_guide_version: "v1\.5"/);
 assert.match(worker, /voice_briefing_version: "v3"/);
 assert.match(phpFallback, /universal-one-programme-guide-v1\.txt/);
 assert.match(phpFallback, /# Programme and episode guide\n\{\$programmeGuide\}/);
 assert.match(phpFallback, /'portal_guide_version' => 'v1\.2'/);
 assert.match(phpFallback, /'adaptive_recommendation_guide_version' => 'v1'/);
-assert.match(phpFallback, /'programme_guide_version' => 'v1\.4'/);
+assert.match(phpFallback, /'programme_guide_version' => 'v1\.5'/);
 assert.match(phpFallback, /'voice_briefing_version' => 'v3'/);
 
 for (const scenario of [

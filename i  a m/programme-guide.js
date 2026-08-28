@@ -794,7 +794,7 @@
   async function initialize() {
     document.body.dataset.programGuideState = "loading";
     const [scheduleResponse, catalogueResponse, stationsResponse] = await Promise.all([
-      fetch("broadcast-schedule-v1.json?v=broadcast-schedule-9357efb8512a", {
+      fetch("broadcast-schedule-v1.json?v=broadcast-schedule-51a28fa1fd66", {
         cache: "no-store",
         credentials: "same-origin",
         headers: { Accept: "application/json" },

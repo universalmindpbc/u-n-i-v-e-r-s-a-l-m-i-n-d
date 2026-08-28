@@ -1,6 +1,6 @@
 UNIVERSAL ONE PROGRAMME GUIDE
-Version: universal_one_programme_guide_v1.4
-Reviewed: 2026-08-27
+Version: universal_one_programme_guide_v1.5
+Reviewed: 2026-08-28
 
 PURPOSE AND NAMING
 
@@ -38,7 +38,7 @@ THE FOUR SEEDING SESSIONS + SAFETY CUSHION
 
 - Music-room identity: rave / house / techno / future bass.
 - Videos currently include Madonna “Ray of Light”, Flume “Never Be Like You” at Laneway, Sampa the Great “Energy” and “Final Form”, Lisa “Rockstar Live”, PinkPantheress “Illegal” at Glastonbury 2025, Caroline Polachek “Welcome to My Island”, Little Simz “Gorilla”, The Prodigy “Everybody in the Place”, M.I.A. “Borders”, Grimes “Genesis”, and s o l y r a’s authored “Rave · Episode 1” programme with 18 cue points. “Lisa Rockstar Live” sits immediately after Sampa the Great “Energy” and before PinkPantheress “Illegal [Live at Glastonbury]”.
-- Parties currently feature Peggy Gou, Miss Monique, Nina Kraviz, Nastia and Carl Cox plus the 22 verified programme additions from the earlier batch and five strategically rotated premieres: Flume “Live at Coachella 2022”; Fred again.. & Thomas Bangalter “USB002, Alexandra Palace, London (27 February 2026)”; Ricardo Villalobos “Circoloco DC-10 Ibiza (20 July 2026)”; Rihanna “Global Citizens Festival 2016”; and Skrillex, Fred again.. & Four Tet “Coachella”. The wheel remains 108 occurrences and approximately one global week rather than appending all five sets to the end.
+- Parties contain all 32 complete programmes in four different 32-programme rotations: the original 27 are restored, and Flume “Live at Coachella 2022”; Fred again.. & Thomas Bangalter “USB002, Alexandra Palace, London (27 February 2026)”; Ricardo Villalobos “Circoloco DC-10 Ibiza (20 July 2026)”; Rihanna “Global Citizens Festival 2016”; and Skrillex, Fred again.. & Four Tet “Coachella” each appear once in every rotation. The 128-occurrence shared cycle is programmed around Sydney dayparts and sunrise/sunset while keeping Ibiza and Los Angeles complementary. At the verified full durations it lasts 700,317.8 seconds (194 hours 31 minutes 58 seconds), so it is intentionally longer than seven days; no programme is truncated, omitted or overlapped to force it into 168 hours.
 - Radio rotates Café del Mar House, NTS Otaku and NTS Low Key.
 - Difference in one line: modul8 infinity is the rave, house, techno and future-beat room.
 
@@ -99,9 +99,9 @@ modul8 infinity · Parties:
 - Ricardo Villalobos — “Live from Circoloco DC-10 Ibiza (20.07.26 Garden)” — live set — about 1:16:24.
 - Rihanna — “Global Citizens Festival 2016” — live set — about 1:07:55.
 - Four Tet x Fred again x Skrillex — “Coachella 2023” — live set — about 1:30:33.
-- These are strategic single-play premieres replacing one repeat each, not five additions at the end: Rihanna at P1:13; Ricardo Villalobos at P1:21; Flume at P2:02; Fred again.. & Thomas Bangalter at P3:04; Skrillex, Fred again.. & Four Tet at P3:22.
-- The five rotated existing programmes—Anfisa Letyago at DJ Mag HQ, Cassy at Sunday School, Pete Cannon, Lilly Palmer at DJ Mag HQ and Boys Noize at Coachella—retain three weekly plays. Each new premiere plays once; all other programmes retain four. The shared cycle remains 108 occurrences and 601,325.68 seconds.
-- Approximate premiere starts: Rihanna Monday 19:28 Sydney / 11:28 Ibiza / 02:28 Los Angeles; Ricardo Tuesday 08:06 Sydney / 00:06 Ibiza / Monday 15:06 Los Angeles; Flume Tuesday 19:27 Sydney / 11:27 Ibiza / 02:27 Los Angeles; Fred again.. & Thomas Bangalter Thursday 17:58 Sydney / 09:58 Ibiza / 00:58 Los Angeles; Skrillex, Fred again.. & Four Tet Friday 21:27 Sydney / 13:27 Ibiza / 04:27 Los Angeles.
+- All five are additions, not replacements. Anfisa Letyago at DJ Mag HQ, Cassy at Sunday School, Pete Cannon, Lilly Palmer at DJ Mag HQ and Boys Noize at Coachella are restored to every rotation with the other 22 original programmes.
+- Each rotation preserves the relative order of the original 27-programme seed and inserts the five additions beside compatible energy. The insertion points change across the four rotations so the music lands differently against morning, daytime, sunset and night in Sydney, with Ibiza and Los Angeles checked as complementary solar contexts.
+- Rotation 1 begins Monday 00:00 Sydney / Sunday 16:00 Ibiza / Sunday 07:00 Los Angeles. Each complete rotation lasts approximately 48 hours 37 minutes 59 seconds; all 32 programmes play once per rotation and all 128 occurrences carry explicit Sydney, Ibiza and Los Angeles local-time, daypart and solar-phase metadata.
 
 modul8 infinity · Videos:
 

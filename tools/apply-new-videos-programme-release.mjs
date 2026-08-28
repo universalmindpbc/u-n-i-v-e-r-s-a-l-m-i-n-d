@@ -98,7 +98,7 @@ await write("programme-guide.js", programmeGuide);
 
 const schedulePath = path.join(iam, "broadcast-schedule-v1.json");
 const schedule = JSON.parse(await fs.readFile(schedulePath, "utf8"));
-schedule.version = "broadcast_schedule_v1.13";
+schedule.version = "broadcast_schedule_v1.14";
 const channel = (id) => {
   const result = schedule.channels.find((candidate) => candidate.id === id);
   if (!result) throw new Error(`Missing schedule channel: ${id}`);
@@ -147,31 +147,61 @@ const lisaInsertionIndex = modul8Videos.findIndex(({ track_id: trackId }) => tra
 if (lisaInsertionIndex < 0) throw new Error("Could not find the Lisa insertion point");
 modul8Videos.splice(lisaInsertionIndex, 0, entry("lisa-rockstar-live"));
 
-const strategicReplacements = new Map([
-  ["1:13", "rihanna-global-citizens-festival-2016"],
-  ["1:21", "ricardo-villalobos-circoloco-dc10-ibiza-2026"],
-  ["2:2", "flume-coachella-2022-live"],
-  ["3:4", "fred-again-thomas-bangalter-usb002-alexandra-palace-2026"],
-  ["3:22", "skrillex-fred-again-four-tet-coachella"],
-]);
 const modul8Parties = channel("party-modul8-infinity");
-modul8Parties.schedule = modul8Parties.schedule.map((current) => {
-  const replacementId = strategicReplacements.get(`${current.global_week_pass}:${current.global_week_position}`);
-  return replacementId ? { ...current, track_id: replacementId, duration_seconds: duration(replacementId) } : current;
+const insertionsAfter = {
+  1: new Map([
+    ["anfisa-letyago-dj-mag-hq", ["rihanna-global-citizens-festival-2016"]],
+    ["charlotte-de-witte-tomorrowland-winter-2026", ["fred-again-thomas-bangalter-usb002-alexandra-palace-2026"]],
+    ["cassy-sunday-school-miami", ["ricardo-villalobos-circoloco-dc10-ibiza-2026"]],
+    ["pete-cannon-manchester", ["flume-coachella-2022-live"]],
+    ["boys-noize-coachella-2026-live", ["skrillex-fred-again-four-tet-coachella"]],
+  ]),
+  2: new Map([
+    ["charlotte-de-witte-tomorrowland-winter-2026", ["fred-again-thomas-bangalter-usb002-alexandra-palace-2026"]],
+    ["pete-cannon-manchester", ["flume-coachella-2022-live"]],
+    ["cassy-sunday-school-miami", ["ricardo-villalobos-circoloco-dc10-ibiza-2026"]],
+    ["david-guetta-tomorrowland-2026", ["rihanna-global-citizens-festival-2016"]],
+    ["boys-noize-coachella-2026-live", ["skrillex-fred-again-four-tet-coachella"]],
+  ]),
+  3: new Map([
+    ["lilly-palmer-dj-mag-hq", ["fred-again-thomas-bangalter-usb002-alexandra-palace-2026"]],
+    ["pete-cannon-manchester", ["flume-coachella-2022-live"]],
+    ["david-guetta-tomorrowland-2026", ["rihanna-global-citizens-festival-2016"]],
+    ["ricardo-villalobos-arpiar-circo-loco-ibiza", ["ricardo-villalobos-circoloco-dc10-ibiza-2026"]],
+    ["boys-noize-coachella-2026-live", ["skrillex-fred-again-four-tet-coachella"]],
+  ]),
+  4: new Map([
+    ["charlotte-de-witte-tomorrowland-winter-2026", ["fred-again-thomas-bangalter-usb002-alexandra-palace-2026"]],
+    ["david-guetta-tomorrowland-2026", ["rihanna-global-citizens-festival-2016"]],
+    ["cassy-sunday-school-miami", ["ricardo-villalobos-circoloco-dc10-ibiza-2026"]],
+    ["boys-noize-coachella-2026-live", ["skrillex-fred-again-four-tet-coachella"]],
+    ["pete-cannon-manchester", ["flume-coachella-2022-live"]],
+  ]),
+};
+modul8Parties.schedule = Array.from({ length: 4 }, (_, index) => index + 1).flatMap((pass) => {
+  const passEntries = modul8Parties.schedule.filter(({ global_week_pass: currentPass }) => currentPass === pass);
+  return passEntries.flatMap((current) => [
+    current,
+    ...(insertionsAfter[pass].get(current.track_id) || []).map((trackId) => entry(trackId)),
+  ]).map((current, position) => ({ ...current, global_week_pass: pass, global_week_position: position + 1 }));
 });
 const cycleSeconds = modul8Parties.schedule.reduce((sum, current) => sum + Number(current.duration_seconds), 0);
 modul8Parties.global_week_programming = {
-  strategy: "four_reordered_passes_with_strategic_premieres_global_daypart_arc",
+  strategy: "four_complete_32_programme_rotations_contextual_global_daypart_arc",
   anchor_utc: "2026-08-02T14:00:00.000Z",
-  distinct_programmes: new Set(modul8Parties.schedule.map(({ track_id: trackId }) => trackId)).size,
-  baseline_plays_per_programme: 4,
-  strategic_premiere_plays: 1,
-  rotated_existing_programmes: 5,
+  seed_programmes: 27,
+  added_programmes: 5,
+  distinct_programmes: 32,
+  plays_per_programme: 4,
+  rotations: 4,
+  programmes_per_rotation: 32,
   occurrence_count: modul8Parties.schedule.length,
   cycle_seconds: cycleSeconds,
-  approximate_week_variance_seconds: cycleSeconds - (7 * 24 * 60 * 60),
+  cycle_duration: "194h 31m 58s",
+  seven_day_variance_seconds: cycleSeconds - (7 * 24 * 60 * 60),
   priority_market: "Australia/Sydney",
   complementary_markets: ["Europe/Madrid", "America/Los_Angeles"],
+  duration_policy: "Complete source programmes; no truncation, omission or overlap",
 };
 await fs.writeFile(schedulePath, `${JSON.stringify(schedule, null, 2)}\n`);
 
