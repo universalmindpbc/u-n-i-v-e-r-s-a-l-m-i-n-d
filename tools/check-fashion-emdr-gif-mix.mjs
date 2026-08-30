@@ -30,7 +30,7 @@ assert.match(html, /data-emdr-gif-crossfader/);
 assert.equal((html.match(/adaptive-television-video-mix-endpoint"[^>]+data-video-mix-endpoint="fashion"[^>]+data-video-tooltip="Watch a runway while the music continues uninterrupted\."/g) || []).length, 2, "the regular and EMDR Fashion endpoints do not share the exact tooltip");
 assert.equal((html.match(/adaptive-television-video-mix-endpoint"[^>]+data-video-mix-endpoint="music"[^>]+data-video-tooltip="Stay with the original music video, DJ set, or live performance\."/g) || []).length, 2, "the regular and EMDR Music endpoints do not share the exact tooltip");
 assert.equal((html.match(/data-video-tooltip="Dial in the balance between music and fashion\."/g) || []).length, 2, "the regular and EMDR crossfaders do not share the exact tooltip");
-assert.equal((html.match(/wallet-fashion-reference\.png\?v=reference-2/g) || []).length, 5, "the EMDR mixer and sensitive Sex Ed cards do not reuse the approved swimsuit asset");
+assert.equal((html.match(/wallet-fashion-reference\.png\?v=reference-2/g) || []).length, 3, "the Fashion and EMDR mixer controls no longer retain their approved reference asset");
 assert.equal((html.match(/wallet-turntable-reference\.png\?v=reference-2/g) || []).length, 3, "the EMDR mixer does not reuse the approved turntable asset");
 assert.doesNotMatch(html, />fashion<\/span>[\s\S]*?>music \/ party<\/span>/, "the superseded text endpoints are still visible");
 

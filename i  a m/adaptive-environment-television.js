@@ -181,6 +181,11 @@
   const jbhContentGateEditorNote = document.querySelector("[data-jbh-content-gate-editor-note]");
   const jbhContentGateConfirm = document.querySelector("[data-jbh-content-gate-confirm]");
   const jbhContentGateCancelButtons = Array.from(document.querySelectorAll("[data-jbh-content-gate-cancel]"));
+  const jbhEthics = document.querySelector("[data-jbh-ethics]");
+  const jbhEthicsPanel = jbhEthics?.querySelector(".jbh-ethics__panel");
+  const jbhEthicsVideo = document.querySelector("[data-jbh-ethics-video]");
+  const jbhEthicsOpenButtons = Array.from(document.querySelectorAll("[data-jbh-ethics-open]"));
+  const jbhEthicsCloseButtons = Array.from(document.querySelectorAll("[data-jbh-ethics-close]"));
   const comedyVideo = document.querySelector("[data-comedy-video]");
   const sexEdLoopVideos = Array.from(document.querySelectorAll(".adaptive-television-sex-ed-grid video"));
   const sexEdLoopImages = Array.from(document.querySelectorAll(".adaptive-television-sex-ed-grid img"));
@@ -303,6 +308,8 @@
   let emdrJbhEditorialGeneration = 0;
   let emdrJbhLayerSyncTimer = 0;
   const emdrJbhDuckedVolumes = new Map();
+  const jbhEthicsDuckedVolumes = new Map();
+  let jbhEthicsPreviousFocus = null;
   let musicCatalogueRecords = [];
   let radioStationRecords = DEFAULT_RADIO_STATIONS.map((station) => ({ ...station }));
   let musicShelfOrders = { videos: [], parties: [], radio: radioStationRecords.slice(), fashion: [] };
@@ -498,6 +505,7 @@
   const SEX_ED_PROGRAMME_MIX_LEVEL = .15;
   const SEX_ED_BROADCAST_CHANNEL_ID = "sex-ed";
   const JBH_EDITORIAL_PROGRAMME_MIX_LEVEL = .15;
+  const JBH_ETHICS_PROGRAMME_MIX_LEVEL = .15;
   const VOICE_ASSISTANT_PROGRAMME_MIX_LEVEL = .15;
   const SEX_ED_DEFAULT_BACKGROUND_FILE = "a s s e t s/f a s h i o n [ r u n w a y ]/Mugler - Fall Winter 2021.mp4";
   let continuationAudio = null;
@@ -631,7 +639,7 @@
       gifPreset: "jbh-ii",
       fashionChannelId: "",
       sensitiveContent: "pirelli-editor-note",
-      backgroundFileName: "Shashi Solluna - How I Healed my Sexual Pain using Nature.mp4",
+      backgroundFileName: "Shashi Solluna - How I Healed my Sexual Pain using Nature +12dB.mp4",
       foregroundFileName: "Pirelli 2010 Calendar.mp4",
       backgroundAudible: true,
       foregroundMuted: true,
@@ -728,6 +736,93 @@
       closeJbhContentGate(false);
     });
   });
+
+  function duckProgrammeForJbhEthics() {
+    const programmeMedia = new Set([
+      localVideo,
+      continuationAudio,
+      sexEdEpisodeVideo,
+      sexEdBackground,
+      emdrJbhBackground,
+      emdrJbhForeground,
+    ]);
+    programmeMedia.forEach((media) => {
+      if (!media || media === jbhEthicsVideo || media.muted || media.paused) return;
+      if (!jbhEthicsDuckedVolumes.has(media)) {
+        const fallback = media === continuationAudio ? .68 : 1;
+        const currentVolume = Number(media.volume);
+        jbhEthicsDuckedVolumes.set(media, Number.isFinite(currentVolume) && currentVolume > .001 ? currentVolume : fallback);
+      }
+      setVoiceAssistantProgramVolume(media, jbhEthicsDuckedVolumes.get(media), 420);
+    });
+    document.body.dataset.jbhEthicsProgrammeMixLevel = String(JBH_ETHICS_PROGRAMME_MIX_LEVEL);
+  }
+
+  function restoreProgrammeAfterJbhEthics() {
+    jbhEthicsDuckedVolumes.forEach((baseline, media) => {
+      setVoiceAssistantProgramVolume(media, baseline, 420);
+    });
+    jbhEthicsDuckedVolumes.clear();
+    delete document.body.dataset.jbhEthicsProgrammeMixLevel;
+  }
+
+  function closeJbhEthics(event) {
+    event?.preventDefault?.();
+    event?.stopPropagation?.();
+    if (!jbhEthics || jbhEthics.getAttribute("aria-hidden") !== "false") return;
+    jbhEthics.setAttribute("aria-hidden", "true");
+    jbhEthics.setAttribute("inert", "");
+    document.body.classList.remove("jbh-ethics-open");
+    if (sexEdShelfOpen) sexEdShelf?.removeAttribute("inert");
+    try { jbhEthicsVideo?.pause?.(); } catch {}
+    window.IAMStreamController?.release?.(jbhEthicsVideo, "jbh_ethics_closed");
+    if (jbhEthicsVideo) {
+      jbhEthicsVideo.muted = true;
+      jbhEthicsVideo.defaultMuted = true;
+      jbhEthicsVideo.setAttribute("aria-hidden", "true");
+      jbhEthicsVideo.dataset.jbhEthicsState = "closed";
+    }
+    restoreProgrammeAfterJbhEthics();
+    jbhEthicsPreviousFocus?.focus?.({ preventScroll: true });
+    jbhEthicsPreviousFocus = null;
+  }
+
+  async function openJbhEthics(event) {
+    event?.preventDefault?.();
+    event?.stopPropagation?.();
+    if (!jbhEthics || !jbhEthicsPanel || !jbhEthicsVideo) return false;
+    if (jbhEthics.getAttribute("aria-hidden") === "false") return true;
+    stopSexEdShelfPreview();
+    jbhEthicsPreviousFocus = document.activeElement instanceof HTMLElement ? document.activeElement : null;
+    sexEdShelf?.setAttribute("inert", "");
+    jbhEthics.setAttribute("aria-hidden", "false");
+    jbhEthics.removeAttribute("inert");
+    document.body.classList.add("jbh-ethics-open");
+    jbhEthicsVideo.dataset.streamMaxHeight = "720";
+    jbhEthicsVideo.dataset.jbhEthicsState = "loading";
+    jbhEthicsVideo.setAttribute("aria-hidden", "false");
+    duckProgrammeForJbhEthics();
+    window.setTimeout(() => jbhEthicsPanel.focus({ preventScroll: true }), 30);
+    try {
+      const attached = await ensureSexEdStream(jbhEthicsVideo, "music");
+      if (!attached || jbhEthics.getAttribute("aria-hidden") !== "false") return false;
+      jbhEthicsVideo.loop = true;
+      jbhEthicsVideo.muted = false;
+      jbhEthicsVideo.defaultMuted = false;
+      jbhEthicsVideo.volume = 1;
+      await (window.IAMStreamController?.play?.(jbhEthicsVideo) || jbhEthicsVideo.play());
+      const ready = await waitForSexEdMediaPlayback(jbhEthicsVideo);
+      jbhEthicsVideo.dataset.jbhEthicsState = ready ? "playing" : "unavailable";
+      return ready;
+    } catch (error) {
+      jbhEthicsVideo.dataset.jbhEthicsState = "error";
+      jbhEthicsVideo.dataset.jbhEthicsError = String(error?.message || error).slice(0, 140);
+      return false;
+    }
+  }
+
+  jbhEthicsOpenButtons.forEach((button) => button.addEventListener("click", openJbhEthics));
+  jbhEthicsCloseButtons.forEach((button) => button.addEventListener("click", closeJbhEthics));
 
   function normalizeSlug(value) {
     return String(value || "")
@@ -6650,6 +6745,26 @@
     }
   }
 
+  function isEmdrJbhNarrativeMedia(media) {
+    return media === emdrJbhBackground || media === emdrJbhForeground;
+  }
+
+  function resolvePersistentProgrammeMixTarget(media, baseline, requestedTarget) {
+    let target = Math.max(0, Math.min(1, Number(requestedTarget) || 0));
+    if (
+      document.body.classList.contains("television-emdr-jbh-editorial-active") &&
+      !isEmdrJbhNarrativeMedia(media)
+    ) {
+      if (!emdrJbhDuckedVolumes.has(media)) emdrJbhDuckedVolumes.set(media, baseline);
+      target = Math.min(target, JBH_EDITORIAL_PROGRAMME_MIX_LEVEL);
+    }
+    if (document.body.classList.contains("jbh-ethics-open") && media !== jbhEthicsVideo) {
+      if (!jbhEthicsDuckedVolumes.has(media)) jbhEthicsDuckedVolumes.set(media, baseline);
+      target = Math.min(target, JBH_ETHICS_PROGRAMME_MIX_LEVEL);
+    }
+    return target;
+  }
+
   function duckProgrammeForJbhEditorial() {
     [localVideo, continuationAudio].forEach((media) => {
       if (!media || media.muted || media.paused) return;
@@ -6658,7 +6773,7 @@
         const currentVolume = Number(media.volume);
         emdrJbhDuckedVolumes.set(media, Number.isFinite(currentVolume) && currentVolume > .001 ? currentVolume : fallback);
       }
-      setVoiceAssistantProgramVolume(media, JBH_EDITORIAL_PROGRAMME_MIX_LEVEL, 420);
+      setVoiceAssistantProgramVolume(media, emdrJbhDuckedVolumes.get(media), 420);
     });
     document.body.dataset.emdrJbhProgrammeMixLevel = String(JBH_EDITORIAL_PROGRAMME_MIX_LEVEL);
   }
@@ -7287,7 +7402,8 @@
     clearShopArrivalFade();
     const baseline = Math.max(0, Math.min(1, Number(baseVolume) || 0));
     if (voiceAssistantDuckActive) voiceAssistantBaseVolumes.set(media, baseline);
-    const target = baseline * (voiceAssistantDuckActive ? VOICE_ASSISTANT_PROGRAMME_MIX_LEVEL : 1);
+    const requestedTarget = baseline * (voiceAssistantDuckActive ? VOICE_ASSISTANT_PROGRAMME_MIX_LEVEL : 1);
+    const target = resolvePersistentProgrammeMixTarget(media, baseline, requestedTarget);
     const startVolume = Number(media.volume) || 0;
     const startedAt = Date.now();
     const fadeDuration = Math.max(0, Number(duration) || 0);
@@ -7316,7 +7432,7 @@
     const baseline = Math.max(0, Math.min(1, Number(baseVolume) || 0));
     if (voiceAssistantDuckActive) voiceAssistantBaseVolumes.set(media, baseline);
     const duckFactor = voiceAssistantDuckActive ? VOICE_ASSISTANT_PROGRAMME_MIX_LEVEL : 1;
-    const target = baseline * duckFactor;
+    const target = resolvePersistentProgrammeMixTarget(media, baseline, baseline * duckFactor);
     animateVoiceAssistantProgramVolume(media, target, duration);
   }
 
@@ -7335,11 +7451,11 @@
           const fallback = media === continuationAudio ? .68 : 1;
           voiceAssistantBaseVolumes.set(media, Math.max(Number(media.volume) || 0, fallback));
         }
-        animateVoiceAssistantProgramVolume(media, voiceAssistantBaseVolumes.get(media) * VOICE_ASSISTANT_PROGRAMME_MIX_LEVEL, 800);
+        setVoiceAssistantProgramVolume(media, voiceAssistantBaseVolumes.get(media), 800);
       });
     } else {
       voiceAssistantBaseVolumes.forEach((baseline, media) => {
-        animateVoiceAssistantProgramVolume(media, baseline, 1000);
+        setVoiceAssistantProgramVolume(media, baseline, 1000);
       });
       voiceAssistantBaseVolumes.clear();
     }
@@ -9547,6 +9663,24 @@
     updateNowPlayingOverflow();
   });
   document.addEventListener("keydown", (event) => {
+    if (jbhEthics?.getAttribute("aria-hidden") === "false") {
+      if (event.key === "Escape") {
+        event.preventDefault();
+        closeJbhEthics(event);
+      } else if (event.key === "Tab") {
+        const focusable = Array.from(jbhEthics.querySelectorAll('button:not([disabled]), a[href]'));
+        const first = focusable[0];
+        const last = focusable[focusable.length - 1];
+        if (focusable.length && event.shiftKey && document.activeElement === first) {
+          event.preventDefault();
+          last.focus();
+        } else if (focusable.length && !event.shiftKey && document.activeElement === last) {
+          event.preventDefault();
+          first.focus();
+        }
+      }
+      return;
+    }
     if (jbhContentGate?.getAttribute("aria-hidden") === "false") {
       if (event.key === "Escape") {
         event.preventDefault();

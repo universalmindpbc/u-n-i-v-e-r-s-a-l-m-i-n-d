@@ -1,0 +1,27 @@
+{
+  "version": "cloudflare_stream_ingest_v1",
+  "uploadedAt": "2026-08-31",
+  "accountId": "bef34a5ee69678e46332813cb7610012",
+  "customerHost": "customer-1vpwglz3v6fiyaas.cloudflarestream.com",
+  "files": [
+    {
+      "fileName": "Shashi Solluna - How I Healed my Sexual Pain using Nature +12dB.mp4",
+      "sourceBytes": 171974982,
+      "sourceSha256": "e2b2eb271cd0d661d9a487190799f6024717ab1827bdbdd5799211e2523a77fd",
+      "durationSeconds": 549.27,
+      "sourceDimensions": "1280x720",
+      "audioGainDb": 12,
+      "uid": "1b9695e43908ddeb7f483480f4e2c261",
+      "status": "ready"
+    },
+    {
+      "fileName": "The Shamen - LSI (Love Sex Intelligence) HD_1.mp4",
+      "sourceBytes": 61522217,
+      "sourceSha256": "a5357d5b6c1ceb06b8e6a28ab99eacc62c38cd459589ce552e53bd028dd903ab",
+      "durationSeconds": 240.7,
+      "sourceDimensions": "1280x720",
+      "uid": "181f8904e190da728c3dce0ac00de471",
+      "status": "ready"
+    }
+  ]
+}

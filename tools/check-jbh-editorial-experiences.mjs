@@ -10,6 +10,7 @@ const controller = read("i  a m/adaptive-environment-television.js");
 const styles = read("i  a m/adaptive-environment-television.css");
 const catalogueSource = read("i  a m/cloudflare-stream-catalogue.js");
 const manifest = JSON.parse(read("cloudflare-stream-new-videos-20260830-manifest.json"));
+const ethicsManifest = JSON.parse(read("cloudflare-stream-jbh-ethics-20260831-manifest.json"));
 
 const sandbox = { window: {} };
 vm.runInNewContext(catalogueSource, sandbox, { filename: "cloudflare-stream-catalogue.js" });
@@ -35,20 +36,62 @@ for (const [fileName, uid] of expectedStreams) {
   assert.equal(record.status, "ready");
 }
 
+const expectedEthicsStreams = new Map([
+  ["Shashi Solluna - How I Healed my Sexual Pain using Nature +12dB.mp4", "1b9695e43908ddeb7f483480f4e2c261"],
+  ["The Shamen - LSI (Love Sex Intelligence) HD_1.mp4", "181f8904e190da728c3dce0ac00de471"],
+]);
+assert.equal(ethicsManifest.files.length, 2);
+for (const [fileName, uid] of expectedEthicsStreams) {
+  assert.equal(sandbox.window.IAMCloudflareStream.assetFor(fileName)?.uid, uid);
+  const record = ethicsManifest.files.find((file) => file.fileName === fileName);
+  assert.ok(record, `${fileName} is missing from the ethics ingest manifest`);
+  assert.equal(record.uid, uid);
+  assert.equal(record.status, "ready");
+}
+assert.equal(ethicsManifest.files.find((file) => file.audioGainDb)?.audioGainDb, 12);
+
 assert.match(index, /data-emdr-jbh-background[^>]*data-stream-role="fashion"/);
 assert.match(index, /data-emdr-jbh-foreground[^>]*data-stream-role="music"/);
 assert.match(controller, /key: "jbh-ii"[\s\S]{0,500}backgroundAudible: true,[\s\S]{0,100}foregroundMuted: true/);
+assert.match(controller, /key: "jbh-ii"[\s\S]{0,500}backgroundFileName: "Shashi Solluna - How I Healed my Sexual Pain using Nature \+12dB\.mp4"/);
 assert.match(controller, /key: "jbh-iii"[\s\S]{0,500}backgroundAudible: false,[\s\S]{0,100}foregroundMuted: false,[\s\S]{0,100}syncLayers: true/);
 assert.match(controller, /JBH_EDITORIAL_PROGRAMME_MIX_LEVEL = \.15/);
 assert.match(controller, /configureVideo\(emdrJbhBackground, preset\.backgroundFileName, Boolean\(preset\.backgroundAudible\)\);[\s\S]{0,180}configureVideo\(emdrJbhForeground, preset\.foregroundFileName, !preset\.foregroundMuted\);[\s\S]{0,180}window\.IAMStreamController\?\.play\?\.\(emdrJbhBackground\)/);
 assert.match(controller, /Math\.abs\(drift\) > \.18/);
 assert.match(controller, /requestJbhContentConsent\(selectedPreset\.sensitiveContent\)/);
 assert.match(controller, /if \(card\.dataset\.sexEdSensitive\) return/);
+assert.match(controller, /resolvePersistentProgrammeMixTarget\(media, baseline, requestedTarget\)/);
+assert.match(controller, /document\.body\.classList\.contains\("television-emdr-jbh-editorial-active"\)[\s\S]{0,260}target = Math\.min\(target, JBH_EDITORIAL_PROGRAMME_MIX_LEVEL\)/);
+assert.match(controller, /function fadeShopArrivalProgrammeVolume[\s\S]{0,650}resolvePersistentProgrammeMixTarget\(media, baseline, requestedTarget\)/);
+assert.match(controller, /function setVoiceAssistantProgramVolume[\s\S]{0,420}resolvePersistentProgrammeMixTarget\(media, baseline, baseline \* duckFactor\)/);
 
 assert.match(index, /data-sex-ed-episode="15"[^>]*data-sex-ed-file="Pirelli 2010 Calendar\.mp4"[^>]*data-sex-ed-background-file="Shashi Solluna - How I Healed my Sexual Pain using Nature\.mp4"/);
 assert.match(index, /data-sex-ed-episode="16"[^>]*data-sex-ed-file="Karl Lagerfeld &amp; Shashi Solluna - Nice Guy vs\. Toxic Masculinity\.mp4"[^>]*data-sex-ed-background-file="Karl Lagerfeld &amp; Shashi Solluna - Nice Guy vs\. Toxic Masculinity\.mp4"/);
 assert.match(index, /<strong>Healing Sexual Trauma in Nature<\/strong>[\s\S]{0,100}<span>Shashi Solana<\/span>/);
 assert.match(index, /<strong>Dissolving Toxic Masculinity<\/strong>[\s\S]{0,120}<span>Karl Lagerfeld &amp; Shashi Solana<\/span>/);
+assert.doesNotMatch(index.match(/data-sex-ed-episode="15"[\s\S]{0,900}/)?.[0] || "", /wallet-fashion-reference/);
+assert.doesNotMatch(index.match(/data-sex-ed-episode="16"[\s\S]{0,900}/)?.[0] || "", /wallet-fashion-reference/);
+assert.match(index, /data-sex-ed-episode="15"[\s\S]{0,1000}d064fc7c011c38b9423b0b177ef61368\/thumbnails\/thumbnail\.jpg\?time=450s/);
+assert.match(index, /data-sex-ed-episode="16"[\s\S]{0,1000}2c099816dba26973d4d4d36452d05f99\/thumbnails\/thumbnail\.jpg\?time=600s/);
+
+const ethicsModal = index.match(/<section class="jbh-ethics"[\s\S]*?<\/section>/)?.[0] || "";
+assert.match(index, /16 lessons<\/p>[\s\S]{0,260}data-jbh-ethics-open[\s\S]{0,120}>ethics &amp; values<\/button>/);
+assert.match(ethicsModal, /data-stream-file="The Shamen - LSI \(Love Sex Intelligence\) HD_1\.mp4"/);
+assert.equal((ethicsModal.match(/adaptive-television-reaction__glyph--flora-trigger/g) || []).length, 3);
+assert.match(ethicsModal, /<strong>LSI<\/strong> — Love · Sex · Intelligence/);
+assert.match(ethicsModal, /female first[\s\S]*all female hosted[\s\S]*no more violence[\s\S]*no more shame[\s\S]*healthy body image/);
+assert.match(ethicsModal, /age diversity[\s\S]*racial diversity[\s\S]*gender diversity[\s\S]*identity diversity[\s\S]*opportunity diversity/);
+assert.match(ethicsModal, /Many ways of being\.[\s\S]*age, race, gender, identity, lived experience and opportunity[\s\S]*centring women across sexual orientations[\s\S]*relevant to men[\s\S]*non-binary people and others[\s\S]*transgender people and gay men[\s\S]*suitably experienced specialists[\s\S]*do not claim expertise we do not yet have/);
+assert.match(ethicsModal, /no health claims[\s\S]*transparent[\s\S]*research-led[\s\S]*ethics-led/);
+assert.match(ethicsModal, /partnerships with consent[\s\S]*Black Rainbow[\s\S]*Aboriginal and Torres Strait Islander LGBTIQA\+SB perspectives[\s\S]*subject to their interest, leadership and agreement[\s\S]*No partnership is currently confirmed[\s\S]*no association is implied without their consent/);
+assert.match(ethicsModal, /https:\/\/www\.miriamrosefoundation\.org\.au\/dadirri/);
+assert.match(ethicsModal, /https:\/\/ethics\.org\.au\//);
+assert.match(ethicsModal, /https:\/\/blackrainbow\.org\.au\//);
+assert.doesNotMatch(ethicsModal, /Shashi|Pirelli|youtube|youtu\.be/i);
+assert.match(controller, /async function openJbhEthics[\s\S]{0,1800}ensureSexEdStream\(jbhEthicsVideo, "music"\)/);
+assert.match(controller, /jbhEthicsVideo\.muted = false[\s\S]{0,100}jbhEthicsVideo\.volume = 1/);
+assert.match(styles, /\.adaptive-television-reaction-wallet\[data-wallet-view="emdr"\]\[data-emdr-controls-view="gif"\][\s\S]{0,100}width: min\(1460px/);
+assert.match(styles, /\.adaptive-television-emdr-jbh-background,[\s\S]{0,120}\.jbh-ethics__video[\s\S]{0,180}-webkit-user-drag: none/);
 
 const editorNote = index.match(/<div class="jbh-content-gate__editor-note"[^>]*>([\s\S]*?)<\/div>/)?.[1] || "";
 const visibleNote = editorNote

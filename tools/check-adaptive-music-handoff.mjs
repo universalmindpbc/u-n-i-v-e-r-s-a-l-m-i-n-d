@@ -365,7 +365,7 @@ const introCallPosition = controller.lastIndexOf('runIntro();');
 const roomOpenPosition = controller.indexOf('document.body.classList.add("television-room-open");');
 const pointerCountdownPosition = controller.indexOf('startReactionWalletPointerUnlockCountdown();');
 const settlingWalletRule = televisionCss.match(/body\.television-wallet-settling \.adaptive-television-reaction-wallet(?:\[data-wallet-view="closed"\])?,[\s\S]*?\{([\s\S]*?)\}/)?.[1] ?? '';
-const safariLiveTextRule = televisionCss.match(/\.adaptive-television-player video,\s*\.adaptive-television-sex-ed-episode\s*\{([\s\S]*?)\}/)?.[1] ?? '';
+const safariLiveTextRule = televisionCss.match(/\.adaptive-television-player video,\s*\.adaptive-television-sex-ed-episode,[\s\S]*?\.jbh-ethics__video\s*\{([\s\S]*?)\}/)?.[1] ?? '';
 const safariFullscreenLiveTextRule = televisionCss.match(/\.site-shell:fullscreen,\s*\.site-shell:-webkit-full-screen,\s*body\.television-is-fullscreen \.site-shell\s*\{([\s\S]*?)\}/)?.[1] ?? '';
 const walletOnboardingWelcomeRule = televisionCss.match(/\.adaptive-television-wallet-onboarding__welcome\s*\{([\s\S]*?)\}/)?.[1] ?? '';
 const nowPlayingCssStart = televisionCss.indexOf('/* Fixed primary wallet with a quiet, readable programme ticker. */');
@@ -861,8 +861,8 @@ requireCondition(realtimeVoiceWellbeingGuide.includes('https://headspace.org.au/
 requireCondition(realtimeVoiceWellbeingGuide.includes('call 13 11 14') && realtimeVoiceWellbeingGuide.includes('text 0477 13 11 14') && realtimeVoiceWellbeingGuide.includes('https://www.lifeline.org.au/crisis-chat/'), 'Universal One no longer has the approved Australian Lifeline pathway');
 requireCondition(realtimeVoiceWellbeingGuide.includes('Triple Zero on 000') && realtimeVoiceWellbeingGuide.includes('Universal One cannot call emergency services'), 'Universal One no longer has a clear immediate-danger boundary');
 requireCondition(realtimeVoiceWellbeingGuide.includes('This is curated source-grounded knowledge, not live browsing.'), 'Universal One can no longer distinguish curated headspace knowledge from live website access');
-requireCondition(controller.includes('const VOICE_ASSISTANT_PROGRAMME_MIX_LEVEL = .15;') && !controller.includes('const VOICE_ASSISTANT_PROGRAMME_MIX_LEVEL = 0;') && controller.includes('voiceAssistantBaseVolumes.get(media) * VOICE_ASSISTANT_PROGRAMME_MIX_LEVEL, 800'), 'the television programme no longer uses the approved fifteen-percent Universal One reduction');
-requireCondition(controller.includes('animateVoiceAssistantProgramVolume(media, baseline, 1000)') && controller.includes('const duckFactor = voiceAssistantDuckActive ? VOICE_ASSISTANT_PROGRAMME_MIX_LEVEL : 1;'), 'the television programme no longer restores smoothly after voice');
+requireCondition(controller.includes('const VOICE_ASSISTANT_PROGRAMME_MIX_LEVEL = .15;') && !controller.includes('const VOICE_ASSISTANT_PROGRAMME_MIX_LEVEL = 0;') && controller.includes('setVoiceAssistantProgramVolume(media, voiceAssistantBaseVolumes.get(media), 800)'), 'the television programme no longer uses the approved fifteen-percent Universal One reduction');
+requireCondition(controller.includes('setVoiceAssistantProgramVolume(media, baseline, 1000)') && controller.includes('const duckFactor = voiceAssistantDuckActive ? VOICE_ASSISTANT_PROGRAMME_MIX_LEVEL : 1;'), 'the television programme no longer restores smoothly after voice');
 
 for (const { pagePath, source } of globeScriptPages) {
   const label = path.relative(ROOT, pagePath);
