@@ -162,7 +162,7 @@ assert.deepEqual(schedule.extended_session_format_policy.weights, { parties: 0.8
 assert.match(guide, /Parties 80% of the time, Radio 10% and Videos 10%/);
 
 assert.match(index, /James Bondage Health · sex-ed/);
-assert.equal((index.match(/data-sex-ed-card(?:\s|>)/g) || []).length, 14);
+assert.equal((index.match(/data-sex-ed-card(?:\s|>)/g) || []).length, 16);
 assert.match(index, /data-sex-ed-episode="06"[\s\S]{0,900}Healing Through Solo Rope &amp; Self Pleasure/);
 assert.match(index, /aria-label="Open episode 06:[^"]+Jacqueline Michelle"/);
 assert.match(index, /<span>Jacqueline Michelle<\/span>/);

@@ -1,0 +1,35 @@
+{
+  "version": "cloudflare_stream_ingest_v1",
+  "uploadedAt": "2026-08-30",
+  "accountId": "bef34a5ee69678e46332813cb7610012",
+  "customerHost": "customer-1vpwglz3v6fiyaas.cloudflarestream.com",
+  "files": [
+    {
+      "fileName": "Karl Lagerfeld & Shashi Solluna - Nice Guy vs. Toxic Masculinity.mp4",
+      "sourceBytes": 3491190815,
+      "sourceSha256": "54ea86cb413b89c6e8fe284f030d42ce4df2161c5b5b09b0048688c4928ef01d",
+      "durationSeconds": 3288.24,
+      "sourceDimensions": "1920x1080",
+      "uid": "2c099816dba26973d4d4d36452d05f99",
+      "status": "ready"
+    },
+    {
+      "fileName": "Pirelli 2010 Calendar.mp4",
+      "sourceBytes": 471084154,
+      "sourceSha256": "bf07d752d941ba01a4f8a8990934af34ed5dfe0d885047cfc3fbf6418d86c29f",
+      "durationSeconds": 1479.2,
+      "sourceDimensions": "1280x720",
+      "uid": "3be25d8ba3bb884e35ab57cc6f5c43c3",
+      "status": "ready"
+    },
+    {
+      "fileName": "Shashi Solluna - How I Healed my Sexual Pain using Nature.mp4",
+      "sourceBytes": 167371115,
+      "sourceSha256": "cb877bfd4057fa1d9cc29a30f566061a4aabb3032ac6a792ab40b346c0740fea",
+      "durationSeconds": 549.27,
+      "sourceDimensions": "1280x720",
+      "uid": "d064fc7c011c38b9423b0b177ef61368",
+      "status": "ready"
+    }
+  ]
+}

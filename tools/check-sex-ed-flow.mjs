@@ -17,7 +17,7 @@ assert.match(index, /class="adaptive-television-sex-ed-link" href="#sex-ed-shelf
 assert.match(index, /data-now-playing[\s\S]*data-sex-ed-link/);
 assert.match(index, /data-now-playing-secondary-label(?:\s+hidden)?>VISUAL</);
 assert.match(index, /class="adaptive-television-fashion-shelf adaptive-television-music-shelf adaptive-television-sex-ed-shelf"/);
-assert.equal((index.match(/data-sex-ed-card(?:\s|>)/g) || []).length, 14);
+assert.equal((index.match(/data-sex-ed-card(?:\s|>)/g) || []).length, 16);
 assert.match(index, /data-sex-ed-episode="01"[\s\S]{0,300}data-sex-ed-start-time="139"/);
 assert.match(index, /data-sex-ed-episode="02"/);
 assert.match(index, /data-sex-ed-episode="03"/);
@@ -26,7 +26,7 @@ assert.match(index, /data-sex-ed-episode="05"/);
 assert.match(index, /data-sex-ed-episode="06"[\s\S]{0,360}data-sex-ed-background-file="Karl Lagerfeld - The Making of the 2011 Pirelli Calendar\.mp4"/);
 assert.match(index, /data-sex-ed-episode="07"[\s\S]{0,520}data-sex-ed-presentation="fullscreen"[\s\S]{0,220}data-sex-ed-radio-station="cafe-del-mar-chill"/);
 assert.match(index, /data-sex-ed-episode="08"[\s\S]{0,520}data-sex-ed-presentation="fullscreen"[\s\S]{0,220}data-sex-ed-radio-station="cafe-del-mar-chill"/);
-for (const episode of ["09", "10", "11", "12", "13", "14"]) {
+for (const episode of ["09", "10", "11", "12", "13", "14", "15", "16"]) {
   assert.match(index, new RegExp(`data-sex-ed-episode="${episode}"`));
 }
 assert.match(index, /<strong>Reclaiming the Forbidden Feminine<\/strong>/);
@@ -49,9 +49,9 @@ assert.match(index, /<span>Jacqueline Michelle<\/span>/);
 assert.match(index, /aria-label="Open episode 06:[^"]+Jacqueline Michelle"/);
 assert.match(index, /b35b5890ca38c7b99bfc7adaae5bc16c\/thumbnails\/thumbnail\.jpg\?time=60s&height=360/);
 assert.match(index, /7f60e29d9e432bf4198df7dc223b66ef\/thumbnails\/thumbnail\.jpg\?time=60s&height=360/);
-assert.match(index, /1–4 \/ 14/);
+assert.match(index, /1–4 \/ 16/);
 assert.match(index, /James Bondage Health · sex-ed/);
-assert.match(index, /<p>14 lessons<\/p>/);
+assert.match(index, /<p>16 lessons<\/p>/);
 assert.match(index, /data-sex-ed-shell-start[^>]*hidden/);
 assert.match(index, /data-television-live-pill/);
 assert.match(index, /data-reaction-wallet/);
@@ -98,7 +98,7 @@ assert.match(televisionJs, /readyBufferSeconds: sexEdOwnsVisuals \? SEX_ED_RECOR
 assert.match(televisionJs, /startTimeoutMs: sexEdOwnsVisuals \? SEX_ED_AUDIO_PARTY_START_TIMEOUT_MS : undefined/);
 assert.match(televisionJs, /const audioReady = recordReadiness\("Audio"[\s\S]*?readiness\.push\(audioReady\);[\s\S]*?audioReady\.then\(\(ready\) => ready \? playSexEdBackgroundVideo\(\) : false\)[\s\S]*?audioReady\.then\(\(ready\) => ready \? activateSexEdLoopVideos\(\) : false\)/);
 assert.match(televisionJs, /readiness\.push\(audioReady\);[\s\S]{0,180}recordReadiness\("Foreground", audioReady\.then\(\(ready\) => ready \? playSexEdEpisode\(\) : false\)\)/);
-assert.match(televisionJs, /const ready = \(await Promise\.all\(readiness\)\)\.every\(Boolean\);[\s\S]{0,700}if \(ready\) finishChannelLoading\(loadingGeneration\);[\s\S]{0,80}else failChannelLoading\(loadingGeneration\);/);
+assert.match(televisionJs, /const ready = \(await Promise\.all\(readiness\)\)\.every\(Boolean\);[\s\S]{0,1400}if \(ready\) finishChannelLoading\(loadingGeneration\);[\s\S]{0,80}else failChannelLoading\(loadingGeneration\);/);
 assert.match(televisionJs, /fadeContinuationAudio\(programmeFixedMixLevel \?\? \.68, 1200\)/);
 assert.match(televisionJs, /if \(radioStation\) \{[\s\S]*release\?\.\(sexEdBackground, "sex_ed_radio_presentation"\)[\s\S]*releaseSexEdLoopVideos\(\)/);
 assert.match(televisionJs, /setVoiceAssistantProgramVolume\(sexEdEpisodeVideo, 1,/);
@@ -199,4 +199,4 @@ for (const position of [2, 5]) {
   assert.equal(readFileSync(path, { encoding: null }).subarray(0, 3).toString(), "GIF");
 }
 
-console.log("Sex-ed fourteen-episode shelf, editorial backgrounds, and full-screen instruction preflight passed.");
+console.log("Sex-ed sixteen-episode shelf, editorial backgrounds, and full-screen instruction preflight passed.");

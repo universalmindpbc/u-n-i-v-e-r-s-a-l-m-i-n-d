@@ -43,8 +43,8 @@ assert.deepEqual(Array.from(comedy.find((item) => item.id === "comedy-donny-clar
 
 const uniqueComedyFiles = new Set(comedy.flatMap((item) => Array.from(item.segments).map((segment) => segment.fileName)));
 assert.equal(uniqueComedyFiles.size, 19, "Every live Comedy source file must be represented exactly once.");
-assert.equal(sexEd.length, 14);
-assert.equal(Math.round(sexEd.reduce((sum, item) => sum + Number(item.durationSeconds || 0), 0) * 1000) / 1000, 41254.854, "All fourteen on-demand Sex-Ed lessons must retain their measured durations.");
+assert.equal(sexEd.length, 16);
+assert.equal(Math.round(sexEd.reduce((sum, item) => sum + Number(item.durationSeconds || 0), 0) * 1000) / 1000, 46022.294, "All sixteen on-demand Sex-Ed lessons must retain their measured durations.");
 assert.deepEqual(sexEd.slice(8).map((item) => [item.episode, item.title, item.artist]), [
   ["09", "Five Stages of Subspace", "Alesandra Madison"],
   ["10", "Subspace & Topspace", "Luna Agneya"],
@@ -52,14 +52,17 @@ assert.deepEqual(sexEd.slice(8).map((item) => [item.episode, item.title, item.ar
   ["12", "BDSM: The New Religion?", "Gemma Li & Seraphyna"],
   ["13", "Submission & the Male Brain", "Alla Mephistopheles"],
   ["14", "Becoming NYC’s #1 Dominatrix", "Mistress Seren"],
+  ["15", "Healing Sexual Trauma in Nature", "Shashi Solana"],
+  ["16", "Dissolving Toxic Masculinity", "Karl Lagerfeld & Shashi Solana"],
 ]);
-assert.ok(sexEd.slice(8).every((item) => !item.presentation && !item.radioStation), "New Sex Ed episodes must use the standard EMDR presentation and private Sex Ed audio clock.");
+assert.ok(sexEd.slice(8, 14).every((item) => !item.presentation && !item.radioStation), "Episodes 09–14 must retain the standard EMDR presentation and private Sex Ed audio clock.");
+assert.ok(sexEd.slice(14).every((item) => item.presentation === "jbh-editorial" && !item.radioStation), "Episodes 15–16 must use the new JBH editorial presentation with the private Sex Ed audio clock.");
 assert.deepEqual(sexEd.slice(6, 8).map((item) => item.radioStation), ["cafe-del-mar-chill", "cafe-del-mar-chill"], "Only the two existing yoga episodes retain Cafe del Mar Chill.");
-const newlyUploadedFiles = ["The Midnight Gospel _ Official Trailer _ Netflix.mp4", ...uniqueComedyFiles, ...sexEd.slice(8).map((item) => item.fileName)];
+const newlyUploadedFiles = [...new Set(["The Midnight Gospel _ Official Trailer _ Netflix.mp4", ...uniqueComedyFiles, ...sexEd.slice(8).flatMap((item) => [item.fileName, item.backgroundFileName].filter(Boolean))])];
 const newlyUploadedAssets = newlyUploadedFiles.map((fileName) => sandbox.window.IAMCloudflareStream.assetFor(fileName));
-assert.equal(newlyUploadedFiles.length, 26);
-assert.ok(newlyUploadedAssets.every((asset) => /^[a-f0-9]{32}$/.test(asset?.uid || "")), "All 26 requested source files must resolve to exact Cloudflare Stream UIDs.");
-assert.equal(new Set(newlyUploadedAssets.map((asset) => asset.uid)).size, 26, "Every requested source file must resolve to its own Stream object.");
+assert.equal(newlyUploadedFiles.length, 29);
+assert.ok(newlyUploadedAssets.every((asset) => /^[a-f0-9]{32}$/.test(asset?.uid || "")), "All 29 requested source files must resolve to exact Cloudflare Stream UIDs.");
+assert.equal(new Set(newlyUploadedAssets.map((asset) => asset.uid)).size, 29, "Every requested source file must resolve to its own Stream object.");
 
 const comedyChannel = schedule.channels.find((channel) => channel.id === "comedy-jarrad-wright");
 const sexEdAudioChannel = schedule.channels.find((channel) => channel.id === "sex-ed");
@@ -71,8 +74,10 @@ assert.match(guide, /channel\?\.format === mode && channel\?\.internal !== true/
 assert.equal((index.match(/data-program-mode="comedy"/g) || []).length, 1);
 assert.equal((index.match(/data-program-sex-ed/g) || []).length, 1);
 assert.match(index, /data-program-mode="comedy"[^>]*>COMEDY<[\s\S]{0,180}data-program-sex-ed[^>]*>SEX-ED</);
-assert.equal((index.match(/data-sex-ed-card(?:\s|>)/g) || []).length, 14);
-assert.match(index, /<p>14 lessons<\/p>/);
+assert.equal((index.match(/data-sex-ed-card(?:\s|>)/g) || []).length, 16);
+assert.match(index, /<p>16 lessons<\/p>/);
+assert.match(index, /data-sex-ed-episode="15"[^>]*data-sex-ed-foreground-muted="true"[^>]*data-sex-ed-background-audible="true"[^>]*data-sex-ed-sensitive="pirelli-editor-note"/);
+assert.match(index, /data-sex-ed-episode="16"[^>]*data-sex-ed-foreground-muted="false"[^>]*data-sex-ed-background-audible="false"[^>]*data-sex-ed-sync-layers="true"[^>]*data-sex-ed-sensitive="18-plus"/);
 assert.match(comedyCss, /\.adaptive-television-comedy-video[\s\S]*?object-fit: cover/);
 assert.match(comedyCss, /--comedy-crop-scale/);
 assert.match(read("i  a m/programme-guide.css"), /\.program-panel__footer button\[hidden\][\s\S]*?display: none/, "Programme-only modes must not display the legacy MORE control.");

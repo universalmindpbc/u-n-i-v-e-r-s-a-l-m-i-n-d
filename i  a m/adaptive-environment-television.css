@@ -805,6 +805,49 @@ body.television-radio-continuation .adaptive-television-fashion-video {
   transform: translate(-50%, -50%);
 }
 
+.adaptive-television-emdr-jbh-background,
+.adaptive-television-emdr-jbh-foreground {
+  position: absolute;
+  display: block;
+  background: #08080a;
+  object-fit: cover;
+  opacity: 0;
+  pointer-events: none;
+  visibility: hidden;
+}
+
+.adaptive-television-emdr-jbh-background {
+  inset: 0;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.adaptive-television-emdr-jbh-foreground {
+  top: 50%;
+  left: 50%;
+  z-index: 3;
+  width: var(--emdr-gif-front-width);
+  height: var(--emdr-gif-front-height);
+  transform: translate(-50%, -50%);
+}
+
+body.television-emdr-jbh-editorial-active .adaptive-television-emdr-jbh-background,
+body.television-emdr-jbh-editorial-active .adaptive-television-emdr-jbh-foreground {
+  opacity: 1;
+  visibility: visible;
+}
+
+body.television-emdr-jbh-editorial-active .adaptive-television-player > :not(.adaptive-television-channel-loading):not(.adaptive-television-timecode) {
+  opacity: 0 !important;
+  visibility: hidden !important;
+}
+
+body.television-emdr-jbh-editorial-active .adaptive-television-player .adaptive-television-fashion-hero-frame {
+  opacity: 0 !important;
+  visibility: hidden !important;
+}
+
 body.television-emdr-gif-active .adaptive-television-player .adaptive-television-fashion-video {
   inset: 0;
   z-index: 1;
@@ -6226,6 +6269,11 @@ body.music-shelf-open .adaptive-television-fashion-shelf:not(.adaptive-televisio
   min-width: 82px;
 }
 
+.adaptive-television-emdr-style[data-emdr-preset^="jbh-"] {
+  min-width: 70px;
+  padding-inline: 11px;
+}
+
 .adaptive-television-emdr-style[aria-pressed="true"] {
   border-color: rgba(255, 255, 255, 0.34);
   background: rgba(255, 255, 255, 0.15);
@@ -7239,5 +7287,155 @@ body.music-shelf-open .adaptive-television-fashion-shelf:not(.adaptive-televisio
 
   .adaptive-broadcast-entry__actions {
     margin-top: 22px;
+  }
+}
+
+/* Adult-content confirmation follows the visual language of the shared
+   broadcast invitation, while allowing the supplied editor's note to scroll. */
+.jbh-content-gate {
+  position: absolute;
+  inset: 0;
+  z-index: 60;
+  display: grid;
+  place-items: center;
+  opacity: 0;
+  pointer-events: none;
+  visibility: hidden;
+  transition: opacity 220ms ease, visibility 0s linear 220ms;
+}
+
+.jbh-content-gate[aria-hidden="false"] {
+  opacity: 1;
+  pointer-events: auto;
+  visibility: visible;
+  transition: opacity 260ms ease, visibility 0s linear;
+}
+
+.jbh-content-gate__backdrop {
+  position: absolute;
+  inset: 0;
+  border: 0;
+  background: rgba(0, 0, 0, .82);
+  cursor: default;
+  padding: 0;
+}
+
+.jbh-content-gate__panel {
+  position: relative;
+  box-sizing: border-box;
+  width: min(780px, calc(100vw - 40px));
+  max-height: min(82vh, 760px);
+  overflow-y: auto;
+  border: 1px solid rgba(255, 255, 255, .24);
+  border-radius: 14px;
+  background: rgba(10, 10, 12, .97);
+  color: #fff;
+  padding: 36px 38px 32px;
+  text-align: left;
+  transform: translateY(10px);
+  transition: transform 320ms cubic-bezier(.22, .72, .18, 1);
+}
+
+.jbh-content-gate[aria-hidden="false"] .jbh-content-gate__panel {
+  transform: translateY(0);
+}
+
+.jbh-content-gate__panel:focus {
+  outline: 0;
+}
+
+.jbh-content-gate__close {
+  position: absolute;
+  top: 9px;
+  right: 11px;
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  border: 0;
+  background: transparent;
+  color: rgba(255, 255, 255, .7);
+  cursor: pointer;
+  font: 300 28px/1 Arial, sans-serif;
+}
+
+.jbh-content-gate__eyebrow,
+.jbh-content-gate__age-copy,
+.jbh-content-gate__editor-note p,
+.jbh-content-gate__editor-note ul,
+.jbh-content-gate h2 {
+  margin: 0;
+}
+
+.jbh-content-gate__eyebrow {
+  color: #d8ff42;
+  font: 700 10px/1.2 "Helvetica Neue", Helvetica, Arial, sans-serif;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+}
+
+.jbh-content-gate h2 {
+  margin-top: 16px;
+  font: 500 clamp(28px, 4vw, 44px)/1 "Helvetica Neue", Helvetica, Arial, sans-serif;
+  letter-spacing: -.04em;
+}
+
+.jbh-content-gate__age-copy,
+.jbh-content-gate__editor-note {
+  margin-top: 18px;
+  color: rgba(255, 255, 255, .76);
+  font: 400 14px/1.55 "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+.jbh-content-gate__editor-note p + p {
+  margin-top: 22px;
+}
+
+.jbh-content-gate__editor-note ul {
+  padding: 6px 0 0 22px;
+}
+
+.jbh-content-gate__editor-note a {
+  color: #ffb629;
+  text-underline-offset: 3px;
+}
+
+.jbh-content-gate__actions {
+  display: grid;
+  gap: 8px;
+  margin-top: 26px;
+}
+
+.jbh-content-gate__action {
+  min-height: 42px;
+  border: 1px solid rgba(255, 255, 255, .22);
+  border-radius: 8px;
+  background: transparent;
+  color: rgba(255, 255, 255, .88);
+  cursor: pointer;
+  font: 650 10px/1 "Helvetica Neue", Helvetica, Arial, sans-serif;
+  letter-spacing: .095em;
+  text-transform: uppercase;
+}
+
+.jbh-content-gate__action--primary {
+  border-color: #d8ff42;
+  background: #d8ff42;
+  color: #111;
+}
+
+.jbh-content-gate__action:hover,
+.jbh-content-gate__action:focus-visible,
+.jbh-content-gate__close:hover,
+.jbh-content-gate__close:focus-visible {
+  outline: 2px solid rgba(216, 255, 66, .82);
+  outline-offset: 2px;
+}
+
+@media (max-width: 560px) {
+  .jbh-content-gate__panel {
+    width: min(100% - 20px, 780px);
+    max-height: 88vh;
+    padding: 34px 20px 24px;
   }
 }

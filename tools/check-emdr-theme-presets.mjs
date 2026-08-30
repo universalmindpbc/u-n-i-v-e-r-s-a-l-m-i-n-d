@@ -43,8 +43,10 @@ const expectedManualMasters = new Map([
 const expectedButtons = [
   { index: 0, key: "cb", label: "CB" },
   { index: 1, key: "m8", label: "M8" },
-  { index: 2, key: "jbh", label: "JBH" },
-  { index: 3, key: "stella", label: "Stella" },
+  { index: 2, key: "jbh-i", label: "JBH i" },
+  { index: 3, key: "jbh-ii", label: "JBH ii" },
+  { index: 4, key: "jbh-iii", label: "JBH iii" },
+  { index: 5, key: "stella", label: "Stella" },
 ];
 
 for (const page of [html, altHtml]) {
@@ -53,12 +55,16 @@ for (const page of [html, altHtml]) {
   });
   assert.match(page, /data-emdr-preset="cb" data-emdr-tooltip="Champagne Bohemia — Xaviera Lopez’s animated GIF experience\."/);
   assert.match(page, /data-emdr-preset="m8" data-emdr-tooltip="modul8 infinity — Hexeosis animated GIF experience\."/);
-  assert.match(page, /data-emdr-preset="jbh" data-emdr-tooltip="James Bondage Health — Bordelle animated GIF experience\."/);
+  assert.match(page, /data-emdr-preset="jbh-i" data-emdr-tooltip="James Bondage Health — Bordelle animated GIF experience\."/);
+  assert.match(page, /data-emdr-preset="jbh-ii" data-emdr-tooltip="James Bondage Health — Pirelli 2010 and Shashi Solana — healing sexual trauma in nature\."/);
+  assert.match(page, /data-emdr-preset="jbh-iii" data-emdr-tooltip="James Bondage Health — Karl Lagerfeld and Shashi Solana — dissolving toxic masculinity\."/);
   assert.match(page, /data-emdr-preset="stella" data-emdr-tooltip="Stella geometric experience\."/);
   assert.doesNotMatch(page, /data-emdr-tooltip="[^"]*Rave animated GIF experience\.?"/i);
   assert.doesNotMatch(page, /data-emdr-tooltip="Bordelle video experience\."/);
   assert.doesNotMatch(page, /data-emdr-tooltip="[^"]*video experience\.?"/);
-  assert.equal((page.match(/data-emdr-gif-preset-label=/g) || []).length, 3);
+  assert.equal((page.match(/data-emdr-gif-preset-label=/g) || []).length, 5);
+  assert.match(page, /data-jbh-content-gate/);
+  assert.match(page, /I am 18 or older — continue/);
 }
 
 const rootStart = html.indexOf('data-emdr-gif-world');
@@ -67,7 +73,7 @@ const gifWorldMarkup = html.slice(rootStart, rootEnd);
 const presetMarkup = (key) => gifWorldMarkup.match(new RegExp(`data-emdr-gif-preset="${key}"[\\s\\S]*?(?=<div class="adaptive-television-emdr-gif-grid"|$)`))?.[0] || "";
 const cbMarkup = presetMarkup("cb");
 const m8Markup = presetMarkup("m8");
-const jbhMarkup = presetMarkup("jbh");
+const jbhMarkups = ["jbh-i", "jbh-ii", "jbh-iii"].map(presetMarkup);
 const altRootStart = altHtml.indexOf('data-emdr-gif-world');
 const altRootEnd = altHtml.indexOf('adaptive-television-emdr-gif-casing', altRootStart);
 const altGifWorldMarkup = altHtml.slice(altRootStart, altRootEnd);
@@ -81,9 +87,13 @@ assert.deepEqual(m8Pages.map((page) => (page.match(/data-emdr-gif-tile/g) || [])
 assert.deepEqual(altM8Pages.map((page) => (page.match(/data-emdr-gif-tile/g) || []).length), [6, 6, 6, 6, 6, 6, 3]);
 assert.match(m8Pages.at(-1), /data-emdr-gif-boxed[^>]*ioh-emdr-hexeosis\.gif/);
 assert.match(altM8Pages.at(-1), /data-emdr-gif-boxed[^>]*ioh-emdr-hexeosis\.gif/);
-assert.equal((jbhMarkup.match(/data-emdr-gif-tile/g) || []).length, 6);
-assert.equal((jbhMarkup.match(/<video /g) || []).length, 4);
-assert.equal((jbhMarkup.match(/<img /g) || []).length, 2);
+jbhMarkups.forEach((jbhMarkup) => {
+  assert.equal((jbhMarkup.match(/data-emdr-gif-tile/g) || []).length, 6);
+  assert.equal((jbhMarkup.match(/<video /g) || []).length, 4);
+  assert.equal((jbhMarkup.match(/<img /g) || []).length, 2);
+});
+assert.match(html, /data-emdr-jbh-background/);
+assert.match(html, /data-emdr-jbh-foreground/);
 assert.match(m8Markup, /data-emdr-gif-scroll/);
 assert.match(m8Markup, /data-emdr-gif-progressive/);
 assert.equal((m8Markup.match(/loading="eager"/g) || []).length, 6);

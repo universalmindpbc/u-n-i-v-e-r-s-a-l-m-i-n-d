@@ -124,10 +124,24 @@ async function runViewport(viewport) {
   for (const preset of [
     { index: 0, key: "cb", label: "CB", controlsView: "gif", tileVideos: 0, tileImages: 6 },
     { index: 1, key: "m8", label: "M8", controlsView: "gif", tileVideos: 0, tileImages: 39 },
-    { index: 2, key: "jbh", label: "JBH", controlsView: "gif", tileVideos: 4, tileImages: 2 },
-    { index: 3, key: "stella", label: "Stella", controlsView: "stellar", tileVideos: 0, tileImages: 0 },
+    { index: 2, key: "jbh-i", label: "JBH i", controlsView: "gif", tileVideos: 4, tileImages: 2 },
+    { index: 3, key: "jbh-ii", label: "JBH ii", controlsView: "gif", tileVideos: 4, tileImages: 2, gate: "pirelli" },
+    { index: 4, key: "jbh-iii", label: "JBH iii", controlsView: "gif", tileVideos: 4, tileImages: 2, gate: "18-plus" },
+    { index: 5, key: "stella", label: "Stella", controlsView: "stellar", tileVideos: 0, tileImages: 0 },
   ]) {
     await click(`[data-emdr-style-index="${preset.index}"]`);
+    if (preset.gate) {
+      const gateSnapshot = await page.evaluate(() => ({
+        open: document.querySelector("[data-jbh-content-gate]")?.getAttribute("aria-hidden"),
+        title: document.querySelector("[data-jbh-content-gate-title]")?.textContent.trim(),
+        editorNoteHidden: document.querySelector("[data-jbh-content-gate-editor-note]")?.hidden,
+        activePreset: document.body.dataset.emdrPreset || "",
+      }));
+      assert.equal(gateSnapshot.open, "false");
+      assert.equal(gateSnapshot.editorNoteHidden, preset.gate !== "pirelli");
+      assert.notEqual(gateSnapshot.activePreset, preset.key, "Sensitive media must not activate before confirmation.");
+      await click("[data-jbh-content-gate-confirm]");
+    }
     if (preset.key !== "stella") {
       try {
         await page.waitForFunction((key) => {
@@ -321,6 +335,8 @@ async function runViewport(viewport) {
     "Champagne Bohemia — Xaviera Lopez’s animated GIF experience.",
     "modul8 infinity — Hexeosis animated GIF experience.",
     "James Bondage Health — Bordelle animated GIF experience.",
+    "James Bondage Health — Pirelli 2010 and Shashi Solana — healing sexual trauma in nature.",
+    "James Bondage Health — Karl Lagerfeld and Shashi Solana — dissolving toxic masculinity.",
     "Stella geometric experience.",
   ]);
   assert.equal(presetDescriptions.some((description) => /Rave animated GIF experience/i.test(description)), false);

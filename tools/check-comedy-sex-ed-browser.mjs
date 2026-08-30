@@ -96,8 +96,8 @@ try {
   const sexEdPage = await mobile.newPage();
   await sexEdPage.goto(`${baseUrl}index.html?sexEd=1`, { waitUntil: "domcontentloaded" });
   await sexEdPage.waitForFunction(() => document.querySelector("[data-sex-ed-shelf]")?.getAttribute("aria-hidden") === "false");
-  assert.equal(await sexEdPage.locator("[data-sex-ed-card]").count(), 14);
-  assert.equal((await sexEdPage.locator("#sex-ed-shelf-title + p").textContent()).trim(), "14 lessons");
+  assert.equal(await sexEdPage.locator("[data-sex-ed-card]").count(), 16);
+  assert.equal((await sexEdPage.locator("#sex-ed-shelf-title + p").textContent()).trim(), "16 lessons");
   await sexEdPage.locator("[data-sex-ed-card]").first().click();
   await sexEdPage.waitForFunction(() => document.body.classList.contains("television-sex-ed-active"));
   const loaderState = await sexEdPage.evaluate(() => {
@@ -130,6 +130,76 @@ try {
   assert.equal(loaderState.tileGridOpacity, 1, "The six-tile EMDR field must remain visible while Sex-Ed loads.");
   assert.equal(loaderState.tileGridVisibility, "visible", "Sex-Ed loading must not hide or deprioritise the animated tiles.");
   assert.ok(loaderState.underlyingMedia.every((item) => item.visibility === "hidden" && item.opacity === 0), "No outgoing portrait or programme media may show through the Sex-Ed loader.");
+
+  const episode15Page = await mobile.newPage();
+  await episode15Page.goto(`${baseUrl}index.html?sexEd=1`, { waitUntil: "domcontentloaded" });
+  await episode15Page.waitForFunction(() => document.querySelector("[data-sex-ed-shelf]")?.getAttribute("aria-hidden") === "false");
+  await episode15Page.locator('[data-sex-ed-card][data-sex-ed-episode="15"]').click();
+  await episode15Page.waitForFunction(() => document.querySelector("[data-jbh-content-gate]")?.getAttribute("aria-hidden") === "false");
+  const episode15Gate = await episode15Page.evaluate(() => ({
+    active: document.body.classList.contains("television-sex-ed-active"),
+    title: document.querySelector("[data-jbh-content-gate-title]")?.textContent.trim(),
+    editorNoteHidden: document.querySelector("[data-jbh-content-gate-editor-note]")?.hidden,
+    previewCount: document.querySelectorAll("[data-sex-ed-card][data-sex-ed-episode=\"15\"] video").length,
+  }));
+  assert.deepEqual(episode15Gate, {
+    active: false,
+    title: "Pirelli 2010 · editor's note",
+    editorNoteHidden: false,
+    previewCount: 0,
+  }, "Episode 15 must remain stopped behind its complete editor's note.");
+  await episode15Page.locator("[data-jbh-content-gate-confirm]").click();
+  await episode15Page.waitForFunction(() => document.body.classList.contains("television-sex-ed-active"));
+  const episode15State = await episode15Page.evaluate(() => ({
+    episode: document.body.dataset.sexEdEpisode,
+    title: document.body.dataset.sexEdEpisodeTitle,
+    host: document.body.dataset.sexEdEpisodeGuest,
+    foregroundMuted: document.body.dataset.sexEdForegroundMuted,
+    backgroundAudible: document.body.dataset.sexEdBackgroundAudible,
+    musicMix: document.body.dataset.programmeFixedMixLevel,
+  }));
+  assert.deepEqual(episode15State, {
+    episode: "15",
+    title: "Healing Sexual Trauma in Nature",
+    host: "Shashi Solana",
+    foregroundMuted: "true",
+    backgroundAudible: "true",
+    musicMix: "0.15",
+  });
+  await episode15Page.close();
+
+  const episode16Page = await mobile.newPage();
+  await episode16Page.goto(`${baseUrl}index.html?sexEd=1`, { waitUntil: "domcontentloaded" });
+  await episode16Page.waitForFunction(() => document.querySelector("[data-sex-ed-shelf]")?.getAttribute("aria-hidden") === "false");
+  await episode16Page.locator('[data-sex-ed-card][data-sex-ed-episode="16"]').click();
+  await episode16Page.waitForFunction(() => document.querySelector("[data-jbh-content-gate]")?.getAttribute("aria-hidden") === "false");
+  const episode16Gate = await episode16Page.evaluate(() => ({
+    active: document.body.classList.contains("television-sex-ed-active"),
+    editorNoteHidden: document.querySelector("[data-jbh-content-gate-editor-note]")?.hidden,
+    previewCount: document.querySelectorAll("[data-sex-ed-card][data-sex-ed-episode=\"16\"] video").length,
+  }));
+  assert.deepEqual(episode16Gate, { active: false, editorNoteHidden: true, previewCount: 0 });
+  await episode16Page.locator("[data-jbh-content-gate-confirm]").click();
+  await episode16Page.waitForFunction(() => document.body.classList.contains("television-sex-ed-active"));
+  const episode16State = await episode16Page.evaluate(() => ({
+    episode: document.body.dataset.sexEdEpisode,
+    title: document.body.dataset.sexEdEpisodeTitle,
+    host: document.body.dataset.sexEdEpisodeGuest,
+    foregroundMuted: document.body.dataset.sexEdForegroundMuted,
+    backgroundAudible: document.body.dataset.sexEdBackgroundAudible,
+    syncLayers: document.body.dataset.sexEdSyncLayers,
+    musicMix: document.body.dataset.programmeFixedMixLevel,
+  }));
+  assert.deepEqual(episode16State, {
+    episode: "16",
+    title: "Dissolving Toxic Masculinity",
+    host: "Karl Lagerfeld & Shashi Solana",
+    foregroundMuted: "false",
+    backgroundAudible: "false",
+    syncLayers: "true",
+    musicMix: "0.15",
+  });
+  await episode16Page.close();
   await mobile.close();
 
   const comedyContext = await browser.newContext({ viewport: { width: 1440, height: 900 } });
@@ -220,6 +290,10 @@ try {
     wallClockByMode,
     mobileProgram,
     loaderState,
+    episode15Gate,
+    episode15State,
+    episode16Gate,
+    episode16State,
     comedyState: {
       streamFile: comedyState.streamFile,
       cropScale: comedyState.cropScale,

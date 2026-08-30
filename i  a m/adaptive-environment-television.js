@@ -172,6 +172,15 @@
   const sexEdBackground = document.querySelector("[data-sex-ed-background]");
   const sexEdEpisodeVideo = document.querySelector("[data-sex-ed-shell-video]");
   const sexEdEpisodeStart = document.querySelector("[data-sex-ed-shell-start]");
+  const emdrJbhBackground = document.querySelector("[data-emdr-jbh-background]");
+  const emdrJbhForeground = document.querySelector("[data-emdr-jbh-foreground]");
+  const jbhContentGate = document.querySelector("[data-jbh-content-gate]");
+  const jbhContentGatePanel = jbhContentGate?.querySelector(".jbh-content-gate__panel");
+  const jbhContentGateTitle = document.querySelector("[data-jbh-content-gate-title]");
+  const jbhContentGateAgeCopy = document.querySelector("[data-jbh-content-gate-age-copy]");
+  const jbhContentGateEditorNote = document.querySelector("[data-jbh-content-gate-editor-note]");
+  const jbhContentGateConfirm = document.querySelector("[data-jbh-content-gate-confirm]");
+  const jbhContentGateCancelButtons = Array.from(document.querySelectorAll("[data-jbh-content-gate-cancel]"));
   const comedyVideo = document.querySelector("[data-comedy-video]");
   const sexEdLoopVideos = Array.from(document.querySelectorAll(".adaptive-television-sex-ed-grid video"));
   const sexEdLoopImages = Array.from(document.querySelectorAll(".adaptive-television-sex-ed-grid img"));
@@ -260,7 +269,7 @@
   const televisionPageTitle = document.title;
   const entryParams = new URLSearchParams(window.location.search);
   const shopShellRequested = entryParams.get("shop") === "1";
-  const requestedSexEdEpisode = /^(?:0[1-9]|1[0-4])$/.test(entryParams.get("sexEdEpisode") || "")
+  const requestedSexEdEpisode = /^(?:0[1-9]|1[0-6])$/.test(entryParams.get("sexEdEpisode") || "")
     ? entryParams.get("sexEdEpisode")
     : "";
   const requestedSexEdShelf = entryParams.get("sexEd") === "1" || window.location.hash === "#sex-ed-shelf";
@@ -288,6 +297,12 @@
   let sexEdNeedsInitialSeek = true;
   let sexEdReturnProgramme = null;
   let sexEdOpenSequence = 0;
+  let sexEdLayerSyncTimer = 0;
+  let contentGateResolve = null;
+  let contentGatePreviousFocus = null;
+  let emdrJbhEditorialGeneration = 0;
+  let emdrJbhLayerSyncTimer = 0;
+  const emdrJbhDuckedVolumes = new Map();
   let musicCatalogueRecords = [];
   let radioStationRecords = DEFAULT_RADIO_STATIONS.map((station) => ({ ...station }));
   let musicShelfOrders = { videos: [], parties: [], radio: radioStationRecords.slice(), fashion: [] };
@@ -482,6 +497,7 @@
   const RADIO_SEGMENT_POLL_MS = 3000;
   const SEX_ED_PROGRAMME_MIX_LEVEL = .15;
   const SEX_ED_BROADCAST_CHANNEL_ID = "sex-ed";
+  const JBH_EDITORIAL_PROGRAMME_MIX_LEVEL = .15;
   const VOICE_ASSISTANT_PROGRAMME_MIX_LEVEL = .15;
   const SEX_ED_DEFAULT_BACKGROUND_FILE = "a s s e t s/f a s h i o n [ r u n w a y ]/Mugler - Fall Winter 2021.mp4";
   let continuationAudio = null;
@@ -602,11 +618,37 @@
       fashionChannelId: "fashion-social-uplift",
     },
     {
-      key: "jbh",
-      name: "James Bondage Health",
+      key: "jbh-i",
+      name: "James Bondage Health i",
       styleValue: 7,
-      gifPreset: "jbh",
+      gifPreset: "jbh-i",
       fashionChannelId: "fashion-underground-intensity",
+    },
+    {
+      key: "jbh-ii",
+      name: "James Bondage Health ii",
+      styleValue: 7,
+      gifPreset: "jbh-ii",
+      fashionChannelId: "",
+      sensitiveContent: "pirelli-editor-note",
+      backgroundFileName: "Shashi Solluna - How I Healed my Sexual Pain using Nature.mp4",
+      foregroundFileName: "Pirelli 2010 Calendar.mp4",
+      backgroundAudible: true,
+      foregroundMuted: true,
+      syncLayers: false,
+    },
+    {
+      key: "jbh-iii",
+      name: "James Bondage Health iii",
+      styleValue: 7,
+      gifPreset: "jbh-iii",
+      fashionChannelId: "",
+      sensitiveContent: "18-plus",
+      backgroundFileName: "Karl Lagerfeld & Shashi Solluna - Nice Guy vs. Toxic Masculinity.mp4",
+      foregroundFileName: "Karl Lagerfeld & Shashi Solluna - Nice Guy vs. Toxic Masculinity.mp4",
+      backgroundAudible: false,
+      foregroundMuted: false,
+      syncLayers: true,
     },
     {
       key: "stella",
@@ -638,6 +680,54 @@
       window.setTimeout(resolve, ms);
     });
   }
+
+  function closeJbhContentGate(confirmed = false) {
+    if (!jbhContentGate) return;
+    jbhContentGate.setAttribute("aria-hidden", "true");
+    jbhContentGate.setAttribute("inert", "");
+    document.body.classList.remove("jbh-content-gate-open");
+    const resolve = contentGateResolve;
+    contentGateResolve = null;
+    resolve?.(Boolean(confirmed));
+    contentGatePreviousFocus?.focus?.({ preventScroll: true });
+    contentGatePreviousFocus = null;
+  }
+
+  function requestJbhContentConsent(kind = "18-plus") {
+    if (!jbhContentGate || !jbhContentGatePanel || !jbhContentGateConfirm) return Promise.resolve(false);
+    if (contentGateResolve) closeJbhContentGate(false);
+    const showEditorNote = kind === "pirelli-editor-note";
+    if (jbhContentGateTitle) {
+      jbhContentGateTitle.textContent = showEditorNote ? "Pirelli 2010 · editor's note" : "Before you watch";
+    }
+    if (jbhContentGateAgeCopy) {
+      jbhContentGateAgeCopy.textContent = showEditorNote
+        ? "This experience contains artistic topless imagery, is intended for adults aged 18 and over, and includes the following editor's note."
+        : "This experience contains artistic topless imagery and is intended for adults aged 18 and over.";
+    }
+    if (jbhContentGateEditorNote) jbhContentGateEditorNote.hidden = !showEditorNote;
+    contentGatePreviousFocus = document.activeElement instanceof HTMLElement ? document.activeElement : null;
+    jbhContentGate.setAttribute("aria-hidden", "false");
+    jbhContentGate.removeAttribute("inert");
+    document.body.classList.add("jbh-content-gate-open");
+    window.setTimeout(() => jbhContentGatePanel.focus({ preventScroll: true }), 30);
+    return new Promise((resolve) => {
+      contentGateResolve = resolve;
+    });
+  }
+
+  jbhContentGateConfirm?.addEventListener("click", (event) => {
+    event.preventDefault();
+    event.stopPropagation();
+    closeJbhContentGate(true);
+  });
+  jbhContentGateCancelButtons.forEach((button) => {
+    button.addEventListener("click", (event) => {
+      event.preventDefault();
+      event.stopPropagation();
+      closeJbhContentGate(false);
+    });
+  });
 
   function normalizeSlug(value) {
     return String(value || "")
@@ -6560,7 +6650,118 @@
     }
   }
 
-  function setEmdrGifPresentationActive(active) {
+  function duckProgrammeForJbhEditorial() {
+    [localVideo, continuationAudio].forEach((media) => {
+      if (!media || media.muted || media.paused) return;
+      if (!emdrJbhDuckedVolumes.has(media)) {
+        const fallback = media === continuationAudio ? .68 : 1;
+        const currentVolume = Number(media.volume);
+        emdrJbhDuckedVolumes.set(media, Number.isFinite(currentVolume) && currentVolume > .001 ? currentVolume : fallback);
+      }
+      setVoiceAssistantProgramVolume(media, JBH_EDITORIAL_PROGRAMME_MIX_LEVEL, 420);
+    });
+    document.body.dataset.emdrJbhProgrammeMixLevel = String(JBH_EDITORIAL_PROGRAMME_MIX_LEVEL);
+  }
+
+  function restoreProgrammeAfterJbhEditorial() {
+    emdrJbhDuckedVolumes.forEach((baseline, media) => {
+      setVoiceAssistantProgramVolume(media, baseline, 420);
+    });
+    emdrJbhDuckedVolumes.clear();
+    delete document.body.dataset.emdrJbhProgrammeMixLevel;
+  }
+
+  function stopEmdrJbhEditorial(restoreProgramme = true) {
+    emdrJbhEditorialGeneration += 1;
+    window.clearInterval(emdrJbhLayerSyncTimer);
+    emdrJbhLayerSyncTimer = 0;
+    document.body.classList.remove("television-emdr-jbh-editorial-active");
+    delete document.body.dataset.emdrJbhEditorialState;
+    delete document.body.dataset.emdrJbhEditorialError;
+    [emdrJbhBackground, emdrJbhForeground].forEach((video) => {
+      if (!video) return;
+      video.setAttribute("aria-hidden", "true");
+      window.IAMStreamController?.release?.(video, "emdr_jbh_editorial_closed");
+      video.muted = true;
+      video.defaultMuted = true;
+    });
+    if (restoreProgramme) restoreProgrammeAfterJbhEditorial();
+  }
+
+  async function startEmdrJbhEditorial(preset) {
+    if (!preset?.backgroundFileName || !preset?.foregroundFileName || !emdrJbhBackground || !emdrJbhForeground) {
+      stopEmdrJbhEditorial();
+      return false;
+    }
+    stopEmdrJbhEditorial();
+    const generation = ++emdrJbhEditorialGeneration;
+    const configureVideo = (video, fileName, audible) => {
+      if (video.dataset.streamFile !== fileName) {
+        window.IAMStreamController?.release?.(video, "emdr_jbh_editorial_changed");
+        video.dataset.streamFile = fileName;
+      }
+      video.dataset.streamMaxHeight = "720";
+      video.loop = true;
+      video.muted = !audible;
+      video.defaultMuted = !audible;
+      video.volume = audible ? 1 : 0;
+      video.setAttribute("aria-hidden", "false");
+    };
+    configureVideo(emdrJbhBackground, preset.backgroundFileName, Boolean(preset.backgroundAudible));
+    configureVideo(emdrJbhForeground, preset.foregroundFileName, !preset.foregroundMuted);
+    document.body.classList.add("television-emdr-jbh-editorial-active");
+    document.body.dataset.emdrJbhEditorialState = "loading";
+    delete document.body.dataset.emdrJbhEditorialError;
+    duckProgrammeForJbhEditorial();
+    try {
+      const attached = await Promise.all([
+        ensureSexEdStream(emdrJbhBackground, "fashion"),
+        ensureSexEdStream(emdrJbhForeground, "music"),
+      ]);
+      if (generation !== emdrJbhEditorialGeneration) return false;
+      if (!attached.every(Boolean)) {
+        stopEmdrJbhEditorial();
+        document.body.dataset.emdrJbhEditorialState = "error";
+        return false;
+      }
+      await Promise.all([
+        window.IAMStreamController?.play?.(emdrJbhBackground) || emdrJbhBackground.play(),
+        window.IAMStreamController?.play?.(emdrJbhForeground) || emdrJbhForeground.play(),
+      ]);
+      const ready = (await Promise.all([
+        waitForSexEdMediaPlayback(emdrJbhBackground),
+        waitForSexEdMediaPlayback(emdrJbhForeground),
+      ])).every(Boolean);
+      if (generation !== emdrJbhEditorialGeneration) return false;
+      if (!ready) {
+        stopEmdrJbhEditorial();
+        document.body.dataset.emdrJbhEditorialState = "error";
+        return false;
+      }
+      if (preset.syncLayers && ready) {
+        try { emdrJbhBackground.currentTime = emdrJbhForeground.currentTime; } catch {}
+        emdrJbhLayerSyncTimer = window.setInterval(() => {
+          const drift = Number(emdrJbhBackground.currentTime) - Number(emdrJbhForeground.currentTime);
+          if (Math.abs(drift) > .18) {
+            try { emdrJbhBackground.currentTime = emdrJbhForeground.currentTime; } catch {}
+          }
+        }, 800);
+      }
+      document.body.dataset.emdrJbhEditorialState = "ready";
+      return true;
+    } catch (error) {
+      if (generation === emdrJbhEditorialGeneration) {
+        const errorMessage = String(error?.message || error).slice(0, 160);
+        stopEmdrJbhEditorial();
+        document.body.dataset.emdrJbhEditorialState = "error";
+        document.body.dataset.emdrJbhEditorialError = errorMessage;
+      }
+      return false;
+    }
+  }
+
+  function setEmdrGifPresentationActive(active, presetKey = "") {
+    const selectedPreset = emdrPresets.find((preset) => preset.key === presetKey) || emdrPresets[emdrStyleIndex];
     if (active) {
       if (emdrGifPreviousVideoBlend === null) emdrGifPreviousVideoBlend = requestedVideoBlend;
       if (!emdrGifMusicMaxHeightCaptured && localVideo) {
@@ -6580,11 +6781,18 @@
       playerMount.dataset.emdrGifMusicAmount = emdrGifVideoBlend.toFixed(0);
       playerMount.dataset.emdrGifFashionRunway = fashionRunways[fashionRunwayIndex]?.assetKey || "";
       playerMount.dataset.emdrGifFashionSelectionSource = fashionSelectionSource;
-      startFashionHeroMirror();
+      if (selectedPreset?.backgroundFileName) {
+        stopFashionHeroMirror();
+        startEmdrJbhEditorial(selectedPreset).catch(() => {});
+      } else {
+        stopEmdrJbhEditorial();
+        startFashionHeroMirror();
+      }
       startSoundResearchLayer();
       return;
     }
 
+    stopEmdrJbhEditorial();
     stopFashionHeroMirror();
     if (localVideo && emdrGifMusicMaxHeightCaptured) {
       const controller = window.IAMStreamController;
@@ -6611,7 +6819,7 @@
   }
 
   window.addEventListener("iam:emdr-gif-presentation", (event) => {
-    setEmdrGifPresentationActive(Boolean(event.detail?.active));
+    setEmdrGifPresentationActive(Boolean(event.detail?.active), String(event.detail?.preset || ""));
   });
 
   function disarmVideoTooltips() {
@@ -7210,6 +7418,7 @@
   async function startSexEdShelfPreview(card) {
     if (!sexEdShelfOpen || !card || card === sexEdShelfPreviewCard) return;
     stopSexEdShelfPreview();
+    if (card.dataset.sexEdSensitive) return;
     const media = card.querySelector(".adaptive-television-music-card__media");
     const fileName = card.dataset.sexEdFile || "";
     if (!media || !fileName || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
@@ -7383,7 +7592,11 @@
     if (!sexEdBackground) return false;
     const attached = await ensureSexEdStream(sexEdBackground, "fashion");
     if (!attached) return false;
-    sexEdBackground.muted = true;
+    const audible = document.body.dataset.sexEdBackgroundAudible === "true";
+    sexEdBackground.muted = !audible;
+    sexEdBackground.defaultMuted = !audible;
+    sexEdBackground.volume = audible ? 1 : 0;
+    if (audible) setVoiceAssistantProgramVolume(sexEdBackground, 1, 0);
     sexEdBackground.loop = true;
     try {
       await (window.IAMStreamController?.play?.(sexEdBackground) || sexEdBackground.play());
@@ -7456,6 +7669,10 @@
     document.body.dataset.sexEdEpisodeTitle = title;
     document.body.dataset.sexEdEpisodeGuest = guest;
     document.body.dataset.sexEdPresentation = presentation;
+    document.body.dataset.sexEdForegroundMuted = String(card.dataset.sexEdForegroundMuted === "true");
+    document.body.dataset.sexEdBackgroundAudible = String(card.dataset.sexEdBackgroundAudible === "true");
+    document.body.dataset.sexEdSyncLayers = String(card.dataset.sexEdSyncLayers === "true");
+    document.body.dataset.sexEdSensitive = card.dataset.sexEdSensitive || "";
     if (radioStation) document.body.dataset.sexEdRadioStation = radioStation;
     else delete document.body.dataset.sexEdRadioStation;
     sexEdEpisodeVideo.setAttribute("aria-label", guest ? `${title} — ${guest}` : title);
@@ -7491,10 +7708,14 @@
 
   async function playSexEdEpisode() {
     if (!sexEdEpisodeVideo) return false;
-    setVoiceAssistantProgramVolume(sexEdEpisodeVideo, 1, voiceAssistantDuckActive ? 260 : 0);
+    const foregroundMuted = document.body.dataset.sexEdForegroundMuted === "true";
+    if (!foregroundMuted) setVoiceAssistantProgramVolume(sexEdEpisodeVideo, 1, voiceAssistantDuckActive ? 260 : 0);
     await ensureSexEdStream(sexEdEpisodeVideo, "music");
     await seekSexEdEpisodeStart();
-    sexEdEpisodeVideo.muted = false;
+    sexEdEpisodeVideo.muted = foregroundMuted;
+    sexEdEpisodeVideo.defaultMuted = foregroundMuted;
+    sexEdEpisodeVideo.volume = foregroundMuted ? 0 : 1;
+    sexEdEpisodeVideo.loop = document.body.dataset.sexEdPresentation === "jbh-editorial";
     sexEdEpisodeVideo.controls = false;
     sexEdEpisodeVideo.dataset.streamPlayRequestedAt = String(window.performance?.now?.() || Date.now());
     try {
@@ -7511,6 +7732,8 @@
     const restoreProgramme = options.restoreProgramme !== false;
     const wasActive = document.body.classList.contains("television-sex-ed-active");
     sexEdOpenSequence += 1;
+    window.clearInterval(sexEdLayerSyncTimer);
+    sexEdLayerSyncTimer = 0;
     document.body.classList.remove("television-sex-ed-active");
     sexEdWorld?.setAttribute("aria-hidden", "true");
     updateTimecode();
@@ -7524,6 +7747,10 @@
     delete document.body.dataset.sexEdEpisodeTitle;
     delete document.body.dataset.sexEdEpisodeGuest;
     delete document.body.dataset.sexEdPresentation;
+    delete document.body.dataset.sexEdForegroundMuted;
+    delete document.body.dataset.sexEdBackgroundAudible;
+    delete document.body.dataset.sexEdSyncLayers;
+    delete document.body.dataset.sexEdSensitive;
     delete document.body.dataset.sexEdRadioStation;
     delete document.body.dataset.sexEdLoadingState;
     delete document.body.dataset.sexEdLoadingForeground;
@@ -7556,6 +7783,12 @@
   }
 
   async function openSexEdEpisode(episode = "01") {
+    const requestedCard = sexEdCards.find((candidate) => candidate.dataset.sexEdEpisode === String(episode).padStart(2, "0"));
+    const sensitiveContent = requestedCard?.dataset.sexEdSensitive || "";
+    if (sensitiveContent) {
+      const confirmed = await requestJbhContentConsent(sensitiveContent);
+      if (!confirmed) return false;
+    }
     if (document.body.classList.contains("television-comedy-active")) {
       await window.IAMComedyChannel?.leaveForNavigation?.();
     }
@@ -7643,6 +7876,16 @@
       !document.body.classList.contains("television-sex-ed-active") ||
       document.body.dataset.sexEdEpisode !== sexEdActiveEpisode
     ) return false;
+    if (ready && document.body.dataset.sexEdSyncLayers === "true" && sexEdBackground && sexEdEpisodeVideo) {
+      try { sexEdBackground.currentTime = sexEdEpisodeVideo.currentTime; } catch {}
+      window.clearInterval(sexEdLayerSyncTimer);
+      sexEdLayerSyncTimer = window.setInterval(() => {
+        const drift = Number(sexEdBackground.currentTime) - Number(sexEdEpisodeVideo.currentTime);
+        if (Math.abs(drift) > .18) {
+          try { sexEdBackground.currentTime = sexEdEpisodeVideo.currentTime; } catch {}
+        }
+      }, 800);
+    }
     document.body.dataset.sexEdLoadingElapsedMs = String(Math.round((window.performance?.now?.() || Date.now()) - loadingStartedAt));
     document.body.dataset.sexEdLoadingState = ready ? "ready" : "error";
     if (ready) finishChannelLoading(loadingGeneration);
@@ -8334,7 +8577,7 @@
         "aria-label",
         emdrActive
           ? "Turn EMDR off"
-          : (hasSelectedStyle ? `Turn ${emdrStyleNames[emdrStyleIndex]} EMDR on` : "Choose CB, M8, JBH or Stella to turn EMDR on")
+          : (hasSelectedStyle ? `Turn ${emdrStyleNames[emdrStyleIndex]} EMDR on` : "Choose CB, M8, JBH i, JBH ii, JBH iii or Stella to turn EMDR on")
       );
     }
   }
@@ -9300,6 +9543,24 @@
     updateNowPlayingOverflow();
   });
   document.addEventListener("keydown", (event) => {
+    if (jbhContentGate?.getAttribute("aria-hidden") === "false") {
+      if (event.key === "Escape") {
+        event.preventDefault();
+        closeJbhContentGate(false);
+      } else if (event.key === "Tab") {
+        const focusable = Array.from(jbhContentGate.querySelectorAll('button:not([disabled]), a[href]'));
+        const first = focusable[0];
+        const last = focusable[focusable.length - 1];
+        if (focusable.length && event.shiftKey && document.activeElement === first) {
+          event.preventDefault();
+          last.focus();
+        } else if (focusable.length && !event.shiftKey && document.activeElement === last) {
+          event.preventDefault();
+          first.focus();
+        }
+      }
+      return;
+    }
     if (broadcastEntryOpen) {
       if (event.key === "Escape") {
         event.preventDefault();
@@ -9366,18 +9627,22 @@
     if (active) startSoundResearchLayer();
     setWalletView("emdr");
   });
-  emdrStyleButtons.forEach((button) => button.addEventListener("click", (event) => {
+  emdrStyleButtons.forEach((button) => button.addEventListener("click", async (event) => {
     event.preventDefault();
     event.stopPropagation();
     const requestedStyleIndex = Number(button.dataset.emdrStyleIndex);
     if (!Number.isInteger(requestedStyleIndex) || !emdrStyleValues[requestedStyleIndex]) return;
+    const selectedPreset = emdrPresets[requestedStyleIndex];
+    if (selectedPreset?.sensitiveContent) {
+      const confirmed = await requestJbhContentConsent(selectedPreset.sensitiveContent);
+      if (!confirmed) return;
+    }
     const adaptation = applyEmdrAdaptation(requestedStyleIndex);
     const active = window.IAMEMDR?.setActive(true, { canvas: emdrCanvas });
     document.querySelector('[data-video-mode="emdr"]')?.setAttribute("aria-pressed", String(Boolean(active)));
     if (active) window.IAMEMDR?.setIntensity(adaptation.intensityJourney.start);
     syncEmdrStyleButtons();
     startSoundResearchLayer();
-    const selectedPreset = emdrPresets[requestedStyleIndex];
     if (active && selectedPreset?.fashionChannelId) {
       joinFashionBroadcastChannel(selectedPreset.fashionChannelId, {
         source: "emdr_preset",

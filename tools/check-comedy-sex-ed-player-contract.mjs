@@ -42,8 +42,8 @@ assert.match(television, /nowPlaying\.dataset\.nowPlayingMode = comedyProgramme 
 assert.match(television, /refreshViewingState\(\)[\s\S]{0,160}updateTimecode\(\);[\s\S]{0,80}updateNowPlaying\(\)/);
 assert.match(television, /await window\.IAMComedyChannel\?\.leaveForNavigation\?\.\(\)/);
 
-assert.equal((index.match(/data-sex-ed-card(?:\s|>)/g) || []).length, 14);
-assert.match(index, /<p>14 lessons<\/p>/);
+assert.equal((index.match(/data-sex-ed-card(?:\s|>)/g) || []).length, 16);
+assert.match(index, /<p>16 lessons<\/p>/);
 assert.match(index, /data-sex-ed-shell-start[^>]*hidden/);
 assert.match(television, /const requestedSexEdShelf = entryParams\.get\("sexEd"\) === "1"/);
 assert.match(television, /function bootstrapRequestedSexEdShelf\(\)[\s\S]{0,420}openSexEdShelf\(\)/);
@@ -54,5 +54,8 @@ assert.deepEqual(privateSexEdAudio.schedule.map((entry) => entry.track_id), [
   "zip-perlon-air-festival-2007",
   "zip-sammy-d-perlon-betalounge-2000",
 ]);
+assert.match(television, /const SEX_ED_PROGRAMME_MIX_LEVEL = \.15/);
+assert.match(television, /document\.body\.dataset\.sexEdBackgroundAudible === "true"/);
+assert.match(television, /document\.body\.dataset\.sexEdSyncLayers === "true"/);
 
 console.log("Comedy canonical player and on-demand Sex-Ed contracts passed.");
