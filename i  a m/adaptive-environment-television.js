@@ -6724,6 +6724,10 @@
         document.body.dataset.emdrJbhEditorialState = "error";
         return false;
       }
+      // Stream attachment applies role defaults, so reaffirm this preset's
+      // deliberate single-audible-layer contract immediately before playback.
+      configureVideo(emdrJbhBackground, preset.backgroundFileName, Boolean(preset.backgroundAudible));
+      configureVideo(emdrJbhForeground, preset.foregroundFileName, !preset.foregroundMuted);
       await Promise.all([
         window.IAMStreamController?.play?.(emdrJbhBackground) || emdrJbhBackground.play(),
         window.IAMStreamController?.play?.(emdrJbhForeground) || emdrJbhForeground.play(),

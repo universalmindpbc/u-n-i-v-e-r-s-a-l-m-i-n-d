@@ -40,6 +40,7 @@ assert.match(index, /data-emdr-jbh-foreground[^>]*data-stream-role="music"/);
 assert.match(controller, /key: "jbh-ii"[\s\S]{0,500}backgroundAudible: true,[\s\S]{0,100}foregroundMuted: true/);
 assert.match(controller, /key: "jbh-iii"[\s\S]{0,500}backgroundAudible: false,[\s\S]{0,100}foregroundMuted: false,[\s\S]{0,100}syncLayers: true/);
 assert.match(controller, /JBH_EDITORIAL_PROGRAMME_MIX_LEVEL = \.15/);
+assert.match(controller, /configureVideo\(emdrJbhBackground, preset\.backgroundFileName, Boolean\(preset\.backgroundAudible\)\);[\s\S]{0,180}configureVideo\(emdrJbhForeground, preset\.foregroundFileName, !preset\.foregroundMuted\);[\s\S]{0,180}window\.IAMStreamController\?\.play\?\.\(emdrJbhBackground\)/);
 assert.match(controller, /Math\.abs\(drift\) > \.18/);
 assert.match(controller, /requestJbhContentConsent\(selectedPreset\.sensitiveContent\)/);
 assert.match(controller, /if \(card\.dataset\.sexEdSensitive\) return/);
