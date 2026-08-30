@@ -197,13 +197,13 @@
     if (qaScenario === "jbh-sex-ed-editorial") {
       return {
         microphone: false,
-        qaPrompt: "Describe James Bondage Health Sex-ed episodes 15 and 16 in two clearly labelled sections. Give each exact public display name; identify the full-page background and central foreground media; state which single layer is audible, which is muted, how each loops and whether synchronization applies; explain the existing Zip DJ sex-ed audio contract at 15% and restoration on exit; and distinguish episode 15's verbatim editor's note from episode 16's simpler 18+ gate. Include the 1800RESPECT and Lifeline links and do not invent transcript content, provenance, clinical outcomes or age-verification capability.",
+        qaPrompt: "In no more than 190 words and with no preamble, describe James Bondage Health Sex-ed episodes 15 and 16 in two clearly labelled compact sections. Give each exact public display name; identify the full-page background and central foreground media using every exact media filename verbatim; state which single layer is audible, which is muted, how each loops and whether synchronization applies; explain the existing Zip DJ sex-ed audio contract at 15% and restoration on exit; and distinguish episode 15's verbatim editor's note from episode 16's simpler 18+ gate. Include the 1800RESPECT and Lifeline links and do not invent transcript content, provenance, clinical outcomes or age-verification capability.",
       };
     }
     if (qaScenario === "jbh-emdr-editorial") {
       return {
         microphone: false,
-        qaPrompt: "Describe JBH i, JBH ii and JBH iii as implemented EMDR presets. Preserve the exact three tooltip strings and existing JBH i truth. For JBH ii and JBH iii, identify the reused four square video tiles and two GIF tiles, exact background and foreground media, audible versus muted layer, infinite looping, synchronization contract, 15% ducking of the current music or party programme, restoration on exit, and the correct 18+ notice. Treat the editorial titles as titles, not clinical claims, and do not claim access to private self-report, Heart Rate, trauma or sexual-history data.",
+        qaPrompt: "In no more than 220 words and with no preamble, describe JBH i, JBH ii and JBH iii as implemented EMDR presets in three compact labelled sections. Preserve the exact three tooltip strings and existing JBH i truth. For JBH ii and JBH iii, identify the reused four square video tiles and two GIF tiles, exact background and foreground media using every exact media filename verbatim, audible versus muted layer, infinite looping, synchronization contract, 15% ducking of the current music or party programme, restoration on exit, and the correct 18+ notice. Treat the editorial titles as titles, not clinical claims, and do not claim access to private self-report, Heart Rate, trauma or sexual-history data.",
       };
     }
     if (qaScenario === "episode-detail") {
