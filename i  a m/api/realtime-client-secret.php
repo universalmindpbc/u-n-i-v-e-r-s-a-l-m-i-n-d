@@ -128,7 +128,7 @@ if ($adaptiveRecommendationGuide === '') {
 $programmeGuidePath = dirname(__DIR__) . DIRECTORY_SEPARATOR . 'universal-one-programme-guide-v1.txt';
 $programmeGuide = is_readable($programmeGuidePath) ? trim((string) file_get_contents($programmeGuidePath)) : '';
 if ($programmeGuide === '') {
-    $programmeGuide = 'The four Seeding Sessions are Inner Planes, Champagne Bohemia, modul8 infinity and james bondage. James Bondage Health is a separate adult sex-ed collection. Do not invent programme or episode details.';
+    $programmeGuide = 'The four Seeding Sessions are Inner Planes, Champagne Bohemia, modul8 infinity and james bondage. James Bondage Health is a separate adult sex-ed collection with sixteen programmes, including episode 15, Shashi Solana — Healing Sexual Trauma in Nature, and episode 16, Karl Lagerfeld & Shashi Solana — Dissolving Toxic Masculinity. Both use an 18+ self-attestation before sensitive media; titles are editorial, not clinical claims. Do not invent programme, transcript, provenance or episode details.';
 }
 
 $instructions = <<<PROMPT
@@ -242,6 +242,6 @@ respond(200, [
     'portal_guide_version' => 'v1.2',
     'wellbeing_support_guide_version' => 'v1',
     'adaptive_recommendation_guide_version' => 'v1',
-    'programme_guide_version' => 'v1.5',
+    'programme_guide_version' => 'v1.6',
     'voice_briefing_version' => 'v3',
 ]);

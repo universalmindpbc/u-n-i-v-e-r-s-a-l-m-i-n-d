@@ -132,7 +132,7 @@ assert.match(index, new RegExp(`realtime-voice-assistant\\.js\\?v=${realtimeToke
 assert.match(alternateEntry, new RegExp(`realtime-voice-assistant\\.js\\?v=${realtimeToken}`));
 
 assert.match(portalGuide, /PORTAL GUIDE \/ V1\.2/);
-assert.match(programmeGuide, /programme_guide_v1\.5/);
+assert.match(programmeGuide, /programme_guide_v1\.6/);
 assert.match(stagingDeploy, /check-universal-one-adaptive-guide\.mjs/);
 
 console.log("Universal One adaptive recommendation guide checks passed.");

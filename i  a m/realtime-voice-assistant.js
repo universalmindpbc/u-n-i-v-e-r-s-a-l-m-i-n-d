@@ -179,7 +179,7 @@
     if (qaScenario === "emdr-live") {
       return {
         microphone: false,
-        qaPrompt: "Describe the four EMDR presets using their exact current tooltip strings. State which behaviour is implemented and live on staging, including the M8 39-GIF seven-page layout, the final boxed Hexeosis, the JBH media count, internal-only paging and the central viewer's 16:9 aspect-fill behaviour. Do not invent any unavailable control or session state.",
+        qaPrompt: "Describe all six EMDR presets using their exact current tooltip strings. State which behaviour is implemented and live on staging, including the M8 39-GIF seven-page layout, the final boxed Hexeosis, the unchanged JBH i four-video/two-GIF truth, the JBH ii and JBH iii single-audible-layer contracts, internal-only paging and the central viewer's 16:9 aspect-fill behaviour. Do not invent any unavailable control or session state.",
       };
     }
     if (qaScenario === "comedy-programming") {
@@ -191,7 +191,19 @@
     if (qaScenario === "sex-ed") {
       return {
         microphone: false,
-        qaPrompt: "What is James Bondage Health, how is it different from the james bondage music channel, and what are its fourteen sex-ed episodes? Name them in order, attribute episode viewpoints, and keep the answer concise, educational and non-clinical.",
+        qaPrompt: "What is James Bondage Health, how is it different from the james bondage music channel, and what are its sixteen sex-ed episodes? Name them in order, attribute episode viewpoints where the guide establishes them, and keep the answer concise, educational and non-clinical.",
+      };
+    }
+    if (qaScenario === "jbh-sex-ed-editorial") {
+      return {
+        microphone: false,
+        qaPrompt: "Describe James Bondage Health Sex-ed episodes 15 and 16 in two clearly labelled sections. Give each exact public display name; identify the full-page background and central foreground media; state which single layer is audible, which is muted, how each loops and whether synchronization applies; explain the existing Zip DJ sex-ed audio contract at 15% and restoration on exit; and distinguish episode 15's verbatim editor's note from episode 16's simpler 18+ gate. Include the 1800RESPECT and Lifeline links and do not invent transcript content, provenance, clinical outcomes or age-verification capability.",
+      };
+    }
+    if (qaScenario === "jbh-emdr-editorial") {
+      return {
+        microphone: false,
+        qaPrompt: "Describe JBH i, JBH ii and JBH iii as implemented EMDR presets. Preserve the exact three tooltip strings and existing JBH i truth. For JBH ii and JBH iii, identify the reused four square video tiles and two GIF tiles, exact background and foreground media, audible versus muted layer, infinite looping, synchronization contract, 15% ducking of the current music or party programme, restoration on exit, and the correct 18+ notice. Treat the editorial titles as titles, not clinical claims, and do not claim access to private self-report, Heart Rate, trauma or sexual-history data.",
       };
     }
     if (qaScenario === "episode-detail") {

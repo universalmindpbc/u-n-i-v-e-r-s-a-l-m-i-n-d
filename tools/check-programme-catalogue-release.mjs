@@ -202,7 +202,7 @@ for (const entry of [index, alternateEntry, cafeDelMarEntry]) {
   assert.doesNotMatch(entry, /data-flower-cue|data-homepage-radar-trigger|how we understand your needs|learn how it works/i);
 }
 
-assert.match(guide, /Version: universal_one_programme_guide_v1\.5/);
+assert.match(guide, /Version: universal_one_programme_guide_v1\.6/);
 assert.match(guide, /original 27 are restored/);
 assert.match(guide, /Rave · Episode 1” programme with 18 cue points/);
 assert.match(guide, /full Nine Inch Noize live set from Coachella 2026/);

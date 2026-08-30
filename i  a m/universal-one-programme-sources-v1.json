@@ -1,6 +1,6 @@
 {
-  "version": "universal_one_programme_sources_v1.4",
-  "reviewed": "2026-08-27",
+  "version": "universal_one_programme_sources_v1.5",
+  "reviewed": "2026-08-30",
   "use_policy": {
     "assistant_surface": "Universal One Realtime voice",
     "storage": "Source-derived editorial briefing only; full third-party transcripts are not stored in the website repository.",
@@ -63,6 +63,7 @@
       "title": "James Bondage Health sex-ed collection",
       "source_type": "first_party_interface",
       "path": "index.html",
+      "episode_count": 16,
       "verified": true
     },
     {
@@ -108,8 +109,109 @@
         "Champagne Bohemia — Xaviera Lopez’s animated GIF experience.",
         "modul8 infinity — Hexeosis animated GIF experience.",
         "James Bondage Health — Bordelle animated GIF experience.",
+        "James Bondage Health — Pirelli 2010 and Shashi Solana — healing sexual trauma in nature.",
+        "James Bondage Health — Karl Lagerfeld and Shashi Solana — dissolving toxic masculinity.",
         "Stella geometric experience."
       ],
+      "jbh_presets": {
+        "jbh_i": {
+          "display_name": "JBH i",
+          "existing_truth_preserved": true,
+          "tile_video_count": 4,
+          "tile_gif_count": 2,
+          "fashion_channel_id": "fashion-underground-intensity"
+        },
+        "jbh_ii": {
+          "display_name": "JBH ii",
+          "tile_contract": "same four square video tiles and two GIF tiles as JBH i",
+          "background_file": "Shashi Solluna - How I Healed my Sexual Pain using Nature.mp4",
+          "background_role": "full_page_audible_infinite_loop",
+          "foreground_file": "Pirelli 2010 Calendar.mp4",
+          "foreground_role": "central_muted_infinite_loop",
+          "sync_layers": false,
+          "programme_mix_level": 0.15,
+          "restore_prior_programme_level_on_exit": true,
+          "sensitive_content_gate": "pirelli-editor-note"
+        },
+        "jbh_iii": {
+          "display_name": "JBH iii",
+          "tile_contract": "same four square video tiles and two GIF tiles as JBH i",
+          "background_file": "Karl Lagerfeld & Shashi Solluna - Nice Guy vs. Toxic Masculinity.mp4",
+          "background_role": "full_page_muted_infinite_loop",
+          "foreground_file": "Karl Lagerfeld & Shashi Solluna - Nice Guy vs. Toxic Masculinity.mp4",
+          "foreground_role": "central_audible_infinite_loop",
+          "sync_layers": true,
+          "sync_drift_threshold_seconds": 0.18,
+          "sync_poll_milliseconds": 800,
+          "programme_mix_level": 0.15,
+          "restore_prior_programme_level_on_exit": true,
+          "sensitive_content_gate": "18-plus"
+        }
+      },
+      "verified": true
+    },
+    {
+      "id": "jbh-editorial-experiences-2026-08-30",
+      "title": "Sex-ed episodes 15 and 16 plus JBH ii and JBH iii",
+      "source_type": "first_party_verified_runtime_and_stream_manifest",
+      "page_path": "index.html",
+      "programme_catalogue_path": "programme-catalogue-v1.js",
+      "controller_path": "adaptive-environment-television.js",
+      "stream_registry_path": "cloudflare-stream-catalogue.js",
+      "stream_manifest_path": "cloudflare-stream-new-videos-20260830-manifest.json",
+      "contract_test_path": "tools/check-jbh-editorial-experiences.mjs",
+      "staging_source_commit": "bb2b2f7ac73cd1e0b0478768be44823277ee662d",
+      "staging_record_commit": "84305d7d0c4a42ee50303fd18fb01131bea75c58",
+      "media": [
+        {
+          "file_name": "Karl Lagerfeld & Shashi Solluna - Nice Guy vs. Toxic Masculinity.mp4",
+          "public_names": "Karl Lagerfeld & Shashi Solana",
+          "cloudflare_uid": "2c099816dba26973d4d4d36452d05f99",
+          "duration_seconds": 3288.24,
+          "status": "ready"
+        },
+        {
+          "file_name": "Pirelli 2010 Calendar.mp4",
+          "public_names": "Pirelli 2010",
+          "cloudflare_uid": "3be25d8ba3bb884e35ab57cc6f5c43c3",
+          "duration_seconds": 1479.2,
+          "status": "ready"
+        },
+        {
+          "file_name": "Shashi Solluna - How I Healed my Sexual Pain using Nature.mp4",
+          "public_names": "Shashi Solana",
+          "cloudflare_uid": "d064fc7c011c38b9423b0b177ef61368",
+          "duration_seconds": 549.27,
+          "status": "ready"
+        }
+      ],
+      "sex_ed_contract": {
+        "visual_design": "existing James Bondage Health square-tile and full-page background design",
+        "audio_contract": "existing audio-only sex-ed Zip DJ broadcast",
+        "programme_mix_level": 0.15,
+        "clear_fixed_mix_and_restore_prior_programme_on_exit": true
+      },
+      "content_gate": {
+        "type": "adult_self_attestation_before_sensitive_media_load_or_start",
+        "identity_or_age_verification": false,
+        "episode_15_editor_note_verbatim_in_guide_and_interface": true,
+        "episode_16_uses_editor_note": false,
+        "support_links": [
+          {
+            "name": "1800RESPECT",
+            "website": "https://www.1800respect.org.au/",
+            "call": "1800 737 732",
+            "text_or_chat": "online"
+          },
+          {
+            "name": "Lifeline",
+            "website": "https://www.lifeline.org.au/",
+            "call": "13 11 14",
+            "text": "0477 13 11 14"
+          }
+        ]
+      },
+      "knowledge_boundary": "The first-party implementation and Stream manifest establish only the exact display names, media identities, encoded durations, Ready status, visual/audio roles, looping, synchronization, mix restoration and safety gate. They do not establish a transcript, third-party provenance, biography, therapeutic method, clinical effect, rights status or endorsement. Treat healing sexual trauma and dissolving toxic masculinity as editorial titles, not outcomes or medical claims.",
       "verified": true
     }
   ],
@@ -570,6 +672,32 @@
       "source_verified": true,
       "transcript_verified": false,
       "coverage_note": "The briefing is limited to the publisher's career and money profile description; it does not invent client stories, earnings figures, practices or credentials."
+    },
+    {
+      "episode": "15",
+      "title": "Healing Sexual Trauma in Nature",
+      "collection_display_name": "Shashi Solana — Healing Sexual Trauma in Nature",
+      "featured_names": ["Shashi Solana"],
+      "source_type": "first-party verified staging implementation and Ready Stream manifest",
+      "page_path": "index.html",
+      "controller_path": "adaptive-environment-television.js",
+      "manifest_path": "cloudflare-stream-new-videos-20260830-manifest.json",
+      "source_verified": true,
+      "transcript_verified": false,
+      "coverage_note": "No transcript or independent provenance briefing is stored. The guide covers only the exact editorial title, public spelling, media identities and roles, loops, 15% Zip DJ mix, restoration, 18+ gate, verbatim editor's note and support links. The title is not a clinical claim."
+    },
+    {
+      "episode": "16",
+      "title": "Dissolving Toxic Masculinity",
+      "collection_display_name": "Karl Lagerfeld & Shashi Solana — Dissolving Toxic Masculinity",
+      "featured_names": ["Karl Lagerfeld", "Shashi Solana"],
+      "source_type": "first-party verified staging implementation and Ready Stream manifest",
+      "page_path": "index.html",
+      "controller_path": "adaptive-environment-television.js",
+      "manifest_path": "cloudflare-stream-new-videos-20260830-manifest.json",
+      "source_verified": true,
+      "transcript_verified": false,
+      "coverage_note": "No transcript or independent provenance briefing is stored. The guide covers only the exact editorial title, public spelling, duplicated-film media roles, single audible layer, infinite loops, synchronization, 15% Zip DJ mix, restoration and 18+ gate. The title is not a clinical or universal claim."
     }
   ]
 }

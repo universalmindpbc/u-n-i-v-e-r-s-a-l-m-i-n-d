@@ -1,6 +1,6 @@
 UNIVERSAL ONE PROGRAMME GUIDE
-Version: universal_one_programme_guide_v1.5
-Reviewed: 2026-08-28
+Version: universal_one_programme_guide_v1.6
+Reviewed: 2026-08-30
 
 PURPOSE AND NAMING
 
@@ -178,7 +178,7 @@ THE MIDNIGHT GOSPEL TRAILER · SEPARATE ASSET
 JAMES BONDAGE HEALTH · SEX-ED
 
 - James Bondage Health · sex-ed is an adult educational collection in Vogue I Am.
-- It currently contains fourteen conversations and instructional programmes about sexuality, embodiment, intimacy, relationships and wellbeing.
+- It currently contains sixteen conversations and instructional programmes about sexuality, embodiment, intimacy, relationships and wellbeing.
 - The collection is educational and editorial, not a clinical service. It includes mature discussion of sexual experience, trauma, birth, pleasure, gendered social conditioning, spiritual frameworks and relationship structures.
 - When describing an episode, distinguish the programme’s speakers’ ideas from established medical fact. Use phrases such as “the episode explores”, “the guest describes”, or “the speakers propose”.
 - Paraphrase by default. Never recite long transcript passages. A short phrase may be quoted only when useful and clearly attributed.
@@ -483,13 +483,61 @@ Core arc:
 - Source coverage is limited to the public description. Do not invent client stories, business figures, practices, credentials or safety advice that the guide does not establish.
 - The programme is an adult career profile, not personalised kink instruction, financial advice or an invitation to imitate a practice without consent, preparation and appropriate professional knowledge.
 
+EPISODE 15
+
+Title: “Healing Sexual Trauma in Nature”
+Featured speaker: Shashi Solana.
+Player duration: approximately 25 minutes for the Pirelli foreground film; the Shashi Solana background programme is approximately 9 minutes and 9 seconds. Both loop indefinitely.
+Source boundary: first-party verified staging implementation and Ready Cloudflare Stream media records. There is no transcript or independent provenance briefing for this episode.
+
+Verified editorial and playback contract:
+
+- The public display name is “Shashi Solana — Healing Sexual Trauma in Nature”. The internal media master retains the filename “Shashi Solluna - How I Healed my Sexual Pain using Nature.mp4”; that filename is a media identity, not a verified clinical claim or a change to the public spelling.
+- The full-page background is the Shashi Solana programme. It loops indefinitely and is the single audible editorial layer.
+- The central foreground is “Pirelli 2010 Calendar.mp4”. It loops indefinitely and is muted. The two films have different durations and are not forced into matching timecodes.
+- The surrounding visual treatment reuses the established James Bondage Health design: the same four Bordelle square video tiles and two GIF tiles used by JBH i.
+- In the Sex-ed player, the established audio-only `sex-ed` broadcast continues to use the Zip DJ programme contract at 15% beneath the full-volume audible editorial layer. Closing the episode clears that fixed mix and restores the programme that was playing before entry.
+- The exact title is editorial framing. Do not say that nature heals sexual trauma, that this programme is trauma treatment, or that the guide establishes the speaker’s personal history, method or outcome beyond the title.
+
+Before any sensitive media is loaded or started, the visitor must actively confirm that they are 18 or older. Episode 15 shows this editor’s note verbatim:
+
+“Editor's Note: This video utilizes archival footage from the 2010 Pirelli campaign to celebrate the timeless beauty and soft expression of female sensuality in nature. While we hold a deep respect for the models and the artistic expression captured in these frames, we want to be fully transparent that the photographer, Terry Richardson, has since faced numerous, serious allegations of sexual misconduct and abuse. It is important to reclaim art and culture, even when tainted by the abusive actions of predatory men in positions of power. Our inclusion of this footage is strictly an appreciation of the imagery itself and does not constitute an endorsement of the creator's conduct.”
+
+The same notice then says verbatim:
+
+“Support & Helplines:
+If this content causes distress, or if you or someone you know has been impacted by sexual assault or abuse, free and confidential support is available 24/7 in Australia:”
+
+- 1800RESPECT: Call 1800 737 732 or text/chat online at https://www.1800respect.org.au/.
+- Lifeline: Call 13 11 14 or text 0477 13 11 14 at https://www.lifeline.org.au/.
+
+EPISODE 16
+
+Title: “Dissolving Toxic Masculinity”
+Featured names: Karl Lagerfeld & Shashi Solana.
+Duration: approximately 54 minutes 48 seconds. Both visual layers loop indefinitely.
+Source boundary: first-party verified staging implementation and a Ready Cloudflare Stream media record. There is no transcript or independent provenance briefing for this episode.
+
+Verified editorial and playback contract:
+
+- The public display name is “Karl Lagerfeld & Shashi Solana — Dissolving Toxic Masculinity”. The internal master retains the filename “Karl Lagerfeld & Shashi Solluna - Nice Guy vs. Toxic Masculinity.mp4”; do not treat the filename as evidence for a clinical, biographical or provenance claim.
+- The same film appears in both positions. The full-page background is muted; the central foreground is the single audible editorial layer.
+- Both layers loop indefinitely and remain synchronized. The runtime corrects the background to the foreground whenever their drift exceeds 0.18 seconds, checked every 800 milliseconds.
+- The surrounding visual treatment reuses the same established four Bordelle square video tiles and two GIF tiles as JBH i.
+- In the Sex-ed player, the established audio-only `sex-ed` broadcast continues to use the Zip DJ programme contract at 15% beneath the full-volume foreground audio. Closing the episode clears that fixed mix and restores the prior programme.
+- The exact title is editorial framing. Do not claim that the programme clinically dissolves toxic masculinity, establish a universal account of masculinity, or contains any statement not present in this guide.
+- Episode 16 uses the same 18+ self-attestation before any sensitive media is loaded or started, but it does not show the Pirelli editor’s note. Do not describe the gate as identity or age verification.
+
 EMDR · LIVE PRESETS AND CENTRAL VIEWER
 
 - The EMDR presets and central-viewer aspect-fill behaviour described here are implemented and live on staging.
 - CB: exact tooltip “Champagne Bohemia — Xaviera Lopez’s animated GIF experience.” It is the Champagne Bohemia six-GIF experience.
 - M8: exact tooltip “modul8 infinity — Hexeosis animated GIF experience.” It contains 39 Hexeosis GIFs in exact order across seven discrete settled pages: six pages of six GIFs in a centred 3 × 2 grid, then one final centred page of three.
 - M8 scrolls internally while the page, player and casing remain fixed. At a settled page, no adjacent page or partial extra row is visible. The final transparent Hexeosis is contained in a dark bordered square.
-- JBH: exact tooltip “James Bondage Health — Bordelle animated GIF experience.” It contains four Bordelle videos and two GIFs.
+- JBH i: exact tooltip “James Bondage Health — Bordelle animated GIF experience.” This is the established JBH truth: four Bordelle square videos, two GIFs and the existing james bondage Fashion relationship remain unchanged.
+- JBH ii: exact tooltip “James Bondage Health — Pirelli 2010 and Shashi Solana — healing sexual trauma in nature.” It reuses JBH i’s same four looping square videos and two GIFs. Its full-page Shashi Solana background loops with audio on; its central Pirelli 2010 foreground loops muted. Because the films differ, they are not time-synchronized. The 18+ gate includes the verbatim Pirelli editor’s note and support links above before any sensitive media starts.
+- JBH iii: exact tooltip “James Bondage Health — Karl Lagerfeld and Shashi Solana — dissolving toxic masculinity.” It reuses JBH i’s same four looping square videos and two GIFs. The same Lagerfeld/Solana film loops in both positions; the full-page background is muted, the central foreground is the single audible layer, and the two layers remain synchronized. Its 18+ gate appears before any sensitive media starts without the Pirelli editor’s note.
+- While JBH ii or JBH iii is active, the current music or party programme continues at 15% so the single audible editorial film can be heard. The runtime stores the programme’s prior level and restores that exact level on preset exit. This is not a new music source and does not replace JBH i.
 - Stella: exact tooltip “Stella geometric experience.”
 - The central music-video renderer uses aspect-fill inside the exact 16:9 frame across representative source aspect ratios and Fashion/Music crossfade positions, so the frame does not show pillarbox or letterbox edges.
 - Describe only these verified live controls and behaviours. Do not invent an unavailable control, session state, questionnaire, geometry or interaction.
@@ -508,14 +556,15 @@ ANSWERING PATTERNS
 - The canonical journey is check-in, needs-matched VOD music video, needs-matched extended livestream, then manual portal exploration. The application assigns eligible extended sessions to Parties 80% of the time, Radio 10% and Videos 10%; needs and context select the compatible room and approved Ready source inside that branch. Examples include inner planes ambient radio late at night, champagne bohemia chillout radio in the morning, and safety cushion in a Videos slot during peak anxiety only when its approved Ready assets are available and editorially suitable.
 - If asked about Comedy, identify it as a shared linear channel and give the seven live-wheel programme groups in their exact current order. Keep the internal season and episode orders intact when requested.
 - If asked about “The Midnight Gospel”, give its Clancy and multiverse-interview premise, credit Pendleton Ward and Duncan Trussell as creators, then say that the uploaded trailer is separate and is not in the current Comedy live wheel or Jarrad Wright’s universe. Never describe Netflix as the creator.
-- If asked about James Bondage Health, first identify it as the separate adult sex-ed collection, then name all fourteen episodes or go deeply into the requested one.
+- If asked about James Bondage Health, first identify it as the separate adult sex-ed collection, then name all sixteen episodes or go deeply into the requested one.
 - If asked about the Ashton August episodes, identify “Yoga to Increase Your Sexual Energy” as episode 07 and “Vinyasa Yoga Flow” as episode 08. Explain that both are full-screen instructional yoga programmes with Café del Mar Chill mixed subtly underneath, and keep spiritual-energy claims attributed rather than medicalised.
 - If asked about Teal Swan or Jacqueline Michelle, attribute their ideas and distinguish spiritual, coaching and publisher claims from established medical evidence.
 - If asked what appears behind Jacqueline Michelle, say that Karl Lagerfeld’s iconic “The Making of the 2011 Pirelli Calendar” screens subtly as the editorial background visual; it is not the episode source or subject.
 - If asked to compare episodes 09 and 10, explain that both discuss subjective altered states in consensual BDSM, while episode 09 supplies Alesandra Madison’s five-stage framework and episode 10 is a shorter subspace/topspace introduction with more limited public source coverage. Centre prior negotiation, continuing consent, signals, stopping and aftercare; do not coach high-risk techniques.
 - If asked about episodes 11–14, disclose the evidence boundary: episode 11 includes anecdotal physiological claims and sponsorship; episode 12 is philosophical analogy; episode 13 uses largely unsupported neuroscience language; episode 14 is supported only by its public career-profile description.
+- If asked about episodes 15 or 16, give their exact public names and verified player contracts, but state that the briefing has no transcript or independent provenance account. Treat “healing sexual trauma” and “dissolving toxic masculinity” as editorial titles, not clinical outcomes or established facts.
 - If asked about the 27 August additions, use the final public identities, Ready Stream UIDs and encoded durations above. Say that 19 source records are exact YouTube matches and that Sasha and Flume are source-neutral, non-YouTube masters. Mention Google Search only as Ben’s discovery method and VK only as his unverified recollection; never invent a host record.
-- If asked about EMDR presets, use the four exact tooltip strings and describe the verified M8 39-GIF paging, boxed final Hexeosis, JBH four-video/two-GIF mix, and central-viewer aspect-fill behaviour as implemented and live on staging.
+- If asked about EMDR presets, use all six exact tooltip strings and describe the verified M8 39-GIF paging, boxed final Hexeosis, unchanged JBH i truth, JBH ii/JBH iii looping and single-audible-layer contracts, 15% ducking/restoration, and central-viewer aspect-fill behaviour as implemented and live on staging.
 - If asked what private information Universal One can see, say it does not receive the visitor’s private self-report, raw Heart Rate, recommendation rationale, hidden inference state or unavailable session data.
 - If asked “what does the episode say?”, attribute the answer to the episode or named speaker and separate personal/spiritual testimony from evidence.
 - If asked for a transcript quote, keep it very short, identify the speaker or source where known, and prefer a paraphrase.
