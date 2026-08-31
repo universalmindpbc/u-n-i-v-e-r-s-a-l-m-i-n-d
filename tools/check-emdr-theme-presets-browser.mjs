@@ -239,19 +239,23 @@ async function runViewport(viewport) {
         return Math.abs(panel.scrollTop - panel.clientHeight) < 2;
       }, null, { timeout: 10000 });
       const after = await inspectM8();
-      await page.evaluate(() => {
-        const panel = document.querySelector('.adaptive-television-emdr-gif-grid[data-emdr-gif-preset="m8"]');
-        panel.scrollTop = panel.clientHeight * 6;
-      });
-      await page.waitForFunction(() => {
-        const panel = document.querySelector('.adaptive-television-emdr-gif-grid[data-emdr-gif-preset="m8"]');
-        return Math.abs(panel.scrollTop - (panel.clientHeight * 6)) < 2;
-      }, null, { timeout: 10000 });
-      const finalPage = await inspectM8();
-      scrollEvidence = { before, after, finalPage };
-      assert.equal(before.pageCount, 7, JSON.stringify(scrollEvidence));
-      assert.deepEqual(before.tileCounts, [6, 6, 6, 6, 6, 6, 3], JSON.stringify(scrollEvidence));
-      assert.ok(Math.abs(before.scrollHeight - (before.clientHeight * 7)) < 2, JSON.stringify(scrollEvidence));
+      const subsequentPages = [after];
+      for (let pageIndex = 2; pageIndex < before.pageCount; pageIndex += 1) {
+        await page.evaluate((index) => {
+          const panel = document.querySelector('.adaptive-television-emdr-gif-grid[data-emdr-gif-preset="m8"]');
+          panel.scrollTop = panel.clientHeight * index;
+        }, pageIndex);
+        await page.waitForFunction((index) => {
+          const panel = document.querySelector('.adaptive-television-emdr-gif-grid[data-emdr-gif-preset="m8"]');
+          return Math.abs(panel.scrollTop - (panel.clientHeight * index)) < 2;
+        }, pageIndex, { timeout: 10000 });
+        subsequentPages.push(await inspectM8());
+      }
+      const finalPage = subsequentPages.at(-1);
+      scrollEvidence = { before, subsequentPages, finalPage };
+      assert.equal(before.pageCount, 12, JSON.stringify(scrollEvidence));
+      assert.deepEqual(before.tileCounts, [6, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3], JSON.stringify(scrollEvidence));
+      assert.ok(Math.abs(before.scrollHeight - (before.clientHeight * 12)) < 2, JSON.stringify(scrollEvidence));
       assert.ok(before.pageHeights.every((height) => Math.abs(height - before.clientHeight) < 2), JSON.stringify(scrollEvidence));
       assert.deepEqual(before.visiblePageIndexes, [0], JSON.stringify(scrollEvidence));
       assert.equal(before.visibleTileCount, 6, JSON.stringify(scrollEvidence));
@@ -267,10 +271,17 @@ async function runViewport(viewport) {
       assert.ok(before.centered.verticalDelta < 2 && before.centered.horizontalDelta < 2, JSON.stringify(scrollEvidence));
       assert.equal(after.currentPage, 1, JSON.stringify(scrollEvidence));
       assert.deepEqual(after.visiblePageIndexes, [1], JSON.stringify(scrollEvidence));
-      assert.equal(after.visibleTileCount, 6, JSON.stringify(scrollEvidence));
+      assert.equal(after.visibleTileCount, 3, JSON.stringify(scrollEvidence));
       assert.ok(after.centered.verticalDelta < 2 && after.centered.horizontalDelta < 2, JSON.stringify(scrollEvidence));
-      assert.equal(finalPage.currentPage, 6, JSON.stringify(scrollEvidence));
-      assert.deepEqual(finalPage.visiblePageIndexes, [6], JSON.stringify(scrollEvidence));
+      subsequentPages.forEach((pageState, index) => {
+        assert.equal(pageState.currentPage, index + 1, JSON.stringify(scrollEvidence));
+        assert.deepEqual(pageState.visiblePageIndexes, [index + 1], JSON.stringify(scrollEvidence));
+        assert.equal(pageState.visibleTileCount, 3, JSON.stringify(scrollEvidence));
+        assert.ok(pageState.currentTileSquareDeltas.every((delta) => delta < 1), JSON.stringify(scrollEvidence));
+        assert.ok(pageState.centered.verticalDelta < 2 && pageState.centered.horizontalDelta < 2, JSON.stringify(scrollEvidence));
+      });
+      assert.equal(finalPage.currentPage, 11, JSON.stringify(scrollEvidence));
+      assert.deepEqual(finalPage.visiblePageIndexes, [11], JSON.stringify(scrollEvidence));
       assert.equal(finalPage.visibleTileCount, 3, JSON.stringify(scrollEvidence));
       assert.ok(finalPage.currentTileSquareDeltas.every((delta) => delta < 1), JSON.stringify(scrollEvidence));
       assert.ok(finalPage.centered.verticalDelta < 2 && finalPage.centered.horizontalDelta < 2, JSON.stringify(scrollEvidence));
@@ -287,8 +298,10 @@ async function runViewport(viewport) {
         .every((key) => Math.abs(next[key] - previous[key]) < 1);
       assert.equal(rectStayedFixed(after.player, before.player), true, JSON.stringify(scrollEvidence));
       assert.equal(rectStayedFixed(after.casing, before.casing), true, JSON.stringify(scrollEvidence));
-      assert.equal(rectStayedFixed(finalPage.player, before.player), true, JSON.stringify(scrollEvidence));
-      assert.equal(rectStayedFixed(finalPage.casing, before.casing), true, JSON.stringify(scrollEvidence));
+      subsequentPages.forEach((pageState) => {
+        assert.equal(rectStayedFixed(pageState.player, before.player), true, JSON.stringify(scrollEvidence));
+        assert.equal(rectStayedFixed(pageState.casing, before.casing), true, JSON.stringify(scrollEvidence));
+      });
     }
     const snapshot = await page.evaluate((expected) => {
       const wallet = document.querySelector("[data-reaction-wallet]");

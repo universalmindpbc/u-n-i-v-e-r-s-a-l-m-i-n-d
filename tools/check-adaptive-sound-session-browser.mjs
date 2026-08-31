@@ -15,6 +15,8 @@ const { chromium } = await import(playwrightModule);
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const IAM = path.join(ROOT, "i  a m");
 const BASE_URL = "https://staging.universalmind.tv/vogue/iam";
+const EMDR_SELECTION_ONLY = process.env.IAM_ADAPTIVE_SOUND_EMDR_ONLY === "1";
+const LIVE_ASSETS = process.env.IAM_ADAPTIVE_SOUND_LIVE_ASSETS === "1";
 const PROMPT_VERSION = SYSTEM_PROMPT_VERSION;
 const PROMPT_SHA256 = SYSTEM_PROMPT_SHA256;
 const BANDS = new Set(["delta", "theta", "alpha", "gamma"]);
@@ -45,6 +47,7 @@ const report = {
   },
   standard: null,
   no_checkin: null,
+  emdr_profile_selection: null,
   high_concern: null,
   manual_opt_in: null,
   blocked_media_requests: 0,
@@ -54,11 +57,16 @@ const report = {
 };
 
 try {
-  report.standard = await checkRealCheckinAndController();
-  report.no_checkin = await checkNoCheckin();
-  const concern = await checkHighConcernAndManualOptIn();
-  report.high_concern = concern.high_concern;
-  report.manual_opt_in = concern.manual_opt_in;
+  if (EMDR_SELECTION_ONLY) {
+    report.emdr_profile_selection = await checkEmdrProfileSelectionDuringPolicyLoad();
+  } else {
+    report.standard = await checkRealCheckinAndController();
+    report.no_checkin = await checkNoCheckin();
+    report.emdr_profile_selection = await checkEmdrProfileSelectionDuringPolicyLoad();
+    const concern = await checkHighConcernAndManualOptIn();
+    report.high_concern = concern.high_concern;
+    report.manual_opt_in = concern.manual_opt_in;
+  }
   assert.deepEqual(report.page_errors, [], `Unexpected page errors: ${report.page_errors.join(" | ")}`);
   report.passed = true;
 } finally {
@@ -189,6 +197,88 @@ async function checkNoCheckin() {
   return result;
 }
 
+async function checkEmdrProfileSelectionDuringPolicyLoad() {
+  const context = await makeContext({ policyDelayMs: 4000 });
+  const page = await context.newPage();
+  monitor(page);
+  await page.addInitScript(() => {
+    localStorage.setItem("iamSoundResearchLayer", "on");
+    sessionStorage.setItem("iamAdaptiveSoundSessionChoiceV1", JSON.stringify({
+      band_intent: "delta",
+      carrier_intent: "presence",
+      high_concern_session_opt_in: true,
+      scope: "current_session_only",
+    }));
+  });
+  await page.goto(`${BASE_URL}/index.html?adaptiveSoundEmdrSelectionQa=1`, { waitUntil: "domcontentloaded" });
+  await page.waitForFunction(() => window.IAMAdaptiveSound && window.IAMEMDRGif);
+  await page.evaluate(() => {
+    window.IAMEMDRGif.setPreset("m8");
+    window.IAMEMDRGif.setActive(true);
+    window.IAMAdaptiveSound.open();
+  });
+
+  const expectedProfiles = [
+    ["alpha", "calm_alpha_80_v1", 10.11],
+    ["theta", "mindfulness_theta_80_v1", 7.38],
+    ["gamma", "inspiration_gamma_80_v1", 111],
+    ["delta", "sleep_delta_80_v1", 3.33],
+  ];
+  const selections = [];
+  for (const [band, profileId, dominantHz] of expectedProfiles) {
+    const profileChoice = page.locator(`[data-adaptive-profile="${profileId}"]`).first();
+    await profileChoice.focus();
+    await profileChoice.press("Enter");
+    try {
+      await page.waitForFunction((profile) => (
+        window.IAMAdaptiveSoundSnapshot?.profile_id === profile
+        && window.IAMAdaptiveSound?.diagnostics?.().route_profile_id === profile
+      ), profileId, { timeout: 30000 });
+    } catch (error) {
+      const failedState = await page.evaluate(() => ({
+        snapshot_profile: window.IAMAdaptiveSoundSnapshot?.profile_id || null,
+        diagnostics: window.IAMAdaptiveSound?.diagnostics?.() || null,
+        active_element_profile: document.activeElement?.dataset?.adaptiveProfile || null,
+      }));
+      throw new Error(`${band} selection did not reach the active synth route: ${JSON.stringify(failedState)}`, { cause: error });
+    }
+    const selected = await page.evaluate(() => ({
+      emdr_active: document.body.classList.contains("television-emdr-gif-active"),
+      snapshot: window.IAMAdaptiveSoundSnapshot,
+      diagnostics: window.IAMAdaptiveSound.diagnostics(),
+      pressed_profiles: [...document.querySelectorAll('[data-adaptive-profile][aria-pressed="true"]')]
+        .map((button) => button.dataset.adaptiveProfile),
+    }));
+    assert.equal(selected.emdr_active, true);
+    assert.equal(selected.snapshot?.band_intent, band, JSON.stringify(selected));
+    assert.equal(selected.snapshot.dominant_lane, band);
+    assert.equal(selected.snapshot.dominant_isochronic_hz, dominantHz);
+    assert.equal(selected.snapshot.profile_id, profileId);
+    assert.equal(selected.snapshot.selection_basis, "citizen_session_override");
+    assert.equal(selected.diagnostics.profile_id, profileId);
+    assert.equal(selected.diagnostics.route_profile_id, profileId, JSON.stringify(selected.diagnostics));
+    assert.equal(selected.diagnostics.route_carrier_hz, 444, JSON.stringify(selected.diagnostics));
+    assert.ok(selected.pressed_profiles.length >= 1);
+    assert.ok(selected.pressed_profiles.every((pressedProfile) => pressedProfile === profileId));
+    selections.push({
+      band_intent: selected.snapshot.band_intent,
+      dominant_isochronic_hz: selected.snapshot.dominant_isochronic_hz,
+      profile_id: selected.snapshot.profile_id,
+      route_profile_id: selected.diagnostics.route_profile_id,
+      carrier_hz: selected.diagnostics.route_carrier_hz,
+    });
+  }
+  await assertMediaStillStopped(page);
+  await page.locator("[data-adaptive-sound-master]").click();
+  await context.close();
+  return {
+    emdr_active: true,
+    policy_load_delayed_ms: 4000,
+    latest_selection_survived_policy_initialization: true,
+    selections,
+  };
+}
+
 async function checkHighConcernAndManualOptIn() {
   const context = await makeContext();
   const page = await context.newPage();
@@ -268,7 +358,7 @@ async function checkHighConcernAndManualOptIn() {
   return result;
 }
 
-async function makeContext() {
+async function makeContext({ policyDelayMs = 0 } = {}) {
   const context = await browser.newContext({
     viewport: { width: 1440, height: 1000 },
     reducedMotion: "reduce",
@@ -309,8 +399,17 @@ async function makeContext() {
       await route.fulfill({ status: 200, contentType: "application/json", body: JSON.stringify({ id: "adaptive-sound-source-qa-checkin" }) });
       return;
     }
-    const localFile = url.hostname === "staging.universalmind.tv" ? localAssets.get(url.pathname) : null;
+    if (LIVE_ASSETS && policyDelayMs > 0 && url.pathname.endsWith("/adaptive-sound-intent-policy-v1.json")) {
+      const response = await route.fetch();
+      await new Promise((resolve) => setTimeout(resolve, policyDelayMs));
+      await route.fulfill({ response });
+      return;
+    }
+    const localFile = !LIVE_ASSETS && url.hostname === "staging.universalmind.tv" ? localAssets.get(url.pathname) : null;
     if (localFile) {
+      if (policyDelayMs > 0 && url.pathname.endsWith("/adaptive-sound-intent-policy-v1.json")) {
+        await new Promise((resolve) => setTimeout(resolve, policyDelayMs));
+      }
       await route.fulfill({
         status: 200,
         contentType: contentType(localFile),

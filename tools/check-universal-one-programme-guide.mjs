@@ -216,7 +216,7 @@ const canonicalEmdrTooltips = [
 assert.equal(emdrSource?.implemented, true);
 assert.equal(emdrSource?.live_on_staging, true);
 assert.equal(emdrSource?.m8_gif_count, 39);
-assert.deepEqual(emdrSource?.m8_page_sizes, [6, 6, 6, 6, 6, 6, 3]);
+assert.deepEqual(emdrSource?.m8_page_sizes, [6, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3]);
 assert.deepEqual(emdrSource?.tooltips, canonicalEmdrTooltips);
 for (const tooltip of canonicalEmdrTooltips) {
   const escaped = tooltip.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
@@ -224,7 +224,8 @@ for (const tooltip of canonicalEmdrTooltips) {
   assert.match(index, new RegExp(`data-emdr-tooltip="${escaped}"`));
 }
 assert.match(guide, /M8: exact tooltip[\s\S]{0,300}39 Hexeosis GIFs/);
-assert.match(guide, /six pages of six GIFs in a centred 3 × 2 grid, then one final centred page of three/);
+assert.match(guide, /unchanged opening page of six GIFs in a centred 3 × 2 grid, followed by eleven centred pages of three GIFs/);
+assert.match(guide, /JBH ii or JBH iii is active[\s\S]{0,180}continues at 24%/);
 assert.match(guide, /four Bordelle square video tiles and two GIF tiles/);
 assert.equal(emdrSource?.jbh_presets?.jbh_i?.existing_truth_preserved, true);
 assert.equal(emdrSource?.jbh_presets?.jbh_i?.tile_video_count, 4);

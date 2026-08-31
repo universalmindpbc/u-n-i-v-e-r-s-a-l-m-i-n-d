@@ -767,7 +767,7 @@ body.television-radio-continuation .adaptive-television-fashion-video {
   scroll-snap-stop: always;
 }
 
-.adaptive-television-emdr-gif-page:last-child {
+.adaptive-television-emdr-gif-page[data-emdr-gif-page-size="3"] {
   grid-template-rows: var(--emdr-gif-tile-size);
 }
 

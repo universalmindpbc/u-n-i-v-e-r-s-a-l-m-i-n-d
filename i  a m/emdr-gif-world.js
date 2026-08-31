@@ -18,6 +18,7 @@
     if (!state.root) return false;
 
     Array.from(state.root.querySelectorAll("[data-emdr-gif-preset]")).forEach((panel) => {
+      paginateProgressivePreset(panel);
       const key = String(panel.dataset.emdrGifPreset || "").trim().toLowerCase();
       if (!key) return;
       const tiles = Array.from(panel.querySelectorAll("[data-emdr-gif-tile]"));
@@ -37,6 +38,33 @@
     syncPresetPanels();
     preloadPreset(state.preset);
     return true;
+  }
+
+  function paginateProgressivePreset(panel) {
+    const firstPageSize = Number(panel.dataset.emdrGifFirstPageSize);
+    const pageSize = Number(panel.dataset.emdrGifPageSize);
+    if (!Number.isInteger(firstPageSize) || firstPageSize < 1 || !Number.isInteger(pageSize) || pageSize < 1) return;
+
+    const tiles = Array.from(panel.querySelectorAll("[data-emdr-gif-tile]"));
+    if (!tiles.length) return;
+    const pages = [];
+    for (let offset = 0; offset < tiles.length;) {
+      const currentPageSize = offset === 0 ? firstPageSize : pageSize;
+      pages.push(tiles.slice(offset, offset + currentPageSize));
+      offset += currentPageSize;
+    }
+
+    const fragment = document.createDocumentFragment();
+    pages.forEach((pageTiles) => {
+      const page = document.createElement("div");
+      page.className = "adaptive-television-emdr-gif-page";
+      page.dataset.emdrGifPage = "";
+      page.dataset.emdrGifPageSize = String(pageTiles.length);
+      page.append(...pageTiles);
+      fragment.append(page);
+    });
+    panel.replaceChildren(fragment);
+    panel.dataset.emdrGifPageCount = String(pages.length);
   }
 
   function presetState(key = state.preset) {

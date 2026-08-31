@@ -96,6 +96,8 @@ assert.match(html, /data-emdr-jbh-background/);
 assert.match(html, /data-emdr-jbh-foreground/);
 assert.match(m8Markup, /data-emdr-gif-scroll/);
 assert.match(m8Markup, /data-emdr-gif-progressive/);
+assert.match(m8Markup, /data-emdr-gif-first-page-size="6" data-emdr-gif-page-size="3"/);
+assert.match(altM8Markup, /data-emdr-gif-first-page-size="6" data-emdr-gif-page-size="3"/);
 assert.equal((m8Markup.match(/loading="eager"/g) || []).length, 6);
 assert.equal((m8Markup.match(/loading="lazy"/g) || []).length, 33);
 
@@ -129,13 +131,15 @@ assert.match(gifRuntime, /tile\.tagName === "VIDEO"/);
 assert.match(gifRuntime, /detail: \{ active: state\.active, preset: state\.preset \}/);
 assert.match(gifRuntime, /panel\.hasAttribute\("data-emdr-gif-progressive"\)/);
 assert.match(gifRuntime, /dataset\.emdrGifReady = "progressive"/);
+assert.match(gifRuntime, /paginateProgressivePreset\(panel\)/);
+assert.match(gifRuntime, /page\.dataset\.emdrGifPageSize = String\(pageTiles\.length\)/);
 assert.match(styles, /\.adaptive-television-emdr-gif-grid\.is-active/);
 assert.match(styles, /\.adaptive-television-emdr-gif-grid img,[\s\S]*?\.adaptive-television-emdr-gif-grid video/);
 assert.match(styles, /\.adaptive-television-emdr-gif-grid\[data-emdr-gif-scroll\][\s\S]*?overflow-y: auto/);
 assert.match(styles, /overscroll-behavior-y: contain/);
 assert.match(styles, /scroll-snap-type: y mandatory/);
 assert.match(styles, /\.adaptive-television-emdr-gif-page \{[\s\S]*?grid-template-columns: repeat\(3, var\(--emdr-gif-tile-size\)\)[\s\S]*?grid-template-rows: repeat\(2, var\(--emdr-gif-tile-size\)\)[\s\S]*?height: 100%[\s\S]*?overflow: hidden[\s\S]*?scroll-snap-align: start/);
-assert.match(styles, /\.adaptive-television-emdr-gif-page:last-child \{[\s\S]*?grid-template-rows: var\(--emdr-gif-tile-size\)/);
+assert.match(styles, /\.adaptive-television-emdr-gif-page\[data-emdr-gif-page-size="3"\] \{[\s\S]*?grid-template-rows: var\(--emdr-gif-tile-size\)/);
 assert.match(styles, /img\[data-emdr-gif-boxed\] \{[\s\S]*?border: 1px solid rgba\(255, 255, 255, \.14\)[\s\S]*?background: #111114[\s\S]*?opacity: 1/);
 assert.match(styles, /touch-action: pan-y/);
 
