@@ -89,7 +89,7 @@
       title: "Healing Sexual Trauma in Nature",
       artist: "Shashi Solana",
       fileName: "Pirelli 2010 Calendar.mp4",
-      backgroundFileName: "Shashi Solluna - How I Healed my Sexual Pain using Nature.mp4",
+      backgroundFileName: "Shashi Solluna - How I Healed my Sexual Pain using Nature +12dB.mp4",
       durationSeconds: 1479.2,
       backgroundDurationSeconds: 549.27,
       presentation: "jbh-editorial",

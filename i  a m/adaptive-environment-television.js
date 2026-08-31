@@ -174,6 +174,7 @@
   const sexEdEpisodeStart = document.querySelector("[data-sex-ed-shell-start]");
   const emdrJbhBackground = document.querySelector("[data-emdr-jbh-background]");
   const emdrJbhForeground = document.querySelector("[data-emdr-jbh-foreground]");
+  const emdrJbhForegroundCanvas = document.querySelector("[data-emdr-jbh-foreground-canvas]");
   const jbhContentGate = document.querySelector("[data-jbh-content-gate]");
   const jbhContentGatePanel = jbhContentGate?.querySelector(".jbh-content-gate__panel");
   const jbhContentGateTitle = document.querySelector("[data-jbh-content-gate-title]");
@@ -307,8 +308,13 @@
   let contentGatePreviousFocus = null;
   let emdrJbhEditorialGeneration = 0;
   let emdrJbhLayerSyncTimer = 0;
+  let emdrJbhForegroundMirrorGeneration = 0;
+  let emdrJbhForegroundVideoFrame = 0;
+  let emdrJbhForegroundFallbackTimer = 0;
   const emdrJbhDuckedVolumes = new Map();
   const jbhEthicsDuckedVolumes = new Map();
+  const jbhEthicsMediaStates = new Map();
+  let jbhEthicsSilenceTimer = 0;
   let jbhEthicsPreviousFocus = null;
   let musicCatalogueRecords = [];
   let radioStationRecords = DEFAULT_RADIO_STATIONS.map((station) => ({ ...station }));
@@ -505,7 +511,7 @@
   const SEX_ED_PROGRAMME_MIX_LEVEL = .15;
   const SEX_ED_BROADCAST_CHANNEL_ID = "sex-ed";
   const JBH_EDITORIAL_PROGRAMME_MIX_LEVEL = .15;
-  const JBH_ETHICS_PROGRAMME_MIX_LEVEL = .15;
+  const JBH_ETHICS_PROGRAMME_MIX_LEVEL = 0;
   const VOICE_ASSISTANT_PROGRAMME_MIX_LEVEL = .15;
   const SEX_ED_DEFAULT_BACKGROUND_FILE = "a s s e t s/f a s h i o n [ r u n w a y ]/Mugler - Fall Winter 2021.mp4";
   let continuationAudio = null;
@@ -737,33 +743,75 @@
     });
   });
 
-  function duckProgrammeForJbhEthics() {
+  function hardMuteMediaForJbhEthics(media, baseline = Number(media?.volume)) {
+    if (!media || media === jbhEthicsVideo) return;
+    if (!jbhEthicsMediaStates.has(media)) {
+      jbhEthicsMediaStates.set(media, {
+        muted: Boolean(media.muted),
+        defaultMuted: Boolean(media.defaultMuted),
+        volume: Math.max(0, Math.min(1, Number(media.volume) || 0)),
+      });
+    }
+    if (!jbhEthicsDuckedVolumes.has(media)) {
+      const resolvedBaseline = Number.isFinite(Number(baseline))
+        ? Math.max(0, Math.min(1, Number(baseline)))
+        : (media === continuationAudio ? .68 : 1);
+      jbhEthicsDuckedVolumes.set(media, resolvedBaseline);
+    }
+    const volumeFrame = voiceAssistantVolumeFrames.get(media);
+    if (volumeFrame) window.cancelAnimationFrame(volumeFrame);
+    voiceAssistantVolumeFrames.delete(media);
+    media.volume = 0;
+    media.muted = true;
+    media.defaultMuted = true;
+  }
+
+  function maintainJbhEthicsSilence() {
+    if (!document.body.classList.contains("jbh-ethics-open")) return;
     const programmeMedia = new Set([
+      ...document.querySelectorAll("video, audio"),
       localVideo,
       continuationAudio,
+      nowPlayingAudio,
       sexEdEpisodeVideo,
       sexEdBackground,
       emdrJbhBackground,
       emdrJbhForeground,
+      comedyVideo,
+      soundResearchAudio,
     ]);
-    programmeMedia.forEach((media) => {
-      if (!media || media === jbhEthicsVideo || media.muted || media.paused) return;
-      if (!jbhEthicsDuckedVolumes.has(media)) {
-        const fallback = media === continuationAudio ? .68 : 1;
-        const currentVolume = Number(media.volume);
-        jbhEthicsDuckedVolumes.set(media, Number.isFinite(currentVolume) && currentVolume > .001 ? currentVolume : fallback);
-      }
-      setVoiceAssistantProgramVolume(media, jbhEthicsDuckedVolumes.get(media), 420);
-    });
+    programmeMedia.forEach((media) => hardMuteMediaForJbhEthics(media));
+    soundResearchTargetLevel = 0;
+    document.body.dataset.jbhEthicsProgrammeHardMuted = "true";
+  }
+
+  function duckProgrammeForJbhEthics() {
+    maintainJbhEthicsSilence();
+    window.clearInterval(jbhEthicsSilenceTimer);
+    jbhEthicsSilenceTimer = window.setInterval(maintainJbhEthicsSilence, 160);
     document.body.dataset.jbhEthicsProgrammeMixLevel = String(JBH_ETHICS_PROGRAMME_MIX_LEVEL);
   }
 
   function restoreProgrammeAfterJbhEthics() {
-    jbhEthicsDuckedVolumes.forEach((baseline, media) => {
-      setVoiceAssistantProgramVolume(media, baseline, 420);
+    window.clearInterval(jbhEthicsSilenceTimer);
+    jbhEthicsSilenceTimer = 0;
+    jbhEthicsMediaStates.forEach((state, media) => {
+      const volumeFrame = voiceAssistantVolumeFrames.get(media);
+      if (volumeFrame) window.cancelAnimationFrame(volumeFrame);
+      voiceAssistantVolumeFrames.delete(media);
+      media.defaultMuted = state.defaultMuted;
+      media.muted = state.muted;
+      if (state.muted || state.volume <= .001) {
+        media.volume = state.volume;
+      } else {
+        media.volume = 0;
+        setVoiceAssistantProgramVolume(media, state.volume, 420);
+      }
     });
+    jbhEthicsMediaStates.clear();
     jbhEthicsDuckedVolumes.clear();
     delete document.body.dataset.jbhEthicsProgrammeMixLevel;
+    delete document.body.dataset.jbhEthicsProgrammeHardMuted;
   }
 
   function closeJbhEthics(event) {
@@ -6760,7 +6808,8 @@
     }
     if (document.body.classList.contains("jbh-ethics-open") && media !== jbhEthicsVideo) {
       if (!jbhEthicsDuckedVolumes.has(media)) jbhEthicsDuckedVolumes.set(media, baseline);
-      target = Math.min(target, JBH_ETHICS_PROGRAMME_MIX_LEVEL);
+      hardMuteMediaForJbhEthics(media, baseline);
+      target = 0;
     }
     return target;
   }
@@ -6786,8 +6835,80 @@
     delete document.body.dataset.emdrJbhProgrammeMixLevel;
   }
 
+  function stopEmdrJbhForegroundMirror() {
+    emdrJbhForegroundMirrorGeneration += 1;
+    if (emdrJbhForegroundFallbackTimer) {
+      window.clearTimeout(emdrJbhForegroundFallbackTimer);
+      emdrJbhForegroundFallbackTimer = 0;
+    }
+    if (emdrJbhForegroundVideoFrame && emdrJbhForeground?.cancelVideoFrameCallback) {
+      try { emdrJbhForeground.cancelVideoFrameCallback(emdrJbhForegroundVideoFrame); } catch {}
+    }
+    emdrJbhForegroundVideoFrame = 0;
+    if (emdrJbhForegroundCanvas) emdrJbhForegroundCanvas.dataset.jbhForegroundMirror = "inactive";
+    delete document.body.dataset.emdrJbhForegroundRenderer;
+  }
+
+  function drawEmdrJbhForegroundFrame() {
+    if (!emdrJbhForegroundCanvas || !emdrJbhForeground) return false;
+    const width = emdrJbhForegroundCanvas.clientWidth;
+    const height = emdrJbhForegroundCanvas.clientHeight;
+    if (!width || !height || emdrJbhForeground.readyState < HTMLMediaElement.HAVE_CURRENT_DATA) return false;
+    const pixelRatio = Math.min(1.5, Math.max(1, Number(window.devicePixelRatio) || 1));
+    const targetWidth = Math.max(1, Math.round(width * pixelRatio));
+    const targetHeight = Math.max(1, Math.round(height * pixelRatio));
+    if (emdrJbhForegroundCanvas.width !== targetWidth) emdrJbhForegroundCanvas.width = targetWidth;
+    if (emdrJbhForegroundCanvas.height !== targetHeight) emdrJbhForegroundCanvas.height = targetHeight;
+    const context = emdrJbhForegroundCanvas.getContext("2d", { alpha: false });
+    if (!context) return false;
+    try {
+      context.fillStyle = "#08080a";
+      context.fillRect(0, 0, targetWidth, targetHeight);
+      if (!drawMediaCover(context, emdrJbhForeground, targetWidth, targetHeight)) return false;
+      emdrJbhForegroundCanvas.dataset.jbhForegroundMirror = "ready";
+      emdrJbhForegroundCanvas.dataset.jbhForegroundMediaTime = Number(emdrJbhForeground.currentTime || 0).toFixed(3);
+      document.body.dataset.emdrJbhForegroundRenderer = "canvas";
+      delete emdrJbhForegroundCanvas.dataset.jbhForegroundError;
+      return true;
+    } catch (error) {
+      emdrJbhForegroundCanvas.dataset.jbhForegroundMirror = "error";
+      emdrJbhForegroundCanvas.dataset.jbhForegroundError = String(error?.message || error).slice(0, 160);
+      return false;
+    }
+  }
+
+  function scheduleEmdrJbhForegroundMirror(generation) {
+    if (
+      generation !== emdrJbhForegroundMirrorGeneration ||
+      !document.body.classList.contains("television-emdr-jbh-editorial-active")
+    ) return;
+    if (emdrJbhForeground?.requestVideoFrameCallback && !emdrJbhForeground.paused && emdrJbhForeground.readyState >= 2) {
+      emdrJbhForegroundVideoFrame = emdrJbhForeground.requestVideoFrameCallback(() => {
+        emdrJbhForegroundVideoFrame = 0;
+        drawEmdrJbhForegroundFrame();
+        scheduleEmdrJbhForegroundMirror(generation);
+      });
+      return;
+    }
+    emdrJbhForegroundFallbackTimer = window.setTimeout(() => {
+      emdrJbhForegroundFallbackTimer = 0;
+      drawEmdrJbhForegroundFrame();
+      scheduleEmdrJbhForegroundMirror(generation);
+    }, emdrJbhForeground?.paused ? 220 : 42);
+  }
+
+  function startEmdrJbhForegroundMirror() {
+    stopEmdrJbhForegroundMirror();
+    if (!emdrJbhForegroundCanvas) return;
+    emdrJbhForegroundCanvas.dataset.jbhForegroundMirror = "starting";
+    const generation = emdrJbhForegroundMirrorGeneration;
+    drawEmdrJbhForegroundFrame();
+    scheduleEmdrJbhForegroundMirror(generation);
+  }
+
   function stopEmdrJbhEditorial(restoreProgramme = true) {
     emdrJbhEditorialGeneration += 1;
+    stopEmdrJbhForegroundMirror();
     window.clearInterval(emdrJbhLayerSyncTimer);
     emdrJbhLayerSyncTimer = 0;
     document.body.classList.remove("television-emdr-jbh-editorial-active");
@@ -6847,6 +6968,7 @@
         window.IAMStreamController?.play?.(emdrJbhBackground) || emdrJbhBackground.play(),
         window.IAMStreamController?.play?.(emdrJbhForeground) || emdrJbhForeground.play(),
       ]);
+      startEmdrJbhForegroundMirror();
       const ready = (await Promise.all([
         waitForSexEdMediaPlayback(emdrJbhBackground),
         waitForSexEdMediaPlayback(emdrJbhForeground),
@@ -8060,6 +8182,7 @@
   }
 
   function soundResearchOutputMultiplier() {
+    if (document.body.classList.contains("jbh-ethics-open")) return 0;
     if (!document.body.classList.contains("television-comedy-active")) return 1;
     const configuredMultiplier = Number(document.body.dataset.comedySoundOutputMultiplier);
     return Number.isFinite(configuredMultiplier)

@@ -124,7 +124,7 @@
         "jbh_ii": {
           "display_name": "JBH ii",
           "tile_contract": "same four square video tiles and two GIF tiles as JBH i",
-          "background_file": "Shashi Solluna - How I Healed my Sexual Pain using Nature.mp4",
+          "background_file": "Shashi Solluna - How I Healed my Sexual Pain using Nature +12dB.mp4",
           "background_role": "full_page_audible_infinite_loop",
           "foreground_file": "Pirelli 2010 Calendar.mp4",
           "foreground_role": "central_muted_infinite_loop",
@@ -159,6 +159,7 @@
       "controller_path": "adaptive-environment-television.js",
       "stream_registry_path": "cloudflare-stream-catalogue.js",
       "stream_manifest_path": "cloudflare-stream-new-videos-20260830-manifest.json",
+      "additional_stream_manifest_path": "cloudflare-stream-jbh-ethics-20260831-manifest.json",
       "contract_test_path": "tools/check-jbh-editorial-experiences.mjs",
       "staging_source_commit": "bb2b2f7ac73cd1e0b0478768be44823277ee662d",
       "staging_record_commit": "84305d7d0c4a42ee50303fd18fb01131bea75c58",
@@ -182,6 +183,14 @@
           "public_names": "Shashi Solana",
           "cloudflare_uid": "d064fc7c011c38b9423b0b177ef61368",
           "duration_seconds": 549.27,
+          "status": "ready"
+        },
+        {
+          "file_name": "Shashi Solluna - How I Healed my Sexual Pain using Nature +12dB.mp4",
+          "public_names": "Shashi Solana",
+          "cloudflare_uid": "1b9695e43908ddeb7f483480f4e2c261",
+          "duration_seconds": 549.27,
+          "audio_gain_db": 12,
           "status": "ready"
         }
       ],

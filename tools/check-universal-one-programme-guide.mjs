@@ -13,6 +13,7 @@ const portalGuide = read("i  a m/universal-one-portal-guide-v1.txt");
 const sources = JSON.parse(read("i  a m/universal-one-programme-sources-v1.json"));
 const mediaManifest = JSON.parse(read("cloudflare-stream-new-videos-20260827-manifest.json"));
 const jbhMediaManifest = JSON.parse(read("cloudflare-stream-new-videos-20260830-manifest.json"));
+const jbhEthicsMediaManifest = JSON.parse(read("cloudflare-stream-jbh-ethics-20260831-manifest.json"));
 const provenanceLedger = JSON.parse(read("youtube-branding-ledger-20260827.json"));
 const schedule = JSON.parse(read("i  a m/broadcast-schedule-v1.json"));
 const programmeCatalogueSource = read("i  a m/programme-catalogue-v1.js");
@@ -171,7 +172,7 @@ assert.match(index, /<span>Jacqueline Michelle<\/span>/);
 assert.match(index, /data-sex-ed-background-file="Karl Lagerfeld - The Making of the 2011 Pirelli Calendar\.mp4"/);
 assert.match(index, /data-sex-ed-episode="07"[\s\S]{0,500}data-sex-ed-presentation="fullscreen"[\s\S]{0,220}data-sex-ed-radio-station="cafe-del-mar-chill"/);
 assert.match(index, /data-sex-ed-episode="08"[\s\S]{0,500}data-sex-ed-presentation="fullscreen"[\s\S]{0,220}data-sex-ed-radio-station="cafe-del-mar-chill"/);
-assert.match(index, /data-sex-ed-episode="15"[^>]*data-sex-ed-file="Pirelli 2010 Calendar\.mp4"[^>]*data-sex-ed-background-file="Shashi Solluna - How I Healed my Sexual Pain using Nature\.mp4"/);
+assert.match(index, /data-sex-ed-episode="15"[^>]*data-sex-ed-file="Pirelli 2010 Calendar\.mp4"[^>]*data-sex-ed-background-file="Shashi Solluna - How I Healed my Sexual Pain using Nature \+12dB\.mp4"/);
 assert.match(index, /data-sex-ed-episode="16"[^>]*data-sex-ed-file="Karl Lagerfeld &amp; Shashi Solluna - Nice Guy vs\. Toxic Masculinity\.mp4"[^>]*data-sex-ed-background-file="Karl Lagerfeld &amp; Shashi Solluna - Nice Guy vs\. Toxic Masculinity\.mp4"/);
 for (const episode of sources.episode_sources) {
   assert.equal(episode.transcript_verified === true || episode.source_verified === true, true);
@@ -250,7 +251,12 @@ assert.equal(jbhEditorialSource?.content_gate?.episode_16_uses_editor_note, fals
 assert.match(jbhEditorialSource?.knowledge_boundary || "", /do not establish a transcript, third-party provenance, biography, therapeutic method, clinical effect, rights status or endorsement/i);
 assert.deepEqual(
   jbhEditorialSource?.media?.map((item) => [item.file_name, item.cloudflare_uid, item.duration_seconds, item.status]),
-  jbhMediaManifest.files.map((item) => [item.fileName, item.uid, item.durationSeconds, item.status]),
+  [
+    ...jbhMediaManifest.files.map((item) => [item.fileName, item.uid, item.durationSeconds, item.status]),
+    ...jbhEthicsMediaManifest.files
+      .filter((item) => item.fileName.includes("+12dB"))
+      .map((item) => [item.fileName, item.uid, item.durationSeconds, item.status]),
+  ],
 );
 assert.equal(jbhMediaManifest.files.length, 3);
 assert.ok(jbhMediaManifest.files.every((item) => item.status === "ready"));

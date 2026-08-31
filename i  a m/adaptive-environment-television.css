@@ -809,14 +809,19 @@ body.television-radio-continuation .adaptive-television-fashion-video {
 }
 
 .adaptive-television-emdr-jbh-background,
-.adaptive-television-emdr-jbh-foreground {
+.adaptive-television-emdr-jbh-foreground,
+.adaptive-television-emdr-jbh-foreground-canvas {
   position: absolute;
   display: block;
   background: #08080a;
-  object-fit: cover;
   opacity: 0;
   pointer-events: none;
   visibility: hidden;
+}
+
+.adaptive-television-emdr-jbh-background,
+.adaptive-television-emdr-jbh-foreground {
+  object-fit: cover;
 }
 
 .adaptive-television-emdr-jbh-background {
@@ -826,7 +831,8 @@ body.television-radio-continuation .adaptive-television-fashion-video {
   height: 100%;
 }
 
-.adaptive-television-emdr-jbh-foreground {
+.adaptive-television-emdr-jbh-foreground,
+.adaptive-television-emdr-jbh-foreground-canvas {
   top: 50%;
   left: 50%;
   z-index: 3;
@@ -835,9 +841,25 @@ body.television-radio-continuation .adaptive-television-fashion-video {
   transform: translate(-50%, -50%);
 }
 
+/* Safari still installs Live Text controls over a fullscreen video even when
+   selection and pointer interaction are disabled (WebKit 283671). Keep the
+   audible Stream element alive as a clipped source and paint its picture to a
+   canvas, which Safari does not decorate with the recognition badge. */
+.adaptive-television-emdr-jbh-foreground {
+  z-index: 2;
+  width: 2px;
+  height: 2px;
+  clip-path: inset(50%);
+}
+
 body.television-emdr-jbh-editorial-active .adaptive-television-emdr-jbh-background,
-body.television-emdr-jbh-editorial-active .adaptive-television-emdr-jbh-foreground {
+body.television-emdr-jbh-editorial-active .adaptive-television-emdr-jbh-foreground-canvas {
   opacity: 1;
+  visibility: visible;
+}
+
+body.television-emdr-jbh-editorial-active .adaptive-television-emdr-jbh-foreground {
+  opacity: 0;
   visibility: visible;
 }
 
@@ -7481,25 +7503,25 @@ body.music-shelf-open .adaptive-television-fashion-shelf:not(.adaptive-televisio
   }
 }
 
-/* James Bondage Health ethics stays inside the television shell so opening it
-   never exits fullscreen. The supplied LSI film is the only media layer. */
+/* James Bondage Health Ethics remains inside the television shell. The LSI
+   film is full-bleed; one disciplined black band carries the written system. */
 .jbh-ethics {
   position: absolute;
   inset: 0;
   z-index: 58;
   overflow: hidden;
-  background: #050505;
+  background: #000;
   opacity: 0;
   pointer-events: none;
   visibility: hidden;
-  transition: opacity 320ms ease, visibility 0s linear 320ms;
+  transition: opacity 260ms ease, visibility 0s linear 260ms;
 }
 
 .jbh-ethics[aria-hidden="false"] {
   opacity: 1;
   pointer-events: auto;
   visibility: visible;
-  transition: opacity 360ms ease, visibility 0s linear;
+  transition: opacity 320ms ease, visibility 0s linear;
 }
 
 .jbh-ethics__video,
@@ -7517,9 +7539,8 @@ body.music-shelf-open .adaptive-television-fashion-shelf:not(.adaptive-televisio
   border: 0;
   background: #000;
   object-fit: cover;
-  opacity: .52;
-  transform: scale(1.018);
-  filter: saturate(.92) contrast(1.04);
+  opacity: .96;
+  filter: saturate(.92) contrast(1.05);
 }
 
 .jbh-ethics__backdrop {
@@ -7532,115 +7553,103 @@ body.music-shelf-open .adaptive-television-fashion-shelf:not(.adaptive-televisio
 
 .jbh-ethics__wash {
   z-index: 2;
-  background:
-    radial-gradient(circle at 20% 18%, rgba(227, 119, 255, .24), transparent 34%),
-    radial-gradient(circle at 81% 22%, rgba(123, 231, 255, .2), transparent 33%),
-    radial-gradient(circle at 54% 88%, rgba(216, 255, 66, .15), transparent 36%),
-    linear-gradient(90deg, rgba(2, 4, 5, .86), rgba(3, 5, 6, .52) 47%, rgba(2, 4, 5, .83));
+  background: linear-gradient(180deg, rgba(0, 0, 0, .28), transparent 18%, transparent 82%, rgba(0, 0, 0, .34));
   pointer-events: none;
 }
 
 .jbh-ethics__panel {
   position: absolute;
-  top: 50%;
-  left: 50%;
+  inset: 0;
   z-index: 3;
   box-sizing: border-box;
-  display: grid;
-  grid-template-columns: minmax(238px, .78fr) minmax(380px, 1.22fr);
-  grid-template-areas:
-    "header copy"
-    "geometry copy"
-    "decode copy"
-    "sound copy";
-  column-gap: clamp(34px, 5vw, 82px);
-  width: min(1160px, calc(100vw - 80px));
-  max-height: min(86vh, 820px);
-  overflow: auto;
-  border: 1px solid rgba(255, 255, 255, .22);
-  border-radius: 18px;
-  background: rgba(4, 7, 8, .68);
-  box-shadow: 0 32px 100px rgba(0, 0, 0, .46), inset 0 1px 0 rgba(255, 255, 255, .1);
+  display: flex;
+  align-items: center;
+  overflow: hidden;
   color: #fff;
-  padding: clamp(34px, 4.5vw, 70px);
-  transform: translate(-50%, calc(-50% + 18px));
-  backdrop-filter: blur(24px) saturate(1.08);
-  -webkit-backdrop-filter: blur(24px) saturate(1.08);
-  transition: transform 520ms cubic-bezier(.22, .72, .18, 1);
-}
-
-.jbh-ethics[aria-hidden="false"] .jbh-ethics__panel {
-  transform: translate(-50%, -50%);
+  padding: 11vh 0;
 }
 
 .jbh-ethics__panel:focus {
   outline: 0;
 }
 
+.jbh-ethics__band {
+  box-sizing: border-box;
+  display: grid;
+  grid-template-columns: minmax(160px, .45fr) minmax(340px, .92fr) minmax(440px, 1.35fr);
+  gap: clamp(30px, 3.2vw, 62px);
+  width: 100%;
+  max-height: 78vh;
+  overflow: auto;
+  border-top: 1px solid rgba(255, 255, 255, .19);
+  border-bottom: 1px solid rgba(255, 255, 255, .19);
+  background: #050306;
+  padding: clamp(34px, 4.2vh, 58px) max(5vw, calc((100vw - 1500px) / 2));
+  scrollbar-color: rgba(255, 255, 255, .34) transparent;
+  scrollbar-width: thin;
+  -webkit-backdrop-filter: blur(5px);
+  backdrop-filter: blur(5px);
+}
+
 .jbh-ethics__close {
   position: absolute;
-  top: 13px;
-  right: 15px;
+  top: calc(11vh + 14px);
+  right: max(22px, 3vw);
   z-index: 4;
   display: grid;
   place-items: center;
-  width: 34px;
-  height: 34px;
-  border: 1px solid rgba(255, 255, 255, .18);
+  width: 38px;
+  height: 38px;
+  border: 1px solid rgba(255, 255, 255, .35);
   border-radius: 50%;
-  background: rgba(0, 0, 0, .22);
-  color: rgba(255, 255, 255, .82);
+  background: #000;
+  color: #fff;
   cursor: pointer;
-  font: 300 25px/1 "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font: 300 26px/1 "Helvetica Neue", Helvetica, Arial, sans-serif;
   padding: 0 0 2px;
-}
-
-.jbh-ethics__header {
-  grid-area: header;
 }
 
 .jbh-ethics__header p,
 .jbh-ethics__header h2,
 .jbh-ethics__decode,
 .jbh-ethics__introduction,
-.jbh-ethics__principles p,
-.jbh-ethics__sound {
+.jbh-ethics__framework h3,
+.jbh-ethics__principles p {
   margin: 0;
 }
 
 .jbh-ethics__header p {
-  color: #d8ff42;
-  font: 700 10px/1.2 "Helvetica Neue", Helvetica, Arial, sans-serif;
-  letter-spacing: .16em;
+  color: rgba(255, 255, 255, .68);
+  font: 600 10px/1.2 "Helvetica Neue", Helvetica, Arial, sans-serif;
+  letter-spacing: .14em;
   text-transform: uppercase;
 }
 
 .jbh-ethics__header h2 {
-  margin-top: 11px;
-  font: 500 clamp(33px, 4vw, 58px)/.94 "Helvetica Neue", Helvetica, Arial, sans-serif;
-  letter-spacing: -.052em;
+  margin-top: 8px;
+  font: 500 clamp(38px, 3.4vw, 54px)/.95 "Helvetica Neue", Helvetica, Arial, sans-serif;
+  letter-spacing: -.048em;
 }
 
 .jbh-ethics__geometry {
-  grid-area: geometry;
   position: relative;
-  width: min(310px, 100%);
+  width: 154px;
   aspect-ratio: 100 / 86;
-  margin: clamp(24px, 4vh, 40px) auto 0;
+  margin: 34px auto 0;
 }
 
 .jbh-ethics__geometry svg {
   position: absolute;
-  inset: 8% 7% 4%;
-  width: 86%;
-  height: 88%;
+  inset: 9% 8% 5%;
+  width: 84%;
+  height: 86%;
   overflow: visible;
 }
 
 .jbh-ethics__geometry path {
-  fill: rgba(255, 255, 255, .015);
-  stroke: rgba(255, 255, 255, .66);
-  stroke-width: .7;
+  fill: none;
+  stroke: rgba(255, 255, 255, .58);
+  stroke-width: .65;
   vector-effect: non-scaling-stroke;
 }
 
@@ -7648,7 +7657,7 @@ body.music-shelf-open .adaptive-television-fashion-shelf:not(.adaptive-televisio
   position: absolute;
   display: grid;
   justify-items: center;
-  gap: 4px;
+  gap: 3px;
   transform: translate(-50%, -50%);
 }
 
@@ -7668,25 +7677,23 @@ body.music-shelf-open .adaptive-television-fashion-shelf:not(.adaptive-televisio
 }
 
 .jbh-ethics__node .adaptive-television-reaction__glyph {
-  width: clamp(42px, 4.3vw, 58px);
-  height: clamp(42px, 4.3vw, 58px);
-  filter: drop-shadow(0 0 16px rgba(255, 255, 255, .26));
+  width: 30px;
+  height: 30px;
+  filter: drop-shadow(0 0 9px rgba(255, 255, 255, .18));
 }
 
 .jbh-ethics__node b {
-  color: rgba(255, 255, 255, .96);
-  font: 700 11px/1 "Helvetica Neue", Helvetica, Arial, sans-serif;
-  letter-spacing: .18em;
-  text-indent: .18em;
+  color: #fff;
+  font: 700 8px/1 "Helvetica Neue", Helvetica, Arial, sans-serif;
+  letter-spacing: .16em;
+  text-indent: .16em;
 }
 
 .jbh-ethics__decode {
-  grid-area: decode;
-  align-self: start;
-  margin-top: 23px;
-  color: rgba(255, 255, 255, .78);
-  font: 500 11px/1.4 "Helvetica Neue", Helvetica, Arial, sans-serif;
-  letter-spacing: .08em;
+  margin-top: 20px;
+  color: rgba(255, 255, 255, .68);
+  font: 500 9px/1.4 "Helvetica Neue", Helvetica, Arial, sans-serif;
+  letter-spacing: .075em;
   text-align: center;
   text-transform: uppercase;
 }
@@ -7695,115 +7702,127 @@ body.music-shelf-open .adaptive-television-fashion-shelf:not(.adaptive-televisio
   color: #fff;
 }
 
-.jbh-ethics__introduction,
-.jbh-ethics__values,
-.jbh-ethics__principles {
-  grid-column: 2;
-}
-
 .jbh-ethics__introduction {
-  grid-row: 1;
-  align-self: end;
-  color: rgba(255, 255, 255, .86);
-  font: 400 clamp(15px, 1.35vw, 19px)/1.5 "Helvetica Neue", Helvetica, Arial, sans-serif;
+  color: rgba(255, 255, 255, .93);
+  font: 400 clamp(15px, 1.15vw, 18px)/1.55 "Helvetica Neue", Helvetica, Arial, sans-serif;
   letter-spacing: -.012em;
 }
 
+.jbh-ethics__framework h3 {
+  margin-top: 26px;
+  color: #fff;
+  font: 650 13px/1.3 "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
 .jbh-ethics__values {
-  grid-row: 2;
-  display: flex;
-  align-content: flex-start;
-  align-items: flex-start;
-  flex-wrap: wrap;
-  gap: 7px;
-  margin-top: 25px;
+  columns: 2;
+  column-gap: 28px;
+  margin: 13px 0 0;
+  padding: 0 0 0 17px;
 }
 
-.jbh-ethics__values span {
-  border: 1px solid rgba(255, 255, 255, .17);
-  border-radius: 999px;
-  background: rgba(255, 255, 255, .055);
-  color: rgba(255, 255, 255, .8);
-  font: 600 9px/1 "Helvetica Neue", Helvetica, Arial, sans-serif;
-  letter-spacing: .065em;
-  padding: 8px 10px 7px;
-  text-transform: uppercase;
+.jbh-ethics__values li {
+  break-inside: avoid;
+  color: rgba(255, 255, 255, .72);
+  font: 400 11.5px/1.55 "Helvetica Neue", Helvetica, Arial, sans-serif;
+  padding: 0 0 3px 2px;
 }
 
-.jbh-ethics__principles {
-  grid-row: 3 / 5;
-  display: grid;
-  gap: 12px;
-  margin-top: 24px;
+.jbh-ethics__values li::marker {
+  color: rgba(255, 255, 255, .46);
 }
 
-.jbh-ethics__principles p {
-  border-left: 1px solid rgba(216, 255, 66, .52);
-  color: rgba(255, 255, 255, .7);
-  font: 400 12.5px/1.5 "Helvetica Neue", Helvetica, Arial, sans-serif;
-  padding-left: 14px;
-}
-
-.jbh-ethics__principles strong {
-  color: rgba(255, 255, 255, .94);
-  font-weight: 650;
-}
-
+.jbh-ethics__values a,
 .jbh-ethics__principles a {
-  color: #d8ff42;
+  color: #fff;
+  text-decoration-color: rgba(255, 255, 255, .55);
   text-underline-offset: 3px;
 }
 
-.jbh-ethics__sound {
-  grid-area: sound;
-  align-self: end;
-  margin-top: 26px;
-  color: rgba(255, 255, 255, .66);
-  font: 600 9px/1.3 "Helvetica Neue", Helvetica, Arial, sans-serif;
-  letter-spacing: .09em;
-  text-align: center;
-  text-transform: uppercase;
+.jbh-ethics__principles {
+  display: grid;
+  align-content: start;
 }
 
-.jbh-ethics__sound span {
-  color: #d8ff42;
-  margin-right: 5px;
+.jbh-ethics__principles p {
+  border-top: 1px solid rgba(255, 255, 255, .16);
+  color: rgba(255, 255, 255, .68);
+  font: 400 11.5px/1.5 "Helvetica Neue", Helvetica, Arial, sans-serif;
+  padding: 11px 0 0;
+}
+
+.jbh-ethics__principles p + p {
+  margin-top: 11px;
+}
+
+.jbh-ethics__principles strong {
+  color: rgba(255, 255, 255, .96);
+  font-weight: 650;
 }
 
 .jbh-ethics__close:hover,
 .jbh-ethics__close:focus-visible,
+.jbh-ethics__values a:focus-visible,
 .jbh-ethics__principles a:focus-visible {
-  outline: 2px solid rgba(216, 255, 66, .84);
+  outline: 2px solid rgba(255, 255, 255, .86);
   outline-offset: 3px;
+}
+
+@media (max-width: 1100px) {
+  .jbh-ethics__band {
+    grid-template-columns: 150px minmax(300px, .9fr) minmax(360px, 1.1fr);
+    gap: 28px;
+    padding-inline: 32px;
+  }
 }
 
 @media (max-width: 820px) {
   .jbh-ethics__panel {
-    display: block;
-    width: min(100% - 20px, 650px);
-    max-height: 91vh;
-    padding: 38px 24px 30px;
+    padding: 6vh 0;
   }
 
-  .jbh-ethics__header {
-    padding-right: 30px;
+  .jbh-ethics__band {
+    display: block;
+    max-height: 88vh;
+    background: #050306;
+    padding: 36px 24px 42px;
+  }
+
+  .jbh-ethics__close {
+    top: calc(6vh + 10px);
+    right: 12px;
+  }
+
+  .jbh-ethics__identity {
+    padding-right: 38px;
   }
 
   .jbh-ethics__geometry {
-    width: min(250px, 78vw);
-    margin-top: 28px;
+    width: 112px;
+    margin: 24px auto 0;
+  }
+
+  .jbh-ethics__node .adaptive-television-reaction__glyph {
+    width: 25px;
+    height: 25px;
   }
 
   .jbh-ethics__decode {
-    margin-top: 20px;
+    margin-top: 16px;
   }
 
-  .jbh-ethics__introduction {
-    margin-top: 28px;
+  .jbh-ethics__framework {
+    margin-top: 30px;
   }
 
-  .jbh-ethics__sound {
-    margin-top: 24px;
+  .jbh-ethics__principles {
+    margin-top: 30px;
+  }
+}
+
+@media (max-width: 440px) {
+  .jbh-ethics__values {
+    columns: 1;
   }
 }
 

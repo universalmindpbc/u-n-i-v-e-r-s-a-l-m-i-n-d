@@ -492,7 +492,7 @@ Source boundary: first-party verified staging implementation and Ready Cloudflar
 
 Verified editorial and playback contract:
 
-- The public display name is “Shashi Solana — Healing Sexual Trauma in Nature”. The internal media master retains the filename “Shashi Solluna - How I Healed my Sexual Pain using Nature.mp4”; that filename is a media identity, not a verified clinical claim or a change to the public spelling.
+- The public display name is “Shashi Solana — Healing Sexual Trauma in Nature”. The audible episode background uses the +12 dB internal media master “Shashi Solluna - How I Healed my Sexual Pain using Nature +12dB.mp4”; that filename is a media identity, not a verified clinical claim or a change to the public spelling.
 - The full-page background is the Shashi Solana programme. It loops indefinitely and is the single audible editorial layer.
 - The central foreground is “Pirelli 2010 Calendar.mp4”. It loops indefinitely and is muted. The two films have different durations and are not forced into matching timecodes.
 - The surrounding visual treatment reuses the established James Bondage Health design: the same four Bordelle square video tiles and two GIF tiles used by JBH i.
