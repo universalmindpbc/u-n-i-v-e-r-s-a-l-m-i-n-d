@@ -4,6 +4,10 @@ import { chromium } from "/Users/benkorbel/.cache/codex-runtimes/codex-primary-r
 const target = process.env.IAM_EMDR_SURFACES_TARGET || "https://staging.universalmind.tv/vogue/iam/index.html";
 const chromiumExecutable = process.env.PLAYWRIGHT_CHROMIUM_EXECUTABLE ||
   "/Users/benkorbel/Library/Caches/ms-playwright/chromium_headless_shell-1234/chrome-headless-shell-mac-arm64/chrome-headless-shell";
+const viewport = {
+  width: Math.max(320, Number(process.env.IAM_EMDR_SURFACES_VIEWPORT_WIDTH || 1440)),
+  height: Math.max(568, Number(process.env.IAM_EMDR_SURFACES_VIEWPORT_HEIGHT || 900)),
+};
 
 const radioChannels = [
   { id: "radio-inner-planes", label: "Inner Planes" },
@@ -26,7 +30,7 @@ const browser = await chromium.launch({
   headless: true,
   args: ["--mute-audio"],
 });
-const context = await browser.newContext({ viewport: { width: 1440, height: 900 } });
+const context = await browser.newContext({ viewport });
 await context.addInitScript(() => {
   window.__iamEmdrSurfaceSafety = {
     fullscreenCalls: 0,
@@ -73,18 +77,35 @@ async function selectPreset(preset) {
     ), null, { timeout: 10000 });
     await page.locator("[data-jbh-content-gate-confirm]").evaluate((button) => button.click());
   }
-  await page.waitForFunction(({ key, kind }) => {
-    if (!window.IAMEMDR?.active || document.body.dataset.emdrPreset !== key) return false;
-    if (kind === "stellar") {
-      return Math.round(Number(window.IAMEMDR.style)) === 5 &&
-        document.querySelector("[data-emdr-three-canvas]")?.classList.contains("is-active");
-    }
-    const panel = document.querySelector(`[data-emdr-gif-preset="${key}"]`);
-    return Math.round(Number(window.IAMEMDR.style)) === 7 &&
-      window.IAMEMDRGif?.active &&
-      window.IAMEMDRGif?.preset === key &&
-      panel?.classList.contains("is-active");
-  }, preset, { timeout: 30000 });
+  try {
+    await page.waitForFunction(({ key, kind }) => {
+      if (!window.IAMEMDR?.active || document.body.dataset.emdrPreset !== key) return false;
+      if (kind === "stellar") {
+        return Math.round(Number(window.IAMEMDR.style)) === 5 &&
+          document.querySelector("[data-emdr-three-canvas]")?.classList.contains("is-active");
+      }
+      const panel = document.querySelector(`.adaptive-television-emdr-gif-grid[data-emdr-gif-preset="${key}"]`);
+      return Math.round(Number(window.IAMEMDR.style)) === 7 &&
+        window.IAMEMDRGif?.active &&
+        window.IAMEMDRGif?.preset === key &&
+        panel?.classList.contains("is-active");
+    }, preset, { timeout: 30000 });
+  } catch (error) {
+    const diagnostics = await page.evaluate((selectedPreset) => ({
+      expected: selectedPreset,
+      bodyPreset: document.body.dataset.emdrPreset || "",
+      bodyGifPreset: document.body.dataset.emdrGifPreset || "",
+      emdr: window.IAMEMDR?.diagnostics?.() || null,
+      gif: window.IAMEMDRGif?.diagnostics?.() || null,
+      selectedButton: document.querySelector(`[data-emdr-style-index="${selectedPreset.index}"]`)?.getAttribute("aria-pressed") || "",
+      gateHidden: document.querySelector("[data-jbh-content-gate]")?.getAttribute("aria-hidden") || "",
+      panels: [...document.querySelectorAll(".adaptive-television-emdr-gif-grid[data-emdr-gif-preset]")].map((panel) => ({
+        key: panel.dataset.emdrGifPreset || "",
+        active: panel.classList.contains("is-active"),
+      })),
+    }), preset);
+    throw new Error(`${error.message}: ${JSON.stringify(diagnostics)}`);
+  }
 }
 
 async function currentSurfaceSnapshot(mode, preset) {
@@ -98,7 +119,7 @@ async function currentSurfaceSnapshot(mode, preset) {
       ? document.querySelector("[data-comedy-video]")
       : document.querySelector(".adaptive-television-radio-visual-video.is-radio-visual-active");
     const panel = selectedPreset.kind === "gif"
-      ? document.querySelector(`[data-emdr-gif-preset="${selectedPreset.key}"]`)
+      ? document.querySelector(`.adaptive-television-emdr-gif-grid[data-emdr-gif-preset="${selectedPreset.key}"]`)
       : null;
     const videoTiles = panel ? [...panel.querySelectorAll("video[data-emdr-gif-tile]")] : [];
     const imageTiles = panel ? [...panel.querySelectorAll("img[data-emdr-gif-tile]")] : [];
@@ -212,7 +233,7 @@ try {
     window.IAMEMDR &&
     window.IAMEMDRGif
   ), null, { timeout: 60000 });
-  await page.locator("[data-television-play]").click({ timeout: 30000 });
+  await page.evaluate(() => window.IAMTelevisionRoom.preparePresentationEntry());
   await page.waitForFunction(() => (
     document.body.classList.contains("television-room-open") &&
     Boolean(document.querySelector(".adaptive-television-local-video"))
@@ -253,6 +274,7 @@ try {
   assert.equal(finalSafety.fullscreenCalls, 0);
   console.log(JSON.stringify({
     target,
+    viewport,
     mutedProcess: true,
     checked: results.map(({ surfaceLabel, preset }) => `${surfaceLabel} / ${preset}`),
     finalSafety,
