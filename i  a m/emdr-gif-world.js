@@ -40,6 +40,7 @@
     return true;
   }
 
+  // Keep the approved six-GIF opening intact, then settle every remaining M8 screen as one centred row of three.
   function paginateProgressivePreset(panel) {
     const firstPageSize = Number(panel.dataset.emdrGifFirstPageSize);
     const pageSize = Number(panel.dataset.emdrGifPageSize);

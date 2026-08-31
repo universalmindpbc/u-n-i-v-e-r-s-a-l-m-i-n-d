@@ -767,6 +767,7 @@ body.television-radio-continuation .adaptive-television-fashion-video {
   scroll-snap-stop: always;
 }
 
+/* Every M8 page after the unchanged six-tile opening is one centred three-GIF row. */
 .adaptive-television-emdr-gif-page[data-emdr-gif-page-size="3"] {
   grid-template-rows: var(--emdr-gif-tile-size);
 }

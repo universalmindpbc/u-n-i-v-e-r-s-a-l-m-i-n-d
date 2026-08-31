@@ -26,6 +26,8 @@ const localAssets = new Map([
   ["/vogue/iam/index.html", path.join(IAM, "index.html")],
   ["/vogue/iam/index-alt.html", path.join(IAM, "index-alt.html")],
   ["/vogue/iam/homepage-alternate.js", path.join(IAM, "homepage-alternate.js")],
+  ["/vogue/iam/adaptive-environment-television.css", path.join(IAM, "adaptive-environment-television.css")],
+  ["/vogue/iam/emdr-gif-world.js", path.join(IAM, "emdr-gif-world.js")],
   ["/vogue/iam/adaptive-sound/controller-v1.js", path.join(IAM, "adaptive-sound", "controller-v1.js")],
   ["/vogue/iam/adaptive-sound/session-v1.js", path.join(IAM, "adaptive-sound", "session-v1.js")],
   ["/vogue/iam/adaptive-sound-intent-policy-v1.json", path.join(IAM, "adaptive-sound-intent-policy-v1.json")],
@@ -489,6 +491,7 @@ function assertNoContactAction(value) {
 
 function contentType(file) {
   if (file.endsWith(".html")) return "text/html; charset=utf-8";
+  if (file.endsWith(".css")) return "text/css; charset=utf-8";
   if (file.endsWith(".js")) return "text/javascript; charset=utf-8";
   if (file.endsWith(".json")) return "application/json; charset=utf-8";
   return "application/octet-stream";
