@@ -179,7 +179,7 @@
     if (qaScenario === "emdr-live") {
       return {
         microphone: false,
-        qaPrompt: "Describe all six EMDR presets using their exact current tooltip strings. State which behaviour is implemented and live on staging, including the M8 39-GIF seven-page layout, the final boxed Hexeosis, the unchanged JBH i four-video/two-GIF truth, the JBH ii and JBH iii single-audible-layer contracts, internal-only paging and the central viewer's 16:9 aspect-fill behaviour. Do not invent any unavailable control or session state.",
+        qaPrompt: "Describe all six EMDR presets using their exact current tooltip strings. State which behaviour is implemented and live on staging, including the M8 39-GIF twelve-screen layout with its unchanged six-GIF opening followed by eleven centred three-GIF screens, the final boxed Hexeosis, the unchanged JBH i four-video/two-GIF truth, the JBH ii and JBH iii single-audible-layer contracts, internal-only paging and the central viewer's 16:9 aspect-fill behaviour. Do not invent any unavailable control or session state.",
       };
     }
     if (qaScenario === "comedy-programming") {
@@ -203,7 +203,7 @@
     if (qaScenario === "jbh-emdr-editorial") {
       return {
         microphone: false,
-        qaPrompt: "In no more than 220 words and with no preamble, describe JBH i, JBH ii and JBH iii as implemented EMDR presets in three compact labelled sections. Preserve the exact three tooltip strings and existing JBH i truth. For JBH ii and JBH iii, identify the reused four square video tiles and two GIF tiles, exact background and foreground media using every exact media filename verbatim, audible versus muted layer, infinite looping, synchronization contract, 15% ducking of the current music or party programme, restoration on exit, and the correct 18+ notice. Treat the editorial titles as titles, not clinical claims, and do not claim access to private self-report, Heart Rate, trauma or sexual-history data.",
+        qaPrompt: "In no more than 220 words and with no preamble, describe JBH i, JBH ii and JBH iii as implemented EMDR presets in three compact labelled sections. Preserve the exact three tooltip strings and existing JBH i truth. For JBH ii and JBH iii, identify the reused four square video tiles and two GIF tiles, exact background and foreground media using every exact media filename verbatim, audible versus muted layer, infinite looping, synchronization contract, 24% ducking of the current music or party programme, restoration on exit, and the correct 18+ notice. Treat the editorial titles as titles, not clinical claims, and do not claim access to private self-report, Heart Rate, trauma or sexual-history data.",
       };
     }
     if (qaScenario === "episode-detail") {
@@ -294,6 +294,12 @@
       return {
         microphone: false,
         qaPrompt: "How do I open How We Recommend Content, Research and Impact, and what does each page establish? Include the Research page's proposed geometric facial-ROI optimization, clearly label it proposed rather than deployed or validated, be explicit that the modul8 infinity Study is a proposed stage-gated RCT awaiting institutional and ethics onboarding, and state that the Impact figures are illustrative live inputs in development rather than achieved results.",
+      };
+    }
+    if (qaScenario === "research-connection-empathy") {
+      return {
+        microphone: false,
+        qaPrompt: "What does the updated modul8 infinity Study propose about social connection and empathy? Name the proposed CANTAB Spatial Working Memory and Emotion Recognition Task endpoints, the 3-item State Connection & Empathy Scale (IOS / SSCS), the rPPG autonomic-recovery comparison, and candidate markers OXTR and CD38. Clearly state that these are proposed hypotheses and endpoints, not current Universal One measurements, recommendation inputs, completed findings, validated mechanisms or clinical outcomes, and do not imply access to my private data.",
       };
     }
     if (qaScenario === "programme-current") {

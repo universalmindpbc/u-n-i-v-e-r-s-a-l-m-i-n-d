@@ -299,13 +299,13 @@ assert.match(shop, /All profits from affiliate revenue are invested in mental he
 assert.match(worker, /import UNIVERSAL_ONE_PROGRAMME_GUIDE/);
 assert.match(worker, /# Programme and episode guide\n\$\{UNIVERSAL_ONE_PROGRAMME_GUIDE\}/);
 assert.match(worker, /portal_guide_version: "v1\.2"/);
-assert.match(worker, /adaptive_recommendation_guide_version: "v1"/);
+assert.match(worker, /adaptive_recommendation_guide_version: "v1\.1"/);
 assert.match(worker, /programme_guide_version: "v1\.6"/);
 assert.match(worker, /voice_briefing_version: "v3"/);
 assert.match(phpFallback, /universal-one-programme-guide-v1\.txt/);
 assert.match(phpFallback, /# Programme and episode guide\n\{\$programmeGuide\}/);
 assert.match(phpFallback, /'portal_guide_version' => 'v1\.2'/);
-assert.match(phpFallback, /'adaptive_recommendation_guide_version' => 'v1'/);
+assert.match(phpFallback, /'adaptive_recommendation_guide_version' => 'v1\.1'/);
 assert.match(phpFallback, /'programme_guide_version' => 'v1\.6'/);
 assert.match(phpFallback, /'voice_briefing_version' => 'v3'/);
 

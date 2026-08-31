@@ -14,6 +14,7 @@ const worker = read("cloudflare/iam-citizen-needs-worker.js");
 const phpFallback = read("i  a m/api/realtime-client-secret.php");
 const realtimeClient = read("i  a m/realtime-voice-assistant.js");
 const index = read("i  a m/index.html");
+const indexAlt = read("i  a m/index-alt.html");
 const alternateEntry = read("i  a m/adaptive-environment-television.html");
 const promptV555 = read("i  a m/i n f e r e n c e  e n g i n e  -  s y s t e m  p r o m p t  v  5 . 5 5.md");
 const fusion = read("i  a m/current-inference-fusion-v1.js");
@@ -26,7 +27,7 @@ const recommendationPage = read("i  a m/technology-inference-engine.html");
 const schedule = JSON.parse(read("i  a m/broadcast-schedule-v1.json"));
 const stagingDeploy = read("deploy-panthur-staging.sh");
 
-assert.match(guide, /UNIVERSAL ONE ADAPTIVE RECOMMENDATION GUIDE \/ V1\.0/);
+assert.match(guide, /UNIVERSAL ONE ADAPTIVE RECOMMENDATION GUIDE \/ V1\.1/);
 assert.ok(guide.length < 15000, "adaptive guide should remain concise enough for Realtime briefing");
 
 for (const fact of [
@@ -90,10 +91,21 @@ assert.match(science, /Uncontrolled, unpublished single-participant observation/
 assert.match(recommendationPage, /How We Recommend Content/);
 assert.match(recommendationPage, /The highest-ranked combination becomes the next television choice/);
 assert.match(research, /The modul8 infinity Study/);
+assert.match(research, /Rapid Stress Reduction, Social Connection, and Empathy/);
+assert.match(research, /Cognitive, Affective &amp; Connection Endpoints/);
+assert.match(research, /State Connection &amp; Empathy Scale \(IOS \/ SSCS\)/);
+assert.match(research, /candidate transcriptomic markers \(<em>OXTR<\/em> and <em>CD38<\/em>\)/);
 assert.match(research, /currently being presented to partner institutions for formal re-engagement, HREC ethics approval, and operational onboarding/);
 assert.match(research, /2D equilateral triangular meshes and 3D tetrahedral volumetric spatial modeling/);
 assert.match(impact, /LIVE INPUTS IN DEVELOPMENT · CURRENT FIGURES ARE ILLUSTRATIVE/);
 assert.match(guide, /proposed four-arm, double-blind, stage-gated RCT/);
+assert.match(guide, /trial title now includes rapid stress reduction, social connection and empathy/);
+assert.match(guide, /CANTAB Spatial Working Memory for connection to self\/internal regulation/);
+assert.match(guide, /CANTAB Emotion Recognition Task facial-empathy and social-emotional-acuity scores/);
+assert.match(guide, /3-item State Connection & Empathy Scale \(IOS \/ SSCS\)/);
+assert.match(guide, /candidate transcriptomic markers OXTR and CD38/);
+assert.match(guide, /not current Universal One measurements, recommendation inputs, completed findings, validated mechanisms or clinical outcomes/);
+assert.match(guide, /Do not say that Universal One currently measures, scores, infers or improves a visitor's connection or empathy/);
 assert.match(guide, /2D equilateral triangular meshes and 3D tetrahedral volumetric models/);
 assert.match(guide, /proposed research architecture, not a deployed or validated feature/);
 assert.match(guide, /every displayed current figure is illustrative, not an achieved metric/);
@@ -110,11 +122,11 @@ assert.match(programmeGuide, /Grimes “Genesis” belongs to modul8 infinity Vi
 
 assert.match(worker, /import UNIVERSAL_ONE_ADAPTIVE_RECOMMENDATION_GUIDE/);
 assert.match(worker, /# Adaptive recommendation, Heart Rate and research guide\n\$\{UNIVERSAL_ONE_ADAPTIVE_RECOMMENDATION_GUIDE\}/);
-assert.match(worker, /adaptive_recommendation_guide_version: "v1"/);
+assert.match(worker, /adaptive_recommendation_guide_version: "v1\.1"/);
 assert.match(worker, /voice_briefing_version: "v3"/);
 assert.match(phpFallback, /universal-one-adaptive-recommendation-guide-v1\.txt/);
 assert.match(phpFallback, /# Adaptive recommendation, Heart Rate and research guide\n\{\$adaptiveRecommendationGuide\}/);
-assert.match(phpFallback, /'adaptive_recommendation_guide_version' => 'v1'/);
+assert.match(phpFallback, /'adaptive_recommendation_guide_version' => 'v1\.1'/);
 assert.match(phpFallback, /'voice_briefing_version' => 'v3'/);
 
 for (const scenario of [
@@ -122,13 +134,18 @@ for (const scenario of [
   "heart-rate-privacy",
   "sound-research",
   "research-impact",
+  "research-connection-empathy",
   "programme-current",
 ]) {
   assert.match(realtimeClient, new RegExp(`qaScenario === "${scenario}"`));
 }
 assert.match(realtimeClient, /microphone: false/);
+assert.match(realtimeClient, /M8 39-GIF twelve-screen layout/);
+assert.match(realtimeClient, /24% ducking of the current music or party programme/);
+assert.match(realtimeClient, /State Connection & Empathy Scale \(IOS \/ SSCS\)/);
 const realtimeToken = `realtime-voice-${createHash("sha256").update(realtimeClient).digest("hex").slice(0, 12)}`;
 assert.match(index, new RegExp(`realtime-voice-assistant\\.js\\?v=${realtimeToken}`));
+assert.match(indexAlt, new RegExp(`realtime-voice-assistant\\.js\\?v=${realtimeToken}`));
 assert.match(alternateEntry, new RegExp(`realtime-voice-assistant\\.js\\?v=${realtimeToken}`));
 
 assert.match(portalGuide, /PORTAL GUIDE \/ V1\.2/);
