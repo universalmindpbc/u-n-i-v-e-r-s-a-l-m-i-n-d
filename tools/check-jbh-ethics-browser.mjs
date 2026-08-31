@@ -144,6 +144,8 @@ async function preparePage(context, viewportName) {
       bandBackground: getComputedStyle(band).backgroundColor,
       backgroundVideoOpacity: Number(getComputedStyle(video).opacity),
       geometryWidth: geometryRect.width,
+      nodeGlyphWidth: modal.querySelector(".jbh-ethics__node .adaptive-television-reaction__glyph").getBoundingClientRect().width,
+      nodeLabelSize: parseFloat(getComputedStyle(modal.querySelector(".jbh-ethics__node b")).fontSize),
       floraCount: modal.querySelectorAll(".jbh-ethics__geometry .adaptive-television-reaction__glyph--flora-trigger").length,
       lsiDecode: modal.querySelector(".jbh-ethics__decode")?.textContent.trim(),
       title: modal.querySelector("#jbh-ethics-title")?.textContent.trim(),
@@ -187,7 +189,7 @@ try {
   assert.match(desktopState.introduction, /Our James Bondage Health series \[ sex-ed \] shares female lead conversations/);
   assert.equal(desktopState.values.length, 17);
   assert.deepEqual(desktopState.values.slice(0, 4), ["LSI triangle (love, sex, intelligence)", "female first", "all female hosted", "no more violence"]);
-  assert.equal(desktopState.values.at(-1), "powered via ethics.org.au");
+  assert.equal(desktopState.values.at(-1), "powered via ethics.org.au (partnership to be confirmed)");
   assert.equal(desktopState.tagCount, 0);
   assert.match(desktopState.diversityCopy, /age, race, gender, identity, lived experience and opportunity/);
   assert.match(desktopState.diversityCopy, /non-binary people and others/);
@@ -210,7 +212,9 @@ try {
   });
   assert.ok(desktopState.backgroundVideoOpacity >= .9);
   assert.equal(desktopState.bandBackground, "rgb(5, 3, 6)");
-  assert.ok(desktopState.geometryWidth <= 160, `Expected a restrained LSI mark; received ${desktopState.geometryWidth}px.`);
+  assert.ok(Math.abs(desktopState.geometryWidth - 154) <= 1, `The existing LSI triangle size changed; received ${desktopState.geometryWidth}px.`);
+  assert.ok(Math.abs(desktopState.nodeGlyphWidth - 30) <= 1, `The existing LSI flora size changed; received ${desktopState.nodeGlyphWidth}px.`);
+  assert.ok(Math.abs(desktopState.nodeLabelSize - 24) <= 1, `Expected only the L, S and I to triple; received ${desktopState.nodeLabelSize}px.`);
   assert.ok(desktopState.panelRect.x >= 0 && desktopState.panelRect.y >= 0);
   assert.ok(desktopState.panelRect.x + desktopState.panelRect.width <= 1952);
   assert.ok(desktopState.panelRect.y + desktopState.panelRect.height <= 1269);
@@ -273,6 +277,9 @@ try {
   assert.ok(mobileState.bandOverflowX <= 1);
   assert.ok(mobileState.bandOverflowY > 0, "The compact black band should scroll vertically rather than escape the viewport.");
   assert.equal(mobileState.bandBackground, "rgb(5, 3, 6)");
+  assert.ok(Math.abs(mobileState.geometryWidth - 112) <= 1, `The existing mobile LSI triangle size changed; received ${mobileState.geometryWidth}px.`);
+  assert.ok(Math.abs(mobileState.nodeGlyphWidth - 25) <= 1, `The existing mobile LSI flora size changed; received ${mobileState.nodeGlyphWidth}px.`);
+  assert.ok(Math.abs(mobileState.nodeLabelSize - 24) <= 1, `Expected the mobile L, S and I to triple; received ${mobileState.nodeLabelSize}px.`);
   await mobile.close();
 
   console.log(JSON.stringify({ target, mutedProcess: true, desktopState, episode15State, mobileState, screenshot: "/private/tmp/jbh-ethics-browser.png" }, null, 2));

@@ -237,8 +237,8 @@ assert.equal(emdrSource?.jbh_presets?.jbh_iii?.foreground_role, "central_audible
 assert.equal(emdrSource?.jbh_presets?.jbh_iii?.sync_layers, true);
 assert.equal(emdrSource?.jbh_presets?.jbh_iii?.sync_drift_threshold_seconds, 0.18);
 assert.equal(emdrSource?.jbh_presets?.jbh_iii?.sync_poll_milliseconds, 800);
-assert.equal(emdrSource?.jbh_presets?.jbh_ii?.programme_mix_level, 0.15);
-assert.equal(emdrSource?.jbh_presets?.jbh_iii?.programme_mix_level, 0.15);
+assert.equal(emdrSource?.jbh_presets?.jbh_ii?.programme_mix_level, 0.36);
+assert.equal(emdrSource?.jbh_presets?.jbh_iii?.programme_mix_level, 0.36);
 
 const jbhEditorialSource = sources.programme_sources.find((source) => source.id === "jbh-editorial-experiences-2026-08-30");
 assert.equal(jbhEditorialSource?.staging_source_commit, "bb2b2f7ac73cd1e0b0478768be44823277ee662d");
@@ -260,7 +260,7 @@ assert.deepEqual(
 );
 assert.equal(jbhMediaManifest.files.length, 3);
 assert.ok(jbhMediaManifest.files.every((item) => item.status === "ready"));
-assert.match(televisionController, /JBH_EDITORIAL_PROGRAMME_MIX_LEVEL = \.15/);
+assert.match(televisionController, /JBH_EDITORIAL_PROGRAMME_MIX_LEVEL = \.36/);
 assert.match(televisionController, /Math\.abs\(drift\) > \.18[\s\S]{0,180}, 800\)/);
 assert.match(televisionController, /requestJbhContentConsent\(selectedPreset\.sensitiveContent\)/);
 

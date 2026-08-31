@@ -499,6 +499,8 @@
   const AUDIO_PARTY_MAX_START_ATTEMPTS = 2;
   const AUDIO_PARTY_RETRY_DELAY_MS = 650;
   const SEX_ED_AUDIO_PARTY_START_TIMEOUT_MS = 30000;
+  const SEX_ED_AUDIO_PARTY_MAX_START_ATTEMPTS = 2;
+  const SEX_ED_VISUAL_AUDIO_HEAD_START_MS = 1600;
   const RADIO_LIVE_SYNC_SEGMENTS = 4;
   const RADIO_MAX_LIVE_LATENCY_SEGMENTS = 5;
   const RADIO_DIRECT_STALL_MS = 6000;
@@ -510,7 +512,7 @@
   const RADIO_SEGMENT_POLL_MS = 3000;
   const SEX_ED_PROGRAMME_MIX_LEVEL = .15;
   const SEX_ED_BROADCAST_CHANNEL_ID = "sex-ed";
-  const JBH_EDITORIAL_PROGRAMME_MIX_LEVEL = .15;
+  const JBH_EDITORIAL_PROGRAMME_MIX_LEVEL = .36;
   const JBH_ETHICS_PROGRAMME_MIX_LEVEL = 0;
   const VOICE_ASSISTANT_PROGRAMME_MIX_LEVEL = .15;
   const SEX_ED_DEFAULT_BACKGROUND_FILE = "a s s e t s/f a s h i o n [ r u n w a y ]/Mugler - Fall Winter 2021.mp4";
@@ -5827,6 +5829,8 @@
         visualStartupPromise,
         readyBufferSeconds: sexEdOwnsVisuals ? SEX_ED_RECORDED_PROGRAMME_READY_BUFFER_SECONDS : undefined,
         startTimeoutMs: sexEdOwnsVisuals ? SEX_ED_AUDIO_PARTY_START_TIMEOUT_MS : undefined,
+        maximumAttempts: options.maximumAttempts,
+        suppressChannelLoadingFailure: options.suppressChannelLoadingFailure,
       });
       if (joinSequence !== broadcastJoinSequence || broadcastChannelId !== channelId) return false;
       if (!started) return false;
@@ -6013,7 +6017,7 @@
     return true;
   }
 
-  function markAudioLedPartyUnavailable(nextTrack, loadingGeneration, error, context = activeAudioPartyStart) {
+  function markAudioLedPartyUnavailable(nextTrack, loadingGeneration, error, context = activeAudioPartyStart, options = {}) {
     const sexEdProgramme = context?.channelId === SEX_ED_BROADCAST_CHANNEL_ID || broadcastChannelId === SEX_ED_BROADCAST_CHANNEL_ID;
     stopContinuationAudioImmediately();
     document.body.classList.remove("television-radio-continuation", "television-audio-party");
@@ -6025,7 +6029,7 @@
       document.body.dataset.audioPartyStartupExhaustedProgrammeInstanceId = context.programmeInstanceId;
     }
     setAudioPartyStartupStage("unavailable", context);
-    failChannelLoading(loadingGeneration);
+    if (!options.suppressChannelLoadingFailure) failChannelLoading(loadingGeneration);
     const recoveryCopy = sexEdProgramme ? "reopen the sex-ed episode to retry" : "select james bondage to retry";
     showMusicShelfStatus(`${nextTrack.displayArtist || nextTrack.artist} · mix unavailable — ${recoveryCopy}`, 6000);
   }
@@ -6038,9 +6042,10 @@
     const initialState = options.broadcastChannelId
       ? window.IAMBroadcastClock?.stateAt(options.broadcastChannelId)
       : null;
-    const maximumAttempts = options.visualAlreadyManaged
-      ? 1
-      : Math.max(1, Number(options.maximumAttempts) || AUDIO_PARTY_MAX_START_ATTEMPTS);
+    const maximumAttempts = Math.max(
+      1,
+      Number(options.maximumAttempts) || (options.visualAlreadyManaged ? 1 : AUDIO_PARTY_MAX_START_ATTEMPTS)
+    );
     const startTimeoutMs = Number.isFinite(Number(options.startTimeoutMs))
       ? Math.max(AUDIO_PARTY_MIN_START_TIMEOUT_MS, Number(options.startTimeoutMs))
       : AUDIO_PARTY_START_TIMEOUT_MS;
@@ -6087,7 +6092,10 @@
           const started = await Promise.race([startup, timedOut]);
           window.clearTimeout(timeout);
           if (started) return true;
-          return false;
+          lastError = new Error("The scheduled mix did not become ready.");
+          if (attemptNumber >= maximumAttempts) break;
+          setAudioPartyStartupStage("retry_wait", context);
+          await new Promise((resolve) => window.setTimeout(resolve, AUDIO_PARTY_RETRY_DELAY_MS));
         } catch (error) {
           window.clearTimeout(timeout);
           lastError = error;
@@ -6104,7 +6112,8 @@
           nextTrack,
           Number(options.channelLoadingGeneration) || channelLoadingGeneration,
           lastError || new Error("The scheduled mix is unavailable."),
-          context
+          context,
+          options
         );
       }
       return false;
@@ -6141,7 +6150,7 @@
     assertCurrentStart();
     if (!source) {
       document.body.dataset.audioPartyPlaybackState = "encoding";
-      failChannelLoading(loadingGeneration);
+      if (!options.suppressChannelLoadingFailure) failChannelLoading(loadingGeneration);
       showMusicShelfStatus(`${nextTrack.displayArtist || nextTrack.artist} · broadcast encoding is finishing`, 4200);
       return false;
     }
@@ -6797,13 +6806,24 @@
     return media === emdrJbhBackground || media === emdrJbhForeground;
   }
 
+  function canonicalProgrammeBaseVolume(media, requestedBaseline) {
+    if (voiceAssistantBaseVolumes.has(media)) {
+      return Math.max(0, Math.min(1, Number(voiceAssistantBaseVolumes.get(media)) || 0));
+    }
+    if (media === continuationAudio) return programmeFixedMixLevel ?? .68;
+    if (media === localVideo) return 1;
+    return Math.max(0, Math.min(1, Number(requestedBaseline) || 0));
+  }
+
   function resolvePersistentProgrammeMixTarget(media, baseline, requestedTarget) {
     let target = Math.max(0, Math.min(1, Number(requestedTarget) || 0));
     if (
       document.body.classList.contains("television-emdr-jbh-editorial-active") &&
       !isEmdrJbhNarrativeMedia(media)
     ) {
-      if (!emdrJbhDuckedVolumes.has(media)) emdrJbhDuckedVolumes.set(media, baseline);
+      if (!emdrJbhDuckedVolumes.has(media)) {
+        emdrJbhDuckedVolumes.set(media, canonicalProgrammeBaseVolume(media, baseline));
+      }
       target = Math.min(target, JBH_EDITORIAL_PROGRAMME_MIX_LEVEL);
     }
     if (document.body.classList.contains("jbh-ethics-open") && media !== jbhEthicsVideo) {
@@ -6818,9 +6838,7 @@
     [localVideo, continuationAudio].forEach((media) => {
       if (!media || media.muted || media.paused) return;
       if (!emdrJbhDuckedVolumes.has(media)) {
-        const fallback = media === continuationAudio ? .68 : 1;
-        const currentVolume = Number(media.volume);
-        emdrJbhDuckedVolumes.set(media, Number.isFinite(currentVolume) && currentVolume > .001 ? currentVolume : fallback);
+        emdrJbhDuckedVolumes.set(media, canonicalProgrammeBaseVolume(media, media.volume));
       }
       setVoiceAssistantProgramVolume(media, emdrJbhDuckedVolumes.get(media), 420);
     });
@@ -6828,7 +6846,12 @@
   }
 
   function restoreProgrammeAfterJbhEditorial() {
-    emdrJbhDuckedVolumes.forEach((baseline, media) => {
+    const programmeMedia = new Set([...emdrJbhDuckedVolumes.keys(), localVideo, continuationAudio]);
+    programmeMedia.forEach((media) => {
+      if (!media) return;
+      const baseline = emdrJbhDuckedVolumes.has(media)
+        ? emdrJbhDuckedVolumes.get(media)
+        : canonicalProgrammeBaseVolume(media, media.volume);
       setVoiceAssistantProgramVolume(media, baseline, 420);
     });
     emdrJbhDuckedVolumes.clear();
@@ -7823,11 +7846,35 @@
   }
 
   async function activateSexEdLoopVideos() {
+    const retry = async (start, reset) => {
+      for (let attempt = 0; attempt < 2; attempt += 1) {
+        if (await start()) return true;
+        reset();
+        if (!document.body.classList.contains("television-sex-ed-active")) return false;
+        await wait(220);
+      }
+      return false;
+    };
     const readiness = await Promise.all([
-      ...sexEdLoopImages.map((image) => loadSexEdLoopImage(image)),
-      ...sexEdLoopVideos.map((video) => playSexEdLoopVideo(video)),
+      ...sexEdLoopImages.map((image) => retry(
+        () => loadSexEdLoopImage(image),
+        () => image.removeAttribute("src")
+      )),
+      ...sexEdLoopVideos.map((video) => retry(
+        () => playSexEdLoopVideo(video),
+        () => {
+          try {
+            video.pause();
+            video.removeAttribute("src");
+            video.load();
+          } catch {}
+        }
+      )),
     ]);
-    return readiness.every(Boolean);
+    const readyCount = readiness.filter(Boolean).length;
+    document.body.dataset.sexEdLoopReadyCount = String(readyCount);
+    document.body.dataset.sexEdLoopExpectedCount = String(readiness.length);
+    return readyCount === readiness.length;
   }
 
   async function playSexEdBackgroundVideo() {
@@ -8000,6 +8047,8 @@
     delete document.body.dataset.sexEdLoadingTiles;
     delete document.body.dataset.sexEdLoadingAudio;
     delete document.body.dataset.sexEdLoadingElapsedMs;
+    delete document.body.dataset.sexEdLoopReadyCount;
+    delete document.body.dataset.sexEdLoopExpectedCount;
     if (wasActive) {
       cancelChannelLoading("sex_ed_closed");
       setProgrammeMixLevel(null);
@@ -8078,13 +8127,16 @@
         return false;
       });
     const readiness = [];
+    const essentialReadiness = [];
     if (radioStation) {
-      readiness.push(recordReadiness("Foreground", playSexEdEpisode()));
+      const foregroundReady = recordReadiness("Foreground", playSexEdEpisode());
+      readiness.push(foregroundReady);
+      essentialReadiness.push(foregroundReady);
       window.IAMStreamController?.release?.(sexEdBackground, "sex_ed_radio_presentation");
       releaseSexEdLoopVideos();
       delete document.body.dataset.sexEdLoadingBackground;
       delete document.body.dataset.sexEdLoadingTiles;
-      readiness.push(recordReadiness("Audio", (async () => {
+      const audioReady = recordReadiness("Audio", (async () => {
         await startRadioStation(radioStation, { source: "sex_ed_instruction" });
         const ready = await waitForSexEdAudioState("radioPlaybackState");
         if (ready) {
@@ -8096,7 +8148,9 @@
           }
         }
         return ready;
-      })()));
+      })());
+      readiness.push(audioReady);
+      essentialReadiness.push(audioReady);
     } else {
       document.body.dataset.sexEdLoadingBackground = "loading";
       document.body.dataset.sexEdLoadingTiles = "loading";
@@ -8106,13 +8160,24 @@
         source: "sex_ed_episode",
         channelLoadingGeneration: loadingGeneration,
         deferChannelLoadingFinish: true,
+        maximumAttempts: SEX_ED_AUDIO_PARTY_MAX_START_ATTEMPTS,
+        suppressChannelLoadingFailure: true,
       }));
+      const visualStart = Promise.race([
+        audioReady,
+        wait(SEX_ED_VISUAL_AUDIO_HEAD_START_MS).then(() => true),
+      ]).then(() => (
+        openSequence === sexEdOpenSequence &&
+        document.body.classList.contains("television-sex-ed-active")
+      ));
+      const foregroundReady = recordReadiness("Foreground", visualStart.then((active) => active ? playSexEdEpisode() : false));
+      const backgroundReady = recordReadiness("Background", visualStart.then((active) => active ? playSexEdBackgroundVideo() : false));
+      const tilesReady = recordReadiness("Tiles", visualStart.then((active) => active ? activateSexEdLoopVideos() : false));
       readiness.push(audioReady);
-      readiness.push(recordReadiness("Foreground", audioReady.then((ready) => ready ? playSexEdEpisode() : false)));
-      readiness.push(recordReadiness("Background", audioReady.then((ready) => ready ? playSexEdBackgroundVideo() : false)));
-      readiness.push(recordReadiness("Tiles", audioReady.then((ready) => ready ? activateSexEdLoopVideos() : false)));
+      readiness.push(foregroundReady, backgroundReady, tilesReady);
+      essentialReadiness.push(foregroundReady, backgroundReady);
     }
-    const ready = (await Promise.all(readiness)).every(Boolean);
+    const ready = (await Promise.all(essentialReadiness)).every(Boolean);
     if (
       openSequence !== sexEdOpenSequence ||
       !document.body.classList.contains("television-sex-ed-active") ||

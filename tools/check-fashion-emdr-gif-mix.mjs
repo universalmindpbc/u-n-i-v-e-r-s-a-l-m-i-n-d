@@ -78,6 +78,7 @@ assert.match(styles, /@keyframes adaptive-fashion-identity-channel/);
 assert.match(styles, /@keyframes adaptive-fashion-identity-brand/);
 assert.match(styles, /@media \(prefers-reduced-motion: reduce\)[\s\S]*?\.adaptive-television-fashion-runway-identity[\s\S]*?position:\s*static[\s\S]*?animation:\s*none/);
 assert.match(styles, /data-emdr-controls-view="gif"[\s\S]*?\.adaptive-television-emdr-gif-mix-controls[\s\S]*?display:\s*flex/);
+assert.match(styles, /data-emdr-controls-view="stellar"\][\s\S]{0,100}width:\s*min\(1460px/);
 assert.match(styles, /\.adaptive-television-emdr-toggle\s*\{[\s\S]*?background:\s*rgba\(0, 0, 0, 0\.22\)[\s\S]*?box-shadow:\s*inset[\s\S]*?transform:\s*translateY\(1px\)/);
 assert.match(styles, /\.adaptive-television-emdr-toggle\[aria-pressed="true"\]\s*\{[\s\S]*?background:\s*rgba\(255, 255, 255, 0\.18\)[\s\S]*?box-shadow:[\s\S]*?0 0 18px[\s\S]*?transform:\s*none/);
 assert.match(styles, /grid-template-columns:\s*48px minmax\(0, 1fr\) 48px/);

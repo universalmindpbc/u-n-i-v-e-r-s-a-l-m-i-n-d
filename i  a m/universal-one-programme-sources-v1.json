@@ -129,7 +129,7 @@
           "foreground_file": "Pirelli 2010 Calendar.mp4",
           "foreground_role": "central_muted_infinite_loop",
           "sync_layers": false,
-          "programme_mix_level": 0.15,
+          "programme_mix_level": 0.36,
           "restore_prior_programme_level_on_exit": true,
           "sensitive_content_gate": "pirelli-editor-note"
         },
@@ -143,7 +143,7 @@
           "sync_layers": true,
           "sync_drift_threshold_seconds": 0.18,
           "sync_poll_milliseconds": 800,
-          "programme_mix_level": 0.15,
+          "programme_mix_level": 0.36,
           "restore_prior_programme_level_on_exit": true,
           "sensitive_content_gate": "18-plus"
         }

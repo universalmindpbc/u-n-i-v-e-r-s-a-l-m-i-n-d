@@ -6143,8 +6143,20 @@ body.music-shelf-open .adaptive-television-fashion-shelf:not(.adaptive-televisio
   transition: none !important;
 }
 
-.adaptive-television-reaction-wallet[data-wallet-view="emdr"][data-emdr-controls-view="gif"] {
+.adaptive-television-reaction-wallet[data-wallet-view="emdr"][data-emdr-controls-view="gif"],
+.adaptive-television-reaction-wallet[data-wallet-view="emdr"][data-emdr-controls-view="stellar"] {
   width: min(1460px, calc(100vw - 38px)) !important;
+}
+
+@media (min-width: 901px) {
+  .adaptive-television-reaction-wallet[data-wallet-view="emdr"][data-emdr-controls-view="stellar"] .adaptive-television-emdr-controls,
+  .adaptive-television-reaction-wallet[data-wallet-view="emdr"][data-emdr-controls-view="stellar"] .adaptive-television-emdr-style-group {
+    flex-wrap: nowrap;
+  }
+
+  .adaptive-television-reaction-wallet[data-wallet-view="emdr"][data-emdr-controls-view="stellar"] .adaptive-television-emdr-style-group {
+    flex: 0 0 auto;
+  }
 }
 
 .adaptive-television-emdr-controls {
@@ -7684,7 +7696,7 @@ body.music-shelf-open .adaptive-television-fashion-shelf:not(.adaptive-televisio
 
 .jbh-ethics__node b {
   color: #fff;
-  font: 700 8px/1 "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font: 700 24px/1 "Helvetica Neue", Helvetica, Arial, sans-serif;
   letter-spacing: .16em;
   text-indent: .16em;
 }
