@@ -291,6 +291,9 @@
     document.body.classList.add("television-comedy-active");
     document.body.dataset.comedyChannel = catalogue.comedyChannelId;
     world.setAttribute("aria-hidden", "false");
+    window.dispatchEvent(new CustomEvent("iam:comedy-presentation-change", {
+      detail: { active: true, video },
+    }));
     startButton.hidden = false;
     startSynchronization();
     return synchronize(true);
@@ -310,6 +313,9 @@
     document.body.classList.remove("television-comedy-active");
     delete document.body.dataset.comedySoundOutputMultiplier;
     world.setAttribute("aria-hidden", "true");
+    window.dispatchEvent(new CustomEvent("iam:comedy-presentation-change", {
+      detail: { active: false, video },
+    }));
     delete document.body.dataset.comedyChannel;
     delete document.body.dataset.comedyProgramme;
     delete document.body.dataset.comedyProgrammeTitle;

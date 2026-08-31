@@ -383,6 +383,7 @@
   let fashionHeroLastMediaTime = -1;
   let fashionHeroLastBlend = -1;
   let fashionHeroLastMusicScale = -1;
+  let fashionHeroLastSourceRole = "";
   let fashionHeroDrawCount = 0;
   let fashionRunwayIndex = 0;
   let fashionRunwaySwitching = false;
@@ -1415,7 +1416,37 @@
     fashionHeroLastMediaTime = -1;
     fashionHeroLastBlend = -1;
     fashionHeroLastMusicScale = -1;
+    fashionHeroLastSourceRole = "";
     if (fashionHeroFrame) fashionHeroFrame.dataset.fashionHeroMirror = "inactive";
+  }
+
+  function currentEmdrProgrammeVisual() {
+    if (document.body.classList.contains("television-comedy-active") && comedyVideo) {
+      return {
+        video: comedyVideo,
+        role: "comedy",
+        edgeScale: clamp(Number(comedyVideo.dataset.comedyCropScale || 1), 1, 1.6),
+        edgeSource: comedyVideo.dataset.comedyCropState || "comedy-programme",
+      };
+    }
+    if (document.body.classList.contains("television-radio-continuation")) {
+      const visibleRadioVideo = radioVisualVideo || playerMount?.querySelector(
+        ".adaptive-television-radio-visual-video.is-radio-visual-active"
+      );
+      if (visibleRadioVideo) {
+        return {
+          video: visibleRadioVideo,
+          role: "radio-visual",
+          edgeScale: 1,
+          edgeSource: visibleRadioVideo.dataset.radioVisualRunwayId || "radio-programme",
+        };
+      }
+    }
+    return null;
+  }
+
+  function emdrUsesCurrentProgrammeVisual() {
+    return Boolean(currentEmdrProgrammeVisual());
   }
 
   function drawMediaCover(context, video, targetWidth, targetHeight, alpha = 1, edgeScale = 1) {
@@ -1448,7 +1479,7 @@
     return true;
   }
 
-  function drawFashionHeroFrame(mediaTime = Number(fashionVideo?.currentTime || 0)) {
+  function drawFashionHeroFrame(mediaTime = null) {
     if (!fashionHeroCanvas || !fashionHeroContext) return;
     const frameWidth = fashionHeroFrame?.clientWidth || 0;
     const frameHeight = fashionHeroFrame?.clientHeight || 0;
@@ -1457,15 +1488,23 @@
     const pixelRatio = Math.min(1.5, Math.max(1, window.devicePixelRatio || 1));
     const targetWidth = Math.max(1, Math.round(frameWidth * pixelRatio));
     const targetHeight = Math.max(1, Math.round(frameHeight * pixelRatio));
-    const musicEdgeScale = clamp(
-      Number(playerMount?.dataset.edgeCropScale || baseEdgeScale()),
-      1,
-      MAX_DETECTED_EDGE_SCALE
+    const currentProgramme = currentEmdrProgrammeVisual();
+    const sourceRole = currentProgramme?.role || "music-fashion-mix";
+    const sourceMediaTime = Number(
+      mediaTime ?? currentProgramme?.video?.currentTime ?? fashionVideo?.currentTime ?? 0
     );
+    const musicEdgeScale = currentProgramme
+      ? currentProgramme.edgeScale
+      : clamp(
+        Number(playerMount?.dataset.edgeCropScale || baseEdgeScale()),
+        1,
+        MAX_DETECTED_EDGE_SCALE
+      );
     const needsResize = fashionHeroCanvas.width !== targetWidth || fashionHeroCanvas.height !== targetHeight;
     if (
       !needsResize &&
-      Math.abs(Number(mediaTime) - fashionHeroLastMediaTime) < 0.0005 &&
+      sourceRole === fashionHeroLastSourceRole &&
+      Math.abs(sourceMediaTime - fashionHeroLastMediaTime) < 0.0005 &&
       Math.abs(requestedVideoBlend - fashionHeroLastBlend) < 0.001 &&
       Math.abs(musicEdgeScale - fashionHeroLastMusicScale) < 0.0005
     ) return;
@@ -1478,23 +1517,40 @@
       fashionHeroContext.globalAlpha = 1;
       fashionHeroContext.fillStyle = "#000";
       fashionHeroContext.fillRect(0, 0, targetWidth, targetHeight);
-      const musicDrawn = requestedVideoBlend > 0 && drawMediaCover(fashionHeroContext, localVideo, targetWidth, targetHeight, 1, musicEdgeScale);
-      const fashionDrawn = requestedVideoBlend < 100 && drawMediaCover(
+      const currentProgrammeDrawn = currentProgramme && drawMediaCover(
         fashionHeroContext,
-        fashionVideo,
+        currentProgramme.video,
         targetWidth,
         targetHeight,
-        1 - (requestedVideoBlend / 100)
+        1,
+        musicEdgeScale
       );
-      if (!musicDrawn && !fashionDrawn) return;
-      fashionHeroLastMediaTime = Number(mediaTime);
+      const musicDrawn = !currentProgramme && requestedVideoBlend > 0 && drawMediaCover(
+        fashionHeroContext,
+        localVideo,
+        targetWidth,
+        targetHeight,
+        1,
+        musicEdgeScale
+      );
+      const fashionDrawn = !currentProgramme && requestedVideoBlend < 100 && drawMediaCover(
+          fashionHeroContext,
+          fashionVideo,
+          targetWidth,
+          targetHeight,
+          1 - (requestedVideoBlend / 100)
+        );
+      if (!currentProgrammeDrawn && !musicDrawn && !fashionDrawn) return;
+      fashionHeroLastMediaTime = sourceMediaTime;
       fashionHeroLastBlend = requestedVideoBlend;
       fashionHeroLastMusicScale = musicEdgeScale;
+      fashionHeroLastSourceRole = sourceRole;
       fashionHeroDrawCount += 1;
       fashionHeroFrame.dataset.fashionHeroMirror = "ready";
       fashionHeroFrame.dataset.emdrGifMusicAmount = requestedVideoBlend.toFixed(0);
       fashionHeroFrame.dataset.emdrGifMusicEdgeScale = musicEdgeScale.toFixed(3);
-      fashionHeroFrame.dataset.emdrGifMusicEdgeSource = playerMount.dataset.edgeCropSource || "baseline";
+      fashionHeroFrame.dataset.emdrGifMusicEdgeSource = currentProgramme?.edgeSource || playerMount.dataset.edgeCropSource || "baseline";
+      fashionHeroFrame.dataset.emdrGifForegroundSource = sourceRole;
       fashionHeroFrame.dataset.fashionHeroPixelRatio = pixelRatio.toFixed(2);
       fashionHeroFrame.dataset.fashionHeroDrawCount = String(fashionHeroDrawCount);
       fashionHeroFrame.dataset.fashionHeroMediaTime = fashionHeroLastMediaTime.toFixed(3);
@@ -1508,7 +1564,7 @@
   function scheduleFashionHeroMirror(generation) {
     if (generation !== fashionHeroGeneration || !document.body.classList.contains("television-emdr-gif-active")) return;
 
-    const frameSource = requestedVideoBlend >= 99.5 ? localVideo : fashionVideo;
+    const frameSource = currentEmdrProgrammeVisual()?.video || (requestedVideoBlend >= 99.5 ? localVideo : fashionVideo);
     if (frameSource?.requestVideoFrameCallback && !frameSource.paused && frameSource.readyState >= 2) {
       fashionHeroVideoFrameSource = frameSource;
       fashionHeroVideoFrame = frameSource.requestVideoFrameCallback((_now, metadata) => {
@@ -5391,6 +5447,7 @@
     playerMount.dataset.radioVisualRunwayId = nextRunway.assetKey;
     document.body.dataset.radioVisualRunwayId = nextRunway.assetKey;
     window.IAMStreamController?.noteFashionReveal(radioVisualVideo);
+    if (document.body.classList.contains("television-emdr-gif-active")) startFashionHeroMirror();
     return true;
   }
 
@@ -6703,7 +6760,10 @@
   };
 
   function applyVideoBlend(value) {
-    const musicAmount = Math.max(0, Math.min(100, Number(value) || 0));
+    const requestedMusicAmount = Math.max(0, Math.min(100, Number(value) || 0));
+    const currentProgrammeLocked = document.body.classList.contains("television-emdr-gif-active") &&
+      emdrUsesCurrentProgrammeVisual();
+    const musicAmount = currentProgrammeLocked ? 100 : requestedMusicAmount;
     const fashionOpacity = 1 - (musicAmount / 100);
     const radioIsActiveProgramme = document.body.classList.contains("television-radio-continuation") ||
       Boolean(radioVisualBroadcastChannelId && radioVisualVideo);
@@ -6757,10 +6817,13 @@
   }
 
   function setVideoBlend(value) {
-    const musicAmount = Math.max(0, Math.min(100, Number(value) || 0));
+    const requestedMusicAmount = Math.max(0, Math.min(100, Number(value) || 0));
+    const currentProgrammeLocked = document.body.classList.contains("television-emdr-gif-active") &&
+      emdrUsesCurrentProgrammeVisual();
+    const musicAmount = currentProgrammeLocked ? 100 : requestedMusicAmount;
     requestedVideoBlend = musicAmount;
     const emdrGifActive = document.body.classList.contains("television-emdr-gif-active");
-    if (emdrGifActive) emdrGifVideoBlend = musicAmount;
+    if (emdrGifActive && !currentProgrammeLocked) emdrGifVideoBlend = musicAmount;
 
     if (musicAmount >= 100) {
       window.clearTimeout(fashionDwellTimer);
@@ -6770,7 +6833,7 @@
         radioVisualVideo.classList.add("is-radio-visual-active");
         playWhenStreamAttached(radioVisualVideo, "fashion").catch(() => {});
       }
-      if (emdrGifActive && fashionVideo) {
+      if (emdrGifActive && !currentProgrammeLocked && fashionVideo) {
         window.IAMStreamController?.setPriority?.(fashionVideo, "optional");
         playWhenStreamAttached(fashionVideo, "fashion").catch(() => {});
         return;
@@ -7028,11 +7091,12 @@
     const selectedPreset = emdrPresets.find((preset) => preset.key === presetKey) || emdrPresets[emdrStyleIndex];
     if (active) {
       if (emdrGifPreviousVideoBlend === null) emdrGifPreviousVideoBlend = requestedVideoBlend;
-      if (!emdrGifMusicMaxHeightCaptured && localVideo) {
+      const currentProgramme = currentEmdrProgrammeVisual();
+      if (!currentProgramme && !emdrGifMusicMaxHeightCaptured && localVideo) {
         emdrGifPreviousMusicMaxHeight = localVideo.dataset.streamMaxHeight || null;
         emdrGifMusicMaxHeightCaptured = true;
       }
-      if (localVideo) {
+      if (!currentProgramme && localVideo) {
         const controller = window.IAMStreamController;
         const effectiveMaximum = controller?.setMaxHeight
           ? controller.setMaxHeight(localVideo, 360, "emdr_gif_active")
@@ -7040,12 +7104,14 @@
         if (!controller?.setMaxHeight) localVideo.dataset.streamMaxHeight = "360";
         localVideo.dataset.emdrGifQualityCap = String(effectiveMaximum);
       }
-      setVideoBlend(emdrGifVideoBlend);
+      setVideoBlend(currentProgramme ? 100 : emdrGifVideoBlend);
       playerMount.dataset.emdrGifVideoLayers = "active";
-      playerMount.dataset.emdrGifMusicAmount = emdrGifVideoBlend.toFixed(0);
+      playerMount.dataset.emdrGifMusicAmount = currentProgramme ? "100" : emdrGifVideoBlend.toFixed(0);
+      playerMount.dataset.emdrGifSourceMode = currentProgramme ? "current-programme" : "music-fashion-mix";
+      playerMount.dataset.emdrGifForegroundSource = currentProgramme?.role || "music-fashion-mix";
       playerMount.dataset.emdrGifFashionRunway = fashionRunways[fashionRunwayIndex]?.assetKey || "";
       playerMount.dataset.emdrGifFashionSelectionSource = fashionSelectionSource;
-      if (selectedPreset?.backgroundFileName) {
+      if (selectedPreset?.backgroundFileName && !currentProgramme) {
         stopFashionHeroMirror();
         startEmdrJbhEditorial(selectedPreset).catch(() => {});
       } else {
@@ -7078,12 +7144,27 @@
     }
     delete playerMount.dataset.emdrGifVideoLayers;
     delete playerMount.dataset.emdrGifMusicAmount;
+    delete playerMount.dataset.emdrGifSourceMode;
+    delete playerMount.dataset.emdrGifForegroundSource;
     delete playerMount.dataset.emdrGifFashionRunway;
     delete playerMount.dataset.emdrGifFashionSelectionSource;
   }
 
   window.addEventListener("iam:emdr-gif-presentation", (event) => {
     setEmdrGifPresentationActive(Boolean(event.detail?.active), String(event.detail?.preset || ""));
+  });
+
+  window.addEventListener("iam:comedy-presentation-change", (event) => {
+    if (!window.IAMEMDR?.active) return;
+    const comedyActive = Boolean(event.detail?.active);
+    window.IAMEMDR.setTimelineSource?.({
+      media: comedyActive ? comedyVideo : (document.body.classList.contains("television-radio-continuation") ? continuationAudio : localVideo),
+      bpm: Number(track.bpm) || 112,
+      firstDownbeatSeconds: Number.isFinite(Number(track.firstDownbeatSeconds)) ? Number(track.firstDownbeatSeconds) : 0,
+      fallbackBpm: 112,
+    });
+    if (!document.body.classList.contains("television-emdr-gif-active")) return;
+    setEmdrGifPresentationActive(true, String(window.IAMEMDRGif?.preset || ""));
   });
 
   function disarmVideoTooltips() {
@@ -8903,8 +8984,11 @@
       document.body.dataset.emdrPreset = selectedPreset.key;
       if (selectedPreset.gifPreset) window.IAMEMDRGif?.setPreset?.(selectedPreset.gifPreset);
     }
+    const emdrTimelineMedia = document.body.classList.contains("television-comedy-active")
+      ? comedyVideo
+      : (document.body.classList.contains("television-radio-continuation") ? continuationAudio : localVideo);
     window.IAMEMDR?.setTimelineSource?.({
-      media: localVideo && !document.body.classList.contains("television-radio-continuation") ? localVideo : continuationAudio,
+      media: emdrTimelineMedia,
       bpm: Number(track.bpm) || 112,
       firstDownbeatSeconds: Number.isFinite(Number(track.firstDownbeatSeconds)) ? Number(track.firstDownbeatSeconds) : 0,
       fallbackBpm: 112,
@@ -9969,7 +10053,7 @@
     if (active) window.IAMEMDR?.setIntensity(adaptation.intensityJourney.start);
     syncEmdrStyleButtons();
     startSoundResearchLayer();
-    if (active && selectedPreset?.fashionChannelId) {
+    if (active && selectedPreset?.fashionChannelId && !emdrUsesCurrentProgrammeVisual()) {
       joinFashionBroadcastChannel(selectedPreset.fashionChannelId, {
         source: "emdr_preset",
         pairingSource: `emdr_${selectedPreset.key}`,

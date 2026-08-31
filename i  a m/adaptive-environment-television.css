@@ -899,6 +899,29 @@ body.television-emdr-gif-active .adaptive-television-player .adaptive-television
   transform: translate(-50%, -50%);
 }
 
+/* Comedy is a presentation layer above the ordinary programme player. Keep its
+   live programme picture in place and lift only the active EMDR artwork and
+   mirrored foreground above it. Radio already lives inside the player, so the
+   same current-programme contract needs no duplicate visual source. */
+body.television-comedy-active .adaptive-television-emdr-canvas,
+body.television-comedy-active .adaptive-television-emdr-three-canvas {
+  z-index: 7;
+}
+
+body.television-comedy-active .adaptive-television-emdr-vector-world,
+body.television-comedy-active .adaptive-television-emdr-gif-world {
+  z-index: 8;
+}
+
+body.television-comedy-active.television-emdr-gif-active .adaptive-television-player .adaptive-television-fashion-hero-frame {
+  z-index: 9;
+}
+
+body.television-radio-continuation.television-emdr-gif-active .adaptive-television-reaction-wallet[data-emdr-controls-view="gif"] .adaptive-television-emdr-gif-mix-controls,
+body.television-comedy-active.television-emdr-gif-active .adaptive-television-reaction-wallet[data-emdr-controls-view="gif"] .adaptive-television-emdr-gif-mix-controls {
+  display: none;
+}
+
 body.television-emdr-gif-active .adaptive-television-timecode {
   opacity: 0 !important;
 }

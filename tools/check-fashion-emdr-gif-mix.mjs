@@ -83,10 +83,18 @@ assert.match(styles, /\.adaptive-television-emdr-toggle\s*\{[\s\S]*?background:\
 assert.match(styles, /\.adaptive-television-emdr-toggle\[aria-pressed="true"\]\s*\{[\s\S]*?background:\s*rgba\(255, 255, 255, 0\.18\)[\s\S]*?box-shadow:[\s\S]*?0 0 18px[\s\S]*?transform:\s*none/);
 assert.match(styles, /grid-template-columns:\s*48px minmax\(0, 1fr\) 48px/);
 
-assert.match(controller, /const musicDrawn = requestedVideoBlend > 0 && drawMediaCover\(fashionHeroContext, localVideo/);
-assert.match(controller, /const fashionDrawn = requestedVideoBlend < 100 && drawMediaCover\([\s\S]*?1 - \(requestedVideoBlend \/ 100\)/);
-assert.match(controller, /if \(emdrGifActive && fashionVideo\)[\s\S]*?setPriority\?\.\(fashionVideo, "optional"\)[\s\S]*?playWhenStreamAttached\(fashionVideo, "fashion"\)/);
-assert.match(controller, /if \(active\)[\s\S]*?setVideoBlend\(emdrGifVideoBlend\)[\s\S]*?startFashionHeroMirror\(\)/);
+assert.match(controller, /function currentEmdrProgrammeVisual\(\)[\s\S]*?role: "comedy"[\s\S]*?role: "radio-visual"/);
+assert.match(controller, /const currentProgrammeDrawn = currentProgramme && drawMediaCover\([\s\S]*?currentProgramme\.video/);
+assert.match(controller, /const musicDrawn = !currentProgramme && requestedVideoBlend > 0 && drawMediaCover\([\s\S]*?localVideo/);
+assert.match(controller, /const fashionDrawn = !currentProgramme && requestedVideoBlend < 100 && drawMediaCover\([\s\S]*?1 - \(requestedVideoBlend \/ 100\)/);
+assert.match(controller, /if \(emdrGifActive && !currentProgrammeLocked && fashionVideo\)[\s\S]*?setPriority\?\.\(fashionVideo, "optional"\)[\s\S]*?playWhenStreamAttached\(fashionVideo, "fashion"\)/);
+assert.match(controller, /if \(active\)[\s\S]*?setVideoBlend\(currentProgramme \? 100 : emdrGifVideoBlend\)[\s\S]*?startFashionHeroMirror\(\)/);
+assert.match(controller, /selectedPreset\?\.backgroundFileName && !currentProgramme/);
+assert.match(controller, /selectedPreset\?\.fashionChannelId && !emdrUsesCurrentProgrammeVisual\(\)/);
+assert.match(styles, /body\.television-comedy-active \.adaptive-television-emdr-three-canvas[\s\S]*?z-index:\s*7/);
+assert.match(styles, /body\.television-comedy-active \.adaptive-television-emdr-gif-world[\s\S]*?z-index:\s*8/);
+assert.match(styles, /body\.television-radio-continuation\.television-emdr-gif-active[\s\S]*?adaptive-television-emdr-gif-mix-controls[\s\S]*?display:\s*none/);
+assert.match(styles, /body\.television-comedy-active\.television-emdr-gif-active[\s\S]*?adaptive-television-emdr-gif-mix-controls[\s\S]*?display:\s*none/);
 assert.match(controller, /if \(emdrGifPreviousVideoBlend !== null\)[\s\S]*?setVideoBlend\(previousBlend\)/);
 const musicHandoff = controller.slice(
   controller.indexOf("async function activateBufferedMusicHandoff"),

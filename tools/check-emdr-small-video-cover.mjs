@@ -15,7 +15,8 @@ assert.match(controller, /function detectEdgeMatteScale\(video\)/, "the large-pl
 assert.match(controller, /playerMount\.dataset\.edgeCropScale = resolvedScale\.toFixed\(3\)/, "the shared detected crop scale is not published");
 assert.match(controller, /function drawMediaCover\(context, video, targetWidth, targetHeight, alpha = 1, edgeScale = 1\)/);
 assert.match(controller, /const scaledWidth = cropWidth \/ resolvedEdgeScale;[\s\S]*?const scaledHeight = cropHeight \/ resolvedEdgeScale;/);
-assert.match(controller, /const musicEdgeScale = clamp\([\s\S]*?playerMount\?\.dataset\.edgeCropScale \|\| baseEdgeScale\(\)[\s\S]*?MAX_DETECTED_EDGE_SCALE/);
+assert.match(controller, /const musicEdgeScale = currentProgramme[\s\S]*?currentProgramme\.edgeScale[\s\S]*?playerMount\?\.dataset\.edgeCropScale \|\| baseEdgeScale\(\)[\s\S]*?MAX_DETECTED_EDGE_SCALE/);
+assert.match(controller, /drawMediaCover\([\s\S]*?currentProgramme\.video,[\s\S]*?musicEdgeScale[\s\S]*?\);/);
 assert.match(controller, /drawMediaCover\([\s\S]*?localVideo,[\s\S]*?musicEdgeScale[\s\S]*?\);/);
 assert.match(controller, /drawMediaCover\([\s\S]*?fashionVideo,[\s\S]*?1 - \(requestedVideoBlend \/ 100\)[\s\S]*?\);/);
 assert.match(controller, /fashionHeroLastMusicScale = musicEdgeScale/);
