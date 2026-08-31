@@ -55,7 +55,7 @@ assert.match(index, /data-emdr-jbh-foreground[^>]*data-stream-role="music"/);
 assert.match(controller, /key: "jbh-ii"[\s\S]{0,500}backgroundAudible: true,[\s\S]{0,100}foregroundMuted: true/);
 assert.match(controller, /key: "jbh-ii"[\s\S]{0,500}backgroundFileName: "Shashi Solluna - How I Healed my Sexual Pain using Nature \+12dB\.mp4"/);
 assert.match(controller, /key: "jbh-iii"[\s\S]{0,500}backgroundAudible: false,[\s\S]{0,100}foregroundMuted: false,[\s\S]{0,100}syncLayers: true/);
-assert.match(controller, /JBH_EDITORIAL_PROGRAMME_MIX_LEVEL = \.36/);
+assert.match(controller, /JBH_EDITORIAL_PROGRAMME_MIX_LEVEL = \.24/);
 assert.match(controller, /configureVideo\(emdrJbhBackground, preset\.backgroundFileName, Boolean\(preset\.backgroundAudible\)\);[\s\S]{0,180}configureVideo\(emdrJbhForeground, preset\.foregroundFileName, !preset\.foregroundMuted\);[\s\S]{0,180}window\.IAMStreamController\?\.play\?\.\(emdrJbhBackground\)/);
 assert.match(controller, /Math\.abs\(drift\) > \.18/);
 assert.match(controller, /requestJbhContentConsent\(selectedPreset\.sensitiveContent\)/);
@@ -71,7 +71,7 @@ assert.match(index, /<strong>Healing Sexual Trauma in Nature<\/strong>[\s\S]{0,1
 assert.match(index, /<strong>Dissolving Toxic Masculinity<\/strong>[\s\S]{0,120}<span>Karl Lagerfeld &amp; Shashi Solana<\/span>/);
 assert.doesNotMatch(index.match(/data-sex-ed-episode="15"[\s\S]{0,900}/)?.[0] || "", /wallet-fashion-reference/);
 assert.doesNotMatch(index.match(/data-sex-ed-episode="16"[\s\S]{0,900}/)?.[0] || "", /wallet-fashion-reference/);
-assert.match(index, /data-sex-ed-episode="15"[\s\S]{0,1000}3be25d8ba3bb884e35ab57cc6f5c43c3\/thumbnails\/thumbnail\.jpg\?time=330s/);
+assert.match(index, /data-sex-ed-episode="15"[\s\S]{0,1000}3be25d8ba3bb884e35ab57cc6f5c43c3\/thumbnails\/thumbnail\.jpg\?time=789s/);
 assert.match(index, /data-sex-ed-episode="16"[\s\S]{0,1000}2c099816dba26973d4d4d36452d05f99\/thumbnails\/thumbnail\.jpg\?time=600s/);
 
 const ethicsModal = index.match(/<section class="jbh-ethics"[\s\S]*?<\/section>/)?.[0] || "";
@@ -79,6 +79,9 @@ assert.match(index, /16 lessons<\/p>[\s\S]{0,260}data-jbh-ethics-open[\s\S]{0,12
 assert.match(ethicsModal, /data-stream-file="The Shamen - LSI \(Love Sex Intelligence\) HD_1\.mp4"/);
 assert.equal((ethicsModal.match(/adaptive-television-reaction__glyph--flora-trigger/g) || []).length, 3);
 assert.match(ethicsModal, /<strong>LSI<\/strong> — Love · Sex · Intelligence/);
+assert.match(styles, /\.jbh-ethics__node--love\s*\{[\s\S]{0,80}top:\s*8%;[\s\S]{0,80}left:\s*50%;/);
+assert.match(styles, /\.jbh-ethics__node--sex\s*\{[\s\S]{0,80}top:\s*84%;[\s\S]{0,80}left:\s*90%;/);
+assert.match(styles, /\.jbh-ethics__node--intelligence\s*\{[\s\S]{0,80}top:\s*84%;[\s\S]{0,80}left:\s*10%;/);
 assert.match(ethicsModal, /<h2 id="jbh-ethics-title">Ethics<\/h2>/);
 assert.match(ethicsModal, /James Bondage is 24\/7 electronic music television broadcasting sex x mindfulness, bringing emotional intelligence to the bedroom, soundtracked to minimal, electro and EBM - Electronic Body Music\./);
 assert.match(ethicsModal, /Our James Bondage Health series \[ sex-ed \] shares female lead conversations about tantra, relationships, intimacy and mental health, from the leading voices in the space\./);

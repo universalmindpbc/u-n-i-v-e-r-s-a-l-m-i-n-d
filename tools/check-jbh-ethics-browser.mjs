@@ -130,6 +130,15 @@ async function preparePage(context, viewportName) {
     const panelRect = panel.getBoundingClientRect();
     const bandRect = band.getBoundingClientRect();
     const geometryRect = modal.querySelector(".jbh-ethics__geometry").getBoundingClientRect();
+    const nodeState = (selector) => {
+      const node = modal.querySelector(selector);
+      const rect = node.getBoundingClientRect();
+      return {
+        label: node.querySelector("b")?.textContent.trim(),
+        centerX: rect.x + (rect.width / 2),
+        centerY: rect.y + (rect.height / 2),
+      };
+    };
     const walletRect = wallet.getBoundingClientRect();
     const emdrMediaStyle = getComputedStyle(document.querySelector("[data-emdr-jbh-background]"));
     const episode15Image = document.querySelector('[data-sex-ed-card][data-sex-ed-episode="15"] img')?.src || "";
@@ -146,6 +155,11 @@ async function preparePage(context, viewportName) {
       geometryWidth: geometryRect.width,
       nodeGlyphWidth: modal.querySelector(".jbh-ethics__node .adaptive-television-reaction__glyph").getBoundingClientRect().width,
       nodeLabelSize: parseFloat(getComputedStyle(modal.querySelector(".jbh-ethics__node b")).fontSize),
+      nodePositions: {
+        love: nodeState(".jbh-ethics__node--love"),
+        sex: nodeState(".jbh-ethics__node--sex"),
+        intelligence: nodeState(".jbh-ethics__node--intelligence"),
+      },
       floraCount: modal.querySelectorAll(".jbh-ethics__geometry .adaptive-television-reaction__glyph--flora-trigger").length,
       lsiDecode: modal.querySelector(".jbh-ethics__decode")?.textContent.trim(),
       title: modal.querySelector("#jbh-ethics-title")?.textContent.trim(),
@@ -222,7 +236,15 @@ try {
   assert.ok(desktopState.bandOverflowX <= 1);
   assert.ok(desktopState.walletWidth >= 1400, `Expected the desktop GIF wallet to widen; received ${desktopState.walletWidth}px.`);
   assert.equal(desktopState.safariUserSelect, "none");
-  assert.match(desktopState.episode15Image, /3be25d8ba3bb884e35ab57cc6f5c43c3\/thumbnails\/thumbnail\.jpg\?time=330s/);
+  assert.deepEqual(
+    [desktopState.nodePositions.love.label, desktopState.nodePositions.sex.label, desktopState.nodePositions.intelligence.label],
+    ["L", "S", "I"],
+  );
+  assert.ok(desktopState.nodePositions.sex.centerX > desktopState.nodePositions.love.centerX);
+  assert.ok(desktopState.nodePositions.intelligence.centerX < desktopState.nodePositions.love.centerX);
+  assert.ok(desktopState.nodePositions.sex.centerY > desktopState.nodePositions.love.centerY);
+  assert.ok(desktopState.nodePositions.intelligence.centerY > desktopState.nodePositions.love.centerY);
+  assert.match(desktopState.episode15Image, /3be25d8ba3bb884e35ab57cc6f5c43c3\/thumbnails\/thumbnail\.jpg\?time=789s/);
   assert.match(desktopState.episode16Image, /2c099816dba26973d4d4d36452d05f99\/thumbnails\/thumbnail\.jpg\?time=600s/);
   await desktopPage.screenshot({ path: "/private/tmp/jbh-ethics-browser.png", fullPage: false });
   await desktopPage.locator(".jbh-ethics__close").click();

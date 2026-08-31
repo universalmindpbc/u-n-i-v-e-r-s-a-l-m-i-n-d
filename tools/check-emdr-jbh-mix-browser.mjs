@@ -87,8 +87,8 @@ try {
     mix: document.body.dataset.emdrJbhProgrammeMixLevel,
     programmeVolume: document.querySelector(".adaptive-television-local-video-frame video")?.volume,
   }));
-  assert.equal(activeState.mix, "0.36");
-  assert.ok(Math.abs(activeState.programmeVolume - .36) < .01, `Expected JBH programme music at .36, received ${activeState.programmeVolume}.`);
+  assert.equal(activeState.mix, "0.24");
+  assert.ok(Math.abs(activeState.programmeVolume - .24) < .01, `Expected JBH programme music at .24, received ${activeState.programmeVolume}.`);
 
   await page.evaluate(() => {
     window.dispatchEvent(new CustomEvent("iam:emdr-gif-presentation", { detail: { active: false, preset: "jbh-ii" } }));
