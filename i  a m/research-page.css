@@ -869,6 +869,38 @@ main h2[id] {
 
 .research-program-summary > p strong { color: var(--research-white); }
 
+.research-panel--contact {
+  min-height: min(78vh, 860px);
+  background:
+    radial-gradient(circle at 88% 18%, rgba(64, 89, 255, 0.2), transparent 30%),
+    var(--research-black);
+  color: var(--research-white);
+}
+
+.research-contact {
+  max-width: 720px;
+  margin: clamp(80px, 13vh, 170px) 0 0 auto;
+  font-style: normal;
+}
+
+.research-contact p {
+  margin: 0;
+  font-size: clamp(21px, 2.35vw, 42px);
+  line-height: 1.46;
+  letter-spacing: -0.025em;
+}
+
+.research-contact a {
+  color: inherit;
+  text-decoration-color: var(--research-lime);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.18em;
+}
+
+.research-contact strong {
+  font-weight: 650;
+}
+
 .research-footer {
   display: grid;
   min-height: 280px;
@@ -1104,6 +1136,12 @@ main h2[id] {
     margin-left: -20px;
     margin-right: -20px;
     padding: 48px 20px;
+  }
+
+  .research-panel--contact { min-height: 660px; }
+
+  .research-contact {
+    margin-top: 70px;
   }
 
   .research-footer {

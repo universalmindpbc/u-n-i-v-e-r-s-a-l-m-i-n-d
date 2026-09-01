@@ -11,8 +11,9 @@ const chromiumExecutable = process.env.PLAYWRIGHT_CHROMIUM_EXECUTABLE
 const screenshotDir = process.env.RCT_SCREENSHOT_DIR || "";
 if (screenshotDir) fs.mkdirSync(screenshotDir, { recursive: true });
 
-const expectedVision = "modul8 infinity represents our underlying platform capability—exploring the frontier of real-time targeted gene expression and epigenetic modulation through prescription sound radiation, EMDR, and silent mantra.";
-const oldVisionFragment = "prescription digital sound, visual bilateral stimulation, and neural entrainment";
+const expectedVision = "modul8 infinity represents our underlying platform capability—exploring the frontier of real-time targeted gene expression and epigenetic modulation through prescription sound radiation, EMDR, and silent mantra, together as one — paired with pioneering hyperspectral computer vision research toward contact-free, non-invasive inference of gene expression in real time.";
+const expectedContact = "Universal Mind bk@universalmind.tv universalmind.tv Universal Mind TV, PBC (A Delaware Public Benefit Corporation) ABN: 15 885 248 650";
+const oldVisionFragment = "prescription sound radiation, EMDR, and silent mantra.";
 const expectedPdfPath = "a s s e t s/research/modul8-infinity-rct-scientific-briefing-v1.pdf";
 const viewports = [
   { name: "desktop", width: 1440, height: 1000 },
@@ -44,8 +45,11 @@ try {
     await page.evaluate(() => {
       for (const media of document.querySelectorAll("audio, video")) media.pause();
     });
+    const contactPanel = page.locator(".research-panel--contact");
+    await contactPanel.scrollIntoViewIfNeeded();
+    await page.waitForTimeout(150);
 
-    const state = await page.evaluate(({ expectedVision, oldVisionFragment, expectedPdfPath }) => {
+    const state = await page.evaluate(({ expectedVision, expectedContact, oldVisionFragment, expectedPdfPath }) => {
       const bodyText = document.body.innerText;
       const downloads = [...document.querySelectorAll("a[download]")]
         .filter((anchor) => anchor.textContent.includes("Download Scientific Briefing (PDF)"))
@@ -60,8 +64,13 @@ try {
           };
         });
       const vision = document.querySelector(".research-identity div:last-child dd")?.textContent.trim();
+      const contactElement = document.querySelector(".research-contact");
+      const contact = contactElement?.textContent.trim().replace(/\s+/g, " ");
+      const contactRect = contactElement?.getBoundingClientRect();
       return {
         vision,
+        contact,
+        contactVisible: Boolean(contactRect && contactRect.width > 0 && contactRect.height > 0),
         hasExpectedVision: bodyText.includes(expectedVision),
         hasOldVision: bodyText.includes(oldVisionFragment),
         downloads,
@@ -71,11 +80,13 @@ try {
         horizontalOverflow: document.documentElement.scrollWidth > document.documentElement.clientWidth + 1,
         mediaCount: document.querySelectorAll("audio, video").length,
       };
-    }, { expectedVision, oldVisionFragment, expectedPdfPath });
+    }, { expectedVision, expectedContact, oldVisionFragment, expectedPdfPath });
 
     assert.equal(state.vision, expectedVision, `${viewport.name}: exact Notion Vision Statement must render`);
     assert.equal(state.hasExpectedVision, true, `${viewport.name}: updated Vision Statement is absent`);
     assert.equal(state.hasOldVision, false, `${viewport.name}: superseded Vision Statement remains visible`);
+    assert.equal(state.contact, expectedContact, `${viewport.name}: exact contact block must render once`);
+    assert.equal(state.contactVisible, true, `${viewport.name}: contact block must be visibly laid out`);
     assert.equal(state.downloads.length, 2, `${viewport.name}: top and bottom PDF downloads must both render`);
     assert.equal(state.allDownloadTargetsCorrect, true, `${viewport.name}: PDF download target is incorrect`);
     assert.ok(state.downloads.every((item) => item.visible), `${viewport.name}: both PDF downloads must be visible`);
@@ -91,6 +102,9 @@ try {
     assert.ok((await pdfResponse.body()).byteLength > 250_000, `${viewport.name}: PDF response is unexpectedly small`);
 
     if (screenshotDir) {
+      await contactPanel.screenshot({
+        path: path.join(screenshotDir, `research-contact-${viewport.name}.png`),
+      });
       await page.screenshot({
         path: path.join(screenshotDir, `research-${viewport.name}.png`),
         fullPage: true,

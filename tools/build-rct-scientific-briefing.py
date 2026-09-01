@@ -50,7 +50,7 @@ DEFAULT_OUTPUT = (
 )
 LOGO = ROOT / "i  a m" / "a s s e t s" / "Universal Mind [ I o H ] Logo 512.png"
 
-DOCUMENT_TITLE = "I AM Randomized Controlled Trial"
+DOCUMENT_TITLE = "modul8 infinity Randomized Controlled Trial"
 DOCUMENT_SUBTITLE = "Scientific Briefing for Research and Institutional Partners"
 DOCUMENT_VERSION = "Version 1 - Partner Review Brief"
 DOCUMENT_DATE = "31 August 2026"
@@ -509,14 +509,13 @@ def cover_story(styles: dict[str, ParagraphStyle]) -> list:
         Spacer(1, 10 * mm),
         logo,
         Spacer(1, 17 * mm),
-        Paragraph("UNIVERSAL MIND / I AM", styles["cover_kicker"]),
+        Paragraph("UNIVERSAL MIND", styles["cover_kicker"]),
         bookmark_paragraph(DOCUMENT_TITLE, styles["cover_title"], "cover", 0),
         Paragraph(DOCUMENT_SUBTITLE, styles["cover_subtitle"]),
         Paragraph(f"{DOCUMENT_VERSION}<br/>{DOCUMENT_DATE}", styles["cover_meta"]),
         Spacer(1, 14 * mm),
         status,
         Spacer(1, 13 * mm),
-        Paragraph("THE <i>modul8 infinity</i> STUDY", styles["cover_meta"]),
         PageBreak(),
     ]
 
@@ -560,10 +559,14 @@ def section_story(root: etree._Element, styles: dict[str, ParagraphStyle]) -> li
         bookmark = re.sub(r"[^a-z0-9]+", "-", title.lower()).strip("-")
         story.append(bookmark_paragraph(title, styles["section"], bookmark, 0))
         story.append(HRFlowable(width=34 * mm, thickness=3, color=SIGNAL, spaceAfter=5 * mm))
+        section_content = []
         for child in section:
             if child.tag == "header":
                 continue
-            story.extend(flowables_from(child, styles))
+            section_content.extend(flowables_from(child, styles))
+        while section_content and isinstance(section_content[-1], Spacer):
+            section_content.pop()
+        story.extend(section_content)
     return story
 
 
@@ -601,7 +604,7 @@ def draw_content_page(canvas, doc) -> None:
     )
     canvas.setFont("UMSansBold", 7)
     canvas.setFillColor(INK)
-    canvas.drawString(doc.leftMargin + 18 * mm, height - 15.5 * mm, "UNIVERSAL MIND / I AM")
+    canvas.drawString(doc.leftMargin + 18 * mm, height - 15.5 * mm, "UNIVERSAL MIND")
     canvas.setFont("UMSans", 6.7)
     canvas.setFillColor(MUTED)
     canvas.drawRightString(width - doc.rightMargin, height - 15.5 * mm, DOCUMENT_VERSION.upper())
