@@ -1,6 +1,9 @@
 (() => {
   if (window.IAMMobileEditorial) return;
 
+  const editorialBaseUrl = new URL(".", document.currentScript?.src || window.location.href);
+  const inductionHref = new URL("induction.html?mobile=1", editorialBaseUrl).href;
+  const mobileStatusHref = new URL("induction.html?mobile=1#mobile-experience", editorialBaseUrl).href;
   const params = new URLSearchParams(window.location.search);
   const forcedFullExperience = params.get("full") === "1";
   const forcedMobileEditorial = params.get("mobile") === "1";
@@ -57,7 +60,7 @@
         itemName = "induction";
         item.dataset.navItem = itemName;
         item.textContent = "induction";
-        item.setAttribute("href", "induction.html?mobile=1");
+        item.setAttribute("href", inductionHref);
         item.removeAttribute("data-shop-return-music");
       }
 
@@ -75,14 +78,14 @@
     if (!menu.querySelector('[data-nav-item="shop"]')) {
       const shopLink = document.createElement("a");
       shopLink.className = "global-nav-item";
-      shopLink.href = "shop.html";
+      shopLink.href = new URL("shop.html", editorialBaseUrl).href;
       shopLink.dataset.navItem = "shop";
       shopLink.textContent = "shop";
       menu.append(shopLink);
     }
 
     nav.querySelectorAll("a.global-nav-brand").forEach((brand) => {
-      brand.setAttribute("href", "induction.html?mobile=1");
+      brand.setAttribute("href", inductionHref);
       brand.removeAttribute("data-shop-return-music");
     });
 
@@ -104,7 +107,7 @@
     status.setAttribute("aria-label", "Mobile experience status");
 
     const link = document.createElement("a");
-    link.href = "induction.html?mobile=1#mobile-experience";
+    link.href = mobileStatusHref;
     link.textContent = "Full I AM experience on desktop + tablet";
 
     const detail = document.createElement("span");
@@ -147,7 +150,7 @@
 
       event.preventDefault();
       event.stopImmediatePropagation();
-      window.location.href = "induction.html?mobile=1#mobile-experience";
+      window.location.href = mobileStatusHref;
     }, true);
   }
 
