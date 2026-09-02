@@ -44,8 +44,11 @@ if (localAssets) {
 async function closedWallet(label) {
   await page.waitForFunction(() => {
     const wallet = document.querySelector("[data-reaction-wallet]");
+    const style = getComputedStyle(wallet);
     return document.body.dataset.adaptiveSoundPanelOpen === "false" &&
-      wallet.dataset.walletView === "closed" && parseFloat(getComputedStyle(wallet).width) <= 68;
+      wallet.dataset.walletView === "closed" && parseFloat(style.width) <= 68 &&
+      /, 0\)$/.test(style.backgroundColor) &&
+      getComputedStyle(wallet.querySelector("[data-reaction-wallet-trigger]")).opacity === "1";
   });
   const state = await page.evaluate(() => {
     const wallet = document.querySelector("[data-reaction-wallet]");
