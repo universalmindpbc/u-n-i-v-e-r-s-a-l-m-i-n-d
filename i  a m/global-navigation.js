@@ -1,7 +1,7 @@
 (() => {
   const VERSION = "global-navigation-canonical-14";
   const scriptUrl = document.currentScript?.src || window.location.href;
-  const stylesheetUrl = new URL("global-navigation.css?v=8941d4c466ea", scriptUrl).href;
+  const stylesheetUrl = new URL("global-navigation.css?v=2a8e05a557ac", scriptUrl).href;
 
   function ensureStylesheet() {
     let stylesheet = document.querySelector("link[data-global-navigation-styles]");
@@ -104,7 +104,11 @@
               <a href="technology-inference-engine.html" data-nav-subitem="technology-recommendations">learn how we recommend content</a>
             </div>
             <a class="global-nav-item" href="science.html" data-nav-item="science">science</a>
-            <a class="global-nav-item" href="research.html" data-nav-item="research">research</a>
+            <a class="global-nav-item" href="research.html" data-nav-item="research" aria-expanded="false" aria-controls="global-nav-research">research</a>
+            <div class="global-nav-submenu" id="global-nav-research" data-nav-submenu="research">
+              <a href="research.html" data-nav-subitem="research-rct">rct</a>
+              <a href="/light" data-nav-subitem="research-computer-vision" target="_blank" rel="noopener noreferrer" aria-label="computer vision (opens in a new tab)">computer vision</a>
+            </div>
             <a class="global-nav-item" href="privacy-first.html" data-nav-item="privacy-first">privacy first</a>
             <a class="global-nav-item" href="business-model.html" data-nav-item="business-model">business model</a>
             <a class="global-nav-item" href="traction.html" data-nav-item="traction">traction</a>

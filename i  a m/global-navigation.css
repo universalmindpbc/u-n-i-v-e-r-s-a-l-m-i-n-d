@@ -201,6 +201,18 @@ html[data-adaptive-frame="embedded"] .global-nav {
   letter-spacing: normal;
 }
 
+.global-nav-submenu[data-nav-submenu="research"] a {
+  letter-spacing: 0.43447em;
+}
+
+@media (hover: none) {
+  .global-nav-submenu[data-nav-submenu="research"] a {
+    display: flex;
+    align-items: center;
+    min-height: 44px;
+  }
+}
+
 .global-nav-citation {
   position: absolute;
   left: 50%;
@@ -279,6 +291,10 @@ html[data-adaptive-frame="embedded"] .global-nav {
     bottom: 24px;
     font-size: 11px;
     line-height: 1.4;
+  }
+
+  .global-nav-submenu[data-nav-submenu="research"] a {
+    letter-spacing: 0.24557em;
   }
 }
 

@@ -68,7 +68,7 @@
     });
 
     menu.querySelectorAll("[data-nav-submenu]").forEach((submenu) => {
-      submenu.setAttribute("data-mobile-editorial-hidden", "");
+      submenu.toggleAttribute("data-mobile-editorial-hidden", submenu.dataset.navSubmenu !== "research");
     });
 
     if (!menu.querySelector('[data-nav-item="shop"]')) {
@@ -122,6 +122,11 @@
 
       const link = event.target.closest?.("a[href]");
       if (!link || link.target || link.hasAttribute("download")) return;
+
+      const submenu = link.dataset.navItem
+        ? document.querySelector(`[data-nav-submenu="${link.dataset.navItem}"]`)
+        : null;
+      if (submenu && !submenu.hasAttribute("data-mobile-editorial-hidden")) return;
 
       const url = new URL(link.getAttribute("href"), window.location.href);
       if (url.origin !== window.location.origin) return;

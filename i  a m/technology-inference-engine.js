@@ -24,12 +24,16 @@
     return document.querySelector("[data-global-nav]");
   }
 
-  function setTechnologySubmenu(open) {
+  function setActiveNavItem(itemName) {
     const nav = globalNav();
-    const technologyItem = nav?.querySelector('[data-nav-item="technology"]');
-    const technologySubmenu = nav?.querySelector('[data-nav-submenu="technology"]');
-    technologyItem?.setAttribute("aria-expanded", String(open));
-    technologySubmenu?.classList.toggle("is-open", open);
+    nav?.querySelectorAll("[data-nav-item]").forEach((item) => {
+      const active = item.dataset.navItem === itemName;
+      item.classList.toggle("is-active", active);
+      if (item.hasAttribute("aria-expanded")) item.setAttribute("aria-expanded", String(active));
+    });
+    nav?.querySelectorAll("[data-nav-submenu]").forEach((submenu) => {
+      submenu.classList.toggle("is-open", submenu.dataset.navSubmenu === itemName && !submenu.hasAttribute("data-mobile-editorial-hidden"));
+    });
   }
 
   function openGlobalNav() {
@@ -39,7 +43,7 @@
     body.classList.add("nav-open");
     nav.classList.add("is-open");
     nav.setAttribute("aria-hidden", "false");
-    setTechnologySubmenu(true);
+    setActiveNavItem("technology");
     nav.querySelector('[data-nav-item="technology"]')?.focus({ preventScroll: true });
   }
 
@@ -159,10 +163,18 @@
     }
 
     const navItem = event.target.closest("[data-nav-item]");
-    if (navItem?.dataset.navItem === "technology") {
+    const submenu = navItem
+      ? globalNav()?.querySelector(`[data-nav-submenu="${navItem.dataset.navItem}"]`)
+      : null;
+    if (submenu && !submenu.hasAttribute("data-mobile-editorial-hidden")) {
       event.preventDefault();
-      setTechnologySubmenu(navItem.getAttribute("aria-expanded") !== "true");
+      setActiveNavItem(navItem.dataset.navItem);
     }
+  });
+
+  globalNav()?.querySelectorAll("[data-nav-item]").forEach((item) => {
+    item.addEventListener("mouseenter", () => setActiveNavItem(item.dataset.navItem));
+    item.addEventListener("focus", () => setActiveNavItem(item.dataset.navItem));
   });
 
   moduleTriggers.forEach((button) => {
