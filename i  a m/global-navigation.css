@@ -205,6 +205,10 @@ html[data-adaptive-frame="embedded"] .global-nav {
   letter-spacing: 0.43447em;
 }
 
+.global-nav-submenu[data-nav-submenu="research"] a.is-active:not(:hover):not(:focus-visible) {
+  color: rgba(255, 255, 255, 0.96);
+}
+
 @media (hover: none) {
   .global-nav-submenu[data-nav-submenu="research"] a {
     display: flex;

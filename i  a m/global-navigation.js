@@ -1,7 +1,7 @@
 (() => {
   const VERSION = "global-navigation-canonical-14";
   const scriptUrl = document.currentScript?.src || window.location.href;
-  const stylesheetUrl = new URL("global-navigation.css?v=2a8e05a557ac", scriptUrl).href;
+  const stylesheetUrl = new URL("global-navigation.css?v=98f1d49994b7", scriptUrl).href;
 
   function ensureStylesheet() {
     let stylesheet = document.querySelector("link[data-global-navigation-styles]");
@@ -29,6 +29,8 @@
       "technology-inference-engine.html": "technology",
       "science.html": "science",
       "research.html": "research",
+      "light.html": "research",
+      "light": "research",
       "business-model.html": "business-model",
       "traction.html": "traction",
       "impact.html": "impact",
@@ -107,7 +109,7 @@
             <a class="global-nav-item" href="research.html" data-nav-item="research" aria-expanded="false" aria-controls="global-nav-research">research</a>
             <div class="global-nav-submenu" id="global-nav-research" data-nav-submenu="research">
               <a href="research.html" data-nav-subitem="research-rct">rct</a>
-              <a href="/light" data-nav-subitem="research-computer-vision" target="_blank" rel="noopener noreferrer" aria-label="computer vision (opens in a new tab)">computer vision</a>
+              <a href="light.html" data-nav-subitem="research-computer-vision">computer vision</a>
             </div>
             <a class="global-nav-item" href="privacy-first.html" data-nav-item="privacy-first">privacy first</a>
             <a class="global-nav-item" href="business-model.html" data-nav-item="business-model">business model</a>
@@ -129,6 +131,11 @@
       </aside>`;
 
     const nav = template.content.firstElementChild;
+    // Resolve the shared menu from its own directory, including on the /light alias.
+    nav.querySelectorAll("a[href], img[src]").forEach((element) => {
+      const attribute = element.tagName === "A" ? "href" : "src";
+      element.setAttribute(attribute, new URL(element.getAttribute(attribute), scriptUrl).href);
+    });
     const activeItem = nav.querySelector(`[data-nav-item="${currentNav}"]`);
     activeItem?.classList.add("is-active");
     activeItem?.setAttribute("aria-current", "page");

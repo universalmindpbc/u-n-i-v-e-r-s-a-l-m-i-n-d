@@ -15,6 +15,7 @@
     "program.html",
     "science.html",
     "research.html",
+    "light.html",
     "privacy-first.html",
     "business-model.html",
     "traction.html",
