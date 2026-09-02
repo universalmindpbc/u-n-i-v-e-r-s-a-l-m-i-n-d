@@ -378,7 +378,13 @@ function initializeAdaptiveSoundPanel() {
     soundEntryButtons.forEach((button) => button.setAttribute("aria-expanded", "false"));
     document.body.classList.remove("iam-sound-panel-open");
     document.body.dataset.adaptiveSoundPanelOpen = "false";
-    if (restoreFocus && state.previousFocus?.isConnected) state.previousFocus.focus({ preventScroll: true });
+    if (restoreFocus && state.previousFocus?.isConnected) {
+      // Opening Sound closes its wallet; return to the visible flower instead
+      // of focusing the Sound control inside that now-hidden wallet panel.
+      const closedWallet = state.previousFocus.closest('[data-reaction-wallet][data-wallet-view="closed"]');
+      const focusTarget = closedWallet?.querySelector("[data-reaction-wallet-trigger]") || state.previousFocus;
+      focusTarget.focus({ preventScroll: true });
+    }
   }
 
   async function setMasterEnabled(enabled) {

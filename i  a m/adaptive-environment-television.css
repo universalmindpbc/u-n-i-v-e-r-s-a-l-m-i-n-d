@@ -1678,8 +1678,9 @@ body.community-globe-open .adaptive-television-wallet-onboarding {
     width 1250ms cubic-bezier(0.22, 0.72, 0.18, 1);
 }
 
-body:not(.television-wallet-pointer-locked) .adaptive-television-reaction-wallet:hover,
-body:not(.television-wallet-pointer-locked) .adaptive-television-reaction-wallet:focus-within,
+/* A closed wallet stays collapsed even when Chrome restores focus inside it. */
+body:not(.television-wallet-pointer-locked) .adaptive-television-reaction-wallet:not([data-wallet-view="closed"]):hover,
+body:not(.television-wallet-pointer-locked) .adaptive-television-reaction-wallet:not([data-wallet-view="closed"]):focus-within,
 .adaptive-television-reaction-wallet.is-reaction-wallet-open,
 .adaptive-television-reaction-wallet.is-reaction-wallet-closing {
   justify-content: center;
@@ -1695,12 +1696,12 @@ body:not(.television-wallet-pointer-locked) .adaptive-television-reaction-wallet
   padding: 0 18px;
 }
 
-body:not(.television-wallet-pointer-locked) .adaptive-television-reaction-wallet:hover .adaptive-television-reaction,
-body:not(.television-wallet-pointer-locked) .adaptive-television-reaction-wallet:focus-within .adaptive-television-reaction,
+body:not(.television-wallet-pointer-locked) .adaptive-television-reaction-wallet:not([data-wallet-view="closed"]):hover .adaptive-television-reaction,
+body:not(.television-wallet-pointer-locked) .adaptive-television-reaction-wallet:not([data-wallet-view="closed"]):focus-within .adaptive-television-reaction,
 .adaptive-television-reaction-wallet.is-reaction-wallet-open .adaptive-television-reaction,
 .adaptive-television-reaction-wallet.is-reaction-wallet-closing .adaptive-television-reaction,
-body:not(.television-wallet-pointer-locked) .adaptive-television-reaction-wallet:hover .adaptive-television-audio-mode-trigger,
-body:not(.television-wallet-pointer-locked) .adaptive-television-reaction-wallet:focus-within .adaptive-television-audio-mode-trigger,
+body:not(.television-wallet-pointer-locked) .adaptive-television-reaction-wallet:not([data-wallet-view="closed"]):hover .adaptive-television-audio-mode-trigger,
+body:not(.television-wallet-pointer-locked) .adaptive-television-reaction-wallet:not([data-wallet-view="closed"]):focus-within .adaptive-television-audio-mode-trigger,
 .adaptive-television-reaction-wallet.is-reaction-wallet-open .adaptive-television-audio-mode-trigger,
 .adaptive-television-reaction-wallet.is-reaction-wallet-closing .adaptive-television-audio-mode-trigger {
   width: 48px;
@@ -1821,8 +1822,8 @@ body:not(.television-wallet-pointer-locked) .adaptive-television-reaction-wallet
   transform: translateY(5px);
 }
 
-body:not(.television-wallet-pointer-locked) .adaptive-television-reaction-wallet:hover .adaptive-television-reaction-trigger .adaptive-television-reaction__glyph--ioh-logo,
-body:not(.television-wallet-pointer-locked) .adaptive-television-reaction-wallet:focus-within .adaptive-television-reaction-trigger .adaptive-television-reaction__glyph--ioh-logo,
+body:not(.television-wallet-pointer-locked) .adaptive-television-reaction-wallet:not([data-wallet-view="closed"]):hover .adaptive-television-reaction-trigger .adaptive-television-reaction__glyph--ioh-logo,
+body:not(.television-wallet-pointer-locked) .adaptive-television-reaction-wallet:not([data-wallet-view="closed"]):focus-within .adaptive-television-reaction-trigger .adaptive-television-reaction__glyph--ioh-logo,
 .adaptive-television-reaction-wallet.is-reaction-wallet-open .adaptive-television-reaction-trigger .adaptive-television-reaction__glyph--ioh-logo {
   width: 34px;
   height: 34px;
@@ -1868,12 +1869,12 @@ body:not(.television-wallet-pointer-locked) .adaptive-television-reaction-wallet
   transform: translateX(-50%) scale(0.62);
 }
 
-body:not(.television-wallet-pointer-locked) .adaptive-television-reaction-wallet:hover .adaptive-television-reaction,
-body:not(.television-wallet-pointer-locked) .adaptive-television-reaction-wallet:focus-within .adaptive-television-reaction,
+body:not(.television-wallet-pointer-locked) .adaptive-television-reaction-wallet:not([data-wallet-view="closed"]):hover .adaptive-television-reaction,
+body:not(.television-wallet-pointer-locked) .adaptive-television-reaction-wallet:not([data-wallet-view="closed"]):focus-within .adaptive-television-reaction,
 .adaptive-television-reaction-wallet.is-reaction-wallet-open .adaptive-television-reaction,
 .adaptive-television-reaction-wallet.is-reaction-wallet-closing .adaptive-television-reaction,
-body:not(.television-wallet-pointer-locked) .adaptive-television-reaction-wallet:hover .adaptive-television-audio-mode-trigger,
-body:not(.television-wallet-pointer-locked) .adaptive-television-reaction-wallet:focus-within .adaptive-television-audio-mode-trigger,
+body:not(.television-wallet-pointer-locked) .adaptive-television-reaction-wallet:not([data-wallet-view="closed"]):hover .adaptive-television-audio-mode-trigger,
+body:not(.television-wallet-pointer-locked) .adaptive-television-reaction-wallet:not([data-wallet-view="closed"]):focus-within .adaptive-television-audio-mode-trigger,
 .adaptive-television-reaction-wallet.is-reaction-wallet-open .adaptive-television-audio-mode-trigger,
 .adaptive-television-reaction-wallet.is-reaction-wallet-closing .adaptive-television-audio-mode-trigger {
   opacity: 1;
@@ -1900,8 +1901,8 @@ body:not(.television-wallet-pointer-locked) .adaptive-television-reaction-wallet
     transform 520ms cubic-bezier(0.22, 0.72, 0.18, 1);
 }
 
-body:not(.television-wallet-pointer-locked) .adaptive-television-reaction-wallet:hover .adaptive-television-reaction-trigger,
-body:not(.television-wallet-pointer-locked) .adaptive-television-reaction-wallet:focus-within .adaptive-television-reaction-trigger,
+body:not(.television-wallet-pointer-locked) .adaptive-television-reaction-wallet:not([data-wallet-view="closed"]):hover .adaptive-television-reaction-trigger,
+body:not(.television-wallet-pointer-locked) .adaptive-television-reaction-wallet:not([data-wallet-view="closed"]):focus-within .adaptive-television-reaction-trigger,
 .adaptive-television-reaction-wallet.is-reaction-wallet-open .adaptive-television-reaction-trigger,
 .adaptive-television-reaction-wallet.is-reaction-wallet-closing .adaptive-television-reaction-trigger {
   left: 50%;
@@ -3444,8 +3445,8 @@ body.television-room-open.nav-open .global-nav-scrim {
     padding: 0;
   }
 
-  body:not(.television-wallet-pointer-locked) .adaptive-television-reaction-wallet:hover,
-  body:not(.television-wallet-pointer-locked) .adaptive-television-reaction-wallet:focus-within,
+  body:not(.television-wallet-pointer-locked) .adaptive-television-reaction-wallet:not([data-wallet-view="closed"]):hover,
+  body:not(.television-wallet-pointer-locked) .adaptive-television-reaction-wallet:not([data-wallet-view="closed"]):focus-within,
   .adaptive-television-reaction-wallet.is-reaction-wallet-open,
   .adaptive-television-reaction-wallet.is-reaction-wallet-closing,
   .adaptive-television-reaction-wallet.is-audio-wallet-mode {

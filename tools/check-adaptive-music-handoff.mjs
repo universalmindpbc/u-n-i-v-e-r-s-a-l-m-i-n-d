@@ -491,7 +491,8 @@ requireCondition(controller.includes('reactionWalletTrigger?.addEventListener("c
 requireCondition(controller.includes('if (!document.body.classList.contains("television-room-open")) return;'), 'the room launch gesture can open the flower before the room is visibly open');
 requireCondition(controller.includes('hasOpened = true;\n    setReactionWalletOpen(false);\n    armReactionWalletPointerLock(event);'), 'room expansion no longer resets the wallet to the single closed flower');
 requireCondition(settlingWalletRule.includes('pointer-events: auto !important;'), 'the settling animation blocks deliberate flower clicks');
-requireCondition(televisionCss.includes('body:not(.television-wallet-pointer-locked) .adaptive-television-reaction-wallet:hover'), 'the stylesheet hover state no longer respects the ten-second lock');
+requireCondition(televisionCss.includes('body:not(.television-wallet-pointer-locked) .adaptive-television-reaction-wallet:not([data-wallet-view="closed"]):hover'), 'the stylesheet hover state no longer respects the ten-second lock and closed wallet state');
+requireCondition(!/\.adaptive-television-reaction-wallet:(?:hover|focus-within)/.test(televisionCss), 'passive hover or focus can expand an empty closed wallet');
 requireCondition(!/^\s*\.adaptive-television-reaction-wallet:(?:hover|focus-within)/m.test(televisionCss), 'an ungated stylesheet hover path can still open the flower early');
 requireCondition(!/^\s*\.adaptive-television-reaction-wallet\[data-wallet-view="closed"\]:(?:hover|focus-within)/m.test(televisionCss), 'a later wallet hierarchy rule can still expand the closed flower during the ten-second lock');
 requireCondition(televisionCss.includes('body.television-wallet-pointer-locked .adaptive-television-reaction-wallet[data-wallet-view="closed"] .adaptive-television-reaction-trigger'), 'the locked room entry no longer guarantees one visible flower');
