@@ -107,7 +107,7 @@ c890967e6c961f0fadc4f8de8a159edaad489cfc8c0a22851fd90aacb16a14ec	research/vendor
 e8c2dfbf2519c748e96b9541bd92264b0c4a4400c3a261f8c15a75c8c47ba7e9	solution.html
 0acf1c66533c5bdeb8bfa80e301a16515ad97157857aae5065baf08169ea13e2	adaptive_inference_matrix.py
 c6ed3bc518a2267a85e1f1dc384a5dd3c1d40e981f860a6d5030fe02eb113253	technology-citizen-needs-context-handoff.md
-b43626dde3e0f379fc1d42035e06dc91b7032b877ef100443e53132179cb65ca	research-page.css
+e8d81229cf869b61d14472ceb15e17bbbcc6c994818f78d55d4d84c29605933f	research-page.css
 09d77ed38fbfa8549383886f2e657092bdfdc3cc8a59a0d3127cc3fb788f3ef7	emdr-adaptation-v0.1.md
 6d693fd704b8838c30fef9880c4070dd6445f15f46e8268fc579e9ae5e5236e9	sex-ed.css
 84138cfef0707aee03795e92732bcb31ebfe582dfd0ec03d35cece4b18ba275c	programme-guide.js
@@ -179,7 +179,7 @@ eb97cfe98b5ba49a8487e03a05252db1146e7c595638ff93e3b338ab92c318db	technology-citi
 105121ee3a8e78e3b4ea6b1bd5ad7e354e9ab49bb4d524caf7ec34280ceb05ab	sex-ed-episode-01.html
 75d83cbb94378dd126b1efd597100c9476a47f1427d1ec7fc0f8b554d2fa5b21	impact.html
 5300b03dadcf37108e67e03e6cc4edd1e8d4a6c1386400c8496a2ba170df43aa	adaptive-music-video-catalogue-notion-export-v1.11.json
-2978400c50b2203e5d7c527524dbd3ded784f7cc4c6bf18a78e7d2797a6f0e2f	research.html
+630ba381163e6aa7d5ad7e08c57c73138802c5002331ed69a44b91461e0df153	research.html
 f6b0bb8d02242808ab02d64d5625cf196572eb07b5e7d080028ff2fb4f213633	music-channel-selector-v1.js
 3112f6656eb2fad46e0d228af30abe4eef66f3707e67379159ca3dbcece803b8	semantic_compiler.py
 36d4418bb8f88931f0c39d238899136e9bae18a655f80572379571d1cd53ffae	adaptive-music-video.html
@@ -222,6 +222,7 @@ d8cde42eedcb7f709dd26e20e8c866eb5dbec6b84c59d3bcbd9d90712c669cda	realtime-voice-
 5e1fdfbadb0466e1997b206c6197cba92f566d211a16f31bd627da4cfb976b4b	mantra-audio-fx.js
 611b43aaaefb762bd463585a2defc289450fa413f83044b45d13098799b85aab	current-inference-fusion-v1.js
 1c5d23b954a58cd67f51a7c32adddbb22dfb58fa34fae89c593a5bae97fd8d54	happiness-control.html
+282deb1fd3122a780710187d7de5cb901b283bd647b21f97b3814de4fa0bec28	light.html
 e12eb24c367d2ac6f67963f434a729027e75b914e450b6260f47c01b9bd1ef58	i  a m  c h e c k i n  -  f o r m  -  b r i e f.md
 b89467d63bab7000ddda479156834f13fc30e5840f2dedc55a91e18f47fda51e	citizen-data-client.js
 18ea30c4c8a9d2b7c98fc1a76e3b3e190d87d55a064ad3cff721d4d2932a69c2	shop-product-kernel-v1.json
@@ -300,12 +301,15 @@ a1a79e2dc5ed58678f2d5b1f16a6761c73bf7e68fc8e3b0269816fd1845dd5fe	our-team-concep
 58bc792d8bef5003b4a6dc050dea3095f8725b9cce1aeb4fbb0619d7d13c0e1d	selector_core.py
 d8af65cce7538993cd4e6646e646c98732a08ac9937b528118b293a27cd0fa09	adaptive-inference-engine-system-prompt-v5.55-content.js
 aa9a96b0cd8d269f9dcc6f5606b911af3e021f9b0611e4b2e8f1339c050d3c64	sexed-wallet-mockup.html
+d5955aa62b108fc6fda498c771e086b047cfe1f49b614c68fa70ce115310f221	light.css
 f237cab76a076231d45693131e7aac7cd08653f2842275cb5ab3af37421dbddb	u n i v e r s a l m i n d.md
 50855551df15654c19f64e5968d68232a19b92c39f4795b3217c9a63fae33d89	sex-ed.js
 2003eaaa6710e5c057c42f00dad42184f0cc75630d863402dd586592dab1ce5d	induction-alternate.html
 b898242a86438cbf848a87306525beda7679f1ab339ce101c07989bbab788428	universal-one-adaptive-recommendation-guide-v1.txt
 45d15609554ee1b9b0cde561c2c6f77d605a73410bfea4b4f612b0b33b342bfa	a s s e t s/Vogue Logo - large.png
 2bd301482d1c635c4b2f55be742d40e16166afb81afc46f9e56d96f2bb2aa0a0	a s s e t s/research/modul8-infinity-rct-scientific-briefing-v1.pdf
+9e7829ec5653b7a4b76f51b9ac6d4ae0b805cc14cd2b801bfd7fa2c1a0464929	a s s e t s/research/universal-light-proposal-cover.png
+a5ccf972beabfbfab06de6d52f85f5dab6d6406f94bb855be1ea511161d0e316	a s s e t s/research/universal-light-horizon-3-research-proposal.pdf
 d67761d47b5f9df0dc6f5ce437d77d56b6eb277703b8bbd751178048ddf3b8fb	a s s e t s/research/universal-mind-iam-research-partner-introduction.pdf
 65a63bdc9fbae8a0c33340c48a8eab49d5cc9584a9e5e67e5ba1c55e6838d096	a s s e t s/a n i m a t e d [ g i f s ]/Self Portrait Art GIF by xavieralopez - position 3.gif
 989aeecadaa5222f6716af782f2ec12ffe64047df1fdcab66aa5342f39797696	a s s e t s/a n i m a t e d [ g i f s ]/illustration GIF by xavieralopez - position 1.gif
