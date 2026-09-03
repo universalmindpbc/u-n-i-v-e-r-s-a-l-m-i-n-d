@@ -3755,7 +3755,10 @@ body.television-room-open.nav-open .global-nav-scrim {
 }
 
 /* Fixed primary wallet with a quiet, readable programme ticker. */
-body .adaptive-television-reaction-wallet[data-wallet-view="categories"].is-reaction-wallet-open {
+/* Keep its spacing consistent across rest, hover and focus. */
+body .adaptive-television-reaction-wallet[data-wallet-view="categories"].is-reaction-wallet-open,
+body .adaptive-television-reaction-wallet[data-wallet-view="categories"].is-reaction-wallet-open:hover,
+body .adaptive-television-reaction-wallet[data-wallet-view="categories"].is-reaction-wallet-open:focus-within {
   flex-direction: column;
   gap: 0;
   width: min(590px, calc(100vw - 48px));
@@ -4029,7 +4032,9 @@ body .adaptive-television-reaction-wallet[data-wallet-view="categories"].is-reac
 }
 
 @media (max-width: 520px) {
-  body .adaptive-television-reaction-wallet[data-wallet-view="categories"].is-reaction-wallet-open {
+  body .adaptive-television-reaction-wallet[data-wallet-view="categories"].is-reaction-wallet-open,
+  body .adaptive-television-reaction-wallet[data-wallet-view="categories"].is-reaction-wallet-open:hover,
+  body .adaptive-television-reaction-wallet[data-wallet-view="categories"].is-reaction-wallet-open:focus-within {
     width: min(590px, calc(100vw - 28px));
     min-height: 106px;
     padding: 2px 14px 8px;
