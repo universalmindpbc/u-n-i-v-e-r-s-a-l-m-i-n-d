@@ -31,6 +31,8 @@ const musicTrackCataloguePath = path.join(IAM_DIR, 'music-track-catalogue-v1.js'
 const programmeGuidePath = path.join(IAM_DIR, 'programme-guide.js');
 const programmeGuideCssPath = path.join(IAM_DIR, 'programme-guide.css');
 const broadcastSchedulePath = path.join(IAM_DIR, 'broadcast-schedule-v1.json');
+const adaptiveCataloguePath = path.join(IAM_DIR, 'adaptive-music-video-catalogue-v1.11.json');
+const radioStationTensorPath = path.join(IAM_DIR, 'radio-station-tensor-notion-export-v1.0.json');
 const realtimeVoiceControllerPath = path.join(IAM_DIR, 'realtime-voice-assistant.js');
 const realtimeVoiceCssPath = path.join(IAM_DIR, 'realtime-voice-assistant.css');
 const realtimeVoiceEndpointPath = path.join(IAM_DIR, 'api', 'realtime-client-secret.php');
@@ -161,7 +163,10 @@ const televisionCss = await fs.readFile(televisionCssPath, 'utf8');
 const musicTrackCatalogue = await fs.readFile(musicTrackCataloguePath, 'utf8');
 const programmeGuide = await fs.readFile(programmeGuidePath, 'utf8');
 const programmeGuideCss = await fs.readFile(programmeGuideCssPath, 'utf8');
-const broadcastSchedule = JSON.parse(await fs.readFile(broadcastSchedulePath, 'utf8'));
+const broadcastScheduleSource = await fs.readFile(broadcastSchedulePath, 'utf8');
+const adaptiveCatalogueSource = await fs.readFile(adaptiveCataloguePath, 'utf8');
+const radioStationTensorSource = await fs.readFile(radioStationTensorPath, 'utf8');
+const broadcastSchedule = JSON.parse(broadcastScheduleSource);
 const realtimeVoiceController = await fs.readFile(realtimeVoiceControllerPath, 'utf8');
 const realtimeVoiceCss = await fs.readFile(realtimeVoiceCssPath, 'utf8');
 const realtimeVoiceEndpoint = await fs.readFile(realtimeVoiceEndpointPath, 'utf8');
@@ -230,6 +235,9 @@ const expectedCssCacheToken = `music-tv-css-${createHash('sha256').update(televi
 const expectedMusicTrackCatalogueToken = `music-track-catalogue-${createHash('sha256').update(musicTrackCatalogue).digest('hex').slice(0, 12)}`;
 const expectedProgrammeToken = `programme-guide-${createHash('sha256').update(programmeGuide).digest('hex').slice(0, 12)}`;
 const expectedProgrammeCssToken = `programme-guide-css-${createHash('sha256').update(programmeGuideCss).digest('hex').slice(0, 12)}`;
+const expectedBroadcastScheduleToken = `broadcast-schedule-${createHash('sha256').update(broadcastScheduleSource).digest('hex').slice(0, 12)}`;
+const expectedAdaptiveCatalogueToken = `music-video-catalogue-${createHash('sha256').update(adaptiveCatalogueSource).digest('hex').slice(0, 12)}`;
+const expectedRadioStationTensorToken = `radio-stations-${createHash('sha256').update(radioStationTensorSource).digest('hex').slice(0, 12)}`;
 const expectedRealtimeVoiceToken = `realtime-voice-${createHash('sha256').update(realtimeVoiceController).digest('hex').slice(0, 12)}`;
 const expectedRealtimeVoiceCssToken = `realtime-voice-css-${createHash('sha256').update(realtimeVoiceCss).digest('hex').slice(0, 12)}`;
 const expectedMantraSamplerToken = `mantra-sampler-${createHash('sha256').update(mantraSampler).digest('hex').slice(0, 12)}`;
@@ -403,8 +411,9 @@ requireCondition(programmeGuideCss.includes('.adaptive-television-program-button
 requireCondition(walletOnboardingWelcomeRule.includes('font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;') && walletOnboardingWelcomeRule.includes('font-size: clamp(18px, 2vw, 30px);') && walletOnboardingWelcomeRule.includes('font-weight: 300;'), 'the multilingual wallet welcome no longer preserves its approved Helvetica Neue Light typography and size');
 requireCondition(televisionCss.includes('.adaptive-television-home-program-button,\n.adaptive-television-sex-ed-link {') && televisionCss.includes('display: grid;') && televisionCss.includes('height: 21px;') && televisionCss.includes('margin-top: 6px;') && televisionCss.includes('place-items: center;') && televisionCss.includes('font: 400 10px/1 "Helvetica Neue", Helvetica, Arial, sans-serif;') && televisionCss.includes('text-transform: lowercase;'), 'the one-click program control no longer shares the exact sex-ed pill casing and typography');
 requireCondition(televisionCss.includes('.adaptive-television-home-program-button {') && televisionCss.includes('width: 56px;') && televisionCss.includes('padding: 0;') && televisionCss.includes('.adaptive-television-sex-ed-link {\n  width: 46px;'), 'the program pill is no longer only ten pixels longer than the otherwise identical sex-ed pill');
-requireCondition(programmeGuide.includes('fetch("broadcast-schedule-v1.json?v=broadcast-schedule-') && programmeGuide.includes('cache: "no-store"'), 'the Program popup no longer reads the content-versioned live no-cache broadcast schedule');
-requireCondition(programmeGuide.includes('fetch("adaptive-music-video-catalogue-v1.11.json?v=programme-guide-app-2"') && programmeGuide.includes('fetch("radio-station-tensor-notion-export-v1.0.json?v=programme-guide-app-2"'), 'the Videos, Parties and Radio guides no longer read their canonical catalogues');
+requireCondition(programmeGuide.includes(`fetch("broadcast-schedule-v1.json?v=${expectedBroadcastScheduleToken}"`) && programmeGuide.includes('cache: "no-store"'), 'the Program popup no longer reads the content-versioned live no-cache broadcast schedule');
+requireCondition(programmeGuide.includes(`fetch("adaptive-music-video-catalogue-v1.11.json?v=${expectedAdaptiveCatalogueToken}"`) && programmeGuide.includes(`fetch("radio-station-tensor-notion-export-v1.0.json?v=${expectedRadioStationTensorToken}"`), 'the Videos, Parties and Radio guides no longer read content-versioned canonical catalogues');
+requireCondition(controller.includes(`fetch("adaptive-music-video-catalogue-v1.11.json?v=${expectedAdaptiveCatalogueToken}"`) && controller.includes(`fetch("radio-station-tensor-notion-export-v1.0.json?v=${expectedRadioStationTensorToken}"`), 'the television runtime no longer reads content-versioned canonical catalogues');
 requireCondition(programmeGuide.includes('window.IAMCueSheet?.metadataAt?.(trackId, 0)'), 'the Program schedule no longer resolves playback-catalogue metadata before using the Universal Mind fallback');
 const runtimeTrackMetadata = new Map(Array.from(musicTrackCatalogue.matchAll(/\{ id: "([^"]+)", artist: "([^"]+)", title: "([^"]+)"/g))
   .map((match) => [match[1], { artist: match[2], title: match[3] }]));

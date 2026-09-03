@@ -794,17 +794,17 @@
   async function initialize() {
     document.body.dataset.programGuideState = "loading";
     const [scheduleResponse, catalogueResponse, stationsResponse] = await Promise.all([
-      fetch("broadcast-schedule-v1.json?v=broadcast-schedule-51a28fa1fd66", {
+      fetch("broadcast-schedule-v1.json?v=broadcast-schedule-616a545d8da6", {
         cache: "no-store",
         credentials: "same-origin",
         headers: { Accept: "application/json" },
       }),
-      fetch("adaptive-music-video-catalogue-v1.11.json?v=programme-guide-app-2", {
+      fetch("adaptive-music-video-catalogue-v1.11.json?v=music-video-catalogue-bb88766861c4", {
         cache: "no-store",
         credentials: "same-origin",
         headers: { Accept: "application/json" },
       }),
-      fetch("radio-station-tensor-notion-export-v1.0.json?v=programme-guide-app-2", {
+      fetch("radio-station-tensor-notion-export-v1.0.json?v=radio-stations-55ac073c2439", {
         cache: "no-store",
         credentials: "same-origin",
         headers: { Accept: "application/json" },

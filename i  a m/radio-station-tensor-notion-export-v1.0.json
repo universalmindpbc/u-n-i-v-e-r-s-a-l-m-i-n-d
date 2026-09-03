@@ -1,12 +1,12 @@
 {
   "schema_version": "um_radio_station_tensor_approved_v1.1",
-  "generated_at": "2026-08-12T10:30:00+10:00",
+  "generated_at": "2026-09-04T09:45:00+10:00",
   "source_data_source": "collection://6993ebc6-bb6e-44c3-933a-18c5d6ad44bc",
   "source_database_url": "https://app.notion.com/p/35a14a98ae5f4f6a8950beefc7c5fb5f?v=1c16436b5c0545a4b553e985ab770c40",
   "source_contract": "Export Approved Notion rows whose Media Class is Radio Station, plus explicitly identified supplemental closed-beta approvals. Station ID, Station Stream URL, Station Player URL, Stream Transport, Music Room Fit and Permission Scope remain explicit properties.",
-  "approval": "Approved by Ben for the closed beta. Worldwide FM and NTS public release remains gated on the confirmed financial partnerships.",
+  "approval": "Approved by Ben for the password-locked internal demo. OpenLab, Worldwide FM and NTS public release remains gated on confirmed partnerships and production pathways.",
   "supplemental_record_count": 1,
-  "record_count": 12,
+  "record_count": 13,
   "media_class": "radio_station",
   "records": [
     {
@@ -182,6 +182,64 @@
       "suitable_citizen_state": "Joy, agency, movement, social connection, confidence and readiness for positive activation.",
       "not_suitable_citizen_state": "Acute sensory overload, high startle sensitivity, sleep onset or a stated need for quiet focus.",
       "editorial_notes": "Existing Universal Mind activation radio source. Station-level values describe the continuous channel rather than every individual song.",
+      "music_room_fit": [
+        "modul8-infinity"
+      ]
+    },
+    {
+      "id": "openlab-live",
+      "mode": "radio",
+      "provider": "OpenLab",
+      "title": "Electronic Night / Club",
+      "display_title": "OpenLab — Electronic Night / Club",
+      "short_title": "OPENLAB",
+      "stream_url": "https://ice04.fluidstream.net/openlab.mp3",
+      "player_url": "https://openlab.fm/radio/on-air",
+      "stream_format": "MP3 live stream",
+      "stream_transport": "Direct MP3",
+      "permission_scope": "Internal demo only",
+      "notion_page_url": "https://app.notion.com/p/3d07b9c99c568153a413c53b9638f60f",
+      "status": "Approved",
+      "editorial_priority": 1,
+      "primary_environmental_function": "Club Energy + Festival Activation",
+      "secondary_environmental_functions": [
+        "Curiosity + Exploration",
+        "Focus + Flow"
+      ],
+      "top_needs": [
+        "Curiosity",
+        "Arousal",
+        "Motivation",
+        "Joy"
+      ],
+      "need_scores": {
+        "Curiosity": 0.9,
+        "Arousal": 0.88,
+        "Motivation": 0.86,
+        "Joy": 0.82,
+        "Attention": 0.72,
+        "Connection": 0.76,
+        "Belonging": 0.7,
+        "Self-Actualisation": 0.82,
+        "Recovery": 0.28,
+        "Stress": 0.3,
+        "Psychological Safety": 0.64
+      },
+      "context": {
+        "work_fit": 0.58,
+        "group_fit": 0.86,
+        "high_load_fit": 0.32,
+        "intensity": "high",
+        "density": "layered",
+        "trajectory": "activate"
+      },
+      "card_palette": [
+        "#ff6c74",
+        "#3d3d3d"
+      ],
+      "suitable_citizen_state": "Focused daytime movement, curiosity, creative work, shared energy and readiness for house, techno or IDM.",
+      "not_suitable_citizen_state": "Acute sensory overload, high startle sensitivity, sleep onset or a stated need for quiet and predictable programming.",
+      "editorial_notes": "OpenLab’s daily electronic block: Electronic Night on weekdays and Club on weekends in the current schedule. Approved by Ben on 2026-09-04 for the password-locked staging candidate; public release requires official OpenLab permission.",
       "music_room_fit": [
         "modul8-infinity"
       ]

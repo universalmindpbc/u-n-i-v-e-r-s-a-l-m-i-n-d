@@ -29115,11 +29115,12 @@
   "radio_stations": {
     "schema": "um_radio_station_tensor_approved_v1.1",
     "source_json": "radio-station-tensor-notion-export-v1.0.json",
-    "approved_count": 12,
+    "approved_count": 13,
     "station_ids": [
       "cafe-del-mar-calm",
       "cafe-del-mar-chill",
       "cafe-del-mar-house",
+      "openlab-live",
       "groove-salad",
       "groove-salad-classic",
       "worldwide-fm",
@@ -29131,7 +29132,7 @@
       "nts-low-key"
     ],
     "selection_contract": "When the selected extended-session format is radio, rank only approved stations assigned to the selected music room using citizen-needs fit, stated intent and taste, explicit work or group context, personal affinity, continuity and adjacent exploration.",
-    "private_demo_approval": "All twelve sources are approved by Ben for closed-beta use. Worldwide FM and the four NTS Infinite Mixtapes remain gated on confirmed financial partnerships before public launch.",
+    "private_demo_approval": "All thirteen sources are approved by Ben for password-locked internal demo use. OpenLab, Worldwide FM and the four NTS Infinite Mixtapes remain gated on confirmed partnerships before public launch.",
     "handoff_contract": "A completed video or Party may continue into the best-fit approved live radio station inside the selected music room; a solo citizen may switch immediately, while a joined audio room records a shared next-item vote.",
     "exploration_rate": 0.28,
     "party_radio_prior": {
@@ -29201,6 +29202,7 @@
         "radio"
       ],
       "station_pool": [
+        "openlab-live",
         "cafe-del-mar-house",
         "nts-otaku",
         "nts-low-key"

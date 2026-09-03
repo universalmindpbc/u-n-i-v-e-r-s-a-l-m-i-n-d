@@ -172,7 +172,7 @@ for (const name of [
   assert.doesNotMatch(fs.readFileSync(path.join(root, name), "utf8"), rejectedBrandingPattern, `${name} retains rejected branding`);
 }
 
-assert.equal(schedule.version, "broadcast_schedule_v1.14");
+assert.equal(schedule.version, "broadcast_schedule_v1.15");
 assert.deepEqual(channel("party-champagne-bohemia").schedule.map(({ track_id }) => track_id), [
   "sasha-ibiza-boat-at-sunset-freqways",
   "sasha-renaissance-engage-2020",

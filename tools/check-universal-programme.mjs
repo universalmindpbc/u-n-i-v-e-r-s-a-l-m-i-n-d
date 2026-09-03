@@ -13,7 +13,7 @@ const schedule = JSON.parse(scheduleSource);
 const sha12 = (source) => crypto.createHash("sha256").update(source).digest("hex").slice(0, 12);
 const channel = (id) => schedule.channels.find((candidate) => candidate.id === id);
 
-assert.equal(schedule.version, "broadcast_schedule_v1.14");
+assert.equal(schedule.version, "broadcast_schedule_v1.15");
 const modul8 = channel("party-modul8-infinity");
 assert.equal(modul8.schedule.length, 128);
 assert.equal(new Set(modul8.schedule.map(({ track_id: trackId }) => trackId)).size, 32);
@@ -36,7 +36,7 @@ for (let rotation = 1; rotation <= 4; rotation += 1) {
 
 const primaryChannels = schedule.channels.filter(({ format, internal }) => ["videos", "parties", "radio"].includes(format) && internal !== true);
 assert.equal(primaryChannels.length, 13);
-assert.equal(primaryChannels.reduce((sum, current) => sum + current.schedule.length, 0), 245);
+assert.equal(primaryChannels.reduce((sum, current) => sum + current.schedule.length, 0), 246);
 assert.equal(channel("video-safety-cushion").schedule.length, 21);
 assert.equal(channel("party-safety-cushion"), undefined);
 assert.equal(channel("radio-safety-cushion"), undefined);
@@ -44,10 +44,10 @@ assert.equal(channel("radio-safety-cushion"), undefined);
 const exportResult = spawnSync(process.execPath, [path.join(root, "tools", "export-universal-programme-notion-pages.mjs"), "0", "1000"], { encoding: "utf8" });
 assert.equal(exportResult.status, 0, exportResult.stderr);
 const notionExport = JSON.parse(exportResult.stdout);
-assert.equal(notionExport._meta.total, 247);
-assert.equal(notionExport.pages.length, 247);
+assert.equal(notionExport._meta.total, 248);
+assert.equal(notionExport.pages.length, 248);
 const syncKeys = notionExport.pages.map(({ properties }) => properties["Sync Key"]);
-assert.equal(new Set(syncKeys).size, 247);
+assert.equal(new Set(syncKeys).size, 248);
 assert.equal(notionExport.pages.filter(({ properties }) => properties.Deployment === "Programming Gap").length, 2);
 assert.equal(notionExport.pages.filter(({ properties }) => properties["Tensor Source"]?.length).length, 144);
 
@@ -59,4 +59,4 @@ const scheduleToken = `broadcast-schedule-${sha12(scheduleSource)}`;
 assert.ok(read("broadcast-clock-v1.js").includes(scheduleToken));
 assert.ok(read("programme-guide.js").includes(scheduleToken));
 
-console.log("Universal programme checks passed: 32 programmes × four complete contextual rotations, 245 runtime rows, 247 Notion control rows, 21/21 new Tensor relations, and two explicit safety cushion coverage gaps.");
+console.log("Universal programme checks passed: 32 programmes × four complete contextual rotations, 246 runtime rows, 248 Notion control rows, 21/21 new Tensor relations, and two explicit safety cushion coverage gaps.");

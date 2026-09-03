@@ -95,6 +95,7 @@
     { id: "cafe-del-mar-calm", musicRoomFit: ["inner-planes"], mode: "radio", provider: "Café del Mar Radio", title: "Calm", display_title: "Café del Mar — Calm", short_title: "CALM", stream_url: "https://streamer.radio.co/sb748f24ad/listen", logo_src: "a s s e t s/radio-logos/cafe-del-mar-calm.svg", brand_logo_src: "a s s e t s/radio-logos/cafe-del-mar.svg", logo_alt: "Café del Mar Calm", primary_environmental_function: "Soul + Restoration", top_needs: ["Calm", "Recovery", "Psychological Safety", "Anxiety"], card_palette: ["#506f88", "#c8d6d9"] },
     { id: "cafe-del-mar-chill", musicRoomFit: ["champagne-bohemia"], mode: "radio", provider: "Café del Mar Radio", title: "Chill", display_title: "Café del Mar — Chill", short_title: "CHILL", stream_url: "https://streams.radio.co/se1a320b47/listen", logo_src: "a s s e t s/radio-logos/cafe-del-mar-chill.svg", brand_logo_src: "a s s e t s/radio-logos/cafe-del-mar.svg", logo_alt: "Café del Mar Chill", primary_environmental_function: "Soul + Restoration", top_needs: ["Recovery", "Belonging", "Gratitude", "Trust"], card_palette: ["#99815f", "#e3ceb3"] },
     { id: "cafe-del-mar-house", musicRoomFit: ["modul8-infinity"], mode: "radio", provider: "Café del Mar Radio", title: "House", display_title: "Café del Mar — House", short_title: "HOUSE", stream_url: "https://s4.radio.co/seeae9c220/listen", logo_src: "a s s e t s/radio-logos/cafe-del-mar-house.svg", brand_logo_src: "a s s e t s/radio-logos/cafe-del-mar.svg", logo_alt: "Café del Mar House", primary_environmental_function: "Club Energy + Festival Activation", top_needs: ["Joy", "Motivation", "Connection", "Arousal"], card_palette: ["#8a4867", "#e6a99f"] },
+    { id: "openlab-live", musicRoomFit: ["modul8-infinity"], mode: "radio", provider: "OpenLab", title: "Electronic Night / Club", display_title: "OpenLab — Electronic Night / Club", short_title: "OPENLAB", stream_url: "https://ice04.fluidstream.net/openlab.mp3", logo_src: "a s s e t s/radio-logos/openlab.svg", logo_alt: "OpenLab Radio", primary_environmental_function: "Club Energy + Festival Activation", top_needs: ["Curiosity", "Arousal", "Motivation", "Joy"], card_palette: ["#ff6c74", "#3d3d3d"] },
     { id: "groove-salad", musicRoomFit: ["champagne-bohemia"], mode: "radio", provider: "SomaFM", title: "Groove Salad", display_title: "Groove Salad", short_title: "GROOVE SALAD", stream_url: "https://ice5.somafm.com/groovesalad-128-mp3", logo_src: "a s s e t s/radio-logos/groove-salad.png", logo_alt: "Groove Salad on SomaFM", primary_environmental_function: "Focus + Flow", top_needs: ["Attention", "Executive Function", "Calm", "Recovery"], card_palette: ["#526b52", "#cad4a4"] },
     { id: "groove-salad-classic", musicRoomFit: ["champagne-bohemia"], mode: "radio", provider: "SomaFM", title: "Groove Salad Classic", display_title: "Groove Salad Classic", short_title: "GS CLASSIC", stream_url: "https://ice5.somafm.com/gsclassic-128-mp3", logo_src: "a s s e t s/radio-logos/groove-salad-classic.jpg", logo_alt: "Groove Salad Classic on SomaFM", primary_environmental_function: "Soul + Restoration", top_needs: ["Belonging", "Gratitude", "Recovery", "Calm"], card_palette: ["#725f50", "#c9b896"] },
     { id: "worldwide-fm", musicRoomFit: ["champagne-bohemia"], mode: "radio", provider: "Worldwide FM", title: "Worldwide FM", display_title: "Worldwide FM", short_title: "WORLDWIDE FM", stream_url: "https://worldwide-fm.radiocult.fm/stream", fallback_station_id: "cafe-del-mar-chill", logo_src: "a s s e t s/radio-logos/worldwide-fm.svg", logo_alt: "Worldwide FM", primary_environmental_function: "Global Culture + Discovery", top_needs: ["Curiosity", "Connection", "Belonging", "Joy"], card_palette: ["#141414", "#f1eadc"] },
@@ -110,7 +111,7 @@
     roomPools: {
       "inner-planes": ["cafe-del-mar-calm", "nts-slow-focus"],
       "champagne-bohemia": ["cafe-del-mar-chill", "groove-salad", "groove-salad-classic", "worldwide-fm", "nts-poolside", "nts-low-key", "nts-slow-focus"],
-      "modul8-infinity": ["cafe-del-mar-house", "nts-otaku", "nts-low-key"],
+      "modul8-infinity": ["openlab-live", "cafe-del-mar-house", "nts-otaku", "nts-low-key"],
       "james-bondage": ["sanctuary-dark-electro"],
       "safety-cushion": [],
     },
@@ -3651,8 +3652,8 @@
   async function loadMusicRecommendations() {
     try {
       const [catalogueResponse, stationsResponse] = await Promise.all([
-        fetch("adaptive-music-video-catalogue-v1.11.json?v=music-video-catalogue-a93d901ed795", { cache: "no-store" }),
-        fetch("radio-station-tensor-notion-export-v1.0.json?v=radio-stations-44bcb7e5d5b1", { cache: "no-store" }),
+        fetch("adaptive-music-video-catalogue-v1.11.json?v=music-video-catalogue-bb88766861c4", { cache: "no-store" }),
+        fetch("radio-station-tensor-notion-export-v1.0.json?v=radio-stations-55ac073c2439", { cache: "no-store" }),
       ]);
       if (!catalogueResponse.ok) throw new Error(`Music Tensor fetch failed (${catalogueResponse.status})`);
       if (!stationsResponse.ok) throw new Error(`Radio Tensor fetch failed (${stationsResponse.status})`);

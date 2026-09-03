@@ -18,9 +18,9 @@ const allowedRooms = new Set(["inner-planes", "champagne-bohemia", "modul8-infin
 const records = Array.isArray(tensor.records) ? tensor.records : [];
 
 assert.equal(tensor.source_data_source, "collection://6993ebc6-bb6e-44c3-933a-18c5d6ad44bc");
-assert.equal(tensor.record_count, 12);
+assert.equal(tensor.record_count, 13);
 assert.equal(tensor.supplemental_record_count, 1);
-assert.equal(records.length, 12);
+assert.equal(records.length, 13);
 assert.equal(new Set(records.map((record) => record.id)).size, records.length, "station IDs must be unique");
 
 for (const record of records) {
@@ -63,6 +63,13 @@ assert.equal(worldwide.stream_transport, "Direct MP3");
 assert.equal(worldwide.fallback_station_id, "cafe-del-mar-chill");
 assert.deepEqual(worldwide.music_room_fit, ["champagne-bohemia"]);
 
+const openLab = records.find((record) => record.id === "openlab-live");
+assert.ok(openLab, "OpenLab is missing from the approved station tensor");
+assert.equal(openLab.provider, "OpenLab");
+assert.equal(openLab.stream_url, "https://ice04.fluidstream.net/openlab.mp3");
+assert.equal(openLab.stream_transport, "Direct MP3");
+assert.deepEqual(openLab.music_room_fit, ["modul8-infinity"]);
+
 const catalogueRadio = catalogue.radio_stations;
 assert.equal(catalogueRadio.approved_count, records.length);
 assert.deepEqual(new Set(catalogueRadio.station_ids), new Set(records.map((record) => record.id)));
@@ -76,4 +83,4 @@ for (const [room, definition] of Object.entries(catalogue.music_rooms)) {
 assert.deepEqual(catalogue.music_rooms["safety-cushion"].allowed_formats, ["videos"]);
 assert.deepEqual(catalogue.music_rooms["safety-cushion"].station_pool, []);
 
-console.log("Radio station tensor passed: 12 closed-beta stations, Worldwide FM fallback, five-room routing, Safety Cushion isolation, and 4 NTS HLS streams.");
+console.log("Radio station tensor passed: 13 approved demo stations, OpenLab scheduling, Worldwide FM fallback, five-room routing, Safety Cushion isolation, and 4 NTS HLS streams.");

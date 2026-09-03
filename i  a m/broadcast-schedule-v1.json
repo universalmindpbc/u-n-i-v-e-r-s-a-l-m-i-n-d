@@ -1,5 +1,5 @@
 {
-  "version": "broadcast_schedule_v1.14",
+  "version": "broadcast_schedule_v1.15",
   "stage": "five_music_rooms_live_safety_cushion_ready",
   "epoch_utc": "2026-07-24T00:00:00.000Z",
   "extended_session_format_policy": {
@@ -6380,16 +6380,8 @@
       "visual_channel_id": "fashion-social-uplift",
       "schedule": [
         {
-          "station_id": "cafe-del-mar-house",
-          "duration_seconds": 7200
-        },
-        {
-          "station_id": "nts-otaku",
-          "duration_seconds": 7200
-        },
-        {
-          "station_id": "nts-low-key",
-          "duration_seconds": 7200
+          "station_id": "openlab-live",
+          "duration_seconds": 10800
         },
         {
           "station_id": "cafe-del-mar-house",
@@ -6426,6 +6418,18 @@
         {
           "station_id": "nts-low-key",
           "duration_seconds": 7200
+        },
+        {
+          "station_id": "cafe-del-mar-house",
+          "duration_seconds": 3600
+        },
+        {
+          "station_id": "nts-otaku",
+          "duration_seconds": 3600
+        },
+        {
+          "station_id": "nts-low-key",
+          "duration_seconds": 3600
         }
       ]
     },

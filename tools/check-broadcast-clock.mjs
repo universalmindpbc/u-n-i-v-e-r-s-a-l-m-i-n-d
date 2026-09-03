@@ -228,6 +228,26 @@ for (const channel of schedule.channels) {
         champagneBohemiaTimetable,
         "Champagne Bohemia must retain the approved 24-hour editorial arc."
       );
+    } else if (channel.id === "radio-modul8-infinity") {
+      assert.deepEqual(
+        channel.schedule.map((entry) => [entry.station_id, Number(entry.duration_seconds)]),
+        [
+          ["openlab-live", 10800],
+          ["cafe-del-mar-house", 7200],
+          ["nts-otaku", 7200],
+          ["nts-low-key", 7200],
+          ["cafe-del-mar-house", 7200],
+          ["nts-otaku", 7200],
+          ["nts-low-key", 7200],
+          ["cafe-del-mar-house", 7200],
+          ["nts-otaku", 7200],
+          ["nts-low-key", 7200],
+          ["cafe-del-mar-house", 3600],
+          ["nts-otaku", 3600],
+          ["nts-low-key", 3600],
+        ],
+        "modul8 infinity must reserve 00:00–03:00 UTC for OpenLab and give each existing partner seven hours."
+      );
     } else {
       assert.ok(channel.schedule.every((entry) => Number(entry.duration_seconds) === 7200), "The other Radio rooms must retain their two-hour blocks.");
     }

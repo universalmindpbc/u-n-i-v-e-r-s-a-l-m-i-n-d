@@ -70,13 +70,13 @@ assert.equal(worldwide.stream_transport, "Direct MP3");
 assert.equal(worldwide.fallback_station_id, "cafe-del-mar-chill");
 assert.equal(worldwide.permission_scope, "Closed beta only; public launch partnership pending");
 assert.deepEqual(worldwide.music_room_fit, ["champagne-bohemia"]);
-assert.equal(tensor.record_count, 12);
+assert.equal(tensor.record_count, 13);
 
 const champagnePool = catalogue.music_rooms["champagne-bohemia"].station_pool;
 for (const stationId of ["worldwide-fm", "nts-poolside", "nts-low-key", "nts-slow-focus"]) {
   assert.ok(champagnePool.includes(stationId), `${stationId} is missing from the Champagne Bohemia station pool`);
 }
-assert.equal(catalogue.radio_stations.approved_count, 12);
+assert.equal(catalogue.radio_stations.approved_count, 13);
 assert.ok(catalogue.radio_stations.station_ids.includes("worldwide-fm"));
 
 assert.match(controller, /id: "worldwide-fm"[\s\S]*?fallback_station_id: "cafe-del-mar-chill"/);
