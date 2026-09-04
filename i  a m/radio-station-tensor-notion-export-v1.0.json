@@ -1,6 +1,6 @@
 {
   "schema_version": "um_radio_station_tensor_approved_v1.1",
-  "generated_at": "2026-09-04T09:45:00+10:00",
+  "generated_at": "2026-09-04T11:38:00+10:00",
   "source_data_source": "collection://6993ebc6-bb6e-44c3-933a-18c5d6ad44bc",
   "source_database_url": "https://app.notion.com/p/35a14a98ae5f4f6a8950beefc7c5fb5f?v=1c16436b5c0545a4b553e985ab770c40",
   "source_contract": "Export Approved Notion rows whose Media Class is Radio Station, plus explicitly identified supplemental closed-beta approvals. Station ID, Station Stream URL, Station Player URL, Stream Transport, Music Room Fit and Permission Scope remain explicit properties.",
@@ -193,7 +193,7 @@
       "title": "Electronic Night / Club",
       "display_title": "OpenLab — Electronic Night / Club",
       "short_title": "OPENLAB",
-      "stream_url": "https://ice04.fluidstream.net/openlab.mp3",
+      "stream_url": "https://ice04.fluidstream.net/openlab.mp3?direct=1",
       "player_url": "https://openlab.fm/radio/on-air",
       "stream_format": "MP3 live stream",
       "stream_transport": "Direct MP3",

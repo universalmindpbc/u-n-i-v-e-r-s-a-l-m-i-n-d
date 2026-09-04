@@ -66,7 +66,7 @@ assert.deepEqual(worldwide.music_room_fit, ["champagne-bohemia"]);
 const openLab = records.find((record) => record.id === "openlab-live");
 assert.ok(openLab, "OpenLab is missing from the approved station tensor");
 assert.equal(openLab.provider, "OpenLab");
-assert.equal(openLab.stream_url, "https://ice04.fluidstream.net/openlab.mp3");
+assert.equal(openLab.stream_url, "https://ice04.fluidstream.net/openlab.mp3?direct=1");
 assert.equal(openLab.stream_transport, "Direct MP3");
 assert.deepEqual(openLab.music_room_fit, ["modul8-infinity"]);
 
