@@ -36,7 +36,7 @@ for (const record of records) {
   }
   assert.ok(record.stream_url, `${record.id} stream URL is missing`);
   assert.ok(record.player_url, `${record.id} player URL is missing`);
-  assert.ok(["Direct MP3", "HLS", "Buffered HLS scheduler"].includes(record.stream_transport), `${record.id} transport is unsupported`);
+  assert.ok(["Direct MP3", "Direct AAC", "HLS", "Buffered HLS scheduler"].includes(record.stream_transport), `${record.id} transport is unsupported`);
   assert.ok(Array.isArray(record.music_room_fit), `${record.id} needs a music-room fit array`);
   assert.ok(record.music_room_fit.every((room) => allowedRooms.has(room)), `${record.id} has an invalid music room`);
   assert.ok(!record.music_room_fit.includes("safety-cushion"), `${record.id} cannot route radio into the music-video-only safety cushion room`);
@@ -66,8 +66,9 @@ assert.deepEqual(worldwide.music_room_fit, ["champagne-bohemia"]);
 const openLab = records.find((record) => record.id === "openlab-live");
 assert.ok(openLab, "OpenLab is missing from the approved station tensor");
 assert.equal(openLab.provider, "OpenLab");
-assert.equal(openLab.stream_url, "https://ice04.fluidstream.net/openlab.mp3?direct=1");
-assert.equal(openLab.stream_transport, "Direct MP3");
+assert.equal(openLab.stream_url, "https://ice09.fluidstream.net/openlab.aac");
+assert.equal(openLab.stream_format, "AAC live stream");
+assert.equal(openLab.stream_transport, "Direct AAC");
 assert.deepEqual(openLab.music_room_fit, ["modul8-infinity"]);
 
 const catalogueRadio = catalogue.radio_stations;

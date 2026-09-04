@@ -193,10 +193,10 @@
       "title": "Electronic Night / Club",
       "display_title": "OpenLab — Electronic Night / Club",
       "short_title": "OPENLAB",
-      "stream_url": "https://ice04.fluidstream.net/openlab.mp3?direct=1",
+      "stream_url": "https://ice09.fluidstream.net/openlab.aac",
       "player_url": "https://openlab.fm/radio/on-air",
-      "stream_format": "MP3 live stream",
-      "stream_transport": "Direct MP3",
+      "stream_format": "AAC live stream",
+      "stream_transport": "Direct AAC",
       "permission_scope": "Internal demo only",
       "notion_page_url": "https://app.notion.com/p/3d07b9c99c568153a413c53b9638f60f",
       "status": "Approved",
@@ -239,7 +239,7 @@
       ],
       "suitable_citizen_state": "Focused daytime movement, curiosity, creative work, shared energy and readiness for house, techno or IDM.",
       "not_suitable_citizen_state": "Acute sensory overload, high startle sensitivity, sleep onset or a stated need for quiet and predictable programming.",
-      "editorial_notes": "OpenLab’s daily electronic block: Electronic Night on weekdays and Club on weekends in the current schedule. Approved by Ben on 2026-09-04 for the password-locked staging candidate; public release requires official OpenLab permission.",
+      "editorial_notes": "OpenLab’s daily electronic block: Electronic Night on weekdays and Club on weekends in the current schedule. Runtime uses the AAC source preferred by OpenLab’s own player. Approved by Ben on 2026-09-04 for the password-locked staging candidate; public release requires official OpenLab permission.",
       "music_room_fit": [
         "modul8-infinity"
       ]
