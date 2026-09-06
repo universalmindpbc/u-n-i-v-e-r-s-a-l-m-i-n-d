@@ -1,0 +1,84 @@
+{
+  "source_sha256": "150cdb2a74bd51d7d148e604e718c8a70b814575aa8d7e00f4d163d990c280c8",
+  "delivery_sha256": "e22671c1cdff6fdd970ab74541357f0ba783c2b2bd1aef2583e42573df135b38",
+  "duration_seconds": 334.78220833333336,
+  "headroom_trim_db": -3,
+  "codec": "AAC LC 192 kbps stereo 48 kHz",
+  "delivery_bytes": 8066724,
+  "comparison": "Per-channel Hann-window FFT band energy, AAC decoded, +3 dB compensation for authored trim; 65536 frames, nonoverlapping windows. Level preservation is not waveform equivalence.",
+  "bands": [
+    {
+      "hz": [
+        1,
+        20
+      ],
+      "total_energy_delta_db": 0.8585,
+      "window_delta_percentiles_db": [
+        -0.4301,
+        0.418,
+        3.8298
+      ]
+    },
+    {
+      "hz": [
+        20,
+        40
+      ],
+      "total_energy_delta_db": 0.5953,
+      "window_delta_percentiles_db": [
+        -0.3767,
+        0.3627,
+        3.935
+      ]
+    },
+    {
+      "hz": [
+        40,
+        80
+      ],
+      "total_energy_delta_db": -0.0155,
+      "window_delta_percentiles_db": [
+        -0.0633,
+        -0.0146,
+        0.0201
+      ]
+    },
+    {
+      "hz": [
+        80,
+        200
+      ],
+      "total_energy_delta_db": -0.0204,
+      "window_delta_percentiles_db": [
+        -0.0617,
+        -0.0183,
+        0.003
+      ]
+    },
+    {
+      "hz": [
+        200,
+        4000
+      ],
+      "total_energy_delta_db": -0.0242,
+      "window_delta_percentiles_db": [
+        -0.0665,
+        -0.0253,
+        -0.0101
+      ]
+    },
+    {
+      "hz": [
+        4000,
+        14000
+      ],
+      "total_energy_delta_db": -0.0551,
+      "window_delta_percentiles_db": [
+        -0.1585,
+        -0.0807,
+        -0.0329
+      ]
+    }
+  ],
+  "decoded_peak_dbfs": -3.2188
+}

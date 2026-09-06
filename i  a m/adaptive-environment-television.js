@@ -8643,11 +8643,23 @@
       soundResearchGainFrame = 0;
     }
     if (soundResearchMonitor) updateSoundResearchMonitor(soundResearchDiagnostics());
+    window.dispatchEvent(new CustomEvent("iam:sound-master-change"));
     return soundResearchEnabled;
   }
 
   window.IAMQuantumTree = {
     diagnostics: soundResearchDiagnostics,
+    // The mantra uses measured programme masking only, never continuity/audition.
+    getMantraProgrammeState() {
+      const { media, source } = soundResearchActiveMedia();
+      return {
+        media, source,
+        enabled: soundResearchEnabled,
+        quantumGain: Math.min(soundResearchMaxVolume, Number(soundResearchAudio?.volume || 0)),
+        outputMultiplier: soundResearchOutputMultiplier(),
+        measurement: window.IAMEMDR?.getProgrammeMaskingLevel?.(media) || null,
+      };
+    },
     getPeakVolume() {
       return soundResearchMaxVolume;
     },

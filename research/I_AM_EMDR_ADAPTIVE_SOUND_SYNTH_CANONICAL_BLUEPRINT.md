@@ -1825,6 +1825,44 @@ Before writing feature code, record explicit answers here or in a later dated re
 
 ---
 
+## 2026-09-06 addition - Sub-audible mantra delivery
+
+Ben requested a separate recorded Quantum Tree Mantra layer and approved a discreet
+public on/off row in Sound with no volume slider. The listener preference is saved;
+Sound master off stops it. Ordinary eligible sessions arm it by default, subject to
+browser permission and programme masking. The existing audible Mantra sampler is
+separate and unchanged.
+
+- Source: `q u a n t u m [ t r e e ] m a n t r a.wav`, 334.782208 seconds,
+  stereo PCM16 / 48 kHz. The original supplied master remains unchanged.
+- Delivery: `quantum-tree-mantra-v1.m4a`, stereo AAC LC / 48 kHz / 192 kbps,
+  with a 3 dB downward trim for headroom. Hashes and band comparison are in
+  `research/mantra-delivery-v1.json`.
+- PROVISIONAL: one-third of actual Quantum Tree gain is an upper limit, not
+  a demonstrated threshold of human audibility. A separate downward speech-band
+  peak budget and gate can reduce it further or set it to zero.
+- Independent per-programme 300-4000 Hz analysis; no microphone. Missing/stale
+  analysis, quiet programme, pause, seek, interruption, page hiding, master off,
+  platform off and source changes silence the mantra. Quantum Tree's continuity
+  and solo-audition paths cannot keep the mantra open.
+- A 400 ms stable-mask delay precedes opening; an 80 ms audio-clock gain lease
+  closes if the main thread stalls. This is an engineering bound, not a guarantee
+  of perceptual inaudibility across every listener/device. Subjective calibration
+  and blinding assessment remain required before a trial.
+- The authenticated existing owner back panel controls platform availability and
+  retains owner-history protection. It is not participant randomisation.
+- Ben confirmed no RCT allocation/consent system exists yet and requested readiness
+  for later integration. No study mode or double-blinding claim is introduced.
+  Later integration must use consented, per-session concealed allocation, neutral
+  UI, a stop/withdraw path, fidelity logging and a blinding check. Public product
+  preferences must not override assigned study conditions.
+- Prepared exposure seconds are in-memory engineering estimates, not a trial
+  exposure record. Masking changes delivered exposure and the future protocol must
+  specify gating, interruptions, duration and any restart/loop semantics.
+- No medical benefit, proven entrainment or therapeutic equivalence is asserted.
+
+---
+
 ## Appendix F - No-drift checklist for every future task
 
 At the start of every future task concerning this feature:

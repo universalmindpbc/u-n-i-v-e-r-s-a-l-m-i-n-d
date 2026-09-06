@@ -16,6 +16,9 @@
   const resetButton = document.querySelector("[data-reset-peak]");
   const overallStatus = document.querySelector("[data-overall-status]");
   const saveStatus = document.querySelector("[data-save-status]");
+  const mantraEnabled = document.querySelector("[data-owner-mantra-enabled]");
+  const mantraSave = document.querySelector("[data-owner-mantra-save]");
+  const mantraStatus = document.querySelector("[data-owner-mantra-status]");
   let csrfToken = "";
   let platformPeak = DEFAULT_PEAK;
   let lastPlaybackTime = 0;
@@ -66,6 +69,7 @@
     if (updateSlider) slider.value = String(platformPeak * 100);
     renderPeak();
     renderPlatformPeak();
+    if (mantraEnabled) mantraEnabled.checked = settings?.mantra_enabled === true;
   }
 
   async function requestSettings(payload) {
@@ -171,6 +175,18 @@
     } finally {
       saveButton.disabled = false;
     }
+  });
+
+  mantraSave?.addEventListener("click", async () => {
+    mantraSave.disabled = true;
+    mantraStatus.textContent = "Saving mantra setting…";
+    try {
+      const settings = await requestSettings({ action: "save_mantra", csrf_token: csrfToken, mantra_enabled: mantraEnabled.checked });
+      applySettings(settings, { updateSlider: false });
+      mantraStatus.textContent = `Mantra ${settings.mantra_enabled ? "enabled" : "disabled"}. Players refresh this setting within 10 seconds.`;
+    } catch (error) {
+      mantraStatus.textContent = error.message || "The mantra setting could not be saved.";
+    } finally { mantraSave.disabled = false; }
   });
 
   resetButton?.addEventListener("click", () => {

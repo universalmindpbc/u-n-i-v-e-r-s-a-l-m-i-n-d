@@ -31,6 +31,7 @@ function read_quantum_tree_config(): array
     $fallback = [
         'schema_version' => 1,
         'peak_volume' => QUANTUM_TREE_DEFAULT_PEAK,
+        'mantra_enabled' => true,
         'updated_at' => null,
     ];
 
@@ -52,6 +53,7 @@ function read_quantum_tree_config(): array
     return [
         'schema_version' => 1,
         'peak_volume' => round((float) $peak, 4),
+        'mantra_enabled' => ($config['mantra_enabled'] ?? true) === true,
         'updated_at' => is_string($config['updated_at'] ?? null) ? $config['updated_at'] : null,
     ];
 }
@@ -63,6 +65,8 @@ function public_quantum_tree_config(array $config, bool $authenticated = false):
         'schema_version' => 1,
         'peak_volume' => $peak,
         'peak_percent' => round($peak * 100, 1),
+        'mantra_enabled' => $config['mantra_enabled'],
+        'mantra_gain_ratio' => 1 / 3,
         'peak_db' => peak_decibels($peak),
         'updated_at' => $config['updated_at'],
         'authenticated' => $authenticated,
@@ -121,11 +125,12 @@ function read_json_request(): array
     return $request;
 }
 
-function write_quantum_tree_config(float $peak): array
+function write_quantum_tree_config(float $peak, bool $mantraEnabled): array
 {
     $config = [
         'schema_version' => 1,
         'peak_volume' => round($peak, 4),
+        'mantra_enabled' => $mantraEnabled,
         'updated_at' => gmdate('c'),
     ];
     $json = json_encode($config, JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT) . "\n";
@@ -211,6 +216,15 @@ if (!isset($_SESSION['quantum_tree_csrf']) || !hash_equals($_SESSION['quantum_tr
     json_response(['error' => 'Administrator session verification failed. Refresh and sign in again.'], 403);
 }
 
+if ($action === 'save_mantra') {
+    if (!isset($request['mantra_enabled']) || !is_bool($request['mantra_enabled'])) {
+        json_response(['error' => 'Mantra enabled must be true or false.'], 422);
+    }
+    $existing = read_quantum_tree_config();
+    $config = write_quantum_tree_config((float) $existing['peak_volume'], $request['mantra_enabled']);
+    json_response(public_quantum_tree_config($config, true));
+}
+
 if ($action !== 'save') {
     json_response(['error' => 'Unknown administrator action.'], 400);
 }
@@ -220,5 +234,6 @@ if ($peak === false || $peak < 0 || $peak > 1) {
     json_response(['error' => 'Peak volume must be between 0 and 1.'], 422);
 }
 
-$config = write_quantum_tree_config((float) $peak);
+$existing = read_quantum_tree_config();
+$config = write_quantum_tree_config((float) $peak, $existing['mantra_enabled']);
 json_response(public_quantum_tree_config($config, true));

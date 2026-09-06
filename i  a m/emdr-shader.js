@@ -11,6 +11,7 @@
     audioTimeData: null,
     audioContext: null,
     sources: new WeakMap(),
+    maskingTaps: new WeakMap(),
     reactionEnabled: false,
     reactionPrimed: false,
     style: 5,
@@ -580,6 +581,41 @@
     }
   }
 
+  // A silent, per-programme speech-band tap; never mixes research audio into
+  // its own masking measurement or changes the existing programme route.
+  function programmeMaskingLevel(media) {
+    if (!media || !state.sources.has(media) || state.audioContext?.state !== "running") return null;
+    try {
+      let tap = state.maskingTaps.get(media);
+      if (!tap) {
+        const context = state.audioContext;
+        const high = context.createBiquadFilter();
+        high.type = "highpass";
+        high.frequency.value = 300;
+        high.Q.value = 0.707;
+        const low = context.createBiquadFilter();
+        low.type = "lowpass";
+        low.frequency.value = 4000;
+        low.Q.value = 0.707;
+        const analyser = context.createAnalyser();
+        analyser.fftSize = 1024;
+        analyser.smoothingTimeConstant = 0;
+        const silent = context.createGain();
+        silent.gain.value = 0;
+        state.sources.get(media).connect(high);
+        high.connect(low).connect(analyser).connect(silent).connect(context.destination);
+        tap = { analyser, data: new Float32Array(analyser.fftSize), high, low, silent };
+        state.maskingTaps.set(media, tap);
+      }
+      tap.analyser.getFloatTimeDomainData(tap.data);
+      let energy = 0;
+      for (const sample of tap.data) energy += sample * sample;
+      return { speechRms: Math.sqrt(energy / tap.data.length), contextTime: state.audioContext.currentTime };
+    } catch (_) {
+      return null;
+    }
+  }
+
   function averageRange(from, to) {
     let total = 0;
     const end = Math.min(to, state.audioData.length);
@@ -823,6 +859,7 @@
     setTimelineSource,
     setAudioSource(media) { connectAudio(media); state.audioContext?.resume?.().catch(() => {}); return Boolean(state.sources.has(media)); },
     getAudioLevel() { return currentAudioLevel(); },
+    getProgrammeMaskingLevel: programmeMaskingLevel,
     diagnostics() {
       return {
         active: state.active,

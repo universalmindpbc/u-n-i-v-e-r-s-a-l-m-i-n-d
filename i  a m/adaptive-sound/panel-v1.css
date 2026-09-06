@@ -1241,3 +1241,40 @@ body.iam-sound-direct-page .global-nav-trigger {
     filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.42));
   }
 }
+
+/* A quiet, separate control beneath the Sound console. */
+.iam-sound-mantra {
+  position: absolute;
+  z-index: 9;
+  left: 50%;
+  bottom: max(20px, env(safe-area-inset-bottom));
+  transform: translateX(-50%);
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  gap: 5px 14px;
+  width: min(330px, calc(100% - 40px));
+  padding: 9px 14px;
+  border: 1px solid rgba(255,255,255,.2);
+  border-radius: 14px;
+  background: rgba(0,0,0,.62);
+  color: rgba(255,255,255,.94);
+}
+.iam-sound-mantra span { display: block; font-size: 12px; letter-spacing: .03em; }
+.iam-sound-mantra small { display: block; margin-top: 3px; font-size: 10px; color: rgba(255,255,255,.7); }
+.iam-sound-mantra p { grid-column: 1 / -1; margin: 0; font-size: 10px; line-height: 1.4; color: rgba(255,255,255,.72); }
+.iam-sound-mantra button {
+  display: inline-flex; align-items: center; justify-content: center; gap: 7px;
+  min-width: 62px; min-height: 44px; padding: 8px 10px;
+  border: 1px solid rgba(255,255,255,.4); border-radius: 99px;
+  background: transparent; color: inherit; font: inherit; cursor: pointer;
+}
+.iam-sound-mantra button b { font-size: 11px; font-weight: 500; }
+.iam-sound-mantra button i { width: 5px; height: 5px; border-radius: 50%; background: currentColor; }
+.iam-sound-mantra button[aria-pressed="false"] { opacity: .65; }
+.iam-sound-mantra button[aria-pressed="false"] i { background: transparent; box-shadow: inset 0 0 0 1px currentColor; }
+.iam-sound-mantra button:focus-visible { outline: 2px solid white; outline-offset: 3px; }
+@media (max-width: 900px) {
+  .iam-sound-console__deck { min-height: max(100dvh, 780px); }
+  .iam-sound-mantra { top: max(675px, calc(100dvh - 108px)); bottom: auto; margin-bottom: 24px; }
+}
