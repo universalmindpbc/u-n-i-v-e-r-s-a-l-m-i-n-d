@@ -69,7 +69,7 @@
 
   function getDecodedAudioLevel(media) {
     const analysis = states.get(media)?.audioAnalysis;
-    if (!analysis || media.paused || media.ended || media.seeking || media.readyState < 3) return null;
+    if (!analysis || media.paused || media.ended || media.seeking || media.readyState < 2) return null;
     const time = media.currentTime;
     const segment = analysis.segments.findLast(item => time >= item.start && time < item.end);
     if (!segment) return null;

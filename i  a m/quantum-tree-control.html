@@ -97,6 +97,8 @@
         <button type="button" class="quantum-button quantum-button--primary" data-mantra-preview-toggle>Play isolated test</button>
         <button type="button" class="quantum-button" data-mantra-preview-stop>Stop</button>
         <button type="button" class="quantum-button quantum-button--quiet" data-mantra-preview-target>Use target volume</button>
+        <button type="button" class="quantum-button" data-preview-together>Play together</button>
+        <button type="button" class="quantum-button quantum-button--quiet" data-preview-stop-both>Stop both</button>
       </div>
       <audio data-mantra-preview preload="none" loop src="a s s e t s/quantum-tree-mantra-v1.m4a"></audio>
       <div class="quantum-mantra-signal">
@@ -108,7 +110,7 @@
         <div><dt>Playback position</dt><dd data-mantra-preview-clock>0:00 / 5:35</dd></div>
         <div><dt>Measured output</dt><dd data-mantra-preview-output>Silent</dd></div>
       </dl>
-      <p class="quantum-note">The live mantra follows Quantum Tree at one-third of its volume, including its fades. This isolated test starts at that target ceiling; the slider changes this test only. The two isolated players stop each other.</p>
+      <p class="quantum-note">The live mantra follows Quantum Tree at one-third of its volume, including its fades. This isolated test starts at that target ceiling; the slider changes this test only. Use each Play button to hear either layer alone, or Play together to compare both.</p>
       <label class="quantum-slider-label"><input type="checkbox" data-owner-mantra-enabled> Enable the mantra on this platform</label>
       <div class="quantum-actions"><button type="button" class="quantum-button quantum-button--save" data-owner-mantra-save>Save mantra setting</button></div>
       <p class="quantum-save-status" role="status" aria-live="polite" data-owner-mantra-status></p>
@@ -165,6 +167,6 @@
     </section>
   </main>
 
-  <script src="quantum-tree-control.js?v=1bd519a61332"></script>
+  <script src="quantum-tree-control.js?v=8dc366977628"></script>
 </body>
 </html>

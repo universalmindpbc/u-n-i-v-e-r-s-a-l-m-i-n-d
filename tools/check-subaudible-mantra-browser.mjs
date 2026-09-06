@@ -172,7 +172,8 @@ try {
   await page.evaluate(() => { window.__mantraFixture.muted = false; });
   await page.waitForFunction(() => window.IAMSubaudibleMantra.diagnostics().currentGain > 0);
   await page.evaluate(() => { window.__mantraFixture.dispatchEvent(new Event("waiting")); });
-  await zero("Buffering event immediately closes");
+  await page.waitForTimeout(250);
+  assert.ok((await diag()).outputVerified, "A waiting event alone must not stop buffered, advancing music");
   await page.waitForFunction(() => window.IAMSubaudibleMantra.diagnostics().currentGain > 0);
   const leaseGain = await page.evaluate(() => {
     const end = performance.now() + 200;

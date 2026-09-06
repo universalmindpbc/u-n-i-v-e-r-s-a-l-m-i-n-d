@@ -1855,10 +1855,22 @@ separate and unchanged.
   buffered by the player, decoded offline and sampled at the actual media timestamp.
   No second audio playback is created. The existing Quantum Tree RMS-to-gain curve
   remains unchanged; the mantra follows that resulting gain.
-- Transport pause, mute, seek, buffering, page hiding, Sound off and platform off
-  silence the mantra. Its 80 ms audio-clock gain lease closes on a main-thread stall.
+- The complete compressed AAC is fetched once into a browser Blob before audible
+  playback; loops do not depend on continuing network delivery. If it is still
+  loading at the first gesture, a short zero-gain local silence unlocks the same
+  audio element before its source changes to the complete AAC.
+- Transport pause, mute, seek, actual starvation, page hiding, Sound off and platform
+  off silence the mantra. Video download/freeze flags alone do not establish audio
+  starvation: use actual media readiness and an advancing clock. Temporary dips
+  close gain without pausing/restarting the mantra file. Its 80 ms audio-clock gain
+  lease still closes on a main-thread stall.
+- The public signal label is normally “Following music”; measured output alone
+  drives the waveform and indicator. Quiet output remains a flat trace. Persistent
+  failures remain actionable instead of flashing buffering/no-output text.
 - The owner dashboard includes separate isolated mantra play/pause, stop, target
   volume restore, test-volume adjustment and measured post-gain waveform/output.
+  Ben requested independent playback plus Play together/Pause together and Stop both
+  on 2026-09-07. Either layer can play alone or alongside the other.
   Target audition is one-third of the saved Quantum Tree peak. Its volume slider
   affects the isolated test only; the public ratio remains one-third.
 - The authenticated existing owner back panel controls platform availability and

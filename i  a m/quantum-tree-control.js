@@ -186,9 +186,7 @@
   mantraSlider?.addEventListener("input", () => { mantraTestUsesTarget = false; renderMantraLevel(); });
   document.querySelector("[data-mantra-preview-target]")?.addEventListener("click", useMantraTarget);
   document.querySelector("[data-mantra-preview-stop]")?.addEventListener("click", () => pauseMantraTest(true));
-  mantraPlay?.addEventListener("click", async () => {
-    if (!mantraAudio.paused) { pauseMantraTest(); return; }
-    audio.pause();
+  async function playMantraTest() {
     mantraError = "";
     try {
       if (!mantraContext) {
@@ -206,6 +204,19 @@
       const play = mantraAudio.play(); renderMantraLevel();
       await Promise.all([resume, play]);
     } catch (error) { mantraError = error?.name === "NotAllowedError" ? "Click Play to resume" : "Audio error"; pauseMantraTest(); }
+  }
+  mantraPlay?.addEventListener("click", () => {
+    if (!mantraAudio.paused) pauseMantraTest(); else playMantraTest();
+  });
+  document.querySelector("[data-preview-together]")?.addEventListener("click", async () => {
+    if (!audio.paused && !mantraAudio.paused) { audio.pause(); pauseMantraTest(); return; }
+    playbackError = "";
+    renderPeak();
+    // Start both within the same trusted click. Their individual controls stay independent.
+    await Promise.all([audio.play().catch(() => { playbackError = "Press Play to resume"; }), playMantraTest()]);
+  });
+  document.querySelector("[data-preview-stop-both]")?.addEventListener("click", () => {
+    audio.pause(); audio.currentTime = 0; pauseMantraTest(true);
   });
   mantraAudio?.addEventListener("error", () => { mantraError = "File error"; pauseMantraTest(); });
   window.IAMMantraAudition = Object.freeze({ diagnostics: mantraTestDiagnostics });
@@ -213,6 +224,7 @@
 
   function renderDiagnostics(now) {
     renderMantraPreview(now);
+    setText("[data-preview-together]", !audio.paused && !mantraAudio.paused ? "Pause together" : "Play together");
     const currentTime = Number(audio.currentTime || 0);
     if (!audio.paused && Math.abs(currentTime - lastPlaybackTime) > 0.001) lastAdvanceAt = now;
     lastPlaybackTime = currentTime;
@@ -242,7 +254,6 @@
       return;
     }
     playbackError = "";
-    pauseMantraTest();
     renderPeak();
     try {
       await audio.play();
