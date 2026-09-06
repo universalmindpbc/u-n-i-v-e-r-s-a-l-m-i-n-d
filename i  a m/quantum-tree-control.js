@@ -4,6 +4,13 @@
   const SOURCE_LABEL = "Quantum Tree AAC · 192 kbps";
   const accessPanel = document.querySelector("[data-owner-access]");
   const dashboard = document.querySelector("[data-owner-dashboard]");
+  const resetPanel = document.querySelector("[data-owner-reset]");
+  const resetForm = document.querySelector("[data-owner-reset-form]");
+  const resetStatus = document.querySelector("[data-owner-reset-status]");
+  let resetToken = new URLSearchParams(location.hash.slice(1)).get("reset") || "";
+  // Fragments never go to the server. Clear this one from browser history
+  // immediately; retain it only in memory until the form is submitted.
+  if (resetToken) history.replaceState(null, "", location.pathname + location.search);
   const loginForm = document.querySelector("[data-owner-login]");
   const ownerKey = document.querySelector("[data-owner-key]");
   const ownerStatus = document.querySelector("[data-owner-status]");
@@ -96,6 +103,7 @@
   }
 
   function showDashboard(settings) {
+    resetPanel.hidden = true;
     applySettings(settings);
     accessPanel.hidden = true;
     dashboard.hidden = false;
@@ -104,6 +112,7 @@
   }
 
   function showLogin(message = "") {
+    resetPanel.hidden = true;
     csrfToken = "";
     document.querySelector("[data-owner-password-form]")?.reset();
     dashboard.hidden = true;
@@ -268,7 +277,45 @@
   slider.value = String(DEFAULT_PEAK * 100);
   renderPeak();
   renderPlatformPeak();
-  requestSettings()
+  async function showPasswordReset() {
+    accessPanel.hidden = dashboard.hidden = true;
+    resetPanel.hidden = false;
+    resetForm.reset();
+    resetForm.querySelector("button").disabled = true;
+    resetStatus.textContent = "Checking your reset link…";
+    try {
+      await requestSettings({ action: "verify_reset", reset_token: resetToken });
+      resetForm.querySelector("button").disabled = false;
+      resetStatus.textContent = "";
+      resetForm.querySelector("input").focus();
+    } catch (error) { resetStatus.textContent = error.message; }
+  }
+  resetForm?.addEventListener("submit", async event => {
+    event.preventDefault();
+    const password = resetForm.querySelector("#owner-reset-password");
+    const confirmation = resetForm.querySelector("#owner-reset-confirm");
+    if (password.value !== confirmation.value) { resetStatus.textContent = "The passwords do not match."; return; }
+    const button = resetForm.querySelector("button");
+    button.disabled = true;
+    resetStatus.textContent = "Saving your password…";
+    try {
+      const settings = await requestSettings({ action: "reset_password", reset_token: resetToken,
+        new_password: password.value, confirm_password: confirmation.value });
+      resetToken = "";
+      showDashboard(settings);
+      passwordStatus.textContent = "Your password is saved. Use it the next time you sign in.";
+    } catch (error) { resetStatus.textContent = error.message; }
+    finally { password.value = confirmation.value = ""; button.disabled = false; }
+  });
+  window.addEventListener("hashchange", () => {
+    const incoming = new URLSearchParams(location.hash.slice(1)).get("reset");
+    if (!incoming) return;
+    resetToken = incoming;
+    history.replaceState(null, "", location.pathname + location.search);
+    showPasswordReset();
+  });
+  if (resetToken) showPasswordReset();
+  else requestSettings()
     .then((settings) => {
       if (settings.authenticated) showDashboard(settings);
       else showLogin();

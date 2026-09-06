@@ -4,8 +4,9 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="robots" content="noindex,nofollow">
+  <meta name="referrer" content="no-referrer">
   <title>Quantum Tree — Owner Calibration</title>
-  <link rel="stylesheet" href="quantum-tree-control.css?v=09e8aad6f5d9">
+  <link rel="stylesheet" href="quantum-tree-control.css?v=8899ce73486e">
 </head>
 <body>
   <section class="quantum-access" data-owner-access aria-labelledby="quantum-access-title">
@@ -23,12 +24,31 @@
     </div>
   </section>
 
+  <section class="quantum-access" data-owner-reset hidden aria-labelledby="owner-reset-title">
+    <div class="quantum-access__card">
+      <img src="a s s e t s/Universal Mind [ I o H ] Logo.PNG" alt="Universal Mind" class="quantum-control__mark">
+      <p class="quantum-control__eyebrow">Administrator access</p>
+      <h1 id="owner-reset-title">Set your password</h1>
+      <p class="quantum-control__intro">Choose your own password. Your previous access key is not needed.</p>
+      <form class="quantum-access__form" data-owner-reset-form>
+        <label for="owner-reset-password">New password</label>
+        <input id="owner-reset-password" type="password" autocomplete="new-password" autocapitalize="none" spellcheck="false" minlength="8" maxlength="72" required>
+        <label for="owner-reset-confirm">Confirm new password</label>
+        <input id="owner-reset-confirm" type="password" autocomplete="new-password" autocapitalize="none" spellcheck="false" minlength="8" maxlength="72" required>
+        <p class="quantum-note">Use at least 8 characters. Case and spaces count.</p>
+        <button type="submit" class="quantum-button quantum-button--primary" disabled>Save password and open dashboard</button>
+        <p class="quantum-access__status" role="status" aria-live="polite" data-owner-reset-status>Checking your reset link…</p>
+      </form>
+    </div>
+  </section>
+
   <main class="quantum-control" aria-labelledby="quantum-control-title" data-owner-dashboard hidden>
     <header class="quantum-control__header">
       <img src="a s s e t s/Universal Mind [ I o H ] Logo.PNG" alt="Universal Mind" class="quantum-control__mark">
       <div>
         <div class="quantum-control__eyebrow-row">
           <p class="quantum-control__eyebrow">Administrator calibration and verification</p>
+          <a href="#password-heading" class="quantum-link">Change password</a>
           <button type="button" class="quantum-logout" data-owner-logout>Sign out</button>
         </div>
         <h1 id="quantum-control-title">Quantum Tree</h1>
@@ -124,6 +144,6 @@
     </section>
   </main>
 
-  <script src="quantum-tree-control.js?v=2dfb46f610dc"></script>
+  <script src="quantum-tree-control.js?v=55f7471542b4"></script>
 </body>
 </html>

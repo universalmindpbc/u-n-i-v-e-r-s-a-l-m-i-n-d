@@ -1849,6 +1849,10 @@ separate and unchanged.
 - PROVISIONAL: one-third of actual Quantum Tree gain is an upper limit, not
   a demonstrated threshold of human audibility. A separate downward speech-band
   peak budget and gate can reduce it further or set it to zero.
+- The shared programme analyser repairs missed initial media connections and retries
+  suspended/interrupted contexts automatically and on trusted pointer/key input.
+  Recovery reuses each MediaElementAudioSourceNode. Unavailable measurement never
+  opens mantra gain; diagnostics expose connection and context state.
 - Independent per-programme 300-4000 Hz analysis; no microphone. Missing/stale
   analysis, quiet programme, pause, seek, interruption, page hiding, master off,
   platform off and source changes silence the mantra. Quantum Tree's continuity

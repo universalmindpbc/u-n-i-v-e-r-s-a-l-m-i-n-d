@@ -170,6 +170,31 @@ require_same_origin();
 $request = read_json_request();
 $action = is_string($request['action'] ?? null) ? $request['action'] : '';
 
+if ($action === 'verify_reset' || $action === 'reset_password') {
+    $token = is_string($request['reset_token'] ?? null) ? $request['reset_token'] : '';
+    try {
+        quantum_tree_verified_reset($token);
+        if ($action === 'verify_reset') json_response(['valid' => true]);
+        $password = is_string($request['new_password'] ?? null) ? $request['new_password'] : '';
+        $confirmation = is_string($request['confirm_password'] ?? null) ? $request['confirm_password'] : '';
+        if (strlen($password) < 8 || strlen($password) > 72 || str_contains($password, "\0")) {
+            json_response(['error' => 'Use at least 8 characters, up to 72 bytes. Case and spaces are preserved.'], 422);
+        }
+        if (!hash_equals($password, $confirmation)) json_response(['error' => 'The passwords do not match.'], 422);
+        $credentials = quantum_tree_change_password($password, '', $token);
+    } catch (InvalidArgumentException $error) {
+        json_response(['error' => $error->getMessage()], 400);
+    } catch (RuntimeException $error) {
+        json_response(['error' => $error->getMessage()], 500);
+    }
+    session_regenerate_id(true);
+    $_SESSION['quantum_tree_owner'] = true;
+    $_SESSION['quantum_tree_password_revision'] = $credentials['revision'];
+    $_SESSION['quantum_tree_csrf'] = bin2hex(random_bytes(24));
+    unset($_SESSION['quantum_tree_login_attempts'], $_SESSION['quantum_tree_blocked_until']);
+    json_response(public_quantum_tree_config(read_quantum_tree_config(), true));
+}
+
 if ($action === 'login') {
     $now = time();
     $blockedUntil = (int) ($_SESSION['quantum_tree_blocked_until'] ?? 0);

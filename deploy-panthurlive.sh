@@ -531,6 +531,64 @@ deploy_iam_changed() {
   echo "Changed non-video files uploaded: $upload_count; unchanged skipped: $skip_count"
 }
 
+issue_staging_owner_password_reset() {
+  # Explicit owner recovery uses the existing Panthur connection. Ordinary
+  # deployments still never upload or overwrite private runtime credentials.
+  if [[ "$FTP_USER" != "stagingdeploy@universalmind.tv" || "$FTP_HOST" != "sh00023.pa.smartservers.com.au" || -n "$REMOTE_ROOT" ]]; then
+    echo "Owner password reset is restricted to the configured staging account." >&2
+    exit 1
+  fi
+  local reset_dir reset_path download_status
+  reset_dir="$(mktemp -d)"
+  chmod 700 "$reset_dir"
+  reset_path="vogue/iam/api/.runtime-private/quantum-tree-owner-reset.json"
+  if download_remote_file "vogue/iam/api/.runtime-private/quantum-tree-owner.json" "$reset_dir/credentials.json"; then
+    chmod 600 "$reset_dir/credentials.json"
+  else
+    download_status=$?
+    # A missing credential is the original legacy state. Any other transport
+    # error must fail rather than guessing the current credential revision.
+    if [[ "$download_status" -ne 78 ]]; then
+      rm -rf "$reset_dir"
+      echo "Could not read the current administrator credential revision." >&2
+      exit 1
+    fi
+    printf '%s\n' '{"revision":"legacy"}' > "$reset_dir/credentials.json"
+  fi
+  python3 - "$reset_dir" <<'PY'
+import hashlib, json, os, pathlib, secrets, sys, time
+root = pathlib.Path(sys.argv[1])
+os.umask(0o077)
+revision = json.loads((root / 'credentials.json').read_text())['revision']
+if not isinstance(revision, str) or not revision or revision == 'unavailable':
+    raise SystemExit('Credential revision is unavailable; no reset issued.')
+token = secrets.token_hex(32)
+record = {'schema_version': 1, 'credential_revision': revision,
+          'token_hash': hashlib.sha256(token.encode()).hexdigest(), 'expires_at': int(time.time()) + 86400}
+(root / 'reset.json').write_text(json.dumps(record) + '\n')
+(root / 'link.txt').write_text('https://staging.universalmind.tv/vogue/iam/quantum-tree-control.html#reset=' + token + '\n')
+PY
+  if ! put_file "$reset_dir/reset.json" "$reset_path"; then
+    rm -rf "$reset_dir"
+    echo "Reset link was not issued." >&2
+    exit 1
+  fi
+  # Verify token validity over HTTPS without consuming it. Never put the token
+  # in a query string, an audit record, or a command argument.
+  python3 - "$reset_dir" <<'PY'
+import json, pathlib, sys, urllib.request
+root = pathlib.Path(sys.argv[1])
+token = (root / 'link.txt').read_text().strip().split('#reset=')[1]
+request = urllib.request.Request('https://staging.universalmind.tv/vogue/iam/api/quantum-tree-settings.php',
+    data=json.dumps({'action':'verify_reset', 'reset_token':token}).encode(),
+    headers={'Content-Type':'application/json','Origin':'https://staging.universalmind.tv'})
+with urllib.request.urlopen(request, timeout=30) as response:
+    if json.load(response).get('valid') is not True: raise SystemExit('Reset verification failed.')
+PY
+  rm -f "$reset_dir/credentials.json" "$reset_dir/reset.json"
+  echo "One-use staging password reset verified; expires in 24 hours. Private link file: $reset_dir/link.txt"
+}
+
 DEPLOY_MODE="${1:-iam}"
 
 if deployment_requires_owner_state_guard "$DEPLOY_MODE"; then
@@ -571,8 +629,11 @@ case "$DEPLOY_MODE" in
   seed-owner-state)
     deploy_owner_state_seeds
     ;;
+  owner-password-reset)
+    issue_staging_owner_password_reset
+    ;;
   *)
-    echo "Usage: $0 [iam|iam-fast|fast|changed|iam-changed|mark|media|redirects|all|all-fast|all-changed|seed-owner-state]" >&2
+    echo "Usage: $0 [iam|iam-fast|fast|changed|iam-changed|mark|media|redirects|all|all-fast|all-changed|seed-owner-state|owner-password-reset]" >&2
     exit 2
     ;;
 esac

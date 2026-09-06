@@ -70,7 +70,7 @@ button, input { font: inherit; }
   margin-bottom: 30px;
 }
 
-.quantum-control__eyebrow-row { display: flex; align-items: center; justify-content: space-between; gap: 18px; }
+.quantum-control__eyebrow-row { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 18px; }
 .quantum-control__eyebrow-row .quantum-control__eyebrow { margin-bottom: 0; }
 .quantum-logout {
   padding: 0;

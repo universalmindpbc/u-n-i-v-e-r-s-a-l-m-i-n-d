@@ -3,6 +3,22 @@ declare(strict_types=1);
 
 // Deployment excludes .runtime-private; the API's .htaccess denies HTTP access.
 const QUANTUM_TREE_PASSWORD_PATH = __DIR__ . '/.runtime-private/quantum-tree-owner.json';
+const QUANTUM_TREE_RESET_PATH = __DIR__ . '/.runtime-private/quantum-tree-owner-reset.json';
+
+// Only the server administrator can issue this private record. The browser
+// receives the random token, never its stored hash or credential revision.
+function quantum_tree_verified_reset(string $token): array
+{
+    $record = json_decode((string) @file_get_contents(QUANTUM_TREE_RESET_PATH), true);
+    if (!preg_match('/\A[a-f0-9]{64}\z/', $token) || !is_array($record)
+        || !is_string($record['token_hash'] ?? null) || !is_int($record['expires_at'] ?? null)
+        || $record['expires_at'] <= time() || !is_string($record['credential_revision'] ?? null)
+        || !hash_equals($record['token_hash'], hash('sha256', $token))
+        || !hash_equals(quantum_tree_owner_credentials()['revision'], $record['credential_revision'])) {
+        throw new InvalidArgumentException('This reset link is invalid, expired, or has already been used.');
+    }
+    return $record;
+}
 
 function quantum_tree_owner_credentials(): array
 {
@@ -42,7 +58,7 @@ function quantum_tree_owner_authenticated(): bool
         && hash_equals($credentials['revision'], (string) ($_SESSION['quantum_tree_password_revision'] ?? 'legacy'));
 }
 
-function quantum_tree_change_password(string $password, string $expectedRevision): array
+function quantum_tree_change_password(string $password, string $expectedRevision, ?string $resetToken = null): array
 {
     $directory = dirname(QUANTUM_TREE_PASSWORD_PATH);
     if (!is_dir($directory) && !@mkdir($directory, 0700, true) && !is_dir($directory)) {
@@ -55,6 +71,11 @@ function quantum_tree_change_password(string $password, string $expectedRevision
     }
     $temporary = null;
     try {
+        if ($resetToken !== null) {
+            // Validate under the credential lock: two requests cannot redeem
+            // the same token. The new revision invalidates it atomically.
+            $expectedRevision = quantum_tree_verified_reset($resetToken)['credential_revision'];
+        }
         if (!hash_equals(quantum_tree_owner_credentials()['revision'], $expectedRevision)) {
             throw new RuntimeException('Your session changed. Sign in again before changing your password.');
         }
@@ -72,6 +93,9 @@ function quantum_tree_change_password(string $password, string $expectedRevision
         if (!@rename($temporary, QUANTUM_TREE_PASSWORD_PATH)) {
             throw new RuntimeException('Your password could not be saved.');
         }
+        // Revision binding already makes every previous reset link unusable,
+        // even if filesystem cleanup fails.
+        @unlink(QUANTUM_TREE_RESET_PATH);
         return $record;
     } finally {
         if ($temporary && file_exists($temporary)) @unlink($temporary);

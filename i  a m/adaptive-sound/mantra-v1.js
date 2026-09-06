@@ -38,6 +38,7 @@ let programmeSource = "none";
 let audioTime = -1;
 let audioAdvancedAt = 0;
 let outputRms = 0;
+let programmeAnalysis = null;
 
 function silence(reason, pause = true) {
   targetGain = 0;
@@ -107,6 +108,7 @@ function prepareAudio() {
 function arm() {
   if (stopped || !enabled || !platformEnabled) return;
   prepareAudio();
+  window.IAMEMDR?.resumeProgrammeAnalysis?.(true);
   if (fault === "playback_blocked") { fault = ""; retryAt = 0; }
   context?.resume().then(() => { if (fault === "browser_blocked") fault = ""; })
     .catch(() => { fault = "browser_blocked"; silence(fault); });
@@ -118,7 +120,7 @@ function diagnostics() {
     && performance.now() - audioAdvancedAt < 180 && context?.state === "running");
   return { policy: MANTRA_POLICY.version, enabled, platformEnabled,
     masterEnabled: lastMaster, status: enabled && lastMaster && platformEnabled ? fault || status : status, targetGain, currentGain,
-    programmePlaying, programmeSource, programmeTime: Math.max(0, mediaTime), speechRms,
+    programmePlaying, programmeSource, programmeTime: Math.max(0, mediaTime), speechRms, programmeAnalysis,
     outputRms, outputVerified: currentGain > 0 && outputRms > 1e-9 && clockAdvancing,
     clockAdvancing, quantumGainRatio: MANTRA_POLICY.quantumGainRatio,
     readyState: audio?.readyState || 0, currentTime: audio?.currentTime || 0,
@@ -157,6 +159,12 @@ function tick() {
     mediaTime = media.currentTime;
   }
   const measurement = programme?.measurement;
+  programmeAnalysis = window.IAMEMDR?.getProgrammeAnalysisState?.(media) || null;
+  const analysisStatus = !programmeAnalysis ? "analysis_unavailable"
+    : !programmeAnalysis.supported ? "unsupported"
+    : programmeAnalysis.error ? "analysis_error"
+    : /suspended|interrupted/.test(programmeAnalysis.contextState) ? "analysis_suspended"
+    : !programmeAnalysis.connected ? "analysis_unconnected" : "analysis_unavailable";
   if (measurement && measurement.contextTime !== measuredContextTime) {
     measuredContextTime = measurement.contextTime;
     measuredAt = now;
@@ -171,7 +179,7 @@ function tick() {
     : media.error ? "programme_error" : media.ended ? "programme_ended"
     : media.paused ? "programme_paused" : media.muted || media.volume <= 0 ? "programme_muted"
     : media.seeking ? "programme_seeking" : media.readyState < 3 || media.dataset?.streamFreezeState ? "programme_buffering"
-    : !advancing ? "programme_not_advancing" : !measurement ? "analysis_unavailable"
+    : !advancing ? "programme_not_advancing" : !measurement ? analysisStatus
     : now - measuredAt >= 80 ? "analysis_stale"
     : document.body.classList.contains("jbh-ethics-open") ? "consent_open" : "";
   if (unavailable) { silence(unavailable); return; }
@@ -265,6 +273,7 @@ const signalNames = {
   no_programme: "No programme", page_hidden: "Tab hidden", consent_open: "Paused",
   mantra_loading: "Loading", mantra_starting: "Starting", settings_loading: "Loading",
   analysis_unavailable: "Analysis unavailable", analysis_stale: "Analysis stopped",
+  analysis_suspended: "Tap to resume", analysis_unconnected: "Connecting audio", analysis_error: "Audio connection error",
   browser_blocked: "Audio blocked", playback_blocked: "Audio blocked", asset_error: "File error",
   unsupported: "Audio unavailable", settings_error: "Settings unavailable", settings_stale: "Settings expired",
   programme_error: "Music error",

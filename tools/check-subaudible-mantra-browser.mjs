@@ -25,7 +25,7 @@ await context.addInitScript(() => {
   if (navigator.mediaDevices) navigator.mediaDevices.getUserMedia = () => Promise.reject(new Error("QA disables microphone"));
 });
 if (process.env.MANTRA_QA_LOCAL === "1") {
-  const files = ["index.html", "adaptive-environment-television.css", "adaptive-sound/mantra-v1.js", "adaptive-sound/mantra-policy-v1.js", "adaptive-sound/panel-v1.css", "mantra-sampler.css", "quantum-tree-control.html", "quantum-tree-control.js", "quantum-tree-control.css"];
+  const files = ["index.html", "emdr-shader.js", "adaptive-environment-television.css", "adaptive-sound/mantra-v1.js", "adaptive-sound/mantra-policy-v1.js", "adaptive-sound/panel-v1.css", "mantra-sampler.css", "quantum-tree-control.html", "quantum-tree-control.js", "quantum-tree-control.css"];
   await context.route("https://staging.universalmind.tv/vogue/iam/**", async route => {
     const file = decodeURIComponent(new URL(route.request().url()).pathname).replace("/vogue/iam/", "");
     if (!files.includes(file)) return route.continue();

@@ -11,7 +11,11 @@
     audioTimeData: null,
     audioContext: null,
     sources: new WeakMap(),
+    routedSources: new WeakSet(),
     maskingTaps: new WeakMap(),
+    sourceErrors: new WeakMap(),
+    sourceAttempts: new WeakMap(),
+    lastResumeAt: -Infinity,
     reactionEnabled: false,
     reactionPrimed: false,
     style: 5,
@@ -561,7 +565,10 @@
 
   function connectAudio(media) {
     const AudioContextClass = window.AudioContext || window.webkitAudioContext;
-    if (!media || !AudioContextClass || state.sources.has(media)) return;
+    if (!media || !AudioContextClass || state.routedSources.has(media)) return;
+    const now = performance.now();
+    if (now - (state.sourceAttempts.get(media) ?? -Infinity) < 1000) return;
+    state.sourceAttempts.set(media, now);
     try {
       if (!state.audioContext) state.audioContext = new AudioContextClass();
       if (!state.analyser) {
@@ -572,19 +579,44 @@
         state.audioData = new Uint8Array(state.analyser.frequencyBinCount);
         state.audioTimeData = new Float32Array(state.analyser.fftSize);
       }
-      const source = state.audioContext.createMediaElementSource(media);
-      source.connect(state.analyser);
+      const source = state.sources.get(media) || state.audioContext.createMediaElementSource(media);
+      // Retain ownership immediately: a failed connection must never cause a
+      // second createMediaElementSource call for this element.
       state.sources.set(media, source);
-    } catch (_) {
-      // A media element can only be claimed once by Web Audio. Keep any
-      // already-connected source alive and continue with the fallback pulse.
+      source.connect(state.analyser);
+      state.routedSources.add(media);
+      state.sourceErrors.delete(media);
+    } catch (error) {
+      state.sourceErrors.set(media, error?.name || "AudioConnectionError");
     }
+  }
+
+  function resumeProgrammeAnalysis(gesture = false) {
+    const context = state.audioContext;
+    if (!context || context.state === "running" || context.state === "closed" || document.hidden) return;
+    const now = performance.now();
+    if (!gesture && now - state.lastResumeAt < 1000) return;
+    state.lastResumeAt = now;
+    // Safari can interrupt the context independently of HTML media playback.
+    // Retry on recovery and within the next real gesture, even if an earlier
+    // resume promise is still waiting for browser permission.
+    context.resume().catch(() => {});
+  }
+
+  function programmeAnalysisState(media) {
+    return { connected: Boolean(media && state.routedSources.has(media)),
+      contextState: state.audioContext?.state || "unavailable",
+      error: media ? state.sourceErrors.get(media) || "" : "",
+      supported: Boolean(window.AudioContext || window.webkitAudioContext) };
   }
 
   // A silent, per-programme speech-band tap; never mixes research audio into
   // its own masking measurement or changes the existing programme route.
   function programmeMaskingLevel(media) {
-    if (!media || !state.sources.has(media) || state.audioContext?.state !== "running") return null;
+    // Playback may start before this module is ready, or switch to a new media
+    // element. The live measurement owns recovery, not opening the Sound panel.
+    if (media && !document.hidden) { connectAudio(media); resumeProgrammeAnalysis(); }
+    if (!media || !state.routedSources.has(media) || state.audioContext?.state !== "running") return null;
     try {
       let tap = state.maskingTaps.get(media);
       if (!tap) {
@@ -610,8 +642,10 @@
       tap.analyser.getFloatTimeDomainData(tap.data);
       let energy = 0;
       for (const sample of tap.data) energy += sample * sample;
+      state.sourceErrors.delete(media);
       return { speechRms: Math.sqrt(energy / tap.data.length), contextTime: state.audioContext.currentTime };
-    } catch (_) {
+    } catch (error) {
+      state.sourceErrors.set(media, error?.name || "AudioAnalysisError");
       return null;
     }
   }
@@ -857,7 +891,9 @@
       return state.reactionEnabled;
     },
     setTimelineSource,
-    setAudioSource(media) { connectAudio(media); state.audioContext?.resume?.().catch(() => {}); return Boolean(state.sources.has(media)); },
+    setAudioSource(media) { connectAudio(media); resumeProgrammeAnalysis(true); return Boolean(media && state.sources.has(media)); },
+    resumeProgrammeAnalysis,
+    getProgrammeAnalysisState: programmeAnalysisState,
     getAudioLevel() { return currentAudioLevel(); },
     getProgrammeMaskingLevel: programmeMaskingLevel,
     diagnostics() {
@@ -877,4 +913,9 @@
     },
     toggle(options) { return setActive(!state.active, options); },
   };
+  for (const name of ["pointerdown", "keydown"]) {
+    document.addEventListener(name, event => { if (event.isTrusted) resumeProgrammeAnalysis(true); }, true);
+  }
+  document.addEventListener("visibilitychange", () => { if (!document.hidden) resumeProgrammeAnalysis(); });
+  window.addEventListener("pageshow", () => resumeProgrammeAnalysis());
 })();
