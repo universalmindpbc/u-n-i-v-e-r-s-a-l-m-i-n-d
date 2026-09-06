@@ -1275,6 +1275,6 @@ body.iam-sound-direct-page .global-nav-trigger {
 .iam-sound-mantra button[aria-pressed="false"] i { background: transparent; box-shadow: inset 0 0 0 1px currentColor; }
 .iam-sound-mantra button:focus-visible { outline: 2px solid white; outline-offset: 3px; }
 @media (max-width: 900px) {
-  .iam-sound-console__deck { min-height: max(100dvh, 780px); }
-  .iam-sound-mantra { top: max(675px, calc(100dvh - 108px)); bottom: auto; margin-bottom: 24px; }
+  .iam-sound-console__deck { min-height: max(100dvh, calc(525px + max(390px, 54vh))); }
+  .iam-sound-mantra { top: calc(393px + max(390px, 54vh)); bottom: auto; margin-bottom: 24px; }
 }

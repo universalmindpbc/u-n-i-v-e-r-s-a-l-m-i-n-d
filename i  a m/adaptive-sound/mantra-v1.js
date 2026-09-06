@@ -192,7 +192,9 @@ for (const name of ["pause", "waiting", "stalled", "seeking", "ended", "emptied"
   }, true);
 }
 window.addEventListener("iam:sound-master-change", () => {
-  if (!window.IAMQuantumTree?.diagnostics?.().enabled) silence("master_off");
+  lastMaster = Boolean(window.IAMQuantumTree?.diagnostics?.().enabled);
+  if (!lastMaster) silence("master_off");
+  sync();
 });
 window.addEventListener("storage", (event) => {
   if (event.key === preferenceKey) {

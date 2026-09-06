@@ -28,7 +28,9 @@ try {
   await page.waitForFunction(() => window.IAMSubaudibleMantra && window.IAMTelevisionRoom && window.IAMAdaptiveSound);
   await page.waitForFunction(() => window.IAMSubaudibleMantra.diagnostics().platformEnabled);
   assert.equal(await page.locator("body").getAttribute("data-adaptive-selection-source"), "no_checkin_random");
-  await page.evaluate(() => window.IAMTelevisionRoom.preparePresentationEntry());
+  await page.locator("[data-television-play]").click();
+  await page.waitForFunction(() => document.body.classList.contains("television-room-open") && !document.body.classList.contains("television-wallet-settling") && !document.body.classList.contains("television-wallet-pointer-locked"));
+  await page.mouse.move(700, 450);
   await page.locator("[data-reaction-wallet]").hover();
   await page.locator('[data-wallet-category="video"]').click();
   await page.locator(".adaptive-television-local-video").evaluate(video => window.IAMStreamController.play(video).catch(() => {}));
@@ -50,7 +52,11 @@ try {
   await page.locator("[data-adaptive-sound-master]").click();
   await page.setViewportSize({ width: 390, height: 844 });
   await page.waitForTimeout(1000);
+  await button.scrollIntoViewIfNeeded();
   await page.screenshot({ path: out + "/mobile.png" });
+  const matrixBox = await page.locator(".iam-sound-module--control").boundingBox();
+  const mantraBox = await page.locator(".iam-sound-mantra").boundingBox();
+  assert.ok(matrixBox.y + matrixBox.height <= mantraBox.y, "Mantra row must not cover the frequency matrix");
   const box = await button.boundingBox();
   assert.ok(box && box.width >= 44 && box.height >= 44 && box.x >= 0 && box.x + box.width <= 390);
   await page.setViewportSize({ width: 844, height: 390 });
@@ -139,6 +145,10 @@ try {
   report.passed = true;
 } finally {
   report.lastDiagnostics = await diag().catch(() => null);
+  report.programme = await page.evaluate(() => {
+    const state = window.IAMQuantumTree?.getMantraProgrammeState();
+    return { ...state, media: state?.media ? { paused: state.media.paused, muted: state.media.muted, volume: state.media.volume, time: state.media.currentTime, ready: state.media.readyState, src: state.media.currentSrc, dataset: { ...state.media.dataset } } : null, quantum: window.IAMQuantumTree?.diagnostics(), emdr: window.IAMEMDR?.diagnostics() };
+  }).catch(() => null);
   await fs.writeFile(out + "/report.json", JSON.stringify(report, null, 2));
   await page.evaluate(() => {
     window.IAMSubaudibleMantra?.setEnabled(false);
