@@ -697,7 +697,7 @@ body.mantra-sampler-open .adaptive-television-fullscreen-toggle {
 .mantra-signal__led { width: 5px; height: 5px; flex: 0 0 5px; border-radius: 50%; background: rgba(255,255,255,.25); }
 .mantra-signal[data-state="active"] .mantra-signal__led { background: #98d9ae; box-shadow: 0 0 5px rgba(152,217,174,.3); }
 .mantra-signal[data-state="fault"] .mantra-signal__led { background: #e9b47b; }
-.mantra-signal p { margin: 5px 0 0; font-size: 12px; font-weight: 500; line-height: 1.5; color: rgba(255,255,255,.82); text-shadow: 0 1px 2px rgba(0,0,0,.65); }
+.mantra-signal p { margin: 5px 0 0; font-size: 11.5px; font-weight: 400; line-height: 1.5; color: rgba(255,255,255,.82); text-shadow: 0 1px 2px rgba(0,0,0,.65); }
 .mantra-signal button:focus-visible, .mantra-signal__readout:focus-visible { outline: 1px solid rgba(255,255,255,.5); outline-offset: 5px; }
 @media (max-width: 720px) {
   .mantra-signal { position: relative; right: auto; bottom: auto; max-width: 100%; margin: 22px 0 0 auto; }
