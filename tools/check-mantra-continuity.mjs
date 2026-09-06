@@ -19,7 +19,7 @@ try{for(const track of ['flume-tiny-cities','caroline-polachek-welcome-to-my-isl
  });
  page.on('pageerror',e=>errors.push(e.message));
  await page.route('**/quantum-tree-mantra-v1.m4a',async route=>{requests.push({range:route.request().headers().range||null});await heldAsset;return route.continue()});
- if(process.env.MANTRA_QA_LOCAL==='1')for(const file of ['index.html','cloudflare-stream-controller.js','adaptive-sound/mantra-v1.js'])await page.route('**/'+file+'*',route=>route.fulfill({path:path.join(root,'i  a m',file),contentType:file.endsWith('.html')?'text/html':'text/javascript'}));
+ if(process.env.MANTRA_QA_LOCAL==='1')for(const file of ['index.html','script.js','cloudflare-stream-controller.js','adaptive-sound/mantra-v1.js'])await page.route('**/'+file+'*',route=>route.fulfill({path:path.join(root,'i  a m',file),contentType:file.endsWith('.html')?'text/html':'text/javascript'}));
  const diag=()=>page.evaluate(()=>IAMSubaudibleMantra.diagnostics());
  try{
  await page.goto('https://staging.universalmind.tv/vogue/iam/index.html?selected_track_id='+track,{waitUntil:'domcontentloaded'});await page.waitForFunction(()=>window.IAMSubaudibleMantra);

@@ -10,6 +10,7 @@
     });
   }
   window.IAMStreamReady = load("cloudflare-stream-catalogue.js?v=stream-catalogue-9f5cc4aaae66")
+    // This loader and the shared audio-readiness controller are versioned together.
     .then(() => load("cloudflare-stream-controller.js?v=stream-controller-ac5d4d7fc734"))
     .catch(() => null);
 }());
