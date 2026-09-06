@@ -1,4 +1,4 @@
-import { MANTRA_POLICY, mantraTarget } from "./mantra-policy-v1.js?v=cad75843f590";
+import { MANTRA_POLICY, mantraTarget } from "./mantra-policy-v1.js?v=3c2b6cb558bb";
 
 // Enabled by default; the optional control lives in the Mantra viewer only.
 const preferenceKey = "iamSubaudibleMantraV2";
@@ -19,9 +19,6 @@ let mediaSource = null;
 let activeMedia = null;
 let mediaTime = -1;
 let advancedAt = 0;
-let measuredContextTime = -1;
-let measuredAt = 0;
-let programmeSince = 0;
 let lastTick = performance.now();
 let targetGain = 0;
 let status = "settings_loading";
@@ -33,12 +30,11 @@ let stopped = false;
 let interval = 0;
 let lastMaster = false;
 let programmePlaying = false;
-let speechRms = 0;
+let quantumGain = 0;
 let programmeSource = "none";
 let audioTime = -1;
 let audioAdvancedAt = 0;
 let outputRms = 0;
-let programmeAnalysis = null;
 
 function silence(reason, pause = true) {
   targetGain = 0;
@@ -48,7 +44,6 @@ function silence(reason, pause = true) {
     gain.gain.setValueAtTime(0, context.currentTime);
   }
   if (pause) {
-    programmeSince = 0;
     if (audio && !audio.paused) audio.pause();
   }
 }
@@ -110,6 +105,11 @@ function arm() {
   prepareAudio();
   window.IAMEMDR?.resumeProgrammeAnalysis?.(true);
   if (fault === "playback_blocked") { fault = ""; retryAt = 0; }
+  if (audio?.paused && !pendingPlay) {
+    pendingPlay = true;
+    audio.play().catch(() => { fault = "playback_blocked"; silence(fault); })
+      .finally(() => { pendingPlay = false; });
+  }
   context?.resume().then(() => { if (fault === "browser_blocked") fault = ""; })
     .catch(() => { fault = "browser_blocked"; silence(fault); });
 }
@@ -120,7 +120,7 @@ function diagnostics() {
     && performance.now() - audioAdvancedAt < 180 && context?.state === "running");
   return { policy: MANTRA_POLICY.version, enabled, platformEnabled,
     masterEnabled: lastMaster, status: enabled && lastMaster && platformEnabled ? fault || status : status, targetGain, currentGain,
-    programmePlaying, programmeSource, programmeTime: Math.max(0, mediaTime), speechRms, programmeAnalysis,
+    programmePlaying, programmeSource, programmeTime: Math.max(0, mediaTime), quantumGain,
     outputRms, outputVerified: currentGain > 0 && outputRms > 1e-9 && clockAdvancing,
     clockAdvancing, quantumGainRatio: MANTRA_POLICY.quantumGainRatio,
     readyState: audio?.readyState || 0, currentTime: audio?.currentTime || 0,
@@ -151,27 +151,15 @@ function tick() {
     silence("programme_change");
     activeMedia = media;
     mediaTime = -1;
-    advancedAt = measuredAt = 0;
-    measuredContextTime = -1;
+    advancedAt = 0;
   }
   if (media && media.currentTime !== mediaTime) {
     if (mediaTime >= 0) advancedAt = now;
     mediaTime = media.currentTime;
   }
-  const measurement = programme?.measurement;
-  programmeAnalysis = window.IAMEMDR?.getProgrammeAnalysisState?.(media) || null;
-  const analysisStatus = !programmeAnalysis ? "analysis_unavailable"
-    : !programmeAnalysis.supported ? "unsupported"
-    : programmeAnalysis.error ? "analysis_error"
-    : /suspended|interrupted/.test(programmeAnalysis.contextState) ? "analysis_suspended"
-    : !programmeAnalysis.connected ? "analysis_unconnected" : "analysis_unavailable";
-  if (measurement && measurement.contextTime !== measuredContextTime) {
-    measuredContextTime = measurement.contextTime;
-    measuredAt = now;
-  }
+  quantumGain = Number.isFinite(programme?.quantumGain) ? programme.quantumGain : 0;
   const advancing = advancedAt > 0 && now - advancedAt < 180;
   programmePlaying = Boolean(media && !media.paused && !media.ended && advancing);
-  speechRms = Number.isFinite(measurement?.speechRms) ? measurement.speechRms * (media?.volume || 0) : 0;
   const unavailable = document.hidden ? "page_hidden"
     : settingsError ? "settings_error" : !settingsAt ? "settings_loading"
     : now - settingsAt >= 30000 ? "settings_stale" : !platformEnabled ? "platform_off"
@@ -179,18 +167,12 @@ function tick() {
     : media.error ? "programme_error" : media.ended ? "programme_ended"
     : media.paused ? "programme_paused" : media.muted || media.volume <= 0 ? "programme_muted"
     : media.seeking ? "programme_seeking" : media.readyState < 3 || media.dataset?.streamFreezeState ? "programme_buffering"
-    : !advancing ? "programme_not_advancing" : !measurement ? analysisStatus
-    : now - measuredAt >= 80 ? "analysis_stale"
+    : !advancing ? "programme_not_advancing"
     : document.body.classList.contains("jbh-ethics-open") ? "consent_open" : "";
   if (unavailable) { silence(unavailable); return; }
-  // Qualify continuous programme playback once, not 400 ms of unbroken loudness.
-  // Brief musical dips close gain immediately without restarting the decoded loop.
-  if (!programmeSince) programmeSince = now;
   const target = mantraTarget({ enabled, platformEnabled, masterEnabled: lastMaster,
-    available: true, advancing, speechRms, quantumGain: programme?.quantumGain,
-    outputMultiplier: programme?.outputMultiplier });
-  if (!target) { silence(speechRms <= MANTRA_POLICY.speechFloor ? "quiet_mask" : "quantum_gain_zero", false); return; }
-  if (now - programmeSince < MANTRA_POLICY.openAfterMs) { status = "programme_settling"; return; }
+    available: true, advancing, quantumGain });
+  if (!target) { silence("quantum_gain_zero", false); return; }
   if (!audio) prepareAudio();
   if (fault) { silence(fault); return; }
   if (!audio || !gain || context?.state !== "running") { silence("browser_blocked"); return; }
@@ -207,7 +189,8 @@ function tick() {
   if (audio.readyState < 3) { silence("mantra_loading", false); return; }
   const time = context.currentTime;
   const current = Math.min(target, Math.max(0, gain.gain.value));
-  targetGain = target > current ? current + (target - current) * 0.05 : target;
+  // Quantum Tree has already applied its attack/release curve. Do not apply a second one.
+  targetGain = target;
   gain.gain.cancelScheduledValues(time);
   gain.gain.setValueAtTime(Math.min(current, targetGain), time);
   gain.gain.linearRampToValueAtTime(targetGain, time + 0.005);
@@ -220,7 +203,11 @@ document.addEventListener("pointerdown", (event) => { if (event.isTrusted) arm()
 document.addEventListener("keydown", (event) => { if (event.isTrusted) arm(); });
 document.addEventListener("play", (event) => { if (event.target !== audio) arm(); }, true);
 for (const name of ["pause", "waiting", "stalled", "seeking", "ended", "emptied", "volumechange"]) {
-  document.addEventListener(name, (event) => { if (event.target === activeMedia) silence(`programme_${name}`, name !== "volumechange" || activeMedia.muted || activeMedia.volume <= 0); }, true);
+  document.addEventListener(name, event => {
+    if (event.target !== activeMedia) return;
+    if (name === "volumechange" && !activeMedia.muted && activeMedia.volume > 0) return;
+    silence(`programme_${name}`);
+  }, true);
 }
 window.addEventListener("iam:sound-master-change", () => {
   lastMaster = Boolean(window.IAMQuantumTree?.diagnostics?.().enabled);
@@ -266,14 +253,12 @@ const pen = wave?.getContext("2d");
 const readout = signal?.querySelector("[data-mantra-signal-readout]");
 const signalLabel = signal?.querySelector("[data-mantra-signal-state]");
 const signalNames = {
-  user_off: "Off", quiet_mask: "Masking low", quantum_gain_zero: "Layer gain zero", sound_off: "Sound off",
+  user_off: "Off", quantum_gain_zero: "Quantum Tree silent", sound_off: "Sound off",
   platform_off: "Disabled", programme_paused: "Music paused", programme_ended: "Music ended",
   programme_muted: "Music muted", programme_seeking: "Seeking", programme_buffering: "Buffering",
   programme_not_advancing: "Music stopped", programme_settling: "Starting", programme_change: "Changing music",
   no_programme: "No programme", page_hidden: "Tab hidden", consent_open: "Paused",
   mantra_loading: "Loading", mantra_starting: "Starting", settings_loading: "Loading",
-  analysis_unavailable: "Analysis unavailable", analysis_stale: "Analysis stopped",
-  analysis_suspended: "Tap to resume", analysis_unconnected: "Connecting audio", analysis_error: "Audio connection error",
   browser_blocked: "Audio blocked", playback_blocked: "Audio blocked", asset_error: "File error",
   unsupported: "Audio unavailable", settings_error: "Settings unavailable", settings_stale: "Settings expired",
   programme_error: "Music error",

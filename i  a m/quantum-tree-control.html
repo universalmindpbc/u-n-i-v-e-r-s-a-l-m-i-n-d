@@ -6,7 +6,7 @@
   <meta name="robots" content="noindex,nofollow">
   <meta name="referrer" content="no-referrer">
   <title>Quantum Tree — Owner Calibration</title>
-  <link rel="stylesheet" href="quantum-tree-control.css?v=8899ce73486e">
+  <link rel="stylesheet" href="quantum-tree-control.css?v=952eb746acf3">
 </head>
 <body>
   <section class="quantum-access" data-owner-access aria-labelledby="quantum-access-title">
@@ -86,12 +86,33 @@
 
     <section class="quantum-card" aria-labelledby="mantra-heading">
       <p class="quantum-card__kicker">Separate audio layer</p>
-      <h2 id="mantra-heading">Sub-audible mantra</h2>
-      <p class="quantum-note">Quantum Tree Mantra · 5:34.78 · 48 kHz stereo AAC. The provisional ceiling is one-third of Quantum Tree gain, with a further speech-band masking limit. Quiet passages, gaps, loading and unavailable measurements silence this layer.</p>
+      <div class="quantum-card__heading">
+        <h2 id="mantra-heading">Sub-audible mantra</h2>
+        <output class="quantum-peak" for="mantra-preview-slider"><strong data-mantra-preview-percent>1.83%</strong><span data-mantra-preview-db>−34.7 dB</span></output>
+      </div>
+      <label class="quantum-slider-label" for="mantra-preview-slider">Isolated test volume</label>
+      <input id="mantra-preview-slider" class="quantum-slider" type="range" min="0" max="100" step="0.01" value="1.8333333333">
+      <div class="quantum-slider-scale" aria-hidden="true"><span>0%</span><span>50%</span><span>100%</span></div>
+      <div class="quantum-actions">
+        <button type="button" class="quantum-button quantum-button--primary" data-mantra-preview-toggle>Play isolated test</button>
+        <button type="button" class="quantum-button" data-mantra-preview-stop>Stop</button>
+        <button type="button" class="quantum-button quantum-button--quiet" data-mantra-preview-target>Use target volume</button>
+      </div>
+      <audio data-mantra-preview preload="none" loop src="a s s e t s/quantum-tree-mantra-v1.m4a"></audio>
+      <div class="quantum-mantra-signal">
+        <canvas width="240" height="32" data-mantra-preview-wave aria-label="Measured mantra output waveform"></canvas>
+        <span class="quantum-status" data-mantra-preview-state role="status">Stopped</span>
+      </div>
+      <dl class="quantum-diagnostics">
+        <div><dt>Target volume</dt><dd data-mantra-preview-target-level>1.83% · one-third of Quantum Tree</dd></div>
+        <div><dt>Playback position</dt><dd data-mantra-preview-clock>0:00 / 5:35</dd></div>
+        <div><dt>Measured output</dt><dd data-mantra-preview-output>Silent</dd></div>
+      </dl>
+      <p class="quantum-note">The live mantra follows Quantum Tree at one-third of its volume, including its fades. This isolated test starts at that target ceiling; the slider changes this test only. The two isolated players stop each other.</p>
       <label class="quantum-slider-label"><input type="checkbox" data-owner-mantra-enabled> Enable the mantra on this platform</label>
       <div class="quantum-actions"><button type="button" class="quantum-button quantum-button--save" data-owner-mantra-save>Save mantra setting</button></div>
       <p class="quantum-save-status" role="status" aria-live="polite" data-owner-mantra-status></p>
-      <p class="quantum-note">The mantra defaults on with Sound. Listeners can see its live signal and switch it off in the Mantra viewer. This owner switch controls platform availability. Participant allocation and concealed RCT conditions will be integrated separately; this control does not randomise participants.</p>
+      <p class="quantum-note">The mantra defaults on with Sound. This switch saves its platform availability. RCT participant allocation will be integrated separately.</p>
     </section>
 
     <section class="quantum-card" aria-labelledby="verification-heading">
@@ -144,6 +165,6 @@
     </section>
   </main>
 
-  <script src="quantum-tree-control.js?v=55f7471542b4"></script>
+  <script src="quantum-tree-control.js?v=1bd519a61332"></script>
 </body>
 </html>

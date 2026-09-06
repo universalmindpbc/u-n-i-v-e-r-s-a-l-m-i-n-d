@@ -1,0 +1,48 @@
+import assert from 'node:assert/strict';
+import fs from 'node:fs/promises';
+import path from 'node:path';
+import {fileURLToPath} from 'node:url';
+import {chromium} from '/Users/benkorbel/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/playwright/index.mjs';
+const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
+const out=process.env.MANTRA_QA_DIR||'/private/tmp/um-mantra-audition-qa';
+await fs.mkdir(out,{recursive:true});
+const server=await chromium.launchServer({executablePath:'/Applications/Google Chrome.app/Contents/MacOS/Google Chrome',headless:true,args:['--mute-audio']});
+assert.ok(server.process().spawnargs.includes('--mute-audio'));
+const browser=await chromium.connect(server.wsEndpoint());
+const page=await browser.newPage({viewport:{width:1470,height:956}});
+const errors=[];page.on('pageerror',e=>errors.push(e.message));
+const report={mutedProcess:true,authentication:'Owner API response fixture; no credentials or settings changed',checks:[]};
+const diag=()=>page.evaluate(()=>IAMMantraAudition.diagnostics());
+try {
+ if(process.env.MANTRA_QA_LOCAL==='1') for(const file of ['quantum-tree-control.html','quantum-tree-control.js','quantum-tree-control.css'])await page.route('**/'+file+'*',route=>route.fulfill({path:path.join(root,'i  a m',file),contentType:file.endsWith('.html')?'text/html':file.endsWith('.css')?'text/css':'text/javascript'}));
+ await page.route('**/api/quantum-tree-settings.php',route=>route.fulfill({json:{authenticated:true,csrf_token:'qa-owner-session',peak_volume:.055,mantra_enabled:true,mantra_gain_ratio:1/3}}));
+ await page.goto('https://staging.universalmind.tv/vogue/iam/quantum-tree-control.html',{waitUntil:'domcontentloaded'});
+ await page.locator('[data-owner-dashboard]').waitFor({state:'visible'});
+ const play=page.locator('[data-mantra-preview-toggle]');
+ await play.click();
+ await page.waitForFunction(()=>IAMMantraAudition.diagnostics().outputVerified,null,{timeout:30000});
+ const active=await diag();assert.ok(Math.abs(active.gain-.055/3)<1e-8);
+ const wave=await page.locator('[data-mantra-preview-wave]').evaluate(c=>c.toDataURL());
+ await page.waitForTimeout(180);assert.notEqual(await page.locator('[data-mantra-preview-wave]').evaluate(c=>c.toDataURL()),wave);
+ report.checks.push({label:'Target-volume isolated playback and changing post-gain waveform',...active});
+ await play.click();await page.waitForFunction(()=>!IAMMantraAudition.diagnostics().playing);
+ const paused=await diag();await page.waitForTimeout(200);assert.equal((await diag()).currentTime,paused.currentTime);assert.equal(paused.gain,0);
+ await play.click();await page.waitForFunction(t=>IAMMantraAudition.diagnostics().currentTime>t,paused.currentTime);
+ const slider=page.locator('#mantra-preview-slider');
+ await slider.fill('0');await slider.dispatchEvent('input');await page.waitForTimeout(150);assert.equal((await diag()).gain,0);assert.equal((await diag()).outputVerified,false);
+ await slider.fill('1');await slider.dispatchEvent('input');await page.waitForFunction(()=>IAMMantraAudition.diagnostics().outputVerified);assert.ok(Math.abs((await diag()).gain-.01)<1e-8);
+ await page.locator('[data-mantra-preview-target]').click();assert.ok(Math.abs((await diag()).gain-.055/3)<1e-8);
+ await page.locator('[data-preview-toggle]').click();await page.waitForFunction(()=>!IAMMantraAudition.diagnostics().playing&&!document.querySelector('[data-quantum-preview]').paused);
+ await play.click();await page.waitForFunction(()=>IAMMantraAudition.diagnostics().outputVerified);assert.equal(await page.locator('[data-quantum-preview]').evaluate(a=>a.paused),true);
+ await page.locator('[data-mantra-preview-stop]').click();assert.equal((await diag()).currentTime,0);assert.equal((await diag()).gain,0);
+ report.checks.push({label:'Pause/resume, zero/custom volume, exact target restore, stop/reset, and mutual exclusion passed'});
+ await page.locator('#mantra-preview-slider').scrollIntoViewIfNeeded();await page.screenshot({path:out+'/owner-desktop.png'});
+ await page.setViewportSize({width:390,height:844});await page.locator('[data-mantra-preview-toggle]').scrollIntoViewIfNeeded();await page.screenshot({path:out+'/owner-mobile.png'});
+ const overflow=await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth);assert.equal(overflow,false);
+ report.checks.push({label:'Desktop and mobile controls visible without horizontal overflow'});
+ assert.deepEqual(errors,[]);report.passed=true;
+} finally {
+ report.errors=errors;report.last=await diag().catch(()=>null);await fs.writeFile(out+'/report.json',JSON.stringify(report,null,2));
+ await page.evaluate(()=>document.querySelectorAll('audio,video').forEach(m=>m.pause())).catch(()=>{});await browser.close();await server.close();
+}
+console.log(JSON.stringify(report,null,2));

@@ -29,7 +29,7 @@ try {
    HTMLVideoElement.prototype.webkitEnterFullscreen=Element.prototype.requestFullscreen;
    if(navigator.mediaDevices)navigator.mediaDevices.getUserMedia=()=>Promise.reject(Error('QA disables microphone'));
   },{failFirstConnection});
-  if(process.env.MANTRA_QA_LOCAL==='1')for(const file of ['emdr-shader.js','adaptive-sound/mantra-v1.js'])await page.route('**/'+file+'?*',route=>route.fulfill({path:path.join(root,'i  a m',file),contentType:'text/javascript'}));
+  if(process.env.MANTRA_QA_LOCAL==='1')for(const file of ['emdr-shader.js','adaptive-environment-television.js','cloudflare-stream-controller.js','adaptive-sound/mantra-v1.js','adaptive-sound/mantra-policy-v1.js'])await page.route('**/'+file+'?*',route=>route.fulfill({path:path.join(root,'i  a m',file),contentType:'text/javascript'}));
   try{
    await page.goto('https://staging.universalmind.tv/vogue/iam/index.html?selected_track_id=billy-idol-eyes-without-a-face',{waitUntil:'domcontentloaded'});
    await page.waitForFunction(()=>window.IAMSubaudibleMantra&&window.IAMEMDR);
@@ -39,7 +39,7 @@ try {
    if(await page.locator('[data-reaction-wallet]').getAttribute('data-wallet-view')!=='video')await page.locator('[data-wallet-category=video]').click();
    await page.locator('[data-video-mantra-open]').click();
    await page.waitForFunction(()=>IAMSubaudibleMantra.diagnostics().outputVerified,null,{timeout:45000});
-   const initial=await page.evaluate(()=>IAMSubaudibleMantra.diagnostics());
+   const initial=await page.evaluate(()=>({...IAMSubaudibleMantra.diagnostics(),programmeAnalysis:IAMEMDR.getProgrammeAnalysisState(IAMQuantumTree.getMantraProgrammeState().media)}));
    assert.equal(initial.programmeAnalysis.connected,true);assert.equal(initial.programmeAnalysis.contextState,'running');
    assert.equal(await page.evaluate(()=>window.qaFailedConnection),failFirstConnection);
    const claims=await page.evaluate(()=>window.qaClaims);
@@ -51,8 +51,8 @@ try {
    await page.waitForFunction(()=>window.qaProgrammeContext.state==='running'&&IAMSubaudibleMantra.diagnostics().outputVerified);
    const autoRecovered=await page.evaluate(()=>IAMSubaudibleMantra.diagnostics());
    await page.evaluate(async()=>{window.qaBlockedContext=window.qaProgrammeContext;await window.qaProgrammeContext.suspend()});
-   await page.waitForTimeout(350);
-   const blocked=await page.evaluate(()=>IAMSubaudibleMantra.diagnostics());
+   await page.waitForFunction(()=>IAMSubaudibleMantra.diagnostics().currentGain===0,null,{timeout:5000});
+   const blocked=await page.evaluate(()=>({...IAMSubaudibleMantra.diagnostics(),programmeAnalysis:IAMEMDR.getProgrammeAnalysisState(IAMQuantumTree.getMantraProgrammeState().media)}));
    assert.equal(blocked.currentGain,0);assert.equal(blocked.outputVerified,false);assert.equal(blocked.programmeAnalysis.contextState,'suspended');
    await page.locator('.mantra-signal p').click();
    await page.waitForFunction(()=>IAMSubaudibleMantra.diagnostics().outputVerified);

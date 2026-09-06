@@ -8375,7 +8375,8 @@
       return soundResearchMaxVolume * outputMultiplier;
     }
     if (activeMedia) {
-      const measuredLevel = Number(window.IAMEMDR?.getAudioLevel?.());
+      const decodedLevel = window.IAMStreamController?.getDecodedAudioLevel?.(activeMedia);
+      const measuredLevel = Number(decodedLevel ?? window.IAMEMDR?.getAudioLevel?.(activeMedia));
       soundResearchMediaLevel = Number.isFinite(measuredLevel) ? measuredLevel * activeMedia.volume : 0;
       const normalizedLevel = clamp(
         (soundResearchMediaLevel - SOUND_RESEARCH_SILENCE_FLOOR) /
@@ -8649,15 +8650,14 @@
 
   window.IAMQuantumTree = {
     diagnostics: soundResearchDiagnostics,
-    // The mantra uses measured programme masking only, never continuity/audition.
+    // Share the actual Quantum Tree gain after its existing waveform and fade algorithm.
     getMantraProgrammeState() {
       const { media, source } = soundResearchActiveMedia();
       return {
         media, source,
         enabled: soundResearchEnabled,
-        quantumGain: Math.min(soundResearchMaxVolume, Number(soundResearchAudio?.volume || 0)),
-        outputMultiplier: soundResearchOutputMultiplier(),
-        measurement: window.IAMEMDR?.getProgrammeMaskingLevel?.(media) || null,
+        quantumGain: soundResearchAudio && !soundResearchAudio.paused && soundResearchAudio.readyState >= 2
+          ? Math.min(soundResearchMaxVolume, Number(soundResearchAudio.volume || 0)) : 0,
       };
     },
     getPeakVolume() {

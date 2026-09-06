@@ -12,7 +12,6 @@
     audioContext: null,
     sources: new WeakMap(),
     routedSources: new WeakSet(),
-    maskingTaps: new WeakMap(),
     sourceErrors: new WeakMap(),
     sourceAttempts: new WeakMap(),
     lastResumeAt: -Infinity,
@@ -610,46 +609,6 @@
       supported: Boolean(window.AudioContext || window.webkitAudioContext) };
   }
 
-  // A silent, per-programme speech-band tap; never mixes research audio into
-  // its own masking measurement or changes the existing programme route.
-  function programmeMaskingLevel(media) {
-    // Playback may start before this module is ready, or switch to a new media
-    // element. The live measurement owns recovery, not opening the Sound panel.
-    if (media && !document.hidden) { connectAudio(media); resumeProgrammeAnalysis(); }
-    if (!media || !state.routedSources.has(media) || state.audioContext?.state !== "running") return null;
-    try {
-      let tap = state.maskingTaps.get(media);
-      if (!tap) {
-        const context = state.audioContext;
-        const high = context.createBiquadFilter();
-        high.type = "highpass";
-        high.frequency.value = 300;
-        high.Q.value = 0.707;
-        const low = context.createBiquadFilter();
-        low.type = "lowpass";
-        low.frequency.value = 4000;
-        low.Q.value = 0.707;
-        const analyser = context.createAnalyser();
-        analyser.fftSize = 1024;
-        analyser.smoothingTimeConstant = 0;
-        const silent = context.createGain();
-        silent.gain.value = 0;
-        state.sources.get(media).connect(high);
-        high.connect(low).connect(analyser).connect(silent).connect(context.destination);
-        tap = { analyser, data: new Float32Array(analyser.fftSize), high, low, silent };
-        state.maskingTaps.set(media, tap);
-      }
-      tap.analyser.getFloatTimeDomainData(tap.data);
-      let energy = 0;
-      for (const sample of tap.data) energy += sample * sample;
-      state.sourceErrors.delete(media);
-      return { speechRms: Math.sqrt(energy / tap.data.length), contextTime: state.audioContext.currentTime };
-    } catch (error) {
-      state.sourceErrors.set(media, error?.name || "AudioAnalysisError");
-      return null;
-    }
-  }
-
   function averageRange(from, to) {
     let total = 0;
     const end = Math.min(to, state.audioData.length);
@@ -894,8 +853,12 @@
     setAudioSource(media) { connectAudio(media); resumeProgrammeAnalysis(true); return Boolean(media && state.sources.has(media)); },
     resumeProgrammeAnalysis,
     getProgrammeAnalysisState: programmeAnalysisState,
-    getAudioLevel() { return currentAudioLevel(); },
-    getProgrammeMaskingLevel: programmeMaskingLevel,
+    getAudioLevel(media) {
+      // Recovery belongs to the shared programme measurement, independent of
+      // which research viewer is open. Reuse an existing media source.
+      if (media && !document.hidden) { connectAudio(media); resumeProgrammeAnalysis(); }
+      return currentAudioLevel();
+    },
     diagnostics() {
       return {
         active: state.active,

@@ -1846,24 +1846,21 @@ separate and unchanged.
 - Delivery: `quantum-tree-mantra-v1.m4a`, stereo AAC LC / 48 kHz / 192 kbps,
   with a 3 dB downward trim for headroom. Hashes and band comparison are in
   `research/mantra-delivery-v1.json`.
-- PROVISIONAL: one-third of actual Quantum Tree gain is an upper limit, not
-  a demonstrated threshold of human audibility. A separate downward speech-band
-  peak budget and gate can reduce it further or set it to zero.
-- The shared programme analyser repairs missed initial media connections and retries
-  suspended/interrupted contexts automatically and on trusted pointer/key input.
-  Recovery reuses each MediaElementAudioSourceNode. Unavailable measurement never
-  opens mantra gain; diagnostics expose connection and context state.
-- Independent per-programme 300-4000 Hz analysis; no microphone. Missing/stale
-  analysis, quiet programme, pause, seek, interruption, page hiding, master off,
-  platform off and source changes silence the mantra. Quantum Tree's continuity
-  and solo-audition paths cannot keep the mantra open.
-- A 400 ms stable-programme delay precedes initial opening and hard-interruption
-  recovery. Quiet musical dips immediately close gain while the decoded loop keeps
-  running silently; they no longer restart the file or its 400 ms qualification.
-  Actual programme playback and speech-band masking are separate diagnostic states; an 80 ms audio-clock gain lease
-  closes if the main thread stalls. This is an engineering bound, not a guarantee
-  of perceptual inaudibility across every listener/device. Subjective calibration
-  and blinding assessment remain required before a trial.
+- Ben's explicit correction on 2026-09-06 removes the independent speech-band
+  detector and its additional attenuation. The mantra now uses exactly one-third
+  of the actual Quantum Tree gain after the existing curve and fades, with no
+  second threshold or attack curve. Software gain does not prove subjective inaudibility.
+- WebKit HLS can report an all-zero MediaElementAudioSourceNode while music plays.
+  The shared Quantum Tree measurement uses the same HLS audio packets already
+  buffered by the player, decoded offline and sampled at the actual media timestamp.
+  No second audio playback is created. The existing Quantum Tree RMS-to-gain curve
+  remains unchanged; the mantra follows that resulting gain.
+- Transport pause, mute, seek, buffering, page hiding, Sound off and platform off
+  silence the mantra. Its 80 ms audio-clock gain lease closes on a main-thread stall.
+- The owner dashboard includes separate isolated mantra play/pause, stop, target
+  volume restore, test-volume adjustment and measured post-gain waveform/output.
+  Target audition is one-third of the saved Quantum Tree peak. Its volume slider
+  affects the isolated test only; the public ratio remains one-third.
 - The authenticated existing owner back panel controls platform availability and
   retains owner-history protection. It is not participant randomisation.
 - Ben confirmed no RCT allocation/consent system exists yet and requested readiness

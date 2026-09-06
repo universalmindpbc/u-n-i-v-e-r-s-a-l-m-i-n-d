@@ -24,6 +24,64 @@
   const states = new Map();
   const telemetryQueue = [];
   let hlsLibraryPromise = null;
+  const needsDecodedAudioMeasurement = /AppleWebKit/.test(navigator.userAgent)
+    && !/(?:Chrome|Chromium|Edg|OPR)\//.test(navigator.userAgent);
+
+  // WebKit can play HLS while MediaElementAudioSourceNode returns only zeros.
+  // Decode the SAME buffered audio bytes without playing a second audio source,
+  // then sample their waveform at the programme's actual playback timestamp.
+  function attachDecodedAudioMeasurement(state, Hls) {
+    const OfflineContext = window.OfflineAudioContext || window.webkitOfflineAudioContext;
+    if (!needsDecodedAudioMeasurement || state.role !== "music" || !OfflineContext) return;
+    const analysis = { decoder: new OfflineContext(1, 1, 48000), init: null, segments: [], queue: Promise.resolve(), pending: 0 };
+    state.audioAnalysis = analysis;
+    state.hls.on(Hls.Events.BUFFER_APPENDING, (_event, data) => {
+      if (data.type !== "audio" || !data.data?.byteLength) return;
+      const bytes = data.data;
+      const type = String.fromCharCode(...bytes.subarray(4, 8));
+      if (type === "ftyp" || type === "moov") { analysis.init = bytes.slice(); return; }
+      if (!analysis.init || !Number.isFinite(data.frag?.start) || analysis.pending >= 20) return;
+      const start = data.part?.elementaryStreams?.audio?.startPTS
+        ?? data.frag.elementaryStreams?.audio?.startPTS ?? data.frag.start;
+      const packet = new Uint8Array(analysis.init.length + bytes.length);
+      packet.set(analysis.init); packet.set(bytes, analysis.init.length);
+      analysis.pending++;
+      state.video.dataset.streamAudioAnalysis = "decoding";
+      analysis.queue = analysis.queue.then(async () => {
+        if (states.get(state.video) !== state) return;
+        const buffer = await analysis.decoder.decodeAudioData(packet.buffer);
+        if (states.get(state.video) !== state) return;
+        const mono = new Float32Array(buffer.length);
+        for (let channel = 0; channel < buffer.numberOfChannels; channel++) {
+          const input = buffer.getChannelData(channel);
+          for (let i = 0; i < mono.length; i++) mono[i] += input[i] / buffer.numberOfChannels;
+        }
+        analysis.segments.push({ start, end: start + buffer.duration, rate: buffer.sampleRate, mono });
+        analysis.segments = analysis.segments.filter(segment => segment.end > state.video.currentTime - 8).slice(-20);
+        state.video.dataset.streamAudioAnalysis = "ready";
+        delete state.video.dataset.streamAudioAnalysisError;
+      }).catch(error => {
+        state.video.dataset.streamAudioAnalysis = "error";
+        state.video.dataset.streamAudioAnalysisError = error?.name || "DecodeError";
+      }).finally(() => { analysis.pending--; });
+    });
+  }
+
+  function getDecodedAudioLevel(media) {
+    const analysis = states.get(media)?.audioAnalysis;
+    if (!analysis || media.paused || media.ended || media.seeking || media.readyState < 3) return null;
+    const time = media.currentTime;
+    const segment = analysis.segments.findLast(item => time >= item.start && time < item.end);
+    if (!segment) return null;
+    const end = Math.min(segment.mono.length, Math.floor((time - segment.start) * segment.rate));
+    const start = Math.max(0, end - 1024);
+    if (end <= start) return 0;
+    let mean = 0, energy = 0;
+    for (let i = start; i < end; i++) mean += segment.mono[i];
+    mean /= end - start;
+    for (let i = start; i < end; i++) energy += (segment.mono[i] - mean) ** 2;
+    return Math.sqrt(energy / (end - start));
+  }
 
   function now() {
     return window.performance?.now?.() || Date.now();
@@ -922,6 +980,7 @@
       const hls = new Hls(hlsConfig);
       state.hls = hls;
       state.transport = "hls.js";
+      attachDecodedAudioMeasurement(state, Hls);
       hls.on(Hls.Events.MANIFEST_PARSED, () => {
         capHlsLevel(state);
         recordTelemetry(state, "manifest_ready");
@@ -1225,6 +1284,7 @@
   if (TELEMETRY_ENDPOINT) window.setInterval(() => flushTelemetry(), TELEMETRY_FLUSH_MS);
 
   window.IAMStreamController = Object.freeze({
+    getDecodedAudioLevel,
     attach,
     detach,
     release,

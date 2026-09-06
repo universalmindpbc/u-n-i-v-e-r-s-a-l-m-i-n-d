@@ -26,6 +26,14 @@
   const mantraEnabled = document.querySelector("[data-owner-mantra-enabled]");
   const mantraSave = document.querySelector("[data-owner-mantra-save]");
   const mantraStatus = document.querySelector("[data-owner-mantra-status]");
+  const mantraAudio = document.querySelector("[data-mantra-preview]");
+  const mantraSlider = document.querySelector("#mantra-preview-slider");
+  const mantraPlay = document.querySelector("[data-mantra-preview-toggle]");
+  const mantraCanvas = document.querySelector("[data-mantra-preview-wave]");
+  const mantraPen = mantraCanvas?.getContext("2d");
+  let mantraContext, mantraGain, mantraAnalyser, mantraSamples;
+  let mantraError = "", mantraTime = -1, mantraAdvancedAt = 0, mantraRms = 0;
+  let mantraTestUsesTarget = true;
   let csrfToken = "";
   let platformPeak = DEFAULT_PEAK;
   let lastPlaybackTime = 0;
@@ -76,6 +84,7 @@
     if (updateSlider) slider.value = String(platformPeak * 100);
     renderPeak();
     renderPlatformPeak();
+    if (mantraTestUsesTarget) useMantraTarget();
     if (mantraEnabled) mantraEnabled.checked = settings?.mantra_enabled === true;
   }
 
@@ -121,7 +130,89 @@
     window.setTimeout(() => ownerKey.focus(), 0);
   }
 
+  function mantraTestLevel() { return mantraTestUsesTarget ? platformPeak / 3 : clamp(Number(mantraSlider?.value || 0) / 100, 0, 1); }
+  function renderMantraLevel() {
+    const level = mantraTestLevel();
+    setText("[data-mantra-preview-percent]", `${(level * 100).toFixed(2)}%`);
+    setText("[data-mantra-preview-db]", level ? `${decibels(level).toFixed(1)} dB` : "−∞ dB");
+    setText("[data-mantra-preview-target-level]", `${(platformPeak * 100 / 3).toFixed(2)}% · one-third of Quantum Tree`);
+    if (mantraGain) mantraGain.gain.setValueAtTime(mantraAudio.paused ? 0 : level, mantraContext.currentTime);
+  }
+  function useMantraTarget() {
+    mantraTestUsesTarget = true;
+    if (mantraSlider) mantraSlider.value = String(platformPeak * 100 / 3);
+    renderMantraLevel();
+  }
+  function pauseMantraTest(reset = false) {
+    mantraAudio?.pause();
+    if (mantraGain) mantraGain.gain.setValueAtTime(0, mantraContext.currentTime);
+    if (reset && mantraAudio) mantraAudio.currentTime = 0;
+  }
+  function mantraTestDiagnostics() {
+    const advancing = Boolean(mantraAudio && !mantraAudio.paused && performance.now() - mantraAdvancedAt < 250);
+    const gain = mantraContext?.state === "running" ? mantraGain?.gain.value || 0 : 0;
+    return { currentTime: mantraAudio?.currentTime || 0, playing: Boolean(mantraAudio && !mantraAudio.paused),
+      gain, targetGain: platformPeak / 3, outputRms: mantraRms, advancing,
+      outputVerified: advancing && gain > 0 && mantraRms > 1e-9, error: mantraError };
+  }
+  function renderMantraPreview(now) {
+    if (!mantraAudio) return;
+    if (mantraAudio.currentTime !== mantraTime) { mantraTime = mantraAudio.currentTime; mantraAdvancedAt = now; }
+    mantraRms = 0;
+    if (mantraContext?.state === "running") {
+      mantraAnalyser.getFloatTimeDomainData(mantraSamples);
+      mantraRms = Math.sqrt(mantraSamples.reduce((sum, value) => sum + value * value, 0) / mantraSamples.length);
+    }
+    const d = mantraTestDiagnostics();
+    const state = document.querySelector("[data-mantra-preview-state]");
+    state.textContent = mantraError || (d.outputVerified ? "Measured output" : d.playing ? (d.gain && !d.advancing ? "Loading" : "Silent") : "Stopped");
+    state.classList.toggle("is-verified", d.outputVerified);
+    mantraPlay.textContent = d.playing ? "Pause isolated test" : "Play isolated test";
+    const clock = value => `${Math.floor(value / 60)}:${String(Math.floor(value % 60)).padStart(2, "0")}`;
+    setText("[data-mantra-preview-clock]", `${clock(d.currentTime)} / ${clock(Number.isFinite(mantraAudio.duration) ? mantraAudio.duration : 334.782)}`);
+    setText("[data-mantra-preview-output]", d.outputVerified ? `${decibels(d.outputRms).toFixed(1)} dBFS RMS` : "Silent");
+    if (mantraPen) {
+      mantraPen.clearRect(0, 0, mantraCanvas.width, mantraCanvas.height);
+      mantraPen.strokeStyle = d.outputVerified ? "#8ff2b1" : "rgba(255,255,255,.3)";
+      mantraPen.lineWidth = 1.5; mantraPen.beginPath();
+      const peak = d.outputVerified ? mantraSamples.reduce((max, value) => Math.max(max, Math.abs(value)), 0) : 0;
+      for (let x = 0; x < mantraCanvas.width; x++) {
+        const y = 16 - (peak ? mantraSamples[Math.floor(x * mantraSamples.length / mantraCanvas.width)] / peak * 13 : 0);
+        if (x) mantraPen.lineTo(x, y); else mantraPen.moveTo(x, y);
+      }
+      mantraPen.stroke();
+    }
+  }
+  mantraSlider?.addEventListener("input", () => { mantraTestUsesTarget = false; renderMantraLevel(); });
+  document.querySelector("[data-mantra-preview-target]")?.addEventListener("click", useMantraTarget);
+  document.querySelector("[data-mantra-preview-stop]")?.addEventListener("click", () => pauseMantraTest(true));
+  mantraPlay?.addEventListener("click", async () => {
+    if (!mantraAudio.paused) { pauseMantraTest(); return; }
+    audio.pause();
+    mantraError = "";
+    try {
+      if (!mantraContext) {
+        const Context = window.AudioContext || window.webkitAudioContext;
+        mantraAudio.muted = true;
+        mantraContext = new Context();
+        mantraGain = mantraContext.createGain(); mantraGain.gain.value = 0;
+        mantraAnalyser = mantraContext.createAnalyser(); mantraAnalyser.fftSize = 1024;
+        mantraSamples = new Float32Array(mantraAnalyser.fftSize);
+        mantraContext.createMediaElementSource(mantraAudio).connect(mantraGain).connect(mantraAnalyser).connect(mantraContext.destination);
+        mantraAudio.volume = 1; mantraAudio.muted = false;
+      }
+      // Both calls occur inside the user's click, preserving Safari permission.
+      const resume = mantraContext.resume();
+      const play = mantraAudio.play(); renderMantraLevel();
+      await Promise.all([resume, play]);
+    } catch (error) { mantraError = error?.name === "NotAllowedError" ? "Click Play to resume" : "Audio error"; pauseMantraTest(); }
+  });
+  mantraAudio?.addEventListener("error", () => { mantraError = "File error"; pauseMantraTest(); });
+  window.IAMMantraAudition = Object.freeze({ diagnostics: mantraTestDiagnostics });
+  window.addEventListener("pagehide", () => { pauseMantraTest(); audio.pause(); });
+
   function renderDiagnostics(now) {
+    renderMantraPreview(now);
     const currentTime = Number(audio.currentTime || 0);
     if (!audio.paused && Math.abs(currentTime - lastPlaybackTime) > 0.001) lastAdvanceAt = now;
     lastPlaybackTime = currentTime;
@@ -151,6 +242,7 @@
       return;
     }
     playbackError = "";
+    pauseMantraTest();
     renderPeak();
     try {
       await audio.play();
@@ -263,6 +355,7 @@
       // The local view still closes if the server session already ended.
     }
     audio.pause();
+    pauseMantraTest();
     showLogin();
   });
 

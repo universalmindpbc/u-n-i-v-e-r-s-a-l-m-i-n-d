@@ -25,7 +25,7 @@ await context.addInitScript(() => {
   if (navigator.mediaDevices) navigator.mediaDevices.getUserMedia = () => Promise.reject(new Error("QA disables microphone"));
 });
 if (process.env.MANTRA_QA_LOCAL === "1") {
-  const files = ["index.html", "emdr-shader.js", "adaptive-environment-television.css", "adaptive-sound/mantra-v1.js", "adaptive-sound/mantra-policy-v1.js", "adaptive-sound/panel-v1.css", "mantra-sampler.css", "quantum-tree-control.html", "quantum-tree-control.js", "quantum-tree-control.css"];
+  const files = ["index.html", "emdr-shader.js", "cloudflare-stream-controller.js", "adaptive-environment-television.js", "adaptive-environment-television.css", "adaptive-sound/mantra-v1.js", "adaptive-sound/mantra-policy-v1.js", "adaptive-sound/panel-v1.css", "mantra-sampler.css", "quantum-tree-control.html", "quantum-tree-control.js", "quantum-tree-control.css"];
   await context.route("https://staging.universalmind.tv/vogue/iam/**", async route => {
     const file = decodeURIComponent(new URL(route.request().url()).pathname).replace("/vogue/iam/", "");
     if (!files.includes(file)) return route.continue();
@@ -84,20 +84,14 @@ try {
   const button = page.locator("[data-subaudible-mantra-toggle]");
   assert.equal(await page.locator(".mantra-signal p").textContent(), "Our silent mantra is a research feature, delivering a 5min meditation from various traditions, played quietly beneath the music.");
   console.log("Mantra viewer reached through TV wallet");
-  // Controlled programme fixtures exercise the actual audio, filter tap and
+  // Controlled programme fixtures exercise the actual audio, shared Quantum Tree measurement and
   // gain route. Only programme selection is replaced; no RMS/gain is invented.
   await page.evaluate(async () => {
     document.querySelectorAll("audio,video").forEach(media => media.pause());
-    const audio = document.createElement("audio");
-    audio.loop = true;
-    document.body.append(audio);
+    const audio = document.querySelector(".adaptive-television-local-video");
+    window.IAMStreamController.release(audio, "isolated_pcm_qa");
+    audio.loop = true; audio.muted = false; audio.volume = 1;
     window.__mantraFixture = audio;
-    window.__mantraOriginalProgrammeState = window.IAMQuantumTree.getMantraProgrammeState;
-    window.IAMQuantumTree.getMantraProgrammeState = () => ({
-      media: audio, source: "qa-fixture", enabled: window.IAMQuantumTree.diagnostics().enabled,
-      quantumGain: 0.055, outputMultiplier: 1,
-      measurement: window.IAMEMDR.getProgrammeMaskingLevel(audio),
-    });
     window.__mantraFixtureSource = async (hz, amplitude) => {
       audio.pause();
       const frames = 48000 * 4;
@@ -119,7 +113,7 @@ try {
   await page.waitForFunction(() => window.IAMSubaudibleMantra.diagnostics().currentGain > 0, null, { timeout: 10000 });
   await page.waitForFunction(() => window.IAMSubaudibleMantra.diagnostics().outputVerified);
   await page.waitForFunction(() => document.querySelector("[data-mantra-signal]").dataset.state === "active");
-  report.checks.push({ label: "Measured strong speech-band fixture opens with real post-gain output and live indicator", ...(await diag()) });
+  report.checks.push({ label: "Measured full-band fixture opens with real post-gain output and live indicator", ...(await diag()) });
   console.log("Measured fixture drives live indicator");
   await page.screenshot({path: out + "/mantra-desktop.png"});
   await page.setViewportSize({width: 390, height: 844});
@@ -139,17 +133,17 @@ try {
   assert.equal(await page.evaluate(() => localStorage.getItem("iamSubaudibleMantraV2")), "off");
   await button.click();
   await page.waitForFunction(() => window.IAMSubaudibleMantra.diagnostics().outputVerified);
-  for (const [label, frequency, amplitude] of [["Quiet programme closes", 1000, 0.001], ["Silence closes", 1000, 0], ["Bass alone does not mask speech", 45, 0.8]]) {
+  for (const [label, frequency, amplitude] of [["Quiet programme closes", 1000, 0.001], ["Silence closes", 1000, 0]]) {
     await page.evaluate(([hz, amp]) => window.__mantraFixtureSource(hz, amp), [frequency, amplitude]);
     await page.waitForTimeout(750);
     await zero(label);
     const state=await diag();
-    assert.equal(state.programmePlaying, true, "Music playback stays distinct from masking");
-    assert.equal(state.status, "quiet_mask");
+    assert.equal(state.programmePlaying, true, "Music playback stays distinct from Quantum Tree gain");
+    assert.equal(state.status, "quantum_gain_zero");
     assert.equal(state.outputVerified, false);
-    assert.equal(await page.locator("[data-mantra-signal]").getAttribute("data-state"), "closed");
+    await page.waitForFunction(() => document.querySelector("[data-mantra-signal]").dataset.state === "closed");
   }
-  // A short dip closes gain but must not pause/restart the mantra file.
+  // A short dip lowers gain but must not pause/restart the mantra file.
   await page.evaluate(() => window.__mantraFixtureSource(1000, 0.4));
   await page.waitForFunction(() => window.IAMSubaudibleMantra.diagnostics().outputVerified);
   const dip=await page.evaluate(async () => {
@@ -162,11 +156,11 @@ try {
     await new Promise(resolve => setTimeout(resolve, 700));
     return {before, quiet, resumed:window.IAMSubaudibleMantra.diagnostics()};
   });
-  assert.equal(dip.quiet.currentGain, 0);
+  assert.ok(dip.quiet.currentGain < dip.resumed.currentGain);
   assert.equal(dip.quiet.playing, true);
   assert.ok(dip.quiet.currentTime > dip.before);
   assert.ok(dip.resumed.outputVerified);
-  report.checks.push({label: "Quiet-to-loud transition closes then restores measured output", ...dip});
+  report.checks.push({label: "Quiet-to-loud transition follows the Quantum Tree fade", ...dip});
   await page.evaluate(() => window.__mantraFixtureSource(1000, 0.4));
   await page.waitForFunction(() => window.IAMSubaudibleMantra.diagnostics().currentGain > 0);
   await page.evaluate(() => window.__mantraFixture.pause());
@@ -187,7 +181,7 @@ try {
   });
   assert.equal(leaseGain, 0, "Gain must expire on the audio clock during a UI stall");
   report.checks.push({ label: "Main-thread stall expires gain", gain: leaseGain });
-  console.log("Masking, controls and interruption checks passed");
+  console.log("Shared gain, controls and interruption checks passed");
   const settings = await (await page.request.get(base + "api/quantum-tree-settings.php")).json();
   assert.equal(typeof settings.mantra_enabled, "boolean");
   assert.equal(settings.mantra_gain_ratio, 1 / 3);
