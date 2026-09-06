@@ -411,7 +411,8 @@ assert.match(televisionCss, /television-page-view-open\.television-wallet-page-o
 assert.doesNotMatch(wallet, /(?:href|src)="a s s e t s\//);
 assert.match(wallet, /data-stream-file="a s s e t s\/Globe Landing Page Video - Sunscreem - Perfection Motion for RMU\.mp4"/);
 assert.match(wallet, /Ethereum Diamond Rainbow \[ e o r a \] 3\.png/);
-assert.match(wallet, /cloudflare-stream-controller\.js\?v=stream-controller-e6ed1b827651/);
+const expectedStreamToken = `stream-controller-${createHash("sha256").update(read("i  a m/cloudflare-stream-controller.js")).digest("hex").slice(0, 12)}`;
+assert.ok(wallet.includes(`cloudflare-stream-controller.js?v=${expectedStreamToken}`));
 assert.match(style, /\.happiness-background-shade\s*\{[^}]*background:\s*rgba\(0, 0, 0, 0\.77\)/s);
 assert.match(style, /\.happiness-card__member img\s*\{[^}]*width:\s*clamp\(54px, 4\.8vw, 75px\)/s);
 assert.match(architecture, /It is not currently backed, pegged, cash redeemable/i);
