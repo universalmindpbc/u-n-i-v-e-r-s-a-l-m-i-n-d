@@ -501,6 +501,7 @@ body.mantra-sampler-open .mantra-orbit__node {
   opacity: 0.54 !important;
 }
 
+body.mantra-sampler-open [data-wallet-onboarding],
 body.mantra-sampler-open .adaptive-television-reaction-wallet,
 body.mantra-sampler-open .adaptive-television-live-pill,
 body.mantra-sampler-open .adaptive-television-cue,

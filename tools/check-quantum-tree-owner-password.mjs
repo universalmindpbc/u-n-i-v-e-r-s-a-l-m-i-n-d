@@ -30,6 +30,10 @@ try {
  assert.equal((await request({action:'change_password',new_password:'not-used-fixture',confirm_password:'not-used-fixture'})).status,401);
  const login=await request({action:'login',password:'legacy-test-fixture'});
  assert.equal(login.body.authenticated,true);let csrf=login.body.csrf_token;
+ const firstCookie=cookie;
+ await request({action:'login',password:'legacy-test-fixture'},{cookie:''});
+ const otherCookie=cookie;
+ cookie=firstCookie;
  const oldCookie=cookie;
  assert.equal((await request({action:'change_password',csrf_token:'wrong',new_password:'not-used-fixture',confirm_password:'not-used-fixture'})).status,403);
  assert.equal((await request({action:'change_password',csrf_token:csrf,new_password:'not-used-fixture',confirm_password:'not-used-fixture'},{origin:'https://other.test'})).status,403);
@@ -44,6 +48,7 @@ try {
  assert.ok(!JSON.stringify(credentials).includes(password));
  assert.equal((await request()).body.authenticated,true);
  assert.equal((await request(null,{cookie:oldCookie,keepCookie:true})).body.authenticated,false);
+ assert.equal((await request(null,{cookie:otherCookie,keepCookie:true})).body.authenticated,false);
  report.checks.push('Custom password stored only as an adaptive hash; CSRF/session rotated; prior session invalidated');
  await request({action:'logout'});
  for(const wrong of ['legacy-test-fixture',password.trim(),password.toLowerCase()]) assert.equal((await request({action:'login',password:wrong})).status,401);
