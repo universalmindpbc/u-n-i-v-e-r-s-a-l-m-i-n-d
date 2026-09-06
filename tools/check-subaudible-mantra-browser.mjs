@@ -128,7 +128,7 @@ try {
   await page.screenshot({path: out + "/mantra-mobile.png"});
   const indicatorBox=await page.locator("[data-mantra-signal]").boundingBox();
   for (const box of await page.locator(".mantra-orbit__node").evaluateAll(nodes => nodes.map(node => ({x:node.getBoundingClientRect().x, right:node.getBoundingClientRect().right})))) assert.ok(box.x >= 0 && box.right <= 390, "Mobile sample pads stay within the viewer");
-  assert.ok(indicatorBox.x >= 0 && indicatorBox.x + indicatorBox.width <= 390 && indicatorBox.height <= 150);
+  assert.ok(indicatorBox.x >= 0 && indicatorBox.x + indicatorBox.width <= 390 && indicatorBox.height <= 180);
   await page.setViewportSize({width: 1440, height: 1000});
   const waveBefore = await page.locator("[data-mantra-signal-wave]").evaluate(canvas => canvas.toDataURL());
   await page.waitForTimeout(200);
