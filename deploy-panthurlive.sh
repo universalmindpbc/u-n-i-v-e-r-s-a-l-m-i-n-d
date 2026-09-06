@@ -542,6 +542,11 @@ issue_staging_owner_password_reset() {
   reset_dir="$(mktemp -d)"
   chmod 700 "$reset_dir"
   reset_path="vogue/iam/api/.runtime-private/quantum-tree-owner-reset.json"
+  # Legacy accounts have no private credential directory until their first
+  # password change. Create it without touching any existing credential.
+  curl --globoff --fail --silent --show-error --user "$FTP_USER:$FTP_PASS" \
+    --quote "*MKD vogue/iam/api/.runtime-private" \
+    --output /dev/null "ftp://$FTP_HOST/"
   if download_remote_file "vogue/iam/api/.runtime-private/quantum-tree-owner.json" "$reset_dir/credentials.json"; then
     chmod 600 "$reset_dir/credentials.json"
   else
