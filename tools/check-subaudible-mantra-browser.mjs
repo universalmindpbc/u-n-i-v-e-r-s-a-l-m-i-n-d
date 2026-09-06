@@ -140,6 +140,27 @@ try {
   await page.waitForFunction(() => window.IAMSubaudibleMantra);
   assert.equal((await diag()).enabled, false);
   report.checks.push({ label: "Off preference survives reload" });
+  await page.goto(base + "quantum-tree-control.html", { waitUntil: "domcontentloaded" });
+  await page.locator("[data-owner-access]").waitFor({ state: "visible" });
+  assert.equal(await page.locator("[data-owner-dashboard]").isVisible(), false);
+  const ownerRequests = [];
+  // UI request wiring with simulated authentication; the live endpoint's
+  // rejection/protected-state checks above are independent of this fixture.
+  await page.route("**/api/quantum-tree-settings.php", route => {
+    const request = route.request();
+    if (request.method() === "POST") ownerRequests.push(request.postDataJSON());
+    return route.fulfill({ status: 200, json: { ...settings, authenticated: true,
+      csrf_token: "qa-owner-session", mantra_enabled: request.method() !== "POST" } });
+  });
+  await page.reload({ waitUntil: "domcontentloaded" });
+  await page.locator("[data-owner-dashboard]").waitFor({ state: "visible" });
+  await page.locator("[data-owner-mantra-enabled]").uncheck();
+  await page.locator("[data-owner-mantra-save]").click();
+  await page.waitForFunction(() => document.querySelector("[data-owner-mantra-status]").textContent.includes("disabled"));
+  assert.deepEqual(ownerRequests, [{ action: "save_mantra", csrf_token: "qa-owner-session", mantra_enabled: false }]);
+  report.checks.push({ label: "Owner UI requires login; simulated authenticated UI sends isolated mantra save with CSRF" });
+  await page.screenshot({ path: out + "/owner.png" });
+  await page.unroute("**/api/quantum-tree-settings.php");
   report.errors = errors;
   assert.deepEqual(errors, []);
   report.passed = true;

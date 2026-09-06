@@ -1,0 +1,72 @@
+{
+  "source_commit": "a3ef221",
+  "staging_url": "https://staging.universalmind.tv/vogue/iam/index.html",
+  "passed": true,
+  "browser": "Separate headless Chromium launched with --mute-audio; native fullscreen and microphone blocked; process closed after verification.",
+  "viewports": [
+    [
+      1440,
+      1000
+    ],
+    [
+      390,
+      844
+    ],
+    [
+      844,
+      390
+    ]
+  ],
+  "checks": [
+    "Public off immediately silences",
+    "Sound master stops the mantra",
+    "Measured strong speech-band fixture opens",
+    "Quiet programme closes",
+    "Silence closes",
+    "Bass alone does not mask speech",
+    "Programme pause closes",
+    "Programme mute closes",
+    "Buffering event immediately closes",
+    "Main-thread stall expires gain",
+    "Platform off closes",
+    "Off preference survives reload",
+    "Owner UI requires login; simulated authenticated UI sends isolated mantra save with CSRF"
+  ],
+  "real_programme": {
+    "policy": "mantra-masking-v1",
+    "enabled": true,
+    "platformEnabled": true,
+    "masterEnabled": true,
+    "status": "masked",
+    "targetGain": 0.00011638433328548396,
+    "currentGain": 0.00011638433352345601,
+    "quantumGainRatio": 0.3333333333333333,
+    "readyState": 4,
+    "currentTime": 10.816,
+    "duration": 334.782,
+    "playing": true,
+    "contextState": "running",
+    "exposureSeconds": 10.760499999999993,
+    "studyAssignment": "not_integrated"
+  },
+  "page_errors": [],
+  "api_verification": {
+    "public_settings": "Live GET confirmed enabled boolean, one-third ratio, unchanged Quantum Tree peak.",
+    "unauthenticated_save": "Live POST rejected with HTTP 401; settings unchanged.",
+    "authenticated_save": "Owner UI request and response wiring verified with simulated authenticated responses; live authenticated save not exercised."
+  },
+  "protected_runtime": "Existing deployment workflow verified protected owner runtime unchanged.",
+  "limitations": [
+    "Digital gate and spectrum checks do not prove subjective inaudibility.",
+    "No RCT allocation, consent system or double blinding is implemented; Ben confirmed this is later integration."
+  ],
+  "served_sha256": {
+    "adaptive-environment-television.js": "6a78c6e711f5b7de8e1a63ae52243cc8bd91adbc3f83f0ab74b14013b8a42eb8",
+    "emdr-shader.js": "b78df026fa108476b85c4b82f57b2d297b88b9ea2e274d6e2e68307c70dca2f1",
+    "adaptive-sound/mantra-v1.js": "0de8c05533effe8a8111cccc14dbc40bbc97d78999bdc1e739b9533d7ffbf9bf",
+    "adaptive-sound/mantra-policy-v1.js": "1687f1f8a38ea72ca821c1cd18eb34b65e879f2172abbe651e065e499e37cff9",
+    "adaptive-sound/panel-v1.css": "6d4549482aa469b0bde743bfd35f81e68184bef2defc0891b6fc83544eb5d5eb",
+    "quantum-tree-control.js": "13937adf15627503b454af744e62de3f8feb202b7149d1c59469acc8b0921745",
+    "a s s e t s/quantum-tree-mantra-v1.m4a": "e22671c1cdff6fdd970ab74541357f0ba783c2b2bd1aef2583e42573df135b38"
+  }
+}
