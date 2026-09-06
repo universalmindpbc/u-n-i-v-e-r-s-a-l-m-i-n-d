@@ -79,7 +79,7 @@ async function loadSettings() {
 // media decoder reads a complete Blob, so subsequent loops need no network.
 function loadAudioAsset() {
   if (cachedSource || assetPending || stopped) return;
-  assetPending = fetch(source, { cache: "force-cache", signal: AbortSignal.timeout(30000) })
+  assetPending = fetch(source, { cache: "force-cache" })
     .then(response => { if (!response.ok) throw new Error("Mantra request failed"); return response.blob(); })
     .then(blob => {
       if (!blob.size) throw new Error("Empty mantra file");
