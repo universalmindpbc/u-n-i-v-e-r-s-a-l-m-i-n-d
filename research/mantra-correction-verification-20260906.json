@@ -1,6 +1,6 @@
 {
-  "verified_at": "2026-09-06T03:28:52.878740+00:00",
-  "source_commit": "bb393560d0434038fd14ab84d00070f4247c92d7",
+  "verified_at": "2026-09-06T03:35:48.931425+00:00",
+  "source_commit": "91fa25d3b4ddacf99cb49b09f466adf4f5c22898",
   "proof_url": "https://staging.universalmind.tv/vogue/iam/index.html",
   "copy": "Our silent mantra is a research feature, delivering a 5min meditation from various traditions, played quietly beneath the music.",
   "browser_checks": [
@@ -347,15 +347,15 @@
   "browser_errors": [],
   "final_visual": {
     "mutedProcess": true,
-    "sourceCommit": "bb393560d0434038fd14ab84d00070f4247c92d7",
+    "sourceCommit": "91fa25d3b4ddacf99cb49b09f466adf4f5c22898",
     "checks": [
       "Exact copy plus full stop; legible final caption; no wallet onboarding overlay; desktop and mobile signal control fits"
     ],
     "textStyle": {
-      "fontSize": "12px",
-      "fontWeight": "500",
+      "fontSize": "11.5px",
+      "fontWeight": "400",
       "color": "rgba(255, 255, 255, 0.82)",
-      "lineHeight": "18px"
+      "lineHeight": "17.25px"
     },
     "diagnostics": {
       "policy": "mantra-masking-v2",
@@ -363,22 +363,22 @@
       "platformEnabled": true,
       "masterEnabled": true,
       "status": "mixing",
-      "targetGain": 0.0001172420087644534,
-      "currentGain": 0.00011724200885510072,
+      "targetGain": 0.000511483711449428,
+      "currentGain": 0.0005114836967550218,
       "programmePlaying": true,
       "programmeSource": "video",
-      "programmeTime": 15.56898,
-      "speechRms": 0.04056655579976399,
-      "outputRms": 1.722172856935279e-06,
+      "programmeTime": 15.516735,
+      "speechRms": 0.05723828827589462,
+      "outputRms": 1.072569417587991e-05,
       "outputVerified": true,
       "clockAdvancing": true,
       "quantumGainRatio": 0.3333333333333333,
       "readyState": 4,
-      "currentTime": 14.262079,
+      "currentTime": 14.553985,
       "duration": 334.782,
       "playing": true,
       "contextState": "running",
-      "exposureSeconds": 14.013800000011928,
+      "exposureSeconds": 13.98189999985694,
       "studyAssignment": "not_integrated"
     },
     "passed": true
@@ -429,9 +429,9 @@
     "Staging settings {\"schema_version\":1,\"peak_volume\":0.055,\"peak_percent\":5.5,\"mantra_enabled\":true,\"mantra_gain_ratio\":0.3333333333333333,\"peak_db\":-25.2,\"updated_at\":\"2026-07-17T00:00:00+00:00\",\"authenticated\":false}"
   ],
   "source_sha256": {
-    "index.html": "b2f11dfe3f9d7a4034860542bff8d0c4480462c6c6bbe7d3f200e7401a639391",
+    "index.html": "10ca258159d7c9a6d44c589e426c8a22b7dd3b67ffde9939a2776aa9e1c964f0",
     "quantum-tree-control.html": "1cc2f90207bc7f2830cfc409244d69fd3a93cf3d61719e8c5ce31f398ce4ecf1",
-    "mantra-sampler.css": "62015f31e319de8d9bd0c223d856f3790d9d1ad4e3684dbdd3b342b46ed6818e",
+    "mantra-sampler.css": "e88046b0c07b1e8b764f9498804e07813d3e5ea5df5f7f89d75be039ff7de813",
     "adaptive-environment-television.css": "e6ae7ab8c4890d0afeb8e60f36a657e64cbd0b220c254716fe8b6145dfed6843",
     "adaptive-sound/mantra-v1.js": "da3df78c124c5fdbcc0bd98e48c36c9ad95ae896a19397b4016e232d27c0f9e5",
     "adaptive-sound/mantra-policy-v1.js": "cad75843f590f163751253a518f54af1ea3676ee1b335e01ecdd4d53128e6c8a",
@@ -446,5 +446,6 @@
   "limits": [
     "Measured digital signal and clock advancement do not establish subjective inaudibility.",
     "Participant allocation and consent integration remain future work as requested."
-  ]
+  ],
+  "final_typography_revision": "Descriptor only: 11.5px, regular 400 weight, retained contrast. Exact supplied words plus final full stop."
 }
