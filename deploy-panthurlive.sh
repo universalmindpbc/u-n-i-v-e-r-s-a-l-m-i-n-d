@@ -580,16 +580,18 @@ PY
   fi
   # Verify token validity over HTTPS without consuming it. Never put the token
   # in a query string, an audit record, or a command argument.
-  python3 - "$reset_dir" <<'PY'
-import json, pathlib, sys, urllib.request
-root = pathlib.Path(sys.argv[1])
-token = (root / 'link.txt').read_text().strip().split('#reset=')[1]
-request = urllib.request.Request('https://staging.universalmind.tv/vogue/iam/api/quantum-tree-settings.php',
-    data=json.dumps({'action':'verify_reset', 'reset_token':token}).encode(),
-    headers={'Content-Type':'application/json','Origin':'https://staging.universalmind.tv'})
-with urllib.request.urlopen(request, timeout=30) as response:
-    if json.load(response).get('valid') is not True: raise SystemExit('Reset verification failed.')
-PY
+  "$NODE_BIN" --input-type=module - "$reset_dir" <<'JS'
+import fs from 'node:fs/promises';
+import path from 'node:path';
+const root = process.argv[2];
+const link = (await fs.readFile(path.join(root, 'link.txt'), 'utf8')).trim();
+const response = await fetch('https://staging.universalmind.tv/vogue/iam/api/quantum-tree-settings.php', {
+  method: 'POST', headers: { 'Content-Type': 'application/json', Origin: 'https://staging.universalmind.tv' },
+  body: JSON.stringify({ action: 'verify_reset', reset_token: link.split('#reset=')[1] }),
+  signal: AbortSignal.timeout(30000),
+});
+if (!response.ok || (await response.json()).valid !== true) throw Error('Reset verification failed.');
+JS
   rm -f "$reset_dir/credentials.json" "$reset_dir/reset.json"
   echo "One-use staging password reset verified; expires in 24 hours. Private link file: $reset_dir/link.txt"
 }

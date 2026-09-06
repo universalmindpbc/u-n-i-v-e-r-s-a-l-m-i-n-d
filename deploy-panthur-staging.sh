@@ -61,6 +61,7 @@ if command -v php >/dev/null 2>&1; then
   php -l "$ROOT_DIR/i  a m/apple-wallet/service.php"
 fi
 
+export NODE_BIN
 export FTP_HOST="${FTP_HOST:-sh00023.pa.smartservers.com.au}"
 export FTP_USER="${FTP_USER:-stagingdeploy@universalmind.tv}"
 export FTP_PASS_FILE="${FTP_PASS_FILE:-/private/tmp/um-staging-ftp-pass.txt}"
