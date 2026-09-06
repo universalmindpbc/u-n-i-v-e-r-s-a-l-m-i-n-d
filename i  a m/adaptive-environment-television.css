@@ -5035,6 +5035,10 @@ body.television-wallet-pointer-locked .adaptive-television-reaction-wallet[data-
   display: none;
 }
 
+.adaptive-television-video-trinity-host:not(.adaptive-television-research-tooltip-host) .adaptive-television-video-choice[data-video-mode="emdr"]::after {
+  display: block;
+}
+
 .adaptive-television-research-dialog {
   position: fixed;
   inset: 0;

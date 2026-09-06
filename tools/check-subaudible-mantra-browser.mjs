@@ -1,5 +1,8 @@
 import assert from "node:assert/strict";
 import fs from "node:fs/promises";
+import path from "node:path";
+import {fileURLToPath} from "node:url";
+const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 import { chromium } from "/Users/benkorbel/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/playwright/index.mjs";
 const base = "https://staging.universalmind.tv/vogue/iam/";
 const out = process.env.MANTRA_QA_DIR || "/private/tmp/um-mantra-qa";
@@ -8,16 +11,28 @@ const server = await chromium.launchServer({ executablePath: "/Applications/Goog
   headless: true, args: ["--mute-audio"] });
 assert.ok(server.process().spawnargs.includes("--mute-audio"));
 const browser = await chromium.connect(server.wsEndpoint());
-const page = await browser.newPage({ viewport: { width: 1440, height: 1000 } });
+const context = await browser.newContext({ viewport: { width: 1440, height: 1000 } });
+const page = await context.newPage();
+page.setDefaultTimeout(15000);
 const errors = [];
 const report = { mutedProcess: true, checks: [] };
 page.on("pageerror", error => errors.push(error.message));
-await page.addInitScript(() => {
+await context.addInitScript(() => {
+  localStorage.setItem("iamSubaudibleMantra", "off");
   Element.prototype.requestFullscreen = () => Promise.reject(new Error("QA disables native fullscreen"));
   Element.prototype.webkitRequestFullscreen = Element.prototype.requestFullscreen;
   HTMLVideoElement.prototype.webkitEnterFullscreen = Element.prototype.requestFullscreen;
   if (navigator.mediaDevices) navigator.mediaDevices.getUserMedia = () => Promise.reject(new Error("QA disables microphone"));
 });
+if (process.env.MANTRA_QA_LOCAL === "1") {
+  const files = ["index.html", "adaptive-environment-television.css", "adaptive-sound/mantra-v1.js", "adaptive-sound/mantra-policy-v1.js", "adaptive-sound/panel-v1.css", "mantra-sampler.css", "quantum-tree-control.html", "quantum-tree-control.js", "quantum-tree-control.css"];
+  await context.route("https://staging.universalmind.tv/vogue/iam/**", async route => {
+    const file = decodeURIComponent(new URL(route.request().url()).pathname).replace("/vogue/iam/", "");
+    if (!files.includes(file)) return route.continue();
+    await route.fulfill({ status: 200, body: await fs.readFile(path.join(root, "i  a m", file)),
+      contentType: file.endsWith(".html") ? "text/html" : file.endsWith(".css") ? "text/css" : "application/javascript" });
+  });
+}
 const diag = () => page.evaluate(() => window.IAMSubaudibleMantra.diagnostics());
 async function zero(label) {
   await page.waitForFunction(() => window.IAMSubaudibleMantra.diagnostics().currentGain === 0, null, { timeout: 3000 });
@@ -32,38 +47,43 @@ try {
   await page.waitForFunction(() => document.body.classList.contains("television-room-open") && !document.body.classList.contains("television-wallet-settling") && !document.body.classList.contains("television-wallet-pointer-locked"));
   await page.mouse.move(700, 450);
   await page.locator("[data-reaction-wallet]").hover();
-  await page.locator('[data-wallet-category="video"]').click();
+  if (await page.locator("[data-reaction-wallet]").getAttribute("data-wallet-view") !== "video") await page.locator('[data-wallet-category="video"]').click();
   await page.locator(".adaptive-television-local-video").evaluate(video => window.IAMStreamController.play(video).catch(() => {}));
   await page.waitForFunction(() => document.querySelector(".adaptive-television-local-video")?.currentTime > 0.2, null, { timeout: 45000 });
   await page.locator("[data-video-sound-open]").click();
   await page.waitForTimeout(1000);
   await page.screenshot({ path: out + "/desktop.png" });
-  const button = page.locator("[data-subaudible-mantra-toggle]");
-  assert.equal(await button.getAttribute("aria-pressed"), "true");
-  await button.click();
-  await zero("Public off immediately silences");
-  assert.equal(await page.evaluate(() => localStorage.getItem("iamSubaudibleMantra")), "off");
-  await button.click();
+  assert.equal(await page.locator(".iam-sound-mantra").count(), 0);
+  assert.equal((await diag()).enabled, true);
+  report.checks.push({label: "Public Sound card removed; old standalone off preference ignored"});
   await page.waitForFunction(() => window.IAMSubaudibleMantra.diagnostics().currentGain > 0, null, { timeout: 30000 });
   report.realProgramme = await diag();
+  console.log("Real programme output measured");
   assert.ok(report.realProgramme.duration > 334 && report.realProgramme.duration < 335);
   await page.locator("[data-adaptive-sound-master]").click();
   await zero("Sound master stops the mantra");
   await page.locator("[data-adaptive-sound-master]").click();
   await page.setViewportSize({ width: 390, height: 844 });
   await page.waitForTimeout(1000);
-  await button.scrollIntoViewIfNeeded();
   await page.screenshot({ path: out + "/mobile.png" });
-  const matrixBox = await page.locator(".iam-sound-module--control").boundingBox();
-  const mantraBox = await page.locator(".iam-sound-mantra").boundingBox();
-  assert.ok(matrixBox.y + matrixBox.height <= mantraBox.y, "Mantra row must not cover the frequency matrix");
-  const box = await button.boundingBox();
-  assert.ok(box && box.width >= 44 && box.height >= 44 && box.x >= 0 && box.x + box.width <= 390);
+  assert.equal(await page.locator(".iam-sound-mantra").count(), 0);
   await page.setViewportSize({ width: 844, height: 390 });
-  await button.scrollIntoViewIfNeeded();
   await page.screenshot({ path: out + "/landscape.png" });
-  assert.equal(await button.isVisible(), true);
   await page.setViewportSize({ width: 1440, height: 1000 });
+  await page.keyboard.press("Escape");
+  await page.waitForFunction(() => document.querySelector("#iam-sound-panel").getAttribute("aria-hidden") === "true");
+  await page.mouse.move(700, 450);
+  await page.locator("[data-reaction-wallet]").hover();
+  if (await page.locator("[data-reaction-wallet]").getAttribute("data-wallet-view") !== "video") await page.locator('[data-wallet-category="video"]').click();
+  for (const [selector, label] of [["[data-video-mode=emdr]", "EMDR"], ["[data-video-sound-open]", "Sound"], ["[data-video-mantra-open]", "Mantra"]]) {
+    assert.equal(await page.locator(selector).getAttribute("data-video-tooltip"), `Open the ${label} research layer.`);
+    assert.notEqual(await page.locator(selector).evaluate(element => getComputedStyle(element, "::after").display), "none");
+  }
+  await page.locator("[data-video-mantra-open]").click();
+  await page.locator("[data-mantra-signal]").waitFor({state: "visible"});
+  const button = page.locator("[data-subaudible-mantra-toggle]");
+  assert.equal(await page.locator(".mantra-signal p").textContent(), "Our silent mantra is a research feature, delivering a 5min meditation from various traditions, played quietly beneath the music.");
+  console.log("Mantra viewer reached through TV wallet");
   // Controlled programme fixtures exercise the actual audio, filter tap and
   // gain route. Only programme selection is replaced; no RMS/gain is invented.
   await page.evaluate(async () => {
@@ -97,12 +117,56 @@ try {
     await window.__mantraFixtureSource(1000, 0.4);
   });
   await page.waitForFunction(() => window.IAMSubaudibleMantra.diagnostics().currentGain > 0, null, { timeout: 10000 });
-  report.checks.push({ label: "Measured strong speech-band fixture opens", ...(await diag()) });
+  await page.waitForFunction(() => window.IAMSubaudibleMantra.diagnostics().outputVerified);
+  await page.waitForFunction(() => document.querySelector("[data-mantra-signal]").dataset.state === "active");
+  report.checks.push({ label: "Measured strong speech-band fixture opens with real post-gain output and live indicator", ...(await diag()) });
+  console.log("Measured fixture drives live indicator");
+  await page.screenshot({path: out + "/mantra-desktop.png"});
+  await page.setViewportSize({width: 390, height: 844});
+  await page.waitForTimeout(1000);
+  await page.locator("[data-mantra-signal]").scrollIntoViewIfNeeded();
+  await page.screenshot({path: out + "/mantra-mobile.png"});
+  const indicatorBox=await page.locator("[data-mantra-signal]").boundingBox();
+  for (const box of await page.locator(".mantra-orbit__node").evaluateAll(nodes => nodes.map(node => ({x:node.getBoundingClientRect().x, right:node.getBoundingClientRect().right})))) assert.ok(box.x >= 0 && box.right <= 390, "Mobile sample pads stay within the viewer");
+  assert.ok(indicatorBox.x >= 0 && indicatorBox.x + indicatorBox.width <= 390 && indicatorBox.height <= 150);
+  await page.setViewportSize({width: 1440, height: 1000});
+  const waveBefore = await page.locator("[data-mantra-signal-wave]").evaluate(canvas => canvas.toDataURL());
+  await page.waitForTimeout(200);
+  assert.notEqual(await page.locator("[data-mantra-signal-wave]").evaluate(canvas => canvas.toDataURL()), waveBefore, "Waveform changes with the measured signal");
+  await button.click();
+  await zero("Mantra viewer off immediately silences");
+  assert.equal(await button.getAttribute("aria-pressed"), "false");
+  assert.equal(await page.evaluate(() => localStorage.getItem("iamSubaudibleMantraV2")), "off");
+  await button.click();
+  await page.waitForFunction(() => window.IAMSubaudibleMantra.diagnostics().outputVerified);
   for (const [label, frequency, amplitude] of [["Quiet programme closes", 1000, 0.001], ["Silence closes", 1000, 0], ["Bass alone does not mask speech", 45, 0.8]]) {
     await page.evaluate(([hz, amp]) => window.__mantraFixtureSource(hz, amp), [frequency, amplitude]);
     await page.waitForTimeout(750);
     await zero(label);
+    const state=await diag();
+    assert.equal(state.programmePlaying, true, "Music playback stays distinct from masking");
+    assert.equal(state.status, "quiet_mask");
+    assert.equal(state.outputVerified, false);
+    assert.equal(await page.locator("[data-mantra-signal]").getAttribute("data-state"), "closed");
   }
+  // A short dip closes gain but must not pause/restart the mantra file.
+  await page.evaluate(() => window.__mantraFixtureSource(1000, 0.4));
+  await page.waitForFunction(() => window.IAMSubaudibleMantra.diagnostics().outputVerified);
+  const dip=await page.evaluate(async () => {
+    const media=window.__mantraFixture;
+    const before=window.IAMSubaudibleMantra.diagnostics().currentTime;
+    media.volume=0.001;
+    await new Promise(resolve => setTimeout(resolve, 140));
+    const quiet=window.IAMSubaudibleMantra.diagnostics();
+    media.volume=1;
+    await new Promise(resolve => setTimeout(resolve, 700));
+    return {before, quiet, resumed:window.IAMSubaudibleMantra.diagnostics()};
+  });
+  assert.equal(dip.quiet.currentGain, 0);
+  assert.equal(dip.quiet.playing, true);
+  assert.ok(dip.quiet.currentTime > dip.before);
+  assert.ok(dip.resumed.outputVerified);
+  report.checks.push({label: "Quiet-to-loud transition closes then restores measured output", ...dip});
   await page.evaluate(() => window.__mantraFixtureSource(1000, 0.4));
   await page.waitForFunction(() => window.IAMSubaudibleMantra.diagnostics().currentGain > 0);
   await page.evaluate(() => window.__mantraFixture.pause());
@@ -123,6 +187,7 @@ try {
   });
   assert.equal(leaseGain, 0, "Gain must expire on the audio clock during a UI stall");
   report.checks.push({ label: "Main-thread stall expires gain", gain: leaseGain });
+  console.log("Masking, controls and interruption checks passed");
   const settings = await (await page.request.get(base + "api/quantum-tree-settings.php")).json();
   assert.equal(typeof settings.mantra_enabled, "boolean");
   assert.equal(settings.mantra_gain_ratio, 1 / 3);
@@ -135,11 +200,10 @@ try {
   await page.evaluate(() => window.IAMSubaudibleMantra.reloadSettings());
   await zero("Platform off closes");
   await page.unroute("**/api/quantum-tree-settings.php");
-  await button.click();
-  await page.reload({ waitUntil: "domcontentloaded" });
-  await page.waitForFunction(() => window.IAMSubaudibleMantra);
-  assert.equal((await diag()).enabled, false);
-  report.checks.push({ label: "Off preference survives reload" });
+  await page.evaluate(() => {
+    window.IAMQuantumTree.setEnabled(false, {persist:false});
+    document.querySelectorAll("audio,video").forEach(media => media.pause());
+  });
   await page.goto(base + "quantum-tree-control.html", { waitUntil: "domcontentloaded" });
   await page.locator("[data-owner-access]").waitFor({ state: "visible" });
   assert.equal(await page.locator("[data-owner-dashboard]").isVisible(), false);
@@ -159,12 +223,22 @@ try {
   await page.waitForFunction(() => document.querySelector("[data-owner-mantra-status]").textContent.includes("disabled"));
   assert.deepEqual(ownerRequests, [{ action: "save_mantra", csrf_token: "qa-owner-session", mantra_enabled: false }]);
   report.checks.push({ label: "Owner UI requires login; simulated authenticated UI sends isolated mantra save with CSRF" });
+  await page.locator("[data-owner-new-password]").fill("  UI-fixture Case  ");
+  await page.locator("[data-owner-confirm-password]").fill("  UI-fixture Case  ");
+  await page.locator("[data-owner-password-form] button").click();
+  await page.waitForFunction(() => document.querySelector("[data-owner-password-status]").textContent.includes("saved"));
+  assert.equal(ownerRequests.at(-1).action, "change_password");
+  assert.equal(ownerRequests.at(-1).new_password, "  UI-fixture Case  ");
+  assert.equal(await page.locator("[data-owner-new-password]").inputValue(), "");
+  assert.equal(await page.locator("[data-owner-confirm-password]").inputValue(), "");
+  report.checks.push({label: "Password UI preserves exact input and clears password fields after save (simulated authentication)"});
   await page.screenshot({ path: out + "/owner.png" });
   await page.unroute("**/api/quantum-tree-settings.php");
   report.errors = errors;
   assert.deepEqual(errors, []);
   report.passed = true;
 } finally {
+  report.errors = errors;
   report.lastDiagnostics = await diag().catch(() => null);
   report.programme = await page.evaluate(() => {
     const state = window.IAMQuantumTree?.getMantraProgrammeState();
@@ -172,7 +246,7 @@ try {
   }).catch(() => null);
   await fs.writeFile(out + "/report.json", JSON.stringify(report, null, 2));
   await page.evaluate(() => {
-    window.IAMSubaudibleMantra?.setEnabled(false);
+
     window.IAMQuantumTree?.setEnabled(false, { persist: false });
     document.querySelectorAll("audio,video").forEach(media => media.pause());
   }).catch(() => {});

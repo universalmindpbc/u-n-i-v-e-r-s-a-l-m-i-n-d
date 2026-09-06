@@ -501,16 +501,6 @@ body.mantra-sampler-open .mantra-orbit__node {
   opacity: 0.54 !important;
 }
 
-.mantra-orbit__scope {
-  position: absolute;
-  right: max(34px, env(safe-area-inset-right));
-  bottom: max(26px, env(safe-area-inset-bottom));
-  margin: 0;
-  color: rgba(255, 255, 255, 0.28);
-  font: 400 9px/1.2 "Helvetica Neue", Helvetica, Arial, sans-serif;
-  letter-spacing: 0.035em;
-}
-
 body.mantra-sampler-open .adaptive-television-reaction-wallet,
 body.mantra-sampler-open .adaptive-television-live-pill,
 body.mantra-sampler-open .adaptive-television-cue,
@@ -667,13 +657,7 @@ body.mantra-sampler-open .adaptive-television-fullscreen-toggle {
     padding-left: 12px;
   }
 
-  .mantra-orbit__scope {
-    position: relative;
-    right: auto;
-    bottom: auto;
-    margin-top: 22px;
-    text-align: center;
-  }
+
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -690,4 +674,31 @@ body.mantra-sampler-open .adaptive-television-fullscreen-toggle {
     transition: none !important;
     transform: none;
   }
+}
+
+/* Compact live instrument in the existing Mantra viewer. */
+.mantra-signal {
+  position: absolute;
+  right: max(34px, env(safe-area-inset-right));
+  bottom: max(26px, env(safe-area-inset-bottom));
+  z-index: 4;
+  width: 250px;
+  max-width: calc(100% - 44px);
+  color: rgba(255, 255, 255, .72);
+  font: 400 11px/18px "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+.mantra-signal__heading { display: flex; align-items: center; justify-content: space-between; gap: 12px; font-size: 13px; }
+.mantra-signal button { display: inline-flex; align-items: center; justify-content: center; width: 54px; height: 30px; padding: 0; border: 1px solid rgba(255,255,255,.3); border-radius: 99px; color: inherit; background: transparent; cursor: pointer; }
+.mantra-signal button b { font: 400 10px/1 "Helvetica Neue", Helvetica, Arial, sans-serif; letter-spacing: .08em; }
+.mantra-signal button[aria-pressed="false"] { opacity: .6; }
+.mantra-signal__readout { display: flex; align-items: center; gap: 8px; margin-top: 8px; white-space: nowrap; }
+.mantra-signal canvas { width: 128px; height: 24px; }
+.mantra-signal__led { width: 5px; height: 5px; flex: 0 0 5px; border-radius: 50%; background: rgba(255,255,255,.25); }
+.mantra-signal[data-state="active"] .mantra-signal__led { background: #98d9ae; box-shadow: 0 0 5px rgba(152,217,174,.3); }
+.mantra-signal[data-state="fault"] .mantra-signal__led { background: #e9b47b; }
+.mantra-signal p { margin: 5px 0 0; font-size: 11px; line-height: 1.5; color: rgba(255,255,255,.68); text-shadow: 0 1px 2px rgba(0,0,0,.65); }
+.mantra-signal button:focus-visible, .mantra-signal__readout:focus-visible { outline: 1px solid rgba(255,255,255,.5); outline-offset: 5px; }
+@media (max-width: 720px) {
+  .mantra-signal { position: relative; right: auto; bottom: auto; max-width: 100%; margin: 22px 0 0 auto; }
+  .mantra-signal button { min-height: 44px; }
 }

@@ -1827,12 +1827,20 @@ Before writing feature code, record explicit answers here or in a later dated re
 
 ## 2026-09-06 addition - Sub-audible mantra delivery
 
-Ben requested a separate recorded Quantum Tree Mantra layer and approved a discreet
-public on/off row in Sound with no volume slider. The listener preference is saved;
-Sound master off stops it. Ordinary eligible sessions arm it by default, subject to
+Ben requested a separate recorded Quantum Tree Mantra layer. His final 2026-09-06
+correction removes the Sound card and places a compact control at the bottom right
+of the existing Mantra viewer, replacing the unrequested research-mockup footer.
+The layer defaults on; the Mantra viewer alone offers the listener an on/off button
+and live waveform. The new preference key supersedes the discarded Sound control.
+Sound master off stops the layer. Active requires a measured nonzero post-gain
+signal and an advancing mantra clock, without an administrator login. Arming remains subject to
 browser permission and programme masking. The existing audible Mantra sampler is
 separate and unchanged.
 
+- LOCKED public copy, supplied by Ben with only the final full stop added:
+  “Our silent mantra is a research feature, delivering a 5min meditation from various traditions, played quietly beneath the music.”
+- TV-wallet tooltips use “Open the Sound research layer.”, “Open the Mantra research layer.”
+  and “Open the EMDR research layer.”
 - Source: `q u a n t u m [ t r e e ] m a n t r a.wav`, 334.782208 seconds,
   stereo PCM16 / 48 kHz. The original supplied master remains unchanged.
 - Delivery: `quantum-tree-mantra-v1.m4a`, stereo AAC LC / 48 kHz / 192 kbps,
@@ -1845,7 +1853,10 @@ separate and unchanged.
   analysis, quiet programme, pause, seek, interruption, page hiding, master off,
   platform off and source changes silence the mantra. Quantum Tree's continuity
   and solo-audition paths cannot keep the mantra open.
-- A 400 ms stable-mask delay precedes opening; an 80 ms audio-clock gain lease
+- A 400 ms stable-programme delay precedes initial opening and hard-interruption
+  recovery. Quiet musical dips immediately close gain while the decoded loop keeps
+  running silently; they no longer restart the file or its 400 ms qualification.
+  Actual programme playback and speech-band masking are separate diagnostic states; an 80 ms audio-clock gain lease
   closes if the main thread stalls. This is an engineering bound, not a guarantee
   of perceptual inaudibility across every listener/device. Subjective calibration
   and blinding assessment remain required before a trial.
@@ -1857,7 +1868,8 @@ separate and unchanged.
   UI, a stop/withdraw path, fidelity logging and a blinding check. Public product
   preferences must not override assigned study conditions.
 - Prepared exposure seconds are in-memory engineering estimates, not a trial
-  exposure record. Masking changes delivered exposure and the future protocol must
+  exposure record. The waveform is magnified for legibility and is not a loudness
+  scale or proof of perceptual inaudibility. Masking changes delivered exposure and the future protocol must
   specify gating, interruptions, duration and any restart/loop semantics.
 - No medical benefit, proven entrainment or therapeutic equivalence is asserted.
 

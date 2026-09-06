@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="robots" content="noindex,nofollow">
   <title>Quantum Tree — Owner Calibration</title>
-  <link rel="stylesheet" href="quantum-tree-control.css?v=quantum-tree-control-2">
+  <link rel="stylesheet" href="quantum-tree-control.css?v=09e8aad6f5d9">
 </head>
 <body>
   <section class="quantum-access" data-owner-access aria-labelledby="quantum-access-title">
@@ -15,8 +15,8 @@
       <h1 id="quantum-access-title">Quantum Tree</h1>
       <p class="quantum-control__intro">Sign in to change the platform-wide isochronic layer. This setting is shared by every listener; it is not saved in this browser.</p>
       <form class="quantum-access__form" data-owner-login>
-        <label for="quantum-owner-key">Owner access key</label>
-        <input id="quantum-owner-key" type="password" name="owner_key" autocomplete="current-password" autocapitalize="none" spellcheck="false" required data-owner-key>
+        <label for="quantum-owner-key">Password</label>
+        <input id="quantum-owner-key" type="password" name="password" autocomplete="current-password" autocapitalize="none" spellcheck="false" required data-owner-key>
         <button type="submit" class="quantum-button quantum-button--primary">Open administrator dashboard</button>
         <p class="quantum-access__status" role="status" aria-live="polite" data-owner-status></p>
       </form>
@@ -71,7 +71,7 @@
       <label class="quantum-slider-label"><input type="checkbox" data-owner-mantra-enabled> Enable the mantra on this platform</label>
       <div class="quantum-actions"><button type="button" class="quantum-button quantum-button--save" data-owner-mantra-save>Save mantra setting</button></div>
       <p class="quantum-save-status" role="status" aria-live="polite" data-owner-mantra-status></p>
-      <p class="quantum-note">Listeners retain their own on/off choice. This is a platform calibration control. Participant allocation and concealed RCT conditions will be integrated separately; this control does not randomise participants.</p>
+      <p class="quantum-note">The mantra defaults on with Sound. Listeners can see its live signal and switch it off in the Mantra viewer. This owner switch controls platform availability. Participant allocation and concealed RCT conditions will be integrated separately; this control does not randomise participants.</p>
     </section>
 
     <section class="quantum-card" aria-labelledby="verification-heading">
@@ -110,8 +110,20 @@
         <a href="index.html" class="quantum-link quantum-link--quiet">Return to music television</a>
       </div>
     </section>
+    <section class="quantum-card" aria-labelledby="password-heading">
+      <h2 id="password-heading">Change password</h2>
+      <form class="quantum-access__form" data-owner-password-form>
+        <label for="owner-new-password">New password</label>
+        <input id="owner-new-password" type="password" autocomplete="new-password" autocapitalize="none" spellcheck="false" minlength="8" maxlength="72" required data-owner-new-password>
+        <label for="owner-confirm-password">Confirm new password</label>
+        <input id="owner-confirm-password" type="password" autocomplete="new-password" autocapitalize="none" spellcheck="false" minlength="8" maxlength="72" required data-owner-confirm-password>
+        <p class="quantum-note">Use at least 8 characters. Case and spaces count. Saving replaces the previous password and signs out other administrator sessions.</p>
+        <button type="submit" class="quantum-button quantum-button--save">Save my password</button>
+        <p class="quantum-save-status" role="status" aria-live="polite" data-owner-password-status></p>
+      </form>
+    </section>
   </main>
 
-  <script src="quantum-tree-control.js?v=13937adf1562"></script>
+  <script src="quantum-tree-control.js?v=2dfb46f610dc"></script>
 </body>
 </html>

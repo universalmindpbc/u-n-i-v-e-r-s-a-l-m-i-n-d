@@ -49,13 +49,13 @@
     <script src="music-television-frame-context.js?v=music-tv-frame-1fc6ca029741"></script>
     <link rel="stylesheet" href="styles.css?v=global-nav-single-shell-2-technology-submenu-133pct-normal-1">
     <link rel="preload" as="image" href="a s s e t s/Universal Mind [ I o H ] Logo 512.png" fetchpriority="high">
-    <link rel="stylesheet" href="adaptive-environment-television.css?v=music-tv-css-023a142b3d51">
+    <link rel="stylesheet" href="adaptive-environment-television.css?v=music-tv-css-e6ae7ab8c489">
     <link rel="stylesheet" href="comedy-channel-v1.css?v=comedy-channel-css-f8b034d0496b">
-    <link rel="stylesheet" href="adaptive-sound/panel-v1.css?v=6d4549482aa4">
+    <link rel="stylesheet" href="adaptive-sound/panel-v1.css?v=8537857ca0d3">
     <link rel="stylesheet" href="programme-guide.css?v=programme-guide-css-0de2cc1d4ce8">
     <link rel="stylesheet" href="circle-audio-rooms.css?v=circle-rooms-css-26a3fe8531d9">
     <link rel="stylesheet" href="care-worlds.css?v=97f6e5244cc9">
-    <link rel="stylesheet" href="mantra-sampler.css?v=mantra-sampler-css-8e56b03ada25">
+    <link rel="stylesheet" href="mantra-sampler.css?v=mantra-sampler-css-971e9137c740">
     <link rel="stylesheet" href="realtime-voice-assistant.css?v=realtime-voice-css-66ef986e1dc3">
     <link rel="stylesheet" href="homepage-session-accents.css?v=bcf8cdd010a6">
   </head>
@@ -522,11 +522,6 @@
                 </div>
               </section>
 
-              <section class="iam-sound-mantra" aria-label="Sub-audible mantra">
-                <div><span>Sub-audible mantra</span><small data-subaudible-mantra-state>On · waiting for music</small></div>
-                <button type="button" data-subaudible-mantra-toggle aria-pressed="true" aria-label="Turn sub-audible mantra off" aria-describedby="iam-mantra-disclosure"><i aria-hidden="true"></i><b>ON</b></button>
-                <p id="iam-mantra-disclosure">A recorded mantra mixed quietly beneath the music.</p>
-              </section>
               <footer class="iam-sound-console__footer">
                 <strong>Oxytocin</strong>
                 <button class="iam-sound-console__research" type="button" data-adaptive-sound-research-open aria-haspopup="dialog" aria-controls="sound-research-modal">Research Target For Clinical Research</button>
@@ -1104,7 +1099,18 @@
                 </div>
                 <div class="mantra-orbit__nodes" data-mantra-nodes role="group" aria-label="Six mantra sample pads"></div>
               </div>
-              <p class="mantra-orbit__scope">private research mockup · source samples to be licensed before public use</p>
+              <section class="mantra-signal" data-mantra-signal aria-label="Sub-audible mantra">
+                <div class="mantra-signal__heading">
+                  <span>Sub-audible mantra</span>
+                  <button type="button" data-subaudible-mantra-toggle aria-pressed="true" aria-label="Turn sub-audible mantra off"><b>ON</b></button>
+                </div>
+                <div class="mantra-signal__readout" data-mantra-signal-readout tabindex="0" role="img" aria-label="Sub-audible mantra: checking output">
+                  <i class="mantra-signal__led" aria-hidden="true"></i>
+                  <canvas width="256" height="48" data-mantra-signal-wave aria-hidden="true"></canvas>
+                  <span data-mantra-signal-state>Checking</span>
+                </div>
+                <p>Our silent mantra is a research feature, delivering a 5min meditation from various traditions, played quietly beneath the music.</p>
+              </section>
             </div>
           </section>
           <button class="program-scrim" type="button" data-program-close aria-label="Close Program" hidden></button>
@@ -1337,22 +1343,15 @@
                 </span>
                 <span>FASHION</span>
               </button>
-              <span class="adaptive-television-research-tooltip-host adaptive-television-research-tooltip-host--emdr adaptive-television-video-trinity-host">
-                <button class="adaptive-television-video-choice adaptive-television-video-choice--trinity" type="button" data-video-mode="emdr" data-video-tooltip="EMDR Research Feature" aria-label="EMDR Research Feature — 10min Nervous System Reset. Investigating whether an optional visual layer modulates short term transcriptional pathways, relevant to mental health. More information: Proposed double blinded RCT with mRNA sequencing via buccal swab and roadmap to CandyCollect lollypop. Target genes include NMDAR for working memory, OXTR, SLC6A4, DRD2, IL6, NR3C1, DOCK2, CD38, together as one." aria-pressed="false">
+              <span class="adaptive-television-video-trinity-host">
+                <button class="adaptive-television-video-choice adaptive-television-video-choice--trinity" type="button" data-video-mode="emdr" data-video-tooltip="Open the EMDR research layer." aria-label="Open the EMDR research layer" aria-pressed="false">
                   <span class="adaptive-television-video-icon-stage" aria-hidden="true">
                     <svg class="adaptive-television-video-icon adaptive-television-video-icon--emdr" viewBox="0 0 32 32"><path class="emdr-eye" d="M2.5 16S7.6 8.6 16 8.6 29.5 16 29.5 16 24.4 23.4 16 23.4 2.5 16 2.5 16Z"></path><circle class="emdr-iris" cx="16" cy="16" r="5.1"></circle><circle class="emdr-focus" cx="16" cy="16" r="2.25"></circle></svg>
                   </span>
                   <span>EMDR</span>
                 </button>
-                <span class="adaptive-television-research-tooltip adaptive-television-research-tooltip--emdr">
-                  <span class="adaptive-television-research-tooltip__primary">EMDR Research Feature - 10min Nervous System Reset. Investigating whether an optional visual layer modulates short term transcriptional pathways, relevant to mental health.</span>
-                  <button class="adaptive-television-research-tooltip__more" type="button" aria-label="More information on the EMDR research" aria-expanded="false" aria-controls="emdr-research-details">
-                    <span class="adaptive-television-research-tooltip__prompt">[ more info on the research ]</span>
-                    <span class="adaptive-television-research-tooltip__secondary" id="emdr-research-details">[ Proposed double blinded RCT with mRNA sequencing via buccal swab and roadmap to CandyCollect lollypop. Target genes include NMDAR for working memory, OXTR, SLC6A4, DRD2, IL6, NR3C1, DOCK2, CD38, together as one ]</span>
-                  </button>
-                </span>
               </span>
-              <button class="adaptive-television-video-choice adaptive-television-video-choice--trinity" type="button" data-video-sound-open data-video-tooltip="Open the Sound Research Layer." aria-label="SOUND — Open the Sound Research Layer" aria-haspopup="dialog" aria-controls="iam-sound-panel">
+              <button class="adaptive-television-video-choice adaptive-television-video-choice--trinity" type="button" data-video-sound-open data-video-tooltip="Open the Sound research layer." aria-label="Open the Sound research layer" aria-haspopup="dialog" aria-controls="iam-sound-panel">
                 <span class="adaptive-television-video-icon-stage" aria-hidden="true">
                   <svg class="adaptive-television-video-icon adaptive-television-video-icon--sound" viewBox="0 0 32 32" focusable="false">
                     <path d="M3 16h3l2.5-6 3 12 2.5-16 3.5 20 3-15 2.5 8 3-5 3 2h1"></path>
@@ -1360,7 +1359,7 @@
                 </span>
                 <span>SOUND</span>
               </button>
-              <button class="adaptive-television-video-choice adaptive-television-video-choice--trinity" type="button" data-video-mantra-open data-video-tooltip="Play one-shot mantra samples." aria-label="MANTRA — Play one-shot mantra samples" aria-haspopup="dialog">
+              <button class="adaptive-television-video-choice adaptive-television-video-choice--trinity" type="button" data-video-mantra-open data-video-tooltip="Open the Mantra research layer." aria-label="Open the Mantra research layer" aria-haspopup="dialog">
                 <span class="adaptive-television-video-icon-stage" aria-hidden="true">
                   <svg class="adaptive-television-video-icon adaptive-television-video-icon--mantra" viewBox="0 0 32 32" focusable="false">
                     <path d="M16 3.5 27 9.8v12.4L16 28.5 5 22.2V9.8Z"></path>
@@ -1816,7 +1815,7 @@
     <script src="programme-catalogue-v1.js?v=programme-catalogue-efb02e8d3926"></script>
     <script src="adaptive-environment-television.js?v=music-tv-6a78c6e711f5"></script>
     <script src="comedy-channel-v1.js?v=comedy-channel-js-1a3c5c873d36"></script>
-    <script type="module" src="adaptive-sound/mantra-v1.js?v=0de8c05533ef"></script>
+    <script type="module" src="adaptive-sound/mantra-v1.js?v=da3df78c124c"></script>
     <script type="module" src="adaptive-sound/controller-v1.js?v=a3b10340460b"></script>
     <script src="homepage-session-accents.js?v=ee302671b0d5"></script>
     <script src="programme-guide.js?v=programme-guide-d170112697a0"></script>

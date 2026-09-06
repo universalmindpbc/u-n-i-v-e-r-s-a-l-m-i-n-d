@@ -105,6 +105,7 @@
 
   function showLogin(message = "") {
     csrfToken = "";
+    document.querySelector("[data-owner-password-form]")?.reset();
     dashboard.hidden = true;
     accessPanel.hidden = false;
     ownerStatus.textContent = message;
@@ -189,6 +190,41 @@
     } finally { mantraSave.disabled = false; }
   });
 
+  const passwordForm = document.querySelector("[data-owner-password-form]");
+  const newPassword = document.querySelector("[data-owner-new-password]");
+  const confirmPassword = document.querySelector("[data-owner-confirm-password]");
+  const passwordStatus = document.querySelector("[data-owner-password-status]");
+  passwordForm?.addEventListener("submit", async (event) => {
+    event.preventDefault();
+    passwordStatus.classList.remove("is-error");
+    if (newPassword.value !== confirmPassword.value) {
+      passwordStatus.textContent = "The passwords do not match.";
+      passwordStatus.classList.add("is-error");
+      return;
+    }
+    if (new TextEncoder().encode(newPassword.value).length > 72) {
+      passwordStatus.textContent = "This password is too long. Please shorten it; some characters use more than one byte.";
+      passwordStatus.classList.add("is-error");
+      return;
+    }
+    const button = passwordForm.querySelector("button[type=submit]");
+    button.disabled = true;
+    passwordStatus.textContent = "Saving your password…";
+    try {
+      const settings = await requestSettings({ action: "change_password", csrf_token: csrfToken,
+        new_password: newPassword.value, confirm_password: confirmPassword.value });
+      applySettings(settings, { updateSlider: false });
+      passwordStatus.textContent = "Your password is saved. Use it the next time you sign in.";
+    } catch (error) {
+      passwordStatus.textContent = error.message || "Your password could not be saved.";
+      passwordStatus.classList.add("is-error");
+      if (/authentication|session/i.test(error.message || "")) showLogin("Your administrator session ended. Please sign in again.");
+    } finally {
+      newPassword.value = confirmPassword.value = "";
+      button.disabled = false;
+    }
+  });
+
   resetButton?.addEventListener("click", () => {
     slider.value = String(DEFAULT_PEAK * 100);
     renderPeak();
@@ -201,10 +237,10 @@
     const submitButton = loginForm.querySelector("button[type=submit]");
     if (submitButton) submitButton.disabled = true;
     try {
-      const settings = await requestSettings({ action: "login", owner_key: ownerKey.value });
+      const settings = await requestSettings({ action: "login", password: ownerKey.value });
       showDashboard(settings);
     } catch (error) {
-      ownerStatus.textContent = error.message || "Owner key not recognised.";
+      ownerStatus.textContent = error.message || "Password not recognised.";
       ownerKey.select();
     } finally {
       if (submitButton) submitButton.disabled = false;

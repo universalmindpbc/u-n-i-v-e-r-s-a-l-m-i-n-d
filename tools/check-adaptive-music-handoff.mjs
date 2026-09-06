@@ -921,7 +921,9 @@ requireCondition(homePage.includes('data-now-playing-audio'), 'the primary walle
 requireCondition(homePage.includes('data-now-playing-channel-title'), 'the primary wallet cannot name the active editorial channel');
 requireCondition(homePage.includes('data-now-playing-announcement') && homePage.includes('data-now-playing-track aria-hidden="true"'), 'the rotating ticker can repeatedly interrupt assistive technology');
 requireCondition(homePage.includes('adaptive-television-now-playing__separator--content'), 'the compact divider between Now Playing and the active title is missing');
-requireCondition(homePage.includes('EMDR Research Feature - 10min Nervous System Reset. Investigating whether an optional visual layer modulates short term transcriptional pathways, relevant to mental health.'), 'the EMDR rollover is missing the ten-minute nervous-system-reset terminology');
+for (const layer of ['Sound', 'Mantra', 'EMDR']) {
+  requireCondition(homePage.includes(`data-video-tooltip="Open the ${layer} research layer."`), `the ${layer} TV tooltip is not unified`);
+}
 requireCondition(inductionPage.includes('Universal Mind is livestream electronic music television for mental health.'), 'the canonical Induction headline is missing');
 requireCondition(inductionPage.includes('13 Stations. One World') && inductionPage.includes('ambient. balearic. rave. electro. nu wave. hyper pop. minimal. ebm. future bass +++'), 'the canonical Induction product story is missing');
 requireCondition(inductionPage.includes('This portal proposes a music and fashion partnership with Vogue for mental health.'), 'the canonical Induction Vogue context is missing');

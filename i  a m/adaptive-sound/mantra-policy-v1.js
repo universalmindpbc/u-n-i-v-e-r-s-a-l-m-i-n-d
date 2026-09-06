@@ -1,6 +1,6 @@
 // Provisional engineering calibration. Digital limits do not prove inaudibility.
 export const MANTRA_POLICY = Object.freeze({
-  version: "mantra-masking-v1",
+  version: "mantra-masking-v2",
   quantumGainRatio: 1 / 3,
   speechFloor: 0.018,
   speechFull: 0.08,
