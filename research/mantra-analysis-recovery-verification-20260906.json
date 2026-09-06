@@ -1,0 +1,800 @@
+{
+  "verified_at": "2026-09-06T07:48:31.372051+00:00",
+  "source_commit": "6cce7ba4fd637f7072d5f401d831613dc7d184de",
+  "audio_source_commit": "420d71427f6b155203b47e8c7338ae8a3fc0e974",
+  "proof_url": "https://staging.universalmind.tv/vogue/iam/index.html",
+  "recovery": {
+    "mutedProcess": true,
+    "trackReason": "Billy Idol is the exact user-reported first-track failure; this is a regression fixture, not the generic proof URL.",
+    "checks": [
+      {
+        "case": "Fresh playback",
+        "initial": {
+          "policy": "mantra-masking-v2",
+          "enabled": true,
+          "platformEnabled": true,
+          "masterEnabled": true,
+          "status": "mixing",
+          "targetGain": 0.0002512768295045013,
+          "currentGain": 0.0002512768260203302,
+          "programmePlaying": true,
+          "programmeSource": "video",
+          "programmeTime": 12.663983,
+          "speechRms": 0.03848209277000324,
+          "programmeAnalysis": {
+            "connected": true,
+            "contextState": "running",
+            "error": "",
+            "supported": true
+          },
+          "outputRms": 1.4974341896308541e-06,
+          "outputVerified": true,
+          "clockAdvancing": true,
+          "quantumGainRatio": 0.3333333333333333,
+          "readyState": 4,
+          "currentTime": 12.090667,
+          "duration": 334.782,
+          "playing": true,
+          "contextState": "running",
+          "exposureSeconds": 11.252300000071529,
+          "studyAssignment": "not_integrated"
+        },
+        "autoRecovered": {
+          "policy": "mantra-masking-v2",
+          "enabled": true,
+          "platformEnabled": true,
+          "masterEnabled": true,
+          "status": "mixing",
+          "targetGain": 9.401620067823607e-07,
+          "currentGain": 9.401620104654285e-07,
+          "programmePlaying": true,
+          "programmeSource": "video",
+          "programmeTime": 13.438549,
+          "speechRms": 0.019727675818199116,
+          "programmeAnalysis": {
+            "connected": true,
+            "contextState": "running",
+            "error": "",
+            "supported": true
+          },
+          "outputRms": 1.3109453781041014e-07,
+          "outputVerified": true,
+          "clockAdvancing": true,
+          "quantumGainRatio": 0.3333333333333333,
+          "readyState": 4,
+          "currentTime": 12.464247,
+          "duration": 334.782,
+          "playing": true,
+          "contextState": "running",
+          "exposureSeconds": 11.612300000071526,
+          "studyAssignment": "not_integrated"
+        },
+        "blocked": {
+          "policy": "mantra-masking-v2",
+          "enabled": true,
+          "platformEnabled": true,
+          "masterEnabled": true,
+          "status": "programme_not_advancing",
+          "targetGain": 0,
+          "currentGain": 0,
+          "programmePlaying": false,
+          "programmeSource": "video",
+          "programmeTime": 13.450159,
+          "speechRms": 0,
+          "programmeAnalysis": {
+            "connected": true,
+            "contextState": "suspended",
+            "error": "",
+            "supported": true
+          },
+          "outputRms": 0,
+          "outputVerified": false,
+          "clockAdvancing": false,
+          "quantumGainRatio": 0.3333333333333333,
+          "readyState": 4,
+          "currentTime": 12.48,
+          "duration": 334.782,
+          "playing": false,
+          "contextState": "running",
+          "exposureSeconds": 11.635300000071526,
+          "studyAssignment": "not_integrated"
+        },
+        "recovered": {
+          "policy": "mantra-masking-v2",
+          "enabled": true,
+          "platformEnabled": true,
+          "masterEnabled": true,
+          "status": "quiet_mask",
+          "targetGain": 0,
+          "currentGain": 0,
+          "programmePlaying": true,
+          "programmeSource": "video",
+          "programmeTime": 14.557744,
+          "speechRms": 0.016966920815317574,
+          "programmeAnalysis": {
+            "connected": true,
+            "contextState": "running",
+            "error": "",
+            "supported": true
+          },
+          "outputRms": 1.4832100060732025e-08,
+          "outputVerified": false,
+          "clockAdvancing": true,
+          "quantumGainRatio": 0.3333333333333333,
+          "readyState": 4,
+          "currentTime": 12.525333,
+          "duration": 334.782,
+          "playing": true,
+          "contextState": "running",
+          "exposureSeconds": 11.655500000059606,
+          "studyAssignment": "not_integrated"
+        },
+        "waveformChanged": true
+      },
+      {
+        "case": "Transient first-connection failure",
+        "initial": {
+          "policy": "mantra-masking-v2",
+          "enabled": true,
+          "platformEnabled": true,
+          "masterEnabled": true,
+          "status": "mixing",
+          "targetGain": 0.00025600627213791585,
+          "currentGain": 0.0002560062857810408,
+          "programmePlaying": true,
+          "programmeSource": "video",
+          "programmeTime": 12.701315,
+          "speechRms": 0.028664291674841455,
+          "programmeAnalysis": {
+            "connected": true,
+            "contextState": "running",
+            "error": "",
+            "supported": true
+          },
+          "outputRms": 3.980809278112199e-06,
+          "outputVerified": true,
+          "clockAdvancing": true,
+          "quantumGainRatio": 0.3333333333333333,
+          "readyState": 4,
+          "currentTime": 11.41713,
+          "duration": 334.782,
+          "playing": true,
+          "contextState": "running",
+          "exposureSeconds": 10.68960000002384,
+          "studyAssignment": "not_integrated"
+        },
+        "autoRecovered": {
+          "policy": "mantra-masking-v2",
+          "enabled": true,
+          "platformEnabled": true,
+          "masterEnabled": true,
+          "status": "mixing",
+          "targetGain": 2.816875801647397e-06,
+          "currentGain": 2.8168758490210166e-06,
+          "programmePlaying": true,
+          "programmeSource": "video",
+          "programmeTime": 13.698305,
+          "speechRms": 0.026000735020053307,
+          "programmeAnalysis": {
+            "connected": true,
+            "contextState": "running",
+            "error": "",
+            "supported": true
+          },
+          "outputRms": 4.2972123608871074e-09,
+          "outputVerified": true,
+          "clockAdvancing": true,
+          "quantumGainRatio": 0.3333333333333333,
+          "readyState": 4,
+          "currentTime": 12.00601,
+          "duration": 334.782,
+          "playing": true,
+          "contextState": "running",
+          "exposureSeconds": 11.049199999988076,
+          "studyAssignment": "not_integrated"
+        },
+        "blocked": {
+          "policy": "mantra-masking-v2",
+          "enabled": true,
+          "platformEnabled": true,
+          "masterEnabled": true,
+          "status": "programme_not_advancing",
+          "targetGain": 0,
+          "currentGain": 0,
+          "programmePlaying": false,
+          "programmeSource": "video",
+          "programmeTime": 13.705578,
+          "speechRms": 0,
+          "programmeAnalysis": {
+            "connected": true,
+            "contextState": "suspended",
+            "error": "",
+            "supported": true
+          },
+          "outputRms": 0,
+          "outputVerified": false,
+          "clockAdvancing": false,
+          "quantumGainRatio": 0.3333333333333333,
+          "readyState": 4,
+          "currentTime": 12.024083,
+          "duration": 334.782,
+          "playing": false,
+          "contextState": "running",
+          "exposureSeconds": 11.071099999964234,
+          "studyAssignment": "not_integrated"
+        },
+        "recovered": {
+          "policy": "mantra-masking-v2",
+          "enabled": true,
+          "platformEnabled": true,
+          "masterEnabled": true,
+          "status": "mixing",
+          "targetGain": 5.21520753907523e-05,
+          "currentGain": 5.215207420405932e-05,
+          "programmePlaying": true,
+          "programmeSource": "video",
+          "programmeTime": 14.657596,
+          "speechRms": 0.03173653077243713,
+          "programmeAnalysis": {
+            "connected": true,
+            "contextState": "running",
+            "error": "",
+            "supported": true
+          },
+          "outputRms": 2.3121567031511321e-07,
+          "outputVerified": true,
+          "clockAdvancing": true,
+          "quantumGainRatio": 0.3333333333333333,
+          "readyState": 4,
+          "currentTime": 12.088371,
+          "duration": 334.782,
+          "playing": true,
+          "contextState": "running",
+          "exposureSeconds": 11.105299999952313,
+          "studyAssignment": "not_integrated"
+        },
+        "waveformChanged": true
+      }
+    ],
+    "passed": true
+  },
+  "masking_and_ui": {
+    "mutedProcess": true,
+    "checks": [
+      {
+        "label": "Public Sound card removed; old standalone off preference ignored"
+      },
+      {
+        "label": "Sound master stops the mantra",
+        "policy": "mantra-masking-v2",
+        "enabled": true,
+        "platformEnabled": true,
+        "masterEnabled": false,
+        "status": "sound_off",
+        "targetGain": 0,
+        "currentGain": 0,
+        "programmePlaying": true,
+        "programmeSource": "video",
+        "programmeTime": 15.021225,
+        "speechRms": 0.22595390582746108,
+        "programmeAnalysis": {
+          "connected": true,
+          "contextState": "running",
+          "error": "",
+          "supported": true
+        },
+        "outputRms": 1.7581936389000586e-05,
+        "outputVerified": false,
+        "clockAdvancing": false,
+        "quantumGainRatio": 0.3333333333333333,
+        "readyState": 4,
+        "currentTime": 13.781333,
+        "duration": 334.782,
+        "playing": false,
+        "contextState": "running",
+        "exposureSeconds": 12.678099999964243,
+        "studyAssignment": "not_integrated"
+      },
+      {
+        "label": "Measured strong speech-band fixture opens with real post-gain output and live indicator",
+        "policy": "mantra-masking-v2",
+        "enabled": true,
+        "platformEnabled": true,
+        "masterEnabled": true,
+        "status": "mixing",
+        "targetGain": 0.0002993470042977226,
+        "currentGain": 0.00029934701160527766,
+        "programmePlaying": true,
+        "programmeSource": "qa-fixture",
+        "programmeTime": 0.448,
+        "speechRms": 0.3074749590546312,
+        "programmeAnalysis": {
+          "connected": true,
+          "contextState": "running",
+          "error": "",
+          "supported": true
+        },
+        "outputRms": 1.082032950059554e-05,
+        "outputVerified": true,
+        "clockAdvancing": true,
+        "quantumGainRatio": 0.3333333333333333,
+        "readyState": 4,
+        "currentTime": 17.128,
+        "duration": 334.782,
+        "playing": true,
+        "contextState": "running",
+        "exposureSeconds": 15.533399999976169,
+        "studyAssignment": "not_integrated"
+      },
+      {
+        "label": "Mantra viewer off immediately silences",
+        "policy": "mantra-masking-v2",
+        "enabled": false,
+        "platformEnabled": true,
+        "masterEnabled": true,
+        "status": "user_off",
+        "targetGain": 0,
+        "currentGain": 0,
+        "programmePlaying": true,
+        "programmeSource": "qa-fixture",
+        "programmeTime": 2.271204,
+        "speechRms": 0.3076214861740328,
+        "programmeAnalysis": {
+          "connected": true,
+          "contextState": "running",
+          "error": "",
+          "supported": true
+        },
+        "outputRms": 6.626919848912859e-05,
+        "outputVerified": false,
+        "clockAdvancing": false,
+        "quantumGainRatio": 0.3333333333333333,
+        "readyState": 4,
+        "currentTime": 18.944,
+        "duration": 334.782,
+        "playing": false,
+        "contextState": "running",
+        "exposureSeconds": 17.247699999988082,
+        "studyAssignment": "not_integrated"
+      },
+      {
+        "label": "Quiet programme closes",
+        "policy": "mantra-masking-v2",
+        "enabled": true,
+        "platformEnabled": true,
+        "masterEnabled": true,
+        "status": "quiet_mask",
+        "targetGain": 0,
+        "currentGain": 0,
+        "programmePlaying": true,
+        "programmeSource": "qa-fixture",
+        "programmeTime": 0.753112,
+        "speechRms": 0.0007500607145223626,
+        "programmeAnalysis": {
+          "connected": true,
+          "contextState": "running",
+          "error": "",
+          "supported": true
+        },
+        "outputRms": 0,
+        "outputVerified": false,
+        "clockAdvancing": false,
+        "quantumGainRatio": 0.3333333333333333,
+        "readyState": 4,
+        "currentTime": 19.003398,
+        "duration": 334.782,
+        "playing": false,
+        "contextState": "running",
+        "exposureSeconds": 17.292399999976162,
+        "studyAssignment": "not_integrated"
+      },
+      {
+        "label": "Silence closes",
+        "policy": "mantra-masking-v2",
+        "enabled": true,
+        "platformEnabled": true,
+        "masterEnabled": true,
+        "status": "quiet_mask",
+        "targetGain": 0,
+        "currentGain": 0,
+        "programmePlaying": true,
+        "programmeSource": "qa-fixture",
+        "programmeTime": 0.746843,
+        "speechRms": 0,
+        "programmeAnalysis": {
+          "connected": true,
+          "contextState": "running",
+          "error": "",
+          "supported": true
+        },
+        "outputRms": 0,
+        "outputVerified": false,
+        "clockAdvancing": false,
+        "quantumGainRatio": 0.3333333333333333,
+        "readyState": 4,
+        "currentTime": 19.003398,
+        "duration": 334.782,
+        "playing": false,
+        "contextState": "running",
+        "exposureSeconds": 17.292399999976162,
+        "studyAssignment": "not_integrated"
+      },
+      {
+        "label": "Bass alone does not mask speech",
+        "policy": "mantra-masking-v2",
+        "enabled": true,
+        "platformEnabled": true,
+        "masterEnabled": true,
+        "status": "quiet_mask",
+        "targetGain": 0,
+        "currentGain": 0,
+        "programmePlaying": true,
+        "programmeSource": "qa-fixture",
+        "programmeTime": 0.754667,
+        "speechRms": 0.012975069895040443,
+        "programmeAnalysis": {
+          "connected": true,
+          "contextState": "running",
+          "error": "",
+          "supported": true
+        },
+        "outputRms": 0,
+        "outputVerified": false,
+        "clockAdvancing": false,
+        "quantumGainRatio": 0.3333333333333333,
+        "readyState": 4,
+        "currentTime": 19.003398,
+        "duration": 334.782,
+        "playing": false,
+        "contextState": "running",
+        "exposureSeconds": 17.292399999976162,
+        "studyAssignment": "not_integrated"
+      },
+      {
+        "label": "Quiet-to-loud transition closes then restores measured output",
+        "before": 19.064,
+        "quiet": {
+          "policy": "mantra-masking-v2",
+          "enabled": true,
+          "platformEnabled": true,
+          "masterEnabled": true,
+          "status": "quiet_mask",
+          "targetGain": 0,
+          "currentGain": 0,
+          "programmePlaying": true,
+          "programmeSource": "qa-fixture",
+          "programmeTime": 0.621333,
+          "speechRms": 3.0769197699346016e-07,
+          "programmeAnalysis": {
+            "connected": true,
+            "contextState": "running",
+            "error": "",
+            "supported": true
+          },
+          "outputRms": 0,
+          "outputVerified": false,
+          "clockAdvancing": true,
+          "quantumGainRatio": 0.3333333333333333,
+          "readyState": 4,
+          "currentTime": 19.202667,
+          "duration": 334.782,
+          "playing": true,
+          "contextState": "running",
+          "exposureSeconds": 17.332800000011922,
+          "studyAssignment": "not_integrated"
+        },
+        "resumed": {
+          "policy": "mantra-masking-v2",
+          "enabled": true,
+          "platformEnabled": true,
+          "masterEnabled": true,
+          "status": "mixing",
+          "targetGain": 0.0025611332464727204,
+          "currentGain": 0.0025335766840726137,
+          "programmePlaying": true,
+          "programmeSource": "qa-fixture",
+          "programmeTime": 1.321934,
+          "speechRms": 0.308470793207475,
+          "programmeAnalysis": {
+            "connected": true,
+            "contextState": "running",
+            "error": "",
+            "supported": true
+          },
+          "outputRms": 8.808206920570085e-05,
+          "outputVerified": true,
+          "clockAdvancing": true,
+          "quantumGainRatio": 0.3333333333333333,
+          "readyState": 4,
+          "currentTime": 19.904,
+          "duration": 334.782,
+          "playing": true,
+          "contextState": "running",
+          "exposureSeconds": 18.013300000011917,
+          "studyAssignment": "not_integrated"
+        }
+      },
+      {
+        "label": "Programme pause closes",
+        "policy": "mantra-masking-v2",
+        "enabled": true,
+        "platformEnabled": true,
+        "masterEnabled": true,
+        "status": "programme_pause",
+        "targetGain": 0,
+        "currentGain": 0,
+        "programmePlaying": false,
+        "programmeSource": "qa-fixture",
+        "programmeTime": 0.648098,
+        "speechRms": 0.3082370281490542,
+        "programmeAnalysis": {
+          "connected": true,
+          "contextState": "running",
+          "error": "",
+          "supported": true
+        },
+        "outputRms": 3.4948061014276703e-06,
+        "outputVerified": false,
+        "clockAdvancing": false,
+        "quantumGainRatio": 0.3333333333333333,
+        "readyState": 4,
+        "currentTime": 19.954967,
+        "duration": 334.782,
+        "playing": false,
+        "contextState": "running",
+        "exposureSeconds": 18.030499999999996,
+        "studyAssignment": "not_integrated"
+      },
+      {
+        "label": "Programme mute closes",
+        "policy": "mantra-masking-v2",
+        "enabled": true,
+        "platformEnabled": true,
+        "masterEnabled": true,
+        "status": "programme_muted",
+        "targetGain": 0,
+        "currentGain": 0,
+        "programmePlaying": true,
+        "programmeSource": "qa-fixture",
+        "programmeTime": 2.146691,
+        "speechRms": 0.3075068789826343,
+        "programmeAnalysis": {
+          "connected": true,
+          "contextState": "running",
+          "error": "",
+          "supported": true
+        },
+        "outputRms": 2.16556776417947e-06,
+        "outputVerified": false,
+        "clockAdvancing": false,
+        "quantumGainRatio": 0.3333333333333333,
+        "readyState": 4,
+        "currentTime": 19.993731,
+        "duration": 334.782,
+        "playing": false,
+        "contextState": "running",
+        "exposureSeconds": 18.030499999999996,
+        "studyAssignment": "not_integrated"
+      },
+      {
+        "label": "Buffering event immediately closes",
+        "policy": "mantra-masking-v2",
+        "enabled": true,
+        "platformEnabled": true,
+        "masterEnabled": true,
+        "status": "programme_settling",
+        "targetGain": 0,
+        "currentGain": 0,
+        "programmePlaying": true,
+        "programmeSource": "qa-fixture",
+        "programmeTime": 3.670667,
+        "speechRms": 0.3075001886784333,
+        "programmeAnalysis": {
+          "connected": true,
+          "contextState": "running",
+          "error": "",
+          "supported": true
+        },
+        "outputRms": 1.9579714990387045e-06,
+        "outputVerified": false,
+        "clockAdvancing": false,
+        "quantumGainRatio": 0.3333333333333333,
+        "readyState": 4,
+        "currentTime": 20.029333,
+        "duration": 334.782,
+        "playing": false,
+        "contextState": "running",
+        "exposureSeconds": 18.030499999999996,
+        "studyAssignment": "not_integrated"
+      },
+      {
+        "label": "Main-thread stall expires gain",
+        "gain": 0
+      },
+      {
+        "label": "Platform off closes",
+        "policy": "mantra-masking-v2",
+        "enabled": true,
+        "platformEnabled": false,
+        "masterEnabled": true,
+        "status": "platform_off",
+        "targetGain": 0,
+        "currentGain": 0,
+        "programmePlaying": true,
+        "programmeSource": "qa-fixture",
+        "programmeTime": 1.484226,
+        "speechRms": 0.30647256481580226,
+        "programmeAnalysis": {
+          "connected": true,
+          "contextState": "running",
+          "error": "",
+          "supported": true
+        },
+        "outputRms": 1.3051935553351742e-05,
+        "outputVerified": false,
+        "clockAdvancing": false,
+        "quantumGainRatio": 0.3333333333333333,
+        "readyState": 4,
+        "currentTime": 20.382828,
+        "duration": 334.782,
+        "playing": false,
+        "contextState": "running",
+        "exposureSeconds": 18.13790000003576,
+        "studyAssignment": "not_integrated"
+      },
+      {
+        "label": "Owner UI requires login; simulated authenticated UI sends isolated mantra save with CSRF"
+      },
+      {
+        "label": "Password UI preserves exact input and clears password fields after save (simulated authentication)"
+      }
+    ],
+    "realProgramme": {
+      "policy": "mantra-masking-v2",
+      "enabled": true,
+      "platformEnabled": true,
+      "masterEnabled": true,
+      "status": "mixing",
+      "targetGain": 0.0001708590191765084,
+      "currentGain": 0.0001708590134512633,
+      "programmePlaying": true,
+      "programmeSource": "video",
+      "programmeTime": 14.982008,
+      "speechRms": 0.21703760702616554,
+      "programmeAnalysis": {
+        "connected": true,
+        "contextState": "running",
+        "error": "",
+        "supported": true
+      },
+      "outputRms": 3.3287993806628563e-06,
+      "outputVerified": true,
+      "clockAdvancing": true,
+      "quantumGainRatio": 0.3333333333333333,
+      "readyState": 4,
+      "currentTime": 13.755381,
+      "duration": 334.782,
+      "playing": true,
+      "contextState": "running",
+      "exposureSeconds": 12.638899999976164,
+      "studyAssignment": "not_integrated"
+    },
+    "errors": [],
+    "passed": true,
+    "lastDiagnostics": null,
+    "programme": {
+      "media": null
+    }
+  },
+  "password_php": {
+    "runtime": "PHP 8.3 WASM",
+    "checks": [
+      "Unauthenticated, CSRF, origin, mismatch, short, overlong and null-byte passwords rejected",
+      "Custom password stored only as an adaptive hash; CSRF/session rotated; prior session invalidated",
+      "New password signs in exactly; previous key, changed case and missing spaces rejected",
+      "Authenticated mantra and peak updates preserve each other",
+      "One-use recovery requires the secret token; expired, wrong, stale-revision and cross-origin tokens rejected; verification does not consume it; invalid passwords leave it usable",
+      "Recovery without the old key signs in with the exact new password, invalidates prior sessions and rejects replay even if the reset file survives cleanup",
+      "Corrupt credential fails closed and never restores the legacy key"
+    ],
+    "passed": true
+  },
+  "password_browser": {
+    "mutedProcess": true,
+    "backend": "Isolated PHP 8.3, using the actual endpoint and browser form; staging credentials untouched",
+    "checks": [
+      "One-time fragment opens directly to two password fields; fragment cleared before verification; desktop and mobile fit",
+      "Real form submits to isolated PHP, saves exact password, signs in and clears both fields",
+      "New exact password signs back in; used link is rejected by the real PHP endpoint"
+    ],
+    "passed": true
+  },
+  "reset_live": {
+    "passed": true,
+    "liveStaging": true,
+    "tokenValidatedWithoutConsumption": true,
+    "passwordUnchanged": true,
+    "resetFields": 2,
+    "oldKeyRequired": false,
+    "fragmentCleared": true,
+    "viewports": [
+      {
+        "width": 1470,
+        "height": 956
+      },
+      {
+        "width": 390,
+        "height": 844
+      }
+    ]
+  },
+  "served_bytes": {
+    "checks": [
+      {
+        "file": "index.html",
+        "sha": "78eaf2c45adc00125686041503f4c9388e33d23d9a23163d21a2dfeb52c09e0d"
+      },
+      {
+        "reference": "emdr-shader.js?v=emdr-shader-0a08af93a963",
+        "sha": "0a08af93a9636d4dddc2d4fc9add1387e879703e1e614bf33513317e5dd82c31"
+      },
+      {
+        "reference": "adaptive-sound/mantra-v1.js?v=bad4bbc29eb5",
+        "sha": "bad4bbc29eb545410e42d642a06e938cb1e90ab215de8822f667603ced671c1b"
+      },
+      {
+        "file": "index-alt.html",
+        "sha": "598da8906a9ca06109067e3f6e9ee104a6a82344509724880377ea2a04bb7809"
+      },
+      {
+        "reference": "emdr-shader.js?v=emdr-shader-0a08af93a963",
+        "sha": "0a08af93a9636d4dddc2d4fc9add1387e879703e1e614bf33513317e5dd82c31"
+      },
+      {
+        "file": "quantum-tree-control.html",
+        "sha": "ec2439bb20a8baddf967f8ddd4786ec0d081674a7cfaff5207032ff39e6542bc"
+      },
+      {
+        "reference": "quantum-tree-control.css?v=8899ce73486e",
+        "sha": "8899ce73486ed9e61e45adb6efd1ce9df8153fee5f893061c8c245f9dbef9591"
+      },
+      {
+        "reference": "quantum-tree-control.js?v=55f7471542b4",
+        "sha": "55f7471542b4be31835e746139f3a7f7b656b7c922d1e7ac362e4f4c55be0393"
+      },
+      {
+        "privateFile": "quantum-tree-owner.json",
+        "status": 403
+      },
+      {
+        "privateFile": "quantum-tree-owner-reset.json",
+        "status": 403
+      },
+      {
+        "action": "verify_reset",
+        "status": 400
+      },
+      {
+        "action": "reset_password",
+        "status": 400
+      }
+    ],
+    "settings": {
+      "schema_version": 1,
+      "peak_volume": 0.055,
+      "peak_percent": 5.5,
+      "mantra_enabled": true,
+      "mantra_gain_ratio": 0.3333333333333333,
+      "peak_db": -25.2,
+      "updated_at": "2026-07-17T00:00:00+00:00",
+      "authenticated": false
+    },
+    "passed": true
+  },
+  "limits": [
+    "Playback and recovery verified in process-muted Chromium, not Safari playback.",
+    "Engineered masking and measured output do not establish subjective inaudibility.",
+    "Live reset link was verified without submission; Ben chooses his password."
+  ],
+  "production_modified": false
+}
