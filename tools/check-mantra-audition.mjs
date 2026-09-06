@@ -25,7 +25,7 @@ try {
  const wave=await page.locator('[data-mantra-preview-wave]').evaluate(c=>c.toDataURL());
  await page.waitForTimeout(180);assert.notEqual(await page.locator('[data-mantra-preview-wave]').evaluate(c=>c.toDataURL()),wave);
  report.checks.push({label:'Target-volume isolated playback and changing post-gain waveform',...active});
- await play.click();await page.waitForFunction(()=>!IAMMantraAudition.diagnostics().playing);
+ await play.click();await page.waitForFunction(()=>!IAMMantraAudition.diagnostics().playing&&IAMMantraAudition.diagnostics().gain===0);
  const paused=await diag();await page.waitForTimeout(200);assert.equal((await diag()).currentTime,paused.currentTime);assert.equal(paused.gain,0);
  await play.click();await page.waitForFunction(t=>IAMMantraAudition.diagnostics().currentTime>t,paused.currentTime);
  const slider=page.locator('#mantra-preview-slider');
@@ -34,7 +34,7 @@ try {
  await page.locator('[data-mantra-preview-target]').click();assert.ok(Math.abs((await diag()).gain-.055/3)<1e-8);
  await page.locator('[data-preview-toggle]').click();await page.waitForFunction(()=>!IAMMantraAudition.diagnostics().playing&&!document.querySelector('[data-quantum-preview]').paused);
  await play.click();await page.waitForFunction(()=>IAMMantraAudition.diagnostics().outputVerified);assert.equal(await page.locator('[data-quantum-preview]').evaluate(a=>a.paused),true);
- await page.locator('[data-mantra-preview-stop]').click();assert.equal((await diag()).currentTime,0);assert.equal((await diag()).gain,0);
+ await page.locator('[data-mantra-preview-stop]').click();await page.waitForFunction(()=>IAMMantraAudition.diagnostics().gain===0);assert.equal((await diag()).currentTime,0);assert.equal((await diag()).gain,0);
  report.checks.push({label:'Pause/resume, zero/custom volume, exact target restore, stop/reset, and mutual exclusion passed'});
  await page.locator('#mantra-preview-slider').scrollIntoViewIfNeeded();await page.screenshot({path:out+'/owner-desktop.png'});
  await page.setViewportSize({width:390,height:844});await page.locator('[data-mantra-preview-toggle]').scrollIntoViewIfNeeded();await page.screenshot({path:out+'/owner-mobile.png'});
