@@ -1,0 +1,20 @@
+{
+  "repaired_at": "2026-09-06T22:39:54.422364+00:00",
+  "cause": "Production had no custom credential and fell back to the lost legacy access key.",
+  "operation": "Installed the chosen staging password hash in production with a new credential revision; plaintext password was neither retrieved nor requested.",
+  "productionReadbackMatches": true,
+  "sameChosenPasswordHash": true,
+  "sourceFilesChanged": false,
+  "productionSettingsChanged": false,
+  "passwordLoginVerified": false,
+  "passwordLoginNote": "The user holds the plaintext password; verification checks record integrity and server readability without collecting it.",
+  "productionPhpRecognisesInstalledCredentialRevision": true,
+  "verificationMethod": "A temporary 120-second recovery verifier bound to the installed credential revision was accepted by the production PHP API without resetting the password or opening a session. It was then deleted and rejected on reuse.",
+  "temporaryVerifierRemoved": true,
+  "publicSettingsUnchangedDuringVerification": true,
+  "emptyPasswordRejected": true,
+  "website_source_commit": "66ce7eec06aa61db59651652d9dd31488c873e33",
+  "owner_url": "https://universalmind.tv/vogue/iam/quantum-tree-control.html",
+  "method": "Authorized owner-runtime repair over the existing Panthur FTP connection. Normal deployments continue to exclude private credential files.",
+  "private_data_in_git": false
+}
