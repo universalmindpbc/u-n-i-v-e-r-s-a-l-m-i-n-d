@@ -6229,6 +6229,11 @@ body.music-shelf-open .adaptive-television-fashion-shelf:not(.adaptive-televisio
   display: flex;
 }
 
+/* Neo overlays the current full-screen programme and has no GIF/Fashion mix. */
+.adaptive-television-reaction-wallet[data-emdr-controls-view="neo"] .adaptive-television-emdr-gif-mix-controls {
+  display: none !important;
+}
+
 .adaptive-television-emdr-gif-mix-controls > .adaptive-television-video-crossfader-wrap {
   flex: 1 1 auto;
   min-width: 120px;
@@ -6263,6 +6268,17 @@ body.music-shelf-open .adaptive-television-fashion-shelf:not(.adaptive-televisio
 }
 
 @media (min-width: 901px) and (max-width: 1240px) {
+  .adaptive-television-reaction-wallet[data-wallet-view="emdr"][data-emdr-controls-view="neo"],
+  .adaptive-television-reaction-wallet[data-wallet-view="emdr"][data-emdr-controls-view="stellar"] {
+    min-height: 116px;
+    padding-block: 8px;
+  }
+
+  .adaptive-television-reaction-wallet[data-wallet-view="emdr"][data-emdr-controls-view="neo"] .adaptive-television-emdr-controls,
+  .adaptive-television-reaction-wallet[data-wallet-view="emdr"][data-emdr-controls-view="stellar"] .adaptive-television-emdr-controls {
+    flex-wrap: wrap;
+  }
+
   .adaptive-television-reaction-wallet[data-wallet-view="emdr"][data-emdr-controls-view="gif"] {
     min-height: 116px;
     padding-block: 8px;
