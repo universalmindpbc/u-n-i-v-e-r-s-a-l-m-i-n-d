@@ -141,6 +141,7 @@ function requireCondition(condition, message) {
 const controller = await fs.readFile(controllerPath, 'utf8');
 const emdrThreeArt = await fs.readFile(emdrThreeArtPath, 'utf8');
 const emdrShader = await fs.readFile(emdrShaderPath, 'utf8');
+const emdrNeo = await fs.readFile(path.join(IAM_DIR, 'emdr-neo.js'), 'utf8');
 const globeController = await fs.readFile(globeControllerPath, 'utf8');
 const streamController = await fs.readFile(streamControllerPath, 'utf8');
 const streamCatalogue = await fs.readFile(streamCataloguePath, 'utf8');
@@ -386,6 +387,11 @@ const emdrThreeArtMatch = indexPage.match(/emdr-three-art\.js\?v=([^"']+)/);
 const emdrShaderMatch = indexPage.match(/emdr-shader\.js\?v=([^"']+)/);
 requireCondition(emdrThreeArtMatch?.[1] === expectedEmdrThreeArtToken, `the Stellar artwork token does not match ${expectedEmdrThreeArtToken}`);
 requireCondition(emdrShaderMatch?.[1] === expectedEmdrShaderToken, `the EMDR shader token does not match ${expectedEmdrShaderToken}`);
+const expectedNeoToken = `emdr-neo-${createHash('sha256').update(emdrNeo).digest('hex').slice(0, 12)}`;
+for (const neoEntry of ['index.html', 'index-alt.html']) {
+  const markup = await fs.readFile(path.join(IAM_DIR, neoEntry), 'utf8');
+  requireCondition(markup.includes(`emdr-neo.js?v=${expectedNeoToken}`), `${neoEntry} does not reference the current Neo renderer`);
+}
 
 requireCondition(controller.includes(explicitSelectionMarker), 'the home controller no longer reads selected_track_id from the URL');
 requireCondition(indexPage.includes(`programme-guide.css?v=${expectedProgrammeCssToken}`), 'the live I AM app Program stylesheet cache token is stale');
