@@ -675,6 +675,13 @@
       gifPreset: "",
       fashionChannelId: "",
     },
+    {
+      key: "neo",
+      name: "Neo",
+      styleValue: 8,
+      gifPreset: "",
+      fashionChannelId: "",
+    },
   ];
   const emdrStyleNames = emdrPresets.map((preset) => preset.name);
   const emdrStyleValues = emdrPresets.map((preset) => preset.styleValue);
@@ -8982,7 +8989,7 @@
       const selectedPreset = emdrPresets[emdrStyleIndex];
       reactionWallet.dataset.emdrControlsView = selectedPreset?.gifPreset
         ? "gif"
-        : (selectedPreset?.key === "stella" ? "stellar" : "neutral");
+        : (selectedPreset?.key === "stella" ? "stellar" : (selectedPreset?.key === "neo" ? "neo" : "neutral"));
     }
     const emdrActive = Boolean(window.IAMEMDR?.active);
     const hasSelectedStyle = Number.isInteger(emdrStyleIndex) && Boolean(emdrStyleValues[emdrStyleIndex]);
@@ -8994,7 +9001,7 @@
         "aria-label",
         emdrActive
           ? "Turn EMDR off"
-          : (hasSelectedStyle ? `Turn ${emdrStyleNames[emdrStyleIndex]} EMDR on` : "Choose CB, M8, JBH i, JBH ii, JBH iii or Stella to turn EMDR on")
+          : (hasSelectedStyle ? `Turn ${emdrStyleNames[emdrStyleIndex]} EMDR on` : "Choose CB, M8, JBH i, JBH ii, JBH iii, Stella or Neo to turn EMDR on")
       );
     }
   }

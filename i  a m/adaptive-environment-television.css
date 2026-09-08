@@ -6178,16 +6178,20 @@ body.music-shelf-open .adaptive-television-fashion-shelf:not(.adaptive-televisio
 }
 
 .adaptive-television-reaction-wallet[data-wallet-view="emdr"][data-emdr-controls-view="gif"],
+.adaptive-television-reaction-wallet[data-wallet-view="emdr"][data-emdr-controls-view="neo"],
 .adaptive-television-reaction-wallet[data-wallet-view="emdr"][data-emdr-controls-view="stellar"] {
   width: min(1460px, calc(100vw - 38px)) !important;
 }
 
 @media (min-width: 901px) {
+  .adaptive-television-reaction-wallet[data-wallet-view="emdr"][data-emdr-controls-view="neo"] .adaptive-television-emdr-controls,
   .adaptive-television-reaction-wallet[data-wallet-view="emdr"][data-emdr-controls-view="stellar"] .adaptive-television-emdr-controls,
+  .adaptive-television-reaction-wallet[data-wallet-view="emdr"][data-emdr-controls-view="neo"] .adaptive-television-emdr-style-group,
   .adaptive-television-reaction-wallet[data-wallet-view="emdr"][data-emdr-controls-view="stellar"] .adaptive-television-emdr-style-group {
     flex-wrap: nowrap;
   }
 
+  .adaptive-television-reaction-wallet[data-wallet-view="emdr"][data-emdr-controls-view="neo"] .adaptive-television-emdr-style-group,
   .adaptive-television-reaction-wallet[data-wallet-view="emdr"][data-emdr-controls-view="stellar"] .adaptive-television-emdr-style-group {
     flex: 0 0 auto;
   }

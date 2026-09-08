@@ -790,6 +790,11 @@
       state.frame = window.requestAnimationFrame(render);
       return;
     }
+    if (state.style === 8) {
+      window.IAMEMDRNeo?.render?.({ time: elapsed, intensity: state.intensity, rhythm: state.rhythm, reactionEnabled: state.reactionEnabled });
+      state.frame = window.requestAnimationFrame(render);
+      return;
+    }
     const gl = state.gl;
     gl.viewport(0, 0, state.canvas.width, state.canvas.height);
     gl.clearColor(0, 0, 0, 0); gl.clearDepth(1); gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT); gl.disable(gl.DEPTH_TEST); gl.useProgram(state.program);
@@ -812,6 +817,7 @@
     window.IAMVectorWorlds?.setActive?.(state.active && state.style < 4.5);
     window.IAMEMDRThree?.setActive?.(state.active && state.style >= 4.5 && state.style < 5.5);
     window.IAMEMDRGif?.setActive?.(state.active && state.style >= 6.5 && state.style < 7.5);
+    window.IAMEMDRNeo?.setActive?.(state.active && state.style === 8);
     if (!state.active) {
       window.cancelAnimationFrame(state.frame); state.frame = 0;
       if (state.gl) { state.gl.clearColor(0,0,0,0); state.gl.clear(state.gl.COLOR_BUFFER_BIT); }
@@ -834,12 +840,13 @@
     get threeSceneReady() { return Boolean(window.IAMEMDRThree?.ready); },
     setActive,
     setStyle(value) {
-      state.style = Math.max(0, Math.min(7, Number(value) || 0));
+      state.style = Math.max(0, Math.min(8, Number(value) || 0));
       state.canvas?.classList.toggle("is-active", state.active && state.style < 4.5);
       window.IAMVectorWorlds?.setStyle?.(state.style);
       window.IAMVectorWorlds?.setActive?.(state.active && state.style < 4.5);
       window.IAMEMDRThree?.setActive?.(state.active && state.style >= 4.5 && state.style < 5.5);
       window.IAMEMDRGif?.setActive?.(state.active && state.style >= 6.5 && state.style < 7.5);
+      window.IAMEMDRNeo?.setActive?.(state.active && state.style === 8);
       return state.style;
     },
     setIntensity(value) { state.intensity = Math.max(0, Math.min(1, Number(value) || 0)); window.IAMVectorWorlds?.setIntensity?.(state.intensity); return state.intensity; },
