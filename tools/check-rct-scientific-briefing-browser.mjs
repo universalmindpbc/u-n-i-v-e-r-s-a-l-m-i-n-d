@@ -14,7 +14,7 @@ if (screenshotDir) fs.mkdirSync(screenshotDir, { recursive: true });
 const expectedVision = "modul8 infinity represents our underlying platform capability—exploring the frontier of real-time targeted gene expression and epigenetic modulation through prescription sound radiation, EMDR, and silent mantra, together as one — paired with pioneering hyperspectral computer vision research toward contact-free, non-invasive inference of gene expression in real time.";
 const expectedContact = "Universal Mind bk@universalmind.tv universalmind.tv Universal Mind TV, PBC (A Delaware Public Benefit Corporation) ABN: 15 885 248 650";
 const oldVisionFragment = "prescription sound radiation, EMDR, and silent mantra.";
-const expectedPdfPath = "a s s e t s/research/modul8-infinity-rct-scientific-briefing-v1.pdf";
+const expectedPdfPath = "a s s e t s/research/modul8-infinity-rct-scientific-briefing-v1.pdf?v=rct-t10-20260908";
 const viewports = [
   { name: "desktop", width: 1440, height: 1000 },
   { name: "mobile", width: 390, height: 844 },
