@@ -1101,7 +1101,7 @@ requireCondition(televisionPage.includes('data-emdr-tooltip="James Bondage Healt
 requireCondition(televisionPage.includes('data-emdr-tooltip="James Bondage Health — Pirelli 2010 and Shashi Solana — healing sexual trauma in nature."'), 'the JBH ii rollover does not use the provisional editorial description');
 requireCondition(televisionPage.includes('data-emdr-tooltip="James Bondage Health — Karl Lagerfeld and Shashi Solana — dissolving toxic masculinity."'), 'the JBH iii rollover does not use the provisional editorial description');
 requireCondition(televisionPage.includes('data-emdr-tooltip="Stella geometric experience."'), 'the Stella rollover does not use the approved description');
-requireCondition(televisionPage.includes('data-emdr-preset="neo" data-emdr-tooltip="enter the matrix"') && televisionPage.includes('data-emdr-neo-canvas'), 'Neo must retain its transparent overlay and approved tooltip');
+requireCondition(televisionPage.includes('data-emdr-preset="neo" data-emdr-tooltip="Enter the matrix."') && televisionPage.includes('data-emdr-neo-canvas'), 'Neo must retain its transparent overlay and approved tooltip');
 requireCondition(!televisionPage.includes('data-emdr-tooltip="modul8 infinity — Rave animated GIF experience."') && !/data-emdr-tooltip="[^"]*Rave animated GIF experience\.?"/i.test(televisionPage), 'the superseded M8 Rave description is still present');
 requireCondition(!/data-emdr-tooltip="[^"]*video experience\.?"/.test(televisionPage), 'an EMDR rollover still uses the rejected video-experience wording');
 requireCondition(televisionPage.includes('data-wallet-panel="emdr" data-emdr-controls') && !televisionPage.includes('data-wallet-panel="emdr-active"'), 'the approved single-panel EMDR hierarchy has not been restored');
