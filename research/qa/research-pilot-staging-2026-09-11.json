@@ -1,0 +1,113 @@
+{
+  "generated_at": "2026-09-10T23:53:23.602519+00:00",
+  "source_commit": "f04a69cf7adaed88a6a9a67d4b5458a28fc292d3",
+  "staging_url": "https://staging.universalmind.tv/study",
+  "dashboard_url": "https://staging.universalmind.tv/study/dashboard",
+  "enrolment_open": false,
+  "source_asset_verification": {
+    "served": [
+      {
+        "file": "study/app.js",
+        "status": 200,
+        "digest": "eac84188390b97a5bea3a35f1ee9dd79d1733706ce66fade584714beef3dd994"
+      },
+      {
+        "file": "study/style.css",
+        "status": 200,
+        "digest": "918fedfb6c56301e2bd8c49b744527f4ad0b225e52a14ce28f2164329503ab05"
+      },
+      {
+        "file": "study/experience.js",
+        "status": 200,
+        "digest": "06ac70241c82f7bca692e03600a63c5a6bdcb0a5fd823e8f72a4329150a301e7"
+      },
+      {
+        "file": "study/experience.css",
+        "status": 200,
+        "digest": "fa4b3529143a5d4b1f890af38b49e242e9801e7140aafd74de884b0eb2a9096e"
+      },
+      {
+        "file": "study/shen-bridge.js",
+        "status": 200,
+        "digest": "25c5488724fa8d786e640e3202689fb882aa1aac086feca30e9f1ff4d10eccb5"
+      },
+      {
+        "file": "study/protocol-v1.json",
+        "status": 200,
+        "digest": "076bbcf8ed5b6c6ab82501e3923c4e7606a1964593ddaa11b3bb76c38eb9da43"
+      },
+      {
+        "file": "research/shen-heart-rate.js",
+        "status": 200,
+        "digest": "ebe0f96f2db7b2d2bada1c8e0b5e460be3c694e509ac18a8c635bc8e97d41de9"
+      },
+      {
+        "file": "adaptive-environment-television.js",
+        "status": 200,
+        "digest": "a562198316df21d8c7d149827e4ca73144028db08300cfd1cdbd70c4a82820e7"
+      },
+      {
+        "file": "cloudflare-stream-controller.js",
+        "status": 200,
+        "digest": "91f344a44abba3651ccb22ef06af2cb258770b3221ece5f0bbe51f0585717f88"
+      },
+      {
+        "file": "adaptive-sound/controller-v1.js",
+        "status": 200,
+        "digest": "c9b24f81cc727992696cf3486922e07a0f48cb411d3ca03a8607c9736ad94e07"
+      },
+      {
+        "file": "adaptive-sound/mantra-v1.js",
+        "status": 200,
+        "digest": "1c92fbb2e93f29720355c88abb2daebca6eec2b83f91fc049d8255731eef196f"
+      }
+    ],
+    "scan": {
+      "isolated": true,
+      "cameraAttempts": 0,
+      "copy": "Keep still, breathe naturally and look into the camera. Available heart rate, HRV and blood pressure readings will be saved to your consented study session.",
+      "stop": true
+    }
+  },
+  "local_checks": [
+    "PHP 8.3 API sessions, consent, state order, access scopes, idempotency, withdrawal and completion timing passed",
+    "Synthetic 0.1 Hz spectrum, amplitude scaling, out-of-band rejection, continuity and duration checks passed",
+    "Mandatory Panthur staging preflights passed"
+  ],
+  "staging_checks": [
+    "Participant walkthrough and researcher preview dashboard completed at desktop and mobile widths",
+    "Exact approved briefing and ten supplied emojis verified",
+    "BP, SDNN, lnRMSSD and 0.1 Hz power persisted through the actual API using labelled synthetic preview records",
+    "Missing vitals remained null; CSRF and private-storage requests returned 403",
+    "Eleven published assets matched the committed source",
+    "One-minute Heart Check entry retained cross-origin isolation; no camera request occurred"
+  ],
+  "engineering_experience_check": {
+    "preset": "m8",
+    "active": true,
+    "video_clock_advanced": true,
+    "sound_profile": "inspiration_gamma_80_v1",
+    "carrier_hz": 444,
+    "sound_engine": "running",
+    "quantum_tree_playing": true,
+    "mantra_output_verified": true,
+    "native_fullscreen_attempts": 0,
+    "stop_verified": true,
+    "research_api_writes": 0,
+    "configuration_fixture": true
+  },
+  "protected_owner_runtime": "Verified unchanged after every Panthur staging deployment",
+  "outstanding": [
+    "Empire of the Sun study video has not been uploaded",
+    "Trial entitlement and real camera-derived BP/HRV results are not yet verified",
+    "OpenAI API key is not configured on staging; no live Astra report has been generated or verified",
+    "Owner must complete study preparation before enrolment opens"
+  ],
+  "limitations": [
+    "Synthetic preview measurements are engineering fixtures, not observations from participants",
+    "M8 playback used an existing electronic-music test video and an isolated read-only configuration fixture, not the pending study video",
+    "Muted technical playback does not establish subjective sound quality or mantra inaudibility",
+    "One-minute 0.1 Hz pulse-interval power is exploratory and is not a direct baroreflex-sensitivity measurement"
+  ],
+  "production_modified": false
+}
