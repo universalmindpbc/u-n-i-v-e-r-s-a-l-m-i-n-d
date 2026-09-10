@@ -71,6 +71,17 @@ try {
   await ok('admin.payment',pay);await ok('admin.payment',pay);
   assert.equal((await ok('admin.dataset')).participants[0].payments.length,1);
   checks.push('Payment retries do not duplicate payment records');
+  // Advance only the isolated fixture's server timing to test ten-minute completion without a ten-minute wall-clock test.
+  const cohort=JSON.parse(php.readFileAsText('/app/api/.runtime-private/study/cohort.json'));
+  const timed=structuredClone(summary.participants[0].sessions[0]);
+  timed.state='experience';timed.exposure_seconds=598;timed.last_media_time=598;timed.last_heartbeat=Date.now()/1000-1.1;
+  timed.exposure_started_epoch=Date.now()/1000-600;timed.last_fidelity_valid=true;timed.last_mutation=null;
+  cohort.participants.P01.consent={version:first.protocol.version,at:new Date().toISOString()};cohort.participants.P01.sessions=[timed];
+  php.writeFile('/app/api/.runtime-private/study/cohort.json',JSON.stringify(cohort));
+  cookies={};await ok();await ok('login',{code:invite1.code});await ok();
+  const completion=await ok('exposure.tick',{session_id:timed.id,media_time:599,playing:true,preset:'m8',carrier_hz:444,profile_id:'inspiration_gamma_80_v1',quantum_tree_enabled:true,mantra_enabled:true,sound_running:true});
+  assert.equal(completion.state,'after_vitals');assert.equal(completion.exposure_seconds,599);
+  checks.push('Server-timed video completion advances to the after measurement; timing fixture is local only');
   cookies=previewCookies;await ok();await ok('withdraw',{erase_responses:true});
   const removed=await ok('export');assert.equal(removed.participant.withdrawn,true);assert.equal(removed.participant.sessions[0].before_report,null);
   assert.equal((await ok('summary')).summary.statistics.happiness.n,0);

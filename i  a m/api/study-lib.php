@@ -16,7 +16,7 @@ function study_staging(): bool {
 
 function study_defaults(): array {
     return ['revision' => 0, 'config' => ['open' => false, 'stream_uid' => '', 'video_title' => 'Empire of the Sun',
-        'shen_verified' => false, 'materials_approved' => false, 'contact_email' => '', 'retention_days' => null],
+        'shen_verified' => false, 'experience_verified' => false, 'materials_approved' => false, 'contact_email' => '', 'retention_days' => null],
         'participants' => [], 'stakeholders' => [], 'analysis' => null, 'audit' => []];
 }
 
@@ -100,6 +100,7 @@ function study_readiness(array $config): array {
     $missing = [];
     if (!preg_match('/\A[a-f0-9]{32}\z/', $config['stream_uid'])) $missing[] = 'Study video';
     if (!$config['shen_verified']) $missing[] = 'Shen BP and HRV verification';
+    if (!($config['experience_verified'] ?? false)) $missing[] = 'Ten-minute video and combined experience verification';
     if (!$config['materials_approved']) $missing[] = 'Participant materials and research review';
     if (!filter_var($config['contact_email'], FILTER_VALIDATE_EMAIL)) $missing[] = 'Study contact';
     if (!is_int($config['retention_days']) || $config['retention_days'] < 1) $missing[] = 'Data retention period';

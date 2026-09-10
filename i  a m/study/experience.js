@@ -1,6 +1,7 @@
 // This adapter uses the existing M8 viewer, Stream player, Quantum Tree and sound engine.
 const send = (type,extra={}) => parent.postMessage({type,...extra},location.origin);
 const wait = ms => new Promise(resolve=>setTimeout(resolve,ms));
+if(document.readyState==='loading')await new Promise(resolve=>document.addEventListener('DOMContentLoaded',resolve,{once:true}));
 let video, timer, running=false, stopped=false, configuring=false;
 let previousChoice, previousAdaptation;
 const control=document.createElement('button');

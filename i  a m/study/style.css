@@ -45,7 +45,7 @@
 .study-rating input { position:absolute; opacity:0; width:1px; height:1px; }
 .study-rating label:has(input:checked) { background:#eee7de; color:#13100f; border-color:#eee7de; }
 .study-rating label:has(input:focus-visible) { outline:2px solid #d5bff5; outline-offset:4px; }
-.study-emoji { width:58px; height:60px; background-image:url('emoji-reference.jpeg'); background-size:1013px 365px; background-repeat:no-repeat; display:block; }
+.study-emoji { width:60px; height:74px; border-radius:8px; background-color:#fff; background-image:url('emoji-reference.jpeg'); background-size:1013px 365px; background-repeat:no-repeat; display:block; }
 .study-rating-number { font-variant-numeric:tabular-nums; font-size:13px; }
 .study-scale-ends { display:flex; justify-content:space-between; margin-top:12px; font-size:12px; color:#c2b9b0; }
 .study-page textarea,.study-page select,.study-field input { width:100%; padding:14px; border:1px solid #ffffff45; border-radius:0; background:#111; color:#eee; }

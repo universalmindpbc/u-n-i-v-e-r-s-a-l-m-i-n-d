@@ -17,6 +17,8 @@ function study_generate_analysis(array $request, ?string $preview = null): array
     $clean = [];
     foreach ($excerpts as $entry) {
         study_require(is_array($entry), 'Invalid excerpt.');
+        $matched = array_filter($summary['rows'], static fn($row): bool => $row['participant_id'] === ($entry['participant_id'] ?? '') && $row['session'] === ($entry['session'] ?? null));
+        study_require(count($matched) === 1, 'Each reviewed excerpt must belong to a recorded participant session.');
         $clean[] = ['participant_id' => study_text($entry['participant_id'] ?? '', 10), 'session' => (int) ($entry['session'] ?? 0),
             'before' => study_text($entry['before'] ?? '', 2000), 'after' => study_text($entry['after'] ?? '', 2000)];
     }
@@ -54,6 +56,11 @@ function study_generate_analysis(array $request, ?string $preview = null): array
     study_require(($response['status'] ?? '') === 'completed' && $text !== '', 'Astra has not completed the report. Try again later.');
     $report = json_decode($text, true, 512, JSON_THROW_ON_ERROR);
     study_require(is_array($report) && isset($report['executive_summary'],$report['findings'],$report['themes'],$report['limitations']), 'Astra returned an incomplete report.');
+    foreach ($report['themes'] as $theme) {
+        $matches = array_values(array_filter($clean, static fn($entry): bool => $entry['participant_id'] === $theme['participant_id'] && $entry['session'] === $theme['session']));
+        $evidence = trim($theme['evidence']);
+        study_require(count($matches) === 1 && $evidence !== '' && (str_contains($matches[0]['before'], $evidence) || str_contains($matches[0]['after'], $evidence)), 'Astra returned a theme without matching source evidence. Please generate a fresh draft.');
+    }
     $analysis = ['id' => bin2hex(random_bytes(16)), 'model' => $response['model'] ?? 'gpt-6-astra', 'reasoning_effort' => 'max',
         'response_id' => $response['id'] ?? '', 'prompt_version' => 'pilot-narrative-v1', 'generated_at' => gmdate('c'),
         'dataset_hash' => hash('sha256', json_encode($summary)), 'input_hash' => hash('sha256', $payload['input']),

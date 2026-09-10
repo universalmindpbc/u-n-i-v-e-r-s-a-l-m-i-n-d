@@ -130,7 +130,7 @@ try {
                 $days = $request['retention_days'] ?? null;
                 study_require($days === null || (is_int($days) && $days >= 1 && $days <= 3650), 'Choose a retention period in days.');
                 $c['retention_days'] = $days;
-                foreach (['open','shen_verified','materials_approved'] as $key) $c[$key] = ($request[$key] ?? false) === true;
+                foreach (['open','shen_verified','experience_verified','materials_approved'] as $key) $c[$key] = ($request[$key] ?? false) === true;
                 if ($c['open']) study_require(study_readiness($c)['ready'], 'Complete study preparation before opening enrolment.');
                 if (count(array_filter($data['participants'], static fn($p): bool => $p['consent'] !== null && !$p['withdrawn']))) {
                     foreach (['stream_uid','retention_days','video_title'] as $locked) study_require($c[$locked] === $data['config'][$locked], 'The consented study configuration is locked while participants are enrolled.');

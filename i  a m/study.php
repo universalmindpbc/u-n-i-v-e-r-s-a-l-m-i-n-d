@@ -18,7 +18,7 @@ header('Cross-Origin-Embedder-Policy: require-corp');
   <title>Study | Universal Mind</title>
   <link rel="icon" href="favicon.png">
   <link rel="stylesheet" href="study/gate.css?v=study-1">
-  <link rel="stylesheet" href="study/style.css?v=study-1">
+  <link rel="stylesheet" href="study/style.css?v=918fedfb6c56">
 </head>
 <body class="study-page" data-study-state="loading">
   <canvas class="rain-canvas" aria-hidden="true" data-rain-canvas></canvas>
@@ -30,6 +30,6 @@ header('Cross-Origin-Embedder-Policy: require-corp');
   <main id="study-app" aria-busy="true"><p class="study-loading">Opening your study…</p></main>
   <p id="study-status" role="status" aria-live="polite"></p>
   <script src="study/gate-rain.js?v=study-1" defer></script>
-  <script type="module" src="study/app.js?v=study-1"></script>
+  <script type="module" src="study/app.js?v=eac84188390b"></script>
 </body>
 </html>

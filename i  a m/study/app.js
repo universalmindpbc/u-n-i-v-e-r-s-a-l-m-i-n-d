@@ -134,8 +134,8 @@ function renderStep(session) {
 
 function rating(name,title,left,right,faces=false) {
   // These windows display Ben's actual reference, preserving all ten supplied faces and their order.
-  const centres=[110,204,299,393,487,582,650,735,813,894];
-  return `<fieldset><legend>${html(title)}</legend><div class="study-rating">${Array.from({length:10},(_,i)=>`<label><input type="radio" name="${name}" value="${i+1}" required aria-label="${name==='happiness'?'Happiness':html(name)} ${i+1} out of 10">${faces?`<span class="study-emoji" aria-hidden="true" style="background-position:${29-centres[i]}px -222px"></span>`:''}<span class="study-rating-number">${i+1}</span></label>`).join('')}</div><div class="study-scale-ends"><span>${html(left)}</span><span>${html(right)}</span></div></fieldset>`;
+  const centres=[110.5,205.5,299.5,393.5,487.5,568.5,651,732.5,813.5,895.5];
+  return `<fieldset><legend>${html(title)}</legend>${faces?'<p class="study-muted">Happiness can include joy, love and peace. Choose one number from 1 to 10.</p>':''}<div class="study-rating">${Array.from({length:10},(_,i)=>`<label><input type="radio" name="${name}" value="${i+1}" required aria-label="${name==='happiness'?'Happiness':html(name)} ${i+1} out of 10">${faces?`<span class="study-emoji" aria-hidden="true" style="background-position:${30-centres[i]}px -215px"></span>`:''}<span class="study-rating-number">${i+1}</span></label>`).join('')}</div><div class="study-scale-ends"><span>${html(left)}</span><span>${html(right)}</span></div></fieldset>`;
 }
 
 async function renderDashboard() {
@@ -199,6 +199,7 @@ function renderPreparation(target) {
     <label class="study-field">Study contact email<input name="contact_email" type="email" value="${html(c.contact_email)}"></label>
     <label class="study-field">Research-response retention period · days<input name="retention_days" type="number" min="1" max="3650" value="${c.retention_days||''}"></label>
     <label class="study-check"><input name="shen_verified" type="checkbox" ${c.shen_verified?'checked':''}><span>The trial licence and real 60-second BP/HRV results have been verified.</span></label>
+    <label class="study-check"><input name="experience_verified" type="checkbox" ${c.experience_verified?'checked':''}><span>The full ten-minute study video, M8, Quantum Tree, isochronic tone and mantra have been tested together.</span></label>
     <label class="study-check"><input name="materials_approved" type="checkbox" ${c.materials_approved?'checked':''}><span>Participant information, eligibility, research review and the support procedure are ready.</span></label>
     <label class="study-check"><input name="open" type="checkbox" ${c.open?'checked':''}><span>Open enrolment for the invited participants.</span></label>
     <button class="study-button" type="submit" ${state.preview?'disabled':''}>Save preparation</button></form>
@@ -225,7 +226,7 @@ function analysisMarkup(a) {
 function download(value,name) { const url=URL.createObjectURL(new Blob([JSON.stringify(value,null,2)],{type:'application/json'})); const a=document.createElement('a');a.href=url;a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(url),1000); }
 async function startExposure() {
   const s=currentSession();
-  app.innerHTML=`<div class="study-exposure"><iframe title="M8 study experience" src="index.html?study_experience=1" allow="autoplay" sandbox="allow-scripts allow-same-origin"></iframe><div class="study-exposure-bar"><span data-study-clock>Preparing your experience…</span>${button('Stop session','stop',true)}</div></div>`;
+  app.innerHTML=`<div class="study-exposure"><iframe title="M8 study experience" src="study-experience.php?study_experience=1" allow="autoplay" sandbox="allow-scripts allow-same-origin"></iframe><div class="study-exposure-bar"><span data-study-clock>Preparing your experience…</span>${button('Stop session','stop',true)}</div></div>`;
   exposure={sessionId:s.id,frame:app.querySelector('iframe')};
 }
 
@@ -266,7 +267,7 @@ document.addEventListener('submit',async event=>{
       const response=await fetch('api/quantum-tree-settings.php',{method:'POST',credentials:'same-origin',headers:{'Content-Type':'application/json'},body:JSON.stringify({action:'login',password:fields.get('password')})});
       const r=await response.json();if(!response.ok)throw new Error(r.error||'Sign-in failed.');await refresh();
     }
-    else if(form.dataset.form==='config'){await request('admin.config',{stream_uid:fields.get('stream_uid'),video_title:fields.get('video_title'),contact_email:fields.get('contact_email'),retention_days:fields.get('retention_days')?Number(fields.get('retention_days')):null,...Object.fromEntries(['open','shen_verified','materials_approved'].map(k=>[k,fields.has(k)]))});await refresh();notice('Study preparation saved.');}
+    else if(form.dataset.form==='config'){await request('admin.config',{stream_uid:fields.get('stream_uid'),video_title:fields.get('video_title'),contact_email:fields.get('contact_email'),retention_days:fields.get('retention_days')?Number(fields.get('retention_days')):null,...Object.fromEntries(['open','shen_verified','experience_verified','materials_approved'].map(k=>[k,fields.has(k)]))});await refresh();notice('Study preparation saved.');}
     else if(form.dataset.form==='payment'){await request('admin.payment',{participant_id:form.dataset.id,amount_aud:Number(fields.get('amount'))});await renderDashboard();notice('Payment recorded.');}
     else if(form.dataset.form==='analysis'){
       notice('Astra is preparing the research draft…');clearTimeout(statusTimer);

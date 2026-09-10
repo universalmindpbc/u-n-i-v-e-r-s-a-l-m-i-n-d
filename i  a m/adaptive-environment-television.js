@@ -1826,7 +1826,7 @@
         failChannelLoading(loadingGeneration);
       }
       playerMount.classList.add("is-local-video-error");
-      mountYouTubeFallback();
+      if (!studyExperienceRequested) mountYouTubeFallback();
     });
 
     video.addEventListener("loadedmetadata", () => {
