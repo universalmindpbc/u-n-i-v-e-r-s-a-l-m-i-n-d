@@ -226,7 +226,7 @@ function showMeasurementInterface() {
   stopLoadingSequence();
   stage.dataset.state = "measurement";
   stage.dataset.shenVisualizationConfig = "face-map-and-blood-flow";
-  stage.dataset.shenMeasurement = "quick-heart-rate-10-seconds";
+  stage.dataset.shenMeasurement = studyMode ? "study-all-metrics-60-seconds" : "quick-heart-rate-10-seconds";
   loader.hidden = true;
   canvas.removeAttribute("aria-hidden");
   const hasDeepAR = Boolean(deepARSession);
@@ -478,9 +478,9 @@ function initializeWithToken(token) {
         shenaiSDK.setMediaStream(sharedCameraStream, true);
         shenOwnsSharedCameraStream = true;
         const quickHrConfirmed = await confirmQuickHeartRatePreset();
-        stage.dataset.shenMeasurementPreset = quickHrConfirmed ? "quick-hr-mode" : "unexpected";
+        stage.dataset.shenMeasurementPreset = quickHrConfirmed ? (studyMode ? "one-minute-all-metrics" : "quick-hr-mode") : "unexpected";
         if (!quickHrConfirmed) {
-          reject(new Error("The 10-second Heart Check could not be confirmed."));
+          reject(new Error(studyMode ? "The one-minute study Heart Check could not be confirmed." : "The 10-second Heart Check could not be confirmed."));
           return;
         }
         shenaiSDK.setShowFaceMask?.(true);
