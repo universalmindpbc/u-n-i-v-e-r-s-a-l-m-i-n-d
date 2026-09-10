@@ -14,7 +14,7 @@ if (screenshotDir) fs.mkdirSync(screenshotDir, { recursive: true });
 const expectedVision = "modul8 infinity represents our underlying platform capability—exploring the frontier of real-time targeted gene expression and epigenetic modulation through prescription sound radiation, EMDR, and silent mantra, together as one — paired with pioneering hyperspectral computer vision research toward contact-free, non-invasive inference of gene expression in real time.";
 const expectedContact = "Universal Mind bk@universalmind.tv universalmind.tv Universal Mind TV, PBC (A Delaware Public Benefit Corporation) ABN: 15 885 248 650";
 const oldVisionFragment = "prescription sound radiation, EMDR, and silent mantra.";
-const expectedPdfPath = "a s s e t s/research/modul8-infinity-rct-scientific-briefing-v1.pdf?v=rct-t10-20260908";
+const expectedPdfPath = "a s s e t s/research/modul8-infinity-rct-scientific-briefing-v1.pdf?v=rct-optical-20260910";
 const viewports = [
   { name: "desktop", width: 1440, height: 1000 },
   { name: "mobile", width: 390, height: 844 },
@@ -45,6 +45,13 @@ try {
     await page.evaluate(() => {
       for (const media of document.querySelectorAll("audio, video")) media.pause();
     });
+    const opticalPanel = page.locator(".research-subsection--optical");
+    const opticalCopy = (await opticalPanel.innerText()).replace(/\s+/g, " ");
+    assert.ok(opticalCopy.includes("Synchronized alignment of facial region-of-interest (ROI) blood flow dynamics—captured via research grade hyperspectral cameras during the 10-minute intervention—against scRNA-seq ground truth."), `${viewport.name}: exact Notion camera wording must render`);
+    assert.ok(opticalCopy.includes("To train downstream machine learning algorithms capable of detecting acute OXTR transcriptional shifts through contact-free facial optical analysis."), `${viewport.name}: OXTR spacing must render correctly`);
+    if (screenshotDir) {
+      await opticalPanel.screenshot({ path: path.join(screenshotDir, `research-optical-${viewport.name}.png`) });
+    }
     const contactPanel = page.locator(".research-panel--contact");
     await contactPanel.scrollIntoViewIfNeeded();
     await page.waitForTimeout(150);
@@ -100,6 +107,17 @@ try {
     assert.equal(pdfResponse.status(), 200, `${viewport.name}: PDF must return HTTP 200`);
     assert.match(pdfResponse.headers()["content-type"] || "", /application\/pdf/i, `${viewport.name}: PDF content type must be application/pdf`);
     assert.ok((await pdfResponse.body()).byteLength > 250_000, `${viewport.name}: PDF response is unexpectedly small`);
+    const servedPdf = await pdfResponse.body();
+    const localPdf = fs.readFileSync(new URL(`../i  a m/${expectedPdfPath.split("?")[0]}`, import.meta.url));
+    assert.ok(servedPdf.equals(localPdf), `${viewport.name}: served PDF must match the exact committed artifact`);
+    const downloadButtons = page.getByRole("link", { name: "Download Scientific Briefing (PDF)" });
+    for (let index = 0; index < 2; index++) {
+      const downloadEvent = page.waitForEvent("download");
+      await downloadButtons.nth(index).click();
+      const download = await downloadEvent;
+      assert.equal(await download.failure(), null, `${viewport.name}: PDF download ${index + 1} failed`);
+      assert.ok(fs.readFileSync(await download.path()).equals(localPdf), `${viewport.name}: PDF download ${index + 1} must contain the corrected artifact`);
+    }
 
     if (screenshotDir) {
       await contactPanel.screenshot({
