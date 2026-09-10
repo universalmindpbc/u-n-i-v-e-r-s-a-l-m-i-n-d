@@ -1,5 +1,6 @@
 import assert from "node:assert/strict";
 import fs from "node:fs";
+import os from "node:os";
 import path from "node:path";
 import { chromium } from "/Users/benkorbel/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/playwright/index.mjs";
 
@@ -27,6 +28,7 @@ const chromiumServer = await chromium.launchServer({
 });
 assert.ok(chromiumServer.process()?.spawnargs?.includes("--mute-audio"), "Chromium must be process-muted before navigation.");
 const browser = await chromium.connect(chromiumServer.wsEndpoint());
+const downloadDir = fs.mkdtempSync(path.join(os.tmpdir(), "rct-pdf-downloads-"));
 
 const results = [];
 try {
@@ -116,7 +118,9 @@ try {
       await downloadButtons.nth(index).click();
       const download = await downloadEvent;
       assert.equal(await download.failure(), null, `${viewport.name}: PDF download ${index + 1} failed`);
-      assert.ok(fs.readFileSync(await download.path()).equals(localPdf), `${viewport.name}: PDF download ${index + 1} must contain the corrected artifact`);
+      const downloadedPath = path.join(downloadDir, `${viewport.name}-${index + 1}.pdf`);
+      await download.saveAs(downloadedPath);
+      assert.ok(fs.readFileSync(downloadedPath).equals(localPdf), `${viewport.name}: PDF download ${index + 1} must contain the corrected artifact`);
     }
 
     if (screenshotDir) {
@@ -135,4 +139,5 @@ try {
 } finally {
   await browser.close().catch(() => {});
   await chromiumServer.close().catch(() => {});
+  fs.rmSync(downloadDir, { recursive: true, force: true });
 }
