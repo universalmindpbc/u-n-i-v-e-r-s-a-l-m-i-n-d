@@ -282,9 +282,9 @@ function syncPreference() {
     button.querySelector("b").textContent = enabled ? "ON" : "OFF";
   });
 }
-function setEnabled(value) {
+function setEnabled(value, { persist = true } = {}) {
   enabled = Boolean(value);
-  try { localStorage.setItem(preferenceKey, enabled ? "on" : "off"); } catch { /* session-only */ }
+  if (persist) try { localStorage.setItem(preferenceKey, enabled ? "on" : "off"); } catch { /* session-only */ }
   if (!enabled) silence("user_off"); else arm();
   syncPreference();
 }

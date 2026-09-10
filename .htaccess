@@ -36,6 +36,8 @@ RewriteRule ^vogue/iam/.*\.html$ /vogue/iam/induction.html?mobile=1 [R=302,L,NE]
 
 # Password-free Universal Mind I AM entrypoints.
 RewriteRule ^light/?$ /vogue/iam/light.html [L]
+RewriteRule ^study/dashboard/?$ /vogue/iam/study.php?dashboard=1 [R=302,L,NE]
+RewriteRule ^study/?$ /vogue/iam/study.php [R=302,L,NE]
 RewriteRule ^wallet/?$ /vogue/iam/wallet.html [L]
 RewriteRule ^shop/?$ /vogue/iam/index.html?shop=1 [R=302,L,NE]
 RewriteRule ^iam/?$ /vogue/iam/induction.html [R=302,L]

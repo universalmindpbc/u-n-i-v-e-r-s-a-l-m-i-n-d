@@ -1,0 +1,43 @@
+{
+  "id": "universal-mind-pilot-v1",
+  "version": "2026-09-11.1",
+  "title": "Universal Mind pilot",
+  "design": "Single-arm feasibility pilot with repeated before-and-after observations",
+  "participants": 10,
+  "sessions_per_participant": 3,
+  "session_minutes": 15,
+  "onboarding_minutes": 15,
+  "exposure_seconds": 600,
+  "measurement_seconds": 60,
+  "compensation_aud": 100,
+  "onboarding_aud": 25,
+  "session_aud": 25,
+  "briefing": "This pilot explores how a ten-minute electronic music television experience relates to hypothesised short term stress reduction and increased connection. It brings together EMDR, brain entrainment and sub-audible mantra. Findings will help inform future research with young female veterans. Thank you for your valued service today.",
+  "requirements": "You’ll need a laptop with a working camera, internet, a Bluetooth speaker and three sessions over one week. You can stop at any time.",
+  "eligibility": "Women aged 18 and over, recruited through personal networks. This first pilot does not require veteran status.",
+  "experience": {
+    "preset": "m8",
+    "artist": "Empire of the Sun",
+    "quantum_tree": true,
+    "subaudible_mantra": true,
+    "isochronic_hz": 111,
+    "carrier_hz": 444,
+    "profile_id": "inspiration_gamma_80_v1",
+    "implementation": "Existing M8 experience and existing brain entrainment profile; no new sound generator."
+  },
+  "scale": {
+    "id": "ben-emoji-happiness-v1",
+    "minimum": 1,
+    "maximum": 10,
+    "emojis": ["😡", "☹️", "😞", "😐", "😌", "🙂", "😇", "😀", "🥰", "😍"],
+    "labels": ["Angry", "Sad", "Downcast", "Neutral", "Peaceful", "Smiling", "Spiritual peace", "Joyful", "Feeling loved", "Love of self and others"]
+  },
+  "analysis": {
+    "model": "gpt-6-astra",
+    "reasoning_effort": "max",
+    "prompt_version": "pilot-narrative-v1",
+    "unit": "participant",
+    "primary_exploratory_outcome": "Self-reported immediate stress change",
+    "hrv_psd": "Exploratory one-minute beat-interval power around 0.1 Hz (0.085–0.115 Hz), with the spectrum and quality retained. Not a HeartMath score or direct baroreflex sensitivity measurement."
+  }
+}

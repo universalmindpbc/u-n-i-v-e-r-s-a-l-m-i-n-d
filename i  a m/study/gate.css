@@ -1,0 +1,224 @@
+
+      :root {
+        color-scheme: dark;
+        font-family: Arial, Helvetica, sans-serif;
+        background: #000;
+        color: #fff;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        width: 100%;
+        min-height: 100%;
+        margin: 0;
+      }
+
+      body {
+        min-height: 100svh;
+        display: grid;
+        place-items: center;
+        position: relative;
+        isolation: isolate;
+        overflow: hidden;
+        padding: 32px 24px;
+        background: #000;
+      }
+
+      .rain-canvas,
+      .rain-vignette {
+        position: fixed;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+      }
+
+      .rain-canvas {
+        z-index: -2;
+        display: block;
+        opacity: 0.96;
+        transform: scale(1.01);
+        transform-origin: center;
+        transition: opacity 420ms ease, filter 420ms ease, transform 720ms cubic-bezier(0.22, 1, 0.36, 1);
+      }
+
+      .rain-vignette {
+        z-index: -1;
+        background:
+          linear-gradient(180deg, rgba(0, 0, 0, 0.2) 0%, transparent 15%, transparent 82%, rgba(0, 0, 0, 0.32) 100%),
+          radial-gradient(circle at center, transparent 38%, rgba(0, 0, 0, 0.08) 70%, rgba(0, 0, 0, 0.32) 130%);
+      }
+
+      .access-shell {
+        width: min(100%, 440px);
+        position: relative;
+        padding: 76px 48px 70px;
+        text-align: center;
+        background: radial-gradient(
+          ellipse at center,
+          rgba(0, 0, 0, 0.88) 0%,
+          rgba(0, 0, 0, 0.74) 30%,
+          rgba(0, 0, 0, 0.4) 54%,
+          rgba(0, 0, 0, 0.08) 76%,
+          transparent 100%
+        );
+        transition: opacity 360ms ease, transform 620ms cubic-bezier(0.22, 1, 0.36, 1);
+      }
+
+      .access-title {
+        position: relative;
+        z-index: 1;
+        margin: 0 0 52px;
+        font-family: "Bodoni 72", Didot, "Times New Roman", serif;
+        font-size: clamp(15px, 2.3vw, 19px);
+        font-weight: 400;
+        letter-spacing: 0.36em;
+        line-height: 1.7;
+        text-transform: lowercase;
+        text-shadow: 0 0 18px rgba(255, 255, 255, 0.2);
+      }
+
+      .access-flower {
+        position: absolute;
+        z-index: 0;
+        top: 42px;
+        left: 50%;
+        width: 94px;
+        height: auto;
+        transform: translateX(-50%);
+        pointer-events: none;
+      }
+
+      .access-form {
+        position: relative;
+        z-index: 1;
+        display: grid;
+        gap: 18px;
+      }
+
+      .access-label {
+        font-size: 11px;
+        letter-spacing: 0.32em;
+        text-transform: lowercase;
+      }
+
+      .access-input {
+        width: 100%;
+        border: 0;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.7);
+        border-radius: 0;
+        padding: 13px 2px;
+        background: transparent;
+        color: #fff;
+        font: inherit;
+        font-size: 16px;
+        letter-spacing: 0.12em;
+        text-align: center;
+        outline: none;
+        appearance: none;
+      }
+
+      .access-input:focus {
+        border-bottom-color: #fff;
+        box-shadow: 0 8px 18px -18px rgba(255, 255, 255, 0.9);
+      }
+
+      .access-submit {
+        justify-self: center;
+        border: 1px solid rgba(255, 255, 255, 0.72);
+        border-radius: 0;
+        margin-top: 10px;
+        padding: 12px 30px;
+        background: #fff;
+        color: #000;
+        font: inherit;
+        font-size: 11px;
+        letter-spacing: 0.28em;
+        text-transform: lowercase;
+        cursor: pointer;
+      }
+
+      .access-submit:hover,
+      .access-submit:focus-visible {
+        background: transparent;
+        color: #fff;
+      }
+
+      .access-error {
+        min-height: 18px;
+        margin: 2px 0 0;
+        color: rgba(255, 255, 255, 0.72);
+        font-size: 10px;
+        letter-spacing: 0.2em;
+        line-height: 1.8;
+        text-transform: lowercase;
+      }
+
+      .access-form.is-rejected {
+        animation: access-rejection 280ms ease-out;
+      }
+
+      body[data-access-focus="true"] .rain-canvas {
+        opacity: 0.88;
+        filter: contrast(1.06);
+      }
+
+      body[data-access-state="granted"] .rain-canvas {
+        opacity: 0;
+        filter: brightness(2.2) contrast(1.18);
+        transform: scaleX(1.16) scaleY(1.04);
+      }
+
+      body[data-access-state="granted"] .access-shell {
+        opacity: 0;
+        transform: scale(0.97);
+      }
+
+      @keyframes access-rejection {
+        0%, 100% { transform: translateX(0); }
+        28% { transform: translateX(-3px); }
+        62% { transform: translateX(3px); }
+      }
+
+      @media (max-width: 520px) {
+        body {
+          padding: 20px 14px;
+        }
+
+        .access-shell {
+          padding: 64px 14px 58px;
+        }
+
+        .access-title {
+          margin-bottom: 46px;
+          font-size: 15px;
+          letter-spacing: 0.28em;
+        }
+
+        .access-flower {
+          top: 32px;
+          width: 82px;
+        }
+      }
+
+      @media (prefers-reduced-motion: no-preference) {
+        .access-submit {
+          transition: background-color 160ms ease, color 160ms ease;
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        .rain-canvas,
+        .access-shell {
+          transition: none;
+        }
+
+        .access-form.is-rejected {
+          animation: none;
+        }
+      }
+    

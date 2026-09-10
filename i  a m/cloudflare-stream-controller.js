@@ -787,7 +787,10 @@
   async function attach(video, options = {}) {
     if (!video) return null;
     if (states.has(video)) return states.get(video);
-    const asset = catalogue.assetFor(options.fileName || video.dataset.streamFile || video.currentSrc || video.src);
+    const studyUid = /^[a-f0-9]{32}$/.test(options.studyUid || '') ? options.studyUid : null;
+    const asset = studyUid ? {uid:studyUid,fileName:`study-${studyUid}`,
+      hls:`https://${catalogue.customerHost}/${studyUid}/manifest/video.m3u8`,
+      dash:`https://${catalogue.customerHost}/${studyUid}/manifest/video.mpd`} : catalogue.assetFor(options.fileName || video.dataset.streamFile || video.currentSrc || video.src);
     if (!asset) return null;
 
     const role = options.role === "fashion" ? "fashion" : "music";

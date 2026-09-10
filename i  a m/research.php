@@ -101,7 +101,7 @@ header('X-Robots-Tag: noindex, nofollow');
     </section>
 
     <script src="cloudflare-stream-catalogue.js?v=stream-catalogue-20ad6337934c"></script>
-    <script src="cloudflare-stream-controller.js?v=stream-controller-e6ed1b827651"></script>
-    <script type="module" src="research/shen-heart-rate.js?v=shen-heart-rate-js-35dfd7f791b8"></script>
+    <script src="cloudflare-stream-controller.js?v=stream-controller-91f344a44abb"></script>
+    <script type="module" src="research/shen-heart-rate.js?v=shen-heart-rate-js-492e1abcf6ce"></script>
   </body>
 </html>

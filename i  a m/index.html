@@ -20,6 +20,11 @@
     <meta name="twitter:card" content="summary">
     <title>Home | I Am</title>
     <script>
+      if (new URLSearchParams(window.location.search).get('study_experience') === '1' && window.parent !== window) {
+        document.documentElement.dataset.studyExperience = 'true';
+        const css = document.createElement('link'); css.rel = 'stylesheet'; css.href = 'study/experience.css?v=pilot-1'; document.head.append(css);
+        const script = document.createElement('script'); script.type = 'module'; script.src = 'study/experience.js?v=pilot-1'; document.head.append(script);
+      }
       if (new URLSearchParams(window.location.search).get("shop") === "1") {
         document.documentElement.dataset.shopEntry = "requested";
         document.title = "James Bondage | Shop";
@@ -1794,7 +1799,7 @@
       }
     </script>
     <script src="local-context.js?v=local-context-4"></script>
-    <script src="script.js?v=adaptive-env-stream-8065b5929ca4"></script>
+    <script src="script.js?v=adaptive-env-stream-9d8d6b64dad1"></script>
     <script src="adaptive-environment.js?v=adaptive-env-81432208c25b"></script>
     <script src="citizen-data-client.js?v=citizen-data-client-dynamodb-v3"></script>
     <script src="globe.js?v=globe-81aa740acaf7"></script>
@@ -1816,10 +1821,10 @@
     <script src="mantra-sampler.js?v=mantra-sampler-0bfc1d7667fe"></script>
     <script src="music-track-catalogue-v1.js?v=music-track-catalogue-7576f3635952"></script>
     <script src="programme-catalogue-v1.js?v=programme-catalogue-efb02e8d3926"></script>
-    <script src="adaptive-environment-television.js?v=music-tv-387cc6c8bd6d"></script>
+    <script src="adaptive-environment-television.js?v=music-tv-575febb8faf6"></script>
     <script src="comedy-channel-v1.js?v=comedy-channel-js-1a3c5c873d36"></script>
-    <script type="module" src="adaptive-sound/mantra-v1.js?v=86a1f939564e"></script>
-    <script type="module" src="adaptive-sound/controller-v1.js?v=a3b10340460b"></script>
+    <script type="module" src="adaptive-sound/mantra-v1.js?v=1c92fbb2e93f"></script>
+    <script type="module" src="adaptive-sound/controller-v1.js?v=c9b24f81cc72"></script>
     <script src="homepage-session-accents.js?v=ee302671b0d5"></script>
     <script src="programme-guide.js?v=programme-guide-d170112697a0"></script>
     <script src="realtime-voice-assistant.js?v=realtime-voice-d8cde42eedcb"></script>

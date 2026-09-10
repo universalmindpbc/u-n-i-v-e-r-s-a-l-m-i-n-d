@@ -275,6 +275,7 @@
   const contextLines = Array.from(document.querySelectorAll("[data-local-context-line]"));
   const televisionPageTitle = document.title;
   const entryParams = new URLSearchParams(window.location.search);
+  const studyExperienceRequested = entryParams.get('study_experience') === '1' && window.parent !== window;
   const shopShellRequested = entryParams.get("shop") === "1";
   const requestedSexEdEpisode = /^(?:0[1-9]|1[0-6])$/.test(entryParams.get("sexEdEpisode") || "")
     ? entryParams.get("sexEdEpisode")
@@ -1121,6 +1122,7 @@
   }
 
   function updateRecommendationFromStorage() {
+    if (studyExperienceRequested) return;
     track = resolveSelectedTrack();
     musicChannelMode = track.presentation === "live_dj_set" ? "parties" : "videos";
     musicModeManuallySelected = false;
@@ -1637,7 +1639,7 @@
     playerMount.append(fashionVideo);
     playerMount.append(fashionHeroFrame);
     playerMount.append(timecode);
-    attachAdaptiveStream(localVideo, track.localVideoSrc, "music", {
+    if (!studyExperienceRequested) attachAdaptiveStream(localVideo, track.localVideoSrc, "music", {
       autoplay: shopShellRequested ? false : undefined,
     });
     return localVideo;
@@ -7611,6 +7613,7 @@
   }
 
   function primeLocalVideo() {
+    if (studyExperienceRequested) return;
     mountPlayer();
   }
 
@@ -8688,6 +8691,7 @@
   };
 
   function startTelevisionContinuation() {
+    if (studyExperienceRequested) return;
     if (!localVideo) return;
     const continuation = broadcastChannelId
       ? synchronizeBroadcastRollover(
@@ -10471,6 +10475,21 @@
   syncFullscreenState();
   window.IAMTelevisionRoom = {
     version: "programme_presentations_v2",
+    async prepareStudyExperience(uid) {
+      if (!studyExperienceRequested || !/^[a-f0-9]{32}$/.test(uid)) throw new Error('Open the experience from your study session.');
+      this.suspendProgrammeForPresentation('research');
+      track = {id:'research-study',artist:'Empire of the Sun',title:'Study experience',bpm:112};
+      const video = mountPlayer();
+      await window.IAMStreamReady;
+      await window.IAMStreamController.attach(video, {studyUid:uid,role:'music',autoplay:false});
+      video.playsInline = true; video.muted = false; video.volume = 1;
+      this.preparePresentationEntry();
+      applyEmdrAdaptation(emdrPresets.findIndex(preset => preset.key === 'm8'));
+      window.IAMEMDR.setActive(true, {canvas:emdrCanvas});
+      window.IAMEMDR.setAudioSource(video);
+      setVideoBlend(100); setEmdrAutomateEnabled(false); syncEmdrStyleButtons();
+      return video;
+    },
     enterFromVoicePreflight() {
       openRoom({
         preventDefault() {},

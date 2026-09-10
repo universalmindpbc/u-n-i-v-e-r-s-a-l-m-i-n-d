@@ -5,6 +5,7 @@ import CreateShenaiSDK, {
   PrecisionMode,
   UiVersion,
 } from "./vendor/shenai-sdk/index.mjs";
+import { studyMode, authoriseStudyScan, studyValues, saveStudyScan } from "../study/shen-bridge.js?v=pilot-1";
 import { createDeepARBrightGlasses } from "./deepar-bright-glasses.js?v=deepar-bright-glasses-js-d622e574d883";
 import { handoffHeartCheckToHomepage } from "./shen-heart-recommendation.js?v=b3324d1c790c";
 import {
@@ -65,6 +66,7 @@ function revealExistingBrand() {
 }
 
 function experienceUrl({ heartCheckCompleted = false } = {}) {
+  if (studyMode) return new URL('study.php?resume=1', window.location.href).href;
   const target = new URL("index.html", window.location.href);
   const current = new URLSearchParams(window.location.search);
   const selectedTrackId = current.get("selected_track_id");
@@ -296,8 +298,9 @@ async function confirmQuickHeartRatePreset() {
     || typeof shenaiSDK?.getMeasurementPreset !== "function") {
     return false;
   }
-  const expected = measurementPresetValue(MeasurementPreset.QUICK_HR_MODE);
-  shenaiSDK.setMeasurementPreset(MeasurementPreset.QUICK_HR_MODE);
+  const preset = studyMode ? MeasurementPreset.ONE_MINUTE_ALL_METRICS : MeasurementPreset.QUICK_HR_MODE;
+  const expected = measurementPresetValue(preset);
+  shenaiSDK.setMeasurementPreset(preset);
   let active = Number.NaN;
   for (let attempt = 0; attempt < 10; attempt += 1) {
     active = measurementPresetValue(shenaiSDK.getMeasurementPreset());
@@ -378,6 +381,19 @@ async function finishAndContinue() {
   if (isFinishing) return;
   isFinishing = true;
 
+  if (studyMode) {
+    try {
+      const values = studyValues(shenaiSDK?.getMeasurementResults?.());
+      await releaseShen();
+      await saveStudyScan(values);
+    } catch (error) {
+      await releaseShen();
+      stage.hidden = true;
+      showStatus(error.message, { allowContinue:true });
+    }
+    return;
+  }
+
   let measurementResult = null;
   let momentaryHeartRate = null;
   let displayHeartRate = null;
@@ -426,7 +442,7 @@ async function requestShortTermToken() {
 function initializeWithToken(token) {
   return new Promise((resolve, reject) => {
     const settings = {
-      measurementPreset: MeasurementPreset.QUICK_HR_MODE,
+      measurementPreset: studyMode ? MeasurementPreset.ONE_MINUTE_ALL_METRICS : MeasurementPreset.QUICK_HR_MODE,
       onboardingMode: OnboardingMode.HIDDEN,
       precisionMode: PrecisionMode.STRICT,
       uiVersion: UiVersion.V3,
@@ -497,6 +513,7 @@ async function beginShenMeasurement() {
   void warmHeartCheckAssets();
 
   try {
+    if (studyMode) await authoriseStudyScan();
     transientMeasurementId = createTransientMeasurementId();
     sharedCameraStream = await acquireSharedVideoStream();
     const tokenPromise = requestShortTermToken();
@@ -545,6 +562,15 @@ window.addEventListener("beforeunload", releaseShen);
 window.addEventListener("pagehide", releaseShen);
 
 clearLegacyHeartData();
+if (studyMode) {
+  document.querySelector('#heart-rate-offer-title').textContent = 'Your one-minute Heart Check';
+  document.querySelector('#heart-rate-offer-copy').textContent = 'Keep still, breathe naturally and look into the camera. Available heart rate, HRV and blood pressure readings will be saved to your consented study session.';
+  skipButton.textContent = 'Return to my study';
+  const exit = document.createElement('a');
+  exit.href = 'study.php?resume=1'; exit.textContent = 'Stop Heart Check';
+  exit.style.cssText = 'position:fixed;bottom:24px;left:24px;z-index:10000;color:white;background:#17141b;padding:12px 20px;border-radius:30px;font:14px sans-serif';
+  document.body.append(exit);
+}
 revealExistingBrand();
 const beginWarmup = () => { void warmHeartCheckAssets(); };
 if (backgroundVideo?.readyState >= 2) beginWarmup();

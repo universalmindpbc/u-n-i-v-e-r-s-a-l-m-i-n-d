@@ -766,6 +766,13 @@ function initializeAdaptiveSoundPanel() {
   window.IAMAdaptiveSound = {
     open: openPanel,
     close: closePanel,
+    async prepareStudy() {
+      if (new URLSearchParams(location.search).get('study_experience') !== '1' || window.parent === window) return false;
+      state.masterEnabled = Boolean(window.IAMQuantumTree?.diagnostics?.().enabled);
+      applySessionSnapshot(adaptiveSoundSession?.current?.());
+      await rebuildEngine('consented_study');
+      return state.context?.state === 'running';
+    },
     diagnostics() {
       return {
         panel_open: state.open,

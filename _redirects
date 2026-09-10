@@ -1,4 +1,7 @@
 # Password-free Universal Mind I AM entrypoints.
+/study /vogue/iam/study.php 302
+/study/ /vogue/iam/study.php 302
+/study/dashboard /vogue/iam/study.php?dashboard=1 302
 /light /vogue/iam/light.html 200
 /light/ /vogue/iam/light.html 200
 /wallet /vogue/iam/wallet.html 200
