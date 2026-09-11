@@ -14,10 +14,10 @@ function positionOpeningPage(){
  }
 }
 function pause(){
- if(!running)return;
+ const wasRunning=running;
  running=false;clearInterval(timer);video?.pause();
  window.IAMQuantumTree?.setEnabled(false,{persist:false});window.IAMSubaudibleMantra?.setEnabled(false,{persist:false});
- send('study-paused');
+ if(wasRunning)send('study-paused');
 }
 function stop(){
  if(stopped)return;stopped=true;running=false;clearInterval(timer);video?.pause();
