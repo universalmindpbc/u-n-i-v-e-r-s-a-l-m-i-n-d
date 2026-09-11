@@ -16,7 +16,8 @@ function study_staging(): bool {
 
 function study_defaults(): array {
     return ['revision' => 0, 'config' => ['open' => false, 'stream_uid' => '', 'video_title' => 'Empire of the Sun',
-        'shen_verified' => false, 'experience_verified' => false, 'materials_approved' => false, 'contact_email' => '', 'retention_days' => null],
+        'shen_verified' => false, 'experience_verified' => false, 'materials_approved' => false, 'contact_email' => '', 'retention_days' => null, 'bp_active' => false, 'events' => [
+            ['label'=>'Sunrise','starts_at'=>null], ['label'=>'Sunset','starts_at'=>null], ['label'=>'Midnight','starts_at'=>null]]],
         'participants' => [], 'stakeholders' => [], 'analysis' => null, 'audit' => []];
 }
 
@@ -33,6 +34,7 @@ function study_store(callable $callback, ?string $preview = null): array {
         @chmod($path . '.lock', 0600);
         $data = is_file($path) ? json_decode((string) file_get_contents($path), true, 512, JSON_THROW_ON_ERROR) : study_defaults();
         $before = json_encode($data, JSON_THROW_ON_ERROR);
+        $data['config'] += study_defaults()['config'];
         // Retention is enforced whenever the store is opened, before any records can be returned.
         foreach ($data['participants'] as &$participant) {
             $days = $participant['consent']['retention_days'] ?? null;
@@ -78,7 +80,7 @@ function study_number($value, float $minimum, float $maximum): ?float {
     return (float) $value;
 }
 
-function study_vitals(array $input, bool $preview): array {
+function study_vitals(array $input, bool $preview, int $seconds = 10): array {
     $reason = $input['unavailable_reason'] ?? null;
     study_require($reason === null || in_array($reason, ['licence_unavailable','camera_denied','signal_quality','interrupted','declined','preview'], true), 'Invalid measurement status.');
     study_require($reason !== 'preview' || $preview, 'Example measurements are only permitted in preview.');
@@ -86,20 +88,21 @@ function study_vitals(array $input, bool $preview): array {
         'systolic_blood_pressure_mmhg' => [20,300], 'diastolic_blood_pressure_mmhg' => [10,220]];
     $values = [];
     foreach ($ranges as $key => $range) $values[$key] = $reason !== null ? null : study_number($input[$key] ?? null, ...$range);
-    if ($reason === null) study_require(($input['measurement_duration_seconds'] ?? null) === 60, 'The study requires a 60-second scan.');
+    if ($reason === null) study_require(($input['measurement_duration_seconds'] ?? null) === $seconds, 'Please complete the current Heart Check.');
     $quality = [];
     foreach (['average_signal_quality','ppg_quality_index','bcg_quality_index','blood_pressure_quality_index'] as $key) {
         $quality[$key] = study_number($input[$key] ?? null, 0, 100000);
     }
     return $values + ['quality' => $quality, 'unavailable_reason' => $reason, 'recorded_at' => gmdate('c'),
-        'measurement_duration_seconds' => $reason === null ? 60 : null,
+        'measurement_duration_seconds' => $reason === null ? $seconds : null,
         'source' => $reason === null ? 'shen_rppg' : 'unavailable', 'illustrative' => $preview];
 }
 
 function study_readiness(array $config): array {
     $missing = [];
     if (!preg_match('/\A[a-f0-9]{32}\z/', $config['stream_uid'])) $missing[] = 'Study video';
-    if (!$config['shen_verified']) $missing[] = 'Shen BP and HRV verification';
+    if (!$config['shen_verified']) $missing[] = 'Heart Check verification';
+    if (count(array_filter($config['events'] ?? [], static fn($event): bool => !empty($event['starts_at']))) !== 3) $missing[] = 'Three livestream dates';
     if (!($config['experience_verified'] ?? false)) $missing[] = 'Ten-minute video and combined experience verification';
     if (!$config['materials_approved']) $missing[] = 'Participant materials and research review';
     if (!filter_var($config['contact_email'], FILTER_VALIDATE_EMAIL)) $missing[] = 'Study contact';
@@ -117,7 +120,7 @@ function study_dataset(array $data, ?string $participantId = null): array {
     $participants = array_map('study_participant_public', $participants);
     foreach ($participants as &$p) $p['earned_aud'] = study_earned($p);
     unset($p);
-    return ['summary' => study_summary($participants), 'participants' => $participants, 'config' => $data['config'],
+    return ['summary' => study_summary($participants), 'participants' => $participants, 'config' => study_public_config($data['config']),
         'readiness' => study_readiness($data['config']), 'analysis' => $participantId === null ? $data['analysis'] : null, 'revision' => $data['revision']];
 }
 
@@ -148,7 +151,7 @@ function study_statistics(array $values): array {
 }
 
 function study_summary(array $participants): array {
-    $metrics = array_merge(STUDY_METRICS, ['happiness','stress','connection']);
+    $metrics = array_merge(STUDY_METRICS, ['hrv_rmssd_ms','happiness','stress','connection']);
     $rows = []; $participantChanges = array_fill_keys($metrics, []);
     $distribution = ['increased' => 0, 'unchanged' => 0, 'decreased' => 0, 'unavailable' => 0];
     $completed = 0; $interrupted = 0; $withdrawn = 0;
@@ -162,13 +165,18 @@ function study_summary(array $participants): array {
                 'window' => $s['window'], 'started_at' => $s['created_at'], 'timezone' => $s['timezone'],
                 'exposure_seconds' => $s['exposure_seconds'], 'fidelity_seconds' => $s['fidelity_seconds'] ?? 0,
                 'fidelity_warning' => $s['fidelity_warning'] ?? false, 'interruptions' => $s['interruptions'],
-                'preview_exposure_skipped' => $s['preview_exposure_skipped'] ?? false, 'changes' => [], 'before' => [], 'after' => []];
+                'preview_exposure_skipped' => $s['preview_exposure_skipped'] ?? false, 'changes' => [], 'percent_changes' => [], 'before' => [], 'after' => []];
             foreach ($metrics as $key) {
                 $kind = in_array($key, STUDY_METRICS, true) ? 'vitals' : 'report';
                 $pre = $s['before_' . $kind][$key] ?? null;
                 $post = $s['after_' . $kind][$key] ?? null;
+                if ($key === 'hrv_rmssd_ms') {
+                    $pre = isset($s['before_vitals']['hrv_lnrmssd_ms']) ? exp($s['before_vitals']['hrv_lnrmssd_ms']) : null;
+                    $post = isset($s['after_vitals']['hrv_lnrmssd_ms']) ? exp($s['after_vitals']['hrv_lnrmssd_ms']) : null;
+                }
                 $delta = $pre !== null && $post !== null ? $post - $pre : null;
                 $row['before'][$key] = $pre; $row['after'][$key] = $post; $row['changes'][$key] = $delta;
+                $row['percent_changes'][$key] = $key === 'hrv_lnrmssd_ms' ? null : study_percent_change($pre, $post);
                 if ($delta !== null) $individual[$key][] = $delta;
             }
             $delta = $row['changes']['happiness'];
@@ -181,19 +189,42 @@ function study_summary(array $participants): array {
         }
         foreach ($metrics as $key) if (count($individual[$key])) $participantChanges[$key][] = array_sum($individual[$key])/count($individual[$key]);
     }
+    $comparisons = [];
+    foreach ($metrics as $key) {
+        $byPerson = [];
+        foreach ($rows as $row) if ($row['before'][$key] !== null && $row['after'][$key] !== null) $byPerson[$row['participant_id']][] = $row;
+        $before = []; $after = [];
+        foreach ($byPerson as $paired) {
+            $before[] = array_sum(array_map(static fn($row) => $row['before'][$key], $paired))/count($paired);
+            $after[] = array_sum(array_map(static fn($row) => $row['after'][$key], $paired))/count($paired);
+        }
+        $pre = count($before) ? array_sum($before)/count($before) : null;
+        $post = count($after) ? array_sum($after)/count($after) : null;
+        $comparisons[$key] = ['before'=>$pre, 'after'=>$post, 'percent_change'=>$key === 'hrv_lnrmssd_ms' ? null : study_percent_change($pre,$post), 'n'=>count($before)];
+    }
     $statistics = [];
     foreach ($metrics as $key) $statistics[$key] = study_statistics($participantChanges[$key]);
     return ['participants' => count($participants), 'planned_sessions' => count($participants)*3, 'completed_sessions' => $completed,
         'stopped_sessions' => $interrupted, 'withdrawn_participants' => $withdrawn, 'rows' => $rows,
-        'statistics' => $statistics, 'happiness_distribution' => $distribution,
+        'comparisons' => $comparisons, 'statistics' => $statistics, 'happiness_distribution' => $distribution,
         'analysis_unit' => 'Each participant contributes their mean paired change across available sessions. Missing pairs are excluded per metric; n is shown.'];
 }
 
 function study_earned(array $p): float {
-    $earned = $p['onboarding_earned'] ? 25.0 : 0.0;
-    foreach ($p['sessions'] as $s) {
-        if ($s['state'] === 'complete') $earned += 25;
-        elseif ($s['state'] === 'stopped') $earned += min(25, max(0, ($s['stopped_at_epoch'] - $s['created_at_epoch']) / 60) * (100 / 60));
+    return count(array_filter($p['sessions'], static fn($s): bool => $s['state'] === 'complete')) === 3 ? 100.0 : 0.0;
+}
+
+function study_public_config(array $config): array {
+    $config += study_defaults()['config'];
+    if ($config['stream_uid'] === '') {
+        $config['stream_uid'] = 'd27b2cbadecf9e82bb1ae4f87566bb0f';
+        $config['video_title'] = 'Peter Gabriel — Sledgehammer';
     }
-    return round(min(100, $earned), 2);
+    $config['temporary_video'] = $config['stream_uid'] === 'd27b2cbadecf9e82bb1ae4f87566bb0f';
+    $config['measurement_seconds'] = $config['bp_active'] ? 60 : 10;
+    return $config;
+}
+
+function study_percent_change(?float $before, ?float $after): ?float {
+    return $before === null || $after === null || $before == 0 ? null : 100 * ($after - $before) / abs($before);
 }

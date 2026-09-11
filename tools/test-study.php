@@ -15,9 +15,9 @@ function beats(float $frequency, float $amplitude = 60): array {
 check(study_protocol()['scale']['emojis'][6] === '😇' && study_protocol()['scale']['emojis'][9] === '😍', 'Supplied emoji ordering changed');
 $missing = study_vitals(['unavailable_reason'=>'licence_unavailable','heart_rate_bpm'=>70],false);
 check($missing['heart_rate_bpm'] === null && $missing['systolic_blood_pressure_mmhg'] === null,'Missing readings became numbers');
-$partial = study_vitals(['heart_rate_bpm'=>70,'measurement_duration_seconds'=>60],false);
+$partial = study_vitals(['heart_rate_bpm'=>70,'measurement_duration_seconds'=>10],false);
 check($partial['heart_rate_bpm'] === 70.0 && $partial['hrv_sdnn_ms'] === null,'Partially licensed scan rejected or imputed');
-try { study_vitals(['heart_rate_bpm'=>70,'measurement_duration_seconds'=>10],false); throw new RuntimeException('Short scan accepted'); }
+try { study_vitals(['heart_rate_bpm'=>70,'measurement_duration_seconds'=>60],false); throw new RuntimeException('Wrong duration accepted'); }
 catch (InvalidArgumentException $expected) {}
 $spectrum = study_spectrum(beats(.1)); $higher = study_spectrum(beats(.1,120)); $outside = study_spectrum(beats(.2));
 check($spectrum['status']==='exploratory' && abs($spectrum['peak_hz']-.1)<.018,'Known 0.1 Hz oscillation not recovered');
@@ -43,4 +43,8 @@ check(!isset(study_aggregate($data)['summary']['rows']),'Stakeholder aggregate l
 check(count(study_dataset($data,'P01')['participants'])===1,'Personal dataset contains other participants');
 check(!isset(study_participant_public($a)['access_hash']),'Access hash exposed');
 check(study_readiness(study_defaults()['config'])['open']===false,'Enrolment is open before preparation');
+check(study_earned($a) === 100.0 && study_earned($b) === 0.0, 'Reward must be all three sessions or zero');
+check(abs(study_percent_change(5,8)-60)<0.0001, 'Percentage change is incorrect');
+check(study_percent_change(0,5) === null && study_percent_change(null,5) === null, 'Invalid baseline gave a percentage');
+check(abs($summary['rows'][0]['percent_changes']['happiness']-66.6666667)<0.001, 'Per-session percent not exported');
 echo json_encode(['passed'=>18,'spectrum_0_1_hz'=>$spectrum['peak_hz'],'power_ms2'=>$spectrum['power_0_1_ms2'],'amplitude_doubling_ratio'=>$higher['power_0_1_ms2']/$spectrum['power_0_1_ms2']],JSON_PRETTY_PRINT),"\n";

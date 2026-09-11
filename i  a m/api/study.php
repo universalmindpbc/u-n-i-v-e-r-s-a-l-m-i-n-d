@@ -49,7 +49,7 @@ try {
                 'preview' => isset($_SESSION['preview']), 'owner' => $owner, 'stakeholder' => isset($_SESSION['stakeholder_id']),
                 'analysis_configured' => happiness_secret('OPENAI_API_KEY') !== '' || is_readable(happiness_secret('IAM_OPENAI_API_KEY_FILE')),
                 'participant' => $p ? study_participant_public($p) + ['earned_aud' => study_earned($p)] : null,
-                'config' => $data['config'], 'readiness' => study_readiness($data['config'])];
+                'server_now' => microtime(true), 'config' => study_public_config($data['config']), 'readiness' => study_readiness($data['config'])];
         }, $_SESSION['preview'] ?? null);
         study_respond($result);
     }
@@ -130,10 +130,21 @@ try {
                 $days = $request['retention_days'] ?? null;
                 study_require($days === null || (is_int($days) && $days >= 1 && $days <= 3650), 'Choose a retention period in days.');
                 $c['retention_days'] = $days;
-                foreach (['open','shen_verified','experience_verified','materials_approved'] as $key) $c[$key] = ($request[$key] ?? false) === true;
+                foreach (['open','shen_verified','experience_verified','materials_approved','bp_active'] as $key) $c[$key] = ($request[$key] ?? false) === true;
+                if (isset($request['events'])) {
+                    study_require(is_array($request['events']) && count($request['events']) === 3, 'Set the three event dates.');
+                    $epochs = [];
+                    foreach (['Sunrise','Sunset','Midnight'] as $i => $label) {
+                        $start = $request['events'][$i]['starts_at'] ?? null;
+                        study_require($start === null || (is_string($start) && preg_match('/(Z|[+-][0-9]{2}:[0-9]{2})$/', $start) && strtotime($start) !== false), 'Include the time zone in each event date.');
+                        $c['events'][$i] = ['label'=>$label,'starts_at'=>$start === null ? null : gmdate('c',strtotime($start))];
+                        if ($start !== null) $epochs[] = strtotime($start);
+                    }
+                    if (count($epochs) === 3) study_require($epochs[0] < $epochs[1] && $epochs[1] < $epochs[2] && max($epochs)-min($epochs) <= 7*86400, 'Set three events in order within one week.');
+                }
                 if ($c['open']) study_require(study_readiness($c)['ready'], 'Complete study preparation before opening enrolment.');
                 if (count(array_filter($data['participants'], static fn($p): bool => $p['consent'] !== null && !$p['withdrawn']))) {
-                    foreach (['stream_uid','retention_days','video_title'] as $locked) study_require($c[$locked] === $data['config'][$locked], 'The consented study configuration is locked while participants are enrolled.');
+                    foreach (['stream_uid','retention_days','video_title','events','bp_active'] as $locked) study_require($c[$locked] === $data['config'][$locked], 'The consented study configuration is locked while participants are enrolled.');
                 }
                 $data['config'] = $c;
             } elseif ($action === 'admin.invite') {
@@ -152,7 +163,7 @@ try {
                 $id = study_text($request['participant_id'] ?? '', 8);
                 study_require(isset($data['participants'][$id]), 'Participant not found.');
                 $amount = study_number($request['amount_aud'] ?? null, 0.01, 100);
-                study_require($amount !== null, 'Enter the amount actually paid.');
+                study_require($amount === 100.0 && study_earned($data['participants'][$id]) === 100.0, 'The $100 reward is available after all three sessions.');
                 $paymentId = study_text($request['request_id'] ?? '', 64);
                 study_require($paymentId !== '', 'A payment request identifier is required.');
                 foreach ($data['participants'][$id]['payments'] as $payment) if (($payment['request_id'] ?? '') === $paymentId) return ['ok' => true];
@@ -197,18 +208,20 @@ try {
             foreach (['adult_woman','equipment','participation','research_data'] as $key) study_require(($request[$key] ?? false) === true, 'Please confirm each research agreement.');
             $p['consent'] = ['version' => $request['version'], 'at' => gmdate('c'), 'research_data' => true,
                 'ai_analysis' => true, 'retention_days' => $data['config']['retention_days'], 'preview' => $preview];
-            $p['onboarding_earned'] = true; return ['ok' => true];
+            $p['onboarding_earned'] = false; return ['ok' => true];
         }
         study_require($p['consent'] !== null, 'Please read and agree to the participant information first.');
         if ($action === 'session.start') {
             study_require($preview || study_readiness($data['config'])['open'], 'The study is currently paused.');
             foreach ($p['sessions'] as $s) if (!in_array($s['state'], ['complete','stopped'], true)) return ['session_id' => $s['id']];
             study_require(count($p['sessions']) < 3, 'Your three study sessions are recorded.');
-            $window = $request['window'] ?? 'daytime';
-            study_require(in_array($window, ['morning','evening','late_night','daytime'], true), 'Choose your session time.');
+            $event = $data['config']['events'][count($p['sessions'])];
+            $window = strtolower($event['label']);
+            $eventStart = $preview ? null : strtotime($event['starts_at'] ?? '');
+            if (!$preview) study_require($eventStart && time() >= $eventStart-300 && time() < $eventStart+600, 'This livestream is not open. Please return at the scheduled time.');
             $id = bin2hex(random_bytes(16));
             $p['sessions'][] = ['id' => $id, 'number' => count($p['sessions'])+1, 'state' => 'before_vitals',
-                'window' => $window, 'timezone' => study_text($request['timezone'] ?? '', 80),
+                'event_starts_at' => $preview ? null : $event['starts_at'], 'window' => $window, 'timezone' => study_text($request['timezone'] ?? '', 80),
                 'created_at' => gmdate('c'), 'created_at_epoch' => time(), 'config_hash' => hash('sha256', json_encode($data['config'])),
                 'protocol_version' => study_protocol()['version'], 'before_vitals' => null, 'before_report' => null,
                 'after_vitals' => null, 'after_report' => null, 'exposure_seconds' => 0, 'interruptions' => 0,
@@ -227,11 +240,29 @@ try {
         } elseif ($action === 'vitals') {
             study_require(in_array($s['state'], ['before_vitals','after_vitals'], true), 'This measurement step has already been saved.');
             $phase = $s['state'];
-            $s[$phase] = study_vitals($request['values'] ?? [], $preview);
+            $s[$phase] = study_vitals($request['values'] ?? [], $preview, ($data['config']['bp_active'] ?? false) ? 60 : 10);
             require_once __DIR__ . '/study-spectrum.php';
-            $s[$phase]['spectrum'] = study_spectrum($s[$phase]['unavailable_reason'] === null ? ($request['values']['heartbeats'] ?? []) : []);
+            $s[$phase]['spectrum'] = study_spectrum($s[$phase]['unavailable_reason'] === null && $s[$phase]['measurement_duration_seconds'] === 60 ? ($request['values']['heartbeats'] ?? []) : []);
             $s[$phase]['hrv_power_0_1_ms2'] = $s[$phase]['spectrum']['power_0_1_ms2'] ?? null;
             $s['state'] = $phase === 'before_vitals' ? 'before_report' : 'after_report';
+        } elseif ($action === 'answer') {
+            study_require(in_array($s['state'], ['before_report','after_report'], true), 'This step has already been saved.');
+            $phase = $s['state']; $report = $s[$phase] ?? [];
+            $next = null;
+            foreach (['happiness','stress','connection','text'] as $question) if (!array_key_exists($question, $report)) { $next = $question; break; }
+            study_require(($request['question'] ?? '') === $next && $next !== null, 'Please answer the current question.');
+            if ($next === 'text') $report[$next] = study_text($request['value'] ?? '',2000);
+            else {
+                $value = $request['value'] ?? null;
+                study_require(is_int($value) && $value >= 1 && $value <= 10, 'Choose a rating to continue.');
+                $report[$next] = $value;
+            }
+            $report['recorded_at'] = gmdate('c'); $report['scale_id'] = study_protocol()['scale']['id'];
+            $s[$phase] = $report;
+            if ($next === 'text') {
+                $s['state'] = $phase === 'before_report' ? 'experience' : 'complete';
+                if ($s['state'] === 'complete') $s['completed_at'] = gmdate('c');
+            }
         } elseif ($action === 'report') {
             study_require(in_array($s['state'], ['before_report','after_report'], true), 'This feelings step has already been saved.');
             $report = [];
@@ -244,7 +275,7 @@ try {
             $phase = $s['state']; $s[$phase] = $report; $s['state'] = $phase === 'before_report' ? 'experience' : 'complete';
             if ($s['state'] === 'complete') $s['completed_at'] = gmdate('c');
         } elseif ($action === 'exposure.tick') {
-            study_require($s['state'] === 'experience' && !$preview, 'No research video is running for this session.');
+            study_require($s['state'] === 'experience', 'No research video is running for this session.');
             $now = microtime(true); $media = study_number($request['media_time'] ?? null, 0, 700);
             study_require($media !== null, 'Playback timing is unavailable.');
             $playing = ($request['playing'] ?? false) === true;
@@ -268,7 +299,7 @@ try {
             $s['last_heartbeat'] = $now; $s['last_media_time'] = $media; $s['last_fidelity_valid'] = $valid;
             if (!$valid) { $s['interruptions']++; $s['fidelity_warning'] = true; }
             // A conservative one-second tolerance covers heartbeat quantisation, never seeking/skipping.
-            if ($s['exposure_seconds'] >= 599 && $media >= 599) { $s['state'] = 'after_vitals'; $s['exposure_completed_at'] = gmdate('c'); }
+            if (($s['exposure_seconds'] >= 599 && $media >= 599) || (!empty($s['event_starts_at']) && $now >= strtotime($s['event_starts_at'])+600)) { $s['state'] = 'after_vitals'; $s['exposure_completed_at'] = gmdate('c'); }
         } elseif ($action === 'preview.experience') {
             study_require($preview && study_staging() && $s['state'] === 'experience', 'This action is only available in the staging walkthrough.');
             $s['state'] = 'after_vitals'; $s['preview_exposure_skipped'] = true;

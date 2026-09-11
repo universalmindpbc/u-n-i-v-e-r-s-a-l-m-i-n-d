@@ -1,3 +1,20 @@
+# Recovery revision — 11 September 2026
+
+This revision supersedes conflicting UX, measurement-duration, scheduling and payment descriptions below.
+
+- One screen each: briefing/consent, pre-scan, happiness, stress, connection, written response, existing M8 experience, post-scan, happiness, stress, connection, written response, rewards, results.
+- Original emoji order; stored integers 1–10, displayed as 10–100% of the scale. Change is `(after-before)/abs(before)*100`, not percentage-point change or a population percentile. Missing or zero baselines yield no percentage. Logged RMSSD is exponentiated to raw RMSSD before percentage comparison.
+- Existing UM globe artwork and flower identity, compact layouts, legible rounded controls, no participant-facing technical narrative and no results table.
+- Ten-second Shen scan by default. Owner activation of BP switches to the existing one-minute preset; no 0.1 Hz power is inferred from a ten-second recording.
+- Peter Gabriel’s Sledgehammer is the requested temporary Stream item, shown through the actual M8 viewer and existing sound components, looping to cover the ten-minute slot. Preview plays the same experience in an isolated preview record; its explicit After check control can shorten proofing without claiming full exposure.
+- Three organiser-set sunrise/sunset/midnight livestream dates within one week; no participant scheduling. Live entry opens five minutes before the shared video start. The video joins the common event timeline and closes at the shared end. Dates remain unconfigured until supplied.
+- $100 earned only after all three sessions complete; no onboarding, per-session or prorated payments. Payment recording requires the full earned amount and is idempotent.
+- Results show actual before, after and signed relative percentage change. Participant/session selectors preserve pairing; aggregate paired values weight participants equally. Physiological changes are described by direction, without inventing a clinical improvement judgement.
+
+The original implementation below is historical context, not the current UX specification.
+
+---
+
 # Universal Mind N=10 pilot
 
 This is the separately consented, single-arm feasibility pilot agreed on 11 September 2026. Ten adult women recruited through personal networks receive the combined experience in three sessions over one week. Veteran status is not required. This pilot informs future research with young female veterans; it does not estimate a randomized treatment effect.

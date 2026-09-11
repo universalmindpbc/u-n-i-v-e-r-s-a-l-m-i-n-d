@@ -1,6 +1,7 @@
 // Only the consented study route retains full measurements across sessions.
 export const studyMode = new URLSearchParams(location.search).get('study') === '1';
 let context;
+export let studyMeasurementSeconds = 10;
 export async function authoriseStudyScan() {
   const response = await fetch('api/study.php', {credentials:'same-origin',cache:'no-store'});
   if (!response.ok) throw new Error('Please return to your study and sign in again.');
@@ -8,10 +9,11 @@ export async function authoriseStudyScan() {
   const session = context.participant?.sessions.find(s => ['before_vitals','after_vitals'].includes(s.state));
   if (!context.participant?.consent || context.participant.withdrawn || !session) throw new Error('Please start your Heart Check from your study session.');
   context.session = session;
+  studyMeasurementSeconds = context.config.measurement_seconds === 60 ? 60 : 10;
   return context;
 }
 export function studyValues(result) {
-  const values = {measurement_duration_seconds:60};
+  const values = {measurement_duration_seconds:studyMeasurementSeconds};
   for (const key of ['heart_rate_bpm','hrv_sdnn_ms','hrv_lnrmssd_ms','systolic_blood_pressure_mmhg','diastolic_blood_pressure_mmhg','average_signal_quality']) {
     values[key] = typeof result?.[key] === 'number' && Number.isFinite(result[key]) ? result[key] : null;
   }

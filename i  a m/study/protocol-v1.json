@@ -1,6 +1,6 @@
 {
   "id": "universal-mind-pilot-v1",
-  "version": "2026-09-11.1",
+  "version": "2026-09-11.2",
   "title": "Universal Mind pilot",
   "design": "Single-arm feasibility pilot with repeated before-and-after observations",
   "participants": 10,
@@ -8,10 +8,8 @@
   "session_minutes": 15,
   "onboarding_minutes": 15,
   "exposure_seconds": 600,
-  "measurement_seconds": 60,
+  "measurement_seconds": 10,
   "compensation_aud": 100,
-  "onboarding_aud": 25,
-  "session_aud": 25,
   "briefing": "This pilot explores how a ten-minute electronic music television experience relates to hypothesised short term stress reduction and increased connection. It brings together EMDR, brain entrainment and sub-audible mantra. Findings will help inform future research with young female veterans. Thank you for your valued service today.",
   "requirements": "You’ll need a laptop with a working camera, internet, a Bluetooth speaker and three sessions over one week. You can stop at any time.",
   "eligibility": "Women aged 18 and over, recruited through personal networks. This first pilot does not require veteran status.",
@@ -29,8 +27,32 @@
     "id": "ben-emoji-happiness-v1",
     "minimum": 1,
     "maximum": 10,
-    "emojis": ["😡", "☹️", "😞", "😐", "😌", "🙂", "😇", "😀", "🥰", "😍"],
-    "labels": ["Angry", "Sad", "Downcast", "Neutral", "Peaceful", "Smiling", "Spiritual peace", "Joyful", "Feeling loved", "Love of self and others"]
+    "emojis": [
+      "😡",
+      "☹️",
+      "😞",
+      "😐",
+      "😌",
+      "🙂",
+      "😇",
+      "😀",
+      "🥰",
+      "😍"
+    ],
+    "labels": [
+      "Angry",
+      "Sad",
+      "Downcast",
+      "Neutral",
+      "Peaceful",
+      "Smiling",
+      "Spiritual peace",
+      "Joyful",
+      "Feeling loved",
+      "Love of self and others"
+    ],
+    "display": "percentage_of_scale",
+    "percent_multiplier": 10
   },
   "analysis": {
     "model": "gpt-6-astra",
@@ -38,6 +60,13 @@
     "prompt_version": "pilot-narrative-v1",
     "unit": "participant",
     "primary_exploratory_outcome": "Self-reported immediate stress change",
-    "hrv_psd": "Exploratory one-minute beat-interval power around 0.1 Hz (0.085–0.115 Hz), with the spectrum and quality retained. Not a HeartMath score or direct baroreflex sensitivity measurement."
-  }
+    "hrv_psd": "Exploratory one-minute beat-interval power around 0.1 Hz (0.085–0.115 Hz), with the spectrum and quality retained. Not a HeartMath score or direct baroreflex sensitivity measurement.",
+    "change": "100 * (after - before) / before; unavailable when baseline is zero or either value is missing"
+  },
+  "compensation_rule": "100 AUD after all three sessions are completed; otherwise zero.",
+  "event_windows": [
+    "Sunrise",
+    "Sunset",
+    "Midnight"
+  ]
 }

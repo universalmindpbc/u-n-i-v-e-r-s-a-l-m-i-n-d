@@ -5,7 +5,7 @@ import CreateShenaiSDK, {
   PrecisionMode,
   UiVersion,
 } from "./vendor/shenai-sdk/index.mjs";
-import { studyMode, authoriseStudyScan, studyValues, saveStudyScan } from "../study/shen-bridge.js?v=25c5488724fa";
+import { studyMode, studyMeasurementSeconds, authoriseStudyScan, studyValues, saveStudyScan } from "../study/shen-bridge.js?v=358eb9b0ed75";
 import { createDeepARBrightGlasses } from "./deepar-bright-glasses.js?v=deepar-bright-glasses-js-d622e574d883";
 import { handoffHeartCheckToHomepage } from "./shen-heart-recommendation.js?v=b3324d1c790c";
 import {
@@ -226,7 +226,7 @@ function showMeasurementInterface() {
   stopLoadingSequence();
   stage.dataset.state = "measurement";
   stage.dataset.shenVisualizationConfig = "face-map-and-blood-flow";
-  stage.dataset.shenMeasurement = studyMode ? "study-all-metrics-60-seconds" : "quick-heart-rate-10-seconds";
+  stage.dataset.shenMeasurement = studyMode && studyMeasurementSeconds === 60 ? "study-all-metrics-60-seconds" : "quick-heart-rate-10-seconds";
   loader.hidden = true;
   canvas.removeAttribute("aria-hidden");
   const hasDeepAR = Boolean(deepARSession);
@@ -298,7 +298,7 @@ async function confirmQuickHeartRatePreset() {
     || typeof shenaiSDK?.getMeasurementPreset !== "function") {
     return false;
   }
-  const preset = studyMode ? MeasurementPreset.ONE_MINUTE_ALL_METRICS : MeasurementPreset.QUICK_HR_MODE;
+  const preset = studyMode && studyMeasurementSeconds === 60 ? MeasurementPreset.ONE_MINUTE_ALL_METRICS : MeasurementPreset.QUICK_HR_MODE;
   const expected = measurementPresetValue(preset);
   shenaiSDK.setMeasurementPreset(preset);
   let active = Number.NaN;
@@ -442,7 +442,7 @@ async function requestShortTermToken() {
 function initializeWithToken(token) {
   return new Promise((resolve, reject) => {
     const settings = {
-      measurementPreset: studyMode ? MeasurementPreset.ONE_MINUTE_ALL_METRICS : MeasurementPreset.QUICK_HR_MODE,
+      measurementPreset: studyMode && studyMeasurementSeconds === 60 ? MeasurementPreset.ONE_MINUTE_ALL_METRICS : MeasurementPreset.QUICK_HR_MODE,
       onboardingMode: OnboardingMode.HIDDEN,
       precisionMode: PrecisionMode.STRICT,
       uiVersion: UiVersion.V3,
@@ -478,9 +478,9 @@ function initializeWithToken(token) {
         shenaiSDK.setMediaStream(sharedCameraStream, true);
         shenOwnsSharedCameraStream = true;
         const quickHrConfirmed = await confirmQuickHeartRatePreset();
-        stage.dataset.shenMeasurementPreset = quickHrConfirmed ? (studyMode ? "one-minute-all-metrics" : "quick-hr-mode") : "unexpected";
+        stage.dataset.shenMeasurementPreset = quickHrConfirmed ? (studyMode && studyMeasurementSeconds === 60 ? "one-minute-all-metrics" : "quick-hr-mode") : "unexpected";
         if (!quickHrConfirmed) {
-          reject(new Error(studyMode ? "The one-minute study Heart Check could not be confirmed." : "The 10-second Heart Check could not be confirmed."));
+          reject(new Error(studyMode && studyMeasurementSeconds === 60 ? "The study Heart Check could not be confirmed." : "The 10-second Heart Check could not be confirmed."));
           return;
         }
         shenaiSDK.setShowFaceMask?.(true);
@@ -563,9 +563,9 @@ window.addEventListener("pagehide", releaseShen);
 
 clearLegacyHeartData();
 if (studyMode) {
-  document.querySelector('#heart-rate-offer-title').textContent = 'Your one-minute Heart Check';
-  document.querySelector('#heart-rate-offer-copy').textContent = 'Keep still, breathe naturally and look into the camera. Available heart rate, HRV and blood pressure readings will be saved to your consented study session.';
-  skipButton.textContent = 'Return to my study';
+  document.querySelector('#heart-rate-offer-title').textContent = 'Your Heart Check';
+  document.querySelector('#heart-rate-offer-copy').textContent = 'Keep still, breathe naturally and look into the camera.';
+  skipButton.textContent = 'Back';
   const exit = document.createElement('a');
   exit.href = 'study.php?resume=1'; exit.textContent = 'Stop Heart Check';
   exit.style.cssText = 'position:fixed;bottom:24px;left:24px;z-index:10000;color:white;background:#17141b;padding:12px 20px;border-radius:30px;font:14px sans-serif';

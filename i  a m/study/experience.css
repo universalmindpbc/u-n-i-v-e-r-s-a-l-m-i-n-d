@@ -7,5 +7,5 @@ html[data-study-experience] .adaptive-television-fashion-hero-frame { display:no
 html[data-study-experience] [data-television-room] { position:fixed!important; inset:0!important; width:100%!important; height:100%!important; transform:none!important; border:0!important; opacity:1!important; visibility:visible!important; }
 html[data-study-experience] .adaptive-television-local-video-frame { opacity:1!important; width:100%!important; height:100%!important; }
 html[data-study-experience] [data-television-player] { inset:0!important; }
-.study-play-control { position:fixed; z-index:2147483640; top:50%;left:50%;transform:translate(-50%,-50%);background:#eee7de;color:#17121b;border:0;padding:18px 32px;font:16px Arial,sans-serif;cursor:pointer; }
+.study-play-control { position:fixed; z-index:2147483640; top:50%;left:50%;transform:translate(-50%,-50%);background:#eee7de;color:#17121b;border:1px solid #eee7de;border-radius:999px;padding:18px 32px;font:16px Arial,sans-serif;cursor:pointer; }
 .study-play-control[hidden] { display:none!important; }

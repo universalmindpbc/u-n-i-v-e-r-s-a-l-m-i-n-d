@@ -49,6 +49,15 @@ try {
   assert.equal(summary.summary.rows[0].exposure_seconds,0);assert.equal(summary.summary.statistics.hrv_sdnn_ms.n,0);
   assert.equal((await request('preview.analysis',{redaction_confirmed:true})).status,403);
   checks.push('Before/after state machine, 1–10 bounds, idempotency, missing vitals and isolated preview completion');
+  assert.equal((await ok()).participant.earned_aud,0);
+  const second=await ok('session.start',{window:'invented'});
+  assert.equal((await ok()).participant.sessions[1].window,'sunset');
+  await ok('vitals',{session_id:second.session_id,values:{measurement_duration_seconds:10,heart_rate_bpm:75}});
+  assert.equal((await request('answer',{session_id:second.session_id,question:'connection',value:8})).status,422);
+  for(const [question,value] of [['happiness',5],['stress',7],['connection',4],['text','Sequential answers']]) await ok('answer',{session_id:second.session_id,question,value});
+  const sequential=(await ok()).participant.sessions[1];assert.equal(sequential.state,'experience');assert.equal(sequential.before_vitals.hrv_power_0_1_ms2,null);
+  assert.equal(sequential.before_report.happiness,5);
+  checks.push('One answer per step persists in order; 10-second scan accepted; PSD stays unavailable; participant cannot choose event window');
   // Create an owner session only inside this temporary PHP test filesystem.
   const owner=await php.run({code:"<?php session_name('iam_quantum_tree_owner'); session_start(); $_SESSION['quantum_tree_owner']=true; $_SESSION['quantum_tree_password_revision']='legacy'; echo 'ok';"});
   const pair=owner.headers['set-cookie'].at(-1).split(';')[0].split('=');cookies[pair[0]]=pair[1];
@@ -67,10 +76,17 @@ try {
   const aggregate=await ok('stakeholder.dataset');assert.equal(aggregate.summary.participants,2);assert.equal(aggregate.summary.rows,undefined);
   assert.equal((await request('export')).status,401);assert.equal((await request('admin.dataset')).status,403);
   checks.push('Participant and stakeholder codes have separate scopes; no cross-participant or raw stakeholder access');
-  cookies=ownerCookies;await ok();const pay={participant_id:'P01',amount_aud:25,request_id:'payment-once'};
+  cookies=ownerCookies;await ok();
+  assert.equal((await request('admin.payment',{participant_id:'P01',amount_aud:25})).status,422);
+  assert.equal((await request('admin.payment',{participant_id:'P01',amount_aud:100})).status,422);
+  const paidFixture=JSON.parse(php.readFileAsText('/app/api/.runtime-private/study/cohort.json'));
+  paidFixture.participants.P02.sessions=[1,2,3].map(number=>({...structuredClone(summary.participants[0].sessions[0]),number}));
+  php.writeFile('/app/api/.runtime-private/study/cohort.json',JSON.stringify(paidFixture));
+  const pay={participant_id:'P02',amount_aud:100,request_id:'payment-once'};
   await ok('admin.payment',pay);await ok('admin.payment',pay);
-  assert.equal((await ok('admin.dataset')).participants[0].payments.length,1);
-  checks.push('Payment retries do not duplicate payment records');
+  assert.equal((await ok('admin.dataset')).participants[1].payments.length,1);
+  assert.equal((await request('admin.payment',{...pay,request_id:'second-payment'})).status,422);
+  checks.push('Only $100 after all three sessions; no partial or duplicate payments');
   // Advance only the isolated fixture's server timing to test ten-minute completion without a ten-minute wall-clock test.
   const cohort=JSON.parse(php.readFileAsText('/app/api/.runtime-private/study/cohort.json'));
   const timed=structuredClone(summary.participants[0].sessions[0]);
