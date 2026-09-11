@@ -42,6 +42,9 @@ async function configure(uid) {
     serverOffset=state.server_now-Date.now()/1000;
     video.loop=!!state.config.temporary_video;
     for(const other of document.querySelectorAll('video,audio'))if(other!==video)other.pause();
+    document.addEventListener('play',event=>{
+      if(event.target instanceof HTMLVideoElement && event.target!==video && !event.target.hasAttribute('data-emdr-gif-tile'))event.target.pause();
+    },true);
     for(const element of document.querySelectorAll('button,a,input,select,textarea,[tabindex]'))if(element!==control)element.inert=true;
     video.addEventListener('ended',()=>{tick(true); control.hidden=false;control.disabled=true;control.textContent='Completing…';});
     video.addEventListener('error',()=>{pause();send('study-error',{message:'The study video is unavailable. You can stop and return to your study.'});});
@@ -77,11 +80,11 @@ control.addEventListener('click',async()=>{
   try {
     window.IAMQuantumTree.setEnabled(true,{persist:false}); window.IAMSubaudibleMantra.setEnabled(true,{persist:false});
     await window.IAMAdaptiveSound.prepareStudy();
-    if(video.readyState<1)await new Promise(resolve=>video.addEventListener('loadedmetadata',resolve,{once:true}));
+    await (window.IAMStreamController.play(video)||video.play());
     const target=eventStart?Math.max(0,Date.now()/1000+serverOffset-eventStart):played;
     if(Number.isFinite(video.duration)&&video.duration>0)video.currentTime=video.loop?target%video.duration:Math.min(target,video.duration);
     lastVideoTime=video.currentTime;
-    await tick(); await (window.IAMStreamController.play(video)||video.play());
+    await tick();
     running=true;control.hidden=true;clearInterval(timer);timer=setInterval(()=>tick(),1000);
   }catch(error){control.hidden=false;control.textContent='Tap to resume';send('study-error',{message:'Your browser paused playback. Tap to resume, or stop the session.'});}
   finally{control.disabled=false;}

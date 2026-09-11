@@ -298,8 +298,8 @@ try {
             }
             $s['last_heartbeat'] = $now; $s['last_media_time'] = $media; $s['last_fidelity_valid'] = $valid;
             if (!$valid) { $s['interruptions']++; $s['fidelity_warning'] = true; }
-            // A conservative one-second tolerance covers heartbeat quantisation, never seeking/skipping.
-            if (($s['exposure_seconds'] >= 599 && $media >= 599) || (!empty($s['event_starts_at']) && $now >= strtotime($s['event_starts_at'])+600)) { $s['state'] = 'after_vitals'; $s['exposure_completed_at'] = gmdate('c'); }
+            // End the ten-minute viewing window even if a heartbeat was lost; retain the measured exposure separately.
+            if (($media >= 599 && $now-$s['exposure_started_epoch'] >= 599) || (!empty($s['event_starts_at']) && $now >= strtotime($s['event_starts_at'])+600)) { $s['state'] = 'after_vitals'; $s['exposure_completed_at'] = gmdate('c'); }
         } elseif ($action === 'preview.experience') {
             study_require($preview && study_staging() && $s['state'] === 'experience', 'This action is only available in the staging walkthrough.');
             $s['state'] = 'after_vitals'; $s['preview_exposure_skipped'] = true;

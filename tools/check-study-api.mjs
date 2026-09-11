@@ -97,6 +97,11 @@ try {
   cookies={};await ok();await ok('login',{code:invite1.code});await ok();
   const completion=await ok('exposure.tick',{session_id:timed.id,media_time:599,playing:true,preset:'m8',carrier_hz:444,profile_id:'inspiration_gamma_80_v1',quantum_tree_enabled:true,mantra_enabled:true,sound_running:true});
   assert.equal(completion.state,'after_vitals');assert.equal(completion.exposure_seconds,599);
+  const delayed=JSON.parse(php.readFileAsText('/app/api/.runtime-private/study/cohort.json'));
+  delayed.participants.P01.sessions[0]={...timed,exposure_seconds:570,last_heartbeat:Date.now()/1000-20};
+  php.writeFile('/app/api/.runtime-private/study/cohort.json',JSON.stringify(delayed));
+  const delayedEnd=await ok('exposure.tick',{session_id:timed.id,media_time:600,playing:true});
+  assert.equal(delayedEnd.state,'after_vitals');assert.equal(delayedEnd.exposure_seconds,570);
   checks.push('Server-timed video completion advances to the after measurement; timing fixture is local only');
   cookies=previewCookies;await ok();await ok('withdraw',{erase_responses:true});
   const removed=await ok('export');assert.equal(removed.participant.withdrawn,true);assert.equal(removed.participant.sessions[0].before_report,null);
