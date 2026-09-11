@@ -1,0 +1,170 @@
+{
+  "source_commit": "360b96bd932cd520577b984846fdfb4fa55042b4",
+  "staging_url": "https://staging.universalmind.tv/study",
+  "verified_at": "2026-09-11T02:55:29.776833+00:00",
+  "journey_checks": [
+    {
+      "name": "Sledgehammer source and real duration, both video layers, three-GIF opening, fullscreen request, no playback overlays"
+    },
+    {
+      "name": "Existing native scroll returns to six GIFs and advances through three-GIF variants",
+      "passed": true
+    },
+    {
+      "name": "Natural video end automatically opens after-check; seeked preview never credited as full exposure",
+      "duration": 345,
+      "observedExposure": 26.222506
+    },
+    {
+      "name": "All biometric placeholders reserved; Self-report, Biometrics and Reflections; desktop and mobile within fold",
+      "passed": true
+    }
+  ],
+  "video": {
+    "time": 18.015882,
+    "duration": 345,
+    "paused": false,
+    "loop": false,
+    "uid": "d27b2cbadecf9e82bb1ae4f87566bb0f"
+  },
+  "foreground_video": {
+    "display": "block",
+    "rect": {
+      "x": 396,
+      "y": 267.75,
+      "width": 648,
+      "height": 364.5,
+      "top": 267.75,
+      "right": 1044,
+      "bottom": 632.25,
+      "left": 396
+    },
+    "data": {
+      "fashionHeroMirror": "ready",
+      "emdrGifMusicAmount": "100",
+      "emdrGifMusicEdgeScale": "1.850",
+      "emdrGifMusicEdgeSource": "detected-edge-matte",
+      "emdrGifForegroundSource": "music-fashion-mix",
+      "fashionHeroPixelRatio": "1.00",
+      "fashionHeroDrawCount": "449",
+      "fashionHeroMediaTime": "18.000"
+    },
+    "pixelsVary": true
+  },
+  "m8_pages": {
+    "scroll": 900,
+    "height": 900,
+    "inert": false,
+    "sizes": [
+      6,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3
+    ]
+  },
+  "audio_output": {
+    "quantum_tree": {
+      "playing": true,
+      "advancing": true,
+      "currentTime": 16.99269,
+      "currentVolume": 0.013315620310823673,
+      "sourceFile": "a s s e t s/q u a n t u m [ t r e e ].m4a"
+    },
+    "isochronic_synth": {
+      "isochronic_hz": 111,
+      "carrier_hz": 444,
+      "output_rms": 0.0066712171372817295,
+      "engine_state": "running",
+      "route_output_gain": 0.35
+    },
+    "mantra": {
+      "playing": true,
+      "outputVerified": true,
+      "outputRms": 0.0003377821358172019,
+      "clockAdvancing": true,
+      "currentGain": 0.004476480185985565
+    }
+  },
+  "published_assets": {
+    "served": [
+      {
+        "file": "study/app.js",
+        "status": 200,
+        "digest": "c2eeca14774ee07035a81c53f404148945794d1aa7c00a2e2802d2a98efc4dc6"
+      },
+      {
+        "file": "study/style.css",
+        "status": 200,
+        "digest": "ba2fe1803a77aa7027b0205e09a1727692cefb6d1e8d36d2c031d1281dad1a27"
+      },
+      {
+        "file": "study/experience.js",
+        "status": 200,
+        "digest": "c3c525885954d142c2fd6d94a97badc3b5d83e51a212a19f2c1689bf6de71680"
+      },
+      {
+        "file": "study/experience.css",
+        "status": 200,
+        "digest": "8574019fbf19001c935f129bb3f74e89aceb5a699e0edb895da0eccf314fdd99"
+      },
+      {
+        "file": "study/shen-bridge.js",
+        "status": 200,
+        "digest": "358eb9b0ed75cf5a929ceba1a801ea91ef1afe15a4e5a8d5e5575179ecb70834"
+      },
+      {
+        "file": "study/protocol-v1.json",
+        "status": 200,
+        "digest": "ac1c7c98cb1f37652d75e2c76955375ee80c72e522bcc64c055accc3964ee945"
+      },
+      {
+        "file": "research/shen-heart-rate.js",
+        "status": 200,
+        "digest": "0a44e94daf5befb57d442dc0515a5148a183d4335fca2bcfc659db634985f25a"
+      },
+      {
+        "file": "adaptive-environment-television.js",
+        "status": 200,
+        "digest": "e36a5245a21d02c27aa8b6bc4955c0fc34e40733288743899987e1f6e4fc5286"
+      },
+      {
+        "file": "cloudflare-stream-controller.js",
+        "status": 200,
+        "digest": "91f344a44abba3651ccb22ef06af2cb258770b3221ece5f0bbe51f0585717f88"
+      },
+      {
+        "file": "adaptive-sound/controller-v1.js",
+        "status": 200,
+        "digest": "c9b24f81cc727992696cf3486922e07a0f48cb411d3ca03a8607c9736ad94e07"
+      },
+      {
+        "file": "adaptive-sound/mantra-v1.js",
+        "status": 200,
+        "digest": "1c92fbb2e93f29720355c88abb2daebca6eec2b83f91fc049d8255731eef196f"
+      }
+    ],
+    "scan": {
+      "isolated": true,
+      "cameraAttempts": 0,
+      "copy": "Keep still, breathe naturally and look into the camera.",
+      "stop": true
+    }
+  },
+  "verification_scope": {
+    "browser": "Separate headless Playwright Chromium launched with --mute-audio",
+    "native_fullscreen": "Blocked by QA instrumentation; entry request and 1440x900 / 1920x1080 viewport layout verified",
+    "video_end": "Isolated preview sought near actual media end; native ended event drove real staging API and after-check. Full uninterrupted 5:45 run not performed.",
+    "camera": "No camera activation or new live biometric measurement",
+    "api_tests": "Isolated PHP state-machine tests passed, including actual duration, missing heartbeat, observed exposure and unchanged all-or-nothing reward",
+    "production": "Unmodified"
+  },
+  "errors": []
+}
