@@ -1,0 +1,113 @@
+{
+  "source_commit": "1adcf7869c5d5f4982433d530ed5a2671e932e41",
+  "staging_url": "https://staging.universalmind.tv/study",
+  "verified_at": "2026-09-11T01:43:37.282535+00:00",
+  "journey": {
+    "checks": [
+      {
+        "name": "Real Sledgehammer playback through M8",
+        "time": 14.988481,
+        "sound": "running",
+        "mantra": true,
+        "fullscreen": 0,
+        "camera": 0
+      },
+      {
+        "name": "Actual Sledgehammer end-to-start loop",
+        "passed": true
+      },
+      {
+        "name": "Separate screens, original emoji order, percentage results, no tables, no scroll on desktop and mobile results",
+        "values": {
+          "happiness": "+60%",
+          "stress": "-50%",
+          "connection": "+75%"
+        },
+        "reward": 0,
+        "errors": []
+      }
+    ],
+    "errors": []
+  },
+  "published_assets": {
+    "served": [
+      {
+        "file": "study/app.js",
+        "status": 200,
+        "digest": "54152da77325cd33ff7d242b8a3dcb6e269f6be20845a278ba9429cb7acb6bf7"
+      },
+      {
+        "file": "study/style.css",
+        "status": 200,
+        "digest": "ed7b2644f8e82ca1c2c703e87b4d4a38f86cf568f7ddb87dbe2b1c2b39dd7312"
+      },
+      {
+        "file": "study/experience.js",
+        "status": 200,
+        "digest": "3325b66ae79ecb4acf9ad55451afb605f6dfe2bb6bb50b2d64f143d3ab081f31"
+      },
+      {
+        "file": "study/experience.css",
+        "status": 200,
+        "digest": "8006a01b6bc3bdda7225f861ccd58a386a77ed3f8c31df8b85a09d81d24323f3"
+      },
+      {
+        "file": "study/shen-bridge.js",
+        "status": 200,
+        "digest": "358eb9b0ed75cf5a929ceba1a801ea91ef1afe15a4e5a8d5e5575179ecb70834"
+      },
+      {
+        "file": "study/protocol-v1.json",
+        "status": 200,
+        "digest": "ac1c7c98cb1f37652d75e2c76955375ee80c72e522bcc64c055accc3964ee945"
+      },
+      {
+        "file": "research/shen-heart-rate.js",
+        "status": 200,
+        "digest": "0a44e94daf5befb57d442dc0515a5148a183d4335fca2bcfc659db634985f25a"
+      },
+      {
+        "file": "adaptive-environment-television.js",
+        "status": 200,
+        "digest": "e36a5245a21d02c27aa8b6bc4955c0fc34e40733288743899987e1f6e4fc5286"
+      },
+      {
+        "file": "cloudflare-stream-controller.js",
+        "status": 200,
+        "digest": "91f344a44abba3651ccb22ef06af2cb258770b3221ece5f0bbe51f0585717f88"
+      },
+      {
+        "file": "adaptive-sound/controller-v1.js",
+        "status": 200,
+        "digest": "c9b24f81cc727992696cf3486922e07a0f48cb411d3ca03a8607c9736ad94e07"
+      },
+      {
+        "file": "adaptive-sound/mantra-v1.js",
+        "status": 200,
+        "digest": "1c92fbb2e93f29720355c88abb2daebca6eec2b83f91fc049d8255731eef196f"
+      }
+    ],
+    "scan": {
+      "isolated": true,
+      "cameraAttempts": 0,
+      "copy": "Keep still, breathe naturally and look into the camera.",
+      "stop": true
+    }
+  },
+  "local_checks": [
+    "PHP session order and durable per-question answers",
+    "10-second default and missing metrics",
+    "Percentage change and zero/missing baselines",
+    "All-three-or-zero $100 reward and payment idempotency",
+    "Clock completion with delayed heartbeat without inflating recorded exposure",
+    "Required Panthur preflight suite"
+  ],
+  "limits": [
+    "Live camera and newly licensed BP/HRV were not measured in automated QA.",
+    "Song playback and an actual end-to-start loop were verified; the ten-minute end condition was verified with isolated server timing fixtures, not an uninterrupted ten-minute browser run.",
+    "Event dates remain unconfigured pending the organiser.",
+    "Astra API credentials remain pending; no claim of live Astra verification."
+  ],
+  "protected_owner_runtime_unchanged": true,
+  "production_modified": false
+}
