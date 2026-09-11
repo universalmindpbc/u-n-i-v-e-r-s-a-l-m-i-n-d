@@ -87,22 +87,24 @@ try {
   assert.equal((await ok('admin.dataset')).participants[1].payments.length,1);
   assert.equal((await request('admin.payment',{...pay,request_id:'second-payment'})).status,422);
   checks.push('Only $100 after all three sessions; no partial or duplicate payments');
-  // Advance only the isolated fixture's server timing to test ten-minute completion without a ten-minute wall-clock test.
+  // Use a non-ten-minute media duration in the isolated fixture; verify only observed playback is credited.
   const cohort=JSON.parse(php.readFileAsText('/app/api/.runtime-private/study/cohort.json'));
   const timed=structuredClone(summary.participants[0].sessions[0]);
-  timed.state='experience';timed.exposure_seconds=598;timed.last_media_time=598;timed.last_heartbeat=Date.now()/1000-1.1;
-  timed.exposure_started_epoch=Date.now()/1000-600;timed.last_fidelity_valid=true;timed.last_mutation=null;
+  timed.state='experience';timed.exposure_seconds=286.5;timed.last_media_time=286.5;timed.last_heartbeat=Date.now()/1000-1.1;
+  timed.exposure_started_epoch=Date.now()/1000-288;timed.last_fidelity_valid=true;timed.last_mutation=null;
   cohort.participants.P01.consent={version:first.protocol.version,at:new Date().toISOString()};cohort.participants.P01.sessions=[timed];
   php.writeFile('/app/api/.runtime-private/study/cohort.json',JSON.stringify(cohort));
   cookies={};await ok();await ok('login',{code:invite1.code});await ok();
-  const completion=await ok('exposure.tick',{session_id:timed.id,media_time:599,playing:true,preset:'m8',carrier_hz:444,profile_id:'inspiration_gamma_80_v1',quantum_tree_enabled:true,mantra_enabled:true,sound_running:true});
-  assert.equal(completion.state,'after_vitals');assert.equal(completion.exposure_seconds,599);
+  const premature=await ok('exposure.tick',{session_id:timed.id,media_time:286.5,position:286.5,duration:287.5,ended:false,playing:true});
+  assert.equal(premature.state,'experience');
+  const completion=await ok('exposure.tick',{session_id:timed.id,media_time:287.5,position:287.5,duration:287.5,ended:true,playing:true,preset:'m8',carrier_hz:444,profile_id:'inspiration_gamma_80_v1',quantum_tree_enabled:true,mantra_enabled:true,sound_running:true});
+  assert.equal(completion.state,'after_vitals');assert.equal(completion.exposure_seconds,287.5);
   const delayed=JSON.parse(php.readFileAsText('/app/api/.runtime-private/study/cohort.json'));
-  delayed.participants.P01.sessions[0]={...timed,exposure_seconds:570,last_heartbeat:Date.now()/1000-20};
+  delayed.participants.P01.sessions[0]={...timed,exposure_seconds:260,last_heartbeat:Date.now()/1000-20};
   php.writeFile('/app/api/.runtime-private/study/cohort.json',JSON.stringify(delayed));
-  const delayedEnd=await ok('exposure.tick',{session_id:timed.id,media_time:600,playing:true});
-  assert.equal(delayedEnd.state,'after_vitals');assert.equal(delayedEnd.exposure_seconds,570);
-  checks.push('Server-timed video completion advances to the after measurement; timing fixture is local only');
+  const delayedEnd=await ok('exposure.tick',{session_id:timed.id,media_time:287.5,position:287.5,duration:287.5,ended:true,playing:true});
+  assert.equal(delayedEnd.state,'after_vitals');assert.equal(delayedEnd.exposure_seconds,260);
+  checks.push('Actual media-ended duration advances to after-check; no premature transition or invented exposure after a missing heartbeat');
   cookies=previewCookies;await ok();await ok('withdraw',{erase_responses:true});
   const removed=await ok('export');assert.equal(removed.participant.withdrawn,true);assert.equal(removed.participant.sessions[0].before_report,null);
   assert.equal((await ok('summary')).summary.statistics.happiness.n,0);

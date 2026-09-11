@@ -276,7 +276,7 @@ try {
             if ($s['state'] === 'complete') $s['completed_at'] = gmdate('c');
         } elseif ($action === 'exposure.tick') {
             study_require($s['state'] === 'experience', 'No research video is running for this session.');
-            $now = microtime(true); $media = study_number($request['media_time'] ?? null, 0, 700);
+            $now = microtime(true); $media = study_number($request['media_time'] ?? null, 0, 3600);
             study_require($media !== null, 'Playback timing is unavailable.');
             $playing = ($request['playing'] ?? false) === true;
             $s['exposure_started_epoch'] ??= $now;
@@ -298,8 +298,16 @@ try {
             }
             $s['last_heartbeat'] = $now; $s['last_media_time'] = $media; $s['last_fidelity_valid'] = $valid;
             if (!$valid) { $s['interruptions']++; $s['fidelity_warning'] = true; }
-            // End the ten-minute viewing window even if a heartbeat was lost; retain the measured exposure separately.
-            if (($media >= 599 && $now-$s['exposure_started_epoch'] >= 599) || (!empty($s['event_starts_at']) && $now >= strtotime($s['event_starts_at'])+600)) { $s['state'] = 'after_vitals'; $s['exposure_completed_at'] = gmdate('c'); }
+            // The loaded media supplies its real duration; exposure remains the observed playback only.
+            $duration = study_number($request['duration'] ?? null, 1, 3600);
+            $position = study_number($request['position'] ?? null, 0, 3600);
+            if ($duration !== null) $s['video_duration_seconds'] ??= $duration;
+            $duration = $s['video_duration_seconds'] ?? null;
+            $ended = ($request['ended'] ?? false) === true && $duration !== null && $position !== null && abs($position-$duration) <= 1;
+            $elapsed = !empty($s['event_starts_at']) ? $now-strtotime($s['event_starts_at']) : $now-$s['exposure_started_epoch'];
+            if ($ended && ($preview || $elapsed >= $duration-1)) {
+                $s['state'] = 'after_vitals'; $s['exposure_completed_at'] = gmdate('c');
+            }
         } elseif ($action === 'preview.experience') {
             study_require($preview && study_staging() && $s['state'] === 'experience', 'This action is only available in the staging walkthrough.');
             $s['state'] = 'after_vitals'; $s['preview_exposure_skipped'] = true;
