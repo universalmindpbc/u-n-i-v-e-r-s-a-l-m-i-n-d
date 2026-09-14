@@ -9128,7 +9128,7 @@
   };
 
   function requestViewingFullscreen(video) {
-    const fullscreenTarget = siteShell || document.documentElement;
+    const fullscreenTarget = studyExperienceRequested ? window.parent.document.documentElement : (siteShell || document.documentElement);
 
     try {
       if (fullscreenTarget.requestFullscreen) {
@@ -9144,7 +9144,8 @@
   }
 
   function postShopFullscreenStatus(targetWindow = pageFrame?.contentWindow) {
-    const active = Boolean(document.fullscreenElement || document.webkitFullscreenElement);
+    const ownerDocument = studyExperienceRequested ? window.parent.document : document;
+    const active = Boolean(ownerDocument.fullscreenElement || ownerDocument.webkitFullscreenElement);
     targetWindow?.postMessage({ type: "iam:shop-fullscreen-status", active }, window.location.origin);
   }
 
@@ -9155,7 +9156,8 @@
   }
 
   function syncFullscreenState() {
-    const fullscreenElement = document.fullscreenElement || document.webkitFullscreenElement;
+    const ownerDocument = studyExperienceRequested ? window.parent.document : document;
+    const fullscreenElement = ownerDocument.fullscreenElement || ownerDocument.webkitFullscreenElement;
     document.body.classList.toggle("television-is-fullscreen", Boolean(fullscreenElement));
     postShopFullscreenStatus();
     if (document.body.classList.contains("television-room-open") || document.body.classList.contains("television-room-opening")) {
@@ -10381,6 +10383,15 @@
   window.addEventListener("iam:checkin-pipeline-error", showRecommendationUnavailable);
   document.addEventListener("fullscreenchange", syncFullscreenState);
   document.addEventListener("webkitfullscreenchange", syncFullscreenState);
+  if (studyExperienceRequested) {
+    const ownerDocument = window.parent.document;
+    ownerDocument.addEventListener("fullscreenchange", syncFullscreenState);
+    ownerDocument.addEventListener("webkitfullscreenchange", syncFullscreenState);
+    window.addEventListener("pagehide", () => {
+      ownerDocument.removeEventListener("fullscreenchange", syncFullscreenState);
+      ownerDocument.removeEventListener("webkitfullscreenchange", syncFullscreenState);
+    }, {once:true});
+  }
   window.addEventListener("message", (event) => {
     if (event.origin !== window.location.origin) return;
     if (event.data?.type === "iam:shop-music-status-request") {
