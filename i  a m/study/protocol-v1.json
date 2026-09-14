@@ -1,6 +1,6 @@
 {
   "id": "universal-mind-pilot-v1",
-  "version": "2026-09-11.2",
+  "version": "2026-09-15.1",
   "title": "Universal Mind pilot",
   "design": "Single-arm feasibility pilot with repeated before-and-after observations",
   "participants": 10,
@@ -67,6 +67,7 @@
   "event_windows": [
     "Sunrise",
     "Sunset",
-    "Midnight"
-  ]
+    "Lunchtime"
+  ],
+  "delivery": "On demand, three sessions over one week. Suggested times only; livestream presentation is simulated."
 }

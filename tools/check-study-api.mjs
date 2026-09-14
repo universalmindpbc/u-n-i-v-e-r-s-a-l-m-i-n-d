@@ -9,7 +9,7 @@ const {loadNodeRuntime}=await import(path.join(modules,'@php-wasm/node/index.js'
 const php=new PHP(await loadNodeRuntime('8.3',{emscriptenOptions:{processId:1}}));
 const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
 php.mkdir('/app/api');php.mkdir('/app/study');
-for(const name of ['study.php','study-lib.php','study-spectrum.php','study-analysis.php','happiness-secret-store.php','quantum-tree-owner-password.php'])
+for(const name of ['study.php','study-lib.php','study-rewards.php','study-spectrum.php','study-analysis.php','happiness-secret-store.php','quantum-tree-owner-password.php'])
   php.writeFile('/app/api/'+name,await fs.readFile(path.join(root,'i  a m/api',name),'utf8'));
 php.writeFile('/app/study/protocol-v1.json',await fs.readFile(path.join(root,'i  a m/study/protocol-v1.json'),'utf8'));
 let cookies={},csrf='';
@@ -82,11 +82,31 @@ try {
   const paidFixture=JSON.parse(php.readFileAsText('/app/api/.runtime-private/study/cohort.json'));
   paidFixture.participants.P02.sessions=[1,2,3].map(number=>({...structuredClone(summary.participants[0].sessions[0]),number}));
   php.writeFile('/app/api/.runtime-private/study/cohort.json',JSON.stringify(paidFixture));
+  assert.equal((await request('admin.reward.wallet',{participant_id:'P02',wallet_address:'invalid'})).status,422);
+  assert.equal((await request('admin.reward.sync',{participant_id:'P02'})).status,422,'A shared demo wallet must not receive participant receipts');
+  const personalReward=paidFixture.participants.P02.reward;
+  assert.equal((await ok('admin.reward.lookup',{claim:'UMR:'+personalReward.claim_code})).participant.id,'P02');
+  assert.equal((await request('admin.reward.lookup',{claim:'UMR:'+'0'.repeat(48)})).status,422);
+  assert.equal((await ok('admin.dataset')).participants[1].reward.claim_code,undefined);
+  assert.equal((await ok('admin.dataset')).participants[1].reward.pass_auth,undefined);
+  checks.push('Reward QR resolves only for owner; private claim and pass authentication stay private; no shared-wallet issuance');
   const pay={participant_id:'P02',amount_aud:100,request_id:'payment-once'};
   await ok('admin.payment',pay);await ok('admin.payment',pay);
   assert.equal((await ok('admin.dataset')).participants[1].payments.length,1);
   assert.equal((await request('admin.payment',{...pay,request_id:'second-payment'})).status,422);
   checks.push('Only $100 after all three sessions; no partial or duplicate payments');
+  const onDemand=JSON.parse(php.readFileAsText('/app/api/.runtime-private/study/cohort.json'));
+  onDemand.config={...onDemand.config,open:true,stream_uid:'d27b2cbadecf9e82bb1ae4f87566bb0f',shen_verified:true,experience_verified:true,materials_approved:true,contact_email:'study@example.test',retention_days:365};
+  onDemand.participants.P01.consent={version:first.protocol.version,at:new Date().toISOString(),retention_days:365};
+  php.writeFile('/app/api/.runtime-private/study/cohort.json',JSON.stringify(onDemand));
+  cookies={};await ok();await ok('login',{code:invite1.code});await ok();
+  assert.equal((await request('admin.reward.lookup',{claim:'UMR:'+personalReward.claim_code})).status,403);
+  assert.equal((await request('reward.redeem')).status,422);
+  await ok('session.start');const available=(await ok()).participant.sessions[0];
+  assert.equal(available.event_starts_at,null);assert.equal(available.delivery,'on_demand');assert.equal(available.recommended_window,'sunrise');
+  cookies={};await ok();await ok('login',{code:invite2.code});await ok();
+  assert.equal((await request('reward.redeem')).status,422,'Paid rewards cannot be claimed again');
+  checks.push('On-demand session starts with no event date; incomplete and already-paid rewards cannot be redeemed');
   // Use a non-ten-minute media duration in the isolated fixture; verify only observed playback is credited.
   const cohort=JSON.parse(php.readFileAsText('/app/api/.runtime-private/study/cohort.json'));
   const timed=structuredClone(summary.participants[0].sessions[0]);

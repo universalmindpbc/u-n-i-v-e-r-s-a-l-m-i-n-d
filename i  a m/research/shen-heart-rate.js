@@ -5,7 +5,7 @@ import CreateShenaiSDK, {
   PrecisionMode,
   UiVersion,
 } from "./vendor/shenai-sdk/index.mjs";
-import { studyMode, studyMeasurementSeconds, authoriseStudyScan, studyValues, saveStudyScan } from "../study/shen-bridge.js?v=358eb9b0ed75";
+import { studyMode, studyMeasurementSeconds, authoriseStudyScan, studyValues, saveStudyScan } from "../study/shen-bridge.js?v=b9116ccf797e";
 import { createDeepARBrightGlasses } from "./deepar-bright-glasses.js?v=deepar-bright-glasses-js-d622e574d883";
 import { handoffHeartCheckToHomepage } from "./shen-heart-recommendation.js?v=b3324d1c790c";
 import {
@@ -80,7 +80,7 @@ function experienceUrl({ heartCheckCompleted = false } = {}) {
 
 function showStatus(message, { allowContinue = false } = {}) {
   status.replaceChildren(document.createTextNode(message));
-  if (allowContinue) {
+  if (allowContinue && !studyMode) {
     status.append(document.createTextNode(" "));
     const link = document.createElement("a");
     link.href = experienceUrl();
@@ -565,11 +565,7 @@ clearLegacyHeartData();
 if (studyMode) {
   document.querySelector('#heart-rate-offer-title').textContent = 'Your Heart Check';
   document.querySelector('#heart-rate-offer-copy').textContent = 'Keep still, breathe naturally and look into the camera.';
-  skipButton.textContent = 'Back';
-  const exit = document.createElement('a');
-  exit.href = 'study.php?resume=1'; exit.textContent = 'Stop Heart Check';
-  exit.style.cssText = 'position:fixed;bottom:24px;left:24px;z-index:10000;color:white;background:#17141b;padding:12px 20px;border-radius:30px;font:14px sans-serif';
-  document.body.append(exit);
+  skipButton.hidden = true;
 }
 revealExistingBrand();
 const beginWarmup = () => { void warmHeartCheckAssets(); };

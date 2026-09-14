@@ -2,8 +2,8 @@ const app=document.querySelector('#study-app');
 const status=document.querySelector('#study-status');
 let state, dataset, busy=false, exposure=null, statusTimer, clockTimer;
 let view=new URLSearchParams(location.search).has('dashboard')?'dashboard':'journey';
-let tab='overview', selectedSession=null, selectedPerson='all', resultGroup='feelings';
-const metricNames={happiness:['Happiness','%'],stress:['Stress','%'],connection:['Connection','%'],heart_rate_bpm:['Heart rate','bpm'],hrv_sdnn_ms:['HRV · SDNN','ms'],hrv_rmssd_ms:['HRV · RMSSD','ms'],systolic_blood_pressure_mmhg:['Blood pressure · systolic','mmHg'],diastolic_blood_pressure_mmhg:['Blood pressure · diastolic','mmHg'],hrv_power_0_1_ms2:['Baroreflex · HRV PSD','ms²']};
+let tab='overview', selectedSession=null, selectedPerson='all', resultGroup='heart';
+const metricNames={happiness:['Happiness','%'],stress:['Stress','%'],connection:['Connection','%'],heart_rate_bpm:['Heart rate','bpm'],hrv_sdnn_ms:['HRV','ms'],hrv_rmssd_ms:['HRV · RMSSD','ms'],systolic_blood_pressure_mmhg:['Blood pressure · systolic','mmHg'],diastolic_blood_pressure_mmhg:['Blood pressure · diastolic','mmHg'],hrv_power_0_1_ms2:['HRV · PSD','ms²']};
 const html=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const fmt=(n,signed=false)=>n===null||n===undefined||!Number.isFinite(n)?'—':`${signed&&n>0?'+':''}${Number(n.toFixed(1))}`;
 const money=n=>`$${fmt(n||0)}`;
@@ -22,11 +22,7 @@ export async function request(action,body={}) {
 function notice(text){clearTimeout(statusTimer);status.textContent=text;statusTimer=setTimeout(()=>status.textContent='',9000);}
 function setPage(mode){
  clearInterval(clockTimer);document.body.dataset.studyState=mode;
- document.querySelector('.study-header').hidden=mode==='login'||mode==='experience';
- document.querySelector('[data-preview-badge]').hidden=!state.preview;
- const active=currentSession();document.querySelector('[data-action="stop"]').hidden=!active;
- document.querySelector('[data-action="logout"]').hidden=!!active;
- document.querySelector('[data-explore]').hidden=!(state.participant?.sessions.some(s=>s.after_vitals||s.state==='after_vitals'||s.state==='after_report'||s.state==='complete'));
+ document.querySelector('.study-header').hidden=['login','experience','home','scan'].includes(mode);
  app.setAttribute('aria-busy','false');
 }
 async function refresh(){state=await request();await render();}
@@ -37,37 +33,41 @@ async function render(){
  if(!state.participant.consent){renderBriefing();return;}
  const s=currentSession();
  if(s){renderStep(s);return;}
- if(state.participant.sessions.length){if(view==='event')renderEvent();else renderReward();return;}
+ if(view==='reward'||state.participant.sessions.length>=3){renderReward();return;}
  await enterEvent();
 }
-function renderLogin(){setPage('login');app.innerHTML=`<section class="access-shell"><img class="access-flower" src="a s s e t s/Universal Mind [ I o H ] Logo.PNG" alt=""><h1 class="access-title">u n i v e r s a l&nbsp;&nbsp;m i n d</h1><form class="access-form" data-form="login"><label class="access-label" for="study-code">study access code</label><input class="access-input" id="study-code" name="code" type="password" autocomplete="current-password" required maxlength="100"><button class="access-submit" type="submit">enter</button></form><div class="study-login-links">${state.preview_available?'<button type="button" data-action="preview">Preview the study</button>':''}<a href="study.php?dashboard=1">Research access</a></div></section>`;}
-function renderBriefing(){setPage('briefing');app.innerHTML=`<section class="study-stage study-briefing"><p class="study-eyebrow">Universal Mind · Research</p><h1>Welcome.</h1><p class="study-copy" data-briefing>${html(state.protocol.briefing)}</p><p class="study-copy" data-requirements>${html(state.protocol.requirements)}</p><p class="study-muted">Three livestreams: sunrise · sunset · midnight. $100 on completion of all three.</p><form data-form="consent"><label class="study-check"><input name="participation" type="checkbox" required><span>I am a woman aged 18 or over and agree to take part.</span></label><label class="study-check"><input name="equipment" type="checkbox" required><span>I have the equipment and availability above.</span></label><label class="study-check"><input name="research_data" type="checkbox" required><span>I agree to research use of my coded measurements and responses, including AI analysis.</span></label><div class="study-actions"><button class="study-button" type="submit">Continue <span aria-hidden="true">→</span></button><button type="button" class="study-text-button" data-action="privacy">Research data</button></div></form></section>`;}
-function eventDetails(){return state.config.events[state.participant.sessions.length];}
+function renderLogin(){setPage('login');app.innerHTML=`<section class="access-shell"><img class="access-flower" src="a s s e t s/Universal Mind [ I o H ] Logo.PNG" alt=""><h1 class="access-title">u n i v e r s a l&nbsp;&nbsp;m i n d</h1><form class="access-form" data-form="login"><label class="access-label" for="study-code">password</label><input class="access-input" id="study-code" name="code" type="password" autocomplete="current-password" required maxlength="100"><button class="access-submit" type="submit">enter</button></form></section>`;}
+function renderBriefing(){setPage('briefing');app.innerHTML=`<section class="study-stage study-briefing"><p class="study-eyebrow">Universal Mind · Research</p><h1>Welcome.</h1><p class="study-copy" data-briefing>${html(state.protocol.briefing)}</p><p class="study-copy" data-requirements>${html(state.protocol.requirements)}</p><p class="study-muted">Watch anytime over one week. We recommend sunrise, sunset and lunchtime. $100 on completion of all three sessions.</p><form data-form="consent"><label class="study-check"><input name="participation" type="checkbox" required><span>I am a woman aged 18 or over and agree to take part.</span></label><label class="study-check"><input name="equipment" type="checkbox" required><span>I have the equipment and availability above.</span></label><label class="study-check"><input name="research_data" type="checkbox" required><span>I agree to research use of my coded measurements and responses, including AI analysis.</span></label><div class="study-actions"><button class="study-button" type="submit">Continue <span aria-hidden="true">→</span></button><button type="button" class="study-text-button" data-action="privacy">Privacy Info</button></div></form></section>`;}
 async function enterEvent(){
- const event=eventDetails();if(!event){renderReward();return;}
- const now=state.server_now*1000, start=Date.parse(event.starts_at);
- if(state.preview||(start&&now>=start-300000&&now<start+600000)){
-  await request('session.start',{timezone:Intl.DateTimeFormat().resolvedOptions().timeZone});state=await request();renderStep(currentSession());
- }else renderEvent();
-}
-function renderEvent(){setPage('event');const e=eventDetails();if(!e){renderReward();return;}
- app.innerHTML=`<section class="study-stage"><p class="study-eyebrow">Livestream ${state.participant.sessions.length+1} of 3</p><h1>${html(e.label)}</h1><p class="study-copy">${html(date(e.starts_at))}</p><div class="study-actions">${button('Join livestream','join')}<a class="study-button secondary" href="index.html">Explore Universal Mind</a></div></section>`;
+ await request('session.start',{timezone:Intl.DateTimeFormat().resolvedOptions().timeZone});state=await request();renderStep(currentSession());
 }
 const steps=['before_vitals','before_happiness','before_stress','before_connection','before_text','experience','after_vitals','after_happiness','after_stress','after_connection','after_text'];
-function progress(s){const step=s.state.endsWith('report')?`${s.state.startsWith('after')?'after':'before'}_${nextQuestion(s)}`:s.state;const index=steps.indexOf(step);return `<p class="study-eyebrow">${html(s.window)} · ${s.state.startsWith('after')?'After':'Before'}</p><div class="study-progress" aria-label="Step ${index+1} of ${steps.length}">${steps.map((_,i)=>`<span class="${i<=index?'done':''}"></span>`).join('')}</div>`;}
+function progress(s){const step=s.state.endsWith('report')?`${s.state.startsWith('after')?'after':'before'}_${nextQuestion(s)}`:s.state;const index=steps.indexOf(step);return `<p class="study-eyebrow">Session ${s.number} · ${s.state.startsWith('after')?'After':'Before'}</p><div class="study-progress" aria-label="Step ${index+1} of ${steps.length}">${steps.map((_,i)=>`<span class="${i<=index?'done':''}"></span>`).join('')}</div>`;}
 function renderStep(s){
  setPage('session');
- if(s.state.endsWith('vitals')){app.innerHTML=`<section class="study-stage">${progress(s)}<div class="scan-flower"><img src="a s s e t s/Universal Mind [ I o H ] Logo 512.png" alt=""></div><h1>${s.state==='after_vitals'?'Are you ready for an after-check?':'Your Heart Check'}</h1>${s.state==='after_vitals'?'':`<p class="study-copy">${state.config.measurement_seconds} seconds. Sit still and look into the camera.</p>`}<div class="study-actions"><a class="study-button" href="research.php?study=1">${s.state==='after_vitals'?'Click here':'Start Heart Check'} <span aria-hidden="true">→</span></a>${button('Skip','missingVitals',true)}</div></section>`;return;}
+ if(s.state.endsWith('vitals')){app.innerHTML=`<section class="study-stage">${s.state==='after_vitals'?'':progress(s)}<div class="scan-flower"><img src="a s s e t s/Universal Mind [ I o H ] Logo 512.png" alt=""></div><h1>${s.state==='after_vitals'?'Are you ready for an after-check?':'Your Heart Check'}</h1>${s.state==='after_vitals'?'':`<p class="study-copy">${state.config.measurement_seconds} seconds. Sit still and look into the camera.</p>`}<div class="study-actions"><button type="button" class="study-button" data-action="scan">${s.state==='after_vitals'?'Click here':'Start Heart Check'} <span aria-hidden="true">→</span></button></div></section>`;return;}
  if(s.state.endsWith('report')){const q=nextQuestion(s);const titles={happiness:'How happy do you feel?',stress:'How stressed do you feel?',connection:'How connected do you feel?',text:'How are you feeling?'};
   app.innerHTML=`<section class="study-stage question-stage" data-question="${q}">${progress(s)}<h1>${titles[q]}</h1><form data-form="answer" data-question="${q}">${q==='text'?'<textarea id="self-report" name="text" maxlength="2000" aria-label="How are you feeling?" placeholder="In your own words…"></textarea>':rating(q)}<div class="study-actions"><button class="study-button" type="submit" ${q==='text'?'':'disabled'}>${s.state==='after_report'&&q==='text'?'Finish':'Continue'} <span aria-hidden="true">→</span></button></div></form></section>`;return;
  }
- app.innerHTML=`<section class="study-stage experience-intro"><p class="study-eyebrow">${html(s.window)}<span data-video-duration></span></p><div class="infinity-mark" aria-hidden="true">∞</div><h1>modul8 infinity</h1><p class="study-copy">${html(state.config.video_title)}</p><div class="study-actions">${button('Preparing…','exposure',false,'disabled')}</div></section>`;prepareExposure();
+ setPage('home');app.innerHTML='';prepareExposure();
 }
 function rating(name){const happiness=name==='happiness';return `<div class="rating-response" aria-live="polite"><output data-rating-output>—<small>%</small></output></div><fieldset class="study-rating ${happiness?'has-emojis':''}" aria-label="${html(metricNames[name][0])}">${Array.from({length:10},(_,i)=>`<label><input type="radio" name="value" value="${i+1}" aria-label="${(i+1)*10}%" required>${happiness?face(i+1):`<span class="rating-dot" style="--i:${i}" aria-hidden="true"></span>`}<span class="study-rating-number">${(i+1)*10}%</span></label>`).join('')}</fieldset><div class="study-scale-ends"><span>${{happiness:'Least happy',stress:'Least stressed',connection:'Least connected'}[name]}</span><span>${{happiness:'Most happy',stress:'Most stressed',connection:'Most connected'}[name]}</span></div>`;}
-function renderReward(){setPage('reward');const count=state.participant.sessions.filter(s=>s.state==='complete').length;app.innerHTML=`<section class="study-stage"><p class="study-eyebrow">${count} of 3 livestreams complete</p><img class="reward-card" src="a s s e t s/wallet-rewards-card.png" alt="Universal Mind rewards"><h1>${count===3?'$100. Thank you.':'Thank you.'}</h1><p class="study-copy">${count===3?'Your reward is ready.':'$100 when you complete all three livestreams.'}</p><div class="study-actions">${button('See your results','results')}${count<3?button('Next livestream','nextEvent',true):'<a class="study-button secondary" href="index.html">Explore Universal Mind</a>'}</div></section>`;}
-function renderStopped(){setPage('reward');app.innerHTML=`<section class="study-stage"><h1>Session stopped.</h1><div class="study-actions">${button('Your results','results')}<a class="study-button secondary" href="index.html">Explore Universal Mind</a></div></section>`;}
+function renderReward(){
+ setPage('reward');const count=state.participant.sessions.filter(s=>s.state==='complete').length,w=state.participant.reward;
+ app.innerHTML=`<section class="study-stage"><p class="study-eyebrow">${count} of 3 sessions complete</p>
+ <article class="study-wallet-card" aria-label="Universal Mind reward card"><div><img src="a s s e t s/Universal Mind [ I o H ] Logo 512.png" alt=""><span>HAPPINESS</span></div><strong>$${count===3?'100':'0'}</strong><p>${w?.status==='paid'?'Redeemed':'Research reward'}</p><footer>UNIVERSAL MIND <span>${html(w?.display_id||'')}</span></footer></article>
+ <h1>Thank you.</h1><p class="study-copy">${count===3?(w?.status==='paid'?'Your $100 payment is recorded.':'Your $100 reward is ready.'):'$100 when you complete all three sessions.'}</p>
+ <div class="study-actions">${button('See your results','results')}<a class="study-button secondary" href="api/study-wallet.php?pass=1">Add to Apple Wallet</a>${count===3&&w?.status!=='paid'?button(w?.redemption_requested?'Redemption requested':'Redeem $100','redeem',true,w?.redemption_requested?'disabled':''):''}</div></section>`;
+}
+function renderStopped(){setPage('reward');app.innerHTML=`<section class="study-stage"><h1>Session stopped.</h1><div class="study-actions">${button('Your results','results')}</div></section>`;}
 function displayValue(key,value){return value==null?'TBC':`${fmt(['happiness','stress','connection'].includes(key)?value*10:value)}${metricNames[key][1]==='%'?'%':` <small>${metricNames[key][1]}</small>`}`;}
 function comparisonCard(key,before,after){const change=percent(before,after),rating=['happiness','stress','connection'].includes(key);const direction=change===null?'':change===0?'Unchanged':key==='stress'?(change<0?'Less stress':'More stress'):key==='happiness'?(change>0?'More happiness':'Less happiness'):key==='connection'?(change>0?'More connection':'Less connection'):(change>0?'Increased':'Decreased');const tone=change===null||change===0?'neutral':rating?((key==='stress'?change<0:change>0)?'positive':'negative'):'neutral';return `<article class="result-card ${tone}" data-result-metric="${key}"><h2>${metricNames[key][0]}</h2><div class="result-change">${change==null?'TBC':fmt(change,true)}<small>${change==null?'':'%'}</small></div><p class="result-direction">${direction||'&nbsp;'}</p><div class="result-pair"><div><span>Before</span><strong>${displayValue(key,before)}</strong></div><span aria-hidden="true">→</span><div><span>After</span><strong>${displayValue(key,after)}</strong></div></div></article>`;}
+function bloodPressureCard(c){
+ const values=['systolic_blood_pressure_mmhg','diastolic_blood_pressure_mmhg'].map(k=>c[k]||{});
+ const pair=phase=>values.every(v=>v[phase]!=null)?values.map(v=>fmt(v[phase])).join(' / '):'TBC';
+ const changes=values.map(v=>percent(v.before,v.after));
+ return `<article class="result-card neutral blood-pressure-card" data-result-metric="blood_pressure"><h2>Blood pressure</h2><div class="result-change">${changes.every(v=>v!=null)?changes.map(v=>`${fmt(v,true)}<small>%</small>`).join('<span class="bp-divider"> / </span>'):'TBC'}</div><p class="result-direction">${changes.every(v=>v!=null)?'Systolic / Diastolic':'&nbsp;'}</p><div class="result-pair"><div><span>Before</span><strong>${pair('before')}</strong></div><span>→</span><div><span>After</span><strong>${pair('after')}</strong></div></div></article>`;
+}
 async function renderDashboard(){
  setPage('dashboard');const personal=tab==='personal';
  if(!state.owner&&!state.stakeholder&&!state.preview&&!personal){app.innerHTML=`<section class="study-stage"><p class="study-eyebrow">Research access</p><h1>Sign in</h1><form data-form="adminLogin"><label class="study-field">Owner password<input name="password" type="password" autocomplete="current-password" required></label><button class="study-button" type="submit">Continue</button></form></section>`;return;}
@@ -84,8 +84,8 @@ async function renderDashboard(){
   const pairs=[...byPerson.values()];const mean=phase=>pairs.length?pairs.reduce((sum,pair)=>sum+pair.reduce((n,r)=>n+r[phase][key],0)/pair.length,0)/pairs.length:null;
   const one=filtered.length===1?filtered[0]:null;comparisons[key]={before:one?one.before[key]:mean('before'),after:one?one.after[key]:mean('after')};
  }}
- const keys=resultGroup==='feelings'?['happiness','stress','connection']:resultGroup==='heart'?Object.keys(metricNames).filter(k=>!['happiness','stress','connection'].includes(k)):[];
- target.innerHTML=`${!personal&&people.length>1?`<div class="study-tabs participant-picker">${button('Everyone','person',true,'data-person="all"')}${people.map(p=>button(p,'person',true,`data-person="${html(p)}"`)).join('')}</div>`:''}<div class="results-controls"><div class="study-tabs" aria-label="Session">${button('All sessions','sessionResult',true,`data-session="all" aria-pressed="${selectedSession===null}"`)}${[1,2,3].filter(n=>rows.some(r=>r.session===n)).map(n=>button(`Session ${n}`,'sessionResult',true,`data-session="${n}" aria-pressed="${selectedSession===n}"`)).join('')}</div><div class="study-tabs" aria-label="Measures">${['feelings','heart','words'].map(g=>`<button data-action="resultGroup" data-group="${g}" aria-pressed="${resultGroup===g}">${{feelings:'Self-report',heart:'Biometrics',words:'Reflections'}[g]}</button>`).join('')}</div></div>${resultGroup==='words'?`<div class="words-carousel">${filtered.filter(r=>r.before_text||r.after_text).map(r=>`<article class="words-pair"><p class="study-eyebrow">${personal?'':html(r.participant_id)+' · '}Session ${r.session}</p><div><blockquote><span>Before</span><p>${html(r.before_text||'—')}</p></blockquote><blockquote><span>After</span><p>${html(r.after_text||'—')}</p></blockquote></div></article>`).join('')}</div>`:`<div class="result-cards" tabindex="0" aria-label="Before, after and percentage change">${keys.map(k=>comparisonCard(k,comparisons[k]?.before??null,comparisons[k]?.after??null)).join('')}</div>`}<div class="results-footer"><span class="study-muted">Before → After → +/− % change${filtered.length>1?' · Average across selected sessions':''}</span><div class="study-actions">${personal?button('Next livestream','nextEvent',true):button('Download results','downloadSummary',true)}<a class="study-button" href="index.html">Explore Universal Mind <span aria-hidden="true">→</span></a></div></div>`;
+ const keys=resultGroup==='feelings'?['happiness','stress','connection']:resultGroup==='heart'?['heart_rate_bpm','hrv_sdnn_ms','hrv_power_0_1_ms2','blood_pressure']:[];
+ target.innerHTML=`${!personal&&people.length>1?`<div class="study-tabs participant-picker">${button('Everyone','person',true,'data-person="all"')}${people.map(p=>button(p,'person',true,`data-person="${html(p)}"`)).join('')}</div>`:''}<div class="results-controls"><div class="study-tabs" aria-label="Session">${button('All sessions','sessionResult',true,`data-session="all" aria-pressed="${selectedSession===null}"`)}${[1,2,3].filter(n=>rows.some(r=>r.session===n)).map(n=>button(`Session ${n}`,'sessionResult',true,`data-session="${n}" aria-pressed="${selectedSession===n}"`)).join('')}</div><div class="study-tabs" aria-label="Measures">${['heart','feelings','words'].map(g=>`<button data-action="resultGroup" data-group="${g}" aria-pressed="${resultGroup===g}">${{feelings:'Self-report',heart:'Biometrics',words:'Reflections'}[g]}</button>`).join('')}</div></div>${resultGroup==='words'?`<div class="words-carousel">${filtered.filter(r=>r.before_text||r.after_text).map(r=>`<article class="words-pair"><p class="study-eyebrow">${personal?'':html(r.participant_id)+' · '}Session ${r.session}</p><div><blockquote><span>Before</span><p>${html(r.before_text||'—')}</p></blockquote><blockquote><span>After</span><p>${html(r.after_text||'—')}</p></blockquote></div></article>`).join('')}</div>`:`<div class="result-cards ${resultGroup==='heart'?'biometric-cards':''}" tabindex="0" aria-label="Before, after and percentage change">${keys.map(k=>k==='blood_pressure'?bloodPressureCard(comparisons):comparisonCard(k,comparisons[k]?.before??null,comparisons[k]?.after??null)).join('')}</div>`}<div class="results-footer"><span class="study-muted">Before → After → +/− % change${filtered.length>1?' · Average across selected sessions':''}</span>${!personal?button('Download results','downloadSummary',true):''}</div>`;
 }
 function renderAnalysis(target) {
   const a=dataset.analysis;
@@ -105,13 +105,13 @@ function analysisMarkup(a) {
 }
 
 
-function renderParticipants(target){target.innerHTML=`<div class="study-actions">${state.preview?'':button('Create participant invitation','invite')}</div><div id="new-invitation"></div><div class="participant-cards">${dataset.participants.map(p=>`<article><h2>${html(p.id)}</h2><p>${p.sessions.filter(s=>s.state==='complete').length} / 3 complete</p><strong>${money(p.earned_aud)}</strong>${state.preview||p.earned_aud!==100?'':p.payments.length?'<p>Paid</p>':button('Record $100 paid','payment',true,`data-id="${html(p.id)}"`)}</article>`).join('')}</div>${!state.preview?button('Create stakeholder access','stakeholderInvite',true):''}<div id="stakeholder-invitation"></div>`;}
-function renderPreparation(target){const c=dataset.config;target.innerHTML=`<form data-form="config" class="study-setup"><h2>Livestream dates</h2>${c.events.map((e,i)=>`<label class="study-field">${e.label}<input name="event-${i}" type="datetime-local" value="${e.starts_at?localDate(e.starts_at):''}"></label>`).join('')}<p class="study-muted">${html(Intl.DateTimeFormat().resolvedOptions().timeZone)}</p><label class="study-field">Study video · Stream ID<input name="stream_uid" value="${html(c.stream_uid)}" maxlength="32"></label><label class="study-field">Video title<input name="video_title" value="${html(c.video_title)}" maxlength="120"></label><label class="study-field">Study contact<input type="email" name="contact_email" value="${html(c.contact_email)}"></label><label class="study-field">Data retention · days<input type="number" name="retention_days" min="1" max="3650" value="${c.retention_days||''}"></label>${[['bp_active','BP access activated · one-minute scans'],['shen_verified','Heart Check verified'],['experience_verified','Combined ten-minute experience verified'],['materials_approved','Participant materials approved'],['open','Open the study']].map(([k,t])=>`<label class="study-check"><input type="checkbox" name="${k}" ${c[k]?'checked':''}><span>${t}</span></label>`).join('')}<button class="study-button" type="submit" ${state.preview?'disabled':''}>Save</button></form>`;}
+function renderParticipants(target){target.innerHTML=`${state.preview?'':'<form data-form="rewardLookup"><label class="study-field">Reward card QR code<input name="claim" placeholder="UMR:…" required></label><button class="study-button secondary" type="submit">Find reward</button></form><div id="reward-lookup-result"></div>'}<div class="study-actions">${state.preview?'':button('Create participant invitation','invite')}</div><div id="new-invitation"></div><div class="participant-cards">${dataset.participants.map(p=>`<article><h2>${html(p.id)}</h2><p>${p.sessions.filter(s=>s.state==='complete').length} / 3 complete</p><strong>${money(p.earned_aud)}</strong>${state.preview?'':`<form data-form="rewardWallet" data-id="${html(p.id)}"><label class="study-field">Wallet address<input name="wallet_address" value="${html(p.reward?.wallet_address||'')}" pattern="0x[a-fA-F0-9]{40}" required ${p.reward?.token_issue?'disabled':''}></label><button class="study-button secondary" type="submit" ${p.reward?.token_issue?'disabled':''}>Save wallet</button></form>${p.earned_aud===100?button('Sync ERC20 receipt','rewardSync',true,`data-id="${html(p.id)}"`):''}<p class="study-muted">${html(p.reward?.token_redemption?.state||p.reward?.token_issue?.state||'Polygon Amoy · awaiting receipt')}</p>`}${state.preview||p.earned_aud!==100?'':p.payments.length?'<p>Paid</p>':button('Record $100 paid','payment',true,`data-id="${html(p.id)}"`)}</article>`).join('')}</div>${!state.preview?button('Create stakeholder access','stakeholderInvite',true):''}<div id="stakeholder-invitation"></div>`;}
+function renderPreparation(target){const c=dataset.config;target.innerHTML=`<form data-form="config" class="study-setup"><h2>Study setup</h2><p class="study-muted">Three sessions on demand. Recommended: sunrise · sunset · lunchtime.</p><label class="study-field">Study video · Stream ID<input name="stream_uid" value="${html(c.stream_uid)}" maxlength="32"></label><label class="study-field">Video title<input name="video_title" value="${html(c.video_title)}" maxlength="120"></label><label class="study-field">Study contact<input type="email" name="contact_email" value="${html(c.contact_email)}"></label><label class="study-field">Data retention · days<input type="number" name="retention_days" min="1" max="3650" value="${c.retention_days||''}"></label>${[['bp_active','BP access activated · one-minute scans'],['shen_verified','Heart Check verified'],['experience_verified','Combined ten-minute experience verified'],['materials_approved','Participant materials approved'],['open','Open the study']].map(([k,t])=>`<label class="study-check"><input type="checkbox" name="${k}" ${c[k]?'checked':''}><span>${t}</span></label>`).join('')}<button class="study-button" type="submit" ${state.preview?'disabled':''}>Save</button></form>`;}
 function localDate(value){const d=new Date(value);return new Date(d-d.getTimezoneOffset()*60000).toISOString().slice(0,16);}
 function download(value,name){const url=URL.createObjectURL(new Blob([JSON.stringify(value,null,2)],{type:'application/json'}));const a=document.createElement('a');a.href=url;a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);}
 function prepareExposure(){
- const shell=document.createElement('div');shell.className='study-exposure is-preparing';
- shell.innerHTML='<iframe title="modul8 infinity study experience" src="study-experience.php?study_experience=1" allow="autoplay; fullscreen" allowfullscreen sandbox="allow-scripts allow-same-origin"></iframe>';
+ const shell=document.createElement('div');shell.className='study-exposure';
+ shell.innerHTML='<iframe title="modul8 infinity study experience" src="study-experience.php?study_experience=1" allow="autoplay; fullscreen; microphone; camera" allowfullscreen></iframe>';
  exposure={sessionId:currentSession().id,frame:shell.querySelector('iframe'),shell,pending:false,ready:false};app.append(shell);
 }
 async function startExposure(){
@@ -119,20 +119,23 @@ async function startExposure(){
  // Fullscreen must be requested directly in this click, before any await loses the gesture.
  const root=document.documentElement;const fullscreen=root.requestFullscreen||root.webkitRequestFullscreen;
  if(fullscreen)try{Promise.resolve(fullscreen.call(root)).catch(()=>{});}catch{}
- setPage('experience');app.querySelector('.experience-intro')?.remove();active.shell.classList.remove('is-preparing');
+ setPage('experience');active.shell.classList.remove('is-preparing');
  await active.frame.contentWindow.IAMStudyExperience.start();
 }
-function resumeEntry(){
- if(!exposure)return;exposure.shell.classList.add('is-preparing');setPage('session');
- if(!app.querySelector('.experience-intro'))app.insertAdjacentHTML('afterbegin',`<section class="study-stage experience-intro"><div class="infinity-mark" aria-hidden="true">∞</div><h1>modul8 infinity</h1><div class="study-actions">${button('Resume experience','exposure')}</div></section>`);
+function resumeEntry(){if(exposure){setPage('home');exposure.frame.contentWindow.IAMStudyExperience?.showHome();}}
+function startScan(){
+ setPage('scan');app.innerHTML='<div class="study-scan"><iframe title="Your Heart Check" src="research.php?study=1&embedded=1" allow="camera; fullscreen" allowfullscreen></iframe></div>';
 }
+window.IAMStudyShell={startExperience:startExposure};
 document.addEventListener('click',async event=>{
  const control=event.target.closest('[data-action]');if(!control||busy)return;const action=control.dataset.action;
  try{busy=true;control.disabled=true;
- if(action==='preview'){await request('preview');view='journey';await refresh();}
+ if(action==='scan'){startScan();}
+ else if(action==='redeem'){await request('reward.redeem');await refresh();}
+ else if(action==='preview'){await request('preview');view='journey';await refresh();}
  else if(action==='logout'){await request('logout');view='journey';await refresh();}
  else if(action==='join'){await enterEvent();}
- else if(action==='nextEvent'){view='event';await render();}
+
  else if(action==='results'){view='dashboard';tab='personal';selectedSession=null;await render();}
  else if(action==='missingVitals'){await request('vitals',{session_id:currentSession().id,values:{unavailable_reason:state.preview?'preview':'declined'}});await refresh();}
  else if(action==='exposure'){await startExposure();}
@@ -145,6 +148,7 @@ document.addEventListener('click',async event=>{
  else if(action==='resultGroup'){resultGroup=control.dataset.group;await renderDashboard();}
  else if(action==='downloadSummary'){download(dataset.summary,'universal-mind-study-results.json');}
  else if(action==='invite'||action==='stakeholderInvite'){const result=await request(action==='invite'?'admin.invite':'admin.stakeholder');document.querySelector(action==='invite'?'#new-invitation':'#stakeholder-invitation').innerHTML=`<p>${html(result.id||'Stakeholder')}</p><code class="study-code">${html(result.code)}</code>`;}
+ else if(action==='rewardSync'){await request('admin.reward.sync',{participant_id:control.dataset.id});await renderDashboard();}
  else if(action==='payment'){await request('admin.payment',{participant_id:control.dataset.id,amount_aud:100});await renderDashboard();}
  else if(action==='approveAnalysis'){await request('admin.approve_analysis',{analysis_id:control.dataset.id});await renderDashboard();}
  }catch(error){notice(error.message);}finally{busy=false;control.disabled=false;}
@@ -155,21 +159,23 @@ document.addEventListener('submit',async event=>{
  try{busy=true;submit.disabled=true;
  if(form.dataset.form==='login'){await request('login',{code:fields.get('code')});view='journey';state=await request();if(state.stakeholder)view='dashboard';await render();}
  else if(form.dataset.form==='consent'){await request('consent',{version:state.protocol.version,adult_woman:fields.has('participation'),participation:fields.has('participation'),equipment:fields.has('equipment'),research_data:fields.has('research_data')});await refresh();}
- else if(form.dataset.form==='answer'){const q=form.dataset.question;await request('answer',{session_id:currentSession().id,question:q,value:q==='text'?fields.get('text'):Number(fields.get('value'))});await refresh();}
+ else if(form.dataset.form==='answer'){const q=form.dataset.question;if(q==='text'&&currentSession().state==='after_report')view='reward';await request('answer',{session_id:currentSession().id,question:q,value:q==='text'?fields.get('text'):Number(fields.get('value'))});await refresh();}
+ else if(form.dataset.form==='rewardLookup'){const r=await request('admin.reward.lookup',{claim:fields.get('claim')});document.querySelector('#reward-lookup-result').innerHTML=`<p>${html(r.participant.id)} · ${html(r.participant.reward.status)}</p>${r.participant.reward.status==='eligible'?button('Record $100 paid','payment',true,`data-id="${html(r.participant.id)}"`):''}`;}
+ else if(form.dataset.form==='rewardWallet'){await request('admin.reward.wallet',{participant_id:form.dataset.id,wallet_address:fields.get('wallet_address')});await renderDashboard();}
  else if(form.dataset.form==='adminLogin'){const response=await fetch('api/quantum-tree-settings.php',{method:'POST',credentials:'same-origin',headers:{'Content-Type':'application/json'},body:JSON.stringify({action:'login',password:fields.get('password')})});const r=await response.json();if(!response.ok)throw new Error(r.error||'Sign-in failed.');await refresh();}
- else if(form.dataset.form==='config'){await request('admin.config',{stream_uid:fields.get('stream_uid'),video_title:fields.get('video_title'),contact_email:fields.get('contact_email'),retention_days:fields.get('retention_days')?Number(fields.get('retention_days')):null,events:[0,1,2].map(i=>({starts_at:fields.get(`event-${i}`)?new Date(fields.get(`event-${i}`)).toISOString():null})),...Object.fromEntries(['open','bp_active','shen_verified','experience_verified','materials_approved'].map(k=>[k,fields.has(k)]))});await refresh();notice('Saved.');}
+ else if(form.dataset.form==='config'){await request('admin.config',{stream_uid:fields.get('stream_uid'),video_title:fields.get('video_title'),contact_email:fields.get('contact_email'),retention_days:fields.get('retention_days')?Number(fields.get('retention_days')):null,...Object.fromEntries(['open','bp_active','shen_verified','experience_verified','materials_approved'].map(k=>[k,fields.has(k)]))});await refresh();notice('Saved.');}
  else if(form.dataset.form==='analysis'){notice('Preparing research analysis…');clearTimeout(statusTimer);const excerpts=[...form.querySelectorAll('[data-excerpt]')].map(el=>({participant_id:el.dataset.participant,session:Number(el.dataset.session),before:el.querySelectorAll('textarea')[0].value,after:el.querySelectorAll('textarea')[1].value}));const r=await request(state.preview?'preview.analysis':'admin.analysis',{excerpts,redaction_confirmed:fields.has('redaction_confirmed')});document.querySelector('#analysis-result').innerHTML=analysisMarkup(r.analysis);notice('Ready for review.');}
  }catch(error){notice(error.message);}finally{busy=false;submit.disabled=false;}
 });
 window.addEventListener('message',async event=>{
+ const scan=app.querySelector('.study-scan iframe');
+ if(scan&&event.origin===location.origin&&event.source===scan.contentWindow&&event.data?.type==='study-scan-complete'){await refresh();return;}
  if(!exposure||event.origin!==location.origin||event.source!==exposure.frame.contentWindow)return;
  if(event.data?.type==='study-ready'){exposure.frame.contentWindow.postMessage({type:'study-config',uid:state.config.stream_uid},location.origin);return;}
  if(event.data?.type==='study-prepared'){
   exposure.ready=true;const control=document.querySelector('[data-action="exposure"]');
   if(control){control.disabled=false;control.textContent='Enter experience';}
-  const duration=document.querySelector('[data-video-duration]');if(duration&&Number.isFinite(event.data.duration)){
-   const seconds=Math.round(event.data.duration);duration.textContent=` · ${Math.floor(seconds/60)}:${String(seconds%60).padStart(2,'0')}`;
-  }return;
+  return;
  }
  if(event.data?.type==='study-paused'){resumeEntry();return;}
  if(event.data?.type==='study-error'){resumeEntry();notice(event.data.message);return;}
@@ -182,7 +188,6 @@ window.addEventListener('message',async event=>{
   const r=await request('exposure.tick',{...values,session_id:active.sessionId});if(exposure!==active)return;
   if(r.state==='after_vitals'){
    active.frame.contentWindow.postMessage({type:'study-stop'},location.origin);exposure=null;
-   if(document.fullscreenElement||document.webkitFullscreenElement){const leave=document.exitFullscreen||document.webkitExitFullscreen;try{await leave?.call(document);}catch{}}
    await refresh();return;
   }
   values=active.finalTick;active.finalTick=null;
@@ -191,4 +196,4 @@ window.addEventListener('message',async event=>{
 });
 document.addEventListener('visibilitychange',()=>{if(document.hidden)exposure?.frame.contentWindow.postMessage({type:'study-pause'},location.origin);});
 window.addEventListener('pagehide',()=>exposure?.frame.contentWindow.postMessage({type:'study-stop'},location.origin));
-refresh().catch(error=>{app.innerHTML='<p>Please refresh to reopen your study.</p>';notice(error.message);});
+(async()=>{state=await request();if(new URLSearchParams(location.search).get('preview')==='1'&&state.preview_available){await request('preview');history.replaceState(null,'',location.pathname);await refresh();}else await render();})().catch(error=>{app.innerHTML='<p>Please refresh to reopen your study.</p>';notice(error.message);});

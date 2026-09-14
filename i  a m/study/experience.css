@@ -1,8 +1,5 @@
-html[data-study-experience] body { background:#000!important; overflow:hidden!important; }
-html[data-study-experience] .scene > :not([data-television-room]),
-html[data-study-experience] body > :not(.site-shell):not(script):not(style),
-html[data-study-experience] [data-television-room] > :not([data-television-player]):not([data-emdr-gif-world]):not([data-emdr-canvas]):not([data-emdr-vector-world]),
-html[data-study-experience] .adaptive-television-fashion-video { display:none!important; }
-html[data-study-experience] [data-television-room] { position:fixed!important; inset:0!important; width:100%!important; height:100%!important; transform:none!important; border:0!important; opacity:1!important; visibility:visible!important; }
-html[data-study-experience] .adaptive-television-local-video-frame { opacity:1!important; width:100%!important; height:100%!important; }
-html[data-study-experience] [data-television-player] { inset:0!important; }
+/* The study uses the existing homepage and M8 styles without a separate visual shell. */
+html[data-study-experience] body{overflow:hidden}
+
+/* Keep the canonical timer visible over M8 artwork. */
+html[data-study-experience] body.television-emdr-gif-active .adaptive-television-timecode{opacity:1!important;color:rgba(255,255,255,.9)}

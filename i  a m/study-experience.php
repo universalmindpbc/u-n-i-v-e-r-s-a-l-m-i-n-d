@@ -5,7 +5,7 @@ header('Content-Type: text/html; charset=utf-8');
 header('Cache-Control: no-store, max-age=0');
 header('Cross-Origin-Opener-Policy: same-origin');
 header('Cross-Origin-Embedder-Policy: require-corp');
-header('Permissions-Policy: camera=(), microphone=()');
+header('Permissions-Policy: microphone=(self), camera=(self)');
 header('Referrer-Policy: no-referrer');
 header('X-Content-Type-Options: nosniff');
 header('X-Frame-Options: SAMEORIGIN');

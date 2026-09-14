@@ -86,6 +86,10 @@ function happiness_apple_build_pass(array $ledger): string
     $pass['storeCard']['primaryFields'][0]['value'] = (string) $ledger['balance']['available_display'];
     $pass['storeCard']['auxiliaryFields'][0]['value'] = (string) $ledger['member']['display_id'];
     $pass['barcodes'][0]['altText'] = 'Redeem HAPPINESS In-store';
+    if (isset($ledger['study_pass'])) {
+        $pass = array_replace($pass, $ledger['study_pass']);
+        unset($pass['webServiceURL'], $pass['authenticationToken'], $pass['barcode']);
+    }
     @file_put_contents($passPath, json_encode($pass, JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT) . "\n", LOCK_EX);
 
     @unlink($temporary . '/manifest.json');

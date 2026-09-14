@@ -86,7 +86,7 @@ try {
             foreach ($data['stakeholders'] ?? [] as $id => $hash) if (hash_equals($hash, hash('sha256', $code))) return ['stakeholder' => $id];
             return [];
         });
-        if (!$id) study_respond(['error' => 'That study access code was not recognised.'], 401);
+        if (!$id) study_respond(['error' => 'That password was not recognised.'], 401);
         session_regenerate_id(true); unset($_SESSION['preview'], $_SESSION['participant_id'], $_SESSION['stakeholder_id']);
         if (isset($id['id'])) $_SESSION['participant_id'] = $id['id'];
         else $_SESSION['stakeholder_id'] = $id['stakeholder'];
@@ -131,17 +131,6 @@ try {
                 study_require($days === null || (is_int($days) && $days >= 1 && $days <= 3650), 'Choose a retention period in days.');
                 $c['retention_days'] = $days;
                 foreach (['open','shen_verified','experience_verified','materials_approved','bp_active'] as $key) $c[$key] = ($request[$key] ?? false) === true;
-                if (isset($request['events'])) {
-                    study_require(is_array($request['events']) && count($request['events']) === 3, 'Set the three event dates.');
-                    $epochs = [];
-                    foreach (['Sunrise','Sunset','Midnight'] as $i => $label) {
-                        $start = $request['events'][$i]['starts_at'] ?? null;
-                        study_require($start === null || (is_string($start) && preg_match('/(Z|[+-][0-9]{2}:[0-9]{2})$/', $start) && strtotime($start) !== false), 'Include the time zone in each event date.');
-                        $c['events'][$i] = ['label'=>$label,'starts_at'=>$start === null ? null : gmdate('c',strtotime($start))];
-                        if ($start !== null) $epochs[] = strtotime($start);
-                    }
-                    if (count($epochs) === 3) study_require($epochs[0] < $epochs[1] && $epochs[1] < $epochs[2] && max($epochs)-min($epochs) <= 7*86400, 'Set three events in order within one week.');
-                }
                 if ($c['open']) study_require(study_readiness($c)['ready'], 'Complete study preparation before opening enrolment.');
                 if (count(array_filter($data['participants'], static fn($p): bool => $p['consent'] !== null && !$p['withdrawn']))) {
                     foreach (['stream_uid','retention_days','video_title','events','bp_active'] as $locked) study_require($c[$locked] === $data['config'][$locked], 'The consented study configuration is locked while participants are enrolled.');
@@ -159,6 +148,19 @@ try {
                 $code = strtoupper(bin2hex(random_bytes(12)));
                 $data['stakeholders'][bin2hex(random_bytes(8))] = hash('sha256', $code);
                 return ['code' => implode('-', str_split($code, 4))];
+            } elseif ($action === 'admin.reward.lookup') {
+                $claim=study_text($request['claim']??'',52);
+                study_require(preg_match('/\AUMR:[a-f0-9]{48}\z/',$claim)===1,'Enter the code from the reward card.');
+                foreach($data['participants'] as $participant)if(hash_equals($participant['reward']['claim_code'],substr($claim,4)))return ['participant'=>study_participant_public($participant)];
+                study_require(false,'Reward card not found.');
+            } elseif ($action === 'admin.reward.wallet' || $action === 'admin.reward.sync') {
+                $id=study_text($request['participant_id']??'',8);study_require(isset($data['participants'][$id]),'Participant not found.');
+                $p=&$data['participants'][$id];
+                if($action==='admin.reward.sync')return study_reward_sync_token($p);
+                $address=study_text($request['wallet_address']??'',42);
+                study_require(preg_match('/\A0x[a-fA-F0-9]{40}\z/',$address)===1,'Enter a valid wallet address.');
+                study_require(empty($p['reward']['token_issue']),'The wallet is locked after a receipt is submitted.');
+                $p['reward']['wallet_address']=$address;
             } elseif ($action === 'admin.payment') {
                 $id = study_text($request['participant_id'] ?? '', 8);
                 study_require(isset($data['participants'][$id]), 'Participant not found.');
@@ -202,6 +204,12 @@ try {
             return ['ok' => true];
         }
         study_require(!$p['withdrawn'], 'You have withdrawn from this study. Your payment record remains available.');
+        if ($action === 'reward.redeem') {
+            study_require(study_earned($p)===100.0,'The $100 reward is available after all three sessions.');
+            study_require(array_sum(array_column($p['payments'],'amount_aud'))===0,'This reward has already been redeemed.');
+            $p['reward']['redemption_requested_at']??=gmdate('c');
+            return ['ok'=>true,'reward'=>study_reward_public($p)];
+        }
         if ($action === 'consent') {
             study_require($preview || study_readiness($data['config'])['open'], 'The study is being prepared. Enrolment is not open yet.');
             study_require(($request['version'] ?? '') === study_protocol()['version'], 'The participant information changed. Please read it again.');
@@ -217,11 +225,9 @@ try {
             study_require(count($p['sessions']) < 3, 'Your three study sessions are recorded.');
             $event = $data['config']['events'][count($p['sessions'])];
             $window = strtolower($event['label']);
-            $eventStart = $preview ? null : strtotime($event['starts_at'] ?? '');
-            if (!$preview) study_require($eventStart && time() >= $eventStart-300 && time() < $eventStart+600, 'This livestream is not open. Please return at the scheduled time.');
             $id = bin2hex(random_bytes(16));
             $p['sessions'][] = ['id' => $id, 'number' => count($p['sessions'])+1, 'state' => 'before_vitals',
-                'event_starts_at' => $preview ? null : $event['starts_at'], 'window' => $window, 'timezone' => study_text($request['timezone'] ?? '', 80),
+                'event_starts_at' => null, 'delivery'=>'on_demand', 'recommended_window'=>$window, 'window' => $window, 'timezone' => study_text($request['timezone'] ?? '', 80),
                 'created_at' => gmdate('c'), 'created_at_epoch' => time(), 'config_hash' => hash('sha256', json_encode($data['config'])),
                 'protocol_version' => study_protocol()['version'], 'before_vitals' => null, 'before_report' => null,
                 'after_vitals' => null, 'after_report' => null, 'exposure_seconds' => 0, 'interruptions' => 0,
@@ -304,7 +310,7 @@ try {
             if ($duration !== null) $s['video_duration_seconds'] ??= $duration;
             $duration = $s['video_duration_seconds'] ?? null;
             $ended = ($request['ended'] ?? false) === true && $duration !== null && $position !== null && abs($position-$duration) <= 1;
-            $elapsed = !empty($s['event_starts_at']) ? $now-strtotime($s['event_starts_at']) : $now-$s['exposure_started_epoch'];
+            $elapsed = $now-$s['exposure_started_epoch'];
             if ($ended && ($preview || $elapsed >= $duration-1)) {
                 $s['state'] = 'after_vitals'; $s['exposure_completed_at'] = gmdate('c');
             }

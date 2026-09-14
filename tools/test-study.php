@@ -47,4 +47,11 @@ check(study_earned($a) === 100.0 && study_earned($b) === 0.0, 'Reward must be al
 check(abs(study_percent_change(5,8)-60)<0.0001, 'Percentage change is incorrect');
 check(study_percent_change(0,5) === null && study_percent_change(null,5) === null, 'Invalid baseline gave a percentage');
 check(abs($summary['rows'][0]['percent_changes']['happiness']-66.6666667)<0.001, 'Per-session percent not exported');
-echo json_encode(['passed'=>18,'spectrum_0_1_hz'=>$spectrum['peak_hz'],'power_ms2'=>$spectrum['power_0_1_ms2'],'amplitude_doubling_ratio'=>$higher['power_0_1_ms2']/$spectrum['power_0_1_ms2']],JSON_PRETTY_PRINT),"\n";
+$passA=study_reward_apple_ledger($a,false);$passB=study_reward_apple_ledger($b,false);
+check($passA['member']['pass_serial']!==$passB['member']['pass_serial'],'Participant passes share a serial');
+check($passA['study_pass']['storeCard']['primaryFields'][0]['value']===100 && $passB['study_pass']['storeCard']['primaryFields'][0]['value']===0,'Pass reward does not match completed sessions');
+check($passA['study_pass']['barcodes'][0]['message']==='UMR:'.$a['reward']['claim_code'],'Pass cannot resolve its private reward');
+check(!isset(study_participant_public($a)['reward']['claim_code']),'Reward claim code leaked into participant dataset');
+check(study_reward_idempotency('one')===study_reward_idempotency('one')&&study_reward_idempotency('one')!==study_reward_idempotency('two'),'Wallet idempotency not stable per operation');
+check(preg_match('/^[a-f0-9]{8}-[a-f0-9]{4}-4[a-f0-9]{3}-8[a-f0-9]{3}-[a-f0-9]{12}$/',study_reward_idempotency('one'))===1,'Circle idempotency is not UUID-shaped');
+echo json_encode(['passed'=>24,'spectrum_0_1_hz'=>$spectrum['peak_hz'],'power_ms2'=>$spectrum['power_0_1_ms2'],'amplitude_doubling_ratio'=>$higher['power_0_1_ms2']/$spectrum['power_0_1_ms2']],JSON_PRETTY_PRINT),"\n";

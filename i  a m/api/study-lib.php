@@ -2,6 +2,7 @@
 declare(strict_types=1);
 
 require_once __DIR__ . '/happiness-secret-store.php';
+require_once __DIR__ . '/study-rewards.php';
 
 const STUDY_PRIVATE = __DIR__ . '/.runtime-private/study';
 const STUDY_METRICS = ['heart_rate_bpm', 'hrv_sdnn_ms', 'hrv_lnrmssd_ms', 'systolic_blood_pressure_mmhg', 'diastolic_blood_pressure_mmhg', 'hrv_power_0_1_ms2'];
@@ -17,7 +18,7 @@ function study_staging(): bool {
 function study_defaults(): array {
     return ['revision' => 0, 'config' => ['open' => false, 'stream_uid' => '', 'video_title' => 'Empire of the Sun',
         'shen_verified' => false, 'experience_verified' => false, 'materials_approved' => false, 'contact_email' => '', 'retention_days' => null, 'bp_active' => false, 'events' => [
-            ['label'=>'Sunrise','starts_at'=>null], ['label'=>'Sunset','starts_at'=>null], ['label'=>'Midnight','starts_at'=>null]]],
+            ['label'=>'Sunrise','starts_at'=>null], ['label'=>'Sunset','starts_at'=>null], ['label'=>'Lunchtime','starts_at'=>null]]],
         'participants' => [], 'stakeholders' => [], 'analysis' => null, 'audit' => []];
 }
 
@@ -35,8 +36,11 @@ function study_store(callable $callback, ?string $preview = null): array {
         $data = is_file($path) ? json_decode((string) file_get_contents($path), true, 512, JSON_THROW_ON_ERROR) : study_defaults();
         $before = json_encode($data, JSON_THROW_ON_ERROR);
         $data['config'] += study_defaults()['config'];
+        $data['config']['delivery'] = 'on_demand';
+        $data['config']['events'] = study_defaults()['config']['events'];
         // Retention is enforced whenever the store is opened, before any records can be returned.
         foreach ($data['participants'] as &$participant) {
+            $participant['reward'] ??= study_reward_new();
             $days = $participant['consent']['retention_days'] ?? null;
             $latest = strtotime($participant['consent']['at'] ?? $participant['created_at']);
             foreach ($participant['sessions'] as $session) $latest = max($latest, strtotime($session['completed_at'] ?? $session['stopped_at'] ?? $session['created_at']));
@@ -102,7 +106,6 @@ function study_readiness(array $config): array {
     $missing = [];
     if (!preg_match('/\A[a-f0-9]{32}\z/', $config['stream_uid'])) $missing[] = 'Study video';
     if (!$config['shen_verified']) $missing[] = 'Heart Check verification';
-    if (count(array_filter($config['events'] ?? [], static fn($event): bool => !empty($event['starts_at']))) !== 3) $missing[] = 'Three livestream dates';
     if (!($config['experience_verified'] ?? false)) $missing[] = 'Ten-minute video and combined experience verification';
     if (!$config['materials_approved']) $missing[] = 'Participant materials and research review';
     if (!filter_var($config['contact_email'], FILTER_VALIDATE_EMAIL)) $missing[] = 'Study contact';
@@ -112,6 +115,7 @@ function study_readiness(array $config): array {
 
 function study_participant_public(array $p): array {
     unset($p['access_hash']);
+    $p['reward'] = study_reward_public($p);
     return $p;
 }
 
@@ -138,7 +142,7 @@ function study_aggregate(array $data): array {
 
 function study_new_participant(string $id, string $hash = ''): array {
     return ['id' => $id, 'access_hash' => $hash, 'created_at' => gmdate('c'), 'consent' => null,
-        'withdrawn' => false, 'sessions' => [], 'payments' => [], 'onboarding_earned' => false];
+        'withdrawn' => false, 'reward'=>study_reward_new(), 'sessions' => [], 'payments' => [], 'onboarding_earned' => false];
 }
 
 function study_statistics(array $values): array {

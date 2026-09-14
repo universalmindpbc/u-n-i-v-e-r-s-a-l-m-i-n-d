@@ -3,7 +3,7 @@ const send=(type,extra={})=>parent.postMessage({type,...extra},location.origin);
 const wait=ms=>new Promise(resolve=>setTimeout(resolve,ms));
 if(document.readyState==='loading')await new Promise(resolve=>document.addEventListener('DOMContentLoaded',resolve,{once:true}));
 let video,timer,running=false,stopped=false,configuring=false,starting=false;
-let previousChoice,previousAdaptation,played=0,lastVideoTime=0,eventStart=null,serverOffset=0;
+let previousChoice,previousAdaptation,played=0,lastVideoTime=0;
 let pagePositioned=false;
 function positionOpeningPage(){
  if(pagePositioned)return;
@@ -39,25 +39,24 @@ async function configure(uid){
   previousChoice=window.IAMAdaptiveSoundSession.currentChoice();previousAdaptation=sessionStorage.getItem('iamLatestEmdrAdaptation');
   window.IAMQuantumTree.setEnabled(false,{persist:false});
   window.IAMAdaptiveSoundSession.setSessionChoice({profile_id:'inspiration_gamma_80_v1',carrier_hz:444,high_concern_session_opt_in:true},'consented_study');
-  video=await window.IAMTelevisionRoom.prepareStudyExperience(uid,state.config.video_title);
+  video=await window.IAMTelevisionRoom.prepareStudyExperience(uid,state.config.video_title,{enter:false});
   const session=state.participant.sessions.find(s=>s.state==='experience');
-  played=session.exposure_seconds||0;eventStart=session.event_starts_at?Date.parse(session.event_starts_at)/1000:null;serverOffset=state.server_now-Date.now()/1000;
+  played=session.exposure_seconds||0;
   video.loop=false;video.controls=false;
-  for(const other of document.querySelectorAll('video,audio'))if(other!==video)other.pause();
+  for(const other of document.querySelectorAll('video,audio'))if(other!==video&&!other.muted)other.pause();
   document.addEventListener('play',event=>{
-   if(event.target instanceof HTMLVideoElement&&event.target!==video&&!event.target.hasAttribute('data-emdr-gif-tile'))event.target.pause();
+   if(running&&event.target instanceof HTMLVideoElement&&event.target!==video&&!event.target.hasAttribute('data-emdr-gif-tile'))event.target.pause();
   },true);
   // Preserve the existing scrollable M8 region and its keyboard/swipe behaviour.
-  for(const element of document.querySelectorAll('button,a,input,select,textarea'))element.inert=true;
+  // Use native overlays; the study owns the entry and the completion transition.
+  document.querySelector('[data-television-play]').disabled=true;
   video.addEventListener('ended',()=>{tick(true);running=false;clearInterval(timer);});
   video.addEventListener('error',()=>{pause();send('study-error',{message:'The video could not load. Please refresh to try again.'});});
   await window.IAMStreamController.preloadMedia(video,{targetSeconds:4});
   for(let i=0;i<100&&(!Number.isFinite(video.duration)||video.duration<=0);i++)await wait(100);
   if(!Number.isFinite(video.duration)||video.duration<=0)throw new Error('The video could not load. Please refresh to try again.');
   positionOpeningPage();
-  const remaining=eventStart?eventStart-(Date.now()/1000+serverOffset):0;
-  if(remaining>0)await wait(remaining*1000);
-  if(!stopped)send('study-prepared',{duration:video.duration});
+  if(!stopped){document.querySelector('[data-television-play]').disabled=false;send('study-prepared',{duration:video.duration});}
  }catch(error){send('study-error',{message:error.message});}
 }
 function tick(ended=false){
@@ -74,19 +73,25 @@ function tick(ended=false){
 async function start(){
  if(!video||stopped||running||starting)return;starting=true;
  try{
+  window.IAMTelevisionRoom.preparePresentationEntry();
   window.IAMQuantumTree.setEnabled(true,{persist:false});window.IAMSubaudibleMantra.setEnabled(true,{persist:false});
   const soundReady=window.IAMAdaptiveSound.prepareStudy();
   // Start the existing player from the parent's entry click, preserving browser user activation.
   const playback=window.IAMStreamController.play(video)||video.play();
   await Promise.all([soundReady,playback]);
-  const target=eventStart?Math.max(0,Date.now()/1000+serverOffset-eventStart):Math.max(video.currentTime,played);
+  const target=Math.max(video.currentTime,played);
   if(Number.isFinite(video.duration)&&video.duration>0)video.currentTime=Math.min(target,video.duration);
   lastVideoTime=video.currentTime;running=true;tick();clearInterval(timer);timer=setInterval(()=>tick(),1000);
   positionOpeningPage();
  }catch(error){pause();send('study-error',{message:'Playback paused. Please enter the experience again.'});}
  finally{starting=false;}
 }
-window.IAMStudyExperience={start};
+function showHome(){document.body.classList.remove('television-room-open','television-room-opening');document.querySelector('[data-television-room]').setAttribute('aria-hidden','true');}
+window.IAMStudyExperience={start,showHome};
+document.addEventListener('click',event=>{
+ const play=event.target.closest('[data-television-play]');
+ if(play){event.preventDefault();event.stopImmediatePropagation();if(!play.disabled)parent.IAMStudyShell.startExperience();return;}
+},true);
 window.addEventListener('resize',()=>{if(!running)pagePositioned=false;requestAnimationFrame(positionOpeningPage);});
 window.addEventListener('message',event=>{
  if(event.origin!==location.origin||event.source!==parent)return;

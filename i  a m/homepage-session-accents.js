@@ -1,4 +1,5 @@
 (function () {
+  const study = new URLSearchParams(location.search).get('study_experience') === '1' && parent !== window;
   const frequency = document.querySelector("[data-adaptive-session-frequency]");
   const planet = document.querySelector("[data-homepage-universal-one-planet]");
 
@@ -19,6 +20,15 @@
   }
 
   function applySoundSnapshot(snapshot) {
+    if (study) {
+      const quantum = document.querySelector('.iam-sound-quantum-frequency');
+      if (quantum) {
+        frequency.querySelector('span').innerHTML = quantum.innerHTML;
+        frequency.hidden = false;
+        frequency.setAttribute('aria-label', quantum.textContent.trim());
+      }
+      return;
+    }
     const lane = String(snapshot?.dominant_lane || "").trim().toLowerCase();
     const rate = Number(snapshot?.dominant_isochronic_hz);
     const carrier = Number(snapshot?.carrier_hz);

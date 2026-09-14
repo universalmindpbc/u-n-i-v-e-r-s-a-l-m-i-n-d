@@ -2235,7 +2235,7 @@
         : localVideo;
     if (!timecode || !source) return;
 
-    timecode.textContent = formatTime(source.currentTime);
+    timecode.textContent = studyExperienceRequested ? `${formatTime(source.currentTime)} / ${formatTime(source.duration)}` : formatTime(source.currentTime);
   }
 
   function updateLiveCommunitySummary(total) {
@@ -10475,15 +10475,16 @@
   syncFullscreenState();
   window.IAMTelevisionRoom = {
     version: "programme_presentations_v2",
-    async prepareStudyExperience(uid, studyTitle = 'Study experience') {
+    async prepareStudyExperience(uid, studyTitle = 'Study experience', {enter = true} = {}) {
       if (!studyExperienceRequested || !/^[a-f0-9]{32}$/.test(uid)) throw new Error('Open the experience from your study session.');
       this.suspendProgrammeForPresentation('research');
       track = {id:'research-study',artist:'',title:String(studyTitle).slice(0,120),bpm:96};
+      updateNowPlaying();
       const video = mountPlayer();
       await window.IAMStreamReady;
       await window.IAMStreamController.attach(video, {studyUid:uid,role:'music',autoplay:false});
       video.playsInline = true; video.muted = false; video.volume = 1;
-      this.preparePresentationEntry();
+      if(enter)this.preparePresentationEntry();
       applyEmdrAdaptation(emdrPresets.findIndex(preset => preset.key === 'm8'));
       window.IAMEMDR.setActive(true, {canvas:emdrCanvas});
       window.IAMEMDR.setAudioSource(video);

@@ -32,5 +32,6 @@ export async function saveStudyScan(values) {
     body:JSON.stringify({action:'vitals',session_id:context.session.id,request_id:crypto.randomUUID(),values})});
   const result = await response.json();
   if (!response.ok) throw new Error(result.error || 'Your reading could not be saved. Please return to your study.');
-  location.assign('study.php?resume=1');
+  if(window.parent!==window&&new URLSearchParams(location.search).get('embedded')==='1')parent.postMessage({type:'study-scan-complete'},location.origin);
+  else location.assign('study.php?resume=1');
 }

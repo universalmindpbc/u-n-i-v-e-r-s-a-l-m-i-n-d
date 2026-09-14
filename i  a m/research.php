@@ -1,5 +1,6 @@
 <?php
 declare(strict_types=1);
+$studyView = ($_GET['study'] ?? '') === '1';
 
 header('Content-Type: text/html; charset=utf-8');
 header('Cache-Control: no-store, max-age=0');
@@ -21,10 +22,19 @@ header('X-Robots-Tag: noindex, nofollow');
     <link rel="icon" type="image/png" sizes="32x32" href="/vogue/iam/favicon.png?v=iam-favicon-4">
     <link rel="stylesheet" href="styles.css?v=global-nav-single-shell-2-technology-submenu-133pct-normal-1">
     <link rel="stylesheet" href="research/shen-heart-rate.css?v=shen-heart-rate-css-444fb97bd4f9">
+    <?php if ($studyView): ?><style>
+    .study-heart-check .brand-lockup,.study-heart-check [data-heart-rate-skip]{display:none!important}
+    .study-check-background img{width:100%;height:100%;object-fit:cover;opacity:.85;filter:saturate(.8)}
+    .study-heart-check .scene-veil{background:linear-gradient(180deg,#080c1470,#060a12b0 48%,#050a10d9)}
+    .study-heart-check .brand{top:20px;left:32px}.study-heart-check .brand-mark{width:62px;height:62px}
+    </style><?php endif; ?>
   </head>
-  <body class="shen-heart-rate-page">
+  <body class="shen-heart-rate-page<?= $studyView ? ' study-heart-check' : '' ?>">
     <main class="site-shell" aria-label="Universal Mind I AM heart-rate research">
       <section class="scene" aria-label="Heart-rate check">
+        <?php if ($studyView): ?>
+        <div class="background-video study-check-background" aria-hidden="true"><img crossorigin="anonymous" src="https://customer-1vpwglz3v6fiyaas.cloudflarestream.com/fd142ca0e1672dd7a92729857db1facd/thumbnails/thumbnail.jpg?time=8s&amp;width=1920" alt=""></div>
+        <?php else: ?>
         <div class="background-video" aria-hidden="true">
           <video
             data-stream-role="fashion"
@@ -38,6 +48,7 @@ header('X-Robots-Tag: noindex, nofollow');
             preload="metadata"
           ></video>
         </div>
+        <?php endif; ?>
 
         <div class="scene-veil" aria-hidden="true"></div>
 
@@ -102,6 +113,6 @@ header('X-Robots-Tag: noindex, nofollow');
 
     <script src="cloudflare-stream-catalogue.js?v=stream-catalogue-20ad6337934c"></script>
     <script src="cloudflare-stream-controller.js?v=stream-controller-91f344a44abb"></script>
-    <script type="module" src="research/shen-heart-rate.js?v=shen-heart-rate-js-0a44e94daf5b"></script>
+    <script type="module" src="research/shen-heart-rate.js?v=shen-heart-rate-js-8dd9fc16dad6"></script>
   </body>
 </html>

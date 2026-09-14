@@ -248,8 +248,8 @@ function happiness_circle_submit(array $pending): array
     $signature = $action === 'issue'
         ? 'issueReward(address,uint256,bytes32,bytes32)'
         : 'redeemReward(address,uint256,bytes32)';
-    $parameters = [HAPPINESS_CITIZEN_ADDRESS, $pending['units'], $pending['operation_id']];
-    if ($action === 'issue') $parameters[] = '0x' . hash('sha256', 'universal-mind-owner-dashboard');
+    $parameters = [$pending['address'] ?? HAPPINESS_CITIZEN_ADDRESS, $pending['units'], $pending['operation_id']];
+    if ($action === 'issue') $parameters[] = $pending['purpose_hash'] ?? '0x' . hash('sha256', 'universal-mind-owner-dashboard');
     $requestId = happiness_uuid();
     $response = happiness_http('POST', HAPPINESS_CIRCLE_BASE . '/developer/transactions/contractExecution', [
         'idempotencyKey' => $pending['idempotency_key'],
@@ -387,6 +387,8 @@ function happiness_reconcile(array $ledger): array
     happiness_write_ledger($ledger);
     return $ledger;
 }
+
+if (defined('HAPPINESS_LIBRARY_ONLY') && HAPPINESS_LIBRARY_ONLY) return;
 
 $method = $_SERVER['REQUEST_METHOD'] ?? 'GET';
 if ($method === 'GET') {
