@@ -46,7 +46,7 @@ try {
             $id = $_SESSION['participant_id'] ?? '';
             $p = $data['participants'][$id] ?? null;
             return ['csrf' => $_SESSION['csrf'], 'protocol' => study_protocol(), 'preview_available' => study_staging(),
-                'preview' => isset($_SESSION['preview']), 'owner' => $owner, 'stakeholder' => isset($_SESSION['stakeholder_id']),
+                'website_password_available'=>count(study_site_password_hashes())>0, 'preview' => isset($_SESSION['preview']), 'owner' => $owner, 'stakeholder' => isset($_SESSION['stakeholder_id']),
                 'analysis_configured' => happiness_secret('OPENAI_API_KEY') !== '' || is_readable(happiness_secret('IAM_OPENAI_API_KEY_FILE')),
                 'participant' => $p ? study_participant_public($p) + ['earned_aud' => study_earned($p)] : null,
                 'server_now' => microtime(true), 'config' => study_public_config($data['config']), 'readiness' => study_readiness($data['config'])];
@@ -80,14 +80,22 @@ try {
     }
     if ($action === 'login') {
         study_rate('login', 25);
-        $code = strtoupper(preg_replace('/[\s-]+/', '', study_text($request['code'] ?? '', 100)) ?? '');
+        $password=study_text($request['code']??'',100);
+        $code = strtoupper(preg_replace('/[\s-]+/', '', $password) ?? '');
         $id = study_store(function(array &$data) use ($code): array {
             foreach ($data['participants'] as $p) if ($p['access_hash'] !== '' && hash_equals($p['access_hash'], hash('sha256', $code))) return ['id' => $p['id']];
             foreach ($data['stakeholders'] ?? [] as $id => $hash) if (hash_equals($hash, hash('sha256', $code))) return ['stakeholder' => $id];
             return [];
         });
+        if(!$id&&study_site_password_valid($password)){
+            $returnToken=(string)($_COOKIE['iam_study_return']??'');
+            if(!preg_match('/\A[a-f0-9]{64}\z/',$returnToken))$returnToken=bin2hex(random_bytes(32));
+            $id=study_site_login($returnToken);
+            setcookie('iam_study_return',$returnToken,['expires'=>time()+365*86400,'path'=>'/vogue/iam/','secure'=>$secure,'httponly'=>true,'samesite'=>'Strict']);
+        }
         if (!$id) study_respond(['error' => 'That password was not recognised.'], 401);
         session_regenerate_id(true); unset($_SESSION['preview'], $_SESSION['participant_id'], $_SESSION['stakeholder_id']);
+        if(isset($id['preview']))$_SESSION['preview']=$id['preview'];
         if (isset($id['id'])) $_SESSION['participant_id'] = $id['id'];
         else $_SESSION['stakeholder_id'] = $id['stakeholder'];
         study_respond(['ok' => true]);

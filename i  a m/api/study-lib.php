@@ -11,6 +11,42 @@ function study_protocol(): array {
     return json_decode((string) file_get_contents(__DIR__ . '/../study/protocol-v1.json'), true, 512, JSON_THROW_ON_ERROR);
 }
 
+function study_site_password_hashes(): array {
+    $documentRoot=rtrim((string)($_SERVER['DOCUMENT_ROOT']??''),'/');
+    $paths=array_unique(array_filter([$documentRoot!==''?$documentRoot.'/index.html':null,dirname(__DIR__,3).'/index.html',dirname(__DIR__,2).'/index.html']));
+    foreach($paths as $path){
+        $source=@file_get_contents($path);
+        if(!is_string($source)||!preg_match('/const allowedPasswordHashes = new Set\(\[([\s\S]*?)\]\)/',$source,$block))continue;
+        preg_match_all('/[a-f0-9]{64}/',$block[1],$matches);
+        return $matches[0];
+    }
+    return [];
+}
+function study_site_password_valid(string $password): bool {
+    foreach(study_site_password_hashes() as $allowed)if(hash_equals($allowed,hash('sha256',$password)))return true;
+    return false;
+}
+
+function study_site_login(string $returnToken): array {
+    $tokenHash=hash('sha256',$returnToken);
+    $open=study_store(static fn(array &$data):array=>['open'=>study_readiness($data['config'])['open']])['open'];
+    if(study_staging()&&!$open){
+        $preview=substr(hash('sha256','study-preview|'.$returnToken),0,48);
+        study_store(function(array &$data):array{$data['participants']['PREVIEW']??=study_new_participant('PREVIEW');return [];},$preview);
+        return ['id'=>'PREVIEW','preview'=>$preview];
+    }
+    return study_store(function(array &$data)use($tokenHash,$open):array{
+        foreach($data['participants'] as $participant)if(isset($participant['browser_access_hash'])&&hash_equals($participant['browser_access_hash'],$tokenHash))return ['id'=>$participant['id']];
+        study_require($open,'The study is currently paused.');
+        study_require(count($data['participants'])<10,'All ten study places have been filled.');
+        $id='P'.str_pad((string)(count($data['participants'])+1),2,'0',STR_PAD_LEFT);
+        $data['participants'][$id]=study_new_participant($id);
+        $data['participants'][$id]['browser_access_hash']=$tokenHash;
+        $data['audit'][]=['action'=>'participant_joined','participant'=>$id,'at'=>gmdate('c')];
+        return ['id'=>$id];
+    });
+}
+
 function study_staging(): bool {
     return strtolower(explode(':', (string) ($_SERVER['HTTP_HOST'] ?? ''))[0]) === 'staging.universalmind.tv';
 }
@@ -114,7 +150,7 @@ function study_readiness(array $config): array {
 }
 
 function study_participant_public(array $p): array {
-    unset($p['access_hash']);
+    unset($p['access_hash'], $p['browser_access_hash']);
     $p['reward'] = study_reward_public($p);
     return $p;
 }

@@ -1,6 +1,7 @@
 import fs from 'node:fs/promises';
 import path from 'node:path';
 import assert from 'node:assert/strict';
+import {createHash} from 'node:crypto';
 import {fileURLToPath} from 'node:url';
 const modules=process.env.PHP_WASM_MODULE_DIR;
 if(!modules)throw new Error('Set PHP_WASM_MODULE_DIR to a temporary @php-wasm installation.');
@@ -9,6 +10,7 @@ const {loadNodeRuntime}=await import(path.join(modules,'@php-wasm/node/index.js'
 const php=new PHP(await loadNodeRuntime('8.3',{emscriptenOptions:{processId:1}}));
 const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
 php.mkdir('/app/api');php.mkdir('/app/study');
+php.writeFile('/index.html',`<script>const allowedPasswordHashes = new Set(["${createHash('sha256').update('Existing-Website-Password').digest('hex')}"]);</script>`);
 for(const name of ['study.php','study-lib.php','study-rewards.php','study-spectrum.php','study-analysis.php','happiness-secret-store.php','quantum-tree-owner-password.php'])
   php.writeFile('/app/api/'+name,await fs.readFile(path.join(root,'i  a m/api',name),'utf8'));
 php.writeFile('/app/study/protocol-v1.json',await fs.readFile(path.join(root,'i  a m/study/protocol-v1.json'),'utf8'));
@@ -34,6 +36,11 @@ try {
   assert.equal((await request('admin.dataset')).status,403);
   assert.equal((await request('preview',{}, {host:'universalmind.tv',origin:'https://universalmind.tv'})).status,403);
   checks.push('Origin, CSRF, researcher authentication and staging-only preview enforced');
+  assert.equal((await request('login',{code:'wrong-website-password'})).status,401);
+  await ok('login',{code:'Existing-Website-Password'});const sharedPreview=await ok();assert.equal(sharedPreview.preview,true);assert.equal(sharedPreview.participant.id,'PREVIEW');
+  assert.ok(cookies.iam_study_return);const returnCookie=cookies.iam_study_return;
+  cookies={iam_study_return:returnCookie};await ok();await ok('login',{code:'Existing-Website-Password'});assert.equal((await ok()).participant.id,'PREVIEW');
+  checks.push('Existing website password opens the portal directly; staging remains isolated and return identity survives session expiry');
   await ok('preview');let preview=await ok();const previewCookies={...cookies};assert.equal(preview.participant.id,'PREVIEW');
   await ok('consent',{version:preview.protocol.version,adult_woman:true,equipment:true,participation:true,research_data:true});
   const session=await ok('session.start',{window:'morning',timezone:'Australia/Sydney'});
@@ -107,6 +114,10 @@ try {
   cookies={};await ok();await ok('login',{code:invite2.code});await ok();
   assert.equal((await request('reward.redeem')).status,422,'Paid rewards cannot be claimed again');
   checks.push('On-demand session starts with no event date; incomplete and already-paid rewards cannot be redeemed');
+  cookies={};await ok();await ok('login',{code:'Existing-Website-Password'});const sitePerson=await ok();assert.equal(sitePerson.preview,false);assert.equal(sitePerson.participant.id,'P03');assert.equal(sitePerson.participant.browser_access_hash,undefined);const browserA=cookies.iam_study_return;
+  cookies={};await ok();await ok('login',{code:'Existing-Website-Password'});assert.equal((await ok()).participant.id,'P04','Two browsers sharing a website password must not share responses');
+  cookies={iam_study_return:browserA};await ok();await ok('login',{code:'Existing-Website-Password'});assert.equal((await ok()).participant.id,'P03','Returning participant must retain their own identity');
+  checks.push('Shared website password creates separate cohort identities per browser and resumes only its own records');
   // Use a non-ten-minute media duration in the isolated fixture; verify only observed playback is credited.
   const cohort=JSON.parse(php.readFileAsText('/app/api/.runtime-private/study/cohort.json'));
   const timed=structuredClone(summary.participants[0].sessions[0]);
