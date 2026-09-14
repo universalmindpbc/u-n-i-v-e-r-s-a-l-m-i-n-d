@@ -1,0 +1,697 @@
+{
+  "date": "2026-09-14T20:07:09.562992+00:00",
+  "staging_url": "https://staging.universalmind.tv/study",
+  "source_commit": "a8ddbd4dee3106f6faae5bec55bc8432a2d96985",
+  "production_modified": false,
+  "browser": {
+    "engine": "Chromium headless",
+    "process_audio_disabled": "--mute-audio",
+    "native_fullscreen_invoked": false,
+    "camera_or_microphone_opened": false,
+    "all_automated_sessions_closed": true
+  },
+  "journey": {
+    "checks": [
+      {
+        "name": "Clean single-password login, one enter button, no links"
+      },
+      {
+        "name": "Embedded Shen continuity and saved preview result",
+        "isolated": true,
+        "background": "https://customer-1vpwglz3v6fiyaas.cloudflarestream.com/fd142ca0e1672dd7a92729857db1facd/thumbnails/thumbnail.jpg?time=8s&width=1920",
+        "brand": "none",
+        "skip": "none",
+        "stop": false,
+        "qa": {
+          "camera": 0,
+          "fullscreen": 0,
+          "fullscreenExit": 0
+        },
+        "heartRateFixture": 70
+      },
+      {
+        "name": "Canonical homepage entry",
+        "roomOpen": false,
+        "frequency": "7.38hz x 111hz | 528hz",
+        "play": {
+          "x": 663,
+          "y": 687,
+          "width": 114,
+          "height": 114,
+          "top": 687,
+          "right": 777,
+          "bottom": 801,
+          "left": 663
+        }
+      },
+      {
+        "name": "Playback diagnostics",
+        "video": {
+          "time": 18.016015,
+          "duration": 345,
+          "paused": false,
+          "loop": false,
+          "uid": "d27b2cbadecf9e82bb1ae4f87566bb0f"
+        },
+        "hero": {
+          "display": "block",
+          "visibility": "visible",
+          "opacity": "1",
+          "rect": {
+            "x": 396,
+            "y": 267.75,
+            "width": 648,
+            "height": 364.5,
+            "top": 267.75,
+            "right": 1044,
+            "bottom": 632.25,
+            "left": 396
+          },
+          "inert": false,
+          "data": {
+            "fashionHeroMirror": "ready",
+            "emdrGifMusicAmount": "100",
+            "emdrGifMusicEdgeScale": "1.850",
+            "emdrGifMusicEdgeSource": "detected-edge-matte",
+            "emdrGifForegroundSource": "music-fashion-mix",
+            "fashionHeroPixelRatio": "1.00",
+            "fashionHeroDrawCount": "338",
+            "fashionHeroMediaTime": "18.000"
+          },
+          "pixelsVary": true
+        },
+        "pages": {
+          "scroll": 900,
+          "height": 900,
+          "inert": false,
+          "sizes": [
+            6,
+            3,
+            3,
+            3,
+            3,
+            3,
+            3,
+            3,
+            3,
+            3,
+            3,
+            3
+          ]
+        },
+        "controls": {
+          "wallet": {
+            "display": "grid",
+            "visibility": "visible",
+            "opacity": "0",
+            "rect": {
+              "x": 695.52001953125,
+              "y": 718.72314453125,
+              "width": 48.9599609375,
+              "height": 48.9599609375,
+              "top": 718.72314453125,
+              "right": 744.47998046875,
+              "bottom": 767.68310546875,
+              "left": 695.52001953125
+            },
+            "inert": false,
+            "disabled": false
+          },
+          "nav": {
+            "display": "block",
+            "visibility": "visible",
+            "opacity": "1",
+            "rect": {
+              "x": 20,
+              "y": 19.4375,
+              "width": 64,
+              "height": 64,
+              "top": 19.4375,
+              "right": 84,
+              "bottom": 83.4375,
+              "left": 20
+            },
+            "inert": false,
+            "disabled": false
+          },
+          "live": {
+            "display": "flex",
+            "visibility": "visible",
+            "opacity": "1",
+            "rect": {
+              "x": 663.65625,
+              "y": 54,
+              "width": 112.6875,
+              "height": 34,
+              "top": 54,
+              "right": 776.34375,
+              "bottom": 88,
+              "left": 663.65625
+            },
+            "inert": false,
+            "disabled": false
+          },
+          "voice": {
+            "display": "grid",
+            "visibility": "visible",
+            "opacity": "1",
+            "rect": {
+              "x": 1328,
+              "y": 793.40625,
+              "width": 76,
+              "height": 76,
+              "top": 793.40625,
+              "right": 1404,
+              "bottom": 869.40625,
+              "left": 1328
+            },
+            "inert": false,
+            "disabled": false
+          }
+        },
+        "timer": {
+          "text": "0:17 / 5:45",
+          "display": "block",
+          "visibility": "visible",
+          "opacity": "1",
+          "rect": {
+            "x": 22.3125,
+            "y": 868.515625,
+            "width": 63.578125,
+            "height": 11.234375,
+            "top": 868.515625,
+            "right": 85.890625,
+            "bottom": 879.75,
+            "left": 22.3125
+          },
+          "inert": false
+        },
+        "sound": {
+          "panel_open": false,
+          "master_enabled": true,
+          "synth_enabled": true,
+          "profile_id": "inspiration_gamma_80_v1",
+          "profile_authority": "citizen_current_session_choice",
+          "selection_basis": "citizen_session_override",
+          "carrier_hz": 444,
+          "intensity_percent": 35,
+          "programme_output_multiplier": 1,
+          "route_output_gain": 0.35,
+          "mastering_condition": "engineering_on",
+          "envelope_candidate_id": "raised_cosine_50_depth_80_v1",
+          "lowpass_candidate_id": "butterworth_12db_minimum_phase_v1",
+          "enabled_lanes": {
+            "delta": true,
+            "theta": true,
+            "alpha": true,
+            "gamma": true
+          },
+          "context_state": "running",
+          "sample_rate": 44100,
+          "engine_state": "running",
+          "route_profile_id": "inspiration_gamma_80_v1",
+          "route_carrier_hz": 444,
+          "last_error": "",
+          "output_layout": "mono_source_identical_dual_mono",
+          "waveform_source": "audio_thread_lane_diagnostics",
+          "session_scope": "current_session_only",
+          "session_snapshot": {
+            "schema_version": "iam_adaptive_sound_session_resolution_v1",
+            "policy_version": "checkin_session_single_carrier_v1",
+            "selected": true,
+            "selection_basis": "citizen_session_override",
+            "session_scope": "current_session_only",
+            "automatic_mid_session_morph": false,
+            "band_intent": "gamma",
+            "dominant_lane": "gamma",
+            "dominant_isochronic_hz": 111,
+            "experience": "inspiration",
+            "profile_id": "inspiration_gamma_80_v1",
+            "carrier_intent": "presence",
+            "carrier_hz": 444,
+            "carrier_mode": "single",
+            "diamond_power_weights": {
+              "delta": 0.0666,
+              "theta": 0.0666,
+              "alpha": 0.0666,
+              "gamma": 0.8
+            },
+            "isochronic_hz": {
+              "delta": 3.33,
+              "theta": 7.38,
+              "alpha": 10.11,
+              "gamma": 111
+            },
+            "noise_power_weight": 0.0001,
+            "silence_power_weight": 0.0001,
+            "top_needs_used": [],
+            "explicit_cues_used": [],
+            "confidence": 0,
+            "scores": {
+              "selected_band": 0,
+              "selected_carrier": 0
+            },
+            "safety": {
+              "state": "standard",
+              "quantum_tree_enabled": true,
+              "quantum_tree_policy": "on_unless_citizen_master_off_preference",
+              "adaptive_frequencies_enabled": true,
+              "adaptive_frequencies_default": true,
+              "citizen_session_opt_in_required": false,
+              "human_review_required": false,
+              "notification": {
+                "status": "not_applicable",
+                "authority": "consented_authorized_human_in_the_loop_only",
+                "model_must_not_contact_any_person": true
+              }
+            },
+            "authority": {
+              "selection_authority": "citizen_current_session_choice",
+              "resolver": "deterministic_browser_policy_resolver_v1",
+              "policy_registry": "adaptive-sound-intent-policy-v1.json",
+              "policy_version": "checkin_session_single_carrier_v1",
+              "profile_registry": "iam_adaptive_sound_lab_v1",
+              "inference_engine_version": null,
+              "prompt_version": null,
+              "prompt_sha256": null
+            },
+            "research_boundary": "biological_targets_not_loaded_or_used_by_product_resolver",
+            "claim_boundary": "experimental_adaptive_environment_not_brain_entrainment_diagnosis_treatment_or_proven_benefit",
+            "audit": {
+              "source_event": "consented_study",
+              "raw_checkin_text_used": false,
+              "research_hypotheses_registry_loaded": false,
+              "automatic_mid_session_morph": false,
+              "current_session_only": true,
+              "session_choice_present": true,
+              "fusion_policy_version": "",
+              "fusion_action": "",
+              "fusion_outputs_changed": [],
+              "context_modifiers_used": [],
+              "context_dimensions_considered": [
+                "time",
+                "weather",
+                "location"
+              ],
+              "horizons_considered": [
+                "horizon_1",
+                "horizon_2",
+                "horizon_3"
+              ],
+              "heart_rate_role": "not_available",
+              "heart_rate_zone": "not_available",
+              "raw_heart_rate_retained": false,
+              "baseline_comparison_used": false
+            }
+          },
+          "quantum_tree": {
+            "enabled": true,
+            "activeSource": "video",
+            "sourceFile": "a s s e t s/q u a n t u m [ t r e e ].m4a",
+            "codec": "AAC 192 kbps",
+            "fileLoaded": true,
+            "playing": true,
+            "advancing": true,
+            "currentTime": 17.999851,
+            "duration": 43.861333,
+            "readyState": 4,
+            "mediaLevel": 0.027191174578640988,
+            "targetVolume": 0.01263247329815891,
+            "currentVolume": 0.012822614805157305,
+            "peakVolume": 0.055,
+            "outputMultiplier": 1,
+            "auditionMode": false,
+            "continuityActive": false,
+            "lastError": "",
+            "lastPlayReason": "layer_start",
+            "settingsLoaded": true,
+            "silenceFloor": 0.012,
+            "fullMaskLevel": 0.12
+          }
+        },
+        "quantum": {
+          "enabled": true,
+          "activeSource": "video",
+          "sourceFile": "a s s e t s/q u a n t u m [ t r e e ].m4a",
+          "codec": "AAC 192 kbps",
+          "fileLoaded": true,
+          "playing": true,
+          "advancing": true,
+          "currentTime": 17.999851,
+          "duration": 43.861333,
+          "readyState": 4,
+          "mediaLevel": 0.027191174578640988,
+          "targetVolume": 0.01263247329815891,
+          "currentVolume": 0.012822614805157305,
+          "peakVolume": 0.055,
+          "outputMultiplier": 1,
+          "auditionMode": false,
+          "continuityActive": false,
+          "lastError": "",
+          "lastPlayReason": "layer_start",
+          "settingsLoaded": true,
+          "silenceFloor": 0.012,
+          "fullMaskLevel": 0.12
+        },
+        "mantra": {
+          "policy": "mantra-quantum-follow-v3",
+          "enabled": true,
+          "platformEnabled": true,
+          "masterEnabled": true,
+          "status": "mixing",
+          "targetGain": 0.004274204935052435,
+          "currentGain": 0.004282847512513399,
+          "programmePlaying": true,
+          "programmeSource": "video",
+          "programmeTime": 18.016015,
+          "quantumGain": 0.012822614805157305,
+          "outputRms": 4.8517297754043125e-05,
+          "outputVerified": true,
+          "clockAdvancing": true,
+          "quantumGainRatio": 0.3333333333333333,
+          "readyState": 4,
+          "currentTime": 11.552,
+          "duration": 334.782,
+          "playing": true,
+          "contextState": "running",
+          "assetReady": true,
+          "assetBytes": 8066724,
+          "delivery": "complete_blob",
+          "exposureSeconds": 4.1223449999094,
+          "studyAssignment": "not_integrated"
+        },
+        "qa": {
+          "camera": 0,
+          "fullscreen": 0,
+          "fullscreenExit": 0,
+          "audio": {
+            "type": "diagnostics",
+            "processor_name": "iam-adaptive-sound-v1",
+            "sample_rate": 44100,
+            "master_state": "on",
+            "meter": {
+              "output_rms": 0.007042901140360071,
+              "output_peak": 0.018483108197053316,
+              "frame_count": 11136
+            },
+            "diagnostics": {
+              "sample_rate": 44100,
+              "carrier_hz": 444,
+              "carrier_phase_cycles": 0.2285714285869236,
+              "rendered_samples": 779520,
+              "output_peak": 0.020837818139611802,
+              "output_rms": 0.006855725936871785,
+              "mastering": {
+                "enabled": true,
+                "latency_samples": 0,
+                "lowpass_target_hz": 14444,
+                "lowpass_design_frequency_hz": 14444,
+                "lowpass_applied": true,
+                "lowpass_response_at_target_db": -3.0102999566398116,
+                "lowpass_candidate_response_at_target_db": -3.0102999566398116,
+                "compression": {
+                  "main_gain_reduction_db": 1.0492683503326412,
+                  "parallel_gain_reduction_db": 7.525491383188904,
+                  "parallel_blend": 0.15,
+                  "differential_latency_samples": 0
+                }
+              },
+              "limiter": {
+                "ceiling": 0.85,
+                "latency_samples": 132,
+                "activation_samples": 0,
+                "minimum_gain": 1
+              },
+              "lanes": {
+                "delta": {
+                  "rate_hz": 3.33,
+                  "phase_cycles": 0.8617142856984289,
+                  "power_weight": 0.0666,
+                  "envelope_gain": 0.2,
+                  "enabled": true
+                },
+                "theta": {
+                  "rate_hz": 7.38,
+                  "phase_cycles": 0.45028571428874753,
+                  "power_weight": 0.0666,
+                  "envelope_gain": 0.2760438403727295,
+                  "enabled": true
+                },
+                "alpha": {
+                  "rate_hz": 10.11,
+                  "phase_cycles": 0.7062857142679484,
+                  "power_weight": 0.0666,
+                  "envelope_gain": 0.2,
+                  "enabled": true
+                },
+                "gamma": {
+                  "rate_hz": 111,
+                  "phase_cycles": 0.057142857129010516,
+                  "power_weight": 0.8,
+                  "envelope_gain": 0.2905993224631549,
+                  "enabled": true
+                }
+              },
+              "allocation": {
+                "diamond_frequency_power_total": 0.9998,
+                "noise_power_weight": 0.0001,
+                "silence_power_weight": 0.0001,
+                "total": 1
+              },
+              "noise": {
+                "selection_id": "gamma_equal_white_pink_brown_default_v1",
+                "selection_authority": "ben_locked_profile_default",
+                "insertion_point": "post_diamond_sum_pre_invariant_limiter",
+                "reference_rms": 0.2474873734152916,
+                "components": {
+                  "white_noise_v1": {
+                    "colour": "white",
+                    "power_weight": 3.3333333333333335e-05,
+                    "measured_raw_rms": 1,
+                    "measured_raw_peak": 1
+                  },
+                  "pink_noise_v1": {
+                    "colour": "pink",
+                    "power_weight": 3.3333333333333335e-05,
+                    "measured_raw_rms": 1.0017244150334241,
+                    "measured_raw_peak": 4
+                  },
+                  "brown_noise_v1": {
+                    "colour": "brown",
+                    "power_weight": 3.3333333333333335e-05,
+                    "measured_raw_rms": 1.0049998770721387,
+                    "measured_raw_peak": 4
+                  }
+                }
+              },
+              "silence": {
+                "power_weight": 0.0001,
+                "signal_value": 0,
+                "role": "explicit_zero_signal_allocation_reserve"
+              },
+              "output_layout": "mono_source_for_identical_dual_mono",
+              "technical_output_gain_authority": "phase1_muted_render_only_not_product_ceiling"
+            }
+          }
+        }
+      },
+      {
+        "name": "Native wallet flower and Global Nav open and close; M8 scroll and video timer work"
+      },
+      {
+        "name": "Fullscreen controls recognise the persistent parent document"
+      },
+      {
+        "name": "Waiting for uninterrupted 5:45 native video end"
+      },
+      {
+        "name": "Actual media end opens after-check without navigation or fullscreen exit",
+        "duration": 345,
+        "observedExposure": 344.95251,
+        "fullRun": true
+      },
+      {
+        "name": "Embedded Shen continuity and saved preview result",
+        "isolated": true,
+        "background": "https://customer-1vpwglz3v6fiyaas.cloudflarestream.com/fd142ca0e1672dd7a92729857db1facd/thumbnails/thumbnail.jpg?time=8s&width=1920",
+        "brand": "none",
+        "skip": "none",
+        "stop": false,
+        "qa": {
+          "camera": 0,
+          "fullscreen": 0,
+          "fullscreenExit": 0
+        },
+        "heartRateFixture": 63
+      },
+      {
+        "name": "Personal Apple Wallet preview pass signed and downloaded"
+      },
+      {
+        "name": "Biometrics first, all four cards, real before/after arithmetic, TBC, self-report and reflections fit viewport"
+      },
+      {
+        "name": "Return visit starts session two on demand"
+      },
+      {
+        "name": "Universal One native button, staging API, OpenAI response and visible captions verified without microphone",
+        "voiceRequests": [
+          {
+            "url": "https://realtime-staging-iam-citizen-needs-inference.universalmind.workers.dev/realtime-client-secret",
+            "status": 200
+          },
+          {
+            "url": "https://api.openai.com/v1/realtime/calls",
+            "status": 201
+          }
+        ],
+        "state": {
+          "active": true,
+          "starting": false,
+          "muted": false,
+          "captionsVisible": true,
+          "startupInputGate": false,
+          "assistantOutputGate": true,
+          "assistantOutputStarted": true,
+          "microphoneTrackEnabled": false,
+          "microphonePermissionState": "unknown",
+          "entryPreflightState": "removed",
+          "waveformActive": false,
+          "waveformLevel": 0,
+          "awaitingFullscreenReturn": false,
+          "microphoneFullscreenRecoveryEligible": false,
+          "microphoneFullscreenRecoveryRestored": false,
+          "happinessRecoveryState": "idle",
+          "happinessRecoveryRecorded": false,
+          "state": "listening",
+          "pose": "wave",
+          "transcript": "oneNamaste. Universal One is here and ready to chat."
+        },
+        "camera": 0,
+        "transcriptVisible": "visible"
+      }
+    ],
+    "errors": [],
+    "passed": true
+  },
+  "served": {
+    "served": [
+      {
+        "file": "homepage-session-accents.js",
+        "status": 200,
+        "digest": "74481fa8192f1a8bf3f614e115fba6643bd859455cb0bcb8ac6f4a9bf5568bb6"
+      },
+      {
+        "file": "study/app.js",
+        "status": 200,
+        "digest": "1d256e0ba014627c80a7bd793ab1ae9b6583b522e921b58f4d66cccc60a5a3ab"
+      },
+      {
+        "file": "study/style.css",
+        "status": 200,
+        "digest": "dce523a1d3e369a3f79621195258cbbd8f49383d970bb9258c0b6f42242b9275"
+      },
+      {
+        "file": "study/experience.js",
+        "status": 200,
+        "digest": "2d9fe2e27f6b3d02c2fb96a86d17763df9a61cf8ec855d1b3163ad005ce12591"
+      },
+      {
+        "file": "study/experience.css",
+        "status": 200,
+        "digest": "73949649b80bc2bb67da264c6cf224ba58b7cfeaaad1206af4ced658eae885c4"
+      },
+      {
+        "file": "study/shen-bridge.js",
+        "status": 200,
+        "digest": "b9116ccf797e458bf195cf6e8ef7618a255f3644882fca49649eab8ffed1b942"
+      },
+      {
+        "file": "study/protocol-v1.json",
+        "status": 200,
+        "digest": "8291947aa769b81fab7114e7605a002e676ca5bcca9fa8cc2201c7903596e362"
+      },
+      {
+        "file": "research/shen-heart-rate.js",
+        "status": 200,
+        "digest": "8dd9fc16dad664b388670dd0b109ed4eb0f6396e1bbedb64c0928b5e0673bf63"
+      },
+      {
+        "file": "adaptive-environment-television.js",
+        "status": 200,
+        "digest": "9e2035a28221d680c25197facd433fb88f6c1a6fe5ba8cd18f94e51dd493d8ab"
+      },
+      {
+        "file": "cloudflare-stream-controller.js",
+        "status": 200,
+        "digest": "91f344a44abba3651ccb22ef06af2cb258770b3221ece5f0bbe51f0585717f88"
+      },
+      {
+        "file": "adaptive-sound/controller-v1.js",
+        "status": 200,
+        "digest": "c9b24f81cc727992696cf3486922e07a0f48cb411d3ca03a8607c9736ad94e07"
+      },
+      {
+        "file": "adaptive-sound/mantra-v1.js",
+        "status": 200,
+        "digest": "1c92fbb2e93f29720355c88abb2daebca6eec2b83f91fc049d8255731eef196f"
+      }
+    ],
+    "scan": {
+      "isolated": true,
+      "cameraAttempts": 0,
+      "copy": "Keep still, breathe naturally and look into the camera.",
+      "stop": false
+    },
+    "finalConfig": {
+      "websitePasswords": true,
+      "delivery": "on_demand",
+      "recommendations": [
+        "Sunrise",
+        "Sunset",
+        "Lunchtime"
+      ],
+      "measurementSeconds": 10
+    }
+  },
+  "api_tests": {
+    "runtime": "PHP 8.3 WASM",
+    "checks": [
+      "Origin, CSRF, researcher authentication and staging-only preview enforced",
+      "Existing website password opens the portal directly; staging remains isolated and return identity survives session expiry",
+      "Before/after state machine, 1–10 bounds, idempotency, missing vitals and isolated preview completion",
+      "One answer per step persists in order; 10-second scan accepted; PSD stays unavailable; participant cannot choose event window",
+      "Researcher operations require owner session; preview records never enter cohort; enrolment readiness enforced",
+      "Participant and stakeholder codes have separate scopes; no cross-participant or raw stakeholder access",
+      "Reward QR resolves only for owner; private claim and pass authentication stay private; no shared-wallet issuance",
+      "Only $100 after all three sessions; no partial or duplicate payments",
+      "On-demand session starts with no event date; incomplete and already-paid rewards cannot be redeemed",
+      "Shared website password creates separate cohort identities per browser and resumes only its own records",
+      "Actual media-ended duration advances to after-check; no premature transition or invented exposure after a missing heartbeat",
+      "Withdrawal removes requested response fields and invalidates derived results"
+    ]
+  },
+  "wallet": {
+    "apple_signed_preview_pass_downloaded": true,
+    "manifest_hashes_verified": 10,
+    "openssl_signature_verification": "successful",
+    "erc20_transport": "mocked existing Circle adapter",
+    "erc20_network": "Polygon Amoy",
+    "real_tokens_issued": false,
+    "cash_transferred": false,
+    "checks": [
+      "Explicit participant recipient required",
+      "Stable idempotency after uncertain request",
+      "Only confirmed chain results marked confirmed",
+      "One issue and one redemption",
+      "No partial or duplicate cash payment records"
+    ]
+  },
+  "limits": [
+    "Camera biometrics were illustrative fixtures in isolated staging preview data. No real camera capture was performed.",
+    "Fullscreen requests and persistent parent ownership were instrumented; native OS fullscreen was not invoked.",
+    "Apple Wallet pass signature and contents were verified; on-device installation was not tested.",
+    "Existing website password hashes are reused without changes; authentication and separate browser identities were tested with isolated fixture passwords.",
+    "The pilot uses an existing simulated livestream interface with on-demand sessions. Staging walkthrough data remains separate while the real cohort is closed."
+  ]
+}
