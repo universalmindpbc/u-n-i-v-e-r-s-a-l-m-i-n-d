@@ -15,7 +15,7 @@ if (screenshotDir) fs.mkdirSync(screenshotDir, { recursive: true });
 const expectedVision = "modul8 infinity represents our underlying platform capability—exploring the frontier of real-time targeted gene expression and epigenetic modulation through prescription sound radiation, EMDR, and silent mantra, together as one — paired with pioneering hyperspectral computer vision research toward contact-free, non-invasive inference of gene expression in real time.";
 const expectedContact = "Universal Mind bk@universalmind.tv universalmind.tv Universal Mind TV, PBC (A Delaware Public Benefit Corporation) ABN: 15 885 248 650";
 const oldVisionFragment = "prescription sound radiation, EMDR, and silent mantra.";
-const expectedPdfPath = "a s s e t s/research/modul8-infinity-rct-scientific-briefing-v1.pdf?v=rct-optical-20260910";
+const expectedPdfPath = "a s s e t s/research/modul8-infinity-rct-scientific-briefing-v1.pdf?v=rct-mitosis-b8941947cd8d";
 const viewports = [
   { name: "desktop", width: 1440, height: 1000 },
   { name: "mobile", width: 390, height: 844 },
@@ -104,6 +104,14 @@ try {
     assert.deepEqual(pageErrors, [], `${viewport.name}: page errors detected`);
     assert.deepEqual(consoleErrors, [], `${viewport.name}: console errors detected`);
 
+    const mitosisPanel = page.locator("#cellular-mitotic-stability");
+    assert.equal(await mitosisPanel.locator("#mitotic-stability-title").innerText(), "4.3 Phase 3 Exploratory Sub-Study: Cellular Mitotic Stability Protocol");
+    assert.equal(await mitosisPanel.locator("article").count(), 4, `${viewport.name}: all four mitotic protocol groups must render`);
+    assert.equal(await mitosisPanel.locator("li").count(), 6, `${viewport.name}: four sampling stages and two laboratory pipelines must render`);
+    const mitosisText = await mitosisPanel.innerText();
+    assert.ok(mitosisText.includes("Day 28 Cumulative Outcome (Swab 3):"), `${viewport.name}: cumulative sampling endpoint must render`);
+    assert.ok(mitosisText.includes("micronuclei frequencies, karyorrhexis, and nuclear abnormalities"), `${viewport.name}: cellular imaging measures must render`);
+
     const pdfUrl = new URL(expectedPdfPath, target).href;
     const pdfResponse = await context.request.get(pdfUrl, { timeout: 45_000 });
     assert.equal(pdfResponse.status(), 200, `${viewport.name}: PDF must return HTTP 200`);
@@ -124,6 +132,9 @@ try {
     }
 
     if (screenshotDir) {
+      await mitosisPanel.screenshot({
+        path: path.join(screenshotDir, `research-mitosis-${viewport.name}.png`),
+      });
       await contactPanel.screenshot({
         path: path.join(screenshotDir, `research-contact-${viewport.name}.png`),
       });

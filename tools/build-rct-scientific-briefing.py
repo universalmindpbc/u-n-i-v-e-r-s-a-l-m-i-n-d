@@ -457,6 +457,8 @@ def flowables_from(node: etree._Element, styles: dict[str, ParagraphStyle]) -> l
         tag = child.tag.lower()
         if tag in {"script", "nav", "footer"}:
             continue
+        if "research-related" in child.get("class", "").split():
+            continue
         if tag == "header":
             continue
         if tag == "p":
