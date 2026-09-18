@@ -1,0 +1,131 @@
+{
+  "date": "2026-09-18T19:55:43.999502+00:00",
+  "approved_staging_commit": "64c8ad6df1fe1a0b246e1282e88ff4a39e442f1a",
+  "previous_production_commit": "9ac19a77664457c1f264558e6a35a3095444bb2e",
+  "production_url": "https://universalmind.tv/study",
+  "deployment": {
+    "command": "./deploy-panthurlive.sh all-changed",
+    "changed_files_uploaded": 58,
+    "unchanged_files_skipped": 1003,
+    "protected_owner_state_unchanged": true,
+    "website_source_unchanged_from_approved_staging": true
+  },
+  "local_checks": [
+    "git diff --check",
+    "Adaptive music handoff preflight",
+    "13 study API regression checks using PHP 8.3 WASM"
+  ],
+  "served_source": {
+    "passed": true,
+    "mismatches": [],
+    "emailProtectionNormalized": [
+      "induction.html",
+      "light.html",
+      "research.html",
+      "traction.html"
+    ],
+    "files": [
+      "about.html",
+      "adaptive-environment-television.html",
+      "adaptive-environment-television.js",
+      "adaptive-music-video.html",
+      "adaptive-sound/controller-v1.js",
+      "adaptive-sound/mantra-v1.js",
+      "business-model.html",
+      "cafe-del-mar-home.html",
+      "cloudflare-stream-controller.js",
+      "global-navigation.js",
+      "globe.html",
+      "homepage-session-accents.js",
+      "impact.html",
+      "index-alt.html",
+      "index.html",
+      "induction-alternate.html",
+      "our-team-concept.html",
+      "our-team.html",
+      "privacy-first.html",
+      "program.html",
+      "research/shen-heart-rate.js",
+      "science.html",
+      "script.js",
+      "sex-ed-episode-01.html",
+      "sex-ed.html",
+      "sexed-wallet-mockup.html",
+      "shop-science.html",
+      "shop.html",
+      "sound-prototype-research.html",
+      "study/app.js",
+      "study/emoji-reference.jpeg",
+      "study/experience.css",
+      "study/experience.js",
+      "study/gate-rain.js",
+      "study/gate.css",
+      "study/navigation.js",
+      "study/protocol-v1.json",
+      "study/shen-bridge.js",
+      "study/style.css",
+      "technology-citizen-needs.html",
+      "technology-inference-engine.html",
+      "vogue-self-report.html",
+      "wallet.html"
+    ],
+    "config": {
+      "stream_uid": "895caf7ddb62713b142dbc32f6d32c08",
+      "artist": "Empire Of The Sun x Pryda",
+      "title": "We Are The People",
+      "measurement_seconds": 10
+    }
+  },
+  "browser": {
+    "passed": true,
+    "checks": [
+      {
+        "name": "Production clean password login and live study API",
+        "previewAvailable": false,
+        "passwordConfigured": true,
+        "readiness": {
+          "ready": false,
+          "missing": [
+            "Study video",
+            "Heart Check verification",
+            "Ten-minute video and combined experience verification",
+            "Participant materials and research review",
+            "Study contact",
+            "Data retention period"
+          ],
+          "open": false
+        },
+        "video": "Empire Of The Sun x Pryda \u2014 We Are The People"
+      },
+      {
+        "name": "Production Research > Participate opens the clean research login"
+      },
+      {
+        "name": "Published native research player: correct artist, advancing Stream video, real timer and locked controls",
+        "currentTime": 5.024645,
+        "duration": 488.14,
+        "paused": false,
+        "timer": "0:04 / 8:08",
+        "locked": true,
+        "inert": true,
+        "qa": {
+          "camera": 0,
+          "fullscreen": 0
+        }
+      }
+    ],
+    "errors": [],
+    "limits": [
+      "Research enrolment settings preserved; no participant records created.",
+      "Published player exercised using an isolated browser-only session fixture; production login and API configuration were checked without interception. No production biometrics or surveys submitted.",
+      "No native fullscreen, camera, microphone or audible playback."
+    ]
+  },
+  "browser_safety": {
+    "process_audio_disabled": "--mute-audio",
+    "native_fullscreen_invoked": false,
+    "device_capture_invoked": false,
+    "all_automated_media_sessions_closed": true
+  },
+  "enrolment": "Existing production study settings remain paused. No approvals, participant records, payments or configuration settings were changed."
+}
