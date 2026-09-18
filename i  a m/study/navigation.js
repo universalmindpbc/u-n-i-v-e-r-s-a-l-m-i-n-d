@@ -1,6 +1,6 @@
 // Keep the native animated controls on screen, without allowing a research detour.
 const lockedRoots='[data-nav-open], [data-global-nav-host], [data-reaction-wallet], .iam-realtime-voice, [data-television-live-pill], [data-community-globe-overlay]';
-const chromeRoots='.brand, .global-nav-trigger, [data-global-nav-host], [data-reaction-wallet], .iam-realtime-voice, [data-television-live-pill], [data-community-globe-overlay]';
+const chromeRoots='.brand, .global-nav-trigger, [data-global-nav-host], [data-reaction-wallet], .iam-realtime-voice, [data-television-live-pill], [data-community-globe-overlay], [data-study-completion-background]';
 let locked=true,checkout=false,lastOpen=false;
 const priorInert=new Map(),concealed=new Set();
 const send=(open)=>parent.postMessage({type:'study-navigation',open},location.origin);
@@ -12,6 +12,12 @@ function syncLock(){
 }
 function restoreScene(){for(const element of concealed)element.removeAttribute('data-study-concealed');concealed.clear();}
 function showChrome(){
+ if(!document.querySelector('[data-study-completion-background]')){
+  const backdrop=document.createElement('div'),image=document.createElement('img');
+  backdrop.setAttribute('data-study-completion-background','');backdrop.setAttribute('aria-hidden','true');
+  image.crossOrigin='anonymous';image.alt='';image.src=parent.document.querySelector('.study-backdrop img').src;
+  backdrop.append(image);document.body.prepend(backdrop);
+ }
  const roots=[...document.querySelectorAll(chromeRoots)];
  function visit(element){
   if(roots.includes(element))return;

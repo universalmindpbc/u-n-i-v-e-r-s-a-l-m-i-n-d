@@ -9,7 +9,11 @@ html[data-study-navigation-locked] :is([data-nav-open],[data-global-nav-host],[d
 html[data-study-checkout-chrome],html[data-study-checkout-chrome] body,html[data-study-checkout-chrome] .site-shell,html[data-study-checkout-chrome] .scene,html[data-study-checkout-chrome] [data-television-room]{background:transparent!important}
 [data-study-concealed]{visibility:hidden!important;pointer-events:none!important}
 
-html[data-study-checkout-chrome] body{background:linear-gradient(180deg,#080c1470,#060a12b0 48%,#050a10d9),url('https://customer-1vpwglz3v6fiyaas.cloudflarestream.com/fd142ca0e1672dd7a92729857db1facd/thumbnails/thumbnail.jpg?time=8s&width=1920') center/cover fixed!important}
+[data-study-completion-background]{display:none;position:fixed;inset:0;z-index:0;pointer-events:none;background:#13212c}
+html[data-study-checkout-chrome] [data-study-completion-background]{display:block}
+[data-study-completion-background] img{width:100%;height:100%;object-fit:cover;opacity:.85;filter:saturate(.8)}
+[data-study-completion-background]::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,#080c1470,#060a12b0 48%,#050a10d9)}
+@media(max-width:700px){[data-study-completion-background] img{object-position:60% center}}
 @media(prefers-reduced-motion:no-preference){
  html[data-study-experience] [data-reaction-wallet-trigger] .adaptive-television-reaction__glyph--flora-trigger{animation:study-wallet-turn 3s linear infinite}
 }

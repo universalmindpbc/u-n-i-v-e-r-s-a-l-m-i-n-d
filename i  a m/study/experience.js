@@ -1,4 +1,4 @@
-import {lockNavigation,unlockNavigation} from './navigation.js?v=c1a6f340cef0';
+import {lockNavigation,unlockNavigation} from './navigation.js?v=26c0222b315f';
 // Reuse the canonical M8 viewer, foreground mirror, native GIF pages and sound engines.
 const send=(type,extra={})=>parent.postMessage({type,...extra},location.origin);
 const wait=ms=>new Promise(resolve=>setTimeout(resolve,ms));
