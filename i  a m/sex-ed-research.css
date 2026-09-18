@@ -20,6 +20,8 @@ a:focus-visible, [tabindex]:focus-visible { outline: 2px solid #d8ffb0; outline-
 .identity img { object-fit: contain; }
 .identity-detail, .back-link { color: #c0c8c2; }
 .back-link { font-size: 13px; white-space: nowrap; }
+html[data-music-television-frame="embedded"] .identity { display: none; }
+html[data-music-television-frame="embedded"] .masthead { justify-content: flex-end; min-height: 100px; }
 .intro { padding-block: 76px 60px; max-width: 1100px; }
 .eyebrow { color: #b7c7b8; font-size: 11px; text-transform: uppercase; letter-spacing: .16em; margin: 0 0 24px; }
 h1 { font-size: clamp(32px, 4.3vw, 58px); font-weight: 400; letter-spacing: -.045em; line-height: 1.09; margin: 0; text-wrap: balance; }
