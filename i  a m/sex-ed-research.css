@@ -51,6 +51,7 @@ footer { display: flex; justify-content: space-between; gap: 20px; padding-block
 @media (max-width: 800px) {
   .masthead, main, footer { width: calc(100% - 40px); }
   .masthead { padding-block: 20px; gap: 14px; }
+  html[data-music-television-frame="embedded"] .masthead { padding-top: 104px; }
   .identity { gap: 10px; font-size: 12px; }
   .identity img { width: 36px; height: 36px; }
   .identity-detail { display: block; margin-top: 3px; }
