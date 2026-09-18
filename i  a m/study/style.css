@@ -31,3 +31,4 @@
 .study-navigation-available #study-app{position:relative;z-index:3;pointer-events:none}
 .study-navigation-available #study-app :is(button,a,input,textarea,select,.result-cards,.words-carousel){pointer-events:auto}
 .study-exposure.is-checkout.is-navigating{z-index:30}
+.study-navigation-available .study-header{display:none}

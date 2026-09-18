@@ -10545,6 +10545,7 @@
       playButton.setAttribute("aria-expanded", "true");
       document.body.classList.add("television-room-open");
       startFlowerSpin();
+      if(studyExperienceRequested)startLiveViewerSimulation();
       return true;
     },
     suspendProgrammeForPresentation(source = "presentation") {

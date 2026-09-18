@@ -8,3 +8,5 @@ html[data-study-experience] body.television-emdr-gif-active .adaptive-television
 html[data-study-navigation-locked] :is([data-nav-open],[data-global-nav-host],[data-reaction-wallet],.iam-realtime-voice,[data-television-live-pill],[data-community-globe-overlay]){pointer-events:none!important}
 html[data-study-checkout-chrome],html[data-study-checkout-chrome] body,html[data-study-checkout-chrome] .site-shell,html[data-study-checkout-chrome] .scene,html[data-study-checkout-chrome] [data-television-room]{background:transparent!important}
 [data-study-concealed]{visibility:hidden!important;pointer-events:none!important}
+
+html[data-study-checkout-chrome] body{background:linear-gradient(180deg,#080c1470,#060a12b0 48%,#050a10d9),url('https://customer-1vpwglz3v6fiyaas.cloudflarestream.com/fd142ca0e1672dd7a92729857db1facd/thumbnails/thumbnail.jpg?time=8s&width=1920') center/cover fixed!important}

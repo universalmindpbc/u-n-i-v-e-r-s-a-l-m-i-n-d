@@ -18,7 +18,7 @@ header('Cross-Origin-Embedder-Policy: require-corp');
   <title>Study | Universal Mind</title>
   <link rel="icon" href="favicon.png">
   <link rel="stylesheet" href="study/gate.css?v=study-1">
-  <link rel="stylesheet" href="study/style.css?v=e89522809f74">
+  <link rel="stylesheet" href="study/style.css?v=7097e8c0a5a7">
 </head>
 <body class="study-page" data-study-state="loading">
   <canvas class="rain-canvas" aria-hidden="true" data-rain-canvas></canvas>
