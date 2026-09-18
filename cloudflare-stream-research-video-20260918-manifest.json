@@ -9,5 +9,8 @@
   "status": "ready",
   "replaces_study_default": "d27b2cbadecf9e82bb1ae4f87566bb0f",
   "dashboard_duration": "8m 8s",
-  "hls_url": "https://customer-1vpwglz3v6fiyaas.cloudflarestream.com/895caf7ddb62713b142dbc32f6d32c08/manifest/video.m3u8"
+  "hls_url": "https://customer-1vpwglz3v6fiyaas.cloudflarestream.com/895caf7ddb62713b142dbc32f6d32c08/manifest/video.m3u8",
+  "stream_duration_seconds": 488.14,
+  "source_full_decode_verified": true,
+  "staging_playback_verified": true
 }
