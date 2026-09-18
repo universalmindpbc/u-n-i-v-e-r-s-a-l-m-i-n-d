@@ -10498,10 +10498,10 @@
   syncFullscreenState();
   window.IAMTelevisionRoom = {
     version: "programme_presentations_v2",
-    async prepareStudyExperience(uid, studyTitle = 'Study experience', {enter = true} = {}) {
+    async prepareStudyExperience(uid, studyTitle = 'Study experience', {enter = true, artist = ''} = {}) {
       if (!studyExperienceRequested || !/^[a-f0-9]{32}$/.test(uid)) throw new Error('Open the experience from your study session.');
       this.suspendProgrammeForPresentation('research');
-      track = {id:'research-study',artist:'',title:String(studyTitle).slice(0,120),bpm:96};
+      track = {id:'research-study',artist:String(artist).slice(0,120),title:String(studyTitle).slice(0,120),bpm:96};
       updateNowPlaying();
       const video = mountPlayer();
       await window.IAMStreamReady;

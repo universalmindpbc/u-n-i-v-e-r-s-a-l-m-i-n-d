@@ -25,3 +25,9 @@
 .biometric-cards{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));overflow:visible}.biometric-cards .result-card{min-width:0;max-width:none;padding:22px 18px}.biometric-cards .result-change{font-size:clamp(36px,4vw,62px)}.biometric-cards .result-pair strong{font-size:20px}.blood-pressure-card .result-change:has(small){font-size:24px}.bp-divider{font-size:16px}
 .study-wallet-card{width:min(360px,90%);margin:0 auto 24px;padding:24px 26px;border-radius:22px;border:1px solid #ffffff70;background:linear-gradient(125deg,#243f33ee,#091c19f0);box-shadow:0 20px 60px #0004;text-align:left;color:#f7f3ea}.study-wallet-card>div{display:flex;align-items:center;justify-content:space-between;font-size:13px;letter-spacing:.2em}.study-wallet-card img{width:42px;height:42px}.study-wallet-card>strong{font-size:64px;font-weight:200;display:block;margin-top:18px}.study-wallet-card>p{font-size:12px}.study-wallet-card footer{display:flex;justify-content:space-between;font-size:9px;letter-spacing:.08em}.study-apple-wallet{display:inline-flex}.study-apple-wallet svg{display:block}
 @media(max-width:700px){.biometric-cards{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.biometric-cards .result-card{padding:14px 12px}.biometric-cards .result-card h2{font-size:14px;margin-bottom:12px}.biometric-cards .result-change{font-size:36px}.biometric-cards .result-direction{margin-bottom:12px!important}.biometric-cards .result-pair{padding-top:12px;gap:6px}.biometric-cards .result-pair strong{font-size:14px}.biometric-cards .result-pair span{font-size:9px}}
+
+/* After checkout the same native controls sit around the research results. */
+.study-exposure.is-checkout{z-index:2;background:transparent}
+.study-navigation-available #study-app{position:relative;z-index:3;pointer-events:none}
+.study-navigation-available #study-app :is(button,a,input,textarea,select,.result-cards,.words-carousel){pointer-events:auto}
+.study-exposure.is-checkout.is-navigating{z-index:30}

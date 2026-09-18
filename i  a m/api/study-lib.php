@@ -257,8 +257,12 @@ function study_earned(array $p): float {
 function study_public_config(array $config): array {
     $config += study_defaults()['config'];
     if ($config['stream_uid'] === '') {
-        $config['stream_uid'] = 'd27b2cbadecf9e82bb1ae4f87566bb0f';
-        $config['video_title'] = 'Peter Gabriel — Sledgehammer';
+        $config['stream_uid'] = '895caf7ddb62713b142dbc32f6d32c08';
+        $config['video_title'] = 'Empire Of The Sun x Pryda — We Are The People';
+    }
+    if ($config['stream_uid'] === '895caf7ddb62713b142dbc32f6d32c08') {
+        $config['video_artist'] = 'Empire Of The Sun x Pryda';
+        $config['video_track_title'] = 'We Are The People';
     }
     $config['temporary_video'] = $config['stream_uid'] === 'd27b2cbadecf9e82bb1ae4f87566bb0f';
     $config['measurement_seconds'] = $config['bp_active'] ? 60 : 10;

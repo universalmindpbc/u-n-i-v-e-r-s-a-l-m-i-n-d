@@ -3,3 +3,8 @@ html[data-study-experience] body{overflow:hidden}
 
 /* Keep the canonical timer visible over M8 artwork. */
 html[data-study-experience] body.television-emdr-gif-active .adaptive-television-timecode{opacity:1!important;color:rgba(255,255,255,.9)}
+
+/* Inert preserves the native animation while suppressing hover, pointer and keyboard actions. */
+html[data-study-navigation-locked] :is([data-nav-open],[data-global-nav-host],[data-reaction-wallet],.iam-realtime-voice,[data-television-live-pill],[data-community-globe-overlay]){pointer-events:none!important}
+html[data-study-checkout-chrome],html[data-study-checkout-chrome] body,html[data-study-checkout-chrome] .site-shell,html[data-study-checkout-chrome] .scene,html[data-study-checkout-chrome] [data-television-room]{background:transparent!important}
+[data-study-concealed]{visibility:hidden!important;pointer-events:none!important}

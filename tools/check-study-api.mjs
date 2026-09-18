@@ -30,6 +30,10 @@ async function request(action,body={},options={}) {
 async function ok(action,body={}) {const result=await request(action,body);assert.equal(result.status,200,JSON.stringify(result));return result;}
 try {
   const first=await ok();assert.equal(first.owner,false);assert.equal(first.participant,null);assert.equal(first.readiness.open,false);
+  assert.equal(first.config.stream_uid,'895caf7ddb62713b142dbc32f6d32c08');
+  assert.equal(first.config.video_artist,'Empire Of The Sun x Pryda');
+  assert.equal(first.config.video_track_title,'We Are The People');
+  assert.equal(first.config.temporary_video,false);
   assert.equal((await ok()).csrf,first.csrf,'Session did not persist across requests');
   assert.equal((await request('preview',{}, {csrf:'wrong'})).status,403);
   assert.equal((await request('preview',{}, {origin:'https://different.test'})).status,403);

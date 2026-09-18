@@ -1,7 +1,10 @@
+import {lockNavigation,unlockNavigation} from './navigation.js?v=a504bc93fbe4';
 // Reuse the canonical M8 viewer, foreground mirror, native GIF pages and sound engines.
 const send=(type,extra={})=>parent.postMessage({type,...extra},location.origin);
 const wait=ms=>new Promise(resolve=>setTimeout(resolve,ms));
 if(document.readyState==='loading')await new Promise(resolve=>document.addEventListener('DOMContentLoaded',resolve,{once:true}));
+lockNavigation();
+let checkout=false;
 let video,timer,running=false,stopped=false,configuring=false,starting=false;
 let previousChoice,previousAdaptation,played=0,lastVideoTime=0;
 let pagePositioned=false;
@@ -27,22 +30,23 @@ function stop(){
  if(previousAdaptation===null)sessionStorage.removeItem('iamLatestEmdrAdaptation');
  else if(previousAdaptation!==undefined)sessionStorage.setItem('iamLatestEmdrAdaptation',previousAdaptation);
 }
-async function configure(uid){
+async function configure(uid,completedSessionId){
  if(configuring||stopped)return;configuring=true;
  try{
   const response=await fetch('api/study.php',{credentials:'same-origin',cache:'no-store'}),state=await response.json();
   if(!response.ok||!state.participant?.consent||state.participant.withdrawn||state.config.stream_uid!==uid
-   ||!state.participant.sessions.some(s=>s.state==='experience'))throw new Error('Please reopen your study session.');
+   ||!state.participant.sessions.some(s=>completedSessionId?s.id===completedSessionId&&s.state==='complete':s.state==='experience'))throw new Error('Please reopen your study session.');
   for(let i=0;i<200&&!window.IAMAdaptiveSound?.prepareStudy;i++)await wait(100);
   if(!window.IAMTelevisionRoom?.prepareStudyExperience||!window.IAMAdaptiveSoundSession)throw new Error('Please refresh to load the experience.');
   await window.IAMAdaptiveSoundSession.ready;
   previousChoice=window.IAMAdaptiveSoundSession.currentChoice();previousAdaptation=sessionStorage.getItem('iamLatestEmdrAdaptation');
   window.IAMQuantumTree.setEnabled(false,{persist:false});
-  window.IAMAdaptiveSoundSession.setSessionChoice({profile_id:'inspiration_gamma_80_v1',carrier_hz:444,high_concern_session_opt_in:true},'consented_study');
-  video=await window.IAMTelevisionRoom.prepareStudyExperience(uid,state.config.video_title,{enter:false});
+  if(!completedSessionId)window.IAMAdaptiveSoundSession.setSessionChoice({profile_id:'inspiration_gamma_80_v1',carrier_hz:444,high_concern_session_opt_in:true},'consented_study');
+  video=await window.IAMTelevisionRoom.prepareStudyExperience(uid,state.config.video_track_title||state.config.video_title,{enter:false,artist:state.config.video_artist||''});
   const session=state.participant.sessions.find(s=>s.state==='experience');
-  played=session.exposure_seconds||0;
+  played=session?.exposure_seconds||0;
   video.loop=false;video.controls=false;
+  if(completedSessionId){await completeCheckout(completedSessionId);send('study-prepared',{checkout:true});return;}
   for(const other of document.querySelectorAll('video,audio'))if(other!==video&&!other.muted)other.pause();
   document.addEventListener('play',event=>{
    if(running&&event.target instanceof HTMLVideoElement&&event.target!==video&&!event.target.hasAttribute('data-emdr-gif-tile'))event.target.pause();
@@ -87,15 +91,20 @@ async function start(){
  finally{starting=false;}
 }
 function showHome(){document.body.classList.remove('television-room-open','television-room-opening');document.querySelector('[data-television-room]').setAttribute('aria-hidden','true');}
-window.IAMStudyExperience={start,showHome};
+async function completeCheckout(sessionId){
+ const response=await fetch('api/study.php',{credentials:'same-origin',cache:'no-store'}),state=await response.json();
+ if(!response.ok||state.participant?.withdrawn||!state.participant?.sessions.some(s=>s.id===sessionId&&s.state==='complete')||state.participant.sessions.some(s=>!['complete','stopped'].includes(s.state)))return false;
+ stop();checkout=true;window.IAMTelevisionRoom.preparePresentationEntry();unlockNavigation();return true;
+}
+window.IAMStudyExperience={start,showHome,completeCheckout};
 document.addEventListener('click',event=>{
  const play=event.target.closest('[data-television-play]');
- if(play){event.preventDefault();event.stopImmediatePropagation();if(!play.disabled)parent.IAMStudyShell.startExperience();return;}
+ if(play&&!checkout){event.preventDefault();event.stopImmediatePropagation();if(!play.disabled)parent.IAMStudyShell.startExperience();return;}
 },true);
 window.addEventListener('resize',()=>{if(!running)pagePositioned=false;requestAnimationFrame(positionOpeningPage);});
 window.addEventListener('message',event=>{
  if(event.origin!==location.origin||event.source!==parent)return;
- if(event.data?.type==='study-config')void configure(event.data.uid);
+ if(event.data?.type==='study-config')void configure(event.data.uid,event.data.completedSessionId);
  if(event.data?.type==='study-stop')stop();
  if(event.data?.type==='study-pause')pause();
 });

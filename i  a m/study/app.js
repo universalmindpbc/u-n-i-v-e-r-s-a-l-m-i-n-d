@@ -24,6 +24,7 @@ function setPage(mode){
  clearInterval(clockTimer);document.body.dataset.studyState=mode;
  document.querySelector('.study-header').hidden=['login','experience','home','scan'].includes(mode);
  app.setAttribute('aria-busy','false');
+ syncNavigation(mode);
 }
 async function refresh(){state=await request();await render();}
 async function render(){
@@ -109,10 +110,26 @@ function renderParticipants(target){target.innerHTML=`${state.preview?'':'<form 
 function renderPreparation(target){const c=dataset.config;target.innerHTML=`<form data-form="config" class="study-setup"><h2>Study setup</h2><p class="study-muted">Three sessions on demand. Recommended: sunrise · sunset · lunchtime.</p><label class="study-field">Study video · Stream ID<input name="stream_uid" value="${html(c.stream_uid)}" maxlength="32"></label><label class="study-field">Video title<input name="video_title" value="${html(c.video_title)}" maxlength="120"></label><label class="study-field">Study contact<input type="email" name="contact_email" value="${html(c.contact_email)}"></label><label class="study-field">Data retention · days<input type="number" name="retention_days" min="1" max="3650" value="${c.retention_days||''}"></label>${[['bp_active','BP access activated · one-minute scans'],['shen_verified','Heart Check verified'],['experience_verified','Combined ten-minute experience verified'],['materials_approved','Participant materials approved'],['open','Open the study']].map(([k,t])=>`<label class="study-check"><input type="checkbox" name="${k}" ${c[k]?'checked':''}><span>${t}</span></label>`).join('')}<button class="study-button" type="submit" ${state.preview?'disabled':''}>Save</button></form>`;}
 function localDate(value){const d=new Date(value);return new Date(d-d.getTimezoneOffset()*60000).toISOString().slice(0,16);}
 function download(value,name){const url=URL.createObjectURL(new Blob([JSON.stringify(value,null,2)],{type:'application/json'}));const a=document.createElement('a');a.href=url;a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);}
-function prepareExposure(){
+function prepareExposure(completedSessionId=null){
+ exposure?.shell.remove();
  const shell=document.createElement('div');shell.className='study-exposure';
  shell.innerHTML='<iframe title="modul8 infinity study experience" src="study-experience.php?study_experience=1" allow="autoplay; fullscreen; microphone; camera" allowfullscreen></iframe>';
- exposure={sessionId:currentSession().id,frame:shell.querySelector('iframe'),shell,pending:false,ready:false};app.append(shell);
+ exposure={sessionId:completedSessionId||currentSession().id,frame:shell.querySelector('iframe'),shell,pending:false,ready:false,completed:!!completedSessionId};document.body.append(shell);
+ if(completedSessionId){shell.hidden=true;}
+}
+function syncNavigation(mode){
+ const complete=state?.participant?.sessions.at(-1);
+ const show=['reward','dashboard'].includes(mode)&&complete?.state==='complete'&&!state.participant.withdrawn&&!currentSession();
+ if(show&&!exposure)prepareExposure(complete.id);
+ if(!exposure)return;
+ exposure.shell.hidden=!show&&!['home','experience'].includes(mode);
+ exposure.shell.classList.toggle('is-checkout',show);
+ document.body.classList.toggle('study-navigation-available',show);
+ if(show&&!exposure.unlocked){
+  exposure.completed=true;
+  const api=exposure.frame.contentWindow.IAMStudyExperience;
+  if(api){exposure.unlocked=true;void api.completeCheckout(complete.id).then(ok=>{if(!ok)exposure.unlocked=false;});}
+ }
 }
 async function startExposure(){
  const active=exposure;if(!active?.ready)return;
@@ -171,15 +188,16 @@ window.addEventListener('message',async event=>{
  const scan=app.querySelector('.study-scan iframe');
  if(scan&&event.origin===location.origin&&event.source===scan.contentWindow&&event.data?.type==='study-scan-complete'){await refresh();return;}
  if(!exposure||event.origin!==location.origin||event.source!==exposure.frame.contentWindow)return;
- if(event.data?.type==='study-ready'){exposure.frame.contentWindow.postMessage({type:'study-config',uid:state.config.stream_uid},location.origin);return;}
+ if(event.data?.type==='study-navigation'){exposure.shell.classList.toggle('is-navigating',event.data.open);return;}
+ if(event.data?.type==='study-ready'){exposure.frame.contentWindow.postMessage({type:'study-config',uid:state.config.stream_uid,completedSessionId:exposure.completed?exposure.sessionId:null},location.origin);return;}
  if(event.data?.type==='study-prepared'){
-  exposure.ready=true;const control=document.querySelector('[data-action="exposure"]');
+  exposure.ready=true;if(exposure.completed)syncNavigation(document.body.dataset.studyState);const control=document.querySelector('[data-action="exposure"]');
   if(control){control.disabled=false;control.textContent='Enter experience';}
   return;
  }
- if(event.data?.type==='study-paused'){resumeEntry();return;}
+ if(event.data?.type==='study-paused'){if(!exposure.completed)resumeEntry();return;}
  if(event.data?.type==='study-error'){resumeEntry();notice(event.data.message);return;}
- if(event.data?.type!=='study-tick')return;
+ if(event.data?.type!=='study-tick'||exposure.completed)return;
  const active=exposure;
  // Keep the final media-ended heartbeat even if an earlier request is still in flight.
  if(active.pending){if(event.data.values.ended)active.finalTick=event.data.values;return;}
@@ -187,7 +205,7 @@ window.addEventListener('message',async event=>{
  try{do{
   const r=await request('exposure.tick',{...values,session_id:active.sessionId});if(exposure!==active)return;
   if(r.state==='after_vitals'){
-   active.frame.contentWindow.postMessage({type:'study-stop'},location.origin);exposure=null;
+   active.frame.contentWindow.postMessage({type:'study-stop'},location.origin);active.completed=true;active.shell.hidden=true;
    await refresh();return;
   }
   values=active.finalTick;active.finalTick=null;
