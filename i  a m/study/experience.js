@@ -44,7 +44,7 @@ async function configure(uid,completedSessionId){
   if(!completedSessionId)window.IAMAdaptiveSoundSession.setSessionChoice({profile_id:'inspiration_gamma_80_v1',carrier_hz:444,high_concern_session_opt_in:true},'consented_study');
   video=await window.IAMTelevisionRoom.prepareStudyExperience(uid,state.config.video_track_title||state.config.video_title,{enter:false,artist:state.config.video_artist||''});
   const session=state.participant.sessions.find(s=>s.state==='experience');
-  played=session?.exposure_seconds||0;
+  played=session?.video_stream_uid===uid?(session.exposure_seconds||0):0;
   video.loop=false;video.controls=false;
   if(completedSessionId){await completeCheckout(completedSessionId);send('study-prepared',{checkout:true});return;}
   for(const other of document.querySelectorAll('video,audio'))if(other!==video&&!other.muted)other.pause();

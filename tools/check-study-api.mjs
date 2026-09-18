@@ -124,7 +124,7 @@ try {
   checks.push('Shared website password creates separate cohort identities per browser and resumes only its own records');
   // Use a non-ten-minute media duration in the isolated fixture; verify only observed playback is credited.
   const cohort=JSON.parse(php.readFileAsText('/app/api/.runtime-private/study/cohort.json'));
-  const timed=structuredClone(summary.participants[0].sessions[0]);
+  const timed=structuredClone(summary.participants[0].sessions[0]);timed.video_stream_uid=onDemand.config.stream_uid;
   timed.state='experience';timed.exposure_seconds=286.5;timed.last_media_time=286.5;timed.last_heartbeat=Date.now()/1000-1.1;
   timed.exposure_started_epoch=Date.now()/1000-288;timed.last_fidelity_valid=true;timed.last_mutation=null;
   cohort.participants.P01.consent={version:first.protocol.version,at:new Date().toISOString()};cohort.participants.P01.sessions=[timed];
@@ -140,6 +140,16 @@ try {
   const delayedEnd=await ok('exposure.tick',{session_id:timed.id,media_time:287.5,position:287.5,duration:287.5,ended:true,playing:true});
   assert.equal(delayedEnd.state,'after_vitals');assert.equal(delayedEnd.exposure_seconds,260);
   checks.push('Actual media-ended duration advances to after-check; no premature transition or invented exposure after a missing heartbeat');
+  const replaced=JSON.parse(php.readFileAsText('/app/api/.runtime-private/study/cohort.json'));
+  replaced.participants.P01.sessions[0]={...timed,video_stream_uid:'old-video',video_duration_seconds:345,exposure_seconds:120};
+  php.writeFile('/app/api/.runtime-private/study/cohort.json',JSON.stringify(replaced));
+  await ok('exposure.tick',{session_id:timed.id,media_time:0,position:0,duration:488.14,ended:false,playing:true});
+  const restarted=(await ok()).participant.sessions[0];
+  assert.equal(restarted.video_duration_seconds,488.14);assert.equal(restarted.exposure_seconds,0);
+  assert.equal(restarted.video_stream_uid,onDemand.config.stream_uid);
+  assert.equal(restarted.previous_video_exposures.at(-1).seconds,120);
+  checks.push('Replaced media starts a fresh clock without carrying old duration or discarding prior exposure history');
+
   cookies=previewCookies;await ok();await ok('withdraw',{erase_responses:true});
   const removed=await ok('export');assert.equal(removed.participant.withdrawn,true);assert.equal(removed.participant.sessions[0].before_report,null);
   assert.equal((await ok('summary')).summary.statistics.happiness.n,0);

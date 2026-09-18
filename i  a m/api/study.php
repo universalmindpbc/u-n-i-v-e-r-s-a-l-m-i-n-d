@@ -237,6 +237,7 @@ try {
             $p['sessions'][] = ['id' => $id, 'number' => count($p['sessions'])+1, 'state' => 'before_vitals',
                 'event_starts_at' => null, 'delivery'=>'on_demand', 'recommended_window'=>$window, 'window' => $window, 'timezone' => study_text($request['timezone'] ?? '', 80),
                 'created_at' => gmdate('c'), 'created_at_epoch' => time(), 'config_hash' => hash('sha256', json_encode($data['config'])),
+                'video_stream_uid' => study_public_config($data['config'])['stream_uid'],
                 'protocol_version' => study_protocol()['version'], 'before_vitals' => null, 'before_report' => null,
                 'after_vitals' => null, 'after_report' => null, 'exposure_seconds' => 0, 'interruptions' => 0,
                 'last_heartbeat' => null, 'last_media_time' => null, 'last_mutation' => null];
@@ -290,6 +291,17 @@ try {
             if ($s['state'] === 'complete') $s['completed_at'] = gmdate('c');
         } elseif ($action === 'exposure.tick') {
             study_require($s['state'] === 'experience', 'No research video is running for this session.');
+            $videoUid = study_public_config($data['config'])['stream_uid'];
+            if (($s['video_stream_uid'] ?? null) !== $videoUid) {
+                // A replaced video starts a fresh playback clock, including older preview sessions.
+                if (($s['exposure_seconds'] ?? 0) > 0) $s['previous_video_exposures'][] = [
+                    'stream_uid' => $s['video_stream_uid'] ?? null, 'seconds' => $s['exposure_seconds'],
+                    'duration' => $s['video_duration_seconds'] ?? null];
+                $s['video_stream_uid'] = $videoUid;
+                $s['exposure_seconds'] = 0; $s['fidelity_seconds'] = 0;
+                $s['last_heartbeat'] = null; $s['last_media_time'] = null;
+                unset($s['video_duration_seconds'], $s['exposure_started_epoch'], $s['last_fidelity_valid']);
+            }
             $now = microtime(true); $media = study_number($request['media_time'] ?? null, 0, 3600);
             study_require($media !== null, 'Playback timing is unavailable.');
             $playing = ($request['playing'] ?? false) === true;
