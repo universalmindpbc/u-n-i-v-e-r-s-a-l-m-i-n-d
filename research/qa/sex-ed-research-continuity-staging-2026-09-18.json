@@ -1,0 +1,208 @@
+{
+  "date": "2026-09-18",
+  "environment": "staging",
+  "sourceCommit": "6bec5c418dae57941c8e65a859c2f18e8cc9f77e",
+  "change": "Open sex-ed research in the persistent Music Television page layer and return to the existing sex-ed shelf without navigating or reloading the outer player.",
+  "sourceCopy": "Research article, table and references are byte-identical to the previously approved version.",
+  "proofUrl": "https://staging.universalmind.tv/vogue/iam/index.html?sexEd=1",
+  "deployment": {
+    "method": "./deploy-panthur-staging.sh changed",
+    "requiredPreflights": "passed",
+    "protectedOwnerRuntime": "verified unchanged",
+    "productionModified": false
+  },
+  "verification": {
+    "processMuted": true,
+    "nativeFullscreenTested": false,
+    "results": [
+      {
+        "label": "desktop",
+        "viewport": {
+          "width": 1440,
+          "height": 1000
+        },
+        "before": {
+          "sameDocument": true,
+          "sameMedia": true,
+          "time": 1.033714,
+          "source": "blob:https://staging.universalmind.tv/3d558f6a-7823-4171-8ebc-d77ac4ae54e7",
+          "paused": false,
+          "muted": false,
+          "volume": 1,
+          "pauses": 0,
+          "reloads": 0,
+          "fullscreenCalls": 0,
+          "microphoneCalls": 0
+        },
+        "cycles": [
+          {
+            "returnLink": ".back-link",
+            "during": {
+              "sameDocument": true,
+              "sameMedia": true,
+              "time": 3.03205,
+              "source": "blob:https://staging.universalmind.tv/3d558f6a-7823-4171-8ebc-d77ac4ae54e7",
+              "paused": false,
+              "muted": false,
+              "volume": 1,
+              "pauses": 0,
+              "reloads": 0,
+              "fullscreenCalls": 0,
+              "microphoneCalls": 0
+            },
+            "after": {
+              "sameDocument": true,
+              "sameMedia": true,
+              "time": 3.91887,
+              "source": "blob:https://staging.universalmind.tv/3d558f6a-7823-4171-8ebc-d77ac4ae54e7",
+              "paused": false,
+              "muted": false,
+              "volume": 1,
+              "pauses": 0,
+              "reloads": 0,
+              "fullscreenCalls": 0,
+              "microphoneCalls": 0
+            }
+          },
+          {
+            "returnLink": "footer [data-sex-ed-return]",
+            "during": {
+              "sameDocument": true,
+              "sameMedia": true,
+              "time": 5.778275,
+              "source": "blob:https://staging.universalmind.tv/3d558f6a-7823-4171-8ebc-d77ac4ae54e7",
+              "paused": false,
+              "muted": false,
+              "volume": 1,
+              "pauses": 0,
+              "reloads": 0,
+              "fullscreenCalls": 0,
+              "microphoneCalls": 0
+            },
+            "after": {
+              "sameDocument": true,
+              "sameMedia": true,
+              "time": 6.455314,
+              "source": "blob:https://staging.universalmind.tv/3d558f6a-7823-4171-8ebc-d77ac4ae54e7",
+              "paused": false,
+              "muted": false,
+              "volume": 1,
+              "pauses": 0,
+              "reloads": 0,
+              "fullscreenCalls": 0,
+              "microphoneCalls": 0
+            }
+          }
+        ],
+        "pageErrors": []
+      },
+      {
+        "label": "mobile",
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "before": {
+          "sameDocument": true,
+          "sameMedia": true,
+          "time": 1.008005,
+          "source": "blob:https://staging.universalmind.tv/f3a85ed0-71bd-4601-aafc-cba32064ed8f",
+          "paused": false,
+          "muted": false,
+          "volume": 1,
+          "pauses": 0,
+          "reloads": 0,
+          "fullscreenCalls": 0,
+          "microphoneCalls": 0
+        },
+        "cycles": [
+          {
+            "returnLink": ".back-link",
+            "during": {
+              "sameDocument": true,
+              "sameMedia": true,
+              "time": 2.918343,
+              "source": "blob:https://staging.universalmind.tv/f3a85ed0-71bd-4601-aafc-cba32064ed8f",
+              "paused": false,
+              "muted": false,
+              "volume": 1,
+              "pauses": 0,
+              "reloads": 0,
+              "fullscreenCalls": 0,
+              "microphoneCalls": 0
+            },
+            "after": {
+              "sameDocument": true,
+              "sameMedia": true,
+              "time": 3.637306,
+              "source": "blob:https://staging.universalmind.tv/f3a85ed0-71bd-4601-aafc-cba32064ed8f",
+              "paused": false,
+              "muted": false,
+              "volume": 1,
+              "pauses": 0,
+              "reloads": 0,
+              "fullscreenCalls": 0,
+              "microphoneCalls": 0
+            }
+          },
+          {
+            "returnLink": "footer [data-sex-ed-return]",
+            "during": {
+              "sameDocument": true,
+              "sameMedia": true,
+              "time": 5.524765,
+              "source": "blob:https://staging.universalmind.tv/f3a85ed0-71bd-4601-aafc-cba32064ed8f",
+              "paused": false,
+              "muted": false,
+              "volume": 1,
+              "pauses": 0,
+              "reloads": 0,
+              "fullscreenCalls": 0,
+              "microphoneCalls": 0
+            },
+            "after": {
+              "sameDocument": true,
+              "sameMedia": true,
+              "time": 6.186418,
+              "source": "blob:https://staging.universalmind.tv/f3a85ed0-71bd-4601-aafc-cba32064ed8f",
+              "paused": false,
+              "muted": false,
+              "volume": 1,
+              "pauses": 0,
+              "reloads": 0,
+              "fullscreenCalls": 0,
+              "microphoneCalls": 0
+            }
+          }
+        ],
+        "pageErrors": []
+      }
+    ]
+  },
+  "servedFiles": [
+    {
+      "url": "https://staging.universalmind.tv/vogue/iam/adaptive-environment-television.js?v=music-tv-6507d0253b0d",
+      "httpStatus": 200,
+      "byteIdentical": true,
+      "sha256": "6507d0253b0d2e489d9e380d15b91464bd93cef2821e89237039f068cf7671dd"
+    },
+    {
+      "url": "https://staging.universalmind.tv/vogue/iam/sex-ed-research.html",
+      "httpStatus": 200,
+      "byteIdentical": true,
+      "sha256": "706b7599c04c3c994519b9b9fb9bbc9fe1d5c8654f7b34c0191ab686e89fed87"
+    },
+    {
+      "url": "https://staging.universalmind.tv/vogue/iam/sex-ed-research.css?v=sex-ed-research-3",
+      "httpStatus": 200,
+      "byteIdentical": true,
+      "sha256": "6c6f70096557f5e0b418d6a6408894b3df832f190a0c360569795317398579d2"
+    },
+    {
+      "url": "https://staging.universalmind.tv/vogue/iam/sex-ed-research.js?v=sex-ed-research-1",
+      "httpStatus": 200,
+      "byteIdentical": true,
+      "sha256": "22a4292b8f6acee0017d0621a944e993fe325700176876e8b0c4dff799a2242d"
+    }
+  ]
+}
