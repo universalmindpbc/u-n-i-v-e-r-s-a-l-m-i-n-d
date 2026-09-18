@@ -10353,6 +10353,13 @@
     if (sexEdShelfOpen) closeSexEdShelf();
     else openSexEdShelf();
   }, true);
+  document.querySelector("[data-sex-ed-research]")?.addEventListener("click", (event) => {
+    if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+    if (!document.body.classList.contains("television-room-open")) return;
+    event.preventDefault();
+    event.stopImmediatePropagation();
+    openInVideoPageLayer(event.currentTarget);
+  });
   researchDialogScienceLink?.addEventListener("click", (event) => {
     if (!document.body.classList.contains("television-room-open") || !isInternalPageLink(researchDialogScienceLink)) {
       exitFullscreenForNavigation();
@@ -10407,6 +10414,11 @@
     }
     if (event.data?.type === "iam:open-sex-ed-episode") {
       openSexEdEpisode(event.data.episode || "01");
+      return;
+    }
+    if (event.data?.type === "iam:return-to-sex-ed" && event.source === pageFrame?.contentWindow) {
+      returnToTelevisionRoom();
+      openSexEdShelf();
       return;
     }
     if (event.data?.type === "iam:return-to-television") {
