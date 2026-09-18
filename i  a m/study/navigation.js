@@ -1,6 +1,6 @@
 // Keep the native animated controls on screen, without allowing a research detour.
 const lockedRoots='[data-nav-open], [data-global-nav-host], [data-reaction-wallet], .iam-realtime-voice, [data-television-live-pill], [data-community-globe-overlay]';
-const chromeRoots='.global-nav-trigger, [data-global-nav-host], [data-reaction-wallet], .iam-realtime-voice, [data-television-live-pill], [data-community-globe-overlay]';
+const chromeRoots='.brand, .global-nav-trigger, [data-global-nav-host], [data-reaction-wallet], .iam-realtime-voice, [data-television-live-pill], [data-community-globe-overlay]';
 let locked=true,checkout=false,lastOpen=false;
 const priorInert=new Map(),concealed=new Set();
 const send=(open)=>parent.postMessage({type:'study-navigation',open},location.origin);
