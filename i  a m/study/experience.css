@@ -10,3 +10,7 @@ html[data-study-checkout-chrome],html[data-study-checkout-chrome] body,html[data
 [data-study-concealed]{visibility:hidden!important;pointer-events:none!important}
 
 html[data-study-checkout-chrome] body{background:linear-gradient(180deg,#080c1470,#060a12b0 48%,#050a10d9),url('https://customer-1vpwglz3v6fiyaas.cloudflarestream.com/fd142ca0e1672dd7a92729857db1facd/thumbnails/thumbnail.jpg?time=8s&width=1920') center/cover fixed!important}
+@media(prefers-reduced-motion:no-preference){
+ html[data-study-experience] [data-reaction-wallet-trigger] .adaptive-television-reaction__glyph--flora-trigger{animation:study-wallet-turn 3s linear infinite}
+}
+@keyframes study-wallet-turn{to{transform:rotate(360deg)}}
