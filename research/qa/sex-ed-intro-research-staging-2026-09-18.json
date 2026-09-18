@@ -1,0 +1,206 @@
+{
+  "date": "2026-09-18",
+  "environment": "staging",
+  "sourceCommit": "d68edf2aec4ee2633a74eee6dfaf01a09cbd0679",
+  "proofUrls": [
+    "https://staging.universalmind.tv/vogue/iam/index.html?sexEd=1",
+    "https://staging.universalmind.tv/vogue/iam/sex-ed-research.html"
+  ],
+  "notionSource": {
+    "id": "3df7b9c9-9c56-80bf-b952-e2b34c38f8d3",
+    "title": "Tantra, BDSM and Subspace for Emotional Intelligence In The Bedroom, Mindfulness And Mental Health, Together As One",
+    "lastEditedAt": "2026-09-18T01:33:04.639Z",
+    "preservedTextFragments": 48,
+    "preservedSourceSections": 4,
+    "preservedReferences": 13,
+    "sourceUnmodified": true,
+    "scope": "Website formatting and source fidelity; no independent scientific review."
+  },
+  "deployment": {
+    "method": "./deploy-panthur-staging.sh changed",
+    "uploadedFiles": 6,
+    "unchangedFilesSkipped": 1053,
+    "requiredPreflights": "passed",
+    "protectedOwnerRuntime": "verified unchanged",
+    "productionModified": false
+  },
+  "browser": {
+    "chromiumProcessMuted": true,
+    "results": [
+      {
+        "label": "desktop",
+        "shelf": {
+          "intro": {
+            "x": 77.48942565917969,
+            "y": 326.62725830078125,
+            "width": 1003.9229125976562,
+            "height": 63.85888671875,
+            "top": 326.62725830078125,
+            "right": 1081.412338256836,
+            "bottom": 390.48614501953125,
+            "left": 77.48942565917969
+          },
+          "ethics": {
+            "x": 77.48942565917969,
+            "y": 402.5332336425781,
+            "width": 33.81964874267578,
+            "height": 16.062744140625,
+            "top": 402.5332336425781,
+            "right": 111.30907440185547,
+            "bottom": 418.5959777832031,
+            "left": 77.48942565917969
+          },
+          "research": {
+            "x": 129.3796844482422,
+            "y": 402.5332336425781,
+            "width": 48.28240966796875,
+            "height": 16.062744140625,
+            "top": 402.5332336425781,
+            "right": 177.66209411621094,
+            "bottom": 418.5959777832031,
+            "left": 129.3796844482422
+          },
+          "panel": {
+            "x": 33.31681823730469,
+            "y": 267.77227783203125,
+            "width": 1373.3665771484375,
+            "height": 444.37701416015625,
+            "top": 267.77227783203125,
+            "right": 1406.6833953857422,
+            "bottom": 712.1492919921875,
+            "left": 33.31681823730469
+          },
+          "overflow": 0,
+          "calls": {
+            "fullscreen": 0,
+            "microphone": 0
+          },
+          "selection": "no_checkin_random"
+        },
+        "research": {
+          "title": "Tantra, BDSM and Subspace for Emotional Intelligence In The Bedroom, Mindfulness And Mental Health, Together As One",
+          "headings": [
+            "\ud83e\uddd8\u200d\u2642\ufe0f Tantra & Sexual Mindfulness",
+            "\u26d3\ufe0f BDSM & Emotional Intelligence",
+            "\ud83c\udf0c The Science of \"Subspace\"",
+            "Summary of Intersecting Benefits",
+            "References"
+          ],
+          "references": 13,
+          "rows": 3,
+          "columns": 4,
+          "overflow": 0,
+          "media": 0,
+          "calls": {
+            "fullscreen": 0,
+            "microphone": 0
+          },
+          "brokenAnchors": 0
+        },
+        "ethicsOpenClose": true,
+        "returnToShelf": true,
+        "pageErrors": []
+      },
+      {
+        "label": "mobile",
+        "shelf": {
+          "intro": {
+            "x": 42.33238983154297,
+            "y": 180.71803283691406,
+            "width": 249.12393188476562,
+            "height": 167.9751434326172,
+            "top": 180.71803283691406,
+            "right": 291.4563217163086,
+            "bottom": 348.69317626953125,
+            "left": 42.33238983154297
+          },
+          "ethics": {
+            "x": 42.33238983154297,
+            "y": 360.73846435546875,
+            "width": 33.814605712890625,
+            "height": 16.06036376953125,
+            "top": 360.73846435546875,
+            "right": 76.1469955444336,
+            "bottom": 376.798828125,
+            "left": 42.33238983154297
+          },
+          "research": {
+            "x": 94.21491241455078,
+            "y": 360.73846435546875,
+            "width": 48.27521514892578,
+            "height": 16.06036376953125,
+            "top": 360.73846435546875,
+            "right": 142.49012756347656,
+            "bottom": 376.798828125,
+            "left": 94.21491241455078
+          },
+          "panel": {
+            "x": -0.735748291015625,
+            "y": 107.2230224609375,
+            "width": 391.47149658203125,
+            "height": 561.7679443359375,
+            "top": 107.2230224609375,
+            "right": 390.7357482910156,
+            "bottom": 668.990966796875,
+            "left": -0.735748291015625
+          },
+          "overflow": 0,
+          "calls": {
+            "fullscreen": 0,
+            "microphone": 0
+          },
+          "selection": "no_checkin_random"
+        },
+        "research": {
+          "title": "Tantra, BDSM and Subspace for Emotional Intelligence In The Bedroom, Mindfulness And Mental Health, Together As One",
+          "headings": [
+            "\ud83e\uddd8\u200d\u2642\ufe0f Tantra & Sexual Mindfulness",
+            "\u26d3\ufe0f BDSM & Emotional Intelligence",
+            "\ud83c\udf0c The Science of \"Subspace\"",
+            "Summary of Intersecting Benefits",
+            "References"
+          ],
+          "references": 13,
+          "rows": 3,
+          "columns": 4,
+          "overflow": 0,
+          "media": 0,
+          "calls": {
+            "fullscreen": 0,
+            "microphone": 0
+          },
+          "brokenAnchors": 0
+        },
+        "ethicsOpenClose": true,
+        "returnToShelf": true,
+        "pageErrors": []
+      }
+    ]
+  },
+  "servedFiles": [
+    {
+      "file": "sex-ed-research.html",
+      "httpStatus": 200,
+      "byteIdentical": true,
+      "sha256": "d9c29b7394ace0339db5fba638fffe41cd8a11c72be77f86e836f914afdc8059"
+    },
+    {
+      "file": "sex-ed-research.css",
+      "httpStatus": 200,
+      "byteIdentical": true,
+      "sha256": "67e8c4757a1966540cb814c0904999df28ebd6ede6a5494d0fb2304ca1bb436b"
+    },
+    {
+      "file": "adaptive-environment-television.css",
+      "httpStatus": 200,
+      "byteIdentical": true,
+      "sha256": "58fc7ca58e7c1bc11b357bafc6a15c1d60e089bdd0c6f01f8e7e6fc2906a4690"
+    }
+  ],
+  "screenshots": {
+    "desktop-research.png": "47b096cfab9146b5b517054065a7ec3c274011571db2b4f787a72432f5429b7c",
+    "mobile-research.png": "12d871deeac146169050014916368b9c6441c839307e946e2e54a9bb3d9550f7",
+    "desktop-shelf.png": "dd8674f88333a6f9ceb6543293753cdd4b1b09fc4891d175c858c584e2d61e0f",
+    "mobile-shelf.png": "484f4c67cea2e33fdc943f92872aaf4aa1d93267675eefbb093065404d0e90c0"
+  }
+}
