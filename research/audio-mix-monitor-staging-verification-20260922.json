@@ -1,0 +1,64 @@
+{
+  "verified_at": "2026-09-22T04:32:07.901783+10:00",
+  "environment": "staging",
+  "url": "https://staging.universalmind.tv/vogue/iam/index.html?quantumTreeMonitor=1",
+  "source_commit": "dca9c796716626480a718f39e26073d338a17653",
+  "passed": true,
+  "muted_process": true,
+  "browser_checks": [
+    "No-check-in random programme; no phantom synth selection, output or clock",
+    "Real random programme, Quantum Tree and mantra clocks advance; mantra output verified",
+    "Existing session choice runs synth; rendered-frame clock, actual route gain, carrier and all four rates visible",
+    "Mantra off freezes its file position and reads zero volume",
+    "Suspended audio context freezes synth runtime and clears live output",
+    "Sound master off freezes synth runtime and zeroes synth/mantra volume",
+    "Programme pause preserves displayed position and closes mantra gain",
+    "Desktop, mobile and landscape overlay bounded, scrollable and without horizontal overflow"
+  ],
+  "synth_run_seconds": {
+    "before": 0.7575510204081632,
+    "after": 2.27265306122449
+  },
+  "viewports": [
+    [
+      1440,
+      1000
+    ],
+    [
+      390,
+      844
+    ],
+    [
+      844,
+      390
+    ]
+  ],
+  "page_errors": [],
+  "media_and_browser_closed": true,
+  "audio_clock_sample_rates_tested": [
+    44100,
+    48000
+  ],
+  "served_assets": [
+    {
+      "file": "adaptive-environment-television.js",
+      "sha256": "5dbb4639f83808dcf841213dac6c20f914ac9fd6474ddae876217c4420f95f03",
+      "served_bytes_match": true
+    },
+    {
+      "file": "adaptive-sound/controller-v1.js",
+      "sha256": "38737c206257d60db7d61a78ba3c9f9916debade03d6bcf0fdef63f456310a78",
+      "served_bytes_match": true
+    },
+    {
+      "file": "adaptive-sound/worklet-v1.js",
+      "sha256": "319a423521a5b7d1b64cf2b5fddc0c1238e9ed70d3245fabffeca58e0db7e67a",
+      "served_bytes_match": true
+    }
+  ],
+  "protected_owner_runtime_state": "verified unchanged by deploy-panthur-staging.sh",
+  "production_modified": false,
+  "original_deployed_source_commit": "59957c55a92eccc856df484218327dd2cb694c90",
+  "reconciled_staging_parent": "058a6e570dcb38a1c04e6fcf8a1f53594606c6d8",
+  "reconciliation": "Preserved the separately completed Sovereignty staging update; all six deployed overlay files are byte-identical after rebase."
+}
