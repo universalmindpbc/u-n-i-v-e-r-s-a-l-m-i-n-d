@@ -1,0 +1,209 @@
+{
+  "verified_at_utc": "2026-09-21T19:08:37.716448+00:00",
+  "source_commit": "ba9df9fd794c096fecbdd2dc3a40221c03854c02",
+  "environment": "https://staging.universalmind.tv",
+  "proof_urls": [
+    "https://staging.universalmind.tv/vogue/iam/quantum-tree-control.html",
+    "https://staging.universalmind.tv/vogue/iam/index.html?quantumTreeMonitor=1"
+  ],
+  "production_modified": false,
+  "root_cause": "The dashboard replaced Play button text nodes on every animation frame. WebKit lost text-targeted clicks when replacement occurred between pointer down and up.",
+  "reproduced_before_fix": {
+    "webkit": {
+      "delivered": 12,
+      "attempted": 15,
+      "missed": "Center of each of the three original Play buttons"
+    },
+    "chromium": {
+      "delivered": 15,
+      "attempted": 15
+    }
+  },
+  "deployed_button_hit_tests": [
+    {
+      "browser": "chromium",
+      "passed": true,
+      "delivered": 40,
+      "attempted": 40,
+      "viewports": [
+        "1470x956",
+        "390x844"
+      ],
+      "positions": [
+        "top center",
+        "center",
+        "bottom center",
+        "left center",
+        "right center"
+      ],
+      "buttons": [
+        "Quantum Tree isolated",
+        "Mantra isolated",
+        "Play together",
+        "Synth test"
+      ],
+      "page_errors": []
+    },
+    {
+      "browser": "webkit",
+      "passed": true,
+      "delivered": 40,
+      "attempted": 40,
+      "viewports": [
+        "1470x956",
+        "390x844"
+      ],
+      "positions": [
+        "top center",
+        "center",
+        "bottom center",
+        "left center",
+        "right center"
+      ],
+      "buttons": [
+        "Quantum Tree isolated",
+        "Mantra isolated",
+        "Play together",
+        "Synth test"
+      ],
+      "page_errors": []
+    }
+  ],
+  "browser_safety": {
+    "playback_processes": "Dedicated headless Chromium, --mute-audio asserted before navigation",
+    "webkit": "Non-playback hit tests only; capture handler blocked button actions and HTMLMediaElement.play was disabled",
+    "owner_authentication": "Owner API response fixture; no credentials or settings changed",
+    "settings_writes": false,
+    "native_fullscreen": false,
+    "cleanup": "Owned automated pages and browsers closed after tests; media paused"
+  },
+  "owner_dashboard": {
+    "passed": true,
+    "checks": [
+      {
+        "label": "First click on cold dashboard starts all three layers; synth clock and measured output advance",
+        "synth": {
+          "running": true,
+          "pending": false,
+          "enabled": true,
+          "volume": 0.3499999940395355,
+          "outputRms": 0.002621512879332637,
+          "runSeconds": 0.5050340136054422,
+          "profileId": "mindfulness_theta_80_v1",
+          "carrierHz": 111,
+          "error": ""
+        }
+      },
+      {
+        "label": "Target-volume isolated playback and changing post-gain waveform",
+        "currentTime": 0.010667,
+        "playing": true,
+        "gain": 0.018333332613110542,
+        "targetGain": 0.018333333333333333,
+        "outputRms": 4.6544942344076766e-08,
+        "advancing": true,
+        "outputVerified": true,
+        "error": ""
+      },
+      {
+        "label": "Single-click isolated play, pause/resume, volume, three-layer combined play/pause, and Stop all passed"
+      },
+      {
+        "label": "Desktop and mobile controls visible without horizontal overflow"
+      }
+    ],
+    "errors": []
+  },
+  "main_mix": {
+    "passed": true,
+    "local_asset_overrides": false,
+    "checks": [
+      "Skipped check-in and Heart Rate select the explicit default synth profile; audio waits for playback",
+      "One programme Play click starts the synth with both checks skipped and Sound panel closed",
+      "Real random programme, Quantum Tree and mantra clocks advance; mantra output verified",
+      "Existing session choice runs synth; rendered-frame clock, actual route gain, carrier and all four rates visible",
+      "Mantra off freezes its file position and reads zero volume",
+      "Suspended audio context freezes synth runtime and clears live output",
+      "Sound master off freezes synth runtime and zeroes synth/mantra volume",
+      "Programme pause preserves displayed position and closes mantra gain",
+      "Desktop, mobile and landscape overlay bounded, scrollable and without horizontal overflow"
+    ],
+    "page_errors": [],
+    "cleanup": true
+  },
+  "default_profile": {
+    "basis": "default_session_profile",
+    "profile": "mindfulness_theta_80_v1",
+    "carrier_hz": 111,
+    "source": "Shared sound intent policy; an explicit platform default when check-in/Heart Rate are skipped, not a personalised inference"
+  },
+  "local_checks": {
+    "browser_server_session_policy_parity": "20 band/carrier combinations; 538 JS assertions",
+    "python_policy": "20 combinations and existing safety states passed",
+    "sound_panel_preflight": "passed",
+    "deployment_preflights": "passed"
+  },
+  "deployment": {
+    "workflow": "./deploy-panthur-staging.sh changed",
+    "uploaded_files": 12,
+    "protected_owner_runtime_unchanged": true,
+    "manifest_sha256": "2b9ac3d0336c2a1a354ef73d9d79c6183fea8ba0a2feecee739b11f49114232d"
+  },
+  "served_asset_hashes": [
+    {
+      "file": "i  a m/adaptive-environment-television.html",
+      "sha256": "b2d8de60e35c026fb7590cc0df8b5f6b80a0d845f4a95ae3d7565fe3c49e6502",
+      "bytes": 13329
+    },
+    {
+      "file": "i  a m/adaptive-environment-television.js",
+      "sha256": "675f1c7ceb9eef138f04f2740c0adc680c88142f1c76b7628c19eff1ef454ae9",
+      "bytes": 490631
+    },
+    {
+      "file": "i  a m/adaptive-sound-intent-policy-v1.json",
+      "sha256": "90b77055b3ad137c9399c98d6792a0d495185734876ec9056ec71735c9e87f8e",
+      "bytes": 6844
+    },
+    {
+      "file": "i  a m/adaptive-sound/controller-v1.js",
+      "sha256": "2f2fad2a957fa948c200e1b2834352742a221b0dd9721f67732792aced259eef",
+      "bytes": 41153
+    },
+    {
+      "file": "i  a m/adaptive-sound/owner-synth-v1.js",
+      "sha256": "7285f3f3de9e59fa6fafbb881e28e0ddde15f388e816e17ea45efbebacde6fcd",
+      "bytes": 3564
+    },
+    {
+      "file": "i  a m/adaptive-sound/session-v1.js",
+      "sha256": "3cbe017b92eb3071bad52d0230da31e2c5de02982d3e46612e9f86b3bd41fe34",
+      "bytes": 26355
+    },
+    {
+      "file": "i  a m/homepage-alternate.js",
+      "sha256": "3132eda330fae613bd112c5ea0893125bbb63c9525d64319dea483f5819b1bfc",
+      "bytes": 14684
+    },
+    {
+      "file": "i  a m/index-alt.html",
+      "sha256": "7e4ddc712548b70b1cd9655dbe1863854dfe70bdddc0b2d8a90449e223e7b02f",
+      "bytes": 129037
+    },
+    {
+      "file": "i  a m/index.html",
+      "sha256": "629ce48308ce4eeea150a903e0557fbafc2dd3777e5600313ab0501918ef03a1",
+      "bytes": 170284
+    },
+    {
+      "file": "i  a m/quantum-tree-control.html",
+      "sha256": "43cacc753bf0068e000f04cdf0e9116acf18223b7214c7fb8b1ae791e4bbead9",
+      "bytes": 13319
+    },
+    {
+      "file": "i  a m/quantum-tree-control.js",
+      "sha256": "6f784d7a2215ce8a300b4d73afcb69f64b040e629d921207f44b2cbb63677355",
+      "bytes": 21527
+    }
+  ]
+}
