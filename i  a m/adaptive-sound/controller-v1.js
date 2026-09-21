@@ -475,7 +475,7 @@ function initializeAdaptiveSoundPanel() {
     }
     if (state.context.state !== "running") await state.context.resume();
     if (!state.workletLoaded) {
-      await state.context.audioWorklet.addModule(new URL("./worklet-v1.js?v=b38f97f4ce2a", import.meta.url));
+      await state.context.audioWorklet.addModule(new URL("./worklet-v1.js?v=319a423521a5", import.meta.url));
       state.workletLoaded = true;
     }
     if (state.context.state !== "running") await state.context.resume();

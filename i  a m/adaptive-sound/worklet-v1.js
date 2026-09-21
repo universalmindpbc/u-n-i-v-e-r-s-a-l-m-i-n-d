@@ -15,6 +15,7 @@ class IAMAdaptiveSoundProcessorV1 extends AudioWorkletProcessor {
     this.meterSumSquares = 0;
     this.meterPeak = 0;
     this.meterFrames = 0;
+    // Render-thread run time includes master fades and freezes while the master is off.
     this.activeFrames = 0;
     try {
       this.renderer = new AdaptiveSoundRendererV1(options.processorOptions?.condition, sampleRate);
