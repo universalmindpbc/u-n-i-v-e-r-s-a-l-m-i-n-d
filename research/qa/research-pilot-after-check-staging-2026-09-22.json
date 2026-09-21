@@ -1,0 +1,133 @@
+{
+  "sourceCommit": "9543c64f09dcaec977046ae81874d01f76827d4d",
+  "baseStagingCommit": "6ada13f",
+  "scope": "Research video completion and isolated final-30-seconds proof control only.",
+  "failureEvidence": [
+    "Public production app.js and experience.js match the Git source containing the one-shot ended handoff.",
+    "An isolated production-host PHP test reproduces ended media remaining in experience when the first heartbeat starts the server clock late.",
+    "The previous player waits for asynchronous sound preparation before its first heartbeat, then stops heartbeats on ended.",
+    "A live staging browser test also exposed late player callbacks reopening the iframe over the after-check; completed-session callbacks are now ignored."
+  ],
+  "changes": [
+    "Start heartbeats while audio initialises.",
+    "Retain the actual end observation through an in-flight request, server clock delay, timeout or lost response; retry until after_vitals is acknowledged.",
+    "Acknowledge repeated completion requests without adding watched time.",
+    "Keep the after-check visible despite late stopped-player callbacks.",
+    "The staging-only proof button seeks the actual video to duration minus 30 seconds; natural playback and the normal ended handler perform the handoff.",
+    "The proof control does not call the direct preview.experience bypass and is unavailable in the production UI."
+  ],
+  "api": {
+    "runtime": "PHP 8.3 WASM",
+    "checks": [
+      "Origin, CSRF, researcher authentication and staging-only preview enforced",
+      "Production-host regression: existing pilot unlocks once, valid password reaches consent and Heart Check, passwords and ten-person cap remain enforced",
+      "New studies and explicit organiser pauses stay closed; no verification, contact, review or retention values are fabricated",
+      "Existing website password opens the portal directly; staging remains isolated and return identity survives session expiry",
+      "Before/after state machine, 1\u201310 bounds, idempotency, missing vitals and isolated preview completion",
+      "One answer per step persists in order; 10-second scan accepted; PSD stays unavailable; participant cannot choose event window",
+      "Researcher operations require owner session; preview records never enter cohort; enrolment readiness enforced",
+      "Participant and stakeholder codes have separate scopes; no cross-participant or raw stakeholder access",
+      "Reward QR resolves only for owner; private claim and pass authentication stay private; no shared-wallet issuance",
+      "Only $100 after all three sessions; no partial or duplicate payments",
+      "On-demand session starts with no event date; incomplete and already-paid rewards cannot be redeemed",
+      "Shared website password creates separate cohort identities per browser and resumes only its own records",
+      "Production completion clock race reproduced and recovered by retry; lost response acknowledged idempotently; preview skip rejected in production",
+      "Actual media-ended duration advances to after-check; no premature transition or invented exposure after a missing heartbeat",
+      "Replaced media starts a fresh clock without carrying old duration or discarding prior exposure history",
+      "Withdrawal removes requested response fields and invalidates derived results"
+    ]
+  },
+  "completionSync": "Passed busy-request, delayed-acceptance, lost-response, failed-refresh and teardown regressions.",
+  "browser": {
+    "proof": {
+      "mode": "proof",
+      "url": "https://staging.universalmind.tv/vogue/iam/study.php?preview=1",
+      "checks": [
+        {
+          "text": "Preview control is available before playback"
+        },
+        {
+          "text": "Proof button seeks to the real final 30 seconds; normal playback continues",
+          "remaining": 30
+        },
+        {
+          "text": "Natural ending shows after-check; video paused; no fullscreen-exit request",
+          "observedExposure": 30.01165400000002,
+          "skipped": false,
+          "endedRequests": 1
+        },
+        {
+          "text": "After-check opens the embedded Heart Check and saves the isolated result"
+        },
+        {
+          "text": "Tail-end surveys, reward, biometrics results and navigation unlock complete"
+        }
+      ],
+      "errors": [],
+      "endedRequests": 1,
+      "ordinaryRequests": 32,
+      "at": "2026-09-21T18:56:52.149Z"
+    },
+    "retry": {
+      "mode": "retry",
+      "url": "https://staging.universalmind.tv/vogue/iam/study.php?preview=1",
+      "checks": [
+        {
+          "text": "Preview control is available before playback"
+        },
+        {
+          "text": "Research video playing with real duration",
+          "time": 1.536044,
+          "duration": 488.14,
+          "paused": false
+        },
+        {
+          "text": "Natural ending shows after-check; video paused; no fullscreen-exit request",
+          "observedExposure": 0.8811479999999999,
+          "skipped": false,
+          "endedRequests": 3
+        },
+        {
+          "text": "After-check opens the embedded Heart Check and saves the isolated result"
+        },
+        {
+          "text": "Tail-end surveys, reward, biometrics results and navigation unlock complete"
+        }
+      ],
+      "errors": [],
+      "endedRequests": 3,
+      "ordinaryRequests": 1,
+      "at": "2026-09-21T18:57:23.314Z"
+    },
+    "layout": {
+      "mode": "layout",
+      "url": "https://staging.universalmind.tv/vogue/iam/study.php?preview=1",
+      "checks": [
+        {
+          "text": "Preview control is available before playback"
+        },
+        {
+          "text": "Proof control is at the top right, clear of the native planet, with no playback started",
+          "box": {
+            "x": 1121.875,
+            "y": 24,
+            "width": 294.125,
+            "height": 48
+          }
+        }
+      ],
+      "errors": [],
+      "endedRequests": 0,
+      "ordinaryRequests": 0,
+      "at": "2026-09-21T19:00:21.718Z"
+    }
+  },
+  "runtimeProtection": "All four scoped staging deployments verified protected owner runtime unchanged.",
+  "productionModified": false,
+  "limits": [
+    "Browser playback ran in process-muted Chromium; native fullscreen and camera access were intercepted.",
+    "The final 30 seconds were observed to end naturally; no new uninterrupted eight-minute run was performed.",
+    "Heart Check result fixtures were saved only in isolated staging previews; this does not verify real camera accuracy.",
+    "No private production cohort file was accessed."
+  ]
+}
