@@ -29,8 +29,9 @@ function study_site_password_valid(string $password): bool {
 
 function study_site_login(string $returnToken): array {
     $tokenHash=hash('sha256',$returnToken);
-    $open=study_store(static fn(array &$data):array=>['open'=>study_readiness($data['config'])['open']])['open'];
-    if(study_staging()&&!$open){
+    $readiness=study_store(static fn(array &$data):array=>study_readiness($data['config']));
+    $open=$readiness['open'];
+    if(study_staging()&&(!$open||!$readiness['ready'])){
         $preview=substr(hash('sha256','study-preview|'.$returnToken),0,48);
         study_store(function(array &$data):array{$data['participants']['PREVIEW']??=study_new_participant('PREVIEW');return [];},$preview);
         return ['id'=>'PREVIEW','preview'=>$preview];
@@ -52,7 +53,7 @@ function study_staging(): bool {
 }
 
 function study_defaults(): array {
-    return ['revision' => 0, 'config' => ['open' => false, 'stream_uid' => '', 'video_title' => 'Empire of the Sun',
+    return ['revision' => 0, 'config' => ['access_version' => 2, 'open' => false, 'stream_uid' => '', 'video_title' => 'Empire of the Sun',
         'shen_verified' => false, 'experience_verified' => false, 'materials_approved' => false, 'contact_email' => '', 'retention_days' => null, 'bp_active' => false, 'events' => [
             ['label'=>'Sunrise','starts_at'=>null], ['label'=>'Sunset','starts_at'=>null], ['label'=>'Lunchtime','starts_at'=>null]]],
         'participants' => [], 'stakeholders' => [], 'analysis' => null, 'audit' => []];
@@ -69,9 +70,22 @@ function study_store(callable $callback, ?string $preview = null): array {
     $temporary = null;
     try {
         @chmod($path . '.lock', 0600);
-        $data = is_file($path) ? json_decode((string) file_get_contents($path), true, 512, JSON_THROW_ON_ERROR) : study_defaults();
+        $existing = is_file($path);
+        $data = $existing ? json_decode((string) file_get_contents($path), true, 512, JSON_THROW_ON_ERROR) : study_defaults();
         $before = json_encode($data, JSON_THROW_ON_ERROR);
+        $migrateAccess = !isset($data['config']['access_version']);
         $data['config'] += study_defaults()['config'];
+        if ($existing && $preview === null && $migrateAccess) {
+            // Ben approved opening the already-published pilot on 22 September 2026.
+            // Only the untouched legacy lock is corrected; new studies and explicit pauses stay closed.
+            $legacyDefaults = study_defaults()['config']; unset($legacyDefaults['access_version']);
+            $configured = count(array_filter($data['audit'] ?? [], static fn($entry): bool => ($entry['action'] ?? '') === 'admin.config')) > 0;
+            if (!$configured && array_intersect_key($data['config'], $legacyDefaults) == $legacyDefaults) {
+                $data['config']['open'] = true;
+                $data['config']['password_access_enabled'] = true;
+                $data['audit'][] = ['action'=>'pilot_password_access_enabled', 'at'=>gmdate('c')];
+            }
+        }
         $data['config']['delivery'] = 'on_demand';
         $data['config']['events'] = study_defaults()['config']['events'];
         // Retention is enforced whenever the store is opened, before any records can be returned.
@@ -140,13 +154,14 @@ function study_vitals(array $input, bool $preview, int $seconds = 10): array {
 
 function study_readiness(array $config): array {
     $missing = [];
-    if (!preg_match('/\A[a-f0-9]{32}\z/', $config['stream_uid'])) $missing[] = 'Study video';
+    if (!preg_match('/\A[a-f0-9]{32}\z/', study_public_config($config)['stream_uid'])) $missing[] = 'Study video';
     if (!$config['shen_verified']) $missing[] = 'Heart Check verification';
     if (!($config['experience_verified'] ?? false)) $missing[] = 'Ten-minute video and combined experience verification';
     if (!$config['materials_approved']) $missing[] = 'Participant materials and research review';
     if (!filter_var($config['contact_email'], FILTER_VALIDATE_EMAIL)) $missing[] = 'Study contact';
     if (!is_int($config['retention_days']) || $config['retention_days'] < 1) $missing[] = 'Data retention period';
-    return ['ready' => count($missing) === 0, 'missing' => $missing, 'open' => $config['open'] && count($missing) === 0];
+    return ['ready' => count($missing) === 0, 'missing' => $missing,
+        'open' => $config['open'] && (count($missing) === 0 || ($config['password_access_enabled'] ?? false) === true)];
 }
 
 function study_participant_public(array $p): array {

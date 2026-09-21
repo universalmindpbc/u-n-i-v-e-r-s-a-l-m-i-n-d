@@ -1,3 +1,9 @@
+# Password access correction — 22 September 2026
+
+Ben approved opening password access for the existing published pilot, with consent still required. A one-time migration removes only its untouched legacy enrolment lock. Explicit organiser pauses, customised closed configurations and new installations remain closed. No verification, research-review, contact or retention value is invented. The shared website password, ten-person limit and ordered consent/session checks remain enforced; staging previews remain isolated.
+
+The current experience uses Empire Of The Sun x Pryda — We Are The People and ends at its actual media duration, with on-demand sessions. This correction supersedes the closed-by-default description below only for the already-published pilot.
+
 # Recovery revision — 11 September 2026
 
 This revision supersedes conflicting UX, measurement-duration, scheduling and payment descriptions below.

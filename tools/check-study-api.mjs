@@ -40,6 +40,39 @@ try {
   assert.equal((await request('admin.dataset')).status,403);
   assert.equal((await request('preview',{}, {host:'universalmind.tv',origin:'https://universalmind.tv'})).status,403);
   checks.push('Origin, CSRF, researcher authentication and staging-only preview enforced');
+  const cohortPath='/app/api/.runtime-private/study/cohort.json',baseline=JSON.parse(php.readFileAsText(cohortPath));
+  const production={host:'universalmind.tv',origin:'https://universalmind.tv'};
+  async function productionOk(action,body={}){const result=await request(action,body,production);assert.equal(result.status,200,JSON.stringify(result));return result;}
+  assert.equal((await request('login',{code:'Existing-Website-Password'},production)).status,422,'New installations remain closed');
+  const legacy=structuredClone(baseline);delete legacy.config.access_version;
+  php.writeFile(cohortPath,JSON.stringify(legacy));cookies={};await productionOk();
+  assert.equal((await request('login',{code:'wrong-website-password'},production)).status,401);
+  await productionOk('login',{code:'Existing-Website-Password'});
+  const admitted=await productionOk();assert.equal(admitted.preview,false);assert.equal(admitted.participant.id,'P01');
+  assert.equal(admitted.config.shen_verified,false);assert.equal(admitted.config.materials_approved,false);assert.equal(admitted.config.retention_days,null);
+  assert.equal(admitted.readiness.open,true);assert.equal(admitted.readiness.ready,false);
+  assert.equal((await request('session.start',{},production)).status,422,'Consent remains mandatory');
+  await productionOk('consent',{version:first.protocol.version,adult_woman:true,equipment:true,participation:true,research_data:true});
+  await productionOk('session.start');assert.equal((await productionOk()).participant.sessions[0].state,'before_vitals');
+  assert.equal((await productionOk()).config.measurement_seconds,10);
+  const admittedCookie=cookies.iam_study_return;
+  for(let index=2;index<=10;index++) {cookies={};await productionOk();await productionOk('login',{code:'Existing-Website-Password'});assert.equal((await productionOk()).participant.id,'P'+String(index).padStart(2,'0'));}
+  cookies={};await productionOk();assert.equal((await request('login',{code:'Existing-Website-Password'},production)).status,422,'Eleventh browser must not exceed pilot limit');
+  cookies={iam_study_return:admittedCookie};await productionOk();await productionOk('login',{code:'Existing-Website-Password'});assert.equal((await productionOk()).participant.id,'P01');
+  const opened=JSON.parse(php.readFileAsText(cohortPath));assert.equal(opened.audit.filter(e=>e.action==='pilot_password_access_enabled').length,1);
+  opened.config.open=false;php.writeFile(cohortPath,JSON.stringify(opened));assert.equal((await productionOk()).readiness.open,false);assert.equal((await request('session.start',{},production)).status,422);
+  checks.push('Production-host regression: existing pilot unlocks once, valid password reaches consent and Heart Check, passwords and ten-person cap remain enforced');
+  for(const kind of ['recorded-owner-pause','configured-legacy-pause','current-pause']){
+    const paused=structuredClone(legacy);
+    if(kind==='recorded-owner-pause')paused.audit.push({action:'admin.config'});
+    if(kind==='configured-legacy-pause')paused.config.contact_email='organiser@example.test';
+    if(kind==='current-pause')paused.config.access_version=2;
+    php.writeFile(cohortPath,JSON.stringify(paused));cookies={};assert.equal((await productionOk()).readiness.open,false);
+    assert.equal((await request('login',{code:'Existing-Website-Password'},production)).status,422);
+  }
+  checks.push('New studies and explicit organiser pauses stay closed; no verification, contact, review or retention values are fabricated');
+  php.writeFile(cohortPath,JSON.stringify(baseline));cookies={};await ok();
+
   assert.equal((await request('login',{code:'wrong-website-password'})).status,401);
   await ok('login',{code:'Existing-Website-Password'});const sharedPreview=await ok();assert.equal(sharedPreview.preview,true);assert.equal(sharedPreview.participant.id,'PREVIEW');
   assert.ok(cookies.iam_study_return);const returnCookie=cookies.iam_study_return;
