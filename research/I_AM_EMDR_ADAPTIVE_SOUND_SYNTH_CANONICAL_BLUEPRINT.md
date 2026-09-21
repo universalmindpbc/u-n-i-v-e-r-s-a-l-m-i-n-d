@@ -1921,7 +1921,7 @@ This supersedes the earlier no-context/no-selection rule for ordinary sessions.
 
 - Start the synth from the same playback gesture as Quantum Tree and the programme.
 - When no current inference or citizen choice selects a condition, use the registry's
-  explicit default session profile: Theta-dominant, 111 Hz carrier, with the existing
+  explicit default session profile: Alpha-dominant at 10.11 Hz, 222 Hz carrier, with the existing
   four-lane allocation, mastering and output gain. This is an implementation default,
   not a claim that a check-in, Heart Rate observation or personalised inference occurred.
 - Keep the existing Sound off control functional. Opening the Sound panel must not
@@ -1930,3 +1930,8 @@ This supersedes the earlier no-context/no-selection rule for ordinary sessions.
   individual test controls and Stop all remain available.
 - Button labels must not be rewritten on every animation frame: WebKit can lose
   clicks on text that is replaced between pointer-down and pointer-up.
+- Ben's comparison correction on 2026-09-22: the default must differ from Quantum
+  Tree's 7.38 Hz pulse and 111 Hz carrier. The overlay and owner dashboard must name
+  the primary pulse and display all lane power allocations from renderer diagnostics:
+  80% primary, 6.66% each secondary, with 0.01% noise and 0.01% silence reserve.
+  Keep these power allocations distinct from overall synth output volume.

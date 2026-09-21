@@ -6,7 +6,7 @@
   <meta name="robots" content="noindex,nofollow">
   <meta name="referrer" content="no-referrer">
   <title>Quantum Tree — Owner Calibration</title>
-  <link rel="stylesheet" href="quantum-tree-control.css?v=952eb746acf3">
+  <link rel="stylesheet" href="quantum-tree-control.css?v=55edd4cda1f7">
 </head>
 <body>
   <section class="quantum-access" data-owner-access aria-labelledby="quantum-access-title">
@@ -120,13 +120,22 @@
     <section class="quantum-card" aria-labelledby="synth-heading">
       <p class="quantum-card__kicker">Additional audio layer</p>
       <div class="quantum-card__heading"><h2 id="synth-heading">Isochronic synth + carrier</h2><span class="quantum-status" data-synth-preview-state>Stopped</span></div>
-      <p class="quantum-note">Default session mix: Theta-dominant with a 111 Hz carrier. All four isochronic lanes run at 3.33, 7.38, 10.11 and 111 Hz. Play together includes this synth.</p>
+      <p class="quantum-note">Default comparison: Alpha at 10.11 Hz with a 222 Hz carrier, distinct from Quantum Tree's 7.38 Hz pulse and 111 Hz carrier. Play together includes this synth.</p>
       <div class="quantum-actions">
         <button type="button" class="quantum-button quantum-button--primary" data-synth-preview-toggle>Play synth test</button>
         <button type="button" class="quantum-button" data-synth-preview-stop>Stop</button>
       </div>
+      <dl class="quantum-synth-mix">
+        <dt>Primary pulse</dt><dd data-synth-preview-primary>Alpha 10.11 Hz · 80.00%</dd>
+        <dt>Delta pulse</dt><dd data-synth-preview-delta>3.33 Hz · 6.66%</dd>
+        <dt>Theta pulse</dt><dd data-synth-preview-theta>7.38 Hz · 6.66%</dd>
+        <dt>Alpha pulse</dt><dd data-synth-preview-alpha>10.11 Hz · 80.00%</dd>
+        <dt>Gamma pulse</dt><dd data-synth-preview-gamma>111 Hz · 6.66%</dd>
+        <dt>Carrier</dt><dd data-synth-preview-carrier>222 Hz</dd>
+      </dl>
+      <p class="quantum-note" data-synth-preview-allocation>Lane percentages show synth power allocation, before output volume. Noise 0.01% · silence reserve 0.01%.</p>
       <dl class="quantum-diagnostics" style="margin-top:24px">
-        <div><dt>Volume</dt><dd data-synth-preview-volume>0.00%</dd></div>
+        <div><dt>Output volume</dt><dd data-synth-preview-volume>0.00%</dd></div>
         <div><dt>Live run time</dt><dd data-synth-preview-clock>0:00</dd></div>
         <div><dt>Measured output</dt><dd data-synth-preview-output>Silent</dd></div>
       </dl>
@@ -182,6 +191,6 @@
     </section>
   </main>
 
-  <script type="module" src="quantum-tree-control.js?v=6f784d7a2215"></script>
+  <script type="module" src="quantum-tree-control.js?v=6167a5cb8854"></script>
 </body>
 </html>

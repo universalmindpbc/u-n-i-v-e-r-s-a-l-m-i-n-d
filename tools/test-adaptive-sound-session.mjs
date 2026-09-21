@@ -59,8 +59,8 @@ for (const bandIntent of bands) {
 
 const noCheckin = resolveAdaptiveSoundSession({}, policy, { sourceEvent: "no_checkin" });
 assert.equal(noCheckin.selected, true);
-assert.equal(noCheckin.band_intent, "theta");
-assert.equal(noCheckin.carrier_hz, 111);
+assert.equal(noCheckin.band_intent, "alpha");
+assert.equal(noCheckin.carrier_hz, 222);
 assert.equal(noCheckin.selection_basis, "default_session_profile");
 assert.equal(noCheckin.safety.adaptive_frequencies_enabled, true);
 assert.deepEqual(comparable(noCheckin), comparable(resolveWithPython({})));
@@ -79,8 +79,8 @@ const insufficient = resolveAdaptiveSoundSession({
   citizen_needs: { Emotion: { Calm: 1 } },
 }, policy, { sourceEvent: "insufficient_context" });
 assert.equal(insufficient.selected, true);
-assert.equal(insufficient.profile_id, "mindfulness_theta_80_v1");
-assert.equal(insufficient.carrier_hz, 111);
+assert.equal(insufficient.profile_id, "calm_alpha_80_v1");
+assert.equal(insufficient.carrier_hz, 222);
 assert.equal(insufficient.safety.adaptive_frequencies_enabled, true);
 assertions += 4;
 

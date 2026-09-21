@@ -1,4 +1,4 @@
-import { createOwnerSynthTest } from "./adaptive-sound/owner-synth-v1.js?v=7285f3f3de9e";
+import { createOwnerSynthTest } from "./adaptive-sound/owner-synth-v1.js?v=3e76b26be3bc";
 
 (function () {
   const DEFAULT_PEAK = 0.055;
@@ -239,6 +239,18 @@ import { createOwnerSynthTest } from "./adaptive-sound/owner-synth-v1.js?v=7285f
     setText("[data-synth-preview-toggle]", synth.pending ? "Starting synth…" : synth.enabled ? "Pause synth test" : "Play synth test");
     document.querySelector("[data-synth-preview-toggle]").disabled = synth.pending;
     setText("[data-synth-preview-state]", synth.error || (synth.running ? "Running" : synth.pending ? "Loading" : "Stopped"));
+    if (synth.lanes) {
+      const percent = value => `${(Math.max(0, Number(value) || 0) * 100).toFixed(2)}%`;
+      const primary = Object.entries(synth.lanes).filter(([, lane]) => lane.enabled && lane.power_weight > 0)
+        .sort((a, b) => b[1].power_weight - a[1].power_weight)[0];
+      setText("[data-synth-preview-primary]", primary
+        ? `${primary[0][0].toUpperCase() + primary[0].slice(1)} ${primary[1].rate_hz} Hz · ${percent(primary[1].power_weight)}` : "all lanes off");
+      for (const [id, lane] of Object.entries(synth.lanes)) {
+        setText(`[data-synth-preview-${id}]`, `${lane.rate_hz} Hz · ${percent(lane.enabled ? lane.power_weight : 0)}${lane.enabled ? "" : " · off"}`);
+      }
+      setText("[data-synth-preview-carrier]", `${synth.carrierHz} Hz`);
+      setText("[data-synth-preview-allocation]", `Lane percentages show synth power allocation, before output volume. Noise ${percent(synth.allocation?.noise_power_weight)} · silence reserve ${percent(synth.allocation?.silence_power_weight)}.`);
+    }
     setText("[data-synth-preview-volume]", `${(synth.volume * 100).toFixed(2)}%`);
     setText("[data-synth-preview-clock]", `${Math.floor(synth.runSeconds / 60)}:${String(Math.floor(synth.runSeconds % 60)).padStart(2,"0")}`);
     setText("[data-synth-preview-output]", synth.outputRms > 1e-9 ? `${decibels(synth.outputRms).toFixed(1)} dBFS RMS` : "Silent");

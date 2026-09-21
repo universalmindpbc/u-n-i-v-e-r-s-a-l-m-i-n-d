@@ -21,6 +21,14 @@ try {
  await page.locator('[data-preview-together]').click();
  await page.waitForFunction(()=>IAMMantraAudition.diagnostics().outputVerified&&!document.querySelector('[data-quantum-preview]').paused&&IAMOwnerSynthAudition.diagnostics().outputRms>0,null,{timeout:30000});
  const synthStart=await page.evaluate(()=>IAMOwnerSynthAudition.diagnostics());
+ assert.equal(synthStart.profileId,'calm_alpha_80_v1');assert.equal(synthStart.carrierHz,222);
+ await page.waitForFunction(()=>document.querySelector('[data-synth-preview-primary]').textContent === 'Alpha 10.11 Hz · 80.00%');
+ for(const [id,rate,weight] of [['delta',3.33,6.66],['theta',7.38,6.66],['alpha',10.11,80],['gamma',111,6.66]]) {
+  assert.equal(await page.locator(`[data-synth-preview-${id}]`).textContent(),`${rate} Hz · ${weight.toFixed(2)}%`);
+  assert.ok(Math.abs(synthStart.lanes[id].power_weight*100-weight)<1e-8);
+ }
+ assert.equal(await page.locator('[data-synth-preview-carrier]').textContent(),'222 Hz');
+ await page.locator('.quantum-synth-mix').scrollIntoViewIfNeeded();await page.screenshot({path:out+'/owner-synth-desktop.png'});
  await page.waitForFunction(t=>IAMOwnerSynthAudition.diagnostics().runSeconds>t,synthStart.runSeconds);
  report.checks.push({label:'First click on cold dashboard starts all three layers; synth clock and measured output advance',synth:synthStart});
  await page.locator('[data-preview-stop-both]').click();
@@ -50,6 +58,7 @@ try {
  report.checks.push({label:'Single-click isolated play, pause/resume, volume, three-layer combined play/pause, and Stop all passed'});
  await page.locator('#mantra-preview-slider').scrollIntoViewIfNeeded();await page.screenshot({path:out+'/owner-desktop.png'});
  await page.setViewportSize({width:390,height:844});await page.locator('[data-mantra-preview-toggle]').scrollIntoViewIfNeeded();await page.screenshot({path:out+'/owner-mobile.png'});
+ await page.locator('.quantum-synth-mix').scrollIntoViewIfNeeded();await page.screenshot({path:out+'/owner-synth-mobile.png'});
  const overflow=await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth);assert.equal(overflow,false);
  report.checks.push({label:'Desktop and mobile controls visible without horizontal overflow'});
  assert.deepEqual(errors,[]);report.passed=true;

@@ -12,7 +12,7 @@
     "time_weather_location_adaptation": "required_in_every_initial_adaptive_decision_horizons_1_2_3",
     "automatic_mid_session_context_morph": false,
     "no_checkin_rule": "play_default_session_profile",
-    "default_session": { "band_intent": "theta", "carrier_intent": "cognition_joy" },
+    "default_session": { "band_intent": "alpha", "carrier_intent": "self_connection" },
     "manual_choice_authority": "current_session_override"
   },
   "current_inference_contract": {

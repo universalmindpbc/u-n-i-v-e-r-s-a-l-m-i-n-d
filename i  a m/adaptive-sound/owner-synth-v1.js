@@ -3,7 +3,7 @@ import { createCandidateCondition } from './profiles-v1.js?v=3f39020ebeab';
 export function createOwnerSynthTest() {
   let context, node, gain, moduleReady, pending, lastMessage;
   let desired = false, sequence = 0, error = '', messageAt = 0;
-  let profileId = 'mindfulness_theta_80_v1', carrierHz = 111;
+  let profileId = 'calm_alpha_80_v1', carrierHz = 222;
   const volume = .35;
   const policy = fetch(new URL('../adaptive-sound-intent-policy-v1.json', import.meta.url), {cache:'no-store'})
     .then(response => { if(!response.ok) throw Error('Sound policy unavailable'); return response.json(); });
@@ -60,7 +60,8 @@ export function createOwnerSynthTest() {
       const currentGain = running ? gain.gain.value : 0;
       return {running,pending:Boolean(pending),enabled:desired,volume:currentGain,
         outputRms:running ? Number(lastMessage?.meter?.output_rms || 0)*currentGain : 0,
-        runSeconds:Number(lastMessage?.run_seconds || 0),profileId,carrierHz,error};
+        runSeconds:Number(lastMessage?.run_seconds || 0),profileId,carrierHz:Number(lastMessage?.diagnostics?.carrier_hz || carrierHz),error,
+        lanes:lastMessage?.diagnostics?.lanes || null,allocation:lastMessage?.diagnostics?.allocation || null};
     },
   };
 }

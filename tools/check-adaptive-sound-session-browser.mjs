@@ -179,12 +179,12 @@ async function checkNoCheckin() {
   const snapshot = await page.evaluate(() => window.IAMAdaptiveSoundSnapshot);
   const readout = await readHomepageState(page);
   assert.equal(snapshot.selected, true);
-  assert.equal(snapshot.band_intent, "theta");
-  assert.equal(snapshot.carrier_hz, 111);
+  assert.equal(snapshot.band_intent, "alpha");
+  assert.equal(snapshot.carrier_hz, 222);
   assert.equal(snapshot.selection_basis, "default_session_profile");
   assert.equal(snapshot.safety.adaptive_frequencies_enabled, true);
   assert.equal(readout.selected, "true");
-  assert.match(readout.text, /111/);
+  assert.match(readout.text, /222/);
   assert.doesNotMatch(readout.text, /444/);
   assertNoTargetLeakage(snapshot);
   await assertMediaStillStopped(page);

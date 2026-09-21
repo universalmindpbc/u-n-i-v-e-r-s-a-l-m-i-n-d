@@ -8473,13 +8473,18 @@
         <h3>Additional isochronic + carrier</h3>
         <dl>
           <dt>Playback</dt><dd data-mix-synth-status>not started</dd>
-          <dt>Isochronic tones</dt><dd data-mix-synth-tones>no selection</dd>
+          <dt>Primary pulse</dt><dd data-mix-synth-primary style="font-weight:700;color:#9effbf">waiting for synth</dd>
+          <dt>Delta pulse</dt><dd data-mix-synth-delta>—</dd>
+          <dt>Theta pulse</dt><dd data-mix-synth-theta>—</dd>
+          <dt>Alpha pulse</dt><dd data-mix-synth-alpha>—</dd>
+          <dt>Gamma pulse</dt><dd data-mix-synth-gamma>—</dd>
           <dt>Carrier</dt><dd data-mix-synth-carrier>no selection</dd>
-          <dt>Shared volume</dt><dd data-mix-synth-volume>0.0%</dd>
+          <dt>Output volume</dt><dd data-mix-synth-volume>0.0%</dd>
           <dt>Output RMS</dt><dd data-mix-synth-output>silent</dd>
           <dt>Live run time</dt><dd data-mix-synth-time>0:00</dd>
         </dl>
-        <p style="margin:8px 0 0;opacity:.62;font-size:10px">Live synth · shared output and clock · run time resets when the synth restarts.</p>
+        <p data-mix-synth-allocation style="margin:8px 0 0;opacity:.62;font-size:10px">Lane percentages show synth power allocation, before output volume.</p>
+        <p style="margin:6px 0 0;opacity:.62;font-size:10px">Live synth · run time resets when the synth restarts.</p>
       </section>
       <section aria-label="Mantra audio">
         <h3>Mantra</h3>
@@ -8569,10 +8574,20 @@
       : !synth.synth_enabled ? "disabled" : synth.running ? (synth.output_rms > 1e-9 ? "running" : "running · silent")
       : synth.context_state === "suspended" ? "suspended" : "not running";
     setText("[data-mix-synth-status]", synthStatus);
-    setText("[data-mix-synth-tones]", synth?.lanes
-      ? Object.entries(synth.lanes).map(([id, lane]) => `${id[0].toUpperCase() + id.slice(1)} ${lane.rate_hz} Hz${lane.enabled ? "" : " (off)"}`).join(" · ")
-      : synth?.profile_id ? "waiting for renderer" : "no selection");
-    setText("[data-mix-synth-carrier]", synth?.route_carrier_hz ? `${synth.route_carrier_hz} Hz` : "not running");
+    const primaryLane = Object.entries(synth?.lanes || {})
+      .filter(([, lane]) => lane.enabled && lane.power_weight > 0)
+      .sort((a, b) => b[1].power_weight - a[1].power_weight)[0];
+    setText("[data-mix-synth-primary]", primaryLane
+      ? `${primaryLane[0][0].toUpperCase() + primaryLane[0].slice(1)} ${primaryLane[1].rate_hz} Hz · ${percent(primaryLane[1].power_weight)}`
+      : synth?.lanes ? "all lanes off" : "waiting for synth");
+    for (const id of ["delta", "theta", "alpha", "gamma"]) {
+      const lane = synth?.lanes?.[id];
+      setText(`[data-mix-synth-${id}]`, lane
+        ? `${lane.rate_hz} Hz · ${percent(lane.enabled ? lane.power_weight : 0)}${lane.enabled ? "" : " · off"}` : "—");
+    }
+    setText("[data-mix-synth-allocation]", "Lane percentages show synth power allocation, before output volume."
+      + (synth?.allocation ? ` Noise ${percent(synth.allocation.noise_power_weight)} · silence reserve ${percent(synth.allocation.silence_power_weight)}.` : ""));
+    setText("[data-mix-synth-carrier]", synth?.rendered_carrier_hz ? `${synth.rendered_carrier_hz} Hz` : "not running");
     setText("[data-mix-synth-volume]", percent(synth?.current_output_gain));
     setText("[data-mix-synth-output]", synth?.output_rms > 1e-9 ? `${(20 * Math.log10(synth.output_rms)).toFixed(1)} dBFS` : "silent");
     setText("[data-mix-synth-time]", clock(Number(synth?.run_seconds || 0)));

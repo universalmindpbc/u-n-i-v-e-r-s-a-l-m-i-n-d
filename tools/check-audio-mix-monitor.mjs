@@ -41,7 +41,7 @@ try {
   await page.goto(base + 'index.html?quantumTreeMonitor=1', { waitUntil: 'domcontentloaded', timeout: 60000 });
   await page.waitForFunction(() => window.IAMSubaudibleMantra && window.IAMAdaptiveSound && document.body.dataset.adaptiveSelectionSource === 'no_checkin_random');
   await page.waitForFunction(() => window.IAMAdaptiveSoundSnapshot?.selection_basis === 'default_session_profile');
-  assert.equal((await diag()).synth.carrier_hz, 111);
+  assert.equal((await diag()).synth.carrier_hz, 222);
   assert.equal(await text('synth-volume'), '0.00%');
   assert.equal(await text('synth-time'), '0:00');
   report.checks.push('Skipped check-in and Heart Rate select the explicit default synth profile; audio waits for playback');
@@ -54,6 +54,17 @@ try {
   const before = await diag();
   await page.waitForTimeout(1600);
   const after = await diag();
+  assert.ok(after.synth.run_seconds > before.synth.run_seconds);
+  assert.equal(after.synth.rendered_carrier_hz, 222);
+  assert.equal(after.synth.route_profile_id, 'calm_alpha_80_v1');
+  assert.equal(await text('synth-primary'), 'Alpha 10.11 Hz · 80.00%');
+  for (const [id,rate,weight] of [['delta',3.33,6.66],['theta',7.38,6.66],['alpha',10.11,80],['gamma',111,6.66]]) {
+    assert.equal(await text('synth-'+id), `${rate} Hz · ${weight.toFixed(2)}%`);
+    assert.ok(Math.abs(after.synth.lanes[id].power_weight*100-weight)<1e-8);
+  }
+  assert.match(await text('synth-allocation'), /Noise 0.01% · silence reserve 0.01%/);
+  report.defaultSynth = after.synth;
+  report.checks.push('Default renderer is Alpha 10.11 Hz at 80% with a 222 Hz carrier; all four displayed lane percentages match audio-thread power weights');
   assert.ok(after.quantum.currentTime > before.quantum.currentTime);
   assert.ok(after.mantra.currentTime > before.mantra.currentTime);
   assert.ok(after.mantra.duration > 334 && after.mantra.duration < 335);
@@ -64,13 +75,16 @@ try {
 
   await page.evaluate(() => window.IAMAdaptiveSound.open());
   // These are the existing session-only Sound controls, not a fabricated inference.
-  await page.locator('[data-adaptive-profile="calm_alpha_80_v1"]').first().evaluate(button => button.click());
-  await page.locator('[data-adaptive-carrier-select]').selectOption('222');
-  await page.waitForFunction(() => window.IAMAdaptiveSound.diagnostics().running && window.IAMAdaptiveSound.diagnostics().output_rms > 0 && window.IAMAdaptiveSound.diagnostics().route_carrier_hz === 222);
+  await page.locator('[data-adaptive-profile="inspiration_gamma_80_v1"]').first().evaluate(button => button.click());
+  await page.locator('[data-adaptive-carrier-select]').selectOption('444');
+  await page.waitForFunction(() => window.IAMAdaptiveSound.diagnostics().running && window.IAMAdaptiveSound.diagnostics().output_rms > 0 && window.IAMAdaptiveSound.diagnostics().rendered_carrier_hz === 444);
   await page.evaluate(() => window.IAMAdaptiveSound.close());
   await page.waitForTimeout(500);
-  assert.equal(await text('synth-carrier'), '222 Hz');
-  assert.match(await text('synth-tones'), /Gamma 111 Hz/);
+  assert.equal(await text('synth-carrier'), '444 Hz');
+  assert.equal(await text('synth-primary'), 'Gamma 111 Hz · 80.00%');
+  assert.equal(await text('synth-gamma'), '111 Hz · 80.00%');
+  assert.equal(await text('synth-alpha'), '10.11 Hz · 6.66%');
+  report.checks.push('Changing the session profile updates the primary pulse and lane percentages from the new renderer; carrier changes independently');
   const synthStart = (await diag()).synth;
   await page.waitForTimeout(1600);
   const synthLater = (await diag()).synth;
@@ -80,6 +94,11 @@ try {
   assert.match(await text('synth-output'), /dBFS/);
   report.synth = synthLater;
   report.checks.push('Existing session choice runs synth; rendered-frame clock, actual route gain, carrier and all four rates visible');
+  await page.evaluate(() => window.IAMAdaptiveSound.open());
+  await page.locator('[data-adaptive-profile="calm_alpha_80_v1"]').first().evaluate(button => button.click());
+  await page.locator('[data-adaptive-carrier-select]').selectOption('222');
+  await page.waitForFunction(() => document.querySelector('[data-mix-synth-primary]').textContent === 'Alpha 10.11 Hz · 80.00%' && window.IAMAdaptiveSound.diagnostics().rendered_carrier_hz === 222);
+  await page.evaluate(() => window.IAMAdaptiveSound.close());
 
   await page.evaluate(() => window.IAMSubaudibleMantra.setEnabled(false));
   await page.waitForFunction(() => document.querySelector('[data-mix-mantra-volume]').textContent === '0.00%');
