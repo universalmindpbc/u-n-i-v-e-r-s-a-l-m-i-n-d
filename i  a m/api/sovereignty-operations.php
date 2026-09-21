@@ -35,6 +35,20 @@ function sovereignty_hosting_status(): array {
         'account_quota_verified'=>false, 'paid_services_created'=>false];
 }
 
+function sovereignty_check_hosting_quota(): array {
+    $uapi = '/usr/local/cpanel/bin/uapi';
+    if (!is_executable($uapi)) throw new RuntimeException('Hosting quota API unavailable.');
+    $report = ['checked_at'=>gmdate('c')];
+    foreach ([['Quota','get_quota_info'], ['StatsBar','get_stats','display=diskusage|bandwidthusage']] as $command) {
+        $response = sovereignty_command(array_merge([$uapi, '--output=json'], $command));
+        $result = json_decode($response['stdout'], true);
+        if ($response['code'] !== 0 || ($result['result']['status'] ?? null) !== 1) throw new RuntimeException('Hosting quota needs account verification.');
+        $report[$command[0]] = $result['result']['data'];
+    }
+    sovereignty_atomic(SOVEREIGNTY_PRIVATE . '/hosting-quota.json', sovereignty_json($report));
+    return $report;
+}
+
 function sovereignty_install_scheduler(array $config): array {
     if ($config['environment'] !== 'staging') throw new RuntimeException('Scheduler installation is staging-only.');
     $host = sovereignty_hosting_status(); $php = null;

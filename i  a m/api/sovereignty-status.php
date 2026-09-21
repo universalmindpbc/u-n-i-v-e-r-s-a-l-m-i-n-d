@@ -10,6 +10,7 @@ try {
         if ($config['environment'] !== 'staging' || ($_SERVER['HTTP_HOST'] ?? '') !== 'staging.universalmind.tv') throw new RuntimeException('Diagnostic is staging-only.');
         $input = json_decode((string) file_get_contents('php://input', false, null, 0, 256), true, 8, JSON_THROW_ON_ERROR);
         $action = $input['action'] ?? '';
+        if ($action === 'hosting_quota') { echo sovereignty_json(sovereignty_check_hosting_quota()); exit; }
         if ($action === 'install_scheduler') { echo sovereignty_json(sovereignty_install_scheduler($config)); exit; }
         if (in_array($action, ['deliver_test','timestamp_test'], true)) {
             define('SOVEREIGNTY_WORKER_LIBRARY_ONLY', true);
