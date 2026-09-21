@@ -31,4 +31,7 @@
 .study-navigation-available #study-app{position:relative;z-index:3;pointer-events:none}
 .study-navigation-available #study-app :is(button,a,input,textarea,select,.result-cards,.words-carousel){pointer-events:auto}
 .study-exposure.is-checkout.is-navigating{z-index:30}
+.study-page .study-proof-skip{position:absolute;right:24px;bottom:24px;z-index:2;gap:12px;box-shadow:0 4px 24px #0006}
+.study-proof-skip small{font-size:10px;letter-spacing:.1em;text-transform:uppercase;opacity:.65}
+.study-exposure.is-checkout .study-proof-skip{display:none}
 .study-navigation-available .study-header{display:none}

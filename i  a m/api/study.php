@@ -290,6 +290,11 @@ try {
             $phase = $s['state']; $s[$phase] = $report; $s['state'] = $phase === 'before_report' ? 'experience' : 'complete';
             if ($s['state'] === 'complete') $s['completed_at'] = gmdate('c');
         } elseif ($action === 'exposure.tick') {
+            // A completion response can be lost after saving. A retried end event
+            // acknowledges the saved transition without adding exposure or restarting it.
+            if ($s['state'] === 'after_vitals' && ($request['ended'] ?? false) === true) {
+                return ['ok'=>true, 'state'=>$s['state'], 'exposure_seconds'=>$s['exposure_seconds']];
+            }
             study_require($s['state'] === 'experience', 'No research video is running for this session.');
             $videoUid = study_public_config($data['config'])['stream_uid'];
             if (($s['video_stream_uid'] ?? null) !== $videoUid) {

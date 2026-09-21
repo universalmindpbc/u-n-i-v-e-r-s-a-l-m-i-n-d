@@ -1,3 +1,4 @@
+import {createExposureSync} from './exposure-sync.js?v=ec88d9bc9d06';
 const app=document.querySelector('#study-app');
 const status=document.querySelector('#study-status');
 let state, dataset, busy=false, exposure=null, statusTimer, clockTimer;
@@ -15,9 +16,12 @@ const percent=(before,after)=>before==null||after==null||before===0?null:100*(af
 const centres=[110.5,205.5,299.5,393.5,487.5,568.5,651,732.5,813.5,895.5];
 const face=n=>`<span class="study-emoji" aria-hidden="true" style="background-position:${30-centres[n-1]}px -215px"></span>`;
 export async function request(action,body={}) {
- const response=await fetch('api/study.php',{method:action?'POST':'GET',credentials:'same-origin',cache:'no-store',headers:action?{'Content-Type':'application/json','X-Study-CSRF':state.csrf}:{},body:action?JSON.stringify({action,request_id:crypto.randomUUID(),...body}):undefined});
+ const controller=new AbortController(),timeout=(!action||action==='exposure.tick')?setTimeout(()=>controller.abort(),15000):null;
+ try{
+ const response=await fetch('api/study.php',{signal:controller.signal,method:action?'POST':'GET',credentials:'same-origin',cache:'no-store',headers:action?{'Content-Type':'application/json','X-Study-CSRF':state.csrf}:{},body:action?JSON.stringify({action,request_id:crypto.randomUUID(),...body}):undefined});
  const payload=await response.json().catch(()=>({error:'Please try again.'}));
  if(!response.ok)throw new Error(payload.error||'Please try again.');return payload;
+ }finally{clearTimeout(timeout);}
 }
 function notice(text){clearTimeout(statusTimer);status.textContent=text;statusTimer=setTimeout(()=>status.textContent='',9000);}
 function setPage(mode){
@@ -111,10 +115,26 @@ function renderPreparation(target){const c=dataset.config;target.innerHTML=`<for
 function localDate(value){const d=new Date(value);return new Date(d-d.getTimezoneOffset()*60000).toISOString().slice(0,16);}
 function download(value,name){const url=URL.createObjectURL(new Blob([JSON.stringify(value,null,2)],{type:'application/json'}));const a=document.createElement('a');a.href=url;a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);}
 function prepareExposure(completedSessionId=null){
+ exposure?.sync.close();
  exposure?.shell.remove();
  const shell=document.createElement('div');shell.className='study-exposure';
  shell.innerHTML='<iframe title="modul8 infinity study experience" src="study-experience.php?study_experience=1" allow="autoplay; fullscreen; microphone; camera" allowfullscreen></iframe>';
- exposure={sessionId:completedSessionId||currentSession().id,frame:shell.querySelector('iframe'),shell,pending:false,ready:false,completed:!!completedSessionId};document.body.append(shell);
+ if(state.preview&&state.preview_available&&!completedSessionId)shell.insertAdjacentHTML('beforeend','<button type="button" class="study-button study-proof-skip" data-action="proofAfter" aria-label="Skip to after-check"><small>Preview</small> Skip to after-check →</button>');
+ const active={sessionId:completedSessionId||currentSession().id,frame:shell.querySelector('iframe'),shell,ready:false,completed:!!completedSessionId};
+ active.sync=createExposureSync({
+  send:values=>request('exposure.tick',{...values,session_id:active.sessionId}),
+  complete:async()=>{
+   if(exposure!==active)return;
+   active.frame.contentWindow.postMessage({type:'study-stop'},location.origin);active.completed=true;active.shell.hidden=true;
+   await refresh();notice('');
+  },
+  failed:(error,{ended})=>{
+   if(exposure!==active)return;
+   if(ended)notice('Saving your after-check… Reconnecting.');
+   else if(!active.completed){active.frame.contentWindow.postMessage({type:'study-pause'},location.origin);notice(error.message);}
+  },
+ });
+ exposure=active;document.body.append(shell);
  if(completedSessionId){shell.hidden=true;}
 }
 function syncNavigation(mode){
@@ -156,6 +176,12 @@ document.addEventListener('click',async event=>{
  else if(action==='results'){view='dashboard';tab='personal';selectedSession=null;await render();}
  else if(action==='missingVitals'){await request('vitals',{session_id:currentSession().id,values:{unavailable_reason:state.preview?'preview':'declined'}});await refresh();}
  else if(action==='exposure'){await startExposure();}
+ else if(action==='proofAfter'&&state.preview&&state.preview_available){
+  const active=exposure;active.sync.close();
+  await request('preview.experience',{session_id:active.sessionId});
+  active.frame.contentWindow.postMessage({type:'study-stop'},location.origin);active.completed=true;
+  await refresh();
+ }
  else if(action==='stop'){exposure?.frame.contentWindow.postMessage({type:'study-stop'},location.origin);await request('session.stop',{session_id:currentSession().id});exposure=null;state=await request();renderStopped();}
  else if(action==='privacy'){document.querySelector('#study-privacy').showModal();}
  else if(action==='closePrivacy'){document.querySelector('#study-privacy').close();}
@@ -198,20 +224,9 @@ window.addEventListener('message',async event=>{
  if(event.data?.type==='study-paused'){if(!exposure.completed)resumeEntry();return;}
  if(event.data?.type==='study-error'){resumeEntry();notice(event.data.message);return;}
  if(event.data?.type!=='study-tick'||exposure.completed)return;
- const active=exposure;
- // Keep the final media-ended heartbeat even if an earlier request is still in flight.
- if(active.pending){if(event.data.values.ended)active.finalTick=event.data.values;return;}
- active.pending=true;let values=event.data.values;
- try{do{
-  const r=await request('exposure.tick',{...values,session_id:active.sessionId});if(exposure!==active)return;
-  if(r.state==='after_vitals'){
-   active.frame.contentWindow.postMessage({type:'study-stop'},location.origin);active.completed=true;active.shell.hidden=true;
-   await refresh();return;
-  }
-  values=active.finalTick;active.finalTick=null;
- }while(values);
- }catch(error){if(exposure===active){active.frame.contentWindow.postMessage({type:'study-pause'},location.origin);notice(error.message);}}finally{active.pending=false;}
+ if(event.data.values.ended)exposure.frame.contentWindow.postMessage({type:'study-stop'},location.origin);
+ exposure.sync.push(event.data.values);
 });
 document.addEventListener('visibilitychange',()=>{if(document.hidden)exposure?.frame.contentWindow.postMessage({type:'study-pause'},location.origin);});
-window.addEventListener('pagehide',()=>exposure?.frame.contentWindow.postMessage({type:'study-stop'},location.origin));
+window.addEventListener('pagehide',()=>{exposure?.sync.close();exposure?.frame.contentWindow.postMessage({type:'study-stop'},location.origin);});
 (async()=>{state=await request();if(new URLSearchParams(location.search).get('preview')==='1'&&state.preview_available){await request('preview');history.replaceState(null,'',location.pathname);await refresh();}else await render();})().catch(error=>{app.innerHTML='<p>Please refresh to reopen your study.</p>';notice(error.message);});

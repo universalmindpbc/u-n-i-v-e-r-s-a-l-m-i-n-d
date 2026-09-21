@@ -18,7 +18,7 @@ header('Cross-Origin-Embedder-Policy: require-corp');
   <title>Study | Universal Mind</title>
   <link rel="icon" href="favicon.png">
   <link rel="stylesheet" href="study/gate.css?v=study-1">
-  <link rel="stylesheet" href="study/style.css?v=7097e8c0a5a7">
+  <link rel="stylesheet" href="study/style.css?v=737feab95c06">
 </head>
 <body class="study-page" data-study-state="loading">
   <canvas class="rain-canvas" aria-hidden="true" data-rain-canvas></canvas>
@@ -32,6 +32,6 @@ header('Cross-Origin-Embedder-Policy: require-corp');
   <p id="study-status" role="status" aria-live="polite"></p>
   <dialog id="study-privacy"><h2>Privacy Info</h2><p>Your measurements and responses are stored under a participant code. Camera video is processed on your device and is not recorded by this study.</p><p>Researchers can review coded records. Shared findings are anonymised. Researchers remove identifying details before sending excerpts for AI analysis.</p><p>You can stop at any time. Contact the organiser to withdraw or request removal of your responses.</p><button class="study-button" data-action="closePrivacy">Close</button></dialog>
   <script src="study/gate-rain.js?v=study-1" defer></script>
-  <script type="module" src="study/app.js?v=f6e7a919645a"></script>
+  <script type="module" src="study/app.js?v=3b0cb8636a1f"></script>
 </body>
 </html>

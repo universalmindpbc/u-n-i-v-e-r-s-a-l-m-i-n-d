@@ -68,7 +68,9 @@ function tick(ended=false){
  const current=video.currentTime,advance=current-lastVideoTime;
  if(advance>0&&advance<8)played+=advance;
  lastVideoTime=current;
- const sound=window.IAMAdaptiveSound.diagnostics(),quantum=window.IAMQuantumTree.diagnostics(),mantra=window.IAMSubaudibleMantra.diagnostics();
+ // Optional sound diagnostics must never swallow the video's completion event.
+ const diagnostics=engine=>{try{return engine?.diagnostics()||{};}catch{return {};}};
+ const sound=diagnostics(window.IAMAdaptiveSound),quantum=diagnostics(window.IAMQuantumTree),mantra=diagnostics(window.IAMSubaudibleMantra);
  send('study-tick',{values:{media_time:played,position:current,duration:video.duration,ended,playing:!document.hidden&&(ended||!video.paused),
   preset:document.querySelector('[data-emdr-gif-world]')?.dataset.emdrGifPreset,carrier_hz:sound.carrier_hz,profile_id:sound.profile_id,
   quantum_tree_enabled:quantum.enabled&&quantum.playing,mantra_enabled:mantra.enabled&&mantra.outputVerified,
@@ -82,10 +84,13 @@ async function start(){
   const soundReady=window.IAMAdaptiveSound.prepareStudy();
   // Start the existing player from the parent's entry click, preserving browser user activation.
   const playback=window.IAMStreamController.play(video)||video.play();
+  // Begin the server clock while audio initialises, not after its async preparation.
+  lastVideoTime=video.currentTime;running=true;tick();clearInterval(timer);timer=setInterval(()=>tick(video.ended),1000);
   await Promise.all([soundReady,playback]);
+  if(stopped)return;
   const target=Math.max(video.currentTime,played);
   if(Number.isFinite(video.duration)&&video.duration>0)video.currentTime=Math.min(target,video.duration);
-  lastVideoTime=video.currentTime;running=true;tick();clearInterval(timer);timer=setInterval(()=>tick(),1000);
+  lastVideoTime=video.currentTime;tick();
   positionOpeningPage();
  }catch(error){pause();send('study-error',{message:'Playback paused. Please enter the experience again.'});}
  finally{starting=false;}
