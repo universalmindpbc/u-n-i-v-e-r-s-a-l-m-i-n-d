@@ -1,0 +1,250 @@
+{
+  "verified_at_utc": "2026-09-21T19:24:40.998820+00:00",
+  "source_commit": "e81286e2d414211154ae1b83d3716dd7cb0e89de",
+  "environment": "https://staging.universalmind.tv",
+  "proof_urls": [
+    "https://staging.universalmind.tv/vogue/iam/index.html?quantumTreeMonitor=1",
+    "https://staging.universalmind.tv/vogue/iam/quantum-tree-control.html"
+  ],
+  "production_modified": false,
+  "change": "Default additional synth changed to Alpha 10.11 Hz with a 222 Hz carrier. Overlay and owner dashboard identify the primary pulse and show each lane power allocation from renderer diagnostics, separately from output volume.",
+  "default_renderer": {
+    "running": true,
+    "route_profile_id": "calm_alpha_80_v1",
+    "rendered_carrier_hz": 222,
+    "current_output_gain": 0.3499999940395355,
+    "output_rms": 0.002555032858243762,
+    "run_seconds": 3.5352380952380953,
+    "lanes": {
+      "delta": {
+        "rate_hz": 3.33,
+        "phase_cycles": 0.7723428571397557,
+        "power_weight": 0.0666,
+        "envelope_gain": 0.2,
+        "enabled": true
+      },
+      "theta": {
+        "rate_hz": 7.38,
+        "phase_cycles": 0.09005714285774792,
+        "power_weight": 0.0666,
+        "envelope_gain": 0.4291872214063077,
+        "enabled": true
+      },
+      "alpha": {
+        "rate_hz": 10.11,
+        "phase_cycles": 0.7412571428536135,
+        "power_weight": 0.8,
+        "envelope_gain": 0.2,
+        "enabled": true
+      },
+      "gamma": {
+        "rate_hz": 111,
+        "phase_cycles": 0.4114285714258062,
+        "power_weight": 0.0666,
+        "envelope_gain": 0.43465443444460633,
+        "enabled": true
+      }
+    },
+    "allocation": {
+      "diamond_frequency_power_total": 0.9998,
+      "noise_power_weight": 0.0001,
+      "silence_power_weight": 0.0001,
+      "total": 1
+    }
+  },
+  "percentage_semantics": "Audio-thread lane currentPower allocation before the shared synth output gain; disabled lanes display zero. The readout is not an individual lane RMS or perceived-loudness measurement.",
+  "main_mix_checks": [
+    "Skipped check-in and Heart Rate select the explicit default synth profile; audio waits for playback",
+    "One programme Play click starts the synth with both checks skipped and Sound panel closed",
+    "Default renderer is Alpha 10.11 Hz at 80% with a 222 Hz carrier; all four displayed lane percentages match audio-thread power weights",
+    "Real random programme, Quantum Tree and mantra clocks advance; mantra output verified",
+    "Changing the session profile updates the primary pulse and lane percentages from the new renderer; carrier changes independently",
+    "Existing session choice runs synth; rendered-frame clock, actual route gain, carrier and all four rates visible",
+    "Mantra off freezes its file position and reads zero volume",
+    "Suspended audio context freezes synth runtime and clears live output",
+    "Sound master off freezes synth runtime and zeroes synth/mantra volume",
+    "Programme pause preserves displayed position and closes mantra gain",
+    "Desktop, mobile and landscape overlay bounded, scrollable and without horizontal overflow"
+  ],
+  "owner_dashboard_checks": [
+    {
+      "label": "First click on cold dashboard starts all three layers; synth clock and measured output advance",
+      "synth": {
+        "running": true,
+        "pending": false,
+        "enabled": true,
+        "volume": 0.3499999940395355,
+        "outputRms": 0.002676834857902605,
+        "runSeconds": 0.2525170068027211,
+        "profileId": "calm_alpha_80_v1",
+        "carrierHz": 222,
+        "error": "",
+        "lanes": {
+          "delta": {
+            "rate_hz": 3.33,
+            "phase_cycles": 0.8408816326528896,
+            "power_weight": 0.0666,
+            "envelope_gain": 0.2,
+            "enabled": true
+          },
+          "theta": {
+            "rate_hz": 7.38,
+            "phase_cycles": 0.8635755102041247,
+            "power_weight": 0.0666,
+            "envelope_gain": 0.2,
+            "enabled": true
+          },
+          "alpha": {
+            "rate_hz": 10.11,
+            "phase_cycles": 0.5529469387753093,
+            "power_weight": 0.8,
+            "envelope_gain": 0.2,
+            "enabled": true
+          },
+          "gamma": {
+            "rate_hz": 111,
+            "phase_cycles": 0.029387755101843258,
+            "power_weight": 0.0666,
+            "envelope_gain": 0.22258805377960922,
+            "enabled": true
+          }
+        },
+        "allocation": {
+          "diamond_frequency_power_total": 0.9998,
+          "noise_power_weight": 0.0001,
+          "silence_power_weight": 0.0001,
+          "total": 1
+        }
+      }
+    },
+    {
+      "label": "Target-volume isolated playback and changing post-gain waveform",
+      "currentTime": 0.010451,
+      "playing": true,
+      "gain": 0.018333332613110542,
+      "targetGain": 0.018333333333333333,
+      "outputRms": 4.661784757251823e-08,
+      "advancing": true,
+      "outputVerified": true,
+      "error": ""
+    },
+    {
+      "label": "Single-click isolated play, pause/resume, volume, three-layer combined play/pause, and Stop all passed"
+    },
+    {
+      "label": "Desktop and mobile controls visible without horizontal overflow"
+    }
+  ],
+  "button_hit_checks": [
+    {
+      "browser": "chromium",
+      "attempted": 40,
+      "passed": 40,
+      "viewports": [
+        "1470x956",
+        "390x844"
+      ],
+      "positions": [
+        "top center",
+        "center",
+        "bottom center",
+        "left center",
+        "right center"
+      ],
+      "page_errors": []
+    },
+    {
+      "browser": "webkit",
+      "attempted": 40,
+      "passed": 40,
+      "viewports": [
+        "1470x956",
+        "390x844"
+      ],
+      "positions": [
+        "top center",
+        "center",
+        "bottom center",
+        "left center",
+        "right center"
+      ],
+      "page_errors": []
+    }
+  ],
+  "browser_safety": {
+    "playback": "Dedicated headless Chromium with --mute-audio asserted before navigation",
+    "webkit": "Hit areas only; all click actions and media playback blocked",
+    "owner_authentication": "Owner API response fixture; no credentials or settings changed",
+    "settings_writes": false,
+    "native_fullscreen": false,
+    "cleanup": "Owned browser sessions closed after pausing media",
+    "subjective_listening_test": false
+  },
+  "errors": {
+    "main": [],
+    "owner": []
+  },
+  "local_checks": {
+    "session_policy_parity": "20 combinations and 538 assertions passed",
+    "python_policy": "20 combinations and safety states passed",
+    "deployment_preflights": "passed"
+  },
+  "deployment": {
+    "workflow": "./deploy-panthur-staging.sh changed",
+    "files_uploaded": 10,
+    "protected_owner_runtime_unchanged": true,
+    "manifest_sha256": "b97446d707b1585f743137d0f223c3c4424fffda97600c694db718cfd996ea99"
+  },
+  "served_asset_hashes": [
+    {
+      "file": "i  a m/adaptive-environment-television.html",
+      "sha256": "adbced1f69958ad305dc7ae2826249a94dd9db1f43c21631ff4eaf5048ac27a4",
+      "bytes": 13329
+    },
+    {
+      "file": "i  a m/adaptive-environment-television.js",
+      "sha256": "fe3c24c30283916ee85ae9aba22a11aa84edd1cc751b776887e3e829557f6df5",
+      "bytes": 491789
+    },
+    {
+      "file": "i  a m/adaptive-sound-intent-policy-v1.json",
+      "sha256": "c408508cbe687642d57b25512f1bf310ad1a62711cb5928dc20a2c5964f30682",
+      "bytes": 6846
+    },
+    {
+      "file": "i  a m/adaptive-sound/controller-v1.js",
+      "sha256": "53a9cb1cb843b1a4be5f8e290cf7d9197505f2013ff1a1e1785dbcb8fb1b672e",
+      "bytes": 41290
+    },
+    {
+      "file": "i  a m/adaptive-sound/owner-synth-v1.js",
+      "sha256": "3e76b26be3bcbaea96f6cf1217ab040e1ba7da7d181a9bc8d4f257d07ebfe6ad",
+      "bytes": 3726
+    },
+    {
+      "file": "i  a m/index-alt.html",
+      "sha256": "e7377c192056869ab414b89160ca634d1ba5263e91553cbac30a6ec853841e8a",
+      "bytes": 129037
+    },
+    {
+      "file": "i  a m/index.html",
+      "sha256": "56f33e5fc2361d9f05cd66e912fcd889f8ac0fc3d14fb3474d02d891a921b426",
+      "bytes": 170284
+    },
+    {
+      "file": "i  a m/quantum-tree-control.css",
+      "sha256": "55edd4cda1f7eae2171831f44c5f9f1690c35c137506130909de5d7ab4582815",
+      "bytes": 7898
+    },
+    {
+      "file": "i  a m/quantum-tree-control.html",
+      "sha256": "1253775083bf9b04b12a2512edae5b1108707ae79ef5fc94d036691d351af837",
+      "bytes": 14022
+    },
+    {
+      "file": "i  a m/quantum-tree-control.js",
+      "sha256": "6167a5cb88545faf28eb67c7bb1ff61a3f965bf33325313aef7594fd97697212",
+      "bytes": 22567
+    }
+  ]
+}
