@@ -11,6 +11,7 @@ const ignored=read('.gitignore');assert.ok(ignored.includes('\n.private/\n'));as
 const deployment=read('deploy-panthurlive.sh');
 const skip=deployment.slice(deployment.indexOf('should_skip_iam_source()'),deployment.indexOf('remote_file_exists()'));
 assert.ok(skip.includes('"a s s e t s/s o v e r e i g n t y/"*'));assert.ok(skip.includes('"api/.runtime-private/"*'));
+assert.ok(deployment.includes("printf '%s\\n' 'RewriteRule (^|/)\\.private(/|$) - [F,L]'"));
 assert.ok(read('i  a m/api/.htaccess').includes('^\\.runtime-private'));
 const html=read('index.html');
 assert.ok(html.includes('}, 700);'));assert.ok(html.includes('keepalive: true'));assert.ok(!html.includes('await fetch("/vogue/iam/api/portal-entry.php"'));
