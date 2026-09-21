@@ -1,0 +1,98 @@
+{
+  "section": "Universal Sovereignty",
+  "verified_at": "2026-09-21T18:28:39.839481+00:00",
+  "source_commit": "8ff5b37d59718c15fbb0b7055d5cbe95da97bfcd",
+  "scope": "Staging foundation; external immutable storage is not active",
+  "live": {
+    "origin": "https://staging.universalmind.tv",
+    "mutedProcess": true,
+    "checks": [
+      "Served root HTML matches the committed candidate after removing the existing CDN analytics injection; unchanged password form rejects an invalid credential",
+      "Actual staging PHP signs and encrypts an isolated synthetic entry and rejects duplicate creation; audience records unchanged",
+      "Private runtime, encrypted document, signing key, original asset URL and owner-local source path deny HTTP access"
+    ],
+    "root_status": 200,
+    "archive": {
+      "section": "Universal Sovereignty",
+      "environment": "staging",
+      "recorded_entries": 0,
+      "four_copies_secured": 0,
+      "configured_vaults": 0,
+      "retention_configured": false,
+      "blockchain": "not_submitted",
+      "contract_execution": false,
+      "token_issuance": false,
+      "self_test": {
+        "isolated_test": true,
+        "encryption_and_signing": true,
+        "duplicate_prevented": true,
+        "created": false,
+        "audience_entries_changed": false
+      }
+    },
+    "passed": true
+  },
+  "cryptography": {
+    "actual_staging_receipt_decrypted_locally": true,
+    "platform_signature_verified": true,
+    "exact_sealed_document_bound": true,
+    "synthetic_namespace_only": true
+  },
+  "login_timing": {
+    "existing_transition_ms": 700,
+    "desktop_ms": {
+      "baseline": 708,
+      "stalled": 707,
+      "failed": 709,
+      "throws": 707
+    },
+    "mobile_ms": {
+      "baseline": 707,
+      "stalled": 707,
+      "failed": 711,
+      "throws": 712
+    },
+    "test_type": "Isolated credential, exact candidate HTML, real browser navigation; recording fault injection"
+  },
+  "local_backend_checks": [
+    "invalid credential and digest rejection",
+    "same-origin JSON only",
+    "oversized request rejection",
+    "once-only entry per distinct password",
+    "owner-key decryption",
+    "platform signature",
+    "GCM tamper rejection",
+    "missing vault and retention fail closed"
+  ],
+  "document": {
+    "pages": 17,
+    "exact_source_text_preserved": true,
+    "flora_upper_left_every_page": true,
+    "all_pages_rendered_and_reviewed": true,
+    "encrypted_before_upload": true,
+    "private_decryption_key_uploaded": false,
+    "document_or_keys_tracked_in_git": false
+  },
+  "deployment": {
+    "workflow": "deploy-panthur-staging.sh all-changed and sovereignty-seed",
+    "private_transport": "FTPS",
+    "private_files_mode": "0600",
+    "private_directory_mode": "0700",
+    "owner_runtime_preserved": true,
+    "concurrent_research_password_fix_preserved": true
+  },
+  "pending": [
+    "Create and connect four Object Lock vaults across two providers/accounts",
+    "Choose retention period",
+    "Configure separate worker schedule",
+    "Verify actual uploads, retention locks, partial-failure retries and recovery",
+    "Blockchain timestamping is not implemented or submitted"
+  ],
+  "limits": [
+    "No claims of consent or contract execution",
+    "No token issuance",
+    "First successfully captured entry since activation; unavailable network/server can miss an attempt while login remains fast",
+    "Current identity is per assigned password; replacement or reassignment requires explicit mapping migration"
+  ],
+  "production_modified_by_this_task": false
+}
