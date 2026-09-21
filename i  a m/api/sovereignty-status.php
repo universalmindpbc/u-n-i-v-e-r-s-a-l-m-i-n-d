@@ -47,6 +47,7 @@ try {
         $timestamp = json_decode((string) file_get_contents($path), true);
         if (isset($timestampCounts[$timestamp['state'] ?? ''])) $timestampCounts[$timestamp['state']]++;
     }
+    $timestampCounts['not_submitted'] = max(0, count($events) - $timestampCounts['pending_bitcoin'] - $timestampCounts['bitcoin_confirmed']);
     $operational = [];
     foreach (['worker-status','scheduler','last-run'] as $name) {
         $path = SOVEREIGNTY_PRIVATE . '/' . $name . '.json';

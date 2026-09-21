@@ -29,10 +29,13 @@ function sovereignty_hosting_status(): array {
     foreach (['/usr/local/bin/php', '/usr/bin/php', '/opt/cpanel/ea-php83/root/usr/bin/php', '/opt/cpanel/ea-php82/root/usr/bin/php'] as $path) {
         if (is_executable($path)) $php[] = $path;
     }
+    $quotaPath = SOVEREIGNTY_PRIVATE . '/hosting-quota.json';
+    $quota = is_file($quotaPath) ? json_decode((string) file_get_contents($quotaPath), true) : null;
     return ['php_version'=>PHP_VERSION, 'proc_open_available'=>function_exists('proc_open'),
         'crontab_available'=>is_executable('/usr/bin/crontab'), 'php_cli_candidates'=>$php,
         'filesystem_free_bytes'=>@disk_free_space(SOVEREIGNTY_PRIVATE),
-        'account_quota_verified'=>false, 'paid_services_created'=>false];
+        'account_quota_verified'=>isset($quota['Quota'], $quota['StatsBar'], $quota['checked_at']),
+        'account_quota_checked_at'=>$quota['checked_at'] ?? null, 'paid_services_created'=>false];
 }
 
 function sovereignty_check_hosting_quota(): array {

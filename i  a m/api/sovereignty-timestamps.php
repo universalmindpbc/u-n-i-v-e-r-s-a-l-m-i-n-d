@@ -125,6 +125,16 @@ function sovereignty_timestamp_bundle(string $eventId, string $body, bool $testi
     $directory = SOVEREIGNTY_PRIVATE . ($testing ? '/qa-timestamps' : '/timestamps');
     if (!is_dir($directory) && !mkdir($directory, 0700, true) && !is_dir($directory)) throw new RuntimeException('Timestamp storage unavailable.');
     if (!preg_match('/\A[a-f0-9]{48}\z/', $eventId)) throw new RuntimeException('Invalid timestamp event.');
+    $lock = fopen($directory . '/' . $eventId . '.lock', 'c');
+    if (!$lock || !flock($lock, LOCK_EX | LOCK_NB)) {
+        if ($lock) fclose($lock);
+        throw new RuntimeException('Timestamp already running.');
+    }
+    try { return sovereignty_timestamp_locked($directory, $eventId, $body); }
+    finally { flock($lock, LOCK_UN); fclose($lock); }
+}
+
+function sovereignty_timestamp_locked(string $directory, string $eventId, string $body): array {
     $path = $directory . '/' . $eventId . '.json'; $digest = hash('sha256', $body, true);
     $state = is_file($path) ? json_decode((string) file_get_contents($path), true, 32, JSON_THROW_ON_ERROR)
         : ['event_id'=>$eventId, 'bundle_sha256'=>bin2hex($digest), 'nonce'=>bin2hex(random_bytes(32)), 'state'=>'not_submitted', 'proofs'=>[]];

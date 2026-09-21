@@ -124,7 +124,8 @@ recording requests, in a dedicated Chromium process with `--mute-audio`.
 `sovereignty-status.php` requires the private worker bearer token. GET returns
 counts only. A staging-only POST with `{"action":"self_test"}` exercises signing,
 encryption and idempotency in a separate synthetic namespace excluded from
-audience records and replication. It cannot be run without the private token.
+audience records. `deliver_test` replicates only that diagnostic, and
+`timestamp_test` submits its blinded digest. None can run without the private token.
 
 Complete and record live four-copy upload/read/lock/retry/restore tests and an
 observed scheduled run before describing the archive as operational. The

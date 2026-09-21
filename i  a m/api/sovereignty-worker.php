@@ -143,7 +143,7 @@ function sovereignty_deliver(array $config, array $vaults, string $path, bool $t
     $statePath = SOVEREIGNTY_PRIVATE . ($testing ? '/qa-delivery/' : '/delivery/') . $event['event_id'] . '.json';
     $state = is_file($statePath) ? json_decode((string) file_get_contents($statePath), true, 32, JSON_THROW_ON_ERROR)
         : ['event_id'=>$event['event_id'], 'object'=>$object, 'bundle_sha256'=>$hash, 'bundle_bytes'=>strlen($body), 'retained_until'=>gmdate('Y-m-d\TH:i:s\Z', time()+$config['retention_days']*86400),
-            'vaults'=>[], 'blockchain'=>'not_submitted'];
+            'vaults'=>[]];
     $retention = $state['retained_until'];
     // Persist before the first external write: retry uses the same object and
     // retain-until date even if the process stops midway through delivery.
