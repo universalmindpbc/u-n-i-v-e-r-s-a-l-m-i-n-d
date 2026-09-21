@@ -72,7 +72,7 @@ should_skip_iam_source() {
   local relative_path="${source_file#"$IAM_DIR"/}"
 
   case "$relative_path" in
-    "api/mantra-library.json"|"api/quantum-tree-settings.json"|"api/happiness-ledger.json"|"apple-wallet/happiness-apple-registrations.json"|"api/.owner-state-history/"*|"api/.happiness-private/"*|"api/.runtime-private/"*|"a s s e t s/m a n t r a [ u p l o a d s ]/"*)
+    "api/mantra-library.json"|"api/quantum-tree-settings.json"|"api/happiness-ledger.json"|"apple-wallet/happiness-apple-registrations.json"|"api/.owner-state-history/"*|"api/.happiness-private/"*|"api/.runtime-private/"*|"a s s e t s/m a n t r a [ u p l o a d s ]/"*|"a s s e t s/s o v e r e i g n t y/"*|".private/"*)
       return 0
       ;;
   esac
@@ -598,6 +598,52 @@ JS
   echo "One-use staging password reset verified; expires in 24 hours. Private link file: $reset_dir/link.txt"
 }
 
+seed_sovereignty_staging() {
+  # Private runtime provisioning follows the existing Panthur account, over
+  # explicit FTPS. No clear PDF or owner decryption key is ever eligible.
+  if [[ "$FTP_USER" != "stagingdeploy@universalmind.tv" || -z "${SOVEREIGNTY_SEED_DIR:-}" ]]; then
+    echo "A private staging seed directory and the staging account are required." >&2
+    return 1
+  fi
+  python3 - "$SOVEREIGNTY_SEED_DIR" <<'PY'
+import json, pathlib, sys
+p=pathlib.Path(sys.argv[1])
+c=json.loads((p/'config.json').read_text())
+assert c['environment']=='staging' and c['enabled'] is True
+assert not (p/'owner-decryption-key.pem').exists()
+for name in ['recipient-public.pem','signing-private.pem','document.encrypted.json','document.json','config.json']:
+    assert (p/name).is_file()
+assert 'ciphertext' in json.loads((p/'document.encrypted.json').read_text())
+PY
+  local scratch name encoded existing_status
+  scratch="$(mktemp -d)"
+  chmod 700 "$scratch"
+  printf 'Require all denied\n' > "$scratch/.htaccess"
+  # Deny HTTP before uploading any runtime file; fail closed on transport errors.
+  encoded="$(encode_path "$(remote_target 'vogue/iam/api/.runtime-private/sovereignty/.htaccess')")"
+  curl --globoff --fail --silent --show-error --ssl-reqd --ftp-create-dirs \
+    --user "$FTP_USER:$FTP_PASS" --upload-file "$scratch/.htaccess" "ftp://$FTP_HOST/$encoded" || { rm -rf "$scratch"; return 1; }
+  for name in recipient-public.pem signing-private.pem document.encrypted.json document.json config.json; do
+    encoded="$(encode_path "$(remote_target "vogue/iam/api/.runtime-private/sovereignty/$name")")"
+    if curl --globoff --fail --silent --ssl-reqd --user "$FTP_USER:$FTP_PASS" "ftp://$FTP_HOST/$encoded" --output "$scratch/existing"; then
+      if ! cmp -s "$scratch/existing" "$SOVEREIGNTY_SEED_DIR/$name"; then
+        echo "Existing private runtime differs; refusing to overwrite $name." >&2
+        rm -rf "$scratch"; return 1
+      fi
+    else
+      existing_status=$?
+      if [[ "$existing_status" -ne 78 ]]; then rm -rf "$scratch"; return "$existing_status"; fi
+      curl --globoff --fail --silent --show-error --ssl-reqd --ftp-create-dirs \
+        --user "$FTP_USER:$FTP_PASS" --upload-file "$SOVEREIGNTY_SEED_DIR/$name" "ftp://$FTP_HOST/$encoded" || { rm -rf "$scratch"; return 1; }
+    fi
+    curl --globoff --fail --silent --show-error --ssl-reqd --user "$FTP_USER:$FTP_PASS" \
+      "ftp://$FTP_HOST/$encoded" --output "$scratch/verified" || { rm -rf "$scratch"; return 1; }
+    cmp -s "$scratch/verified" "$SOVEREIGNTY_SEED_DIR/$name" || { rm -rf "$scratch"; return 1; }
+  done
+  rm -rf "$scratch"
+  echo "Private staging archive provisioned and verified over FTPS; external vaults remain pending."
+}
+
 DEPLOY_MODE="${1:-iam}"
 
 if deployment_requires_owner_state_guard "$DEPLOY_MODE"; then
@@ -641,8 +687,11 @@ case "$DEPLOY_MODE" in
   owner-password-reset)
     issue_staging_owner_password_reset
     ;;
+  sovereignty-seed)
+    seed_sovereignty_staging
+    ;;
   *)
-    echo "Usage: $0 [iam|iam-fast|fast|changed|iam-changed|mark|media|redirects|all|all-fast|all-changed|seed-owner-state|owner-password-reset]" >&2
+    echo "Usage: $0 [iam|iam-fast|fast|changed|iam-changed|mark|media|redirects|all|all-fast|all-changed|seed-owner-state|owner-password-reset|sovereignty-seed]" >&2
     exit 2
     ;;
 esac

@@ -505,6 +505,24 @@
               window.setTimeout(() => {
                 window.location.assign("/vogue/iam/induction.html");
               }, 700);
+              // This optional receipt never participates in the entry timer.
+              // No credential or receipt is persisted in browser storage.
+              try {
+                const sendEntry = (attempt = 0) => fetch("/vogue/iam/api/portal-entry.php", {
+                  method: "POST",
+                  headers: { "Content-Type": "application/json" },
+                  body: JSON.stringify({ password }),
+                  credentials: "same-origin",
+                  cache: "no-store",
+                  keepalive: true,
+                  redirect: "error"
+                }).then((response) => {
+                  if (response.status >= 500 && attempt < 2) window.setTimeout(() => sendEntry(attempt + 1), 100);
+                }).catch(() => {
+                  if (attempt < 2) window.setTimeout(() => sendEntry(attempt + 1), 100);
+                });
+                void sendEntry();
+              } catch (_) { /* Recording failure must never prevent entry. */ }
               return;
             }
           } catch (error) {

@@ -1,0 +1,18 @@
+import assert from 'node:assert/strict';
+import fs from 'node:fs';
+import path from 'node:path';
+import {execFileSync} from 'node:child_process';
+import {fileURLToPath} from 'node:url';
+const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
+const read=p=>fs.readFileSync(path.join(root,p),'utf8');
+const tracked=execFileSync('git',['ls-files','-z'],{cwd:root,encoding:'utf8'}).split('\0');
+for(const file of tracked)assert.ok(!file.startsWith('.private/')&&!file.startsWith('i  a m/api/.runtime-private/')&&!file.startsWith('i  a m/a s s e t s/s o v e r e i g n t y/'),`Private file tracked: ${file}`);
+const ignored=read('.gitignore');assert.ok(ignored.includes('\n.private/\n'));assert.ok(ignored.includes('i  a m/a s s e t s/s o v e r e i g n t y/'));
+const deployment=read('deploy-panthurlive.sh');
+const skip=deployment.slice(deployment.indexOf('should_skip_iam_source()'),deployment.indexOf('remote_file_exists()'));
+assert.ok(skip.includes('"a s s e t s/s o v e r e i g n t y/"*'));assert.ok(skip.includes('"api/.runtime-private/"*'));
+assert.ok(read('i  a m/api/.htaccess').includes('^\\.runtime-private'));
+const html=read('index.html');
+assert.ok(html.includes('}, 700);'));assert.ok(html.includes('keepalive: true'));assert.ok(!html.includes('await fetch("/vogue/iam/api/portal-entry.php"'));
+for(const file of ['robots.txt','sitemap.xml','llms.txt'])assert.ok(!/sovereignty|revocations/i.test(read(file)),`${file} reveals private archive`);
+console.log('Universal Sovereignty privacy and nonblocking-entry boundaries passed.');

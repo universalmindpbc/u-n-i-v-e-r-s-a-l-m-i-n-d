@@ -14,6 +14,10 @@ AddType application/vnd.apple.pkpass .pkpass
 
 RewriteEngine On
 
+# Confidential source material is never a public asset, even if a stale copy exists.
+RewriteRule (^|/)s[[:space:]]o[[:space:]]v[[:space:]]e[[:space:]]r[[:space:]]e[[:space:]]i[[:space:]]g[[:space:]]n[[:space:]]t[[:space:]]y(/|$) - [F,L,NC]
+RewriteRule (^|/)\.private(/|$) - [F,L]
+
 # Smartphone visitors receive the lightweight editorial surface while the
 # full media application remains available on desktop and tablet. `full=1`
 # is the private QA escape hatch for deliberate phone testing.
