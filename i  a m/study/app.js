@@ -119,7 +119,7 @@ function prepareExposure(completedSessionId=null){
  exposure?.shell.remove();
  const shell=document.createElement('div');shell.className='study-exposure';
  shell.innerHTML='<iframe title="modul8 infinity study experience" src="study-experience.php?study_experience=1" allow="autoplay; fullscreen; microphone; camera" allowfullscreen></iframe>';
- if(state.preview&&state.preview_available&&!completedSessionId)shell.insertAdjacentHTML('beforeend','<button type="button" class="study-button study-proof-skip" data-action="proofAfter" aria-label="Skip to after-check"><small>Preview</small> Skip to after-check →</button>');
+ if(state.preview&&state.preview_available&&!completedSessionId)shell.insertAdjacentHTML('beforeend','<button type="button" class="study-button study-proof-skip" data-action="proofEnding" disabled><small>Preview</small> Skip to final 30 seconds →</button>');
  const active={sessionId:completedSessionId||currentSession().id,frame:shell.querySelector('iframe'),shell,ready:false,completed:!!completedSessionId};
  active.sync=createExposureSync({
   send:values=>request('exposure.tick',{...values,session_id:active.sessionId}),
@@ -181,11 +181,10 @@ document.addEventListener('click',async event=>{
  else if(action==='results'){view='dashboard';tab='personal';selectedSession=null;await render();}
  else if(action==='missingVitals'){await request('vitals',{session_id:currentSession().id,values:{unavailable_reason:state.preview?'preview':'declined'}});await refresh();}
  else if(action==='exposure'){await startExposure();}
- else if(action==='proofAfter'&&state.preview&&state.preview_available){
-  const active=exposure;active.sync.close();
-  await request('preview.experience',{session_id:active.sessionId});
-  active.frame.contentWindow.postMessage({type:'study-stop'},location.origin);active.completed=true;
-  await refresh();
+ else if(action==='proofEnding'&&state.preview&&state.preview_available){
+  const active=exposure;await startExposure();
+  if(!active.frame.contentWindow.IAMStudyExperience.previewFinal30())throw new Error('Please wait for the video to load.');
+  control.hidden=true;
  }
  else if(action==='stop'){exposure?.frame.contentWindow.postMessage({type:'study-stop'},location.origin);await request('session.stop',{session_id:currentSession().id});exposure=null;state=await request();renderStopped();}
  else if(action==='privacy'){document.querySelector('#study-privacy').showModal();}
@@ -224,6 +223,7 @@ window.addEventListener('message',async event=>{
  if(event.data?.type==='study-prepared'){
   exposure.ready=true;if(exposure.completed)syncNavigation(document.body.dataset.studyState);const control=document.querySelector('[data-action="exposure"]');
   if(control){control.disabled=false;control.textContent='Enter experience';}
+  const proof=exposure.shell.querySelector('[data-action="proofEnding"]');if(proof)proof.disabled=false;
   return;
  }
  if(event.data?.type==='study-paused'){if(!exposure.completed)resumeEntry();return;}

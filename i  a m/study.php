@@ -32,6 +32,6 @@ header('Cross-Origin-Embedder-Policy: require-corp');
   <p id="study-status" role="status" aria-live="polite"></p>
   <dialog id="study-privacy"><h2>Privacy Info</h2><p>Your measurements and responses are stored under a participant code. Camera video is processed on your device and is not recorded by this study.</p><p>Researchers can review coded records. Shared findings are anonymised. Researchers remove identifying details before sending excerpts for AI analysis.</p><p>You can stop at any time. Contact the organiser to withdraw or request removal of your responses.</p><button class="study-button" data-action="closePrivacy">Close</button></dialog>
   <script src="study/gate-rain.js?v=study-1" defer></script>
-  <script type="module" src="study/app.js?v=aa1391d0f90b"></script>
+  <script type="module" src="study/app.js?v=0bc74ce13a8a"></script>
 </body>
 </html>

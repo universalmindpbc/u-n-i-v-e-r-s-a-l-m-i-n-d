@@ -4,7 +4,7 @@ const send=(type,extra={})=>parent.postMessage({type,...extra},location.origin);
 const wait=ms=>new Promise(resolve=>setTimeout(resolve,ms));
 if(document.readyState==='loading')await new Promise(resolve=>document.addEventListener('DOMContentLoaded',resolve,{once:true}));
 lockNavigation();
-let checkout=false;
+let checkout=false,proofing=false;
 let video,timer,running=false,stopped=false,configuring=false,starting=false;
 let previousChoice,previousAdaptation,played=0,lastVideoTime=0;
 let pagePositioned=false;
@@ -36,6 +36,7 @@ async function configure(uid,completedSessionId){
   const response=await fetch('api/study.php',{credentials:'same-origin',cache:'no-store'}),state=await response.json();
   if(!response.ok||!state.participant?.consent||state.participant.withdrawn||state.config.stream_uid!==uid
    ||!state.participant.sessions.some(s=>completedSessionId?s.id===completedSessionId&&s.state==='complete':s.state==='experience'))throw new Error('Please reopen your study session.');
+  proofing=state.preview===true&&state.preview_available===true;
   for(let i=0;i<200&&!window.IAMAdaptiveSound?.prepareStudy;i++)await wait(100);
   if(!window.IAMTelevisionRoom?.prepareStudyExperience||!window.IAMAdaptiveSoundSession)throw new Error('Please refresh to load the experience.');
   await window.IAMAdaptiveSoundSession.ready;
@@ -101,7 +102,13 @@ async function completeCheckout(sessionId){
  if(!response.ok||state.participant?.withdrawn||!state.participant?.sessions.some(s=>s.id===sessionId&&s.state==='complete')||state.participant.sessions.some(s=>!['complete','stopped'].includes(s.state)))return false;
  stop();checkout=true;window.IAMTelevisionRoom.preparePresentationEntry();unlockNavigation();return true;
 }
-window.IAMStudyExperience={start,showHome,completeCheckout};
+function previewFinal30(){
+ if(!proofing||!video||stopped||!running||!Number.isFinite(video.duration))return false;
+ const position=Math.max(0,video.duration-30);
+ video.currentTime=position;lastVideoTime=position;
+ return true;
+}
+window.IAMStudyExperience={start,showHome,completeCheckout,previewFinal30};
 document.addEventListener('click',event=>{
  const play=event.target.closest('[data-television-play]');
  if(play&&!checkout){event.preventDefault();event.stopImmediatePropagation();if(!play.disabled)parent.IAMStudyShell.startExperience();return;}
