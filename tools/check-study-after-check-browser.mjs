@@ -102,6 +102,16 @@ try {
   const regular=await page.evaluate(async()=>await(await fetch('api/study.php')).json());assert.equal(regular.participant,null);
   const cookies=await page.context().cookies();assert.ok(cookies.some(c=>c.name==='iam_study_ending_test'));assert.ok(cookies.some(c=>c.name==='iam_study'));
   record('Regular participant API remains signed out in same browser; separate test cookie verified');
+  if(mode==='proof'){
+   const completedId=(await state()).participant.sessions[0].id;
+   await page.reload({waitUntil:'domcontentloaded'});
+   await page.waitForFunction(()=>window.__qa.messages.some(e=>e.type==='study-prepared'),{},{timeout:120000});
+   const fresh=await state();assert.notEqual(fresh.participant.sessions[0].id,completedId);assert.equal(fresh.participant.sessions[0].state,'experience');
+   const freshFrame=await(await page.locator('.study-exposure iframe').elementHandle()).contentFrame();
+   const freshRemaining=await freshFrame.evaluate(()=>{const v=document.querySelector('.adaptive-television-local-video');return {remaining:v.duration-v.currentTime,paused:v.paused};});
+   assert.ok(Math.abs(freshRemaining.remaining-30)<0.25);assert.equal(freshRemaining.paused,true);
+   record('Reload creates a fresh final-30-second test without login or extra controls');
+  }
  }
  assert.equal(await page.evaluate(()=>window.__qa.camera),0);assert.equal(report.errors.length,0,report.errors.join('\n'));
  report.at=new Date().toISOString();

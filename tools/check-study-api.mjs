@@ -231,5 +231,11 @@ try {
   assert.deepEqual((await ok()).participant,ordinary.participant);assert.equal(cookies.iam_study,ordinaryCookie);
   await ending();await ending('ending.reset');assert.notEqual((await ending()).participant.sessions[0].id,tail.id);
   checks.push('Dedicated ending test is staging-only, uses a separate cookie/store, has no fabricated baseline, requires real end plus 30-second clock, completes ordinary after flow, and leaves cohort and participant unchanged');
+  for(const name of ['study.php','study-ending-test.php'])php.writeFile('/app/'+name,await fs.readFile(path.join(root,'i  a m',name),'utf8'));
+  const productionPage=await php.run({scriptPath:'/app/study-ending-test.php',headers:{Host:'universalmind.tv'}});
+  assert.equal(productionPage.httpStatusCode,404);assert.equal(productionPage.text,'Not found.');assert.equal(productionPage.errors,'');
+  const stagingPage=await php.run({scriptPath:'/app/study-ending-test.php',headers:{Host:'staging.universalmind.tv'}});
+  assert.equal(stagingPage.httpStatusCode,200);assert.ok(stagingPage.text.includes('data-ending-test="true"'));assert.equal(stagingPage.errors,'');
+  checks.push('Dedicated test HTML is available on staging and returns 404 on the production host');
   console.log(JSON.stringify({runtime:'PHP 8.3 WASM',checks},null,2));
 }finally{php.exit();}

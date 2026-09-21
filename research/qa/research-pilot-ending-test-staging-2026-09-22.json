@@ -1,0 +1,177 @@
+{
+  "date": "2026-09-22",
+  "scope": "Separate staging ending-test page; remove preview skip controls",
+  "source_commit": "a663313808a0a483853dd4e013b8462763a7fa93",
+  "url": "https://staging.universalmind.tv/vogue/iam/study-ending-test.php",
+  "normal_study_url": "https://staging.universalmind.tv/vogue/iam/study.php",
+  "production_modified": false,
+  "checks": {
+    "browser": [
+      {
+        "mode": "proof",
+        "url": "https://staging.universalmind.tv/vogue/iam/study-ending-test.php",
+        "checks": [
+          {
+            "text": "Separate ending page buffers actual final 30 seconds before native Play; no skip controls or fabricated baseline",
+            "time": 458.14,
+            "duration": 488.14,
+            "paused": true,
+            "seeking": false,
+            "ready": 4
+          },
+          {
+            "text": "Native Play starts real video and bottom-left timer; navigation locked",
+            "time": 458.731974,
+            "duration": 488.151654,
+            "timer": "7:38 / 8:08",
+            "locked": true
+          },
+          {
+            "text": "Natural video end opens after-check; no forced completion or fullscreen exit",
+            "observedExposure": 29.791199000000006,
+            "endedRequests": 1
+          },
+          {
+            "text": "After-check opens real Heart Check UI and saves a synthetic reading in isolated test storage"
+          },
+          {
+            "text": "After surveys, reward display, results and navigation unlock complete"
+          },
+          {
+            "text": "Regular participant API remains signed out in same browser; separate test cookie verified"
+          },
+          {
+            "text": "Reload creates a fresh final-30-second test without login or extra controls"
+          }
+        ],
+        "errors": [],
+        "endedRequests": 1,
+        "ordinaryRequests": 32,
+        "at": "2026-09-21T19:30:05.361Z"
+      },
+      {
+        "mode": "retry",
+        "url": "https://staging.universalmind.tv/vogue/iam/study-ending-test.php",
+        "checks": [
+          {
+            "text": "Separate ending page buffers actual final 30 seconds before native Play; no skip controls or fabricated baseline",
+            "time": 458.14,
+            "duration": 488.14,
+            "paused": true,
+            "seeking": false,
+            "ready": 4
+          },
+          {
+            "text": "Native Play starts real video and bottom-left timer; navigation locked",
+            "time": 458.765991,
+            "duration": 488.151654,
+            "timer": "7:38 / 8:08",
+            "locked": true
+          },
+          {
+            "text": "Natural video end opens after-check; no forced completion or fullscreen exit",
+            "observedExposure": 29.867477000000008,
+            "endedRequests": 3
+          },
+          {
+            "text": "After-check opens real Heart Check UI and saves a synthetic reading in isolated test storage"
+          },
+          {
+            "text": "After surveys, reward display, results and navigation unlock complete"
+          },
+          {
+            "text": "Regular participant API remains signed out in same browser; separate test cookie verified"
+          }
+        ],
+        "errors": [],
+        "endedRequests": 3,
+        "ordinaryRequests": 29,
+        "at": "2026-09-21T19:31:16.300Z"
+      },
+      {
+        "mode": "ordinary",
+        "url": "https://staging.universalmind.tv/vogue/iam/study.php?preview=1",
+        "checks": [
+          {
+            "text": "Ordinary participant preview starts at zero with no proof controls",
+            "time": 0,
+            "duration": 488.14,
+            "paused": true,
+            "seeking": false,
+            "ready": 4
+          },
+          {
+            "text": "Native Play starts real video and bottom-left timer; navigation locked",
+            "time": 0.504249,
+            "duration": 488.14,
+            "timer": "0:00 / 8:08",
+            "locked": true
+          }
+        ],
+        "errors": [],
+        "endedRequests": 0,
+        "ordinaryRequests": 2,
+        "at": "2026-09-21T19:32:05.092Z"
+      }
+    ],
+    "api": {
+      "runtime": "PHP 8.3 WASM",
+      "checks": [
+        "Origin, CSRF, researcher authentication and staging-only preview enforced",
+        "Production-host regression: existing pilot unlocks once, valid password reaches consent and Heart Check, passwords and ten-person cap remain enforced",
+        "New studies and explicit organiser pauses stay closed; no verification, contact, review or retention values are fabricated",
+        "Existing website password opens the portal directly; staging remains isolated and return identity survives session expiry",
+        "Before/after state machine, 1\u201310 bounds, idempotency, missing vitals and isolated preview completion",
+        "One answer per step persists in order; 10-second scan accepted; PSD stays unavailable; participant cannot choose event window",
+        "Researcher operations require owner session; preview records never enter cohort; enrolment readiness enforced",
+        "Participant and stakeholder codes have separate scopes; no cross-participant or raw stakeholder access",
+        "Reward QR resolves only for owner; private claim and pass authentication stay private; no shared-wallet issuance",
+        "Only $100 after all three sessions; no partial or duplicate payments",
+        "On-demand session starts with no event date; incomplete and already-paid rewards cannot be redeemed",
+        "Shared website password creates separate cohort identities per browser and resumes only its own records",
+        "Production completion clock race reproduced and recovered by retry; lost response acknowledged idempotently; preview skip rejected in production",
+        "Actual media-ended duration advances to after-check; no premature transition or invented exposure after a missing heartbeat",
+        "Replaced media starts a fresh clock without carrying old duration or discarding prior exposure history",
+        "Withdrawal removes requested response fields and invalidates derived results",
+        "Dedicated ending test is staging-only, uses a separate cookie/store, has no fabricated baseline, requires real end plus 30-second clock, completes ordinary after flow, and leaves cohort and participant unchanged",
+        "Dedicated test HTML is available on staging and returns 404 on the production host"
+      ]
+    }
+  },
+  "browser_safety": {
+    "engine": "isolated Playwright Chromium",
+    "process_audio_disabled": true,
+    "camera_blocked": true,
+    "native_fullscreen_stubbed": true,
+    "browsers_closed": true
+  },
+  "limits": [
+    "Actual camera measurements and subjective audio quality were not tested. The Heart Check save used synthetic readings in separate preview storage.",
+    "The proof watches the actual last 30 seconds of the 8:08 video. This run did not repeat the full eight-minute playback.",
+    "Apple Wallet passes and reward payments are excluded from the isolated ending test."
+  ],
+  "deployment": {
+    "method": "deploy-panthur-staging.sh all-changed",
+    "protected_owner_runtime_unchanged": true,
+    "concurrent_staging_base": "614ab68",
+    "notes": "Merged the newer audio release after its index reference replaced the first ending-test deployment; repeated all browser checks against the merged release."
+  },
+  "served_source": [
+    {
+      "file": "index.html",
+      "sha256": "f4f3ce60bef6346dab21229daa2de6a358f7aa26a1e036bc486811a4fe5b5dca"
+    },
+    {
+      "file": "study/app.js",
+      "sha256": "62768f90093e70820d2f134d631302676e380bc2ef07353e7c74d73e69ba1ff6"
+    },
+    {
+      "file": "study/experience.js",
+      "sha256": "8d08d2ed82b1e62b81fce15a91b5741cb04daeed3702ec12c45bf25aea7d5d1d"
+    },
+    {
+      "file": "study/shen-bridge.js",
+      "sha256": "96f251071839af19251f179fbded02cbff2a4d5fb73d483980a96f2d465d7ed2"
+    }
+  ]
+}
