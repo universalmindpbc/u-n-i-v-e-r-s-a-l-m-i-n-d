@@ -11,6 +11,7 @@ let page;
 try {
  page=await browser.newPage({viewport:{width:1440,height:900}});
  page.on('pageerror',e=>report.errors.push(e.message));
+ page.on('response',async response=>{if(/\/api\/study(?:-ending-test)?\.php$/.test(response.url())){try{const body=await response.json();console.log('API',response.request().method(),response.url().split('/').at(-1),JSON.stringify({status:response.status(),ending:body.ending_test,id:body.participant?.id,sessions:body.participant?.sessions?.map(s=>({state:s.state})),stream:body.config?.stream_uid,error:body.error}));}catch{}}});
  await page.addInitScript(()=>{
   window.__qa={camera:0,fullscreen:0,exitFullscreen:0,messages:[]};window.addEventListener('message',e=>{if(e.data?.type?.startsWith('study-'))window.__qa.messages.push({type:e.data.type,message:e.data.message});});
   if(navigator.mediaDevices)navigator.mediaDevices.getUserMedia=async()=>{window.__qa.camera++;throw new Error('Camera disabled in automated QA');};
@@ -37,7 +38,8 @@ try {
   const frame=await(await iframe.elementHandle()).contentFrame();await frame.waitForSelector('[data-heart-rate-accept]');
   assert.equal(await frame.evaluate(()=>window.__qa.camera),0);
   if(!ordinary)assert.ok(frame.url().includes('ending_test=1'));
-  await frame.evaluate(async value=>{const {saveStudyScan}=await import('./study/shen-bridge.js');await saveStudyScan({measurement_duration_seconds:10,heart_rate_bpm:value});},bpm);
+  await frame.waitForFunction(()=>performance.getEntriesByType('resource').some(r=>r.name.includes('/study/shen-bridge.js?v=')));
+  await frame.evaluate(async value=>{const moduleUrl=performance.getEntriesByType('resource').find(r=>r.name.includes('/study/shen-bridge.js?v=')).name;const {saveStudyScan}=await import(moduleUrl);await saveStudyScan({measurement_duration_seconds:10,heart_rate_bpm:value});},bpm);
   await page.locator('[data-question="happiness"]').first().waitFor();
  }
  async function answer(q,v){
@@ -55,7 +57,8 @@ try {
  }
  await page.locator('.study-exposure iframe').waitFor();
  const player=await(await page.locator('.study-exposure iframe').elementHandle()).contentFrame();
- await page.waitForFunction(()=>window.__qa.messages.some(e=>e.type==='study-prepared'),{},{timeout:120000});
+ await page.waitForFunction(()=>window.__qa.messages.some(e=>['study-prepared','study-error'].includes(e.type)),{},{timeout:120000});
+ assert.ok(await page.evaluate(()=>window.__qa.messages.some(e=>e.type==='study-prepared')),JSON.stringify(await page.evaluate(()=>window.__qa.messages)));
  await player.locator('[data-television-play]:not([disabled])').waitFor();
  assert.equal(await page.locator('.study-proof-skip, [data-action="proofEnding"], [data-action="proofAfter"]').count(),0);
  assert.equal(await player.evaluate(()=>typeof window.IAMStudyExperience.previewFinal30),'undefined');
