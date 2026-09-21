@@ -656,6 +656,48 @@ PY
   echo "Private staging archive provisioned and verified over FTPS; external vaults remain pending."
 }
 
+configure_sovereignty_staging() {
+  if [[ "$FTP_USER" != "stagingdeploy@universalmind.tv" || -z "${SOVEREIGNTY_SEED_DIR:-}" ]]; then
+    echo "The staging account and private runtime configuration are required." >&2
+    return 1
+  fi
+  SOVEREIGNTY_FTP_PASS="$FTP_PASS" SOVEREIGNTY_FTP_HOST="$FTP_HOST" SOVEREIGNTY_FTP_USER="$FTP_USER" \
+  python3 - "$SOVEREIGNTY_SEED_DIR" <<'PY'
+import ftplib, hashlib, io, json, os, pathlib, secrets, ssl, sys
+p = pathlib.Path(sys.argv[1])
+raw = (p/'config.json').read_bytes()
+c = json.loads(raw)
+assert c['environment'] == 'staging' and c['enabled'] is True
+assert c['storage_plan'] == 'b2-free-v1' and c['retention_days'] == 30
+assert c.get('timestamp_enabled') is True
+assert isinstance(c.get('zero_cost_verified'), bool)
+assert len(c.get('vaults', [])) in (0, 4)
+if c['zero_cost_verified']:
+    assert len(c['vaults']) == 4 and all(v['provider'] == 'backblaze' for v in c['vaults'])
+remote = 'vogue/iam/api/.runtime-private/sovereignty/config.json'
+with ftplib.FTP_TLS(context=ssl.create_default_context(), timeout=30) as ftp:
+    ftp.connect(os.environ['SOVEREIGNTY_FTP_HOST'])
+    ftp.login(os.environ['SOVEREIGNTY_FTP_USER'], os.environ['SOVEREIGNTY_FTP_PASS']); ftp.prot_p()
+    old = io.BytesIO(); ftp.retrbinary('RETR '+remote, old.write)
+    old_config = json.loads(old.getvalue())
+    for field in ['environment', 'identity_key', 'worker_token_sha256']:
+        assert old_config[field] == c[field], 'Refusing identity or key replacement'
+    backup = p/'config-before-activation.json'
+    if not backup.exists():
+        fd = os.open(backup, os.O_CREAT | os.O_EXCL | os.O_WRONLY, 0o600)
+        with os.fdopen(fd, 'wb') as f: f.write(old.getvalue())
+    temp = remote+'.pending-'+secrets.token_hex(8)
+    ftp.storbinary('STOR '+temp, io.BytesIO(raw))
+    ftp.sendcmd('SITE CHMOD 600 '+temp)
+    check = io.BytesIO(); ftp.retrbinary('RETR '+temp, check.write)
+    assert check.getvalue() == raw, 'Private configuration verification failed'
+    ftp.rename(temp, remote)
+    check = io.BytesIO(); ftp.retrbinary('RETR '+remote, check.write)
+    assert check.getvalue() == raw
+print('Approved free staging configuration updated atomically over FTPS; existing keys preserved.')
+PY
+}
+
 DEPLOY_MODE="${1:-iam}"
 
 if deployment_requires_owner_state_guard "$DEPLOY_MODE"; then
@@ -701,6 +743,9 @@ case "$DEPLOY_MODE" in
     ;;
   sovereignty-seed)
     seed_sovereignty_staging
+    ;;
+  sovereignty-configure)
+    configure_sovereignty_staging
     ;;
   *)
     echo "Usage: $0 [iam|iam-fast|fast|changed|iam-changed|mark|media|redirects|all|all-fast|all-changed|seed-owner-state|owner-password-reset|sovereignty-seed]" >&2

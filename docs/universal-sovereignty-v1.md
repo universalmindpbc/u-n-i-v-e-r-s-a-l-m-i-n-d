@@ -48,35 +48,70 @@ mode over FTPS, stages `.htaccess` first, verifies bytes, refuses replacement of
 different existing keys, and enables the archive by uploading config last.
 Clear PDFs and the owner decryption key are never eligible for provisioning.
 
-## Four copies: account setup still required
+## Approved free staging storage
 
-There are no vault accounts yet. `vaults: []` and `retention_days: null` deliberately
-leave delivery pending. The Panthur queue is not one of four immutable copies.
-No blockchain timestamp has been submitted; no token has been issued.
+Ben approved the $0 Backblaze MVP and a 30-day staging lock on 22 September
+2026. Four private buckets in one dedicated B2 account use provider encryption,
+Object Lock, and 30-day default retention. The worker explicitly writes in
+COMPLIANCE mode. This is one storage provider, not four independent providers.
+The console currently shows $0 storage/download caps and free transaction caps.
+No payment card or paid service is needed for this plan. No Event Notifications
+or paid support is enabled. The source PDF and owner decryption key stay local.
 
-Provision four private, versioned S3-compatible buckets with Object Lock, across
-AWS and Backblaze B2, using distinct storage locations and independent accounts.
-Choose an explicit retention period with Ben before enabling compliance locks.
-Keep the accounts active and monitor renewal of retention before expiry; these
-locks do not promise infinite retention or survival of account closure.
-The private config's vault entries contain: `id`, `provider` (`aws` or `backblaze`),
-`account_label`, `region`, `endpoint` (HTTPS S3 origin), `bucket`, `access_key`,
-`secret_key`, and optional `session_token`. Credentials need read/version/retention
-inspection and Object Lock PUT permissions, without delete/bypass permission.
-Do not paste credentials into chat or commit this config.
+The worker requires `storage_plan: b2-free-v1`, `zero_cost_verified: true`,
+`environment: staging`, exactly four different Backblaze buckets in one account,
+and `retention_days: 30`. The verified flag is set only after checking provider
+caps. It refuses production use; longer retention or a paid tier needs separate
+approval. Application keys expire after the 30-day staging trial and each is
+restricted to one bucket. The console's Read and Write key preset may include
+file deletion; COMPLIANCE locks prevent deletion before retention expiry.
 
-`sovereignty-worker.php` runs separately from login, under a hosting cron or an
-authenticated operational POST using the private worker token. No scheduler is
-configured yet. It sends the same complete encrypted document-and-entry bundle
-to all four destinations concurrently. It verifies version IDs, body metadata,
-COMPLIANCE lock and retention date before marking a destination secured. A retry
-reuses a matching locked version. Partial successes remain pending and are
-retried; an event is complete only after four independently verified copies.
-The worker's live S3 operations cannot be verified until accounts are connected.
+Before each delivery batch, the worker sums every object version across all
+four buckets and reserves the full four-copy bundle size plus proof overhead.
+Its upload ceiling is 9,000,000,000 bytes, below the account's 10 GB free allowance.
+Unknown usage, provider errors and insufficient capacity stop delivery, while
+first-entry receipts remain in the private queue and login continues normally.
+Provider caps remain the account-wide backstop. This account is dedicated to
+these records; unrelated account usage would require a new capacity assessment.
 
-Keep event files and their matching encrypted document version together. This v1
-accepts only one immutable document version per runtime; do not replace it while
-queued entries exist. A new document or credential scheme requires a migration.
+`sovereignty-worker.php` runs separately from login. It sends each complete
+signed/encrypted entry plus the encrypted document to all four destinations.
+Concurrent writes cannot be guaranteed to complete simultaneously. It records
+the immutable object version, checksum, COMPLIANCE mode and exact retention
+date. Ambiguous lookups never trigger a replacement upload. A retry reuses the
+same matching locked object version. Partial success remains pending.
+
+`sovereignty-run.php` is CLI-only. The authenticated staging operations endpoint
+can install one five-minute cron entry on the existing Panthur host, preserving
+all unrelated cron lines. An execution lock prevents overlapping runs. Private
+status files distinguish scheduler installation from an observed completed run.
+Filesystem free space is not represented as proof of the hosting account quota.
+
+`sovereignty-configure` in the existing Panthur deployment script atomically
+updates private staging configuration over FTPS. It verifies bytes and refuses
+changes to existing identity or authentication keys. Runtime configuration and
+credentials remain excluded from Git and ordinary website deployment.
+
+## Background Bitcoin timestamping
+
+Two free OpenTimestamps calendars receive only a SHA-256 digest blinded with a
+fresh 32-byte nonce. The standard proof binds back to the complete encrypted
+bundle. No document, password, member identifier or owner decryption key is sent
+to a calendar or blockchain explorer. The pending proofs are retained privately.
+The scheduled worker upgrades them fairly, with bounded retries and response
+sizes, without holding up login or the four storage copies.
+
+Only a proof whose computed Merkle root matches the same block header reported
+by both Blockstream and mempool.space, with a valid header hash/proof of work and
+at least six confirmations at both indexes, becomes `bitcoin_confirmed`.
+This uses two public explorers, not a locally validating Bitcoin full node.
+Unavailable services, malformed proofs or disagreement remain pending. A
+confirmed `.ots` proof is saved for independent owner verification using the
+standard OpenTimestamps client. No wallet or blockchain transaction fee is used.
+
+The private archive records portal entry only. It does not establish consent,
+a signature on a contract, token issuance or entitlement. Object locks expire;
+status reports expired locks separately and does not silently renew them.
 
 ## Proof and operations
 
@@ -91,8 +126,8 @@ counts only. A staging-only POST with `{"action":"self_test"}` exercises signing
 encryption and idempotency in a separate synthetic namespace excluded from
 audience records and replication. It cannot be run without the private token.
 
-Finish account provisioning, retention selection, worker scheduling, and live
-four-copy upload/read/lock/retry/restore tests before describing delivery as
-operational. Future blockchain timestamping should publish only randomised
-commitments and remain outside the entry path. Future token issuance requires a
-separate explicit workflow; v1 contains no entitlement or minting action.
+Complete and record live four-copy upload/read/lock/retry/restore tests and an
+observed scheduled run before describing the archive as operational. The
+staging diagnostic's event, delivery and timestamp files are isolated from
+audience records. Runtime status, not this design document, is authoritative
+for connection, delivery and Bitcoin confirmation status.

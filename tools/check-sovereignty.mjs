@@ -19,9 +19,11 @@ const password='first-person-test-fixture';
 const document=JSON.stringify({schema:1,ciphertext:'test-encrypted-document'});
 try {
  php.mkdir(dir);
- for(const name of ['sovereignty-lib.php','portal-entry.php','sovereignty-worker.php','sovereignty-status.php']) {
+ for(const name of ['sovereignty-lib.php','portal-entry.php','sovereignty-worker.php','sovereignty-status.php','sovereignty-operations.php','sovereignty-timestamps.php','sovereignty-run.php']) {
   const source=await fs.readFile(path.join(root,'i  a m/api',name),'utf8');
   php.writeFile('/site/vogue/iam/api/'+name,source);
+  const lint=await php.run({code: `<?php token_get_all(file_get_contents('/site/vogue/iam/api/${name}'), TOKEN_PARSE); echo 'valid';`});
+  assert.equal(lint.errors,''); assert.equal(lint.text,'valid');
  }
  php.writeFile('/site/index.html',`const allowedPasswordHashes = new Set(["${digest(password)}","${digest('second-person-test-fixture')}"])`);
  const writeConfig=()=>php.writeFile(dir+'/config.json',JSON.stringify(config));writeConfig();
@@ -72,9 +74,32 @@ try {
  assert.equal((await request({}, {script:'sovereignty-status.php',method:'GET'})).status,403);
  const status=await request({}, {script:'sovereignty-status.php',method:'GET',headers:{Authorization:'Bearer '+'b'.repeat(64)}});
  assert.equal(status.body.recorded_entries,2);assert.equal(status.body.four_copies_secured,0);
- assert.equal(status.body.configured_vaults,0);assert.equal(status.body.blockchain,'not_submitted');
+ assert.equal(status.body.configured_vaults,0);assert.equal(status.body.blockchain.bitcoin_confirmed,0);
  const worker=await php.run({code:`<?php define('SOVEREIGNTY_WORKER_LIBRARY_ONLY',true); require '/site/vogue/iam/api/sovereignty-worker.php'; try { sovereignty_vaults(sovereignty_config()); echo 'bad'; } catch (RuntimeException $e) { echo 'blocked'; }`});
  assert.equal(worker.errors,'');assert.equal(worker.text,'blocked');
+ const freePlan=await php.run({code:`<?php define('SOVEREIGNTY_WORKER_LIBRARY_ONLY',true); require '/site/vogue/iam/api/sovereignty-worker.php';
+ $c=sovereignty_config(); $c['storage_plan']='b2-free-v1'; $c['retention_days']=30; $c['zero_cost_verified']=true;
+ for($i=1;$i<=4;$i++) $c['vaults'][]=['id'=>'v'.$i,'provider'=>'backblaze','account_label'=>'dedicated','region'=>'us-east-005','endpoint'=>'https://s3.us-east-005.backblazeb2.com','bucket'=>'fixture-vault-'.$i,'access_key'=>'test','secret_key'=>'test'];
+ $checks=[count(sovereignty_vaults($c))===4,sovereignty_budget_allows(8999999999,1),!sovereignty_budget_allows(8999999999,2),!sovereignty_budget_allows(-1,1)];
+ foreach(['unverified','wrong_days','duplicate','aws','production'] as $failure){$d=$c;
+ if($failure==='unverified')$d['zero_cost_verified']=false;
+ if($failure==='wrong_days')$d['retention_days']=365;
+ if($failure==='duplicate')$d['vaults'][3]=$d['vaults'][2];
+ if($failure==='aws'){$d['vaults'][0]['provider']='aws';$d['vaults'][0]['endpoint']='https://s3.amazonaws.com';}
+ if($failure==='production')$d['environment']='production';
+ try{sovereignty_vaults($d);$checks[]=false;}catch(Throwable $e){$checks[]=true;}}
+ require '/site/vogue/iam/api/sovereignty-timestamps.php';
+ $digest=hash('sha256','fixture',true);$uri='https://alice.btc.calendar.opentimestamps.org';
+ $pending="\\x00".hex2bin('83dfe30d2ef90c8e').chr(strlen($uri)+1).chr(strlen($uri)).$uri;
+ $proof=SOVEREIGNTY_OTS_MAGIC."\\x01\\x08".$digest.$pending;
+ $leaves=sovereignty_ots_parse($proof,$digest,true);$checks[]=count($leaves)===1&&$leaves[0]['uri']===$uri;
+ $checks[]=!sovereignty_calendar_allowed('https://127.0.0.1');
+ $checks[]=!sovereignty_calendar_allowed('https://alice.btc.calendar.opentimestamps.org.evil.test');
+ foreach([$proof.'x',substr($proof,0,-1),SOVEREIGNTY_OTS_MAGIC."\\x01\\x08".str_repeat('x',32).$pending] as $bad){try{sovereignty_ots_parse($bad,$digest,true);$checks[]=false;}catch(Throwable $e){$checks[]=true;}}
+ echo json_encode(['checks'=>$checks,'proof'=>base64_encode($proof)]);`});
+ assert.equal(freePlan.errors,'');const freeResult=JSON.parse(freePlan.text);assert.ok(freeResult.checks.every(Boolean));
+ if(process.env.SOVEREIGNTY_OTS_FIXTURE)await fs.writeFile(process.env.SOVEREIGNTY_OTS_FIXTURE,Buffer.from(freeResult.proof,'base64'));
+ report.checks.push('Only the approved four-bucket free staging plan is accepted; the 9 GB ceiling, malformed proof rejection and calendar allowlist pass');
  config.environment='production';writeConfig();assert.equal((await request({password})).status,503);
  config.environment='staging';config.enabled=false;writeConfig();assert.equal((await request({password})).status,503);
  php.writeFile(dir+'/config.json','bad');assert.equal((await request({password})).body.accepted,false);
