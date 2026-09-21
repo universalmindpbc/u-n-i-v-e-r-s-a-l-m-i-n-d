@@ -100,6 +100,30 @@ try {
  assert.equal(freePlan.errors,'');const freeResult=JSON.parse(freePlan.text);assert.ok(freeResult.checks.every(Boolean));
  if(process.env.SOVEREIGNTY_OTS_FIXTURE)await fs.writeFile(process.env.SOVEREIGNTY_OTS_FIXTURE,Buffer.from(freeResult.proof,'base64'));
  report.checks.push('Only the approved four-bucket free staging plan is accepted; the 9 GB ceiling, malformed proof rejection and calendar allowlist pass');
+ // Public Bitcoin block 1 header; mock transport only, retaining the real
+ // Merkle-root, header-hash, work-target and confirmation checks.
+ const blockHeader='010000006fe28c0ab6f1b372c1a6a246ae63f74f931e8365e15a089c68d6190000000000982051fd1e4ba744bbbe680e1fee14677ba1a3c3540bf7b1cdb606e857233e0e61bc6649ffff001d01e36299';
+ const timestampSource=await fs.readFile(path.join(root,'i  a m/api/sovereignty-timestamps.php'),'utf8');
+ php.writeFile('/site/vogue/iam/api/timestamp-transport-fixture.php',timestampSource.replace('function sovereignty_timestamp_http(', 'function unused_timestamp_http('));
+ const confirmation=await php.run({code:`<?php
+ function sovereignty_timestamp_http(string $url, ?string $payload=null): string {
+   global $mode, $header, $blockHash;
+   if(str_ends_with($url,'/blocks/tip/height'))return $mode==='too_few'?'5':'6';
+   if(str_ends_with($url,'/header'))return $mode==='corrupt_header'?substr($header,0,-2).'00':$header;
+   if($mode==='disagreement'&&str_contains($url,'mempool.space'))return str_repeat('0',64);
+   return $blockHash;
+ }
+ require '/site/vogue/iam/api/timestamp-transport-fixture.php';
+ $header='${blockHeader}';$raw=hex2bin($header);
+ $blockHash=bin2hex(strrev(hash('sha256',hash('sha256',$raw,true),true)));
+ $leaf=['height'=>1,'message'=>substr($raw,36,32)];$checks=[];
+ $mode='valid';$valid=sovereignty_bitcoin_verify($leaf);
+ $checks[]=$valid['state']==='bitcoin_confirmed'&&$valid['confirmations']===6;
+ foreach(['too_few','disagreement','corrupt_header'] as $mode)$checks[]=sovereignty_bitcoin_verify($leaf)===null;
+ $mode='valid';$leaf['message']=str_repeat('x',32);$checks[]=sovereignty_bitcoin_verify($leaf)===null;
+ echo json_encode($checks);`});
+ assert.equal(confirmation.errors,'');assert.ok(JSON.parse(confirmation.text).every(Boolean));
+ report.checks.push('A valid Bitcoin header with six confirmations passes; explorer disagreement, a corrupt header, wrong Merkle root and insufficient confirmations remain pending');
  config.environment='production';writeConfig();assert.equal((await request({password})).status,503);
  config.environment='staging';config.enabled=false;writeConfig();assert.equal((await request({password})).status,503);
  php.writeFile(dir+'/config.json','bad');assert.equal((await request({password})).body.accepted,false);

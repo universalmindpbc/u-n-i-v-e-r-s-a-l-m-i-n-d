@@ -1,0 +1,269 @@
+{
+  "section": "Universal Sovereignty",
+  "verified_at": "2026-09-21T19:35:17.216987+00:00",
+  "deployed_source_commit": "739d36cb28b8e06af1a1d4308ec828ec6ad7b0da",
+  "scope": "Operational free staging archive; Bitcoin timestamp confirmations pending",
+  "origin": "https://staging.universalmind.tv/",
+  "storage_plan": {
+    "provider": "Backblaze B2",
+    "private_buckets": 4,
+    "accounts": 1,
+    "retention_mode": "COMPLIANCE",
+    "retention_days": 30,
+    "application_keys_single_bucket_restricted": true,
+    "application_keys_expire_local_date": "2026-10-22",
+    "provider_storage_cap_usd": 0,
+    "provider_download_cap_usd": 0,
+    "provider_free_storage_gb": 10,
+    "provider_download_cap_gb_per_day": 1,
+    "provider_class_b_cap_per_day": 2500,
+    "provider_class_c_cap_per_day": 2500,
+    "application_upload_ceiling_bytes": 9000000000,
+    "actual_total_storage_bytes_at_verification": 18586144,
+    "payment_card_added": false
+  },
+  "storage_verification": {
+    "checked_at": "2026-09-21T19:28:18.524339+00:00",
+    "vaults": [
+      {
+        "vault": "b2-vault-1",
+        "private": true,
+        "default_compliance_days": 30,
+        "provider_encryption": true,
+        "version_count": 1,
+        "bytes": 2323270,
+        "restored_and_signature_verified": true,
+        "sealed_pdf_matches": true,
+        "locked_delete_rejected": "AccessDenied",
+        "retained_until": "2026-10-21T19:26:04+00:00"
+      },
+      {
+        "vault": "b2-vault-2",
+        "private": true,
+        "default_compliance_days": 30,
+        "provider_encryption": true,
+        "version_count": 1,
+        "bytes": 2323270,
+        "restored_and_signature_verified": true,
+        "sealed_pdf_matches": true,
+        "locked_delete_rejected": "AccessDenied",
+        "retained_until": "2026-10-21T19:26:04+00:00"
+      },
+      {
+        "vault": "b2-vault-3",
+        "private": true,
+        "default_compliance_days": 30,
+        "provider_encryption": true,
+        "version_count": 1,
+        "bytes": 2323270,
+        "restored_and_signature_verified": true,
+        "sealed_pdf_matches": true,
+        "locked_delete_rejected": "AccessDenied",
+        "retained_until": "2026-10-21T19:26:04+00:00"
+      },
+      {
+        "vault": "b2-vault-4",
+        "private": true,
+        "default_compliance_days": 30,
+        "provider_encryption": true,
+        "version_count": 1,
+        "bytes": 2323270,
+        "restored_and_signature_verified": true,
+        "sealed_pdf_matches": true,
+        "locked_delete_rejected": "AccessDenied",
+        "retained_until": "2026-10-21T19:26:04+00:00"
+      }
+    ],
+    "passed": true,
+    "all_four_copies_identical": true
+  },
+  "retry_verification": {
+    "checked_at": "2026-09-21T19:31:20.307Z",
+    "retrySkippedAlreadySecured": true,
+    "result": {
+      "checked_at": "2026-09-21T19:31:20+00:00",
+      "processed": 0,
+      "four_copies_secured": 0,
+      "capacity_pending": false,
+      "storage_bytes_upper_bound": 18586144,
+      "storage_limit_bytes": 9000000000
+    },
+    "missingAcknowledgementRecovered": true,
+    "recoveryResult": {
+      "checked_at": "2026-09-21T19:32:36+00:00",
+      "processed": 1,
+      "four_copies_secured": 1,
+      "capacity_pending": false,
+      "storage_bytes_upper_bound": 28141368,
+      "storage_limit_bytes": 9000000000
+    },
+    "vaults": [
+      {
+        "vault": "b2-vault-1",
+        "same_immutable_version_after_retry": true,
+        "cross_bucket_access_denied": true
+      },
+      {
+        "vault": "b2-vault-2",
+        "same_immutable_version_after_retry": true,
+        "cross_bucket_access_denied": true
+      },
+      {
+        "vault": "b2-vault-3",
+        "same_immutable_version_after_retry": true,
+        "cross_bucket_access_denied": true
+      },
+      {
+        "vault": "b2-vault-4",
+        "same_immutable_version_after_retry": true,
+        "cross_bucket_access_denied": true
+      }
+    ],
+    "actual_total_storage_bytes": 18586144,
+    "passed": true
+  },
+  "timestamp_verification": {
+    "parser": "official python-opentimestamps 0.4.5",
+    "proofs": [
+      {
+        "scope": "qa-timestamps",
+        "state": "pending_bitcoin",
+        "digest_binding_valid": true,
+        "standard_format_valid": true,
+        "bytes": 307
+      },
+      {
+        "scope": "qa-timestamps",
+        "state": "pending_bitcoin",
+        "digest_binding_valid": true,
+        "standard_format_valid": true,
+        "bytes": 270
+      },
+      {
+        "scope": "timestamps",
+        "state": "pending_bitcoin",
+        "digest_binding_valid": true,
+        "standard_format_valid": true,
+        "bytes": 377
+      },
+      {
+        "scope": "timestamps",
+        "state": "pending_bitcoin",
+        "digest_binding_valid": true,
+        "standard_format_valid": true,
+        "bytes": 305
+      }
+    ]
+  },
+  "backend_verification": {
+    "checks": [
+      "Wrong passwords, submitted digests, cross-origin requests, invalid JSON, wrong method/type and oversized bodies cannot create entries",
+      "Repeated requests preserve the exact original entry; a second credential creates one separate entry",
+      "Owner key decrypts the envelope; platform signature verifies; ciphertext or AAD tampering is rejected; no password or consent claim is archived",
+      "Only the approved four-bucket free staging plan is accepted; the 9 GB ceiling, malformed proof rejection and calendar allowlist pass",
+      "A valid Bitcoin header with six confirmations passes; explorer disagreement, a corrupt header, wrong Merkle root and insufficient confirmations remain pending",
+      "Status requires the private token; missing vaults cannot report copies secured; environment mismatch, disabled and damaged configuration fail closed",
+      "The existing 700ms navigation timer starts before the background fetch and never awaits it"
+    ],
+    "passed": true
+  },
+  "login_timing_verification": {
+    "mutedProcess": true,
+    "usesSyntheticCredential": true,
+    "checks": [
+      "Desktop/mobile invalid passwords never send records; valid entry keeps its 700ms transition when recording stalls, fails, or fetch throws",
+      "No credential stored in localStorage or sessionStorage; no native fullscreen; muted browser closed"
+    ],
+    "timings": [
+      {
+        "viewport": "desktop",
+        "recording": "baseline",
+        "navigation_ms": 723
+      },
+      {
+        "viewport": "desktop",
+        "recording": "stalled",
+        "navigation_ms": 722
+      },
+      {
+        "viewport": "desktop",
+        "recording": "failed",
+        "navigation_ms": 719
+      },
+      {
+        "viewport": "desktop",
+        "recording": "throws",
+        "navigation_ms": 727
+      },
+      {
+        "viewport": "mobile",
+        "recording": "baseline",
+        "navigation_ms": 715
+      },
+      {
+        "viewport": "mobile",
+        "recording": "stalled",
+        "navigation_ms": 718
+      },
+      {
+        "viewport": "mobile",
+        "recording": "failed",
+        "navigation_ms": 721
+      },
+      {
+        "viewport": "mobile",
+        "recording": "throws",
+        "navigation_ms": 719
+      }
+    ],
+    "passed": true
+  },
+  "live_verification": {
+    "checks": [
+      "Served root HTML matches the committed candidate after removing the existing CDN analytics injection; unchanged password form rejects an invalid credential",
+      "Actual staging PHP signs and encrypts an isolated synthetic entry and rejects duplicate creation; audience records unchanged",
+      "Private runtime, encrypted document, signing key, original asset URL and owner-local source path deny HTTP access"
+    ],
+    "root_status": 200,
+    "configured_vaults": 4,
+    "all_current_staging_entries_have_four_secured_copies": true,
+    "synthetic_diagnostic_excluded_from_audience_records": true,
+    "private_urls_denied": true,
+    "contract_execution": false,
+    "token_issuance": false
+  },
+  "scheduler": {
+    "interval_minutes": 5,
+    "observed_automatic_run_started_at": "2026-09-21T19:30:01+00:00",
+    "observed_automatic_run_finished_at": "2026-09-21T19:30:16+00:00",
+    "delivery_processed_successfully": true,
+    "timestamps_processed_successfully": true
+  },
+  "hosting": {
+    "existing_provider": "Panthur",
+    "account_quota_verified": true,
+    "account_quota_checked_at": "2026-09-21T19:18:35+00:00",
+    "account_quota_mb": 20000,
+    "free_account_space_mb_at_check": 16930.23,
+    "monthly_bandwidth_limit": "unlimited"
+  },
+  "deployment": {
+    "workflow": "Existing deploy-panthur-staging.sh all-changed and sovereignty-configure",
+    "private_transport": "FTPS",
+    "all_seven_archive_php_files_match_committed_source": true,
+    "private_owner_decryption_key_uploaded": false,
+    "source_document_uploaded": false,
+    "protected_owner_runtime_preserved": true,
+    "latest_concurrent_staging_work_preserved": true
+  },
+  "limits": [
+    "The four buckets share one Backblaze provider/account.",
+    "Object locks last 30 days and are not silently renewed; restricted staging keys expire on 22 October 2026.",
+    "Bitcoin calendar proofs are accepted; blockchain confirmation is pending and upgraded by the scheduled worker.",
+    "The record proves a captured portal entry, not consent, contract execution, identity or token entitlement.",
+    "First successfully captured entry since activation; network failure can miss an attempt while login remains fast.",
+    "Storage or provider caps stop delivery and preserve queued receipts without delaying entry."
+  ],
+  "production_modified_by_this_task": false,
+  "passed": true
+}
