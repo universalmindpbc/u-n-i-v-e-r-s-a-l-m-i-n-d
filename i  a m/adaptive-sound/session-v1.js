@@ -55,12 +55,20 @@ export function resolveAdaptiveSoundSession(inferenceInput = {}, policy, options
     visitor: String(payload.selection_context?.visitor_id || "anonymous"),
   });
 
-  const bandIntent = explicit.band_intent || (!explicitInsufficientContext
+  let bandIntent = explicit.band_intent || (!explicitInsufficientContext
     ? chooseScored(bandScores, fingerprint, "band")
     : null);
-  const carrierIntent = explicit.carrier_intent || (!explicitInsufficientContext
+  let carrierIntent = explicit.carrier_intent || (!explicitInsufficientContext
     ? chooseScored(carrierScores, fingerprint, "carrier")
     : null);
+  if ((!bandIntent || !carrierIntent) && policy.session_policy?.no_checkin_rule === "play_default_session_profile") {
+    const fallback = policy.session_policy.default_session;
+    if (bands[fallback?.band_intent] && carriers[fallback?.carrier_intent]) {
+      bandIntent = fallback.band_intent;
+      carrierIntent = fallback.carrier_intent;
+      explicit.selection_basis = "default_session_profile";
+    }
+  }
   const safety = resolveSafety(payload, policy);
   const promptIdentity = readPromptIdentity(inference);
   const authority = {
@@ -459,6 +467,7 @@ function chooseScored(scores, fingerprint, namespace) {
 
 function selectionAuthority(basis, bandIntent, carrierIntent) {
   if (!bandIntent || !carrierIntent) return "no_current_session_selection";
+  if (basis === "default_session_profile") return "platform_default_session_profile";
   if (basis === "citizen_session_override") return "citizen_current_session_choice";
   if (basis === "inference_semantic_intent") return "adaptive_inference_engine_semantic_intent";
   return "deterministic_structured_needs_policy";

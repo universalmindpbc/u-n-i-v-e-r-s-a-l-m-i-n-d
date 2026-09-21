@@ -1,4 +1,4 @@
-import { startAdaptiveSoundSession } from "./adaptive-sound/session-v1.js?v=842b691dd728";
+import { startAdaptiveSoundSession } from "./adaptive-sound/session-v1.js?v=3cbe017b92eb";
 
 const planetHost = document.querySelector(".homepage-alternate__planet");
 const planetCanvas = document.querySelector("[data-homepage-context-planet]");

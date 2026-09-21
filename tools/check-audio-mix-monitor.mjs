@@ -28,11 +28,11 @@ await context.addInitScript(() => {
   if (navigator.mediaDevices) navigator.mediaDevices.getUserMedia = () => Promise.reject(new Error('QA prevents microphone access'));
 });
 if (report.localAssets) {
-  const files = ['index.html', 'adaptive-environment-television.js', 'adaptive-sound/controller-v1.js', 'adaptive-sound/worklet-v1.js'];
+  const files = ['index.html', 'adaptive-environment-television.js', 'adaptive-sound/controller-v1.js', 'adaptive-sound/worklet-v1.js', 'adaptive-sound/session-v1.js', 'adaptive-sound-intent-policy-v1.json'];
   await context.route(base + '**', async route => {
     const file = decodeURIComponent(new URL(route.request().url()).pathname).replace('/vogue/iam/', '');
     if (!files.includes(file)) return route.continue();
-    await route.fulfill({ body: await fs.readFile(path.join(root, 'i  a m', file)), contentType: file.endsWith('.html') ? 'text/html' : 'application/javascript' });
+    await route.fulfill({ body: await fs.readFile(path.join(root, 'i  a m', file)), contentType: file.endsWith('.html') ? 'text/html' : file.endsWith('.json') ? 'application/json' : 'application/javascript' });
   });
 }
 const diag = () => page.evaluate(() => ({ quantum: window.IAMQuantumTree.diagnostics(), synth: window.IAMAdaptiveSound.diagnostics(), mantra: window.IAMSubaudibleMantra.diagnostics() }));
@@ -40,11 +40,15 @@ const text = name => page.locator(`[data-mix-${name}]`).textContent();
 try {
   await page.goto(base + 'index.html?quantumTreeMonitor=1', { waitUntil: 'domcontentloaded', timeout: 60000 });
   await page.waitForFunction(() => window.IAMSubaudibleMantra && window.IAMAdaptiveSound && document.body.dataset.adaptiveSelectionSource === 'no_checkin_random');
-  await page.waitForFunction(() => document.querySelector('[data-mix-synth-status]').textContent === 'no session selection');
+  await page.waitForFunction(() => window.IAMAdaptiveSoundSnapshot?.selection_basis === 'default_session_profile');
+  assert.equal((await diag()).synth.carrier_hz, 111);
   assert.equal(await text('synth-volume'), '0.00%');
   assert.equal(await text('synth-time'), '0:00');
-  report.checks.push('No-check-in random programme; no phantom synth selection, output or clock');
+  report.checks.push('Skipped check-in and Heart Rate select the explicit default synth profile; audio waits for playback');
   await page.locator('[data-television-play]').click();
+  await page.waitForFunction(() => window.IAMAdaptiveSound.diagnostics().running && window.IAMAdaptiveSound.diagnostics().output_rms > 0);
+  assert.equal((await diag()).synth.panel_open, false);
+  report.checks.push('One programme Play click starts the synth with both checks skipped and Sound panel closed');
   await page.waitForFunction(() => document.querySelector('.adaptive-television-local-video')?.currentTime > 1, null, {timeout: 45000});
   await page.waitForFunction(() => window.IAMSubaudibleMantra.diagnostics().outputVerified, null, {timeout: 60000});
   const before = await diag();

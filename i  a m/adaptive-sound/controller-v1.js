@@ -5,7 +5,7 @@ import {
 import {
   ADAPTIVE_SOUND_SESSION_EVENT,
   startAdaptiveSoundSession,
-} from "./session-v1.js?v=842b691dd728";
+} from "./session-v1.js?v=3cbe017b92eb";
 
 const PROCESSOR_NAME = "iam-adaptive-sound-v1";
 const PROFILE_META = Object.freeze({
@@ -144,6 +144,8 @@ function initializeAdaptiveSoundPanel() {
     enabledLanes: Object.fromEntries(LANE_IDS.map((laneId) => [laneId, true])),
     context: null,
     workletLoaded: false,
+    workletPromise: null,
+    engineStarting: false,
     route: null,
     generation: 0,
     quantumTimer: 0,
@@ -151,6 +153,7 @@ function initializeAdaptiveSoundPanel() {
     lastError: "",
     sessionSnapshot: initialSnapshot || null,
     choiceRevision: 0,
+    playbackRequested: false,
   };
 
   function adaptiveProgrammeOutputMultiplier() {
@@ -318,7 +321,7 @@ function initializeAdaptiveSoundPanel() {
       consoleElement.focus({ preventScroll: true });
     });
     window.setTimeout(updateMatrixGeometry, 850);
-    if (state.synthEnabled && state.profileId && state.masterEnabled) rebuildEngine("panel_open");
+    if (state.synthEnabled && state.profileId && state.masterEnabled && !state.route && !state.engineStarting) rebuildEngine("panel_open");
   }
 
   function updateMatrixGeometry() {
@@ -459,11 +462,37 @@ function initializeAdaptiveSoundPanel() {
       document.body.dataset.adaptiveSoundEngine = snapshot.safety?.state === "high_concern"
         ? "high_concern_session_opt_in_required"
         : "no_current_session_selection";
-    } else if (state.open && state.masterEnabled && (selectionChanged || activeRouteSelectionChanged || !wasSynthEnabled || !state.route)) {
+    } else if ((state.open || state.playbackRequested) && state.masterEnabled && (selectionChanged || activeRouteSelectionChanged || !wasSynthEnabled || (!state.route && !state.engineStarting))) {
       rebuildEngine(snapshot.selection_basis === "citizen_session_override" ? "session_choice" : "checkin_resolution");
     }
     syncInterface();
   }
+
+  function startWithPlayback() {
+    state.playbackRequested = true;
+    state.masterEnabled = window.IAMQuantumTree?.diagnostics?.().enabled ?? state.masterEnabled;
+    // Resume synchronously in the programme click, even if session policy is still loading.
+    const ready = ensureAudioContext();
+    return Promise.all([ready, adaptiveSoundSession?.ready]).then(() => {
+      if (!state.masterEnabled || !state.synthEnabled) return;
+      if (!state.route && !state.engineStarting) return rebuildEngine("programme_playback");
+      if (state.route) {
+        state.route.node.port.postMessage({type: "set_master_enabled", enabled: true});
+        setRouteGain(adaptiveRouteOutputGain(), .08);
+      }
+    }).catch(failAdaptiveEngine);
+  }
+
+  window.addEventListener("iam:sound-playback-start", startWithPlayback);
+  window.addEventListener("iam:sound-master-change", () => {
+    state.masterEnabled = Boolean(window.IAMQuantumTree?.diagnostics?.().enabled);
+    if (!state.masterEnabled) {
+      state.route?.node.port.postMessage({type: "set_master_enabled", enabled: false});
+      setRouteGain(0, .08);
+    } else if (state.playbackRequested) {
+      startWithPlayback();
+    }
+  });
 
   async function ensureAudioContext() {
     if (!state.context) {
@@ -475,7 +504,9 @@ function initializeAdaptiveSoundPanel() {
     }
     if (state.context.state !== "running") await state.context.resume();
     if (!state.workletLoaded) {
-      await state.context.audioWorklet.addModule(new URL("./worklet-v1.js?v=319a423521a5", import.meta.url));
+      if (!state.workletPromise) state.workletPromise = state.context.audioWorklet.addModule(new URL("./worklet-v1.js?v=319a423521a5", import.meta.url))
+        .catch(error => { state.workletPromise = null; throw error; });
+      await state.workletPromise;
       state.workletLoaded = true;
     }
     if (state.context.state !== "running") await state.context.resume();
@@ -485,6 +516,7 @@ function initializeAdaptiveSoundPanel() {
   async function rebuildEngine(reason) {
     if (!state.profileId || !state.synthEnabled || !state.masterEnabled) return;
     const generation = ++state.generation;
+    state.engineStarting = true;
     state.lastError = "";
     setStatus("TUNING SIGNAL PATH", false);
     try {
@@ -528,6 +560,8 @@ function initializeAdaptiveSoundPanel() {
       syncInterface();
     } catch (error) {
       failAdaptiveEngine(error);
+    } finally {
+      if (generation === state.generation) state.engineStarting = false;
     }
   }
 

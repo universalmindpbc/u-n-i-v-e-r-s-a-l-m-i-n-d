@@ -1,5 +1,8 @@
+import { createOwnerSynthTest } from "./adaptive-sound/owner-synth-v1.js?v=7285f3f3de9e";
+
 (function () {
   const DEFAULT_PEAK = 0.055;
+  const synthTest = createOwnerSynthTest();
   const SETTINGS_ENDPOINT = "api/quantum-tree-settings.php";
   const SOURCE_LABEL = "Quantum Tree AAC · 192 kbps";
   const accessPanel = document.querySelector("[data-owner-access]");
@@ -56,7 +59,7 @@
 
   function setText(selector, value) {
     const element = document.querySelector(selector);
-    if (element) element.textContent = value;
+    if (element && element.textContent !== value) element.textContent = value;
   }
 
   function setSaveStatus(message, isError = false) {
@@ -167,7 +170,7 @@
     const state = document.querySelector("[data-mantra-preview-state]");
     state.textContent = mantraError || (d.outputVerified ? "Measured output" : d.playing ? (d.gain && !d.advancing ? "Loading" : "Silent") : "Stopped");
     state.classList.toggle("is-verified", d.outputVerified);
-    mantraPlay.textContent = d.playing ? "Pause isolated test" : "Play isolated test";
+    setText("[data-mantra-preview-toggle]", d.playing ? "Pause isolated test" : "Play isolated test");
     const clock = value => `${Math.floor(value / 60)}:${String(Math.floor(value % 60)).padStart(2, "0")}`;
     setText("[data-mantra-preview-clock]", `${clock(d.currentTime)} / ${clock(Number.isFinite(mantraAudio.duration) ? mantraAudio.duration : 334.782)}`);
     setText("[data-mantra-preview-output]", d.outputVerified ? `${decibels(d.outputRms).toFixed(1)} dBFS RMS` : "Silent");
@@ -209,22 +212,36 @@
     if (!mantraAudio.paused) pauseMantraTest(); else playMantraTest();
   });
   document.querySelector("[data-preview-together]")?.addEventListener("click", async () => {
-    if (!audio.paused && !mantraAudio.paused) { audio.pause(); pauseMantraTest(); return; }
+    if (!audio.paused && !mantraAudio.paused && synthTest.diagnostics().enabled) { audio.pause(); pauseMantraTest(); synthTest.pause(); return; }
     playbackError = "";
     renderPeak();
-    // Start both within the same trusted click. Their individual controls stay independent.
-    await Promise.all([audio.play().catch(() => { playbackError = "Press Play to resume"; }), playMantraTest()]);
+    // Start all three within the same trusted click. Their individual controls stay independent.
+    await Promise.all([audio.play().catch(() => { playbackError = "Press Play to resume"; }), playMantraTest(), synthTest.play()]);
   });
   document.querySelector("[data-preview-stop-both]")?.addEventListener("click", () => {
-    audio.pause(); audio.currentTime = 0; pauseMantraTest(true);
+    audio.pause(); audio.currentTime = 0; pauseMantraTest(true); synthTest.stop();
   });
   mantraAudio?.addEventListener("error", () => { mantraError = "File error"; pauseMantraTest(); });
   window.IAMMantraAudition = Object.freeze({ diagnostics: mantraTestDiagnostics });
-  window.addEventListener("pagehide", () => { pauseMantraTest(); audio.pause(); });
+  window.addEventListener("pagehide", () => { pauseMantraTest(); audio.pause(); synthTest.stop(); });
+
+  document.querySelector("[data-synth-preview-toggle]")?.addEventListener("click", () => {
+    if(synthTest.diagnostics().enabled) synthTest.pause(); else synthTest.play();
+  });
+  document.querySelector("[data-synth-preview-stop]")?.addEventListener("click", () => synthTest.stop());
+  window.IAMOwnerSynthAudition = synthTest;
 
   function renderDiagnostics(now) {
     renderMantraPreview(now);
-    setText("[data-preview-together]", !audio.paused && !mantraAudio.paused ? "Pause together" : "Play together");
+    const synth = synthTest.diagnostics();
+    setText("[data-preview-together]", synth.pending ? "Starting mix…" : !audio.paused && !mantraAudio.paused && synth.enabled ? "Pause together" : "Play together");
+    document.querySelector("[data-preview-together]").disabled = synth.pending;
+    setText("[data-synth-preview-toggle]", synth.pending ? "Starting synth…" : synth.enabled ? "Pause synth test" : "Play synth test");
+    document.querySelector("[data-synth-preview-toggle]").disabled = synth.pending;
+    setText("[data-synth-preview-state]", synth.error || (synth.running ? "Running" : synth.pending ? "Loading" : "Stopped"));
+    setText("[data-synth-preview-volume]", `${(synth.volume * 100).toFixed(2)}%`);
+    setText("[data-synth-preview-clock]", `${Math.floor(synth.runSeconds / 60)}:${String(Math.floor(synth.runSeconds % 60)).padStart(2,"0")}`);
+    setText("[data-synth-preview-output]", synth.outputRms > 1e-9 ? `${decibels(synth.outputRms).toFixed(1)} dBFS RMS` : "Silent");
     const currentTime = Number(audio.currentTime || 0);
     if (!audio.paused && Math.abs(currentTime - lastPlaybackTime) > 0.001) lastAdvanceAt = now;
     lastPlaybackTime = currentTime;
@@ -237,7 +254,7 @@
     setText("[data-playback-status]", playbackError || (audio.error ? "error" : (playing ? "playing" : "stopped")));
     setText("[data-signal-clock]", `${currentTime.toFixed(1)} seconds`);
     setText("[data-signal-advancing]", advancing ? "yes" : "no");
-    playToggle.textContent = playing ? "Pause isolated test" : "Play isolated test";
+    setText("[data-preview-toggle]", playing ? "Pause isolated test" : "Play isolated test");
     overallStatus.textContent = verified ? "verified playing" : (playbackError ? "playback blocked" : (playing ? "starting" : "waiting"));
     overallStatus.classList.toggle("is-verified", verified);
     window.requestAnimationFrame(renderDiagnostics);
@@ -367,6 +384,7 @@
     }
     audio.pause();
     pauseMantraTest();
+    synthTest.stop();
     showLogin();
   });
 

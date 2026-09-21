@@ -58,11 +58,12 @@ for (const bandIntent of bands) {
 }
 
 const noCheckin = resolveAdaptiveSoundSession({}, policy, { sourceEvent: "no_checkin" });
-assert.equal(noCheckin.selected, false);
-assert.equal(noCheckin.band_intent, null);
-assert.equal(noCheckin.carrier_hz, null);
-assert.equal(noCheckin.selection_basis, "insufficient_context");
-assert.equal(noCheckin.safety.adaptive_frequencies_enabled, false);
+assert.equal(noCheckin.selected, true);
+assert.equal(noCheckin.band_intent, "theta");
+assert.equal(noCheckin.carrier_hz, 111);
+assert.equal(noCheckin.selection_basis, "default_session_profile");
+assert.equal(noCheckin.safety.adaptive_frequencies_enabled, true);
+assert.deepEqual(comparable(noCheckin), comparable(resolveWithPython({})));
 assert.notEqual(noCheckin.carrier_hz, 444);
 assertNoTargetLeakage(noCheckin);
 assertions += 7;
@@ -77,10 +78,10 @@ const insufficient = resolveAdaptiveSoundSession({
   },
   citizen_needs: { Emotion: { Calm: 1 } },
 }, policy, { sourceEvent: "insufficient_context" });
-assert.equal(insufficient.selected, false);
-assert.equal(insufficient.profile_id, null);
-assert.equal(insufficient.carrier_hz, null);
-assert.equal(insufficient.safety.adaptive_frequencies_enabled, false);
+assert.equal(insufficient.selected, true);
+assert.equal(insufficient.profile_id, "mindfulness_theta_80_v1");
+assert.equal(insufficient.carrier_hz, 111);
+assert.equal(insufficient.safety.adaptive_frequencies_enabled, true);
 assertions += 4;
 
 const skippedBiometric = resolveAdaptiveSoundSession({
@@ -264,8 +265,8 @@ const browserSession = startAdaptiveSoundSession({
   fetchImpl: async () => ({ ok: true, json: async () => policy }),
 });
 await browserSession.ready;
-assert.equal(browserSession.current().selected, false);
-assert.equal(JSON.parse(fakeWindow.sessionStorage.getItem(ADAPTIVE_SOUND_SESSION_STORAGE_KEY)).selected, false);
+assert.equal(browserSession.current().selected, true);
+assert.equal(JSON.parse(fakeWindow.sessionStorage.getItem(ADAPTIVE_SOUND_SESSION_STORAGE_KEY)).selected, true);
 fakeWindow.dispatchEvent(new fakeWindow.CustomEvent("iam:inference-updated", {
   detail: intentFixture("gamma", "earth_focus_reward"),
 }));

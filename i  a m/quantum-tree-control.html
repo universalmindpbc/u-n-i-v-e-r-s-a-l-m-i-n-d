@@ -98,7 +98,7 @@
         <button type="button" class="quantum-button" data-mantra-preview-stop>Stop</button>
         <button type="button" class="quantum-button quantum-button--quiet" data-mantra-preview-target>Use target volume</button>
         <button type="button" class="quantum-button" data-preview-together>Play together</button>
-        <button type="button" class="quantum-button quantum-button--quiet" data-preview-stop-both>Stop both</button>
+        <button type="button" class="quantum-button quantum-button--quiet" data-preview-stop-both>Stop all</button>
       </div>
       <audio data-mantra-preview preload="none" loop src="a s s e t s/quantum-tree-mantra-v1.m4a"></audio>
       <div class="quantum-mantra-signal">
@@ -110,11 +110,26 @@
         <div><dt>Playback position</dt><dd data-mantra-preview-clock>0:00 / 5:35</dd></div>
         <div><dt>Measured output</dt><dd data-mantra-preview-output>Silent</dd></div>
       </dl>
-      <p class="quantum-note">The live mantra follows Quantum Tree at one-third of its volume, including its fades. This isolated test starts at that target ceiling; the slider changes this test only. Use each Play button to hear either layer alone, or Play together to compare both.</p>
+      <p class="quantum-note">The live mantra follows Quantum Tree at one-third of its volume, including its fades. This isolated test starts at that target ceiling; the slider changes this test only. Use each Play button to hear either layer alone, or Play together to hear Quantum Tree, mantra and the additional synth.</p>
       <label class="quantum-slider-label"><input type="checkbox" data-owner-mantra-enabled> Enable the mantra on this platform</label>
       <div class="quantum-actions"><button type="button" class="quantum-button quantum-button--save" data-owner-mantra-save>Save mantra setting</button></div>
       <p class="quantum-save-status" role="status" aria-live="polite" data-owner-mantra-status></p>
       <p class="quantum-note">The mantra defaults on with Sound. This switch saves its platform availability. RCT participant allocation will be integrated separately.</p>
+    </section>
+
+    <section class="quantum-card" aria-labelledby="synth-heading">
+      <p class="quantum-card__kicker">Additional audio layer</p>
+      <div class="quantum-card__heading"><h2 id="synth-heading">Isochronic synth + carrier</h2><span class="quantum-status" data-synth-preview-state>Stopped</span></div>
+      <p class="quantum-note">Default session mix: Theta-dominant with a 111 Hz carrier. All four isochronic lanes run at 3.33, 7.38, 10.11 and 111 Hz. Play together includes this synth.</p>
+      <div class="quantum-actions">
+        <button type="button" class="quantum-button quantum-button--primary" data-synth-preview-toggle>Play synth test</button>
+        <button type="button" class="quantum-button" data-synth-preview-stop>Stop</button>
+      </div>
+      <dl class="quantum-diagnostics" style="margin-top:24px">
+        <div><dt>Volume</dt><dd data-synth-preview-volume>0.00%</dd></div>
+        <div><dt>Live run time</dt><dd data-synth-preview-clock>0:00</dd></div>
+        <div><dt>Measured output</dt><dd data-synth-preview-output>Silent</dd></div>
+      </dl>
     </section>
 
     <section class="quantum-card" aria-labelledby="verification-heading">
@@ -167,6 +182,6 @@
     </section>
   </main>
 
-  <script src="quantum-tree-control.js?v=8dc366977628"></script>
+  <script type="module" src="quantum-tree-control.js?v=6f784d7a2215"></script>
 </body>
 </html>

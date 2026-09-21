@@ -8520,7 +8520,7 @@
     if (!soundResearchMonitor) return;
     const setText = (selector, value) => {
       const element = soundResearchMonitor.querySelector(selector);
-      if (element) element.textContent = value;
+      if (element && element.textContent !== value) element.textContent = value;
     };
     const verifiedPlaying = diagnostics.playing && diagnostics.advancing;
     const verifiedOutput = verifiedPlaying && diagnostics.currentVolume > 0.0001;
@@ -8594,13 +8594,13 @@
     setText("[data-quantum-monitor-setting]", diagnostics.settingsLoaded ? "server verified" : "safe fallback");
     const toggleButton = soundResearchMonitor.querySelector("[data-quantum-monitor-toggle]");
     if (toggleButton) {
-      toggleButton.textContent = `Quantum Tree: ${diagnostics.enabled ? "on" : "off"}`;
+      setText("[data-quantum-monitor-toggle]", `Quantum Tree: ${diagnostics.enabled ? "on" : "off"}`);
       toggleButton.style.borderColor = diagnostics.enabled ? "rgba(143,242,177,.56)" : "rgba(255,255,255,.24)";
       toggleButton.style.color = diagnostics.enabled ? "#9effbf" : "#fff";
     }
     const auditionButton = soundResearchMonitor.querySelector("[data-quantum-monitor-audition]");
     if (auditionButton) {
-      auditionButton.textContent = diagnostics.auditionMode ? "Gate: bypassed" : "Gate: normal";
+      setText("[data-quantum-monitor-audition]", diagnostics.auditionMode ? "Gate: bypassed" : "Gate: normal");
       auditionButton.style.borderColor = diagnostics.auditionMode ? "rgba(216,200,119,.7)" : "rgba(255,255,255,.24)";
       auditionButton.style.color = diagnostics.auditionMode ? "#f2df82" : "#fff";
     }
@@ -8709,6 +8709,7 @@
 
   function startSoundResearchLayer() {
     if (!soundResearchEnabled) return;
+    window.dispatchEvent(new CustomEvent("iam:sound-playback-start"));
     ensureSoundResearchAudio();
     requestSoundResearchPlayback("layer_start");
     if (!soundResearchGainFrame) soundResearchGainFrame = window.requestAnimationFrame(updateSoundResearchGain);

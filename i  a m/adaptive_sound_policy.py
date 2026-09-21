@@ -270,6 +270,13 @@ def resolve_adaptive_sound(payload: Mapping[str, Any], policy: Optional[Mapping[
     if not carrier_id and not explicit_insufficient_context:
         carrier_id = _choose_scored(carrier_scores, fingerprint, "carrier")
 
+    session_policy = selected_policy.get("session_policy", {})
+    if (not band_id or not carrier_id) and session_policy.get("no_checkin_rule") == "play_default_session_profile":
+        fallback = session_policy.get("default_session", {})
+        if fallback.get("band_intent") in bands and fallback.get("carrier_intent") in carriers:
+            band_id, carrier_id = fallback["band_intent"], fallback["carrier_intent"]
+            basis = "default_session_profile"
+
     safety = _safety_state(payload, selected_policy)
     inference_audit = _inference_audit(payload)
     if not band_id or not carrier_id:
