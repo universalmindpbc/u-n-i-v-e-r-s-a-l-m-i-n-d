@@ -159,7 +159,12 @@ async function startExposure(){
  setPage('experience');active.shell.classList.remove('is-preparing');
  await active.frame.contentWindow.IAMStudyExperience.start();
 }
-function resumeEntry(){if(exposure){setPage('home');exposure.frame.contentWindow.IAMStudyExperience?.showHome();}}
+function resumeEntry(){
+ // Player callbacks can arrive after stop or after the saved after-check transition.
+ if(exposure&&!exposure.completed&&currentSession()?.state==='experience'){
+  setPage('home');exposure.frame.contentWindow.IAMStudyExperience?.showHome();
+ }
+}
 function startScan(){
  setPage('scan');app.innerHTML='<div class="study-scan"><iframe title="Your Heart Check" src="research.php?study=1&embedded=1" allow="camera; fullscreen" allowfullscreen></iframe></div>';
 }
@@ -222,7 +227,10 @@ window.addEventListener('message',async event=>{
   return;
  }
  if(event.data?.type==='study-paused'){if(!exposure.completed)resumeEntry();return;}
- if(event.data?.type==='study-error'){resumeEntry();notice(event.data.message);return;}
+ if(event.data?.type==='study-error'){
+  if(!exposure.completed&&currentSession()?.state==='experience'){resumeEntry();notice(event.data.message);}
+  return;
+ }
  if(event.data?.type!=='study-tick'||exposure.completed)return;
  if(event.data.values.ended)exposure.frame.contentWindow.postMessage({type:'study-stop'},location.origin);
  exposure.sync.push(event.data.values);

@@ -55,13 +55,13 @@ async function configure(uid,completedSessionId){
   // Use native overlays; the study owns the entry and the completion transition.
   document.querySelector('[data-television-play]').disabled=true;
   video.addEventListener('ended',()=>{tick(true);running=false;clearInterval(timer);});
-  video.addEventListener('error',()=>{pause();send('study-error',{message:'The video could not load. Please refresh to try again.'});});
+  video.addEventListener('error',()=>{if(stopped)return;pause();send('study-error',{message:'The video could not load. Please refresh to try again.'});});
   await window.IAMStreamController.preloadMedia(video,{targetSeconds:4});
   for(let i=0;i<100&&(!Number.isFinite(video.duration)||video.duration<=0);i++)await wait(100);
   if(!Number.isFinite(video.duration)||video.duration<=0)throw new Error('The video could not load. Please refresh to try again.');
   positionOpeningPage();
   if(!stopped){document.querySelector('[data-television-play]').disabled=false;send('study-prepared',{duration:video.duration});}
- }catch(error){send('study-error',{message:error.message});}
+ }catch(error){if(!stopped)send('study-error',{message:error.message});}
 }
 function tick(ended=false){
  if(!video||stopped)return;
@@ -92,7 +92,7 @@ async function start(){
   if(Number.isFinite(video.duration)&&video.duration>0)video.currentTime=Math.min(target,video.duration);
   lastVideoTime=video.currentTime;tick();
   positionOpeningPage();
- }catch(error){pause();send('study-error',{message:'Playback paused. Please enter the experience again.'});}
+ }catch(error){if(!stopped){pause();send('study-error',{message:'Playback paused. Please enter the experience again.'});}}
  finally{starting=false;}
 }
 function showHome(){document.body.classList.remove('television-room-open','television-room-opening');document.querySelector('[data-television-room]').setAttribute('aria-hidden','true');}
