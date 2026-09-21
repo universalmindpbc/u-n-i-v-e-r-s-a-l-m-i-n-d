@@ -644,6 +644,14 @@ PY
       "ftp://$FTP_HOST/$encoded" --output "$scratch/verified" || { rm -rf "$scratch"; return 1; }
     cmp -s "$scratch/verified" "$SOVEREIGNTY_SEED_DIR/$name" || { rm -rf "$scratch"; return 1; }
   done
+  for name in .htaccess recipient-public.pem signing-private.pem document.encrypted.json document.json config.json; do
+    curl --globoff --fail --silent --show-error --ssl-reqd --user "$FTP_USER:$FTP_PASS" \
+      --quote "SITE CHMOD 600 vogue/iam/api/.runtime-private/sovereignty/$name" \
+      --output /dev/null "ftp://$FTP_HOST/" || { rm -rf "$scratch"; return 1; }
+  done
+  curl --globoff --fail --silent --show-error --ssl-reqd --user "$FTP_USER:$FTP_PASS" \
+    --quote "SITE CHMOD 700 vogue/iam/api/.runtime-private/sovereignty" \
+    --output /dev/null "ftp://$FTP_HOST/" || { rm -rf "$scratch"; return 1; }
   rm -rf "$scratch"
   echo "Private staging archive provisioned and verified over FTPS; external vaults remain pending."
 }
