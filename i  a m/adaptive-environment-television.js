@@ -8431,18 +8431,29 @@
   function initSoundResearchMonitor() {
     if (!soundResearchMonitorMode || soundResearchMonitor) return;
     const monitor = document.createElement("aside");
-    monitor.setAttribute("aria-label", "Quantum Tree live monitor");
-    monitor.style.cssText = "position:fixed;right:18px;top:18px;z-index:2147483000;width:min(340px,calc(100vw - 36px));padding:16px 18px;border:1px solid rgba(255,255,255,.22);border-radius:18px;background:rgba(8,8,13,.88);box-shadow:0 18px 50px rgba(0,0,0,.45);backdrop-filter:blur(18px);color:#fff;font:500 12px/1.45 -apple-system,BlinkMacSystemFont,Segoe UI,sans-serif;letter-spacing:.02em";
+    monitor.setAttribute("aria-label", "Quantum Tree live mix monitor");
+    monitor.className = "quantum-mix-monitor";
+    monitor.tabIndex = 0;
+    monitor.style.cssText = "position:fixed;right:18px;top:18px;z-index:2147483000;box-sizing:border-box;width:min(420px,calc(100vw - 36px));max-height:calc(100dvh - 36px);overflow:auto;overscroll-behavior:contain;padding:16px 18px;border:1px solid rgba(255,255,255,.22);border-radius:18px;background:rgba(8,8,13,.92);box-shadow:0 18px 50px rgba(0,0,0,.45);backdrop-filter:blur(18px);color:#fff;font:500 12px/1.45 -apple-system,BlinkMacSystemFont,Segoe UI,sans-serif;letter-spacing:.02em;font-variant-numeric:tabular-nums";
     monitor.innerHTML = `
+      <style>
+        .quantum-mix-monitor dl { display:grid;grid-template-columns:minmax(92px,.8fr) minmax(0,1.2fr);gap:5px 14px;margin:0 }
+        .quantum-mix-monitor dt { opacity:.62 }
+        .quantum-mix-monitor dd { margin:0;overflow-wrap:anywhere }
+        .quantum-mix-monitor section { margin-top:14px;padding-top:12px;border-top:1px solid rgba(255,255,255,.15) }
+        .quantum-mix-monitor h3 { margin:0 0 9px;font:600 11px/1.4 -apple-system,BlinkMacSystemFont,Segoe UI,sans-serif;letter-spacing:.08em;text-transform:uppercase }
+        .quantum-mix-monitor [data-quantum-monitor-status] { text-align:right }
+      </style>
       <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:12px">
         <strong style="font-size:14px;letter-spacing:.08em;text-transform:uppercase">Quantum Tree</strong>
         <span data-quantum-monitor-status style="padding:4px 9px;border-radius:999px;background:rgba(255,255,255,.1)">waiting</span>
       </div>
-      <dl style="display:grid;grid-template-columns:1fr auto;gap:6px 14px;margin:0">
+      <dl>
         <dt style="opacity:.62">Audio source</dt><dd data-quantum-monitor-source style="margin:0">none</dd>
         <dt style="opacity:.62">File</dt><dd data-quantum-monitor-file style="margin:0">not loaded</dd>
         <dt style="opacity:.62">Encoding</dt><dd data-quantum-monitor-codec style="margin:0">AAC 192 kbps</dd>
         <dt style="opacity:.62">Signal</dt><dd data-quantum-monitor-signal style="margin:0">stopped</dd>
+        <dt>Play time / length</dt><dd data-quantum-monitor-time>0:00 / —</dd>
         <dt style="opacity:.62">Continuity</dt><dd data-quantum-monitor-continuity style="margin:0">normal masking</dd>
         <dt style="opacity:.62">Media RMS</dt><dd data-quantum-monitor-media style="margin:0">0.000</dd>
         <dt style="opacity:.62">Current gain</dt><dd data-quantum-monitor-current style="margin:0">0%</dd>
@@ -8450,6 +8461,35 @@
         <dt style="opacity:.62">Platform peak</dt><dd data-quantum-monitor-peak style="margin:0">0%</dd>
         <dt style="opacity:.62">Platform setting</dt><dd data-quantum-monitor-setting style="margin:0">loading</dd>
       </dl>
+      <section aria-label="Programme audio">
+        <h3>Programme audio</h3>
+        <dl>
+          <dt>Playback</dt><dd data-mix-programme-status>stopped</dd>
+          <dt>Volume</dt><dd data-mix-programme-volume>0.0%</dd>
+          <dt>Play time / length</dt><dd data-mix-programme-time>0:00 / —</dd>
+        </dl>
+      </section>
+      <section aria-label="Additional isochronic tone and carrier">
+        <h3>Additional isochronic + carrier</h3>
+        <dl>
+          <dt>Playback</dt><dd data-mix-synth-status>not started</dd>
+          <dt>Isochronic tones</dt><dd data-mix-synth-tones>no selection</dd>
+          <dt>Carrier</dt><dd data-mix-synth-carrier>no selection</dd>
+          <dt>Shared volume</dt><dd data-mix-synth-volume>0.0%</dd>
+          <dt>Output RMS</dt><dd data-mix-synth-output>silent</dd>
+          <dt>Live run time</dt><dd data-mix-synth-time>0:00</dd>
+        </dl>
+        <p style="margin:8px 0 0;opacity:.62;font-size:10px">Live synth · shared output and clock · run time resets when the synth restarts.</p>
+      </section>
+      <section aria-label="Mantra audio">
+        <h3>Mantra</h3>
+        <dl>
+          <dt>Playback</dt><dd data-mix-mantra-status>not started</dd>
+          <dt>Volume</dt><dd data-mix-mantra-volume>0.0%</dd>
+          <dt>Target gain</dt><dd data-mix-mantra-target>0.0%</dd>
+          <dt>Play time / length</dt><dd data-mix-mantra-time>0:00 / —</dd>
+        </dl>
+      </section>
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:14px">
         <button type="button" data-quantum-monitor-toggle style="min-height:38px;padding:8px 10px;border:1px solid rgba(255,255,255,.24);border-radius:999px;background:rgba(255,255,255,.08);color:#fff;font:inherit;cursor:pointer">Quantum Tree: on</button>
         <button type="button" data-quantum-monitor-audition style="min-height:38px;padding:8px 10px;border:1px solid rgba(255,255,255,.24);border-radius:999px;background:rgba(255,255,255,.08);color:#fff;font:inherit;cursor:pointer">Gate: normal</button>
@@ -8472,6 +8512,8 @@
       updateSoundResearchMonitor(soundResearchDiagnostics());
     });
     updateSoundResearchMonitor(soundResearchDiagnostics());
+    // Keep the other mix clocks live even when Quantum Tree's gain loop is off.
+    window.setInterval(() => updateSoundResearchMonitor(soundResearchDiagnostics()), 250);
   }
 
   function updateSoundResearchMonitor(diagnostics) {
@@ -8499,6 +8541,51 @@
     setText("[data-quantum-monitor-file]", diagnostics.fileLoaded ? "Quantum Tree AAC loaded" : "Quantum Tree AAC loading");
     setText("[data-quantum-monitor-codec]", diagnostics.codec);
     setText("[data-quantum-monitor-signal]", diagnostics.advancing ? `${diagnostics.currentTime.toFixed(1)}s advancing` : "not advancing");
+    const clock = (seconds) => {
+      if (!Number.isFinite(seconds) || seconds < 0) return "—";
+      const total = Math.floor(seconds);
+      const minutes = Math.floor(total / 60);
+      return `${minutes}:${String(total % 60).padStart(2, "0")}`;
+    };
+    const playTime = (current, duration) => `${clock(current)} / ${duration === Infinity ? "live" : duration > 0 ? clock(duration) : "—"}`;
+    const percent = (gain) => `${(Math.max(0, Number(gain) || 0) * 100).toFixed(2)}%`;
+    setText("[data-quantum-monitor-time]", playTime(diagnostics.currentTime, diagnostics.duration));
+
+    const active = soundResearchActiveMedia();
+    // Retain a paused/muted programme's clock so its position remains inspectable.
+    const programme = active.media || (document.body.classList.contains("television-comedy-active")
+      ? document.querySelector("[data-comedy-video]")
+      : continuationAudio && document.body.classList.contains("television-radio-continuation") ? continuationAudio : localVideo);
+    const programmeStatus = !programme ? "not loaded" : programme.error ? "playback error"
+      : programme.ended ? "ended" : programme.paused ? "paused"
+      : programme.readyState < 3 ? "buffering" : programme.muted ? "playing · muted" : "playing";
+    setText("[data-mix-programme-status]", `${active.source !== "none" ? active.source + " · " : ""}${programmeStatus}`);
+    setText("[data-mix-programme-volume]", percent(programme && !programme.muted ? programme.volume : 0));
+    setText("[data-mix-programme-time]", playTime(Number(programme?.currentTime || 0), programme?.duration));
+
+    const synth = window.IAMAdaptiveSound?.diagnostics?.();
+    const synthStatus = !synth ? "loading" : synth.last_error ? "engine error"
+      : !synth.master_enabled ? "master off" : !synth.profile_id ? "no session selection"
+      : !synth.synth_enabled ? "disabled" : synth.running ? (synth.output_rms > 1e-9 ? "running" : "running · silent")
+      : synth.context_state === "suspended" ? "suspended" : "not running";
+    setText("[data-mix-synth-status]", synthStatus);
+    setText("[data-mix-synth-tones]", synth?.lanes
+      ? Object.entries(synth.lanes).map(([id, lane]) => `${id[0].toUpperCase() + id.slice(1)} ${lane.rate_hz} Hz${lane.enabled ? "" : " (off)"}`).join(" · ")
+      : synth?.profile_id ? "waiting for renderer" : "no selection");
+    setText("[data-mix-synth-carrier]", synth?.route_carrier_hz ? `${synth.route_carrier_hz} Hz` : "not running");
+    setText("[data-mix-synth-volume]", percent(synth?.current_output_gain));
+    setText("[data-mix-synth-output]", synth?.output_rms > 1e-9 ? `${(20 * Math.log10(synth.output_rms)).toFixed(1)} dBFS` : "silent");
+    setText("[data-mix-synth-time]", clock(Number(synth?.run_seconds || 0)));
+
+    const mantra = window.IAMSubaudibleMantra?.diagnostics?.();
+    const mantraStatus = !mantra ? "loading" : !mantra.enabled ? "off"
+      : !mantra.platformEnabled ? "platform off" : !mantra.masterEnabled ? "master off"
+      : mantra.outputVerified ? "playing · output verified"
+      : mantra.clockAdvancing ? "playing · gated silent" : String(mantra.status || "stopped").replaceAll("_", " ");
+    setText("[data-mix-mantra-status]", mantraStatus);
+    setText("[data-mix-mantra-volume]", percent(mantra?.currentGain));
+    setText("[data-mix-mantra-target]", percent(mantra?.targetGain));
+    setText("[data-mix-mantra-time]", playTime(Number(mantra?.currentTime || 0), mantra?.duration));
     setText("[data-quantum-monitor-continuity]", diagnostics.continuityActive ? "saved peak during media interruption" : "normal waveform masking");
     setText("[data-quantum-monitor-media]", diagnostics.mediaLevel.toFixed(4));
     setText("[data-quantum-monitor-current]", `${(diagnostics.currentVolume * 100).toFixed(1)}%`);

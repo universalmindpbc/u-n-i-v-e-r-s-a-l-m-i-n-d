@@ -93,7 +93,7 @@ assert.ok(televisionController.includes('const SOUND_RESEARCH_DEFAULT_MAX_VOLUME
 assert.ok(televisionController.includes('const SOUND_RESEARCH_AUDIO_SRC = "a s s e t s/q u a n t u m [ t r e e ].m4a";'));
 assert.ok(televisionController.includes("window.IAMQuantumTree ="));
 
-assert.ok(panelController.includes('new URL("./worklet-v1.js?v=6c2022e83bc0", import.meta.url)'));
+assert.ok(panelController.includes(`new URL("./worklet-v1.js?v=${createHash("sha256").update(worklet).digest("hex").slice(0, 12)}", import.meta.url)`));
 assert.ok(panelController.includes("new AudioWorkletNode(context, PROCESSOR_NAME"));
 assert.ok(panelController.includes("outputChannelCount: [2]"));
 assert.ok(panelController.includes("window.IAMQuantumTree?.setEnabled?.(state.masterEnabled)"));

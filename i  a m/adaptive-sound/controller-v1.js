@@ -475,7 +475,7 @@ function initializeAdaptiveSoundPanel() {
     }
     if (state.context.state !== "running") await state.context.resume();
     if (!state.workletLoaded) {
-      await state.context.audioWorklet.addModule(new URL("./worklet-v1.js?v=6c2022e83bc0", import.meta.url));
+      await state.context.audioWorklet.addModule(new URL("./worklet-v1.js?v=b38f97f4ce2a", import.meta.url));
       state.workletLoaded = true;
     }
     if (state.context.state !== "running") await state.context.resume();
@@ -564,6 +564,8 @@ function initializeAdaptiveSoundPanel() {
     }
     if (message.type === "diagnostics") {
       state.lastDiagnostics = message;
+      route.lastDiagnosticAt = performance.now();
+      route.runSeconds = message.run_seconds;
       updateAdaptiveMeters(message);
       return;
     }
@@ -774,6 +776,12 @@ function initializeAdaptiveSoundPanel() {
       return state.context?.state === 'running';
     },
     diagnostics() {
+      const processor = state.lastDiagnostics;
+      const fresh = Boolean(state.route && state.context?.state === "running"
+        && performance.now() - (state.route.lastDiagnosticAt || 0) < 1000);
+      const running = fresh && !state.lastError && processor?.master_state !== "off"
+        && Boolean(processor) && state.masterEnabled && state.synthEnabled;
+      const currentGain = running ? Number(state.route?.gain.gain.value || 0) : 0;
       return {
         panel_open: state.open,
         master_enabled: state.masterEnabled,
@@ -785,6 +793,11 @@ function initializeAdaptiveSoundPanel() {
         intensity_percent: state.intensity,
         programme_output_multiplier: adaptiveProgrammeOutputMultiplier(),
         route_output_gain: adaptiveRouteOutputGain(),
+        current_output_gain: currentGain,
+        output_rms: running ? Number(processor?.meter?.output_rms || 0) * currentGain : 0,
+        running,
+        run_seconds: Number(state.route?.runSeconds || 0),
+        lanes: processor?.diagnostics?.lanes || null,
         mastering_condition: state.masteringCondition,
         envelope_candidate_id: state.envelopeCandidateId,
         lowpass_candidate_id: state.lowpassCandidateId,

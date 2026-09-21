@@ -15,6 +15,7 @@ class IAMAdaptiveSoundProcessorV1 extends AudioWorkletProcessor {
     this.meterSumSquares = 0;
     this.meterPeak = 0;
     this.meterFrames = 0;
+    this.activeFrames = 0;
     try {
       this.renderer = new AdaptiveSoundRendererV1(options.processorOptions?.condition, sampleRate);
       this.port.postMessage({
@@ -68,6 +69,7 @@ class IAMAdaptiveSoundProcessorV1 extends AudioWorkletProcessor {
           this.masterGain = Math.max(this.targetMasterGain, this.masterGain - this.masterRampStep);
         }
         const mono = this.renderer.processSample() * this.masterGain;
+        if (this.masterGain > 0) this.activeFrames += 1;
         this.meterSumSquares += mono * mono;
         this.meterPeak = Math.max(this.meterPeak, Math.abs(mono));
         this.meterFrames += 1;
@@ -91,6 +93,7 @@ class IAMAdaptiveSoundProcessorV1 extends AudioWorkletProcessor {
       processor_name: PROCESSOR_NAME,
       sample_rate: sampleRate,
       master_state: this.masterGain === 0 ? "off" : (this.masterGain === 1 ? "on" : "transitioning"),
+      run_seconds: this.activeFrames / sampleRate,
       meter: {
         output_rms: Math.sqrt(this.meterSumSquares / Math.max(1, this.meterFrames)),
         output_peak: this.meterPeak,
