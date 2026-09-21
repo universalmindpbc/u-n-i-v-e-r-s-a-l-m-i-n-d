@@ -23,15 +23,19 @@ function study_rate(string $operation, int $maximum): void {
     $times[] = time(); rewind($file); ftruncate($file, 0); fwrite($file, json_encode($times)); flock($file, LOCK_UN); fclose($file);
 }
 
+$endingTest = defined('IAM_STUDY_ENDING_TEST') && IAM_STUDY_ENDING_TEST === true;
+if ($endingTest && !study_staging()) study_respond(['error'=>'Not found.'], 404);
+
 $secure = ($_SERVER['HTTPS'] ?? '') === 'on' || ($_SERVER['HTTP_X_FORWARDED_PROTO'] ?? '') === 'https';
 ini_set('session.use_strict_mode', '1');
 $owner = false;
-if (isset($_COOKIE['iam_quantum_tree_owner'])) {
+if (!$endingTest && isset($_COOKIE['iam_quantum_tree_owner'])) {
     session_name('iam_quantum_tree_owner'); session_start();
     $owner = quantum_tree_owner_authenticated(); session_write_close();
 }
-session_name('iam_study');
-$studyCookie = (string) ($_COOKIE['iam_study'] ?? '');
+$sessionName = $endingTest ? 'iam_study_ending_test' : 'iam_study';
+session_name($sessionName);
+$studyCookie = (string) ($_COOKIE[$sessionName] ?? '');
 session_id(preg_match('/\A[a-zA-Z0-9,-]{16,128}\z/', $studyCookie) ? $studyCookie : '');
 session_set_cookie_params(['lifetime' => 0, 'path' => '/vogue/iam/', 'secure' => $secure, 'httponly' => true, 'samesite' => 'Strict']);
 session_start();
@@ -39,13 +43,15 @@ if (isset($_SESSION['last_seen']) && $_SESSION['last_seen'] < time()-28800) { $_
 $_SESSION['last_seen'] = time();
 $_SESSION['csrf'] ??= bin2hex(random_bytes(24));
 $method = $_SERVER['REQUEST_METHOD'] ?? 'GET';
+// This cookie and preview store never share a participant or cohort session.
+if ($endingTest && !isset($_SESSION['preview'])) $_SESSION['preview'] = bin2hex(random_bytes(24));
 
 try {
     if ($method === 'GET') {
-        $result = study_store(function(array &$data) use ($owner): array {
+        $result = study_store(function(array &$data) use ($owner, $endingTest): array {
             $id = $_SESSION['participant_id'] ?? '';
             $p = $data['participants'][$id] ?? null;
-            return ['csrf' => $_SESSION['csrf'], 'protocol' => study_protocol(), 'preview_available' => study_staging(),
+            return ['csrf' => $_SESSION['csrf'], 'protocol' => study_protocol(), 'preview_available' => study_staging(), 'ending_test' => $endingTest,
                 'website_password_available'=>count(study_site_password_hashes())>0, 'preview' => isset($_SESSION['preview']), 'owner' => $owner, 'stakeholder' => isset($_SESSION['stakeholder_id']),
                 'analysis_configured' => happiness_secret('OPENAI_API_KEY') !== '' || is_readable(happiness_secret('IAM_OPENAI_API_KEY_FILE')),
                 'participant' => $p ? study_participant_public($p) + ['earned_aud' => study_earned($p)] : null,
@@ -67,6 +73,25 @@ try {
     $action = $request['action'] ?? '';
     study_require(is_string($action), 'Invalid request.');
 
+    if ($endingTest && !in_array($action, ['ending.reset','exposure.tick','vitals','answer','summary','export'], true)) {
+        study_respond(['error'=>'This action is unavailable in the ending test.'], 403);
+    }
+    if ($action === 'ending.reset') {
+        if (!$endingTest) study_respond(['error'=>'Not found.'], 404);
+        study_rate('ending-test', 40);
+        $_SESSION['participant_id'] = 'ENDING-TEST';
+        study_store(function(array &$data): array {
+            $p = study_new_participant('ENDING-TEST');
+            // Fixture authorisation only: no participant consent or baseline answers invented.
+            $p['consent'] = ['preview'=>true, 'test_fixture'=>true, 'version'=>study_protocol()['version']];
+            $s = study_new_session($data['config'], 1, '');
+            $s['state'] = 'experience'; $s['ending_test'] = true;
+            $p['sessions'] = [$s]; $data['participants'] = ['ENDING-TEST'=>$p];
+            $data['analysis'] = null;
+            return [];
+        }, $_SESSION['preview']);
+        study_respond(['ok'=>true]);
+    }
     if ($action === 'logout') {
         $_SESSION = []; session_regenerate_id(true); study_respond(['ok' => true]);
     }
@@ -231,16 +256,8 @@ try {
             study_require($preview || study_readiness($data['config'])['open'], 'The study is currently paused.');
             foreach ($p['sessions'] as $s) if (!in_array($s['state'], ['complete','stopped'], true)) return ['session_id' => $s['id']];
             study_require(count($p['sessions']) < 3, 'Your three study sessions are recorded.');
-            $event = $data['config']['events'][count($p['sessions'])];
-            $window = strtolower($event['label']);
-            $id = bin2hex(random_bytes(16));
-            $p['sessions'][] = ['id' => $id, 'number' => count($p['sessions'])+1, 'state' => 'before_vitals',
-                'event_starts_at' => null, 'delivery'=>'on_demand', 'recommended_window'=>$window, 'window' => $window, 'timezone' => study_text($request['timezone'] ?? '', 80),
-                'created_at' => gmdate('c'), 'created_at_epoch' => time(), 'config_hash' => hash('sha256', json_encode($data['config'])),
-                'video_stream_uid' => study_public_config($data['config'])['stream_uid'],
-                'protocol_version' => study_protocol()['version'], 'before_vitals' => null, 'before_report' => null,
-                'after_vitals' => null, 'after_report' => null, 'exposure_seconds' => 0, 'interruptions' => 0,
-                'last_heartbeat' => null, 'last_media_time' => null, 'last_mutation' => null];
+            $session = study_new_session($data['config'], count($p['sessions'])+1, study_text($request['timezone'] ?? '', 80));
+            $id = $session['id']; $p['sessions'][] = $session;
             return ['session_id' => $id];
         }
         $sessionId = $request['session_id'] ?? '';
@@ -336,7 +353,10 @@ try {
             $duration = $s['video_duration_seconds'] ?? null;
             $ended = ($request['ended'] ?? false) === true && $duration !== null && $position !== null && abs($position-$duration) <= 1;
             $elapsed = $now-$s['exposure_started_epoch'];
-            if ($ended && ($preview || $elapsed >= $duration-1)) {
+            // The isolated ending test watches the real final 30 seconds, using the same end/clock gate.
+            $endingFixture = $preview && !empty($s['ending_test']);
+            $requiredElapsed = $endingFixture ? min(30, $duration ?? 30) : $duration;
+            if ($ended && (($preview && !$endingFixture) || $elapsed >= $requiredElapsed-1)) {
                 $s['state'] = 'after_vitals'; $s['exposure_completed_at'] = gmdate('c');
             }
         } elseif ($action === 'preview.experience') {

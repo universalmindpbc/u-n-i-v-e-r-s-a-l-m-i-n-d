@@ -5,7 +5,7 @@ import CreateShenaiSDK, {
   PrecisionMode,
   UiVersion,
 } from "./vendor/shenai-sdk/index.mjs";
-import { studyMode, studyMeasurementSeconds, authoriseStudyScan, studyValues, saveStudyScan } from "../study/shen-bridge.js?v=b9116ccf797e";
+import { studyMode, studyMeasurementSeconds, authoriseStudyScan, studyValues, saveStudyScan } from "../study/shen-bridge.js?v=96f251071839";
 import { createDeepARBrightGlasses } from "./deepar-bright-glasses.js?v=deepar-bright-glasses-js-d622e574d883";
 import { handoffHeartCheckToHomepage } from "./shen-heart-recommendation.js?v=b3324d1c790c";
 import {

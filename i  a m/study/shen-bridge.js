@@ -1,9 +1,10 @@
 // Only the consented study route retains full measurements across sessions.
 export const studyMode = new URLSearchParams(location.search).get('study') === '1';
+const apiUrl=location.hostname==='staging.universalmind.tv'&&new URLSearchParams(location.search).get('ending_test')==='1'?'api/study-ending-test.php':'api/study.php';
 let context;
 export let studyMeasurementSeconds = 10;
 export async function authoriseStudyScan() {
-  const response = await fetch('api/study.php', {credentials:'same-origin',cache:'no-store'});
+  const response = await fetch(apiUrl, {credentials:'same-origin',cache:'no-store'});
   if (!response.ok) throw new Error('Please return to your study and sign in again.');
   context = await response.json();
   const session = context.participant?.sessions.find(s => ['before_vitals','after_vitals'].includes(s.state));
@@ -28,7 +29,7 @@ export function studyValues(result) {
 }
 export async function saveStudyScan(values) {
   if (!context) await authoriseStudyScan();
-  const response = await fetch('api/study.php',{method:'POST',credentials:'same-origin',headers:{'Content-Type':'application/json','X-Study-CSRF':context.csrf},
+  const response = await fetch(apiUrl,{method:'POST',credentials:'same-origin',headers:{'Content-Type':'application/json','X-Study-CSRF':context.csrf},
     body:JSON.stringify({action:'vitals',session_id:context.session.id,request_id:crypto.randomUUID(),values})});
   const result = await response.json();
   if (!response.ok) throw new Error(result.error || 'Your reading could not be saved. Please return to your study.');

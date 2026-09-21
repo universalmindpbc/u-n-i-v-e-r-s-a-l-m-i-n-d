@@ -18,9 +18,9 @@ header('Cross-Origin-Embedder-Policy: require-corp');
   <title>Study | Universal Mind</title>
   <link rel="icon" href="favicon.png">
   <link rel="stylesheet" href="study/gate.css?v=study-1">
-  <link rel="stylesheet" href="study/style.css?v=b9fba033067a">
+  <link rel="stylesheet" href="study/style.css?v=7097e8c0a5a7">
 </head>
-<body class="study-page" data-study-state="loading">
+<body class="study-page" data-study-state="loading"<?php if (defined('IAM_STUDY_ENDING_TEST') && IAM_STUDY_ENDING_TEST) echo ' data-ending-test="true"'; ?>>
   <canvas class="rain-canvas" aria-hidden="true" data-rain-canvas></canvas>
   <div class="study-backdrop" aria-hidden="true"><img crossorigin="anonymous" src="https://customer-1vpwglz3v6fiyaas.cloudflarestream.com/fd142ca0e1672dd7a92729857db1facd/thumbnails/thumbnail.jpg?time=8s&amp;width=1920" alt=""></div>
   <div class="rain-vignette" aria-hidden="true"></div>
@@ -32,6 +32,6 @@ header('Cross-Origin-Embedder-Policy: require-corp');
   <p id="study-status" role="status" aria-live="polite"></p>
   <dialog id="study-privacy"><h2>Privacy Info</h2><p>Your measurements and responses are stored under a participant code. Camera video is processed on your device and is not recorded by this study.</p><p>Researchers can review coded records. Shared findings are anonymised. Researchers remove identifying details before sending excerpts for AI analysis.</p><p>You can stop at any time. Contact the organiser to withdraw or request removal of your responses.</p><button class="study-button" data-action="closePrivacy">Close</button></dialog>
   <script src="study/gate-rain.js?v=study-1" defer></script>
-  <script type="module" src="study/app.js?v=0bc74ce13a8a"></script>
+  <script type="module" src="study/app.js?v=62768f90093e"></script>
 </body>
 </html>

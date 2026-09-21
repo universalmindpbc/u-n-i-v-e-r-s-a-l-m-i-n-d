@@ -1,4 +1,7 @@
 import {createExposureSync} from './exposure-sync.js?v=ec88d9bc9d06';
+const endingTest=document.body.dataset.endingTest==='true';
+const apiUrl=endingTest?'api/study-ending-test.php':'api/study.php';
+const testQuery=endingTest?'&ending_test=1':'';
 const app=document.querySelector('#study-app');
 const status=document.querySelector('#study-status');
 let state, dataset, busy=false, exposure=null, statusTimer, clockTimer;
@@ -18,7 +21,7 @@ const face=n=>`<span class="study-emoji" aria-hidden="true" style="background-po
 export async function request(action,body={}) {
  const controller=new AbortController(),timeout=(!action||action==='exposure.tick')?setTimeout(()=>controller.abort(),15000):null;
  try{
- const response=await fetch('api/study.php',{signal:controller.signal,method:action?'POST':'GET',credentials:'same-origin',cache:'no-store',headers:action?{'Content-Type':'application/json','X-Study-CSRF':state.csrf}:{},body:action?JSON.stringify({action,request_id:crypto.randomUUID(),...body}):undefined});
+ const response=await fetch(apiUrl,{signal:controller.signal,method:action?'POST':'GET',credentials:'same-origin',cache:'no-store',headers:action?{'Content-Type':'application/json','X-Study-CSRF':state.csrf}:{},body:action?JSON.stringify({action,request_id:crypto.randomUUID(),...body}):undefined});
  const payload=await response.json().catch(()=>({error:'Please try again.'}));
  if(!response.ok)throw new Error(payload.error||'Please try again.');return payload;
  }finally{clearTimeout(timeout);}
@@ -62,7 +65,7 @@ function renderReward(){
  app.innerHTML=`<section class="study-stage"><p class="study-eyebrow">${count} of 3 sessions complete</p>
  <article class="study-wallet-card" aria-label="Universal Mind reward card"><div><img src="a s s e t s/Universal Mind [ I o H ] Logo 512.png" alt=""><span>HAPPINESS</span></div><strong>$${count===3?'100':'0'}</strong><p>${w?.status==='paid'?'Redeemed':'Research reward'}</p><footer>UNIVERSAL MIND <span>${html(w?.display_id||'')}</span></footer></article>
  <h1>Thank you.</h1><p class="study-copy">${count===3?(w?.status==='paid'?'Your $100 payment is recorded.':'Your $100 reward is ready.'):'$100 when you complete all three sessions.'}</p>
- <div class="study-actions">${button('See your results','results')}<a class="study-button secondary" href="api/study-wallet.php?pass=1">Add to Apple Wallet</a>${count===3&&w?.status!=='paid'?button(w?.redemption_requested?'Redemption requested':'Redeem $100','redeem',true,w?.redemption_requested?'disabled':''):''}</div></section>`;
+ <div class="study-actions">${button('See your results','results')}${endingTest?'':'<a class="study-button secondary" href="api/study-wallet.php?pass=1">Add to Apple Wallet</a>'}${count===3&&w?.status!=='paid'?button(w?.redemption_requested?'Redemption requested':'Redeem $100','redeem',true,w?.redemption_requested?'disabled':''):''}</div></section>`;
 }
 function renderStopped(){setPage('reward');app.innerHTML=`<section class="study-stage"><h1>Session stopped.</h1><div class="study-actions">${button('Your results','results')}</div></section>`;}
 function displayValue(key,value){return value==null?'TBC':`${fmt(['happiness','stress','connection'].includes(key)?value*10:value)}${metricNames[key][1]==='%'?'%':` <small>${metricNames[key][1]}</small>`}`;}
@@ -118,8 +121,7 @@ function prepareExposure(completedSessionId=null){
  exposure?.sync.close();
  exposure?.shell.remove();
  const shell=document.createElement('div');shell.className='study-exposure';
- shell.innerHTML='<iframe title="modul8 infinity study experience" src="study-experience.php?study_experience=1" allow="autoplay; fullscreen; microphone; camera" allowfullscreen></iframe>';
- if(state.preview&&state.preview_available&&!completedSessionId)shell.insertAdjacentHTML('beforeend','<button type="button" class="study-button study-proof-skip" data-action="proofEnding" disabled><small>Preview</small> Skip to final 30 seconds →</button>');
+ shell.innerHTML=`<iframe title="modul8 infinity study experience" src="study-experience.php?study_experience=1${testQuery}" allow="autoplay; fullscreen; microphone; camera" allowfullscreen></iframe>`;
  const active={sessionId:completedSessionId||currentSession().id,frame:shell.querySelector('iframe'),shell,ready:false,completed:!!completedSessionId};
  active.sync=createExposureSync({
   send:values=>request('exposure.tick',{...values,session_id:active.sessionId}),
@@ -166,7 +168,7 @@ function resumeEntry(){
  }
 }
 function startScan(){
- setPage('scan');app.innerHTML='<div class="study-scan"><iframe title="Your Heart Check" src="research.php?study=1&embedded=1" allow="camera; fullscreen" allowfullscreen></iframe></div>';
+ setPage('scan');app.innerHTML=`<div class="study-scan"><iframe title="Your Heart Check" src="research.php?study=1&embedded=1${testQuery}" allow="camera; fullscreen" allowfullscreen></iframe></div>`;
 }
 window.IAMStudyShell={startExperience:startExposure};
 document.addEventListener('click',async event=>{
@@ -181,11 +183,6 @@ document.addEventListener('click',async event=>{
  else if(action==='results'){view='dashboard';tab='personal';selectedSession=null;await render();}
  else if(action==='missingVitals'){await request('vitals',{session_id:currentSession().id,values:{unavailable_reason:state.preview?'preview':'declined'}});await refresh();}
  else if(action==='exposure'){await startExposure();}
- else if(action==='proofEnding'&&state.preview&&state.preview_available){
-  const active=exposure;await startExposure();
-  if(!active.frame.contentWindow.IAMStudyExperience.previewFinal30())throw new Error('Please wait for the video to load.');
-  control.hidden=true;
- }
  else if(action==='stop'){exposure?.frame.contentWindow.postMessage({type:'study-stop'},location.origin);await request('session.stop',{session_id:currentSession().id});exposure=null;state=await request();renderStopped();}
  else if(action==='privacy'){document.querySelector('#study-privacy').showModal();}
  else if(action==='closePrivacy'){document.querySelector('#study-privacy').close();}
@@ -223,7 +220,6 @@ window.addEventListener('message',async event=>{
  if(event.data?.type==='study-prepared'){
   exposure.ready=true;if(exposure.completed)syncNavigation(document.body.dataset.studyState);const control=document.querySelector('[data-action="exposure"]');
   if(control){control.disabled=false;control.textContent='Enter experience';}
-  const proof=exposure.shell.querySelector('[data-action="proofEnding"]');if(proof)proof.disabled=false;
   return;
  }
  if(event.data?.type==='study-paused'){if(!exposure.completed)resumeEntry();return;}
@@ -237,4 +233,4 @@ window.addEventListener('message',async event=>{
 });
 document.addEventListener('visibilitychange',()=>{if(document.hidden)exposure?.frame.contentWindow.postMessage({type:'study-pause'},location.origin);});
 window.addEventListener('pagehide',()=>{exposure?.sync.close();exposure?.frame.contentWindow.postMessage({type:'study-stop'},location.origin);});
-(async()=>{state=await request();if(new URLSearchParams(location.search).get('preview')==='1'&&state.preview_available){await request('preview');history.replaceState(null,'',location.pathname);await refresh();}else await render();})().catch(error=>{app.innerHTML='<p>Please refresh to reopen your study.</p>';notice(error.message);});
+(async()=>{state=await request();if(endingTest){await request('ending.reset');await refresh();}else if(new URLSearchParams(location.search).get('preview')==='1'&&state.preview_available){await request('preview');history.replaceState(null,'',location.pathname);await refresh();}else await render();})().catch(error=>{app.innerHTML='<p>Please refresh to reopen your study.</p>';notice(error.message);});

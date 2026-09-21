@@ -11,13 +11,13 @@ const php=new PHP(await loadNodeRuntime('8.3',{emscriptenOptions:{processId:1}})
 const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
 php.mkdir('/app/api');php.mkdir('/app/study');
 php.writeFile('/index.html',`<script>const allowedPasswordHashes = new Set(["${createHash('sha256').update('Existing-Website-Password').digest('hex')}"]);</script>`);
-for(const name of ['study.php','study-lib.php','study-rewards.php','study-spectrum.php','study-analysis.php','happiness-secret-store.php','quantum-tree-owner-password.php'])
+for(const name of ['study.php','study-ending-test.php','study-lib.php','study-rewards.php','study-spectrum.php','study-analysis.php','happiness-secret-store.php','quantum-tree-owner-password.php'])
   php.writeFile('/app/api/'+name,await fs.readFile(path.join(root,'i  a m/api',name),'utf8'));
 php.writeFile('/app/study/protocol-v1.json',await fs.readFile(path.join(root,'i  a m/study/protocol-v1.json'),'utf8'));
 let cookies={},csrf='';
 const checks=[];
 async function request(action,body={},options={}) {
-  const response=await php.run({scriptPath:'/app/api/study.php',relativeUri:'/vogue/iam/api/study.php',protocol:'https',method:action?'POST':'GET',
+  const response=await php.run({scriptPath:'/app/api/'+(options.ending?'study-ending-test.php':'study.php'),relativeUri:'/vogue/iam/api/'+(options.ending?'study-ending-test.php':'study.php'),protocol:'https',method:action?'POST':'GET',
     headers:{Host:options.host||'staging.universalmind.tv',Origin:options.origin||'https://staging.universalmind.tv','X-Study-CSRF':options.csrf??csrf,
       Cookie:Object.entries(cookies).map(([k,v])=>`${k}=${v}`).join('; '),'Content-Type':'application/json'},$_SERVER:{HTTPS:'on'},
     ...(action?{body:new TextEncoder().encode(JSON.stringify({action,request_id:crypto.randomUUID(),...body}))}:{})});
@@ -201,5 +201,35 @@ try {
   const removed=await ok('export');assert.equal(removed.participant.withdrawn,true);assert.equal(removed.participant.sessions[0].before_report,null);
   assert.equal((await ok('summary')).summary.statistics.happiness.n,0);
   checks.push('Withdrawal removes requested response fields and invalidates derived results');
+  // Separate proof cookie and preview storage cannot mutate the ordinary study.
+  const ordinary=await ok(),ordinaryCookie=cookies.iam_study;
+  const cohortBefore=php.readFileAsText(cohortPath);
+  const proofOptions={ending:true};
+  async function ending(action,body={}) {const result=await request(action,body,proofOptions);assert.equal(result.status,200,JSON.stringify(result));return result;}
+  assert.equal((await request(null,{}, {...production,ending:true})).status,404);
+  assert.equal((await request('ending.reset')).status,404);
+  const emptyEnding=await ending();assert.equal(emptyEnding.participant,null);assert.equal(emptyEnding.ending_test,true);
+  assert.ok(cookies.iam_study_ending_test);assert.equal(cookies.iam_study,ordinaryCookie);
+  assert.equal((await request('ending.reset',{}, {ending:true,csrf:'wrong'})).status,403);
+  assert.equal((await request('ending.reset',{}, {ending:true,origin:'https://other.test'})).status,403);
+  for(const action of ['login','admin.dataset','preview.experience','reward.redeem','preview']) assert.equal((await request(action,{},proofOptions)).status,403);
+  await ending('ending.reset');const proof=await ending(),tail=proof.participant.sessions[0];
+  assert.equal(proof.participant.id,'ENDING-TEST');assert.equal(proof.participant.consent.test_fixture,true);
+  assert.equal(tail.state,'experience');assert.equal(tail.before_vitals,null);assert.equal(tail.before_report,null);assert.equal(tail.exposure_seconds,0);
+  const tick={session_id:tail.id,position:488.14,duration:488.14,media_time:0,ended:true,playing:true};
+  assert.equal((await ending('exposure.tick',tick)).state,'experience','Even the ending test must wait for its actual 30-second clock');
+  const proofFile=php.listFiles('/app/api/.runtime-private/study').find(name=>name.startsWith('preview-')&&name.endsWith('.json')&&php.readFileAsText('/app/api/.runtime-private/study/'+name).includes('ENDING-TEST'));
+  assert.ok(proofFile);const proofPath='/app/api/.runtime-private/study/'+proofFile;
+  const caught=JSON.parse(php.readFileAsText(proofPath));caught.participants['ENDING-TEST'].sessions[0].exposure_started_epoch=Date.now()/1000-31;
+  php.writeFile(proofPath,JSON.stringify(caught));
+  assert.equal((await ending('exposure.tick',{...tick,ended:false})).state,'experience');
+  assert.equal((await ending('exposure.tick',tick)).state,'after_vitals');
+  await ending('vitals',{session_id:tail.id,values:{measurement_duration_seconds:10,heart_rate_bpm:63}});
+  for(const [question,value] of [['happiness',8],['stress',4],['connection',7],['text','Test ending']])await ending('answer',{session_id:tail.id,question,value});
+  assert.equal((await ending()).participant.sessions[0].state,'complete');assert.equal((await ending('summary')).summary.completed_sessions,1);
+  assert.equal(php.readFileAsText(cohortPath),cohortBefore);
+  assert.deepEqual((await ok()).participant,ordinary.participant);assert.equal(cookies.iam_study,ordinaryCookie);
+  await ending();await ending('ending.reset');assert.notEqual((await ending()).participant.sessions[0].id,tail.id);
+  checks.push('Dedicated ending test is staging-only, uses a separate cookie/store, has no fabricated baseline, requires real end plus 30-second clock, completes ordinary after flow, and leaves cohort and participant unchanged');
   console.log(JSON.stringify({runtime:'PHP 8.3 WASM',checks},null,2));
 }finally{php.exit();}

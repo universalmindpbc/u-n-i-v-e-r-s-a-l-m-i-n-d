@@ -196,6 +196,16 @@ function study_new_participant(string $id, string $hash = ''): array {
         'withdrawn' => false, 'reward'=>study_reward_new(), 'sessions' => [], 'payments' => [], 'onboarding_earned' => false];
 }
 
+function study_new_session(array $config, int $number, string $timezone): array {
+    $window = strtolower($config['events'][$number-1]['label']);
+    return ['id'=>bin2hex(random_bytes(16)), 'number'=>$number, 'state'=>'before_vitals',
+        'event_starts_at'=>null, 'delivery'=>'on_demand', 'recommended_window'=>$window, 'window'=>$window, 'timezone'=>$timezone,
+        'created_at'=>gmdate('c'), 'created_at_epoch'=>time(), 'config_hash'=>hash('sha256', json_encode($config)),
+        'video_stream_uid'=>study_public_config($config)['stream_uid'], 'protocol_version'=>study_protocol()['version'],
+        'before_vitals'=>null, 'before_report'=>null, 'after_vitals'=>null, 'after_report'=>null,
+        'exposure_seconds'=>0, 'interruptions'=>0, 'last_heartbeat'=>null, 'last_media_time'=>null, 'last_mutation'=>null];
+}
+
 function study_statistics(array $values): array {
     $values = array_values(array_filter($values, static fn($x): bool => $x !== null));
     sort($values, SORT_NUMERIC); $n = count($values);

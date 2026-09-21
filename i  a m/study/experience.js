@@ -4,7 +4,9 @@ const send=(type,extra={})=>parent.postMessage({type,...extra},location.origin);
 const wait=ms=>new Promise(resolve=>setTimeout(resolve,ms));
 if(document.readyState==='loading')await new Promise(resolve=>document.addEventListener('DOMContentLoaded',resolve,{once:true}));
 lockNavigation();
-let checkout=false,proofing=false;
+document.querySelector('[data-television-play]').disabled=true;
+const apiUrl=location.hostname==='staging.universalmind.tv'&&new URLSearchParams(location.search).get('ending_test')==='1'?'api/study-ending-test.php':'api/study.php';
+let checkout=false;
 let video,timer,running=false,stopped=false,configuring=false,starting=false;
 let previousChoice,previousAdaptation,played=0,lastVideoTime=0;
 let pagePositioned=false;
@@ -33,10 +35,10 @@ function stop(){
 async function configure(uid,completedSessionId){
  if(configuring||stopped)return;configuring=true;
  try{
-  const response=await fetch('api/study.php',{credentials:'same-origin',cache:'no-store'}),state=await response.json();
+  const response=await fetch(apiUrl,{credentials:'same-origin',cache:'no-store'}),state=await response.json();
   if(!response.ok||!state.participant?.consent||state.participant.withdrawn||state.config.stream_uid!==uid
    ||!state.participant.sessions.some(s=>completedSessionId?s.id===completedSessionId&&s.state==='complete':s.state==='experience'))throw new Error('Please reopen your study session.');
-  proofing=state.preview===true&&state.preview_available===true;
+  const endingTest=state.ending_test===true&&state.preview===true;
   for(let i=0;i<200&&!window.IAMAdaptiveSound?.prepareStudy;i++)await wait(100);
   if(!window.IAMTelevisionRoom?.prepareStudyExperience||!window.IAMAdaptiveSoundSession)throw new Error('Please refresh to load the experience.');
   await window.IAMAdaptiveSoundSession.ready;
@@ -60,6 +62,16 @@ async function configure(uid,completedSessionId){
   await window.IAMStreamController.preloadMedia(video,{targetSeconds:4});
   for(let i=0;i<100&&(!Number.isFinite(video.duration)||video.duration<=0);i++)await wait(100);
   if(!Number.isFinite(video.duration)||video.duration<=0)throw new Error('The video could not load. Please refresh to try again.');
+  if(endingTest){
+   // Position and buffer the actual tail before enabling the native play control.
+   // No completion event or watched time is fabricated by this seek.
+   const position=Math.max(0,video.duration-30);
+   video.currentTime=position;
+   await window.IAMStreamController.preloadMedia(video,{targetSeconds:4});
+   for(let i=0;i<300&&(video.seeking||Math.abs(video.currentTime-position)>0.25||video.readyState<2);i++)await wait(100);
+   if(video.seeking||Math.abs(video.currentTime-position)>0.25||video.readyState<2)throw new Error('Please refresh to load the final 30 seconds.');
+   lastVideoTime=video.currentTime;
+  }
   positionOpeningPage();
   if(!stopped){document.querySelector('[data-television-play]').disabled=false;send('study-prepared',{duration:video.duration});}
  }catch(error){if(!stopped)send('study-error',{message:error.message});}
@@ -98,17 +110,11 @@ async function start(){
 }
 function showHome(){document.body.classList.remove('television-room-open','television-room-opening');document.querySelector('[data-television-room]').setAttribute('aria-hidden','true');}
 async function completeCheckout(sessionId){
- const response=await fetch('api/study.php',{credentials:'same-origin',cache:'no-store'}),state=await response.json();
+ const response=await fetch(apiUrl,{credentials:'same-origin',cache:'no-store'}),state=await response.json();
  if(!response.ok||state.participant?.withdrawn||!state.participant?.sessions.some(s=>s.id===sessionId&&s.state==='complete')||state.participant.sessions.some(s=>!['complete','stopped'].includes(s.state)))return false;
  stop();checkout=true;window.IAMTelevisionRoom.preparePresentationEntry();unlockNavigation();return true;
 }
-function previewFinal30(){
- if(!proofing||!video||stopped||!running||!Number.isFinite(video.duration))return false;
- const position=Math.max(0,video.duration-30);
- video.currentTime=position;lastVideoTime=position;
- return true;
-}
-window.IAMStudyExperience={start,showHome,completeCheckout,previewFinal30};
+window.IAMStudyExperience={start,showHome,completeCheckout};
 document.addEventListener('click',event=>{
  const play=event.target.closest('[data-television-play]');
  if(play&&!checkout){event.preventDefault();event.stopImmediatePropagation();if(!play.disabled)parent.IAMStudyShell.startExperience();return;}
