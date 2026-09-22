@@ -1,0 +1,126 @@
+{
+  "date": "2026-09-22",
+  "source_commit": "1bca69a84ca2efe82e6a1695bf85abbe872c07d7",
+  "removed_implementation_commit": "2f0e7b06d7c04c8a4a56346306285a43a2d0f203",
+  "restored_approved_source_commit": "491766fc85ecef6d2f9571a99035cafbf1ee388b",
+  "scope": "Remove expanded onboarding welcome and restore direct practical briefing and consent. Preserve approved animated pre-song reflection.",
+  "deployment": {
+    "command": "SHOPFRONT_MUGLER_FIXTURE=/private/tmp/um-study-mugler-fixture.mp4 ./deploy-panthur-staging.sh changed",
+    "uploaded": 6,
+    "unchanged_skipped": 1069,
+    "preflights_passed": true,
+    "protected_owner_runtime_unchanged": true
+  },
+  "approved_source_identity": [
+    {
+      "file": "i  a m/api/study.php",
+      "matches_approved_source": true
+    },
+    {
+      "file": "i  a m/study.php",
+      "matches_approved_source": true
+    },
+    {
+      "file": "i  a m/study/app.js",
+      "matches_approved_source": true
+    },
+    {
+      "file": "i  a m/study/protocol-v1.json",
+      "matches_approved_source": true
+    },
+    {
+      "file": "i  a m/study/reflection.css",
+      "matches_approved_source": true
+    },
+    {
+      "file": "i  a m/study/reflection.js",
+      "matches_approved_source": true
+    }
+  ],
+  "browser": {
+    "mode": "staging-journey",
+    "checks": [
+      {
+        "check": "read: reflection appears only after saved baseline, with player hidden and zero exposure"
+      },
+      {
+        "check": "Visible text advances progressively"
+      },
+      {
+        "check": "read: four exact messages, no text input, accessible read controls and no horizontal overflow"
+      },
+      {
+        "check": "read: Let\u2019s begin launches the actual Empire of the Sun film after saving the choice"
+      },
+      {
+        "check": "read: read/skip choice and version persist; reload does not repeat the reflection"
+      },
+      {
+        "check": "skip: reflection appears only after saved baseline, with player hidden and zero exposure"
+      },
+      {
+        "check": "skip: read/skip choice and version persist; reload does not repeat the reflection"
+      },
+      {
+        "check": "reduced: reflection appears only after saved baseline, with player hidden and zero exposure"
+      },
+      {
+        "check": "reduced: four exact messages, no text input, accessible read controls and no horizontal overflow"
+      },
+      {
+        "check": "reduced: Let\u2019s begin launches the actual Empire of the Sun film after saving the choice"
+      },
+      {
+        "check": "reduced: read/skip choice and version persist; reload does not repeat the reflection"
+      }
+    ],
+    "errors": [],
+    "safety": {
+      "audio": "--mute-audio",
+      "nativeFullscreen": false,
+      "camera": false,
+      "syntheticPreviewOnly": true
+    },
+    "at": "2026-09-22T06:57:31.327Z"
+  },
+  "served_source": {
+    "files": [
+      {
+        "file": "study/app.js",
+        "url": "https://staging.universalmind.tv/vogue/iam/study/app.js?v=ab0264cc642b",
+        "sha256": "ab0264cc642b6d427695bbf5bc04d3d73619a8975c96615a2c9da50b5373fd79",
+        "matches": true
+      },
+      {
+        "file": "study/reflection.js",
+        "url": "https://staging.universalmind.tv/vogue/iam/study/reflection.js?v=73e7b539696c",
+        "sha256": "73e7b539696cc2732d5c15d9e12b9c9203e4833e44aef1b3dd5fd3223345aa9f",
+        "matches": true
+      },
+      {
+        "file": "study/reflection.css",
+        "url": "https://staging.universalmind.tv/vogue/iam/study/reflection.css?v=e5d2a0ba5a30",
+        "sha256": "e5d2a0ba5a308eef39014d89d8d9302565c8ae6de526ea3aacaaf9258014bf2e",
+        "matches": true
+      },
+      {
+        "file": "study/protocol-v1.json",
+        "url": "https://staging.universalmind.tv/vogue/iam/study/protocol-v1.json?v=53cb26d0449d",
+        "sha256": "53cb26d0449d7d5c4731cf50392d608c0a739d3793c7490365b587d1492cc264",
+        "matches": true
+      }
+    ],
+    "entry": "https://staging.universalmind.tv/study",
+    "page_asset_references_match": true
+  },
+  "safety": {
+    "dedicated_chromium_mute_audio": true,
+    "native_fullscreen": false,
+    "camera": false,
+    "microphone": false,
+    "synthetic_staging_previews_only": true,
+    "automated_browser_sessions_closed": true
+  },
+  "proof_url": "https://staging.universalmind.tv/vogue/iam/study.php?preview=1",
+  "production_modified": false
+}
