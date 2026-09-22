@@ -99,7 +99,7 @@ try{
     const f=await(await page.locator('.study-exposure iframe').elementHandle()).contentFrame();
     await f.waitForFunction(()=>{const v=document.querySelector('.adaptive-television-local-video');return v&&!v.paused&&v.currentTime>1;},{},{timeout:45000});
     record(scenario+': Let’s begin launches the actual Empire of the Sun film after saving the choice');
-    await f.evaluate(()=>parent.postMessage({type:'study-stop'},location.origin));
+    await page.evaluate(()=>document.querySelector('.study-exposure iframe').contentWindow.postMessage({type:'study-stop'},location.origin));
    }
    await page.reload({waitUntil:'domcontentloaded'});await page.locator('.study-exposure iframe').waitFor();assert.equal(await page.locator('.study-reflection').count(),0);
    assert.equal((await state()).participant.sessions.at(-1).reflection.choice,saved.reflection.choice);
