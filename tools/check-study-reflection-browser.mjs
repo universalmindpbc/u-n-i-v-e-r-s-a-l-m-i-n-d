@@ -16,7 +16,7 @@ try{
   const context=await browser.newContext({viewport:scenario==='read'?{width:1440,height:900}:{width:390,height:844},reducedMotion:scenario==='reduced'?'reduce':'no-preference'});
   page=await context.newPage();page.on('pageerror',e=>report.errors.push(e.message));
   await page.addInitScript(()=>{
-   window.__qa={camera:0,fullscreen:0};
+   window.__qa={camera:0,fullscreen:0,messages:[]};window.addEventListener('message',event=>{if(event.data?.type?.startsWith('study-'))window.__qa.messages.push({type:event.data.type,message:event.data.message});});
    if(navigator.mediaDevices)navigator.mediaDevices.getUserMedia=async()=>{window.__qa.camera++;throw new Error('No camera in QA');};
    Element.prototype.requestFullscreen=async()=>{window.__qa.fullscreen++;};Element.prototype.webkitRequestFullscreen=async()=>{window.__qa.fullscreen++;};
    Document.prototype.exitFullscreen=async()=>{};
@@ -44,7 +44,7 @@ try{
    await page.reload({waitUntil:'domcontentloaded'});
    for(const [q,v]of [['happiness',5],['stress',7],['connection',4],['text','Synthetic reflection QA baseline.']]){
     await page.locator(`[data-question="${q}"]`).first().waitFor();assert.equal(await page.locator('.study-reflection').count(),0);
-    if(q==='text')await page.locator('#self-report').fill(v);else await page.getByRole('radio',{name:`${v*10}%`,exact:true}).check();
+    if(q==='text')await page.locator('#self-report').fill(v);else await page.getByRole('radio',{name:`${v*10}%`,exact:true}).locator('..').click();
     await page.locator('[data-form="answer"] [type="submit"]').click();
    }
   }
@@ -83,7 +83,8 @@ try{
    record('Save failure keeps the introduction and enables retry');
   }
   if(!local&&scenario!=='skip'){
-   await page.waitForFunction(()=>{const f=document.querySelector('.study-exposure iframe');return f?.contentDocument?.querySelector('[data-television-play]')?.disabled===false;},{},{timeout:90000});
+   await page.waitForFunction(()=>window.__qa.messages.some(m=>['study-prepared','study-error'].includes(m.type)),{},{timeout:90000});
+   assert.ok(await page.evaluate(()=>window.__qa.messages.some(m=>m.type==='study-prepared')),JSON.stringify(await page.evaluate(()=>window.__qa.messages)));
    const f=await(await page.locator('.study-exposure iframe').elementHandle()).contentFrame();
    const before=await f.evaluate(()=>{const v=document.querySelector('.adaptive-television-local-video');return {time:v.currentTime,paused:v.paused};});
    assert.equal(before.time,0);assert.equal(before.paused,true);
