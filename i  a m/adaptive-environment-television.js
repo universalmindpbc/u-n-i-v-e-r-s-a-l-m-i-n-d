@@ -9336,6 +9336,53 @@
     }
   }
 
+  let participateHandoff = null;
+
+  function beginResearchParticipation(link) {
+    if (participateHandoff) return;
+    const destination = new URL(link.getAttribute("href"), window.location.href);
+    if (destination.origin !== window.location.origin) return;
+    const owner = studyExperienceRequested ? window.parent : window;
+    const pausedDocuments = new Set([document, owner.document]);
+    const holdMedia = (event) => {
+      const media = event.target;
+      if (!media?.pause) return;
+      media.muted = true;
+      media.pause();
+    };
+    const releaseHold = () => pausedDocuments.forEach((doc) => doc.removeEventListener("play", holdMedia, true));
+    const wasRequested = televisionPlaybackRequested;
+    televisionPlaybackRequested = false;
+    document.body.dataset.researchParticipationHandoff = "exiting";
+    participateHandoff = import("./fullscreen-navigation.js?v=5bad9952835a").then(({ navigateFromTelevision }) => (
+      navigateFromTelevision({
+        document: owner.document,
+        pause() {
+          // Pause without unloading, seeking, or removing the fullscreen video.
+          pausedDocuments.forEach((doc) => {
+            doc.addEventListener("play", holdMedia, true);
+            doc.querySelectorAll("video, audio").forEach((media) => holdMedia({ target: media }));
+          });
+          setSoundResearchEnabled(false, { persist: false });
+        },
+        teardown() {
+          closeVideoNavigation();
+          stopTelevisionMedia();
+        },
+        navigate() {
+          document.body.dataset.researchParticipationHandoff = "navigating";
+          owner.location.assign(destination.href);
+        },
+      })
+    )).catch((error) => {
+      releaseHold();
+      televisionPlaybackRequested = wasRequested;
+      participateHandoff = null;
+      document.body.dataset.researchParticipationHandoff = "failed";
+      console.error("Research navigation could not leave fullscreen", error);
+    });
+  }
+
   function beginTopLevelCheckIn(link) {
     const destination = new URL(link.getAttribute("href"), window.location.href);
     ["adaptiveFrame", "musicTelevisionFrame", "navigationShell"].forEach((parameter) => {
@@ -10400,6 +10447,12 @@
   });
   document.querySelectorAll(".global-nav a").forEach((link) => {
     link.addEventListener("click", (event) => {
+      if (link.dataset.navSubitem === "research-participate") {
+        event.preventDefault();
+        event.stopImmediatePropagation();
+        beginResearchParticipation(link);
+        return;
+      }
       if (!document.body.classList.contains("television-room-open")) {
         exitFullscreenForNavigation();
         return;

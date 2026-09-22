@@ -35,6 +35,7 @@ const localAssets = new Map([
 
 const server = await chromium.launchServer({
   headless: true,
+  executablePath: process.env.PLAYWRIGHT_CHROMIUM_EXECUTABLE || undefined,
   args: ["--mute-audio", "--autoplay-policy=user-gesture-required"],
 });
 const browserProcess = server.process();
@@ -146,10 +147,19 @@ async function checkRealCheckinAndController() {
   assert.equal(exactSelection?.schema_version, "adaptive_music_video_selection_v1.11");
   assert.ok(exactSelection?.selected_track_id, "The deterministic selector must resolve an exact approved music/video");
   assertNoTargetLeakage(diagnostics.session_snapshot);
+  const homepageFrequency = await page.locator("[data-adaptive-session-frequency]").evaluate(node => ({ hidden: node.hidden, text: node.textContent }));
+  assert.equal(homepageFrequency.hidden, false);
+  assert.ok(homepageFrequency.text.includes(String(snapshot.carrier_hz)));
+  const frequencyFrames = await page.evaluate(() => window.__iamQaFrequencyFrames);
+  assert.deepEqual(frequencyFrames.invalid, [], "No owner default or pending recommendation may be visible on the public homepage");
+  assert.ok(frequencyFrames.pending > 0, "Observe the actual loading interval");
   await assertMediaStillStopped(page);
 
   const result = {
     heart_rate_offer_skipped: true,
+    homepage_frequency: homepageFrequency.text.trim(),
+    pending_frames_with_no_frequency: frequencyFrames.pending,
+    invalid_frequency_frames: frequencyFrames.invalid,
     inference_http_status: inferenceResponse.status(),
     selector_http_status: selectionResponse.status(),
     prompt_version: inferencePayload.prompt_version,
@@ -178,14 +188,13 @@ async function checkNoCheckin() {
   await page.waitForFunction(() => window.IAMAdaptiveSoundSession?.current?.());
   const snapshot = await page.evaluate(() => window.IAMAdaptiveSoundSnapshot);
   const readout = await readHomepageState(page);
-  assert.equal(snapshot.selected, true);
-  assert.equal(snapshot.band_intent, "alpha");
-  assert.equal(snapshot.carrier_hz, 222);
-  assert.equal(snapshot.selection_basis, "default_session_profile");
-  assert.equal(snapshot.safety.adaptive_frequencies_enabled, true);
-  assert.equal(readout.selected, "true");
-  assert.match(readout.text, /222/);
-  assert.doesNotMatch(readout.text, /444/);
+  assert.equal(snapshot.selected, false);
+  assert.equal(snapshot.band_intent, null);
+  assert.equal(snapshot.carrier_hz, null);
+  assert.equal(snapshot.selection_basis, "insufficient_context");
+  assert.equal(snapshot.safety.adaptive_frequencies_enabled, false);
+  assert.equal(readout.selected, "false");
+  assert.doesNotMatch(readout.text, /10\.11|222|444/);
   assertNoTargetLeakage(snapshot);
   await assertMediaStillStopped(page);
   const result = {
@@ -372,6 +381,20 @@ async function makeContext({ policyDelayMs = 0 } = {}) {
   });
   await context.addInitScript(() => {
     window.__iamQaBlockedPlayAttempts = 0;
+    window.__iamQaFrequencyFrames = { pending: 0, invalid: [] };
+    const observeFrequency = () => {
+      const node = document.querySelector("[data-adaptive-session-frequency]");
+      const pending = document.body?.dataset.adaptiveSelectionState === "loading";
+      if (pending) window.__iamQaFrequencyFrames.pending++;
+      if (node && !node.hidden && (pending || node.dataset.adaptiveSoundSelectionBasis === "default_session_profile")) {
+        window.__iamQaFrequencyFrames.invalid.push(node.textContent.trim());
+      }
+      requestAnimationFrame(observeFrequency);
+    };
+    requestAnimationFrame(observeFrequency);
+    Element.prototype.requestFullscreen = () => Promise.reject(new Error("QA prevents native fullscreen"));
+    Element.prototype.webkitRequestFullscreen = () => {};
+    HTMLVideoElement.prototype.webkitEnterFullscreen = () => {};
     const blockedPlay = function blockedPlay() {
       window.__iamQaBlockedPlayAttempts += 1;
       window.__iamQaRecordPlayAttempt?.();

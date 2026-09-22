@@ -55,20 +55,12 @@ export function resolveAdaptiveSoundSession(inferenceInput = {}, policy, options
     visitor: String(payload.selection_context?.visitor_id || "anonymous"),
   });
 
-  let bandIntent = explicit.band_intent || (!explicitInsufficientContext
+  const bandIntent = explicit.band_intent || (!explicitInsufficientContext
     ? chooseScored(bandScores, fingerprint, "band")
     : null);
-  let carrierIntent = explicit.carrier_intent || (!explicitInsufficientContext
+  const carrierIntent = explicit.carrier_intent || (!explicitInsufficientContext
     ? chooseScored(carrierScores, fingerprint, "carrier")
     : null);
-  if ((!bandIntent || !carrierIntent) && policy.session_policy?.no_checkin_rule === "play_default_session_profile") {
-    const fallback = policy.session_policy.default_session;
-    if (bands[fallback?.band_intent] && carriers[fallback?.carrier_intent]) {
-      bandIntent = fallback.band_intent;
-      carrierIntent = fallback.carrier_intent;
-      explicit.selection_basis = "default_session_profile";
-    }
-  }
   const safety = resolveSafety(payload, policy);
   const promptIdentity = readPromptIdentity(inference);
   const authority = {

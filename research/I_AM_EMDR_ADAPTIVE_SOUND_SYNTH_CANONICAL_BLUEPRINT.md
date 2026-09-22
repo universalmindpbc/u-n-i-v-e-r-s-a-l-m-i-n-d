@@ -1935,3 +1935,18 @@ This supersedes the earlier no-context/no-selection rule for ordinary sessions.
   the primary pulse and display all lane power allocations from renderer diagnostics:
   80% primary, 6.66% each secondary, with 0.01% noise and 0.01% silence reserve.
   Keep these power allocations distinct from overall synth output volume.
+
+
+## 2026-09-22 correction — Public recommendation and owner synth testing are separate
+
+Ben clarified that the Alpha 10.11 Hz / 222 Hz default is only for user testing of
+synth playback. This supersedes the ordinary-session fallback described above.
+The independent owner synth test retains its registry default and Play controls.
+Public browser and server resolvers leave frequencies unselected without current
+check-in context or an explicit session choice. The homepage waits for the current
+recommendation before revealing its frequency line; it must not flash the test default.
+
+Research → Participate must pause media, await completed fullscreen exit, then
+release playback resources and navigate to the research login. It must not unload
+the fullscreen WebView during Safari's exit transition. The existing end-of-film
+after-check and isolated final-30-second staging proof remain unchanged.

@@ -5,7 +5,7 @@ import {
 import {
   ADAPTIVE_SOUND_SESSION_EVENT,
   startAdaptiveSoundSession,
-} from "./session-v1.js?v=3cbe017b92eb";
+} from "./session-v1.js?v=003d6bf15828";
 
 const PROCESSOR_NAME = "iam-adaptive-sound-v1";
 const PROFILE_META = Object.freeze({

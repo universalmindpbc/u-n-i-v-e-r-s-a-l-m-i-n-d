@@ -11,6 +11,21 @@
   if (!frequency) return;
 
   let hasSelectedFrequency = false;
+  let latestSnapshot = null;
+  let recommendationPending = document.body.dataset.adaptiveSelectionState === "loading";
+  window.addEventListener("iam:checkin-pipeline-started", () => {
+    recommendationPending = true;
+    syncFrequencyVisibility();
+  });
+  window.addEventListener("iam:checkin-pipeline-complete", () => {
+    recommendationPending = false;
+    if (latestSnapshot) applySoundSnapshot(latestSnapshot);
+  });
+  window.addEventListener("iam:checkin-pipeline-error", () => {
+    // A failed new recommendation must not reveal a previous session's readout.
+    recommendationPending = true;
+    syncFrequencyVisibility();
+  });
   window.addEventListener("iam:adaptive-sound-profile", (event) => {
     applySoundSnapshot(event.detail);
   });
@@ -20,6 +35,7 @@
   }
 
   function applySoundSnapshot(snapshot) {
+    latestSnapshot = snapshot;
     if (study) {
       const quantum = document.querySelector('.iam-sound-quantum-frequency');
       if (quantum) {
@@ -34,6 +50,7 @@
     const carrier = Number(snapshot?.carrier_hz);
     const frequenciesEnabled = snapshot?.safety?.adaptive_frequencies_enabled === true;
     const selected = snapshot?.selected === true
+      && snapshot?.selection_basis !== "default_session_profile"
       && frequenciesEnabled
       && lane
       && Number.isFinite(rate)
@@ -65,7 +82,7 @@
   }
 
   function syncFrequencyVisibility() {
-    frequency.hidden = !hasSelectedFrequency;
+    frequency.hidden = !hasSelectedFrequency || recommendationPending;
   }
 
   function setText(selector, value) {

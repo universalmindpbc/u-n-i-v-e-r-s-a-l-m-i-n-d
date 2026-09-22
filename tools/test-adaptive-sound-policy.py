@@ -151,8 +151,8 @@ def main() -> None:
     require(master_off["safety"]["adaptive_frequencies_enabled"] is False, "Master-off left adaptive frequencies enabled.")
 
     no_checkin = sound.resolve_adaptive_sound({}, policy)
-    require(no_checkin["selected"] is True, "Skipped checks must select the default session profile.")
-    require(no_checkin["carrier_hz"] == 222 and no_checkin["selection_basis"] == "default_session_profile", "Default session must be explicit.")
+    require(no_checkin["selected"] is False, "A public session without context must not select the owner test default.")
+    require(no_checkin["safety"]["adaptive_frequencies_enabled"] is False, "No context must leave added frequencies unselected.")
 
     insufficient = intent_payload("alpha", "presence")
     insufficient["adaptive_sound_intent"].update({
@@ -162,8 +162,8 @@ def main() -> None:
         "carrier_intent": None,
     })
     insufficient_result = sound.resolve_adaptive_sound(insufficient, policy)
-    require(insufficient_result["selection_basis"] == "default_session_profile", "Missing context uses an explicit default.")
-    require(insufficient_result["carrier_hz"] == 222, "Missing context uses the registry default carrier.")
+    require(insufficient_result["selected"] is False, "Missing context must not use the owner test default.")
+    require(insufficient_result["safety"]["adaptive_frequencies_enabled"] is False, "Missing context must leave added frequencies unselected.")
 
     skipped_biometric = json.loads(json.dumps(insufficient))
     skipped_biometric["checkin"] = "I am calm and taking this moment slowly."
@@ -242,7 +242,7 @@ def main() -> None:
             "authorized_for_human_operator_not_sent_by_model",
         ],
         "research_targets_in_product_decisions": False,
-        "no_checkin_default_carrier": 222,
+        "no_checkin_selected": False,
         "accepted_self_report_without_heart_rate_selected": True,
         "conflicting_heart_rate_re_ranked_band_and_carrier": True,
     }, indent=2))

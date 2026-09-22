@@ -40,15 +40,17 @@ const text = name => page.locator(`[data-mix-${name}]`).textContent();
 try {
   await page.goto(base + 'index.html?quantumTreeMonitor=1', { waitUntil: 'domcontentloaded', timeout: 60000 });
   await page.waitForFunction(() => window.IAMSubaudibleMantra && window.IAMAdaptiveSound && document.body.dataset.adaptiveSelectionSource === 'no_checkin_random');
-  await page.waitForFunction(() => window.IAMAdaptiveSoundSnapshot?.selection_basis === 'default_session_profile');
+  await page.waitForFunction(() => window.IAMAdaptiveSoundSnapshot?.selected === false);
+  await page.evaluate(() => window.IAMAdaptiveSoundSession.setSessionChoice({ band_intent: 'alpha', carrier_intent: 'self_connection' }, 'audio_mix_qa'));
+  await page.waitForFunction(() => window.IAMAdaptiveSoundSnapshot?.selection_basis === 'citizen_session_override');
   assert.equal((await diag()).synth.carrier_hz, 222);
   assert.equal(await text('synth-volume'), '0.00%');
   assert.equal(await text('synth-time'), '0:00');
-  report.checks.push('Skipped check-in and Heart Rate select the explicit default synth profile; audio waits for playback');
+  report.checks.push('Public no-check-in session stays unselected; this mix test explicitly chooses Alpha / 222 Hz');
   await page.locator('[data-television-play]').click();
   await page.waitForFunction(() => window.IAMAdaptiveSound.diagnostics().running && window.IAMAdaptiveSound.diagnostics().output_rms > 0);
   assert.equal((await diag()).synth.panel_open, false);
-  report.checks.push('One programme Play click starts the synth with both checks skipped and Sound panel closed');
+  report.checks.push('One programme Play click starts the explicitly selected test synth with Sound panel closed');
   await page.waitForFunction(() => document.querySelector('.adaptive-television-local-video')?.currentTime > 1, null, {timeout: 45000});
   await page.waitForFunction(() => window.IAMSubaudibleMantra.diagnostics().outputVerified, null, {timeout: 60000});
   const before = await diag();
@@ -64,7 +66,7 @@ try {
   }
   assert.match(await text('synth-allocation'), /Noise 0.01% · silence reserve 0.01%/);
   report.defaultSynth = after.synth;
-  report.checks.push('Default renderer is Alpha 10.11 Hz at 80% with a 222 Hz carrier; all four displayed lane percentages match audio-thread power weights');
+  report.checks.push('Explicit test renderer is Alpha 10.11 Hz at 80% with a 222 Hz carrier; all four displayed lane percentages match audio-thread power weights');
   assert.ok(after.quantum.currentTime > before.quantum.currentTime);
   assert.ok(after.mantra.currentTime > before.mantra.currentTime);
   assert.ok(after.mantra.duration > 334 && after.mantra.duration < 335);

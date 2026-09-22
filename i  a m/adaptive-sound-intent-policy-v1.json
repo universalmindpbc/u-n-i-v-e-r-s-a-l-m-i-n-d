@@ -11,7 +11,8 @@
     "automatic_mid_session_morph": false,
     "time_weather_location_adaptation": "required_in_every_initial_adaptive_decision_horizons_1_2_3",
     "automatic_mid_session_context_morph": false,
-    "no_checkin_rule": "play_default_session_profile",
+    "no_checkin_rule": "no_selection_without_current_context",
+    "default_session_scope": "owner_synth_test_only",
     "default_session": { "band_intent": "alpha", "carrier_intent": "self_connection" },
     "manual_choice_authority": "current_session_override"
   },
