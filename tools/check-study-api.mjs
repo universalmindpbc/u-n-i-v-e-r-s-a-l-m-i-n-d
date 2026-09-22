@@ -79,6 +79,15 @@ try {
   cookies={iam_study_return:returnCookie};await ok();await ok('login',{code:'Existing-Website-Password'});assert.equal((await ok()).participant.id,'PREVIEW');
   checks.push('Existing website password opens the portal directly; staging remains isolated and return identity survives session expiry');
   await ok('preview');let preview=await ok();const previewCookies={...cookies};assert.equal(preview.participant.id,'PREVIEW');
+  assert.equal((await request('welcome.complete',{version:'stale'})).status,422);
+  const welcome=await ok('welcome.complete',{version:preview.protocol.onboarding_welcome.version});
+  assert.equal(welcome.welcome.version,preview.protocol.onboarding_welcome.version);
+  assert.deepEqual((await ok('welcome.complete',{version:preview.protocol.onboarding_welcome.version})).welcome,welcome.welcome);
+  const welcomed=await ok();assert.deepEqual(welcomed.participant.welcome,welcome.welcome);
+  assert.equal(welcomed.participant.consent,null);assert.equal(welcomed.participant.sessions.length,0);
+  assert.equal((await request('session.start')).status,422,'Reading the welcome must not grant consent');
+  checks.push('Onboarding welcome records version once per participant, survives retries, rejects stale copy and does not grant consent or start a session');
+
   await ok('consent',{version:preview.protocol.version,adult_woman:true,equipment:true,participation:true,research_data:true});
   const session=await ok('session.start',{window:'morning',timezone:'Australia/Sydney'});
   assert.equal((await request('report',{session_id:session.session_id,happiness:5,stress:5,connection:5,text:''})).status,422);

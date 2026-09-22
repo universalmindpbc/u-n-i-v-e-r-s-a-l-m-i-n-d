@@ -1,11 +1,11 @@
-import {mountReflection} from './reflection.js?v=73e7b539696c';
+import {mountReflection} from './reflection.js?v=af7aa2db23f6';
 import {createExposureSync} from './exposure-sync.js?v=ec88d9bc9d06';
 const endingTest=document.body.dataset.endingTest==='true';
 const apiUrl=endingTest?'api/study-ending-test.php':'api/study.php';
 const testQuery=endingTest?'&ending_test=1':'';
 const app=document.querySelector('#study-app');
 const status=document.querySelector('#study-status');
-let state, dataset, busy=false, exposure=null, reflection=null, statusTimer, clockTimer;
+let state, dataset, busy=false, exposure=null, reflection=null, welcome=null, statusTimer, clockTimer;
 let view=new URLSearchParams(location.search).has('dashboard')?'dashboard':'journey';
 let tab='overview', selectedSession=null, selectedPerson='all', resultGroup='heart';
 const metricNames={happiness:['Happiness','%'],stress:['Stress','%'],connection:['Connection','%'],heart_rate_bpm:['Heart rate','bpm'],hrv_sdnn_ms:['HRV','ms'],hrv_rmssd_ms:['HRV · RMSSD','ms'],systolic_blood_pressure_mmhg:['Blood pressure · systolic','mmHg'],diastolic_blood_pressure_mmhg:['Blood pressure · diastolic','mmHg'],hrv_power_0_1_ms2:['HRV · PSD','ms²']};
@@ -20,7 +20,7 @@ const percent=(before,after)=>before==null||after==null||before===0?null:100*(af
 const centres=[110.5,205.5,299.5,393.5,487.5,568.5,651,732.5,813.5,895.5];
 const face=n=>`<span class="study-emoji" aria-hidden="true" style="background-position:${30-centres[n-1]}px -215px"></span>`;
 export async function request(action,body={}) {
- const controller=new AbortController(),timeout=(!action||action==='exposure.tick'||action==='reflection.complete')?setTimeout(()=>controller.abort(),15000):null;
+ const controller=new AbortController(),timeout=(!action||action==='exposure.tick'||action==='reflection.complete'||action==='welcome.complete')?setTimeout(()=>controller.abort(),15000):null;
  try{
  const response=await fetch(apiUrl,{signal:controller.signal,method:action?'POST':'GET',credentials:'same-origin',cache:'no-store',headers:action?{'Content-Type':'application/json','X-Study-CSRF':state.csrf}:{},body:action?JSON.stringify({action,request_id:crypto.randomUUID(),...body}):undefined});
  const payload=await response.json().catch(()=>({error:'Please try again.'}));
@@ -30,6 +30,7 @@ export async function request(action,body={}) {
 function notice(text){clearTimeout(statusTimer);status.textContent=text;statusTimer=setTimeout(()=>status.textContent='',9000);}
 function setPage(mode){
  if(mode!=='reflection'){reflection?.destroy();reflection=null;}
+ if(mode!=='welcome'){welcome?.destroy();welcome=null;}
  clearInterval(clockTimer);document.body.dataset.studyState=mode;
  document.querySelector('.study-header').hidden=['login','experience','home','scan'].includes(mode);
  app.setAttribute('aria-busy','false');
@@ -40,13 +41,26 @@ async function render(){
  if(view==='dashboard'){await renderDashboard();return;}
  if(!state.participant){renderLogin();return;}
  if(state.participant.withdrawn){renderStopped();return;}
- if(!state.participant.consent){renderBriefing();return;}
+ if(!state.participant.consent){
+  if(state.protocol.onboarding_welcome&&!state.participant.welcome)renderWelcome();
+  else renderBriefing();
+  return;
+ }
  const s=currentSession();
  if(s){renderStep(s);return;}
  if(view==='reward'||state.participant.sessions.length>=3){renderReward();return;}
  await enterEvent();
 }
 function renderLogin(){setPage('login');app.innerHTML=`<section class="access-shell"><img class="access-flower" src="a s s e t s/Universal Mind [ I o H ] Logo.PNG" alt=""><h1 class="access-title">u n i v e r s a l&nbsp;&nbsp;m i n d</h1><form class="access-form" data-form="login"><label class="access-label" for="study-code">password</label><input class="access-input" id="study-code" name="code" type="password" autocomplete="current-password" required maxlength="100"><button class="access-submit" type="submit">enter</button></form></section>`;}
+function renderWelcome(){
+ setPage('welcome');
+ welcome=mountReflection(app,{script:state.protocol.onboarding_welcome,title:'Welcome to I AM.',eyebrow:'Universal Mind · I AM',
+  logLabel:'Welcome to Universal Mind',finishLabel:'Continue to briefing',skipLabel:null,savingLabel:'Opening briefing…',
+  onFinish:async()=>{
+   const result=await request('welcome.complete',{version:state.protocol.onboarding_welcome.version});
+   state.participant.welcome=result.welcome;renderBriefing();
+  }});
+}
 function renderBriefing(){setPage('briefing');app.innerHTML=`<section class="study-stage study-briefing"><p class="study-eyebrow">Universal Mind · Research</p><h1>Welcome.</h1><p class="study-copy" data-briefing>${html(state.protocol.briefing)}</p><p class="study-copy" data-requirements>${html(state.protocol.requirements)}</p><p class="study-muted">Watch anytime over one week. We recommend sunrise, sunset and lunchtime. $100 on completion of all three sessions.</p><form data-form="consent"><label class="study-check"><input name="participation" type="checkbox" required><span>I am a woman aged 18 or over and agree to take part.</span></label><label class="study-check"><input name="equipment" type="checkbox" required><span>I have the equipment and availability above.</span></label><label class="study-check"><input name="research_data" type="checkbox" required><span>I agree to research use of my coded measurements and responses, including AI analysis.</span></label><div class="study-actions"><button class="study-button" type="submit">Continue <span aria-hidden="true">→</span></button><button type="button" class="study-text-button" data-action="privacy">Privacy Info</button></div></form></section>`;}
 async function enterEvent(){
  await request('session.start',{timezone:Intl.DateTimeFormat().resolvedOptions().timeZone});state=await request();renderStep(currentSession());

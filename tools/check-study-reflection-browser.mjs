@@ -12,7 +12,8 @@ let page;
 const record=(check,details={})=>{report.checks.push({check,...details});console.log(check);};
 async function clean(){if(page){await page.evaluate(()=>{for(const f of document.querySelectorAll('iframe'))f.contentWindow?.postMessage({type:'study-stop'},location.origin);for(const m of document.querySelectorAll('video,audio'))m.pause();}).catch(()=>{});await page.context().close();page=null;}}
 try{
- for(const scenario of ['read','skip','reduced']){
+ const only=process.argv.find(arg=>arg.startsWith('--scenario='))?.split('=')[1];
+ for(const scenario of (only?[only]:['read','skip','reduced'])){
   const context=await browser.newContext({viewport:scenario==='read'?{width:1440,height:900}:{width:390,height:844},reducedMotion:scenario==='reduced'?'reduce':'no-preference'});
   page=await context.newPage();page.on('pageerror',e=>report.errors.push(e.message));
   await page.addInitScript(()=>{
@@ -34,6 +35,12 @@ try{
   await page.goto(base+'study.php'+(local?'':'?preview=1'),{waitUntil:'domcontentloaded'});
   async function state(){return page.evaluate(async()=>await(await fetch('api/study.php')).json());}
   if(!local){
+   await page.getByRole('heading',{name:'Welcome to I AM.',exact:true}).waitFor();
+   for(let i=0;i<protocol.onboarding_welcome.messages.length;i++){
+    const advance=page.locator('[data-reflection-next]');
+    if(await advance.textContent()==='Show message')await advance.click();
+    await advance.click();
+   }
    await page.getByRole('heading',{name:'Welcome.',exact:true}).waitFor();
    for(const box of await page.locator('[data-form="consent"] input').all())await box.check();
    await page.locator('[data-form="consent"] [type="submit"]').click();
