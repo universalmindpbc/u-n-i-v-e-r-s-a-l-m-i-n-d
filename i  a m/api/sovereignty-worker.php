@@ -7,9 +7,11 @@ require_once __DIR__ . '/sovereignty-lib.php';
 function sovereignty_vaults(array $config): array {
     $vaults = $config['vaults'] ?? [];
     $days = $config['retention_days'] ?? null;
-    if ($config['environment'] !== 'staging' || ($config['storage_plan'] ?? '') !== 'b2-free-v1'
+    if (!in_array($config['environment'] ?? '', ['staging', 'production'], true)
+        || ($config['environment'] === 'production' && ($config['production_approved'] ?? false) !== true)
+        || ($config['storage_plan'] ?? '') !== 'b2-free-v1'
         || ($config['zero_cost_verified'] ?? false) !== true || count($vaults) !== 4 || $days !== 30) {
-        throw new RuntimeException('The approved free staging plan and four vaults are required.');
+        throw new RuntimeException('The approved free plan and four vaults are required.');
     }
     $locations = []; $accounts = []; $providers = []; $ids = [];
     foreach ($vaults as $v) {
@@ -139,7 +141,7 @@ function sovereignty_bundle(string $path): array {
 function sovereignty_deliver(array $config, array $vaults, string $path, bool $testing = false): array {
     [$event, $body] = sovereignty_bundle($path);
     $hash = hash('sha256', $body);
-    $object = 'universal-sovereignty/' . ($testing ? 'staging-qa' : $config['environment']) . '/' . $event['event_id'] . '.json';
+    $object = 'universal-sovereignty/' . $config['environment'] . ($testing ? '-qa' : '') . '/' . $event['event_id'] . '.json';
     $statePath = SOVEREIGNTY_PRIVATE . ($testing ? '/qa-delivery/' : '/delivery/') . $event['event_id'] . '.json';
     $state = is_file($statePath) ? json_decode((string) file_get_contents($statePath), true, 32, JSON_THROW_ON_ERROR)
         : ['event_id'=>$event['event_id'], 'object'=>$object, 'bundle_sha256'=>$hash, 'bundle_bytes'=>strlen($body), 'retained_until'=>gmdate('Y-m-d\TH:i:s\Z', time()+$config['retention_days']*86400),
@@ -185,7 +187,6 @@ function sovereignty_deliver(array $config, array $vaults, string $path, bool $t
 function sovereignty_worker(array $config, bool $testing = false): array {
     $vaults = sovereignty_vaults($config);
     if (!function_exists('curl_multi_init')) throw new RuntimeException('cURL unavailable.');
-    if ($testing && $config['environment'] !== 'staging') throw new RuntimeException('Invalid test scope.');
     $dir = SOVEREIGNTY_PRIVATE . ($testing ? '/qa-delivery' : '/delivery');
     if (!is_dir($dir) && !@mkdir($dir, 0700, true) && !is_dir($dir)) throw new RuntimeException('Delivery storage unavailable.');
     $lock = fopen(SOVEREIGNTY_PRIVATE . '/worker.lock', 'c');
@@ -219,7 +220,7 @@ if (defined('SOVEREIGNTY_WORKER_LIBRARY_ONLY')) return;
 header('Content-Type: application/json'); header('Cache-Control: no-store'); header('X-Robots-Tag: noindex, nofollow');
 try {
     $config = sovereignty_config();
-    if (PHP_SAPI !== 'cli' && (($_SERVER['REQUEST_METHOD'] ?? '') !== 'POST' || !sovereignty_admin_valid($config))) {
+    if (PHP_SAPI !== 'cli' && (($_SERVER['REQUEST_METHOD'] ?? '') !== 'POST' || !sovereignty_request_environment_matches($config) || !sovereignty_admin_valid($config))) {
         http_response_code(403); echo '{"error":"Forbidden"}'; exit;
     }
     echo sovereignty_json(sovereignty_worker($config));

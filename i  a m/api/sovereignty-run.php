@@ -16,7 +16,6 @@ try {
     if (($config['timestamp_enabled'] ?? false) === true) {
         $candidates = [];
         foreach ([false, true] as $testing) {
-            if ($testing && $config['environment'] !== 'staging') continue;
             foreach (glob(SOVEREIGNTY_PRIVATE . ($testing ? '/qa-events' : '/events') . '/*.json') ?: [] as $path) {
                 try {
                     $event = json_decode((string) file_get_contents($path), true, 32, JSON_THROW_ON_ERROR);

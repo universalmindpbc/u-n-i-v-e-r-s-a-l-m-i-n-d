@@ -53,7 +53,8 @@ function sovereignty_check_hosting_quota(): array {
 }
 
 function sovereignty_install_scheduler(array $config): array {
-    if ($config['environment'] !== 'staging') throw new RuntimeException('Scheduler installation is staging-only.');
+    if (!in_array($config['environment'], ['staging','production'], true)
+        || ($config['environment'] === 'production' && ($config['production_approved'] ?? false) !== true)) throw new RuntimeException('Archive environment not approved.');
     $host = sovereignty_hosting_status(); $php = null;
     if (!$host['crontab_available']) throw new RuntimeException('Hosting cron access required.');
     foreach ($host['php_cli_candidates'] as $candidate) {
@@ -63,7 +64,7 @@ function sovereignty_install_scheduler(array $config): array {
     if ($php === null) throw new RuntimeException('A supported hosting PHP CLI is required.');
     $before = sovereignty_command(['/usr/bin/crontab', '-l']);
     if ($before['code'] !== 0 && !str_contains(strtolower($before['stderr']), 'no crontab')) throw new RuntimeException('Cannot read existing hosting schedule.');
-    $marker = '# um-sovereignty-staging-v1';
+    $marker = '# um-sovereignty-' . $config['environment'] . '-v1';
     $lines = array_filter(explode("\n", rtrim($before['stdout'], "\n")), static fn($line)=>!str_ends_with($line, $marker));
     $runner = realpath(__DIR__ . '/sovereignty-run.php');
     if ($runner === false) throw new RuntimeException('Archive runner unavailable.');

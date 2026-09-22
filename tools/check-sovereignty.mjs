@@ -34,7 +34,7 @@ try {
  async function request(payload,options={}){
   const r=await php.run({scriptPath:'/site/vogue/iam/api/'+(options.script||'portal-entry.php'),
    relativeUri:'/vogue/iam/api/'+(options.script||'portal-entry.php'),protocol:'https',method:options.method||'POST',
-   headers:{Host:'staging.universalmind.tv',Origin:options.origin||'https://staging.universalmind.tv','Content-Type':options.type||'application/json',...(options.headers||{})},
+   headers:{Host:options.host||'staging.universalmind.tv',Origin:options.origin||'https://'+(options.host||'staging.universalmind.tv'),'Content-Type':options.type||'application/json',...(options.headers||{})},
    $_SERVER:{HTTPS:'on',DOCUMENT_ROOT:'/site'},body:new TextEncoder().encode(typeof payload==='string'?payload:JSON.stringify(payload))});
   assert.equal(r.errors,'',r.errors);return {status:r.httpStatusCode,body:JSON.parse(r.text)};
  }
@@ -88,6 +88,7 @@ try {
  if($failure==='aws'){$d['vaults'][0]['provider']='aws';$d['vaults'][0]['endpoint']='https://s3.amazonaws.com';}
  if($failure==='production')$d['environment']='production';
  try{sovereignty_vaults($d);$checks[]=false;}catch(Throwable $e){$checks[]=true;}}
+ $prod=$c;$prod['environment']='production';$prod['production_approved']=true;$checks[]=count(sovereignty_vaults($prod))===4;
  require '/site/vogue/iam/api/sovereignty-timestamps.php';
  $digest=hash('sha256','fixture',true);$uri='https://alice.btc.calendar.opentimestamps.org';
  $pending="\\x00".hex2bin('83dfe30d2ef90c8e').chr(strlen($uri)+1).chr(strlen($uri)).$uri;
@@ -99,7 +100,7 @@ try {
  echo json_encode(['checks'=>$checks,'proof'=>base64_encode($proof)]);`});
  assert.equal(freePlan.errors,'');const freeResult=JSON.parse(freePlan.text);assert.ok(freeResult.checks.every(Boolean));
  if(process.env.SOVEREIGNTY_OTS_FIXTURE)await fs.writeFile(process.env.SOVEREIGNTY_OTS_FIXTURE,Buffer.from(freeResult.proof,'base64'));
- report.checks.push('Only the approved four-bucket free staging plan is accepted; the 9 GB ceiling, malformed proof rejection and calendar allowlist pass');
+ report.checks.push('Only approved staging and production four-bucket free plans are accepted; the 9 GB ceiling, malformed proof rejection and calendar allowlist pass');
  // Public Bitcoin block 1 header; mock transport only, retaining the real
  // Merkle-root, header-hash, work-target and confirmation checks.
  const blockHeader='010000006fe28c0ab6f1b372c1a6a246ae63f74f931e8365e15a089c68d6190000000000982051fd1e4ba744bbbe680e1fee14677ba1a3c3540bf7b1cdb606e857233e0e61bc6649ffff001d01e36299';
@@ -125,6 +126,35 @@ try {
  assert.equal(confirmation.errors,'');assert.ok(JSON.parse(confirmation.text).every(Boolean));
  report.checks.push('A valid Bitcoin header with six confirmations passes; explorer disagreement, a corrupt header, wrong Merkle root and insufficient confirmations remain pending');
  config.environment='production';writeConfig();assert.equal((await request({password})).status,503);
+ const prodOptions={host:'universalmind.tv'};
+ assert.equal((await request({password},prodOptions)).status,503);
+ config.production_approved=true;config.identity_key='c'.repeat(64);writeConfig();
+ assert.equal((await request({password})).status,503);
+ assert.equal((await request({password:'wrong'},prodOptions)).status,401);
+ assert.equal((await request({password},{...prodOptions,origin:'https://staging.universalmind.tv'})).status,403);
+ assert.equal((await request({password},prodOptions)).status,202);
+ const productionFiles=php.listFiles(dir+'/events').filter(x=>x.endsWith('.json'));
+ assert.equal(productionFiles.length,3);
+ const savedProduction=productionFiles.map(x=>php.readFileAsText(dir+'/events/'+x));
+ assert.equal((await request({password},prodOptions)).status,202);
+ assert.deepEqual(productionFiles.map(x=>php.readFileAsText(dir+'/events/'+x)),savedProduction);
+ const admin={...prodOptions,script:'sovereignty-status.php',headers:{Authorization:'Bearer '+'b'.repeat(64)}};
+ const selfTest=await request({action:'self_test'},admin);
+ assert.equal(selfTest.status,200);assert.equal(selfTest.body.encryption_and_signing,true);assert.equal(selfTest.body.duplicate_prevented,true);
+ assert.equal((await request({action:'self_test'},admin)).body.created,false);
+ assert.equal((await request({}, {...admin,method:'GET'})).body.diagnostics.entries,1);
+ assert.equal((await request({}, {...admin,method:'GET'})).body.recorded_entries,3);
+ assert.equal((await request({}, {...admin,host:'staging.universalmind.tv',method:'GET'})).status,403);
+ assert.equal((await request({}, {...admin,headers:{},method:'GET'})).status,403);
+ const qaFile=php.listFiles(dir+'/qa-events').find(x=>x.endsWith('.json'));
+ const qaEnvelope=JSON.parse(php.readFileAsText(dir+'/qa-events/'+qaFile)).envelope;
+ const qaKey=privateDecrypt({key:owner.privateKey,padding:constants.RSA_PKCS1_OAEP_PADDING,oaepHash:'sha1'},Buffer.from(qaEnvelope.wrapped_key,'base64'));
+ const qaCipher=createDecipheriv('aes-256-gcm',qaKey,Buffer.from(qaEnvelope.iv,'base64'));
+ qaCipher.setAAD(Buffer.from(qaEnvelope.aad));qaCipher.setAuthTag(Buffer.from(qaEnvelope.tag,'base64'));
+ const qaContent=JSON.parse(Buffer.concat([qaCipher.update(Buffer.from(qaEnvelope.ciphertext,'base64')),qaCipher.final()]).toString());
+ assert.equal(JSON.parse(qaContent.receipt_json).environment,'production_qa');
+ assert.equal(verify('sha256',Buffer.from(qaContent.receipt_json),signer.publicKey,Buffer.from(qaContent.signature,'base64')),true);
+ report.checks.push('Approved production accepts real credentials once; host and origin boundaries hold; token-protected production diagnostics decrypt and verify without changing audience counts');
  config.environment='staging';config.enabled=false;writeConfig();assert.equal((await request({password})).status,503);
  php.writeFile(dir+'/config.json','bad');assert.equal((await request({password})).body.accepted,false);
  report.checks.push('Status requires the private token; missing vaults cannot report copies secured; environment mismatch, disabled and damaged configuration fail closed');

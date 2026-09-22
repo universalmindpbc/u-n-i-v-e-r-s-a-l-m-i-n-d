@@ -5,9 +5,8 @@ require_once __DIR__ . '/sovereignty-operations.php';
 header('Content-Type: application/json'); header('Cache-Control: no-store'); header('X-Robots-Tag: noindex, nofollow');
 try {
     $config = sovereignty_config();
-    if (!sovereignty_admin_valid($config)) { http_response_code(403); echo '{"error":"Forbidden"}'; exit; }
+    if (!sovereignty_request_environment_matches($config) || !sovereignty_admin_valid($config)) { http_response_code(403); echo '{"error":"Forbidden"}'; exit; }
     if (($_SERVER['REQUEST_METHOD'] ?? '') === 'POST') {
-        if ($config['environment'] !== 'staging' || ($_SERVER['HTTP_HOST'] ?? '') !== 'staging.universalmind.tv') throw new RuntimeException('Diagnostic is staging-only.');
         $input = json_decode((string) file_get_contents('php://input', false, null, 0, 256), true, 8, JSON_THROW_ON_ERROR);
         $action = $input['action'] ?? '';
         if ($action === 'hosting_quota') { echo sovereignty_json(sovereignty_check_hosting_quota()); exit; }
@@ -53,11 +52,22 @@ try {
         $path = SOVEREIGNTY_PRIVATE . '/' . $name . '.json';
         $operational[$name] = is_file($path) ? json_decode((string) file_get_contents($path), true) : null;
     }
+    $diagnostics = ['entries'=>count(glob(SOVEREIGNTY_PRIVATE . '/qa-events/*.json') ?: []), 'four_copies_secured'=>0, 'timestamp_states'=>[]];
+    foreach (glob(SOVEREIGNTY_PRIVATE . '/qa-delivery/*.json') ?: [] as $path) {
+        $state = json_decode((string) file_get_contents($path), true, 32, JSON_THROW_ON_ERROR);
+        if (strtotime($state['retained_until'] ?? '') > time()
+            && count(array_filter($state['vaults'] ?? [], static fn($v):bool=>($v['state']??'')==='secured')) === 4) $diagnostics['four_copies_secured']++;
+    }
+    foreach (glob(SOVEREIGNTY_PRIVATE . '/qa-timestamps/*.json') ?: [] as $path) {
+        $state = json_decode((string) file_get_contents($path), true, 32, JSON_THROW_ON_ERROR);
+        $diagnostics['timestamp_states'][] = $state['state'] ?? 'not_submitted';
+    }
     echo sovereignty_json(['section'=>'Universal Sovereignty', 'environment'=>$config['environment'],
         'recorded_entries'=>count($events), 'four_copies_secured'=>$secured,
         'configured_vaults'=>count($config['vaults'] ?? []), 'retention_configured'=>is_int($config['retention_days'] ?? null),
         'blockchain'=>$timestampCounts, 'expired_locks'=>$expired,
         'hosting'=>sovereignty_hosting_status(), 'operations'=>$operational,
+        'diagnostics'=>$diagnostics, 'storage_credentials_expire_at'=>$config['storage_credentials_expire_at'] ?? null,
         'storage_plan'=>$config['storage_plan'] ?? null, 'storage_limit_bytes'=>9000000000,
         'contract_execution'=>false, 'token_issuance'=>false]);
 } catch (Throwable $error) { http_response_code(503); echo '{"error":"Archive unavailable"}'; }

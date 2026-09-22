@@ -48,10 +48,11 @@ mode over FTPS, stages `.htaccess` first, verifies bytes, refuses replacement of
 different existing keys, and enables the archive by uploading config last.
 Clear PDFs and the owner decryption key are never eligible for provisioning.
 
-## Approved free staging storage
+## Approved free archive storage
 
 Ben approved the $0 Backblaze MVP and a 30-day staging lock on 22 September
-2026. Four private buckets in one dedicated B2 account use provider encryption,
+2026 and explicitly requested production activation on 23 September 2026.
+Four private buckets in one dedicated B2 account use provider encryption,
 Object Lock, and 30-day default retention. The worker explicitly writes in
 COMPLIANCE mode. This is one storage provider, not four independent providers.
 The console currently shows $0 storage/download caps and free transaction caps.
@@ -59,11 +60,15 @@ No payment card or paid service is needed for this plan. No Event Notifications
 or paid support is enabled. The source PDF and owner decryption key stay local.
 
 The worker requires `storage_plan: b2-free-v1`, `zero_cost_verified: true`,
-`environment: staging`, exactly four different Backblaze buckets in one account,
-and `retention_days: 30`. The verified flag is set only after checking provider
-caps. It refuses production use; longer retention or a paid tier needs separate
-approval. Application keys expire after the 30-day staging trial and each is
-restricted to one bucket. The console's Read and Write key preset may include
+`environment: staging` or explicitly approved `production`, exactly four different
+Backblaze buckets in one account, and `retention_days: 30`. Production additionally
+requires `production_approved: true`. The verified flag is set only after checking
+provider caps. Longer retention or a paid tier needs separate approval.
+Production uses four separately approved, non-expiring keys, each restricted to
+one existing bucket. Staging retains its original expiring trial credentials.
+The environments have distinct identity keys, signing keys and worker tokens;
+objects use separate `staging`, `staging-qa`, `production` and `production-qa`
+prefixes. The approved encrypted document is byte-identical in both environments. The console's Read and Write key preset may include
 file deletion; COMPLIANCE locks prevent deletion before retention expiry.
 
 Before each delivery batch, the worker sums every object version across all
@@ -81,14 +86,14 @@ the immutable object version, checksum, COMPLIANCE mode and exact retention
 date. Ambiguous lookups never trigger a replacement upload. A retry reuses the
 same matching locked object version. Partial success remains pending.
 
-`sovereignty-run.php` is CLI-only. The authenticated staging operations endpoint
-can install one five-minute cron entry on the existing Panthur host, preserving
-all unrelated cron lines. An execution lock prevents overlapping runs. Private
+`sovereignty-run.php` is CLI-only. The authenticated environment-specific operations endpoint
+can install one five-minute cron entry per environment on the existing Panthur host, preserving
+all unrelated cron lines, including the other environment. An execution lock prevents overlapping runs. Private
 status files distinguish scheduler installation from an observed completed run.
 Filesystem free space is not represented as proof of the hosting account quota.
 
 `sovereignty-configure` in the existing Panthur deployment script atomically
-updates private staging configuration over FTPS. It verifies bytes and refuses
+updates private configuration for the matching staging or production FTP account over FTPS. It verifies bytes and refuses
 changes to existing identity or authentication keys. Runtime configuration and
 credentials remain excluded from Git and ordinary website deployment.
 
@@ -122,13 +127,15 @@ mobile navigation against the old timing with stalled, failed and throwing
 recording requests, in a dedicated Chromium process with `--mute-audio`.
 
 `sovereignty-status.php` requires the private worker bearer token. GET returns
-counts only. A staging-only POST with `{"action":"self_test"}` exercises signing,
+operational counts only. The request host must match the private environment.
+An authenticated POST with `{"action":"self_test"}` exercises signing,
 encryption and idempotency in a separate synthetic namespace excluded from
 audience records. `deliver_test` replicates only that diagnostic, and
-`timestamp_test` submits its blinded digest. None can run without the private token.
+`timestamp_test` submits its blinded digest. None can run without the private token and matching environment. Diagnostic counts
+are reported separately from real audience entries.
 
 Complete and record live four-copy upload/read/lock/retry/restore tests and an
 observed scheduled run before describing the archive as operational. The
-staging diagnostic's event, delivery and timestamp files are isolated from
+environment-specific diagnostic's event, delivery and timestamp files are isolated from
 audience records. Runtime status, not this design document, is authoritative
 for connection, delivery and Bitcoin confirmation status.

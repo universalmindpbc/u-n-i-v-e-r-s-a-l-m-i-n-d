@@ -602,100 +602,14 @@ JS
   echo "One-use staging password reset verified; expires in 24 hours. Private link file: $reset_dir/link.txt"
 }
 
-seed_sovereignty_staging() {
-  # Private runtime provisioning follows the existing Panthur account, over
-  # explicit FTPS. No clear PDF or owner decryption key is ever eligible.
-  if [[ "$FTP_USER" != "stagingdeploy@universalmind.tv" || -z "${SOVEREIGNTY_SEED_DIR:-}" ]]; then
-    echo "A private staging seed directory and the staging account are required." >&2
-    return 1
-  fi
-  python3 - "$SOVEREIGNTY_SEED_DIR" <<'PY'
-import json, pathlib, sys
-p=pathlib.Path(sys.argv[1])
-c=json.loads((p/'config.json').read_text())
-assert c['environment']=='staging' and c['enabled'] is True
-assert not (p/'owner-decryption-key.pem').exists()
-for name in ['recipient-public.pem','signing-private.pem','document.encrypted.json','document.json','config.json']:
-    assert (p/name).is_file()
-assert 'ciphertext' in json.loads((p/'document.encrypted.json').read_text())
-PY
-  local scratch name encoded existing_status
-  scratch="$(mktemp -d)"
-  chmod 700 "$scratch"
-  printf 'Require all denied\n' > "$scratch/.htaccess"
-  # Deny HTTP before uploading any runtime file; fail closed on transport errors.
-  encoded="$(encode_path "$(remote_target 'vogue/iam/api/.runtime-private/sovereignty/.htaccess')")"
-  curl --globoff --fail --silent --show-error --ssl-reqd --ftp-create-dirs \
-    --user "$FTP_USER:$FTP_PASS" --upload-file "$scratch/.htaccess" "ftp://$FTP_HOST/$encoded" || { rm -rf "$scratch"; return 1; }
-  for name in recipient-public.pem signing-private.pem document.encrypted.json document.json config.json; do
-    encoded="$(encode_path "$(remote_target "vogue/iam/api/.runtime-private/sovereignty/$name")")"
-    if curl --globoff --fail --silent --ssl-reqd --user "$FTP_USER:$FTP_PASS" "ftp://$FTP_HOST/$encoded" --output "$scratch/existing"; then
-      if ! cmp -s "$scratch/existing" "$SOVEREIGNTY_SEED_DIR/$name"; then
-        echo "Existing private runtime differs; refusing to overwrite $name." >&2
-        rm -rf "$scratch"; return 1
-      fi
-    else
-      existing_status=$?
-      if [[ "$existing_status" -ne 78 ]]; then rm -rf "$scratch"; return "$existing_status"; fi
-      curl --globoff --fail --silent --show-error --ssl-reqd --ftp-create-dirs \
-        --user "$FTP_USER:$FTP_PASS" --upload-file "$SOVEREIGNTY_SEED_DIR/$name" "ftp://$FTP_HOST/$encoded" || { rm -rf "$scratch"; return 1; }
-    fi
-    curl --globoff --fail --silent --show-error --ssl-reqd --user "$FTP_USER:$FTP_PASS" \
-      "ftp://$FTP_HOST/$encoded" --output "$scratch/verified" || { rm -rf "$scratch"; return 1; }
-    cmp -s "$scratch/verified" "$SOVEREIGNTY_SEED_DIR/$name" || { rm -rf "$scratch"; return 1; }
-  done
-  for name in .htaccess recipient-public.pem signing-private.pem document.encrypted.json document.json config.json; do
-    curl --globoff --fail --silent --show-error --ssl-reqd --user "$FTP_USER:$FTP_PASS" \
-      --quote "SITE CHMOD 600 vogue/iam/api/.runtime-private/sovereignty/$name" \
-      --output /dev/null "ftp://$FTP_HOST/" || { rm -rf "$scratch"; return 1; }
-  done
-  curl --globoff --fail --silent --show-error --ssl-reqd --user "$FTP_USER:$FTP_PASS" \
-    --quote "SITE CHMOD 700 vogue/iam/api/.runtime-private/sovereignty" \
-    --output /dev/null "ftp://$FTP_HOST/" || { rm -rf "$scratch"; return 1; }
-  rm -rf "$scratch"
-  echo "Private staging archive provisioned and verified over FTPS; external vaults remain pending."
-}
-
-configure_sovereignty_staging() {
-  if [[ "$FTP_USER" != "stagingdeploy@universalmind.tv" || -z "${SOVEREIGNTY_SEED_DIR:-}" ]]; then
-    echo "The staging account and private runtime configuration are required." >&2
+provision_sovereignty_runtime() {
+  if [[ -z "${SOVEREIGNTY_SEED_DIR:-}" ]]; then
+    echo "A private Sovereignty runtime directory is required." >&2
     return 1
   fi
   SOVEREIGNTY_FTP_PASS="$FTP_PASS" SOVEREIGNTY_FTP_HOST="$FTP_HOST" SOVEREIGNTY_FTP_USER="$FTP_USER" \
-  python3 - "$SOVEREIGNTY_SEED_DIR" <<'PY'
-import ftplib, hashlib, io, json, os, pathlib, secrets, ssl, sys
-p = pathlib.Path(sys.argv[1])
-raw = (p/'config.json').read_bytes()
-c = json.loads(raw)
-assert c['environment'] == 'staging' and c['enabled'] is True
-assert c['storage_plan'] == 'b2-free-v1' and c['retention_days'] == 30
-assert c.get('timestamp_enabled') is True
-assert isinstance(c.get('zero_cost_verified'), bool)
-assert len(c.get('vaults', [])) in (0, 4)
-if c['zero_cost_verified']:
-    assert len(c['vaults']) == 4 and all(v['provider'] == 'backblaze' for v in c['vaults'])
-remote = 'vogue/iam/api/.runtime-private/sovereignty/config.json'
-with ftplib.FTP_TLS(context=ssl.create_default_context(), timeout=30) as ftp:
-    ftp.connect(os.environ['SOVEREIGNTY_FTP_HOST'])
-    ftp.login(os.environ['SOVEREIGNTY_FTP_USER'], os.environ['SOVEREIGNTY_FTP_PASS']); ftp.prot_p()
-    old = io.BytesIO(); ftp.retrbinary('RETR '+remote, old.write)
-    old_config = json.loads(old.getvalue())
-    for field in ['environment', 'identity_key', 'worker_token_sha256']:
-        assert old_config[field] == c[field], 'Refusing identity or key replacement'
-    backup = p/'config-before-activation.json'
-    if not backup.exists():
-        fd = os.open(backup, os.O_CREAT | os.O_EXCL | os.O_WRONLY, 0o600)
-        with os.fdopen(fd, 'wb') as f: f.write(old.getvalue())
-    temp = remote+'.pending-'+secrets.token_hex(8)
-    ftp.storbinary('STOR '+temp, io.BytesIO(raw))
-    ftp.sendcmd('SITE CHMOD 600 '+temp)
-    check = io.BytesIO(); ftp.retrbinary('RETR '+temp, check.write)
-    assert check.getvalue() == raw, 'Private configuration verification failed'
-    ftp.rename(temp, remote)
-    check = io.BytesIO(); ftp.retrbinary('RETR '+remote, check.write)
-    assert check.getvalue() == raw
-print('Approved free staging configuration updated atomically over FTPS; existing keys preserved.')
-PY
+  SOVEREIGNTY_REMOTE_ROOT="$REMOTE_ROOT" \
+    python3 "$ROOT_DIR/tools/provision-sovereignty-runtime.py" "$1" "$SOVEREIGNTY_SEED_DIR"
 }
 
 DEPLOY_MODE="${1:-iam}"
@@ -742,10 +656,10 @@ case "$DEPLOY_MODE" in
     issue_staging_owner_password_reset
     ;;
   sovereignty-seed)
-    seed_sovereignty_staging
+    provision_sovereignty_runtime seed
     ;;
   sovereignty-configure)
-    configure_sovereignty_staging
+    provision_sovereignty_runtime configure
     ;;
   *)
     echo "Usage: $0 [iam|iam-fast|fast|changed|iam-changed|mark|media|redirects|all|all-fast|all-changed|seed-owner-state|owner-password-reset|sovereignty-seed|sovereignty-configure]" >&2

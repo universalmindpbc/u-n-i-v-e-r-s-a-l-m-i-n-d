@@ -17,10 +17,17 @@ function sovereignty_config(): array {
     $config = json_decode($raw, true, 32, JSON_THROW_ON_ERROR);
     if (!is_array($config) || ($config['enabled'] ?? false) !== true
         || !preg_match('/\A[a-f0-9]{64}\z/', (string) ($config['identity_key'] ?? ''))
-        || !in_array($config['environment'] ?? '', ['staging', 'production'], true)) {
+        || !in_array($config['environment'] ?? '', ['staging', 'production'], true)
+        || (($config['environment'] ?? '') === 'production' && ($config['production_approved'] ?? false) !== true)) {
         throw new RuntimeException('Archive unavailable.');
     }
     return $config;
+}
+
+function sovereignty_request_environment_matches(array $config): bool {
+    $host = (string) ($_SERVER['HTTP_HOST'] ?? '');
+    return $config['environment'] === 'staging' ? $host === 'staging.universalmind.tv'
+        : in_array($host, ['universalmind.tv', 'www.universalmind.tv'], true);
 }
 
 function sovereignty_atomic(string $path, string $bytes): void {
@@ -72,9 +79,9 @@ function sovereignty_record(string $password, array $config): bool {
 }
 
 // The HTTP entry handler can reach this only after password verification.
-// The token-protected staging diagnostic uses an isolated synthetic namespace.
+// Token-protected diagnostics use a separate namespace in each environment.
 function sovereignty_record_verified_digest(string $digest, array $config, bool $testing = false): bool {
-    if (!preg_match('/\A[a-f0-9]{64}\z/', $digest) || ($testing && $config['environment'] !== 'staging')) throw new RuntimeException('Invalid archive scope.');
+    if (!preg_match('/\A[a-f0-9]{64}\z/', $digest)) throw new RuntimeException('Invalid archive scope.');
     $member = hash_hmac('sha256', $digest, hex2bin($config['identity_key']));
     $directory = SOVEREIGNTY_PRIVATE . ($testing ? '/qa-events' : '/events');
     if (!is_dir($directory) && !@mkdir($directory, 0700, true) && !is_dir($directory)) throw new RuntimeException('Archive unavailable.');
@@ -101,7 +108,7 @@ function sovereignty_record_verified_digest(string $digest, array $config, bool 
         }
         $id = bin2hex(random_bytes(24));
         $receipt = ['schema'=>1, 'section'=>'Universal Sovereignty', 'event'=>'first_portal_entry',
-            'environment'=>$testing ? 'staging_qa' : $config['environment'], 'test_record'=>$testing,
+            'environment'=>$config['environment'] . ($testing ? '_qa' : ''), 'test_record'=>$testing,
             'event_id'=>$id, 'member_id'=>$member,
             'recorded_at'=>gmdate('Y-m-d\TH:i:s\Z'), 'document_version'=>$metadata['version'],
             'document_sha256'=>$metadata['sealed_sha256'], 'consent_recorded'=>false,
