@@ -435,7 +435,7 @@ deploy_redirects() {
     printf '%s\n' '# Password-free Universal Mind I AM entrypoints.'
     printf '%s\n' 'RewriteRule ^light/?$ /vogue/iam/light.html [L]'
     printf '%s\n' 'RewriteRule ^study/dashboard/?$ /vogue/iam/study.php?dashboard=1 [R=302,L,NE]'
-    printf '%s\n' 'RewriteRule ^study/?$ /vogue/iam/study.php [R=302,L,NE]'
+    printf '%s\n' 'RewriteRule ^study/?$ /vogue/iam/study.php?login=1 [R=302,L,NE,QSA]'
     printf '%s\n' 'RewriteRule ^wallet/?$ /vogue/iam/wallet.html [L]'
     printf '%s\n' 'RewriteRule ^shop/?$ /vogue/iam/index.html?shop=1 [R=302,L,NE]'
     printf '%s\n' 'RewriteRule ^iam/?$ /vogue/iam/induction.html [R=302,L]'

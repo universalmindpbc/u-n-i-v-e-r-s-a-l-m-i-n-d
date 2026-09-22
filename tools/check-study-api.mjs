@@ -56,6 +56,19 @@ try {
   await productionOk('session.start');assert.equal((await productionOk()).participant.sessions[0].state,'before_vitals');
   assert.equal((await productionOk()).config.measurement_seconds,10);
   const admittedCookie=cookies.iam_study_return;
+  const savedParticipant=(await productionOk()).participant;
+  const savedCohort=php.readFileAsText(cohortPath),oldCsrf=csrf;
+  await productionOk('logout');
+  assert.equal(cookies.iam_study_return,admittedCookie,'Re-entry retains the browser return identity');
+  assert.equal((await productionOk()).participant,null,'Re-entry must remove current research authentication');
+  assert.equal((await request('session.start',{},production)).status,401);
+  assert.equal((await request('login',{code:'Existing-Website-Password'},{...production,csrf:oldCsrf})).status,403);
+  assert.equal((await request('login',{code:'wrong-reentry-password'},production)).status,401);
+  assert.equal(php.readFileAsText(cohortPath),savedCohort,'Re-entry must not clear consent or research records');
+  await productionOk('login',{code:'Existing-Website-Password'});
+  assert.deepEqual((await productionOk()).participant,savedParticipant,'Successful re-authentication resumes the same participant and saved progress');
+  checks.push('Participate re-authentication revokes study access, rejects stale CSRF and wrong passwords, preserves records, and restores the same participant after valid login');
+
   for(let index=2;index<=10;index++) {cookies={};await productionOk();await productionOk('login',{code:'Existing-Website-Password'});assert.equal((await productionOk()).participant.id,'P'+String(index).padStart(2,'0'));}
   cookies={};await productionOk();assert.equal((await request('login',{code:'Existing-Website-Password'},production)).status,422,'Eleventh browser must not exceed pilot limit');
   cookies={iam_study_return:admittedCookie};await productionOk();await productionOk('login',{code:'Existing-Website-Password'});assert.equal((await productionOk()).participant.id,'P01');

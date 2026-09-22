@@ -252,4 +252,18 @@ window.addEventListener('message',async event=>{
 });
 document.addEventListener('visibilitychange',()=>{if(document.hidden)exposure?.frame.contentWindow.postMessage({type:'study-pause'},location.origin);});
 window.addEventListener('pagehide',()=>{exposure?.sync.close();exposure?.frame.contentWindow.postMessage({type:'study-stop'},location.origin);});
-(async()=>{state=await request();if(endingTest){await request('ending.reset');await refresh();}else if(new URLSearchParams(location.search).get('preview')==='1'&&state.preview_available){await request('preview');history.replaceState(null,'',location.pathname);await refresh();}else await render();})().catch(error=>{app.innerHTML='<p>Please refresh to reopen your study.</p>';notice(error.message);});
+(async()=>{
+ state=await request();
+ const entryUrl=new URL(location.href);
+ if(!endingTest&&view==='journey'&&entryUrl.searchParams.get('login')==='1'){
+  // /study is a new Participate entry. Re-authenticate before rendering any
+  // saved session; logout retains the return identity and all research records.
+  await request('logout');
+  state=await request();
+  entryUrl.searchParams.delete('login');
+  history.replaceState(null,'',entryUrl);
+  await render();
+ }else if(endingTest){await request('ending.reset');await refresh();}
+ else if(entryUrl.searchParams.get('preview')==='1'&&state.preview_available){await request('preview');history.replaceState(null,'',location.pathname);await refresh();}
+ else await render();
+})().catch(error=>{app.innerHTML='<p>Please refresh to reopen your study.</p>';notice(error.message);});
