@@ -1,6 +1,6 @@
 {
   "id": "universal-mind-pilot-v1",
-  "version": "2026-09-15.1",
+  "version": "2026-09-22.1",
   "title": "Universal Mind pilot",
   "design": "Single-arm feasibility pilot with repeated before-and-after observations",
   "participants": 10,
@@ -69,5 +69,27 @@
     "Sunset",
     "Lunchtime"
   ],
-  "delivery": "On demand, three sessions over one week. Suggested times only; livestream presentation is simulated."
+  "delivery": "On demand, three sessions over one week. Suggested times only; livestream presentation is simulated.",
+  "pre_music_reflection": {
+    "version": "abandonment-reflection-2026-09-22.1",
+    "placement": "After baseline vitals and all baseline self-report questions, before music playback.",
+    "delivery": "Fixed four-message script, participant-paced, with animated text and a reduced-motion alternative. No typed response is requested.",
+    "optional": true,
+    "interpretation": "Part of the combined study intervention. Before-and-after observations include the introduction; they do not isolate the effect of music or the reflection. Read/skip choice and script version are recorded per session.",
+    "messages": [
+      {
+        "text": "Welcome to the session. Before the music drops, let’s clear some mental space."
+      },
+      {
+        "text": "We're leaning into Empire of the Sun’s lyric:",
+        "quote": "I can't do well when I think you're gonna leave me but I know I try. Are you gonna leave me now? Can’t you be believing now?"
+      },
+      {
+        "text": "We’re gently shining a light on the fear of being abandoned in a relationship—something many of us have experienced. Some might say it’s a part of being human, a part of the human condition."
+      },
+      {
+        "text": "If it feels comfortable, think of the first person that comes to mind, where you’d like to soften a sense of loss. You don’t need to name them or share anything. Don’t force it. Just allow. And remember, this too shall pass. Let’s begin."
+      }
+    ]
+  }
 }

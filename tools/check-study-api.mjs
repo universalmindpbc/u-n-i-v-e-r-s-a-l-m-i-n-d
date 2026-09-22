@@ -82,6 +82,7 @@ try {
   await ok('consent',{version:preview.protocol.version,adult_woman:true,equipment:true,participation:true,research_data:true});
   const session=await ok('session.start',{window:'morning',timezone:'Australia/Sydney'});
   assert.equal((await request('report',{session_id:session.session_id,happiness:5,stress:5,connection:5,text:''})).status,422);
+  assert.equal((await request('reflection.complete',{session_id:session.session_id,version:first.protocol.pre_music_reflection.version,choice:'read'})).status,422,'Reflection cannot precede baseline');
   await ok('vitals',{session_id:session.session_id,values:{unavailable_reason:'preview'}});
   assert.equal((await request('report',{session_id:session.session_id,happiness:11,stress:5,connection:5,text:''})).status,422);
   const report={session_id:session.session_id,happiness:3,stress:7,connection:2,text:'Illustrative before',request_id:'idempotent-report'};
@@ -102,6 +103,17 @@ try {
   const sequential=(await ok()).participant.sessions[1];assert.equal(sequential.state,'experience');assert.equal(sequential.before_vitals.hrv_power_0_1_ms2,null);
   assert.equal(sequential.before_report.happiness,5);
   checks.push('One answer per step persists in order; 10-second scan accepted; PSD stays unavailable; participant cannot choose event window');
+  const reflection={session_id:second.session_id,version:first.protocol.pre_music_reflection.version,choice:'read'};
+  assert.equal((await request('reflection.complete',{...reflection,version:'stale'})).status,422);
+  assert.equal((await request('reflection.complete',{...reflection,choice:'invalid'})).status,422);
+  const reflected=await ok('reflection.complete',reflection);
+  assert.equal(reflected.reflection.choice,'read');assert.equal(reflected.reflection.version,reflection.version);
+  assert.deepEqual((await ok('reflection.complete',{...reflection,choice:'skipped'})).reflection,reflected.reflection,'Retries must retain the first recorded choice');
+  const afterReflection=(await ok()).participant.sessions[1];
+  assert.deepEqual(afterReflection.before_report,sequential.before_report);assert.equal(afterReflection.exposure_seconds,0);
+  assert.equal(afterReflection.state,'experience');assert.deepEqual(afterReflection.reflection,reflected.reflection);
+  checks.push('Versioned reflection follows baseline, validates choices, persists through reload/retry and changes no measurements or exposure');
+
   // Create an owner session only inside this temporary PHP test filesystem.
   const owner=await php.run({code:"<?php session_name('iam_quantum_tree_owner'); session_start(); $_SESSION['quantum_tree_owner']=true; $_SESSION['quantum_tree_password_revision']='legacy'; echo 'ok';"});
   const pair=owner.headers['set-cookie'].at(-1).split(';')[0].split('=');cookies[pair[0]]=pair[1];

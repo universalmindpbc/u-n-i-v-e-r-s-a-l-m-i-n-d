@@ -269,6 +269,15 @@ try {
         if ($action === 'session.stop') {
             study_require(!in_array($s['state'], ['complete','stopped'], true), 'This session has already ended.');
             $s['state'] = 'stopped'; $s['stopped_at_epoch'] = time(); $s['stopped_at'] = gmdate('c');
+        } elseif ($action === 'reflection.complete') {
+            study_require($s['state'] === 'experience' && empty($s['ending_test']), 'The reflection follows your baseline questions.');
+            $script = study_protocol()['pre_music_reflection'];
+            study_require(($request['version'] ?? '') === $script['version'], 'Please refresh to read the current introduction.');
+            $choice = $request['choice'] ?? '';
+            study_require(in_array($choice, ['read','skipped'], true), 'Choose whether to read or skip the reflection.');
+            // The first saved choice survives reloads and retries; no personal recollection is collected.
+            $s['reflection'] ??= ['version'=>$script['version'], 'choice'=>$choice, 'recorded_at'=>gmdate('c')];
+            return ['ok'=>true, 'reflection'=>$s['reflection']];
         } elseif ($action === 'vitals') {
             study_require(in_array($s['state'], ['before_vitals','after_vitals'], true), 'This measurement step has already been saved.');
             $phase = $s['state'];

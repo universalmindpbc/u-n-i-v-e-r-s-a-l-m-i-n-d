@@ -1,10 +1,11 @@
+import {mountReflection} from './reflection.js?v=73e7b539696c';
 import {createExposureSync} from './exposure-sync.js?v=ec88d9bc9d06';
 const endingTest=document.body.dataset.endingTest==='true';
 const apiUrl=endingTest?'api/study-ending-test.php':'api/study.php';
 const testQuery=endingTest?'&ending_test=1':'';
 const app=document.querySelector('#study-app');
 const status=document.querySelector('#study-status');
-let state, dataset, busy=false, exposure=null, statusTimer, clockTimer;
+let state, dataset, busy=false, exposure=null, reflection=null, statusTimer, clockTimer;
 let view=new URLSearchParams(location.search).has('dashboard')?'dashboard':'journey';
 let tab='overview', selectedSession=null, selectedPerson='all', resultGroup='heart';
 const metricNames={happiness:['Happiness','%'],stress:['Stress','%'],connection:['Connection','%'],heart_rate_bpm:['Heart rate','bpm'],hrv_sdnn_ms:['HRV','ms'],hrv_rmssd_ms:['HRV · RMSSD','ms'],systolic_blood_pressure_mmhg:['Blood pressure · systolic','mmHg'],diastolic_blood_pressure_mmhg:['Blood pressure · diastolic','mmHg'],hrv_power_0_1_ms2:['HRV · PSD','ms²']};
@@ -19,7 +20,7 @@ const percent=(before,after)=>before==null||after==null||before===0?null:100*(af
 const centres=[110.5,205.5,299.5,393.5,487.5,568.5,651,732.5,813.5,895.5];
 const face=n=>`<span class="study-emoji" aria-hidden="true" style="background-position:${30-centres[n-1]}px -215px"></span>`;
 export async function request(action,body={}) {
- const controller=new AbortController(),timeout=(!action||action==='exposure.tick')?setTimeout(()=>controller.abort(),15000):null;
+ const controller=new AbortController(),timeout=(!action||action==='exposure.tick'||action==='reflection.complete')?setTimeout(()=>controller.abort(),15000):null;
  try{
  const response=await fetch(apiUrl,{signal:controller.signal,method:action?'POST':'GET',credentials:'same-origin',cache:'no-store',headers:action?{'Content-Type':'application/json','X-Study-CSRF':state.csrf}:{},body:action?JSON.stringify({action,request_id:crypto.randomUUID(),...body}):undefined});
  const payload=await response.json().catch(()=>({error:'Please try again.'}));
@@ -28,6 +29,7 @@ export async function request(action,body={}) {
 }
 function notice(text){clearTimeout(statusTimer);status.textContent=text;statusTimer=setTimeout(()=>status.textContent='',9000);}
 function setPage(mode){
+ if(mode!=='reflection'){reflection?.destroy();reflection=null;}
  clearInterval(clockTimer);document.body.dataset.studyState=mode;
  document.querySelector('.study-header').hidden=['login','experience','home','scan'].includes(mode);
  app.setAttribute('aria-busy','false');
@@ -57,7 +59,21 @@ function renderStep(s){
  if(s.state.endsWith('report')){const q=nextQuestion(s);const titles={happiness:'How happy do you feel?',stress:'How stressed do you feel?',connection:'How connected do you feel?',text:'How are you feeling?'};
   app.innerHTML=`<section class="study-stage question-stage" data-question="${q}">${progress(s)}<h1>${titles[q]}</h1><form data-form="answer" data-question="${q}">${q==='text'?'<textarea id="self-report" name="text" maxlength="2000" aria-label="How are you feeling?" placeholder="In your own words…"></textarea>':rating(q)}<div class="study-actions"><button class="study-button" type="submit" ${q==='text'?'':'disabled'}>${s.state==='after_report'&&q==='text'?'Finish':'Continue'} <span aria-hidden="true">→</span></button></div></form></section>`;return;
  }
+ if(!endingTest&&state.protocol.pre_music_reflection&&!s.reflection&&!s.exposure_started_epoch){renderReflection(s);return;}
  setPage('home');app.innerHTML='';prepareExposure();
+}
+function renderReflection(s){
+ setPage('reflection');prepareExposure();exposure.shell.hidden=true;
+ reflection=mountReflection(app,{script:state.protocol.pre_music_reflection,onFinish:async choice=>{
+  const active=exposure,canStart=active?.ready===true;
+  // Preserve the trusted click for fullscreen; playback waits for the saved choice.
+  if(canStart)requestExposureFullscreen();
+  const result=await request('reflection.complete',{session_id:s.id,version:state.protocol.pre_music_reflection.version,choice});
+  if(exposure!==active)return;
+  s.reflection=result.reflection;
+  if(canStart)await startExposure(false);
+  else {setPage('home');app.innerHTML='';}
+ }});
 }
 function rating(name){const happiness=name==='happiness';return `<div class="rating-response" aria-live="polite"><output data-rating-output>—<small>%</small></output></div><fieldset class="study-rating ${happiness?'has-emojis':''}" aria-label="${html(metricNames[name][0])}">${Array.from({length:10},(_,i)=>`<label><input type="radio" name="value" value="${i+1}" aria-label="${(i+1)*10}%" required>${happiness?face(i+1):`<span class="rating-dot" style="--i:${i}" aria-hidden="true"></span>`}<span class="study-rating-number">${(i+1)*10}%</span></label>`).join('')}</fieldset><div class="study-scale-ends"><span>${{happiness:'Least happy',stress:'Least stressed',connection:'Least connected'}[name]}</span><span>${{happiness:'Most happy',stress:'Most stressed',connection:'Most connected'}[name]}</span></div>`;}
 function renderReward(){
@@ -153,16 +169,19 @@ function syncNavigation(mode){
   if(api){exposure.unlocked=true;void api.completeCheckout(complete.id).then(ok=>{if(!ok)exposure.unlocked=false;});}
  }
 }
-async function startExposure(){
- const active=exposure;if(!active?.ready)return;
- // Fullscreen must be requested directly in this click, before any await loses the gesture.
+function requestExposureFullscreen(){
  const root=document.documentElement;const fullscreen=root.requestFullscreen||root.webkitRequestFullscreen;
  if(fullscreen)try{Promise.resolve(fullscreen.call(root)).catch(()=>{});}catch{}
+}
+async function startExposure(fullscreen=true){
+ const active=exposure;if(!active?.ready)return;
+ if(fullscreen)requestExposureFullscreen();
  setPage('experience');active.shell.classList.remove('is-preparing');
  await active.frame.contentWindow.IAMStudyExperience.start();
 }
 function resumeEntry(){
  // Player callbacks can arrive after stop or after the saved after-check transition.
+ if(document.body.dataset.studyState==='reflection')return;
  if(exposure&&!exposure.completed&&currentSession()?.state==='experience'){
   setPage('home');exposure.frame.contentWindow.IAMStudyExperience?.showHome();
  }
