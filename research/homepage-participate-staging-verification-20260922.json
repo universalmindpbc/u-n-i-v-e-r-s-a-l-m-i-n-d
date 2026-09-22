@@ -1,0 +1,160 @@
+{
+  "verified_at_utc": "2026-09-22T06:08:46.879595+00:00",
+  "source_commit": "e369ce40de2b6ff99ba450ae71381f2558f48600",
+  "environment": "https://staging.universalmind.tv",
+  "proof_url": "https://staging.universalmind.tv/vogue/iam/index.html",
+  "production_modified": false,
+  "navigation": {
+    "processMuted": true,
+    "nativeFullscreenInvoked": false,
+    "checks": [
+      {
+        "kind": "standard",
+        "realVideoSeconds": 0.214785,
+        "pausedBeforeExit": true,
+        "destination": "https://staging.universalmind.tv/vogue/iam/study.php",
+        "passwordInput": true
+      },
+      {
+        "kind": "webkit",
+        "realVideoSeconds": 0.212825,
+        "pausedBeforeExit": true,
+        "destination": "https://staging.universalmind.tv/vogue/iam/study.php",
+        "passwordInput": true
+      },
+      {
+        "kind": "ordinary",
+        "realVideoSeconds": 0,
+        "pausedBeforeExit": false,
+        "destination": "https://staging.universalmind.tv/vogue/iam/study.php",
+        "passwordInput": true
+      }
+    ],
+    "ownerTest": {
+      "profile": "calm_alpha_80_v1",
+      "carrier": 222,
+      "outputRms": 0.002676834857902605
+    },
+    "passed": true
+  },
+  "real_checkin": {
+    "passed": true,
+    "browser": {
+      "mute_audio_asserted": true,
+      "pid": 64954
+    },
+    "standard": {
+      "heart_rate_offer_skipped": true,
+      "homepage_frequency": "gamma 111hz | carrier 111hz",
+      "pending_frames_with_no_frequency": 1059,
+      "invalid_frequency_frames": [],
+      "inference_http_status": 200,
+      "selector_http_status": 200,
+      "prompt_version": "adaptive-inference-engine-system-prompt-v5.55",
+      "prompt_sha256": "96a1a3e34695b17ccb075da28e72ea62d7c8f23be65aff294a3237d744295985",
+      "heart_rate_role": "not_available",
+      "raw_heart_rate_retained": false,
+      "selected_music_room": "modul8-infinity",
+      "exact_track_id": "sampa-the-great-final-form",
+      "band_intent": "gamma",
+      "dominant_isochronic_hz": 111,
+      "carrier_hz": 111,
+      "selection_basis": "fused_current_inference",
+      "selection_authority": "deterministic_structured_needs_policy",
+      "audit_source_event": "iam:checkin-pipeline-complete",
+      "controller_context_state": "not_created"
+    },
+    "no_checkin": {
+      "selected": false,
+      "band_intent": null,
+      "carrier_hz": null,
+      "selection_basis": "insufficient_context",
+      "homepage_text": "FREQUENCY no current-session frequency selected"
+    },
+    "emdr_profile_selection": {
+      "emdr_active": true,
+      "policy_load_delayed_ms": 4000,
+      "latest_selection_survived_policy_initialization": true,
+      "selections": [
+        {
+          "band_intent": "alpha",
+          "dominant_isochronic_hz": 10.11,
+          "profile_id": "calm_alpha_80_v1",
+          "route_profile_id": "calm_alpha_80_v1",
+          "carrier_hz": 444
+        },
+        {
+          "band_intent": "theta",
+          "dominant_isochronic_hz": 7.38,
+          "profile_id": "mindfulness_theta_80_v1",
+          "route_profile_id": "mindfulness_theta_80_v1",
+          "carrier_hz": 444
+        },
+        {
+          "band_intent": "gamma",
+          "dominant_isochronic_hz": 111,
+          "profile_id": "inspiration_gamma_80_v1",
+          "route_profile_id": "inspiration_gamma_80_v1",
+          "carrier_hz": 444
+        },
+        {
+          "band_intent": "delta",
+          "dominant_isochronic_hz": 3.33,
+          "profile_id": "sleep_delta_80_v1",
+          "route_profile_id": "sleep_delta_80_v1",
+          "carrier_hz": 444
+        }
+      ]
+    },
+    "high_concern": {
+      "safety_state": "high_concern",
+      "quantum_tree_enabled": true,
+      "adaptive_frequencies_enabled": false,
+      "notification_status": "blocked_until_consent_and_verified_contact",
+      "homepage_text": "FREQUENCY alpha 10.11 hz \u00b7 carrier 444 hz \u00b7 current check-in \u00b7 added frequencies off",
+      "controller_context_before_opt_in": "not_created"
+    },
+    "manual_opt_in": {
+      "band_intent": "theta",
+      "carrier_hz": 444,
+      "selection_basis": "citizen_session_override",
+      "selection_authority": "citizen_current_session_choice",
+      "session_scope": "current_session_only",
+      "adaptive_frequencies_enabled": true,
+      "session_storage_only": true
+    },
+    "blocked_media_requests": 28,
+    "blocked_play_attempts": 37,
+    "page_errors": [],
+    "cleanup": true
+  },
+  "local_checks": {
+    "band_carrier_combinations": 20,
+    "session_assertions": 538,
+    "python_policy": "passed",
+    "fullscreen_lifecycle": "standard and WebKit; delayed promise and event; rejected or unsupported exit; ordinary navigation",
+    "sound_panel": "passed",
+    "deployment_preflights": "passed"
+  },
+  "safari_evidence": {
+    "report_times": [
+      "2026-09-22 15:37:13",
+      "2026-09-22 15:37:46",
+      "2026-09-22 15:38:32"
+    ],
+    "fault": "EXC_BAD_ACCESS in WebPageProxy::viewWillStartLiveResize during NSExitFullScreenTransitionController interruption",
+    "mitigation": "Pause without unloading; await fullscreen exit; settle; teardown; top-level navigation",
+    "native_safari_fullscreen_tested": false,
+    "boundary": "Native fullscreen was not invoked. WebKit and standard lifecycle simulations used a separate process-muted Chromium."
+  },
+  "protected_owner_runtime": "verified unchanged by existing staging deploy script",
+  "served_assets_match_source": [
+    "adaptive-environment-television.js",
+    "homepage-session-accents.js",
+    "adaptive-sound/controller-v1.js"
+  ],
+  "documentation": [
+    "https://developer.mozilla.org/en-US/docs/Web/API/Document/exitFullscreen",
+    "https://developer.mozilla.org/en-US/docs/Web/API/Document/fullscreenchange_event"
+  ]
+}
