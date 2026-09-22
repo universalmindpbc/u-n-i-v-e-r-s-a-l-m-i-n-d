@@ -1,4 +1,4 @@
-.study-page:is([data-study-state="reflection"],[data-study-state="welcome"]) #study-app{padding:106px 24px 28px;align-items:center}
+.study-page[data-study-state="reflection"] #study-app{padding:106px 24px 28px;align-items:center}
 .study-reflection{width:min(700px,100%);display:flex;flex-direction:column;max-height:calc(100svh - 134px);min-height:min(590px,calc(100svh - 134px));text-align:left}
 .reflection-heading{flex:none;padding:0 6px 22px}.reflection-heading .study-eyebrow{margin-bottom:12px}.study-reflection h1{font-size:clamp(30px,3.3vw,44px);margin:0;font-weight:300;letter-spacing:-.035em}.study-reflection h1:focus{outline:none}
 .reflection-transcript{flex:1;min-height:0;overflow:auto;overscroll-behavior:contain;scrollbar-width:thin;scrollbar-color:#d9cdb844 transparent;padding:4px 10px 12px 4px;overflow-anchor:none}
@@ -10,5 +10,5 @@
 .reflection-accessible{position:absolute!important;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap;border:0}
 @keyframes reflection-arrive{from{opacity:0;transform:translateY(9px)}to{opacity:1;transform:translateY(0)}}
 @keyframes reflection-dot{0%,65%,100%{opacity:.28;transform:translateY(0)}30%{opacity:1;transform:translateY(-3px)}}
-@media(max-width:700px){.study-page:is([data-study-state="reflection"],[data-study-state="welcome"]) #study-app{padding:92px 18px 22px}.study-reflection{max-height:calc(100svh - 114px);min-height:calc(100svh - 114px)}.reflection-heading{padding-bottom:18px}.reflection-message{width:100%;padding:18px 19px;border-radius:5px 21px 21px 21px}.reflection-message p,.reflection-message blockquote{font-size:16px;line-height:1.6}.reflection-footer{padding-top:16px}.reflection-actions{gap:8px}.reflection-actions .study-button{min-width:142px}}
+@media(max-width:700px){.study-page[data-study-state="reflection"] #study-app{padding:92px 18px 22px}.study-reflection{max-height:calc(100svh - 114px);min-height:calc(100svh - 114px)}.reflection-heading{padding-bottom:18px}.reflection-message{width:100%;padding:18px 19px;border-radius:5px 21px 21px 21px}.reflection-message p,.reflection-message blockquote{font-size:16px;line-height:1.6}.reflection-footer{padding-top:16px}.reflection-actions{gap:8px}.reflection-actions .study-button{min-width:142px}}
 @media(prefers-reduced-motion:reduce){.reflection-message,.reflection-dots i{animation:none}.reflection-word{transition:none}}

@@ -243,14 +243,6 @@ try {
             $p['reward']['redemption_requested_at']??=gmdate('c');
             return ['ok'=>true,'reward'=>study_reward_public($p)];
         }
-        if ($action === 'welcome.complete') {
-            $version = study_protocol()['onboarding_welcome']['version'];
-            study_require(($request['version'] ?? '') === $version, 'Please refresh to read the current welcome.');
-            // Save navigation progress only. This does not grant consent or start a study session.
-            study_require($p['consent'] === null || isset($p['welcome']), 'Your onboarding is already complete.');
-            $p['welcome'] ??= ['version'=>$version, 'completed_at'=>gmdate('c')];
-            return ['ok'=>true, 'welcome'=>$p['welcome']];
-        }
         if ($action === 'consent') {
             study_require($preview || study_readiness($data['config'])['open'], 'The study is being prepared. Enrolment is not open yet.');
             study_require(($request['version'] ?? '') === study_protocol()['version'], 'The participant information changed. Please read it again.');

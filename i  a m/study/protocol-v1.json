@@ -1,6 +1,6 @@
 {
   "id": "universal-mind-pilot-v1",
-  "version": "2026-09-22.2",
+  "version": "2026-09-22.1",
   "title": "Universal Mind pilot",
   "design": "Single-arm feasibility pilot with repeated before-and-after observations",
   "participants": 10,
@@ -89,31 +89,6 @@
       },
       {
         "text": "If it feels comfortable, think of the first person that comes to mind, where you’d like to soften a sense of loss. You don’t need to name them or share anything. Don’t force it. Just allow. And remember, this too shall pass. Let’s begin."
-      }
-    ]
-  },
-  "onboarding_welcome": {
-    "version": "iam-welcome-2026-09-22.1",
-    "placement": "After login, before the practical briefing, consent and baseline measurements.",
-    "delivery": "Fixed animated messages with participant-paced Continue controls. Shown once during onboarding; returning consented participants continue their existing study journey. Reduced-motion settings reveal complete messages.",
-    "messages": [
-      {
-        "text": "Universal Mind’s I AM platform is exploring the therapeutic potential of music entertainment, with a specific focus upon electronic dance music and its culture, together as one."
-      },
-      {
-        "text": "Our vision is a stigma free support environment, where clubbing, festival and rave culture unite people through the universal heart opening experience of dance music, as a form of mental health and mindfulness. Hence our name, Universal Mind."
-      },
-      {
-        "text": "Our novel research explores an EMDR-informed experience combining eye-movement stimulation, song lyrics, a chatbot and animated GIFs, creating a deliberate party style environment for people who already love watching dance music television online, and new viewers alike."
-      },
-      {
-        "text": "Our hope is creating a safe, uplifting community for the times in between existing therapy appointments, with the aim of offering referral pathways to further care."
-      },
-      {
-        "text": "Our goal is to explore whether the experience can reduce short-term stress and increase connection, using self-report surveys, with heart rate variability as an additional exploratory measure. We hope you enjoy our mental health x entertainment experience. Together, let’s create a beautiful new world."
-      },
-      {
-        "text": "Thanks and Namaste x"
       }
     ]
   }
