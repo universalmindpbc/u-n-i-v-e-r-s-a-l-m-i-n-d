@@ -1,0 +1,131 @@
+{
+  "date": "2026-09-22T06:49:58.588425+00:00",
+  "source_commit": "2f0e7b06d7c04c8a4a56346306285a43a2d0f203",
+  "preserved_previous_staging": "491766fc85ecef6d2f9571a99035cafbf1ee388b",
+  "proof_url": "https://staging.universalmind.tv/vogue/iam/study.php?preview=1",
+  "scope": "One-time six-message animated onboarding welcome after login and before practical briefing/consent. Approved pre-song reflection retained.",
+  "deployment": {
+    "command": "./deploy-panthur-staging.sh changed",
+    "website_files_uploaded": 6,
+    "unchanged_files_skipped": 1069,
+    "all_existing_preflights_passed": true,
+    "protected_owner_runtime_unchanged": true
+  },
+  "local_api": {
+    "runtime": "PHP 8.3 WASM",
+    "checks": [
+      "Origin, CSRF, researcher authentication and staging-only preview enforced",
+      "Production-host regression: existing pilot unlocks once, valid password reaches consent and Heart Check, passwords and ten-person cap remain enforced",
+      "New studies and explicit organiser pauses stay closed; no verification, contact, review or retention values are fabricated",
+      "Existing website password opens the portal directly; staging remains isolated and return identity survives session expiry",
+      "Onboarding welcome records version once per participant, survives retries, rejects stale copy and does not grant consent or start a session",
+      "Before/after state machine, 1–10 bounds, idempotency, missing vitals and isolated preview completion",
+      "One answer per step persists in order; 10-second scan accepted; PSD stays unavailable; participant cannot choose event window",
+      "Versioned reflection follows baseline, validates choices, persists through reload/retry and changes no measurements or exposure",
+      "Researcher operations require owner session; preview records never enter cohort; enrolment readiness enforced",
+      "Participant and stakeholder codes have separate scopes; no cross-participant or raw stakeholder access",
+      "Reward QR resolves only for owner; private claim and pass authentication stay private; no shared-wallet issuance",
+      "Only $100 after all three sessions; no partial or duplicate payments",
+      "On-demand session starts with no event date; incomplete and already-paid rewards cannot be redeemed",
+      "Shared website password creates separate cohort identities per browser and resumes only its own records",
+      "Production completion clock race reproduced and recovered by retry; lost response acknowledged idempotently; preview skip rejected in production",
+      "Actual media-ended duration advances to after-check; no premature transition or invented exposure after a missing heartbeat",
+      "Replaced media starts a fresh clock without carrying old duration or discarding prior exposure history",
+      "Withdrawal removes requested response fields and invalidates derived results",
+      "Dedicated ending test is staging-only, uses a separate cookie/store, has no fabricated baseline, requires real end plus 30-second clock, completes ordinary after flow, and leaves cohort and participant unchanged",
+      "Dedicated test HTML is available on staging and returns 404 on the production host"
+    ]
+  },
+  "welcome_browser": {
+    "url": "https://staging.universalmind.tv/vogue/iam/study.php?preview=1",
+    "checks": [
+      "Welcome animates before consent; an unfinished introduction remains available on reload",
+      "desktop: all six approved messages match exactly, keyboard Continue works, and the final button fits the viewport",
+      "Failed save preserves the welcome and enables retry without claiming completion",
+      "desktop: completion persists once, practical briefing and consent remain explicit, and returning participants resume their study",
+      "mobile: all six approved messages match exactly, keyboard Continue works, and the final button fits the viewport",
+      "mobile: completion persists once, practical briefing and consent remain explicit, and returning participants resume their study",
+      "reduced: all six approved messages match exactly, keyboard Continue works, and the final button fits the viewport",
+      "reduced: completion persists once, practical briefing and consent remain explicit, and returning participants resume their study"
+    ],
+    "errors": [],
+    "safety": {
+      "audio": "--mute-audio",
+      "camera": false,
+      "nativeFullscreen": false,
+      "previewRecordsOnly": true
+    },
+    "at": "2026-09-22T06:47:47.840Z",
+    "all_browser_sessions_closed": true
+  },
+  "complete_journey_regression": {
+    "mode": "staging-journey",
+    "checks": [
+      {
+        "check": "read: reflection appears only after saved baseline, with player hidden and zero exposure"
+      },
+      {
+        "check": "Visible text advances progressively"
+      },
+      {
+        "check": "read: four exact messages, no text input, accessible read controls and no horizontal overflow"
+      },
+      {
+        "check": "read: Let’s begin launches the actual Empire of the Sun film after saving the choice"
+      },
+      {
+        "check": "read: read/skip choice and version persist; reload does not repeat the reflection"
+      }
+    ],
+    "errors": [],
+    "safety": {
+      "audio": "--mute-audio",
+      "nativeFullscreen": false,
+      "camera": false,
+      "syntheticPreviewOnly": true
+    },
+    "at": "2026-09-22T06:49:08.421Z"
+  },
+  "served_source": {
+    "files": [
+      {
+        "file": "study/app.js",
+        "url": "https://staging.universalmind.tv/vogue/iam/study/app.js?v=6894593e5640",
+        "sha256": "6894593e564017b72b832a7139f5adefb22d49501a47dea0db05e95fab8b2d3f",
+        "matches": true
+      },
+      {
+        "file": "study/reflection.js",
+        "url": "https://staging.universalmind.tv/vogue/iam/study/reflection.js?v=af7aa2db23f6",
+        "sha256": "af7aa2db23f6b0bcfc3bdf26bbb32da1848ea815b917d010b005fc9023bcc355",
+        "matches": true
+      },
+      {
+        "file": "study/reflection.css",
+        "url": "https://staging.universalmind.tv/vogue/iam/study/reflection.css?v=0e3187251f2a",
+        "sha256": "0e3187251f2a16d0a99c4348bd2f0b0ed47daeaa32be60826890c1ba72b00901",
+        "matches": true
+      },
+      {
+        "file": "study/protocol-v1.json",
+        "url": "https://staging.universalmind.tv/vogue/iam/study/protocol-v1.json?v=34118dc7c644",
+        "sha256": "34118dc7c6440147dce8af40ee44559cbf28b39730b5ac8bf2c538b1a918468e",
+        "matches": true
+      }
+    ],
+    "entry": "https://staging.universalmind.tv/study",
+    "page_asset_references_match": true
+  },
+  "visual_review": [
+    "Desktop 1440x900",
+    "Mobile 390x844",
+    "Reduced-motion 390x844"
+  ],
+  "limits": [
+    "QA used synthetic staging preview records only.",
+    "No camera, microphone or native fullscreen was used.",
+    "Full playback verification used a separate Chromium process with --mute-audio; all automated sessions were closed.",
+    "No OpenAI requests were needed for these fixed scripts."
+  ],
+  "production_modified": false
+}
