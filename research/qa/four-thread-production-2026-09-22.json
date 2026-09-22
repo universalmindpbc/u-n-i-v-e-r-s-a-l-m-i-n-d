@@ -1,0 +1,3822 @@
+{
+  "generated_at": "2026-09-22T07:21:54.090187+00:00",
+  "approved_staging_commit": "5350ea33b3f9363df3f0e65146f380cfc1069ac8",
+  "previous_production_commit": "bde134bada6cb8432247e494be38a4bf68cacee8",
+  "scope": [
+    {
+      "task": "Add pre-song chatbot section",
+      "thread_id": "01a0c7a8-730f-7283-b9a0-9cae65050145",
+      "status": "published; approved reflection retained and expanded welcome absent"
+    },
+    {
+      "task": "Add IAM research pilot login",
+      "thread_id": "01a08d70-7e4c-76c3-b75d-461f2fe1758c",
+      "status": "published; completion retries, navigation and after-check fixes included"
+    },
+    {
+      "task": "Expand quantum tree audio overlay",
+      "thread_id": "01a0c52d-815f-7c70-9dd4-224633a348bf",
+      "status": "published; live mix clocks, lane allocations and dashboard hit-area fixes included"
+    },
+    {
+      "task": "Plan Universal Sovereignty MVP",
+      "thread_id": "01a0c515-718c-7630-9734-6563cbb226f9",
+      "status": "source published; private production archive NOT provisioned or active"
+    }
+  ],
+  "deployment": {
+    "workflow": "./deploy-panthurlive.sh all-changed",
+    "changed_files_uploaded": 37,
+    "unchanged_skipped": 1038,
+    "protected_owner_runtime_unchanged": true,
+    "website_source_unchanged_from_approved_staging": true,
+    "source_worktree_clean_before_deploy": true
+  },
+  "mandatory_preflight_log": [
+    "Adaptive music handoff preflight passed (music-tv-18c5895fee6a).",
+    "Owner-state persistence checks passed.",
+    "Broadcast clock preflight passed: five canonical music rooms use buffered, clock-aligned video handoffs; Safety Cushion has one ready 21-track Videos feed and no Parties or Radio.",
+    "Programme catalogue release checks passed: Notion/Tensor 25/25, exact routes, 18 live Rave cues, Bloom wallet recovery, and the complete 128-slot modul8 infinity cycle.",
+    "New videos release checks passed: 21/21 Ready, exact four-room routing, alternating Inner Planes, james bondage flow, Lisa placement, and a complete 128-slot modul8 global cycle.",
+    "Broadcast interactions preflight passed (broadcast-interactions-20ea963338ad): thirteen live shared Music streams, six unrestricted rapid-fire Blooms, every playable mantra in unrestricted low-latency polyphonic stakeholder-demo mode, and programme-isolated same-origin coordination.",
+    "Circle rooms preflight passed (circle-rooms-3839d898c873, circle-rooms-css-26a3fe8531d9).",
+    "Care worlds preflight passed (CSS 97f6e5244cc9, JS edfca941922e).",
+    "Public crawler surface preflight passed.",
+    "Universal Sovereignty privacy and nonblocking-entry boundaries passed.",
+    "Shopfront mock-up checks passed.",
+    "HAPPINESS rewards architecture checks passed.",
+    "Privacy research foundations checks passed.",
+    "Citizen data foundation checks passed.",
+    "Universal One programme guide checks passed.",
+    "Public Program checks passed: approved orientation copy, silent full-screen motion, exact app guide, shared artist metadata, 13 live channels, and responsive full-height casing.",
+    "Universal One adaptive recommendation guide checks passed."
+  ],
+  "study_api_isolated_php": {
+    "runtime": "PHP 8.3 WASM",
+    "checks": [
+      "Origin, CSRF, researcher authentication and staging-only preview enforced",
+      "Production-host regression: existing pilot unlocks once, valid password reaches consent and Heart Check, passwords and ten-person cap remain enforced",
+      "New studies and explicit organiser pauses stay closed; no verification, contact, review or retention values are fabricated",
+      "Existing website password opens the portal directly; staging remains isolated and return identity survives session expiry",
+      "Before/after state machine, 1\u201310 bounds, idempotency, missing vitals and isolated preview completion",
+      "One answer per step persists in order; 10-second scan accepted; PSD stays unavailable; participant cannot choose event window",
+      "Versioned reflection follows baseline, validates choices, persists through reload/retry and changes no measurements or exposure",
+      "Researcher operations require owner session; preview records never enter cohort; enrolment readiness enforced",
+      "Participant and stakeholder codes have separate scopes; no cross-participant or raw stakeholder access",
+      "Reward QR resolves only for owner; private claim and pass authentication stay private; no shared-wallet issuance",
+      "Only $100 after all three sessions; no partial or duplicate payments",
+      "On-demand session starts with no event date; incomplete and already-paid rewards cannot be redeemed",
+      "Shared website password creates separate cohort identities per browser and resumes only its own records",
+      "Production completion clock race reproduced and recovered by retry; lost response acknowledged idempotently; preview skip rejected in production",
+      "Actual media-ended duration advances to after-check; no premature transition or invented exposure after a missing heartbeat",
+      "Replaced media starts a fresh clock without carrying old duration or discarding prior exposure history",
+      "Withdrawal removes requested response fields and invalidates derived results",
+      "Dedicated ending test is staging-only, uses a separate cookie/store, has no fabricated baseline, requires real end plus 30-second clock, completes ordinary after flow, and leaves cohort and participant unchanged",
+      "Dedicated test HTML is available on staging and returns 404 on the production host"
+    ]
+  },
+  "sovereignty_isolated_php": {
+    "checks": [
+      "Wrong passwords, submitted digests, cross-origin requests, invalid JSON, wrong method/type and oversized bodies cannot create entries",
+      "Repeated requests preserve the exact original entry; a second credential creates one separate entry",
+      "Owner key decrypts the envelope; platform signature verifies; ciphertext or AAD tampering is rejected; no password or consent claim is archived",
+      "Only the approved four-bucket free staging plan is accepted; the 9 GB ceiling, malformed proof rejection and calendar allowlist pass",
+      "A valid Bitcoin header with six confirmations passes; explorer disagreement, a corrupt header, wrong Merkle root and insufficient confirmations remain pending",
+      "Status requires the private token; missing vaults cannot report copies secured; environment mismatch, disabled and damaged configuration fail closed",
+      "The existing 700ms navigation timer starts before the background fetch and never awaits it"
+    ],
+    "passed": true
+  },
+  "additional_local_checks": [
+    {
+      "test": "tools/check-audio-mix-clock.mjs",
+      "exit_code": 0,
+      "output": "Real DSP run clock passes at 44.1 and 48 kHz: rendered frames, master fade/off freeze, and resume.\n"
+    },
+    {
+      "test": "tools/check-study-exposure-sync.mjs",
+      "exit_code": 0,
+      "output": "Study completion sync passed: busy requests, delayed server acceptance, lost response, failed refresh and teardown; no fabricated watched time.\n"
+    },
+    {
+      "test": "tools/test-fullscreen-navigation.mjs",
+      "exit_code": 0,
+      "output": "PASS: standard, WebKit, delayed Promise/event, rejected/unsupported exit, ordinary navigation\n"
+    },
+    {
+      "test": "tools/test-adaptive-sound-session.mjs",
+      "exit_code": 0,
+      "output": "Adaptive sound session integration: PASS (20/20 band-carrier combinations, 538 assertions)\nPolicy: checkin_session_single_carrier_v1\nWorkspace: /private/tmp/um-four-thread-production-20260922/\n"
+    },
+    {
+      "test": "tools/check-checkin-immediate-handoff.mjs",
+      "exit_code": 0,
+      "output": "checkin_immediate_handoff=passed\n"
+    },
+    {
+      "test": "tools/check-adaptive-inference-v5-55.mjs",
+      "exit_code": 0,
+      "output": "{\"schema_version\":\"adaptive_inference_v5_55_alignment_qa_v1\",\"prompt_version\":\"adaptive-inference-engine-system-prompt-v5.55\",\"prompt_sha256\":\"96a1a3e34695b17ccb075da28e72ea62d7c8f23be65aff294a3237d744295985\",\"generated_worker_prompt_exact\":true,\"generated_browser_prompt_exact\":true,\"semantic_adaptive_sound_intent\":true,\"current_heart_rate_inference_matrix\":true,\"context_all_horizons\":true,\"raw_heart_rate_exported_to_model\":false,\"local_fusion_policy_version\":\"iam_current_inference_fusion_v1.0\",\"heart_rate_can_select_alone\":false,\"canonical_prompt_documents_semantic_only_model_and_deterministic_exact_selection\":true,\"application_owned_format_and_source\":true,\"corrected_target_nomenclature\":true,\"technology_code_notion_markdown_chain\":true,\"notion_authority_url\":\"https://um-iam.notion.site/f31dbd2e2a0b4c15b4161108ae0a8e63\",\"request_alias_order\":[\"v555_payload\",\"v445_payload\",\"v444_payload\",\"inference\"]}\n"
+    },
+    {
+      "test": "tools/test-adaptive-sound-policy.py",
+      "exit_code": 0,
+      "output": "{\n  \"schema_version\": \"iam_adaptive_sound_policy_qa_v1\",\n  \"combinations_tested\": 20,\n  \"matrix\": [\n    \"delta:111\",\n    \"delta:222\",\n    \"delta:444\",\n    \"delta:555\",\n    \"delta:999\",\n    \"theta:111\",\n    \"theta:222\",\n    \"theta:444\",\n    \"theta:555\",\n    \"theta:999\",\n    \"alpha:111\",\n    \"alpha:222\",\n    \"alpha:444\",\n    \"alpha:555\",\n    \"alpha:999\",\n    \"gamma:111\",\n    \"gamma:222\",\n    \"gamma:444\",\n    \"gamma:555\",\n    \"gamma:999\"\n  ],\n  \"safety_states_tested\": [\n    \"standard\",\n    \"high_concern_default\",\n    \"high_concern_opt_in\",\n    \"master_off\"\n  ],\n  \"notification_states_tested\": [\n    \"blocked_until_consent_and_verified_contact\",\n    \"pending_human_review_approval\",\n    \"authorized_for_human_operator_not_sent_by_model\"\n  ],\n  \"research_targets_in_product_decisions\": false,\n  \"no_checkin_selected\": false,\n  \"accepted_self_report_without_heart_rate_selected\": true,\n  \"conflicting_heart_rate_re_ranked_band_and_carrier\": true\n}\n"
+    }
+  ],
+  "staging": {
+    "browser_suite": [
+      {
+        "test": "check-study-reflection-browser",
+        "exit_code": 0,
+        "seconds": 22.0
+      },
+      {
+        "test": "check-study-after-check-browser-proof",
+        "exit_code": 0,
+        "seconds": 53.0
+      },
+      {
+        "test": "check-study-after-check-browser-retry",
+        "exit_code": 0,
+        "seconds": 49.8
+      },
+      {
+        "test": "check-audio-mix-monitor",
+        "exit_code": 0,
+        "seconds": 32.3
+      },
+      {
+        "test": "check-dashboard-button-hit-regions",
+        "exit_code": 0,
+        "seconds": 7.9,
+        "initial_failure": "Installed WebKit was in a nondefault cache; rerun with PLAYWRIGHT_BROWSERS_PATH passed.",
+        "verified_clicks": 80
+      },
+      {
+        "test": "check-mantra-audition",
+        "exit_code": 0,
+        "seconds": 3.3
+      },
+      {
+        "test": "check-homepage-participate-browser",
+        "exit_code": 0,
+        "seconds": 35.2
+      },
+      {
+        "test": "check-sovereignty-browser",
+        "exit_code": 0,
+        "seconds": 7.6
+      }
+    ],
+    "assets": [
+      {
+        "file": "i  a m/adaptive-environment-television.html",
+        "exit_code": 0,
+        "sha256": "0d5f63ff490c83ca31e5f49381e1c227045dbe65479f77842a4e1401067a92ee",
+        "matches": true
+      },
+      {
+        "file": "i  a m/adaptive-environment-television.js",
+        "exit_code": 0,
+        "sha256": "18c5895fee6a4d3ffb2bbe5b4da12ef86c790e72786fddffb23af604e7d2221e",
+        "matches": true
+      },
+      {
+        "file": "i  a m/adaptive-sound-intent-policy-v1.json",
+        "exit_code": 0,
+        "sha256": "52752d92fe1adf6e4c91ae165d8ec121f01beb4541323493b991a127032d38c8",
+        "matches": true
+      },
+      {
+        "file": "i  a m/adaptive-sound/controller-v1.js",
+        "exit_code": 0,
+        "sha256": "7f548521e42b97c7cf3309710a0c83d7a1cddcc267ef850b147f4f9dbc73afdf",
+        "matches": true
+      },
+      {
+        "file": "i  a m/adaptive-sound/owner-synth-v1.js",
+        "exit_code": 0,
+        "sha256": "3e76b26be3bcbaea96f6cf1217ab040e1ba7da7d181a9bc8d4f257d07ebfe6ad",
+        "matches": true
+      },
+      {
+        "file": "i  a m/adaptive-sound/session-v1.js",
+        "exit_code": 0,
+        "sha256": "003d6bf158284da79a4773b5cda43d2c3c84e5a94ea4a4ac7e2dbb10333ff07c",
+        "matches": true
+      },
+      {
+        "file": "i  a m/adaptive-sound/worklet-v1.js",
+        "exit_code": 0,
+        "sha256": "319a423521a5b7d1b64cf2b5fddc0c1238e9ed70d3245fabffeca58e0db7e67a",
+        "matches": true
+      },
+      {
+        "file": "i  a m/fullscreen-navigation.js",
+        "exit_code": 0,
+        "sha256": "5bad9952835a1d2aea8fbe034e68472a72e47fce1fbcf8700750409b0c409399",
+        "matches": true
+      },
+      {
+        "file": "i  a m/homepage-alternate.js",
+        "exit_code": 0,
+        "sha256": "f708ebabfacfe40dfc43c0c06e3c52a4aaf539d9096f3f1f9a4ade561ac0d89d",
+        "matches": true
+      },
+      {
+        "file": "i  a m/homepage-session-accents.js",
+        "exit_code": 0,
+        "sha256": "eb175c364f157d205d9a160bb49db8c23314a6ac964dcae7f285c7004a186d02",
+        "matches": true
+      },
+      {
+        "file": "i  a m/index-alt.html",
+        "exit_code": 0,
+        "sha256": "60d022d0102c1e453faf44b1e850d13aab7ed0cebe1490634266e28a0abd5adc",
+        "matches": true
+      },
+      {
+        "file": "i  a m/index.html",
+        "exit_code": 0,
+        "sha256": "f38e038e57a510f78d96b007eae427417dd05eceb4c902755649c4813867ac2a",
+        "matches": true
+      },
+      {
+        "file": "i  a m/quantum-tree-control.css",
+        "exit_code": 0,
+        "sha256": "55edd4cda1f7eae2171831f44c5f9f1690c35c137506130909de5d7ab4582815",
+        "matches": true
+      },
+      {
+        "file": "i  a m/quantum-tree-control.html",
+        "exit_code": 0,
+        "sha256": "1253775083bf9b04b12a2512edae5b1108707ae79ef5fc94d036691d351af837",
+        "matches": true
+      },
+      {
+        "file": "i  a m/quantum-tree-control.js",
+        "exit_code": 0,
+        "sha256": "6167a5cb88545faf28eb67c7bb1ff61a3f965bf33325313aef7594fd97697212",
+        "matches": true
+      },
+      {
+        "file": "i  a m/research/shen-heart-rate.js",
+        "exit_code": 0,
+        "sha256": "5b984015d22e64a0e984594df2e32fe7e64b56297dec333f4ad9c0b5526fc509",
+        "matches": true
+      },
+      {
+        "file": "i  a m/study/app.js",
+        "exit_code": 0,
+        "sha256": "ab0264cc642b6d427695bbf5bc04d3d73619a8975c96615a2c9da50b5373fd79",
+        "matches": true
+      },
+      {
+        "file": "i  a m/study/experience.js",
+        "exit_code": 0,
+        "sha256": "8d08d2ed82b1e62b81fce15a91b5741cb04daeed3702ec12c45bf25aea7d5d1d",
+        "matches": true
+      },
+      {
+        "file": "i  a m/study/exposure-sync.js",
+        "exit_code": 0,
+        "sha256": "ec88d9bc9d06b21eb4d288e4e84a1df685bbdcbb0e3495a9cea51b05856fbbfe",
+        "matches": true
+      },
+      {
+        "file": "i  a m/study/protocol-v1.json",
+        "exit_code": 0,
+        "sha256": "53cb26d0449d7d5c4731cf50392d608c0a739d3793c7490365b587d1492cc264",
+        "matches": true
+      },
+      {
+        "file": "i  a m/study/reflection.css",
+        "exit_code": 0,
+        "sha256": "e5d2a0ba5a308eef39014d89d8d9302565c8ae6de526ea3aacaaf9258014bf2e",
+        "matches": true
+      },
+      {
+        "file": "i  a m/study/reflection.js",
+        "exit_code": 0,
+        "sha256": "73e7b539696cc2732d5c15d9e12b9c9203e4833e44aef1b3dd5fd3223345aa9f",
+        "matches": true
+      },
+      {
+        "file": "i  a m/study/shen-bridge.js",
+        "exit_code": 0,
+        "sha256": "96f251071839af19251f179fbded02cbff2a4d5fb73d483980a96f2d465d7ed2",
+        "matches": true
+      },
+      {
+        "file": "index.html",
+        "exit_code": 0,
+        "sha256": "d86b50d4a9a24d539f0a0c005e1e6979c9cbec1e8882789c2751022fa9385dc6",
+        "matches": true
+      }
+    ],
+    "reflection": {
+      "mode": "staging-journey",
+      "checks": [
+        {
+          "check": "read: reflection appears only after saved baseline, with player hidden and zero exposure"
+        },
+        {
+          "check": "Visible text advances progressively"
+        },
+        {
+          "check": "read: four exact messages, no text input, accessible read controls and no horizontal overflow"
+        },
+        {
+          "check": "read: Let\u2019s begin launches the actual Empire of the Sun film after saving the choice"
+        },
+        {
+          "check": "read: read/skip choice and version persist; reload does not repeat the reflection"
+        },
+        {
+          "check": "skip: reflection appears only after saved baseline, with player hidden and zero exposure"
+        },
+        {
+          "check": "skip: read/skip choice and version persist; reload does not repeat the reflection"
+        },
+        {
+          "check": "reduced: reflection appears only after saved baseline, with player hidden and zero exposure"
+        },
+        {
+          "check": "reduced: four exact messages, no text input, accessible read controls and no horizontal overflow"
+        },
+        {
+          "check": "reduced: Let\u2019s begin launches the actual Empire of the Sun film after saving the choice"
+        },
+        {
+          "check": "reduced: read/skip choice and version persist; reload does not repeat the reflection"
+        }
+      ],
+      "errors": [],
+      "safety": {
+        "audio": "--mute-audio",
+        "nativeFullscreen": false,
+        "camera": false,
+        "syntheticPreviewOnly": true
+      },
+      "at": "2026-09-22T07:07:11.899Z"
+    },
+    "ending": {
+      "mode": "proof",
+      "url": "https://staging.universalmind.tv/vogue/iam/study-ending-test.php",
+      "checks": [
+        {
+          "text": "Separate ending page buffers actual final 30 seconds before native Play; no skip controls or fabricated baseline",
+          "time": 458.14,
+          "duration": 488.14,
+          "paused": true,
+          "seeking": false,
+          "ready": 4
+        },
+        {
+          "text": "Native Play starts real video and bottom-left timer; navigation locked",
+          "time": 458.679334,
+          "duration": 488.151654,
+          "timer": "7:38 / 8:08",
+          "locked": true
+        },
+        {
+          "text": "Natural video end opens after-check; no forced completion or fullscreen exit",
+          "observedExposure": 29.878669000000002,
+          "endedRequests": 1
+        },
+        {
+          "text": "After-check opens real Heart Check UI and saves a synthetic reading in isolated test storage"
+        },
+        {
+          "text": "After surveys, reward display, results and navigation unlock complete"
+        },
+        {
+          "text": "Regular participant API remains signed out in same browser; separate test cookie verified"
+        },
+        {
+          "text": "Reload creates a fresh final-30-second test without login or extra controls"
+        }
+      ],
+      "errors": [],
+      "endedRequests": 1,
+      "ordinaryRequests": 32,
+      "at": "2026-09-22T07:08:04.864Z"
+    },
+    "completion_retry": {
+      "mode": "retry",
+      "url": "https://staging.universalmind.tv/vogue/iam/study-ending-test.php",
+      "checks": [
+        {
+          "text": "Separate ending page buffers actual final 30 seconds before native Play; no skip controls or fabricated baseline",
+          "time": 458.14,
+          "duration": 488.14,
+          "paused": true,
+          "seeking": false,
+          "ready": 4
+        },
+        {
+          "text": "Native Play starts real video and bottom-left timer; navigation locked",
+          "time": 458.696657,
+          "duration": 488.151654,
+          "timer": "7:38 / 8:08",
+          "locked": true
+        },
+        {
+          "text": "Natural video end opens after-check; no forced completion or fullscreen exit",
+          "observedExposure": 29.867151000000035,
+          "endedRequests": 3
+        },
+        {
+          "text": "After-check opens real Heart Check UI and saves a synthetic reading in isolated test storage"
+        },
+        {
+          "text": "After surveys, reward display, results and navigation unlock complete"
+        },
+        {
+          "text": "Regular participant API remains signed out in same browser; separate test cookie verified"
+        }
+      ],
+      "errors": [],
+      "endedRequests": 3,
+      "ordinaryRequests": 29,
+      "at": "2026-09-22T07:08:54.703Z"
+    },
+    "dashboard_hit_regions": {
+      "authentication": "Owner API response fixture; no settings writes",
+      "playback": "All click actions and media playback blocked; WebKit is used only for hit testing",
+      "browsers": [
+        {
+          "name": "chromium",
+          "results": [
+            {
+              "viewport": {
+                "width": 1470,
+                "height": 956
+              },
+              "selector": "[data-preview-toggle]",
+              "position": [
+                0.5,
+                0.15
+              ],
+              "delivered": true
+            },
+            {
+              "viewport": {
+                "width": 1470,
+                "height": 956
+              },
+              "selector": "[data-preview-toggle]",
+              "position": [
+                0.5,
+                0.5
+              ],
+              "delivered": true
+            },
+            {
+              "viewport": {
+                "width": 1470,
+                "height": 956
+              },
+              "selector": "[data-preview-toggle]",
+              "position": [
+                0.5,
+                0.85
+              ],
+              "delivered": true
+            },
+            {
+              "viewport": {
+                "width": 1470,
+                "height": 956
+              },
+              "selector": "[data-preview-toggle]",
+              "position": [
+                0.1,
+                0.5
+              ],
+              "delivered": true
+            },
+            {
+              "viewport": {
+                "width": 1470,
+                "height": 956
+              },
+              "selector": "[data-preview-toggle]",
+              "position": [
+                0.9,
+                0.5
+              ],
+              "delivered": true
+            },
+            {
+              "viewport": {
+                "width": 1470,
+                "height": 956
+              },
+              "selector": "[data-mantra-preview-toggle]",
+              "position": [
+                0.5,
+                0.15
+              ],
+              "delivered": true
+            },
+            {
+              "viewport": {
+                "width": 1470,
+                "height": 956
+              },
+              "selector": "[data-mantra-preview-toggle]",
+              "position": [
+                0.5,
+                0.5
+              ],
+              "delivered": true
+            },
+            {
+              "viewport": {
+                "width": 1470,
+                "height": 956
+              },
+              "selector": "[data-mantra-preview-toggle]",
+              "position": [
+                0.5,
+                0.85
+              ],
+              "delivered": true
+            },
+            {
+              "viewport": {
+                "width": 1470,
+                "height": 956
+              },
+              "selector": "[data-mantra-preview-toggle]",
+              "position": [
+                0.1,
+                0.5
+              ],
+              "delivered": true
+            },
+            {
+              "viewport": {
+                "width": 1470,
+                "height": 956
+              },
+              "selector": "[data-mantra-preview-toggle]",
+              "position": [
+                0.9,
+                0.5
+              ],
+              "delivered": true
+            },
+            {
+              "viewport": {
+                "width": 1470,
+                "height": 956
+              },
+              "selector": "[data-preview-together]",
+              "position": [
+                0.5,
+                0.15
+              ],
+              "delivered": true
+            },
+            {
+              "viewport": {
+                "width": 1470,
+                "height": 956
+              },
+              "selector": "[data-preview-together]",
+              "position": [
+                0.5,
+                0.5
+              ],
+              "delivered": true
+            },
+            {
+              "viewport": {
+                "width": 1470,
+                "height": 956
+              },
+              "selector": "[data-preview-together]",
+              "position": [
+                0.5,
+                0.85
+              ],
+              "delivered": true
+            },
+            {
+              "viewport": {
+                "width": 1470,
+                "height": 956
+              },
+              "selector": "[data-preview-together]",
+              "position": [
+                0.1,
+                0.5
+              ],
+              "delivered": true
+            },
+            {
+              "viewport": {
+                "width": 1470,
+                "height": 956
+              },
+              "selector": "[data-preview-together]",
+              "position": [
+                0.9,
+                0.5
+              ],
+              "delivered": true
+            },
+            {
+              "viewport": {
+                "width": 1470,
+                "height": 956
+              },
+              "selector": "[data-synth-preview-toggle]",
+              "position": [
+                0.5,
+                0.15
+              ],
+              "delivered": true
+            },
+            {
+              "viewport": {
+                "width": 1470,
+                "height": 956
+              },
+              "selector": "[data-synth-preview-toggle]",
+              "position": [
+                0.5,
+                0.5
+              ],
+              "delivered": true
+            },
+            {
+              "viewport": {
+                "width": 1470,
+                "height": 956
+              },
+              "selector": "[data-synth-preview-toggle]",
+              "position": [
+                0.5,
+                0.85
+              ],
+              "delivered": true
+            },
+            {
+              "viewport": {
+                "width": 1470,
+                "height": 956
+              },
+              "selector": "[data-synth-preview-toggle]",
+              "position": [
+                0.1,
+                0.5
+              ],
+              "delivered": true
+            },
+            {
+              "viewport": {
+                "width": 1470,
+                "height": 956
+              },
+              "selector": "[data-synth-preview-toggle]",
+              "position": [
+                0.9,
+                0.5
+              ],
+              "delivered": true
+            },
+            {
+              "viewport": {
+                "width": 390,
+                "height": 844
+              },
+              "selector": "[data-preview-toggle]",
+              "position": [
+                0.5,
+                0.15
+              ],
+              "delivered": true
+            },
+            {
+              "viewport": {
+                "width": 390,
+                "height": 844
+              },
+              "selector": "[data-preview-toggle]",
+              "position": [
+                0.5,
+                0.5
+              ],
+              "delivered": true
+            },
+            {
+              "viewport": {
+                "width": 390,
+                "height": 844
+              },
+              "selector": "[data-preview-toggle]",
+              "position": [
+                0.5,
+                0.85
+              ],
+              "delivered": true
+            },
+            {
+              "viewport": {
+                "width": 390,
+                "height": 844
+              },
+              "selector": "[data-preview-toggle]",
+              "position": [
+                0.1,
+                0.5
+              ],
+              "delivered": true
+            },
+            {
+              "viewport": {
+                "width": 390,
+                "height": 844
+              },
+              "selector": "[data-preview-toggle]",
+              "position": [
+                0.9,
+                0.5
+              ],
+              "delivered": true
+            },
+            {
+              "viewport": {
+                "width": 390,
+                "height": 844
+              },
+              "selector": "[data-mantra-preview-toggle]",
+              "position": [
+                0.5,
+                0.15
+              ],
+              "delivered": true
+            },
+            {
+              "viewport": {
+                "width": 390,
+                "height": 844
+              },
+              "selector": "[data-mantra-preview-toggle]",
+              "position": [
+                0.5,
+                0.5
+              ],
+              "delivered": true
+            },
+            {
+              "viewport": {
+                "width": 390,
+                "height": 844
+              },
+              "selector": "[data-mantra-preview-toggle]",
+              "position": [
+                0.5,
+                0.85
+              ],
+              "delivered": true
+            },
+            {
+              "viewport": {
+                "width": 390,
+                "height": 844
+              },
+              "selector": "[data-mantra-preview-toggle]",
+              "position": [
+                0.1,
+                0.5
+              ],
+              "delivered": true
+            },
+            {
+              "viewport": {
+                "width": 390,
+                "height": 844
+              },
+              "selector": "[data-mantra-preview-toggle]",
+              "position": [
+                0.9,
+                0.5
+              ],
+              "delivered": true
+            },
+            {
+              "viewport": {
+                "width": 390,
+                "height": 844
+              },
+              "selector": "[data-preview-together]",
+              "position": [
+                0.5,
+                0.15
+              ],
+              "delivered": true
+            },
+            {
+              "viewport": {
+                "width": 390,
+                "height": 844
+              },
+              "selector": "[data-preview-together]",
+              "position": [
+                0.5,
+                0.5
+              ],
+              "delivered": true
+            },
+            {
+              "viewport": {
+                "width": 390,
+                "height": 844
+              },
+              "selector": "[data-preview-together]",
+              "position": [
+                0.5,
+                0.85
+              ],
+              "delivered": true
+            },
+            {
+              "viewport": {
+                "width": 390,
+                "height": 844
+              },
+              "selector": "[data-preview-together]",
+              "position": [
+                0.1,
+                0.5
+              ],
+              "delivered": true
+            },
+            {
+              "viewport": {
+                "width": 390,
+                "height": 844
+              },
+              "selector": "[data-preview-together]",
+              "position": [
+                0.9,
+                0.5
+              ],
+              "delivered": true
+            },
+            {
+              "viewport": {
+                "width": 390,
+                "height": 844
+              },
+              "selector": "[data-synth-preview-toggle]",
+              "position": [
+                0.5,
+                0.15
+              ],
+              "delivered": true
+            },
+            {
+              "viewport": {
+                "width": 390,
+                "height": 844
+              },
+              "selector": "[data-synth-preview-toggle]",
+              "position": [
+                0.5,
+                0.5
+              ],
+              "delivered": true
+            },
+            {
+              "viewport": {
+                "width": 390,
+                "height": 844
+              },
+              "selector": "[data-synth-preview-toggle]",
+              "position": [
+                0.5,
+                0.85
+              ],
+              "delivered": true
+            },
+            {
+              "viewport": {
+                "width": 390,
+                "height": 844
+              },
+              "selector": "[data-synth-preview-toggle]",
+              "position": [
+                0.1,
+                0.5
+              ],
+              "delivered": true
+            },
+            {
+              "viewport": {
+                "width": 390,
+                "height": 844
+              },
+              "selector": "[data-synth-preview-toggle]",
+              "position": [
+                0.9,
+                0.5
+              ],
+              "delivered": true
+            }
+          ],
+          "errors": []
+        },
+        {
+          "name": "webkit",
+          "results": [
+            {
+              "viewport": {
+                "width": 1470,
+                "height": 956
+              },
+              "selector": "[data-preview-toggle]",
+              "position": [
+                0.5,
+                0.15
+              ],
+              "delivered": true
+            },
+            {
+              "viewport": {
+                "width": 1470,
+                "height": 956
+              },
+              "selector": "[data-preview-toggle]",
+              "position": [
+                0.5,
+                0.5
+              ],
+              "delivered": true
+            },
+            {
+              "viewport": {
+                "width": 1470,
+                "height": 956
+              },
+              "selector": "[data-preview-toggle]",
+              "position": [
+                0.5,
+                0.85
+              ],
+              "delivered": true
+            },
+            {
+              "viewport": {
+                "width": 1470,
+                "height": 956
+              },
+              "selector": "[data-preview-toggle]",
+              "position": [
+                0.1,
+                0.5
+              ],
+              "delivered": true
+            },
+            {
+              "viewport": {
+                "width": 1470,
+                "height": 956
+              },
+              "selector": "[data-preview-toggle]",
+              "position": [
+                0.9,
+                0.5
+              ],
+              "delivered": true
+            },
+            {
+              "viewport": {
+                "width": 1470,
+                "height": 956
+              },
+              "selector": "[data-mantra-preview-toggle]",
+              "position": [
+                0.5,
+                0.15
+              ],
+              "delivered": true
+            },
+            {
+              "viewport": {
+                "width": 1470,
+                "height": 956
+              },
+              "selector": "[data-mantra-preview-toggle]",
+              "position": [
+                0.5,
+                0.5
+              ],
+              "delivered": true
+            },
+            {
+              "viewport": {
+                "width": 1470,
+                "height": 956
+              },
+              "selector": "[data-mantra-preview-toggle]",
+              "position": [
+                0.5,
+                0.85
+              ],
+              "delivered": true
+            },
+            {
+              "viewport": {
+                "width": 1470,
+                "height": 956
+              },
+              "selector": "[data-mantra-preview-toggle]",
+              "position": [
+                0.1,
+                0.5
+              ],
+              "delivered": true
+            },
+            {
+              "viewport": {
+                "width": 1470,
+                "height": 956
+              },
+              "selector": "[data-mantra-preview-toggle]",
+              "position": [
+                0.9,
+                0.5
+              ],
+              "delivered": true
+            },
+            {
+              "viewport": {
+                "width": 1470,
+                "height": 956
+              },
+              "selector": "[data-preview-together]",
+              "position": [
+                0.5,
+                0.15
+              ],
+              "delivered": true
+            },
+            {
+              "viewport": {
+                "width": 1470,
+                "height": 956
+              },
+              "selector": "[data-preview-together]",
+              "position": [
+                0.5,
+                0.5
+              ],
+              "delivered": true
+            },
+            {
+              "viewport": {
+                "width": 1470,
+                "height": 956
+              },
+              "selector": "[data-preview-together]",
+              "position": [
+                0.5,
+                0.85
+              ],
+              "delivered": true
+            },
+            {
+              "viewport": {
+                "width": 1470,
+                "height": 956
+              },
+              "selector": "[data-preview-together]",
+              "position": [
+                0.1,
+                0.5
+              ],
+              "delivered": true
+            },
+            {
+              "viewport": {
+                "width": 1470,
+                "height": 956
+              },
+              "selector": "[data-preview-together]",
+              "position": [
+                0.9,
+                0.5
+              ],
+              "delivered": true
+            },
+            {
+              "viewport": {
+                "width": 1470,
+                "height": 956
+              },
+              "selector": "[data-synth-preview-toggle]",
+              "position": [
+                0.5,
+                0.15
+              ],
+              "delivered": true
+            },
+            {
+              "viewport": {
+                "width": 1470,
+                "height": 956
+              },
+              "selector": "[data-synth-preview-toggle]",
+              "position": [
+                0.5,
+                0.5
+              ],
+              "delivered": true
+            },
+            {
+              "viewport": {
+                "width": 1470,
+                "height": 956
+              },
+              "selector": "[data-synth-preview-toggle]",
+              "position": [
+                0.5,
+                0.85
+              ],
+              "delivered": true
+            },
+            {
+              "viewport": {
+                "width": 1470,
+                "height": 956
+              },
+              "selector": "[data-synth-preview-toggle]",
+              "position": [
+                0.1,
+                0.5
+              ],
+              "delivered": true
+            },
+            {
+              "viewport": {
+                "width": 1470,
+                "height": 956
+              },
+              "selector": "[data-synth-preview-toggle]",
+              "position": [
+                0.9,
+                0.5
+              ],
+              "delivered": true
+            },
+            {
+              "viewport": {
+                "width": 390,
+                "height": 844
+              },
+              "selector": "[data-preview-toggle]",
+              "position": [
+                0.5,
+                0.15
+              ],
+              "delivered": true
+            },
+            {
+              "viewport": {
+                "width": 390,
+                "height": 844
+              },
+              "selector": "[data-preview-toggle]",
+              "position": [
+                0.5,
+                0.5
+              ],
+              "delivered": true
+            },
+            {
+              "viewport": {
+                "width": 390,
+                "height": 844
+              },
+              "selector": "[data-preview-toggle]",
+              "position": [
+                0.5,
+                0.85
+              ],
+              "delivered": true
+            },
+            {
+              "viewport": {
+                "width": 390,
+                "height": 844
+              },
+              "selector": "[data-preview-toggle]",
+              "position": [
+                0.1,
+                0.5
+              ],
+              "delivered": true
+            },
+            {
+              "viewport": {
+                "width": 390,
+                "height": 844
+              },
+              "selector": "[data-preview-toggle]",
+              "position": [
+                0.9,
+                0.5
+              ],
+              "delivered": true
+            },
+            {
+              "viewport": {
+                "width": 390,
+                "height": 844
+              },
+              "selector": "[data-mantra-preview-toggle]",
+              "position": [
+                0.5,
+                0.15
+              ],
+              "delivered": true
+            },
+            {
+              "viewport": {
+                "width": 390,
+                "height": 844
+              },
+              "selector": "[data-mantra-preview-toggle]",
+              "position": [
+                0.5,
+                0.5
+              ],
+              "delivered": true
+            },
+            {
+              "viewport": {
+                "width": 390,
+                "height": 844
+              },
+              "selector": "[data-mantra-preview-toggle]",
+              "position": [
+                0.5,
+                0.85
+              ],
+              "delivered": true
+            },
+            {
+              "viewport": {
+                "width": 390,
+                "height": 844
+              },
+              "selector": "[data-mantra-preview-toggle]",
+              "position": [
+                0.1,
+                0.5
+              ],
+              "delivered": true
+            },
+            {
+              "viewport": {
+                "width": 390,
+                "height": 844
+              },
+              "selector": "[data-mantra-preview-toggle]",
+              "position": [
+                0.9,
+                0.5
+              ],
+              "delivered": true
+            },
+            {
+              "viewport": {
+                "width": 390,
+                "height": 844
+              },
+              "selector": "[data-preview-together]",
+              "position": [
+                0.5,
+                0.15
+              ],
+              "delivered": true
+            },
+            {
+              "viewport": {
+                "width": 390,
+                "height": 844
+              },
+              "selector": "[data-preview-together]",
+              "position": [
+                0.5,
+                0.5
+              ],
+              "delivered": true
+            },
+            {
+              "viewport": {
+                "width": 390,
+                "height": 844
+              },
+              "selector": "[data-preview-together]",
+              "position": [
+                0.5,
+                0.85
+              ],
+              "delivered": true
+            },
+            {
+              "viewport": {
+                "width": 390,
+                "height": 844
+              },
+              "selector": "[data-preview-together]",
+              "position": [
+                0.1,
+                0.5
+              ],
+              "delivered": true
+            },
+            {
+              "viewport": {
+                "width": 390,
+                "height": 844
+              },
+              "selector": "[data-preview-together]",
+              "position": [
+                0.9,
+                0.5
+              ],
+              "delivered": true
+            },
+            {
+              "viewport": {
+                "width": 390,
+                "height": 844
+              },
+              "selector": "[data-synth-preview-toggle]",
+              "position": [
+                0.5,
+                0.15
+              ],
+              "delivered": true
+            },
+            {
+              "viewport": {
+                "width": 390,
+                "height": 844
+              },
+              "selector": "[data-synth-preview-toggle]",
+              "position": [
+                0.5,
+                0.5
+              ],
+              "delivered": true
+            },
+            {
+              "viewport": {
+                "width": 390,
+                "height": 844
+              },
+              "selector": "[data-synth-preview-toggle]",
+              "position": [
+                0.5,
+                0.85
+              ],
+              "delivered": true
+            },
+            {
+              "viewport": {
+                "width": 390,
+                "height": 844
+              },
+              "selector": "[data-synth-preview-toggle]",
+              "position": [
+                0.1,
+                0.5
+              ],
+              "delivered": true
+            },
+            {
+              "viewport": {
+                "width": 390,
+                "height": 844
+              },
+              "selector": "[data-synth-preview-toggle]",
+              "position": [
+                0.9,
+                0.5
+              ],
+              "delivered": true
+            }
+          ],
+          "errors": []
+        }
+      ],
+      "passed": true
+    },
+    "sovereignty_status": {
+      "section": "Universal Sovereignty",
+      "environment": "staging",
+      "recorded_entries": 1,
+      "four_copies_secured": 1,
+      "configured_vaults": 4,
+      "retention_configured": true,
+      "blockchain": {
+        "not_submitted": 0,
+        "pending_bitcoin": 1,
+        "bitcoin_confirmed": 0
+      },
+      "expired_locks": 0,
+      "hosting": {
+        "php_version": "8.3.33",
+        "proc_open_available": true,
+        "crontab_available": true,
+        "php_cli_candidates": [
+          "/usr/local/bin/php",
+          "/usr/bin/php",
+          "/opt/cpanel/ea-php83/root/usr/bin/php",
+          "/opt/cpanel/ea-php82/root/usr/bin/php"
+        ],
+        "filesystem_free_bytes": 310960578560,
+        "account_quota_verified": true,
+        "account_quota_checked_at": "2026-09-21T19:18:35+00:00",
+        "paid_services_created": false
+      },
+      "operations": {
+        "worker-status": {
+          "checked_at": "2026-09-22T07:05:04+00:00",
+          "processed": 0,
+          "four_copies_secured": 0,
+          "capacity_pending": false,
+          "storage_bytes_upper_bound": 18586144,
+          "storage_limit_bytes": 9000000000
+        },
+        "scheduler": {
+          "installed": true,
+          "interval_minutes": 5,
+          "verified_at": "2026-09-21T19:15:21+00:00"
+        },
+        "last-run": {
+          "started_at": "2026-09-22T07:05:02+00:00",
+          "delivery": {
+            "checked_at": "2026-09-22T07:05:04+00:00",
+            "processed": 0,
+            "four_copies_secured": 0,
+            "capacity_pending": false,
+            "storage_bytes_upper_bound": 18586144,
+            "storage_limit_bytes": 9000000000
+          },
+          "timestamps_processed": 2,
+          "finished_at": "2026-09-22T07:05:08+00:00"
+        }
+      },
+      "storage_plan": "b2-free-v1",
+      "storage_limit_bytes": 9000000000,
+      "contract_execution": false,
+      "token_issuance": false
+    }
+  },
+  "production": {
+    "origin": "https://universalmind.tv",
+    "public_assets": [
+      {
+        "file": "i  a m/adaptive-environment-television.html",
+        "url": "https://universalmind.tv/vogue/iam/adaptive-environment-television.html?v=0d5f63ff490c",
+        "exit_code": 0,
+        "sha256": "0d5f63ff490c83ca31e5f49381e1c227045dbe65479f77842a4e1401067a92ee",
+        "matches": true
+      },
+      {
+        "file": "i  a m/adaptive-environment-television.js",
+        "url": "https://universalmind.tv/vogue/iam/adaptive-environment-television.js?v=18c5895fee6a",
+        "exit_code": 0,
+        "sha256": "18c5895fee6a4d3ffb2bbe5b4da12ef86c790e72786fddffb23af604e7d2221e",
+        "matches": true
+      },
+      {
+        "file": "i  a m/adaptive-sound-intent-policy-v1.json",
+        "url": "https://universalmind.tv/vogue/iam/adaptive-sound-intent-policy-v1.json?v=52752d92fe1a",
+        "exit_code": 0,
+        "sha256": "52752d92fe1adf6e4c91ae165d8ec121f01beb4541323493b991a127032d38c8",
+        "matches": true
+      },
+      {
+        "file": "i  a m/adaptive-sound/controller-v1.js",
+        "url": "https://universalmind.tv/vogue/iam/adaptive-sound/controller-v1.js?v=7f548521e42b",
+        "exit_code": 0,
+        "sha256": "7f548521e42b97c7cf3309710a0c83d7a1cddcc267ef850b147f4f9dbc73afdf",
+        "matches": true
+      },
+      {
+        "file": "i  a m/adaptive-sound/owner-synth-v1.js",
+        "url": "https://universalmind.tv/vogue/iam/adaptive-sound/owner-synth-v1.js?v=3e76b26be3bc",
+        "exit_code": 0,
+        "sha256": "3e76b26be3bcbaea96f6cf1217ab040e1ba7da7d181a9bc8d4f257d07ebfe6ad",
+        "matches": true
+      },
+      {
+        "file": "i  a m/adaptive-sound/session-v1.js",
+        "url": "https://universalmind.tv/vogue/iam/adaptive-sound/session-v1.js?v=003d6bf15828",
+        "exit_code": 0,
+        "sha256": "003d6bf158284da79a4773b5cda43d2c3c84e5a94ea4a4ac7e2dbb10333ff07c",
+        "matches": true
+      },
+      {
+        "file": "i  a m/adaptive-sound/worklet-v1.js",
+        "url": "https://universalmind.tv/vogue/iam/adaptive-sound/worklet-v1.js?v=319a423521a5",
+        "exit_code": 0,
+        "sha256": "319a423521a5b7d1b64cf2b5fddc0c1238e9ed70d3245fabffeca58e0db7e67a",
+        "matches": true
+      },
+      {
+        "file": "i  a m/fullscreen-navigation.js",
+        "url": "https://universalmind.tv/vogue/iam/fullscreen-navigation.js?v=5bad9952835a",
+        "exit_code": 0,
+        "sha256": "5bad9952835a1d2aea8fbe034e68472a72e47fce1fbcf8700750409b0c409399",
+        "matches": true
+      },
+      {
+        "file": "i  a m/homepage-alternate.js",
+        "url": "https://universalmind.tv/vogue/iam/homepage-alternate.js?v=f708ebabfacf",
+        "exit_code": 0,
+        "sha256": "f708ebabfacfe40dfc43c0c06e3c52a4aaf539d9096f3f1f9a4ade561ac0d89d",
+        "matches": true
+      },
+      {
+        "file": "i  a m/homepage-session-accents.js",
+        "url": "https://universalmind.tv/vogue/iam/homepage-session-accents.js?v=eb175c364f15",
+        "exit_code": 0,
+        "sha256": "eb175c364f157d205d9a160bb49db8c23314a6ac964dcae7f285c7004a186d02",
+        "matches": true
+      },
+      {
+        "file": "i  a m/index-alt.html",
+        "url": "https://universalmind.tv/vogue/iam/index-alt.html?v=60d022d0102c",
+        "exit_code": 0,
+        "sha256": "60d022d0102c1e453faf44b1e850d13aab7ed0cebe1490634266e28a0abd5adc",
+        "matches": true
+      },
+      {
+        "file": "i  a m/index.html",
+        "url": "https://universalmind.tv/vogue/iam/index.html?v=f38e038e57a5",
+        "exit_code": 0,
+        "sha256": "f38e038e57a510f78d96b007eae427417dd05eceb4c902755649c4813867ac2a",
+        "matches": true
+      },
+      {
+        "file": "i  a m/quantum-tree-control.css",
+        "url": "https://universalmind.tv/vogue/iam/quantum-tree-control.css?v=55edd4cda1f7",
+        "exit_code": 0,
+        "sha256": "55edd4cda1f7eae2171831f44c5f9f1690c35c137506130909de5d7ab4582815",
+        "matches": true
+      },
+      {
+        "file": "i  a m/quantum-tree-control.html",
+        "url": "https://universalmind.tv/vogue/iam/quantum-tree-control.html?v=1253775083bf",
+        "exit_code": 0,
+        "sha256": "1253775083bf9b04b12a2512edae5b1108707ae79ef5fc94d036691d351af837",
+        "matches": true
+      },
+      {
+        "file": "i  a m/quantum-tree-control.js",
+        "url": "https://universalmind.tv/vogue/iam/quantum-tree-control.js?v=6167a5cb8854",
+        "exit_code": 0,
+        "sha256": "6167a5cb88545faf28eb67c7bb1ff61a3f965bf33325313aef7594fd97697212",
+        "matches": true
+      },
+      {
+        "file": "i  a m/research/shen-heart-rate.js",
+        "url": "https://universalmind.tv/vogue/iam/research/shen-heart-rate.js?v=5b984015d22e",
+        "exit_code": 0,
+        "sha256": "5b984015d22e64a0e984594df2e32fe7e64b56297dec333f4ad9c0b5526fc509",
+        "matches": true
+      },
+      {
+        "file": "i  a m/study/app.js",
+        "url": "https://universalmind.tv/vogue/iam/study/app.js?v=ab0264cc642b",
+        "exit_code": 0,
+        "sha256": "ab0264cc642b6d427695bbf5bc04d3d73619a8975c96615a2c9da50b5373fd79",
+        "matches": true
+      },
+      {
+        "file": "i  a m/study/experience.js",
+        "url": "https://universalmind.tv/vogue/iam/study/experience.js?v=8d08d2ed82b1",
+        "exit_code": 0,
+        "sha256": "8d08d2ed82b1e62b81fce15a91b5741cb04daeed3702ec12c45bf25aea7d5d1d",
+        "matches": true
+      },
+      {
+        "file": "i  a m/study/exposure-sync.js",
+        "url": "https://universalmind.tv/vogue/iam/study/exposure-sync.js?v=ec88d9bc9d06",
+        "exit_code": 0,
+        "sha256": "ec88d9bc9d06b21eb4d288e4e84a1df685bbdcbb0e3495a9cea51b05856fbbfe",
+        "matches": true
+      },
+      {
+        "file": "i  a m/study/protocol-v1.json",
+        "url": "https://universalmind.tv/vogue/iam/study/protocol-v1.json?v=53cb26d0449d",
+        "exit_code": 0,
+        "sha256": "53cb26d0449d7d5c4731cf50392d608c0a739d3793c7490365b587d1492cc264",
+        "matches": true
+      },
+      {
+        "file": "i  a m/study/reflection.css",
+        "url": "https://universalmind.tv/vogue/iam/study/reflection.css?v=e5d2a0ba5a30",
+        "exit_code": 0,
+        "sha256": "e5d2a0ba5a308eef39014d89d8d9302565c8ae6de526ea3aacaaf9258014bf2e",
+        "matches": true
+      },
+      {
+        "file": "i  a m/study/reflection.js",
+        "url": "https://universalmind.tv/vogue/iam/study/reflection.js?v=73e7b539696c",
+        "exit_code": 0,
+        "sha256": "73e7b539696cc2732d5c15d9e12b9c9203e4833e44aef1b3dd5fd3223345aa9f",
+        "matches": true
+      },
+      {
+        "file": "i  a m/study/shen-bridge.js",
+        "url": "https://universalmind.tv/vogue/iam/study/shen-bridge.js?v=96f251071839",
+        "exit_code": 0,
+        "sha256": "96f251071839af19251f179fbded02cbff2a4d5fb73d483980a96f2d465d7ed2",
+        "matches": true
+      },
+      {
+        "file": "index.html",
+        "url": "https://universalmind.tv/index.html?v=d86b50d4a9a2",
+        "exit_code": 0,
+        "sha256": "d86b50d4a9a24d539f0a0c005e1e6979c9cbec1e8882789c2751022fa9385dc6",
+        "matches": true
+      }
+    ],
+    "server_source": [
+      {
+        "file": "i  a m/adaptive_sound_policy.py",
+        "matches": true,
+        "sha256": "88acd84f3b113aee8b62ea34df0c64a95f8426d064680f65511a5bc45279f6e3",
+        "error": null
+      },
+      {
+        "file": "i  a m/api/portal-entry.php",
+        "matches": true,
+        "sha256": "8757549e1e00bc857f6f5cbe5e50a7c3b5d2ed1b617b74208c06fbae27f96fbe",
+        "error": null
+      },
+      {
+        "file": "i  a m/api/sovereignty-lib.php",
+        "matches": true,
+        "sha256": "7baf8dca9ca5ff9563d751f8e408ed3c978c6a180f105d1c8a40a2d3c77d0b12",
+        "error": null
+      },
+      {
+        "file": "i  a m/api/sovereignty-operations.php",
+        "matches": true,
+        "sha256": "87d0c6cf9432ac8d97f91aabc1f62cc85f1e1670dc9d6b2bf909aca818ba0b25",
+        "error": null
+      },
+      {
+        "file": "i  a m/api/sovereignty-run.php",
+        "matches": true,
+        "sha256": "c19d56f276c116cd297ce4818309a6d0541403bc4e6c9308f8ee89800fc6c92d",
+        "error": null
+      },
+      {
+        "file": "i  a m/api/sovereignty-status.php",
+        "matches": true,
+        "sha256": "a7aa42a27d8d89faa3daace0b740bd4cfb69c13279a9445537dc8eddcd965cb4",
+        "error": null
+      },
+      {
+        "file": "i  a m/api/sovereignty-timestamps.php",
+        "matches": true,
+        "sha256": "19dbf0613746d79e104838ad636dedee3acd1c9a74342faa6cbabceeff69199c",
+        "error": null
+      },
+      {
+        "file": "i  a m/api/sovereignty-worker.php",
+        "matches": true,
+        "sha256": "b756cd948f609b8d1f738aebbaf08f09bd0b618ebc47b1720bde5b0ed84fdd16",
+        "error": null
+      },
+      {
+        "file": "i  a m/api/study-ending-test.php",
+        "matches": true,
+        "sha256": "2c9535c24cbed553c1d9b05d811dc9a4d4e8feee82d0680de3360a0f8d161673",
+        "error": null
+      },
+      {
+        "file": "i  a m/api/study-lib.php",
+        "matches": true,
+        "sha256": "b691ac5d924463e2c0b9249c90430ae49de9be6fb525502df352923f7e39ecfd",
+        "error": null
+      },
+      {
+        "file": "i  a m/api/study.php",
+        "matches": true,
+        "sha256": "5d5a6b6efbd0d1d440cd5aecdf2635845ee93c2b9b1b60bf656354b835a4205b",
+        "error": null
+      },
+      {
+        "file": "i  a m/research.php",
+        "matches": true,
+        "sha256": "292343100128293db8f23dcb1ecea1bc73f211c2be770a9627cc7b45b1d4c730",
+        "error": null
+      },
+      {
+        "file": "i  a m/study-ending-test.php",
+        "matches": true,
+        "sha256": "894cccfb9a7cc406fb0b55d0991d495dfbf72e4ab748cf3003eeae537ca9f029",
+        "error": null
+      },
+      {
+        "file": "i  a m/study.php",
+        "matches": true,
+        "sha256": "4c40cd14cd7f261f53a1db82555b8ab89b11d870fc6ce3dc5ec95e842b705003",
+        "error": null
+      }
+    ],
+    "browser_suite": [
+      {
+        "test": "check-audio-mix-monitor",
+        "exit_code": 0,
+        "seconds": 27.6
+      },
+      {
+        "test": "check-dashboard-button-hit-regions",
+        "exit_code": 0,
+        "seconds": 15.5
+      },
+      {
+        "test": "check-mantra-audition",
+        "exit_code": 0,
+        "seconds": 3.2
+      },
+      {
+        "test": "check-homepage-participate-browser",
+        "exit_code": 0,
+        "seconds": 35.4
+      },
+      {
+        "test": "study-player",
+        "exit_code": 0,
+        "seconds": 8.7
+      }
+    ],
+    "mix_monitor": {
+      "mutedProcess": true,
+      "localAssets": false,
+      "checks": [
+        "Public no-check-in session stays unselected; this mix test explicitly chooses Alpha / 222 Hz",
+        "One programme Play click starts the explicitly selected test synth with Sound panel closed",
+        "Explicit test renderer is Alpha 10.11 Hz at 80% with a 222 Hz carrier; all four displayed lane percentages match audio-thread power weights",
+        "Real random programme, Quantum Tree and mantra clocks advance; mantra output verified",
+        "Changing the session profile updates the primary pulse and lane percentages from the new renderer; carrier changes independently",
+        "Existing session choice runs synth; rendered-frame clock, actual route gain, carrier and all four rates visible",
+        "Mantra off freezes its file position and reads zero volume",
+        "Suspended audio context freezes synth runtime and clears live output",
+        "Sound master off freezes synth runtime and zeroes synth/mantra volume",
+        "Programme pause preserves displayed position and closes mantra gain",
+        "Desktop, mobile and landscape overlay bounded, scrollable and without horizontal overflow"
+      ],
+      "defaultSynth": {
+        "panel_open": false,
+        "master_enabled": true,
+        "synth_enabled": true,
+        "profile_id": "calm_alpha_80_v1",
+        "profile_authority": "citizen_current_session_choice",
+        "selection_basis": "citizen_session_override",
+        "carrier_hz": 222,
+        "rendered_carrier_hz": 222,
+        "intensity_percent": 35,
+        "programme_output_multiplier": 1,
+        "route_output_gain": 0.35,
+        "current_output_gain": 0.3499999940395355,
+        "output_rms": 0.0025252168796138087,
+        "running": true,
+        "run_seconds": 3.030204081632653,
+        "lanes": {
+          "delta": {
+            "rate_hz": 3.33,
+            "phase_cycles": 0.09057959183403165,
+            "power_weight": 0.0666,
+            "envelope_gain": 0.4319843272694497,
+            "enabled": true
+          },
+          "theta": {
+            "rate_hz": 7.38,
+            "phase_cycles": 0.3629061224494985,
+            "power_weight": 0.0666,
+            "envelope_gain": 0.6613880661451383,
+            "enabled": true
+          },
+          "alpha": {
+            "rate_hz": 10.11,
+            "phase_cycles": 0.6353632653031144,
+            "power_weight": 0.8,
+            "envelope_gain": 0.2,
+            "enabled": true
+          },
+          "gamma": {
+            "rate_hz": 111,
+            "phase_cycles": 0.3526530612221195,
+            "power_weight": 0.0666,
+            "envelope_gain": 0.7229562049761185,
+            "enabled": true
+          }
+        },
+        "allocation": {
+          "diamond_frequency_power_total": 0.9998,
+          "noise_power_weight": 0.0001,
+          "silence_power_weight": 0.0001,
+          "total": 1
+        },
+        "mastering_condition": "engineering_on",
+        "envelope_candidate_id": "raised_cosine_50_depth_80_v1",
+        "lowpass_candidate_id": "butterworth_12db_minimum_phase_v1",
+        "enabled_lanes": {
+          "delta": true,
+          "theta": true,
+          "alpha": true,
+          "gamma": true
+        },
+        "context_state": "running",
+        "sample_rate": 44100,
+        "engine_state": "running",
+        "route_profile_id": "calm_alpha_80_v1",
+        "route_carrier_hz": 222,
+        "last_error": "",
+        "output_layout": "mono_source_identical_dual_mono",
+        "waveform_source": "audio_thread_lane_diagnostics",
+        "session_scope": "current_session_only",
+        "session_snapshot": {
+          "schema_version": "iam_adaptive_sound_session_resolution_v1",
+          "policy_version": "checkin_session_single_carrier_v1",
+          "selected": true,
+          "selection_basis": "citizen_session_override",
+          "session_scope": "current_session_only",
+          "automatic_mid_session_morph": false,
+          "band_intent": "alpha",
+          "dominant_lane": "alpha",
+          "dominant_isochronic_hz": 10.11,
+          "experience": "calm",
+          "profile_id": "calm_alpha_80_v1",
+          "carrier_intent": "self_connection",
+          "carrier_hz": 222,
+          "carrier_mode": "single",
+          "diamond_power_weights": {
+            "delta": 0.0666,
+            "theta": 0.0666,
+            "alpha": 0.8,
+            "gamma": 0.0666
+          },
+          "isochronic_hz": {
+            "delta": 3.33,
+            "theta": 7.38,
+            "alpha": 10.11,
+            "gamma": 111
+          },
+          "noise_power_weight": 0.0001,
+          "silence_power_weight": 0.0001,
+          "top_needs_used": [],
+          "explicit_cues_used": [],
+          "confidence": 0,
+          "scores": {
+            "selected_band": 0,
+            "selected_carrier": 0
+          },
+          "safety": {
+            "state": "standard",
+            "quantum_tree_enabled": true,
+            "quantum_tree_policy": "on_unless_citizen_master_off_preference",
+            "adaptive_frequencies_enabled": true,
+            "adaptive_frequencies_default": true,
+            "citizen_session_opt_in_required": false,
+            "human_review_required": false,
+            "notification": {
+              "status": "not_applicable",
+              "authority": "consented_authorized_human_in_the_loop_only",
+              "model_must_not_contact_any_person": true
+            }
+          },
+          "authority": {
+            "selection_authority": "citizen_current_session_choice",
+            "resolver": "deterministic_browser_policy_resolver_v1",
+            "policy_registry": "adaptive-sound-intent-policy-v1.json",
+            "policy_version": "checkin_session_single_carrier_v1",
+            "profile_registry": "iam_adaptive_sound_lab_v1",
+            "inference_engine_version": null,
+            "prompt_version": null,
+            "prompt_sha256": null
+          },
+          "research_boundary": "biological_targets_not_loaded_or_used_by_product_resolver",
+          "claim_boundary": "experimental_adaptive_environment_not_brain_entrainment_diagnosis_treatment_or_proven_benefit",
+          "audit": {
+            "source_event": "audio_mix_qa",
+            "raw_checkin_text_used": false,
+            "research_hypotheses_registry_loaded": false,
+            "automatic_mid_session_morph": false,
+            "current_session_only": true,
+            "session_choice_present": true,
+            "fusion_policy_version": "",
+            "fusion_action": "",
+            "fusion_outputs_changed": [],
+            "context_modifiers_used": [],
+            "context_dimensions_considered": [
+              "time",
+              "weather",
+              "location"
+            ],
+            "horizons_considered": [
+              "horizon_1",
+              "horizon_2",
+              "horizon_3"
+            ],
+            "heart_rate_role": "not_available",
+            "heart_rate_zone": "not_available",
+            "raw_heart_rate_retained": false,
+            "baseline_comparison_used": false
+          }
+        },
+        "quantum_tree": {
+          "enabled": true,
+          "activeSource": "video",
+          "sourceFile": "a s s e t s/q u a n t u m [ t r e e ].m4a",
+          "codec": "AAC 192 kbps",
+          "fileLoaded": true,
+          "playing": true,
+          "advancing": true,
+          "currentTime": 2.996148,
+          "duration": 43.861333,
+          "readyState": 4,
+          "mediaLevel": 0.037814272070410826,
+          "targetVolume": 0.018801382509877507,
+          "currentVolume": 0.020205518855013743,
+          "peakVolume": 0.055,
+          "outputMultiplier": 1,
+          "auditionMode": false,
+          "continuityActive": false,
+          "lastError": "",
+          "lastPlayReason": "layer_start",
+          "settingsLoaded": true,
+          "silenceFloor": 0.012,
+          "fullMaskLevel": 0.12
+        }
+      },
+      "realProgramme": {
+        "quantum": {
+          "enabled": true,
+          "activeSource": "video",
+          "sourceFile": "a s s e t s/q u a n t u m [ t r e e ].m4a",
+          "codec": "AAC 192 kbps",
+          "fileLoaded": true,
+          "playing": true,
+          "advancing": true,
+          "currentTime": 2.996148,
+          "duration": 43.861333,
+          "readyState": 4,
+          "mediaLevel": 0.037814272070410826,
+          "targetVolume": 0.018801382509877507,
+          "currentVolume": 0.020205518855013743,
+          "peakVolume": 0.055,
+          "outputMultiplier": 1,
+          "auditionMode": false,
+          "continuityActive": false,
+          "lastError": "",
+          "lastPlayReason": "layer_start",
+          "settingsLoaded": true,
+          "silenceFloor": 0.012,
+          "fullMaskLevel": 0.12
+        },
+        "mantra": {
+          "policy": "mantra-quantum-follow-v3",
+          "enabled": true,
+          "platformEnabled": true,
+          "masterEnabled": true,
+          "status": "mixing",
+          "targetGain": 0.006798997330995622,
+          "currentGain": 0.006798997521400452,
+          "programmePlaying": true,
+          "programmeSource": "video",
+          "programmeTime": 2.728345,
+          "quantumGain": 0.020396991992986866,
+          "outputRms": 8.186695514740189e-05,
+          "outputVerified": true,
+          "clockAdvancing": true,
+          "quantumGainRatio": 0.3333333333333333,
+          "readyState": 4,
+          "currentTime": 3.32,
+          "duration": 334.782,
+          "playing": true,
+          "contextState": "running",
+          "assetReady": true,
+          "assetBytes": 8066724,
+          "delivery": "complete_blob",
+          "exposureSeconds": 1.6210999999046325,
+          "studyAssignment": "not_integrated"
+        }
+      },
+      "synthClock": {
+        "before": {
+          "panel_open": false,
+          "master_enabled": true,
+          "synth_enabled": true,
+          "profile_id": "inspiration_gamma_80_v1",
+          "profile_authority": "citizen_current_session_choice",
+          "selection_basis": "citizen_session_override",
+          "carrier_hz": 444,
+          "rendered_carrier_hz": 444,
+          "intensity_percent": 35,
+          "programme_output_multiplier": 1,
+          "route_output_gain": 0.35,
+          "current_output_gain": 0.3499999940395355,
+          "output_rms": 0.002459783901943509,
+          "running": true,
+          "run_seconds": 0.7575510204081632,
+          "lanes": {
+            "delta": {
+              "rate_hz": 3.33,
+              "phase_cycles": 0.522644897958669,
+              "power_weight": 0.0666,
+              "envelope_gain": 0.2,
+              "enabled": true
+            },
+            "theta": {
+              "rate_hz": 7.38,
+              "phase_cycles": 0.5907265306123741,
+              "power_weight": 0.0666,
+              "envelope_gain": 0.2,
+              "enabled": true
+            },
+            "alpha": {
+              "rate_hz": 10.11,
+              "phase_cycles": 0.6588408163258085,
+              "power_weight": 0.0666,
+              "envelope_gain": 0.2,
+              "enabled": true
+            },
+            "gamma": {
+              "rate_hz": 111,
+              "phase_cycles": 0.08816326530552959,
+              "power_weight": 0.8,
+              "envelope_gain": 0.4101514916553237,
+              "enabled": true
+            }
+          },
+          "allocation": {
+            "diamond_frequency_power_total": 0.9998,
+            "noise_power_weight": 0.0001,
+            "silence_power_weight": 0.0001,
+            "total": 1
+          },
+          "mastering_condition": "engineering_on",
+          "envelope_candidate_id": "raised_cosine_50_depth_80_v1",
+          "lowpass_candidate_id": "butterworth_12db_minimum_phase_v1",
+          "enabled_lanes": {
+            "delta": true,
+            "theta": true,
+            "alpha": true,
+            "gamma": true
+          },
+          "context_state": "running",
+          "sample_rate": 44100,
+          "engine_state": "running",
+          "route_profile_id": "inspiration_gamma_80_v1",
+          "route_carrier_hz": 444,
+          "last_error": "",
+          "output_layout": "mono_source_identical_dual_mono",
+          "waveform_source": "audio_thread_lane_diagnostics",
+          "session_scope": "current_session_only",
+          "session_snapshot": {
+            "schema_version": "iam_adaptive_sound_session_resolution_v1",
+            "policy_version": "checkin_session_single_carrier_v1",
+            "selected": true,
+            "selection_basis": "citizen_session_override",
+            "session_scope": "current_session_only",
+            "automatic_mid_session_morph": false,
+            "band_intent": "gamma",
+            "dominant_lane": "gamma",
+            "dominant_isochronic_hz": 111,
+            "experience": "inspiration",
+            "profile_id": "inspiration_gamma_80_v1",
+            "carrier_intent": "presence",
+            "carrier_hz": 444,
+            "carrier_mode": "single",
+            "diamond_power_weights": {
+              "delta": 0.0666,
+              "theta": 0.0666,
+              "alpha": 0.0666,
+              "gamma": 0.8
+            },
+            "isochronic_hz": {
+              "delta": 3.33,
+              "theta": 7.38,
+              "alpha": 10.11,
+              "gamma": 111
+            },
+            "noise_power_weight": 0.0001,
+            "silence_power_weight": 0.0001,
+            "top_needs_used": [],
+            "explicit_cues_used": [],
+            "confidence": 0,
+            "scores": {
+              "selected_band": 0,
+              "selected_carrier": 0
+            },
+            "safety": {
+              "state": "standard",
+              "quantum_tree_enabled": true,
+              "quantum_tree_policy": "on_unless_citizen_master_off_preference",
+              "adaptive_frequencies_enabled": true,
+              "adaptive_frequencies_default": true,
+              "citizen_session_opt_in_required": false,
+              "human_review_required": false,
+              "notification": {
+                "status": "not_applicable",
+                "authority": "consented_authorized_human_in_the_loop_only",
+                "model_must_not_contact_any_person": true
+              }
+            },
+            "authority": {
+              "selection_authority": "citizen_current_session_choice",
+              "resolver": "deterministic_browser_policy_resolver_v1",
+              "policy_registry": "adaptive-sound-intent-policy-v1.json",
+              "policy_version": "checkin_session_single_carrier_v1",
+              "profile_registry": "iam_adaptive_sound_lab_v1",
+              "inference_engine_version": null,
+              "prompt_version": null,
+              "prompt_sha256": null
+            },
+            "research_boundary": "biological_targets_not_loaded_or_used_by_product_resolver",
+            "claim_boundary": "experimental_adaptive_environment_not_brain_entrainment_diagnosis_treatment_or_proven_benefit",
+            "audit": {
+              "source_event": "sound_panel_carrier_choice",
+              "raw_checkin_text_used": false,
+              "research_hypotheses_registry_loaded": false,
+              "automatic_mid_session_morph": false,
+              "current_session_only": true,
+              "session_choice_present": true,
+              "fusion_policy_version": "",
+              "fusion_action": "",
+              "fusion_outputs_changed": [],
+              "context_modifiers_used": [],
+              "context_dimensions_considered": [
+                "time",
+                "weather",
+                "location"
+              ],
+              "horizons_considered": [
+                "horizon_1",
+                "horizon_2",
+                "horizon_3"
+              ],
+              "heart_rate_role": "not_available",
+              "heart_rate_zone": "not_available",
+              "raw_heart_rate_retained": false,
+              "baseline_comparison_used": false
+            }
+          },
+          "quantum_tree": {
+            "enabled": true,
+            "activeSource": "video",
+            "sourceFile": "a s s e t s/q u a n t u m [ t r e e ].m4a",
+            "codec": "AAC 192 kbps",
+            "fileLoaded": true,
+            "playing": true,
+            "advancing": true,
+            "currentTime": 3.802342,
+            "duration": 43.861333,
+            "readyState": 4,
+            "mediaLevel": 0.033944935510017524,
+            "targetVolume": 0.016645452453568983,
+            "currentVolume": 0.022964995109723114,
+            "peakVolume": 0.055,
+            "outputMultiplier": 1,
+            "auditionMode": false,
+            "continuityActive": false,
+            "lastError": "",
+            "lastPlayReason": "layer_start",
+            "settingsLoaded": true,
+            "silenceFloor": 0.012,
+            "fullMaskLevel": 0.12
+          }
+        },
+        "after": {
+          "panel_open": false,
+          "master_enabled": true,
+          "synth_enabled": true,
+          "profile_id": "inspiration_gamma_80_v1",
+          "profile_authority": "citizen_current_session_choice",
+          "selection_basis": "citizen_session_override",
+          "carrier_hz": 444,
+          "rendered_carrier_hz": 444,
+          "intensity_percent": 35,
+          "programme_output_multiplier": 1,
+          "route_output_gain": 0.35,
+          "current_output_gain": 0.3499999940395355,
+          "output_rms": 0.0024208169514158464,
+          "running": true,
+          "run_seconds": 2.27265306122449,
+          "lanes": {
+            "delta": {
+              "rate_hz": 3.33,
+              "phase_cycles": 0.5679346938756572,
+              "power_weight": 0.0666,
+              "envelope_gain": 0.2,
+              "enabled": true
+            },
+            "theta": {
+              "rate_hz": 7.38,
+              "phase_cycles": 0.7721795918371244,
+              "power_weight": 0.0666,
+              "envelope_gain": 0.2,
+              "enabled": true
+            },
+            "alpha": {
+              "rate_hz": 10.11,
+              "phase_cycles": 0.976522448977306,
+              "power_weight": 0.0666,
+              "envelope_gain": 0.2,
+              "enabled": true
+            },
+            "gamma": {
+              "rate_hz": 111,
+              "phase_cycles": 0.26448979591658944,
+              "power_weight": 0.8,
+              "envelope_gain": 0.9954812221554237,
+              "enabled": true
+            }
+          },
+          "allocation": {
+            "diamond_frequency_power_total": 0.9998,
+            "noise_power_weight": 0.0001,
+            "silence_power_weight": 0.0001,
+            "total": 1
+          },
+          "mastering_condition": "engineering_on",
+          "envelope_candidate_id": "raised_cosine_50_depth_80_v1",
+          "lowpass_candidate_id": "butterworth_12db_minimum_phase_v1",
+          "enabled_lanes": {
+            "delta": true,
+            "theta": true,
+            "alpha": true,
+            "gamma": true
+          },
+          "context_state": "running",
+          "sample_rate": 44100,
+          "engine_state": "running",
+          "route_profile_id": "inspiration_gamma_80_v1",
+          "route_carrier_hz": 444,
+          "last_error": "",
+          "output_layout": "mono_source_identical_dual_mono",
+          "waveform_source": "audio_thread_lane_diagnostics",
+          "session_scope": "current_session_only",
+          "session_snapshot": {
+            "schema_version": "iam_adaptive_sound_session_resolution_v1",
+            "policy_version": "checkin_session_single_carrier_v1",
+            "selected": true,
+            "selection_basis": "citizen_session_override",
+            "session_scope": "current_session_only",
+            "automatic_mid_session_morph": false,
+            "band_intent": "gamma",
+            "dominant_lane": "gamma",
+            "dominant_isochronic_hz": 111,
+            "experience": "inspiration",
+            "profile_id": "inspiration_gamma_80_v1",
+            "carrier_intent": "presence",
+            "carrier_hz": 444,
+            "carrier_mode": "single",
+            "diamond_power_weights": {
+              "delta": 0.0666,
+              "theta": 0.0666,
+              "alpha": 0.0666,
+              "gamma": 0.8
+            },
+            "isochronic_hz": {
+              "delta": 3.33,
+              "theta": 7.38,
+              "alpha": 10.11,
+              "gamma": 111
+            },
+            "noise_power_weight": 0.0001,
+            "silence_power_weight": 0.0001,
+            "top_needs_used": [],
+            "explicit_cues_used": [],
+            "confidence": 0,
+            "scores": {
+              "selected_band": 0,
+              "selected_carrier": 0
+            },
+            "safety": {
+              "state": "standard",
+              "quantum_tree_enabled": true,
+              "quantum_tree_policy": "on_unless_citizen_master_off_preference",
+              "adaptive_frequencies_enabled": true,
+              "adaptive_frequencies_default": true,
+              "citizen_session_opt_in_required": false,
+              "human_review_required": false,
+              "notification": {
+                "status": "not_applicable",
+                "authority": "consented_authorized_human_in_the_loop_only",
+                "model_must_not_contact_any_person": true
+              }
+            },
+            "authority": {
+              "selection_authority": "citizen_current_session_choice",
+              "resolver": "deterministic_browser_policy_resolver_v1",
+              "policy_registry": "adaptive-sound-intent-policy-v1.json",
+              "policy_version": "checkin_session_single_carrier_v1",
+              "profile_registry": "iam_adaptive_sound_lab_v1",
+              "inference_engine_version": null,
+              "prompt_version": null,
+              "prompt_sha256": null
+            },
+            "research_boundary": "biological_targets_not_loaded_or_used_by_product_resolver",
+            "claim_boundary": "experimental_adaptive_environment_not_brain_entrainment_diagnosis_treatment_or_proven_benefit",
+            "audit": {
+              "source_event": "sound_panel_carrier_choice",
+              "raw_checkin_text_used": false,
+              "research_hypotheses_registry_loaded": false,
+              "automatic_mid_session_morph": false,
+              "current_session_only": true,
+              "session_choice_present": true,
+              "fusion_policy_version": "",
+              "fusion_action": "",
+              "fusion_outputs_changed": [],
+              "context_modifiers_used": [],
+              "context_dimensions_considered": [
+                "time",
+                "weather",
+                "location"
+              ],
+              "horizons_considered": [
+                "horizon_1",
+                "horizon_2",
+                "horizon_3"
+              ],
+              "heart_rate_role": "not_available",
+              "heart_rate_zone": "not_available",
+              "raw_heart_rate_retained": false,
+              "baseline_comparison_used": false
+            }
+          },
+          "quantum_tree": {
+            "enabled": true,
+            "activeSource": "video",
+            "sourceFile": "a s s e t s/q u a n t u m [ t r e e ].m4a",
+            "codec": "AAC 192 kbps",
+            "fileLoaded": true,
+            "playing": true,
+            "advancing": true,
+            "currentTime": 5.417097,
+            "duration": 43.861333,
+            "readyState": 4,
+            "mediaLevel": 0.04353241620754689,
+            "targetVolume": 0.021845541314131255,
+            "currentVolume": 0.025143447760654122,
+            "peakVolume": 0.055,
+            "outputMultiplier": 1,
+            "auditionMode": false,
+            "continuityActive": false,
+            "lastError": "",
+            "lastPlayReason": "layer_start",
+            "settingsLoaded": true,
+            "silenceFloor": 0.012,
+            "fullMaskLevel": 0.12
+          }
+        }
+      },
+      "synth": {
+        "panel_open": false,
+        "master_enabled": true,
+        "synth_enabled": true,
+        "profile_id": "inspiration_gamma_80_v1",
+        "profile_authority": "citizen_current_session_choice",
+        "selection_basis": "citizen_session_override",
+        "carrier_hz": 444,
+        "rendered_carrier_hz": 444,
+        "intensity_percent": 35,
+        "programme_output_multiplier": 1,
+        "route_output_gain": 0.35,
+        "current_output_gain": 0.3499999940395355,
+        "output_rms": 0.0024208169514158464,
+        "running": true,
+        "run_seconds": 2.27265306122449,
+        "lanes": {
+          "delta": {
+            "rate_hz": 3.33,
+            "phase_cycles": 0.5679346938756572,
+            "power_weight": 0.0666,
+            "envelope_gain": 0.2,
+            "enabled": true
+          },
+          "theta": {
+            "rate_hz": 7.38,
+            "phase_cycles": 0.7721795918371244,
+            "power_weight": 0.0666,
+            "envelope_gain": 0.2,
+            "enabled": true
+          },
+          "alpha": {
+            "rate_hz": 10.11,
+            "phase_cycles": 0.976522448977306,
+            "power_weight": 0.0666,
+            "envelope_gain": 0.2,
+            "enabled": true
+          },
+          "gamma": {
+            "rate_hz": 111,
+            "phase_cycles": 0.26448979591658944,
+            "power_weight": 0.8,
+            "envelope_gain": 0.9954812221554237,
+            "enabled": true
+          }
+        },
+        "allocation": {
+          "diamond_frequency_power_total": 0.9998,
+          "noise_power_weight": 0.0001,
+          "silence_power_weight": 0.0001,
+          "total": 1
+        },
+        "mastering_condition": "engineering_on",
+        "envelope_candidate_id": "raised_cosine_50_depth_80_v1",
+        "lowpass_candidate_id": "butterworth_12db_minimum_phase_v1",
+        "enabled_lanes": {
+          "delta": true,
+          "theta": true,
+          "alpha": true,
+          "gamma": true
+        },
+        "context_state": "running",
+        "sample_rate": 44100,
+        "engine_state": "running",
+        "route_profile_id": "inspiration_gamma_80_v1",
+        "route_carrier_hz": 444,
+        "last_error": "",
+        "output_layout": "mono_source_identical_dual_mono",
+        "waveform_source": "audio_thread_lane_diagnostics",
+        "session_scope": "current_session_only",
+        "session_snapshot": {
+          "schema_version": "iam_adaptive_sound_session_resolution_v1",
+          "policy_version": "checkin_session_single_carrier_v1",
+          "selected": true,
+          "selection_basis": "citizen_session_override",
+          "session_scope": "current_session_only",
+          "automatic_mid_session_morph": false,
+          "band_intent": "gamma",
+          "dominant_lane": "gamma",
+          "dominant_isochronic_hz": 111,
+          "experience": "inspiration",
+          "profile_id": "inspiration_gamma_80_v1",
+          "carrier_intent": "presence",
+          "carrier_hz": 444,
+          "carrier_mode": "single",
+          "diamond_power_weights": {
+            "delta": 0.0666,
+            "theta": 0.0666,
+            "alpha": 0.0666,
+            "gamma": 0.8
+          },
+          "isochronic_hz": {
+            "delta": 3.33,
+            "theta": 7.38,
+            "alpha": 10.11,
+            "gamma": 111
+          },
+          "noise_power_weight": 0.0001,
+          "silence_power_weight": 0.0001,
+          "top_needs_used": [],
+          "explicit_cues_used": [],
+          "confidence": 0,
+          "scores": {
+            "selected_band": 0,
+            "selected_carrier": 0
+          },
+          "safety": {
+            "state": "standard",
+            "quantum_tree_enabled": true,
+            "quantum_tree_policy": "on_unless_citizen_master_off_preference",
+            "adaptive_frequencies_enabled": true,
+            "adaptive_frequencies_default": true,
+            "citizen_session_opt_in_required": false,
+            "human_review_required": false,
+            "notification": {
+              "status": "not_applicable",
+              "authority": "consented_authorized_human_in_the_loop_only",
+              "model_must_not_contact_any_person": true
+            }
+          },
+          "authority": {
+            "selection_authority": "citizen_current_session_choice",
+            "resolver": "deterministic_browser_policy_resolver_v1",
+            "policy_registry": "adaptive-sound-intent-policy-v1.json",
+            "policy_version": "checkin_session_single_carrier_v1",
+            "profile_registry": "iam_adaptive_sound_lab_v1",
+            "inference_engine_version": null,
+            "prompt_version": null,
+            "prompt_sha256": null
+          },
+          "research_boundary": "biological_targets_not_loaded_or_used_by_product_resolver",
+          "claim_boundary": "experimental_adaptive_environment_not_brain_entrainment_diagnosis_treatment_or_proven_benefit",
+          "audit": {
+            "source_event": "sound_panel_carrier_choice",
+            "raw_checkin_text_used": false,
+            "research_hypotheses_registry_loaded": false,
+            "automatic_mid_session_morph": false,
+            "current_session_only": true,
+            "session_choice_present": true,
+            "fusion_policy_version": "",
+            "fusion_action": "",
+            "fusion_outputs_changed": [],
+            "context_modifiers_used": [],
+            "context_dimensions_considered": [
+              "time",
+              "weather",
+              "location"
+            ],
+            "horizons_considered": [
+              "horizon_1",
+              "horizon_2",
+              "horizon_3"
+            ],
+            "heart_rate_role": "not_available",
+            "heart_rate_zone": "not_available",
+            "raw_heart_rate_retained": false,
+            "baseline_comparison_used": false
+          }
+        },
+        "quantum_tree": {
+          "enabled": true,
+          "activeSource": "video",
+          "sourceFile": "a s s e t s/q u a n t u m [ t r e e ].m4a",
+          "codec": "AAC 192 kbps",
+          "fileLoaded": true,
+          "playing": true,
+          "advancing": true,
+          "currentTime": 5.417097,
+          "duration": 43.861333,
+          "readyState": 4,
+          "mediaLevel": 0.04353241620754689,
+          "targetVolume": 0.021845541314131255,
+          "currentVolume": 0.025143447760654122,
+          "peakVolume": 0.055,
+          "outputMultiplier": 1,
+          "auditionMode": false,
+          "continuityActive": false,
+          "lastError": "",
+          "lastPlayReason": "layer_start",
+          "settingsLoaded": true,
+          "silenceFloor": 0.012,
+          "fullMaskLevel": 0.12
+        }
+      },
+      "passed": true,
+      "pageErrors": [],
+      "cleanup": true
+    },
+    "dashboard_hit_regions": {
+      "authentication": "Owner API response fixture; no settings writes",
+      "playback": "All click actions and media playback blocked; WebKit is used only for hit testing",
+      "browsers": [
+        {
+          "name": "chromium",
+          "results": [
+            {
+              "viewport": {
+                "width": 1470,
+                "height": 956
+              },
+              "selector": "[data-preview-toggle]",
+              "position": [
+                0.5,
+                0.15
+              ],
+              "delivered": true
+            },
+            {
+              "viewport": {
+                "width": 1470,
+                "height": 956
+              },
+              "selector": "[data-preview-toggle]",
+              "position": [
+                0.5,
+                0.5
+              ],
+              "delivered": true
+            },
+            {
+              "viewport": {
+                "width": 1470,
+                "height": 956
+              },
+              "selector": "[data-preview-toggle]",
+              "position": [
+                0.5,
+                0.85
+              ],
+              "delivered": true
+            },
+            {
+              "viewport": {
+                "width": 1470,
+                "height": 956
+              },
+              "selector": "[data-preview-toggle]",
+              "position": [
+                0.1,
+                0.5
+              ],
+              "delivered": true
+            },
+            {
+              "viewport": {
+                "width": 1470,
+                "height": 956
+              },
+              "selector": "[data-preview-toggle]",
+              "position": [
+                0.9,
+                0.5
+              ],
+              "delivered": true
+            },
+            {
+              "viewport": {
+                "width": 1470,
+                "height": 956
+              },
+              "selector": "[data-mantra-preview-toggle]",
+              "position": [
+                0.5,
+                0.15
+              ],
+              "delivered": true
+            },
+            {
+              "viewport": {
+                "width": 1470,
+                "height": 956
+              },
+              "selector": "[data-mantra-preview-toggle]",
+              "position": [
+                0.5,
+                0.5
+              ],
+              "delivered": true
+            },
+            {
+              "viewport": {
+                "width": 1470,
+                "height": 956
+              },
+              "selector": "[data-mantra-preview-toggle]",
+              "position": [
+                0.5,
+                0.85
+              ],
+              "delivered": true
+            },
+            {
+              "viewport": {
+                "width": 1470,
+                "height": 956
+              },
+              "selector": "[data-mantra-preview-toggle]",
+              "position": [
+                0.1,
+                0.5
+              ],
+              "delivered": true
+            },
+            {
+              "viewport": {
+                "width": 1470,
+                "height": 956
+              },
+              "selector": "[data-mantra-preview-toggle]",
+              "position": [
+                0.9,
+                0.5
+              ],
+              "delivered": true
+            },
+            {
+              "viewport": {
+                "width": 1470,
+                "height": 956
+              },
+              "selector": "[data-preview-together]",
+              "position": [
+                0.5,
+                0.15
+              ],
+              "delivered": true
+            },
+            {
+              "viewport": {
+                "width": 1470,
+                "height": 956
+              },
+              "selector": "[data-preview-together]",
+              "position": [
+                0.5,
+                0.5
+              ],
+              "delivered": true
+            },
+            {
+              "viewport": {
+                "width": 1470,
+                "height": 956
+              },
+              "selector": "[data-preview-together]",
+              "position": [
+                0.5,
+                0.85
+              ],
+              "delivered": true
+            },
+            {
+              "viewport": {
+                "width": 1470,
+                "height": 956
+              },
+              "selector": "[data-preview-together]",
+              "position": [
+                0.1,
+                0.5
+              ],
+              "delivered": true
+            },
+            {
+              "viewport": {
+                "width": 1470,
+                "height": 956
+              },
+              "selector": "[data-preview-together]",
+              "position": [
+                0.9,
+                0.5
+              ],
+              "delivered": true
+            },
+            {
+              "viewport": {
+                "width": 1470,
+                "height": 956
+              },
+              "selector": "[data-synth-preview-toggle]",
+              "position": [
+                0.5,
+                0.15
+              ],
+              "delivered": true
+            },
+            {
+              "viewport": {
+                "width": 1470,
+                "height": 956
+              },
+              "selector": "[data-synth-preview-toggle]",
+              "position": [
+                0.5,
+                0.5
+              ],
+              "delivered": true
+            },
+            {
+              "viewport": {
+                "width": 1470,
+                "height": 956
+              },
+              "selector": "[data-synth-preview-toggle]",
+              "position": [
+                0.5,
+                0.85
+              ],
+              "delivered": true
+            },
+            {
+              "viewport": {
+                "width": 1470,
+                "height": 956
+              },
+              "selector": "[data-synth-preview-toggle]",
+              "position": [
+                0.1,
+                0.5
+              ],
+              "delivered": true
+            },
+            {
+              "viewport": {
+                "width": 1470,
+                "height": 956
+              },
+              "selector": "[data-synth-preview-toggle]",
+              "position": [
+                0.9,
+                0.5
+              ],
+              "delivered": true
+            },
+            {
+              "viewport": {
+                "width": 390,
+                "height": 844
+              },
+              "selector": "[data-preview-toggle]",
+              "position": [
+                0.5,
+                0.15
+              ],
+              "delivered": true
+            },
+            {
+              "viewport": {
+                "width": 390,
+                "height": 844
+              },
+              "selector": "[data-preview-toggle]",
+              "position": [
+                0.5,
+                0.5
+              ],
+              "delivered": true
+            },
+            {
+              "viewport": {
+                "width": 390,
+                "height": 844
+              },
+              "selector": "[data-preview-toggle]",
+              "position": [
+                0.5,
+                0.85
+              ],
+              "delivered": true
+            },
+            {
+              "viewport": {
+                "width": 390,
+                "height": 844
+              },
+              "selector": "[data-preview-toggle]",
+              "position": [
+                0.1,
+                0.5
+              ],
+              "delivered": true
+            },
+            {
+              "viewport": {
+                "width": 390,
+                "height": 844
+              },
+              "selector": "[data-preview-toggle]",
+              "position": [
+                0.9,
+                0.5
+              ],
+              "delivered": true
+            },
+            {
+              "viewport": {
+                "width": 390,
+                "height": 844
+              },
+              "selector": "[data-mantra-preview-toggle]",
+              "position": [
+                0.5,
+                0.15
+              ],
+              "delivered": true
+            },
+            {
+              "viewport": {
+                "width": 390,
+                "height": 844
+              },
+              "selector": "[data-mantra-preview-toggle]",
+              "position": [
+                0.5,
+                0.5
+              ],
+              "delivered": true
+            },
+            {
+              "viewport": {
+                "width": 390,
+                "height": 844
+              },
+              "selector": "[data-mantra-preview-toggle]",
+              "position": [
+                0.5,
+                0.85
+              ],
+              "delivered": true
+            },
+            {
+              "viewport": {
+                "width": 390,
+                "height": 844
+              },
+              "selector": "[data-mantra-preview-toggle]",
+              "position": [
+                0.1,
+                0.5
+              ],
+              "delivered": true
+            },
+            {
+              "viewport": {
+                "width": 390,
+                "height": 844
+              },
+              "selector": "[data-mantra-preview-toggle]",
+              "position": [
+                0.9,
+                0.5
+              ],
+              "delivered": true
+            },
+            {
+              "viewport": {
+                "width": 390,
+                "height": 844
+              },
+              "selector": "[data-preview-together]",
+              "position": [
+                0.5,
+                0.15
+              ],
+              "delivered": true
+            },
+            {
+              "viewport": {
+                "width": 390,
+                "height": 844
+              },
+              "selector": "[data-preview-together]",
+              "position": [
+                0.5,
+                0.5
+              ],
+              "delivered": true
+            },
+            {
+              "viewport": {
+                "width": 390,
+                "height": 844
+              },
+              "selector": "[data-preview-together]",
+              "position": [
+                0.5,
+                0.85
+              ],
+              "delivered": true
+            },
+            {
+              "viewport": {
+                "width": 390,
+                "height": 844
+              },
+              "selector": "[data-preview-together]",
+              "position": [
+                0.1,
+                0.5
+              ],
+              "delivered": true
+            },
+            {
+              "viewport": {
+                "width": 390,
+                "height": 844
+              },
+              "selector": "[data-preview-together]",
+              "position": [
+                0.9,
+                0.5
+              ],
+              "delivered": true
+            },
+            {
+              "viewport": {
+                "width": 390,
+                "height": 844
+              },
+              "selector": "[data-synth-preview-toggle]",
+              "position": [
+                0.5,
+                0.15
+              ],
+              "delivered": true
+            },
+            {
+              "viewport": {
+                "width": 390,
+                "height": 844
+              },
+              "selector": "[data-synth-preview-toggle]",
+              "position": [
+                0.5,
+                0.5
+              ],
+              "delivered": true
+            },
+            {
+              "viewport": {
+                "width": 390,
+                "height": 844
+              },
+              "selector": "[data-synth-preview-toggle]",
+              "position": [
+                0.5,
+                0.85
+              ],
+              "delivered": true
+            },
+            {
+              "viewport": {
+                "width": 390,
+                "height": 844
+              },
+              "selector": "[data-synth-preview-toggle]",
+              "position": [
+                0.1,
+                0.5
+              ],
+              "delivered": true
+            },
+            {
+              "viewport": {
+                "width": 390,
+                "height": 844
+              },
+              "selector": "[data-synth-preview-toggle]",
+              "position": [
+                0.9,
+                0.5
+              ],
+              "delivered": true
+            }
+          ],
+          "errors": []
+        },
+        {
+          "name": "webkit",
+          "results": [
+            {
+              "viewport": {
+                "width": 1470,
+                "height": 956
+              },
+              "selector": "[data-preview-toggle]",
+              "position": [
+                0.5,
+                0.15
+              ],
+              "delivered": true
+            },
+            {
+              "viewport": {
+                "width": 1470,
+                "height": 956
+              },
+              "selector": "[data-preview-toggle]",
+              "position": [
+                0.5,
+                0.5
+              ],
+              "delivered": true
+            },
+            {
+              "viewport": {
+                "width": 1470,
+                "height": 956
+              },
+              "selector": "[data-preview-toggle]",
+              "position": [
+                0.5,
+                0.85
+              ],
+              "delivered": true
+            },
+            {
+              "viewport": {
+                "width": 1470,
+                "height": 956
+              },
+              "selector": "[data-preview-toggle]",
+              "position": [
+                0.1,
+                0.5
+              ],
+              "delivered": true
+            },
+            {
+              "viewport": {
+                "width": 1470,
+                "height": 956
+              },
+              "selector": "[data-preview-toggle]",
+              "position": [
+                0.9,
+                0.5
+              ],
+              "delivered": true
+            },
+            {
+              "viewport": {
+                "width": 1470,
+                "height": 956
+              },
+              "selector": "[data-mantra-preview-toggle]",
+              "position": [
+                0.5,
+                0.15
+              ],
+              "delivered": true
+            },
+            {
+              "viewport": {
+                "width": 1470,
+                "height": 956
+              },
+              "selector": "[data-mantra-preview-toggle]",
+              "position": [
+                0.5,
+                0.5
+              ],
+              "delivered": true
+            },
+            {
+              "viewport": {
+                "width": 1470,
+                "height": 956
+              },
+              "selector": "[data-mantra-preview-toggle]",
+              "position": [
+                0.5,
+                0.85
+              ],
+              "delivered": true
+            },
+            {
+              "viewport": {
+                "width": 1470,
+                "height": 956
+              },
+              "selector": "[data-mantra-preview-toggle]",
+              "position": [
+                0.1,
+                0.5
+              ],
+              "delivered": true
+            },
+            {
+              "viewport": {
+                "width": 1470,
+                "height": 956
+              },
+              "selector": "[data-mantra-preview-toggle]",
+              "position": [
+                0.9,
+                0.5
+              ],
+              "delivered": true
+            },
+            {
+              "viewport": {
+                "width": 1470,
+                "height": 956
+              },
+              "selector": "[data-preview-together]",
+              "position": [
+                0.5,
+                0.15
+              ],
+              "delivered": true
+            },
+            {
+              "viewport": {
+                "width": 1470,
+                "height": 956
+              },
+              "selector": "[data-preview-together]",
+              "position": [
+                0.5,
+                0.5
+              ],
+              "delivered": true
+            },
+            {
+              "viewport": {
+                "width": 1470,
+                "height": 956
+              },
+              "selector": "[data-preview-together]",
+              "position": [
+                0.5,
+                0.85
+              ],
+              "delivered": true
+            },
+            {
+              "viewport": {
+                "width": 1470,
+                "height": 956
+              },
+              "selector": "[data-preview-together]",
+              "position": [
+                0.1,
+                0.5
+              ],
+              "delivered": true
+            },
+            {
+              "viewport": {
+                "width": 1470,
+                "height": 956
+              },
+              "selector": "[data-preview-together]",
+              "position": [
+                0.9,
+                0.5
+              ],
+              "delivered": true
+            },
+            {
+              "viewport": {
+                "width": 1470,
+                "height": 956
+              },
+              "selector": "[data-synth-preview-toggle]",
+              "position": [
+                0.5,
+                0.15
+              ],
+              "delivered": true
+            },
+            {
+              "viewport": {
+                "width": 1470,
+                "height": 956
+              },
+              "selector": "[data-synth-preview-toggle]",
+              "position": [
+                0.5,
+                0.5
+              ],
+              "delivered": true
+            },
+            {
+              "viewport": {
+                "width": 1470,
+                "height": 956
+              },
+              "selector": "[data-synth-preview-toggle]",
+              "position": [
+                0.5,
+                0.85
+              ],
+              "delivered": true
+            },
+            {
+              "viewport": {
+                "width": 1470,
+                "height": 956
+              },
+              "selector": "[data-synth-preview-toggle]",
+              "position": [
+                0.1,
+                0.5
+              ],
+              "delivered": true
+            },
+            {
+              "viewport": {
+                "width": 1470,
+                "height": 956
+              },
+              "selector": "[data-synth-preview-toggle]",
+              "position": [
+                0.9,
+                0.5
+              ],
+              "delivered": true
+            },
+            {
+              "viewport": {
+                "width": 390,
+                "height": 844
+              },
+              "selector": "[data-preview-toggle]",
+              "position": [
+                0.5,
+                0.15
+              ],
+              "delivered": true
+            },
+            {
+              "viewport": {
+                "width": 390,
+                "height": 844
+              },
+              "selector": "[data-preview-toggle]",
+              "position": [
+                0.5,
+                0.5
+              ],
+              "delivered": true
+            },
+            {
+              "viewport": {
+                "width": 390,
+                "height": 844
+              },
+              "selector": "[data-preview-toggle]",
+              "position": [
+                0.5,
+                0.85
+              ],
+              "delivered": true
+            },
+            {
+              "viewport": {
+                "width": 390,
+                "height": 844
+              },
+              "selector": "[data-preview-toggle]",
+              "position": [
+                0.1,
+                0.5
+              ],
+              "delivered": true
+            },
+            {
+              "viewport": {
+                "width": 390,
+                "height": 844
+              },
+              "selector": "[data-preview-toggle]",
+              "position": [
+                0.9,
+                0.5
+              ],
+              "delivered": true
+            },
+            {
+              "viewport": {
+                "width": 390,
+                "height": 844
+              },
+              "selector": "[data-mantra-preview-toggle]",
+              "position": [
+                0.5,
+                0.15
+              ],
+              "delivered": true
+            },
+            {
+              "viewport": {
+                "width": 390,
+                "height": 844
+              },
+              "selector": "[data-mantra-preview-toggle]",
+              "position": [
+                0.5,
+                0.5
+              ],
+              "delivered": true
+            },
+            {
+              "viewport": {
+                "width": 390,
+                "height": 844
+              },
+              "selector": "[data-mantra-preview-toggle]",
+              "position": [
+                0.5,
+                0.85
+              ],
+              "delivered": true
+            },
+            {
+              "viewport": {
+                "width": 390,
+                "height": 844
+              },
+              "selector": "[data-mantra-preview-toggle]",
+              "position": [
+                0.1,
+                0.5
+              ],
+              "delivered": true
+            },
+            {
+              "viewport": {
+                "width": 390,
+                "height": 844
+              },
+              "selector": "[data-mantra-preview-toggle]",
+              "position": [
+                0.9,
+                0.5
+              ],
+              "delivered": true
+            },
+            {
+              "viewport": {
+                "width": 390,
+                "height": 844
+              },
+              "selector": "[data-preview-together]",
+              "position": [
+                0.5,
+                0.15
+              ],
+              "delivered": true
+            },
+            {
+              "viewport": {
+                "width": 390,
+                "height": 844
+              },
+              "selector": "[data-preview-together]",
+              "position": [
+                0.5,
+                0.5
+              ],
+              "delivered": true
+            },
+            {
+              "viewport": {
+                "width": 390,
+                "height": 844
+              },
+              "selector": "[data-preview-together]",
+              "position": [
+                0.5,
+                0.85
+              ],
+              "delivered": true
+            },
+            {
+              "viewport": {
+                "width": 390,
+                "height": 844
+              },
+              "selector": "[data-preview-together]",
+              "position": [
+                0.1,
+                0.5
+              ],
+              "delivered": true
+            },
+            {
+              "viewport": {
+                "width": 390,
+                "height": 844
+              },
+              "selector": "[data-preview-together]",
+              "position": [
+                0.9,
+                0.5
+              ],
+              "delivered": true
+            },
+            {
+              "viewport": {
+                "width": 390,
+                "height": 844
+              },
+              "selector": "[data-synth-preview-toggle]",
+              "position": [
+                0.5,
+                0.15
+              ],
+              "delivered": true
+            },
+            {
+              "viewport": {
+                "width": 390,
+                "height": 844
+              },
+              "selector": "[data-synth-preview-toggle]",
+              "position": [
+                0.5,
+                0.5
+              ],
+              "delivered": true
+            },
+            {
+              "viewport": {
+                "width": 390,
+                "height": 844
+              },
+              "selector": "[data-synth-preview-toggle]",
+              "position": [
+                0.5,
+                0.85
+              ],
+              "delivered": true
+            },
+            {
+              "viewport": {
+                "width": 390,
+                "height": 844
+              },
+              "selector": "[data-synth-preview-toggle]",
+              "position": [
+                0.1,
+                0.5
+              ],
+              "delivered": true
+            },
+            {
+              "viewport": {
+                "width": 390,
+                "height": 844
+              },
+              "selector": "[data-synth-preview-toggle]",
+              "position": [
+                0.9,
+                0.5
+              ],
+              "delivered": true
+            }
+          ],
+          "errors": []
+        }
+      ],
+      "passed": true
+    },
+    "dashboard_playback": {
+      "mutedProcess": true,
+      "authentication": "Owner API response fixture; no credentials or settings changed",
+      "checks": [
+        {
+          "label": "First click on cold dashboard starts all three layers; synth clock and measured output advance",
+          "synth": {
+            "running": true,
+            "pending": false,
+            "enabled": true,
+            "volume": 0.3499999940395355,
+            "outputRms": 0.002676834857902605,
+            "runSeconds": 0.2525170068027211,
+            "profileId": "calm_alpha_80_v1",
+            "carrierHz": 222,
+            "error": "",
+            "lanes": {
+              "delta": {
+                "rate_hz": 3.33,
+                "phase_cycles": 0.8408816326528896,
+                "power_weight": 0.0666,
+                "envelope_gain": 0.2,
+                "enabled": true
+              },
+              "theta": {
+                "rate_hz": 7.38,
+                "phase_cycles": 0.8635755102041247,
+                "power_weight": 0.0666,
+                "envelope_gain": 0.2,
+                "enabled": true
+              },
+              "alpha": {
+                "rate_hz": 10.11,
+                "phase_cycles": 0.5529469387753093,
+                "power_weight": 0.8,
+                "envelope_gain": 0.2,
+                "enabled": true
+              },
+              "gamma": {
+                "rate_hz": 111,
+                "phase_cycles": 0.029387755101843258,
+                "power_weight": 0.0666,
+                "envelope_gain": 0.22258805377960922,
+                "enabled": true
+              }
+            },
+            "allocation": {
+              "diamond_frequency_power_total": 0.9998,
+              "noise_power_weight": 0.0001,
+              "silence_power_weight": 0.0001,
+              "total": 1
+            }
+          }
+        },
+        {
+          "label": "Target-volume isolated playback and changing post-gain waveform",
+          "currentTime": 0.01029,
+          "playing": true,
+          "gain": 0.018333332613110542,
+          "targetGain": 0.018333333333333333,
+          "outputRms": 4.2709218332109317e-07,
+          "advancing": true,
+          "outputVerified": true,
+          "error": ""
+        },
+        {
+          "label": "Single-click isolated play, pause/resume, volume, three-layer combined play/pause, and Stop all passed"
+        },
+        {
+          "label": "Desktop and mobile controls visible without horizontal overflow"
+        }
+      ],
+      "passed": true,
+      "errors": [],
+      "last": {
+        "currentTime": 0,
+        "playing": false,
+        "gain": 0,
+        "targetGain": 0.018333333333333333,
+        "outputRms": 0,
+        "advancing": false,
+        "outputVerified": false,
+        "error": ""
+      }
+    },
+    "player": {
+      "passed": true,
+      "checks": [
+        {
+          "name": "Production clean password login and live study API",
+          "previewAvailable": false,
+          "passwordConfigured": true,
+          "readiness": {
+            "ready": false,
+            "missing": [
+              "Heart Check verification",
+              "Ten-minute video and combined experience verification",
+              "Participant materials and research review",
+              "Study contact",
+              "Data retention period"
+            ],
+            "open": true
+          },
+          "video": "Empire Of The Sun x Pryda \u2014 We Are The People"
+        },
+        {
+          "name": "Production Research > Participate opens the clean research login"
+        },
+        {
+          "name": "Published native research player: correct artist, advancing Stream video, real timer and locked controls",
+          "currentTime": 5.013502,
+          "duration": 488.14,
+          "paused": false,
+          "timer": "0:04 / 8:08",
+          "locked": true,
+          "inert": true,
+          "qa": {
+            "camera": 0,
+            "fullscreen": 0
+          }
+        }
+      ],
+      "errors": [],
+      "limits": [
+        "Research enrolment settings preserved; no participant records created.",
+        "Published player exercised using an isolated browser-only session fixture; production login and API configuration were checked without interception. No production biometrics or surveys submitted.",
+        "No native fullscreen, camera, microphone or audible playback."
+      ]
+    },
+    "reflection_ui_with_staging_preview_backend": {
+      "mode": "production-served-UI-with-isolated-staging-preview-backend",
+      "checks": [
+        {
+          "check": "read: reflection appears only after saved baseline, with player hidden and zero exposure"
+        },
+        {
+          "check": "Visible text advances progressively"
+        },
+        {
+          "check": "read: four exact messages, no text input, accessible read controls and no horizontal overflow"
+        },
+        {
+          "check": "read: Let\u2019s begin launches the actual Empire of the Sun film after saving the choice"
+        },
+        {
+          "check": "read: read/skip choice and version persist; reload does not repeat the reflection"
+        },
+        {
+          "check": "skip: reflection appears only after saved baseline, with player hidden and zero exposure"
+        },
+        {
+          "check": "skip: read/skip choice and version persist; reload does not repeat the reflection"
+        },
+        {
+          "check": "reduced: reflection appears only after saved baseline, with player hidden and zero exposure"
+        },
+        {
+          "check": "reduced: four exact messages, no text input, accessible read controls and no horizontal overflow"
+        },
+        {
+          "check": "reduced: Let\u2019s begin launches the actual Empire of the Sun film after saving the choice"
+        },
+        {
+          "check": "reduced: read/skip choice and version persist; reload does not repeat the reflection"
+        }
+      ],
+      "errors": [],
+      "safety": {
+        "audio": "--mute-audio",
+        "nativeFullscreen": false,
+        "camera": false,
+        "syntheticPreviewOnly": true
+      },
+      "at": "2026-09-22T07:19:42.768Z"
+    },
+    "api": {
+      "api": 200,
+      "preview_available": false,
+      "website_password_available": true,
+      "readiness": {
+        "ready": false,
+        "missing": [
+          "Heart Check verification",
+          "Ten-minute video and combined experience verification",
+          "Participant materials and research review",
+          "Study contact",
+          "Data retention period"
+        ],
+        "open": true
+      },
+      "stream_uid": "895caf7ddb62713b142dbc32f6d32c08",
+      "measurement_seconds": 10,
+      "protocol_version": "2026-09-22.1",
+      "reflection_version": "abandonment-reflection-2026-09-22.1",
+      "expanded_welcome_present": false,
+      "login_rejected": 401,
+      "preview_rejected": 403,
+      "admin.dataset_rejected": 403,
+      "no_participant_created": true,
+      "sovereignty_status_http": 503
+    },
+    "boundaries": [
+      {
+        "path": "/vogue/iam/study-ending-test.php",
+        "status": 404,
+        "denied": true
+      },
+      {
+        "path": "/vogue/iam/api/study-ending-test.php",
+        "status": 404,
+        "denied": true
+      },
+      {
+        "path": "/vogue/iam/api/.runtime-private/sovereignty/config.json",
+        "status": 403,
+        "denied": true
+      },
+      {
+        "path": "/vogue/iam/api/.runtime-private/sovereignty/signing-private.pem",
+        "status": 403,
+        "denied": true
+      },
+      {
+        "path": "/vogue/iam/api/.runtime-private/sovereignty/document.encrypted.json",
+        "status": 403,
+        "denied": true
+      },
+      {
+        "path": "/.private/universal-sovereignty/original.pdf",
+        "status": 403,
+        "denied": true
+      },
+      {
+        "path": "/vogue/iam/a%20s%20s%20e%20t%20s/s%20o%20v%20e%20r%20e%20i%20g%20n%20t%20y/Soul%20Contract%20Revocations%202014-2026.pdf",
+        "status": 403,
+        "denied": true
+      }
+    ]
+  },
+  "limitations": [
+    "Universal Sovereignty storage, scheduler provisioning and diagnostics are explicitly staging-only in this exact candidate. Production runtime was not provisioned, production status is HTTP 503, and no production first-entry archive or four-copy guarantee is claimed. A production configuration/source change awaits the user decision requested during this task.",
+    "Live staging Sovereignty has four configured vaults and its one recorded entry has four secured copies. Bitcoin confirmation is still pending. All four vaults are in one Backblaze account/provider, with 30-day locks and staging keys expiring 22 October 2026.",
+    "Production study access is open under the existing approved configuration, while readiness.ready remains false: Heart Check verification, combined-experience verification, participant materials/research review, study contact and retention period remain unverified/unset.",
+    "Full participant state transitions, final 30 seconds and completion retries used isolated staging stores. Production reflection UI used production-served files with requests bridged to a separate staging preview. Production player used a browser-only session fixture. These are not real-participant end-to-end production cohort tests.",
+    "No production participant, biometric, survey or reward records were created; no real participant password entered. Valid-password production-host logic was tested with synthetic credentials in isolated PHP.",
+    "No real camera accuracy, subjective sound quality, native OS fullscreen or uninterrupted eight-minute viewing was claimed. Separate process-muted Chromium performed playback; WebKit was used only for non-playback click checks.",
+    "The pre-song chatbot is a fixed animated script and does not make an OpenAI request. Existing researcher AI analysis was outside this changed-source release and was not re-exercised."
+  ],
+  "safety": {
+    "process_audio_disabled": "--mute-audio",
+    "native_fullscreen_invoked": false,
+    "camera_or_microphone_enabled": false,
+    "all_automated_media_sessions_closed": true,
+    "private_keys_or_credentials_committed": false
+  },
+  "verification_repairs": [
+    "HTTP asset comparisons used the existing curl-based path after Python urllib was rejected with 403.",
+    "WebKit cache was resolved with PLAYWRIGHT_BROWSERS_PATH; all 80 clicks then passed.",
+    "Read-only FTPS verification used the certificate hostname pinned to the production FTP IP and retried transient connection limits sequentially; TLS validation remained enabled.",
+    "Live API assertion was aligned with the current public response schema. No website source changes were required."
+  ]
+}
