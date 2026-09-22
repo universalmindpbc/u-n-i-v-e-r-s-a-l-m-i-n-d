@@ -63,7 +63,7 @@ function renderStep(s){
  setPage('home');app.innerHTML='';prepareExposure();
 }
 function renderReflection(s){
- setPage('reflection');prepareExposure();exposure.shell.hidden=true;
+ setPage('reflection');prepareExposure();exposure.shell.classList.add('is-preparing');
  reflection=mountReflection(app,{script:state.protocol.pre_music_reflection,onFinish:async choice=>{
   const active=exposure,canStart=active?.ready===true;
   // Preserve the trusted click for fullscreen; playback waits for the saved choice.
@@ -72,7 +72,7 @@ function renderReflection(s){
   if(exposure!==active)return;
   s.reflection=result.reflection;
   if(canStart)await startExposure(false);
-  else {setPage('home');app.innerHTML='';}
+  else {setPage('home');active.shell.classList.remove('is-preparing');app.innerHTML='';}
  }});
 }
 function rating(name){const happiness=name==='happiness';return `<div class="rating-response" aria-live="polite"><output data-rating-output>—<small>%</small></output></div><fieldset class="study-rating ${happiness?'has-emojis':''}" aria-label="${html(metricNames[name][0])}">${Array.from({length:10},(_,i)=>`<label><input type="radio" name="value" value="${i+1}" aria-label="${(i+1)*10}%" required>${happiness?face(i+1):`<span class="rating-dot" style="--i:${i}" aria-hidden="true"></span>`}<span class="study-rating-number">${(i+1)*10}%</span></label>`).join('')}</fieldset><div class="study-scale-ends"><span>${{happiness:'Least happy',stress:'Least stressed',connection:'Least connected'}[name]}</span><span>${{happiness:'Most happy',stress:'Most stressed',connection:'Most connected'}[name]}</span></div>`;}
