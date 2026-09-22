@@ -1,0 +1,391 @@
+{
+  "source_commit": "45b3255",
+  "verified_staging_commit": "e7a98ea6590aaaf08f7938e8a2bfa07be7513392",
+  "previous_production_commit": "53295e47dcf1a61aae3bd4a72043d29f3b6c70d5",
+  "private_provisioning": {
+    "verified": true,
+    "transport": "FTPS with certificate and data-channel validation",
+    "http_denial_installed_first": true,
+    "all_uploaded_files_verified_byte_for_byte": true,
+    "config_installed_last": true,
+    "owner_decryption_key_uploaded": false,
+    "separate_production_identity_signing_and_worker_keys": true,
+    "four_nonexpiring_bucket_restricted_production_credentials": true
+  },
+  "deployment": {
+    "workflow": "./deploy-panthurlive.sh all-changed followed by sovereignty-seed",
+    "changed_non_video_files": 7,
+    "unchanged_skipped": 1068,
+    "protected_owner_runtime": "verified unchanged"
+  },
+  "server_source": {
+    "environment": "production",
+    "server_source_bytes_match": [
+      "sovereignty-lib.php",
+      "sovereignty-operations.php",
+      "sovereignty-run.php",
+      "sovereignty-status.php",
+      "sovereignty-worker.php",
+      "portal-entry.php",
+      "sovereignty-timestamps.php"
+    ],
+    "passed": true
+  },
+  "http": {
+    "checked_at": "2026-09-22T20:18:25.343Z",
+    "checks": [
+      {
+        "name": "entry_get",
+        "status": 405
+      },
+      {
+        "name": "invalid_credential",
+        "status": 401
+      },
+      {
+        "name": "cross_origin",
+        "status": 403
+      },
+      {
+        "name": "unauthenticated_status",
+        "status": 403
+      },
+      {
+        "name": "unauthenticated_worker",
+        "status": 403
+      },
+      {
+        "name": "cli_runner_not_public",
+        "status": 404
+      },
+      {
+        "name": "private_config.json",
+        "status": 403
+      },
+      {
+        "name": "private_document.encrypted.json",
+        "status": 403
+      },
+      {
+        "name": "private_signing-private.pem",
+        "status": 403
+      },
+      {
+        "name": "production_gate_matches_approved_source_and_recording_hook",
+        "passed": true
+      },
+      {
+        "name": "staging_token_rejected_on_production",
+        "status": 403
+      },
+      {
+        "name": "30_second_research_test_route",
+        "status": 200
+      }
+    ],
+    "passed": true
+  },
+  "diagnostic": {
+    "environment": "production",
+    "action": "self_test",
+    "status": 200,
+    "body": {
+      "isolated_test": true,
+      "encryption_and_signing": true,
+      "duplicate_prevented": true,
+      "created": true,
+      "audience_entries_changed": false
+    }
+  },
+  "storage": {
+    "checked_at": "2026-09-22T20:17:26.358787+00:00",
+    "vaults": [
+      {
+        "vault": "b2-vault-1",
+        "private": true,
+        "default_compliance_days": 30,
+        "provider_encryption": true,
+        "version_count": 1,
+        "bytes": 2323274,
+        "restored_and_signature_verified": true,
+        "sealed_pdf_matches": true,
+        "locked_delete_rejected": "AccessDenied",
+        "retained_until": "2026-10-22T20:16:53+00:00"
+      },
+      {
+        "vault": "b2-vault-2",
+        "private": true,
+        "default_compliance_days": 30,
+        "provider_encryption": true,
+        "version_count": 1,
+        "bytes": 2323274,
+        "restored_and_signature_verified": true,
+        "sealed_pdf_matches": true,
+        "locked_delete_rejected": "AccessDenied",
+        "retained_until": "2026-10-22T20:16:53+00:00"
+      },
+      {
+        "vault": "b2-vault-3",
+        "private": true,
+        "default_compliance_days": 30,
+        "provider_encryption": true,
+        "version_count": 1,
+        "bytes": 2323274,
+        "restored_and_signature_verified": true,
+        "sealed_pdf_matches": true,
+        "locked_delete_rejected": "AccessDenied",
+        "retained_until": "2026-10-22T20:16:53+00:00"
+      },
+      {
+        "vault": "b2-vault-4",
+        "private": true,
+        "default_compliance_days": 30,
+        "provider_encryption": true,
+        "version_count": 1,
+        "bytes": 2323274,
+        "restored_and_signature_verified": true,
+        "sealed_pdf_matches": true,
+        "locked_delete_rejected": "AccessDenied",
+        "retained_until": "2026-10-22T20:16:53+00:00"
+      }
+    ],
+    "passed": true,
+    "all_four_copies_identical": true
+  },
+  "retry": {
+    "checked_at": "2026-09-22T20:19:14.825050+00:00",
+    "vaults": [
+      {
+        "vault": "b2-vault-1",
+        "version_count": 1,
+        "original_version_preserved": true
+      },
+      {
+        "vault": "b2-vault-2",
+        "version_count": 1,
+        "original_version_preserved": true
+      },
+      {
+        "vault": "b2-vault-3",
+        "version_count": 1,
+        "original_version_preserved": true
+      },
+      {
+        "vault": "b2-vault-4",
+        "version_count": 1,
+        "original_version_preserved": true
+      }
+    ],
+    "passed": true
+  },
+  "timestamps": {
+    "environment": "production",
+    "action": "timestamp_test",
+    "status": 200,
+    "body": {
+      "isolated_test": true,
+      "state": "pending_bitcoin",
+      "proof_count": 2
+    }
+  },
+  "participate": {
+    "passed": true,
+    "frontend": "live production",
+    "backend": "isolated production-source PHP 8.3 with synthetic password",
+    "checks": [
+      "Valid password submitted through actual login form reaches consent",
+      "Consent reaches first Heart Check",
+      "Returning through /study requires password again",
+      "Correct re-entered password restores same participant, consent and session",
+      "Reload within study retains authenticated progress",
+      "Production music playback to Participate reaches a real anonymous password gate; real API rejects wrong password",
+      "Returning from a saved experience via real production music playback requires password again; saved state uses isolated PHP"
+    ],
+    "productionRecordsChanged": false,
+    "actualWebsitePasswordUsed": false,
+    "errors": []
+  },
+  "limits": [
+    "Live production archive tests use one clearly separated synthetic diagnostic; no production audience record was created for testing.",
+    "Successful ordinary credential recording is verified using the exact PHP source with synthetic credentials in isolation.",
+    "The four copies are private buckets at one provider; each compliance lock lasts 30 days.",
+    "Two timestamp proofs have been accepted; no Bitcoin confirmation is claimed until six confirmations and matching explorer evidence.",
+    "This MVP records portal entry, not contract execution, consent or token issuance."
+  ],
+  "activation_observed_at": "2026-09-22T20:16:25+00:00",
+  "production_runtime": {
+    "section": "Universal Sovereignty",
+    "environment": "production",
+    "recorded_entries": 0,
+    "four_copies_secured": 0,
+    "configured_vaults": 4,
+    "retention_configured": true,
+    "blockchain": {
+      "not_submitted": 0,
+      "pending_bitcoin": 0,
+      "bitcoin_confirmed": 0
+    },
+    "expired_locks": 0,
+    "hosting": {
+      "php_version": "8.3.33",
+      "proc_open_available": true,
+      "crontab_available": true,
+      "php_cli_candidates": [
+        "/usr/local/bin/php",
+        "/usr/bin/php",
+        "/opt/cpanel/ea-php83/root/usr/bin/php",
+        "/opt/cpanel/ea-php82/root/usr/bin/php"
+      ],
+      "filesystem_free_bytes": 309833035776,
+      "account_quota_verified": true,
+      "account_quota_checked_at": "2026-09-22T20:16:54+00:00",
+      "paid_services_created": false
+    },
+    "operations": {
+      "worker-status": {
+        "checked_at": "2026-09-22T20:20:04+00:00",
+        "processed": 0,
+        "four_copies_secured": 0,
+        "capacity_pending": false,
+        "storage_bytes_upper_bound": 27879240,
+        "storage_limit_bytes": 9000000000
+      },
+      "scheduler": {
+        "installed": true,
+        "interval_minutes": 5,
+        "verified_at": "2026-09-22T20:16:25+00:00"
+      },
+      "last-run": {
+        "started_at": "2026-09-22T20:20:02+00:00",
+        "delivery": {
+          "checked_at": "2026-09-22T20:20:04+00:00",
+          "processed": 0,
+          "four_copies_secured": 0,
+          "capacity_pending": false,
+          "storage_bytes_upper_bound": 27879240,
+          "storage_limit_bytes": 9000000000
+        },
+        "timestamps_processed": 0,
+        "finished_at": "2026-09-22T20:20:04+00:00"
+      }
+    },
+    "diagnostics": {
+      "entries": 1,
+      "four_copies_secured": 1,
+      "timestamp_states": [
+        "pending_bitcoin"
+      ]
+    },
+    "storage_credentials_expire_at": null,
+    "storage_plan": "b2-free-v1",
+    "storage_limit_bytes": 9000000000,
+    "contract_execution": false,
+    "token_issuance": false
+  },
+  "staging_archive_preserved": {
+    "recorded_entries": 1,
+    "four_copies_secured": 1,
+    "scheduled_run": {
+      "started_at": "2026-09-22T20:22:01+00:00",
+      "delivery": {
+        "checked_at": "2026-09-22T20:22:04+00:00",
+        "processed": 0,
+        "four_copies_secured": 0,
+        "capacity_pending": false,
+        "storage_bytes_upper_bound": 27879240,
+        "storage_limit_bytes": 9000000000
+      },
+      "timestamps_processed": 2,
+      "finished_at": "2026-09-22T20:22:07+00:00"
+    }
+  },
+  "production_browser": {
+    "origin": "https://universalmind.tv",
+    "mutedProcess": true,
+    "checks": [
+      "Served root HTML matches the committed candidate after removing the existing CDN analytics injection; unchanged password form rejects an invalid credential",
+      "Actual deployed PHP signs and encrypts an isolated synthetic entry and rejects duplicate creation; audience records unchanged",
+      "Private runtime, encrypted document, signing key, original asset URL and owner-local source path deny HTTP access"
+    ],
+    "root_status": 200,
+    "archive": {
+      "section": "Universal Sovereignty",
+      "environment": "production",
+      "recorded_entries": 0,
+      "four_copies_secured": 0,
+      "configured_vaults": 4,
+      "retention_configured": true,
+      "blockchain": {
+        "not_submitted": 0,
+        "pending_bitcoin": 0,
+        "bitcoin_confirmed": 0
+      },
+      "expired_locks": 0,
+      "hosting": {
+        "php_version": "8.3.33",
+        "proc_open_available": true,
+        "crontab_available": true,
+        "php_cli_candidates": [
+          "/usr/local/bin/php",
+          "/usr/bin/php",
+          "/opt/cpanel/ea-php83/root/usr/bin/php",
+          "/opt/cpanel/ea-php82/root/usr/bin/php"
+        ],
+        "filesystem_free_bytes": 309832744960,
+        "account_quota_verified": true,
+        "account_quota_checked_at": "2026-09-22T20:16:54+00:00",
+        "paid_services_created": false
+      },
+      "operations": {
+        "worker-status": {
+          "checked_at": "2026-09-22T20:20:04+00:00",
+          "processed": 0,
+          "four_copies_secured": 0,
+          "capacity_pending": false,
+          "storage_bytes_upper_bound": 27879240,
+          "storage_limit_bytes": 9000000000
+        },
+        "scheduler": {
+          "installed": true,
+          "interval_minutes": 5,
+          "verified_at": "2026-09-22T20:16:25+00:00"
+        },
+        "last-run": {
+          "started_at": "2026-09-22T20:20:02+00:00",
+          "delivery": {
+            "checked_at": "2026-09-22T20:20:04+00:00",
+            "processed": 0,
+            "four_copies_secured": 0,
+            "capacity_pending": false,
+            "storage_bytes_upper_bound": 27879240,
+            "storage_limit_bytes": 9000000000
+          },
+          "timestamps_processed": 0,
+          "finished_at": "2026-09-22T20:20:04+00:00"
+        }
+      },
+      "diagnostics": {
+        "entries": 1,
+        "four_copies_secured": 1,
+        "timestamp_states": [
+          "pending_bitcoin"
+        ]
+      },
+      "storage_credentials_expire_at": null,
+      "storage_plan": "b2-free-v1",
+      "storage_limit_bytes": 9000000000,
+      "contract_execution": false,
+      "token_issuance": false,
+      "self_test": {
+        "isolated_test": true,
+        "encryption_and_signing": true,
+        "duplicate_prevented": true,
+        "created": false,
+        "audience_entries_changed": false
+      }
+    },
+    "passed": true
+  },
+  "verified_at": "2026-09-22T20:23:15.738895+00:00",
+  "passed": true
+}
