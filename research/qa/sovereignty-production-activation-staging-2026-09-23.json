@@ -1,0 +1,247 @@
+{
+  "source_commit": "45b3255",
+  "approved_participate_commit": "7fdc1f1e67ac3105bb086a8d650df49c4ddecbea",
+  "prior_production_commit": "53295e47dcf1a61aae3bd4a72043d29f3b6c70d5",
+  "scope": [
+    "Enable approved production recording, four locked-copy delivery, and background timestamp processing",
+    "Provide separate production identity, signing, worker and bucket credentials",
+    "Keep diagnostics outside real audience entries",
+    "Preserve approved Participate re-authentication fix in the combined release"
+  ],
+  "server_source": {
+    "environment": "staging",
+    "server_source_bytes_match": [
+      "sovereignty-lib.php",
+      "sovereignty-operations.php",
+      "sovereignty-run.php",
+      "sovereignty-status.php",
+      "sovereignty-worker.php",
+      "portal-entry.php",
+      "sovereignty-timestamps.php"
+    ],
+    "passed": true
+  },
+  "live_staging": {
+    "origin": "https://staging.universalmind.tv",
+    "mutedProcess": true,
+    "checks": [
+      "Served root HTML matches the committed candidate after removing the existing CDN analytics injection; unchanged password form rejects an invalid credential",
+      "Actual deployed PHP signs and encrypts an isolated synthetic entry and rejects duplicate creation; audience records unchanged",
+      "Private runtime, encrypted document, signing key, original asset URL and owner-local source path deny HTTP access"
+    ],
+    "root_status": 200,
+    "archive": {
+      "section": "Universal Sovereignty",
+      "environment": "staging",
+      "recorded_entries": 1,
+      "four_copies_secured": 1,
+      "configured_vaults": 4,
+      "retention_configured": true,
+      "blockchain": {
+        "not_submitted": 0,
+        "pending_bitcoin": 1,
+        "bitcoin_confirmed": 0
+      },
+      "expired_locks": 0,
+      "hosting": {
+        "php_version": "8.3.33",
+        "proc_open_available": true,
+        "crontab_available": true,
+        "php_cli_candidates": [
+          "/usr/local/bin/php",
+          "/usr/bin/php",
+          "/opt/cpanel/ea-php83/root/usr/bin/php",
+          "/opt/cpanel/ea-php82/root/usr/bin/php"
+        ],
+        "filesystem_free_bytes": 309841162240,
+        "account_quota_verified": true,
+        "account_quota_checked_at": "2026-09-21T19:18:35+00:00",
+        "paid_services_created": false
+      },
+      "operations": {
+        "worker-status": {
+          "checked_at": "2026-09-22T20:00:04+00:00",
+          "processed": 0,
+          "four_copies_secured": 0,
+          "capacity_pending": false,
+          "storage_bytes_upper_bound": 18586144,
+          "storage_limit_bytes": 9000000000
+        },
+        "scheduler": {
+          "installed": true,
+          "interval_minutes": 5,
+          "verified_at": "2026-09-21T19:15:21+00:00"
+        },
+        "last-run": {
+          "started_at": "2026-09-22T20:00:01+00:00",
+          "delivery": {
+            "checked_at": "2026-09-22T20:00:04+00:00",
+            "processed": 0,
+            "four_copies_secured": 0,
+            "capacity_pending": false,
+            "storage_bytes_upper_bound": 18586144,
+            "storage_limit_bytes": 9000000000
+          },
+          "timestamps_processed": 2,
+          "finished_at": "2026-09-22T20:00:07+00:00"
+        }
+      },
+      "diagnostics": {
+        "entries": 1,
+        "four_copies_secured": 1,
+        "timestamp_states": [
+          "pending_bitcoin"
+        ]
+      },
+      "storage_credentials_expire_at": null,
+      "storage_plan": "b2-free-v1",
+      "storage_limit_bytes": 9000000000,
+      "contract_execution": false,
+      "token_issuance": false,
+      "self_test": {
+        "isolated_test": true,
+        "encryption_and_signing": true,
+        "duplicate_prevented": true,
+        "created": false,
+        "audience_entries_changed": false
+      }
+    },
+    "passed": true
+  },
+  "provisioning_checks": [
+    "FTPS certificate and data-channel verification",
+    "HTTP denial installed before secrets; config installed last",
+    "Byte equality checked after upload and rename",
+    "Existing signing and identity keys cannot be replaced",
+    "Owner decryption key, mismatched document, unapproved production and wrong account rejected before network use"
+  ],
+  "storage_setup": {
+    "new_production_keys": 4,
+    "each_key_restricted_to_one_existing_bucket": true,
+    "expiration": null,
+    "credentials_saved_only_in_ignored_private_directory": true,
+    "default_compliance_days": 30,
+    "all_four_credentials_read_test_passed": true
+  },
+  "limitations": [
+    "Successful real-password recording is tested in isolated PHP with a synthetic credential; live diagnostics use a separate namespace.",
+    "Object locks last 30 days and the four buckets share one Backblaze account/provider.",
+    "Bitcoin proof confirmation is asynchronous and reported separately from secured archive copies.",
+    "This records first successfully captured portal entry; it does not execute a contract, collect consent or issue tokens."
+  ],
+  "browser_timing": {
+    "mutedProcess": true,
+    "usesSyntheticCredential": true,
+    "checks": [
+      "Desktop/mobile invalid passwords never send records; valid entry keeps its 700ms transition when recording stalls, fails, or fetch throws",
+      "No credential stored in localStorage or sessionStorage; no native fullscreen; muted browser closed"
+    ],
+    "timings": [
+      {
+        "viewport": "desktop",
+        "recording": "baseline",
+        "navigation_ms": 723
+      },
+      {
+        "viewport": "desktop",
+        "recording": "stalled",
+        "navigation_ms": 717
+      },
+      {
+        "viewport": "desktop",
+        "recording": "failed",
+        "navigation_ms": 718
+      },
+      {
+        "viewport": "desktop",
+        "recording": "throws",
+        "navigation_ms": 710
+      },
+      {
+        "viewport": "mobile",
+        "recording": "baseline",
+        "navigation_ms": 715
+      },
+      {
+        "viewport": "mobile",
+        "recording": "stalled",
+        "navigation_ms": 710
+      },
+      {
+        "viewport": "mobile",
+        "recording": "failed",
+        "navigation_ms": 715
+      },
+      {
+        "viewport": "mobile",
+        "recording": "throws",
+        "navigation_ms": 718
+      }
+    ],
+    "passed": true
+  },
+  "participate_combined_staging": {
+    "at": "2026-09-22T20:12:26.264Z",
+    "mode": "live-staging",
+    "processMuted": true,
+    "nativeFullscreen": false,
+    "camera": false,
+    "checks": [
+      {
+        "priorState": "fresh",
+        "expectedSession": false,
+        "realVideoSeconds": 0.342494,
+        "loginVisible": true,
+        "participant": null,
+        "noStudyPlayerBeforeLogin": true,
+        "invalidPasswordRejected": true,
+        "reloadDoesNotRepeatLogout": true,
+        "errors": []
+      },
+      {
+        "priorState": "briefing",
+        "expectedSession": false,
+        "realVideoSeconds": 0.24381,
+        "loginVisible": true,
+        "participant": null,
+        "noStudyPlayerBeforeLogin": true,
+        "invalidPasswordRejected": true,
+        "reloadDoesNotRepeatLogout": true,
+        "errors": []
+      },
+      {
+        "priorState": "experience",
+        "expectedSession": true,
+        "realVideoSeconds": 0.287907,
+        "loginVisible": true,
+        "participant": null,
+        "noStudyPlayerBeforeLogin": true,
+        "invalidPasswordRejected": true,
+        "reloadDoesNotRepeatLogout": true,
+        "errors": []
+      }
+    ],
+    "passed": true
+  },
+  "verified_at": "2026-09-22T20:13:45.476348+00:00",
+  "deployment": {
+    "workflow": "Existing deploy-panthur-staging.sh changed, followed by all-changed after combining the approved Participate fix",
+    "sovereignty_php_files_updated": 5,
+    "all_required_preflights_passed": true,
+    "source_byte_match_files": 7,
+    "protected_owner_runtime": "verified unchanged"
+  },
+  "local_php": {
+    "checks": [
+      "Wrong passwords, submitted digests, cross-origin requests, invalid JSON, wrong method/type and oversized bodies cannot create entries",
+      "Repeated requests preserve the exact original entry; a second credential creates one separate entry",
+      "Owner key decrypts the envelope; platform signature verifies; ciphertext or AAD tampering is rejected; no password or consent claim is archived",
+      "Only approved staging and production four-bucket free plans are accepted; the 9 GB ceiling, malformed proof rejection and calendar allowlist pass",
+      "A valid Bitcoin header with six confirmations passes; explorer disagreement, a corrupt header, wrong Merkle root and insufficient confirmations remain pending",
+      "Approved production accepts real credentials once; host and origin boundaries hold; token-protected production diagnostics decrypt and verify without changing audience counts",
+      "Status requires the private token; missing vaults cannot report copies secured; environment mismatch, disabled and damaged configuration fail closed",
+      "The existing 700ms navigation timer starts before the background fetch and never awaits it"
+    ],
+    "passed": true
+  }
+}
