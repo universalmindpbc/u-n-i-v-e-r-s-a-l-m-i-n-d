@@ -1,0 +1,106 @@
+{
+  "sourceCommit": "1aca38dd5b84042d94903f8c8669dba4fc4c508f",
+  "priorProductionCommit": "53295e47dcf1a61aae3bd4a72043d29f3b6c70d5",
+  "rootCause": "The Participate menu navigated correctly to /study, but study/app.js automatically restored the existing authenticated research session. A saved experience rendered the video-ready home state without another password prompt. Prior release browser QA used fresh contexts.",
+  "reproducedBeforeFix": {
+    "url": "https://staging.universalmind.tv/vogue/iam/study.php",
+    "state": "home",
+    "passwordVisible": false,
+    "frameCount": 2,
+    "fixture": "isolated staging preview with saved baseline and reflection; entered via actual random no-check-in music playback and Research > Participate"
+  },
+  "change": "The existing /study redirect now requests login=1. Before rendering saved participant state, the app revokes only the research authentication session, gets a fresh CSRF token and displays the password form. The one-time entry parameter is removed after success, so ordinary in-study reloads resume. Persistent return identity, consent and research records are retained.",
+  "deployment": {
+    "workflow": "SHOPFRONT_MUGLER_FIXTURE=/private/tmp/um-study-mugler-fixture.mp4 ./deploy-panthur-staging.sh all-changed",
+    "sourceClean": true,
+    "changedFiles": [
+      "study.php",
+      "study/app.js"
+    ],
+    "redirectUpdated": true,
+    "unchangedSkipped": 1073,
+    "protectedOwnerRuntime": "verified unchanged",
+    "preflight": "All required checks passed using the existing SHA-256-verified external media fixture option; initial attempt stopped at that missing fixture before any upload."
+  },
+  "servedVerification": {
+    "stagingRedirect": "https://staging.universalmind.tv/vogue/iam/study.php?login=1",
+    "appSha256": "dbb9497fe996c88bec433015c8ac3558695b16a4e0aa54cf663c9097120776a2",
+    "servedHashMatchesSource": true,
+    "productionRedirectUnchanged": "https://universalmind.tv/vogue/iam/study.php"
+  },
+  "liveStaging": {
+    "at": "2026-09-22T20:03:41.705Z",
+    "mode": "live-staging",
+    "processMuted": true,
+    "nativeFullscreen": false,
+    "camera": false,
+    "checks": [
+      {
+        "priorState": "fresh",
+        "expectedSession": false,
+        "realVideoSeconds": 0.272322,
+        "loginVisible": true,
+        "participant": null,
+        "noStudyPlayerBeforeLogin": true,
+        "invalidPasswordRejected": true,
+        "reloadDoesNotRepeatLogout": true,
+        "errors": []
+      },
+      {
+        "priorState": "briefing",
+        "expectedSession": false,
+        "realVideoSeconds": 0.24381,
+        "loginVisible": true,
+        "participant": null,
+        "noStudyPlayerBeforeLogin": true,
+        "invalidPasswordRejected": true,
+        "reloadDoesNotRepeatLogout": true,
+        "errors": []
+      },
+      {
+        "priorState": "experience",
+        "expectedSession": true,
+        "realVideoSeconds": 0.20898,
+        "loginVisible": true,
+        "participant": null,
+        "noStudyPlayerBeforeLogin": true,
+        "invalidPasswordRejected": true,
+        "reloadDoesNotRepeatLogout": true,
+        "errors": []
+      }
+    ],
+    "passed": true
+  },
+  "successfulPasswordForm": {
+    "passed": true,
+    "frontend": "live staging",
+    "backend": "isolated production-source PHP 8.3 with synthetic password",
+    "checks": [
+      "Valid password submitted through actual login form reaches consent",
+      "Consent reaches first Heart Check",
+      "Returning through /study requires password again",
+      "Correct re-entered password restores same participant, consent and session",
+      "Reload within study retains authenticated progress"
+    ],
+    "productionRecordsChanged": false,
+    "actualWebsitePasswordUsed": false,
+    "errors": []
+  },
+  "localChecks": {
+    "phpApiGroupsPassed": 20,
+    "reauthentication": [
+      "Research access removed until password re-entry",
+      "Stale CSRF and invalid passwords rejected",
+      "Cohort remains byte-identical after logout",
+      "Valid password restores exact saved participant and session"
+    ],
+    "fullscreenNavigation": "Standard, WebKit, delayed promise/event, rejected/unsupported exits and ordinary navigation passed",
+    "syntaxAndDiffChecks": "JavaScript syntax, deployment Bash syntax and git diff --check passed"
+  },
+  "limits": [
+    "Actual shared website password was not used; successful form submission used an isolated PHP backend with a synthetic credential.",
+    "No production deployment or participant-record changes.",
+    "No camera, microphone or native fullscreen; media QA used separate Chromium with --mute-audio verified in process arguments; all browser processes closed.",
+    "No GPT/OpenAI changes or calls in this repair."
+  ]
+}
