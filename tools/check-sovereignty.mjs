@@ -94,13 +94,24 @@ try {
  $pending="\\x00".hex2bin('83dfe30d2ef90c8e').chr(strlen($uri)+1).chr(strlen($uri)).$uri;
  $proof=SOVEREIGNTY_OTS_MAGIC."\\x01\\x08".$digest.$pending;
  $leaves=sovereignty_ots_parse($proof,$digest,true);$checks[]=count($leaves)===1&&$leaves[0]['uri']===$uri;
+ // Calendar subtrees are rooted in the operation result, not always a digest.
+ $calendarMessage='ABCD'.$digest.'12345678';
+ $bitcoin="\\x00".hex2bin('0588960d73d71901')."\\x01\\x01";
+ $upgrade="\\x08".$bitcoin;
+ $upgraded=sovereignty_ots_parse($upgrade,$calendarMessage);
+ $checks[]=strlen($calendarMessage)===44&&$upgraded[0]['height']===1&&$upgraded[0]['message']===hash('sha256',$calendarMessage,true);
+ $complete=SOVEREIGNTY_OTS_MAGIC."\\x01\\x08".$digest."\\xf1\\x04ABCD\\xf0\\x0812345678".$upgrade;
+ $completeLeaves=sovereignty_ots_parse($complete,$digest,true);
+ $checks[]=$completeLeaves[0]['message']===$upgraded[0]['message'];
+ foreach([['',false],[str_repeat('x',4097),false],[$calendarMessage,true]] as [$badRoot,$detached]){
+ try{sovereignty_ots_parse($upgrade,$badRoot,$detached);$checks[]=false;}catch(Throwable $e){$checks[]=true;}}
  $checks[]=!sovereignty_calendar_allowed('https://127.0.0.1');
  $checks[]=!sovereignty_calendar_allowed('https://alice.btc.calendar.opentimestamps.org.evil.test');
  foreach([$proof.'x',substr($proof,0,-1),SOVEREIGNTY_OTS_MAGIC."\\x01\\x08".str_repeat('x',32).$pending] as $bad){try{sovereignty_ots_parse($bad,$digest,true);$checks[]=false;}catch(Throwable $e){$checks[]=true;}}
  echo json_encode(['checks'=>$checks,'proof'=>base64_encode($proof)]);`});
  assert.equal(freePlan.errors,'');const freeResult=JSON.parse(freePlan.text);assert.ok(freeResult.checks.every(Boolean));
  if(process.env.SOVEREIGNTY_OTS_FIXTURE)await fs.writeFile(process.env.SOVEREIGNTY_OTS_FIXTURE,Buffer.from(freeResult.proof,'base64'));
- report.checks.push('Only approved staging and production four-bucket free plans are accepted; the 9 GB ceiling, malformed proof rejection and calendar allowlist pass');
+ report.checks.push('Only approved staging and production four-bucket free plans are accepted; the 9 GB ceiling, 44-byte calendar subtree upgrades, detached digest binding, bounded sizes, malformed proof rejection and calendar allowlist pass');
  // Public Bitcoin block 1 header; mock transport only, retaining the real
  // Merkle-root, header-hash, work-target and confirmation checks.
  const blockHeader='010000006fe28c0ab6f1b372c1a6a246ae63f74f931e8365e15a089c68d6190000000000982051fd1e4ba744bbbe680e1fee14677ba1a3c3540bf7b1cdb606e857233e0e61bc6649ffff001d01e36299';

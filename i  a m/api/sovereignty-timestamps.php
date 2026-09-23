@@ -59,7 +59,12 @@ function sovereignty_ots_tree(string $bytes, int &$at, string $message, array &$
     } while ($more);
 }
 function sovereignty_ots_parse(string $bytes, string $digest, bool $detached = false): array {
-    if (strlen($bytes) > 65536 || strlen($digest) !== 32) throw new RuntimeException('Invalid timestamp size.');
+    // A detached SHA-256 proof starts with 32 bytes. Calendar upgrades start
+    // at an intermediate tree message, which may include appended/prepended
+    // bytes (the public calendars commonly return 44-byte commitments).
+    $length = strlen($digest);
+    if (strlen($bytes) > 65536 || $length < 1 || $length > 4096
+        || ($detached && $length !== 32)) throw new RuntimeException('Invalid timestamp size.');
     $at = 0;
     if ($detached) {
         $header = SOVEREIGNTY_OTS_MAGIC . "\x01\x08" . $digest;
