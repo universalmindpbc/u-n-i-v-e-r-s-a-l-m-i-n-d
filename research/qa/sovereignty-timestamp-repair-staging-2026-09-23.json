@@ -1,0 +1,117 @@
+{
+  "source_commit": "33fcbf3",
+  "cause": "Calendar proof upgrade messages were 44 bytes, but the parser incorrectly required every subtree input to be a 32-byte SHA-256 digest. Both calendars returned valid HTTP 200 proofs which were rejected and left pending.",
+  "fix": "Allow bounded 1\u20134096-byte intermediate messages while retaining exactly 32 bytes for detached SHA-256 proofs and all Merkle, header, proof-of-work and six-confirmation verification checks.",
+  "local_checks": {
+    "checks": [
+      "Wrong passwords, submitted digests, cross-origin requests, invalid JSON, wrong method/type and oversized bodies cannot create entries",
+      "Repeated requests preserve the exact original entry; a second credential creates one separate entry",
+      "Owner key decrypts the envelope; platform signature verifies; ciphertext or AAD tampering is rejected; no password or consent claim is archived",
+      "Only approved staging and production four-bucket free plans are accepted; the 9 GB ceiling, 44-byte calendar subtree upgrades, detached digest binding, bounded sizes, malformed proof rejection and calendar allowlist pass",
+      "A valid Bitcoin header with six confirmations passes; explorer disagreement, a corrupt header, wrong Merkle root and insufficient confirmations remain pending",
+      "Approved production accepts real credentials once; host and origin boundaries hold; token-protected production diagnostics decrypt and verify without changing audience counts",
+      "Status requires the private token; missing vaults cannot report copies secured; environment mismatch, disabled and damaged configuration fail closed",
+      "The existing 700ms navigation timer starts before the background fetch and never awaits it"
+    ],
+    "passed": true
+  },
+  "existing_production_proof_verified_locally": {
+    "last_attempt": "2026-09-23T01:55:05.000Z",
+    "state": "pending_bitcoin",
+    "proofs": [
+      {
+        "calendar": "https://alice.btc.calendar.opentimestamps.org",
+        "stored_attestations": [
+          {
+            "kind": "83dfe30d2ef90c8e",
+            "calendar": "https://alice.btc.calendar.opentimestamps.org"
+          }
+        ],
+        "upgrades": [
+          {
+            "calendar": "https://alice.btc.calendar.opentimestamps.org",
+            "http_status": 200,
+            "attestations": [
+              {
+                "kind": "0588960d73d71901",
+                "height": 968184
+              }
+            ],
+            "confirmations": [
+              {
+                "state": "bitcoin_confirmed",
+                "verification": "two_public_explorers",
+                "height": 968184,
+                "block_hash": "00000000000000000001537a035f352b5387751d9fe83e65b003ce2a838fe840",
+                "block_time": 1790111228,
+                "confirmations": 29,
+                "verified_at": "2026-09-23T02:07:32+00:00"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "calendar": "https://bob.btc.calendar.opentimestamps.org",
+        "stored_attestations": [
+          {
+            "kind": "83dfe30d2ef90c8e",
+            "calendar": "https://bob.btc.calendar.opentimestamps.org"
+          }
+        ],
+        "upgrades": [
+          {
+            "calendar": "https://bob.btc.calendar.opentimestamps.org",
+            "http_status": 200,
+            "attestations": [
+              {
+                "kind": "0588960d73d71901",
+                "height": 968188
+              }
+            ],
+            "confirmations": [
+              {
+                "state": "bitcoin_confirmed",
+                "verification": "two_public_explorers",
+                "height": 968188,
+                "block_hash": "0000000000000000000128b768c78e04cc329c0aa4fece00232ec603e38f4597",
+                "block_time": 1790112257,
+                "confirmations": 25,
+                "verified_at": "2026-09-23T02:07:34+00:00"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "staging": {
+    "environment": "staging",
+    "action": "timestamp_test",
+    "status": 200,
+    "body": {
+      "isolated_test": true,
+      "state": "bitcoin_confirmed",
+      "proof_count": 2
+    }
+  },
+  "staging_source": {
+    "environment": "staging",
+    "server_source_bytes_match": [
+      "sovereignty-lib.php",
+      "sovereignty-operations.php",
+      "sovereignty-run.php",
+      "sovereignty-status.php",
+      "sovereignty-worker.php",
+      "portal-entry.php",
+      "sovereignty-timestamps.php"
+    ],
+    "passed": true
+  },
+  "deployment": {
+    "changed_non_video_files": 1,
+    "protected_owner_runtime": "verified unchanged",
+    "preflights": "passed"
+  },
+  "verified_at": "2026-09-23T02:11:13.696273+00:00"
+}
