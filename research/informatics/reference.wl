@@ -3,7 +3,7 @@
 alpha = Mod[Fibonacci[Range[0, 23]], 9];
 period = SelectFirst[Range[1, 54], Mod[{Fibonacci[#], Fibonacci[# + 1]}, 9] == {0, 1} &];
 nodes = {0, 4, 8, 12, 16, 20};
-unicursal = {0, 8, 16, 12, 4, 20, 0};
+unicursal = {0, 8, 20, 12, 4, 16, 0};
 labels = ReplaceAll[alpha[[Mod[unicursal, 24] + 1]], Rule[0, 9]];
 point[n_, p_] := {Sin[2 Pi n/p], Cos[2 Pi n/p]};
 beta = Mod[Total /@ Partition[Delete[alpha, List /@ (nodes + 1)], 3], 9];

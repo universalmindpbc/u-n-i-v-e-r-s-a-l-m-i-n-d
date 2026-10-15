@@ -9,7 +9,7 @@ while True:
     a,b=b,(a+b)%9
     if (a,b)==(0,1): break
 nodes=[i for i,v in enumerate(alpha) if v in (0,3,6)]
-path=[0,8,16,12,4,20,0]
+path=[0,8,20,12,4,16,0]
 sums=[sum(alpha[j%24] for j in range(lo+1,hi)) for lo,hi in zip(nodes,nodes[1:]+[24])]
 def point(i,n,r=240):
     return [round(400+r*math.sin(2*math.pi*i/n),9),round(400-r*math.cos(2*math.pi*i/n),9)]
