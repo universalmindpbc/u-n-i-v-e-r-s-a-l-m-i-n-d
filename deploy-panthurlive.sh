@@ -612,6 +612,27 @@ provision_sovereignty_runtime() {
     python3 "$ROOT_DIR/tools/provision-sovereignty-runtime.py" "$1" "$SOVEREIGNTY_SEED_DIR"
 }
 
+# Scoped Informatics deployment, using the existing Panthur transport.
+deploy_informatics() {
+  local name source_file checksum manifest_tmp
+  manifest_tmp="$(mktemp)"
+  if [[ -f "$MANIFEST_FILE" ]]; then
+    awk -F '\t' '$2 !~ /^Informatics\//' "$MANIFEST_FILE" > "$manifest_tmp"
+  fi
+  for name in geometry.json style.css app.js index.html; do
+    source_file="$ROOT_DIR/Informatics/$name"
+    git -C "$ROOT_DIR" ls-files --error-unmatch "Informatics/$name" >/dev/null
+    if ! git -C "$ROOT_DIR" diff --quiet HEAD -- "Informatics/$name"; then
+      echo "Refusing to deploy uncommitted Informatics source." >&2
+      return 1
+    fi
+    put_file "$source_file" "Informatics/$name"
+    checksum="$(file_hash "$source_file")"
+    printf '%s\t%s\n' "$checksum" "Informatics/$name" >> "$manifest_tmp"
+  done
+  mv "$manifest_tmp" "$MANIFEST_FILE"
+}
+
 DEPLOY_MODE="${1:-iam}"
 
 if deployment_requires_owner_state_guard "$DEPLOY_MODE"; then
@@ -619,6 +640,9 @@ if deployment_requires_owner_state_guard "$DEPLOY_MODE"; then
 fi
 
 case "$DEPLOY_MODE" in
+  informatics)
+    deploy_informatics
+    ;;
   iam)
     deploy_iam "include-media"
     ;;
