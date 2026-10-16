@@ -374,5 +374,13 @@
     "research_question": "Does the shared M9 pattern have shared biological relevance, or does native-modulus complexity change it? Unassessed: requires peer-reviewed evidence, in silico modelling (including proposed CUDA/CUDA-Q work), and appropriate experimental validation. No spatial-dimension claim or WSS score follows from this arithmetic match.",
     "biological_significance": "Not yet assessed",
     "native_data_preserved": true
+  },
+  "epsilon_assessment": {
+    "rule_version": "native-epsilon-diagnostics-v1",
+    "native_369_present": false,
+    "candidate_count": 0,
+    "candidates": [],
+    "absence_reason": "No equally spaced six-node formation exists on this period circle.",
+    "reference_path_available": false
   }
 }

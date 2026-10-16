@@ -5774,5 +5774,485 @@
     "research_question": "Does the shared M9 pattern have shared biological relevance, or does native-modulus complexity change it? Unassessed: requires peer-reviewed evidence, in silico modelling (including proposed CUDA/CUDA-Q work), and appropriate experimental validation. No spatial-dimension claim or WSS score follows from this arithmetic match.",
     "biological_significance": "Not yet assessed",
     "native_data_preserved": true
+  },
+  "epsilon_assessment": {
+    "rule_version": "native-epsilon-diagnostics-v1",
+    "native_369_present": false,
+    "candidate_count": 8,
+    "candidates": [
+      {
+        "formation_id": "6-nodes-offset-0",
+        "alpha_indices": [
+          0,
+          8,
+          16,
+          24,
+          32,
+          40
+        ],
+        "clock_positions": [
+          48,
+          8,
+          16,
+          24,
+          32,
+          40
+        ],
+        "native_values": [
+          14,
+          7,
+          7,
+          14,
+          7,
+          7
+        ],
+        "rotation_degrees": 0.0,
+        "missing_required_values": [
+          3,
+          6,
+          9
+        ],
+        "failing_nodes": [
+          {
+            "alpha_index": 0,
+            "clock_position": 48,
+            "value": 14
+          },
+          {
+            "alpha_index": 8,
+            "clock_position": 8,
+            "value": 7
+          },
+          {
+            "alpha_index": 16,
+            "clock_position": 16,
+            "value": 7
+          },
+          {
+            "alpha_index": 24,
+            "clock_position": 24,
+            "value": 14
+          },
+          {
+            "alpha_index": 32,
+            "clock_position": 32,
+            "value": 7
+          },
+          {
+            "alpha_index": 40,
+            "clock_position": 40,
+            "value": 7
+          }
+        ],
+        "native_369_qualifies": false
+      },
+      {
+        "formation_id": "6-nodes-offset-1",
+        "alpha_indices": [
+          1,
+          9,
+          17,
+          25,
+          33,
+          41
+        ],
+        "clock_positions": [
+          1,
+          9,
+          17,
+          25,
+          33,
+          41
+        ],
+        "native_values": [
+          1,
+          6,
+          1,
+          13,
+          8,
+          13
+        ],
+        "rotation_degrees": 7.5,
+        "missing_required_values": [
+          3,
+          9
+        ],
+        "failing_nodes": [
+          {
+            "alpha_index": 1,
+            "clock_position": 1,
+            "value": 1
+          },
+          {
+            "alpha_index": 17,
+            "clock_position": 17,
+            "value": 1
+          },
+          {
+            "alpha_index": 25,
+            "clock_position": 25,
+            "value": 13
+          },
+          {
+            "alpha_index": 33,
+            "clock_position": 33,
+            "value": 8
+          },
+          {
+            "alpha_index": 41,
+            "clock_position": 41,
+            "value": 13
+          }
+        ],
+        "native_369_qualifies": false
+      },
+      {
+        "formation_id": "6-nodes-offset-2",
+        "alpha_indices": [
+          2,
+          10,
+          18,
+          26,
+          34,
+          42
+        ],
+        "clock_positions": [
+          2,
+          10,
+          18,
+          26,
+          34,
+          42
+        ],
+        "native_values": [
+          1,
+          13,
+          8,
+          13,
+          1,
+          6
+        ],
+        "rotation_degrees": 15.0,
+        "missing_required_values": [
+          3,
+          9
+        ],
+        "failing_nodes": [
+          {
+            "alpha_index": 2,
+            "clock_position": 2,
+            "value": 1
+          },
+          {
+            "alpha_index": 10,
+            "clock_position": 10,
+            "value": 13
+          },
+          {
+            "alpha_index": 18,
+            "clock_position": 18,
+            "value": 8
+          },
+          {
+            "alpha_index": 26,
+            "clock_position": 26,
+            "value": 13
+          },
+          {
+            "alpha_index": 34,
+            "clock_position": 34,
+            "value": 1
+          }
+        ],
+        "native_369_qualifies": false
+      },
+      {
+        "formation_id": "6-nodes-offset-3",
+        "alpha_indices": [
+          3,
+          11,
+          19,
+          27,
+          35,
+          43
+        ],
+        "clock_positions": [
+          3,
+          11,
+          19,
+          27,
+          35,
+          43
+        ],
+        "native_values": [
+          2,
+          5,
+          9,
+          12,
+          9,
+          5
+        ],
+        "rotation_degrees": 22.5,
+        "missing_required_values": [
+          3,
+          6
+        ],
+        "failing_nodes": [
+          {
+            "alpha_index": 3,
+            "clock_position": 3,
+            "value": 2
+          },
+          {
+            "alpha_index": 11,
+            "clock_position": 11,
+            "value": 5
+          },
+          {
+            "alpha_index": 27,
+            "clock_position": 27,
+            "value": 12
+          },
+          {
+            "alpha_index": 43,
+            "clock_position": 43,
+            "value": 5
+          }
+        ],
+        "native_369_qualifies": false
+      },
+      {
+        "formation_id": "6-nodes-offset-4",
+        "alpha_indices": [
+          4,
+          12,
+          20,
+          28,
+          36,
+          44
+        ],
+        "clock_positions": [
+          4,
+          12,
+          20,
+          28,
+          36,
+          44
+        ],
+        "native_values": [
+          3,
+          4,
+          3,
+          11,
+          10,
+          11
+        ],
+        "rotation_degrees": 30.0,
+        "missing_required_values": [
+          6,
+          9
+        ],
+        "failing_nodes": [
+          {
+            "alpha_index": 12,
+            "clock_position": 12,
+            "value": 4
+          },
+          {
+            "alpha_index": 28,
+            "clock_position": 28,
+            "value": 11
+          },
+          {
+            "alpha_index": 36,
+            "clock_position": 36,
+            "value": 10
+          },
+          {
+            "alpha_index": 44,
+            "clock_position": 44,
+            "value": 11
+          }
+        ],
+        "native_369_qualifies": false
+      },
+      {
+        "formation_id": "6-nodes-offset-5",
+        "alpha_indices": [
+          5,
+          13,
+          21,
+          29,
+          37,
+          45
+        ],
+        "clock_positions": [
+          5,
+          13,
+          21,
+          29,
+          37,
+          45
+        ],
+        "native_values": [
+          5,
+          9,
+          12,
+          9,
+          5,
+          2
+        ],
+        "rotation_degrees": 37.5,
+        "missing_required_values": [
+          3,
+          6
+        ],
+        "failing_nodes": [
+          {
+            "alpha_index": 5,
+            "clock_position": 5,
+            "value": 5
+          },
+          {
+            "alpha_index": 21,
+            "clock_position": 21,
+            "value": 12
+          },
+          {
+            "alpha_index": 37,
+            "clock_position": 37,
+            "value": 5
+          },
+          {
+            "alpha_index": 45,
+            "clock_position": 45,
+            "value": 2
+          }
+        ],
+        "native_369_qualifies": false
+      },
+      {
+        "formation_id": "6-nodes-offset-6",
+        "alpha_indices": [
+          6,
+          14,
+          22,
+          30,
+          38,
+          46
+        ],
+        "clock_positions": [
+          6,
+          14,
+          22,
+          30,
+          38,
+          46
+        ],
+        "native_values": [
+          8,
+          13,
+          1,
+          6,
+          1,
+          13
+        ],
+        "rotation_degrees": 45.0,
+        "missing_required_values": [
+          3,
+          9
+        ],
+        "failing_nodes": [
+          {
+            "alpha_index": 6,
+            "clock_position": 6,
+            "value": 8
+          },
+          {
+            "alpha_index": 14,
+            "clock_position": 14,
+            "value": 13
+          },
+          {
+            "alpha_index": 22,
+            "clock_position": 22,
+            "value": 1
+          },
+          {
+            "alpha_index": 38,
+            "clock_position": 38,
+            "value": 1
+          },
+          {
+            "alpha_index": 46,
+            "clock_position": 46,
+            "value": 13
+          }
+        ],
+        "native_369_qualifies": false
+      },
+      {
+        "formation_id": "6-nodes-offset-7",
+        "alpha_indices": [
+          7,
+          15,
+          23,
+          31,
+          39,
+          47
+        ],
+        "clock_positions": [
+          7,
+          15,
+          23,
+          31,
+          39,
+          47
+        ],
+        "native_values": [
+          13,
+          8,
+          13,
+          1,
+          6,
+          1
+        ],
+        "rotation_degrees": 52.5,
+        "missing_required_values": [
+          3,
+          9
+        ],
+        "failing_nodes": [
+          {
+            "alpha_index": 7,
+            "clock_position": 7,
+            "value": 13
+          },
+          {
+            "alpha_index": 15,
+            "clock_position": 15,
+            "value": 8
+          },
+          {
+            "alpha_index": 23,
+            "clock_position": 23,
+            "value": 13
+          },
+          {
+            "alpha_index": 31,
+            "clock_position": 31,
+            "value": 1
+          },
+          {
+            "alpha_index": 47,
+            "clock_position": 47,
+            "value": 1
+          }
+        ],
+        "native_369_qualifies": false
+      }
+    ],
+    "absence_reason": "No tested six-node formation contains only 3, 6 and 9 with all three present.",
+    "reference_path_available": false
   }
 }
