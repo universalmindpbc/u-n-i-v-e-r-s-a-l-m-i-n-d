@@ -6,15 +6,15 @@ const make=(tag,attrs,parent)=>{const el=document.createElementNS(NS,tag);Object
 const pt=(i,n,r=240)=>[400+r*Math.sin(2*Math.PI*i/n),400-r*Math.cos(2*Math.PI*i/n)];
 const path=(points,parent,attrs={})=>make('path',{d:points.map((p,i)=>`${i?'L':'M'}${p.join(',')}`).join(' '),fill:'none',stroke:'#e4e9e9','stroke-width':1.4,'stroke-linejoin':'round','stroke-linecap':'round',...attrs},parent);
 const text=(value,p,parent,attrs={})=>{const el=make('text',{x:p[0],y:p[1],fill:'#a5afb3','font-size':14,...attrs},parent);el.textContent=value;return el};
-const circle=make('circle',{cx:400,cy:400,r:240,fill:'none',stroke:'#607078','stroke-width':.7},$('#alpha'));
+const circle=make('circle',{cx:400,cy:400,r:240,fill:'none',stroke:'#5ca8ff','stroke-width':.7},$('#alpha'));
 const labels=[];for(let i=0;i<24;i++){const g=make('g',{},$('#alpha'));const node=data.node_indices.includes(i);path([pt(i,24,246),pt(i,24,node?256:251)],g,{stroke:node?'#c0c9cd':'#465157','stroke-width':.7});text(data.display_alpha[i],pt(i,24,275),g,{fill:node?'#f0f2f2':'#899598','font-size':node?20:14});text(i===0?'24':String(i).padStart(2,'0'),pt(i,24,310),g,{'font-size':8,fill:'#4f6068'});if(node)make('circle',{cx:pt(i,24)[0],cy:pt(i,24)[1],r:2,fill:'#e7eeee'},g);labels.push(g);}
 for(const r of [330,350])make('circle',{cx:400,cy:400,r,fill:'none',stroke:'#4b5a62','stroke-width':.4,'stroke-dasharray':r===330?'1 9':'30 170'},$('#guides'));
 path([[390,400],[410,400]],$('#guides'),{stroke:'#344249','stroke-width':.6});path([[400,390],[400,410]],$('#guides'),{stroke:'#344249','stroke-width':.6});
 const uni=path(data.unicursal_indices.map(i=>pt(i,24)),$('#unicursal'),{'stroke-width':2});
 const triangles=data.triangles.map(indices=>path(indices.map(i=>pt(i,24)),$('#stars'),{stroke:'#ff70bb','stroke-width':1,fill:'#ff389c','fill-opacity':.21}));
 // Circumradius equals the Alpha circle radius: all six vertices touch it.
-const hex=path(Array.from({length:7},(_,i)=>pt(i,6,240)),$('#hexagon'),{stroke:'#5ca8ff','stroke-width':1.5,fill:'#398bff','fill-opacity':.045});
-const betaCircle=make('circle',{cx:400,cy:400,r:240,fill:'none',stroke:'#56646b','stroke-width':.6},$('#beta'));
+const hex=path(Array.from({length:7},(_,i)=>pt(i,6,240)),$('#hexagon'),{stroke:'#62d998','stroke-width':1.5,fill:'#37be79','fill-opacity':.045});
+const betaCircle=make('circle',{cx:400,cy:400,r:240,fill:'none',stroke:'#5ca8ff','stroke-width':.6},$('#beta'));
 for(let i=0;i<9;i++){const p=pt(i,9);make('circle',{cx:p[0],cy:p[1],r:2,fill:'#a5b1b6'},$('#beta'));text(i||9,pt(i,9,278),$('#beta'),{'font-size':18,fill:data.doubling.includes(i)?'#f0f3f3':'#56646b'});}
 const doubling=path(data.doubling.map(i=>pt(i,9)),$('#beta'),{'stroke-width':2.2,stroke:'#ffea42'});
 const paths=[circle,uni,...triangles,hex,doubling];paths.forEach(p=>{p.dataset.length=p.getTotalLength();p.style.strokeDasharray=p.dataset.length});
