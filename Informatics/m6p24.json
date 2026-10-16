@@ -177,71 +177,36 @@
       ]
     ]
   },
-  "epsilon": {
-    "alpha_indices": [
-      0,
-      8,
-      20,
-      12,
-      4,
-      16,
-      0
-    ],
-    "clock_positions": [
-      24,
-      8,
-      20,
-      12,
-      4,
-      16,
-      24
-    ],
-    "traversal_values": [
-      6,
-      3,
-      3,
-      6,
-      3,
-      3,
-      6
-    ],
-    "status": "Same six-node geometric route as M9; different value sequence. Physical interpretation not assessed."
-  },
+  "epsilon": null,
+  "epsilon_status": "Null: requires sequential mapping of all three values 3, 6 and 9. M1\u2013M8 cannot supply 9.",
   "views": [
     {
       "id": "alpha",
       "name": "Alpha",
       "description": "Clock position 24 is north; zero is displayed as 6.",
-      "svg": "views/m6/alpha.svg?v=1",
-      "png": "views/m6/alpha.png?v=1"
+      "svg": "views/m6/alpha.svg?v=2",
+      "png": "views/m6/alpha.png?v=2"
     },
     {
       "id": "beta",
       "name": "Beta",
       "description": "Two-step doubling cycle modulo 6; repeated edges overlap.",
-      "svg": "views/m6/beta.svg?v=1",
-      "png": "views/m6/beta.png?v=1"
+      "svg": "views/m6/beta.svg?v=2",
+      "png": "views/m6/beta.png?v=2"
     },
     {
       "id": "gamma",
       "name": "Gamma",
       "description": "Same nodal positions as M9; different native values.",
-      "svg": "views/m6/gamma.svg?v=1",
-      "png": "views/m6/gamma.png?v=1"
-    },
-    {
-      "id": "epsilon",
-      "name": "Epsilon",
-      "description": "Same geometric traversal as M9; no 9 \u2192 3 \u2192 6 value cycle.",
-      "svg": "views/m6/epsilon.svg?v=1",
-      "png": "views/m6/epsilon.png?v=1"
+      "svg": "views/m6/gamma.svg?v=2",
+      "png": "views/m6/gamma.png?v=2"
     },
     {
       "id": "fibonacci-m6p24",
       "name": "Fibonacci M6P24",
       "description": "Alpha uses 24 positions; Beta uses six positions.",
-      "svg": "views/m6/fibonacci-m6p24.svg?v=1",
-      "png": "views/m6/fibonacci-m6p24.png?v=1"
+      "svg": "views/m6/fibonacci-m6p24.svg?v=2",
+      "png": "views/m6/fibonacci-m6p24.png?v=2"
     }
   ],
   "research": {
@@ -252,6 +217,6 @@
   },
   "verification": {
     "python": "Exact state recurrence, node positions, triangle spacing and native doubling checked.",
-    "wolfram": "Independent kernel confirmed period24, residues, nodes, interval sums, Beta and Epsilon on 2026-10-16."
+    "wolfram": "Independent kernel confirmed period24, residues, nodes, interval sums, Beta on 2026-10-16."
   }
 }

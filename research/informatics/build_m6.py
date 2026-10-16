@@ -45,7 +45,7 @@ nodes=[i for i,v in enumerate(values) if v%3==0]
 sums=[sum(values[j%n] for j in range(lo+1,hi)) for lo,hi in zip(nodes,nodes[1:]+[n])]
 beta=[v%6 for v in sums]
 triangles=[[0,8,16,0],[4,12,20,4]]
-path=[0,8,20,12,4,16,0]
+assert not {3,6,9}.issubset(display) # Epsilon requires all three values; M1–M8 are ineligible.
 assert n==24 and nodes==[0,4,8,12,16,20]
 assert sums==[4,8,10,14,10,8] and beta==[4,2,4,2,4,2]
 assert all((2*beta[i])%6==beta[(i+1)%6] for i in range(6))
@@ -60,26 +60,20 @@ def draw_gamma(g,labels=True):
  for t in triangles:g.line([pt(i,n) for i in t],PINK,2)
  if labels:
   for i in nodes:g.circle(pt(i,n),5,PINK,fill=PINK);g.text(display[i],pt(i,n,270),24)
-def draw_epsilon(g,labels=True):
- points=[pt(i,n) for i in path];g.line(points,FG,3)
- for a,b in zip(points,points[1:]):g.arrow(a,b,FG)
- if labels:
-  for step,i in enumerate(path[:-1],1):g.text(display[i],pt(i,n,270),24);g.text(step,pt(i,n,295),11,MUTED)
 def draw_beta(g,labels=True):
  points=[pt(v,6) for v in beta+[beta[0]]];g.line(points,YELLOW,3)
  if labels:
   for i in range(6):g.text(i or 6,pt(i,6,270),24,YELLOW if i in beta else MUTED)
   g.text('start 4',pt(4,6,310),12,YELLOW)
   g.text('Repeated traversal: 4 ↔ 2',(400,365),18,YELLOW)
-views=[('alpha','Alpha','24 native Fibonacci residues','Clock position 24 is north; zero is displayed as 6.'),('beta','Beta','4 → 2 → 4 → 2 → 4 → 2','Two-step doubling cycle modulo 6; repeated edges overlap.'),('gamma','Gamma','6 · 3 · 3 · 6 · 3 · 3','Same nodal positions as M9; different native values.'),('epsilon','Epsilon','6 → 3 → 3 → 6 → 3 → 3 → 6','Same geometric traversal as M9; no 9 → 3 → 6 value cycle.'),('fibonacci-m6p24','Fibonacci M6P24','Alpha · Beta · Gamma · Epsilon','Alpha uses 24 positions; Beta uses six positions.')]
+views=[('alpha','Alpha','24 native Fibonacci residues','Clock position 24 is north; zero is displayed as 6.'),('beta','Beta','4 → 2 → 4 → 2 → 4 → 2','Two-step doubling cycle modulo 6; repeated edges overlap.'),('gamma','Gamma','6 · 3 · 3 · 6 · 3 · 3','Same nodal positions as M9; different native values.'),('fibonacci-m6p24','Fibonacci M6P24','Alpha · Beta · Gamma','Alpha uses 24 positions; Beta uses six positions.')]
 for key,title,seq,note in views:
  g=Drawing(title,note);g.circle((400,365),238,'#34434e')
  if key=='alpha':draw_alpha(g)
  elif key=='beta':draw_beta(g)
  elif key=='gamma':draw_gamma(g)
- elif key=='epsilon':draw_epsilon(g)
  else:
-  draw_gamma(g,False);g.line([pt(i,6) for i in range(6)],GREEN,2,True);draw_alpha(g);draw_epsilon(g,False);draw_beta(g,False)
+  draw_gamma(g,False);g.line([pt(i,6) for i in range(6)],GREEN,2,True);draw_alpha(g);draw_beta(g,False)
  g.text('M6 / P24',(400,32),12,MUTED);g.text(title,(400,690),24);g.text(seq,(400,735),17);g.text(note,(400,779),11,MUTED);g.save(key)
 d={
  'schema_version':'1.1.0','id':'fibonacci-m6-p24','name':'Fibonacci M6P24','modulus':6,'pisano_period':n,
@@ -87,9 +81,13 @@ d={
  'alpha':{'residues':values,'display_values':display},
  'beta':{'interval_sums':sums,'interval_residues':beta,'display_cycle':beta,'recognised_doubling_cycle':[2,4],'rotation_to_recognised':1,'start_value':4,'start_interval_clock_positions':[24,4],'start_interval_values':[1,1,2],'endpoint_rule':'Exclude Gamma nodes; include wraparound interval.','circle_positions':6,'cycle_length':2,'m9_doubling_cycle_present':False},
  'gamma':{'alpha_indices':nodes,'clock_positions':[i or 24 for i in nodes],'clockwise_values':[display[i] for i in nodes],'triangle_paths':triangles},
- 'epsilon':{'alpha_indices':path,'clock_positions':[i or 24 for i in path],'traversal_values':[display[i] for i in path],'status':'Same six-node geometric route as M9; different value sequence. Physical interpretation not assessed.'},
- 'views':[{'id':key,'name':title,'description':note,'svg':f'views/m6/{key}.svg?v=1','png':f'views/m6/{key}.png?v=1'} for key,title,seq,note in views],
+ 'epsilon':None,
+ 'epsilon_status':'Null: requires sequential mapping of all three values 3, 6 and 9. M1–M8 cannot supply 9.',
+ 'views':[{'id':key,'name':title,'description':note,'svg':f'views/m6/{key}.svg?v=2','png':f'views/m6/{key}.png?v=2'} for key,title,seq,note in views],
  'research':{'focus':'OXTR gene expression','biological_significance_status':'Not yet assessed','statistical_significance_status':'Not yet assessed','quantum_annealing_status':'Not yet performed'},
- 'verification':{'python':'Exact state recurrence, node positions, triangle spacing and native doubling checked.','wolfram':'Independent kernel confirmed period24, residues, nodes, interval sums, Beta and Epsilon on 2026-10-16.'}}
+ 'verification':{'python':'Exact state recurrence, node positions, triangle spacing and native doubling checked.','wolfram':'Independent kernel confirmed period24, residues, nodes, interval sums, Beta on 2026-10-16.'}}
 (ROOT/'Informatics/m6p24.json').write_text(json.dumps(d,indent=2)+'\n')
-print('M6/P24 verified; five SVG and PNG views generated.')
+print('M6/P24 verified; four SVG and PNG views generated.')
+
+# Replace legacy Epsilon URLs with an explicit null notice; no traversal remains.
+g=Drawing('Epsilon — null','M6 cannot supply 9.');g.text('M6 / P24',(400,280),20,MUTED);g.text('Epsilon — null',(400,365),30);g.text('Requires 3, 6 and 9; M6 cannot supply 9.',(400,420),18,MUTED);g.save('epsilon')
