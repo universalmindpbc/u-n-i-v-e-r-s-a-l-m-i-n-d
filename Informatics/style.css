@@ -20,3 +20,5 @@ header button.brand{display:inline-flex;align-items:center;gap:9px;white-space:n
 
 footer nav button[data-stage="0"]{--stage-color:#5ca8ff}footer nav button[data-stage="1"]{--stage-color:#fff}footer nav button[data-stage="2"]{--stage-color:#ff69b4}footer nav button[data-stage="3"]{--stage-color:#62d998}footer nav button[data-stage="4"]{--stage-color:#ffea42}
 footer nav small::before{content:"";display:inline-block;width:5px;height:5px;margin-right:5px;border-radius:50%;background:var(--stage-color);opacity:.65;vertical-align:1px}footer nav small{white-space:nowrap}
+
+.atlas-entry{display:block;width:fit-content;margin:24px auto 0;font:10px Arial,sans-serif;letter-spacing:.12em;color:#a5abad;text-decoration:none}.atlas-entry:hover,.atlas-header-link:hover{color:#fff}.atlas-header-link{font:10px Arial,sans-serif;letter-spacing:.08em;color:#a5abad;text-decoration:none;display:inline-flex;align-items:center;min-height:44px;gap:7px}.atlas-entry span{margin-left:7px}@media(max-width:640px){.atlas-header-link{font-size:9px}.experience-actions{flex-wrap:wrap}}

@@ -40,6 +40,7 @@ launch.onclick=()=>{entered=true;document.body.dataset.entered='true';$('#landin
 $('#fullscreen').onclick=()=>{if(document.fullscreenElement)document.exitFullscreen().catch(()=>{});else fullscreen();};
 document.addEventListener('fullscreenchange',()=>$('#fullscreen').setAttribute('aria-label',document.fullscreenElement?'Exit full screen':'Enter full screen'));
 $('#back').onclick=()=>{film.pause();playing=false;entered=false;if(document.fullscreenElement)document.exitFullscreen().catch(()=>{});experience.hidden=true;$('#landing').hidden=false;document.body.dataset.entered='false';document.dispatchEvent(new Event('informatics:return'));launch.focus();};
+window.addEventListener('pagehide',()=>{film.pause();playing=false;});
 document.addEventListener('visibilitychange',()=>{last=null;if(document.hidden)film.pause();else if(entered)film.play().catch(()=>{});});
 function frame(now){const dt=last===null?0:Math.min(now-last,60);last=now;if(entered&&playing&&!document.hidden){elapsed=Math.min(total-1,elapsed+dt);if(elapsed>=total-1)playing=false;render();}requestAnimationFrame(frame);}render();requestAnimationFrame(frame);
 })().catch(error=>{console.error(error);document.querySelector('#launch-status').textContent='Unable to load geometry. Please reload.';});

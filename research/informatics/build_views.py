@@ -43,7 +43,7 @@ def alpha(g,combined=False):
  for i,v in enumerate(d['display_alpha']):
   g.circle(pt(i,24),2,BLUE,fill=BLUE)
   g.text(v,pt(i,24,267),17 if combined else 20)
-  if not combined:g.text(i,pt(i,24,294),10,MUTED)
+  if not combined:g.text(i or 24,pt(i,24,294),10,MUTED)
 def gamma(g,labels=True):
  for indices in d['triangles']:
   g.line([pt(i,24) for i in indices[:-1]],PINK,2,True,'#261525')
@@ -66,7 +66,7 @@ def beta(g,labels=True):
   for i in range(9):g.text(i or 9,pt(i,9,270),24,YELLOW if i in d['doubling'] else MUTED)
   for a,b in zip(points,points[1:]):g.arrow(a,b,YELLOW)
 views=[
- ('alpha','Alpha','24 Fibonacci residues','F(n + 2) = F(n + 1) + F(n) mod 9','Indices 0–23 clockwise. Remainder 0 is displayed as 9.'),
+ ('alpha','Alpha','24 Fibonacci residues','F(n + 2) = F(n + 1) + F(n) mod 9','Clock positions 24, 1–23 clockwise. Remainder 0 is displayed as 9.'),
  ('beta','Beta','Embedded doubling sequence','1 → 2 → 4 → 8 → 7 → 5 → 1','Nine-position circle; six-step doubling cycle.'),
  ('gamma','Gamma','Nodal geometry','9 · 3 · 3 · 9 · 6 · 6','Clockwise node order. Two intersecting equilateral triangles.'),
  ('epsilon','Epsilon','Unicursal hexagram','9 → 3 → 6 → 9 → 3 → 6 → 9','Arrows show traversal; small numbers show visit order.'),
@@ -82,11 +82,11 @@ for key,title,subtitle,seq,note in views:
  g.text('M9 / P24',(400,32),12,MUTED);g.text(title,(400,690),24);g.text(subtitle,(400,721),14,MUTED);g.text(seq,(400,750),15);g.text(note,(400,779),11,MUTED);g.save(key)
 record={
  'schema_version':'1.0.0','id':'fibonacci-m9-p24','name':'Fibonacci M9P24','modulus':9,'pisano_period':24,
- 'conventions':{'index_origin':0,'orientation':'clockwise from north','zero_display':9,'alpha_circle_positions':24,'beta_circle_positions':9},
+ 'conventions':{'index_origin':0,'clock_labels':[24]+list(range(1,24)),'orientation':'clockwise from north','zero_display':9,'alpha_circle_positions':24,'beta_circle_positions':9},
  'alpha':{'residues':d['alpha'],'display_values':d['display_alpha']},
  'beta':{'interval_sums':d['interval_sums'],'interval_residues':d['beta'],'display_cycle':d['doubling'][:-1],'rotation_to_display':4,'endpoint_rule':'Exclude Gamma nodes; include wraparound interval.','circle_positions':9,'cycle_length':6},
- 'gamma':{'alpha_indices':d['node_indices'],'clockwise_values':[d['display_alpha'][i] for i in d['node_indices']],'triangle_paths':d['triangles']},
- 'epsilon':{'alpha_indices':d['unicursal_indices'],'traversal_values':d['unicursal_labels'],'status':'Proposed geometric traversal; physical interpretation not assessed.'},
+ 'gamma':{'alpha_indices':d['node_indices'],'clock_positions':[i or 24 for i in d['node_indices']],'clockwise_values':[d['display_alpha'][i] for i in d['node_indices']],'triangle_paths':d['triangles']},
+ 'epsilon':{'alpha_indices':d['unicursal_indices'],'clock_positions':[i or 24 for i in d['unicursal_indices']],'traversal_values':d['unicursal_labels'],'status':'Proposed geometric traversal; physical interpretation not assessed.'},
  'views':[{'id':key,'name':title,'description':subtitle,'svg':f'views/{key}.svg','png':f'views/{key}.png'} for key,title,subtitle,seq,note in views],
  'research':{'focus':'OXTR gene expression','biological_significance_status':'Not yet assessed','statistical_significance_status':'Not yet assessed','quantum_annealing_status':'Not yet performed'},
  'verification':{'python':'Period, node spacing, triangle spacing, and doubling recurrence checked by generator.','wolfram':'Reference notebook source available; this generator does not execute Wolfram.'}}
