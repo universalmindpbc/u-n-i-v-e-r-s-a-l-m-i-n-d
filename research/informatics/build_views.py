@@ -97,5 +97,7 @@ assert all((d['alpha'][i]+d['alpha'][(i+1)%24])%9==d['alpha'][(i+2)%24] for i in
 assert d['beta'][4:]+d['beta'][:4]==d['doubling'][:-1]
 assert all((2*a)%9==b for a,b in zip(d['doubling'],d['doubling'][1:]))
 assert all((t[j+1]-t[j])%24==8 for t in d['triangles'] for j in range(3))
+from shape_summary import shape_summary
+record['geometry_summary']=shape_summary(record)
 (ROOT/'Informatics/m9p24.json').write_text(json.dumps(record,indent=2)+'\n')
 print('Five SVG/PNG views and M9/P24 JSON generated; mathematical checks passed.')

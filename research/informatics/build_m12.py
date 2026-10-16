@@ -86,6 +86,8 @@ d={
  'views':[{'id':key,'name':title,'description':note,'svg':f'views/m12/{key}.svg?v=2','png':f'views/m12/{key}.png?v=2'} for key,title,seq,note in views],
  'research':{'focus':'OXTR gene expression','biological_significance_status':'Not yet assessed','statistical_significance_status':'Not yet assessed','quantum_annealing_status':'Not yet performed'},
  'verification':{'python':'Exact state recurrence, node positions, triangle spacing and native doubling checked.','wolfram':'Pending independent verification.'}}
+from shape_summary import shape_summary
+d['geometry_summary']=shape_summary(d)
 (ROOT/'Informatics/m12p24.json').write_text(json.dumps(d,indent=2)+'\n')
 print('M12/P24 verified; four SVG and PNG views generated.')
 

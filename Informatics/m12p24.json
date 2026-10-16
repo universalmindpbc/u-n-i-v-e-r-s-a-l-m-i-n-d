@@ -215,5 +215,83 @@
   "verification": {
     "python": "Exact state recurrence, node positions, triangle spacing and native doubling checked.",
     "wolfram": "Pending independent verification."
+  },
+  "geometry_summary": {
+    "rule_version": "selected-nodes-v1",
+    "scope": "Selected Gamma nodes and derived Beta only. Other node selections and rotated shapes are not yet assessed.",
+    "circle_role": "Pisano-period plotting framework",
+    "angle_convention": "Clockwise from north; 0 degrees means the reference north-south alignment.",
+    "shapes": [
+      {
+        "name": "Equilateral triangle",
+        "status": "Present",
+        "count": 2,
+        "orientation": "North / south",
+        "rotation_degrees": 0,
+        "alpha_paths": [
+          [
+            0,
+            8,
+            16,
+            0
+          ],
+          [
+            4,
+            12,
+            20,
+            4
+          ]
+        ]
+      },
+      {
+        "name": "Hexagon",
+        "status": "Present",
+        "count": 1,
+        "orientation": "North\u2013south",
+        "rotation_degrees": 0,
+        "alpha_paths": [
+          [
+            0,
+            4,
+            8,
+            12,
+            16,
+            20,
+            0
+          ]
+        ]
+      },
+      {
+        "name": "2D stellated octahedron",
+        "status": "Present",
+        "count": 1,
+        "orientation": "North\u2013south",
+        "rotation_degrees": 0,
+        "alpha_paths": [
+          [
+            0,
+            8,
+            16,
+            0
+          ],
+          [
+            4,
+            12,
+            20,
+            4
+          ]
+        ],
+        "definition": "Two intersecting equilateral triangles in this 2D construction."
+      },
+      {
+        "name": "Chevron",
+        "status": "Absent",
+        "count": 0,
+        "orientation": null,
+        "rotation_degrees": null,
+        "beta_values": []
+      }
+    ],
+    "other_orientations_status": "Not yet assessed"
   }
 }
