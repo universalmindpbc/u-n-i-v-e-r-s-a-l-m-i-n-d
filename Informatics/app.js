@@ -43,6 +43,15 @@ function showAtlas(open){
  if(open)$('#atlas-frame').focus();else $('#atlas-toggle').focus();
 }
 $('#atlas-toggle').onclick=()=>showAtlas(!atlasOpen);
+document.addEventListener('science:open-atlas',e=>{
+ const view=e.detail;if(!['alpha','beta','gamma','epsilon','geometry-summary'].includes(view))return;
+ if(!entered)launch.click();
+ const frame=$('#atlas-frame');
+ const select=()=>frame.contentDocument.dispatchEvent(new frame.contentWindow.CustomEvent('science:atlas-view',{detail:view}));
+ if(frame.contentDocument?.readyState==='complete'&&frame.contentDocument.querySelector('#research-record'))select();
+ else frame.addEventListener('load',select,{once:true});
+ showAtlas(true);
+});
 function syncSound(){const label=film.muted?'Unmute video':'Mute video';$('#sound').textContent=film.muted?'♪̸':'♫';$('#sound').setAttribute('aria-label',label);$('#sound').title=label;}
 $('#sound').onclick=()=>{if(film.paused){film.muted=false;film.play().catch(()=>{});}else film.muted=!film.muted;syncSound();};
 function fullscreen(){if(!document.fullscreenElement && experience.requestFullscreen)experience.requestFullscreen().catch(()=>{});}

@@ -15,7 +15,13 @@ const results=[];
 try{
  for(const viewport of [{width:1440,height:1000},{width:390,height:844}]){
   const context=await browser.newContext({viewport,reducedMotion:'reduce'});
-  await context.addInitScript(()=>{Element.prototype.requestFullscreen=async()=>{};document.exitFullscreen=async()=>{};HTMLMediaElement.prototype.play=async()=>{};});
+  await context.addInitScript(()=>{
+   // Model the fullscreen container without entering native fullscreen.
+   let fullscreenElement=null;window.__fullscreenCalls={enter:0,exit:0};
+   Object.defineProperty(document,'fullscreenElement',{get:()=>fullscreenElement});
+   Element.prototype.requestFullscreen=async function(){fullscreenElement=this;window.__fullscreenCalls.enter++;document.dispatchEvent(new Event('fullscreenchange'));};
+   document.exitFullscreen=async()=>{fullscreenElement=null;window.__fullscreenCalls.exit++;};
+  });
   if(candidate)await context.route(/https:\/\/staging\.universalmind\.tv\/(?:I|i)nformatics\//,async route=>{
    const relative=decodeURIComponent(new URL(route.request().url()).pathname).replace(/^\/(?:I|i)nformatics\//,'')||'index.html';
    const file=path.resolve(root,'Informatics',relative);
@@ -23,7 +29,6 @@ try{
    try{await route.fulfill({status:200,contentType:{'.html':'text/html','.js':'text/javascript','.css':'text/css','.json':'application/json','.png':'image/png','.svg':'image/svg+xml'}[path.extname(file)]||'application/octet-stream',body:await fs.readFile(file)});}
    catch{await route.fulfill({status:404,body:'Missing candidate file'});}
   });
-  await context.route(/\.mp4(?:\?|$)/,route=>route.fulfill({status:204,body:''}));
   const page=await context.newPage(),errors=[];page.on('pageerror',e=>errors.push(e.message));
   await page.goto(base+'?about=1',{waitUntil:'domcontentloaded'});
   assert.equal(await page.locator('#about').evaluate(e=>e.open),true);
@@ -31,19 +36,29 @@ try{
   assert.equal(await page.locator('#about .science-teachables').count(),0);
   assert.equal(await page.locator('#about .about-resources a').count(),4);
   await page.locator('#about img').evaluateAll(imgs=>Promise.all(imgs.map(img=>img.decode())));
+  await page.locator('#about-close').click();
+  await page.waitForFunction(()=>!document.querySelector('#launch').disabled);
+  await page.locator('#launch').click();
+  await page.waitForFunction(()=>{const v=document.querySelector('#film');return !v.paused&&v.currentTime>0.2;},null,{timeout:45000});
+  const initialURL=page.url();
+  await page.evaluate(()=>{window.__music=document.querySelector('#film');window.__musicStart=__music.currentTime;window.__musicEvents=[];for(const event of ['pause','emptied','loadstart'])__music.addEventListener(event,()=>__musicEvents.push(event));});
+  await page.locator('#experience [data-about]').click();
   await page.screenshot({path:path.join(output,`about-${viewport.width}.png`)});
   await page.getByRole('link',{name:'Science and Open Questions'}).click();
-  await page.waitForURL('**/genomics.html');
-  assert.equal(await page.locator('h1').innerText(),'Explore First Principles Genomics');
+  const genomics=page.locator('.science-genomics');
+  await genomics.locator('h1').waitFor();
+  assert.equal(page.url(),initialURL);
+  assert.equal(await genomics.evaluate(e=>e.parentElement===document.fullscreenElement),true);
+  assert.equal(await genomics.locator('h1').innerText(),'Explore First Principles Genomics');
   assert.match(await page.locator('.genomics-lead').innerText(),/Our hypothesis.*in the context of OXTR/);
-  assert.match(await page.locator('main').innerText(),/initial research is specific to OXTR/);
-  assert.doesNotMatch(await page.locator('main').innerText(),/broader programme/);
+  assert.match(await genomics.innerText(),/initial research is specific to OXTR/);
+  assert.doesNotMatch(await genomics.innerText(),/broader programme/);
   assert.equal(await page.locator('.genomics-targets li').count(),5);
   assert.equal(await page.locator('.science-teachables button').count(),4);
   await page.locator('.science-teachables img').evaluateAll(imgs=>Promise.all(imgs.map(img=>img.decode())));
   assert.equal(await page.locator('.science-register').evaluate(e=>e.open),false);
-  assert.doesNotMatch(await page.locator('main').innerText(),/golden[ -]ratio|Explore the science/i);
-  await page.screenshot({path:path.join(output,`genomics-${viewport.width}.png`),fullPage:true});
+  assert.doesNotMatch(await genomics.innerText(),/golden[ -]ratio|Explore the science/i);
+  await genomics.screenshot({path:path.join(output,`genomics-${viewport.width}.png`)});
   await page.locator('.science-teachables [data-science-card="gamma"]').click();
   const reader=page.locator('.science-reader');
   assert.equal(await reader.locator('.science-visual').evaluate(e=>e.open),true);
@@ -78,9 +93,8 @@ try{
   assert.equal(await reader.locator('.science-visual').evaluate(e=>e.open),false);
   assert.match(await reader.innerText(),/Cryo-electron microscopy/);
   await reader.locator('.science-atlas-link').click();
-  await page.waitForURL('**/?atlas=1&record=fibonacci-m9-p24#gamma');
-  await page.waitForFunction(()=>!document.querySelector('#launch').disabled);
-  await page.locator('#launch').click();
+  assert.equal(page.url(),initialURL);
+  assert.equal(await genomics.evaluate(e=>e.open),false);
   const frame=page.frameLocator('#atlas-frame');
   await frame.locator('#m9-science-summary').waitFor({state:'visible'});
   assert.equal(await frame.locator('#research-record').inputValue(),'fibonacci-m9-p24');
@@ -89,6 +103,19 @@ try{
   await frame.getByRole('tab',{name:'Geometry summary',exact:true}).click();
   assert.equal(await frame.locator('#summary-science-slot #m9-science-summary').count(),1);
   await frame.locator('#m9-science-summary').screenshot({path:path.join(output,`atlas-context-${viewport.width}.png`)});
+  await frame.locator('#m9-science-summary [data-science-genomics]').click();
+  const atlasGenomics=frame.locator('.science-genomics');
+  await atlasGenomics.locator('h1').waitFor();
+  assert.equal(page.url(),initialURL);
+  assert.equal(await atlasGenomics.locator('.science-teachables button').count(),4);
+  await atlasGenomics.screenshot({path:path.join(output,`atlas-genomics-${viewport.width}.png`)});
+  await page.keyboard.press('Escape');
+  assert.equal(await atlasGenomics.evaluate(e=>e.open),false);
+  assert.equal(await frame.locator('[data-science-genomics]').evaluate(e=>e===document.activeElement),true);
+  await frame.locator('[data-science-genomics]').click();
+  await atlasGenomics.locator('[data-science-atlas]').click();
+  assert.equal(await atlasGenomics.evaluate(e=>e.open),false);
+  assert.equal(await frame.locator('[role=tab][aria-selected=true]').innerText(),'Geometry summary');
   await frame.locator('#m9-science-summary [data-science-register]').click();
   const atlasRegister=frame.locator('.science-register'),atlasReader=frame.locator('.science-reader');
   assert.equal(await atlasRegister.locator('tbody tr').count(),14);
@@ -117,12 +144,46 @@ try{
     assert.equal(await frame.locator('#epsilon-reduced').getAttribute('aria-pressed'),'true');
    }
   }
-  assert.equal(await page.evaluate(()=>!!document.fullscreenElement),false);
+  // Return from About into an existing non-M9 Atlas without reloading the shell.
+  await page.locator('#experience [data-about]').click();
+  await page.locator('#about [data-science-genomics]').click();
+  await genomics.locator('[data-science-atlas]').click();
+  await frame.locator('#m9-science-summary').waitFor({state:'visible'});
+  assert.equal(await frame.locator('#research-record').inputValue(),'fibonacci-m9-p24');
+  assert.equal(await frame.locator('[role=tab][aria-selected=true]').innerText(),'Geometry summary');
+  assert.equal(page.url(),initialURL);
+  assert.deepEqual(await page.evaluate(()=>__fullscreenCalls),{enter:1,exit:0});
+  assert.equal(await page.evaluate(()=>document.fullscreenElement===document.querySelector('#experience')),true);
+  const media=await page.evaluate(()=>({same:__music===document.querySelector('#film'),advanced:__music.currentTime>__musicStart+1,paused:__music.paused,events:__musicEvents}));
+  assert.deepEqual(media,{same:true,advanced:true,paused:false,events:[]});
   assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),true);
   assert.equal(await frame.locator('html').evaluate(e=>e.scrollWidth<=innerWidth),true);
   assert.deepEqual(errors,[]);
-  results.push({viewport,compactAbout:true,separateGenomicsPage:true,studies:14,heroes:4,scoreBreakdowns:14,atlasLiteratureFirst:true,otherRecordsExcluded:true,errors});
-  await page.evaluate(()=>document.querySelectorAll('video,audio').forEach(m=>m.pause()));await context.close();
+  results.push({viewport,compactAbout:true,genomicsLightboxBothEntries:true,musicContinuous:true,fullscreenContainerPreserved:true,studies:14,heroes:4,scoreBreakdowns:14,atlasLiteratureFirst:true,otherRecordsExcluded:true,errors});
+  await page.evaluate(()=>document.querySelectorAll('video,audio').forEach(m=>m.pause()));
+  if(viewport.width===1440){
+   let attempts=0,release;
+   const gate=new Promise(resolve=>{release=resolve;});
+   const failureRoute=/\/genomics\.html\?v=lightbox1$/;
+   await context.route(failureRoute,async route=>{attempts++;if(attempts===1)return route.fulfill({status:503,body:'Temporarily unavailable'});await gate;return route.fallback();});
+   await page.goto(base+'?about=1',{waitUntil:'domcontentloaded'});
+   await page.locator('#about [data-science-genomics]').click();
+   await page.locator('[data-genomics-retry]').waitFor();
+   assert.equal(page.url(),base+'?about=1');
+   await page.locator('[data-genomics-retry]').click();
+   await page.getByText('Loading First Principles Genomics…',{exact:true}).waitFor();
+   await page.getByRole('button',{name:'Close First Principles Genomics',exact:true}).click();
+   await page.locator('#about [data-science-genomics]').click();
+   release();
+   await page.locator('.science-genomics h1').waitFor();
+   assert.equal(attempts,2);
+   assert.equal(await page.locator('.science-genomics .science-teachables button').count(),4);
+   await page.keyboard.press('Escape');
+   assert.equal(await page.locator('#about [data-science-genomics]').evaluate(e=>e===document.activeElement),true);
+   await context.unroute(failureRoute);
+   results.push({failedFetchRetry:true,closeReopenDuringLoading:true,noPageNavigation:true});
+  }
+  await context.close();
  }
  console.log(JSON.stringify({passed:true,candidate,processMuted:true,nativeFullscreen:false,results,output},null,2));
 }finally{await browser.close().catch(()=>{});await server.close().catch(()=>{});}

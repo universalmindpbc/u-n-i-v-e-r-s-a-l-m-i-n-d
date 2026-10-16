@@ -95,6 +95,59 @@
   zoom.setAttribute('aria-label', 'Enlarged scientific illustration');
   zoom.innerHTML = '<div class="science-reader-bar"><span>VISUAL EXPLANATION · SCROLL TO EXPLORE</span><button class="science-close" aria-label="Close enlarged illustration">×</button></div><div class="science-zoom-scroll"><img alt=""></div>';
   document.body.append(zoom);
+  const genomics = document.createElement('dialog');
+  genomics.className = 'science-genomics';
+  genomics.setAttribute('aria-label', 'First Principles Genomics');
+  genomics.innerHTML = '<div class="science-reader-bar"><span>FIRST PRINCIPLES GENOMICS · OXTR</span><button class="science-close" aria-label="Close First Principles Genomics">×</button></div><div class="science-genomics-content"></div>';
+  document.body.append(genomics);
+  let genomicsOpener, genomicsLoaded = false, genomicsLoading;
+  async function loadGenomics() {
+    if (genomicsLoaded || genomicsLoading) return genomicsLoading;
+    const content = genomics.querySelector('.science-genomics-content');
+    content.innerHTML = '<p class="science-genomics-status" role="status">Loading First Principles Genomics…</p>';
+    const controller = new AbortController(), timeout = setTimeout(() => controller.abort(), 12000);
+    genomicsLoading = (async () => {
+      try {
+        const response = await fetch(new URL('genomics.html?v=lightbox1', root), {signal: controller.signal});
+        if (!response.ok) throw Error('Genomics content unavailable');
+        const source = new DOMParser().parseFromString(await response.text(), 'text/html').querySelector('.genomics-main');
+        if (!source) throw Error('Genomics content missing');
+        const body = document.createElement('div');
+        body.className = 'genomics-main';
+        body.innerHTML = source.innerHTML;
+        renderTeachables(body.querySelector('#science-teachables'));
+        content.replaceChildren(body);
+        genomicsLoaded = true;
+      } catch {
+        content.innerHTML = '<p class="science-genomics-status" role="status">The reading has not loaded. <button class="science-register-link" data-genomics-retry>Try again</button></p>';
+      } finally {clearTimeout(timeout); genomicsLoading = null;}
+    })();
+    return genomicsLoading;
+  }
+  function openGenomics(button) {
+    genomicsOpener = button;
+    (document.fullscreenElement || document.body).append(genomics);
+    genomics.showModal(); genomics.scrollTop = 0;
+    loadGenomics();
+  }
+  genomics.addEventListener('close', () => genomicsOpener?.isConnected && genomicsOpener.focus());
+  document.addEventListener('click', e => {
+    const entry = e.target.closest('[data-science-genomics]');
+    if (entry) {e.preventDefault(); openGenomics(entry);}
+    if (e.target.closest('[data-genomics-retry]')) loadGenomics();
+    const atlas = e.target.closest('[data-science-atlas]');
+    if (atlas && ($('#research-record') || $('#experience'))) {e.preventDefault(); openAtlas(atlas.dataset.scienceAtlas);}
+  });
+  function openAtlas(view) {
+    for (const dialog of [zoom, reader, appraisal, register, genomics, $('#about')]) if (dialog?.open) dialog.close();
+    if ($('#research-record')) {
+      document.dispatchEvent(new CustomEvent('science:atlas-view', {detail: view}));
+    } else if ($('#experience')) {
+      document.dispatchEvent(new CustomEvent('science:open-atlas', {detail: view}));
+    } else {
+      location.href = new URL('./?atlas=1&record=fibonacci-m9-p24#' + view, root).href;
+    }
+  }
   const esc = value => String(value).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
   const reviewLabels = {1:'Abstract / figures',2:'Selected full-text sections',3:'Main text, methods & results'};
   const scoreKey = `<details class="science-score-key"><summary>How the provisional trust score is calculated</summary><p>This 0–10 editorial score helps prioritise closer reading of the reported findings. The published evidence informs the research themes; the proposed Atlas relationship remains the hypothesis under investigation. WSS will assess potential Atlas relevance separately.</p><dl><dt>Study design · 0–3</dt><dd>3: controlled mechanistic test or quantitative prediction tested by manipulation; 2: structured measurement or comparative design; 1: descriptive observation; 0: insufficient information.</dd><dt>Validation · 0–3</dt><dd>3: independent replication appraised; 2: complementary evidence within the paper; 1: limited or abstract-level corroboration; 0: unassessed. No independent replication appraisal has yet been completed for this collection.</dd><dt>Source review · 0–3</dt><dd>3: main text, relevant methods/results and captions reviewed; 2: selected full-text sections; 1: abstract, metadata or figure descriptions; 0: unreviewed.</dd><dt>Publication provenance · 0–1</dt><dd>1: verified primary peer-reviewed publication. Journal reputation and impact factor do not add points.</dd></dl><p>Scores are provisional editorial judgements, with no claim of calibration or independent peer review. Review depth records the current extent of appraisal and can increase as methods and independent replications are assessed. Citation counts are displayed as context and contribute no points. Jadad evaluates randomised clinical-trial reporting; all 14 entries here are laboratory, animal, structural or related mechanistic studies, so Jadad is not applicable.</p><p>Crossref cited-by counts checked 17 October 2026. Coverage depends on deposited references and can differ from publisher counts. An unavailable count is left unscored.</p></details>`;
@@ -135,16 +188,7 @@
       const img = zoom.querySelector('img'); img.src = imageURL(c); img.alt = c.alt;
       (document.fullscreenElement || document.body).append(zoom); zoom.showModal();
     };
-    reader.querySelector('[data-atlas-view]').onclick = () => {
-      reader.close();
-      if (register.open) register.close();
-      if ($('#research-record')) {
-        document.dispatchEvent(new CustomEvent('science:atlas-view', {detail: c.id}));
-      } else {
-        if ($('#about')?.open) $('#about').close();
-        location.href = new URL('./?atlas=1&record=fibonacci-m9-p24#' + c.id, root).href;
-      }
-    };
+    reader.querySelector('[data-atlas-view]').onclick = () => openAtlas(c.id);
   }
   function openCard(id, entry, button) {
     active = cards.find(c => c.id === id) || cards[0]; mode = entry; opener = button;
@@ -153,7 +197,7 @@
     reader.showModal(); reader.scrollTop = 0;
   }
   reader.querySelectorAll('[data-reader-card]').forEach(b => b.onclick = () => {active = cards.find(c => c.id === b.dataset.readerCard); renderCard(); reader.scrollTop = 0;});
-  for (const dialog of [reader, zoom, register, appraisal]) {
+  for (const dialog of [reader, zoom, register, appraisal, genomics]) {
     dialog.querySelector('.science-close').onclick = () => dialog.close();
     dialog.addEventListener('click', e => {if (e.target !== dialog) return; const r = dialog.getBoundingClientRect(); if (e.clientX < r.left || e.clientX > r.right || e.clientY < r.top || e.clientY > r.bottom) dialog.close();});
   }
@@ -161,13 +205,16 @@
   zoom.addEventListener('close', () => reader.querySelector('.science-image-button')?.focus());
   document.addEventListener('click', e => {const b = e.target.closest('[data-science-card]'); if (b) openCard(b.dataset.scienceCard, b.dataset.scienceMode || 'literature', b);});
 
-  const teachables = $('#science-teachables');
+  function renderTeachables(teachables) {
   if (teachables) teachables.innerHTML = cards.map(c => `<button data-science-card="${c.id}" data-science-mode="visual"><img src="${imageURL(c)}" alt="" loading="lazy" width="1536" height="1024"><span class="science-kicker" style="--science-color:${c.color}">${c.label} · ${c.theme}</span><strong>${c.title}</strong><span class="science-teachable-action">View infographic →</span></button>`).join('');
+
+  }
+  renderTeachables($('#science-teachables'));
 
   const module = document.createElement('section');
   module.id = 'm9-science-summary'; module.className = 'science-module'; module.hidden = true;
   module.setAttribute('aria-labelledby', 'm9-science-title');
-  module.innerHTML = `<p class="science-label">M9 / P24 · SCIENTIFIC SIGNIFICANCE</p><h2 id="m9-science-title">Research context</h2><p class="science-module-intro">Investigating relationships between M9P24’s nested sequences and biological timing, cellular division and molecular organisation in the context of OXTR.</p><button class="science-register-link" data-science-register>Research register ↗</button><p class="science-module-page"><a href="${new URL('genomics.html', root).href}" target="_top">First Principles Genomics →</a></p><p class="science-assessment">Hypothesis under investigation<br>Numerical WSS: awaiting assessment</p>${framework}`;
+  module.innerHTML = `<p class="science-label">M9 / P24 · SCIENTIFIC SIGNIFICANCE</p><h2 id="m9-science-title">Research context</h2><p class="science-module-intro">Investigating relationships between M9P24’s nested sequences and biological timing, cellular division and molecular organisation in the context of OXTR.</p><button class="science-register-link" data-science-register>Research register ↗</button><p class="science-module-page"><a href="${new URL('genomics.html', root).href}" data-science-genomics aria-haspopup="dialog">First Principles Genomics →</a></p><p class="science-assessment">Hypothesis under investigation<br>Numerical WSS: awaiting assessment</p>${framework}`;
   if ($('#sidebar-science-slot')) $('#sidebar-science-slot').append(module);
   function setRecord(d) {
     hero = d.modulus === 9 && d.pisano_period === 24;
