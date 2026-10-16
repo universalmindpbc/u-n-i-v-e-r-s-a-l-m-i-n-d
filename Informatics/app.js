@@ -43,6 +43,7 @@ function showAtlas(open){
  if(open)$('#atlas-frame').focus();else $('#atlas-toggle').focus();
 }
 $('#atlas-toggle').onclick=()=>showAtlas(!atlasOpen);
+document.addEventListener('science:open-atlas',e=>{const view=['alpha','beta','gamma','epsilon'].includes(e.detail)?e.detail:'geometry-summary';$('#atlas-frame').src='research.html?embedded=1&v=science-v1&record=fibonacci-m9-p24#'+view;if(!entered)launch.click();showAtlas(true);});
 function syncSound(){const label=film.muted?'Unmute video':'Mute video';$('#sound').textContent=film.muted?'♪̸':'♫';$('#sound').setAttribute('aria-label',label);$('#sound').title=label;}
 $('#sound').onclick=()=>{if(film.paused){film.muted=false;film.play().catch(()=>{});}else film.muted=!film.muted;syncSound();};
 function fullscreen(){if(!document.fullscreenElement && experience.requestFullscreen)experience.requestFullscreen().catch(()=>{});}
@@ -63,4 +64,5 @@ document.querySelectorAll('[data-about]').forEach(button=>button.addEventListene
 document.querySelector('#about-close').onclick=()=>about.close();
 about.addEventListener('click',e=>{if(e.target===about){const r=about.getBoundingClientRect();if(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom)about.close();}});
 about.addEventListener('close',()=>opener?.focus());
+if(new URLSearchParams(location.search).get('about')==='science'){opener=document.querySelector('[data-about]');about.showModal();requestAnimationFrame(()=>document.querySelector('#about-science')?.scrollIntoView({block:'start'}));}
 })();
