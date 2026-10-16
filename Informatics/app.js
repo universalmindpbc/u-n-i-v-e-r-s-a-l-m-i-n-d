@@ -43,3 +43,17 @@ $('#back').onclick=()=>{film.pause();playing=false;entered=false;if(document.ful
 document.addEventListener('visibilitychange',()=>{last=null;if(document.hidden)film.pause();else if(entered)film.play().catch(()=>{});});
 function frame(now){const dt=last===null?0:Math.min(now-last,60);last=now;if(entered&&playing&&!document.hidden){elapsed=Math.min(total-1,elapsed+dt);if(elapsed>=total-1)playing=false;render();}requestAnimationFrame(frame);}render();requestAnimationFrame(frame);
 })().catch(error=>{console.error(error);document.querySelector('#launch-status').textContent='Unable to load geometry. Please reload.';});
+
+// Shared multilingual identity; the research wording stays fixed in About.
+(()=>{
+const names=[['en','Universal Informatics'],['el','παγκόσμια πληροφορική'],['th','สารสนเทศศาสตร์สากล']];
+const titles=[...document.querySelectorAll('[data-brand-language]')];let index=0;
+const reduced=matchMedia('(prefers-reduced-motion: reduce)');
+function rotate(){if(document.hidden||reduced.matches)return;titles.forEach(t=>t.classList.add('name-fading'));setTimeout(()=>{index=(index+1)%names.length;titles.forEach(t=>{t.lang=names[index][0];t.textContent=names[index][1];t.classList.remove('name-fading');});},700);}
+setInterval(rotate,6500);
+const about=document.querySelector('#about');let opener;
+document.querySelectorAll('[data-about]').forEach(button=>button.addEventListener('click',()=>{opener=button;(document.fullscreenElement||document.body).append(about);about.showModal();}));
+document.querySelector('#about-close').onclick=()=>about.close();
+about.addEventListener('click',e=>{if(e.target===about){const r=about.getBoundingClientRect();if(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom)about.close();}});
+about.addEventListener('close',()=>opener?.focus());
+})();
