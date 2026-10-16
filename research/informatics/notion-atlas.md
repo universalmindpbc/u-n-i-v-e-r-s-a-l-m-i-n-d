@@ -13,3 +13,6 @@ Private workspace-level database created for Ben on 2026-10-16.
 - Research status is not yet assessed. Quantum, Atomic and Genomic sections and literature prioritisation categories preserve distinctions in the supplied brief.
 - Wolfram kernel independently verified period 24; Gamma 9,3,3,9,6,6; interval sums 4,17,16,23,10,11; Beta 4,8,7,5,1,2; Epsilon 9,3,6,9,3,6,9; doubling 1,2,4,8,7,5,1.
 - This private Notion link is not exposed in the public website navigation.
+
+- Beta primary order is 4,8,7,5,1,2, anchored to the interval from clock position 24 to 4. Recognised cycle 1,2,4,8,7,5 is a separate field. The corrected image is primary; earlier page-body attachments are explicitly labelled superseded for provenance.
+- Atlas is embedded inside the existing experience so the video and audio element survives navigation. The landing page has no separate Atlas link.
