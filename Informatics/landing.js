@@ -39,7 +39,7 @@
         const createColumn = (index) => {
           const trailLength = Math.round(randomBetween(18, 36));
           return {
-            x: index * state.cell + state.cell * randomBetween(0.32, 0.68),
+            x: index * state.cell * 2 + state.cell * randomBetween(0.32, 0.68),
             headY: randomBetween(state.cell, state.height + (trailLength - 2) * state.cell),
             speed: randomBetween(66, 152),
             opacity: randomBetween(0.7, 1),
@@ -53,7 +53,7 @@
           state.width = Math.max(1, window.innerWidth);
           state.height = Math.max(1, window.innerHeight);
           state.ratio = Math.min(window.devicePixelRatio || 1, 1.75);
-          state.cell = state.width < 520 ? 28 : state.width < 980 ? 34 : 38;
+          state.cell = state.width < 520 ? 18 : state.width < 980 ? 21 : 23;
 
           canvas.width = Math.round(state.width * state.ratio);
           canvas.height = Math.round(state.height * state.ratio);
@@ -61,7 +61,7 @@
           canvas.style.height = `${state.height}px`;
           context.setTransform(state.ratio, 0, 0, state.ratio, 0, 0);
 
-          const columnCount = Math.ceil(state.width / state.cell) + 1;
+          const columnCount = Math.ceil(state.width / (state.cell * 2)) + 1;
           state.columns = Array.from({ length: columnCount }, (_, index) => createColumn(index));
           canvas.dataset.rainColumns = String(columnCount);
           canvas.dataset.rainPalette = "monochrome";
@@ -117,7 +117,7 @@
 
               context.font = isSignatureV
                 ? `${Math.round(state.cell * 1.06)}px Didot, "Bodoni 72", "Times New Roman", serif`
-                : `${Math.round(state.cell * (glyph.character.length > 1 ? 0.44 : 0.72))}px "SFMono-Regular", Menlo, Consolas, monospace`;
+                : `${Math.round(state.cell * 0.86)}px "SFMono-Regular", Menlo, Consolas, monospace`;
               context.fillStyle = `rgba(${red}, ${green}, ${blue}, ${isHead ? Math.min(1, alpha + 0.22) : alpha})`;
               context.shadowColor = isHead
                 ? `rgba(${red}, ${green}, ${blue}, ${glyph.anomaly ? 0.98 : 0.92})`
