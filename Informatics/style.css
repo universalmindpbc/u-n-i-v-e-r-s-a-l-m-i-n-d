@@ -26,3 +26,5 @@ footer nav small::before{content:"";display:inline-block;width:5px;height:5px;ma
 #atlas-panel{flex:1;min-height:0;width:100%;height:calc(100svh - 100px)}#atlas-frame{display:block;width:100%;height:100%;border:0;background:transparent}#experience.atlas-open{height:100svh;overflow:hidden}#experience.atlas-open header{flex-shrink:0}#experience.atlas-open .film-shade{background:#000b}#experience .atlas-header-link{font:10px Arial,sans-serif;letter-spacing:.08em;width:auto;padding:0;white-space:nowrap}@media(max-width:640px){#atlas-panel{height:calc(100svh - 108px)}#experience .atlas-header-link{font-size:9px}}
 
 #experience.atlas-open .signature{display:none}
+
+.about-resources .about-science-link{grid-column:1/-1;margin-top:12px;padding-top:10px;border-top:1px solid #ffffff14}

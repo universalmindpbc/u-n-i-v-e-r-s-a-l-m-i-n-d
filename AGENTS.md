@@ -159,3 +159,9 @@ After an explicitly authorized production deployment, replace that sentence with
 ## Primary objective
 
 The goal of this repository is rapid creative iteration. Reducing friction for Ben is more important than changing deployment methods, and consistency is more important than cleverness.
+
+## Informatics editorial language
+
+- Use **Phi Ratio** for φ in all public Informatics copy. Preserve this terminology in future research and website revisions.
+- Introduce the proposed relationship between Atlas sequences and biological functions as a research hypothesis, with bioinformatics and in silico modelling as the planned investigation.
+- Keep About compact. House illustrations on the First Principles Genomics page, and the full publication register in an optional lightbox.
