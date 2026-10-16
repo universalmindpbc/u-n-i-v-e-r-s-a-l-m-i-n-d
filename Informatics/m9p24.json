@@ -196,36 +196,36 @@
       "id": "alpha",
       "name": "Alpha",
       "description": "24 Fibonacci residues",
-      "svg": "views/alpha.svg",
-      "png": "views/alpha.png"
+      "svg": "views/alpha.svg?v=2",
+      "png": "views/alpha.png?v=2"
     },
     {
       "id": "beta",
       "name": "Beta",
       "description": "Embedded doubling sequence",
-      "svg": "views/beta.svg",
-      "png": "views/beta.png"
+      "svg": "views/beta.svg?v=2",
+      "png": "views/beta.png?v=2"
     },
     {
       "id": "gamma",
       "name": "Gamma",
       "description": "Nodal geometry",
-      "svg": "views/gamma.svg",
-      "png": "views/gamma.png"
+      "svg": "views/gamma.svg?v=2",
+      "png": "views/gamma.png?v=2"
     },
     {
       "id": "epsilon",
       "name": "Epsilon",
       "description": "Unicursal hexagram",
-      "svg": "views/epsilon.svg",
-      "png": "views/epsilon.png"
+      "svg": "views/epsilon.svg?v=2",
+      "png": "views/epsilon.png?v=2"
     },
     {
       "id": "fibonacci-m9p24",
       "name": "Fibonacci M9P24",
       "description": "Combined geometry",
-      "svg": "views/fibonacci-m9p24.svg",
-      "png": "views/fibonacci-m9p24.png"
+      "svg": "views/fibonacci-m9p24.svg?v=2",
+      "png": "views/fibonacci-m9p24.png?v=2"
     }
   ],
   "research": {

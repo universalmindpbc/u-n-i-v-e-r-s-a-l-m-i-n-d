@@ -1,5 +1,5 @@
 'use strict';
-(async()=>{const $=s=>document.querySelector(s);try{const response=await fetch('m9p24.json');if(!response.ok)throw Error('Research record unavailable');const d=await response.json();
+(async()=>{const $=s=>document.querySelector(s);try{const response=await fetch('m9p24.json?v=2');if(!response.ok)throw Error('Research record unavailable');const d=await response.json();
 const descriptions=[
  ['All 24 Fibonacci residues, placed clockwise around a circle.',d.alpha.display_values.join(' · '),'Clock position 24 starts at north, followed clockwise by 1–23. Zero is displayed as 9.','F(n+2) = F(n+1) + F(n), reduced modulo 9. The state (0, 1) first returns after 24 steps.'],
  ['The embedded doubling cycle, drawn on its own nine-position circle.',d.beta.display_cycle.concat(1).join(' → '),'Six steps form the cycle; nine positions define the circle.','Sums between Gamma nodes: '+d.beta.interval_sums.join(', ')+'. Reduced modulo 9: '+d.beta.interval_residues.join(', ')+'. Rotate to begin at 1.'],

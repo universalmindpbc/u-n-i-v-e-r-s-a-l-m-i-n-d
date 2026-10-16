@@ -87,7 +87,7 @@ record={
  'beta':{'interval_sums':d['interval_sums'],'interval_residues':d['beta'],'display_cycle':d['doubling'][:-1],'rotation_to_display':4,'endpoint_rule':'Exclude Gamma nodes; include wraparound interval.','circle_positions':9,'cycle_length':6},
  'gamma':{'alpha_indices':d['node_indices'],'clock_positions':[i or 24 for i in d['node_indices']],'clockwise_values':[d['display_alpha'][i] for i in d['node_indices']],'triangle_paths':d['triangles']},
  'epsilon':{'alpha_indices':d['unicursal_indices'],'clock_positions':[i or 24 for i in d['unicursal_indices']],'traversal_values':d['unicursal_labels'],'status':'Proposed geometric traversal; physical interpretation not assessed.'},
- 'views':[{'id':key,'name':title,'description':subtitle,'svg':f'views/{key}.svg','png':f'views/{key}.png'} for key,title,subtitle,seq,note in views],
+ 'views':[{'id':key,'name':title,'description':subtitle,'svg':f'views/{key}.svg?v=2','png':f'views/{key}.png?v=2'} for key,title,subtitle,seq,note in views],
  'research':{'focus':'OXTR gene expression','biological_significance_status':'Not yet assessed','statistical_significance_status':'Not yet assessed','quantum_annealing_status':'Not yet performed'},
  'verification':{'python':'Period, node spacing, triangle spacing, and doubling recurrence checked by generator.','wolfram':'Reference notebook source available; this generator does not execute Wolfram.'}}
 assert len(d['alpha'])==24 and d['node_indices']==list(range(0,24,4))
