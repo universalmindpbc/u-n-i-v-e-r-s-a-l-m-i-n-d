@@ -7,3 +7,13 @@ For m=9k, (F_n mod m) mod 9 = F_n mod 9. Gamma selection by divisibility by 3 is
 M18 has period24, so Gamma positions match on the same clock. Reduced Beta uses nine positions. Longer native periods require explicit folding into24-position cycles; whole-circle geometry is not automatically identical. Native Epsilon is unchanged and remains null for M18.
 
 Research question: do these shared reduced patterns have shared biological relevance, or does native-modulus complexity matter? Evidence, simulations and appropriate experimental validation are still needed. CUDA/CUDA-Q modelling is planned, not performed. No WSS score or higher spatial dimensional interpretation is established.
+
+## Verification record
+
+- All24 native JSON records compared against the preceding Git release after removing only the added comparison field: identical.
+- All111 applicable moduli passed exact sequence/phase/index comparison. This does not constitute full geometry proof for M25–M1001.
+- M18 Wolfram result: Alpha equality True, Gamma raw 0,3,3,0,6,6, Beta4,8,7,5,1,2, Beta equality True.
+- Notion:24 comparison statuses saved/read back; M9/M18 Alpha, Beta, Gamma values read back and matched. M18 native Epsilon remains Null.
+- Complete download bundle includes comparison CSV, full JSON,111-modulus audit and Wolfram output.
+- Staging browser verification:1440×900 and390×844 M18 comparison displays all3 exact matches; M6 hides the inapplicable comparison; M9 shows reference status. All24 records and97 diagrams passed at both viewports. No horizontal overflow or JavaScript errors; returning to landing pauses the video.
+- Live download checks:CSV, full ZIP and JSON match local release bytes. All236 public assets match SHA-256 checksums when requested with the release version. Release query parameters prevent stale cached JS/data/bundles. Dedicated headless Chromium used --mute-audio; native fullscreen was stubbed; all automated browser sessions closed.
