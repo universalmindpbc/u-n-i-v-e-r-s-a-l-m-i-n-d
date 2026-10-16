@@ -39,7 +39,7 @@ function showAtlas(open){
  if(open){resumeAnimation=playing;playing=false;const frame=$('#atlas-frame');if(!frame.getAttribute('src'))frame.src=frame.dataset.src+location.hash;}
  else {playing=resumeAnimation;last=null;}
  $('#atlas-panel').hidden=!open;experience.querySelector('main').hidden=open;experience.querySelector('footer').hidden=open;
- experience.classList.toggle('atlas-open',open);$('#atlas-toggle').textContent=open?'Geometric animation':'Research Atlas';$('#atlas-toggle').setAttribute('aria-expanded',String(open));
+ experience.classList.toggle('atlas-open',open);$('#atlas-toggle').textContent=open?'Home':'Research Atlas';$('#atlas-toggle').setAttribute('aria-expanded',String(open));
  if(open)$('#atlas-frame').focus();else $('#atlas-toggle').focus();
 }
 $('#atlas-toggle').onclick=()=>showAtlas(!atlasOpen);
