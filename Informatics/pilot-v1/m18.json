@@ -1,6 +1,6 @@
 {
   "schema_version": "2.0.0",
-  "dataset_version": "m1-m24-v1",
+  "dataset_version": "m1-m48-v1",
   "id": "fibonacci-m18-p24",
   "name": "Fibonacci M18P24",
   "modulus": 18,
@@ -2380,38 +2380,6 @@
     "wolfram_scope": "24 native periods, complete Alpha, primary Gamma indices, Beta interval sums/residues, primary regular triangles and hexagons. Extended catalogue, Chevron and Epsilon remain Python-checked only.",
     "evidence": "wolfram-core-result.json"
   },
-  "views": [
-    {
-      "id": "alpha",
-      "name": "Alpha",
-      "svg": "pilot-v1/views/m18/alpha.svg",
-      "png": "pilot-v1/views/m18/alpha.png"
-    },
-    {
-      "id": "beta",
-      "name": "Beta",
-      "svg": "pilot-v1/views/m18/beta.svg",
-      "png": "pilot-v1/views/m18/beta.png"
-    },
-    {
-      "id": "gamma",
-      "name": "Gamma",
-      "svg": "pilot-v1/views/m18/gamma.svg",
-      "png": "pilot-v1/views/m18/gamma.png"
-    },
-    {
-      "id": "epsilon",
-      "name": "Epsilon",
-      "svg": "pilot-v1/views/m18/epsilon.svg",
-      "png": "pilot-v1/views/m18/epsilon.png"
-    },
-    {
-      "id": "fibonacci-m18p24",
-      "name": "Fibonacci M18P24",
-      "svg": "pilot-v1/views/m18/fibonacci-m18p24.svg",
-      "png": "pilot-v1/views/m18/fibonacci-m18p24.png"
-    }
-  ],
   "reduction_to_m9": {
     "version": "m9-reduction-v1",
     "target_modulus": 9,
@@ -2528,9 +2496,11 @@
     "interpretation": "Exact reduction is a mathematical consequence of divisibility, not independent evidence of statistical or biological significance. Native Epsilon remains unchanged.",
     "verification": "Python full-period comparison; M18 Alpha, Gamma and Beta independently checked with Wolfram."
   },
-  "epsilon_path": {
-    "rule_version": "epsilon-path-m18-v1",
-    "reference": "M9P24 unicursal route on the same 24-position circle",
+  "epsilon_m9_comparison": {
+    "rule_version": "epsilon-m9-exact-v2",
+    "geometry_identical": true,
+    "reduced_sequence_identical": true,
+    "combined_eligible": true,
     "alpha_indices": [
       0,
       8,
@@ -2567,10 +2537,95 @@
       6,
       9
     ],
+    "reference_values": [
+      9,
+      3,
+      6,
+      9,
+      3,
+      6,
+      9
+    ],
+    "normalized_route_sixths": [
+      0,
+      2,
+      5,
+      3,
+      1,
+      4,
+      0
+    ],
+    "orientation": "clockwise from north; fixed M9 route and starting phase",
+    "reason": "Exact geometry and reduced traversal match.",
+    "scope": "Tests the fixed north-oriented M9 path on the full native period circle; does not fold the period or rotate/reverse the values to force a match."
+  },
+  "epsilon_path": {
+    "rule_version": "epsilon-m9-exact-v2",
+    "geometry_identical": true,
+    "reduced_sequence_identical": true,
+    "combined_eligible": true,
+    "alpha_indices": [
+      0,
+      8,
+      20,
+      12,
+      4,
+      16,
+      0
+    ],
+    "clock_positions": [
+      24,
+      8,
+      20,
+      12,
+      4,
+      16,
+      24
+    ],
+    "native_values": [
+      18,
+      3,
+      15,
+      18,
+      3,
+      15,
+      18
+    ],
+    "reduced_m9_values": [
+      9,
+      3,
+      6,
+      9,
+      3,
+      6,
+      9
+    ],
+    "reference_values": [
+      9,
+      3,
+      6,
+      9,
+      3,
+      6,
+      9
+    ],
+    "normalized_route_sixths": [
+      0,
+      2,
+      5,
+      3,
+      1,
+      4,
+      0
+    ],
+    "orientation": "clockwise from north; fixed M9 route and starting phase",
+    "reason": "Exact geometry and reduced traversal match.",
+    "scope": "Tests the fixed north-oriented M9 path on the full native period circle; does not fold the period or rotate/reverse the values to force a match.",
+    "reference": "M9 normalized circle geometry and exact reduced traversal",
     "geometry_present": true,
     "native_369_qualifies": false,
     "reduced_369_qualifies": true,
-    "verification": "Python checked: route positions and both value sequences. Physical interpretation not assessed.",
+    "verification": "Python checked: exact rational circle positions and reduced traversal. Physical interpretation not assessed.",
     "native_svg": "pilot-v1/views/m18/epsilon.svg",
     "native_png": "pilot-v1/views/m18/epsilon.png",
     "reduced_svg": "pilot-v1/views/m18/epsilon-m9.svg",
@@ -2837,5 +2892,37 @@
     ],
     "absence_reason": "No tested six-node formation contains only 3, 6 and 9 with all three present.",
     "reference_path_available": true
-  }
+  },
+  "views": [
+    {
+      "id": "alpha",
+      "name": "Alpha",
+      "svg": "pilot-v1/views/m18/alpha.svg",
+      "png": "pilot-v1/views/m18/alpha.png"
+    },
+    {
+      "id": "beta",
+      "name": "Beta",
+      "svg": "pilot-v1/views/m18/beta.svg",
+      "png": "pilot-v1/views/m18/beta.png"
+    },
+    {
+      "id": "gamma",
+      "name": "Gamma",
+      "svg": "pilot-v1/views/m18/gamma.svg",
+      "png": "pilot-v1/views/m18/gamma.png"
+    },
+    {
+      "id": "epsilon",
+      "name": "Epsilon",
+      "svg": "pilot-v1/views/m18/epsilon.svg",
+      "png": "pilot-v1/views/m18/epsilon.png"
+    },
+    {
+      "id": "fibonacci-m18p24",
+      "name": "Fibonacci M18P24",
+      "svg": "pilot-v1/views/m18/fibonacci-m18p24.svg",
+      "png": "pilot-v1/views/m18/fibonacci-m18p24.png"
+    }
+  ]
 }

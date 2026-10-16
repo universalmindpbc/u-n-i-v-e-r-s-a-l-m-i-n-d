@@ -1,7 +1,7 @@
 """Human-readable CSV summary plus lossless JSON inside the complete export bundle."""
-import csv,json,io,zipfile
+import csv,json,io,zipfile,os
 from pathlib import Path
-ROOT=Path(__file__).resolve().parents[1];OUT=ROOT/'data/m1-m24-v1';d=json.loads((OUT/'dataset.json').read_text());records=d['records']
+ROOT=Path(__file__).resolve().parents[1];OUT=Path(os.environ.get('INFORMATICS_DATA_DIR',ROOT/'data/m1-m24-v1'));d=json.loads((OUT/'dataset.json').read_text());records=d['records']
 def write(name,rows):
  fields=list(dict.fromkeys(k for r in rows for k in r));buf=io.StringIO(newline='');w=csv.DictWriter(buf,fieldnames=fields);w.writeheader();w.writerows(rows);(OUT/name).write_text('\ufeff'+buf.getvalue(),encoding='utf-8')
 def js(v):return json.dumps(v,ensure_ascii=False,separators=(',',':'))
@@ -22,11 +22,13 @@ for r in records:
   formations.append({**base,**{k:js(v) if isinstance(v,(dict,list)) else v for k,v in f.items() if k not in ['beta','epsilon_routes']}})
   for i,x in enumerate(f['beta']['intervals']):formation_beta.append({**base,'formation_id':f['id'],'interval_order':i+1,**{k:js(v) if isinstance(v,list) else v for k,v in x.items()}})
   for route in f.get('epsilon_routes',[]):routes.append({**base,**{k:js(v) if isinstance(v,list) else v for k,v in route.items()}})
+write('epsilon_m9_comparison.csv',[{'record_id':r['id'],'modulus':r['modulus'],**{k:js(v) if isinstance(v,list) else v for k,v in r['epsilon_m9_comparison'].items()}} for r in records])
 diagnostics=[{'record_id':r['id'],'modulus':r['modulus'],'native_369_present':r['epsilon_assessment']['native_369_present'],'absence_reason':r['epsilon_assessment']['absence_reason'],'candidate_count':r['epsilon_assessment']['candidate_count'],'candidates':js(r['epsilon_assessment']['candidates'])} for r in records]
 reductions=[{'record_id':r['id'],'modulus':r['modulus'],**{k:js(v) if isinstance(v,(dict,list)) else v for k,v in r['reduction_to_m9'].items()}} for r in records]
 for name,rows in [('epsilon_assessment',diagnostics),('reduction_to_m9',reductions),('records',summary),('alpha',alpha),('beta_intervals',beta),('gamma',gamma),('epsilon',epsilon),('geometry_summary',shapes),('formation_catalogue',formations),('formation_intervals',formation_beta),('epsilon_routes',routes)]:write(name+'.csv',rows)
-(OUT/'CSV-README.txt').write_text('Universal Informatics M1–M24\n\nrecords.csv: one row per modulus. Other CSVs separate observations, interval sums and geometry candidates. Lists within cells use JSON array notation. Legacy epsilon fields describe native 3-6-9 qualification. Separate epsilon_path columns describe the M18 reference path and its reduced values; an empty legacy epsilon field does not mean this path is absent. Empty Beta means undefined, not zero. Raw residues and display values are separate. Clock position P is north; machine indices start at zero. Original Beta order is preserved.\n\nThe included dataset.json is the complete lossless source, including conventions, candidates, verification and unassessed research-tier metadata. CSVs are analytical tables derived from it, not a replacement schema. No biological significance or WSS score is assigned.\n')
-with zipfile.ZipFile(OUT/'m1-m24-data.zip','w',zipfile.ZIP_DEFLATED) as z:
- for p in sorted(OUT.glob('*.csv'))+[OUT/'CSV-README.txt',OUT/'dataset.json',OUT/'verify_core.wl',OUT/'wolfram-core-result.json',OUT/'m9-reduction-audit.json',OUT/'wolfram-m18-reduction.json']:z.write(p,p.name)
-assert len(list(csv.DictReader((OUT/'records.csv').open(encoding='utf-8-sig'))))==24
-print('24-row CSV and complete export bundle generated.')
+(OUT/'CSV-README.txt').write_text('Universal Informatics M1–M48\n\nrecords.csv: one row per modulus. Other CSVs separate observations, interval sums and geometry candidates. Lists within cells use JSON array notation. Legacy epsilon fields describe native 3-6-9 qualification. Separate epsilon_path columns describe an exact M9 reference-path match and its reduced values; an empty legacy epsilon field does not mean this path is absent. Empty Beta means undefined, not zero. Raw residues and display values are separate. Clock position P is north; machine indices start at zero. Original Beta order is preserved.\n\nThe included dataset.json is the complete lossless source, including conventions, candidates, verification and unassessed research-tier metadata. CSVs are analytical tables derived from it, not a replacement schema. No biological significance or WSS score is assigned.\n')
+with zipfile.ZipFile(OUT/('m1-m48-data.zip' if len(records)==48 else 'm1-m24-data.zip'),'w',zipfile.ZIP_DEFLATED) as z:
+ for p in sorted(OUT.glob('*.csv'))+[OUT/'CSV-README.txt',OUT/'dataset.json']+sorted(OUT.glob('*.wl'))+sorted(OUT.glob('wolfram-*.json'))+[OUT/'m9-reduction-audit.json']:
+  if p.exists():z.write(p,p.name)
+assert len(list(csv.DictReader((OUT/'records.csv').open(encoding='utf-8-sig'))))==len(records)
+print(f'{len(records)}-row CSV and complete export bundle generated.')

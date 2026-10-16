@@ -1,6 +1,6 @@
 {
   "schema_version": "2.0.0",
-  "dataset_version": "m1-m24-v1",
+  "dataset_version": "m1-m48-v1",
   "id": "fibonacci-m8-p12",
   "name": "Fibonacci M8P12",
   "modulus": 8,
@@ -1063,32 +1063,6 @@
     "wolfram_scope": "24 native periods, complete Alpha, primary Gamma indices, Beta interval sums/residues, primary regular triangles and hexagons. Extended catalogue, Chevron and Epsilon remain Python-checked only.",
     "evidence": "wolfram-core-result.json"
   },
-  "views": [
-    {
-      "id": "alpha",
-      "name": "Alpha",
-      "svg": "pilot-v1/views/m8/alpha.svg",
-      "png": "pilot-v1/views/m8/alpha.png"
-    },
-    {
-      "id": "beta",
-      "name": "Beta",
-      "svg": "pilot-v1/views/m8/beta.svg",
-      "png": "pilot-v1/views/m8/beta.png"
-    },
-    {
-      "id": "gamma",
-      "name": "Gamma",
-      "svg": "pilot-v1/views/m8/gamma.svg",
-      "png": "pilot-v1/views/m8/gamma.png"
-    },
-    {
-      "id": "fibonacci-m8p12",
-      "name": "Fibonacci M8P12",
-      "svg": "pilot-v1/views/m8/fibonacci-m8p12.svg",
-      "png": "pilot-v1/views/m8/fibonacci-m8p12.png"
-    }
-  ],
   "reduction_to_m9": {
     "version": "m9-reduction-v1",
     "target_modulus": 9,
@@ -1097,6 +1071,69 @@
     "research_question": "Does the shared M9 pattern have shared biological relevance, or does native-modulus complexity change it? Unassessed: requires peer-reviewed evidence, in silico modelling (including proposed CUDA/CUDA-Q work), and appropriate experimental validation. No spatial-dimension claim or WSS score follows from this arithmetic match.",
     "biological_significance": "Not yet assessed",
     "native_data_preserved": true
+  },
+  "epsilon_m9_comparison": {
+    "rule_version": "epsilon-m9-exact-v2",
+    "geometry_identical": true,
+    "reduced_sequence_identical": false,
+    "combined_eligible": false,
+    "alpha_indices": [
+      0,
+      4,
+      10,
+      6,
+      2,
+      8,
+      0
+    ],
+    "clock_positions": [
+      12,
+      4,
+      10,
+      6,
+      2,
+      8,
+      12
+    ],
+    "native_values": [
+      8,
+      3,
+      7,
+      8,
+      1,
+      5,
+      8
+    ],
+    "reduced_m9_values": [
+      9,
+      3,
+      7,
+      9,
+      1,
+      5,
+      9
+    ],
+    "reference_values": [
+      9,
+      3,
+      6,
+      9,
+      3,
+      6,
+      9
+    ],
+    "normalized_route_sixths": [
+      0,
+      2,
+      5,
+      3,
+      1,
+      4,
+      0
+    ],
+    "orientation": "clockwise from north; fixed M9 route and starting phase",
+    "reason": "Reference geometry exists, but the reduced traversal does not equal 9\u20133\u20136\u20139\u20133\u20136\u20139.",
+    "scope": "Tests the fixed north-oriented M9 path on the full native period circle; does not fold the period or rotate/reverse the values to force a match."
   },
   "epsilon_assessment": {
     "rule_version": "native-epsilon-diagnostics-v1",
@@ -1232,5 +1269,31 @@
     ],
     "absence_reason": "No tested six-node formation contains only 3, 6 and 9 with all three present.",
     "reference_path_available": false
-  }
+  },
+  "views": [
+    {
+      "id": "alpha",
+      "name": "Alpha",
+      "svg": "pilot-v1/views/m8/alpha.svg",
+      "png": "pilot-v1/views/m8/alpha.png"
+    },
+    {
+      "id": "beta",
+      "name": "Beta",
+      "svg": "pilot-v1/views/m8/beta.svg",
+      "png": "pilot-v1/views/m8/beta.png"
+    },
+    {
+      "id": "gamma",
+      "name": "Gamma",
+      "svg": "pilot-v1/views/m8/gamma.svg",
+      "png": "pilot-v1/views/m8/gamma.png"
+    },
+    {
+      "id": "fibonacci-m8p12",
+      "name": "Fibonacci M8P12",
+      "svg": "pilot-v1/views/m8/fibonacci-m8p12.svg",
+      "png": "pilot-v1/views/m8/fibonacci-m8p12.png"
+    }
+  ]
 }

@@ -1,6 +1,6 @@
 {
   "schema_version": "2.0.0",
-  "dataset_version": "m1-m24-v1",
+  "dataset_version": "m1-m48-v1",
   "id": "fibonacci-m5-p20",
   "name": "Fibonacci M5P20",
   "modulus": 5,
@@ -375,6 +375,54 @@
     "wolfram_scope": "24 native periods, complete Alpha, primary Gamma indices, Beta interval sums/residues, primary regular triangles and hexagons. Extended catalogue, Chevron and Epsilon remain Python-checked only.",
     "evidence": "wolfram-core-result.json"
   },
+  "reduction_to_m9": {
+    "version": "m9-reduction-v1",
+    "target_modulus": 9,
+    "status": "Outside divisible-by-nine family",
+    "applicable": false,
+    "research_question": "Does the shared M9 pattern have shared biological relevance, or does native-modulus complexity change it? Unassessed: requires peer-reviewed evidence, in silico modelling (including proposed CUDA/CUDA-Q work), and appropriate experimental validation. No spatial-dimension claim or WSS score follows from this arithmetic match.",
+    "biological_significance": "Not yet assessed",
+    "native_data_preserved": true
+  },
+  "epsilon_m9_comparison": {
+    "rule_version": "epsilon-m9-exact-v2",
+    "geometry_identical": false,
+    "reduced_sequence_identical": false,
+    "combined_eligible": false,
+    "alpha_indices": [],
+    "clock_positions": [],
+    "native_values": [],
+    "reduced_m9_values": [],
+    "reference_values": [
+      9,
+      3,
+      6,
+      9,
+      3,
+      6,
+      9
+    ],
+    "normalized_route_sixths": [
+      0,
+      2,
+      5,
+      3,
+      1,
+      4,
+      0
+    ],
+    "orientation": "clockwise from north; fixed M9 route and starting phase",
+    "reason": "No regular six-node formation on this period circle.",
+    "scope": "Tests the fixed north-oriented M9 path on the full native period circle; does not fold the period or rotate/reverse the values to force a match."
+  },
+  "epsilon_assessment": {
+    "rule_version": "native-epsilon-diagnostics-v1",
+    "native_369_present": false,
+    "candidate_count": 0,
+    "candidates": [],
+    "absence_reason": "No equally spaced six-node formation exists on this period circle.",
+    "reference_path_available": false
+  },
   "views": [
     {
       "id": "alpha",
@@ -400,22 +448,5 @@
       "svg": "pilot-v1/views/m5/fibonacci-m5p20.svg",
       "png": "pilot-v1/views/m5/fibonacci-m5p20.png"
     }
-  ],
-  "reduction_to_m9": {
-    "version": "m9-reduction-v1",
-    "target_modulus": 9,
-    "status": "Outside divisible-by-nine family",
-    "applicable": false,
-    "research_question": "Does the shared M9 pattern have shared biological relevance, or does native-modulus complexity change it? Unassessed: requires peer-reviewed evidence, in silico modelling (including proposed CUDA/CUDA-Q work), and appropriate experimental validation. No spatial-dimension claim or WSS score follows from this arithmetic match.",
-    "biological_significance": "Not yet assessed",
-    "native_data_preserved": true
-  },
-  "epsilon_assessment": {
-    "rule_version": "native-epsilon-diagnostics-v1",
-    "native_369_present": false,
-    "candidate_count": 0,
-    "candidates": [],
-    "absence_reason": "No equally spaced six-node formation exists on this period circle.",
-    "reference_path_available": false
-  }
+  ]
 }

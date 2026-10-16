@@ -1,0 +1,627 @@
+{
+  "schema_version": "2.0.0",
+  "dataset_version": "m1-m48-v1",
+  "id": "fibonacci-m41-p40",
+  "name": "Fibonacci M41P40",
+  "modulus": 41,
+  "pisano_period": 40,
+  "conventions": {
+    "index_origin": 0,
+    "clock_labels": [
+      40,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24,
+      25,
+      26,
+      27,
+      28,
+      29,
+      30,
+      31,
+      32,
+      33,
+      34,
+      35,
+      36,
+      37,
+      38,
+      39
+    ],
+    "orientation": "clockwise from north",
+    "zero_display": 41,
+    "alpha_circle_positions": 40,
+    "beta_circle_positions": 41,
+    "node_rule": "Native residues divisible by 3, including zero; preserves the approved M6/M9/M12 reference selection. Additional regular formations of all native values are catalogued separately.",
+    "m1_convention": "Modulo 1 has period 1 and residue 0."
+  },
+  "alpha": {
+    "residues": [
+      0,
+      1,
+      1,
+      2,
+      3,
+      5,
+      8,
+      13,
+      21,
+      34,
+      14,
+      7,
+      21,
+      28,
+      8,
+      36,
+      3,
+      39,
+      1,
+      40,
+      0,
+      40,
+      40,
+      39,
+      38,
+      36,
+      33,
+      28,
+      20,
+      7,
+      27,
+      34,
+      20,
+      13,
+      33,
+      5,
+      38,
+      2,
+      40,
+      1
+    ],
+    "display_values": [
+      41,
+      1,
+      1,
+      2,
+      3,
+      5,
+      8,
+      13,
+      21,
+      34,
+      14,
+      7,
+      21,
+      28,
+      8,
+      36,
+      3,
+      39,
+      1,
+      40,
+      41,
+      40,
+      40,
+      39,
+      38,
+      36,
+      33,
+      28,
+      20,
+      7,
+      27,
+      34,
+      20,
+      13,
+      33,
+      5,
+      38,
+      2,
+      40,
+      1
+    ]
+  },
+  "gamma": {
+    "alpha_indices": [
+      0,
+      4,
+      8,
+      12,
+      15,
+      16,
+      17,
+      20,
+      23,
+      25,
+      26,
+      30,
+      34
+    ],
+    "clock_positions": [
+      40,
+      4,
+      8,
+      12,
+      15,
+      16,
+      17,
+      20,
+      23,
+      25,
+      26,
+      30,
+      34
+    ],
+    "clockwise_values": [
+      41,
+      3,
+      21,
+      21,
+      36,
+      3,
+      39,
+      41,
+      39,
+      36,
+      33,
+      27,
+      33
+    ],
+    "triangle_paths": []
+  },
+  "beta": {
+    "interval_sums": [
+      4,
+      26,
+      55,
+      36,
+      0,
+      0,
+      41,
+      80,
+      38,
+      0,
+      55,
+      67,
+      86
+    ],
+    "interval_residues": [
+      4,
+      26,
+      14,
+      36,
+      0,
+      0,
+      0,
+      39,
+      38,
+      0,
+      14,
+      26,
+      4
+    ],
+    "display_cycle": [
+      4,
+      26,
+      14,
+      36,
+      41,
+      41,
+      41,
+      39,
+      38,
+      41,
+      14,
+      26,
+      4
+    ],
+    "intervals": [
+      {
+        "from_index": 0,
+        "to_index": 4,
+        "interior_indices": [
+          1,
+          2,
+          3
+        ],
+        "interior_values": [
+          1,
+          1,
+          2
+        ],
+        "sum": 4,
+        "residue": 4
+      },
+      {
+        "from_index": 4,
+        "to_index": 8,
+        "interior_indices": [
+          5,
+          6,
+          7
+        ],
+        "interior_values": [
+          5,
+          8,
+          13
+        ],
+        "sum": 26,
+        "residue": 26
+      },
+      {
+        "from_index": 8,
+        "to_index": 12,
+        "interior_indices": [
+          9,
+          10,
+          11
+        ],
+        "interior_values": [
+          34,
+          14,
+          7
+        ],
+        "sum": 55,
+        "residue": 14
+      },
+      {
+        "from_index": 12,
+        "to_index": 15,
+        "interior_indices": [
+          13,
+          14
+        ],
+        "interior_values": [
+          28,
+          8
+        ],
+        "sum": 36,
+        "residue": 36
+      },
+      {
+        "from_index": 15,
+        "to_index": 16,
+        "interior_indices": [],
+        "interior_values": [],
+        "sum": 0,
+        "residue": 0
+      },
+      {
+        "from_index": 16,
+        "to_index": 17,
+        "interior_indices": [],
+        "interior_values": [],
+        "sum": 0,
+        "residue": 0
+      },
+      {
+        "from_index": 17,
+        "to_index": 20,
+        "interior_indices": [
+          18,
+          19
+        ],
+        "interior_values": [
+          1,
+          40
+        ],
+        "sum": 41,
+        "residue": 0
+      },
+      {
+        "from_index": 20,
+        "to_index": 23,
+        "interior_indices": [
+          21,
+          22
+        ],
+        "interior_values": [
+          40,
+          40
+        ],
+        "sum": 80,
+        "residue": 39
+      },
+      {
+        "from_index": 23,
+        "to_index": 25,
+        "interior_indices": [
+          24
+        ],
+        "interior_values": [
+          38
+        ],
+        "sum": 38,
+        "residue": 38
+      },
+      {
+        "from_index": 25,
+        "to_index": 26,
+        "interior_indices": [],
+        "interior_values": [],
+        "sum": 0,
+        "residue": 0
+      },
+      {
+        "from_index": 26,
+        "to_index": 30,
+        "interior_indices": [
+          27,
+          28,
+          29
+        ],
+        "interior_values": [
+          28,
+          20,
+          7
+        ],
+        "sum": 55,
+        "residue": 14
+      },
+      {
+        "from_index": 30,
+        "to_index": 34,
+        "interior_indices": [
+          31,
+          32,
+          33
+        ],
+        "interior_values": [
+          34,
+          20,
+          13
+        ],
+        "sum": 67,
+        "residue": 26
+      },
+      {
+        "from_index": 34,
+        "to_index": 0,
+        "interior_indices": [
+          35,
+          36,
+          37,
+          38,
+          39
+        ],
+        "interior_values": [
+          5,
+          38,
+          2,
+          40,
+          1
+        ],
+        "sum": 86,
+        "residue": 4
+      }
+    ],
+    "minimal_cycle": [
+      4,
+      26,
+      14,
+      36,
+      0,
+      0,
+      0,
+      39,
+      38,
+      0,
+      14,
+      26,
+      4
+    ],
+    "native_doubling": false,
+    "recognised_doubling_cycle": null,
+    "rotation_to_recognised": null,
+    "m9_doubling_cycle_present": false,
+    "start_value": 4,
+    "start_interval_clock_positions": [
+      40,
+      4
+    ],
+    "start_interval_values": [
+      1,
+      1,
+      2
+    ],
+    "circle_positions": 41,
+    "cycle_length": 13,
+    "endpoint_rule": "Exclude endpoints, include wraparound; raw residues used for sums. Empty interiors sum to zero."
+  },
+  "epsilon": null,
+  "epsilon_routes": [],
+  "epsilon_status": "Null: no tested regular six-node reference traversal contains only 3, 6 and 9 with all three present.",
+  "geometry_summary": {
+    "rule_version": "native-pilot-v1",
+    "scope": "Shapes in the primary Gamma node set (native residues divisible by 3, including zero). All regular polygons on the period circle are catalogued separately with their native values; their existence alone is a property of the plotting grid.",
+    "circle_role": "Pisano-period plotting framework",
+    "shapes": [
+      {
+        "name": "Equilateral triangle",
+        "status": "Absent",
+        "count": 0,
+        "orientation": null,
+        "rotation_degrees": null,
+        "rotations_degrees": [],
+        "alpha_paths": []
+      },
+      {
+        "name": "Hexagon",
+        "status": "Absent",
+        "count": 0,
+        "orientation": null,
+        "rotation_degrees": null,
+        "rotations_degrees": [],
+        "alpha_paths": []
+      },
+      {
+        "name": "2D stellated octahedron",
+        "status": "Absent",
+        "count": 0,
+        "orientation": null,
+        "rotation_degrees": null,
+        "rotations_degrees": [],
+        "alpha_paths": []
+      },
+      {
+        "name": "Chevron",
+        "status": "Absent",
+        "count": 0,
+        "orientation": null,
+        "rotation_degrees": null,
+        "rotations_degrees": [],
+        "alpha_paths": []
+      },
+      {
+        "name": "Unicursal hexagram",
+        "status": "Absent",
+        "count": 0,
+        "orientation": null,
+        "rotation_degrees": null,
+        "rotations_degrees": [],
+        "alpha_paths": []
+      }
+    ],
+    "other_orientations_status": "Absent",
+    "epsilon_rule": "A regular six-node formation must support the reference unicursal route through only 3, 6 and 9, containing all three. Rotations and reflections of the route are tested; reversed or cyclically shifted traversals are deduplicated."
+  },
+  "formation_catalogue": [],
+  "notable_gamma_patterns": [],
+  "research": {
+    "focus": "OXTR gene expression",
+    "biological_significance_status": "Not yet assessed",
+    "statistical_significance_status": "Not yet assessed",
+    "quantum_annealing_status": "Not yet performed",
+    "tiers": [
+      {
+        "name": "Creates cellular life",
+        "range": [
+          8,
+          10
+        ],
+        "wss_score": null,
+        "evidence": []
+      },
+      {
+        "name": "Supports cellular life",
+        "range": [
+          5,
+          7
+        ],
+        "wss_score": null,
+        "evidence": []
+      },
+      {
+        "name": "Creates elemental life",
+        "range": [
+          1,
+          4
+        ],
+        "wss_score": null,
+        "evidence": []
+      }
+    ]
+  },
+  "verification": {
+    "python": "Passed",
+    "wolfram": "Passed",
+    "scope": "Native period, sequences, regular polygon index spacing and reference Epsilon routes; no physical or biological validation.",
+    "wolfram_scope": "Native period, complete Alpha, primary Gamma indices, Beta sums/residues, primary triangles/hexagons and exact north-oriented M9 reference path comparison. Extended catalogue, native Epsilon search and Chevron remain Python-checked.",
+    "evidence": "wolfram-batch-result.json"
+  },
+  "reduction_to_m9": {
+    "version": "m9-reduction-v1",
+    "target_modulus": 9,
+    "status": "Outside divisible-by-nine family",
+    "applicable": false,
+    "research_question": "Does the shared M9 pattern have shared biological relevance, or does native-modulus complexity change it? Unassessed: requires peer-reviewed evidence, in silico modelling (including proposed CUDA/CUDA-Q work), and appropriate experimental validation. No spatial-dimension claim or WSS score follows from this arithmetic match.",
+    "biological_significance": "Not yet assessed",
+    "native_data_preserved": true
+  },
+  "epsilon_m9_comparison": {
+    "rule_version": "epsilon-m9-exact-v2",
+    "geometry_identical": false,
+    "reduced_sequence_identical": false,
+    "combined_eligible": false,
+    "alpha_indices": [],
+    "clock_positions": [],
+    "native_values": [],
+    "reduced_m9_values": [],
+    "reference_values": [
+      9,
+      3,
+      6,
+      9,
+      3,
+      6,
+      9
+    ],
+    "normalized_route_sixths": [
+      0,
+      2,
+      5,
+      3,
+      1,
+      4,
+      0
+    ],
+    "orientation": "clockwise from north; fixed M9 route and starting phase",
+    "reason": "No regular six-node formation on this period circle.",
+    "scope": "Tests the fixed north-oriented M9 path on the full native period circle; does not fold the period or rotate/reverse the values to force a match."
+  },
+  "epsilon_assessment": {
+    "rule_version": "native-epsilon-diagnostics-v1",
+    "native_369_present": false,
+    "candidate_count": 0,
+    "candidates": [],
+    "absence_reason": "No equally spaced six-node formation exists on this period circle.",
+    "reference_path_available": false
+  },
+  "views": [
+    {
+      "id": "alpha",
+      "name": "Alpha",
+      "svg": "pilot-v1/views/m41/alpha.svg",
+      "png": "pilot-v1/views/m41/alpha.png"
+    },
+    {
+      "id": "beta",
+      "name": "Beta",
+      "svg": "pilot-v1/views/m41/beta.svg",
+      "png": "pilot-v1/views/m41/beta.png"
+    },
+    {
+      "id": "gamma",
+      "name": "Gamma",
+      "svg": "pilot-v1/views/m41/gamma.svg",
+      "png": "pilot-v1/views/m41/gamma.png"
+    },
+    {
+      "id": "fibonacci-m41p40",
+      "name": "Fibonacci M41P40",
+      "svg": "pilot-v1/views/m41/fibonacci-m41p40.svg",
+      "png": "pilot-v1/views/m41/fibonacci-m41p40.png"
+    }
+  ]
+}

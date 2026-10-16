@@ -1,5 +1,5 @@
 {
-  "version": "m1-m24-v1",
+  "version": "m1-m48-v1",
   "records": [
     {
       "id": "fibonacci-m1-p1",
@@ -168,6 +168,174 @@
       "modulus": 24,
       "pisano_period": 24,
       "file": "pilot-v1/m24.json"
+    },
+    {
+      "id": "fibonacci-m25-p100",
+      "name": "Fibonacci M25P100",
+      "modulus": 25,
+      "pisano_period": 100,
+      "file": "pilot-v1/m25.json"
+    },
+    {
+      "id": "fibonacci-m26-p84",
+      "name": "Fibonacci M26P84",
+      "modulus": 26,
+      "pisano_period": 84,
+      "file": "pilot-v1/m26.json"
+    },
+    {
+      "id": "fibonacci-m27-p72",
+      "name": "Fibonacci M27P72",
+      "modulus": 27,
+      "pisano_period": 72,
+      "file": "pilot-v1/m27.json"
+    },
+    {
+      "id": "fibonacci-m28-p48",
+      "name": "Fibonacci M28P48",
+      "modulus": 28,
+      "pisano_period": 48,
+      "file": "pilot-v1/m28.json"
+    },
+    {
+      "id": "fibonacci-m29-p14",
+      "name": "Fibonacci M29P14",
+      "modulus": 29,
+      "pisano_period": 14,
+      "file": "pilot-v1/m29.json"
+    },
+    {
+      "id": "fibonacci-m30-p120",
+      "name": "Fibonacci M30P120",
+      "modulus": 30,
+      "pisano_period": 120,
+      "file": "pilot-v1/m30.json"
+    },
+    {
+      "id": "fibonacci-m31-p30",
+      "name": "Fibonacci M31P30",
+      "modulus": 31,
+      "pisano_period": 30,
+      "file": "pilot-v1/m31.json"
+    },
+    {
+      "id": "fibonacci-m32-p48",
+      "name": "Fibonacci M32P48",
+      "modulus": 32,
+      "pisano_period": 48,
+      "file": "pilot-v1/m32.json"
+    },
+    {
+      "id": "fibonacci-m33-p40",
+      "name": "Fibonacci M33P40",
+      "modulus": 33,
+      "pisano_period": 40,
+      "file": "pilot-v1/m33.json"
+    },
+    {
+      "id": "fibonacci-m34-p36",
+      "name": "Fibonacci M34P36",
+      "modulus": 34,
+      "pisano_period": 36,
+      "file": "pilot-v1/m34.json"
+    },
+    {
+      "id": "fibonacci-m35-p80",
+      "name": "Fibonacci M35P80",
+      "modulus": 35,
+      "pisano_period": 80,
+      "file": "pilot-v1/m35.json"
+    },
+    {
+      "id": "fibonacci-m36-p24",
+      "name": "Fibonacci M36P24",
+      "modulus": 36,
+      "pisano_period": 24,
+      "file": "pilot-v1/m36.json"
+    },
+    {
+      "id": "fibonacci-m37-p76",
+      "name": "Fibonacci M37P76",
+      "modulus": 37,
+      "pisano_period": 76,
+      "file": "pilot-v1/m37.json"
+    },
+    {
+      "id": "fibonacci-m38-p18",
+      "name": "Fibonacci M38P18",
+      "modulus": 38,
+      "pisano_period": 18,
+      "file": "pilot-v1/m38.json"
+    },
+    {
+      "id": "fibonacci-m39-p56",
+      "name": "Fibonacci M39P56",
+      "modulus": 39,
+      "pisano_period": 56,
+      "file": "pilot-v1/m39.json"
+    },
+    {
+      "id": "fibonacci-m40-p60",
+      "name": "Fibonacci M40P60",
+      "modulus": 40,
+      "pisano_period": 60,
+      "file": "pilot-v1/m40.json"
+    },
+    {
+      "id": "fibonacci-m41-p40",
+      "name": "Fibonacci M41P40",
+      "modulus": 41,
+      "pisano_period": 40,
+      "file": "pilot-v1/m41.json"
+    },
+    {
+      "id": "fibonacci-m42-p48",
+      "name": "Fibonacci M42P48",
+      "modulus": 42,
+      "pisano_period": 48,
+      "file": "pilot-v1/m42.json"
+    },
+    {
+      "id": "fibonacci-m43-p88",
+      "name": "Fibonacci M43P88",
+      "modulus": 43,
+      "pisano_period": 88,
+      "file": "pilot-v1/m43.json"
+    },
+    {
+      "id": "fibonacci-m44-p30",
+      "name": "Fibonacci M44P30",
+      "modulus": 44,
+      "pisano_period": 30,
+      "file": "pilot-v1/m44.json"
+    },
+    {
+      "id": "fibonacci-m45-p120",
+      "name": "Fibonacci M45P120",
+      "modulus": 45,
+      "pisano_period": 120,
+      "file": "pilot-v1/m45.json"
+    },
+    {
+      "id": "fibonacci-m46-p48",
+      "name": "Fibonacci M46P48",
+      "modulus": 46,
+      "pisano_period": 48,
+      "file": "pilot-v1/m46.json"
+    },
+    {
+      "id": "fibonacci-m47-p32",
+      "name": "Fibonacci M47P32",
+      "modulus": 47,
+      "pisano_period": 32,
+      "file": "pilot-v1/m47.json"
+    },
+    {
+      "id": "fibonacci-m48-p24",
+      "name": "Fibonacci M48P24",
+      "modulus": 48,
+      "pisano_period": 24,
+      "file": "pilot-v1/m48.json"
     }
   ]
 }

@@ -1,6 +1,6 @@
 {
   "schema_version": "2.0.0",
-  "dataset_version": "m1-m24-v1",
+  "dataset_version": "m1-m48-v1",
   "id": "fibonacci-m9-p24",
   "name": "Fibonacci M9P24",
   "modulus": 9,
@@ -2708,38 +2708,6 @@
     "wolfram_scope": "24 native periods, complete Alpha, primary Gamma indices, Beta interval sums/residues, primary regular triangles and hexagons. Extended catalogue, Chevron and Epsilon remain Python-checked only.",
     "evidence": "wolfram-core-result.json"
   },
-  "views": [
-    {
-      "id": "alpha",
-      "name": "Alpha",
-      "svg": "pilot-v1/views/m9/alpha.svg",
-      "png": "pilot-v1/views/m9/alpha.png"
-    },
-    {
-      "id": "beta",
-      "name": "Beta",
-      "svg": "pilot-v1/views/m9/beta.svg",
-      "png": "pilot-v1/views/m9/beta.png"
-    },
-    {
-      "id": "gamma",
-      "name": "Gamma",
-      "svg": "pilot-v1/views/m9/gamma.svg",
-      "png": "pilot-v1/views/m9/gamma.png"
-    },
-    {
-      "id": "epsilon",
-      "name": "Epsilon",
-      "svg": "pilot-v1/views/m9/epsilon.svg",
-      "png": "pilot-v1/views/m9/epsilon.png"
-    },
-    {
-      "id": "fibonacci-m9p24",
-      "name": "Fibonacci M9P24",
-      "svg": "pilot-v1/views/m9/fibonacci-m9p24.svg",
-      "png": "pilot-v1/views/m9/fibonacci-m9p24.png"
-    }
-  ],
   "reduction_to_m9": {
     "version": "m9-reduction-v1",
     "target_modulus": 9,
@@ -2855,6 +2823,69 @@
     "identity": "(F_n mod (9k)) mod 9 = F_n mod 9",
     "interpretation": "Exact reduction is a mathematical consequence of divisibility, not independent evidence of statistical or biological significance. Native Epsilon remains unchanged.",
     "verification": "Python full-period comparison; M18 Alpha, Gamma and Beta independently checked with Wolfram."
+  },
+  "epsilon_m9_comparison": {
+    "rule_version": "epsilon-m9-exact-v2",
+    "geometry_identical": true,
+    "reduced_sequence_identical": true,
+    "combined_eligible": true,
+    "alpha_indices": [
+      0,
+      8,
+      20,
+      12,
+      4,
+      16,
+      0
+    ],
+    "clock_positions": [
+      24,
+      8,
+      20,
+      12,
+      4,
+      16,
+      24
+    ],
+    "native_values": [
+      9,
+      3,
+      6,
+      9,
+      3,
+      6,
+      9
+    ],
+    "reduced_m9_values": [
+      9,
+      3,
+      6,
+      9,
+      3,
+      6,
+      9
+    ],
+    "reference_values": [
+      9,
+      3,
+      6,
+      9,
+      3,
+      6,
+      9
+    ],
+    "normalized_route_sixths": [
+      0,
+      2,
+      5,
+      3,
+      1,
+      4,
+      0
+    ],
+    "orientation": "clockwise from north; fixed M9 route and starting phase",
+    "reason": "Exact geometry and reduced traversal match.",
+    "scope": "Tests the fixed north-oriented M9 path on the full native period circle; does not fold the period or rotate/reverse the values to force a match."
   },
   "epsilon_assessment": {
     "rule_version": "native-epsilon-diagnostics-v1",
@@ -3093,5 +3124,37 @@
     ],
     "absence_reason": null,
     "reference_path_available": false
-  }
+  },
+  "views": [
+    {
+      "id": "alpha",
+      "name": "Alpha",
+      "svg": "pilot-v1/views/m9/alpha.svg",
+      "png": "pilot-v1/views/m9/alpha.png"
+    },
+    {
+      "id": "beta",
+      "name": "Beta",
+      "svg": "pilot-v1/views/m9/beta.svg",
+      "png": "pilot-v1/views/m9/beta.png"
+    },
+    {
+      "id": "gamma",
+      "name": "Gamma",
+      "svg": "pilot-v1/views/m9/gamma.svg",
+      "png": "pilot-v1/views/m9/gamma.png"
+    },
+    {
+      "id": "epsilon",
+      "name": "Epsilon",
+      "svg": "pilot-v1/views/m9/epsilon.svg",
+      "png": "pilot-v1/views/m9/epsilon.png"
+    },
+    {
+      "id": "fibonacci-m9p24",
+      "name": "Fibonacci M9P24",
+      "svg": "pilot-v1/views/m9/fibonacci-m9p24.svg",
+      "png": "pilot-v1/views/m9/fibonacci-m9p24.png"
+    }
+  ]
 }

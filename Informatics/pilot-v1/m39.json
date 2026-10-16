@@ -1,0 +1,728 @@
+{
+  "schema_version": "2.0.0",
+  "dataset_version": "m1-m48-v1",
+  "id": "fibonacci-m39-p56",
+  "name": "Fibonacci M39P56",
+  "modulus": 39,
+  "pisano_period": 56,
+  "conventions": {
+    "index_origin": 0,
+    "clock_labels": [
+      56,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24,
+      25,
+      26,
+      27,
+      28,
+      29,
+      30,
+      31,
+      32,
+      33,
+      34,
+      35,
+      36,
+      37,
+      38,
+      39,
+      40,
+      41,
+      42,
+      43,
+      44,
+      45,
+      46,
+      47,
+      48,
+      49,
+      50,
+      51,
+      52,
+      53,
+      54,
+      55
+    ],
+    "orientation": "clockwise from north",
+    "zero_display": 39,
+    "alpha_circle_positions": 56,
+    "beta_circle_positions": 39,
+    "node_rule": "Native residues divisible by 3, including zero; preserves the approved M6/M9/M12 reference selection. Additional regular formations of all native values are catalogued separately.",
+    "m1_convention": "Modulo 1 has period 1 and residue 0."
+  },
+  "alpha": {
+    "residues": [
+      0,
+      1,
+      1,
+      2,
+      3,
+      5,
+      8,
+      13,
+      21,
+      34,
+      16,
+      11,
+      27,
+      38,
+      26,
+      25,
+      12,
+      37,
+      10,
+      8,
+      18,
+      26,
+      5,
+      31,
+      36,
+      28,
+      25,
+      14,
+      0,
+      14,
+      14,
+      28,
+      3,
+      31,
+      34,
+      26,
+      21,
+      8,
+      29,
+      37,
+      27,
+      25,
+      13,
+      38,
+      12,
+      11,
+      23,
+      34,
+      18,
+      13,
+      31,
+      5,
+      36,
+      2,
+      38,
+      1
+    ],
+    "display_values": [
+      39,
+      1,
+      1,
+      2,
+      3,
+      5,
+      8,
+      13,
+      21,
+      34,
+      16,
+      11,
+      27,
+      38,
+      26,
+      25,
+      12,
+      37,
+      10,
+      8,
+      18,
+      26,
+      5,
+      31,
+      36,
+      28,
+      25,
+      14,
+      39,
+      14,
+      14,
+      28,
+      3,
+      31,
+      34,
+      26,
+      21,
+      8,
+      29,
+      37,
+      27,
+      25,
+      13,
+      38,
+      12,
+      11,
+      23,
+      34,
+      18,
+      13,
+      31,
+      5,
+      36,
+      2,
+      38,
+      1
+    ]
+  },
+  "gamma": {
+    "alpha_indices": [
+      0,
+      4,
+      8,
+      12,
+      16,
+      20,
+      24,
+      28,
+      32,
+      36,
+      40,
+      44,
+      48,
+      52
+    ],
+    "clock_positions": [
+      56,
+      4,
+      8,
+      12,
+      16,
+      20,
+      24,
+      28,
+      32,
+      36,
+      40,
+      44,
+      48,
+      52
+    ],
+    "clockwise_values": [
+      39,
+      3,
+      21,
+      27,
+      12,
+      18,
+      36,
+      39,
+      3,
+      21,
+      27,
+      12,
+      18,
+      36
+    ],
+    "triangle_paths": []
+  },
+  "beta": {
+    "interval_sums": [
+      4,
+      26,
+      61,
+      89,
+      55,
+      62,
+      67,
+      56,
+      91,
+      74,
+      76,
+      68,
+      49,
+      41
+    ],
+    "interval_residues": [
+      4,
+      26,
+      22,
+      11,
+      16,
+      23,
+      28,
+      17,
+      13,
+      35,
+      37,
+      29,
+      10,
+      2
+    ],
+    "display_cycle": [
+      4,
+      26,
+      22,
+      11,
+      16,
+      23,
+      28,
+      17,
+      13,
+      35,
+      37,
+      29,
+      10,
+      2
+    ],
+    "intervals": [
+      {
+        "from_index": 0,
+        "to_index": 4,
+        "interior_indices": [
+          1,
+          2,
+          3
+        ],
+        "interior_values": [
+          1,
+          1,
+          2
+        ],
+        "sum": 4,
+        "residue": 4
+      },
+      {
+        "from_index": 4,
+        "to_index": 8,
+        "interior_indices": [
+          5,
+          6,
+          7
+        ],
+        "interior_values": [
+          5,
+          8,
+          13
+        ],
+        "sum": 26,
+        "residue": 26
+      },
+      {
+        "from_index": 8,
+        "to_index": 12,
+        "interior_indices": [
+          9,
+          10,
+          11
+        ],
+        "interior_values": [
+          34,
+          16,
+          11
+        ],
+        "sum": 61,
+        "residue": 22
+      },
+      {
+        "from_index": 12,
+        "to_index": 16,
+        "interior_indices": [
+          13,
+          14,
+          15
+        ],
+        "interior_values": [
+          38,
+          26,
+          25
+        ],
+        "sum": 89,
+        "residue": 11
+      },
+      {
+        "from_index": 16,
+        "to_index": 20,
+        "interior_indices": [
+          17,
+          18,
+          19
+        ],
+        "interior_values": [
+          37,
+          10,
+          8
+        ],
+        "sum": 55,
+        "residue": 16
+      },
+      {
+        "from_index": 20,
+        "to_index": 24,
+        "interior_indices": [
+          21,
+          22,
+          23
+        ],
+        "interior_values": [
+          26,
+          5,
+          31
+        ],
+        "sum": 62,
+        "residue": 23
+      },
+      {
+        "from_index": 24,
+        "to_index": 28,
+        "interior_indices": [
+          25,
+          26,
+          27
+        ],
+        "interior_values": [
+          28,
+          25,
+          14
+        ],
+        "sum": 67,
+        "residue": 28
+      },
+      {
+        "from_index": 28,
+        "to_index": 32,
+        "interior_indices": [
+          29,
+          30,
+          31
+        ],
+        "interior_values": [
+          14,
+          14,
+          28
+        ],
+        "sum": 56,
+        "residue": 17
+      },
+      {
+        "from_index": 32,
+        "to_index": 36,
+        "interior_indices": [
+          33,
+          34,
+          35
+        ],
+        "interior_values": [
+          31,
+          34,
+          26
+        ],
+        "sum": 91,
+        "residue": 13
+      },
+      {
+        "from_index": 36,
+        "to_index": 40,
+        "interior_indices": [
+          37,
+          38,
+          39
+        ],
+        "interior_values": [
+          8,
+          29,
+          37
+        ],
+        "sum": 74,
+        "residue": 35
+      },
+      {
+        "from_index": 40,
+        "to_index": 44,
+        "interior_indices": [
+          41,
+          42,
+          43
+        ],
+        "interior_values": [
+          25,
+          13,
+          38
+        ],
+        "sum": 76,
+        "residue": 37
+      },
+      {
+        "from_index": 44,
+        "to_index": 48,
+        "interior_indices": [
+          45,
+          46,
+          47
+        ],
+        "interior_values": [
+          11,
+          23,
+          34
+        ],
+        "sum": 68,
+        "residue": 29
+      },
+      {
+        "from_index": 48,
+        "to_index": 52,
+        "interior_indices": [
+          49,
+          50,
+          51
+        ],
+        "interior_values": [
+          13,
+          31,
+          5
+        ],
+        "sum": 49,
+        "residue": 10
+      },
+      {
+        "from_index": 52,
+        "to_index": 0,
+        "interior_indices": [
+          53,
+          54,
+          55
+        ],
+        "interior_values": [
+          2,
+          38,
+          1
+        ],
+        "sum": 41,
+        "residue": 2
+      }
+    ],
+    "minimal_cycle": [
+      4,
+      26,
+      22,
+      11,
+      16,
+      23,
+      28,
+      17,
+      13,
+      35,
+      37,
+      29,
+      10,
+      2
+    ],
+    "native_doubling": false,
+    "recognised_doubling_cycle": null,
+    "rotation_to_recognised": null,
+    "m9_doubling_cycle_present": false,
+    "start_value": 4,
+    "start_interval_clock_positions": [
+      56,
+      4
+    ],
+    "start_interval_values": [
+      1,
+      1,
+      2
+    ],
+    "circle_positions": 39,
+    "cycle_length": 14,
+    "endpoint_rule": "Exclude endpoints, include wraparound; raw residues used for sums. Empty interiors sum to zero."
+  },
+  "epsilon": null,
+  "epsilon_routes": [],
+  "epsilon_status": "Null: no tested regular six-node reference traversal contains only 3, 6 and 9 with all three present.",
+  "geometry_summary": {
+    "rule_version": "native-pilot-v1",
+    "scope": "Shapes in the primary Gamma node set (native residues divisible by 3, including zero). All regular polygons on the period circle are catalogued separately with their native values; their existence alone is a property of the plotting grid.",
+    "circle_role": "Pisano-period plotting framework",
+    "shapes": [
+      {
+        "name": "Equilateral triangle",
+        "status": "Absent",
+        "count": 0,
+        "orientation": null,
+        "rotation_degrees": null,
+        "rotations_degrees": [],
+        "alpha_paths": []
+      },
+      {
+        "name": "Hexagon",
+        "status": "Absent",
+        "count": 0,
+        "orientation": null,
+        "rotation_degrees": null,
+        "rotations_degrees": [],
+        "alpha_paths": []
+      },
+      {
+        "name": "2D stellated octahedron",
+        "status": "Absent",
+        "count": 0,
+        "orientation": null,
+        "rotation_degrees": null,
+        "rotations_degrees": [],
+        "alpha_paths": []
+      },
+      {
+        "name": "Chevron",
+        "status": "Absent",
+        "count": 0,
+        "orientation": null,
+        "rotation_degrees": null,
+        "rotations_degrees": [],
+        "alpha_paths": []
+      },
+      {
+        "name": "Unicursal hexagram",
+        "status": "Absent",
+        "count": 0,
+        "orientation": null,
+        "rotation_degrees": null,
+        "rotations_degrees": [],
+        "alpha_paths": []
+      }
+    ],
+    "other_orientations_status": "Absent",
+    "epsilon_rule": "A regular six-node formation must support the reference unicursal route through only 3, 6 and 9, containing all three. Rotations and reflections of the route are tested; reversed or cyclically shifted traversals are deduplicated."
+  },
+  "formation_catalogue": [],
+  "notable_gamma_patterns": [],
+  "research": {
+    "focus": "OXTR gene expression",
+    "biological_significance_status": "Not yet assessed",
+    "statistical_significance_status": "Not yet assessed",
+    "quantum_annealing_status": "Not yet performed",
+    "tiers": [
+      {
+        "name": "Creates cellular life",
+        "range": [
+          8,
+          10
+        ],
+        "wss_score": null,
+        "evidence": []
+      },
+      {
+        "name": "Supports cellular life",
+        "range": [
+          5,
+          7
+        ],
+        "wss_score": null,
+        "evidence": []
+      },
+      {
+        "name": "Creates elemental life",
+        "range": [
+          1,
+          4
+        ],
+        "wss_score": null,
+        "evidence": []
+      }
+    ]
+  },
+  "verification": {
+    "python": "Passed",
+    "wolfram": "Passed",
+    "scope": "Native period, sequences, regular polygon index spacing and reference Epsilon routes; no physical or biological validation.",
+    "wolfram_scope": "Native period, complete Alpha, primary Gamma indices, Beta sums/residues, primary triangles/hexagons and exact north-oriented M9 reference path comparison. Extended catalogue, native Epsilon search and Chevron remain Python-checked.",
+    "evidence": "wolfram-batch-result.json"
+  },
+  "reduction_to_m9": {
+    "version": "m9-reduction-v1",
+    "target_modulus": 9,
+    "status": "Outside divisible-by-nine family",
+    "applicable": false,
+    "research_question": "Does the shared M9 pattern have shared biological relevance, or does native-modulus complexity change it? Unassessed: requires peer-reviewed evidence, in silico modelling (including proposed CUDA/CUDA-Q work), and appropriate experimental validation. No spatial-dimension claim or WSS score follows from this arithmetic match.",
+    "biological_significance": "Not yet assessed",
+    "native_data_preserved": true
+  },
+  "epsilon_m9_comparison": {
+    "rule_version": "epsilon-m9-exact-v2",
+    "geometry_identical": false,
+    "reduced_sequence_identical": false,
+    "combined_eligible": false,
+    "alpha_indices": [],
+    "clock_positions": [],
+    "native_values": [],
+    "reduced_m9_values": [],
+    "reference_values": [
+      9,
+      3,
+      6,
+      9,
+      3,
+      6,
+      9
+    ],
+    "normalized_route_sixths": [
+      0,
+      2,
+      5,
+      3,
+      1,
+      4,
+      0
+    ],
+    "orientation": "clockwise from north; fixed M9 route and starting phase",
+    "reason": "No regular six-node formation on this period circle.",
+    "scope": "Tests the fixed north-oriented M9 path on the full native period circle; does not fold the period or rotate/reverse the values to force a match."
+  },
+  "epsilon_assessment": {
+    "rule_version": "native-epsilon-diagnostics-v1",
+    "native_369_present": false,
+    "candidate_count": 0,
+    "candidates": [],
+    "absence_reason": "No equally spaced six-node formation exists on this period circle.",
+    "reference_path_available": false
+  },
+  "views": [
+    {
+      "id": "alpha",
+      "name": "Alpha",
+      "svg": "pilot-v1/views/m39/alpha.svg",
+      "png": "pilot-v1/views/m39/alpha.png"
+    },
+    {
+      "id": "beta",
+      "name": "Beta",
+      "svg": "pilot-v1/views/m39/beta.svg",
+      "png": "pilot-v1/views/m39/beta.png"
+    },
+    {
+      "id": "gamma",
+      "name": "Gamma",
+      "svg": "pilot-v1/views/m39/gamma.svg",
+      "png": "pilot-v1/views/m39/gamma.png"
+    },
+    {
+      "id": "fibonacci-m39p56",
+      "name": "Fibonacci M39P56",
+      "svg": "pilot-v1/views/m39/fibonacci-m39p56.svg",
+      "png": "pilot-v1/views/m39/fibonacci-m39p56.png"
+    }
+  ]
+}
