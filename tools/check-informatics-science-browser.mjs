@@ -47,6 +47,10 @@ try {
     await page.locator('#about-science').scrollIntoViewIfNeeded();
     const closeRect = await page.locator('#about-close').boundingBox();
     assert.ok(closeRect && closeRect.y >= 0 && closeRect.y + closeRect.height <= viewport.height, 'About close remains visible while reading');
+    const dialogRect = await page.locator('#about').boundingBox();
+    const headingRect = await page.locator('#about .about-heading').boundingBox();
+    assert.ok(Math.abs(headingRect.y - dialogRect.y) <= 2, 'About heading stays flush with the dialog while scrolling');
+    await page.locator('.science-teachables img').evaluateAll(imgs => Promise.all(imgs.map(img => img.decode())));
     await page.screenshot({path:path.join(output, `about-${viewport.width}.png`)});
     await page.locator('#about-science [data-science-card="gamma"]').click();
     const reader = page.locator('.science-reader');
