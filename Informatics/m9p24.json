@@ -1,5 +1,5 @@
 {
-  "schema_version": "1.0.0",
+  "schema_version": "1.1.0",
   "id": "fibonacci-m9-p24",
   "name": "Fibonacci M9P24",
   "modulus": 9,
@@ -109,6 +109,15 @@
       2
     ],
     "display_cycle": [
+      4,
+      8,
+      7,
+      5,
+      1,
+      2
+    ],
+    "rotation_to_display": 0,
+    "recognised_doubling_cycle": [
       1,
       2,
       4,
@@ -116,7 +125,17 @@
       7,
       5
     ],
-    "rotation_to_display": 4,
+    "rotation_to_recognised": 4,
+    "start_value": 4,
+    "start_interval_clock_positions": [
+      24,
+      4
+    ],
+    "start_interval_values": [
+      1,
+      1,
+      2
+    ],
     "endpoint_rule": "Exclude Gamma nodes; include wraparound interval.",
     "circle_positions": 9,
     "cycle_length": 6
@@ -196,36 +215,36 @@
       "id": "alpha",
       "name": "Alpha",
       "description": "24 Fibonacci residues",
-      "svg": "views/alpha.svg?v=2",
-      "png": "views/alpha.png?v=2"
+      "svg": "views/alpha.svg?v=3",
+      "png": "views/alpha.png?v=3"
     },
     {
       "id": "beta",
       "name": "Beta",
       "description": "Embedded doubling sequence",
-      "svg": "views/beta.svg?v=2",
-      "png": "views/beta.png?v=2"
+      "svg": "views/beta.svg?v=3",
+      "png": "views/beta.png?v=3"
     },
     {
       "id": "gamma",
       "name": "Gamma",
       "description": "Nodal geometry",
-      "svg": "views/gamma.svg?v=2",
-      "png": "views/gamma.png?v=2"
+      "svg": "views/gamma.svg?v=3",
+      "png": "views/gamma.png?v=3"
     },
     {
       "id": "epsilon",
       "name": "Epsilon",
       "description": "Unicursal hexagram",
-      "svg": "views/epsilon.svg?v=2",
-      "png": "views/epsilon.png?v=2"
+      "svg": "views/epsilon.svg?v=3",
+      "png": "views/epsilon.png?v=3"
     },
     {
       "id": "fibonacci-m9p24",
       "name": "Fibonacci M9P24",
       "description": "Combined geometry",
-      "svg": "views/fibonacci-m9p24.svg?v=2",
-      "png": "views/fibonacci-m9p24.png?v=2"
+      "svg": "views/fibonacci-m9p24.svg?v=3",
+      "png": "views/fibonacci-m9p24.png?v=3"
     }
   ],
   "research": {
