@@ -1,6 +1,6 @@
 # Universal Informatics — delivery sequence
 
-## 1. Complete M1–M24 pilot — in progress
+## 1. Complete M1–M24 pilot — ready for Ben’s staging proof
 - Verify native Pisano periods and nested sequences with Python and Wolfram.
 - Finish versioned JSON, separate diagrams, Notion records and assessment placeholders.
 - Verify all 24 records on permanent staging, including navigation and media continuity.
@@ -44,3 +44,20 @@ Official documentation checked 16 October 2026:
 - Muse (Meta): include in compatibility investigation; exact external connector installation remains unverified: https://about.fb.com/news/2026/09/introducing-muse-personal-ai-agent
 
 Recheck current platform documentation during implementation. These are roadmap options, not live integrations.
+
+### Scientific computing ecosystem — planned workflows
+Connection page: group **Connect your AI** separately from **Research platforms**. Show Available, Planned, or Explore documentation according to tested capability. These are prospective integrations; do not present unconfirmed organisations as established partners.
+
+- NVIDIA Nemotron / NIM: tool-enabled agents querying our read-only API/MCP, with endpoint/model compatibility verified.
+- NVIDIA BioNeMo: model-specific biomolecular workflows using actual molecular/omics inputs; no assumption that Atlas numeric CSV is a valid model input.
+- NVIDIA PhysicsNeMo: reproducible Python notebooks with defined physics equations, inputs, boundary conditions and validation.
+- NVIDIA CUDA: GPU acceleration for sufficiently large simulation/statistical workloads. Native M1–M1001 arithmetic itself does not require GPU compute.
+- NVIDIA CUDA-Q: hybrid quantum-classical algorithms and GPU-accelerated quantum simulation for explicitly defined Hamiltonians. Keep physical claims separate from model results.
+- D-Wave Leap: retain the approved quantum annealing investigation as a separate workflow.
+- AlphaFold: prepare model-specific molecular JSON only after a real molecular target/sequence is selected; compare resulting structures with Atlas features using controls. Not a direct Fibonacci CSV upload.
+- Insilico Medicine PandaOmics: gene/protein measurement matrices plus sample metadata in CSV/TSV; Atlas data is a comparison source, not an omics matrix.
+- Insilico Medicine Chemistry42: future molecular design/optimisation workflows with defined biological targets.
+- Amazon SageMaker: reproducible notebooks and managed machine-learning jobs using versioned Atlas exports, with required biological data and explicit evaluation criteria.
+- Amazon Braket: quantum simulation and supported quantum-hardware experiments using explicit algorithms; prepare research notebooks rather than imply a universal CSV upload or one-click account connection.
+
+No paid cloud jobs, GPU/QPU reservations, account authentication, or partner outreach is authorised by this roadmap. Implement and proof the interface after the agreed M1–M24 → Universal One → API/MCP sequence. CSV and JSON access remain independent of AI-account connections.
