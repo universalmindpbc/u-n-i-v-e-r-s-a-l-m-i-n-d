@@ -6,6 +6,6 @@ The shared combined renderer includes an Epsilon reference path only when exact 
 
 M18 combined view now includes its white path. M36 gains native/reduced Epsilon controls and the qualifying combined layer. All 48 records retain Epsilon diagnostics and the full Other geometry catalogue. SVG/PNG retain native values; CSV and lossless JSON are regenerated for 48 records. The earlier M1–M24 ZIP remains available as an archive.
 
-Local muted-browser checks passed all 48 records and tabs at 1440×900 and 390×844. No native fullscreen or audible playback was used. Staging verification pending.
+Local muted-browser checks passed all 48 records and tabs at 1440×900 and 390×844. No native fullscreen or audible playback was used. Live staging checks passed all 48 records and tabs on desktop and mobile. M18/M36 combined and Epsilon views passed exact path and above-fold checks at 1440×900, 1366×768 and 390×844. M27/M45 failed candidates draw no paths. CSV, JSON and ZIP downloads matched source bytes; all 467 public asset hashes matched.
 
-This is the next proofing batch. M49–M1001, Universal One and external connectors are not released. Notion remains on the prior proofed M1–M24 batch until this next batch is reviewed.
+This is the next proofing batch. M49–M1001, Universal One and external connectors are not released. Notion now contains all 48 records. The 24 new rows were read back against generated Alpha, Beta, Gamma, Epsilon and verification properties; all image columns and three linked assessment tiers per row passed. There are 144 assessment placeholders and zero assigned WSS scores. M18 now has its reference Epsilon values, image and corrected combined diagram; its earlier image is labelled superseded. Existing Atlas view columns were preserved.
