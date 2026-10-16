@@ -1,0 +1,198 @@
+{
+  "schema_version": "1.0.0",
+  "id": "fibonacci-m9-p24",
+  "name": "Fibonacci M9P24",
+  "modulus": 9,
+  "pisano_period": 24,
+  "conventions": {
+    "index_origin": 0,
+    "orientation": "clockwise from north",
+    "zero_display": 9,
+    "alpha_circle_positions": 24,
+    "beta_circle_positions": 9
+  },
+  "alpha": {
+    "residues": [
+      0,
+      1,
+      1,
+      2,
+      3,
+      5,
+      8,
+      4,
+      3,
+      7,
+      1,
+      8,
+      0,
+      8,
+      8,
+      7,
+      6,
+      4,
+      1,
+      5,
+      6,
+      2,
+      8,
+      1
+    ],
+    "display_values": [
+      9,
+      1,
+      1,
+      2,
+      3,
+      5,
+      8,
+      4,
+      3,
+      7,
+      1,
+      8,
+      9,
+      8,
+      8,
+      7,
+      6,
+      4,
+      1,
+      5,
+      6,
+      2,
+      8,
+      1
+    ]
+  },
+  "beta": {
+    "interval_sums": [
+      4,
+      17,
+      16,
+      23,
+      10,
+      11
+    ],
+    "interval_residues": [
+      4,
+      8,
+      7,
+      5,
+      1,
+      2
+    ],
+    "display_cycle": [
+      1,
+      2,
+      4,
+      8,
+      7,
+      5
+    ],
+    "rotation_to_display": 4,
+    "endpoint_rule": "Exclude Gamma nodes; include wraparound interval.",
+    "circle_positions": 9,
+    "cycle_length": 6
+  },
+  "gamma": {
+    "alpha_indices": [
+      0,
+      4,
+      8,
+      12,
+      16,
+      20
+    ],
+    "clockwise_values": [
+      9,
+      3,
+      3,
+      9,
+      6,
+      6
+    ],
+    "triangle_paths": [
+      [
+        0,
+        8,
+        16,
+        0
+      ],
+      [
+        4,
+        12,
+        20,
+        4
+      ]
+    ]
+  },
+  "epsilon": {
+    "alpha_indices": [
+      0,
+      8,
+      20,
+      12,
+      4,
+      16,
+      0
+    ],
+    "traversal_values": [
+      9,
+      3,
+      6,
+      9,
+      3,
+      6,
+      9
+    ],
+    "status": "Proposed geometric traversal; physical interpretation not assessed."
+  },
+  "views": [
+    {
+      "id": "alpha",
+      "name": "Alpha",
+      "description": "24 Fibonacci residues",
+      "svg": "views/alpha.svg",
+      "png": "views/alpha.png"
+    },
+    {
+      "id": "beta",
+      "name": "Beta",
+      "description": "Embedded doubling sequence",
+      "svg": "views/beta.svg",
+      "png": "views/beta.png"
+    },
+    {
+      "id": "gamma",
+      "name": "Gamma",
+      "description": "Nodal geometry",
+      "svg": "views/gamma.svg",
+      "png": "views/gamma.png"
+    },
+    {
+      "id": "epsilon",
+      "name": "Epsilon",
+      "description": "Unicursal hexagram",
+      "svg": "views/epsilon.svg",
+      "png": "views/epsilon.png"
+    },
+    {
+      "id": "fibonacci-m9p24",
+      "name": "Fibonacci M9P24",
+      "description": "Combined geometry",
+      "svg": "views/fibonacci-m9p24.svg",
+      "png": "views/fibonacci-m9p24.png"
+    }
+  ],
+  "research": {
+    "focus": "OXTR gene expression",
+    "biological_significance_status": "Not yet assessed",
+    "statistical_significance_status": "Not yet assessed",
+    "quantum_annealing_status": "Not yet performed"
+  },
+  "verification": {
+    "python": "Period, node spacing, triangle spacing, and doubling recurrence checked by generator.",
+    "wolfram": "Reference notebook source available; this generator does not execute Wolfram."
+  }
+}
