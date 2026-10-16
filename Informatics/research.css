@@ -16,3 +16,5 @@
 .odom-layout{align-items:start;padding:12px 0}.odom-figure svg{height:var(--odom-diagram-height,320px);max-height:none}.odom-controls{padding:8px 0 4px}.odom-formula{display:flex;align-items:center;justify-content:center;gap:12px;color:#e2e8ec;font-size:22px;line-height:1.2}.odom-fraction{display:inline-flex;flex-direction:column;text-align:center;min-width:36px}.odom-fraction>span:first-child{border-bottom:1px solid #a7b3bc;padding:0 4px 4px}.odom-fraction>span:last-child{padding:4px 4px 0}#odom-replay{margin-top:12px}.embedded .odom-layout aside{padding-top:12px}@media(max-width:720px){.odom-layout{gap:16px}.odom-formula{font-size:20px}.odom-controls{padding-top:6px}}
 
 .formation-details p,.formation-details li{font-size:11px;line-height:1.8;color:#a7b3bc}.formation-details li{margin:10px 0}.pilot-download{display:inline-block;font-size:11px;text-decoration:underline;margin-top:24px}.sequence{overflow-wrap:anywhere}
+
+.pilot-downloads{display:flex;flex-wrap:wrap;gap:0 24px}.downloads{flex-wrap:wrap}
