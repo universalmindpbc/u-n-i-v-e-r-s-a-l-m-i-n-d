@@ -617,7 +617,7 @@ deploy_informatics() {
   local name source_file checksum manifest_tmp
   manifest_tmp="$(mktemp)"
   if [[ -f "$MANIFEST_FILE" ]]; then
-    awk -F '\t' '$2 !~ /^Informatics\//' "$MANIFEST_FILE" > "$manifest_tmp"
+    awk -F '\t' '$2 !~ /^(Informatics|informatics)\//' "$MANIFEST_FILE" > "$manifest_tmp"
   fi
   for name in geometry.json wolfram-icon.svg style.css landing.js app.js index.html m9p24.json research.html research.css research.js views/alpha.svg views/alpha.png views/beta.svg views/beta.png views/gamma.svg views/gamma.png views/epsilon.svg views/epsilon.png views/fibonacci-m9p24.svg views/fibonacci-m9p24.png m6p24.json views/m6/alpha.svg views/m6/alpha.png views/m6/beta.svg views/m6/beta.png views/m6/gamma.svg views/m6/gamma.png views/m6/epsilon.svg views/m6/epsilon.png views/m6/fibonacci-m6p24.svg views/m6/fibonacci-m6p24.png m12p24.json views/m12/alpha.svg views/m12/alpha.png views/m12/beta.svg views/m12/beta.png views/m12/gamma.svg views/m12/gamma.png views/m12/fibonacci-m12p24.svg views/m12/fibonacci-m12p24.png; do
     source_file="$ROOT_DIR/Informatics/$name"
@@ -626,10 +626,19 @@ deploy_informatics() {
       echo "Refusing to deploy uncommitted Informatics source." >&2
       return 1
     fi
-    put_file "$source_file" "Informatics/$name"
+    put_file "$source_file" "informatics/$name"
     checksum="$(file_hash "$source_file")"
-    printf '%s\t%s\n' "$checksum" "Informatics/$name" >> "$manifest_tmp"
+    printf '%s\t%s\n' "$checksum" "informatics/$name" >> "$manifest_tmp"
   done
+  source_file="$ROOT_DIR/research/informatics/legacy-uppercase.htaccess"
+  git -C "$ROOT_DIR" ls-files --error-unmatch "research/informatics/legacy-uppercase.htaccess" >/dev/null
+  if ! git -C "$ROOT_DIR" diff --quiet HEAD -- "research/informatics/legacy-uppercase.htaccess"; then
+    echo "Refusing to deploy uncommitted Informatics redirect." >&2
+    return 1
+  fi
+  put_file "$source_file" "Informatics/.htaccess"
+  checksum="$(file_hash "$source_file")"
+  printf '%s\t%s\n' "$checksum" "Informatics/.htaccess" >> "$manifest_tmp"
   mv "$manifest_tmp" "$MANIFEST_FILE"
 }
 
