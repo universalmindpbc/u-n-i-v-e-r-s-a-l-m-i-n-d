@@ -34739,6 +34739,12 @@
           "png": "pilot-v1/views/m18/gamma.png"
         },
         {
+          "id": "epsilon",
+          "name": "Epsilon",
+          "svg": "pilot-v1/views/m18/epsilon.svg",
+          "png": "pilot-v1/views/m18/epsilon.png"
+        },
+        {
           "id": "fibonacci-m18p24",
           "name": "Fibonacci M18P24",
           "svg": "pilot-v1/views/m18/fibonacci-m18p24.svg",
@@ -34860,6 +34866,54 @@
         "identity": "(F_n mod (9k)) mod 9 = F_n mod 9",
         "interpretation": "Exact reduction is a mathematical consequence of divisibility, not independent evidence of statistical or biological significance. Native Epsilon remains unchanged.",
         "verification": "Python full-period comparison; M18 Alpha, Gamma and Beta independently checked with Wolfram."
+      },
+      "epsilon_path": {
+        "rule_version": "epsilon-path-m18-v1",
+        "reference": "M9P24 unicursal route on the same 24-position circle",
+        "alpha_indices": [
+          0,
+          8,
+          20,
+          12,
+          4,
+          16,
+          0
+        ],
+        "clock_positions": [
+          24,
+          8,
+          20,
+          12,
+          4,
+          16,
+          24
+        ],
+        "native_values": [
+          18,
+          3,
+          15,
+          18,
+          3,
+          15,
+          18
+        ],
+        "reduced_m9_values": [
+          9,
+          3,
+          6,
+          9,
+          3,
+          6,
+          9
+        ],
+        "geometry_present": true,
+        "native_369_qualifies": false,
+        "reduced_369_qualifies": true,
+        "verification": "Python checked: route positions and both value sequences. Physical interpretation not assessed.",
+        "native_svg": "pilot-v1/views/m18/epsilon.svg",
+        "native_png": "pilot-v1/views/m18/epsilon.png",
+        "reduced_svg": "pilot-v1/views/m18/epsilon-m9.svg",
+        "reduced_png": "pilot-v1/views/m18/epsilon-m9.png"
       }
     },
     {

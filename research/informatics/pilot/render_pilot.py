@@ -2,6 +2,7 @@
 import json, hashlib, argparse
 from pathlib import Path
 import drawing
+from epsilon_path import draw_path
 from drawing import Drawing,pt,BLUE,PINK,GREEN,YELLOW,FG,MUTED
 from build_pilot import record,validate,VERSION,ROOT
 
@@ -57,6 +58,7 @@ def draw_record(d,out):
   if key=='epsilon':g.text(' → '.join(map(str,eps['traversal_values'])),(400,752),16)
   g.save(key);views.append({'id':key,'name':title,'svg':f'pilot-v1/views/m{m}/{key}.svg','png':f'pilot-v1/views/m{m}/{key}.png'})
  d['views']=views
+ draw_path(d,out)
 
 def main():
  parser=argparse.ArgumentParser();parser.add_argument('--out',default=str(ROOT/'data'/VERSION));args=parser.parse_args();out=Path(args.out);out.mkdir(parents=True,exist_ok=True)
