@@ -117,7 +117,7 @@
 
               context.font = isSignatureV
                 ? `${Math.round(state.cell * 1.06)}px Didot, "Bodoni 72", "Times New Roman", serif`
-                : `${Math.round(state.cell * 0.86)}px "SFMono-Regular", Menlo, Consolas, monospace`;
+                : `${Math.round(state.cell * (glyph.character.length > 1 ? 0.44 : 0.72))}px "SFMono-Regular", Menlo, Consolas, monospace`;
               context.fillStyle = `rgba(${red}, ${green}, ${blue}, ${isHead ? Math.min(1, alpha + 0.22) : alpha})`;
               context.shadowColor = isHead
                 ? `rgba(${red}, ${green}, ${blue}, ${glyph.anomaly ? 0.98 : 0.92})`
