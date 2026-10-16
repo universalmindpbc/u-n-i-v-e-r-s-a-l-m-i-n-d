@@ -24,3 +24,5 @@ footer nav small::before{content:"";display:inline-block;width:5px;height:5px;ma
 .atlas-entry{display:block;width:fit-content;margin:24px auto 0;font:10px Arial,sans-serif;letter-spacing:.12em;color:#a5abad;text-decoration:none}.atlas-entry:hover,.atlas-header-link:hover{color:#fff}.atlas-header-link{font:10px Arial,sans-serif;letter-spacing:.08em;color:#a5abad;text-decoration:none;display:inline-flex;align-items:center;min-height:44px;gap:7px}.atlas-entry span{margin-left:7px}@media(max-width:640px){.atlas-header-link{font-size:9px}.experience-actions{flex-wrap:wrap}}
 
 #atlas-panel{flex:1;min-height:0;width:100%;height:calc(100svh - 100px)}#atlas-frame{display:block;width:100%;height:100%;border:0;background:transparent}#experience.atlas-open{height:100svh;overflow:hidden}#experience.atlas-open header{flex-shrink:0}#experience.atlas-open .film-shade{background:#000b}#experience .atlas-header-link{font:10px Arial,sans-serif;letter-spacing:.08em;width:auto;padding:0;white-space:nowrap}@media(max-width:640px){#atlas-panel{height:calc(100svh - 108px)}#experience .atlas-header-link{font-size:9px}}
+
+#experience.atlas-open .signature{display:none}
