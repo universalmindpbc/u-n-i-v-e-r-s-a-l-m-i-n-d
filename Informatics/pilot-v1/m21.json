@@ -326,5 +326,14 @@
       "svg": "pilot-v1/views/m21/fibonacci-m21p16.svg",
       "png": "pilot-v1/views/m21/fibonacci-m21p16.png"
     }
-  ]
+  ],
+  "reduction_to_m9": {
+    "version": "m9-reduction-v1",
+    "target_modulus": 9,
+    "status": "Outside divisible-by-nine family",
+    "applicable": false,
+    "research_question": "Does the shared M9 pattern have shared biological relevance, or does native-modulus complexity change it? Unassessed: requires peer-reviewed evidence, in silico modelling (including proposed CUDA/CUDA-Q work), and appropriate experimental validation. No spatial-dimension claim or WSS score follows from this arithmetic match.",
+    "biological_significance": "Not yet assessed",
+    "native_data_preserved": true
+  }
 }

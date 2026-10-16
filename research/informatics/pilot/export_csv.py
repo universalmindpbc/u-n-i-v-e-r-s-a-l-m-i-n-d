@@ -22,9 +22,10 @@ for r in records:
   formations.append({**base,**{k:js(v) if isinstance(v,(dict,list)) else v for k,v in f.items() if k not in ['beta','epsilon_routes']}})
   for i,x in enumerate(f['beta']['intervals']):formation_beta.append({**base,'formation_id':f['id'],'interval_order':i+1,**{k:js(v) if isinstance(v,list) else v for k,v in x.items()}})
   for route in f.get('epsilon_routes',[]):routes.append({**base,**{k:js(v) if isinstance(v,list) else v for k,v in route.items()}})
-for name,rows in [('records',summary),('alpha',alpha),('beta_intervals',beta),('gamma',gamma),('epsilon',epsilon),('geometry_summary',shapes),('formation_catalogue',formations),('formation_intervals',formation_beta),('epsilon_routes',routes)]:write(name+'.csv',rows)
+reductions=[{'record_id':r['id'],'modulus':r['modulus'],**{k:js(v) if isinstance(v,(dict,list)) else v for k,v in r['reduction_to_m9'].items()}} for r in records]
+for name,rows in [('reduction_to_m9',reductions),('records',summary),('alpha',alpha),('beta_intervals',beta),('gamma',gamma),('epsilon',epsilon),('geometry_summary',shapes),('formation_catalogue',formations),('formation_intervals',formation_beta),('epsilon_routes',routes)]:write(name+'.csv',rows)
 (OUT/'CSV-README.txt').write_text('Universal Informatics M1–M24\n\nrecords.csv: one row per modulus. Other CSVs separate observations, interval sums and geometry candidates. Lists within cells use JSON array notation. Empty Epsilon/Beta fields mean absent/not defined, not zero. Raw residues and display values are separate. Clock position P is north; machine indices start at zero. Original Beta order is preserved.\n\nThe included dataset.json is the complete lossless source, including conventions, candidates, verification and unassessed research-tier metadata. CSVs are analytical tables derived from it, not a replacement schema. No biological significance or WSS score is assigned.\n')
 with zipfile.ZipFile(OUT/'m1-m24-data.zip','w',zipfile.ZIP_DEFLATED) as z:
- for p in sorted(OUT.glob('*.csv'))+[OUT/'CSV-README.txt',OUT/'dataset.json',OUT/'verify_core.wl',OUT/'wolfram-core-result.json']:z.write(p,p.name)
+ for p in sorted(OUT.glob('*.csv'))+[OUT/'CSV-README.txt',OUT/'dataset.json',OUT/'verify_core.wl',OUT/'wolfram-core-result.json',OUT/'m9-reduction-audit.json',OUT/'wolfram-m18-reduction.json']:z.write(p,p.name)
 assert len(list(csv.DictReader((OUT/'records.csv').open(encoding='utf-8-sig'))))==24
 print('24-row CSV and complete export bundle generated.')

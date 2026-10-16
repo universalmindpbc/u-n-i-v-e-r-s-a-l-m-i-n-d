@@ -168,7 +168,16 @@
           "svg": "pilot-v1/views/m1/fibonacci-m1p1.svg",
           "png": "pilot-v1/views/m1/fibonacci-m1p1.png"
         }
-      ]
+      ],
+      "reduction_to_m9": {
+        "version": "m9-reduction-v1",
+        "target_modulus": 9,
+        "status": "Outside divisible-by-nine family",
+        "applicable": false,
+        "research_question": "Does the shared M9 pattern have shared biological relevance, or does native-modulus complexity change it? Unassessed: requires peer-reviewed evidence, in silico modelling (including proposed CUDA/CUDA-Q work), and appropriate experimental validation. No spatial-dimension claim or WSS score follows from this arithmetic match.",
+        "biological_significance": "Not yet assessed",
+        "native_data_preserved": true
+      }
     },
     {
       "schema_version": "2.0.0",
@@ -430,7 +439,16 @@
           "svg": "pilot-v1/views/m2/fibonacci-m2p3.svg",
           "png": "pilot-v1/views/m2/fibonacci-m2p3.png"
         }
-      ]
+      ],
+      "reduction_to_m9": {
+        "version": "m9-reduction-v1",
+        "target_modulus": 9,
+        "status": "Outside divisible-by-nine family",
+        "applicable": false,
+        "research_question": "Does the shared M9 pattern have shared biological relevance, or does native-modulus complexity change it? Unassessed: requires peer-reviewed evidence, in silico modelling (including proposed CUDA/CUDA-Q work), and appropriate experimental validation. No spatial-dimension claim or WSS score follows from this arithmetic match.",
+        "biological_significance": "Not yet assessed",
+        "native_data_preserved": true
+      }
     },
     {
       "schema_version": "2.0.0",
@@ -693,7 +711,16 @@
           "svg": "pilot-v1/views/m3/fibonacci-m3p8.svg",
           "png": "pilot-v1/views/m3/fibonacci-m3p8.png"
         }
-      ]
+      ],
+      "reduction_to_m9": {
+        "version": "m9-reduction-v1",
+        "target_modulus": 9,
+        "status": "Outside divisible-by-nine family",
+        "applicable": false,
+        "research_question": "Does the shared M9 pattern have shared biological relevance, or does native-modulus complexity change it? Unassessed: requires peer-reviewed evidence, in silico modelling (including proposed CUDA/CUDA-Q work), and appropriate experimental validation. No spatial-dimension claim or WSS score follows from this arithmetic match.",
+        "biological_significance": "Not yet assessed",
+        "native_data_preserved": true
+      }
     },
     {
       "schema_version": "2.0.0",
@@ -1283,7 +1310,16 @@
           "svg": "pilot-v1/views/m4/fibonacci-m4p6.svg",
           "png": "pilot-v1/views/m4/fibonacci-m4p6.png"
         }
-      ]
+      ],
+      "reduction_to_m9": {
+        "version": "m9-reduction-v1",
+        "target_modulus": 9,
+        "status": "Outside divisible-by-nine family",
+        "applicable": false,
+        "research_question": "Does the shared M9 pattern have shared biological relevance, or does native-modulus complexity change it? Unassessed: requires peer-reviewed evidence, in silico modelling (including proposed CUDA/CUDA-Q work), and appropriate experimental validation. No spatial-dimension claim or WSS score follows from this arithmetic match.",
+        "biological_significance": "Not yet assessed",
+        "native_data_preserved": true
+      }
     },
     {
       "schema_version": "2.0.0",
@@ -1687,7 +1723,16 @@
           "svg": "pilot-v1/views/m5/fibonacci-m5p20.svg",
           "png": "pilot-v1/views/m5/fibonacci-m5p20.png"
         }
-      ]
+      ],
+      "reduction_to_m9": {
+        "version": "m9-reduction-v1",
+        "target_modulus": 9,
+        "status": "Outside divisible-by-nine family",
+        "applicable": false,
+        "research_question": "Does the shared M9 pattern have shared biological relevance, or does native-modulus complexity change it? Unassessed: requires peer-reviewed evidence, in silico modelling (including proposed CUDA/CUDA-Q work), and appropriate experimental validation. No spatial-dimension claim or WSS score follows from this arithmetic match.",
+        "biological_significance": "Not yet assessed",
+        "native_data_preserved": true
+      }
     },
     {
       "schema_version": "2.0.0",
@@ -4111,7 +4156,16 @@
           "svg": "pilot-v1/views/m6/fibonacci-m6p24.svg",
           "png": "pilot-v1/views/m6/fibonacci-m6p24.png"
         }
-      ]
+      ],
+      "reduction_to_m9": {
+        "version": "m9-reduction-v1",
+        "target_modulus": 9,
+        "status": "Outside divisible-by-nine family",
+        "applicable": false,
+        "research_question": "Does the shared M9 pattern have shared biological relevance, or does native-modulus complexity change it? Unassessed: requires peer-reviewed evidence, in silico modelling (including proposed CUDA/CUDA-Q work), and appropriate experimental validation. No spatial-dimension claim or WSS score follows from this arithmetic match.",
+        "biological_significance": "Not yet assessed",
+        "native_data_preserved": true
+      }
     },
     {
       "schema_version": "2.0.0",
@@ -4480,7 +4534,16 @@
           "svg": "pilot-v1/views/m7/fibonacci-m7p16.svg",
           "png": "pilot-v1/views/m7/fibonacci-m7p16.png"
         }
-      ]
+      ],
+      "reduction_to_m9": {
+        "version": "m9-reduction-v1",
+        "target_modulus": 9,
+        "status": "Outside divisible-by-nine family",
+        "applicable": false,
+        "research_question": "Does the shared M9 pattern have shared biological relevance, or does native-modulus complexity change it? Unassessed: requires peer-reviewed evidence, in silico modelling (including proposed CUDA/CUDA-Q work), and appropriate experimental validation. No spatial-dimension claim or WSS score follows from this arithmetic match.",
+        "biological_significance": "Not yet assessed",
+        "native_data_preserved": true
+      }
     },
     {
       "schema_version": "2.0.0",
@@ -5572,7 +5635,16 @@
           "svg": "pilot-v1/views/m8/fibonacci-m8p12.svg",
           "png": "pilot-v1/views/m8/fibonacci-m8p12.png"
         }
-      ]
+      ],
+      "reduction_to_m9": {
+        "version": "m9-reduction-v1",
+        "target_modulus": 9,
+        "status": "Outside divisible-by-nine family",
+        "applicable": false,
+        "research_question": "Does the shared M9 pattern have shared biological relevance, or does native-modulus complexity change it? Unassessed: requires peer-reviewed evidence, in silico modelling (including proposed CUDA/CUDA-Q work), and appropriate experimental validation. No spatial-dimension claim or WSS score follows from this arithmetic match.",
+        "biological_significance": "Not yet assessed",
+        "native_data_preserved": true
+      }
     },
     {
       "schema_version": "2.0.0",
@@ -8315,7 +8387,123 @@
           "svg": "pilot-v1/views/m9/fibonacci-m9p24.svg",
           "png": "pilot-v1/views/m9/fibonacci-m9p24.png"
         }
-      ]
+      ],
+      "reduction_to_m9": {
+        "version": "m9-reduction-v1",
+        "target_modulus": 9,
+        "status": "Reference",
+        "applicable": true,
+        "research_question": "Does the shared M9 pattern have shared biological relevance, or does native-modulus complexity change it? Unassessed: requires peer-reviewed evidence, in silico modelling (including proposed CUDA/CUDA-Q work), and appropriate experimental validation. No spatial-dimension claim or WSS score follows from this arithmetic match.",
+        "biological_significance": "Not yet assessed",
+        "native_data_preserved": true,
+        "repeat_count": 1,
+        "checks": {
+          "alpha": true,
+          "gamma": true,
+          "beta": true,
+          "gamma_indices": true
+        },
+        "alpha_residues": [
+          0,
+          1,
+          1,
+          2,
+          3,
+          5,
+          8,
+          4,
+          3,
+          7,
+          1,
+          8,
+          0,
+          8,
+          8,
+          7,
+          6,
+          4,
+          1,
+          5,
+          6,
+          2,
+          8,
+          1
+        ],
+        "alpha_display": [
+          9,
+          1,
+          1,
+          2,
+          3,
+          5,
+          8,
+          4,
+          3,
+          7,
+          1,
+          8,
+          9,
+          8,
+          8,
+          7,
+          6,
+          4,
+          1,
+          5,
+          6,
+          2,
+          8,
+          1
+        ],
+        "gamma_residues": [
+          0,
+          3,
+          3,
+          0,
+          6,
+          6
+        ],
+        "gamma_display": [
+          9,
+          3,
+          3,
+          9,
+          6,
+          6
+        ],
+        "beta_residues": [
+          4,
+          8,
+          7,
+          5,
+          1,
+          2
+        ],
+        "beta_display": [
+          4,
+          8,
+          7,
+          5,
+          1,
+          2
+        ],
+        "recognised_beta_cycle": [
+          1,
+          2,
+          4,
+          8,
+          7,
+          5
+        ],
+        "phase_preserved": true,
+        "projected_chevron": true,
+        "projected_beta_circle_positions": 9,
+        "gamma_same_single_circle_positions": true,
+        "geometry_note": "M18 and M9 share the same 24-position Gamma geometry. Reduced Beta is plotted on a nine-position circle. Longer periods require folding into 24-position cycles; their full circles are not identical.",
+        "identity": "(F_n mod (9k)) mod 9 = F_n mod 9",
+        "interpretation": "Exact reduction is a mathematical consequence of divisibility, not independent evidence of statistical or biological significance. Native Epsilon remains unchanged.",
+        "verification": "Python full-period comparison; M18 Alpha, Gamma and Beta independently checked with Wolfram."
+      }
     },
     {
       "schema_version": "2.0.0",
@@ -16397,7 +16585,16 @@
           "svg": "pilot-v1/views/m10/fibonacci-m10p60.svg",
           "png": "pilot-v1/views/m10/fibonacci-m10p60.png"
         }
-      ]
+      ],
+      "reduction_to_m9": {
+        "version": "m9-reduction-v1",
+        "target_modulus": 9,
+        "status": "Outside divisible-by-nine family",
+        "applicable": false,
+        "research_question": "Does the shared M9 pattern have shared biological relevance, or does native-modulus complexity change it? Unassessed: requires peer-reviewed evidence, in silico modelling (including proposed CUDA/CUDA-Q work), and appropriate experimental validation. No spatial-dimension claim or WSS score follows from this arithmetic match.",
+        "biological_significance": "Not yet assessed",
+        "native_data_preserved": true
+      }
     },
     {
       "schema_version": "2.0.0",
@@ -16666,7 +16863,16 @@
           "svg": "pilot-v1/views/m11/fibonacci-m11p10.svg",
           "png": "pilot-v1/views/m11/fibonacci-m11p10.png"
         }
-      ]
+      ],
+      "reduction_to_m9": {
+        "version": "m9-reduction-v1",
+        "target_modulus": 9,
+        "status": "Outside divisible-by-nine family",
+        "applicable": false,
+        "research_question": "Does the shared M9 pattern have shared biological relevance, or does native-modulus complexity change it? Unassessed: requires peer-reviewed evidence, in silico modelling (including proposed CUDA/CUDA-Q work), and appropriate experimental validation. No spatial-dimension claim or WSS score follows from this arithmetic match.",
+        "biological_significance": "Not yet assessed",
+        "native_data_preserved": true
+      }
     },
     {
       "schema_version": "2.0.0",
@@ -19057,7 +19263,16 @@
           "svg": "pilot-v1/views/m12/fibonacci-m12p24.svg",
           "png": "pilot-v1/views/m12/fibonacci-m12p24.png"
         }
-      ]
+      ],
+      "reduction_to_m9": {
+        "version": "m9-reduction-v1",
+        "target_modulus": 9,
+        "status": "Outside divisible-by-nine family",
+        "applicable": false,
+        "research_question": "Does the shared M9 pattern have shared biological relevance, or does native-modulus complexity change it? Unassessed: requires peer-reviewed evidence, in silico modelling (including proposed CUDA/CUDA-Q work), and appropriate experimental validation. No spatial-dimension claim or WSS score follows from this arithmetic match.",
+        "biological_significance": "Not yet assessed",
+        "native_data_preserved": true
+      }
     },
     {
       "schema_version": "2.0.0",
@@ -19531,7 +19746,16 @@
           "svg": "pilot-v1/views/m13/fibonacci-m13p28.svg",
           "png": "pilot-v1/views/m13/fibonacci-m13p28.png"
         }
-      ]
+      ],
+      "reduction_to_m9": {
+        "version": "m9-reduction-v1",
+        "target_modulus": 9,
+        "status": "Outside divisible-by-nine family",
+        "applicable": false,
+        "research_question": "Does the shared M9 pattern have shared biological relevance, or does native-modulus complexity change it? Unassessed: requires peer-reviewed evidence, in silico modelling (including proposed CUDA/CUDA-Q work), and appropriate experimental validation. No spatial-dimension claim or WSS score follows from this arithmetic match.",
+        "biological_significance": "Not yet assessed",
+        "native_data_preserved": true
+      }
     },
     {
       "schema_version": "2.0.0",
@@ -25300,7 +25524,16 @@
           "svg": "pilot-v1/views/m14/fibonacci-m14p48.svg",
           "png": "pilot-v1/views/m14/fibonacci-m14p48.png"
         }
-      ]
+      ],
+      "reduction_to_m9": {
+        "version": "m9-reduction-v1",
+        "target_modulus": 9,
+        "status": "Outside divisible-by-nine family",
+        "applicable": false,
+        "research_question": "Does the shared M9 pattern have shared biological relevance, or does native-modulus complexity change it? Unassessed: requires peer-reviewed evidence, in silico modelling (including proposed CUDA/CUDA-Q work), and appropriate experimental validation. No spatial-dimension claim or WSS score follows from this arithmetic match.",
+        "biological_significance": "Not yet assessed",
+        "native_data_preserved": true
+      }
     },
     {
       "schema_version": "2.0.0",
@@ -25840,7 +26073,16 @@
           "svg": "pilot-v1/views/m15/fibonacci-m15p40.svg",
           "png": "pilot-v1/views/m15/fibonacci-m15p40.png"
         }
-      ]
+      ],
+      "reduction_to_m9": {
+        "version": "m9-reduction-v1",
+        "target_modulus": 9,
+        "status": "Outside divisible-by-nine family",
+        "applicable": false,
+        "research_question": "Does the shared M9 pattern have shared biological relevance, or does native-modulus complexity change it? Unassessed: requires peer-reviewed evidence, in silico modelling (including proposed CUDA/CUDA-Q work), and appropriate experimental validation. No spatial-dimension claim or WSS score follows from this arithmetic match.",
+        "biological_significance": "Not yet assessed",
+        "native_data_preserved": true
+      }
     },
     {
       "schema_version": "2.0.0",
@@ -28158,7 +28400,16 @@
           "svg": "pilot-v1/views/m16/fibonacci-m16p24.svg",
           "png": "pilot-v1/views/m16/fibonacci-m16p24.png"
         }
-      ]
+      ],
+      "reduction_to_m9": {
+        "version": "m9-reduction-v1",
+        "target_modulus": 9,
+        "status": "Outside divisible-by-nine family",
+        "applicable": false,
+        "research_question": "Does the shared M9 pattern have shared biological relevance, or does native-modulus complexity change it? Unassessed: requires peer-reviewed evidence, in silico modelling (including proposed CUDA/CUDA-Q work), and appropriate experimental validation. No spatial-dimension claim or WSS score follows from this arithmetic match.",
+        "biological_significance": "Not yet assessed",
+        "native_data_preserved": true
+      }
     },
     {
       "schema_version": "2.0.0",
@@ -32075,7 +32326,16 @@
           "svg": "pilot-v1/views/m17/fibonacci-m17p36.svg",
           "png": "pilot-v1/views/m17/fibonacci-m17p36.png"
         }
-      ]
+      ],
+      "reduction_to_m9": {
+        "version": "m9-reduction-v1",
+        "target_modulus": 9,
+        "status": "Outside divisible-by-nine family",
+        "applicable": false,
+        "research_question": "Does the shared M9 pattern have shared biological relevance, or does native-modulus complexity change it? Unassessed: requires peer-reviewed evidence, in silico modelling (including proposed CUDA/CUDA-Q work), and appropriate experimental validation. No spatial-dimension claim or WSS score follows from this arithmetic match.",
+        "biological_significance": "Not yet assessed",
+        "native_data_preserved": true
+      }
     },
     {
       "schema_version": "2.0.0",
@@ -34484,7 +34744,123 @@
           "svg": "pilot-v1/views/m18/fibonacci-m18p24.svg",
           "png": "pilot-v1/views/m18/fibonacci-m18p24.png"
         }
-      ]
+      ],
+      "reduction_to_m9": {
+        "version": "m9-reduction-v1",
+        "target_modulus": 9,
+        "status": "Exact match",
+        "applicable": true,
+        "research_question": "Does the shared M9 pattern have shared biological relevance, or does native-modulus complexity change it? Unassessed: requires peer-reviewed evidence, in silico modelling (including proposed CUDA/CUDA-Q work), and appropriate experimental validation. No spatial-dimension claim or WSS score follows from this arithmetic match.",
+        "biological_significance": "Not yet assessed",
+        "native_data_preserved": true,
+        "repeat_count": 1,
+        "checks": {
+          "alpha": true,
+          "gamma": true,
+          "beta": true,
+          "gamma_indices": true
+        },
+        "alpha_residues": [
+          0,
+          1,
+          1,
+          2,
+          3,
+          5,
+          8,
+          4,
+          3,
+          7,
+          1,
+          8,
+          0,
+          8,
+          8,
+          7,
+          6,
+          4,
+          1,
+          5,
+          6,
+          2,
+          8,
+          1
+        ],
+        "alpha_display": [
+          9,
+          1,
+          1,
+          2,
+          3,
+          5,
+          8,
+          4,
+          3,
+          7,
+          1,
+          8,
+          9,
+          8,
+          8,
+          7,
+          6,
+          4,
+          1,
+          5,
+          6,
+          2,
+          8,
+          1
+        ],
+        "gamma_residues": [
+          0,
+          3,
+          3,
+          0,
+          6,
+          6
+        ],
+        "gamma_display": [
+          9,
+          3,
+          3,
+          9,
+          6,
+          6
+        ],
+        "beta_residues": [
+          4,
+          8,
+          7,
+          5,
+          1,
+          2
+        ],
+        "beta_display": [
+          4,
+          8,
+          7,
+          5,
+          1,
+          2
+        ],
+        "recognised_beta_cycle": [
+          1,
+          2,
+          4,
+          8,
+          7,
+          5
+        ],
+        "phase_preserved": true,
+        "projected_chevron": true,
+        "projected_beta_circle_positions": 9,
+        "gamma_same_single_circle_positions": true,
+        "geometry_note": "M18 and M9 share the same 24-position Gamma geometry. Reduced Beta is plotted on a nine-position circle. Longer periods require folding into 24-position cycles; their full circles are not identical.",
+        "identity": "(F_n mod (9k)) mod 9 = F_n mod 9",
+        "interpretation": "Exact reduction is a mathematical consequence of divisibility, not independent evidence of statistical or biological significance. Native Epsilon remains unchanged.",
+        "verification": "Python full-period comparison; M18 Alpha, Gamma and Beta independently checked with Wolfram."
+      }
     },
     {
       "schema_version": "2.0.0",
@@ -36142,7 +36518,16 @@
           "svg": "pilot-v1/views/m19/fibonacci-m19p18.svg",
           "png": "pilot-v1/views/m19/fibonacci-m19p18.png"
         }
-      ]
+      ],
+      "reduction_to_m9": {
+        "version": "m9-reduction-v1",
+        "target_modulus": 9,
+        "status": "Outside divisible-by-nine family",
+        "applicable": false,
+        "research_question": "Does the shared M9 pattern have shared biological relevance, or does native-modulus complexity change it? Unassessed: requires peer-reviewed evidence, in silico modelling (including proposed CUDA/CUDA-Q work), and appropriate experimental validation. No spatial-dimension claim or WSS score follows from this arithmetic match.",
+        "biological_significance": "Not yet assessed",
+        "native_data_preserved": true
+      }
     },
     {
       "schema_version": "2.0.0",
@@ -44176,7 +44561,16 @@
           "svg": "pilot-v1/views/m20/fibonacci-m20p60.svg",
           "png": "pilot-v1/views/m20/fibonacci-m20p60.png"
         }
-      ]
+      ],
+      "reduction_to_m9": {
+        "version": "m9-reduction-v1",
+        "target_modulus": 9,
+        "status": "Outside divisible-by-nine family",
+        "applicable": false,
+        "research_question": "Does the shared M9 pattern have shared biological relevance, or does native-modulus complexity change it? Unassessed: requires peer-reviewed evidence, in silico modelling (including proposed CUDA/CUDA-Q work), and appropriate experimental validation. No spatial-dimension claim or WSS score follows from this arithmetic match.",
+        "biological_significance": "Not yet assessed",
+        "native_data_preserved": true
+      }
     },
     {
       "schema_version": "2.0.0",
@@ -44506,7 +44900,16 @@
           "svg": "pilot-v1/views/m21/fibonacci-m21p16.svg",
           "png": "pilot-v1/views/m21/fibonacci-m21p16.png"
         }
-      ]
+      ],
+      "reduction_to_m9": {
+        "version": "m9-reduction-v1",
+        "target_modulus": 9,
+        "status": "Outside divisible-by-nine family",
+        "applicable": false,
+        "research_question": "Does the shared M9 pattern have shared biological relevance, or does native-modulus complexity change it? Unassessed: requires peer-reviewed evidence, in silico modelling (including proposed CUDA/CUDA-Q work), and appropriate experimental validation. No spatial-dimension claim or WSS score follows from this arithmetic match.",
+        "biological_significance": "Not yet assessed",
+        "native_data_preserved": true
+      }
     },
     {
       "schema_version": "2.0.0",
@@ -47550,7 +47953,16 @@
           "svg": "pilot-v1/views/m22/fibonacci-m22p30.svg",
           "png": "pilot-v1/views/m22/fibonacci-m22p30.png"
         }
-      ]
+      ],
+      "reduction_to_m9": {
+        "version": "m9-reduction-v1",
+        "target_modulus": 9,
+        "status": "Outside divisible-by-nine family",
+        "applicable": false,
+        "research_question": "Does the shared M9 pattern have shared biological relevance, or does native-modulus complexity change it? Unassessed: requires peer-reviewed evidence, in silico modelling (including proposed CUDA/CUDA-Q work), and appropriate experimental validation. No spatial-dimension claim or WSS score follows from this arithmetic match.",
+        "biological_significance": "Not yet assessed",
+        "native_data_preserved": true
+      }
     },
     {
       "schema_version": "2.0.0",
@@ -53404,7 +53816,16 @@
           "svg": "pilot-v1/views/m23/fibonacci-m23p48.svg",
           "png": "pilot-v1/views/m23/fibonacci-m23p48.png"
         }
-      ]
+      ],
+      "reduction_to_m9": {
+        "version": "m9-reduction-v1",
+        "target_modulus": 9,
+        "status": "Outside divisible-by-nine family",
+        "applicable": false,
+        "research_question": "Does the shared M9 pattern have shared biological relevance, or does native-modulus complexity change it? Unassessed: requires peer-reviewed evidence, in silico modelling (including proposed CUDA/CUDA-Q work), and appropriate experimental validation. No spatial-dimension claim or WSS score follows from this arithmetic match.",
+        "biological_significance": "Not yet assessed",
+        "native_data_preserved": true
+      }
     },
     {
       "schema_version": "2.0.0",
@@ -55795,7 +56216,16 @@
           "svg": "pilot-v1/views/m24/fibonacci-m24p24.svg",
           "png": "pilot-v1/views/m24/fibonacci-m24p24.png"
         }
-      ]
+      ],
+      "reduction_to_m9": {
+        "version": "m9-reduction-v1",
+        "target_modulus": 9,
+        "status": "Outside divisible-by-nine family",
+        "applicable": false,
+        "research_question": "Does the shared M9 pattern have shared biological relevance, or does native-modulus complexity change it? Unassessed: requires peer-reviewed evidence, in silico modelling (including proposed CUDA/CUDA-Q work), and appropriate experimental validation. No spatial-dimension claim or WSS score follows from this arithmetic match.",
+        "biological_significance": "Not yet assessed",
+        "native_data_preserved": true
+      }
     }
   ]
 }

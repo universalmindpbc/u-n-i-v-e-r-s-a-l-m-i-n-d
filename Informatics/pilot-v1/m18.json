@@ -2405,5 +2405,121 @@
       "svg": "pilot-v1/views/m18/fibonacci-m18p24.svg",
       "png": "pilot-v1/views/m18/fibonacci-m18p24.png"
     }
-  ]
+  ],
+  "reduction_to_m9": {
+    "version": "m9-reduction-v1",
+    "target_modulus": 9,
+    "status": "Exact match",
+    "applicable": true,
+    "research_question": "Does the shared M9 pattern have shared biological relevance, or does native-modulus complexity change it? Unassessed: requires peer-reviewed evidence, in silico modelling (including proposed CUDA/CUDA-Q work), and appropriate experimental validation. No spatial-dimension claim or WSS score follows from this arithmetic match.",
+    "biological_significance": "Not yet assessed",
+    "native_data_preserved": true,
+    "repeat_count": 1,
+    "checks": {
+      "alpha": true,
+      "gamma": true,
+      "beta": true,
+      "gamma_indices": true
+    },
+    "alpha_residues": [
+      0,
+      1,
+      1,
+      2,
+      3,
+      5,
+      8,
+      4,
+      3,
+      7,
+      1,
+      8,
+      0,
+      8,
+      8,
+      7,
+      6,
+      4,
+      1,
+      5,
+      6,
+      2,
+      8,
+      1
+    ],
+    "alpha_display": [
+      9,
+      1,
+      1,
+      2,
+      3,
+      5,
+      8,
+      4,
+      3,
+      7,
+      1,
+      8,
+      9,
+      8,
+      8,
+      7,
+      6,
+      4,
+      1,
+      5,
+      6,
+      2,
+      8,
+      1
+    ],
+    "gamma_residues": [
+      0,
+      3,
+      3,
+      0,
+      6,
+      6
+    ],
+    "gamma_display": [
+      9,
+      3,
+      3,
+      9,
+      6,
+      6
+    ],
+    "beta_residues": [
+      4,
+      8,
+      7,
+      5,
+      1,
+      2
+    ],
+    "beta_display": [
+      4,
+      8,
+      7,
+      5,
+      1,
+      2
+    ],
+    "recognised_beta_cycle": [
+      1,
+      2,
+      4,
+      8,
+      7,
+      5
+    ],
+    "phase_preserved": true,
+    "projected_chevron": true,
+    "projected_beta_circle_positions": 9,
+    "gamma_same_single_circle_positions": true,
+    "geometry_note": "M18 and M9 share the same 24-position Gamma geometry. Reduced Beta is plotted on a nine-position circle. Longer periods require folding into 24-position cycles; their full circles are not identical.",
+    "identity": "(F_n mod (9k)) mod 9 = F_n mod 9",
+    "interpretation": "Exact reduction is a mathematical consequence of divisibility, not independent evidence of statistical or biological significance. Native Epsilon remains unchanged.",
+    "verification": "Python full-period comparison; M18 Alpha, Gamma and Beta independently checked with Wolfram."
+  }
 }

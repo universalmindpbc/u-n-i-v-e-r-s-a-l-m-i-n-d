@@ -61,3 +61,13 @@ Connection page: group **Connect your AI** separately from **Research platforms*
 - Amazon Braket: quantum simulation and supported quantum-hardware experiments using explicit algorithms; prepare research notebooks rather than imply a universal CSV upload or one-click account connection.
 
 No paid cloud jobs, GPU/QPU reservations, account authentication, or partner outreach is authorised by this roadmap. Implement and proof the interface after the agreed M1–M24 → Universal One → API/MCP sequence. CSV and JSON access remain independent of AI-account connections.
+
+## Collaborative research submissions — planned after UO and API/MCP
+
+Add a researcher-controlled Submit a finding workflow: draft → reproducibility checks → review → publish a versioned result → optional integrity proof. Include author/ORCID, Atlas record IDs, dataset and rule versions, native versus reduced sequence context, hypothesis, methods/code/environment, results (including negative results), limitations, peer-reviewed references, review status, licensing/access choice, and links to subsequent corrections or replications. Every publication gets a stable ID and content hash; corrections create linked versions rather than silently overwriting history.
+
+- Sage Bionetworks Synapse is the preferred collaboration destination: data/code sharing, teams, provenance, wiki discussion and DOI support. Build an export first, then authenticated publishing after API/access validation. Researchers review the package and its permissions before publishing. https://sagebionetworks.org/platform/synapse
+- Triall Blockchain Proof is a proposed optional integrity adapter. Its product describes hashing and timestamping documents, and a Verifiable Data Integrity API. Confirm current access, cost and integration terms before implementation. Store the returned receipt with the result version. Keep research files in the governed repository; anchor a hash rather than participant data. Timestamp integrity does not establish correctness, novelty or biological significance. https://triall-platform.webflow.io/products/blockchain-proof
+- Bridge is a later participant/sensor study integration, not the primary findings repository. Current Bridge documentation says it was developed by Sage and is now operated by GRIP. https://developer.sagebridge.org/
+
+Status: planned, no accounts connected, no external findings published, no partnership claimed. Review code and data licensing before presenting the project as open source. Preserve M1–M24 proof → UO → API/MCP ordering; this collaboration layer follows those foundations.

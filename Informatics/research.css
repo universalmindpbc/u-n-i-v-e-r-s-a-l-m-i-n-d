@@ -18,3 +18,5 @@
 .formation-details p,.formation-details li{font-size:11px;line-height:1.8;color:#a7b3bc}.formation-details li{margin:10px 0}.pilot-download{display:inline-block;font-size:11px;text-decoration:underline;margin-top:24px}.sequence{overflow-wrap:anywhere}
 
 .pilot-downloads{display:flex;flex-wrap:wrap;gap:0 24px}.downloads{flex-wrap:wrap}
+
+.m9-comparison{margin:28px 0;padding:22px 0;border-top:1px solid #26313a;border-bottom:1px solid #26313a}.m9-comparison h3{font-size:15px;letter-spacing:.08em}.m9-comparison p{font-size:13px;line-height:1.65;color:#aebbc4}.m9-comparison td{white-space:normal;min-width:90px;max-width:310px;line-height:1.8}.m9-comparison a{color:#ffea42;text-underline-offset:4px}
