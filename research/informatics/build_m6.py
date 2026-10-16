@@ -88,7 +88,7 @@ d={
  'beta':{'interval_sums':sums,'interval_residues':beta,'display_cycle':beta,'recognised_doubling_cycle':[2,4],'rotation_to_recognised':1,'start_value':4,'start_interval_clock_positions':[24,4],'start_interval_values':[1,1,2],'endpoint_rule':'Exclude Gamma nodes; include wraparound interval.','circle_positions':6,'cycle_length':2,'m9_doubling_cycle_present':False},
  'gamma':{'alpha_indices':nodes,'clock_positions':[i or 24 for i in nodes],'clockwise_values':[display[i] for i in nodes],'triangle_paths':triangles},
  'epsilon':{'alpha_indices':path,'clock_positions':[i or 24 for i in path],'traversal_values':[display[i] for i in path],'status':'Same six-node geometric route as M9; different value sequence. Physical interpretation not assessed.'},
- 'views':[{'id':key,'name':title,'description':note,'svg':f'views/m6/{key}.svg','png':f'views/m6/{key}.png'} for key,title,seq,note in views],
+ 'views':[{'id':key,'name':title,'description':note,'svg':f'views/m6/{key}.svg?v=1','png':f'views/m6/{key}.png?v=1'} for key,title,seq,note in views],
  'research':{'focus':'OXTR gene expression','biological_significance_status':'Not yet assessed','statistical_significance_status':'Not yet assessed','quantum_annealing_status':'Not yet performed'},
  'verification':{'python':'Exact state recurrence, node positions, triangle spacing and native doubling checked.','wolfram':'Independent kernel confirmed period24, residues, nodes, interval sums, Beta and Epsilon on 2026-10-16.'}}
 (ROOT/'Informatics/m6p24.json').write_text(json.dumps(d,indent=2)+'\n')

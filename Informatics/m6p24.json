@@ -212,36 +212,36 @@
       "id": "alpha",
       "name": "Alpha",
       "description": "Clock position 24 is north; zero is displayed as 6.",
-      "svg": "views/m6/alpha.svg",
-      "png": "views/m6/alpha.png"
+      "svg": "views/m6/alpha.svg?v=1",
+      "png": "views/m6/alpha.png?v=1"
     },
     {
       "id": "beta",
       "name": "Beta",
       "description": "Two-step doubling cycle modulo 6; repeated edges overlap.",
-      "svg": "views/m6/beta.svg",
-      "png": "views/m6/beta.png"
+      "svg": "views/m6/beta.svg?v=1",
+      "png": "views/m6/beta.png?v=1"
     },
     {
       "id": "gamma",
       "name": "Gamma",
       "description": "Same nodal positions as M9; different native values.",
-      "svg": "views/m6/gamma.svg",
-      "png": "views/m6/gamma.png"
+      "svg": "views/m6/gamma.svg?v=1",
+      "png": "views/m6/gamma.png?v=1"
     },
     {
       "id": "epsilon",
       "name": "Epsilon",
       "description": "Same geometric traversal as M9; no 9 \u2192 3 \u2192 6 value cycle.",
-      "svg": "views/m6/epsilon.svg",
-      "png": "views/m6/epsilon.png"
+      "svg": "views/m6/epsilon.svg?v=1",
+      "png": "views/m6/epsilon.png?v=1"
     },
     {
       "id": "fibonacci-m6p24",
       "name": "Fibonacci M6P24",
       "description": "Alpha uses 24 positions; Beta uses six positions.",
-      "svg": "views/m6/fibonacci-m6p24.svg",
-      "png": "views/m6/fibonacci-m6p24.png"
+      "svg": "views/m6/fibonacci-m6p24.svg?v=1",
+      "png": "views/m6/fibonacci-m6p24.png?v=1"
     }
   ],
   "research": {
