@@ -1,0 +1,540 @@
+{
+  "schema_version": "2.0.0",
+  "dataset_version": "m1-m24-v1",
+  "id": "fibonacci-m15-p40",
+  "name": "Fibonacci M15P40",
+  "modulus": 15,
+  "pisano_period": 40,
+  "conventions": {
+    "index_origin": 0,
+    "clock_labels": [
+      40,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24,
+      25,
+      26,
+      27,
+      28,
+      29,
+      30,
+      31,
+      32,
+      33,
+      34,
+      35,
+      36,
+      37,
+      38,
+      39
+    ],
+    "orientation": "clockwise from north",
+    "zero_display": 15,
+    "alpha_circle_positions": 40,
+    "beta_circle_positions": 15,
+    "node_rule": "Native residues divisible by 3, including zero; preserves the approved M6/M9/M12 reference selection. Additional regular formations of all native values are catalogued separately.",
+    "m1_convention": "Modulo 1 has period 1 and residue 0."
+  },
+  "alpha": {
+    "residues": [
+      0,
+      1,
+      1,
+      2,
+      3,
+      5,
+      8,
+      13,
+      6,
+      4,
+      10,
+      14,
+      9,
+      8,
+      2,
+      10,
+      12,
+      7,
+      4,
+      11,
+      0,
+      11,
+      11,
+      7,
+      3,
+      10,
+      13,
+      8,
+      6,
+      14,
+      5,
+      4,
+      9,
+      13,
+      7,
+      5,
+      12,
+      2,
+      14,
+      1
+    ],
+    "display_values": [
+      15,
+      1,
+      1,
+      2,
+      3,
+      5,
+      8,
+      13,
+      6,
+      4,
+      10,
+      14,
+      9,
+      8,
+      2,
+      10,
+      12,
+      7,
+      4,
+      11,
+      15,
+      11,
+      11,
+      7,
+      3,
+      10,
+      13,
+      8,
+      6,
+      14,
+      5,
+      4,
+      9,
+      13,
+      7,
+      5,
+      12,
+      2,
+      14,
+      1
+    ]
+  },
+  "gamma": {
+    "alpha_indices": [
+      0,
+      4,
+      8,
+      12,
+      16,
+      20,
+      24,
+      28,
+      32,
+      36
+    ],
+    "clock_positions": [
+      40,
+      4,
+      8,
+      12,
+      16,
+      20,
+      24,
+      28,
+      32,
+      36
+    ],
+    "clockwise_values": [
+      15,
+      3,
+      6,
+      9,
+      12,
+      15,
+      3,
+      6,
+      9,
+      12
+    ],
+    "triangle_paths": []
+  },
+  "beta": {
+    "interval_sums": [
+      4,
+      26,
+      28,
+      20,
+      22,
+      29,
+      31,
+      23,
+      25,
+      17
+    ],
+    "interval_residues": [
+      4,
+      11,
+      13,
+      5,
+      7,
+      14,
+      1,
+      8,
+      10,
+      2
+    ],
+    "display_cycle": [
+      4,
+      11,
+      13,
+      5,
+      7,
+      14,
+      1,
+      8,
+      10,
+      2
+    ],
+    "intervals": [
+      {
+        "from_index": 0,
+        "to_index": 4,
+        "interior_indices": [
+          1,
+          2,
+          3
+        ],
+        "interior_values": [
+          1,
+          1,
+          2
+        ],
+        "sum": 4,
+        "residue": 4
+      },
+      {
+        "from_index": 4,
+        "to_index": 8,
+        "interior_indices": [
+          5,
+          6,
+          7
+        ],
+        "interior_values": [
+          5,
+          8,
+          13
+        ],
+        "sum": 26,
+        "residue": 11
+      },
+      {
+        "from_index": 8,
+        "to_index": 12,
+        "interior_indices": [
+          9,
+          10,
+          11
+        ],
+        "interior_values": [
+          4,
+          10,
+          14
+        ],
+        "sum": 28,
+        "residue": 13
+      },
+      {
+        "from_index": 12,
+        "to_index": 16,
+        "interior_indices": [
+          13,
+          14,
+          15
+        ],
+        "interior_values": [
+          8,
+          2,
+          10
+        ],
+        "sum": 20,
+        "residue": 5
+      },
+      {
+        "from_index": 16,
+        "to_index": 20,
+        "interior_indices": [
+          17,
+          18,
+          19
+        ],
+        "interior_values": [
+          7,
+          4,
+          11
+        ],
+        "sum": 22,
+        "residue": 7
+      },
+      {
+        "from_index": 20,
+        "to_index": 24,
+        "interior_indices": [
+          21,
+          22,
+          23
+        ],
+        "interior_values": [
+          11,
+          11,
+          7
+        ],
+        "sum": 29,
+        "residue": 14
+      },
+      {
+        "from_index": 24,
+        "to_index": 28,
+        "interior_indices": [
+          25,
+          26,
+          27
+        ],
+        "interior_values": [
+          10,
+          13,
+          8
+        ],
+        "sum": 31,
+        "residue": 1
+      },
+      {
+        "from_index": 28,
+        "to_index": 32,
+        "interior_indices": [
+          29,
+          30,
+          31
+        ],
+        "interior_values": [
+          14,
+          5,
+          4
+        ],
+        "sum": 23,
+        "residue": 8
+      },
+      {
+        "from_index": 32,
+        "to_index": 36,
+        "interior_indices": [
+          33,
+          34,
+          35
+        ],
+        "interior_values": [
+          13,
+          7,
+          5
+        ],
+        "sum": 25,
+        "residue": 10
+      },
+      {
+        "from_index": 36,
+        "to_index": 0,
+        "interior_indices": [
+          37,
+          38,
+          39
+        ],
+        "interior_values": [
+          2,
+          14,
+          1
+        ],
+        "sum": 17,
+        "residue": 2
+      }
+    ],
+    "minimal_cycle": [
+      4,
+      11,
+      13,
+      5,
+      7,
+      14,
+      1,
+      8,
+      10,
+      2
+    ],
+    "native_doubling": false,
+    "recognised_doubling_cycle": null,
+    "rotation_to_recognised": null,
+    "m9_doubling_cycle_present": false,
+    "start_value": 4,
+    "start_interval_clock_positions": [
+      40,
+      4
+    ],
+    "start_interval_values": [
+      1,
+      1,
+      2
+    ],
+    "circle_positions": 15,
+    "cycle_length": 10,
+    "endpoint_rule": "Exclude endpoints, include wraparound; raw residues used for sums. Empty interiors sum to zero."
+  },
+  "epsilon": null,
+  "epsilon_routes": [],
+  "epsilon_status": "Null: no tested regular six-node reference traversal contains only 3, 6 and 9 with all three present.",
+  "geometry_summary": {
+    "rule_version": "native-pilot-v1",
+    "scope": "Shapes in the primary Gamma node set (native residues divisible by 3, including zero). All regular polygons on the period circle are catalogued separately with their native values; their existence alone is a property of the plotting grid.",
+    "circle_role": "Pisano-period plotting framework",
+    "shapes": [
+      {
+        "name": "Equilateral triangle",
+        "status": "Absent",
+        "count": 0,
+        "orientation": null,
+        "rotation_degrees": null,
+        "rotations_degrees": [],
+        "alpha_paths": []
+      },
+      {
+        "name": "Hexagon",
+        "status": "Absent",
+        "count": 0,
+        "orientation": null,
+        "rotation_degrees": null,
+        "rotations_degrees": [],
+        "alpha_paths": []
+      },
+      {
+        "name": "2D stellated octahedron",
+        "status": "Absent",
+        "count": 0,
+        "orientation": null,
+        "rotation_degrees": null,
+        "rotations_degrees": [],
+        "alpha_paths": []
+      },
+      {
+        "name": "Chevron",
+        "status": "Absent",
+        "count": 0,
+        "orientation": null,
+        "rotation_degrees": null,
+        "rotations_degrees": [],
+        "alpha_paths": []
+      },
+      {
+        "name": "Unicursal hexagram",
+        "status": "Absent",
+        "count": 0,
+        "orientation": null,
+        "rotation_degrees": null,
+        "rotations_degrees": [],
+        "alpha_paths": []
+      }
+    ],
+    "other_orientations_status": "Absent",
+    "epsilon_rule": "A regular six-node formation must support the reference unicursal route through only 3, 6 and 9, containing all three. Rotations and reflections of the route are tested; reversed or cyclically shifted traversals are deduplicated."
+  },
+  "formation_catalogue": [],
+  "notable_gamma_patterns": [],
+  "research": {
+    "focus": "OXTR gene expression",
+    "biological_significance_status": "Not yet assessed",
+    "statistical_significance_status": "Not yet assessed",
+    "quantum_annealing_status": "Not yet performed",
+    "tiers": [
+      {
+        "name": "Creates cellular life",
+        "range": [
+          8,
+          10
+        ],
+        "wss_score": null,
+        "evidence": []
+      },
+      {
+        "name": "Supports cellular life",
+        "range": [
+          5,
+          7
+        ],
+        "wss_score": null,
+        "evidence": []
+      },
+      {
+        "name": "Creates elemental life",
+        "range": [
+          1,
+          4
+        ],
+        "wss_score": null,
+        "evidence": []
+      }
+    ]
+  },
+  "verification": {
+    "python": "Passed",
+    "wolfram": "Passed",
+    "scope": "Native period, sequences, regular polygon index spacing and reference Epsilon routes; no physical or biological validation.",
+    "wolfram_scope": "24 native periods, complete Alpha, primary Gamma indices, Beta interval sums/residues, primary regular triangles and hexagons. Extended catalogue, Chevron and Epsilon remain Python-checked only.",
+    "evidence": "wolfram-core-result.json"
+  },
+  "views": [
+    {
+      "id": "alpha",
+      "name": "Alpha",
+      "svg": "pilot-v1/views/m15/alpha.svg",
+      "png": "pilot-v1/views/m15/alpha.png"
+    },
+    {
+      "id": "beta",
+      "name": "Beta",
+      "svg": "pilot-v1/views/m15/beta.svg",
+      "png": "pilot-v1/views/m15/beta.png"
+    },
+    {
+      "id": "gamma",
+      "name": "Gamma",
+      "svg": "pilot-v1/views/m15/gamma.svg",
+      "png": "pilot-v1/views/m15/gamma.png"
+    },
+    {
+      "id": "fibonacci-m15p40",
+      "name": "Fibonacci M15P40",
+      "svg": "pilot-v1/views/m15/fibonacci-m15p40.svg",
+      "png": "pilot-v1/views/m15/fibonacci-m15p40.png"
+    }
+  ]
+}

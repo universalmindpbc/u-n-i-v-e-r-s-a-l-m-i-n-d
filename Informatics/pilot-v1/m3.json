@@ -1,0 +1,263 @@
+{
+  "schema_version": "2.0.0",
+  "dataset_version": "m1-m24-v1",
+  "id": "fibonacci-m3-p8",
+  "name": "Fibonacci M3P8",
+  "modulus": 3,
+  "pisano_period": 8,
+  "conventions": {
+    "index_origin": 0,
+    "clock_labels": [
+      8,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7
+    ],
+    "orientation": "clockwise from north",
+    "zero_display": 3,
+    "alpha_circle_positions": 8,
+    "beta_circle_positions": 3,
+    "node_rule": "Native residues divisible by 3, including zero; preserves the approved M6/M9/M12 reference selection. Additional regular formations of all native values are catalogued separately.",
+    "m1_convention": "Modulo 1 has period 1 and residue 0."
+  },
+  "alpha": {
+    "residues": [
+      0,
+      1,
+      1,
+      2,
+      0,
+      2,
+      2,
+      1
+    ],
+    "display_values": [
+      3,
+      1,
+      1,
+      2,
+      3,
+      2,
+      2,
+      1
+    ]
+  },
+  "gamma": {
+    "alpha_indices": [
+      0,
+      4
+    ],
+    "clock_positions": [
+      8,
+      4
+    ],
+    "clockwise_values": [
+      3,
+      3
+    ],
+    "triangle_paths": []
+  },
+  "beta": {
+    "interval_sums": [
+      4,
+      5
+    ],
+    "interval_residues": [
+      1,
+      2
+    ],
+    "display_cycle": [
+      1,
+      2
+    ],
+    "intervals": [
+      {
+        "from_index": 0,
+        "to_index": 4,
+        "interior_indices": [
+          1,
+          2,
+          3
+        ],
+        "interior_values": [
+          1,
+          1,
+          2
+        ],
+        "sum": 4,
+        "residue": 1
+      },
+      {
+        "from_index": 4,
+        "to_index": 0,
+        "interior_indices": [
+          5,
+          6,
+          7
+        ],
+        "interior_values": [
+          2,
+          2,
+          1
+        ],
+        "sum": 5,
+        "residue": 2
+      }
+    ],
+    "minimal_cycle": [
+      1,
+      2
+    ],
+    "native_doubling": true,
+    "recognised_doubling_cycle": [
+      1,
+      2
+    ],
+    "rotation_to_recognised": 0,
+    "m9_doubling_cycle_present": false,
+    "start_value": 1,
+    "start_interval_clock_positions": [
+      8,
+      4
+    ],
+    "start_interval_values": [
+      1,
+      1,
+      2
+    ],
+    "circle_positions": 3,
+    "cycle_length": 2,
+    "endpoint_rule": "Exclude endpoints, include wraparound; raw residues used for sums. Empty interiors sum to zero."
+  },
+  "epsilon": null,
+  "epsilon_routes": [],
+  "epsilon_status": "Null: no tested regular six-node reference traversal contains only 3, 6 and 9 with all three present.",
+  "geometry_summary": {
+    "rule_version": "native-pilot-v1",
+    "scope": "Shapes in the primary Gamma node set (native residues divisible by 3, including zero). All regular polygons on the period circle are catalogued separately with their native values; their existence alone is a property of the plotting grid.",
+    "circle_role": "Pisano-period plotting framework",
+    "shapes": [
+      {
+        "name": "Equilateral triangle",
+        "status": "Absent",
+        "count": 0,
+        "orientation": null,
+        "rotation_degrees": null,
+        "rotations_degrees": [],
+        "alpha_paths": []
+      },
+      {
+        "name": "Hexagon",
+        "status": "Absent",
+        "count": 0,
+        "orientation": null,
+        "rotation_degrees": null,
+        "rotations_degrees": [],
+        "alpha_paths": []
+      },
+      {
+        "name": "2D stellated octahedron",
+        "status": "Absent",
+        "count": 0,
+        "orientation": null,
+        "rotation_degrees": null,
+        "rotations_degrees": [],
+        "alpha_paths": []
+      },
+      {
+        "name": "Chevron",
+        "status": "Absent",
+        "count": 0,
+        "orientation": null,
+        "rotation_degrees": null,
+        "rotations_degrees": [],
+        "alpha_paths": []
+      },
+      {
+        "name": "Unicursal hexagram",
+        "status": "Absent",
+        "count": 0,
+        "orientation": null,
+        "rotation_degrees": null,
+        "rotations_degrees": [],
+        "alpha_paths": []
+      }
+    ],
+    "other_orientations_status": "Absent",
+    "epsilon_rule": "A regular six-node formation must support the reference unicursal route through only 3, 6 and 9, containing all three. Rotations and reflections of the route are tested; reversed or cyclically shifted traversals are deduplicated."
+  },
+  "formation_catalogue": [],
+  "notable_gamma_patterns": [],
+  "research": {
+    "focus": "OXTR gene expression",
+    "biological_significance_status": "Not yet assessed",
+    "statistical_significance_status": "Not yet assessed",
+    "quantum_annealing_status": "Not yet performed",
+    "tiers": [
+      {
+        "name": "Creates cellular life",
+        "range": [
+          8,
+          10
+        ],
+        "wss_score": null,
+        "evidence": []
+      },
+      {
+        "name": "Supports cellular life",
+        "range": [
+          5,
+          7
+        ],
+        "wss_score": null,
+        "evidence": []
+      },
+      {
+        "name": "Creates elemental life",
+        "range": [
+          1,
+          4
+        ],
+        "wss_score": null,
+        "evidence": []
+      }
+    ]
+  },
+  "verification": {
+    "python": "Passed",
+    "wolfram": "Passed",
+    "scope": "Native period, sequences, regular polygon index spacing and reference Epsilon routes; no physical or biological validation.",
+    "wolfram_scope": "24 native periods, complete Alpha, primary Gamma indices, Beta interval sums/residues, primary regular triangles and hexagons. Extended catalogue, Chevron and Epsilon remain Python-checked only.",
+    "evidence": "wolfram-core-result.json"
+  },
+  "views": [
+    {
+      "id": "alpha",
+      "name": "Alpha",
+      "svg": "pilot-v1/views/m3/alpha.svg",
+      "png": "pilot-v1/views/m3/alpha.png"
+    },
+    {
+      "id": "beta",
+      "name": "Beta",
+      "svg": "pilot-v1/views/m3/beta.svg",
+      "png": "pilot-v1/views/m3/beta.png"
+    },
+    {
+      "id": "gamma",
+      "name": "Gamma",
+      "svg": "pilot-v1/views/m3/gamma.svg",
+      "png": "pilot-v1/views/m3/gamma.png"
+    },
+    {
+      "id": "fibonacci-m3p8",
+      "name": "Fibonacci M3P8",
+      "svg": "pilot-v1/views/m3/fibonacci-m3p8.svg",
+      "png": "pilot-v1/views/m3/fibonacci-m3p8.png"
+    }
+  ]
+}
