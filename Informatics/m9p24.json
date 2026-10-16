@@ -258,8 +258,8 @@
     "wolfram": "Reference notebook source available; this generator does not execute Wolfram."
   },
   "geometry_summary": {
-    "rule_version": "selected-nodes-v1",
-    "scope": "Selected Gamma nodes and derived Beta only. Other node selections and rotated shapes are not yet assessed.",
+    "rule_version": "selected-nodes-v2",
+    "scope": "Selected Gamma nodes, derived Beta and Epsilon traversal only. Other node selections and rotated shapes are not yet assessed.",
     "circle_role": "Pisano-period plotting framework",
     "angle_convention": "Clockwise from north; 0 degrees means the reference north-south alignment.",
     "shapes": [
@@ -338,6 +338,34 @@
           1,
           2
         ]
+      },
+      {
+        "name": "Unicursal hexagram",
+        "status": "Present",
+        "count": 1,
+        "orientation": "North\u2013south",
+        "rotation_degrees": 0,
+        "alpha_paths": [
+          [
+            0,
+            8,
+            20,
+            12,
+            4,
+            16,
+            0
+          ]
+        ],
+        "traversal_values": [
+          9,
+          3,
+          6,
+          9,
+          3,
+          6,
+          9
+        ],
+        "rule": "The continuous Epsilon traversal must contain all three node values 3, 6 and 9."
       }
     ],
     "other_orientations_status": "Not yet assessed"

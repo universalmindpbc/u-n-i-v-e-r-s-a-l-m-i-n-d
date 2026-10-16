@@ -217,8 +217,8 @@
     "wolfram": "Pending independent verification."
   },
   "geometry_summary": {
-    "rule_version": "selected-nodes-v1",
-    "scope": "Selected Gamma nodes and derived Beta only. Other node selections and rotated shapes are not yet assessed.",
+    "rule_version": "selected-nodes-v2",
+    "scope": "Selected Gamma nodes, derived Beta and Epsilon traversal only. Other node selections and rotated shapes are not yet assessed.",
     "circle_role": "Pisano-period plotting framework",
     "angle_convention": "Clockwise from north; 0 degrees means the reference north-south alignment.",
     "shapes": [
@@ -290,6 +290,16 @@
         "orientation": null,
         "rotation_degrees": null,
         "beta_values": []
+      },
+      {
+        "name": "Unicursal hexagram",
+        "status": "Absent",
+        "count": 0,
+        "orientation": null,
+        "rotation_degrees": null,
+        "alpha_paths": [],
+        "traversal_values": [],
+        "rule": "The continuous Epsilon traversal must contain all three node values 3, 6 and 9."
       }
     ],
     "other_orientations_status": "Not yet assessed"
