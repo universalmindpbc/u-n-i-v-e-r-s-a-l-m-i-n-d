@@ -619,7 +619,7 @@ deploy_informatics() {
   if [[ -f "$MANIFEST_FILE" ]]; then
     awk -F '\t' '$2 !~ /^Informatics\//' "$MANIFEST_FILE" > "$manifest_tmp"
   fi
-  for name in geometry.json style.css app.js index.html; do
+  for name in geometry.json style.css landing.js app.js index.html; do
     source_file="$ROOT_DIR/Informatics/$name"
     git -C "$ROOT_DIR" ls-files --error-unmatch "Informatics/$name" >/dev/null
     if ! git -C "$ROOT_DIR" diff --quiet HEAD -- "Informatics/$name"; then
