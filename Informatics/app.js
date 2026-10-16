@@ -32,14 +32,25 @@ const active=stage===1?uni:stage===4?doubling:null;const tracer=$('#tracer');tra
 $('#play').textContent=playing?'Ⅱ':'▷';$('#play').setAttribute('aria-label',playing?'Pause animation':'Play animation');}
 $('#play').onclick=()=>{playing=!playing;if(playing&&elapsed>=total-1)elapsed=0;last=null;render()};$('#replay').onclick=()=>{elapsed=0;playing=true;last=null;render()};document.querySelectorAll('button[data-stage]').forEach(b=>b.onclick=()=>{elapsed=Number(b.dataset.stage)*duration+duration-1;playing=false;render()});
 const film=$('#film'),experience=$('#experience'),launch=$('#launch');
+let atlasOpen=false, resumeAnimation=false;
+function showAtlas(open){
+ if(open===atlasOpen)return;
+ atlasOpen=open;
+ if(open){resumeAnimation=playing;playing=false;const frame=$('#atlas-frame');if(!frame.getAttribute('src'))frame.src=frame.dataset.src+location.hash;}
+ else {playing=resumeAnimation;last=null;}
+ $('#atlas-panel').hidden=!open;experience.querySelector('main').hidden=open;experience.querySelector('footer').hidden=open;
+ experience.classList.toggle('atlas-open',open);$('#atlas-toggle').textContent=open?'Geometric animation':'Research Atlas';$('#atlas-toggle').setAttribute('aria-expanded',String(open));
+ if(open)$('#atlas-frame').focus();else $('#atlas-toggle').focus();
+}
+$('#atlas-toggle').onclick=()=>showAtlas(!atlasOpen);
 function syncSound(){const label=film.muted?'Unmute video':'Mute video';$('#sound').textContent=film.muted?'♪̸':'♫';$('#sound').setAttribute('aria-label',label);$('#sound').title=label;}
 $('#sound').onclick=()=>{if(film.paused){film.muted=false;film.play().catch(()=>{});}else film.muted=!film.muted;syncSound();};
 function fullscreen(){if(!document.fullscreenElement && experience.requestFullscreen)experience.requestFullscreen().catch(()=>{});}
 launch.disabled=false;
-launch.onclick=()=>{entered=true;document.body.dataset.entered='true';$('#landing').hidden=true;experience.hidden=false;fullscreen();film.muted=false;film.volume=1;syncSound();if(!film.src)film.src=film.dataset.src;film.play().catch(()=>{$('#sound').textContent='▷';$('#sound').setAttribute('aria-label','Play video with sound');$('#sound').title='Play video with sound';});elapsed=reduced.matches?total-1:0;playing=!reduced.matches;last=null;render();$('#play').focus();};
+launch.onclick=()=>{entered=true;document.body.dataset.entered='true';$('#landing').hidden=true;experience.hidden=false;fullscreen();film.muted=false;film.volume=1;syncSound();if(!film.src)film.src=film.dataset.src;film.play().catch(()=>{$('#sound').textContent='▷';$('#sound').setAttribute('aria-label','Play video with sound');$('#sound').title='Play video with sound';});elapsed=reduced.matches?total-1:0;playing=!reduced.matches;last=null;render();if(new URLSearchParams(location.search).get('atlas')==='1')showAtlas(true);else $('#play').focus();};
 $('#fullscreen').onclick=()=>{if(document.fullscreenElement)document.exitFullscreen().catch(()=>{});else fullscreen();};
 document.addEventListener('fullscreenchange',()=>$('#fullscreen').setAttribute('aria-label',document.fullscreenElement?'Exit full screen':'Enter full screen'));
-$('#back').onclick=()=>{film.pause();playing=false;entered=false;if(document.fullscreenElement)document.exitFullscreen().catch(()=>{});experience.hidden=true;$('#landing').hidden=false;document.body.dataset.entered='false';document.dispatchEvent(new Event('informatics:return'));launch.focus();};
+$('#back').onclick=()=>{showAtlas(false);film.pause();playing=false;entered=false;if(document.fullscreenElement)document.exitFullscreen().catch(()=>{});experience.hidden=true;$('#landing').hidden=false;document.body.dataset.entered='false';document.dispatchEvent(new Event('informatics:return'));launch.focus();};
 window.addEventListener('pagehide',()=>{film.pause();playing=false;});
 document.addEventListener('visibilitychange',()=>{last=null;if(document.hidden)film.pause();else if(entered)film.play().catch(()=>{});});
 function frame(now){const dt=last===null?0:Math.min(now-last,60);last=now;if(entered&&playing&&!document.hidden){elapsed=Math.min(total-1,elapsed+dt);if(elapsed>=total-1)playing=false;render();}requestAnimationFrame(frame);}render();requestAnimationFrame(frame);
