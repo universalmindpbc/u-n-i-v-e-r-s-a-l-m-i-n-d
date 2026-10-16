@@ -11,7 +11,7 @@ const labels=[];for(let i=0;i<24;i++){const g=make('g',{},$('#alpha'));const nod
 for(const r of [330,350])make('circle',{cx:400,cy:400,r,fill:'none',stroke:'#4b5a62','stroke-width':.4,'stroke-dasharray':r===330?'1 9':'30 170'},$('#guides'));
 path([[390,400],[410,400]],$('#guides'),{stroke:'#344249','stroke-width':.6});path([[400,390],[400,410]],$('#guides'),{stroke:'#344249','stroke-width':.6});
 const uni=path(data.unicursal_indices.map(i=>pt(i,24)),$('#unicursal'),{'stroke-width':2});
-const triangles=data.triangles.map(indices=>path(indices.map(i=>pt(i,24)),$('#stars'),{stroke:'#ff84c5','stroke-width':1.5,fill:'#ff389c','fill-opacity':.32}));
+const triangles=data.triangles.map(indices=>path(indices.map(i=>pt(i,24)),$('#stars'),{stroke:'#ff84c5','stroke-width':1,fill:'#ff389c','fill-opacity':.18}));
 // Circumradius equals the Alpha circle radius: all six vertices touch it.
 const hex=path(Array.from({length:7},(_,i)=>pt(i,6,240)),$('#hexagon'),{stroke:'#62d998','stroke-width':1.5,fill:'#37be79','fill-opacity':.045});
 const betaCircle=make('circle',{cx:400,cy:400,r:240,fill:'none',stroke:'#5ca8ff','stroke-width':.6},$('#beta'));
@@ -23,8 +23,8 @@ const duration=7000,total=duration*5;let elapsed=0,last=null,playing=false,enter
 const ease=t=>Math.max(0,Math.min(1,t));
 function render(){const stage=Math.min(4,Math.floor(elapsed/duration)),fraction=(elapsed%duration)/duration;document.body.dataset.stage=stage;$('#counter').textContent=`0${stage+1} / 05`;$('#progress').style.width=`${elapsed/total*100}%`;document.querySelectorAll('button[data-stage]').forEach(b=>b.setAttribute('aria-pressed',Number(b.dataset.stage)===stage));
 $('#alpha').style.opacity=stage===4?.10:1;labels.forEach((g,i)=>g.style.opacity=stage>0?1:ease(fraction*30-i));draw(circle,stage>0?1:fraction*2);
-$('#unicursal').style.opacity=stage<1?0:stage===4?.13:1;draw(uni,stage===1?fraction*1.3:stage>1?1:0);
-$('#stars').style.opacity=stage<2?0:.9;triangles.forEach((p,i)=>{const t=stage===2?ease(fraction*2-i):stage>2?1:0;draw(p,t);p.setAttribute('fill-opacity',.32*t);});
+$('#unicursal').style.opacity=stage<1?0:1;draw(uni,stage===1?fraction*1.3:stage>1?1:0);
+$('#stars').style.opacity=stage<2?0:.65;triangles.forEach((p,i)=>{const t=stage===2?ease(fraction*2-i):stage>2?1:0;draw(p,t);p.setAttribute('fill-opacity',.18*t);});
 $('#hexagon').style.opacity=stage>=3?1:0;draw(hex,stage===3?fraction*1.5:stage>3?1:0);
 $('#beta').style.opacity=stage===4?1:0;draw(doubling,stage===4?fraction*1.3:0);
 const sequences=['0 · 1 · 1 · 2 · 3 · 5 · 8','9 → 3 → 6 → 9 → 3 → 6','9 · 3 · 6   /   3 · 9 · 6','α · γ','1 → 2 → 4 → 8 → 7 → 5'];$('#sequence').textContent=sequences[stage];
