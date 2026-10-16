@@ -163,5 +163,5 @@ The goal of this repository is rapid creative iteration. Reducing friction for B
 ## Informatics editorial language
 
 - Use **Phi Ratio** for φ in all public Informatics copy. Preserve this terminology in future research and website revisions.
-- Introduce the proposed relationship between Atlas sequences and biological functions as a research hypothesis, with bioinformatics and in silico modelling as the planned investigation.
+- Introduce the proposed relationship between Atlas sequences and biological functions as a research hypothesis, with bioinformatics and in silico modelling as the planned investigation. The initial investigation is specific to OXTR; wider studies provide supporting context, rather than a claim of universal biological applicability.
 - Keep About compact. House illustrations on the First Principles Genomics page, and the full publication register in an optional lightbox.

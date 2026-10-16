@@ -35,7 +35,9 @@ try{
   await page.getByRole('link',{name:'Science and Open Questions'}).click();
   await page.waitForURL('**/genomics.html');
   assert.equal(await page.locator('h1').innerText(),'Explore First Principles Genomics');
-  assert.match(await page.locator('.genomics-lead').innerText(),/Our hypothesis/);
+  assert.match(await page.locator('.genomics-lead').innerText(),/Our hypothesis.*in the context of OXTR/);
+  assert.match(await page.locator('main').innerText(),/initial research is specific to OXTR/);
+  assert.doesNotMatch(await page.locator('main').innerText(),/broader programme/);
   assert.equal(await page.locator('.genomics-targets li').count(),5);
   assert.equal(await page.locator('.science-teachables button').count(),4);
   await page.locator('.science-teachables img').evaluateAll(imgs=>Promise.all(imgs.map(img=>img.decode())));
@@ -83,6 +85,7 @@ try{
   await frame.locator('#m9-science-summary').waitFor({state:'visible'});
   assert.equal(await frame.locator('#research-record').inputValue(),'fibonacci-m9-p24');
   assert.equal(await frame.locator('#m9-science-summary img, #m9-science-summary article').count(),0);
+  assert.match(await frame.locator('.science-module-intro').innerText(),/in the context of OXTR/);
   await frame.getByRole('tab',{name:'Geometry summary',exact:true}).click();
   assert.equal(await frame.locator('#summary-science-slot #m9-science-summary').count(),1);
   await frame.locator('#m9-science-summary').screenshot({path:path.join(output,`atlas-context-${viewport.width}.png`)});
@@ -93,6 +96,7 @@ try{
    await atlasRegister.locator(`[data-science-card="${id}"]`).click();
    assert.equal(await atlasReader.locator('.science-visual').evaluate(e=>e.open),false);
    assert.match(await atlasReader.locator('.science-evidence').innerText(),/OPEN ATLAS QUESTION/);
+   assert.match(await atlasReader.locator('.science-question-text').innerText(),/OXTR/);
    if(id==='epsilon'){
     await atlasReader.locator('.science-visual>summary').click();
     await atlasReader.locator('.science-image-button img').scrollIntoViewIfNeeded();
