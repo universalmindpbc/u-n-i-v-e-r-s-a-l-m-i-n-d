@@ -154,7 +154,7 @@
   const register = document.createElement('dialog');
   register.className = 'science-register';
   register.setAttribute('aria-labelledby','science-register-title');
-  register.innerHTML = `<div class="science-reader-bar"><span>FIRST PRINCIPLES GENOMICS</span><button class="science-close" aria-label="Close research register">×</button></div><div class="science-register-body"><p class="science-label">14 UNIQUE STUDIES · 4 HERO REFERENCES</p><h2 id="science-register-title">Research register</h2><p class="science-register-intro">Supporting literature for the initial OXTR research hypothesis, including studies of related mechanisms in other systems. HERO marks the lead reference for each of the four illustrated themes. Select a trust score to inspect its assessment.</p>${scoreKey}<p class="science-table-hint">Scroll the table horizontally on smaller screens.</p><div class="science-table-scroll" tabindex="0" role="region" aria-label="Fourteen-study research register"><table><caption class="science-sr-only">Fourteen primary studies, with four HERO references, provisional trust scores and citation context.</caption><thead><tr><th scope="col">Study / research theme</th><th scope="col">System &amp; appraisal</th><th scope="col">Trust / 10</th><th scope="col">Source review</th><th scope="col">Citations</th></tr></thead><tbody>${studies.map(study => `<tr data-study-id="${study.id}"><td><div class="science-study-id">${study.id}${study.hero ? '<span class="science-hero">HERO</span>' : ''}</div><a class="science-study-title" href="https://doi.org/${study.doi}" target="_blank" rel="noopener noreferrer">${esc(study.title)} ↗</a><p class="science-citation">${esc(study.author)} · ${esc(study.journal)} · ${esc(study.year)}</p><p class="science-study-theme">${esc(study.theme)}</p>${study.hero ? `<button class="science-study-question" data-science-card="${study.hero}">Open Atlas question →</button>` : ''}</td><td><p>${esc(study.methods)}</p><details><summary>Finding &amp; appraisal</summary><h3>Principal finding</h3><p>${esc(study.finding)}</p><h3>Scope &amp; limitations</h3><p>${esc(study.limit)}</p><h3>Source material reviewed</h3><p>${esc(study.access)}</p></details></td><td><button class="science-trust-score" data-study-score="${study.id}" aria-label="Inspect provisional trust score for ${study.id}: ${study.score} out of 10">${study.score}<span> / 10</span></button></td><td>${reviewLabels[study.scoreParts.review]}</td><td>${study.citationCount === null ? 'Unavailable' : `<a href="https://api.crossref.org/works/${study.doi}" target="_blank" rel="noopener noreferrer">${study.citationCount.toLocaleString('en-AU')}</a>`}<span class="science-citation-source">Crossref<br>17 Oct 2026</span></td></tr>`).join('')}</tbody></table></div></div>`;
+  register.innerHTML = `<div class="science-reader-bar"><span>FIRST PRINCIPLES GENOMICS</span><button class="science-close" aria-label="Close research register">×</button></div><div class="science-register-body"><p class="science-label">14 UNIQUE STUDIES · 4 HERO REFERENCES</p><h2 id="science-register-title">Research register</h2><p class="science-register-intro">Shared background literature for the initial OXTR research programme across M1–M48, including studies of related mechanisms in other systems. Relevance to individual moduli awaits assessment. HERO marks the lead reference for each of the four illustrated themes. Select a trust score to inspect its assessment.</p>${scoreKey}<p class="science-table-hint">Scroll the table horizontally on smaller screens.</p><div class="science-table-scroll" tabindex="0" role="region" aria-label="Fourteen-study research register"><table><caption class="science-sr-only">Fourteen primary studies, with four HERO references, provisional trust scores and citation context.</caption><thead><tr><th scope="col">Study / research theme</th><th scope="col">System &amp; appraisal</th><th scope="col">Trust / 10</th><th scope="col">Source review</th><th scope="col">Citations</th></tr></thead><tbody>${studies.map(study => `<tr data-study-id="${study.id}"><td><div class="science-study-id">${study.id}${study.hero ? '<span class="science-hero">HERO</span>' : ''}</div><a class="science-study-title" href="https://doi.org/${study.doi}" target="_blank" rel="noopener noreferrer">${esc(study.title)} ↗</a><p class="science-citation">${esc(study.author)} · ${esc(study.journal)} · ${esc(study.year)}</p><p class="science-study-theme">${esc(study.theme)}</p>${study.hero ? `<button class="science-study-question" data-science-card="${study.hero}">Open M9 / P24 research question →</button>` : ''}</td><td><p>${esc(study.methods)}</p><details><summary>Finding &amp; appraisal</summary><h3>Principal finding</h3><p>${esc(study.finding)}</p><h3>Scope &amp; limitations</h3><p>${esc(study.limit)}</p><h3>Source material reviewed</h3><p>${esc(study.access)}</p></details></td><td><button class="science-trust-score" data-study-score="${study.id}" aria-label="Inspect provisional trust score for ${study.id}: ${study.score} out of 10">${study.score}<span> / 10</span></button></td><td>${reviewLabels[study.scoreParts.review]}</td><td>${study.citationCount === null ? 'Unavailable' : `<a href="https://api.crossref.org/works/${study.doi}" target="_blank" rel="noopener noreferrer">${study.citationCount.toLocaleString('en-AU')}</a>`}<span class="science-citation-source">Crossref<br>17 Oct 2026</span></td></tr>`).join('')}</tbody></table></div></div>`;
   document.body.append(register);
   const appraisal = document.createElement('dialog');
   appraisal.className = 'science-appraisal';
@@ -176,7 +176,7 @@
   register.addEventListener('close', () => registerOpener?.isConnected && registerOpener.focus());
   appraisal.addEventListener('close', () => scoreOpener?.isConnected && scoreOpener.focus());
   let active = cards[0], mode = 'literature', opener;
-  let hero = false;
+  let hasRecord = false;
 
   function renderCard() {
     const c = active;
@@ -212,21 +212,21 @@
   renderTeachables($('#science-teachables'));
 
   const module = document.createElement('section');
-  module.id = 'm9-science-summary'; module.className = 'science-module'; module.hidden = true;
-  module.setAttribute('aria-labelledby', 'm9-science-title');
-  module.innerHTML = `<p class="science-label">M9 / P24 · SCIENTIFIC SIGNIFICANCE</p><h2 id="m9-science-title">Research context</h2><p class="science-module-intro">Investigating relationships between M9P24’s nested sequences and biological timing, cellular division and molecular organisation in the context of OXTR.</p><button class="science-register-link" data-science-register>Research register ↗</button><p class="science-module-page"><a href="${new URL('genomics.html', root).href}" data-science-genomics aria-haspopup="dialog">First Principles Genomics →</a></p><p class="science-assessment">Hypothesis under investigation<br>Numerical WSS: awaiting assessment</p>${framework}`;
+  module.id = 'atlas-science-summary'; module.className = 'science-module'; module.hidden = true;
+  module.setAttribute('aria-labelledby', 'atlas-science-title');
+  module.innerHTML = `<p class="science-label">OXTR · SHARED RESEARCH</p><h2 id="atlas-science-title">Research context</h2><p class="science-module-intro">14 peer-reviewed studies, including four HERO references, provide background for our OXTR research programme. Relevance to individual moduli awaits assessment.</p><button class="science-register-link" data-science-register>Research register ↗</button><p class="science-module-page"><a href="${new URL('genomics.html', root).href}" data-science-genomics aria-haspopup="dialog">First Principles Genomics →</a></p><p class="science-assessment">Hypothesis under investigation<br>Numerical WSS: awaiting assessment</p>${framework}`;
   if ($('#sidebar-science-slot')) $('#sidebar-science-slot').append(module);
   function setRecord(d) {
-    hero = d.modulus === 9 && d.pisano_period === 24;
-    module.hidden = !hero;
-    const status = $('#legacy-research-status'); if (status) status.hidden = hero;
-    $('#shape-summary')?.classList.toggle('has-science', hero);
-    if (!hero && reader.open) reader.close();
+    hasRecord = Number.isInteger(d.modulus) && d.modulus >= 1 && d.modulus <= 48;
+    module.hidden = !hasRecord;
+    const status = $('#legacy-research-status'); if (status) status.hidden = hasRecord;
+    $('#shape-summary')?.classList.toggle('has-science', hasRecord);
+    if (!hasRecord && reader.open) reader.close();
   }
   function setView(view) {
     const slot = $(view === 'geometry-summary' ? '#summary-science-slot' : '#sidebar-science-slot');
     if (slot) slot.append(module);
-    module.hidden = !hero;
+    module.hidden = !hasRecord;
   }
   window.ScienceCards = {setRecord, setView};
 })();

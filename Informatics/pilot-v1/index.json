@@ -337,5 +337,10 @@
       "pisano_period": 24,
       "file": "pilot-v1/m48.json"
     }
-  ]
+  ],
+  "research_register": {
+    "id": "oxtr-phase1-literature",
+    "version": "2026-10-17.1",
+    "file": "pilot-v1/research-register.json"
+  }
 }

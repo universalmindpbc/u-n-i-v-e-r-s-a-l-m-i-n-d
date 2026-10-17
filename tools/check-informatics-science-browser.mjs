@@ -96,14 +96,14 @@ try{
   assert.equal(page.url(),initialURL);
   assert.equal(await genomics.evaluate(e=>e.open),false);
   const frame=page.frameLocator('#atlas-frame');
-  await frame.locator('#m9-science-summary').waitFor({state:'visible'});
+  await frame.locator('#atlas-science-summary').waitFor({state:'visible'});
   assert.equal(await frame.locator('#research-record').inputValue(),'fibonacci-m9-p24');
-  assert.equal(await frame.locator('#m9-science-summary img, #m9-science-summary article').count(),0);
-  assert.match(await frame.locator('.science-module-intro').innerText(),/in the context of OXTR/);
+  assert.equal(await frame.locator('#atlas-science-summary img, #atlas-science-summary article').count(),0);
+  assert.match(await frame.locator('.science-module-intro').innerText(),/background for our OXTR research programme/);
   await frame.getByRole('tab',{name:'Geometry summary',exact:true}).click();
-  assert.equal(await frame.locator('#summary-science-slot #m9-science-summary').count(),1);
-  await frame.locator('#m9-science-summary').screenshot({path:path.join(output,`atlas-context-${viewport.width}.png`)});
-  await frame.locator('#m9-science-summary [data-science-genomics]').click();
+  assert.equal(await frame.locator('#summary-science-slot #atlas-science-summary').count(),1);
+  await frame.locator('#atlas-science-summary').screenshot({path:path.join(output,`atlas-context-${viewport.width}.png`)});
+  await frame.locator('#atlas-science-summary [data-science-genomics]').click();
   const atlasGenomics=frame.locator('.science-genomics');
   await atlasGenomics.locator('h1').waitFor();
   assert.equal(page.url(),initialURL);
@@ -116,7 +116,7 @@ try{
   await atlasGenomics.locator('[data-science-atlas]').click();
   assert.equal(await atlasGenomics.evaluate(e=>e.open),false);
   assert.equal(await frame.locator('[role=tab][aria-selected=true]').innerText(),'Geometry summary');
-  await frame.locator('#m9-science-summary [data-science-register]').click();
+  await frame.locator('#atlas-science-summary [data-science-register]').click();
   const atlasRegister=frame.locator('.science-register'),atlasReader=frame.locator('.science-reader');
   assert.equal(await atlasRegister.locator('tbody tr').count(),14);
   for(const id of ['alpha','beta','gamma','epsilon']){
@@ -136,7 +136,7 @@ try{
   for(const id of ['fibonacci-m18-p24','fibonacci-m1-p1','fibonacci-m48','m-summary']){
    const value=id==='fibonacci-m48'?await frame.locator('#research-record option').evaluateAll(opts=>opts.find(o=>o.textContent.startsWith('Fibonacci · M48 /')).value):id;
    await frame.locator('#research-record').selectOption(value);
-   await frame.locator('#m9-science-summary').waitFor({state:'hidden'});
+   await frame.locator('#atlas-science-summary').waitFor({state:value==='m-summary'?'hidden':'visible'});
    if(value==='m-summary')await frame.locator('#family-view').waitFor({state:'visible'});
    else await frame.locator('.intro h1').filter({hasText:new RegExp('^M'+value.match(/-m(\d+)-/)[1]+' /')}).waitFor();
    if(value==='fibonacci-m18-p24'){
@@ -144,11 +144,38 @@ try{
     assert.equal(await frame.locator('#epsilon-reduced').getAttribute('aria-pressed'),'true');
    }
   }
+  // Every native record offers the same shared collection, independently of geometry.
+  const options=await frame.locator('#research-record option').evaluateAll(opts=>opts.filter(o=>o.value!=='m-summary').map(o=>({value:o.value,modulus:Number(o.value.match(/-m(\d+)-/)[1])})));
+  assert.equal(options.length,48);
+  for(const option of options){
+   await frame.locator('#research-record').selectOption(option.value);
+   await frame.locator('.intro h1').filter({hasText:new RegExp('^M'+option.modulus+' /')}).waitFor();
+   const viewNames=await frame.locator('[role=tab]').allTextContents();
+   for(const name of viewNames.filter(name=>!name.includes('Odom'))){
+    await frame.getByRole('tab',{name,exact:true}).click();
+    await frame.locator('#atlas-science-summary').waitFor({state:'visible'});
+    assert.equal(await frame.locator('#atlas-science-summary [data-science-register]').count(),1);
+    assert.equal(await frame.locator('#atlas-science-summary [data-science-genomics]').count(),1);
+    assert.match(await frame.locator('#atlas-science-summary summary').innerText(),/How scientific significance is framed/);
+   }
+   await frame.getByRole('tab',{name:'Geometry summary',exact:true}).click();
+   await frame.locator('#summary-science-slot #atlas-science-summary').waitFor({state:'visible'});
+   assert.match(await frame.locator('.science-module-intro').innerText(),/14 peer-reviewed studies.*four HERO references/);
+   await frame.locator('#atlas-science-summary [data-science-register]').click();
+   assert.equal(await atlasRegister.locator('tbody tr').count(),14);
+   assert.equal(await atlasRegister.locator('.science-hero').count(),4);
+   assert.match(await atlasRegister.locator('.science-register-intro').innerText(),/Shared background literature.*M1–M48/);
+   await atlasRegister.locator('button[aria-label="Close research register"]').click();
+   assert.equal(await frame.locator('#research-record').inputValue(),option.value);
+   if([1,18,27,36,45,48].includes(option.modulus)&&viewport.width===1440)await frame.locator('#atlas-science-summary').screenshot({path:path.join(output,`atlas-m${option.modulus}.png`)});
+  }
+  await frame.locator('#research-record').selectOption('m-summary');
+  await frame.locator('#family-view').waitFor({state:'visible'});
   // Return from About into an existing non-M9 Atlas without reloading the shell.
   await page.locator('#experience [data-about]').click();
   await page.locator('#about [data-science-genomics]').click();
   await genomics.locator('[data-science-atlas]').click();
-  await frame.locator('#m9-science-summary').waitFor({state:'visible'});
+  await frame.locator('#atlas-science-summary').waitFor({state:'visible'});
   assert.equal(await frame.locator('#research-record').inputValue(),'fibonacci-m9-p24');
   assert.equal(await frame.locator('[role=tab][aria-selected=true]').innerText(),'Geometry summary');
   assert.equal(page.url(),initialURL);
@@ -159,7 +186,7 @@ try{
   assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),true);
   assert.equal(await frame.locator('html').evaluate(e=>e.scrollWidth<=innerWidth),true);
   assert.deepEqual(errors,[]);
-  results.push({viewport,compactAbout:true,genomicsLightboxBothEntries:true,musicContinuous:true,fullscreenContainerPreserved:true,studies:14,heroes:4,scoreBreakdowns:14,atlasLiteratureFirst:true,otherRecordsExcluded:true,errors});
+  results.push({viewport,compactAbout:true,genomicsLightboxBothEntries:true,musicContinuous:true,fullscreenContainerPreserved:true,studies:14,heroes:4,scoreBreakdowns:14,atlasLiteratureFirst:true,all48RegistersVerified:true,allAvailableSequenceViewsVerified:true,errors});
   await page.evaluate(()=>document.querySelectorAll('video,audio').forEach(m=>m.pause()));
   if(viewport.width===1440){
    let attempts=0,release;

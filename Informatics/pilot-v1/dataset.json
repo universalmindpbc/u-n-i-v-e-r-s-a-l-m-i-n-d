@@ -1,9 +1,9 @@
 {
-  "schema_version": "2.1.0",
+  "schema_version": "2.2.0",
   "dataset_version": "m1-m48-v1",
   "records": [
     {
-      "schema_version": "2.0.0",
+      "schema_version": "2.2.0",
       "dataset_version": "m1-m48-v1",
       "id": "fibonacci-m1-p1",
       "name": "Fibonacci M1P1",
@@ -134,7 +134,37 @@
             "wss_score": null,
             "evidence": []
           }
-        ]
+        ],
+        "background_literature": {
+          "register_id": "oxtr-phase1-literature",
+          "register_version": "2026-10-17.1",
+          "register_file": "research-register.json",
+          "relationship": "background_context",
+          "scope": "Shared background literature for the initial OXTR research programme across M1–M48. Studies of related mechanisms in other systems provide context for investigation.",
+          "publication_ids": [
+            "E01",
+            "E02",
+            "E03",
+            "E04",
+            "E05",
+            "E06",
+            "E07",
+            "E08",
+            "E09",
+            "E10",
+            "E11",
+            "E12",
+            "E13",
+            "E14"
+          ],
+          "hero_publication_ids": [
+            "E03",
+            "E06",
+            "E08",
+            "E11"
+          ],
+          "modulus_relevance_status": "Not yet assessed"
+        }
       },
       "verification": {
         "python": "Passed",
@@ -219,7 +249,7 @@
       ]
     },
     {
-      "schema_version": "2.0.0",
+      "schema_version": "2.2.0",
       "dataset_version": "m1-m48-v1",
       "id": "fibonacci-m2-p3",
       "name": "Fibonacci M2P3",
@@ -444,7 +474,37 @@
             "wss_score": null,
             "evidence": []
           }
-        ]
+        ],
+        "background_literature": {
+          "register_id": "oxtr-phase1-literature",
+          "register_version": "2026-10-17.1",
+          "register_file": "research-register.json",
+          "relationship": "background_context",
+          "scope": "Shared background literature for the initial OXTR research programme across M1–M48. Studies of related mechanisms in other systems provide context for investigation.",
+          "publication_ids": [
+            "E01",
+            "E02",
+            "E03",
+            "E04",
+            "E05",
+            "E06",
+            "E07",
+            "E08",
+            "E09",
+            "E10",
+            "E11",
+            "E12",
+            "E13",
+            "E14"
+          ],
+          "hero_publication_ids": [
+            "E03",
+            "E06",
+            "E08",
+            "E11"
+          ],
+          "modulus_relevance_status": "Not yet assessed"
+        }
       },
       "verification": {
         "python": "Passed",
@@ -529,7 +589,7 @@
       ]
     },
     {
-      "schema_version": "2.0.0",
+      "schema_version": "2.2.0",
       "dataset_version": "m1-m48-v1",
       "id": "fibonacci-m3-p8",
       "name": "Fibonacci M3P8",
@@ -755,7 +815,37 @@
             "wss_score": null,
             "evidence": []
           }
-        ]
+        ],
+        "background_literature": {
+          "register_id": "oxtr-phase1-literature",
+          "register_version": "2026-10-17.1",
+          "register_file": "research-register.json",
+          "relationship": "background_context",
+          "scope": "Shared background literature for the initial OXTR research programme across M1–M48. Studies of related mechanisms in other systems provide context for investigation.",
+          "publication_ids": [
+            "E01",
+            "E02",
+            "E03",
+            "E04",
+            "E05",
+            "E06",
+            "E07",
+            "E08",
+            "E09",
+            "E10",
+            "E11",
+            "E12",
+            "E13",
+            "E14"
+          ],
+          "hero_publication_ids": [
+            "E03",
+            "E06",
+            "E08",
+            "E11"
+          ],
+          "modulus_relevance_status": "Not yet assessed"
+        }
       },
       "verification": {
         "python": "Passed",
@@ -840,7 +930,7 @@
       ]
     },
     {
-      "schema_version": "2.0.0",
+      "schema_version": "2.2.0",
       "dataset_version": "m1-m48-v1",
       "id": "fibonacci-m4-p6",
       "name": "Fibonacci M4P6",
@@ -1393,7 +1483,37 @@
             "wss_score": null,
             "evidence": []
           }
-        ]
+        ],
+        "background_literature": {
+          "register_id": "oxtr-phase1-literature",
+          "register_version": "2026-10-17.1",
+          "register_file": "research-register.json",
+          "relationship": "background_context",
+          "scope": "Shared background literature for the initial OXTR research programme across M1–M48. Studies of related mechanisms in other systems provide context for investigation.",
+          "publication_ids": [
+            "E01",
+            "E02",
+            "E03",
+            "E04",
+            "E05",
+            "E06",
+            "E07",
+            "E08",
+            "E09",
+            "E10",
+            "E11",
+            "E12",
+            "E13",
+            "E14"
+          ],
+          "hero_publication_ids": [
+            "E03",
+            "E06",
+            "E08",
+            "E11"
+          ],
+          "modulus_relevance_status": "Not yet assessed"
+        }
       },
       "verification": {
         "python": "Passed",
@@ -1471,7 +1591,7 @@
           0
         ],
         "orientation": "clockwise from north; fixed M9 route and starting phase",
-        "reason": "Reference geometry exists, but the reduced traversal does not equal 9\u20133\u20136\u20139\u20133\u20136\u20139.",
+        "reason": "Reference geometry exists, but the reduced traversal does not equal 9–3–6–9–3–6–9.",
         "scope": "Tests the fixed north-oriented M9 path on the full native period circle; does not fold the period or rotate/reverse the values to force a match."
       },
       "epsilon_assessment": {
@@ -1571,7 +1691,7 @@
       ]
     },
     {
-      "schema_version": "2.0.0",
+      "schema_version": "2.2.0",
       "dataset_version": "m1-m48-v1",
       "id": "fibonacci-m5-p20",
       "name": "Fibonacci M5P20",
@@ -1938,7 +2058,37 @@
             "wss_score": null,
             "evidence": []
           }
-        ]
+        ],
+        "background_literature": {
+          "register_id": "oxtr-phase1-literature",
+          "register_version": "2026-10-17.1",
+          "register_file": "research-register.json",
+          "relationship": "background_context",
+          "scope": "Shared background literature for the initial OXTR research programme across M1–M48. Studies of related mechanisms in other systems provide context for investigation.",
+          "publication_ids": [
+            "E01",
+            "E02",
+            "E03",
+            "E04",
+            "E05",
+            "E06",
+            "E07",
+            "E08",
+            "E09",
+            "E10",
+            "E11",
+            "E12",
+            "E13",
+            "E14"
+          ],
+          "hero_publication_ids": [
+            "E03",
+            "E06",
+            "E08",
+            "E11"
+          ],
+          "modulus_relevance_status": "Not yet assessed"
+        }
       },
       "verification": {
         "python": "Passed",
@@ -2023,7 +2173,7 @@
       ]
     },
     {
-      "schema_version": "2.0.0",
+      "schema_version": "2.2.0",
       "dataset_version": "m1-m48-v1",
       "id": "fibonacci-m6-p24",
       "name": "Fibonacci M6P24",
@@ -2343,7 +2493,7 @@
             "name": "Hexagon",
             "status": "Present",
             "count": 1,
-            "orientation": "North\u2013south",
+            "orientation": "North–south",
             "rotation_degrees": 0.0,
             "rotations_degrees": [
               0.0
@@ -2364,7 +2514,7 @@
             "name": "2D stellated octahedron",
             "status": "Present",
             "count": 1,
-            "orientation": "North\u2013south",
+            "orientation": "North–south",
             "rotation_degrees": 0.0,
             "rotations_degrees": [
               0.0
@@ -4410,7 +4560,37 @@
             "wss_score": null,
             "evidence": []
           }
-        ]
+        ],
+        "background_literature": {
+          "register_id": "oxtr-phase1-literature",
+          "register_version": "2026-10-17.1",
+          "register_file": "research-register.json",
+          "relationship": "background_context",
+          "scope": "Shared background literature for the initial OXTR research programme across M1–M48. Studies of related mechanisms in other systems provide context for investigation.",
+          "publication_ids": [
+            "E01",
+            "E02",
+            "E03",
+            "E04",
+            "E05",
+            "E06",
+            "E07",
+            "E08",
+            "E09",
+            "E10",
+            "E11",
+            "E12",
+            "E13",
+            "E14"
+          ],
+          "hero_publication_ids": [
+            "E03",
+            "E06",
+            "E08",
+            "E11"
+          ],
+          "modulus_relevance_status": "Not yet assessed"
+        }
       },
       "verification": {
         "python": "Passed",
@@ -4488,7 +4668,7 @@
           0
         ],
         "orientation": "clockwise from north; fixed M9 route and starting phase",
-        "reason": "Reference geometry exists, but the reduced traversal does not equal 9\u20133\u20136\u20139\u20133\u20136\u20139.",
+        "reason": "Reference geometry exists, but the reduced traversal does not equal 9–3–6–9–3–6–9.",
         "scope": "Tests the fixed north-oriented M9 path on the full native period circle; does not fold the period or rotate/reverse the values to force a match."
       },
       "epsilon_assessment": {
@@ -4759,7 +4939,7 @@
       ]
     },
     {
-      "schema_version": "2.0.0",
+      "schema_version": "2.2.0",
       "dataset_version": "m1-m48-v1",
       "id": "fibonacci-m7-p16",
       "name": "Fibonacci M7P16",
@@ -5091,7 +5271,37 @@
             "wss_score": null,
             "evidence": []
           }
-        ]
+        ],
+        "background_literature": {
+          "register_id": "oxtr-phase1-literature",
+          "register_version": "2026-10-17.1",
+          "register_file": "research-register.json",
+          "relationship": "background_context",
+          "scope": "Shared background literature for the initial OXTR research programme across M1–M48. Studies of related mechanisms in other systems provide context for investigation.",
+          "publication_ids": [
+            "E01",
+            "E02",
+            "E03",
+            "E04",
+            "E05",
+            "E06",
+            "E07",
+            "E08",
+            "E09",
+            "E10",
+            "E11",
+            "E12",
+            "E13",
+            "E14"
+          ],
+          "hero_publication_ids": [
+            "E03",
+            "E06",
+            "E08",
+            "E11"
+          ],
+          "modulus_relevance_status": "Not yet assessed"
+        }
       },
       "verification": {
         "python": "Passed",
@@ -5176,7 +5386,7 @@
       ]
     },
     {
-      "schema_version": "2.0.0",
+      "schema_version": "2.2.0",
       "dataset_version": "m1-m48-v1",
       "id": "fibonacci-m8-p12",
       "name": "Fibonacci M8P12",
@@ -6231,7 +6441,37 @@
             "wss_score": null,
             "evidence": []
           }
-        ]
+        ],
+        "background_literature": {
+          "register_id": "oxtr-phase1-literature",
+          "register_version": "2026-10-17.1",
+          "register_file": "research-register.json",
+          "relationship": "background_context",
+          "scope": "Shared background literature for the initial OXTR research programme across M1–M48. Studies of related mechanisms in other systems provide context for investigation.",
+          "publication_ids": [
+            "E01",
+            "E02",
+            "E03",
+            "E04",
+            "E05",
+            "E06",
+            "E07",
+            "E08",
+            "E09",
+            "E10",
+            "E11",
+            "E12",
+            "E13",
+            "E14"
+          ],
+          "hero_publication_ids": [
+            "E03",
+            "E06",
+            "E08",
+            "E11"
+          ],
+          "modulus_relevance_status": "Not yet assessed"
+        }
       },
       "verification": {
         "python": "Passed",
@@ -6309,7 +6549,7 @@
           0
         ],
         "orientation": "clockwise from north; fixed M9 route and starting phase",
-        "reason": "Reference geometry exists, but the reduced traversal does not equal 9\u20133\u20136\u20139\u20133\u20136\u20139.",
+        "reason": "Reference geometry exists, but the reduced traversal does not equal 9–3–6–9–3–6–9.",
         "scope": "Tests the fixed north-oriented M9 path on the full native period circle; does not fold the period or rotate/reverse the values to force a match."
       },
       "epsilon_assessment": {
@@ -6475,7 +6715,7 @@
       ]
     },
     {
-      "schema_version": "2.0.0",
+      "schema_version": "2.2.0",
       "dataset_version": "m1-m48-v1",
       "id": "fibonacci-m9-p24",
       "name": "Fibonacci M9P24",
@@ -6932,7 +7172,7 @@
             "name": "Hexagon",
             "status": "Present",
             "count": 1,
-            "orientation": "North\u2013south",
+            "orientation": "North–south",
             "rotation_degrees": 0.0,
             "rotations_degrees": [
               0.0
@@ -6953,7 +7193,7 @@
             "name": "2D stellated octahedron",
             "status": "Present",
             "count": 1,
-            "orientation": "North\u2013south",
+            "orientation": "North–south",
             "rotation_degrees": 0.0,
             "rotations_degrees": [
               0.0
@@ -6977,7 +7217,7 @@
             "name": "Chevron",
             "status": "Present",
             "count": 1,
-            "orientation": "North\u2013south",
+            "orientation": "North–south",
             "rotation_degrees": 0,
             "rotations_degrees": [
               0
@@ -6988,7 +7228,7 @@
             "name": "Unicursal hexagram",
             "status": "Present",
             "count": 1,
-            "orientation": "North\u2013south",
+            "orientation": "North–south",
             "rotation_degrees": 0.0,
             "rotations_degrees": [
               0.0
@@ -9175,7 +9415,37 @@
             "wss_score": null,
             "evidence": []
           }
-        ]
+        ],
+        "background_literature": {
+          "register_id": "oxtr-phase1-literature",
+          "register_version": "2026-10-17.1",
+          "register_file": "research-register.json",
+          "relationship": "background_context",
+          "scope": "Shared background literature for the initial OXTR research programme across M1–M48. Studies of related mechanisms in other systems provide context for investigation.",
+          "publication_ids": [
+            "E01",
+            "E02",
+            "E03",
+            "E04",
+            "E05",
+            "E06",
+            "E07",
+            "E08",
+            "E09",
+            "E10",
+            "E11",
+            "E12",
+            "E13",
+            "E14"
+          ],
+          "hero_publication_ids": [
+            "E03",
+            "E06",
+            "E08",
+            "E11"
+          ],
+          "modulus_relevance_status": "Not yet assessed"
+        }
       },
       "verification": {
         "python": "Passed",
@@ -9635,7 +9905,7 @@
       ]
     },
     {
-      "schema_version": "2.0.0",
+      "schema_version": "2.2.0",
       "dataset_version": "m1-m48-v1",
       "id": "fibonacci-m10-p60",
       "name": "Fibonacci M10P60",
@@ -17680,7 +17950,37 @@
             "wss_score": null,
             "evidence": []
           }
-        ]
+        ],
+        "background_literature": {
+          "register_id": "oxtr-phase1-literature",
+          "register_version": "2026-10-17.1",
+          "register_file": "research-register.json",
+          "relationship": "background_context",
+          "scope": "Shared background literature for the initial OXTR research programme across M1–M48. Studies of related mechanisms in other systems provide context for investigation.",
+          "publication_ids": [
+            "E01",
+            "E02",
+            "E03",
+            "E04",
+            "E05",
+            "E06",
+            "E07",
+            "E08",
+            "E09",
+            "E10",
+            "E11",
+            "E12",
+            "E13",
+            "E14"
+          ],
+          "hero_publication_ids": [
+            "E03",
+            "E06",
+            "E08",
+            "E11"
+          ],
+          "modulus_relevance_status": "Not yet assessed"
+        }
       },
       "verification": {
         "python": "Passed",
@@ -17758,7 +18058,7 @@
           0
         ],
         "orientation": "clockwise from north; fixed M9 route and starting phase",
-        "reason": "Reference geometry exists, but the reduced traversal does not equal 9\u20133\u20136\u20139\u20133\u20136\u20139.",
+        "reason": "Reference geometry exists, but the reduced traversal does not equal 9–3–6–9–3–6–9.",
         "scope": "Tests the fixed north-oriented M9 path on the full native period circle; does not fold the period or rotate/reverse the values to force a match."
       },
       "epsilon_assessment": {
@@ -18346,7 +18646,7 @@
       ]
     },
     {
-      "schema_version": "2.0.0",
+      "schema_version": "2.2.0",
       "dataset_version": "m1-m48-v1",
       "id": "fibonacci-m11-p10",
       "name": "Fibonacci M11P10",
@@ -18578,7 +18878,37 @@
             "wss_score": null,
             "evidence": []
           }
-        ]
+        ],
+        "background_literature": {
+          "register_id": "oxtr-phase1-literature",
+          "register_version": "2026-10-17.1",
+          "register_file": "research-register.json",
+          "relationship": "background_context",
+          "scope": "Shared background literature for the initial OXTR research programme across M1–M48. Studies of related mechanisms in other systems provide context for investigation.",
+          "publication_ids": [
+            "E01",
+            "E02",
+            "E03",
+            "E04",
+            "E05",
+            "E06",
+            "E07",
+            "E08",
+            "E09",
+            "E10",
+            "E11",
+            "E12",
+            "E13",
+            "E14"
+          ],
+          "hero_publication_ids": [
+            "E03",
+            "E06",
+            "E08",
+            "E11"
+          ],
+          "modulus_relevance_status": "Not yet assessed"
+        }
       },
       "verification": {
         "python": "Passed",
@@ -18663,7 +18993,7 @@
       ]
     },
     {
-      "schema_version": "2.0.0",
+      "schema_version": "2.2.0",
       "dataset_version": "m1-m48-v1",
       "id": "fibonacci-m12-p24",
       "name": "Fibonacci M12P24",
@@ -18984,7 +19314,7 @@
             "name": "Hexagon",
             "status": "Present",
             "count": 1,
-            "orientation": "North\u2013south",
+            "orientation": "North–south",
             "rotation_degrees": 0.0,
             "rotations_degrees": [
               0.0
@@ -19005,7 +19335,7 @@
             "name": "2D stellated octahedron",
             "status": "Present",
             "count": 1,
-            "orientation": "North\u2013south",
+            "orientation": "North–south",
             "rotation_degrees": 0.0,
             "rotations_degrees": [
               0.0
@@ -21017,7 +21347,37 @@
             "wss_score": null,
             "evidence": []
           }
-        ]
+        ],
+        "background_literature": {
+          "register_id": "oxtr-phase1-literature",
+          "register_version": "2026-10-17.1",
+          "register_file": "research-register.json",
+          "relationship": "background_context",
+          "scope": "Shared background literature for the initial OXTR research programme across M1–M48. Studies of related mechanisms in other systems provide context for investigation.",
+          "publication_ids": [
+            "E01",
+            "E02",
+            "E03",
+            "E04",
+            "E05",
+            "E06",
+            "E07",
+            "E08",
+            "E09",
+            "E10",
+            "E11",
+            "E12",
+            "E13",
+            "E14"
+          ],
+          "hero_publication_ids": [
+            "E03",
+            "E06",
+            "E08",
+            "E11"
+          ],
+          "modulus_relevance_status": "Not yet assessed"
+        }
       },
       "verification": {
         "python": "Passed",
@@ -21095,7 +21455,7 @@
           0
         ],
         "orientation": "clockwise from north; fixed M9 route and starting phase",
-        "reason": "Reference geometry exists, but the reduced traversal does not equal 9\u20133\u20136\u20139\u20133\u20136\u20139.",
+        "reason": "Reference geometry exists, but the reduced traversal does not equal 9–3–6–9–3–6–9.",
         "scope": "Tests the fixed north-oriented M9 path on the full native period circle; does not fold the period or rotate/reverse the values to force a match."
       },
       "epsilon_assessment": {
@@ -21377,7 +21737,7 @@
       ]
     },
     {
-      "schema_version": "2.0.0",
+      "schema_version": "2.2.0",
       "dataset_version": "m1-m48-v1",
       "id": "fibonacci-m13-p28",
       "name": "Fibonacci M13P28",
@@ -21814,7 +22174,37 @@
             "wss_score": null,
             "evidence": []
           }
-        ]
+        ],
+        "background_literature": {
+          "register_id": "oxtr-phase1-literature",
+          "register_version": "2026-10-17.1",
+          "register_file": "research-register.json",
+          "relationship": "background_context",
+          "scope": "Shared background literature for the initial OXTR research programme across M1–M48. Studies of related mechanisms in other systems provide context for investigation.",
+          "publication_ids": [
+            "E01",
+            "E02",
+            "E03",
+            "E04",
+            "E05",
+            "E06",
+            "E07",
+            "E08",
+            "E09",
+            "E10",
+            "E11",
+            "E12",
+            "E13",
+            "E14"
+          ],
+          "hero_publication_ids": [
+            "E03",
+            "E06",
+            "E08",
+            "E11"
+          ],
+          "modulus_relevance_status": "Not yet assessed"
+        }
       },
       "verification": {
         "python": "Passed",
@@ -21899,7 +22289,7 @@
       ]
     },
     {
-      "schema_version": "2.0.0",
+      "schema_version": "2.2.0",
       "dataset_version": "m1-m48-v1",
       "id": "fibonacci-m14-p48",
       "name": "Fibonacci M14P48",
@@ -27631,7 +28021,37 @@
             "wss_score": null,
             "evidence": []
           }
-        ]
+        ],
+        "background_literature": {
+          "register_id": "oxtr-phase1-literature",
+          "register_version": "2026-10-17.1",
+          "register_file": "research-register.json",
+          "relationship": "background_context",
+          "scope": "Shared background literature for the initial OXTR research programme across M1–M48. Studies of related mechanisms in other systems provide context for investigation.",
+          "publication_ids": [
+            "E01",
+            "E02",
+            "E03",
+            "E04",
+            "E05",
+            "E06",
+            "E07",
+            "E08",
+            "E09",
+            "E10",
+            "E11",
+            "E12",
+            "E13",
+            "E14"
+          ],
+          "hero_publication_ids": [
+            "E03",
+            "E06",
+            "E08",
+            "E11"
+          ],
+          "modulus_relevance_status": "Not yet assessed"
+        }
       },
       "verification": {
         "python": "Passed",
@@ -27709,7 +28129,7 @@
           0
         ],
         "orientation": "clockwise from north; fixed M9 route and starting phase",
-        "reason": "Reference geometry exists, but the reduced traversal does not equal 9\u20133\u20136\u20139\u20133\u20136\u20139.",
+        "reason": "Reference geometry exists, but the reduced traversal does not equal 9–3–6–9–3–6–9.",
         "scope": "Tests the fixed north-oriented M9 path on the full native period circle; does not fold the period or rotate/reverse the values to force a match."
       },
       "epsilon_assessment": {
@@ -28220,7 +28640,7 @@
       ]
     },
     {
-      "schema_version": "2.0.0",
+      "schema_version": "2.2.0",
       "dataset_version": "m1-m48-v1",
       "id": "fibonacci-m15-p40",
       "name": "Fibonacci M15P40",
@@ -28723,7 +29143,37 @@
             "wss_score": null,
             "evidence": []
           }
-        ]
+        ],
+        "background_literature": {
+          "register_id": "oxtr-phase1-literature",
+          "register_version": "2026-10-17.1",
+          "register_file": "research-register.json",
+          "relationship": "background_context",
+          "scope": "Shared background literature for the initial OXTR research programme across M1–M48. Studies of related mechanisms in other systems provide context for investigation.",
+          "publication_ids": [
+            "E01",
+            "E02",
+            "E03",
+            "E04",
+            "E05",
+            "E06",
+            "E07",
+            "E08",
+            "E09",
+            "E10",
+            "E11",
+            "E12",
+            "E13",
+            "E14"
+          ],
+          "hero_publication_ids": [
+            "E03",
+            "E06",
+            "E08",
+            "E11"
+          ],
+          "modulus_relevance_status": "Not yet assessed"
+        }
       },
       "verification": {
         "python": "Passed",
@@ -28808,7 +29258,7 @@
       ]
     },
     {
-      "schema_version": "2.0.0",
+      "schema_version": "2.2.0",
       "dataset_version": "m1-m48-v1",
       "id": "fibonacci-m16-p24",
       "name": "Fibonacci M16P24",
@@ -31089,7 +31539,37 @@
             "wss_score": null,
             "evidence": []
           }
-        ]
+        ],
+        "background_literature": {
+          "register_id": "oxtr-phase1-literature",
+          "register_version": "2026-10-17.1",
+          "register_file": "research-register.json",
+          "relationship": "background_context",
+          "scope": "Shared background literature for the initial OXTR research programme across M1–M48. Studies of related mechanisms in other systems provide context for investigation.",
+          "publication_ids": [
+            "E01",
+            "E02",
+            "E03",
+            "E04",
+            "E05",
+            "E06",
+            "E07",
+            "E08",
+            "E09",
+            "E10",
+            "E11",
+            "E12",
+            "E13",
+            "E14"
+          ],
+          "hero_publication_ids": [
+            "E03",
+            "E06",
+            "E08",
+            "E11"
+          ],
+          "modulus_relevance_status": "Not yet assessed"
+        }
       },
       "verification": {
         "python": "Passed",
@@ -31167,7 +31647,7 @@
           0
         ],
         "orientation": "clockwise from north; fixed M9 route and starting phase",
-        "reason": "Reference geometry exists, but the reduced traversal does not equal 9\u20133\u20136\u20139\u20133\u20136\u20139.",
+        "reason": "Reference geometry exists, but the reduced traversal does not equal 9–3–6–9–3–6–9.",
         "scope": "Tests the fixed north-oriented M9 path on the full native period circle; does not fold the period or rotate/reverse the values to force a match."
       },
       "epsilon_assessment": {
@@ -31447,7 +31927,7 @@
       ]
     },
     {
-      "schema_version": "2.0.0",
+      "schema_version": "2.2.0",
       "dataset_version": "m1-m48-v1",
       "id": "fibonacci-m17-p36",
       "name": "Fibonacci M17P36",
@@ -35327,7 +35807,37 @@
             "wss_score": null,
             "evidence": []
           }
-        ]
+        ],
+        "background_literature": {
+          "register_id": "oxtr-phase1-literature",
+          "register_version": "2026-10-17.1",
+          "register_file": "research-register.json",
+          "relationship": "background_context",
+          "scope": "Shared background literature for the initial OXTR research programme across M1–M48. Studies of related mechanisms in other systems provide context for investigation.",
+          "publication_ids": [
+            "E01",
+            "E02",
+            "E03",
+            "E04",
+            "E05",
+            "E06",
+            "E07",
+            "E08",
+            "E09",
+            "E10",
+            "E11",
+            "E12",
+            "E13",
+            "E14"
+          ],
+          "hero_publication_ids": [
+            "E03",
+            "E06",
+            "E08",
+            "E11"
+          ],
+          "modulus_relevance_status": "Not yet assessed"
+        }
       },
       "verification": {
         "python": "Passed",
@@ -35405,7 +35915,7 @@
           0
         ],
         "orientation": "clockwise from north; fixed M9 route and starting phase",
-        "reason": "Reference geometry exists, but the reduced traversal does not equal 9\u20133\u20136\u20139\u20133\u20136\u20139.",
+        "reason": "Reference geometry exists, but the reduced traversal does not equal 9–3–6–9–3–6–9.",
         "scope": "Tests the fixed north-oriented M9 path on the full native period circle; does not fold the period or rotate/reverse the values to force a match."
       },
       "epsilon_assessment": {
@@ -35818,7 +36328,7 @@
       ]
     },
     {
-      "schema_version": "2.0.0",
+      "schema_version": "2.2.0",
       "dataset_version": "m1-m48-v1",
       "id": "fibonacci-m18-p24",
       "name": "Fibonacci M18P24",
@@ -36146,7 +36656,7 @@
             "name": "Hexagon",
             "status": "Present",
             "count": 1,
-            "orientation": "North\u2013south",
+            "orientation": "North–south",
             "rotation_degrees": 0.0,
             "rotations_degrees": [
               0.0
@@ -36167,7 +36677,7 @@
             "name": "2D stellated octahedron",
             "status": "Present",
             "count": 1,
-            "orientation": "North\u2013south",
+            "orientation": "North–south",
             "rotation_degrees": 0.0,
             "rotations_degrees": [
               0.0
@@ -36191,7 +36701,7 @@
             "name": "Chevron",
             "status": "Present",
             "count": 1,
-            "orientation": "North\u2013south",
+            "orientation": "North–south",
             "rotation_degrees": 0,
             "rotations_degrees": [
               0
@@ -38190,7 +38700,37 @@
             "wss_score": null,
             "evidence": []
           }
-        ]
+        ],
+        "background_literature": {
+          "register_id": "oxtr-phase1-literature",
+          "register_version": "2026-10-17.1",
+          "register_file": "research-register.json",
+          "relationship": "background_context",
+          "scope": "Shared background literature for the initial OXTR research programme across M1–M48. Studies of related mechanisms in other systems provide context for investigation.",
+          "publication_ids": [
+            "E01",
+            "E02",
+            "E03",
+            "E04",
+            "E05",
+            "E06",
+            "E07",
+            "E08",
+            "E09",
+            "E10",
+            "E11",
+            "E12",
+            "E13",
+            "E14"
+          ],
+          "hero_publication_ids": [
+            "E03",
+            "E06",
+            "E08",
+            "E11"
+          ],
+          "modulus_relevance_status": "Not yet assessed"
+        }
       },
       "verification": {
         "python": "Passed",
@@ -38746,7 +39286,7 @@
       ]
     },
     {
-      "schema_version": "2.0.0",
+      "schema_version": "2.2.0",
       "dataset_version": "m1-m48-v1",
       "id": "fibonacci-m19-p18",
       "name": "Fibonacci M19P18",
@@ -40367,7 +40907,37 @@
             "wss_score": null,
             "evidence": []
           }
-        ]
+        ],
+        "background_literature": {
+          "register_id": "oxtr-phase1-literature",
+          "register_version": "2026-10-17.1",
+          "register_file": "research-register.json",
+          "relationship": "background_context",
+          "scope": "Shared background literature for the initial OXTR research programme across M1–M48. Studies of related mechanisms in other systems provide context for investigation.",
+          "publication_ids": [
+            "E01",
+            "E02",
+            "E03",
+            "E04",
+            "E05",
+            "E06",
+            "E07",
+            "E08",
+            "E09",
+            "E10",
+            "E11",
+            "E12",
+            "E13",
+            "E14"
+          ],
+          "hero_publication_ids": [
+            "E03",
+            "E06",
+            "E08",
+            "E11"
+          ],
+          "modulus_relevance_status": "Not yet assessed"
+        }
       },
       "verification": {
         "python": "Passed",
@@ -40445,7 +41015,7 @@
           0
         ],
         "orientation": "clockwise from north; fixed M9 route and starting phase",
-        "reason": "Reference geometry exists, but the reduced traversal does not equal 9\u20133\u20136\u20139\u20133\u20136\u20139.",
+        "reason": "Reference geometry exists, but the reduced traversal does not equal 9–3–6–9–3–6–9.",
         "scope": "Tests the fixed north-oriented M9 path on the full native period circle; does not fold the period or rotate/reverse the values to force a match."
       },
       "epsilon_assessment": {
@@ -40677,7 +41247,7 @@
       ]
     },
     {
-      "schema_version": "2.0.0",
+      "schema_version": "2.2.0",
       "dataset_version": "m1-m48-v1",
       "id": "fibonacci-m20-p60",
       "name": "Fibonacci M20P60",
@@ -48674,7 +49244,37 @@
             "wss_score": null,
             "evidence": []
           }
-        ]
+        ],
+        "background_literature": {
+          "register_id": "oxtr-phase1-literature",
+          "register_version": "2026-10-17.1",
+          "register_file": "research-register.json",
+          "relationship": "background_context",
+          "scope": "Shared background literature for the initial OXTR research programme across M1–M48. Studies of related mechanisms in other systems provide context for investigation.",
+          "publication_ids": [
+            "E01",
+            "E02",
+            "E03",
+            "E04",
+            "E05",
+            "E06",
+            "E07",
+            "E08",
+            "E09",
+            "E10",
+            "E11",
+            "E12",
+            "E13",
+            "E14"
+          ],
+          "hero_publication_ids": [
+            "E03",
+            "E06",
+            "E08",
+            "E11"
+          ],
+          "modulus_relevance_status": "Not yet assessed"
+        }
       },
       "verification": {
         "python": "Passed",
@@ -48752,7 +49352,7 @@
           0
         ],
         "orientation": "clockwise from north; fixed M9 route and starting phase",
-        "reason": "Reference geometry exists, but the reduced traversal does not equal 9\u20133\u20136\u20139\u20133\u20136\u20139.",
+        "reason": "Reference geometry exists, but the reduced traversal does not equal 9–3–6–9–3–6–9.",
         "scope": "Tests the fixed north-oriented M9 path on the full native period circle; does not fold the period or rotate/reverse the values to force a match."
       },
       "epsilon_assessment": {
@@ -49394,7 +49994,7 @@
       ]
     },
     {
-      "schema_version": "2.0.0",
+      "schema_version": "2.2.0",
       "dataset_version": "m1-m48-v1",
       "id": "fibonacci-m21-p16",
       "name": "Fibonacci M21P16",
@@ -49687,7 +50287,37 @@
             "wss_score": null,
             "evidence": []
           }
-        ]
+        ],
+        "background_literature": {
+          "register_id": "oxtr-phase1-literature",
+          "register_version": "2026-10-17.1",
+          "register_file": "research-register.json",
+          "relationship": "background_context",
+          "scope": "Shared background literature for the initial OXTR research programme across M1–M48. Studies of related mechanisms in other systems provide context for investigation.",
+          "publication_ids": [
+            "E01",
+            "E02",
+            "E03",
+            "E04",
+            "E05",
+            "E06",
+            "E07",
+            "E08",
+            "E09",
+            "E10",
+            "E11",
+            "E12",
+            "E13",
+            "E14"
+          ],
+          "hero_publication_ids": [
+            "E03",
+            "E06",
+            "E08",
+            "E11"
+          ],
+          "modulus_relevance_status": "Not yet assessed"
+        }
       },
       "verification": {
         "python": "Passed",
@@ -49772,7 +50402,7 @@
       ]
     },
     {
-      "schema_version": "2.0.0",
+      "schema_version": "2.2.0",
       "dataset_version": "m1-m48-v1",
       "id": "fibonacci-m22-p30",
       "name": "Fibonacci M22P30",
@@ -52779,7 +53409,37 @@
             "wss_score": null,
             "evidence": []
           }
-        ]
+        ],
+        "background_literature": {
+          "register_id": "oxtr-phase1-literature",
+          "register_version": "2026-10-17.1",
+          "register_file": "research-register.json",
+          "relationship": "background_context",
+          "scope": "Shared background literature for the initial OXTR research programme across M1–M48. Studies of related mechanisms in other systems provide context for investigation.",
+          "publication_ids": [
+            "E01",
+            "E02",
+            "E03",
+            "E04",
+            "E05",
+            "E06",
+            "E07",
+            "E08",
+            "E09",
+            "E10",
+            "E11",
+            "E12",
+            "E13",
+            "E14"
+          ],
+          "hero_publication_ids": [
+            "E03",
+            "E06",
+            "E08",
+            "E11"
+          ],
+          "modulus_relevance_status": "Not yet assessed"
+        }
       },
       "verification": {
         "python": "Passed",
@@ -52857,7 +53517,7 @@
           0
         ],
         "orientation": "clockwise from north; fixed M9 route and starting phase",
-        "reason": "Reference geometry exists, but the reduced traversal does not equal 9\u20133\u20136\u20139\u20133\u20136\u20139.",
+        "reason": "Reference geometry exists, but the reduced traversal does not equal 9–3–6–9–3–6–9.",
         "scope": "Tests the fixed north-oriented M9 path on the full native period circle; does not fold the period or rotate/reverse the values to force a match."
       },
       "epsilon_assessment": {
@@ -53216,7 +53876,7 @@
       ]
     },
     {
-      "schema_version": "2.0.0",
+      "schema_version": "2.2.0",
       "dataset_version": "m1-m48-v1",
       "id": "fibonacci-m23-p48",
       "name": "Fibonacci M23P48",
@@ -59033,7 +59693,37 @@
             "wss_score": null,
             "evidence": []
           }
-        ]
+        ],
+        "background_literature": {
+          "register_id": "oxtr-phase1-literature",
+          "register_version": "2026-10-17.1",
+          "register_file": "research-register.json",
+          "relationship": "background_context",
+          "scope": "Shared background literature for the initial OXTR research programme across M1–M48. Studies of related mechanisms in other systems provide context for investigation.",
+          "publication_ids": [
+            "E01",
+            "E02",
+            "E03",
+            "E04",
+            "E05",
+            "E06",
+            "E07",
+            "E08",
+            "E09",
+            "E10",
+            "E11",
+            "E12",
+            "E13",
+            "E14"
+          ],
+          "hero_publication_ids": [
+            "E03",
+            "E06",
+            "E08",
+            "E11"
+          ],
+          "modulus_relevance_status": "Not yet assessed"
+        }
       },
       "verification": {
         "python": "Passed",
@@ -59111,7 +59801,7 @@
           0
         ],
         "orientation": "clockwise from north; fixed M9 route and starting phase",
-        "reason": "Reference geometry exists, but the reduced traversal does not equal 9\u20133\u20136\u20139\u20133\u20136\u20139.",
+        "reason": "Reference geometry exists, but the reduced traversal does not equal 9–3–6–9–3–6–9.",
         "scope": "Tests the fixed north-oriented M9 path on the full native period circle; does not fold the period or rotate/reverse the values to force a match."
       },
       "epsilon_assessment": {
@@ -59638,7 +60328,7 @@
       ]
     },
     {
-      "schema_version": "2.0.0",
+      "schema_version": "2.2.0",
       "dataset_version": "m1-m48-v1",
       "id": "fibonacci-m24-p24",
       "name": "Fibonacci M24P24",
@@ -59959,7 +60649,7 @@
             "name": "Hexagon",
             "status": "Present",
             "count": 1,
-            "orientation": "North\u2013south",
+            "orientation": "North–south",
             "rotation_degrees": 0.0,
             "rotations_degrees": [
               0.0
@@ -59980,7 +60670,7 @@
             "name": "2D stellated octahedron",
             "status": "Present",
             "count": 1,
-            "orientation": "North\u2013south",
+            "orientation": "North–south",
             "rotation_degrees": 0.0,
             "rotations_degrees": [
               0.0
@@ -61992,7 +62682,37 @@
             "wss_score": null,
             "evidence": []
           }
-        ]
+        ],
+        "background_literature": {
+          "register_id": "oxtr-phase1-literature",
+          "register_version": "2026-10-17.1",
+          "register_file": "research-register.json",
+          "relationship": "background_context",
+          "scope": "Shared background literature for the initial OXTR research programme across M1–M48. Studies of related mechanisms in other systems provide context for investigation.",
+          "publication_ids": [
+            "E01",
+            "E02",
+            "E03",
+            "E04",
+            "E05",
+            "E06",
+            "E07",
+            "E08",
+            "E09",
+            "E10",
+            "E11",
+            "E12",
+            "E13",
+            "E14"
+          ],
+          "hero_publication_ids": [
+            "E03",
+            "E06",
+            "E08",
+            "E11"
+          ],
+          "modulus_relevance_status": "Not yet assessed"
+        }
       },
       "verification": {
         "python": "Passed",
@@ -62070,7 +62790,7 @@
           0
         ],
         "orientation": "clockwise from north; fixed M9 route and starting phase",
-        "reason": "Reference geometry exists, but the reduced traversal does not equal 9\u20133\u20136\u20139\u20133\u20136\u20139.",
+        "reason": "Reference geometry exists, but the reduced traversal does not equal 9–3–6–9–3–6–9.",
         "scope": "Tests the fixed north-oriented M9 path on the full native period circle; does not fold the period or rotate/reverse the values to force a match."
       },
       "epsilon_assessment": {
@@ -62363,7 +63083,7 @@
       ]
     },
     {
-      "schema_version": "2.0.0",
+      "schema_version": "2.2.0",
       "dataset_version": "m1-m48-v1",
       "id": "fibonacci-m25-p100",
       "name": "Fibonacci M25P100",
@@ -63528,7 +64248,37 @@
             "wss_score": null,
             "evidence": []
           }
-        ]
+        ],
+        "background_literature": {
+          "register_id": "oxtr-phase1-literature",
+          "register_version": "2026-10-17.1",
+          "register_file": "research-register.json",
+          "relationship": "background_context",
+          "scope": "Shared background literature for the initial OXTR research programme across M1–M48. Studies of related mechanisms in other systems provide context for investigation.",
+          "publication_ids": [
+            "E01",
+            "E02",
+            "E03",
+            "E04",
+            "E05",
+            "E06",
+            "E07",
+            "E08",
+            "E09",
+            "E10",
+            "E11",
+            "E12",
+            "E13",
+            "E14"
+          ],
+          "hero_publication_ids": [
+            "E03",
+            "E06",
+            "E08",
+            "E11"
+          ],
+          "modulus_relevance_status": "Not yet assessed"
+        }
       },
       "verification": {
         "python": "Passed",
@@ -63613,7 +64363,7 @@
       ]
     },
     {
-      "schema_version": "2.0.0",
+      "schema_version": "2.2.0",
       "dataset_version": "m1-m48-v1",
       "id": "fibonacci-m26-p84",
       "name": "Fibonacci M26P84",
@@ -77048,7 +77798,37 @@
             "wss_score": null,
             "evidence": []
           }
-        ]
+        ],
+        "background_literature": {
+          "register_id": "oxtr-phase1-literature",
+          "register_version": "2026-10-17.1",
+          "register_file": "research-register.json",
+          "relationship": "background_context",
+          "scope": "Shared background literature for the initial OXTR research programme across M1–M48. Studies of related mechanisms in other systems provide context for investigation.",
+          "publication_ids": [
+            "E01",
+            "E02",
+            "E03",
+            "E04",
+            "E05",
+            "E06",
+            "E07",
+            "E08",
+            "E09",
+            "E10",
+            "E11",
+            "E12",
+            "E13",
+            "E14"
+          ],
+          "hero_publication_ids": [
+            "E03",
+            "E06",
+            "E08",
+            "E11"
+          ],
+          "modulus_relevance_status": "Not yet assessed"
+        }
       },
       "verification": {
         "python": "Passed",
@@ -77126,7 +77906,7 @@
           0
         ],
         "orientation": "clockwise from north; fixed M9 route and starting phase",
-        "reason": "Reference geometry exists, but the reduced traversal does not equal 9\u20133\u20136\u20139\u20133\u20136\u20139.",
+        "reason": "Reference geometry exists, but the reduced traversal does not equal 9–3–6–9–3–6–9.",
         "scope": "Tests the fixed north-oriented M9 path on the full native period circle; does not fold the period or rotate/reverse the values to force a match."
       },
       "epsilon_assessment": {
@@ -78068,7 +78848,7 @@
       ]
     },
     {
-      "schema_version": "2.0.0",
+      "schema_version": "2.2.0",
       "dataset_version": "m1-m48-v1",
       "id": "fibonacci-m27-p72",
       "name": "Fibonacci M27P72",
@@ -78808,7 +79588,7 @@
             "name": "Equilateral triangle",
             "status": "Present",
             "count": 6,
-            "orientation": "0\u00b0 / 20\u00b0 / 40\u00b0 / 60\u00b0 / 80\u00b0 / 100\u00b0",
+            "orientation": "0° / 20° / 40° / 60° / 80° / 100°",
             "rotation_degrees": null,
             "rotations_degrees": [
               0.0,
@@ -78861,7 +79641,7 @@
             "name": "Hexagon",
             "status": "Present",
             "count": 3,
-            "orientation": "0\u00b0 / 20\u00b0 / 40\u00b0",
+            "orientation": "0° / 20° / 40°",
             "rotation_degrees": null,
             "rotations_degrees": [
               0.0,
@@ -78902,7 +79682,7 @@
             "name": "2D stellated octahedron",
             "status": "Present",
             "count": 3,
-            "orientation": "0\u00b0 / 20\u00b0 / 40\u00b0",
+            "orientation": "0° / 20° / 40°",
             "rotation_degrees": null,
             "rotations_degrees": [
               0.0,
@@ -88834,7 +89614,37 @@
             "wss_score": null,
             "evidence": []
           }
-        ]
+        ],
+        "background_literature": {
+          "register_id": "oxtr-phase1-literature",
+          "register_version": "2026-10-17.1",
+          "register_file": "research-register.json",
+          "relationship": "background_context",
+          "scope": "Shared background literature for the initial OXTR research programme across M1–M48. Studies of related mechanisms in other systems provide context for investigation.",
+          "publication_ids": [
+            "E01",
+            "E02",
+            "E03",
+            "E04",
+            "E05",
+            "E06",
+            "E07",
+            "E08",
+            "E09",
+            "E10",
+            "E11",
+            "E12",
+            "E13",
+            "E14"
+          ],
+          "hero_publication_ids": [
+            "E03",
+            "E06",
+            "E08",
+            "E11"
+          ],
+          "modulus_relevance_status": "Not yet assessed"
+        }
       },
       "verification": {
         "python": "Passed",
@@ -89163,7 +89973,7 @@
           0
         ],
         "orientation": "clockwise from north; fixed M9 route and starting phase",
-        "reason": "Reference geometry exists, but the reduced traversal does not equal 9\u20133\u20136\u20139\u20133\u20136\u20139.",
+        "reason": "Reference geometry exists, but the reduced traversal does not equal 9–3–6–9–3–6–9.",
         "scope": "Tests the fixed north-oriented M9 path on the full native period circle; does not fold the period or rotate/reverse the values to force a match."
       },
       "epsilon_assessment": {
@@ -89960,7 +90770,7 @@
       ]
     },
     {
-      "schema_version": "2.0.0",
+      "schema_version": "2.2.0",
       "dataset_version": "m1-m48-v1",
       "id": "fibonacci-m28-p48",
       "name": "Fibonacci M28P48",
@@ -95752,7 +96562,37 @@
             "wss_score": null,
             "evidence": []
           }
-        ]
+        ],
+        "background_literature": {
+          "register_id": "oxtr-phase1-literature",
+          "register_version": "2026-10-17.1",
+          "register_file": "research-register.json",
+          "relationship": "background_context",
+          "scope": "Shared background literature for the initial OXTR research programme across M1–M48. Studies of related mechanisms in other systems provide context for investigation.",
+          "publication_ids": [
+            "E01",
+            "E02",
+            "E03",
+            "E04",
+            "E05",
+            "E06",
+            "E07",
+            "E08",
+            "E09",
+            "E10",
+            "E11",
+            "E12",
+            "E13",
+            "E14"
+          ],
+          "hero_publication_ids": [
+            "E03",
+            "E06",
+            "E08",
+            "E11"
+          ],
+          "modulus_relevance_status": "Not yet assessed"
+        }
       },
       "verification": {
         "python": "Passed",
@@ -95830,7 +96670,7 @@
           0
         ],
         "orientation": "clockwise from north; fixed M9 route and starting phase",
-        "reason": "Reference geometry exists, but the reduced traversal does not equal 9\u20133\u20136\u20139\u20133\u20136\u20139.",
+        "reason": "Reference geometry exists, but the reduced traversal does not equal 9–3–6–9–3–6–9.",
         "scope": "Tests the fixed north-oriented M9 path on the full native period circle; does not fold the period or rotate/reverse the values to force a match."
       },
       "epsilon_assessment": {
@@ -96358,7 +97198,7 @@
       ]
     },
     {
-      "schema_version": "2.0.0",
+      "schema_version": "2.2.0",
       "dataset_version": "m1-m48-v1",
       "id": "fibonacci-m29-p14",
       "name": "Fibonacci M29P14",
@@ -96626,7 +97466,37 @@
             "wss_score": null,
             "evidence": []
           }
-        ]
+        ],
+        "background_literature": {
+          "register_id": "oxtr-phase1-literature",
+          "register_version": "2026-10-17.1",
+          "register_file": "research-register.json",
+          "relationship": "background_context",
+          "scope": "Shared background literature for the initial OXTR research programme across M1–M48. Studies of related mechanisms in other systems provide context for investigation.",
+          "publication_ids": [
+            "E01",
+            "E02",
+            "E03",
+            "E04",
+            "E05",
+            "E06",
+            "E07",
+            "E08",
+            "E09",
+            "E10",
+            "E11",
+            "E12",
+            "E13",
+            "E14"
+          ],
+          "hero_publication_ids": [
+            "E03",
+            "E06",
+            "E08",
+            "E11"
+          ],
+          "modulus_relevance_status": "Not yet assessed"
+        }
       },
       "verification": {
         "python": "Passed",
@@ -96711,7 +97581,7 @@
       ]
     },
     {
-      "schema_version": "2.0.0",
+      "schema_version": "2.2.0",
       "dataset_version": "m1-m48-v1",
       "id": "fibonacci-m30-p120",
       "name": "Fibonacci M30P120",
@@ -97875,7 +98745,7 @@
             "name": "Equilateral triangle",
             "status": "Present",
             "count": 10,
-            "orientation": "0\u00b0 / 12\u00b0 / 24\u00b0 / 36\u00b0 / 48\u00b0 / 60\u00b0 / 72\u00b0 / 84\u00b0 / 96\u00b0 / 108\u00b0",
+            "orientation": "0° / 12° / 24° / 36° / 48° / 60° / 72° / 84° / 96° / 108°",
             "rotation_degrees": null,
             "rotations_degrees": [
               0.0,
@@ -97956,7 +98826,7 @@
             "name": "Hexagon",
             "status": "Present",
             "count": 5,
-            "orientation": "0\u00b0 / 12\u00b0 / 24\u00b0 / 36\u00b0 / 48\u00b0",
+            "orientation": "0° / 12° / 24° / 36° / 48°",
             "rotation_degrees": null,
             "rotations_degrees": [
               0.0,
@@ -98017,7 +98887,7 @@
             "name": "2D stellated octahedron",
             "status": "Present",
             "count": 5,
-            "orientation": "0\u00b0 / 12\u00b0 / 24\u00b0 / 36\u00b0 / 48\u00b0",
+            "orientation": "0° / 12° / 24° / 36° / 48°",
             "rotation_degrees": null,
             "rotations_degrees": [
               0.0,
@@ -120853,7 +121723,37 @@
             "wss_score": null,
             "evidence": []
           }
-        ]
+        ],
+        "background_literature": {
+          "register_id": "oxtr-phase1-literature",
+          "register_version": "2026-10-17.1",
+          "register_file": "research-register.json",
+          "relationship": "background_context",
+          "scope": "Shared background literature for the initial OXTR research programme across M1–M48. Studies of related mechanisms in other systems provide context for investigation.",
+          "publication_ids": [
+            "E01",
+            "E02",
+            "E03",
+            "E04",
+            "E05",
+            "E06",
+            "E07",
+            "E08",
+            "E09",
+            "E10",
+            "E11",
+            "E12",
+            "E13",
+            "E14"
+          ],
+          "hero_publication_ids": [
+            "E03",
+            "E06",
+            "E08",
+            "E11"
+          ],
+          "modulus_relevance_status": "Not yet assessed"
+        }
       },
       "verification": {
         "python": "Passed",
@@ -120931,7 +121831,7 @@
           0
         ],
         "orientation": "clockwise from north; fixed M9 route and starting phase",
-        "reason": "Reference geometry exists, but the reduced traversal does not equal 9\u20133\u20136\u20139\u20133\u20136\u20139.",
+        "reason": "Reference geometry exists, but the reduced traversal does not equal 9–3–6–9–3–6–9.",
         "scope": "Tests the fixed north-oriented M9 path on the full native period circle; does not fold the period or rotate/reverse the values to force a match."
       },
       "epsilon_assessment": {
@@ -122238,7 +123138,7 @@
       ]
     },
     {
-      "schema_version": "2.0.0",
+      "schema_version": "2.2.0",
       "dataset_version": "m1-m48-v1",
       "id": "fibonacci-m31-p30",
       "name": "Fibonacci M31P30",
@@ -125291,7 +126191,37 @@
             "wss_score": null,
             "evidence": []
           }
-        ]
+        ],
+        "background_literature": {
+          "register_id": "oxtr-phase1-literature",
+          "register_version": "2026-10-17.1",
+          "register_file": "research-register.json",
+          "relationship": "background_context",
+          "scope": "Shared background literature for the initial OXTR research programme across M1–M48. Studies of related mechanisms in other systems provide context for investigation.",
+          "publication_ids": [
+            "E01",
+            "E02",
+            "E03",
+            "E04",
+            "E05",
+            "E06",
+            "E07",
+            "E08",
+            "E09",
+            "E10",
+            "E11",
+            "E12",
+            "E13",
+            "E14"
+          ],
+          "hero_publication_ids": [
+            "E03",
+            "E06",
+            "E08",
+            "E11"
+          ],
+          "modulus_relevance_status": "Not yet assessed"
+        }
       },
       "verification": {
         "python": "Passed",
@@ -125369,7 +126299,7 @@
           0
         ],
         "orientation": "clockwise from north; fixed M9 route and starting phase",
-        "reason": "Reference geometry exists, but the reduced traversal does not equal 9\u20133\u20136\u20139\u20133\u20136\u20139.",
+        "reason": "Reference geometry exists, but the reduced traversal does not equal 9–3–6–9–3–6–9.",
         "scope": "Tests the fixed north-oriented M9 path on the full native period circle; does not fold the period or rotate/reverse the values to force a match."
       },
       "epsilon_assessment": {
@@ -125722,7 +126652,7 @@
       ]
     },
     {
-      "schema_version": "2.0.0",
+      "schema_version": "2.2.0",
       "dataset_version": "m1-m48-v1",
       "id": "fibonacci-m32-p48",
       "name": "Fibonacci M32P48",
@@ -131461,7 +132391,37 @@
             "wss_score": null,
             "evidence": []
           }
-        ]
+        ],
+        "background_literature": {
+          "register_id": "oxtr-phase1-literature",
+          "register_version": "2026-10-17.1",
+          "register_file": "research-register.json",
+          "relationship": "background_context",
+          "scope": "Shared background literature for the initial OXTR research programme across M1–M48. Studies of related mechanisms in other systems provide context for investigation.",
+          "publication_ids": [
+            "E01",
+            "E02",
+            "E03",
+            "E04",
+            "E05",
+            "E06",
+            "E07",
+            "E08",
+            "E09",
+            "E10",
+            "E11",
+            "E12",
+            "E13",
+            "E14"
+          ],
+          "hero_publication_ids": [
+            "E03",
+            "E06",
+            "E08",
+            "E11"
+          ],
+          "modulus_relevance_status": "Not yet assessed"
+        }
       },
       "verification": {
         "python": "Passed",
@@ -131539,7 +132499,7 @@
           0
         ],
         "orientation": "clockwise from north; fixed M9 route and starting phase",
-        "reason": "Reference geometry exists, but the reduced traversal does not equal 9\u20133\u20136\u20139\u20133\u20136\u20139.",
+        "reason": "Reference geometry exists, but the reduced traversal does not equal 9–3–6–9–3–6–9.",
         "scope": "Tests the fixed north-oriented M9 path on the full native period circle; does not fold the period or rotate/reverse the values to force a match."
       },
       "epsilon_assessment": {
@@ -132083,7 +133043,7 @@
       ]
     },
     {
-      "schema_version": "2.0.0",
+      "schema_version": "2.2.0",
       "dataset_version": "m1-m48-v1",
       "id": "fibonacci-m33-p40",
       "name": "Fibonacci M33P40",
@@ -132586,7 +133546,37 @@
             "wss_score": null,
             "evidence": []
           }
-        ]
+        ],
+        "background_literature": {
+          "register_id": "oxtr-phase1-literature",
+          "register_version": "2026-10-17.1",
+          "register_file": "research-register.json",
+          "relationship": "background_context",
+          "scope": "Shared background literature for the initial OXTR research programme across M1–M48. Studies of related mechanisms in other systems provide context for investigation.",
+          "publication_ids": [
+            "E01",
+            "E02",
+            "E03",
+            "E04",
+            "E05",
+            "E06",
+            "E07",
+            "E08",
+            "E09",
+            "E10",
+            "E11",
+            "E12",
+            "E13",
+            "E14"
+          ],
+          "hero_publication_ids": [
+            "E03",
+            "E06",
+            "E08",
+            "E11"
+          ],
+          "modulus_relevance_status": "Not yet assessed"
+        }
       },
       "verification": {
         "python": "Passed",
@@ -132671,7 +133661,7 @@
       ]
     },
     {
-      "schema_version": "2.0.0",
+      "schema_version": "2.2.0",
       "dataset_version": "m1-m48-v1",
       "id": "fibonacci-m34-p36",
       "name": "Fibonacci M34P36",
@@ -136575,7 +137565,37 @@
             "wss_score": null,
             "evidence": []
           }
-        ]
+        ],
+        "background_literature": {
+          "register_id": "oxtr-phase1-literature",
+          "register_version": "2026-10-17.1",
+          "register_file": "research-register.json",
+          "relationship": "background_context",
+          "scope": "Shared background literature for the initial OXTR research programme across M1–M48. Studies of related mechanisms in other systems provide context for investigation.",
+          "publication_ids": [
+            "E01",
+            "E02",
+            "E03",
+            "E04",
+            "E05",
+            "E06",
+            "E07",
+            "E08",
+            "E09",
+            "E10",
+            "E11",
+            "E12",
+            "E13",
+            "E14"
+          ],
+          "hero_publication_ids": [
+            "E03",
+            "E06",
+            "E08",
+            "E11"
+          ],
+          "modulus_relevance_status": "Not yet assessed"
+        }
       },
       "verification": {
         "python": "Passed",
@@ -136653,7 +137673,7 @@
           0
         ],
         "orientation": "clockwise from north; fixed M9 route and starting phase",
-        "reason": "Reference geometry exists, but the reduced traversal does not equal 9\u20133\u20136\u20139\u20133\u20136\u20139.",
+        "reason": "Reference geometry exists, but the reduced traversal does not equal 9–3–6–9–3–6–9.",
         "scope": "Tests the fixed north-oriented M9 path on the full native period circle; does not fold the period or rotate/reverse the values to force a match."
       },
       "epsilon_assessment": {
@@ -137077,7 +138097,7 @@
       ]
     },
     {
-      "schema_version": "2.0.0",
+      "schema_version": "2.2.0",
       "dataset_version": "m1-m48-v1",
       "id": "fibonacci-m35-p80",
       "name": "Fibonacci M35P80",
@@ -138015,7 +139035,37 @@
             "wss_score": null,
             "evidence": []
           }
-        ]
+        ],
+        "background_literature": {
+          "register_id": "oxtr-phase1-literature",
+          "register_version": "2026-10-17.1",
+          "register_file": "research-register.json",
+          "relationship": "background_context",
+          "scope": "Shared background literature for the initial OXTR research programme across M1–M48. Studies of related mechanisms in other systems provide context for investigation.",
+          "publication_ids": [
+            "E01",
+            "E02",
+            "E03",
+            "E04",
+            "E05",
+            "E06",
+            "E07",
+            "E08",
+            "E09",
+            "E10",
+            "E11",
+            "E12",
+            "E13",
+            "E14"
+          ],
+          "hero_publication_ids": [
+            "E03",
+            "E06",
+            "E08",
+            "E11"
+          ],
+          "modulus_relevance_status": "Not yet assessed"
+        }
       },
       "verification": {
         "python": "Passed",
@@ -138100,7 +139150,7 @@
       ]
     },
     {
-      "schema_version": "2.0.0",
+      "schema_version": "2.2.0",
       "dataset_version": "m1-m48-v1",
       "id": "fibonacci-m36-p24",
       "name": "Fibonacci M36P24",
@@ -138421,7 +139471,7 @@
             "name": "Hexagon",
             "status": "Present",
             "count": 1,
-            "orientation": "North\u2013south",
+            "orientation": "North–south",
             "rotation_degrees": 0.0,
             "rotations_degrees": [
               0.0
@@ -138442,7 +139492,7 @@
             "name": "2D stellated octahedron",
             "status": "Present",
             "count": 1,
-            "orientation": "North\u2013south",
+            "orientation": "North–south",
             "rotation_degrees": 0.0,
             "rotations_degrees": [
               0.0
@@ -140440,7 +141490,37 @@
             "wss_score": null,
             "evidence": []
           }
-        ]
+        ],
+        "background_literature": {
+          "register_id": "oxtr-phase1-literature",
+          "register_version": "2026-10-17.1",
+          "register_file": "research-register.json",
+          "relationship": "background_context",
+          "scope": "Shared background literature for the initial OXTR research programme across M1–M48. Studies of related mechanisms in other systems provide context for investigation.",
+          "publication_ids": [
+            "E01",
+            "E02",
+            "E03",
+            "E04",
+            "E05",
+            "E06",
+            "E07",
+            "E08",
+            "E09",
+            "E10",
+            "E11",
+            "E12",
+            "E13",
+            "E14"
+          ],
+          "hero_publication_ids": [
+            "E03",
+            "E06",
+            "E08",
+            "E11"
+          ],
+          "modulus_relevance_status": "Not yet assessed"
+        }
       },
       "verification": {
         "python": "Passed",
@@ -141001,7 +142081,7 @@
       ]
     },
     {
-      "schema_version": "2.0.0",
+      "schema_version": "2.2.0",
       "dataset_version": "m1-m48-v1",
       "id": "fibonacci-m37-p76",
       "name": "Fibonacci M37P76",
@@ -141986,7 +143066,37 @@
             "wss_score": null,
             "evidence": []
           }
-        ]
+        ],
+        "background_literature": {
+          "register_id": "oxtr-phase1-literature",
+          "register_version": "2026-10-17.1",
+          "register_file": "research-register.json",
+          "relationship": "background_context",
+          "scope": "Shared background literature for the initial OXTR research programme across M1–M48. Studies of related mechanisms in other systems provide context for investigation.",
+          "publication_ids": [
+            "E01",
+            "E02",
+            "E03",
+            "E04",
+            "E05",
+            "E06",
+            "E07",
+            "E08",
+            "E09",
+            "E10",
+            "E11",
+            "E12",
+            "E13",
+            "E14"
+          ],
+          "hero_publication_ids": [
+            "E03",
+            "E06",
+            "E08",
+            "E11"
+          ],
+          "modulus_relevance_status": "Not yet assessed"
+        }
       },
       "verification": {
         "python": "Passed",
@@ -142071,7 +143181,7 @@
       ]
     },
     {
-      "schema_version": "2.0.0",
+      "schema_version": "2.2.0",
       "dataset_version": "m1-m48-v1",
       "id": "fibonacci-m38-p18",
       "name": "Fibonacci M38P18",
@@ -143692,7 +144802,37 @@
             "wss_score": null,
             "evidence": []
           }
-        ]
+        ],
+        "background_literature": {
+          "register_id": "oxtr-phase1-literature",
+          "register_version": "2026-10-17.1",
+          "register_file": "research-register.json",
+          "relationship": "background_context",
+          "scope": "Shared background literature for the initial OXTR research programme across M1–M48. Studies of related mechanisms in other systems provide context for investigation.",
+          "publication_ids": [
+            "E01",
+            "E02",
+            "E03",
+            "E04",
+            "E05",
+            "E06",
+            "E07",
+            "E08",
+            "E09",
+            "E10",
+            "E11",
+            "E12",
+            "E13",
+            "E14"
+          ],
+          "hero_publication_ids": [
+            "E03",
+            "E06",
+            "E08",
+            "E11"
+          ],
+          "modulus_relevance_status": "Not yet assessed"
+        }
       },
       "verification": {
         "python": "Passed",
@@ -143770,7 +144910,7 @@
           0
         ],
         "orientation": "clockwise from north; fixed M9 route and starting phase",
-        "reason": "Reference geometry exists, but the reduced traversal does not equal 9\u20133\u20136\u20139\u20133\u20136\u20139.",
+        "reason": "Reference geometry exists, but the reduced traversal does not equal 9–3–6–9–3–6–9.",
         "scope": "Tests the fixed north-oriented M9 path on the full native period circle; does not fold the period or rotate/reverse the values to force a match."
       },
       "epsilon_assessment": {
@@ -144002,7 +145142,7 @@
       ]
     },
     {
-      "schema_version": "2.0.0",
+      "schema_version": "2.2.0",
       "dataset_version": "m1-m48-v1",
       "id": "fibonacci-m39-p56",
       "name": "Fibonacci M39P56",
@@ -144645,7 +145785,37 @@
             "wss_score": null,
             "evidence": []
           }
-        ]
+        ],
+        "background_literature": {
+          "register_id": "oxtr-phase1-literature",
+          "register_version": "2026-10-17.1",
+          "register_file": "research-register.json",
+          "relationship": "background_context",
+          "scope": "Shared background literature for the initial OXTR research programme across M1–M48. Studies of related mechanisms in other systems provide context for investigation.",
+          "publication_ids": [
+            "E01",
+            "E02",
+            "E03",
+            "E04",
+            "E05",
+            "E06",
+            "E07",
+            "E08",
+            "E09",
+            "E10",
+            "E11",
+            "E12",
+            "E13",
+            "E14"
+          ],
+          "hero_publication_ids": [
+            "E03",
+            "E06",
+            "E08",
+            "E11"
+          ],
+          "modulus_relevance_status": "Not yet assessed"
+        }
       },
       "verification": {
         "python": "Passed",
@@ -144730,7 +145900,7 @@
       ]
     },
     {
-      "schema_version": "2.0.0",
+      "schema_version": "2.2.0",
       "dataset_version": "m1-m48-v1",
       "id": "fibonacci-m40-p60",
       "name": "Fibonacci M40P60",
@@ -145385,7 +146555,7 @@
             "name": "Equilateral triangle",
             "status": "Present",
             "count": 1,
-            "orientation": "108\u00b0",
+            "orientation": "108°",
             "rotation_degrees": 108.0,
             "rotations_degrees": [
               108.0
@@ -152729,7 +153899,37 @@
             "wss_score": null,
             "evidence": []
           }
-        ]
+        ],
+        "background_literature": {
+          "register_id": "oxtr-phase1-literature",
+          "register_version": "2026-10-17.1",
+          "register_file": "research-register.json",
+          "relationship": "background_context",
+          "scope": "Shared background literature for the initial OXTR research programme across M1–M48. Studies of related mechanisms in other systems provide context for investigation.",
+          "publication_ids": [
+            "E01",
+            "E02",
+            "E03",
+            "E04",
+            "E05",
+            "E06",
+            "E07",
+            "E08",
+            "E09",
+            "E10",
+            "E11",
+            "E12",
+            "E13",
+            "E14"
+          ],
+          "hero_publication_ids": [
+            "E03",
+            "E06",
+            "E08",
+            "E11"
+          ],
+          "modulus_relevance_status": "Not yet assessed"
+        }
       },
       "verification": {
         "python": "Passed",
@@ -152807,7 +154007,7 @@
           0
         ],
         "orientation": "clockwise from north; fixed M9 route and starting phase",
-        "reason": "Reference geometry exists, but the reduced traversal does not equal 9\u20133\u20136\u20139\u20133\u20136\u20139.",
+        "reason": "Reference geometry exists, but the reduced traversal does not equal 9–3–6–9–3–6–9.",
         "scope": "Tests the fixed north-oriented M9 path on the full native period circle; does not fold the period or rotate/reverse the values to force a match."
       },
       "epsilon_assessment": {
@@ -153483,7 +154683,7 @@
       ]
     },
     {
-      "schema_version": "2.0.0",
+      "schema_version": "2.2.0",
       "dataset_version": "m1-m48-v1",
       "id": "fibonacci-m41-p40",
       "name": "Fibonacci M41P40",
@@ -154025,7 +155225,37 @@
             "wss_score": null,
             "evidence": []
           }
-        ]
+        ],
+        "background_literature": {
+          "register_id": "oxtr-phase1-literature",
+          "register_version": "2026-10-17.1",
+          "register_file": "research-register.json",
+          "relationship": "background_context",
+          "scope": "Shared background literature for the initial OXTR research programme across M1–M48. Studies of related mechanisms in other systems provide context for investigation.",
+          "publication_ids": [
+            "E01",
+            "E02",
+            "E03",
+            "E04",
+            "E05",
+            "E06",
+            "E07",
+            "E08",
+            "E09",
+            "E10",
+            "E11",
+            "E12",
+            "E13",
+            "E14"
+          ],
+          "hero_publication_ids": [
+            "E03",
+            "E06",
+            "E08",
+            "E11"
+          ],
+          "modulus_relevance_status": "Not yet assessed"
+        }
       },
       "verification": {
         "python": "Passed",
@@ -154110,7 +155340,7 @@
       ]
     },
     {
-      "schema_version": "2.0.0",
+      "schema_version": "2.2.0",
       "dataset_version": "m1-m48-v1",
       "id": "fibonacci-m42-p48",
       "name": "Fibonacci M42P48",
@@ -154620,7 +155850,7 @@
             "name": "Equilateral triangle",
             "status": "Present",
             "count": 4,
-            "orientation": "0\u00b0 / 30\u00b0 / 60\u00b0 / 90\u00b0",
+            "orientation": "0° / 30° / 60° / 90°",
             "rotation_degrees": null,
             "rotations_degrees": [
               0.0,
@@ -154659,7 +155889,7 @@
             "name": "Hexagon",
             "status": "Present",
             "count": 2,
-            "orientation": "0\u00b0 / 30\u00b0",
+            "orientation": "0° / 30°",
             "rotation_degrees": null,
             "rotations_degrees": [
               0.0,
@@ -154690,7 +155920,7 @@
             "name": "2D stellated octahedron",
             "status": "Present",
             "count": 2,
-            "orientation": "0\u00b0 / 30\u00b0",
+            "orientation": "0° / 30°",
             "rotation_degrees": null,
             "rotations_degrees": [
               0.0,
@@ -159915,7 +161145,37 @@
             "wss_score": null,
             "evidence": []
           }
-        ]
+        ],
+        "background_literature": {
+          "register_id": "oxtr-phase1-literature",
+          "register_version": "2026-10-17.1",
+          "register_file": "research-register.json",
+          "relationship": "background_context",
+          "scope": "Shared background literature for the initial OXTR research programme across M1–M48. Studies of related mechanisms in other systems provide context for investigation.",
+          "publication_ids": [
+            "E01",
+            "E02",
+            "E03",
+            "E04",
+            "E05",
+            "E06",
+            "E07",
+            "E08",
+            "E09",
+            "E10",
+            "E11",
+            "E12",
+            "E13",
+            "E14"
+          ],
+          "hero_publication_ids": [
+            "E03",
+            "E06",
+            "E08",
+            "E11"
+          ],
+          "modulus_relevance_status": "Not yet assessed"
+        }
       },
       "verification": {
         "python": "Passed",
@@ -159993,7 +161253,7 @@
           0
         ],
         "orientation": "clockwise from north; fixed M9 route and starting phase",
-        "reason": "Reference geometry exists, but the reduced traversal does not equal 9\u20133\u20136\u20139\u20133\u20136\u20139.",
+        "reason": "Reference geometry exists, but the reduced traversal does not equal 9–3–6–9–3–6–9.",
         "scope": "Tests the fixed north-oriented M9 path on the full native period circle; does not fold the period or rotate/reverse the values to force a match."
       },
       "epsilon_assessment": {
@@ -160550,7 +161810,7 @@
       ]
     },
     {
-      "schema_version": "2.0.0",
+      "schema_version": "2.2.0",
       "dataset_version": "m1-m48-v1",
       "id": "fibonacci-m43-p88",
       "name": "Fibonacci M43P88",
@@ -161599,7 +162859,37 @@
             "wss_score": null,
             "evidence": []
           }
-        ]
+        ],
+        "background_literature": {
+          "register_id": "oxtr-phase1-literature",
+          "register_version": "2026-10-17.1",
+          "register_file": "research-register.json",
+          "relationship": "background_context",
+          "scope": "Shared background literature for the initial OXTR research programme across M1–M48. Studies of related mechanisms in other systems provide context for investigation.",
+          "publication_ids": [
+            "E01",
+            "E02",
+            "E03",
+            "E04",
+            "E05",
+            "E06",
+            "E07",
+            "E08",
+            "E09",
+            "E10",
+            "E11",
+            "E12",
+            "E13",
+            "E14"
+          ],
+          "hero_publication_ids": [
+            "E03",
+            "E06",
+            "E08",
+            "E11"
+          ],
+          "modulus_relevance_status": "Not yet assessed"
+        }
       },
       "verification": {
         "python": "Passed",
@@ -161684,7 +162974,7 @@
       ]
     },
     {
-      "schema_version": "2.0.0",
+      "schema_version": "2.2.0",
       "dataset_version": "m1-m48-v1",
       "id": "fibonacci-m44-p30",
       "name": "Fibonacci M44P30",
@@ -164683,7 +165973,37 @@
             "wss_score": null,
             "evidence": []
           }
-        ]
+        ],
+        "background_literature": {
+          "register_id": "oxtr-phase1-literature",
+          "register_version": "2026-10-17.1",
+          "register_file": "research-register.json",
+          "relationship": "background_context",
+          "scope": "Shared background literature for the initial OXTR research programme across M1–M48. Studies of related mechanisms in other systems provide context for investigation.",
+          "publication_ids": [
+            "E01",
+            "E02",
+            "E03",
+            "E04",
+            "E05",
+            "E06",
+            "E07",
+            "E08",
+            "E09",
+            "E10",
+            "E11",
+            "E12",
+            "E13",
+            "E14"
+          ],
+          "hero_publication_ids": [
+            "E03",
+            "E06",
+            "E08",
+            "E11"
+          ],
+          "modulus_relevance_status": "Not yet assessed"
+        }
       },
       "verification": {
         "python": "Passed",
@@ -164761,7 +166081,7 @@
           0
         ],
         "orientation": "clockwise from north; fixed M9 route and starting phase",
-        "reason": "Reference geometry exists, but the reduced traversal does not equal 9\u20133\u20136\u20139\u20133\u20136\u20139.",
+        "reason": "Reference geometry exists, but the reduced traversal does not equal 9–3–6–9–3–6–9.",
         "scope": "Tests the fixed north-oriented M9 path on the full native period circle; does not fold the period or rotate/reverse the values to force a match."
       },
       "epsilon_assessment": {
@@ -165125,7 +166445,7 @@
       ]
     },
     {
-      "schema_version": "2.0.0",
+      "schema_version": "2.2.0",
       "dataset_version": "m1-m48-v1",
       "id": "fibonacci-m45-p120",
       "name": "Fibonacci M45P120",
@@ -166309,7 +167629,7 @@
             "name": "Equilateral triangle",
             "status": "Present",
             "count": 10,
-            "orientation": "0\u00b0 / 12\u00b0 / 24\u00b0 / 36\u00b0 / 48\u00b0 / 60\u00b0 / 72\u00b0 / 84\u00b0 / 96\u00b0 / 108\u00b0",
+            "orientation": "0° / 12° / 24° / 36° / 48° / 60° / 72° / 84° / 96° / 108°",
             "rotation_degrees": null,
             "rotations_degrees": [
               0.0,
@@ -166390,7 +167710,7 @@
             "name": "Hexagon",
             "status": "Present",
             "count": 5,
-            "orientation": "0\u00b0 / 12\u00b0 / 24\u00b0 / 36\u00b0 / 48\u00b0",
+            "orientation": "0° / 12° / 24° / 36° / 48°",
             "rotation_degrees": null,
             "rotations_degrees": [
               0.0,
@@ -166451,7 +167771,7 @@
             "name": "2D stellated octahedron",
             "status": "Present",
             "count": 5,
-            "orientation": "0\u00b0 / 12\u00b0 / 24\u00b0 / 36\u00b0 / 48\u00b0",
+            "orientation": "0° / 12° / 24° / 36° / 48°",
             "rotation_degrees": null,
             "rotations_degrees": [
               0.0,
@@ -189485,7 +190805,37 @@
             "wss_score": null,
             "evidence": []
           }
-        ]
+        ],
+        "background_literature": {
+          "register_id": "oxtr-phase1-literature",
+          "register_version": "2026-10-17.1",
+          "register_file": "research-register.json",
+          "relationship": "background_context",
+          "scope": "Shared background literature for the initial OXTR research programme across M1–M48. Studies of related mechanisms in other systems provide context for investigation.",
+          "publication_ids": [
+            "E01",
+            "E02",
+            "E03",
+            "E04",
+            "E05",
+            "E06",
+            "E07",
+            "E08",
+            "E09",
+            "E10",
+            "E11",
+            "E12",
+            "E13",
+            "E14"
+          ],
+          "hero_publication_ids": [
+            "E03",
+            "E06",
+            "E08",
+            "E11"
+          ],
+          "modulus_relevance_status": "Not yet assessed"
+        }
       },
       "verification": {
         "python": "Passed",
@@ -189958,7 +191308,7 @@
           0
         ],
         "orientation": "clockwise from north; fixed M9 route and starting phase",
-        "reason": "Reference geometry exists, but the reduced traversal does not equal 9\u20133\u20136\u20139\u20133\u20136\u20139.",
+        "reason": "Reference geometry exists, but the reduced traversal does not equal 9–3–6–9–3–6–9.",
         "scope": "Tests the fixed north-oriented M9 path on the full native period circle; does not fold the period or rotate/reverse the values to force a match."
       },
       "epsilon_assessment": {
@@ -191285,7 +192635,7 @@
       ]
     },
     {
-      "schema_version": "2.0.0",
+      "schema_version": "2.2.0",
       "dataset_version": "m1-m48-v1",
       "id": "fibonacci-m46-p48",
       "name": "Fibonacci M46P48",
@@ -197100,7 +198450,37 @@
             "wss_score": null,
             "evidence": []
           }
-        ]
+        ],
+        "background_literature": {
+          "register_id": "oxtr-phase1-literature",
+          "register_version": "2026-10-17.1",
+          "register_file": "research-register.json",
+          "relationship": "background_context",
+          "scope": "Shared background literature for the initial OXTR research programme across M1–M48. Studies of related mechanisms in other systems provide context for investigation.",
+          "publication_ids": [
+            "E01",
+            "E02",
+            "E03",
+            "E04",
+            "E05",
+            "E06",
+            "E07",
+            "E08",
+            "E09",
+            "E10",
+            "E11",
+            "E12",
+            "E13",
+            "E14"
+          ],
+          "hero_publication_ids": [
+            "E03",
+            "E06",
+            "E08",
+            "E11"
+          ],
+          "modulus_relevance_status": "Not yet assessed"
+        }
       },
       "verification": {
         "python": "Passed",
@@ -197178,7 +198558,7 @@
           0
         ],
         "orientation": "clockwise from north; fixed M9 route and starting phase",
-        "reason": "Reference geometry exists, but the reduced traversal does not equal 9\u20133\u20136\u20139\u20133\u20136\u20139.",
+        "reason": "Reference geometry exists, but the reduced traversal does not equal 9–3–6–9–3–6–9.",
         "scope": "Tests the fixed north-oriented M9 path on the full native period circle; does not fold the period or rotate/reverse the values to force a match."
       },
       "epsilon_assessment": {
@@ -197705,7 +199085,7 @@
       ]
     },
     {
-      "schema_version": "2.0.0",
+      "schema_version": "2.2.0",
       "dataset_version": "m1-m48-v1",
       "id": "fibonacci-m47-p32",
       "name": "Fibonacci M47P32",
@@ -198177,7 +199557,37 @@
             "wss_score": null,
             "evidence": []
           }
-        ]
+        ],
+        "background_literature": {
+          "register_id": "oxtr-phase1-literature",
+          "register_version": "2026-10-17.1",
+          "register_file": "research-register.json",
+          "relationship": "background_context",
+          "scope": "Shared background literature for the initial OXTR research programme across M1–M48. Studies of related mechanisms in other systems provide context for investigation.",
+          "publication_ids": [
+            "E01",
+            "E02",
+            "E03",
+            "E04",
+            "E05",
+            "E06",
+            "E07",
+            "E08",
+            "E09",
+            "E10",
+            "E11",
+            "E12",
+            "E13",
+            "E14"
+          ],
+          "hero_publication_ids": [
+            "E03",
+            "E06",
+            "E08",
+            "E11"
+          ],
+          "modulus_relevance_status": "Not yet assessed"
+        }
       },
       "verification": {
         "python": "Passed",
@@ -198262,7 +199672,7 @@
       ]
     },
     {
-      "schema_version": "2.0.0",
+      "schema_version": "2.2.0",
       "dataset_version": "m1-m48-v1",
       "id": "fibonacci-m48-p24",
       "name": "Fibonacci M48P24",
@@ -198583,7 +199993,7 @@
             "name": "Hexagon",
             "status": "Present",
             "count": 1,
-            "orientation": "North\u2013south",
+            "orientation": "North–south",
             "rotation_degrees": 0.0,
             "rotations_degrees": [
               0.0
@@ -198604,7 +200014,7 @@
             "name": "2D stellated octahedron",
             "status": "Present",
             "count": 1,
-            "orientation": "North\u2013south",
+            "orientation": "North–south",
             "rotation_degrees": 0.0,
             "rotations_degrees": [
               0.0
@@ -200599,7 +202009,37 @@
             "wss_score": null,
             "evidence": []
           }
-        ]
+        ],
+        "background_literature": {
+          "register_id": "oxtr-phase1-literature",
+          "register_version": "2026-10-17.1",
+          "register_file": "research-register.json",
+          "relationship": "background_context",
+          "scope": "Shared background literature for the initial OXTR research programme across M1–M48. Studies of related mechanisms in other systems provide context for investigation.",
+          "publication_ids": [
+            "E01",
+            "E02",
+            "E03",
+            "E04",
+            "E05",
+            "E06",
+            "E07",
+            "E08",
+            "E09",
+            "E10",
+            "E11",
+            "E12",
+            "E13",
+            "E14"
+          ],
+          "hero_publication_ids": [
+            "E03",
+            "E06",
+            "E08",
+            "E11"
+          ],
+          "modulus_relevance_status": "Not yet assessed"
+        }
       },
       "verification": {
         "python": "Passed",
@@ -200677,7 +202117,7 @@
           0
         ],
         "orientation": "clockwise from north; fixed M9 route and starting phase",
-        "reason": "Reference geometry exists, but the reduced traversal does not equal 9\u20133\u20136\u20139\u20133\u20136\u20139.",
+        "reason": "Reference geometry exists, but the reduced traversal does not equal 9–3–6–9–3–6–9.",
         "scope": "Tests the fixed north-oriented M9 path on the full native period circle; does not fold the period or rotate/reverse the values to force a match."
       },
       "epsilon_assessment": {
@@ -200974,5 +202414,486 @@
         }
       ]
     }
-  ]
+  ],
+  "research_register": {
+    "schema_version": "1.0.0",
+    "id": "oxtr-phase1-literature",
+    "version": "2026-10-17.1",
+    "title": "First Principles Genomics — research register",
+    "initial_biological_focus": "OXTR",
+    "scope": "Shared background literature for the initial OXTR research programme across M1–M48. Studies of related mechanisms in other systems provide context for investigation.",
+    "relationship_to_atlas": "background_context",
+    "modulus_relevance_status": "Not yet assessed",
+    "hypothesis_reference_record_id": "fibonacci-m9-p24",
+    "hypothesis": "The Alpha, Beta, Gamma and Epsilon sequences of M9P24 may offer useful descriptions of biological timing, cellular division and molecular organisation in the context of OXTR. Bioinformatics and in silico modelling provide the planned means of investigation.",
+    "interpretation": "Publication findings describe their original experimental systems. Links from Atlas records identify shared reading; a sequence-to-biology correspondence remains open for assessment.",
+    "publication_count": 14,
+    "hero_publication_ids": [
+      "E03",
+      "E06",
+      "E08",
+      "E11"
+    ],
+    "hero_selection": "Four lead references within the fourteen unique publications, one for each theme.",
+    "wss": {
+      "status": "Awaiting assessment",
+      "score": null,
+      "meaning": "Future assessment of relevance to individual Atlas records. Publication trust scores remain separate from WSS."
+    },
+    "appraisal_method": {
+      "id": "provisional-editorial-v1",
+      "label": "Provisional editorial trust",
+      "range": [
+        0,
+        10
+      ],
+      "purpose": "Prioritise closer reading of reported findings. This is an editorial assessment, without calibration or independent peer review.",
+      "components": {
+        "design": {
+          "range": [
+            0,
+            3
+          ],
+          "criteria": {
+            "3": "Controlled mechanistic test or quantitative prediction tested by manipulation",
+            "2": "Structured measurement or comparative design",
+            "1": "Descriptive observation",
+            "0": "Insufficient information"
+          }
+        },
+        "validation": {
+          "range": [
+            0,
+            3
+          ],
+          "criteria": {
+            "3": "Independent replication appraised",
+            "2": "Complementary evidence within the paper",
+            "1": "Limited or abstract-level corroboration",
+            "0": "Unassessed"
+          }
+        },
+        "review": {
+          "range": [
+            0,
+            3
+          ],
+          "criteria": {
+            "3": "Main text, relevant methods/results and captions reviewed",
+            "2": "Selected full-text sections",
+            "1": "Abstract, metadata or figure descriptions",
+            "0": "Unreviewed"
+          }
+        },
+        "provenance": {
+          "range": [
+            0,
+            1
+          ],
+          "criteria": {
+            "1": "Verified primary peer-reviewed publication",
+            "0": "Unverified"
+          }
+        }
+      },
+      "independent_replication_appraisal": "Not yet completed for this collection",
+      "citation_policy": "Crossref cited-by counts are a dated contextual snapshot and contribute no points. Coverage depends on deposited references. Unavailable counts remain null.",
+      "journal_policy": "Journal reputation and impact factor contribute no points.",
+      "jadad_policy": "Jadad concerns reporting of randomised clinical trials. It is not applicable to these fourteen study designs; no numeric Jadad score is assigned."
+    },
+    "publications": [
+      {
+        "id": "E01",
+        "title": "Reconstitution of circadian oscillation of cyanobacterial KaiC phosphorylation in vitro",
+        "author": "Nakajima et al.",
+        "year": "2005",
+        "journal": "Science",
+        "doi": "10.1126/science.1108451",
+        "theme": "Alpha · circadian timing",
+        "hero": null,
+        "methods": "Purified cyanobacterial clock proteins; biochemical reconstitution",
+        "finding": "KaiA, KaiB, KaiC and ATP supported self-sustaining phosphorylation oscillation. Temperature compensation and agreement between mutant periods in vitro and in vivo strengthened the biological interpretation.",
+        "relevance": "direct evidence for a molecular timing mechanism; a broad Alpha reference independent of OXTR.",
+        "limit": "biochemical reconstruction is more informative about mechanism than visual analogy. It is a cyanobacterial system, not a mammalian receptor study, and does not support a universal exact 24-hour period or M9 correspondence.",
+        "access": "primary abstract and publication metadata. Replication and detailed methods require full-text appraisal before a formal quality rating.",
+        "scoreParts": {
+          "design": 3,
+          "validation": 1,
+          "review": 1,
+          "provenance": 1
+        },
+        "score": 6,
+        "scoreReason": "Molecular reconstitution tests a timing mechanism; appraisal currently covers the abstract and metadata.",
+        "jadad": "Not applicable",
+        "citationCount": 1020,
+        "citationSource": "Crossref cited-by count",
+        "citationChecked": "17 October 2026",
+        "crossrefTitle": "Reconstitution of Circadian Oscillation of Cyanobacterial KaiC Phosphorylation in Vitro"
+      },
+      {
+        "id": "E02",
+        "title": "Phase locking and multiple oscillating attractors for the coupled mammalian clock and cell cycle",
+        "author": "Feillet et al.",
+        "year": "2014",
+        "journal": "PNAS",
+        "doi": "10.1073/pnas.1320474111",
+        "theme": "Alpha / Beta · cycle coupling",
+        "hero": null,
+        "methods": "Mouse fibroblasts; live-cell imaging and modelling",
+        "finding": "live imaging of proliferating mouse fibroblasts, combined with modelling, identified phase locking and additional clock states under different conditions.",
+        "relevance": "direct support for studying relationships between biological cycles; connects the Alpha and Beta research themes without making them equivalent.",
+        "limit": "single-cell observations support the dynamical interpretation. Culture conditions and synchronisation matter, and related cells are not automatically independent replicates. No modular doubling or Atlas geometry was tested.",
+        "access": "primary abstract and selected results, including period distributions. A phase-space representation is not evidence of a physical toroidal cell structure.",
+        "scoreParts": {
+          "design": 2,
+          "validation": 2,
+          "review": 2,
+          "provenance": 1
+        },
+        "score": 7,
+        "scoreReason": "Live-cell observations and modelling provide complementary evidence for phase locking; selected results appraised.",
+        "jadad": "Not applicable",
+        "citationCount": 216,
+        "citationSource": "Crossref cited-by count",
+        "citationChecked": "17 October 2026",
+        "crossrefTitle": "Phase locking and multiple oscillating attractors for the coupled mammalian clock and cell cycle"
+      },
+      {
+        "id": "E03",
+        "title": "Interaction between time-of-day and oxytocin efficacy in mice and humans with and without gestational diabetes",
+        "author": "Duong et al.",
+        "year": "2026 (online 2025)",
+        "journal": "Molecular Metabolism",
+        "doi": "10.1016/j.molmet.2025.102269",
+        "theme": "Alpha · circadian regulation",
+        "hero": "alpha",
+        "methods": "Mouse genetics; human cells; retrospective human records",
+        "finding": "mouse experiments support BMAL1 regulation of Oxtr and time-dependent oxytocin responsiveness. Human myometrial-cell experiments and records from 2,367 patients add distinct translational observations.",
+        "relevance": "a direct OXTR connection to the Alpha theme.",
+        "limit": "genetic perturbation and promoter experiments strengthen mechanism. Animal, cell and retrospective components need separate appraisal; the human observations can be confounded. Uterine findings do not establish effects in brain tissue.",
+        "access": "final publication abstract and selected full-text results. The 2024 preprint is superseded for this register and is not counted as another study.",
+        "scoreParts": {
+          "design": 3,
+          "validation": 2,
+          "review": 2,
+          "provenance": 1
+        },
+        "score": 8,
+        "scoreReason": "Genetic and promoter experiments support mechanism; the human observational component has separate confounding limits.",
+        "jadad": "Not applicable",
+        "citationCount": 3,
+        "citationSource": "Crossref cited-by count",
+        "citationChecked": "17 October 2026",
+        "crossrefTitle": "Interaction between time-of-day and oxytocin efficacy in mice and humans with and without gestational diabetes"
+      },
+      {
+        "id": "E04",
+        "title": "Cryptochromes mediate rhythmic repression of the glucocorticoid receptor",
+        "author": "Lamia et al.",
+        "year": "2011",
+        "journal": "Nature",
+        "doi": "10.1038/nature10700",
+        "theme": "Alpha · receptor regulation",
+        "hero": null,
+        "methods": "Mouse cells and mice; genetic and biochemical experiments",
+        "finding": "Cry1/Cry2 interacted with the glucocorticoid receptor and altered glucocorticoid-responsive transcription in mouse cells, with related metabolic phenotypes in mice.",
+        "relevance": "direct circadian–receptor evidence provides a natural NR3C1 example beyond oxytocin.",
+        "limit": "molecular interactions, genetic perturbations and physiological observations complement one another. Multiple pathways change in knockout animals; the results do not isolate a universal geometric explanation or establish human clinical effects.",
+        "access": "primary abstract and selected experimental/results text. NR3C1 identifies the receptor target; the principal genetic perturbations here involved cryptochromes.",
+        "scoreParts": {
+          "design": 3,
+          "validation": 2,
+          "review": 2,
+          "provenance": 1
+        },
+        "score": 8,
+        "scoreReason": "Genetic perturbations, molecular interactions and physiological measurements support the reported mechanism.",
+        "jadad": "Not applicable",
+        "citationCount": 550,
+        "citationSource": "Crossref cited-by count",
+        "citationChecked": "17 October 2026",
+        "crossrefTitle": "Cryptochromes mediate rhythmic repression of the glucocorticoid receptor"
+      },
+      {
+        "id": "E05",
+        "title": "Experimental and theoretical study of mitotic spindle orientation",
+        "author": "Théry et al.",
+        "year": "2007",
+        "journal": "Nature",
+        "doi": "10.1038/nature05786",
+        "theme": "Beta · mitotic geometry",
+        "hero": null,
+        "methods": "Human HeLa cells; controlled adhesion geometry and modelling",
+        "finding": "controlled adhesion patterns in human HeLa cells, combined with a physical model, accounted for spindle-orientation distributions across different microenvironment geometries.",
+        "relevance": "direct evidence that geometry is a meaningful biological variable; supports interest in the Beta/division theme and related shape families.",
+        "limit": "manipulation of the cell environment offers more than an observational resemblance. The model uses specific force assumptions and a transformed cell line. Division orientation is distinct from division rate, population doubling or a Fibonacci sequence.",
+        "access": "publisher abstract and figure descriptions. Full methods and sample accounting remain to be appraised.",
+        "scoreParts": {
+          "design": 3,
+          "validation": 1,
+          "review": 1,
+          "provenance": 1
+        },
+        "score": 6,
+        "scoreReason": "Controlled adhesion geometry tests a quantitative model; full methods and sample accounting remain open for appraisal.",
+        "jadad": "Not applicable",
+        "citationCount": 424,
+        "citationSource": "Crossref cited-by count",
+        "citationChecked": "17 October 2026",
+        "crossrefTitle": "Experimental and theoretical study of mitotic spindle orientation"
+      },
+      {
+        "id": "E06",
+        "title": "Oxytocin promotes epicardial cell activation and heart regeneration after cardiac injury",
+        "author": "Wasserman et al.",
+        "year": "2022",
+        "journal": "Frontiers in Cell and Developmental Biology",
+        "doi": "10.3389/fcell.2022.985298",
+        "theme": "Beta · proliferation",
+        "hero": "beta",
+        "methods": "Human stem-cell-derived epicardial cells and zebrafish",
+        "finding": "OXT promoted activation and proliferation-related outcomes in human stem-cell-derived epicardial cells; OXTR knockdown removed the response. Zebrafish experiments supplied a separate regeneration context.",
+        "relevance": "a direct OXTR-related example for the Beta research theme.",
+        "limit": "receptor knockdown strengthens causal interpretation within the model. Check independent cell lines and differentiation batches; images are subsamples, not donors. Cultured epicardial cells and fish regeneration do not establish regeneration of adult human hearts.",
+        "access": "primary full-text methods/results and relevant figure captions, including OXTR knockdown and proliferation measurements.",
+        "scoreParts": {
+          "design": 3,
+          "validation": 2,
+          "review": 3,
+          "provenance": 1
+        },
+        "score": 9,
+        "scoreReason": "Receptor knockdown provides a mechanistic test alongside cell and zebrafish experiments; methods and results appraised.",
+        "jadad": "Not applicable",
+        "citationCount": 25,
+        "citationSource": "Crossref cited-by count",
+        "citationChecked": "17 October 2026",
+        "crossrefTitle": "Oxytocin promotes epicardial cell activation and heart regeneration after cardiac injury"
+      },
+      {
+        "id": "E07",
+        "title": "Oxytocin stimulates hippocampal neurogenesis via oxytocin receptor expressed in CA3 pyramidal neurons",
+        "author": "Lin et al.",
+        "year": "2017",
+        "journal": "Nature Communications",
+        "doi": "10.1038/s41467-017-00675-5",
+        "theme": "Beta · survival / proliferation",
+        "hero": null,
+        "methods": "Mice; conditional Oxtr deletion",
+        "finding": "conditional Oxtr deletion in mouse hippocampal excitatory neurons affected survival and maturation of newly generated neurons, while measured progenitor proliferation and early differentiation were unchanged.",
+        "relevance": "direct evidence that the biological outcome must be named precisely. It bounds generalisations from E06 without contradicting a different tissue-specific finding.",
+        "limit": "conditional genetics help localise the process. Appraise cell-type specificity, blinding and precision; an unchanged measured outcome does not prove absence of every possible effect.",
+        "access": "primary results/discussion. Retained deliberately to avoid presenting all OXTR growth-related findings as evidence of duplication.",
+        "scoreParts": {
+          "design": 3,
+          "validation": 2,
+          "review": 2,
+          "provenance": 1
+        },
+        "score": 8,
+        "scoreReason": "Conditional genetics and cell-outcome measurements distinguish survival from proliferation in this mouse system.",
+        "jadad": "Not applicable",
+        "citationCount": 149,
+        "citationSource": "Crossref cited-by count",
+        "citationChecked": "17 October 2026",
+        "crossrefTitle": "Oxytocin stimulates hippocampal neurogenesis via oxytocin receptor expressed in CA3 pyramidal neurons"
+      },
+      {
+        "id": "E08",
+        "title": "Structural basis for the activation and ligand recognition of the human oxytocin receptor",
+        "author": "Waltenspühl et al.",
+        "year": "2022",
+        "journal": "Nature Communications",
+        "doi": "10.1038/s41467-022-31325-0",
+        "theme": "Gamma · molecular recognition",
+        "hero": "gamma",
+        "methods": "Engineered human receptor complex; cryo-EM and functional assays",
+        "finding": "cryo-EM at 3.2 Å and functional experiments characterised OXT recognition and receptor activation. All nine peptide residues participate in binding.",
+        "relevance": "a direct structural foundation for Gamma's molecular-recognition theme; useful context, but not confirmation, for the OXT-specific Epsilon proposal.",
+        "limit": "structure–function comparisons strengthen interpretation. Receptor stabilisation and an engineered G protein affect generalisation. The six-residue disulfide loop is not itself an aromatic hexagon; the reported contacts do not establish an Epsilon trajectory.",
+        "access": "full primary article main text, receptor-engineering description and functional-assay captions. No new molecular analysis performed.",
+        "scoreParts": {
+          "design": 3,
+          "validation": 2,
+          "review": 3,
+          "provenance": 1
+        },
+        "score": 9,
+        "scoreReason": "Structural observations and functional residue tests provide complementary evidence; main text and assay descriptions appraised.",
+        "jadad": "Not applicable",
+        "citationCount": 46,
+        "citationSource": "Crossref cited-by count",
+        "citationChecked": "17 October 2026",
+        "crossrefTitle": "Structural basis for the activation and ligand recognition of the human oxytocin receptor"
+      },
+      {
+        "id": "E09",
+        "title": "X-ray structures and mechanism of the human serotonin transporter",
+        "author": "Coleman, Green & Gouaux",
+        "year": "2016",
+        "journal": "Nature",
+        "doi": "10.1038/nature17629",
+        "theme": "Gamma · molecular recognition",
+        "hero": null,
+        "methods": "Engineered human serotonin transporter; crystallography and assays",
+        "finding": "structures of human SERT bound to antidepressants identified central and allosteric binding sites and explained aspects of inhibitor recognition.",
+        "relevance": "direct structural evidence broadens Gamma beyond OXTR to SLC6A4.",
+        "limit": "structural and binding/transport measurements are complementary. Thermostabilised constructs were used; the ts3 construct had no detectable transport activity. Results describe particular inhibitor-bound conformations rather than every physiological state.",
+        "access": "publisher abstract and selected primary methods/results. These data concern the protein product and ligand recognition, not regulation of SLC6A4 gene expression.",
+        "scoreParts": {
+          "design": 2,
+          "validation": 2,
+          "review": 2,
+          "provenance": 1
+        },
+        "score": 7,
+        "scoreReason": "Structures and functional measurements complement one another; engineered constructs constrain interpretation.",
+        "jadad": "Not applicable",
+        "citationCount": 674,
+        "citationSource": "Crossref cited-by count",
+        "citationChecked": "17 October 2026",
+        "crossrefTitle": "X-ray structures and mechanism of the human serotonin transporter"
+      },
+      {
+        "id": "E10",
+        "title": "Structure of a D2 dopamine receptor–G-protein complex in a lipid membrane",
+        "author": "Yin et al.",
+        "year": "2020",
+        "journal": "Nature",
+        "doi": "10.1038/s41586-020-2379-5",
+        "theme": "Gamma · molecular recognition",
+        "hero": null,
+        "methods": "Engineered human DRD2 complex in a lipid membrane; cryo-EM",
+        "finding": "cryo-EM characterised an agonist-bound DRD2–Gi complex within a reconstituted phospholipid membrane, identifying receptor, G-protein and lipid interactions.",
+        "relevance": "direct evidence for the structural context of molecular recognition; another Gamma hero example.",
+        "limit": "including a lipid environment improves contextual relevance relative to isolated detergent structures. The receptor complex is engineered and ligand-bound; it does not represent every receptor state or establish clinical outcomes.",
+        "access": "primary abstract and selected full-text structural results, with deposited structural metadata checked. No geometric correspondence to the Atlas was analysed.",
+        "scoreParts": {
+          "design": 2,
+          "validation": 1,
+          "review": 2,
+          "provenance": 1
+        },
+        "score": 6,
+        "scoreReason": "A membrane-reconstituted structural observation provides a defined molecular state; independent functional validation needs fuller appraisal.",
+        "jadad": "Not applicable",
+        "citationCount": 199,
+        "citationSource": "Crossref cited-by count",
+        "citationChecked": "17 October 2026",
+        "crossrefTitle": "Structure of a D2 dopamine receptor–G-protein complex in a lipid membrane"
+      },
+      {
+        "id": "E11",
+        "title": "Assembly of a π–π stack of ligands in the binding site of an acetylcholine-binding protein",
+        "author": "Stornaiuolo et al.",
+        "year": "2013",
+        "journal": "Nature Communications",
+        "doi": "10.1038/ncomms2900",
+        "theme": "Epsilon · aromatic stacking",
+        "hero": "epsilon",
+        "methods": "Molluscan binding protein; crystallography and solution assays",
+        "finding": "an Aplysia acetylcholine-binding protein accommodated a stack of three aromatic ligands. Solution binding measurements supported the structural observation.",
+        "relevance": "direct experimental support for π-stacking as a molecular-recognition phenomenon; an Epsilon reference that does not depend on OXTR.",
+        "limit": "crystallography, mutagenesis and solution assays help address crystallographic-artifact concerns. This soluble molluscan protein is a model for receptor ligand-binding domains, not a complete human receptor. Neither the three-ligand count nor the stacked geometry establishes the Atlas traversal.",
+        "access": "full primary main text, including solution validation and scope of the receptor model.",
+        "scoreParts": {
+          "design": 3,
+          "validation": 2,
+          "review": 3,
+          "provenance": 1
+        },
+        "score": 9,
+        "scoreReason": "Structures, mutagenesis and solution assays support the binding interpretation; full main text appraised.",
+        "jadad": "Not applicable",
+        "citationCount": 66,
+        "citationSource": "Crossref cited-by count",
+        "citationChecked": "17 October 2026",
+        "crossrefTitle": "Assembly of a π–π stack of ligands in the binding site of an acetylcholine-binding protein"
+      },
+      {
+        "id": "E12",
+        "title": "Targeted disruption of pi–pi stacking in Malaysian banana lectin reduces mitogenicity while preserving antiviral activity",
+        "author": "Covés-Datson et al.",
+        "year": "2021",
+        "journal": "Scientific Reports",
+        "doi": "10.1038/s41598-020-80577-7",
+        "theme": "Epsilon · aromatic stacking",
+        "hero": null,
+        "methods": "Engineered plant lectin; structures and cellular assays",
+        "finding": "an F84T mutation disrupted aromatic stacking in Malay BanLec, reduced mitogenic activity and retained antiviral activity in the studied assays.",
+        "relevance": "a direct structure–function example for Epsilon; also connects molecular interactions with proliferation as a biological outcome.",
+        "limit": "structural checks and functional comparisons strengthen the rationale. Mutation can change several properties simultaneously, so this is not a pure isolation of one energetic contribution. Plant-lectin effects do not establish OXTR behaviour or clinical benefit.",
+        "access": "primary abstract and main structural/results sections. Published in 2021 despite “2020” appearing within the DOI.",
+        "scoreParts": {
+          "design": 3,
+          "validation": 2,
+          "review": 2,
+          "provenance": 1
+        },
+        "score": 8,
+        "scoreReason": "Targeted mutation and structural / cellular comparisons connect aromatic organisation with biological outcomes.",
+        "jadad": "Not applicable",
+        "citationCount": 24,
+        "citationSource": "Crossref cited-by count",
+        "citationChecked": "17 October 2026",
+        "crossrefTitle": "Targeted disruption of pi–pi stacking in Malaysian banana lectin reduces mitogenicity while preserving antiviral activity"
+      },
+      {
+        "id": "E13",
+        "title": "Reconstruction of molecular orbital densities from photoemission data",
+        "author": "Puschnig et al.",
+        "year": "2009",
+        "journal": "Science",
+        "doi": "10.1126/science.1176105",
+        "theme": "Valence electron orbitals",
+        "hero": null,
+        "methods": "Organic molecular films; photoemission and calculations",
+        "finding": "photoemission measurements and Fourier reconstruction yielded orbital-density distributions for pentacene films and p-sexiphenyl monolayers, compared with density-functional calculations.",
+        "relevance": "direct physics evidence for studying spatial electronic structure; contextual to the valence-electron theme and more distant from biological significance.",
+        "limit": "comparison of measurement and theory is valuable. Reconstruction is model-dependent and the samples are non-living materials. Orbital densities are not classical electron orbits or evidence of unicursal electron motion.",
+        "access": "primary abstract and metadata. No biological role, creation-of-life claim or numeric WSS assignment follows from this paper.",
+        "scoreParts": {
+          "design": 2,
+          "validation": 1,
+          "review": 1,
+          "provenance": 1
+        },
+        "score": 5,
+        "scoreReason": "Measurement and reconstruction are compared with calculations; current appraisal is abstract-level.",
+        "jadad": "Not applicable",
+        "citationCount": 334,
+        "citationSource": "Crossref cited-by count",
+        "citationChecked": "17 October 2026",
+        "crossrefTitle": "Reconstruction of Molecular Orbital Densities from Photoemission Data"
+      },
+      {
+        "id": "E14",
+        "title": "CD38 is critical for social behaviour by regulating oxytocin secretion",
+        "author": "Jin et al.",
+        "year": "2007",
+        "journal": "Nature",
+        "doi": "10.1038/nature05526",
+        "theme": "Supporting OXT context",
+        "hero": null,
+        "methods": "Mice; Cd38 knockout and rescue experiments",
+        "finding": "Cd38-knockout mice showed altered oxytocin secretion and behavioural phenotypes. Oxytocin replacement or hypothalamic delivery of human CD38 rescued selected outcomes.",
+        "relevance": "direct support for CD38 involvement in the oxytocin system. Retained as supporting hero context without forcing it into a particular sequence family.",
+        "limit": "knockout plus rescue strengthens causal interpretation in mice. Global deletion, behavioural measurement and human translation require careful appraisal. This concerns secretion, not proof of OXTR-expression regulation or geometric correspondence.",
+        "access": "primary abstract and figure descriptions. Full methods are needed before formal risk-of-bias grading.",
+        "scoreParts": {
+          "design": 3,
+          "validation": 1,
+          "review": 1,
+          "provenance": 1
+        },
+        "score": 6,
+        "scoreReason": "Knockout and rescue experiments test the secretion mechanism; full methods remain open for appraisal.",
+        "jadad": "Not applicable",
+        "citationCount": 585,
+        "citationSource": "Crossref cited-by count",
+        "citationChecked": "17 October 2026",
+        "crossrefTitle": "CD38 is critical for social behaviour by regulating oxytocin secretion"
+      }
+    ]
+  }
 }
