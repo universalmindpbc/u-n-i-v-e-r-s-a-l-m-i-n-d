@@ -1,5 +1,13 @@
 # Universal Informatics — delivery sequence
 
+## Next session — OXTR visual comparisons and Biopython, 19 October 2026
+
+Ben approved production publication of the OXTR data browser (staging release `ef68380e`) and asked to record the next work for his return this afternoon. The immediate next-session priority is Python illustrations of the existing binding-site data in three views: **original DNA line → full-position circle → Modulus 9 circle**, compared with **Alpha, Beta, Gamma and Epsilon of M9 P24**.
+
+The intended Atlas feature combines **Wolfram calculations and Biopython-based sequence analysis** with clear visualisations, source inspection and matching data exports. The Biopython feature remains planned; this note does not launch it. Ben also explicitly asked to discuss **NVIDIA products, services, APIs and compute, especially CUDA and CUDA-Q**, when he returns. Bring this up in the next session alongside the illustrations and Biopython feature.
+
+[Next-session brief and task checklist](oxtr-human-site-project/next-steps.md). Resume illustration and feature decisions with Ben. Earlier milestones below remain historical context; this entry identifies the next agreed work.
+
 ## Internal research perspective — 18 October 2026
 
 Current public focus: the elegance of M9 P24 and the subtle native variation of M18 P24. Add the approved native-sequence observations to their Geometry Summary and Beta sections, with the same content in Notion and versioned JSON.

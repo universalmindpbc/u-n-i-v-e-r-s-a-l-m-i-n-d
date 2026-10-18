@@ -17,3 +17,7 @@ Additional source discovery: GSE197160 contains human myometrial HIF1A data. GEO
 Notion project: https://www.notion.so/3fd7b9c99c56815a8b84e6839dc1d3ed
 
 Primary sources: https://academic.oup.com/jcem/article/91/6/2317/2843585 ; https://pubmed.ncbi.nlm.nih.gov/21734268/ ; https://pubmed.ncbi.nlm.nih.gov/10221779/ ; https://pubmed.ncbi.nlm.nih.gov/10527846/ ; https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE197160
+
+## Next visual phase — 19 October 2026
+
+Ben asked to record Python illustrations of the existing binding-site data in the original DNA line, full-position circle and Modulus 9 circle, compared with all four M9 P24 Atlas sequences. The planned website feature uses Wolfram and additional Biopython calculations. See the [next-session brief and task list](next-steps.md). Resume with Ben; the comparison feature is not implemented by this note.
