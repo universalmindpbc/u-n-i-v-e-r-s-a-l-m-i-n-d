@@ -2,6 +2,7 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs/promises';
 import path from 'node:path';
 import crypto from 'node:crypto';
+import {checkTfbsExplorer} from './check-oxtr-data-explorer.mjs';
 import {fileURLToPath} from 'node:url';
 import {chromium} from '/Users/benkorbel/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/playwright/index.mjs';
 const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
@@ -28,6 +29,11 @@ try{
    if(failFirstCatalogue){failFirstCatalogue=false;return route.fulfill({status:503,body:'Deliberate retry check'});}
    return route.fallback();
   });
+  let failFirstRegions=true;
+  await context.route(base+'pilot-v1/oxtr-tfbs-v1/encode-clusters.json',async route=>{
+   if(failFirstRegions){failFirstRegions=false;return route.fulfill({status:503,body:'Deliberate collection retry check'});}
+   return route.fallback();
+  });
   const page=await context.newPage(),errors=[];page.on('pageerror',e=>errors.push(e.message));
   try{
    await page.goto(base+'?atlas=1&record=fibonacci-m9-p24',{waitUntil:'domcontentloaded'});
@@ -40,7 +46,7 @@ try{
    await entry.click();
    const dialog=frame.locator('.science-tfbs');
    await dialog.getByRole('button',{name:'Try again',exact:true}).click();
-   await dialog.locator('#tfbs-species').waitFor();
+   await dialog.locator('#tfbs-species').waitFor({state:'attached'});
    const learningLink=dialog.locator('[data-science-tfbs-learning]');
    await learningLink.click();
    const learning=frame.locator('.science-tfbs-learning');
@@ -57,11 +63,15 @@ try{
    assert.equal(await learning.evaluate(e=>e.open),false);
    assert.equal(await dialog.evaluate(e=>e.open),true);
    assert.equal(await learningLink.evaluate(e=>e===document.activeElement),true);
-   assert.equal(await dialog.locator('tbody tr').count(),data.evidence.filter(r=>r.species==='Homo sapiens').length);
+   await checkTfbsExplorer({page,dialog,root,out,viewport});
+   const literature=dialog.locator('.tfbs-literature');
+   assert.equal(await literature.evaluate(e=>e.open),false);
+   await literature.locator(':scope > summary').click();
+   assert.equal(await literature.locator('tbody tr').count(),data.evidence.filter(r=>r.species==='Homo sapiens').length);
    await dialog.locator('#tfbs-species').selectOption('animal');
-   assert.equal(await dialog.locator('tbody tr').count(),data.evidence.filter(r=>r.species!=='Homo sapiens').length);
+   assert.equal(await literature.locator('tbody tr').count(),data.evidence.filter(r=>r.species!=='Homo sapiens').length);
    await dialog.locator('#tfbs-species').selectOption('all');
-   assert.equal(await dialog.locator('tbody tr').count(),43);
+   assert.equal(await literature.locator('tbody tr').count(),43);
    const kinds=[...new Set(data.evidence.map(r=>r.evidence_kind))].sort();
    assert.deepEqual(await dialog.locator('#tfbs-kind option').evaluateAll(options=>options.map(o=>o.value)),['all',...kinds]);
    for(const system of ['human','animal','all']){
@@ -70,24 +80,24 @@ try{
     for(const kind of ['all',...kinds]){
      await dialog.locator('#tfbs-kind').selectOption(kind);
      const expected=systemRows.filter(r=>kind==='all'||r.evidence_kind===kind);
-     assert.deepEqual(await dialog.locator('tbody .science-study-id').evaluateAll(items=>items.map(e=>e.textContent.split(' · ')[0])),expected.map(r=>r.id));
-     const label=kind==='all'?'All evidence types':kind.replaceAll('_',' ');
-     assert.equal(await dialog.locator('#tfbs-kind option:checked').textContent(),`${label} (${expected.length})`);
+     assert.deepEqual(await literature.locator('tbody .science-study-id').evaluateAll(items=>items.map(e=>e.textContent.split(' · ')[0])),expected.map(r=>r.id));
+     const label=kind==='all'?'All literature types':kind.replaceAll('_',' ');
+     assert.equal(await dialog.locator('#tfbs-kind option:checked').textContent(),`${label} (${expected.length} records)`);
     }
    }
    await dialog.locator('#tfbs-species').selectOption('human');
    await dialog.locator('#tfbs-kind').selectOption('tested_candidate');
-   assert.equal(await dialog.locator('tbody').textContent(),'No records match these filters.');
+   assert.equal(await literature.locator('tbody').textContent(),'No records match these filters.');
    await dialog.locator('#tfbs-species').selectOption('animal');
-   assert.equal(await dialog.locator('tbody tr').count(),4);
+   assert.equal(await literature.locator('tbody tr').count(),4);
    await dialog.locator('#tfbs-species').selectOption('human');
    await dialog.locator('#tfbs-kind').selectOption('functional_region');
-   assert.equal(await dialog.locator('tbody tr').count(),6);
+   assert.equal(await literature.locator('tbody tr').count(),6);
    assert.equal(await dialog.locator('.tfbs-evidence-guide').evaluate(e=>e.open),false);
    await dialog.locator('.tfbs-evidence-guide summary').click();
    assert.ok((await dialog.locator('.tfbs-evidence-guide').textContent()).includes('they are not trust scores'));
    await dialog.locator('.tfbs-evidence-guide summary').click();
-   assert.ok((await dialog.locator('tbody .tfbs-kind').allTextContents()).every(t=>t==='functional region'));
+   assert.ok((await literature.locator('tbody .tfbs-kind').allTextContents()).every(t=>t==='functional region'));
    const selectedDownload=page.waitForEvent('download');
    await dialog.locator('[data-tfbs-export="json"]').click();
    const selected=await selectedDownload,selectedPath=path.join(out,`selection-${viewport.width}.json`);await selected.saveAs(selectedPath);
@@ -106,10 +116,11 @@ try{
    await dialog.locator('.tfbs-harmonisation summary').click();
    await dialog.locator('#tfbs-kind').selectOption('all');
    await dialog.locator('#tfbs-species').selectOption('human');
+   await literature.locator(':scope > summary').click();
    await dialog.evaluate(e=>e.scrollTop=0);
    assert.equal(await dialog.evaluate(e=>e.scrollWidth<=e.clientWidth+1),true);
    await page.screenshot({path:path.join(out,`catalogue-${viewport.width}.png`)});
-   await dialog.locator('.tfbs-filters').scrollIntoViewIfNeeded();
+   await dialog.locator('.tfbs-explorer').scrollIntoViewIfNeeded();
    await page.screenshot({path:path.join(out,`restored-filters-${viewport.width}.png`)});
    if(viewport.width===1440){
     for(const [label,file] of [['Complete JSON data','oxtr-tfbs-json.zip'],['Complete CSV data','oxtr-tfbs-csv.zip'],['Literature table','literature-evidence.csv']]){
@@ -150,13 +161,13 @@ try{
    await page.locator('#about [data-science-genomics]').click();
    await page.locator('.science-genomics [data-science-register]').click();
    await page.locator('.science-register:not(.science-tfbs) [data-science-tfbs]').click();
-   await page.locator('.science-tfbs #tfbs-species').waitFor();
+   await page.locator('.science-tfbs #tfbs-species').waitFor({state:'attached'});
    assert.equal(page.url(),originalUrl);
    assert.equal(await page.evaluate(()=>document.fullscreenElement?.id),before.fullscreen);
    await page.keyboard.press('Escape');
    assert.equal(await page.locator('.science-register:not(.science-tfbs):not(.science-tfbs-learning)').evaluate(e=>e.open),true);
    assert.deepEqual(errors,[]);
-   results.push({viewport,teachingGraphicLoaded:true,teachingZoomAndGlossary:true,nestedTeachingEscapeAndFocus:true,originalEvidenceTypesRestored:true,all33FilterCombinations:true,selectedExportMatchesFilter:true,broaderDescriptionsSeparate:true,filters:true,retryAfterFailure:true,keyboardAndOutsideClose:true,escapeAndFocus:true,summaryAndSidebar:true,aboutNestedLightbox:true,fullscreenStatePreserved:true,mediaStatePreserved:true,downloadsMatched:viewport.width===1440,errors});
+   results.push({viewport,teachingGraphicLoaded:true,teachingZoomAndGlossary:true,nestedTeachingEscapeAndFocus:true,dataExplorer:true,originalEvidenceTypesRestored:true,all33FilterCombinations:true,selectedExportMatchesFilter:true,broaderDescriptionsSeparate:true,filters:true,retryAfterFailure:true,keyboardAndOutsideClose:true,escapeAndFocus:true,summaryAndSidebar:true,aboutNestedLightbox:true,fullscreenStatePreserved:true,mediaStatePreserved:true,downloadsMatched:viewport.width===1440,errors});
   }finally{await page.evaluate(()=>document.querySelectorAll('video,audio').forEach(m=>m.pause())).catch(()=>{});await context.close();}
  }
  const result={passed:true,candidate,processMuted:true,results};await fs.writeFile(path.join(out,'results.json'),JSON.stringify(result,null,2));console.log(JSON.stringify(result,null,2));
