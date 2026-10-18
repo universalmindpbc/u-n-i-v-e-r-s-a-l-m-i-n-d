@@ -74,12 +74,15 @@ def main():
                         default=ROOT / 'research/informatics/native-beta-m1-m1001-audit.json')
     args = parser.parse_args()
     records = []
+    exact_m9_beta_moduli = []
     published_checked = 0
     for modulus in range(1, 1002):
         alpha = atlas.period(modulus)
         nodes = [i for i, value in enumerate(alpha) if value % 3 == 0]
         beta = atlas.beta_for(alpha, nodes, modulus)
         values = beta['interval_residues'] if beta else None
+        if values == [4, 8, 7, 5, 1, 2]:
+            exact_m9_beta_moduli.append(modulus)
         doubling = bool(beta and beta['native_doubling'])
         chevron = atlas.chevron(beta, modulus)
         assert alpha == independent_period(modulus), modulus
@@ -128,6 +131,7 @@ def main():
                          'native_records_checked': len(records),
                          'published_records_match': published_checked},
         'summary': {
+            'exact_native_m9_beta_moduli': exact_m9_beta_moduli,
             'moduli_checked': len(records), 'both_count': len(matches), 'both_moduli': matches,
             'additional_matches_beyond_m9_m18': [m for m in matches if m not in (9, 18)],
             'm9_family_checked': sum(row['m9_family'] for row in records),

@@ -3609,5 +3609,39 @@
     "gamma_rule": "Primary Gamma counts only formations whose six vertices belong to the selected Gamma node set.",
     "source": "formation_catalogue; each referenced Hexagon supplies the same six vertices for the paired triangles in Other Geometry.",
     "research_status": "Descriptive geometry. Native doubling is the current starting hypothesis for mitosis; other Beta sequences remain available for future investigation."
+  },
+  "native_beta_observation": {
+    "version": "native-beta-observation-v1",
+    "title": "Native sequence comparison",
+    "text": "M18 P24 has the native doubling sequence 4–8–16–14–10–2. Reduction modulo 9 recovers 4–8–7–5–1–2 in its original alignment. This relationship follows the arithmetic of reduction within the M9 family.",
+    "classification": "Computed mathematical observation",
+    "rule_version": "native-pilot-v1",
+    "audit_modulus_range": [
+      1,
+      1001
+    ],
+    "audit_moduli_count": 1001,
+    "native_doubling_and_reference_chevron_moduli": [
+      9,
+      18
+    ],
+    "native_beta_cycle": [
+      4,
+      8,
+      16,
+      14,
+      10,
+      2
+    ],
+    "reduced_m9_beta_cycle": [
+      4,
+      8,
+      7,
+      5,
+      1,
+      2
+    ],
+    "original_alignment_preserved": true,
+    "source": "Two independent native-period, Beta and chevron implementations; research/informatics/pilot/audit_native_beta.py."
   }
 }

@@ -64,6 +64,21 @@ try {
         for(const type of ['pause','emptied','loadstart']) __probabilityFilm.addEventListener(type,()=>__probabilityMediaEvents.push(type));
         window.__probabilityFullscreen=document.fullscreenElement;
       });
+      const nativeRecord=JSON.parse(await fs.readFile(new URL(`../Informatics/pilot-v1/m${modulus}.json`,import.meta.url),'utf8'));
+      const observation=frame.locator('#summary-beta-observation');
+      assert.equal(await observation.isVisible(),true);
+      assert.equal(await observation.locator('p').innerText(),nativeRecord.native_beta_observation.text);
+      await observation.screenshot({path:path.join(output,`m${modulus}-observation-summary-${viewport.width}.png`)});
+      await frame.getByRole('tab',{name:'Beta',exact:true}).click();
+      const betaNote=frame.locator('#beta-observation');
+      assert.equal(await betaNote.isVisible(),true);
+      assert.equal(await betaNote.locator('p').innerText(),nativeRecord.native_beta_observation.text);
+      assert.equal(await frame.locator('#sequence').innerText(),nativeRecord.beta.display_cycle.join(' → '));
+      assert.equal(await betaNote.evaluate(e=>e.scrollWidth<=e.clientWidth+1),true);
+      await betaNote.screenshot({path:path.join(output,`m${modulus}-observation-beta-${viewport.width}.png`)});
+      await frame.getByRole('tab',{name:'Alpha',exact:true}).click();
+      assert.equal(await betaNote.isVisible(),false);
+      await frame.getByRole('tab',{name:'Geometry summary',exact:true}).click();
       await section.screenshot({path:path.join(output, `m${modulus}-probability-${viewport.width}.png`)});
       await section.getByRole('button', {name:'View calculation'}).click();
       const dialog = frame.locator('.probability-reader');
@@ -104,6 +119,8 @@ try {
         await frame.locator('.intro h1').filter({hasText:new RegExp(`^M${modulus} / P${period}$`)}).waitFor();
         assert.equal(await section.isVisible(),false);
         assert.equal(await section.innerText(),'');
+        assert.equal(await frame.locator('#summary-beta-observation').isVisible(),false);
+        assert.equal(await frame.locator('#beta-observation p').innerText(),'');
       }
       await frame.locator('#research-record').selectOption('fibonacci-m9-p24');
       await section.waitFor({state:'visible'});
@@ -151,7 +168,7 @@ try {
       assert.deepEqual(media,{same:true,playing:true,events:[],fullscreenPreserved:true});
       assert.deepEqual(errors,[]);
       results.push({modulus,viewport,probability:true,lightbox:true,downloads:true,originalAlignment:true,
-        otherRecordsUnassigned:true,formationCounts:true,familySummary:true,focusReturn:true,musicContinuous:true,nativeFullscreenInvoked:false,errors});
+        otherRecordsUnassigned:true,nativeBetaObservations:true,formationCounts:true,familySummary:true,focusReturn:true,musicContinuous:true,nativeFullscreenInvoked:false,errors});
     } finally {
       await page.evaluate(()=>document.querySelectorAll('video,audio').forEach(e=>e.pause())).catch(()=>{});
       await context.close();

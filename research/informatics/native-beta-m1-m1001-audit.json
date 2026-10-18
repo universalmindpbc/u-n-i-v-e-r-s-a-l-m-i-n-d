@@ -12,6 +12,9 @@
     "published_records_match": 48
   },
   "summary": {
+    "exact_native_m9_beta_moduli": [
+      9
+    ],
     "moduli_checked": 1001,
     "both_count": 2,
     "both_moduli": [

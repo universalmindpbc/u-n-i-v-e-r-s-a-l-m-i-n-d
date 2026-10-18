@@ -55,3 +55,5 @@ The current record uses the joint Gamma–Beta calculation agreed on 18 October 
 This update does not assign statistical significance, biological significance
 or WSS scores. No probability values are assigned beyond M9 and M18. Unselected
 Notion records retain blank probability values; their method field records scope.
+
+Native Beta observations are synchronized with `python3 research/informatics/pilot/sync_beta_observations.py --data-dir Informatics/pilot-v1` after record generation and before `export_csv.py`. These notes are separate from the shuffle probability. The internal mitotic-fingerprint perspective is recorded in `research/informatics/implementation-plan.md`.

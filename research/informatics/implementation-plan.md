@@ -1,5 +1,17 @@
 # Universal Informatics — delivery sequence
 
+## Internal research perspective — 18 October 2026
+
+Current public focus: the elegance of M9 P24 and the subtle native variation of M18 P24. Add the approved native-sequence observations to their Geometry Summary and Beta sections, with the same content in Notion and versioned JSON.
+
+The following perspective is internal roadmap context, not public Atlas copy or an established biological finding:
+
+> We hypothesize that the Beta sequences across M9–M1001 are mitotic fingerprints that may be of some use in biological compute for efficiency and accuracy in the future. We don't know. We can feed them into mitotic challenges in bioinformatic simulations in the future to see if this assists.
+
+Future investigation: preserve each native Beta sequence and its alignment; define suitable inputs for mitotic simulation challenges; compare efficiency and accuracy with explicit baselines and controls. Record beneficial, neutral and negative results. The initial biological investigation remains focused on OXTR.
+
+Interpretations of Beta sequences in M19–M1001 and higher-dimensional geometric-space hypotheses are deferred. Keep them within internal discussion; no modulus-to-spatial-dimension mapping is established or added to the public record. This roadmap does not launch simulations or paid computing jobs.
+
 ## 1. Complete M1–M24 pilot — ready for Ben’s staging proof
 - Verify native Pisano periods and nested sequences with Python and Wolfram.
 - Finish versioned JSON, separate diagrams, Notion records and assessment placeholders.
