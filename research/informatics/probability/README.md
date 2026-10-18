@@ -21,6 +21,7 @@ After geometry and literature generation, run:
 
 ```sh
 python3 research/informatics/pilot/sync_probability.py --data-dir Informatics/pilot-v1
+python3 research/informatics/pilot/sync_stellated.py --data-dir Informatics/pilot-v1
 INFORMATICS_DATA_DIR=Informatics/pilot-v1 python3 research/informatics/pilot/export_csv.py
 python3 tools/check-informatics-probability.py
 python3 tools/check-informatics-register.py

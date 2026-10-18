@@ -4,6 +4,8 @@ import path from 'node:path';
 import {chromium} from '/Users/benkorbel/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/playwright/index.mjs';
 
 const base = 'https://staging.universalmind.tv/informatics/';
+const localCandidate = process.env.INFORMATICS_LOCAL_CANDIDATE === '1';
+const candidateRoot = path.resolve(new URL('../Informatics/',import.meta.url).pathname);
 const output = process.env.INFORMATICS_QA_OUTPUT || '/private/tmp/m9-m18-probability-staging';
 await fs.mkdir(output, {recursive:true});
 const server = await chromium.launchServer({
@@ -16,6 +18,20 @@ const results = [];
 try {
   for (const modulus of [9,18]) for (const viewport of [{width:1440,height:1000}, {width:390,height:844}]) {
     const context = await browser.newContext({viewport, reducedMotion:'reduce'});
+    if(localCandidate) await context.route(base+'**',async route=>{
+      const relative=decodeURIComponent(new URL(route.request().url()).pathname.slice('/informatics/'.length))||'index.html';
+      const file=path.resolve(candidateRoot,relative);
+      if(!file.startsWith(candidateRoot+'/')) return route.abort();
+      const types={'.html':'text/html','.js':'text/javascript','.css':'text/css','.json':'application/json','.svg':'image/svg+xml','.png':'image/png','.py':'text/plain'};
+      try {await route.fulfill({status:200,body:await fs.readFile(file),contentType:types[path.extname(file)]||'application/octet-stream'});}
+      catch {await route.continue();}
+    });
+    const download=async url=>{
+      if(!localCandidate)return context.request.get(url);
+      const file=path.resolve(candidateRoot,new URL(url).pathname.slice('/informatics/'.length));
+      const body=await fs.readFile(file,'utf8');
+      return {status:()=>200,json:async()=>JSON.parse(body),text:async()=>body};
+    };
     // Preserve the app's fullscreen-container flow without native fullscreen.
     await context.addInitScript(() => {
       let fullscreen = null;
@@ -65,14 +81,14 @@ try {
       await dialog.getByText('Verification', {exact:true}).click();
       assert.match(await dialog.innerText(), /Three exact counting methods agree/);
       const jsonURL = await dialog.getByRole('link', {name:'Calculation JSON'}).getAttribute('href');
-      const jsonResponse = await context.request.get(new URL(jsonURL,base).href);
+      const jsonResponse = await download(new URL(jsonURL,base).href);
       assert.equal(jsonResponse.status(),200);
       const probability = await jsonResponse.json();
       assert.equal(probability.result.fraction, expected.result.fraction);
       assert.equal(typeof probability.counts.all_arrangements,'string');
       assert.deepEqual(probability.method.beta_values,expected.method.beta_values);
       const codeURL = await dialog.getByRole('link', {name:'Python calculation'}).getAttribute('href');
-      const codeResponse = await context.request.get(new URL(codeURL,base).href);
+      const codeResponse = await download(new URL(codeURL,base).href);
       assert.equal(codeResponse.status(),200);
       assert.match(await codeResponse.text(), /labelled_partition_count/);
       await dialog.getByRole('button', {name:'Close probability calculation'}).click();
@@ -99,6 +115,33 @@ try {
       await frame.locator('#atlas-science-summary [data-science-register]').click();
       assert.equal(await frame.locator('.science-register tbody tr').count(),14);
       await page.keyboard.press('Escape');
+      const countRows = [[9,24,4,1,true],[18,24,4,1,true],[27,72,12,3,false],[36,24,4,1,false],[45,120,20,5,false]];
+      for (const [m,p,total,primary,doubling] of countRows) {
+        await frame.locator('#research-record').selectOption(`fibonacci-m${m}-p${p}`);
+        await frame.locator('.intro h1').filter({hasText:new RegExp(`^M${m} / P${p}$`)}).waitFor();
+        await frame.getByRole('tab',{name:'Geometry summary',exact:true}).click();
+        const overview = frame.locator('#other-geometry-summary');
+        await overview.waitFor({state:'visible'});
+        assert.deepEqual(await overview.locator('dd').allTextContents(),[String(total),String(primary),doubling?'Present':'Absent']);
+        assert.equal(await section.isVisible(),m===9||m===18);
+        await overview.screenshot({path:path.join(output,`m${m}-counts-${viewport.width}.png`)});
+        await overview.getByRole('link',{name:'Inspect formations'}).click();
+        await frame.locator('#candidate-picker').waitFor({state:'visible'});
+        const entries=await frame.locator('#candidate-picker option').allTextContents();
+        assert.equal(entries.filter(t=>t.startsWith('2D stellated octahedron')).length,total);
+        assert.ok((await frame.locator('#description').innerText()).startsWith(total+' 2D stellated octahedrons'));
+      }
+      await frame.locator('#research-record').selectOption('m-summary');
+      await frame.locator('#family-cards[aria-busy="false"]').waitFor();
+      assert.equal(await frame.locator('.family-card').count(),5);
+      for(const [i,[m,p,total,primary,doubling]] of countRows.entries()) {
+        const card=frame.locator('.family-card').nth(i);
+        assert.equal(await card.locator('.family-formation-counts').innerText(),`Native 2D stellated octahedrons: ${total} across Alpha · ${primary} in primary Gamma`);
+        assert.equal(await card.locator('.family-beta-doubling').innerText(),`Native Beta doubling: ${doubling?'Present':'Absent'}`);
+      }
+      await frame.locator('#family-cards').screenshot({path:path.join(output,`family-counts-${viewport.width}.png`)});
+      await frame.getByRole('button',{name:'Explore M18 P24',exact:true}).click();
+      await frame.locator('.intro h1').filter({hasText:'M18 / P24'}).waitFor();
       const media = await page.evaluate(()=>({
         same:document.querySelector('#film')===__probabilityFilm,
         playing:!__probabilityFilm.paused,
@@ -108,7 +151,7 @@ try {
       assert.deepEqual(media,{same:true,playing:true,events:[],fullscreenPreserved:true});
       assert.deepEqual(errors,[]);
       results.push({modulus,viewport,probability:true,lightbox:true,downloads:true,originalAlignment:true,
-        otherRecordsUnassigned:true,focusReturn:true,musicContinuous:true,nativeFullscreenInvoked:false,errors});
+        otherRecordsUnassigned:true,formationCounts:true,familySummary:true,focusReturn:true,musicContinuous:true,nativeFullscreenInvoked:false,errors});
     } finally {
       await page.evaluate(()=>document.querySelectorAll('video,audio').forEach(e=>e.pause())).catch(()=>{});
       await context.close();
@@ -118,5 +161,5 @@ try {
   await browser.close();
   await server.close();
 }
-await fs.writeFile(path.join(output,'results.json'),JSON.stringify({passed:true,results},null,2));
-console.log(JSON.stringify({passed:true,results},null,2));
+await fs.writeFile(path.join(output,'results.json'),JSON.stringify({passed:true,mode:localCandidate?'local_candidate_interception':'deployed_staging',results},null,2));
+console.log(JSON.stringify({passed:true,mode:localCandidate?'local_candidate_interception':'deployed_staging',results},null,2));

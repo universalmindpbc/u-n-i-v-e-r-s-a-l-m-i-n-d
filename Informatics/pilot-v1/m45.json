@@ -26673,5 +26673,47 @@
     "status": "Not selected",
     "comparison": "Current M9 and M18 geometry comparison",
     "null_meaning": "Not selected for this comparison; no probability assigned. Null is not zero."
+  },
+  "other_geometry_summary": {
+    "schema_version": "1.0.0",
+    "shape": "2D stellated octahedron",
+    "all_alpha_count": 20,
+    "primary_gamma_count": 5,
+    "native_beta_defined": true,
+    "native_beta_doubling": false,
+    "formation_ids": [
+      "6-nodes-offset-0",
+      "6-nodes-offset-1",
+      "6-nodes-offset-2",
+      "6-nodes-offset-3",
+      "6-nodes-offset-4",
+      "6-nodes-offset-5",
+      "6-nodes-offset-6",
+      "6-nodes-offset-7",
+      "6-nodes-offset-8",
+      "6-nodes-offset-9",
+      "6-nodes-offset-10",
+      "6-nodes-offset-11",
+      "6-nodes-offset-12",
+      "6-nodes-offset-13",
+      "6-nodes-offset-14",
+      "6-nodes-offset-15",
+      "6-nodes-offset-16",
+      "6-nodes-offset-17",
+      "6-nodes-offset-18",
+      "6-nodes-offset-19"
+    ],
+    "primary_gamma_formation_ids": [
+      "6-nodes-offset-0",
+      "6-nodes-offset-4",
+      "6-nodes-offset-8",
+      "6-nodes-offset-12",
+      "6-nodes-offset-16"
+    ],
+    "counting_rule": "One pair of alternating equilateral triangles per distinct regular six-node set on the full Alpha circle. Each set is counted once, with its orientation retained.",
+    "period_rule": "The full Alpha count is P / 6 when P is divisible by 6, otherwise zero.",
+    "gamma_rule": "Primary Gamma counts only formations whose six vertices belong to the selected Gamma node set.",
+    "source": "formation_catalogue; each referenced Hexagon supplies the same six vertices for the paired triangles in Other Geometry.",
+    "research_status": "Descriptive geometry. Native doubling is the current starting hypothesis for mitosis; other Beta sequences remain available for future investigation."
   }
 }
