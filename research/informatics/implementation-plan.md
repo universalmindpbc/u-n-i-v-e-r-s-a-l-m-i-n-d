@@ -8,6 +8,12 @@ The following perspective is internal roadmap context, not public Atlas copy or 
 
 > We hypothesize that the Beta sequences across M9–M1001 are mitotic fingerprints that may be of some use in biological compute for efficiency and accuracy in the future. We don't know. We can feed them into mitotic challenges in bioinformatic simulations in the future to see if this assists.
 
+### Founder’s initial insight — internal discussion
+
+> The Fibonacci sequence scales, within reason, harmonically and perfectly across expanding moduli, at least 11.1% of the time.
+
+Preserve this as Ben’s initial perspective for future investigation. The measured reference is 111 matching multiples of nine among M1–M1001 (111/1001, approximately 11.1%): their Beta sequences recover the original M9 cycle under exact reduction. “Harmonically and perfectly” is the founder’s exploratory language, not an additional property tested by this audit. The shuffle probability remains a separate calculation.
+
 Future investigation: preserve each native Beta sequence and its alignment; define suitable inputs for mitotic simulation challenges; compare efficiency and accuracy with explicit baselines and controls. Record beneficial, neutral and negative results. The initial biological investigation remains focused on OXTR.
 
 Interpretations of Beta sequences in M19–M1001 and higher-dimensional geometric-space hypotheses are deferred. Keep them within internal discussion; no modulus-to-spatial-dimension mapping is established or added to the public record. This roadmap does not launch simulations or paid computing jobs.

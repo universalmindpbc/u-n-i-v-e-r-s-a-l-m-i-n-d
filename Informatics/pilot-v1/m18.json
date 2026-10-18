@@ -3643,5 +3643,65 @@
     ],
     "original_alignment_preserved": true,
     "source": "Two independent native-period, Beta and chevron implementations; research/informatics/pilot/audit_native_beta.py."
+  },
+  "beta_m9_view": {
+    "version": "beta-m9-view-v1",
+    "native_modulus": 18,
+    "target_modulus": 9,
+    "native_values": [
+      4,
+      8,
+      16,
+      14,
+      10,
+      2
+    ],
+    "reduced_values": [
+      4,
+      8,
+      7,
+      5,
+      1,
+      2
+    ],
+    "display_cycle": [
+      4,
+      8,
+      7,
+      5,
+      1,
+      2
+    ],
+    "repeat_count": 1,
+    "native_circle_positions": 18,
+    "reduced_circle_positions": 9,
+    "original_alignment_preserved": true,
+    "start_interval_clock_positions": [
+      24,
+      4
+    ],
+    "reference_cycle_match": true,
+    "family_audit": {
+      "audit_id": "beta-m9-family-audit-v1",
+      "modulus_range": [
+        1,
+        1001
+      ],
+      "total_moduli_in_range": 1001,
+      "family_members_checked": 111,
+      "matching_family_members": 111,
+      "coverage_fraction": "111/1001",
+      "coverage_percent": 11.08891108891109,
+      "coverage_display": "11.1%",
+      "classification": "Exact modular reduction; descriptive coverage",
+      "summary": "All 111 multiples of nine in M1–M1001 (11.1% of moduli) share this reduced Beta cycle through exact modular reduction.",
+      "audit_file": "pilot-v1/beta-m9-family-audit.json"
+    },
+    "operation": "Reduce each native Beta residue modulo 9, preserving order and the original start.",
+    "drawing_rule": "Plot the six-value cycle once; the repeat count records overlapping traversals. The complete reduced sequence remains available alongside the diagram and in the data.",
+    "native_svg": "pilot-v1/views/m18/beta.svg",
+    "native_png": "pilot-v1/views/m18/beta.png",
+    "reduced_svg": "pilot-v1/views/m18/beta-m9.svg",
+    "reduced_png": "pilot-v1/views/m18/beta-m9.png"
   }
 }

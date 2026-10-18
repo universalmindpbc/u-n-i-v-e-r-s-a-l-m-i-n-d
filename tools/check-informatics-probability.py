@@ -44,6 +44,7 @@ for record in dataset['records']:
     aggregate = dict(current)
     aggregate.pop('research_register')
     assert aggregate == record
+    current.pop('beta_m9_view', None)
     current.pop('native_beta_observation', None)
     current.pop('other_geometry_summary', None)
     if m in (9, 18):

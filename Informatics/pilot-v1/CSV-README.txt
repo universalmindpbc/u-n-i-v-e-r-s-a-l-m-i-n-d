@@ -11,3 +11,5 @@ Probability: the selected comparisons are M9 P24 and M18 P24. Each uses a unifor
 Other Geometry: M9-family records include other_geometry_summary. Each 2D stellated octahedron is the pair of alternating equilateral triangles on one regular six-node set. Full Alpha counts and the primary Gamma subset are separate. Formation IDs link to native values and rotations in formation_catalogue. Full Alpha count follows P / 6 for periods divisible by six. Native Beta presence and doubling status are separate from research priority.
 
 Native Beta observations: M9 and M18 include native_beta_observation, mirrored in records.csv. These are mathematical observations under the Atlas construction rules across M1–M1001, with original alignment retained. The complete published Atlas dataset remains M1–M48.
+
+Beta native/reduced views: every published M9-family record includes beta_m9_view. Native values stay unchanged. The reduced nine-position diagram shows the shared cycle once and labels its repeat count; the full reduced sequence is retained in JSON and CSV. SVG/PNG exports follow the selected view.

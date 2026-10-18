@@ -121,6 +121,7 @@ try {
         assert.equal(await section.innerText(),'');
         assert.equal(await frame.locator('#summary-beta-observation').isVisible(),false);
         assert.equal(await frame.locator('#beta-observation p').innerText(),'');
+        if(modulus%9!==0){await frame.getByRole('tab',{name:'Beta',exact:true}).click();assert.equal(await frame.locator('#beta-display').isVisible(),false);await frame.getByRole('tab',{name:'Geometry summary',exact:true}).click();}
       }
       await frame.locator('#research-record').selectOption('fibonacci-m9-p24');
       await section.waitFor({state:'visible'});
@@ -141,6 +142,45 @@ try {
         await overview.waitFor({state:'visible'});
         assert.deepEqual(await overview.locator('dd').allTextContents(),[String(total),String(primary),doubling?'Present':'Absent']);
         assert.equal(await section.isVisible(),m===9||m===18);
+        const expectedRecord=JSON.parse(await fs.readFile(new URL(`../Informatics/pilot-v1/m${m}.json`,import.meta.url),'utf8'));
+        const projection=expectedRecord.beta_m9_view;
+        await frame.getByRole('tab',{name:'Beta',exact:true}).click();
+        const switcher=frame.locator('#beta-display');
+        assert.equal(await switcher.isVisible(),true);
+        assert.equal(await switcher.getByRole('button',{name:`Native M${m}`,exact:true}).getAttribute('aria-pressed'),'true');
+        const nativeSrc=await frame.locator('#diagram').getAttribute('src');
+        assert.equal(await frame.locator('#sequence').innerText(),projection.native_values.join(' → '));
+        await switcher.getByRole('button',{name:'Reduced to M9',exact:true}).click();
+        assert.equal(await frame.locator('#sequence').innerText(),projection.reduced_values.join(' → '));
+        assert.ok((await frame.locator('#description').innerText()).includes('111 multiples of nine'));
+        assert.ok((await frame.locator('#diagram').getAttribute('src')).includes(`/m${m}/beta-m9.svg`));
+        assert.ok((await frame.locator('#svg-download').getAttribute('href')).includes('beta-m9.svg'));
+        assert.ok((await frame.locator('#png-download').getAttribute('href')).includes('beta-m9.png'));
+        if(!await frame.locator('#calculation').isVisible())await frame.getByText('Inspect the calculation',{exact:true}).click();
+        assert.ok((await frame.locator('#calculation').innerText()).includes(projection.native_values.join(' → ')));
+        await frame.getByText('Inspect the calculation',{exact:true}).click();
+        if(projection.repeat_count>1)assert.ok((await frame.locator('#convention').innerText()).includes(`${projection.repeat_count} repeated cycles`));
+        assert.equal(await switcher.getByRole('button',{name:'Reduced to M9',exact:true}).getAttribute('aria-pressed'),'true');
+        assert.equal(await switcher.evaluate(e=>e.scrollWidth<=e.clientWidth+1),true);
+        assert.equal(await frame.locator('body').evaluate(e=>e.scrollWidth<=innerWidth+1),true);
+        await frame.locator('.workspace').screenshot({path:path.join(output,`m${m}-beta-reduced-${viewport.width}.png`)});
+        await frame.getByRole('tab',{name:'Alpha',exact:true}).click();
+        assert.equal(await switcher.isVisible(),false);
+        await frame.getByRole('tab',{name:'Beta',exact:true}).click();
+        assert.equal(await switcher.getByRole('button',{name:'Reduced to M9',exact:true}).getAttribute('aria-pressed'),'true');
+        await switcher.getByRole('button',{name:`Native M${m}`,exact:true}).click();
+        assert.equal(await frame.locator('#diagram').getAttribute('src'),nativeSrc);
+        assert.equal(await frame.locator('#sequence').innerText(),projection.native_values.join(' → '));
+        if(m===18){
+          await frame.getByRole('tab',{name:'Epsilon',exact:true}).click();
+          assert.equal(await switcher.isVisible(),false);
+          await frame.locator('#epsilon-reduced').click();
+          assert.ok((await frame.locator('#diagram').getAttribute('src')).includes('epsilon-m9.svg'));
+          await frame.getByRole('tab',{name:'Beta',exact:true}).click();
+          assert.equal(await switcher.getByRole('button',{name:`Native M${m}`,exact:true}).getAttribute('aria-pressed'),'true');
+        }
+        await frame.getByRole('tab',{name:'Geometry summary',exact:true}).click();
+
         await overview.screenshot({path:path.join(output,`m${m}-counts-${viewport.width}.png`)});
         await overview.getByRole('link',{name:'Inspect formations'}).click();
         await frame.locator('#candidate-picker').waitFor({state:'visible'});
@@ -168,7 +208,7 @@ try {
       assert.deepEqual(media,{same:true,playing:true,events:[],fullscreenPreserved:true});
       assert.deepEqual(errors,[]);
       results.push({modulus,viewport,probability:true,lightbox:true,downloads:true,originalAlignment:true,
-        otherRecordsUnassigned:true,nativeBetaObservations:true,formationCounts:true,familySummary:true,focusReturn:true,musicContinuous:true,nativeFullscreenInvoked:false,errors});
+        otherRecordsUnassigned:true,nativeBetaObservations:true,betaNativeReducedToggle:true,betaFullSequenceAndRepeats:true,betaExports:true,epsilonIndependent:true,formationCounts:true,familySummary:true,focusReturn:true,musicContinuous:true,nativeFullscreenInvoked:false,errors});
     } finally {
       await page.evaluate(()=>document.querySelectorAll('video,audio').forEach(e=>e.pause())).catch(()=>{});
       await context.close();
