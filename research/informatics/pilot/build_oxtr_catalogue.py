@@ -236,3 +236,7 @@ CSV archive: all tabular evidence, metadata, DNA bases, matrix counts, predictio
 The search ledger records all returned bibliographic items; items outside the selected extraction have not all been systematically screened. TRANSFAC licensing, the unavailable legacy TFBSdb endpoint, individual old-paper coordinates and additional database exports remain open. No exhaustive completeness claim is made. The three future views preserve original DNA positions, full-circle spacing and a separately labelled M9 reduction.
 ''',encoding='utf-8')
 print(json.dumps(dict(version=VERSION,summary=catalogue['summary'],encode_provenance_rows=len(provenance),search_returns=len(ledger),output=str(OUT)),indent=2))
+
+# Keep the shared harmonisation layer when rebuilding source exports.
+from normalize_oxtr_sites import build as normalize_sites
+normalize_sites()

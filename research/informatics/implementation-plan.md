@@ -118,3 +118,12 @@ Staging proof: https://staging.universalmind.tv/informatics/?atlas=1&record=fibo
 ## Binding-site introduction — approved, 19 October 2026
 
 Ben approved “Understanding Binding Sites and our approach” as an optional link inside the TF binding-site lightbox, opening the existing approved teaching graphic. Keep the literature and source data prominent, retain About’s compact scope, and preserve the active experience. The graphic explains protein recognition, DNA order/spacing/orientation and the Beta M9 P24 reference. A brief explanation distinguishes the 15-site promoter study, ENCODE occupancy clusters and computer-predicted motif matches. The next teaching illustration is the original DNA line → full-position circle → Modulus 9 circle; it is not implemented in this update.
+
+
+## Human OXTR site recovery and harmonisation — 19 October 2026
+
+Ben authorized a focused project to recover human binding-site sequences and positions, combine imports under a consistent schema and resolve overlapping evidence. The original 15-site human paper is the first recovery priority. Publisher full-text access remains unresolved; no purchase or author contact was made.
+
+The first pass preserves every imported observation, groups identical GRCh38 intervals, records literature-to-database overlaps and known evidence reuse, and maps the published US-1 and US-2 sequences by exact local reference matching. Laboratory, binding and functional evidence are overlapping categories; previous zero values for the narrow tested-candidate label did not indicate no human testing. JSON, CSV, Notion and Atlas use the same derived fields. Human and animal records remain distinguishable. A total of unique confirmed human sites and all DNA-to-M9 comparisons remain open.
+
+Project: https://www.notion.so/3fd7b9c99c56815a8b84e6839dc1d3ed

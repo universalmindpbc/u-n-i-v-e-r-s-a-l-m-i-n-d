@@ -17,3 +17,13 @@ Publication findings are factual summaries with source links. Full article text,
 CSV archive: all tabular evidence, metadata, DNA bases, matrix counts, predictions, clusters and provenance are available without a JSON parser. catalogue-fields.csv uses the Atlas typed path convention (field,type,value,resolved_url); source/csv_records.py restores its nested structure. Flat tables use one row per declared record and retain explicit identifiers. Neither repeated motif names nor repeated database hits establish independent observations.
 
 The search ledger records all returned bibliographic items; items outside the selected extraction have not all been systematically screened. TRANSFAC licensing, the unavailable legacy TFBSdb endpoint, individual old-paper coordinates and additional database exports remain open. No exhaustive completeness claim is made. The three future views preserve original DNA positions, full-circle spacing and a separately labelled M9 reduction.
+
+Human site harmonisation — 19 October 2026
+
+Read human-site-project.json (or human-site-project-fields.csv) for scope and open recovery tasks. normalized-observations combines every imported record under one column schema, while the original tables remain intact. Evidence categories are multi-valued: laboratory tested includes positive, negative and mixed results; functional evidence includes regions and element-based reporters. The category counts are evidence records, not unique confirmed sites.
+
+reference-intervals groups only identical genomic intervals; every observation remains linked to its source. Shared coordinates do not establish the same factor, experiment, or biological function. literature-overlaps contains spatial links from the mapped human literature records to all imported database records. It is not an all-pairs network or independent corroboration. evidence-relationships records known reuse and distinct cooperating elements.
+
+US-1 and US-2 each match once in the saved human OXTR window on the reverse strand. These are computed reference placements of published sequences, not new experiments or a claim of genome-wide uniqueness. mapped-literature.bed contains two sequence elements and one broad annotation; use normalized-literature to distinguish them.
+
+The original human 15-site report remains an aggregate of 3 AP1, 9 C/EBP and 3 NF-kappaB sites. Its individual sequences and historical coordinate anchors remain unresolved. No total of unique confirmed human OXTR sites or DNA-to-Atlas comparison is asserted.

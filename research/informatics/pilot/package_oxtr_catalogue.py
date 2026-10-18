@@ -41,7 +41,13 @@ def publish():
         # table is authored independently and keeps its stable scientific fields.
     write_record(SUP/'catalogue-fields.csv',catalogue)
     assert read_record(SUP/'catalogue-fields.csv')==catalogue
-    supplement=dict(id=catalogue['version'],title=catalogue['title'],relationship_to_atlas='Shared source data; no sequence-to-biology correspondence assessed',catalogue='pilot-v1/oxtr-tfbs-v1/catalogue.json',json_bundle='pilot-v1/oxtr-tfbs-v1/oxtr-tfbs-json.zip',csv_bundle='pilot-v1/oxtr-tfbs-v1/oxtr-tfbs-csv.zip',publication_count=24,literature_evidence_records=43)
+    if (SUP/'human-site-project.json').exists():
+        project=json.loads((SUP/'human-site-project.json').read_text())
+        write_record(SUP/'human-site-project-fields.csv',project)
+        assert read_record(SUP/'human-site-project-fields.csv')==project
+    supplement=dict(id=catalogue['version'],title=catalogue['title'],relationship_to_atlas='Shared source data; no sequence-to-biology correspondence assessed',catalogue='pilot-v1/oxtr-tfbs-v1/catalogue.json',json_bundle='pilot-v1/oxtr-tfbs-v1/oxtr-tfbs-json.zip',csv_bundle='pilot-v1/oxtr-tfbs-v1/oxtr-tfbs-csv.zip',publication_count=len(catalogue['publications']),literature_evidence_records=len(catalogue['evidence']))
+    if 'harmonisation' in catalogue:
+        supplement['harmonisation']=catalogue['harmonisation']
     for name in ['dataset','index','m1-m1001']:
         file=DATA/(name+'.json');d=json.loads(file.read_text());d.setdefault('research_supplements',{})['oxtr_tfbs']=supplement;write(file,d)
         write_record(DATA/'csv-shared'/(name+'.csv'),d)
@@ -64,7 +70,7 @@ def publish():
         w=csv.writer(f);w.writerow(['file','bytes','sha256'])
         for p in sorted(files):w.writerow([str(p.relative_to(SUP)),p.stat().st_size,hashlib.sha256(p.read_bytes()).hexdigest()])
     files.append(SUP/'file-manifest.csv')
-    csv_files=[p for p in files if p.suffix=='.csv' or p.name=='README.txt']
+    csv_files=[p for p in files if p.suffix in ['.csv','.bed','.fa'] or p.name=='README.txt']
     json_files=[p for p in files if p.suffix!='.csv' or p.name in ['sources.csv','file-manifest.csv']]
     for name,selected in [('oxtr-tfbs-json.zip',json_files),('oxtr-tfbs-csv.zip',csv_files)]:
         with zipfile.ZipFile(SUP/name,'w',zipfile.ZIP_DEFLATED) as z:
