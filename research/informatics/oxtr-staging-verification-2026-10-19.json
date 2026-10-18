@@ -1,24 +1,24 @@
 {
-  "completed_at_utc": "2026-10-18T18:41:35.875630+00:00",
-  "source_commit": "5ec3a0a9",
+  "completed_at_utc": "2026-10-18T18:47:45.325422+00:00",
+  "source_commit": "2174a78d",
   "catalogue_commit": "bc9ae4da",
   "environment": "https://staging.universalmind.tv",
   "proof_url": "https://staging.universalmind.tv/informatics/?atlas=1&record=fibonacci-m9-p24",
   "deployment_method": "./deploy-panthur-staging.sh informatics from isolated committed worktree",
   "integrity": {
     "passed": true,
-    "source_commit": "5ec3a0a9",
+    "source_commit": "2174a78d",
     "files": [
       {
         "file": "Informatics/genomics.html",
         "bytes": 2242,
-        "sha256": "59e2a2e28258a5a445690d7789a2b3d1203cab06e7a28cc33fe50795bc4ea9da",
+        "sha256": "8e554af4c756d96a09be777960be0fafe01d1fd5b02807a8ac9b3a8676438fbd",
         "status": "matched"
       },
       {
         "file": "Informatics/index.html",
         "bytes": 6376,
-        "sha256": "ff400c7af3e5a4d8c4c704b61434fe854ebe3cc6714c3ab84986fe518c7ad6c9",
+        "sha256": "fc924b1596e39cf3d766ba5fe84a78628673ab591ca8de2de4dda27f859ca190",
         "status": "matched"
       },
       {
@@ -348,23 +348,31 @@
       {
         "file": "Informatics/research.html",
         "bytes": 14548,
-        "sha256": "3001e81b949a2bcb053c3ae2b6d103ab0b2c14e55928842e59ed1dcec70a75cf",
+        "sha256": "3aac6fbcc4676de98b7ef39f486b6630954db16f8f2211365a64d8d59b2d1723",
         "status": "matched"
       },
       {
         "file": "Informatics/science.css",
-        "bytes": 17934,
-        "sha256": "0340e3628159a5d5c66523fd2b4665212b54aee5dbd419b6b6bdce85d872cb0f",
+        "bytes": 18593,
+        "sha256": "f813cb1cbf8ee4a775744dfc81ed97fa9a7e496ba4efcfde2224e76e4ec2fb39",
         "status": "matched"
       },
       {
         "file": "Informatics/science.js",
-        "bytes": 38073,
-        "sha256": "18777391e2a307895f5338563a103072d3ab432fae9c3f620803be50e786c845",
+        "bytes": 42451,
+        "sha256": "9d7d8e7e7eb528462785e53525b0f4c3e6cd4fb9da817595cfaf37cf2e768868",
+        "status": "matched"
+      },
+      {
+        "file": "Informatics/science-assets/oxtr-binding-sites-atlas-beta-v1.png",
+        "bytes": 1611398,
+        "sha256": "4c0312fdca3c39ed5f8d51e5ed77354d7d99ae3cd05f3be8772227c9f05be4a2",
         "status": "matched"
       }
     ],
-    "total_bytes": 172036809
+    "total_bytes": 173653244,
+    "freshly_checked_files": 6,
+    "unchanged_files_retained_from_prior_check": 54
   },
   "catalogue_browser": {
     "passed": true,
@@ -376,6 +384,9 @@
           "width": 1440,
           "height": 1000
         },
+        "teachingGraphicLoaded": true,
+        "teachingZoomAndGlossary": true,
+        "nestedTeachingEscapeAndFocus": true,
         "filters": true,
         "retryAfterFailure": true,
         "keyboardAndOutsideClose": true,
@@ -392,6 +403,9 @@
           "width": 390,
           "height": 844
         },
+        "teachingGraphicLoaded": true,
+        "teachingZoomAndGlossary": true,
+        "nestedTeachingEscapeAndFocus": true,
         "filters": true,
         "retryAfterFailure": true,
         "keyboardAndOutsideClose": true,
@@ -448,6 +462,7 @@
     "data_source_id": "61858aac-dfd5-4a63-a090-2ba3b62b769f",
     "rows_compared": 43,
     "field_mismatches": 0,
+    "teaching_link_read_back": true,
     "m9_link_read_back": true,
     "catalogue_and_linked_view_read_back": true
   },
@@ -461,5 +476,5 @@
     "complete_archives_verified": 4
   },
   "production_modified": false,
-  "staging_manifest_sha256": "563fd80729ee5f8dda65a744df0d7296bb145add44120b5e5b9fdba63cd90365"
+  "staging_manifest_sha256": "4e68b8f28e67007a574302ff90c1417bc4ff1e6fa9b2af3b95881eeb1ecdc2a4"
 }
