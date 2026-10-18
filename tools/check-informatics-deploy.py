@@ -8,7 +8,28 @@ with tempfile.TemporaryDirectory(prefix='atlas-deploy-test-') as temp:
  for name in ['m1.json','m2.json','index.json']:(root/'Informatics/pilot-v1'/name).write_text(name)
  (root/'Informatics/index.html').write_text('entry')
  subprocess.run(['git','init','-q',temp],check=True);subprocess.run(['git','-C',temp,'add','Informatics'],check=True);subprocess.run(['git','-C',temp,'-c','user.name=Test','-c','user.email=test@invalid','commit','-qm','fixture'],check=True)
- script=root/'test.sh';script.write_text('set -euo pipefail\nROOT_DIR='+repr(temp)+'\nMANIFEST_FILE="$ROOT_DIR/manifest.tsv"\nput_file() { printf "%s\\n" "$2" >> "$ROOT_DIR/uploads"; if [[ "${FAIL_UPLOAD:-}" == "$2" ]]; then return 1; fi; }\ndeploy_informatics() {'+source+'\ndeploy_informatics\n')
+ (root/'bin').mkdir()
+ stub=root/'bin/curl'
+ stub.write_text('''#!/usr/bin/env python3
+import sys,json,os,urllib.parse
+from pathlib import Path
+assert sys.argv[1:]==['--fail-early','--config','-']
+config=sys.stdin.read()
+assert 'parallel' not in config
+for block in config.split('next\\n'):
+ values={}
+ for line in block.splitlines():
+  if ' = ' in line:
+   k,v=line.split(' = ',1)
+   if v.startswith('"'):values[k]=json.loads(v)
+ assert values['user']=='test:dummy'
+ assert values['url'].startswith('ftp://test.invalid/')
+ remote=urllib.parse.unquote(values['url'].split('test.invalid/',1)[1])
+ with open(os.environ['TEST_UPLOAD_LOG'],'a') as f:f.write(remote+'\\n')
+ if remote==os.environ.get('FAIL_UPLOAD'):sys.exit(1)
+''')
+ stub.chmod(0o755)
+ script=root/'test.sh';script.write_text('set -euo pipefail\nROOT_DIR='+repr(temp)+'\nexport PATH="$ROOT_DIR/bin:$PATH"\nexport TEST_UPLOAD_LOG="$ROOT_DIR/uploads"\nFTP_HOST=test.invalid\nFTP_USER=test\nFTP_PASS=dummy\nREMOTE_ROOT=\nMANIFEST_FILE="$ROOT_DIR/manifest.tsv"\ndeploy_informatics() {'+source+'\ndeploy_informatics\n')
  def run(env=None):
   r=subprocess.run(['bash',str(script)],env=env,capture_output=True,text=True)
   if r.returncode: print(r.stdout,r.stderr)

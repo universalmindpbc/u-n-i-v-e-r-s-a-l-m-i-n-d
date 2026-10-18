@@ -614,10 +614,7 @@ provision_sovereignty_runtime() {
 
 # Scoped Informatics deployment, using the existing Panthur transport.
 deploy_informatics() {
-  local name source_file checksum manifest_tmp queue_tmp pid failed=0 count=0
-  local workers="${INFORMATICS_UPLOAD_WORKERS:-4}"
-  local -a upload_pids=()
-  [[ "$workers" =~ ^[1-4]$ ]] || { echo "Informatics upload workers must be 1–4." >&2; return 1; }
+  local manifest_tmp queue_tmp
   # Same Panthur FTP transport and manifest. Validate the entire scoped source
   # before uploading; publish entry points only after all referenced assets exist.
   if ! git -C "$ROOT_DIR" diff --quiet HEAD -- Informatics research/informatics/legacy-uppercase.htaccess; then
@@ -652,31 +649,40 @@ with manifest.open('a') as f, queue.open('w') as q:
             q.write(path + '\t' + remote + '\n')
 print(f'Informatics: {len(entries)} tracked assets; {sum(old.get(r) != h for _, r, h in entries)} changed uploads via Panthur FTP.')
 PYQUEUE
-  while IFS=$'\t' read -r source_file name; do
-    [[ -n "$source_file" ]] || continue
-    case "$source_file" in
-      *.html|*.js|*/index.json)
-        for pid in ${upload_pids[@]+"${upload_pids[@]}"}; do wait "$pid" || failed=1; done
-        upload_pids=()
-        if [[ "$failed" -ne 0 ]]; then rm -f "$manifest_tmp" "$queue_tmp"; return 1; fi
-        ;;
-    esac
-    # Wait for each bounded batch. A failed upload never advances the manifest.
-    put_file "$ROOT_DIR/$source_file" "$name" &
-    upload_pids+=("$!")
-    count=$((count + 1))
-    if [[ ${#upload_pids[@]} -ge "$workers" ]]; then
-      for pid in ${upload_pids[@]+"${upload_pids[@]}"}; do wait "$pid" || failed=1; done
-      upload_pids=()
-      if [[ "$failed" -ne 0 ]]; then rm -f "$manifest_tmp" "$queue_tmp"; return 1; fi
-    fi
-    if [[ $((count % 200)) -eq 0 ]]; then echo "Informatics: uploaded $count changed assets."; fi
-  done < "$queue_tmp"
-  for pid in ${upload_pids[@]+"${upload_pids[@]}"}; do wait "$pid" || failed=1; done
+  if [[ ! -s "$queue_tmp" ]]; then
+    rm -f "$queue_tmp"
+    mv "$manifest_tmp" "$MANIFEST_FILE"
+    return 0
+  fi
+  # A single sequential curl invocation reuses the FTP control connection.
+  # Credentials travel through stdin only; no credential-bearing config is saved.
+  if ! PAN_UPLOAD_HOST="$FTP_HOST" PAN_UPLOAD_USER="$FTP_USER" PAN_UPLOAD_PASS="$FTP_PASS" \
+    PAN_UPLOAD_ROOT="$REMOTE_ROOT" python3 - "$ROOT_DIR" "$queue_tmp" <<'PYCONFIG' | curl --fail-early --config -
+import json, os, pathlib, sys, urllib.parse
+root, queue = map(pathlib.Path, sys.argv[1:])
+rows = [line.split('\t') for line in queue.read_text().splitlines()]
+for i, (source, remote) in enumerate(rows, 1):
+    if i > 1: print('next')
+    for option in ('globoff', 'fail', 'silent', 'show-error', 'ftp-create-dirs', 'retry-all-errors'):
+        print(option)
+    for option, value in [('retry', '5'), ('retry-delay', '2'), ('retry-max-time', '180')]:
+        print(option + ' = ' + value)
+    prefix = os.environ['PAN_UPLOAD_ROOT'].strip('/')
+    target = (prefix + '/' if prefix else '') + remote
+    values = {'user': os.environ['PAN_UPLOAD_USER'] + ':' + os.environ['PAN_UPLOAD_PASS'],
+              'upload-file': str(root / source),
+              'url': 'ftp://' + os.environ['PAN_UPLOAD_HOST'] + '/' + urllib.parse.quote(target, safe='/')}
+    if i % 200 == 0 or i == len(rows):
+        values['write-out'] = f'Informatics: uploaded {i}/{len(rows)} changed assets.\n'
+    for key, value in values.items(): print(key + ' = ' + json.dumps(value, ensure_ascii=False))
+PYCONFIG
+  then
+    rm -f "$manifest_tmp" "$queue_tmp"
+    return 1
+  fi
   rm -f "$queue_tmp"
-  if [[ "$failed" -ne 0 ]]; then rm -f "$manifest_tmp"; return 1; fi
   mv "$manifest_tmp" "$MANIFEST_FILE"
-  echo "Informatics: completed $count changed uploads through the existing Panthur FTP transport."
+  echo "Informatics: completed changed uploads through the existing Panthur curl/FTP transport."
 }
 
 DEPLOY_MODE="${1:-iam}"
