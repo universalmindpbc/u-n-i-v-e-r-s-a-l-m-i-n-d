@@ -9,3 +9,7 @@ M9 family: 111 multiples of nine through M999. All four reduced sequence views r
 14 publications, including four HERO studies, provide shared background context. Modulus-specific WSS and biological significance remain unassessed. Only M9 and M18 have selected native random-shuffle probabilities.
 
 Images are available through each JSON view URL on the Atlas; this data archive does not duplicate image assets. dataset.json and m1-m1001.json are current manifest entry points. m1-m48-archive.json and m1-m48-data.zip retain the previous M1–M48 snapshot.
+
+OXTR transcriptional-regulation supplement — 19 October 2026
+
+oxtr-tfbs-v1/ contains a separate source-linked catalogue, literature records, reference DNA, JASPAR motif templates and existing predictions, ENCODE occupancy clusters and experimental provenance, and ORegAnno annotations. Read its README.txt and catalogue metadata for the bounded reference window and interpretation. CSV users have complete tables and typed metadata without needing JSON. The supplement is shared across the Atlas; no modulus-specific biological comparison has been performed. The original 14-study register is unchanged.

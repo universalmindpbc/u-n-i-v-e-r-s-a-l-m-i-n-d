@@ -15,3 +15,7 @@ Typed record format: field is a slash-separated path; type distinguishes text, i
 source/csv_records.py reads any typed record using only Python's standard CSV library. Example: from csv_records import read_record; record = read_record('csv-records/m999.csv'). The remaining Python sources document the Atlas calculations and drawing methods; rendering uses Pillow and an available font. No JSON parser is needed to load the CSV record. Website-specific build scripts retain their repository layout requirements.
 
 The JSON link in the overview is optional. All computational fields are also in these CSV records. WSS remains awaiting assessment; arithmetic/geometry evidence does not assign biological significance.
+
+OXTR transcriptional-regulation supplement — 19 October 2026
+
+oxtr-tfbs-v1/ contains a separate source-linked catalogue, literature records, reference DNA, JASPAR motif templates and existing predictions, ENCODE occupancy clusters and experimental provenance, and ORegAnno annotations. Read its README.txt and catalogue metadata for the bounded reference window and interpretation. CSV users have complete tables and typed metadata without needing JSON. The supplement is shared across the Atlas; no modulus-specific biological comparison has been performed. The original 14-study register is unchanged.

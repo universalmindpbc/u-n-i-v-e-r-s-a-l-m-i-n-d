@@ -139,7 +139,7 @@
     if (atlas && ($('#research-record') || $('#experience'))) {e.preventDefault(); openAtlas(atlas.dataset.scienceAtlas);}
   });
   function openAtlas(view) {
-    for (const dialog of [zoom, reader, appraisal, register, genomics, $('#about')]) if (dialog?.open) dialog.close();
+    for (const dialog of [zoom, reader, appraisal, register, genomics, tfbs, $('#about')]) if (dialog?.open) dialog.close();
     if ($('#research-record')) {
       document.dispatchEvent(new CustomEvent('science:atlas-view', {detail: view}));
     } else if ($('#experience')) {
@@ -156,6 +156,56 @@
   register.setAttribute('aria-labelledby','science-register-title');
   register.innerHTML = `<div class="science-reader-bar"><span>FIRST PRINCIPLES GENOMICS</span><button class="science-close" aria-label="Close research register">×</button></div><div class="science-register-body"><p class="science-label">14 UNIQUE STUDIES · 4 HERO REFERENCES</p><h2 id="science-register-title">Research register</h2><p class="science-register-intro">Shared background literature for the initial OXTR research programme across M1–M1001, including studies of related mechanisms in other systems. Relevance to individual moduli awaits assessment. HERO marks the lead reference for each of the four illustrated themes. Select a trust score to inspect its assessment.</p>${scoreKey}<p class="science-table-hint">Scroll the table horizontally on smaller screens.</p><div class="science-table-scroll" tabindex="0" role="region" aria-label="Fourteen-study research register"><table><caption class="science-sr-only">Fourteen primary studies, with four HERO references, provisional trust scores and citation context.</caption><thead><tr><th scope="col">Study / research theme</th><th scope="col">System &amp; appraisal</th><th scope="col">Trust / 10</th><th scope="col">Source review</th><th scope="col">Citations</th></tr></thead><tbody>${studies.map(study => `<tr data-study-id="${study.id}"><td><div class="science-study-id">${study.id}${study.hero ? '<span class="science-hero">HERO</span>' : ''}</div><a class="science-study-title" href="https://doi.org/${study.doi}" target="_blank" rel="noopener noreferrer">${esc(study.title)} ↗</a><p class="science-citation">${esc(study.author)} · ${esc(study.journal)} · ${esc(study.year)}</p><p class="science-study-theme">${esc(study.theme)}</p>${study.hero ? `<button class="science-study-question" data-science-card="${study.hero}">Open M9 / P24 research question →</button>` : ''}</td><td><p>${esc(study.methods)}</p><details><summary>Finding &amp; appraisal</summary><h3>Principal finding</h3><p>${esc(study.finding)}</p><h3>Scope &amp; limitations</h3><p>${esc(study.limit)}</p><h3>Source material reviewed</h3><p>${esc(study.access)}</p></details></td><td><button class="science-trust-score" data-study-score="${study.id}" aria-label="Inspect provisional trust score for ${study.id}: ${study.score} out of 10">${study.score}<span> / 10</span></button></td><td>${reviewLabels[study.scoreParts.review]}</td><td>${study.citationCount === null ? 'Unavailable' : `<a href="https://api.crossref.org/works/${study.doi}" target="_blank" rel="noopener noreferrer">${study.citationCount.toLocaleString('en-AU')}</a>`}<span class="science-citation-source">Crossref<br>17 Oct 2026</span></td></tr>`).join('')}</tbody></table></div></div>`;
   document.body.append(register);
+  const tfbsLink = '<button class="science-register-link" data-science-tfbs aria-haspopup="dialog">OXTR binding-site catalogue ↗</button>';
+  register.querySelector('.science-register-intro').insertAdjacentHTML('afterend', `<p>${tfbsLink}<br><span class="science-small">A separate collection of transcriptional-regulation evidence and source data.</span></p>`);
+  const tfbs = document.createElement('dialog');
+  tfbs.className = 'science-register science-tfbs';
+  tfbs.setAttribute('aria-labelledby', 'tfbs-title');
+  tfbs.innerHTML = '<div class="science-reader-bar"><span>OXTR · TRANSCRIPTIONAL REGULATION</span><button class="science-close" aria-label="Close binding-site catalogue">×</button></div><div class="science-register-body"><h2 id="tfbs-title">OXTR binding-site catalogue</h2><div class="tfbs-content"></div></div>';
+  document.body.append(tfbs);
+  const tfbsRoot = new URL('pilot-v1/oxtr-tfbs-v1/', root);
+  let tfbsData, tfbsLoading, tfbsOpener;
+  const external = (href, label) => `<a href="${esc(href)}" target="_blank" rel="noopener noreferrer">${esc(label)} ↗</a>`;
+  function renderTfbsRows() {
+    const species = tfbs.querySelector('#tfbs-species').value;
+    const evidenceType = tfbs.querySelector('#tfbs-kind').value;
+    const rows = tfbsData.evidence.filter(r => (species === 'all' || (species === 'human' ? r.species === 'Homo sapiens' : r.species !== 'Homo sapiens')) && (evidenceType === 'all' || r.evidence_kind === evidenceType));
+    tfbs.querySelector('.tfbs-result-count').textContent = `${rows.length} evidence records · reports may concern overlapping regions`;
+    tfbs.querySelector('tbody').innerHTML = rows.length ? rows.map(r => {
+      const p = tfbsData.publications.find(p => p.pmid === r.pmid);
+      return `<tr><td><span class="science-study-id">${esc(r.id)} · ${esc(r.species)}</span><strong>${esc(r.factor)}</strong><p>${esc(r.label)}</p><span class="tfbs-kind">${esc(r.evidence_kind.replaceAll('_', ' '))}</span>${r.reported_count !== null ? `<p>Paper’s reported group: ${r.reported_count}</p>` : ''}</td><td><p>${esc(r.finding)}</p><p class="tfbs-position">${esc(r.reported_position || 'Position not recovered')}</p>${r.reported_sequence ? `<p><code>${esc(r.reported_sequence)}</code></p>` : ''}<details><summary>Methods &amp; interpretation</summary><p>${esc(r.methods)}</p><p>${esc(r.limitation)}</p></details></td><td>${external(p.doi_url, p.title)}<p class="science-citation">${esc(p.journal)} · ${p.year}<br>PMID ${p.pmid}</p><p>${esc(p.source_review)}</p>${p.existing_register_id ? `<p>Also in research register: ${esc(p.existing_register_id)}</p>` : ''}</td></tr>`;
+    }).join('') : '<tr><td colspan="3">No records match these filters.</td></tr>';
+  }
+  async function loadTfbs() {
+    if (tfbsData || tfbsLoading) return tfbsLoading;
+    const content = tfbs.querySelector('.tfbs-content');
+    content.innerHTML = '<p role="status">Loading the source-linked catalogue…</p>';
+    const controller = new AbortController(), timeout = setTimeout(() => controller.abort(), 12000);
+    tfbsLoading = (async () => {
+      try {
+        const response = await fetch(new URL('catalogue.json?v=1', tfbsRoot), {signal: controller.signal});
+        if (!response.ok) throw Error('Catalogue unavailable');
+        const data = await response.json();
+        if (data.schema_version !== '1.0' || !Array.isArray(data.evidence) || !Array.isArray(data.publications)) throw Error('Catalogue format unavailable');
+        tfbsData = data;
+        const s = data.summary;
+        const download = (file, label) => `<a href="${new URL(file, tfbsRoot).href}" download>${label} ↓</a>`;
+        content.innerHTML = `<p class="science-register-intro">A foundation for studying OXTR regulation alongside the Atlas. Published findings, experimental occupancy and predicted motifs retain their own evidence labels, coordinates and original sources.</p><p class="science-citation">Collection: 19 October 2026 · Initial release</p><div class="tfbs-counts"><p><strong>${s.publications}</strong> publications<br><span>${s.literature_evidence_records} literature evidence records</span></p><p><strong>${s.encode_clusters}</strong> ENCODE clusters<br><span>${s.encode_targets} assayed targets · multiple cell types</span></p><p><strong>${s.jaspar_default_threshold_predictions.toLocaleString('en-AU')}</strong> predicted matches<br><span>JASPAR · default display threshold</span></p></div><p class="tfbs-scope">${esc(data.interpretation)}</p><nav class="tfbs-downloads" aria-label="Binding-site data downloads">${download('oxtr-tfbs-json.zip','Complete JSON data')}${download('oxtr-tfbs-csv.zip','Complete CSV data')}${download('literature-evidence.csv','Literature table')}${download('README.txt','Methods &amp; scope')}</nav><details class="science-score-key"><summary>Region, database coverage &amp; next steps</summary><p>Human reference window: GRCh38 chr3:8,740,380–8,779,628, using 0-based, end-exclusive coordinates. This covers the annotated OXTR gene and 10 kb on each side. OXTR is on the minus strand.</p><p>All ${s.jaspar_all_predictions.toLocaleString('en-AU')} returned JASPAR predictions are retained in the downloads; ${s.jaspar_default_threshold_predictions.toLocaleString('en-AU')} pass UCSC’s default score ≥400 display filter. These are motif matches, with overlapping models and positions. The filter does not establish biological activity.</p><p>The downloads include reference DNA, ${s.jaspar_available_pfm_templates.toLocaleString('en-AU')} vertebrate motif templates, experimental provenance and ${s.oreganno_regions} regional ORegAnno annotations. ENCODE clusters describe broad occupancy, including coregulators. Neither regional overlap nor motif matching alone establishes OXTR regulation.</p><ul class="tfbs-resources">${data.resources.map(r => `<li>${external(r.url,r.name)} · ${esc(r.status)}<br><span>${esc(r.note)}</span></li>`).join('')}</ul><p>${esc(data.coverage)}</p><p>Next visual stage: the original DNA line, a full-position circle and a separately labelled Modulus 9 view. Coordinates and comparison rules are being assembled first. No Atlas correspondence or numerical WSS has been assessed.</p></details><div class="tfbs-filters"><label for="tfbs-species">Study system<select id="tfbs-species"><option value="human">Human OXTR</option><option value="animal">Animal Oxtr</option><option value="all">All systems</option></select></label><label for="tfbs-kind">Evidence<select id="tfbs-kind"><option value="all">All evidence types</option>${[...new Set(data.evidence.map(r => r.evidence_kind))].sort().map(k => `<option value="${k}">${esc(k.replaceAll('_',' '))}</option>`).join('')}</select></label></div><p class="tfbs-result-count" role="status"></p><p class="science-table-hint">Scroll the table horizontally to read each source.</p><div class="science-table-scroll" tabindex="0" role="region" aria-label="OXTR literature evidence"><table><caption class="science-sr-only">Evidence records, reported positions and primary sources. Records are not a unique-site count.</caption><thead><tr><th scope="col">Factor &amp; evidence</th><th scope="col">Finding &amp; reported position</th><th scope="col">Primary source &amp; review depth</th></tr></thead><tbody></tbody></table></div><p class="science-small">Unknown positions remain unfilled. Source review depth is stated for each paper; trust scores for this collection are unassigned. The existing 14-study research register remains a separate collection, with shared papers cross-referenced.</p>`;
+        renderTfbsRows();
+      } catch {
+        tfbsData = null;
+        content.innerHTML = '<p role="status">The catalogue has not loaded. <button class="science-register-link" data-tfbs-retry>Try again</button></p>';
+      } finally {clearTimeout(timeout); tfbsLoading = null;}
+    })();
+    return tfbsLoading;
+  }
+  document.addEventListener('click', e => {
+    const entry = e.target.closest('[data-science-tfbs]');
+    if (entry) {e.preventDefault(); tfbsOpener = entry; (document.fullscreenElement || document.body).append(tfbs); tfbs.showModal(); tfbs.scrollTop = 0; loadTfbs();}
+    if (e.target.closest('[data-tfbs-retry]')) loadTfbs();
+  });
+  tfbs.addEventListener('change', renderTfbsRows);
+  tfbs.addEventListener('close', () => tfbsOpener?.isConnected && tfbsOpener.focus());
   const appraisal = document.createElement('dialog');
   appraisal.className = 'science-appraisal';
   appraisal.setAttribute('aria-labelledby','science-appraisal-title');
@@ -197,7 +247,7 @@
     reader.showModal(); reader.scrollTop = 0;
   }
   reader.querySelectorAll('[data-reader-card]').forEach(b => b.onclick = () => {active = cards.find(c => c.id === b.dataset.readerCard); renderCard(); reader.scrollTop = 0;});
-  for (const dialog of [reader, zoom, register, appraisal, genomics]) {
+  for (const dialog of [reader, zoom, register, appraisal, genomics, tfbs]) {
     dialog.querySelector('.science-close').onclick = () => dialog.close();
     dialog.addEventListener('click', e => {if (e.target !== dialog) return; const r = dialog.getBoundingClientRect(); if (e.clientX < r.left || e.clientX > r.right || e.clientY < r.top || e.clientY > r.bottom) dialog.close();});
   }
@@ -215,6 +265,7 @@
   module.id = 'atlas-science-summary'; module.className = 'science-module'; module.hidden = true;
   module.setAttribute('aria-labelledby', 'atlas-science-title');
   module.innerHTML = `<p class="science-label">OXTR · SHARED RESEARCH</p><h2 id="atlas-science-title">Research context</h2><p class="science-module-intro">14 peer-reviewed studies, including four HERO references, provide background for our OXTR research programme. Relevance to individual moduli awaits assessment.</p><button class="science-register-link" data-science-register>Research register ↗</button><p class="science-module-page"><a href="${new URL('genomics.html', root).href}" data-science-genomics aria-haspopup="dialog">First Principles Genomics →</a></p><p class="science-assessment">Hypothesis under investigation<br>Numerical WSS: awaiting assessment</p>${framework}`;
+  module.querySelector('.science-module-page').insertAdjacentHTML('afterend', `<p class="science-module-page">${tfbsLink}</p>`);
   if ($('#sidebar-science-slot')) $('#sidebar-science-slot').append(module);
   function setRecord(d) {
     hasRecord = Number.isInteger(d.modulus) && d.modulus >= 1 && Boolean(d.research?.background_literature);

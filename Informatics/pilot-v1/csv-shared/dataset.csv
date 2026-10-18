@@ -1,5 +1,5 @@
 ﻿field,type,value,resolved_url
-,object,13,
+,object,14,
 /version,text,m1-m1001-v1,
 /modulus_range,list:integer,1;1001,
 /record_count,integer,1001,
@@ -9790,3 +9790,13 @@
 /m9_sequence_family_audit/records/110/checks/epsilon_cycle_routes,boolean,true,
 /m9_sequence_family_audit/records/110/original_alignment_preserved,boolean,true,
 /m9_sequence_family_audit/records/110/native_full_circle_epsilon_reduces_to_reference,boolean,false,
+/research_supplements,object,1,
+/research_supplements/oxtr_tfbs,object,8,
+/research_supplements/oxtr_tfbs/id,text,oxtr-tfbs-2026-10-19-v1,
+/research_supplements/oxtr_tfbs/title,text,OXTR binding-site catalogue,
+/research_supplements/oxtr_tfbs/relationship_to_atlas,text,Shared source data; no sequence-to-biology correspondence assessed,
+/research_supplements/oxtr_tfbs/catalogue,text,pilot-v1/oxtr-tfbs-v1/catalogue.json,https://universalmind.tv/informatics/pilot-v1/oxtr-tfbs-v1/catalogue.json
+/research_supplements/oxtr_tfbs/json_bundle,text,pilot-v1/oxtr-tfbs-v1/oxtr-tfbs-json.zip,https://universalmind.tv/informatics/pilot-v1/oxtr-tfbs-v1/oxtr-tfbs-json.zip
+/research_supplements/oxtr_tfbs/csv_bundle,text,pilot-v1/oxtr-tfbs-v1/oxtr-tfbs-csv.zip,https://universalmind.tv/informatics/pilot-v1/oxtr-tfbs-v1/oxtr-tfbs-csv.zip
+/research_supplements/oxtr_tfbs/publication_count,integer,24,
+/research_supplements/oxtr_tfbs/literature_evidence_records,integer,43,

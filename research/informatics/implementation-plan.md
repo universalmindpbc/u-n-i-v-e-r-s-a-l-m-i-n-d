@@ -104,3 +104,14 @@ Validation: Python checked all native returns and 646,188 compact formation inte
 The CSV route includes an overview with direct native/M9 PNG and SVG URLs, 1,001 complete typed CSV records, a full image index, publication table and shared audit CSVs. The complete CSV ZIP contains no JSON files. Its CSV reader reconstructs every record exactly, including nulls, empty containers, sequences and nested calculations. The overview remains included in the JSON/source ZIP as well. Original mathematical JSON records are unchanged.
 
 Website entry points: Download → Complete CSV bundle; per-record sidebar → Record CSV; Geometry summary → Complete CSV bundle. The existing publication register and Notion record data are unchanged. This export addition requires staging proof before production publication.
+## OXTR source collection — 19 October 2026
+
+Ben authorized broad literature/database collection and matching local, JSON, CSV, Atlas and Notion resources. The next visualization retains the original DNA line, full-position circle and separately labelled M9 circle. New motif scans, Atlas comparisons and significance calculations remain deferred.
+
+The initial supplement contains 24 publications, 43 literature evidence records, the GRCh38 OXTR locus plus 10 kb on each side, 217,857 existing JASPAR predictions (9,164 at the default display filter), 1,019 motif templates, 255 ENCODE occupancy clusters with 751 experiment links, and 37 ORegAnno regional annotations. These are different evidence units, not one confirmed binding-site total. The original 14-study research register and all 1,001 mathematical records remain unchanged.
+
+Notion: https://www.notion.so/3fd7b9c99c5681239265feb88ed38d68 — a dedicated database contains the same 43 evidence records, with species/evidence filters. Bulk positional data remain in the linked complete JSON/CSV downloads.
+
+Source collection: `Informatics/pilot-v1/oxtr-tfbs-v1/`. Builders and validation live in `research/informatics/pilot/`; the same supplement is included in both complete M1–M1001 export bundles. The catalogue opens as a lightbox through the existing research context and register. TRANSFAC access, legacy individual coordinates, further database exports and full systematic screening remain documented gaps.
+
+Staging proof: https://staging.universalmind.tv/informatics/?atlas=1&record=fibonacci-m9-p24 . Production approval is separate.

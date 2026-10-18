@@ -92,6 +92,9 @@ The JSON link in the overview is optional. All computational fields are also in 
         z.write(ROOT / 'Informatics/pilot-v1/explorer.js', 'source/atlas-geometry.js')
     result = {'passed': True, 'records_roundtripped_without_json_parser':verified, 'summary_columns':len(fields), 'image_urls':len(image_rows), 'publications':len(publications), 'shared_tables':len(shared), 'csv_archive_bytes':(DATA/'m1-m1001-csv.zip').stat().st_size}
     print(json.dumps(result, indent=2))
+    if (DATA / 'oxtr-tfbs-v1/catalogue.json').exists():
+        from package_oxtr_catalogue import publish
+        publish()
     return result
 
 if __name__ == '__main__': export()

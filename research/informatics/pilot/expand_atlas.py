@@ -153,6 +153,9 @@ def publish():
         for p in sorted((ROOT / 'research/informatics/pilot').glob('*.py')): z.write(p, 'source/' + p.name)
         z.write(OUT / 'explorer.js', 'source/atlas-geometry.js')
     print('Published 1001 record manifest, CSV and complete JSON/source bundle.', flush=True)
+    if (OUT / 'oxtr-tfbs-v1/catalogue.json').exists():
+        from package_oxtr_catalogue import publish
+        publish()
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
