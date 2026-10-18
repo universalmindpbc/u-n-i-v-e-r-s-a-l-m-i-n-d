@@ -135,3 +135,9 @@ Ben authorized a focused project to recover human binding-site sequences and pos
 The first pass preserves every imported observation, groups identical GRCh38 intervals, records literature-to-database overlaps and known evidence reuse, and maps the published US-1 and US-2 sequences by exact local reference matching. Laboratory, binding and functional evidence are overlapping categories; previous zero values for the narrow tested-candidate label did not indicate no human testing. JSON, CSV, Notion and Atlas use the same derived fields. Human and animal records remain distinguishable. A total of unique confirmed human sites and all DNA-to-M9 comparisons remain open.
 
 Project: https://www.notion.so/3fd7b9c99c56815a8b84e6839dc1d3ed
+
+## OXTR data browser — approved and published, 19 October 2026
+
+Ben approved the reviewed staging release `ef68380e` for production. The unchanged website source is live at https://universalmind.tv/informatics/?atlas=1&record=fibonacci-m9-p24 . Production release tag: `production-2026-10-19-1001`. All 77 changed assets (including complete data exports) matched the approved checksums. Desktop/mobile dataset searches, score filters, pagination, JSON/CSV exports and the preserved lightbox experience passed.
+
+The next-session brief and checklist at the top of this plan cover Python illustrations, all three coordinate views, Alpha/Beta/Gamma/Epsilon comparisons, the planned Wolfram + Biopython Atlas feature, and the requested NVIDIA CUDA / CUDA-Q discussion. These remain planned for Ben’s return.
