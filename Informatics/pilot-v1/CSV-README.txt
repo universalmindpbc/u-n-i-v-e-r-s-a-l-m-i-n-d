@@ -13,3 +13,5 @@ Other Geometry: M9-family records include other_geometry_summary. Each 2D stella
 Native Beta observations: M9 and M18 include native_beta_observation, mirrored in records.csv. These are mathematical observations under the Atlas construction rules across M1–M1001, with original alignment retained. The complete published Atlas dataset remains M1–M48.
 
 Beta native/reduced views: every published M9-family record includes beta_m9_view. Native values stay unchanged. The reduced nine-position diagram shows the shared cycle once and labels its repeat count; the full reduced sequence is retained in JSON and CSV. SVG/PNG exports follow the selected view.
+
+M9 family views: m9_sequence_views contains Alpha, Beta, Gamma and cycle-based Epsilon. Alpha and Gamma fold indices modulo 24 after reducing values modulo 9. Epsilon uses the fixed M9 route within each 24-position block; this does not change native full-circle Epsilon qualification. Full sequences, individual Epsilon block traversals, repeat counts and original alignment are retained. m9-sequence-family-audit.json verifies all 111 family members through M999.

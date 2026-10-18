@@ -3936,5 +3936,349 @@
     "native_png": "pilot-v1/views/m9/beta.png",
     "reduced_svg": "pilot-v1/views/m9/beta-m9.svg",
     "reduced_png": "pilot-v1/views/m9/beta-m9.png"
+  },
+  "m9_sequence_views": {
+    "beta": {
+      "version": "beta-m9-view-v1",
+      "native_modulus": 9,
+      "target_modulus": 9,
+      "native_values": [
+        4,
+        8,
+        7,
+        5,
+        1,
+        2
+      ],
+      "reduced_values": [
+        4,
+        8,
+        7,
+        5,
+        1,
+        2
+      ],
+      "display_cycle": [
+        4,
+        8,
+        7,
+        5,
+        1,
+        2
+      ],
+      "repeat_count": 1,
+      "native_circle_positions": 9,
+      "reduced_circle_positions": 9,
+      "original_alignment_preserved": true,
+      "start_interval_clock_positions": [
+        24,
+        4
+      ],
+      "reference_cycle_match": true,
+      "family_audit": {
+        "audit_id": "beta-m9-family-audit-v1",
+        "modulus_range": [
+          1,
+          1001
+        ],
+        "total_moduli_in_range": 1001,
+        "family_members_checked": 111,
+        "matching_family_members": 111,
+        "coverage_fraction": "111/1001",
+        "coverage_percent": 11.08891108891109,
+        "coverage_display": "11.1%",
+        "classification": "Exact modular reduction; descriptive coverage",
+        "summary": "All 111 multiples of nine in M1–M1001 (11.1% of moduli) share this reduced Beta cycle through exact modular reduction.",
+        "audit_file": "pilot-v1/beta-m9-family-audit.json"
+      },
+      "operation": "Reduce each native Beta residue modulo 9, preserving order and the original start.",
+      "drawing_rule": "Plot the six-value cycle once; the repeat count records overlapping traversals. The complete reduced sequence remains available alongside the diagram and in the data.",
+      "native_svg": "pilot-v1/views/m9/beta.svg",
+      "native_png": "pilot-v1/views/m9/beta.png",
+      "reduced_svg": "pilot-v1/views/m9/beta-m9.svg",
+      "reduced_png": "pilot-v1/views/m9/beta-m9.png"
+    },
+    "alpha": {
+      "version": "m9-sequence-view-v1",
+      "native_values": [
+        9,
+        1,
+        1,
+        2,
+        3,
+        5,
+        8,
+        4,
+        3,
+        7,
+        1,
+        8,
+        9,
+        8,
+        8,
+        7,
+        6,
+        4,
+        1,
+        5,
+        6,
+        2,
+        8,
+        1
+      ],
+      "reduced_values": [
+        9,
+        1,
+        1,
+        2,
+        3,
+        5,
+        8,
+        4,
+        3,
+        7,
+        1,
+        8,
+        9,
+        8,
+        8,
+        7,
+        6,
+        4,
+        1,
+        5,
+        6,
+        2,
+        8,
+        1
+      ],
+      "display_cycle": [
+        9,
+        1,
+        1,
+        2,
+        3,
+        5,
+        8,
+        4,
+        3,
+        7,
+        1,
+        8,
+        9,
+        8,
+        8,
+        7,
+        6,
+        4,
+        1,
+        5,
+        6,
+        2,
+        8,
+        1
+      ],
+      "native_circle_positions": 24,
+      "reduced_circle_positions": 24,
+      "operation": "Reduce values modulo 9 and fold indices modulo 24, preserving the original start. Repeated 24-position blocks overlap in the diagram.",
+      "native_modulus": 9,
+      "target_modulus": 9,
+      "repeat_count": 1,
+      "original_alignment_preserved": true,
+      "reference_cycle_match": true,
+      "folded_period": 24,
+      "family_audit": {
+        "audit_id": "m9-sequence-family-audit-v1",
+        "summary": "All 111 multiples of nine in M1–M1001 (11.1% of moduli) recover M9 P24 through exact modular reduction.",
+        "audit_file": "pilot-v1/m9-sequence-family-audit.json"
+      },
+      "reduced_svg": "pilot-v1/views/m9/alpha-m9.svg",
+      "reduced_png": "pilot-v1/views/m9/alpha-m9.png"
+    },
+    "gamma": {
+      "version": "m9-sequence-view-v1",
+      "native_values": [
+        9,
+        3,
+        3,
+        9,
+        6,
+        6
+      ],
+      "reduced_values": [
+        9,
+        3,
+        3,
+        9,
+        6,
+        6
+      ],
+      "display_cycle": [
+        9,
+        3,
+        3,
+        9,
+        6,
+        6
+      ],
+      "native_circle_positions": 24,
+      "reduced_circle_positions": 24,
+      "operation": "Reduce values modulo 9 and fold indices modulo 24, preserving the original start. Repeated 24-position blocks overlap in the diagram.",
+      "native_modulus": 9,
+      "target_modulus": 9,
+      "repeat_count": 1,
+      "original_alignment_preserved": true,
+      "reference_cycle_match": true,
+      "folded_period": 24,
+      "family_audit": {
+        "audit_id": "m9-sequence-family-audit-v1",
+        "summary": "All 111 multiples of nine in M1–M1001 (11.1% of moduli) recover M9 P24 through exact modular reduction.",
+        "audit_file": "pilot-v1/m9-sequence-family-audit.json"
+      },
+      "reduced_svg": "pilot-v1/views/m9/gamma-m9.svg",
+      "reduced_png": "pilot-v1/views/m9/gamma-m9.png"
+    },
+    "epsilon": {
+      "version": "m9-sequence-view-v1",
+      "display_cycle": [
+        9,
+        3,
+        6,
+        9,
+        3,
+        6,
+        9
+      ],
+      "reduced_values": [
+        9,
+        3,
+        6,
+        9,
+        3,
+        6,
+        9
+      ],
+      "block_traversals": [
+        {
+          "block": 1,
+          "alpha_indices": [
+            0,
+            8,
+            20,
+            12,
+            4,
+            16,
+            0
+          ],
+          "native_values": [
+            9,
+            3,
+            6,
+            9,
+            3,
+            6,
+            9
+          ],
+          "reduced_values": [
+            9,
+            3,
+            6,
+            9,
+            3,
+            6,
+            9
+          ]
+        }
+      ],
+      "reference_alpha_indices": [
+        0,
+        8,
+        20,
+        12,
+        4,
+        16,
+        0
+      ],
+      "native_circle_positions": 24,
+      "reduced_circle_positions": 24,
+      "native_369_qualifies": true,
+      "native_full_circle_comparison": {
+        "rule_version": "epsilon-m9-exact-v2",
+        "geometry_identical": true,
+        "reduced_sequence_identical": true,
+        "combined_eligible": true,
+        "alpha_indices": [
+          0,
+          8,
+          20,
+          12,
+          4,
+          16,
+          0
+        ],
+        "clock_positions": [
+          24,
+          8,
+          20,
+          12,
+          4,
+          16,
+          24
+        ],
+        "native_values": [
+          9,
+          3,
+          6,
+          9,
+          3,
+          6,
+          9
+        ],
+        "reduced_m9_values": [
+          9,
+          3,
+          6,
+          9,
+          3,
+          6,
+          9
+        ],
+        "reference_values": [
+          9,
+          3,
+          6,
+          9,
+          3,
+          6,
+          9
+        ],
+        "normalized_route_sixths": [
+          0,
+          2,
+          5,
+          3,
+          1,
+          4,
+          0
+        ],
+        "orientation": "clockwise from north; fixed M9 route and starting phase",
+        "reason": "Exact geometry and reduced traversal match.",
+        "scope": "Tests the fixed north-oriented M9 path on the full native period circle; does not fold the period or rotate/reverse the values to force a match."
+      },
+      "operation": "Reduce Alpha modulo 9, then apply the fixed M9 Epsilon route within each 24-position block: 0 → 8 → 20 → 12 → 4 → 16 → 0. This is a cycle-based construction; native full-circle Epsilon is assessed separately.",
+      "native_modulus": 9,
+      "target_modulus": 9,
+      "repeat_count": 1,
+      "original_alignment_preserved": true,
+      "reference_cycle_match": true,
+      "folded_period": 24,
+      "family_audit": {
+        "audit_id": "m9-sequence-family-audit-v1",
+        "summary": "All 111 multiples of nine in M1–M1001 (11.1% of moduli) recover M9 P24 through exact modular reduction.",
+        "audit_file": "pilot-v1/m9-sequence-family-audit.json"
+      },
+      "reduced_svg": "pilot-v1/views/m9/epsilon-m9.svg",
+      "reduced_png": "pilot-v1/views/m9/epsilon-m9.png"
+    }
   }
 }

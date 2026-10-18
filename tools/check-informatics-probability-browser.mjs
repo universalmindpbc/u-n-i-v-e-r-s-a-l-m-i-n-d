@@ -1,11 +1,12 @@
 import assert from 'node:assert/strict';
 import fs from 'node:fs/promises';
 import path from 'node:path';
+import {fileURLToPath} from 'node:url';
 import {chromium} from '/Users/benkorbel/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/playwright/index.mjs';
 
 const base = 'https://staging.universalmind.tv/informatics/';
 const localCandidate = process.env.INFORMATICS_LOCAL_CANDIDATE === '1';
-const candidateRoot = path.resolve(new URL('../Informatics/',import.meta.url).pathname);
+const candidateRoot = path.resolve(fileURLToPath(new URL('../Informatics/',import.meta.url)));
 const output = process.env.INFORMATICS_QA_OUTPUT || '/private/tmp/m9-m18-probability-staging';
 await fs.mkdir(output, {recursive:true});
 const server = await chromium.launchServer({
@@ -179,6 +180,35 @@ try {
           await frame.getByRole('tab',{name:'Beta',exact:true}).click();
           assert.equal(await switcher.getByRole('button',{name:`Native M${m}`,exact:true}).getAttribute('aria-pressed'),'true');
         }
+        for(const kind of ['alpha','gamma','epsilon']){
+          const view=expectedRecord.m9_sequence_views[kind];
+          await frame.getByRole('tab',{name:kind[0].toUpperCase()+kind.slice(1),exact:true}).click();
+          assert.equal(await frame.locator('#'+kind+'-display').isVisible(),true);
+          await frame.locator('#'+kind+'-native').click();
+          const nativeImage=await frame.locator('#diagram').getAttribute('src');
+          if(kind==='epsilon'&&!expectedRecord.epsilon&&!expectedRecord.epsilon_path){
+            assert.equal(await frame.locator('#candidate-controls').isVisible(),true);
+            assert.match(await frame.locator('#description').innerText(),/No qualifying native Epsilon path/);
+          }
+          await frame.locator('#'+kind+'-reduced').click();
+          assert.equal(await frame.locator('#sequence').innerText(),view.reduced_values.join(' → '));
+          assert.equal(await frame.locator('#candidate-controls').isVisible(),false);
+          assert.ok((await frame.locator('#diagram').getAttribute('src')).includes('/'+kind+'-m9.svg'));
+          assert.ok((await frame.locator('#svg-download').getAttribute('href')).includes('/'+kind+'-m9.svg'));
+          assert.ok((await frame.locator('#png-download').getAttribute('href')).includes('/'+kind+'-m9.png'));
+          assert.equal(await frame.locator('#png-download').isVisible(),true);
+          assert.equal(await frame.locator('#'+kind+'-reduced').getAttribute('aria-pressed'),'true');
+          if(view.repeat_count>1)assert.match(await frame.locator('#convention').innerText(),new RegExp(view.repeat_count+' repeated cycles'));
+          if(kind==='epsilon')assert.match(await frame.locator('#description').innerText(),m===9?/M9 is the reference/:/each reduced 24-position cycle/);
+          assert.equal(await frame.locator('body').evaluate(e=>e.scrollWidth<=innerWidth+1),true);
+          await frame.locator('.workspace').screenshot({path:path.join(output,`m${m}-${kind}-reduced-${viewport.width}.png`)});
+          await frame.getByRole('tab',{name:'Beta',exact:true}).click();
+          assert.equal(await frame.locator('#beta-native').getAttribute('aria-pressed'),'true');
+          await frame.getByRole('tab',{name:kind[0].toUpperCase()+kind.slice(1),exact:true}).click();
+          assert.equal(await frame.locator('#'+kind+'-reduced').getAttribute('aria-pressed'),'true');
+          await frame.locator('#'+kind+'-native').click();
+          if(!(kind==='epsilon'&&!expectedRecord.epsilon&&!expectedRecord.epsilon_path))assert.equal(await frame.locator('#diagram').getAttribute('src'),nativeImage);
+        }
         await frame.getByRole('tab',{name:'Geometry summary',exact:true}).click();
 
         await overview.screenshot({path:path.join(output,`m${m}-counts-${viewport.width}.png`)});
@@ -208,7 +238,7 @@ try {
       assert.deepEqual(media,{same:true,playing:true,events:[],fullscreenPreserved:true});
       assert.deepEqual(errors,[]);
       results.push({modulus,viewport,probability:true,lightbox:true,downloads:true,originalAlignment:true,
-        otherRecordsUnassigned:true,nativeBetaObservations:true,betaNativeReducedToggle:true,betaFullSequenceAndRepeats:true,betaExports:true,epsilonIndependent:true,formationCounts:true,familySummary:true,focusReturn:true,musicContinuous:true,nativeFullscreenInvoked:false,errors});
+        otherRecordsUnassigned:true,nativeBetaObservations:true,betaNativeReducedToggle:true,betaFullSequenceAndRepeats:true,betaExports:true,allFourNativeReducedViews:true,cycleBasedEpsilon:true,epsilonIndependent:true,formationCounts:true,familySummary:true,focusReturn:true,musicContinuous:true,nativeFullscreenInvoked:false,errors});
     } finally {
       await page.evaluate(()=>document.querySelectorAll('video,audio').forEach(e=>e.pause())).catch(()=>{});
       await context.close();

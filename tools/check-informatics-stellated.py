@@ -36,11 +36,14 @@ for record in dataset['records']:
     else:
         assert 'other_geometry_summary' not in native
         assert row['stellated_count_all_alpha'] == row['stellated_count_primary_gamma'] == ''
+    native.pop('m9_sequence_views', None)
+    record.pop('m9_sequence_views', None)
     native.pop('beta_m9_view', None)
     record.pop('beta_m9_view', None)
     native.pop('native_beta_observation', None)
     record.pop('native_beta_observation', None)
     assert native == before, f'Existing M{m} content changed'
+dataset.pop('m9_sequence_family_audit', None)
 dataset.pop('beta_m9_family_audit', None)
 assert dataset == before_dataset, 'Existing aggregate data changed'
 # The comparison record M42 has a defined Beta sequence but no native doubling.
