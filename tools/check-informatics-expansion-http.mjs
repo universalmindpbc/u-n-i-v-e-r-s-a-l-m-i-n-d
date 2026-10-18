@@ -9,7 +9,7 @@ const base='https://staging.universalmind.tv/informatics/';
 const hash=b=>crypto.createHash('sha256').update(b).digest('hex');
 const files=index.records.map(r=>({file:r.file,hash:r.sha256,version:'m1001-v1'}));
 for(const file of ['pilot-v1/index.json','pilot-v1/dataset.json','pilot-v1/m1-m1001.json','pilot-v1/m1-m1001.csv','pilot-v1/m1-m1001-data.zip','index.html','research.html','research.js','science.js','science-studies.js','pilot-v1/family.js']){
- files.push({file,hash:hash(await fs.readFile(path.join(root,'Informatics',file))),version:file.endsWith('.zip')?'m1001-v2':'m1001-final'});
+ files.push({file,hash:hash(await fs.readFile(path.join(root,'Informatics',file))),version:file.endsWith('.zip')?'m1001-v3':'complete-csv-v1'});
 }
 let cursor=0,checked=0;
 async function worker(){while(cursor<files.length){const item=files[cursor++];let error;

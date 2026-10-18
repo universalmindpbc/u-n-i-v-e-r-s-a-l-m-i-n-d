@@ -79,7 +79,7 @@ try {
    }
    await page.screenshot({path:path.join(out,`m1001-summary-${viewport.width}.png`)});
    await frame.locator('#atlas-downloads summary').click();
-   assert.match(await frame.locator('#atlas-downloads a').nth(1).getAttribute('href'),/m1-m1001-data.zip/);
+   assert.match(await frame.locator('#atlas-downloads').getByRole('link',{name:'Full data bundle',exact:true}).getAttribute('href'),/m1-m1001-data.zip/);
    assert.deepEqual(errors,[]);
    results.push({viewport,recordsAvailable:1001,familyMembers:111,familyFirst:true,numericOrder:true,lastFamilyGroup:true,sampledRecords:[1,49,54,99,750,999,1001],allFourViews:true,literatureLightboxes:true,noHorizontalOverflow:true,errors});
   } finally {await page.evaluate(()=>document.querySelectorAll('video,audio').forEach(m=>m.pause())).catch(()=>{});await context.close();}

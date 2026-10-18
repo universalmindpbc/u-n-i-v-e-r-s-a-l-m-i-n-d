@@ -142,13 +142,16 @@ def publish():
         'M9 family: 111 multiples of nine through M999. All four reduced sequence views retain original alignment; Epsilon uses the reference route inside each 24-position block. Native full-circle Epsilon qualification is separate.\n\n'
         '14 publications, including four HERO studies, provide shared background context. Modulus-specific WSS and biological significance remain unassessed. Only M9 and M18 have selected native random-shuffle probabilities.\n\n'
         'Images are available through each JSON view URL on the Atlas; this data archive does not duplicate image assets. dataset.json and m1-m1001.json are current manifest entry points. m1-m48-archive.json and m1-m48-data.zip retain the previous M1–M48 snapshot.\n')
+    from export_complete_csv import export
+    export()
     with zipfile.ZipFile(OUT / 'm1-m1001-data.zip', 'w', zipfile.ZIP_DEFLATED) as z:
         for m in range(1, 1002): z.write(OUT / f'm{m}.json', f'pilot-v1/m{m}.json')
-        for name in ('dataset.json', 'index.json', 'm1-m1001.json', 'm1-m1001.csv', 'M1-M1001-README.txt', 'research-register.json',
+        for name in ('dataset.json', 'index.json', 'm1-m1001.json', 'm1-m1001.csv', 'M1-M1001-README.txt', 'M1-M1001-CSV-README.txt', 'm1-m1001-images.csv', 'research-publications.csv', 'research-register.json',
                      'm9-sequence-family-audit.json', 'beta-m9-family-audit.json', 'm1001-core-signatures.json',
                      'm1001-verification.json', 'm9-probability.json', 'm18-probability.json'):
             if (OUT / name).exists(): z.write(OUT / name, 'pilot-v1/' + name)
         for p in sorted((ROOT / 'research/informatics/pilot').glob('*.py')): z.write(p, 'source/' + p.name)
+        z.write(OUT / 'explorer.js', 'source/atlas-geometry.js')
     print('Published 1001 record manifest, CSV and complete JSON/source bundle.', flush=True)
 
 if __name__ == '__main__':

@@ -98,3 +98,9 @@ The complete range now includes 1,001 records and all 111 multiples of nine. The
 Current JSON entry points are pilot-v1/index.json and pilot-v1/dataset.json (a versioned manifest). Each record file remains independently readable; the full bundle contains all 1,001 JSON records. Formation intervals in new records use endpoints into shared Alpha to avoid duplicate arrays, with exact sums and reconstruction rules retained. The previous 48-record dataset and bundle remain archived.
 
 Validation: Python checked all native returns and 646,188 compact formation intervals; Wolfram independently passed 8,008 core comparisons. Desktop and mobile candidate journeys covered M1, M49, M54, M99, M750, M999 and M1001, both family comparison modes, all four sequence controls, and literature/genomics lightboxes. Deployment uses the existing Panthur FTP script and host; sequential curl connection reuse and manifest checks accommodate the expanded asset count. Production awaits explicit approval.
+
+## Complete CSV export — 18 October 2026
+
+The CSV route includes an overview with direct native/M9 PNG and SVG URLs, 1,001 complete typed CSV records, a full image index, publication table and shared audit CSVs. The complete CSV ZIP contains no JSON files. Its CSV reader reconstructs every record exactly, including nulls, empty containers, sequences and nested calculations. The overview remains included in the JSON/source ZIP as well. Original mathematical JSON records are unchanged.
+
+Website entry points: Download → Complete CSV bundle; per-record sidebar → Record CSV; Geometry summary → Complete CSV bundle. The existing publication register and Notion record data are unchanged. This export addition requires staging proof before production publication.
