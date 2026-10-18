@@ -115,3 +115,6 @@ Notion: https://www.notion.so/3fd7b9c99c5681239265feb88ed38d68 — a dedicated d
 Source collection: `Informatics/pilot-v1/oxtr-tfbs-v1/`. Builders and validation live in `research/informatics/pilot/`; the same supplement is included in both complete M1–M1001 export bundles. The catalogue opens as a lightbox through the existing research context and register. TRANSFAC access, legacy individual coordinates, further database exports and full systematic screening remain documented gaps.
 
 Staging proof: https://staging.universalmind.tv/informatics/?atlas=1&record=fibonacci-m9-p24 . Production approval is separate.
+## Binding-site introduction — approved, 19 October 2026
+
+Ben approved “Understanding Binding Sites and our approach” as an optional link inside the TF binding-site lightbox, opening the existing approved teaching graphic. Keep the literature and source data prominent, retain About’s compact scope, and preserve the active experience. The graphic explains protein recognition, DNA order/spacing/orientation and the Beta M9 P24 reference. A brief explanation distinguishes the 15-site promoter study, ENCODE occupancy clusters and computer-predicted motif matches. The next teaching illustration is the original DNA line → full-position circle → Modulus 9 circle; it is not implemented in this update.

@@ -41,6 +41,22 @@ try{
    const dialog=frame.locator('.science-tfbs');
    await dialog.getByRole('button',{name:'Try again',exact:true}).click();
    await dialog.locator('#tfbs-species').waitFor();
+   const learningLink=dialog.locator('[data-science-tfbs-learning]');
+   await learningLink.click();
+   const learning=frame.locator('.science-tfbs-learning');
+   await learning.locator('img').evaluate(img=>img.decode());
+   assert.equal(await learning.locator('img').evaluate(img=>img.naturalWidth),1536);
+   assert.equal(await learning.evaluate(e=>e.open),true);
+   await page.screenshot({path:path.join(out,`learning-${viewport.width}.png`)});
+   await learning.getByRole('button',{name:'Enlarge diagram',exact:true}).click();
+   assert.equal(await learning.locator('figure').evaluate(e=>e.scrollWidth),1536);
+   await learning.getByRole('button',{name:'Fit diagram to screen',exact:true}).click();
+   await learning.getByText('The 15 sites, ENCODE clusters and predicted matches',{exact:true}).click();
+   assert.equal(await learning.locator('details').evaluate(e=>e.open),true);
+   await page.keyboard.press('Escape');
+   assert.equal(await learning.evaluate(e=>e.open),false);
+   assert.equal(await dialog.evaluate(e=>e.open),true);
+   assert.equal(await learningLink.evaluate(e=>e===document.activeElement),true);
    assert.equal(await dialog.locator('tbody tr').count(),data.evidence.filter(r=>r.species==='Homo sapiens').length);
    await dialog.locator('#tfbs-species').selectOption('animal');
    assert.equal(await dialog.locator('tbody tr').count(),data.evidence.filter(r=>r.species!=='Homo sapiens').length);
@@ -96,9 +112,9 @@ try{
    assert.equal(page.url(),originalUrl);
    assert.equal(await page.evaluate(()=>document.fullscreenElement?.id),before.fullscreen);
    await page.keyboard.press('Escape');
-   assert.equal(await page.locator('.science-register:not(.science-tfbs)').evaluate(e=>e.open),true);
+   assert.equal(await page.locator('.science-register:not(.science-tfbs):not(.science-tfbs-learning)').evaluate(e=>e.open),true);
    assert.deepEqual(errors,[]);
-   results.push({viewport,filters:true,retryAfterFailure:true,keyboardAndOutsideClose:true,escapeAndFocus:true,summaryAndSidebar:true,aboutNestedLightbox:true,fullscreenStatePreserved:true,mediaStatePreserved:true,downloadsMatched:viewport.width===1440,errors});
+   results.push({viewport,teachingGraphicLoaded:true,teachingZoomAndGlossary:true,nestedTeachingEscapeAndFocus:true,filters:true,retryAfterFailure:true,keyboardAndOutsideClose:true,escapeAndFocus:true,summaryAndSidebar:true,aboutNestedLightbox:true,fullscreenStatePreserved:true,mediaStatePreserved:true,downloadsMatched:viewport.width===1440,errors});
   }finally{await page.evaluate(()=>document.querySelectorAll('video,audio').forEach(m=>m.pause())).catch(()=>{});await context.close();}
  }
  const result={passed:true,candidate,processMuted:true,results};await fs.writeFile(path.join(out,'results.json'),JSON.stringify(result,null,2));console.log(JSON.stringify(result,null,2));

@@ -139,7 +139,7 @@
     if (atlas && ($('#research-record') || $('#experience'))) {e.preventDefault(); openAtlas(atlas.dataset.scienceAtlas);}
   });
   function openAtlas(view) {
-    for (const dialog of [zoom, reader, appraisal, register, genomics, tfbs, $('#about')]) if (dialog?.open) dialog.close();
+    for (const dialog of [zoom, reader, appraisal, register, genomics, tfbsLearning, tfbs, $('#about')]) if (dialog?.open) dialog.close();
     if ($('#research-record')) {
       document.dispatchEvent(new CustomEvent('science:atlas-view', {detail: view}));
     } else if ($('#experience')) {
@@ -163,9 +163,22 @@
   tfbs.setAttribute('aria-labelledby', 'tfbs-title');
   tfbs.innerHTML = '<div class="science-reader-bar"><span>OXTR · TRANSCRIPTIONAL REGULATION</span><button class="science-close" aria-label="Close binding-site catalogue">×</button></div><div class="science-register-body"><h2 id="tfbs-title">OXTR binding-site catalogue</h2><div class="tfbs-content"></div></div>';
   document.body.append(tfbs);
+  const external = (href, label) => `<a href="${esc(href)}" target="_blank" rel="noopener noreferrer">${esc(label)} ↗</a>`;
+  const tfbsLearning = document.createElement('dialog');
+  tfbsLearning.className = 'science-register science-tfbs-learning';
+  tfbsLearning.setAttribute('aria-labelledby', 'tfbs-learning-title');
+  tfbsLearning.innerHTML = `<div class="science-reader-bar"><span>OXTR · A VISUAL INTRODUCTION</span><button class="science-close" aria-label="Close binding-site explanation">×</button></div><div class="science-register-body"><h2 id="tfbs-learning-title">Understanding Binding Sites and our approach</h2><p class="science-register-intro">A transcription factor is a protein that recognises particular DNA sequences and helps regulate gene activity. A binding site is a short stretch of DNA where that recognition takes place.</p><button class="science-register-link tfbs-enlarge" aria-pressed="false" aria-controls="tfbs-learning-figure">Enlarge diagram</button><figure id="tfbs-learning-figure" class="tfbs-learning-figure" tabindex="0" aria-label="Binding-site teaching diagram; scroll to explore when enlarged"><img loading="lazy" src="${new URL('science-assets/oxtr-binding-sites-atlas-beta-v1.png', root).href}" width="1536" height="1024" alt="Three teaching panels: a transcription factor recognises a short DNA sequence; four illustrative sites A to D show order, spacing and motif orientation; the Atlas Beta path follows 4, 8, 7, 5, 1, 2 around M9. The open question asks whether relationships between measured binding sites have a useful correspondence with Atlas geometry."></figure><p class="science-small">The DNA sites are illustrative. The arrows on them indicate motif orientation along DNA. The Beta diagram presents the Atlas pattern beside the biological idea; the mapping is the research step ahead.</p><details class="science-score-key"><summary>The 15 sites, ENCODE clusters and predicted matches</summary><dl><dt>The 15 sites</dt><dd>One OXTR promoter study reported 15 candidate binding locations using sequence analysis and laboratory binding tests. This is one study’s set, not a total for every region and cell type.</dd><dt>An ENCODE cluster</dt><dd>An experimental neighbourhood where a protein was detected associating with DNA. It usually covers a wider region than the exact binding sequence. The underlying experiments and cell types are linked in the catalogue.</dd><dt>A predicted match</dt><dd>A computer finds a DNA sequence resembling a protein’s preferred binding pattern. It is a candidate location to investigate; matching the pattern alone does not demonstrate binding in a cell.</dd></dl><p>Several predictions and experimental regions can overlap the same piece of DNA. These are complementary types of evidence, so their counts remain separate.</p><p>${external('https://pubmed.ncbi.nlm.nih.gov/16569740/','The 15-site study')} · ${external('https://www.encodeproject.org/chip-seq/transcription_factor/','ENCODE methods')} · ${external('https://jaspar.elixir.no/docs/','JASPAR documentation')}</p></details><p class="science-label">THE NEXT TEACHING STEP</p><p class="tfbs-next-step">Original DNA line → Full-position circle → Modulus 9 circle</p><p class="science-register-intro">The next illustration will show how the same positions appear in each view, making the preserved relationships and the effects of compression visible.</p></div>`;
+  document.body.append(tfbsLearning);
+  let tfbsLearningOpener;
+  tfbsLearning.querySelector('.tfbs-enlarge').onclick = e => {
+    const expanded = e.currentTarget.getAttribute('aria-pressed') !== 'true';
+    e.currentTarget.setAttribute('aria-pressed', String(expanded));
+    e.currentTarget.textContent = expanded ? 'Fit diagram to screen' : 'Enlarge diagram';
+    tfbsLearning.querySelector('figure').classList.toggle('is-enlarged', expanded);
+  };
+  tfbsLearning.addEventListener('close', () => tfbsLearningOpener?.isConnected && tfbsLearningOpener.focus());
   const tfbsRoot = new URL('pilot-v1/oxtr-tfbs-v1/', root);
   let tfbsData, tfbsLoading, tfbsOpener;
-  const external = (href, label) => `<a href="${esc(href)}" target="_blank" rel="noopener noreferrer">${esc(label)} ↗</a>`;
   function renderTfbsRows() {
     const species = tfbs.querySelector('#tfbs-species').value;
     const evidenceType = tfbs.querySelector('#tfbs-kind').value;
@@ -191,6 +204,7 @@
         const s = data.summary;
         const download = (file, label) => `<a href="${new URL(file, tfbsRoot).href}" download>${label} ↓</a>`;
         content.innerHTML = `<p class="science-register-intro">A foundation for studying OXTR regulation alongside the Atlas. Published findings, experimental occupancy and predicted motifs retain their own evidence labels, coordinates and original sources.</p><p class="science-citation">Collection: 19 October 2026 · Initial release</p><div class="tfbs-counts"><p><strong>${s.publications}</strong> publications<br><span>${s.literature_evidence_records} literature evidence records</span></p><p><strong>${s.encode_clusters}</strong> ENCODE clusters<br><span>${s.encode_targets} assayed targets · multiple cell types</span></p><p><strong>${s.jaspar_default_threshold_predictions.toLocaleString('en-AU')}</strong> predicted matches<br><span>JASPAR · default display threshold</span></p></div><p class="tfbs-scope">${esc(data.interpretation)}</p><nav class="tfbs-downloads" aria-label="Binding-site data downloads">${download('oxtr-tfbs-json.zip','Complete JSON data')}${download('oxtr-tfbs-csv.zip','Complete CSV data')}${download('literature-evidence.csv','Literature table')}${download('README.txt','Methods &amp; scope')}</nav><details class="science-score-key"><summary>Region, database coverage &amp; next steps</summary><p>Human reference window: GRCh38 chr3:8,740,380–8,779,628, using 0-based, end-exclusive coordinates. This covers the annotated OXTR gene and 10 kb on each side. OXTR is on the minus strand.</p><p>All ${s.jaspar_all_predictions.toLocaleString('en-AU')} returned JASPAR predictions are retained in the downloads; ${s.jaspar_default_threshold_predictions.toLocaleString('en-AU')} pass UCSC’s default score ≥400 display filter. These are motif matches, with overlapping models and positions. The filter does not establish biological activity.</p><p>The downloads include reference DNA, ${s.jaspar_available_pfm_templates.toLocaleString('en-AU')} vertebrate motif templates, experimental provenance and ${s.oreganno_regions} regional ORegAnno annotations. ENCODE clusters describe broad occupancy, including coregulators. Neither regional overlap nor motif matching alone establishes OXTR regulation.</p><ul class="tfbs-resources">${data.resources.map(r => `<li>${external(r.url,r.name)} · ${esc(r.status)}<br><span>${esc(r.note)}</span></li>`).join('')}</ul><p>${esc(data.coverage)}</p><p>Next visual stage: the original DNA line, a full-position circle and a separately labelled Modulus 9 view. Coordinates and comparison rules are being assembled first. No Atlas correspondence or numerical WSS has been assessed.</p></details><div class="tfbs-filters"><label for="tfbs-species">Study system<select id="tfbs-species"><option value="human">Human OXTR</option><option value="animal">Animal Oxtr</option><option value="all">All systems</option></select></label><label for="tfbs-kind">Evidence<select id="tfbs-kind"><option value="all">All evidence types</option>${[...new Set(data.evidence.map(r => r.evidence_kind))].sort().map(k => `<option value="${k}">${esc(k.replaceAll('_',' '))}</option>`).join('')}</select></label></div><p class="tfbs-result-count" role="status"></p><p class="science-table-hint">Scroll the table horizontally to read each source.</p><div class="science-table-scroll" tabindex="0" role="region" aria-label="OXTR literature evidence"><table><caption class="science-sr-only">Evidence records, reported positions and primary sources. Records are not a unique-site count.</caption><thead><tr><th scope="col">Factor &amp; evidence</th><th scope="col">Finding &amp; reported position</th><th scope="col">Primary source &amp; review depth</th></tr></thead><tbody></tbody></table></div><p class="science-small">Unknown positions remain unfilled. Source review depth is stated for each paper; trust scores for this collection are unassigned. The existing 14-study research register remains a separate collection, with shared papers cross-referenced.</p>`;
+        content.querySelector('.science-register-intro').insertAdjacentHTML('afterend', '<p><button class="science-register-link" data-science-tfbs-learning aria-haspopup="dialog">Understanding Binding Sites and our approach ↗</button></p>');
         renderTfbsRows();
       } catch {
         tfbsData = null;
@@ -203,6 +217,8 @@
     const entry = e.target.closest('[data-science-tfbs]');
     if (entry) {e.preventDefault(); tfbsOpener = entry; (document.fullscreenElement || document.body).append(tfbs); tfbs.showModal(); tfbs.scrollTop = 0; loadTfbs();}
     if (e.target.closest('[data-tfbs-retry]')) loadTfbs();
+    const learning = e.target.closest('[data-science-tfbs-learning]');
+    if (learning) {tfbsLearningOpener = learning; (document.fullscreenElement || document.body).append(tfbsLearning); tfbsLearning.showModal(); tfbsLearning.scrollTop = 0;}
   });
   tfbs.addEventListener('change', renderTfbsRows);
   tfbs.addEventListener('close', () => tfbsOpener?.isConnected && tfbsOpener.focus());
@@ -247,7 +263,7 @@
     reader.showModal(); reader.scrollTop = 0;
   }
   reader.querySelectorAll('[data-reader-card]').forEach(b => b.onclick = () => {active = cards.find(c => c.id === b.dataset.readerCard); renderCard(); reader.scrollTop = 0;});
-  for (const dialog of [reader, zoom, register, appraisal, genomics, tfbs]) {
+  for (const dialog of [reader, zoom, register, appraisal, genomics, tfbs, tfbsLearning]) {
     dialog.querySelector('.science-close').onclick = () => dialog.close();
     dialog.addEventListener('click', e => {if (e.target !== dialog) return; const r = dialog.getBoundingClientRect(); if (e.clientX < r.left || e.clientX > r.right || e.clientY < r.top || e.clientY > r.bottom) dialog.close();});
   }
