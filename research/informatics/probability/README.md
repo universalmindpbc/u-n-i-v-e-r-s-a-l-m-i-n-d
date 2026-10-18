@@ -1,8 +1,14 @@
-# M9 P24 probability publication
+# M9 and M18 probability publication
 
 The approved comparison preserves each record's original Gamma values, Gamma
-positions and Beta alignment. M9 P24 is the first calculated record. Its result
-is `263/51305410956800`, approximately **1 in 195.1 billion**.
+positions and native Beta alignment. The selected records are **M9 P24 and M18
+P24**. M9 is `263/51305410956800`, approximately **1 in 195.1 billion**. M18 is
+`491/2885929366320000`, approximately **1 in 5.88 trillion**.
+
+The project lead narrowed the comparison on 18 October 2026. M27, M36 and M45
+have explicit `probability: null` and `probability_scope.status: "Not selected"`.
+Null means unscored for this comparison, not zero. Family membership alone does
+not select a record. Existing geometry observations remain unchanged.
 
 The Atlas shows **Probability** in Geometry Summary, immediately before Reduction
 to M9. Its calculation opens in a lightbox in the existing Atlas experience.
@@ -22,11 +28,12 @@ python3 tools/check-informatics-register.py
 
 The calculator checks the exact native inputs and counts the original alignment
 using three exact procedures. `sync_probability.py` produces the optional,
-versioned `probability` object in M9's record, the aggregate dataset and the
-standalone `m9-probability.json`. Arrangement counts are strings to preserve
-integer precision in JavaScript. Other records have no assigned probability.
-The CSV exposes the display, exact fraction, value, reciprocal and method.
-The ZIP includes M9's JSON and executable calculator for reproduction.
+versioned `probability` objects in both selected records, the aggregate dataset
+and standalone `m9-probability.json` and `m18-probability.json`. Arrangement
+counts are strings to preserve integer precision in JavaScript.
+The CSV exposes status, display, exact fraction, value, reciprocal and method.
+The ZIP includes both records and executable calculators for reproduction,
+and the three unselected family records with their explicit null values.
 
 The local Informatics workspace mirrors the calculator under
 `research/probability`, the sync under `src`, and exports under `data/m1-m48-v1`.
@@ -35,6 +42,7 @@ The local Informatics workspace mirrors the calculator under
 
 Existing Atlas data source: `e63b575d-a9ae-4c56-8ecc-c7b3b2ec558a`.
 Existing M9 P24 page: `3fb7b9c9-9c56-8137-a2c5-c99b7bc2a1ee`.
+Existing M18 P24 page: `3fb7b9c9-9c56-81dd-8058-e69548b963aa`.
 
 Properties: `Probability` (text), `Probability exact` (text), `Probability one in`
 (number) and `Probability method` (text). The page contains the identical summary
@@ -44,4 +52,5 @@ M1–M48 exports. Earlier attached snapshots remain labelled as historical.
 The original probability discussion in Appendix D is retained as source history.
 The current record uses the joint Gamma–Beta calculation agreed on 18 October 2026.
 This update does not assign statistical significance, biological significance
-or WSS scores. No probability values have been applied to other M9-family records.
+or WSS scores. No probability values are assigned beyond M9 and M18. Unselected
+Notion records retain blank probability values; their method field records scope.

@@ -12399,5 +12399,11 @@
         "crossrefTitle": "CD38 is critical for social behaviour by regulating oxytocin secretion"
       }
     ]
+  },
+  "probability": null,
+  "probability_scope": {
+    "status": "Not selected",
+    "comparison": "Current M9 and M18 geometry comparison",
+    "null_meaning": "Not selected for this comparison; no probability assigned. Null is not zero."
   }
 }

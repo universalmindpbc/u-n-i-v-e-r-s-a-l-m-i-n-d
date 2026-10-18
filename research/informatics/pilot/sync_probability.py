@@ -1,7 +1,7 @@
-"""Publish the approved M9 P24 probability with its native alignment preserved.
+"""Publish the selected M9 and M18 comparisons with native alignment preserved.
 
 Run after geometry/literature generation and before export_csv.py.
-Only the M9 record receives a probability. Other records await calculation.
+M27, M36 and M45 remain unscored: null means not selected, not zero.
 """
 import argparse
 import importlib.util
@@ -13,19 +13,19 @@ def write_json(path, data):
     path.write_text(json.dumps(data, ensure_ascii=False, indent=2) + '\n')
 
 
-def sync(data_dir, calculator):
-    spec = importlib.util.spec_from_file_location('m9_probability', calculator)
+def publish(data_dir, calculator, modulus):
+    spec = importlib.util.spec_from_file_location(f'm{modulus}_probability', calculator)
     module = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(module)
-    audit = module.calculate(data_dir / 'm9.json')
-    native = json.loads((data_dir / 'm9.json').read_text())
+    audit = module.calculate(data_dir / f'm{modulus}.json')
+    native = json.loads((data_dir / f'm{modulus}.json').read_text())
     result = audit['probabilities']['joint_exact_gamma_fixed_beta_phase']
-    assert result['exact_fraction'] == '263/51305410956800'
+    assert result['exact_fraction'] == {9: '263/51305410956800', 18: '491/2885929366320000'}[modulus]
     numerator, denominator = result['exact_fraction'].split('/')
     counts = audit['counts']
     probability = {
         'schema_version': '1.0.0',
-        'id': 'm9p24-fixed-gamma-beta-shuffle-v1',
+        'id': f'm{modulus}p24-fixed-gamma-beta-shuffle-v1',
         'record_id': native['id'],
         'calculated_on': audit['date'],
         'status': 'Calculated',
@@ -69,12 +69,12 @@ def sync(data_dir, calculator):
         'calculation': {
             'steps': [
                 'Shuffle the same 24 Alpha values, keeping every value and its frequency.',
-                'Place Gamma values 9, 3, 3, 9, 6, 6 at clock positions 24, 4, 8, 12, 16, 20.',
-                'Sum the three Alpha values between each pair of Gamma nodes, excluding the endpoints, and reduce each sum modulo 9.',
-                'Match Beta to 4, 8, 7, 5, 1, 2, starting with the interval from clock position 24 to 4.',
+                f"Place Gamma values {', '.join(map(str, native['gamma']['clockwise_values']))} at clock positions 24, 4, 8, 12, 16, 20.",
+                f'Sum the three Alpha values between each pair of Gamma nodes, excluding the endpoints, and reduce each sum modulo {modulus}.',
+                f"Match Beta to {', '.join(map(str, native['beta']['interval_residues']))}, starting with the interval from clock position 24 to 4.",
             ],
-            'formula': '1,725,543 / 336,614,801,287,564,800 = 263 / 51,305,410,956,800',
-            'counting_note': 'For the six Beta intervals, 198 combinations of three-value groups use exactly the available values. Counting the possible orders within each group gives 1,725,543 matching arrangements.',
+            'formula': f"{counts['exact_gamma_and_fixed_beta_phase']:,} / {counts['all_distinct_alpha_arrangements']:,} = {int(numerator):,} / {int(denominator):,}",
+            'counting_note': f"For the six Beta intervals, {counts['qualifying_six_triple_combinations']} combinations of three-value groups use exactly the available values. Counting the possible orders within each group gives {counts['exact_gamma_and_fixed_beta_phase']:,} matching arrangements.",
             'verification_note': 'Three exact counting methods agree: remaining-value enumeration, complete three-value-group enumeration, and a separate count treating each card individually.',
         },
         'verification': {
@@ -89,8 +89,8 @@ def sync(data_dir, calculator):
             'biological_significance_status': native['research']['biological_significance_status'],
         },
         'files': {
-            'data': 'm9-probability.json',
-            'code': 'm9-probability.py',
+            'data': f'm{modulus}-probability.json',
+            'code': f'm{modulus}-probability.py',
         },
     }
     dataset = json.loads((data_dir / 'dataset.json').read_text())
@@ -102,10 +102,42 @@ def sync(data_dir, calculator):
     aggregate['probability'] = probability
     native['probability'] = probability
     write_json(data_dir / 'dataset.json', dataset)
-    write_json(data_dir / 'm9.json', native)
-    write_json(data_dir / 'm9-probability.json', probability)
-    (data_dir / 'm9-probability.py').write_text(calculator.read_text())
+    write_json(data_dir / f'm{modulus}.json', native)
+    write_json(data_dir / f'm{modulus}-probability.json', probability)
+    (data_dir / f'm{modulus}-probability.py').write_text(calculator.read_text())
     return probability
+
+
+SCOPE = {
+    'selected_record_ids': ['fibonacci-m9-p24', 'fibonacci-m18-p24'],
+    'not_selected_record_ids': ['fibonacci-m27-p72', 'fibonacci-m36-p24', 'fibonacci-m45-p120'],
+    'basis': 'Current M9 and M18 geometry comparison, selected by the project lead on 2026-10-18.',
+    'null_meaning': 'Not selected for this comparison; no probability assigned. Null is not zero.',
+    'comparison_rule': "Preserve each selected record's native Gamma values, positions and Beta alignment.",
+}
+
+
+def sync(data_dir, calculator):
+    # Selection is explicit, not inferred from family membership or a score.
+    publications = [publish(data_dir, calculator, 9),
+                    publish(data_dir, calculator.with_name('m18p24_exact_shuffle.py'), 18)]
+    dataset = json.loads((data_dir / 'dataset.json').read_text())
+    dataset['probability_scope'] = SCOPE
+    for record in dataset['records']:
+        if record['id'] not in SCOPE['not_selected_record_ids']:
+            continue
+        native_path = data_dir / f"m{record['modulus']}.json"
+        native = json.loads(native_path.read_text())
+        for target in (native, record):
+            target['probability'] = None
+            target['probability_scope'] = {
+                'status': 'Not selected',
+                'comparison': 'Current M9 and M18 geometry comparison',
+                'null_meaning': SCOPE['null_meaning'],
+            }
+        write_json(native_path, native)
+    write_json(data_dir / 'dataset.json', dataset)
+    return publications
 
 
 if __name__ == '__main__':
@@ -113,5 +145,6 @@ if __name__ == '__main__':
     parser.add_argument('--data-dir', type=Path, required=True)
     parser.add_argument('--calculator', type=Path, default=Path(__file__).resolve().parents[1] / 'probability/m9p24_exact_shuffle.py')
     args = parser.parse_args()
-    result = sync(args.data_dir, args.calculator)
-    print(f"M9 P24: {result['display']}; original Gamma and Beta alignment preserved.")
+    for result in sync(args.data_dir, args.calculator):
+        print(f"{result['record_id']}: {result['display']}; native Gamma and Beta alignment preserved.")
+    print('M27, M36 and M45: null; not selected for the current comparison.')
