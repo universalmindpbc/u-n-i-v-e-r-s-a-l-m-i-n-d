@@ -614,32 +614,69 @@ provision_sovereignty_runtime() {
 
 # Scoped Informatics deployment, using the existing Panthur transport.
 deploy_informatics() {
-  local name source_file checksum manifest_tmp
+  local name source_file checksum manifest_tmp queue_tmp pid failed=0 count=0
+  local workers="${INFORMATICS_UPLOAD_WORKERS:-4}"
+  local -a upload_pids=()
+  [[ "$workers" =~ ^[1-4]$ ]] || { echo "Informatics upload workers must be 1–4." >&2; return 1; }
+  # Same Panthur FTP transport and manifest. Validate the entire scoped source
+  # before uploading; publish entry points only after all referenced assets exist.
+  if ! git -C "$ROOT_DIR" diff --quiet HEAD -- Informatics research/informatics/legacy-uppercase.htaccess; then
+    echo "Refusing to deploy uncommitted Informatics source." >&2
+    return 1
+  fi
   manifest_tmp="$(mktemp)"
+  queue_tmp="$(mktemp)"
   if [[ -f "$MANIFEST_FILE" ]]; then
     awk -F '\t' '$2 !~ /^(Informatics|informatics)\//' "$MANIFEST_FILE" > "$manifest_tmp"
   fi
-  for name in geometry.json wolfram-icon.svg style.css landing.js app.js index.html m9p24.json research.html research.css research.js views/alpha.svg views/alpha.png views/beta.svg views/beta.png views/gamma.svg views/gamma.png views/epsilon.svg views/epsilon.png views/fibonacci-m9p24.svg views/fibonacci-m9p24.png m6p24.json views/m6/alpha.svg views/m6/alpha.png views/m6/beta.svg views/m6/beta.png views/m6/gamma.svg views/m6/gamma.png views/m6/epsilon.svg views/m6/epsilon.png views/m6/fibonacci-m6p24.svg views/m6/fibonacci-m6p24.png m12p24.json views/m12/alpha.svg views/m12/alpha.png views/m12/beta.svg views/m12/beta.png views/m12/gamma.svg views/m12/gamma.png views/m12/fibonacci-m12p24.svg views/m12/fibonacci-m12p24.png science.js science.css science-studies.js genomics.html $(git -C "$ROOT_DIR" ls-files "Informatics/science-assets/*" "Informatics/pilot-v1/*" | sed "s|^Informatics/||"); do
-    source_file="$ROOT_DIR/Informatics/$name"
-    git -C "$ROOT_DIR" ls-files --error-unmatch "Informatics/$name" >/dev/null
-    if ! git -C "$ROOT_DIR" diff --quiet HEAD -- "Informatics/$name"; then
-      echo "Refusing to deploy uncommitted Informatics source." >&2
-      return 1
+  python3 - "$ROOT_DIR" "$MANIFEST_FILE" "$manifest_tmp" "$queue_tmp" <<'PYQUEUE'
+import hashlib, pathlib, subprocess, sys
+root, old_file, manifest, queue = map(pathlib.Path, sys.argv[1:])
+old = {}
+if old_file.exists():
+    for line in old_file.read_text().splitlines():
+        digest, path = line.split('\t', 1)
+        old[path] = digest
+tracked = subprocess.check_output(['git', '-C', str(root), 'ls-files', '-z', 'Informatics', 'research/informatics/legacy-uppercase.htaccess']).decode().split('\0')
+entries = []
+for path in filter(None, tracked):
+    remote = 'Informatics/.htaccess' if path.endswith('legacy-uppercase.htaccess') else 'informatics/' + path.removeprefix('Informatics/')
+    digest = hashlib.sha256((root / path).read_bytes()).hexdigest()
+    entries.append((path, remote, digest))
+# Data and images first; the index and HTML/JS entry points form the final batch.
+entries.sort(key=lambda x: (x[0].endswith(('index.json', '.html', '.js')), x[0]))
+with manifest.open('a') as f, queue.open('w') as q:
+    for path, remote, digest in entries:
+        f.write(digest + '\t' + remote + '\n')
+        if old.get(remote) != digest:
+            q.write(path + '\t' + remote + '\n')
+print(f'Informatics: {len(entries)} tracked assets; {sum(old.get(r) != h for _, r, h in entries)} changed uploads via Panthur FTP.')
+PYQUEUE
+  while IFS=$'\t' read -r source_file name; do
+    [[ -n "$source_file" ]] || continue
+    case "$source_file" in
+      *.html|*.js|*/index.json)
+        for pid in ${upload_pids[@]+"${upload_pids[@]}"}; do wait "$pid" || failed=1; done
+        upload_pids=()
+        if [[ "$failed" -ne 0 ]]; then rm -f "$manifest_tmp" "$queue_tmp"; return 1; fi
+        ;;
+    esac
+    # Wait for each bounded batch. A failed upload never advances the manifest.
+    put_file "$ROOT_DIR/$source_file" "$name" &
+    upload_pids+=("$!")
+    count=$((count + 1))
+    if [[ ${#upload_pids[@]} -ge "$workers" ]]; then
+      for pid in ${upload_pids[@]+"${upload_pids[@]}"}; do wait "$pid" || failed=1; done
+      upload_pids=()
+      if [[ "$failed" -ne 0 ]]; then rm -f "$manifest_tmp" "$queue_tmp"; return 1; fi
     fi
-    put_file "$source_file" "informatics/$name"
-    checksum="$(file_hash "$source_file")"
-    printf '%s\t%s\n' "$checksum" "informatics/$name" >> "$manifest_tmp"
-  done
-  source_file="$ROOT_DIR/research/informatics/legacy-uppercase.htaccess"
-  git -C "$ROOT_DIR" ls-files --error-unmatch "research/informatics/legacy-uppercase.htaccess" >/dev/null
-  if ! git -C "$ROOT_DIR" diff --quiet HEAD -- "research/informatics/legacy-uppercase.htaccess"; then
-    echo "Refusing to deploy uncommitted Informatics redirect." >&2
-    return 1
-  fi
-  put_file "$source_file" "Informatics/.htaccess"
-  checksum="$(file_hash "$source_file")"
-  printf '%s\t%s\n' "$checksum" "Informatics/.htaccess" >> "$manifest_tmp"
+    if [[ $((count % 200)) -eq 0 ]]; then echo "Informatics: uploaded $count changed assets."; fi
+  done < "$queue_tmp"
+  for pid in ${upload_pids[@]+"${upload_pids[@]}"}; do wait "$pid" || failed=1; done
+  rm -f "$queue_tmp"
+  if [[ "$failed" -ne 0 ]]; then rm -f "$manifest_tmp"; return 1; fi
   mv "$manifest_tmp" "$MANIFEST_FILE"
+  echo "Informatics: completed $count changed uploads through the existing Panthur FTP transport."
 }
 
 DEPLOY_MODE="${1:-iam}"

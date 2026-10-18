@@ -1,10 +1,10 @@
 {
   "schema_version": "1.0.0",
   "id": "oxtr-phase1-literature",
-  "version": "2026-10-17.1",
+  "version": "2026-10-18.1",
   "title": "First Principles Genomics — research register",
   "initial_biological_focus": "OXTR",
-  "scope": "Shared background literature for the initial OXTR research programme across M1–M48. Studies of related mechanisms in other systems provide context for investigation.",
+  "scope": "Shared background literature for the initial OXTR research programme across M1–M1001. Studies of related mechanisms in other systems provide context for investigation.",
   "relationship_to_atlas": "background_context",
   "modulus_relevance_status": "Not yet assessed",
   "hypothesis_reference_record_id": "fibonacci-m9-p24",

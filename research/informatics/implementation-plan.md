@@ -89,3 +89,12 @@ Add a researcher-controlled Submit a finding workflow: draft → reproducibility
 - Bridge is a later participant/sensor study integration, not the primary findings repository. Current Bridge documentation says it was developed by Sage and is now operated by GRIP. https://developer.sagebridge.org/
 
 Status: planned, no accounts connected, no external findings published, no partnership claimed. Review code and data licensing before presenting the project as open source. Preserve M1–M24 proof → UO → API/MCP ordering; this collaboration layer follows those foundations.
+
+
+## M1–M1001 Atlas expansion — 18 October 2026
+
+The complete range now includes 1,001 records and all 111 multiples of nine. The Research record selector begins with M family, followed by numerical modulus order. Each family member retains native Alpha, Beta, Gamma and Epsilon assessment alongside its phase-preserving M9 view. The shared register remains 14 studies, including four HERO references; 3,003 WSS tier slots remain unscored.
+
+Current JSON entry points are pilot-v1/index.json and pilot-v1/dataset.json (a versioned manifest). Each record file remains independently readable; the full bundle contains all 1,001 JSON records. Formation intervals in new records use endpoints into shared Alpha to avoid duplicate arrays, with exact sums and reconstruction rules retained. The previous 48-record dataset and bundle remain archived.
+
+Validation: Python checked all native returns and 646,188 compact formation intervals; Wolfram independently passed 8,008 core comparisons. Desktop and mobile candidate journeys covered M1, M49, M54, M99, M750, M999 and M1001, both family comparison modes, all four sequence controls, and literature/genomics lightboxes. Deployment uses the existing Panthur FTP script and host; bounded uploads and manifest checks accommodate the expanded asset count. Production awaits explicit approval.
