@@ -3677,6 +3677,10 @@
     "heading": "Probability",
     "display": "Approximately 1 in 195.1 billion",
     "summary": "Shuffle the 24 Alpha values around the circle. This is the chance of recovering the original Gamma arrangement and deriving Beta as 4, 8, 7, 5, 1, 2, with the same starting position.",
+    "research_insight": {
+      "status": "Open research",
+      "quote": "We are exploring equilateral triangles, honeycomb theorem, and carbon structures in relationship to this Atlas for useful directions for computation in OXTR research."
+    },
     "method": {
       "id": "uniform-alpha-shuffle-original-alignment-v1",
       "comparison_rule": "Preserve each record's original Gamma values, positions and Beta alignment.",

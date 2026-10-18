@@ -32,6 +32,10 @@ def sync(data_dir, calculator):
         'heading': 'Probability',
         'display': audit['selected_comparison']['display'],
         'summary': audit['selected_comparison']['explanation'],
+        'research_insight': {
+            'status': 'Open research',
+            'quote': 'We are exploring equilateral triangles, honeycomb theorem, and carbon structures in relationship to this Atlas for useful directions for computation in OXTR research.',
+        },
         'method': {
             'id': 'uniform-alpha-shuffle-original-alignment-v1',
             'comparison_rule': "Preserve each record's original Gamma values, positions and Beta alignment.",

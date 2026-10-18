@@ -37,6 +37,7 @@
 #atlas-probability h3{font-size:18px;font-weight:400;margin:0 0 14px}
 #atlas-probability .probability-value,.probability-reader .probability-value{font-size:clamp(19px,2.4vw,25px);font-weight:300;line-height:1.4;color:#e5ebee;margin:0 0 12px}
 .probability-summary{font-size:13px;line-height:1.8;color:#b3c2cc;max-width:650px;margin:0 0 8px}
+.probability-insight{margin:18px 0 8px;padding:0 0 0 16px;border-left:1px solid #ffffff35;max-width:650px}.probability-insight p{font-size:13px;line-height:1.8;color:#b3c2cc;margin:0}
 .probability-open{border:0;background:none;padding:8px 0;min-height:44px;color:#d8e6ef;font:12px/1.6 Arial,Helvetica,sans-serif;letter-spacing:0;text-align:left;cursor:pointer}
 .probability-open:hover{text-decoration:underline;text-underline-offset:4px}.probability-open:focus-visible{outline:2px solid #e4bd83;outline-offset:3px}
 .probability-reader{width:min(760px,94vw)}.probability-steps{padding-left:20px;color:#bdc8d0}.probability-steps li{padding:5px 0}

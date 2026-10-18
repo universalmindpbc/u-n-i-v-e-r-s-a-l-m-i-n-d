@@ -6,6 +6,8 @@ is `263/51305410956800`, approximately **1 in 195.1 billion**.
 
 The Atlas shows **Probability** in Geometry Summary, immediately before Reduction
 to M9. Its calculation opens in a lightbox in the existing Atlas experience.
+Ben's approved research-direction quote is preserved verbatim below the calculation
+link and in the JSON and Notion record. It remains separate from the counting rule.
 
 ## Regeneration
 

@@ -37,6 +37,7 @@ try {
       assert.equal(await section.locator('h3').innerText(), 'Probability');
       assert.equal(await section.locator('.probability-value').innerText(), 'Approximately 1 in 195.1 billion');
       assert.match(await section.innerText(), /4, 8, 7, 5, 1, 2/);
+      assert.equal(await section.locator('blockquote').innerText(), '“We are exploring equilateral triangles, honeycomb theorem, and carbon structures in relationship to this Atlas for useful directions for computation in OXTR research.”');
       assert.equal(await section.evaluate(e=>e.nextElementSibling.id), 'm9-comparison');
       await page.waitForFunction(()=>{const v=document.querySelector('#film');return !v.paused && v.currentTime > 0.2;}, null, {timeout:45000});
       await page.evaluate(()=>{
