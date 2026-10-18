@@ -10,7 +10,7 @@ const candidate=process.env.INFORMATICS_CANDIDATE==='1';
 const out=process.env.INFORMATICS_QA_OUTPUT||'/private/tmp/atlas-complete-csv-browser';
 await fs.mkdir(out,{recursive:true});
 const hash=b=>crypto.createHash('sha256').update(b).digest('hex');
-const server=await chromium.launchServer({executablePath:'/Users/benkorbel/Library/Caches/ms-playwright/chromium_headless_shell-1234/chrome-headless-shell-mac-arm64/chrome-headless-shell',headless:true,args:['--mute-audio']});
+const server=await chromium.launchServer({downloadsPath:out,executablePath:'/Users/benkorbel/Library/Caches/ms-playwright/chromium_headless_shell-1234/chrome-headless-shell-mac-arm64/chrome-headless-shell',headless:true,args:['--mute-audio']});
 assert.ok(server.process().spawnargs.includes('--mute-audio'));
 const browser=await chromium.connect(server.wsEndpoint()),results=[];
 try{
