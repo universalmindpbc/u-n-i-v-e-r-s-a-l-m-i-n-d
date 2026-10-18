@@ -31,3 +31,16 @@
 
 /* Dataset actions are separate from geometry tabs; room for future connections. */
 .atlas-navigation{display:flex;align-items:stretch;gap:20px;border-top:1px solid #ffffff18;border-bottom:1px solid #ffffff18;position:relative;z-index:2}.atlas-navigation:has(nav[hidden]){display:none}.atlas-navigation nav{flex:1;min-width:0;border:0;column-gap:18px}.atlas-actions{display:flex;align-items:center;gap:14px;padding-left:20px;border-left:1px solid #ffffff18}#atlas-downloads{position:relative;border:0;margin:0;padding:0}#atlas-downloads>summary{list-style:none;color:#dce4ea;font-size:11px;letter-spacing:.05em;padding:17px 0;white-space:nowrap}#atlas-downloads>summary::-webkit-details-marker{display:none}#atlas-downloads>summary:hover,#atlas-downloads[open]>summary{color:#ffea42}.atlas-download-menu{position:absolute;right:0;top:100%;width:190px;padding:10px;background:#10161b;border:1px solid #34434e;box-shadow:0 12px 28px #0008}.atlas-download-menu p{font-size:9px;color:#84939f;letter-spacing:.06em;margin:5px 8px 10px}.atlas-download-menu a{display:block;padding:11px 8px;font-size:12px;color:#e2e8ec}.atlas-download-menu a:hover{background:#ffffff0b;color:#ffea42;text-decoration:none}@media(max-width:1000px){.atlas-navigation{flex-wrap:wrap;gap:0}.atlas-navigation nav{flex-basis:100%}.atlas-actions{width:100%;justify-content:flex-end;border-left:0;border-top:1px solid #ffffff18;padding-left:0}#atlas-downloads>summary{padding:12px 2px}}
+
+/* Probability follows the record data and preserves its original alignment. */
+#atlas-probability{border-top:1px solid #ffffff24;margin-top:28px;padding:20px 0 4px}
+#atlas-probability h3{font-size:18px;font-weight:400;margin:0 0 14px}
+#atlas-probability .probability-value,.probability-reader .probability-value{font-size:clamp(19px,2.4vw,25px);font-weight:300;line-height:1.4;color:#e5ebee;margin:0 0 12px}
+.probability-summary{font-size:13px;line-height:1.8;color:#b3c2cc;max-width:650px;margin:0 0 8px}
+.probability-open{border:0;background:none;padding:8px 0;min-height:44px;color:#d8e6ef;font:12px/1.6 Arial,Helvetica,sans-serif;letter-spacing:0;text-align:left;cursor:pointer}
+.probability-open:hover{text-decoration:underline;text-underline-offset:4px}.probability-open:focus-visible{outline:2px solid #e4bd83;outline-offset:3px}
+.probability-reader{width:min(760px,94vw)}.probability-steps{padding-left:20px;color:#bdc8d0}.probability-steps li{padding:5px 0}
+.probability-counts{display:grid;grid-template-columns:1fr auto;gap:12px 22px;font-size:13px;line-height:1.6}.probability-counts dt{color:#a5b5c1}.probability-counts dd{margin:0;color:#e5ebee;font-variant-numeric:tabular-nums}
+.probability-reader .probability-formula{padding:16px;background:#ffffff05;border-left:2px solid #5ca8ff;font-size:13px;overflow-wrap:anywhere}
+.probability-verification{margin-top:22px;border-top:1px solid #34434e;padding-top:12px}.probability-downloads{display:flex;flex-wrap:wrap;gap:8px 24px;margin-top:20px}.probability-reader .probability-downloads a{font-size:12px;min-height:44px;display:inline-flex;align-items:center}
+@media(max-width:480px){.probability-counts{grid-template-columns:1fr;gap:4px}.probability-counts dd{margin-bottom:12px}.probability-reader .probability-formula{padding:12px;font-size:12px}}

@@ -38,6 +38,7 @@ After generating mathematical data, regenerate literature and exports together:
 
 ```sh
 python3 research/informatics/pilot/sync_research_register.py --data-dir Informatics/pilot-v1 --browser-js Informatics/science-studies.js
+python3 research/informatics/pilot/sync_probability.py --data-dir Informatics/pilot-v1
 INFORMATICS_DATA_DIR=Informatics/pilot-v1 python3 research/informatics/pilot/export_csv.py
 python3 tools/check-informatics-register.py
 ```
