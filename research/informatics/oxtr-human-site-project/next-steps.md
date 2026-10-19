@@ -1,5 +1,16 @@
 # OXTR binding-site illustrations and Atlas computing roadmap
 
+## Current source and outcome presentation — 20 October 2026
+
+The current comparison is DNA on the left and original Atlas geometry on the right, with Blend off by default. This supersedes the earlier shared-only design described in the historical notes below. Source cards now explain published studies, ENCODE laboratory measurements and JASPAR predictions before the experiment. A visible evidence-priority guide starts with positive binding at a defined sequence, followed by regional association and predicted matches, while retaining assay quality and biological context. Publication status is not a binding outcome.
+
+The plotted observations carry source-linked binding outcomes. US-1 and US-2 have reported positive binding results; ENCODE records have positive regional association signals; JASPAR records remain predictions. The record inspector separates assay, context, gene-activity effect and source-review depth. US-1 reporter activity is distinguished from native OXTR regulation, and the proposed US-2 expression role remains unconfirmed in the reviewed abstract. Full-text reassessment and recovery of the original 15 sites remain priorities.
+
+`binding-outcomes.json`, its typed CSV and `mapped-binding-outcomes.json/csv` retain the interpretation for human and AI users. The latter covers all 9,421 mapped records without changing their source measurements or projections. Complete Atlas packages and filtered exports include the same information. No negative controls have been curated for this map; missing data is not a failed binding test. Outcome categories reserve explicit negative and mixed results for source-supported future additions.
+
+Next: Ben reviews the source explanations, outcome labels and comparison design on permanent staging. Then define a test of geometric prediction with appropriate controls and sensitivity to coordinate anchors. Positive binding observations are biological anchors; two study elements alone do not establish predictive performance. Do not treat ENCODE region centres as identified motifs or apply the Fibonacci shuffle probability to DNA matches.
+
+
 ## Shared-graph refinement — 20 October 2026
 
 Ben approved one shared graph for the DNA observations and selected Alpha, Beta, Gamma or Epsilon geometry. The original DNA line, full-position circle before compression, and M9 circle remain available for each of the three source collections. Both the full-position and compressed comparisons are part of the research question. Fixed origin, direction and native Atlas grids remain explicit; no rotation is fitted to the observations.

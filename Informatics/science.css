@@ -46,3 +46,51 @@
 
 /* Independent comparison panels; blending is an explicit display choice. */
 .geometry-legend{display:flex;flex-wrap:wrap;gap:8px 18px;margin:12px 0 4px;font-size:11px;color:#bed0db;min-height:38px}.geometry-legend>span{display:inline-flex;align-items:center;gap:9px}.geometry-legend [hidden]{display:none}.geometry-legend i{display:inline-block;flex:none;width:11px;height:11px}.geometry-data-key.is-diamond{background:#ffb574;transform:rotate(45deg);width:10px;height:10px}.geometry-data-key.is-count{background:#78cabb;border-radius:50%}.geometry-data-key.is-bar{background:#78cabb;width:6px;height:14px}.geometry-atlas-key{background:var(--atlas-color,#e9d86b);height:3px!important;width:22px!important}.geometry-node-counts small{display:block;margin-top:3px;color:#9fb7c7;font-size:10px}.geometry-blend-row{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin:10px 0}.geometry-blend-row span,.geometry-window{font-size:12px;color:#a9bdca}.geometry-window{border-top:1px solid #34434e;padding-top:16px}.geometry-panels .geometry-svg{max-height:none}.geometry-panels .geometry-reference-caption{color:#b7c8d4}
+
+/* Source identity and evidence meaning belong above the graphs, at reading size. */
+.science-tfbs .tfbs-opening{font-size:16px;color:#d1dfe8;margin:0 0 10px;line-height:1.65}
+.tfbs-source-guide{margin:28px 0 38px;padding-top:22px;border-top:3px solid #e9d86b}
+.science-tfbs .tfbs-source-guide h3{font-size:28px;line-height:1.3;font-weight:400;letter-spacing:-.025em;margin:0 0 10px;color:#edf4f7}
+.tfbs-source-lead{font-size:16px;line-height:1.65;color:#c1d1dd;margin:0 0 22px}
+.tfbs-source-cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.tfbs-source-card{--source-accent:#ffb574;display:flex;flex-direction:column;min-width:0;border:1px solid #415461;border-top:4px solid var(--source-accent);background:#101b23;padding:22px}
+.tfbs-source-card[data-source-definition="encode"]{--source-accent:#78cabb}.tfbs-source-card[data-source-definition="jaspar"]{--source-accent:#c6b1ef}
+.tfbs-source-kind{color:var(--source-accent);font-size:14px;font-weight:600;line-height:1.5;margin:0 0 10px}
+.science-tfbs .tfbs-source-card h4{font-size:25px;line-height:1.25;font-weight:400;margin:0 0 14px;color:#f0f5f8}
+.tfbs-source-definition{font-size:16px;line-height:1.65;color:#d6e1e9;margin:0 0 16px;min-height:106px}
+.tfbs-source-flow{font-size:14px;line-height:1.6;color:var(--source-accent);border-top:1px solid #344b5a;border-bottom:1px solid #344b5a;margin:0;padding:12px 0;min-height:45px;display:flex;align-items:center}
+.tfbs-source-count{margin:20px 0 14px}.tfbs-source-count strong{display:block;font-size:36px;font-weight:400;line-height:1.2;color:#f0f5f8}.tfbs-source-count span{display:block;font-size:16px;line-height:1.5;margin-top:5px;color:#d6e1e9}
+.tfbs-source-meaning{font-size:15px;line-height:1.65;color:#c1d1dd;margin:0 0 20px}.tfbs-source-card a{font-size:14px;color:var(--source-accent);text-underline-offset:4px;margin-top:auto;line-height:1.6}
+.tfbs-core-definitions{display:grid;grid-template-columns:1fr 1fr;gap:26px;margin-top:24px;padding:20px 24px;border:1px solid #415461;background:#0e1921}
+.tfbs-core-definitions h4{font-size:18px;font-weight:400;margin:0 0 6px;color:#e7f0f5}.tfbs-core-definitions p{font-size:15px;line-height:1.65;color:#c1d1dd;margin:6px 0 0}.tfbs-core-definitions svg{width:100%;max-width:300px;height:42px;display:block}.tfbs-core-definitions path{stroke:#6e899a;stroke-width:2;fill:none}.tfbs-core-definitions .site{fill:#ffb574}.tfbs-core-definitions .region{fill:#78cabb30;stroke:#78cabb;stroke-width:1.5}.tfbs-core-definitions .centre{stroke:#edf4f7;stroke-dasharray:3 3;stroke-width:1}
+.tfbs-source-diagram-note{font-size:13px;line-height:1.6;color:#a6bdcc;margin:10px 0 0}
+.geometry-source-context{margin:20px 0 24px;padding:20px 24px;background:#12232d;border-left:4px solid #78cabb}
+.geometry-source-context h4{font-size:20px;font-weight:400;color:#edf4f7;line-height:1.4;margin:0 0 18px}
+.geometry-context-columns{display:grid;grid-template-columns:1fr 1fr;gap:28px}.geometry-source-context h5{font-size:14px;line-height:1.5;margin:0 0 8px;color:#9fd8ce;font-weight:600}
+.geometry-source-context .geometry-source-note,.geometry-source-context .geometry-mark-meaning{font-size:15px;line-height:1.7;color:#d2e1eb;margin:0;max-width:none}
+.science-tfbs .tfbs-data-description{font-size:16px;line-height:1.7;color:#d2e1eb;padding:18px 20px;background:#12232d;border-left:4px solid #78cabb;max-width:none;margin:12px 0 22px}
+.tfbs-datasets small{font-size:13px;line-height:1.6;color:#b6cbd9}.geometry-controls label{font-size:13px}.geometry-controls input,.geometry-controls select{font-size:14px}.geometry-control-label{font-size:12px}.geometry-legend{font-size:13px;line-height:1.6}.geometry-panels figcaption{font-size:17px}
+@media(max-width:900px){.tfbs-source-cards{grid-template-columns:1fr}.tfbs-source-definition,.tfbs-source-flow{min-height:0}.tfbs-source-card{padding:20px}.tfbs-core-definitions{grid-template-columns:1fr;gap:22px;padding:20px}.geometry-context-columns{grid-template-columns:1fr;gap:18px}.geometry-source-context{padding:18px}.science-tfbs .tfbs-source-guide h3{font-size:25px}}
+
+/* Outcome is distinct from assay, publication status and geometric significance. */
+.tfbs-evidence-priority{border-top:1px solid #49606d;margin-top:28px;padding-top:24px}
+.tfbs-evidence-priority>p{font-size:16px;line-height:1.65;max-width:88ch}
+.tfbs-evidence-priority ol{list-style:none;counter-reset:priority;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px;padding:0;margin:24px 0}
+.tfbs-evidence-priority li{counter-increment:priority;border-top:2px solid #daca68;padding-top:14px}
+.tfbs-evidence-priority li h4{font-size:18px;line-height:1.4;margin:0 0 10px}
+.tfbs-evidence-priority li h4:before{content:counter(priority) '. ';color:#e7da75}
+.tfbs-evidence-priority li p{font-size:15px;line-height:1.65;margin:0}
+.geometry-outcome-summary{margin:12px 0 6px;padding:12px 14px;border-left:3px solid #ffb574;background:#141f27;font-size:15px;line-height:1.55}
+.geometry-outcome-summary strong,.geometry-outcome-summary span{display:block}
+.geometry-outcome-summary span{font-size:14px;color:#b6c9d4;margin-top:4px}
+.geometry-outcome-summary:empty{display:none}
+.geometry-binding-result{border:1px solid #46606e;padding:18px 20px;margin:16px 0;background:#101d26}
+.geometry-binding-result h5{font-size:20px;color:#f6ceaa;margin:0 0 12px}
+.geometry-binding-result p,.geometry-binding-result dd,.geometry-binding-result a{font-size:15px;line-height:1.65}
+.geometry-binding-result dl{display:grid;grid-template-columns:170px 1fr;gap:10px 20px;margin:16px 0}
+.geometry-binding-result dt{font-size:14px;color:#c6d6df;font-weight:600}
+.geometry-binding-result dd{margin:0;color:#d1dee6}
+.geometry-binding-result a{color:#d5e5ef}
+.geometry-row-outcome{display:block;font-size:13px;color:#f6ceaa;margin-top:8px}
+.tfbs-binding-outcome{display:inline-block;font-size:15px!important;font-weight:600;padding:7px 10px;border:1px solid #687274;color:#f6ceaa}
+@media(max-width:900px){.tfbs-evidence-priority ol{grid-template-columns:1fr;gap:18px}.geometry-binding-result dl{grid-template-columns:1fr;gap:5px}.geometry-binding-result dd{margin-bottom:10px}}

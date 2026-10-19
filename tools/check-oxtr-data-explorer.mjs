@@ -35,6 +35,7 @@ export async function checkTfbsExplorer({page,dialog,root,out,viewport}) {
     assert.equal(result.collection,id);assert.equal(result.count,expected.length);
     assert.deepEqual(result.records.map(r=>r.id).sort(),expected.map(r=>r.id).sort());
     assert.equal(result.reference.assembly,'GRCh38');
+    assert.ok(result.records.every(r=>r.binding_evidence.status==={published:'binding_detected',encode:'regional_association_detected',jaspar:'prediction_only',oreganno:'not_classified'}[id]));
     const csvDownload=page.waitForEvent('download');await explorer.locator('[data-tfbs-data-export="csv"]').click();
     const csvPath=path.join(out,`${id}-data-${viewport.width}.csv`);await(await csvDownload).saveAs(csvPath);
     const [header,...records]=parseCsv((await fs.readFile(csvPath,'utf8')).replace(/^\uFEFF/,''));

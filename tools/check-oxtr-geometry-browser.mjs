@@ -84,13 +84,16 @@ try{
     const promise=page.waitForEvent('download');await geo.locator('[data-geometry-export="json"]').click();
     const file=path.join(out,`${source}-${viewport.width}.json`);await(await promise).saveAs(file);
     const result=JSON.parse(await fs.readFile(file,'utf8'));assert.equal(result.count,expected.length);assert.deepEqual(result.records.map(r=>r.id),expected.map(r=>r.id));
+    const expectedOutcome={studies:'binding_detected',encode:'regional_association_detected',jaspar:'prediction_only'}[source];
+    assert.ok(result.records.every(r=>r.binding_evidence.status===expectedOutcome));
+    assert.ok(result.records.every(r=>r.binding_evidence.source_url&&r.binding_evidence.expression_effect&&r.binding_evidence.review_depth));
     assert.equal(result.mapping.modulo9,manifest.mapping.modulo9);assert.equal(result.parameters.inspection_group.value,residue);
     assert.equal(result.parameters.overlay_version,result.overlay.version);assert.equal(result.overlay.atlas_registration.rotation_turns,0);
     assert.equal(result.verification.python.wolfram_coordinate_table_sha256,result.verification.wolfram.coordinate_table_sha256);
     for(const r of result.records)assert.deepEqual(r.mapping,expected.find(x=>x.id===r.id).mapping);
     await geo.locator('[data-geometry-clear-group]').click();
    }
-   await geo.locator('#geometry-search').fill('not-a-factor');await expectCount(0);assert.equal(await geo.locator('[data-geometry-export="json"]').isDisabled(),true);
+   await geo.locator('#geometry-search').fill('not-a-factor');await expectCount(0);assert.equal(await geo.locator('[data-geometry-export="json"]').isDisabled(),true);assert.match(await geo.locator('.geometry-outcome-summary').textContent(),/No observations/);
    await geo.locator('#geometry-search').fill('');await expectCount(9164);
    await geo.locator('#geometry-score').selectOption('800');await expectCount(data.jaspar.filter(r=>r.score>=800).length);
    await geo.locator('#geometry-source').selectOption('encode');await expectCount(255);
@@ -102,6 +105,9 @@ try{
    await geo.locator('.geometry-data-plot [data-geometry-record="TFBS012"] .callout').click();
    await geo.locator('#geometry-zoom').check();
    await geo.locator('.geometry-panels').screenshot({path:path.join(out,`studies-line-zoom-${viewport.width}.png`)});
+   assert.match(await geo.locator('.geometry-binding-result').textContent(),/Binding detected/);
+   assert.match(await geo.locator('.geometry-binding-result').textContent(),/reporter construct/);
+   await geo.locator('.geometry-binding-result').screenshot({path:path.join(out,`binding-outcome-${viewport.width}.png`)});
    const first=await geo.locator('.geometry-inspector-body h4').textContent();
    await geo.locator('[data-geometry-step="1"]').click();assert.notEqual(await geo.locator('.geometry-inspector-body h4').textContent(),first);
    // Blend and record selection survive view/sequence changes; the source data stay fixed.
@@ -121,6 +127,16 @@ try{
     if(format==='svg')assert.ok(bytes.toString().includes('<metadata>')&&bytes.toString().includes('OXTR binding-site geometry')&&bytes.toString().includes('atlas-overlay'));
     if(format==='png')assert.equal(bytes.subarray(1,4).toString(),'PNG');
    }
+   assert.equal(await dialog.locator('[data-source-definition]').count(),3);
+   assert.match(await dialog.locator('.tfbs-evidence-priority').textContent(),/positive binding result/);
+   assert.match(await geo.locator('.geometry-outcome-summary').textContent(),/Binding detected/);
+   const hierarchy=await dialog.evaluate(e=>{
+     const guide=e.querySelector('.tfbs-source-guide'),experiment=e.querySelector('.tfbs-geometry');
+     return {before:!!(guide.compareDocumentPosition(experiment)&Node.DOCUMENT_POSITION_FOLLOWING),font:parseFloat(getComputedStyle(guide.querySelector('.tfbs-source-definition')).fontSize)};
+   });
+   assert.ok(hierarchy.before&&hierarchy.font>=16);
+   await dialog.locator('.tfbs-source-guide').screenshot({path:path.join(out,`source-guide-${viewport.width}.png`)});
+   await geo.locator('.geometry-source-context').screenshot({path:path.join(out,`graph-context-${viewport.width}.png`)});
    assert.equal(await dialog.evaluate(e=>e.scrollWidth<=e.clientWidth+1),true);
    await dialog.evaluate(e=>e.scrollTop=0);await page.screenshot({path:path.join(out,`experiment-${viewport.width}.png`)});
    // Preserve the source-data browser, learning lightbox, and Atlas/music context.
@@ -131,7 +147,7 @@ try{
    const after=await page.evaluate(()=>({full:document.fullscreenElement?.id,srcs:[...document.querySelectorAll('audio,video')].map(e=>e.currentSrc),times:[...document.querySelectorAll('audio,video')].map(e=>e.currentTime)}));
    assert.equal(page.url(),startUrl);assert.equal(after.full,before.full);assert.deepEqual(after.srcs,before.srcs);
    assert.deepEqual(errors,[]);
-   report.push({viewport,combinations:36,blend_states_per_combination:2,side_by_side:true,blend_default_off:true,selection_deliberate:true,encode_empty_bins:41,source_counts:{studies:2,encode:255,jaspar:9164},retry:true,exports:['json','csv','svg','png'],keyboard:true,overflow:false,media_context_preserved:true,errors});
+   report.push({viewport,combinations:36,blend_states_per_combination:2,source_definitions_prominent:true,binding_outcomes_and_exports:true,side_by_side:true,blend_default_off:true,selection_deliberate:true,encode_empty_bins:41,source_counts:{studies:2,encode:255,jaspar:9164},retry:true,exports:['json','csv','svg','png'],keyboard:true,overflow:false,media_context_preserved:true,errors});
   } finally {await page.evaluate(()=>document.querySelectorAll('audio,video').forEach(e=>e.pause())).catch(()=>{});await context.close();}
  }
  await fs.writeFile(path.join(out,'report.json'),JSON.stringify({candidate,results:report},null,2));console.log(JSON.stringify({out,results:report},null,2));

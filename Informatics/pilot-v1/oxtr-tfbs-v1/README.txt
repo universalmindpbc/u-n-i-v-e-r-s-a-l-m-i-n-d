@@ -31,3 +31,11 @@ The original human 15-site report remains an aggregate of 3 AP1, 9 C/EBP and 3 N
 
 Coordinate experiment — 20 October 2026
 experiment-v1/ adds a fixed DNA-line, full-position-circle and M9-circle representation, with all four M9 P24 reference sequences. Sources remain separate: 2 published elements, 255 ENCODE regions and 9,164 JASPAR score-400 matches. Read experiment-v1/methods.md for the origin, direction, centre-base rule and clipping. All mappings, verification reports and scripts are downloadable. CSV includes full observation tables and metadata field tables. Biological association remains untested.
+
+Binding outcomes — 20 October 2026
+
+Tested is not an outcome. binding-outcomes.json and the lossless typed binding-outcomes-fields.csv define the source-linked interpretation, reviewed study results, regional evidence and predictions. mapped-binding-outcomes.json/csv provide one outcome row for each of the 9,421 plotted records, joined by observation_id. The same interpretation is embedded as binding_interpretation in catalogue.json/catalogue-fields.csv. Browser selection exports include binding_evidence per row.
+
+US-1 and US-2 report positive binding results under their assay conditions; their expression effects and abstract-only review depth remain explicit. ENCODE clusters are regional association evidence, not exact motif positions or proof of direct binding. JASPAR records are predictions. No negative binding controls have been curated for this map. Missing or unclassified outcomes do not mean binding failed. Biological support and statistical significance of an Atlas match remain separate.
+
+Rebuild the interpretation layer with source/annotate_oxtr_binding_outcomes.py after preparing the experiment, then run source/package_oxtr_catalogue.py. Raw observations and coordinate mappings remain unchanged.
