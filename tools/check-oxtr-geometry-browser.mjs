@@ -44,12 +44,26 @@ try{
      for(const pattern of ['alpha','beta','gamma','epsilon']){
       await geo.locator(`[data-geometry-pattern="${pattern}"]`).click();
       assert.equal(await geo.locator(`[data-geometry-pattern="${pattern}"]`).getAttribute('aria-pressed'),'true');
-      assert.equal(await geo.locator('.geometry-panels svg').count(),2);
-      assert.equal(await geo.locator('.geometry-reference-plot svg').getAttribute('aria-label'),`${pattern} reference, Fibonacci M9 P24, ${pattern==='beta'?9:24} positions`);
+      assert.equal(await geo.locator('.geometry-panels svg').count(),1);
+      const guide=geo.locator('.atlas-markers');
+      assert.equal(await guide.getAttribute('data-atlas-pattern'),pattern);
+      assert.equal(await guide.getAttribute('data-atlas-grid'),String(pattern==='beta'?9:24));
+      const indices=pattern==='alpha'?Array.from({length:24},(_,i)=>i):pattern==='beta'?[4,8,7,5,1,2]:[0,4,8,12,16,20];
+      assert.equal(await guide.getAttribute('data-atlas-turns'),indices.map(i=>i/(pattern==='beta'?9:24)).join(','));
+      if(view==='circle'&&source==='encode')await geo.locator('.geometry-panels').screenshot({path:path.join(out,`${source}-${view}-${pattern}-${viewport.width}.png`)});
      }
      if(view==='m9'){
       const counts=await geo.locator('.geometry-node-counts strong').allTextContents();
       assert.deepEqual(counts.map(s=>Number(s.replaceAll(',',''))),manifest.summaries[source].residue_counts_0_to_8);
+      const discs=await geo.locator('.count-disc').evaluateAll(es=>es.map(e=>({count:Number(e.dataset.count),radius:Number(e.getAttribute('r'))})));
+      const scale=discs[0].radius**2/discs[0].count;
+      discs.forEach(d=>assert.ok(Math.abs(d.radius**2/d.count-scale)<1e-10));
+      assert.equal(await geo.locator('.geometry-node-counts small').count(),9);
+     }
+     if(view==='circle'&&source==='jaspar'){
+      const counts=await geo.locator('.density-bar').evaluateAll(es=>es.map(e=>Number(e.dataset.count)));
+      assert.equal(counts.reduce((a,b)=>a+b,0),9164);
+      await geo.locator('.geometry-panels').screenshot({path:path.join(out,`${source}-circle-${viewport.width}.png`)});
      }
     }
     await geo.locator('[data-geometry-pattern="beta"]').click();
@@ -62,6 +76,7 @@ try{
     const file=path.join(out,`${source}-${viewport.width}.json`);await(await promise).saveAs(file);
     const result=JSON.parse(await fs.readFile(file,'utf8'));assert.equal(result.count,expected.length);assert.deepEqual(result.records.map(r=>r.id),expected.map(r=>r.id));
     assert.equal(result.mapping.modulo9,manifest.mapping.modulo9);assert.equal(result.parameters.inspection_group.value,residue);
+    assert.equal(result.parameters.overlay_version,result.overlay.version);assert.equal(result.overlay.atlas_registration.rotation_turns,0);
     assert.equal(result.verification.python.wolfram_coordinate_table_sha256,result.verification.wolfram.coordinate_table_sha256);
     for(const r of result.records)assert.deepEqual(r.mapping,expected.find(x=>x.id===r.id).mapping);
     await geo.locator('[data-geometry-clear-group]').click();
@@ -80,8 +95,8 @@ try{
    for(const format of ['csv','svg','png']){
     const download=page.waitForEvent('download');await geo.locator(`[data-geometry-export="${format}"]`).click();
     const file=path.join(out,`studies-${viewport.width}.${format}`);await(await download).saveAs(file);const bytes=await fs.readFile(file);
-    if(format==='csv'){const s=bytes.toString();assert.ok(s.includes('TFBS012')&&s.includes('TFBS013')&&s.includes('anchor_offset_bp')&&s.includes('mapping_rules'));}
-    if(format==='svg')assert.ok(bytes.toString().includes('<metadata>')&&bytes.toString().includes('OXTR binding-site geometry'));
+    if(format==='csv'){const s=bytes.toString();assert.ok(s.includes('TFBS012')&&s.includes('TFBS013')&&s.includes('anchor_offset_bp')&&s.includes('mapping_rules')&&s.includes('overlay_rules'));}
+    if(format==='svg')assert.ok(bytes.toString().includes('<metadata>')&&bytes.toString().includes('OXTR binding-site geometry')&&bytes.toString().includes('atlas-overlay'));
     if(format==='png')assert.equal(bytes.subarray(1,4).toString(),'PNG');
    }
    assert.equal(await dialog.evaluate(e=>e.scrollWidth<=e.clientWidth+1),true);

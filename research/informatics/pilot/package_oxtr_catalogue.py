@@ -35,6 +35,9 @@ def publish():
             'version':'oxtr-coordinate-experiment-2026-10-20-v1',
             'manifest':'experiment-v1/manifest.json',
             'methods':'experiment-v1/methods.md',
+            'shared_graph_rules':'experiment-v1/overlay-v1.json',
+            'shared_graph_rules_csv':'experiment-v1/overlay-v1-fields.csv',
+            'overlay_version':'oxtr-shared-geometry-2026-10-20-v1',
             'collections':['studies','encode','jaspar'],
             'views':['line','circle','m9'],
             'atlas_sequences':['alpha','beta','gamma','epsilon'],
@@ -42,15 +45,18 @@ def publish():
             'status':'Exploratory coordinate mapping with Python, Biopython and Wolfram checks; biological association untested'}
         catalogue['status']='Source catalogue with a reproducible exploratory coordinate experiment'
         catalogue['analysis_status']='Source observations remain unchanged. experiment-v1 supplies fixed DNA-line, full-circle and M9 mappings with computational checks. No enrichment test, new motif scan or biological significance score has been applied.'
+        overlay=json.loads((SUP/'experiment-v1/overlay-v1.json').read_text())
+        write_record(SUP/'experiment-v1/overlay-v1-fields.csv',overlay)
+        assert read_record(SUP/'experiment-v1/overlay-v1-fields.csv')==overlay
     notion_file=ROOT/'research/informatics/oxtr-notion-map.json'
     if notion_file.exists():
         notion=json.loads(notion_file.read_text())
         catalogue['notion']={'page_url':notion['page_url'],'database_id':notion['database_id'],'data_source_id':notion['data_source_id']}
         by_id={r['record_id']:r['url'] for r in notion['records']}
         for r in catalogue['evidence']:r['notion_url']=by_id[r['id']]
-        write(SUP/'catalogue.json',catalogue)
         # The canonical catalogue retains the Notion map; the flat literature
         # table is authored independently and keeps its stable scientific fields.
+    write(SUP/'catalogue.json',catalogue)
     write_record(SUP/'catalogue-fields.csv',catalogue)
     assert read_record(SUP/'catalogue-fields.csv')==catalogue
     if (SUP/'human-site-project.json').exists():

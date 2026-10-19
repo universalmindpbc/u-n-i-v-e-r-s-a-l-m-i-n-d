@@ -14,7 +14,7 @@ const arc = (a,b,r,cx=210,cy=190) => {
   if(b-a>=.999999)return `M${xy(p)} A${r},${r} 0 1 1 ${xy(point(a+.5,r,cx,cy))} A${r},${r} 0 1 1 ${xy(p)}`;
   return `M${xy(p)} A${r},${r} 0 ${b-a>.5?1:0} 1 ${xy(q)}`;
 };
-const svg = (body,label) => `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 380" role="img" aria-label="${esc(label)}" class="geometry-svg"><style>text{font-family:Arial,sans-serif;font-size:11px;fill:#a8bfcd;stroke:none;text-anchor:middle} .axis{stroke:#3c515f;fill:none} .observation{fill:#78cabb;stroke:#78cabb;cursor:pointer} .observation:hover{stroke:#fff;fill:#fff} .selected{stroke:#fff;fill:#fff} .ref{fill:none;stroke-width:1.7} .grid-label{fill:#e5edf3;font-size:15px} .small{font-size:9px} .large{font-size:23px;fill:#e5edf3} .faint{opacity:.3}</style>${body}</svg>`;
+const svg = (body,label) => `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 380" role="img" aria-label="${esc(label)}" class="geometry-svg"><style>text{font-family:Arial,sans-serif;font-size:11px;fill:#a8bfcd;stroke:none;text-anchor:middle} .axis{stroke:#3c515f;fill:none} .observation{fill:#78cabb;stroke:#78cabb;cursor:pointer} .observation:hover{stroke:#fff;fill:#fff} .selected{stroke:#fff;fill:#fff} .ref{fill:none;stroke-width:1.7} .grid-label{fill:#e5edf3;font-size:15px} .small{font-size:9px} .count-label{paint-order:stroke;stroke:#0b141b;stroke-width:3px;stroke-linejoin:round} .large{font-size:23px;fill:#e5edf3} .faint{opacity:.3}</style>${body}</svg>`;
 
 // Exported for the independent Node/Python parity test; display uses precomputed mappings.
 export function projectInterval(start,end,lo=8740380,hi=8779628) {
@@ -24,12 +24,23 @@ export function projectInterval(start,end,lo=8740380,hi=8779628) {
   return {offset_start:d0,offset_end_exclusive:d1,anchor_offset_bp:d,anchor_genomic_0based:hi-1-d,m9_residue:r,m9_display:r||9,full_circle_turns:d/(hi-lo)};
 }
 
+// The Atlas guide keeps its native grid; only its position in the shared view changes.
+export function atlasGuide(atlas,pattern) {
+  const grid=pattern==='beta'?9:24;
+  const indices=pattern==='alpha'?Array.from({length:24},(_,i)=>i):pattern==='beta'?atlas.beta.interval_residues:atlas.gamma.alpha_indices;
+  const paths=pattern==='gamma'?atlas.gamma.triangle_paths:pattern==='epsilon'?[atlas.epsilon.alpha_indices]:pattern==='beta'?[[...atlas.beta.interval_residues,atlas.beta.interval_residues[0]]]:[];
+  return {grid,indices,turns:indices.map(i=>i/grid),values:indices.map(i=>pattern==='beta'?(i||9):atlas.alpha.display_values[i]),paths};
+}
+export function countRadius(count,maxCount,maxRadius=19) {
+  return count>0&&maxCount>0?maxRadius*Math.sqrt(count/maxCount):0;
+}
+
 export async function mountTfbsGeometry(host, catalogue, dataRoot) {
   const root=new URL('experiment-v1/',dataRoot),cache=new Map();
-  let manifest,checks,rows=[],filtered=[],inspected=[],active=null,source='studies',view='line',pattern='beta',group=null,page=0,request=0,ready=false;
+  let manifest,checks,overlay,rows=[],filtered=[],inspected=[],active=null,source='studies',view='line',pattern='beta',group=null,page=0,request=0,ready=false;
   const pageSize=12;
   const get=s=>host.querySelector(s);
-  host.innerHTML=`<p class="science-label">OXTR · INTERACTIVE EXPERIMENT 01</p><h3>Binding-site geometry</h3><p class="geometry-intro">Follow the same DNA observations from a line to a circle, then into modulus nine. Compare their positions with the four M9 P24 sequences.</p><div class="geometry-controls"><label>Data source<select id="geometry-source"><option value="studies">Published studies · 2 mapped elements</option><option value="encode">ENCODE · 255 experimental regions</option><option value="jaspar">JASPAR · 9,164 predicted matches</option></select></label><label>Find a factor, cell type or observation<input id="geometry-search" type="search" placeholder="e.g. US-1, CTCF or an ID" autocomplete="off"></label><label class="geometry-score" hidden>JASPAR score<select id="geometry-score"><option value="400">400 and above</option><option value="500">500 and above</option><option value="600">600 and above</option><option value="800">800 and above</option></select></label></div><p class="geometry-source-note"></p><div class="geometry-switches"><div><span class="geometry-control-label">View the DNA</span><div class="geometry-buttons" role="group" aria-label="DNA coordinate view">${Object.entries(views).map(([id,name],i)=>`<button type="button" data-geometry-view="${id}" aria-pressed="${id===view}"><span>${i+1}</span> ${name}</button>`).join('')}</div></div><div><span class="geometry-control-label">Compare with M9 P24</span><div class="geometry-buttons" role="group" aria-label="Atlas reference sequence">${Object.keys(colors).map(id=>`<button type="button" data-geometry-pattern="${id}" style="--pattern:${colors[id]}" aria-pressed="${id===pattern}">${id[0].toUpperCase()+id.slice(1)}</button>`).join('')}</div></div></div><p class="geometry-status" role="status" aria-live="polite">Loading the verified coordinate data…</p><div class="geometry-panels"><figure><figcaption class="geometry-data-title"></figcaption><div class="geometry-data-plot"></div><div class="geometry-zoom"><label><input id="geometry-zoom" type="checkbox"> Zoom the line to the selected observation</label></div><p class="geometry-data-caption"></p></figure><figure><figcaption class="geometry-reference-title"></figcaption><div class="geometry-reference-plot"></div><p class="geometry-reference-caption"></p></figure></div><div class="geometry-node-counts" role="group" aria-label="Observations at each M9 node" hidden></div><p class="geometry-group"></p><section class="geometry-inspector" aria-label="Selected DNA observation"><div class="geometry-inspector-body"></div><div class="geometry-buttons"><button type="button" data-geometry-step="-1">← Previous observation</button><button type="button" data-geometry-step="1">Next observation →</button></div></section><details class="geometry-records"><summary>Inspect the observations</summary><div class="geometry-table-wrap" tabindex="0" role="region" aria-label="Mapped observation selection"><table><thead><tr><th>Observation</th><th>Original interval · GRCh38</th><th>Offset / M9</th></tr></thead><tbody></tbody></table></div><div class="geometry-pagination"><button type="button" data-geometry-page="-1">← Previous page</button><span></span><button type="button" data-geometry-page="1">Next page →</button></div></details><nav class="geometry-downloads" aria-label="Experiment downloads"><button type="button" data-geometry-export="json">Selection · JSON ↓</button><button type="button" data-geometry-export="csv">Selection · CSV ↓</button><button type="button" data-geometry-export="svg">Figure · SVG ↓</button><button type="button" data-geometry-export="png">Figure · PNG ↓</button><a href="${new URL('methods.md',root)}" download>Methods ↓</a></nav><details class="geometry-methods"><summary>Mapping &amp; verification</summary><p>Fixed human OXTR window: GRCh38 chr3:8,740,380–8,779,628 (0-based, end-exclusive). The direction follows OXTR’s minus strand, from high to low genomic coordinates. The origin is the window edge, not the transcription start site.</p><p>The line and full circle retain interval widths. For M9, one central base represents each interval within this window. An even-width interval uses the first central base in the OXTR direction. Regions extending beyond the window are clipped for display; their original coordinates remain in every export.</p><p><code>d = floor((offset_start + offset_end − 1) / 2)</code><br><code>Full circle = d / 39,248 turns · M9 = d mod 9</code><br>Zero is displayed as 9. All circles start at north and run clockwise. Compression merges positions; node counts expose those overlaps.</p><p>The Atlas reference keeps its original grid and phase: Alpha, Gamma and Epsilon use 24 period positions; Beta uses nine residue positions. The circles represent coordinates. No biological shape or association is inferred from their appearance.</p><div class="geometry-checks"></div><p>The browser filters and draws precomputed results. Python/Biopython and Wolfram are used in the reproducible preparation and verification, rather than called as live services for each selection.</p><nav class="geometry-downloads">${[['manifest.json','Experiment manifest'],['python-validation.json','Python / Biopython checks'],['wolfram-validation.json','Wolfram checks'],['build_experiment.py','Python script'],['verify.wl','Wolfram code'],['requirements.txt','Python environment']].map(([f,l])=>`<a href="${new URL(f,root)}" download>${l} ↓</a>`).join('')}</nav></details><p class="geometry-boundary">Initial visual experiment · statistical association has not yet been tested.</p>`;
+  host.innerHTML=`<p class="science-label">OXTR · INTERACTIVE EXPERIMENT 01</p><h3>Binding-site geometry</h3><p class="geometry-intro">Explore whether the four M9 P24 geometries help predict OXTR binding-site locations. View the data and selected geometry together on the DNA line, full-position circle or Modulus 9 circle.</p><div class="geometry-controls"><label>Data source<select id="geometry-source"><option value="studies">Published studies · 2 mapped elements</option><option value="encode">ENCODE · 255 experimental regions</option><option value="jaspar">JASPAR · 9,164 predicted matches</option></select></label><label>Find a factor, cell type or observation<input id="geometry-search" type="search" placeholder="e.g. US-1, CTCF or an ID" autocomplete="off"></label><label class="geometry-score" hidden>JASPAR score<select id="geometry-score"><option value="400">400 and above</option><option value="500">500 and above</option><option value="600">600 and above</option><option value="800">800 and above</option></select></label></div><p class="geometry-source-note"></p><div class="geometry-switches"><div><span class="geometry-control-label">View the DNA</span><div class="geometry-buttons" role="group" aria-label="DNA coordinate view">${Object.entries(views).map(([id,name],i)=>`<button type="button" data-geometry-view="${id}" aria-pressed="${id===view}"><span>${i+1}</span> ${name}</button>`).join('')}</div></div><div><span class="geometry-control-label">Compare with M9 P24</span><div class="geometry-buttons" role="group" aria-label="Atlas reference sequence">${Object.keys(colors).map(id=>`<button type="button" data-geometry-pattern="${id}" style="--pattern:${colors[id]}" aria-pressed="${id===pattern}">${id[0].toUpperCase()+id.slice(1)}</button>`).join('')}</div></div></div><p class="geometry-status" role="status" aria-live="polite">Loading the verified coordinate data…</p><div class="geometry-panels geometry-shared"><figure><figcaption class="geometry-data-title"></figcaption><div class="geometry-legend"><span><i class="geometry-data-key"></i><span class="geometry-data-legend"></span></span><span><i class="geometry-atlas-key"></i><span class="geometry-reference-title"></span></span></div><div class="geometry-data-plot"></div><div class="geometry-zoom"><label><input id="geometry-zoom" type="checkbox"> Zoom the line to the selected observation</label></div><p class="geometry-data-caption"></p><p class="geometry-reference-caption"></p></figure></div><div class="geometry-node-counts" role="group" aria-label="Observations at each M9 node" hidden></div><p class="geometry-group"></p><section class="geometry-inspector" aria-label="Selected DNA observation"><div class="geometry-inspector-body"></div><div class="geometry-buttons"><button type="button" data-geometry-step="-1">← Previous observation</button><button type="button" data-geometry-step="1">Next observation →</button></div></section><details class="geometry-records"><summary>Inspect the observations</summary><div class="geometry-table-wrap" tabindex="0" role="region" aria-label="Mapped observation selection"><table><thead><tr><th>Observation</th><th>Original interval · GRCh38</th><th>Offset / M9</th></tr></thead><tbody></tbody></table></div><div class="geometry-pagination"><button type="button" data-geometry-page="-1">← Previous page</button><span></span><button type="button" data-geometry-page="1">Next page →</button></div></details><nav class="geometry-downloads" aria-label="Experiment downloads"><button type="button" data-geometry-export="json">Selection · JSON ↓</button><button type="button" data-geometry-export="csv">Selection · CSV ↓</button><button type="button" data-geometry-export="svg">Figure · SVG ↓</button><button type="button" data-geometry-export="png">Figure · PNG ↓</button><a href="${new URL('methods.md',root)}" download>Methods ↓</a></nav><details class="geometry-methods"><summary>Mapping &amp; verification</summary><p>Fixed human OXTR window: GRCh38 chr3:8,740,380–8,779,628 (0-based, end-exclusive). The direction follows OXTR’s minus strand, from high to low genomic coordinates. The origin is the window edge, not the transcription start site.</p><p>The line and full circle retain interval widths. For M9, one central base represents each interval within this window. An even-width interval uses the first central base in the OXTR direction. Regions extending beyond the window are clipped for display; their original coordinates remain in every export.</p><p><code>d = floor((offset_start + offset_end − 1) / 2)</code><br><code>Full circle = d / 39,248 turns · M9 = d mod 9</code><br>Zero is displayed as 9. All circles start at north and run clockwise. Compression merges positions; node counts expose those overlaps.</p><p>The Atlas reference keeps its original grid and phase: Alpha, Gamma and Epsilon use 24 period positions; Beta uses nine residue positions. The shared circle aligns both layers at north, clockwise, with no fitted rotation. On the full-position circle, one DNA window fills one turn. On the line, Atlas turn × window length gives the guide position; connecting curves show the unwrapped Atlas path. In M9, the DNA has nine residue positions while each Atlas guide retains its native grid. A shared angle does not equate a period index with a residue. The Atlas paths show geometry, not measured movement or binding order.</p><div class="geometry-checks"></div><p>The browser filters and draws precomputed results. Python/Biopython and Wolfram are used in the reproducible preparation and verification, rather than called as live services for each selection.</p><nav class="geometry-downloads">${[['manifest.json','Experiment manifest'],['overlay-v1.json','Shared-graph rules'],['python-validation.json','Python / Biopython checks'],['wolfram-validation.json','Wolfram checks'],['build_experiment.py','Python script'],['verify.wl','Wolfram code'],['requirements.txt','Python environment']].map(([f,l])=>`<a href="${new URL(f,root)}" download>${l} ↓</a>`).join('')}</nav></details><p class="geometry-boundary">Initial visual experiment · statistical association has not yet been tested.</p>`;
 
   async function read(file) {
     const controller=new AbortController(),timer=setTimeout(()=>controller.abort(),30000);
@@ -50,15 +61,15 @@ export async function mountTfbsGeometry(host, catalogue, dataRoot) {
   async function load(id) {
     const token=++request;source=id;ready=false;rows=[];filtered=[];inspected=[];active=null;group=null;page=0;
     controls();get('.geometry-status').textContent=`Loading ${names[id]}…`;
-    for(const cls of ['geometry-data-plot','geometry-reference-plot','geometry-inspector-body','geometry-group'])get('.'+cls).innerHTML='';
+    for(const cls of ['geometry-data-plot','geometry-inspector-body','geometry-group'])get('.'+cls).innerHTML='';
     get('tbody').innerHTML='';get('.geometry-node-counts').hidden=true;
     host.querySelectorAll('[data-geometry-export],[data-geometry-step],[data-geometry-page]').forEach(b=>b.disabled=true);
     get('.geometry-source-note').textContent={studies:'Two published human elements with recovered positions: US-1 and US-2. The 2006 study’s 15 sites remain in the literature collection while their individual positions await recovery.',encode:'Experimental regions of protein occupancy, with source experiments and cell types retained. A region’s central base is a plotting representative.',jaspar:'Predicted motif matches at UCSC score 400 and above. The full archive, including lower scores, remains in the source-data browser below.'}[id];
     try {
       if(!manifest){
-        const [m,p,w]=await Promise.all([read('manifest.json'),read('python-validation.json'),read('wolfram-validation.json')]);
-        if(m.version!==p.version||p.status!=='passed'||w.status!=='passed'||p.wolfram_coordinate_table_sha256!==w.coordinate_table_sha256)throw Error('Verification mismatch');
-        manifest=m;checks={python:p,wolfram:w};
+        const [m,p,w,o]=await Promise.all([read('manifest.json'),read('python-validation.json'),read('wolfram-validation.json'),read('overlay-v1.json')]);
+        if(m.version!==p.version||o.coordinate_experiment!==m.version||p.status!=='passed'||w.status!=='passed'||p.wolfram_coordinate_table_sha256!==w.coordinate_table_sha256)throw Error('Verification mismatch');
+        manifest=m;checks={python:p,wolfram:w};overlay=o;
         get('.geometry-checks').innerHTML=`<p><strong>Calculations checked</strong> · Python ${esc(p.python)} · Biopython ${esc(p.biopython)} · Wolfram Language</p><p>${num(p.records_projected)} observations mapped. Python and Wolfram agree across all ${num(w.offsets_checked)} possible base offsets, including circle coordinates to nine decimal places. Biopython rechecked the two published sequence placements and ${num(p.sequence_checks.jaspar)} JASPAR sequences; one match extends beyond the reference window.</p>`;
       }
       if(!cache.has(id)){
@@ -74,70 +85,81 @@ export async function mountTfbsGeometry(host, catalogue, dataRoot) {
     }
   }
 
-  function referenceSVG() {
-    const a=manifest.atlas,n=pattern==='beta'?9:24,color=colors[pattern];
-    const nodes=pattern==='alpha'?Array.from({length:24},(_,i)=>i):pattern==='beta'?a.beta.interval_residues:a.gamma.alpha_indices;
-    const paths=pattern==='gamma'?a.gamma.triangle_paths:pattern==='epsilon'?[a.epsilon.alpha_indices]:pattern==='beta'?[[...a.beta.interval_residues,a.beta.interval_residues[0]]]:[];
-    let s=circle(210,190,125,'class="axis"');
-    for(let i=0;i<n;i++){const p=point(i/n);s+=circle(...p,2.5,'fill="#344b5a"');}
-    s+=paths.map(p=>`<polyline points="${p.map(i=>xy(point(i/n))).join(' ')}" class="ref" stroke="${color}"/>`).join('');
-    for(const i of nodes){
-      const p=point(i/n),label=pattern==='beta'?(i||9):a.alpha.display_values[i],q=point(i/n,149);
-      s+=circle(...p,4,`fill="${color}"`)+text(q[0],q[1]+5,label,'class="grid-label"');
-      if(pattern!=='beta'){const t=point(i/n,170);s+=text(t[0],t[1]+3,i||24,'class="small"');}
-    }
-    if(pattern==='beta'||pattern==='epsilon'){
-      const path=paths[0];
-      for(let i=0;i<path.length-1;i++){const p=point(path[i]/n),q=point(path[i+1]/n),x=p[0]+.64*(q[0]-p[0]),y=p[1]+.64*(q[1]-p[1]),angle=Math.atan2(q[1]-p[1],q[0]-p[0])*180/Math.PI;s+=`<path d="M-5,-3 L0,0 L-5,3" fill="none" stroke="${color}" transform="translate(${x},${y}) rotate(${angle})"/>`;}
-    }
-    s+=text(210,18,pattern==='beta'?'9 / 0 at north':'Period position 24 / 0 at north','class="small"');
-    s+=text(210,366,pattern==='beta'?'Start 4 · 4 → 8 → 7 → 5 → 1 → 2':pattern==='epsilon'?'9 → 3 → 6 → 9 → 3 → 6 → 9':pattern==='gamma'?'Six primary nodes · two triangle paths':'24 Fibonacci residues · original phase');
-    return svg(s,`${pattern} reference, Fibonacci M9 P24, ${n} positions`);
+  function lineRange() {
+    const sel=active?.mapping,n=manifest.reference.length_bp,zoom=get('#geometry-zoom').checked&&sel;
+    return {lo:zoom?Math.max(0,sel.offset_start-500):0,hi:zoom?Math.min(n,sel.offset_end_exclusive+500):n,zoom:!!zoom};
   }
-
+  function guideSVG(markers=false) {
+    const a=atlasGuide(manifest.atlas,pattern),color=colors[pattern],n=manifest.reference.length_bp;
+    let body='';
+    if(view==='line') {
+      const {lo,hi}=lineRange(),x=i=>32+356*((i/a.grid*n)-lo)/(hi-lo);
+      if(markers)for(let k=0;k<a.indices.length;k++){
+        const i=a.indices[k],px=x(i);if(px<32||px>388)continue;
+        body+=`<line x1="${px}" x2="${px}" y1="187" y2="236" stroke="${color}" stroke-dasharray="2 3" opacity=".65"/>`+circle(px,190,3,`fill="${color}"`);
+        if(pattern!=='alpha')body+=text(px,249,a.values[k],`style="fill:${color}" class="small"`);
+      }
+      else {
+        body+='<defs><clipPath id="atlas-line-clip"><rect x="32" y="40" width="356" height="155"/></clipPath></defs><g clip-path="url(#atlas-line-clip)">';
+        for(const path of a.paths)for(let j=0;j<path.length-1;j++){
+          const x1=x(path[j]),x2=x(path[j+1]),height=50+65*Math.abs(path[j+1]-path[j])/a.grid;
+          body+=`<path d="M${x1},190 Q${(x1+x2)/2},${190-height*2} ${x2},190" class="ref" stroke="${color}" opacity=".8"/>`;
+        }
+        body+='</g>';
+      }
+    }else {
+      if(markers)for(let k=0;k<a.indices.length;k++){
+        const p=point(a.indices[k]/a.grid),q=point(a.indices[k]/a.grid,109);body+=circle(...p,3.4,`fill="${color}" stroke="#0b141b" stroke-width="1"`);
+        if(view!=='m9')body+=text(q[0],q[1]+3,a.values[k],`class="small" style="fill:${color}"`);
+      }
+      else for(const path of a.paths){
+        body+=`<polyline points="${path.map(i=>xy(point(i/a.grid))).join(' ')}" class="ref" stroke="${color}"/>`;
+        if(pattern==='beta'||pattern==='epsilon')for(let j=0;j<path.length-1;j++){
+          const p=point(path[j]/a.grid),q=point(path[j+1]/a.grid),x=p[0]+.64*(q[0]-p[0]),y=p[1]+.64*(q[1]-p[1]),angle=Math.atan2(q[1]-p[1],q[0]-p[0])*180/Math.PI;
+          body+=`<path d="M-5,-3 L0,0 L-5,3" fill="none" stroke="${color}" transform="translate(${x},${y}) rotate(${angle})"/>`;
+        }
+      }
+    }
+    return `<g class="atlas-overlay ${markers?'atlas-markers':'atlas-paths'}" data-atlas-pattern="${pattern}" data-atlas-grid="${a.grid}" data-atlas-turns="${a.turns.join(',')}" style="pointer-events:none" aria-label="${pattern} geometry, ${a.grid} native positions, fixed alignment">${body}</g>`;
+  }
   function dataSVG() {
     const n=manifest.reference.length_bp,sel=active?.mapping;
-    let s='';
+    let s=guideSVG();
     if(view==='m9'){
       const counts=Array.from({length:9},(_,i)=>filtered.filter(r=>r.mapping.m9_residue===i).length),max=Math.max(1,...counts);
-      s=circle(210,190,125,'class="axis"');
+      s=circle(210,190,125,'class="axis"')+s;
       for(let i=0;i<9;i++){
-        const p=point(i/9),q=point(i/9,164),c=point(i/9,91),radius=counts[i]?5+14*Math.sqrt(counts[i]/max):3;
-        s+=`<g data-geometry-residue="${i}" class="observation"><title>Node ${i||9}: ${counts[i]} ${manifest.summaries[source].unit}. Select to inspect.</title>${circle(...p,radius,`fill="${counts[i]?'#78cabb':'#344b5a'}" stroke="${sel?.m9_residue===i?'#fff':'#78cabb'}" stroke-width="${sel?.m9_residue===i?3:1}"`)}${text(q[0],q[1]+4,i||9,'class="grid-label"')}${text(c[0],c[1]+4,num(counts[i]),'class="small"')}</g>`;
+        const p=point(i/9),q=point(i/9,163),c=point(i/9,88),radius=countRadius(counts[i],max),percent=filtered.length?100*counts[i]/filtered.length:0;
+        const disc=counts[i]?circle(...p,radius,`class="count-disc" data-count="${counts[i]}" fill="#78cabb" fill-opacity=".72" stroke="none"`):circle(...p,2.5,'fill="#344b5a" stroke="none"');
+        s+=`<g data-geometry-residue="${i}" class="observation"><title>Node ${i||9}: ${counts[i]} ${manifest.summaries[source].unit} (${percent.toFixed(1)}%). Select to inspect.</title>${disc}${sel?.m9_residue===i?circle(...p,radius+3,'fill="none" stroke="#fff" stroke-width="1.5"'):''}${text(q[0],q[1]+4,i||9,'class="grid-label"')}${text(c[0],c[1]+2,num(counts[i]),'class="small count-label"')}${text(c[0],c[1]+14,percent.toFixed(1)+'%','class="small count-label"')}</g>`;
       }
-      s+=text(210,182,num(filtered.length),'class="large"')+text(210,206,manifest.summaries[source].unit)+text(210,362,'Node size shows count · select a node to inspect');
+      s+=text(210,366,'Dot area = observation count · scale within this selection','class="small"');
     }else if(view==='circle'){
-      s=circle(210,190,125,'class="axis"');
-      for(let i=0;i<4;i++){const p=point(i/4,161);s+=text(p[0],p[1]+4,num(i*n/4)+' bp');}
+      s=circle(210,190,125,'class="axis"')+s;
+      for(let i=0;i<4;i++){const p=point(i/4,170);s+=text(p[0],p[1]+4,num(i*n/4)+' bp','class="small"');}
       if(filtered.length>500){
         const bins=Array.from({length:72},()=>0);filtered.forEach(r=>bins[Math.min(71,Math.floor(r.mapping.full_circle_turns*72))]++);const max=Math.max(1,...bins);
-        bins.forEach((count,i)=>{if(count){s+=`<path class="observation" data-geometry-bin="${i}" data-bin-count="72" d="${arc(i/72,(i+.88)/72,125+25*count/max)}" fill="none" stroke-width="7"><title>${count} interval centres · select to inspect</title></path>`;}});
-        s+=text(210,181,num(filtered.length),'class="large"')+text(210,205,'72 bins · interval-centre counts');
+        bins.forEach((count,i)=>{if(count){const a=point((i+.5)/72),b=point((i+.5)/72,125+27*count/max);s+=`<line class="observation density-bar" data-geometry-bin="${i}" data-bin-count="72" data-count="${count}" x1="${a[0]}" y1="${a[1]}" x2="${b[0]}" y2="${b[1]}" stroke-width="3"><title>${count} interval centres in this DNA section · select to inspect</title></line>`;}});
       }else{
-        filtered.forEach((r,i)=>{const m=r.mapping,p=point(m.full_circle_turns,125-(i%5)*5);s+=`<g class="observation" data-geometry-record="${esc(r.id)}"><title>${esc(r.id+' · '+r.factor+' · '+num(m.anchor_offset_bp)+' bp from origin')}</title><path d="${arc(m.offset_start/n,m.offset_end_exclusive/n,125-(i%5)*5)}" fill="none" stroke-width="3"/>${circle(...p,3)}</g>`;});
-        s+=text(210,182,num(filtered.length),'class="large"')+text(210,206,'intervals · proportional spacing');
+        filtered.forEach((r,i)=>{const m=r.mapping,p=point(m.full_circle_turns);s+=`<g class="observation" data-geometry-record="${esc(r.id)}"><title>${esc(r.id+' · '+r.factor+' · '+num(m.anchor_offset_bp)+' bp from origin')}</title><path d="${arc(m.offset_start/n,m.offset_end_exclusive/n,125-(i%5)*4)}" fill="none" stroke-width="2" opacity=".65"/>${circle(...p,2.4)}</g>`;});
       }
-      if(sel){const p=point(sel.full_circle_turns);s+=`<path d="${arc(sel.offset_start/n,sel.offset_end_exclusive/n,125)}" stroke="#fff" stroke-width="5" fill="none"/>`+circle(...p,6,'fill="none" stroke="#fff" stroke-width="2"');}
-      s+=text(210,362,'0 bp at north · clockwise in OXTR direction');
+      if(sel){const p=point(sel.full_circle_turns);s+=`<path d="${arc(sel.offset_start/n,sel.offset_end_exclusive/n,125)}" stroke="#fff" stroke-width="3" fill="none"/>`+circle(...p,5,'fill="none" stroke="#fff" stroke-width="1.5"');}
     }else{
-      const zoom=get('#geometry-zoom').checked&&sel;
-      const lo=zoom?Math.max(0,sel.offset_start-500):0,hi=zoom?Math.min(n,sel.offset_end_exclusive+500):n,span=hi-lo;
-      const x=d=>32+356*(d-lo)/span;
-      s+=`<line x1="32" y1="190" x2="388" y2="190" class="axis" stroke-width="2"/>`;
-      for(let i=0;i<=4;i++){const d=lo+span*i/4;s+=`<line x1="${x(d)}" y1="190" x2="${x(d)}" y2="200" class="axis"/>`+text(x(d),220,num(Math.round(d)),`class="small" text-anchor="${i===0?'start':i===4?'end':'middle'}"`);}
+      const {lo,hi,zoom}=lineRange(),span=hi-lo,x=d=>32+356*(d-lo)/span;
+      s=`<line x1="32" y1="190" x2="388" y2="190" class="axis" stroke-width="2"/>`+s;
+      for(let i=0;i<=4;i++){const d=lo+span*i/4;s+=`<line x1="${x(d)}" y1="190" x2="${x(d)}" y2="200" class="axis"/>`+text(x(d),218,num(Math.round(d)),`class="small" style="text-anchor:${i===0?'start':i===4?'end':'middle'}"`);}
       const visible=filtered.filter(r=>r.mapping.offset_start<hi&&r.mapping.offset_end_exclusive>lo);
       if(visible.length>500){
         const bins=Array.from({length:72},()=>0);visible.forEach(r=>{const d=r.mapping.anchor_offset_bp;if(d>=lo&&d<hi)bins[Math.min(71,Math.floor((d-lo)/span*72))]++;});const max=Math.max(1,...bins);
-        bins.forEach((count,i)=>{if(count)s+=`<rect class="observation" data-geometry-line-bin="${i}" data-bin-lo="${lo}" data-bin-hi="${hi}" x="${32+356*i/72}" y="${185-85*count/max}" width="${356/72*.85}" height="${85*count/max}"><title>${count} interval centres · select to inspect</title></rect>`;});
-        s+=text(210,85,'72 bins · interval-centre counts');
+        bins.forEach((count,i)=>{if(count)s+=`<rect class="observation" data-geometry-line-bin="${i}" data-bin-lo="${lo}" data-bin-hi="${hi}" data-count="${count}" x="${32+356*i/72}" y="${185-65*count/max}" width="${356/72*.85}" height="${65*count/max}" opacity=".75"><title>${count} interval centres · select to inspect</title></rect>`;});
       }else{
-        visible.forEach((r,i)=>{const m=r.mapping,y=170-(i%5)*15;const a=x(Math.max(lo,m.offset_start)),b=x(Math.min(hi,m.offset_end_exclusive));const p=x(m.anchor_offset_bp);s+=`<g class="observation" data-geometry-record="${esc(r.id)}"><title>${esc(r.id+' · '+r.factor+' · strand '+(r.strand||'unassigned'))}</title><line x1="${a}" y1="${y}" x2="${b}" y2="${y}" stroke-width="4"/>${p>=32&&p<=388?circle(p,y,3):''}</g>`;});
-        s+=text(210,85,'Interval widths and spacing retained');
+        visible.forEach((r,i)=>{const m=r.mapping,y=176-(i%5)*9,a=x(Math.max(lo,m.offset_start)),b=x(Math.min(hi,m.offset_end_exclusive)),p=x(m.anchor_offset_bp);s+=`<g class="observation" data-geometry-record="${esc(r.id)}"><title>${esc(r.id+' · '+r.factor+' · strand '+(r.strand||'unassigned'))}</title><line x1="${a}" y1="${y}" x2="${b}" y2="${y}" stroke-width="3"/>${p>=32&&p<=388?circle(p,190,2.5):''}</g>`;});
       }
-      if(sel){const p=x(sel.anchor_offset_bp);s+=`<line x1="${p}" y1="95" x2="${p}" y2="198" stroke="#fff" stroke-dasharray="3 4"/>`+circle(p,190,5,'fill="#fff"')+text(210,252,`${active.id} · ${num(sel.anchor_offset_bp)} bp from origin`);}
-      s+=text(210,292,'OXTR direction →')+text(210,315,'High → low genomic coordinates · minus strand')+text(210,362,zoom?'Zoomed line · circle origin stays fixed':'39,248 bp · origin at the high-coordinate window edge');
+      if(sel){const p=x(sel.anchor_offset_bp);s+=`<line x1="${p}" y1="95" x2="${p}" y2="198" stroke="#fff" stroke-dasharray="3 4"/>`+circle(p,190,4,'fill="#fff"')+text(210,280,`${active.id} · ${num(sel.anchor_offset_bp)} bp from origin`,'class="small"');}
+      s+=text(210,322,'OXTR direction → · distances in DNA bases','class="small"')+text(210,366,zoom?'Zoomed line · the original mapping stays fixed':'Atlas circle unwrapped onto the 39,248-base DNA window','class="small"');
     }
-    return svg(s,`${views[view]}: ${filtered.length} ${manifest.summaries[source].unit} from ${names[source]}`);
+    s+=guideSVG(true);
+    return svg(s,`${views[view]} with ${pattern} overlay: ${filtered.length} ${manifest.summaries[source].unit} from ${names[source]}`);
   }
 
   function draw() {
@@ -150,17 +172,21 @@ export async function mountTfbsGeometry(host, catalogue, dataRoot) {
     const unit=manifest.summaries[source].unit;
     get('.geometry-status').textContent=`${num(filtered.length)} ${unit} · ${names[source]} · fixed origin and original Atlas alignment`;
     get('.geometry-data-title').textContent=views[view];
-    get('.geometry-reference-title').textContent=`${pattern[0].toUpperCase()+pattern.slice(1)} · Fibonacci M9 P24`;
-    get('.geometry-data-plot').innerHTML=dataSVG();get('.geometry-reference-plot').innerHTML=referenceSVG();
+    get('.geometry-reference-title').textContent=`${pattern[0].toUpperCase()+pattern.slice(1)} geometry · M9 P24`;
+    get('.geometry-data-legend').textContent=`${names[source]} · ${num(filtered.length)} ${unit}`;
+    host.style.setProperty('--atlas-color',colors[pattern]);
+    get('.geometry-data-plot').innerHTML=dataSVG();
     get('.geometry-data-plot svg').setAttribute('role','group');
     get('.geometry-data-plot').querySelectorAll('.observation').forEach(mark=>{
       mark.setAttribute('tabindex','0');mark.setAttribute('role','button');
       mark.setAttribute('aria-label',mark.querySelector('title')?.textContent||'Inspect observation');
     });
-    get('.geometry-data-caption').textContent=view==='m9'?'DNA offsets reduced to nine residues. Several observations can share one node.':view==='circle'?'One turn represents the complete DNA window. Select a mark or count bin to inspect its observations.':'Position is measured from the fixed window edge. Select a mark to follow it across all three views.';
-    get('.geometry-reference-caption').textContent=(pattern==='beta'?'Nine residue positions · sequence starts at 4.':'24 period positions · large labels show residues; small labels show period positions.')+' Atlas reference; DNA observations remain in the left panel.';
+    get('.geometry-data-caption').textContent=view==='m9'?'Teal dot area represents count. Percentages show each node’s share of the selected observations. White outlines mark your selection.':filtered.length>500?'Teal bars summarise 72 equal DNA sections. Bar length shows the number of interval centres; select a bar to inspect its observations.':'Teal marks show individual region centres; short lines or arcs retain their widths. White marks identify the selected observation.';
+    const gridNote=pattern==='beta'?'Beta keeps its nine residue positions: 4 → 8 → 7 → 5 → 1 → 2.':`${pattern[0].toUpperCase()+pattern.slice(1)} keeps its 24-position Atlas grid.`;
+    const modeNote=view==='m9'?' DNA is reduced to nine residues.':view==='circle'?' DNA positions retain their full proportional spacing: 0 bp at north, clockwise.':' The Atlas guide is unwrapped onto the DNA line.';
+    get('.geometry-reference-caption').textContent=gridNote+modeNote+' Fixed orientation; coloured paths belong to the Atlas geometry.';
     const nodeBox=get('.geometry-node-counts');nodeBox.hidden=view!=='m9';
-    if(view==='m9')nodeBox.innerHTML=Array.from({length:9},(_,i)=>`<button type="button" data-geometry-residue="${i}" aria-pressed="${group?.kind==='residue'&&group.value===i}"><span>Node ${i||9}</span><strong>${num(filtered.filter(r=>r.mapping.m9_residue===i).length)}</strong></button>`).join('');
+    if(view==='m9')nodeBox.innerHTML=Array.from({length:9},(_,i)=>{const count=filtered.filter(r=>r.mapping.m9_residue===i).length;return `<button type="button" data-geometry-residue="${i}" aria-pressed="${group?.kind==='residue'&&group.value===i}"><span>Node ${i||9}</span><strong>${num(count)}</strong><small>${(filtered.length?100*count/filtered.length:0).toFixed(1)}%</small></button>`;}).join('');
     get('.geometry-group').innerHTML=group?`${num(inspected.length)} ${unit} in ${group.kind==='residue'?'node '+(group.value||9):'the selected position bin'} · <button type="button" data-geometry-clear-group>Show all observations</button>`:'';
     const body=get('.geometry-inspector-body');
     if(active){
@@ -180,23 +206,23 @@ export async function mountTfbsGeometry(host, catalogue, dataRoot) {
     const url=URL.createObjectURL(new Blob([body],{type})),a=document.createElement('a');a.href=url;a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(url),5000);
   }
   function combinedFigure() {
-    const plots=[get('.geometry-data-plot svg'),get('.geometry-reference-plot svg')];
-    return `<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="590" viewBox="0 0 1000 590"><rect width="1000" height="590" fill="#0b141b"/><style>text{font-family:Arial,sans-serif;fill:#d9e7ef}</style>${text(500,32,'OXTR binding-site geometry · '+names[source],'font-size="20"')}${text(500,58,`${num(filtered.length)} observations · ${views[view]} · ${pattern} reference`,'font-size="13"')}${plots.map((p,i)=>`<svg x="${30+i*490}" y="80" width="450" height="407" viewBox="0 0 420 380">${p.innerHTML}</svg>`).join('')}${text(500,512,'GRCh38 chr3:8740380–8779628 · 0-based / end-exclusive · OXTR minus strand','font-size="12"')}${text(500,534,'Fixed window-edge origin · interval centres · computational checks: Python, Biopython, Wolfram','font-size="12"')}${text(500,556,'Exploratory coordinate comparison · biological association untested','font-size="12"')}<metadata>${esc(JSON.stringify({version:manifest.version,source,view,pattern,search:get('#geometry-search').value,minimum_score:source==='jaspar'?Number(get('#geometry-score').value):null,group,selected_observation:active?.id,mapping:manifest.mapping,reference:manifest.reference}))}</metadata></svg>`;
+    const plot=get('.geometry-data-plot svg');
+    return `<svg xmlns="http://www.w3.org/2000/svg" width="900" height="1000" viewBox="0 0 900 1000"><rect width="900" height="1000" fill="#0b141b"/><style>text{font-family:Arial,sans-serif;fill:#d9e7ef;text-anchor:middle}</style>${text(450,38,'OXTR binding-site geometry · '+names[source],'style="font-size:23px;fill:#d9e7ef"')}${text(450,70,`${num(filtered.length)} observations · ${views[view]} · ${pattern} overlay`,'style="font-size:16px;fill:#d9e7ef"')}${text(450,102,'Teal: DNA observations · Coloured guide: original Atlas geometry','style="font-size:14px;fill:#d9e7ef"')}<svg x="60" y="120" width="780" height="706" viewBox="0 0 420 380">${plot.innerHTML}</svg>${text(450,858,'GRCh38 chr3:8740380–8779628 · OXTR minus strand · fixed origin','style="font-size:14px;fill:#d9e7ef"')}${text(450,886,view==='m9'?'Dot area = count; scale within selection. DNA: 9 residues. Atlas: '+atlasGuide(manifest.atlas,pattern).grid+' positions.':'One DNA window = one turn; guide retains its native grid and phase.','style="font-size:14px;fill:#d9e7ef"')}${text(450,914,'Python / Biopython / Wolfram coordinate checks · no fitted rotation','style="font-size:14px;fill:#d9e7ef"')}${text(450,942,'Exploratory comparison · biological association untested','style="font-size:14px;fill:#d9e7ef"')}<metadata>${esc(JSON.stringify({version:manifest.version,overlay,source,view,pattern,search:get('#geometry-search').value,minimum_score:source==='jaspar'?Number(get('#geometry-score').value):null,group,selected_observation:active?.id,line_zoom:get('#geometry-zoom').checked,mapping:manifest.mapping,reference:manifest.reference}))}</metadata></svg>`;
   }
   async function save(format) {
     if(!ready)return;draw();if(!inspected.length)return;
-    const parameters={source,view,atlas_sequence:pattern,search:get('#geometry-search').value,minimum_score:source==='jaspar'?Number(get('#geometry-score').value):null,inspection_group:group,selected_observation:active?.id,line_zoom:get('#geometry-zoom').checked};
+    const parameters={source,view,overlay_version:overlay.version,atlas_sequence:pattern,search:get('#geometry-search').value,minimum_score:source==='jaspar'?Number(get('#geometry-score').value):null,inspection_group:group,selected_observation:active?.id,line_zoom:get('#geometry-zoom').checked};
     const name=`oxtr-${source}-${view}-${pattern}`;
-    if(format==='json')saveBlob(JSON.stringify({version:manifest.version,count:inspected.length,parameters,reference:manifest.reference,mapping:manifest.mapping,atlas:manifest.atlas,verification:checks,sources:manifest.source_sha256,records:inspected},null,2),'application/json',name+'.json');
+    if(format==='json')saveBlob(JSON.stringify({version:manifest.version,count:inspected.length,parameters,overlay,reference:manifest.reference,mapping:manifest.mapping,atlas:manifest.atlas,verification:checks,sources:manifest.source_sha256,records:inspected},null,2),'application/json',name+'.json');
     if(format==='csv'){
-      const flat=inspected.map(r=>({...r,...r.mapping,experiment_version:manifest.version,view,atlas_sequence:pattern,window_start_0based:manifest.reference.start_0based,window_end_exclusive:manifest.reference.end_exclusive,origin_genomic_base_0based:manifest.reference.origin_genomic_base_0based,coordinate_convention:manifest.reference.coordinate_convention,mapping_rules:manifest.mapping,selection_parameters:parameters,atlas_reference:manifest.atlas,source_sha256:manifest.source_sha256}));
+      const flat=inspected.map(r=>({...r,...r.mapping,experiment_version:manifest.version,view,atlas_sequence:pattern,window_start_0based:manifest.reference.start_0based,window_end_exclusive:manifest.reference.end_exclusive,origin_genomic_base_0based:manifest.reference.origin_genomic_base_0based,coordinate_convention:manifest.reference.coordinate_convention,mapping_rules:manifest.mapping,overlay_rules:overlay,selection_parameters:parameters,atlas_reference:manifest.atlas,source_sha256:manifest.source_sha256}));
       const fields=[...new Set(flat.flatMap(Object.keys))],cell=v=>{const s=v==null?'':typeof v==='object'?JSON.stringify(v):String(v);return /[",\r\n]/.test(s)?'"'+s.replaceAll('"','""')+'"':s;};
       saveBlob('\uFEFF'+[fields,...flat.map(r=>fields.map(k=>r[k]))].map(r=>r.map(cell).join(',')).join('\r\n')+'\r\n','text/csv;charset=utf-8',name+'.csv');
     }
     if(format==='svg')saveBlob(combinedFigure(),'image/svg+xml',name+'.svg');
     if(format==='png'){
       const image=new Image(),url=URL.createObjectURL(new Blob([combinedFigure()],{type:'image/svg+xml'}));
-      try{image.src=url;await image.decode();const canvas=document.createElement('canvas');canvas.width=2000;canvas.height=1180;canvas.getContext('2d').drawImage(image,0,0,2000,1180);const blob=await new Promise(resolve=>canvas.toBlob(resolve,'image/png'));if(!blob)throw Error('PNG unavailable');saveBlob(blob,'image/png',name+'.png');}
+      try{image.src=url;await image.decode();const canvas=document.createElement('canvas');canvas.width=1800;canvas.height=2000;canvas.getContext('2d').drawImage(image,0,0,1800,2000);const blob=await new Promise(resolve=>canvas.toBlob(resolve,'image/png'));if(!blob)throw Error('PNG unavailable');saveBlob(blob,'image/png',name+'.png');}
       catch{get('.geometry-status').textContent='The PNG export did not complete. The SVG export retains the full vector figure.';}
       finally{URL.revokeObjectURL(url);}
     }

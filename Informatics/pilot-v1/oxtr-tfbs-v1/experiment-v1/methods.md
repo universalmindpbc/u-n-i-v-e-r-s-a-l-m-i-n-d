@@ -4,7 +4,7 @@ Version: oxtr-coordinate-experiment-2026-10-20-v1. Exploratory coordinate compar
 
 ## Question and sources
 
-Inspect the positions of OXTR-associated DNA observations alongside the fixed Alpha, Beta, Gamma and Epsilon patterns of Fibonacci M9 P24. Three independent selections are available: recovered published elements, ENCODE occupancy regions, and JASPAR motif predictions with UCSC score at least 400. The complete underlying catalogue retains all lower-score predictions. Source observations and overlapping predictions are not deduplicated into a count of confirmed binding sites.
+Explore whether the Alpha, Beta, Gamma and Epsilon geometries of Fibonacci M9 P24 help predict OXTR binding-site locations. Each selected geometry is overlaid with DNA observations on one shared graph, available as an original DNA line, a full-position circle before compression, and an M9 circle. Three separate selections are available: recovered published elements, ENCODE occupancy regions, and JASPAR motif predictions with UCSC score at least 400. The complete underlying catalogue retains all lower-score predictions. Source observations and overlapping predictions are not deduplicated into a count of confirmed binding sites.
 
 The two published elements are US-1 and US-2. The 2006 study's 15 reported sites have no recovered individual coordinates in this release and do not appear as plotted sites. ENCODE regions include multiple experimental and cell-type contexts. JASPAR matches are predictions, not experimentally established binding events.
 
@@ -16,11 +16,15 @@ For a raw interval [s,e), first intersect it with the saved window: a=max(s,8740
 
 The DNA line and full circle retain interval extents. A full-circle turn is d/39248; the M9 residue is d mod 9, with zero labelled 9. Both circles use x=sin(theta), y=-cos(theta), with theta=2*pi*turns or 2*pi*residue/9. M9 collisions are shown as counts and remain traceable to every source observation. Modulo reduction discards absolute distance and maps many unrelated coordinates to the same node.
 
-Dense selections use explicitly labelled anchor-count bins; sparse selections show interval marks. Bins are for display and selection only, and do not change the stored coordinates. Zoom changes the visible line range, never the mapping origin or the circle scale. Individual observations are available in the inspector and JSON/CSV downloads.
+Selections exceeding 500 observations use 72 equal-coordinate anchor-count bins; sparse selections show interval marks. On the full circle, outward bar length represents the bin count. Bins are for display and selection only, and do not change the stored coordinates. M9 dot area is proportional to count: radius = 19 * sqrt(count / maximum_count), in SVG units. Zero counts have no filled observation disc. Each view scales within its current selection. Percentages use the total filtered observation count as denominator; they are shares of recorded observations, not biological binding probabilities. Zoom changes the visible line range, never the mapping origin or the circle scale. Individual observations are available in the inspector and JSON/CSV downloads.
 
 ## Atlas comparison
 
-Use the versioned m9.json reference with its original phase and clockwise orientation. Alpha displays the 24 residues by period index. Gamma uses its six primary indices and two triangle paths. Epsilon uses its canonical seven-visit traversal through those period positions. Beta follows 4,8,7,5,1,2 on the nine-position residue circle. The panels retain their distinct grids and labels. No fitted rotation, arbitrary DNA path connections, or inferred physical circular DNA structure is introduced.
+Use the versioned m9.json reference with its original phase and clockwise orientation. Alpha displays the 24 residues by period index. Gamma uses its six primary indices and two triangle paths. Epsilon uses its canonical seven-visit traversal through those period positions. Beta follows 4,8,7,5,1,2 on the nine-position residue circle.
+
+The shared graph uses a common angular origin at north and clockwise direction. Alpha/Gamma/Epsilon turns equal period_index / 24; Beta turns equal residue / 9. The full-position circle represents the whole 39,248-base DNA window in one turn. The DNA line unwraps these same Atlas turns using guide_offset = turn * window_length; connecting curves represent Atlas paths. In M9, the DNA uses nine residue positions while the Atlas guide retains its native nine- or 24-position grid. Equal angles do not equate a period index with a residue value. These fixed registration choices are recorded in overlay-v1.json and its typed CSV equivalent, overlay-v1-fields.csv, and accompany selection exports.
+
+No fitted rotation, arbitrary connections between DNA observations, or inferred physical circular DNA structure is introduced. Atlas path arrows describe the mathematical traversal, not measured movement or a temporal order of transcription-factor binding. The full-circle and compressed views remain separate exploratory comparisons; neither evaluates predictive accuracy in this release.
 
 ## Verification and reproduction
 

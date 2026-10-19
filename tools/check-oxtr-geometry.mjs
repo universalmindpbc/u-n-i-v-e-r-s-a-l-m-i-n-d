@@ -4,7 +4,7 @@ import path from 'node:path';
 import crypto from 'node:crypto';
 import {gunzipSync} from 'node:zlib';
 import {fileURLToPath} from 'node:url';
-import {projectInterval} from '../Informatics/tfbs-geometry.js';
+import {projectInterval,atlasGuide,countRadius} from '../Informatics/tfbs-geometry.js';
 const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
 const source=path.join(root,'Informatics/pilot-v1/oxtr-tfbs-v1'),dir=path.join(source,'experiment-v1');
 const read=async f=>JSON.parse(await fs.readFile(path.join(dir,f),'utf8'));
@@ -34,4 +34,17 @@ for(const [collection,{file,sha256}] of Object.entries(manifest.files)){
 for(const [s,e,g,d,r,z] of w.interval_cases){const m=projectInterval(s,e);assert.deepEqual([m.anchor_genomic_0based,m.anchor_offset_bp,m.m9_residue,m.m9_display],[g,d,r,z]);}
 for(const pair of [[0,0],[1,0],[8740000,8740001],[8779628,8779630],[NaN,5]])assert.throws(()=>projectInterval(...pair));
 assert.equal(total,9421);
-console.log('PASS: 9,421 interval mappings; all 39,248 coordinate positions agree across JavaScript, Python and Wolfram; source hashes and edge cases verified.');
+const guide=pattern=>atlasGuide(manifest.atlas,pattern);
+assert.deepEqual(guide('alpha').turns,Array.from({length:24},(_,i)=>i/24));
+assert.deepEqual(guide('beta').turns,[4,8,7,5,1,2].map(i=>i/9));
+assert.deepEqual(guide('beta').paths,[[4,8,7,5,1,2,4]]);
+assert.deepEqual(guide('gamma').turns,[0,4,8,12,16,20].map(i=>i/24));
+assert.deepEqual(guide('gamma').paths,[[0,8,16,0],[4,12,20,4]]);
+assert.deepEqual(guide('epsilon').paths,[[0,8,20,12,4,16,0]]);
+assert.equal(countRadius(0,39),0);
+for(const counts of [[22,39],[909,1097],[1,10]])assert.ok(Math.abs((countRadius(counts[0],counts[1])/countRadius(counts[1],counts[1]))**2-counts[0]/counts[1])<1e-12,'Dot area preserves the count ratio');
+const overlay=await read('overlay-v1.json');
+assert.equal(overlay.coordinate_experiment,manifest.version);
+assert.equal(overlay.atlas_registration.rotation_turns,0);
+assert.equal(overlay.atlas_registration.fit_to_observations,false);
+console.log('PASS: 9,421 interval mappings; all 39,248 coordinate positions agree across JavaScript, Python and Wolfram; source hashes, edge cases, native Atlas overlay angles and proportional dot areas verified.');

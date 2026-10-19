@@ -1,5 +1,15 @@
 # OXTR binding-site illustrations and Atlas computing roadmap
 
+## Shared-graph refinement — 20 October 2026
+
+Ben approved one shared graph for the DNA observations and selected Alpha, Beta, Gamma or Epsilon geometry. The original DNA line, full-position circle before compression, and M9 circle remain available for each of the three source collections. Both the full-position and compressed comparisons are part of the research question. Fixed origin, direction and native Atlas grids remain explicit; no rotation is fitted to the observations.
+
+This revision replaces the previous side-by-side panels. M9 dot area is proportional to observation count, with counts and percentages shown. Dense full-circle views use outward count bars for 72 equal DNA sections; all original observations remain inspectable and downloadable. `experiment-v1/overlay-v1.json` and its typed CSV record the shared-graph rules. Source measurements and base-coordinate mappings are unchanged. The new browser checks cover all 36 combinations at two viewport sizes, exports, keyboard inspection and preservation of the lightbox context. Final staging evidence is recorded in `shared-geometry-staging.json` after deployment.
+
+Immediate next step: Ben reviews the design and interpretability. Agree the comparison statistic and controls only after that review. No biological prediction accuracy, new motif scan or enrichment result is claimed. The earlier task list below is retained as the original roadmap; preparation, coordinate checks, interactive views and exports are now implemented.
+
+The accompanying teaching draft, **How binding sites help make the OXTR receptor**, is saved in the Informatics research workspace under `research/teaching/oxtr-transcription-v1.png`, with the full image prompt, scientific scope and sources in the adjacent Markdown file. It separates OXTR gene regulation, RNA copying, receptor production and activation by OXT. DNA order does not establish binding chronology. The image awaits Ben's review before website placement.
+
 ## Interactive experiment — 20 October 2026
 
 Ben approved implementation of the three-source selector (published studies, ENCODE, JASPAR), original DNA line, full-position circle and M9 circle, with Alpha/Beta/Gamma/Epsilon comparisons. The feature is deployed and verified on [permanent staging](https://staging.universalmind.tv/informatics/?atlas=1&record=fibonacci-m9-p24) at source commit `2334096f`. Production remains unchanged. Open **TF binding sites → Binding-site geometry**. All 36 source/view/sequence combinations passed at desktop and mobile widths, alongside the existing catalogue regression checks. All 38 changed HTTP assets match the committed source. The source catalogue and human-site project in Notion now link to the experiment, methods and verification reports. Release evidence: `research/informatics/oxtr-human-site-project/geometry-experiment-staging.json`.

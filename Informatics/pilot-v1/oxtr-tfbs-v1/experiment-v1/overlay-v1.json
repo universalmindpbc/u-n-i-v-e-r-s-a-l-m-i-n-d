@@ -1,0 +1,28 @@
+{
+  "version": "oxtr-shared-geometry-2026-10-20-v1",
+  "coordinate_experiment": "oxtr-coordinate-experiment-2026-10-20-v1",
+  "purpose": "Explore whether Atlas geometry helps predict binding-site locations, using fixed, explicit visual alignment.",
+  "layout": "DNA observations and the selected Atlas geometry share one graph in all three views.",
+  "data_mapping": "Original experiment-v1 interval mappings are unchanged.",
+  "atlas_registration": {
+    "alpha_gamma_epsilon": "Original 24-position period grid: turn = period_index / 24.",
+    "beta": "Original nine-position residue grid: turn = residue / 9; path starts at 4.",
+    "full_circle": "One complete DNA window occupies one turn; both layers start at north and run clockwise.",
+    "line": "Unwrap the same Atlas turns: guide_offset = turn * window_length_bp. Connecting curves show the Atlas path; they are not DNA measurements.",
+    "m9": "DNA anchors use residue / 9 turns; each Atlas guide retains its native 9- or 24-position grid. Angular alignment does not equate a period index with a residue value.",
+    "rotation_turns": 0,
+    "fit_to_observations": false
+  },
+  "display": {
+    "m9_dot_area": "Area is proportional to observation count: radius = 19 * sqrt(count / maximum_count_in_current_selection), in SVG units.",
+    "zero_count": "Small grey grid point; no filled observation disc.",
+    "percentages": "100 * node_count / number_of_currently_filtered_observations.",
+    "circle_density_threshold": 500,
+    "density_bins": 72,
+    "density_bin_units": "Equal DNA-coordinate sections; bins count interval centres and are a display choice.",
+    "circle_density": "Outward bar length is proportional to bin count, scaled within the current selection.",
+    "selection": "White outlines identify the selected observation or its M9 node.",
+    "atlas_path": "Coloured paths retain Atlas geometry; they do not represent measured movement or a temporal binding sequence."
+  },
+  "assessment": "Visual exploration. No positional tolerance, association statistic, matched-control test or biological prediction accuracy has been evaluated."
+}
