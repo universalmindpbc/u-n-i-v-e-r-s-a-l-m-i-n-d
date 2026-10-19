@@ -1,5 +1,11 @@
 # OXTR binding-site illustrations and Atlas computing roadmap
 
+## Next discussion after Ben proofs this version — 20 October 2026
+
+- [ ] Discuss where to place the binding-site educational infographic, or a clear link to it, in the next build. Ben explicitly requested this discussion after reviewing the current version; placement is not part of this release.
+- [ ] Review the existing teaching draft, **How binding sites help make the OXTR receptor**, before creating another image. Cover what a binding site is, why a gene can have multiple regulatory sites, how proteins act together, and how binding relates to transcription. Explain that the number and use of sites depend on the gene and cell context, and that DNA position is not a fixed timeline of binding events.
+- [ ] Agree the visible entry point with Ben while preserving the scientific hierarchy of the Atlas.
+
 ## Current source and outcome presentation — 20 October 2026
 
 The current comparison is DNA on the left and original Atlas geometry on the right, with Blend off by default. This supersedes the earlier shared-only design described in the historical notes below. Source cards now explain published studies, ENCODE laboratory measurements and JASPAR predictions before the experiment. A visible evidence-priority guide starts with positive binding at a defined sequence, followed by regional association and predicted matches, while retaining assay quality and biological context. Publication status is not a binding outcome.
