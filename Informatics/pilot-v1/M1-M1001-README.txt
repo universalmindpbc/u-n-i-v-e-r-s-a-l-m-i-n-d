@@ -13,3 +13,7 @@ Images are available through each JSON view URL on the Atlas; this data archive 
 OXTR transcriptional-regulation supplement — 19 October 2026
 
 oxtr-tfbs-v1/ contains a separate source-linked catalogue, literature records, reference DNA, JASPAR motif templates and existing predictions, ENCODE occupancy clusters and experimental provenance, and ORegAnno annotations. Read its README.txt and catalogue metadata for the bounded reference window and interpretation. CSV users have complete tables and typed metadata without needing JSON. The supplement is shared across the Atlas; no modulus-specific biological comparison has been performed. The original 14-study register is unchanged.
+
+Coordinate experiment — 20 October 2026
+
+oxtr-tfbs-v1/experiment-v1/ contains fixed projections for 2 published elements, 255 ENCODE regions and 9,164 JASPAR predictions (score >=400), compared visually with all four M9 P24 Atlas sequences. It includes original intervals, source provenance, mappings, methods, Python/Biopython code and Wolfram checks. JSON and CSV exports carry the same experiment information. This is visual exploration with computational verification; biological association is untested.

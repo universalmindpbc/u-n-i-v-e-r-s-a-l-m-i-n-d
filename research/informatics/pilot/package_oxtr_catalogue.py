@@ -30,6 +30,18 @@ def replace_zip(path, replacements):
 def publish():
     if not (SUP/'catalogue.json').exists():return
     catalogue=json.loads((SUP/'catalogue.json').read_text())
+    if (SUP/'experiment-v1/manifest.json').exists():
+        catalogue['coordinate_experiment']={
+            'version':'oxtr-coordinate-experiment-2026-10-20-v1',
+            'manifest':'experiment-v1/manifest.json',
+            'methods':'experiment-v1/methods.md',
+            'collections':['studies','encode','jaspar'],
+            'views':['line','circle','m9'],
+            'atlas_sequences':['alpha','beta','gamma','epsilon'],
+            'counts':{'studies':2,'encode':255,'jaspar_score_400':9164},
+            'status':'Exploratory coordinate mapping with Python, Biopython and Wolfram checks; biological association untested'}
+        catalogue['status']='Source catalogue with a reproducible exploratory coordinate experiment'
+        catalogue['analysis_status']='Source observations remain unchanged. experiment-v1 supplies fixed DNA-line, full-circle and M9 mappings with computational checks. No enrichment test, new motif scan or biological significance score has been applied.'
     notion_file=ROOT/'research/informatics/oxtr-notion-map.json'
     if notion_file.exists():
         notion=json.loads(notion_file.read_text())
@@ -48,6 +60,8 @@ def publish():
     supplement=dict(id=catalogue['version'],title=catalogue['title'],relationship_to_atlas='Shared source data; no sequence-to-biology correspondence assessed',catalogue='pilot-v1/oxtr-tfbs-v1/catalogue.json',json_bundle='pilot-v1/oxtr-tfbs-v1/oxtr-tfbs-json.zip',csv_bundle='pilot-v1/oxtr-tfbs-v1/oxtr-tfbs-csv.zip',publication_count=len(catalogue['publications']),literature_evidence_records=len(catalogue['evidence']))
     if 'harmonisation' in catalogue:
         supplement['harmonisation']=catalogue['harmonisation']
+    if 'coordinate_experiment' in catalogue:
+        supplement['coordinate_experiment']=catalogue['coordinate_experiment']
     for name in ['dataset','index','m1-m1001']:
         file=DATA/(name+'.json');d=json.loads(file.read_text());d.setdefault('research_supplements',{})['oxtr_tfbs']=supplement;write(file,d)
         write_record(DATA/'csv-shared'/(name+'.csv'),d)
@@ -64,13 +78,15 @@ def publish():
         heading='\nOXTR transcriptional-regulation supplement'
         text=text.split(heading)[0]
         p.write_text(text+heading+' — 19 October 2026\n\noxtr-tfbs-v1/ contains a separate source-linked catalogue, literature records, reference DNA, JASPAR motif templates and existing predictions, ENCODE occupancy clusters and experimental provenance, and ORegAnno annotations. Read its README.txt and catalogue metadata for the bounded reference window and interpretation. CSV users have complete tables and typed metadata without needing JSON. The supplement is shared across the Atlas; no modulus-specific biological comparison has been performed. The original 14-study register is unchanged.\n')
+        if 'coordinate_experiment' in catalogue:
+            with p.open('a') as f:f.write('\nCoordinate experiment — 20 October 2026\n\noxtr-tfbs-v1/experiment-v1/ contains fixed projections for 2 published elements, 255 ENCODE regions and 9,164 JASPAR predictions (score >=400), compared visually with all four M9 P24 Atlas sequences. It includes original intervals, source provenance, mappings, methods, Python/Biopython code and Wolfram checks. JSON and CSV exports carry the same experiment information. This is visual exploration with computational verification; biological association is untested.\n')
     # Integrity manifest excludes itself and archives to avoid circular hashes.
-    files=[p for p in SUP.rglob('*') if p.is_file() and p.suffix!='.zip' and p.name!='file-manifest.csv']
+    files=[p for p in SUP.rglob('*') if p.is_file() and p.suffix not in ['.zip','.pyc'] and '__pycache__' not in p.parts and p.name!='file-manifest.csv']
     with (SUP/'file-manifest.csv').open('w',encoding='utf-8-sig',newline='') as f:
         w=csv.writer(f);w.writerow(['file','bytes','sha256'])
         for p in sorted(files):w.writerow([str(p.relative_to(SUP)),p.stat().st_size,hashlib.sha256(p.read_bytes()).hexdigest()])
     files.append(SUP/'file-manifest.csv')
-    csv_files=[p for p in files if p.suffix in ['.csv','.bed','.fa'] or p.name=='README.txt']
+    csv_files=[p for p in files if p.suffix in ['.csv','.bed','.fa'] or p.name=='README.txt' or ('experiment-v1' in p.parts and p.suffix in ['.py','.wl','.md','.txt'])]
     json_files=[p for p in files if p.suffix!='.csv' or p.name in ['sources.csv','file-manifest.csv']]
     for name,selected in [('oxtr-tfbs-json.zip',json_files),('oxtr-tfbs-csv.zip',csv_files)]:
         with zipfile.ZipFile(SUP/name,'w',zipfile.ZIP_DEFLATED) as z:

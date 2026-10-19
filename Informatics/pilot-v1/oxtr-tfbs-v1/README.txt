@@ -27,3 +27,7 @@ reference-intervals groups only identical genomic intervals; every observation r
 US-1 and US-2 each match once in the saved human OXTR window on the reverse strand. These are computed reference placements of published sequences, not new experiments or a claim of genome-wide uniqueness. mapped-literature.bed contains two sequence elements and one broad annotation; use normalized-literature to distinguish them.
 
 The original human 15-site report remains an aggregate of 3 AP1, 9 C/EBP and 3 NF-kappaB sites. Its individual sequences and historical coordinate anchors remain unresolved. No total of unique confirmed human OXTR sites or DNA-to-Atlas comparison is asserted.
+
+
+Coordinate experiment — 20 October 2026
+experiment-v1/ adds a fixed DNA-line, full-position-circle and M9-circle representation, with all four M9 P24 reference sequences. Sources remain separate: 2 published elements, 255 ENCODE regions and 9,164 JASPAR score-400 matches. Read experiment-v1/methods.md for the origin, direction, centre-base rule and clipping. All mappings, verification reports and scripts are downloadable. CSV includes full observation tables and metadata field tables. Biological association remains untested.

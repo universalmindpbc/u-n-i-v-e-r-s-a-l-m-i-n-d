@@ -1,5 +1,16 @@
 # Universal Informatics — delivery sequence
 
+## Interactive experiment — 20 October 2026
+
+Ben approved implementation of the three-source selector (published studies, ENCODE, JASPAR), original DNA line, full-position circle and M9 circle, with Alpha/Beta/Gamma/Epsilon comparisons. The feature is implemented for staging proof; production remains unchanged.
+
+Canonical methods and scripts: `Informatics/pilot-v1/oxtr-tfbs-v1/experiment-v1/`. Python 3.12.14 and Biopython 1.88 prepare 9,421 observations. Python, JavaScript and Wolfram agree on all 39,248 possible offsets and circle coordinates to nine decimal places. Biopython rechecks both published sequence placements, parses 1,019 JASPAR templates and validates 9,163 eligible JASPAR sequences; one crosses the saved reference boundary. The browser filters and renders these checked, precomputed data, with JSON/CSV/SVG/PNG exports. No live Python/Wolfram service or biological significance result is claimed.
+
+The fixed mapping uses the saved GRCh38 OXTR window, follows the minus strand from genomic base 8779627, and selects the central base of each interval's visible intersection (first central base in OXTR direction for even widths). Original extents and clipping remain explicit. Alpha/Gamma/Epsilon retain their 24-position grids; Beta retains its nine-position grid and original phase. Dense visualisations use labelled count bins, with individual source inspection.
+
+Next: Ben's staging review; refine any presentation issues; then agree a comparison statistic, matched controls and origin/anchor sensitivity before testing association. NVIDIA CUDA/CUDA-Q remains a discussion item, with no paid compute authorised or launched.
+
+
 ## Next session — OXTR visual comparisons and Biopython, 19 October 2026
 
 Ben approved production publication of the OXTR data browser (staging release `ef68380e`) and asked to record the next work for his return this afternoon. The immediate next-session priority is Python illustrations of the existing binding-site data in three views: **original DNA line → full-position circle → Modulus 9 circle**, compared with **Alpha, Beta, Gamma and Epsilon of M9 P24**.

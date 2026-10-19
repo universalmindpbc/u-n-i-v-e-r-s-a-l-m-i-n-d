@@ -1,5 +1,16 @@
 # OXTR binding-site illustrations and Atlas computing roadmap
 
+## Interactive experiment — 20 October 2026
+
+Ben approved implementation of the three-source selector (published studies, ENCODE, JASPAR), original DNA line, full-position circle and M9 circle, with Alpha/Beta/Gamma/Epsilon comparisons. The feature is implemented for staging proof; production remains unchanged.
+
+Canonical methods and scripts: `Informatics/pilot-v1/oxtr-tfbs-v1/experiment-v1/`. Python 3.12.14 and Biopython 1.88 prepare 9,421 observations. Python, JavaScript and Wolfram agree on all 39,248 possible offsets and circle coordinates to nine decimal places. Biopython rechecks both published sequence placements, parses 1,019 JASPAR templates and validates 9,163 eligible JASPAR sequences; one crosses the saved reference boundary. The browser filters and renders these checked, precomputed data, with JSON/CSV/SVG/PNG exports. No live Python/Wolfram service or biological significance result is claimed.
+
+The fixed mapping uses the saved GRCh38 OXTR window, follows the minus strand from genomic base 8779627, and selects the central base of each interval's visible intersection (first central base in OXTR direction for even widths). Original extents and clipping remain explicit. Alpha/Gamma/Epsilon retain their 24-position grids; Beta retains its nine-position grid and original phase. Dense visualisations use labelled count bins, with individual source inspection.
+
+Next: Ben's staging review; refine any presentation issues; then agree a comparison statistic, matched controls and origin/anchor sensitivity before testing association. NVIDIA CUDA/CUDA-Q remains a discussion item, with no paid compute authorised or launched.
+
+
 Recorded at Ben’s request on 19 October 2026, Australia/Sydney. Resume together when Ben returns this afternoon. This is the next-session brief and task list; it does not start the comparisons or schedule an automatic run.
 
 ## Bring up when Ben returns

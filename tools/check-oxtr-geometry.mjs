@@ -1,0 +1,37 @@
+import assert from 'node:assert/strict';
+import fs from 'node:fs/promises';
+import path from 'node:path';
+import crypto from 'node:crypto';
+import {gunzipSync} from 'node:zlib';
+import {fileURLToPath} from 'node:url';
+import {projectInterval} from '../Informatics/tfbs-geometry.js';
+const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
+const source=path.join(root,'Informatics/pilot-v1/oxtr-tfbs-v1'),dir=path.join(source,'experiment-v1');
+const read=async f=>JSON.parse(await fs.readFile(path.join(dir,f),'utf8'));
+const manifest=await read('manifest.json'),p=await read('python-validation.json'),w=await read('wolfram-validation.json');
+const hash=b=>crypto.createHash('sha256').update(b).digest('hex');
+assert.equal(p.status,'passed');assert.equal(p.wolfram_coordinate_table_sha256,w.coordinate_table_sha256);
+let table='';
+for(let d=0;d<39248;d++){
+ const r=d%9;table+=[d,r,r||9,Math.round(1e9*Math.sin(2*Math.PI*d/39248)),Math.round(-1e9*Math.cos(2*Math.PI*d/39248)),Math.round(1e9*Math.sin(2*Math.PI*r/9)),Math.round(-1e9*Math.cos(2*Math.PI*r/9))].join(',')+'\n';
+}
+assert.equal(hash(table),w.coordinate_table_sha256,'All browser coordinate results agree with Python and Wolfram');
+for(const [file,sha] of Object.entries(manifest.source_sha256))assert.equal(hash(await fs.readFile(path.join(source,file))),sha,file);
+assert.equal(hash(await fs.readFile(path.join(source,'../m9.json'))),manifest.atlas.sha256);
+let total=0;
+for(const [collection,{file,sha256}] of Object.entries(manifest.files)){
+ const bytes=await fs.readFile(path.join(dir,file));assert.equal(hash(bytes),sha256);
+ const rows=JSON.parse(file.endsWith('.gz')?gunzipSync(bytes):bytes),counts=Array(9).fill(0);
+ assert.equal(rows.length,manifest.summaries[collection].count);
+ for(const row of rows){
+  const m=projectInterval(row.start_0based,row.end_exclusive);
+  for(const [k,v] of Object.entries(m))assert.equal(v,row.mapping[k],row.id+': '+k);
+  assert.ok(row.mapping.anchor_genomic_0based>=row.mapping.visible_start_0based&&row.mapping.anchor_genomic_0based<row.mapping.visible_end_exclusive);
+  counts[m.m9_residue]++;total++;
+ }
+ assert.deepEqual(counts,manifest.summaries[collection].residue_counts_0_to_8);
+}
+for(const [s,e,g,d,r,z] of w.interval_cases){const m=projectInterval(s,e);assert.deepEqual([m.anchor_genomic_0based,m.anchor_offset_bp,m.m9_residue,m.m9_display],[g,d,r,z]);}
+for(const pair of [[0,0],[1,0],[8740000,8740001],[8779628,8779630],[NaN,5]])assert.throws(()=>projectInterval(...pair));
+assert.equal(total,9421);
+console.log('PASS: 9,421 interval mappings; all 39,248 coordinate positions agree across JavaScript, Python and Wolfram; source hashes and edge cases verified.');
