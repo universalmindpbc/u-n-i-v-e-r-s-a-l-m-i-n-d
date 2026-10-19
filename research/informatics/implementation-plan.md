@@ -2,7 +2,7 @@
 
 ## Interactive experiment — 20 October 2026
 
-Ben approved implementation of the three-source selector (published studies, ENCODE, JASPAR), original DNA line, full-position circle and M9 circle, with Alpha/Beta/Gamma/Epsilon comparisons. The feature is implemented for staging proof; production remains unchanged.
+Ben approved implementation of the three-source selector (published studies, ENCODE, JASPAR), original DNA line, full-position circle and M9 circle, with Alpha/Beta/Gamma/Epsilon comparisons. The feature is deployed and verified on [permanent staging](https://staging.universalmind.tv/informatics/?atlas=1&record=fibonacci-m9-p24) at source commit `2334096f`. Production remains unchanged. Open **TF binding sites → Binding-site geometry**. All 36 source/view/sequence combinations passed at desktop and mobile widths, alongside the existing catalogue regression checks. All 38 changed HTTP assets match the committed source. The source catalogue and human-site project in Notion now link to the experiment, methods and verification reports. Release evidence: `research/informatics/oxtr-human-site-project/geometry-experiment-staging.json`.
 
 Canonical methods and scripts: `Informatics/pilot-v1/oxtr-tfbs-v1/experiment-v1/`. Python 3.12.14 and Biopython 1.88 prepare 9,421 observations. Python, JavaScript and Wolfram agree on all 39,248 possible offsets and circle coordinates to nine decimal places. Biopython rechecks both published sequence placements, parses 1,019 JASPAR templates and validates 9,163 eligible JASPAR sequences; one crosses the saved reference boundary. The browser filters and renders these checked, precomputed data, with JSON/CSV/SVG/PNG exports. No live Python/Wolfram service or biological significance result is claimed.
 
