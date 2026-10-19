@@ -90,3 +90,12 @@ Keep these collections identifiable as separate layers, with their own count uni
 Today’s action is to publish the already approved OXTR data browser and save this plan. The illustration work resumes with Ben. No new motif scan, DNA-to-Atlas mapping, statistical result, paid computing job or scientific relationship is asserted by this note.
 
 Resources already selected for the workflow: [JASPAR](https://jaspar.elixir.no/docs/), [TRANSFAC](https://genexplain.com/transfac-database/), [Biopython motif analysis](https://biopython.org/docs/latest/Tutorial/chapter_motifs.html) and [Wolfram BioSequence](https://reference.wolfram.com/language/ref/BioSequence.html). TRANSFAC data remain subject to available access and reuse terms.
+
+
+## Comparison revision — 20 October 2026
+
+Ben approved restoring DNA on the left and the original Atlas geometry on the right, with Blend off by default. Blend overlays the selected guide in the DNA panel and preserves the independent reference. Retain all three DNA views and all four Atlas sequences. The line uses mapped reference nodes, without decorative connecting arches. Use distinct orange observation diamonds, direct study labels, explicit count scales and deliberate selection. Node/bin inspection lists observations in original DNA order.
+
+Before the change, audit source scope: identical 39,248-base windows across all sources. ENCODE pools 133 targets / 119 cell types / 444 contributing experiments; 41 of 72 centre-count bins are empty. JASPAR pools 872 motif models at score 400. The two published elements are an incomplete collection, so their blank areas are not evidence of absent sites. The audit and methods travel in both JSON and CSV bundles. No biological inference or new statistical experiment is performed.
+
+Next: Ben reviews the comparison interface again. Agree on a specific factor/experimental context and prediction question before adding a statistical test. Do not choose a factor, rotation or window because it resembles an Atlas shape. No production approval for this revision has been given.

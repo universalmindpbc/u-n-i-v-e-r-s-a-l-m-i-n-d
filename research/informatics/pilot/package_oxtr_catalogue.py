@@ -37,7 +37,7 @@ def publish():
             'methods':'experiment-v1/methods.md',
             'shared_graph_rules':'experiment-v1/overlay-v1.json',
             'shared_graph_rules_csv':'experiment-v1/overlay-v1-fields.csv',
-            'overlay_version':'oxtr-shared-geometry-2026-10-20-v1',
+            'overlay_version':json.loads((SUP/'experiment-v1/overlay-v1.json').read_text())['version'],
             'collections':['studies','encode','jaspar'],
             'views':['line','circle','m9'],
             'atlas_sequences':['alpha','beta','gamma','epsilon'],

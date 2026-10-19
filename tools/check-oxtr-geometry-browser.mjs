@@ -44,12 +44,20 @@ try{
      for(const pattern of ['alpha','beta','gamma','epsilon']){
       await geo.locator(`[data-geometry-pattern="${pattern}"]`).click();
       assert.equal(await geo.locator(`[data-geometry-pattern="${pattern}"]`).getAttribute('aria-pressed'),'true');
-      assert.equal(await geo.locator('.geometry-panels svg').count(),1);
-      const guide=geo.locator('.atlas-markers');
+      assert.equal(await geo.locator('.geometry-panels svg').count(),2);
+      const guide=geo.locator('.geometry-reference-plot .atlas-markers');
       assert.equal(await guide.getAttribute('data-atlas-pattern'),pattern);
       assert.equal(await guide.getAttribute('data-atlas-grid'),String(pattern==='beta'?9:24));
       const indices=pattern==='alpha'?Array.from({length:24},(_,i)=>i):pattern==='beta'?[4,8,7,5,1,2]:[0,4,8,12,16,20];
       assert.equal(await guide.getAttribute('data-atlas-turns'),indices.map(i=>i/(pattern==='beta'?9:24)).join(','));
+      const originalReference=await geo.locator('.geometry-reference-plot').innerHTML();
+      assert.equal(await geo.locator('[data-geometry-blend]').getAttribute('aria-pressed'),'false');
+      assert.equal(await geo.locator('.geometry-data-plot .atlas-overlay').count(),0);
+      await geo.locator('[data-geometry-blend]').click();
+      assert.equal(await geo.locator('.geometry-data-plot .atlas-markers').getAttribute('data-atlas-turns'),indices.map(i=>i/(pattern==='beta'?9:24)).join(','));
+      assert.equal(await geo.locator('.geometry-reference-plot').innerHTML(),originalReference);
+      if(view==='line')assert.equal(await geo.locator('.geometry-data-plot .atlas-paths path').count(),0);
+      await geo.locator('[data-geometry-blend]').click();
       if(view==='circle'&&source==='encode')await geo.locator('.geometry-panels').screenshot({path:path.join(out,`${source}-${view}-${pattern}-${viewport.width}.png`)});
      }
      if(view==='m9'){
@@ -60,9 +68,10 @@ try{
       discs.forEach(d=>assert.ok(Math.abs(d.radius**2/d.count-scale)<1e-10));
       assert.equal(await geo.locator('.geometry-node-counts small').count(),9);
      }
-     if(view==='circle'&&source==='jaspar'){
+     if(view==='circle'&&source!=='studies'){
       const counts=await geo.locator('.density-bar').evaluateAll(es=>es.map(e=>Number(e.dataset.count)));
-      assert.equal(counts.reduce((a,b)=>a+b,0),9164);
+      assert.equal(counts.reduce((a,b)=>a+b,0),data[source].length);
+      assert.equal(counts.length,source==='encode'?31:72);
       await geo.locator('.geometry-panels').screenshot({path:path.join(out,`${source}-circle-${viewport.width}.png`)});
      }
     }
@@ -87,10 +96,23 @@ try{
    await geo.locator('#geometry-source').selectOption('encode');await expectCount(255);
    await geo.locator('#geometry-search').fill('CTCF');await expectCount(data.encode.filter(r=>r.factor.includes('CTCF')).length);
    await geo.locator('#geometry-source').selectOption('studies');await expectCount(2);
-   await geo.locator('[data-geometry-view="line"]').click();await geo.locator('#geometry-zoom').check();
+   await geo.locator('[data-geometry-view="line"]').click();
+   assert.equal(await geo.locator('.selection-guide').count(),0);
+   assert.equal(await geo.locator('#geometry-zoom').isDisabled(),true);
+   await geo.locator('.geometry-data-plot [data-geometry-record="TFBS012"] .callout').click();
+   await geo.locator('#geometry-zoom').check();
    await geo.locator('.geometry-panels').screenshot({path:path.join(out,`studies-line-zoom-${viewport.width}.png`)});
    const first=await geo.locator('.geometry-inspector-body h4').textContent();
    await geo.locator('[data-geometry-step="1"]').click();assert.notEqual(await geo.locator('.geometry-inspector-body h4').textContent(),first);
+   // Blend and record selection survive view/sequence changes; the source data stay fixed.
+   await geo.locator('[data-geometry-blend]').click();
+   await geo.locator('[data-geometry-view="circle"]').click();
+   await geo.locator('[data-geometry-pattern="alpha"]').click();
+   assert.equal(await geo.locator('[data-geometry-blend]').getAttribute('aria-pressed'),'true');
+   assert.equal(await geo.locator('.geometry-data-plot .atlas-markers').getAttribute('data-atlas-pattern'),'alpha');
+   assert.equal(await geo.locator('.geometry-data-plot .individual').count(),3);
+   await geo.locator('.geometry-panels').screenshot({path:path.join(out,`studies-alpha-blend-${viewport.width}.png`)});
+   await geo.locator('[data-geometry-blend]').click();
    // Verify CSV and vector/raster exports are actual downloadable data and images.
    for(const format of ['csv','svg','png']){
     const download=page.waitForEvent('download');await geo.locator(`[data-geometry-export="${format}"]`).click();
@@ -109,7 +131,7 @@ try{
    const after=await page.evaluate(()=>({full:document.fullscreenElement?.id,srcs:[...document.querySelectorAll('audio,video')].map(e=>e.currentSrc),times:[...document.querySelectorAll('audio,video')].map(e=>e.currentTime)}));
    assert.equal(page.url(),startUrl);assert.equal(after.full,before.full);assert.deepEqual(after.srcs,before.srcs);
    assert.deepEqual(errors,[]);
-   report.push({viewport,combinations:36,source_counts:{studies:2,encode:255,jaspar:9164},retry:true,exports:['json','csv','svg','png'],keyboard:true,overflow:false,media_context_preserved:true,errors});
+   report.push({viewport,combinations:36,blend_states_per_combination:2,side_by_side:true,blend_default_off:true,selection_deliberate:true,encode_empty_bins:41,source_counts:{studies:2,encode:255,jaspar:9164},retry:true,exports:['json','csv','svg','png'],keyboard:true,overflow:false,media_context_preserved:true,errors});
   } finally {await page.evaluate(()=>document.querySelectorAll('audio,video').forEach(e=>e.pause())).catch(()=>{});await context.close();}
  }
  await fs.writeFile(path.join(out,'report.json'),JSON.stringify({candidate,results:report},null,2));console.log(JSON.stringify({out,results:report},null,2));

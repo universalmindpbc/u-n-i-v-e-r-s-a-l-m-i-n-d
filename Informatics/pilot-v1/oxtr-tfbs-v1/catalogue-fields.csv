@@ -2144,7 +2144,7 @@
 /coordinate_experiment/methods,text,experiment-v1/methods.md,
 /coordinate_experiment/shared_graph_rules,text,experiment-v1/overlay-v1.json,
 /coordinate_experiment/shared_graph_rules_csv,text,experiment-v1/overlay-v1-fields.csv,
-/coordinate_experiment/overlay_version,text,oxtr-shared-geometry-2026-10-20-v1,
+/coordinate_experiment/overlay_version,text,oxtr-comparison-geometry-2026-10-20-v2,
 /coordinate_experiment/collections,list:text,studies;encode;jaspar,
 /coordinate_experiment/views,list:text,line;circle;m9,
 /coordinate_experiment/atlas_sequences,list:text,alpha;beta;gamma;epsilon,
