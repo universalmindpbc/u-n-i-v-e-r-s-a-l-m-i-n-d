@@ -23,7 +23,7 @@ try{
    try{await route.fulfill({status:200,body:await fs.readFile(file),contentType:{'.html':'text/html','.js':'text/javascript','.css':'text/css','.json':'application/json','.svg':'image/svg+xml','.png':'image/png'}[path.extname(file)]||'application/octet-stream'});}catch{return route.fulfill({status:404,body:'Missing candidate asset'});}
   });
   let fail=true;
-  await context.route(base+'pilot-v1/oxtr-tfbs-v1/experiment-v1/studies.json',async route=>{if(fail){fail=false;return route.fulfill({status:503,body:'Deliberate loading failure'});}return route.fallback();});
+  await context.route(base+'pilot-v1/oxtr-tfbs-v1/experiment-v1/studies.json*',async route=>{if(fail){fail=false;return route.fulfill({status:503,body:'Deliberate loading failure'});}return route.fallback();});
   const page=await context.newPage(),errors=[];page.on('pageerror',e=>errors.push(e.message));
   try{
    await page.goto(base+'?atlas=1&record=fibonacci-m9-p24',{waitUntil:'domcontentloaded'});
