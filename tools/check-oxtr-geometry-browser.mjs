@@ -14,7 +14,7 @@ const server=await chromium.launchServer({headless:true,executablePath:'/Users/b
 assert.ok(server.process().spawnargs.includes('--mute-audio'));
 const browser=await chromium.connect(server.wsEndpoint()),report=[];
 try{
- for(const viewport of [{width:1440,height:1000},{width:390,height:844}]){
+ for(const viewport of [{width:1440,height:1000},{width:1366,height:768},{width:390,height:844}]){
   const context=await browser.newContext({viewport,acceptDownloads:true,reducedMotion:'reduce'});
   await context.addInitScript(()=>{let full=null;Object.defineProperty(document,'fullscreenElement',{get:()=>full});Element.prototype.requestFullscreen=async function(){full=this;document.dispatchEvent(new Event('fullscreenchange'));};document.exitFullscreen=async()=>{full=null;document.dispatchEvent(new Event('fullscreenchange'));};});
   if(candidate)await context.route(base+'**',async route=>{
@@ -57,6 +57,22 @@ try{
       assert.equal(await geo.locator('.geometry-data-plot .atlas-markers').getAttribute('data-atlas-turns'),indices.map(i=>i/(pattern==='beta'?9:24)).join(','));
       assert.equal(await geo.locator('.geometry-reference-plot').innerHTML(),originalReference);
       if(view==='line')assert.equal(await geo.locator('.geometry-data-plot .atlas-paths path').count(),0);
+      assert.equal(await geo.locator('.geometry-reference-plot').locator('..').locator('.geometry-atlas-key').evaluate(e=>e.classList.contains('is-dot')),pattern==='alpha');
+      assert.equal(await geo.locator('.geometry-blend-key .geometry-atlas-key').evaluate(e=>e.classList.contains('is-dot')),pattern==='alpha'||view==='line');
+      if(viewport.width>=960){
+        const fit=await geo.locator('.geometry-board').evaluate(board=>{
+          const dialog=board.closest('dialog'),d=dialog.getBoundingClientRect(),bar=dialog.querySelector('.science-reader-bar').getBoundingClientRect();
+          const b=board.getBoundingClientRect();
+          const marks=[...board.querySelectorAll('svg,[data-geometry-view],[data-geometry-pattern],[data-geometry-blend]')].map(e=>{const r=e.getBoundingClientRect();return {top:r.top,bottom:r.bottom,left:r.left,right:r.right};});
+          return {fits:marks.every(r=>r.top>=bar.bottom&&r.bottom<=d.bottom&&r.left>=d.left&&r.right<=d.right),boardHeight:b.height,plotHeights:[...board.querySelectorAll('svg')].map(e=>e.getBoundingClientRect().height)};
+        });
+        assert.equal(fit.fits,true,JSON.stringify({viewport,source,view,pattern,fit}));
+        assert.ok(Math.min(...fit.plotHeights)>=250,JSON.stringify(fit));
+        const labelSizes=await geo.locator('svg text.small').evaluateAll(labels=>labels.map(e=>parseFloat(getComputedStyle(e).fontSize)*Math.hypot(e.getScreenCTM().a,e.getScreenCTM().b)));
+        assert.ok(labelSizes.every(size=>size>=10.9),JSON.stringify({viewport,labelSizes}));
+      }
+
+      if(view==='circle'&&source==='encode'&&pattern==='alpha')await page.screenshot({path:path.join(out,`comparison-board-${viewport.width}.png`)});
       await geo.locator('[data-geometry-blend]').click();
       if(view==='circle'&&source==='encode')await geo.locator('.geometry-panels').screenshot({path:path.join(out,`${source}-${view}-${pattern}-${viewport.width}.png`)});
      }
@@ -147,7 +163,7 @@ try{
    const after=await page.evaluate(()=>({full:document.fullscreenElement?.id,srcs:[...document.querySelectorAll('audio,video')].map(e=>e.currentSrc),times:[...document.querySelectorAll('audio,video')].map(e=>e.currentTime)}));
    assert.equal(page.url(),startUrl);assert.equal(after.full,before.full);assert.deepEqual(after.srcs,before.srcs);
    assert.deepEqual(errors,[]);
-   report.push({viewport,combinations:36,blend_states_per_combination:2,source_definitions_prominent:true,binding_outcomes_and_exports:true,side_by_side:true,blend_default_off:true,selection_deliberate:true,encode_empty_bins:41,source_counts:{studies:2,encode:255,jaspar:9164},retry:true,exports:['json','csv','svg','png'],keyboard:true,overflow:false,media_context_preserved:true,errors});
+   report.push({viewport,combinations:36,blend_states_per_combination:2,source_definitions_prominent:true,binding_outcomes_and_exports:true,side_by_side:true,controls_and_complete_graphs_fit:viewport.width>=960,legend_matches_marks:true,blend_default_off:true,selection_deliberate:true,encode_empty_bins:41,source_counts:{studies:2,encode:255,jaspar:9164},retry:true,exports:['json','csv','svg','png'],keyboard:true,overflow:false,media_context_preserved:true,errors});
   } finally {await page.evaluate(()=>document.querySelectorAll('audio,video').forEach(e=>e.pause())).catch(()=>{});await context.close();}
  }
  await fs.writeFile(path.join(out,'report.json'),JSON.stringify({candidate,results:report},null,2));console.log(JSON.stringify({out,results:report},null,2));

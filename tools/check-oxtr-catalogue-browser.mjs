@@ -47,6 +47,22 @@ try{
    const dialog=frame.locator('.science-tfbs');
    await dialog.getByRole('button',{name:'Try again',exact:true}).click();
    await dialog.locator('#tfbs-species').waitFor({state:'attached'});
+   assert.equal(await dialog.locator('#tfbs-title').textContent(),'OXTR transcription-factor binding-site catalogue');
+   const teachingLink=dialog.locator('[data-science-transcription]');
+   await teachingLink.click();
+   const teaching=frame.locator('.science-transcription');
+   await teaching.locator('img').evaluate(img=>img.decode());
+   assert.equal(await teaching.locator('img').evaluate(img=>img.naturalWidth),1536);
+   assert.equal(await teaching.evaluate(e=>e.open),true);
+   assert.equal(await teaching.locator('.transcription-takeaways p').count(),3);
+   await page.screenshot({path:path.join(out,`transcription-${viewport.width}.png`)});
+   await teaching.getByRole('button',{name:'Enlarge diagram',exact:true}).click();
+   assert.equal(await teaching.locator('figure').evaluate(e=>e.scrollWidth),1536);
+   await teaching.getByRole('button',{name:'Fit diagram to screen',exact:true}).click();
+   await page.keyboard.press('Escape');
+   assert.equal(await teaching.evaluate(e=>e.open),false);
+   assert.equal(await dialog.evaluate(e=>e.open),true);
+   assert.equal(await teachingLink.evaluate(e=>e===document.activeElement),true);
    const learningLink=dialog.locator('[data-science-tfbs-learning]');
    await learningLink.click();
    const learning=frame.locator('.science-tfbs-learning');
@@ -165,9 +181,9 @@ try{
    assert.equal(page.url(),originalUrl);
    assert.equal(await page.evaluate(()=>document.fullscreenElement?.id),before.fullscreen);
    await page.keyboard.press('Escape');
-   assert.equal(await page.locator('.science-register:not(.science-tfbs):not(.science-tfbs-learning)').evaluate(e=>e.open),true);
+   assert.equal(await page.locator('.science-register[aria-labelledby="science-register-title"]').evaluate(e=>e.open),true);
    assert.deepEqual(errors,[]);
-   results.push({viewport,teachingGraphicLoaded:true,teachingZoomAndGlossary:true,nestedTeachingEscapeAndFocus:true,dataExplorer:true,originalEvidenceTypesRestored:true,all33FilterCombinations:true,selectedExportMatchesFilter:true,broaderDescriptionsSeparate:true,filters:true,retryAfterFailure:true,keyboardAndOutsideClose:true,escapeAndFocus:true,summaryAndSidebar:true,aboutNestedLightbox:true,fullscreenStatePreserved:true,mediaStatePreserved:true,downloadsMatched:viewport.width===1440,errors});
+   results.push({viewport,transcriptionTeachingAndFocus:true,teachingGraphicLoaded:true,teachingZoomAndGlossary:true,nestedTeachingEscapeAndFocus:true,dataExplorer:true,originalEvidenceTypesRestored:true,all33FilterCombinations:true,selectedExportMatchesFilter:true,broaderDescriptionsSeparate:true,filters:true,retryAfterFailure:true,keyboardAndOutsideClose:true,escapeAndFocus:true,summaryAndSidebar:true,aboutNestedLightbox:true,fullscreenStatePreserved:true,mediaStatePreserved:true,downloadsMatched:viewport.width===1440,errors});
   }finally{await page.evaluate(()=>document.querySelectorAll('video,audio').forEach(m=>m.pause())).catch(()=>{});await context.close();}
  }
  const result={passed:true,candidate,processMuted:true,results};await fs.writeFile(path.join(out,'results.json'),JSON.stringify(result,null,2));console.log(JSON.stringify(result,null,2));

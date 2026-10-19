@@ -94,3 +94,45 @@
 .geometry-row-outcome{display:block;font-size:13px;color:#f6ceaa;margin-top:8px}
 .tfbs-binding-outcome{display:inline-block;font-size:15px!important;font-weight:600;padding:7px 10px;border:1px solid #687274;color:#f6ceaa}
 @media(max-width:900px){.tfbs-evidence-priority ol{grid-template-columns:1fr;gap:18px}.geometry-binding-result dl{grid-template-columns:1fr;gap:5px}.geometry-binding-result dd{margin-bottom:10px}}
+
+/* A screen-sized comparison board, with source teaching and record detail outside it. */
+.geometry-atlas-key.is-dot{width:10px!important;height:10px!important;border-radius:50%}
+.geometry-board{scroll-margin-top:calc(var(--reader-bar-height,64px) + 12px);outline:none}
+.geometry-board:focus-visible{outline:2px solid #e4bd83;outline-offset:3px}
+.geometry-plot-notes{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin:12px 0 18px}
+.geometry-plot-notes p{font-size:13px;line-height:1.65;color:#b7c8d4;margin:0}
+.geometry-plot-notes .geometry-zoom{font-size:13px;margin:0 0 8px}
+.geometry-jump{margin:0 0 8px}
+.tfbs-teaching-links{display:flex;gap:12px 28px;flex-wrap:wrap;margin:12px 0 20px}
+.tfbs-teaching-links button{font-size:14px;line-height:1.6}
+.science-transcription .transcription-takeaways{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin:20px 0}
+.transcription-takeaways p{margin:0;padding:14px 16px;border-left:3px solid #78cabb;background:#12232d;font-size:15px;color:#d5e1e9}
+.science-transcription .science-register-intro{font-size:16px;line-height:1.7}
+.science-transcription .tfbs-learning-figure img{width:100%;height:auto}
+.science-transcription .tfbs-learning-figure.is-enlarged img{width:1536px;min-width:1536px}
+.science-transcription a{color:#c6dce9}
+@media(min-width:960px) and (min-height:620px){
+ .geometry-board{height:var(--comparison-height,650px);display:flex;flex-direction:column}
+ .geometry-board .geometry-switches{margin:0 0 8px;gap:12px;flex-wrap:nowrap;align-items:end;flex:none}
+ .geometry-board .geometry-control-label{margin-bottom:5px;font-size:12px;letter-spacing:0}
+ .geometry-board .geometry-buttons{flex-wrap:nowrap;gap:5px}
+ .geometry-board .geometry-switches button{font-size:12px;padding:8px 10px;white-space:nowrap}
+ .geometry-board .geometry-outcome-summary{margin:4px 0 8px;padding:8px 12px;flex:none;display:flex;align-items:baseline;gap:6px 20px;flex-wrap:wrap;font-size:14px}
+ .geometry-board .geometry-outcome-summary span{font-size:13px;margin:0}
+ .geometry-board .geometry-panels{flex:1;min-height:0;grid-template-columns:1fr 1fr}
+ .geometry-board .geometry-panels figure{display:flex;flex-direction:column;min-height:0;padding:12px 14px 8px}
+ .geometry-board .geometry-panels figcaption{font-size:16px;flex:none}
+ .geometry-board .geometry-legend{font-size:12px;line-height:1.5;margin:8px 0 4px;min-height:36px;flex:none;align-content:start}
+ .geometry-board .geometry-data-plot,.geometry-board .geometry-reference-plot{flex:1;min-height:0}
+ .geometry-board .geometry-svg{width:100%;height:100%;max-height:none}
+}
+@media(max-width:959px),(max-height:619px){
+ .geometry-board .geometry-switches{position:sticky;top:var(--reader-bar-height,64px);z-index:2;background:#0b1116;border-bottom:1px solid #344b5a;padding:8px 0;gap:8px}
+ .geometry-board .geometry-control-label{font-size:11px;letter-spacing:0;margin-bottom:4px}
+ .geometry-board .geometry-switches button{font-size:11px;padding:6px 8px;min-height:36px}
+ .geometry-board .geometry-blend-control{display:flex;align-items:center;gap:8px}
+ .geometry-board .geometry-panels{grid-template-columns:1fr}
+ .geometry-board .geometry-svg{max-height:420px}
+ .geometry-plot-notes{grid-template-columns:1fr;gap:14px}
+ .science-transcription .transcription-takeaways{grid-template-columns:1fr;gap:10px}
+}

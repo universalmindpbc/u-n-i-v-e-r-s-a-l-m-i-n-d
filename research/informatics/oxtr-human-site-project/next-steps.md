@@ -2,9 +2,9 @@
 
 ## Next discussion after Ben proofs this version — 20 October 2026
 
-- [ ] Discuss where to place the binding-site educational infographic, or a clear link to it, in the next build. Ben explicitly requested this discussion after reviewing the current version; placement is not part of this release.
-- [ ] Review the existing teaching draft, **How binding sites help make the OXTR receptor**, before creating another image. Cover what a binding site is, why a gene can have multiple regulatory sites, how proteins act together, and how binding relates to transcription. Explain that the number and use of sites depend on the gene and cell context, and that DNA position is not a fixed timeline of binding events.
-- [ ] Agree the visible entry point with Ben while preserving the scientific hierarchy of the Atlas.
+- [x] Ben requested the infographic after reviewing the source explanations. Added a separate “How binding sites help make OXTR” link beside the existing explainer, opening the saved teaching image in a nested lightbox. Staging review remains pending.
+- [x] Reviewed and reused the existing teaching draft, **How binding sites help make the OXTR receptor**. Cover what a binding site is, why a gene can have multiple regulatory sites, how proteins act together, and how binding relates to transcription. Explain that the number and use of sites depend on the gene and cell context, and that DNA position is not a fixed timeline of binding events.
+- [ ] Ben proofs the new teaching entry point and compact comparison board. Discuss `preliminary-discussion-draft.md` before publishing any initial-findings call-out.
 
 ## Current source and outcome presentation — 20 October 2026
 
