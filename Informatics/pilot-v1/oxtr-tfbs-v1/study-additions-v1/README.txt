@@ -4,4 +4,4 @@ BrainTF: 126 screened ChIP-seq peak observations, 43 protein targets and 13 brai
 
 The 2025 enhancer study contributes functional reporter evidence. Its reported candidate intervals and primer mappings remain separate in enhancer-regions. No precise TF binding position is inferred.
 
-The DNA window, ENCODE and JASPAR imports, and the existing two-element Studies geometry remain unchanged. All study data is included in the complete JSON/CSV archives. Source URLs, row numbers and SHA-256 hashes identify the reviewed public files. Raw sequencing reads and controlled individual-level data are not included.
+The Studies comparison includes both sequence elements and all 126 screened BrainTF regions. The DNA window, ENCODE and JASPAR imports remain unchanged. All study data is included in the complete JSON/CSV archives. Source URLs, row numbers and SHA-256 hashes identify the reviewed public files. Raw sequencing reads and controlled individual-level data are not included.

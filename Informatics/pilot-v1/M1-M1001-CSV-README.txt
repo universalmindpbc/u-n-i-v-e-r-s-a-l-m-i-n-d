@@ -22,4 +22,4 @@ oxtr-tfbs-v1/ contains a separate source-linked catalogue, literature records, r
 
 Coordinate experiment — 20 October 2026
 
-oxtr-tfbs-v1/experiment-v1/ contains fixed projections for 2 published elements, 255 ENCODE regions and 9,164 JASPAR predictions (score >=400), compared visually with all four M9 P24 Atlas sequences. It includes original intervals, source provenance, mappings, methods, Python/Biopython code and Wolfram checks. JSON and CSV exports carry the same experiment information. This is visual exploration with computational verification; biological association is untested.
+oxtr-tfbs-v1/experiment-v1/ contains fixed projections for 128 study observations (2 sequence elements and 126 BrainTF occupancy regions), 255 ENCODE regions and 9,164 JASPAR predictions (score >=400), compared visually with all four M9 P24 Atlas sequences. It includes original intervals, source provenance, mappings, methods, Python/Biopython code and Wolfram checks. JSON and CSV exports carry the same experiment information. This is visual exploration with computational verification; biological association is untested.

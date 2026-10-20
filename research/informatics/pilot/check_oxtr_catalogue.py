@@ -54,10 +54,10 @@ for name,prefix,files in [('m1-m1001-data.zip','pilot-v1/',['catalogue.json','ja
 guide=read('binding-outcomes.json')
 assert c['binding_interpretation']==guide==read_record(SUP/'binding-outcomes-fields.csv')
 outcomes=read('mapped-binding-outcomes.json');flat_outcomes=table('mapped-binding-outcomes.csv')
-assert len(outcomes)==len(flat_outcomes)==9421
+assert len(outcomes)==len(flat_outcomes)==9547
 assert sum(r['status']=='binding_detected' for r in outcomes)==2
-assert sum(r['status']=='regional_association_detected' for r in outcomes)==255
+assert sum(r['status']=='regional_association_detected' for r in outcomes)==381
 assert sum(r['status']=='prediction_only' for r in outcomes)==9164
 assert not any(r['status']=='binding_not_detected' for r in outcomes)
 for a,b in zip(outcomes,flat_outcomes):assert a==b
-print(json.dumps({'binding_outcomes_verified':9421,'passed':True,'literature_rows_roundtripped':45,'predictions_roundtripped':217857,'pfms_verified':1019,'encode_provenance_links':751,'mathematical_records_unchanged':1001,'existing_register_publications':14,'complete_archives_verified':4}))
+print(json.dumps({'binding_outcomes_verified':9547,'passed':True,'literature_rows_roundtripped':45,'predictions_roundtripped':217857,'pfms_verified':1019,'encode_provenance_links':751,'mathematical_records_unchanged':1001,'existing_register_publications':14,'complete_archives_verified':4}))

@@ -93,14 +93,14 @@ def build():
         p = SUP/'experiment-v1'/entry['file']
         data = json.loads(gzip.decompress(p.read_bytes()) if p.suffix=='.gz' else p.read_bytes())
         for r in data:
-            outcome = guide['records'].get(r['id'], guide['defaults'][collection])
+            outcome = guide['records'].get(r['id'], guide['defaults']['braintf' if r.get('study_id') == 'braintf' else collection])
             rows.append(dict(observation_id=r['id'], collection=collection,
                              interpretation_version=guide['version'], **outcome))
     write(SUP/'mapped-binding-outcomes.json', rows)
     with (SUP/'mapped-binding-outcomes.csv').open('w', encoding='utf-8-sig', newline='') as f:
         writer=csv.DictWriter(f, fieldnames=list(rows[0]));writer.writeheader();writer.writerows(rows)
-    assert len(rows)==9421 and len({r['observation_id'] for r in rows})==9421
-    print(json.dumps({'mapped_outcomes':len(rows),'positive_sequence_elements':2,'regional_associations':255,'predictions':9164,'negative_controls_curated':0}))
+    assert len(rows)==9547 and len({r['observation_id'] for r in rows})==9547
+    print(json.dumps({'mapped_outcomes':len(rows),'positive_sequence_elements':2,'regional_associations':381,'predictions':9164,'negative_controls_curated':0}))
 
 if __name__=='__main__':
     build()

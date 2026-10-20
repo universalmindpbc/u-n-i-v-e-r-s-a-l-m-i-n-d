@@ -9858,7 +9858,7 @@
 /research_supplements/oxtr_tfbs/coordinate_experiment/views,list:text,line;circle;m9,
 /research_supplements/oxtr_tfbs/coordinate_experiment/atlas_sequences,list:text,alpha;beta;gamma;epsilon,
 /research_supplements/oxtr_tfbs/coordinate_experiment/counts,object,3,
-/research_supplements/oxtr_tfbs/coordinate_experiment/counts/studies,integer,2,
+/research_supplements/oxtr_tfbs/coordinate_experiment/counts/studies,integer,128,
 /research_supplements/oxtr_tfbs/coordinate_experiment/counts/encode,integer,255,
 /research_supplements/oxtr_tfbs/coordinate_experiment/counts/jaspar_score_400,integer,9164,
 /research_supplements/oxtr_tfbs/coordinate_experiment/status,text,"Exploratory coordinate mapping with Python, Biopython and Wolfram checks; biological association untested",

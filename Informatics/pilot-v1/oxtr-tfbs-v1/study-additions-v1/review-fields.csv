@@ -31,7 +31,7 @@
 /enhancer/boundary,text,Reporter activity does not establish a named transcription-factor binding site or causal regulation of native human OXTR.,
 /enhancer/coordinates,text,"The reported OCE7 candidate interval and the Table 1 luciferase-primer span differ. Reported intervals and primer matches are retained separately, without a precise binding-site overlay.",
 /enhancer/source,text,https://pmc.ncbi.nlm.nih.gov/articles/PMC12056307/,
-/geometry_scope,text,The existing Studies geometry retains US-1 and US-2. BrainTF occupancy is available in the study data browser; the enhancer paper is literature evidence.,
+/geometry_scope,text,"The Studies comparison and data browser both include 128 observations: US-1, US-2 and 126 screened BrainTF occupancy regions. Region centres are plotting representatives, not precise binding sites. The enhancer paper remains functional literature evidence.",
 /files,object,4,
 /files/peaks,text,study-additions-v1/braintf-peaks.json,
 /files/peak_csv,text,study-additions-v1/braintf-peaks.csv,

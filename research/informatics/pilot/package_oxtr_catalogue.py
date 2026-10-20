@@ -41,7 +41,7 @@ def publish():
             'collections':['studies','encode','jaspar'],
             'views':['line','circle','m9'],
             'atlas_sequences':['alpha','beta','gamma','epsilon'],
-            'counts':{'studies':2,'encode':255,'jaspar_score_400':9164},
+            'counts':{'studies':128,'encode':255,'jaspar_score_400':9164},
             'status':'Exploratory coordinate mapping with Python, Biopython and Wolfram checks; biological association untested'}
         catalogue['status']='Source catalogue with a reproducible exploratory coordinate experiment'
         catalogue['analysis_status']='Source observations remain unchanged. experiment-v1 supplies fixed DNA-line, full-circle and M9 mappings with computational checks. No enrichment test, new motif scan or biological significance score has been applied.'
@@ -86,7 +86,7 @@ def publish():
         text=text.split(heading)[0]
         p.write_text(text+heading+' — 19 October 2026\n\noxtr-tfbs-v1/ contains a separate source-linked catalogue, literature records, reference DNA, JASPAR motif templates and existing predictions, ENCODE occupancy clusters and experimental provenance, and ORegAnno annotations. Read its README.txt and catalogue metadata for the bounded reference window and interpretation. CSV users have complete tables and typed metadata without needing JSON. The supplement is shared across the Atlas; no modulus-specific biological comparison has been performed. The original 14-study register is unchanged.\n')
         if 'coordinate_experiment' in catalogue:
-            with p.open('a') as f:f.write('\nCoordinate experiment — 20 October 2026\n\noxtr-tfbs-v1/experiment-v1/ contains fixed projections for 2 published elements, 255 ENCODE regions and 9,164 JASPAR predictions (score >=400), compared visually with all four M9 P24 Atlas sequences. It includes original intervals, source provenance, mappings, methods, Python/Biopython code and Wolfram checks. JSON and CSV exports carry the same experiment information. This is visual exploration with computational verification; biological association is untested.\n')
+            with p.open('a') as f:f.write('\nCoordinate experiment — 20 October 2026\n\noxtr-tfbs-v1/experiment-v1/ contains fixed projections for 128 study observations (2 sequence elements and 126 BrainTF occupancy regions), 255 ENCODE regions and 9,164 JASPAR predictions (score >=400), compared visually with all four M9 P24 Atlas sequences. It includes original intervals, source provenance, mappings, methods, Python/Biopython code and Wolfram checks. JSON and CSV exports carry the same experiment information. This is visual exploration with computational verification; biological association is untested.\n')
     # Integrity manifest excludes itself and archives to avoid circular hashes.
     files=[p for p in SUP.rglob('*') if p.is_file() and p.suffix not in ['.zip','.pyc'] and '__pycache__' not in p.parts and p.name!='file-manifest.csv']
     with (SUP/'file-manifest.csv').open('w',encoding='utf-8-sig',newline='') as f:

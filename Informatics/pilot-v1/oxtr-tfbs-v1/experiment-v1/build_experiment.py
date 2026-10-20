@@ -95,9 +95,10 @@ def build(source, atlas, output):
         paper = next(p for p in cat['publications'] if p['pmid'] == r['pmid'])
         published.append(dict(r, **{k:m[k] for k in ['start_0based','end_exclusive','strand','chromosome']},
                               sequence_oriented=str(sequence), source_url=paper['doi_url'], publication=paper))
+    published.extend(read(source/'study-additions-v1/braintf-peaks.json'))
     predictions = [r for r in read(source/'jaspar-predictions.json.gz') if r['score'] >= 400]
     inputs = {'studies':published, 'encode':read(source/'encode-clusters.json'), 'jaspar':predictions}
-    unit = {'studies':'elements', 'encode':'regions', 'jaspar':'matches'}
+    unit = {'studies':'observations', 'encode':'regions', 'jaspar':'matches'}
     sequence_checks = Counter()
     summaries, files = {}, {}
     for collection, raw in inputs.items():
@@ -155,7 +156,7 @@ def build(source, atlas, output):
     ep = m9['epsilon']['alpha_indices']
     assert [alpha[i] or 9 for i in ep] == m9['epsilon']['traversal_values']
     assert ep == [0,8,20,12,4,16,0]
-    source_names = ['catalogue.json','reference-dna.json','reference-dna.fa','sequence-mapping.json',
+    source_names = ['catalogue.json','study-additions-v1/braintf-peaks.json','reference-dna.json','reference-dna.fa','sequence-mapping.json',
                     'encode-clusters.json','encode-provenance.json','jaspar-predictions.json.gz','jaspar2026-vertebrates.jaspar']
     manifest = dict(version=VERSION, status='Exploratory coordinate comparison; biological association untested',
         reference=dict(cat['region'], origin_genomic_base_0based=hi-1, direction='OXTR minus strand; descending genomic coordinates',

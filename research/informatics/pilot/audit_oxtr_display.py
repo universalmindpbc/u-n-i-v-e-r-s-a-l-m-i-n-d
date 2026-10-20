@@ -23,7 +23,8 @@ def audit():
     reference = manifest['reference']
     length = reference['length_bp']
     originals = {
-        'studies': {r['record_id']: r for r in read(SUP / 'sequence-mapping.json')},
+        'studies': {**{r['record_id']: r for r in read(SUP / 'sequence-mapping.json')},
+                    **{r['id']: r for r in read(SUP / 'study-additions-v1/braintf-peaks.json')}},
         'encode': {r['id']: r for r in read(SUP / 'encode-clusters.json')},
         'jaspar': {r['id']: r for r in read(SUP / 'jaspar-predictions.json.gz') if r['score'] >= 400},
     }

@@ -34,7 +34,7 @@ try{
    await geo.getByRole('button',{name:'Retry experiment',exact:true}).click();
    const status=geo.locator('.geometry-status');
    const expectCount=async n=>status.filter({hasText:new RegExp('^'+n.toLocaleString('en-AU')+' ')}).waitFor({timeout:60000});
-   await expectCount(2);assert.equal(await geo.locator('[data-geometry-view="line"]').getAttribute('aria-pressed'),'true');
+   await expectCount(128);assert.equal(await geo.locator('[data-geometry-view="line"]').getAttribute('aria-pressed'),'true');
    const startUrl=page.url();
    const before=await page.evaluate(()=>({full:document.fullscreenElement?.id,srcs:[...document.querySelectorAll('audio,video')].map(e=>e.currentSrc),times:[...document.querySelectorAll('audio,video')].map(e=>e.currentTime)}));
    for(const source of ['studies','encode','jaspar']){
@@ -84,10 +84,10 @@ try{
       discs.forEach(d=>assert.ok(Math.abs(d.radius**2/d.count-scale)<1e-10));
       assert.equal(await geo.locator('.geometry-node-counts small').count(),9);
      }
-     if(view==='circle'&&source!=='studies'){
+     if(view==='circle'){
       const counts=await geo.locator('.density-bar').evaluateAll(es=>es.map(e=>Number(e.dataset.count)));
       assert.equal(counts.reduce((a,b)=>a+b,0),data[source].length);
-      assert.equal(counts.length,source==='encode'?31:72);
+      assert.equal(counts.length,new Set(data[source].map(r=>Math.floor(r.mapping.full_circle_turns*72))).size);
       await geo.locator('.geometry-panels').screenshot({path:path.join(out,`${source}-circle-${viewport.width}.png`)});
      }
     }
@@ -101,7 +101,7 @@ try{
     const file=path.join(out,`${source}-${viewport.width}.json`);await(await promise).saveAs(file);
     const result=JSON.parse(await fs.readFile(file,'utf8'));assert.equal(result.count,expected.length);assert.deepEqual(result.records.map(r=>r.id),expected.map(r=>r.id));
     const expectedOutcome={studies:'binding_detected',encode:'regional_association_detected',jaspar:'prediction_only'}[source];
-    assert.ok(result.records.every(r=>r.binding_evidence.status===expectedOutcome));
+    assert.ok(result.records.every(r=>r.binding_evidence.status===(r.study_id==='braintf'?'regional_association_detected':expectedOutcome)));
     assert.ok(result.records.every(r=>r.binding_evidence.source_url&&r.binding_evidence.expression_effect&&r.binding_evidence.review_depth));
     assert.equal(result.mapping.modulo9,manifest.mapping.modulo9);assert.equal(result.parameters.inspection_group.value,residue);
     assert.equal(result.parameters.overlay_version,result.overlay.version);assert.equal(result.overlay.atlas_registration.rotation_turns,0);
@@ -114,10 +114,11 @@ try{
    await geo.locator('#geometry-score').selectOption('800');await expectCount(data.jaspar.filter(r=>r.score>=800).length);
    await geo.locator('#geometry-source').selectOption('encode');await expectCount(255);
    await geo.locator('#geometry-search').fill('CTCF');await expectCount(data.encode.filter(r=>r.factor.includes('CTCF')).length);
-   await geo.locator('#geometry-source').selectOption('studies');await expectCount(2);
+   await geo.locator('#geometry-source').selectOption('studies');await expectCount(128);
    await geo.locator('[data-geometry-view="line"]').click();
    assert.equal(await geo.locator('.selection-guide').count(),0);
    assert.equal(await geo.locator('#geometry-zoom').isDisabled(),true);
+   await geo.locator('#geometry-studies-kind').selectOption('sequence');await expectCount(2);
    await geo.locator('.geometry-data-plot [data-geometry-record="TFBS012"] .callout').click();
    await geo.locator('#geometry-zoom').check();
    await geo.locator('.geometry-panels').screenshot({path:path.join(out,`studies-line-zoom-${viewport.width}.png`)});
@@ -143,6 +144,41 @@ try{
     if(format==='svg')assert.ok(bytes.toString().includes('<metadata>')&&bytes.toString().includes('OXTR binding-site geometry')&&bytes.toString().includes('atlas-overlay'));
     if(format==='png')assert.equal(bytes.subarray(1,4).toString(),'PNG');
    }
+   await dialog.locator('[data-source-definition="studies"] [data-tfbs-compare]').click();await expectCount(128);
+   assert.equal(await geo.locator('#geometry-studies-kind').inputValue(),'all');
+   assert.match(await geo.locator('#geometry-source option:checked').textContent(),/128 mapped observations/);
+   assert.match(await geo.locator('.geometry-outcome-summary').textContent(),/Binding detected · 2 observations/);
+   assert.match(await geo.locator('.geometry-outcome-summary').textContent(),/Regional association detected · 126 observations/);
+   const allWait=page.waitForEvent('download');await geo.locator('[data-geometry-export="json"]').click();
+   const allPath=path.join(out,`all-studies-${viewport.width}.json`);await(await allWait).saveAs(allPath);
+   const all=JSON.parse(await fs.readFile(allPath,'utf8'));assert.equal(all.count,128);
+   assert.deepEqual(all.records.map(r=>r.id),data.studies.map(r=>r.id));
+   assert.equal(all.records.filter(r=>r.study_id==='braintf').length,126);
+   const allCsvWait=page.waitForEvent('download');await geo.locator('[data-geometry-export="csv"]').click();
+   const allCsvPath=path.join(out,`all-studies-${viewport.width}.csv`);await(await allCsvWait).saveAs(allCsvPath);
+   const allCsv=await fs.readFile(allCsvPath,'utf8');assert.ok(data.studies.every(r=>allCsv.includes(r.id)));
+   assert.ok(allCsv.includes('source_sha256')&&allCsv.includes('binding_evidence')&&allCsv.includes('anchor_offset_bp'));
+   await geo.locator('#geometry-studies-kind').selectOption('occupancy');await expectCount(126);
+   await geo.locator('#geometry-search').fill('REST');
+   const rest=data.studies.filter(r=>r.factor==='REST');await expectCount(rest.length);assert.ok(rest.length>0);
+   if(!await geo.locator('.geometry-records').evaluate(e=>e.open))await geo.locator('.geometry-records summary').click();
+   const firstPeak=geo.locator('.geometry-records [data-geometry-record]').first();await firstPeak.click();
+   assert.match(await geo.locator('.geometry-inspector-body').textContent(),/REST/);
+   assert.match(await geo.locator('.geometry-binding-result').textContent(),/Regional association detected/);
+   assert.match(await geo.locator('.geometry-inspector-body').textContent(),/Replication QC: pass/);
+   for(const view of ['line','circle']){
+    await geo.locator(`[data-geometry-view="${view}"]`).click();assert.equal(await geo.locator('.selected-extent').count(),1);
+   }
+   const regionalWait=page.waitForEvent('download');await geo.locator('[data-geometry-export="json"]').click();
+   const regionalPath=path.join(out,`REST-studies-${viewport.width}.json`);await(await regionalWait).saveAs(regionalPath);
+   const regional=JSON.parse(await fs.readFile(regionalPath,'utf8'));assert.equal(regional.count,rest.length);
+   assert.ok(regional.records.every(r=>r.binding_evidence.status==='regional_association_detected'&&r.source_sha256&&r.replication_qc==='pass'));
+   await geo.locator('[data-geometry-view="m9"]').click();
+   const restCounts=await geo.locator('.geometry-node-counts strong').allTextContents();assert.equal(restCounts.reduce((s,n)=>s+Number(n),0),rest.length);
+   await geo.locator('.geometry-inspector').screenshot({path:path.join(out,`brain-region-inspector-${viewport.width}.png`)});
+   await dialog.locator('[data-source-definition="studies"] [data-tfbs-compare]').click();await expectCount(128);
+   await geo.locator('[data-geometry-view="line"]').click();
+   await geo.locator('.geometry-source-context').screenshot({path:path.join(out,`all-studies-context-${viewport.width}.png`)});
    assert.equal(await dialog.locator('[data-source-definition]').count(),3);
    assert.match(await dialog.locator('.tfbs-evidence-priority').textContent(),/positive binding result/);
    assert.match(await geo.locator('.geometry-outcome-summary').textContent(),/Binding detected/);
@@ -156,14 +192,14 @@ try{
    assert.equal(await dialog.evaluate(e=>e.scrollWidth<=e.clientWidth+1),true);
    await dialog.evaluate(e=>e.scrollTop=0);await page.screenshot({path:path.join(out,`experiment-${viewport.width}.png`)});
    // Preserve the source-data browser, learning lightbox, and Atlas/music context.
-   assert.equal(await dialog.locator('.tfbs-datasets button').count(),4);
+   assert.equal(await dialog.locator('.tfbs-datasets button').count(),3);
    await dialog.locator('[data-science-tfbs-learning]').click();await frame.locator('.science-tfbs-learning').waitFor({state:'visible'});await page.keyboard.press('Escape');
    assert.equal(await dialog.evaluate(e=>e.open),true);
    await page.keyboard.press('Escape');assert.equal(await dialog.evaluate(e=>e.open),false);assert.equal(await entry.evaluate(e=>e===document.activeElement),true);
    const after=await page.evaluate(()=>({full:document.fullscreenElement?.id,srcs:[...document.querySelectorAll('audio,video')].map(e=>e.currentSrc),times:[...document.querySelectorAll('audio,video')].map(e=>e.currentTime)}));
    assert.equal(page.url(),startUrl);assert.equal(after.full,before.full);assert.deepEqual(after.srcs,before.srcs);
    assert.deepEqual(errors,[]);
-   report.push({viewport,combinations:36,blend_states_per_combination:2,source_definitions_prominent:true,binding_outcomes_and_exports:true,side_by_side:true,controls_and_complete_graphs_fit:viewport.width>=960,legend_matches_marks:true,blend_default_off:true,selection_deliberate:true,encode_empty_bins:41,source_counts:{studies:2,encode:255,jaspar:9164},retry:true,exports:['json','csv','svg','png'],keyboard:true,overflow:false,media_context_preserved:true,errors});
+   report.push({viewport,combinations:36,blend_states_per_combination:2,source_definitions_prominent:true,binding_outcomes_and_exports:true,side_by_side:true,controls_and_complete_graphs_fit:viewport.width>=960,legend_matches_marks:true,blend_default_off:true,selection_deliberate:true,encode_empty_bins:41,source_counts:{studies:128,encode:255,jaspar:9164},retry:true,exports:['json','csv','svg','png'],keyboard:true,overflow:false,media_context_preserved:true,errors});
   } finally {await page.evaluate(()=>document.querySelectorAll('audio,video').forEach(e=>e.pause())).catch(()=>{});await context.close();}
  }
  await fs.writeFile(path.join(out,'report.json'),JSON.stringify({candidate,results:report},null,2));console.log(JSON.stringify({out,results:report},null,2));

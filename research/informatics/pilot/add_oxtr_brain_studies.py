@@ -125,7 +125,7 @@ metadata = dict(
         boundary='Reporter activity does not establish a named transcription-factor binding site or causal regulation of native human OXTR.',
         coordinates='The reported OCE7 candidate interval and the Table 1 luciferase-primer span differ. Reported intervals and primer matches are retained separately, without a precise binding-site overlay.',
         source='https://pmc.ncbi.nlm.nih.gov/articles/PMC12056307/'),
-    geometry_scope='The existing Studies geometry retains US-1 and US-2. BrainTF occupancy is available in the study data browser; the enhancer paper is literature evidence.',
+    geometry_scope='The Studies comparison and data browser both include 128 observations: US-1, US-2 and 126 screened BrainTF occupancy regions. Region centres are plotting representatives, not precise binding sites. The enhancer paper remains functional literature evidence.',
     files=dict(peaks='study-additions-v1/braintf-peaks.json',
                peak_csv='study-additions-v1/braintf-peaks.csv',
                review='study-additions-v1/braintf-locus-review.json',
@@ -150,7 +150,7 @@ shutil.copy2(REVIEW / 'BrainTF-LICENSE.txt', OUT / 'BrainTF-LICENSE.txt')
     'Histone marks and rejected observations do not enter the study browser.\n\n'
     'The 2025 enhancer study contributes functional reporter evidence. Its reported candidate intervals '
     'and primer mappings remain separate in enhancer-regions. No precise TF binding position is inferred.\n\n'
-    'The DNA window, ENCODE and JASPAR imports, and the existing two-element Studies geometry remain unchanged. '
+    'The Studies comparison includes both sequence elements and all 126 screened BrainTF regions. The DNA window, ENCODE and JASPAR imports remain unchanged. '
     'All study data is included in the complete JSON/CSV archives. Source URLs, row numbers and SHA-256 hashes '
     'identify the reviewed public files. Raw sequencing reads and controlled individual-level data are not included.\n')
 

@@ -52,7 +52,7 @@ assert all(r['normalized_location']['start_0based'] is None for r in catalogue['
 enhancers=read('enhancer-regions.json')
 assert [r['name'] for r in enhancers if r['positive_reporter_assay']] == ['OCE1','OCE5','OCE7']
 assert next(r for r in enhancers if r['name']=='OCE7')['reported_coordinates_hg38'] == 'chr3:8757366-8759184'
-assert catalogue['coordinate_experiment']['counts']['studies']==2
+assert catalogue['coordinate_experiment']['counts']['studies']==128
 observations=json.loads(gzip.decompress((SUP/'normalized-observations.json.gz').read_bytes()))
 assert {r['source_record_id'] for r in observations if r['source_collection']=='braintf'} == {p['id'] for p in peaks}
 for file,prefix,names in [
