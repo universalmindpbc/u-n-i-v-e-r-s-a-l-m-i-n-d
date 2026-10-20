@@ -32,34 +32,50 @@ const active=stage===1?uni:stage===4?doubling:null;const tracer=$('#tracer');tra
 $('#play').textContent=playing?'Ⅱ':'▷';$('#play').setAttribute('aria-label',playing?'Pause animation':'Play animation');}
 $('#play').onclick=()=>{playing=!playing;if(playing&&elapsed>=total-1)elapsed=0;last=null;render()};$('#replay').onclick=()=>{elapsed=0;playing=true;last=null;render()};document.querySelectorAll('button[data-stage]').forEach(b=>b.onclick=()=>{elapsed=Number(b.dataset.stage)*duration+duration-1;playing=false;render()});
 const film=$('#film'),experience=$('#experience'),launch=$('#launch');
-let atlasOpen=false, resumeAnimation=false;
+let atlasOpen=false, area='geometry';
+const areas=['about','geometry','genomics','sound','vision'];
 function showAtlas(open){
- if(open===atlasOpen)return;
  atlasOpen=open;
- if(open){resumeAnimation=playing;playing=false;const frame=$('#atlas-frame');if(!frame.getAttribute('src'))frame.src=frame.dataset.src+"&record="+encodeURIComponent(new URLSearchParams(location.search).get("record")||"fibonacci-m9-p24")+location.hash;}
- else {playing=resumeAnimation;last=null;}
- $('#atlas-panel').hidden=!open;experience.querySelector('main').hidden=open;experience.querySelector('footer').hidden=open;
- experience.classList.toggle('atlas-open',open);$('#atlas-toggle').textContent=open?'Home':'Research Atlas';$('#atlas-toggle').setAttribute('aria-expanded',String(open));
- if(open)$('#atlas-frame').focus();else $('#atlas-toggle').focus();
+ if(open){playing=false;const frame=$('#atlas-frame');if(!frame.getAttribute('src'))frame.src=frame.dataset.src+"&record="+encodeURIComponent(new URLSearchParams(location.search).get('record')||'fibonacci-m9-p24')+location.hash;}
+ $('#atlas-panel').hidden=area!=='geometry'||!open;
+ experience.querySelector('main').hidden=area!=='geometry'||open;
+ experience.querySelector('footer').hidden=area!=='geometry'||open;
+ $('#atlas-toggle').textContent=open?'Animated overview ↗':'Explore the geometry records →';
+ $('#atlas-toggle').setAttribute('aria-expanded',String(open));
 }
-$('#atlas-toggle').onclick=()=>showAtlas(!atlasOpen);
+function showArea(name,{focus=false}={}){
+ if(!areas.includes(name))name='geometry';
+ area=name;playing=false;last=null;experience.dataset.area=name;
+ experience.classList.add('atlas-open');
+ for(const id of areas)$('#area-'+id).hidden=id!==name;
+ $('#atlas-sections').hidden=name==='geometry';
+ document.querySelectorAll('.atlas-area-button').forEach(button=>button.setAttribute('aria-current',button.dataset.area===name?'page':'false'));
+ $('#atlas-area-select').value=name;
+ showAtlas(true);
+ const url=new URL(location.href);url.searchParams.set('area',name);history.replaceState(null,'',url);
+ document.dispatchEvent(new CustomEvent('atlas:area',{detail:name}));
+ if(focus){const heading=$('#area-'+name+' h1');if(heading){heading.tabIndex=-1;heading.focus({preventScroll:true});}else $('#atlas-toggle').focus();}
+}
+$('#atlas-toggle').onclick=()=>{showAtlas(!atlasOpen);if(!atlasOpen){elapsed=reduced.matches?total-1:0;playing=!reduced.matches;last=null;render();}};
+document.addEventListener('click',event=>{const button=event.target.closest('button[data-area]');if(button){showArea(button.dataset.area,{focus:!button.closest('.atlas-area-nav')});$('#atlas-sections').scrollTop=0;}});
+$('#atlas-area-select').addEventListener('change',event=>{showArea(event.target.value,{focus:true});$('#atlas-sections').scrollTop=0;});
 document.addEventListener('science:open-atlas',e=>{
  const view=e.detail;if(!['alpha','beta','gamma','epsilon','geometry-summary'].includes(view))return;
  if(!entered)launch.click();
+ showArea('geometry');
  const frame=$('#atlas-frame');
  const select=()=>frame.contentDocument.dispatchEvent(new frame.contentWindow.CustomEvent('science:atlas-view',{detail:view}));
  if(frame.contentDocument?.readyState==='complete'&&frame.contentDocument.querySelector('#research-record'))select();
  else frame.addEventListener('load',select,{once:true});
- showAtlas(true);
 });
 function syncSound(){const label=film.muted?'Unmute video':'Mute video';$('#sound').textContent=film.muted?'♪̸':'♫';$('#sound').setAttribute('aria-label',label);$('#sound').title=label;}
 $('#sound').onclick=()=>{if(film.paused){film.muted=false;film.play().catch(()=>{});}else film.muted=!film.muted;syncSound();};
 function fullscreen(){if(!document.fullscreenElement && experience.requestFullscreen)experience.requestFullscreen().catch(()=>{});}
 launch.disabled=false;
-launch.onclick=()=>{entered=true;document.body.dataset.entered='true';$('#landing').hidden=true;experience.hidden=false;fullscreen();film.muted=false;film.volume=1;syncSound();if(!film.src)film.src=film.dataset.src;film.play().catch(()=>{$('#sound').textContent='▷';$('#sound').setAttribute('aria-label','Play video with sound');$('#sound').title='Play video with sound';});elapsed=reduced.matches?total-1:0;playing=!reduced.matches;last=null;render();if(new URLSearchParams(location.search).get('atlas')==='1')showAtlas(true);else $('#play').focus();};
+launch.onclick=()=>{entered=true;document.body.dataset.entered='true';$('#landing').hidden=true;experience.hidden=false;fullscreen();film.muted=false;film.volume=1;syncSound();if(!film.src)film.src=film.dataset.src;film.play().catch(()=>{$('#sound').textContent='▷';$('#sound').setAttribute('aria-label','Play video with sound');$('#sound').title='Play video with sound';});elapsed=reduced.matches?total-1:0;playing=!reduced.matches;last=null;render();showArea(new URLSearchParams(location.search).get('area')||'geometry');$('#atlas-area-select').offsetParent?$('#atlas-area-select').focus():document.querySelector('.atlas-area-button[aria-current=page]').focus();};
 $('#fullscreen').onclick=()=>{if(document.fullscreenElement)document.exitFullscreen().catch(()=>{});else fullscreen();};
 document.addEventListener('fullscreenchange',()=>$('#fullscreen').setAttribute('aria-label',document.fullscreenElement?'Exit full screen':'Enter full screen'));
-$('#back').onclick=()=>{showAtlas(false);film.pause();playing=false;entered=false;if(document.fullscreenElement)document.exitFullscreen().catch(()=>{});experience.hidden=true;$('#landing').hidden=false;document.body.dataset.entered='false';document.dispatchEvent(new Event('informatics:return'));launch.focus();};
+$('#back').onclick=()=>{document.dispatchEvent(new CustomEvent('atlas:area',{detail:null}));film.pause();playing=false;entered=false;if(document.fullscreenElement)document.exitFullscreen().catch(()=>{});experience.hidden=true;$('#landing').hidden=false;document.body.dataset.entered='false';document.dispatchEvent(new Event('informatics:return'));launch.focus();};
 window.addEventListener('pagehide',()=>{film.pause();playing=false;});
 document.addEventListener('visibilitychange',()=>{last=null;if(document.hidden)film.pause();else if(entered)film.play().catch(()=>{});});
 function frame(now){const dt=last===null?0:Math.min(now-last,60);last=now;if(entered&&playing&&!document.hidden){elapsed=Math.min(total-1,elapsed+dt);if(elapsed>=total-1)playing=false;render();}requestAnimationFrame(frame);}render();requestAnimationFrame(frame);
