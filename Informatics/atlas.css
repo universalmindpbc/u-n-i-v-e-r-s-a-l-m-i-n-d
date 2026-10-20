@@ -95,3 +95,17 @@
 @media(max-width:720px){#record-menu{position:fixed;left:auto;right:12px;top:var(--record-menu-top,108px);max-height:calc(100svh - var(--record-menu-top,108px) - 16px)}.experience-actions #record-toggle{font-size:10px;gap:6px;letter-spacing:.05em}}
 
 @media(max-width:380px){.experience-actions{gap:6px}.experience-actions #sound,.experience-actions #fullscreen,.experience-actions #back{width:24px}.experience-actions #atlas-menu-toggle{width:12px}.experience-actions #record-toggle{font-size:9px;gap:4px;letter-spacing:.03em}}
+
+/* Partners uses the same quiet typography and scrolling area as the Atlas. */
+.atlas-partners{max-width:1080px}
+.partners-intro{margin-bottom:32px}
+.atlas-partners h2{font-size:21px;margin:0 0 8px}
+.partners-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));column-gap:42px;list-style:none;padding:0;margin:26px 0 12px}
+.partners-list li{padding:18px 0 20px;border-top:1px solid #ffffff18;min-width:0}
+.partners-list h3{font-size:14px;font-weight:400;line-height:1.65;margin:0 0 6px}
+.partners-list a{color:#e2e8ec;text-decoration:none;display:inline-block;overflow-wrap:anywhere}
+.partners-list a span{color:#84939f;font-size:11px;margin-left:5px}
+.partners-list a:hover{color:#fff;text-decoration:underline;text-underline-offset:4px}
+.partners-list a:focus-visible{outline:1px solid #a7b3bc;outline-offset:5px}
+.partners-list p{font-size:12px;line-height:1.8;color:#a7b3bc;margin:0;max-width:420px}
+@media(max-width:720px){.partners-list{grid-template-columns:1fr;gap:0}.partners-intro{margin-bottom:28px}}
