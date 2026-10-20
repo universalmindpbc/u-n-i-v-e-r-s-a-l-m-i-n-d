@@ -22,11 +22,11 @@ def build():
                    expression_effect='Not assessed in this interpretation layer',
                    review_depth='No outcome classification assigned', source_url=None)
     guide = dict(
-        version='oxtr-binding-outcomes-2026-10-20-v1', reviewed_on='2026-10-20',
+        version='oxtr-binding-outcomes-2026-10-21-v2', reviewed_on='2026-10-21',
         scope='Source-supported interpretation of the current mapped observations; source coordinates and measurements are unchanged.',
         priority=[
             dict(label='Binding detected at a defined sequence', description='A positive binding result at a specified DNA sequence is the most direct anchor for a location comparison. Check the protein, assay and biological context.'),
-            dict(label='Protein association detected across a region', description='ENCODE supplies experimental support over a stretch of DNA. Resolve the site within it and inspect the contributing cell types and experiments.'),
+            dict(label='Protein association detected across a region', description='ENCODE and BrainTF supply experimental support over a stretch of DNA. Resolve the site within it and inspect the contributing cell types and experiments.'),
             dict(label='Sequence match predicted', description='JASPAR matches are candidates for exploration and experimental follow-up. A model match alone does not establish binding at that location.')],
         priority_note='This is an Atlas research-priority guide, not a platform trust score. A published paper can contain any evidence type. Relevant context, assay quality and replication matter. Binding and effects on gene activity are separate outcomes.',
         geometry_note='Biological support does not establish statistical significance or predictive value for an Atlas geometric match. That requires a defined comparison and appropriate controls.',
@@ -68,6 +68,18 @@ def build():
                 expression_effect='A role in OXTR upregulation was proposed; a causal effect on native OXTR expression is not established by the reviewed abstract.',
                 review_depth='Published abstract reviewed; full-text methods and controls not independently reassessed',
                 source_url='https://pubmed.ncbi.nlm.nih.gov/10527846/')} )
+    guide['defaults']['braintf'] = dict(
+        status='regional_association_detected', label='Regional association detected',
+        resolution='region', result='A screened BrainTF ChIP-seq peak records protein association across this region; an exact binding sequence is unresolved.',
+        assay='ChIP-seq peak calls', context='Human postmortem brain; the context is retained on each observation.',
+        expression_effect='Effect on native OXTR expression not established by this occupancy measurement.',
+        review_depth='Public processed peaks, author replication tests, FRiP and HOT annotations reviewed; raw reads not reanalysed.',
+        source_url='https://doi.org/10.1038/s41593-024-01658-8')
+    guide['records']['TFBS044'] = guide['defaults']['braintf']
+    guide['records']['TFBS045'] = {**unknown,
+        'label':'Functional reporter evidence; binding unresolved',
+        'expression_effect':'Human OCE7 DNA enhanced reporter activity in mouse cells and drove mouse olfactory-bulb reporter activity. Native human OXTR regulation remains unresolved.',
+        'source_url':'https://doi.org/10.1093/hmg/ddaf022'}
     write(SUP/'binding-outcomes.json', guide)
     write_record(SUP/'binding-outcomes-fields.csv', guide)
     assert read_record(SUP/'binding-outcomes-fields.csv') == guide

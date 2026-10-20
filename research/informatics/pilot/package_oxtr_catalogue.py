@@ -53,7 +53,8 @@ def publish():
         notion=json.loads(notion_file.read_text())
         catalogue['notion']={'page_url':notion['page_url'],'database_id':notion['database_id'],'data_source_id':notion['data_source_id']}
         by_id={r['record_id']:r['url'] for r in notion['records']}
-        for r in catalogue['evidence']:r['notion_url']=by_id[r['id']]
+        for r in catalogue['evidence']:
+            if r['id'] in by_id:r['notion_url']=by_id[r['id']]
         # The canonical catalogue retains the Notion map; the flat literature
         # table is authored independently and keeps its stable scientific fields.
     write(SUP/'catalogue.json',catalogue)
@@ -92,7 +93,7 @@ def publish():
         w=csv.writer(f);w.writerow(['file','bytes','sha256'])
         for p in sorted(files):w.writerow([str(p.relative_to(SUP)),p.stat().st_size,hashlib.sha256(p.read_bytes()).hexdigest()])
     files.append(SUP/'file-manifest.csv')
-    csv_files=[p for p in files if p.suffix in ['.csv','.bed','.fa'] or p.name=='README.txt' or ('experiment-v1' in p.parts and p.suffix in ['.py','.wl','.md','.txt'])]
+    csv_files=[p for p in files if p.suffix in ['.csv','.bed','.fa'] or p.name=='README.txt' or ('experiment-v1' in p.parts and p.suffix in ['.py','.wl','.md','.txt']) or ('study-additions-v1' in p.parts and p.suffix=='.txt')]
     json_files=[p for p in files if p.suffix!='.csv' or p.name in ['sources.csv','file-manifest.csv']]
     for name,selected in [('oxtr-tfbs-json.zip',json_files),('oxtr-tfbs-csv.zip',csv_files)]:
         with zipfile.ZipFile(SUP/name,'w',zipfile.ZIP_DEFLATED) as z:

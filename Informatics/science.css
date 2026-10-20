@@ -136,3 +136,7 @@
  .geometry-plot-notes{grid-template-columns:1fr;gap:14px}
  .science-transcription .transcription-takeaways{grid-template-columns:1fr;gap:10px}
 }
+
+/* Keep the study browser within the same three evidence bundles. */
+.tfbs-datasets{grid-template-columns:repeat(3,minmax(0,1fr))}.tfbs-study-additions h4{font:600 14px/1.6 Arial,Helvetica,sans-serif;margin:20px 0 8px}.tfbs-study-additions p{max-width:900px}
+@media(max-width:680px){.tfbs-datasets{grid-template-columns:1fr}}

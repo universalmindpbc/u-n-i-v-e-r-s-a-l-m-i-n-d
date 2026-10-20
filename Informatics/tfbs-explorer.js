@@ -1,4 +1,4 @@
-import {withBindingEvidence} from './tfbs-evidence.js?v=1';
+import {withBindingEvidence} from './tfbs-evidence.js?v=2';
 // Browse the archived OXTR observations without merging different evidence units.
 const number = n => n.toLocaleString('en-AU');
 const escape = value => String(value ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -12,10 +12,10 @@ export function mountTfbsExplorer(host, catalogue, root) {
   const summary = catalogue.summary;
   const mapped = catalogue.evidence.filter(r => r.species === 'Homo sapiens' && r.reported_sequence && r.normalized_location?.start_0based != null);
   const collections = {
-    published: {label:'Published DNA elements', unit:'elements', count:mapped.length, note:'Published sequences with recovered positions in the human OXTR reference DNA. These are two mapped elements, not a total of all experimentally studied sites.'},
-    encode: {label:'ENCODE experimental regions', unit:'regions', count:summary.encode_clusters, note:'Laboratory measurements. ENCODE brings together experiments in cells. Each record is a stretch of DNA with evidence of protein association, with the protein, cell types and original experiments attached. A region can contain several binding sites.'},
-    jaspar: {label:'JASPAR predicted matches', unit:'matches', count:summary.jaspar_default_threshold_predictions, note:'Computer predictions. JASPAR provides DNA-binding patterns learned from experiments; a computer searches OXTR DNA for matching sequences. Several models can match the same location. A prediction does not establish binding in a cell.'},
-    oreganno: {label:'Annotated regulatory regions', unit:'regions', count:summary.oreganno_regions, note:'Curated annotations. ORegAnno is a database of reported DNA regulatory elements. These records overlap our OXTR window; most do not identify the specific protein. They are regional annotations, not a count of confirmed binding sites.'}
+    published: {label:'Studies', unit:'observations', count:mapped.length+summary.braintf_screened_observations, note:'Two published DNA elements and 126 screened BrainTF occupancy records. The brain records span 43 protein targets and 13 contexts; overlapping peaks and shared donors are retained. A regional peak does not identify an exact binding site. The enhancer paper appears in the literature evidence below.'},
+    encode: {label:'ENCODE', unit:'regions', count:summary.encode_clusters, note:'Laboratory measurements. ENCODE brings together experiments in cells. Each record is a stretch of DNA with evidence of protein association, with the protein, cell types and original experiments attached. A region can contain several binding sites.'},
+    jaspar: {label:'JASPAR', unit:'matches', count:summary.jaspar_default_threshold_predictions, note:'Computer predictions. JASPAR provides DNA-binding patterns learned from experiments; a computer searches OXTR DNA for matching sequences. Several models can match the same location. A prediction does not establish binding in a cell.'},
+
   };
   const cache = new Map();
   let selected = 'encode', rows = [], filtered = [], page = 0, request = 0, ready = false;
@@ -25,7 +25,7 @@ export function mountTfbsExplorer(host, catalogue, root) {
   const status = get('.tfbs-data-status'), tbody = get('tbody');
 
   async function read(file, signal) {
-    const response = await fetch(new URL(file, root), {signal});
+    const response = await fetch(new URL(file + '?v=brain-studies-v1', root), {signal});
     if (!response.ok) throw Error('Data unavailable');
     if (!file.endsWith('.gz')) return response.json();
     const bytes = new Uint8Array(await response.arrayBuffer());
@@ -40,7 +40,7 @@ export function mountTfbsExplorer(host, catalogue, root) {
     const controller = new AbortController(), timeout = setTimeout(() => controller.abort(), 45000);
     try {
       let records;
-      if (id === 'published') records = mapped.map(r => ({...r,...r.normalized_location,sequence:r.reported_sequence}));
+      if (id === 'published') records = [...mapped.map(r => ({...r,...r.normalized_location,sequence:r.reported_sequence})), ...await read('study-additions-v1/braintf-peaks.json',controller.signal)];
       if (id === 'encode') {
         const [clusters, provenance] = await Promise.all([read('encode-clusters.json',controller.signal),read('encode-provenance.json',controller.signal)]);
         const byId = new Map();
@@ -77,7 +77,7 @@ export function mountTfbsExplorer(host, catalogue, root) {
     let evidence;
     if (selected === 'published') {
       const paper = catalogue.publications.find(p=>p.pmid===r.pmid);
-      evidence = `${link(paper.doi_url,paper.title)}<p>${escape(r.finding)}</p><p><strong>Effect on gene activity</strong><br>${escape(r.binding_evidence.expression_effect)}</p><details><summary>Methods &amp; mapping</summary><p>${escape(r.methods)}</p><p>${escape(r.normalized_location.mapping_status)}</p><p><strong>At initial source review:</strong> ${escape(r.limitation)}</p></details>`;
+      evidence = `${link(paper.doi_url,paper.title)}<p>${escape(r.finding)}</p><p><strong>Effect on gene activity</strong><br>${escape(r.binding_evidence.expression_effect)}</p><details><summary>Methods &amp; mapping</summary><p>${escape(r.methods)}</p>${r.study_id==='braintf'?`<p>Brain context: ${escape(r.context)} · replication: ${escape(r.replication_qc)} · minimum FRiP: ${(100*r.minimum_FRiP).toFixed(2)}% · author HOT class: ${escape(r.author_HOT_status)}</p><p>${link(r.source_url,'Original peak file')} · source row ${r.source_row_1based}</p>`:''}<p>${escape(r.normalized_location.mapping_status)}</p><p><strong>Interpretation:</strong> ${escape(r.limitation)}</p></details>`;
     } else if (selected === 'encode') {
       const sources = r.experiments;
       evidence = `<p>Experimental occupancy · ${number(r.source_count)} source observations</p><p>${escape(r.cell_types.join(' · ')||'Cell type unavailable')}</p><details><summary>Source experiments</summary>${sources.map(p=>`<p>${link(p.experiment_url,p.experiment||p.source_name)} · ${escape(p.cell_type)}<br>${escape(p.lab)} · ${escape(p.file_accession)}</p>`).join('')}</details>`;
@@ -129,7 +129,7 @@ export function mountTfbsExplorer(host, catalogue, root) {
     if (!filtered.length) return;
     const reference = {species:'Homo sapiens',gene:'OXTR',assembly:'GRCh38',chromosome:'chr3',window_start_0based:8740380,window_end_exclusive:8779628,coordinate_convention:'0-based, end-exclusive',selection:'OXTR gene plus 10,000 bases on each side; overlapping records may extend beyond the window'};
     const filters = {search:get('#tfbs-data-search').value.trim(),position:get('#tfbs-data-position').value.trim(),minimum_score:selected==='jaspar'?Number(get('#tfbs-data-score').value):null};
-    const sourceFiles = {published:['catalogue.json','sequence-mapping.json'],encode:['encode-clusters.json','encode-provenance.json'],jaspar:['jaspar-predictions.json.gz'],oreganno:['oreganno-regions.json']};
+    const sourceFiles = {published:['catalogue.json','sequence-mapping.json','study-additions-v1/braintf-peaks.json','study-additions-v1/review.json'],encode:['encode-clusters.json','encode-provenance.json'],jaspar:['jaspar-predictions.json.gz'],oreganno:['oreganno-regions.json']};
     let body;
     if (format==='json') body=JSON.stringify({version:catalogue.harmonisation.version,collection:selected,count:filtered.length,unit:collections[selected].unit,scope:collections[selected].note,reference,filters,sources:sourceFiles[selected].map(file=>new URL(file,root).href),records:filtered,...(selected==='published'?{publications:catalogue.publications.filter(p=>filtered.some(r=>r.pmid===p.pmid))}:{})},null,2);
     else {

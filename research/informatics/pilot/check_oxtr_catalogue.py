@@ -13,10 +13,10 @@ def table(name):
     with (SUP/name).open(encoding='utf-8-sig',newline='') as f:return list(csv.DictReader(f))
 c=read('catalogue.json');e=read('literature-evidence.json')
 assert read_record(SUP/'catalogue-fields.csv')==c
-flat=table('literature-evidence.csv');assert len(flat)==len(e)==43
+flat=table('literature-evidence.csv');assert len(flat)==len(e)==45
 for row,r in zip(flat,e):
     for k,v in r.items():assert row[k]==('' if v is None else str(v)),(r['id'],k)
-assert len(c['publications'])==24 and len({p['doi'] for p in c['publications']})==24
+assert len(c['publications'])==26 and len({p['doi'] for p in c['publications']})==26
 assert len([p for p in c['publications'] if p['existing_register_id']])==1
 assert len(json.loads((DATA/'research-register.json').read_text())['publications'])==14
 hits=json.loads(gzip.decompress((SUP/'jaspar-predictions.json.gz').read_bytes()))
@@ -60,4 +60,4 @@ assert sum(r['status']=='regional_association_detected' for r in outcomes)==255
 assert sum(r['status']=='prediction_only' for r in outcomes)==9164
 assert not any(r['status']=='binding_not_detected' for r in outcomes)
 for a,b in zip(outcomes,flat_outcomes):assert a==b
-print(json.dumps({'binding_outcomes_verified':9421,'passed':True,'literature_rows_roundtripped':43,'predictions_roundtripped':217857,'pfms_verified':1019,'encode_provenance_links':751,'mathematical_records_unchanged':1001,'existing_register_publications':14,'complete_archives_verified':4}))
+print(json.dumps({'binding_outcomes_verified':9421,'passed':True,'literature_rows_roundtripped':45,'predictions_roundtripped':217857,'pfms_verified':1019,'encode_provenance_links':751,'mathematical_records_unchanged':1001,'existing_register_publications':14,'complete_archives_verified':4}))

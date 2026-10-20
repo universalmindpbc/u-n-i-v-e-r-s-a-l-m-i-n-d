@@ -52,9 +52,9 @@ def exact_matches(sequence, dna):
 
 # Editorial appraisal of the recorded observation, not a ranking of labels.
 # Laboratory tested includes negative and mixed outcomes and grouped reports.
-LAB = set(range(3, 17)) | set(range(21, 42))
-BINDING = {3, 4, 5, 7, 8, 10, 12, 13, 15, 16, 28, 30, 31, 33, 34, 39, 40, 41}
-FUNCTIONAL = {6, 7, 10, 11, 12, 14, 15, 16, 21, 22, 24, 26, 37, 38, 39, 40, 41}
+LAB = set(range(3, 17)) | set(range(21, 42)) | {44, 45}
+BINDING = {3, 4, 5, 7, 8, 10, 12, 13, 15, 16, 28, 30, 31, 33, 34, 39, 40, 41, 44}
+FUNCTIONAL = {6, 7, 10, 11, 12, 14, 15, 16, 21, 22, 24, 26, 37, 38, 39, 40, 41, 45}
 ANNOTATION = {1, 2, 17, 18, 19, 20, 42, 43}
 CONTEXT = {9, 14, 27, 34, 35, 36}
 CATEGORIES = [
@@ -85,6 +85,8 @@ def build():
     reference = read('reference-dna.json')
     dna = reference['dna_plus_strand']
     raw_files = ['literature-evidence.json', 'jaspar-predictions.json.gz', 'encode-clusters.json', 'oreganno-regions.json', 'reference-dna.json']
+    if (SUP / 'study-additions-v1/braintf-peaks.json').exists():
+        raw_files.append('study-additions-v1/braintf-peaks.json')
     raw_hashes = {f: hashlib.sha256((SUP / f).read_bytes()).hexdigest() for f in raw_files}
     records, mapping = [], []
 
@@ -152,6 +154,21 @@ def build():
                          source_url='https://genome.ucsc.edu/cgi-bin/hgTrackUi?db=hg38&g=oreganno',
                          outcome='Reused regional annotation; experimental interpretation requires the original source',
                          limitations='Annotation strand is retained in the original import, not interpreted as motif orientation')
+            records.append(o)
+
+    if 'study-additions-v1/braintf-peaks.json' in raw_files:
+        for r in read('study-additions-v1/braintf-peaks.json'):
+            o = base(r['id'], 'braintf')
+            o.update(feature_type='occupancy_region', factor_reported=r['factor'],
+                     assembly='GRCh38', chromosome=r['chromosome'],
+                     start_0based=r['start_0based'], end_exclusive=r['end_exclusive'],
+                     evidence_categories=['laboratory_tested', 'binding_evidence'],
+                     assay_methods=r['methods'], pmid=r['pmid'],
+                     context_reference='study-additions-v1/braintf-peaks.json#'+r['id'],
+                     mapping_status='Source GRCh38 peak interval',
+                     source_url=r['source_url'], original_score=r['score'],
+                     score_semantics=r['score_semantics'], outcome=r['finding'],
+                     limitations=r['limitation'])
             records.append(o)
 
     # One spatial interval, multiple observations. Factor, motif model, strand,
@@ -223,7 +240,7 @@ def build():
                    coordinate_system='GRCh38, 0-based start and exclusive end. Historical TSS/ATG/CpG positions retained verbatim until anchored.',
                    normalisation='Common columns and stable identifiers. Original source records remain unchanged. Source scores retain their own scales; missing values remain null.',
                    deduplication='Group exact intervals by species, assembly, chromosome, start and end. Preserve all observations, strands, factors and experiments. Interval identity is not biological-site identity.',
-                   overlap_scope='Mapped human literature records versus all imported ENCODE, ORegAnno and JASPAR observations. Not an all-pairs motif network. Prediction display-threshold flags are retained.',
+                   overlap_scope='Mapped human literature records versus imported ENCODE, ORegAnno, JASPAR and screened BrainTF observations. Not an all-pairs motif network. Prediction display-threshold flags are retained.',
                    species_policy='Human and animal observations remain distinguishable; no cross-species deduplication or coordinate projection.',
                    atlas_status='No DNA-to-M9 mapping or statistical comparison performed. Native positions remain the basis for future defined comparisons.',
                    original_fifteen=dict(pmid='16569740', species=HUMAN, reported_count=15,
@@ -256,12 +273,14 @@ def build():
         r['evidence_categories'] = n['evidence_categories']
         r['normalized_location'] = {k:n[k] for k in ['assembly','chromosome','start_0based','end_exclusive','strand','mapping_status','reference_interval_id']}
     write('catalogue.json', catalogue)
-    readme = (SUP/'README.txt').read_text().split('\nHuman site harmonisation')[0]
+    existing_readme = (SUP/'README.txt').read_text()
+    later_sections = existing_readme[existing_readme.index('\nCoordinate experiment —'):] if '\nCoordinate experiment —' in existing_readme else ''
+    readme = existing_readme.split('\nHuman site harmonisation')[0]
     (SUP/'README.txt').write_text(readme+'\nHuman site harmonisation — 19 October 2026\n\n'+
         'Read human-site-project.json (or human-site-project-fields.csv) for scope and open recovery tasks. normalized-observations combines every imported record under one column schema, while the original tables remain intact. Evidence categories are multi-valued: laboratory tested includes positive, negative and mixed results; functional evidence includes regions and element-based reporters. The category counts are evidence records, not unique confirmed sites.\n\n'+
         'reference-intervals groups only identical genomic intervals; every observation remains linked to its source. Shared coordinates do not establish the same factor, experiment, or biological function. literature-overlaps contains spatial links from the mapped human literature records to all imported database records. It is not an all-pairs network or independent corroboration. evidence-relationships records known reuse and distinct cooperating elements.\n\n'+
         'US-1 and US-2 each match once in the saved human OXTR window on the reverse strand. These are computed reference placements of published sequences, not new experiments or a claim of genome-wide uniqueness. mapped-literature.bed contains two sequence elements and one broad annotation; use normalized-literature to distinguish them.\n\n'+
-        'The original human 15-site report remains an aggregate of 3 AP1, 9 C/EBP and 3 NF-kappaB sites. Its individual sequences and historical coordinate anchors remain unresolved. No total of unique confirmed human OXTR sites or DNA-to-Atlas comparison is asserted.\n')
+        'The original human 15-site report remains an aggregate of 3 AP1, 9 C/EBP and 3 NF-kappaB sites. Its individual sequences and historical coordinate anchors remain unresolved. No total of unique confirmed human OXTR sites or DNA-to-Atlas comparison is asserted.\n' + later_sections)
     print(json.dumps(summary, indent=2))
     return project
 

@@ -5113,3 +5113,7 @@ literature:TFBS043,jaspar:J26_155760,1,spatial_overlap,jaspar,False,Spatial rela
 literature:TFBS043,jaspar:J26_155761,1,spatial_overlap,jaspar,False,Spatial relationship only; not independent validation or proof of the same binding event
 literature:TFBS043,jaspar:J26_155762,1,spatial_overlap,jaspar,False,Spatial relationship only; not independent validation or proof of the same binding event
 literature:TFBS043,jaspar:J26_155763,1,spatial_overlap,jaspar,False,Spatial relationship only; not independent validation or proof of the same binding event
+literature:TFBS043,braintf:BRAINTF_OL_NEUN_232912,413,spatial_overlap,braintf,,Spatial relationship only; not independent validation or proof of the same binding event
+literature:TFBS043,braintf:BRAINTF_DLPFC_NEUN_65164,696,spatial_overlap,braintf,,Spatial relationship only; not independent validation or proof of the same binding event
+literature:TFBS043,braintf:BRAINTF_OL_70698,680,spatial_overlap,braintf,,Spatial relationship only; not independent validation or proof of the same binding event
+literature:TFBS043,braintf:BRAINTF_OL_NEUN_321532,344,spatial_overlap,braintf,,Spatial relationship only; not independent validation or proof of the same binding event

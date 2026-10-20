@@ -18,9 +18,9 @@ function parseCsv(text) {
 export async function checkTfbsExplorer({page,dialog,root,out,viewport}) {
   const dataRoot=path.join(root,'Informatics/pilot-v1/oxtr-tfbs-v1');
   const read=async f=>JSON.parse(await fs.readFile(path.join(dataRoot,f),'utf8'));
-  const encode=await read('encode-clusters.json'),provenance=await read('encode-provenance.json'),oreganno=await read('oreganno-regions.json');
+  const encode=await read('encode-clusters.json'),provenance=await read('encode-provenance.json');
   const predictions=JSON.parse(gunzipSync(await fs.readFile(path.join(dataRoot,'jaspar-predictions.json.gz'))));
-  const mappings=await read('sequence-mapping.json');
+  const mappings=await read('sequence-mapping.json'),brain=await read('study-additions-v1/braintf-peaks.json');
   const explorer=dialog.locator('.tfbs-explorer'),status=explorer.locator('.tfbs-data-status');
   const search=explorer.locator('#tfbs-data-search'),position=explorer.locator('#tfbs-data-position');
   const expectCount=async (count,unit)=>{
@@ -35,7 +35,7 @@ export async function checkTfbsExplorer({page,dialog,root,out,viewport}) {
     assert.equal(result.collection,id);assert.equal(result.count,expected.length);
     assert.deepEqual(result.records.map(r=>r.id).sort(),expected.map(r=>r.id).sort());
     assert.equal(result.reference.assembly,'GRCh38');
-    assert.ok(result.records.every(r=>r.binding_evidence.status==={published:'binding_detected',encode:'regional_association_detected',jaspar:'prediction_only',oreganno:'not_classified'}[id]));
+    assert.ok(result.records.every(r=>r.binding_evidence.status==={published:r.study_id==='braintf'?'regional_association_detected':'binding_detected',encode:'regional_association_detected',jaspar:'prediction_only',oreganno:'not_classified'}[id]));
     const csvDownload=page.waitForEvent('download');await explorer.locator('[data-tfbs-data-export="csv"]').click();
     const csvPath=path.join(out,`${id}-data-${viewport.width}.csv`);await(await csvDownload).saveAs(csvPath);
     const [header,...records]=parseCsv((await fs.readFile(csvPath,'utf8')).replace(/^\uFEFF/,''));
@@ -61,11 +61,14 @@ export async function checkTfbsExplorer({page,dialog,root,out,viewport}) {
   assert.equal(await explorer.locator('[data-tfbs-data-export="json"]').isDisabled(),true);
   await clear();await position.fill('chr4:8770000');await expectCount(0,'regions');await clear();
 
-  await choose('published',2,'elements');
-  const published=await exportAndCheck(mappings.map(r=>({id:r.record_id})),'published');
-  assert.equal(published.publications.length,2);
-  await search.fill(mappings[0].sequence);await expectCount(1,'elements');await clear();
-  await choose('oreganno',37,'regions');await exportAndCheck(oreganno,'oreganno');
+  assert.equal(await explorer.locator('[data-tfbs-dataset]').count(),3);
+  await choose('published',128,'observations');
+  const published=await exportAndCheck([...mappings.map(r=>({id:r.record_id})),...brain],'published');
+  assert.equal(published.publications.length,3);
+  await search.fill(mappings[0].sequence);await expectCount(1,'observations');await clear();
+  await search.fill('REST');await expectCount(brain.filter(r=>r.factor==='REST').length,'observations');await exportAndCheck(brain.filter(r=>r.factor==='REST'),'published');await clear();
+  await position.fill('chr3:8769128-8771628');await expectCount(116,'observations');await clear();
+  await search.fill('YBX1 OL_NEUN');await expectCount(0,'observations');await clear();
   await choose('jaspar',9164,'matches');
   assert.equal(await explorer.locator('tbody tr').count(),50);
   // Export all matching observations, not just the first visible page.

@@ -30,7 +30,7 @@ try{
    return route.fallback();
   });
   let failFirstRegions=true;
-  await context.route(base+'pilot-v1/oxtr-tfbs-v1/encode-clusters.json',async route=>{
+  await context.route(base+'pilot-v1/oxtr-tfbs-v1/encode-clusters.json*',async route=>{
    if(failFirstRegions){failFirstRegions=false;return route.fulfill({status:503,body:'Deliberate collection retry check'});}
    return route.fallback();
   });
@@ -40,7 +40,7 @@ try{
    await page.waitForFunction(()=>!document.querySelector('#launch').disabled);await page.locator('#launch').click();
    const frame=page.frameLocator('#atlas-frame');
    await frame.locator('.intro h1').filter({hasText:'M9 / P24'}).waitFor();
-   const originalUrl=page.url();
+   let originalUrl=page.url();
    const before=await page.evaluate(()=>({fullscreen:document.fullscreenElement?.id,media:[...document.querySelectorAll('video,audio')].map(m=>({src:m.currentSrc,paused:m.paused,time:m.currentTime}))}));
    const entry=frame.locator('#atlas-science-summary [data-science-tfbs]');
    await entry.click();
@@ -79,6 +79,7 @@ try{
    assert.equal(await learning.evaluate(e=>e.open),false);
    assert.equal(await dialog.evaluate(e=>e.open),true);
    assert.equal(await learningLink.evaluate(e=>e===document.activeElement),true);
+   await dialog.locator('.tfbs-study-additions summary').click();assert.ok((await dialog.locator('.tfbs-study-additions').innerText()).includes('126 screened'));await page.screenshot({path:path.join(out,`new-studies-${viewport.width}.png`)});await dialog.locator('.tfbs-study-additions summary').click();
    await checkTfbsExplorer({page,dialog,root,out,viewport});
    const literature=dialog.locator('.tfbs-literature');
    assert.equal(await literature.evaluate(e=>e.open),false);
@@ -87,7 +88,7 @@ try{
    await dialog.locator('#tfbs-species').selectOption('animal');
    assert.equal(await literature.locator('tbody tr').count(),data.evidence.filter(r=>r.species!=='Homo sapiens').length);
    await dialog.locator('#tfbs-species').selectOption('all');
-   assert.equal(await literature.locator('tbody tr').count(),43);
+   assert.equal(await literature.locator('tbody tr').count(),45);
    const kinds=[...new Set(data.evidence.map(r=>r.evidence_kind))].sort();
    assert.deepEqual(await dialog.locator('#tfbs-kind option').evaluateAll(options=>options.map(o=>o.value)),['all',...kinds]);
    for(const system of ['human','animal','all']){
@@ -108,7 +109,7 @@ try{
    assert.equal(await literature.locator('tbody tr').count(),4);
    await dialog.locator('#tfbs-species').selectOption('human');
    await dialog.locator('#tfbs-kind').selectOption('functional_region');
-   assert.equal(await literature.locator('tbody tr').count(),6);
+   assert.equal(await literature.locator('tbody tr').count(),7);
    assert.equal(await dialog.locator('.tfbs-evidence-guide').evaluate(e=>e.open),false);
    await dialog.locator('.tfbs-evidence-guide summary').click();
    assert.ok((await dialog.locator('.tfbs-evidence-guide').textContent()).includes('they are not trust scores'));
@@ -118,14 +119,14 @@ try{
    await dialog.locator('[data-tfbs-export="json"]').click();
    const selected=await selectedDownload,selectedPath=path.join(out,`selection-${viewport.width}.json`);await selected.saveAs(selectedPath);
    const selection=JSON.parse(await fs.readFile(selectedPath,'utf8'));
-   assert.equal(selection.evidence.length,6);
+   assert.equal(selection.evidence.length,7);
    assert.deepEqual(selection.filters,{study_system:'human',evidence_kind:'functional_region'});
    assert.ok(selection.evidence.every(r=>r.species==='Homo sapiens'&&r.evidence_kind==='functional_region'));
    const selectedCsvWait=page.waitForEvent('download');
    await dialog.locator('[data-tfbs-export="csv"]').click();
    const selectedCsv=await selectedCsvWait,selectedCsvPath=path.join(out,`selection-${viewport.width}.csv`);await selectedCsv.saveAs(selectedCsvPath);
    const selectedCsvText=await fs.readFile(selectedCsvPath,'utf8');
-   assert.equal((selectedCsvText.match(/\r\nTFBS/g)||[]).length,6);
+   assert.equal((selectedCsvText.match(/\r\nTFBS/g)||[]).length,7);
    assert.ok(selectedCsvText.includes('limitation,reference_transcript,coordinate_status'));
    await dialog.locator('.tfbs-harmonisation summary').click();
    await dialog.getByRole('link',{name:'Mapped literature · BED ↓',exact:true}).waitFor();
@@ -165,20 +166,20 @@ try{
    assert.equal(await dialog.evaluate(e=>e.open),true);
    await dialog.getByRole('button',{name:'Close binding-site catalogue',exact:true}).click();
    // Shared background entry remains available on a different modulus.
-   await frame.locator('#research-record').selectOption('fibonacci-m18-p24');
+   await page.locator('#record-toggle').click();await page.locator('#record-search').fill('18');await page.locator('[data-record="fibonacci-m18-p24"]').click();originalUrl=page.url();
    await frame.locator('.intro h1').filter({hasText:'M18 / P24'}).waitFor();
    assert.equal(await frame.locator('#atlas-science-summary [data-science-tfbs]').count(),1);
-   assert.equal(page.url(),originalUrl);
+   assert.equal(page.url().split('#')[0],originalUrl.split('#')[0]);
    const after=await page.evaluate(()=>({fullscreen:document.fullscreenElement?.id,media:[...document.querySelectorAll('video,audio')].map(m=>({src:m.currentSrc,paused:m.paused,time:m.currentTime}))}));
    assert.equal(after.fullscreen,before.fullscreen);
    assert.deepEqual(after.media.map(m=>[m.src,m.paused]),before.media.map(m=>[m.src,m.paused]));
    // About -> Genomics -> existing register -> catalogue stays in the experience.
-   await page.locator('#experience [data-about]').click();
+   await page.locator('#atlas-toggle').click();await page.locator('#atlas-menu [data-about]').click();
    await page.locator('#about [data-science-genomics]').click();
    await page.locator('.science-genomics [data-science-register]').click();
    await page.locator('.science-register:not(.science-tfbs) [data-science-tfbs]').click();
    await page.locator('.science-tfbs #tfbs-species').waitFor({state:'attached'});
-   assert.equal(page.url(),originalUrl);
+   assert.equal(page.url().split('#')[0],originalUrl.split('#')[0]);
    assert.equal(await page.evaluate(()=>document.fullscreenElement?.id),before.fullscreen);
    await page.keyboard.press('Escape');
    assert.equal(await page.locator('.science-register[aria-labelledby="science-register-title"]').evaluate(e=>e.open),true);

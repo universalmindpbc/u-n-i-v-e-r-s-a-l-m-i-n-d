@@ -2,7 +2,7 @@
 export function bindingEvidence(catalogue, source, record) {
   const guide = catalogue.binding_interpretation;
   if (!guide) throw Error('Binding-outcome definitions unavailable');
-  const key = source === 'published' ? 'studies' : source;
+  const key = record.study_id === 'braintf' ? 'braintf' : source === 'published' ? 'studies' : source;
   const evidence = guide.records[record.id] || guide.defaults[key] || guide.defaults.studies;
   return {...evidence, interpretation_version:guide.version};
 }

@@ -15,8 +15,8 @@ for n,h in project['input_sha256'].items():
     assert hashlib.sha256((SUP/n).read_bytes()).hexdigest()==h,n
 observations=read('normalized-observations.json.gz')
 intervals=read('reference-intervals.json.gz')
-assert len(observations)==218192
-assert Counter(r['source_collection'] for r in observations)==dict(literature=43,encode=255,oreganno=37,jaspar=217857)
+assert len(observations)==218320
+assert Counter(r['source_collection'] for r in observations)==dict(literature=45,encode=255,oreganno=37,jaspar=217857,braintf=126)
 assert len({r['observation_id'] for r in observations})==len(observations)
 lookup={r['observation_id']:r for r in observations}
 counts=Counter(r['reference_interval_id'] for r in observations if r['reference_interval_id'])
@@ -54,4 +54,4 @@ assert 'binding_evidence' not in lookup['literature:TFBS029']['evidence_categori
 assert 'functional_evidence' not in lookup['literature:TFBS023']['evidence_categories']
 assert project['summary']['unique_confirmed_human_site_total'] is None
 assert project['original_fifteen']['individual_coordinates_recovered']==0
-print(json.dumps({'passed':True,'source_imports_unchanged':5,'observations_roundtripped':count,'reference_intervals':len(intervals),'published_sequence_mappings':2,'overlap_pairs':len(read('literature-overlaps.json'))}))
+print(json.dumps({'passed':True,'source_imports_verified':6,'observations_roundtripped':count,'reference_intervals':len(intervals),'published_sequence_mappings':2,'overlap_pairs':len(read('literature-overlaps.json'))}))

@@ -28,7 +28,6 @@ US-1 and US-2 each match once in the saved human OXTR window on the reverse stra
 
 The original human 15-site report remains an aggregate of 3 AP1, 9 C/EBP and 3 NF-kappaB sites. Its individual sequences and historical coordinate anchors remain unresolved. No total of unique confirmed human OXTR sites or DNA-to-Atlas comparison is asserted.
 
-
 Coordinate experiment — 20 October 2026
 experiment-v1/ adds a fixed DNA-line, full-position-circle and M9-circle representation, with all four M9 P24 reference sequences. Sources remain separate: 2 published elements, 255 ENCODE regions and 9,164 JASPAR score-400 matches. Read experiment-v1/methods.md for the origin, direction, centre-base rule and clipping. All mappings, verification reports and scripts are downloadable. CSV includes full observation tables and metadata field tables. Biological association remains untested.
 
@@ -39,3 +38,13 @@ Tested is not an outcome. binding-outcomes.json and the lossless typed binding-o
 US-1 and US-2 report positive binding results under their assay conditions; their expression effects and abstract-only review depth remain explicit. ENCODE clusters are regional association evidence, not exact motif positions or proof of direct binding. JASPAR records are predictions. No negative binding controls have been curated for this map. Missing or unclassified outcomes do not mean binding failed. Biological support and statistical significance of an Atlas match remain separate.
 
 Rebuild the interpretation layer with source/annotate_oxtr_binding_outcomes.py after preparing the experiment, then run source/package_oxtr_catalogue.py. Raw observations and coordinate mappings remain unchanged.
+
+Study additions — 21 October 2026
+
+BrainTF: 126 screened ChIP-seq peak observations, 43 protein targets and 13 brain contexts. GRCh38, 0-based starts and exclusive ends. Records can overlap and share donors. These are regional occupancy measurements, not 126 distinct binding sites. Read review.json or the equivalent review-fields.csv for exact inclusion criteria and limitations. braintf-locus-review retains all 390 reviewed locus observations and the selection flag. Histone marks and rejected observations do not enter the study browser.
+
+The 2025 enhancer study contributes functional reporter evidence. Its reported candidate intervals and primer mappings remain separate in enhancer-regions. No precise TF binding position is inferred.
+
+The DNA window, ENCODE and JASPAR imports, and the existing two-element Studies geometry remain unchanged. All study data is included in the complete JSON/CSV archives. Source URLs, row numbers and SHA-256 hashes identify the reviewed public files. Raw sequencing reads and controlled individual-level data are not included.
+
+Rebuild with add_oxtr_brain_studies.py, normalize_oxtr_sites.py, annotate_oxtr_binding_outcomes.py and package_oxtr_catalogue.py, in that order. The archived review inputs are in research/informatics/oxtr-study-review-20261021.
