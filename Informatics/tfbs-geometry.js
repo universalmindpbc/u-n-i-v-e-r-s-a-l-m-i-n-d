@@ -80,6 +80,7 @@ export async function mountTfbsGeometry(host, catalogue, dataRoot) {
   get('[data-geometry-jump]').onclick=()=>{sizeBoard();board.scrollIntoView({block:'start',behavior:'instant'});board.focus({preventScroll:true});};
   const boardObserver=new ResizeObserver(sizeBoard);if(dialog)boardObserver.observe(dialog);
   sizeBoard();
+  host.style.scrollMarginTop='calc(var(--reader-bar-height,64px) + 12px)';
   // Keep small labels readable when the figure scales to a shorter screen.
   function sizePlotLabels(){
     host.querySelectorAll('.geometry-svg').forEach(plot=>{
