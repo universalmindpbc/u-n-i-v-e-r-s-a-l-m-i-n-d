@@ -49,3 +49,6 @@
 .other-geometry-summary{border-top:1px solid #ffffff18;padding:16px 0;margin-top:20px}.other-geometry-summary[hidden]{display:none}.other-geometry-summary h3{font-size:14px;font-weight:400;margin:0 0 14px}.other-geometry-summary dl{display:flex;flex-wrap:wrap;gap:18px 28px;margin:0}.other-geometry-summary dt{font-size:10px;color:#a7b3bc}.other-geometry-summary dd{margin:6px 0 0;font-size:19px;color:#ff84c5}.other-geometry-summary p{font-size:11px;line-height:1.7;color:#a7b3bc;margin:14px 0 8px}.other-geometry-summary a{font-size:11px;color:#c7d0d7}.family-card .family-formation-counts{border-top:1px solid #ffffff18;padding-top:12px;color:#e2e8ec}
 
 .native-beta-observation{border-top:1px solid #ffffff18;padding-top:14px;margin-top:18px}.native-beta-observation[hidden]{display:none}.native-beta-observation h3{font-size:12px;font-weight:400;color:#e2e8ec;margin:0 0 9px}.native-beta-observation p{font-size:12px;line-height:1.75;color:#a7b3bc;margin:0;overflow-wrap:anywhere}
+
+/* The shared header owns record selection in the embedded Atlas. */
+.embedded .record-picker{display:none}
