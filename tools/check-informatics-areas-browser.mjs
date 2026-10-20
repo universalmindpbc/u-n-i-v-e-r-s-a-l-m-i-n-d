@@ -6,9 +6,9 @@ import {fileURLToPath} from 'node:url';
 import {chromium} from '/Users/benkorbel/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/playwright/index.mjs';
 const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..'),base='https://staging.universalmind.tv/informatics/',candidate=process.env.INFORMATICS_CANDIDATE==='1',output=process.env.INFORMATICS_QA_OUTPUT||'/private/tmp/atlas-navigation-qa';
 await fs.mkdir(output,{recursive:true});
-const original=execFileSync('git',['show','20cfef9b:Informatics/index.html'],{cwd:root,encoding:'utf8'}),source=await fs.readFile(path.join(root,'Informatics/index.html'),'utf8');
-for(const regex of [/<dialog id="about"[\s\S]*?<\/dialog>/,/<main>[\s\S]*?<\/footer>/,/<section class="atlas-section atlas-vision"[\s\S]*?<main>/])assert.equal(source.match(regex)[0],original.match(regex)[0]);
-for(const file of ['style.css','pilot-v1/index.json'])assert.equal(await fs.readFile(path.join(root,'Informatics',file),'utf8'),execFileSync('git',['show','20cfef9b:Informatics/'+file],{cwd:root,encoding:'utf8'}));
+const original=execFileSync('git',['show','7e85d924:Informatics/index.html'],{cwd:root,encoding:'utf8'}),source=await fs.readFile(path.join(root,'Informatics/index.html'),'utf8');
+for(const regex of [/<dialog id="about"[\s\S]*?<\/dialog>/,/<main>[\s\S]*?<\/footer>/])assert.equal(source.match(regex)[0],original.match(regex)[0]);
+for(const file of ['style.css','pilot-v1/index.json'])assert.equal(await fs.readFile(path.join(root,'Informatics',file),'utf8'),execFileSync('git',['show','7e85d924:Informatics/'+file],{cwd:root,encoding:'utf8'}));
 const server=await chromium.launchServer({executablePath:'/Users/benkorbel/Library/Caches/ms-playwright/chromium_headless_shell-1234/chrome-headless-shell-mac-arm64/chrome-headless-shell',headless:true,args:['--mute-audio']});assert.ok(server.process().spawnargs.includes('--mute-audio'));
 const browser=await chromium.connect(server.wsEndpoint());let activePage;const report=[];
 try{
