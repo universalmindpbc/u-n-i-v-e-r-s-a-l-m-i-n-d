@@ -37,9 +37,11 @@
     }
   ],
   "errors": [],
-  "sourceCommit": "54fb2fd2",
+  "sourceCommit": "fec4e701",
   "scopeAudit": "../sound-scope-audit-20261022.json",
   "deferredPlacement": "../deferred-placement-20261022.json",
   "visualReview": "Desktop contents and 320px reading guide, plus 390px restored frequency chapter inspected; enlarged crosses and labels are readable and unclipped.",
-  "productionModified": false
+  "productionModified": false,
+  "integratedBaseline": "031c1c3d",
+  "integrationVerification": "integration-verification.json"
 }

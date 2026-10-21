@@ -98,6 +98,8 @@ try{
   assert.equal(await page.locator('#topic-xviii .paper').count(),14);
   assert.equal(await page.locator('#topic-xix .paper').count(),2);
   assert.equal(await page.locator('#topic-xviii .trust-score svg').count(),1);
+  await page.locator('#topic-xviii').evaluate(e=>e.scrollIntoView({block:'start'}));
+  await page.waitForTimeout(250);
   await page.screenshot({path:output+`/schumann-${viewport.width}.png`});
   await page.locator('#topic-xviii [data-paper-detail]').first().click();
   await page.locator('#article[open]').waitFor();
