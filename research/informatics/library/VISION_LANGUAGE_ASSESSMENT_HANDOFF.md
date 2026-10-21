@@ -4,7 +4,7 @@
 
 ## Shared approach
 
-- Review Vision/EMDR first, then Language/Mantra, one collection at a time with Ben.
+- Review Language/Mantra first, then Vision/EMDR, one collection at a time with Ben. This order follows Ben’s latest instruction on 22 October 2026.
 - Add one compact, initially collapsed assessment after the collection totals and before the reading/search controls. Follow `#sound-assessment` in `Informatics/library.html`, its scoped styles in `library.css`, and collection visibility in `library.js`.
 - Use “Universal Mind’s scientific scorecard”, a named clinical scope, the existing letter assessment and a plain-language explanation. Reuse the I AM portal’s key-study selections; verify each publication, finding and live link before inclusion.
 - Preserve the signed-off portal findings and limitations verbatim. Do not shorten away effect sizes, time periods, participant numbers, molecular targets or the stated research relevance. Raise any factual correction explicitly before changing the approved claim. In explanatory Sound copy, use brain entrainment, isochronic stimulation and binaural beats; keep official publication titles intact.
@@ -61,3 +61,9 @@ PDF: `i  a m/a s s e t s/r e s e a r c h/Universal Mind [ I o H ] - Mantra Medic
 ## Sound implementation reference
 
 The Sound assessment retains five portal selections and adds two molecular examples already indexed in the library. It does not change collection counts, chapter content or cross scores. The clinical letter remains B; no genomic grade is assigned. Its source audit is in `sound-assessment-sources-20261022.md`.
+
+## Sound sign-off and editorial lock — 22 October 2026
+
+Ben signed off Sound at staging commit `a5b386988b206477cd017435295c0e291ce2f8a1` and explicitly authorized its production release. The Sound system, grading definitions, portal article summaries and limitations are locked at that approved version.
+
+For Language/Mantra and Vision/EMDR, reuse the approved Universal Mind I AM grading and journal-article summaries exactly. Additions may augment the approved text; they must not paraphrase, replace, shorten or dilute it. Preserve numerical findings, study durations, participant counts, named genes, qualifications and limitations. Discuss factual corrections with Ben before changing approved wording. Review each PDF and its topics together, then stage and proof that collection before its separately authorized publication.
