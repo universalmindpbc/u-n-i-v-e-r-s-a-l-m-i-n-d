@@ -3,6 +3,8 @@ import {DefaultPluginSpec} from 'molstar/lib/mol-plugin/spec.js';
 import {MolScriptBuilder as MS} from 'molstar/lib/mol-script/language/builder.js';
 import {Script} from 'molstar/lib/mol-script/script.js';
 import {StructureSelection,StructureElement,StructureProperties} from 'molstar/lib/mol-model/structure.js';
+import {OrderedSet} from 'molstar/lib/mol-data/int.js';
+import {dnaWindow,complement} from './dna.js';
 import {Color} from 'molstar/lib/mol-util/color/index.js';
 import {MeshBuilder} from 'molstar/lib/mol-geo/geometry/mesh/mesh-builder.js';
 import {Mesh} from 'molstar/lib/mol-geo/geometry/mesh/mesh.js';
@@ -20,9 +22,10 @@ export async function create(parent,onPick){
  if(!await plugin.initViewerAsync(canvas,parent))throw new Error('WebGL is unavailable. Try a browser with hardware acceleration enabled.');
  const small=innerWidth<700;
  plugin.canvas3d.setProps({transparentBackground:true,camera:{manualReset:true,helper:{axes:{name:'off',params:{}}},mode:'perspective'},cameraFog:{name:'off',params:{}},renderer:{backgroundColor:Color(0x0b1014),ambientIntensity:.48,light:[{inclination:150,azimuth:320,color:Color(0xe5eff4),intensity:.7},{inclination:65,azimuth:105,color:Color(0x98c9e0),intensity:.35}],highlightColor:Color(0x79d6f4),selectColor:Color(0xe7b76e)},postprocessing:{occlusion:{name:small?'off':'on',params:{samples:16,multiScale:{name:'off',params:{}},radius:5,bias:.8,blurKernelSize:15,resolutionScale:1,color:Color(0x000000)}},outline:{name:'off',params:{}},shadow:{name:'off',params:{}}},multiSample:{mode:'off',sampleLevel:2},trackball:{animate:{name:'off',params:{}}}});
- let target,structure,context,ligand,repr,ligandRepr,contextRepr,overlay,current,defaultCamera,clipRadius,representation='cartoon';
+ let target,structure,context,ligand,repr,ligandRepr,contextRepr,overlay,current,defaultCamera,clipRadius,representation='cartoon',geneMesh,geneData,geneWindow;
  const resize=new ResizeObserver(()=>plugin.canvas3d.requestResize());resize.observe(parent);
  plugin.behaviors.interaction.click.subscribe(({current:c})=>{
+  if(c.loci.kind==='group-loci'&&c.loci.shape.sourceData.kind==='gene'){const i=OrderedSet.getAt(c.loci.groups[0].ids,0)%geneWindow.sequence.length;onPick({kind:'gene',offset:geneWindow.start+i,base:geneWindow.sequence[i],complement:complement[geneWindow.sequence[i]],position:geneWindow.position(i)});return;}
   if(c.loci.kind!=='element-loci'||!c.loci.elements.length)return;
   const loc=StructureElement.Loci.getFirstLocation(c.loci);
   if(loc)onPick({chain:StructureProperties.chain.auth_asym_id(loc),labelChain:StructureProperties.chain.label_asym_id(loc),residue:StructureProperties.residue.auth_seq_id(loc),name:StructureProperties.atom.label_comp_id(loc),seqId:StructureProperties.residue.label_seq_id(loc)});
@@ -33,7 +36,29 @@ export async function create(parent,onPick){
   repr=await plugin.builders.structure.representation.addRepresentation(target,{type,typeParams:{quality:small?'medium':'high',alpha:type==='molecular-surface'?.88:1,metalness:.28,roughness:.28,sizeFactor:type==='ball-and-stick'?.20:.26,resolution:small?1.3:.8},color:'uniform',colorParams:{value:Color(0xc7d6de)}});
  }
  function removeOverlay(){if(overlay){plugin.canvas3d.remove(overlay);overlay.destroy();overlay=null;}}
+ function removeGene(){if(geneMesh){plugin.canvas3d.remove(geneMesh);geneMesh.destroy();geneMesh=null;}}
+ async function loadGene(g,offset=0,keepCamera=false){
+  const camera=keepCamera?plugin.canvas3d.camera.getSnapshot():null;removeOverlay();removeGene();
+  if(!geneData){await plugin.clear();target=structure=ligand=context=repr=ligandRepr=contextRepr=null;}
+  geneData=g;geneWindow=dnaWindow(g,offset);current=null;representation='dna-schematic';clipRadius=null;
+  const state=MeshBuilder.createState(8192,4096),colors=[],labels=[];
+  const cylinder=(a,b,r)=>addCylinder(state,a,b,1,{radiusTop:r,radiusBottom:r,radialSegments:12});
+  for(let i=0;i<geneWindow.sequence.length;i++){
+   const base=geneWindow.sequence[i];state.currentGroup=i;colors[i]=0xbca887;labels[i]=base+'–'+complement[base]+' · chr'+g.chromosome+':'+geneWindow.position(i).toLocaleString();
+   const a=geneWindow.point(i,0),b=geneWindow.point(i,1);cylinder(a,b,.62);
+   for(let side=0;side<2;side++){const group=geneWindow.sequence.length*(side+1)+i;state.currentGroup=group;colors[group]=side?0xc7d6de:0xd9b27a;labels[group]=labels[i];addSphere(state,side?b:a,1.45,2);if(i<geneWindow.sequence.length-1)for(let k=0;k<5;k++)cylinder(geneWindow.point(i+k/5,side),geneWindow.point(i+(k+1)/5,side),1.15);}
+  }
+  const shape=Shape.create('Reference DNA · illustrative helix',geneWindow,MeshBuilder.getMesh(state),i=>Color(colors[i]),()=>1,i=>labels[i]);
+  geneMesh=ShapeRepresentation(()=>shape,Mesh.Utils);await plugin.runTask(geneMesh.createOrUpdate({alpha:1,metalness:.35,roughness:.3,doubleSided:true},geneWindow));plugin.canvas3d.add(geneMesh);plugin.canvas3d.commit(true);
+  if(camera)plugin.canvas3d.camera.setState(camera,0);else{
+   plugin.canvas3d.camera.setState({position:[0,55,235],target:[0,0,0],up:small?[-.95,.31,0]:[-.18,1,0],radius:geneWindow.sphere.radius,radiusMax:geneWindow.sphere.radius*5},0);
+   const s=plugin.managers.camera.getFocusSphereSnapshot(geneWindow.sphere,{extraRadius:2}),factor=small?1.25:.86,shift=s.up.map(x=>small?x*55:0);s.position=s.position.map((x,i)=>s.target[i]+(x-s.target[i])*factor+shift[i]);s.target=s.target.map((x,i)=>x+shift[i]);plugin.canvas3d.requestCameraReset({snapshot:s,durationMs:0});defaultCamera=s;
+  }
+  canvas.setAttribute('aria-label','Interactive DNA illustration. Drag to rotate; click a base pair. Arrow keys rotate, plus and minus zoom, R resets.');
+  return {start:geneWindow.start,count:geneWindow.sequence.length};
+ }
  async function load(record){
+  removeGene();geneData=geneWindow=null;canvas.setAttribute('aria-label','Interactive protein structure. Drag to rotate, scroll to zoom. Arrow keys rotate, plus and minus zoom, R resets.');
   removeOverlay();await plugin.clear();target=structure=ligand=context=repr=ligandRepr=contextRepr=null;clipRadius=null;current=record;
   const data=await plugin.builders.data.download({url:'data/'+record.pdb.toLowerCase()+'.bcif',isBinary:true},{state:{isGhost:true}});
   const trajectory=await plugin.builders.structure.parseTrajectory(data,'mmcif');const model=await plugin.builders.structure.createModel(trajectory);
@@ -59,14 +84,14 @@ export async function create(parent,onPick){
   return {atoms:target.obj.data.elementCount,ligand:!!ligandRepr,context:!!contextRepr,radius:target.obj.data.boundary.sphere.radius};
  }
  async function geometryLayer(name,opts={}){
-  removeOverlay();if(!name||!target)return;
-  const g=geometry(name),s=target.obj.data.boundary.sphere;const tf={centre:s.center,radius:s.radius,scale:opts.scale??1.2,rotation:opts.rotation??0,offset:opts.offset??0};
+  removeOverlay();if(!name||(!target&&!geneWindow))return;
+  const g=geometry(name),s=geneWindow?.sphere||target.obj.data.boundary.sphere;const tf={centre:s.center,radius:s.radius,scale:opts.scale??1.2,rotation:opts.rotation??0,offset:opts.offset??0};
   const state=MeshBuilder.createState(2048,1024);const colors=[];let group=0;const width=s.radius*.003;
   for(const segment of g.segments){state.currentGroup=group++;colors.push(segment.color);addCylinder(state,transformPoint(segment.a,tf),transformPoint(segment.b,tf),1,{radiusTop:width,radiusBottom:width,radialSegments:8});}
   for(const p of g.points){state.currentGroup=group++;colors.push(0xe5bd7c);addSphere(state,transformPoint(p,tf),width*2.4,1);}
   const mesh=MeshBuilder.getMesh(state);const shape=Shape.create(g.name,g,mesh,i=>Color(colors[i]),()=>1,()=>g.name);
   overlay=ShapeRepresentation(()=>shape,Mesh.Utils);await plugin.runTask(overlay.createOrUpdate({alpha:opts.opacity??.7,ignoreLight:true,doubleSided:true},g));overlay.setState({pickable:false});plugin.canvas3d.add(overlay);
-  clipRadius=Math.max(s.radius+4,s.radius*(tf.scale+Math.abs(tf.offset))+4);plugin.canvas3d.camera.setState({radius:clipRadius,radiusMax:Math.max(structure.obj.data.boundary.sphere.radius,clipRadius)},0);return g;
+  clipRadius=Math.max(s.radius+4,s.radius*(tf.scale+Math.abs(tf.offset))+4);plugin.canvas3d.camera.setState({radius:clipRadius,radiusMax:Math.max(geneWindow?.sphere.radius||structure.obj.data.boundary.sphere.radius,clipRadius)},0);return g;
  }
  async function toggle(which,visible){const r=which==='ligand'?ligandRepr:contextRepr;if(!r)return;const cell=plugin.state.data.cells.get(r.ref);if(cell.state.isHidden===visible)await PluginCommands.State.ToggleVisibility(plugin,{state:plugin.state.data,ref:r.ref});}
  function focusResidue(chain,seqId){
@@ -86,7 +111,7 @@ export async function create(parent,onPick){
    for(const e of unit.elements){const ci=a.chainAtomSegments.index[e];if(a.chains.label_asym_id.value(ci)!==chain)continue;ids.add(a.residues.label_seq_id.value(a.residueAtomSegments.index[e]));}
   }return [...ids];
  }
- function snapshot(){return {pdb:current?.pdb,representation,camera:plugin.canvas3d.camera.getSnapshot()};}
- function dispose(){removeOverlay();resize.disconnect();plugin.dispose();}
- return {load,render,geometryLayer,toggle,focusResidue,reset,zoom,rotate,spin,screenshot,snapshot,observed,dispose,plugin};
+ function snapshot(){return {level:geneData?'gene':'protein',...(geneData?{gene:geneData.symbol,windowOffset:geneWindow.start,windowBases:geneWindow.sequence.length}:{pdb:current?.pdb}),representation,camera:plugin.canvas3d.camera.getSnapshot()};}
+ function dispose(){removeGene();removeOverlay();resize.disconnect();plugin.dispose();}
+ return {load,loadGene,render,geometryLayer,toggle,focusResidue,reset,zoom,rotate,spin,screenshot,snapshot,observed,dispose,plugin};
 }

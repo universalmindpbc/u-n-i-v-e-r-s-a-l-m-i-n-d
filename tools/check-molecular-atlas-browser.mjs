@@ -11,7 +11,7 @@ try{
  for(const viewport of [{width:1470,height:956},{width:1024,height:768},{width:390,height:844},{width:320,height:844}]){
   const ctx=await browser.newContext({viewport,reducedMotion:'reduce',acceptDownloads:true});await candidate(ctx);
   const page=await ctx.newPage(),errors=[],failed=[];page.on('pageerror',e=>errors.push(e.message));page.on('response',r=>{if(r.status()>=400&&r.url().includes('/informatics/'))failed.push(r.url()+':'+r.status());});
-  await page.goto(base+'molecular/',{waitUntil:'domcontentloaded'});await idle(page,'OXTR');await pixelProof(page);
+  await page.goto(base+'molecular/?level=protein',{waitUntil:'domcontentloaded'});await idle(page,'OXTR');await pixelProof(page);
   assert.equal(await page.locator('#target-selector button').count(),8);assert.equal(await page.locator('#target-selector img').evaluateAll(imgs=>imgs.every(i=>i.complete&&i.naturalWidth>0)),true);
   assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),true);
   assert.equal(await page.locator('video.molecular-film').count(),1);assert.equal(await page.locator('video.molecular-film').evaluate(e=>e.muted&&e.paused),true);assert.equal(await page.locator('audio').count(),0);assert.equal(await page.evaluate(()=>document.fullscreenElement),null);
@@ -51,6 +51,6 @@ try{
   assert.deepEqual(errors,[]);assert.deepEqual(failed,[]);await page.evaluate(()=>document.querySelectorAll('video,audio').forEach(e=>e.pause()));await ctx.close();
  }
  const ctx=await browser.newContext({viewport:{width:1470,height:956},reducedMotion:'reduce'});await candidate(ctx);let failOnce=true;
- await ctx.route(base+'molecular/data/7qvm.bcif',route=>{if(failOnce){failOnce=false;return route.fulfill({status:503,body:'Temporarily unavailable'});}return route.fallback();});const page=await ctx.newPage();await page.goto(base+'molecular/');await page.locator('#retry').waitFor({state:'visible',timeout:60000});assert.match(await page.locator('#structure-status').innerText(),/unavailable/);assert.equal(await page.locator('#viewport').evaluate(e=>getComputedStyle(e).opacity),'0.13');await page.locator('#retry').click();await idle(page,'OXTR');await ctx.close();results.push({failedRequestShowsError:true,retryRecovers:true});
+ await ctx.route(base+'molecular/data/7qvm.bcif',route=>{if(failOnce){failOnce=false;return route.fulfill({status:503,body:'Temporarily unavailable'});}return route.fallback();});const page=await ctx.newPage();await page.goto(base+'molecular/?level=protein');await page.locator('#retry').waitFor({state:'visible',timeout:60000});assert.match(await page.locator('#structure-status').innerText(),/unavailable/);assert.equal(await page.locator('#viewport').evaluate(e=>getComputedStyle(e).opacity),'0.13');await page.locator('#retry').click();await idle(page,'OXTR');await ctx.close();results.push({failedRequestShowsError:true,retryRecovers:true});
  await fs.writeFile(out+'/results.json',JSON.stringify({passed:true,live,processMuted:true,nativeFullscreen:false,results},null,2));console.log(JSON.stringify({passed:true,live,results,out},null,2));
 }finally{await browser.close().catch(()=>{});await server.close().catch(()=>{});}

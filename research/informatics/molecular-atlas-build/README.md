@@ -16,7 +16,7 @@ The standalone route uses the same background video with muted playback and expl
 
 ## Scientific scope
 
-The catalogue is a research collection, not a single gene family or a measured interaction network. Coordinates are downloaded from the public RCSB Model Server as BinaryCIF and stored locally, with SHA-256 checksums and source accession links. A thumbnail is rendered from the same coordinates as its viewer. No illustrative molecular fallback is used.
+The catalogue is a research collection, not a single gene family or a measured interaction network. Coordinates are downloaded from the public RCSB Model Server as BinaryCIF and stored locally, with SHA-256 checksums and source accession links. A thumbnail is rendered from the same coordinates as its viewer. Protein-load failures stay explicit; no fabricated structure replaces a failed download.
 
 | Target | PDB | Displayed label chains | Scope |
 | --- | --- | --- | --- |
@@ -29,7 +29,19 @@ The catalogue is a research collection, not a single gene family or a measured i
 | DOCK2 | 6TGB | A, C | DOCK2 from the DOCK2–ELMO1 deposited model |
 | CD38 | 1YH3 | A | Engineered extracellular domain |
 
-Each source entry is a specific deposited model. Complex partners expose additional deposited chains; they do not generate missing subunits or symmetry mates. Protein sequence positions use the deposited construct, while picked residue labels preserve author numbering. Missing coordinates stay unavailable. DNA regulatory coordinates are a separate view.
+Each source entry is a specific deposited model. Complex partners expose additional deposited chains; they do not generate missing subunits or symmetry mates. Protein sequence positions use the deposited construct, while picked residue labels preserve author numbering. Missing coordinates stay unavailable. DNA regulatory coordinates remain separate from protein residue coordinates.
+
+## Gene / Protein switch
+
+The opening Gene view shows a 48-base window of reference DNA as a clearly labelled idealised double helix. The Protein view retains the deposited experimental models. The viewer never describes the DNA helix as a measured cellular fold or atomic structure. Molecular models remain separate from the exploratory geometry layer.
+
+`fetch-genes.py` retrieves human GRCh38 gene and canonical transcript annotations from Ensembl, genomic DNA from UCSC, and an independent genomic sequence from Ensembl. The build requires exact sequence agreement. It stores nine genes for the eight targets: NMDA has separate GRIN1 and GRIN2B choices. Source snapshots and sequence checksums are retained. The complete gene includes introns; exon markers and transcription starts refer to the named canonical transcript. All displayed genomic coordinates are 1-based and inclusive. Minus-strand DNA is reverse-complemented into the gene's 5-prime to 3-prime orientation.
+
+`dna.js` specifies the illustrative 48-base geometry. Base-pair rungs carry the actual reference sequence; the complementary strand uses A/T and C/G pairing. These display coordinates are independent of measured protein coordinates. The interface supports exon/TSS jumps, sequence windows, full FASTA and annotation downloads, and view exports that identify the biological level and the DNA interpretation.
+
+Collection conceals the structure workspace and its controls while retaining the background film. Its stronger panel and card backgrounds keep labels readable. Returning to Structure preserves the selected geometric construction.
+
+Run `node tools/check-molecular-genes.mjs` for DNA source, strand, exon and boundary checks. The protein browser suite uses `?level=protein`; the entry suite exercises the default Gene view and shared media continuity.
 
 ## Geometry
 
