@@ -88,7 +88,7 @@
     }
   }
   function renderContents() {
-    return `<div class="edition-intro"><p class="eyebrow">SOUND RESEARCH</p><h2>Contents</h2></div><div class="contents-grid">${edition.chapters.map(chapter => `<section class="contents-chapter"><h3><span class="chapter-number">${String(chapter.number).padStart(2,'0')}</span><a data-chapter="${chapter.number}" href="${esc(route(chapter.number))}">${esc(chapter.title)}</a></h3><p class="paper-count">${paperCount(chapter.topics.flatMap(t=>t.papers))}</p><ol>${chapter.topics.map(topic => `<li><a data-chapter="${chapter.number}" data-topic="${topic.id}" href="${esc(route(chapter.number,topic.id))}">${esc(topic.title)}<span class="paper-count">${paperCount(topic.papers)}</span></a>${crosses(topic.trustScore)}</li>`).join('')}</ol></section>`).join('')}</div>`;
+    return `<div class="edition-intro"><p class="eyebrow">SOUND RESEARCH</p><h2>Contents</h2></div><div class="contents-grid">${edition.chapters.map(chapter => `<section class="contents-chapter"><h3><span class="chapter-number">${String(chapter.number).padStart(2,'0')}</span><a data-chapter="${chapter.number}" href="${esc(route(chapter.number))}">${esc(chapter.title)}</a></h3><p class="paper-count">${paperCount(chapter.topics.flatMap(t=>t.papers))}</p><ol>${chapter.topics.map(topic => `<li><a data-chapter="${chapter.number}" data-topic="${topic.id}" href="${esc(route(chapter.number,topic.id))}">${esc(topic.title)}<span class="contents-topic-meta"><span class="paper-count">${paperCount(topic.papers)}</span>${crosses(topic.trustScore)}</span></a></li>`).join('')}</ol></section>`).join('')}</div>`;
   }
   function renderChapter() {
     const chapter = edition.chapters.find(c => c.number === chapterNumber);
