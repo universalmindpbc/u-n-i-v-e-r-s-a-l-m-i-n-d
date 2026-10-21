@@ -58,7 +58,7 @@ try{
    assert.equal(await page.locator('.assessment-studies article').count(),5);
    assert.deepEqual(await page.locator('.assessment-finding > p:first-child').allTextContents(),approvedStudies.map(s=>s.finding));
    assert.deepEqual(await page.locator('.assessment-finding .assessment-note').allTextContents(),approvedStudies.map(s=>'Limit: '+s.limitation));
-   const molecular=await page.locator('.assessment-molecular-studies').innerText();
+   const molecular=await page.locator('.assessment-molecular-studies').textContent();
    for(const gene of ['IL6','NR3C1','NFKB1','IFNG','IL10','LGALS3','CXCL8','THOP1'])assert.ok(molecular.includes(gene),gene+' is named');
    const explanatory=await page.locator('.assessment-body p').allTextContents();
    assert.equal(explanatory.some(t=>/auditory[- ]beats?\b/i.test(t)),false);
