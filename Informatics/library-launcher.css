@@ -95,3 +95,27 @@
 .library-overlay[data-reading-background=black],.library-overlay[data-reading-background=black] iframe{background:#000}
 .library-overlay[data-reading-background=black] .library-overlay-bar{background:#000}
 .library-overlay[data-reading-background=video] .library-overlay-bar{background:#080d12}
+
+/* The roadmap fills the viewport over the same film as the Atlas. */
+.network-overlay{position:fixed;inset:0;margin:0;width:100vw;height:100dvh;max-width:100vw;max-height:100dvh;border:0;background:transparent;isolation:isolate}
+.network-overlay::backdrop{background:transparent}
+.network-overlay::before{content:"";position:absolute;inset:0;background:rgba(0,0,0,.58);z-index:-1;pointer-events:none}
+.network-film{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.75;z-index:-2;pointer-events:none}
+.network-overlay[data-video=shared] .network-film{display:none}
+.network-overlay .library-overlay-bar{background:rgba(0,0,0,.25);padding:10px 3%}
+.network-media-controls{display:flex;gap:6px;align-items:center}
+.network-overlay .network-body{min-height:0;flex:1}
+.network-core{fill:rgba(0,0,0,.36)}
+.network-nos1-casing{fill:rgba(0,0,0,.36)}
+.network-overlay #network-diagram svg{max-height:calc(100dvh - 235px)}
+.network-overlay .network-map-scroll.is-enlarged svg{max-height:none}
+body:has(.network-overlay[open]) #about,body:has(.network-overlay[open]) #landing{visibility:hidden}
+body:has(.network-overlay[open]) #about::backdrop{background:transparent}
+body:has(.network-overlay[open]) #experience>header,
+body:has(.network-overlay[open]) #experience>main,
+body:has(.network-overlay[open]) #experience>footer,
+body:has(.network-overlay[open]) #experience>#atlas-panel,
+body:has(.network-overlay[open]) #experience>#molecular-panel,
+body:has(.network-overlay[open]) #experience>#atlas-sections{visibility:hidden}
+body:has(.network-overlay[open]) #experience>.film-shade{background:transparent}
+@media(max-width:700px){.network-overlay #network-diagram svg{max-height:none}.network-overlay .library-overlay-bar{padding:8px 14px}.network-media-controls{gap:0}}

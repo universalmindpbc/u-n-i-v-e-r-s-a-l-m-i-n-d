@@ -28,7 +28,7 @@ async function setMode(page,value,scope='.reading-toolbar'){
  await page.locator(`${scope} [data-reading-background="${value}"]`).click();
  assert.equal(await page.locator('html').getAttribute('data-reading-background'),value);
 }
-const expectedMenu=['Geometry Atlas','Molecular Atlas','About','Sound','Vision','Language','Universal Research','Partners'];
+const expectedMenu=['About','Geometry Atlas','Molecular Atlas','Sound Atlas','Vision Atlas','Language Atlas','Universal Research','Partners'];
 try{
  for(const viewport of process.env.NAV_ONLY==='1'?[]:[{width:1470,height:956},{width:1024,height:768},{width:390,height:844},{width:320,height:844}]){
   const ctx=await context({viewport}),page=await ctx.newPage();

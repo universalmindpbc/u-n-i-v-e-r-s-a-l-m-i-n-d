@@ -36,7 +36,7 @@ export async function create(parent,onPick){
   const chainPalette={asymId:'auth',palette:{name:'colors',params:{list:{kind:'set',colors:[Color(0xd9b27a),Color(0xc7d6de)]}}}};
   const color=geneData?(type==='ball-and-stick'?'element-symbol':'chain-id'):'uniform';
   const colorParams=geneData?(type==='ball-and-stick'?{carbonColor:{name:'chain-id',params:chainPalette},saturation:-.2,lightness:.3}:chainPalette):{value:Color(0xc7d6de)};
-  repr=await plugin.builders.structure.representation.addRepresentation(target,{type,typeParams:{quality:small?'medium':'high',alpha:type==='molecular-surface'?.94:1,metalness:.28,roughness:.28,sizeFactor:type==='ball-and-stick'?.28:geneData?.4:.26,resolution:small?1.1:.8,...(geneData&&type==='cartoon'?{visuals:['polymer-trace','nucleotide-ring']}:{} )},color,colorParams});
+  repr=await plugin.builders.structure.representation.addRepresentation(target,{type,typeParams:{quality:small?'medium':'high',alpha:type==='molecular-surface'?(geneData?.94:.88):1,metalness:.28,roughness:.28,sizeFactor:type==='ball-and-stick'?(geneData?.28:.20):geneData?.4:.26,resolution:small?(geneData?1.1:1.3):.8,...(geneData&&type==='cartoon'?{visuals:['polymer-trace','nucleotide-ring']}:{} )},color,colorParams});
   plugin.canvas3d.commit(true);
  }
  function removeOverlay(){if(overlay){plugin.canvas3d.remove(overlay);overlay.destroy();overlay=null;}}

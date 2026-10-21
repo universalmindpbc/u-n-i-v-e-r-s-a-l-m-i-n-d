@@ -31,7 +31,7 @@ document.body.append(library);
 const network=document.createElement('dialog');
 network.className='network-overlay';network.setAttribute('aria-labelledby','network-title');
 network.innerHTML=`
- <div class="library-overlay-bar"><span>UNIVERSAL INFORMATICS / RESEARCH ROADMAP</span><button aria-label="Close candidate network">×</button></div>
+ <div class="library-overlay-bar"><span>UNIVERSAL INFORMATICS / RESEARCH ROADMAP</span><div class="network-media-controls"><button data-network-play aria-label="Pause background video" title="Pause background video">Ⅱ</button><button data-network-close aria-label="Close candidate network">×</button></div></div>
  <div class="network-body">
   <div class="network-heading"><div><h2 id="network-title">Phase Zulu</h2><p>Gene Network Expansion</p></div><div class="network-system-heading"><h3 id="network-sequence-title">Transcript Element Listening System</h3><p>Pathway of transcription of neurotransmitter-based genes</p></div></div>
   <figure class="network-figure">
@@ -75,11 +75,33 @@ svg.innerHTML=`
  ${node(nos1,'nested')}`;
 network.querySelector('#network-diagram').append(svg);
 network.querySelector('.network-zoom').onclick=e=>{const expanded=e.currentTarget.getAttribute('aria-pressed')!=='true';e.currentTarget.setAttribute('aria-pressed',String(expanded));e.currentTarget.textContent=expanded?'Fit map −':'Enlarge map +';network.querySelector('figcaption span').textContent=expanded?'Scroll the map to explore each target.':'Select a target to explore its research library.';const scroll=network.querySelector('.network-map-scroll');scroll.classList.toggle('is-enlarged',expanded);scroll.scrollLeft=expanded?(scroll.scrollWidth-scroll.clientWidth)/2:0;scroll.scrollTop=expanded?(scroll.scrollHeight-scroll.clientHeight)/2:0;};
+// Reuse the active experience's film. A muted fallback serves the landing-page roadmap.
+let networkFilm,networkFallback,networkResume=false;
+const networkPlay=network.querySelector('[data-network-play]');
+function syncNetworkFilm(){const paused=!networkFilm||networkFilm.paused;networkPlay.textContent=paused?'▷':'Ⅱ';networkPlay.setAttribute('aria-label',paused?'Play background video':'Pause background video');networkPlay.title=networkPlay.getAttribute('aria-label');}
+function startNetworkFilm(){
+ const film=document.getElementById('film'),experience=document.getElementById('experience');
+ if(!experience.hidden&&film.currentSrc){networkFilm=film;network.dataset.video='shared';}
+ else{
+  if(!networkFallback){networkFallback=document.createElement('video');networkFallback.className='network-film';networkFallback.muted=true;networkFallback.defaultMuted=true;networkFallback.loop=true;networkFallback.playsInline=true;networkFallback.setAttribute('aria-hidden','true');network.prepend(networkFallback);}
+  networkFilm=networkFallback;networkFallback.src=film.currentSrc||film.dataset.src;network.dataset.video='fallback';
+  if(!matchMedia('(prefers-reduced-motion: reduce)').matches)networkFallback.play().catch(syncNetworkFilm);
+ }
+ networkFilm.addEventListener('play',syncNetworkFilm);networkFilm.addEventListener('pause',syncNetworkFilm);syncNetworkFilm();
+}
+function stopNetworkFilm(){
+ if(networkFilm){networkFilm.removeEventListener('play',syncNetworkFilm);networkFilm.removeEventListener('pause',syncNetworkFilm);}
+ if(networkFallback){networkFallback.pause();networkFallback.removeAttribute('src');networkFallback.load();}
+ networkFilm=null;networkResume=false;
+}
+networkPlay.onclick=()=>{if(!networkFilm)return;if(networkFilm.paused)networkFilm.play().catch(syncNetworkFilm);else networkFilm.pause();};
+document.addEventListener('visibilitychange',()=>{if(networkFilm!==networkFallback||!networkFilm)return;if(document.hidden){networkResume=!networkFilm.paused;networkFilm.pause();}else if(networkResume&&network.open)networkFilm.play().catch(syncNetworkFilm);});
+window.addEventListener('pagehide',()=>networkFallback?.pause());
 function container(dialog){const parent=document.fullscreenElement||document.body;if(dialog.parentElement!==parent)parent.append(dialog);}
 function closeLibrary(){library.querySelector('iframe').removeAttribute('src');library.close();}
 function openLibrary(collection='all',gene='',opener){libraryOpener=opener?.closest('[role=menu]')?document.querySelector('#atlas-toggle'):opener||document.activeElement;container(library);const url=new URL('library.html',root);url.searchParams.set('embedded','1');if(collection!=='all')url.searchParams.set('collection',collection);if(gene)url.searchParams.set('target',gene);library.querySelector('iframe').src=url.href;if(!library.open)library.showModal();}
-document.addEventListener('click',e=>{const open=e.target.closest('[data-library]');if(open){e.preventDefault();openLibrary(open.dataset.library,open.dataset.libraryGene,open);}const n=e.target.closest('[data-network]');if(n){e.preventDefault();networkOpener=n;container(network);network.showModal();}});
-library.querySelector('button').onclick=closeLibrary;network.querySelector('button').onclick=()=>network.close();function restoreFocus(dialog,opener){const active=document.activeElement;if(opener&&(active===document.body||active===opener||active===dialog||dialog.contains(active)))opener.focus({preventScroll:true});}library.addEventListener('close',()=>{if(library.open)return;library.querySelector('iframe').removeAttribute('src');restoreFocus(library,libraryOpener);});network.addEventListener('close',()=>{if(!network.open)restoreFocus(network,networkOpener);});window.addEventListener('message',e=>{if(e.origin!==location.origin||e.source!==library.querySelector('iframe').contentWindow)return;if(e.data?.type==='informatics:close-library')closeLibrary();if(e.data?.type==='informatics:library-navigate'&&['geometry','molecular','about','sound','vision','language','partners'].includes(e.data.area)){closeLibrary();if(network.open)network.close();document.dispatchEvent(new CustomEvent('atlas:navigate',{detail:e.data.area}));}if(e.data?.type==='informatics:library-background'&&['video','black','white'].includes(e.data.mode))library.dataset.readingBackground=e.data.mode;});
+document.addEventListener('click',e=>{const open=e.target.closest('[data-library]');if(open){e.preventDefault();openLibrary(open.dataset.library,open.dataset.libraryGene,open);}const n=e.target.closest('[data-network]');if(n){e.preventDefault();networkOpener=n;container(network);network.showModal();startNetworkFilm();}});
+library.querySelector('button').onclick=closeLibrary;network.querySelector('[data-network-close]').onclick=()=>network.close();function restoreFocus(dialog,opener){const active=document.activeElement;if(opener&&(active===document.body||active===opener||active===dialog||dialog.contains(active)))opener.focus({preventScroll:true});}library.addEventListener('close',()=>{if(library.open)return;library.querySelector('iframe').removeAttribute('src');restoreFocus(library,libraryOpener);});network.addEventListener('close',()=>{if(!network.open){stopNetworkFilm();restoreFocus(network,networkOpener);}});window.addEventListener('message',e=>{if(e.origin!==location.origin||e.source!==library.querySelector('iframe').contentWindow)return;if(e.data?.type==='informatics:close-library')closeLibrary();if(e.data?.type==='informatics:library-navigate'&&['geometry','molecular','about','sound','vision','language','partners'].includes(e.data.area)){closeLibrary();if(network.open)network.close();document.dispatchEvent(new CustomEvent('atlas:navigate',{detail:e.data.area}));}if(e.data?.type==='informatics:library-background'&&['video','black','white'].includes(e.data.mode))library.dataset.readingBackground=e.data.mode;});
 library.addEventListener('cancel',e=>{e.preventDefault();closeLibrary();});
 for(const d of [library,network])d.addEventListener('click',e=>{if(e.target===d){const r=d.getBoundingClientRect();if(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom){if(d===library)closeLibrary();else d.close();}}});
 })();
