@@ -41,7 +41,7 @@ try{
    await page.emulateMedia({reducedMotion:'no-preference'});await page.waitForFunction(()=>document.querySelector('#area-vision').dataset.motion==='playing');
    await choose(page,'sound');assert.equal(await dot.evaluate(e=>e.getAnimations().length),0);
    await choose(page,'molecular');const molecular=page.frameLocator('#molecular-frame');await molecular.locator('body[data-ready=true]').waitFor({timeout:60000});await marker(molecular.locator('.product-name'),'Molecular Atlas');
-   await page.locator('#atlas-toggle').click();await page.locator('#atlas-menu [data-science-tfbs]').click();await marker(page.locator('.science-tfbs[open] .atlas-page-marker'),'Transcription Atlas');
+   await page.locator('#atlas-toggle').click();await page.locator('#atlas-menu [data-science-tfbs]').click();await page.locator('.science-tfbs[open] .tfbs-source-card').first().waitFor({timeout:60000});await marker(page.locator('.science-tfbs[open] .atlas-page-marker'),'Transcription Atlas');
    const tfbsMarker=await page.locator('.science-tfbs .atlas-page-marker').boundingBox(),regulation=await page.locator('.science-reader-location>span').boundingBox();assert.ok(tfbsMarker.y+tfbsMarker.height<=regulation.y);
    if(viewport.width===1470)await page.screenshot({path:path.join(out,'transcription-1470.png')});
    await page.locator('.science-tfbs .science-close').click();await page.locator('#atlas-toggle:focus').waitFor();
