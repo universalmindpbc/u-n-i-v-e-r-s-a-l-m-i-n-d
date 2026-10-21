@@ -69,19 +69,26 @@ try{
   await page.goto(base+'?about=1',{waitUntil:'domcontentloaded'});await page.locator('#about[open]').waitFor();
   await page.screenshot({path:path.join(output,`about-${viewport.width}.png`)});
   await page.locator('[data-network]').click();await page.locator('.network-overlay[open]').waitFor();
-  assert.equal(await page.locator('.network-targets article').count(),13);
+  assert.equal(await page.locator('[data-network-target]').count(),14);
   assert.match(await page.locator('.network-body').innerText(),/validation pending/);
   await page.screenshot({path:path.join(output,`network-${viewport.width}.png`)});
   assert.equal(await page.locator('.network-body').evaluate(e=>e.scrollWidth<=e.clientWidth+1),true);
-  await page.locator('.network-targets [data-library-gene="IL6"]').click();
+  await page.locator('[data-network-target="IL6"]').click();
   const frame=page.frameLocator('.library-overlay iframe');await frame.locator('.research-card').first().waitFor();assert.equal(await frame.locator('#target').inputValue(),'IL6');
   await frame.locator('#query').focus();await page.keyboard.press('Escape');await page.locator('.library-overlay').waitFor({state:'hidden'});
-  assert.equal(await page.locator('.network-targets [data-library-gene="IL6"]').evaluate(e=>e===document.activeElement),true);
+  assert.equal(await page.locator('[data-network-target="IL6"]').evaluate(e=>e===document.activeElement),true);
   await page.keyboard.press('Escape');assert.equal(await page.locator('[data-network]').evaluate(e=>e===document.activeElement),true);
   await page.locator('#about-close').click();await page.waitForFunction(()=>!document.querySelector('#launch').disabled);await page.locator('#launch').click();
   await page.waitForFunction(()=>{const v=document.querySelector('#film');return !v.paused&&v.currentTime>.2;},null,{timeout:60000});
   const initialURL=page.url();
   await page.evaluate(()=>{window.__media=document.querySelector('#film');window.__mediaTime=__media.currentTime;window.__mediaEvents=[];for(const event of ['pause','emptied','loadstart'])__media.addEventListener(event,()=>__mediaEvents.push(event));});
+  await page.locator('#experience .brand[data-about]').click();
+  await page.locator('[data-network]').click();
+  assert.equal(await page.locator('.network-overlay').evaluate(e=>e.parentElement===document.fullscreenElement),true);
+  await page.locator('[data-network-target="OXTR"]').click();await frame.locator('#target').waitFor();assert.equal(await frame.locator('#target').inputValue(),'OXTR');
+  await page.locator('.library-overlay [aria-label="Close research library"]').click();
+  await page.locator('.network-overlay [aria-label="Close candidate network"]').click();await page.locator('#about-close').click();
+  assert.equal(page.url(),initialURL);
   for(const domain of ['sound','vision','language']){
    await page.locator('#atlas-toggle').click();await page.locator(`#atlas-menu [data-area="${domain}"]`).click();await page.locator(`#area-${domain}`).waitFor();const areaURL=page.url();
    await page.locator(`#area-${domain} [data-library="${domain}"]`).click();await frame.locator('.research-card').first().waitFor();
@@ -104,7 +111,7 @@ try{
   const media=await page.evaluate(()=>({same:__media===document.querySelector('#film'),advanced:__media.currentTime>__mediaTime,paused:__media.paused,events:__mediaEvents}));
   assert.deepEqual(media,{same:true,advanced:true,paused:false,events:[]});assert.deepEqual(await page.evaluate(()=>__fullscreenCalls),{enter:1,exit:0});
   assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),true);assert.deepEqual(errors,[]);
-  results.push({viewport,searchAndFilters:true,threeCollections:true,sourceReaderPages:236,recordPermalink:true,jsonExport:true,focusRestored:true,networkTargets:13,activeExperiencePreserved:true,media,nativeFullscreen:false,errors});
+  results.push({viewport,searchAndFilters:true,threeCollections:true,sourceReaderPages:236,recordPermalink:true,jsonExport:true,focusRestored:true,networkTargets:14,activeExperiencePreserved:true,networkInActiveExperience:true,media,nativeFullscreen:false,errors});
   await page.evaluate(()=>document.querySelectorAll('video,audio').forEach(m=>m.pause()));
   if(viewport.width===1470){
    let attempts=0;const fail=/\/library-data\/library\.json\?v=1$/;
