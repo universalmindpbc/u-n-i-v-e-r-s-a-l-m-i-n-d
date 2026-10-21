@@ -17,3 +17,5 @@ All seven publications are already present in the research library. This additio
 The internal single-participant prototype observation is not used as a clinical anchor in this assessment. No existing paper or chapter was removed. Anxiety/PTSD remain the initial clinical focus; other research missions are welcome.
 
 The B grade is scoped to the wider clinical/physiological evidence. Existing gene-expression findings and future OXTR investigations are discussed separately without a new letter grade. The medical crosses remain the existing study-design shorthand.
+
+Ben confirmed the public B label as “Positive systematic evidence” on 22 October 2026. The expanded guide retains the agreed A/B/C definitions and “Grades describe the research basis, not a medical recommendation.” The earlier shorthand has been removed.
