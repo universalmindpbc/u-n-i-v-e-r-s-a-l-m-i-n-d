@@ -119,6 +119,12 @@ function transport(){
  return{pause,restart,refresh:update};
 }
 const soundTransport=transport();
+const visionMotion=$('#vision-motion'),visionArea=$('#area-vision'),visionReduced=matchMedia('(prefers-reduced-motion: reduce)');
+function setVisionMotion(playing){visionArea.dataset.motion=playing?'playing':'paused';visionMotion.setAttribute('aria-pressed',String(!playing));visionMotion.textContent=playing?'Pause comparison':'Play comparison';}
+visionMotion.addEventListener('click',()=>setVisionMotion(visionArea.dataset.motion!=='playing'));
+visionReduced.addEventListener('change',()=>setVisionMotion(!visionReduced.matches));
+setVisionMotion(!visionReduced.matches);
+
 function selectSound(view,{focus=false}={}){
  if(!descriptions[view])view='sequence';soundTransport.pause();soundView=view;const info=descriptions[view];
  for(const button of document.querySelectorAll('[data-sound-view]')){const selected=button.dataset.soundView===view;button.setAttribute('aria-selected',String(selected));button.tabIndex=selected?0:-1;if(selected&&focus)button.focus();}

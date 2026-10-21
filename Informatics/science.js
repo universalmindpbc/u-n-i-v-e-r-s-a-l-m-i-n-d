@@ -161,7 +161,7 @@
   const tfbs = document.createElement('dialog');
   tfbs.className = 'science-register science-tfbs';
   tfbs.setAttribute('aria-labelledby', 'tfbs-title');
-  tfbs.innerHTML = '<div class="science-reader-bar"><span>OXTR · TRANSCRIPTIONAL REGULATION</span><button class="science-close" aria-label="Close binding-site catalogue">×</button></div><div class="science-register-body"><h2 id="tfbs-title">OXTR transcription-factor binding-site catalogue</h2><div class="tfbs-content"></div></div>';
+  tfbs.innerHTML = '<div class="science-reader-bar"><div class="science-reader-location"><p class="atlas-page-marker">Transcription Atlas</p><span>OXTR · TRANSCRIPTIONAL REGULATION</span></div><button class="science-close" aria-label="Close binding-site catalogue">×</button></div><div class="science-register-body"><h2 id="tfbs-title">OXTR transcription-factor binding-site catalogue</h2><div class="tfbs-content"></div></div>';
   document.body.append(tfbs);
   const external = (href, label) => `<a href="${esc(href)}" target="_blank" rel="noopener noreferrer">${esc(label)} ↗</a>`;
   const tfbsLearning = document.createElement('dialog');

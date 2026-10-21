@@ -73,7 +73,7 @@
 .page-hidden .vision-art path,.page-hidden .vision-art circle{animation-play-state:paused}
 @media(max-width:900px){.vision-layout{grid-template-columns:minmax(0,1fr) 300px;gap:20px}.sound-view-nav{gap:0 18px}.sound-view-nav button{font-size:10px}.atlas-construction{gap:20px;grid-template-columns:minmax(0,1fr) 240px}}
 @media(max-width:720px){#atlas-menu{left:0;right:auto}.atlas-section{padding:22px 5vw}.atlas-section h1{font-size:26px}.atlas-construction,.vision-layout{grid-template-columns:1fr;gap:12px}.atlas-construction svg,.vision-art{height:auto;max-height:none}.atlas-explanation{padding:22px 12px}.sound-view-nav{gap:0 18px}.sound-view-nav button{min-height:44px}.atlas-directory>button{grid-template-columns:22px 1fr 16px;gap:8px 12px}.atlas-directory>button>span:nth-of-type(2){grid-column:2;grid-row:2}.atlas-directory>button>span:last-child{grid-column:3;grid-row:1}.atlas-directory strong{font-size:15px}.vision-research-copy{padding:0 12px}#brand-tagline{font-size:10px;white-space:normal;width:290px}}
-@media(prefers-reduced-motion:reduce){.vision-art .vision-circle,.vision-art .vision-triangle-a,.vision-art .vision-triangle-b,.vision-art .vision-hexagon{animation:none;stroke-dashoffset:0;opacity:1}.vision-art .vision-hexagon{fill-opacity:.09}}
+@media(prefers-reduced-motion:reduce){#area-vision:not([data-motion=playing]) .vision-art .vision-circle,#area-vision:not([data-motion=playing]) .vision-art .vision-triangle-a,#area-vision:not([data-motion=playing]) .vision-art .vision-triangle-b,#area-vision:not([data-motion=playing]) .vision-art .vision-hexagon{animation:none;stroke-dashoffset:0;opacity:1}.vision-art .vision-hexagon{fill-opacity:.09}}
 
 /* One record selector, shared by the original animation and research layouts. */
 #record-navigation{position:relative;flex-shrink:0}
@@ -145,3 +145,20 @@
 
 #area-sound #sound-diagram[data-view=melody]{aspect-ratio:auto}
 #sound-workings a{color:#a7b3bc;text-decoration:none}#sound-workings a:hover{color:#fff;text-decoration:underline}
+
+/* Keep both movement examples together before the longer research discussion. */
+.vision-comparison{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:30px;border-top:1px solid #ffffff18;padding-top:20px}
+.vision-comparison-panel{min-width:0;margin:0}
+.vision-comparison-panel figcaption{font:400 14px/1.5 Arial,Helvetica,sans-serif;letter-spacing:.04em;color:#d6e2e9;min-height:42px}
+.vision-comparison .vision-art{height:clamp(170px,36svh,370px);width:100%}
+.vision-bilateral-dot{animation:vision-bilateral 2.8s ease-in-out infinite}
+@keyframes vision-bilateral{0%,100%{transform:translateX(0)}50%{transform:translateX(480px)}}
+.vision-comparison-controls{display:flex;align-items:center;justify-content:space-between;gap:16px;margin:12px 0 20px}
+.vision-comparison-controls p{margin:0;color:#84939f;font:10px/1.6 Arial,sans-serif}
+.vision-comparison-controls button{padding:10px 14px;min-height:44px;border:1px solid #ffffff26;font:11px Arial,sans-serif;color:#c7d0d7;white-space:nowrap}
+#area-vision[data-motion=paused] .vision-art *{animation-play-state:paused}
+#area-vision .vision-layout{display:block;padding-top:18px}
+#area-vision .vision-research-copy{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:30px;padding:12px 18px}
+#area-vision .vision-research-copy p{margin-bottom:12px}
+@media(max-width:720px){.vision-comparison{gap:16px;padding-top:16px}.vision-comparison-panel figcaption{font-size:12px;min-height:36px}.vision-comparison .vision-art{height:clamp(125px,24svh,210px)}.vision-comparison-controls{gap:10px}.vision-comparison-controls p{font-size:9px;max-width:55%}.vision-comparison-controls button{font-size:10px;padding:8px 10px}#area-vision .vision-research-copy{grid-template-columns:1fr;gap:8px;padding:0 12px}}
+@media(prefers-reduced-motion:reduce){#area-vision:not([data-motion=playing]) .vision-bilateral-dot{animation:none;transform:translateX(240px)}}
