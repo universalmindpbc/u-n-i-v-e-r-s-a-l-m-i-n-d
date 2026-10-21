@@ -4,9 +4,11 @@
   const esc = value => String(value ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
   const safeURL = value => { try { const url = new URL(value, location.href); return ['https:', 'http:'].includes(url.protocol) ? url.href : '#'; } catch { return '#'; } };
   const normalize = value => String(value ?? '').normalize('NFKC').toLowerCase().replace(/interleukin[\s-]*6|il[\s-]+6/g, 'il6').replace(/oxytocin receptor/g, 'oxtr').replace(/serotonin transporter/g, 'slc6a4').replace(/glucocorticoid receptor/g, 'nr3c1').replace(/[^\p{L}\p{N}+]+/gu, ' ').trim();
+  const model = globalThis.UniversalResearchModel;
+  let publicationAccess = {};
   const params = new URLSearchParams(location.search);
   const collections = ['sound', 'vision', 'language', 'all'];
-  const fields = ['query', 'category', 'target', 'kind', 'period', 'trust', 'sort'];
+  const fields = ['query', 'topic', 'journal', 'category', 'physiology', 'target', 'kind', 'period', 'trust', 'sort'];
   let collection = collections.includes(params.get('collection')) ? params.get('collection') : ['target','gene','record','query'].some(key => params.has(key)) ? 'all' : 'sound';
   let view = params.get('view') === 'search' || collection !== 'sound' || ['target','gene','query'].some(key => params.has(key)) ? 'search' : 'chapters';
   let chapterNumber = Number(params.get('chapter')) || 0;
@@ -64,32 +66,46 @@
       ${quotes.filter((q,index) => index !== review?.index).length ? `<blockquote cite="${esc(url)}">${quotes.map((q,index) => index === review?.index ? '' : `<p>${quoteHTML(q)}</p>`).join('')}</blockquote>` : ''}
       ${paper.summary ? `<div class="study-summary"><p class="eyebrow">Study summary</p><p>${esc(paper.summary)}</p>${paper.limitation ? `<p class="summary-limitation">${esc(paper.limitation)}</p>` : ''}</div>` : ''}
 
-      <div class="paper-links"><a href="${esc(url)}" target="_blank" rel="noopener noreferrer">Read publication ↗</a><button class="text-button" data-paper-detail="${esc(paper.id)}">Citation details</button></div>
+      <div class="paper-links"><a href="${esc(url)}" target="_blank" rel="noopener noreferrer">${url.includes('web.archive.org/web/') ? 'Read archived publication' : 'Read publication'} ↗</a><button class="text-button" data-paper-detail="${esc(paper.id)}">Citation details</button></div>
     </article>`;
   }
+  const paperCount = items => `${model.uniqueCount(items).toLocaleString()} papers`;
+  function renderStatistics() {
+    const stats = model.statistics(records,collection);
+    $('#collection-statistics').hidden = false;
+    $('#collection-statistics').innerHTML = `<dl><div><dt>Papers &amp; references</dt><dd data-stat="papers">${stats.papers.toLocaleString()}</dd></div><div><dt>Journals</dt><dd data-stat="journals">${stats.journals.toLocaleString()}</dd></div><div><dt>Recorded citations</dt><dd data-stat="citations">${stats.citations.toLocaleString()}</dd></div></dl><p>Each publication and identified journal is counted once. Citation counts are available for ${stats.citationCoverage.toLocaleString()} of ${stats.papers.toLocaleString()} publications; these are historical counts, not live totals.</p>`;
+  }
+  function populateFilters() {
+    const relevant = records.filter(r => collection === 'all' || r.collections.includes(collection));
+    for (const [id,label,values] of [
+      ['journal','All journals',relevant.filter(r=>r.journalKey).map(r=>[r.journalKey,r.journalLabel || r.journal])],
+      ['topic','All topics',relevant.flatMap(r=>r.topics.filter(t=>collection==='all'||t.collection===collection).map(t=>[t.key,t.title]))]
+    ]) {
+      const selected = $('#'+id).value || (loading ? params.get(id) : '') || '';
+      const options = [...new Map(values).entries()].sort((a,b)=>a[1].localeCompare(b[1]));
+      $('#'+id).innerHTML = `<option value="">${label}</option>`+options.map(([value,title])=>`<option value="${esc(value)}">${esc(title)}</option>`).join('');
+      $('#'+id).value = options.some(([value])=>value===selected) ? selected : '';
+    }
+  }
   function renderContents() {
-    return `<div class="edition-intro"><p class="eyebrow">SOUND RESEARCH</p><h2>Contents</h2></div><div class="contents-grid">${edition.chapters.map(chapter => `<section class="contents-chapter"><h3><span class="chapter-number">${String(chapter.number).padStart(2,'0')}</span><a data-chapter="${chapter.number}" href="${esc(route(chapter.number))}">${esc(chapter.title)}</a></h3><ol>${chapter.topics.map(topic => `<li><a data-chapter="${chapter.number}" data-topic="${topic.id}" href="${esc(route(chapter.number,topic.id))}">${esc(topic.title)}</a>${crosses(topic.trustScore)}</li>`).join('')}</ol></section>`).join('')}</div>`;
+    return `<div class="edition-intro"><p class="eyebrow">SOUND RESEARCH</p><h2>Contents</h2></div><div class="contents-grid">${edition.chapters.map(chapter => `<section class="contents-chapter"><h3><span class="chapter-number">${String(chapter.number).padStart(2,'0')}</span><a data-chapter="${chapter.number}" href="${esc(route(chapter.number))}">${esc(chapter.title)}</a></h3><p class="paper-count">${paperCount(chapter.topics.flatMap(t=>t.papers))}</p><ol>${chapter.topics.map(topic => `<li><a data-chapter="${chapter.number}" data-topic="${topic.id}" href="${esc(route(chapter.number,topic.id))}">${esc(topic.title)}<span class="paper-count">${paperCount(topic.papers)}</span></a>${crosses(topic.trustScore)}</li>`).join('')}</ol></section>`).join('')}</div>`;
   }
   function renderChapter() {
     const chapter = edition.chapters.find(c => c.number === chapterNumber);
     if (!chapter) { chapterNumber = 0; return renderContents(); }
-    const rail = `<aside class="contents-rail" aria-label="Sound contents"><a class="contents-home" data-chapter="0" href="${esc(route())}">← Sound contents</a><ol>${edition.chapters.map(c => `<li><a data-chapter="${c.number}" href="${esc(route(c.number))}" ${c.number === chapterNumber ? 'aria-current="page"' : ''}>${String(c.number).padStart(2,'0')} &nbsp; ${esc(c.title)}</a>${c.number === chapterNumber ? `<ol>${c.topics.map(t => `<li><a data-chapter="${c.number}" data-topic="${t.id}" href="${esc(route(c.number,t.id))}">${esc(t.title)}</a></li>`).join('')}</ol>` : ''}</li>`).join('')}</ol></aside>`;
+    const rail = `<aside class="contents-rail" aria-label="Sound contents"><a class="contents-home" data-chapter="0" href="${esc(route())}">← Sound contents</a><ol>${edition.chapters.map(c => `<li><a data-chapter="${c.number}" href="${esc(route(c.number))}" ${c.number === chapterNumber ? 'aria-current="page"' : ''}>${String(c.number).padStart(2,'0')} &nbsp; ${esc(c.title)}<span class="paper-count">${paperCount(c.topics.flatMap(t=>t.papers))}</span></a>${c.number === chapterNumber ? `<ol>${c.topics.map(t => `<li><a data-chapter="${c.number}" data-topic="${t.id}" href="${esc(route(c.number,t.id))}">${esc(t.title)}</a></li>`).join('')}</ol>` : ''}</li>`).join('')}</ol></aside>`;
     const chapterIndex = edition.chapters.indexOf(chapter);
     const previous = edition.chapters[chapterIndex - 1];
     const next = edition.chapters[chapterIndex + 1];
-    return `<div class="narrative-layout">${rail}<div class="chapter-reader"><div class="chapter-opening"><p class="eyebrow">SOUND · CHAPTER ${String(chapter.number).padStart(2,'0')}</p><h2>${esc(chapter.title)}</h2></div>${chapter.topics.map(topic => `<section class="topic" id="topic-${topic.id}"><div class="topic-heading"><h3>${esc(topic.title)}</h3>${crosses(topic.trustScore,true)}</div>${topic.papers.map(p => paperMarkup(p)).join('')}</section>`).join('')}<nav class="chapter-pagination" aria-label="Read another chapter">${previous ? `<a data-chapter="${previous.number}" href="${esc(route(previous.number))}">← ${esc(previous.title)}</a>` : `<a data-chapter="0" href="${esc(route())}">← Contents</a>`}${next ? `<a data-chapter="${next.number}" href="${esc(route(next.number))}">${esc(next.title)} →</a>` : `<a data-chapter="0" href="${esc(route())}">Back to contents ↑</a>`}</nav></div></div>`;
-  }
-  function matchesKind(record, kind) {
-    const text = normalize([record.title,record.design,record.kind].join(' '));
-    return !kind || kind === 'trial' && /randomi[sz]ed/.test(text) || kind === 'review' && /review|meta analysis|synthesis/.test(text) || kind === 'animal' && /mouse|mice|rat |rats|cell|in vitro|animal|fibroblast|rhesus/.test(text);
+    return `<div class="narrative-layout">${rail}<div class="chapter-reader"><div class="chapter-opening"><p class="eyebrow">SOUND · CHAPTER ${String(chapter.number).padStart(2,'0')}</p><h2>${esc(chapter.title)}</h2><p class="paper-count">${paperCount(chapter.topics.flatMap(t=>t.papers))}</p></div>${chapter.topics.map(topic => `<section class="topic" id="topic-${topic.id}"><div class="topic-heading"><h3>${esc(topic.title)}</h3>${crosses(topic.trustScore,true)}</div><p class="paper-count">${paperCount(topic.papers)}</p>${topic.papers.map(p => paperMarkup(p)).join('')}</section>`).join('')}<nav class="chapter-pagination" aria-label="Read another chapter">${previous ? `<a data-chapter="${previous.number}" href="${esc(route(previous.number))}">← ${esc(previous.title)}</a>` : `<a data-chapter="0" href="${esc(route())}">← Contents</a>`}${next ? `<a data-chapter="${next.number}" href="${esc(route(next.number))}">${esc(next.title)} →</a>` : `<a data-chapter="0" href="${esc(route())}">Back to contents ↑</a>`}</nav></div></div>`;
   }
   function filter() {
     const q = normalize($('#query').value).split(' ').filter(Boolean);
-    const category = $('#category').value, target = $('#target').value, kind = $('#kind').value, period = $('#period').value, trust = Number($('#trust').value);
-    filtered = records.filter(r => (collection === 'all' || r.collections.includes(collection)) && (!category || r.categories.includes(category)) && (!target || r.targets.includes(target)) && matchesKind(r,kind) && (!period || period === 'recent' && r.year >= 2022 && r.year <= 2026 || period === 'older' && r.year && r.year < 2022) && (!trust || r.topicScores.includes(trust)) && q.every(word => r._search.includes(word)));
+    const topic = $('#topic').value, journal = $('#journal').value, physiology = $('#physiology').value, category = $('#category').value, target = $('#target').value, kind = $('#kind').value, period = $('#period').value, trust = Number($('#trust').value);
+    filtered = records.filter(r => (collection === 'all' || r.collections.includes(collection)) && (!topic || r.topics.some(t=>t.key===topic)) && (!journal || r.journalKey===journal) && (!physiology || r.categories.includes(physiology)) && (!category || r.categories.includes(category)) && (!target || r.targets.includes(target)) && model.matchesStudy(r,kind) && (!period || period === 'recent' && r.year >= 2022 && r.year <= 2026 || period === 'older' && r.year && r.year < 2022) && (!trust || r.topicScores.includes(trust)) && q.every(word => r._search.includes(word)));
     const sort = $('#sort').value;
     filtered.sort((a,b) => sort === 'title' ? a.title.localeCompare(b.title) : sort === 'newest' ? (b.year || 0)-(a.year || 0) : a.priority-b.priority || (b.year || 0)-(a.year || 0) || a.title.localeCompare(b.title));
-    $('#active-filter-count').textContent = [category,target,kind,period,trust].filter(Boolean).length ? `· ${[category,target,kind,period,trust].filter(Boolean).length} active` : '';
+    $('#active-filter-count').textContent = [topic,journal,physiology,category,target,kind,period,trust].filter(Boolean).length ? `· ${[topic,journal,physiology,category,target,kind,period,trust].filter(Boolean).length} active` : '';
     renderResults();
   }
   function renderResults() {
@@ -107,6 +123,8 @@
   }
   function render() {
     if (loading) return;
+    renderStatistics();
+    populateFilters();
     const reading = collection === 'sound' && view === 'chapters';
     $('#view-options').hidden = collection !== 'sound';
     document.querySelectorAll('[data-collection]').forEach(b => b.setAttribute('aria-pressed',String(b.dataset.collection === collection)));
@@ -146,17 +164,20 @@
   function buildRecords(data) {
     const aliasToId = new Map();
     for (const paper of papers) for (const alias of paper.aliases || []) aliasToId.set(alias,paper.recordId);
-    return data.records.filter(r => !aliasToId.has(r.id)).map(r => {
+    return model.deduplicate(data.records.filter(r => !aliasToId.has(r.id)).map(r => {
       const soundEntries = papers.filter(p => p.recordId === r.id);
       const otherEntries = (r.archiveEntries || []).filter(a => a.collection !== 'sound');
       const collections = r.collections.filter(c => c !== 'sound' || soundEntries.length || ['update','portal'].includes(r.origin));
       if (!collections.length) return null;
       const first = soundEntries[0];
+      const access = publicationAccess[r.id] || {};
+      const citationsByCollection = Object.fromEntries(collections.map(c=>[c,model.maximumCount(c==='sound' ? soundEntries.map(p=>p.citationCount) : otherEntries.filter(a=>a.collection===c).map(a=>a.historicalCitationCount))]));
+      const topics = [...soundEntries.map(p=>({key:'sound:'+p.topicId,title:p.topicTitle,collection:'sound'})),...otherEntries.map(a=>({key:a.collection+':'+a.sectionPage,title:a.section.replace(/^.*?\b[ivxlcdm]+\.\s*/i,''),collection:a.collection}))];
       const quotes = first ? first.quotes.filter((q,index) => index !== first.quotationReview?.index).map(quoteText) : otherEntries.flatMap(a => (a.originalNote || '').split('\n\n').filter(Boolean));
-      const result = {id:r.id,aliases:first?.aliases || [],title:first?.title || r.title,journal:first?.journal || r.journal || '',year:first?.year || r.year,authors:first?.authors || r.authors || '',design:first?.design || r.sourceDesign || r.design || '',kind:r.kind,doi:first?.doi || r.doi,pmid:first?.pmid || r.pmid,urls:first?.urls || r.urls,collections,categories:r.categories || [],targets:r.targets || [],priority:r.priority ?? 1,quotes,summary:first?.summary || r.finding || r.portalNotes?.[0]?.finding || '',limitation:first?.limitation || r.limitation || r.portalNotes?.[0]?.limitation || '',citationCount:first?.citationCount ?? null,topicScores:[...new Set([...soundEntries.map(p=>p.trustScore),...otherEntries.map(a=>a.sectionGrade)].filter(Boolean))],soundEntries};
+      const result = {id:r.id,publicationKey:access.publicationKey,aliases:first?.aliases || [],title:first?.title || r.title,journal:first?.journal || r.journal || '',year:first?.year || r.year,authors:first?.authors || r.authors || '',design:first?.design || r.sourceDesign || r.design || '',kind:r.kind,doi:access.doi || first?.doi || r.doi,pmid:access.pmid || first?.pmid || r.pmid,urls:access.urls || first?.urls || r.urls,collections,categories:r.categories || [],targets:r.targets || [],priority:r.priority ?? 1,quotes,summary:first?.summary || r.finding || r.portalNotes?.[0]?.finding || '',limitation:first?.limitation || r.limitation || r.portalNotes?.[0]?.limitation || '',citationCount:model.maximumCount(Object.values(citationsByCollection)),citationsByCollection,topics,journalKey:access.journalKey || '',journalLabel:access.journalLabel || '',topicScores:[...new Set([...soundEntries.map(p=>p.trustScore),...otherEntries.map(a=>a.sectionGrade)].filter(Boolean))],soundEntries};
       result._search = normalize([result.title,result.journal,result.authors,result.design,result.doi,result.pmid,...result.quotes,result.summary,result.limitation,...result.targets,...result.categories,...soundEntries.map(p=>p.topicTitle+' '+p.quotes.map(quoteText).join(' ')),...otherEntries.map(a=>a.originalNote)].join(' '));
       return result;
-    }).filter(Boolean);
+    }).filter(Boolean));
   }
   function search() { if (loading) return; view = 'search'; pageIndex = 0; syncURL(); render(); }
   function reset() { for (const key of fields) $('#'+key).value = key === 'sort' ? 'genomics' : ''; search(); }
@@ -165,7 +186,7 @@
     if (chapter) { if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return; event.preventDefault(); if ($('#article').open) closePaper(); goChapter(Number(chapter.dataset.chapter),chapter.dataset.topic || ''); return; }
     const button = event.target.closest('button');
     if (!button) return;
-    if (button.dataset.collection) { collection = button.dataset.collection; view = collection === 'sound' && !$('#query').value ? 'chapters' : 'search'; chapterNumber = 0; pageIndex = 0; syncURL(true); render(); }
+    if (button.dataset.collection) { $('#topic').value = ''; $('#journal').value = ''; collection = button.dataset.collection; view = collection === 'sound' && !$('#query').value ? 'chapters' : 'search'; chapterNumber = 0; pageIndex = 0; syncURL(true); render(); }
     if (button.dataset.view) { if (button.dataset.view === 'chapters') goChapter(chapterNumber); else search(); }
     if (button.dataset.record) openRecord(button.dataset.record,button);
     if (button.dataset.paperDetail) { const paper = papers.find(p => p.id === button.dataset.paperDetail); if (paper) showPaper(paper,button); }
@@ -207,6 +228,7 @@
     collection = collections.includes(p.get('collection')) ? p.get('collection') : 'sound';
     view = p.get('view') === 'search' || collection !== 'sound' ? 'search' : 'chapters';
     chapterNumber = Number(p.get('chapter')) || 0;
+    populateFilters();
     for (const key of fields) $('#'+key).value = p.get(key) || (key === 'sort' ? 'genomics' : '');
     render();
     if (location.hash) document.getElementById(location.hash.slice(1))?.scrollIntoView();
@@ -214,13 +236,21 @@
   async function load() {
     $('#load-error').hidden = true;
     try {
-      const responses = await Promise.all([fetch('library-data/sound-edition.json?v=2'),fetch('library-data/library.json?v=1')]);
+      const responses = await Promise.all([fetch('library-data/sound-edition.json?v=2'),fetch('library-data/library.json?v=1'),fetch('library-data/publication-access.json?v=1')]);
       if (responses.some(response => !response.ok)) throw new Error('Research unavailable');
-      const [sound,data] = await Promise.all(responses.map(response=>response.json()));
+      const [sound,data,access] = await Promise.all(responses.map(response=>response.json()));
       if (!Array.isArray(sound.chapters) || !Array.isArray(data.records)) throw new Error('Invalid research data');
+      publicationAccess = access.records;
       edition = sound;
+      for (const chapter of edition.chapters) for (const topic of chapter.topics) for (const paper of topic.papers) {
+        const resolved = publicationAccess[paper.recordId];
+        if (resolved?.urls) paper.urls = resolved.urls;
+        if (resolved?.doi) paper.doi = resolved.doi;
+        if (resolved?.pmid) paper.pmid = resolved.pmid;
+        if (resolved?.publicationKey) paper.publicationKey = resolved.publicationKey;
+      }
       papers = edition.chapters.flatMap(chapter=>chapter.topics.flatMap(topic=>topic.papers.map(p=>({...p,chapterNumber:chapter.number,topicId:topic.id,topicTitle:topic.title,trustScore:topic.trustScore}))));
-      records = buildRecords(data); loading = false; render();
+      records = buildRecords(data); populateFilters(); loading = false; render();
       if (location.hash) document.getElementById(location.hash.slice(1))?.scrollIntoView();
       if (params.get('paper') && papers.some(p=>p.id===params.get('paper'))) showPaper(papers.find(p=>p.id===params.get('paper')));
       else if (params.get('record')) openRecord(params.get('record'));

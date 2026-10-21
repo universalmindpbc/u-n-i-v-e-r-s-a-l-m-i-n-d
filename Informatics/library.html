@@ -4,7 +4,7 @@
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="robots" content="noindex,nofollow"><meta name="description" content="A collected library for exploring how sound, vision and language modulate gene expression.">
 <title>Universal Research · Universal Informatics</title>
-<link rel="icon" href="/vogue/iam/favicon.png"><script src="library-theme.js?v=1"></script><link rel="stylesheet" href="library.css?v=6"><script defer src="global-navigation.js?v=1"></script><script defer src="library-navigation.js?v=1"></script><script defer src="library.js?v=3"></script>
+<link rel="icon" href="/vogue/iam/favicon.png"><script src="library-theme.js?v=1"></script><link rel="stylesheet" href="library.css?v=7"><script defer src="global-navigation.js?v=1"></script><script defer src="library-navigation.js?v=1"></script><script defer src="library-model.js?v=1"></script><script defer src="library.js?v=4"></script>
 </head>
 <body>
 <div class="library-ambience" aria-hidden="true"><video id="library-film" muted playsinline loop preload="none" tabindex="-1" data-src="https://rmu.universalmind.tv/rihanna-global-citizen-loop.mp4"></video></div>
@@ -18,22 +18,26 @@
 <div class="reading-toolbar"><span>Reading background</span><div data-reading-controls></div></div>
 <div class="library-intro"><h1>Universal Research</h1><p class="intro-copy">A collected library for exploring how sound, vision and language modulate gene expression.</p></div>
 <section class="research-guide" aria-label="Reading guide and trust scores">
-<div><h2>How to navigate</h2><p>Choose a chapter or subchapter from the contents, or search by title, quotation or gene. Select an article title to open the publication.</p></div>
+<div><h2>How to navigate</h2><p>Choose a chapter or subchapter from the contents, or search papers by topic, gene, journal, physiology or study design. Select an article title to open the publication.</p></div>
 <div><h2>Trust scores</h2><div id="trust-key" class="trust-key"></div><p class="trust-key-note">Scores appear beside subchapters. Individual study designs are listed with the papers.</p></div>
 </section>
 <nav class="collection-nav" aria-label="Research collections"><button data-collection="sound" aria-pressed="true">Sound</button><button data-collection="vision" aria-pressed="false">Vision</button><button data-collection="language" aria-pressed="false">Language</button><button data-collection="all" aria-pressed="false">All research</button></nav>
-<div class="reader-tools"><div id="view-options" role="group" aria-label="Sound research view"><button data-view="chapters" aria-pressed="true">Read chapters</button><button data-view="search" aria-pressed="false">Search papers</button></div><form id="search-form" role="search"><label class="sr-only" for="query">Search research</label><input id="query" type="search" placeholder="Search titles, quotations or genes…" autocomplete="off"><button type="submit" aria-label="Search research">Search</button></form></div>
+<section id="collection-statistics" class="collection-statistics" aria-label="Collection totals" aria-live="polite" hidden></section>
+<div class="reader-tools"><div id="view-options" role="group" aria-label="Sound research view"><button data-view="chapters" aria-pressed="true">Read chapters</button><button data-view="search" aria-pressed="false">Search papers</button></div><form id="search-form" role="search"><label class="sr-only" for="query">Search research</label><input id="query" type="search" placeholder="Search papers…" autocomplete="off"><button type="submit" aria-label="Search research">Search</button></form></div>
 <div id="load-error" role="alert" hidden><p>The research did not load.</p><button id="retry">Try again</button></div>
 <div id="reading-content" tabindex="-1"><p id="loading-status" role="status">Loading Sound research…</p></div>
 <section id="search-view" hidden aria-label="Search papers">
-<details class="search-filters"><summary>Filter papers <span id="active-filter-count"></span></summary><div class="filter-row">
-<label>Research focus<select id="category"><option value="">All research</option><option>Gene expression</option><option>Epigenetics</option><option>Genetics &amp; genomics</option><option>Molecular biomarkers</option><option>Heart rate &amp; autonomic</option><option>Brain &amp; nervous system</option><option>Clinical &amp; self-report</option></select></label>
+<div class="search-filters" role="group" aria-label="Filter papers"><p class="filter-heading">Filter papers <span id="active-filter-count"></span></p><div class="filter-row">
+<label>Topic<select id="topic"><option value="">All topics</option></select></label>
+<label>Journal<select id="journal"><option value="">All journals</option></select></label>
+<label>Research focus<select id="category"><option value="">All research</option><option>Gene expression</option><option>Epigenetics</option><option>Genetics &amp; genomics</option><option>Molecular biomarkers</option></select></label>
+<label>Physiology / outcomes<select id="physiology"><option value="">All outcomes</option><option value="Heart rate &amp; autonomic">Heart-rate variability &amp; autonomic function</option><option value="Brain &amp; nervous system">Brain &amp; central nervous system</option><option value="Clinical &amp; self-report">Clinical outcomes &amp; surveys</option><option value="Molecular biomarkers">Molecular biomarkers</option></select></label>
 <label>Molecular target<select id="target"><option value="">All targets</option></select></label>
-<label>Study design<select id="kind"><option value="">All studies</option><option value="trial">Randomized trials</option><option value="review">Reviews</option><option value="animal">Animal / cell studies</option></select></label>
+<label>Study design<select id="kind"><option value="">All studies</option><option value="trial">All randomized controlled trials</option><option value="double-blind">Double-blind randomized trials</option><option value="single-blind">Single-blind randomized trials</option><option value="review">Reviews</option><option value="animal">Animal / cell studies</option></select></label>
 <label>Publication date<select id="period"><option value="">All years</option><option value="recent">2022–2026</option><option value="older">Before 2022</option></select></label>
 <label>Topic trust score<select id="trust"><option value="">All scores</option><option value="3">3 medical crosses</option><option value="2">2 medical crosses</option><option value="1">1 medical cross</option></select></label>
 <label>Order<select id="sort"><option value="genomics">Genomics first</option><option value="newest">Newest first</option><option value="title">Title A–Z</option></select></label>
-</div><button id="reset" class="text-button">Clear filters</button></details>
+</div><button id="reset" class="text-button">Clear filters</button></div>
 <div class="result-bar"><p id="result-count" role="status"></p><button id="export-json" class="text-button" disabled>Download results ↓</button></div>
 <div id="results"></div><div class="pagination"><button id="previous">← Previous</button><span id="page-status"></span><button id="next">Next →</button></div>
 </section>
