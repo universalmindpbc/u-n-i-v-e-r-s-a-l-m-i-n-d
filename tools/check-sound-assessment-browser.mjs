@@ -40,6 +40,13 @@ try{
    await page.goto(base+'library.html?collection=sound',{waitUntil:'domcontentloaded'});
    await page.locator('.contents-chapter').first().waitFor();
    const panel=page.locator('#sound-assessment-panel'),toggle=panel.locator(':scope > summary');
+   assert.match(await page.locator('.assessment-grade').innerText(),/Positive systematic evidence/);
+   assert.deepEqual(await page.locator('.assessment-method dd').allTextContents(),[
+    'Supported by current clinical guidance and multiple controlled evidence syntheses.',
+    'Positive systematic evidence, with meaningful heterogeneity or a product translation gap.',
+    'Promising or indirect evidence. The proposed delivery itself is not yet established.'
+   ]);
+   assert.match(await page.locator('.assessment-method').textContent(),/Grades describe the research basis, not a medical recommendation\./);
    assert.equal(await panel.evaluate(e=>e.open),false);
    assert.deepEqual(await page.locator('[data-stat]').allTextContents(),['284','145','24,691']);
    assert.equal(await page.locator('.contents-chapter').count(),6);
