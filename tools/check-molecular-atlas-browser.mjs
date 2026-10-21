@@ -1,0 +1,56 @@
+import assert from 'node:assert/strict';import fs from 'node:fs/promises';import path from 'node:path';import {fileURLToPath} from 'node:url';
+import {chromium} from '/Users/benkorbel/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/playwright/index.mjs';
+const root=process.env.ATLAS_ROOT||path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..'),base='https://staging.universalmind.tv/informatics/',live=process.env.ATLAS_LIVE==='1',out=process.env.ATLAS_QA_OUT||'/private/tmp/molecular-atlas-qa';await fs.mkdir(out,{recursive:true});
+const catalogue=JSON.parse(await fs.readFile(root+'/Informatics/molecular/data/catalogue.json','utf8')).records;
+const server=await chromium.launchServer({executablePath:'/Users/benkorbel/Library/Caches/ms-playwright/chromium_headless_shell-1234/chrome-headless-shell-mac-arm64/chrome-headless-shell',headless:true,args:['--mute-audio']});assert.ok(server.process().spawnargs.includes('--mute-audio'));
+const browser=await chromium.connect(server.wsEndpoint()),results=[];
+async function candidate(context){if(live)return;await context.route(/https:\/\/staging\.universalmind\.tv\/(informatics|Informatics)\//,async route=>{const relative=decodeURIComponent(new URL(route.request().url()).pathname.replace(/^\/(informatics|Informatics)\//,''))||'index.html',file=path.resolve(root,'Informatics',relative.endsWith('/')?relative+'index.html':relative);if(!file.startsWith(root+'/Informatics/'))return route.abort();try{await route.fulfill({status:200,body:await fs.readFile(file),contentType:{'.html':'text/html','.js':'text/javascript','.css':'text/css','.json':'application/json','.svg':'image/svg+xml','.png':'image/png','.bcif':'application/octet-stream'}[path.extname(file)]||'application/octet-stream'});}catch{await route.fulfill({status:404,body:'Missing candidate asset'});}});}
+async function pixelProof(page){await page.waitForTimeout(200);const n=await page.evaluate(()=>{const src=document.querySelector('#viewport canvas'),c=document.createElement('canvas');c.width=c.height=100;const ctx=c.getContext('2d');ctx.drawImage(src,0,0,100,100);const a=ctx.getImageData(0,0,100,100).data;let count=0;for(let i=0;i<a.length;i+=4)if(a[i]>70&&a[i+1]>70&&a[i+2]>70)count++;return count;});assert.ok(n>50,'Molecule has visible rendered pixels: '+n);return n;}
+async function idle(page,id){await page.waitForFunction(id=>document.body.dataset.ready==='true'&&document.body.dataset.busy==='false'&&(!id||document.body.dataset.target===id),id,{timeout:60000});await page.evaluate(()=>window.MolecularAtlas.whenIdle());}
+try{
+ for(const viewport of [{width:1470,height:956},{width:1024,height:768},{width:390,height:844},{width:320,height:844}]){
+  const ctx=await browser.newContext({viewport,reducedMotion:'reduce',acceptDownloads:true});await candidate(ctx);
+  const page=await ctx.newPage(),errors=[],failed=[];page.on('pageerror',e=>errors.push(e.message));page.on('response',r=>{if(r.status()>=400&&r.url().includes('/informatics/'))failed.push(r.url()+':'+r.status());});
+  await page.goto(base+'molecular/',{waitUntil:'domcontentloaded'});await idle(page,'OXTR');await pixelProof(page);
+  assert.equal(await page.locator('#target-selector button').count(),8);assert.equal(await page.locator('#target-selector img').evaluateAll(imgs=>imgs.every(i=>i.complete&&i.naturalWidth>0)),true);
+  assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),true);
+  assert.equal(await page.locator('video,audio').count(),0);assert.equal(await page.evaluate(()=>document.fullscreenElement),null);
+  await page.screenshot({path:`${out}/structure-${viewport.width}.png`,fullPage:true});
+  await page.locator('#geometry-kind').selectOption('stellated');await page.evaluate(()=>window.MolecularAtlas.whenIdle());await page.waitForFunction(()=>document.body.dataset.geometry==='stellated');
+  await page.locator('#geometry-toggle').uncheck();await page.evaluate(()=>window.MolecularAtlas.whenIdle());
+  if(viewport.width===1470){
+   const structures=[];
+   for(const r of catalogue){
+    await page.locator(`#target-selector [data-target="${r.id}"]`).click();await idle(page,r.id);
+    assert.equal(await page.locator('#target-title').innerText(),r.id);assert.equal(await page.locator('#pdb-link').getAttribute('href'),r.source);
+    const info=await page.evaluate(()=>({snapshot:window.MolecularAtlas.engine.snapshot(),observed:window.MolecularAtlas.engine.observed(window.MolecularAtlas.record.chains[0]).length}));assert.equal(info.snapshot.pdb,r.pdb);assert.ok(info.observed>0);
+    await page.locator('[data-view="evidence"]').click();assert.match(await page.locator('#detail-content').innerText(),new RegExp(r.pdb));assert.ok(await page.locator('#detail-content .evidence-note').innerText());await page.locator('#close-detail').click();structures.push({target:r.id,pdb:r.pdb,observed:info.observed,visiblePixels:await pixelProof(page)});
+   }
+   await page.locator('#target-selector [data-target="OXTR"]').click();await idle(page,'OXTR');
+   for(const representation of ['molecular-surface','ball-and-stick','cartoon']){await page.locator(`[data-representation="${representation}"]`).click();await page.evaluate(()=>window.MolecularAtlas.whenIdle());assert.equal(await page.evaluate(()=>window.MolecularAtlas.engine.snapshot().representation),representation);}
+   await page.locator('#complex-toggle').check();await page.evaluate(()=>window.MolecularAtlas.whenIdle());await page.locator('#complex-toggle').uncheck();await page.locator('#ligand-toggle').uncheck();await page.locator('#ligand-toggle').check();await page.evaluate(()=>window.MolecularAtlas.whenIdle());
+   const modes=[];
+   for(const mode of ['tetrahedron','cube','octahedron','dodecahedron','icosahedron','stellated','odom','phi']){
+    await page.locator('#geometry-kind').selectOption(mode);await page.evaluate(()=>window.MolecularAtlas.whenIdle());assert.equal(await page.locator('#geometry-badge').isVisible(),true);assert.equal(await page.evaluate(()=>document.body.dataset.geometry),mode);modes.push(mode);
+   }
+   await page.locator('#geometry-kind').selectOption('odom');await page.evaluate(()=>window.MolecularAtlas.whenIdle());await page.locator('#geometry-info').click();assert.match(await page.locator('#detail-content').innerText(),/1\.618033989/);await page.keyboard.press('Escape');
+   await page.locator('#geometry-scale').fill('1.5');await page.locator('#geometry-rotation').fill('45');await page.waitForTimeout(120);await page.evaluate(()=>window.MolecularAtlas.whenIdle());
+   await page.screenshot({path:`${out}/odom-1470.png`});
+   await page.locator('#geometry-kind').selectOption('icosahedron');await page.evaluate(()=>window.MolecularAtlas.whenIdle());
+   const cameraBefore=await page.evaluate(()=>window.MolecularAtlas.engine.snapshot().camera);const canvas=page.locator('#viewport canvas'),box=await canvas.boundingBox();await page.mouse.move(box.x+box.width*.65,box.y+box.height*.5);await page.mouse.down();await page.mouse.move(box.x+box.width*.65+100,box.y+box.height*.5+70,{steps:10});await page.mouse.up();await page.waitForTimeout(400);assert.notDeepEqual(await page.evaluate(()=>window.MolecularAtlas.engine.snapshot().camera.position),cameraBefore.position);assert.equal(await page.evaluate(()=>document.body.dataset.geometry),'icosahedron');
+   await canvas.focus();const keyBefore=await page.evaluate(()=>window.MolecularAtlas.engine.snapshot().camera.position);await page.keyboard.press('ArrowLeft');await page.waitForTimeout(200);assert.notDeepEqual(await page.evaluate(()=>window.MolecularAtlas.engine.snapshot().camera.position),keyBefore);
+   await page.locator('#reset-view').click();await page.waitForTimeout(350);await page.locator('[data-view="sequence"]').click();assert.equal(await page.locator('.residue').count(),359);assert.ok(await page.locator('.residue[data-missing=true]').count()>0);const residue=page.locator('.residue:not(:disabled)').nth(80);await residue.click();await page.waitForTimeout(500);assert.match(await residue.getAttribute('class'),/selected/);await page.screenshot({path:`${out}/sequence-1470.png`});await page.keyboard.press('Escape');assert.equal(await page.locator('#detail-panel').isVisible(),false);
+   const save=page.waitForEvent('download');await page.locator('#save-state').click();const download=await save;const file=out+'/saved-view.json';await download.saveAs(file);const saved=JSON.parse(await fs.readFile(file,'utf8'));assert.equal(saved.target,'OXTR');assert.equal(saved.geometry.kind,'icosahedron');assert.equal(saved.geometry.rotation,45);assert.equal(saved.coordinateSHA256,catalogue[0].sha256);
+   const imageDownload=page.waitForEvent('download');await page.locator('#save-image').click();const image=await imageDownload;await image.saveAs(out+'/download.png');assert.ok((await fs.stat(out+'/download.png')).size>1000);
+   await page.locator('[data-view="collection"]').click();assert.equal(await page.locator('.collection-item').count(),8);await page.screenshot({path:`${out}/collection-1470.png`});await page.locator('#collection-grid [data-target="DOCK2"]').click();await idle(page,'DOCK2');
+   await page.evaluate(()=>{for(const id of ['NMDA','IL6','OXTR'])document.querySelector(`#target-selector [data-target="${id}"]`).click();});await idle(page,'OXTR');assert.equal(await page.evaluate(()=>window.MolecularAtlas.engine.snapshot().pdb),'7QVM');
+   results.push({viewport,structures,representations:3,geometryModes:modes,odomRatio:1.618033989,cameraDrag:true,cameraKeyboard:true,sequenceSelection:true,downloads:true,rapidTargetChanges:true});
+  }else{
+   await page.locator('#target-selector [data-target="NMDA"]').click();await idle(page,'NMDA');assert.equal(await page.locator('#target-name').innerText(),'NMDA receptor');await page.locator('[data-view="evidence"]').click();assert.match(await page.locator('#detail-content').innerText(),/GRIN1 · GRIN2B/);await page.keyboard.press('Escape');assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),true);results.push({viewport,noOverflow:true,targetSwitch:true,evidencePanel:true});
+  }
+  assert.deepEqual(errors,[]);assert.deepEqual(failed,[]);await ctx.close();
+ }
+ const ctx=await browser.newContext({viewport:{width:1470,height:956},reducedMotion:'reduce'});await candidate(ctx);let failOnce=true;
+ await ctx.route(base+'molecular/data/7qvm.bcif',route=>{if(failOnce){failOnce=false;return route.fulfill({status:503,body:'Temporarily unavailable'});}return route.fallback();});const page=await ctx.newPage();await page.goto(base+'molecular/');await page.locator('#retry').waitFor({state:'visible',timeout:60000});assert.match(await page.locator('#structure-status').innerText(),/unavailable/);assert.equal(await page.locator('#viewport').evaluate(e=>getComputedStyle(e).opacity),'0.13');await page.locator('#retry').click();await idle(page,'OXTR');await ctx.close();results.push({failedRequestShowsError:true,retryRecovers:true});
+ await fs.writeFile(out+'/results.json',JSON.stringify({passed:true,live,processMuted:true,nativeFullscreen:false,results},null,2));console.log(JSON.stringify({passed:true,live,results,out},null,2));
+}finally{await browser.close().catch(()=>{});await server.close().catch(()=>{});}
