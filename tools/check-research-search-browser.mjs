@@ -73,6 +73,8 @@ try {
    await page.locator(`.reading-toolbar [data-reading-background="${mode}"]`).click();
    await page.locator('#collection-statistics').scrollIntoViewIfNeeded();
    assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1),true);
+   const tops=await page.locator('[data-stat]').evaluateAll(es=>es.map(e=>e.getBoundingClientRect().top));
+   assert.ok(Math.max(...tops)-Math.min(...tops)<1,'Collection totals align on every screen width');
    await page.screenshot({path:output+`/search-${width}-${mode}.png`,fullPage:false});
   }
   results.push({width,stats,status:'passed'});await ctx.close();
