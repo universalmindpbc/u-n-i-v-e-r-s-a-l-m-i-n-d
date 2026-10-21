@@ -86,3 +86,12 @@
  .network-directory summary{font-size:10px}.network-directory summary span{display:none}.network-directory-groups{grid-template-columns:1fr;gap:14px}
  .network-references>div{grid-template-columns:1fr;gap:10px}
 }
+
+/* Only the research reader follows its selected reading surface. */
+.library-overlay[data-reading-background=white]{color:#192831;background:#fff;border-color:#8496a1}
+.library-overlay[data-reading-background=white] .library-overlay-bar{background:#fff;border-color:#d1dae0}
+.library-overlay[data-reading-background=white] .library-overlay-bar button{color:#192831}
+.library-overlay[data-reading-background=white] iframe{background:#fff}
+.library-overlay[data-reading-background=black],.library-overlay[data-reading-background=black] iframe{background:#000}
+.library-overlay[data-reading-background=black] .library-overlay-bar{background:#000}
+.library-overlay[data-reading-background=video] .library-overlay-bar{background:#080d12}
