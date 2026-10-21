@@ -37,7 +37,7 @@
     }
   ],
   "errors": [],
-  "sourceCommit": "026c5f81",
+  "sourceCommit": "e19204d9",
   "sourceQuotationEntriesChecked": 244,
   "portalSoundEntriesIntegrated": 5,
   "portalDuplicateMerged": "528 Hz music",
@@ -46,5 +46,7 @@
   "narrativeEntries": 248,
   "uniquePublications": 242,
   "visualReview": "Desktop contents, mobile reading and white paper dialog inspected; no clipping, text bleed, import commentary or personal credits.",
-  "productionUnchanged": true
+  "productionUnchanged": true,
+  "integratedBaseline": "4eea6799",
+  "postIntegrationNavigation": "integration-verification.json"
 }

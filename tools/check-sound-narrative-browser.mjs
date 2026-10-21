@@ -6,7 +6,7 @@ import {chromium} from '/Users/benkorbel/.cache/codex-runtimes/codex-primary-run
 const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
 const base='https://staging.universalmind.tv/informatics/';
 const candidate=process.env.CANDIDATE==='1';
-const output=`/private/tmp/sound-narrative-${candidate?'candidate':'staging'}`;
+const output=`/private/tmp/sound-narrative-${process.env.NAV_ONLY==='1'?'integration':candidate?'candidate':'staging'}`;
 await fs.mkdir(output,{recursive:true});
 const server=await chromium.launchServer({executablePath:'/Users/benkorbel/Library/Caches/ms-playwright/chromium_headless_shell-1234/chrome-headless-shell-mac-arm64/chrome-headless-shell',headless:true,args:['--mute-audio']});
 assert.ok(server.process().spawnargs.includes('--mute-audio'));
@@ -30,7 +30,7 @@ async function setMode(page,value,scope='.reading-toolbar'){
 }
 const expectedMenu=['Geometry Atlas','Molecular Atlas','About','Sound','Vision','Language','Universal Research','Partners'];
 try{
- for(const viewport of [{width:1470,height:956},{width:1024,height:768},{width:390,height:844},{width:320,height:844}]){
+ for(const viewport of process.env.NAV_ONLY==='1'?[]:[{width:1470,height:956},{width:1024,height:768},{width:390,height:844},{width:320,height:844}]){
   const ctx=await context({viewport}),page=await ctx.newPage();
   await page.goto(base+'library.html',{waitUntil:'domcontentloaded'});
   await page.locator('.contents-chapter').first().waitFor();
