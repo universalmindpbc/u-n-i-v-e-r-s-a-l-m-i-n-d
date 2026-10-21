@@ -1,42 +1,231 @@
 'use strict';
-(()=>{
-const $=s=>document.querySelector(s),params=new URLSearchParams(location.search),safe=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-const asURL=s=>{try{const u=new URL(s,location.href);return ['https:','http:'].includes(u.protocol)?u.href:'#';}catch{return '#';}};
-const normalize=s=>String(s??'').normalize('NFKC').toLowerCase().replace(/interleukin[\s-]*6|il[\s-]+6/g,'il6').replace(/oxytocin receptor/g,'oxtr').replace(/serotonin transporter/g,'slc6a4').replace(/glucocorticoid receptor/g,'nr3c1').replace(/[^\p{L}\p{N}+]+/gu,' ').trim();
-const molecular=['Gene expression','Epigenetics','Genetics & genomics'];
-const targetNames=['OXTR','OXT','DRD2','SLC6A4','NR3C1','DOCK2','IL6','NMDA','TERRA','NOS3','NAD+','Telomerase','CD38','COL1A1','NOS1','FKBP5','BDNF','CRHR2','TNF','SNCA','FOXP2'];
-const descriptions={all:'One source collection, connected by topics, methods and molecular targets.',sound:'Music, auditory stimulation and collective music-making: molecular evidence first, alongside physiology, brain measures and clinical outcomes.',vision:'Visual and ocular science, light exposure and circadian biology. EMDR is identified separately as a combined psychotherapy and sensory intervention.',language:'Mantra, meditation, communication and talking therapies. Whole-treatment effects are distinguished from the effects of particular words.'};
-const fields=['query','category','target','origin','stars','kind','period','sort'];let library,records=[],filtered=[],collection=['sound','vision','language'].includes(params.get('collection'))?params.get('collection'):'all',pageIndex=0,lastArticleOpener,lastNotebookOpener;const PAGE_SIZE=20,sourceCache={};
-if(params.get('embedded')==='1')document.body.classList.add('embedded');
-$('#target').innerHTML+=[...targetNames].map(t=>`<option value="${safe(t)}">${safe(t==='IL6'?'IL6 / IL-6':t)}</option>`).join('');
-for(const id of fields)if(params.has(id))$('#'+id).value=params.get(id);
-if(params.has('gene'))$('#target').value=params.get('gene');
-function tag(text,cls=''){return `<span class="tag ${cls}">${safe(text)}</span>`;}
-function rating(r){return r.stars?`<span class="star-label" aria-label="${r.stars} article stars">${'★'.repeat(r.stars)}</span>`:'<span class="unrated">Unrated</span>';}
-function snippet(r){const original=r.archiveEntries?.find(x=>x.originalNote)?.originalNote;const portal=r.portalNotes?.[0]?.finding;return {label:r.finding?'Research update':original?'Original curator excerpt':portal?'Portal source note':'Source record',text:r.finding||original||portal||r.sourceDesign||'Open the source record to inspect the original material and publication details.'};}
-function classifyKind(r,kind){const t=[r.kind,r.design,r.sourceDesign,...(r.publicationTypes||[])].join(' ').toLowerCase();return !kind||kind==='trial'&&/randomi[sz]ed/.test(t)||kind==='review'&&/review|synthesis|meta-analysis/.test(t)||kind==='animal'&&/mouse|mice|rat |cell|in vitro|animal|fibroblast|rhesus/.test([r.design,r.measurement,r.title].join(' ').toLowerCase())||kind==='protocol'&&r.kind==='Protocol'||kind==='source'&&/source|bibliography/i.test(r.kind);}
-function syncURL(){const u=new URL(location.href);if(collection==='all')u.searchParams.delete('collection');else u.searchParams.set('collection',collection);for(const id of fields){const value=$('#'+id).value;if(value&&!(id==='sort'&&value==='genomics'))u.searchParams.set(id,value);else u.searchParams.delete(id);}u.searchParams.delete('gene');history.replaceState(null,'',u);}
-function filter(reset=true){if(!library)return;if(reset)pageIndex=0;const q=normalize($('#query').value).split(' ').filter(Boolean),cat=$('#category').value,target=$('#target').value,origin=$('#origin').value,stars=$('#stars').value,kind=$('#kind').value,period=$('#period').value;
-filtered=records.filter(r=>(collection==='all'||r.collections.includes(collection))&&(!cat||r.categories.includes(cat))&&(!target||r.targets.includes(target))&&(!origin||origin==='archive'&&r.archiveEntries?.length||origin==='portal'&&r.portalNotes?.length||origin==='update'&&r.origin==='update'||origin==='identified'&&r.publicationStatus!=='Publication identity pending'||origin==='unverified'&&r.publicationStatus==='Publication identity pending')&&(!stars||stars==='unrated'&&!r.stars||Number(stars)===r.stars)&&classifyKind(r,kind)&&(!period||period==='recent'&&r.year>=2022&&r.year<=2026||period==='older'&&r.year&&r.year<2022||period==='unknown'&&!r.year)&&q.every(word=>r._search.includes(word)));
-const order=$('#sort').value;filtered.sort((a,b)=>order==='title'?a.title.localeCompare(b.title):order==='stars'?(b.stars||0)-(a.stars||0)||(b.year||0)-(a.year||0):order==='newest'?(b.year||0)-(a.year||0):a.priority-b.priority||(a.origin!=='update')-(b.origin!=='update')||(b.year||0)-(a.year||0)||a.title.localeCompare(b.title));
-for(const button of document.querySelectorAll('[data-collection]'))button.setAttribute('aria-pressed',String(button.dataset.collection===collection));$('#collection-context').textContent=descriptions[collection];$('#library-stats').innerHTML=`<strong>${records.filter(r=>collection==='all'||r.collections.includes(collection)).length.toLocaleString()}</strong><span>research records<br>236 source pages · 3 collections</span>`;syncURL();render();}
-function render(){const pages=Math.max(1,Math.ceil(filtered.length/PAGE_SIZE));pageIndex=Math.min(pageIndex,pages-1);const current=filtered.slice(pageIndex*PAGE_SIZE,(pageIndex+1)*PAGE_SIZE);$('#result-count').textContent=`${filtered.length.toLocaleString()} ${filtered.length===1?'record':'records'}${collection!=='all'?' in '+collection[0].toUpperCase()+collection.slice(1):''}`;$('#page-status').textContent=`Page ${pageIndex+1} of ${pages}`;$('#previous').disabled=pageIndex===0;$('#next').disabled=pageIndex>=pages-1;$('#export-json').disabled=!filtered.length;
-$('#results').innerHTML=current.length?current.map(r=>{const s=snippet(r),text=s.text.length>285?s.text.slice(0,282).trim()+'…':s.text;return `<article class="research-card" data-id="${safe(r.id)}"><div class="card-top"><span class="card-origin ${r.origin==='update'?'update':''}">${r.retracted?'RETRACTED':r.origin==='update'?'RESEARCH UPDATE':r.origin==='portal'?'PORTAL CURATION':'CURATED ARCHIVE'} · ${safe(r.year||'YEAR UNRESOLVED')}</span>${rating(r)}</div><h3><button data-record="${safe(r.id)}">${safe(r.title)}</button></h3><p class="citation-line">${safe(r.journal||'Publication details awaiting confirmation')}${r.design?' · '+safe(r.design):''}</p><p class="card-note"><span class="card-note-label">${safe(s.label)}</span>${safe(text)}</p><div class="card-tags">${r.categories.slice(0,3).map(c=>tag(c,molecular.includes(c)?'molecular':'')).join('')}${r.targets.slice(0,4).map(t=>tag(t,'target')).join('')}</div><div class="card-foot"><span>${r.origin==='update'?safe(r.measurement):safe(r.publicationStatus||'Original source; appraisal pending')}</span><button data-record="${safe(r.id)}">Read record ↗</button></div></article>`;}).join(''):'<div class="empty-state"><h2>No matching records yet.</h2><p>Clear a filter or search the source notebook. An empty result is a library coverage gap; it does not establish that a biological relationship is absent.</p><button id="empty-reset">Reset filters</button></div>';}
-function showArticle(id,opener){const r=records.find(x=>x.id===id);if(!r)return;lastArticleOpener=opener||document.activeElement;const title=r.title,entry=r.archiveEntries||[];const definition=[['Collection',r.collections.join(' · ')],['Publication',`${r.journal||'Unresolved'} · ${r.year||'Year unresolved'}`],['Authors',r.authors||'See original source'],['Study design',r.design||r.sourceDesign||r.kind],['Measured outcome',r.measurement||'Not independently appraised'],['Sample / setting',r.sample||'See paper; not independently transcribed'],['Evidence relationship',r.relation||'Source-text discovery tags; direct measurement not established'],['Article stars',`${r.stars?'★'.repeat(r.stars):'Unrated'} · ${r.ratingBasis}`],['Verification',r.verification],['Record ID',r.id]];
-const permalink=new URL('library.html',location.href);permalink.searchParams.set('record',r.id);
-$('#article-body').innerHTML=`<p class="eyebrow">${safe(r.strand||r.kind||'RESEARCH SOURCE')}</p><h2 id="article-title">${safe(title)}</h2>${r.retracted?'<p class="notice">Retracted publication. This record is retained for provenance and is excluded from supporting evidence.</p>':''}${r.identityConflict?'<p class="notice">The original citation link and title disagree. Publication identity remains unresolved; do not use this record as verified evidence.</p>':''}<div class="card-tags">${r.targets.map(t=>`<button class="tag target" data-record-target="${safe(t)}">${safe(t)}</button>`).join('')}</div><dl class="record-grid">${definition.map(([k,v])=>`<dt>${safe(k)}</dt><dd>${safe(v)}</dd>`).join('')}</dl>${r.finding?`<h3>Research finding</h3><p>${safe(r.finding)}</p><h3>Limits of the evidence</h3><p>${safe(r.limitation)}</p>`:''}<p class="source-label">Stars are study-design shorthand. They are separate from risk of bias, replication and certainty.</p>${entry.map((e,i)=>`<section><h3>Original curator material${entry.length>1?' · '+(i+1):''}</h3><p class="source-label">${safe(e.collection.toUpperCase())} · source ${e.pages.length>1?'pages':'page'} ${e.pages.join(', ')} · ${safe(e.section||'')}</p>${e.originalNote?`<p class="source-note">${safe(e.originalNote)}</p>`:'<p>No separate excerpt was supplied for this entry; the original citation text is preserved below.</p>'}${e.sourceDesign?`<p class="source-label">Original design label: ${safe(e.sourceDesign)}${e.designStars?' · Imported design mapping: '+'★'.repeat(e.designStars)+' (unverified)':''}</p>`:''}${e.sectionGrade?`<p class="source-label">Original topic grade: ${e.sectionGrade}/3. This belongs to the topic section, not to this individual article.</p>`:''}${e.historicalCitationCount?`<p class="source-label">Historical ${safe(e.historicalCitationCount)} · retained from the source, not a current count.</p>`:''}<details><summary>Read the complete source entry</summary><div class="record-source-text">${safe(e.sourceText)}</div></details><button class="text-button" data-source-collection="${safe(e.collection)}" data-source-page="${e.pages[0]}">Open original page text ↗</button></section>`).join('')}${(r.portalNotes||[]).map(p=>`<section><h3>Earlier portal curation</h3><p>${safe(p.finding)}</p><p>${safe(p.limitation)}</p><p class="source-label">${safe(p.source)} · source review ${safe(p.sourceReviewedAt)}. Retained separately from the new appraisal.</p></section>`).join('')}<h3>Sources</h3>${r.urls.map((u,i)=>`<a class="record-link" href="${safe(asURL(u))}" target="_blank" rel="noopener noreferrer">${i===0&&r.pmid?'PubMed publication record':i===0&&r.identityConflict?'Original supplied link · identity conflict':u.includes('doi.org')?'Publisher / DOI':'Source link '+(i+1)} ↗ <span>${safe(u)}</span></a>`).join('')}<div class="record-actions"><a href="${safe(permalink.href)}" target="_blank" rel="noopener noreferrer">Permanent record link ↗</a><button id="record-export">Download record · JSON ↓</button></div>`;
-$('#record-export').onclick=()=>download([r],r.id+'.json');if(!$('#article').open)$('#article').showModal();$('#article').scrollTop=0;const u=new URL(location.href);u.searchParams.set('record',r.id);history.replaceState(null,'',u);}
-function download(data,name){const plain=data.map(({_search,...r})=>r);const blob=new Blob([JSON.stringify({schemaVersion:library.schemaVersion,reviewedAt:library.reviewedAt,policy:library.policy,records:plain},null,2)+'\n'],{type:'application/json'}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);}
-async function source(domain){if(!sourceCache[domain]){const response=await fetch(`library-data/${domain}-source.json`);if(!response.ok)throw new Error('Source unavailable');sourceCache[domain]=await response.json();}return sourceCache[domain];}
-async function updateNotebook(desiredPage){const domain=$('#notebook-collection').value;$('#notebook-status').textContent='Loading source pages…';try{const data=await source(domain);if(domain!==$('#notebook-collection').value)return;const q=normalize($('#notebook-query').value),matches=data.pages.filter(p=>normalize(p.text).includes(q));$('#notebook-page').innerHTML=matches.map(p=>`<option value="${p.page}">${p.page}</option>`).join('');if(matches.some(p=>p.page===Number(desiredPage)))$('#notebook-page').value=desiredPage;$('#notebook-status').textContent=`${matches.length} of ${data.pages.length} pages match${q?' the source-text search':''}.`;renderSource();}catch{$('#notebook-status').textContent='Source pages did not load. Change the collection to retry.';$('#notebook-page-body').textContent='';}}
-function renderSource(){const data=sourceCache[$('#notebook-collection').value],p=data?.pages.find(x=>x.page===Number($('#notebook-page').value));$('#notebook-page-body').innerHTML=p?`<h3>Source page ${p.page}</h3>${p.sectionGrade?`<p class="source-label">Original topic evidence grade: ${p.sectionGrade}/3</p>`:''}<div class="notebook-text">${safe(p.text)}</div>${p.figures.map((src,i)=>`<figure class="notebook-figure"><a href="${safe(src)}" target="_blank" rel="noopener noreferrer"><img src="${safe(src)}" alt="Figure ${i+1} preserved from source page ${p.page}" loading="lazy"></a><figcaption>Original source figure · page ${p.page}. Open to inspect at original resolution.</figcaption></figure>`).join('')}<details><summary>Links preserved on this page</summary>${p.links.map((u,i)=>`<a class="record-link" href="${safe(asURL(u))}" target="_blank" rel="noopener noreferrer">${i+1}. ${safe(u)}</a>`).join('')}</details>`:'<p>No source page matches this search.</p>';}
-function openNotebook(domain,page,opener){lastNotebookOpener=opener||document.activeElement;$('#notebook-collection').value=domain;$('#notebook-query').value='';if(!$('#notebook').open)$('#notebook').showModal();updateNotebook(page);}
-function reset(){for(const id of fields)$('#'+id).value=id==='sort'?'genomics':'';filter();}
-document.addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;if(b.dataset.collection){collection=b.dataset.collection;filter();}if(b.dataset.record)showArticle(b.dataset.record,b);if(b.dataset.close)$('#'+b.dataset.close).close();if(b.dataset.category){$('#category').value=b.dataset.category;filter();}if(b.dataset.gene){$('#target').value=b.dataset.gene;filter();}if(b.dataset.recordTarget){$('#target').value=b.dataset.recordTarget;$('#article').close();filter();}if(b.dataset.sourceCollection)openNotebook(b.dataset.sourceCollection,Number(b.dataset.sourcePage),b);if(b.id==='empty-reset')reset();});
-for(const id of fields)$('#'+id).addEventListener(id==='query'?'input':'change',()=>filter());$('#reset').onclick=reset;$('#export-json').onclick=()=>download(filtered,'universal-informatics-research.json');$('#previous').onclick=()=>{pageIndex--;render();$('#results').scrollIntoView({block:'start'});};$('#next').onclick=()=>{pageIndex++;render();$('#results').scrollIntoView({block:'start'});};$('#notebook-open').onclick=e=>openNotebook(collection==='all'?'sound':collection,1,e.currentTarget);$('#notebook-collection').onchange=()=>updateNotebook();$('#notebook-query').oninput=()=>updateNotebook();$('#notebook-page').onchange=renderSource;
-$('#article').addEventListener('close',()=>{const u=new URL(location.href);u.searchParams.delete('record');history.replaceState(null,'',u);if(lastArticleOpener?.isConnected)lastArticleOpener.focus({preventScroll:true});});$('#notebook').addEventListener('close',()=>lastNotebookOpener?.focus({preventScroll:true}));
-for(const d of document.querySelectorAll('dialog'))d.addEventListener('click',e=>{if(e.target===d){const r=d.getBoundingClientRect();if(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom)d.close();}});
-document.addEventListener('keydown',e=>{if(e.key!=='Escape')return;const top=$('#notebook').open?$('#notebook'):$('#article').open?$('#article'):null;if(top){e.preventDefault();top.close();}else if(params.get('embedded')==='1'){e.preventDefault();parent.postMessage({type:'informatics:close-library'},location.origin);}});
-async function load(){ $('#load-error').hidden=true;try{const response=await fetch('library-data/library.json?v=1');if(!response.ok)throw new Error('Library unavailable');library=await response.json();if(!Array.isArray(library.records))throw new Error('Invalid collection');records=library.records;for(const r of records)r._search=normalize([r.title,r.journal,r.authors,r.doi,r.pmid,r.design,r.measurement,r.finding,r.limitation,r.strand,...r.targets,...r.categories,...(r.archiveEntries||[]).map(e=>e.sourceText),...(r.portalNotes||[]).map(p=>p.finding+' '+p.limitation)].join(' '));const p=library.policy;$('#policy-content').innerHTML=`<p>${safe(p.note)}</p><ul><li><strong>★★★</strong> · ${safe(p.articleStars['3'])}</li><li><strong>★★</strong> · ${safe(p.articleStars['2'])}</li><li><strong>★</strong> · ${safe(p.articleStars['1'])}</li><li><strong>Unrated</strong> · ${safe(p.articleStars.unrated)}</li></ul><p><strong>Original topic grades:</strong> the PDFs use section-wide grades based on several studies. Their two-mark grade denotes a group of randomized trials; it is separate from the new two-star single-blind article shorthand. Original labels and their provenance remain visible in each record.</p><p>${safe(p.targetPolicy)} ${safe(p.searchScope)}</p><p>${safe(p.sources)}</p><p>Genomics-first ordering prioritises subject relevance, not evidence certainty. A protocol is a planned study; an animal experiment is not human clinical evidence. Physiological and reported outcomes remain included.</p>`;filter();if(params.get('record')){if(records.some(r=>r.id===params.get('record')))showArticle(params.get('record'));else $('#result-count').textContent+=' · Requested record was not found.';}}catch{$('#load-error').hidden=false;$('#result-count').textContent='Collection unavailable';$('#library-stats').textContent='Research data unavailable';}}
-$('#retry').onclick=load;load();
+(() => {
+  const $ = selector => document.querySelector(selector);
+  const esc = value => String(value ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  const safeURL = value => { try { const url = new URL(value, location.href); return ['https:', 'http:'].includes(url.protocol) ? url.href : '#'; } catch { return '#'; } };
+  const normalize = value => String(value ?? '').normalize('NFKC').toLowerCase().replace(/interleukin[\s-]*6|il[\s-]+6/g, 'il6').replace(/oxytocin receptor/g, 'oxtr').replace(/serotonin transporter/g, 'slc6a4').replace(/glucocorticoid receptor/g, 'nr3c1').replace(/[^\p{L}\p{N}+]+/gu, ' ').trim();
+  const params = new URLSearchParams(location.search);
+  const collections = ['sound', 'vision', 'language', 'all'];
+  const fields = ['query', 'category', 'target', 'kind', 'period', 'trust', 'sort'];
+  let collection = collections.includes(params.get('collection')) ? params.get('collection') : ['target','gene','record','query'].some(key => params.has(key)) ? 'all' : 'sound';
+  let view = params.get('view') === 'search' || collection !== 'sound' || ['target','gene','query'].some(key => params.has(key)) ? 'search' : 'chapters';
+  let chapterNumber = Number(params.get('chapter')) || 0;
+  let edition, records = [], filtered = [], papers = [], pageIndex = 0, articleOpener, loading = true;
+  const PAGE_SIZE = 15;
+  if (params.get('embedded') === '1') document.body.classList.add('embedded');
+  const targets = ['OXTR','OXT','DRD2','SLC6A4','NR3C1','DOCK2','IL6','NMDA','TERRA','NOS3','NAD+','Telomerase','CD38','COL1A1','NOS1','FKBP5','BDNF','CRHR2','TNF','SNCA','FOXP2'];
+  $('#target').innerHTML += targets.map(t => `<option>${esc(t)}</option>`).join('');
+  for (const key of fields) if (params.has(key)) $('#'+key).value = params.get(key);
+  if (params.has('gene')) $('#target').value = params.get('gene');
+
+  function crosses(score, labelled = false) {
+    if (!score) return '';
+    const icon = '<svg viewBox="0 0 18 18" aria-hidden="true"><circle cx="9" cy="9" r="8" fill="currentColor"/><path d="M7 3.5h4V7h3.5v4H11v3.5H7V11H3.5V7H7z" fill="#fff"/></svg>';
+    return `<span class="trust-score" role="img" aria-label="Topic trust score: ${score} of 3 medical crosses" title="Trust score for this topic">${labelled ? '<span class="trust-label">Trust score</span>' : ''}${icon.repeat(score)}</span>`;
+  }
+  function route(number = 0, topic = '') {
+    const url = new URL(location.href);
+    for (const key of [...fields, 'record', 'paper', 'gene', 'view', 'chapter']) url.searchParams.delete(key);
+    url.searchParams.set('collection', 'sound');
+    if (number) url.searchParams.set('chapter', number);
+    url.hash = topic ? 'topic-' + topic : '';
+    return url.href;
+  }
+  function syncURL(push = false) {
+    const url = new URL(location.href);
+    url.searchParams.set('collection', collection);
+    url.searchParams.delete('gene');
+    if (view === 'chapters') {
+      url.searchParams.delete('view');
+      if (chapterNumber) url.searchParams.set('chapter', chapterNumber); else url.searchParams.delete('chapter');
+      for (const key of fields) url.searchParams.delete(key);
+    } else {
+      url.searchParams.set('view', 'search'); url.searchParams.delete('chapter'); url.hash = '';
+      for (const key of fields) {
+        const value = $('#'+key).value;
+        if (value && !(key === 'sort' && value === 'genomics')) url.searchParams.set(key, value); else url.searchParams.delete(key);
+      }
+    }
+    history[push ? 'pushState' : 'replaceState'](null, '', url);
+  }
+  const quoteText = quote => quote.map(span => span.text).join('');
+  const quoteHTML = quote => quote.map(span => span.emphasis ? `<strong>${esc(span.text)}</strong>` : esc(span.text)).join('');
+  function paperMarkup(paper, heading = 'h4') {
+    const quotes = paper.quotes || [];
+    const review = paper.quotationReview;
+    const publication = [paper.journal, paper.year].filter(Boolean).join(' · ');
+    const details = [paper.design, paper.citationCount !== null && paper.citationCount !== undefined ? `${paper.citationCount.toLocaleString()} citations` : ''].filter(Boolean).join(' · ');
+    const url = safeURL(paper.urls?.[0] || '#');
+    return `<article class="paper" id="paper-${esc(paper.id)}" data-paper="${esc(paper.recordId)}">
+      <${heading}><a href="${esc(url)}" target="_blank" rel="noopener noreferrer">${esc(paper.title)}</a></${heading}>
+      ${publication ? `<p class="publication">${esc(publication)}</p>` : ''}
+      ${details ? `<p class="study-details">${esc(details)}</p>` : ''}
+      ${quotes.filter((q,index) => index !== review?.index).length ? `<blockquote cite="${esc(url)}">${quotes.map((q,index) => index === review?.index ? '' : `<p>${quoteHTML(q)}</p>`).join('')}</blockquote>` : ''}
+      ${paper.summary ? `<div class="study-summary"><p class="eyebrow">Study summary</p><p>${esc(paper.summary)}</p>${paper.limitation ? `<p class="summary-limitation">${esc(paper.limitation)}</p>` : ''}</div>` : ''}
+
+      <div class="paper-links"><a href="${esc(url)}" target="_blank" rel="noopener noreferrer">Read publication ↗</a><button class="text-button" data-paper-detail="${esc(paper.id)}">Citation details</button></div>
+    </article>`;
+  }
+  function renderContents() {
+    return `<div class="edition-intro"><p class="eyebrow">SOUND RESEARCH</p><h2>Contents</h2><p>6 chapters · 16 topics · selected passages from the research</p></div><div class="contents-grid">${edition.chapters.map(chapter => `<section class="contents-chapter"><h3><span class="chapter-number">${String(chapter.number).padStart(2,'0')}</span><a data-chapter="${chapter.number}" href="${esc(route(chapter.number))}">${esc(chapter.title)}</a></h3><ol>${chapter.topics.map(topic => `<li><a data-chapter="${chapter.number}" data-topic="${topic.id}" href="${esc(route(chapter.number,topic.id))}">${esc(topic.title)}</a>${crosses(topic.trustScore)}</li>`).join('')}</ol></section>`).join('')}</div>`;
+  }
+  function renderChapter() {
+    const chapter = edition.chapters.find(c => c.number === chapterNumber);
+    if (!chapter) { chapterNumber = 0; return renderContents(); }
+    const rail = `<aside class="contents-rail" aria-label="Sound contents"><a class="contents-home" data-chapter="0" href="${esc(route())}">← Sound contents</a><ol>${edition.chapters.map(c => `<li><a data-chapter="${c.number}" href="${esc(route(c.number))}" ${c.number === chapterNumber ? 'aria-current="page"' : ''}>${String(c.number).padStart(2,'0')} &nbsp; ${esc(c.title)}</a>${c.number === chapterNumber ? `<ol>${c.topics.map(t => `<li><a data-chapter="${c.number}" data-topic="${t.id}" href="${esc(route(c.number,t.id))}">${esc(t.title)}</a></li>`).join('')}</ol>` : ''}</li>`).join('')}</ol></aside>`;
+    const previous = edition.chapters.find(c => c.number === chapterNumber - 1);
+    const next = edition.chapters.find(c => c.number === chapterNumber + 1);
+    return `<div class="narrative-layout">${rail}<div class="chapter-reader"><div class="chapter-opening"><p class="eyebrow">SOUND · CHAPTER ${String(chapter.number).padStart(2,'0')}</p><h2>${esc(chapter.title)}</h2></div>${chapter.topics.map(topic => `<section class="topic" id="topic-${topic.id}"><div class="topic-heading"><h3>${esc(topic.title)}</h3>${crosses(topic.trustScore,true)}</div>${topic.papers.map(p => paperMarkup(p)).join('')}</section>`).join('')}<nav class="chapter-pagination" aria-label="Read another chapter">${previous ? `<a data-chapter="${previous.number}" href="${esc(route(previous.number))}">← ${esc(previous.title)}</a>` : `<a data-chapter="0" href="${esc(route())}">← Contents</a>`}${next ? `<a data-chapter="${next.number}" href="${esc(route(next.number))}">${esc(next.title)} →</a>` : `<a data-chapter="0" href="${esc(route())}">Back to contents ↑</a>`}</nav></div></div>`;
+  }
+  function matchesKind(record, kind) {
+    const text = normalize([record.title,record.design,record.kind].join(' '));
+    return !kind || kind === 'trial' && /randomi[sz]ed/.test(text) || kind === 'review' && /review|meta analysis|synthesis/.test(text) || kind === 'animal' && /mouse|mice|rat |rats|cell|in vitro|animal|fibroblast|rhesus/.test(text);
+  }
+  function filter() {
+    const q = normalize($('#query').value).split(' ').filter(Boolean);
+    const category = $('#category').value, target = $('#target').value, kind = $('#kind').value, period = $('#period').value, trust = Number($('#trust').value);
+    filtered = records.filter(r => (collection === 'all' || r.collections.includes(collection)) && (!category || r.categories.includes(category)) && (!target || r.targets.includes(target)) && matchesKind(r,kind) && (!period || period === 'recent' && r.year >= 2022 && r.year <= 2026 || period === 'older' && r.year && r.year < 2022) && (!trust || r.topicScores.includes(trust)) && q.every(word => r._search.includes(word)));
+    const sort = $('#sort').value;
+    filtered.sort((a,b) => sort === 'title' ? a.title.localeCompare(b.title) : sort === 'newest' ? (b.year || 0)-(a.year || 0) : a.priority-b.priority || (b.year || 0)-(a.year || 0) || a.title.localeCompare(b.title));
+    $('#active-filter-count').textContent = [category,target,kind,period,trust].filter(Boolean).length ? `· ${[category,target,kind,period,trust].filter(Boolean).length} active` : '';
+    renderResults();
+  }
+  function renderResults() {
+    const totalPages = Math.max(1, Math.ceil(filtered.length/PAGE_SIZE));
+    pageIndex = Math.min(pageIndex,totalPages-1);
+    $('#result-count').textContent = `${filtered.length.toLocaleString()} ${filtered.length === 1 ? 'paper' : 'papers'}${collection === 'all' ? '' : ' in '+collection[0].toUpperCase()+collection.slice(1)}`;
+    $('#page-status').textContent = `${pageIndex+1} / ${totalPages}`;
+    $('#previous').disabled = pageIndex === 0; $('#next').disabled = pageIndex >= totalPages-1;
+    $('#export-json').disabled = !filtered.length;
+    $('#results').innerHTML = filtered.slice(pageIndex*PAGE_SIZE,(pageIndex+1)*PAGE_SIZE).map(record => {
+      const excerpt = record.quotes[0] || record.summary;
+      const trimmed = excerpt.length > 340 ? excerpt.slice(0,337).trim()+'…' : excerpt;
+      return `<article class="search-paper" data-id="${esc(record.id)}"><h3><button data-record="${esc(record.id)}">${esc(record.title)}</button></h3><p class="publication">${esc([record.journal,record.year,record.design].filter(Boolean).join(' · '))}</p>${trimmed ? record.quotes.length ? `<blockquote>${esc(trimmed)}</blockquote>` : `<p class="finding">${esc(trimmed)}</p>` : ''}${record.soundEntries.length ? `<p class="search-context">Sound · ${esc(record.soundEntries[0].topicTitle)} ${crosses(record.soundEntries[0].trustScore)}</p>` : ''}<div class="search-tags">${record.categories.slice(0,2).map(c=>`<span>${esc(c)}</span>`).join('')}${record.targets.slice(0,5).map(t=>`<span class="gene">${esc(t)}</span>`).join('')}</div><button class="text-button" data-record="${esc(record.id)}">Read paper →</button></article>`;
+    }).join('') || '<div class="empty-state"><h2>No matching papers.</h2><p>Try a different term or clear the filters.</p><button data-reset>Clear filters</button></div>';
+  }
+  function render() {
+    if (loading) return;
+    const reading = collection === 'sound' && view === 'chapters';
+    $('#view-options').hidden = collection !== 'sound';
+    document.querySelectorAll('[data-collection]').forEach(b => b.setAttribute('aria-pressed',String(b.dataset.collection === collection)));
+    document.querySelectorAll('[data-view]').forEach(b => b.setAttribute('aria-pressed',String(b.dataset.view === view)));
+    $('#reading-content').hidden = !reading; $('#search-view').hidden = reading;
+    if (reading) $('#reading-content').innerHTML = chapterNumber ? renderChapter() : renderContents(); else filter();
+  }
+  function goChapter(number, topic = '', push = true) {
+    collection = 'sound'; view = 'chapters'; chapterNumber = number; pageIndex = 0;
+    for (const key of fields) $('#'+key).value = key === 'sort' ? 'genomics' : '';
+    const url = route(number,topic);
+    history[push ? 'pushState' : 'replaceState'](null,'',url);
+    render();
+    requestAnimationFrame(() => {
+      const destination = topic ? document.getElementById('topic-'+topic) : $('#reading-content');
+      destination?.scrollIntoView({block:'start'});
+      if (destination) { destination.tabIndex = -1; destination.focus({preventScroll:true}); }
+    });
+  }
+  function showPaper(paper, opener) {
+    articleOpener = opener || document.activeElement;
+    const topic = papers.find(p => p.id === paper.id);
+    const citations = [paper.authors, paper.doi ? 'DOI: '+paper.doi : '', paper.pmid ? 'PMID: '+paper.pmid : ''].filter(Boolean);
+    $('#article-body').innerHTML = `${topic ? `<p class="article-chapter-link"><a data-chapter="${topic.chapterNumber}" data-topic="${topic.topicId}" href="${esc(route(topic.chapterNumber,topic.topicId))}">Sound · ${esc(topic.topicTitle)} →</a></p>` : ''}${paperMarkup(paper,'h2').replace('<h2>', '<h2 id="article-title">')}<div class="citation-details">${citations.map(line => `<p>${esc(line)}</p>`).join('')}${paper.urls?.slice(1).map(url => `<p><a href="${esc(safeURL(url))}" target="_blank" rel="noopener noreferrer">${esc(url)}</a></p>`).join('') || ''}</div>`;
+    $('#article-body').querySelector('[data-paper-detail]')?.remove();
+    if (!$('#article').open) $('#article').showModal();
+    $('#article').scrollTop = 0;
+    const url = new URL(location.href); url.searchParams.set('record',paper.recordId); url.searchParams.set('paper',paper.id); history.replaceState(null,'',url);
+  }
+  function openRecord(id, opener) {
+    const record = records.find(r => r.id === id || r.aliases.includes(id));
+    if (!record) return;
+    if (record.soundEntries.length && (collection === 'sound' || collection === 'all')) return showPaper(record.soundEntries[0],opener);
+    const paper = {id:record.id,recordId:record.id,title:record.title,journal:record.journal,year:record.year,authors:record.authors,design:record.design,urls:record.urls,quotes:record.quotes.map(text => [{text,emphasis:false}]),summary:record.summary,limitation:record.limitation,citationCount:record.citationCount,sourcePages:[],doi:record.doi,pmid:record.pmid};
+    showPaper(paper,opener);
+  }
+  function buildRecords(data) {
+    const aliasToId = new Map();
+    for (const paper of papers) for (const alias of paper.aliases || []) aliasToId.set(alias,paper.recordId);
+    return data.records.filter(r => !aliasToId.has(r.id)).map(r => {
+      const soundEntries = papers.filter(p => p.recordId === r.id);
+      const otherEntries = (r.archiveEntries || []).filter(a => a.collection !== 'sound');
+      const collections = r.collections.filter(c => c !== 'sound' || soundEntries.length || ['update','portal'].includes(r.origin));
+      if (!collections.length) return null;
+      const first = soundEntries[0];
+      const quotes = first ? first.quotes.filter((q,index) => index !== first.quotationReview?.index).map(quoteText) : otherEntries.flatMap(a => (a.originalNote || '').split('\n\n').filter(Boolean));
+      const result = {id:r.id,aliases:first?.aliases || [],title:first?.title || r.title,journal:first?.journal || r.journal || '',year:first?.year || r.year,authors:first?.authors || r.authors || '',design:first?.design || r.sourceDesign || r.design || '',kind:r.kind,doi:first?.doi || r.doi,pmid:first?.pmid || r.pmid,urls:first?.urls || r.urls,collections,categories:r.categories || [],targets:r.targets || [],priority:r.priority ?? 1,quotes,summary:first?.summary || r.finding || r.portalNotes?.[0]?.finding || '',limitation:first?.limitation || r.limitation || r.portalNotes?.[0]?.limitation || '',citationCount:first?.citationCount ?? null,topicScores:[...new Set([...soundEntries.map(p=>p.trustScore),...otherEntries.map(a=>a.sectionGrade)].filter(Boolean))],soundEntries};
+      result._search = normalize([result.title,result.journal,result.authors,result.design,result.doi,result.pmid,...result.quotes,result.summary,result.limitation,...result.targets,...result.categories,...soundEntries.map(p=>p.topicTitle+' '+p.quotes.map(quoteText).join(' ')),...otherEntries.map(a=>a.originalNote)].join(' '));
+      return result;
+    }).filter(Boolean);
+  }
+  function search() { if (loading) return; view = 'search'; pageIndex = 0; syncURL(); render(); }
+  function reset() { for (const key of fields) $('#'+key).value = key === 'sort' ? 'genomics' : ''; search(); }
+  document.addEventListener('click', event => {
+    const chapter = event.target.closest('[data-chapter]');
+    if (chapter) { if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return; event.preventDefault(); if ($('#article').open) closePaper(); goChapter(Number(chapter.dataset.chapter),chapter.dataset.topic || ''); return; }
+    const button = event.target.closest('button');
+    if (!button) return;
+    if (button.dataset.collection) { collection = button.dataset.collection; view = collection === 'sound' && !$('#query').value ? 'chapters' : 'search'; chapterNumber = 0; pageIndex = 0; syncURL(true); render(); }
+    if (button.dataset.view) { if (button.dataset.view === 'chapters') goChapter(chapterNumber); else search(); }
+    if (button.dataset.record) openRecord(button.dataset.record,button);
+    if (button.dataset.paperDetail) { const paper = papers.find(p => p.id === button.dataset.paperDetail); if (paper) showPaper(paper,button); }
+    if (button.dataset.close) closePaper();
+    if (button.hasAttribute('data-reset')) reset();
+  });
+  $('#search-form').onsubmit = event => { event.preventDefault(); search(); };
+  let searchTimer;
+  $('#query').oninput = () => { clearTimeout(searchTimer); searchTimer = setTimeout(search,180); };
+  for (const key of fields.filter(key=>key!=='query')) $('#'+key).onchange = search;
+  $('#reset').onclick = reset;
+  $('#previous').onclick = () => { pageIndex--; renderResults(); $('#results').scrollIntoView(); };
+  $('#next').onclick = () => { pageIndex++; renderResults(); $('#results').scrollIntoView(); };
+  $('#export-json').onclick = () => {
+    const data = filtered.map(({_search,soundEntries,topicScores,...record}) => ({...record,topicTrustScores:topicScores,chapterEntries:soundEntries}));
+    const url = URL.createObjectURL(new Blob([JSON.stringify({title:'Universal Research',records:data},null,2)+'\n'],{type:'application/json'}));
+    const link = document.createElement('a'); link.href=url; link.download='universal-research.json'; link.click(); setTimeout(()=>URL.revokeObjectURL(url),1000);
+  };
+  function closePaper() {
+    const url = new URL(location.href); url.searchParams.delete('record'); url.searchParams.delete('paper'); history.replaceState(null,'',url);
+    $('#article').close();
+  }
+  $('#article').addEventListener('close', () => {
+    const url = new URL(location.href); url.searchParams.delete('record'); url.searchParams.delete('paper'); history.replaceState(null,'',url);
+    if (articleOpener?.isConnected) articleOpener.focus({preventScroll:true});
+  });
+  $('#article').addEventListener('click', event => {
+    if (event.target !== $('#article')) return;
+    const rect = $('#article').getBoundingClientRect();
+    if (event.clientX<rect.left || event.clientX>rect.right || event.clientY<rect.top || event.clientY>rect.bottom) closePaper();
+  });
+  document.addEventListener('keydown', event => {
+    if (event.key !== 'Escape' || event.defaultPrevented) return;
+    if ($('#article').open) { event.preventDefault(); closePaper(); }
+    else if (window.parent !== window) { event.preventDefault(); parent.postMessage({type:'informatics:close-library'},location.origin); }
+  });
+  window.addEventListener('popstate', () => {
+    const p = new URLSearchParams(location.search);
+    collection = collections.includes(p.get('collection')) ? p.get('collection') : 'sound';
+    view = p.get('view') === 'search' || collection !== 'sound' ? 'search' : 'chapters';
+    chapterNumber = Number(p.get('chapter')) || 0;
+    for (const key of fields) $('#'+key).value = p.get(key) || (key === 'sort' ? 'genomics' : '');
+    render();
+    if (location.hash) document.getElementById(location.hash.slice(1))?.scrollIntoView();
+  });
+  async function load() {
+    $('#load-error').hidden = true;
+    try {
+      const responses = await Promise.all([fetch('library-data/sound-edition.json?v=1'),fetch('library-data/library.json?v=1')]);
+      if (responses.some(response => !response.ok)) throw new Error('Research unavailable');
+      const [sound,data] = await Promise.all(responses.map(response=>response.json()));
+      if (!Array.isArray(sound.chapters) || !Array.isArray(data.records)) throw new Error('Invalid research data');
+      edition = sound;
+      papers = edition.chapters.flatMap(chapter=>chapter.topics.flatMap(topic=>topic.papers.map(p=>({...p,chapterNumber:chapter.number,topicId:topic.id,topicTitle:topic.title,trustScore:topic.trustScore}))));
+      records = buildRecords(data); loading = false; render();
+      if (location.hash) document.getElementById(location.hash.slice(1))?.scrollIntoView();
+      if (params.get('paper') && papers.some(p=>p.id===params.get('paper'))) showPaper(papers.find(p=>p.id===params.get('paper')));
+      else if (params.get('record')) openRecord(params.get('record'));
+    } catch (error) {
+      $('#load-error').hidden = false; $('#reading-content').innerHTML = ''; $('#search-view').hidden = true;
+    }
+  }
+  $('#retry').onclick = load;
+  load();
 })();

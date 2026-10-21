@@ -88,6 +88,15 @@ document.addEventListener('science:open-atlas',event=>{
  const view=event.detail;if(!['alpha','beta','gamma','epsilon','geometry-summary'].includes(view))return;
  if(!entered)launch.click();chooseRecord(M9,'research',view);
 });
+// Research navigation reuses the active atlas without starting media or fullscreen.
+function navigateFromResearch(name){
+ if(name==='about'){document.querySelector('[data-about]').click();return;}
+ if(!areas.includes(name))return;
+ const aboutDialog=$('#about');if(aboutDialog.open)aboutDialog.close();
+ entered=true;document.body.dataset.entered='true';$('#landing').hidden=true;experience.hidden=false;
+ showArea(name,{focus:true});
+}
+document.addEventListener('atlas:navigate',event=>navigateFromResearch(event.detail));
 function syncSound(){const label=film.muted?'Unmute video':'Mute video';$('#sound').textContent=film.muted?'♪̸':'♫';$('#sound').setAttribute('aria-label',label);$('#sound').title=label;}
 $('#sound').onclick=()=>{if(film.paused){film.muted=false;film.play().catch(()=>{});}else film.muted=!film.muted;syncSound();};
 function fullscreen(){if(!document.fullscreenElement && experience.requestFullscreen)experience.requestFullscreen().catch(()=>{});}
@@ -99,6 +108,7 @@ $('#back').onclick=()=>{closeMenu();document.dispatchEvent(new Event('atlas:clos
 window.addEventListener('pagehide',()=>{film.pause();playing=false;});
 document.addEventListener('visibilitychange',()=>{last=null;if(document.hidden)film.pause();else if(entered)film.play().catch(()=>{});});
 function frame(now){const dt=last===null?0:Math.min(now-last,60);last=now;if(entered&&playing&&!document.hidden){elapsed=Math.min(total-1,elapsed+dt);if(elapsed>=total-1)playing=false;render();}requestAnimationFrame(frame);}render();requestAnimationFrame(frame);
+if(initialParams.get('entry')==='research'&&areas.includes(initialParams.get('area')))navigateFromResearch(initialParams.get('area'));
 })().catch(error=>{console.error(error);document.querySelector('#launch-status').textContent='Unable to load geometry. Please reload.';});
 
 // About opens from the discreet static title.
