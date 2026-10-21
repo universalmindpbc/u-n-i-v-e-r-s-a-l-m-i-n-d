@@ -46,6 +46,14 @@ All three sources use the same fixed window. No bounds are fitted to occupied po
 - ENCODE pools 255 clusters from 133 protein targets, 119 cell types and 444 contributing experiments. Of 72 equal sections, 31 contain region-centre anchors and 41 do not. The union of the clipped intervals spans 14,131 of 39,248 bases (36.004%); centres and interval coverage answer different questions.
 - JASPAR pools 9,164 matches from 872 motif models at score 400 or above. All 72 sections contain at least one match centre. The source intervals overlap; their union spans 27,912 bases (71.117%). A populated section is not continuously occupied DNA, and a predicted match is not measured binding activity.
 
-These descriptive counts do not establish regulatory activity or a relationship with the Atlas. The circular display retains all gaps at the selected bin resolution. The fixed window and original positions remain unchanged when Blend, view or Atlas sequence changes.
+These descriptive counts do not establish regulatory activity or a relationship with the Atlas. The line and circle now draw counts at each exact plotted centre, without combining neighbouring bases. The 72-section counts above remain descriptive audit summaries; they are not the displayed position counts. The fixed window and original positions remain unchanged when Blend, view or Atlas sequence changes.
 
 Source definitions: [JASPAR documentation](https://jaspar.elixir.no/docs/) and [UCSC ENCODE 3 cluster documentation](https://genome.ucsc.edu/cgi-bin/hgTrackUi?db=hg38&g=encRegTfbsClustered). The latter describes clusters combined across factor-specific ChIP-seq experiments and cell types. The audit script is included with the complete Atlas source bundle.
+
+## Position counts — 21 October 2026
+
+The DNA line and full-position circle count observations only when their plotted centre base is identical. The 128 Studies observations occupy 81 distinct centres, with at most six records at one centre. Previously, the 72-section histogram combined 113 observations at 66 centres into one tall bar. That display has been replaced because it obscured the positional differences relevant to this comparison.
+
+The line uses DNA position horizontally and observation count vertically. The circle retains the same angular DNA positions and uses radial mark length for count. Close marks can overlap at the full-window scale. Line zoom exposes the busiest region or 50 bases on either side of a deliberately selected centre. Zoom changes only the visible range; the origin and M9 calculations remain fixed. Selecting a mark retrieves all records at its exact plotted centre. For selections of one or two records, individual diamonds and source intervals remain visible.
+
+These are counts of evidence records at representative centres, not unique confirmed binding sites, binding strength or molecule counts. Original interval extents and study context remain available for every observation. M9 groups these same original centre coordinates by remainder; it does not retain their broad DNA location and has no established predictive value for binding.

@@ -1,5 +1,5 @@
 {
-  "version": "oxtr-display-audit-2026-10-20-v1",
+  "version": "oxtr-display-audit-2026-10-21-v2",
   "reference": {
     "species": "Homo sapiens",
     "assembly": "GRCh38 / hg38",
@@ -20,7 +20,8 @@
     "coordinate_convention": "0-based, end-exclusive"
   },
   "comparison": "Same fixed gene-body-plus-flanks window for all sources; no fitted bounds or rotation.",
-  "bin_definition": "72 equal DNA-coordinate sections counting interval-centre anchors. Zero centres does not establish absence of binding.",
+  "bin_definition": "Historical 72-section summary retained for comparison and zoom range selection; displayed marks no longer aggregate neighbouring bases.",
+  "position_count_definition": "One count per identical anchor_offset_bp. Counts are evidence records, not distinct confirmed binding sites.",
   "coverage_definition": "Union of clipped source intervals, counting overlapping bases once. This is record coverage, not a map of confirmed OXTR regulation.",
   "sources": {
     "studies": {
@@ -32,6 +33,8 @@
       "cell_types": 13,
       "experiments": 0,
       "unique_exact_intervals": 127,
+      "distinct_plotted_centres": 81,
+      "maximum_observations_at_one_centre": 6,
       "bin_counts": [
         0,
         0,
@@ -120,6 +123,8 @@
       "cell_types": 119,
       "experiments": 444,
       "unique_exact_intervals": 253,
+      "distinct_plotted_centres": 236,
+      "maximum_observations_at_one_centre": 3,
       "bin_counts": [
         0,
         5,
@@ -208,6 +213,8 @@
       "cell_types": 0,
       "experiments": 0,
       "unique_exact_intervals": 6719,
+      "distinct_plotted_centres": 5280,
+      "maximum_observations_at_one_centre": 38,
       "bin_counts": [
         115,
         168,

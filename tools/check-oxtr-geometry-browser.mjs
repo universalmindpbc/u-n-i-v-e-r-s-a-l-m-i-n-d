@@ -84,10 +84,13 @@ try{
       discs.forEach(d=>assert.ok(Math.abs(d.radius**2/d.count-scale)<1e-10));
       assert.equal(await geo.locator('.geometry-node-counts small').count(),9);
      }
-     if(view==='circle'){
-      const counts=await geo.locator('.density-bar').evaluateAll(es=>es.map(e=>Number(e.dataset.count)));
+     if(view==='circle'||view==='line'){
+      const positions=await geo.locator('.position-count').evaluateAll(es=>es.map(e=>({offset:Number(e.dataset.geometryPosition),count:Number(e.dataset.count)})));
+      const expected=new Map();for(const r of data[source]){const d=r.mapping.anchor_offset_bp;expected.set(d,(expected.get(d)||0)+1);}
+      assert.deepEqual(positions,[...expected].sort((a,b)=>a[0]-b[0]).map(([offset,count])=>({offset,count})));
+      const counts=positions.map(p=>p.count);
       assert.equal(counts.reduce((a,b)=>a+b,0),data[source].length);
-      assert.equal(counts.length,new Set(data[source].map(r=>Math.floor(r.mapping.full_circle_turns*72))).size);
+      assert.equal(counts.length,new Set(data[source].map(r=>r.mapping.anchor_offset_bp)).size);
       await geo.locator('.geometry-panels').screenshot({path:path.join(out,`${source}-circle-${viewport.width}.png`)});
      }
     }
@@ -116,6 +119,22 @@ try{
    await geo.locator('#geometry-search').fill('CTCF');await expectCount(data.encode.filter(r=>r.factor.includes('CTCF')).length);
    await geo.locator('#geometry-source').selectOption('studies');await expectCount(128);
    await geo.locator('[data-geometry-view="line"]').click();
+   // Close neighbouring centres stay separate; a zoom never changes their coordinates.
+   await geo.locator('[data-geometry-view="line"]').click();
+   assert.equal(await geo.locator('.position-count').count(),81);
+   assert.equal(await geo.locator('.density-bar').count(),0);
+   await geo.locator('[data-geometry-range="busy"]').click();
+   const zoomed=await geo.locator('.position-count').evaluateAll(es=>es.map(e=>({offset:Number(e.dataset.geometryPosition),count:Number(e.dataset.count)})));
+   assert.equal(zoomed.length,66);assert.equal(zoomed.reduce((s,p)=>s+p.count,0),113);assert.equal(Math.max(...zoomed.map(p=>p.count)),6);
+   await geo.locator(viewport.width<960?'.geometry-data-plot':'.geometry-panels').screenshot({path:path.join(out,`exact-centres-zoom-${viewport.width}.png`)});
+   await geo.locator('[data-geometry-position="10092"]').focus();await page.keyboard.press('Enter');
+   assert.match(await geo.locator('.geometry-group').textContent(),/6 observations in 10,092 bp/);
+   const positionDownload=page.waitForEvent('download');await geo.locator('[data-geometry-export="json"]').click();
+   const positionPath=path.join(out,`exact-position-${viewport.width}.json`);await(await positionDownload).saveAs(positionPath);
+   const positionRecords=JSON.parse(await fs.readFile(positionPath,'utf8'));assert.equal(positionRecords.count,6);
+   assert.ok(positionRecords.records.every(r=>r.mapping.anchor_offset_bp===10092&&r.mapping.m9_residue===3));
+   await geo.locator('[data-geometry-clear-group]').click();await geo.locator('[data-geometry-range="full"]').click();
+   await geo.locator('#geometry-source').selectOption('studies');await expectCount(128);
    assert.equal(await geo.locator('.selection-guide').count(),0);
    assert.equal(await geo.locator('#geometry-zoom').isDisabled(),true);
    await geo.locator('#geometry-studies-kind').selectOption('sequence');await expectCount(2);
@@ -199,7 +218,7 @@ try{
    const after=await page.evaluate(()=>({full:document.fullscreenElement?.id,srcs:[...document.querySelectorAll('audio,video')].map(e=>e.currentSrc),times:[...document.querySelectorAll('audio,video')].map(e=>e.currentTime)}));
    assert.equal(page.url(),startUrl);assert.equal(after.full,before.full);assert.deepEqual(after.srcs,before.srcs);
    assert.deepEqual(errors,[]);
-   report.push({viewport,combinations:36,blend_states_per_combination:2,source_definitions_prominent:true,binding_outcomes_and_exports:true,side_by_side:true,controls_and_complete_graphs_fit:viewport.width>=960,legend_matches_marks:true,blend_default_off:true,selection_deliberate:true,encode_empty_bins:41,source_counts:{studies:128,encode:255,jaspar:9164},retry:true,exports:['json','csv','svg','png'],keyboard:true,overflow:false,media_context_preserved:true,errors});
+   report.push({viewport,combinations:36,blend_states_per_combination:2,source_definitions_prominent:true,binding_outcomes_and_exports:true,side_by_side:true,controls_and_complete_graphs_fit:viewport.width>=960,legend_matches_marks:true,blend_default_off:true,selection_deliberate:true,exact_position_counts:true,studies_distinct_centres:81,studies_maximum_same_centre:6,zoom_region_centres:66,zoom_region_observations:113,source_counts:{studies:128,encode:255,jaspar:9164},retry:true,exports:['json','csv','svg','png'],keyboard:true,overflow:false,media_context_preserved:true,errors});
   } finally {await page.evaluate(()=>document.querySelectorAll('audio,video').forEach(e=>e.pause())).catch(()=>{});await context.close();}
  }
  await fs.writeFile(path.join(out,'report.json'),JSON.stringify({candidate,results:report},null,2));console.log(JSON.stringify({out,results:report},null,2));

@@ -4,7 +4,7 @@ import path from 'node:path';
 import crypto from 'node:crypto';
 import {gunzipSync} from 'node:zlib';
 import {fileURLToPath} from 'node:url';
-import {projectInterval,atlasGuide,countRadius} from '../Informatics/tfbs-geometry.js';
+import {projectInterval,atlasGuide,countRadius,positionCounts} from '../Informatics/tfbs-geometry.js';
 const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
 const source=path.join(root,'Informatics/pilot-v1/oxtr-tfbs-v1'),dir=path.join(source,'experiment-v1');
 const read=async f=>JSON.parse(await fs.readFile(path.join(dir,f),'utf8'));
@@ -30,6 +30,14 @@ for(const [collection,{file,sha256}] of Object.entries(manifest.files)){
   counts[m.m9_residue]++;total++;
  }
  assert.deepEqual(counts,manifest.summaries[collection].residue_counts_0_to_8);
+ const positions=positionCounts(rows);assert.equal(positions.reduce((n,p)=>n+p.count,0),rows.length);
+ assert.equal(positions.length,new Set(rows.map(r=>r.mapping.anchor_offset_bp)).size);
+ if(collection==='studies'){
+  assert.equal(positions.length,81);assert.equal(Math.max(...positions.map(p=>p.count)),6);
+  assert.deepEqual(positions.find(p=>p.offset===10092),{offset:10092,count:6});
+  const region=positionCounts(rows,9812,10358);assert.equal(region.length,66);assert.equal(region.reduce((n,p)=>n+p.count,0),113);
+ }
+
 }
 for(const [s,e,g,d,r,z] of w.interval_cases){const m=projectInterval(s,e);assert.deepEqual([m.anchor_genomic_0based,m.anchor_offset_bp,m.m9_residue,m.m9_display],[g,d,r,z]);}
 for(const pair of [[0,0],[1,0],[8740000,8740001],[8779628,8779630],[NaN,5]])assert.throws(()=>projectInterval(...pair));

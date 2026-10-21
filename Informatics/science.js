@@ -242,7 +242,7 @@
           .catch(() => { explorer.innerHTML = '<p role="status">The data browser has not loaded. <button type="button" class="science-register-link">Retry data browser</button></p>'; explorer.querySelector('button').onclick = startExplorer; });
         startExplorer();
         const geometry = content.querySelector('.tfbs-geometry');
-        const startGeometry = () => import(new URL('tfbs-geometry.js?v=9', root).href)
+        const startGeometry = () => import(new URL('tfbs-geometry.js?v=10', root).href)
           .then(module => module.mountTfbsGeometry(geometry, data, tfbsRoot))
           .catch(() => { geometry.innerHTML = '<p role="status">The experiment has not loaded. <button type="button" class="science-register-link">Retry experiment</button></p>'; geometry.querySelector('button').onclick = startGeometry; });
         startGeometry();
