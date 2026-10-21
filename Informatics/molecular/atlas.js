@@ -1,6 +1,15 @@
 'use strict';
 (async()=>{
  const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
+ if(window.parent===window){
+  const film=document.createElement('video');film.className='molecular-film';film.muted=true;film.defaultMuted=true;film.loop=true;film.playsInline=true;film.preload='metadata';film.src='https://rmu.universalmind.tv/rihanna-global-citizen-loop.mp4';film.setAttribute('aria-hidden','true');
+  const shade=document.createElement('div');shade.className='molecular-film-shade';shade.setAttribute('aria-hidden','true');document.body.prepend(film,shade);
+  function syncFilm(){const playing=!film.paused;$('#background-play').textContent=playing?'Ⅱ':'▷';$('#background-play').setAttribute('aria-label',playing?'Pause background video':'Play background video');$('#background-play').title=playing?'Pause background video':'Play background video';$('#background-sound').textContent=film.muted?'♪̸':'♫';$('#background-sound').setAttribute('aria-label',film.muted?'Unmute background video':'Mute background video');$('#background-sound').title=film.muted?'Unmute background video':'Mute background video';}
+  $('#background-play').onclick=()=>{if(film.paused)film.play().catch(syncFilm);else film.pause();};$('#background-sound').onclick=()=>{film.muted=!film.muted;if(film.paused)film.play().catch(syncFilm);syncFilm();};film.addEventListener('play',syncFilm);film.addEventListener('pause',syncFilm);
+  let resumeFilm=false;document.addEventListener('visibilitychange',()=>{if(document.hidden){resumeFilm=!film.paused;film.pause();}else if(resumeFilm)film.play().catch(syncFilm);});window.addEventListener('pagehide',()=>film.pause(),{once:true});
+  if(!matchMedia('(prefers-reduced-motion: reduce)').matches)film.play().catch(syncFilm);syncFilm();
+ }
+
  const escape=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
  let records=[],record,engine,request=0,queue=Promise.resolve(),picked=null,activeView='structure',activeSequence='',spinning=false,geometryTimer;
  const geometryState=()=>({scale:Number($('#geometry-scale').value),rotation:Number($('#geometry-rotation').value),offset:Number($('#geometry-offset').value),opacity:Number($('#geometry-opacity').value)});
@@ -66,8 +75,9 @@
  $('#save-image').onclick=()=>enqueue(async()=>{const uri=await engine.screenshot(),a=document.createElement('a');a.href=uri;a.download=`${record.id}-${record.pdb}-molecular-atlas.png`;a.click();});
  $('#save-state').onclick=()=>{if(!record)return;download(`${record.id}-molecular-view.json`,JSON.stringify({schema:'universal-informatics/molecular-view/v1',created:new Date().toISOString(),target:record.id,source:record.source,coordinateSHA256:record.sha256,...engine.snapshot(),layers:{ligand:$('#ligand-toggle').checked,complex:$('#complex-toggle').checked},geometry:{enabled:$('#geometry-toggle').checked,kind:$('#geometry-kind').value,...geometryState()},interpretation:'Exploratory geometric placement; no biological fit is inferred.'},null,2),'application/json');};
  $('#retry').onclick=()=>{if(engine)select(new URLSearchParams(location.search).get('target')||'OXTR');else location.reload();};
- if(window.parent!==window){$('#return').innerHTML='×';$('#return').setAttribute('aria-label','Close Molecular Atlas');$('#return').onclick=e=>{e.preventDefault();window.parent.postMessage({type:'molecular:close'},location.origin);};$('.brand').onclick=e=>{e.preventDefault();window.parent.postMessage({type:'molecular:close'},location.origin);};}
+ if(window.parent!==window){$('#return').innerHTML='↗';$('#return').setAttribute('aria-label','Return to Geometry Atlas');$('#return').onclick=e=>{e.preventDefault();window.parent.postMessage({type:'molecular:close'},location.origin);};$('.brand').onclick=e=>{e.preventDefault();window.parent.postMessage({type:'molecular:close'},location.origin);};}
  document.addEventListener('keydown',e=>{if(e.key!=='Escape')return;if(activeView!=='structure'){changeView('structure');$('[data-view="structure"]').focus();}else if(window.parent!==window)window.parent.postMessage({type:'molecular:close'},location.origin);});
+ window.addEventListener('message',event=>{if(event.origin!==location.origin||event.source!==window.parent||event.data?.type!=='molecular:visibility')return;if(!event.data.active&&engine){spinning=false;engine.spin(false);$('#rotate-view').setAttribute('aria-pressed','false');}else engine?.plugin.canvas3d.requestResize();});
  document.addEventListener('visibilitychange',()=>{if(document.hidden&&engine){spinning=false;engine.spin(false);$('#rotate-view').setAttribute('aria-pressed','false');}});
  window.addEventListener('pagehide',()=>engine?.dispose(),{once:true});
  try{const response=await fetch('data/catalogue.json?v=1');if(!response.ok)throw Error('The source catalogue did not load.');records=(await response.json()).records;catalogue();engine=await MolecularEngine.create($('#viewport'),pick);window.MolecularAtlas={engine,get record(){return record;},select,whenIdle:()=>queue};await select(new URLSearchParams(location.search).get('target')||'OXTR');}

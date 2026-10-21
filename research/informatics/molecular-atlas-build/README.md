@@ -8,6 +8,12 @@ Use Node.js 22 or newer. Run `npm ci` and `npm run build` in this directory. Thi
 
 `viewer.js` owns scientific rendering, selection and camera state. `geometry.js` defines unit-circumradius constructions independently of molecule data. `tools/check-molecular-atlas-browser.mjs` checks the candidate by intercepting requests to the permanent staging hostname. Set `ATLAS_LIVE=1` for unmodified live HTTP verification. Browser tests use a separate headless Chromium process with `--mute-audio`; they never invoke native fullscreen.
 
+## Shared navigation and video
+
+Research Atlas contains Geometry Atlas and Molecular Atlas, followed by the existing About, Sound, Vision, Language, Universal Research and Partners entries. Molecular Atlas loads in a transparent iframe beneath the shared header. The existing background video, playback position, fullscreen state and audio controls stay in the parent experience. The selected molecule survives area changes.
+
+The standalone route uses the same background video with muted playback and explicit pause and sound controls. Reduced-motion preference leaves that video paused until Play. The canvas uses an alpha background; the black shade and translucent panels match the Geometry Atlas treatment. The brand uses the existing flower logo with bold UNIVERSAL and light INFORMATICS.
+
 ## Scientific scope
 
 The catalogue is a research collection, not a single gene family or a measured interaction network. Coordinates are downloaded from the public RCSB Model Server as BinaryCIF and stored locally, with SHA-256 checksums and source accession links. A thumbnail is rendered from the same coordinates as its viewer. No illustrative molecular fallback is used.

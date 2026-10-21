@@ -14,7 +14,7 @@ try{
   await page.goto(base+'molecular/',{waitUntil:'domcontentloaded'});await idle(page,'OXTR');await pixelProof(page);
   assert.equal(await page.locator('#target-selector button').count(),8);assert.equal(await page.locator('#target-selector img').evaluateAll(imgs=>imgs.every(i=>i.complete&&i.naturalWidth>0)),true);
   assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),true);
-  assert.equal(await page.locator('video,audio').count(),0);assert.equal(await page.evaluate(()=>document.fullscreenElement),null);
+  assert.equal(await page.locator('video.molecular-film').count(),1);assert.equal(await page.locator('video.molecular-film').evaluate(e=>e.muted&&e.paused),true);assert.equal(await page.locator('audio').count(),0);assert.equal(await page.evaluate(()=>document.fullscreenElement),null);
   await page.screenshot({path:`${out}/structure-${viewport.width}.png`,fullPage:true});
   await page.locator('#geometry-kind').selectOption('stellated');await page.evaluate(()=>window.MolecularAtlas.whenIdle());await page.waitForFunction(()=>document.body.dataset.geometry==='stellated');
   await page.locator('#geometry-toggle').uncheck();await page.evaluate(()=>window.MolecularAtlas.whenIdle());
@@ -48,7 +48,7 @@ try{
   }else{
    await page.locator('#target-selector [data-target="NMDA"]').click();await idle(page,'NMDA');assert.equal(await page.locator('#target-name').innerText(),'NMDA receptor');await page.locator('[data-view="evidence"]').click();assert.match(await page.locator('#detail-content').innerText(),/GRIN1 · GRIN2B/);await page.keyboard.press('Escape');assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),true);results.push({viewport,noOverflow:true,targetSwitch:true,evidencePanel:true});
   }
-  assert.deepEqual(errors,[]);assert.deepEqual(failed,[]);await ctx.close();
+  assert.deepEqual(errors,[]);assert.deepEqual(failed,[]);await page.evaluate(()=>document.querySelectorAll('video,audio').forEach(e=>e.pause()));await ctx.close();
  }
  const ctx=await browser.newContext({viewport:{width:1470,height:956},reducedMotion:'reduce'});await candidate(ctx);let failOnce=true;
  await ctx.route(base+'molecular/data/7qvm.bcif',route=>{if(failOnce){failOnce=false;return route.fulfill({status:503,body:'Temporarily unavailable'});}return route.fallback();});const page=await ctx.newPage();await page.goto(base+'molecular/');await page.locator('#retry').waitFor({state:'visible',timeout:60000});assert.match(await page.locator('#structure-status').innerText(),/unavailable/);assert.equal(await page.locator('#viewport').evaluate(e=>getComputedStyle(e).opacity),'0.13');await page.locator('#retry').click();await idle(page,'OXTR');await ctx.close();results.push({failedRequestShowsError:true,retryRecovers:true});

@@ -1,12 +1,25 @@
 'use strict';
 (()=>{
- let dialog,opener;
- function close(){if(!dialog?.open)return;dialog.close();dialog.querySelector('iframe').src='about:blank';opener?.focus({preventScroll:true});}
- function open(button){
-  opener=button.closest('#atlas-menu')?document.querySelector('#atlas-toggle'):button;document.querySelector('#atlas-menu').hidden=true;for(const id of ['atlas-menu-toggle','atlas-toggle'])document.getElementById(id).setAttribute('aria-expanded','false');
-  if(!dialog){dialog=document.createElement('dialog');dialog.id='molecular-dialog';dialog.setAttribute('aria-label','Molecular Atlas');dialog.innerHTML='<iframe title="Universal Informatics Molecular Atlas" allow="" referrerpolicy="same-origin"></iframe>';document.querySelector('#experience').append(dialog);dialog.addEventListener('cancel',e=>{e.preventDefault();close();});}
-  dialog.querySelector('iframe').src='molecular/?embedded=1';dialog.showModal();dialog.querySelector('iframe').focus();
- }
- document.querySelectorAll('[data-molecular]').forEach(button=>button.addEventListener('click',()=>open(button)));
- window.addEventListener('message',e=>{if(e.origin!==location.origin||e.source!==dialog?.querySelector('iframe').contentWindow)return;if(e.data?.type==='molecular:close')close();if(e.data?.type==='molecular:gene-context'){const returnTo=opener;close();document.querySelector('[data-science-tfbs]')?.click();document.querySelector('.science-tfbs')?.addEventListener('close',()=>returnTo?.focus({preventScroll:true}),{once:true});}});
+ const frame=document.getElementById('molecular-frame');
+ const active=()=>document.getElementById('experience').dataset.area==='molecular'&&!document.getElementById('experience').hidden;
+ function notify(visible=active()){frame.contentWindow.postMessage({type:'molecular:visibility',active:visible},location.origin);}
+ document.addEventListener('atlas:area',event=>{
+  if(event.detail==='molecular'&&!frame.getAttribute('src'))frame.src=frame.dataset.src;
+  else if(frame.getAttribute('src'))notify(event.detail==='molecular');
+ });
+ frame.addEventListener('load',()=>{
+  if(!frame.getAttribute('src'))return;
+  frame.contentDocument?.addEventListener('pointerdown',()=>document.dispatchEvent(new Event('atlas:close-navigation')));
+  notify();
+ });
+ window.addEventListener('message',event=>{
+  if(event.origin!==location.origin||event.source!==frame.contentWindow)return;
+  if(event.data?.type==='molecular:close'){
+   document.querySelector('#atlas-menu [data-area="geometry"]').click();document.getElementById('atlas-toggle').focus({preventScroll:true});
+  }
+  if(event.data?.type==='molecular:gene-context'){
+   document.querySelector('[data-science-tfbs]')?.click();
+   document.querySelector('.science-tfbs')?.addEventListener('close',()=>frame.contentDocument?.querySelector('[data-dna-context]')?.focus({preventScroll:true}),{once:true});
+  }
+ });
 })();

@@ -98,7 +98,7 @@ try{
    assert.equal(await page.locator(`#area-${domain} [data-library="${domain}"]`).evaluate(e=>e===document.activeElement),true);
   }
   await page.locator('#atlas-toggle').focus();await page.keyboard.press('ArrowDown');
-  assert.deepEqual(await page.locator('#atlas-menu button').allTextContents(),['Molecular Atlas','About','Sound','Vision','Language','Research library','Partners']);
+  assert.deepEqual(await page.locator('#atlas-menu button').allTextContents(),['Geometry Atlas','Molecular Atlas','About','Sound','Vision','Language','Universal Research','Partners']);
   await page.locator('#atlas-menu [data-library]').click();await frame.locator('.research-card').first().waitFor();
   await page.locator('.library-overlay [aria-label="Close research library"]').click();
   await page.waitForFunction(()=>document.activeElement===document.querySelector('#atlas-toggle'));
