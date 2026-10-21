@@ -33,15 +33,15 @@ Each source entry is a specific deposited model. Complex partners expose additio
 
 ## Gene / Protein switch
 
-The opening Gene view shows a 48-base window of reference DNA as a clearly labelled idealised double helix. The Protein view retains the deposited experimental models. The viewer never describes the DNA helix as a measured cellular fold or atomic structure. Molecular models remain separate from the exploratory geometry layer.
+The opening Gene view shows a 48-base window of reference DNA as a clearly labelled, constructed B-DNA atomic model. Helix, Atoms and Surface render the same coordinates. The Protein view retains the deposited experimental models. The viewer never describes the DNA model as a measured gene or cellular fold. Molecular models remain separate from the exploratory geometry layer.
 
 `fetch-genes.py` retrieves human GRCh38 gene and canonical transcript annotations from Ensembl, genomic DNA from UCSC, and an independent genomic sequence from Ensembl. The build requires exact sequence agreement. It stores nine genes for the eight targets: NMDA has separate GRIN1 and GRIN2B choices. Source snapshots and sequence checksums are retained. The complete gene includes introns; exon markers and transcription starts refer to the named canonical transcript. All displayed genomic coordinates are 1-based and inclusive. Minus-strand DNA is reverse-complemented into the gene's 5-prime to 3-prime orientation.
 
-`dna.js` specifies the illustrative 48-base geometry. Base-pair rungs carry the actual reference sequence; the complementary strand uses A/T and C/G pairing. These display coordinates are independent of measured protein coordinates. The interface supports exon/TSS jumps, sequence windows, full FASTA and annotation downloads, and view exports that identify the biological level and the DNA interpretation.
+`dna.js` assembles each 48-base model from the selected reference sequence and its antiparallel Watson-Crick complement. `build-dna-templates.py` extracts and checks eight heavy-atom templates from the pinned BioExcel NAB Langridge B-DNA fixture in `dna-model-source/`. Rise is 3.38 Å and twist is 36° per base pair. Both 5-prime termini omit the terminal phosphate; hydrogens are implicit. Helix uses a nucleic-acid cartoon, Atoms uses ball-and-stick with element colours, and Surface computes a molecular surface from the same atoms. No sequence-dependent relaxation or chromatin fold is inferred. The interface supports exon/TSS jumps, sequence windows, full FASTA and annotation downloads, modelled-segment PDB downloads, and view exports containing the construction method and source checksum.
 
 Collection conceals the structure workspace and its controls while retaining the background film. Its stronger panel and card backgrounds keep labels readable. Returning to Structure preserves the selected geometric construction.
 
-Run `node tools/check-molecular-genes.mjs` for DNA source, strand, exon and boundary checks. The protein browser suite uses `?level=protein`; the entry suite exercises the default Gene view and shared media continuity.
+Run `node tools/check-molecular-genes.mjs` for DNA source, strand, exon and boundary checks. Run `node tools/check-molecular-dna-model.mjs` for template-source round trips, antiparallel pairing, phosphodiester continuity, glycosidic distances and terminal chemistry. The protein browser suite uses `?level=protein`; the entry suite exercises the default Gene view and shared media continuity.
 
 ## Geometry
 

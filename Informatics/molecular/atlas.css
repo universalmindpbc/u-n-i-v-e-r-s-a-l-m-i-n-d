@@ -33,3 +33,5 @@ body[data-level=gene] .target-caption>p:last-child{color:#c6b38f}
 @media(max-width:1150px){.source-caption{max-width:88%}}
 @media(max-width:760px){.biology-bar{min-height:48px;padding:6px 18px;gap:14px;flex-shrink:0}.biology-toggle button{padding:7px 15px}#level-description{display:none}#gene-controls{grid-column:1/-1}.detail-panel{top:153px}.embedded .detail-panel{top:138px}.source-caption{max-width:88%}.interaction-hint span#pick-hint{padding:0}}
 @media(max-width:360px){.masthead{gap:8px}.masthead .brand{font-size:9px;letter-spacing:.1em;gap:6px}.background-controls button{width:23px}.masthead .return{font-size:14px}.masthead .primary{gap:10px}}
+
+.representation-note{font-size:11px;line-height:1.6;color:#aab9c3;margin:12px 0 0} .representations #cartoon-label{display:inline;width:auto;height:auto;background:none;border:0;margin:0;opacity:1}

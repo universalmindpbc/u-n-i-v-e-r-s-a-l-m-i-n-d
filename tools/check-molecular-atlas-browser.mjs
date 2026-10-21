@@ -27,7 +27,7 @@ try{
     await page.locator('[data-view="evidence"]').click();assert.match(await page.locator('#detail-content').innerText(),new RegExp(r.pdb));assert.ok(await page.locator('#detail-content .evidence-note').innerText());await page.locator('#close-detail').click();structures.push({target:r.id,pdb:r.pdb,observed:info.observed,visiblePixels:await pixelProof(page)});
    }
    await page.locator('#target-selector [data-target="OXTR"]').click();await idle(page,'OXTR');
-   for(const representation of ['molecular-surface','ball-and-stick','cartoon']){await page.locator(`[data-representation="${representation}"]`).click();await page.evaluate(()=>window.MolecularAtlas.whenIdle());assert.equal(await page.evaluate(()=>window.MolecularAtlas.engine.snapshot().representation),representation);}
+   for(const representation of ['molecular-surface','ball-and-stick','cartoon']){await page.locator(`button[data-representation="${representation}"]`).click();await page.evaluate(()=>window.MolecularAtlas.whenIdle());assert.equal(await page.evaluate(()=>window.MolecularAtlas.engine.snapshot().representation),representation);}
    await page.locator('#complex-toggle').check();await page.evaluate(()=>window.MolecularAtlas.whenIdle());await page.locator('#complex-toggle').uncheck();await page.locator('#ligand-toggle').uncheck();await page.locator('#ligand-toggle').check();await page.evaluate(()=>window.MolecularAtlas.whenIdle());
    const modes=[];
    for(const mode of ['tetrahedron','cube','octahedron','dodecahedron','icosahedron','stellated','odom','phi']){

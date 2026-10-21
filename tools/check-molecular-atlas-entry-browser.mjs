@@ -6,7 +6,7 @@ import {chromium} from '/Users/benkorbel/.cache/codex-runtimes/codex-primary-run
 const root=path.join(process.env.ATLAS_ROOT||path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..'),'Informatics');
 const base='https://staging.universalmind.tv/informatics/',live=process.env.ATLAS_LIVE==='1',out=process.env.ATLAS_QA_OUT||'/private/tmp/molecular-atlas-style-qa';
 await fs.mkdir(out,{recursive:true});
-const menu=['Geometry Atlas','Molecular Atlas','About','Sound','Vision','Language','Universal Research','Partners'];
+const menu=['About','Geometry Atlas','Molecular Atlas','Sound Atlas','Vision Atlas','Language Atlas','Universal Research','Partners'];
 const server=await chromium.launchServer({executablePath:'/Users/benkorbel/Library/Caches/ms-playwright/chromium_headless_shell-1234/chrome-headless-shell-mac-arm64/chrome-headless-shell',headless:true,args:['--mute-audio']});
 assert.ok(server.process().spawnargs.includes('--mute-audio'));
 const browser=await chromium.connect(server.wsEndpoint()),results=[];
@@ -26,7 +26,9 @@ try{
   const page=await context.newPage(),errors=[];page.on('pageerror',e=>errors.push(e.message));
   await page.goto(base+'?area=geometry');await page.waitForFunction(()=>!document.querySelector('#launch').disabled);await page.locator('#launch').click();
   await page.waitForFunction(()=>{const v=document.querySelector('#film');return v.readyState>=2&&!v.paused&&v.currentTime>.2;},null,{timeout:60000});
-  await headerProof(page);await page.locator('#atlas-toggle').focus();await page.keyboard.press('ArrowDown');assert.deepEqual(await page.locator('#atlas-menu [role="menuitem"]').allTextContents(),menu);await page.keyboard.press('Escape');
+  await headerProof(page);await page.locator('#atlas-toggle').focus();await page.keyboard.press('ArrowDown');assert.deepEqual(await page.locator('#atlas-menu [role="menuitem"]').allTextContents(),menu);assert.equal(await page.locator('#atlas-menu [data-about]').evaluate(e=>e===document.activeElement),true);await page.screenshot({path:path.join(out,`navigation-${viewport.width}.png`)});await page.keyboard.press('Enter');await page.locator('#about[open]').waitFor();await page.keyboard.press('Escape');await page.locator('#about').waitFor({state:'hidden'});await page.locator('#atlas-menu-toggle:focus').waitFor();
+  for(const destination of ['sound','vision','language','partners','geometry']){await area(page,destination);assert.equal(await page.locator('#experience').getAttribute('data-area'),destination);}
+
   await page.evaluate(()=>{window.__film=document.querySelector('#film');window.__mediaEvents=[];for(const name of ['pause','emptied','loadstart'])__film.addEventListener(name,()=>__mediaEvents.push(name));window.__startTime=__film.currentTime;});
   const initial=await page.evaluate(()=>({src:__film.src,full:document.fullscreenElement.id,calls:__nativeCalls}));
   await area(page,'molecular');const frame=page.frameLocator('#molecular-frame');await frame.locator('body[data-ready="true"]').waitFor({timeout:60000});await headerProof(page);
@@ -47,7 +49,7 @@ try{
   assert.equal(await page.locator('.brand').innerText(),'UNIVERSAL\nINFORMATICS');assert.equal(await page.locator('.brand .brand-flower').evaluate(e=>e.complete&&e.naturalWidth>0),true);
   assert.equal(await page.locator('.molecular-film').evaluate(e=>e.muted&&e.paused),true);await page.locator('#background-play').click();await page.waitForFunction(()=>document.querySelector('.molecular-film').currentTime>.2);await page.screenshot({path:path.join(out,`standalone-${viewport.width}.png`),fullPage:true});await page.locator('#background-play').click();assert.equal(await page.locator('.molecular-film').evaluate(e=>e.paused),true);assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),true);
   assert.deepEqual(errors,[]);await page.evaluate(()=>document.querySelectorAll('video,audio').forEach(e=>e.pause()));await context.close();
-  results.push({viewport,navigationOrder:menu,noHeaderOverlap:true,transparentCanvas:true,existingVideoPreserved:true,playbackContinued:true,globalSoundControls:true,selectionPreservedAcrossAreas:true,dnaEvidenceLink:true,universalResearchLink:true,brandLogoAndWeights:true,standaloneMutedVideoControls:true});
+  results.push({viewport,navigationOrder:menu,aboutFirstKeyboardAndFocus:true,atlasDestinations:true,noHeaderOverlap:true,transparentCanvas:true,existingVideoPreserved:true,playbackContinued:true,globalSoundControls:true,selectionPreservedAcrossAreas:true,dnaEvidenceLink:true,universalResearchLink:true,brandLogoAndWeights:true,standaloneMutedVideoControls:true});
  }
  const report={passed:true,live,processMuted:true,nativeFullscreen:false,results};await fs.writeFile(path.join(out,'entry-results.json'),JSON.stringify(report,null,2));console.log(JSON.stringify(report));
 }finally{await browser.close().catch(()=>{});await server.close().catch(()=>{});}
