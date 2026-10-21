@@ -1,10 +1,14 @@
 import assert from 'node:assert/strict';
 import fs from 'node:fs/promises';
 import path from 'node:path';
+import vm from 'node:vm';
 import {fileURLToPath} from 'node:url';
 import {chromium} from '/Users/benkorbel/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/playwright/index.mjs';
 
 const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
+const portal={window:{}};
+vm.runInNewContext(await fs.readFile(path.join(root,'i  a m/science-research-data-v1.js'),'utf8'),portal);
+const approvedStudies=Array.from(portal.window.IAMScienceResearch.layers.find(l=>l.id==='sound').heroStudies).filter(s=>!s.internal);
 const base='https://staging.universalmind.tv/informatics/';
 const candidate=process.env.CANDIDATE==='1';
 const output=`/private/tmp/sound-assessment-${candidate?'candidate':'staging'}`;
@@ -52,6 +56,12 @@ try{
    assert.equal(await page.locator('.contents-chapter').count(),6);
    assert.equal(await page.locator('.contents-topic-meta').count(),19);
    assert.equal(await page.locator('.assessment-studies article').count(),5);
+   assert.deepEqual(await page.locator('.assessment-finding > p:first-child').allTextContents(),approvedStudies.map(s=>s.finding));
+   assert.deepEqual(await page.locator('.assessment-finding .assessment-note').allTextContents(),approvedStudies.map(s=>'Limit: '+s.limitation));
+   const molecular=await page.locator('.assessment-molecular-studies').innerText();
+   for(const gene of ['IL6','NR3C1','NFKB1','IFNG','IL10','LGALS3','CXCL8','THOP1'])assert.ok(molecular.includes(gene),gene+' is named');
+   const explanatory=await page.locator('.assessment-body p').allTextContents();
+   assert.equal(explanatory.some(t=>/auditory[- ]beats?\b/i.test(t)),false);
    assert.deepEqual(await page.locator('#sound-assessment h4 a').evaluateAll(es=>es.map(e=>e.href)),sources);
    assert.equal(await page.locator('#collection-statistics').evaluate(e=>e.nextElementSibling.id),'sound-assessment');
    await toggle.focus();await page.keyboard.press('Enter');assert.equal(await panel.evaluate(e=>e.open),true);
@@ -81,7 +91,7 @@ try{
    assert.equal(new URL(page.url()).searchParams.get('chapter'),'3');
    assert.match(await page.locator('.chapter-opening h2').innerText(),/Music and gene expression/);
    await page.goBack();assert.equal(await panel.isVisible(),true);
-   checks.push({width,height,modes:['video','black','white'],keyboard:true,collectionIsolation:true,chapterNavigation:true,countsPreserved:true,overflow:false,status:'passed'});
+   checks.push({width,height,modes:['video','black','white'],approvedPortalCopyPreserved:true,namedGenesPresent:true,requestedTerminology:true,keyboard:true,collectionIsolation:true,chapterNavigation:true,countsPreserved:true,overflow:false,status:'passed'});
   }finally{await pauseMedia(ctx);await ctx.close();}
  }
  const ctx=await newContext({width:1470,height:956});
