@@ -124,6 +124,7 @@
   function render() {
     if (loading) return;
     renderStatistics();
+    $('#sound-assessment').hidden = collection !== 'sound';
     populateFilters();
     const reading = collection === 'sound' && view === 'chapters';
     $('#view-options').hidden = collection !== 'sound';
