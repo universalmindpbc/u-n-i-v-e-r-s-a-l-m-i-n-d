@@ -83,13 +83,14 @@ document.addEventListener('pointerdown',e=>{if(!atlasNav.contains(e.target))clos
 document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!menu.hidden){e.preventDefault();closeMenu({focus:true});}if(e.key==='Escape')$('.atlas-brand-wrap').classList.add('tooltip-dismissed');});
 $('.atlas-brand-wrap').addEventListener('pointerleave',()=>$('.atlas-brand-wrap').classList.remove('tooltip-dismissed'));
 $('.atlas-brand-wrap').addEventListener('focusout',()=>$('.atlas-brand-wrap').classList.remove('tooltip-dismissed'));
-document.addEventListener('click',e=>{const button=e.target.closest('button[data-area]');if(button){showArea(button.dataset.area,{focus:true});$('#atlas-sections').scrollTop=0;}if(e.target.closest('[data-about]'))closeMenu();});
+document.addEventListener('click',e=>{const button=e.target.closest('button[data-area]');if(button){showArea(button.dataset.area,{focus:true});$('#atlas-sections').scrollTop=0;}if(e.target.closest('[data-about],[data-science-tfbs]'))closeMenu();});
 document.addEventListener('science:open-atlas',event=>{
  const view=event.detail;if(!['alpha','beta','gamma','epsilon','geometry-summary'].includes(view))return;
  if(!entered)launch.click();chooseRecord(M9,'research',view);
 });
 // Research navigation reuses the active atlas without starting media or fullscreen.
 function navigateFromResearch(name){
+ if(name==='transcription'){if(!entered)navigateFromResearch('geometry');$('#atlas-menu [data-science-tfbs]').click();return;}
  if(name==='about'){document.querySelector('[data-about]').click();return;}
  if(!areas.includes(name))return;
  const aboutDialog=$('#about');if(aboutDialog.open)aboutDialog.close();
@@ -101,14 +102,14 @@ function syncSound(){const label=film.muted?'Unmute video':'Mute video';$('#soun
 $('#sound').onclick=()=>{if(film.paused){film.muted=false;film.play().catch(()=>{});}else film.muted=!film.muted;syncSound();};
 function fullscreen(){if(!document.fullscreenElement && experience.requestFullscreen)experience.requestFullscreen().catch(()=>{});}
 launch.disabled=false;
-launch.onclick=()=>{entered=true;document.body.dataset.entered='true';$('#landing').hidden=true;experience.hidden=false;fullscreen();film.muted=false;film.volume=1;syncSound();if(!film.src)film.src=film.dataset.src;film.play().catch(()=>{$('#sound').textContent='▷';$('#sound').setAttribute('aria-label','Play video with sound');$('#sound').title='Play video with sound';});elapsed=reduced.matches?total-1:0;playing=!reduced.matches;last=null;render();resumeAnimation=!reduced.matches;const params=new URLSearchParams(location.search);showArea(params.get('area')||(recordMode==='research'?'geometry':'home'));$('#atlas-toggle').focus();};
+launch.onclick=()=>{entered=true;document.body.dataset.entered='true';$('#landing').hidden=true;experience.hidden=false;fullscreen();film.muted=false;film.volume=1;syncSound();if(!film.src)film.src=film.dataset.src;film.play().catch(()=>{$('#sound').textContent='▷';$('#sound').setAttribute('aria-label','Play video with sound');$('#sound').title='Play video with sound';});elapsed=reduced.matches?total-1:0;playing=!reduced.matches;last=null;render();resumeAnimation=!reduced.matches;const params=new URLSearchParams(location.search);showArea(params.get('area')==='transcription'?'geometry':params.get('area')||(recordMode==='research'?'geometry':'home'));$('#atlas-toggle').focus();if(params.get('area')==='transcription')navigateFromResearch('transcription');};
 $('#fullscreen').onclick=()=>{if(document.fullscreenElement)document.exitFullscreen().catch(()=>{});else fullscreen();};
 document.addEventListener('fullscreenchange',()=>$('#fullscreen').setAttribute('aria-label',document.fullscreenElement?'Exit full screen':'Enter full screen'));
 $('#back').onclick=()=>{closeMenu();document.dispatchEvent(new Event('atlas:close-records'));document.dispatchEvent(new CustomEvent('atlas:area',{detail:null}));film.pause();playing=false;entered=false;if(document.fullscreenElement)document.exitFullscreen().catch(()=>{});experience.hidden=true;$('#landing').hidden=false;document.body.dataset.entered='false';document.dispatchEvent(new Event('informatics:return'));launch.focus();};
 window.addEventListener('pagehide',()=>{film.pause();playing=false;});
 document.addEventListener('visibilitychange',()=>{last=null;if(document.hidden)film.pause();else if(entered)film.play().catch(()=>{});});
 function frame(now){const dt=last===null?0:Math.min(now-last,60);last=now;if(entered&&playing&&!document.hidden){elapsed=Math.min(total-1,elapsed+dt);if(elapsed>=total-1)playing=false;render();}requestAnimationFrame(frame);}render();requestAnimationFrame(frame);
-if(initialParams.get('entry')==='research'&&areas.includes(initialParams.get('area')))navigateFromResearch(initialParams.get('area'));
+if(initialParams.get('entry')==='research'&&[...areas,'transcription'].includes(initialParams.get('area'))){const enter=()=>navigateFromResearch(initialParams.get('area'));if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',enter,{once:true});else enter();}
 })().catch(error=>{console.error(error);document.querySelector('#launch-status').textContent='Unable to load geometry. Please reload.';});
 
 // About opens from the discreet static title.

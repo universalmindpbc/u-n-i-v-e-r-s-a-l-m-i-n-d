@@ -6,7 +6,7 @@ import {chromium} from '/Users/benkorbel/.cache/codex-runtimes/codex-primary-run
 const root=path.join(process.env.ATLAS_ROOT||path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..'),'Informatics');
 const base='https://staging.universalmind.tv/informatics/',live=process.env.ATLAS_LIVE==='1',out=process.env.ATLAS_QA_OUT||'/private/tmp/molecular-atlas-style-qa';
 await fs.mkdir(out,{recursive:true});
-const menu=['About','Geometry Atlas','Molecular Atlas','Sound Atlas','Vision Atlas','Language Atlas','Universal Research','Partners'];
+const menu=['About','Geometry Atlas','Transcription Atlas','Molecular Atlas','Sound Atlas','Vision Atlas','Language Atlas','Universal Research','Partners'];
 const server=await chromium.launchServer({executablePath:'/Users/benkorbel/Library/Caches/ms-playwright/chromium_headless_shell-1234/chrome-headless-shell-mac-arm64/chrome-headless-shell',headless:true,args:['--mute-audio']});
 assert.ok(server.process().spawnargs.includes('--mute-audio'));
 const browser=await chromium.connect(server.wsEndpoint()),results=[];

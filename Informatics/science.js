@@ -268,7 +268,7 @@
       const a = document.createElement('a'); a.href=url; a.download='oxtr-selected-evidence.'+format; a.click(); setTimeout(()=>URL.revokeObjectURL(url),1000);
     }
     const entry = e.target.closest('[data-science-tfbs]');
-    if (entry) {e.preventDefault(); tfbsOpener = entry; (document.fullscreenElement || document.body).append(tfbs); tfbs.showModal(); tfbs.scrollTop = 0; loadTfbs();}
+    if (entry) {e.preventDefault(); tfbsOpener = entry.closest('#atlas-menu') ? document.querySelector('#atlas-toggle') : entry; (document.fullscreenElement || document.body).append(tfbs); tfbs.showModal(); tfbs.scrollTop = 0; loadTfbs();}
     if (e.target.closest('[data-tfbs-retry]')) loadTfbs();
     const teaching=e.target.closest('[data-science-transcription]');
     if(teaching){transcriptionOpener=teaching;(document.fullscreenElement||document.body).append(transcription);transcription.showModal();transcription.scrollTop=0;}

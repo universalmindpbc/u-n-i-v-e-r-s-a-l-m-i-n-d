@@ -35,3 +35,14 @@ body[data-level=gene] .target-caption>p:last-child{color:#c6b38f}
 @media(max-width:360px){.masthead{gap:8px}.masthead .brand{font-size:9px;letter-spacing:.1em;gap:6px}.background-controls button{width:23px}.masthead .return{font-size:14px}.masthead .primary{gap:10px}}
 
 .representation-note{font-size:11px;line-height:1.6;color:#aab9c3;margin:12px 0 0} .representations #cartoon-label{display:inline;width:auto;height:auto;background:none;border:0;margin:0;opacity:1}
+
+/* The embedded view uses its parent's global menu; standalone uses the same definition. */
+.masthead #atlas-navigation{position:relative;display:inline-flex;align-items:center;gap:3px;flex-shrink:0;z-index:20}
+.masthead #atlas-toggle{font:11px Arial,sans-serif;letter-spacing:.06em;white-space:nowrap;padding:12px 0;color:var(--text)}
+.masthead #atlas-menu-toggle{width:20px;padding:12px 0;font-size:12px;color:var(--muted)}
+.masthead #atlas-menu{position:absolute;right:0;top:100%;width:210px;max-height:calc(100dvh - 170px);overflow:auto;padding:7px 0;background:#0b1219f5;border:1px solid var(--line)}
+.masthead #atlas-menu a{display:block;min-height:42px;padding:11px 18px;font:11px/1.6 Arial,sans-serif;color:var(--muted);white-space:nowrap}
+.masthead #atlas-menu a:hover,.masthead #atlas-menu a:focus-visible,.masthead #atlas-menu a[aria-current=page]{background:#ffffff08;color:var(--text)}
+html:not(.embedded) .masthead .return,html:not(.embedded) .masthead .product-name,.embedded .masthead #atlas-navigation{display:none}
+@media(max-width:760px){html:not(.embedded) .masthead{height:145px;align-content:start;gap:8px 15px}html:not(.embedded) .masthead .brand{width:100%;min-height:24px}html:not(.embedded) .masthead #atlas-navigation{order:1}html:not(.embedded) .masthead .background-controls{order:1}html:not(.embedded) .masthead .primary{order:2;height:41px}html:not(.embedded) .masthead #atlas-menu{left:0;right:auto}html:not(.embedded) .detail-panel{top:193px}}
+html:not(.embedded) .masthead{z-index:20}
