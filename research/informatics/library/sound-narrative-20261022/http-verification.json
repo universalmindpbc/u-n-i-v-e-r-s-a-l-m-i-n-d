@@ -1,0 +1,50 @@
+[
+  {
+    "asset": "library.html",
+    "url": "https://staging.universalmind.tv/informatics/library.html?verify=3364ff2f4c41",
+    "sha256": "3364ff2f4c41b4c602de20f14e2c8e91682772c5aa247f4310a7aef962ab9bd0",
+    "matches": true
+  },
+  {
+    "asset": "library.js",
+    "url": "https://staging.universalmind.tv/informatics/library.js?verify=4c69a9d4fcfa",
+    "sha256": "4c69a9d4fcfa245901870be1f87cf4004edc32de978bd418e53bd171c983d99d",
+    "matches": true
+  },
+  {
+    "asset": "library.css",
+    "url": "https://staging.universalmind.tv/informatics/library.css?verify=13f406ffa582",
+    "sha256": "13f406ffa582de6a8c21d21b98889d4f75d19a5f7e9afe0a9b74a6130dab12b1",
+    "matches": true
+  },
+  {
+    "asset": "library-navigation.js",
+    "url": "https://staging.universalmind.tv/informatics/library-navigation.js?verify=8901b3e870e4",
+    "sha256": "8901b3e870e48664b1a7db9e667c9ca387ed1afc2d5c41591893e0d7a4abf10e",
+    "matches": true
+  },
+  {
+    "asset": "library-data/sound-edition.json",
+    "url": "https://staging.universalmind.tv/informatics/library-data/sound-edition.json?verify=d05c47527143",
+    "sha256": "d05c47527143f69b4585486234a7e4d84cbd41b1d73f610f9edfee809d3ee47c",
+    "matches": true
+  },
+  {
+    "asset": "library-launcher.js",
+    "url": "https://staging.universalmind.tv/informatics/library-launcher.js?verify=41cdf3c74dab",
+    "sha256": "41cdf3c74dab4943fe69ac058f8cb4a704e953902eb4c940f486456b89575537",
+    "matches": true
+  },
+  {
+    "asset": "index.html",
+    "url": "https://staging.universalmind.tv/informatics/index.html?verify=42ca74c13793",
+    "sha256": "42ca74c13793e2caa6d16e31889333c8922d177bdfd47ba53b26639f96cc5ae0",
+    "matches": true
+  },
+  {
+    "asset": "app.js",
+    "url": "https://staging.universalmind.tv/informatics/app.js?verify=f52660df0f03",
+    "sha256": "f52660df0f034c0b1e015e618888596f9bb128a41ccd6545f17bec629a5f0b42",
+    "matches": true
+  }
+]

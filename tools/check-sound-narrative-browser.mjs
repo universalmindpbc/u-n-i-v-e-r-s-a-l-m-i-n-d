@@ -1,0 +1,141 @@
+import assert from 'node:assert/strict';
+import fs from 'node:fs/promises';
+import path from 'node:path';
+import {fileURLToPath} from 'node:url';
+import {chromium} from '/Users/benkorbel/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/playwright/index.mjs';
+const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
+const base='https://staging.universalmind.tv/informatics/';
+const candidate=process.env.CANDIDATE==='1';
+const output=`/private/tmp/sound-narrative-${candidate?'candidate':'staging'}`;
+await fs.mkdir(output,{recursive:true});
+const server=await chromium.launchServer({executablePath:'/Users/benkorbel/Library/Caches/ms-playwright/chromium_headless_shell-1234/chrome-headless-shell-mac-arm64/chrome-headless-shell',headless:true,args:['--mute-audio']});
+assert.ok(server.process().spawnargs.includes('--mute-audio'));
+const browser=await chromium.connect(server.wsEndpoint());
+const errors=[],results=[];
+async function context(options={}){
+ const ctx=await browser.newContext({reducedMotion:'no-preference',...options});
+ ctx.on('page',p=>p.on('pageerror',e=>errors.push(e.message)));
+ if(candidate)await ctx.route(/https:\/\/staging\.universalmind\.tv\/(?:I|i)nformatics\//,async route=>{
+  const rel=decodeURIComponent(new URL(route.request().url()).pathname).replace(/^\/(?:I|i)nformatics\//,'')||'index.html';
+  const file=path.resolve(root,'Informatics',rel);
+  if(!file.startsWith(root+'/Informatics/'))return route.abort();
+  try{await route.fulfill({status:200,contentType:{'.html':'text/html','.js':'text/javascript','.css':'text/css','.json':'application/json','.png':'image/png','.svg':'image/svg+xml'}[path.extname(file)]||'application/octet-stream',body:await fs.readFile(file)});}catch{await route.fulfill({status:404,body:'Missing candidate file'});}
+ });
+ return ctx;
+}
+async function overflow(page){assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1),true);}
+async function setMode(page,value,scope='.reading-toolbar'){
+ await page.locator(`${scope} [data-reading-background="${value}"]`).click();
+ assert.equal(await page.locator('html').getAttribute('data-reading-background'),value);
+}
+const expectedMenu=['Geometry Atlas','Molecular Atlas','About','Sound','Vision','Language','Universal Research','Partners'];
+try{
+ for(const viewport of [{width:1470,height:956},{width:1024,height:768},{width:390,height:844},{width:320,height:844}]){
+  const ctx=await context({viewport}),page=await ctx.newPage();
+  await page.goto(base+'library.html',{waitUntil:'domcontentloaded'});
+  await page.locator('.contents-chapter').first().waitFor();
+  assert.equal(await page.title(),'Universal Research · Universal Informatics');
+  assert.equal(await page.locator('h1').innerText(),'Universal Research');
+  assert.equal(await page.locator('.brand img').getAttribute('src'),'/vogue/iam/favicon.png');
+  assert.equal(await page.locator('.brand img').evaluate(i=>i.complete&&i.naturalWidth>0),true);
+  assert.deepEqual(await page.locator('#atlas-menu [role=menuitem]').allTextContents(),expectedMenu);
+  assert.equal(await page.locator('.contents-chapter').count(),6);
+  assert.doesNotMatch(await page.locator('body').innerText(),/Ben Korbel|curated by|source collection|PDF|Original curator/i);
+  assert.equal(await page.locator('.library-footer').count(),0);
+  assert.equal(await page.locator('.contents-chapter li').count(),16);
+  assert.equal(await page.locator('html').getAttribute('data-reading-background'),'video');
+  await page.waitForFunction(()=>{const v=document.querySelector('#library-film');return v.currentTime>.2&&!v.paused&&v.muted&&v.volume===0;},null,{timeout:60000});
+  await overflow(page);
+  await page.screenshot({path:output+`/contents-video-${viewport.width}.png`,fullPage:true});
+  await page.locator('#atlas-toggle').focus();await page.keyboard.press('ArrowDown');
+  assert.equal(await page.locator('#atlas-menu').isVisible(),true);
+  await page.keyboard.press('End');assert.equal(await page.evaluate(()=>document.activeElement.textContent),'Partners');
+  await page.keyboard.press('Escape');assert.equal(await page.locator('#atlas-menu').isVisible(),false);
+  assert.equal(await page.evaluate(()=>document.activeElement.id),'atlas-toggle');
+  await page.locator('[data-chapter="3"][data-topic="xii"]').click();
+  await page.locator('#topic-xii').waitFor();
+  assert.equal(await page.locator('.topic').count(),3);
+  assert.equal(await page.locator('#topic-xii .trust-score').count(),0);
+  assert.match(await page.locator('#topic-xii blockquote').innerText(),/both the resting control and recreational music making/);
+  assert.equal(await page.locator('#topic-xii .paper').count(),1);
+  assert.equal(await page.locator('#topic-xii h4 a').getAttribute('href'),'https://pubmed.ncbi.nlm.nih.gov/15668624/');
+  await overflow(page);
+  await page.waitForTimeout(250);
+  assert.equal(await page.locator('#topic-xii').evaluate(e=>getComputedStyle(e).visibility),'visible');
+  await page.screenshot({path:output+`/gene-expression-video-${viewport.width}.png`});
+  await page.locator('#topic-xii [data-paper-detail]').click();
+  await page.locator('#article[open]').waitFor();
+  assert.match(await page.locator('#article-title').innerText(),/Recreational music-making/);
+  assert.match(await page.locator('#article .study-details').innerText(),/^99 citations$/);
+  assert.doesNotMatch(await page.locator('#article-body').innerText(),/source collection|source page|PDF|curator material/i);
+  await setMode(page,'white','.dialog-bar');
+  assert.equal(await page.locator('#library-film').evaluate(v=>v.paused),true);
+  assert.equal(await page.locator('#article').evaluate(d=>getComputedStyle(d).backgroundColor),'rgb(255, 255, 255)');
+  await page.screenshot({path:output+`/paper-white-${viewport.width}.png`});
+  await page.keyboard.press('Escape');
+  assert.equal(await page.evaluate(()=>document.activeElement.dataset.paperDetail),'xii-pmid-15668624');
+  await page.reload();await page.locator('#topic-xii').waitFor();
+  assert.equal(await page.locator('html').getAttribute('data-reading-background'),'white');
+  assert.equal(await page.locator('#library-film').getAttribute('src'),null);
+  await page.locator('.contents-home').click();await page.locator('.contents-chapter').first().waitFor();
+  await page.locator('[data-chapter="1"][data-topic="ii"]').click();
+  assert.equal(await page.locator('#topic-ii .paper').count(),4);
+  assert.match(await page.locator('#topic-ii .study-summary').innerText(),/37.57 to 73.58/);
+  assert.equal(await page.locator('#topic-i .study-summary').count(),2);
+  assert.equal(await page.locator('#topic-i .trust-score svg').count(),3);
+  await page.locator('.contents-home').click();
+  await page.locator('[data-chapter="2"][data-topic="vii"]').click();
+  assert.equal(await page.locator('#topic-vii .study-summary').count(),2);
+  assert.equal(await page.locator('#topic-ix h3').innerText(),'Baroreflex, heart-rate variability and Mayer waves around 0.1 Hz');
+  assert.doesNotMatch(await page.locator('#reading-content').innerText(),/ascension|111hz|Original curator|Article stars|RESEARCH RECORD/);
+  await page.locator('[data-view="search"]').click();
+  await page.locator('#query').fill('528');
+  await page.waitForTimeout(300);
+  assert.equal(await page.locator('.search-paper').count(),4);
+  await page.locator('#query').fill('IL-6');await page.waitForTimeout(300);
+  assert.ok(await page.locator('.search-paper').count()>0);
+  const count=await page.locator('#result-count').innerText();
+  await setMode(page,'black');
+  assert.equal(await page.locator('#result-count').innerText(),count);
+  assert.equal(await page.locator('#query').inputValue(),'IL-6');
+  assert.equal(await page.locator('body').evaluate(el=>getComputedStyle(el).backgroundColor),'rgb(0, 0, 0)');
+  await page.reload();await page.locator('.search-paper').first().waitFor();
+  assert.equal(await page.locator('#query').inputValue(),'IL-6');
+  await overflow(page);
+  await ctx.close();results.push({viewport,status:'passed'});
+ }
+ // Direct navigation reaches the real atlas without invoking native fullscreen or playback.
+ const ctx=await context({viewport:{width:1470,height:956}}),page=await ctx.newPage();
+ await page.goto(base+'library.html?collection=sound');await page.locator('.contents-chapter').first().waitFor();
+ await page.locator('#atlas-toggle').click();await page.locator('[data-global-area="sound"]').click();
+ await page.locator('#area-sound').waitFor({state:'visible'});
+ assert.equal(await page.evaluate(()=>document.fullscreenElement===null),true);
+ assert.equal(await page.locator('#film').evaluate(v=>v.paused),true);
+ assert.equal(await page.locator('#film').getAttribute('src'),null);
+ assert.deepEqual(await page.locator('#atlas-menu [role=menuitem]').allTextContents(),expectedMenu);
+ // Open Universal Research using the actual global menu.
+ await page.locator('#atlas-toggle').click();await page.locator('#atlas-menu [data-library]').click();
+ const frame=page.frameLocator('.library-overlay iframe');
+ await frame.locator('.contents-chapter').first().waitFor();
+ assert.equal(await page.locator('#library-overlay-title').innerText(),'UNIVERSAL RESEARCH');
+ await frame.locator('#atlas-toggle').click();await frame.locator('[data-global-area="molecular"]').click();
+ await page.locator('#molecular-panel').waitFor({state:'visible'});
+ assert.equal(await page.locator('.library-overlay').evaluate(d=>d.open),false);
+ assert.equal(await page.locator('.library-overlay iframe').getAttribute('src'),null);
+ assert.equal(await page.evaluate(()=>document.fullscreenElement===null),true);
+ assert.equal(await page.locator('#film').evaluate(v=>v.paused),true);
+ // Reopen and navigate to About; the reader closes cleanly.
+ await page.locator('#atlas-toggle').click();await page.locator('#atlas-menu [data-library]').click();
+ await frame.locator('.contents-chapter').first().waitFor();
+ await frame.locator('#atlas-toggle').click();await frame.locator('#atlas-menu [data-global-about]').click();
+ await page.locator('#about[open]').waitFor();
+ assert.equal(await page.locator('.library-overlay').evaluate(d=>d.open),false);
+ await ctx.close();results.push({navigation:'direct and embedded menu routes, About, focus, media preservation',status:'passed'});
+ const reduced=await context({reducedMotion:'reduce',viewport:{width:390,height:844}}),rp=await reduced.newPage();
+ await rp.goto(base+'library.html');await rp.locator('.contents-chapter').first().waitFor();
+ assert.equal(await rp.locator('#library-film').evaluate(v=>v.paused),true);
+ await reduced.close();
+ assert.deepEqual(errors,[]);
+ await fs.writeFile(output+'/verification.json',JSON.stringify({checkedAt:new Date().toISOString(),candidate,processAudioDisabled:true,results,errors},null,2));
+ console.log(JSON.stringify({output,results,errors},null,2));
+}finally{await browser.close();await server.close();}

@@ -49,5 +49,6 @@
   ],
   "trustScores": "Original subsection scores preserved. No article scores added. The IL6 subsection has no score in the PDF. Scores describe the original topic appraisal, not an assessment of later additions.",
   "quotations": "Selected wording preserved; source bold emphasis recovered from positioned PDF text. Known frequency discrepancies are isolated for review.",
-  "sourceFilesModified": false
+  "sourceFilesModified": false,
+  "frequencyPassageReview": "Two disputed frequency passages are retained in structured data for editorial review and omitted from displayed quotations."
 }
