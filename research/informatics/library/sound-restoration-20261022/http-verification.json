@@ -1,0 +1,26 @@
+{
+  "checkedAt": "2026-10-21T18:58:09.786286+00:00",
+  "sourceCommit": "54fb2fd2",
+  "assets": [
+    {
+      "asset": "library.html",
+      "sha256": "8c6193017f0e4f1b3d173f54dbf0418938d252223d36c4e14f9d7c1bc0a6d201",
+      "matches": true
+    },
+    {
+      "asset": "library.js",
+      "sha256": "fdc5bb595317e9442815f8bfad5eea452f8c8451238e90cc8d077da341b7eddb",
+      "matches": true
+    },
+    {
+      "asset": "library.css",
+      "sha256": "73e2ffa21648750b53998f82c47fd70bb4a2f6c8ece2f964a74e8b1e6e376d09",
+      "matches": true
+    },
+    {
+      "asset": "library-data/sound-edition.json",
+      "sha256": "72b21f12aa82d6f2e0fd4033dc3b047322db8fd9945994e3d1225093966592bc",
+      "matches": true
+    }
+  ]
+}
