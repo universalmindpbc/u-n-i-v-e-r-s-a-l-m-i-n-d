@@ -1268,6 +1268,791 @@
               "pmid": null
             }
           ]
+        },
+        {
+          "id": "iii",
+          "number": "1.3",
+          "title": "7.83 Hz and low-frequency electromagnetic research",
+          "trustScore": 1,
+          "sourcePage": 17,
+          "context": "",
+          "papers": [
+            {
+              "id": "iii-pmid-33111597",
+              "recordId": "pmid-33111597",
+              "title": "Inhibition of B16F10 Cancer Cell Growth by Exposure to the Square Wave with 7.83+/-0.3Hz Involves L- and T-Type Calcium Channels",
+              "journal": "Electromagnetic biology and medicine",
+              "year": 2021,
+              "authors": "Wang MH, Jian MW, Tai YH, Jang LS, Chen CH.",
+              "design": "",
+              "urls": [
+                "https://doi.org/10.1080/15368378.2020.1839491",
+                "https://www.tandfonline.com/doi/abs/10.1080/15368378.2020.183949"
+              ],
+              "quotes": [
+                [
+                  {
+                    "text": "“exposure to square wave with 7.83±0.3 Hz (sweep step 0.1 Hz) was shown to inhibit the growth of B16F10 melanoma tumor cells.”",
+                    "emphasis": false
+                  }
+                ]
+              ],
+              "citationCount": 3,
+              "sourcePages": [
+                17
+              ],
+              "targets": [],
+              "categories": [
+                "Methods & context"
+              ],
+              "doi": "10.1080/15368378.2020.1839491",
+              "pmid": "33111597"
+            },
+            {
+              "id": "iii-pmid-30889982",
+              "recordId": "pmid-30889982",
+              "title": "Effects of extremely low-frequency electromagnetic fields on B16F10 cancer cells",
+              "journal": "Electromagnetic biology and medicine",
+              "year": 2019,
+              "authors": "Tang JY, Yeh TW, Huang YT, Wang MH, Jang LS.",
+              "design": "",
+              "urls": [
+                "https://doi.org/10.1080/15368378.2019.1591438",
+                "https://www.tandfonline.com/doi/abs/10.1080/15368378.2019.1591438"
+              ],
+              "quotes": [
+                [
+                  {
+                    "text": "“The results yielded a 17% inhibition rate under 7.83 Hz compared with that of the control group.",
+                    "emphasis": false
+                  }
+                ],
+                [
+                  {
+                    "text": "Moreover, sweep frequencies in narrow intervals (7.83 ± 0.1 Hz for the step 0.05 Hz) caused an inhibition rate of 26.4%, and inhibitory effects decreased as frequency sweep intervals increased.",
+                    "emphasis": false
+                  }
+                ],
+                [
+                  {
+                    "text": "These results indicate that a Schumann resonance frequency of 7.83 Hz can inhibit the growth of cancer cells and that using a specific frequency type can lead to more effective growth inhibition.”",
+                    "emphasis": false
+                  }
+                ]
+              ],
+              "citationCount": null,
+              "sourcePages": [
+                17
+              ],
+              "targets": [],
+              "categories": [
+                "Methods & context"
+              ],
+              "doi": "10.1080/15368378.2019.1591438",
+              "pmid": "30889982"
+            },
+            {
+              "id": "iii-src-944ec8023c08",
+              "recordId": "src-944ec8023c08",
+              "title": "New Perspectives of Bioelectromagnetics in Biology and in Medicine: DNA Spectra for Diagnostic Purposes",
+              "journal": "Journal of Physics: Conference Series",
+              "year": 2011,
+              "authors": "",
+              "design": "",
+              "urls": [
+                "https://doi.org/10.1088/1742-6596/329/1/012011",
+                "https://iopscience.iop.org/article/10.1088/1742-6596/329/1/012011/meta"
+              ],
+              "quotes": [
+                [
+                  {
+                    "text": "“The method uses the Schuman frequency, or any ELF, to induce the DNA solution to emit electromagnetic signals in the range 300 - 4000 Hz that are producing spectra that result to be typical for each disease”",
+                    "emphasis": false
+                  }
+                ]
+              ],
+              "citationCount": 4,
+              "sourcePages": [
+                17
+              ],
+              "targets": [],
+              "categories": [
+                "Genetics & genomics"
+              ],
+              "doi": "10.1088/1742-6596/329/1/012011",
+              "pmid": null
+            },
+            {
+              "id": "iii-src-5aaad2520e3b",
+              "recordId": "src-5aaad2520e3b",
+              "title": "DNA waves and water",
+              "journal": "Journal of Physics: Conference Series",
+              "year": 2011,
+              "authors": "",
+              "design": "",
+              "urls": [
+                "https://doi.org/10.1088/1742-6596/306/1/012007",
+                "https://www.researchgate.net/publication/230937823_DNA_waves_and_water"
+              ],
+              "quotes": [
+                [
+                  {
+                    "text": "“DNA signalling is stimulated by 7 Hz naturally occurring waves on earth. Waves produced by the human brain are also in the range of 7 H z.”",
+                    "emphasis": false
+                  }
+                ],
+                [
+                  {
+                    "text": "“The stimulation by the electromagnetic background of very low frequency is essential. The background is either produced from natural sources (the Schumann resonances [4] which start at 7.83 Hz) or from artificial sources”",
+                    "emphasis": false
+                  }
+                ],
+                [
+                  {
+                    "text": "“This result shows that, upon 7 H z excitation, the transmission into pure water of the oscillation of the nanostructures initially originated from DNA has been achieved.”",
+                    "emphasis": false
+                  }
+                ]
+              ],
+              "citationCount": 238,
+              "sourcePages": [
+                18
+              ],
+              "targets": [],
+              "categories": [
+                "Genetics & genomics",
+                "Brain & nervous system"
+              ],
+              "doi": "10.1088/1742-6596/306/1/012007",
+              "pmid": null
+            },
+            {
+              "id": "iii-src-d8da0823ac49",
+              "recordId": "src-d8da0823ac49",
+              "title": "Transduction of DNA information through water and electromagnetic waves",
+              "journal": "Electromagnetic Biology and Medicine",
+              "year": null,
+              "authors": "",
+              "design": "",
+              "urls": [
+                "https://arxiv.org/pdf/1501.01620.pdf"
+              ],
+              "quotes": [
+                [
+                  {
+                    "text": "“In particular, it is immediately recognized the observed relevance of extremely low signal (ELS) in the phenomena under study. The stimulation caused by the electromagnetic background of very low frequency is indeed observed to be essential in order for the DNA-water system to emit the EMS. In the experiments, the background ELS is either produced from natural sources (the Schumann resonances which start at 7.83 Hz (Montagnier, A ̈ıssa, Del Giudice, et al., 2011; Nickolaenko and Hayakawa, 2002)) or from artificial sources.”",
+                    "emphasis": false
+                  }
+                ]
+              ],
+              "citationCount": 96,
+              "sourcePages": [
+                18
+              ],
+              "targets": [],
+              "categories": [
+                "Genetics & genomics"
+              ],
+              "doi": null,
+              "pmid": null
+            },
+            {
+              "id": "iii-pmid-20640802",
+              "recordId": "pmid-20640802",
+              "title": "Electromagnetic detection of HIV DNA in the blood of AIDS patients treated by antiretroviral therapy",
+              "journal": "Interdisciplinary sciences, computational life sciences",
+              "year": 2009,
+              "authors": "Montagnier L, Aïssa J, Lavallée C, Mbamy M, Varon J, Chenal H.",
+              "design": "",
+              "urls": [
+                "https://doi.org/10.1007/s12539-009-0059-0",
+                "https://pubmed.ncbi.nlm.nih.gov/20640802/"
+              ],
+              "quotes": [
+                [
+                  {
+                    "text": "“Electromagnetic signals of low frequency have been shown to be durably produced in aqueous dilutions of the Human Immunodeficiency Virus DNA.",
+                    "emphasis": false
+                  }
+                ],
+                [
+                  {
+                    "text": "In vivo, HIV DNA signals are detected only in patients previously treated by antiretroviral therapy and having no detectable viral RNA copies in their blood.",
+                    "emphasis": false
+                  }
+                ],
+                [
+                  {
+                    "text": "We suggest that the treatment of AIDS patients pushes the virus towards a new mode of replication implying only DNA, thus forming a reservoir insensitive to retroviral inhibitors. Implications for new approaches aimed at eradicating HIV infection are discussed.”",
+                    "emphasis": false
+                  }
+                ]
+              ],
+              "citationCount": 65,
+              "sourcePages": [
+                18
+              ],
+              "targets": [],
+              "categories": [
+                "Genetics & genomics"
+              ],
+              "doi": "10.1007/s12539-009-0059-0",
+              "pmid": "20640802"
+            },
+            {
+              "id": "iii-src-218662257ef3",
+              "recordId": "src-218662257ef3",
+              "title": "Analysis and Assessment of Gateway Process",
+              "journal": "US Central Intelligence Agency (CIA)",
+              "year": null,
+              "authors": "",
+              "design": "",
+              "urls": [
+                "https://www.cia.gov/readingroom/docs/CIA-RDP96-00788R001700210016-5.pdf"
+              ],
+              "quotes": [
+                [
+                  {
+                    "text": "“The Gateway Process is a training system for obtaining power, concentration, and consistency of the amplitude and frequency of brain waves between the left and right hemispheres to make consciousness change,”",
+                    "emphasis": false
+                  }
+                ],
+                [
+                  {
+                    "text": "“the entire body, based on its own micromotion, functions as a tuned vibrational system which transfers energy in a range between 6.8 and 7.5 Hertz into the Earth’s ionospheric cavity, which itself resonates at about 7-7.5 Hertz.”",
+                    "emphasis": false
+                  }
+                ]
+              ],
+              "citationCount": 6,
+              "sourcePages": [
+                19
+              ],
+              "targets": [],
+              "categories": [
+                "Brain & nervous system"
+              ],
+              "doi": null,
+              "pmid": null
+            },
+            {
+              "id": "iii-pmid-19696930",
+              "recordId": "pmid-19696930",
+              "title": "rTMS of the left dorsolateral prefrontal cortex modulates dopamine release in the ipsilateral anterior cingulate cortex and orbitofrontal cortex",
+              "journal": "PloS one",
+              "year": 2009,
+              "authors": "Cho SS, Strafella AP.",
+              "design": "",
+              "urls": [
+                "https://doi.org/10.1371/journal.pone.0006725",
+                "https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0006725"
+              ],
+              "quotes": [
+                [
+                  {
+                    "text": "“This is the first study to provide evidence of extrastriatal DA",
+                    "emphasis": false
+                  },
+                  {
+                    "text": " D2 (DRD2 dopamine receptor)",
+                    "emphasis": true
+                  },
+                  {
+                    "text": " modulation following",
+                    "emphasis": false
+                  },
+                  {
+                    "text": " 10 Hz",
+                    "emphasis": true
+                  },
+                  {
+                    "text": " repetitive transcranial magnetic stimulation”",
+                    "emphasis": false
+                  }
+                ]
+              ],
+              "citationCount": null,
+              "sourcePages": [
+                19
+              ],
+              "targets": [
+                "DRD2"
+              ],
+              "categories": [
+                "Molecular biomarkers",
+                "Brain & nervous system"
+              ],
+              "doi": "10.1371/journal.pone.0006725",
+              "pmid": "19696930"
+            },
+            {
+              "id": "iii-pmid-29170944",
+              "recordId": "pmid-29170944",
+              "title": "Deep TMS of the insula using the H-coil modulates dopamine release: a crossover [11C] PHNO-PET pilot trial in healthy humans",
+              "journal": "Brain imaging and behavior",
+              "year": 2018,
+              "authors": "Malik S, Jacobs M, Cho SS, Boileau I, Blumberger D, Heilig M, Wilson A, Daskalakis ZJ, Strafella AP, Zangen A, Le Foll B.",
+              "design": "",
+              "urls": [
+                "https://doi.org/10.1007/s11682-017-9800-1",
+                "https://link.springer.com/article/10.1007/s11682-017-9800-1"
+              ],
+              "quotes": [
+                [
+                  {
+                    "text": "“All subjects underwent 3 PHNO-PET scans preceded by rTMS (sham, 1 Hz or",
+                    "emphasis": false
+                  },
+                  {
+                    "text": " 10 Hz",
+                    "emphasis": true
+                  },
+                  {
+                    "text": " ), on 3 separate days. Low frequency rTMS (1 Hz), targeting the insular cortex, significantly decreased",
+                    "emphasis": false
+                  },
+                  {
+                    "text": " dopamine",
+                    "emphasis": true
+                  },
+                  {
+                    "text": " levels in the substantia nigra, sensorimotor striatum and associative striatum.”",
+                    "emphasis": false
+                  }
+                ]
+              ],
+              "citationCount": null,
+              "sourcePages": [
+                19
+              ],
+              "targets": [],
+              "categories": [
+                "Molecular biomarkers",
+                "Brain & nervous system"
+              ],
+              "doi": "10.1007/s11682-017-9800-1",
+              "pmid": "29170944"
+            },
+            {
+              "id": "iii-src-c64e6046b78d",
+              "recordId": "src-c64e6046b78d",
+              "title": "Striatal dopamine release after prefrontal repetitive transcranial magnetic stimulation in major depression: Preliminary results of a dynamic [123I] IBZM SPECT study",
+              "journal": "",
+              "year": null,
+              "authors": "",
+              "design": "",
+              "urls": [
+                "https://www.sciencedirect.com/science/article/abs/pii/S0022395605001214",
+                "https://www.researchgate.net/profile/Tao-Tan-8/publication/294122627_10-Hz_Repetitive_Transcranial_Magnetic_Stimulation_of_the_Left_Dorsolateral_Prefrontal_Cortex_Reduces_Heroin_Cue_Craving_in_Long-Term_Addicts/links/5a974d15aca27214056b3d1c/10-Hz-Repetitive-Transcranial-Magnetic-Stimulation-of-the-Left-Dorsolateral-Prefrontal-Cortex-Reduces-Heroin-Cue-Craving-in-Long-Term-Addicts.pdf"
+              ],
+              "quotes": [
+                [
+                  {
+                    "text": "“Five patients with a major depressive episode (DSM-IV) underwent an acute",
+                    "emphasis": false
+                  },
+                  {
+                    "text": " 10 Hz",
+                    "emphasis": true
+                  },
+                  {
+                    "text": " rTMS challenge with 3000 stimuli over the left dorsolateral prefrontal cortex during an IBZM-SPECT bolus and constant infusion protocol.",
+                    "emphasis": false
+                  }
+                ],
+                [
+                  {
+                    "text": "Data of nine SPECT investigations showed a significant reduction by 9.6 ± 6.2% in IBZM",
+                    "emphasis": false
+                  },
+                  {
+                    "text": " binding to",
+                    "emphasis": true
+                  },
+                  {
+                    "text": " striatal",
+                    "emphasis": false
+                  },
+                  {
+                    "text": " dopamine D2 receptors",
+                    "emphasis": true
+                  },
+                  {
+                    "text": " after rTMS challenge compared to baseline.",
+                    "emphasis": false
+                  }
+                ],
+                [
+                  {
+                    "text": "The reduction of IBZM binding observed after rTMS challenge is suggestive of a",
+                    "emphasis": false
+                  },
+                  {
+                    "text": " release",
+                    "emphasis": true
+                  },
+                  {
+                    "text": " in",
+                    "emphasis": false
+                  },
+                  {
+                    "text": " endogenous dopamine",
+                    "emphasis": true
+                  },
+                  {
+                    "text": " induced by prefrontal rTMS.”",
+                    "emphasis": false
+                  }
+                ],
+                [
+                  {
+                    "text": "“dopamine modulates addiction”",
+                    "emphasis": false
+                  }
+                ]
+              ],
+              "citationCount": null,
+              "sourcePages": [
+                19,
+                20
+              ],
+              "targets": [
+                "DRD2"
+              ],
+              "categories": [
+                "Molecular biomarkers",
+                "Brain & nervous system",
+                "Clinical & self-report"
+              ],
+              "doi": null,
+              "pmid": null
+            },
+            {
+              "id": "iii-pmid-17478041",
+              "recordId": "pmid-17478041",
+              "title": "The effects of 10 Hz repetitive transcranial magnetic stimulation on resting EEG power spectrum in healthy subjects",
+              "journal": "Neuroscience letters",
+              "year": 2007,
+              "authors": "Griskova I, Ruksenas O, Dapsys K, Herpertz S, Höppner J.",
+              "design": "",
+              "urls": [
+                "https://doi.org/10.1016/j.neulet.2007.04.030",
+                "https://www.sciencedirect.com/science/article/abs/pii/S0304394007004685"
+              ],
+              "quotes": [
+                [
+                  {
+                    "text": "“10 Hz rTMS applied at 2000 stimuli and 110% intensity may induce significant changes in resting EEG in healthy subjects”",
+                    "emphasis": false
+                  }
+                ]
+              ],
+              "citationCount": null,
+              "sourcePages": [
+                20
+              ],
+              "targets": [],
+              "categories": [
+                "Brain & nervous system"
+              ],
+              "doi": "10.1016/j.neulet.2007.04.030",
+              "pmid": "17478041"
+            },
+            {
+              "id": "iii-pmid-31518601",
+              "recordId": "pmid-31518601",
+              "title": "Simultaneous quantification of dopamine, serotonin, their metabolites and amino acids by LC-MS/MS in mouse brain following repetitive transcranial magnetic stimulation",
+              "journal": "Neurochemistry international",
+              "year": 2019,
+              "authors": "Poh EZ, Hahne D, Moretti J, Harvey AR, Clarke MW, Rodger J.",
+              "design": "",
+              "urls": [
+                "https://doi.org/10.1016/j.neuint.2019.104546",
+                "https://www.sciencedirect.com/science/article/abs/pii/S0197018619300956"
+              ],
+              "quotes": [
+                [
+                  {
+                    "text": "“Repetitive transcranial magnetic stimulation (rTMS) alters brain neurochemistry (dopamine, serotonin)",
+                    "emphasis": false
+                  }
+                ],
+                [
+                  {
+                    "text": "Different rTMS parameters had selective effects on neurochemicals (dopamine, serotonin)",
+                    "emphasis": false
+                  }
+                ],
+                [
+                  {
+                    "text": "method is a precise and sensitive tool to measure neurochemical changes”",
+                    "emphasis": false
+                  }
+                ]
+              ],
+              "citationCount": null,
+              "sourcePages": [
+                20
+              ],
+              "targets": [],
+              "categories": [
+                "Molecular biomarkers",
+                "Brain & nervous system"
+              ],
+              "doi": "10.1016/j.neuint.2019.104546",
+              "pmid": "31518601"
+            },
+            {
+              "id": "iii-pmid-20378181",
+              "recordId": "pmid-20378181",
+              "title": "Effects of 10 Hz repetitive transcranial magnetic stimulation (rTMS) on clinical global impression in chronic schizophrenia",
+              "journal": "Psychiatry research",
+              "year": 2010,
+              "authors": "Cordes J, Thünker J, Agelink MW, Arends M, Mobascher A, Wobrock T, Schneider-Axmann T, Brinkmeyer J, Mittrach M, Regenbrecht G, Wölwer W, Winterer G, Gaebel W.",
+              "design": "",
+              "urls": [
+                "https://doi.org/10.1016/j.psychres.2009.01.014",
+                "https://www.sciencedirect.com/science/article/abs/pii/S0165178109000249"
+              ],
+              "quotes": [
+                [
+                  {
+                    "text": "“In line with earlier investigations, our results suggest a moderate — potentially clinically relevant — treatment effect of prefrontal 10 Hz rTMS stimulation in chronic patients.”",
+                    "emphasis": false
+                  }
+                ]
+              ],
+              "citationCount": null,
+              "sourcePages": [
+                20
+              ],
+              "targets": [],
+              "categories": [
+                "Methods & context"
+              ],
+              "doi": "10.1016/j.psychres.2009.01.014",
+              "pmid": "20378181"
+            },
+            {
+              "id": "iii-src-1848d7eaf430",
+              "recordId": "src-1848d7eaf430",
+              "title": "One session of high frequency repetitive transcranial magnetic stimulation (rTMS) to the right prefrontal cortex transiently reduces cocaine craving",
+              "journal": "",
+              "year": null,
+              "authors": "",
+              "design": "",
+              "urls": [
+                "https://www.sciencedirect.com/science/article/abs/pii/S0376871606002225",
+                "https://jnm.snmjournals.org/content/47/suppl_1/137P.2.short"
+              ],
+              "quotes": [
+                [
+                  {
+                    "text": "“delivered with 10 Hz stimulation frequency”",
+                    "emphasis": false
+                  }
+                ]
+              ],
+              "citationCount": null,
+              "sourcePages": [
+                20,
+                21
+              ],
+              "targets": [],
+              "categories": [
+                "Brain & nervous system"
+              ],
+              "doi": null,
+              "pmid": null
+            },
+            {
+              "id": "iii-src-8ad1130190f0",
+              "recordId": "src-8ad1130190f0",
+              "title": "Theta-Burst Transcranial Magnetic Stimulation for Posttraumatic Stress Disorder",
+              "journal": "American Journal of Psychiatry",
+              "year": 2019,
+              "authors": "",
+              "design": "Randomized controlled trial",
+              "urls": [
+                "https://pubmed.ncbi.nlm.nih.gov/31230462/"
+              ],
+              "quotes": [
+                [
+                  {
+                    "text": "“",
+                    "emphasis": false
+                  },
+                  {
+                    "text": " Fifty veterans with PTSD",
+                    "emphasis": true
+                  },
+                  {
+                    "text": " received 10 days of sham-controlled iTBS (1,800 pulses/day), followed by 10 unblinded sessions.”",
+                    "emphasis": false
+                  }
+                ],
+                [
+                  {
+                    "text": "“",
+                    "emphasis": false
+                  },
+                  {
+                    "text": " iTBS appears to be a promising new treatment for PTSD",
+                    "emphasis": true
+                  },
+                  {
+                    "text": " .”",
+                    "emphasis": false
+                  }
+                ],
+                [
+                  {
+                    "text": "“intermittent",
+                    "emphasis": false
+                  },
+                  {
+                    "text": " theta",
+                    "emphasis": true
+                  },
+                  {
+                    "text": " burst",
+                    "emphasis": false
+                  },
+                  {
+                    "text": " stimulation",
+                    "emphasis": true
+                  },
+                  {
+                    "text": " fires a frequency of 50hz at 5 cycles per minute,",
+                    "emphasis": false
+                  },
+                  {
+                    "text": " 5hz",
+                    "emphasis": true
+                  },
+                  {
+                    "text": " , for a therapeutic duration of 3 minutes”",
+                    "emphasis": false
+                  }
+                ]
+              ],
+              "citationCount": null,
+              "sourcePages": [
+                21
+              ],
+              "targets": [],
+              "categories": [
+                "Clinical & self-report"
+              ],
+              "doi": "10.1176/appi.ajp.2019.18101160",
+              "pmid": "31230462",
+              "quotationReview": {
+                "index": 2,
+                "text": "The frequency sentence in the source PDF contains a unit error: 5 Hz is five cycles per second. It is retained below for review, separately from the article excerpts.",
+                "url": "https://www.nature.com/articles/s41386-019-0584-4"
+              }
+            },
+            {
+              "id": "iii-pmid-34050123",
+              "recordId": "pmid-34050123",
+              "title": "Theta burst stimulation for the acute treatment of major depressive disorder: A systematic review and meta-analysis",
+              "journal": "Translational psychiatry",
+              "year": 2021,
+              "authors": "Voigt JD, Leuchter AF, Carpenter LL.",
+              "design": "",
+              "urls": [
+                "https://doi.org/10.1038/s41398-021-01441-4",
+                "https://www.nature.com/articles/s41398-021-01441-4"
+              ],
+              "quotes": [
+                [
+                  {
+                    "text": "“We screened",
+                    "emphasis": false
+                  },
+                  {
+                    "text": " 195 articles",
+                    "emphasis": true
+                  },
+                  {
+                    "text": " identified upon search from PubMed, EBSCO/CINAHL, and CENTRAL; 23 were retrieved for inclusion assessment. Ultimately",
+                    "emphasis": false
+                  },
+                  {
+                    "text": " 10 articles were included in the meta-analyses",
+                    "emphasis": true
+                  },
+                  {
+                    "text": " . Of these, nine were single-center trials and one was a multicenter Canadian study1. Four studies took place in Germany two in Taiwan and one each in Australia, Belgium, Canada, and Israel”",
+                    "emphasis": false
+                  }
+                ],
+                [
+                  {
+                    "text": "“The finding of",
+                    "emphasis": false
+                  },
+                  {
+                    "text": " positive effects of TBS on major depressive disorder",
+                    "emphasis": true
+                  },
+                  {
+                    "text": " confirm prior meta-analyses, expand upon prior findings, and support the growing interest in application of TBS protocols for treating neuropsychiatric disorders such as major depressive disorder.”",
+                    "emphasis": false
+                  }
+                ]
+              ],
+              "citationCount": null,
+              "sourcePages": [
+                21
+              ],
+              "targets": [],
+              "categories": [
+                "Methods & context"
+              ],
+              "doi": "10.1038/s41398-021-01441-4",
+              "pmid": "34050123"
+            },
+            {
+              "id": "iii-pmid-31794974",
+              "recordId": "pmid-31794974",
+              "title": "One-year clinical outcomes following theta burst stimulation for post-traumatic stress disorder",
+              "journal": "Neuropsychopharmacology : official publication of the American College of Neuropsychopharmacology",
+              "year": 2020,
+              "authors": "Petrosino NJ, Wout-Frank MV', Aiken E, Swearingen HR, Barredo J, Zandvakili A, Philip NS.",
+              "design": "",
+              "urls": [
+                "https://doi.org/10.1038/s41386-019-0584-4",
+                "https://www.nature.com/articles/s41386-019-0584-4"
+              ],
+              "quotes": [
+                [
+                  {
+                    "text": "“In summary, greater accumulated exposure to active",
+                    "emphasis": false
+                  },
+                  {
+                    "text": " iTBS demonstrated clinically meaningful improvements in the year following stimulation",
+                    "emphasis": true
+                  },
+                  {
+                    "text": " , and default mode connectivity could be used to predict longer-term outcomes.”",
+                    "emphasis": false
+                  }
+                ]
+              ],
+              "citationCount": null,
+              "sourcePages": [
+                21
+              ],
+              "targets": [],
+              "categories": [
+                "Methods & context"
+              ],
+              "doi": "10.1038/s41386-019-0584-4",
+              "pmid": "31794974"
+            }
+          ]
         }
       ]
     },
@@ -2226,7 +3011,7 @@
               "pmid": "21397659"
             },
             {
-              "id": "vii-pmid-25324805",
+              "id": "vii-pmid-25324805-p59",
               "recordId": "pmid-25324805",
               "title": "Music and social bonding: “self-other” merging and neurohormonal mechanisms",
               "journal": "Frontiers in Psychology",
@@ -4148,7 +4933,7 @@
     },
     {
       "number": 4,
-      "title": "Transcranial magnetic stimulation and brain entrainment frequencies",
+      "title": "Electromagnetic stimulation and Schumann resonance",
       "topics": [
         {
           "id": "xiv",
@@ -4382,6 +5167,495 @@
               ],
               "doi": "10.1016/s0006-3223(99)00254-1",
               "pmid": "10686266"
+            }
+          ]
+        },
+        {
+          "id": "xviii",
+          "number": "4.2",
+          "title": "Schumann resonance, geomagnetic activity and physiological responses",
+          "trustScore": 1,
+          "sourcePage": 84,
+          "context": "",
+          "papers": [
+            {
+              "id": "xviii-src-f629caf1b15c",
+              "recordId": "src-f629caf1b15c",
+              "title": "The Global Coherence Initiative - Opportunities for Scientific Research and Health Promotion",
+              "journal": "African Journal for Physical Activity and Health",
+              "year": null,
+              "authors": "",
+              "design": "",
+              "urls": [
+                "https://www.researchgate.net/figure/Evidence-of-Significant-Events-Corresponding-with-Solar-Cycles_fig3_286869493"
+              ],
+              "quotes": [
+                [
+                  {
+                    "text": "“Evidence of Significant Events Corresponding with Solar Cycles”",
+                    "emphasis": false
+                  }
+                ]
+              ],
+              "citationCount": 3,
+              "sourcePages": [
+                84
+              ],
+              "targets": [],
+              "categories": [
+                "Methods & context"
+              ],
+              "doi": null,
+              "pmid": null
+            },
+            {
+              "id": "xviii-src-d1eaa478462e",
+              "recordId": "src-d1eaa478462e",
+              "title": "Long ‐ Term Study of Heart Rate Variability Responses to Changes in the Solar and Geomagnetic Environment",
+              "journal": "Scientific Reports",
+              "year": null,
+              "authors": "",
+              "design": "",
+              "urls": [
+                "https://www.heartmath.org/research/research-library/coherence/long-term-study-of-hrv-responses-to-changes-in-solar-geomagnetic-enviroment"
+              ],
+              "quotes": [
+                [
+                  {
+                    "text": "“energetic environmental phenomena affect psychophysical processes that can affect people in different ways depending on their sensitivity, health status and capacity for self-regulation.”",
+                    "emphasis": false
+                  }
+                ],
+                [
+                  {
+                    "text": "“Increase in cosmic rays, solar radio flux, and Schumann resonance power was all associated with increased HRV and parasympathetic activity.”",
+                    "emphasis": false
+                  }
+                ],
+                [
+                  {
+                    "text": "“daily autonomic nervous system activity responds to changes in geomagnetic and solar activity”",
+                    "emphasis": false
+                  }
+                ]
+              ],
+              "citationCount": 41,
+              "sourcePages": [
+                85
+              ],
+              "targets": [],
+              "categories": [
+                "Heart rate & autonomic"
+              ],
+              "doi": null,
+              "pmid": null
+            },
+            {
+              "id": "xviii-pmid-28703754",
+              "recordId": "pmid-28703754",
+              "title": "Synchronization of Human Autonomic Nervous System Rhythms with Geomagnetic Activity in Human Subjects",
+              "journal": "International journal of environmental research and public health",
+              "year": 2017,
+              "authors": "McCraty R, Atkinson M, Stolc V, Alabdulgader AA, Vainoras A, Ragulskis M.",
+              "design": "",
+              "urls": [
+                "https://doi.org/10.3390/ijerph14070770",
+                "https://pmc.ncbi.nlm.nih.gov/articles/PMC5551208/"
+              ],
+              "quotes": [
+                [
+                  {
+                    "text": "“daily autonomic nervous system activity not only responds to changes in solar and geomagnetic activity, but is synchronized with the time-varying magnetic fields associated with geomagnetic field-line resonances and Schumann resonances”",
+                    "emphasis": false
+                  }
+                ]
+              ],
+              "citationCount": 50,
+              "sourcePages": [
+                85
+              ],
+              "targets": [],
+              "categories": [
+                "Heart rate & autonomic"
+              ],
+              "doi": "10.3390/ijerph14070770",
+              "pmid": "28703754"
+            },
+            {
+              "id": "xviii-src-0bc37ec70145",
+              "recordId": "src-0bc37ec70145",
+              "title": "Identification of a Group’s Physiological Synchronization with Earth’s Magnetic Field",
+              "journal": "Environmental Research & Public Health",
+              "year": null,
+              "authors": "",
+              "design": "",
+              "urls": [
+                "https://www.mdpi.com/1660-4601/14/9/998/htm"
+              ],
+              "quotes": [
+                [
+                  {
+                    "text": "“The results of this study are consistent with other studies showing that daily autonomic nervous system activity responds to changes in geomagnetic activity”",
+                    "emphasis": false
+                  }
+                ],
+                [
+                  {
+                    "text": "“this study also confirms the surprising degree of synchronized activity between the slow wave dynamics in heart rhythms and changes in the Earth’s time-varying magnetic field in a frequency range that includes both Schumann resonances and geomagnetic field line resonances, which have similar frequencies as the rhythms produced by human brains and hearts”",
+                    "emphasis": false
+                  }
+                ]
+              ],
+              "citationCount": 17,
+              "sourcePages": [
+                85
+              ],
+              "targets": [],
+              "categories": [
+                "Heart rate & autonomic",
+                "Brain & nervous system"
+              ],
+              "doi": null,
+              "pmid": null
+            },
+            {
+              "id": "xviii-src-a3bba47bba9b",
+              "recordId": "src-a3bba47bba9b",
+              "title": "The Influence of Heart Coherence on Synchronization Between Human Heart Rate Variability and Geomagnetic Activity",
+              "journal": "Journal of Complexity in Health Sciences",
+              "year": null,
+              "authors": "",
+              "design": "",
+              "urls": [
+                "https://www.heartmath.org/assets/uploads/2019/01/influence-of-heart-coherence-on-synchronization-human-hrv-and-geomagnetic-activity.pdf"
+              ],
+              "quotes": [
+                [
+                  {
+                    "text": "“The results of the conducted study indicate that the applied Heart Lock-In meditation technique has a positive impact on the synchronization between the human heart rate variability and the Earth’s magnetic field. Thus, such medical techniques are shown to be valuable not only psychologically (in sustaining positive emotions), but also physiologically since high synchronization between heart rate variability and geomagnetic activity has been associated with better health conditions.”",
+                    "emphasis": false
+                  }
+                ]
+              ],
+              "citationCount": 5,
+              "sourcePages": [
+                86
+              ],
+              "targets": [],
+              "categories": [
+                "Heart rate & autonomic"
+              ],
+              "doi": null,
+              "pmid": null
+            },
+            {
+              "id": "xviii-src-d08dbc94cf58",
+              "recordId": "src-d08dbc94cf58",
+              "title": "Research on the health effects of electromagnetic radiation - Parliament of Australia",
+              "journal": "Parliament of Australia",
+              "year": null,
+              "authors": "",
+              "design": "",
+              "urls": [
+                "https://www.aph.gov.au/Parliamentary_Business/Committees/Senate/Environment_and_Communications/Completed_inquiries/1999-02/emr/report/c02"
+              ],
+              "quotes": [],
+              "citationCount": null,
+              "sourcePages": [
+                86
+              ],
+              "targets": [],
+              "categories": [
+                "Methods & context"
+              ],
+              "doi": null,
+              "pmid": null
+            },
+            {
+              "id": "xviii-src-b8f0554d49a8",
+              "recordId": "src-b8f0554d49a8",
+              "title": "Schumann Resonance Frequencies Found within Quantitative Electroencephalographic Activity: Implications for Earth-Brain Interactions",
+              "journal": "Laurentian University",
+              "year": null,
+              "authors": "",
+              "design": "",
+              "urls": [
+                "https://www.researchgate.net/publication/279743125_Schumann_Resonance_Frequencies_Found_within_Quantitative_Electroencephalographic_Activity_Implications_for_Earth-Brain_Interactions"
+              ],
+              "quotes": [],
+              "citationCount": 34,
+              "sourcePages": [
+                86
+              ],
+              "targets": [],
+              "categories": [
+                "Brain & nervous system"
+              ],
+              "doi": null,
+              "pmid": null
+            },
+            {
+              "id": "xviii-pmid-16275477",
+              "recordId": "pmid-16275477",
+              "title": "Does Schumann resonance affect our blood pressure?",
+              "journal": "Biomedicine & pharmacotherapy = Biomedecine & pharmacotherapie",
+              "year": 2005,
+              "authors": "Mitsutake G, Otsuka K, Hayakawa M, Sekiguchi M, Cornélissen G, Halberg F.",
+              "design": "",
+              "urls": [
+                "https://doi.org/10.1016/s0753-3322(05)80003-4",
+                "https://pmc.ncbi.nlm.nih.gov/articles/PMC2656447/"
+              ],
+              "quotes": [],
+              "citationCount": 50,
+              "sourcePages": [
+                86
+              ],
+              "targets": [],
+              "categories": [
+                "Heart rate & autonomic"
+              ],
+              "doi": "10.1016/s0753-3322(05)80003-4",
+              "pmid": "16275477"
+            },
+            {
+              "id": "xviii-pmid-26785376",
+              "recordId": "pmid-26785376",
+              "title": "Similar Spectral Power Densities Within the Schumann Resonance and a Large Population of Quantitative Electroencephalographic Profiles: Supportive Evidence for Koenig and Pobachenko",
+              "journal": "PloS one",
+              "year": 2016,
+              "authors": "Saroka KS, Vares DE, Persinger MA.",
+              "design": "",
+              "urls": [
+                "https://doi.org/10.1371/journal.pone.0146595",
+                "http://journals.plos.org/plosone/article?id=10.1371/journal.pone.0146595"
+              ],
+              "quotes": [
+                [
+                  {
+                    "text": "“In 1954 and 1960 Koenig and his colleagues described the remarkable similarities of spectral power density profiles and patterns between the earth-ionosphere resonance and human brain activity”",
+                    "emphasis": false
+                  }
+                ],
+                [
+                  {
+                    "text": "“Our results confirm the measurements reported by earlier researchers that demonstrated unexpected similarities in the spectral patterns and strengths of electromagnetic fields generated by the human brain and the earth-ionospheric cavity”",
+                    "emphasis": false
+                  }
+                ]
+              ],
+              "citationCount": 21,
+              "sourcePages": [
+                87
+              ],
+              "targets": [],
+              "categories": [
+                "Brain & nervous system"
+              ],
+              "doi": "10.1371/journal.pone.0146595",
+              "pmid": "26785376"
+            },
+            {
+              "id": "xviii-doi-bbac53b23500d8b1",
+              "recordId": "doi-bbac53b23500d8b1",
+              "title": "Human Quantitative Electroencephalographic and Schumann Resonance Exhibit Real-Time Coherence of Spectral Power Densities: Implications for Interactive Information Processing",
+              "journal": "Journal of Signal and Information Processing",
+              "year": 2015,
+              "authors": "Michael A. Persinger; Kevin S. Saroka",
+              "design": "",
+              "urls": [
+                "https://doi.org/10.4236/jsip.2015.62015",
+                "https://www.scirp.org/journal/PaperInformation.aspx?PaperID=56609"
+              ],
+              "quotes": [
+                [
+                  {
+                    "text": "“Natural and technology-based variables affecting the Schumann parameters might be reflected in human brain activity, including modifications of cognition and dream-related memory consolidation”",
+                    "emphasis": false
+                  }
+                ],
+                [
+                  {
+                    "text": "“The results are consistent with the congruence of the frequency, magnetic field intensity, voltage gradient, and phase shifts that are shared by the human brain and the earth-ionospheric spherical wave guide”",
+                    "emphasis": false
+                  }
+                ]
+              ],
+              "citationCount": 15,
+              "sourcePages": [
+                87
+              ],
+              "targets": [],
+              "categories": [
+                "Brain & nervous system"
+              ],
+              "doi": "10.4236/jsip.2015.62015",
+              "pmid": null
+            },
+            {
+              "id": "xviii-src-89d6ed0ece09",
+              "recordId": "src-89d6ed0ece09",
+              "title": "Physical Factors of the Historical Process by A. L. Tchijevsky",
+              "journal": "Cycles",
+              "year": null,
+              "authors": "",
+              "design": "",
+              "urls": [
+                "https://cyclesresearchinstitute.org/pdf/cycles-history/chizhevsky1.pdf"
+              ],
+              "quotes": [],
+              "citationCount": 107,
+              "sourcePages": [
+                87
+              ],
+              "targets": [],
+              "categories": [
+                "Methods & context"
+              ],
+              "doi": null,
+              "pmid": null
+            },
+            {
+              "id": "xviii-pmid-10485122",
+              "recordId": "pmid-10485122",
+              "title": "Wars and increased solar-geomagnetic activity: aggression or change in intraspecies dominance?",
+              "journal": "Perceptual and motor skills",
+              "year": 1999,
+              "authors": "Persinger MA.",
+              "design": "",
+              "urls": [
+                "https://doi.org/10.2466/pms.1999.88.3c.1351",
+                "https://pubmed.ncbi.nlm.nih.gov/10485122/"
+              ],
+              "quotes": [],
+              "citationCount": 44,
+              "sourcePages": [
+                87
+              ],
+              "targets": [],
+              "categories": [
+                "Methods & context"
+              ],
+              "doi": "10.2466/pms.1999.88.3c.1351",
+              "pmid": "10485122"
+            },
+            {
+              "id": "xviii-doi-d40c8b9c8ed571ad",
+              "recordId": "doi-d40c8b9c8ed571ad",
+              "title": "Effects of geomagnetic activity and atmospheric power variations on quantitative measures of brain activity: Replication of the Azerbaijani studies",
+              "journal": "Advances in Space Research",
+              "year": 2010,
+              "authors": "Bryce P. Mulligan; Mathew D. Hunter; Michael A. Persinger",
+              "design": "",
+              "urls": [
+                "https://doi.org/10.1016/j.asr.2009.12.008",
+                "https://www.sciencedirect.com/science/article/abs/pii/S0273117709007558"
+              ],
+              "quotes": [],
+              "citationCount": 49,
+              "sourcePages": [
+                88
+              ],
+              "targets": [],
+              "categories": [
+                "Brain & nervous system"
+              ],
+              "doi": "10.1016/j.asr.2009.12.008",
+              "pmid": null
+            },
+            {
+              "id": "xviii-src-d3de68b52048",
+              "recordId": "src-d3de68b52048",
+              "title": "Timewave Zero - I Ching fractal map of time",
+              "journal": "Terrance McKenna, Dennis McKenna and Peter Meyer",
+              "year": null,
+              "authors": "",
+              "design": "",
+              "urls": [
+                "http://www.fractal-timewave.com"
+              ],
+              "quotes": [
+                [
+                  {
+                    "text": "“The principal device of the Timewave Zero theory is a fractal function (constructed using numerical values derived from the King Wen Sequence of I Ching hexagrams) which maps time onto 'novelty'.”",
+                    "emphasis": false
+                  }
+                ],
+                [
+                  {
+                    "text": "“the \"revealed\" axiom that all phenomena are at root constellated by a wave form which is the hierarchical summation of its constituent parts, morphogenetic patterns related to those in DNA. ... We argue that the theory of the hyperspatial nature of superconductive bonds, and the experiment we devised to test that theory, yielded ... a modular wave-hierarchy theory of the nature of time that we have been able to construe, using a particular mathematical treatment of the I Ching, into a general theory of systems, which illuminates the nature of time and organism and provides an idea model which explains the interconnection of physical and psychological phenomena from the submolecular to the macrocosmic level.”",
+                    "emphasis": false
+                  }
+                ]
+              ],
+              "citationCount": null,
+              "sourcePages": [
+                88
+              ],
+              "targets": [],
+              "categories": [
+                "Genetics & genomics",
+                "Methods & context"
+              ],
+              "doi": null,
+              "pmid": null
+            }
+          ]
+        },
+        {
+          "id": "xix",
+          "number": "4.3",
+          "title": "Schumann resonances in the Earth–ionosphere cavity",
+          "trustScore": null,
+          "sourcePage": 89,
+          "context": "",
+          "papers": [
+            {
+              "id": "xix-src-6e52fa8da5ff",
+              "recordId": "src-6e52fa8da5ff",
+              "title": "Schumann Resonances discovery and formula (in original German)",
+              "journal": "W.O. Schumann",
+              "year": null,
+              "authors": "",
+              "design": "",
+              "urls": [
+                "https://www.degruyter.com/downloadpdf/j/zna.1952.7.issue-2/zna-1952-0202/zna-1952-0202.pdf"
+              ],
+              "quotes": [],
+              "citationCount": null,
+              "sourcePages": [
+                89
+              ],
+              "targets": [],
+              "categories": [
+                "Methods & context"
+              ],
+              "doi": null,
+              "pmid": null
+            },
+            {
+              "id": "xix-doi-4177d8a1b6597791",
+              "recordId": "doi-4177d8a1b6597791",
+              "title": "ELF Electromagnetic Waves from Lightning: The Schumann Resonances",
+              "journal": "Atmosphere",
+              "year": 2016,
+              "authors": "Colin Price",
+              "design": "",
+              "urls": [
+                "https://doi.org/10.3390/atmos7090116",
+                "https://res.mdpi.com/atmosphere/atmosphere-07-00116/article_deploy/atmosphere-07-00116.pdf?filename=&attachment=1"
+              ],
+              "quotes": [],
+              "citationCount": null,
+              "sourcePages": [
+                89
+              ],
+              "targets": [],
+              "categories": [
+                "Methods & context"
+              ],
+              "doi": "10.3390/atmos7090116",
+              "pmid": null
             }
           ]
         }
@@ -7002,6 +8276,97 @@
               "pmid": "21896752"
             },
             {
+              "id": "xxx-pmid-17994268",
+              "recordId": "pmid-17994268",
+              "title": "Nucleotide Frequencies in Human Genome and Fibonacci Numbers",
+              "journal": "Bulletin of Mathematical Biology",
+              "year": 2008,
+              "authors": "Yamagishi ME, Shimabukuro AI.",
+              "design": "",
+              "urls": [
+                "https://link.springer.com/article/10.1007/s11538-007-9261-6"
+              ],
+              "quotes": [
+                [
+                  {
+                    "text": "“This work presents a mathematical model that establishes an interesting connection between",
+                    "emphasis": false
+                  },
+                  {
+                    "text": " nucleotide frequencies",
+                    "emphasis": true
+                  },
+                  {
+                    "text": " in human single-stranded",
+                    "emphasis": false
+                  },
+                  {
+                    "text": " DNA",
+                    "emphasis": true
+                  },
+                  {
+                    "text": " and the famous",
+                    "emphasis": false
+                  },
+                  {
+                    "text": " Fibonacci",
+                    "emphasis": true
+                  },
+                  {
+                    "text": " ’s numbers.",
+                    "emphasis": false
+                  }
+                ],
+                [
+                  {
+                    "text": "“Under these two hypotheses, it is possible to",
+                    "emphasis": false
+                  },
+                  {
+                    "text": " predict",
+                    "emphasis": true
+                  },
+                  {
+                    "text": " the human",
+                    "emphasis": false
+                  },
+                  {
+                    "text": " nucleotide frequencies",
+                    "emphasis": true
+                  },
+                  {
+                    "text": " with",
+                    "emphasis": false
+                  },
+                  {
+                    "text": " accuracy",
+                    "emphasis": true
+                  },
+                  {
+                    "text": " .”",
+                    "emphasis": false
+                  }
+                ],
+                [
+                  {
+                    "text": "“This result may be used as evidence to the Fibonacci string model that was proposed to the sequence growth of DNA repetitive sequences.”",
+                    "emphasis": false
+                  }
+                ]
+              ],
+              "citationCount": 188,
+              "sourcePages": [
+                120
+              ],
+              "targets": [],
+              "categories": [
+                "Genetics & genomics",
+                "Methods & context"
+              ],
+              "doi": "10.1007/s11538-007-9261-6",
+              "pmid": "17994268"
+            },
+            {
               "id": "xxx-pmid-25935637",
               "recordId": "pmid-25935637",
               "title": "The association between 2D:4D ratio and cognitive empathy is contingent on a common polymorphism in the oxytocin receptor gene (OXTR rs53576)",
@@ -8002,7 +9367,7 @@
   ],
   "source": "Sound Medical Research",
   "sourceSHA256": "e7adb2ee44d4758656ca3c74d0a150bf3b81e75d159874cc7257aa096cdd75fe",
-  "paperCount": 248,
-  "topicCount": 16,
-  "uniquePaperCount": 242
+  "paperCount": 282,
+  "topicCount": 19,
+  "uniquePaperCount": 275
 }

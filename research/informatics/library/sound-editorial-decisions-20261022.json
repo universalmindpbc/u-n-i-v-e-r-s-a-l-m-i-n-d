@@ -1,6 +1,6 @@
 {
   "reviewedOn": "2026-10-22",
-  "status": "Approved Sound structure implemented as a narrative edition for staging proof; EMDR and Mantra narrative reviews remain separate.",
+  "status": "Corrected Sound scope: retain 7.83 Hz and Schumann research. Related therapies, quantum computing, economics and digital health recorded separately pending placement, as clarified by Ben on 22 October 2026.",
   "libraryIntroduction": "A collected library for exploring how sound, vision and language modulate gene expression.",
   "readingBackgrounds": {
     "default": "video",
@@ -24,6 +24,10 @@
         {
           "sourceSubchapter": "ii",
           "title": "528 Hz sound: gene expression, hormonal responses and cell studies"
+        },
+        {
+          "sourceSubchapter": "iii",
+          "title": "7.83 Hz and low-frequency electromagnetic research"
         }
       ]
     },
@@ -68,11 +72,19 @@
     {
       "number": 4,
       "sourceChapter": "V",
-      "title": "Transcranial magnetic stimulation and brain entrainment frequencies",
+      "title": "Electromagnetic stimulation and Schumann resonance",
       "subchapters": [
         {
           "sourceSubchapter": "xiv",
           "title": "Transcranial magnetic stimulation: stimulation frequencies and depression"
+        },
+        {
+          "sourceSubchapter": "xviii",
+          "title": "Schumann resonance, geomagnetic activity and physiological responses"
+        },
+        {
+          "sourceSubchapter": "xix",
+          "title": "Schumann resonances in the Earth–ionosphere cavity"
         }
       ]
     },
@@ -120,15 +132,11 @@
     }
   ],
   "excludeFromSound": [
-    "II / iv–vi: Fibonacci, cosmological, black-hole and DNA-tetrahedron material",
-    "I / iii: 7.83 Hz electromagnetic material",
-    "IV / xiii: music and DMT hypothesis",
-    "V / xv–xix: all chapter V material except TMS",
-    "VI / xxiv–xxvii: virtual reality, near-infrared and art-therapy material",
-    "VII / xxviii: quantum computing",
-    "IX / xxxii–xxxiv: business, economic and digital-engagement material",
-    "X / xxxv: EMDR chapter and cross-link",
-    "XI / xxxvi: mantra, mindfulness and yoga chapter and cross-link"
+    "II / iv–vi: Fibonacci, cosmological, black-hole and DNA-tetrahedron chapter; explicitly excluded by Ben.",
+    "IV / xiii: music and endogenous DMT hypothesis; exclusion recommended in the heading review and accepted with that feedback.",
+    "V / xv–xvii: laser/LED, general electromagnetic-field and ultrasound sections; excluded with the instruction to retain TMS. The later instruction explicitly restores 7.83 Hz and Schumann research.",
+    "X / xxxv: EMDR chapter and cross-link; separate collection review.",
+    "XI / xxxvi: mantra, mindfulness and yoga chapter and cross-link; separate collection review."
   ],
   "tmsFocus": "Retain stimulation frequencies and investigate their possible relevance to auditory brain entrainment. Matching frequency values alone does not demonstrate equivalent mechanisms or effects. Treat transfer as a research question.",
   "specificCorrections": [
@@ -150,5 +158,57 @@
     "Sound",
     "EMDR / Vision",
     "Mantra / Language"
+  ],
+  "scopeCorrection": {
+    "date": "2026-10-22",
+    "restoreTopics": [
+      "iii",
+      "xviii",
+      "xix"
+    ],
+    "restoreIndividualPaper": "pmid-17994268 in retained OXTR topic xxx",
+    "rule": "All entries belonging to retained topics remain available. A heading change does not remove its papers. No new trust scores."
+  },
+  "awaitingPlacement": [
+    {
+      "subchapter": "xxiv",
+      "heading": "Virtual reality interventions for PTSD in veterans",
+      "status": "Recorded; destination undecided; not displayed within Sound."
+    },
+    {
+      "subchapter": "xxv",
+      "heading": "Near-infrared treatment research for traumatic brain injury",
+      "status": "Recorded; destination undecided; not displayed within Sound."
+    },
+    {
+      "subchapter": "xxvi",
+      "heading": "Art therapy with military personnel and veterans",
+      "status": "Recorded; destination undecided; not displayed within Sound."
+    },
+    {
+      "subchapter": "xxvii",
+      "heading": "Art therapy with at-risk youth",
+      "status": "Recorded; destination undecided; not displayed within Sound."
+    },
+    {
+      "subchapter": "xxviii",
+      "heading": "Quantum computing methods for bioinformatics and gene-expression modelling",
+      "status": "Recorded; destination undecided; not displayed within Sound."
+    },
+    {
+      "subchapter": "xxxii",
+      "heading": "Corporate social responsibility and consumer trust",
+      "status": "Recorded; destination undecided; not displayed within Sound."
+    },
+    {
+      "subchapter": "xxxiii",
+      "heading": "Wellbeing, trust and economic participation",
+      "status": "Recorded; destination undecided; not displayed within Sound."
+    },
+    {
+      "subchapter": "xxxiv",
+      "heading": "Gamification and engagement with digital health interventions",
+      "status": "Recorded; destination undecided; not displayed within Sound."
+    }
   ]
 }

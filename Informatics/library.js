@@ -20,9 +20,10 @@
 
   function crosses(score, labelled = false) {
     if (!score) return '';
-    const icon = '<svg viewBox="0 0 18 18" aria-hidden="true"><circle cx="9" cy="9" r="8" fill="currentColor"/><path d="M7 3.5h4V7h3.5v4H11v3.5H7V11H3.5V7H7z" fill="#fff"/></svg>';
+    const icon = '<svg viewBox="0 0 18 18" aria-hidden="true"><circle cx="9" cy="9" r="8" fill="#1468a8" stroke="currentColor" stroke-width=".5"/><path d="M7 3.5h4V7h3.5v4H11v3.5H7V11H3.5V7H7z" fill="#fff"/></svg>';
     return `<span class="trust-score" role="img" aria-label="Topic trust score: ${score} of 3 medical crosses" title="Trust score for this topic">${labelled ? '<span class="trust-label">Trust score</span>' : ''}${icon.repeat(score)}</span>`;
   }
+  $('#trust-key').innerHTML = [[3,'Double-blind randomized controlled trials'],[2,'Single-blind randomized controlled trials'],[1,'General research']].map(([score,label]) => `<div>${crosses(score)}<span>${label}</span></div>`).join('');
   function route(number = 0, topic = '') {
     const url = new URL(location.href);
     for (const key of [...fields, 'record', 'paper', 'gene', 'view', 'chapter']) url.searchParams.delete(key);
@@ -67,14 +68,15 @@
     </article>`;
   }
   function renderContents() {
-    return `<div class="edition-intro"><p class="eyebrow">SOUND RESEARCH</p><h2>Contents</h2><p>6 chapters · 16 topics · selected passages from the research</p></div><div class="contents-grid">${edition.chapters.map(chapter => `<section class="contents-chapter"><h3><span class="chapter-number">${String(chapter.number).padStart(2,'0')}</span><a data-chapter="${chapter.number}" href="${esc(route(chapter.number))}">${esc(chapter.title)}</a></h3><ol>${chapter.topics.map(topic => `<li><a data-chapter="${chapter.number}" data-topic="${topic.id}" href="${esc(route(chapter.number,topic.id))}">${esc(topic.title)}</a>${crosses(topic.trustScore)}</li>`).join('')}</ol></section>`).join('')}</div>`;
+    return `<div class="edition-intro"><p class="eyebrow">SOUND RESEARCH</p><h2>Contents</h2></div><div class="contents-grid">${edition.chapters.map(chapter => `<section class="contents-chapter"><h3><span class="chapter-number">${String(chapter.number).padStart(2,'0')}</span><a data-chapter="${chapter.number}" href="${esc(route(chapter.number))}">${esc(chapter.title)}</a></h3><ol>${chapter.topics.map(topic => `<li><a data-chapter="${chapter.number}" data-topic="${topic.id}" href="${esc(route(chapter.number,topic.id))}">${esc(topic.title)}</a>${crosses(topic.trustScore)}</li>`).join('')}</ol></section>`).join('')}</div>`;
   }
   function renderChapter() {
     const chapter = edition.chapters.find(c => c.number === chapterNumber);
     if (!chapter) { chapterNumber = 0; return renderContents(); }
     const rail = `<aside class="contents-rail" aria-label="Sound contents"><a class="contents-home" data-chapter="0" href="${esc(route())}">← Sound contents</a><ol>${edition.chapters.map(c => `<li><a data-chapter="${c.number}" href="${esc(route(c.number))}" ${c.number === chapterNumber ? 'aria-current="page"' : ''}>${String(c.number).padStart(2,'0')} &nbsp; ${esc(c.title)}</a>${c.number === chapterNumber ? `<ol>${c.topics.map(t => `<li><a data-chapter="${c.number}" data-topic="${t.id}" href="${esc(route(c.number,t.id))}">${esc(t.title)}</a></li>`).join('')}</ol>` : ''}</li>`).join('')}</ol></aside>`;
-    const previous = edition.chapters.find(c => c.number === chapterNumber - 1);
-    const next = edition.chapters.find(c => c.number === chapterNumber + 1);
+    const chapterIndex = edition.chapters.indexOf(chapter);
+    const previous = edition.chapters[chapterIndex - 1];
+    const next = edition.chapters[chapterIndex + 1];
     return `<div class="narrative-layout">${rail}<div class="chapter-reader"><div class="chapter-opening"><p class="eyebrow">SOUND · CHAPTER ${String(chapter.number).padStart(2,'0')}</p><h2>${esc(chapter.title)}</h2></div>${chapter.topics.map(topic => `<section class="topic" id="topic-${topic.id}"><div class="topic-heading"><h3>${esc(topic.title)}</h3>${crosses(topic.trustScore,true)}</div>${topic.papers.map(p => paperMarkup(p)).join('')}</section>`).join('')}<nav class="chapter-pagination" aria-label="Read another chapter">${previous ? `<a data-chapter="${previous.number}" href="${esc(route(previous.number))}">← ${esc(previous.title)}</a>` : `<a data-chapter="0" href="${esc(route())}">← Contents</a>`}${next ? `<a data-chapter="${next.number}" href="${esc(route(next.number))}">${esc(next.title)} →</a>` : `<a data-chapter="0" href="${esc(route())}">Back to contents ↑</a>`}</nav></div></div>`;
   }
   function matchesKind(record, kind) {
@@ -212,7 +214,7 @@
   async function load() {
     $('#load-error').hidden = true;
     try {
-      const responses = await Promise.all([fetch('library-data/sound-edition.json?v=1'),fetch('library-data/library.json?v=1')]);
+      const responses = await Promise.all([fetch('library-data/sound-edition.json?v=2'),fetch('library-data/library.json?v=1')]);
       if (responses.some(response => !response.ok)) throw new Error('Research unavailable');
       const [sound,data] = await Promise.all(responses.map(response=>response.json()));
       if (!Array.isArray(sound.chapters) || !Array.isArray(data.records)) throw new Error('Invalid research data');

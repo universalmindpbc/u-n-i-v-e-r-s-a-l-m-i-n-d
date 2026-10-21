@@ -1,16 +1,15 @@
 {
   "counts": {
-    "paperCount": 248,
-    "topicCount": 16,
-    "uniquePaperCount": 242
+    "paperCount": 282,
+    "topicCount": 19,
+    "uniquePaperCount": 275
   },
-  "omittedFromRetainedTopics": [
-    {
-      "record": "pmid-17994268",
-      "reason": "Fibonacci mathematics excluded from the approved Sound scope."
-    }
-  ],
+  "omittedFromRetainedTopics": [],
   "citationCorrections": [
+    {
+      "record": "src-8ad1130190f0",
+      "change": "Reconciled the title and publication link with PMID 31230462. Isolated the source frequency sentence for review; quotation text retained."
+    },
     {
       "record": "pmid-16314076",
       "change": "Flagged the frequency insertion in the selected source wording without rewriting the quotation."

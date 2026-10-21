@@ -17,7 +17,7 @@ pages = {p['page']: p for p in source['pages']}
 if not CACHE.exists():
  raise SystemExit('Positioned Sound text is required to preserve emphasis. Run tools/extract-informatics-library.py first.')
 raw = {p['page']: p for p in json.loads(CACHE.read_text())}
-starts = {'i':6,'ii':15,'vii':51,'viii':61,'ix':62,'x':70,'xi':72,'xii':75,'xiv':77,'xx':90,'xxi':92,'xxii':106,'xxiii':107,'xxix':116,'xxx':120,'xxxi':126}
+starts = {'i':6,'ii':15,'iii':17,'vii':51,'viii':61,'ix':62,'x':70,'xi':72,'xii':75,'xiv':77,'xviii':84,'xix':89,'xx':90,'xxi':92,'xxii':106,'xxiii':107,'xxiv':109,'xxv':110,'xxvi':111,'xxvii':112,'xxviii':113,'xxix':116,'xxx':120,'xxxi':126,'xxxii':130,'xxxiii':138,'xxxiv':142}
 notes = {
  'ii':'Salivary hormones, gene expression in rat brain tissue and outcomes in cultured cells are different measures. Each study retains its own experimental context.',
  'xi':'The receptor studies in this section include animal experiments and specific NMDA receptor subunits.',
@@ -68,11 +68,17 @@ for chapter in plan['chapters']:
   topic={'id':sub['sourceSubchapter'],'number':f"{chapter['number']}.{idx}",'title':sub['title'],'trustScore':pages[start]['sectionGrade'],'sourcePage':start,'context':notes.get(sub['sourceSubchapter'],''),'papers':[]}
   for r in library['records']:
    for a in r.get('archiveEntries',[]):
-    if a['collection']!='sound' or a['sectionPage']!=start:continue
-    if r['id']=='pmid-17994268':
-     omitted.append({'record':r['id'],'reason':'Fibonacci mathematics excluded from the approved Sound scope.'});continue
+    if a['collection']!='sound' or a['sectionPage'] not in [start,*sub.get('additionalSectionPages',[])]:continue
     quotes=a.get('originalNote','').split('\n\n') if a.get('originalNote') else []
     paper={'id':f"{topic['id']}-{r['id']}",'recordId':r['id'],'title':a['title'],'journal':journal_name(r,a),'year':r.get('year'),'authors':r.get('authors',''),'design':a.get('sourceDesign') or '', 'urls':a.get('urls',[]),'quotes':[quotation(q,a['pages']) for q in quotes], 'citationCount':None,'sourcePages':a['pages'],'targets':r.get('targets',[]),'categories':r.get('categories',[]),'doi':r.get('doi'),'pmid':r.get('pmid')}
+    if topic['id'] in ['iii','xviii','xix'] and (r.get('pmid') or str(r.get('verification','')).startswith('Crossref')):
+     # Use the existing checked bibliographic record to repair line-break truncation.
+     paper.update(title=r['title'],journal=r.get('journal') or paper['journal'])
+     if r.get('doi'):paper['urls']=list(dict.fromkeys(['https://doi.org/'+r['doi'],*paper['urls']]))
+    if r['id']=='src-944ec8023c08':
+     paper.update(title='New Perspectives of Bioelectromagnetics in Biology and in Medicine: DNA Spectra for Diagnostic Purposes',journal='Journal of Physics: Conference Series',doi='10.1088/1742-6596/329/1/012011',year=2011,urls=['https://doi.org/10.1088/1742-6596/329/1/012011',*paper['urls']])
+    if r['id']=='src-5aaad2520e3b':
+     paper.update(journal='Journal of Physics: Conference Series',year=2011,doi='10.1088/1742-6596/306/1/012007',urls=['https://doi.org/10.1088/1742-6596/306/1/012007',*paper['urls']])
     count=re.search(r'citations:\s*(\d[\d,]*)',a.get('historicalCitationCount') or '',re.I)
     if count:paper['citationCount']=int(count[1].replace(',',''))
     if r['id']=='src-8ad1130190f0':
@@ -90,7 +96,11 @@ for chapter in plan['chapters']:
     paper['_order']=(a['pages'][0],position if position>=0 else 999999)
     topic['papers'].append(paper)
   topic['papers'].sort(key=lambda p:p['_order'])
-  for p in topic['papers']:del p['_order']
+  seen_ids=set()
+  for p in topic['papers']:
+   del p['_order']
+   if p['id'] in seen_ids:p['id']+='-p'+str(p['sourcePages'][0])
+   seen_ids.add(p['id'])
   assert topic['papers'],topic['id']
   out['topics'].append(topic)
  chapters.append(out)
@@ -121,8 +131,9 @@ edition={'title':'Sound research','chapters':chapters,'source':'Sound Medical Re
 edition['paperCount']=sum(len(t['papers']) for c in chapters for t in c['topics'])
 edition['topicCount']=sum(len(c['topics']) for c in chapters)
 edition['uniquePaperCount']=len({p['recordId'] for c in chapters for t in c['topics'] for p in t['papers']})
-assert len(chapters)==6 and edition['topicCount']==16
+assert len(chapters)==len(plan['chapters'])
+assert edition['topicCount']==sum(len(c['subchapters']) for c in plan['chapters'])
 assert not re.search(r'ascension|111\s*hz|internet of happiness|epigenetics of happiness',json.dumps(edition),re.I)
 (DATA/'sound-edition.json').write_text(json.dumps(edition,ensure_ascii=False,indent=2)+'\n')
-(ROOT/'research/informatics/library/sound-narrative-audit-20261022.json').write_text(json.dumps({'counts':{k:edition[k] for k in ['paperCount','topicCount','uniquePaperCount']},'omittedFromRetainedTopics':omitted,'citationCorrections':audit,'portalIntegrations':portal_integrations,'trustScores':'Original subsection scores preserved. No article scores added. The IL6 subsection has no score in the PDF. Scores describe the original topic appraisal, not an assessment of later additions.','quotations':'Selected wording preserved; source bold emphasis recovered from positioned PDF text. Known frequency discrepancies are isolated for review.','sourceFilesModified':False},ensure_ascii=False,indent=2)+'\n')
+(ROOT/'research/informatics/library/sound-narrative-audit-20261022.json').write_text(json.dumps({'counts':{k:edition[k] for k in ['paperCount','topicCount','uniquePaperCount']},'omittedFromRetainedTopics':omitted,'citationCorrections':audit,'portalIntegrations':portal_integrations,'trustScores':'Original subsection scores preserved. No article scores added. The IL6 subsection has no score in the PDF. Scores describe the original topic appraisal, not an assessment of later additions.','quotations':'Selected wording preserved; source bold emphasis recovered from positioned PDF text. Known frequency discrepancies are isolated for review.','sourceFilesModified':False,'frequencyPassageReview':'Two disputed frequency passages are retained in structured data for editorial review and omitted from displayed quotations.'},ensure_ascii=False,indent=2)+'\n')
 print(json.dumps({k:edition[k] for k in ['paperCount','topicCount','uniquePaperCount']}))
