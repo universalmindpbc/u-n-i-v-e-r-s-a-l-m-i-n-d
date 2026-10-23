@@ -13,6 +13,7 @@ await p.addInitScript(()=>{
  window.__events=[];window.__sent=[];window.__audios=[];window.__fixtureContexts=[];
  navigator.mediaDevices.getUserMedia=async()=>{
   const ctx=new AudioContext();await ctx.resume();const destination=ctx.createMediaStreamDestination();
+  const silence=ctx.createConstantSource();silence.offset.value=0;silence.connect(destination);silence.start();
   window.__fixtureContexts.push(ctx);window.__fixtureContext=ctx;window.__fixtureDestination=destination;
   return destination.stream;
  };
