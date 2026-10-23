@@ -5,20 +5,23 @@
   const safeURL = value => { try { const url = new URL(value, location.href); return ['https:', 'http:'].includes(url.protocol) ? url.href : '#'; } catch { return '#'; } };
   const normalize = value => String(value ?? '').normalize('NFKC').toLowerCase().replace(/interleukin[\s-]*6|il[\s-]+6/g, 'il6').replace(/oxytocin receptor/g, 'oxtr').replace(/serotonin transporter/g, 'slc6a4').replace(/glucocorticoid receptor/g, 'nr3c1').replace(/[^\p{L}\p{N}+]+/gu, ' ').trim();
   const model = globalThis.UniversalResearchModel;
-  let publicationAccess = {};
+  let publicationAccess = {}, clinicalConditions = {};
+  const multi = globalThis.ResearchMultiSelect;
   const params = new URLSearchParams(location.search);
   const collections = ['sound', 'vision', 'language', 'general', 'all'];
-  const fields = ['query', 'topic', 'journal', 'category', 'physiology', 'target', 'kind', 'period', 'trust', 'jadad', 'sort'];
-  let collection = collections.includes(params.get('collection')) ? params.get('collection') : ['target','gene','record','query'].some(key => params.has(key)) ? 'all' : 'sound';
-  let view = params.get('view') === 'search' || !['sound','vision','language','general'].includes(collection) || ['target','gene','query'].some(key => params.has(key)) ? 'search' : 'chapters';
+  const fields = ['query', 'topic', 'journal', 'category', 'physiology', 'target', 'condition', 'kind', 'period', 'trust', 'jadad', 'sort'];
+  let collection = collections.includes(params.get('collection')) ? params.get('collection') : ['target','gene','record','query','condition'].some(key => params.has(key)) ? 'all' : 'sound';
+  let view = params.get('view') === 'search' || !['sound','vision','language','general'].includes(collection) || ['target','gene','query','condition'].some(key => params.has(key)) ? 'search' : 'chapters';
   let chapterNumber = Number(params.get('chapter')) || 0;
   let edition, editions = {}, records = [], filtered = [], papers = [], pageIndex = 0, articleOpener, loading = true;
   const PAGE_SIZE = 15;
   if (params.get('embedded') === '1') document.body.classList.add('embedded');
   const targets = ['OXTR','OXT','DRD2','SLC6A4','NR3C1','DOCK2','IL6','NMDA','TERRA','NOS3','NAD+','Telomerase','CD38','COL1A1','NOS1','FKBP5','BDNF','CRHR2','TNF','SNCA','FOXP2'];
   $('#target').innerHTML += targets.map(t => `<option>${esc(t)}</option>`).join('');
-  for (const key of fields) if (params.has(key)) $('#'+key).value = params.get(key);
-  if (params.has('gene')) $('#target').value = params.get('gene');
+  const multiFields = fields.filter(key=>!['query','sort'].includes(key));
+  multi.init(multiFields);
+  function restoreFilters(p) { for (const key of fields) { if (multiFields.includes(key)) multi.set(key,p.getAll(key)); else $('#'+key).value=p.get(key) || (key==='sort' ? 'genomics' : ''); } if(p.has('gene'))multi.set('target',[...multi.values('target'),...p.getAll('gene')]); }
+  restoreFilters(params);
 
   function crosses(score, labelled = false, scope = 'Topic') {
     if (!score) return '';
@@ -49,8 +52,9 @@
     } else {
       url.searchParams.set('view', 'search'); url.searchParams.delete('chapter'); url.hash = '';
       for (const key of fields) {
-        const value = $('#'+key).value;
-        if (value && !(key === 'sort' && value === 'genomics')) url.searchParams.set(key, value); else url.searchParams.delete(key);
+        url.searchParams.delete(key);
+        const selected = multiFields.includes(key) ? multi.values(key) : [$('#'+key).value];
+        for (const value of selected) if(value && !(key==='sort' && value==='genomics'))url.searchParams.append(key,value);
       }
     }
     history[push ? 'pushState' : 'replaceState'](null, '', url);
@@ -96,10 +100,10 @@
       ['journal','All journals',relevant.filter(r=>r.journalKey).map(r=>[r.journalKey,r.journalLabel || r.journal])],
       ['topic','All topics',relevant.flatMap(r=>r.topics.filter(t=>collection==='all'||t.collection===collection).map(t=>[t.key,t.title]))]
     ]) {
-      const selected = $('#'+id).value || (loading ? params.get(id) : '') || '';
+      const selected = loading ? params.getAll(id) : multi.values(id);
       const options = [...new Map(values).entries()].sort((a,b)=>a[1].localeCompare(b[1]));
       $('#'+id).innerHTML = `<option value="">${label}</option>`+options.map(([value,title])=>`<option value="${esc(value)}">${esc(title)}</option>`).join('');
-      $('#'+id).value = options.some(([value])=>value===selected) ? selected : '';
+      multi.set(id,selected);
     }
   }
   function renderContents() {
@@ -116,17 +120,28 @@
   }
   function filter() {
     const q = normalize($('#query').value).split(' ').filter(Boolean);
-    const topic = $('#topic').value, journal = $('#journal').value, physiology = $('#physiology').value, category = $('#category').value, target = $('#target').value, kind = $('#kind').value, period = $('#period').value, trust = Number($('#trust').value), jadad = $('#jadad').value;
-    filtered = records.filter(r => (collection === 'all' || r.collections.includes(collection)) && (!topic || r.topics.some(t=>t.key===topic)) && (!journal || r.journalKey===journal) && (!physiology || r.categories.includes(physiology)) && (!category || r.categories.includes(category)) && (!target || r.targets.includes(target)) && model.matchesJadad(r,jadad) && model.matchesStudy(r,kind) && (!period || period === 'recent' && r.year >= 2022 && r.year <= 2026 || period === 'older' && r.year && r.year < 2022) && model.matchesTopicTrust(r,trust,collection,topic) && q.every(word => r._search.includes(word)));
+    const chosen = Object.fromEntries(multiFields.map(key=>[key,multi.values(key)]));
+    const any = (key,test) => !chosen[key].length || chosen[key].some(test);
+    filtered = records.filter(r => (collection==='all' || r.collections.includes(collection)) &&
+      any('topic',v=>r.topics.some(t=>t.key===v)) && any('journal',v=>r.journalKey===v) &&
+      any('physiology',v=>r.categories.includes(v)) && any('category',v=>r.categories.includes(v)) &&
+      any('target',v=>r.targets.includes(v)) && any('condition',v=>r.conditions.includes(v)) &&
+      any('jadad',v=>model.matchesJadad(r,v)) && any('kind',v=>model.matchesStudy(r,v)) &&
+      any('period',v=>v==='recent' && r.year>=2022 && r.year<=2026 || v==='older' && r.year && r.year<2022) &&
+      any('trust',v=>chosen.topic.length ? chosen.topic.some(t=>model.matchesTopicTrust(r,Number(v),collection,t)) : model.matchesTopicTrust(r,Number(v),collection,'')) &&
+      q.every(word=>r._search.includes(word)));
     const sort = $('#sort').value;
     filtered.sort((a,b) => sort === 'title' ? a.title.localeCompare(b.title) : sort === 'newest' ? (b.year || 0)-(a.year || 0) : a.priority-b.priority || (b.year || 0)-(a.year || 0) || a.title.localeCompare(b.title));
-    $('#active-filter-count').textContent = [topic,journal,physiology,category,target,kind,period,trust,jadad].filter(Boolean).length ? `· ${[topic,journal,physiology,category,target,kind,period,trust,jadad].filter(Boolean).length} active` : '';
+    const active = Object.values(chosen).reduce((sum,values)=>sum+values.length,0);
+    $('#active-filter-count').textContent = active ? `· ${active} selected` : '';
+    for(const key of multiFields)multi.refresh(key);
+    multi.chips($('#selected-filters'),search);
     renderResults();
   }
   function selectedEntry(record) {
-    const topic = $('#topic').value, trust = Number($('#trust').value);
-    const eligible = record.chapterEntries.filter(p => (collection === 'all' || p.collection === collection) && (!topic || p.collection+':'+p.topicId === topic));
-    return eligible.find(p => !trust || p.trustScore === trust) || eligible[0];
+    const topics=multi.values('topic'), trust=multi.values('trust').map(Number);
+    const eligible = record.chapterEntries.filter(p => (collection === 'all' || p.collection === collection) && (!topics.length || topics.includes(p.collection+':'+p.topicId)));
+    return eligible.find(p => !trust.length || trust.includes(p.trustScore)) || eligible[0];
   }
   function renderResults() {
     const totalPages = Math.max(1, Math.ceil(filtered.length/PAGE_SIZE));
@@ -160,7 +175,7 @@
   }
   function goChapter(number, topic = '', push = true, destination = collection) {
     collection = destination; view = 'chapters'; chapterNumber = number; pageIndex = 0;
-    for (const key of fields) $('#'+key).value = key === 'sort' ? 'genomics' : '';
+    restoreFilters(new URLSearchParams());
     const url = route(number,topic);
     history[push ? 'pushState' : 'replaceState'](null,'',url);
     render();
@@ -210,7 +225,7 @@
     }).filter(Boolean));
   }
   function search() { if (loading) return; view = 'search'; pageIndex = 0; syncURL(); render(); }
-  function reset() { for (const key of fields) $('#'+key).value = key === 'sort' ? 'genomics' : ''; search(); }
+  function reset() { restoreFilters(new URLSearchParams()); search(); }
   document.addEventListener('click', event => {
     const chapter = event.target.closest('[data-chapter]');
     if (chapter) { if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return; event.preventDefault(); if ($('#article').open) closePaper(); goChapter(Number(chapter.dataset.chapter),chapter.dataset.topic || '',true,chapter.dataset.chapterCollection || collection); return; }
@@ -259,18 +274,20 @@
     view = p.get('view') === 'search' || !['sound','vision','language','general'].includes(collection) ? 'search' : 'chapters';
     chapterNumber = Number(p.get('chapter')) || 0;
     populateFilters();
-    for (const key of fields) $('#'+key).value = p.get(key) || (key === 'sort' ? 'genomics' : '');
+    restoreFilters(p);
     render();
     if (location.hash) document.getElementById(location.hash.slice(1))?.scrollIntoView();
   });
   async function load() {
     $('#load-error').hidden = true;
     try {
-      const responses = await Promise.all(['sound-edition','library','publication-access','language-edition','general-edition','mindfulness-expansion','vision-edition','vision-expansion'].map(name=>fetch('library-data/'+name+'.json?v=20261023e')));
+      const responses = await Promise.all(['sound-edition','library','publication-access','language-edition','general-edition','mindfulness-expansion','vision-edition','vision-expansion','clinical-conditions'].map(name=>fetch('library-data/'+name+'.json?v=20261023f')));
       if (responses.some(response => !response.ok)) throw new Error('Research unavailable');
-      const [sound,data,access,language,general,expansion,vision,visionExpansion] = await Promise.all(responses.map(response=>response.json()));
+      const [sound,data,access,language,general,expansion,vision,visionExpansion,conditions] = await Promise.all(responses.map(response=>response.json()));
       if (!Array.isArray(sound.chapters) || !Array.isArray(data.records)) throw new Error('Invalid research data');
       publicationAccess = {...access.records,...visionExpansion.publicationAccess};
+      clinicalConditions=conditions.records;
+      $('#condition').innerHTML='<option value="">All conditions and symptoms</option>'+conditions.taxonomy.map(t=>`<option value="${esc(t.id)}">${esc(t.label)}</option>`).join('');
       editions = {sound,language,general,vision};
       const byId = new Map(data.records.map(r=>[r.id,r]));
       for (const additional of [...expansion.records,...visionExpansion.records]) {
@@ -286,11 +303,12 @@
         if (resolved?.publicationKey) paper.publicationKey = resolved.publicationKey;
       }
       papers = Object.entries(editions).flatMap(([collection,book])=>book.chapters.flatMap(chapter=>chapter.topics.flatMap(topic=>topic.papers.map(p=>({...p,collection,chapterNumber:chapter.number,topicId:topic.id,topicTitle:topic.title,trustScore:topic.trustScore,evidence:collection==='sound' ? p.evidence : byId.get(p.recordId)?.evidence || p.evidence})))));
-      const selectedTarget=params.get('target') || params.get('gene') || '';
       const allTargets=[...new Set([...targets,...data.records.flatMap(r=>r.targets || [])])].sort();
       $('#target').innerHTML='<option value="">All targets</option>'+allTargets.map(t=>`<option>${esc(t)}</option>`).join('');
-      $('#target').value=selectedTarget;
-      records = buildRecords(data); populateFilters(); loading = false; render();
+      restoreFilters(params);
+      records = buildRecords(data);
+      for(const record of records){record.conditionEvidence=[record.id,...record.aliases].flatMap(id=>clinicalConditions[id] || []);record.conditions=[...new Set(record.conditionEvidence.map(c=>c.id))];}
+      populateFilters(); loading = false; render();
       if (location.hash) document.getElementById(location.hash.slice(1))?.scrollIntoView();
       if (params.get('paper') && papers.some(p=>p.id===params.get('paper'))) showPaper(papers.find(p=>p.id===params.get('paper')));
       else if (params.get('record')) openRecord(params.get('record'));
