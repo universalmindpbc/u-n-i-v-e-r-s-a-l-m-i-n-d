@@ -21,7 +21,7 @@
     if(token!==epoch||pending!==call.call_id)return;
     lastResult=result;pending=null;
     send({type:'conversation.item.create',item:{type:'function_call_output',call_id:call.call_id,output:JSON.stringify({answer:result.answer,sources:result.sources.map(s=>({label:s.label,title:s.title,url:s.url})),version:result.version})}});
-    send({type:'response.create'});
+    send({type:'response.create',response:{tool_choice:'none',instructions:'Answer the current question using the research tool result just returned. Preserve specific study findings, names and relevant numbers. Use general knowledge only to explain them. If no relevant evidence was found, state that distinction. Never invent a project claim. Keep the spoken answer concise; source links are in the transcript.'}});
    }catch(error){if(token!==epoch||pending!==call.call_id)return;pending=null;send({type:'conversation.item.create',item:{type:'function_call_output',call_id:call.call_id,output:JSON.stringify({error:error.message})}});send({type:'response.create'});state('thinking','Research request interrupted. Preparing a response…');}
   }
   function receive(message,token){
@@ -37,8 +37,8 @@
     heard.add(e.item_id);pendingSpeech=null;clearTimeout(transcriptionTimer);
     const question=e.transcript?.trim();if(!question){listen();return;}
     onUser(question);gate();state('thinking','Thinking…');
-    // Decide before any spoken answer. Subject matches force the research tool;
-    // the model still handles synonyms and scientific intent beyond the catalogue.
+    // Research every substantive turn before speech; social acknowledgements
+    // and voice controls are the only direct-conversation bypass.
     const required=window.UniversalOneNeedsResearch?.(question,routingCatalogue,history())??true;
     send({type:'response.create',response:{tool_choice:required?{type:'function',name:'ask_research'}:'auto'}});
    }
@@ -66,7 +66,7 @@
     if(token!==epoch){mic.getTracks().forEach(t=>t.stop());return;}
     stream=mic;stream.getAudioTracks().forEach(t=>{t.enabled=false;try{t.contentHint='speech';}catch{}});onMicrophone(stream);
     await waitForVisible(abort.signal);if(token!==epoch)return;
-    const payload=await(await request('/voice-session',{history:history(),manualTurns:true},abort.signal)).json();if(token!==epoch)return;routingCatalogue=payload.routingCatalogue||[];
+    const payload=await(await request('/voice-session',{manualTurns:true},abort.signal)).json();if(token!==epoch)return;routingCatalogue=payload.routingCatalogue||[];
     const connection=new RTCPeerConnection();peer=connection;remote=new Audio();remote.autoplay=true;remote.muted=suspended;
     connection.ontrack=e=>{if(token!==epoch)return;remote.srcObject=e.streams[0];remote.play().catch(()=>{if(token===epoch)fail('Voice playback was blocked. Select Reconnect to try again.');});};
     connection.onconnectionstatechange=()=>{if(token!==epoch)return;clearTimeout(disconnectTimer);if(['failed','closed'].includes(connection.connectionState))fail('Voice connection ended. Select Reconnect to try again.');else if(connection.connectionState==='disconnected')disconnectTimer=setTimeout(()=>{if(token===epoch&&connection.connectionState==='disconnected')fail('Voice connection interrupted. Select Reconnect to try again.');},5000);};
@@ -78,7 +78,7 @@
     const sdp=await answer.text();if(token!==epoch)return;await connection.setRemoteDescription({type:'answer',sdp});await ready;if(token!==epoch)return;
     await waitForVisible(abort.signal);if(token!==epoch)return;
     active=true;sessionTimer=setTimeout(()=>fail('Voice session complete. Select Reconnect to continue.'),10*60*1000);
-    for(const item of history().slice(-8))send({type:'conversation.item.create',item:{type:'message',role:item.role,content:[{type:item.role==='assistant'?'output_text':'input_text',text:item.content.slice(0,5000)}]}});
+    for(const item of (window.UniversalOneContext?.compactHistory(history())||[]))send({type:'conversation.item.create',item:{type:'message',role:item.role,content:[{type:item.role==='assistant'?'output_text':'input_text',text:item.content.slice(0,5000)}]}});
     send({type:'response.create',response:{instructions:'Say exactly: Namaste. What research question can I help you with? Then wait for the visitor.'}});
    }catch(error){if(token!==epoch)return;fail(error.name==='NotAllowedError'?'Microphone access was denied. Enable it in your browser, or select Text.':error.message);}
   }

@@ -53,6 +53,8 @@ try{
  routed.emit({type:'response.done',response:{status:'completed',output:[]}});await pause(950);
  routed.emit({type:'input_audio_buffer.speech_stopped',item_id:'cancelled'});routed.live.interrupt();
  const cancelledCount=routed.sent.length;routed.emit({type:'conversation.item.input_audio_transcription.completed',item_id:'cancelled',transcript:'Tell me about EMDR'});assert.equal(routed.sent.length,cancelledCount,'Interrupted transcription never sends a late response');
- routed.emit({type:'conversation.item.input_audio_transcription.completed',item_id:'general',transcript:'What is an electron?'});assert.equal(routed.sent.at(-1).response.tool_choice,'auto');
+ routed.emit({type:'conversation.item.input_audio_transcription.completed',item_id:'general',transcript:'What is an electron?'});assert.equal(routed.sent.at(-1).response.tool_choice.name,'ask_research');
+ routed.emit({type:'conversation.item.input_audio_transcription.completed',item_id:'followup',transcript:'How long were the sessions?'});assert.equal(routed.sent.at(-1).response.tool_choice.name,'ask_research');
+ routed.emit({type:'conversation.item.input_audio_transcription.completed',item_id:'thanks',transcript:'Thank you.'});assert.equal(routed.sent.at(-1).response.tool_choice,'auto');
 }finally{routed.live.end();}
-console.log('Speech is routed before generation; specialty retrieval, ordinary concepts, duplicate events and interrupted transcription passed.');
+console.log('Speech is routed before generation; default retrieval, unnamed follow-ups, social bypass, duplicate events and interrupted transcription passed.');

@@ -23,7 +23,7 @@
  host.UniversalOneConversation ||= [];const history=host.UniversalOneConversation;let atlasContext=null,libraryContext=null,messageNumber=0;
  document.addEventListener('atlas:record',e=>{atlasContext={record:e.detail?.id,view:e.detail?.view};});
  window.addEventListener('message',e=>{if(e.origin===location.origin&&e.data?.type==='informatics:research-context')libraryContext=e.data.context;});
- const context=()=>{const frame=document.querySelector('.library-overlay[open] iframe');return {page:location.pathname,atlas:atlasContext||Object.fromEntries(new URLSearchParams(location.search)),library:frame?.contentWindow?.UniversalResearchContext?.()||window.UniversalResearchContext?.()||libraryContext};};
+ const context=()=>{const frame=document.querySelector('.library-overlay[open] iframe');return {page:location.pathname,area:document.querySelector('#experience')?.dataset.area,atlas:atlasContext||Object.fromEntries(new URLSearchParams(location.search)),library:frame?.contentWindow?.UniversalResearchContext?.()||window.UniversalResearchContext?.()||libraryContext};};
  const say=text=>{status.textContent=text;$('.uo-dock-status').textContent=text;};
  const waveform=UniversalOneWaveform(root,[...root.querySelectorAll('[data-waveform]')],()=>mode==='voice'?live.getState().inputEnabled:!!stream?.getAudioTracks().some(t=>t.enabled));
  function labelButton(button,label){button.setAttribute('aria-label',label);button.dataset.label=label;}
@@ -46,7 +46,7 @@
  document.addEventListener('pointerdown',e=>{if(!root.contains(e.target)){menu.hidden=true;sync();}});
  root.addEventListener('keydown',e=>{if(e.key==='Escape'&&opened&&(!panel.hidden||!menu.hidden)){e.preventDefault();e.stopPropagation();minimize();}});
  composer.addEventListener('keydown',e=>{if(e.key==='Enter'&&!e.shiftKey&&!e.isComposing){e.preventDefault();$('.uo-compose').requestSubmit();}});
- async function request(path,body,signal){const response=await fetch(endpoint+path,{method:'POST',headers:body instanceof FormData?{}:{'Content-Type':'application/json'},body:body instanceof FormData?body:JSON.stringify(body),signal});if(!response.ok){const result=await response.json().catch(()=>({}));throw Error(result.error||'Connection interrupted. Please retry.');}return response;}
+ async function request(path,body,signal){if(path==='/research'){await window.UniversalOneHelpersReady;body=window.UniversalOneContext.compactResearchRequest(body);}else if(path==='/voice-session'){body={manualTurns:true};}const response=await fetch(endpoint+path,{method:'POST',headers:body instanceof FormData?{}:{'Content-Type':'application/json'},body:body instanceof FormData?body:JSON.stringify(body),signal});if(!response.ok){const result=await response.json().catch(()=>({}));throw Error(result.error||'Connection interrupted. Please retry.');}return response;}
  function message(role,text,sources=[]){
   $('.uo-welcome')?.remove();const messageId=++messageNumber;const article=document.createElement('article');article.className='uo-message';article.dataset.role=role;
   const title=document.createElement('h3');title.textContent=role==='user'?'You':'Universal One';article.append(title);
