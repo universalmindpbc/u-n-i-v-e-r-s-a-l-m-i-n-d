@@ -3,7 +3,7 @@ import fs from 'node:fs';
 import {needsResearch} from '../../../Informatics/universal-one-routing.js';
 import {ResearchBudget,budget,budgetStatus,BudgetError} from '../../../cloudflare/informatics-research-budget.js';
 const catalogue=JSON.parse(fs.readFileSync(new URL('../../../cloudflare/informatics-research-topics.json',import.meta.url))).terms;
-const questions=['Electronic music making and gene expression.','Are there any studies on the informatics website around music making and gene expression?', 'What is gene expression?', 'transcription', 'EMDR', 'mantra', 'transcendental meditation', 'TM', 'mindfulness', 'yoga', 'molecular hydrogen', 'binaural beats', 'brain entrainment', 'transcranial magnetic stimulation', 'human resonances', 'Schumann resonance', '5 to 8 hertz', '5–8Hz', '7.83Hz', 'OXTR','IL-6','CD38','NR3C1','M9 nested sequences','What is molecular docking?'];
+const questions=['Electronic music making and gene expression.','Are there any studies on the informatics website around music making and gene expression?', 'What is gene expression?', 'transcription', 'EMDR', 'mantra', 'transcendental meditation', 'TM', 'mindfulness', 'yoga', 'molecular hydrogen', 'binaural beats', 'brain entrainment', 'transcranial magnetic stimulation', 'human resonances', 'Schumann resonance', '5 to 8 hertz', '5–8Hz', '7.83Hz', 'OXTR','IL-6','CD38','NR3C1','DOCK2','GRIN1','GRIN2B','7QVM','M9 nested sequences','What is molecular docking?'];
 for(const q of questions)assert(needsResearch(q,catalogue),q);
 for(const q of ['Thank you','What is an electron?','Who discovered gravity?','Namaste'])assert(!needsResearch(q,catalogue),q);
 assert(needsResearch('Which genes changed?',catalogue,[{role:'user',content:questions[0]}]));

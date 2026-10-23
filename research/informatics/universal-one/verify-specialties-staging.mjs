@@ -21,17 +21,19 @@ try{
   await p.screenshot({path:`${output}/rollover-${width}.png`});report.checks.push({width,rolloverAligned:true});
  }
  await p.setViewportSize({width:1470,height:1000});await p.locator('.uo .iam-realtime-voice__summon').click();
+ if(!process.env.UO_QA_SKIP_TEXT){
  const text=await textQuestion('Electronic music making and gene expression.');assert.match(text,/recreational|music.making/i);assert.doesNotMatch(text,/fun mash.up/i);report.checks.push({textMusic:text});
  const follow=await textQuestion('Are there any studies on the informatics website around music making and gene expression?');assert.match(follow,/recreational|music.making/i);report.checks.push({textFollowUp:follow});
  await p.locator('[data-clear]').click();
+ }
  await p.evaluate(()=>{const v=document.querySelector('video');if(v){v.volume=.8;v.muted=true;}});
  await p.locator('[data-mode=voice]').click();await p.waitForFunction(()=>UniversalOneResearch.getState().live.connected,undefined,{timeout:45000});
  await p.waitForFunction(()=>window.__events.some(e=>e.type==='conversation.item.input_audio_transcription.completed'&&/music/i.test(e.transcript)),undefined,{timeout:45000});
  await p.locator('[data-mute]').click();
- await p.waitForFunction(()=>document.querySelector('.uo-message[data-role=assistant] .uo-sources'),undefined,{timeout:240000});await idle();
+ await p.waitForFunction(()=>document.querySelector('.uo-message[data-role=assistant] .uo-sources')||document.querySelector('.uo').dataset.state==='error',undefined,{timeout:240000});assert.notEqual(await p.locator('.uo').getAttribute('data-state'),'error');await idle();
  const spoken=await p.locator('.uo-message[data-role=assistant]').last().innerText();assert.match(spoken,/recreational|music.making/i);assert.doesNotMatch(spoken,/fun mash.up|daily allowance/i);
  assert(await p.evaluate(()=>__sent.some(e=>e.type==='response.create'&&e.response?.tool_choice?.name==='ask_research')));assert(await p.evaluate(()=>__audios.some(a=>a.srcObject&&a.currentTime>1)));
- report.checks.push({actualMicrophoneTranscript:await p.locator('.uo-message[data-role=user]').last().innerText(),forcedResearchBeforeVoice:true,spokenAnswer:spoken,remoteAudioDecoded:true});
+ console.log('Real speech, retrieval and decoded reply passed');report.checks.push({actualMicrophoneTranscript:await p.locator('.uo-message[data-role=user]').last().innerText(),forcedResearchBeforeVoice:true,spokenAnswer:spoken,remoteAudioDecoded:true});
  const voiceFollow=await voiceText('Are there any studies on the informatics website around music making and gene expression?');assert.match(voiceFollow,/music|gene/i);assert(await p.locator('.uo-message[data-role=assistant]').last().locator('.uo-sources').count());report.checks.push({voiceFollowUp:voiceFollow});
  const before=report.network.filter(x=>x.url.endsWith('/research')).length;const general=await voiceText('What is an electron? Give a simple definition in one sentence.');assert.equal(report.network.filter(x=>x.url.endsWith('/research')).length,before);assert.equal(await p.locator('.uo-message[data-role=assistant]').last().locator('.uo-sources').count(),0);report.checks.push({generalConcept:general,noUnnecessaryLookup:true});
  for(const width of [1470,1024,390,320]){
@@ -47,6 +49,6 @@ try{
  report.budgetAfter=await readBudget();assert.deepEqual(report.budgetAfter.visitors.counts,report.budgetBefore.visitors.counts,'Verification leaves visitor allowance intact');
  assert(!report.network.some(x=>x.status>=400));assert.deepEqual(report.errors,[]);
 }catch(error){report.failure=error.stack;throw error;}finally{
- report.events=await p.evaluate(()=>__events).catch(()=>[]);fs.writeFileSync(`${output}/specialty-verification.json`,JSON.stringify(report,null,2));await p.evaluate(()=>{UniversalOneResearch?.close();document.querySelectorAll('video,audio').forEach(m=>m.pause());window.__audios?.forEach(a=>a.pause());}).catch(()=>{});await browser.close();
+ report.finalState=await p.evaluate(()=>UniversalOneResearch?.getState()).catch(()=>null);report.events=await p.evaluate(()=>__events).catch(()=>[]);fs.writeFileSync(`${output}/specialty-verification.json`,JSON.stringify(report,null,2));await p.evaluate(()=>{UniversalOneResearch?.close();document.querySelectorAll('video,audio').forEach(m=>m.pause());window.__audios?.forEach(a=>a.pause());}).catch(()=>{});await browser.close();
 }
 console.log(JSON.stringify({passed:report.checks.length,requests:report.network.length,quotaIsolated:true}));

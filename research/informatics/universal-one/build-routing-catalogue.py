@@ -18,6 +18,9 @@ for record in records:
     for key in ('targets','categories','conditions'):
         for value in record.get(key,[]): add(value)
     for value in re.split(r'[,;&/]| and ',record.get('strand','')): add(value)
+# Include the Molecular Atlas symbols and receptor names as well as library tags.
+for record in json.loads((root/'Informatics/molecular/data/catalogue.json').read_text())['records']:
+    for value in [record['id'],record.get('name',''),record.get('pdb',''),*record.get('genes',[])]: add(value)
 for name in ('sound','vision','language','general'):
     edition=json.loads((data/(name+'-edition.json')).read_text())
     for chapter in edition['chapters']:
