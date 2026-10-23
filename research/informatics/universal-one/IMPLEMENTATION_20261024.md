@@ -12,6 +12,8 @@ Visibility changes disable microphone transmission and mute remote playback whil
 
 Realtime answers general scientific concepts directly. Astra remains available for deeper reasoning, library-specific questions and Atlas evidence. General conceptual questions sent to Astra also permit a direct explanation without a mandatory literature search. Exact library claims, specific study findings, Atlas values and recorded project hypotheses retain retrieval requirements. Generic concepts receive no invented citations or citations inherited from an earlier answer. Spoken updates are brief and optional; the UI uses “Thinking…” instead of announcing a database search on every request.
 
+Verification passed on permanent staging: real text, editable dictation, automatic speech turn detection, a cited M9 answer, and a general molecular-docking answer with no research round trip. Permission/visibility lifecycle checks, four viewport widths, three theme variables, icon-menu keyboard navigation and shared research-lightbox sessions passed. The final spoken count check correctly reports 811 publications with 149 permitted full texts as a subset. Automated browsers used --mute-audio and were closed after checks. Native Safari fullscreen was not invoked.
+
 The sections below record the earlier implementation and verification. The refinement has its own source commit and verification-planet-20261024.json audit.
 
 ## Delivered
