@@ -45,3 +45,7 @@
  .uo-actions{gap:6px}.uo-actions button{padding:7px 10px}
  .uo-dock{right:91px;width:min(250px,calc(100vw - 119px));padding:10px 12px}
 }
+
+.uo .uo-character-toggle{opacity:0;pointer-events:none;visibility:hidden;transition:visibility 0s linear 350ms}
+.uo.is-active .uo-character-toggle{opacity:1;pointer-events:auto;visibility:visible;transition-delay:0s}
+.uo[data-mode=voice] .uo-message>button{display:none}
