@@ -42,9 +42,9 @@ export async function createInteraction(engine,kind,data,onChange,onPick){
   return mesh(name,(s,g)=>{g(color,name);for(let i=0;i<6;i++)MeshBuilder.addTriangle(s,ring.center,ring.points[i],ring.points[(i+1)%6]);},.20);
  }
  function camera(center,r,normal){
-  const n=normal||[.7,.35,1],len=Math.hypot(...n),position=center.map((v,i)=>v+n[i]/len*r*3.3);
+  const mobileQuantum=innerWidth<760&&kind==='quantum',n=normal||[.7,.35,1],len=Math.hypot(...n),position=center.map((v,i)=>v+n[i]/len*r*3.3*(mobileQuantum?1.3:1));
   const snap=plugin.managers.camera.getFocusSphereSnapshot({center,radius:r},{extraRadius:1});
-  snap.position=position;snap.target=center;snap.up=[0,1,0];snap.radius=r*3;snap.radiusMax=r*7;
+  snap.position=position;snap.target=[...center];snap.up=[0,1,0];if(mobileQuantum){snap.position[1]+=r*.5;snap.target[1]+=r*.5;}snap.radius=r*3;snap.radiusMax=r*7;
   plugin.canvas3d.camera.setState(snap,350);engine.rememberCamera(snap);
  }
  let moving,ringLigand,fullPocket,ringPocket,tyrPlane,phePlane,contacts;
