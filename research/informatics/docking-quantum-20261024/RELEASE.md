@@ -21,3 +21,5 @@ Scientific data checks, existing Molecular Atlas coordinate/geometry checks, gen
 ## Release boundary
 
 Existing Panthur Informatics-only staging workflow. Source is committed before upload. The completed manifest and live proof are committed and pushed to origin/staging. No production deployment, main update or production tag is authorized.
+
+Final deployed source: `02b9540aa2707eda382bf4941d24388207f67ca3`. All four viewport widths and both embedded journeys pass against live HTTP after the final metadata corrections. Thirteen changed website files and nine preserved shared assets match the committed bytes. The final staging verification commit contains this report, screenshots and the deployment manifest.
