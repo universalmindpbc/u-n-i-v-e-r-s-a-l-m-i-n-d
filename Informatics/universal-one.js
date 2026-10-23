@@ -12,6 +12,9 @@
  <form class="uo-compose"><p class="uo-status" role="status">Ready when you are.</p><label for="uo-question" class="sr-only">Research question</label><textarea id="uo-question" maxlength="4000" placeholder="Ask a research question…" rows="2"></textarea><div class="uo-actions"><button type="button" data-clear>New chat</button><button type="button" data-record aria-pressed="false">Dictate</button><button type="button" data-stop hidden>Stop</button><button type="submit" data-send>Send ↑</button></div><p class="uo-privacy">AI answers and voice · Check the linked evidence. This chat stays in this page; messages and recordings are sent to OpenAI when used.</p></form>
  </section>`;
  document.body.append(root);
+ // Keep the companion in the active fullscreen subtree without requesting fullscreen.
+ const placeInExperience=()=>{const container=document.fullscreenElement||document.webkitFullscreenElement||document.body;if(root.parentElement!==container)container.append(root);};
+ document.addEventListener('fullscreenchange',placeInExperience);document.addEventListener('webkitfullscreenchange',placeInExperience);placeInExperience();
  const $=s=>root.querySelector(s),panel=$('.uo-panel'),summon=$('.iam-realtime-voice__summon'),log=$('.uo-log'),composer=$('textarea'),status=$('.uo-status'),recordButton=$('[data-record]'),stopButton=$('[data-stop]'),sendButton=$('[data-send]');
  let mode='text',busy=false,controller=null,stream=null,recorder=null,chunks=[],recordTimer=0,generation=0,audio=null,audioURL=null,poseTimer=0,inputGateUntil=0;
  const audioOwner=Symbol('Universal One');const duck=active=>window.UniversalOneAudio?.set(audioOwner,active);
