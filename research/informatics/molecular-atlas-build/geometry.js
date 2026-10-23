@@ -4,7 +4,7 @@ const add=(a,b)=>a.map((x,i)=>x+b[i]),sub=(a,b)=>a.map((x,i)=>x-b[i]),mul=(a,s)=
 const dot=(a,b)=>a.reduce((s,x,i)=>s+x*b[i],0),norm=a=>mul(a,1/Math.hypot(...a));
 const cross=(a,b)=>[a[1]*b[2]-a[2]*b[1],a[2]*b[0]-a[0]*b[2],a[0]*b[1]-a[1]*b[0]];
 const tetra=[[1,1,1],[1,-1,-1],[-1,1,-1],[-1,-1,1]].map(norm);
-export const geometryNames={tetrahedron:'Tetrahedron',cube:'Cube',octahedron:'Octahedron',dodecahedron:'Dodecahedron',icosahedron:'Icosahedron',stellated:'Stellated octahedron',odom:'Odom · tetrahedral study',phi:'Phi sphere'};
+export const geometryNames={tetrahedron:'Tetrahedron',cube:'Cube',octahedron:'Octahedron',dodecahedron:'Dodecahedron',icosahedron:'Icosahedron',stellated:'Stellated octahedron','truncated-icosahedron':'Truncated icosahedron',odom:'Odom · tetrahedral study',phi:'Phi sphere'};
 export function geometry(name){
  let vertices=[],edges=[],segments=[],points=[],note='',ratio=null;
  if(name==='tetrahedron')vertices=tetra;
@@ -15,12 +15,21 @@ export function geometry(name){
   for(const x of [-1,1])for(const y of [-1,1])for(const z of [-1,1])vertices.push([x,y,z]);
   for(const a of [-1/PHI,1/PHI])for(const b of [-PHI,PHI])vertices.push([0,a,b],[a,b,0],[b,0,a]);
  }
+ if(name==='truncated-icosahedron'){
+  // Truncate every icosahedron edge at one third from each endpoint.
+  const ico=geometry('icosahedron');
+  for(const [i,j] of ico.edges){
+   const a=ico.vertices[i],b=ico.vertices[j];
+   vertices.push(mul(add(mul(a,2),b),1/3),mul(add(a,mul(b,2)),1/3));
+  }
+ }
  if(vertices.length){
   vertices=vertices.map(norm);let min=Infinity;
   for(let i=0;i<vertices.length;i++)for(let j=i+1;j<vertices.length;j++)min=Math.min(min,Math.hypot(...sub(vertices[i],vertices[j])));
   for(let i=0;i<vertices.length;i++)for(let j=i+1;j<vertices.length;j++)if(Math.abs(Math.hypot(...sub(vertices[i],vertices[j]))-min)<1e-7)edges.push([i,j]);
   note='Regular solid · uniform circumradius. Position and scale are exploratory.';
  }
+ if(name==='truncated-icosahedron')note='Archimedean solid · 12 pentagons and 20 hexagons. The ideal geometric form associated with buckminsterfullerene (C₆₀). Position and scale are exploratory.';
  if(name==='stellated'){
   vertices=[...tetra,...tetra.map(v=>mul(v,-1))];
   for(const offset of [0,4])for(let i=0;i<4;i++)for(let j=i+1;j<4;j++)edges.push([i+offset,j+offset]);

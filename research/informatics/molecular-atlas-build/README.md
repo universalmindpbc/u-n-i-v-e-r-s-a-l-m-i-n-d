@@ -45,11 +45,14 @@ Run `node tools/check-molecular-genes.mjs` for DNA source, strand, exon and boun
 
 ## Geometry
 
-Five Platonic solids use analytic unit-radius vertices, with edges selected by their common minimum distance. The stellated octahedron is the compound of two opposite tetrahedra. Odom's original planar midpoint/circumcircle construction is repeated on four faces of a tetrahedron. This tetrahedral arrangement is an explicitly labelled exploratory extension. Its midpoint-segment/adjacent-extension ratio equals `(1 + sqrt(5)) / 2`. The Phi sphere contains 89 points with angular increment `2π(1 − 1/φ)`.
+Five Platonic solids use analytic unit-radius vertices, with edges selected by their common minimum distance. The stellated octahedron is the compound of two opposite tetrahedra. The truncated icosahedron follows it in the menu. It is an Archimedean solid formed by cutting each icosahedron edge at one third from both endpoints, then normalising the 60 resulting vertices to unit circumradius. Its 90 equal edges bound 12 regular pentagons and 20 regular hexagons; this is the ideal geometry associated with C₆₀, not an atomistic carbon model. Odom's original planar midpoint/circumcircle construction is repeated on four faces of a tetrahedron. This tetrahedral arrangement is an explicitly labelled exploratory extension. Its midpoint-segment/adjacent-extension ratio equals `(1 + sqrt(5)) / 2`. The Phi sphere contains 89 points with angular increment `2π(1 − 1/φ)`.
 
 Geometry is centred on the target bounding sphere, with independently controlled scale, Y-axis rotation, X-axis offset and opacity. No spatial fit or biological mechanism is inferred. View exports contain the structure checksum, camera and all geometric parameters.
 
 ## References
+
+- Truncated icosahedron: https://mathworld.wolfram.com/TruncatedIcosahedron.html
+- Buckminsterfullerene terminology: https://www.acs.org/molecule-of-the-week/archive/b/buckminsterfullerene.html
 
 - RCSB entry and publication links are preserved per target in `data/catalogue.json`.
 - Mol*: https://molstar.org/ (MIT license preserved with the bundled engine).
