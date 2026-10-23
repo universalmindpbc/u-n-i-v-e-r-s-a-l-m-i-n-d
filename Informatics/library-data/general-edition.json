@@ -8534,9 +8534,936 @@
           "number": "7.3"
         }
       ]
+    },
+    {
+      "number": 8,
+      "title": "Neurotransmitters, stress and synaptic plasticity",
+      "topics": [
+        {
+          "id": "neurotransmitter-signalling",
+          "title": "Oxytocin, serotonin and dopamine signalling",
+          "papers": [
+            {
+              "title": "CD38 is critical for social behaviour by regulating oxytocin secretion",
+              "journal": "Nature",
+              "year": 2007,
+              "authors": "Duo Jin; Hong-Xiang Liu; Hirokazu Hirai; Takashi Torashima; Taku Nagai; Olga Lopatina; Natalia A. Shnayder; Kiyofumi Yamada; Mami Noda; Toshihiro Seike; Kyota Fujita; Shin Takasawa; Shigeru Yokoyama; Keita Koizumi; Yoshitake Shiraishi; Shigenori Tanaka; Minako Hashii; Toru Yoshihara; Kazuhiro Higashida; Mohammad Saharul Islam; Nobuaki Yamada; Kenshi Hayashi; Naoya Noguchi; Ichiro Kato; Hiroshi Okamoto; Akihiro Matsushima; Alla Salmina; Toshio Munesue; Nobuaki Shimizu; Sumiko Mochida; Masahide Asano; Haruhiro Higashida",
+              "design": "Experimental mouse study",
+              "urls": [
+                "https://www.nature.com/articles/nature05526",
+                "https://doi.org/10.1038/nature05526",
+                "https://pubmed.ncbi.nlm.nih.gov/17287729/"
+              ],
+              "doi": "10.1038/nature05526",
+              "pmid": "17287729",
+              "targets": [
+                "CD38",
+                "OXT"
+              ],
+              "neurotransmitters": [
+                "Oxytocin"
+              ],
+              "categories": [
+                "Molecular biomarkers"
+              ],
+              "citationCount": 585,
+              "citationSnapshot": {
+                "count": 585,
+                "source": "Crossref",
+                "retrievedAt": "2026-10-23",
+                "url": "https://api.crossref.org/works/10.1038/nature05526"
+              },
+              "studyDesignAssessment": {
+                "category": "peer-reviewed",
+                "peerReviewed": true,
+                "basis": "Experimental mouse study. No masked human randomized trial classification is assigned.",
+                "sources": [
+                  "https://www.nature.com/articles/nature05526",
+                  "https://doi.org/10.1038/nature05526",
+                  "https://pubmed.ncbi.nlm.nih.gov/17287729/"
+                ],
+                "reviewedAt": "2026-10-23"
+              },
+              "evidence": {
+                "evidenceType": "Molecular biomarkers",
+                "sample": "Cd38-knockout and control mice",
+                "measurement": "Oxytocin secretion, calcium signalling and social behaviour",
+                "measuredGenes": [],
+                "relationshipNote": "A mechanistic animal study; it does not establish a clinical treatment effect in humans.",
+                "sourceURLs": [
+                  "https://www.nature.com/articles/nature05526",
+                  "https://doi.org/10.1038/nature05526",
+                  "https://pubmed.ncbi.nlm.nih.gov/17287729/"
+                ],
+                "checkedAt": "2026-10-23"
+              },
+              "id": "general-neurotransmitter-signalling-pmid-17287729",
+              "recordId": "pmid-17287729",
+              "quotes": [],
+              "sourcePages": [],
+              "summary": "Mice lacking CD38 had reduced oxytocin secretion and impaired maternal and social behaviour. Oxytocin administration or restoration of CD38 rescued aspects of the behavioural changes, linking CD38-dependent calcium signalling to oxytocin release.",
+              "limitation": "A mechanistic animal study; it does not establish a clinical treatment effect in humans."
+            },
+            {
+              "title": "Social reward requires coordinated activity of nucleus accumbens oxytocin and serotonin",
+              "journal": "Nature",
+              "year": 2013,
+              "authors": "Gül Dölen; Ayeh Darvishzadeh; Kee Wui Huang; Robert C. Malenka",
+              "design": "Experimental mouse study",
+              "urls": [
+                "https://www.nature.com/articles/nature12518",
+                "https://doi.org/10.1038/nature12518",
+                "https://pmc.ncbi.nlm.nih.gov/articles/PMC4091761/",
+                "https://pubmed.ncbi.nlm.nih.gov/24025838/"
+              ],
+              "doi": "10.1038/nature12518",
+              "pmid": "24025838",
+              "targets": [
+                "OXTR",
+                "HTR1B"
+              ],
+              "neurotransmitters": [
+                "Oxytocin",
+                "Serotonin"
+              ],
+              "categories": [
+                "Brain & nervous system"
+              ],
+              "citationCount": 1160,
+              "citationSnapshot": {
+                "count": 1160,
+                "source": "Crossref",
+                "retrievedAt": "2026-10-23",
+                "url": "https://api.crossref.org/works/10.1038/nature12518"
+              },
+              "studyDesignAssessment": {
+                "category": "peer-reviewed",
+                "peerReviewed": true,
+                "basis": "Experimental mouse study. No masked human randomized trial classification is assigned.",
+                "sources": [
+                  "https://www.nature.com/articles/nature12518",
+                  "https://doi.org/10.1038/nature12518",
+                  "https://pmc.ncbi.nlm.nih.gov/articles/PMC4091761/",
+                  "https://pubmed.ncbi.nlm.nih.gov/24025838/"
+                ],
+                "reviewedAt": "2026-10-23"
+              },
+              "evidence": {
+                "evidenceType": "Brain & nervous system",
+                "sample": "Mice",
+                "measurement": "Receptor deletion, pharmacology, synaptic responses and social reward",
+                "measuredGenes": [],
+                "relationshipNote": "The experiments identify a mouse neural mechanism. They do not measure SLC6A4 gene expression or test a human therapy.",
+                "sourceURLs": [
+                  "https://www.nature.com/articles/nature12518",
+                  "https://doi.org/10.1038/nature12518",
+                  "https://pmc.ncbi.nlm.nih.gov/articles/PMC4091761/",
+                  "https://pubmed.ncbi.nlm.nih.gov/24025838/"
+                ],
+                "checkedAt": "2026-10-23"
+              },
+              "id": "general-neurotransmitter-signalling-pmid-24025838",
+              "recordId": "pmid-24025838",
+              "quotes": [],
+              "sourcePages": [],
+              "summary": "In mice, social reward required coordinated oxytocin and serotonin signalling in the nucleus accumbens. Removing oxytocin receptors from dorsal raphe inputs, or blocking accumbens serotonin 5-HT1B receptors, prevented the rewarding effect of social interaction.",
+              "limitation": "The experiments identify a mouse neural mechanism. They do not measure SLC6A4 gene expression or test a human therapy."
+            },
+            {
+              "title": "Evidence for the existence of dopamine d2-oxytocin receptor heteromers in the ventral and dorsal striatum with facilitatory receptor–receptor interactions",
+              "journal": "Molecular Psychiatry",
+              "year": 2012,
+              "authors": "W Romero-Fernandez; D O Borroto-Escuela; L F Agnati; K Fuxe",
+              "design": "Laboratory receptor-interaction study; research letter",
+              "urls": [
+                "https://www.nature.com/articles/mp2012103",
+                "https://doi.org/10.1038/mp.2012.103",
+                "https://pubmed.ncbi.nlm.nih.gov/22824810/"
+              ],
+              "doi": "10.1038/mp.2012.103",
+              "pmid": "22824810",
+              "targets": [
+                "DRD2",
+                "OXTR"
+              ],
+              "neurotransmitters": [
+                "Dopamine",
+                "Oxytocin"
+              ],
+              "categories": [
+                "Molecular biomarkers"
+              ],
+              "citationCount": 149,
+              "citationSnapshot": {
+                "count": 149,
+                "source": "Crossref",
+                "retrievedAt": "2026-10-23",
+                "url": "https://api.crossref.org/works/10.1038/mp.2012.103"
+              },
+              "studyDesignAssessment": {
+                "category": "peer-reviewed",
+                "peerReviewed": true,
+                "basis": "Laboratory receptor-interaction study; research letter. No masked human randomized trial classification is assigned.",
+                "sources": [
+                  "https://www.nature.com/articles/mp2012103",
+                  "https://doi.org/10.1038/mp.2012.103",
+                  "https://pubmed.ncbi.nlm.nih.gov/22824810/"
+                ],
+                "reviewedAt": "2026-10-23"
+              },
+              "evidence": {
+                "evidenceType": "Molecular biomarkers",
+                "sample": "Laboratory receptor and rat striatal preparations",
+                "measurement": "Receptor proximity and functional receptor interactions",
+                "measuredGenes": [],
+                "relationshipNote": "Receptor interactions in laboratory preparations do not establish their clinical importance or demonstrate a change in gene expression.",
+                "sourceURLs": [
+                  "https://www.nature.com/articles/mp2012103",
+                  "https://doi.org/10.1038/mp.2012.103",
+                  "https://pubmed.ncbi.nlm.nih.gov/22824810/"
+                ],
+                "checkedAt": "2026-10-23"
+              },
+              "id": "general-neurotransmitter-signalling-pmid-22824810",
+              "recordId": "pmid-22824810",
+              "quotes": [],
+              "sourcePages": [],
+              "summary": "The authors report dopamine D2–oxytocin receptor complexes in the ventral and dorsal striatum, with facilitatory interactions between the receptors. The findings provide a molecular explanation to investigate alongside wider evidence linking dopamine and oxytocin to social behaviour.",
+              "limitation": "Receptor interactions in laboratory preparations do not establish their clinical importance or demonstrate a change in gene expression."
+            },
+            {
+              "title": "The neural mechanisms and circuitry of the pair bond",
+              "journal": "Nature Reviews Neuroscience",
+              "year": 2018,
+              "authors": "Hasse Walum; Larry J. Young",
+              "design": "Narrative review",
+              "urls": [
+                "https://www.nature.com/articles/s41583-018-0072-6",
+                "https://doi.org/10.1038/s41583-018-0072-6",
+                "https://pmc.ncbi.nlm.nih.gov/articles/PMC6283620/",
+                "https://pubmed.ncbi.nlm.nih.gov/30301953/"
+              ],
+              "doi": "10.1038/s41583-018-0072-6",
+              "pmid": "30301953",
+              "targets": [
+                "OXTR",
+                "DRD2",
+                "AVPR1A"
+              ],
+              "neurotransmitters": [
+                "Oxytocin",
+                "Dopamine",
+                "Vasopressin"
+              ],
+              "categories": [
+                "Brain & nervous system"
+              ],
+              "citationCount": 346,
+              "citationSnapshot": {
+                "count": 346,
+                "source": "Crossref",
+                "retrievedAt": "2026-10-23",
+                "url": "https://api.crossref.org/works/10.1038/s41583-018-0072-6"
+              },
+              "studyDesignAssessment": {
+                "category": "review",
+                "peerReviewed": true,
+                "basis": "Narrative review. No masked human randomized trial classification is assigned.",
+                "sources": [
+                  "https://www.nature.com/articles/s41583-018-0072-6",
+                  "https://doi.org/10.1038/s41583-018-0072-6",
+                  "https://pmc.ncbi.nlm.nih.gov/articles/PMC6283620/",
+                  "https://pubmed.ncbi.nlm.nih.gov/30301953/"
+                ],
+                "reviewedAt": "2026-10-23"
+              },
+              "evidence": {
+                "evidenceType": "Brain & nervous system",
+                "sample": "Animal studies and human attachment research",
+                "measurement": "Review of neural circuits and receptor mechanisms",
+                "measuredGenes": [],
+                "relationshipNote": "A narrative synthesis with substantial animal evidence; it is not a pooled estimate of a human treatment effect.",
+                "sourceURLs": [
+                  "https://www.nature.com/articles/s41583-018-0072-6",
+                  "https://doi.org/10.1038/s41583-018-0072-6",
+                  "https://pmc.ncbi.nlm.nih.gov/articles/PMC6283620/",
+                  "https://pubmed.ncbi.nlm.nih.gov/30301953/"
+                ],
+                "checkedAt": "2026-10-23"
+              },
+              "id": "general-neurotransmitter-signalling-pmid-30301953",
+              "recordId": "pmid-30301953",
+              "quotes": [],
+              "sourcePages": [],
+              "summary": "This review describes how oxytocin, dopamine and vasopressin interact with reward and social-memory circuits during pair-bond formation and maintenance. It connects experimental work in prairie voles and other animals with questions about human attachment.",
+              "limitation": "A narrative synthesis with substantial animal evidence; it is not a pooled estimate of a human treatment effect."
+            },
+            {
+              "title": "Oxytocin-dependent reopening of a social reward learning critical period with MDMA",
+              "journal": "Nature",
+              "year": 2019,
+              "authors": "Romain Nardou; Eastman M. Lewis; Rebecca Rothhaas; Ran Xu; Aimei Yang; Edward Boyden; Gül Dölen",
+              "design": "Experimental mouse study",
+              "urls": [
+                "https://www.nature.com/articles/s41586-019-1075-9",
+                "https://doi.org/10.1038/s41586-019-1075-9",
+                "https://pubmed.ncbi.nlm.nih.gov/30944474/"
+              ],
+              "doi": "10.1038/s41586-019-1075-9",
+              "pmid": "30944474",
+              "targets": [
+                "OXTR",
+                "SLC6A4"
+              ],
+              "neurotransmitters": [
+                "Oxytocin",
+                "Serotonin",
+                "Dopamine"
+              ],
+              "categories": [
+                "Brain & nervous system"
+              ],
+              "citationCount": 308,
+              "citationSnapshot": {
+                "count": 308,
+                "source": "Crossref",
+                "retrievedAt": "2026-10-23",
+                "url": "https://api.crossref.org/works/10.1038/s41586-019-1075-9"
+              },
+              "studyDesignAssessment": {
+                "category": "peer-reviewed",
+                "peerReviewed": true,
+                "basis": "Experimental mouse study. No masked human randomized trial classification is assigned.",
+                "sources": [
+                  "https://www.nature.com/articles/s41586-019-1075-9",
+                  "https://doi.org/10.1038/s41586-019-1075-9",
+                  "https://pubmed.ncbi.nlm.nih.gov/30944474/"
+                ],
+                "reviewedAt": "2026-10-23"
+              },
+              "evidence": {
+                "evidenceType": "Brain & nervous system",
+                "sample": "Mice",
+                "measurement": "Social-reward learning, pharmacology and synaptic plasticity",
+                "measuredGenes": [],
+                "relationshipNote": "An animal mechanism study. SLC6A4 is indexed for serotonin-transporter involvement, not a measured change in its gene expression. The study does not establish human treatment efficacy.",
+                "sourceURLs": [
+                  "https://www.nature.com/articles/s41586-019-1075-9",
+                  "https://doi.org/10.1038/s41586-019-1075-9",
+                  "https://pubmed.ncbi.nlm.nih.gov/30944474/"
+                ],
+                "checkedAt": "2026-10-23"
+              },
+              "id": "general-neurotransmitter-signalling-pmid-30944474",
+              "recordId": "pmid-30944474",
+              "quotes": [],
+              "sourcePages": [],
+              "summary": "In adult mice, MDMA reopened a developmental period for social-reward learning. The effect involved oxytocin-dependent plasticity in the nucleus accumbens, connecting serotonergic drug action with oxytocin signalling and social learning.",
+              "limitation": "An animal mechanism study. SLC6A4 is indexed for serotonin-transporter involvement, not a measured change in its gene expression. The study does not establish human treatment efficacy."
+            },
+            {
+              "title": "Functional involvement of septal miR-132 in extinction and oxytocin-mediated reversal of social fear",
+              "journal": "Molecular Psychiatry",
+              "year": 2023,
+              "authors": "Anna Bludau; Uwe Schwartz; Daniela M. Zeitler; Melanie Royer; Gunter Meister; Inga D. Neumann; Rohit Menon",
+              "design": "Experimental mouse molecular study",
+              "urls": [
+                "https://www.nature.com/articles/s41380-023-02309-3",
+                "https://doi.org/10.1038/s41380-023-02309-3",
+                "https://pmc.ncbi.nlm.nih.gov/articles/PMC11371636/",
+                "https://pubmed.ncbi.nlm.nih.gov/37938765/"
+              ],
+              "doi": "10.1038/s41380-023-02309-3",
+              "pmid": "37938765",
+              "targets": [
+                "OXTR",
+                "MIR132",
+                "GDF5"
+              ],
+              "neurotransmitters": [
+                "Oxytocin"
+              ],
+              "categories": [
+                "Gene expression"
+              ],
+              "citationCount": 14,
+              "citationSnapshot": {
+                "count": 14,
+                "source": "Crossref",
+                "retrievedAt": "2026-10-23",
+                "url": "https://api.crossref.org/works/10.1038/s41380-023-02309-3"
+              },
+              "studyDesignAssessment": {
+                "category": "peer-reviewed",
+                "peerReviewed": true,
+                "basis": "Experimental mouse molecular study. No masked human randomized trial classification is assigned.",
+                "sources": [
+                  "https://www.nature.com/articles/s41380-023-02309-3",
+                  "https://doi.org/10.1038/s41380-023-02309-3",
+                  "https://pmc.ncbi.nlm.nih.gov/articles/PMC11371636/",
+                  "https://pubmed.ncbi.nlm.nih.gov/37938765/"
+                ],
+                "reviewedAt": "2026-10-23"
+              },
+              "evidence": {
+                "evidenceType": "Gene expression",
+                "sample": "Male mice",
+                "measurement": "Septal microRNA expression and manipulation; social-fear behaviour",
+                "measuredGenes": [
+                  "MIR132",
+                  "GDF5"
+                ],
+                "relationshipNote": "The molecular and behavioural findings come from male mice; they do not establish a therapy or biomarker for human social anxiety.",
+                "sourceURLs": [
+                  "https://www.nature.com/articles/s41380-023-02309-3",
+                  "https://doi.org/10.1038/s41380-023-02309-3",
+                  "https://pmc.ncbi.nlm.nih.gov/articles/PMC11371636/",
+                  "https://pubmed.ncbi.nlm.nih.gov/37938765/"
+                ],
+                "checkedAt": "2026-10-23"
+              },
+              "id": "general-neurotransmitter-signalling-pmid-37938765",
+              "recordId": "pmid-37938765",
+              "quotes": [],
+              "sourcePages": [],
+              "summary": "Septal miR-132 contributed to social-fear extinction and oxytocin-mediated reversal of social fear in male mice. Manipulation in oxytocin-receptor-expressing neurons linked this microRNA to behavioural responses and downstream Gdf5 regulation.",
+              "limitation": "The molecular and behavioural findings come from male mice; they do not establish a therapy or biomarker for human social anxiety."
+            },
+            {
+              "title": "Effects of intranasal oxytocin on fear extinction learning",
+              "journal": "Neuropsychopharmacology",
+              "year": 2024,
+              "authors": "Mahmoud Rashidi; Joe J. Simon; Katja Bertsch; Gerhard Vincent Wegen; Beate Ditzen; Herta Flor; Valery Grinevich; Robert Christian Wolf; Sabine C. Herpertz",
+              "design": "Double-blind randomized placebo-controlled trial",
+              "urls": [
+                "https://www.nature.com/articles/s41386-024-01996-y",
+                "https://doi.org/10.1038/s41386-024-01996-y",
+                "https://pmc.ncbi.nlm.nih.gov/articles/PMC11735929/",
+                "https://pubmed.ncbi.nlm.nih.gov/39313675/"
+              ],
+              "doi": "10.1038/s41386-024-01996-y",
+              "pmid": "39313675",
+              "targets": [],
+              "neurotransmitters": [
+                "Oxytocin"
+              ],
+              "categories": [
+                "Brain & nervous system"
+              ],
+              "citationCount": 8,
+              "citationSnapshot": {
+                "count": 8,
+                "source": "Crossref",
+                "retrievedAt": "2026-10-23",
+                "url": "https://api.crossref.org/works/10.1038/s41386-024-01996-y"
+              },
+              "studyDesignAssessment": {
+                "category": "double-blind-rct",
+                "peerReviewed": true,
+                "basis": "The article reports a randomized, double-blind, placebo-controlled human experiment. Its outcome is laboratory fear extinction.",
+                "sources": [
+                  "https://www.nature.com/articles/s41386-024-01996-y",
+                  "https://doi.org/10.1038/s41386-024-01996-y",
+                  "https://pmc.ncbi.nlm.nih.gov/articles/PMC11735929/",
+                  "https://pubmed.ncbi.nlm.nih.gov/39313675/"
+                ],
+                "reviewedAt": "2026-10-23"
+              },
+              "evidence": {
+                "evidenceType": "Brain & nervous system",
+                "sample": "124 healthy women",
+                "measurement": "Fear conditioning and extinction responses",
+                "measuredGenes": [],
+                "relationshipNote": "Healthy participants completed a laboratory conditioning task. The trial did not test a clinical PTSD treatment or measure gene expression.",
+                "sourceURLs": [
+                  "https://www.nature.com/articles/s41386-024-01996-y",
+                  "https://doi.org/10.1038/s41386-024-01996-y",
+                  "https://pmc.ncbi.nlm.nih.gov/articles/PMC11735929/",
+                  "https://pubmed.ncbi.nlm.nih.gov/39313675/"
+                ],
+                "checkedAt": "2026-10-23"
+              },
+              "id": "general-neurotransmitter-signalling-pmid-39313675",
+              "recordId": "pmid-39313675",
+              "quotes": [],
+              "sourcePages": [],
+              "summary": "In 124 healthy women, intranasal oxytocin impaired fear-extinction learning relative to placebo. The result challenges the assumption that oxytocin uniformly improves extinction and highlights the importance of timing and experimental context.",
+              "limitation": "Healthy participants completed a laboratory conditioning task. The trial did not test a clinical PTSD treatment or measure gene expression."
+            },
+            {
+              "title": "Interdependency between oxytocin and dopamine in trust-based learning in mice",
+              "journal": "Scientific Reports",
+              "year": 2026,
+              "authors": "Samuel Budniok; Zsuzsanna Callaerts-Vegh; Marian Bakermans-Kranenburg; Guy Bosmans; Rudi D’Hooge",
+              "design": "Experimental mouse study",
+              "urls": [
+                "https://www.nature.com/articles/s41598-026-38976-9",
+                "https://doi.org/10.1038/s41598-026-38976-9",
+                "https://pmc.ncbi.nlm.nih.gov/articles/PMC12957489/",
+                "https://pubmed.ncbi.nlm.nih.gov/41663511/"
+              ],
+              "doi": "10.1038/s41598-026-38976-9",
+              "pmid": "41663511",
+              "targets": [],
+              "neurotransmitters": [
+                "Oxytocin",
+                "Dopamine"
+              ],
+              "categories": [
+                "Brain & nervous system"
+              ],
+              "citationCount": 1,
+              "citationSnapshot": {
+                "count": 1,
+                "source": "Crossref",
+                "retrievedAt": "2026-10-23",
+                "url": "https://api.crossref.org/works/10.1038/s41598-026-38976-9"
+              },
+              "studyDesignAssessment": {
+                "category": "peer-reviewed",
+                "peerReviewed": true,
+                "basis": "Experimental mouse study. No masked human randomized trial classification is assigned.",
+                "sources": [
+                  "https://www.nature.com/articles/s41598-026-38976-9",
+                  "https://doi.org/10.1038/s41598-026-38976-9",
+                  "https://pmc.ncbi.nlm.nih.gov/articles/PMC12957489/",
+                  "https://pubmed.ncbi.nlm.nih.gov/41663511/"
+                ],
+                "reviewedAt": "2026-10-23"
+              },
+              "evidence": {
+                "evidenceType": "Brain & nervous system",
+                "sample": "Mice",
+                "measurement": "Social transmission of food preference and pharmacological manipulation",
+                "measuredGenes": [],
+                "relationshipNote": "“Trust” is operationalised through a mouse food-learning task. The experiment does not directly measure human trust or DRD2 gene expression.",
+                "sourceURLs": [
+                  "https://www.nature.com/articles/s41598-026-38976-9",
+                  "https://doi.org/10.1038/s41598-026-38976-9",
+                  "https://pmc.ncbi.nlm.nih.gov/articles/PMC12957489/",
+                  "https://pubmed.ncbi.nlm.nih.gov/41663511/"
+                ],
+                "checkedAt": "2026-10-23"
+              },
+              "id": "general-neurotransmitter-signalling-pmid-41663511",
+              "recordId": "pmid-41663511",
+              "quotes": [],
+              "sourcePages": [],
+              "summary": "Oxytocin and dopamine interacted during socially acquired food-preference learning in mice. Oxytocin affected updating after an aversive outcome, and dopamine depletion removed this effect, indicating dependence on intact dopaminergic signalling.",
+              "limitation": "“Trust” is operationalised through a mouse food-learning task. The experiment does not directly measure human trust or DRD2 gene expression."
+            }
+          ],
+          "trustScore": 1,
+          "trustAssessment": {
+            "status": "assessed",
+            "peerReviewedPapers": 8,
+            "basis": "At least 3 peer-reviewed journal articles",
+            "reviewedAt": "2026-10-23"
+          }
+        },
+        {
+          "id": "oxytocin-sensory",
+          "title": "Oxytocin receptors and sensory experience",
+          "papers": [
+            {
+              "title": "Quantitative cellular-resolution map of the oxytocin receptor in postnatally developing mouse brains",
+              "journal": "Nature Communications",
+              "year": 2020,
+              "authors": "Kyra T. Newmaster; Zachary T. Nolan; Uree Chon; Daniel J. Vanselow; Abigael R. Weit; Manal Tabbaa; Shizu Hidema; Katsuhiko Nishimori; Elizabeth A. D. Hammock; Yongsoo Kim",
+              "design": "Experimental developmental brain-mapping study",
+              "urls": [
+                "https://www.nature.com/articles/s41467-020-15659-1",
+                "https://doi.org/10.1038/s41467-020-15659-1",
+                "https://pmc.ncbi.nlm.nih.gov/articles/PMC7171089/",
+                "https://pubmed.ncbi.nlm.nih.gov/32313029/"
+              ],
+              "doi": "10.1038/s41467-020-15659-1",
+              "pmid": "32313029",
+              "targets": [
+                "OXTR"
+              ],
+              "neurotransmitters": [
+                "Oxytocin"
+              ],
+              "categories": [
+                "Gene expression"
+              ],
+              "citationCount": 124,
+              "citationSnapshot": {
+                "count": 124,
+                "source": "Crossref",
+                "retrievedAt": "2026-10-23",
+                "url": "https://api.crossref.org/works/10.1038/s41467-020-15659-1"
+              },
+              "studyDesignAssessment": {
+                "category": "peer-reviewed",
+                "peerReviewed": true,
+                "basis": "Experimental developmental brain-mapping study. No masked human randomized trial classification is assigned.",
+                "sources": [
+                  "https://www.nature.com/articles/s41467-020-15659-1",
+                  "https://doi.org/10.1038/s41467-020-15659-1",
+                  "https://pmc.ncbi.nlm.nih.gov/articles/PMC7171089/",
+                  "https://pubmed.ncbi.nlm.nih.gov/32313029/"
+                ],
+                "reviewedAt": "2026-10-23"
+              },
+              "evidence": {
+                "evidenceType": "Gene expression",
+                "sample": "Postnatally developing mice",
+                "measurement": "Oxytocin receptor reporter imaging and in situ RNA measurements",
+                "measuredGenes": [
+                  "OXTR"
+                ],
+                "relationshipNote": "Mouse developmental maps do not establish the corresponding receptor distribution or functional connections in the human brain.",
+                "sourceURLs": [
+                  "https://www.nature.com/articles/s41467-020-15659-1",
+                  "https://doi.org/10.1038/s41467-020-15659-1",
+                  "https://pmc.ncbi.nlm.nih.gov/articles/PMC7171089/",
+                  "https://pubmed.ncbi.nlm.nih.gov/32313029/"
+                ],
+                "checkedAt": "2026-10-23"
+              },
+              "id": "general-oxytocin-sensory-pmid-32313029",
+              "recordId": "pmid-32313029",
+              "quotes": [],
+              "sourcePages": [],
+              "summary": "Cellular-resolution maps show that oxytocin receptor expression changes across brain regions and postnatal development in mice. Reporter imaging and RNA measurements identify transient cortical expression and region-specific patterns, providing an anatomical reference for oxytocin research.",
+              "limitation": "Mouse developmental maps do not establish the corresponding receptor distribution or functional connections in the human brain."
+            },
+            {
+              "title": "Oxytocin mediates early experience–dependent cross-modal plasticity in the sensory cortices",
+              "journal": "Nature Neuroscience",
+              "year": 2014,
+              "authors": "Jing-Jing Zheng; Shu-Jing Li; Xiao-Di Zhang; Wan-Ying Miao; Dinghong Zhang; Haishan Yao; Xiang Yu",
+              "design": "Experimental mouse study",
+              "urls": [
+                "https://www.nature.com/articles/nn.3634",
+                "https://doi.org/10.1038/nn.3634",
+                "https://pubmed.ncbi.nlm.nih.gov/24464043/"
+              ],
+              "doi": "10.1038/nn.3634",
+              "pmid": "24464043",
+              "targets": [
+                "OXT"
+              ],
+              "neurotransmitters": [
+                "Oxytocin"
+              ],
+              "categories": [
+                "Brain & nervous system"
+              ],
+              "citationCount": 198,
+              "citationSnapshot": {
+                "count": 198,
+                "source": "Crossref",
+                "retrievedAt": "2026-10-23",
+                "url": "https://api.crossref.org/works/10.1038/nn.3634"
+              },
+              "studyDesignAssessment": {
+                "category": "peer-reviewed",
+                "peerReviewed": true,
+                "basis": "Experimental mouse study. No masked human randomized trial classification is assigned.",
+                "sources": [
+                  "https://www.nature.com/articles/nn.3634",
+                  "https://doi.org/10.1038/nn.3634",
+                  "https://pubmed.ncbi.nlm.nih.gov/24464043/"
+                ],
+                "reviewedAt": "2026-10-23"
+              },
+              "evidence": {
+                "evidenceType": "Brain & nervous system",
+                "sample": "Developing mice exposed to sensory deprivation",
+                "measurement": "Oxytocin synthesis and release; cortical synaptic transmission",
+                "measuredGenes": [],
+                "relationshipNote": "Experiments in developing mice; the study does not test EMDR, music therapy or a human clinical intervention.",
+                "sourceURLs": [
+                  "https://www.nature.com/articles/nn.3634",
+                  "https://doi.org/10.1038/nn.3634",
+                  "https://pubmed.ncbi.nlm.nih.gov/24464043/"
+                ],
+                "checkedAt": "2026-10-23"
+              },
+              "id": "general-oxytocin-sensory-pmid-24464043",
+              "recordId": "pmid-24464043",
+              "quotes": [],
+              "sourcePages": [],
+              "summary": "Early sensory deprivation altered oxytocin synthesis and release and reduced excitatory synaptic transmission across sensory cortices in mice. Oxytocin treatment restored aspects of this transmission, linking early sensory experience to oxytocin-dependent cortical plasticity.",
+              "limitation": "Experiments in developing mice; the study does not test EMDR, music therapy or a human clinical intervention."
+            },
+            {
+              "title": "Neural circuitry for maternal oxytocin release induced by infant cries",
+              "journal": "Nature",
+              "year": 2023,
+              "authors": "Silvana Valtcheva; Habon A. Issa; Chloe J. Bair-Marshall; Kathleen A. Martin; Kanghoon Jung; Yiyao Zhang; Hyung-Bae Kwon; Robert C. Froemke",
+              "design": "Experimental mouse neural-circuit study",
+              "urls": [
+                "https://www.nature.com/articles/s41586-023-06540-4",
+                "https://doi.org/10.1038/s41586-023-06540-4",
+                "https://pmc.ncbi.nlm.nih.gov/articles/PMC10639004/",
+                "https://pubmed.ncbi.nlm.nih.gov/37730989/"
+              ],
+              "doi": "10.1038/s41586-023-06540-4",
+              "pmid": "37730989",
+              "targets": [
+                "OXT"
+              ],
+              "neurotransmitters": [
+                "Oxytocin"
+              ],
+              "categories": [
+                "Brain & nervous system"
+              ],
+              "citationCount": 110,
+              "citationSnapshot": {
+                "count": 110,
+                "source": "Crossref",
+                "retrievedAt": "2026-10-23",
+                "url": "https://api.crossref.org/works/10.1038/s41586-023-06540-4"
+              },
+              "studyDesignAssessment": {
+                "category": "peer-reviewed",
+                "peerReviewed": true,
+                "basis": "Experimental mouse neural-circuit study. No masked human randomized trial classification is assigned.",
+                "sources": [
+                  "https://www.nature.com/articles/s41586-023-06540-4",
+                  "https://doi.org/10.1038/s41586-023-06540-4",
+                  "https://pmc.ncbi.nlm.nih.gov/articles/PMC10639004/",
+                  "https://pubmed.ncbi.nlm.nih.gov/37730989/"
+                ],
+                "reviewedAt": "2026-10-23"
+              },
+              "evidence": {
+                "evidenceType": "Brain & nervous system",
+                "sample": "Maternal mice",
+                "measurement": "Neural recordings, circuit manipulation and oxytocin release",
+                "measuredGenes": [],
+                "relationshipNote": "The study examines maternal responses to infant calls in mice. It does not test music, brain entrainment or human stress reduction.",
+                "sourceURLs": [
+                  "https://www.nature.com/articles/s41586-023-06540-4",
+                  "https://doi.org/10.1038/s41586-023-06540-4",
+                  "https://pmc.ncbi.nlm.nih.gov/articles/PMC10639004/",
+                  "https://pubmed.ncbi.nlm.nih.gov/37730989/"
+                ],
+                "checkedAt": "2026-10-23"
+              },
+              "id": "general-oxytocin-sensory-pmid-37730989",
+              "recordId": "pmid-37730989",
+              "quotes": [],
+              "sourcePages": [],
+              "summary": "Pup calls activated a thalamus-to-hypothalamus pathway that promoted maternal oxytocin release in mice. Prolonged disinhibition of oxytocin neurons linked an auditory social cue to neuropeptide release.",
+              "limitation": "The study examines maternal responses to infant calls in mice. It does not test music, brain entrainment or human stress reduction."
+            }
+          ],
+          "trustScore": 1,
+          "trustAssessment": {
+            "status": "assessed",
+            "peerReviewedPapers": 3,
+            "basis": "At least 3 peer-reviewed journal articles",
+            "reviewedAt": "2026-10-23"
+          }
+        },
+        {
+          "id": "stress-plasticity",
+          "title": "Stress, inflammation and synaptic plasticity",
+          "papers": [
+            {
+              "title": "Epigenetic regulation of the glucocorticoid receptor in human brain associates with childhood abuse",
+              "journal": "Nature Neuroscience",
+              "year": 2009,
+              "authors": "Patrick O McGowan; Aya Sasaki; Ana C D'Alessio; Sergiy Dymov; Benoit Labonté; Moshe Szyf; Gustavo Turecki; Michael J Meaney",
+              "design": "Human postmortem observational study and laboratory assays",
+              "urls": [
+                "https://www.nature.com/articles/nn.2270",
+                "https://doi.org/10.1038/nn.2270",
+                "https://pmc.ncbi.nlm.nih.gov/articles/PMC2944040/",
+                "https://pubmed.ncbi.nlm.nih.gov/19234457/"
+              ],
+              "doi": "10.1038/nn.2270",
+              "pmid": "19234457",
+              "targets": [
+                "NR3C1"
+              ],
+              "neurotransmitters": [],
+              "categories": [
+                "Epigenetics"
+              ],
+              "citationCount": 2913,
+              "citationSnapshot": {
+                "count": 2913,
+                "source": "Crossref",
+                "retrievedAt": "2026-10-23",
+                "url": "https://api.crossref.org/works/10.1038/nn.2270"
+              },
+              "studyDesignAssessment": {
+                "category": "observational",
+                "peerReviewed": true,
+                "basis": "Human postmortem observational study and laboratory assays. No masked human randomized trial classification is assigned.",
+                "sources": [
+                  "https://www.nature.com/articles/nn.2270",
+                  "https://doi.org/10.1038/nn.2270",
+                  "https://pmc.ncbi.nlm.nih.gov/articles/PMC2944040/",
+                  "https://pubmed.ncbi.nlm.nih.gov/19234457/"
+                ],
+                "reviewedAt": "2026-10-23"
+              },
+              "evidence": {
+                "evidenceType": "Epigenetics",
+                "sample": "Human postmortem hippocampal tissue",
+                "measurement": "NR3C1 promoter methylation and messenger RNA",
+                "measuredGenes": [
+                  "NR3C1"
+                ],
+                "relationshipNote": "Postmortem associations cannot establish that childhood adversity caused the molecular differences or that the pattern applies to every exposed person.",
+                "sourceURLs": [
+                  "https://www.nature.com/articles/nn.2270",
+                  "https://doi.org/10.1038/nn.2270",
+                  "https://pmc.ncbi.nlm.nih.gov/articles/PMC2944040/",
+                  "https://pubmed.ncbi.nlm.nih.gov/19234457/"
+                ],
+                "checkedAt": "2026-10-23"
+              },
+              "id": "general-stress-plasticity-pmid-19234457",
+              "recordId": "pmid-19234457",
+              "quotes": [],
+              "sourcePages": [],
+              "summary": "Hippocampal tissue from suicide victims with a history of childhood abuse showed altered glucocorticoid-receptor promoter methylation and lower receptor transcript levels. Laboratory promoter assays supported a potential regulatory link between methylation and transcription.",
+              "limitation": "Postmortem associations cannot establish that childhood adversity caused the molecular differences or that the pattern applies to every exposed person."
+            },
+            {
+              "title": "Social stress induces neurovascular pathology promoting depression",
+              "journal": "Nature Neuroscience",
+              "year": 2017,
+              "authors": "Caroline Menard; Madeline L. Pfau; Georgia E. Hodes; Veronika Kana; Victoria X. Wang; Sylvain Bouchard; Aki Takahashi; Meghan E. Flanigan; Hossein Aleyasin; Katherine B. LeClair; William G. Janssen; Benoit Labonté; Eric M. Parise; Zachary S. Lorsch; Sam A. Golden; Mitra Heshmati; Carol Tamminga; Gustavo Turecki; Matthew Campbell; Zahi A. Fayad; Cheuk Ying Tang; Miriam Merad; Scott J. Russo",
+              "design": "Experimental mouse study with human postmortem comparison",
+              "urls": [
+                "https://www.nature.com/articles/s41593-017-0010-3",
+                "https://doi.org/10.1038/s41593-017-0010-3",
+                "https://pmc.ncbi.nlm.nih.gov/articles/PMC5726568/",
+                "https://pubmed.ncbi.nlm.nih.gov/29184215/"
+              ],
+              "doi": "10.1038/s41593-017-0010-3",
+              "pmid": "29184215",
+              "targets": [
+                "IL6",
+                "CLDN5"
+              ],
+              "neurotransmitters": [],
+              "categories": [
+                "Molecular biomarkers"
+              ],
+              "citationCount": 971,
+              "citationSnapshot": {
+                "count": 971,
+                "source": "Crossref",
+                "retrievedAt": "2026-10-23",
+                "url": "https://api.crossref.org/works/10.1038/s41593-017-0010-3"
+              },
+              "studyDesignAssessment": {
+                "category": "peer-reviewed",
+                "peerReviewed": true,
+                "basis": "Experimental mouse study with human postmortem comparison. No masked human randomized trial classification is assigned.",
+                "sources": [
+                  "https://www.nature.com/articles/s41593-017-0010-3",
+                  "https://doi.org/10.1038/s41593-017-0010-3",
+                  "https://pmc.ncbi.nlm.nih.gov/articles/PMC5726568/",
+                  "https://pubmed.ncbi.nlm.nih.gov/29184215/"
+                ],
+                "reviewedAt": "2026-10-23"
+              },
+              "evidence": {
+                "evidenceType": "Molecular biomarkers",
+                "sample": "Mice and human postmortem tissue",
+                "measurement": "Blood–brain barrier permeability, CLDN5 expression and IL-6 protein",
+                "measuredGenes": [
+                  "CLDN5"
+                ],
+                "relationshipNote": "Causal manipulations were performed in mice. IL-6 infiltration is a protein-level finding; the human comparison is observational.",
+                "sourceURLs": [
+                  "https://www.nature.com/articles/s41593-017-0010-3",
+                  "https://doi.org/10.1038/s41593-017-0010-3",
+                  "https://pmc.ncbi.nlm.nih.gov/articles/PMC5726568/",
+                  "https://pubmed.ncbi.nlm.nih.gov/29184215/"
+                ],
+                "checkedAt": "2026-10-23"
+              },
+              "id": "general-stress-plasticity-pmid-29184215",
+              "recordId": "pmid-29184215",
+              "quotes": [],
+              "sourcePages": [],
+              "summary": "Chronic social stress reduced the tight-junction protein claudin-5 in susceptible mice, increasing blood–brain barrier permeability and allowing peripheral IL-6 into the brain. Reduced CLDN5 was also observed in postmortem tissue from people with depression.",
+              "limitation": "Causal manipulations were performed in mice. IL-6 infiltration is a protein-level finding; the human comparison is observational."
+            },
+            {
+              "title": "NMDA receptor trafficking in synaptic plasticity and neuropsychiatric disorders",
+              "journal": "Nature Reviews Neuroscience",
+              "year": 2007,
+              "authors": "C. Geoffrey Lau; R. Suzanne Zukin",
+              "design": "Narrative review",
+              "urls": [
+                "https://www.nature.com/articles/nrn2153",
+                "https://doi.org/10.1038/nrn2153",
+                "https://pubmed.ncbi.nlm.nih.gov/17514195/"
+              ],
+              "doi": "10.1038/nrn2153",
+              "pmid": "17514195",
+              "targets": [
+                "NMDA"
+              ],
+              "neurotransmitters": [],
+              "categories": [
+                "Brain & nervous system"
+              ],
+              "citationCount": 993,
+              "citationSnapshot": {
+                "count": 993,
+                "source": "Crossref",
+                "retrievedAt": "2026-10-23",
+                "url": "https://api.crossref.org/works/10.1038/nrn2153"
+              },
+              "studyDesignAssessment": {
+                "category": "review",
+                "peerReviewed": true,
+                "basis": "Narrative review. No masked human randomized trial classification is assigned.",
+                "sources": [
+                  "https://www.nature.com/articles/nrn2153",
+                  "https://doi.org/10.1038/nrn2153",
+                  "https://pubmed.ncbi.nlm.nih.gov/17514195/"
+                ],
+                "reviewedAt": "2026-10-23"
+              },
+              "evidence": {
+                "evidenceType": "Brain & nervous system",
+                "sample": "Cellular, animal and neuropsychiatric literature",
+                "measurement": "Review of receptor trafficking and synaptic plasticity",
+                "measuredGenes": [],
+                "relationshipNote": "NMDA denotes a receptor family. This review does not establish a direct OXTR interaction or the efficacy of a particular intervention.",
+                "sourceURLs": [
+                  "https://www.nature.com/articles/nrn2153",
+                  "https://doi.org/10.1038/nrn2153",
+                  "https://pubmed.ncbi.nlm.nih.gov/17514195/"
+                ],
+                "checkedAt": "2026-10-23"
+              },
+              "id": "general-stress-plasticity-pmid-17514195",
+              "recordId": "pmid-17514195",
+              "quotes": [],
+              "sourcePages": [],
+              "summary": "This review explains how NMDA receptor trafficking and subunit composition influence synaptic plasticity, and discusses their relevance to neuropsychiatric disorders. It provides background for interpreting activity-dependent changes in excitatory signalling.",
+              "limitation": "NMDA denotes a receptor family. This review does not establish a direct OXTR interaction or the efficacy of a particular intervention."
+            }
+          ],
+          "trustScore": 1,
+          "trustAssessment": {
+            "status": "assessed",
+            "peerReviewedPapers": 3,
+            "basis": "At least 3 peer-reviewed journal articles",
+            "reviewedAt": "2026-10-23"
+          }
+        }
+      ]
     }
   ],
-  "paperCount": 296,
-  "topicCount": 21,
-  "uniquePaperCount": 293
+  "paperCount": 310,
+  "topicCount": 24,
+  "uniquePaperCount": 307
 }

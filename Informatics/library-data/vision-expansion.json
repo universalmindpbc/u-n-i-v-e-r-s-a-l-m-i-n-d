@@ -3889,10 +3889,12 @@
     },
     "src-4d549c318fe9": {
       "urls": [
-        "https://apps.who.int/iris/bitstream/handle/10665/85623/9789241505932_eng.pdf"
+        "https://www.who.int/publications/i/item/mhgap-module-assessment-management-of-conditions-specifically-related-to-stress",
+        "https://www.ncbi.nlm.nih.gov/sites/books/NBK190416/"
       ],
       "journalLabel": "World Health Organisation and UNHCR",
-      "journalKey": ""
+      "journalKey": "",
+      "pmid": "24649518"
     },
     "src-35cb6bd28036": {
       "urls": [

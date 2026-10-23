@@ -9181,6 +9181,65 @@
                 "checkedAt": "2026-10-23",
                 "reviewScope": "Publication abstract and selected full-text methods; Jadad assessment pending"
               }
+            },
+            {
+              "title": "Meditation and vacation effects have an impact on disease-associated molecular phenotypes",
+              "journal": "Translational Psychiatry",
+              "year": 2016,
+              "authors": "E S Epel; E Puterman; J Lin; E H Blackburn; P Y Lum; N D Beckmann; J Zhu; E Lee; A Gilbert; R A Rissman; R E Tanzi; E E Schadt",
+              "design": "Randomized retreat comparison with an observational experienced-meditator group",
+              "urls": [
+                "https://www.nature.com/articles/tp2016164",
+                "https://doi.org/10.1038/tp.2016.164",
+                "https://pmc.ncbi.nlm.nih.gov/articles/PMC5022094/",
+                "https://pubmed.ncbi.nlm.nih.gov/27576169/"
+              ],
+              "doi": "10.1038/tp.2016.164",
+              "pmid": "27576169",
+              "targets": [],
+              "neurotransmitters": [],
+              "categories": [
+                "Gene expression"
+              ],
+              "citationCount": 92,
+              "citationSnapshot": {
+                "count": 92,
+                "source": "Crossref",
+                "retrievedAt": "2026-10-23",
+                "url": "https://api.crossref.org/works/10.1038/tp.2016.164"
+              },
+              "studyDesignAssessment": {
+                "category": "rct",
+                "peerReviewed": true,
+                "basis": "Novices were randomized to meditation or vacation; experienced meditators formed a separate observational group. Masked molecular superiority of meditation was not established.",
+                "sources": [
+                  "https://www.nature.com/articles/tp2016164",
+                  "https://doi.org/10.1038/tp.2016.164",
+                  "https://pmc.ncbi.nlm.nih.gov/articles/PMC5022094/",
+                  "https://pubmed.ncbi.nlm.nih.gov/27576169/"
+                ],
+                "reviewedAt": "2026-10-23"
+              },
+              "evidence": {
+                "evidenceType": "Gene expression",
+                "sample": "Healthy women: meditation-naive participants randomized to retreat or vacation, plus experienced meditators",
+                "measurement": "Blood transcriptome and disease-associated molecular phenotypes",
+                "measuredGenes": [],
+                "relationshipNote": "The experienced-meditator group was not randomized. Shared changes across groups cannot be attributed specifically to meditation.",
+                "sourceURLs": [
+                  "https://www.nature.com/articles/tp2016164",
+                  "https://doi.org/10.1038/tp.2016.164",
+                  "https://pmc.ncbi.nlm.nih.gov/articles/PMC5022094/",
+                  "https://pubmed.ncbi.nlm.nih.gov/27576169/"
+                ],
+                "checkedAt": "2026-10-23"
+              },
+              "id": "language-mindfulness-rna-pmid-27576169",
+              "recordId": "pmid-27576169",
+              "quotes": [],
+              "sourcePages": [],
+              "summary": "A six-day resort stay was associated with substantial blood gene-expression changes in both meditation and vacation groups. Experienced meditators showed additional molecular patterns, but the randomized novice-meditation comparison did not establish a gene-expression advantage over vacation.",
+              "limitation": "The experienced-meditator group was not randomized. Shared changes across groups cannot be attributed specifically to meditation."
             }
           ],
           "trustAssessment": {
@@ -9225,7 +9284,7 @@
         {
           "id": "mindfulness-epigenetics",
           "title": "Mindfulness, DNA methylation and genetic variation",
-          "trustScore": null,
+          "trustScore": 1,
           "papers": [
             {
               "id": "language-mindfulness-epigenetics-pmid-38671329",
@@ -9361,26 +9420,79 @@
                 "checkedAt": "2026-10-23",
                 "reviewScope": "Full-text methods and results; Jadad applicability pending"
               }
+            },
+            {
+              "title": "Preliminary indications of the effect of a brief yoga intervention on markers of inflammation and DNA methylation in chronically stressed women",
+              "journal": "Translational Psychiatry",
+              "year": 2016,
+              "authors": "K N Harkess; J Ryan; P H Delfabbro; S Cohen-Woods",
+              "design": "Exploratory molecular substudy of a yoga trial",
+              "urls": [
+                "https://www.nature.com/articles/tp2016234",
+                "https://doi.org/10.1038/tp.2016.234",
+                "https://pmc.ncbi.nlm.nih.gov/articles/PMC5290356/",
+                "https://pubmed.ncbi.nlm.nih.gov/27898068/"
+              ],
+              "doi": "10.1038/tp.2016.234",
+              "pmid": "27898068",
+              "targets": [
+                "TNF",
+                "IL6"
+              ],
+              "neurotransmitters": [],
+              "categories": [
+                "Epigenetics"
+              ],
+              "citationCount": 75,
+              "citationSnapshot": {
+                "count": 75,
+                "source": "Crossref",
+                "retrievedAt": "2026-10-23",
+                "url": "https://api.crossref.org/works/10.1038/tp.2016.234"
+              },
+              "studyDesignAssessment": {
+                "category": "observational",
+                "peerReviewed": true,
+                "basis": "Exploratory molecular substudy of a yoga trial. No masked human randomized trial classification is assigned.",
+                "sources": [
+                  "https://www.nature.com/articles/tp2016234",
+                  "https://doi.org/10.1038/tp.2016.234",
+                  "https://pmc.ncbi.nlm.nih.gov/articles/PMC5290356/",
+                  "https://pubmed.ncbi.nlm.nih.gov/27898068/"
+                ],
+                "reviewedAt": "2026-10-23"
+              },
+              "evidence": {
+                "evidenceType": "Epigenetics",
+                "sample": "28 chronically stressed women from a larger trial",
+                "measurement": "Targeted DNA methylation and inflammatory proteins",
+                "measuredGenes": [
+                  "TNF",
+                  "IL6",
+                  "CRP"
+                ],
+                "relationshipNote": "The molecular sample contained 28 women. Its retrospective and uncontrolled longitudinal components limit causal interpretation, despite recruitment from a larger randomized trial.",
+                "sourceURLs": [
+                  "https://www.nature.com/articles/tp2016234",
+                  "https://doi.org/10.1038/tp.2016.234",
+                  "https://pmc.ncbi.nlm.nih.gov/articles/PMC5290356/",
+                  "https://pubmed.ncbi.nlm.nih.gov/27898068/"
+                ],
+                "checkedAt": "2026-10-23"
+              },
+              "id": "language-mindfulness-epigenetics-pmid-27898068",
+              "recordId": "pmid-27898068",
+              "quotes": [],
+              "sourcePages": [],
+              "summary": "An exploratory substudy in chronically stressed women reported lower methylation in a TNF region following a brief yoga intervention. Comparable regional changes were not found for IL6 or CRP, and a reduction in circulating inflammatory markers was not established.",
+              "limitation": "The molecular sample contained 28 women. Its retrospective and uncontrolled longitudinal components limit causal interpretation, despite recruitment from a larger randomized trial."
             }
           ],
           "trustAssessment": {
-            "score": null,
-            "scope": "Subchapter",
-            "minimumQualifyingStudies": 3,
-            "status": "below-minimum",
-            "qualifyingRecords": {
-              "double-blind-rct": [],
-              "single-blind-rct": [],
-              "peer-reviewed": [
-                "pmid-38671329",
-                "doi-10.1007-s12671-026-02877-9"
-              ]
-            },
-            "counts": {
-              "double-blind-rct": 0,
-              "single-blind-rct": 0,
-              "peer-reviewed": 2
-            }
+            "status": "assessed",
+            "peerReviewedPapers": 3,
+            "basis": "At least 3 peer-reviewed journal articles",
+            "reviewedAt": "2026-10-23"
           },
           "number": "4.2"
         },
@@ -9752,6 +9864,65 @@
                 "checkedAt": "2026-10-23",
                 "reviewScope": "Publication abstract and selected full-text methods; Jadad assessment pending"
               }
+            },
+            {
+              "title": "Self-administered mindfulness interventions reduce stress in a large, randomized controlled multi-site study",
+              "journal": "Nature Human Behaviour",
+              "year": 2024,
+              "authors": "Alessandro Sparacio; Hans IJzerman; Ivan Ropovik; Filippo Giorgini; Christoph Spiessens; Bert N. Uchino; Joshua Landvatter; Tracey Tacana; Sandra J. Diller; Jaye L. Derrick; Joahana Segundo; Jace D. Pierce; Robert M. Ross; Zoë Francis; Amanda LaBoucane; Christine Ma-Kellams; Maire B. Ford; Kathleen Schmidt; Celia C. Wong; Wendy C. Higgins; Bryant M. Stone; Samantha K. Stanley; Gianni Ribeiro; Paul T. Fuglestad; Valerie Jaklin; Andrea Kübler; Philipp Ziebell; Crystal L. Jewell; Yulia Kovas; Mahnoosh Allahghadri; Charlotte Fransham; Michael F. Baranski; Hannah Burgess; Annika B. E. Benz; Maysa DeSousa; Catherine E. Nylin; Janae C. Brooks; Caitlyn M. Goldsmith; Jessica M. Benson; Siobhán M. Griffin; Stephen Dunne; William E. Davis; Tam J. Watermeyer; William B. Meese; Jennifer L. Howell; Laurel Standiford Reyes; Megan G. Strickland; Sally S. Dickerson; Samantha Pescatore; Shayna Skakoon-Sparling; Zachary I. Wunder; Martin V. Day; Shawna Brenton; Audrey H. Linden; Christopher E. Hawk; Léan V. O’Brien; Tenzin Urgyen; Jennifer S. McDonald; Kim Lien van der Schans; Heidi Blocker; Caroline Ng Tseung-Wong; Gabriela M. Jiga-Boy",
+              "design": "Randomized controlled multisite study",
+              "urls": [
+                "https://www.nature.com/articles/s41562-024-01907-7",
+                "https://doi.org/10.1038/s41562-024-01907-7",
+                "https://pmc.ncbi.nlm.nih.gov/articles/PMC11420060/",
+                "https://pubmed.ncbi.nlm.nih.gov/38862815/"
+              ],
+              "doi": "10.1038/s41562-024-01907-7",
+              "pmid": "38862815",
+              "targets": [],
+              "neurotransmitters": [],
+              "categories": [
+                "Clinical & self-report"
+              ],
+              "citationCount": 24,
+              "citationSnapshot": {
+                "count": 24,
+                "source": "Crossref",
+                "retrievedAt": "2026-10-23",
+                "url": "https://api.crossref.org/works/10.1038/s41562-024-01907-7"
+              },
+              "studyDesignAssessment": {
+                "category": "rct",
+                "peerReviewed": true,
+                "basis": "Random assignment and an active comparison are reported. A single- or double-blind classification is not established from the reviewed methods.",
+                "sources": [
+                  "https://www.nature.com/articles/s41562-024-01907-7",
+                  "https://doi.org/10.1038/s41562-024-01907-7",
+                  "https://pmc.ncbi.nlm.nih.gov/articles/PMC11420060/",
+                  "https://pubmed.ncbi.nlm.nih.gov/38862815/"
+                ],
+                "reviewedAt": "2026-10-23"
+              },
+              "evidence": {
+                "evidenceType": "Clinical & self-report",
+                "sample": "2,239 participants at 37 sites",
+                "measurement": "Immediate self-reported stress",
+                "measuredGenes": [],
+                "relationshipNote": "The outcomes were short term and self-reported, with predominantly English-speaking participants in higher-income settings. Gene expression was not measured.",
+                "sourceURLs": [
+                  "https://www.nature.com/articles/s41562-024-01907-7",
+                  "https://doi.org/10.1038/s41562-024-01907-7",
+                  "https://pmc.ncbi.nlm.nih.gov/articles/PMC11420060/",
+                  "https://pubmed.ncbi.nlm.nih.gov/38862815/"
+                ],
+                "checkedAt": "2026-10-23"
+              },
+              "id": "language-mindfulness-clinical-pmid-38862815",
+              "recordId": "pmid-38862815",
+              "quotes": [],
+              "sourcePages": [],
+              "summary": "Across 37 sites and 2,239 participants, four brief self-administered mindfulness exercises reduced immediate self-reported stress compared with an active control. The body-scan exercise produced the largest reduction among the tested exercises.",
+              "limitation": "The outcomes were short term and self-reported, with predominantly English-speaking participants in higher-income settings. Gene expression was not measured."
             }
           ],
           "trustAssessment": {
@@ -9793,7 +9964,7 @@
     ]
   },
   "sourceSHA256": "39bdf14824ed7f41ffba818494d3cdee89aac17145fb394a2465d18b4cc37021",
-  "paperCount": 322,
+  "paperCount": 325,
   "topicCount": 21,
-  "uniquePaperCount": 316
+  "uniquePaperCount": 319
 }

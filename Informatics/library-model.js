@@ -41,7 +41,7 @@
   }
   function matchesStudy(record, kind) {
     const text = [record.title,record.design,record.kind].join(' ').toLowerCase().replace(/[‐‑–—-]/g,' ');
-    const trial = /randomi[sz](?:ed|ation)/.test(text);
+    const trial = !/\bnon\s*randomi[sz]ed\b/.test(text) && /randomi[sz](?:ed|ation)/.test(text);
     const metaAnalysis = /\bmeta\s*analy(?:sis|ses|tic(?:al)?)\b/.test(text);
     return !kind || kind === 'trial' && trial || kind === 'double-blind' && trial && /double\s+(?:blind|mask)/.test(text) || kind === 'single-blind' && trial && /single\s+(?:blind|mask)/.test(text) || kind === 'meta-analysis' && metaAnalysis || kind === 'review' && (/review|synthesis/.test(text) || metaAnalysis) || kind === 'animal' && /mouse|mice|\brats?\b|\bcells?\b|in vitro|animal|fibroblast|rhesus/.test(text);
   }

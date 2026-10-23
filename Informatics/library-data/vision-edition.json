@@ -4344,10 +4344,144 @@
           "trustScore": 1
         }
       ]
+    },
+    {
+      "number": 5,
+      "title": "Bilateral stimulation and neural mechanisms",
+      "topics": [
+        {
+          "id": "bilateral-mechanisms",
+          "title": "Bilateral visual stimulation and memory processing",
+          "papers": [
+            {
+              "title": "Neural circuits underlying a psychotherapeutic regimen for fear disorders",
+              "journal": "Nature",
+              "year": 2019,
+              "authors": "Jinhee Baek; Sukchan Lee; Taesup Cho; Seong-Wook Kim; Minsoo Kim; Yongwoo Yoon; Ko Keun Kim; Junweon Byun; Sang Jeong Kim; Jaeseung Jeong; Hee-Sup Shin",
+              "design": "Experimental mouse neural-circuit study",
+              "urls": [
+                "https://www.nature.com/articles/s41586-019-0931-y",
+                "https://doi.org/10.1038/s41586-019-0931-y",
+                "https://pubmed.ncbi.nlm.nih.gov/30760920/"
+              ],
+              "doi": "10.1038/s41586-019-0931-y",
+              "pmid": "30760920",
+              "targets": [],
+              "neurotransmitters": [],
+              "categories": [
+                "Brain & nervous system"
+              ],
+              "citationCount": 136,
+              "citationSnapshot": {
+                "count": 136,
+                "source": "Crossref",
+                "retrievedAt": "2026-10-23",
+                "url": "https://api.crossref.org/works/10.1038/s41586-019-0931-y"
+              },
+              "studyDesignAssessment": {
+                "category": "peer-reviewed",
+                "peerReviewed": true,
+                "basis": "Experimental mouse neural-circuit study. No masked human randomized trial classification is assigned.",
+                "sources": [
+                  "https://www.nature.com/articles/s41586-019-0931-y",
+                  "https://doi.org/10.1038/s41586-019-0931-y",
+                  "https://pubmed.ncbi.nlm.nih.gov/30760920/"
+                ],
+                "reviewedAt": "2026-10-23"
+              },
+              "evidence": {
+                "evidenceType": "Brain & nervous system",
+                "sample": "Mice",
+                "measurement": "Circuit manipulation, neural activity and conditioned fear",
+                "measuredGenes": [],
+                "relationshipNote": "A mouse model inspired by a psychotherapeutic component; it is not a trial of clinical EMDR or a self-administered treatment in humans.",
+                "sourceURLs": [
+                  "https://www.nature.com/articles/s41586-019-0931-y",
+                  "https://doi.org/10.1038/s41586-019-0931-y",
+                  "https://pubmed.ncbi.nlm.nih.gov/30760920/"
+                ],
+                "checkedAt": "2026-10-23"
+              },
+              "id": "vision-bilateral-mechanisms-pmid-30760920",
+              "recordId": "pmid-30760920",
+              "quotes": [],
+              "sourcePages": [],
+              "summary": "Alternating bilateral visual stimulation during fear extinction recruited a superior-colliculus–thalamus–amygdala circuit in mice and reduced the return of conditioned fear. The experiments identify a possible neural mechanism relevant to eye-movement-based approaches.",
+              "limitation": "A mouse model inspired by a psychotherapeutic component; it is not a trial of clinical EMDR or a self-administered treatment in humans."
+            },
+            {
+              "title": "Possible neural mechanisms of psychotherapy for trauma-related symptoms: cerebral responses to the neuropsychological treatment of post-traumatic stress disorder model individuals",
+              "journal": "Scientific Reports",
+              "year": 2016,
+              "authors": "Tamaki Amano; Motomi Toichi",
+              "design": "Human experimental neuroimaging study",
+              "urls": [
+                "https://www.nature.com/articles/srep34610",
+                "https://doi.org/10.1038/srep34610",
+                "https://pmc.ncbi.nlm.nih.gov/articles/PMC5048146/",
+                "https://pubmed.ncbi.nlm.nih.gov/27698453/"
+              ],
+              "doi": "10.1038/srep34610",
+              "pmid": "27698453",
+              "targets": [],
+              "neurotransmitters": [],
+              "categories": [
+                "Brain & nervous system"
+              ],
+              "citationCount": 10,
+              "citationSnapshot": {
+                "count": 10,
+                "source": "Crossref",
+                "retrievedAt": "2026-10-23",
+                "url": "https://api.crossref.org/works/10.1038/srep34610"
+              },
+              "studyDesignAssessment": {
+                "category": "observational",
+                "peerReviewed": true,
+                "basis": "Human experimental neuroimaging study. No masked human randomized trial classification is assigned.",
+                "sources": [
+                  "https://www.nature.com/articles/srep34610",
+                  "https://doi.org/10.1038/srep34610",
+                  "https://pmc.ncbi.nlm.nih.gov/articles/PMC5048146/",
+                  "https://pubmed.ncbi.nlm.nih.gov/27698453/"
+                ],
+                "reviewedAt": "2026-10-23"
+              },
+              "evidence": {
+                "evidenceType": "Brain & nervous system",
+                "sample": "Healthy volunteers recalling moderately unpleasant memories",
+                "measurement": "Functional near-infrared spectroscopy and subjective responses",
+                "measuredGenes": [],
+                "relationshipNote": "Participants were model volunteers, not a clinical PTSD cohort. The study does not establish treatment efficacy or a gene-expression effect.",
+                "sourceURLs": [
+                  "https://www.nature.com/articles/srep34610",
+                  "https://doi.org/10.1038/srep34610",
+                  "https://pmc.ncbi.nlm.nih.gov/articles/PMC5048146/",
+                  "https://pubmed.ncbi.nlm.nih.gov/27698453/"
+                ],
+                "checkedAt": "2026-10-23"
+              },
+              "id": "vision-bilateral-mechanisms-pmid-27698453",
+              "recordId": "pmid-27698453",
+              "quotes": [],
+              "sourcePages": [],
+              "summary": "During an EMDR-related procedure, healthy volunteers recalled moderately unpleasant memories while researchers measured cortical haemodynamic responses. The study examined temporal and orbitofrontal activity as possible correlates of memory processing.",
+              "limitation": "Participants were model volunteers, not a clinical PTSD cohort. The study does not establish treatment efficacy or a gene-expression effect."
+            }
+          ],
+          "trustScore": null,
+          "trustAssessment": {
+            "status": "below-minimum",
+            "peerReviewedPapers": 2,
+            "basis": "Minimum 3 papers not yet reached",
+            "reviewedAt": "2026-10-23"
+          }
+        }
+      ]
     }
   ],
   "sourceSHA256": "4e587a23ac97ae7b76307dfaf117c9ab026b7d022e2d7f158d4b4f710c3308cd",
-  "paperCount": 90,
-  "uniquePaperCount": 76,
-  "topicCount": 15
+  "paperCount": 92,
+  "uniquePaperCount": 78,
+  "topicCount": 16
 }
