@@ -119,7 +119,7 @@ export async function createInteraction(engine,kind,data,onChange,onPick){
   await tree.commit();
  }
  function setPlanes(value){planes=value;tyrPlane?.setState({visible:planes});phePlane?.setState({visible:planes});}
- function snapshot(){return {kind,progress,playing,focus,planes,field,opacity:alpha,isovalue:iso};}
+ function snapshot(){return kind==='docking'?{kind,progress,playing,focus,planes}:{kind,focus,field,opacity:alpha,isovalue:iso};}
  function dispose(){disposed=true;pause();pickSubscription.unsubscribe();for(const s of shapes){plugin.canvas3d.remove(s);s.destroy();}}
  setFocus(kind==='docking'?'contact':'pair');if(kind==='docking')setProgress(1);
  return {setProgress,setFocus,pause,play,setPlanes,loadField,fieldStyle,snapshot,dispose};

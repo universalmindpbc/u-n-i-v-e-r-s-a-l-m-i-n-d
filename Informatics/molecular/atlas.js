@@ -23,7 +23,7 @@
  function catalogue(){
   const available=isInteraction()?records.filter(r=>r.id==='OXTR'):records;
   $('#target-selector').innerHTML=available.map(r=>`<button class="target-card" data-target="${r.id}" aria-pressed="false" aria-label="Explore ${escape(r.name)}"><img src="${level==='gene'?'gene-thumb.svg':'thumbnails/'+r.id.toLowerCase()+'.png'}" alt="" width="150" height="77"><span>${r.id}</span></button>`).join('');
-  $('#collection-grid').innerHTML=available.map(r=>`<button class="collection-item" data-target="${r.id}"><img src="${level==='gene'?'gene-thumb.svg':'thumbnails/'+r.id.toLowerCase()+'.png'}" alt="" width="240" height="105"><strong>${r.id}</strong><span>${escape(r.name)}</span><span>${level==='gene'?r.genes.join(' · ')+' · DNA':'Protein · '+r.pdb+' · '+r.resolution.toFixed(2)+' Å'}</span></button>`).join('');
+  $('#collection-grid').innerHTML=available.map(r=>`<button class="collection-item" data-target="${r.id}"><img src="${level==='gene'?'gene-thumb.svg':'thumbnails/'+r.id.toLowerCase()+'.png'}" alt="" width="240" height="105"><strong>${r.id}</strong><span>${escape(r.name)}</span><span>${level==='gene'?r.genes.join(' · ')+' · DNA':level==='quantum'?'Calculated orbitals · PBE0 / def2-SVP':level==='docking'?'OXT–OXTR contact · '+r.pdb:'Protein · '+r.pdb+' · '+r.resolution.toFixed(2)+' Å'}</span></button>`).join('');
   if(isInteraction())$('#target-selector').insertAdjacentHTML('beforeend','<div class="interaction-footer"><strong>FIRST MOLECULAR STUDY</strong>Oxytocin · human oxytocin receptor<br>Two independent views of the same molecular encounter.</div>');
   $$('button[data-target]').forEach(button=>button.addEventListener('click',()=>{changeView('structure');select(button.dataset.target);}));
  }

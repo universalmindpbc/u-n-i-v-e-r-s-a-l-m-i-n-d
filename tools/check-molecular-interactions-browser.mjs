@@ -13,7 +13,7 @@ async function idle(page,level){await page.waitForFunction(level=>document.body.
 async function pixels(page){const n=await page.evaluate(()=>{const canvas=document.querySelector('#viewport canvas'),copy=document.createElement('canvas');copy.width=copy.height=120;const c=copy.getContext('2d');c.drawImage(canvas,0,0,120,120);const d=c.getImageData(0,0,120,120).data;let n=0;for(let i=0;i<d.length;i+=4)if(d[i+3]>10&&(d[i]>70||d[i+1]>70||d[i+2]>70))n++;return n;});assert.ok(n>80,'Rendered model pixels '+n);return n;}
 async function stop(ctx,page){await page.evaluate(()=>{window.MolecularAtlas?.interactionUi.pause();document.querySelectorAll('audio,video').forEach(e=>e.pause());});await ctx.close();}
 try{
- for(const viewport of process.env.ATLAS_EMBEDDED_ONLY==='1'?[]:[{width:1470,height:956},{width:1024,height:768},{width:390,height:844},{width:320,height:844}]){
+ for(const viewport of process.env.ATLAS_EMBEDDED_ONLY==='1'?[]:process.env.ATLAS_SMOKE_ONLY==='1'?[{width:1470,height:956}]:[{width:1470,height:956},{width:1024,height:768},{width:390,height:844},{width:320,height:844}]){
   const ctx=await browser.newContext({viewport,reducedMotion:'reduce',acceptDownloads:true});await candidate(ctx);const page=await ctx.newPage(),errors=[],failed=[];page.on('pageerror',e=>errors.push(e.message));page.on('response',r=>{if(r.status()>=400&&r.url().includes('/informatics/'))failed.push(r.status()+':'+r.url());});
   await page.goto(base+'molecular/?level=docking',{waitUntil:'domcontentloaded'});await idle(page,'docking');await page.waitForTimeout(450);
   assert.equal(await page.locator('.biology-toggle button').count(),4);assert.equal(await page.locator('#target-selector button').count(),1);
@@ -27,6 +27,8 @@ try{
   await page.locator('#dock-opacity').fill('12');await page.waitForTimeout(100);await page.evaluate(()=>window.MolecularAtlas.whenIdle());
   for(const focus of ['complex','pocket','contact'])await page.locator(`[data-contact-focus=${focus}]`).click();
   await page.locator('[data-view=evidence]').click();assert.match(await page.locator('#detail-content').innerText(),/illustrative translation/);await page.keyboard.press('Escape');
+  await page.locator('[data-view=collection]').click();assert.match(await page.locator('#collection-grid').innerText(),/OXT–OXTR contact/);await page.locator('[data-view=structure]').click();
+  if(viewport.width===1470){const [d]=await Promise.all([page.waitForEvent('download'),page.locator('#save-state').click()]);await d.saveAs(out+'/docking-view.json');const saved=JSON.parse(await fs.readFile(out+'/docking-view.json','utf8'));assert.equal(saved.model.receptorOpacity,.12);assert.equal(saved.model.kind,'docking');assert.equal('field' in saved.model,false);}
   await page.locator('[data-level=quantum]').click();await idle(page,'quantum');await page.waitForTimeout(450);
   assert.equal(await page.locator('#dock-play').count(),0);const quantumPixels=await pixels(page);await page.screenshot({path:out+`/quantum-${viewport.width}.png`,fullPage:true});
   assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),true);
@@ -36,15 +38,16 @@ try{
   await page.locator('[data-view=evidence]').click();assert.match(await page.locator('#detail-content').innerText(),/Gas phase/);assert.match(await page.locator('#detail-content').innerText(),/not electron trajectories/);await page.keyboard.press('Escape');
   if(viewport.width===1470){
    const [download]=await Promise.all([page.waitForEvent('download'),page.locator('#quantum-download').click()]);const file=out+'/download-homo.cube';await download.saveAs(file);const data=await fs.readFile(file),expected=await fs.readFile(root+'/Informatics/molecular/data/interactions/homo.cube');assert.equal(createHash('sha256').update(data).digest('hex'),createHash('sha256').update(expected).digest('hex'));
-   const [state]=await Promise.all([page.waitForEvent('download'),page.locator('#save-state').click()]);await state.saveAs(out+'/download-view.json');const saved=JSON.parse(await fs.readFile(out+'/download-view.json','utf8'));assert.equal(saved.level,'quantum');assert.equal(saved.provenance.scfConverged,true);
+   const [state]=await Promise.all([page.waitForEvent('download'),page.locator('#save-state').click()]);await state.saveAs(out+'/download-view.json');const saved=JSON.parse(await fs.readFile(out+'/download-view.json','utf8'));assert.equal(saved.level,'quantum');assert.equal(saved.provenance.scfConverged,true);assert.equal('progress' in saved.model,false);assert.equal(saved.model.field,'homo');
    const canvas=page.locator('#viewport canvas');await canvas.focus();const before=await page.evaluate(()=>window.MolecularAtlas.engine.snapshot().camera.position);await page.keyboard.press('ArrowLeft');await page.waitForTimeout(250);assert.notDeepEqual(await page.evaluate(()=>window.MolecularAtlas.engine.snapshot().camera.position),before);
   }
+  await page.locator('[data-view=collection]').click();assert.match(await page.locator('#collection-grid').innerText(),/Calculated orbitals/);await page.locator('[data-view=structure]').click();
   await page.locator('[data-level=gene]').click();await idle(page,'gene');assert.equal(await page.locator('#target-selector button').count(),8);await page.locator('#geometry-kind').selectOption('truncated-icosahedron');await page.evaluate(()=>window.MolecularAtlas.whenIdle());assert.equal(await page.evaluate(()=>document.body.dataset.geometry),'truncated-icosahedron');
   await page.locator('[data-level=protein]').click();await idle(page,'protein');assert.equal(await page.evaluate(()=>window.MolecularAtlas.engine.snapshot().pdb),'7QVM');assert.equal(await page.evaluate(()=>document.body.dataset.geometry),'truncated-icosahedron');
   assert.equal(await page.evaluate(()=>document.fullscreenElement),null);assert.equal(await page.locator('video').evaluateAll(es=>es.every(e=>e.muted&&e.paused)),true);
   assert.deepEqual(errors,[]);assert.deepEqual(failed,[]);results.push({viewport,dockPixels,quantumPixels,controls:true,quantumFields:4,geometryPreserved:true,noOverflow:true,errors,failed});await stop(ctx,page);
  }
- for(const viewport of [{width:1470,height:956},{width:390,height:844}]){
+ for(const viewport of process.env.ATLAS_SMOKE_ONLY==='1'?[]:[{width:1470,height:956},{width:390,height:844}]){
   const ctx=await browser.newContext({viewport,reducedMotion:'reduce'});await candidate(ctx);
   await ctx.addInitScript(()=>{Element.prototype.requestFullscreen=async()=>{};Element.prototype.webkitRequestFullscreen=()=>{};});
   const page=await ctx.newPage(),errors=[];page.on('pageerror',e=>errors.push(e.message));
