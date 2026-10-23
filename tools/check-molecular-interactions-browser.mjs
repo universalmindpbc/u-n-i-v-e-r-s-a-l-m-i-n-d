@@ -54,12 +54,13 @@ try{
   const page=await ctx.newPage(),errors=[];page.on('pageerror',e=>errors.push(e.message));
   await page.goto(base+'?area=molecular');await page.waitForFunction(()=>!document.querySelector('#launch').disabled);await page.locator('#launch').click();
   const frame=page.frameLocator('#molecular-frame');await frame.locator('body[data-ready="true"][data-busy="false"]').waitFor({timeout:60000});
-  for(const mode of ['docking','quantum']){await frame.locator('[data-level='+mode+']').click();await frame.locator('body[data-level="'+mode+'"][data-ready="true"][data-busy="false"]').waitFor({timeout:60000});await frame.locator('body').evaluate(()=>window.MolecularAtlas.whenIdle());await page.screenshot({path:out+'/embedded-'+mode+'-'+viewport.width+'.png',fullPage:true});}
+  const molecularFrame=await(await page.$('#molecular-frame')).contentFrame(),renderedPixels={};
+  for(const mode of ['docking','quantum']){await frame.locator('[data-level='+mode+']').click();await frame.locator('body[data-level="'+mode+'"][data-ready="true"][data-busy="false"]').waitFor({timeout:60000});await frame.locator('body').evaluate(()=>window.MolecularAtlas.whenIdle());await molecularFrame.waitForFunction(()=>!MolecularAtlas.engine.plugin.canvas3d.camera.transition.inTransition);await page.waitForTimeout(150);renderedPixels[mode]=await pixels(molecularFrame);await page.screenshot({path:out+'/embedded-'+mode+'-'+viewport.width+'.png',fullPage:true});}
   await frame.locator('[data-level=docking]').click();await frame.locator('body[data-level=docking][data-busy=false]').waitFor({timeout:60000});await frame.locator('#dock-play').click();
   await page.locator('#atlas-toggle').click();await page.locator('#atlas-menu [data-area=geometry]').click();
   await frame.locator('body[data-docking-playing=false]').waitFor({state:'attached',timeout:5000});assert.equal(await frame.locator('body').evaluate(()=>window.MolecularAtlas.interactionUi.model.snapshot().playing),false);
   await page.locator('#atlas-toggle').click();await page.locator('#atlas-menu [data-area=molecular]').click();assert.equal(await frame.locator('body').getAttribute('data-level'),'docking');
-  assert.equal(await page.evaluate(()=>document.fullscreenElement),null);assert.deepEqual(errors,[]);results.push({viewport,embedded:true,entry:true,separateViews:true,pauseOnExit:true,selectionPreserved:true});await stop(ctx,page);
+  assert.equal(await page.evaluate(()=>document.fullscreenElement),null);assert.deepEqual(errors,[]);results.push({viewport,embedded:true,entry:true,separateViews:true,renderedPixels,pauseOnExit:true,selectionPreserved:true});await stop(ctx,page);
  }
  // A direct Quantum URL never passes through the docking experience.
  const directCtx=await browser.newContext({viewport:{width:1470,height:956},reducedMotion:'reduce'});await candidate(directCtx);const direct=await directCtx.newPage();await direct.goto(base+'molecular/?level=quantum');await idle(direct,'quantum');assert.equal(await direct.locator('#dock-play').count(),0);await stop(directCtx,direct);

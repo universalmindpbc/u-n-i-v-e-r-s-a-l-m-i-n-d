@@ -13,3 +13,11 @@ The supplied infographic's Tyr-Trp sandwich does not represent the selected 7QVM
 ## Verification and release
 
 Dedicated muted Chromium checks compare actual rendered pixels for the three lesson steps and moving/paused markers, exercise modes and controls, save teaching provenance, verify pause-on-exit, and inspect desktop and mobile layouts. The existing calculated-field and embedded-entry checks remain part of release verification. The existing Panthur staging workflow is used after integration of the latest completed staging release. Production remains excluded.
+
+## Completed staging proof
+
+Source `a5310660c3886b21f458d83d8f85491ec075b428` integrates the completed Universal One release `fed46344f1572381dfd14a24983a8ec59bad728c`. The existing Panthur workflow uploaded five Molecular Atlas assets. Eighteen live asset downloads match the committed source and deployment manifest exactly, including the preserved Universal One source and calculated fields.
+
+Live Teaching checks pass at 1470, 1024, 390 and 320 pixels. The desktop animation check compares moving and paused model pixels; all four layouts exercise the lesson steps and independent modes. Shared Atlas entry passes at desktop and phone widths, with visible molecular pixels checked after the camera settles. The original calculated-field checks passed on the candidate at four widths, and the live invalid-field check retains a visible checksum failure. Screenshots retain the reviewed desktop and phone layouts.
+
+All browser checks used a separate Chromium process with the mute-audio flag verified before navigation. Native fullscreen was disabled. Automated pages were paused and closed. Production was not deployed; its remote main reference remains `d82c7ae080a5236cd1029bd9605d7b4e3988feb4`.
