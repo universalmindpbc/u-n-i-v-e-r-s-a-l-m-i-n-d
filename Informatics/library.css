@@ -113,3 +113,6 @@ button,input,select{font:inherit;color:inherit}button,a,summary{touch-action:man
 
 /* Keep each topic count and its single trust score together. */
 .contents-topic-meta{flex-wrap:wrap}.topic-score-status{font-size:12px;color:var(--muted)}.topic>.paper-count .topic-score-status{margin-left:14px}.design-assessment p{margin:12px 0;line-height:1.7}
+
+/* Original research figures retain their proportions in every reading mode. */
+.research-figure{margin:2rem 0}.research-figure img{display:block;width:100%;height:auto;background:#fff}.research-figure figcaption{font-size:.9rem;line-height:1.6;margin-top:.75rem;color:var(--muted)}.topic-description{line-height:1.8;margin:1rem 0 2rem;color:var(--muted)}

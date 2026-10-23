@@ -10,7 +10,7 @@
   const collections = ['sound', 'vision', 'language', 'general', 'all'];
   const fields = ['query', 'topic', 'journal', 'category', 'physiology', 'target', 'kind', 'period', 'trust', 'jadad', 'sort'];
   let collection = collections.includes(params.get('collection')) ? params.get('collection') : ['target','gene','record','query'].some(key => params.has(key)) ? 'all' : 'sound';
-  let view = params.get('view') === 'search' || !['sound','language','general'].includes(collection) || ['target','gene','query'].some(key => params.has(key)) ? 'search' : 'chapters';
+  let view = params.get('view') === 'search' || !['sound','vision','language','general'].includes(collection) || ['target','gene','query'].some(key => params.has(key)) ? 'search' : 'chapters';
   let chapterNumber = Number(params.get('chapter')) || 0;
   let edition, editions = {}, records = [], filtered = [], papers = [], pageIndex = 0, articleOpener, loading = true;
   const PAGE_SIZE = 15;
@@ -25,7 +25,7 @@
     const icon = '<svg viewBox="0 0 18 18" aria-hidden="true"><circle cx="9" cy="9" r="8" fill="#1468a8" stroke="currentColor" stroke-width=".5"/><path d="M7 3.5h4V7h3.5v4H11v3.5H7V11H3.5V7H7z" fill="#fff"/></svg>';
     return `<span class="trust-score" role="img" aria-label="${scope} trust score: ${score} of 3" title="${scope} trust score: ${score} of 3">${labelled ? '<span class="trust-label">Trust score</span>' : ''}${icon.repeat(score)}</span>`;
   }
-  const topicScoreStatus = topic => topic.trustAssessment?.status === 'below-minimum' ? '<span class="topic-score-status">Not yet graded · minimum 3 papers</span>' : '';
+  const topicScoreStatus = topic => topic.trustAssessment?.status === 'clinical-guidance' ? '<span class="topic-score-status">Clinical guidance</span>' : topic.trustAssessment?.status === 'below-minimum' ? '<span class="topic-score-status">Not yet graded · minimum 3 papers</span>' : '';
   function topicCounts(topic) {
     return `<span class="contents-topic-meta"><span class="paper-count">${paperCount(topic.papers)}</span>${crosses(topic.trustScore)}${topicScoreStatus(topic)}</span>`;
   }
@@ -80,11 +80,11 @@
       ${quotes.filter((q,index) => index !== review?.index).length ? `<blockquote cite="${esc(url)}">${quotes.map((q,index) => index === review?.index ? '' : `<p>${quoteHTML(q)}</p>`).join('')}</blockquote>` : ''}
       ${paper.summary ? `<div class="study-summary"><p class="eyebrow">Study summary</p><p>${esc(paper.summary)}</p>${paper.limitation ? `<p class="summary-limitation">${esc(paper.limitation)}</p>` : ''}</div>` : ''}
 
-      ${evidenceMarkup(paper.evidence)}${paper.studyDesignAssessment ? `<details class="study-methods design-assessment"><summary>Study design and blinding</summary><p>${esc(paper.studyDesignAssessment.basis)}</p><p>${paper.studyDesignAssessment.sources.map((source,index)=>`<a href="${esc(safeURL(source))}" target="_blank" rel="noopener noreferrer">${source.includes('clinicaltrials.gov') || source.includes('isrctn.com') ? 'Trial register' : `Study source ${index+1}`} ↗</a>`).join(' · ')}</p></details>` : ''}${bibliographyMarkup(paper)}
+      ${!paper.summary && paper.limitation ? `<p class="summary-limitation">${esc(paper.limitation)}</p>` : ''}${(paper.figures || []).map(figure => `<figure class="research-figure"><img src="${esc(safeURL(figure.src))}" alt="${esc(figure.caption)}" loading="lazy"><figcaption>${esc(figure.caption)}</figcaption></figure>`).join('')}${evidenceMarkup(paper.evidence)}${paper.studyDesignAssessment ? `<details class="study-methods design-assessment"><summary>Study design and blinding</summary><p>${esc(paper.studyDesignAssessment.basis)}</p><p>${paper.studyDesignAssessment.sources.map((source,index)=>`<a href="${esc(safeURL(source))}" target="_blank" rel="noopener noreferrer">${source.includes('clinicaltrials.gov') || source.includes('isrctn.com') ? 'Trial register' : `Study source ${index+1}`} ↗</a>`).join(' · ')}</p></details>` : ''}${bibliographyMarkup(paper)}
       <div class="paper-links"><a href="${esc(url)}" target="_blank" rel="noopener noreferrer">${url.includes('web.archive.org/web/') ? 'Read archived publication' : 'Read publication'} ↗</a><button class="text-button" data-paper-detail="${esc(paper.id)}">Citation details</button></div>
     </article>`;
   }
-  const paperCount = items => `${model.uniqueCount(items).toLocaleString()} papers`;
+  const paperCount = items => { const count = model.uniqueCount(items); return `${count.toLocaleString()} ${count === 1 ? 'paper' : 'papers'}`; };
   function renderStatistics() {
     const stats = model.statistics(records,collection);
     $('#collection-statistics').hidden = false;
@@ -112,7 +112,7 @@
     const chapterIndex = edition.chapters.indexOf(chapter);
     const previous = edition.chapters[chapterIndex - 1];
     const next = edition.chapters[chapterIndex + 1];
-    return `<div class="narrative-layout">${rail}<div class="chapter-reader"><div class="chapter-opening"><p class="eyebrow">${esc(collectionTitle(collection))} · CHAPTER ${String(chapter.number).padStart(2,'0')}</p><h2>${esc(chapter.title)}</h2><p class="paper-count">${paperCount(chapter.topics.flatMap(t=>t.papers))}</p></div>${chapter.topics.map(topic => `<section class="topic" id="topic-${topic.id}"><div class="topic-heading"><h3>${esc(topic.title)}</h3>${crosses(topic.trustScore,true)}</div><p class="paper-count">${paperCount(topic.papers)}${topicScoreStatus(topic)}</p>${topic.papers.map(p => paperMarkup(p)).join('')}</section>`).join('')}<nav class="chapter-pagination" aria-label="Read another chapter">${previous ? `<a data-chapter="${previous.number}" href="${esc(route(previous.number))}">← ${esc(previous.title)}</a>` : `<a data-chapter="0" href="${esc(route())}">← Contents</a>`}${next ? `<a data-chapter="${next.number}" href="${esc(route(next.number))}">${esc(next.title)} →</a>` : `<a data-chapter="0" href="${esc(route())}">Back to contents ↑</a>`}</nav></div></div>`;
+    return `<div class="narrative-layout">${rail}<div class="chapter-reader"><div class="chapter-opening"><p class="eyebrow">${esc(collectionTitle(collection))} · CHAPTER ${String(chapter.number).padStart(2,'0')}</p><h2>${esc(chapter.title)}</h2><p class="paper-count">${paperCount(chapter.topics.flatMap(t=>t.papers))}</p></div>${chapter.topics.map(topic => `<section class="topic" id="topic-${topic.id}"><div class="topic-heading"><h3>${esc(topic.title)}</h3>${crosses(topic.trustScore,true)}</div><p class="paper-count">${paperCount(topic.papers)}${topicScoreStatus(topic)}</p>${topic.description ? `<p class="topic-description">${esc(topic.description)}</p>` : ''}${topic.papers.map(p => paperMarkup(p)).join('')}</section>`).join('')}<nav class="chapter-pagination" aria-label="Read another chapter">${previous ? `<a data-chapter="${previous.number}" href="${esc(route(previous.number))}">← ${esc(previous.title)}</a>` : `<a data-chapter="0" href="${esc(route())}">← Contents</a>`}${next ? `<a data-chapter="${next.number}" href="${esc(route(next.number))}">${esc(next.title)} →</a>` : `<a data-chapter="0" href="${esc(route())}">Back to contents ↑</a>`}</nav></div></div>`;
   }
   function filter() {
     const q = normalize($('#query').value).split(' ').filter(Boolean);
@@ -148,6 +148,7 @@
     renderStatistics();
     $('#sound-assessment').hidden = collection !== 'sound';
     $('#language-assessment').hidden = collection !== 'language';
+    $('#vision-assessment').hidden = collection !== 'vision';
     populateFilters();
     const reading = !!edition && view === 'chapters';
     $('#view-options').hidden = !edition;
@@ -255,7 +256,7 @@
   window.addEventListener('popstate', () => {
     const p = new URLSearchParams(location.search);
     collection = collections.includes(p.get('collection')) ? p.get('collection') : 'sound';
-    view = p.get('view') === 'search' || !['sound','language','general'].includes(collection) ? 'search' : 'chapters';
+    view = p.get('view') === 'search' || !['sound','vision','language','general'].includes(collection) ? 'search' : 'chapters';
     chapterNumber = Number(p.get('chapter')) || 0;
     populateFilters();
     for (const key of fields) $('#'+key).value = p.get(key) || (key === 'sort' ? 'genomics' : '');
@@ -265,14 +266,14 @@
   async function load() {
     $('#load-error').hidden = true;
     try {
-      const responses = await Promise.all(['sound-edition','library','publication-access','language-edition','general-edition','mindfulness-expansion'].map(name=>fetch('library-data/'+name+'.json?v=20261023d')));
+      const responses = await Promise.all(['sound-edition','library','publication-access','language-edition','general-edition','mindfulness-expansion','vision-edition','vision-expansion'].map(name=>fetch('library-data/'+name+'.json?v=20261023e')));
       if (responses.some(response => !response.ok)) throw new Error('Research unavailable');
-      const [sound,data,access,language,general,expansion] = await Promise.all(responses.map(response=>response.json()));
+      const [sound,data,access,language,general,expansion,vision,visionExpansion] = await Promise.all(responses.map(response=>response.json()));
       if (!Array.isArray(sound.chapters) || !Array.isArray(data.records)) throw new Error('Invalid research data');
-      publicationAccess = access.records;
-      editions = {sound,language,general};
+      publicationAccess = {...access.records,...visionExpansion.publicationAccess};
+      editions = {sound,language,general,vision};
       const byId = new Map(data.records.map(r=>[r.id,r]));
-      for (const additional of expansion.records) {
+      for (const additional of [...expansion.records,...visionExpansion.records]) {
         const existing = byId.get(additional.id);
         byId.set(additional.id,{...existing,...additional,collections:[...new Set([...(existing?.collections || []),...additional.collections])],archiveEntries:existing?.archiveEntries || []});
       }
