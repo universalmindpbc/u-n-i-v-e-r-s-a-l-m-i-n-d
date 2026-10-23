@@ -4,7 +4,7 @@
 .research-target-label{font-size:10px;letter-spacing:.12em;color:#aeb8bc;white-space:nowrap}footer{gap:20px}footer nav{gap:clamp(10px,1.5vw,25px);align-items:center}footer nav button{line-height:1.6}footer .transport{flex-shrink:0}footer #counter{white-space:nowrap}@media(max-width:1100px){.research-target-label{flex-basis:100%;order:-2}footer{flex-wrap:wrap;gap:12px}footer nav{flex:1;order:-1}footer nav small{display:block;margin:0 0 4px}}@media(max-width:640px){footer nav{display:grid;grid-template-columns:1fr 1.4fr 1.25fr 1fr 1fr;flex-basis:100%;align-items:start;gap:3px}footer nav button{font-size:9px;letter-spacing:.02em;padding:5px 2px 10px;min-height:78px}footer .research-target-label{font-size:9px;margin-bottom:3px}footer nav button[aria-pressed=true]:after{bottom:2px}}
 
 header button.brand{padding:0;text-align:left} .landing-name{font:inherit;color:inherit;letter-spacing:inherit;padding:0;text-transform:lowercase}
-#about{width:min(620px,90vw);padding:54px 44px 40px;color:#e8ebed;background:#0a0d10f5;border:1px solid #ffffff36;box-shadow:0 24px 100px #0009;font:15px/1.8 "Helvetica Neue",Helvetica,Arial,sans-serif}#about::backdrop{background:#000b;backdrop-filter:blur(8px)}#about h2{font-size:13px;font-weight:400;letter-spacing:.16em;margin:0 0 28px}#about p{color:#b5bfc5;margin:18px 0}#about .about-lead{font-size:23px;line-height:1.5;color:#fff;font-weight:300}#about-close{position:absolute;right:16px;top:10px;font-size:26px;width:44px}
+#about{width:min(620px,90vw);padding:54px 44px 40px;color:#e8ebed;background:#0a0d10f5;border:1px solid #ffffff36;box-shadow:0 24px 100px #0009;font:15px/1.8 "Helvetica Neue",Helvetica,Arial,sans-serif}#about::backdrop{background:rgba(0,0,0,.18);backdrop-filter:none}#about h2{font-size:13px;font-weight:400;letter-spacing:.16em;margin:0 0 28px}#about p{color:#b5bfc5;margin:18px 0}#about .about-lead{font-size:23px;line-height:1.5;color:#fff;font-weight:300}#about-close{position:absolute;right:16px;top:10px;font-size:26px;width:44px}
 @media(max-width:640px){#about{padding:48px 24px 26px}#about .about-lead{font-size:21px}}
 
 .wolfram-credit{border-top:1px solid #ffffff20;margin-top:30px;padding-top:24px}.wolfram-credit a{display:flex;align-items:center;gap:14px;text-decoration:none;color:#eef1f2;font-size:13px;line-height:1.5}.wolfram-credit img{flex-shrink:0;width:32px;height:32px}.credit-arrow{margin-left:auto;color:#89969c}#about .wolfram-credit p{font-size:12px;line-height:1.8;color:#94a0a7;margin:14px 0 0}.wolfram-credit a:hover{color:white}#about{max-height:calc(100svh - 40px);overflow-y:auto}
@@ -36,7 +36,7 @@ footer nav small::before{content:"";display:inline-block;width:5px;height:5px;ma
 #initial-focus-open{padding:5px 0;text-align:left;font:11px/1.7 Arial,Helvetica,sans-serif;letter-spacing:.02em;color:#b9d5e6}
 #initial-focus-open:hover{color:#fff}#initial-focus-open span{white-space:nowrap}
 #initial-focus{width:min(620px,90vw);max-height:calc(100svh - 40px);overflow-y:auto;padding:54px 44px 36px;color:#e8ebed;background:#0a0d10;border:1px solid #ffffff36;font:15px/1.8 "Helvetica Neue",Helvetica,Arial,sans-serif}
-#initial-focus::backdrop{background:#000b;backdrop-filter:blur(8px)}
+#initial-focus::backdrop{background:rgba(0,0,0,.18);backdrop-filter:none}
 #initial-focus .atlas-page-marker{margin:0 0 22px;padding-right:12px}
 #initial-focus h2{margin:0 0 22px;font-size:25px;line-height:1.4;font-weight:300;color:#fff;outline:none}
 #initial-focus>p:not(.atlas-page-marker){margin:18px 0;color:#b5bfc5}
