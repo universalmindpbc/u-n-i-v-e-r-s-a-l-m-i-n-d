@@ -23,7 +23,7 @@
   function crosses(score, labelled = false) {
     if (!score) return '';
     const icon = '<svg viewBox="0 0 18 18" aria-hidden="true"><circle cx="9" cy="9" r="8" fill="#1468a8" stroke="currentColor" stroke-width=".5"/><path d="M7 3.5h4V7h3.5v4H11v3.5H7V11H3.5V7H7z" fill="#fff"/></svg>';
-    return `<span class="trust-score" role="img" aria-label="Topic trust score: ${score} of 3 medical crosses" title="Trust score for this topic">${labelled ? '<span class="trust-label">Trust score</span>' : ''}${icon.repeat(score)}</span>`;
+    return `<span class="trust-score" role="img" aria-label="Topic trust score: ${score} of 3" title="Trust score for this topic">${labelled ? '<span class="trust-label">Trust score</span>' : ''}${icon.repeat(score)}</span>`;
   }
   $('#trust-key').innerHTML = [[3,'Double-blind randomized controlled trials'],[2,'Single-blind randomized controlled trials'],[1,'General research']].map(([score,label]) => `<div>${crosses(score)}<span>${label}</span></div>`).join('');
   function route(number = 0, topic = '', destination = collection) {
@@ -99,7 +99,7 @@
     }
   }
   function renderContents() {
-    return `${edition.introduction ? `<section class="collection-introduction"><h2>${esc(edition.introduction.title)}</h2>${edition.introduction.paragraphs.map(p=>`<p>${esc(p)}</p>`).join('')}</section>` : ''}<div class="edition-intro"><p class="eyebrow">${esc(collectionTitle(collection))} RESEARCH</p><h2>Contents</h2></div><div class="contents-grid">${edition.chapters.map(chapter => `<section class="contents-chapter"><h3><span class="chapter-number">${String(chapter.number).padStart(2,'0')}</span><a data-chapter="${chapter.number}" href="${esc(route(chapter.number))}">${esc(chapter.title)}</a></h3><p class="paper-count">${paperCount(chapter.topics.flatMap(t=>t.papers))}</p><ol>${chapter.topics.map(topic => `<li><a data-chapter="${chapter.number}" data-topic="${topic.id}" href="${esc(route(chapter.number,topic.id))}">${esc(topic.title)}<span class="contents-topic-meta"><span class="paper-count">${paperCount(topic.papers)}</span>${crosses(topic.trustScore)}</span></a></li>`).join('')}</ol></section>`).join('')}</div>`;
+    return `${edition.introduction ? `<section class="collection-introduction">${edition.introduction.title ? `<h2>${esc(edition.introduction.title)}</h2>` : ''}${edition.introduction.paragraphs.map(p=>`<p>${esc(p)}</p>`).join('')}</section>` : ''}<div class="edition-intro"><p class="eyebrow">${esc(collectionTitle(collection))} RESEARCH</p><h2>Contents</h2></div><div class="contents-grid">${edition.chapters.map(chapter => `<section class="contents-chapter"><h3><span class="chapter-number">${String(chapter.number).padStart(2,'0')}</span><a data-chapter="${chapter.number}" href="${esc(route(chapter.number))}">${esc(chapter.title)}</a></h3><p class="paper-count">${paperCount(chapter.topics.flatMap(t=>t.papers))}</p><ol>${chapter.topics.map(topic => `<li><a data-chapter="${chapter.number}" data-topic="${topic.id}" href="${esc(route(chapter.number,topic.id))}">${esc(topic.title)}<span class="contents-topic-meta"><span class="paper-count">${paperCount(topic.papers)}</span>${crosses(topic.trustScore)}</span></a></li>`).join('')}</ol></section>`).join('')}</div>`;
   }
   function renderChapter() {
     const chapter = edition.chapters.find(c => c.number === chapterNumber);
@@ -256,7 +256,7 @@
   async function load() {
     $('#load-error').hidden = true;
     try {
-      const responses = await Promise.all(['sound-edition','library','publication-access','language-edition','general-edition','mindfulness-expansion'].map(name=>fetch('library-data/'+name+'.json?v=20261023')));
+      const responses = await Promise.all(['sound-edition','library','publication-access','language-edition','general-edition','mindfulness-expansion'].map(name=>fetch('library-data/'+name+'.json?v=20261023b')));
       if (responses.some(response => !response.ok)) throw new Error('Research unavailable');
       const [sound,data,access,language,general,expansion] = await Promise.all(responses.map(response=>response.json()));
       if (!Array.isArray(sound.chapters) || !Array.isArray(data.records)) throw new Error('Invalid research data');

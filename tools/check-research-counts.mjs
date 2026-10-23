@@ -17,4 +17,9 @@ assert.equal(m.matchesStudy({design:'randomised controlled trial, double blind'}
 assert.equal(m.matchesStudy({design:'Randomized single-masked trial'},'single-blind'),true);
 assert.equal(m.matchesStudy({design:'randomised controlled trial, double blind'},'single-blind'),false);
 assert.equal(m.matchesStudy({design:'double-blind observational study'},'double-blind'),false);
-console.log('Counts, duplicate handling, missing versus zero citations and blinded trial filters passed.');
+for(const title of ['A meta-analysis','Network meta‐analysis','Multilevel meta-analyses','A meta analytic review','Metaanalysis of trials']) assert.equal(m.matchesStudy({title},'meta-analysis'),true,title);
+assert.equal(m.matchesStudy({design:'Systematic review + meta-analysis'},'meta-analysis'),true);
+assert.equal(m.matchesStudy({title:'Systematic review of clinical trials'},'meta-analysis'),false);
+assert.equal(m.matchesStudy({title:'Randomized controlled trial'},'meta-analysis'),false);
+assert.equal(m.matchesStudy({title:'Multilevel meta-analyses'},'review'),true);
+console.log('Counts, duplicate handling, missing versus zero citations and study-design filters passed.');

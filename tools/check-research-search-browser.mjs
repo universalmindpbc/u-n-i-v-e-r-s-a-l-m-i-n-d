@@ -28,9 +28,17 @@ try {
   await page.locator('[data-view="search"]').click();
   for(const id of ['topic','journal','category','physiology','target','kind','period','trust','sort']) assert.equal(await page.locator('#'+id).isVisible(),true,id);
   assert.equal(await page.locator('details.search-filters').count(),0);
+  assert.deepEqual(await page.locator('#trust option').allTextContents(),['All scores','3 stars','2 stars','1 star']);
+  assert.equal(await page.locator('#kind option[value="meta-analysis"]').textContent(),'Meta-analysis');
   const stats={};
   for(const collection of ['sound','vision','language','general','all']) {
    await page.locator(`[data-collection="${collection}"]`).click();
+   if(collection==='language'){
+    assert.equal(await page.locator('.collection-introduction h2').count(),0);
+    assert.equal(await page.locator('.collection-introduction').innerText(),'Language research begins with mindfulness-based stress reduction, initially with a focus on mantra meditation. In the future, this section will include nonviolent communication, emotional intelligence and talking therapies.');
+    assert.equal(await page.locator('.collection-introduction p').evaluate(e=>getComputedStyle(e).fontSize),'16px');
+    await page.locator('.collection-introduction').scrollIntoViewIfNeeded();await page.screenshot({path:output+`/language-introduction-${width}.png`});
+   }
    if(['sound','language','general'].includes(collection))await page.locator('[data-view="search"]').click();
    const downloadPromise=page.waitForEvent('download');await page.locator('#export-json').click();const download=await downloadPromise;
    const json=await readDownload(download);
@@ -39,7 +47,14 @@ try {
    const calculated=model.statistics(json.records,collection);
    for(const key of ['papers','journals','citations'])assert.equal(calculated[key],metrics[key],collection+':'+key);
    assert.equal(new Set(json.records.map(model.identity)).size,json.records.length);
-   stats[collection]=metrics;
+   await page.locator('#kind').selectOption('meta-analysis');
+   const metaPromise=page.waitForEvent('download');await page.locator('#export-json').click();const meta=await readDownload(await metaPromise);
+   assert.ok(meta.records.length>0,collection+' meta-analysis results');assert.ok(meta.records.length<json.records.length);
+   assert.ok(meta.records.every(r=>model.matchesStudy(r,'meta-analysis')));
+   if(collection==='language')assert.ok(meta.records.some(r=>r.pmid==='35329068'));
+   await page.reload();await page.locator('.search-paper').first().waitFor();assert.equal(await page.locator('#kind').inputValue(),'meta-analysis');
+   await page.locator('#reset').click();
+   stats[collection]={...metrics,metaAnalyses:meta.records.length};
   }
   assert.ok(stats.all.papers < stats.sound.papers+stats.vision.papers+stats.language.papers+stats.general.papers);
   for(const design of ['double-blind','single-blind']) {

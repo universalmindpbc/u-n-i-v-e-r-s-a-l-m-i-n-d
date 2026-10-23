@@ -42,7 +42,7 @@ try{
   const ctx=await context(width);try{
    const page=await ctx.newPage();page.on('pageerror',e=>errors.push(e.message));await page.goto(base+'library.html?collection=language',{waitUntil:'domcontentloaded'});await page.locator('.contents-chapter').first().waitFor();
    assert.equal(await page.locator('.contents-chapter').count(),4);assert.equal(await page.locator('.contents-topic-meta').count(),21);
-   assert.match(await page.locator('.collection-introduction').innerText(),/The language we think and the language we say/);assert.match(await page.locator('.collection-introduction').innerText(),/yoga, body awareness/);
+   assert.equal(await page.locator('.collection-introduction').innerText(),"Language research begins with mindfulness-based stress reduction, initially with a focus on mantra meditation. In the future, this section will include nonviolent communication, emotional intelligence and talking therapies.");assert.equal(await page.locator('.collection-introduction h2').count(),0);
    const panel=page.locator('#language-assessment-panel');await panel.locator(':scope > summary').focus();await page.keyboard.press('Enter');
    assert.equal(await page.locator('.approved-mantra-summary').innerText(),portal.summary);assert.equal(await page.locator('.approved-mantra-boundary').innerText(),portal.boundary);
    assert.deepEqual(await panel.locator('.assessment-finding > p:first-child').allTextContents(),portal.heroStudies.map(h=>h.finding));assert.deepEqual(await panel.locator('.assessment-finding .assessment-note').allTextContents(),portal.heroStudies.map(h=>'Limit: '+h.limitation));
