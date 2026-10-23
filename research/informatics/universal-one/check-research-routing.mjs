@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
-import {needsResearch} from '../../../Informatics/universal-one-routing.mjs';
+import {needsResearch} from '../../../Informatics/universal-one-routing.js';
 import {ResearchBudget,budget,budgetStatus,BudgetError} from '../../../cloudflare/informatics-research-budget.js';
 const catalogue=JSON.parse(fs.readFileSync(new URL('../../../cloudflare/informatics-research-topics.json',import.meta.url))).terms;
 const questions=['Electronic music making and gene expression.','Are there any studies on the informatics website around music making and gene expression?', 'What is gene expression?', 'transcription', 'EMDR', 'mantra', 'transcendental meditation', 'TM', 'mindfulness', 'yoga', 'molecular hydrogen', 'binaural beats', 'brain entrainment', 'transcranial magnetic stimulation', 'human resonances', 'Schumann resonance', '5 to 8 hertz', '5–8Hz', '7.83Hz', 'OXTR','IL-6','CD38','NR3C1','M9 nested sequences','What is molecular docking?'];

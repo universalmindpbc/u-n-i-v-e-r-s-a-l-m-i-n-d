@@ -1,5 +1,5 @@
 import fs from 'node:fs';import vm from 'node:vm';import assert from 'node:assert/strict';
-import {needsResearch} from '../../../Informatics/universal-one-routing.mjs';
+import {needsResearch} from '../../../Informatics/universal-one-routing.js';
 const catalogue=JSON.parse(fs.readFileSync(new URL('../../../cloudflare/informatics-research-topics.json',import.meta.url),'utf8')).terms;
 const code=fs.readFileSync(new URL('../../../Informatics/universal-one-live.js',import.meta.url),'utf8');
 const pause=ms=>new Promise(r=>setTimeout(r,ms));

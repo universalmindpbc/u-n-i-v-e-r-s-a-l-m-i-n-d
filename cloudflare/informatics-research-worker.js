@@ -1,5 +1,5 @@
 import {neon} from '@neondatabase/serverless';
-import {needsResearch} from '../Informatics/universal-one-routing.mjs';
+import {needsResearch} from '../Informatics/universal-one-routing.js';
 import routingCatalogue from './informatics-research-topics.json';
 import {budget,budgetStatus,BudgetError} from './informatics-research-budget.js';
 export {ResearchBudget} from './informatics-research-budget.js';
