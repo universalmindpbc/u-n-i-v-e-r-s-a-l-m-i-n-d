@@ -49,8 +49,14 @@
         "status": "unassessed",
         "score": null
       },
-      "trustAssessment": {
-        "score": 2,
+      "citationCount": 1,
+      "citationSnapshot": {
+        "count": 1,
+        "source": "Crossref",
+        "retrievedAt": "2026-10-23",
+        "url": "https://api.crossref.org/works/10.1016/j.bbi.2026.106284"
+      },
+      "studyDesignAssessment": {
         "basis": "The linked trial register specifies masked outcome assessors; participants knew their allocation.",
         "sources": [
           "https://pubmed.ncbi.nlm.nih.gov/41534731/",
@@ -58,16 +64,9 @@
           "https://clinicaltrials.gov/study/NCT05304052"
         ],
         "assessedAt": "2026-10-23",
-        "scheme": "Universal Mind trust score: study design",
-        "scope": "Paper",
-        "registeredMaskingBasis": true
-      },
-      "citationCount": 1,
-      "citationSnapshot": {
-        "count": 1,
-        "source": "Crossref",
-        "retrievedAt": "2026-10-23",
-        "url": "https://api.crossref.org/works/10.1016/j.bbi.2026.106284"
+        "registeredMaskingBasis": true,
+        "category": "single-blind-rct",
+        "peerReviewed": true
       }
     },
     {
@@ -118,9 +117,15 @@
         "status": "unassessed",
         "score": null
       },
-      "trustAssessment": {
-        "score": 3,
-        "basis": "The linked trial register specifies double masking of participants and outcome assessors. The article does not describe the masking procedure; this score reflects the registered design.",
+      "citationCount": 3,
+      "citationSnapshot": {
+        "count": 3,
+        "source": "Crossref",
+        "retrievedAt": "2026-10-23",
+        "url": "https://api.crossref.org/works/10.3389/fpsyg.2025.1653242"
+      },
+      "studyDesignAssessment": {
+        "basis": "The linked trial register specifies double masking of participants and outcome assessors. The article does not describe the masking procedure; this classification reflects the registered design.",
         "sources": [
           "https://pmc.ncbi.nlm.nih.gov/articles/PMC12463968/",
           "https://pubmed.ncbi.nlm.nih.gov/41020112/",
@@ -128,16 +133,9 @@
           "https://clinicaltrials.gov/study/NCT01308970"
         ],
         "assessedAt": "2026-10-23",
-        "scheme": "Universal Mind trust score: study design",
-        "scope": "Paper",
-        "registeredMaskingBasis": true
-      },
-      "citationCount": 3,
-      "citationSnapshot": {
-        "count": 3,
-        "source": "Crossref",
-        "retrievedAt": "2026-10-23",
-        "url": "https://api.crossref.org/works/10.3389/fpsyg.2025.1653242"
+        "registeredMaskingBasis": true,
+        "category": "double-blind-rct",
+        "peerReviewed": true
       }
     },
     {
@@ -192,9 +190,15 @@
         "status": "unassessed",
         "score": null
       },
-      "trustAssessment": {
-        "score": 1,
-        "basis": "The article and ISRCTN record describe random allocation but do not report blinding. A higher score requires documented masking.",
+      "citationCount": 4,
+      "citationSnapshot": {
+        "count": 4,
+        "source": "Crossref",
+        "retrievedAt": "2026-10-23",
+        "url": "https://api.crossref.org/works/10.2196/65506"
+      },
+      "studyDesignAssessment": {
+        "basis": "The article and ISRCTN record describe random allocation but do not report blinding. Blinding is not established by these sources.",
         "sources": [
           "https://pmc.ncbi.nlm.nih.gov/articles/PMC11686021/",
           "https://pubmed.ncbi.nlm.nih.gov/39680432/",
@@ -202,16 +206,9 @@
           "https://www.isrctn.com/ISRCTN82860715"
         ],
         "assessedAt": "2026-10-23",
-        "scheme": "Universal Mind trust score: study design",
-        "scope": "Paper",
-        "registeredMaskingBasis": false
-      },
-      "citationCount": 4,
-      "citationSnapshot": {
-        "count": 4,
-        "source": "Crossref",
-        "retrievedAt": "2026-10-23",
-        "url": "https://api.crossref.org/works/10.2196/65506"
+        "registeredMaskingBasis": false,
+        "category": "peer-reviewed",
+        "peerReviewed": true
       }
     },
     {
@@ -267,24 +264,23 @@
         "status": "unassessed",
         "score": null
       },
-      "trustAssessment": {
-        "score": 1,
-        "basis": "The reported analysis relates genotype and methylation to response across two studies; it is not an independent blinded randomized treatment comparison.",
-        "sources": [
-          "https://pubmed.ncbi.nlm.nih.gov/38671329/",
-          "https://doi.org/10.1007/s12035-024-04096-6"
-        ],
-        "assessedAt": "2026-10-23",
-        "scheme": "Universal Mind trust score: study design",
-        "scope": "Paper",
-        "registeredMaskingBasis": false
-      },
       "citationCount": 9,
       "citationSnapshot": {
         "count": 9,
         "source": "Crossref",
         "retrievedAt": "2026-10-23",
         "url": "https://api.crossref.org/works/10.1007/s12035-024-04096-6"
+      },
+      "studyDesignAssessment": {
+        "basis": "The reported analysis relates genotype and methylation to response across two studies; it is not an independent blinded randomized treatment comparison.",
+        "sources": [
+          "https://pubmed.ncbi.nlm.nih.gov/38671329/",
+          "https://doi.org/10.1007/s12035-024-04096-6"
+        ],
+        "assessedAt": "2026-10-23",
+        "registeredMaskingBasis": false,
+        "category": "peer-reviewed",
+        "peerReviewed": true
       }
     },
     {
@@ -340,8 +336,14 @@
         "status": "unassessed",
         "score": null
       },
-      "trustAssessment": {
-        "score": 2,
+      "citationCount": 15,
+      "citationSnapshot": {
+        "count": 15,
+        "source": "Crossref",
+        "retrievedAt": "2026-10-23",
+        "url": "https://api.crossref.org/works/10.1097/psy.0000000000001264"
+      },
+      "studyDesignAssessment": {
         "basis": "Laboratory technicians were blind to treatment condition; the linked trial register identifies single masking of outcome assessors.",
         "sources": [
           "https://pmc.ncbi.nlm.nih.gov/articles/PMC11098967/",
@@ -350,16 +352,9 @@
           "https://clinicaltrials.gov/study/NCT02888600"
         ],
         "assessedAt": "2026-10-23",
-        "scheme": "Universal Mind trust score: study design",
-        "scope": "Paper",
-        "registeredMaskingBasis": false
-      },
-      "citationCount": 15,
-      "citationSnapshot": {
-        "count": 15,
-        "source": "Crossref",
-        "retrievedAt": "2026-10-23",
-        "url": "https://api.crossref.org/works/10.1097/psy.0000000000001264"
+        "registeredMaskingBasis": false,
+        "category": "single-blind-rct",
+        "peerReviewed": true
       }
     },
     {
@@ -416,8 +411,14 @@
         "status": "unassessed",
         "score": null
       },
-      "trustAssessment": {
-        "score": 1,
+      "citationCount": 12,
+      "citationSnapshot": {
+        "count": 12,
+        "source": "Crossref",
+        "retrievedAt": "2026-10-23",
+        "url": "https://api.crossref.org/works/10.1016/j.bbih.2023.100672"
+      },
+      "studyDesignAssessment": {
         "basis": "A nonrandomized comparison of long-term practitioners and controls; the analysis does not meet the blinded randomized-trial categories.",
         "sources": [
           "https://pmc.ncbi.nlm.nih.gov/articles/PMC10407892/",
@@ -425,16 +426,9 @@
           "https://doi.org/10.1016/j.bbih.2023.100672"
         ],
         "assessedAt": "2026-10-23",
-        "scheme": "Universal Mind trust score: study design",
-        "scope": "Paper",
-        "registeredMaskingBasis": false
-      },
-      "citationCount": 12,
-      "citationSnapshot": {
-        "count": 12,
-        "source": "Crossref",
-        "retrievedAt": "2026-10-23",
-        "url": "https://api.crossref.org/works/10.1016/j.bbih.2023.100672"
+        "registeredMaskingBasis": false,
+        "category": "peer-reviewed",
+        "peerReviewed": true
       }
     },
     {
@@ -485,8 +479,14 @@
         "status": "unassessed",
         "score": null
       },
-      "trustAssessment": {
-        "score": 2,
+      "citationCount": 184,
+      "citationSnapshot": {
+        "count": 184,
+        "source": "Crossref",
+        "retrievedAt": "2026-10-23",
+        "url": "https://api.crossref.org/works/10.1001/jamapsychiatry.2022.3679"
+      },
+      "studyDesignAssessment": {
         "basis": "The article identifies a single-blind trial: independent clinical evaluators were masked, while participants and providers knew the treatment.",
         "sources": [
           "https://pmc.ncbi.nlm.nih.gov/articles/PMC9647561/",
@@ -495,16 +495,9 @@
           "https://clinicaltrials.gov/study/NCT03522844"
         ],
         "assessedAt": "2026-10-23",
-        "scheme": "Universal Mind trust score: study design",
-        "scope": "Paper",
-        "registeredMaskingBasis": false
-      },
-      "citationCount": 184,
-      "citationSnapshot": {
-        "count": 184,
-        "source": "Crossref",
-        "retrievedAt": "2026-10-23",
-        "url": "https://api.crossref.org/works/10.1001/jamapsychiatry.2022.3679"
+        "registeredMaskingBasis": false,
+        "category": "single-blind-rct",
+        "peerReviewed": true
       }
     },
     {
@@ -557,8 +550,14 @@
         "status": "unassessed",
         "score": null
       },
-      "trustAssessment": {
-        "score": 2,
+      "citationCount": 10,
+      "citationSnapshot": {
+        "count": 10,
+        "source": "Crossref",
+        "retrievedAt": "2026-10-23",
+        "url": "https://api.crossref.org/works/10.1016/j.bbih.2022.100531"
+      },
+      "studyDesignAssessment": {
         "basis": "The Methods section explicitly describes a single-blind randomized parallel pilot trial.",
         "sources": [
           "https://pmc.ncbi.nlm.nih.gov/articles/PMC9576541/",
@@ -566,16 +565,9 @@
           "https://doi.org/10.1016/j.bbih.2022.100531"
         ],
         "assessedAt": "2026-10-23",
-        "scheme": "Universal Mind trust score: study design",
-        "scope": "Paper",
-        "registeredMaskingBasis": false
-      },
-      "citationCount": 10,
-      "citationSnapshot": {
-        "count": 10,
-        "source": "Crossref",
-        "retrievedAt": "2026-10-23",
-        "url": "https://api.crossref.org/works/10.1016/j.bbih.2022.100531"
+        "registeredMaskingBasis": false,
+        "category": "single-blind-rct",
+        "peerReviewed": true
       }
     },
     {
@@ -626,8 +618,14 @@
         "status": "unassessed",
         "score": null
       },
-      "trustAssessment": {
-        "score": 1,
+      "citationCount": 241,
+      "citationSnapshot": {
+        "count": 241,
+        "source": "Crossref",
+        "retrievedAt": "2026-10-23",
+        "url": "https://api.crossref.org/works/10.1136/ebmental-2021-300396"
+      },
+      "studyDesignAssessment": {
         "basis": "Students and teachers were not blind to allocation. The main outcomes used self-report; the paper does not establish blinded outcome assessment.",
         "sources": [
           "https://pmc.ncbi.nlm.nih.gov/articles/PMC9340028/",
@@ -635,16 +633,9 @@
           "https://doi.org/10.1136/ebmental-2021-300396"
         ],
         "assessedAt": "2026-10-23",
-        "scheme": "Universal Mind trust score: study design",
-        "scope": "Paper",
-        "registeredMaskingBasis": false
-      },
-      "citationCount": 241,
-      "citationSnapshot": {
-        "count": 241,
-        "source": "Crossref",
-        "retrievedAt": "2026-10-23",
-        "url": "https://api.crossref.org/works/10.1136/ebmental-2021-300396"
+        "registeredMaskingBasis": false,
+        "category": "peer-reviewed",
+        "peerReviewed": true
       }
     },
     {
@@ -695,8 +686,14 @@
         "status": "unassessed",
         "score": null
       },
-      "trustAssessment": {
-        "score": 2,
+      "citationCount": 27,
+      "citationSnapshot": {
+        "count": 27,
+        "source": "Crossref",
+        "retrievedAt": "2026-10-23",
+        "url": "https://api.crossref.org/works/10.1016/j.bbi.2022.04.003"
+      },
+      "studyDesignAssessment": {
         "basis": "The linked trial register specifies masked outcome assessors. The experimenter setting up the apps knew the assigned condition.",
         "sources": [
           "https://pubmed.ncbi.nlm.nih.gov/35427760/",
@@ -705,16 +702,9 @@
           "https://www.healthandhumanperformancelab.com/_files/ugd/b30fc8_81ef3b38218542ec880d0700d6e1dec1.pdf"
         ],
         "assessedAt": "2026-10-23",
-        "scheme": "Universal Mind trust score: study design",
-        "scope": "Paper",
-        "registeredMaskingBasis": true
-      },
-      "citationCount": 27,
-      "citationSnapshot": {
-        "count": 27,
-        "source": "Crossref",
-        "retrievedAt": "2026-10-23",
-        "url": "https://api.crossref.org/works/10.1016/j.bbi.2022.04.003"
+        "registeredMaskingBasis": true,
+        "category": "single-blind-rct",
+        "peerReviewed": true
       }
     },
     {
@@ -767,9 +757,15 @@
         "status": "unassessed",
         "score": null
       },
-      "trustAssessment": {
-        "score": 3,
-        "basis": "The trial register lists participants, investigators and outcome assessors as masked. The paper confirms that lab-visit personnel were blind to condition. The score reflects the registered masking design.",
+      "citationCount": 13,
+      "citationSnapshot": {
+        "count": 13,
+        "source": "Crossref",
+        "retrievedAt": "2026-10-23",
+        "url": "https://api.crossref.org/works/10.1007/s12671-022-01857-z"
+      },
+      "studyDesignAssessment": {
+        "basis": "The trial register lists participants, investigators and outcome assessors as masked. The paper confirms that lab-visit personnel were blind to condition. The classification reflects the registered masking design.",
         "sources": [
           "https://pmc.ncbi.nlm.nih.gov/articles/PMC9585929/",
           "https://pubmed.ncbi.nlm.nih.gov/36278141/",
@@ -777,16 +773,9 @@
           "https://clinicaltrials.gov/study/NCT02400593"
         ],
         "assessedAt": "2026-10-23",
-        "scheme": "Universal Mind trust score: study design",
-        "scope": "Paper",
-        "registeredMaskingBasis": true
-      },
-      "citationCount": 13,
-      "citationSnapshot": {
-        "count": 13,
-        "source": "Crossref",
-        "retrievedAt": "2026-10-23",
-        "url": "https://api.crossref.org/works/10.1007/s12671-022-01857-z"
+        "registeredMaskingBasis": true,
+        "category": "double-blind-rct",
+        "peerReviewed": true
       }
     },
     {
@@ -837,8 +826,14 @@
         "status": "unassessed",
         "score": null
       },
-      "trustAssessment": {
-        "score": 2,
+      "citationCount": 661,
+      "citationSnapshot": {
+        "count": 661,
+        "source": "Crossref",
+        "retrievedAt": "2026-10-23",
+        "url": "https://api.crossref.org/works/10.1001/jama.2016.2323"
+      },
+      "studyDesignAssessment": {
         "basis": "The article explicitly describes an interviewer-blind trial with follow-up interviewers masked to treatment group.",
         "sources": [
           "https://pmc.ncbi.nlm.nih.gov/articles/PMC4914381/",
@@ -847,16 +842,9 @@
           "https://clinicaltrials.gov/study/NCT01467843"
         ],
         "assessedAt": "2026-10-23",
-        "scheme": "Universal Mind trust score: study design",
-        "scope": "Paper",
-        "registeredMaskingBasis": false
-      },
-      "citationCount": 661,
-      "citationSnapshot": {
-        "count": 661,
-        "source": "Crossref",
-        "retrievedAt": "2026-10-23",
-        "url": "https://api.crossref.org/works/10.1001/jama.2016.2323"
+        "registeredMaskingBasis": false,
+        "category": "single-blind-rct",
+        "peerReviewed": true
       }
     },
     {
@@ -905,9 +893,15 @@
         "status": "unassessed",
         "score": null
       },
-      "trustAssessment": {
-        "score": 2,
-        "basis": "The publication and authors’ follow-up confirm blinded clinical interviews. Participants knew their treatment. The register labels investigators and assessors as double masked; this score follows the confirmed assessor blinding in the published study.",
+      "citationCount": 280,
+      "citationSnapshot": {
+        "count": 280,
+        "source": "Crossref",
+        "retrievedAt": "2026-10-23",
+        "url": "https://api.crossref.org/works/10.1001/jama.2015.8361"
+      },
+      "studyDesignAssessment": {
+        "basis": "The publication and authors’ follow-up confirm blinded clinical interviews. Participants knew their treatment. The register labels investigators and assessors as double masked; this classification follows the confirmed assessor blinding in the published study.",
         "sources": [
           "https://pubmed.ncbi.nlm.nih.gov/26241597/",
           "https://doi.org/10.1001/jama.2015.8361",
@@ -915,16 +909,9 @@
           "https://pmc.ncbi.nlm.nih.gov/articles/PMC10688415/"
         ],
         "assessedAt": "2026-10-23",
-        "scheme": "Universal Mind trust score: study design",
-        "scope": "Paper",
-        "registeredMaskingBasis": false
-      },
-      "citationCount": 280,
-      "citationSnapshot": {
-        "count": 280,
-        "source": "Crossref",
-        "retrievedAt": "2026-10-23",
-        "url": "https://api.crossref.org/works/10.1001/jama.2015.8361"
+        "registeredMaskingBasis": false,
+        "category": "single-blind-rct",
+        "peerReviewed": true
       }
     },
     {
@@ -973,24 +960,23 @@
         "status": "unassessed",
         "score": null
       },
-      "trustAssessment": {
-        "score": 2,
-        "basis": "The abstract explicitly identifies a single-blind trial: participants knew allocation and research assessors were masked.",
-        "sources": [
-          "https://pubmed.ncbi.nlm.nih.gov/25907157/",
-          "https://doi.org/10.1016/s0140-6736(14)62222-4"
-        ],
-        "assessedAt": "2026-10-23",
-        "scheme": "Universal Mind trust score: study design",
-        "scope": "Paper",
-        "registeredMaskingBasis": false
-      },
       "citationCount": 445,
       "citationSnapshot": {
         "count": 445,
         "source": "Crossref",
         "retrievedAt": "2026-10-23",
         "url": "https://api.crossref.org/works/10.1016/s0140-6736(14)62222-4"
+      },
+      "studyDesignAssessment": {
+        "basis": "The abstract explicitly identifies a single-blind trial: participants knew allocation and research assessors were masked.",
+        "sources": [
+          "https://pubmed.ncbi.nlm.nih.gov/25907157/",
+          "https://doi.org/10.1016/s0140-6736(14)62222-4"
+        ],
+        "assessedAt": "2026-10-23",
+        "registeredMaskingBasis": false,
+        "category": "single-blind-rct",
+        "peerReviewed": true
       }
     },
     {
@@ -1043,8 +1029,14 @@
         "status": "unassessed",
         "score": null
       },
-      "trustAssessment": {
-        "score": 1,
+      "citationCount": 351,
+      "citationSnapshot": {
+        "count": 351,
+        "source": "Crossref",
+        "retrievedAt": "2026-10-23",
+        "url": "https://api.crossref.org/works/10.1002/cncr.29194"
+      },
+      "studyDesignAssessment": {
         "basis": "The published methods describe randomization to mindfulness or waitlist but do not report masked outcome assessment.",
         "sources": [
           "https://pmc.ncbi.nlm.nih.gov/articles/PMC4393338/",
@@ -1052,16 +1044,9 @@
           "https://doi.org/10.1002/cncr.29194"
         ],
         "assessedAt": "2026-10-23",
-        "scheme": "Universal Mind trust score: study design",
-        "scope": "Paper",
-        "registeredMaskingBasis": false
-      },
-      "citationCount": 351,
-      "citationSnapshot": {
-        "count": 351,
-        "source": "Crossref",
-        "retrievedAt": "2026-10-23",
-        "url": "https://api.crossref.org/works/10.1002/cncr.29194"
+        "registeredMaskingBasis": false,
+        "category": "peer-reviewed",
+        "peerReviewed": true
       }
     },
     {
@@ -1124,8 +1109,14 @@
         "status": "unassessed",
         "score": null
       },
-      "trustAssessment": {
-        "score": 1,
+      "citationCount": 212,
+      "citationSnapshot": {
+        "count": 212,
+        "source": "Crossref",
+        "retrievedAt": "2026-10-23",
+        "url": "https://api.crossref.org/works/10.1016/j.psyneuen.2013.11.004"
+      },
+      "studyDesignAssessment": {
         "basis": "Expert meditators and controls were compared without random allocation.",
         "sources": [
           "https://pmc.ncbi.nlm.nih.gov/articles/PMC4039194/",
@@ -1133,16 +1124,9 @@
           "https://doi.org/10.1016/j.psyneuen.2013.11.004"
         ],
         "assessedAt": "2026-10-23",
-        "scheme": "Universal Mind trust score: study design",
-        "scope": "Paper",
-        "registeredMaskingBasis": false
-      },
-      "citationCount": 212,
-      "citationSnapshot": {
-        "count": 212,
-        "source": "Crossref",
-        "retrievedAt": "2026-10-23",
-        "url": "https://api.crossref.org/works/10.1016/j.psyneuen.2013.11.004"
+        "registeredMaskingBasis": false,
+        "category": "peer-reviewed",
+        "peerReviewed": true
       }
     },
     {
@@ -1195,8 +1179,14 @@
         "status": "unassessed",
         "score": null
       },
-      "trustAssessment": {
-        "score": 2,
+      "citationCount": 499,
+      "citationSnapshot": {
+        "count": 499,
+        "source": "Crossref",
+        "retrievedAt": "2026-10-23",
+        "url": "https://api.crossref.org/works/10.1016/j.bbi.2012.07.006"
+      },
+      "studyDesignAssessment": {
         "basis": "The paper reports that blinded study staff collected post-treatment measures and blood samples.",
         "sources": [
           "https://pmc.ncbi.nlm.nih.gov/articles/PMC3635809/",
@@ -1204,16 +1194,9 @@
           "https://doi.org/10.1016/j.bbi.2012.07.006"
         ],
         "assessedAt": "2026-10-23",
-        "scheme": "Universal Mind trust score: study design",
-        "scope": "Paper",
-        "registeredMaskingBasis": false
-      },
-      "citationCount": 499,
-      "citationSnapshot": {
-        "count": 499,
-        "source": "Crossref",
-        "retrievedAt": "2026-10-23",
-        "url": "https://api.crossref.org/works/10.1016/j.bbi.2012.07.006"
+        "registeredMaskingBasis": false,
+        "category": "single-blind-rct",
+        "peerReviewed": true
       }
     },
     {
@@ -1264,8 +1247,14 @@
         "status": "unassessed",
         "score": null
       },
-      "trustAssessment": {
-        "score": 1,
+      "citationCount": 16,
+      "citationSnapshot": {
+        "count": 16,
+        "source": "Crossref",
+        "retrievedAt": "2026-10-23",
+        "url": "https://api.crossref.org/works/10.1016/s2215-0366(25)00105-1"
+      },
+      "studyDesignAssessment": {
         "basis": "Participants and therapists were unmasked, and follow-up outcomes were self-reported electronically. Masked statistical analysis alone is not treated as single-blind outcome assessment.",
         "sources": [
           "https://pmc.ncbi.nlm.nih.gov/articles/PMC12078190/",
@@ -1273,16 +1262,9 @@
           "https://doi.org/10.1016/s2215-0366(25)00105-1"
         ],
         "assessedAt": "2026-10-23",
-        "scheme": "Universal Mind trust score: study design",
-        "scope": "Paper",
-        "registeredMaskingBasis": false
-      },
-      "citationCount": 16,
-      "citationSnapshot": {
-        "count": 16,
-        "source": "Crossref",
-        "retrievedAt": "2026-10-23",
-        "url": "https://api.crossref.org/works/10.1016/s2215-0366(25)00105-1"
+        "registeredMaskingBasis": false,
+        "category": "peer-reviewed",
+        "peerReviewed": true
       }
     },
     {
@@ -1342,23 +1324,22 @@
         "status": "unassessed",
         "score": null
       },
-      "trustAssessment": {
-        "score": 1,
-        "basis": "Experienced meditators and matched controls were compared without random allocation.",
-        "sources": [
-          "https://link.springer.com/article/10.1007/s12671-026-02877-9"
-        ],
-        "assessedAt": "2026-10-23",
-        "scheme": "Universal Mind trust score: study design",
-        "scope": "Paper",
-        "registeredMaskingBasis": false
-      },
       "citationCount": 0,
       "citationSnapshot": {
         "count": 0,
         "source": "Crossref",
         "retrievedAt": "2026-10-23",
         "url": "https://api.crossref.org/works/10.1007/s12671-026-02877-9"
+      },
+      "studyDesignAssessment": {
+        "basis": "Experienced meditators and matched controls were compared without random allocation.",
+        "sources": [
+          "https://link.springer.com/article/10.1007/s12671-026-02877-9"
+        ],
+        "assessedAt": "2026-10-23",
+        "registeredMaskingBasis": false,
+        "category": "peer-reviewed",
+        "peerReviewed": true
       }
     }
   ]

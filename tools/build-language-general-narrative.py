@@ -1,5 +1,6 @@
 import json,re,difflib,copy,hashlib,argparse
 from pathlib import Path
+from research_topic_trust import assess_topic
 R=Path(__file__).resolve().parents[1]; D=R/'Informatics/library-data'; DOC=R/'research/informatics/library'
 lib=json.loads((D/'library.json').read_text())['records']; byid={r['id']:r for r in lib}
 source={c:{p['page']:p for p in json.loads((D/(c+'-source.json')).read_text())['pages']} for c in ['sound','language']}
@@ -114,8 +115,9 @@ for group,title in [('rna','Mindfulness interventions and gene expression'),('ep
  t={'id':'mindfulness-'+group,'title':title,'trustScore':None,'papers':[]}
  for r in expansion:
   if r['researchGroup']!=group:continue
-  t['papers'].append(dict(id='language-'+t['id']+'-'+r['id'],recordId=r['id'],title=r['title'],journal=r['journal'],year=r['year'],authors=r.get('authors',''),design=r['design'],urls=r['urls'],quotes=[],summary=r['finding'],limitation=r['limitation'],citationCount=r['citationCount'],citationSnapshot=r['citationSnapshot'],articleTrustScore=r['trustAssessment']['score'],trustAssessment=r['trustAssessment'],sourcePages=[],targets=r['targets'],categories=r['categories'],doi=r.get('doi'),pmid=r.get('pmid'),evidence=r['evidence']))
- t['trustScoreDistribution']=[{'score':score,'papers':sum(p['articleTrustScore']==score for p in t['papers'])} for score in [3,2,1] if any(p['articleTrustScore']==score for p in t['papers'])]
+  t['papers'].append(dict(id='language-'+t['id']+'-'+r['id'],recordId=r['id'],title=r['title'],journal=r['journal'],year=r['year'],authors=r.get('authors',''),design=r['design'],urls=r['urls'],quotes=[],summary=r['finding'],limitation=r['limitation'],citationCount=r['citationCount'],citationSnapshot=r['citationSnapshot'],studyDesignAssessment=r['studyDesignAssessment'],sourcePages=[],targets=r['targets'],categories=r['categories'],doi=r.get('doi'),pmid=r.get('pmid'),evidence=r['evidence']))
+ t['trustAssessment']=assess_topic([r for r in expansion if r['researchGroup']==group])
+ t['trustScore']=t['trustAssessment']['score']
  newtopics.append(t)
 chapters.append({'number':4,'title':'Mindfulness: molecular studies and clinical trials','topics':newtopics})
 language={'title':'Language research','chapters':chapters,'introduction':{'paragraphs':['Language research begins with mindfulness-based stress reduction, initially with a focus on mantra meditation. In the future, this section will include nonviolent communication, emotional intelligence and talking therapies.']},'sourceSHA256':hashlib.sha256((D/'language-source.json').read_bytes()).hexdigest()}

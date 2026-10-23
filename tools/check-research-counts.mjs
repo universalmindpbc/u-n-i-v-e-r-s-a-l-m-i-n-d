@@ -23,3 +23,12 @@ assert.equal(m.matchesStudy({title:'Systematic review of clinical trials'},'meta
 assert.equal(m.matchesStudy({title:'Randomized controlled trial'},'meta-analysis'),false);
 assert.equal(m.matchesStudy({title:'Multilevel meta-analyses'},'review'),true);
 console.log('Counts, duplicate handling, missing versus zero citations and study-design filters passed.');
+
+const multiTopic={topics:[{key:'language:rna',collection:'language',trustScore:2},{key:'language:methylation',collection:'language',trustScore:null},{key:'sound:other',collection:'sound',trustScore:3}]};
+assert.equal(m.matchesTopicTrust(multiTopic,2,'language','language:rna'),true);
+assert.equal(m.matchesTopicTrust(multiTopic,3,'language','language:rna'),false);
+assert.equal(m.matchesTopicTrust(multiTopic,2,'language','language:methylation'),false);
+assert.equal(m.matchesTopicTrust(multiTopic,0,'language','language:methylation'),true);
+assert.equal(m.matchesTopicTrust(multiTopic,3,'language'),false);
+assert.equal(m.matchesTopicTrust(multiTopic,3,'all'),true);
+console.log('Topic trust filters respect the selected collection and subchapter.');

@@ -20,10 +20,9 @@
       for (const field of ['topics','soundEntries','chapterEntries']) existing[field] = [...(existing[field] || []),...(record[field] || [])];
       for (const [collection,count] of Object.entries(record.citationsByCollection)) existing.citationsByCollection[collection] = maximumCount([existing.citationsByCollection[collection],count]);
       existing.citationCount = maximumCount(Object.values(existing.citationsByCollection));
-      if (record.trustAssessment && !existing.trustAssessment) {
-        for (const field of ['trustAssessment','articleTrustScore','citationSnapshot','design']) existing[field] = record[field];
+      if (record.studyDesignAssessment && !existing.studyDesignAssessment) {
+        for (const field of ['studyDesignAssessment','citationSnapshot','design']) existing[field] = record[field];
       }
-      if (existing.trustAssessment) existing.topicScores = [existing.trustAssessment.score];
       if (jadadStatus(existing).status==='unassessed' && jadadStatus(record).status!=='unassessed') existing.jadad=record.jadad;
       existing._search += ' '+record._search;
       if (!existing.journalKey && record.journalKey) { existing.journalKey = record.journalKey; existing.journalLabel = record.journalLabel; }
@@ -46,6 +45,9 @@
     const metaAnalysis = /\bmeta\s*analy(?:sis|ses|tic(?:al)?)\b/.test(text);
     return !kind || kind === 'trial' && trial || kind === 'double-blind' && trial && /double\s+(?:blind|mask)/.test(text) || kind === 'single-blind' && trial && /single\s+(?:blind|mask)/.test(text) || kind === 'meta-analysis' && metaAnalysis || kind === 'review' && (/review|synthesis/.test(text) || metaAnalysis) || kind === 'animal' && /mouse|mice|\brats?\b|\bcells?\b|in vitro|animal|fibroblast|rhesus/.test(text);
   }
+  function matchesTopicTrust(record, score, collection = 'all', topic = '') {
+    return !score || record.topics.some(t => (collection === 'all' || t.collection === collection) && (!topic || t.key === topic) && t.trustScore === score);
+  }
   function jadadStatus(record) {
     const value = record.jadad;
     if (value?.status==='assessed' && Number.isInteger(value.score) && value.score>=0 && value.score<=5) return value;
@@ -56,5 +58,5 @@
     const value=jadadStatus(record);
     return !selected || selected===value.status || /^[0-5]$/.test(selected) && value.status==='assessed' && value.score===Number(selected);
   }
-  globalThis.UniversalResearchModel = {journalKey,citationNumber,maximumCount,identity,uniqueCount,deduplicate,statistics,matchesStudy,jadadStatus,matchesJadad};
+  globalThis.UniversalResearchModel = {journalKey,citationNumber,maximumCount,identity,uniqueCount,deduplicate,statistics,matchesStudy,matchesTopicTrust,jadadStatus,matchesJadad};
 })();
