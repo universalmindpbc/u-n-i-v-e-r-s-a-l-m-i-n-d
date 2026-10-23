@@ -5,7 +5,7 @@
   const safeURL = value => { try { const url = new URL(value, location.href); return ['https:', 'http:'].includes(url.protocol) ? url.href : '#'; } catch { return '#'; } };
   const normalize = value => String(value ?? '').normalize('NFKC').toLowerCase().replace(/interleukin[\s-]*6|il[\s-]+6/g, 'il6').replace(/oxytocin receptor/g, 'oxtr').replace(/serotonin transporter/g, 'slc6a4').replace(/glucocorticoid receptor/g, 'nr3c1').replace(/[^\p{L}\p{N}+]+/gu, ' ').trim();
   const model = globalThis.UniversalResearchModel;
-  let publicationAccess = {}, clinicalConditions = {};
+  let publicationAccess = {}, clinicalConditions = {}, fullTextAccess = {};
   const multi = globalThis.ResearchMultiSelect;
   const params = new URLSearchParams(location.search);
   const collections = ['sound', 'vision', 'language', 'general', 'all'];
@@ -245,10 +245,13 @@
   $('#reset').onclick = reset;
   $('#previous').onclick = () => { pageIndex--; renderResults(); $('#results').scrollIntoView(); };
   $('#next').onclick = () => { pageIndex++; renderResults(); $('#results').scrollIntoView(); };
-  $('#export-json').onclick = () => {
-    const data = filtered.map(({_search,soundEntries,topicScores,...record}) => ({...record,topicTrustScores:topicScores}));
-    const url = URL.createObjectURL(new Blob([JSON.stringify({title:'Universal Research',records:data},null,2)+'\n'],{type:'application/json'}));
-    const link = document.createElement('a'); link.href=url; link.download='universal-research.json'; link.click(); setTimeout(()=>URL.revokeObjectURL(url),1000);
+  const exportRecords = () => filtered.map(({_search,soundEntries,topicScores,...record}) => ({...record,topicTrustScores:topicScores,fullText:fullTextAccess[record.id] || {status:'not-indexed',retrievalAvailable:false}}));
+  const download = (text,type,name) => {const url=URL.createObjectURL(new Blob([text],{type}));const link=document.createElement('a');link.href=url;link.download=name;link.click();setTimeout(()=>URL.revokeObjectURL(url),1000);};
+  $('#export-json').onclick = () => download(JSON.stringify({title:'Universal Research',schemaVersion:'2026-10-24',records:exportRecords()},null,2)+'\n','application/json','universal-research.json');
+  $('#export-csv').onclick = () => {
+    const columns=['id','title','journal','year','authors','design','doi','pmid','urls','collections','categories','targets','conditions','summary','limitation','quotes','citationCount','citationSnapshot','topicTrustScores','topics','evidence','jadad','fullText'];
+    const cell=value=>{let text=value==null?'':typeof value==='object'?JSON.stringify(value):String(value);if(/^[=+@\-\t\r]/.test(text))text="'"+text;return '"'+text.replaceAll('"','""')+'"';};
+    download('\ufeff'+[columns,...exportRecords().map(r=>columns.map(c=>r[c]))].map(row=>row.map(cell).join(',')).join('\r\n')+'\r\n','text/csv;charset=utf-8','universal-research.csv');
   };
   function closePaper() {
     const url = new URL(location.href); url.searchParams.delete('record'); url.searchParams.delete('paper'); history.replaceState(null,'',url);
@@ -281,9 +284,10 @@
   async function load() {
     $('#load-error').hidden = true;
     try {
-      const responses = await Promise.all(['sound-edition','library','publication-access','language-edition','general-edition','mindfulness-expansion','vision-edition','vision-expansion','clinical-conditions','nature-expansion'].map(name=>fetch('library-data/'+name+'.json?v=20261023h')));
+      const responses = await Promise.all(['sound-edition','library','publication-access','language-edition','general-edition','mindfulness-expansion','vision-edition','vision-expansion','clinical-conditions','nature-expansion','fulltext-availability'].map(name=>fetch('library-data/'+name+'.json?v=20261024a')));
       if (responses.some(response => !response.ok)) throw new Error('Research unavailable');
-      const [sound,data,access,language,general,expansion,vision,visionExpansion,conditions,natureExpansion] = await Promise.all(responses.map(response=>response.json()));
+      const [sound,data,access,language,general,expansion,vision,visionExpansion,conditions,natureExpansion,fulltexts] = await Promise.all(responses.map(response=>response.json()));
+      fullTextAccess=fulltexts.records;
       if (!Array.isArray(sound.chapters) || !Array.isArray(data.records)) throw new Error('Invalid research data');
       publicationAccess = {...access.records,...visionExpansion.publicationAccess};
       for (const [id,verified] of Object.entries(natureExpansion.publicationAccess)) publicationAccess[id]={...publicationAccess[id],...verified};
