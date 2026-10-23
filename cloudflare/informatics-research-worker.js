@@ -166,7 +166,9 @@ Answer in clear concise paragraphs, usually under 450 words. Use modest formatti
  answer=answer.replace(/\[(S\d+(?:\s*,\s*S\d+)*)\]/g,(_,group)=>group.match(/S\d+/g).map(id=>`[${id}]`).join(''));
  const cited=[...new Set([...answer.matchAll(/\[(S\d+)\]/g)].map(m=>m[1]))];
  if(cited.some(id=>!sources.some(s=>s.label===id)))throw new ServiceError('A source reference failed validation. Please retry.',422);
- return json({answer,sources:sources.filter(s=>cited.includes(s.label)),model:env.RESEARCH_MODEL,version:env.DATASET_VERSION,usage:{totalTokens}});
+ const labels=new Map(cited.map((id,i)=>[id,'S'+(i+1)]));
+ answer=answer.replace(/\[(S\d+)\]/g,(_,id)=>`[${labels.get(id)}]`);
+ return json({answer,sources:cited.map(id=>({...sources.find(s=>s.label===id),label:labels.get(id),retrievalLabel:id})),model:env.RESEARCH_MODEL,version:env.DATASET_VERSION,usage:{totalTokens}});
 }
 
 export default {
