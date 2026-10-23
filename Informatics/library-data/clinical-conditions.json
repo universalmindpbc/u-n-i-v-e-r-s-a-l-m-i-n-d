@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "method": "Labels identify explicit conditions or symptoms in publication titles and transcribed study participants or measurements. They do not assert a diagnosis, effectiveness, or full-text appraisal. Empty labels mean not yet classified.",
+  "method": "Labels identify explicit conditions or symptoms in publication titles and transcribed study participants or measurements. They do not assert a diagnosis, effectiveness, or full-text appraisal. Empty labels mean not yet classified. The name Mindfulness-Based Stress Reduction alone is not a stress outcome; oxidative and cellular stress alone are not mental-health symptom labels.",
   "taxonomy": [
     {
       "id": "anxiety",
@@ -98,18 +98,6 @@
             "field": "title",
             "text": "MicroRNAs expression changes associated with trauma-focused psychotherapy efficacy in treatment-resistant depression: An exploratory study.",
             "matchedText": "depression"
-          }
-        ]
-      }
-    ],
-    "pmid-41308935": [
-      {
-        "id": "stress",
-        "evidence": [
-          {
-            "field": "title",
-            "text": "Oxidative stress-induced proinflammatory secretion from retinal pigment epithelium disrupts NAD+ metabolism via CD38 on macrophages leading to immune microenvironment dysregulation",
-            "matchedText": "stress"
           }
         ]
       }
@@ -228,18 +216,6 @@
         ]
       }
     ],
-    "pmid-37982547": [
-      {
-        "id": "stress",
-        "evidence": [
-          {
-            "field": "title",
-            "text": "Mindfulness-Based Stress Reduction Reduces Proinflammatory Gene Regulation But Not Systemic Inflammation Among Older Adults: A Randomized Controlled Trial",
-            "matchedText": "Stress"
-          }
-        ]
-      }
-    ],
     "pmid-38671329": [
       {
         "id": "ptsd",
@@ -253,18 +229,6 @@
             "field": "evidence.sample",
             "text": "72 veterans with PTSD",
             "matchedText": "PTSD"
-          }
-        ]
-      }
-    ],
-    "pmid-37764116": [
-      {
-        "id": "stress",
-        "evidence": [
-          {
-            "field": "title",
-            "text": "Effects of Music and White Noise Exposure on the Gut Microbiota, Oxidative Stress, and Immune-Related Gene Expression of Mice",
-            "matchedText": "Stress"
           }
         ]
       }
@@ -399,18 +363,6 @@
         ]
       }
     ],
-    "doi-0bf0e1873d286226": [
-      {
-        "id": "stress",
-        "evidence": [
-          {
-            "field": "title",
-            "text": "Impact of mindfulness based stress reduction on sperm DNA damage",
-            "matchedText": "stress"
-          }
-        ]
-      }
-    ],
     "pmid-28795405": [
       {
         "id": "ptsd",
@@ -443,18 +395,6 @@
             "field": "title",
             "text": "Tai chi, cellular inflammation, and transcriptome dynamics in breast cancer survivors with insomnia: a randomized controlled trial",
             "matchedText": "insomnia"
-          }
-        ]
-      }
-    ],
-    "pmid-22820409": [
-      {
-        "id": "stress",
-        "evidence": [
-          {
-            "field": "title",
-            "text": "Mindfulness-Based Stress Reduction training reduces loneliness and pro-inflammatory gene expression in older adults: a small randomized controlled trial",
-            "matchedText": "Stress"
           }
         ]
       }
@@ -1080,16 +1020,6 @@
             "field": "evidence.measurement",
             "text": "Clinician-rated anxiety severity",
             "matchedText": "anxiety"
-          }
-        ]
-      },
-      {
-        "id": "stress",
-        "evidence": [
-          {
-            "field": "title",
-            "text": "Mindfulness-Based Stress Reduction vs Escitalopram for the Treatment of Adults With Anxiety Disorders: A Randomized Clinical Trial",
-            "matchedText": "Stress"
           }
         ]
       }
@@ -1740,18 +1670,6 @@
         ]
       }
     ],
-    "pmid-28386342": [
-      {
-        "id": "stress",
-        "evidence": [
-          {
-            "field": "title",
-            "text": "Hydrogen-rich saline attenuates isoflurane-induced caspase-3 activation and cognitive impairment via inhibition of isoflurane-induced oxidative stress, mitochondrial dysfunction, and reduction in ATP levels",
-            "matchedText": "stress"
-          }
-        ]
-      }
-    ],
     "pmid-29497485": [
       {
         "id": "anxiety",
@@ -1828,18 +1746,6 @@
             "field": "title",
             "text": "Art therapy for PTSD and TBI: A senior active duty military service member’s therapeutic journey",
             "matchedText": "PTSD"
-          }
-        ]
-      }
-    ],
-    "pmid-27002445": [
-      {
-        "id": "stress",
-        "evidence": [
-          {
-            "field": "title",
-            "text": "Effect of Mindfulness-Based Stress Reduction vs Cognitive Behavioral Therapy or Usual Care on Back Pain and Functional Limitations in Adults With Chronic Low Back Pain: A Randomized Clinical Trial",
-            "matchedText": "Stress"
           }
         ]
       }
@@ -1962,16 +1868,6 @@
             "matchedText": "traumatized"
           }
         ]
-      },
-      {
-        "id": "stress",
-        "evidence": [
-          {
-            "field": "title",
-            "text": "A pilot randomized trial teaching mindfulness-based stress reduction to traumatized youth in foster care",
-            "matchedText": "stress"
-          }
-        ]
       }
     ],
     "doi-1e4b5bdcc2212351": [
@@ -2035,18 +1931,6 @@
           {
             "field": "title",
             "text": "EMDR for Syrian refugees with posttraumatic stress disorder symptoms: results of a pilot randomized controlled trial.",
-            "matchedText": "stress"
-          }
-        ]
-      }
-    ],
-    "pmid-25818837": [
-      {
-        "id": "stress",
-        "evidence": [
-          {
-            "field": "title",
-            "text": "Mindfulness-based stress reduction for healthy individuals: A meta-analysis",
             "matchedText": "stress"
           }
         ]
@@ -2550,18 +2434,6 @@
         ]
       }
     ],
-    "pmid-22442202": [
-      {
-        "id": "stress",
-        "evidence": [
-          {
-            "field": "title",
-            "text": "A Pilot Study Evaluating the Effect of Mindfulness-Based Stress Reduction on Psychological Status, Physical Status, Salivary Cortisol, and Interleukin-6 Among Advanced-Stage Cancer Patients and Their Caregivers",
-            "matchedText": "Stress"
-          }
-        ]
-      }
-    ],
     "pmid-22169588": [
       {
         "id": "stress",
@@ -2594,18 +2466,6 @@
             "field": "title",
             "text": "Hydrogen-rich saline protects against oxidative damage and cognitive deficits after mild traumatic brain injury",
             "matchedText": "traumatic"
-          }
-        ]
-      }
-    ],
-    "pmid-22482765": [
-      {
-        "id": "stress",
-        "evidence": [
-          {
-            "field": "title",
-            "text": "Hydrogen-rich saline reverses oxidative stress, cognitive impairment, and mortality in rats submitted to sepsis by cecal ligation and puncture",
-            "matchedText": "stress"
           }
         ]
       }
@@ -2678,18 +2538,6 @@
             "field": "title",
             "text": "Original sound compositions reduce anxiety in emergency department patients: a randomised controlled trial",
             "matchedText": "anxiety"
-          }
-        ]
-      }
-    ],
-    "pmid-21146930": [
-      {
-        "id": "stress",
-        "evidence": [
-          {
-            "field": "title",
-            "text": "Treating fibromyalgia with mindfulness-based stress reduction: Results from a 3-armed randomized controlled trial",
-            "matchedText": "stress"
           }
         ]
       }
@@ -3828,18 +3676,6 @@
         ]
       }
     ],
-    "doi-5bb0d2cb9d5aa958": [
-      {
-        "id": "stress",
-        "evidence": [
-          {
-            "field": "title",
-            "text": "Suppression of Oxidative Stress-Induced Apoptosis of Neuronal Cells by Electrolyzed-Reduced Water",
-            "matchedText": "Stress"
-          }
-        ]
-      }
-    ],
     "src-1023e40a3842": [
       {
         "id": "anxiety",
@@ -3924,5 +3760,24 @@
         ]
       }
     ]
+  },
+  "classificationNotes": {
+    "stressExclusions": [
+      "pmid-41308935",
+      "pmid-37982547",
+      "pmid-37764116",
+      "doi-0bf0e1873d286226",
+      "pmid-22820409",
+      "pmid-36350591",
+      "pmid-28386342",
+      "pmid-27002445",
+      "pmid-26256140",
+      "pmid-25818837",
+      "pmid-22442202",
+      "pmid-22482765",
+      "pmid-21146930",
+      "doi-5bb0d2cb9d5aa958"
+    ],
+    "review": "Initial rule-assisted labels checked for intervention-name and cellular-stress ambiguity. Full-text review can expand condition coverage."
   }
 }
