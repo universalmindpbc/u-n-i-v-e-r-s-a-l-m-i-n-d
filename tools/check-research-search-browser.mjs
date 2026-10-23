@@ -29,9 +29,9 @@ try {
   for(const id of ['topic','journal','category','physiology','target','kind','period','trust','sort']) assert.equal(await page.locator('#'+id).isVisible(),true,id);
   assert.equal(await page.locator('details.search-filters').count(),0);
   const stats={};
-  for(const collection of ['sound','vision','language','all']) {
+  for(const collection of ['sound','vision','language','general','all']) {
    await page.locator(`[data-collection="${collection}"]`).click();
-   if(collection==='sound')await page.locator('[data-view="search"]').click();
+   if(['sound','language','general'].includes(collection))await page.locator('[data-view="search"]').click();
    const downloadPromise=page.waitForEvent('download');await page.locator('#export-json').click();const download=await downloadPromise;
    const json=await readDownload(download);
    const metrics=await page.locator('[data-stat]').evaluateAll(es=>Object.fromEntries(es.map(e=>[e.dataset.stat,Number(e.textContent.replaceAll(',',''))])));
@@ -41,7 +41,7 @@ try {
    assert.equal(new Set(json.records.map(model.identity)).size,json.records.length);
    stats[collection]=metrics;
   }
-  assert.ok(stats.all.papers < stats.sound.papers+stats.vision.papers+stats.language.papers);
+  assert.ok(stats.all.papers < stats.sound.papers+stats.vision.papers+stats.language.papers+stats.general.papers);
   for(const design of ['double-blind','single-blind']) {
    await page.locator('#kind').selectOption(design);
    const downloadPromise=page.waitForEvent('download');await page.locator('#export-json').click();

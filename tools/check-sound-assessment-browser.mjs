@@ -46,23 +46,23 @@ try{
    await page.goto(base+'library.html?collection=sound',{waitUntil:'domcontentloaded'});
    await page.locator('.contents-chapter').first().waitFor();
    const panel=page.locator('#sound-assessment-panel'),toggle=panel.locator(':scope > summary');
-   assert.match(await page.locator('.assessment-grade').innerText(),/Positive systematic evidence/);
-   assert.deepEqual(await page.locator('.assessment-method dd').allTextContents(),[
+   assert.match(await page.locator('#sound-assessment .assessment-grade').innerText(),/Positive systematic evidence/);
+   assert.deepEqual(await page.locator('#sound-assessment .assessment-method dd').allTextContents(),[
     'Supported by current clinical guidance and multiple controlled evidence syntheses.',
     'Positive systematic evidence, with meaningful heterogeneity or a product translation gap.',
     'Promising or indirect evidence. The proposed delivery itself is not yet established.'
    ]);
-   assert.match(await page.locator('.assessment-method').textContent(),/Grades describe the research basis, not a medical recommendation\./);
+   assert.match(await page.locator('#sound-assessment .assessment-method').textContent(),/Grades describe the research basis, not a medical recommendation\./);
    assert.equal(await panel.evaluate(e=>e.open),false);
    assert.deepEqual(await page.locator('[data-stat]').allTextContents(),['284','145','24,691']);
    assert.equal(await page.locator('.contents-chapter').count(),6);
    assert.equal(await page.locator('.contents-topic-meta').count(),19);
-   assert.equal(await page.locator('.assessment-studies article').count(),5);
-   assert.deepEqual(await page.locator('.assessment-finding > p:first-child').allTextContents(),approvedStudies.map(s=>s.finding));
-   assert.deepEqual(await page.locator('.assessment-finding .assessment-note').allTextContents(),approvedStudies.map(s=>'Limit: '+s.limitation));
-   const molecular=await page.locator('.assessment-molecular-studies').textContent();
+   assert.equal(await page.locator('#sound-assessment .assessment-studies article').count(),5);
+   assert.deepEqual(await page.locator('#sound-assessment .assessment-finding > p:first-child').allTextContents(),approvedStudies.map(s=>s.finding));
+   assert.deepEqual(await page.locator('#sound-assessment .assessment-finding .assessment-note').allTextContents(),approvedStudies.map(s=>'Limit: '+s.limitation));
+   const molecular=await page.locator('#sound-assessment .assessment-molecular-studies').textContent();
    for(const gene of ['IL6','NR3C1','NFKB1','IFNG','IL10','LGALS3','CXCL8','THOP1'])assert.ok(molecular.includes(gene),gene+' is named');
-   const explanatory=await page.locator('.assessment-body p').allTextContents();
+   const explanatory=await page.locator('#sound-assessment .assessment-body p').allTextContents();
    assert.equal(explanatory.some(t=>/auditory[- ]beats?\b/i.test(t)),false);
    assert.deepEqual(await page.locator('#sound-assessment h4 a').evaluateAll(es=>es.map(e=>e.href)),sources);
    assert.equal(await page.locator('#collection-statistics').evaluate(e=>e.nextElementSibling.id),'sound-assessment');
@@ -79,7 +79,7 @@ try{
     assert.deepEqual(overflow,[],`${width} ${mode} assessment fits`);
     await page.locator('#sound-assessment').evaluate(e=>e.scrollIntoView({block:'start'}));await page.screenshot({path:`${output}/expanded-${width}-${mode}.png`});
     await page.locator('#sound-molecular-evidence').evaluate(e=>e.scrollIntoView({block:'start'}));await page.screenshot({path:`${output}/molecular-${width}-${mode}.png`});
-    const method=page.locator('.assessment-method');await method.locator(':scope > summary').focus();await page.keyboard.press('Enter');
+    const method=page.locator('#sound-assessment .assessment-method');await method.locator(':scope > summary').focus();await page.keyboard.press('Enter');
     assert.equal(await method.evaluate(e=>e.open),true);await page.keyboard.press('Space');assert.equal(await method.evaluate(e=>e.open),false);
     await toggle.click();assert.equal(await panel.evaluate(e=>e.open),false);
    }
@@ -89,7 +89,7 @@ try{
     await page.locator(`[data-collection="${collection}"]`).click();assert.equal(await page.locator('#sound-assessment').isVisible(),false);
    }
    await page.locator('[data-collection="sound"]').click();assert.equal(await panel.evaluate(e=>e.open),true);
-   await page.locator('.assessment-chapter-link').click();
+   await page.locator('#sound-assessment .assessment-chapter-link').click();
    assert.equal(new URL(page.url()).searchParams.get('chapter'),'3');
    assert.match(await page.locator('.chapter-opening h2').innerText(),/Music and gene expression/);
    await page.goBack();assert.equal(await panel.isVisible(),true);
@@ -106,7 +106,7 @@ try{
   await page.locator('#atlas-toggle').click();await page.locator('#atlas-menu [data-library]').click();
   const frame=page.frameLocator('.library-overlay iframe');await frame.locator('#sound-assessment').waitFor();
   await frame.locator('#sound-assessment-panel > summary').click();assert.equal(await frame.locator('#sound-key-studies').isVisible(),true);
-  await frame.locator('.assessment-chapter-link').click();assert.match(await frame.locator('.chapter-opening h2').innerText(),/Music and gene expression/);
+  await frame.locator('#sound-assessment .assessment-chapter-link').click();assert.match(await frame.locator('.chapter-opening h2').innerText(),/Music and gene expression/);
   assert.equal(new URL(page.url()).pathname,'/informatics/');checks.push({embedded:true,internalNavigationPreservesParent:true,status:'passed'});
  }finally{await pauseMedia(ctx);await ctx.close();}
  assert.deepEqual(errors,[]);

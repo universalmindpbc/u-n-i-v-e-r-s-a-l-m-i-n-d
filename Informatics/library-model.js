@@ -17,9 +17,10 @@
       if (!existing) { grouped.set(id,record); continue; }
       existing.aliases = [...new Set([...existing.aliases,record.id,...record.aliases])];
       for (const field of ['collections','categories','targets','quotes','topicScores']) existing[field] = [...new Set([...existing[field],...record[field]])];
-      for (const field of ['topics','soundEntries']) existing[field].push(...record[field]);
+      for (const field of ['topics','soundEntries','chapterEntries']) existing[field] = [...(existing[field] || []),...(record[field] || [])];
       for (const [collection,count] of Object.entries(record.citationsByCollection)) existing.citationsByCollection[collection] = maximumCount([existing.citationsByCollection[collection],count]);
       existing.citationCount = maximumCount(Object.values(existing.citationsByCollection));
+      if (jadadStatus(existing).status==='unassessed' && jadadStatus(record).status!=='unassessed') existing.jadad=record.jadad;
       existing._search += ' '+record._search;
       if (!existing.journalKey && record.journalKey) { existing.journalKey = record.journalKey; existing.journalLabel = record.journalLabel; }
     }
@@ -40,5 +41,15 @@
     const trial = /randomi[sz](?:ed|ation)/.test(text);
     return !kind || kind === 'trial' && trial || kind === 'double-blind' && trial && /double\s+(?:blind|mask)/.test(text) || kind === 'single-blind' && trial && /single\s+(?:blind|mask)/.test(text) || kind === 'review' && /review|meta[ -]analysis|synthesis/.test(text) || kind === 'animal' && /mouse|mice|\brats?\b|\bcells?\b|in vitro|animal|fibroblast|rhesus/.test(text);
   }
-  globalThis.UniversalResearchModel = {journalKey,citationNumber,maximumCount,identity,uniqueCount,deduplicate,statistics,matchesStudy};
+  function jadadStatus(record) {
+    const value = record.jadad;
+    if (value?.status==='assessed' && Number.isInteger(value.score) && value.score>=0 && value.score<=5) return value;
+    if (value?.status==='not-applicable') return {...value,score:null};
+    return {status:'unassessed',score:null};
+  }
+  function matchesJadad(record, selected) {
+    const value=jadadStatus(record);
+    return !selected || selected===value.status || /^[0-5]$/.test(selected) && value.status==='assessed' && value.score===Number(selected);
+  }
+  globalThis.UniversalResearchModel = {journalKey,citationNumber,maximumCount,identity,uniqueCount,deduplicate,statistics,matchesStudy,jadadStatus,matchesJadad};
 })();
