@@ -71,10 +71,16 @@
     if (!paper.bibliography) return '';
     return `<details class="research-bibliography"><summary>Research bibliography</summary><p class="publication">${esc(paper.bibliographyAttribution)}</p>${paper.bibliographyNote ? `<p>${esc(paper.bibliographyNote)}</p>` : ''}${paper.bibliography.map(block => block.kind==='heading' ? `<h5>${esc(block.text)}</h5>` : `<p class="bibliography-reference">${esc(block.text)}</p>`).join('')}</details>`;
   }
+  function journalDisplay(publication) {
+    const journal = publication.journalLabel || publication.journal || '';
+    const id = publication.recordId || publication.id;
+    const family = publication.publisherFamily || publicationAccess[id]?.publisherFamily || records.find(record => record.id === id || record.aliases.includes(id))?.publisherFamily;
+    return journal && family === 'nature' && !/\bnature\b/i.test(journal) ? `${journal} (Nature Portfolio)` : journal;
+  }
   function paperMarkup(paper, heading = 'h4') {
     const quotes = paper.quotes || [];
     const review = paper.quotationReview;
-    const publication = [paper.journal, paper.year].filter(Boolean).join(' · ');
+    const publication = [journalDisplay(paper), paper.year].filter(Boolean).join(' · ');
     const details = [paper.design, paper.citationCount !== null && paper.citationCount !== undefined ? `${paper.citationCount.toLocaleString()} ${paper.citationCount===1 ? 'citation' : 'citations'}` : ''].filter(Boolean).join(' · ');
     const url = safeURL(paper.urls?.[0] || '#');
     return `<article class="paper" id="paper-${esc(paper.id)}" data-paper="${esc(paper.recordId)}">
@@ -97,7 +103,7 @@
   function populateFilters() {
     const relevant = records.filter(r => collection === 'all' || r.collections.includes(collection));
     for (const [id,label,values] of [
-      ['journal','All journals',[...relevant.filter(r=>r.publisherFamily).map(r=>['family:'+r.publisherFamily,r.publisherFamilyLabel+' — all journals']),...relevant.filter(r=>r.journalKey).map(r=>[r.journalKey,r.journalLabel || r.journal])]],
+      ['journal','All journals',[...relevant.filter(r=>r.publisherFamily).map(r=>['family:'+r.publisherFamily,r.publisherFamilyLabel+' — all journals']),...relevant.filter(r=>r.journalKey).map(r=>[r.journalKey,journalDisplay(r)])]],
       ['topic','All topics',relevant.flatMap(r=>r.topics.filter(t=>collection==='all'||t.collection===collection).map(t=>[t.key,t.title]))]
     ]) {
       const selected = loading ? params.getAll(id) : multi.values(id);
@@ -155,7 +161,7 @@
       const entry = selectedEntry(record);
       const excerpt = record.quotes[0] || record.summary;
       const trimmed = excerpt.length > 340 ? excerpt.slice(0,337).trim()+'…' : excerpt;
-      return `<article class="search-paper" data-id="${esc(record.id)}"><h3><button data-record="${esc(record.id)}">${esc(record.title)}</button></h3><p class="publication">${esc([record.journal,record.year,record.design].filter(Boolean).join(' · '))}</p>${trimmed ? record.quotes.length ? `<blockquote>${esc(trimmed)}</blockquote>` : `<p class="finding">${esc(trimmed)}</p>` : ''}${entry ? `<p class="search-context">${esc(collectionTitle(entry.collection))} · ${esc(entry.topicTitle)} ${crosses(entry.trustScore)}</p>` : ''}<div class="search-tags">${record.categories.slice(0,2).map(c=>`<span>${esc(c)}</span>`).join('')}${record.targets.slice(0,5).map(t=>`<span class="gene">${esc(t)}</span>`).join('')}</div><button class="text-button" data-record="${esc(record.id)}">Read paper →</button></article>`;
+      return `<article class="search-paper" data-id="${esc(record.id)}"><h3><button data-record="${esc(record.id)}">${esc(record.title)}</button></h3><p class="publication">${esc([journalDisplay(record),record.year,record.design].filter(Boolean).join(' · '))}</p>${trimmed ? record.quotes.length ? `<blockquote>${esc(trimmed)}</blockquote>` : `<p class="finding">${esc(trimmed)}</p>` : ''}${entry ? `<p class="search-context">${esc(collectionTitle(entry.collection))} · ${esc(entry.topicTitle)} ${crosses(entry.trustScore)}</p>` : ''}<div class="search-tags">${record.categories.slice(0,2).map(c=>`<span>${esc(c)}</span>`).join('')}${record.targets.slice(0,5).map(t=>`<span class="gene">${esc(t)}</span>`).join('')}</div><button class="text-button" data-record="${esc(record.id)}">Read paper →</button></article>`;
     }).join('') || '<div class="empty-state"><h2>No matching papers.</h2><p>Try a different term or clear the filters.</p><button data-reset>Clear filters</button></div>';
   }
   function render() {
