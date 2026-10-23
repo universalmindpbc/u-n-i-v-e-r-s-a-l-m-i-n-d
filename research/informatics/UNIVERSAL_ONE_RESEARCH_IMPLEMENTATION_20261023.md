@@ -1,6 +1,6 @@
 # Universal One for Informatics — implementation plan
 
-23 October 2026. Prepared after approval of the Nature/Frontiers production release and Ben's text/voice references. Status: next implementation package; no new AI application, database, bucket or model index created in this turn.
+23 October 2026. Prepared after approval of the Nature/Frontiers production release and Ben's text/voice references. Initial plan. Implementation completed on staging on 24 October 2026; see universal-one/IMPLEMENTATION_20261024.md for the current inventory, architecture and verification. The original plan below is retained as the decision record.
 
 ## Decision
 
