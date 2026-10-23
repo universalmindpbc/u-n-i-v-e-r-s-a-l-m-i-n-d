@@ -12,3 +12,4 @@
 body:has(dialog[open]) .uo{visibility:hidden;pointer-events:none}
 @media(max-width:600px){.uo.iam-realtime-voice{right:14px;bottom:14px;width:62px;height:62px}.uo .iam-realtime-voice__summon{width:62px;height:62px}.uo-panel{width:calc(100vw - 28px);bottom:74px;height:calc(100dvh - 110px);max-height:720px}.uo-header{padding:17px 16px 10px}.uo-log{padding:16px}.uo-compose{padding:10px 14px 12px}.uo-actions{gap:6px}.uo-actions button{padding:7px 10px}.uo-launch-label{display:none}.uo-character{right:34px}}
 @media(prefers-reduced-motion:reduce){.uo *, .uo *::before,.uo *::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+@media(max-width:380px){.uo-header h2{font-size:19px}.uo-character{width:80px;right:30px}.uo .uo-character .iam-realtime-character{transform:scale(.36)}}
