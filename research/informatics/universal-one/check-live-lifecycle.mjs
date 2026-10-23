@@ -24,5 +24,18 @@ try{
  h.live.interrupt();assert(h.requests.at(-1).signal.aborted);const count=h.sent.length;h.researchResult();await pause(0);assert.equal(h.sent.length,count,'Interrupted retrieval never sends a late answer');
  h.live.end();assert(h.track.stopped);assert(!h.live.getState().microphone);
 }finally{h.live.end();}
-const late=harness();late.delayMic();const starting=late.live.start();late.live.end();late.resolveMic();await starting;assert(late.track.stopped);assert.equal(late.requests.length,0);assert(!late.live.getState().active);
+const late=harness();late.delayMic();const starting=late.live.start();await pause(0);late.live.end();late.resolveMic();await starting;assert(late.track.stopped);assert.equal(late.requests.length,0);assert(!late.live.getState().active);
 console.log('Live voice gates, mute, interrupted retrieval and late microphone cancellation passed.');
+const hidden=harness();
+try{
+ await hidden.live.start();hidden.emit({type:'response.done',response:{status:'completed',output:[]}});await pause(950);
+ assert(hidden.track.enabled);const requestCount=hidden.requests.length;
+ hidden.live.setVisible(false);assert(!hidden.track.enabled);assert(hidden.live.getState().active);assert(hidden.live.getState().connected);assert.equal(hidden.states.at(-1).s,'paused');
+ hidden.live.setVisible(true);assert(hidden.track.enabled);assert.equal(hidden.requests.length,requestCount);assert(!hidden.track.stopped);
+ hidden.live.toggleMute();hidden.live.setVisible(false);hidden.live.setVisible(true);assert(!hidden.track.enabled,'Returning to the page preserves an explicit microphone mute');
+}finally{hidden.live.end();}
+const permission=harness();permission.delayMic();const permissionStart=permission.live.start();await pause(0);permission.live.setVisible(false);permission.resolveMic();await pause(0);
+assert.equal(permission.requests.length,0,'Permission received in a hidden page waits before connecting');assert(!permission.track.enabled);
+permission.live.setVisible(true);await permissionStart;assert(permission.live.getState().active);assert.equal(permission.requests.length,1);permission.live.end();
+const cancelled=harness();cancelled.delayMic();const cancelledStart=cancelled.live.start();await pause(0);cancelled.live.setVisible(false);cancelled.resolveMic();await pause(0);cancelled.live.end();await cancelledStart;cancelled.live.setVisible(true);assert(cancelled.track.stopped);assert.equal(cancelled.requests.length,0);
+console.log('Transient visibility, permission handoff, explicit mute and cancelled hidden startup passed.');

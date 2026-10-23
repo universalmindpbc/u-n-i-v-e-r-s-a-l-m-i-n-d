@@ -2,6 +2,18 @@
 
 24 October 2026. Production remains at d82c7ae0. Ben proofs the new research assistant on permanent staging before a production release.
 
+## Planet and voice refinement — 24 October 2026
+
+Ben approved the planet-only Informatics design, subtle voice icons and selective research retrieval. The rollover reads exactly “Ask a research question”; the expanded panel retains “Universal One”. The I Am character is no longer inserted into the Informatics DOM. The original planet texture remains in use.
+
+Clicking the planet opens the text panel. Voice minimises to a waveform, status, microphone and end-call icons; an interruption control appears during a response, and recovery appears only after an error. Clicking the planet during compact voice toggles a small transcript/text menu. Escape collapses the menu or panel without ending the conversation. Icon controls retain accessible labels, keyboard focus and hover descriptions.
+
+Visibility changes disable microphone transmission and mute remote playback while the page is hidden, preserving the connection. A pending permission response waits for the visible page before establishing voice. Returning to the visible page resumes the existing state and preserves an explicit mute. End and page navigation still cancel startup and close the microphone. No native fullscreen exit or entry is invoked by Universal One. Safari's native permission UI remains browser-controlled; a simulated visibility handoff is separate from a native Safari fullscreen test.
+
+Realtime answers general scientific concepts directly. Astra remains available for deeper reasoning, library-specific questions and Atlas evidence. General conceptual questions sent to Astra also permit a direct explanation without a mandatory literature search. Exact library claims, specific study findings, Atlas values and recorded project hypotheses retain retrieval requirements. Generic concepts receive no invented citations or citations inherited from an earlier answer. Spoken updates are brief and optional; the UI uses “Thinking…” instead of announcing a database search on every request.
+
+The sections below record the earlier implementation and verification. The refinement has its own source commit and verification-planet-20261024.json audit.
+
 ## Delivered
 
 The existing I Am rotating planet and headphones / meditation / tablet character are reused on the lower right of Informatics and Universal Research. Text is the default. Dictation produces an editable draft with the I Am microphone waveform. Voice opens a live Marin conversation in a compact dock, with an optional transcript and no question composer or Send button. Text and voice share in-page history, including across the research lightbox. Opening the page never requests a microphone.
