@@ -3,10 +3,11 @@
 Usage: python prepare.py RECORDS_JSON CATALOGUE_JSON REPO_ROOT OUTPUT_DIRECTORY
 The output contains research text. Keep it outside the public website and Git.
 """
-import sys, json, hashlib, pathlib, re, collections, os
+import sys, json, hashlib, pathlib, re, collections, os, subprocess
 
 records_file, catalogue_file, repo, output = map(pathlib.Path, sys.argv[1:])
 output.mkdir(parents=True, exist_ok=True)
+subprocess.run([sys.executable,str(pathlib.Path(__file__).with_name('build-routing-catalogue.py')),str(repo)],check=True)
 records = json.loads(records_file.read_text())['records']
 catalogue = json.loads(catalogue_file.read_text())['records']
 version = os.environ.get('UO_DATASET_VERSION', 'research-20261024-v2')

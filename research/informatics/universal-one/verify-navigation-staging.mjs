@@ -1,6 +1,8 @@
+import {installQAAuth} from './qa-auth.mjs';
 import fs from 'node:fs';import assert from 'node:assert/strict';const {chromium}=await import(process.env.PLAYWRIGHT_MODULE||'/Users/benkorbel/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/playwright/index.mjs');
 const output=process.env.UO_QA_OUTPUT||'/private/tmp/uo-qa';fs.mkdirSync(output,{recursive:true});
 const b=await chromium.launch({headless:true,args:['--mute-audio','--use-fake-ui-for-media-stream','--use-fake-device-for-media-stream']});const p=await b.newPage({viewport:{width:1470,height:1000}});const report={processAudioDisabled:true,nativeFullscreenInvoked:false,checks:[],errors:[]};p.on('pageerror',e=>report.errors.push(e.message));
+await installQAAuth(p);
 try{
  await p.goto('https://staging.universalmind.tv/informatics/?area=geometry&record=fibonacci-m9-p24',{waitUntil:'domcontentloaded'});await p.waitForFunction(()=>window.UniversalOneResearch);await p.locator('#launch:not([disabled])').waitFor({timeout:60000});
  await p.evaluate(()=>document.dispatchEvent(new CustomEvent('atlas:navigate',{detail:'geometry'})));await p.locator('#experience').waitFor({state:'visible'});

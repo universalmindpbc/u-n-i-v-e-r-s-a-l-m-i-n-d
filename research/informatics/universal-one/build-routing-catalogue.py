@@ -1,6 +1,6 @@
 """Regenerate specialty routing from approved metadata, without changing it."""
-import json, pathlib, re, unicodedata
-root=pathlib.Path(__file__).resolve().parents[3]
+import json, pathlib, re, unicodedata, sys
+root=pathlib.Path(sys.argv[1]).resolve() if len(sys.argv)>1 else pathlib.Path(__file__).resolve().parents[3]
 data=root/'Informatics/library-data'
 terms=set()
 def add(value):
