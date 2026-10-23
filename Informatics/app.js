@@ -119,5 +119,10 @@ document.querySelectorAll('[data-about]').forEach(button=>button.addEventListene
 document.querySelector('#about-close').onclick=()=>about.close();
 about.addEventListener('click',e=>{if(e.target===about){const r=about.getBoundingClientRect();if(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom)about.close();}});
 about.addEventListener('close',()=>{if(opener?.closest('#atlas-menu'))document.querySelector('#atlas-menu-toggle').focus();else if(opener?.offsetParent)opener.focus();});
+const focusDialog=document.querySelector('#initial-focus'),focusButton=document.querySelector('#initial-focus-open');
+focusButton.addEventListener('click',()=>{(document.fullscreenElement||document.body).append(focusDialog);focusDialog.showModal();});
+focusDialog.querySelectorAll('[data-close-initial-focus]').forEach(button=>button.addEventListener('click',()=>focusDialog.close()));
+focusDialog.addEventListener('click',e=>{if(e.target===focusDialog){const r=focusDialog.getBoundingClientRect();if(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom)focusDialog.close();}});
+focusDialog.addEventListener('close',()=>{if(about.open)focusButton.focus({preventScroll:true});});
 if(new URLSearchParams(location.search).has('about')){opener=document.querySelector('[data-about]');about.showModal();}
 })();
