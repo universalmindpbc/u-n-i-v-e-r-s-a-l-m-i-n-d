@@ -44,7 +44,12 @@ try{
    assert.equal(await page.locator('.contents-chapter').count(),4);assert.equal(await page.locator('.contents-topic-meta').count(),21);
    assert.equal(await page.locator('.collection-introduction').innerText(),"Language research begins with mindfulness-based stress reduction, initially with a focus on mantra meditation. In the future, this section will include nonviolent communication, emotional intelligence and talking therapies.");assert.equal(await page.locator('.collection-introduction h2').count(),0);
    const panel=page.locator('#language-assessment-panel');await panel.locator(':scope > summary').focus();await page.keyboard.press('Enter');
-   assert.equal(await page.locator('.approved-mantra-summary').innerText(),portal.summary);assert.equal(await page.locator('.approved-mantra-boundary').innerText(),portal.boundary);
+   assert.equal(await panel.locator('.assessment-title').innerText(),'Language research assessment');
+   assert.equal(await panel.locator('.assessment-grade > span:last-child').innerText(),'Positive systematic evidence');
+   assert.equal(await panel.locator('.assessment-introduction h2').innerText(),'Mantra, mindfulness and yoga');
+   assert.equal(await panel.locator('.language-assessment-definition').innerText(),'Positive systematic evidence, with meaningful heterogeneity or a product translation gap.');
+   assert.match(await panel.locator('.language-assessment-summary').innerText(),/Transcendental Meditation, mindfulness-based stress reduction, yoga and related practices/);
+   assert.doesNotMatch(await panel.innerText(),/Supported active practice|Mantra research assessment/);
    assert.deepEqual(await panel.locator('.assessment-finding > p:first-child').allTextContents(),portal.heroStudies.map(h=>h.finding));assert.deepEqual(await panel.locator('.assessment-finding .assessment-note').allTextContents(),portal.heroStudies.map(h=>'Limit: '+h.limitation));
    for(const mode of ['video','black','white']){
     await page.locator(`.reading-toolbar [data-reading-background="${mode}"]`).click();await panel.scrollIntoViewIfNeeded();assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1),true,width+mode);
@@ -69,7 +74,7 @@ try{
    await page.locator('[data-collection="all"]').click();const all=(await download(page)).records;assert.equal(new Set(all.map(m.identity)).size,all.length);
    for(const r of generalRecords)assert.ok(all.some(a=>m.identity(a)===m.identity(r)));
    const stats=Object.fromEntries((await page.locator('[data-stat]').evaluateAll(es=>es.map(e=>[e.dataset.stat,Number(e.textContent.replaceAll(',',''))]))));assert.equal(stats.papers,all.length);
-   checks.push({width,languagePapers:allLanguage.records.length,generalPapers:generalRecords.length,allPapers:all.length,originalQuotesRetained:295,verbatimAssessment:true,jadadStates:true,crossListing:true,keyboard:true,themes:3,overflow:false});
+   checks.push({width,languagePapers:allLanguage.records.length,generalPapers:generalRecords.length,allPapers:all.length,originalQuotesRetained:295,verbatimHeroStudies:true,languageAssessmentScope:true,jadadStates:true,crossListing:true,keyboard:true,themes:3,overflow:false});
   }finally{await close(ctx);}
  }
  assert.deepEqual(errors,[]);await fs.writeFile(output+'/verification.json',JSON.stringify({url:base+'library.html?collection=language',candidate,checkedAt:new Date().toISOString(),processAudioMuted:true,checks,errors},null,2)+'\n');console.log(JSON.stringify({output,checks,errors},null,2));
