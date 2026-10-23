@@ -5,6 +5,7 @@ import {Script} from 'molstar/lib/mol-script/script.js';
 import {StructureSelection,StructureElement,StructureProperties} from 'molstar/lib/mol-model/structure.js';
 import {dnaModel,dnaModelSource,complement} from './dna.js';
 export {dnaModelSource};
+export {createInteraction} from './interactions.js';
 import {Color} from 'molstar/lib/mol-util/color/index.js';
 import {MeshBuilder} from 'molstar/lib/mol-geo/geometry/mesh/mesh-builder.js';
 import {Mesh} from 'molstar/lib/mol-geo/geometry/mesh/mesh.js';
@@ -83,6 +84,17 @@ export async function create(parent,onPick){
   defaultCamera=plugin.canvas3d.camera.getSnapshot();
   return {atoms:target.obj.data.elementCount,ligand:!!ligandRepr,context:!!contextRepr,radius:target.obj.data.boundary.sphere.radius};
  }
+ async function loadFragment(pdb){
+  geneData=geneWindow=geneAtomicModel=null;removeOverlay();await plugin.clear();target=structure=ligand=context=repr=ligandRepr=contextRepr=null;current={pdb:'7QVM fragment'};clipRadius=null;
+  const raw=await plugin.builders.data.rawData({data:pdb,label:'Tyr2–Phe291 capped side-chain pair'});
+  const trajectory=await plugin.builders.structure.parseTrajectory(raw,'pdb'),model=await plugin.builders.structure.createModel(trajectory);
+  structure=await plugin.builders.structure.createStructure(model,{name:'model',params:{}});
+  target=await plugin.builders.structure.tryCreateComponentStatic(structure,'all');
+  await render('ball-and-stick');plugin.managers.camera.focusSphere(target.obj.data.boundary.sphere,{durationMs:0,extraRadius:3});defaultCamera=plugin.canvas3d.camera.getSnapshot();
+  canvas.setAttribute('aria-label','Interactive calculated electronic structure. Drag to rotate. Arrow keys rotate, plus and minus zoom.');
+  return {atoms:target.obj.data.elementCount};
+ }
+ async function setTargetOpacity(alpha){if(!repr)return;await plugin.state.data.build().to(repr).update(old=>({...old,type:{...old.type,params:{...old.type.params,alpha}}})).commit();}
  async function geometryLayer(name,opts={}){
   removeOverlay();if(!name||(!target&&!geneWindow))return;
   const g=geometry(name),s=geneWindow?.sphere||target.obj.data.boundary.sphere;const tf={centre:s.center,radius:s.radius,scale:opts.scale??1.2,rotation:opts.rotation??0,offset:opts.offset??0};
@@ -93,7 +105,7 @@ export async function create(parent,onPick){
   overlay=ShapeRepresentation(()=>shape,Mesh.Utils);await plugin.runTask(overlay.createOrUpdate({alpha:opts.opacity??.7,ignoreLight:true,doubleSided:true},g));overlay.setState({pickable:false});plugin.canvas3d.add(overlay);
   clipRadius=Math.max(s.radius+4,s.radius*(tf.scale+Math.abs(tf.offset))+4);plugin.canvas3d.camera.setState({radius:clipRadius,radiusMax:Math.max(geneWindow?.sphere.radius||structure.obj.data.boundary.sphere.radius,clipRadius)},0);return g;
  }
- async function toggle(which,visible){const r=which==='ligand'?ligandRepr:contextRepr;if(!r)return;const cell=plugin.state.data.cells.get(r.ref);if(cell.state.isHidden===visible)await PluginCommands.State.ToggleVisibility(plugin,{state:plugin.state.data,ref:r.ref});}
+ async function toggle(which,visible){const r=which==='ligand'?ligandRepr:contextRepr;if(!r)return;const cell=plugin.state.data.cells.get(r.ref);if(Boolean(cell.state.isHidden)===visible)await PluginCommands.State.ToggleVisibility(plugin,{state:plugin.state.data,ref:r.ref});}
  function focusResidue(chain,seqId){
   if(!structure)return;const expression=MS.struct.generator.atomGroups({'chain-test':MS.core.rel.eq([MS.ammp('label_asym_id'),chain]),'residue-test':MS.core.rel.eq([MS.ammp('label_seq_id'),seqId])});
   const selection=Script.getStructureSelection(expression,structure.obj.data),loci=StructureSelection.toLociWithSourceUnits(selection);
@@ -113,5 +125,5 @@ export async function create(parent,onPick){
  }
  function snapshot(){return {level:geneData?'gene':'protein',...(geneData?{gene:geneData.symbol,windowOffset:geneWindow.start,windowBases:geneWindow.sequence.length,atomCount:geneAtomicModel.atoms.length,modelSource:dnaModelSource}:{pdb:current?.pdb}),representation,camera:plugin.canvas3d.camera.getSnapshot()};}
  function dispose(){removeOverlay();resize.disconnect();plugin.dispose();}
- return {load,loadGene,render,geneCoordinates:()=>geneAtomicModel?.pdb,geometryLayer,toggle,focusResidue,reset,zoom,rotate,spin,screenshot,snapshot,observed,dispose,plugin};
+ return {load,loadGene,loadFragment,setTargetOpacity,rememberCamera:snapshot=>{defaultCamera=snapshot;},render,geneCoordinates:()=>geneAtomicModel?.pdb,geometryLayer,toggle,focusResidue,reset,zoom,rotate,spin,screenshot,snapshot,observed,dispose,plugin};
 }

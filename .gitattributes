@@ -1,1 +1,5 @@
 *.pdf binary
+
+# Preserve exact scientific source and field bytes; generated numeric data is reviewed via provenance checks.
+Informatics/molecular/data/interactions/*.cube binary
+research/informatics/molecular-atlas-build/interaction-source/*.pdb binary
