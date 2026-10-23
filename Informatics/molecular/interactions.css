@@ -22,6 +22,12 @@ body[data-level=docking] .inspector>section:has(.geometry-switch){display:block}
 .teaching-steps button[aria-pressed=true]{border-color:#c7a76e;background:#30291e88;color:#efd09c}
 .teaching-steps button[aria-pressed=true]>span{background:#d9b27a;color:#0c1318;border-color:#d9b27a}
 .teaching-play{display:block;width:100%;border:1px solid #88bac9;border-radius:5px;padding:12px 8px;margin:25px 0;color:#dbecf2;font-size:12px;background:#101d2499}
+.teaching-play:before{content:'▷';display:inline-block;margin-right:8px}
+.interaction-check:has(#teaching-labels),.interaction-check:has(#teaching-guides){flex-direction:row-reverse;justify-content:space-between}
+#teaching-labels,#teaching-guides{appearance:none;position:relative;width:34px;height:18px;border-radius:20px;border:1px solid #526c78;background:#182b35;cursor:pointer;margin:0;flex-shrink:0}
+#teaching-labels:after,#teaching-guides:after{content:'';position:absolute;top:2px;left:2px;width:12px;height:12px;border-radius:50%;background:#a9c0cb}
+#teaching-labels:checked,#teaching-guides:checked{background:#61a8be;border-color:#8fcfdf}
+#teaching-labels:checked:after,#teaching-guides:checked:after{left:18px;background:#eefaff}
 #teaching-explanation{min-height:58px}
 .teaching-note{position:absolute;bottom:7px;left:30px;right:30px;padding:9px 0 0;border-top:1px solid #31414b;font-size:9px;line-height:1.65;color:#b3c6d0;z-index:2;margin:0;pointer-events:none}
 .teaching-labels{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:1;overflow:hidden}
