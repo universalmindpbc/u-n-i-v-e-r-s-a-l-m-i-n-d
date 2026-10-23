@@ -46,7 +46,7 @@
   if(sources.length){const details=document.createElement('details');details.className='uo-sources';const summary=document.createElement('summary');summary.textContent=`${sources.length} ${sources.length===1?'source':'sources'}`;details.append(summary);
    for(const source of sources){const row=document.createElement('div');row.className='uo-source';row.id='uo-'+source.label+'-'+messageId;const link=document.createElement('a');try{const u=new URL(source.url);if(['https:','http:'].includes(u.protocol))link.href=u.href;}catch{}link.target='_blank';link.rel='noopener noreferrer';link.textContent=`[${source.label.slice(1)}] ${source.title}`;row.append(link);const meta=document.createElement('small');meta.textContent=[source.journal,source.year,source.kind==='full-text'?'Full text':source.kind==='atlas'?'Atlas record':'Library record',source.section].filter(Boolean).join(' · ');row.append(meta);if(source.text){const quote=document.createElement('blockquote');quote.textContent=source.text;row.append(quote);}details.append(row);}article.append(details);
   }
-  if(role==='assistant'){const read=document.createElement('button');read.type='button';read.textContent='Read aloud';read.onclick=()=>speak(text,generation).catch(e=>{duck(false);stopButton.hidden=true;say(e.message);});article.append(read);}
+  if(role==='assistant'){const read=document.createElement('button');read.type='button';read.textContent='Read aloud';read.onclick=()=>{cancel();controller=new AbortController();const token=++generation;speak(text,token).catch(e=>{if(token===generation){duck(false);stopButton.hidden=true;if(e.name!=='AbortError')say(e.message);}});};article.append(read);}
   log.append(article);log.scrollTop=log.scrollHeight;return article;
  }
  async function speak(text,token){
@@ -69,12 +69,12 @@
  $('.uo-compose').onsubmit=e=>{e.preventDefault();submit();};stopButton.onclick=cancel;
  recordButton.onclick=async()=>{
   if(recorder?.state==='recording'){recorder.stop();return;}
-  if(busy)return;say('Requesting microphone…');const token=++generation;stopAudio();duck(true);
+  if(busy)return;busy=true;say('Requesting microphone…');const token=++generation;stopAudio();duck(true);
   try{if(!navigator.mediaDevices?.getUserMedia||!window.MediaRecorder)throw Error('Recording is unavailable in this browser. You can type your question.');
    const captured=await navigator.mediaDevices.getUserMedia({audio:{echoCancellation:true,noiseSuppression:true,autoGainControl:true}});
    captured.getAudioTracks().forEach(t=>{t.enabled=false;});
    await new Promise(resolve=>setTimeout(resolve,Math.max(0,inputGateUntil-performance.now())));
-   if(token!==generation||panel.hidden){captured.getTracks().forEach(t=>t.stop());duck(false);return;}stream=captured;stream.getAudioTracks().forEach(t=>{t.enabled=true;});
+   if(token!==generation||panel.hidden){captured.getTracks().forEach(t=>t.stop());return;}stream=captured;stream.getAudioTracks().forEach(t=>{t.enabled=true;});
    const type=['audio/webm;codecs=opus','audio/mp4'].find(t=>MediaRecorder.isTypeSupported(t));recorder=new MediaRecorder(stream,type?{mimeType:type}:{});chunks=[];
    recorder.ondataavailable=e=>{if(e.data.size)chunks.push(e.data);};
    recorder.onstop=async()=>{
@@ -84,8 +84,8 @@
      if(mode==='voice'&&composer.value.trim())await submit();else {say('Review your words, then select Send.');composer.focus();}
     }catch(e){if(e.name!=='AbortError')say(e.message);}finally{if(token===generation){busy=false;sendButton.disabled=false;stopButton.hidden=true;if(!audio)duck(false);}}
    };
-   recorder.start();recordButton.setAttribute('aria-pressed','true');recordButton.textContent=mode==='voice'?'Finish & send':'Finish dictation';stopButton.hidden=false;say('Listening…');recordTimer=setTimeout(()=>{if(recorder?.state==='recording')recorder.stop();},60000);
-  }catch(e){releaseMic();duck(false);say(e.name==='NotAllowedError'?'Microphone access was denied. You can type here, or enable it in your browser settings.':e.message);}
+   recorder.start();busy=false;recordButton.setAttribute('aria-pressed','true');recordButton.textContent=mode==='voice'?'Finish & send':'Finish dictation';stopButton.hidden=false;say('Listening…');recordTimer=setTimeout(()=>{if(recorder?.state==='recording')recorder.stop();},60000);
+  }catch(e){if(token!==generation)return;busy=false;releaseMic();duck(false);say(e.name==='NotAllowedError'?'Microphone access was denied. You can type here, or enable it in your browser settings.':e.message);}
  };
  $('[data-clear]').onclick=()=>{cancel();history.length=0;log.replaceChildren();composer.value='';say('New conversation.');composer.focus();};
  window.addEventListener('pagehide',cancel);document.addEventListener('visibilitychange',()=>{if(document.hidden)cancel();});

@@ -3,13 +3,13 @@
 Usage: python prepare.py RECORDS_JSON CATALOGUE_JSON REPO_ROOT OUTPUT_DIRECTORY
 The output contains research text. Keep it outside the public website and Git.
 """
-import sys, json, hashlib, pathlib, re, collections
+import sys, json, hashlib, pathlib, re, collections, os
 
 records_file, catalogue_file, repo, output = map(pathlib.Path, sys.argv[1:])
 output.mkdir(parents=True, exist_ok=True)
 records = json.loads(records_file.read_text())['records']
 catalogue = json.loads(catalogue_file.read_text())['records']
-version = 'research-20261024-v1'
+version = os.environ.get('UO_DATASET_VERSION', 'research-20261024-v2')
 digest = lambda s: hashlib.sha256(s.encode()).hexdigest()
 lookup = {}
 for record in records:
@@ -73,12 +73,12 @@ for r in index['records']:
     p=repo/'Informatics'/r['file']; data=json.loads(p.read_text())
     atlas.append({'id':r['id'],'modulus':r['modulus'],'data':data,'sha256':hashlib.sha256(p.read_bytes()).hexdigest()})
 manifest=dict(version=version, publications=len(records), fullTextArticles=len(matched), passages=len(passages),
-              atlasRecords=len(atlas), withheldManuscripts=sum(r['permissionClass']!='open-license' for r in catalogue),
+              atlasRecords=len(atlas), withheldManuscripts=sum(r['permissionClass']=='text-mining-manuscript' for r in catalogue),
               unmatched=unmatched, recordsSHA256=hashlib.sha256(records_file.read_bytes()).hexdigest(),
               embeddingModel='text-embedding-3-small',embeddingDimensions=512,
               collections=dict(collections.Counter(c for r in records for c in r['collections'])))
-assert len(records)==len({r['id'] for r in records})==781
-assert len(matched)==130 and not unmatched
+assert len(records)==len({r['id'] for r in records})
+assert len(matched)==sum(r['permissionClass']=='open-license' for r in catalogue) and not unmatched
 for name,value in [('publications',records),('passages',passages),('atlas',atlas),('objects',objects),('manifest',manifest)]:
     (output/(name+'.json')).write_text(json.dumps(value,ensure_ascii=False))
 print(json.dumps(manifest,indent=2))

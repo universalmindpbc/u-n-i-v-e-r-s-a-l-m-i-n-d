@@ -21,8 +21,8 @@ try{
  assert.equal(await page.evaluate(()=>UniversalOneResearch.getState().microphone),false);
  const downloads={};
  for(const kind of ['json','csv']){const event=page.waitForEvent('download');await page.locator('#export-'+kind).click();const d=await event;await d.saveAs(`${output}/research.${kind}`);downloads[kind]=fs.readFileSync(`${output}/research.${kind}`,'utf8');}
- const data=JSON.parse(downloads.json);assert.equal(data.records.length,781);assert.equal(data.records.filter(r=>r.fullText.retrievalAvailable).length,130);assert(downloads.csv.includes('retrievalAvailable'));
- report.checks.push({exports:true,records:data.records.length,fullTexts:130});
+ const data=JSON.parse(downloads.json);assert.equal(data.records.length,811);assert.equal(data.records.filter(r=>r.fullText.retrievalAvailable).length,149);assert(downloads.csv.includes('retrievalAvailable'));
+ report.checks.push({exports:true,records:data.records.length,fullTexts:149});
  await page.locator('.uo .iam-realtime-voice__summon').click();
  for(const width of [1470,1024,390,320]){
   await page.setViewportSize({width,height:1000});
@@ -34,7 +34,7 @@ try{
   await page.screenshot({path:`${output}/uo-${width}.png`});report.checks.push({width,threeThemes:true,panelFits:true});
  }
  await page.setViewportSize({width:1470,height:1000});await page.evaluate(()=>document.documentElement.dataset.readingBackground='video');
- const countAnswer=await ask('How many unique publications and indexed full texts are in this library?');assert(countAnswer.includes('781')&&countAnswer.includes('130'));
+ const countAnswer=await ask('How many unique publications and indexed full texts are in this library?');assert(countAnswer.includes('811')&&countAnswer.includes('149'));
  const evidenceAnswer=await ask('What does the nine-person 2018 study of 528 Hz music report about oxytocin? Did it measure OXTR gene transcription? Cite the study.');
  assert(await page.locator('.uo-message[data-role=assistant]').last().locator('.uo-source').count()>0);
  await page.locator('.uo-message[data-role=assistant]').last().scrollIntoViewIfNeeded();await page.screenshot({path:`${output}/uo-cited-answer.png`});report.checks.push({realAstraRendered:true,countAnswer,evidenceAnswer});
@@ -44,12 +44,12 @@ try{
  const dictated=await page.locator('#uo-question').inputValue();assert(dictated.toLowerCase().includes('publication'));assert.equal(await page.evaluate(()=>UniversalOneResearch.getState().microphone),false);
  report.checks.push({dictationReview:true,dictated});
  // Voice: the same real transcription -> Astra -> Marin -> decoded playback chain.
- await page.locator('[data-mode=voice]').click();await page.evaluate(()=>{const film=document.querySelector('video');film.volume=.8;film.muted=true;});
+ await page.locator('[data-mode=voice]').click();await page.waitForTimeout(1100);await page.evaluate(()=>{const film=document.querySelector('video');film.volume=.8;film.muted=true;});
  const turns=await page.evaluate(()=>UniversalOneResearch.getState().turns);
  await page.locator('.uo [data-record]').click();await page.waitForFunction(()=>UniversalOneResearch.getState().microphone);await page.waitForTimeout(5500);await page.locator('.uo [data-record]').click();
  await page.waitForFunction(()=>UniversalOneResearch.getState().playing,{},{timeout:180000});
  assert.equal(await page.evaluate(()=>UniversalOneResearch.getState().microphone),false);
- await page.waitForTimeout(850);const mix=await page.evaluate(()=>document.querySelector('video').volume);assert(Math.abs(mix-.12)<.02);
+ await page.waitForTimeout(850);const mix=await page.evaluate(()=>document.querySelector('video').volume);report.checks.push({measuredDuck:mix});assert(Math.abs(mix-.12)<.02);
  await page.locator('[data-mode=text]').click();await page.waitForTimeout(1100);const restored=await page.evaluate(()=>document.querySelector('video').volume);assert(Math.abs(restored-.8)<.01);
  const state=await page.evaluate(()=>UniversalOneResearch.getState());assert(!state.microphone&&!state.playing&&state.turns>turns);
  report.checks.push({voiceChain:true,microphoneClosedDuringSpeech:true,duckedVolume:mix,restoredVolume:restored,sharedHistory:true});

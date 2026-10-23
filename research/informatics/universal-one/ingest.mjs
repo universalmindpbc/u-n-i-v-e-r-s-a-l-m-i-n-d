@@ -38,7 +38,8 @@ for(let i=0;i<passages.length;i+=100){
  AS x(id text,publication_id text,kind text,section text,text text,source_url text,rights jsonb,sha256 text,embedding text,version text)
  ON CONFLICT(id) DO UPDATE SET embedding=EXCLUDED.embedding`,[JSON.stringify(batch)]);
 }
-for(const r of read('atlas'))await db.query('INSERT INTO research.atlas(id,modulus,data,sha256) VALUES($1,$2,$3,$4) ON CONFLICT(id) DO UPDATE SET data=EXCLUDED.data,sha256=EXCLUDED.sha256',[r.id,r.modulus,r.data,r.sha256]);
+const atlasHashes=new Map((await db.query('SELECT id,sha256 FROM research.atlas')).rows.map(r=>[r.id,r.sha256]));
+for(const r of read('atlas'))if(atlasHashes.get(r.id)!==r.sha256)await db.query('INSERT INTO research.atlas(id,modulus,data,sha256) VALUES($1,$2,$3,$4) ON CONFLICT(id) DO UPDATE SET data=EXCLUDED.data,sha256=EXCLUDED.sha256',[r.id,r.modulus,r.data,r.sha256]);
 await db.query('INSERT INTO research.releases VALUES($1,$2) ON CONFLICT(version) DO UPDATE SET manifest=EXCLUDED.manifest',[manifest.version,manifest]);
 const password=crypto.randomBytes(32).toString('hex');
 const roles=await db.query("SELECT 1 FROM pg_roles WHERE rolname='informatics_reader'");
@@ -61,7 +62,7 @@ for(const name of ['publications','manifest'])objects.push({path:path.join(corpu
 for(let i=0;i<objects.length;i+=5){
  await Promise.all(objects.slice(i,i+5).map(async o=>{
   const body=fs.readFileSync(o.path), sha=crypto.createHash('sha256').update(body).digest('hex');
-  await storage.send(new PutObjectCommand({Bucket:'research-evidence',Key:o.key,Body:body,ContentType:o.path.endsWith('.pdf')?'application/pdf':o.path.endsWith('.xml')?'application/xml':'application/json',Metadata:{sha256:sha}}));
+  await storage.send(new PutObjectCommand({Bucket:'research-evidence',Key:o.key,Body:body,ContentType:o.path.endsWith('.pdf')?'application/pdf':o.path.endsWith('.xml')?'application/xml':o.path.endsWith('.html')?'text/html':'application/json',Metadata:{sha256:sha}}));
   const check=await storage.send(new HeadObjectCommand({Bucket:'research-evidence',Key:o.key}));
   if(check.ContentLength!==body.length||check.Metadata.sha256!==sha)throw Error('Object verification failed');
   uploaded.push({key:o.key,sha256:sha,bytes:body.length});

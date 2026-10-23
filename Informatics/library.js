@@ -287,9 +287,9 @@
   async function load() {
     $('#load-error').hidden = true;
     try {
-      const responses = await Promise.all(['sound-edition','library','publication-access','language-edition','general-edition','mindfulness-expansion','vision-edition','vision-expansion','clinical-conditions','nature-expansion','fulltext-availability'].map(name=>fetch('library-data/'+name+'.json?v=20261024a')));
+      const responses = await Promise.all(['sound-edition','library','publication-access','language-edition','general-edition','mindfulness-expansion','vision-edition','vision-expansion','clinical-conditions','nature-expansion','fulltext-availability','fibonacci-expansion'].map(name=>fetch('library-data/'+name+'.json?v=20261024b')));
       if (responses.some(response => !response.ok)) throw new Error('Research unavailable');
-      const [sound,data,access,language,general,expansion,vision,visionExpansion,conditions,natureExpansion,fulltexts] = await Promise.all(responses.map(response=>response.json()));
+      const [sound,data,access,language,general,expansion,vision,visionExpansion,conditions,natureExpansion,fulltexts,fibonacciExpansion] = await Promise.all(responses.map(response=>response.json()));
       fullTextAccess=fulltexts.records;
       if (!Array.isArray(sound.chapters) || !Array.isArray(data.records)) throw new Error('Invalid research data');
       publicationAccess = {...access.records,...visionExpansion.publicationAccess};
@@ -298,7 +298,7 @@
       $('#condition').innerHTML='<option value="">All conditions and symptoms</option>'+conditions.taxonomy.map(t=>`<option value="${esc(t.id)}">${esc(t.label)}</option>`).join('');
       editions = {sound,language,general,vision};
       const byId = new Map(data.records.map(r=>[r.id,r]));
-      for (const additional of [...expansion.records,...visionExpansion.records,...natureExpansion.records]) {
+      for (const additional of [...expansion.records,...visionExpansion.records,...natureExpansion.records,...fibonacciExpansion.records]) {
         const existing = byId.get(additional.id);
         byId.set(additional.id,{...existing,...additional,collections:[...new Set([...(existing?.collections || []),...additional.collections])],archiveEntries:existing?.archiveEntries || []});
       }
