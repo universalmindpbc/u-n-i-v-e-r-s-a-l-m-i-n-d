@@ -6,6 +6,7 @@ import {StructureSelection,StructureElement,StructureProperties} from 'molstar/l
 import {dnaModel,dnaModelSource,complement} from './dna.js';
 export {dnaModelSource};
 export {createInteraction} from './interactions.js';
+export {createQuantumTeaching,teachingProvenance,teachingRing} from './quantum-teaching.js';
 import {Color} from 'molstar/lib/mol-util/color/index.js';
 import {MeshBuilder} from 'molstar/lib/mol-geo/geometry/mesh/mesh-builder.js';
 import {Mesh} from 'molstar/lib/mol-geo/geometry/mesh/mesh.js';
@@ -94,6 +95,7 @@ export async function create(parent,onPick){
   canvas.setAttribute('aria-label','Interactive calculated electronic structure. Drag to rotate. Arrow keys rotate, plus and minus zoom.');
   return {atoms:target.obj.data.elementCount};
  }
+ async function clearScene(label){geneData=geneWindow=geneAtomicModel=null;removeOverlay();await plugin.clear();target=structure=ligand=context=repr=ligandRepr=contextRepr=null;current={pdb:'Quantum teaching model'};clipRadius=null;canvas.setAttribute('aria-label',label);}
  async function setTargetOpacity(alpha){if(!repr)return;await plugin.state.data.build().to(repr).update(old=>({...old,type:{...old.type,params:{...old.type.params,alpha}}})).commit();}
  async function geometryLayer(name,opts={}){
   removeOverlay();if(!name||(!target&&!geneWindow))return;
@@ -125,5 +127,5 @@ export async function create(parent,onPick){
  }
  function snapshot(){return {level:geneData?'gene':'protein',...(geneData?{gene:geneData.symbol,windowOffset:geneWindow.start,windowBases:geneWindow.sequence.length,atomCount:geneAtomicModel.atoms.length,modelSource:dnaModelSource}:{pdb:current?.pdb}),representation,camera:plugin.canvas3d.camera.getSnapshot()};}
  function dispose(){removeOverlay();resize.disconnect();plugin.dispose();}
- return {load,loadGene,loadFragment,setTargetOpacity,rememberCamera:snapshot=>{defaultCamera=snapshot;},render,geneCoordinates:()=>geneAtomicModel?.pdb,geometryLayer,toggle,focusResidue,reset,zoom,rotate,spin,screenshot,snapshot,observed,dispose,plugin};
+ return {load,loadGene,loadFragment,clearScene,setTargetOpacity,rememberCamera:snapshot=>{defaultCamera=snapshot;},render,geneCoordinates:()=>geneAtomicModel?.pdb,geometryLayer,toggle,focusResidue,reset,zoom,rotate,spin,screenshot,snapshot,observed,dispose,plugin};
 }
