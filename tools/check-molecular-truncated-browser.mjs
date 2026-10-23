@@ -12,6 +12,13 @@ await fs.mkdir(out,{recursive:true});
 const server=await chromium.launchServer({executablePath:'/Users/benkorbel/Library/Caches/ms-playwright/chromium_headless_shell-1234/chrome-headless-shell-mac-arm64/chrome-headless-shell',headless:true,args:['--mute-audio']});
 assert.ok(server.process().spawnargs.includes('--mute-audio'));
 const browser=await chromium.connect(server.wsEndpoint());
+async function candidate(context){
+ if(live)return;
+ await context.route(/https:\/\/staging\.universalmind\.tv\/informatics\/molecular\/(?:\?.*)?$|https:\/\/staging\.universalmind\.tv\/informatics\/molecular\/(?:index\.html|vendor\/engine\.js)(?:\?.*)?$/,async route=>{
+  const name=new URL(route.request().url()).pathname.endsWith('engine.js')?'vendor/engine.js':'index.html';
+  await route.fulfill({status:200,body:await fs.readFile(root+'/Informatics/molecular/'+name),contentType:name.endsWith('.js')?'text/javascript':'text/html'});
+ });
+}
 async function idle(page){await page.waitForFunction(()=>document.body.dataset.ready==='true'&&document.body.dataset.busy==='false',null,{timeout:60000});await page.evaluate(()=>window.MolecularAtlas.whenIdle());}
 async function imageProof(page){
  return page.evaluate(async()=>{
@@ -25,10 +32,7 @@ async function imageProof(page){
 try{
  for(const viewport of [{width:1470,height:956},{width:1024,height:768},{width:390,height:844},{width:320,height:844}]){
   const context=await browser.newContext({viewport,reducedMotion:'reduce',acceptDownloads:true}),errors=[],failed=[];
-  if(!live)await context.route(/https:\/\/staging\.universalmind\.tv\/informatics\/molecular\/(?:\?.*)?$|https:\/\/staging\.universalmind\.tv\/informatics\/molecular\/(?:index\.html|vendor\/engine\.js)(?:\?.*)?$/,async route=>{
-   const name=new URL(route.request().url()).pathname.endsWith('engine.js')?'vendor/engine.js':'index.html';
-   await route.fulfill({status:200,body:await fs.readFile(root+'/Informatics/molecular/'+name),contentType:name.endsWith('.js')?'text/javascript':'text/html'});
-  });
+  await candidate(context);
   const page=await context.newPage();page.on('pageerror',e=>errors.push(e.message));
   page.on('response',r=>{if(r.status()>=400&&r.url().includes('/informatics/'))failed.push(r.url()+':'+r.status());});
   await page.goto(base+'molecular/',{waitUntil:'domcontentloaded'});await idle(page);
@@ -65,6 +69,24 @@ try{
    results.push({viewport,level,shape,goldPixels:proof.gold,controls:true,download:true,collectionReturn:true,previousSolid:true,noOverflow:true});
   }
   assert.deepEqual(errors,[]);assert.deepEqual(failed,[]);
+  await page.evaluate(()=>document.querySelectorAll('video,audio').forEach(e=>e.pause()));await context.close();
+ }
+ for(const viewport of [{width:1470,height:956},{width:390,height:844}]){
+  const context=await browser.newContext({viewport,reducedMotion:'reduce'});await candidate(context);
+  // Exercise entry at fixed viewport dimensions without native fullscreen.
+  await context.addInitScript(()=>{Element.prototype.requestFullscreen=async()=>{};Element.prototype.webkitRequestFullscreen=()=>{};});
+  const page=await context.newPage(),errors=[];page.on('pageerror',e=>errors.push(e.message));
+  await page.goto(base+'?area=molecular');await page.waitForFunction(()=>!document.querySelector('#launch').disabled);await page.locator('#launch').click();
+  const frame=page.frameLocator('#molecular-frame');await frame.locator('body[data-ready="true"][data-busy="false"]').waitFor({timeout:60000});
+  await frame.locator('#geometry-kind').selectOption(kind);await frame.locator('body').evaluate(()=>window.MolecularAtlas.whenIdle());
+  assert.equal(await frame.locator('#geometry-label').innerText(),'Truncated icosahedron');
+  await page.screenshot({path:`${out}/embedded-${viewport.width}.png`,fullPage:true});
+  await page.locator('#atlas-toggle').click();await page.locator('#atlas-menu [data-area="geometry"]').click();
+  await page.locator('#atlas-toggle').click();await page.locator('#atlas-menu [data-area="molecular"]').click();
+  assert.equal(await frame.locator('#geometry-kind').inputValue(),kind);
+  assert.equal(await frame.locator('#geometry-toggle').isChecked(),true);
+  assert.equal(await page.evaluate(()=>document.fullscreenElement),null);assert.deepEqual(errors,[]);
+  results.push({viewport,embedded:true,entry:true,selectionPreserved:true});
   await page.evaluate(()=>document.querySelectorAll('video,audio').forEach(e=>e.pause()));await context.close();
  }
  await fs.writeFile(out+'/results.json',JSON.stringify({passed:true,live,processMuted:true,nativeFullscreen:false,results},null,2));
