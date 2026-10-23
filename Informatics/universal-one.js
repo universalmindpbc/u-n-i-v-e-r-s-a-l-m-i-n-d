@@ -34,7 +34,7 @@
  function releaseMic(){clearTimeout(recordTimer);stream?.getTracks().forEach(t=>t.stop());stream=null;waveform.stop();$('.uo-compose canvas').hidden=true;recordButton.setAttribute('aria-pressed','false');recordButton.textContent='Dictate';}
  function cancel(){generation++;controller?.abort();controller=null;busy=false;sendButton.disabled=false;stopAudio();if(recorder&&recorder.state!=='inactive'){recorder.onstop=null;recorder.stop();}recorder=null;releaseMic();live.end();duck(false);stopButton.hidden=true;root.dataset.state='idle';$('[data-reconnect]').hidden=true;say('Stopped.');}
  function open(){if(!opened&&history.length){log.replaceChildren();for(const m of history)message(m.role,m.content,m.sources||[]);}opened=true;panel.hidden=false;sync();if(mode==='text')composer.focus({preventScroll:true});root.dataset.pose='meditate';clearInterval(poseTimer);poseTimer=setInterval(()=>{if(!stream&&!live.getState().active)root.dataset.pose=root.dataset.pose==='meditate'?'tea-tablet':'meditate';},16000);}
- function close(){cancel();opened=false;panel.hidden=true;clearInterval(poseTimer);sync();summon.focus({preventScroll:true});}
+ function close(){cancel();mode='text';opened=false;panel.hidden=true;clearInterval(poseTimer);sync();summon.focus({preventScroll:true});}
  function minimize(){panel.hidden=true;sync();character.focus({preventScroll:true});}
  async function voice(){cancel();mode='voice';opened=true;panel.hidden=true;sync();duck(true);await live.start();sync();}
  function textMode(){cancel();mode='text';opened=true;panel.hidden=false;say('Dictate to draft, or type your question.');sync();composer.focus({preventScroll:true});}

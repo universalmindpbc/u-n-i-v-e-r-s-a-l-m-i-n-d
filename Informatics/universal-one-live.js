@@ -7,7 +7,7 @@
   const sync=()=>stream?.getAudioTracks().forEach(t=>{t.enabled=active&&!muted&&!gated;});
   const state=(name,label)=>onState(name,label);
   function gate(){clearTimeout(gateTimer);gated=true;sync();}
-  function listen(){clearTimeout(gateTimer);gateTimer=setTimeout(()=>{if(!active||pending||playing)return;gated=false;sync();state(muted?'muted':'listening',muted?'Microphone off':'Listening…');},900);}
+  function listen(){clearTimeout(gateTimer);gateTimer=setTimeout(()=>{if(!active||pending||playing||responseActive)return;gated=false;sync();state(muted?'muted':'listening',muted?'Microphone off':'Listening…');},900);}
   function end(){epoch++;active=false;clearTimeout(gateTimer);clearTimeout(sessionTimer);clearTimeout(disconnectTimer);abort?.abort();abort=null;pending=null;channel?.close();channel=null;if(peer){peer.onconnectionstatechange=null;peer.close();peer=null;}stream?.getTracks().forEach(t=>t.stop());stream=null;onMicrophone(null);if(remote){remote.pause();remote.srcObject=null;remote=null;}playing=false;responseActive=false;gated=true;muted=false;completed.clear();spoken.clear();heard.clear();lastResult=null;}
   function fail(label){end();state('error',label);}
   async function research(call,token){
@@ -64,7 +64,7 @@
     send({type:'response.create',response:{instructions:'Say exactly: Namaste. What research question can I help you with? Then wait for the visitor.'}});
    }catch(error){if(token!==epoch)return;fail(error.name==='NotAllowedError'?'Microphone access was denied. Enable it in your browser, or select Text.':error.message);}
   }
-  function toggleMute(){if(!active)return;muted=!muted;sync();state(muted?'muted':playing?'speaking':gated?'thinking':'listening',muted?'Microphone off':playing?'Speaking':gated?'Thinking…':'Listening…');}
+  function toggleMute(){if(!active)return;muted=!muted;sync();state(playing?'speaking':gated?'thinking':muted?'muted':'listening',playing?'Speaking':gated?'Thinking…':muted?'Microphone off':'Listening…');}
   function interrupt(){if(!active)return;if(responseActive)send({type:'response.cancel'});send({type:'output_audio_buffer.clear'});if(pending){const call=pending;pending=null;abort?.abort();send({type:'conversation.item.create',item:{type:'function_call_output',call_id:call,output:JSON.stringify({error:'The visitor interrupted this request.'})}});}playing=false;lastResult=null;listen();}
   return {start,end,toggleMute,interrupt,getState:()=>({active,muted,gated,playing,pending:!!pending,microphone:!!stream,inputEnabled:!!stream?.getAudioTracks().some(t=>t.enabled),connected:peer?.connectionState==='connected'})};
  };
