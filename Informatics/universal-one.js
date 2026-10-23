@@ -20,7 +20,7 @@
  const history=host.UniversalOneConversation;let atlasContext=null;let libraryContext=null;let messageNumber=0;
  document.addEventListener('atlas:record',e=>{atlasContext={record:e.detail?.id,view:e.detail?.view};});
  window.addEventListener('message',e=>{if(e.origin===location.origin&&e.data?.type==='informatics:research-context')libraryContext=e.data.context;});
- const context=()=>({page:location.pathname,atlas:atlasContext||Object.fromEntries(new URLSearchParams(location.search)),library:libraryContext});
+ const context=()=>({page:location.pathname,atlas:atlasContext||Object.fromEntries(new URLSearchParams(location.search)),library:window.UniversalResearchContext?.()||libraryContext});
  const say=text=>{status.textContent=text;};
  function stopAudio(){if(audio){audio.pause();audio.src='';audio=null;inputGateUntil=performance.now()+900;}if(audioURL){URL.revokeObjectURL(audioURL);audioURL=null;}if(!stream)duck(false);}
  function releaseMic(){clearTimeout(recordTimer);stream?.getTracks().forEach(t=>t.stop());stream=null;recordButton.setAttribute('aria-pressed','false');recordButton.textContent=mode==='voice'?'Speak':'Dictate';}
@@ -40,8 +40,8 @@
   $('.uo-welcome')?.remove();const messageId=++messageNumber;const article=document.createElement('article');article.className='uo-message';article.dataset.role=role;
   const title=document.createElement('h3');title.textContent=role==='user'?'You':'Universal One';article.append(title);
   const content=document.createElement('div');content.className='uo-answer';
-  const fragments=text.split(/(\[S\d+\])/g);
-  for(const fragment of fragments){const source=sources.find(s=>'['+s.label+']'===fragment);if(source){const link=document.createElement('a');link.href='#uo-'+source.label+'-'+messageId;link.textContent='['+source.label.slice(1)+']';link.onclick=e=>{e.preventDefault();article.querySelector('details').open=true;article.querySelector('#'+CSS.escape(link.hash.slice(1)))?.scrollIntoView({block:'nearest'});};content.append(link);}else content.append(document.createTextNode(fragment));}
+  const fragments=text.replace(/^#{1,4}\s+(.+)$/gm,'**$1**').split(/(\[S\d+\]|\*\*[^*]+\*\*)/g);
+  for(const fragment of fragments){const source=sources.find(s=>'['+s.label+']'===fragment);if(source){const link=document.createElement('a');link.href='#uo-'+source.label+'-'+messageId;link.textContent='['+source.label.slice(1)+']';link.onclick=e=>{e.preventDefault();article.querySelector('details').open=true;article.querySelector('#'+CSS.escape(link.hash.slice(1)))?.scrollIntoView({block:'nearest'});};content.append(link);}else if(fragment.startsWith('**')&&fragment.endsWith('**')){const strong=document.createElement('strong');strong.textContent=fragment.slice(2,-2);content.append(strong);}else content.append(document.createTextNode(fragment));}
   article.append(content);
   if(sources.length){const details=document.createElement('details');details.className='uo-sources';const summary=document.createElement('summary');summary.textContent=`${sources.length} ${sources.length===1?'source':'sources'}`;details.append(summary);
    for(const source of sources){const row=document.createElement('div');row.className='uo-source';row.id='uo-'+source.label+'-'+messageId;const link=document.createElement('a');try{const u=new URL(source.url);if(['https:','http:'].includes(u.protocol))link.href=u.href;}catch{}link.target='_blank';link.rel='noopener noreferrer';link.textContent=`[${source.label.slice(1)}] ${source.title}`;row.append(link);const meta=document.createElement('small');meta.textContent=[source.journal,source.year,source.kind==='full-text'?'Full text':source.kind==='atlas'?'Atlas record':'Library record',source.section].filter(Boolean).join(' · ');row.append(meta);if(source.text){const quote=document.createElement('blockquote');quote.textContent=source.text;row.append(quote);}details.append(row);}article.append(details);

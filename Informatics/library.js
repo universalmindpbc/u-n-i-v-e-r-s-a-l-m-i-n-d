@@ -150,6 +150,7 @@
     $('#page-status').textContent = `${pageIndex+1} / ${totalPages}`;
     $('#previous').disabled = pageIndex === 0; $('#next').disabled = pageIndex >= totalPages-1;
     $('#export-json').disabled = !filtered.length;
+    $('#export-csv').disabled = !filtered.length;
     $('#results').innerHTML = filtered.slice(pageIndex*PAGE_SIZE,(pageIndex+1)*PAGE_SIZE).map(record => {
       const entry = selectedEntry(record);
       const excerpt = record.quotes[0] || record.summary;
@@ -249,10 +250,12 @@
   const download = (text,type,name) => {const url=URL.createObjectURL(new Blob([text],{type}));const link=document.createElement('a');link.href=url;link.download=name;link.click();setTimeout(()=>URL.revokeObjectURL(url),1000);};
   $('#export-json').onclick = () => download(JSON.stringify({title:'Universal Research',schemaVersion:'2026-10-24',records:exportRecords()},null,2)+'\n','application/json','universal-research.json');
   $('#export-csv').onclick = () => {
-    const columns=['id','title','journal','year','authors','design','doi','pmid','urls','collections','categories','targets','conditions','summary','limitation','quotes','citationCount','citationSnapshot','topicTrustScores','topics','evidence','jadad','fullText'];
+    const rows=exportRecords();
+    const columns=[...new Set(['id','title','journal','year','authors','design','doi','pmid',...rows.flatMap(Object.keys)])];
     const cell=value=>{let text=value==null?'':typeof value==='object'?JSON.stringify(value):String(value);if(/^[=+@\-\t\r]/.test(text))text="'"+text;return '"'+text.replaceAll('"','""')+'"';};
-    download('\ufeff'+[columns,...exportRecords().map(r=>columns.map(c=>r[c]))].map(row=>row.map(cell).join(',')).join('\r\n')+'\r\n','text/csv;charset=utf-8','universal-research.csv');
+    download('\ufeff'+[columns,...rows.map(r=>columns.map(c=>r[c]))].map(row=>row.map(cell).join(',')).join('\r\n')+'\r\n','text/csv;charset=utf-8','universal-research.csv');
   };
+  window.UniversalResearchContext=()=>({collection,chapter:chapterNumber,query:$('#query').value,filters:Object.fromEntries(multiFields.map(key=>[key,multi.values(key)]))});
   function closePaper() {
     const url = new URL(location.href); url.searchParams.delete('record'); url.searchParams.delete('paper'); history.replaceState(null,'',url);
     $('#article').close();
