@@ -4,11 +4,11 @@
 
 ## Delivered
 
-The existing I Am rotating planet and headphones / meditation / tablet character are reused on the lower right of Informatics and Universal Research. Text is the default. Dictation produces an editable draft; Voice sends an explicitly finished recording and speaks the cited Astra answer using Marin. Text and voice share in-page history, including across the research lightbox. Opening the page never requests a microphone.
+The existing I Am rotating planet and headphones / meditation / tablet character are reused on the lower right of Informatics and Universal Research. Text is the default. Dictation produces an editable draft with the I Am microphone waveform. Voice opens a live Marin conversation in a compact dock, with an optional transcript and no question composer or Send button. Text and voice share in-page history, including across the research lightbox. Opening the page never requests a microphone.
 
-The voice path is transcription → Astra retrieval → speech. This retains exact agreement between the written answer and its speech input. It uses a dedicated Informatics service and leaves the I Am Realtime application and private citizen systems untouched. The shared identity is generated from the existing I Am character by sync-universal-one-character.py.
+The live voice path reuses the I Am WebRTC connection and gpt-realtime-2.1 profile, with an ask_research tool that calls the existing Astra retrieval service for scientific questions. Spoken replies have their actual transcript and the retrieved citation details. Text dictation still uses transcription, and Read aloud retains the existing text-to-speech path. The dedicated Informatics service leaves the I Am application and private citizen systems untouched. The shared identity is generated from the existing I Am character by sync-universal-one-character.py. Selecting the planet replaces it with that character; minimizing the panel preserves the active conversation.
 
-Music fades to 15% of its original volume over 800 ms and restores over 1,000 ms. Original mute and paused states are preserved. Overlapping requests and interrupted restoration retain the original baseline. The microphone closes before assistant speech and observes a 900 ms release gate, with echo cancellation, noise suppression and automatic gain control requested from the browser. Voice is explicit push-to-talk in this first release.
+Music fades to 15% of its original volume over 800 ms and restores over 1,000 ms. Original mute and paused states are preserved. Overlapping requests and interrupted restoration retain the original baseline. The microphone closes before assistant speech and observes a 900 ms release gate, with echo cancellation, noise suppression and automatic gain control requested from the browser. Server voice activity detection handles turn-taking (threshold 0.72, 300 ms prefix, 800 ms silence). The compact controls offer microphone mute, interruption, transcript visibility, text mode and End. Ending, navigation or a hidden tab closes the live connection and microphone; reconnect is explicit. Sessions close after ten minutes. No native fullscreen operation is initiated by Universal One.
 
 ## Research data
 
@@ -32,7 +32,7 @@ The existing Cloudflare account hosts a dedicated staging Worker, informatics-un
 
 Only the Informatics reader credential reaches the Worker. It has SELECT privileges, a 10-second statement timeout and read-only transactions by default. Tools use parameterized SQL. The model has no arbitrary SQL, network, filesystem, write tools, object-storage credentials or private citizen access. Source texts and page context are evidence, never instructions. Answers return validated citation IDs, source passages, author attribution and article licences where available.
 
-The staging origin allowlist is not user authentication. Numeric quotas limit usage: 12 requests per minute per IP; daily model-call allowance 120, embedding 180, transcription 60, speech 60. One question can use several model calls. Only quota counters persist in the Worker; chat history remains in-page. This is a bounded public staging assistant, not a paid authenticated collaboration service.
+The staging origin allowlist is not user authentication. Numeric quotas limit usage: 12 requests per minute per IP; daily model-call allowance 120, embedding 180, transcription 60, speech 60, live voice session creation 20. Ephemeral voice credentials expire after 120 seconds; the client limits each conversation to ten minutes. The browser session timer is a UX limit, not a server-enforced per-session spending ceiling. One question can use several model calls. Only quota counters persist in the Worker; chat history remains in-page. This is a bounded public staging assistant, not a paid authenticated collaboration service.
 
 ## Rebuild and deployment
 
@@ -44,7 +44,7 @@ Commit the source candidate, deploy the Worker using wrangler.informatics-stagin
 
 ## Verification
 
-See verification-20261024.json and its supporting reports. Real staged UI requests exercised text, editable dictation, transcription → Astra → Marin, citations, microphone denial, mode changes and shared history. A separate Chromium process used --mute-audio and synthetic microphone input; all automated media pages were paused and closed. Silent tests verify functionality, not subjective voice quality.
+The original release evidence is in verification-20261024.json and its supporting reports. Live voice revision evidence is recorded separately in verification-live-20261024.json. The following paragraph describes the original release checks: Real staged UI requests exercised text, editable dictation, transcription → Astra → Marin, citations, microphone denial, mode changes and shared history. A separate Chromium process used --mute-audio and synthetic microphone input; all automated media pages were paused and closed. Silent tests verify functionality, not subjective voice quality.
 
 The tested music mix moved from 0.80 to 0.12 and restored to 0.80. Separate timing checks cover overlapping owners and interrupted fades. Four viewport widths and three reading themes were checked; the General chapter was checked at desktop and mobile sizes. M9 context was queried through the actual Atlas page. The final header and character placement passed at all four widths. Fullscreen subtree containment was simulated without invoking native fullscreen.
 

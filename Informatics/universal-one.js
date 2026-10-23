@@ -83,7 +83,7 @@
    const type=['audio/webm;codecs=opus','audio/mp4'].find(t=>MediaRecorder.isTypeSupported(t)),recording=new MediaRecorder(stream,type?{mimeType:type}:{}),chunks=[];recorder=recording;
    recording.ondataavailable=e=>{if(e.data.size)chunks.push(e.data);};
    recording.onstop=async()=>{
-    const mime=recording.mimeType;recorder=null;releaseMic();root.dataset.state='thinking';if(token!==generation)return;
+    const mime=recording.mimeType;if(token!==generation)return;recorder=null;releaseMic();root.dataset.state='thinking';
     const form=new FormData();form.append('file',new Blob(chunks,{type:mime}),mime.includes('mp4')?'question.mp4':'question.webm');busy=true;sendButton.disabled=true;controller=new AbortController();say('Transcribing…');
     try{const result=await(await request('/transcribe',form,controller.signal)).json();if(token!==generation)return;composer.value=result.text||'';say('Review your words, then select Send.');if(!panel.hidden)composer.focus();}
     catch(e){if(token===generation&&e.name!=='AbortError')say(e.message);}finally{if(token===generation){busy=false;sendButton.disabled=false;stopButton.hidden=true;root.dataset.state='idle';duck(false);}}

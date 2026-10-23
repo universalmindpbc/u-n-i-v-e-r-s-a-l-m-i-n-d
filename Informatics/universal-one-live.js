@@ -20,7 +20,7 @@
     lastResult=result;pending=null;
     send({type:'conversation.item.create',item:{type:'function_call_output',call_id:call.call_id,output:JSON.stringify({answer:result.answer,sources:result.sources.map(s=>({label:s.label,title:s.title,url:s.url})),version:result.version})}});
     send({type:'response.create'});
-   }catch(error){if(token!==epoch||pending!==call.call_id)return;pending=null;send({type:'conversation.item.create',item:{type:'function_call_output',call_id:call.call_id,output:JSON.stringify({error:error.message})}});send({type:'response.create'});state('error',error.message);}
+   }catch(error){if(token!==epoch||pending!==call.call_id)return;pending=null;send({type:'conversation.item.create',item:{type:'function_call_output',call_id:call.call_id,output:JSON.stringify({error:error.message})}});send({type:'response.create'});state('thinking','Research request interrupted. Preparing a response…');}
   }
   function receive(message,token){
    if(token!==epoch)return;let e;try{e=JSON.parse(message.data);}catch{return;}
@@ -51,9 +51,9 @@
     stream=mic;stream.getAudioTracks().forEach(t=>{t.enabled=false;try{t.contentHint='speech';}catch{}});onMicrophone(stream);
     const payload=await(await request('/voice-session',{history:history()},abort.signal)).json();if(token!==epoch)return;
     const connection=new RTCPeerConnection();peer=connection;remote=new Audio();remote.autoplay=true;
-    connection.ontrack=e=>{if(token!==epoch)return;remote.srcObject=e.streams[0];remote.play().catch(()=>fail('Voice playback was blocked. Select Reconnect to try again.'));};
+    connection.ontrack=e=>{if(token!==epoch)return;remote.srcObject=e.streams[0];remote.play().catch(()=>{if(token===epoch)fail('Voice playback was blocked. Select Reconnect to try again.');});};
     connection.onconnectionstatechange=()=>{if(token!==epoch)return;clearTimeout(disconnectTimer);if(['failed','closed'].includes(connection.connectionState))fail('Voice connection ended. Select Reconnect to try again.');else if(connection.connectionState==='disconnected')disconnectTimer=setTimeout(()=>{if(token===epoch&&connection.connectionState==='disconnected')fail('Voice connection interrupted. Select Reconnect to try again.');},5000);};
-    stream.getTracks().forEach(t=>connection.addTrack(t,stream));channel=connection.createDataChannel('oai-events');channel.onmessage=e=>receive(e,token);
+    stream.getTracks().forEach(t=>connection.addTrack(t,stream));channel=connection.createDataChannel('oai-events');channel.onmessage=e=>receive(e,token);channel.addEventListener('close',()=>{if(token===epoch&&active)fail('Voice connection ended. Select Reconnect to try again.');});channel.addEventListener('error',()=>{if(token===epoch&&active)fail('Voice connection interrupted. Select Reconnect to try again.');});
     const ready=new Promise((resolve,reject)=>{const timer=setTimeout(()=>reject(Error('The live voice connection timed out.')),15000);channel.addEventListener('open',()=>{clearTimeout(timer);resolve();},{once:true});channel.addEventListener('error',()=>{clearTimeout(timer);reject(Error('The live voice connection failed.'));},{once:true});});ready.catch(()=>{});
     const offer=await connection.createOffer();await connection.setLocalDescription(offer);
     const answer=await fetch('https://api.openai.com/v1/realtime/calls',{method:'POST',body:offer.sdp,headers:{Authorization:`Bearer ${payload.value}`,'Content-Type':'application/sdp'},signal:abort.signal});
