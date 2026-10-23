@@ -1,5 +1,21 @@
 # Universal One — Informatics staging implementation
 
+## Specialty retrieval and compact casing — 24 October 2026
+
+Ben's specialty questions now trigger research before an answer. The shared router uses approved topic headings, targets, conditions and explicit spoken aliases, including gene expression, transcription, EMDR, mantra, TM, mindfulness, yoga, molecular hydrogen, binaural/isochronic beats, brain entrainment, TMS, Schumann resonance and the specified frequencies. `prepare.py` refreshes the metadata catalogue during each dataset preparation. The voice session supplies that catalogue to the browser; the service uses the same matching function. Prompts also cover semantic variants beyond literal matches. This is a practical routing catalogue, not a guarantee that every possible paraphrase has been enumerated.
+
+Voice activity detection still finds the end of speech. The new client waits for transcription, then forces `ask_research` for an indexed subject before allowing speech generation. General questions outside the catalogue retain direct conversation. Empty/failed transcription returns to listening; duplicate and interrupted transcription events never generate a second or late answer. Older open browser tabs retain automatic turn generation until refreshed. Permission, visibility, microphone gates and audio ducking retain their previous behavior.
+
+The research service retrieves initial evidence for indexed literature topics before asking Astra to answer. Atlas and count questions require a tool call. Music-and-expression queries also search recreational music-making and listening evidence, while preserving the original electronic-music question and its specificity. Approved quotations, study findings and library records remain unchanged.
+
+The previous shared staging counter reached 120 internal research calls on 23 October UTC. It also contained 17 embedding calls, 12 transcriptions, two speech requests and 14 voice sessions. The replacement reserves one allowance unit per complete research question, including its bounded model/retrieval loop. Visitor limits are 120 research questions, 60 transcriptions, 60 speech requests and 20 voice sessions per UTC day, with the existing 12-request/minute IP limit. Automated verification has a separate equally bounded pool authenticated by a private worker secret; the credential is never included in website assets or Git. Legacy numeric counters remain available in authenticated diagnostics and are not reset manually. The ten-minute client voice timer remains a UX limit, not a server-enforced per-session token ceiling.
+
+The planet rollover sits beside its centre. Voice status, waveform and icon controls sit inside a small solid casing that follows the reading theme. The planet and expanded Universal One title are preserved.
+
+Local checks cover the exact reported phrases, all named specialties, ordinary concepts, contextual follow-ups, quota isolation/exhaustion, microphone lifecycle and audio fades. Live proof is recorded separately in `verification-specialties-20261024.json` after deployment. The OpenAI conversation flow follows [manual response creation with VAD](https://developers.openai.com/api/docs/guides/realtime-conversations#keep-vad-but-disable-automatic-responses).
+
+The earlier sections below are historical release records; the specialty routing and question-based quota above supersede their general routing and call-based allowance descriptions.
+
 24 October 2026. Production remains at d82c7ae0. Ben proofs the new research assistant on permanent staging before a production release.
 
 ## Planet and voice refinement — 24 October 2026
