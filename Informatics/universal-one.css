@@ -20,12 +20,12 @@
 .uo.iam-realtime-voice.is-active{width:72px;height:72px}
 .uo.iam-realtime-voice.is-active .iam-realtime-voice__summon{opacity:1;visibility:visible;pointer-events:auto;transform:none;transition-delay:0s}
 .uo .uo-header,#experience .uo .uo-header{padding-right:88px;min-height:108px}
-.uo .iam-realtime-voice__invitation{right:80px;bottom:78px;background:var(--uo-bg);border-color:var(--uo-line);color:var(--uo-ink);max-width:240px}
+.uo .iam-realtime-voice__invitation{right:84px;top:50%;bottom:auto;translate:0 -50%;background:var(--uo-bg);border-color:var(--uo-line);color:var(--uo-ink);max-width:240px}
 .uo .iam-realtime-voice__invitation span{font-family:inherit;color:inherit;letter-spacing:normal;font-size:13px}
 .uo-input-status{display:flex;align-items:center;gap:9px;min-height:27px;margin-bottom:7px}
 .uo-input-status p{margin:0;font-size:13px;color:var(--uo-muted);line-height:1.4}
 .uo .iam-realtime-voice__waveform{flex:0 0 32px;width:32px;height:32px}
-.uo-dock{position:absolute;right:84px;bottom:0;width:156px;color:var(--uo-ink);text-align:left;font-size:12px;line-height:1.4}
+.uo-dock{position:absolute;right:84px;bottom:0;width:176px;padding:9px 10px 8px;background:var(--uo-bg);border:1px solid var(--uo-line);border-radius:12px;color:var(--uo-ink);text-align:left;font-size:12px;line-height:1.4}
 .uo-dock .uo-input-status{gap:7px;margin:0;min-height:28px}
 .uo-dock .uo-input-status p{font-size:11px;line-height:1.4;text-shadow:0 1px 4px var(--uo-bg)}
 .uo-dock .iam-realtime-voice__waveform{width:24px;height:24px;flex-basis:24px}
@@ -40,13 +40,14 @@
 .uo .uo-voice-disclosure{display:block;color:var(--uo-muted);font-size:9px;line-height:1.2;padding-left:8px;text-shadow:0 1px 4px var(--uo-bg)}
 .uo-voice-menu{position:absolute;bottom:calc(100% + 12px);right:0;display:flex;padding:4px;background:var(--uo-bg);border:1px solid var(--uo-line);border-radius:26px}
 .uo[data-mode=voice] .uo-message>button{display:none}
+.uo[data-mode=voice] .iam-realtime-voice__invitation{display:none}
 @media(max-width:600px){
  .uo.iam-realtime-voice,.uo.iam-realtime-voice.is-active{right:14px;bottom:14px;width:62px;height:62px;transform:none}
  .uo .iam-realtime-voice__summon{width:62px;height:62px}
- .uo .iam-realtime-voice__invitation{right:68px;bottom:68px;max-width:210px}
+ .uo .iam-realtime-voice__invitation{right:74px;top:50%;bottom:auto;max-width:210px}
  .uo-panel{width:calc(100vw - 28px);bottom:108px;height:min(620px,calc(100dvh - 136px))}
  .uo .uo-header,#experience .uo .uo-header{padding:16px 86px 9px 16px;min-height:105px}
  .uo-header h2{font-size:20px}.uo-log{padding:16px}.uo-compose{padding:10px 14px 12px}
  .uo-actions{gap:6px}.uo-actions button{padding:7px 10px}
- .uo-dock{right:74px;width:154px}
+ .uo-dock{right:74px;width:166px}
 }

@@ -1,7 +1,7 @@
 // I Am Realtime transport, Marin voice and input gates, scoped to Informatics.
 (() => {
  window.UniversalOneLive=({request,history,context,onState,onMicrophone,onUser,onAssistant})=>{
-  let peer=null,channel=null,stream=null,remote=null,abort=null,active=false,muted=false,gated=true,playing=false,responseActive=false,pending=null,lastResult=null,epoch=0,gateTimer=0,sessionTimer=0,disconnectTimer=0,suspended=false,currentState='idle',currentLabel='Ready when you are.',visibilityWaiters=new Set();
+  let peer=null,channel=null,stream=null,remote=null,abort=null,active=false,muted=false,gated=true,playing=false,responseActive=false,pending=null,lastResult=null,epoch=0,gateTimer=0,sessionTimer=0,disconnectTimer=0,suspended=false,currentState='idle',currentLabel='Ready when you are.',visibilityWaiters=new Set(),routingCatalogue=[],transcriptionTimer=0,pendingSpeech=null;
   const completed=new Set(),spoken=new Set(),heard=new Set();
   const send=value=>{if(channel?.readyState==='open'){channel.send(JSON.stringify(value));return true;}return false;};
   const sync=()=>stream?.getAudioTracks().forEach(t=>{t.enabled=active&&!muted&&!gated&&!suspended;});
@@ -10,7 +10,7 @@
   function waitForVisible(signal){if(!suspended)return Promise.resolve();return new Promise((resolve,reject)=>{const cleanup=()=>{visibilityWaiters.delete(wake);signal.removeEventListener('abort',aborted);};const wake=()=>{cleanup();resolve();};const aborted=()=>{cleanup();reject(Object.assign(Error('Voice start cancelled.'),{name:'AbortError'}));};visibilityWaiters.add(wake);signal.addEventListener('abort',aborted,{once:true});if(signal.aborted)aborted();});}
   function gate(){clearTimeout(gateTimer);gated=true;sync();}
   function listen(){clearTimeout(gateTimer);gateTimer=setTimeout(()=>{if(!active||pending||playing||responseActive)return;gated=false;sync();state(muted?'muted':'listening',muted?'Microphone off':'Listening…');},900);}
-  function end(){epoch++;active=false;clearTimeout(gateTimer);clearTimeout(sessionTimer);clearTimeout(disconnectTimer);abort?.abort();abort=null;pending=null;channel?.close();channel=null;if(peer){peer.onconnectionstatechange=null;peer.close();peer=null;}stream?.getTracks().forEach(t=>t.stop());stream=null;onMicrophone(null);if(remote){remote.pause();remote.srcObject=null;remote=null;}playing=false;responseActive=false;gated=true;muted=false;completed.clear();spoken.clear();heard.clear();lastResult=null;currentState='idle';currentLabel='Ready when you are.';}
+  function end(){epoch++;active=false;clearTimeout(gateTimer);clearTimeout(sessionTimer);clearTimeout(disconnectTimer);clearTimeout(transcriptionTimer);abort?.abort();abort=null;pending=null;channel?.close();channel=null;if(peer){peer.onconnectionstatechange=null;peer.close();peer=null;}stream?.getTracks().forEach(t=>t.stop());stream=null;onMicrophone(null);if(remote){remote.pause();remote.srcObject=null;remote=null;}playing=false;responseActive=false;gated=true;muted=false;completed.clear();spoken.clear();heard.clear();lastResult=null;currentState='idle';currentLabel='Ready when you are.';pendingSpeech=null;}
   function fail(label){end();state('error',label);}
   async function research(call,token){
    if(completed.has(call.call_id))return;completed.add(call.call_id);pending=call.call_id;gate();state('thinking','Thinking…');abort=new AbortController();
@@ -28,8 +28,20 @@
    if(token!==epoch)return;let e;try{e=JSON.parse(message.data);}catch{return;}
    if(['conversation.item.created','conversation.item.added'].includes(e.type)&&e.item?.role==='user')lastResult=null;
    if(e.type==='input_audio_buffer.speech_started'&&!gated){lastResult=null;state('listening','Listening…');}
-   if(e.type==='input_audio_buffer.speech_stopped'&&!gated)state('thinking','Thinking…');
-   if(e.type==='conversation.item.input_audio_transcription.completed'&&e.transcript?.trim()&&!heard.has(e.item_id)){heard.add(e.item_id);onUser(e.transcript.trim());}
+   if(e.type==='input_audio_buffer.speech_stopped'&&!gated){
+    gate();state('thinking','Thinking…');pendingSpeech=e.item_id;clearTimeout(transcriptionTimer);
+    transcriptionTimer=setTimeout(()=>{heard.add(e.item_id);pendingSpeech=null;listen();},15000);
+   }
+   if(e.type==='conversation.item.input_audio_transcription.failed'){clearTimeout(transcriptionTimer);pendingSpeech=null;heard.add(e.item_id);listen();}
+   if(e.type==='conversation.item.input_audio_transcription.completed'&&!heard.has(e.item_id)){
+    heard.add(e.item_id);pendingSpeech=null;clearTimeout(transcriptionTimer);
+    const question=e.transcript?.trim();if(!question){listen();return;}
+    onUser(question);gate();state('thinking','Thinking…');
+    // Decide before any spoken answer. Subject matches force the research tool;
+    // the model still handles synonyms and scientific intent beyond the catalogue.
+    const required=window.UniversalOneNeedsResearch?.(question,routingCatalogue,history())??true;
+    send({type:'response.create',response:{tool_choice:required?{type:'function',name:'ask_research'}:'auto'}});
+   }
    if(e.type==='response.created'){responseActive=true;gate();state('thinking','Thinking…');}
    if(e.type==='output_audio_buffer.started'){playing=true;gate();state('speaking','Speaking');}
    if(e.type==='output_audio_buffer.stopped'||e.type==='output_audio_buffer.cleared'){playing=false;if(!pending)listen();}
@@ -54,7 +66,7 @@
     if(token!==epoch){mic.getTracks().forEach(t=>t.stop());return;}
     stream=mic;stream.getAudioTracks().forEach(t=>{t.enabled=false;try{t.contentHint='speech';}catch{}});onMicrophone(stream);
     await waitForVisible(abort.signal);if(token!==epoch)return;
-    const payload=await(await request('/voice-session',{history:history()},abort.signal)).json();if(token!==epoch)return;
+    const payload=await(await request('/voice-session',{history:history(),manualTurns:true},abort.signal)).json();if(token!==epoch)return;routingCatalogue=payload.routingCatalogue||[];
     const connection=new RTCPeerConnection();peer=connection;remote=new Audio();remote.autoplay=true;remote.muted=suspended;
     connection.ontrack=e=>{if(token!==epoch)return;remote.srcObject=e.streams[0];remote.play().catch(()=>{if(token===epoch)fail('Voice playback was blocked. Select Reconnect to try again.');});};
     connection.onconnectionstatechange=()=>{if(token!==epoch)return;clearTimeout(disconnectTimer);if(['failed','closed'].includes(connection.connectionState))fail('Voice connection ended. Select Reconnect to try again.');else if(connection.connectionState==='disconnected')disconnectTimer=setTimeout(()=>{if(token===epoch&&connection.connectionState==='disconnected')fail('Voice connection interrupted. Select Reconnect to try again.');},5000);};
@@ -71,7 +83,7 @@
    }catch(error){if(token!==epoch)return;fail(error.name==='NotAllowedError'?'Microphone access was denied. Enable it in your browser, or select Text.':error.message);}
   }
   function toggleMute(){if(!active)return;muted=!muted;sync();state(playing?'speaking':gated?'thinking':muted?'muted':'listening',playing?'Speaking':gated?'Thinking…':muted?'Microphone off':'Listening…');}
-  function interrupt(){if(!active)return;if(responseActive)send({type:'response.cancel'});send({type:'output_audio_buffer.clear'});if(pending){const call=pending;pending=null;abort?.abort();send({type:'conversation.item.create',item:{type:'function_call_output',call_id:call,output:JSON.stringify({error:'The visitor interrupted this request.'})}});}playing=false;lastResult=null;listen();}
+  function interrupt(){if(!active)return;clearTimeout(transcriptionTimer);if(pendingSpeech){heard.add(pendingSpeech);pendingSpeech=null;}if(responseActive)send({type:'response.cancel'});send({type:'output_audio_buffer.clear'});if(pending){const call=pending;pending=null;abort?.abort();send({type:'conversation.item.create',item:{type:'function_call_output',call_id:call,output:JSON.stringify({error:'The visitor interrupted this request.'})}});}playing=false;lastResult=null;listen();}
   return {start,end,setVisible,toggleMute,interrupt,getState:()=>({active,muted,gated,suspended,playing,pending:!!pending,microphone:!!stream,inputEnabled:!!stream?.getAudioTracks().some(t=>t.enabled),connected:peer?.connectionState==='connected'})};
  };
 })();
