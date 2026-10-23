@@ -61,7 +61,8 @@ export async function createInteraction(engine,kind,data,onChange,onPick){
   tyrPlane=await ringPlane(data.rings[0],0xe8b66d,'OXT Tyr2 aromatic plane');
   phePlane=await ringPlane(data.rings[1],0x8fcfdf,'OXTR Phe291 aromatic plane');
   contacts=await mesh('Bound-pose measurements',(s,g)=>{
-   for(const [a,b,color,label] of [[...data.rings.map(r=>r.center),0xe8b66d,'Ring centroid distance'],[...data.hydrogenBond,0xa3e2cd,'Tyr2 OH · L316 backbone O']]){
+   const pairs=data.rings[0].points.flatMap(a=>data.rings[1].points.map(b=>[a,b]));pairs.sort((a,b)=>distance(...a)-distance(...b));
+   for(const [a,b,color,label] of [[...pairs[0],0xe8b66d,'Closest ring-carbon contact'],[...data.hydrogenBond,0xa3e2cd,'Tyr2 OH · L316 backbone O']]){
     for(let i=0;i<12;i+=2){g(color,label);addCylinder(s,mix(a,b,i/12),mix(a,b,(i+1)/12),1,{radiusTop:.045,radiusBottom:.045,radialSegments:8});}
    }
   });contacts.setState({pickable:false});
@@ -74,7 +75,7 @@ export async function createInteraction(engine,kind,data,onChange,onPick){
   const offset=data.approachVector.map(v=>v*(1-progress));
   const transform=Mat4.fromTranslation(Mat4(),offset);
   moving.setState({transform});ringLigand.setState({transform});tyrPlane.setState({transform,visible:planes});phePlane.setState({visible:planes});
-  contacts.setState({visible:progress===1});plugin.canvas3d.commit(true);onChange?.(snapshot());
+  contacts.setState({visible:progress===1});for(const repr of [moving,ringLigand,tyrPlane,phePlane,contacts])plugin.canvas3d.update(repr,false);plugin.canvas3d.syncVisibility();plugin.canvas3d.commit(true);onChange?.(snapshot());
  }
  function setFocus(next){
   focus=next;
@@ -84,10 +85,11 @@ export async function createInteraction(engine,kind,data,onChange,onPick){
    const r=Math.max(...atoms.map(a=>distance(a.position,center)))+1.4;camera(center,r,[.15,-.6,1]);return;
   }
   moving.setState({visible:next!=='contact'});ringLigand.setState({visible:next==='contact'});fullPocket.setState({visible:next!=='contact'});ringPocket.setState({visible:next==='contact'});
+  plugin.canvas3d.syncVisibility();
   const a=data.rings[0],b=data.rings[1],center=mix(a.center,b.center,.5);
-  if(next==='complex')camera(mix(data.receptorCenter,data.ligandCenter,.6),31,[.6,.4,1]);
+  if(next==='complex')camera(mix(data.receptorCenter,data.ligandCenter.map((v,i)=>v+data.approachVector[i]*.5),.55),31,[-1,.15,.45]);
   else if(next==='pocket')camera(data.ligandCenter,15,a.normal.map((v,i)=>v+b.normal[i]*.6));
-  else camera(center,8,a.normal.map((v,i)=>v+b.normal[i]*.8));
+  else camera(center,innerWidth<760?8:6,a.normal.map((v,i)=>v+b.normal[i]*.8));
  }
  function pause(){playing=false;cancelAnimationFrame(frame);onChange?.(snapshot());}
  function play(){
@@ -118,9 +120,10 @@ export async function createInteraction(engine,kind,data,onChange,onPick){
   surfaces.forEach((r,i)=>tree.to(r).update(StateTransforms.Representation.VolumeRepresentation3D,old=>({...old,type:{...old.type,params:{...old.type.params,alpha,isoValue:Volume.IsoValue.absolute(iso*(i===1?-1:1))}}})));
   await tree.commit();
  }
- function setPlanes(value){planes=value;tyrPlane?.setState({visible:planes});phePlane?.setState({visible:planes});}
+ function setPlanes(value){planes=value;tyrPlane?.setState({visible:planes});phePlane?.setState({visible:planes});plugin.canvas3d.syncVisibility();}
  function snapshot(){return kind==='docking'?{kind,progress,playing,focus,planes}:{kind,focus,field,opacity:alpha,isovalue:iso};}
  function dispose(){disposed=true;pause();pickSubscription.unsubscribe();for(const s of shapes){plugin.canvas3d.remove(s);s.destroy();}}
  setFocus(kind==='docking'?'contact':'pair');if(kind==='docking')setProgress(1);
- return {setProgress,setFocus,pause,play,setPlanes,loadField,fieldStyle,snapshot,dispose};
+ function geometrySphere(){return focus==='complex'?undefined:{center:focus==='contact'?mix(data.rings[0].center,data.rings[1].center,.5):data.ligandCenter,radius:focus==='contact'?7:15};}
+ return {setProgress,setFocus,pause,play,setPlanes,loadField,fieldStyle,snapshot,geometrySphere,dispose};
 }

@@ -97,7 +97,7 @@ export async function create(parent,onPick){
  async function setTargetOpacity(alpha){if(!repr)return;await plugin.state.data.build().to(repr).update(old=>({...old,type:{...old.type,params:{...old.type.params,alpha}}})).commit();}
  async function geometryLayer(name,opts={}){
   removeOverlay();if(!name||(!target&&!geneWindow))return;
-  const g=geometry(name),s=geneWindow?.sphere||target.obj.data.boundary.sphere;const tf={centre:s.center,radius:s.radius,scale:opts.scale??1.2,rotation:opts.rotation??0,offset:opts.offset??0};
+  const g=geometry(name),s=opts.sphere||geneWindow?.sphere||target.obj.data.boundary.sphere;const tf={centre:s.center,radius:s.radius,scale:opts.scale??1.2,rotation:opts.rotation??0,offset:opts.offset??0};
   const state=MeshBuilder.createState(2048,1024);const colors=[];let group=0;const width=s.radius*.003;
   for(const segment of g.segments){state.currentGroup=group++;colors.push(segment.color);addCylinder(state,transformPoint(segment.a,tf),transformPoint(segment.b,tf),1,{radiusTop:width,radiusBottom:width,radialSegments:8});}
   for(const p of g.points){state.currentGroup=group++;colors.push(0xe5bd7c);addSphere(state,transformPoint(p,tf),width*2.4,1);}
