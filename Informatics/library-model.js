@@ -20,6 +20,10 @@
       for (const field of ['topics','soundEntries','chapterEntries']) existing[field] = [...(existing[field] || []),...(record[field] || [])];
       for (const [collection,count] of Object.entries(record.citationsByCollection)) existing.citationsByCollection[collection] = maximumCount([existing.citationsByCollection[collection],count]);
       existing.citationCount = maximumCount(Object.values(existing.citationsByCollection));
+      if (record.trustAssessment && !existing.trustAssessment) {
+        for (const field of ['trustAssessment','articleTrustScore','citationSnapshot','design']) existing[field] = record[field];
+      }
+      if (existing.trustAssessment) existing.topicScores = [existing.trustAssessment.score];
       if (jadadStatus(existing).status==='unassessed' && jadadStatus(record).status!=='unassessed') existing.jadad=record.jadad;
       existing._search += ' '+record._search;
       if (!existing.journalKey && record.journalKey) { existing.journalKey = record.journalKey; existing.journalLabel = record.journalLabel; }

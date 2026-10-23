@@ -6088,6 +6088,37 @@
               "pmid": null
             },
             {
+              "id": "general-language-xvi-src-f08d504d9cf6",
+              "recordId": "src-f08d504d9cf6",
+              "title": "The provision of mental health services for asylum seekers and refugees",
+              "journal": "Royal Australian and New Zealand College of Psychiatrists",
+              "year": null,
+              "authors": "Royal Australian and New Zealand College of Psychiatrists",
+              "design": "Position statement",
+              "urls": [
+                "https://www.ranzcp.org/clinical-guidelines-publications/clinical-guidelines-publications-library/the-provision-of-mental-health-services-for-asylum-seekers-and-refugees"
+              ],
+              "quotes": [
+                [
+                  {
+                    "text": "“The Royal Australian and New Zealand College of Psychiatrists (RANZCP) is concerned about the inadequate provision of mental health services to asylum seekers and refugees, and calls for policy change to improve mental health outcomes”",
+                    "emphasis": false
+                  }
+                ]
+              ],
+              "citationCount": null,
+              "sourcePages": [
+                66
+              ],
+              "targets": [],
+              "categories": [
+                "Clinical & self-report",
+                "Methods & context"
+              ],
+              "doi": null,
+              "pmid": null
+            },
+            {
               "id": "general-language-xvi-pmid-28222713",
               "recordId": "pmid-28222713",
               "title": "The mental health status of refugees and asylum seekers attending a refugee health clinic including comparisons with a matched sample of Australian-born residents",
@@ -8505,7 +8536,7 @@
       ]
     }
   ],
-  "paperCount": 295,
+  "paperCount": 296,
   "topicCount": 21,
-  "uniquePaperCount": 292
+  "uniquePaperCount": 293
 }

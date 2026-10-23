@@ -110,3 +110,6 @@ button,input,select{font:inherit;color:inherit}button,a,summary{touch-action:man
 .research-bibliography h5{font-size:17px;margin:24px 0 12px;color:var(--ink)}
 .bibliography-reference{font:15px/1.8 Georgia,serif;margin:12px 0}
 @media(max-width:420px){.study-methods dl>div{grid-template-columns:1fr;gap:0}.jadad-guide dl>div{grid-template-columns:60px minmax(0,1fr)}.collection-nav{justify-content:flex-start;gap:20px}}
+
+/* Keep paper counts and their trust icons together at every reading width. */
+.score-distribution{flex-wrap:wrap;gap:12px 24px}.score-group{display:inline-flex;align-items:center;gap:12px;white-space:nowrap}.paper .scored-study{display:flex;align-items:center;gap:14px;font-size:12px}.scored-study>span:first-child{min-width:0}.scored-study .trust-score{margin:0;flex-shrink:0}.trust-assessment p{margin:12px 0;line-height:1.7}.topic>.score-distribution{margin-bottom:20px}

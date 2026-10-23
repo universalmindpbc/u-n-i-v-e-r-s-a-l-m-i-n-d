@@ -77,8 +77,13 @@ for domain,label in LABEL.items():
    links.append({'url':u,'top':link.get('top',0),'bottom':link.get('bottom',0)})
   sourcepages.append({'page':p['page'],'text':'\n'.join(r['text'] for r in rows),'links':list(dict.fromkeys(x['url'] for x in links)),'figures':[]})
   if p['page']<FIRST[domain]:continue
-  for row in rows:
+  for row_index,row in enumerate(rows):
    row['links']=[x['url'] for x in links if x['top']-3<=row['top']<=x['bottom']+3]
+   # Printed URLs can lack a PDF hyperlink annotation.
+   if not row['links']:
+    printed=row['text']
+    if printed.startswith(('http://','https://')) and printed.endswith('-') and row_index+1<len(rows) and re.fullmatch(r'[A-Za-z0-9/?.=&_%+\-]+',rows[row_index+1]['text']):printed+=rows[row_index+1]['text']
+    row['links']=re.findall(r'https?://[^\s]+',printed)
    if row['bold'] and row['size']>=11:
     finish()
     if sectionpage==p['page']:section+=' '+row['text']
@@ -92,7 +97,8 @@ for domain,label in LABEL.items():
  records=[]
  for rows,section,sectionpage in chunks:
   urls=list(dict.fromkeys(u for r in rows for u in r.get('links',[]) if not any(x in u.lower() for x in ['internetofhappiness','universalmind.tv','drive.google.com','docs.google.com'])))
-  if not urls:continue
+  # A cited publication remains a record even when the PDF has no link.
+  if not urls and not (any(re.match(r'^citations\s*:',r['text'],re.I) for r in rows) and any(r['bold'] and not r['italic'] for r in rows)):continue
   # Citation chunks retain full context when a bibliography contains several links.
   firstlink=next((j for j,r in enumerate(rows) if r.get('links')),len(rows))
   title_rows=[]
@@ -116,7 +122,7 @@ for domain,label in LABEL.items():
   for j,row in enumerate(rows):
    if row.get('links') and j>0 and not rows[j-1]['bold'] and not rows[j-1]['italic'] and not rows[j-1]['text'].startswith(('http','www.')):journal=rows[j-1]['text'];break
   normurls=list(dict.fromkeys(canon(u) for u in urls))
-  identity=normurls[0];rid='src-'+hashlib.sha256((domain+'|'+identity+'|'+title).encode()).hexdigest()[:12]
+  identity=normurls[0] if normurls else 'title:'+title.casefold();rid='src-'+hashlib.sha256((domain+'|'+identity+'|'+title).encode()).hexdigest()[:12]
   r={'id':rid,'title':title,'collections':[domain],'origin':'archive','urls':normurls,'doi':next((doi(u) for u in urls if doi(u)),None),'journal':journal,'year':None,'kind':'Source record' if len(urls)<4 else 'Source bibliography','originalNote':'\n\n'.join(notes),'sourceText':'\n'.join(r['text'] for r in rows),'sourceDesign':method,'historicalCitationCount':citation,'sourceSection':section,'sourceSectionPage':sectionpage,'provenance':[{'collection':domain,'pages':sorted(set(r['page'] for r in rows))}],'verification':'Imported source; article appraisal pending','stars':None,'ratingBasis':'Unrated until publication and study design are checked.','designStars':3 if method and 'double blind' in method.lower() else 2 if method and 'single blind' in method.lower() else None,'sourceGrade':None}
   classify(r);records.append(r)
  sourcepath=OUT/f'{domain}-source.json';sourcepath.write_text(json.dumps({'collection':domain,'label':label,'pages':sourcepages},ensure_ascii=False,indent=2)+'\n')

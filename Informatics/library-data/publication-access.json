@@ -8984,6 +8984,52 @@
       "journalLabel": "",
       "doi": null,
       "pmid": null
+    },
+    "pmid-30083522": {
+      "publicationKey": null,
+      "urls": [
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC6067070/",
+        "https://pubmed.ncbi.nlm.nih.gov/30083522/"
+      ],
+      "doi": null,
+      "pmid": "30083522",
+      "journalKey": "translationalmedicineunisa",
+      "journalLabel": "Translational medicine @ UniSa"
+    },
+    "pmid-18596974": {
+      "publicationKey": null,
+      "urls": [
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC2432467/",
+        "https://pubmed.ncbi.nlm.nih.gov/18596974/",
+        "https://doi.org/10.1371/journal.pone.0002576",
+        "https://doi.org/10.1371/journal.pone.0172845"
+      ],
+      "doi": "10.1371/journal.pone.0002576",
+      "pmid": "18596974",
+      "journalKey": "plosone",
+      "journalLabel": "PloS one"
+    },
+    "pmid-21840289": {
+      "publicationKey": null,
+      "urls": [
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC3176989/",
+        "https://pubmed.ncbi.nlm.nih.gov/21840289/",
+        "https://doi.org/10.1016/j.cpr.2011.07.003"
+      ],
+      "doi": "10.1016/j.cpr.2011.07.003",
+      "pmid": "21840289",
+      "journalKey": "clinicalpsychologyreview",
+      "journalLabel": "Clinical psychology review"
+    },
+    "src-f08d504d9cf6": {
+      "urls": [
+        "https://www.ranzcp.org/clinical-guidelines-publications/clinical-guidelines-publications-library/the-provision-of-mental-health-services-for-asylum-seekers-and-refugees"
+      ],
+      "publicationKey": "ranzcp-position-statement-46",
+      "journalKey": "",
+      "journalLabel": "Royal Australian and New Zealand College of Psychiatrists",
+      "doi": null,
+      "pmid": null
     }
   }
 }

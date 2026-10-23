@@ -2,8 +2,8 @@
   "schemaVersion": "1.0",
   "reviewedAt": "2026-10-21",
   "summary": {
-    "records": 833,
-    "sourceEntries": 802,
+    "records": 837,
+    "sourceEntries": 806,
     "sourcePages": 236,
     "updatedRecords": 41,
     "portalNotes": 13,
@@ -12,11 +12,11 @@
     "collections": {
       "sound": 465,
       "vision": 65,
-      "language": 315
+      "language": 319
     },
     "ratings": {
       "1": 356,
-      "None": 444,
+      "None": 448,
       "2": 8,
       "3": 25
     }
@@ -56659,6 +56659,309 @@
       ],
       "sourceTitle": "“the association between happiness and stockholding is driven by trust”",
       "publicationStatus": "Publication identity pending"
+    },
+    {
+      "id": "pmid-30083522",
+      "title": "Pilot Study on Epigenetic Response to A Mind-Body Treatment",
+      "collections": [
+        "language"
+      ],
+      "origin": "archive",
+      "urls": [
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC6067070/",
+        "https://pubmed.ncbi.nlm.nih.gov/30083522/"
+      ],
+      "doi": null,
+      "pmid": "30083522",
+      "journal": "Translational medicine @ UniSa",
+      "year": 2017,
+      "kind": "Journal article",
+      "originalNote": "“DNA epigenetic status of the subjects was affected by the MBT-T mind-body therapeutic protocol treatment.”",
+      "sourceText": "“DNA epigenetic status of the subjects was affected by the MBT-T mind-body therapeutic protocol\ntreatment.”\nPilot Study on Epigenetic Response to A Mind-Body Treatment\nTranslational Medicine\nhttps://www.ncbi.nlm.nih.gov/pmc/articles/PMC6067070/\nrandomised controlled trial\ncitations: 9",
+      "sourceDesign": "randomised controlled trial",
+      "historicalCitationCount": "citations: 9",
+      "sourceSection": "ii. mindfulness modulates DNA",
+      "sourceSectionPage": 11,
+      "provenance": [
+        {
+          "collection": "language",
+          "pages": [
+            12
+          ]
+        }
+      ],
+      "verification": "Publication identity and study design checked against primary publication",
+      "stars": null,
+      "sourceGrade": 2,
+      "targets": [],
+      "categories": [
+        "Epigenetics"
+      ],
+      "priority": 0,
+      "authors": "Cozzolino M, Guarino F, Castiglione S, Cicatelli A, Celia G.",
+      "publicationTypes": [
+        "research-article",
+        "Journal Article"
+      ],
+      "verifiedAt": "2026-10-23",
+      "archiveEntries": [
+        {
+          "collection": "language",
+          "pages": [
+            12
+          ],
+          "title": "Pilot Study on Epigenetic Response to A Mind-Body Treatment",
+          "originalNote": "“DNA epigenetic status of the subjects was affected by the MBT-T mind-body therapeutic protocol treatment.”",
+          "sourceText": "“DNA epigenetic status of the subjects was affected by the MBT-T mind-body therapeutic protocol\ntreatment.”\nPilot Study on Epigenetic Response to A Mind-Body Treatment\nTranslational Medicine\nhttps://www.ncbi.nlm.nih.gov/pmc/articles/PMC6067070/\nrandomised controlled trial\ncitations: 9",
+          "urls": [
+            "https://pmc.ncbi.nlm.nih.gov/articles/PMC6067070/",
+            "https://pubmed.ncbi.nlm.nih.gov/30083522/"
+          ],
+          "sourceDesign": "randomised controlled trial",
+          "designStars": null,
+          "section": "ii. mindfulness modulates DNA",
+          "sectionPage": 11,
+          "sectionGrade": 2,
+          "historicalCitationCount": "citations: 9"
+        }
+      ],
+      "verifiedDesign": "Uncontrolled pre/post pilot study",
+      "verifiedJournal": "Translational medicine @ UniSa",
+      "restoration": {
+        "date": "2026-10-23",
+        "reason": "Original PDF block omitted by link-dependent import",
+        "sourcePage": 12
+      }
+    },
+    {
+      "id": "pmid-18596974",
+      "title": "Genomic counter-stress changes induced by the relaxation response",
+      "collections": [
+        "language"
+      ],
+      "origin": "archive",
+      "urls": [
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC2432467/",
+        "https://pubmed.ncbi.nlm.nih.gov/18596974/",
+        "https://doi.org/10.1371/journal.pone.0002576",
+        "https://doi.org/10.1371/journal.pone.0172845"
+      ],
+      "doi": "10.1371/journal.pone.0002576",
+      "pmid": "18596974",
+      "journal": "PloS one",
+      "year": 2008,
+      "kind": "Journal article",
+      "originalNote": "“This study provides the first compelling evidence that the RR relaxation response elicits specific gene expression changes in short-term and long-term practitioners. Our results suggest consistent and constitutive changes in gene expression resulting from RR may relate to long term physiological effects.”",
+      "sourceText": "“This study provides the first compelling evidence that the RR relaxation response elicits specific\ngene expression changes in short-term and long-term practitioners. Our results suggest consistent\nand constitutive changes in gene expression resulting from RR may relate to long term\nphysiological effects.”\nGenomic counter-stress changes induced by the relaxation response\nPLoS One\nhttps://www.ncbi.nlm.nih.gov/pubmed/18596974/\ncitations: 355",
+      "sourceDesign": "",
+      "historicalCitationCount": "citations: 355",
+      "sourceSection": "ii. mindfulness modulates DNA",
+      "sourceSectionPage": 11,
+      "provenance": [
+        {
+          "collection": "language",
+          "pages": [
+            15
+          ]
+        }
+      ],
+      "verification": "Publication identity and study design checked against primary publication",
+      "stars": null,
+      "sourceGrade": 2,
+      "targets": [],
+      "categories": [
+        "Gene expression"
+      ],
+      "priority": 0,
+      "authors": "Dusek JA, Otu HH, Wohlhueter AL, Bhasin M, Zerbini LF, Joseph MG, Benson H, Libermann TA.",
+      "publicationTypes": [
+        "Research Support, U.S. Gov't, P.H.S.",
+        "research-article",
+        "Journal Article",
+        "Research Support, N.I.H., Extramural"
+      ],
+      "verifiedAt": "2026-10-23",
+      "archiveEntries": [
+        {
+          "collection": "language",
+          "pages": [
+            15
+          ],
+          "title": "Genomic counter-stress changes induced by the relaxation response",
+          "originalNote": "“This study provides the first compelling evidence that the RR relaxation response elicits specific gene expression changes in short-term and long-term practitioners. Our results suggest consistent and constitutive changes in gene expression resulting from RR may relate to long term physiological effects.”",
+          "sourceText": "“This study provides the first compelling evidence that the RR relaxation response elicits specific\ngene expression changes in short-term and long-term practitioners. Our results suggest consistent\nand constitutive changes in gene expression resulting from RR may relate to long term\nphysiological effects.”\nGenomic counter-stress changes induced by the relaxation response\nPLoS One\nhttps://www.ncbi.nlm.nih.gov/pubmed/18596974/\ncitations: 355",
+          "urls": [
+            "https://pmc.ncbi.nlm.nih.gov/articles/PMC2432467/",
+            "https://pubmed.ncbi.nlm.nih.gov/18596974/",
+            "https://doi.org/10.1371/journal.pone.0002576",
+            "https://doi.org/10.1371/journal.pone.0172845"
+          ],
+          "sourceDesign": "",
+          "designStars": null,
+          "section": "ii. mindfulness modulates DNA",
+          "sectionPage": 11,
+          "sectionGrade": 2,
+          "historicalCitationCount": "citations: 355"
+        }
+      ],
+      "verifiedDesign": "Gene-expression study; nonrandomized comparisons",
+      "verifiedJournal": "PloS one",
+      "restoration": {
+        "date": "2026-10-23",
+        "reason": "Original PDF block omitted by link-dependent import",
+        "sourcePage": 15
+      },
+      "publicationCorrection": {
+        "url": "https://doi.org/10.1371/journal.pone.0172845",
+        "note": "2017 correction updates the competing-interests statement."
+      }
+    },
+    {
+      "id": "pmid-21840289",
+      "title": "Loving-kindness and compassion meditation: Potential for psychological interventions",
+      "collections": [
+        "language"
+      ],
+      "origin": "archive",
+      "urls": [
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC3176989/",
+        "https://pubmed.ncbi.nlm.nih.gov/21840289/",
+        "https://doi.org/10.1016/j.cpr.2011.07.003"
+      ],
+      "doi": "10.1016/j.cpr.2011.07.003",
+      "pmid": "21840289",
+      "journal": "Clinical psychology review",
+      "year": 2011,
+      "kind": "Review",
+      "originalNote": "“Neuroendocrine studies suggest that compassion meditation reduces subjective distress and immune response to stress”",
+      "sourceText": "“Neuroendocrine studies suggest that compassion meditation reduces subjective distress and\nimmune response to stress”\nLoving-kindness and compassion meditation: Potential for psychological interventions\nClinical Psychology Review\ncitations: 880",
+      "sourceDesign": "",
+      "historicalCitationCount": "citations: 880",
+      "sourceSection": "iv. mindfulness modulates interleukin 6 (IL-6), reducing inflammation, anxiety and depression",
+      "sourceSectionPage": 18,
+      "provenance": [
+        {
+          "collection": "language",
+          "pages": [
+            21
+          ]
+        }
+      ],
+      "verification": "Publication identity and study design checked against primary publication",
+      "stars": null,
+      "sourceGrade": 2,
+      "targets": [],
+      "categories": [
+        "Clinical & self-report"
+      ],
+      "priority": 1,
+      "authors": "Hofmann SG, Grossman P, Hinton DE.",
+      "publicationTypes": [
+        "research-article",
+        "Review",
+        "Journal Article"
+      ],
+      "verifiedAt": "2026-10-23",
+      "archiveEntries": [
+        {
+          "collection": "language",
+          "pages": [
+            21
+          ],
+          "title": "Loving-kindness and compassion meditation: Potential for psychological interventions",
+          "originalNote": "“Neuroendocrine studies suggest that compassion meditation reduces subjective distress and immune response to stress”",
+          "sourceText": "“Neuroendocrine studies suggest that compassion meditation reduces subjective distress and\nimmune response to stress”\nLoving-kindness and compassion meditation: Potential for psychological interventions\nClinical Psychology Review\ncitations: 880",
+          "urls": [
+            "https://pmc.ncbi.nlm.nih.gov/articles/PMC3176989/",
+            "https://pubmed.ncbi.nlm.nih.gov/21840289/",
+            "https://doi.org/10.1016/j.cpr.2011.07.003"
+          ],
+          "sourceDesign": "",
+          "designStars": null,
+          "section": "iv. mindfulness modulates interleukin 6 (IL-6), reducing inflammation, anxiety and depression",
+          "sectionPage": 18,
+          "sectionGrade": 2,
+          "historicalCitationCount": "citations: 880"
+        }
+      ],
+      "verifiedDesign": "Review",
+      "verifiedJournal": "Clinical psychology review",
+      "restoration": {
+        "date": "2026-10-23",
+        "reason": "Original PDF block omitted by link-dependent import",
+        "sourcePage": 21
+      }
+    },
+    {
+      "id": "src-f08d504d9cf6",
+      "title": "The provision of mental health services for asylum seekers and refugees",
+      "collections": [
+        "language"
+      ],
+      "origin": "archive",
+      "urls": [
+        "https://www.ranzcp.org/clinical-guidelines-publications/clinical-guidelines-publications-library/the-provision-of-mental-health-services-for-asylum-seekers-and-refugees"
+      ],
+      "doi": null,
+      "journal": "Royal Australian and New Zealand College of Psychiatrists",
+      "year": null,
+      "kind": "Position statement",
+      "originalNote": "“The Royal Australian and New Zealand College of Psychiatrists (RANZCP) is concerned about the inadequate provision of mental health services to asylum seekers and refugees, and calls for policy change to improve mental health outcomes”",
+      "sourceText": "“The Royal Australian and New Zealand College of Psychiatrists (RANZCP) is concerned about the\ninadequate provision of mental health services to asylum seekers and refugees, and calls for policy\nchange to improve mental health outcomes”\nThe provision of mental health services for asylum seekers and refugees\nThe Royal Australian and New Zealand College of Psychiatrists\nhttps://www.ranzcp.org/news-policy/policy-submissions-reports/document-library/the-provision-of-\nmental-health-services-for-asylum\ncitations:",
+      "sourceDesign": null,
+      "historicalCitationCount": "citations:",
+      "sourceSection": "xvi. mental health risks, policy interventions and statistics for homeless including refugees",
+      "sourceSectionPage": 65,
+      "provenance": [
+        {
+          "collection": "language",
+          "pages": [
+            66
+          ]
+        }
+      ],
+      "verification": "Publisher identity and current destination verified; original quoted passage retained",
+      "stars": null,
+      "ratingBasis": "Unrated until publication and study design are checked.",
+      "designStars": null,
+      "sourceGrade": 2,
+      "targets": [],
+      "categories": [
+        "Clinical & self-report",
+        "Methods & context"
+      ],
+      "priority": 1,
+      "measurement": "Not independently appraised; topic tags describe the source text.",
+      "archiveEntries": [
+        {
+          "collection": "language",
+          "pages": [
+            66
+          ],
+          "title": "The provision of mental health services for asylum seekers and refugees",
+          "originalNote": "“The Royal Australian and New Zealand College of Psychiatrists (RANZCP) is concerned about the inadequate provision of mental health services to asylum seekers and refugees, and calls for policy change to improve mental health outcomes”",
+          "sourceText": "“The Royal Australian and New Zealand College of Psychiatrists (RANZCP) is concerned about the\ninadequate provision of mental health services to asylum seekers and refugees, and calls for policy\nchange to improve mental health outcomes”\nThe provision of mental health services for asylum seekers and refugees\nThe Royal Australian and New Zealand College of Psychiatrists\nhttps://www.ranzcp.org/news-policy/policy-submissions-reports/document-library/the-provision-of-\nmental-health-services-for-asylum\ncitations:",
+          "urls": [
+            "https://www.ranzcp.org/clinical-guidelines-publications/clinical-guidelines-publications-library/the-provision-of-mental-health-services-for-asylum-seekers-and-refugees"
+          ],
+          "sourceDesign": "",
+          "designStars": null,
+          "section": "xvi. mental health risks, policy interventions and statistics for homeless including refugees",
+          "sectionPage": 65,
+          "sectionGrade": 2,
+          "historicalCitationCount": "citations:"
+        }
+      ],
+      "verifiedDesign": "Position statement",
+      "verifiedJournal": "Royal Australian and New Zealand College of Psychiatrists",
+      "authors": "Royal Australian and New Zealand College of Psychiatrists",
+      "sourceTitle": "The provision of mental health services for asylum seekers and refugees",
+      "verifiedAt": "2026-10-23",
+      "restoration": {
+        "date": "2026-10-23",
+        "reason": "Printed URL had no clickable PDF annotation",
+        "sourcePage": 66
+      }
     }
   ]
 }

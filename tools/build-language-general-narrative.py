@@ -76,7 +76,7 @@ def make_topic(c,tid,start,title):
    if not journal or len(journal)>160 or re.search('National Cent|NCBI|PubMed',journal,re.I):journal=r.get('journal') or ''
    q=a.get('originalNote','').split('\n\n') if a.get('originalNote') else []
    count=re.search(r'citations:\s*(\d[\d,]*)',a.get('historicalCitationCount') or '',re.I)
-   p=dict(id=c+'-'+tid+'-'+r['id'],recordId=r['id'],title=a['title'],journal=journal[:1].upper()+journal[1:],year=r.get('year'),authors=r.get('authors',''),design=a.get('sourceDesign') or '',urls=a.get('urls',[]),quotes=[quote(x,c,a['pages']) for x in q],citationCount=int(count[1].replace(',','')) if count else None,sourcePages=a['pages'],targets=r.get('targets',[]),categories=r.get('categories',[]),doi=r.get('doi'),pmid=r.get('pmid'))
+   p=dict(id=c+'-'+tid+'-'+r['id'],recordId=r['id'],title=a['title'],journal=r.get('verifiedJournal') or journal[:1].upper()+journal[1:],year=r.get('year'),authors=r.get('authors',''),design=r.get('verifiedDesign') or a.get('sourceDesign') or '',urls=a.get('urls',[]),quotes=[quote(x,c,a['pages']) for x in q],citationCount=int(count[1].replace(',','')) if count else None,sourcePages=a['pages'],targets=r.get('targets',[]),categories=r.get('categories',[]),doi=r.get('doi'),pmid=r.get('pmid'))
    if r['id'] in ['src-2c770034898e','src-005e909caead']:
     p['bibliography']=bibliography(a['sourceText']);p['bibliographyAttribution']='David Lynch Foundation research bibliography';p['design']='Research bibliography';p['journal']=''
    if r['id']=='src-005e909caead':p['bibliographyNote']='The Military Medicine 176 (2011), 626–630 paper studied veterans. It does not establish findings specific to women and girls.'
@@ -114,7 +114,8 @@ for group,title in [('rna','Mindfulness interventions and gene expression'),('ep
  t={'id':'mindfulness-'+group,'title':title,'trustScore':None,'papers':[]}
  for r in expansion:
   if r['researchGroup']!=group:continue
-  t['papers'].append(dict(id='language-'+t['id']+'-'+r['id'],recordId=r['id'],title=r['title'],journal=r['journal'],year=r['year'],authors=r.get('authors',''),design=r['design'],urls=r['urls'],quotes=[],summary=r['finding'],limitation=r['limitation'],citationCount=None,sourcePages=[],targets=r['targets'],categories=r['categories'],doi=r.get('doi'),pmid=r.get('pmid'),evidence=r['evidence']))
+  t['papers'].append(dict(id='language-'+t['id']+'-'+r['id'],recordId=r['id'],title=r['title'],journal=r['journal'],year=r['year'],authors=r.get('authors',''),design=r['design'],urls=r['urls'],quotes=[],summary=r['finding'],limitation=r['limitation'],citationCount=r['citationCount'],citationSnapshot=r['citationSnapshot'],articleTrustScore=r['trustAssessment']['score'],trustAssessment=r['trustAssessment'],sourcePages=[],targets=r['targets'],categories=r['categories'],doi=r.get('doi'),pmid=r.get('pmid'),evidence=r['evidence']))
+ t['trustScoreDistribution']=[{'score':score,'papers':sum(p['articleTrustScore']==score for p in t['papers'])} for score in [3,2,1] if any(p['articleTrustScore']==score for p in t['papers'])]
  newtopics.append(t)
 chapters.append({'number':4,'title':'Mindfulness: molecular studies and clinical trials','topics':newtopics})
 language={'title':'Language research','chapters':chapters,'introduction':{'paragraphs':['Language research begins with mindfulness-based stress reduction, initially with a focus on mantra meditation. In the future, this section will include nonviolent communication, emotional intelligence and talking therapies.']},'sourceSHA256':hashlib.sha256((D/'language-source.json').read_bytes()).hexdigest()}
