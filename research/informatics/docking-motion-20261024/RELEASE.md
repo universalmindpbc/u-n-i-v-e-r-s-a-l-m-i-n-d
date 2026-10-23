@@ -12,4 +12,6 @@ The dedicated Chromium process has audio disabled before navigation. A new regre
 
 ## Coordination and release
 
-Changes are isolated from the shared checkout. The completed Universal One staging release is integrated before upload. Deployment uses the existing Panthur Informatics-only workflow. Final live results, source hashes and manifest are recorded with this release. Production is excluded.
+Changes are isolated from the shared checkout. Universal One staging release `78972a30` was integrated before upload, preserving its source and deployment manifest. Deployment uses the existing Panthur Informatics-only workflow. Final live results, source hashes and manifest are recorded with this release. Production is excluded.
+
+Deployed source: `648df4f2bd34ffb2487d737b31011e7fbdee363b`. Live desktop and mobile screenshot comparisons pass: the ligand moves approximately 204 and 151 pixels respectively across the approach; Play moves, Pause stops, completion reaches the deposited pose and Bound pose restores identical rendered coordinates. All five updated assets and ten preserved assets match committed bytes.
