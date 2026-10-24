@@ -18,3 +18,13 @@ Universal Informatics funds approved researchers within individual budgets. See 
 - No account identifiers, credentials or private provider task ARNs are included in public experiment data.
 
 Production remains unchanged. Staging deployment and live evidence are recorded alongside this file after publication.
+
+## Staging publication
+
+- Source commit: ede9babf.
+- Existing Panthur staging workflow uploaded 17 changed assets. The shared preflight required its documented external Mugler fixture; its SHA-256 matched the required value. No preflight was bypassed and no unrelated website asset was deployed.
+- All 17 deployed website files matched their committed bytes over HTTPS, including HTML, module JavaScript, data and download files.
+- Live four-viewport checks passed. The site's existing /cdn-cgi/rum analytics beacon is excluded from the no-experiment-submission assertion; no job API was called.
+- Additional embedded checks at 390 and 320 pixels passed navigation from Quantum Lab into Transcription and back, with no overflow or native fullscreen.
+- Proof: https://staging.universalmind.tv/informatics/?entry=research&area=quantum
+- Production source baseline: 6d58d23e36fa2942e260a4eacd808c7eb68c3623; no production deployment invoked.

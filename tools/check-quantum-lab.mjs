@@ -21,7 +21,7 @@ try{
  for(const viewport of [{width:1470,height:956},{width:1024,height:768},{width:390,height:844},{width:320,height:844}]){
   const ctx=await browser.newContext({viewport,reducedMotion:'reduce',acceptDownloads:true});await candidate(ctx);
   const page=await ctx.newPage(),errors=[],badRequests=[];
-  page.on('pageerror',e=>errors.push(e.message));page.on('request',r=>{if(r.method()!=='GET')badRequests.push(r.url());});
+  page.on('pageerror',e=>errors.push(e.message));page.on('request',r=>{if(r.method()!=='GET'&&new URL(r.url()).pathname!=='/cdn-cgi/rum')badRequests.push(r.url());});
   await page.goto('https://staging.universalmind.tv/informatics/quantum/');
   await page.locator('#run-status').filter({hasText:'Reference ready'}).waitFor();await page.locator('#papers article').nth(4).waitFor();
   assert.equal(await page.locator('#export').isEnabled(),true);
