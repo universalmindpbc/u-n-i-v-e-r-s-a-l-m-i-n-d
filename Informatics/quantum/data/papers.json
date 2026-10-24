@@ -1,7 +1,37 @@
 {
-  "checked_on": "2026-10-24",
+  "checked_on": "2026-10-25",
   "scope": "Selected primary research for a proposed Universal Informatics Quantum Lab guide. This is a focused selection, not a systematic review. Bibliographic records, original summaries and links only; no third-party figures or article text copied.",
   "papers": [
+    {
+      "id": "kornjaca-2024-qrc",
+      "title": "Large-scale quantum reservoir learning with an analog quantum computer",
+      "authors_short": "Milan Kornja\u010da et al.",
+      "url": "https://arxiv.org/abs/2407.02553",
+      "evidence": "Preprint; Aquila quantum hardware and classical comparisons",
+      "route": "Neutral atoms / quantum reservoir computing",
+      "finding": "Biological or other input features can be encoded into neutral-atom dynamics; measured observables feed a classical predictor. Experiments include classification and time-series tasks up to 108 qubits.",
+      "limit": "Performance is task-dependent. Synthetic kernel comparisons do not establish a general biological advantage or an OXTR result."
+    },
+    {
+      "id": "giusto-2026-protein-qek",
+      "title": "Harnessing a 256-qubit Neutral Atom Simulator for Graph Classification",
+      "authors_short": "Edoardo Giusto et al.",
+      "url": "https://arxiv.org/abs/2605.04737",
+      "evidence": "Preprint; Aquila hardware on protein graphs",
+      "route": "Neutral atoms / biological classification",
+      "finding": "Measured Aquila responses supplied a quantum kernel for protein graph classification, with performance comparable to the selected classical graph benchmark.",
+      "limit": "Graph embedding restricts the tested subset. The study does not test OXTR, Fibonacci representations or transcription-factor occupancy."
+    },
+    {
+      "id": "antoncich-2026-medical-qrc",
+      "title": "Quantum Reservoir Computing with Neutral Atoms on a Small, Complex, Medical Dataset",
+      "authors_short": "Luke Antoncich et al.",
+      "url": "https://arxiv.org/abs/2602.14641",
+      "evidence": "Preprint; Aquila hardware and emulation",
+      "route": "Neutral atoms / biomedical features",
+      "finding": "The authors used Aquila responses to generate features for medical-data classification and compared them with emulated features.",
+      "limit": "Emulated features showed overfitting. Aggregated feature selection risks test leakage in hardware comparisons; definitive hardware advantage over classical models remains unestablished."
+    },
     {
       "id": "li-2018-tf-binding",
       "title": "Quantum annealing versus classical machine learning applied to a simplified computational biology problem",
@@ -77,7 +107,7 @@
       "url": "https://arxiv.org/abs/2508.18147v2",
       "evidence": "Preprint; neutral-atom emulator",
       "route": "Neutral-atom methods / molecular docking",
-      "finding": "A decomposed graph-based method was evaluated on ten protein-ligand complexes with 225–585 vertices.",
+      "finding": "A decomposed graph-based method was evaluated on ten protein-ligand complexes with 225\u2013585 vertices.",
       "limit": "The reported solver uses an emulator. This is not a QuEra Aquila hardware result, a general docking speedup, or demonstrated drug-discovery success. A greedy baseline is not the full range of classical docking methods.",
       "platform_relevance": "An emerging docking direction, clearly labelled as simulation research alongside the hardware foundations.",
       "source_checked": "arXiv v2 abstract and full HTML; no journal publication shown in the checked record"

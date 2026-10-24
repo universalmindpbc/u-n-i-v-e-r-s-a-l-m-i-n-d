@@ -166,7 +166,7 @@
   if(inlineTfbs){
     tfbs.classList.add('transcription-inline');inlineTfbs.append(tfbs);
     tfbs.querySelector('.science-close').replaceWith(Object.assign(document.createElement('div'),{className:'transcription-tools',innerHTML:'<label for="transcription-view">Explore</label><select id="transcription-view" aria-label="Transcription Atlas view"><option value="overview">Overview</option><option value="comparison">Compare positions</option><option value="data">Browse source data</option><option value="literature">Literature</option></select>'}));
-    tfbs.querySelector('#transcription-view').onchange=async e=>{await loadTfbs();const selectors={overview:'.science-register-body',comparison:'.tfbs-geometry',data:'.tfbs-explorer',literature:'.tfbs-literature'},target=tfbs.querySelector(selectors[e.target.value]);if(target){if(target.tagName==='DETAILS')target.open=true;inlineTfbs.scrollTo({top:inlineTfbs.scrollTop+target.getBoundingClientRect().top-inlineTfbs.getBoundingClientRect().top-85,behavior:'smooth'});}};
+    tfbs.querySelector('#transcription-view').onchange=async e=>{await loadTfbs();const selectors={overview:'.science-register-body',comparison:'.tfbs-geometry',data:'.tfbs-explorer',literature:'.tfbs-literature'},target=tfbs.querySelector(selectors[e.target.value]);if(target){if(target.tagName==='DETAILS')target.open=true;inlineTfbs.scrollTo({top:inlineTfbs.scrollTop+target.getBoundingClientRect().top-inlineTfbs.getBoundingClientRect().top-tfbs.querySelector('.science-reader-bar').getBoundingClientRect().height-16,behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'instant':'smooth'});}};
     document.addEventListener('atlas:area',event=>{if(event.detail==='transcription')loadTfbs();});
   }else document.body.append(tfbs);
   const external = (href, label) => `<a href="${esc(href)}" target="_blank" rel="noopener noreferrer">${esc(label)} ↗</a>`;
@@ -248,10 +248,10 @@
           .catch(() => { explorer.innerHTML = '<p role="status">The data browser has not loaded. <button type="button" class="science-register-link">Retry data browser</button></p>'; explorer.querySelector('button').onclick = startExplorer; });
         startExplorer();
         const geometry = content.querySelector('.tfbs-geometry');
-        const startGeometry = () => import(new URL('tfbs-geometry.js?v=10', root).href)
+        const startGeometry = () => import(new URL('tfbs-geometry.js?v=11', root).href)
           .then(module => module.mountTfbsGeometry(geometry, data, tfbsRoot))
           .catch(() => { geometry.innerHTML = '<p role="status">The experiment has not loaded. <button type="button" class="science-register-link">Retry experiment</button></p>'; geometry.querySelector('button').onclick = startGeometry; });
-        startGeometry();
+        await startGeometry();
       } catch {
         tfbsData = null;
         content.innerHTML = '<p role="status">The catalogue has not loaded. <button class="science-register-link" data-tfbs-retry>Try again</button></p>';

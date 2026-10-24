@@ -16,7 +16,7 @@ export async function pooledPlanning(storage,inspect=false,now=new Date()) {
   const blocked=Object.values(periods).filter(p=>p.used>=p.limit);
   const allowed=!blocked.length;
   if(!inspect&&allowed){for(const p of Object.values(periods))p.used++;await tx.put('quantum-planning',periods);}
-  return {allowed,unit:'AI questions',periods:Object.fromEntries(Object.entries(periods).map(([k,v])=>[k,{...v,remaining:v.limit-v.used}])),resetAt:blocked.length?blocked.map(p=>p.resetAt).sort().at(-1):null,hardware:{available:false,reason:'Public hardware funding and dispatch are not active.'}};
+  return {allowed,unit:'AI questions',periods:Object.fromEntries(Object.entries(periods).map(([k,v])=>[k,{...v,remaining:v.limit-v.used}])),resetAt:blocked.length?blocked.map(p=>p.resetAt).sort().at(-1):null,hardware:{available:false,reason:'Study 01 is in design review; compute runs follow the agreed protocol.'}};
  });
 }
 export async function quantumAllowance(env,inspect=false){

@@ -1,0 +1,35 @@
+{
+  "schema": "universal-informatics/study-state/v1",
+  "study_id": "oxtr-qrc-01",
+  "study_version": "1.0.0",
+  "updated_on": "2026-10-25",
+  "state": "design_review",
+  "stages": {
+    "question": {
+      "state": "ready",
+      "label": "Ready for a question"
+    },
+    "model": {
+      "state": "specified",
+      "label": "Template specified"
+    },
+    "simulation": {
+      "state": "planned",
+      "label": "Study run planned"
+    },
+    "hardware": {
+      "state": "planned",
+      "label": "Study run planned"
+    },
+    "evidence": {
+      "state": "specified",
+      "label": "Evaluation specified"
+    },
+    "result": {
+      "state": "planned",
+      "label": "After evaluation"
+    }
+  },
+  "jobs": [],
+  "result": null
+}

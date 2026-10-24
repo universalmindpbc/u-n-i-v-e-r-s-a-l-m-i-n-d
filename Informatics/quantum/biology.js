@@ -1,20 +1,16 @@
+import './study.js?v=1';
 const $=s=>document.querySelector(s),node=(tag,text,cls)=>{const n=document.createElement(tag);if(text!==undefined)n.textContent=text;if(cls)n.className=cls;return n;};
 const embedded=new URLSearchParams(location.search).get('embedded')==='1';document.body.classList.toggle('embedded',embedded);
 const endpoint=location.hostname==='staging.universalmind.tv'?'https://informatics-universal-one-staging.universalmind.workers.dev':'https://informatics-universal-one.universalmind.workers.dev';
-const prompts={binding:'I’m studying how transcription factors recognise DNA. How can I compare quantum and classical methods for predicting binding, using published evidence?',assembly:'Please assemble these three synthetic DNA fragments in a known common orientation: ATGCCTA, CCTAGGA, AGGATTC. Show me the reconstruction and prepare a quantum-compatible model.',haplotypes:'I want to understand which genetic variants belong to the same chromosome copy. What data are needed, and what has quantum computing demonstrated for haplotype reconstruction?',contacts:'Can neutral-atom quantum methods help select compatible protein–ligand contacts? Explain what has been tested and how to compare the result with a classical method.'};
+const studyQuestion='Do quantum responses generated from Fibonacci and M9 P24 representations improve our ability to predict transcription factor occupancy around OXTR?';
+const prompts={binding:studyQuestion,spacing:'Test whether spacing between candidate transcription-factor sites around OXTR adds predictive information beyond motif scores, using matched CUDA-Q and Aquila responses.',patterns:'Compare the Alpha, Beta, Gamma and Epsilon representations of Fibonacci M9 P24 in our OXTR occupancy study. Preserve their canonical definitions and test their quantum responses against the same biological evidence.',controls:'Test whether Fibonacci and Phi Ratio features improve the OXTR quantum reservoir predictor compared with ordinary and shuffled representations, using independent experimental occupancy evidence.',assembly:'Assemble these three synthetic DNA fragments in a known common orientation: ATGCCTA, CCTAGGA, AGGATTC. Compare every possible ordering and show the reconstructed sequence.',haplotypes:'Design a comparison of quantum and classical methods to assign genetic variants to chromosome copies, with an independent accuracy test.',contacts:'Design a neutral-atom comparison to select compatible candidate molecular contacts and test the selected contacts against independent structural evidence.'};
 let history=[],turns=[],busy=false;
-// An illustrative sequence motif, never a scientific result.
-const svg=$('#helix'),ns='http://www.w3.org/2000/svg';
-function sn(tag,attrs){const el=document.createElementNS(ns,tag);Object.entries(attrs).forEach(([k,v])=>el.setAttribute(k,v));return el;}
-const points=[[],[]];
-for(let i=0;i<24;i++){const t=i/23,x=45+t*340,y=145+Math.sin(t*Math.PI*3.5)*52,z=145-Math.sin(t*Math.PI*3.5)*52;points[0].push(`${x},${y}`);points[1].push(`${x},${z}`);svg.append(sn('line',{x1:x,y1:y,x2:x,y2:z,stroke:i%3?'#31515f':'#536b76','stroke-width':1}));for(const [cy,color]of[[y,'#a3ead1'],[z,'#a7c8e9']])svg.append(sn('circle',{cx:x,cy,r:i%3?2:3,fill:color}));}
-points.forEach((p,i)=>svg.prepend(sn('polyline',{points:p.join(' '),fill:'none',stroke:i?'#6c8eaa':'#6da58e','stroke-width':1})));
 for(const b of document.querySelectorAll('[data-prompt]'))b.onclick=()=>{if(busy)return;$('#question').value=prompts[b.dataset.prompt];$('#question').focus();$('#ask').scrollIntoView({block:'start',behavior:'smooth'});};
 function download(value,name,type='application/json'){const url=URL.createObjectURL(new Blob([typeof value==='string'?value:JSON.stringify(value,null,2)],{type})),a=node('a');a.href=url;a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(url),5000);}
 function updateCapacity(data){
  $('#capacity').replaceChildren();
  for(const [key,title]of[['day','Today'],['week','This week'],['month','This month']]){const p=data.periods[key],row=node('div',undefined,'capacity-period'),bar=node('progress');bar.max=p.limit;bar.value=p.remaining;bar.setAttribute('aria-label',`${title}: ${p.remaining} of ${p.limit} AI questions available`);row.append(node('span',title),bar,node('small',`${p.remaining} / ${p.limit}`));$('#capacity').append(row);}
- $('#availability').textContent=Object.values(data.periods).every(p=>p.remaining>0)?'AI planning available':'Shared planning allowance full';
+ $('#availability').textContent=Object.values(data.periods).every(p=>p.remaining>0)?'Questions available':'Question allowance full';
 }
 async function capacity(){try{const r=await fetch(endpoint+'/quantum/capacity',{signal:AbortSignal.timeout(12000)});if(!r.ok)throw Error();updateCapacity(await r.json());}catch{$('#availability').textContent='Capacity not verified';$('#capacity').replaceChildren(node('p','Capacity is temporarily unavailable. Refresh to retry.'));}}
 $('#refresh-capacity').onclick=capacity;capacity();
@@ -38,6 +34,7 @@ function renderTurn(question,data){
  if(data.calculation)article.append(calculation(data.calculation,data.id));
  if(data.calculationNote)article.append(node('p',data.calculationNote,'next-question'));
  article.append(node('p',p.method,'plan-method'));
+ if(data.study){const link=node('a','View the OXTR study design ↓','study-brief-link');link.href='#study';article.append(link);article.append(node('p','Study design · '+data.study.version+' · matched CUDA-Q and Aquila routes','note'));}
  if(p.needed_data.length&&!data.calculation)article.append(details('Information for the next step',p.needed_data));
  if(p.limitations.length)article.append(details('What this can establish',p.limitations));
  if(data.references.length){const d=node('details');d.append(node('summary','Published evidence · '+data.references.length));for(const r of data.references){const para=node('p'),a=node('a',r.title+' ↗');a.href=r.url;a.target='_blank';a.rel='noopener noreferrer';para.append(a,node('br'),document.createTextNode(r.evidence+'. '+r.limit));d.append(para);}article.append(d);}
@@ -46,18 +43,27 @@ function renderTurn(question,data){
 }
 $('#question-form').addEventListener('submit',async event=>{
  event.preventDefault();if(busy)return;const question=$('#question').value.trim();if(question.length<5)return;
- busy=true;$('#ask-button').disabled=true;$('#question').readOnly=true;$('#new-question').disabled=true;$('#conversation').setAttribute('aria-busy','true');$('#question-status').className='';$('#question-status').textContent='Exploring your biological question and checking the research context…';
+ busy=true;$('#ask-button').disabled=true;$('#question').readOnly=true;$('#new-question').disabled=true;$('#conversation').setAttribute('aria-busy','true');$('#question-status').className='';$('#question-status').textContent='Preparing your study brief from the Atlas definitions and research recipe…';
+ window.dispatchEvent(new CustomEvent('quantum:brief',{detail:{state:'running',label:'Preparing brief'}}));
  try{
   const response=await fetch(endpoint+'/quantum/plan',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({question,history:history.slice(-8)}),signal:AbortSignal.timeout(110000)});
   const data=await response.json();if(!response.ok)throw Error(data.error||'The research service is unavailable. Please retry.');
   if(!data.plan||!data.id)throw Error('The response was incomplete. Your question is preserved.');
   renderTurn(question,data);turns.push({question,...data});history.push({role:'user',content:question},{role:'assistant',content:[data.plan.answer,data.plan.method,data.plan.next_question].join('\n').slice(0,4000)});
-  $('#question').value='';$('#question').placeholder='Ask a follow-up or describe another biological question…';$('#question-status').textContent='Your exploration is ready. Continue in your own words.';updateCapacity(data.allowance);
+  $('#question').value='';$('#question').placeholder='Ask a follow-up or describe another biological question…';$('#question-status').textContent='Your study brief is ready. Explore the design or refine your question.';updateCapacity(data.allowance);window.dispatchEvent(new CustomEvent('quantum:brief',{detail:{state:'complete',label:'Brief prepared'}}));
   $('#conversation').lastElementChild.scrollIntoView({block:'start',behavior:'smooth'});
- }catch(e){$('#question-status').className='error';$('#question-status').textContent=e.name==='TimeoutError'?'The request timed out. Your question is preserved. Check shared capacity before trying again.':e.message;}
+ }catch(e){window.dispatchEvent(new CustomEvent('quantum:brief',{detail:{state:'failed',label:'Brief needs retry'}}));$('#question-status').className='error';$('#question-status').textContent=e.name==='TimeoutError'?'The request timed out. Your question is preserved. Check shared capacity before trying again.':e.message;}
  finally{busy=false;$('#ask-button').disabled=false;$('#question').readOnly=false;$('#new-question').disabled=false;$('#conversation').setAttribute('aria-busy','false');}
 });
-$('#save-session').onclick=()=>download({version:'quantum-biology-v1',savedAt:new Date().toISOString(),turns},'quantum-lab-exploration.json');
-$('#new-question').onclick=()=>{if(busy)return;history=[];turns=[];$('#conversation').replaceChildren();$('#conversation-actions').hidden=true;$('#question').value='';$('#question-status').textContent='';$('#question').focus();$('#ask').scrollIntoView({block:'start'});};
+$('#save-session').onclick=()=>download({version:'quantum-study-v2',savedAt:new Date().toISOString(),turns},'quantum-atlas-study-brief.json');
+$('#new-question').onclick=()=>{if(busy)return;history=[];turns=[];$('#conversation').replaceChildren();$('#conversation-actions').hidden=true;$('#question').value='';$('#question-status').textContent='';window.dispatchEvent(new CustomEvent('quantum:brief',{detail:{state:'ready',label:'Ready for a question'}}));$('#question').focus();$('#ask').scrollIntoView({block:'start'});};
 async function papers(){try{const r=await fetch('data/papers.json');if(!r.ok)throw Error();const data=await r.json();$('#papers').replaceChildren();for(const p of data.papers){const d=node('details',undefined,'paper'),body=node('div',undefined,'paper-body'),a=node('a','Read original research ↗');a.href=p.url;a.target='_blank';a.rel='noopener noreferrer';d.append(node('summary',p.title));body.append(node('span',p.evidence,'paper-tag'),node('p',p.finding),node('p',p.limit),a);d.append(body);$('#papers').append(d);}}catch{$('#papers').replaceChildren(node('p','Research references are unavailable. Reload to retry.'));}}papers();
 const dialog=$('#verification-dialog');$('#open-verification').onclick=()=>{if(!$('#verification-frame').src)$('#verification-frame').src='verification.html?embedded=1';dialog.showModal();$('#close-verification').focus();};$('#close-verification').onclick=()=>dialog.close();dialog.addEventListener('close',()=>$('#open-verification').focus());
+
+const savedKey='quantum-atlas-study-brief-v2';
+function retained(){try{$('#retained-brief').hidden=!localStorage.getItem(savedKey);}catch{$('#retained-brief').hidden=true;}}
+$('#keep-session').onclick=()=>{try{localStorage.setItem(savedKey,JSON.stringify({version:'quantum-study-v2',savedAt:new Date().toISOString(),turns,history}));retained();$('#question-status').textContent='Brief saved on this device. Return to Quantum Atlas to reopen it.';}catch{$('#question-status').textContent='Device storage is unavailable. Use Save this exploration to download a copy.';}};
+$('#resume-study').onclick=()=>{if(busy)return;try{const saved=JSON.parse(localStorage.getItem(savedKey));if(saved.version!=='quantum-study-v2'||!Array.isArray(saved.turns)||!Array.isArray(saved.history))throw Error();$('#conversation').replaceChildren();for(const t of saved.turns)renderTurn(t.question,t);turns=saved.turns;history=saved.history;$('#question-status').textContent='Saved brief restored · '+new Date(saved.savedAt).toLocaleString()+'. No new calculation was requested.';window.dispatchEvent(new CustomEvent('quantum:brief',{detail:{state:'complete',label:'Saved brief restored'}}));$('#ask').scrollIntoView({block:'start'});}catch{$('#question-status').textContent='The saved brief is unavailable. Remove it and explore your question again.';}};
+$('#forget-study').onclick=()=>{try{localStorage.removeItem(savedKey);retained();}catch{}};retained();
+try{const preference=localStorage.getItem('quantum-atlas-delivery-v1');if(preference==='email')document.querySelector('[name="delivery"][value="email"]').checked=true;}catch{}
+$('#delivery-form').onsubmit=e=>{e.preventDefault();try{localStorage.setItem('quantum-atlas-delivery-v1',new FormData(e.target).get('delivery'));$('#delivery-status').textContent='Preference saved on this device. Confirm notification details at study launch.';}catch{$('#delivery-status').textContent='Device storage is unavailable. Choose your delivery preference at study launch.';}};
