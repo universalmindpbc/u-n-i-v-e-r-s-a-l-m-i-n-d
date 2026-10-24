@@ -33,7 +33,7 @@
  // from modal order when Research opens from the gene-network lightbox.
  let dialogStack=[...document.querySelectorAll('dialog[open]')],placementHost=null;
  function sizeResearchHost(){
-  const library=placementHost?.matches('.library-overlay');root.dataset.library=String(!!library);
+  const library=placementHost?.matches('.library-overlay');
   if(library){root.style.setProperty('--uo-space-width',`${placementHost.clientWidth}px`);root.style.setProperty('--uo-space-height',`${placementHost.clientHeight-(placementHost.querySelector('.library-overlay-bar')?.offsetHeight||0)}px`);}
   else{root.style.removeProperty('--uo-space-width');root.style.removeProperty('--uo-space-height');}
  }
