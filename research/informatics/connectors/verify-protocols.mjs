@@ -2,7 +2,9 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs/promises';
 import {Client} from '/private/tmp/informatics-connector-qa/node_modules/@modelcontextprotocol/sdk/dist/esm/client/index.js';
 import {StreamableHTTPClientTransport} from '/private/tmp/informatics-connector-qa/node_modules/@modelcontextprotocol/sdk/dist/esm/client/streamableHttp.js';
-const base='https://informatics-universal-one-staging.universalmind.workers.dev';
+const base=process.env.UO_ENDPOINT||'https://informatics-universal-one-staging.universalmind.workers.dev';
+const out=new URL(process.env.UO_PROOF_DIR||'./verification/',import.meta.url);
+await fs.mkdir(out,{recursive:true});
 const report={checkedAt:new Date().toISOString(),endpoint:base};
 const client=new Client({name:'informatics-proof',version:'1.0.0'});
 try{
@@ -22,5 +24,5 @@ try{
  const card=await(await fetch(base+'/.well-known/agent-card.json')).json();assert.equal(card.supportedInterfaces[0].protocolVersion,'1.0');report.agentCard=card;
  const error=await(await fetch(base+'/a2a/v1',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({jsonrpc:'2.0',id:1,method:'SendMessage',params:{}})})).json();assert.equal(error.error.code,-32009);report.a2aVersionGuard=true;
  report.passed=true;
-}finally{await client.close();await fs.writeFile(new URL('./verification/protocols.json',import.meta.url),JSON.stringify(report,null,2)+'\n');}
+}finally{await client.close();await fs.writeFile(new URL('protocols.json',out),JSON.stringify(report,null,2)+'\n');}
 console.log(JSON.stringify({passed:report.passed,counts:report.inventory.counts,tools:report.tools,search:report.publicationSearch,fullM9MatchesOriginal:report.fullM9MatchesOriginal}));

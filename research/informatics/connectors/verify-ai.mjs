@@ -1,7 +1,8 @@
 import fs from 'node:fs/promises';
 import assert from 'node:assert/strict';
-const base='https://informatics-universal-one-staging.universalmind.workers.dev';
-const out=new URL('./verification/',import.meta.url);
+const base=process.env.UO_ENDPOINT||'https://informatics-universal-one-staging.universalmind.workers.dev';
+const out=new URL(process.env.UO_PROOF_DIR||'./verification/',import.meta.url);
+await fs.mkdir(out,{recursive:true});
 const qa=(await fs.readFile('/private/tmp/uo-secrets/qa-token','utf8')).trim();
 const secrets=JSON.parse(await fs.readFile('/private/tmp/uo-secrets/worker.json','utf8'));
 const started=Date.now();
