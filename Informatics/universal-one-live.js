@@ -79,7 +79,7 @@
     await waitForVisible(abort.signal);if(token!==epoch)return;
     active=true;sessionTimer=setTimeout(()=>fail('Voice session complete. Select Reconnect to continue.'),10*60*1000);
     for(const item of (window.UniversalOneContext?.compactHistory(history())||[]))send({type:'conversation.item.create',item:{type:'message',role:item.role,content:[{type:item.role==='assistant'?'output_text':'input_text',text:item.content.slice(0,5000)}]}});
-    send({type:'response.create',response:{instructions:'Say exactly: Namaste. What research question can I help you with? Then wait for the visitor.'}});
+    send({type:'response.create',response:{instructions:'Say exactly: Hi. What research question can I help you with? Then wait for the visitor.'}});
    }catch(error){if(token!==epoch)return;fail(error.name==='NotAllowedError'?'Microphone access was denied. Enable it in your browser, or select Text.':error.message);}
   }
   function toggleMute(){if(!active)return;muted=!muted;sync();state(playing?'speaking':gated?'thinking':muted?'muted':'listening',playing?'Speaking':gated?'Thinking…':muted?'Microphone off':'Listening…');}

@@ -29,8 +29,23 @@
  function labelButton(button,label){button.setAttribute('aria-label',label);button.dataset.label=label;}
  function state(name,label){root.dataset.state=name;say(label);const muted=live.getState().muted;$('[data-mute]').setAttribute('aria-pressed',String(muted));labelButton($('[data-mute]'),muted?'Unmute microphone':'Mute microphone');$('[data-mute]').disabled=!live.getState().active;$('[data-reconnect]').hidden=name!=='error';$('[data-mute]').hidden=name==='error';$('[data-interrupt]').hidden=!live.getState().active||!['thinking','speaking'].includes(name);if(name==='error')duck(false);}
  const live=UniversalOneLive({request,history:()=>history,context,onState:state,onMicrophone:mic=>{if(mic)waveform.start(mic);else waveform.stop();},onUser:text=>{history.push({role:'user',content:text});message('user',text);},onAssistant:(text,sources)=>{history.push({role:'assistant',content:text,sources});message('assistant',text,sources);}});
- function placeInExperience(){const dialogs=[...document.querySelectorAll('dialog[open]')];const container=dialogs.at(-1)||document.fullscreenElement||document.webkitFullscreenElement||document.body;if(root.parentElement!==container)container.append(root);}
- document.addEventListener('fullscreenchange',placeInExperience);document.addEventListener('webkitfullscreenchange',placeInExperience);new MutationObserver(placeInExperience).observe(document.body,{subtree:true,attributes:true,attributeFilter:['open']});placeInExperience();
+ // Keep one conversation in the most recently opened dialog. DOM order differs
+ // from modal order when Research opens from the gene-network lightbox.
+ let dialogStack=[...document.querySelectorAll('dialog[open]')],placementHost=null;
+ function sizeResearchHost(){
+  const library=placementHost?.matches('.library-overlay');root.dataset.library=String(!!library);
+  if(library){root.style.setProperty('--uo-space-width',`${placementHost.clientWidth}px`);root.style.setProperty('--uo-space-height',`${placementHost.clientHeight-(placementHost.querySelector('.library-overlay-bar')?.offsetHeight||0)}px`);}
+  else{root.style.removeProperty('--uo-space-width');root.style.removeProperty('--uo-space-height');}
+ }
+ const hostResize=new ResizeObserver(sizeResearchHost);
+ function placeInExperience(){
+  dialogStack=dialogStack.filter(d=>d.isConnected&&d.open);
+  const container=dialogStack.at(-1)||document.fullscreenElement||document.webkitFullscreenElement||document.body;
+  if(placementHost!==container){hostResize.disconnect();placementHost=container;if(container.matches('.library-overlay'))hostResize.observe(container);}
+  if(root.parentElement!==container)container.append(root);sizeResearchHost();
+ }
+ document.addEventListener('fullscreenchange',placeInExperience);document.addEventListener('webkitfullscreenchange',placeInExperience);
+ new MutationObserver(records=>{for(const {target} of records){if(target.tagName!=='DIALOG')continue;dialogStack=dialogStack.filter(d=>d!==target);if(target.open)dialogStack.push(target);}placeInExperience();}).observe(document.body,{subtree:true,attributes:true,attributeFilter:['open']});placeInExperience();
  function sync(){root.dataset.mode=mode;root.classList.toggle('is-active',opened);summon.setAttribute('aria-expanded',String(!panel.hidden||!menu.hidden));dock.hidden=!opened||mode!=='voice';$('.uo-compose').hidden=mode==='voice';labelButton($('[data-transcript]'),panel.hidden?'Show transcript':'Hide transcript');$('[data-transcript]').setAttribute('aria-expanded',String(!panel.hidden));$('[data-mute]').hidden=root.dataset.state==='error';$('[data-interrupt]').hidden=!live.getState().active||!['thinking','speaking'].includes(root.dataset.state);for(const b of root.querySelectorAll('[data-mode]'))b.setAttribute('aria-pressed',String(b.dataset.mode===mode));}
  function stopAudio(){if(audio){audio.pause();audio.src='';audio=null;inputGateUntil=performance.now()+900;}if(audioURL){URL.revokeObjectURL(audioURL);audioURL=null;}if(!stream)duck(false);}
  function releaseMic(){clearTimeout(recordTimer);stream?.getTracks().forEach(t=>t.stop());stream=null;waveform.stop();$('.uo-compose canvas').hidden=true;recordButton.setAttribute('aria-pressed','false');recordButton.textContent='Dictate';}
