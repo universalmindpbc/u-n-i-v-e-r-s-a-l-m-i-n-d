@@ -18,10 +18,10 @@ The website entry is **Connect your AI**. Provider buttons open setup guides; th
 
 ## Research collaboration
 
-Ben confirmed Synapse and DeSci accounts are registered. DeSci replaces the earlier Triall proposal. DeSci authentication and draft listing succeeded on 24 October; the new account had no draft objects. Private credentials are outside the repository and website.
+Ben confirmed Synapse and DeSci accounts are registered. DeSci replaces the earlier Triall proposal. Synapse and DeSci authentication succeeded on 24 October. A private Synapse project and a private DeSci draft are prepared. Private credentials are outside the repository and website.
 
-- Synapse: `publish-synapse.py` verifies hashes, then uploads only with explicit `--upload --project synID` and a personal access token in the local environment. Existing project permissions are retained. No Synapse token or project has been configured in this task. OAuth requires registration and verification by Synapse before use.
-- DeSci: `draft-desci.mjs` verifies the same export and optionally uploads to an existing private draft. `--list` was tested with the registered account. Draft upload is not yet live-tested; there is no draft destination yet. The adapter never publishes, assigns a licence, signs blockchain transactions or claims an identifier was registered.
+- Synapse: `publish-synapse.py` verifies hashes, then uploads only with explicit `--upload --project synID` and a personal access token in the local environment. Existing project permissions are retained. The private project is `syn78366147`, with an owner-only ACL. File upload returned HTTP 403 because the account has not completed Synapse certification. The adapter now checks certification before creating a folder. No research files were uploaded. OAuth requires registration and verification by Synapse before use.
+- DeSci: `draft-desci.mjs` verifies the same export and optionally uploads to an existing private draft. `--list` and a three-file connection-check upload were tested with the registered account. The draft is `pC6RBXus7yEUVvcvbjLHdzp77rN8UAUwEw__O6K9aC0`. DeSci returned HTTP 500 after saving files; the adapter reconciles saved raw-CID files against their local SHA-256 instead of duplicating uploads. Larger files with an unresolved error stop for inspection. The saved check contains no research text or participant data. The adapter never publishes, assigns a licence, signs blockchain transactions or claims an identifier was registered.
 - The package manifest contains SHA-256 file hashes; integrity.json hashes the manifest. A local hash is an integrity check, not a third-party timestamp or scientific assessment.
 - New research results, author attribution, licences and external publication need a specific reviewed package. No third-party full-text articles are silently republished.
 
@@ -52,4 +52,12 @@ No third-party consumer account installation is represented as tested until its 
 
 ## Later work
 
-OAuth consumer onboarding where supported, account-specific A2A quotas and persistent tasks, a reviewed DeSci draft and Synapse project, and the scoped CORAL research coordination prototype. No 24/7 paid research jobs were enabled by this release.
+Synapse account certification and a live file-upload retest; reviewed research packages for Synapse and DeSci; OAuth consumer onboarding where supported; account-specific A2A quotas and persistent tasks; and the scoped CORAL research coordination prototype. No 24/7 paid research jobs were enabled by this release.
+
+## RCT workflow
+
+DeSci can preserve versioned study protocols, analysis plans, code, shareable datasets and results. It is not the clinical trial operations system or formal trial registry. Synapse supports shared research files and provenance. An Australian RCT can be registered through ANZCTR; randomisation, consent, clinical data collection and safety monitoring need their own governed workflows.
+
+- https://docs.desci.com/find-help/faq/using-nodes
+- https://www.anzctr.org.au/Faq.aspx
+- https://docs.synapse.org/synapse-docs/synapse-user-account-types
