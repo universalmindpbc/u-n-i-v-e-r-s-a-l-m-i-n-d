@@ -17,7 +17,7 @@
       button.setAttribute('aria-pressed', String(button.dataset.readingBackground === mode));
     });
     document.querySelectorAll('[data-reading-motion]').forEach(button => {
-      button.hidden = mode !== 'video';
+      button.hidden = shared || mode !== 'video';
       const stopped = paused || film?.paused;
       button.textContent = stopped ? 'Play video' : 'Pause video';
       button.setAttribute('aria-label', stopped ? 'Play background video' : 'Pause background video');
