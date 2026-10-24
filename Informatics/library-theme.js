@@ -9,7 +9,7 @@
   const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
   let mode = modes.includes(read(themeKey)) ? read(themeKey) : 'video';
   let paused = read(motionKey) === null ? reducedMotion.matches : read(motionKey) === 'true';
-  let film;
+  let film;const shared=window.parent!==window&&!!parent.document.querySelector('#experience');
   root.dataset.readingBackground = mode;
 
   function syncControls() {
@@ -30,6 +30,7 @@
 
   function syncFilm() {
     if (!film) return;
+    if(shared){syncControls();return;}
     if (mode !== 'video' || document.hidden) {
       film.pause();
     } else {
@@ -53,12 +54,14 @@
   }
 
   function init() {
+    if(shared)document.body.classList.add('embedded');
     document.querySelectorAll('[data-reading-controls]').forEach(host => {
       host.innerHTML = '<div class="reading-options" role="group" aria-label="Reading background">' +
         modes.map(value => `<button type="button" data-reading-background="${value}" aria-pressed="${value === mode}">${value[0].toUpperCase() + value.slice(1)}</button>`).join('') +
         '</div><button type="button" class="reading-motion" data-reading-motion>Pause video</button>';
     });
-    film = document.getElementById('library-film');
+    film = shared?parent.document.getElementById('film'):document.getElementById('library-film');
+    if(shared)document.querySelectorAll('[data-reading-motion]').forEach(b=>b.hidden=true);
     for (const event of ['play', 'pause', 'error']) film.addEventListener(event, syncControls);
     document.addEventListener('click', event => {
       const option = event.target.closest('button[data-reading-background]');
@@ -70,7 +73,7 @@
       }
     });
     document.addEventListener('visibilitychange', syncFilm);
-    window.addEventListener('pagehide', () => film.pause());
+    window.addEventListener('pagehide', () => {if(!shared)film.pause();});
     reducedMotion.addEventListener('change', () => {
       if (read(motionKey) === null) { paused = reducedMotion.matches; syncFilm(); }
     });

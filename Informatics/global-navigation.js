@@ -6,8 +6,8 @@
     ['about', 'About'],
     ['geometry', 'Geometry Atlas'],
     ['transcription', 'Transcription Atlas'],
-    ['quantum', 'Quantum Lab'],
     ['molecular', 'Molecular Atlas'],
+    ['quantum', 'Quantum Atlas'],
     ['sound', 'Sound Atlas'],
     ['vision', 'Vision Atlas'],
     ['language', 'Language Atlas'],
@@ -23,9 +23,9 @@
       item.setAttribute('role', 'menuitem'); item.tabIndex = -1; item.textContent = label;
       if (surface === 'main') {
         if (id === 'about') item.dataset.about = '';
-        else if (id === 'transcription') { item.dataset.scienceTfbs = ''; item.setAttribute('aria-haspopup', 'dialog'); }
-        else if (id === 'research') item.dataset.library = 'all';
-        else if (id === 'connect') item.dataset.connect = '';
+        else if (id === 'transcription') item.dataset.area = id;
+        else if (id === 'research') item.dataset.area = id;
+        else if (id === 'connect') item.dataset.area = id;
         else item.dataset.area = id;
       } else {
         const url = new URL(id === 'research' ? 'library.html' : id === 'connect' ? 'connect.html' : './', root);

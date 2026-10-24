@@ -11,6 +11,7 @@ ALLOWED_ORIGIN = "https://staging.universalmind.tv"
 RESEARCH_MODEL = "gpt-6-astra"
 DATASET_VERSION = "research-20261024-v2"
 CONNECTORS_ENABLED = "true"
+QUANTUM_PLANNING_ENABLED = "true"
 
 [[ratelimits]]
 name = "CONNECTOR_LIMIT"

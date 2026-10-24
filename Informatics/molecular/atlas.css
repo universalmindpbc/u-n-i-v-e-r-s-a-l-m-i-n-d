@@ -46,3 +46,6 @@ body[data-level=gene] .target-caption>p:last-child{color:#c6b38f}
 html:not(.embedded) .masthead .return,html:not(.embedded) .masthead .product-name,.embedded .masthead #atlas-navigation{display:none}
 @media(max-width:760px){html:not(.embedded) .masthead{height:145px;align-content:start;gap:8px 15px}html:not(.embedded) .masthead .brand{width:100%;min-height:24px}html:not(.embedded) .masthead #atlas-navigation{order:1}html:not(.embedded) .masthead .background-controls{order:1}html:not(.embedded) .masthead .primary{order:2;height:41px}html:not(.embedded) .masthead #atlas-menu{left:0;right:auto}html:not(.embedded) .detail-panel{top:193px}}
 html:not(.embedded) .masthead{z-index:20}
+
+/* Global navigation lives in the persistent parent frame. */
+.embedded .masthead #atlas-navigation,.embedded .masthead .return{display:none}

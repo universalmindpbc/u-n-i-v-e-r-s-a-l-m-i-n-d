@@ -158,11 +158,17 @@
   document.body.append(register);
   const tfbsLink = '<button class="science-register-link" data-science-tfbs aria-haspopup="dialog">OXTR binding-site catalogue ↗</button>';
   register.querySelector('.science-register-intro').insertAdjacentHTML('afterend', `<p>${tfbsLink}<br><span class="science-small">A separate collection of transcriptional-regulation evidence and source data.</span></p>`);
-  const tfbs = document.createElement('dialog');
+  const inlineTfbs = document.querySelector('#transcription-panel');
+  const tfbs = document.createElement(inlineTfbs ? 'section' : 'dialog');
   tfbs.className = 'science-register science-tfbs';
   tfbs.setAttribute('aria-labelledby', 'tfbs-title');
   tfbs.innerHTML = '<div class="science-reader-bar"><div class="science-reader-location"><p class="atlas-page-marker">Transcription Atlas</p><span>OXTR · TRANSCRIPTIONAL REGULATION</span></div><button class="science-close" aria-label="Close binding-site catalogue">×</button></div><div class="science-register-body"><h2 id="tfbs-title">OXTR transcription-factor binding-site catalogue</h2><div class="tfbs-content"></div></div>';
-  document.body.append(tfbs);
+  if(inlineTfbs){
+    tfbs.classList.add('transcription-inline');inlineTfbs.append(tfbs);
+    tfbs.querySelector('.science-close').replaceWith(Object.assign(document.createElement('div'),{className:'transcription-tools',innerHTML:'<label for="transcription-view">Explore</label><select id="transcription-view" aria-label="Transcription Atlas view"><option value="overview">Overview</option><option value="comparison">Compare positions</option><option value="data">Browse source data</option><option value="literature">Literature</option></select>'}));
+    tfbs.querySelector('#transcription-view').onchange=async e=>{await loadTfbs();const selectors={overview:'.science-register-body',comparison:'.tfbs-geometry',data:'.tfbs-explorer',literature:'.tfbs-literature'},target=tfbs.querySelector(selectors[e.target.value]);if(target){if(target.tagName==='DETAILS')target.open=true;inlineTfbs.scrollTo({top:inlineTfbs.scrollTop+target.getBoundingClientRect().top-inlineTfbs.getBoundingClientRect().top-85,behavior:'smooth'});}};
+    document.addEventListener('atlas:area',event=>{if(event.detail==='transcription')loadTfbs();});
+  }else document.body.append(tfbs);
   const external = (href, label) => `<a href="${esc(href)}" target="_blank" rel="noopener noreferrer">${esc(label)} ↗</a>`;
   const tfbsLearning = document.createElement('dialog');
   tfbsLearning.className = 'science-register science-tfbs-learning';
@@ -268,7 +274,11 @@
       const a = document.createElement('a'); a.href=url; a.download='oxtr-selected-evidence.'+format; a.click(); setTimeout(()=>URL.revokeObjectURL(url),1000);
     }
     const entry = e.target.closest('[data-science-tfbs]');
-    if (entry) {e.preventDefault(); tfbsOpener = entry.closest('#atlas-menu') ? document.querySelector('#atlas-toggle') : entry; (document.fullscreenElement || document.body).append(tfbs); tfbs.showModal(); tfbs.scrollTop = 0; loadTfbs();}
+    if (entry) {e.preventDefault();
+      if(inlineTfbs){document.querySelectorAll('dialog[open]').forEach(d=>d.close());document.dispatchEvent(new CustomEvent('atlas:navigate',{detail:'transcription'}));loadTfbs();}
+      else if(window.parent!==window&&parent.document.querySelector('#transcription-panel')){parent.document.dispatchEvent(new CustomEvent('atlas:navigate',{detail:'transcription'}));}
+      else{tfbsOpener=entry;(document.fullscreenElement||document.body).append(tfbs);tfbs.showModal();tfbs.scrollTop=0;loadTfbs();}
+    }
     if (e.target.closest('[data-tfbs-retry]')) loadTfbs();
     const teaching=e.target.closest('[data-science-transcription]');
     if(teaching){transcriptionOpener=teaching;(document.fullscreenElement||document.body).append(transcription);transcription.showModal();transcription.scrollTop=0;}
@@ -318,7 +328,7 @@
     reader.showModal(); reader.scrollTop = 0;
   }
   reader.querySelectorAll('[data-reader-card]').forEach(b => b.onclick = () => {active = cards.find(c => c.id === b.dataset.readerCard); renderCard(); reader.scrollTop = 0;});
-  for (const dialog of [reader, zoom, register, appraisal, genomics, tfbs, tfbsLearning, transcription]) {
+  for (const dialog of [reader, zoom, register, appraisal, genomics, ...(inlineTfbs?[]:[tfbs]), tfbsLearning, transcription]) {
     dialog.querySelector('.science-close').onclick = () => dialog.close();
     dialog.addEventListener('click', e => {if (e.target !== dialog) return; const r = dialog.getBoundingClientRect(); if (e.clientX < r.left || e.clientX > r.right || e.clientY < r.top || e.clientY > r.bottom) dialog.close();});
   }

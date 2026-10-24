@@ -5,7 +5,7 @@ const create=(tag,text,cls)=>{const el=document.createElement(tag);if(text!==und
 const STORE='informatics.quantum.runs.v1';
 let reference=null,current=null,runs=[],busy=false,draft=false,worker=null,workerTimer=null,requestId=null;
 const stages={
- gpt:['Assist · GPT / AI','Assistance with formulation, code and explanation. Researcher review and independent numerical checks remain essential. This page does not call a GPT API.'],
+ gpt:['Assist · GPT / AI','Assistance with formulation, code and explanation. Researcher review and independent numerical checks remain essential. The main Quantum Lab now offers GPT guidance. This optional numerical verification view does not call GPT.'],
  wolfram:['Model · Wolfram Quantum Framework','The original two-atom Hamiltonian was independently evaluated with Wolfram Quantum Framework. Its probabilities agreed with the continuous CPU reference within 8.2 × 10⁻⁹.'],
  spec:['Define · Versioned experiment','Preserve the Hamiltonian, units, initial state, pulse and observables. A new intentional run gets a new ID; a retry retains its submission identity.'],
  cpu:['Verify · Independent CPU','The recorded reference used SciPy. This page uses an independently implemented browser solver and repeats each calculation at half the time step. Both describe an ideal closed system.'],

@@ -1,45 +1,29 @@
-# Quantum Lab funded research gateway
+# Quantum Atlas gateway — current product contract
 
-## Product decision
+Updated 25 October 2026. This supersedes the initial per-researcher allocation design. Earlier release evidence remains a historical record.
 
-Ben selected Universal Informatics funding for approved researchers, with an individual budget per researcher. The three tiers are Explore, Experiment and Funded Researcher. Quantum Lab follows Transcription Atlas in the shared navigation.
+## Public service
 
-## This staging release
+Quantum Atlas — Biological questions via Quantum Computing follows Molecular Atlas. Scientists ask biological questions in natural language. The service clarifies the question and relevant evidence; technical models and numerical details are optional. DNA assembly, haplotypes, DNA-binding prediction and compatible molecular contacts are the initial research directions. No broad quantum advantage is claimed.
 
-- Explore: public archived results, workflow and literature.
-- Experiment: parameterised two-atom simulations, independent numerical checks, run IDs, parent-run links, local history, import/export and offline Python reproduction.
-- Funded Researcher: visible access model and locally exported review package. No researcher authentication, server persistence, budget allocation or website hardware dispatch is activated in this release. The review file explicitly records LOCAL_DRAFT_NOT_SUBMITTED.
-- No AWS, qBraid or D-Wave credentials enter the browser or deployment. No public hardware-submission endpoint exists.
-- Browser storage is local to the browser profile, not an authenticated private cloud workspace. It is bounded to the latest 30 runs; exports provide durable records.
+Universal Informatics aims to fund public use through shared daily, weekly and monthly budgets. There is no individual researcher approval or personal hardware allocation. Fair-use controls protect shared access; they do not become grant review.
 
-## Required server contract before hardware activation
+## This staging implementation
 
-Use authenticated researcher identities with server-held grants. A grant contains project ID, active/revoked state, allowed provider/device/model versions, shot limits, allocation in integer monetary units, currency, expiry and administrator audit metadata. Browser controls never establish authorisation.
+- A bounded GPT-6 Astra endpoint returns structured biological research guidance from five curated primary-research summaries. It is not live literature, ENCODE or JASPAR retrieval.
+- Natural-language assembly requests containing 3–6 distinct synthetic/public DNA fragments can execute exact classical read ordering and deterministic QUBO/Ising compilation. The assumptions are explicit, ties are reported, and gaps are flagged. This is a teaching exercise, not a genome assembler.
+- Questions have a shared planning pool of 30/day, 120/week and 300/month, enforced transactionally in the existing backend. These are question counts, not monetary limits. UTC calendar days/months and Monday-starting weeks apply. The authenticated QA pool is separate and equally bounded. Failed provider calls retain their reservation because a charge may already exist; there are no automatic retries.
+- No GPU/QPU dispatch endpoint is active. No hardware funding amount is inferred from the earlier one-job approval. No credentials enter the browser.
+- Wolfram Language model export is available; the web endpoint does not execute Wolfram Quantum Framework. The earlier two-atom experiment separately verified that framework and the qBraid GPU route.
+- Conversations stay in tab memory. Download preserves the plan and model; no server project history or authenticated private storage is claimed. API requests use store:false; this is not a claim that the external provider retains no operational data.
+- The earlier two-atom numerical workspace remains an optional verification view. Its recorded GPU output and timestamped QPU status do not represent new executions.
 
-The server validates the canonical experiment, allowed model version, provider-specific units and device capabilities. Aquila analog programmes, D-Wave BQM/Ising objectives and Willow gate circuits are separate adapters. A successful mapping on one device does not establish compatibility with another.
+## Before public hardware activation
 
-In a database transaction, create a run and unique idempotency key, lock the researcher's allocation, verify available funds, and reserve an authoritative cost estimate. Include provider task fees, shots, applicable storage/compute and an administrator-set allowance. The UI displays that estimate and the researcher's allocation before submission. No budget amounts are inferred from the earlier US$2 demo cap.
+Configure funded currency amounts for the shared day/week/month pools and allowlisted provider adapters. Reserve a conservative total cost, including applicable task, shot, compute and storage fees, in all three pools atomically before dispatch. Requests that exceed any pool wait or decline with an honest reset/availability message; do not silently switch to paid overflow. Add fair-use rate and concurrency controls, without individual approvals.
 
-Dispatch using a restricted service identity and temporary credentials. Keep request hashes, provider task IDs and immutable audit records. A retry reuses the job and idempotency key. An intentional rerun gets a new run and reservation. If submission outcome is unknown after a timeout, retain the reservation and reconcile by the provider idempotency mechanism; never blindly resubmit or release funds.
+Persist versioned experiments, input hashes, classical baselines and provider receipts. Use idempotency keys and a durable queue. Retries reuse the original submission; deliberate reruns create new records and reservations. Unknown submission outcomes retain reservations until reconciled. Reconcile actual charges before releasing unused funds; failure and cancellation are not assumed free.
 
-State transitions: draft → validated → reserved → dispatching → submitted → running → completed/failed/cancelled. Unknown provider state is explicit. Reconcile actual charges before releasing unused reserved funds. Never assume cancellation or failure is free. Concurrent submissions cannot overspend the same allocation.
+Use restricted server identities and separate validated adapters for Aquila analog programmes, annealing objectives and gate circuits. A valid Ising objective alone does not establish an Aquila-compatible embedding. Results distinguish physical measurements from simulations and preserve uncertainty, compiler/device versions, units, bit ordering and missing shots.
 
-Results remain owned by the authenticated researcher/project. Sharing requires explicit researcher action. Preserve raw measurements, vacancies/failed shots, device metadata, compiler/solver versions, bit ordering, uncertainty, cost and timing. Keep simulation and QPU measurements distinct.
-
-## Activation dependencies
-
-1. Researcher sign-in and administrative grant management on the existing backend.
-2. Durable run/queue/budget storage with transactional reservation and revocation.
-3. Restricted cloud service identity, provider access and validated adapters.
-4. Server capability API, authenticated job submission/status/result routes, audit and cost reconciliation.
-5. Tests for unauthenticated/expired/revoked access, cross-project isolation, per-device grants, concurrent budget reservation, duplicate requests, provider timeouts, failures, cancellations and result access.
-6. One explicitly authorised end-to-end hardware test with a concrete budget. Ben's earlier one-shot demo approval covers the existing Aquila task only.
-
-D-Wave access remains unverified after the trial application. Google Willow is a selective research-access programme, not an installed public provider. Neither is presented as an active website connection.
-
-## Source basis
-
-- https://docs.aws.amazon.com/braket/latest/developerguide/braket-devices.html
-- https://docs.aws.amazon.com/braket/latest/developerguide/braket-quera-submitting-analog-program-aquila.html
-- https://quantumai.google/willowearlyaccess
-- Provider details checked 25 October 2026. Paper metadata and original summaries checked 24 October 2026.
+An explicitly authorised bounded end-to-end hardware test remains necessary. The earlier Aquila approval covers the already submitted task only. D-Wave access and future Google integration remain unverified/pending.

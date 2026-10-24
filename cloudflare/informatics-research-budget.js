@@ -1,5 +1,6 @@
 // A question is reserved once. Its bounded retrieval/model loop is included.
 // Automated verification uses a separately authenticated, equally bounded pool.
+import {pooledPlanning} from './informatics-quantum-budget.js';
 const limits={research_question:120,transcription:60,speech:60,voice:20};
 export class BudgetError extends Error {
  constructor(kind,resetAt){super(`The daily ${kind==='research_question'?'research':kind} allowance is used. It resets at 00:00 UTC. Please try again after the reset.`);this.status=429;this.code='daily_allowance';this.kind=kind;this.resetAt=resetAt;}
@@ -7,7 +8,8 @@ export class BudgetError extends Error {
 export class ResearchBudget {
  constructor(state){this.state=state;}
  async fetch(request){
-  const {kind,inspect,scope}=await request.json();
+  const {kind,inspect,scope,quantum}=await request.json();
+  if(quantum)return Response.json(await pooledPlanning(this.state.storage,inspect));
   const scopedLimits=scope==='connectors'?{...limits,research_question:30}:limits;
   if(!inspect&&!limits[kind])return new Response('{}',{status:400});
   const date=new Date().toISOString().slice(0,10),resetAt=new Date(Date.parse(date)+86400000).toISOString();

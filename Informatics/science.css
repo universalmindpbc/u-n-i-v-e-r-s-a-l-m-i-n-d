@@ -140,3 +140,18 @@
 /* Keep the study browser within the same three evidence bundles. */
 .tfbs-datasets{grid-template-columns:repeat(3,minmax(0,1fr))}.tfbs-study-additions h4{font:600 14px/1.6 Arial,Helvetica,sans-serif;margin:20px 0 8px}.tfbs-study-additions p{max-width:900px}
 @media(max-width:680px){.tfbs-datasets{grid-template-columns:1fr}}
+
+/* Transcription is an Atlas area inside the shared site frame. */
+#transcription-panel{flex:1;min-height:0;overflow:auto;overscroll-behavior:contain;padding:0 4.2vw 110px;scroll-padding-top:90px}
+#experience[data-area="transcription"] .film-shade{background:#0006}
+#experience[data-area="transcription"]>header{position:relative;z-index:25}
+.science-register.transcription-inline{display:block;width:100%;max-width:none;max-height:none;overflow:visible;margin:0;border:0;background:transparent}
+.transcription-inline .science-reader-bar{top:0;background:rgba(8,16,22,.76);padding:14px 20px;z-index:4}
+.transcription-inline>.science-register-body{background:rgba(8,16,22,.38);padding:25px 20px 40px}
+.transcription-inline .tfbs-source-card{background:rgba(10,23,31,.55)}
+.transcription-inline .tfbs-core-definitions,.transcription-inline .geometry-panels{background:rgba(10,23,31,.55)}
+.transcription-tools{display:flex;align-items:center;gap:12px}
+.transcription-tools label{font-size:10px;letter-spacing:.08em}
+.transcription-tools select{background:#0b1923;color:#dce8ef;border:1px solid #5b7381;border-radius:0;min-height:40px;padding:8px 30px 8px 12px;font:12px Arial,sans-serif;max-width:200px}
+.transcription-tools select:focus-visible{outline:2px solid #e4bd83;outline-offset:3px}
+@media(max-width:650px){#transcription-panel{padding:0 15px 105px}.transcription-inline .science-reader-bar{padding:12px 8px;gap:12px;flex-wrap:wrap}.transcription-inline>.science-register-body{padding:20px 8px}.transcription-tools{width:100%;justify-content:space-between}.transcription-tools select{flex:1;max-width:none}.transcription-inline .atlas-page-marker{font-size:11px}.transcription-inline .tfbs-source-card{padding:16px}}
