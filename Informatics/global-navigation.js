@@ -11,6 +11,7 @@
     ['vision', 'Vision Atlas'],
     ['language', 'Language Atlas'],
     ['research', 'Universal Research'],
+    ['connect', 'Connect your AI'],
     ['partners', 'Partners']
   ].map(([id, label]) => Object.freeze({id, label})));
   window.InformaticsNavigation = Object.freeze({entries});
@@ -23,13 +24,15 @@
         if (id === 'about') item.dataset.about = '';
         else if (id === 'transcription') { item.dataset.scienceTfbs = ''; item.setAttribute('aria-haspopup', 'dialog'); }
         else if (id === 'research') item.dataset.library = 'all';
+        else if (id === 'connect') item.dataset.connect = '';
         else item.dataset.area = id;
       } else {
-        const url = new URL(id === 'research' ? 'library.html' : './', root);
+        const url = new URL(id === 'research' ? 'library.html' : id === 'connect' ? 'connect.html' : './', root);
         if (id === 'about') { url.searchParams.set('about', '1'); item.dataset.globalAbout = ''; }
+        else if (id === 'connect') item.dataset.globalConnect = '';
         else if (id !== 'research') { url.searchParams.set('area', id); url.searchParams.set('entry', 'research'); item.dataset.globalArea = id; }
         item.href = url.href;
-        if ((surface === 'library' && id === 'research') || (surface === 'molecular' && id === 'molecular')) item.setAttribute('aria-current', 'page');
+        if ((surface === 'library' && id === 'research') || (surface === 'molecular' && id === 'molecular') || (surface === 'connect' && id === 'connect')) item.setAttribute('aria-current', 'page');
       }
       return item;
     }));

@@ -3,6 +3,7 @@ import {compactResearchRequest,retrievalQuery} from '../Informatics/universal-on
 import {needsResearch} from '../Informatics/universal-one-routing.js';
 import routingCatalogue from './informatics-research-topics.json';
 import {budget,budgetStatus,BudgetError} from './informatics-research-budget.js';
+import {connectors,isConnectorPath} from './informatics-connectors.js';
 export {ResearchBudget} from './informatics-research-budget.js';
 
 const API='https://api.openai.com/v1';
@@ -172,6 +173,7 @@ Answer in clear concise paragraphs, usually under 450 words. Use modest formatti
 export default {
  async fetch(request,env){
   const origin=request.headers.get('Origin');const url=new URL(request.url);
+  if(env.CONNECTORS_ENABLED==='true'&&isConnectorPath(url.pathname))return connectors(request,env,neon(env.DATABASE_URL),research);
   const cors={'Access-Control-Allow-Origin':env.ALLOWED_ORIGIN,'Access-Control-Allow-Methods':'POST,GET,OPTIONS','Access-Control-Allow-Headers':'Content-Type,X-Research-QA','Vary':'Origin'};
   if(origin!==env.ALLOWED_ORIGIN)return json({error:'This research service is available on Universal Informatics.'},403);
   if(request.method==='OPTIONS')return new Response(null,{status:204,headers:cors});

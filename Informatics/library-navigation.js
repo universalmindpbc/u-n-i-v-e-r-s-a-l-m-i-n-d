@@ -45,9 +45,9 @@
     }
   });
   document.addEventListener('click', event => {
-    const link = event.target.closest('[data-global-area], [data-global-about]');
+    const link = event.target.closest('[data-global-area], [data-global-about], [data-global-connect]');
     if (!link || window.parent === window || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
     event.preventDefault(); close();
-    parent.postMessage({type: 'informatics:library-navigate', area: link.dataset.globalArea || 'about'}, location.origin);
+    parent.postMessage({type: link.hasAttribute('data-global-connect') ? 'informatics:connect' : 'informatics:library-navigate', area: link.dataset.globalArea || 'about'}, location.origin);
   });
 })();

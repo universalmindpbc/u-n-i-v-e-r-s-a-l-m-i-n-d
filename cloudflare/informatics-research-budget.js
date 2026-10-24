@@ -7,26 +7,28 @@ export class BudgetError extends Error {
 export class ResearchBudget {
  constructor(state){this.state=state;}
  async fetch(request){
-  const {kind,inspect}=await request.json();
+  const {kind,inspect,scope}=await request.json();
+  const scopedLimits=scope==='connectors'?{...limits,research_question:30}:limits;
   if(!inspect&&!limits[kind])return new Response('{}',{status:400});
   const date=new Date().toISOString().slice(0,10),resetAt=new Date(Date.parse(date)+86400000).toISOString();
   return this.state.storage.transaction(async txn=>{
    const stored=await txn.get('quota');
    const state=stored?.date===date?stored:{date,counts:{}};
-   if(inspect)return Response.json({date,counts:state.counts,limits,resetAt});
+   if(inspect)return Response.json({date,counts:state.counts,limits:scopedLimits,resetAt});
    const used=state.counts[kind]||0;
-   if(used>=limits[kind])return Response.json({allowed:false,kind,resetAt},{status:429});
+   if(used>=scopedLimits[kind])return Response.json({allowed:false,kind,resetAt},{status:429});
    state.counts[kind]=used+1;await txn.put('quota',state);
-   return Response.json({allowed:true,remaining:limits[kind]-used-1,resetAt});
+   return Response.json({allowed:true,remaining:scopedLimits[kind]-used-1,resetAt});
   });
  }
 }
 export async function budget(env,kind){
- const response=await env.BUDGET.get(env.BUDGET.idFromName(env.QUOTA_SCOPE==='qa'?'staging-qa':'staging')).fetch('https://budget/check',{method:'POST',body:JSON.stringify({kind})});
+ const scope=env.QUOTA_SCOPE==='connectors'?'connectors':env.QUOTA_SCOPE==='qa'?'qa':'visitors';
+ const response=await env.BUDGET.get(env.BUDGET.idFromName(scope==='qa'?'staging-qa':scope==='connectors'?'connectors':'staging')).fetch('https://budget/check',{method:'POST',body:JSON.stringify({kind,scope})});
  if(!response.ok){const detail=await response.json();throw new BudgetError(kind,detail.resetAt);}
 }
 export async function budgetStatus(env){
  const result={};
- for(const [label,id]of [['visitors','staging'],['verification','staging-qa']])result[label]=await(await env.BUDGET.get(env.BUDGET.idFromName(id)).fetch('https://budget/status',{method:'POST',body:JSON.stringify({inspect:true})})).json();
+ for(const [label,id]of [['visitors','staging'],['verification','staging-qa'],['connectors','connectors']])result[label]=await(await env.BUDGET.get(env.BUDGET.idFromName(id)).fetch('https://budget/status',{method:'POST',body:JSON.stringify({inspect:true,scope:label})})).json();
  return result;
 }

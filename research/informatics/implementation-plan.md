@@ -152,3 +152,10 @@ Project: https://www.notion.so/3fd7b9c99c56815a8b84e6839dc1d3ed
 Ben approved the reviewed staging release `ef68380e` for production. The unchanged website source is live at https://universalmind.tv/informatics/?atlas=1&record=fibonacci-m9-p24 . Production release tag: `production-2026-10-19-1001`. All 77 changed assets (including complete data exports) matched the approved checksums. Desktop/mobile dataset searches, score filters, pagination, JSON/CSV exports and the preserved lightbox experience passed.
 
 The next-session brief and checklist at the top of this plan cover Python illustrations, all three coordinate views, Alpha/Beta/Gamma/Epsilon comparisons, the planned Wolfram + Biopython Atlas feature, and the requested NVIDIA CUDA / CUDA-Q discussion. These remain planned for Ben’s return.
+
+
+## Connector implementation — 24 October 2026
+
+Ben confirmed Synapse and DeSci accounts are registered. DeSci Publish replaces the earlier Triall proposal. Account credentials, destination projects and draft IDs are not committed. The first release exposes a read-only research API, MCP, A2A direct-message research, client guides and lossless export tooling on staging. Synapse publishing and DeSci private-draft upload stay separate from the public connectors. No autonomous research publication is enabled.
+
+See `connectors/README.md` for the current implementation, setup boundaries and verification.
