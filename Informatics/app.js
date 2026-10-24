@@ -50,16 +50,16 @@ function chooseRecord(id,mode='research',view){
 }
 document.addEventListener('atlas:choose-record',event=>chooseRecord(event.detail.id,event.detail.mode));
 document.addEventListener('atlas:record',event=>{const detail=event.detail;if(area!=='geometry'||(!detail.user&&detail.id!==recordId))return;recordId=detail.id;recordMode='research';recordView=detail.view||'';researchFrame.dataset.record=recordId;researchFrame.dataset.view=recordView;syncURL();announceRecord();});
-const areas=['geometry','molecular','genomics','sound','vision','language','partners'];
+const areas=['geometry','molecular','quantum','genomics','sound','vision','language','partners'];
 const menu=$('#atlas-menu'),menuToggle=$('#atlas-menu-toggle'),atlasNav=$('#atlas-navigation');let menuTimer;
 function closeMenu({focus=false}={}){clearTimeout(menuTimer);menu.hidden=true;menuToggle.setAttribute('aria-expanded','false');$('#atlas-toggle').setAttribute('aria-expanded','false');if(focus)menuToggle.focus();}
 function openMenu({focus=false,lastItem=false}={}){document.dispatchEvent(new Event('atlas:close-records'));clearTimeout(menuTimer);menu.hidden=false;menuToggle.setAttribute('aria-expanded','true');$('#atlas-toggle').setAttribute('aria-expanded','true');if(focus){const items=menu.querySelectorAll('[role=menuitem]');items[lastItem?items.length-1:0].focus();}}
 function showArea(name,{focus=false}={}){
  if(!areas.includes(name))name='home';
  if(area==='home'&&name!=='home'){resumeAnimation=playing;playing=false;}
- area=name;const home=name==='home',geometry=name==='geometry',molecular=name==='molecular';experience.dataset.area=name;
+ area=name;const home=name==='home',geometry=name==='geometry',molecular=name==='molecular',quantum=name==='quantum';experience.dataset.area=name;
  experience.classList.toggle('atlas-open',!home);
- $('#atlas-panel').hidden=!geometry;$('#molecular-panel').hidden=!molecular;$('#record-navigation').hidden=molecular;$('#atlas-sections').hidden=home||geometry||molecular;
+ $('#atlas-panel').hidden=!geometry;$('#molecular-panel').hidden=!molecular;$('#quantum-panel').hidden=!quantum;$('#record-navigation').hidden=molecular||quantum;$('#atlas-sections').hidden=home||geometry||molecular||quantum;
  experience.querySelector('main').hidden=!home;experience.querySelector('footer').hidden=!home;
  for(const id of ['genomics','sound','vision','language','partners'])$('#area-'+id).hidden=id!==name;
  if(geometry){recordMode='research';loadResearch();}

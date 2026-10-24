@@ -6,6 +6,7 @@
     ['about', 'About'],
     ['geometry', 'Geometry Atlas'],
     ['transcription', 'Transcription Atlas'],
+    ['quantum', 'Quantum Lab'],
     ['molecular', 'Molecular Atlas'],
     ['sound', 'Sound Atlas'],
     ['vision', 'Vision Atlas'],
