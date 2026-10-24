@@ -72,7 +72,7 @@ async function research(env,request){
    const rows=await db.query(`SELECT id,modulus,data->>'pisano_period' period,data->'family' family FROM research.atlas WHERE NOT $1 OR data->'family'->>'m9'='true' ORDER BY modulus LIMIT 30 OFFSET $2`,[family,offset]);
    const counts=await db.query(`SELECT count(*)::int total,count(*) FILTER(WHERE data->'family'->>'m9'='true')::int m9_family FROM research.atlas`);
    const payload={...counts[0],family:args.family,offset,records:rows,nextOffset:rows.length===30?offset+30:null};
-   const label=source({id:'atlas-index-'+args.family+'-'+offset,data:{title:'M1–M1001 Atlas index',journal:'Universal Informatics Atlas',urls:['https://staging.universalmind.tv/informatics/pilot-v1/index.json']},kind:'atlas',section:'Index',text:JSON.stringify(payload)});
+   const label=source({id:'atlas-index-'+args.family+'-'+offset,data:{title:'M1–M1001 Atlas index',journal:'Universal Informatics Atlas',urls:[`${env.ALLOWED_ORIGIN}/informatics/pilot-v1/index.json`]},kind:'atlas',section:'Index',text:JSON.stringify(payload)});
    return {citation:label,...payload};
   }
   if(name==='get_atlas_record'){
@@ -98,7 +98,7 @@ async function research(env,request){
    if(JSON.stringify(data).length>12000){
     return {id:r.id,section,availableSections:Object.keys(r.data),fields:Object.entries(data).map(([key,value])=>({path:(section==='summary'?'':section+'.')+(Array.isArray(data)?Number(key)+offset:key),type:Array.isArray(value)?'array':typeof value,length:Array.isArray(value)?value.length:undefined})),note:'This section is large. Request a listed field path. No source text has been truncated.'};
    }
-   const label=source({id:r.id,passage_id:`${r.id}:${section}:${offset}`,data:{title:r.data.name,journal:'Universal Informatics Atlas',urls:[`https://staging.universalmind.tv/informatics/?record=${r.id}&area=geometry`]},section,kind:'atlas',text:JSON.stringify(data),sha256:r.sha256});
+   const label=source({id:r.id,passage_id:`${r.id}:${section}:${offset}`,data:{title:r.data.name,journal:'Universal Informatics Atlas',urls:[`${env.ALLOWED_ORIGIN}/informatics/?record=${r.id}&area=geometry`]},section,kind:'atlas',text:JSON.stringify(data),sha256:r.sha256});
    return {citation:label,id:r.id,section,data,page,availableSections:Object.keys(r.data),scope:'Computed mathematical record. Biological significance is a hypothesis unless separately established by empirical evidence.'};
   }
   if(name==='get_publication'){
@@ -173,7 +173,7 @@ export default {
  async fetch(request,env){
   const origin=request.headers.get('Origin');const url=new URL(request.url);
   const cors={'Access-Control-Allow-Origin':env.ALLOWED_ORIGIN,'Access-Control-Allow-Methods':'POST,GET,OPTIONS','Access-Control-Allow-Headers':'Content-Type,X-Research-QA','Vary':'Origin'};
-  if(origin!==env.ALLOWED_ORIGIN)return json({error:'This research service is available on Informatics staging.'},403);
+  if(origin!==env.ALLOWED_ORIGIN)return json({error:'This research service is available on Universal Informatics.'},403);
   if(request.method==='OPTIONS')return new Response(null,{status:204,headers:cors});
   const qa=!!env.QA_TOKEN&&request.headers.get('X-Research-QA')===env.QA_TOKEN;
   env={...env,QUOTA_SCOPE:qa?'qa':'visitors'};

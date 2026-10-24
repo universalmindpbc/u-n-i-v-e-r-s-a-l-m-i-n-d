@@ -4,6 +4,7 @@ import path from 'node:path';
 import {fileURLToPath} from 'node:url';
 import png from '/Users/benkorbel/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/pngjs/lib/png.js';
 import {chromium} from '/Users/benkorbel/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/playwright/index.mjs';
+const origin=process.env.ATLAS_ORIGIN||'https://staging.universalmind.tv';
 const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..'),live=process.env.ATLAS_LIVE==='1',out=process.env.ATLAS_QA_OUT||'/private/tmp/quantum-teaching-qa';await fs.mkdir(out,{recursive:true});
 const server=await chromium.launchServer({executablePath:'/Users/benkorbel/Library/Caches/ms-playwright/chromium_headless_shell-1234/chrome-headless-shell-mac-arm64/chrome-headless-shell',headless:true,args:['--mute-audio']});assert.ok(server.process().spawnargs.includes('--mute-audio'));const browser=await chromium.connect(server.wsEndpoint()),results=[];
 async function idle(page){await page.waitForFunction(()=>document.body.dataset.ready==='true'&&document.body.dataset.busy==='false',null,{timeout:60000});await page.evaluate(()=>MolecularAtlas.whenIdle());await page.waitForFunction(()=>!MolecularAtlas.engine.plugin.canvas3d.camera.transition.inTransition);await page.waitForTimeout(150);}
@@ -12,7 +13,7 @@ function diff(a,b){let count=0;assert.equal(a.data.length,b.data.length);for(let
 try{for(const viewport of [{width:1470,height:956},{width:1024,height:768},{width:390,height:844},{width:320,height:844}]){
  const ctx=await browser.newContext({viewport,reducedMotion:'reduce',acceptDownloads:true});
  if(!live)await ctx.route('https://staging.universalmind.tv/informatics/**',async r=>{let rel=decodeURIComponent(new URL(r.request().url()).pathname.replace('/informatics/',''));if(rel.endsWith('/'))rel+='index.html';try{await r.fulfill({body:await fs.readFile(root+'/Informatics/'+rel),contentType:{'.html':'text/html','.js':'text/javascript','.css':'text/css','.json':'application/json','.pdb':'text/plain','.cube':'text/plain','.bcif':'application/octet-stream'}[path.extname(rel)]||'application/octet-stream'});}catch{await r.fulfill({status:404,body:'Missing candidate asset'});}});
- const page=await ctx.newPage(),errors=[];page.on('pageerror',e=>errors.push(e.message));await page.goto('https://staging.universalmind.tv/informatics/molecular/?level=quantum');await idle(page);
+ const page=await ctx.newPage(),errors=[];page.on('pageerror',e=>errors.push(e.message));await page.goto(origin+'/informatics/molecular/?level=quantum');await idle(page);
  assert.equal(await page.locator('body').getAttribute('data-quantum-view'),'teaching');assert.equal(await page.locator('#quantum-field').count(),0);assert.match(await page.locator('.teaching-note').innerText(),/do not trace electron trajectories/);assert.match(await page.locator('#pdb-link').getAttribute('href'),/msu.edu/);
  const ring=await page.evaluate(()=>MolecularEngine.teachingRing);assert.equal(ring.length,6);for(let i=0;i<6;i++)assert.ok(Math.abs(Math.hypot(...ring[i].map((v,j)=>v-ring[(i+1)%6][j]))-1.4)<1e-10);
  await page.locator('[data-teaching-step="1"]').click();await idle(page);const bare=await frame(page);

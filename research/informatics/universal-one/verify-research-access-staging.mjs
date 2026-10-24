@@ -1,8 +1,8 @@
 import fs from 'node:fs';
 import assert from 'node:assert/strict';
-import {installQAAuth,readBudget,endpoint} from './qa-auth.mjs';
+import {installQAAuth,readBudget,endpoint,origin} from './qa-auth.mjs';
 const {chromium}=await import('/Users/benkorbel/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/playwright/index.mjs');
-const output='/private/tmp/uo-research-access-qa';fs.mkdirSync(output,{recursive:true});
+const output=process.env.UO_QA_OUT||'/private/tmp/uo-research-access-qa';fs.mkdirSync(output,{recursive:true});
 const report={processAudioDisabled:true,syntheticMicrophoneOnly:true,nativeFullscreenInvoked:false,layouts:[],requests:[],errors:[],budgetBefore:await readBudget()};
 const browser=await chromium.launch({headless:true,args:['--mute-audio','--use-fake-ui-for-media-stream','--use-fake-device-for-media-stream','--autoplay-policy=no-user-gesture-required']});
 const p=await browser.newPage({viewport:{width:1470,height:1000}});
@@ -23,7 +23,7 @@ async function bounds(label){
  assert(result.hit,`${label}: planet receives clicks`);assert.equal(result.count,1);report.layouts.push({label,...result});checkpoint();
 }
 try{
- await p.goto('https://staging.universalmind.tv/informatics/?area=sound',{waitUntil:'domcontentloaded'});await p.waitForFunction(()=>window.UniversalOneResearch);await p.locator('#launch:not([disabled])').waitFor({timeout:60000});
+ await p.goto(origin+'/informatics/?area=sound',{waitUntil:'domcontentloaded'});await p.waitForFunction(()=>window.UniversalOneResearch);await p.locator('#launch:not([disabled])').waitFor({timeout:60000});
  await p.evaluate(()=>document.dispatchEvent(new CustomEvent('atlas:navigate',{detail:'sound'})));await p.locator('#experience').waitFor({state:'visible'});
  await p.locator('[data-library="sound"]').filter({visible:true}).first().click();
  const frame=p.frameLocator('.library-overlay iframe');await frame.locator('#collection-statistics:not([hidden])').waitFor({timeout:60000});await bounds('research-desktop');
@@ -58,7 +58,7 @@ try{
  if(await frame.locator('[data-view="search"]').isVisible())await frame.locator('[data-view="search"]').click();await frame.locator('#results [data-record]').first().click();await frame.locator('#article[open]').waitFor();await bounds('research-paper-open');await summon().click();await bounds('research-paper-with-conversation');report.paperOverlayAccess=true;
  await p.locator('.uo-close').click();await p.locator('.library-overlay-bar button[aria-label="Close Universal Research"]').click();assert.equal(await p.locator('.uo').evaluate(e=>e.parentElement.className),'network-overlay');
  await p.locator('[data-network-close]').click();await p.locator('#about-close').click();
- await p.goto('https://staging.universalmind.tv/informatics/library.html?collection=sound',{waitUntil:'domcontentloaded'});await p.waitForFunction(()=>window.UniversalOneResearch);await summon().click();await bounds('standalone-library');report.standaloneAccessible=true;
+ await p.goto(origin+'/informatics/library.html?collection=sound',{waitUntil:'domcontentloaded'});await p.waitForFunction(()=>window.UniversalOneResearch);await summon().click();await bounds('standalone-library');report.standaloneAccessible=true;
  report.budgetAfter=await readBudget();assert.deepEqual(report.budgetAfter.visitors.counts,report.budgetBefore.visitors.counts);assert(report.requests.every(r=>r.status<400));assert.deepEqual(report.errors,[]);report.success=true;
 } catch(error){report.failure=error.stack;report.failureState=await p.evaluate(()=>({state:window.UniversalOneResearch?.getState(),status:document.querySelector('.uo-status')?.textContent,history:window.UniversalOneConversation})).catch(()=>null);throw error;} finally{
  for(const frame of p.frames())await frame.evaluate(()=>{document.querySelectorAll('video,audio').forEach(m=>m.pause());}).catch(()=>{});

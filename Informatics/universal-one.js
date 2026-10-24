@@ -1,9 +1,10 @@
 'use strict';
 (() => {
- if(location.hostname!=='staging.universalmind.tv'||!window.UniversalOneIdentity)return;
+ const endpoints={'staging.universalmind.tv':'https://informatics-universal-one-staging.universalmind.workers.dev','universalmind.tv':'https://informatics-universal-one.universalmind.workers.dev'};
+ const endpoint=endpoints[location.hostname];
+ if(!endpoint||!window.UniversalOneIdentity)return;
  const host=window.parent!==window&&window.parent.location.origin===location.origin?window.parent:window;
  if(host!==window&&host.UniversalOneResearch){window.UniversalOneResearch=host.UniversalOneResearch;return;}
- const endpoint='https://informatics-universal-one-staging.universalmind.workers.dev';
  const root=document.createElement('section');root.className='uo iam-realtime-voice';root.dataset.mode='text';root.dataset.state='idle';
  root.setAttribute('aria-label','Universal One research assistant');
  root.style.setProperty('--iam-mini-planet-texture',`url("${UniversalOneIdentity.texture(0)}")`);
