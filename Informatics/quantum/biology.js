@@ -33,7 +33,7 @@ function renderTurn(question,data){
  const p=data.plan,article=node('article',undefined,'turn');article.dataset.runId=data.id;article.append(node('p','YOU / '+question,'your-question'),node('span',data.execution.toUpperCase(),'execution'),node('h3',p.title),node('p',p.answer,'answer'));
  if(data.calculation)article.append(calculation(data.calculation,data.id));
  if(data.calculationNote)article.append(node('p',data.calculationNote,'next-question'));
- article.append(node('p',p.method,'plan-method'));
+ if(data.study)article.append(details('How this study is designed',[p.method]));else article.append(node('p',p.method,'plan-method'));
  if(data.study){const link=node('a','View the OXTR study design ↓','study-brief-link');link.href='#study';article.append(link);article.append(node('p','Study design · '+data.study.version+' · matched CUDA-Q and Aquila routes','note'));}
  if(p.needed_data.length&&!data.calculation)article.append(details('Information for the next step',p.needed_data));
  if(p.limitations.length)article.append(details('What this can establish',p.limitations));
