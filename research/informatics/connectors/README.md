@@ -20,7 +20,7 @@ The website entry is **Connect your AI**. Provider buttons open setup guides; th
 
 Ben confirmed Synapse and DeSci accounts are registered. DeSci replaces the earlier Triall proposal. Synapse and DeSci authentication succeeded on 24 October. A private Synapse project and a private DeSci draft are prepared. Private credentials are outside the repository and website.
 
-- Synapse: `publish-synapse.py` verifies hashes, then uploads only with explicit `--upload --project synID` and a personal access token in the local environment. Existing project permissions are retained. The private project is `syn78366147`, with an owner-only ACL. File upload returned HTTP 403 because the account has not completed Synapse certification. The adapter now checks certification before creating a folder. No research files were uploaded. OAuth requires registration and verification by Synapse before use.
+- Synapse: `publish-synapse.py` verifies hashes, then uploads only with explicit `--upload --project synID` and a personal access token in the local environment. Existing project permissions are retained. The private project is `syn78366147`, with an owner-only ACL. Ben completed account certification on 24 October. The three-file connection check then uploaded successfully into `syn78366366`; downloaded bytes, SHA-256 hashes, provenance and owner-only permissions all passed verification. The adapter checks certification before creating a folder. No research content or participant data was uploaded. OAuth requires registration and verification by Synapse before use.
 - DeSci: `draft-desci.mjs` verifies the same export and optionally uploads to an existing private draft. `--list` and a three-file connection-check upload were tested with the registered account. The draft is `pC6RBXus7yEUVvcvbjLHdzp77rN8UAUwEw__O6K9aC0`. DeSci returned HTTP 500 after saving files; the adapter reconciles saved raw-CID files against their local SHA-256 instead of duplicating uploads. Larger files with an unresolved error stop for inspection. The saved check contains no research text or participant data. The adapter never publishes, assigns a licence, signs blockchain transactions or claims an identifier was registered.
 - The package manifest contains SHA-256 file hashes; integrity.json hashes the manifest. A local hash is an integrity check, not a third-party timestamp or scientific assessment.
 - New research results, author attribution, licences and external publication need a specific reviewed package. No third-party full-text articles are silently republished.
@@ -52,7 +52,7 @@ No third-party consumer account installation is represented as tested until its 
 
 ## Later work
 
-Synapse account certification and a live file-upload retest; reviewed research packages for Synapse and DeSci; OAuth consumer onboarding where supported; account-specific A2A quotas and persistent tasks; and the scoped CORAL research coordination prototype. No 24/7 paid research jobs were enabled by this release.
+Reviewed research packages for Synapse and DeSci; OAuth consumer onboarding where supported; account-specific A2A quotas and persistent tasks; and the scoped CORAL research coordination prototype. No 24/7 paid research jobs were enabled by this release.
 
 ## RCT workflow
 
