@@ -9,7 +9,7 @@ const retina=svg('Idealised close packing of cells with equilateral triangle and
 const cellGroup=el('g',{'data-vs-cells':'','fill':'none','stroke':'#82dfb5','stroke-width':'1','stroke-opacity':'.55'},retina);
 grid(cellGroup,44,(x,y)=>{if(Math.hypot(x-220,y-200)<155)circle(cellGroup,x,y,21);});
 const triGroup=el('g',{'data-vs-triangles':'',visibility:'hidden','fill':'none','stroke':'#ec9cc9','stroke-width':'1.3'},retina);
-grid(triGroup,44,(x,y)=>{if(Math.hypot(x-220,y-200)<125)el('path',{d:`M${x} ${y}l44 0 -22 ${44*Math.sqrt(3)/2}Z`},triGroup);});
+grid(triGroup,44,(x,y)=>{if(Math.hypot(x-220,y-200)>=155)return;for(const[dx,dy]of [[44,0],[22,44*Math.sqrt(3)/2],[-22,44*Math.sqrt(3)/2]]){if(Math.hypot(x+dx-220,y+dy-200)<155)el('path',{d:`M${x} ${y}l${dx} ${dy}`},triGroup);}});
 const hexGroup=el('g',{'data-vs-hexagons':'',visibility:'hidden','fill':'none','stroke':'#e7c98f','stroke-width':'1.1'},retina);
 grid(hexGroup,44,(x,y)=>{if(Math.hypot(x-220,y-200)<135)el('polygon',{points:polygon(x,y,44/Math.sqrt(3),30)},hexGroup);});
 const centres=el('g',{fill:'#d9f6e8'},retina);grid(centres,44,(x,y)=>{if(Math.hypot(x-220,y-200)<155)circle(centres,x,y,2);});
