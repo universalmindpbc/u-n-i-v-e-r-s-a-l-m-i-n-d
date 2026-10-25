@@ -23,9 +23,9 @@ try{
   assert.equal(await f.locator('#'+target+'-report').evaluate(n=>document.activeElement===n),true);
  }
  assert.equal(questionRequests,0);await page.screenshot({path:out+'/comparison-desktop.png'});
- await f.locator('[data-recorded-result=simulation]').click();assert.equal(await f.locator('#simulation-report .representation-row').count(),8);await f.locator('#simulation-report select').first().selectOption({index:1});assert.match(await f.locator('#simulation-report').innerText(),/Phi Ratio/);
+ await f.locator('[data-recorded-result=simulation]').click();await f.locator('#simulation-report .representation-row').last().waitFor();assert.equal(await f.locator('#simulation-report .representation-row').count(),8);await f.locator('#simulation-report select').first().selectOption({index:1});assert.match(await f.locator('#simulation-report').innerText(),/Phi Ratio/);
  await page.setViewportSize({width:1470,height:1900});await f.locator('#simulation-report').evaluate(n=>n.scrollIntoView({block:'start'}));await page.screenshot({path:out+'/cudaq-desktop.png'});
- await f.locator('[data-recorded-result=quantum]').click();assert.equal(await f.locator('#quantum-report .representation-row').count(),8);await f.locator('#quantum-report select').first().selectOption({index:1});await page.screenshot({path:out+'/aquila-desktop.png'});
+ await f.locator('[data-recorded-result=quantum]').click();await f.locator('#quantum-report .representation-row').last().waitFor();assert.equal(await f.locator('#quantum-report .representation-row').count(),8);await f.locator('#quantum-report select').first().selectOption({index:1});await page.screenshot({path:out+'/aquila-desktop.png'});
  await page.setViewportSize({width:1470,height:1100});
  await f.locator('.nature-reference').evaluate(n=>n.scrollIntoView({block:'start'}));await page.screenshot({path:out+'/research-context-desktop.png'});
  assert.equal(await f.locator('#open-nature').innerText(),'Read the Nature Study');await f.locator('#open-nature').click();await f.locator('#nature-dialog').waitFor({state:'visible'});await page.keyboard.press('Escape');assert.equal(await f.locator('#nature-dialog').isVisible(),false);assert(await f.locator('#open-nature').evaluate(n=>document.activeElement===n));
