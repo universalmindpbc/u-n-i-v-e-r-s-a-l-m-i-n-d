@@ -462,12 +462,25 @@
   "delivery": {
     "phase": "design_review",
     "return_url": "https://staging.universalmind.tv/informatics/?entry=research&area=quantum#study",
-    "brief": "During the current visit; request timing varies.",
-    "simulation": "Estimate after input count, circuit size and GPU queue are known. Benchmark the proposed 5\u201310 minute target before displaying it as an estimate.",
-    "hardware": "Use current Aquila availability, queue position and batch size. No fixed 24-hour guarantee.",
+    "simulation": "Approximately 5\u201310 minutes from processing start, including the classical calculation and CUDA-Q simulation. Planning estimate; queue and workload can extend it.",
+    "hardware": "Approximately 24 hours or longer from processing start. Planning estimate; device windows, queue and workload can extend it.",
     "report": "Publish simulation findings first, then the combined report after hardware completion and evaluation. Clearly identify each version.",
     "notification": "Optional email with verified consent at study launch; send a private return link without biological data in the message. Email delivery is not active in this design review.",
-    "persistence": "Design-review delivery preference and explicitly retained brief are stored on this device only. Execution requires a durable study record independent of browser lifetime.",
-    "source": "https://docs.aws.amazon.com/braket/latest/developerguide/braket-task-when.html"
+    "persistence": "The review interface saves an optional study record and delivery preference on this device. Execution requires a durable study record independent of browser lifetime.",
+    "source": "https://docs.aws.amazon.com/braket/latest/developerguide/braket-task-when.html",
+    "classical": "Approximately 5\u201310 minutes from processing start, including the classical calculation and CUDA-Q simulation. Planning estimate; queue and workload can extend it."
+  },
+  "roadmap": {
+    "stage": 5,
+    "title": "Drug Discovery Network & Open Source Genomic Insights",
+    "status": "future_feature",
+    "flow": [
+      "Recorded classical and quantum results",
+      "Preliminary AI insights",
+      "Human review and sharing approval",
+      "External research collaboration",
+      "Open Source Genomic Insights"
+    ],
+    "sharing": "No active external submission or publishing connection. Future automation retains human oversight."
   }
 }

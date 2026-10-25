@@ -4,7 +4,7 @@ import {needsResearch} from '../Informatics/universal-one-routing.js';
 import routingCatalogue from './informatics-research-topics.json';
 import {budget,budgetStatus,BudgetError} from './informatics-research-budget.js';
 import {connectors,isConnectorPath} from './informatics-connectors.js';
-import {quantumPlan} from './informatics-quantum.js';
+import {quantumQuestion} from './informatics-quantum.js';
 import {quantumAllowance} from './informatics-quantum-budget.js';
 export {ResearchBudget} from './informatics-research-budget.js';
 
@@ -196,7 +196,7 @@ export default {
     const bytes=await request.arrayBuffer();if(bytes.byteLength>cap)throw new ServiceError('This request is too large.',413);
     const bounded=new Request(request.url,{method:'POST',headers:request.headers,body:bytes});
     if(url.pathname==='/research')response=await research(env,bounded);
-    else if(url.pathname==='/quantum/plan'&&env.QUANTUM_PLANNING_ENABLED==='true')response=await quantumPlan(env,bounded,openai);
+    else if(['/quantum/question','/quantum/plan'].includes(url.pathname)&&env.QUANTUM_PLANNING_ENABLED==='true')response=await quantumQuestion(env,bounded,openai);
     else if(url.pathname==='/transcribe'){
      const form=await bounded.formData(),file=form.get('file');
      if(!(file instanceof File)||!file.size)throw new ServiceError('Record a question first.',400);

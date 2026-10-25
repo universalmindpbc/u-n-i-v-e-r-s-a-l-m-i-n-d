@@ -28,8 +28,18 @@
     "result": {
       "state": "planned",
       "label": "After evaluation"
+    },
+    "classical": {
+      "state": "planned",
+      "label": "Not started"
     }
   },
   "jobs": [],
-  "result": null
+  "result": null,
+  "reports": {
+    "classical": null,
+    "simulation": null,
+    "quantum": null,
+    "comparison": null
+  }
 }

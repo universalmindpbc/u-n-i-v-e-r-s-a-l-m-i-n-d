@@ -111,14 +111,18 @@ Methods and verification expand to source accessions, frozen JSON, Wolfram check
 3. Register sample size, shots, outcome metrics and total compute quote.
 4. Execute the matched CUDA-Q and Aquila study in the agreed joint session.
 
-## Report timing and return experience
+## Scientist journey and report delivery
 
 A study runs independently of the browser after submission. Its durable record owns the specification, inputs, job IDs, queue observations, stage states, report versions and delivery preference. Revisiting or refreshing never resubmits a task. A private access link authenticates access to individual study data; public demonstration records use the shared study page.
 
-Deliver the study brief during the initial visit. Publish a clearly labelled simulation report after classical comparison and CUDA-Q processing; publish the combined report after Aquila results and evaluation. Never present the simulation report as hardware-validated. A hardware failure leaves the earlier report accessible and offers an explicit retry with a new cost check.
+The scientist asks a question, explores geometry in Study, receives Classical results, then receives Quantum results. Routing, model preparation and evaluation remain internal. No research-plan conversation or preparation checklist is presented as the response. Publish a clearly labelled simulation report after classical comparison and CUDA-Q processing; publish the combined report after Aquila results and evaluation. Never present the simulation report as hardware-validated. A hardware failure leaves the earlier report accessible and offers an explicit retry with a new cost check.
 
-The proposed 5–10 minute simulation target requires a measured benchmark for the selected input count and backend. Aquila delivery depends on device windows, queue position, task count and operational status; 24 hours is not a guaranteed turnaround. Display a timestamped range only when supported by live observations, otherwise display the actual stage and next availability. Queue position is not a clock estimate.
+Display the requested planning estimates directly: Classical results approximately 5–10 minutes; Quantum results approximately 24 hours or longer, measured from processing start. Mark them as estimates. Actual workload, device windows and queues can extend the wait. Record elapsed timings from the first study run to calibrate later estimates. Queue position is not a clock estimate.
 
-Optional email is confirmed at execution launch using a verified address and consent specific to study updates. Send a link, with no genomic data in the email. Record accepted, delivered and failed notification states, support opt-out, and prevent duplicate sends. No email is sent during design review. The review interface saves an optional delivery preference and an explicitly retained brief on this device only.
+Optional email is confirmed at execution launch using a verified address and consent specific to study updates. Send a link, with no genomic data in the email. Record accepted, delivered and failed notification states, support opt-out, and prevent duplicate sends. No email is sent during design review. The review interface saves an optional delivery preference and an explicitly retained study record on this device only.
 
 Timing source: [Amazon Braket task queue and availability guidance](https://docs.aws.amazon.com/braket/latest/developerguide/braket-task-when.html).
+
+## Stage 5 roadmap
+
+Drug Discovery Network & Open Source Genomic Insights is a future feature. Recorded results and preliminary LLM insights pass through human review of evidence, permissions and sharing scope before collaboration with external platforms. The long-term aim is automated collaboration with human oversight and reviewed, shareable research outputs. No external submission, partnership or automated publication is represented as active.
