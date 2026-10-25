@@ -86,7 +86,7 @@ function renderScale(t){
 }
 function renderChromatic(t){
  const svg=$('#sound-diagram');reset(svg,'The chromatic octave: twelve pitch classes and thirteen keys','Twelve equal-tempered pitch classes run clockwise from C. The keyboard spans C to C: five black keys in groups of two and three, and eight white keys including the repeated upper C. These counts form a Fibonacci counting pattern, not a derivation of chromatic tuning.');
- const narrow=svg.parentElement.clientWidth<620;svg.dataset.chromaticLayout=narrow?'stacked':'wide';svg.setAttribute('viewBox',narrow?'0 0 360 750':'0 0 720 510');
+ const narrow=svg.parentElement.clientWidth<620;svg.dataset.chromaticLayout=narrow?'stacked':'wide';svg.setAttribute('viewBox',narrow?'0 0 360 790':'0 0 720 510');
  const cx=narrow?180:176,cy=narrow?197:215,r=narrow?126:128,sweep=clamp(t/.76),active=Math.min(12,Math.floor(sweep*12));
  const countProgress=clamp((t-.76)/.24),countOpacity=.2+.8*countProgress;
  label(svg,'12 pitch classes · 13 keys from C to C',narrow?180:360,24,{'font-size':narrow?14:17,fill:C.white});
@@ -111,7 +111,7 @@ function renderChromatic(t){
  chromaticBlack.forEach((pitch,i)=>{
   const gap=[1,2,4,5,6][i],amount=clamp(sweep*12-pitch+1),lit=active===pitch,keyX=x+gap*w-w*.28;
   node('rect',{x:keyX,y:top,width:w*.56,height:73,fill:lit?'#362032':'#03070a',stroke:C.gamma,'stroke-width':1,opacity:.35+.65*amount,'data-chromatic-key':pitch,'data-note':chromaticNames[pitch],'data-key-color':'black','data-active':String(lit)},svg);
-  label(svg,chromaticNames[pitch],x+gap*w,top+44,{'font-size':12,fill:C.gamma,opacity:.4+.6*amount});
+  label(svg,chromaticNames[pitch],x+gap*w,top+44,{'font-size':14,fill:C.gamma,opacity:.4+.6*amount});
  });
  const bracket=(left,right,y,color,below=false,attrs={})=>{const depth=below?-8:8,path=line(svg,[[left,y+depth],[left,y],[right,y],[right,y+depth]],color,{'stroke-width':1.2,opacity:countOpacity,...attrs});draw(path,countProgress);};
  [[1,2,2],[4,6,3]].forEach(([first,last,count])=>{
@@ -123,8 +123,8 @@ function renderChromatic(t){
  const upperX=x+7.5*w-1;line(svg,[[upperX,top+height],[upperX,top+height+59],[keyboardCentre+55,top+height+59]],C.hex,{'stroke-width':.8,opacity:countOpacity});
  label(svg,'Upper C repeats the tonic',keyboardCentre,top+height+76,{'font-size':11,fill:C.hex,opacity:countOpacity});
  const equationY=narrow?717:438;
- label(svg,'2 + 3 = 5',narrow?89:466,equationY,{'font-size':narrow?21:24,fill:C.gamma,opacity:countOpacity,'data-chromatic-equation':'black'});
- label(svg,'5 + 8 = 13',narrow?268:620,equationY,{'font-size':narrow?21:24,fill:C.hex,opacity:countOpacity,'data-chromatic-equation':'span'});
+ label(svg,'2 + 3 = 5',narrow?180:466,equationY,{'font-size':narrow?21:24,fill:C.gamma,opacity:countOpacity,'data-chromatic-equation':'black'});
+ label(svg,'5 + 8 = 13',narrow?180:620,equationY+(narrow?34:0),{'font-size':narrow?21:24,fill:C.hex,opacity:countOpacity,'data-chromatic-equation':'span'});
  if(!narrow)line(svg,[[348,75],[348,461]],C.guide,{'stroke-width':.6,opacity:.6});
  if(!narrow)label(svg,'13 includes the repeated C · 12 distinct pitch classes',360,488,{'font-size':12,fill:C.muted,opacity:countOpacity});
 }
