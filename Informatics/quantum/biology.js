@@ -39,10 +39,11 @@ function refreshReports(){const context=reportContext(active,recordedState,busy)
  document.querySelectorAll('.result-question').forEach(n=>n.textContent=shared?'Study 01 question: '+studyQuestion:active?'Your question: '+active.question:'');
  const saved=reportContext(null,recordedState);$('#completed-study').hidden=!(verifiedReport(saved.reports.simulation,saved.study,'simulation')&&verifiedReport(saved.reports.quantum,saved.study,'quantum'));
  document.querySelectorAll('[data-recorded-result]').forEach(b=>b.disabled=busy);
+ if(active?.agent){$('#classical-step-status').textContent=active.agent.status==='complete'?'Insights ready':'Astra analysis';$('#classical-step-timing').textContent=active.agent.status==='complete'?'Open your findings':'Progress saved automatically';$('#quantum-step-status').textContent='Saved measurements';$('#quantum-step-timing').textContent='No new Aquila run today';}
 }
 const resultsDialog=$('#results-dialog'),resultsContent=$('#results-dialog-content');let resultTrigger=null,resultScroll=0,priorOverflow='';
 function openResults(kind,shared=false,trigger=document.activeElement){
- if(!shared&&active?.agent&&kind==='classical'){openAgentResults(active.agent);return;}
+ if(!shared&&active?.agent){if(kind==='classical'){openAgentResults(active.agent);return;}if(kind==='quantum')shared=true;}
  const context=reportContext(shared?null:active,recordedState,busy),{study,reports}=context;
  const c=verifiedReport(reports.classical,study,'classical'),s=verifiedReport(reports.simulation,study,'simulation'),q=verifiedReport(reports.quantum,study,'quantum');
  const first=!resultsDialog.open;if(first){resultTrigger=trigger;resultScroll=window.scrollY;priorOverflow=document.documentElement.style.overflow;}
