@@ -4,7 +4,7 @@ from datetime import datetime,timezone
 
 def handler(event,context):
  secret=json.loads(boto3.client('secretsmanager').get_secret_value(SecretId=os.environ['ASTRA_SECRET_ARN'])['SecretString'])
- request=urllib.request.Request('https://informatics-universal-one-staging.universalmind.workers.dev/agent/control',data=b'{"op":"pending"}',headers={'Content-Type':'application/json','Origin':'https://staging.universalmind.tv','Authorization':'Bearer '+secret['worker']})
+ request=urllib.request.Request('https://informatics-universal-one-staging.universalmind.workers.dev/agent/control',data=b'{"op":"pending"}',headers={'Content-Type':'application/json','Origin':'https://staging.universalmind.tv','Authorization':'Bearer '+secret['worker'],'User-Agent':'Universal-Informatics-Astra/1.0'})
  with urllib.request.urlopen(request,timeout=10) as response:pending=json.load(response)
  if not pending.get('pending'):return {'status':'idle'}
  s3=boto3.client('s3');bucket=os.environ['ASTRA_STATE_BUCKET'];key='allowance/'+datetime.now(timezone.utc).strftime('%Y-%m')+'.json'
