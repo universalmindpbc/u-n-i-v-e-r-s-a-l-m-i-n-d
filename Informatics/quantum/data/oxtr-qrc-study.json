@@ -2,12 +2,12 @@
   "schema": "universal-informatics/oxtr-qrc-study/v1",
   "id": "oxtr-qrc-01",
   "version": "1.0.0",
-  "status": "measurement_qualification",
+  "status": "measurement_qualification_complete",
   "question": "Do quantum responses generated from Fibonacci and M9 P24 representations improve our ability to predict transcription factor occupancy around OXTR?",
   "gene": "OXTR",
   "method": "Quantum reservoir computing",
   "created_on": "2026-10-25",
-  "scope": "The first measurement phase has completed CPU and GPU checks and has submitted 16 Aquila programs. Held-out occupancy prediction remains to be evaluated.",
+  "scope": "The first measurement phase has completed CPU and GPU checks and all 16 Aquila programs. Held-out occupancy prediction remains to be evaluated.",
   "atlas": {
     "id": "fibonacci-m9-p24",
     "sha256": "55da8b5e3406368cece4476720ca9d9208627e30a827fca30533d3235d74d8ff",
@@ -409,7 +409,7 @@
     "uncertainty": "Bootstrap independent genomic blocks, keep repeat shots within their sample, report intervals. A locus with too few labels receives a ranking with uncertainty, not a predictive-performance claim."
   },
   "execution": {
-    "current_stage": "hardware",
+    "current_stage": "qualification_complete",
     "submission_enabled": false,
     "simulation_backend": "NVIDIA CUDA-Q",
     "simulation_route": "Compile a checked time-evolution circuit, validate locally, then use the existing qBraid GPU route for supported compiled programs. Native CUDA-Q dynamics is an alternative only after runtime capability checks.",
@@ -536,62 +536,62 @@
       {
         "provider": "Amazon Braket / QuEra",
         "id": "21a80a56-064a-4940-8ed9-9d77122436c7",
-        "state": "RUNNING"
+        "state": "COMPLETED"
       },
       {
         "provider": "Amazon Braket / QuEra",
         "id": "056c9488-bd07-469c-93e2-edf24e8fff9c",
-        "state": "QUEUED"
+        "state": "COMPLETED"
       },
       {
         "provider": "Amazon Braket / QuEra",
         "id": "46eac414-f077-4214-81ef-e21635955bb9",
-        "state": "QUEUED"
+        "state": "COMPLETED"
       },
       {
         "provider": "Amazon Braket / QuEra",
         "id": "f4bc57c5-2ab1-463e-8e3b-88c7c61e4eb0",
-        "state": "QUEUED"
+        "state": "COMPLETED"
       },
       {
         "provider": "Amazon Braket / QuEra",
         "id": "393fd233-18b4-47f4-ba5e-af2d142e8512",
-        "state": "QUEUED"
+        "state": "COMPLETED"
       },
       {
         "provider": "Amazon Braket / QuEra",
         "id": "aff105ae-441b-49d7-a5b0-9797edc60b05",
-        "state": "QUEUED"
+        "state": "COMPLETED"
       },
       {
         "provider": "Amazon Braket / QuEra",
         "id": "17ffbfd0-8304-4b30-a749-8d0c91eab2d9",
-        "state": "QUEUED"
+        "state": "COMPLETED"
       },
       {
         "provider": "Amazon Braket / QuEra",
         "id": "941daa0a-4939-411e-a7f1-88fcb16baaca",
-        "state": "QUEUED"
+        "state": "COMPLETED"
       },
       {
         "provider": "Amazon Braket / QuEra",
         "id": "ea4bb9a4-c91a-492a-80a7-c59fd051a807",
-        "state": "QUEUED"
+        "state": "COMPLETED"
       },
       {
         "provider": "Amazon Braket / QuEra",
         "id": "f30cda70-0079-41e9-aa40-72e24b51f15d",
-        "state": "QUEUED"
+        "state": "COMPLETED"
       },
       {
         "provider": "Amazon Braket / QuEra",
         "id": "1cbb29aa-c1b8-49bb-af31-dd18a7cbd480",
-        "state": "QUEUED"
+        "state": "COMPLETED"
       },
       {
         "provider": "Amazon Braket / QuEra",
         "id": "8408039a-06e1-4782-910f-44a9313c8e12",
-        "state": "QUEUED"
+        "state": "COMPLETED"
       }
     ],
     "results": null
@@ -614,9 +614,9 @@
     "rule": "Show cache provenance and run date. A replay of saved results never creates a new hardware receipt. A changed input or model invalidates its dependent result."
   },
   "review": {
-    "status": "Measurement phase activated",
-    "next": "Retrieve Aquila measurements and compare them with the matched simulations before the held-out prediction benchmark.",
-    "methods_url": "data/oxtr-qrc-protocol.md"
+    "status": "First measurement phase complete",
+    "next": "Evaluate the prespecified prediction benchmark against held-out biological observations.",
+    "methods_url": "data/oxtr-qrc-qualification.md"
   },
   "sources": [
     "https://github.com/QuEraComputing/QRC-tutorials",
@@ -651,7 +651,7 @@
   },
   "qualification": {
     "version": "1.1.0-qualification",
-    "status": "hardware_submitted",
+    "status": "complete",
     "report": "oxtr-qrc-qualification.json",
     "methods": "oxtr-qrc-qualification.md",
     "windows": 2,

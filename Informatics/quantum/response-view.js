@@ -17,12 +17,27 @@ export async function renderResponse(slot,report){
   for(const [i,w]of [...new Set(records.map(r=>r.window))].entries()){const o=el('option','Window '+(i+1)+' · '+w.replace('chr3-','chr3:'));o.value=w;windowSelect.append(o);}
   for(const [id,name]of Object.entries(labels)){const o=el('option',name);o.value=id;variantSelect.append(o);}
   const saved=choices.get(slot.id);if(saved){windowSelect.value=saved.window;variantSelect.value=saved.variant;}
-  windowLabel.append(windowSelect);variantLabel.append(variantSelect);controls.append(windowLabel,variantLabel);
+  windowLabel.append(windowSelect);variantLabel.append(variantSelect);controls.append(windowLabel);
+  const comparison=el('div');comparison.className='representation-comparison';
+  const technical=el('details'),summary=el('summary','Inspect individual atom measurements');technical.className='atom-detail';technical.append(summary,variantLabel);
   const visual=el('div');visual.className='response-visual';const svg=svgNode('svg',{viewBox:'0 0 380 310',role:'img'}),table=el('table');
-  visual.append(svg,table);box.append(controls,visual,el('p','Six-atom response · circles show excitation frequency. Intervals describe sampling uncertainty; these are not protein-binding probabilities.'));
+  visual.append(svg,table);technical.append(visual,el('p','Circles show excitation frequency. The 95% intervals describe sampling uncertainty, not all hardware errors. These are not protein-binding probabilities.'));
+  box.append(el('h4','How each representation changes the response'),el('p','Compared with ordinary input for the same DNA window. Positive and negative values describe changes in average atom excitation; neither direction means better prediction.'),controls,comparison,technical);
+  const average=r=>r.reduce((a,b)=>a+b,0)/r.length,pp=v=>(v>=0?'+':'')+v.toFixed(1)+' pp';
   function draw(){
    const r=records.find(x=>x.window===windowSelect.value&&x.variant===variantSelect.value);if(!r)return;
    choices.set(slot.id,{window:r.window,variant:r.variant});svg.replaceChildren();table.replaceChildren();
+   comparison.replaceChildren();const rows=records.filter(x=>x.window===r.window),base=rows.find(x=>x.variant==='ordinary');
+   const legend=el('p',`Mint: ${quantum?'Aquila measurements':'GPU samples'} · Blue: ideal reference · pp = percentage points`);legend.className='comparison-legend';comparison.append(legend);
+   for(const item of rows){
+    const measured=100*(average(item[field].slice(0,6))-average(base[field].slice(0,6))),reference=100*(average(item.ideal_observables.slice(0,6))-average(base.ideal_observables.slice(0,6)));
+    const row=el('div');row.className='representation-row';row.dataset.variant=item.variant;const label=el('div');label.append(el('strong',labels[item.variant]),el('small',`${quantum?'Aquila':'GPU'} ${pp(measured)} · Reference ${pp(reference)}`));
+    const bar=svgNode('svg',{viewBox:'0 0 500 38',role:'img','aria-label':`${labels[item.variant]}: ${quantum?'Aquila':'GPU'} change ${pp(measured)}; ideal reference ${pp(reference)}.`});
+    const x=v=>250+v*15;
+    bar.append(svgNode('line',{x1:25,x2:475,y1:19,y2:19,stroke:'#334c56'}),svgNode('line',{x1:250,x2:250,y1:0,y2:38,stroke:'#7a919a'}),svgNode('line',{x1:250,x2:x(reference),y1:11,y2:11,stroke:'#a7c8e9','stroke-width':4}),svgNode('line',{x1:250,x2:x(measured),y1:27,y2:27,stroke:'#a3ead1','stroke-width':6}),svgNode('circle',{cx:x(reference),cy:11,r:3,fill:'#a7c8e9'}),svgNode('circle',{cx:x(measured),cy:27,r:4,fill:'#a3ead1'}));
+    row.append(label,bar);comparison.append(row);
+   }
+   comparison.append(el('p','Descriptive comparisons from two DNA windows. Small differences may reflect sampling noise; the hardware tasks were run once in a fixed order.'));
    const n=quantum?r.hardware_valid_shots:r.shots;svg.setAttribute('aria-label',`${labels[r.variant]}: six ${quantum?'Aquila measured':'GPU simulated'} excitation probabilities; values in the adjacent table.`);
    svg.append(svgNode('polygon',{points:Array.from({length:6},(_,i)=>{const t=i*Math.PI/3;return`${190+96*Math.sin(t)},${155-96*Math.cos(t)}`;}).join(' '),fill:'none',stroke:'#415b65','stroke-width':1}));
    const caption=el('caption',`${quantum?'Aquila measurements':'GPU samples'} · ${n} valid shots`),head=el('tr');for(const text of ['Atom','Reference',quantum?'Aquila':'GPU','95% interval'])head.append(el('th',text));const thead=el('thead');thead.append(head);const tbody=el('tbody');table.append(caption,thead,tbody);

@@ -49,3 +49,11 @@ No occupancy labels entered the qualification features. Chromosome/block-separat
 ## Records
 
 [Measured and simulated response record](oxtr-qrc-qualification.json) · [Study status](oxtr-qrc-state.json) · [Full prediction protocol](oxtr-qrc-protocol.md).
+
+## Returned measurements and interpretation
+
+All sixteen Aquila tasks completed on 25 October 2026. They returned 1,600 measurements; 1,541 began with all six atoms present, 59 had at least one missing atom, and none were reported as failed. Conditional responses use the 1,541 fully occupied measurements. Mean absolute difference from the ideal reference across all 336 observable values is 0.02675079. This descriptive aggregate is not a predictive-performance measure or a pass/fail threshold.
+
+The results interface compares average excitation across six atoms with the ordinary representation for the same DNA window. Positive values mean a larger atom response, not stronger biological binding or better prediction. Alpha and Beta have negative observed differences in both windows, matching the ideal direction. Gamma and Epsilon have positive ideal differences in both windows but negative measured differences in the second. The shuffled control produces the largest measured response in the second window. These are exploratory observations from one task per case, in a fixed execution order; they do not isolate drift or establish reproducibility or statistical significance.
+
+The current batch holds the hexagonal atom layout fixed. It neither compares alternative geometries nor measures coherence lifetime. The later geometric-stability hypothesis is documented as a proposed mechanism, not a finding of this batch.
