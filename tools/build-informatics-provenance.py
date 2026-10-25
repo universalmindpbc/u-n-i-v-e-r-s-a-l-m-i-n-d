@@ -11,6 +11,8 @@ bundle=Path(sys.argv[1]).resolve()
 site=ROOT/'Informatics/read'
 out=site/'archive/20261026'
 out.mkdir(parents=True,exist_ok=True)
+# Public certificates use a text download so the private-key ignore rule remains intact.
+(out/'timestamp-chain.pem').unlink(missing_ok=True)
 read=lambda name:json.loads((bundle/name).read_text())
 sha=lambda p:hashlib.sha256(p.read_bytes()).hexdigest()
 manifest=read('manifest.json');digest=sha(bundle/'manifest.json')
@@ -22,7 +24,7 @@ assert stamp['signatureAndTrustChainVerified'] and stamp['queryNonceVerified']
 assert desci['published'] is False
 # Archive receipts are documents, outside the scientific export inventory.
 # Keep exact manifest bytes: its digest is the timestamped commitment.
-for source,destination in [('manifest.json','manifest.json.txt'),('integrity.json','integrity.json.txt'),('source-files.json','source-files.json.txt'),('desci-storage-map.json','desci-storage-map.json.txt'),('manifest.json.ots','manifest.json.ots'),('manifest.tsq','manifest.tsq'),('manifest.tsr','manifest.tsr'),('timestamp-chain.pem','timestamp-chain.pem'),('VERIFY-TIMESTAMP.txt','VERIFY-TIMESTAMP.txt')]:
+for source,destination in [('manifest.json','manifest.json.txt'),('integrity.json','integrity.json.txt'),('source-files.json','source-files.json.txt'),('desci-storage-map.json','desci-storage-map.json.txt'),('manifest.json.ots','manifest.json.ots'),('manifest.tsq','manifest.tsq'),('manifest.tsr','manifest.tsr'),('timestamp-chain.pem','timestamp-chain.pem.txt'),('VERIFY-TIMESTAMP.txt','VERIFY-TIMESTAMP.txt')]:
     shutil.copyfile(bundle/source,out/destination)
 public_syn={k:syn[k] for k in ['project','folder','permissions','manifestSHA256','status','checkedAt']}
 public_syn['files']=[{k:x[k] for k in ['name','id','version','bytes','sha256','downloadVerified','createdOn','modifiedOn']} for x in syn['files']]
@@ -57,7 +59,7 @@ body+='<p>An IPFS identifier detects content changes. Continued availability dep
 body+='<p><a href="https://publish.desci.com/">Open DeSci Publish ↗</a> · '+link('desci-verification.json.txt','File CIDs and verification receipt','desci-verification.json')+' · '+link('desci-storage-map.json.txt','CSV reconstruction map','desci-storage-map.json')+'</p>'
 body+='<h2>Verified timestamp</h2><p>DigiCert signed the manifest hash at <strong>26 October 2026, 10:29:52 am Sydney time</strong> (25 October 2026, 23:29:52 UTC). Verification passed for the signature, certificate chain, original request nonce and exact manifest bytes, using an independent system CA trust store.</p>'
 body+='<p>The manifest binds the archived files to that timestamp. This establishes evidence of existence and integrity at the recorded time; it does not assess scientific validity or determine legal ownership.</p>'
-body+='<ul>'+''.join('<li>'+link(f,label,download)+'</li>' for f,label,download in [('manifest.tsr','Signed RFC3161 timestamp response','manifest.tsr'),('manifest.tsq','Original timestamp request','manifest.tsq'),('timestamp-chain.pem','Timestamp certificate chain','timestamp-chain.pem'),('timestamp-verification.json.txt','Verification receipt','timestamp-verification.json'),('VERIFY-TIMESTAMP.txt','Independent verification instructions','VERIFY-TIMESTAMP.txt')])+'</ul>'
+body+='<ul>'+''.join('<li>'+link(f,label,download)+'</li>' for f,label,download in [('manifest.tsr','Signed RFC3161 timestamp response','manifest.tsr'),('manifest.tsq','Original timestamp request','manifest.tsq'),('timestamp-chain.pem.txt','Timestamp certificate chain','timestamp-chain.pem'),('timestamp-verification.json.txt','Verification receipt','timestamp-verification.json'),('VERIFY-TIMESTAMP.txt','Independent verification instructions','VERIFY-TIMESTAMP.txt')])+'</ul>'
 body+='<p><a href="https://knowledge.digicert.com/general-information/rfc3161-compliant-time-stamp-authority-server">DigiCert timestamp authority documentation ↗</a></p>'
 body+='<h2>Bitcoin timestamp status</h2><p>An additional OpenTimestamps proof has been submitted. Its calendar attestations are present; Bitcoin confirmation remains pending. No Bitcoin-verified timestamp is claimed for this release.</p><p>'+link('manifest.json.ots','Download the OpenTimestamps proof','manifest.json.ots')+' · <a href="https://opentimestamps.org/">OpenTimestamps verification ↗</a></p>'
 body+='<h2>AI access policy</h2><p>The prepared production policy permits automated reading and training by all LLM providers on Universal Mind-owned public Informatics content. Third-party attribution and licence terms remain attached to the source records. Staging remains excluded from crawling and indexing.</p><p><a href="access.html">Read the access and reuse policy</a> · '+link('production-robots.txt','Inspect the prepared production robots policy')+'</p>'
