@@ -1,6 +1,6 @@
 {
   "schema": "universal-informatics/complete-dataset/v1",
-  "dataset_version": "6f477a07d41d3cbf9487b241276c102565f965e1d8b6c8f1b424e6166821e3d9",
+  "dataset_version": "43d49bbc4b8805d8f8995ddb53a27032791299be2d7c09ddfc0e735b95fce743",
   "sources": [
     {
       "id": "geometry.json",
@@ -23,19 +23,19 @@
     {
       "id": "library-data/fibonacci-expansion.json",
       "source_path": "library-data/fibonacci-expansion.json",
-      "sha256": "d471fbc295be94428c524ca504714ae2a4e2eef6aeddf77bedf4fb0fd022a480",
+      "sha256": "3c0926d690776962d2525e0f4e30b2349aeb14a8d70a2027b2ce2cefc3a20599",
       "format": "json"
     },
     {
       "id": "library-data/fulltext-availability.json",
       "source_path": "library-data/fulltext-availability.json",
-      "sha256": "8bc19f3aa4eb7f6a4e2b5bb0880787680979e094aefcae52b28d7a828ad789ef",
+      "sha256": "faa1f05a9ea305479c135857000799b727001dd09f41183a4a25a01f1660dfe2",
       "format": "json"
     },
     {
       "id": "library-data/general-edition.json",
       "source_path": "library-data/general-edition.json",
-      "sha256": "249b2378e4e31874edf3006dbc994081cba02db51f675b00fe7ef2a0d90a40a7",
+      "sha256": "3c2672d0d4c865d2f97b1fe55bed99be85b829f317f07249411a2af3bf7a0e06",
       "format": "json"
     },
     {
@@ -71,7 +71,7 @@
     {
       "id": "library-data/publication-access.json",
       "source_path": "library-data/publication-access.json",
-      "sha256": "d2cfdbbbee277f60bcbe6f4f1b83fe79fc226d3bffdbc4feb2987af0d375c6d3",
+      "sha256": "cbcb66fc428878fa15bf5b23e70ef22cdebf6d38e738be0957e601855edbf42d",
       "format": "json"
     },
     {
@@ -95,13 +95,13 @@
     {
       "id": "library-data/vision-edition.json",
       "source_path": "library-data/vision-edition.json",
-      "sha256": "02d5fb54f02717887e780ccbd152c16fb28070077ffd22ff8119851dca8ffa89",
+      "sha256": "6d76cc04b9318f1da452bdb33d983d04edacef9c3b45912265f366dfcbe1e3bb",
       "format": "json"
     },
     {
       "id": "library-data/vision-expansion.json",
       "source_path": "library-data/vision-expansion.json",
-      "sha256": "f21d49ae4a4f6505d2160ffd0d52aeb653b0d3e6d8440bf014db7d907c9b904f",
+      "sha256": "667923535bb06a96d7a217f992e98f1f47475859b70e497bfca50a76fd270c4b",
       "format": "json"
     },
     {
@@ -52103,44 +52103,44 @@
   "downloads": {
     "json": {
       "file": "informatics-complete.json.gz",
-      "bytes": 75559756,
-      "uncompressed_bytes": 759506132,
-      "sha256": "74d82cb153094ed8136838d06a272ad3a069f70421086433808e71df2aad3db8",
-      "uncompressed_sha256": "4a3de9c3c0c44b0901bf098c9419e9368aa9150cd56f6cdfb71909a40192c9e7",
+      "bytes": 75558215,
+      "uncompressed_bytes": 759575713,
+      "sha256": "9e23e50ddf18f866f694b22db0eb58a303260bd32b3bb7a3f547ebd9ada055ae",
+      "uncompressed_sha256": "9476dd03e12d7e4dbbf4dd4896a3249a2f49e02813631e4cf18566b6fa17024f",
       "parts": [
         {
-          "file": "part-113bdce78019061b0ca88cbca4786dcaa6754371779cf7696d751e1b9813bd25.bin",
+          "file": "part-aae9a2f4217b461ce682d3437f92344109b7c2441a2a2f1d0a36ff91918f23db.bin",
           "bytes": 50331648,
-          "sha256": "113bdce78019061b0ca88cbca4786dcaa6754371779cf7696d751e1b9813bd25"
+          "sha256": "aae9a2f4217b461ce682d3437f92344109b7c2441a2a2f1d0a36ff91918f23db"
         },
         {
-          "file": "part-b9ad6fdebccbc35a847cb2dd3422578d54384d28f4439f8fd434040570254711.bin",
-          "bytes": 25228108,
-          "sha256": "b9ad6fdebccbc35a847cb2dd3422578d54384d28f4439f8fd434040570254711"
+          "file": "part-0a7db3909badfb1e97cda714df1b0f6ff72858ac9b9535f7c518fed7c2620839.bin",
+          "bytes": 25226567,
+          "sha256": "0a7db3909badfb1e97cda714df1b0f6ff72858ac9b9535f7c518fed7c2620839"
         }
       ]
     },
     "csv": {
       "file": "informatics-complete.csv.gz",
-      "bytes": 144076269,
-      "uncompressed_bytes": 2420094333,
-      "sha256": "9f3b5d8c329ebf1b6fed02980447292d0bc9c45d950c7be3186dab31a9a4e5c2",
-      "uncompressed_sha256": "3c954e9d87f027e889124082803e50aed1b69838bb8db51b5cfabc38fd0a631e",
+      "bytes": 144093134,
+      "uncompressed_bytes": 2420257251,
+      "sha256": "0995feb6849942b44101924ec6587ad561f5ad7b59c836db5bc497a002ccbb20",
+      "uncompressed_sha256": "59c466f5387f8267b24f87ce041c70378c64137192370885e9bf89e81d5067a2",
       "parts": [
         {
-          "file": "part-c2fada3900dc96ed9a0c11746018756be38c273527e154827da8e178cdef2e20.bin",
+          "file": "part-b37ebc659bf8e9954c5732ffc2f317871206afb2f603b8956e40a33f9eedb7df.bin",
           "bytes": 50331648,
-          "sha256": "c2fada3900dc96ed9a0c11746018756be38c273527e154827da8e178cdef2e20"
+          "sha256": "b37ebc659bf8e9954c5732ffc2f317871206afb2f603b8956e40a33f9eedb7df"
         },
         {
-          "file": "part-d8a23ce3b86126f66d48f1beacfa33cc7325f8b1b50ad19e401430beff4ca14d.bin",
+          "file": "part-090b8df02962fa75734b76d479be85fc7c77771d00f95601d719390c3f4c76d1.bin",
           "bytes": 50331648,
-          "sha256": "d8a23ce3b86126f66d48f1beacfa33cc7325f8b1b50ad19e401430beff4ca14d"
+          "sha256": "090b8df02962fa75734b76d479be85fc7c77771d00f95601d719390c3f4c76d1"
         },
         {
-          "file": "part-6c999d9e9395f1818fffcfb08330a9f9ba35c853ae05c72d43c7c1ac8b5f74c0.bin",
-          "bytes": 43412973,
-          "sha256": "6c999d9e9395f1818fffcfb08330a9f9ba35c853ae05c72d43c7c1ac8b5f74c0"
+          "file": "part-abd12bf6ee61807f1adb79dddd0ba221363ea0cb23dba9b4cf780dae47bbad67.bin",
+          "bytes": 43429838,
+          "sha256": "abd12bf6ee61807f1adb79dddd0ba221363ea0cb23dba9b4cf780dae47bbad67"
         }
       ]
     }

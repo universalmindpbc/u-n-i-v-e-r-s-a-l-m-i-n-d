@@ -34,4 +34,8 @@ Pricing checked: [Lambda](https://aws.amazon.com/lambda/pricing/), [Secrets Mana
 5. Stop the local worker, run a cloud study and verify progress, model response, archived JSON/CSV, checkpoint recovery and browser rendering.
 6. Enable the scheduler and verify a second request is claimed without the Mac worker. Record the runtime, source revision and hosting controls.
 
-Current state: source and plans prepared; no AWS hosting resources activated. The Linux image build and full cloud run remain required checks.
+Current state, 26 October 2026: both staging stacks are active in us-east-1. The scheduler is enabled. The first AWS study completed in 534.26 seconds with the Mac worker stopped; task `32aedf33-31af-4632-a169-81736771bbca`. The subsequent automatic-dispatch browser check is recorded in `research/informatics/quantum-unified-20261026/`.
+
+The runtime image is pinned to `sha256:559390a8cb4c41478344046c7398d84240c1cf1f2ad2267bab76689924543626`, built from source `97b968a7`. The Linux build executed a CUDA-Q CPU smoke test. OS packages were upgraded and unused compiler headers omitted. ECR reports no critical findings and 19 high, 23 medium, 9 low and one undefined finding in remaining base OS packages. This is not a clean vulnerability scan. The runtime has no inbound function URL, installs no packages at execution time, runs fixed reviewed code, and does not execute model-written commands. Track vendor fixes for libcap, PCRE2, curl, OpenSSL and RPM; rebuild the pinned image when patches become available.
+
+The staging research service now reads the isolated Neon branch `astra-memory-20261026` (`br-jolly-union-azkvnqqq`). The new literature and research-direction revision are tested there. The existing parent database and production Worker configuration remain unchanged by the literature update. Preserve this separation until Ben approves publication.

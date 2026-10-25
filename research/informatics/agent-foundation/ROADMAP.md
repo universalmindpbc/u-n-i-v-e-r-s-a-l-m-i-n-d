@@ -94,3 +94,11 @@ Ben's supplied `ChatGPT Image 25 Oct 2026, 10_12_15.png` depicts the broader Uni
 The next implementation is `../astra-service/`: a private Quantum Atlas task broker and LangGraph worker. It follows the OXTR question through saved quantum-record checks, public DNA preparation, a classical prediction pilot, 16 local CUDA-Q checks for a new matched pair, and a plain-language report. The owner deferred Gemini oversight and public autonomous execution. This predefined, bounded recipe records automated preliminary review status; it does not fabricate CSO approval.
 
 No new Aquila submission is authorised today. The worker uses zero new hardware spend and zero paid GPU spend. The local worker is a development service on this Mac, not the later always-on research system. Future funded M1–M1001 investigations retain the same provider-neutral records, budget boundaries and LangGraph state, with separately authorised provider execution.
+
+## Cloud and shared research memory — 26 October 2026
+
+AWS staging hosting is activated within Ben's US$25/month hosting allowance. Lambda runs the reviewed LangGraph recipe on demand, with CPU CUDA-Q, Biopython, durable S3 checkpoints and reports. The Mac worker is stopped. A full automatic website-to-AWS-to-report test passed, including downloads, reload recovery and duplicate-request protection. New paid Aquila and GPU submissions remain disabled.
+
+The shared research index now includes all three Vision Atlas geometry citations and seven additional quantum-geometry sources in an isolated staging branch. General research has a dedicated Quantum Computing chapter. Research-directions r2 gives Astra explicit mechanisms, source IDs, matched controls and uncertainty boundaries for Fibonacci/M9 P24 stability research and possible mathematical connections to vision. Universal One reads the same evidence summaries. Both JSON and CSV exports retain these records.
+
+The supported execution remains the bounded OXTR recipe. Research-memory expansion does not silently add an unrestricted autonomous experiment tool. Future stability experiments require a reviewed template and measurement plan; Gemini oversight, new hardware spend and external task delegation retain their existing roadmap status.

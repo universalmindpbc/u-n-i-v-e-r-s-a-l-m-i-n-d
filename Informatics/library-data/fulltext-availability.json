@@ -2993,6 +2993,76 @@
       },
       "sha256": "f1ff8b6217491f69299a7a38dcdbd4bc0b73bd37b24588f1c9f26b85229d8c05",
       "checkedAt": "2026-10-24"
+    },
+    "vision-photoreceptor-mosaic-1998": {
+      "status": "curated-record",
+      "retrievalAvailable": false,
+      "url": "https://www.nature.com/articles/eye1998142",
+      "checkedAt": "2026-10-26",
+      "indexedContent": "Verified metadata and original research summary are indexed. Full article text is not indexed in this update."
+    },
+    "vision-retinal-orientation-2011": {
+      "status": "curated-record",
+      "retrievalAvailable": false,
+      "url": "https://www.nature.com/articles/nn.2824",
+      "checkedAt": "2026-10-26",
+      "indexedContent": "Verified metadata and original research summary are indexed. Full article text is not indexed in this update."
+    },
+    "vision-hexadirectional-2018": {
+      "status": "curated-record",
+      "retrievalAvailable": false,
+      "url": "https://www.nature.com/articles/s41593-017-0050-8",
+      "checkedAt": "2026-10-26",
+      "indexedContent": "Verified metadata and original research summary are indexed. Full article text is not indexed in this update."
+    },
+    "quantum-honeycomb-hastings-haah-2021": {
+      "status": "curated-record",
+      "retrievalAvailable": false,
+      "url": "https://quantum-journal.org/papers/q-2021-10-19-564/",
+      "checkedAt": "2026-10-26",
+      "indexedContent": "Verified metadata and original research summary are indexed. Full article text is not indexed in this update."
+    },
+    "quantum-penrose-fibonacci-code-2024": {
+      "status": "curated-record",
+      "retrievalAvailable": false,
+      "url": "https://arxiv.org/abs/2311.13040v2",
+      "checkedAt": "2026-10-26",
+      "indexedContent": "Verified metadata and original research summary are indexed. Full article text is not indexed in this update."
+    },
+    "quantum-ibm-heavy-hex-2021": {
+      "status": "curated-record",
+      "retrievalAvailable": false,
+      "url": "https://www.ibm.com/quantum/blog/heavy-hex-lattice",
+      "checkedAt": "2026-10-26",
+      "indexedContent": "Verified metadata and original research summary are indexed. Full article text is not indexed in this update."
+    },
+    "quantum-heavy-hex-scaling-2026": {
+      "status": "curated-record",
+      "retrievalAvailable": false,
+      "url": "https://www.nature.com/articles/s41467-026-76090-6",
+      "checkedAt": "2026-10-26",
+      "indexedContent": "Verified metadata and original research summary are indexed. Full article text is not indexed in this update."
+    },
+    "quantum-kagome-edge-states-2026": {
+      "status": "curated-record",
+      "retrievalAvailable": false,
+      "url": "https://doi.org/10.1021/acs.nanolett.6c03195",
+      "checkedAt": "2026-10-26",
+      "indexedContent": "Verified metadata and original research summary are indexed. Full article text is not indexed in this update."
+    },
+    "quantum-rydberg-local-error-correction-2024": {
+      "status": "curated-record",
+      "retrievalAvailable": false,
+      "url": "https://www.nature.com/articles/s41467-024-45584-6",
+      "checkedAt": "2026-10-26",
+      "indexedContent": "Verified metadata and original research summary are indexed. Full article text is not indexed in this update."
+    },
+    "quantum-haah-fractal-code-2011": {
+      "status": "curated-record",
+      "retrievalAvailable": false,
+      "url": "https://doi.org/10.1103/PhysRevA.83.042330",
+      "checkedAt": "2026-10-26",
+      "indexedContent": "Verified metadata and original research summary are indexed. Full article text is not indexed in this update."
     }
   }
 }

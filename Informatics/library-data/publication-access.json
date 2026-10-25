@@ -9030,6 +9030,122 @@
       "journalLabel": "Royal Australian and New Zealand College of Psychiatrists",
       "doi": null,
       "pmid": null
+    },
+    "vision-photoreceptor-mosaic-1998": {
+      "urls": [
+        "https://www.nature.com/articles/eye1998142",
+        "https://doi.org/10.1038/eye.1998.142",
+        "https://pubmed.ncbi.nlm.nih.gov/9775214/"
+      ],
+      "doi": "10.1038/eye.1998.142",
+      "pmid": "9775214",
+      "publicationKey": "doi:10.1038/eye.1998.142",
+      "journalKey": "eye",
+      "journalLabel": "Eye"
+    },
+    "vision-retinal-orientation-2011": {
+      "urls": [
+        "https://www.nature.com/articles/nn.2824",
+        "https://doi.org/10.1038/nn.2824",
+        "https://pubmed.ncbi.nlm.nih.gov/21623365/",
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC3196663/"
+      ],
+      "doi": "10.1038/nn.2824",
+      "pmid": "21623365",
+      "publicationKey": "doi:10.1038/nn.2824",
+      "journalKey": "natureneuroscience",
+      "journalLabel": "Nature Neuroscience"
+    },
+    "vision-hexadirectional-2018": {
+      "urls": [
+        "https://www.nature.com/articles/s41593-017-0050-8",
+        "https://doi.org/10.1038/s41593-017-0050-8",
+        "https://pubmed.ncbi.nlm.nih.gov/29311746/"
+      ],
+      "doi": "10.1038/s41593-017-0050-8",
+      "pmid": "29311746",
+      "publicationKey": "doi:10.1038/s41593-017-0050-8",
+      "journalKey": "natureneuroscience",
+      "journalLabel": "Nature Neuroscience"
+    },
+    "quantum-honeycomb-hastings-haah-2021": {
+      "urls": [
+        "https://quantum-journal.org/papers/q-2021-10-19-564/",
+        "https://doi.org/10.22331/q-2021-10-19-564"
+      ],
+      "doi": "10.22331/q-2021-10-19-564",
+      "pmid": null,
+      "publicationKey": "doi:10.22331/q-2021-10-19-564",
+      "journalKey": "quantum",
+      "journalLabel": "Quantum"
+    },
+    "quantum-penrose-fibonacci-code-2024": {
+      "urls": [
+        "https://arxiv.org/abs/2311.13040v2",
+        "https://doi.org/10.48550/arXiv.2311.13040"
+      ],
+      "doi": "10.48550/arXiv.2311.13040",
+      "pmid": null,
+      "publicationKey": "doi:10.48550/arxiv.2311.13040",
+      "journalKey": "arxiv",
+      "journalLabel": "arXiv"
+    },
+    "quantum-ibm-heavy-hex-2021": {
+      "urls": [
+        "https://www.ibm.com/quantum/blog/heavy-hex-lattice"
+      ],
+      "doi": null,
+      "pmid": null,
+      "publicationKey": "id:quantum-ibm-heavy-hex-2021",
+      "journalKey": "ibmquantumtechnicalblog",
+      "journalLabel": "IBM Quantum technical blog"
+    },
+    "quantum-heavy-hex-scaling-2026": {
+      "urls": [
+        "https://www.nature.com/articles/s41467-026-76090-6",
+        "https://doi.org/10.1038/s41467-026-76090-6",
+        "https://pubmed.ncbi.nlm.nih.gov/42660895/",
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC13522603/"
+      ],
+      "doi": "10.1038/s41467-026-76090-6",
+      "pmid": "42660895",
+      "publicationKey": "doi:10.1038/s41467-026-76090-6",
+      "journalKey": "naturecommunications",
+      "journalLabel": "Nature Communications"
+    },
+    "quantum-kagome-edge-states-2026": {
+      "urls": [
+        "https://doi.org/10.1021/acs.nanolett.6c03195",
+        "https://pubmed.ncbi.nlm.nih.gov/42915366/"
+      ],
+      "doi": "10.1021/acs.nanolett.6c03195",
+      "pmid": "42915366",
+      "publicationKey": "doi:10.1021/acs.nanolett.6c03195",
+      "journalKey": "nanoletters",
+      "journalLabel": "Nano Letters"
+    },
+    "quantum-rydberg-local-error-correction-2024": {
+      "urls": [
+        "https://www.nature.com/articles/s41467-024-45584-6",
+        "https://doi.org/10.1038/s41467-024-45584-6",
+        "https://pubmed.ncbi.nlm.nih.gov/38378727/",
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC10879205/"
+      ],
+      "doi": "10.1038/s41467-024-45584-6",
+      "pmid": "38378727",
+      "publicationKey": "doi:10.1038/s41467-024-45584-6",
+      "journalKey": "naturecommunications",
+      "journalLabel": "Nature Communications"
+    },
+    "quantum-haah-fractal-code-2011": {
+      "urls": [
+        "https://doi.org/10.1103/PhysRevA.83.042330"
+      ],
+      "doi": "10.1103/PhysRevA.83.042330",
+      "pmid": null,
+      "publicationKey": "doi:10.1103/physreva.83.042330",
+      "journalKey": "physicalreviewa",
+      "journalLabel": "Physical Review A"
     }
   }
 }

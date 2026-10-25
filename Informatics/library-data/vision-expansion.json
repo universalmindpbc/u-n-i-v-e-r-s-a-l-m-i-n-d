@@ -3580,6 +3580,221 @@
         "trialId": "Brescia-TRD-21",
         "relationshipNote": "Combined therapy cohort; no untreated molecular comparator."
       }
+    },
+    {
+      "id": "vision-photoreceptor-mosaic-1998",
+      "title": "The photoreceptor mosaic",
+      "doi": "10.1038/eye.1998.142",
+      "pmid": "9775214",
+      "journal": "Eye",
+      "year": 1998,
+      "published": "1998-05",
+      "authors": "P K Ahnelt",
+      "urls": [
+        "https://www.nature.com/articles/eye1998142",
+        "https://doi.org/10.1038/eye.1998.142",
+        "https://pubmed.ncbi.nlm.nih.gov/9775214/"
+      ],
+      "collections": [
+        "vision"
+      ],
+      "categories": [
+        "Vision geometry",
+        "Brain & nervous system"
+      ],
+      "targets": [],
+      "origin": "geometry-literature-20261026",
+      "priority": 1,
+      "kind": "Journal article",
+      "design": "Anatomical review of the human retinal photoreceptor mosaic",
+      "summary": "Ahnelt describes how human rods and cones are distributed across the retina. Cone packing is especially dense near the fovea; different cone populations have different arrangements. This provides biological context for exploring local packing and sampling geometry in Vision Atlas.",
+      "finding": "Ahnelt describes how human rods and cones are distributed across the retina. Cone packing is especially dense near the fovea; different cone populations have different arrangements. This provides biological context for exploring local packing and sampling geometry in Vision Atlas.",
+      "limitation": "The review does not demonstrate a universal perfect hexagonal retina, tetrahedral visual processing, or a Fibonacci mechanism. It is anatomical evidence, not an EMDR treatment trial or a quantum-stability experiment.",
+      "citationCount": 79,
+      "citationSnapshot": {
+        "count": 79,
+        "source": "Crossref",
+        "retrievedAt": "2026-10-26"
+      },
+      "studyDesignAssessment": {
+        "category": "peer-reviewed",
+        "peerReviewed": true,
+        "basis": "Anatomical review of the human retinal photoreceptor mosaic. This is not a clinical efficacy trial.",
+        "sources": [
+          "https://www.nature.com/articles/eye1998142",
+          "https://doi.org/10.1038/eye.1998.142",
+          "https://pubmed.ncbi.nlm.nih.gov/9775214/"
+        ],
+        "reviewedAt": "2026-10-26"
+      },
+      "evidence": {
+        "evidenceType": "Anatomical review of the human retinal photoreceptor mosaic",
+        "evidenceClass": "anatomical_review",
+        "measurement": "Spatial sampling by retinal photoreceptor populations.",
+        "relationshipNote": "Compare the Atlas geometry with measured local packing, density and irregularity; retain the differences between retinal regions.",
+        "clinicalEvidence": false,
+        "reviewDepth": "Publisher or author abstract and bibliographic metadata; selected explanatory sections where available.",
+        "hypothesisBoundary": "Connections to M9 P24, Alpha, Beta, Gamma and Epsilon remain research hypotheses. Shared geometry does not establish a shared physical mechanism."
+      },
+      "jadad": {
+        "status": "not-applicable",
+        "score": null,
+        "reason": "Not a human randomised clinical trial."
+      },
+      "quotes": [],
+      "archiveEntries": [],
+      "verifiedAt": "2026-10-26",
+      "sourceProvenance": {
+        "origin": "Vision Atlas citations",
+        "notionPage": null,
+        "reviewedAt": "2026-10-26"
+      },
+      "publisherFamily": "nature",
+      "publisherFamilyLabel": "Nature Portfolio"
+    },
+    {
+      "id": "vision-retinal-orientation-2011",
+      "title": "Retinal origin of orientation maps in visual cortex",
+      "doi": "10.1038/nn.2824",
+      "pmid": "21623365",
+      "journal": "Nature Neuroscience",
+      "year": 2011,
+      "published": "2011-05-29",
+      "authors": "Se-Bum Paik; Dario L Ringach",
+      "urls": [
+        "https://www.nature.com/articles/nn.2824",
+        "https://doi.org/10.1038/nn.2824",
+        "https://pubmed.ncbi.nlm.nih.gov/21623365/",
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC3196663/"
+      ],
+      "collections": [
+        "vision"
+      ],
+      "categories": [
+        "Vision geometry",
+        "Brain & nervous system"
+      ],
+      "targets": [],
+      "origin": "geometry-literature-20261026",
+      "priority": 1,
+      "kind": "Journal article",
+      "design": "Computational model with comparative visual-cortex observations",
+      "summary": "Paik and Ringach propose that interference between regularly spaced ON- and OFF-centre retinal ganglion-cell mosaics helps form orientation maps in visual cortex. Their model predicts hexagonal organisation of orientation-domain centres, with supporting patterns reported in four mammalian species.",
+      "finding": "Paik and Ringach propose that interference between regularly spaced ON- and OFF-centre retinal ganglion-cell mosaics helps form orientation maps in visual cortex. Their model predicts hexagonal organisation of orientation-domain centres, with supporting patterns reported in four mammalian species.",
+      "limitation": "This is a proposed developmental mechanism with supporting observations. It does not establish that all visual cortex follows this model, that humans prefer hexagons, or that retinal geometry stabilises quantum information.",
+      "citationCount": 151,
+      "citationSnapshot": {
+        "count": 151,
+        "source": "Crossref",
+        "retrievedAt": "2026-10-26"
+      },
+      "studyDesignAssessment": {
+        "category": "peer-reviewed",
+        "peerReviewed": true,
+        "basis": "Computational model with comparative visual-cortex observations. This is not a clinical efficacy trial.",
+        "sources": [
+          "https://www.nature.com/articles/nn.2824",
+          "https://doi.org/10.1038/nn.2824",
+          "https://pubmed.ncbi.nlm.nih.gov/21623365/",
+          "https://pmc.ncbi.nlm.nih.gov/articles/PMC3196663/"
+        ],
+        "reviewedAt": "2026-10-26"
+      },
+      "evidence": {
+        "evidenceType": "Computational model with comparative visual-cortex observations",
+        "evidenceClass": "computational_model_and_observation",
+        "measurement": "Moiré interference between two spatial mosaics.",
+        "relationshipNote": "Test whether similar interference mathematics generates useful candidate patterns in the Atlas, then evaluate each physical system separately.",
+        "clinicalEvidence": false,
+        "reviewDepth": "Publisher or author abstract and bibliographic metadata; selected explanatory sections where available.",
+        "hypothesisBoundary": "Connections to M9 P24, Alpha, Beta, Gamma and Epsilon remain research hypotheses. Shared geometry does not establish a shared physical mechanism."
+      },
+      "jadad": {
+        "status": "not-applicable",
+        "score": null,
+        "reason": "Not a human randomised clinical trial."
+      },
+      "quotes": [],
+      "archiveEntries": [],
+      "verifiedAt": "2026-10-26",
+      "sourceProvenance": {
+        "origin": "Vision Atlas citations",
+        "notionPage": null,
+        "reviewedAt": "2026-10-26"
+      },
+      "publisherFamily": "nature",
+      "publisherFamilyLabel": "Nature Portfolio"
+    },
+    {
+      "id": "vision-hexadirectional-2018",
+      "title": "Hexadirectional coding of visual space in human entorhinal cortex",
+      "doi": "10.1038/s41593-017-0050-8",
+      "pmid": "29311746",
+      "journal": "Nature Neuroscience",
+      "year": 2018,
+      "published": "2018-01-08",
+      "authors": "Matthias Nau; Tobias Navarro Schröder; Jacob L. S. Bellmund; Christian F. Doeller",
+      "urls": [
+        "https://www.nature.com/articles/s41593-017-0050-8",
+        "https://doi.org/10.1038/s41593-017-0050-8",
+        "https://pubmed.ncbi.nlm.nih.gov/29311746/"
+      ],
+      "collections": [
+        "vision"
+      ],
+      "categories": [
+        "Vision geometry",
+        "Brain & nervous system"
+      ],
+      "targets": [],
+      "origin": "geometry-literature-20261026",
+      "priority": 1,
+      "kind": "Journal article",
+      "design": "Human fMRI during controlled visual tracking",
+      "summary": "Nau and colleagues found a sixfold directional pattern in human entorhinal-cortex activity during a visual tracking task. The result supports a grid-like representation of visual space and gives Vision Atlas a measured example of sixfold organisation in brain activity.",
+      "finding": "Nau and colleagues found a sixfold directional pattern in human entorhinal-cortex activity during a visual tracking task. The result supports a grid-like representation of visual space and gives Vision Atlas a measured example of sixfold organisation in brain activity.",
+      "limitation": "An fMRI population signal is not a direct image of individual grid cells or proof of a tetrahedral eye mechanism. This study does not test Fibonacci sequences, EMDR outcomes, or quantum error correction.",
+      "citationCount": 196,
+      "citationSnapshot": {
+        "count": 196,
+        "source": "Crossref",
+        "retrievedAt": "2026-10-26"
+      },
+      "studyDesignAssessment": {
+        "category": "peer-reviewed",
+        "peerReviewed": true,
+        "basis": "Human fMRI during controlled visual tracking. This is not a clinical efficacy trial.",
+        "sources": [
+          "https://www.nature.com/articles/s41593-017-0050-8",
+          "https://doi.org/10.1038/s41593-017-0050-8",
+          "https://pubmed.ncbi.nlm.nih.gov/29311746/"
+        ],
+        "reviewedAt": "2026-10-26"
+      },
+      "evidence": {
+        "evidenceType": "Human fMRI during controlled visual tracking",
+        "evidenceClass": "human_neuroimaging",
+        "measurement": "Sixfold rotational modulation of a population-level neural signal with gaze direction.",
+        "relationshipNote": "Use explicit rotational-symmetry tests with competing periodicities and independent data, rather than judging a pattern by visual resemblance.",
+        "clinicalEvidence": false,
+        "reviewDepth": "Publisher or author abstract and bibliographic metadata; selected explanatory sections where available.",
+        "hypothesisBoundary": "Connections to M9 P24, Alpha, Beta, Gamma and Epsilon remain research hypotheses. Shared geometry does not establish a shared physical mechanism."
+      },
+      "jadad": {
+        "status": "not-applicable",
+        "score": null,
+        "reason": "Not a human randomised clinical trial."
+      },
+      "quotes": [],
+      "archiveEntries": [],
+      "verifiedAt": "2026-10-26",
+      "sourceProvenance": {
+        "origin": "Vision Atlas citations",
+        "notionPage": null,
+        "reviewedAt": "2026-10-26"
+      },
+      "publisherFamily": "nature",
+      "publisherFamilyLabel": "Nature Portfolio"
     }
   ],
   "publicationAccess": {
@@ -4405,7 +4620,45 @@
       ],
       "journalKey": "",
       "journalLabel": "U.S. VA / Department of Defense"
+    },
+    "vision-photoreceptor-mosaic-1998": {
+      "urls": [
+        "https://www.nature.com/articles/eye1998142",
+        "https://doi.org/10.1038/eye.1998.142",
+        "https://pubmed.ncbi.nlm.nih.gov/9775214/"
+      ],
+      "doi": "10.1038/eye.1998.142",
+      "pmid": "9775214",
+      "publicationKey": "doi:10.1038/eye.1998.142",
+      "journalKey": "eye",
+      "journalLabel": "Eye"
+    },
+    "vision-retinal-orientation-2011": {
+      "urls": [
+        "https://www.nature.com/articles/nn.2824",
+        "https://doi.org/10.1038/nn.2824",
+        "https://pubmed.ncbi.nlm.nih.gov/21623365/",
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC3196663/"
+      ],
+      "doi": "10.1038/nn.2824",
+      "pmid": "21623365",
+      "publicationKey": "doi:10.1038/nn.2824",
+      "journalKey": "natureneuroscience",
+      "journalLabel": "Nature Neuroscience"
+    },
+    "vision-hexadirectional-2018": {
+      "urls": [
+        "https://www.nature.com/articles/s41593-017-0050-8",
+        "https://doi.org/10.1038/s41593-017-0050-8",
+        "https://pubmed.ncbi.nlm.nih.gov/29311746/"
+      ],
+      "doi": "10.1038/s41593-017-0050-8",
+      "pmid": "29311746",
+      "publicationKey": "doi:10.1038/s41593-017-0050-8",
+      "journalKey": "natureneuroscience",
+      "journalLabel": "Nature Neuroscience"
     }
   },
-  "policy": "Publication counts and citation counts are separate from topic trust thresholds. New citation snapshots retain provider and date."
+  "policy": "Publication counts and citation counts are separate from topic trust thresholds. New citation snapshots retain provider and date.",
+  "reviewedAt": "2026-10-26"
 }

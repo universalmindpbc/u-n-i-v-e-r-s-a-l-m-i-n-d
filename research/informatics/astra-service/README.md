@@ -1,6 +1,6 @@
 # Astra: private Quantum Atlas execution
 
-Implemented 25 October 2026. This is a bounded research service on the existing staging website. LangGraph owns execution and checkpoints. GPT-6 Astra interprets the calculated evidence. Gemini review, public computation, API/MCP/A2A task dispatch and an always-on hosted worker remain roadmap work.
+Implemented 25 October 2026; AWS hosting activated 26 October. This is a bounded research service on the existing staging website. LangGraph owns execution and checkpoints. GPT-6 Astra interprets the calculated evidence. Gemini review, public computation and API/MCP/A2A task dispatch remain roadmap work.
 
 ## What a question starts
 
@@ -21,21 +21,25 @@ The new classical test does not evaluate M9 P24 prediction. The local CUDA-Q pai
 
 New Aquila spend: **US$0**. New paid GPU spend: **US$0**. The worker has no hardware submission tool or QPU credential. Research questions are limited to six per day and forty per month, with at most two active tasks. Each task has a separate model ledger capped at two requests and 24,000 reserved tokens. Model reports use GPT-6 Astra. These are shared prototype limits, not a public funding policy.
 
-qBraid's account check showed zero purchased credits with auto-recharge disabled. The remaining free-circuit quota was not verified for a new batch; no new qBraid submission is made. Local CUDA-Q is used without cloud charges. No service, VM or SageMaker instance is provisioned.
+qBraid's account check showed zero purchased credits with auto-recharge disabled. The remaining free-circuit quota was not verified for a new batch; no new qBraid submission is made. CUDA-Q runs on the AWS worker's CPU within the approved hosting allowance. No GPU, VM or SageMaker instance is provisioned.
 
 ## Runtime and recovery
 
 Cloudflare's existing Durable Object binding stores the private queue, each task and report separately. Leases expire after three minutes and the worker renews every 45 seconds. Stable request keys prevent duplicate task creation. The local SQLite checkpoint resumes completed analysis nodes and retains uncertain model reservations. Cancellation rejects later worker updates. A research session can requeue a paused task without increasing its allowance.
 
-The research worker runs on this Mac while its process is active and the Mac is awake. Browser closure does not cancel a task. This is not an always-on hosted research service. The operator starts it with:
+The staging research worker runs on demand in AWS Lambda. A dispatcher checks for queued work once per minute, with concurrency one and a monthly invocation limit. Encrypted S3 preserves checkpoints and result files. It operates independently of Ben's Mac; browser closure does not cancel a task. See `cloud/PLAN.md` for the US$25 hosting boundary, cost estimate, runtime permissions and deployment evidence.
+
+The Mac worker remains an optional development tool. Its command is:
 
 ```text
 ASTRA_SERVICE_HOME=/private/tmp/astra-owner-service /private/tmp/informatics-agent-env/bin/python research/informatics/astra-service/runner.py --serve --idle-seconds 7200
 ```
 
-The two-hour idle exit bounds this development session. No scheduled research or future paid experiment is activated.
+The two-hour idle exit applies only to that optional development process. Cloud dispatch handles submitted questions; it does not start self-directed recurring research or new paid quantum experiments.
 
 Private credentials are held outside Git with mode 0600. The browser receives a 12-hour research capability automatically from Panthur, without a login form. A signed browser identity permits renewal and keeps separate visitors’ tasks apart. It receives no provider credentials. The PHP endpoint is staging-only. Requests and reports are private to the browser research session; public readers retain the existing recorded study.
+
+Shared memory contains the mission, immutable experiment JSON/CSV records, reviewed research directions and source-linked literature summaries. Astra and Universal One retrieve the same literature. The new Vision and quantum-geometry additions live in the isolated staging research branch until publication approval.
 
 ## Reproducibility and limits
 

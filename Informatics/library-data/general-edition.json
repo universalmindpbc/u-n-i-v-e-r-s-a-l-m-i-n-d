@@ -9059,7 +9059,8 @@
             "peerReviewedPapers": 8,
             "basis": "At least 3 peer-reviewed journal articles",
             "reviewedAt": "2026-10-23"
-          }
+          },
+          "number": "8.1"
         },
         {
           "id": "oxytocin-sensory",
@@ -9260,7 +9261,8 @@
             "peerReviewedPapers": 3,
             "basis": "At least 3 peer-reviewed journal articles",
             "reviewedAt": "2026-10-23"
-          }
+          },
+          "number": "8.2"
         },
         {
           "id": "stress-plasticity",
@@ -9458,7 +9460,8 @@
             "peerReviewedPapers": 3,
             "basis": "At least 3 peer-reviewed journal articles",
             "reviewedAt": "2026-10-23"
-          }
+          },
+          "number": "8.3"
         }
       ]
     },
@@ -9965,297 +9968,6 @@
           "number": "9.2"
         },
         {
-          "id": "fibonacci-quantum-information",
-          "title": "Quantum information and Fibonacci dynamics",
-          "context": "Fibonacci anyons, aperiodic drives and proposed communication protocols have different mathematical and experimental meanings.",
-          "trustScore": 1,
-          "trustAssessment": {
-            "status": "threshold-met",
-            "peerReviewedArticles": 6,
-            "doubleBlindRCTs": 0,
-            "singleBlindRCTs": 0,
-            "basis": "At least three primary peer-reviewed journal articles.",
-            "scope": "Bibliographic threshold only; no inferred clinical grade, replication, or OXTR relevance."
-          },
-          "papers": [
-            {
-              "id": "general-nature-fibonacci-s41567-024-02529-6",
-              "title": "Non-Abelian braiding of Fibonacci anyons with a superconducting processor",
-              "journal": "Nature Physics",
-              "year": 2024,
-              "authors": "Shibo Xu; Zheng-Zhi Sun; Ke Wang; Hekang Li; Zitian Zhu; Hang Dong; Jinfeng Deng; Xu Zhang; Jiachen Chen; Yaozu Wu; Chuanyu Zhang; Feitong Jin; Xuhao Zhu; Yu Gao; Aosai Zhang; Ning Wang; Yiren Zou; Ziqi Tan; Fanhao Shen; Jiarun Zhong; Zehang Bao; Weikang Li; Wenjie Jiang; Li-Wei Yu; Zixuan Song; Pengfei Zhang; Liang Xiang; Qiujiang Guo; Zhen Wang; Chao Song; H. Wang; Dong-Ling Deng",
-              "doi": "10.1038/s41567-024-02529-6",
-              "pmid": null,
-              "urls": [
-                "https://www.nature.com/articles/s41567-024-02529-6",
-                "https://doi.org/10.1038/s41567-024-02529-6"
-              ],
-              "design": "Superconducting-processor quantum simulation experiment",
-              "summary": "A 27-qubit superconducting processor prepares Fibonacci string-net states and probes their topological properties. Created excitations exhibit fusion and braiding signatures consistent with Fibonacci anyons.",
-              "limitation": "The demonstration uses digitally prepared states on a noisy processor. It does not establish a scalable fault-tolerant computer or a biological role for Fibonacci mathematics.",
-              "citationCount": 62,
-              "citationSnapshot": {
-                "count": 62,
-                "source": "Crossref cited-by count",
-                "retrievedAt": "2026-10-24",
-                "url": "https://api.crossref.org/works/10.1038/s41567-024-02529-6",
-                "field": "is-referenced-by-count",
-                "sourceIndexedAt": "2026-10-20T00:52:09Z",
-                "coverageNote": "Count reflects Crossref-deposited references and can differ from publisher or other database totals. It is not a quality or clinical-evidence score."
-              },
-              "categories": [
-                "Fibonacci mathematics",
-                "Quantum information"
-              ],
-              "targets": [],
-              "evidence": {
-                "evidenceType": "Superconducting-processor quantum simulation experiment",
-                "evidenceClass": "physical_experiment",
-                "measurement": "27 superconducting qubits; entanglement, fusion and braiding measurements",
-                "measuredGenes": [],
-                "pathways": [],
-                "relationshipNote": "Background literature only. This paper does not test or validate an OXTR–Fibonacci relationship.",
-                "clinicalEvidence": false,
-                "reviewDepth": "Abstract and selected source passages: Main; Ground-state preparation; Braiding statistics; Conclusion and outlook.",
-                "fullPaperAppraisal": "Not completed; review depth states the material assessed."
-              },
-              "recordId": "nature-fibonacci-s41567-024-02529-6",
-              "quotes": [],
-              "sourcePages": []
-            },
-            {
-              "id": "general-nature-fibonacci-s41467-025-61493-8",
-              "title": "Realizing string-net condensation: Fibonacci anyon braiding for universal gates and sampling chromatic polynomials",
-              "journal": "Nature Communications",
-              "year": 2025,
-              "authors": "Zlatko K. Minev; Khadijeh Najafi; Swarnadeep Majumder; Juven Wang; Ady Stern; Eun-Ah Kim; Chao-Ming Jian; Guanyu Zhu",
-              "doi": "10.1038/s41467-025-61493-8",
-              "pmid": "40617827",
-              "urls": [
-                "https://www.nature.com/articles/s41467-025-61493-8",
-                "https://doi.org/10.1038/s41467-025-61493-8",
-                "https://pubmed.ncbi.nlm.nih.gov/40617827/"
-              ],
-              "design": "Quantum-circuit design and superconducting-processor experiments",
-              "summary": "The authors construct Fibonacci string-net states with a dynamical preparation method, measure and braid anyons, and estimate chromatic polynomials for several graphs using quantum samples.",
-              "limitation": "The experiments are proof of principle with error mitigation. The authors identify noise and comparison with classical approximation algorithms as unresolved barriers to a demonstrated quantum advantage.",
-              "citationCount": 16,
-              "citationSnapshot": {
-                "count": 16,
-                "source": "Crossref cited-by count",
-                "retrievedAt": "2026-10-24",
-                "url": "https://api.crossref.org/works/10.1038/s41467-025-61493-8",
-                "field": "is-referenced-by-count",
-                "sourceIndexedAt": "2026-09-17T23:28:56Z",
-                "coverageNote": "Count reflects Crossref-deposited references and can differ from publisher or other database totals. It is not a quality or clinical-evidence score."
-              },
-              "categories": [
-                "Fibonacci mathematics",
-                "Quantum information"
-              ],
-              "targets": [],
-              "evidence": {
-                "evidenceType": "Quantum-circuit design and superconducting-processor experiments",
-                "evidenceClass": "physical_experiment",
-                "measurement": "Superconducting processors; anyon-charge measurements and graph sampling",
-                "measuredGenes": [],
-                "pathways": [],
-                "relationshipNote": "Background literature only. This paper does not test or validate an OXTR–Fibonacci relationship.",
-                "clinicalEvidence": false,
-                "reviewDepth": "Abstract and selected source passages: Results; Discussion; Methods.",
-                "fullPaperAppraisal": "Not completed; review depth states the material assessed."
-              },
-              "recordId": "nature-fibonacci-s41467-025-61493-8",
-              "quotes": [],
-              "sourcePages": []
-            },
-            {
-              "id": "general-nature-fibonacci-s41586-022-04853-4",
-              "title": "Dynamical topological phase realized in a trapped-ion quantum simulator",
-              "journal": "Nature",
-              "year": 2022,
-              "authors": "Philipp T. Dumitrescu; Justin G. Bohnet; John P. Gaebler; Aaron Hankin; David Hayes; Ajesh Kumar; Brian Neyenhuis; Romain Vasseur; Andrew C. Potter",
-              "doi": "10.1038/s41586-022-04853-4",
-              "pmid": "35859195",
-              "urls": [
-                "https://www.nature.com/articles/s41586-022-04853-4",
-                "https://doi.org/10.1038/s41586-022-04853-4",
-                "https://pubmed.ncbi.nlm.nih.gov/35859195/"
-              ],
-              "design": "Trapped-ion quantum-simulation experiment",
-              "summary": "A quasiperiodic Fibonacci drive creates a dynamical topological phase in a ten-qubit trapped-ion chain. Edge-qubit behaviour exhibits protection against specified control imperfections relative to a periodic-drive comparison.",
-              "limitation": "The result concerns a finite quantum simulator and particular dynamics. It does not demonstrate general-purpose fault tolerance; the present appraisal covers the abstract and accessible extended-data descriptions.",
-              "citationCount": 72,
-              "citationSnapshot": {
-                "count": 72,
-                "source": "Crossref cited-by count",
-                "retrievedAt": "2026-10-24",
-                "url": "https://api.crossref.org/works/10.1038/s41586-022-04853-4",
-                "field": "is-referenced-by-count",
-                "sourceIndexedAt": "2026-10-01T06:17:24Z",
-                "coverageNote": "Count reflects Crossref-deposited references and can differ from publisher or other database totals. It is not a quality or clinical-evidence score."
-              },
-              "categories": [
-                "Fibonacci mathematics",
-                "Quantum information"
-              ],
-              "targets": [],
-              "evidence": {
-                "evidenceType": "Trapped-ion quantum-simulation experiment",
-                "evidenceClass": "physical_experiment",
-                "measurement": "Ten ytterbium-ion qubits; edge and bulk dynamics",
-                "measuredGenes": [],
-                "pathways": [],
-                "relationshipNote": "Background literature only. This paper does not test or validate an OXTR–Fibonacci relationship.",
-                "clinicalEvidence": false,
-                "reviewDepth": "Abstract and selected source passages: Abstract; Extended data figures and tables.",
-                "fullPaperAppraisal": "Not completed; review depth states the material assessed."
-              },
-              "recordId": "nature-fibonacci-s41586-022-04853-4",
-              "quotes": [],
-              "sourcePages": []
-            },
-            {
-              "id": "general-nature-fibonacci-nphys1396",
-              "title": "Topology-driven quantum phase transitions in time-reversal-invariant anyonic quantum liquids",
-              "journal": "Nature Physics",
-              "year": 2009,
-              "authors": "Charlotte Gils; Simon Trebst; Alexei Kitaev; Andreas W. W. Ludwig; Matthias Troyer; Zhenghan Wang",
-              "doi": "10.1038/nphys1396",
-              "pmid": null,
-              "urls": [
-                "https://www.nature.com/articles/nphys1396",
-                "https://doi.org/10.1038/nphys1396"
-              ],
-              "design": "Analytical and numerical theory of interacting anyons",
-              "summary": "An interacting-anyon model connects topological quantum phases through topology-driven transitions. Fibonacci-anyon theory provides a concrete setting, including an exactly solvable linear geometry.",
-              "limitation": "This is theoretical work rather than a device demonstration. Applicability to a physical implementation requires separate evidence; the present review uses the abstract and accessible figure descriptions.",
-              "citationCount": 65,
-              "citationSnapshot": {
-                "count": 65,
-                "source": "Crossref cited-by count",
-                "retrievedAt": "2026-10-24",
-                "url": "https://api.crossref.org/works/10.1038/nphys1396",
-                "field": "is-referenced-by-count",
-                "sourceIndexedAt": "2026-08-05T03:02:50Z",
-                "coverageNote": "Count reflects Crossref-deposited references and can differ from publisher or other database totals. It is not a quality or clinical-evidence score."
-              },
-              "categories": [
-                "Fibonacci mathematics",
-                "Quantum information"
-              ],
-              "targets": [],
-              "evidence": {
-                "evidenceType": "Analytical and numerical theory of interacting anyons",
-                "evidenceClass": "mathematical_computational_model",
-                "measurement": "Microscopic anyon model; exact solution and numerical spectra",
-                "measuredGenes": [],
-                "pathways": [],
-                "relationshipNote": "Background literature only. This paper does not test or validate an OXTR–Fibonacci relationship.",
-                "clinicalEvidence": false,
-                "reviewDepth": "Abstract and selected source passages: Abstract; Figure 3, The Fibonacci theory; publisher metadata.",
-                "fullPaperAppraisal": "Not completed; review depth states the material assessed."
-              },
-              "recordId": "nature-fibonacci-nphys1396",
-              "quotes": [],
-              "sourcePages": []
-            },
-            {
-              "id": "general-nature-fibonacci-srep31350",
-              "title": "Hybrid threshold adaptable quantum secret sharing scheme with reverse Huffman-Fibonacci-tree coding",
-              "journal": "Scientific Reports",
-              "year": 2016,
-              "authors": "Hong Lai; Jun Zhang; Ming-Xing Luo; Lei Pan; Josef Pieprzyk; Fuyuan Xiao; Mehmet A. Orgun",
-              "doi": "10.1038/srep31350",
-              "pmid": "27515908",
-              "urls": [
-                "https://www.nature.com/articles/srep31350",
-                "https://doi.org/10.1038/srep31350",
-                "https://pubmed.ncbi.nlm.nih.gov/27515908/"
-              ],
-              "design": "Theoretical quantum secret-sharing protocol and security analysis",
-              "summary": "The proposed hybrid secret-sharing protocol combines generalized Fibonacci orbital-angular-momentum states, polynomial sharing, and reverse Huffman–Fibonacci tree coding to support changing participant sets.",
-              "limitation": "The work proposes and analyses a protocol. It does not establish deployment security, implementation resistance to side channels, or an experimentally demonstrated communication advantage.",
-              "citationCount": 15,
-              "citationSnapshot": {
-                "count": 15,
-                "source": "Crossref cited-by count",
-                "retrievedAt": "2026-10-24",
-                "url": "https://api.crossref.org/works/10.1038/srep31350",
-                "field": "is-referenced-by-count",
-                "sourceIndexedAt": "2026-04-12T01:31:46Z",
-                "coverageNote": "Count reflects Crossref-deposited references and can differ from publisher or other database totals. It is not a quality or clinical-evidence score."
-              },
-              "categories": [
-                "Fibonacci mathematics",
-                "Quantum information"
-              ],
-              "targets": [],
-              "evidence": {
-                "evidenceType": "Theoretical quantum secret-sharing protocol and security analysis",
-                "evidenceClass": "computational_protocol",
-                "measurement": "Protocol construction and mathematical security arguments",
-                "measuredGenes": [],
-                "pathways": [],
-                "relationshipNote": "Background literature only. This paper does not test or validate an OXTR–Fibonacci relationship.",
-                "clinicalEvidence": false,
-                "reviewDepth": "Abstract and selected source passages: Introduction; Results; security analysis.",
-                "fullPaperAppraisal": "Not completed; review depth states the material assessed."
-              },
-              "recordId": "nature-fibonacci-srep31350",
-              "quotes": [],
-              "sourcePages": []
-            },
-            {
-              "id": "general-nature-fibonacci-srep46302",
-              "title": "Fast and simple high-capacity quantum cryptography with error detection",
-              "journal": "Scientific Reports",
-              "year": 2017,
-              "authors": "Hong Lai; Ming-Xing Luo; Josef Pieprzyk; Jun Zhang; Lei Pan; Shudong Li; Mehmet A. Orgun",
-              "doi": "10.1038/srep46302",
-              "pmid": "28406240",
-              "urls": [
-                "https://www.nature.com/articles/srep46302",
-                "https://doi.org/10.1038/srep46302",
-                "https://pubmed.ncbi.nlm.nih.gov/28406240/"
-              ],
-              "design": "Theoretical quantum-cryptography algorithm",
-              "summary": "Fibonacci- and Lucas-valued orbital-angular-momentum states supply inputs to recursive matrix-based coding. The paper proposes matrix operations for high-capacity key use and error detection.",
-              "limitation": "Claims depend on the stated protocol assumptions. A proposal and analytical examples do not establish a production-ready cryptosystem, end-to-end hardware performance, or independent cryptanalytic validation.",
-              "citationCount": 4,
-              "citationSnapshot": {
-                "count": 4,
-                "source": "Crossref cited-by count",
-                "retrievedAt": "2026-10-24",
-                "url": "https://api.crossref.org/works/10.1038/srep46302",
-                "field": "is-referenced-by-count",
-                "sourceIndexedAt": "2024-05-01T15:26:03Z",
-                "coverageNote": "Count reflects Crossref-deposited references and can differ from publisher or other database totals. It is not a quality or clinical-evidence score."
-              },
-              "categories": [
-                "Fibonacci mathematics",
-                "Quantum information"
-              ],
-              "targets": [],
-              "evidence": {
-                "evidenceType": "Theoretical quantum-cryptography algorithm",
-                "evidenceClass": "computational_protocol",
-                "measurement": "Recursive Fibonacci and Lucas matrices; protocol analysis",
-                "measuredGenes": [],
-                "pathways": [],
-                "relationshipNote": "Background literature only. This paper does not test or validate an OXTR–Fibonacci relationship.",
-                "clinicalEvidence": false,
-                "reviewDepth": "Abstract and selected source passages: Introduction; Results.",
-                "fullPaperAppraisal": "Not completed; review depth states the material assessed."
-              },
-              "recordId": "nature-fibonacci-srep46302",
-              "quotes": [],
-              "sourcePages": []
-            }
-          ],
-          "number": "9.3"
-        },
-        {
           "id": "fibonacci-algorithms",
           "title": "Algorithms and optimization",
           "context": "Results concern specified computational tasks and benchmarks; no general superiority or security guarantee is inferred.",
@@ -10407,7 +10119,7 @@
               "sourcePages": []
             }
           ],
-          "number": "9.4"
+          "number": "9.3"
         },
         {
           "id": "fibonacci-aperiodic-structures",
@@ -10881,7 +10593,7 @@
               "sourcePages": []
             }
           ],
-          "number": "9.5"
+          "number": "9.4"
         },
         {
           "id": "fibonacci-proposed-biological-structures",
@@ -10944,12 +10656,860 @@
               "sourcePages": []
             }
           ],
-          "number": "9.6"
+          "number": "9.5"
+        }
+      ]
+    },
+    {
+      "number": 10,
+      "title": "Quantum Computing: geometry, stability and error correction",
+      "topics": [
+        {
+          "id": "fibonacci-quantum-information",
+          "title": "Quantum information and Fibonacci dynamics",
+          "context": "Fibonacci anyons, aperiodic drives and proposed communication protocols have different mathematical and experimental meanings.",
+          "trustScore": 1,
+          "trustAssessment": {
+            "status": "threshold-met",
+            "peerReviewedArticles": 6,
+            "doubleBlindRCTs": 0,
+            "singleBlindRCTs": 0,
+            "basis": "At least three primary peer-reviewed journal articles.",
+            "scope": "Bibliographic threshold only; no inferred clinical grade, replication, or OXTR relevance."
+          },
+          "papers": [
+            {
+              "id": "general-nature-fibonacci-s41567-024-02529-6",
+              "title": "Non-Abelian braiding of Fibonacci anyons with a superconducting processor",
+              "journal": "Nature Physics",
+              "year": 2024,
+              "authors": "Shibo Xu; Zheng-Zhi Sun; Ke Wang; Hekang Li; Zitian Zhu; Hang Dong; Jinfeng Deng; Xu Zhang; Jiachen Chen; Yaozu Wu; Chuanyu Zhang; Feitong Jin; Xuhao Zhu; Yu Gao; Aosai Zhang; Ning Wang; Yiren Zou; Ziqi Tan; Fanhao Shen; Jiarun Zhong; Zehang Bao; Weikang Li; Wenjie Jiang; Li-Wei Yu; Zixuan Song; Pengfei Zhang; Liang Xiang; Qiujiang Guo; Zhen Wang; Chao Song; H. Wang; Dong-Ling Deng",
+              "doi": "10.1038/s41567-024-02529-6",
+              "pmid": null,
+              "urls": [
+                "https://www.nature.com/articles/s41567-024-02529-6",
+                "https://doi.org/10.1038/s41567-024-02529-6"
+              ],
+              "design": "Superconducting-processor quantum simulation experiment",
+              "summary": "A 27-qubit superconducting processor prepares Fibonacci string-net states and probes their topological properties. Created excitations exhibit fusion and braiding signatures consistent with Fibonacci anyons.",
+              "limitation": "The demonstration uses digitally prepared states on a noisy processor. It does not establish a scalable fault-tolerant computer or a biological role for Fibonacci mathematics.",
+              "citationCount": 62,
+              "citationSnapshot": {
+                "count": 62,
+                "source": "Crossref cited-by count",
+                "retrievedAt": "2026-10-24",
+                "url": "https://api.crossref.org/works/10.1038/s41567-024-02529-6",
+                "field": "is-referenced-by-count",
+                "sourceIndexedAt": "2026-10-20T00:52:09Z",
+                "coverageNote": "Count reflects Crossref-deposited references and can differ from publisher or other database totals. It is not a quality or clinical-evidence score."
+              },
+              "categories": [
+                "Fibonacci mathematics",
+                "Quantum information"
+              ],
+              "targets": [],
+              "evidence": {
+                "evidenceType": "Superconducting-processor quantum simulation experiment",
+                "evidenceClass": "physical_experiment",
+                "measurement": "27 superconducting qubits; entanglement, fusion and braiding measurements",
+                "measuredGenes": [],
+                "pathways": [],
+                "relationshipNote": "Background literature only. This paper does not test or validate an OXTR–Fibonacci relationship.",
+                "clinicalEvidence": false,
+                "reviewDepth": "Abstract and selected source passages: Main; Ground-state preparation; Braiding statistics; Conclusion and outlook.",
+                "fullPaperAppraisal": "Not completed; review depth states the material assessed."
+              },
+              "recordId": "nature-fibonacci-s41567-024-02529-6",
+              "quotes": [],
+              "sourcePages": []
+            },
+            {
+              "id": "general-nature-fibonacci-s41467-025-61493-8",
+              "title": "Realizing string-net condensation: Fibonacci anyon braiding for universal gates and sampling chromatic polynomials",
+              "journal": "Nature Communications",
+              "year": 2025,
+              "authors": "Zlatko K. Minev; Khadijeh Najafi; Swarnadeep Majumder; Juven Wang; Ady Stern; Eun-Ah Kim; Chao-Ming Jian; Guanyu Zhu",
+              "doi": "10.1038/s41467-025-61493-8",
+              "pmid": "40617827",
+              "urls": [
+                "https://www.nature.com/articles/s41467-025-61493-8",
+                "https://doi.org/10.1038/s41467-025-61493-8",
+                "https://pubmed.ncbi.nlm.nih.gov/40617827/"
+              ],
+              "design": "Quantum-circuit design and superconducting-processor experiments",
+              "summary": "The authors construct Fibonacci string-net states with a dynamical preparation method, measure and braid anyons, and estimate chromatic polynomials for several graphs using quantum samples.",
+              "limitation": "The experiments are proof of principle with error mitigation. The authors identify noise and comparison with classical approximation algorithms as unresolved barriers to a demonstrated quantum advantage.",
+              "citationCount": 16,
+              "citationSnapshot": {
+                "count": 16,
+                "source": "Crossref cited-by count",
+                "retrievedAt": "2026-10-24",
+                "url": "https://api.crossref.org/works/10.1038/s41467-025-61493-8",
+                "field": "is-referenced-by-count",
+                "sourceIndexedAt": "2026-09-17T23:28:56Z",
+                "coverageNote": "Count reflects Crossref-deposited references and can differ from publisher or other database totals. It is not a quality or clinical-evidence score."
+              },
+              "categories": [
+                "Fibonacci mathematics",
+                "Quantum information"
+              ],
+              "targets": [],
+              "evidence": {
+                "evidenceType": "Quantum-circuit design and superconducting-processor experiments",
+                "evidenceClass": "physical_experiment",
+                "measurement": "Superconducting processors; anyon-charge measurements and graph sampling",
+                "measuredGenes": [],
+                "pathways": [],
+                "relationshipNote": "Background literature only. This paper does not test or validate an OXTR–Fibonacci relationship.",
+                "clinicalEvidence": false,
+                "reviewDepth": "Abstract and selected source passages: Results; Discussion; Methods.",
+                "fullPaperAppraisal": "Not completed; review depth states the material assessed."
+              },
+              "recordId": "nature-fibonacci-s41467-025-61493-8",
+              "quotes": [],
+              "sourcePages": []
+            },
+            {
+              "id": "general-nature-fibonacci-s41586-022-04853-4",
+              "title": "Dynamical topological phase realized in a trapped-ion quantum simulator",
+              "journal": "Nature",
+              "year": 2022,
+              "authors": "Philipp T. Dumitrescu; Justin G. Bohnet; John P. Gaebler; Aaron Hankin; David Hayes; Ajesh Kumar; Brian Neyenhuis; Romain Vasseur; Andrew C. Potter",
+              "doi": "10.1038/s41586-022-04853-4",
+              "pmid": "35859195",
+              "urls": [
+                "https://www.nature.com/articles/s41586-022-04853-4",
+                "https://doi.org/10.1038/s41586-022-04853-4",
+                "https://pubmed.ncbi.nlm.nih.gov/35859195/"
+              ],
+              "design": "Trapped-ion quantum-simulation experiment",
+              "summary": "A quasiperiodic Fibonacci drive creates a dynamical topological phase in a ten-qubit trapped-ion chain. Edge-qubit behaviour exhibits protection against specified control imperfections relative to a periodic-drive comparison.",
+              "limitation": "The result concerns a finite quantum simulator and particular dynamics. It does not demonstrate general-purpose fault tolerance; the present appraisal covers the abstract and accessible extended-data descriptions.",
+              "citationCount": 72,
+              "citationSnapshot": {
+                "count": 72,
+                "source": "Crossref cited-by count",
+                "retrievedAt": "2026-10-24",
+                "url": "https://api.crossref.org/works/10.1038/s41586-022-04853-4",
+                "field": "is-referenced-by-count",
+                "sourceIndexedAt": "2026-10-01T06:17:24Z",
+                "coverageNote": "Count reflects Crossref-deposited references and can differ from publisher or other database totals. It is not a quality or clinical-evidence score."
+              },
+              "categories": [
+                "Fibonacci mathematics",
+                "Quantum information"
+              ],
+              "targets": [],
+              "evidence": {
+                "evidenceType": "Trapped-ion quantum-simulation experiment",
+                "evidenceClass": "physical_experiment",
+                "measurement": "Ten ytterbium-ion qubits; edge and bulk dynamics",
+                "measuredGenes": [],
+                "pathways": [],
+                "relationshipNote": "Background literature only. This paper does not test or validate an OXTR–Fibonacci relationship.",
+                "clinicalEvidence": false,
+                "reviewDepth": "Abstract and selected source passages: Abstract; Extended data figures and tables.",
+                "fullPaperAppraisal": "Not completed; review depth states the material assessed."
+              },
+              "recordId": "nature-fibonacci-s41586-022-04853-4",
+              "quotes": [],
+              "sourcePages": []
+            },
+            {
+              "id": "general-nature-fibonacci-nphys1396",
+              "title": "Topology-driven quantum phase transitions in time-reversal-invariant anyonic quantum liquids",
+              "journal": "Nature Physics",
+              "year": 2009,
+              "authors": "Charlotte Gils; Simon Trebst; Alexei Kitaev; Andreas W. W. Ludwig; Matthias Troyer; Zhenghan Wang",
+              "doi": "10.1038/nphys1396",
+              "pmid": null,
+              "urls": [
+                "https://www.nature.com/articles/nphys1396",
+                "https://doi.org/10.1038/nphys1396"
+              ],
+              "design": "Analytical and numerical theory of interacting anyons",
+              "summary": "An interacting-anyon model connects topological quantum phases through topology-driven transitions. Fibonacci-anyon theory provides a concrete setting, including an exactly solvable linear geometry.",
+              "limitation": "This is theoretical work rather than a device demonstration. Applicability to a physical implementation requires separate evidence; the present review uses the abstract and accessible figure descriptions.",
+              "citationCount": 65,
+              "citationSnapshot": {
+                "count": 65,
+                "source": "Crossref cited-by count",
+                "retrievedAt": "2026-10-24",
+                "url": "https://api.crossref.org/works/10.1038/nphys1396",
+                "field": "is-referenced-by-count",
+                "sourceIndexedAt": "2026-08-05T03:02:50Z",
+                "coverageNote": "Count reflects Crossref-deposited references and can differ from publisher or other database totals. It is not a quality or clinical-evidence score."
+              },
+              "categories": [
+                "Fibonacci mathematics",
+                "Quantum information"
+              ],
+              "targets": [],
+              "evidence": {
+                "evidenceType": "Analytical and numerical theory of interacting anyons",
+                "evidenceClass": "mathematical_computational_model",
+                "measurement": "Microscopic anyon model; exact solution and numerical spectra",
+                "measuredGenes": [],
+                "pathways": [],
+                "relationshipNote": "Background literature only. This paper does not test or validate an OXTR–Fibonacci relationship.",
+                "clinicalEvidence": false,
+                "reviewDepth": "Abstract and selected source passages: Abstract; Figure 3, The Fibonacci theory; publisher metadata.",
+                "fullPaperAppraisal": "Not completed; review depth states the material assessed."
+              },
+              "recordId": "nature-fibonacci-nphys1396",
+              "quotes": [],
+              "sourcePages": []
+            },
+            {
+              "id": "general-nature-fibonacci-srep31350",
+              "title": "Hybrid threshold adaptable quantum secret sharing scheme with reverse Huffman-Fibonacci-tree coding",
+              "journal": "Scientific Reports",
+              "year": 2016,
+              "authors": "Hong Lai; Jun Zhang; Ming-Xing Luo; Lei Pan; Josef Pieprzyk; Fuyuan Xiao; Mehmet A. Orgun",
+              "doi": "10.1038/srep31350",
+              "pmid": "27515908",
+              "urls": [
+                "https://www.nature.com/articles/srep31350",
+                "https://doi.org/10.1038/srep31350",
+                "https://pubmed.ncbi.nlm.nih.gov/27515908/"
+              ],
+              "design": "Theoretical quantum secret-sharing protocol and security analysis",
+              "summary": "The proposed hybrid secret-sharing protocol combines generalized Fibonacci orbital-angular-momentum states, polynomial sharing, and reverse Huffman–Fibonacci tree coding to support changing participant sets.",
+              "limitation": "The work proposes and analyses a protocol. It does not establish deployment security, implementation resistance to side channels, or an experimentally demonstrated communication advantage.",
+              "citationCount": 15,
+              "citationSnapshot": {
+                "count": 15,
+                "source": "Crossref cited-by count",
+                "retrievedAt": "2026-10-24",
+                "url": "https://api.crossref.org/works/10.1038/srep31350",
+                "field": "is-referenced-by-count",
+                "sourceIndexedAt": "2026-04-12T01:31:46Z",
+                "coverageNote": "Count reflects Crossref-deposited references and can differ from publisher or other database totals. It is not a quality or clinical-evidence score."
+              },
+              "categories": [
+                "Fibonacci mathematics",
+                "Quantum information"
+              ],
+              "targets": [],
+              "evidence": {
+                "evidenceType": "Theoretical quantum secret-sharing protocol and security analysis",
+                "evidenceClass": "computational_protocol",
+                "measurement": "Protocol construction and mathematical security arguments",
+                "measuredGenes": [],
+                "pathways": [],
+                "relationshipNote": "Background literature only. This paper does not test or validate an OXTR–Fibonacci relationship.",
+                "clinicalEvidence": false,
+                "reviewDepth": "Abstract and selected source passages: Introduction; Results; security analysis.",
+                "fullPaperAppraisal": "Not completed; review depth states the material assessed."
+              },
+              "recordId": "nature-fibonacci-srep31350",
+              "quotes": [],
+              "sourcePages": []
+            },
+            {
+              "id": "general-nature-fibonacci-srep46302",
+              "title": "Fast and simple high-capacity quantum cryptography with error detection",
+              "journal": "Scientific Reports",
+              "year": 2017,
+              "authors": "Hong Lai; Ming-Xing Luo; Josef Pieprzyk; Jun Zhang; Lei Pan; Shudong Li; Mehmet A. Orgun",
+              "doi": "10.1038/srep46302",
+              "pmid": "28406240",
+              "urls": [
+                "https://www.nature.com/articles/srep46302",
+                "https://doi.org/10.1038/srep46302",
+                "https://pubmed.ncbi.nlm.nih.gov/28406240/"
+              ],
+              "design": "Theoretical quantum-cryptography algorithm",
+              "summary": "Fibonacci- and Lucas-valued orbital-angular-momentum states supply inputs to recursive matrix-based coding. The paper proposes matrix operations for high-capacity key use and error detection.",
+              "limitation": "Claims depend on the stated protocol assumptions. A proposal and analytical examples do not establish a production-ready cryptosystem, end-to-end hardware performance, or independent cryptanalytic validation.",
+              "citationCount": 4,
+              "citationSnapshot": {
+                "count": 4,
+                "source": "Crossref cited-by count",
+                "retrievedAt": "2026-10-24",
+                "url": "https://api.crossref.org/works/10.1038/srep46302",
+                "field": "is-referenced-by-count",
+                "sourceIndexedAt": "2024-05-01T15:26:03Z",
+                "coverageNote": "Count reflects Crossref-deposited references and can differ from publisher or other database totals. It is not a quality or clinical-evidence score."
+              },
+              "categories": [
+                "Fibonacci mathematics",
+                "Quantum information"
+              ],
+              "targets": [],
+              "evidence": {
+                "evidenceType": "Theoretical quantum-cryptography algorithm",
+                "evidenceClass": "computational_protocol",
+                "measurement": "Recursive Fibonacci and Lucas matrices; protocol analysis",
+                "measuredGenes": [],
+                "pathways": [],
+                "relationshipNote": "Background literature only. This paper does not test or validate an OXTR–Fibonacci relationship.",
+                "clinicalEvidence": false,
+                "reviewDepth": "Abstract and selected source passages: Introduction; Results.",
+                "fullPaperAppraisal": "Not completed; review depth states the material assessed."
+              },
+              "recordId": "nature-fibonacci-srep46302",
+              "quotes": [],
+              "sourcePages": []
+            }
+          ],
+          "number": "10.1"
+        },
+        {
+          "id": "quantum-tilings",
+          "title": "Quasicrystals and Fibonacci tilings",
+          "context": "A mathematical connection between tilings and quantum error correction. The research status remains visible alongside the result.",
+          "trustScore": null,
+          "trustAssessment": {
+            "status": "below-minimum",
+            "peerReviewedArticles": 0,
+            "basis": "Fewer than three peer-reviewed articles; no topic grade.",
+            "scope": "Bibliographic threshold only. It does not validate an Atlas hypothesis or imply clinical efficacy."
+          },
+          "papers": [
+            {
+              "id": "general-quantum-tilings-quantum-penrose-fibonacci-code-2024",
+              "title": "The Penrose Tiling is a Quantum Error-Correcting Code",
+              "doi": "10.48550/arXiv.2311.13040",
+              "pmid": null,
+              "journal": "arXiv",
+              "year": 2024,
+              "published": "2024-01-25",
+              "authors": "Zhi Li; Latham Boyle",
+              "urls": [
+                "https://arxiv.org/abs/2311.13040v2",
+                "https://doi.org/10.48550/arXiv.2311.13040"
+              ],
+              "collections": [
+                "general"
+              ],
+              "categories": [
+                "Quantum computing",
+                "Geometry and information"
+              ],
+              "targets": [],
+              "origin": "geometry-literature-20261026",
+              "priority": 1,
+              "kind": "Preprint",
+              "design": "Theoretical preprint; version 2",
+              "summary": "Li and Boyle construct quantum error-correcting codes from Penrose tilings and variants based on Ammann–Beenker and Fibonacci tilings. Their construction connects nonperiodic geometric structure with the ability to recover information after local errors or erasures.",
+              "finding": "Li and Boyle construct quantum error-correcting codes from Penrose tilings and variants based on Ammann–Beenker and Fibonacci tilings. Their construction connects nonperiodic geometric structure with the ability to recover information after local errors or erasures.",
+              "limitation": "This is a mathematical construction in a preprint, not an experimental demonstration on Aquila. Its Fibonacci tilings are different from the Atlas M9 P24 sequences. A physical implementation and its resource requirements remain separate questions.",
+              "citationCount": null,
+              "citationSnapshot": {
+                "count": null,
+                "source": "Not available",
+                "retrievedAt": "2026-10-26"
+              },
+              "studyDesignAssessment": {
+                "category": "preprint",
+                "peerReviewed": false,
+                "basis": "Theoretical preprint; version 2. This is not a clinical efficacy trial.",
+                "sources": [
+                  "https://arxiv.org/abs/2311.13040v2",
+                  "https://doi.org/10.48550/arXiv.2311.13040"
+                ],
+                "reviewedAt": "2026-10-26"
+              },
+              "evidence": {
+                "evidenceType": "Theoretical preprint; version 2",
+                "evidenceClass": "quantum_error_correction_preprint",
+                "measurement": "Quantum information stored in a tiling-based code with local indistinguishability and recoverability.",
+                "relationshipNote": "Study the explicit Fibonacci-tiling code and compare its mathematical requirements with our sequence representations before proposing a hardware mapping.",
+                "clinicalEvidence": false,
+                "reviewDepth": "Publisher or author abstract and bibliographic metadata; selected explanatory sections where available.",
+                "hypothesisBoundary": "Connections to M9 P24, Alpha, Beta, Gamma and Epsilon remain research hypotheses. Shared geometry does not establish a shared physical mechanism."
+              },
+              "jadad": {
+                "status": "not-applicable",
+                "score": null,
+                "reason": "Not a human randomised clinical trial."
+              },
+              "quotes": [],
+              "archiveEntries": [],
+              "verifiedAt": "2026-10-26",
+              "sourceProvenance": {
+                "origin": "Verified follow-up to Gemini research notes",
+                "notionPage": "https://app.notion.com/p/4047b9c99c5680ddb35ec2e2edf83ee4",
+                "reviewedAt": "2026-10-26"
+              },
+              "recordId": "quantum-penrose-fibonacci-code-2024",
+              "sourcePages": []
+            }
+          ],
+          "number": "10.2"
+        },
+        {
+          "id": "quantum-error-correction",
+          "title": "Honeycomb codes and heavy-hex hardware",
+          "context": "Lattice layout, measurement schedules and hardware control play different roles. These sources make those mechanisms explicit.",
+          "trustScore": null,
+          "trustAssessment": {
+            "status": "below-minimum",
+            "peerReviewedArticles": 2,
+            "basis": "Fewer than three peer-reviewed articles; no topic grade.",
+            "scope": "Bibliographic threshold only. It does not validate an Atlas hypothesis or imply clinical efficacy."
+          },
+          "papers": [
+            {
+              "id": "general-quantum-error-correction-quantum-honeycomb-hastings-haah-2021",
+              "title": "Dynamically Generated Logical Qubits",
+              "doi": "10.22331/q-2021-10-19-564",
+              "pmid": null,
+              "journal": "Quantum",
+              "year": 2021,
+              "published": "2021-10-19",
+              "authors": "Matthew B. Hastings; Jeongwan Haah",
+              "urls": [
+                "https://quantum-journal.org/papers/q-2021-10-19-564/",
+                "https://doi.org/10.22331/q-2021-10-19-564"
+              ],
+              "collections": [
+                "general"
+              ],
+              "categories": [
+                "Quantum computing",
+                "Geometry and information"
+              ],
+              "targets": [],
+              "origin": "geometry-literature-20261026",
+              "priority": 1,
+              "kind": "Journal article",
+              "design": "Theoretical quantum error-correcting code",
+              "summary": "Hastings and Haah construct a honeycomb code in which a repeating schedule of two-qubit measurements creates logical qubits. Information protection comes from the code and measurement sequence acting together on the lattice.",
+              "finding": "Hastings and Haah construct a honeycomb code in which a repeating schedule of two-qubit measurements creates logical qubits. Information protection comes from the code and measurement sequence acting together on the lattice.",
+              "limitation": "The paper does not show that a passive hexagon alone protects information. Implementing this code requires the specified measurements and decoding; the current Aquila workflow does not implement that procedure.",
+              "citationCount": 157,
+              "citationSnapshot": {
+                "count": 157,
+                "source": "Crossref",
+                "retrievedAt": "2026-10-26"
+              },
+              "studyDesignAssessment": {
+                "category": "peer-reviewed",
+                "peerReviewed": true,
+                "basis": "Theoretical quantum error-correcting code. This is not a clinical efficacy trial.",
+                "sources": [
+                  "https://quantum-journal.org/papers/q-2021-10-19-564/",
+                  "https://doi.org/10.22331/q-2021-10-19-564"
+                ],
+                "reviewedAt": "2026-10-26"
+              },
+              "evidence": {
+                "evidenceType": "Theoretical quantum error-correcting code",
+                "evidenceClass": "quantum_error_correction_theory",
+                "measurement": "Dynamically generated logical qubits through scheduled two-qubit Pauli measurements.",
+                "relationshipNote": "Use the measurement schedule as a separate theoretical benchmark; distinguish logical error correction from longer physical-qubit coherence.",
+                "clinicalEvidence": false,
+                "reviewDepth": "Publisher or author abstract and bibliographic metadata; selected explanatory sections where available.",
+                "hypothesisBoundary": "Connections to M9 P24, Alpha, Beta, Gamma and Epsilon remain research hypotheses. Shared geometry does not establish a shared physical mechanism."
+              },
+              "jadad": {
+                "status": "not-applicable",
+                "score": null,
+                "reason": "Not a human randomised clinical trial."
+              },
+              "quotes": [],
+              "archiveEntries": [],
+              "verifiedAt": "2026-10-26",
+              "sourceProvenance": {
+                "origin": "Verified follow-up to Gemini research notes",
+                "notionPage": "https://app.notion.com/p/4047b9c99c5680ddb35ec2e2edf83ee4",
+                "reviewedAt": "2026-10-26"
+              },
+              "recordId": "quantum-honeycomb-hastings-haah-2021",
+              "sourcePages": []
+            },
+            {
+              "id": "general-quantum-error-correction-quantum-ibm-heavy-hex-2021",
+              "title": "The IBM Quantum heavy hex lattice",
+              "doi": null,
+              "pmid": null,
+              "journal": "IBM Quantum technical blog",
+              "year": 2021,
+              "published": "2021-07-07",
+              "authors": "Paul Nation; Hanhee Paik; Andrew Cross; Zaira Nazario",
+              "urls": [
+                "https://www.ibm.com/quantum/blog/heavy-hex-lattice"
+              ],
+              "collections": [
+                "general"
+              ],
+              "categories": [
+                "Quantum computing",
+                "Geometry and information"
+              ],
+              "targets": [],
+              "origin": "geometry-literature-20261026",
+              "priority": 1,
+              "kind": "Technical article",
+              "design": "Hardware architecture explanation",
+              "summary": "IBM explains why its heavy-hex architecture uses a sparse pattern of superconducting-qubit connections. The design reduces frequency collisions and unwanted effects on neighbouring qubits while balancing connectivity and the operations required by a calculation.",
+              "finding": "IBM explains why its heavy-hex architecture uses a sparse pattern of superconducting-qubit connections. The design reduces frequency collisions and unwanted effects on neighbouring qubits while balancing connectivity and the operations required by a calculation.",
+              "limitation": "This is a vendor technical explanation, not a peer-reviewed Fibonacci study. Its benefits depend on superconducting hardware and control choices; the shape alone is not evidence of universal quantum stability.",
+              "citationCount": null,
+              "citationSnapshot": {
+                "count": null,
+                "source": "Not available",
+                "retrievedAt": "2026-10-26"
+              },
+              "studyDesignAssessment": {
+                "category": "technical-article",
+                "peerReviewed": false,
+                "basis": "Hardware architecture explanation. This is not a clinical efficacy trial.",
+                "sources": [
+                  "https://www.ibm.com/quantum/blog/heavy-hex-lattice"
+                ],
+                "reviewedAt": "2026-10-26"
+              },
+              "evidence": {
+                "evidenceType": "Hardware architecture explanation",
+                "evidenceClass": "vendor_technical_explanation",
+                "measurement": "Reduced connectivity to manage frequency collisions and spectator errors.",
+                "relationshipNote": "Compare connectivity, noise and operation overhead explicitly when evaluating alternative geometries.",
+                "clinicalEvidence": false,
+                "reviewDepth": "Publisher or author abstract and bibliographic metadata; selected explanatory sections where available.",
+                "hypothesisBoundary": "Connections to M9 P24, Alpha, Beta, Gamma and Epsilon remain research hypotheses. Shared geometry does not establish a shared physical mechanism."
+              },
+              "jadad": {
+                "status": "not-applicable",
+                "score": null,
+                "reason": "Not a human randomised clinical trial."
+              },
+              "quotes": [],
+              "archiveEntries": [],
+              "verifiedAt": "2026-10-26",
+              "sourceProvenance": {
+                "origin": "Verified follow-up to Gemini research notes",
+                "notionPage": "https://app.notion.com/p/4047b9c99c5680ddb35ec2e2edf83ee4",
+                "reviewedAt": "2026-10-26"
+              },
+              "recordId": "quantum-ibm-heavy-hex-2021",
+              "sourcePages": []
+            },
+            {
+              "id": "general-quantum-error-correction-quantum-heavy-hex-scaling-2026",
+              "title": "Surface code scaling on heavy-hex superconducting quantum processors",
+              "doi": "10.1038/s41467-026-76090-6",
+              "pmid": "42660895",
+              "journal": "Nature Communications",
+              "year": 2026,
+              "published": "2026-07-29",
+              "authors": "Arian Vezvaee; Cesar Benito; Mario Morford-Oberst; Alejandro Bermudez; Daniel A. Lidar",
+              "urls": [
+                "https://www.nature.com/articles/s41467-026-76090-6",
+                "https://doi.org/10.1038/s41467-026-76090-6",
+                "https://pubmed.ncbi.nlm.nih.gov/42660895/",
+                "https://pmc.ncbi.nlm.nih.gov/articles/PMC13522603/"
+              ],
+              "collections": [
+                "general"
+              ],
+              "categories": [
+                "Quantum computing",
+                "Geometry and information"
+              ],
+              "targets": [],
+              "origin": "geometry-literature-20261026",
+              "priority": 1,
+              "kind": "Journal article",
+              "design": "Superconducting quantum-processor experiment and modelling",
+              "summary": "The authors combine surface-code layouts and pulse control on IBM heavy-hex processors. Increasing code size along one direction improves protection of particular logical states. Their analysis shows why both state directions and coherent noise matter when assessing error suppression.",
+              "finding": "The authors combine surface-code layouts and pulse control on IBM heavy-hex processors. Increasing code size along one direction improves protection of particular logical states. Their analysis shows why both state directions and coherent noise matter when assessing error suppression.",
+              "limitation": "Directional improvements do not establish general below-threshold scaling. The paper identifies further noise reduction needed for balanced scaling. It does not test Fibonacci or M9 P24 sequences.",
+              "citationCount": 2,
+              "citationSnapshot": {
+                "count": 2,
+                "source": "Crossref",
+                "retrievedAt": "2026-10-26"
+              },
+              "studyDesignAssessment": {
+                "category": "peer-reviewed",
+                "peerReviewed": true,
+                "basis": "Superconducting quantum-processor experiment and modelling. This is not a clinical efficacy trial.",
+                "sources": [
+                  "https://www.nature.com/articles/s41467-026-76090-6",
+                  "https://doi.org/10.1038/s41467-026-76090-6",
+                  "https://pubmed.ncbi.nlm.nih.gov/42660895/",
+                  "https://pmc.ncbi.nlm.nih.gov/articles/PMC13522603/"
+                ],
+                "reviewedAt": "2026-10-26"
+              },
+              "evidence": {
+                "evidenceType": "Superconducting quantum-processor experiment and modelling",
+                "evidenceClass": "quantum_hardware_experiment",
+                "measurement": "Code embedding, SWAP operations and dynamical decoupling on a constrained hardware graph.",
+                "relationshipNote": "Evaluate several initial states and an information-preservation metric; avoid declaring success from one favourable response or direction.",
+                "clinicalEvidence": false,
+                "reviewDepth": "Publisher or author abstract and bibliographic metadata; selected explanatory sections where available.",
+                "hypothesisBoundary": "Connections to M9 P24, Alpha, Beta, Gamma and Epsilon remain research hypotheses. Shared geometry does not establish a shared physical mechanism."
+              },
+              "jadad": {
+                "status": "not-applicable",
+                "score": null,
+                "reason": "Not a human randomised clinical trial."
+              },
+              "quotes": [],
+              "archiveEntries": [],
+              "verifiedAt": "2026-10-26",
+              "sourceProvenance": {
+                "origin": "Verified follow-up to Gemini research notes",
+                "notionPage": "https://app.notion.com/p/4047b9c99c5680ddb35ec2e2edf83ee4",
+                "reviewedAt": "2026-10-26"
+              },
+              "publisherFamily": "nature",
+              "publisherFamilyLabel": "Nature Portfolio",
+              "recordId": "quantum-heavy-hex-scaling-2026",
+              "sourcePages": []
+            }
+          ],
+          "number": "10.3"
+        },
+        {
+          "id": "quantum-neutral-atoms-materials",
+          "title": "Neutral atoms and geometric quantum materials",
+          "context": "Research on Rydberg-atom measurements and molecular kagome lattices provides candidate methods and physical comparisons.",
+          "trustScore": null,
+          "trustAssessment": {
+            "status": "below-minimum",
+            "peerReviewedArticles": 2,
+            "basis": "Fewer than three peer-reviewed articles; no topic grade.",
+            "scope": "Bibliographic threshold only. It does not validate an Atlas hypothesis or imply clinical efficacy."
+          },
+          "papers": [
+            {
+              "id": "general-quantum-neutral-atoms-materials-quantum-kagome-edge-states-2026",
+              "title": "Direct Observation\nof the Zigzag Edge States of a\nSupramolecular Diatomic Kagome Lattice",
+              "doi": "10.1021/acs.nanolett.6c03195",
+              "pmid": "42915366",
+              "journal": "Nano Letters",
+              "year": 2026,
+              "published": "2026-09-02",
+              "authors": "Ryohei Nemoto; Xiangzhi Meng; Behzad Mortezapour; Alexander Weismann; Saya Nakano; Masahisa Tsuchiizu; Ryuichi Arafune; Noriaki Takagi; Sho Nakamura; Katsunori Wakabayashi; Rie Suizu; Richard Berndt; Takashi Uchihashi; Kunio Awaga",
+              "urls": [
+                "https://doi.org/10.1021/acs.nanolett.6c03195",
+                "https://pubmed.ncbi.nlm.nih.gov/42915366/"
+              ],
+              "collections": [
+                "general"
+              ],
+              "categories": [
+                "Quantum computing",
+                "Geometry and information"
+              ],
+              "targets": [],
+              "origin": "geometry-literature-20261026",
+              "priority": 1,
+              "kind": "Journal article",
+              "design": "Molecular-lattice microscopy and tight-binding calculations",
+              "summary": "The authors assembled a molecular diatomic kagome lattice and observed electronic states along its zigzag edges. Microscopy and calculations connect these states to the lattice's electronic structure and topology.",
+              "finding": "The authors assembled a molecular diatomic kagome lattice and observed electronic states along its zigzag edges. Microscopy and calculations connect these states to the lattice's electronic structure and topology.",
+              "limitation": "This is a quantum-materials result, not a demonstration of a longer-lived qubit or an error-correcting computer. It provides an example of geometry changing electronic behaviour, without establishing a Fibonacci mechanism.",
+              "citationCount": 0,
+              "citationSnapshot": {
+                "count": 0,
+                "source": "Crossref",
+                "retrievedAt": "2026-10-26"
+              },
+              "studyDesignAssessment": {
+                "category": "peer-reviewed",
+                "peerReviewed": true,
+                "basis": "Molecular-lattice microscopy and tight-binding calculations. This is not a clinical efficacy trial.",
+                "sources": [
+                  "https://doi.org/10.1021/acs.nanolett.6c03195",
+                  "https://pubmed.ncbi.nlm.nih.gov/42915366/"
+                ],
+                "reviewedAt": "2026-10-26"
+              },
+              "evidence": {
+                "evidenceType": "Molecular-lattice microscopy and tight-binding calculations",
+                "evidenceClass": "quantum_materials_experiment",
+                "measurement": "Topological electronic edge states in a molecular lattice.",
+                "relationshipNote": "Compare edge and bulk observables in an explicitly defined Hamiltonian; treat this as a materials analogy until a quantum-information observable is tested.",
+                "clinicalEvidence": false,
+                "reviewDepth": "Publisher or author abstract and bibliographic metadata; selected explanatory sections where available.",
+                "hypothesisBoundary": "Connections to M9 P24, Alpha, Beta, Gamma and Epsilon remain research hypotheses. Shared geometry does not establish a shared physical mechanism."
+              },
+              "jadad": {
+                "status": "not-applicable",
+                "score": null,
+                "reason": "Not a human randomised clinical trial."
+              },
+              "quotes": [],
+              "archiveEntries": [],
+              "verifiedAt": "2026-10-26",
+              "sourceProvenance": {
+                "origin": "Verified follow-up to Gemini research notes",
+                "notionPage": "https://app.notion.com/p/4047b9c99c5680ddb35ec2e2edf83ee4",
+                "reviewedAt": "2026-10-26"
+              },
+              "recordId": "quantum-kagome-edge-states-2026",
+              "sourcePages": []
+            },
+            {
+              "id": "general-quantum-neutral-atoms-materials-quantum-rydberg-local-error-correction-2024",
+              "title": "Enhancing detection of topological order by local error correction",
+              "doi": "10.1038/s41467-024-45584-6",
+              "pmid": "38378727",
+              "journal": "Nature Communications",
+              "year": 2024,
+              "published": "2024-02-20",
+              "authors": "Iris Cong; Nishad Maskara; Minh C. Tran; Hannes Pichler; Giulia Semeghini; Susanne F. Yelin; Soonwon Choi; Mikhail D. Lukin",
+              "urls": [
+                "https://www.nature.com/articles/s41467-024-45584-6",
+                "https://doi.org/10.1038/s41467-024-45584-6",
+                "https://pubmed.ncbi.nlm.nih.gov/38378727/",
+                "https://pmc.ncbi.nlm.nih.gov/articles/PMC10879205/"
+              ],
+              "collections": [
+                "general"
+              ],
+              "categories": [
+                "Quantum computing",
+                "Geometry and information"
+              ],
+              "targets": [],
+              "origin": "geometry-literature-20261026",
+              "priority": 1,
+              "kind": "Journal article",
+              "design": "Numerical modelling and analysis of Rydberg-atom measurements",
+              "summary": "Cong and colleagues use local error-correction ideas to identify topological order despite noise. They test the method numerically and apply it to measurements from a Rydberg-atom quantum spin liquid, making it directly relevant to analysing neutral-atom experiments.",
+              "finding": "Cong and colleagues use local error-correction ideas to identify topological order despite noise. They test the method numerically and apply it to measurements from a Rydberg-atom quantum spin liquid, making it directly relevant to analysing neutral-atom experiments.",
+              "limitation": "The method improves the diagnosis of a prepared state. It is not a demonstration that Aquila stores arbitrary information fault-tolerantly, and it does not test M9 P24 sequences.",
+              "citationCount": 25,
+              "citationSnapshot": {
+                "count": 25,
+                "source": "Crossref",
+                "retrievedAt": "2026-10-26"
+              },
+              "studyDesignAssessment": {
+                "category": "peer-reviewed",
+                "peerReviewed": true,
+                "basis": "Numerical modelling and analysis of Rydberg-atom measurements. This is not a clinical efficacy trial.",
+                "sources": [
+                  "https://www.nature.com/articles/s41467-024-45584-6",
+                  "https://doi.org/10.1038/s41467-024-45584-6",
+                  "https://pubmed.ncbi.nlm.nih.gov/38378727/",
+                  "https://pmc.ncbi.nlm.nih.gov/articles/PMC10879205/"
+                ],
+                "reviewedAt": "2026-10-26"
+              },
+              "evidence": {
+                "evidenceType": "Numerical modelling and analysis of Rydberg-atom measurements",
+                "evidenceClass": "numerical_and_quantum_experimental_data_analysis",
+                "measurement": "Locally error-corrected decoration of measured correlations to identify topological order.",
+                "relationshipNote": "Investigate whether the required correlation measurements and state preparation are available in our neutral-atom model before adopting the diagnostic.",
+                "clinicalEvidence": false,
+                "reviewDepth": "Publisher or author abstract and bibliographic metadata; selected explanatory sections where available.",
+                "hypothesisBoundary": "Connections to M9 P24, Alpha, Beta, Gamma and Epsilon remain research hypotheses. Shared geometry does not establish a shared physical mechanism."
+              },
+              "jadad": {
+                "status": "not-applicable",
+                "score": null,
+                "reason": "Not a human randomised clinical trial."
+              },
+              "quotes": [],
+              "archiveEntries": [],
+              "verifiedAt": "2026-10-26",
+              "sourceProvenance": {
+                "origin": "Verified follow-up to Gemini research notes",
+                "notionPage": "https://app.notion.com/p/4047b9c99c5680ddb35ec2e2edf83ee4",
+                "reviewedAt": "2026-10-26"
+              },
+              "publisherFamily": "nature",
+              "publisherFamilyLabel": "Nature Portfolio",
+              "recordId": "quantum-rydberg-local-error-correction-2024",
+              "sourcePages": []
+            }
+          ],
+          "number": "10.4"
+        },
+        {
+          "id": "quantum-fractal-codes",
+          "title": "Fractal structure and information protection",
+          "context": "Code properties provide a testable mathematical starting point for investigating fractal organisation.",
+          "trustScore": null,
+          "trustAssessment": {
+            "status": "below-minimum",
+            "peerReviewedArticles": 1,
+            "basis": "Fewer than three peer-reviewed articles; no topic grade.",
+            "scope": "Bibliographic threshold only. It does not validate an Atlas hypothesis or imply clinical efficacy."
+          },
+          "papers": [
+            {
+              "id": "general-quantum-fractal-codes-quantum-haah-fractal-code-2011",
+              "title": "Local stabilizer codes in three dimensions without string logical operators",
+              "doi": "10.1103/PhysRevA.83.042330",
+              "pmid": null,
+              "journal": "Physical Review A",
+              "year": 2011,
+              "published": "2011-04-22",
+              "authors": "Jeongwan Haah",
+              "urls": [
+                "https://doi.org/10.1103/PhysRevA.83.042330"
+              ],
+              "collections": [
+                "general"
+              ],
+              "categories": [
+                "Quantum computing",
+                "Geometry and information"
+              ],
+              "targets": [],
+              "origin": "geometry-literature-20261026",
+              "priority": 1,
+              "kind": "Journal article",
+              "design": "Theoretical three-dimensional stabilizer codes",
+              "summary": "Haah constructs local stabilizer codes in three dimensions without string-like logical operators. The work introduces a different geometric organisation of information and errors, associated with the fractal structure of logical operations in the cubic-code family.",
+              "finding": "Haah constructs local stabilizer codes in three dimensions without string-like logical operators. The work introduces a different geometric organisation of information and errors, associated with the fractal structure of logical operations in the cubic-code family.",
+              "limitation": "This is code theory, not evidence that any fractal pattern stabilises a physical quantum computer. It does not demonstrate a Fibonacci connection or a complete self-correcting memory operating at finite temperature.",
+              "citationCount": 591,
+              "citationSnapshot": {
+                "count": 591,
+                "source": "Crossref",
+                "retrievedAt": "2026-10-26"
+              },
+              "studyDesignAssessment": {
+                "category": "peer-reviewed",
+                "peerReviewed": true,
+                "basis": "Theoretical three-dimensional stabilizer codes. This is not a clinical efficacy trial.",
+                "sources": [
+                  "https://doi.org/10.1103/PhysRevA.83.042330"
+                ],
+                "reviewedAt": "2026-10-26"
+              },
+              "evidence": {
+                "evidenceType": "Theoretical three-dimensional stabilizer codes",
+                "evidenceClass": "quantum_error_correction_theory",
+                "measurement": "Three-dimensional local constraints and non-string logical operators.",
+                "relationshipNote": "Compare exact code properties and noise response before drawing connections between fractal appearance and information protection.",
+                "clinicalEvidence": false,
+                "reviewDepth": "Publisher or author abstract and bibliographic metadata; selected explanatory sections where available.",
+                "hypothesisBoundary": "Connections to M9 P24, Alpha, Beta, Gamma and Epsilon remain research hypotheses. Shared geometry does not establish a shared physical mechanism."
+              },
+              "jadad": {
+                "status": "not-applicable",
+                "score": null,
+                "reason": "Not a human randomised clinical trial."
+              },
+              "quotes": [],
+              "archiveEntries": [],
+              "verifiedAt": "2026-10-26",
+              "sourceProvenance": {
+                "origin": "Verified follow-up to Gemini research notes",
+                "notionPage": "https://app.notion.com/p/4047b9c99c5680ddb35ec2e2edf83ee4",
+                "reviewedAt": "2026-10-26"
+              },
+              "recordId": "quantum-haah-fractal-code-2011",
+              "sourcePages": []
+            }
+          ],
+          "number": "10.5"
         }
       ]
     }
   ],
-  "paperCount": 310,
-  "topicCount": 24,
-  "uniquePaperCount": 307
+  "paperCount": 347,
+  "topicCount": 34,
+  "uniquePaperCount": 344
 }
