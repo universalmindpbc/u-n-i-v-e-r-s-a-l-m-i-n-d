@@ -1,0 +1,30 @@
+{
+  "schema": "universal-informatics/research-directions/v1",
+  "revision": "r1",
+  "directions": [
+    {
+      "id": "fibonacci-quantum-stability",
+      "status": "working_hypothesis",
+      "question": "Do M9 P24 Alpha, Beta, Gamma and Epsilon sequences change the persistence and robustness of quantum information compared with matched repeating and shuffled controls?",
+      "stimulus_publication_id": "nature-fibonacci-s41586-022-04853-4",
+      "doi": "10.1038/s41586-022-04853-4",
+      "source": "https://www.nature.com/articles/s41586-022-04853-4",
+      "data_source": "https://doi.org/10.5281/zenodo.6514878",
+      "established_finding": "The 2022 study demonstrated a dynamical topological phase in ten trapped-ion qubits. A Fibonacci-ordered drive maintained edge-qubit quantum information under specified perturbations longer than the periodic comparison.",
+      "new_hypothesis": "Universal Informatics will investigate whether its modular Fibonacci sequences and their geometric representations produce useful, reproducible quantum responses, including improved stability under controlled perturbations.",
+      "distinctions": ["The paper's Fibonacci ordering of two pulse operations is different from a repeating modulo-nine Pisano-24 sequence.", "The paper did not test our Alpha, Beta, Gamma or Epsilon sequences, a hexagonal stability mechanism, or transcription factor binding.", "Aquila neutral-atom controls differ from the trapped-ion processor. A port requires a validated Hamiltonian and observable; it is a new experiment, not a direct replication.", "The completed OXTR qualification measured excited-state responses at one endpoint. Those records do not measure a coherence lifetime."],
+      "next_permitted_actions": ["Inspect the authors' open figure data and define a reproducible baseline.", "Freeze exact sequence definitions, pulse mapping, measurement times and comparison rules before testing.", "Compare original Fibonacci pulse ordering, M9 P24 sequences, matched repeating controls and multiple shuffled controls with equal duration, pulse counts and bounded pulse amplitudes.", "Simulate quantum dynamics and controlled perturbations; evaluate time-dependent coherence or state-memory observables supported by the chosen model.", "Separate temporal ordering from atom geometry by varying one at a time; repeat any promising result across noise settings and independent runs.", "Prepare a priced hardware proposal only after the simulation and control checks."],
+      "positive_signal": "A repeatable improvement in a specified quantum-information measure over matched controls, beyond uncertainty, across more than one perturbation setting.",
+      "null_signal": "No repeatable improvement with adequate precision. Wide uncertainty leaves the question unresolved rather than proving absence.",
+      "execution": "Planning and existing-data analysis authorised. No recurring hardware execution, new paid GPU runs or increased quantum budget."
+    },
+    {
+      "id": "oxtr-binding-prediction",
+      "status": "ongoing_research",
+      "question": "Do quantum responses generated from Fibonacci and M9 P24 representations improve our ability to predict transcription factor occupancy around OXTR?",
+      "related_experiments": ["oxtr-qrc-01-qualification/r1", "oxtr-agent-follow-through-pilot/r1"],
+      "current_finding": "The initial classical Fibonacci-spacing and Phi Ratio test is inconclusive. M9 P24 quantum prediction remains untested.",
+      "relationship": "Continues alongside quantum-stability research. A stability result does not establish binding prediction or a mental health intervention."
+    }
+  ]
+}

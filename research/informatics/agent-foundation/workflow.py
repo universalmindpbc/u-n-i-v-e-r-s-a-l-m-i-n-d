@@ -47,10 +47,10 @@ class Study(TypedDict, total=False):
 
 class Ledger:
     """Single-service prototype ledger. Unknown calls stay reserved on restart."""
-    def __init__(self,path,token_limit=60000,call_limit=4):
+    def __init__(self,path,token_limit=60000,call_limit=4,sync=lambda:None):
         self.db=sqlite3.connect(path)
         self.db.execute('CREATE TABLE IF NOT EXISTS actions (key TEXT PRIMARY KEY, study TEXT, reserve INTEGER, result TEXT)')
-        self.token_limit=token_limit;self.call_limit=call_limit
+        self.token_limit=token_limit;self.call_limit=call_limit;self.sync=sync
     def run(self,study,key,reserve,fn):
         self.db.execute('BEGIN IMMEDIATE')
         try:
@@ -64,10 +64,11 @@ class Ledger:
             self.db.execute('INSERT INTO actions VALUES (?,?,?,NULL)',(key,study,reserve));self.db.commit()
         except Exception:
             self.db.rollback();raise
+        self.sync() # Persist the reservation before any paid external request.
         result=fn()
         actual=result.get('tokens',reserve)
         if not isinstance(actual,int) or actual<0 or actual>reserve:raise RuntimeError('Usage exceeds reservation; reconcile before continuation.')
-        self.db.execute('UPDATE actions SET reserve=?,result=? WHERE key=?',(actual,json.dumps(result),key));self.db.commit()
+        self.db.execute('UPDATE actions SET reserve=?,result=? WHERE key=?',(actual,json.dumps(result),key));self.db.commit();self.sync()
         return result
 
 class OpenAIResponses:

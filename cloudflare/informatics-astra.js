@@ -1,4 +1,5 @@
 // Bounded research sessions; no page-level login. Provider credentials never reach the browser.
+import {retrieveAstraMemory} from './informatics-astra-memory.js';
 const json=(data,status=200)=>Response.json(data,{status,headers:{'Cache-Control':'no-store'}});
 const terminal=new Set(['complete','failed','cancelled','needs_attention']);
 const fail=(message,status=400)=>Object.assign(new Error(message),{status,publicMessage:true});
@@ -32,10 +33,16 @@ export async function createStudy(env,request,receipt,requestKey){
 export async function astraRoute(request,env){
  if(env.ASTRA_ENABLED!=='true')return json({error:'Agent execution is unavailable.'},404);
  const path=new URL(request.url).pathname;
+ if(path==='/agent/memory'){
+  if(request.method!=='POST')return json({error:'Use POST for research retrieval.'},405);
+  if(!env.ASTRA_WORKER_TOKEN||request.headers.get('Authorization')!=='Bearer '+env.ASTRA_WORKER_TOKEN)return json({error:'Worker authentication required.'},401);
+  const raw=await request.text();if(raw.length>3000)return json({error:'Query too large.'},413);
+  return json(await retrieveAstraMemory(env,JSON.parse(raw).query));
+ }
  if(path==='/agent/control'){
   if(!env.ASTRA_WORKER_TOKEN||request.headers.get('Authorization')!=='Bearer '+env.ASTRA_WORKER_TOKEN)return json({error:'Worker authentication required.'},401);
   const text=await request.text();if(text.length>500000)return json({error:'Update too large.'},413);
-  const body=JSON.parse(text);if(!['claim','update','heartbeat'].includes(body.op))return json({error:'Unknown worker action.'},400);
+  const body=JSON.parse(text);if(!['pending','claim','update','heartbeat'].includes(body.op))return json({error:'Unknown worker action.'},400);
   return json(await broker(env,body));
  }
  const clientId=await researchIdentity(request,env);
@@ -54,6 +61,7 @@ export async function astraStorage(storage,b){
   const safe=t=>{const {lease,...v}=t;return v;};
   const answer=(d,status=200)=>({data:d,status});
   let result;
+  if(b.op==='pending')return answer({pending:state.tasks.some(t=>!terminal.has(t.status)&&(!t.lease||t.lease.until<now))});
   if(b.op==='create'){
    const existing=state.tasks.find(t=>t.requestKey===b.requestKey&&(t.clientId||'legacy-owner')===(b.clientId||'legacy-owner'));
    if(existing){if(existing.question!==b.question)return answer({error:'Request identifier already belongs to another question.'},409);return answer(safe(existing));}

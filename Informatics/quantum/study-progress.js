@@ -1,4 +1,4 @@
-import {renderAgentReport} from './agent.js?v=unified-1';
+import {renderAgentReport} from './agent.js?v=unified-2';
 let pending;
 export function loadContinuation(){return pending||(pending=fetch('experiments/oxtr-agent-follow-through-pilot/r1/experiment.json').then(r=>{if(!r.ok)throw Error('The genomic study record did not load.');return r.json();}).then(b=>{if(b.experiment_id!=='oxtr-agent-follow-through-pilot'||b.measurements.local_cudaq.cases.length!==16)throw Error('The genomic record is incomplete.');return b;}).catch(e=>{pending=null;throw e;}));}
 export function continuationTask(b){return {id:b.execution.task_id,status:'complete',report:{version:b.methods.version,question:b.question,narrative:b.interpretation,analysis:b.measurements.classical,prior_quantum:b.measurements.reused_gpu_aquila,prepared_quantum:b.measurements.local_cudaq,cohort:b.methods.cohort,archive:b}};}

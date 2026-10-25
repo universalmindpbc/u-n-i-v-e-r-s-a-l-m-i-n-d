@@ -1,9 +1,9 @@
 import {appendGenomic,appendLocalChecks} from './study-progress.js?v=1';
-import {agentHeaders,ensureAgentSession,followAgent,resetAgent,renderAgentReport,setupAgent} from './agent.js?v=unified-1';
-import './study.js?v=unified-1';
+import {agentHeaders,ensureAgentSession,followAgent,resetAgent,renderAgentReport,setupAgent} from './agent.js?v=unified-2';
+import './study.js?v=unified-2';
 import './hypothesis.js?v=1';
 import {renderResponse} from './response-view.js?v=6';
-import {interpretations,appendInsightPanel,appendComparison,appendEvidenceSummary,appendNextTest} from './insights.js?v=unified-1';
+import {interpretations,appendInsightPanel,appendComparison,appendEvidenceSummary,appendNextTest} from './insights.js?v=unified-2';
 import {verifiedReport,reportPair,reportContext,timing} from './result-contract.js?v=2';
 const $=s=>document.querySelector(s),node=(tag,text,cls)=>{const n=document.createElement(tag);if(text!==undefined)n.textContent=text;if(cls)n.className=cls;return n;};
 document.body.classList.toggle('embedded',new URLSearchParams(location.search).get('embedded')==='1');
@@ -43,7 +43,7 @@ function refreshReports(){const context=reportContext(active,recordedState,busy)
  if(active?.agent){$('#classical-step-status').textContent=active.agent.status==='complete'?'Insights ready':'Astra analysis';$('#classical-step-timing').textContent=active.agent.status==='complete'?'Open your findings':'Progress saved automatically';$('#quantum-step-status').textContent='Saved measurements';$('#quantum-step-timing').textContent='16 saved Aquila runs';}
 }
 const resultsDialog=$('#results-dialog'),resultsContent=$('#results-dialog-content');let resultTrigger=null,resultScroll=0,priorOverflow='';
-function openResults(kind,shared=false,trigger=document.activeElement){
+function openResults(kind,shared=false,trigger=document.activeElement,reportTask=null){
  if(!shared&&active?.agent){if(kind==='classical')kind='genomic';shared=true;}
  const context=reportContext(shared?null:active,recordedState,busy),{study,reports}=context;
  const c=verifiedReport(reports.classical,study,'classical'),s=verifiedReport(reports.simulation,study,'simulation'),q=verifiedReport(reports.quantum,study,'quantum');
@@ -51,9 +51,9 @@ function openResults(kind,shared=false,trigger=document.activeElement){
  const first=!resultsDialog.open;if(first){resultTrigger=trigger;resultScroll=window.scrollY;priorOverflow=document.documentElement.style.overflow;}
  $('#results-dialog-title').textContent={classical:'Classical & CUDA-Q insights',simulation:'CUDA-Q · simulation insights',quantum:'Aquila · quantum insights',comparison:'The complete study · insights',genomic:'Genomic analysis · binding prediction',next:'Next quantum test · human decision'}[kind];
  const oxtr=study?.id==='oxtr-qrc-01';resultsDialog.querySelector('.eyebrow').textContent=oxtr?'OXTR · CONTINUING STUDY':'YOUR INVESTIGATION';resultsContent.replaceChildren();
- if(oxtr){const nav=node('nav',undefined,'result-reader-nav');nav.setAttribute('aria-label','Study result views');for(const [key,title]of[['simulation','CUDA-Q'],['quantum','Aquila'],['genomic','Genomic analysis'],['comparison','Compare'],['next','Next test']]){const button=node('button',title);button.dataset.reader=key;button.setAttribute('aria-pressed',String(key===(kind==='classical'?'simulation':kind)));button.onclick=()=>openResults(key,shared,resultTrigger);nav.append(button);}resultsContent.append(nav);resultsContent.append(node('p','Study question: '+studyQuestion,'reader-question'));}
+ if(oxtr){const nav=node('nav',undefined,'result-reader-nav');nav.setAttribute('aria-label','Study result views');for(const [key,title]of[['simulation','CUDA-Q'],['quantum','Aquila'],['genomic','Genomic analysis'],['comparison','Compare'],['next','Next test']]){const button=node('button',title);button.dataset.reader=key;button.setAttribute('aria-pressed',String(key===(kind==='classical'?'simulation':kind)));button.onclick=()=>openResults(key,shared,resultTrigger,reportTask);nav.append(button);}resultsContent.append(nav);resultsContent.append(node('p','Study question: '+studyQuestion,'reader-question'));}
  const slot=node('div',undefined,'result-slot');slot.id='modal-'+kind+'-report';resultsContent.append(slot);
- if(kind==='genomic'&&oxtr){appendGenomic(slot,node,shared?null:active?.agent);
+ if(kind==='genomic'&&oxtr){appendGenomic(slot,node,reportTask||(!shared?active?.agent:null));
  }else if(kind==='next'&&oxtr){appendNextTest(slot,node);
  }else if(kind==='comparison'){
   if(reportPair(c,q)&&reports.comparison?.state==='complete'&&reports.comparison.classical_run_id===c.receipt.run_id&&reports.comparison.quantum_run_id===q.receipt.run_id){slot.dataset.state='complete';appendComparison(slot,node);const methods=details('Recorded interpretation and provenance',[reports.comparison.finding,`Classical run: ${c.receipt.run_id}`,`Quantum run: ${q.receipt.run_id}`]);slot.append(methods);}else empty(slot,'Comparison awaiting matched evidence','A comparison appears when the matching classical and quantum records are available.');
@@ -85,7 +85,7 @@ const natureDialog=$('#nature-dialog');$('#open-nature').onclick=()=>{natureDial
 refreshReports();try{if(parent.location.hash==='#study')step('study');}catch{}
 
 function openAgentResults(task){
- if(!task)return;openResults('genomic',true,document.activeElement);if(task.report){const slot=$('#modal-genomic-report');slot.replaceChildren();renderAgentReport(slot,task,{integrated:true});}
+ if(!task)return;openResults('genomic',true,document.activeElement,task);
 }
 
 setupAgent(openAgentResults);
