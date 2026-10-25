@@ -66,3 +66,9 @@ Ben's supplied `ChatGPT Image 25 Oct 2026, 10_12_15.png` depicts the broader Uni
 - Jobs have stable identifiers; retries reconcile existing jobs before submitting again. Unknown paid outcomes retain their budget reservation.
 - Record sources, parameters, tool outputs, decisions and report revisions. Do not depend on private model reasoning as an audit trail.
 - The agent continues useful authorised work until the goal is answered, a real dependency needs a human, or a recorded limit is reached. It never manufactures a favourable result to satisfy the goal.
+
+## Owner execution milestone — 25 October 2026
+
+The next implementation is `../astra-service/`: a private Quantum Atlas task broker and LangGraph worker. It follows the OXTR question through saved quantum-record checks, public DNA preparation, a classical prediction pilot, 16 local CUDA-Q checks for a new matched pair, and a plain-language report. The owner deferred Gemini oversight and public autonomous execution. This predefined, bounded recipe records automated preliminary review status; it does not fabricate CSO approval.
+
+No new Aquila submission is authorised today. The worker uses zero new hardware spend and zero paid GPU spend. The local worker is a development service on this Mac, not the later always-on research system. Future funded M1–M1001 investigations retain the same provider-neutral records, budget boundaries and LangGraph state, with separately authorised provider execution.

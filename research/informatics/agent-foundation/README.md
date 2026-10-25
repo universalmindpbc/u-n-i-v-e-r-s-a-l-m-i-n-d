@@ -2,7 +2,9 @@
 
 The current architecture decision is in [ROADMAP.md](ROADMAP.md): LangGraph owns orchestration; GPT-6 Astra performs scientific work; Gemini 4 is the intended Chief Scientific Officer reviewing strategy and completed work. Start with Astra and retain replaceable provider adapters. The assessment below is background, superseded by this owner decision where it lists unresolved choices.
 
-Date: 25 October 2026. Status: a LangGraph prototype has run GPT-6 Astra against the existing public OXTR results using three read-only tools. It saves checkpoints and stops at completion review. No autonomous study service, Gemini connection or new hardware execution is active.
+The next private execution milestone is documented in [astra-service](../astra-service/README.md). It adds automatic DNA preparation, a classical prediction pilot, local CUDA-Q preparation and website task delivery. The earlier audit prototype below remains available.
+
+Date: 25 October 2026. Original prototype status: a LangGraph prototype has run GPT-6 Astra against the existing public OXTR results using three read-only tools. It saves checkpoints and stops at completion review. No autonomous study service, Gemini connection or new hardware execution is active.
 
 ## Product contract
 

@@ -1,3 +1,4 @@
+import {createStudy} from './informatics-astra.js';
 import study from '../Informatics/quantum/data/oxtr-qrc-study.json';
 import {compileAssembly} from './informatics-quantum-model.js';
 import {quantumAllowance} from './informatics-quantum-budget.js';
@@ -36,7 +37,8 @@ Other genes, personalized medical questions, general educational queries and tas
   receipt.study={id:'dna-assembly-'+id,version:calculation.version};receipt.status='classical_complete';receipt.message='Your classical result is ready.';
   receipt.reports.classical={study_id:receipt.study.id,study_version:receipt.study.version,state:'complete',kind:'classical',title:'Your reconstructed DNA sequence',finding:calculation.disconnected?'The fragments contain an unsupported join. A continuous assembly is not established.':calculation.optimalOrders===1?'The supplied fragments have one best ordering under the overlap calculation.':`The fragments have ${calculation.optimalOrders} equally best orderings. The sequence is not uniquely resolved.`,calculation,receipt:{run_id:id,execution:'classical-cpu',backend:'Exact enumeration',completed_at:createdAt,input_sha256,model_version:calculation.version},details:calculation.assumptions};
  }
- return Response.json(receipt,{headers:{'Cache-Control':'no-store'}});
+ const delivered=route.route==='oxtr_occupancy'?await createStudy(env,request,receipt,body.requestKey):receipt;
+ return Response.json(delivered,{headers:{'Cache-Control':'no-store'}});
 }
 // Compatibility for existing clients; responses contain calculation receipts, never plans.
 export const quantumPlan=quantumQuestion;

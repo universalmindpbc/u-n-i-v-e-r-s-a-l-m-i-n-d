@@ -1,3 +1,4 @@
+import {astraStorage} from './informatics-astra.js';
 // A question is reserved once. Its bounded retrieval/model loop is included.
 // Automated verification uses a separately authenticated, equally bounded pool.
 import {pooledPlanning} from './informatics-quantum-budget.js';
@@ -8,7 +9,8 @@ export class BudgetError extends Error {
 export class ResearchBudget {
  constructor(state){this.state=state;}
  async fetch(request){
-  const {kind,inspect,scope,quantum}=await request.json();
+  const {kind,inspect,scope,quantum,astra}=await request.json();
+  if(astra){const r=await astraStorage(this.state.storage,astra);return Response.json(r.data,{status:r.status});}
   if(quantum)return Response.json(await pooledPlanning(this.state.storage,inspect));
   const scopedLimits=scope==='connectors'?{...limits,research_question:30}:limits;
   if(!inspect&&!limits[kind])return new Response('{}',{status:400});
