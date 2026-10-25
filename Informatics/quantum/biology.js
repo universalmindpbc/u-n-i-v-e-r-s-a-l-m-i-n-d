@@ -1,7 +1,7 @@
 import './study.js?v=5';
 import './hypothesis.js?v=1';
 import {renderResponse} from './response-view.js?v=5';
-import {interpretations,appendInsightPanel,appendComparison,appendEvidenceSummary,appendNextTest} from './insights.js?v=2';
+import {interpretations,appendInsightPanel,appendComparison,appendEvidenceSummary,appendNextTest} from './insights.js?v=3';
 import {verifiedReport,reportPair,reportContext,timing} from './result-contract.js?v=2';
 const $=s=>document.querySelector(s),node=(tag,text,cls)=>{const n=document.createElement(tag);if(text!==undefined)n.textContent=text;if(cls)n.className=cls;return n;};
 document.body.classList.toggle('embedded',new URLSearchParams(location.search).get('embedded')==='1');
