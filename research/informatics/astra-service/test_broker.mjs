@@ -13,3 +13,9 @@ const secret='fixture-secret-which-is-not-a-real-service-secret',encode=s=>Buffe
 const env={ASTRA_SESSION_SECRET:secret,ALLOWED_ORIGIN:'https://staging.universalmind.tv'};
 assert(await ownerAllowed(new Request('https://test',{headers:{Authorization:'Bearer '+body+'.'+sig}}),env));assert(!await ownerAllowed(new Request('https://test'),env));assert(!await ownerAllowed(new Request('https://test',{headers:{Authorization:'Bearer '+body+'.invalid'}}),env));
 console.log('PASS: idempotency, conflicting retry, exclusive lease, cancelled worker, report requirement, owner signatures');
+const a=await astraStorage(s,{op:'create',requestKey:'session-key-123456789',question:'Test OXTR patterns',clientId:'a'.repeat(32)}),aid=a.data.id;
+assert.equal((await astraStorage(s,{op:'get',id:aid,clientId:'b'.repeat(32)})).status,404);
+assert.equal((await astraStorage(s,{op:'cancel',id:aid,clientId:'b'.repeat(32)})).status,404);
+assert.equal((await astraStorage(s,{op:'get',id:aid,clientId:'a'.repeat(32)})).status,200);
+assert.equal((await astraStorage(s,{op:'get',id,clientId:'a'.repeat(32)})).status,404);
+console.log('PASS: anonymous research sessions cannot read or cancel another session or legacy-owner task');
