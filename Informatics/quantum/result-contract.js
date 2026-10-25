@@ -8,4 +8,11 @@ export function verifiedReport(report,study,kind){
  return report;
 }
 export function reportPair(classical,quantum){return !!(classical&&quantum&&classical.study_id===quantum.study_id&&classical.study_version===quantum.study_version&&classical.receipt.input_sha256===quantum.receipt.input_sha256);}
-export const timing={classical:'Approximately 5–10 minutes',quantum:'Approximately 24 hours or longer'};
+export const timing={classical:'Approximately 5–10 minutes',quantum:'Timing varies with the quantum queue'};
+export const sharedStudy={id:'oxtr-qrc-01',version:'1.0.0'};
+export function reportContext(active,state,pending=false){
+ if(pending)return {study:null,reports:{},matched:false,shared:false};
+ const study=active?active.study:sharedStudy;
+ const matched=!!(study&&state?.study_id===study.id&&state.study_version===study.version);
+ return {study,reports:matched?state.reports||{}:active?.reports||{},matched,shared:!active&&matched};
+}

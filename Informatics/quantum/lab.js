@@ -172,9 +172,14 @@ window.addEventListener('pagehide',()=>{worker?.terminate();clearTimeout(workerT
 document.addEventListener('click',e=>{
  const a=e.target.closest('[data-global-area]');if(embedded&&a){e.preventDefault();parent.postMessage({type:'quantum:navigate',area:a.dataset.globalArea},location.origin);}
 });
-get('data/reference.json').then(data=>{
+get('data/reference.json?v=3').then(data=>{
  reference=data;const h=data.hardware;
- $('#hardware-snapshot').textContent=`Aquila: last verified ${h.last_verified_status.toLowerCase()} · ${h.last_checked_utc.replace('T',' ').replace('Z',' UTC')}.${h.queue_position?' Queue position '+h.queue_position+' at that check.':''} Dated API snapshot; no hardware results are displayed.`;
+ const snapshot=$('#hardware-snapshot');
+ if(h.last_verified_status==='COMPLETED'&&h.results_available){
+  snapshot.textContent=`Aquila connection test complete · ${h.shots_returned} shots returned · 25 October 2026. Submission to completion: 18 hours 52 minutes.`;
+  const result=document.createElement('details'),heading=document.createElement('summary'),body=document.createElement('p'),limit=document.createElement('p');
+  heading.textContent='Recorded Aquila measurements';body.textContent=`${h.fully_occupied_shots} shots began with both atoms present; ${h.initially_empty_shots} had a missing atom. Among the fully occupied shots: `+Object.entries(h.counts_fully_occupied).map(([k,v])=>`${k}: ${v}`).join(' · ')+'.';limit.textContent=h.interpretation;result.append(heading,body,limit);snapshot.after(result);
+ }else snapshot.textContent=`Aquila: last verified ${h.last_verified_status.toLowerCase()} · ${h.last_checked_utc}. Archived task status.`;
  if(current)render();
 }).catch(e=>{$('#hardware-snapshot').textContent='Archived hardware status unavailable. '+e.message;$('#comparison-note').textContent='Recorded GPU data unavailable; reload to retry.';});
 simulate(BASE,{saveRun:false});

@@ -60,11 +60,30 @@
   "hardware": {
     "device": "QuEra Aquila via Amazon Braket",
     "shots_requested": 100,
-    "last_verified_status": "QUEUED",
-    "last_checked_utc": "2026-10-24T18:18:38Z",
-    "refresh": "Verified through the Amazon Braket API using the restricted terminal role. This is a dated snapshot; the website does not poll AWS.",
-    "results_available": false,
-    "queue_position": "456"
+    "shots_returned": 100,
+    "fully_occupied_shots": 97,
+    "initially_empty_shots": 3,
+    "last_verified_status": "COMPLETED",
+    "last_checked_utc": "2026-10-25T00:50:10Z",
+    "completed_at_utc": "2026-10-24T22:59:41.681000+00:00",
+    "submitted_at_utc": "2026-10-24T04:07:26.498000+00:00",
+    "elapsed_seconds": 67935.183,
+    "task_id": "3ae0ec02-160e-45a0-8f37-c88c1bbccda7",
+    "results_available": true,
+    "counts_fully_occupied": {
+      "gg": 6,
+      "gr": 45,
+      "rg": 44,
+      "rr": 2
+    },
+    "conditional_probabilities_fully_occupied": {
+      "gg": 0.061855670103092786,
+      "gr": 0.4639175257731959,
+      "rg": 0.4536082474226804,
+      "rr": 0.020618556701030927
+    },
+    "interpretation": "Hardware connectivity test. Atom loss and readout errors can mimic excitation; the ideal CPU model excludes hardware noise. No quantum advantage claim.",
+    "refresh": "Completed task metadata and downloaded measurements. This archived record does not submit or poll quantum tasks."
   },
   "limits": [
     "GPU samples are classical simulation, not QPU measurements.",

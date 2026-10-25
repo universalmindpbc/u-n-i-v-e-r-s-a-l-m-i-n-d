@@ -1,6 +1,9 @@
 {
+  "shared_results_without_ai": true,
+  "unrelated_question_isolation": true,
+  "recorded_timing_verified": true,
   "passed": true,
-  "at": "2026-10-25T01:33:51.416Z",
+  "at": "2026-10-25T01:56:13.733Z",
   "internal_routing_only": true,
   "no_plans_or_followup_checklists": true,
   "real_classical_assembly": true,

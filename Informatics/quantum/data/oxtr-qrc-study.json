@@ -629,7 +629,7 @@
     "phase": "measurement_qualification",
     "return_url": "https://staging.universalmind.tv/informatics/?entry=research&area=quantum#study",
     "simulation": "Approximately 5\u201310 minutes from processing start, including the classical calculation and CUDA-Q simulation. Planning estimate; queue and workload can extend it.",
-    "hardware": "Approximately 24 hours or longer from processing start. Planning estimate; device windows, queue and workload can extend it.",
+    "hardware": "Timing varies with device availability and the quantum queue. The 25 October 2026 qualification batch completed in 16 minutes 51 seconds from first submission to final completion; the earlier two-atom test took 18 hours 52 minutes. Observed timings are not delivery guarantees.",
     "report": "Publish simulation findings first, then the combined report after hardware completion and evaluation. Clearly identify each version.",
     "notification": "Optional email with verified consent at study launch; send a private return link without biological data in the message. Email delivery is not active in this design review.",
     "persistence": "The review interface saves an optional study record and delivery preference on this device. Execution requires a durable study record independent of browser lifetime.",
