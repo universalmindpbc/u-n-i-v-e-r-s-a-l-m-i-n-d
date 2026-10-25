@@ -90,6 +90,6 @@ const llms=`# Universal Informatics\n\nBioinformatics platform for mental health
 fs.writeFileSync(path.join(site,'llms.txt'),llms);
 const rootLLMS=fs.readFileSync(path.join(root,'llms.txt'),'utf8').split('\n## Universal Informatics\n')[0];
 fs.writeFileSync(path.join(root,'llms.txt'),rootLLMS+'\n## Universal Informatics\n\n'+llms.split('\n').slice(2).join('\n'));
-const report={generatedAt:'2026-10-26',publications:publications.length,atlas:atlas.records.length,experiments:experiments.experiments.length,pages:pages.length,sourceHashes:sources,publicationRecordSHA256:sha(JSON.stringify(publications)),canonicalPaths:canonical};
+const report={datasetManifestSHA256:sha(read('exports/manifest.json')),generatedAt:'2026-10-26',publications:publications.length,atlas:atlas.records.length,experiments:experiments.experiments.length,pages:pages.length,sourceHashes:sources,publicationRecordSHA256:sha(JSON.stringify(publications)),canonicalPaths:canonical};
 const evidence=path.join(root,'research/informatics/discovery-20261026');fs.mkdirSync(evidence,{recursive:true});fs.writeFileSync(path.join(evidence,'build.json'),JSON.stringify(report,null,2)+'\n');
 console.log(JSON.stringify({publications:report.publications,atlas:report.atlas,experiments:report.experiments,pages:report.pages}));

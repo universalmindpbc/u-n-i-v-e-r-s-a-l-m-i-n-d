@@ -5,38 +5,47 @@
 User-agent: GPTBot
 Disallow: /
 Allow: /informatics/
+Allow: /informatics$
 
 User-agent: Google-Extended
 Disallow: /
 Allow: /informatics/
+Allow: /informatics$
 
 User-agent: Applebot-Extended
 Disallow: /
 Allow: /informatics/
+Allow: /informatics$
 
 User-agent: ClaudeBot
 Disallow: /
 Allow: /informatics/
+Allow: /informatics$
 
 User-agent: CCBot
 Disallow: /
 Allow: /informatics/
+Allow: /informatics$
 
 User-agent: Bytespider
 Disallow: /
 Allow: /informatics/
+Allow: /informatics$
 
 User-agent: Amazonbot
 Disallow: /
 Allow: /informatics/
+Allow: /informatics$
 
 User-agent: meta-externalagent
 Disallow: /
 Allow: /informatics/
+Allow: /informatics$
 
 User-agent: *
 # Public Informatics, including all research records and dataset formats.
 Allow: /informatics/
+Allow: /informatics$
 # Block the complete implementation and internal document surface by default.
 # The explicit public URLs below are longer matches and therefore take priority.
 Disallow: /vogue/iam/

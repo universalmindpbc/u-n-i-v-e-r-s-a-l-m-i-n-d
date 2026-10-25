@@ -41,6 +41,7 @@ fi
 "$NODE_BIN" "$ROOT_DIR/tools/check-circle-rooms.mjs"
 "$NODE_BIN" "$ROOT_DIR/tools/check-care-worlds.mjs"
 "$NODE_BIN" "$ROOT_DIR/tools/check-public-crawler-surface.mjs"
+python3 "$ROOT_DIR/tools/check-informatics-discovery.py"
 "$NODE_BIN" "$ROOT_DIR/tools/check-sovereignty-boundaries.mjs"
 "$NODE_BIN" "$ROOT_DIR/tools/check-shopfront-mockup.mjs"
 "$NODE_BIN" "$ROOT_DIR/tools/check-happiness-rewards.mjs"

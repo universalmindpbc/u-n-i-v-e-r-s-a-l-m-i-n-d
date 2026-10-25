@@ -34,7 +34,7 @@ def allowed(text, agent, url):
 robots = (ROOT / 'robots.txt').read_text()
 staging = (ROOT / 'robots-staging.txt').read_text()
 agents = ['GPTBot', 'OAI-SearchBot', 'ChatGPT-User', 'Google-Extended', 'Googlebot', 'Applebot-Extended', 'ClaudeBot', 'Claude-SearchBot', 'Claude-User', 'CCBot', 'Bytespider', 'Amazonbot', 'meta-externalagent', 'PerplexityBot', 'Unknown-LLM-Crawler']
-routes = ['/informatics/', '/informatics/index.html', '/informatics/read/access.html', '/informatics/pilot-v1/m9.json', '/informatics/pilot-v1/csv-records/m9.csv', '/informatics/exports/manifest.json', '/informatics/exports/part-example.bin', '/informatics/llms.txt']
+routes = ['/informatics', '/informatics/', '/informatics/index.html', '/informatics/read/access.html', '/informatics/pilot-v1/m9.json', '/informatics/pilot-v1/csv-records/m9.csv', '/informatics/exports/manifest.json', '/informatics/exports/part-example.bin', '/informatics/llms.txt']
 for agent in agents:
     for route in routes:
         assert allowed(robots, agent, route), (agent, route)
@@ -56,6 +56,13 @@ class Document(HTMLParser):
 
 pages=list((SITE/'read').rglob('*.html'))
 assert len(pages)==report['pages']
+assert hashlib.sha256((SITE/'exports/manifest.json').read_bytes()).hexdigest()==report['datasetManifestSHA256'], 'Reading pages are stale. Run node tools/build-informatics-reading.mjs.'
+for record in json.loads((SITE/'pilot-v1/index.json').read_text())['records']:
+    digest=hashlib.sha256((SITE/record['file']).read_bytes()).hexdigest()
+    assert digest==record['sha256'] and digest in (SITE/f"read/atlas/m{record['modulus']}.html").read_text(), 'Atlas reading page is stale; rebuild reading pages.'
+for experiment in json.loads((SITE/'quantum/experiments/index.json').read_text())['experiments']:
+    digest=hashlib.sha256((SITE/experiment['json']).read_bytes()).hexdigest()
+    assert digest==experiment['json_sha256'] and digest in (SITE/f"read/experiments/{experiment['id']}-{experiment['revision']}.html").read_text(), 'Experiment reading page is stale; rebuild reading pages.'
 assert len(list((SITE/'read/atlas').glob('m*.html')))==1001
 assert len(list((SITE/'read/publications').glob('*.html')))-1==report['publications']
 ns={'s':'http://www.sitemaps.org/schemas/sitemap/0.9'}
@@ -81,5 +88,5 @@ for s in report['sourceHashes']:
     assert hashlib.sha256((SITE/s['path']).read_bytes()).hexdigest()==s['sha256'],s['path']
 assert 'informatics_staging' in (SITE/'.htaccess').read_text()
 assert '/informatics/' in (ROOT/'llms.txt').read_text()
-assert 'all LLM providers' in (SITE/'llms.txt').read_text().lower().replace('all llm providers','all LLM providers')
+assert 'all llm providers' in (SITE/'llms.txt').read_text().lower()
 print(json.dumps({'passed':True,'robotDecisions':len(agents)*len(routes)*2,'HTMLPages':len(pages),'localLinks':links,'publicationRecords':report['publications'],'atlasRecords':1001,'experimentRecords':report['experiments'],'sourceFilesMatched':len(report['sourceHashes'])}))

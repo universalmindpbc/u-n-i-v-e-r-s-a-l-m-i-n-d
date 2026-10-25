@@ -615,6 +615,7 @@ provision_sovereignty_runtime() {
 # Scoped Informatics deployment, using the existing Panthur transport.
 deploy_informatics() {
   local manifest_tmp queue_tmp
+  python3 "$ROOT_DIR/tools/check-informatics-discovery.py" || return 1
   # Public dataset exports travel with every Informatics release.
   python3 "$ROOT_DIR/tools/export-informatics.py" --check || return 1
   # Same Panthur FTP transport and manifest. Validate the entire scoped source

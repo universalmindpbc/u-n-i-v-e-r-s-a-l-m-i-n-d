@@ -40,6 +40,8 @@ members=[]
 for name in sorted(set(selected)):
     p=ROOT/name
     assert p.is_file() and not p.is_symlink(),name
+    committed=subprocess.check_output(['git','show',commit+':'+name],cwd=ROOT)
+    assert hashlib.sha256(committed).hexdigest()==hashfile(p), 'Commit the public source before archiving: '+name
     members.append({'path':name,'bytes':p.stat().st_size,'sha256':hashfile(p)})
 target=out/'public-source.tar.gz'
 with target.open('wb') as raw,gzip.GzipFile(filename='',fileobj=raw,mode='wb',mtime=0) as zipped,tarfile.open(fileobj=zipped,mode='w|') as tar:
