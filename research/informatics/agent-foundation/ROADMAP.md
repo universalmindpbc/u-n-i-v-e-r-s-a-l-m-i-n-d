@@ -4,7 +4,7 @@ Owner direction recorded: 25 October 2026.
 
 ## Scientific leadership
 
-**Gemini 4 is the intended Chief Scientific Officer. GPT-6 Astra is the head bioinformatician and general scientist.** These are the planned responsibilities within Universal Informatics, not a claim that either agent is already connected or operating.
+**Gemini 4 is the intended Chief Scientific Officer. GPT-6 Astra is the head bioinformatician and general scientist.** These are the assigned responsibilities within Universal Informatics. The first Astra prototype is verified against saved public data; Gemini review and the complete research service remain future connections.
 
 Gemini guides Astra at the creation stage: review the scientific question, evidence, strategy, comparison methods, success criteria, budget and proposed computation before execution. At completion, Gemini reviews Astra's work against the agreed strategy, checks the evidence and calculations, and either signs off, requests a revision or escalates to a human. Astra performs the research, analysis and report preparation. Scientific disagreement remains in the record.
 

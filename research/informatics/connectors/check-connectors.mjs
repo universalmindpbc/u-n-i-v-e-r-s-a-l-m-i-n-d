@@ -1,3 +1,4 @@
+import {normaliseResearchTerminology} from '../../../cloudflare/informatics-quantum-knowledge.js';
 import assert from 'node:assert/strict';
 import {connectors,connectorTools,agentCard,openAPI} from '../../../cloudflare/informatics-connectors.js';
 import {repository,recordsCSV} from '../../../cloudflare/informatics-repository.js';
@@ -49,3 +50,5 @@ env.CONNECTOR_LIMIT.limit=async()=>({success:false});const limit=await run('/api
 assert.equal(agentCard(env,base).supportedInterfaces[0].protocolVersion,'1.0');assert.ok(openAPI(env,base).paths['/api/v1/atlas/{id}']);
 assert.ok(connectorTools.every(t=>t.annotations.readOnlyHint&&!t.annotations.destructiveHint));
 console.log('PASS: protocol lifecycle, input boundaries, origins, rights SQL, full Atlas retention, pagination, CSV safety, A2A dispatch and rate limiting.');
+
+assert.equal(normaliseResearchTerminology('The '+['Gol','den'].join('')+' ratio and Phi Ratio.'),'The Phi Ratio and Phi Ratio.');

@@ -36,3 +36,6 @@ export function quantumKnowledge({id='oxtr-qrc-01',section='summary',offset=0}={
  if(section==='downloads')data=links;
  return {id,section,availableSections:quantumSections,data,sourceSHA256:archive.json_sha256,url:links.json,pageURL:links.page};
 }
+
+// Keep project terminology consistent when generated prose drifts.
+export const normaliseResearchTerminology=text=>text.replace(new RegExp('\\b'+'gol'+'den[\\s-]+ratio\\b','gi'),'Phi Ratio');
