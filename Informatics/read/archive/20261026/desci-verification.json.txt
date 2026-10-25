@@ -514,7 +514,15 @@
   ],
   "storageRepresentation": "Full CSV preserved as ordered 8 MiB parts to respect the provider upload limit; combined bytes match the original manifest.",
   "completedAt": "2026-10-25T23:35:37.056Z",
+  "manifestCID": "bafkreicldcdkxjvsdqwbntljqhfacjsmhbsutaz7qtfcbvvgusuw5j4s7m",
   "prepublishCompleted": false,
   "prepublishError": "Provider returns an empty draft document; prepublish HTTP 400: Cannot read properties of null (reading 'components').",
-  "finalFileTreeVerifiedAt": "2026-10-25T23:35:36.060Z"
+  "finalFileTreeVerifiedAt": "2026-10-25T23:45:49.351Z",
+  "directoryCID": "bafybeiegycaritcwqqx6rfeoazvv3cdlh7klfaw5gqftdtik6pdxz5egbe",
+  "combinedManifestRecovered": true,
+  "recoveryMethod": "Supported updateDraft fallback, preserving the existing draft and all stored file CIDs.",
+  "manifestCIDIndependentlyVerified": true,
+  "directoryCIDIndependentlyComputedAndProviderVerified": true,
+  "documentServiceRestored": false,
+  "recoveredAt": "2026-10-25T23:45:49.344Z"
 }

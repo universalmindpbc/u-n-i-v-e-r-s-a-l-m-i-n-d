@@ -29,11 +29,15 @@ for source,destination in [('manifest.json','manifest.json.txt'),('integrity.jso
 public_syn={k:syn[k] for k in ['project','folder','permissions','manifestSHA256','status','checkedAt']}
 public_syn['files']=[{k:x[k] for k in ['name','id','version','bytes','sha256','downloadVerified','createdOn','modifiedOn']} for x in syn['files']]
 public_desci={k:desci[k] for k in ['provider','draftId','title','published','manifestSHA256','status','files','storageRepresentation','completedAt']}
-for k in ['manifestCID','prepublishCompleted','prepublishError','finalFileTreeVerifiedAt']:
+for k in ['manifestCID','prepublishCompleted','prepublishError','finalFileTreeVerifiedAt','directoryCID','combinedManifestRecovered','recoveryMethod','manifestCIDIndependentlyVerified','directoryCIDIndependentlyComputedAndProviderVerified','documentServiceRestored','recoveredAt']:
     if k in desci:public_desci[k]=desci[k]
 for name,data in [('synapse-verification.json.txt',public_syn),('desci-verification.json.txt',public_desci),('timestamp-verification.json.txt',stamp)]:
     (out/name).write_text(json.dumps(data,indent=2)+'\n')
 shutil.copyfile(ROOT/'robots.txt',out/'production-robots.txt')
+if desci.get('combinedManifestRecovered'):
+    shutil.copyfile(bundle/'desci-recovered-manifest.canonical.json',out/'desci-recovered-manifest.json.txt')
+    shutil.copyfile(bundle/'desci-directory-metadata.json',out/'desci-directory-metadata.json.txt')
+    shutil.copyfile(ROOT/'research/informatics/discovery-20261026/desci-recovery.md',out/'desci-recovery.txt')
 
 prefix='archive/20261026/'
 def link(name,label,download=None):
@@ -49,12 +53,17 @@ body+='<p>'+link('manifest.json.txt','Download exact archive manifest','manifest
 body+='<h2>Synapse archive</h2><p>The dated snapshot is stored in the Universal Informatics Synapse project. All '+str(len(syn['files']))+' files were retrieved and verified against their local SHA-256 hashes. The receipt records file identifiers, versions and provider timestamps.</p>'
 body+='<p>Project access remains owner-only. This archive record is public; the stored research package requires an authorised Synapse account.</p>'
 body+='<p><a href="https://www.synapse.org/Synapse:'+escape(syn['folder'])+'">Open the Synapse snapshot ↗</a> · '+link('synapse-verification.json.txt','Read the Synapse verification receipt','synapse-verification.json')+'</p>'
-body+='<h2>DeSci and IPFS</h2><p>'+escape(desci['title'])+' is stored as a private DeSci draft. Each of its '+str(len(desci['files']))+' archived files has an IPFS content identifier independently recomputed from the exact local bytes and matched to the provider’s stored file tree.</p>'
+body+='<h2 id="desci">DeSci and IPFS</h2><p>'+escape(desci['title'])+' is stored as a private DeSci draft. Each of its '+str(len(desci['files']))+' archived files has an IPFS content identifier independently recomputed from the exact local bytes and matched to the provider’s stored file tree.</p>'
 body+='<p>The complete CSV is preserved as ordered 8 MiB segments to meet the upload limit. The storage map records their order and hashes; concatenating those segments recovers the original compressed CSV byte for byte.</p>'
 body+=definition([('DeSci draft',code(desci['draftId'])),('Publication state','Private draft; no public signed publication has been made.')])
-if not desci.get('prepublishCompleted'):
+if desci.get('combinedManifestRecovered'):
+    body+='<p>The combined archive manifest has been recovered and stored through DeSci’s supported draft-update API. Its CID was independently recomputed from the saved manifest bytes. The reconstructed directory CID matches DeSci’s stored 33-file directory.</p>'
+    body+=definition([('DeSci archive manifest CID',code(desci['manifestCID'])),('Archive directory CID',code(desci['directoryCID']))])
+    body+='<p>'+link('desci-recovered-manifest.json.txt','Download the recovered DeSci manifest','desci-recovered-manifest.json')+' · '+link('desci-directory-metadata.json.txt','Stored directory verification','desci-directory-metadata.json')+'</p>'
+    body+='<p>DeSci’s live document editor still reports a missing document reference. The archive manifest and files are intact; editor-service restoration remains a provider issue. No signed public DeSci publication has been made.</p>'
+    body+='<p>'+link('desci-recovery.txt','Read the diagnosis and recovery record','desci-recovery.txt')+'</p>'
+else:
     body+='<p>DeSci’s manifest service currently returns an empty draft document, so preparation of a combined archive manifest remains incomplete. The individual files are saved and CID-verified. A signed DeSci publication has not been made.</p>'
-if desci.get('manifestCID'):body+=definition([('Prepared DeSci manifest CID',code(desci['manifestCID']))])
 body+='<p>An IPFS identifier detects content changes. Continued availability depends on storage and pinning; this record does not claim permanent storage.</p>'
 body+='<p><a href="https://publish.desci.com/">Open DeSci Publish ↗</a> · '+link('desci-verification.json.txt','File CIDs and verification receipt','desci-verification.json')+' · '+link('desci-storage-map.json.txt','CSV reconstruction map','desci-storage-map.json')+'</p>'
 body+='<h2>Verified timestamp</h2><p>DigiCert signed the manifest hash at <strong>26 October 2026, 10:29:52 am Sydney time</strong> (25 October 2026, 23:29:52 UTC). Verification passed for the signature, certificate chain, original request nonce and exact manifest bytes, using an independent system CA trust store.</p>'

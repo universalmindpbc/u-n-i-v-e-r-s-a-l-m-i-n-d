@@ -41,6 +41,7 @@ try{
  await p.goto(base+'read/provenance.html',{waitUntil:'load'});
  assert.match(await p.locator('main').innerText(),/15 files were retrieved/);
  assert.match(await p.locator('main').innerText(),/33 archived files/);
+ assert.match(await p.locator('main').innerText(),/combined archive manifest has been recovered/);
  assert.match(await p.locator('main').innerText(),/Bitcoin confirmation remains pending/);
  for(const width of [1470,320]){
   await p.setViewportSize({width,height:width>1000?1000:844});

@@ -11,14 +11,29 @@
       "bytes": 976
     },
     {
+      "path": "archive/20261026/desci-directory-metadata.json.txt",
+      "sha256": "dd8af4d5399b0b951df05f3a4fbb919b9f6169132715e6c6afd58969b260a168",
+      "bytes": 199
+    },
+    {
+      "path": "archive/20261026/desci-recovered-manifest.json.txt",
+      "sha256": "4b1886aba6b21c2c16cd6981ca01264c386549833f84ca20d6a6a4a96ea792fb",
+      "bytes": 819
+    },
+    {
+      "path": "archive/20261026/desci-recovery.txt",
+      "sha256": "7a2afaac24a3d73fa05c7211b8c448f1d7340cb91495c96d93d61a424a7ca007",
+      "bytes": 3604
+    },
+    {
       "path": "archive/20261026/desci-storage-map.json.txt",
       "sha256": "18c69d13278168282d761d8500eb81c57501d89d0e1a9170ee9ef56674d17867",
       "bytes": 8969
     },
     {
       "path": "archive/20261026/desci-verification.json.txt",
-      "sha256": "d2c713be8909875424f30cbf68dac449ed49dcd44dc07ebeff7f2221f658924d",
-      "bytes": 17955
+      "sha256": "ec9c6052df728c4f720e8af2d08534339e76eaaaac0a3905de146effac1ec03d",
+      "bytes": 18453
     },
     {
       "path": "archive/20261026/integrity.json.txt",
