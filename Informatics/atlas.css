@@ -162,3 +162,9 @@
 #area-vision .vision-research-copy p{margin-bottom:12px}
 @media(max-width:720px){.vision-comparison{gap:16px;padding-top:16px}.vision-comparison-panel figcaption{font-size:12px;min-height:36px}.vision-comparison .vision-art{height:clamp(125px,24svh,210px)}.vision-comparison-controls{gap:10px}.vision-comparison-controls p{font-size:9px;max-width:55%}.vision-comparison-controls button{font-size:10px;padding:8px 10px}#area-vision .vision-research-copy{grid-template-columns:1fr;gap:8px;padding:0 12px}}
 @media(prefers-reduced-motion:reduce){#area-vision:not([data-motion=playing]) .vision-bilateral-dot{animation:none;transform:translateX(240px)}}
+
+/* Chromatic uses the shared Sound transport and a readable stacked diagram. */
+[data-sound-view=chromatic]{--view-color:#ff84c5}
+#area-sound #sound-diagram[data-view=chromatic]{aspect-ratio:auto;max-height:none}
+#area-sound #sound-diagram[data-view=chromatic][data-chromatic-layout=stacked]{max-width:420px;margin-inline:auto}
+#sound-atlas-link[hidden]{display:none}
