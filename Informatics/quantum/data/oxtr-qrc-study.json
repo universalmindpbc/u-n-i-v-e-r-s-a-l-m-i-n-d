@@ -2,12 +2,12 @@
   "schema": "universal-informatics/oxtr-qrc-study/v1",
   "id": "oxtr-qrc-01",
   "version": "1.0.0",
-  "status": "design_review",
+  "status": "measurement_qualification",
   "question": "Do quantum responses generated from Fibonacci and M9 P24 representations improve our ability to predict transcription factor occupancy around OXTR?",
   "gene": "OXTR",
   "method": "Quantum reservoir computing",
   "created_on": "2026-10-25",
-  "scope": "Research design. No biological study simulation, hardware submission or predictive result is recorded in this specification.",
+  "scope": "The first measurement phase has completed CPU and GPU checks and has submitted 16 Aquila programs. Held-out occupancy prediction remains to be evaluated.",
   "atlas": {
     "id": "fibonacci-m9-p24",
     "sha256": "55da8b5e3406368cece4476720ca9d9208627e30a827fca30533d3235d74d8ff",
@@ -409,7 +409,7 @@
     "uncertainty": "Bootstrap independent genomic blocks, keep repeat shots within their sample, report intervals. A locus with too few labels receives a ranking with uncertainty, not a predictive-performance claim."
   },
   "execution": {
-    "current_stage": "design_review",
+    "current_stage": "hardware",
     "submission_enabled": false,
     "simulation_backend": "NVIDIA CUDA-Q",
     "simulation_route": "Compile a checked time-evolution circuit, validate locally, then use the existing qBraid GPU route for supported compiled programs. Native CUDA-Q dynamics is an alternative only after runtime capability checks.",
@@ -427,7 +427,173 @@
     "planned_shots_per_input": 100,
     "budget_rule": "No dispatch until the complete task count, provider quotes and shared budget reservation are recorded and approved for the run. Existing one-task approval is not reused.",
     "task_formula": "number of frozen input windows \u00d7 encoding variants \u00d7 readout times \u00d7 hardware repeats",
-    "job_records": [],
+    "job_records": [
+      {
+        "provider": "qBraid",
+        "id": "qbraid:qbraid:sim:gpu-sv-cd19-qjob-6add543a2a6c33b9a67fcf6a",
+        "state": "COMPLETED"
+      },
+      {
+        "provider": "qBraid",
+        "id": "qbraid:qbraid:sim:gpu-sv-cd19-qjob-6add544c2a6c33b9a67fcf6e",
+        "state": "COMPLETED"
+      },
+      {
+        "provider": "qBraid",
+        "id": "qbraid:qbraid:sim:gpu-sv-cd19-qjob-6add545d2a6c33b9a67fcf75",
+        "state": "COMPLETED"
+      },
+      {
+        "provider": "qBraid",
+        "id": "qbraid:qbraid:sim:gpu-sv-cd19-qjob-6add546f2a6c33b9a67fcf7d",
+        "state": "COMPLETED"
+      },
+      {
+        "provider": "qBraid",
+        "id": "qbraid:qbraid:sim:gpu-sv-cd19-qjob-6add54802a6c33b9a67fcf85",
+        "state": "COMPLETED"
+      },
+      {
+        "provider": "qBraid",
+        "id": "qbraid:qbraid:sim:gpu-sv-cd19-qjob-6add54912a6c33b9a67fcf8b",
+        "state": "COMPLETED"
+      },
+      {
+        "provider": "qBraid",
+        "id": "qbraid:qbraid:sim:gpu-sv-cd19-qjob-6add54a32a6c33b9a67fcf90",
+        "state": "COMPLETED"
+      },
+      {
+        "provider": "qBraid",
+        "id": "qbraid:qbraid:sim:gpu-sv-cd19-qjob-6add54b52a6c33b9a67fcf99",
+        "state": "COMPLETED"
+      },
+      {
+        "provider": "qBraid",
+        "id": "qbraid:qbraid:sim:gpu-sv-cd19-qjob-6add54c82a6c33b9a67fcf9e",
+        "state": "COMPLETED"
+      },
+      {
+        "provider": "qBraid",
+        "id": "qbraid:qbraid:sim:gpu-sv-cd19-qjob-6add54dd2a6c33b9a67fcfa2",
+        "state": "COMPLETED"
+      },
+      {
+        "provider": "qBraid",
+        "id": "qbraid:qbraid:sim:gpu-sv-cd19-qjob-6add54ef2a6c33b9a67fcfae",
+        "state": "COMPLETED"
+      },
+      {
+        "provider": "qBraid",
+        "id": "qbraid:qbraid:sim:gpu-sv-cd19-qjob-6add55002a6c33b9a67fcfb4",
+        "state": "COMPLETED"
+      },
+      {
+        "provider": "qBraid",
+        "id": "qbraid:qbraid:sim:gpu-sv-cd19-qjob-6add55112a6c33b9a67fcfbd",
+        "state": "COMPLETED"
+      },
+      {
+        "provider": "qBraid",
+        "id": "qbraid:qbraid:sim:gpu-sv-cd19-qjob-6add55222a6c33b9a67fcfc1",
+        "state": "COMPLETED"
+      },
+      {
+        "provider": "qBraid",
+        "id": "qbraid:qbraid:sim:gpu-sv-cd19-qjob-6add55332a6c33b9a67fcfc5",
+        "state": "COMPLETED"
+      },
+      {
+        "provider": "qBraid",
+        "id": "qbraid:qbraid:sim:gpu-sv-cd19-qjob-6add55442a6c33b9a67fcfcf",
+        "state": "COMPLETED"
+      },
+      {
+        "provider": "qBraid",
+        "id": "qbraid:qbraid:sim:gpu-sv-cd19-qjob-6add55542a6c33b9a67fcfd5",
+        "state": "COMPLETED"
+      },
+      {
+        "provider": "Amazon Braket / QuEra",
+        "id": "92a97488-675a-4126-838a-75ff29e0c539",
+        "state": "COMPLETED"
+      },
+      {
+        "provider": "Amazon Braket / QuEra",
+        "id": "4d690682-bbcd-471f-84fe-d7d29ab4f0f3",
+        "state": "COMPLETED"
+      },
+      {
+        "provider": "Amazon Braket / QuEra",
+        "id": "fd03b07f-1c48-40a1-8510-05bcfa38987b",
+        "state": "COMPLETED"
+      },
+      {
+        "provider": "Amazon Braket / QuEra",
+        "id": "1408321b-3bbf-42d0-98d8-b2a3f6a2282d",
+        "state": "COMPLETED"
+      },
+      {
+        "provider": "Amazon Braket / QuEra",
+        "id": "21a80a56-064a-4940-8ed9-9d77122436c7",
+        "state": "RUNNING"
+      },
+      {
+        "provider": "Amazon Braket / QuEra",
+        "id": "056c9488-bd07-469c-93e2-edf24e8fff9c",
+        "state": "QUEUED"
+      },
+      {
+        "provider": "Amazon Braket / QuEra",
+        "id": "46eac414-f077-4214-81ef-e21635955bb9",
+        "state": "QUEUED"
+      },
+      {
+        "provider": "Amazon Braket / QuEra",
+        "id": "f4bc57c5-2ab1-463e-8e3b-88c7c61e4eb0",
+        "state": "QUEUED"
+      },
+      {
+        "provider": "Amazon Braket / QuEra",
+        "id": "393fd233-18b4-47f4-ba5e-af2d142e8512",
+        "state": "QUEUED"
+      },
+      {
+        "provider": "Amazon Braket / QuEra",
+        "id": "aff105ae-441b-49d7-a5b0-9797edc60b05",
+        "state": "QUEUED"
+      },
+      {
+        "provider": "Amazon Braket / QuEra",
+        "id": "17ffbfd0-8304-4b30-a749-8d0c91eab2d9",
+        "state": "QUEUED"
+      },
+      {
+        "provider": "Amazon Braket / QuEra",
+        "id": "941daa0a-4939-411e-a7f1-88fcb16baaca",
+        "state": "QUEUED"
+      },
+      {
+        "provider": "Amazon Braket / QuEra",
+        "id": "ea4bb9a4-c91a-492a-80a7-c59fd051a807",
+        "state": "QUEUED"
+      },
+      {
+        "provider": "Amazon Braket / QuEra",
+        "id": "f30cda70-0079-41e9-aa40-72e24b51f15d",
+        "state": "QUEUED"
+      },
+      {
+        "provider": "Amazon Braket / QuEra",
+        "id": "1cbb29aa-c1b8-49bb-af31-dd18a7cbd480",
+        "state": "QUEUED"
+      },
+      {
+        "provider": "Amazon Braket / QuEra",
+        "id": "8408039a-06e1-4782-910f-44a9313c8e12",
+        "state": "QUEUED"
+      }
+    ],
     "results": null
   },
   "cache": {
@@ -448,8 +614,8 @@
     "rule": "Show cache provenance and run date. A replay of saved results never creates a new hardware receipt. A changed input or model invalidates its dependent result."
   },
   "review": {
-    "status": "Protocol prepared for review",
-    "next": "Admit an assay, finalize the benchmark size and freeze the model before executing the study.",
+    "status": "Measurement phase activated",
+    "next": "Retrieve Aquila measurements and compare them with the matched simulations before the held-out prediction benchmark.",
     "methods_url": "data/oxtr-qrc-protocol.md"
   },
   "sources": [
@@ -460,7 +626,7 @@
     "https://docs.aws.amazon.com/braket/latest/developerguide/braket-quera-submitting-analog-program-aquila.html"
   ],
   "delivery": {
-    "phase": "design_review",
+    "phase": "measurement_qualification",
     "return_url": "https://staging.universalmind.tv/informatics/?entry=research&area=quantum#study",
     "simulation": "Approximately 5\u201310 minutes from processing start, including the classical calculation and CUDA-Q simulation. Planning estimate; queue and workload can extend it.",
     "hardware": "Approximately 24 hours or longer from processing start. Planning estimate; device windows, queue and workload can extend it.",
@@ -482,5 +648,15 @@
       "Open Source Genomic Insights"
     ],
     "sharing": "No active external submission or publishing connection. Future automation retains human oversight."
+  },
+  "qualification": {
+    "version": "1.1.0-qualification",
+    "status": "hardware_submitted",
+    "report": "oxtr-qrc-qualification.json",
+    "methods": "oxtr-qrc-qualification.md",
+    "windows": 2,
+    "representations": 8,
+    "shots_per_program": 100,
+    "scope": "Execution and numerical qualification; no biological prediction result."
   }
 }

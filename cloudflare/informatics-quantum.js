@@ -26,7 +26,7 @@ Other genes, personalized medical questions, general educational queries and tas
  const id=crypto.randomUUID(),createdAt=new Date().toISOString();
  const receipt={version:'quantum-question-v3',id,createdAt,question,model:env.RESEARCH_MODEL,provider_response_id:result.id||null,route:route.route,allowance,study:null,status:'unavailable',message:'This question has no connected calculation in Quantum Atlas yet.',reports:{classical:null,simulation:null,quantum:null,comparison:null}};
  if(route.route==='oxtr_occupancy'){
-  receipt.study={id:study.id,version:study.version};receipt.status='not_started';receipt.message='Question received. The first OXTR study run has not started.';
+  receipt.study={id:study.id,version:study.version};receipt.status='study_linked';receipt.message='Your question is linked to the OXTR study. The first measurement phase is active; recorded results and processing status appear in the next steps.';
  }
  if(route.route==='dna_assembly'){
   const supplied=question.toUpperCase().match(/\b[ACGT]{4,40}\b/g)||[];

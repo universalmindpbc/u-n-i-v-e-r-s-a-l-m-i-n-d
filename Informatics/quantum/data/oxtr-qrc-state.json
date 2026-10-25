@@ -3,43 +3,291 @@
   "study_id": "oxtr-qrc-01",
   "study_version": "1.0.0",
   "updated_on": "2026-10-25",
-  "state": "design_review",
+  "state": "measurement_phase",
   "stages": {
     "question": {
       "state": "ready",
       "label": "Ready for a question"
     },
     "model": {
-      "state": "specified",
-      "label": "Template specified"
+      "state": "complete",
+      "label": "Model checks passed",
+      "message": "All 16 programs passed numerical checks. Wolfram Quantum Framework independently verified the reference Hamiltonian and evolution."
     },
     "simulation": {
-      "state": "planned",
-      "label": "Study run planned"
+      "state": "complete",
+      "label": "16 GPU runs complete",
+      "message": "All eight representations were simulated for two OXTR windows. CUDA-Q compiled programs ran through qBraid on an NVIDIA GPU at zero credit cost."
     },
     "hardware": {
-      "state": "planned",
-      "label": "Study run planned"
+      "state": "running",
+      "label": "4/16 returned \u00b7 1 running",
+      "message": "Recorded at 2026-10-25T01:11:54.610144+00:00: 4 completed, 1 running, 11 queued, 0 interrupted. All 16 tasks have saved receipts. The comparison is released after the full batch is evaluated."
     },
     "evidence": {
       "state": "specified",
-      "label": "Evaluation specified"
+      "label": "Prediction evaluation follows",
+      "message": "This first batch checks the measurement route. The larger benchmark compares held-out occupancy predictions against strong classical baselines."
     },
     "result": {
       "state": "planned",
-      "label": "After evaluation"
+      "label": "Simulation checks available",
+      "message": "The numerical and GPU qualification results are available under Classical results. Biological prediction has not yet been evaluated."
     },
     "classical": {
-      "state": "planned",
-      "label": "Not started"
+      "state": "complete",
+      "label": "Numerical checks complete"
     }
   },
-  "jobs": [],
+  "jobs": [
+    {
+      "provider": "qBraid",
+      "id": "qbraid:qbraid:sim:gpu-sv-cd19-qjob-6add543a2a6c33b9a67fcf6a",
+      "state": "COMPLETED"
+    },
+    {
+      "provider": "qBraid",
+      "id": "qbraid:qbraid:sim:gpu-sv-cd19-qjob-6add544c2a6c33b9a67fcf6e",
+      "state": "COMPLETED"
+    },
+    {
+      "provider": "qBraid",
+      "id": "qbraid:qbraid:sim:gpu-sv-cd19-qjob-6add545d2a6c33b9a67fcf75",
+      "state": "COMPLETED"
+    },
+    {
+      "provider": "qBraid",
+      "id": "qbraid:qbraid:sim:gpu-sv-cd19-qjob-6add546f2a6c33b9a67fcf7d",
+      "state": "COMPLETED"
+    },
+    {
+      "provider": "qBraid",
+      "id": "qbraid:qbraid:sim:gpu-sv-cd19-qjob-6add54802a6c33b9a67fcf85",
+      "state": "COMPLETED"
+    },
+    {
+      "provider": "qBraid",
+      "id": "qbraid:qbraid:sim:gpu-sv-cd19-qjob-6add54912a6c33b9a67fcf8b",
+      "state": "COMPLETED"
+    },
+    {
+      "provider": "qBraid",
+      "id": "qbraid:qbraid:sim:gpu-sv-cd19-qjob-6add54a32a6c33b9a67fcf90",
+      "state": "COMPLETED"
+    },
+    {
+      "provider": "qBraid",
+      "id": "qbraid:qbraid:sim:gpu-sv-cd19-qjob-6add54b52a6c33b9a67fcf99",
+      "state": "COMPLETED"
+    },
+    {
+      "provider": "qBraid",
+      "id": "qbraid:qbraid:sim:gpu-sv-cd19-qjob-6add54c82a6c33b9a67fcf9e",
+      "state": "COMPLETED"
+    },
+    {
+      "provider": "qBraid",
+      "id": "qbraid:qbraid:sim:gpu-sv-cd19-qjob-6add54dd2a6c33b9a67fcfa2",
+      "state": "COMPLETED"
+    },
+    {
+      "provider": "qBraid",
+      "id": "qbraid:qbraid:sim:gpu-sv-cd19-qjob-6add54ef2a6c33b9a67fcfae",
+      "state": "COMPLETED"
+    },
+    {
+      "provider": "qBraid",
+      "id": "qbraid:qbraid:sim:gpu-sv-cd19-qjob-6add55002a6c33b9a67fcfb4",
+      "state": "COMPLETED"
+    },
+    {
+      "provider": "qBraid",
+      "id": "qbraid:qbraid:sim:gpu-sv-cd19-qjob-6add55112a6c33b9a67fcfbd",
+      "state": "COMPLETED"
+    },
+    {
+      "provider": "qBraid",
+      "id": "qbraid:qbraid:sim:gpu-sv-cd19-qjob-6add55222a6c33b9a67fcfc1",
+      "state": "COMPLETED"
+    },
+    {
+      "provider": "qBraid",
+      "id": "qbraid:qbraid:sim:gpu-sv-cd19-qjob-6add55332a6c33b9a67fcfc5",
+      "state": "COMPLETED"
+    },
+    {
+      "provider": "qBraid",
+      "id": "qbraid:qbraid:sim:gpu-sv-cd19-qjob-6add55442a6c33b9a67fcfcf",
+      "state": "COMPLETED"
+    },
+    {
+      "provider": "qBraid",
+      "id": "qbraid:qbraid:sim:gpu-sv-cd19-qjob-6add55542a6c33b9a67fcfd5",
+      "state": "COMPLETED"
+    },
+    {
+      "provider": "Amazon Braket / QuEra",
+      "id": "92a97488-675a-4126-838a-75ff29e0c539",
+      "state": "COMPLETED"
+    },
+    {
+      "provider": "Amazon Braket / QuEra",
+      "id": "4d690682-bbcd-471f-84fe-d7d29ab4f0f3",
+      "state": "COMPLETED"
+    },
+    {
+      "provider": "Amazon Braket / QuEra",
+      "id": "fd03b07f-1c48-40a1-8510-05bcfa38987b",
+      "state": "COMPLETED"
+    },
+    {
+      "provider": "Amazon Braket / QuEra",
+      "id": "1408321b-3bbf-42d0-98d8-b2a3f6a2282d",
+      "state": "COMPLETED"
+    },
+    {
+      "provider": "Amazon Braket / QuEra",
+      "id": "21a80a56-064a-4940-8ed9-9d77122436c7",
+      "state": "RUNNING"
+    },
+    {
+      "provider": "Amazon Braket / QuEra",
+      "id": "056c9488-bd07-469c-93e2-edf24e8fff9c",
+      "state": "QUEUED"
+    },
+    {
+      "provider": "Amazon Braket / QuEra",
+      "id": "46eac414-f077-4214-81ef-e21635955bb9",
+      "state": "QUEUED"
+    },
+    {
+      "provider": "Amazon Braket / QuEra",
+      "id": "f4bc57c5-2ab1-463e-8e3b-88c7c61e4eb0",
+      "state": "QUEUED"
+    },
+    {
+      "provider": "Amazon Braket / QuEra",
+      "id": "393fd233-18b4-47f4-ba5e-af2d142e8512",
+      "state": "QUEUED"
+    },
+    {
+      "provider": "Amazon Braket / QuEra",
+      "id": "aff105ae-441b-49d7-a5b0-9797edc60b05",
+      "state": "QUEUED"
+    },
+    {
+      "provider": "Amazon Braket / QuEra",
+      "id": "17ffbfd0-8304-4b30-a749-8d0c91eab2d9",
+      "state": "QUEUED"
+    },
+    {
+      "provider": "Amazon Braket / QuEra",
+      "id": "941daa0a-4939-411e-a7f1-88fcb16baaca",
+      "state": "QUEUED"
+    },
+    {
+      "provider": "Amazon Braket / QuEra",
+      "id": "ea4bb9a4-c91a-492a-80a7-c59fd051a807",
+      "state": "QUEUED"
+    },
+    {
+      "provider": "Amazon Braket / QuEra",
+      "id": "f30cda70-0079-41e9-aa40-72e24b51f15d",
+      "state": "QUEUED"
+    },
+    {
+      "provider": "Amazon Braket / QuEra",
+      "id": "1cbb29aa-c1b8-49bb-af31-dd18a7cbd480",
+      "state": "QUEUED"
+    },
+    {
+      "provider": "Amazon Braket / QuEra",
+      "id": "8408039a-06e1-4782-910f-44a9313c8e12",
+      "state": "QUEUED"
+    }
+  ],
   "result": null,
   "reports": {
-    "classical": null,
-    "simulation": null,
+    "classical": {
+      "state": "complete",
+      "kind": "classical",
+      "study_id": "oxtr-qrc-01",
+      "study_version": "1.0.0",
+      "title": "The mathematical model passed its checks.",
+      "finding": "All 16 programs passed numerical comparison. Wolfram Quantum Framework independently matched the reference case. This establishes a consistent calculation for the first measurement phase; it does not yet establish improved prediction of OXTR occupancy.",
+      "receipt": {
+        "run_id": "oxtr-qrc-01-local-qualification",
+        "model_version": "1.1.0-qualification",
+        "execution": "classical-cpu",
+        "backend": "SciPy reference + CUDA-Q CPU + Wolfram Quantum Framework",
+        "completed_at": "2026-10-25T00:54:32.397532+00:00",
+        "input_sha256": "0a86b5247d1a8e950d525debeed806109f009f6c51c70555eafcef4199336b33"
+      },
+      "metrics": [
+        {
+          "label": "Model cases checked",
+          "value": 16
+        },
+        {
+          "label": "Maximum final numerical difference",
+          "value": "0.0000583 in probability"
+        },
+        {
+          "label": "Wolfram reference difference",
+          "value": "0.00000000726 in probability"
+        }
+      ],
+      "details": [
+        "Six atoms, full 64-state evolution, all 15 pair interactions. Same coordinates, pulses and interactions in the GPU and Aquila programs.",
+        "Two motif-rich 256-base OXTR windows were selected without occupancy labels. They qualify execution and are not an independent prediction test.",
+        "Native Fibonacci, Phi Ratio, Alpha, Beta, Gamma and Epsilon are compared with ordinary and shuffled inputs.",
+        "Gamma and Epsilon produce distinct simulated responses. At 100 shots, measurement uncertainty can be larger than that difference."
+      ],
+      "phase": "qualification"
+    },
+    "simulation": {
+      "state": "complete",
+      "kind": "simulation",
+      "study_id": "oxtr-qrc-01",
+      "study_version": "1.0.0",
+      "title": "All 16 GPU simulations are complete.",
+      "finding": "The CUDA-Q programs ran on the NVIDIA GPU through qBraid. All sampled responses passed the prespecified numerical agreement check. Explore how each representation changes the response of the six-atom model.",
+      "receipt": {
+        "run_id": "oxtr-qrc-01-gpu-qualification",
+        "model_version": "1.1.0-qualification",
+        "execution": "cudaq-gpu",
+        "backend": "CUDA-Q compiled programs \u2192 qBraid NVIDIA GPU",
+        "completed_at": "2026-10-25T01:03:34.356758+00:00",
+        "input_sha256": "0a86b5247d1a8e950d525debeed806109f009f6c51c70555eafcef4199336b33",
+        "task_id": "qbraid:qbraid:sim:gpu-sv-cd19-qjob-6add544c2a6c33b9a67fcf6e"
+      },
+      "metrics": [
+        {
+          "label": "Study simulations",
+          "value": "16 \u00d7 100 shots"
+        },
+        {
+          "label": "Ordering check",
+          "value": "Passed \u00b7 8 shots"
+        },
+        {
+          "label": "GPU charge",
+          "value": "0 credits"
+        }
+      ],
+      "details": [
+        "The circles show simulated excitation probabilities, not protein binding probabilities. Every point includes 100-shot sampling uncertainty.",
+        "The acceptance check uses six binomial standard errors plus two counts; it is an execution check, not a predictive-performance result.",
+        "No classifier was trained in this qualification batch. OXTR occupancy evaluation remains a separate phase using held-out biological evidence."
+      ],
+      "phase": "qualification",
+      "response_data": "oxtr-qrc-qualification.json"
+    },
     "quantum": null,
     "comparison": null
-  }
+  },
+  "updated_at": "2026-10-25T01:11:54.610144+00:00",
+  "phase": "qualification",
+  "status_label": "First measurement phase",
+  "caption": "16 GPU simulations complete. Aquila: 4 completed, 1 running, 11 queued. Status recorded 2026-10-25T01:11:54.610144+00:00. Occupancy prediction remains to be evaluated."
 }

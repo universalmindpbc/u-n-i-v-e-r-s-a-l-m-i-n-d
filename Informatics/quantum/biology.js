@@ -1,4 +1,5 @@
-import './study.js?v=2';
+import './study.js?v=3';
+import {renderResponse} from './response-view.js?v=1';
 import {verifiedReport,reportPair} from './result-contract.js?v=1';
 const $=s=>document.querySelector(s),node=(tag,text,cls)=>{const n=document.createElement(tag);if(text!==undefined)n.textContent=text;if(cls)n.className=cls;return n;};
 document.body.classList.toggle('embedded',new URLSearchParams(location.search).get('embedded')==='1');
@@ -18,7 +19,7 @@ async function capacity(){try{const r=await fetch(endpoint+'/quantum/capacity',{
 function empty(slot,title,message,status='Awaiting results'){slot.replaceChildren(node('span',status,'result-status'),node('h3',title),node('p',message));slot.dataset.state='pending';}
 function report(slot,data){slot.replaceChildren(node('span','Result ready','result-status'),node('h3',data.title||'Recorded result'),node('p',data.finding,'result-finding'));slot.dataset.state='complete';if(data.calculation){const c=data.calculation;slot.append(node('div',c.sequence,'sequence'),node('p',`${c.tested} orders compared · ${c.overlapScore} overlapping bases · ${c.optimalOrders} equally best orders`,'result-metrics'));}
  if(Array.isArray(data.metrics)){const dl=node('dl');for(const m of data.metrics){if(typeof m.label==='string'&&['string','number'].includes(typeof m.value))dl.append(node('dt',m.label),node('dd',String(m.value)));}slot.append(dl);}
- slot.append(details('Methods and recorded calculation',[...(Array.isArray(data.details)?data.details:[]),`${data.receipt.backend||data.receipt.execution} · ${new Date(data.receipt.completed_at).toLocaleString()}`,`Run ${data.receipt.run_id} · model ${data.receipt.model_version}`]));const save=node('button','Download result ↓','text-button');save.onclick=()=>download(data,'quantum-atlas-'+data.kind+'-result.json');slot.append(save);}
+ renderResponse(slot,data);slot.append(details('Methods and recorded calculation',[...(Array.isArray(data.details)?data.details:[]),`${data.receipt.backend||data.receipt.execution} · ${new Date(data.receipt.completed_at).toLocaleString()}`,`Run ${data.receipt.run_id} · model ${data.receipt.model_version}`]));const save=node('button','Download result ↓','text-button');save.onclick=()=>download(data,'quantum-atlas-'+data.kind+'-result.json');slot.append(save);}
 function refreshReports(){const matched=active?.study?.id==='oxtr-qrc-01'&&recordedState?.study_id===active.study.id&&recordedState.study_version===active.study.version;
  const reports=matched?recordedState.reports||{}:active?.reports||{},c=verifiedReport(reports.classical,active?.study,'classical'),s=verifiedReport(reports.simulation,active?.study,'simulation'),q=verifiedReport(reports.quantum,active?.study,'quantum');
  const unavailable=active?.status==='unavailable',before=!active;
