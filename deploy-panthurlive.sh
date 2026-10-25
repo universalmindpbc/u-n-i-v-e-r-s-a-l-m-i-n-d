@@ -615,6 +615,8 @@ provision_sovereignty_runtime() {
 # Scoped Informatics deployment, using the existing Panthur transport.
 deploy_informatics() {
   local manifest_tmp queue_tmp
+  # Public dataset exports travel with every Informatics release.
+  python3 "$ROOT_DIR/tools/export-informatics.py" --check || return 1
   # Same Panthur FTP transport and manifest. Validate the entire scoped source
   # before uploading; publish entry points only after all referenced assets exist.
   if ! git -C "$ROOT_DIR" diff --quiet HEAD -- Informatics research/informatics/legacy-uppercase.htaccess; then

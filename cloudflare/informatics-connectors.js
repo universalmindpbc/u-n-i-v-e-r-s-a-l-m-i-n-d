@@ -4,6 +4,7 @@ const page={offset:{type:'integer',minimum:0,maximum:10000},limit:{type:'integer
 const filterSchema={type:'object',additionalProperties:false,properties:Object.fromEntries(['collections','targets','conditions','journals'].map(k=>[k,{type:'array',maxItems:12,items:{type:'string',maxLength:200}}]))};
 const definition=(name,description,properties={},required=[])=>({name,description,inputSchema:{type:'object',additionalProperties:false,properties,required},annotations:{readOnlyHint:true,destructiveHint:false,idempotentHint:true,openWorldHint:false}});
 export const connectorTools=[
+ definition('get_quantum_study','Read the recorded OXTR Quantum Atlas experiment, sequence definitions, actual measurements, comparison, timing, next test and downloads.',{id,section:{type:'string',enum:['summary','sequences','methods','measurements','comparison','next_test','timing','downloads']},offset:{type:'integer',minimum:0,maximum:16}}),
  definition('search','Find publication and Atlas record IDs. Fetch records before making study-specific claims.',{query:str},['query']),
  definition('fetch','Fetch an approved publication or Atlas overview from a search result ID. Atlas analysis sections are accessible through get_atlas_record; the URL returns the complete record.',{id},['id']),
  definition('get_inventory','Exact current counts, dataset version and access scope.'),
@@ -47,6 +48,7 @@ export function openAPI(env,base){
  const paging=[parameter('offset',{type:'integer',minimum:0}),parameter('limit',{type:'integer',minimum:1,maximum:100})];
  const operation=(operationId,summary,parameters=[])=>({get:{operationId,summary,parameters,responses:{200:response,400:{description:'Invalid parameters'},404:{description:'Not found'},429:{description:'Rate limited; retry after 60 seconds'},503:{description:'Repository temporarily unavailable'}}}});
  return {openapi:'3.1.0',info:{title:'Universal Informatics Research API',version:'1.0.0',description:'Read-only publication and full Atlas access. No API key needed. Public full-text passages are restricted to CC BY and CC0. API rate limit: 120 requests per minute per IP.'},servers:[{url:base}],paths:{
+  '/api/v1/quantum/{id}':operation('getQuantumStudy','Read the recorded Quantum Atlas experiment',[parameter('id',{type:'string'},'path',true),parameter('section'),parameter('offset',{type:'integer',minimum:0,maximum:16})]),
   '/api/v1/inventory':operation('getInventory','Exact counts and access scope'),
   '/api/v1/publications':operation('searchPublications','Search publication records',[parameter('query'),...paging,...['collections','targets','conditions','journals'].map(k=>({...parameter(k,{type:'array',items:{type:'string'}}),style:'form',explode:true}))]),
   '/api/v1/publications/{id}':operation('getPublication','Read publication by ID, DOI or PMID',[parameter('id',{type:'string'},'path',true)]),
@@ -140,6 +142,7 @@ export async function connectors(request,env,db,research){
     if(path==='/.well-known/agent-card.json')response=json(agentCard(env,base),200,{'Cache-Control':'public, max-age=300'});
     else if(path==='/api/v1/openapi.json')response=json(openAPI(env,base));
     else if((path==='/api/v1/inventory'||path==='/api/v1/'))response=json(await repo.inventory());
+    else if(path.startsWith('/api/v1/quantum/')){try{response=json(await repo.call('get_quantum_study',{id:decodeURIComponent(path.slice('/api/v1/quantum/'.length)),section:p.get('section')||'summary',offset:Number(p.get('offset')||0)}));}catch{throw new RepositoryError('Unknown quantum study, section or offset.',400);}}
     else if(path==='/api/v1/publications')response=json(await repo.publications(args));
     else if(path==='/api/v1/atlas')response=json(await repo.atlas({...args,family:p.get('family')??undefined}));
     else if(path.startsWith('/api/v1/atlas/')){

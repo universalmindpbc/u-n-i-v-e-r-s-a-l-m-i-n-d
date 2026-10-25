@@ -1,3 +1,4 @@
+import {quantumKnowledge,quantumRelevant} from './informatics-quantum-knowledge.js';
 // Shared, read-only data service for REST, MCP and export clients.
 // Approved fields remain intact. No model generation or write credentials here.
 export class RepositoryError extends Error {
@@ -53,7 +54,7 @@ export function repository(db,env,base){
    (SELECT count(DISTINCT publication_id)::int FROM research.passages WHERE kind='full-text') full_texts,
    (SELECT count(DISTINCT s.publication_id)::int FROM research.passages s WHERE s.kind='full-text' AND ${reusable}) public_full_texts,
    (SELECT count(*)::int FROM research.atlas WHERE data->'family'->>'m9'='true') m9_family`,[]);
-  return wrap({counts:r,access:{records:'Public publication metadata, approved summaries and quotations; complete Atlas records and commentary.',passages:'CC BY and CC0 passages only, with source, attribution and licence. Other full texts remain outside public exports.',writing:false},links:{publications:base+'/api/v1/publications',atlas:base+'/api/v1/atlas',openapi:base+'/api/v1/openapi.json',mcp:base+'/mcp',agentCard:base+'/.well-known/agent-card.json',guide:site+'connect.html'}});
+  return wrap({counts:r,access:{records:'Public publication metadata, approved summaries and quotations; complete Atlas records and commentary.',passages:'CC BY and CC0 passages only, with source, attribution and licence. Other full texts remain outside public exports.',writing:false},links:{publications:base+'/api/v1/publications',atlas:base+'/api/v1/atlas',openapi:base+'/api/v1/openapi.json',mcp:base+'/mcp',agentCard:base+'/.well-known/agent-card.json',guide:site+'connect.html',quantum:base+'/api/v1/quantum/oxtr-qrc-01',completeDataset:site+'exports/manifest.json'}});
  }
  async function publications(args={}){
   const f=filters(args.filters),q=textArg(args.query,'query'),offset=integerArg(args.offset,'offset'),limit=integerArg(args.limit,'limit',100,20);
@@ -103,15 +104,17 @@ export function repository(db,env,base){
  async function search(args){
   const query=textArg(args.query,'query');if(!query)throw new RepositoryError('Enter a search query.');
   const [p,a]=await Promise.all([publications({query,limit:8}),atlas({query,limit:5})]);
-  return {results:[...p.records.map(r=>({id:'publication:'+r.id,title:r.title,url:recordURL('publications',r.id)})),...a.records.map(r=>({id:'atlas:'+r.id,title:r.name||'M'+r.modulus,url:r.url}))],datasetVersion:version};
+  return {results:[...(quantumRelevant(query)?[{id:'quantum:oxtr-qrc-01',title:'OXTR Fibonacci and M9 P24 quantum experiment',url:recordURL('quantum','oxtr-qrc-01')}]:[]),...p.records.map(r=>({id:'publication:'+r.id,title:r.title,url:recordURL('publications',r.id)})),...a.records.map(r=>({id:'atlas:'+r.id,title:r.name||'M'+r.modulus,url:r.url}))],datasetVersion:version};
  }
  async function fetchRecord(args){
   const id=textArg(args.id,'id',300);let result,title;
-  if(id.startsWith('atlas:')){result=await atlasRecord({id:id.slice(6),section:'summary'});title=result.data.name;}
+  if(id.startsWith('quantum:')){result=quantumKnowledge({id:id.slice(8)},env.ALLOWED_ORIGIN);title=result.data.question;}
+  else if(id.startsWith('atlas:')){result=await atlasRecord({id:id.slice(6),section:'summary'});title=result.data.name;}
   else{result=await publication(id.replace(/^publication:/,''));title=result.record.title;}
   return {id,title,text:JSON.stringify(result),url:result.url,metadata:{datasetVersion:version}};
  }
  async function call(name,args={}){
+  if(name==='get_quantum_study')return quantumKnowledge(args,env.ALLOWED_ORIGIN);
   if(name==='get_inventory')return inventory();
   if(name==='search_publications')return publications(args);
   if(name==='get_publication')return publication(args.id);

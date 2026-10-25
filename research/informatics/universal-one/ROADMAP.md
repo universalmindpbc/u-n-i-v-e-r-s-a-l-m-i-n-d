@@ -2,6 +2,10 @@
 
 24 October 2026. Ben approved the research assistant on staging first, followed by proof and the connector page.
 
+## Scientific agent direction — 25 October 2026
+
+The implementation roadmap is [Scientific agent roadmap](../agent-foundation/ROADMAP.md). GPT-6 Astra is the head bioinformatician and general scientist. Gemini 4 is the intended Chief Scientific Officer: guide and review Astra's strategy before execution, then review the completed work and request revisions or sign off. Build Astra first with both review points in place. LangGraph owns orchestration, checkpoints, budgets and human escalation; model services remain replaceable. The wider multi-agent vision follows this initial implementation.
+
 ## Collaboration entry points
 
 API, MCP, Google Agent2Agent (A2A), personal AI agents, JSON and CSV are the intended access options. Simple GPT, Grok and Claude connection buttons are desired for nontechnical visitors where each provider supports the interaction. Verify capabilities before presenting a functioning connection. GPT Dot, Grok Bot, Claude Duet and Meta Muse are user-supplied product references requiring identification and API/connector verification; no support is implied by this roadmap.

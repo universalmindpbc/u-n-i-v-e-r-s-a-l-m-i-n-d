@@ -165,3 +165,9 @@ The goal of this repository is rapid creative iteration. Reducing friction for B
 - Use **Phi Ratio** for φ in all public Informatics copy. Preserve this terminology in future research and website revisions.
 - Introduce the proposed relationship between Atlas sequences and biological functions as a research hypothesis, with bioinformatics and in silico modelling as the planned investigation. The initial investigation is specific to OXTR; wider studies provide supporting context, rather than a claim of universal biological applicability.
 - Keep About compact. Open First Principles Genomics and the full publication register in lightboxes within the active experience. Preserve the page, fullscreen state and music; internal research links must not navigate the top-level experience away.
+
+## Complete public datasets and experiment records
+
+Every published experiment needs an immutable JSON and CSV revision in `Informatics/quantum/experiments/`, registered by `tools/register-informatics-experiment.py`. Retain the question, phase, inputs, model and method versions, settings, measurements, units, counts, uncertainty, provider references and interpretation. Earlier revisions remain available. Exclude credentials and private participant data.
+
+After changing published data, run `python3 tools/export-informatics.py` and verify JSON/CSV equivalence. Commit the source data and generated exports together. The existing Panthur Informatics deployment checks the complete-export manifest and experiment registry before uploading. The full dataset downloads on Connect include new experiments as well as all published Atlas data. An agent completes publication only after this export check passes.

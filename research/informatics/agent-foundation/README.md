@@ -1,6 +1,8 @@
 # Universal Informatics research agent: implementation start
 
-Date: 25 October 2026. Status: initial tool implemented; orchestration and service connections remain to be built. No autonomous study is active.
+The current architecture decision is in [ROADMAP.md](ROADMAP.md): LangGraph owns orchestration; GPT-6 Astra performs scientific work; Gemini 4 is the intended Chief Scientific Officer reviewing strategy and completed work. Start with Astra and retain replaceable provider adapters. The assessment below is background, superseded by this owner decision where it lists unresolved choices.
+
+Date: 25 October 2026. Status: a LangGraph prototype has run GPT-6 Astra against the existing public OXTR results using three read-only tools. It saves checkpoints and stops at completion review. No autonomous study service, Gemini connection or new hardware execution is active.
 
 ## Product contract
 
@@ -42,7 +44,7 @@ No provider comparison has been run on our biology task. The following is an arc
 | GPT with LangGraph | Own the study state, resumable workflow and mix of fixed scientific checks with flexible model decisions | Strong alternative when direct control and interchangeable models matter most. Requires our worker, durable database and operational maintenance. LangChain is optional. |
 | OpenAI Agents SDK | Application-owned tools/state with a ready-made agent loop | Also viable. Select one orchestrator; do not stack multiple competing loops without a specific need. |
 
-Recommendation: keep the scientific tools and budget ledger independent of the model. Compare the OpenAI Agents API and GPT with LangGraph on the same small task: audit existing data, identify the next executable analysis, run an authorised local analysis and produce a report. Test recovery after interruption and refusal to repeat a paid submission. Choose after that comparison. Personal assistants remain useful for Ben's research and development work without becoming the website's only execution mechanism.
+Decision: keep the scientific tools and budget ledger independent of the model. LangGraph owns the durable workflow and scientific review gates. Model providers, including OpenAI managed agents where useful, operate behind replaceable adapters. Begin with the same small task: audit existing data, identify the next executable analysis, run an authorised local analysis and produce a report. Test recovery after interruption and refusal to repeat a paid submission. Personal assistants remain useful for Ben's research and development work without becoming the website's only execution mechanism.
 
 ## Execution and budget design
 
@@ -63,3 +65,22 @@ First useful autonomous research objective: assess whether the public binding da
 - [OpenAI Agents SDK](https://developers.openai.com/api/docs/guides/agents/sdk)
 - [LangGraph overview](https://docs.langchain.com/oss/python/langgraph/overview)
 - [LangGraph persistence](https://docs.langchain.com/oss/python/langgraph/persistence)
+
+## Implemented prototype
+
+`workflow.py` contains the provider-neutral model interface, the Astra Responses adapter, a SQLite checkpointed LangGraph workflow and a separate model-usage ledger. LangGraph owns tool permission checks, bounded iteration and review state. The first supported task audits existing records, calculates differences between input preparations, reads the saved next-test evidence and drafts a report. Unknown scientific scope stops before any model call. Reports reach `review_pending`; publication is not a tool.
+
+The live verification in `verification/astra-recorded-audit.json` used GPT-6 Astra, completed all three tools in two model steps, and stopped for completion review. No scientific jobs were submitted. The initial verification exposed repeated tool requests; the adapter now removes completed tools from the offered set. Five workflow tests cover restart, review, unknown scope, permissions, budget exhaustion, uncertain requests and recorded numerical comparisons. Seven existing data-audit tests also pass.
+
+The ledger reserves a conservative input-byte allowance plus output and protocol allowances before each model request. It stores completed responses and retains uncertain reservations after interrupted requests. This is a single-service prototype token/call limit, not yet the production monetary ledger across providers. SQLite checkpoints and a local reviewer input are development mechanisms; production needs authenticated review, durable hosted storage, shared monetary reservations, cancellation and task delivery.
+
+OpenAI managed-agent sessions remain an optional adapter. The first implementation uses direct Responses calls inside LangGraph to retain control of iteration and output limits. Gemini and API/MCP/A2A computation dispatch are roadmap connections, not active services. Existing connectors retain read-only research functionality.
+
+Verification commands:
+
+```text
+python research/informatics/agent-foundation/test_workflow.py
+python research/informatics/agent-foundation/test_audit_tool.py
+```
+
+Primary implementation references: [LangGraph interrupts](https://docs.langchain.com/oss/python/langgraph/interrupts), [OpenAI function calling](https://developers.openai.com/api/docs/guides/function-calling), [GPT-6 Astra](https://developers.openai.com/api/docs/models/gpt-6-astra).

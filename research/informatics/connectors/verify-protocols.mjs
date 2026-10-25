@@ -9,7 +9,7 @@ const report={checkedAt:new Date().toISOString(),endpoint:base};
 const client=new Client({name:'informatics-proof',version:'1.0.0'});
 try{
  await client.connect(new StreamableHTTPClientTransport(new URL(base+'/mcp')));
- report.server=client.getServerVersion();report.tools=(await client.listTools()).tools.map(x=>x.name);assert.equal(report.tools.length,8);
+ report.server=client.getServerVersion();report.tools=(await client.listTools()).tools.map(x=>x.name);assert.equal(report.tools.length,9);
  const call=async(name,args={})=>{const d=await client.callTool({name,arguments:args});assert.ok(!d.isError,JSON.stringify(d));return d.structuredContent??JSON.parse(d.content[0].text);};
  report.inventory=await call('get_inventory');assert.equal(report.inventory.counts.atlas,1001);assert.equal(report.inventory.counts.publications,811);
  const index=await call('list_atlas_records',{family:'m9',limit:100});assert.equal(index.page.total,111);assert.equal(index.page.nextOffset,100);

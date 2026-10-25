@@ -10,7 +10,7 @@ const base='https://connector.example';
 async function run(path,body,headers={}){const r=await connectors(new Request(base+path,{method:body===undefined?'GET':'POST',headers:{'Content-Type':'application/json',...headers},...(body!==undefined?{body:typeof body==='string'?body:JSON.stringify(body)}:{})}),env,db,research);return {status:r.status,headers:r.headers,data:await r.json().catch(()=>null)};}
 const rpc=(method,params={})=>({jsonrpc:'2.0',id:1,method,params});
 assert.equal((await run('/mcp',rpc('initialize',{protocolVersion:'2025-11-25'}))).data.result.protocolVersion,'2025-11-25');
-assert.equal((await run('/mcp',rpc('tools/list'))).data.result.tools.length,8);
+assert.equal((await run('/mcp',rpc('tools/list'))).data.result.tools.length,9);
 assert.equal((await run('/mcp')).status,405);
 assert.equal((await run('/mcp','{')).data.error.code,-32700);
 assert.equal((await run('/mcp',rpc('ping',null))).data.error.code,-32602);
@@ -25,6 +25,15 @@ const large=(await run('/mcp',rpc('tools/call',{name:'get_atlas_record',argument
 assert.equal(large.fields[0].path,'large.50');assert.equal(large.page.nextOffset,100);
 const small=(await run('/mcp',rpc('tools/call',{name:'get_atlas_record',arguments:{id:'M9',section:'large',offset:50,limit:2}}))).data.result.structuredContent;assert.equal(small.data[0].i,50);
 const api=await run('/api/v1/atlas/M9');assert.deepEqual(api.data.data,atlas.data);
+const quantum=await run('/api/v1/quantum/oxtr-qrc-01');assert.equal(quantum.status,200);assert.equal(quantum.data.data.hardware_valid_shots,1541);
+assert.equal((await run('/api/v1/quantum/unknown')).status,400);
+assert.equal((await run('/api/v1/quantum/oxtr-qrc-01?offset=NaN')).status,400);
+const sequences=(await run('/mcp',rpc('tools/call',{name:'get_quantum_study',arguments:{id:'oxtr-qrc-01',section:'sequences',offset:0}}))).data.result.structuredContent;
+assert.deepEqual(sequences.data.definitions.beta.display_cycle,[4,8,7,5,1,2]);
+const first=(await run('/api/v1/quantum/oxtr-qrc-01?section=measurements')).data;assert.equal(first.data.records.length,2);assert.equal(first.data.page.nextOffset,2);
+const comparison=(await run('/api/v1/quantum/oxtr-qrc-01?section=comparison')).data.data;assert.equal(comparison.length,16);assert.equal(comparison[0].calculated_change_percentage_points,0);
+assert.ok((await repository(db,env,base).search({query:'our quantum experiment'})).results.some(x=>x.id==='quantum:oxtr-qrc-01'));
+assert.equal((await repository(db,env,base).fetchRecord({id:'quantum:oxtr-qrc-01'})).id,'quantum:oxtr-qrc-01');
 await run('/api/v1/publications?collections=sound&collections=general&query='+encodeURIComponent("';DROP TABLE research.publications;--"));
 assert.ok(queries.some(q=>q.args?.[0]?.includes('sound')&&q.args[0].includes('general')));assert.ok(!queries.some(q=>q.sql.includes('DROP TABLE')));
 await repository(db,env,base).passages({id:'paper'});assert.ok(queries.some(q=>q.sql.includes("s.kind='full-text'")||q.sql.includes("kind='full-text'")));assert.ok(queries.some(q=>q.sql.includes('creativecommons.org')));
