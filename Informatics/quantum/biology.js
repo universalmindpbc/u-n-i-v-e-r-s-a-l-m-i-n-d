@@ -1,7 +1,7 @@
-import './study.js?v=4';
+import './study.js?v=5';
 import './hypothesis.js?v=1';
-import {renderResponse} from './response-view.js?v=4';
-import {interpretations,appendInsightPanel,appendComparison,appendEvidenceSummary} from './insights.js?v=1';
+import {renderResponse} from './response-view.js?v=5';
+import {interpretations,appendInsightPanel,appendComparison,appendEvidenceSummary,appendNextTest} from './insights.js?v=2';
 import {verifiedReport,reportPair,reportContext,timing} from './result-contract.js?v=2';
 const $=s=>document.querySelector(s),node=(tag,text,cls)=>{const n=document.createElement(tag);if(text!==undefined)n.textContent=text;if(cls)n.className=cls;return n;};
 document.body.classList.toggle('embedded',new URLSearchParams(location.search).get('embedded')==='1');
@@ -44,11 +44,12 @@ function openResults(kind,shared=false,trigger=document.activeElement){
  const context=reportContext(shared?null:active,recordedState,busy),{study,reports}=context;
  const c=verifiedReport(reports.classical,study,'classical'),s=verifiedReport(reports.simulation,study,'simulation'),q=verifiedReport(reports.quantum,study,'quantum');
  const first=!resultsDialog.open;if(first){resultTrigger=trigger;resultScroll=window.scrollY;priorOverflow=document.documentElement.style.overflow;}
- $('#results-dialog-title').textContent={classical:'Classical & CUDA-Q insights',simulation:'CUDA-Q · simulation insights',quantum:'Aquila · quantum insights',comparison:'What the combined evidence tells us'}[kind];
+ $('#results-dialog-title').textContent={classical:'Classical & CUDA-Q insights',simulation:'CUDA-Q · simulation insights',quantum:'Aquila · quantum insights',comparison:'Goal, outcome and next decision',next:'The next binding-site test'}[kind];
  const oxtr=study?.id==='oxtr-qrc-01';resultsDialog.querySelector('.eyebrow').textContent=oxtr?'OXTR · STUDY 01':'YOUR INVESTIGATION';resultsContent.replaceChildren();
- if(oxtr){const nav=node('nav',undefined,'result-reader-nav');nav.setAttribute('aria-label','Study result views');for(const [key,title]of[['simulation','CUDA-Q'],['quantum','Aquila'],['comparison','Compare']]){const button=node('button',title);button.dataset.reader=key;button.setAttribute('aria-pressed',String(key===(kind==='classical'?'simulation':kind)));button.onclick=()=>openResults(key,shared,resultTrigger);nav.append(button);}resultsContent.append(nav);resultsContent.append(node('p','Study question: '+studyQuestion,'reader-question'));}
+ if(oxtr){const nav=node('nav',undefined,'result-reader-nav');nav.setAttribute('aria-label','Study result views');for(const [key,title]of[['simulation','CUDA-Q'],['quantum','Aquila'],['comparison','Compare'],['next','Next test']]){const button=node('button',title);button.dataset.reader=key;button.setAttribute('aria-pressed',String(key===(kind==='classical'?'simulation':kind)));button.onclick=()=>openResults(key,shared,resultTrigger);nav.append(button);}resultsContent.append(nav);resultsContent.append(node('p','Study question: '+studyQuestion,'reader-question'));}
  const slot=node('div',undefined,'result-slot');slot.id='modal-'+kind+'-report';resultsContent.append(slot);
- if(kind==='comparison'){
+ if(kind==='next'&&oxtr){appendNextTest(slot,node);
+ }else if(kind==='comparison'){
   if(reportPair(c,q)&&reports.comparison?.state==='complete'&&reports.comparison.classical_run_id===c.receipt.run_id&&reports.comparison.quantum_run_id===q.receipt.run_id){slot.dataset.state='complete';appendComparison(slot,node);const methods=details('Recorded interpretation and provenance',[reports.comparison.finding,`Classical run: ${c.receipt.run_id}`,`Quantum run: ${q.receipt.run_id}`]);slot.append(methods);}else empty(slot,'Comparison awaiting matched evidence','A comparison appears when the matching classical and quantum records are available.');
  }else{const data=kind==='quantum'?q:kind==='simulation'?s:s||c;if(data)report(slot,data);else empty(slot,'No recorded result for this question',active?.message||'The study record is loading. Close and retry.');}
  if(kind==='classical'&&c&&s){const check=details('Classical calculation record',[c.finding,`Run ${c.receipt.run_id} · ${c.receipt.backend}`]);resultsContent.append(check);}
@@ -59,6 +60,7 @@ resultsDialog.addEventListener('close',()=>{document.documentElement.style.overf
 resultsDialog.addEventListener('click',e=>{if(e.target!==resultsDialog)return;const r=resultsDialog.getBoundingClientRect();if(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom)resultsDialog.close();});
 for(const b of document.querySelectorAll('[data-recorded-result]'))b.onclick=()=>{if(!busy)openResults(b.dataset.recordedResult,true,b);};
 appendInsightPanel($('#study-initial-insights'),node);
+document.addEventListener('click',e=>{const b=e.target.closest('[data-open-next-test]');if(b&&!busy)openResults('next',true,b);});
 window.addEventListener('quantum:state',e=>{recordedState=e.detail;refreshReports();});
 function activate(data){active=data;$('#active-question').textContent=data.question;$('#study-request-status').textContent=data.message;$('#study-actions').hidden=false;window.dispatchEvent(new CustomEvent('quantum:question',{detail:{state:'complete',label:'Question received',studyId:data.study?.id||null}}));refreshReports();}
 $('#question-form').onsubmit=async e=>{e.preventDefault();if(busy)return;const question=$('#question').value.trim();if(question.length<5)return;busy=true;$('#ask-button').disabled=true;$('#question').readOnly=true;$('#question-status').textContent='';$('#question-status').className='';$('#saved-status').textContent='';active=null;refreshReports();$('#active-question').textContent=question;$('#study-request-status').textContent='Understanding your question…';$('#study-actions').hidden=true;step('study');window.dispatchEvent(new CustomEvent('quantum:question',{detail:{state:'running',label:'Understanding question',studyId:null}}));try{const r=await fetch(endpoint+'/quantum/question',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({question}),signal:AbortSignal.timeout(110000)}),data=await r.json();if(!r.ok)throw Error(data.error||'The request failed. Please retry.');if(data.version!=='quantum-question-v3'||!data.id||!data.reports)throw Error('The response was incomplete. Please retry.');activate(data);updateCapacity(data.allowance);$('#question').value='';}catch(error){step('ask');$('#question-status').className='error';$('#question-status').textContent=error.name==='TimeoutError'?'The request timed out. Your question is preserved.':error.message;$('#study-request-status').textContent='Question not processed. Retry from Ask a question.';window.dispatchEvent(new CustomEvent('quantum:question',{detail:{state:'failed',label:'Request failed',studyId:null}}));}finally{busy=false;$('#ask-button').disabled=false;$('#question').readOnly=false;refreshReports();}};

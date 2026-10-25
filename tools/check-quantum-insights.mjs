@@ -13,8 +13,11 @@ for(const [i,w]of data.windows.entries()){
 }
 const html=await fs.readFile('Informatics/quantum/index.html','utf8'),js=await fs.readFile('Informatics/quantum/biology.js','utf8'),view=await fs.readFile('Informatics/quantum/response-view.js','utf8'),copy=await fs.readFile('Informatics/quantum/insights.js','utf8');
 assert(html.includes('id="study-initial-insights"'));assert(html.includes('id="results-dialog"'));assert(html.includes('id="close-results"'));
-assert(!view.includes("el('details')"));assert(view.includes("role:'button'"));assert(view.includes('Sampling range'));assert(view.includes('Neither direction means better binding-site prediction'));
+assert(!view.includes("el('details')"));assert(view.includes("role:'button'"));assert(view.includes('Sampling range'));assert(view.includes('Neither side is the “good” side'));
 assert(js.includes('resultTrigger?.focus({preventScroll:true})'));assert(js.includes('resultScroll=window.scrollY'));
-assert.match(insightLead.meaning,/has not established/);assert.match(interpretations.quantum.finding,/increase it in sample 1 but decrease it in sample 2/);
+assert.match(insightLead.meaning,/did not test binding-site prediction/);assert.match(interpretations.quantum.finding,/more in sample 1 but fewer in sample 2/);
 assert(!/\b(should|could|would)\b/i.test(html+copy));
-const dir='research/informatics/quantum-insights-20261025';await fs.mkdir(dir,{recursive:true});await fs.writeFile(dir+'/source-verification.json',JSON.stringify({passed:true,observations_recomputed_from_receipts:true,all_16_records_preserved:true,excitation_counts_are_integers:true,explicit_biological_success_criterion:true,no_calibrated_trust_score_claimed:true,at:new Date().toISOString()},null,2)+'\n');console.log('Interpretations, counts, source syntax and evidence boundaries verified.');
+assert(!/ideal (calculation|direction|model)/i.test(copy+view));
+const coverage=JSON.parse(await fs.readFile('Informatics/quantum/data/oxtr-next-test-evidence.json','utf8'));assert.equal(coverage.peaks.length,5);assert(coverage.samples.every(s=>s.overlap_count===0));assert.equal(coverage.prediction_test_run,false);assert(copy.includes('not pass/fail rules applied after the first 16 runs'));
+
+const dir='research/informatics/quantum-goal-20261025';await fs.mkdir(dir,{recursive:true});await fs.writeFile(dir+'/source-verification.json',JSON.stringify({passed:true,observations_recomputed_from_receipts:true,all_16_records_preserved:true,excitation_counts_are_integers:true,explicit_biological_success_criterion:true,no_calibrated_trust_score_claimed:true,at:new Date().toISOString()},null,2)+'\n');console.log('Interpretations, counts, source syntax and evidence boundaries verified.');
