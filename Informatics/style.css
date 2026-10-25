@@ -44,3 +44,5 @@ footer nav small::before{content:"";display:inline-block;width:5px;height:5px;ma
 .initial-focus-back{margin-top:8px;padding:6px 0;color:#b9d5e6;font-size:11px;letter-spacing:.03em;text-align:left}
 body:has(#initial-focus[open]) #about{visibility:hidden}body:has(#initial-focus[open]) #about::backdrop{background:transparent;backdrop-filter:none}
 @media(max-width:640px){.about-initial-focus{padding:16px}#initial-focus{padding:48px 24px 26px}#initial-focus h2{font-size:23px}}
+
+.research-reading-link{font-size:13px;margin:16px 0 0}.research-reading-link a{color:inherit;text-underline-offset:4px;opacity:.85}.research-reading-link a:focus-visible{outline:2px solid currentColor;outline-offset:5px}

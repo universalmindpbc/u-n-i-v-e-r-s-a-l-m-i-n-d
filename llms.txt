@@ -38,3 +38,20 @@ Important context:
 ## Optional
 
 - [Website sitemap](https://universalmind.tv/sitemap.xml): Canonical list of the public pages and research documents approved for indexing.
+
+## Universal Informatics
+
+Bioinformatics platform for mental health. Research hypotheses remain distinct from mathematical verification and biological evidence.
+
+## Read without a connector
+
+- [Research and evidence](https://universalmind.tv/informatics/read/): Plain HTML overview.
+- [Publications](https://universalmind.tv/informatics/read/publications/index.html): 821 approved records, citations, summaries, limitations and topic assessment context.
+- [Geometry Atlas](https://universalmind.tv/informatics/read/atlas/index.html): 1,001 records with complete JSON and CSV links.
+- [Experiments](https://universalmind.tv/informatics/read/experiments/index.html): Versioned measurements, methods and limitations.
+- [Data and methods](https://universalmind.tv/informatics/read/data.html): Full source inventory and checksums.
+- [Archive record](https://universalmind.tv/informatics/read/provenance.html): Verified storage and timestamp status.
+- [AI access and reuse](https://universalmind.tv/informatics/read/access.html): All LLM providers may read and train on Universal Mind-owned public Informatics material. Third-party rights remain attached to original material.
+- [Connect and download](https://universalmind.tv/informatics/connect.html): Optional API, MCP, A2A and complete JSON/CSV exports.
+
+Staging is excluded. No public GitHub repository is asserted until a public source release exists.

@@ -1,32 +1,42 @@
 # Universal Mind public discovery policy.
-# Approved search and user-directed retrieval is allowed only for the canonical
-# public surface below. Training crawlers remain excluded.
+# Public Informatics allows reading, indexing and training by every AI provider.
+# The existing I AM discovery and training policy remains in force elsewhere.
 
 User-agent: GPTBot
 Disallow: /
+Allow: /informatics/
 
 User-agent: Google-Extended
 Disallow: /
+Allow: /informatics/
 
 User-agent: Applebot-Extended
 Disallow: /
+Allow: /informatics/
 
 User-agent: ClaudeBot
 Disallow: /
+Allow: /informatics/
 
 User-agent: CCBot
 Disallow: /
+Allow: /informatics/
 
 User-agent: Bytespider
 Disallow: /
+Allow: /informatics/
 
 User-agent: Amazonbot
 Disallow: /
+Allow: /informatics/
 
 User-agent: meta-externalagent
 Disallow: /
+Allow: /informatics/
 
 User-agent: *
+# Public Informatics, including all research records and dataset formats.
+Allow: /informatics/
 # Block the complete implementation and internal document surface by default.
 # The explicit public URLs below are longer matches and therefore take priority.
 Disallow: /vogue/iam/
