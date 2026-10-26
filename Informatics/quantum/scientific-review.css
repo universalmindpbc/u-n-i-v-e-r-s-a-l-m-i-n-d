@@ -1,0 +1,24 @@
+.scientific-review-rail{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);align-items:center;gap:28px;margin:0 0 26px;padding:17px 0 20px;border-top:1px solid #526c66;color:#a3ead1;position:relative}
+.scientific-review-rail:after{content:"";position:absolute;left:20px;right:20px;bottom:0;height:13px;border:1px solid #526c66;border-top:0;pointer-events:none}
+.scientific-review-rail button{display:grid;grid-template-columns:1fr auto;gap:6px 16px;align-items:center;border:0;background:transparent;padding:0 12px;text-align:left;min-height:54px;border-radius:0}
+.scientific-review-rail button:last-child{text-align:right;grid-template-columns:auto 1fr}
+.scientific-review-rail button span{font-size:9px;letter-spacing:.14em;color:#a3ead1}
+.scientific-review-rail button strong{font-size:14px;color:#d8e9e4;font-weight:500;grid-column:1}
+.scientific-review-rail button i{grid-column:2;grid-row:1/3;font-style:normal;font-size:22px;color:#719e8e}
+.scientific-review-rail button:last-child span,.scientific-review-rail button:last-child strong{grid-column:2}
+.scientific-review-rail button:last-child i{grid-column:1}
+.scientific-review-rail button:disabled{cursor:default;opacity:.65}
+.scientific-review-rail button:focus-visible{outline:2px solid #e9d86b;outline-offset:7px}
+.review-supervisor{display:grid;grid-template-columns:auto auto;column-gap:11px;align-items:center;text-align:center}
+.review-mark{grid-row:1/3;font-size:30px;color:#b9d4e7}
+.review-supervisor strong{font-size:17px;font-weight:500;color:#eaf1ef}
+.review-supervisor>span:last-of-type{font-size:8px;letter-spacing:.16em;margin-top:3px;color:#a3ead1}
+.review-supervisor small{grid-column:1/-1;font-size:9px;letter-spacing:.01em;color:#a9bdc5;margin-top:9px}
+.recorded-review-stamp{display:flex;gap:8px 20px;align-items:center;flex-wrap:wrap;border-top:1px solid #42695e;padding-top:18px;margin-top:25px;color:#a3ead1}
+.recorded-review-stamp strong{font-size:13px;font-weight:500}.recorded-review-stamp time{font-size:12px;color:#b8cbd0}.recorded-review-stamp button{margin-left:auto;font-size:12px}.recorded-review-stamp>span{font-size:12px}
+#scientific-review-dialog{width:min(850px,calc(100% - 40px));max-height:86dvh;padding:0;overflow:hidden;border:1px solid #698b82;border-radius:7px;background:rgba(9,22,28,.98);color:#eef5f4}
+#scientific-review-dialog[open]{display:flex;flex-direction:column}#scientific-review-dialog::backdrop{background:rgba(2,8,12,.7)}
+#scientific-review-dialog .result-dialog-content{font-size:13px;line-height:1.75;color:#bdd0d6}
+.review-verdict{border-left:2px solid #a3ead1;background:rgba(163,234,209,.06);padding:20px 22px;margin-bottom:18px}.review-verdict h3{font-size:27px;font-weight:500;letter-spacing:-.025em;line-height:1.3;color:#eaf3ef;margin:0 0 13px}.review-verdict p{margin:0 0 14px}.review-verdict time{font-size:12px;color:#a3ead1}.review-verdict .eyebrow{font-size:9px;letter-spacing:.13em;color:#a3ead1}
+.review-scope{font-size:12px;color:#adbdc5}.review-checks article{padding:18px 0;border-top:1px solid #35534e}.review-check-state{font-size:9px;letter-spacing:.12em;color:#e9d86b}.review-checks h4{font-size:16px;font-weight:500;line-height:1.5;color:#e9f1ee;margin:8px 0}.review-checks p{margin:0}.review-downloads{display:flex;gap:20px;flex-wrap:wrap;margin-top:22px;color:#a3ead1}#scientific-review-dialog details p{overflow-wrap:anywhere;font-size:11px}#scientific-review-dialog details{margin:22px 0}
+@media(max-width:650px){.scientific-review-rail{gap:10px;grid-template-columns:1fr 1fr;padding:16px 0 19px;margin-bottom:22px}.review-supervisor{grid-column:1/-1;grid-row:1;justify-content:center;margin-bottom:9px}.review-supervisor strong{font-size:16px}.review-supervisor small{font-size:9px}.scientific-review-rail button{grid-row:2;padding:0 8px;gap:5px 7px}.scientific-review-rail button span{font-size:8px}.scientific-review-rail button strong{font-size:12px}.scientific-review-rail button i{font-size:18px}.recorded-review-stamp{display:grid;gap:8px}.recorded-review-stamp button{margin:0;text-align:left}.recorded-review-stamp time{font-size:11px}#scientific-review-dialog{width:calc(100% - 20px);max-height:90dvh}.review-verdict{padding:16px}.review-verdict h3{font-size:23px}.review-checks h4{font-size:15px}}

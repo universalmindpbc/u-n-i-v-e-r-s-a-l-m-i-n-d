@@ -1,3 +1,4 @@
+import './scientific-review.js?v=1';
 import {appendGenomic,appendLocalChecks} from './study-progress.js?v=1';
 import {agentHeaders,ensureAgentSession,followAgent,resetAgent,renderAgentReport,setupAgent} from './agent.js?v=unified-2';
 import './study.js?v=clean-3';
