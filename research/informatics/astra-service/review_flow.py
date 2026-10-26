@@ -27,6 +27,27 @@ def create_plan(key, question, memory, feedback):
  if r.status!='completed':raise RuntimeError('Astra design incomplete; reservation retained.')
  return {'plan':json.loads(r.output_text),'tokens':r.usage.total_tokens,'provider_response_id':r.id,'model':r.model}
 
+def program_summary(cases):
+ """Keep program identity and numerical checks; retain full arrays in exports."""
+ groups={};receipts=[]
+ for case in cases:
+  receipt={k:v for k,v in case.items() if k not in ['reference_observables','cudaq_observables','pulse']}
+  receipt['case_sha256']=digest(case)
+  for key in ['reference_observables','cudaq_observables']:
+   values=case.get(key,[])
+   if values:receipt[key+'_mean_atom_excitation']=sum(values[:6])/len(values[:6])
+  receipts.append(receipt)
+  if case.get('qasm_sha256') and case.get('ahs_sha256'):
+   groups.setdefault((case.get('sample'),case['qasm_sha256'],case['ahs_sha256']),[]).append(case)
+ identical=[]
+ for (sample,qasm,ahs),members in groups.items():
+  if len(members)>1:
+   identical.append({'sample':sample,'representations':[m['representation'] for m in members],
+    'qasm_sha256':qasm,'ahs_sha256':ahs,
+    'pulse_equal':all(m.get('pulse')==members[0].get('pulse') for m in members),
+    'observables_equal':all(m.get('cudaq_observables')==members[0].get('cudaq_observables') and m.get('reference_observables')==members[0].get('reference_observables') for m in members)})
+ return {'receipts':receipts,'identical_programs':identical,'complete_cases_sha256':digest(cases)}
+
 def final_material(state):
  report=state['report']
  # Review the numeric metrics, source identity and execution receipts. The full
@@ -35,5 +56,6 @@ def final_material(state):
  compact['analysis']={k:v for k,v in report['analysis'].items() if k!='predictions'}
  compact['predictions_sha256']=digest(report['analysis'].get('predictions',[]))
  compact['prepared_quantum']={k:v for k,v in report['prepared_quantum'].items() if k not in ['cases','physical_model']}
- compact['local_program_receipts']=report['prepared_quantum']['cases']
+ compact['local_program_summary']=program_summary(report['prepared_quantum']['cases'])
+ compact['local_program_summary_format']='Program hashes, full-case hashes, numerical errors and mean atom excitation. Exact vectors and pulse arrays remain in the downloadable report. Identical-program groups compare full program hashes and exact arrays.'
  return {'question':state['question'],'recipe':RECIPE,'plan':state['plan'],'report':compact}

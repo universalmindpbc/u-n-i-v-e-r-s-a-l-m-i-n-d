@@ -48,6 +48,26 @@ class Tests(unittest.TestCase):
   self.assertEqual(data['research_memory_sources'][0]['source_sha256'],'memory-sha')
   self.assertLess(len(json.dumps(request).encode())+2524,16000)
   self.assertEqual(len(evidence['analysis']['predictions'][0]['value']),100000)
+ def test_program_identity_survives_compact_review(self):
+  first={'id':'a','sample':'sample','representation':'fibonacci','qasm_sha256':'q','ahs_sha256':'a','pulse':{'times':[0,1]},'reference_observables':[.2]*21,'cudaq_observables':[.2]*21,'max_export_observable_error':1e-5}
+  second={**first,'id':'b','representation':'phi'}
+  different={**first,'id':'c','representation':'alpha','ahs_sha256':'different'}
+  cases=[first,second,different];before=json.dumps(cases)
+  summary=runner.program_summary(cases)
+  self.assertEqual(summary['identical_programs'][0]['representations'],['fibonacci','phi'])
+  self.assertTrue(summary['identical_programs'][0]['pulse_equal'])
+  self.assertEqual(len(summary['identical_programs']),1)
+  self.assertEqual(summary['receipts'][0]['case_sha256'],digest(first))
+  self.assertEqual(summary['receipts'][0]['max_export_observable_error'],1e-5)
+  self.assertEqual(json.dumps(cases),before)
+ def test_revision_omits_provider_metadata_and_passing_checks(self):
+  evidence={'cohort':{},'analysis':{},'prior_quantum':{'rows':[]},'prepared_quantum':{'cases':[]}}
+  feedback=[{'summary':'Explain the identical programs','required_changes':['Keep full sequence names'],'checks':[{'status':'pass','finding':'x'*100000},{'status':'fail','finding':'Two identical programs'}],'usage':{'padding':'y'*100000}}]
+  request=runner.brief_input(evidence,'OXTR',feedback)
+  revision=json.loads(request['prompt'])['Gemini_revision_request'][0]
+  self.assertEqual(revision['required_changes'],['Keep full sequence names'])
+  self.assertEqual(revision['failed_checks'],[{'status':'fail','finding':'Two identical programs'}])
+  self.assertLess(len(json.dumps(request).encode())+2524,16000)
  def test_cost_settlement_keeps_unknown_requests(self):
   with tempfile.TemporaryDirectory() as d:
    path=Path(d)/'cost.sqlite';ledger=ReviewLedger(path,1000)
