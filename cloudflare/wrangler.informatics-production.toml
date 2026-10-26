@@ -9,7 +9,7 @@ preview_urls = false
 [vars]
 ALLOWED_ORIGIN = "https://universalmind.tv"
 RESEARCH_MODEL = "gpt-6-astra"
-DATASET_VERSION = "research-20261026-geometry-v1"
+DATASET_VERSION = "research-20261026-daytab-v1"
 CONNECTORS_ENABLED = "true"
 QUANTUM_PLANNING_ENABLED = "true"
 ASTRA_ENABLED = "true"
