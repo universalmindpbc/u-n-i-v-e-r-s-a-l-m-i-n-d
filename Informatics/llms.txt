@@ -12,10 +12,14 @@ Inspired by research into how geometric architectures and Fibonacci-ordered dyna
 
 Our proposed approach explores equilateral triangular meshes and tetrahedral models, comparing computational cost, processing speed and accuracy against established methods.
 
+## Research library
+
+An extensive, clinically searchable research index spanning sound and auditory entrainment, EMDR, mindfulness-based stress reduction and mantra. Explore more than 800 publications by intervention, clinical condition, gene expression, molecular target, study design and journal, with transparent topic-level trust ratings.
+
 ## Read without a connector
 
 - [Research and evidence](https://universalmind.tv/informatics/read/): Plain HTML overview.
-- [Publications](https://universalmind.tv/informatics/read/publications/index.html): 821 approved records, citations, summaries, limitations and topic assessment context.
+- [Publications](https://universalmind.tv/informatics/read/publications/index.html): 891 approved records, citations, summaries, limitations and topic assessment context.
 - [Geometry Atlas](https://universalmind.tv/informatics/read/atlas/index.html): 1,001 records with complete JSON and CSV links.
 - [Experiments](https://universalmind.tv/informatics/read/experiments/index.html): Versioned measurements, methods and limitations.
 - [Data and methods](https://universalmind.tv/informatics/read/data.html): Full source inventory and checksums.

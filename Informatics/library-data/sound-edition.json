@@ -1036,6 +1036,1163 @@
                 "url": "https://pubmed.ncbi.nlm.nih.gov/39004412/",
                 "reviewedAt": "2026-08-15"
               }
+            },
+            {
+              "title": "Effectiveness of binaural beats in alleviating anxiety during periodontal flap surgery: A randomized controlled trial.",
+              "journal": "Journal of Indian Society of Periodontology",
+              "year": 2025,
+              "authors": "Madhumitha TK, Esther V, Ravishankar PL, Kalaivani, Kumar G, Rajula PB.",
+              "design": "Randomized controlled trial",
+              "urls": [
+                "https://pubmed.ncbi.nlm.nih.gov/41450809/",
+                "https://doi.org/10.4103/jisp.jisp_73_25",
+                "https://pmc.ncbi.nlm.nih.gov/articles/PMC12736686/"
+              ],
+              "doi": "10.4103/jisp.jisp_73_25",
+              "pmid": "41450809",
+              "targets": [],
+              "categories": [
+                "Clinical & self-report"
+              ],
+              "citationCount": 0,
+              "citationSnapshot": {
+                "count": 0,
+                "source": "Europe PMC",
+                "retrievedAt": "2026-10-26",
+                "url": "https://europepmc.org/article/MED/41450809"
+              },
+              "studyDesignAssessment": {
+                "category": "peer-reviewed",
+                "peerReviewed": true,
+                "basis": "Reported design checked against the primary publication abstract. Blinding terminology reflects the source report, not an independent risk-of-bias rating.",
+                "sources": [
+                  "https://pubmed.ncbi.nlm.nih.gov/41450809/",
+                  "https://doi.org/10.4103/jisp.jisp_73_25",
+                  "https://pmc.ncbi.nlm.nih.gov/articles/PMC12736686/"
+                ],
+                "assessedAt": "2026-10-26",
+                "registeredMaskingBasis": false
+              },
+              "evidence": {
+                "intervention": "Binaural beats around periodontal surgery",
+                "comparator": "No auditory intervention",
+                "evidenceType": "Clinical or experimental outcomes",
+                "sourceURLs": [
+                  "https://pubmed.ncbi.nlm.nih.gov/41450809/",
+                  "https://doi.org/10.4103/jisp.jisp_73_25",
+                  "https://pmc.ncbi.nlm.nih.gov/articles/PMC12736686/"
+                ],
+                "checkedAt": "2026-10-26",
+                "reviewScope": "Primary publication abstract and bibliographic identity checked; comprehensive full-text risk-of-bias and Jadad assessment pending.",
+                "discoverySources": [
+                  "https://daytab.com/study/xrm68jj2",
+                  "https://europepmc.org/article/MED/41450809"
+                ],
+                "selectionPolicy": "Success-focused discovery selection, with material limitations retained; not an exhaustive systematic review."
+              },
+              "id": "sound-i-pmid-41450809",
+              "recordId": "pmid-41450809",
+              "quotes": [],
+              "sourcePages": [],
+              "summary": "In 50 periodontal surgery patients, binaural-beat exposure was associated with lower postoperative anxiety and physiological stress measures than no auditory intervention. Mean anxiety scores in the intervention arm fell from 49.0 to 38.7.",
+              "limitation": "The comparison did not control for music, headphones or attention. A small surgical study does not establish a general clinical effect of binaural beats."
+            },
+            {
+              "title": "Preoperative binaural beats reduce remimazolam dosage and enhance safety in anesthesia induction: A randomized controlled trial.",
+              "journal": "PloS one",
+              "year": 2026,
+              "authors": "Kim HC, Sohn JY, Kim MH, Kim YJ, Chang CH, Seo JH.",
+              "design": "Randomized controlled trial",
+              "urls": [
+                "https://pubmed.ncbi.nlm.nih.gov/41911215/",
+                "https://doi.org/10.1371/journal.pone.0345960",
+                "https://pmc.ncbi.nlm.nih.gov/articles/PMC13035112/"
+              ],
+              "doi": "10.1371/journal.pone.0345960",
+              "pmid": "41911215",
+              "targets": [],
+              "categories": [
+                "Clinical & self-report"
+              ],
+              "citationCount": 0,
+              "citationSnapshot": {
+                "count": 0,
+                "source": "Europe PMC",
+                "retrievedAt": "2026-10-26",
+                "url": "https://europepmc.org/article/MED/41911215"
+              },
+              "studyDesignAssessment": {
+                "category": "peer-reviewed",
+                "peerReviewed": true,
+                "basis": "Reported design checked against the primary publication abstract. Blinding terminology reflects the source report, not an independent risk-of-bias rating.",
+                "sources": [
+                  "https://pubmed.ncbi.nlm.nih.gov/41911215/",
+                  "https://doi.org/10.1371/journal.pone.0345960",
+                  "https://pmc.ncbi.nlm.nih.gov/articles/PMC13035112/"
+                ],
+                "assessedAt": "2026-10-26",
+                "registeredMaskingBasis": false
+              },
+              "evidence": {
+                "intervention": "1 Hz binaural beats before anaesthesia",
+                "comparator": "No binaural intervention",
+                "evidenceType": "Clinical or experimental outcomes",
+                "sourceURLs": [
+                  "https://pubmed.ncbi.nlm.nih.gov/41911215/",
+                  "https://doi.org/10.1371/journal.pone.0345960",
+                  "https://pmc.ncbi.nlm.nih.gov/articles/PMC13035112/"
+                ],
+                "checkedAt": "2026-10-26",
+                "reviewScope": "Primary publication abstract and bibliographic identity checked; comprehensive full-text risk-of-bias and Jadad assessment pending.",
+                "discoverySources": [
+                  "https://daytab.com/study/ggpt8f7w",
+                  "https://europepmc.org/article/MED/41911215"
+                ],
+                "selectionPolicy": "Success-focused discovery selection, with material limitations retained; not an exhaustive systematic review.",
+                "trialId": "NCT06099977"
+              },
+              "id": "sound-i-pmid-41911215",
+              "recordId": "pmid-41911215",
+              "quotes": [],
+              "sourcePages": [],
+              "summary": "In 72 surgical patients, 30 minutes of 1 Hz binaural beats reduced the mean remimazolam dose required for loss of consciousness from 17.7 to 15.0 mg; hypotension occurred in 6% versus 28% of participants.",
+              "limitation": "A single-centre anaesthesia study with no auditory intervention in the comparison arm. EEG differences were not significant, so the proposed entrainment mechanism remains unconfirmed."
+            },
+            {
+              "title": "Binaural beat stimulation as a tool to reduce preoperative anxiety in patients undergoing elective surgery and general anesthesia - results from a randomized controlled trial.",
+              "journal": "Biomedical physics & engineering express",
+              "year": 2025,
+              "authors": "Ostertag J, Zinn S, Georgii MT, Niederle MB, Pinto Campos C, Schneider G, Hayden O, Kratzer S, Kreuzer M.",
+              "design": "Randomized controlled trial",
+              "urls": [
+                "https://pubmed.ncbi.nlm.nih.gov/40795897/",
+                "https://doi.org/10.1088/2057-1976/adfa9d"
+              ],
+              "doi": "10.1088/2057-1976/adfa9d",
+              "pmid": "40795897",
+              "targets": [],
+              "categories": [
+                "Clinical & self-report"
+              ],
+              "citationCount": 0,
+              "citationSnapshot": {
+                "count": 0,
+                "source": "Europe PMC",
+                "retrievedAt": "2026-10-26",
+                "url": "https://europepmc.org/article/MED/40795897"
+              },
+              "studyDesignAssessment": {
+                "category": "peer-reviewed",
+                "peerReviewed": true,
+                "basis": "Reported design checked against the primary publication abstract. Blinding terminology reflects the source report, not an independent risk-of-bias rating.",
+                "sources": [
+                  "https://pubmed.ncbi.nlm.nih.gov/40795897/",
+                  "https://doi.org/10.1088/2057-1976/adfa9d"
+                ],
+                "assessedAt": "2026-10-26",
+                "registeredMaskingBasis": false
+              },
+              "evidence": {
+                "intervention": "Binaural-beat music before surgery",
+                "comparator": "Control without binaural stimulation",
+                "evidenceType": "Clinical or experimental outcomes",
+                "sourceURLs": [
+                  "https://pubmed.ncbi.nlm.nih.gov/40795897/",
+                  "https://doi.org/10.1088/2057-1976/adfa9d"
+                ],
+                "checkedAt": "2026-10-26",
+                "reviewScope": "Primary publication abstract and bibliographic identity checked; comprehensive full-text risk-of-bias and Jadad assessment pending.",
+                "discoverySources": [
+                  "https://daytab.com/study/phf6vhrm",
+                  "https://europepmc.org/article/MED/40795897"
+                ],
+                "selectionPolicy": "Success-focused discovery selection, with material limitations retained; not an exhaustive systematic review."
+              },
+              "id": "sound-i-pmid-40795897",
+              "recordId": "pmid-40795897",
+              "quotes": [],
+              "sourcePages": [],
+              "summary": "Preoperative binaural-beat stimulation produced a greater reduction in reported state anxiety than the control condition. The reported difference in relative anxiety change was approximately six percentage points.",
+              "limitation": "The authors identified music and relaxation as plausible contributors. Alpha power did not differ between groups; the trial does not isolate a beat-specific mechanism."
+            },
+            {
+              "title": "Effects of preoperative binaural beats on the propofol dose for induction of general anesthesia: a randomized controlled trial.",
+              "journal": "Canadian journal of anaesthesia = Journal canadien d'anesthesie",
+              "year": 2025,
+              "authors": "Kim YJ, Choe HW, Yoon SB, Lee H, Kim HS, Seo JH.",
+              "design": "Randomized controlled trial",
+              "urls": [
+                "https://pubmed.ncbi.nlm.nih.gov/40563070/",
+                "https://doi.org/10.1007/s12630-025-02993-5"
+              ],
+              "doi": "10.1007/s12630-025-02993-5",
+              "pmid": "40563070",
+              "targets": [],
+              "categories": [
+                "Clinical & self-report"
+              ],
+              "citationCount": 2,
+              "citationSnapshot": {
+                "count": 2,
+                "source": "Europe PMC",
+                "retrievedAt": "2026-10-26",
+                "url": "https://europepmc.org/article/MED/40563070"
+              },
+              "studyDesignAssessment": {
+                "category": "peer-reviewed",
+                "peerReviewed": true,
+                "basis": "Reported design checked against the primary publication abstract. Blinding terminology reflects the source report, not an independent risk-of-bias rating.",
+                "sources": [
+                  "https://pubmed.ncbi.nlm.nih.gov/40563070/",
+                  "https://doi.org/10.1007/s12630-025-02993-5"
+                ],
+                "assessedAt": "2026-10-26",
+                "registeredMaskingBasis": false
+              },
+              "evidence": {
+                "intervention": "1 Hz binaural beats, 432/431 Hz carriers",
+                "comparator": "Silent headphones",
+                "evidenceType": "Clinical or experimental outcomes",
+                "sourceURLs": [
+                  "https://pubmed.ncbi.nlm.nih.gov/40563070/",
+                  "https://doi.org/10.1007/s12630-025-02993-5"
+                ],
+                "checkedAt": "2026-10-26",
+                "reviewScope": "Primary publication abstract and bibliographic identity checked; comprehensive full-text risk-of-bias and Jadad assessment pending.",
+                "discoverySources": [
+                  "https://daytab.com/study/ff5wsm5v",
+                  "https://europepmc.org/article/MED/40563070"
+                ],
+                "selectionPolicy": "Success-focused discovery selection, with material limitations retained; not an exhaustive systematic review.",
+                "trialId": "NCT05431881"
+              },
+              "id": "sound-i-pmid-40563070",
+              "recordId": "pmid-40563070",
+              "quotes": [],
+              "sourcePages": [],
+              "summary": "Among 69 surgical patients, 20 minutes of 1 Hz binaural beats reduced the mean propofol dose needed to stop responding to verbal commands from 105 to 87 mg; the difference was -18 mg, with a 95% confidence interval of -32 to -5 mg.",
+              "limitation": "Anxiety and frontal EEG bands did not differ significantly. This supports an anaesthetic-dose finding within the tested clinical protocol, rather than a general claim of brainwave entrainment."
+            },
+            {
+              "title": "Immediate effects of binaural beat stimulation on prefrontal cortical activation after cycling exercise: an electroencephalography-based study.",
+              "journal": "Experimental brain research",
+              "year": 2026,
+              "authors": "Hsiao SF, Liu TL, Lin YC, Yen CW, Siu KC, Lin JH.",
+              "design": "Randomized crossover experiment",
+              "urls": [
+                "https://pubmed.ncbi.nlm.nih.gov/42671585/",
+                "https://doi.org/10.1007/s00221-026-07387-7"
+              ],
+              "doi": "10.1007/s00221-026-07387-7",
+              "pmid": "42671585",
+              "targets": [],
+              "categories": [
+                "Brain & nervous system"
+              ],
+              "citationCount": 0,
+              "citationSnapshot": {
+                "count": 0,
+                "source": "Europe PMC",
+                "retrievedAt": "2026-10-26",
+                "url": "https://europepmc.org/article/MED/42671585"
+              },
+              "studyDesignAssessment": {
+                "category": "peer-reviewed",
+                "peerReviewed": true,
+                "basis": "Reported design checked against the primary publication abstract. Blinding terminology reflects the source report, not an independent risk-of-bias rating.",
+                "sources": [
+                  "https://pubmed.ncbi.nlm.nih.gov/42671585/",
+                  "https://doi.org/10.1007/s00221-026-07387-7"
+                ],
+                "assessedAt": "2026-10-26",
+                "registeredMaskingBasis": false
+              },
+              "evidence": {
+                "intervention": "5.5–8.5 Hz binaural beats with pink noise after cycling",
+                "comparator": "Sham stimulation",
+                "evidenceType": "Clinical or experimental outcomes",
+                "sourceURLs": [
+                  "https://pubmed.ncbi.nlm.nih.gov/42671585/",
+                  "https://doi.org/10.1007/s00221-026-07387-7"
+                ],
+                "checkedAt": "2026-10-26",
+                "reviewScope": "Primary publication abstract and bibliographic identity checked; comprehensive full-text risk-of-bias and Jadad assessment pending.",
+                "discoverySources": [
+                  "https://daytab.com/study/sj6r4fqj",
+                  "https://europepmc.org/article/MED/42671585"
+                ],
+                "selectionPolicy": "Success-focused discovery selection, with material limitations retained; not an exhaustive systematic review."
+              },
+              "id": "sound-i-pmid-42671585",
+              "recordId": "pmid-42671585",
+              "quotes": [],
+              "sourcePages": [],
+              "summary": "In 52 completers, theta-range binaural stimulation with pink noise after cycling increased prefrontal theta and alpha EEG power relative to sham stimulation.",
+              "limitation": "This was an immediate physiological experiment in healthy adults. It did not establish improved recovery, cognition or a clinical treatment effect; 60 people were recruited."
+            },
+            {
+              "title": "Effects of binaural beats on acute stress recovery and autonomic regulation in multiple sclerosis: a pilot double-blind randomized controlled trial.",
+              "journal": "Neurological sciences : official journal of the Italian Neurological Society and of the Italian Society of Clinical Neurophysiology",
+              "year": 2026,
+              "authors": "Vaheb S, Hatef B, Mirani A, Shaygannejad V, Pirzad Jahromi G.",
+              "design": "Double-blind randomized controlled pilot trial",
+              "urls": [
+                "https://pubmed.ncbi.nlm.nih.gov/42307797/",
+                "https://doi.org/10.1007/s10072-026-09164-4"
+              ],
+              "doi": "10.1007/s10072-026-09164-4",
+              "pmid": "42307797",
+              "targets": [],
+              "categories": [
+                "Clinical & self-report",
+                "Molecular biomarkers"
+              ],
+              "citationCount": 0,
+              "citationSnapshot": {
+                "count": 0,
+                "source": "Europe PMC",
+                "retrievedAt": "2026-10-26",
+                "url": "https://europepmc.org/article/MED/42307797"
+              },
+              "studyDesignAssessment": {
+                "category": "peer-reviewed",
+                "peerReviewed": true,
+                "basis": "Reported design checked against the primary publication abstract. Blinding terminology reflects the source report, not an independent risk-of-bias rating.",
+                "sources": [
+                  "https://pubmed.ncbi.nlm.nih.gov/42307797/",
+                  "https://doi.org/10.1007/s10072-026-09164-4"
+                ],
+                "assessedAt": "2026-10-26",
+                "registeredMaskingBasis": false
+              },
+              "evidence": {
+                "intervention": "4 Hz binaural beats after a stress challenge",
+                "comparator": "Matched-frequency sham stimulation",
+                "evidenceType": "Clinical or experimental outcomes",
+                "sourceURLs": [
+                  "https://pubmed.ncbi.nlm.nih.gov/42307797/",
+                  "https://doi.org/10.1007/s10072-026-09164-4"
+                ],
+                "checkedAt": "2026-10-26",
+                "reviewScope": "Primary publication abstract and bibliographic identity checked; comprehensive full-text risk-of-bias and Jadad assessment pending.",
+                "discoverySources": [
+                  "https://daytab.com/study/27w34k8m",
+                  "https://europepmc.org/article/MED/42307797"
+                ],
+                "selectionPolicy": "Success-focused discovery selection, with material limitations retained; not an exhaustive systematic review."
+              },
+              "id": "sound-i-pmid-42307797",
+              "recordId": "pmid-42307797",
+              "quotes": [],
+              "sourcePages": [],
+              "summary": "A pilot involving 30 people with multiple sclerosis and 30 healthy participants reported lower salivary cortisol after 4 Hz binaural stimulation than sham following an experimental stress challenge, alongside autonomic and EEG changes.",
+              "limitation": "Small, mixed participant groups and acute follow-up limit generalisation. Cortisol is a hormonal biomarker; this study did not measure gene expression or demonstrate long-term clinical benefit."
+            },
+            {
+              "title": "Effect of Binaural Beats on Anxiety and Tolerance in Patients Undergoing Upper Gastrointestinal Endoscopy Without Sedation: A Randomized Controlled Trial.",
+              "journal": "Journal of integrative and complementary medicine",
+              "year": 2024,
+              "authors": "Demirci S, Sezer S.",
+              "design": "Randomized controlled trial",
+              "urls": [
+                "https://pubmed.ncbi.nlm.nih.gov/39088370/",
+                "https://doi.org/10.1089/jicm.2023.0804",
+                "https://pmc.ncbi.nlm.nih.gov/articles/PMC11659431/"
+              ],
+              "doi": "10.1089/jicm.2023.0804",
+              "pmid": "39088370",
+              "targets": [],
+              "categories": [
+                "Clinical & self-report"
+              ],
+              "citationCount": 6,
+              "citationSnapshot": {
+                "count": 6,
+                "source": "Europe PMC",
+                "retrievedAt": "2026-10-26",
+                "url": "https://europepmc.org/article/MED/39088370"
+              },
+              "studyDesignAssessment": {
+                "category": "peer-reviewed",
+                "peerReviewed": true,
+                "basis": "Reported design checked against the primary publication abstract. Blinding terminology reflects the source report, not an independent risk-of-bias rating.",
+                "sources": [
+                  "https://pubmed.ncbi.nlm.nih.gov/39088370/",
+                  "https://doi.org/10.1089/jicm.2023.0804",
+                  "https://pmc.ncbi.nlm.nih.gov/articles/PMC11659431/"
+                ],
+                "assessedAt": "2026-10-26",
+                "registeredMaskingBasis": false
+              },
+              "evidence": {
+                "intervention": "Binaural-beat music during endoscopy",
+                "comparator": "No auditory intervention",
+                "evidenceType": "Clinical or experimental outcomes",
+                "sourceURLs": [
+                  "https://pubmed.ncbi.nlm.nih.gov/39088370/",
+                  "https://doi.org/10.1089/jicm.2023.0804",
+                  "https://pmc.ncbi.nlm.nih.gov/articles/PMC11659431/"
+                ],
+                "checkedAt": "2026-10-26",
+                "reviewScope": "Primary publication abstract and bibliographic identity checked; comprehensive full-text risk-of-bias and Jadad assessment pending.",
+                "discoverySources": [
+                  "https://daytab.com/study/7gtf9kh8",
+                  "https://europepmc.org/article/MED/39088370"
+                ],
+                "selectionPolicy": "Success-focused discovery selection, with material limitations retained; not an exhaustive systematic review.",
+                "trialId": "NCT06114524"
+              },
+              "id": "sound-i-pmid-39088370",
+              "recordId": "pmid-39088370",
+              "quotes": [],
+              "sourcePages": [],
+              "summary": "In 96 patients undergoing unsedated upper gastrointestinal endoscopy, binaural-beat music was associated with improved anxiety, procedure tolerance and satisfaction compared with no intervention.",
+              "limitation": "The trial did not include an otherwise identical music control, so the contribution of the beats is unresolved. Blood pressure and heart rate did not differ significantly."
+            },
+            {
+              "title": "Brainwave entrainment to minimise sedative drug doses in paediatric surgery: a randomised controlled trial.",
+              "journal": "British journal of anaesthesia",
+              "year": 2020,
+              "authors": "Schmid W, Marhofer P, Opfermann P, Zadrazil M, Kimberger O, Triffterer L, Marhofer D, Klug W.",
+              "design": "Randomized controlled trial",
+              "urls": [
+                "https://pubmed.ncbi.nlm.nih.gov/32653082/",
+                "https://doi.org/10.1016/j.bja.2020.05.050"
+              ],
+              "doi": "10.1016/j.bja.2020.05.050",
+              "pmid": "32653082",
+              "targets": [],
+              "categories": [
+                "Clinical & self-report"
+              ],
+              "citationCount": 10,
+              "citationSnapshot": {
+                "count": 10,
+                "source": "Europe PMC",
+                "retrievedAt": "2026-10-26",
+                "url": "https://europepmc.org/article/MED/32653082"
+              },
+              "studyDesignAssessment": {
+                "category": "peer-reviewed",
+                "peerReviewed": true,
+                "basis": "Reported design checked against the primary publication abstract. Blinding terminology reflects the source report, not an independent risk-of-bias rating.",
+                "sources": [
+                  "https://pubmed.ncbi.nlm.nih.gov/32653082/",
+                  "https://doi.org/10.1016/j.bja.2020.05.050"
+                ],
+                "assessedAt": "2026-10-26",
+                "registeredMaskingBasis": false
+              },
+              "evidence": {
+                "intervention": "Combined auditory and visual entrainment during surgery",
+                "comparator": "Standard surgical protocol without audiovisual entrainment",
+                "evidenceType": "Clinical or experimental outcomes",
+                "sourceURLs": [
+                  "https://pubmed.ncbi.nlm.nih.gov/32653082/",
+                  "https://doi.org/10.1016/j.bja.2020.05.050"
+                ],
+                "checkedAt": "2026-10-26",
+                "reviewScope": "Primary publication abstract and bibliographic identity checked; comprehensive full-text risk-of-bias and Jadad assessment pending.",
+                "discoverySources": [
+                  "https://daytab.com/study/3txf5pmz",
+                  "https://europepmc.org/article/MED/32653082"
+                ],
+                "selectionPolicy": "Success-focused discovery selection, with material limitations retained; not an exhaustive systematic review.",
+                "trialId": "DRKS00005064"
+              },
+              "id": "sound-i-pmid-32653082",
+              "recordId": "pmid-32653082",
+              "quotes": [],
+              "sourcePages": [],
+              "summary": "In 49 boys undergoing surgery with a caudal block, audiovisual brainwave entrainment reduced the median propofol infusion requirement from 4.2 to 3.0 mg/kg/hour.",
+              "limitation": "The intervention combined sound and visual stimulation and cannot establish an isolated binaural-beat effect. Findings concern supervised paediatric anaesthesia, not unsupervised sedation or general wellbeing."
+            },
+            {
+              "title": "The Effect of Binaural Beat Audio on Operative Pain and Anxiety in Cataract Surgery under Topical Anaesthesia: A Randomized Controlled Trial.",
+              "journal": "International journal of environmental research and public health",
+              "year": 2022,
+              "authors": "Loong LJ, Ling KK, Tai ELM, Kueh YC, Kuan G, Hussein A.",
+              "design": "Randomized controlled trial",
+              "urls": [
+                "https://pubmed.ncbi.nlm.nih.gov/36011825/",
+                "https://doi.org/10.3390/ijerph191610194",
+                "https://pmc.ncbi.nlm.nih.gov/articles/PMC9408317/"
+              ],
+              "doi": "10.3390/ijerph191610194",
+              "pmid": "36011825",
+              "targets": [],
+              "categories": [
+                "Clinical & self-report"
+              ],
+              "citationCount": 24,
+              "citationSnapshot": {
+                "count": 24,
+                "source": "Europe PMC",
+                "retrievedAt": "2026-10-26",
+                "url": "https://europepmc.org/article/MED/36011825"
+              },
+              "studyDesignAssessment": {
+                "category": "peer-reviewed",
+                "peerReviewed": true,
+                "basis": "Reported design checked against the primary publication abstract. Blinding terminology reflects the source report, not an independent risk-of-bias rating.",
+                "sources": [
+                  "https://pubmed.ncbi.nlm.nih.gov/36011825/",
+                  "https://doi.org/10.3390/ijerph191610194",
+                  "https://pmc.ncbi.nlm.nih.gov/articles/PMC9408317/"
+                ],
+                "assessedAt": "2026-10-26",
+                "registeredMaskingBasis": false
+              },
+              "evidence": {
+                "intervention": "Binaural-beat audio during cataract surgery",
+                "comparator": "Silent headphones",
+                "evidenceType": "Clinical or experimental outcomes",
+                "sourceURLs": [
+                  "https://pubmed.ncbi.nlm.nih.gov/36011825/",
+                  "https://doi.org/10.3390/ijerph191610194",
+                  "https://pmc.ncbi.nlm.nih.gov/articles/PMC9408317/"
+                ],
+                "checkedAt": "2026-10-26",
+                "reviewScope": "Primary publication abstract and bibliographic identity checked; comprehensive full-text risk-of-bias and Jadad assessment pending.",
+                "discoverySources": [
+                  "https://daytab.com/study/h46xc47s",
+                  "https://europepmc.org/article/MED/36011825"
+                ],
+                "selectionPolicy": "Success-focused discovery selection, with material limitations retained; not an exhaustive systematic review."
+              },
+              "id": "sound-i-pmid-36011825",
+              "recordId": "pmid-36011825",
+              "quotes": [],
+              "sourcePages": [],
+              "summary": "A 61-person cataract-surgery trial reported lower operative pain, anxiety and heart rate with binaural-beat audio than with silent headphones.",
+              "limitation": "A small procedure-specific study with a silence comparator. It does not separate beat effects from the effects of hearing calming audio."
+            },
+            {
+              "title": "Examining the effects of binaural beat music on sleep quality, heart rate variability, and depression in older people with poor sleep quality in a long-term care institution: A randomized controlled trial.",
+              "journal": "Geriatrics & gerontology international",
+              "year": 2024,
+              "authors": "Lin PH, Fu SH, Lee YC, Yang SY, Li YL.",
+              "design": "Single-blind randomized controlled trial",
+              "urls": [
+                "https://pubmed.ncbi.nlm.nih.gov/38319068/",
+                "https://doi.org/10.1111/ggi.14827"
+              ],
+              "doi": "10.1111/ggi.14827",
+              "pmid": "38319068",
+              "targets": [],
+              "categories": [
+                "Clinical & self-report"
+              ],
+              "citationCount": 10,
+              "citationSnapshot": {
+                "count": 10,
+                "source": "Europe PMC",
+                "retrievedAt": "2026-10-26",
+                "url": "https://europepmc.org/article/MED/38319068"
+              },
+              "studyDesignAssessment": {
+                "category": "peer-reviewed",
+                "peerReviewed": true,
+                "basis": "Reported design checked against the primary publication abstract. Blinding terminology reflects the source report, not an independent risk-of-bias rating.",
+                "sources": [
+                  "https://pubmed.ncbi.nlm.nih.gov/38319068/",
+                  "https://doi.org/10.1111/ggi.14827"
+                ],
+                "assessedAt": "2026-10-26",
+                "registeredMaskingBasis": false
+              },
+              "evidence": {
+                "intervention": "Binaural beats embedded in familiar music",
+                "comparator": "The same music without binaural beats",
+                "evidenceType": "Clinical or experimental outcomes",
+                "sourceURLs": [
+                  "https://pubmed.ncbi.nlm.nih.gov/38319068/",
+                  "https://doi.org/10.1111/ggi.14827"
+                ],
+                "checkedAt": "2026-10-26",
+                "reviewScope": "Primary publication abstract and bibliographic identity checked; comprehensive full-text risk-of-bias and Jadad assessment pending.",
+                "discoverySources": [
+                  "https://daytab.com/study/cgzhnb8z",
+                  "https://europepmc.org/article/MED/38319068"
+                ],
+                "selectionPolicy": "Success-focused discovery selection, with material limitations retained; not an exhaustive systematic review."
+              },
+              "id": "sound-i-pmid-38319068",
+              "recordId": "pmid-38319068",
+              "quotes": [],
+              "sourcePages": [],
+              "summary": "Among 64 older adults with poor sleep in long-term care, binaural beats embedded in familiar music improved sleep measures and selected autonomic measures relative to the same music without beats over 14 days.",
+              "limitation": "The short intervention and single institutional setting limit inference about durable sleep improvement. Physiological changes do not establish a molecular mechanism."
+            },
+            {
+              "title": "Reduced pain and analgesic use after acoustic binaural beats therapy in chronic pain - A double-blind randomized control cross-over trial.",
+              "journal": "European journal of pain (London, England)",
+              "year": 2020,
+              "authors": "Gkolias V, Amaniti A, Triantafyllou A, Papakonstantinou P, Kartsidis P, Paraskevopoulos E, Bamidis PD, Hadjileontiadis L, Kouvelas D.",
+              "design": "Double-blind randomized crossover trial",
+              "urls": [
+                "https://pubmed.ncbi.nlm.nih.gov/32564499/",
+                "https://doi.org/10.1002/ejp.1615"
+              ],
+              "doi": "10.1002/ejp.1615",
+              "pmid": "32564499",
+              "targets": [],
+              "categories": [
+                "Clinical & self-report"
+              ],
+              "citationCount": 19,
+              "citationSnapshot": {
+                "count": 19,
+                "source": "Europe PMC",
+                "retrievedAt": "2026-10-26",
+                "url": "https://europepmc.org/article/MED/32564499"
+              },
+              "studyDesignAssessment": {
+                "category": "peer-reviewed",
+                "peerReviewed": true,
+                "basis": "Reported design checked against the primary publication abstract. Blinding terminology reflects the source report, not an independent risk-of-bias rating.",
+                "sources": [
+                  "https://pubmed.ncbi.nlm.nih.gov/32564499/",
+                  "https://doi.org/10.1002/ejp.1615"
+                ],
+                "assessedAt": "2026-10-26",
+                "registeredMaskingBasis": false
+              },
+              "evidence": {
+                "intervention": "5 Hz binaural beats for chronic pain",
+                "comparator": "Sham stimulation",
+                "evidenceType": "Clinical or experimental outcomes",
+                "sourceURLs": [
+                  "https://pubmed.ncbi.nlm.nih.gov/32564499/",
+                  "https://doi.org/10.1002/ejp.1615"
+                ],
+                "checkedAt": "2026-10-26",
+                "reviewScope": "Primary publication abstract and bibliographic identity checked; comprehensive full-text risk-of-bias and Jadad assessment pending.",
+                "discoverySources": [
+                  "https://europepmc.org/article/MED/32564499"
+                ],
+                "selectionPolicy": "Success-focused discovery selection, with material limitations retained; not an exhaustive systematic review."
+              },
+              "id": "sound-i-pmid-32564499",
+              "recordId": "pmid-32564499",
+              "quotes": [],
+              "sourcePages": [],
+              "summary": "A sham-controlled crossover study reported lower pain ratings and analgesic use after 5 Hz binaural stimulation in people with chronic pain, together with increased EEG power at the stimulation frequency.",
+              "limitation": "Sample size and participant flow require full-text appraisal. The short treatment periods and crossover design limit conclusions about sustained benefit or wider patient populations."
+            },
+            {
+              "title": "Effects of Listening to Binaural Beats on Anxiety Levels and Pain Scores in Male Patients Undergoing Cystoscopy and Ureteral Stent Removal: A Randomized Placebo-Controlled Trial.",
+              "journal": "Journal of endourology",
+              "year": 2021,
+              "authors": "Ölçücü MT, Yılmaz K, Karamık K, Okuducu Y, Özsoy Ç, Aktaş Y, Çakır S, Ateş M.",
+              "design": "Randomized controlled trial",
+              "urls": [
+                "https://pubmed.ncbi.nlm.nih.gov/33107329/",
+                "https://doi.org/10.1089/end.2020.0353"
+              ],
+              "doi": "10.1089/end.2020.0353",
+              "pmid": "33107329",
+              "targets": [],
+              "categories": [
+                "Clinical & self-report"
+              ],
+              "citationCount": 23,
+              "citationSnapshot": {
+                "count": 23,
+                "source": "Europe PMC",
+                "retrievedAt": "2026-10-26",
+                "url": "https://europepmc.org/article/MED/33107329"
+              },
+              "studyDesignAssessment": {
+                "category": "peer-reviewed",
+                "peerReviewed": true,
+                "basis": "Reported design checked against the primary publication abstract. Blinding terminology reflects the source report, not an independent risk-of-bias rating.",
+                "sources": [
+                  "https://pubmed.ncbi.nlm.nih.gov/33107329/",
+                  "https://doi.org/10.1089/end.2020.0353"
+                ],
+                "assessedAt": "2026-10-26",
+                "registeredMaskingBasis": false
+              },
+              "evidence": {
+                "intervention": "Binaural beats during cystoscopy or stent removal",
+                "comparator": "Classical music and silent headphones",
+                "evidenceType": "Clinical or experimental outcomes",
+                "sourceURLs": [
+                  "https://pubmed.ncbi.nlm.nih.gov/33107329/",
+                  "https://doi.org/10.1089/end.2020.0353"
+                ],
+                "checkedAt": "2026-10-26",
+                "reviewScope": "Primary publication abstract and bibliographic identity checked; comprehensive full-text risk-of-bias and Jadad assessment pending.",
+                "discoverySources": [
+                  "https://europepmc.org/article/MED/33107329"
+                ],
+                "selectionPolicy": "Success-focused discovery selection, with material limitations retained; not an exhaustive systematic review."
+              },
+              "id": "sound-i-pmid-33107329",
+              "recordId": "pmid-33107329",
+              "quotes": [],
+              "sourcePages": [],
+              "summary": "In men undergoing cystoscopy or ureteral stent removal, binaural beats reduced pain compared with classical music and silent headphones; both sound interventions improved anxiety relative to silence.",
+              "limitation": "The analysed procedure groups totalled 352 participants after exclusions. Procedure tolerance was less favourable with binaural beats, and results are specific to these urological settings."
+            },
+            {
+              "title": "Binaural Beats Reduce Postoperative Morphine Consumption in Older adults After Total Knee Replacement Surgery.",
+              "journal": "Alternative therapies in health and medicine",
+              "year": 2021,
+              "authors": "Tani A, Vagheggini G, Moretti F, Del Colombo V, Lehle J, Campana S, Labate A, Tomaiuolo F.",
+              "design": "Randomized controlled trial",
+              "urls": [
+                "https://pubmed.ncbi.nlm.nih.gov/32412916/"
+              ],
+              "doi": null,
+              "pmid": "32412916",
+              "targets": [],
+              "categories": [
+                "Clinical & self-report"
+              ],
+              "citationCount": 9,
+              "citationSnapshot": {
+                "count": 9,
+                "source": "Europe PMC",
+                "retrievedAt": "2026-10-26",
+                "url": "https://europepmc.org/article/MED/32412916"
+              },
+              "studyDesignAssessment": {
+                "category": "peer-reviewed",
+                "peerReviewed": true,
+                "basis": "Reported design checked against the primary publication abstract. Blinding terminology reflects the source report, not an independent risk-of-bias rating.",
+                "sources": [
+                  "https://pubmed.ncbi.nlm.nih.gov/32412916/"
+                ],
+                "assessedAt": "2026-10-26",
+                "registeredMaskingBasis": false
+              },
+              "evidence": {
+                "intervention": "4 Hz binaural beats, 256/260 Hz carriers",
+                "comparator": "256 Hz tones in both ears",
+                "evidenceType": "Clinical or experimental outcomes",
+                "sourceURLs": [
+                  "https://pubmed.ncbi.nlm.nih.gov/32412916/"
+                ],
+                "checkedAt": "2026-10-26",
+                "reviewScope": "Primary publication abstract and bibliographic identity checked; comprehensive full-text risk-of-bias and Jadad assessment pending.",
+                "discoverySources": [
+                  "https://daytab.com/study/rbmbb92p",
+                  "https://europepmc.org/article/MED/32412916"
+                ],
+                "selectionPolicy": "Success-focused discovery selection, with material limitations retained; not an exhaustive systematic review."
+              },
+              "id": "sound-i-pmid-32412916",
+              "recordId": "pmid-32412916",
+              "quotes": [],
+              "sourcePages": [],
+              "summary": "In 40 older adults undergoing knee replacement, preoperative 4 Hz binaural beats reduced first-day self-administered morphine from 11.85 to 5.75 mg compared with matched tones presented at the same frequency to both ears.",
+              "limitation": "Pain ratings did not differ between groups. This small, single-centre trial supports an opioid-consumption finding in a specific surgical protocol, with broader effectiveness still requiring replication."
+            },
+            {
+              "title": "Comparing binaural beats and 432 Hz music for reduction of preoperative anxiety in root canal patients: a randomized controlled trial.",
+              "journal": "JPMA. The Journal of the Pakistan Medical Association",
+              "year": 2025,
+              "authors": "Zaki H, Ahmed S, Rehman Qazi FU, Fatima N, Ali YS.",
+              "design": "Double-blind randomized controlled trial",
+              "urls": [
+                "https://pubmed.ncbi.nlm.nih.gov/40269359/",
+                "https://doi.org/10.47391/jpma.21023"
+              ],
+              "doi": "10.47391/jpma.21023",
+              "pmid": "40269359",
+              "targets": [],
+              "categories": [
+                "Clinical & self-report"
+              ],
+              "citationCount": 1,
+              "citationSnapshot": {
+                "count": 1,
+                "source": "Europe PMC",
+                "retrievedAt": "2026-10-26",
+                "url": "https://europepmc.org/article/MED/40269359"
+              },
+              "studyDesignAssessment": {
+                "category": "peer-reviewed",
+                "peerReviewed": true,
+                "basis": "Reported design checked against the primary publication abstract. Blinding terminology reflects the source report, not an independent risk-of-bias rating.",
+                "sources": [
+                  "https://pubmed.ncbi.nlm.nih.gov/40269359/",
+                  "https://doi.org/10.47391/jpma.21023"
+                ],
+                "assessedAt": "2026-10-26",
+                "registeredMaskingBasis": false
+              },
+              "evidence": {
+                "intervention": "Binaural beats or 432 Hz music",
+                "comparator": "White noise and the other active audio condition",
+                "evidenceType": "Clinical or experimental outcomes",
+                "sourceURLs": [
+                  "https://pubmed.ncbi.nlm.nih.gov/40269359/",
+                  "https://doi.org/10.47391/jpma.21023"
+                ],
+                "checkedAt": "2026-10-26",
+                "reviewScope": "Primary publication abstract and bibliographic identity checked; comprehensive full-text risk-of-bias and Jadad assessment pending.",
+                "discoverySources": [
+                  "https://europepmc.org/article/MED/40269359"
+                ],
+                "selectionPolicy": "Success-focused discovery selection, with material limitations retained; not an exhaustive systematic review.",
+                "trialId": "NCT06349200"
+              },
+              "id": "sound-i-pmid-40269359",
+              "recordId": "pmid-40269359",
+              "quotes": [],
+              "sourcePages": [],
+              "summary": "In 99 root-canal patients, binaural beats and 432 Hz music each reduced preoperative anxiety relative to white noise. Participants and outcome assessors were described as blinded.",
+              "limitation": "The two active audio conditions did not differ significantly. The trial does not demonstrate a unique therapeutic property of 432 Hz or superiority of binaural beats over music."
+            },
+            {
+              "title": "The effect of alpha binaural beat music on orthodontic pain after initial archwire placement: A randomized controlled trial.",
+              "journal": "Dental press journal of orthodontics",
+              "year": 2023,
+              "authors": "Aly AE, Hansa I, Ferguson DJ, Vaid NR.",
+              "design": "Randomized controlled trial",
+              "urls": [
+                "https://pubmed.ncbi.nlm.nih.gov/36790246/",
+                "https://doi.org/10.1590/2177-6709.27.6.e2221150.oar"
+              ],
+              "doi": "10.1590/2177-6709.27.6.e2221150.oar",
+              "pmid": "36790246",
+              "targets": [],
+              "categories": [
+                "Clinical & self-report"
+              ],
+              "citationCount": 4,
+              "citationSnapshot": {
+                "count": 4,
+                "source": "Europe PMC",
+                "retrievedAt": "2026-10-26",
+                "url": "https://europepmc.org/article/MED/36790246"
+              },
+              "studyDesignAssessment": {
+                "category": "peer-reviewed",
+                "peerReviewed": true,
+                "basis": "Reported design checked against the primary publication abstract. Blinding terminology reflects the source report, not an independent risk-of-bias rating.",
+                "sources": [
+                  "https://pubmed.ncbi.nlm.nih.gov/36790246/",
+                  "https://doi.org/10.1590/2177-6709.27.6.e2221150.oar"
+                ],
+                "assessedAt": "2026-10-26",
+                "registeredMaskingBasis": false
+              },
+              "evidence": {
+                "intervention": "Alpha binaural-beat music after orthodontic appliance placement",
+                "comparator": "Music without binaural beats and no music",
+                "evidenceType": "Clinical or experimental outcomes",
+                "sourceURLs": [
+                  "https://pubmed.ncbi.nlm.nih.gov/36790246/",
+                  "https://doi.org/10.1590/2177-6709.27.6.e2221150.oar"
+                ],
+                "checkedAt": "2026-10-26",
+                "reviewScope": "Primary publication abstract and bibliographic identity checked; comprehensive full-text risk-of-bias and Jadad assessment pending.",
+                "discoverySources": [
+                  "https://europepmc.org/article/MED/36790246"
+                ],
+                "selectionPolicy": "Success-focused discovery selection, with material limitations retained; not an exhaustive systematic review."
+              },
+              "id": "sound-i-pmid-36790246",
+              "recordId": "pmid-36790246",
+              "quotes": [],
+              "sourcePages": [],
+              "summary": "In 60 orthodontic patients, alpha binaural-beat music reduced several pain measures late in the first week after appliance placement relative to no music.",
+              "limitation": "Pain did not differ between binaural-beat music and otherwise similar music without beats. The successful audio experience does not establish an additional beat-specific benefit."
+            },
+            {
+              "title": "The effect of binaural beat audio on anxiety in patients undergoing fiberoptic bronchoscopy: A prospective randomized controlled trial.",
+              "journal": "Medicine",
+              "year": 2022,
+              "authors": "Opartpunyasarn P, Vichitvejpaisal P, Oer-Areemitr N.",
+              "design": "Randomized controlled trial",
+              "urls": [
+                "https://pubmed.ncbi.nlm.nih.gov/35713444/",
+                "https://doi.org/10.1097/md.0000000000029392",
+                "https://pmc.ncbi.nlm.nih.gov/articles/PMC9276398/"
+              ],
+              "doi": "10.1097/md.0000000000029392",
+              "pmid": "35713444",
+              "targets": [],
+              "categories": [
+                "Clinical & self-report"
+              ],
+              "citationCount": 16,
+              "citationSnapshot": {
+                "count": 16,
+                "source": "Europe PMC",
+                "retrievedAt": "2026-10-26",
+                "url": "https://europepmc.org/article/MED/35713444"
+              },
+              "studyDesignAssessment": {
+                "category": "peer-reviewed",
+                "peerReviewed": true,
+                "basis": "Reported design checked against the primary publication abstract. Blinding terminology reflects the source report, not an independent risk-of-bias rating.",
+                "sources": [
+                  "https://pubmed.ncbi.nlm.nih.gov/35713444/",
+                  "https://doi.org/10.1097/md.0000000000029392",
+                  "https://pmc.ncbi.nlm.nih.gov/articles/PMC9276398/"
+                ],
+                "assessedAt": "2026-10-26",
+                "registeredMaskingBasis": false
+              },
+              "evidence": {
+                "intervention": "Binaural-beat music around bronchoscopy",
+                "comparator": "Plain music and no music",
+                "evidenceType": "Clinical or experimental outcomes",
+                "sourceURLs": [
+                  "https://pubmed.ncbi.nlm.nih.gov/35713444/",
+                  "https://doi.org/10.1097/md.0000000000029392",
+                  "https://pmc.ncbi.nlm.nih.gov/articles/PMC9276398/"
+                ],
+                "checkedAt": "2026-10-26",
+                "reviewScope": "Primary publication abstract and bibliographic identity checked; comprehensive full-text risk-of-bias and Jadad assessment pending.",
+                "discoverySources": [
+                  "https://europepmc.org/article/MED/35713444"
+                ],
+                "selectionPolicy": "Success-focused discovery selection, with material limitations retained; not an exhaustive systematic review."
+              },
+              "id": "sound-i-pmid-35713444",
+              "recordId": "pmid-35713444",
+              "quotes": [],
+              "sourcePages": [],
+              "summary": "Among 112 bronchoscopy patients, the binaural-music arm showed a larger numerical reduction in state anxiety than plain music or no music, with reductions in blood pressure.",
+              "limitation": "The abstract mainly reports within-group changes, so those numbers alone do not establish superiority over plain music. The trial was retrospectively registered."
+            },
+            {
+              "title": "Effectiveness of brainwave entrainment on pre-operative fear and anxiety in pediatric dental patients: a randomized controlled trial.",
+              "journal": "European archives of paediatric dentistry : official journal of the European Academy of Paediatric Dentistry",
+              "year": 2024,
+              "authors": "Shehani F, Samuel V, Kavitha R, Mani R.",
+              "design": "Randomized controlled trial",
+              "urls": [
+                "https://pubmed.ncbi.nlm.nih.gov/38982009/",
+                "https://doi.org/10.1007/s40368-024-00921-7"
+              ],
+              "doi": "10.1007/s40368-024-00921-7",
+              "pmid": "38982009",
+              "targets": [],
+              "categories": [
+                "Clinical & self-report"
+              ],
+              "citationCount": 6,
+              "citationSnapshot": {
+                "count": 6,
+                "source": "Europe PMC",
+                "retrievedAt": "2026-10-26",
+                "url": "https://europepmc.org/article/MED/38982009"
+              },
+              "studyDesignAssessment": {
+                "category": "peer-reviewed",
+                "peerReviewed": true,
+                "basis": "Reported design checked against the primary publication abstract. Blinding terminology reflects the source report, not an independent risk-of-bias rating.",
+                "sources": [
+                  "https://pubmed.ncbi.nlm.nih.gov/38982009/",
+                  "https://doi.org/10.1007/s40368-024-00921-7"
+                ],
+                "assessedAt": "2026-10-26",
+                "registeredMaskingBasis": false
+              },
+              "evidence": {
+                "intervention": "Device-based audiovisual brainwave entrainment",
+                "comparator": "Standard behaviour management",
+                "evidenceType": "Clinical or experimental outcomes",
+                "sourceURLs": [
+                  "https://pubmed.ncbi.nlm.nih.gov/38982009/",
+                  "https://doi.org/10.1007/s40368-024-00921-7"
+                ],
+                "checkedAt": "2026-10-26",
+                "reviewScope": "Primary publication abstract and bibliographic identity checked; comprehensive full-text risk-of-bias and Jadad assessment pending.",
+                "discoverySources": [
+                  "https://europepmc.org/article/MED/38982009"
+                ],
+                "selectionPolicy": "Success-focused discovery selection, with material limitations retained; not an exhaustive systematic review."
+              },
+              "id": "sound-i-pmid-38982009",
+              "recordId": "pmid-38982009",
+              "quotes": [],
+              "sourcePages": [],
+              "summary": "A 252-child dental trial reported reduced preoperative fear, anxiety and physiological arousal with device-based brainwave entrainment compared with standard behaviour management.",
+              "limitation": "The device combines stimulation components. The abstract does not establish a binaural-beat-only effect, and masking, allocation and registration timing require full-text appraisal."
+            },
+            {
+              "title": "The effects of neuromodulation through brainwave entrainment on pain in women with fibromyalgia: a randomized controlled clinical trial with follow-up.",
+              "journal": "Pain medicine (Malden, Mass.)",
+              "year": 2026,
+              "authors": "de Souza G, Daux Buffon L, Hardt da Silva R, Galassi TO, Dutra AR, Medeiros N, de Paiva BC, de Brito VJ, Nienkotter L, Baldança HDS, Goedert SH, Rezin GT, da Silva MR, de Oliveira MP, Petronilho F, Mathias K, Tiscoski ADB, Mazzardo-Martins L, Traebert ESA, Piovezan AP, Traebert JL, Caumo W, Schleip R, Bobinski F, Cidral-Filho FJ, Martins DF.",
+              "design": "Randomized controlled trial",
+              "urls": [
+                "https://pubmed.ncbi.nlm.nih.gov/42116620/",
+                "https://doi.org/10.1093/pm/pnag064"
+              ],
+              "doi": "10.1093/pm/pnag064",
+              "pmid": "42116620",
+              "targets": [],
+              "categories": [
+                "Clinical & self-report",
+                "Molecular biomarkers"
+              ],
+              "citationCount": 0,
+              "citationSnapshot": {
+                "count": 0,
+                "source": "Europe PMC",
+                "retrievedAt": "2026-10-26",
+                "url": "https://europepmc.org/article/MED/42116620"
+              },
+              "studyDesignAssessment": {
+                "category": "peer-reviewed",
+                "peerReviewed": true,
+                "basis": "Reported design checked against the primary publication abstract. Blinding terminology reflects the source report, not an independent risk-of-bias rating.",
+                "sources": [
+                  "https://pubmed.ncbi.nlm.nih.gov/42116620/",
+                  "https://doi.org/10.1093/pm/pnag064"
+                ],
+                "assessedAt": "2026-10-26",
+                "registeredMaskingBasis": false
+              },
+              "evidence": {
+                "intervention": "BrainTap headset-based brainwave entrainment",
+                "comparator": "Music therapy",
+                "evidenceType": "Clinical or experimental outcomes",
+                "sourceURLs": [
+                  "https://pubmed.ncbi.nlm.nih.gov/42116620/",
+                  "https://doi.org/10.1093/pm/pnag064"
+                ],
+                "checkedAt": "2026-10-26",
+                "reviewScope": "Primary publication abstract and bibliographic identity checked; comprehensive full-text risk-of-bias and Jadad assessment pending.",
+                "discoverySources": [
+                  "https://europepmc.org/article/MED/42116620"
+                ],
+                "selectionPolicy": "Success-focused discovery selection, with material limitations retained; not an exhaustive systematic review."
+              },
+              "id": "sound-i-pmid-42116620",
+              "recordId": "pmid-42116620",
+              "quotes": [],
+              "sourcePages": [],
+              "summary": "In 84 women with fibromyalgia, eight weeks of headset-based brainwave entrainment produced improvements in pain and anxiety, with changes in quality of life, oxidative stress and circulating BDNF also examined.",
+              "limitation": "Music therapy improved several outcomes as well. The abstract does not provide a consistent set of between-group effect estimates; the mixed headset intervention and protein measurements do not establish a gene-expression mechanism."
+            },
+            {
+              "title": "Effects of Auditory Frequency Stimulation on Balance and Rehabilitation Outcomes in Patients With Stroke: A Randomized Case-Control Study.",
+              "journal": "Brain and behavior",
+              "year": 2025,
+              "authors": "Chen R, Jin L, Song J, Dong J, Li Y.",
+              "design": "Randomized controlled pilot study",
+              "urls": [
+                "https://pubmed.ncbi.nlm.nih.gov/40621706/",
+                "https://doi.org/10.1002/brb3.70671",
+                "https://pmc.ncbi.nlm.nih.gov/articles/PMC12230630/"
+              ],
+              "doi": "10.1002/brb3.70671",
+              "pmid": "40621706",
+              "targets": [],
+              "categories": [
+                "Clinical & self-report"
+              ],
+              "citationCount": 1,
+              "citationSnapshot": {
+                "count": 1,
+                "source": "Europe PMC",
+                "retrievedAt": "2026-10-26",
+                "url": "https://europepmc.org/article/MED/40621706"
+              },
+              "studyDesignAssessment": {
+                "category": "peer-reviewed",
+                "peerReviewed": true,
+                "basis": "Reported design checked against the primary publication abstract. Blinding terminology reflects the source report, not an independent risk-of-bias rating.",
+                "sources": [
+                  "https://pubmed.ncbi.nlm.nih.gov/40621706/",
+                  "https://doi.org/10.1002/brb3.70671",
+                  "https://pmc.ncbi.nlm.nih.gov/articles/PMC12230630/"
+                ],
+                "assessedAt": "2026-10-26",
+                "registeredMaskingBasis": false
+              },
+              "evidence": {
+                "intervention": "Binaural auditory stimulation during stroke rehabilitation",
+                "comparator": "Music during rehabilitation",
+                "evidenceType": "Clinical or experimental outcomes",
+                "sourceURLs": [
+                  "https://pubmed.ncbi.nlm.nih.gov/40621706/",
+                  "https://doi.org/10.1002/brb3.70671",
+                  "https://pmc.ncbi.nlm.nih.gov/articles/PMC12230630/"
+                ],
+                "checkedAt": "2026-10-26",
+                "reviewScope": "Primary publication abstract and bibliographic identity checked; comprehensive full-text risk-of-bias and Jadad assessment pending.",
+                "discoverySources": [
+                  "https://daytab.com/study/bmtv2256",
+                  "https://europepmc.org/article/MED/40621706"
+                ],
+                "selectionPolicy": "Success-focused discovery selection, with material limitations retained; not an exhaustive systematic review."
+              },
+              "id": "sound-i-pmid-40621706",
+              "recordId": "pmid-40621706",
+              "quotes": [],
+              "sourcePages": [],
+              "summary": "Among 27 stroke rehabilitation completers, the binaural-stimulation group improved daily-living and depression scores more than the music comparison group. Balance measures improved in both groups.",
+              "limitation": "The small sample and combined rehabilitation context limit causal attribution to the beats. Correlations between functional measures do not prove a brain mechanism."
+            },
+            {
+              "title": "Effects of the Alpha, Beta, and Gamma Binaural Beat Brain Stimulation and Short-Term Training on Simultaneously Assessed Visuospatial and Verbal Working Memories, Signal Detection Measures, Response Times, and Intrasubject Response Time Variabilities: A Within-Subject Randomized Placebo-Controlled Clinical Trial.",
+              "journal": "BioMed research international",
+              "year": 2022,
+              "authors": "Rakhshan V, Hassani-Abharian P, Joghataei M, Nasehi M, Khosrowabadi R.",
+              "design": "Randomized placebo-controlled crossover experiment",
+              "urls": [
+                "https://pubmed.ncbi.nlm.nih.gov/35655482/",
+                "https://doi.org/10.1155/2022/8588272",
+                "https://pmc.ncbi.nlm.nih.gov/articles/PMC9153928/"
+              ],
+              "doi": "10.1155/2022/8588272",
+              "pmid": "35655482",
+              "targets": [],
+              "categories": [
+                "Brain & nervous system"
+              ],
+              "citationCount": 13,
+              "citationSnapshot": {
+                "count": 13,
+                "source": "Europe PMC",
+                "retrievedAt": "2026-10-26",
+                "url": "https://europepmc.org/article/MED/35655482"
+              },
+              "studyDesignAssessment": {
+                "category": "peer-reviewed",
+                "peerReviewed": true,
+                "basis": "Reported design checked against the primary publication abstract. Blinding terminology reflects the source report, not an independent risk-of-bias rating.",
+                "sources": [
+                  "https://pubmed.ncbi.nlm.nih.gov/35655482/",
+                  "https://doi.org/10.1155/2022/8588272",
+                  "https://pmc.ncbi.nlm.nih.gov/articles/PMC9153928/"
+                ],
+                "assessedAt": "2026-10-26",
+                "registeredMaskingBasis": false
+              },
+              "evidence": {
+                "intervention": "10, 16 and 40 Hz binaural stimulation during a cognitive task",
+                "comparator": "Pure tone and silence",
+                "evidenceType": "Clinical or experimental outcomes",
+                "sourceURLs": [
+                  "https://pubmed.ncbi.nlm.nih.gov/35655482/",
+                  "https://doi.org/10.1155/2022/8588272",
+                  "https://pmc.ncbi.nlm.nih.gov/articles/PMC9153928/"
+                ],
+                "checkedAt": "2026-10-26",
+                "reviewScope": "Primary publication abstract and bibliographic identity checked; comprehensive full-text risk-of-bias and Jadad assessment pending.",
+                "discoverySources": [
+                  "https://europepmc.org/article/MED/35655482"
+                ],
+                "selectionPolicy": "Success-focused discovery selection, with material limitations retained; not an exhaustive systematic review."
+              },
+              "id": "sound-i-pmid-35655482",
+              "recordId": "pmid-35655482",
+              "quotes": [],
+              "sourcePages": [],
+              "summary": "In 31 healthy participants, brief 10 Hz binaural stimulation improved selected visuospatial response-speed and stability measures during a working-memory task.",
+              "limitation": "Effects were small and differed across sensory modalities; auditory-verbal measures did not show the same pattern. There were 155 condition sessions, not 155 independent participants, and no clinical outcome was tested."
             }
           ]
         },
@@ -9612,7 +10769,7 @@
   ],
   "source": "Sound Medical Research",
   "sourceSHA256": "e7adb2ee44d4758656ca3c74d0a150bf3b81e75d159874cc7257aa096cdd75fe",
-  "paperCount": 286,
+  "paperCount": 306,
   "topicCount": 19,
-  "uniquePaperCount": 279
+  "uniquePaperCount": 299
 }

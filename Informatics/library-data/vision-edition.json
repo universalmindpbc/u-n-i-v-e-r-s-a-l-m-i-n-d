@@ -635,6 +635,708 @@
               "summary": "Ninety-one patients received eye movement desensitisation or retrieval alone; no additional neurocognitive benefit from eye movements was found.",
               "limitation": "The tested neurocognitive endpoints and component intervention do not represent every outcome or the full clinical protocol.",
               "id": "vision-i-pmid-39731040"
+            },
+            {
+              "title": "Treatment of traumatic birth experience with postpartum early eye movement desensitization and reprocessing therapy: a randomized clinical trial.",
+              "journal": "American journal of obstetrics and gynecology",
+              "year": 2025,
+              "authors": "Hendrix YMGA, van Pampus MG, Hofman A, Henrichs J, van der Horst HE, de Jongh A.",
+              "design": "Randomized controlled trial",
+              "urls": [
+                "https://pubmed.ncbi.nlm.nih.gov/40769315/",
+                "https://doi.org/10.1016/j.ajog.2025.07.051"
+              ],
+              "doi": "10.1016/j.ajog.2025.07.051",
+              "pmid": "40769315",
+              "targets": [],
+              "categories": [
+                "Clinical & self-report"
+              ],
+              "citationCount": 1,
+              "citationSnapshot": {
+                "count": 1,
+                "source": "Europe PMC",
+                "retrievedAt": "2026-10-26",
+                "url": "https://europepmc.org/article/MED/40769315"
+              },
+              "studyDesignAssessment": {
+                "category": "peer-reviewed",
+                "peerReviewed": true,
+                "basis": "Reported design checked against the primary publication abstract. Blinding terminology reflects the source report, not an independent risk-of-bias rating.",
+                "sources": [
+                  "https://pubmed.ncbi.nlm.nih.gov/40769315/",
+                  "https://doi.org/10.1016/j.ajog.2025.07.051"
+                ],
+                "assessedAt": "2026-10-26",
+                "registeredMaskingBasis": false
+              },
+              "evidence": {
+                "intervention": "Therapist-delivered EMDR",
+                "comparator": "Two telephone contacts",
+                "evidenceType": "Clinical or experimental outcomes",
+                "sourceURLs": [
+                  "https://pubmed.ncbi.nlm.nih.gov/40769315/",
+                  "https://doi.org/10.1016/j.ajog.2025.07.051"
+                ],
+                "checkedAt": "2026-10-26",
+                "reviewScope": "Primary publication abstract and bibliographic identity checked; comprehensive full-text risk-of-bias and Jadad assessment pending.",
+                "discoverySources": [
+                  "https://daytab.com/study/d2wgsb9s",
+                  "https://europepmc.org/article/MED/40769315"
+                ],
+                "selectionPolicy": "Success-focused discovery selection, with material limitations retained; not an exhaustive systematic review."
+              },
+              "id": "vision-i-pmid-40769315",
+              "recordId": "pmid-40769315",
+              "quotes": [],
+              "sourcePages": [],
+              "summary": "Of 151 women randomised after a traumatic birth, 143 entered the reported intention-to-treat analysis. Two early postpartum EMDR sessions reduced self-reported and clinician-rated PTSD symptom severity compared with two telephone contacts; the reported raw symptom differences were 8.7 and 3.8 points respectively.",
+              "limitation": "Clinician-diagnosed PTSD rates did not differ significantly. The abstract contains an inconsistent confidence-interval entry, so that interval is not reproduced here; follow-up was nine weeks postpartum."
+            },
+            {
+              "title": "The Effectiveness of Eye Movement Desensitization and Reprocessing Therapy on Post-Traumatic Stress Disorder Symptoms and Diagnostic Status in Patients with a Personality Disorder: A Randomized Controlled Trial.",
+              "journal": "Psychotherapy and psychosomatics",
+              "year": 2025,
+              "authors": "Hafkemeijer L, Hofman S, de Jongh A, de Roos D, van Velzen M, Starrenburg A, Slotema K.",
+              "design": "Randomized controlled trial",
+              "urls": [
+                "https://pubmed.ncbi.nlm.nih.gov/40716437/",
+                "https://doi.org/10.1159/000547622",
+                "https://pmc.ncbi.nlm.nih.gov/articles/PMC12503563/"
+              ],
+              "doi": "10.1159/000547622",
+              "pmid": "40716437",
+              "targets": [],
+              "categories": [
+                "Clinical & self-report"
+              ],
+              "citationCount": 2,
+              "citationSnapshot": {
+                "count": 2,
+                "source": "Europe PMC",
+                "retrievedAt": "2026-10-26",
+                "url": "https://europepmc.org/article/MED/40716437"
+              },
+              "studyDesignAssessment": {
+                "category": "peer-reviewed",
+                "peerReviewed": true,
+                "basis": "Reported design checked against the primary publication abstract. Blinding terminology reflects the source report, not an independent risk-of-bias rating.",
+                "sources": [
+                  "https://pubmed.ncbi.nlm.nih.gov/40716437/",
+                  "https://doi.org/10.1159/000547622",
+                  "https://pmc.ncbi.nlm.nih.gov/articles/PMC12503563/"
+                ],
+                "assessedAt": "2026-10-26",
+                "registeredMaskingBasis": false
+              },
+              "evidence": {
+                "intervention": "Therapist-delivered EMDR",
+                "comparator": "Waitlist",
+                "evidenceType": "Clinical or experimental outcomes",
+                "sourceURLs": [
+                  "https://pubmed.ncbi.nlm.nih.gov/40716437/",
+                  "https://doi.org/10.1159/000547622",
+                  "https://pmc.ncbi.nlm.nih.gov/articles/PMC12503563/"
+                ],
+                "checkedAt": "2026-10-26",
+                "reviewScope": "Primary publication abstract and bibliographic identity checked; comprehensive full-text risk-of-bias and Jadad assessment pending.",
+                "discoverySources": [
+                  "https://daytab.com/study/h747ggnb",
+                  "https://europepmc.org/article/MED/40716437"
+                ],
+                "selectionPolicy": "Success-focused discovery selection, with material limitations retained; not an exhaustive systematic review."
+              },
+              "id": "vision-i-pmid-40716437",
+              "recordId": "pmid-40716437",
+              "quotes": [],
+              "sourcePages": [],
+              "summary": "In 159 people with personality disorders, EMDR reduced PTSD symptoms more than a waitlist. Among participants with PTSD receiving EMDR, 65.5% no longer met the diagnosis after treatment and 73.1% at follow-up.",
+              "limitation": "A waitlist does not control for therapeutic attention. The remission percentages describe the treated subgroup; they are not an absolute treatment effect or a general remission guarantee."
+            },
+            {
+              "title": "Eye movement desensitization and reprocessing (EMDR) therapy compared to usual treatment for posttraumatic stress disorder in adults with psychosis in forensic settings: Randomized controlled trial.",
+              "journal": "Psychological trauma : theory, research, practice and policy",
+              "year": 2024,
+              "authors": "Every-Palmer S, Flewett T, Dean S, Hansby O, Freeland A, Weatherall M, Bell E.",
+              "design": "Single-blind randomized controlled trial",
+              "urls": [
+                "https://pubmed.ncbi.nlm.nih.gov/38227442/",
+                "https://doi.org/10.1037/tra0001643"
+              ],
+              "doi": "10.1037/tra0001643",
+              "pmid": "38227442",
+              "targets": [],
+              "categories": [
+                "Clinical & self-report"
+              ],
+              "citationCount": 12,
+              "citationSnapshot": {
+                "count": 12,
+                "source": "Europe PMC",
+                "retrievedAt": "2026-10-26",
+                "url": "https://europepmc.org/article/MED/38227442"
+              },
+              "studyDesignAssessment": {
+                "category": "peer-reviewed",
+                "peerReviewed": true,
+                "basis": "Reported design checked against the primary publication abstract. Blinding terminology reflects the source report, not an independent risk-of-bias rating.",
+                "sources": [
+                  "https://pubmed.ncbi.nlm.nih.gov/38227442/",
+                  "https://doi.org/10.1037/tra0001643"
+                ],
+                "assessedAt": "2026-10-26",
+                "registeredMaskingBasis": false
+              },
+              "evidence": {
+                "intervention": "Therapist-delivered EMDR",
+                "comparator": "Routine-care waitlist",
+                "evidenceType": "Clinical or experimental outcomes",
+                "sourceURLs": [
+                  "https://pubmed.ncbi.nlm.nih.gov/38227442/",
+                  "https://doi.org/10.1037/tra0001643"
+                ],
+                "checkedAt": "2026-10-26",
+                "reviewScope": "Primary publication abstract and bibliographic identity checked; comprehensive full-text risk-of-bias and Jadad assessment pending.",
+                "discoverySources": [
+                  "https://daytab.com/study/n2bqk2h9",
+                  "https://europepmc.org/article/MED/38227442"
+                ],
+                "selectionPolicy": "Success-focused discovery selection, with material limitations retained; not an exhaustive systematic review."
+              },
+              "id": "vision-i-pmid-38227442",
+              "recordId": "pmid-38227442",
+              "quotes": [],
+              "sourcePages": [],
+              "summary": "In 24 forensic patients with psychosis and PTSD, blinded assessments favoured EMDR over routine-care waitlist for clinician-rated PTSD symptoms. The estimated difference averaged across follow-ups was 11.4 points, with a 95% confidence interval of 1.3 to 21.4.",
+              "limitation": "Recruitment was curtailed by pandemic restrictions, leaving a small sample. Psychotic symptoms and adverse events did not differ significantly, so effectiveness claims remain specific to the measured PTSD outcomes."
+            },
+            {
+              "title": "Eye Movement Desensitization and Reprocessing: Efficacy in Improving Clinical, Neuropsychological, and Quality of Life in Women Victims of Violence.",
+              "journal": "Women's health reports (New Rochelle, N.Y.)",
+              "year": 2024,
+              "authors": "Meneses AYM, Fernández-Gonzalo S, Vicente MJ.",
+              "design": "Randomized controlled trial",
+              "urls": [
+                "https://pubmed.ncbi.nlm.nih.gov/39758524/",
+                "https://doi.org/10.1089/whr.2023.0110",
+                "https://pmc.ncbi.nlm.nih.gov/articles/PMC11693959/"
+              ],
+              "doi": "10.1089/whr.2023.0110",
+              "pmid": "39758524",
+              "targets": [],
+              "categories": [
+                "Clinical & self-report"
+              ],
+              "citationCount": 0,
+              "citationSnapshot": {
+                "count": 0,
+                "source": "Europe PMC",
+                "retrievedAt": "2026-10-26",
+                "url": "https://europepmc.org/article/MED/39758524"
+              },
+              "studyDesignAssessment": {
+                "category": "peer-reviewed",
+                "peerReviewed": true,
+                "basis": "Reported design checked against the primary publication abstract. Blinding terminology reflects the source report, not an independent risk-of-bias rating.",
+                "sources": [
+                  "https://pubmed.ncbi.nlm.nih.gov/39758524/",
+                  "https://doi.org/10.1089/whr.2023.0110",
+                  "https://pmc.ncbi.nlm.nih.gov/articles/PMC11693959/"
+                ],
+                "assessedAt": "2026-10-26",
+                "registeredMaskingBasis": false
+              },
+              "evidence": {
+                "intervention": "Therapist-delivered EMDR",
+                "comparator": "Narrative exposure therapy",
+                "evidenceType": "Clinical or experimental outcomes",
+                "sourceURLs": [
+                  "https://pubmed.ncbi.nlm.nih.gov/39758524/",
+                  "https://doi.org/10.1089/whr.2023.0110",
+                  "https://pmc.ncbi.nlm.nih.gov/articles/PMC11693959/"
+                ],
+                "checkedAt": "2026-10-26",
+                "reviewScope": "Primary publication abstract and bibliographic identity checked; comprehensive full-text risk-of-bias and Jadad assessment pending.",
+                "discoverySources": [
+                  "https://daytab.com/study/fp9wt825",
+                  "https://europepmc.org/article/MED/39758524"
+                ],
+                "selectionPolicy": "Success-focused discovery selection, with material limitations retained; not an exhaustive systematic review."
+              },
+              "id": "vision-i-pmid-39758524",
+              "recordId": "pmid-39758524",
+              "quotes": [],
+              "sourcePages": [],
+              "summary": "In 120 women exposed to violence, ten sessions of EMDR produced greater reported improvements in post-traumatic symptoms, anxiety, depression, quality of life and selected cognitive tests than narrative exposure therapy.",
+              "limitation": "The abstract supplies significance levels without effect-size confidence intervals. Masking, multiple comparisons and durability require further appraisal before a high-confidence comparative claim."
+            },
+            {
+              "title": "Eye movement desensitisation and reprocessing for post-traumatic stress in survivors of critical illness (EMERALD): a mixed-methods, randomised, single-blind, parallel group-controlled, feasibility trial.",
+              "journal": "EClinicalMedicine",
+              "year": 2026,
+              "authors": "Bates A, Cusack R, Golding H, Moyses H, Southam H, Rushbrook S, Highfield J, Pattison N, Baldwin DS, Grocott MPW.",
+              "design": "Single-blind randomized feasibility trial",
+              "urls": [
+                "https://pubmed.ncbi.nlm.nih.gov/42518933/",
+                "https://doi.org/10.1016/j.eclinm.2026.104082",
+                "https://pmc.ncbi.nlm.nih.gov/articles/PMC13382324/"
+              ],
+              "doi": "10.1016/j.eclinm.2026.104082",
+              "pmid": "42518933",
+              "targets": [],
+              "categories": [
+                "Clinical & self-report"
+              ],
+              "citationCount": 1,
+              "citationSnapshot": {
+                "count": 1,
+                "source": "Europe PMC",
+                "retrievedAt": "2026-10-26",
+                "url": "https://europepmc.org/article/MED/42518933"
+              },
+              "studyDesignAssessment": {
+                "category": "peer-reviewed",
+                "peerReviewed": true,
+                "basis": "Reported design checked against the primary publication abstract. Blinding terminology reflects the source report, not an independent risk-of-bias rating.",
+                "sources": [
+                  "https://pubmed.ncbi.nlm.nih.gov/42518933/",
+                  "https://doi.org/10.1016/j.eclinm.2026.104082",
+                  "https://pmc.ncbi.nlm.nih.gov/articles/PMC13382324/"
+                ],
+                "assessedAt": "2026-10-26",
+                "registeredMaskingBasis": false
+              },
+              "evidence": {
+                "intervention": "Therapist-delivered EMDR",
+                "comparator": "Treatment as usual",
+                "evidenceType": "Clinical or experimental outcomes",
+                "sourceURLs": [
+                  "https://pubmed.ncbi.nlm.nih.gov/42518933/",
+                  "https://doi.org/10.1016/j.eclinm.2026.104082",
+                  "https://pmc.ncbi.nlm.nih.gov/articles/PMC13382324/"
+                ],
+                "checkedAt": "2026-10-26",
+                "reviewScope": "Primary publication abstract and bibliographic identity checked; comprehensive full-text risk-of-bias and Jadad assessment pending.",
+                "discoverySources": [
+                  "https://daytab.com/study/t73vb9kv",
+                  "https://europepmc.org/article/MED/42518933"
+                ],
+                "selectionPolicy": "Success-focused discovery selection, with material limitations retained; not an exhaustive systematic review.",
+                "trialId": "NCT05591625"
+              },
+              "id": "vision-i-pmid-42518933",
+              "recordId": "pmid-42518933",
+              "quotes": [],
+              "sourcePages": [],
+              "summary": "The 40-person EMERALD trial in critical-illness survivors achieved 98% clinician-rated follow-up at 12 months. Exploratory PTSD symptom change favoured EMDR plus usual care by 14.1 points, with a 95% confidence interval of 6.2 to 22.0 points.",
+              "limitation": "Feasibility, acceptability and safety were the primary objectives. The symptom estimate is hypothesis-generating and does not establish definitive treatment effectiveness."
+            },
+            {
+              "title": "A Pilot Randomized Controlled Trial of Eye Movement Desensitization and Reprocessing Therapy for Adults With Binge-Eating Disorder.",
+              "journal": "The International journal of eating disorders",
+              "year": 2026,
+              "authors": "Hatoum AH, Richard K, Burton AL, Rieger E, Touyz S, Abbott MJ.",
+              "design": "Single-blind randomized controlled pilot trial",
+              "urls": [
+                "https://pubmed.ncbi.nlm.nih.gov/41655996/",
+                "https://doi.org/10.1002/eat.70056",
+                "https://pmc.ncbi.nlm.nih.gov/articles/PMC13147140/"
+              ],
+              "doi": "10.1002/eat.70056",
+              "pmid": "41655996",
+              "targets": [],
+              "categories": [
+                "Clinical & self-report"
+              ],
+              "citationCount": 1,
+              "citationSnapshot": {
+                "count": 1,
+                "source": "Europe PMC",
+                "retrievedAt": "2026-10-26",
+                "url": "https://europepmc.org/article/MED/41655996"
+              },
+              "studyDesignAssessment": {
+                "category": "peer-reviewed",
+                "peerReviewed": true,
+                "basis": "Reported design checked against the primary publication abstract. Blinding terminology reflects the source report, not an independent risk-of-bias rating.",
+                "sources": [
+                  "https://pubmed.ncbi.nlm.nih.gov/41655996/",
+                  "https://doi.org/10.1002/eat.70056",
+                  "https://pmc.ncbi.nlm.nih.gov/articles/PMC13147140/"
+                ],
+                "assessedAt": "2026-10-26",
+                "registeredMaskingBasis": false
+              },
+              "evidence": {
+                "intervention": "Therapist-delivered EMDR",
+                "comparator": "Waitlist",
+                "evidenceType": "Clinical or experimental outcomes",
+                "sourceURLs": [
+                  "https://pubmed.ncbi.nlm.nih.gov/41655996/",
+                  "https://doi.org/10.1002/eat.70056",
+                  "https://pmc.ncbi.nlm.nih.gov/articles/PMC13147140/"
+                ],
+                "checkedAt": "2026-10-26",
+                "reviewScope": "Primary publication abstract and bibliographic identity checked; comprehensive full-text risk-of-bias and Jadad assessment pending.",
+                "discoverySources": [
+                  "https://daytab.com/study/c2fkszjz",
+                  "https://europepmc.org/article/MED/41655996"
+                ],
+                "selectionPolicy": "Success-focused discovery selection, with material limitations retained; not an exhaustive systematic review.",
+                "trialId": "ACTRN12614000894695"
+              },
+              "id": "vision-i-pmid-41655996",
+              "recordId": "pmid-41655996",
+              "quotes": [],
+              "sourcePages": [],
+              "summary": "A 38-person pilot found greater reductions in binge-eating symptoms, days and frequency with an adapted ten-session EMDR protocol than waitlist, alongside improvements in selected anxiety and sleep outcomes.",
+              "limitation": "Treatment completion was 68.8%, and several other outcomes did not improve. The small pilot and immediate post-treatment assessment support a larger trial rather than a settled treatment recommendation."
+            },
+            {
+              "title": "Trauma-focused therapy in early psychosis: results of a feasibility randomized controlled trial of EMDR for psychosis (EMDRp) in early intervention settings.",
+              "journal": "Psychological medicine",
+              "year": 2024,
+              "authors": "Varese F, Sellwood W, Pulford D, Awenat Y, Bird L, Bhutani G, Carter LA, Davies L, Aseem S, Davis C, Hefferman-Clarke R, Hilton C, Horne G, Keane D, Logie R, Malkin D, Potter F, van den Berg D, Zia S, Bentall RP.",
+              "design": "Single-blind randomized feasibility trial",
+              "urls": [
+                "https://pubmed.ncbi.nlm.nih.gov/37882058/",
+                "https://doi.org/10.1017/s0033291723002532"
+              ],
+              "doi": "10.1017/s0033291723002532",
+              "pmid": "37882058",
+              "targets": [],
+              "categories": [
+                "Clinical & self-report"
+              ],
+              "citationCount": 17,
+              "citationSnapshot": {
+                "count": 17,
+                "source": "Europe PMC",
+                "retrievedAt": "2026-10-26",
+                "url": "https://europepmc.org/article/MED/37882058"
+              },
+              "studyDesignAssessment": {
+                "category": "peer-reviewed",
+                "peerReviewed": true,
+                "basis": "Reported design checked against the primary publication abstract. Blinding terminology reflects the source report, not an independent risk-of-bias rating.",
+                "sources": [
+                  "https://pubmed.ncbi.nlm.nih.gov/37882058/",
+                  "https://doi.org/10.1017/s0033291723002532"
+                ],
+                "assessedAt": "2026-10-26",
+                "registeredMaskingBasis": false
+              },
+              "evidence": {
+                "intervention": "Therapist-delivered EMDR",
+                "comparator": "Treatment as usual",
+                "evidenceType": "Clinical or experimental outcomes",
+                "sourceURLs": [
+                  "https://pubmed.ncbi.nlm.nih.gov/37882058/",
+                  "https://doi.org/10.1017/s0033291723002532"
+                ],
+                "checkedAt": "2026-10-26",
+                "reviewScope": "Primary publication abstract and bibliographic identity checked; comprehensive full-text risk-of-bias and Jadad assessment pending.",
+                "discoverySources": [
+                  "https://daytab.com/study/bbrzrwcq",
+                  "https://europepmc.org/article/MED/37882058"
+                ],
+                "selectionPolicy": "Success-focused discovery selection, with material limitations retained; not an exhaustive systematic review."
+              },
+              "id": "vision-i-pmid-37882058",
+              "recordId": "pmid-37882058",
+              "quotes": [],
+              "sourcePages": [],
+              "summary": "In 60 early-psychosis service users, a 16-session EMDR adaptation met trial feasibility targets and showed promising clinical signals at six months. PTSD symptoms and general-health signals remained evident at 12 months.",
+              "limitation": "The study was designed to establish feasibility. Follow-up completion was 70% at 12 months, and the efficacy signals require confirmation in a larger trial."
+            },
+            {
+              "title": "Clinical efficacy of trauma-focused psychotherapies in treatment-resistant depression (TRD) in-patients: A randomized, controlled pilot-study.",
+              "journal": "Psychiatry research",
+              "year": 2019,
+              "authors": "Minelli A, Zampieri E, Sacco C, Bazzanella R, Mezzetti N, Tessari E, Barlati S, Bortolomasi M.",
+              "design": "Single-blind randomized controlled pilot trial",
+              "urls": [
+                "https://pubmed.ncbi.nlm.nih.gov/30711853/",
+                "https://doi.org/10.1016/j.psychres.2019.01.070"
+              ],
+              "doi": "10.1016/j.psychres.2019.01.070",
+              "pmid": "30711853",
+              "targets": [],
+              "categories": [
+                "Clinical & self-report"
+              ],
+              "citationCount": 28,
+              "citationSnapshot": {
+                "count": 28,
+                "source": "Europe PMC",
+                "retrievedAt": "2026-10-26",
+                "url": "https://europepmc.org/article/MED/30711853"
+              },
+              "studyDesignAssessment": {
+                "category": "peer-reviewed",
+                "peerReviewed": true,
+                "basis": "Reported design checked against the primary publication abstract. Blinding terminology reflects the source report, not an independent risk-of-bias rating.",
+                "sources": [
+                  "https://pubmed.ncbi.nlm.nih.gov/30711853/",
+                  "https://doi.org/10.1016/j.psychres.2019.01.070"
+                ],
+                "assessedAt": "2026-10-26",
+                "registeredMaskingBasis": false
+              },
+              "evidence": {
+                "intervention": "Therapist-delivered EMDR",
+                "comparator": "Trauma-focused CBT",
+                "evidenceType": "Clinical or experimental outcomes",
+                "sourceURLs": [
+                  "https://pubmed.ncbi.nlm.nih.gov/30711853/",
+                  "https://doi.org/10.1016/j.psychres.2019.01.070"
+                ],
+                "checkedAt": "2026-10-26",
+                "reviewScope": "Primary publication abstract and bibliographic identity checked; comprehensive full-text risk-of-bias and Jadad assessment pending.",
+                "discoverySources": [
+                  "https://daytab.com/study/3snpkbrv",
+                  "https://europepmc.org/article/MED/30711853"
+                ],
+                "selectionPolicy": "Success-focused discovery selection, with material limitations retained; not an exhaustive systematic review."
+              },
+              "id": "vision-i-pmid-30711853",
+              "recordId": "pmid-30711853",
+              "quotes": [],
+              "sourcePages": [],
+              "summary": "In 22 treatment-resistant depression inpatients, both EMDR and trauma-focused CBT improved depressive symptoms; a post-hoc comparison favoured EMDR at the 12-week follow-up.",
+              "limitation": "The small pilot and post-hoc nature of the comparison limit confidence in superiority. Benefits were only partly maintained at 24 weeks."
+            },
+            {
+              "title": "Eye movement desensitization and reprocessing therapy in subsyndromal bipolar patients with a history of traumatic events: a randomized, controlled pilot-study.",
+              "journal": "Psychiatry research",
+              "year": 2014,
+              "authors": "Novo P, Landin-Romero R, Radua J, Vicens V, Fernandez I, Garcia F, Pomarol-Clotet E, McKenna PJ, Shapiro F, Amann BL.",
+              "design": "Single-blind randomized controlled pilot trial",
+              "urls": [
+                "https://pubmed.ncbi.nlm.nih.gov/24880581/",
+                "https://doi.org/10.1016/j.psychres.2014.05.012"
+              ],
+              "doi": "10.1016/j.psychres.2014.05.012",
+              "pmid": "24880581",
+              "targets": [],
+              "categories": [
+                "Clinical & self-report"
+              ],
+              "citationCount": 44,
+              "citationSnapshot": {
+                "count": 44,
+                "source": "Europe PMC",
+                "retrievedAt": "2026-10-26",
+                "url": "https://europepmc.org/article/MED/24880581"
+              },
+              "studyDesignAssessment": {
+                "category": "peer-reviewed",
+                "peerReviewed": true,
+                "basis": "Reported design checked against the primary publication abstract. Blinding terminology reflects the source report, not an independent risk-of-bias rating.",
+                "sources": [
+                  "https://pubmed.ncbi.nlm.nih.gov/24880581/",
+                  "https://doi.org/10.1016/j.psychres.2014.05.012"
+                ],
+                "assessedAt": "2026-10-26",
+                "registeredMaskingBasis": false
+              },
+              "evidence": {
+                "intervention": "Therapist-delivered EMDR",
+                "comparator": "Treatment as usual",
+                "evidenceType": "Clinical or experimental outcomes",
+                "sourceURLs": [
+                  "https://pubmed.ncbi.nlm.nih.gov/24880581/",
+                  "https://doi.org/10.1016/j.psychres.2014.05.012"
+                ],
+                "checkedAt": "2026-10-26",
+                "reviewScope": "Primary publication abstract and bibliographic identity checked; comprehensive full-text risk-of-bias and Jadad assessment pending.",
+                "discoverySources": [
+                  "https://daytab.com/study/mtmjckgg",
+                  "https://europepmc.org/article/MED/24880581"
+                ],
+                "selectionPolicy": "Success-focused discovery selection, with material limitations retained; not an exhaustive systematic review."
+              },
+              "id": "vision-i-pmid-24880581",
+              "recordId": "pmid-24880581",
+              "quotes": [],
+              "sourcePages": [],
+              "summary": "In 20 people with bipolar disorder and trauma histories, EMDR improved depressive, hypomanic and trauma symptoms relative to usual care after treatment, using blinded outcome ratings.",
+              "limitation": "The trial was small, with unequal dropout between groups. Most differences were not sustained at the 24-week assessment; this is an adjunctive pilot rather than evidence for replacing established bipolar treatment."
+            },
+            {
+              "title": "Imagery rescripting and eye movement desensitisation and reprocessing as treatment for adults with post-traumatic stress disorder from childhood trauma: randomised clinical trial.",
+              "journal": "The British journal of psychiatry : the journal of mental science",
+              "year": 2020,
+              "authors": "Boterhoven de Haan KL, Lee CW, Fassbinder E, van Es SM, Menninga S, Meewisse ML, Rijkeboer M, Kousemaker M, Arntz A.",
+              "design": "Single-blind randomized controlled trial (outcome assessors blinded)",
+              "urls": [
+                "https://pubmed.ncbi.nlm.nih.gov/32892758/",
+                "https://doi.org/10.1192/bjp.2020.158"
+              ],
+              "doi": "10.1192/bjp.2020.158",
+              "pmid": "32892758",
+              "targets": [],
+              "categories": [
+                "Clinical & self-report"
+              ],
+              "citationCount": 70,
+              "citationSnapshot": {
+                "count": 70,
+                "source": "Europe PMC",
+                "retrievedAt": "2026-10-26",
+                "url": "https://europepmc.org/article/MED/32892758"
+              },
+              "studyDesignAssessment": {
+                "category": "peer-reviewed",
+                "peerReviewed": true,
+                "basis": "Reported design checked against the primary publication abstract. Blinding terminology reflects the source report, not an independent risk-of-bias rating.",
+                "sources": [
+                  "https://pubmed.ncbi.nlm.nih.gov/32892758/",
+                  "https://doi.org/10.1192/bjp.2020.158"
+                ],
+                "assessedAt": "2026-10-26",
+                "registeredMaskingBasis": false
+              },
+              "evidence": {
+                "intervention": "Therapist-delivered EMDR",
+                "comparator": "Imagery rescripting",
+                "evidenceType": "Clinical or experimental outcomes",
+                "sourceURLs": [
+                  "https://pubmed.ncbi.nlm.nih.gov/32892758/",
+                  "https://doi.org/10.1192/bjp.2020.158"
+                ],
+                "checkedAt": "2026-10-26",
+                "reviewScope": "Primary publication abstract and bibliographic identity checked; comprehensive full-text risk-of-bias and Jadad assessment pending.",
+                "discoverySources": [
+                  "https://daytab.com/study/jbjh2786",
+                  "https://europepmc.org/article/MED/32892758"
+                ],
+                "selectionPolicy": "Success-focused discovery selection, with material limitations retained; not an exhaustive systematic review."
+              },
+              "id": "vision-i-pmid-32892758",
+              "recordId": "pmid-32892758",
+              "quotes": [],
+              "sourcePages": [],
+              "summary": "A 155-person international trial found substantial PTSD improvement after either EMDR or imagery rescripting for childhood-related trauma, with a 7.7% dropout rate.",
+              "limitation": "The active treatments did not differ significantly. This supports EMDR as a promising structured treatment in this population, without establishing superiority to imagery rescripting."
+            },
+            {
+              "title": "Brief eclectic psychotherapy v. eye movement desensitisation and reprocessing therapy for post-traumatic stress disorder: randomised controlled trial.",
+              "journal": "The British journal of psychiatry : the journal of mental science",
+              "year": 2012,
+              "authors": "Nijdam MJ, Gersons BP, Reitsma JB, de Jongh A, Olff M.",
+              "design": "Randomized controlled trial",
+              "urls": [
+                "https://pubmed.ncbi.nlm.nih.gov/22322458/",
+                "https://doi.org/10.1192/bjp.bp.111.099234"
+              ],
+              "doi": "10.1192/bjp.bp.111.099234",
+              "pmid": "22322458",
+              "targets": [],
+              "categories": [
+                "Clinical & self-report"
+              ],
+              "citationCount": 76,
+              "citationSnapshot": {
+                "count": 76,
+                "source": "Europe PMC",
+                "retrievedAt": "2026-10-26",
+                "url": "https://europepmc.org/article/MED/22322458"
+              },
+              "studyDesignAssessment": {
+                "category": "peer-reviewed",
+                "peerReviewed": true,
+                "basis": "Reported design checked against the primary publication abstract. Blinding terminology reflects the source report, not an independent risk-of-bias rating.",
+                "sources": [
+                  "https://pubmed.ncbi.nlm.nih.gov/22322458/",
+                  "https://doi.org/10.1192/bjp.bp.111.099234"
+                ],
+                "assessedAt": "2026-10-26",
+                "registeredMaskingBasis": false
+              },
+              "evidence": {
+                "intervention": "Therapist-delivered EMDR",
+                "comparator": "Brief eclectic psychotherapy",
+                "evidenceType": "Clinical or experimental outcomes",
+                "sourceURLs": [
+                  "https://pubmed.ncbi.nlm.nih.gov/22322458/",
+                  "https://doi.org/10.1192/bjp.bp.111.099234"
+                ],
+                "checkedAt": "2026-10-26",
+                "reviewScope": "Primary publication abstract and bibliographic identity checked; comprehensive full-text risk-of-bias and Jadad assessment pending.",
+                "discoverySources": [
+                  "https://europepmc.org/article/MED/22322458"
+                ],
+                "selectionPolicy": "Success-focused discovery selection, with material limitations retained; not an exhaustive systematic review.",
+                "trialId": "ISRCTN64872147"
+              },
+              "id": "vision-i-pmid-22322458",
+              "recordId": "pmid-22322458",
+              "quotes": [],
+              "sourcePages": [],
+              "summary": "In 140 people with PTSD, EMDR and brief eclectic psychotherapy produced similar final improvements; EMDR achieved improvement more rapidly during treatment.",
+              "limitation": "Dropout was substantial in both groups, approximately 29% and 36%. Faster improvement does not establish superior final outcomes or effectiveness of an automated EMDR-derived intervention."
+            },
+            {
+              "title": "Imagery Rescripting (ImRs) and Eye Movement Desensitization and Reprocessing (EMDR) as treatment of childhood-trauma related post-traumatic stress disorder (Ch-PTSD) in adults: effects on Schema Modes.",
+              "journal": "European journal of psychotraumatology",
+              "year": 2025,
+              "authors": "Daniëls M, Meewisse ML, Nugter A, Rameckers SA, Fassbinder E, Arntz A.",
+              "design": "Secondary analysis of a randomized controlled trial",
+              "urls": [
+                "https://pubmed.ncbi.nlm.nih.gov/39916551/",
+                "https://doi.org/10.1080/20008066.2025.2454191",
+                "https://pmc.ncbi.nlm.nih.gov/articles/PMC11809175/"
+              ],
+              "doi": "10.1080/20008066.2025.2454191",
+              "pmid": "39916551",
+              "targets": [],
+              "categories": [
+                "Clinical & self-report"
+              ],
+              "citationCount": 1,
+              "citationSnapshot": {
+                "count": 1,
+                "source": "Europe PMC",
+                "retrievedAt": "2026-10-26",
+                "url": "https://europepmc.org/article/MED/39916551"
+              },
+              "studyDesignAssessment": {
+                "category": "peer-reviewed",
+                "peerReviewed": true,
+                "basis": "Reported design checked against the primary publication abstract. Blinding terminology reflects the source report, not an independent risk-of-bias rating.",
+                "sources": [
+                  "https://pubmed.ncbi.nlm.nih.gov/39916551/",
+                  "https://doi.org/10.1080/20008066.2025.2454191",
+                  "https://pmc.ncbi.nlm.nih.gov/articles/PMC11809175/"
+                ],
+                "assessedAt": "2026-10-26",
+                "registeredMaskingBasis": false
+              },
+              "evidence": {
+                "intervention": "Therapist-delivered EMDR",
+                "comparator": "Imagery rescripting",
+                "evidenceType": "Clinical or experimental outcomes",
+                "sourceURLs": [
+                  "https://pubmed.ncbi.nlm.nih.gov/39916551/",
+                  "https://doi.org/10.1080/20008066.2025.2454191",
+                  "https://pmc.ncbi.nlm.nih.gov/articles/PMC11809175/"
+                ],
+                "checkedAt": "2026-10-26",
+                "reviewScope": "Primary publication abstract and bibliographic identity checked; comprehensive full-text risk-of-bias and Jadad assessment pending.",
+                "discoverySources": [
+                  "https://daytab.com/study/dn5h2tsm",
+                  "https://europepmc.org/article/MED/39916551"
+                ],
+                "selectionPolicy": "Success-focused discovery selection, with material limitations retained; not an exhaustive systematic review.",
+                "relationshipNote": "IREM; parent publication PMID 32892758"
+              },
+              "id": "vision-i-pmid-39916551",
+              "recordId": "pmid-39916551",
+              "quotes": [],
+              "sourcePages": [],
+              "summary": "Among 114 participants in the IREM childhood-trauma trial, both EMDR and imagery rescripting improved adaptive and maladaptive schema-mode measures, with gains maintained to one year.",
+              "limitation": "This is a secondary publication from the same trial as PMID 32892758, not an independent replication. The two treatments did not differ significantly on these outcomes."
             }
           ],
           "number": "1.1",
@@ -4724,7 +5426,7 @@
     }
   ],
   "sourceSHA256": "4e587a23ac97ae7b76307dfaf117c9ab026b7d022e2d7f158d4b4f710c3308cd",
-  "paperCount": 95,
-  "uniquePaperCount": 81,
+  "paperCount": 107,
+  "uniquePaperCount": 93,
   "topicCount": 17
 }

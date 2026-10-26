@@ -1,30 +1,30 @@
 {
-  "datasetManifestSHA256": "1d66fed93db369e26c6df6709968ec83609e934f2d4d7ea9ad92cf676f4b18e3",
+  "datasetManifestSHA256": "1e7a13dd697b542158224c92e3675e57870674420188fe57ab7b41eb6678512f",
   "generatedAt": "2026-10-26",
-  "publications": 821,
+  "publications": 891,
   "atlas": 1001,
   "experiments": 2,
-  "pages": 1831,
+  "pages": 1901,
   "sourceHashes": [
     {
       "path": "library.js",
-      "sha256": "346517a15b258323496d3c272dee39e405cf9ec4d6315097665b82aed87b6a1b"
+      "sha256": "a54d471e2fd19833fd6833046f293797cfd4b6daec4dd263b78b16477eca308b"
     },
     {
       "path": "library-data/sound-edition.json",
-      "sha256": "f4d010fc15cfa5260a226d6553443ef0600467a020df0d49c06e8e93da8a50b8"
+      "sha256": "728762bb2460a20175433f89469fa125024e31effecced542807efdc4f911001"
     },
     {
       "path": "library-data/library.json",
-      "sha256": "4a87b4f7fe0e8451514249b30d87ddadcb2e61b2ccdc9be3e529886623872ac9"
+      "sha256": "e201040a7d9d9dd266f6510d876ab89cc98d27eab01381b90f8683e51324adc9"
     },
     {
       "path": "library-data/publication-access.json",
-      "sha256": "cbcb66fc428878fa15bf5b23e70ef22cdebf6d38e738be0957e601855edbf42d"
+      "sha256": "b6bab65cab09030fc0dcb2bbaf0da58e2c762a30912bffc48fef0b7cfa0327d7"
     },
     {
       "path": "library-data/language-edition.json",
-      "sha256": "51d124e407ab2239c22610aaef7372232dc3a1831a044cc58edcd04aa3daa3a3"
+      "sha256": "9a5a390d836d369786d76be3dc3b07f5e3eb6597acc0d3f7ee2f665f8a2e8060"
     },
     {
       "path": "library-data/general-edition.json",
@@ -36,7 +36,7 @@
     },
     {
       "path": "library-data/vision-edition.json",
-      "sha256": "6d76cc04b9318f1da452bdb33d983d04edacef9c3b45912265f366dfcbe1e3bb"
+      "sha256": "e7964a11f99c4f3cde3883f5b47f20d355da903160c8cfd83c3e97394b9a9897"
     },
     {
       "path": "library-data/vision-expansion.json",
@@ -44,7 +44,7 @@
     },
     {
       "path": "library-data/clinical-conditions.json",
-      "sha256": "c443b3e0e94674ea903e773963229ea20cd119c8334e2d5e5e748964500fcfe9"
+      "sha256": "72d41ef50d5718e18152fa6ff280f8bccc59855aef47ee578a46da718eaf4040"
     },
     {
       "path": "library-data/nature-expansion.json",
@@ -63,7 +63,7 @@
       "sha256": "e565f7a479f36b6afcc26b5d24d761e1ddbe271c7bc3b7aed1d3f962325e23ae"
     }
   ],
-  "publicationRecordSHA256": "97f36834643fe2c58b8c0d1f69b4f9e068a818e2b58bf5006a0e72f344b7bf04",
+  "publicationRecordSHA256": "48e8905b35b6dca89d354233e8d136b06c5b92be1d79761fb16a9edfbe141888",
   "canonicalPaths": [
     "",
     "connect.html",
@@ -795,6 +795,76 @@
     "read/publications/pmid-18596974-53faafe2.html",
     "read/publications/pmid-21840289-d747e6eb.html",
     "read/publications/src-f08d504d9cf6-f8c7670e.html",
+    "read/publications/pmid-41450809-f7fb121c.html",
+    "read/publications/pmid-41911215-4c282353.html",
+    "read/publications/pmid-40795897-5099f9d7.html",
+    "read/publications/pmid-40563070-efe65cee.html",
+    "read/publications/pmid-42671585-77ff8b0b.html",
+    "read/publications/pmid-42307797-efa8908c.html",
+    "read/publications/pmid-39088370-1c31d90f.html",
+    "read/publications/pmid-32653082-30b63532.html",
+    "read/publications/pmid-36011825-5cdf1c37.html",
+    "read/publications/pmid-38319068-a8f11d65.html",
+    "read/publications/pmid-32564499-652228c3.html",
+    "read/publications/pmid-33107329-2c406df6.html",
+    "read/publications/pmid-32412916-854458d5.html",
+    "read/publications/pmid-40269359-3fca0751.html",
+    "read/publications/pmid-36790246-b956ecc8.html",
+    "read/publications/pmid-35713444-2ede4791.html",
+    "read/publications/pmid-38982009-cc10df61.html",
+    "read/publications/pmid-42116620-8b95c3ad.html",
+    "read/publications/pmid-40621706-d094acb6.html",
+    "read/publications/pmid-35655482-865228d4.html",
+    "read/publications/pmid-40769315-5d83300f.html",
+    "read/publications/pmid-40716437-381b11b8.html",
+    "read/publications/pmid-38227442-6ac1efec.html",
+    "read/publications/pmid-39758524-fb79596a.html",
+    "read/publications/pmid-42518933-bcccdc60.html",
+    "read/publications/pmid-41655996-1e5d0916.html",
+    "read/publications/pmid-37882058-a29ef0d5.html",
+    "read/publications/pmid-30711853-c4b925d1.html",
+    "read/publications/pmid-24880581-0343b0a2.html",
+    "read/publications/pmid-32892758-3f12c413.html",
+    "read/publications/pmid-22322458-60c9ffbd.html",
+    "read/publications/pmid-39916551-c5ab9e95.html",
+    "read/publications/pmid-12883106-40678a06.html",
+    "read/publications/pmid-11020090-d7bdc9db.html",
+    "read/publications/pmid-19235193-6d66c862.html",
+    "read/publications/pmid-25686304-60c6fd74.html",
+    "read/publications/pmid-23541163-89ec2e56.html",
+    "read/publications/pmid-20876468-54af8197.html",
+    "read/publications/pmid-22430268-b11c6b8a.html",
+    "read/publications/pmid-21723049-316f2b1d.html",
+    "read/publications/pmid-29422189-4e33115a.html",
+    "read/publications/pmid-24647726-bea80710.html",
+    "read/publications/pmid-14756612-496b76d2.html",
+    "read/publications/pmid-26586819-3f29e86d.html",
+    "read/publications/pmid-29921143-0bb7e4a4.html",
+    "read/publications/pmid-16847590-a82e2a80.html",
+    "read/publications/pmid-18356284-731f4f0e.html",
+    "read/publications/pmid-25397817-3a1af3de.html",
+    "read/publications/pmid-31632617-af64072d.html",
+    "read/publications/pmid-39427264-8db92563.html",
+    "read/publications/pmid-7591024-7cdd398a.html",
+    "read/publications/pmid-30279666-43eaddaa.html",
+    "read/publications/pmid-34907015-457bcea6.html",
+    "read/publications/pmid-29900257-7e2f815e.html",
+    "read/publications/pmid-33393484-8ff86cda.html",
+    "read/publications/pmid-30256277-4170adc7.html",
+    "read/publications/pmid-39413359-ea582a8f.html",
+    "read/publications/pmid-37546047-28e5b6b6.html",
+    "read/publications/pmid-35818436-6b375d23.html",
+    "read/publications/pmid-40414454-0ebae8ac.html",
+    "read/publications/pmid-33734493-1789114b.html",
+    "read/publications/pmid-27723444-d36a2202.html",
+    "read/publications/pmid-34729544-58a2e32b.html",
+    "read/publications/pmid-38078959-e629f0a9.html",
+    "read/publications/pmid-41642087-c4fe3720.html",
+    "read/publications/pmid-42640862-3a7b9e28.html",
+    "read/publications/pmid-29936408-aa4beaa9.html",
+    "read/publications/pmid-36006668-bd97f85f.html",
+    "read/publications/pmid-39808431-1935f9aa.html",
+    "read/publications/pmid-42599846-aca0287d.html",
     "read/publications/pmid-41534731-3d1f7c57.html",
     "read/publications/pmid-36350591-ddbc6cb7.html",
     "read/publications/pmid-35820992-1f94d7d6.html",
