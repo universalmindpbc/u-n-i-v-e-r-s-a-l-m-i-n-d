@@ -68,7 +68,7 @@ export async function astraStorage(storage,b){
    if(typeof b.question!=='string'||b.question.length<5||b.question.length>3000)return answer({error:'Invalid question.'},400);
    if((state.daily[date]||0)>=6||(state.monthly[month]||0)>=40)return answer({error:'The shared analysis allowance is used. Saved studies remain available.'},429);
    if(state.tasks.filter(t=>!terminal.has(t.status)).length>=2)return answer({error:'Two studies are already in progress. Reopen one or wait for completion.'},429);
-   const task={clientId:b.clientId||'legacy-owner',id:crypto.randomUUID(),version:'oxtr-follow-through-v1',requestKey:b.requestKey,question:b.question,status:'queued',stage:'question',message:'Astra will analyse the saved measurements and public DNA evidence. No new Aquila run will be submitted.',createdAt:new Date(now).toISOString(),updatedAt:new Date(now).toISOString(),events:[],policy:{newAquilaUSD:0,newPaidGPUUSD:0,maxModelCalls:2,maxModelTokens:24000},report:null};
+   const task={clientId:b.clientId||'legacy-owner',id:crypto.randomUUID(),version:'oxtr-follow-through-v1',requestKey:b.requestKey,question:b.question,status:'queued',stage:'question',message:'Astra will analyse the saved measurements and public DNA evidence. No new Aquila run will be submitted.',createdAt:new Date(now).toISOString(),updatedAt:new Date(now).toISOString(),events:[],policy:{newAquilaUSD:0,newPaidGPUUSD:0,maxModelCalls:4,requireGeminiReview:true,maxModelTokens:24000},report:null};
    state.tasks.push(task);state.daily[date]=(state.daily[date]||0)+1;state.monthly[month]=(state.monthly[month]||0)+1;result=answer(safe(task));
   }else if(b.op==='claim'){
    const task=state.tasks.find(t=>!terminal.has(t.status)&&(!t.lease||t.lease.until<now));
@@ -87,10 +87,12 @@ export async function astraStorage(storage,b){
     if(terminal.has(task.status)||task.lease?.token!==b.lease||task.lease.until<now)return answer({error:'Study lease ended; stop work and reconcile.'},409);
     task.lease.until=now+180000;
     if(b.op==='update'){
-     if(!['question','evidence','model','classical','simulation','hardware','result'].includes(b.stage)||!['running','complete','failed','needs_attention'].includes(b.status))return answer({error:'Invalid study transition.'},400);
+     if(!['question','evidence','model','classical','simulation','hardware','design_review','final_review','result'].includes(b.stage)||!['running','complete','failed','needs_attention'].includes(b.status))return answer({error:'Invalid study transition.'},400);
+     if(b.reviews){if(!Array.isArray(b.reviews)||b.reviews.length>4||JSON.stringify(b.reviews).length>30000||b.reviews.some(r=>!['design','final'].includes(r.phase)||!['approve','revise','human'].includes(r.decision)||!r.provider_response_id||!r.evidence_sha256||!r.reviewed_at))return answer({error:'Invalid scientific review receipt.'},422);task.reviews=b.reviews;}
      task.stage=b.stage;task.status=b.status;task.message=String(b.message||'').slice(0,700);task.updatedAt=new Date(now).toISOString();
      task.events.push({stage:b.stage,status:b.status,message:task.message,at:task.updatedAt});task.events=task.events.slice(-40);
-     if(b.report){if(JSON.stringify(b.report).length>110000)return answer({error:'Report exceeds the bounded study size.'},413);if(b.report.version!=='oxtr-follow-through-v1'||!b.report.analysis||!b.report.prior_quantum||!b.report.narrative)return answer({error:'Report is incomplete.'},422);task.report=b.report;}
+     if(b.report){if(JSON.stringify(b.report).length>200000)return answer({error:'Report exceeds the bounded study size.'},413);if(b.report.version!=='oxtr-follow-through-v1'||!b.report.analysis||!b.report.prior_quantum||!b.report.narrative)return answer({error:'Report is incomplete.'},422);task.report=b.report;}
+     if(task.status==='complete'&&task.policy.requireGeminiReview&&(!task.report||task.report.review?.status!=='model_review_complete'||['design','final'].some(phase=>task.report.reviews?.filter(r=>r.phase===phase).at(-1)?.decision!=='approve')))return answer({error:'Both Gemini scientific reviews are required.'},422);
      if(task.status==='complete'&&!task.report)return answer({error:'A completed task needs a report.'},422);
      if(terminal.has(task.status))delete task.lease;
     }

@@ -96,8 +96,9 @@ class Tests(unittest.TestCase):
     def test_completed_review_is_cached_across_restart(self):
         with tempfile.TemporaryDirectory() as temp:
             path = Path(temp) / 'cost.sqlite'; ledger = ReviewLedger(path, 100)
-            self.assertEqual(ledger.run('same', 60, lambda: {'ok': True}), {'ok': True})
-            self.assertEqual(ReviewLedger(path, 100).run('same', 60, lambda: self.fail('Duplicate call')), {'ok': True})
+            record = ledger.run('same', 60, lambda: {'ok': True, 'usage': {'promptTokenCount': 1, 'totalTokenCount': 2}})
+            self.assertEqual(record['accounted_micro_usd'], 24)
+            self.assertEqual(ReviewLedger(path, 100).run('same', 60, lambda: self.fail('Duplicate call')), record)
 
     def test_snapshot_is_idempotent_and_csv_retains_every_value(self):
         with tempfile.TemporaryDirectory() as temp:

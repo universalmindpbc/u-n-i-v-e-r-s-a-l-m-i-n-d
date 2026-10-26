@@ -44,15 +44,31 @@ words and their contractions. Return only the requested JSON review.'''
 class ReviewLedger:
     """Reserve the entire maximum cost before transmission; retain uncertainty.
 
-    One ledger is shared across every test, not reset for each study. Rates use
-    the announced December prices as a conservative ceiling. Cloud activation
-    requires this ledger in durable storage and a separate recurring allowance.
+    One durable ledger is shared across every study. Completed receipts settle
+    at the conservative input/output ceiling; uncertain requests stay reserved.
     """
     def __init__(self, path, ceiling_micro_usd=1_000_000, sync=lambda: None):
         self.db = sqlite3.connect(path)
         self.ceiling = ceiling_micro_usd
         self.sync = sync
         self.db.execute('CREATE TABLE IF NOT EXISTS reviews (key TEXT PRIMARY KEY, reserve INTEGER NOT NULL, result TEXT)')
+
+    @staticmethod
+    def settled_cost(result, reserve):
+        usage = result.get('usage', {})
+        prompt, total = usage.get('promptTokenCount'), usage.get('totalTokenCount')
+        if not isinstance(prompt, int) or not isinstance(total, int) or not 0 <= prompt <= total:
+            raise ValueError('Review usage receipt is incomplete')
+        # Include every output/thinking token. Cached input gets no discount.
+        cost = prompt * 4 + (total - prompt) * 20
+        if cost > reserve:
+            raise RuntimeError('Review usage exceeds its reservation; reconcile before continuation.')
+        return cost
+
+    def settle_completed(self):
+        for key, reserve, raw in self.db.execute('SELECT key,reserve,result FROM reviews WHERE result IS NOT NULL').fetchall():
+            self.db.execute('UPDATE reviews SET reserve=? WHERE key=?', (self.settled_cost(json.loads(raw), reserve), key))
+        self.db.commit(); self.sync()
 
     def run(self, key, reserve, fn):
         self.db.execute('BEGIN IMMEDIATE')
@@ -73,7 +89,9 @@ class ReviewLedger:
             raise
         self.sync()
         result = fn()
-        self.db.execute('UPDATE reviews SET result=? WHERE key=?', (json.dumps(result), key))
+        cost = self.settled_cost(result, reserve)
+        result = {**result, 'accounted_micro_usd': cost}
+        self.db.execute('UPDATE reviews SET reserve=?,result=? WHERE key=?', (cost, json.dumps(result), key))
         self.db.commit(); self.sync()
         return result
 

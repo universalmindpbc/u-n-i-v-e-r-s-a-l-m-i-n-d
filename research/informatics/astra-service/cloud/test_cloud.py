@@ -60,6 +60,18 @@ class Tests(unittest.TestCase):
   with patch.dict(os.environ,{'ASTRA_SECRET_ARN':'fixture'}),patch.object(dispatch.boto3,'client',side_effect=client),patch.object(dispatch.urllib.request,'urlopen',return_value=io.BytesIO(b'{"pending":false}')):
    self.assertEqual(dispatch.handler({},None)['status'],'idle')
 
+ def test_shared_review_allowance_never_resets_per_study(self):
+  from providers import ReviewLedger
+  with tempfile.TemporaryDirectory() as d:
+   root=Path(d);store=Store();seed=root/'seed.sqlite'
+   ledger=ReviewLedger(seed);ledger.run('prior',100,lambda:{'usage':{'promptTokenCount':1,'totalTokenCount':2}})
+   archive=runtime.SharedReviewBudget('fixture',seed,store);archive.save()
+   second=runtime.SharedReviewBudget('fixture',root/'second.sqlite',store);second.restore()
+   resumed=ReviewLedger(second.path,100,sync=second.save)
+   self.assertEqual(resumed.db.execute('SELECT sum(reserve) FROM reviews').fetchone()[0],24)
+   with self.assertRaises(RuntimeError):resumed.run('new',77,lambda:self.fail('Reset budget'))
+   with self.assertRaisesRegex(RuntimeError,'not been seeded'):runtime.SharedReviewBudget('fixture',root/'empty',Store()).restore()
+
  def test_csv_retains_all_scientific_fields_and_escapes_formula(self):
   import csv
   with tempfile.TemporaryDirectory() as d:

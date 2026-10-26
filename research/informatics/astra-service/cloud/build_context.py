@@ -10,7 +10,8 @@ def copy(source,target):
  target.parent.mkdir(parents=True,exist_ok=True);shutil.copyfile(source,target)
  copies.append({'path':str(target.relative_to(dest)),'sha256':hashlib.sha256(target.read_bytes()).hexdigest()})
 service=root/'research/informatics/astra-service'
-for name in ['runner.py','science.py','quantum_prepare.py','intent.json']:copy(service/name,dest/'workspace/research/informatics/astra-service'/name)
+for name in ['runner.py','science.py','quantum_prepare.py','intent.json','review_flow.py']:copy(service/name,dest/'workspace/research/informatics/astra-service'/name)
+for name in ['providers.py','swarm.py']:copy(root/'research/informatics/scientific-swarm'/name,dest/'workspace/research/informatics/scientific-swarm'/name)
 for name in ['workflow.py','audit_tool.py']:copy(root/'research/informatics/agent-foundation'/name,dest/'workspace/research/informatics/agent-foundation'/name)
 for name in ['oxtr-qrc-qualification.json','oxtr-qrc-study.json','oxtr-next-test-evidence.json']:copy(root/'Informatics/quantum/data'/name,dest/'workspace/Informatics/quantum/data'/name)
 for name in ['research/quantum-lab/oxtr-qrc-01/source/ENCFF651DQL.bed.gz','research/quantum-lab/oxtr-qrc-01/results/wolfram-comparison.json','research/quantum-lab/oxtr-qrc-01/results/physical-model.json','research/oxtr-tfbs-v1/private-source-cache/ref-dna-expanded.json','research/oxtr-tfbs-v1/private-source-cache/jaspar2026-vertebrates.jaspar']:
