@@ -4,7 +4,7 @@ import {agentHeaders,ensureAgentSession,followAgent,resetAgent,renderAgentReport
 import './study.js?v=production-1';
 import './hypothesis.js?v=1';
 import {renderResponse} from './response-view.js?v=6';
-import {interpretations,appendInsightPanel,appendComparison,appendEvidenceSummary,appendNextTest} from './insights.js?v=live-4';
+import {interpretations,appendInsightPanel,appendComparison,appendEvidenceSummary,appendNextTest} from './insights.js?v=production-1';
 import {verifiedReport,reportPair,reportContext,timing} from './result-contract.js?v=2';
 const $=s=>document.querySelector(s),node=(tag,text,cls)=>{const n=document.createElement(tag);if(text!==undefined)n.textContent=text;if(cls)n.className=cls;return n;};
 document.body.classList.toggle('embedded',new URLSearchParams(location.search).get('embedded')==='1');
