@@ -19,8 +19,10 @@ async function poll(){try{await ensureAgentSession();const r=await fetch(endpoin
 export function resetAgent(){clearTimeout(timer);task=null;$('#agent-progress').hidden=true;window.dispatchEvent(new CustomEvent('quantum:agent',{detail:null}));}
 export function renderAgentReport(slot,t,{integrated=false}={}){
  const r=t.report;if(!r){slot.append(el('h3','Your study is still in progress'),el('p',t.message));return;}
- slot.dataset.state='complete';slot.append(el('span',r.review?.status==='model_review_complete'?'ASTRA · GEMINI REVIEW COMPLETE':'ASTRA · PRELIMINARY INSIGHTS','result-status'),el('h3',t.question||r.question));
- const callout=el('div',undefined,'agent-finding');callout.append(el('p',r.narrative.answer));slot.append(callout);
+ const reviewed=r.review?.status==='model_review_complete';
+ slot.dataset.state='complete';slot.append(el('span',reviewed?'ASTRA · GEMINI REVIEW COMPLETE':'ASTRA · PRELIMINARY INSIGHTS','result-status'),el('h3','What we found'));
+ const answer=reviewed?r.narrative.answer.replace(/^Draft for Gemini scientific review:\s*/i,''):r.narrative.answer;
+ const callout=el('div',undefined,'agent-finding');callout.append(el('p',answer));slot.append(callout);
  for(const [key,title]of[['what_we_did','What the agent completed'],['meaning','What this means for your question'],...(!integrated?[['next_dependency','Where this run stops']]:[])]){slot.append(el('h4',title),el('p',r.narrative[key]));}
  if(r.reviews?.length){const review=r.reviews.filter(x=>x.phase==='final').at(-1);if(review){const stamp=el('div',undefined,'recorded-review-stamp');stamp.append(el('strong','Reviewed by Gemini 4 Argon'),el('time',new Date(review.reviewed_at).toLocaleString()),el('p',review.summary));slot.append(stamp);}}
  const a=r.analysis;slot.append(el('h4','The comparison, in plain numbers'),el('p','CTCF is one protein that binds DNA. We checked whether each method ranked the eight OXTR windows overlapping reported CTCF regions above the other 144 windows. The laboratory map contains five peak regions; some span more than one window.'));
