@@ -5,7 +5,7 @@ header('Cache-Control: no-store');
 header('X-Content-Type-Options: nosniff');
 function reply(array $body, int $status=200): never {http_response_code($status);echo json_encode($body);exit;}
 $host=strtolower(explode(':',$_SERVER['HTTP_HOST']??'')[0]);
-if($host!=='staging.universalmind.tv')reply(['error'=>'Research execution is enabled on staging.'],404);
+if(!in_array($host,['staging.universalmind.tv','universalmind.tv'],true))reply(['error'=>'Open Quantum Atlas to start a research session.'],404);
 if($_SERVER['REQUEST_METHOD']!=='POST'||($_SERVER['HTTP_ORIGIN']??'')!=='https://'.$host)reply(['error'=>'Open Quantum Atlas to start a research session.'],403);
 $private=rtrim($_SERVER['DOCUMENT_ROOT'],'/').'/vogue/iam/api/.runtime-private';
 $config=json_decode((string)@file_get_contents($private.'/informatics-astra.json'),true);

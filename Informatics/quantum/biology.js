@@ -1,6 +1,6 @@
 import './scientific-review.js?v=live-3';
 import {appendGenomic,appendLocalChecks} from './study-progress.js?v=3';
-import {agentHeaders,ensureAgentSession,followAgent,resetAgent,renderAgentReport,setupAgent} from './agent.js?v=reviewed-4';
+import {agentHeaders,ensureAgentSession,followAgent,resetAgent,renderAgentReport,setupAgent} from './agent.js?v=production-1';
 import './study.js?v=live-7';
 import './hypothesis.js?v=1';
 import {renderResponse} from './response-view.js?v=6';

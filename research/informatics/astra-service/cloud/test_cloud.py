@@ -51,14 +51,21 @@ class Tests(unittest.TestCase):
   class Invoke:
    def invoke(self,**kw):
     self_count=json.loads(next(iter(store.objects.values()))[0])['attempts']
-    calls.append(self_count);return {}
+    calls.append(self_count);assert json.loads(kw['Payload'])['environment'] in ['production','staging'];return {}
   def client(name):return {'s3':store,'secretsmanager':Secrets(),'lambda':Invoke()}[name]
   with patch.dict(os.environ,{'ASTRA_SECRET_ARN':'fixture','ASTRA_STATE_BUCKET':'fixture','ASTRA_WORKER_NAME':'fixture'}),patch.object(dispatch.boto3,'client',side_effect=client),patch.object(dispatch.urllib.request,'urlopen',side_effect=lambda *a,**k:io.BytesIO(b'{"pending":true}')):
    self.assertEqual(dispatch.handler({},None)['attempt'],1);self.assertEqual(calls,[1])
    key=next(iter(store.objects));store.put_object(Key=key,Body='{"attempts":120}')
    self.assertEqual(dispatch.handler({},None)['status'],'monthly_hosting_allowance_reached');self.assertEqual(calls,[1])
-  with patch.dict(os.environ,{'ASTRA_SECRET_ARN':'fixture'}),patch.object(dispatch.boto3,'client',side_effect=client),patch.object(dispatch.urllib.request,'urlopen',return_value=io.BytesIO(b'{"pending":false}')):
+  store.objects.clear()
+  with patch.dict(os.environ,{'ASTRA_SECRET_ARN':'fixture','ASTRA_STATE_BUCKET':'fixture'}),patch.object(dispatch.boto3,'client',side_effect=client),patch.object(dispatch.urllib.request,'urlopen',side_effect=lambda *a,**k:io.BytesIO(b'{"pending":false}')):
    self.assertEqual(dispatch.handler({},None)['status'],'idle')
+
+ def test_environment_is_an_allowlist_not_an_arbitrary_endpoint(self):
+  from destinations import destination
+  self.assertEqual(destination('production')[1],'https://universalmind.tv')
+  self.assertEqual(destination('staging')[1],'https://staging.universalmind.tv')
+  with self.assertRaises(ValueError):runtime.handler({'environment':'https://untrusted.invalid'},None)
 
  def test_shared_review_allowance_never_resets_per_study(self):
   from providers import ReviewLedger

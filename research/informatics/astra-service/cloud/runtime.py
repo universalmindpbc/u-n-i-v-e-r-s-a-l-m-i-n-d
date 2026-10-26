@@ -2,6 +2,7 @@
 import io,json,os,shutil,sqlite3,sys,tarfile,tempfile,hashlib
 from pathlib import Path
 import boto3
+from destinations import destination
 
 TASK_ROOT=Path('/tmp/astra-task')
 os.environ['ASTRA_SERVICE_HOME']=str(TASK_ROOT)
@@ -55,11 +56,13 @@ class SharedReviewBudget:
 
 def handler(event,context):
  # All request data comes from the authenticated broker, never model-written code.
+ endpoint,origin=destination(event.get('environment','staging'))
  if TASK_ROOT.exists():shutil.rmtree(TASK_ROOT)
  TASK_ROOT.mkdir(mode=0o700)
  secret=json.loads(boto3.client('secretsmanager').get_secret_value(SecretId=os.environ['ASTRA_SECRET_ARN'])['SecretString'])
  path=TASK_ROOT/'credentials.json';path.write_text(json.dumps(secret));path.chmod(0o600)
  import runner
+ runner.ENDPOINT,runner.ORIGIN=endpoint,origin
  broker=runner.Broker();claim=broker.call('claim')
  if not claim.get('task'):return {'status':'idle'}
  identifier=claim['task']['id'];archive=StateArchive(os.environ['ASTRA_STATE_BUCKET'],identifier)

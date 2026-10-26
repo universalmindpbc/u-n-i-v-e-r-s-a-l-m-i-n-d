@@ -16,7 +16,7 @@ for name in ['workflow.py','audit_tool.py']:copy(root/'research/informatics/agen
 for name in ['oxtr-qrc-qualification.json','oxtr-qrc-study.json','oxtr-next-test-evidence.json']:copy(root/'Informatics/quantum/data'/name,dest/'workspace/Informatics/quantum/data'/name)
 for name in ['research/quantum-lab/oxtr-qrc-01/source/ENCFF651DQL.bed.gz','research/quantum-lab/oxtr-qrc-01/results/wolfram-comparison.json','research/quantum-lab/oxtr-qrc-01/results/physical-model.json','research/oxtr-tfbs-v1/private-source-cache/ref-dna-expanded.json','research/oxtr-tfbs-v1/private-source-cache/jaspar2026-vertebrates.jaspar']:
  copy(research/name,dest/'workspace/research-inputs'/name)
-for name in ['Dockerfile','runtime.py']:copy(service/'cloud'/name,dest/name)
+for name in ['Dockerfile','runtime.py','destinations.py']:copy(service/'cloud'/name,dest/name)
 copy(service/'requirements.txt',dest/'requirements.txt')
 (dest/'manifest.json').write_text(json.dumps(copies,indent=2)+'\n')
 print(json.dumps({'files':len(copies),'bytes':sum(p.stat().st_size for p in dest.rglob('*') if p.is_file()),'context':str(dest)}))

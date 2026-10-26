@@ -5,7 +5,7 @@ function token(){try{return localStorage.getItem(tokenKey)||'';}catch{return '';
 export function agentHeaders(){return token()?{Authorization:'Bearer '+token()}:{};}
 let connecting;
 export async function ensureAgentSession(){
- if(location.hostname!=='staging.universalmind.tv')return;
+ if(!['staging.universalmind.tv','universalmind.tv'].includes(location.hostname))return;
  try{const claims=JSON.parse(atob(token().split('.')[0].replace(/-/g,'+').replace(/_/g,'/')));if(claims.exp>Date.now()/1000+60)return;}catch{}
  if(!connecting)connecting=fetch('../api/astra-session.php',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({previous:token()})}).then(async r=>{const d=await r.json();if(!r.ok)throw Error(d.error||'The research session did not connect.');localStorage.setItem(tokenKey,d.token);}).finally(()=>{connecting=null;});
  return connecting;
@@ -36,7 +36,7 @@ export function renderAgentReport(slot,t,{integrated=false}={}){
  const downloads=el('div',undefined,'completed-study-actions');for(const format of ['JSON','CSV']){const b=el('button','Download complete study · '+format+' ↓','text-button');b.onclick=()=>save(format==='JSON'?r:csv(r),'astra-'+t.id+'.'+format.toLowerCase(),format==='CSV'?'text/csv':'application/json');downloads.append(b);}slot.append(downloads);
 }
 export function setupAgent(open){
- if(location.hostname!=='staging.universalmind.tv')return;
+ if(!['staging.universalmind.tv','universalmind.tv'].includes(location.hostname))return;
  $('#agent-open').onclick=()=>open(task);$('#agent-cancel').onclick=async()=>{try{await ensureAgentSession();const r=await fetch(endpoint+'/agent/studies/'+task.id+'/cancel',{method:'POST',headers:agentHeaders()});if(!r.ok)throw Error('Cancellation is not confirmed. Retry.');followAgent(await r.json(),changed);}catch(e){$('#agent-message').textContent=e.message;}};
  window.addEventListener('pagehide',()=>clearTimeout(timer));
 }
