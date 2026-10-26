@@ -53,13 +53,22 @@ window.addEventListener('quantum:question', e => { if(['running','ready'].includ
 window.addEventListener('quantum:agent', e => { currentTask=e.detail;render(); });
 function connectReviews(){
  const rail=$('#scientific-review-rail'),card=$('.review-supervisor'),svg=$('#review-connectors');
- if(!rail||!card||innerWidth<=900)return;
+ if(!rail||!card)return;
  const r=rail.getBoundingClientRect(),c=card.getBoundingClientRect(),a=$('[data-stage="question"]').getBoundingClientRect(),b=$('[data-stage="evidence"]').getBoundingClientRect(),z=$('[data-stage="result"]').getBoundingClientRect();
  const left=c.left-r.left-8,right=c.right-r.left+8,top=c.top-r.top,y=top+c.height/2,ay=a.top-r.top-8,ax=a.left-r.left+a.width/2,bx=b.left-r.left+b.width/2,zx=z.left-r.left+z.width/2;
+ if(innerWidth<=900){
+  const by=b.top-r.top+b.height/2,zy=z.top-r.top-8,zax=z.left-r.left+z.width/2;
+  const height=z.bottom-r.top;
+  svg.setAttribute('viewBox',`0 0 ${r.width} ${height}`);svg.style.height=`${height}px`;
+  $('#design-connector').setAttribute('d',`M ${left} ${y} H -8 V ${ay-8} H ${ax} V ${ay}`);
+  $('#findings-in-connector').setAttribute('d',`M ${b.right-r.left+4} ${by} H ${r.width+6} V ${y+16} H ${right}`);
+  $('#findings-out-connector').setAttribute('d',`M ${right} ${y-5} H ${r.width+12} V ${zy-8} H ${zax} V ${zy}`);
+  return;
+ }
  svg.setAttribute('viewBox',`0 0 ${r.width} ${ay+8}`);svg.style.height=`${ay+8}px`;
  $('#design-connector').setAttribute('d',`M ${left} ${y} H ${ax} V ${ay}`);
  $('#findings-in-connector').setAttribute('d',`M ${bx} ${ay} V ${y+16} H ${right}`);
- $('#findings-out-connector').setAttribute('d',`M ${right} ${y-16} H ${zx} V ${ay}`);
+ $('#findings-out-connector').setAttribute('d',`M ${right} ${y-5} H ${zx} V ${ay}`);
 }
 new ResizeObserver(connectReviews).observe($('#workflow'));document.fonts.ready.then(connectReviews);window.addEventListener('resize',connectReviews);
 async function load() {
