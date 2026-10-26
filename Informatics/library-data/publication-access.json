@@ -1,5 +1,5 @@
 {
-  "checkedAt": "2026-10-22",
+  "checkedAt": "2026-10-26",
   "records": {
     "pmid-42519422": {
       "publicationKey": null,
@@ -9146,6 +9146,809 @@
       "publicationKey": "doi:10.1103/physreva.83.042330",
       "journalKey": "physicalreviewa",
       "journalLabel": "Physical Review A"
+    },
+    "pmid-41450809": {
+      "urls": [
+        "https://pubmed.ncbi.nlm.nih.gov/41450809/",
+        "https://doi.org/10.4103/jisp.jisp_73_25",
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC12736686/"
+      ],
+      "doi": "10.4103/jisp.jisp_73_25",
+      "pmid": "41450809",
+      "publicationKey": "doi:10.4103/jisp.jisp_73_25",
+      "journalKey": "journalofindiansocietyofperiodontology",
+      "journalLabel": "Journal of Indian Society of Periodontology"
+    },
+    "pmid-41911215": {
+      "urls": [
+        "https://pubmed.ncbi.nlm.nih.gov/41911215/",
+        "https://doi.org/10.1371/journal.pone.0345960",
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC13035112/"
+      ],
+      "doi": "10.1371/journal.pone.0345960",
+      "pmid": "41911215",
+      "publicationKey": "doi:10.1371/journal.pone.0345960",
+      "journalKey": "plosone",
+      "journalLabel": "PloS one"
+    },
+    "pmid-40795897": {
+      "urls": [
+        "https://pubmed.ncbi.nlm.nih.gov/40795897/",
+        "https://doi.org/10.1088/2057-1976/adfa9d"
+      ],
+      "doi": "10.1088/2057-1976/adfa9d",
+      "pmid": "40795897",
+      "publicationKey": "doi:10.1088/2057-1976/adfa9d",
+      "journalKey": "biomedicalphysicsandengineeringexpress",
+      "journalLabel": "Biomedical physics & engineering express"
+    },
+    "pmid-40563070": {
+      "urls": [
+        "https://pubmed.ncbi.nlm.nih.gov/40563070/",
+        "https://doi.org/10.1007/s12630-025-02993-5"
+      ],
+      "doi": "10.1007/s12630-025-02993-5",
+      "pmid": "40563070",
+      "publicationKey": "doi:10.1007/s12630-025-02993-5",
+      "journalKey": "canadianjournalofanaesthesia",
+      "journalLabel": "Canadian journal of anaesthesia = Journal canadien d'anesthesie"
+    },
+    "pmid-42671585": {
+      "urls": [
+        "https://pubmed.ncbi.nlm.nih.gov/42671585/",
+        "https://doi.org/10.1007/s00221-026-07387-7"
+      ],
+      "doi": "10.1007/s00221-026-07387-7",
+      "pmid": "42671585",
+      "publicationKey": "doi:10.1007/s00221-026-07387-7",
+      "journalKey": "experimentalbrainresearch",
+      "journalLabel": "Experimental brain research"
+    },
+    "pmid-42307797": {
+      "urls": [
+        "https://pubmed.ncbi.nlm.nih.gov/42307797/",
+        "https://doi.org/10.1007/s10072-026-09164-4"
+      ],
+      "doi": "10.1007/s10072-026-09164-4",
+      "pmid": "42307797",
+      "publicationKey": "doi:10.1007/s10072-026-09164-4",
+      "journalKey": "neurologicalsciences",
+      "journalLabel": "Neurological sciences : official journal of the Italian Neurological Society and of the Italian Society of Clinical Neurophysiology"
+    },
+    "pmid-39088370": {
+      "urls": [
+        "https://pubmed.ncbi.nlm.nih.gov/39088370/",
+        "https://doi.org/10.1089/jicm.2023.0804",
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC11659431/"
+      ],
+      "doi": "10.1089/jicm.2023.0804",
+      "pmid": "39088370",
+      "publicationKey": "doi:10.1089/jicm.2023.0804",
+      "journalKey": "journalofintegrativeandcomplementarymedicine",
+      "journalLabel": "Journal of integrative and complementary medicine"
+    },
+    "pmid-32653082": {
+      "urls": [
+        "https://pubmed.ncbi.nlm.nih.gov/32653082/",
+        "https://doi.org/10.1016/j.bja.2020.05.050"
+      ],
+      "doi": "10.1016/j.bja.2020.05.050",
+      "pmid": "32653082",
+      "publicationKey": "doi:10.1016/j.bja.2020.05.050",
+      "journalKey": "britishjournalofanaesthesia",
+      "journalLabel": "British journal of anaesthesia"
+    },
+    "pmid-36011825": {
+      "urls": [
+        "https://pubmed.ncbi.nlm.nih.gov/36011825/",
+        "https://doi.org/10.3390/ijerph191610194",
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC9408317/"
+      ],
+      "doi": "10.3390/ijerph191610194",
+      "pmid": "36011825",
+      "publicationKey": "doi:10.3390/ijerph191610194",
+      "journalKey": "internationaljournalofenvironmentalresearchandpublichealth",
+      "journalLabel": "International journal of environmental research and public health"
+    },
+    "pmid-38319068": {
+      "urls": [
+        "https://pubmed.ncbi.nlm.nih.gov/38319068/",
+        "https://doi.org/10.1111/ggi.14827"
+      ],
+      "doi": "10.1111/ggi.14827",
+      "pmid": "38319068",
+      "publicationKey": "doi:10.1111/ggi.14827",
+      "journalKey": "geriatricsandgerontologyinternational",
+      "journalLabel": "Geriatrics & gerontology international"
+    },
+    "pmid-32564499": {
+      "urls": [
+        "https://pubmed.ncbi.nlm.nih.gov/32564499/",
+        "https://doi.org/10.1002/ejp.1615"
+      ],
+      "doi": "10.1002/ejp.1615",
+      "pmid": "32564499",
+      "publicationKey": "doi:10.1002/ejp.1615",
+      "journalKey": "europeanjournalofpain",
+      "journalLabel": "European journal of pain (London, England)"
+    },
+    "pmid-33107329": {
+      "urls": [
+        "https://pubmed.ncbi.nlm.nih.gov/33107329/",
+        "https://doi.org/10.1089/end.2020.0353"
+      ],
+      "doi": "10.1089/end.2020.0353",
+      "pmid": "33107329",
+      "publicationKey": "doi:10.1089/end.2020.0353",
+      "journalKey": "journalofendourology",
+      "journalLabel": "Journal of endourology"
+    },
+    "pmid-32412916": {
+      "urls": [
+        "https://pubmed.ncbi.nlm.nih.gov/32412916/"
+      ],
+      "doi": null,
+      "pmid": "32412916",
+      "publicationKey": "pmid:32412916",
+      "journalKey": "alternativetherapiesinhealthandmedicine",
+      "journalLabel": "Alternative therapies in health and medicine"
+    },
+    "pmid-40269359": {
+      "urls": [
+        "https://pubmed.ncbi.nlm.nih.gov/40269359/",
+        "https://doi.org/10.47391/jpma.21023"
+      ],
+      "doi": "10.47391/jpma.21023",
+      "pmid": "40269359",
+      "publicationKey": "doi:10.47391/jpma.21023",
+      "journalKey": "jpmathejournalofthepakistanmedicalassociation",
+      "journalLabel": "JPMA. The Journal of the Pakistan Medical Association"
+    },
+    "pmid-36790246": {
+      "urls": [
+        "https://pubmed.ncbi.nlm.nih.gov/36790246/",
+        "https://doi.org/10.1590/2177-6709.27.6.e2221150.oar"
+      ],
+      "doi": "10.1590/2177-6709.27.6.e2221150.oar",
+      "pmid": "36790246",
+      "publicationKey": "doi:10.1590/2177-6709.27.6.e2221150.oar",
+      "journalKey": "dentalpressjournaloforthodontics",
+      "journalLabel": "Dental press journal of orthodontics"
+    },
+    "pmid-35713444": {
+      "urls": [
+        "https://pubmed.ncbi.nlm.nih.gov/35713444/",
+        "https://doi.org/10.1097/md.0000000000029392",
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC9276398/"
+      ],
+      "doi": "10.1097/md.0000000000029392",
+      "pmid": "35713444",
+      "publicationKey": "doi:10.1097/md.0000000000029392",
+      "journalKey": "medicine",
+      "journalLabel": "Medicine"
+    },
+    "pmid-38982009": {
+      "urls": [
+        "https://pubmed.ncbi.nlm.nih.gov/38982009/",
+        "https://doi.org/10.1007/s40368-024-00921-7"
+      ],
+      "doi": "10.1007/s40368-024-00921-7",
+      "pmid": "38982009",
+      "publicationKey": "doi:10.1007/s40368-024-00921-7",
+      "journalKey": "europeanarchivesofpaediatricdentistry",
+      "journalLabel": "European archives of paediatric dentistry : official journal of the European Academy of Paediatric Dentistry"
+    },
+    "pmid-42116620": {
+      "urls": [
+        "https://pubmed.ncbi.nlm.nih.gov/42116620/",
+        "https://doi.org/10.1093/pm/pnag064"
+      ],
+      "doi": "10.1093/pm/pnag064",
+      "pmid": "42116620",
+      "publicationKey": "doi:10.1093/pm/pnag064",
+      "journalKey": "painmedicine",
+      "journalLabel": "Pain medicine (Malden, Mass.)"
+    },
+    "pmid-40621706": {
+      "urls": [
+        "https://pubmed.ncbi.nlm.nih.gov/40621706/",
+        "https://doi.org/10.1002/brb3.70671",
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC12230630/"
+      ],
+      "doi": "10.1002/brb3.70671",
+      "pmid": "40621706",
+      "publicationKey": "doi:10.1002/brb3.70671",
+      "journalKey": "brainandbehavior",
+      "journalLabel": "Brain and behavior"
+    },
+    "pmid-35655482": {
+      "urls": [
+        "https://pubmed.ncbi.nlm.nih.gov/35655482/",
+        "https://doi.org/10.1155/2022/8588272",
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC9153928/"
+      ],
+      "doi": "10.1155/2022/8588272",
+      "pmid": "35655482",
+      "publicationKey": "doi:10.1155/2022/8588272",
+      "journalKey": "biomedresearchinternational",
+      "journalLabel": "BioMed research international"
+    },
+    "pmid-40769315": {
+      "urls": [
+        "https://pubmed.ncbi.nlm.nih.gov/40769315/",
+        "https://doi.org/10.1016/j.ajog.2025.07.051"
+      ],
+      "doi": "10.1016/j.ajog.2025.07.051",
+      "pmid": "40769315",
+      "publicationKey": "doi:10.1016/j.ajog.2025.07.051",
+      "journalKey": "americanjournalofobstetricsandgynecology",
+      "journalLabel": "American journal of obstetrics and gynecology"
+    },
+    "pmid-40716437": {
+      "urls": [
+        "https://pubmed.ncbi.nlm.nih.gov/40716437/",
+        "https://doi.org/10.1159/000547622",
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC12503563/"
+      ],
+      "doi": "10.1159/000547622",
+      "pmid": "40716437",
+      "publicationKey": "doi:10.1159/000547622",
+      "journalKey": "psychotherapyandpsychosomatics",
+      "journalLabel": "Psychotherapy and psychosomatics"
+    },
+    "pmid-38227442": {
+      "urls": [
+        "https://pubmed.ncbi.nlm.nih.gov/38227442/",
+        "https://doi.org/10.1037/tra0001643"
+      ],
+      "doi": "10.1037/tra0001643",
+      "pmid": "38227442",
+      "publicationKey": "doi:10.1037/tra0001643",
+      "journalKey": "psychologicaltrauma",
+      "journalLabel": "Psychological trauma : theory, research, practice and policy"
+    },
+    "pmid-39758524": {
+      "urls": [
+        "https://pubmed.ncbi.nlm.nih.gov/39758524/",
+        "https://doi.org/10.1089/whr.2023.0110",
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC11693959/"
+      ],
+      "doi": "10.1089/whr.2023.0110",
+      "pmid": "39758524",
+      "publicationKey": "doi:10.1089/whr.2023.0110",
+      "journalKey": "womenshealthreports",
+      "journalLabel": "Women's health reports (New Rochelle, N.Y.)"
+    },
+    "pmid-42518933": {
+      "urls": [
+        "https://pubmed.ncbi.nlm.nih.gov/42518933/",
+        "https://doi.org/10.1016/j.eclinm.2026.104082",
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC13382324/"
+      ],
+      "doi": "10.1016/j.eclinm.2026.104082",
+      "pmid": "42518933",
+      "publicationKey": "doi:10.1016/j.eclinm.2026.104082",
+      "journalKey": "eclinicalmedicine",
+      "journalLabel": "EClinicalMedicine"
+    },
+    "pmid-41655996": {
+      "urls": [
+        "https://pubmed.ncbi.nlm.nih.gov/41655996/",
+        "https://doi.org/10.1002/eat.70056",
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC13147140/"
+      ],
+      "doi": "10.1002/eat.70056",
+      "pmid": "41655996",
+      "publicationKey": "doi:10.1002/eat.70056",
+      "journalKey": "internationaljournalofeatingdisorders",
+      "journalLabel": "The International journal of eating disorders"
+    },
+    "pmid-37882058": {
+      "urls": [
+        "https://pubmed.ncbi.nlm.nih.gov/37882058/",
+        "https://doi.org/10.1017/s0033291723002532"
+      ],
+      "doi": "10.1017/s0033291723002532",
+      "pmid": "37882058",
+      "publicationKey": "doi:10.1017/s0033291723002532",
+      "journalKey": "psychologicalmedicine",
+      "journalLabel": "Psychological medicine"
+    },
+    "pmid-30711853": {
+      "urls": [
+        "https://pubmed.ncbi.nlm.nih.gov/30711853/",
+        "https://doi.org/10.1016/j.psychres.2019.01.070"
+      ],
+      "doi": "10.1016/j.psychres.2019.01.070",
+      "pmid": "30711853",
+      "publicationKey": "doi:10.1016/j.psychres.2019.01.070",
+      "journalKey": "psychiatryresearch",
+      "journalLabel": "Psychiatry research"
+    },
+    "pmid-24880581": {
+      "urls": [
+        "https://pubmed.ncbi.nlm.nih.gov/24880581/",
+        "https://doi.org/10.1016/j.psychres.2014.05.012"
+      ],
+      "doi": "10.1016/j.psychres.2014.05.012",
+      "pmid": "24880581",
+      "publicationKey": "doi:10.1016/j.psychres.2014.05.012",
+      "journalKey": "psychiatryresearch",
+      "journalLabel": "Psychiatry research"
+    },
+    "pmid-32892758": {
+      "urls": [
+        "https://pubmed.ncbi.nlm.nih.gov/32892758/",
+        "https://doi.org/10.1192/bjp.2020.158"
+      ],
+      "doi": "10.1192/bjp.2020.158",
+      "pmid": "32892758",
+      "publicationKey": "doi:10.1192/bjp.2020.158",
+      "journalKey": "britishjournalofpsychiatry",
+      "journalLabel": "The British journal of psychiatry : the journal of mental science"
+    },
+    "pmid-22322458": {
+      "urls": [
+        "https://pubmed.ncbi.nlm.nih.gov/22322458/",
+        "https://doi.org/10.1192/bjp.bp.111.099234"
+      ],
+      "doi": "10.1192/bjp.bp.111.099234",
+      "pmid": "22322458",
+      "publicationKey": "doi:10.1192/bjp.bp.111.099234",
+      "journalKey": "britishjournalofpsychiatry",
+      "journalLabel": "The British journal of psychiatry : the journal of mental science"
+    },
+    "pmid-39916551": {
+      "urls": [
+        "https://pubmed.ncbi.nlm.nih.gov/39916551/",
+        "https://doi.org/10.1080/20008066.2025.2454191",
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC11809175/"
+      ],
+      "doi": "10.1080/20008066.2025.2454191",
+      "pmid": "39916551",
+      "publicationKey": "doi:10.1080/20008066.2025.2454191",
+      "journalKey": "europeanjournalofpsychotraumatology",
+      "journalLabel": "European journal of psychotraumatology"
+    },
+    "pmid-12883106": {
+      "urls": [
+        "https://pubmed.ncbi.nlm.nih.gov/12883106/",
+        "https://doi.org/10.1097/01.psy.0000077505.67574.e3"
+      ],
+      "doi": "10.1097/01.psy.0000077505.67574.e3",
+      "pmid": "12883106",
+      "publicationKey": "doi:10.1097/01.psy.0000077505.67574.e3",
+      "journalKey": "psychosomaticmedicine",
+      "journalLabel": "Psychosomatic medicine"
+    },
+    "pmid-11020090": {
+      "urls": [
+        "https://pubmed.ncbi.nlm.nih.gov/11020090/",
+        "https://doi.org/10.1097/00006842-200009000-00004"
+      ],
+      "doi": "10.1097/00006842-200009000-00004",
+      "pmid": "11020090",
+      "publicationKey": "doi:10.1097/00006842-200009000-00004",
+      "journalKey": "psychosomaticmedicine",
+      "journalLabel": "Psychosomatic medicine"
+    },
+    "pmid-19235193": {
+      "urls": [
+        "https://pubmed.ncbi.nlm.nih.gov/19235193/",
+        "https://doi.org/10.1002/pon.1529"
+      ],
+      "doi": "10.1002/pon.1529",
+      "pmid": "19235193",
+      "publicationKey": "doi:10.1002/pon.1529",
+      "journalKey": "psychooncology",
+      "journalLabel": "Psycho-oncology"
+    },
+    "pmid-25686304": {
+      "urls": [
+        "https://pubmed.ncbi.nlm.nih.gov/25686304/",
+        "https://doi.org/10.1001/jamainternmed.2014.8081",
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC4407465/"
+      ],
+      "doi": "10.1001/jamainternmed.2014.8081",
+      "pmid": "25686304",
+      "publicationKey": "doi:10.1001/jamainternmed.2014.8081",
+      "journalKey": "jamainternalmedicine",
+      "journalLabel": "JAMA internal medicine"
+    },
+    "pmid-23541163": {
+      "urls": [
+        "https://pubmed.ncbi.nlm.nih.gov/23541163/",
+        "https://doi.org/10.4088/jcp.12m08083",
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC3772979/"
+      ],
+      "doi": "10.4088/jcp.12m08083",
+      "pmid": "23541163",
+      "publicationKey": "doi:10.4088/jcp.12m08083",
+      "journalKey": "journalofclinicalpsychiatry",
+      "journalLabel": "The Journal of clinical psychiatry"
+    },
+    "pmid-20876468": {
+      "urls": [
+        "https://pubmed.ncbi.nlm.nih.gov/20876468/",
+        "https://doi.org/10.1212/wnl.0b013e3181f4d80d",
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC3463050/"
+      ],
+      "doi": "10.1212/wnl.0b013e3181f4d80d",
+      "pmid": "20876468",
+      "publicationKey": "doi:10.1212/wnl.0b013e3181f4d80d",
+      "journalKey": "neurology",
+      "journalLabel": "Neurology"
+    },
+    "pmid-22430268": {
+      "urls": [
+        "https://pubmed.ncbi.nlm.nih.gov/22430268/",
+        "https://doi.org/10.1200/jco.2010.34.0331"
+      ],
+      "doi": "10.1200/jco.2010.34.0331",
+      "pmid": "22430268",
+      "publicationKey": "doi:10.1200/jco.2010.34.0331",
+      "journalKey": "journalofclinicaloncology",
+      "journalLabel": "Journal of clinical oncology : official journal of the American Society of Clinical Oncology"
+    },
+    "pmid-21723049": {
+      "urls": [
+        "https://pubmed.ncbi.nlm.nih.gov/21723049/",
+        "https://doi.org/10.1016/j.drugalcdep.2011.05.027",
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC3191261/"
+      ],
+      "doi": "10.1016/j.drugalcdep.2011.05.027",
+      "pmid": "21723049",
+      "publicationKey": "doi:10.1016/j.drugalcdep.2011.05.027",
+      "journalKey": "drugandalcoholdependence",
+      "journalLabel": "Drug and alcohol dependence"
+    },
+    "pmid-29422189": {
+      "urls": [
+        "https://pubmed.ncbi.nlm.nih.gov/29422189/",
+        "https://doi.org/10.1016/s2468-2667(17)30231-1",
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC5813792/"
+      ],
+      "doi": "10.1016/s2468-2667(17)30231-1",
+      "pmid": "29422189",
+      "publicationKey": "doi:10.1016/s2468-2667(17)30231-1",
+      "journalKey": "lancetpublichealth",
+      "journalLabel": "The Lancet. Public health"
+    },
+    "pmid-24647726": {
+      "urls": [
+        "https://pubmed.ncbi.nlm.nih.gov/24647726/",
+        "https://doi.org/10.1001/jamapsychiatry.2013.4546",
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC4489711/"
+      ],
+      "doi": "10.1001/jamapsychiatry.2013.4546",
+      "pmid": "24647726",
+      "publicationKey": "doi:10.1001/jamapsychiatry.2013.4546",
+      "journalKey": "jamapsychiatry",
+      "journalLabel": "JAMA psychiatry"
+    },
+    "pmid-14756612": {
+      "urls": [
+        "https://pubmed.ncbi.nlm.nih.gov/14756612/",
+        "https://doi.org/10.1037/0022-006x.72.1.31"
+      ],
+      "doi": "10.1037/0022-006x.72.1.31",
+      "pmid": "14756612",
+      "publicationKey": "doi:10.1037/0022-006x.72.1.31",
+      "journalKey": "journalofconsultingandclinicalpsychology",
+      "journalLabel": "Journal of consulting and clinical psychology"
+    },
+    "pmid-26586819": {
+      "urls": [
+        "https://pubmed.ncbi.nlm.nih.gov/26586819/",
+        "https://doi.org/10.1523/jneurosci.2542-15.2015",
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC4649004/"
+      ],
+      "doi": "10.1523/jneurosci.2542-15.2015",
+      "pmid": "26586819",
+      "publicationKey": "doi:10.1523/jneurosci.2542-15.2015",
+      "journalKey": "journalofneuroscience",
+      "journalLabel": "The Journal of neuroscience : the official journal of the Society for Neuroscience"
+    },
+    "pmid-29921143": {
+      "urls": [
+        "https://pubmed.ncbi.nlm.nih.gov/29921143/",
+        "https://doi.org/10.1176/appi.ajp.2018.17060611"
+      ],
+      "doi": "10.1176/appi.ajp.2018.17060611",
+      "pmid": "29921143",
+      "publicationKey": "doi:10.1176/appi.ajp.2018.17060611",
+      "journalKey": "americanjournalofpsychiatry",
+      "journalLabel": "The American journal of psychiatry"
+    },
+    "pmid-16847590": {
+      "urls": [
+        "https://pubmed.ncbi.nlm.nih.gov/16847590/",
+        "https://doi.org/10.1007/s10865-006-9063-6"
+      ],
+      "doi": "10.1007/s10865-006-9063-6",
+      "pmid": "16847590",
+      "publicationKey": "doi:10.1007/s10865-006-9063-6",
+      "journalKey": "journalofbehavioralmedicine",
+      "journalLabel": "Journal of behavioral medicine"
+    },
+    "pmid-18356284": {
+      "urls": [
+        "https://pubmed.ncbi.nlm.nih.gov/18356284/",
+        "https://doi.org/10.1177/0898010107311276",
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC4083747/"
+      ],
+      "doi": "10.1177/0898010107311276",
+      "pmid": "18356284",
+      "publicationKey": "doi:10.1177/0898010107311276",
+      "journalKey": "journalofholisticnursing",
+      "journalLabel": "Journal of holistic nursing : official journal of the American Holistic Nurses' Association"
+    },
+    "pmid-25397817": {
+      "urls": [
+        "https://pubmed.ncbi.nlm.nih.gov/25397817/",
+        "https://doi.org/10.1097/mlr.0000000000000200"
+      ],
+      "doi": "10.1097/mlr.0000000000000200",
+      "pmid": "25397817",
+      "publicationKey": "doi:10.1097/mlr.0000000000000200",
+      "journalKey": "medicalcare",
+      "journalLabel": "Medical care"
+    },
+    "pmid-31632617": {
+      "urls": [
+        "https://pubmed.ncbi.nlm.nih.gov/31632617/",
+        "https://doi.org/10.1080/20008198.2019.1665768",
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC6781252/"
+      ],
+      "doi": "10.1080/20008198.2019.1665768",
+      "pmid": "31632617",
+      "publicationKey": "doi:10.1080/20008198.2019.1665768",
+      "journalKey": "europeanjournalofpsychotraumatology",
+      "journalLabel": "European journal of psychotraumatology"
+    },
+    "pmid-39427264": {
+      "urls": [
+        "https://pubmed.ncbi.nlm.nih.gov/39427264/",
+        "https://doi.org/10.1177/15347354241290504",
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC11494668/"
+      ],
+      "doi": "10.1177/15347354241290504",
+      "pmid": "39427264",
+      "publicationKey": "doi:10.1177/15347354241290504",
+      "journalKey": "integrativecancertherapies",
+      "journalLabel": "Integrative cancer therapies"
+    },
+    "pmid-7591024": {
+      "urls": [
+        "https://pubmed.ncbi.nlm.nih.gov/7591024/",
+        "https://doi.org/10.1161/01.hyp.26.5.820"
+      ],
+      "doi": "10.1161/01.hyp.26.5.820",
+      "pmid": "7591024",
+      "publicationKey": "doi:10.1161/01.hyp.26.5.820",
+      "journalKey": "hypertension",
+      "journalLabel": "Hypertension (Dallas, Tex. : 1979)"
+    },
+    "pmid-30279666": {
+      "urls": [
+        "https://pubmed.ncbi.nlm.nih.gov/30279666/",
+        "https://doi.org/10.3389/fpsyt.2018.00418",
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC6153325/",
+        "https://doi.org/10.3389/fpsyt.2021.642245"
+      ],
+      "doi": "10.3389/fpsyt.2018.00418",
+      "pmid": "30279666",
+      "publicationKey": "doi:10.3389/fpsyt.2018.00418",
+      "journalKey": "frontiersinpsychiatry",
+      "journalLabel": "Frontiers in psychiatry"
+    },
+    "pmid-34907015": {
+      "urls": [
+        "https://pubmed.ncbi.nlm.nih.gov/34907015/",
+        "https://doi.org/10.1073/pnas.2110455118",
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC8713789/"
+      ],
+      "doi": "10.1073/pnas.2110455118",
+      "pmid": "34907015",
+      "publicationKey": "doi:10.1073/pnas.2110455118",
+      "journalKey": "proceedingsofthenationalacademyofsciencesoftheunitedstatesofamerica",
+      "journalLabel": "Proceedings of the National Academy of Sciences of the United States of America"
+    },
+    "pmid-29900257": {
+      "urls": [
+        "https://pubmed.ncbi.nlm.nih.gov/29900257/",
+        "https://doi.org/10.1016/j.dib.2018.03.086",
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC5996403/"
+      ],
+      "doi": "10.1016/j.dib.2018.03.086",
+      "pmid": "29900257",
+      "publicationKey": "doi:10.1016/j.dib.2018.03.086",
+      "journalKey": "datainbrief",
+      "journalLabel": "Data in brief"
+    },
+    "pmid-33393484": {
+      "urls": [
+        "https://pubmed.ncbi.nlm.nih.gov/33393484/",
+        "https://doi.org/10.1016/j.ajo.2020.10.012"
+      ],
+      "doi": "10.1016/j.ajo.2020.10.012",
+      "pmid": "33393484",
+      "publicationKey": "doi:10.1016/j.ajo.2020.10.012",
+      "journalKey": "americanjournalofophthalmology",
+      "journalLabel": "American journal of ophthalmology"
+    },
+    "pmid-30256277": {
+      "urls": [
+        "https://pubmed.ncbi.nlm.nih.gov/30256277/",
+        "https://doi.org/10.1097/ijg.0000000000001088"
+      ],
+      "doi": "10.1097/ijg.0000000000001088",
+      "pmid": "30256277",
+      "publicationKey": "doi:10.1097/ijg.0000000000001088",
+      "journalKey": "journalofglaucoma",
+      "journalLabel": "Journal of glaucoma"
+    },
+    "pmid-39413359": {
+      "urls": [
+        "https://pubmed.ncbi.nlm.nih.gov/39413359/",
+        "https://doi.org/10.1177/10998004241289629"
+      ],
+      "doi": "10.1177/10998004241289629",
+      "pmid": "39413359",
+      "publicationKey": "doi:10.1177/10998004241289629",
+      "journalKey": "biologicalresearchfornursing",
+      "journalLabel": "Biological research for nursing"
+    },
+    "pmid-37546047": {
+      "urls": [
+        "https://pubmed.ncbi.nlm.nih.gov/37546047/",
+        "https://doi.org/10.7759/cureus.41377",
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC10400732/"
+      ],
+      "doi": "10.7759/cureus.41377",
+      "pmid": "37546047",
+      "publicationKey": "doi:10.7759/cureus.41377",
+      "journalKey": "cureus",
+      "journalLabel": "Cureus"
+    },
+    "pmid-35818436": {
+      "urls": [
+        "https://pubmed.ncbi.nlm.nih.gov/35818436/",
+        "https://doi.org/10.1016/j.cpnec.2022.100152",
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC9270205/"
+      ],
+      "doi": "10.1016/j.cpnec.2022.100152",
+      "pmid": "35818436",
+      "publicationKey": "doi:10.1016/j.cpnec.2022.100152",
+      "journalKey": "comprehensivepsychoneuroendocrinology",
+      "journalLabel": "Comprehensive psychoneuroendocrinology"
+    },
+    "pmid-40414454": {
+      "urls": [
+        "https://pubmed.ncbi.nlm.nih.gov/40414454/",
+        "https://doi.org/10.1016/j.neulet.2025.138272",
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC12287978/"
+      ],
+      "doi": "10.1016/j.neulet.2025.138272",
+      "pmid": "40414454",
+      "publicationKey": "doi:10.1016/j.neulet.2025.138272",
+      "journalKey": "neuroscienceletters",
+      "journalLabel": "Neuroscience letters"
+    },
+    "pmid-33734493": {
+      "urls": [
+        "https://pubmed.ncbi.nlm.nih.gov/33734493/",
+        "https://doi.org/10.1002/jts.22665"
+      ],
+      "doi": "10.1002/jts.22665",
+      "pmid": "33734493",
+      "publicationKey": "doi:10.1002/jts.22665",
+      "journalKey": "journaloftraumaticstress",
+      "journalLabel": "Journal of traumatic stress"
+    },
+    "pmid-27723444": {
+      "urls": [
+        "https://pubmed.ncbi.nlm.nih.gov/27723444/",
+        "https://doi.org/10.7812/tpp/16-007",
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC5101089/"
+      ],
+      "doi": "10.7812/tpp/16-007",
+      "pmid": "27723444",
+      "publicationKey": "doi:10.7812/tpp/16-007",
+      "journalKey": "permanentejournal",
+      "journalLabel": "The Permanente journal"
+    },
+    "pmid-34729544": {
+      "urls": [
+        "https://pubmed.ncbi.nlm.nih.gov/34729544/",
+        "https://doi.org/10.1016/j.ajpc.2021.100279",
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC8546372/"
+      ],
+      "doi": "10.1016/j.ajpc.2021.100279",
+      "pmid": "34729544",
+      "publicationKey": "doi:10.1016/j.ajpc.2021.100279",
+      "journalKey": "americanjournalofpreventivecardiology",
+      "journalLabel": "American journal of preventive cardiology"
+    },
+    "pmid-38078959": {
+      "urls": [
+        "https://pubmed.ncbi.nlm.nih.gov/38078959/",
+        "https://doi.org/10.1097/nna.0000000000001372"
+      ],
+      "doi": "10.1097/nna.0000000000001372",
+      "pmid": "38078959",
+      "publicationKey": "doi:10.1097/nna.0000000000001372",
+      "journalKey": "journalofnursingadministration",
+      "journalLabel": "The Journal of nursing administration"
+    },
+    "pmid-41642087": {
+      "urls": [
+        "https://pubmed.ncbi.nlm.nih.gov/41642087/",
+        "https://doi.org/10.1080/07399332.2025.2611927"
+      ],
+      "doi": "10.1080/07399332.2025.2611927",
+      "pmid": "41642087",
+      "publicationKey": "doi:10.1080/07399332.2025.2611927",
+      "journalKey": "healthcareforwomeninternational",
+      "journalLabel": "Health care for women international"
+    },
+    "pmid-42640862": {
+      "urls": [
+        "https://pubmed.ncbi.nlm.nih.gov/42640862/",
+        "https://doi.org/10.1177/17455057261479602",
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC13519192/"
+      ],
+      "doi": "10.1177/17455057261479602",
+      "pmid": "42640862",
+      "publicationKey": "doi:10.1177/17455057261479602",
+      "journalKey": "womenshealth",
+      "journalLabel": "Women's health (London, England)"
+    },
+    "pmid-29936408": {
+      "urls": [
+        "https://pubmed.ncbi.nlm.nih.gov/29936408/",
+        "https://doi.org/10.1016/j.bandc.2018.03.011"
+      ],
+      "doi": "10.1016/j.bandc.2018.03.011",
+      "pmid": "29936408",
+      "publicationKey": "doi:10.1016/j.bandc.2018.03.011",
+      "journalKey": "brainandcognition",
+      "journalLabel": "Brain and cognition"
+    },
+    "pmid-36006668": {
+      "urls": [
+        "https://pubmed.ncbi.nlm.nih.gov/36006668/",
+        "https://doi.org/10.2196/31744",
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC9459942/"
+      ],
+      "doi": "10.2196/31744",
+      "pmid": "36006668",
+      "publicationKey": "doi:10.2196/31744",
+      "journalKey": "jmirmhealthanduhealth",
+      "journalLabel": "JMIR mHealth and uHealth"
+    },
+    "pmid-39808431": {
+      "urls": [
+        "https://pubmed.ncbi.nlm.nih.gov/39808431/",
+        "https://doi.org/10.1001/jamanetworkopen.2024.54435",
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC11733700/"
+      ],
+      "doi": "10.1001/jamanetworkopen.2024.54435",
+      "pmid": "39808431",
+      "publicationKey": "doi:10.1001/jamanetworkopen.2024.54435",
+      "journalKey": "jamanetworkopen",
+      "journalLabel": "JAMA network open"
+    },
+    "pmid-42599846": {
+      "urls": [
+        "https://pubmed.ncbi.nlm.nih.gov/42599846/",
+        "https://doi.org/10.1159/000553463"
+      ],
+      "doi": "10.1159/000553463",
+      "pmid": "42599846",
+      "publicationKey": "doi:10.1159/000553463",
+      "journalKey": "psychotherapyandpsychosomatics",
+      "journalLabel": "Psychotherapy and psychosomatics"
     }
   }
 }

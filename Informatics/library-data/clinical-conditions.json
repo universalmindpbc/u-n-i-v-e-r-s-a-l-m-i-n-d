@@ -3759,6 +3759,610 @@
           }
         ]
       }
+    ],
+    "pmid-41450809": [
+      {
+        "id": "anxiety",
+        "evidence": [
+          {
+            "field": "curated primary-source summary",
+            "text": "In 50 periodontal surgery patients, binaural-beat exposure was associated with lower postoperative anxiety and physiological stress measures than no auditory intervention. Mean anxiety scores in the intervention arm fell from 49.0 to 38.7.",
+            "matchedText": "anxiety"
+          }
+        ]
+      }
+    ],
+    "pmid-40795897": [
+      {
+        "id": "anxiety",
+        "evidence": [
+          {
+            "field": "curated primary-source summary",
+            "text": "Preoperative binaural-beat stimulation produced a greater reduction in reported state anxiety than the control condition. The reported difference in relative anxiety change was approximately six percentage points.",
+            "matchedText": "anxiety"
+          }
+        ]
+      }
+    ],
+    "pmid-42307797": [
+      {
+        "id": "stress",
+        "evidence": [
+          {
+            "field": "curated primary-source summary",
+            "text": "A pilot involving 30 people with multiple sclerosis and 30 healthy participants reported lower salivary cortisol after 4 Hz binaural stimulation than sham following an experimental stress challenge, alongside autonomic and EEG changes.",
+            "matchedText": "stress"
+          }
+        ]
+      }
+    ],
+    "pmid-39088370": [
+      {
+        "id": "anxiety",
+        "evidence": [
+          {
+            "field": "curated primary-source summary",
+            "text": "In 96 patients undergoing unsedated upper gastrointestinal endoscopy, binaural-beat music was associated with improved anxiety, procedure tolerance and satisfaction compared with no intervention.",
+            "matchedText": "anxiety"
+          }
+        ]
+      }
+    ],
+    "pmid-36011825": [
+      {
+        "id": "anxiety",
+        "evidence": [
+          {
+            "field": "curated primary-source summary",
+            "text": "A 61-person cataract-surgery trial reported lower operative pain, anxiety and heart rate with binaural-beat audio than with silent headphones.",
+            "matchedText": "anxiety"
+          }
+        ]
+      }
+    ],
+    "pmid-38319068": [
+      {
+        "id": "sleep",
+        "evidence": [
+          {
+            "field": "curated primary-source summary",
+            "text": "Among 64 older adults with poor sleep in long-term care, binaural beats embedded in familiar music improved sleep measures and selected autonomic measures relative to the same music without beats over 14 days.",
+            "matchedText": "sleep"
+          }
+        ]
+      }
+    ],
+    "pmid-40269359": [
+      {
+        "id": "anxiety",
+        "evidence": [
+          {
+            "field": "curated primary-source summary",
+            "text": "In 99 root-canal patients, binaural beats and 432 Hz music each reduced preoperative anxiety relative to white noise. Participants and outcome assessors were described as blinded.",
+            "matchedText": "anxiety"
+          }
+        ]
+      }
+    ],
+    "pmid-35713444": [
+      {
+        "id": "anxiety",
+        "evidence": [
+          {
+            "field": "curated primary-source summary",
+            "text": "Among 112 bronchoscopy patients, the binaural-music arm showed a larger numerical reduction in state anxiety than plain music or no music, with reductions in blood pressure.",
+            "matchedText": "anxiety"
+          }
+        ]
+      }
+    ],
+    "pmid-38982009": [
+      {
+        "id": "anxiety",
+        "evidence": [
+          {
+            "field": "curated primary-source summary",
+            "text": "A 252-child dental trial reported reduced preoperative fear, anxiety and physiological arousal with device-based brainwave entrainment compared with standard behaviour management.",
+            "matchedText": "anxiety"
+          }
+        ]
+      }
+    ],
+    "pmid-40621706": [
+      {
+        "id": "depression",
+        "evidence": [
+          {
+            "field": "curated primary-source summary",
+            "text": "Among 27 stroke rehabilitation completers, the binaural-stimulation group improved daily-living and depression scores more than the music comparison group. Balance measures improved in both groups.",
+            "matchedText": "depression"
+          }
+        ]
+      }
+    ],
+    "pmid-40769315": [
+      {
+        "id": "ptsd",
+        "evidence": [
+          {
+            "field": "curated primary-source summary",
+            "text": "Of 151 women randomised after a traumatic birth, 143 entered the reported intention-to-treat analysis. Two early postpartum EMDR sessions reduced self-reported and clinician-rated PTSD symptom severity compared with two telephone contacts; the reported raw symptom differences were 8.7 and 3.8 points respectively.",
+            "matchedText": "ptsd"
+          }
+        ]
+      }
+    ],
+    "pmid-40716437": [
+      {
+        "id": "ptsd",
+        "evidence": [
+          {
+            "field": "curated primary-source summary",
+            "text": "In 159 people with personality disorders, EMDR reduced PTSD symptoms more than a waitlist. Among participants with PTSD receiving EMDR, 65.5% no longer met the diagnosis after treatment and 73.1% at follow-up.",
+            "matchedText": "ptsd"
+          }
+        ]
+      }
+    ],
+    "pmid-38227442": [
+      {
+        "id": "ptsd",
+        "evidence": [
+          {
+            "field": "curated primary-source summary",
+            "text": "In 24 forensic patients with psychosis and PTSD, blinded assessments favoured EMDR over routine-care waitlist for clinician-rated PTSD symptoms. The estimated difference averaged across follow-ups was 11.4 points, with a 95% confidence interval of 1.3 to 21.4.",
+            "matchedText": "ptsd"
+          }
+        ]
+      },
+      {
+        "id": "psychosis",
+        "evidence": [
+          {
+            "field": "curated primary-source summary",
+            "text": "In 24 forensic patients with psychosis and PTSD, blinded assessments favoured EMDR over routine-care waitlist for clinician-rated PTSD symptoms. The estimated difference averaged across follow-ups was 11.4 points, with a 95% confidence interval of 1.3 to 21.4.",
+            "matchedText": "psychosis"
+          }
+        ]
+      }
+    ],
+    "pmid-39758524": [
+      {
+        "id": "trauma",
+        "evidence": [
+          {
+            "field": "curated primary-source summary",
+            "text": "In 120 women exposed to violence, ten sessions of EMDR produced greater reported improvements in post-traumatic symptoms, anxiety, depression, quality of life and selected cognitive tests than narrative exposure therapy.",
+            "matchedText": "trauma"
+          }
+        ]
+      }
+    ],
+    "pmid-42518933": [
+      {
+        "id": "ptsd",
+        "evidence": [
+          {
+            "field": "curated primary-source summary",
+            "text": "The 40-person EMERALD trial in critical-illness survivors achieved 98% clinician-rated follow-up at 12 months. Exploratory PTSD symptom change favoured EMDR plus usual care by 14.1 points, with a 95% confidence interval of 6.2 to 22.0 points.",
+            "matchedText": "ptsd"
+          }
+        ]
+      }
+    ],
+    "pmid-41655996": [
+      {
+        "id": "eating-disorders",
+        "evidence": [
+          {
+            "field": "curated primary-source summary",
+            "text": "A 38-person pilot found greater reductions in binge-eating symptoms, days and frequency with an adapted ten-session EMDR protocol than waitlist, alongside improvements in selected anxiety and sleep outcomes.",
+            "matchedText": "eating-disorders"
+          }
+        ]
+      }
+    ],
+    "pmid-37882058": [
+      {
+        "id": "trauma",
+        "evidence": [
+          {
+            "field": "curated primary-source summary",
+            "text": "In 60 early-psychosis service users, a 16-session EMDR adaptation met trial feasibility targets and showed promising clinical signals at six months. PTSD symptoms and general-health signals remained evident at 12 months.",
+            "matchedText": "trauma"
+          }
+        ]
+      },
+      {
+        "id": "psychosis",
+        "evidence": [
+          {
+            "field": "curated primary-source summary",
+            "text": "In 60 early-psychosis service users, a 16-session EMDR adaptation met trial feasibility targets and showed promising clinical signals at six months. PTSD symptoms and general-health signals remained evident at 12 months.",
+            "matchedText": "psychosis"
+          }
+        ]
+      }
+    ],
+    "pmid-30711853": [
+      {
+        "id": "depression",
+        "evidence": [
+          {
+            "field": "curated primary-source summary",
+            "text": "In 22 treatment-resistant depression inpatients, both EMDR and trauma-focused CBT improved depressive symptoms; a post-hoc comparison favoured EMDR at the 12-week follow-up.",
+            "matchedText": "depression"
+          }
+        ]
+      }
+    ],
+    "pmid-24880581": [
+      {
+        "id": "trauma",
+        "evidence": [
+          {
+            "field": "curated primary-source summary",
+            "text": "In 20 people with bipolar disorder and trauma histories, EMDR improved depressive, hypomanic and trauma symptoms relative to usual care after treatment, using blinded outcome ratings.",
+            "matchedText": "trauma"
+          }
+        ]
+      },
+      {
+        "id": "bipolar",
+        "evidence": [
+          {
+            "field": "curated primary-source summary",
+            "text": "In 20 people with bipolar disorder and trauma histories, EMDR improved depressive, hypomanic and trauma symptoms relative to usual care after treatment, using blinded outcome ratings.",
+            "matchedText": "bipolar"
+          }
+        ]
+      }
+    ],
+    "pmid-32892758": [
+      {
+        "id": "ptsd",
+        "evidence": [
+          {
+            "field": "curated primary-source summary",
+            "text": "A 155-person international trial found substantial PTSD improvement after either EMDR or imagery rescripting for childhood-related trauma, with a 7.7% dropout rate.",
+            "matchedText": "ptsd"
+          }
+        ]
+      }
+    ],
+    "pmid-22322458": [
+      {
+        "id": "ptsd",
+        "evidence": [
+          {
+            "field": "curated primary-source summary",
+            "text": "In 140 people with PTSD, EMDR and brief eclectic psychotherapy produced similar final improvements; EMDR achieved improvement more rapidly during treatment.",
+            "matchedText": "ptsd"
+          }
+        ]
+      }
+    ],
+    "pmid-39916551": [
+      {
+        "id": "ptsd",
+        "evidence": [
+          {
+            "field": "curated primary-source summary",
+            "text": "Among 114 participants in the IREM childhood-trauma trial, both EMDR and imagery rescripting improved adaptive and maladaptive schema-mode measures, with gains maintained to one year.",
+            "matchedText": "ptsd"
+          }
+        ]
+      }
+    ],
+    "pmid-12883106": [
+      {
+        "id": "stress",
+        "evidence": [
+          {
+            "field": "curated primary-source summary",
+            "text": "An eight-week workplace mindfulness study, with 25 meditators and 16 waitlist participants tested, reported greater left-anterior EEG activation and a stronger influenza-vaccine antibody response in the meditation group.",
+            "matchedText": "stress"
+          }
+        ]
+      }
+    ],
+    "pmid-11020090": [
+      {
+        "id": "stress",
+        "evidence": [
+          {
+            "field": "curated primary-source summary",
+            "text": "Among 90 cancer outpatients completing a seven-week mindfulness programme, mood disturbance and stress symptoms improved relative to waitlist; the intervention group reported reductions of 65% and 31% respectively.",
+            "matchedText": "stress"
+          }
+        ]
+      }
+    ],
+    "pmid-19235193": [
+      {
+        "id": "anxiety",
+        "evidence": [
+          {
+            "field": "curated primary-source summary",
+            "text": "In 84 breast-cancer survivors, six weeks of adapted MBSR improved depression, anxiety, fear of recurrence and selected quality-of-life measures relative to usual care.",
+            "matchedText": "anxiety"
+          }
+        ]
+      },
+      {
+        "id": "depression",
+        "evidence": [
+          {
+            "field": "curated primary-source summary",
+            "text": "In 84 breast-cancer survivors, six weeks of adapted MBSR improved depression, anxiety, fear of recurrence and selected quality-of-life measures relative to usual care.",
+            "matchedText": "depression"
+          }
+        ]
+      }
+    ],
+    "pmid-25686304": [
+      {
+        "id": "sleep",
+        "evidence": [
+          {
+            "field": "curated primary-source summary",
+            "text": "In 49 older adults with sleep disturbance, mindful-awareness training improved Pittsburgh Sleep Quality Index scores by 1.8 points more than structured sleep-hygiene education, with a 95% confidence interval of 0.6 to 2.9.",
+            "matchedText": "sleep"
+          }
+        ]
+      }
+    ],
+    "pmid-23541163": [
+      {
+        "id": "anxiety",
+        "evidence": [
+          {
+            "field": "curated primary-source summary",
+            "text": "In a 93-person generalised-anxiety trial, MBSR improved several secondary anxiety ratings and stress-challenge responses more than stress-management education.",
+            "matchedText": "anxiety"
+          }
+        ]
+      }
+    ],
+    "pmid-20876468": [
+      {
+        "id": "depression",
+        "evidence": [
+          {
+            "field": "curated primary-source summary",
+            "text": "In 150 people with multiple sclerosis, eight weeks of mindfulness training improved nonphysical quality of life, depression and fatigue relative to usual care, with benefits persisting at six months.",
+            "matchedText": "depression"
+          }
+        ]
+      }
+    ],
+    "pmid-21723049": [
+      {
+        "id": "substance-use",
+        "evidence": [
+          {
+            "field": "curated primary-source summary",
+            "text": "In an 88-person smoking-cessation trial, mindfulness training reduced smoking more than the comparison programme; carbon-monoxide-confirmed seven-day abstinence at week 17 was 31% versus 6%.",
+            "matchedText": "substance-use"
+          }
+        ]
+      }
+    ],
+    "pmid-29422189": [
+      {
+        "id": "stress",
+        "evidence": [
+          {
+            "field": "curated primary-source summary",
+            "text": "In the 616-student Mindful Student Study, an eight-week course reduced exam-period psychological distress relative to usual support. The adjusted difference was -0.14 CORE-OM points, with a 95% confidence interval of -0.22 to -0.06.",
+            "matchedText": "stress"
+          }
+        ]
+      }
+    ],
+    "pmid-24647726": [
+      {
+        "id": "substance-use",
+        "evidence": [
+          {
+            "field": "curated primary-source summary",
+            "text": "In 286 adults completing substance-use treatment, mindfulness-based relapse prevention reduced substance-use days and heavy drinking at 12 months relative to standard relapse prevention and usual aftercare.",
+            "matchedText": "substance-use"
+          }
+        ]
+      }
+    ],
+    "pmid-14756612": [
+      {
+        "id": "depression",
+        "evidence": [
+          {
+            "field": "curated primary-source summary",
+            "text": "In a 73-person recurrent-depression trial, MBCT reduced relapse among the 55 participants with three or more prior episodes: 36% relapsed versus 78% with usual care.",
+            "matchedText": "depression"
+          }
+        ]
+      }
+    ],
+    "pmid-29921143": [
+      {
+        "id": "ptsd",
+        "evidence": [
+          {
+            "field": "curated primary-source summary",
+            "text": "A two-site trial in 173 veterans found greater clinician-rated PTSD improvement with an eight-week mantram programme than present-centred therapy; the between-group CAPS difference was approximately ten points. Insomnia also improved.",
+            "matchedText": "ptsd"
+          }
+        ]
+      }
+    ],
+    "pmid-18356284": [
+      {
+        "id": "ptsd",
+        "evidence": [
+          {
+            "field": "curated primary-source summary",
+            "text": "A small mantram study in combat veterans reported promising effects on PTSD symptoms, distress and quality of life, with 29 of 33 enrolled participants completing the study.",
+            "matchedText": "ptsd"
+          }
+        ]
+      }
+    ],
+    "pmid-25397817": [
+      {
+        "id": "ptsd",
+        "evidence": [
+          {
+            "field": "curated primary-source summary",
+            "text": "In a 146-veteran trial, adding mantram repetition to usual care increased mindful attention; changes in mindful attention statistically mediated improvements in PTSD symptoms, depression and wellbeing.",
+            "matchedText": "ptsd"
+          }
+        ]
+      }
+    ],
+    "pmid-31632617": [
+      {
+        "id": "ptsd",
+        "evidence": [
+          {
+            "field": "curated primary-source summary",
+            "text": "In the 173-veteran mantram trial, hyperarousal improved more than with nonspecific psychotherapy, with effect sizes of 0.57 after treatment and 0.52 at follow-up.",
+            "matchedText": "ptsd"
+          }
+        ]
+      }
+    ],
+    "pmid-39427264": [
+      {
+        "id": "stress",
+        "evidence": [
+          {
+            "field": "curated primary-source summary",
+            "text": "A 26-person internet mantram pilot in breast-cancer survivors established delivery feasibility and reported exploratory changes in stress, spiritual wellbeing and selected serum cytokines.",
+            "matchedText": "stress"
+          }
+        ]
+      }
+    ],
+    "pmid-30279666": [
+      {
+        "id": "ptsd",
+        "evidence": [
+          {
+            "field": "curated primary-source summary",
+            "text": "In 22 veterans receiving MBSR, responders showed increased FKBP5 methylation while nonresponders showed decreased methylation, following the corrected direction reported in the 2021 corrigendum.",
+            "matchedText": "ptsd"
+          }
+        ]
+      }
+    ],
+    "pmid-33734493": [
+      {
+        "id": "ptsd",
+        "evidence": [
+          {
+            "field": "curated primary-source summary",
+            "text": "In 40 veterans with PTSD, Transcendental Meditation reduced clinician-rated symptoms more than usual care over 12 weeks. Half of the meditation group no longer met PTSD criteria, compared with 10% of controls.",
+            "matchedText": "ptsd"
+          }
+        ]
+      }
+    ],
+    "pmid-27723444": [
+      {
+        "id": "trauma",
+        "evidence": [
+          {
+            "field": "curated primary-source summary",
+            "text": "In 181 male prisoners, Transcendental Meditation reduced self-reported trauma symptoms and perceived stress relative to usual care after four months.",
+            "matchedText": "trauma"
+          }
+        ]
+      }
+    ],
+    "pmid-38078959": [
+      {
+        "id": "stress",
+        "evidence": [
+          {
+            "field": "curated primary-source summary",
+            "text": "A 104-nurse trial across three hospitals reported improved wellbeing and lower burnout, anxiety and PTSD symptoms after Transcendental Meditation compared with delayed instruction.",
+            "matchedText": "stress"
+          }
+        ]
+      }
+    ],
+    "pmid-41642087": [
+      {
+        "id": "stress",
+        "evidence": [
+          {
+            "field": "curated primary-source summary",
+            "text": "In 199 women living in poverty in Uganda, three months of Transcendental Meditation reduced perceived stress, anger and fatigue and improved self-efficacy and sleep quality relative to waitlist.",
+            "matchedText": "stress"
+          }
+        ]
+      }
+    ],
+    "pmid-42640862": [
+      {
+        "id": "stress",
+        "evidence": [
+          {
+            "field": "curated primary-source summary",
+            "text": "In 114 rural Lebanese women, three months of Transcendental Meditation improved stress, happiness, resilience and self-efficacy relative to the comparison group.",
+            "matchedText": "stress"
+          }
+        ]
+      }
+    ],
+    "pmid-29936408": [
+      {
+        "id": "stress",
+        "evidence": [
+          {
+            "field": "curated primary-source summary",
+            "text": "In 96 school-district staff, Transcendental Meditation improved mood and distress relative to waitlist over four months. An EEG subset of 79 participants also showed changes in the study's Brain Integration Scale.",
+            "matchedText": "stress"
+          }
+        ]
+      }
+    ],
+    "pmid-36006668": [
+      {
+        "id": "stress",
+        "evidence": [
+          {
+            "field": "curated primary-source summary",
+            "text": "In 2,182 NHS staff, a digital mindfulness app produced a small but statistically significant reduction in stress relative to an active digital control over 4.5 months, with additional benefits on several wellbeing measures.",
+            "matchedText": "stress"
+          }
+        ]
+      }
+    ],
+    "pmid-39808431": [
+      {
+        "id": "stress",
+        "evidence": [
+          {
+            "field": "curated primary-source summary",
+            "text": "In 1,458 employees, an eight-week digital meditation programme improved perceived stress relative to waitlist, with an effect size of 0.85 at eight weeks and 0.71 at four months.",
+            "matchedText": "stress"
+          }
+        ]
+      }
+    ],
+    "pmid-42599846": [
+      {
+        "id": "stress",
+        "evidence": [
+          {
+            "field": "curated primary-source summary",
+            "text": "In 1,281 adults with substantial psychological distress, an eight-week hybrid digital mindfulness programme plus usual services reduced distress more than usual services alone, with an effect size of approximately 0.53.",
+            "matchedText": "stress"
+          }
+        ]
+      }
     ]
   },
   "classificationNotes": {
