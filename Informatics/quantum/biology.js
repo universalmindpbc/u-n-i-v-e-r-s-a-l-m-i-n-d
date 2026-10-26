@@ -1,6 +1,6 @@
 import {appendGenomic,appendLocalChecks} from './study-progress.js?v=1';
 import {agentHeaders,ensureAgentSession,followAgent,resetAgent,renderAgentReport,setupAgent} from './agent.js?v=unified-2';
-import './study.js?v=unified-2';
+import './study.js?v=clean-3';
 import './hypothesis.js?v=1';
 import {renderResponse} from './response-view.js?v=6';
 import {interpretations,appendInsightPanel,appendComparison,appendEvidenceSummary,appendNextTest} from './insights.js?v=unified-2';
