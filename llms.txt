@@ -41,7 +41,11 @@ Important context:
 
 ## Universal Informatics
 
-Bioinformatics platform for mental health. Research hypotheses remain distinct from mathematical verification and biological evidence.
+Bioinformatics platform for mental health. Investigating potential relationships between the Fibonacci sequence and OXTR gene expression.
+
+OXTR encodes the oxytocin receptor. [Gene reference](https://www.ncbi.nlm.nih.gov/gene/5021).
+
+Research hypotheses remain distinct from mathematical verification and biological evidence.
 
 ## Initial focus · Computer vision for genomics
 
