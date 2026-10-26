@@ -27,12 +27,13 @@ try {
     assert.equal((await context.request.get(base+icon)).status(),200);
     await page.screenshot({path:path.join(output,`reading-${viewport.width}.png`),fullPage:true});
     await page.goto(base+'/informatics/library.html?collection=all&view=search',{waitUntil:'domcontentloaded'});
-    await page.waitForFunction(()=>document.querySelector('#result-count')?.textContent==='891 papers');
-    assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth));
-    assert.ok(await page.locator('script[src="library.js?v=19"]').count());
+    const library=page.frameLocator('#research-frame');
+    await library.locator('#result-count').filter({hasText:/^891 papers$/}).waitFor();
+    assert.ok(await library.locator('html').evaluate(e=>e.scrollWidth<=e.clientWidth));
+    assert.ok(await library.locator('script[src="library.js?v=19"]').count());
     if(viewport.width===1440) {
       for(const format of ['json','csv']) {
-        const pending=page.waitForEvent('download');await page.locator('#export-'+format).click();
+        const pending=page.waitForEvent('download');await library.locator('#export-'+format).click();
         await (await pending).saveAs(path.join(output,'library-download.'+format));
       }
       const records=JSON.parse(await fs.readFile(path.join(output,'library-download.json'),'utf8')).records;
@@ -44,37 +45,41 @@ try {
       }
       report.exportedRecords=records.length;report.newRecordsMatched=additions.length;
     }
-    await page.locator('#query').fill('32412916');
-    await page.waitForFunction(()=>document.querySelector('#result-count').textContent==='1 paper');
-    await page.locator('[data-record="pmid-32412916"]').first().click();
-    await page.locator('#article[open]').waitFor();
-    assert.match(await page.locator('#article-body').innerText(),/5\.75/);
-    assert.match(await page.locator('#article-body').innerText(),/11\.85/);
+    await library.locator('#query').fill('32412916');
+    await library.locator('#result-count').filter({hasText:/^1 paper$/}).waitFor();
+    await library.locator('[data-record="pmid-32412916"]').first().click();
+    await library.locator('#article[open]').waitFor();
+    assert.match(await library.locator('#article-body').innerText(),/5\.75/);
+    assert.match(await library.locator('#article-body').innerText(),/11\.85/);
     await page.screenshot({path:path.join(output,`sound-paper-${viewport.width}.png`)});
-    await page.keyboard.press('Escape');await page.locator('#reset').click();
-    await page.locator('#category-toggle').click();
-    await page.locator('#category-options input[value="Gene expression"]').check();
-    await page.locator('#query').fill('29900257');
-    await page.waitForFunction(()=>document.querySelector('#result-count').textContent==='1 paper');
-    assert.equal(await page.locator('.search-paper[data-id="pmid-29900257"]').count(),1);
-    await page.locator('#reset').click();await page.locator('#kind-toggle').click();
-    await page.locator('#kind-options input[value="single-blind"]').check();
-    await page.locator('#query').fill('29921143');
-    await page.waitForFunction(()=>document.querySelector('#result-count').textContent==='1 paper');
-    await page.locator('#reset').click();await page.locator('#target-toggle').click();
-    await page.locator('#target-options input[value="DRD2"]').check();
-    await page.locator('#query').fill('39413359');
-    await page.waitForFunction(()=>document.querySelector('#result-count').textContent==='1 paper');
-    await page.locator('[data-record="pmid-39413359"]').first().click();
-    assert.match(await page.locator('#article-body').innerText(),/genotype/i);
+    await page.keyboard.press('Escape');await library.locator('#reset').click();
+    await library.locator('#category-toggle').click();
+    await library.locator('#category-options input[value="Gene expression"]').check();
+    await library.locator('#category-toggle').click();
+    await library.locator('#query').fill('29900257');
+    await library.locator('#result-count').filter({hasText:/^1 paper$/}).waitFor();
+    assert.equal(await library.locator('.search-paper[data-id="pmid-29900257"]').count(),1);
+    await library.locator('#reset').click();await library.locator('#kind-toggle').click();
+    await library.locator('#kind-options input[value="single-blind"]').check();
+    await library.locator('#kind-toggle').click();
+    await library.locator('#query').fill('29921143');
+    await library.locator('#result-count').filter({hasText:/^1 paper$/}).waitFor();
+    await library.locator('#reset').click();await library.locator('#target-toggle').click();
+    await library.locator('#target-options input[value="DRD2"]').check();
+    await library.locator('#target-toggle').click();
+    await library.locator('#query').fill('39413359');
+    await library.locator('#result-count').filter({hasText:/^1 paper$/}).waitFor();
+    await library.locator('[data-record="pmid-39413359"]').first().click();
+    assert.match(await library.locator('#article-body').innerText(),/genotype/i);
     await page.keyboard.press('Escape');
     await page.goto(base+'/informatics/library.html?collection=all&view=search&record=pmid-30279666',{waitUntil:'domcontentloaded'});
-    await page.locator('#article[open]').waitFor();
-    const correction=await page.locator('#article-body').innerText();
+    await library.locator('#article[open]').waitFor();
+    const correction=await library.locator('#article-body').innerText();
     assert.match(correction,/increased FKBP5/);assert.match(correction,/0\.052/);
-    assert.ok(await page.locator('#article-body a[href="https://doi.org/10.3389/fpsyt.2021.642245"]').count());
+    assert.ok(await library.locator('#article-body a[href="https://doi.org/10.3389/fpsyt.2021.642245"]').count());
     assert.deepEqual(errors,[]);
     report.views.push({viewport,overflow:false,pageErrors:errors,search:true,geneExpressionFilter:true,singleBlindFilter:true,genotypeFilter:true,correction:true,favicon:true});
+    await page.evaluate(()=>document.querySelectorAll('video,audio').forEach(media=>media.pause()));
     await context.close();
   }
   const context=await browser.newContext();
@@ -96,6 +101,6 @@ try {
   await fs.writeFile(path.join(output,'verification.json'),JSON.stringify(report,null,2)+'\n');
   console.log(JSON.stringify({passed:true,views:report.views.length,exportedRecords:891,newRecordsMatched:70,liveFileHashes:report.files.length,sourceCommit:report.sourceCommit}));
 } finally {
-  for(const context of browser.contexts())await context.close().catch(()=>{});
+  for(const context of browser.contexts()){for(const page of context.pages())await page.evaluate(()=>document.querySelectorAll('video,audio').forEach(media=>media.pause())).catch(()=>{});await context.close().catch(()=>{});}
   await browser.close().catch(()=>{});await server.close().catch(()=>{});
 }

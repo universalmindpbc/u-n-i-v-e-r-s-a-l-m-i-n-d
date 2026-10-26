@@ -93,6 +93,11 @@
       "bytes": 389
     },
     {
+      "path": "research/informatics/daytab-20261026/release-audit.json",
+      "sha256": "d424b8185536cbeb94c9973264b463d8cc46a2d77f02050279ef9fa86fe31db7",
+      "bytes": 1657
+    },
+    {
       "path": "research/informatics/daytab-20261026/screening-register.json",
       "sha256": "b86ba183ba703d99d8fce095c6820930a67d267421a64d1825b8e5adf34c226a",
       "bytes": 1559516
@@ -108,9 +113,59 @@
       "bytes": 42174
     },
     {
+      "path": "research/informatics/daytab-20261026/staging-qa/complete-export-verification.json",
+      "sha256": "29758c686a2d0cc0bf85c4a6527487c69af58544eda775cf27a33702a097a77e",
+      "bytes": 1125
+    },
+    {
+      "path": "research/informatics/daytab-20261026/staging-qa/library-csv-json-equivalence.json",
+      "sha256": "11f15625942833d767cf109278dabe303d3f1a661e8f04a6bdadeea513b8642b",
+      "bytes": 194
+    },
+    {
+      "path": "research/informatics/daytab-20261026/staging-qa/library-download.csv",
+      "sha256": "69fbd1b97c79d9c28fc5a9aab7f8e9f735a18ead53a2b7db4e5d0fbce63eea3e",
+      "bytes": 2855289
+    },
+    {
+      "path": "research/informatics/daytab-20261026/staging-qa/library-download.json",
+      "sha256": "3f7bea0fd9f77732d1afba9ebdf3893c6a6fc32f20bfd4dbbc60ba36855f8ebd",
+      "bytes": 4145317
+    },
+    {
+      "path": "research/informatics/daytab-20261026/staging-qa/reading-1440.png",
+      "sha256": "c7f3bb91740093a27a880974a5a0d5bffdf4caf113c1de6e9509707ee7cdae39",
+      "bytes": 256949
+    },
+    {
+      "path": "research/informatics/daytab-20261026/staging-qa/reading-390.png",
+      "sha256": "1210b5685321cc563f8e2c5de4abdb1fcf9f7df8bf47373985b76b777be0f508",
+      "bytes": 271401
+    },
+    {
+      "path": "research/informatics/daytab-20261026/staging-qa/sound-paper-1440.png",
+      "sha256": "12e9cf773dc50e87b1720536631c6173c3a42d51a9b02073ed43a6bafb3eb735",
+      "bytes": 252209
+    },
+    {
+      "path": "research/informatics/daytab-20261026/staging-qa/sound-paper-390.png",
+      "sha256": "762716b8d82872d5c4814c4c424fe392829fa4e8f492019c6bafd45f4dbb5aec",
+      "bytes": 119800
+    },
+    {
+      "path": "research/informatics/daytab-20261026/staging-qa/verification.json",
+      "sha256": "510238ec3638fa429f7f2efb01894d6c540c7f2610dd2a680b77fa6e8e281085",
+      "bytes": 15004
+    },
+    {
+      "path": "research/informatics/daytab-20261026/verify-live-exports.py",
+      "sha256": "064c643e8141574edb0acf134c7b1a4bd94d0a3ead91f7c91f4ff67aba60e58d",
+      "bytes": 1571
+    },
+    {
       "path": "research/informatics/daytab-20261026/verify-staging.mjs",
-      "sha256": "1e7fbc7150b6839c8b47e957b65eb4fe135282e2f3086bb2190c0e4da10d7cb4",
-      "bytes": 7444
+      "sha256": "9161a2f5b65b6c9daf52b5770c48654b9a3c631958b8c73455970f4aafe9d4c3",
+      "bytes": 7893
     },
     {
       "path": "research/informatics/daytab-20261026/verify_sources.py",
