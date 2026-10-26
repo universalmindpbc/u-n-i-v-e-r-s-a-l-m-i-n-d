@@ -110,3 +110,11 @@ Gemini 4 Argon is connected through the Universal Informatics Google project. Th
 `../scientific-swarm/` adds provider-neutral LangGraph design review, bounded revisions, mid-study scientific support, final review, saved human interruptions and immutable JSON/CSV snapshots. Each progress snapshot is queued separately for Synapse and DeSci, and remote receipts distinguish delivery from public publication. The new swarm is not yet installed in the AWS worker; the existing bounded Astra service remains active.
 
 The approved Gemini connection tests retain a shared US$1 ceiling. The key is stored in the existing AWS runtime secret. Recurring Gemini execution requires an explicit allowance and durable review/outbox integration. No new paid Aquila or GPU work is enabled. DeSci's archive bytes are verified, but its editor-service fault remains visible until resolved. Notion, Google Docs and Prism report adapters follow this integration.
+
+## Live Gemini review gates — 26 October 2026
+
+The staging AWS worker now runs Astra's question-specific plan through Gemini design review before calculation, then submits the completed evidence and report to Gemini before delivery. One revision at each review point is allowed. Unresolved scientific questions, unsupported scope and budget limits stop with progress saved. LangGraph controls these transitions; a model cannot skip a checkpoint.
+
+The execution remains the bounded OXTR follow-through: saved Aquila/qBraid receipts, public genomic evidence, classical calculations and local CPU CUDA-Q checks. There is no new paid hardware submission. The shared Gemini US$1 test ledger is durable across studies and includes previous requests. The hosted worker remains independent of Ben's Mac.
+
+Fresh Quantum Atlas visits show the question and an empty workflow. Live statuses and Gemini receipts belong to the current task only. The completed OXTR work remains a separate study with preserved graphs, insights, downloads and historical review. Each new report includes the exact evidence packets reviewed and complete JSON/CSV downloads. Broader scientific recipes, general mid-study consultation and external publication adapters remain the next integration work.

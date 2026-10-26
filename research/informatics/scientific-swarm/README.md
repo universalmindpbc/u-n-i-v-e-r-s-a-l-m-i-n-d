@@ -12,7 +12,7 @@ Owner direction: 26 October 2026. GPT-6 Astra performs bioinformatics and resear
 - Nine automated checks covering review routing, bounded revisions, interruptions, restart-safe budgets, saved reviews and delivery reconciliation.
 - The real Gemini review bundle is archived in Synapse folder `syn78381066`. All four downloaded files match their local SHA-256 hashes. The new DeSci delivery remains queued while its document service is reconciled.
 
-The current AWS worker continues its existing OXTR recipe. This new swarm is a separately tested prototype; it is not yet installed in that worker or exposed through public execution APIs. A live model connection is distinct from automatic cloud orchestration.
+The staging AWS worker now connects its fixed OXTR recipe to Gemini design and final review through `astra-service/review_flow.py`. The design review runs before fresh calculations; the final review runs before report delivery. The separate, general swarm prototype still provides the future mid-study support and publication adapters. Public API/MCP/A2A execution is a later activation.
 
 ## Execution contracts
 
@@ -28,7 +28,7 @@ The connection tests have a single persistent US$1 reservation ledger. It includ
 
 The Gemini key is stored as `gemini` in the existing `informatics-astra-staging/runtime` AWS Secrets Manager secret. Existing `openai` and `worker` entries are preserved. No credentials belong in source, report artifacts or browser pages. Persistent storage of the key does not authorise unlimited API spend.
 
-Cloud activation requires an explicit recurring Gemini allowance and durable synchronisation of the review ledger, outbox and LangGraph checkpoints before a model request or external upload. The existing US$25 monthly hosting ceiling remains separate from model and quantum charges.
+The staging worker uses the existing US$1 test allowance, shared across all studies and persisted in encrypted S3. Every request reserves its maximum first; known usage settles against the provider receipt, while uncertain requests retain their full reservation. Reaching the allowance pauses work. Recurring Gemini funding still needs a new owner allowance; the existing US$25 monthly hosting ceiling covers hosting only. The general publication outbox remains separate from this fixed worker integration.
 
 ## Publishing as research progresses
 
@@ -38,13 +38,13 @@ Cloud activation requires an explicit recurring Gemini allowance and durable syn
 
 The full website archive already has verified Synapse and DeSci/IPFS records. DeSci's document editor service still reports a missing document; this prevents claiming full editor/publishing health. Keep new DeSci snapshots queued until the target is reconciled. A receipt or successful HTTP response alone does not prove public availability.
 
-## Next cloud integration
+## Staging integration and remaining scope
 
-1. Connect the existing bounded Astra tool recipe to the scientist adapter; expose only approved scientific operations.
-2. Include the swarm modules in the existing AWS build and persist review/outbox state in the encrypted state bucket.
-3. Preserve the existing shared task limits and zero new Aquila/paid-GPU allowance. Add the separate Gemini model allowance before enabling recurring reviews.
-4. Exercise a real staging website question through Astra, Gemini design review, tool execution and final review. Verify report rendering, resume, JSON/CSV and both remote delivery states.
-5. Promote only after Ben proofs that staging journey. Public API/MCP/A2A execution follows the same shared task and budget gates.
+`astra-service/runner.py` is the live execution graph. Astra owns the question-specific plan and evidence-grounded report. Gemini can approve, request one design/report revision, or require human input. LangGraph enforces order and checkpoints. Neither provider can raise a budget, enable paid jobs or execute generated code. Unsupported research questions stop before the OXTR recipe runs.
+
+Every delivered report includes the plan, provider receipts, both review records, reviewed evidence packets and hashes, actual calculations, source provenance and complete JSON/CSV exports. The page starts with a clean question and workflow. A current investigation never inherits the saved OXTR study's counts or review badges; the historical study retains its own findings and lightboxes below.
+
+Remaining extensions: mid-study Gemini consultation in new scientific recipes; the general Synapse/DeSci progress outbox inside the worker; optional document destinations; and public API/MCP/A2A execution. New quantum hardware, GPU spend and recurring Gemini funding remain separately controlled.
 
 Optional Notion, Google Docs and Prism reports remain destination adapters on the roadmap. The same evidence record feeds every format. Human review remains part of external collaboration and the future Drug Discovery Network and Open Source Genomic Insights.
 
