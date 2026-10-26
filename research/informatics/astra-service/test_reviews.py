@@ -38,6 +38,16 @@ class Tests(unittest.TestCase):
  def test_unsupported_question_never_uses_oxtr_recipe(self):
   events,result,published=self.execute([],False)
   self.assertEqual(events,['plan']);self.assertFalse(published)
+ def test_narrative_reservation_omits_arrays_but_retains_metrics(self):
+  evidence={'cohort':{'sources':['fixture']},'analysis':{'predictions':[{'value':'x'*100000}],'difference_average_precision':0.002},'prior_quantum':{'rows':[{'value':'y'*100000}],'sha256':'recorded-sha'},'prepared_quantum':{'cases':[{'sample':'one','value':'z'*100000}],'scope':'Local program checks'},'research_memory':{'memories':[{'id':'source','source_sha256':'memory-sha','excerpt':'e'*100000}]}}
+  request=runner.brief_input(evidence,'Does Fibonacci improve prediction?')
+  data=json.loads(request['prompt'])['calculated_evidence']
+  self.assertEqual(data['analysis']['difference_average_precision'],0.002)
+  self.assertEqual(data['prior_quantum']['sha256'],'recorded-sha')
+  self.assertEqual(data['prepared_quantum']['local_CUDA_Q_programs_completed'],1)
+  self.assertEqual(data['research_memory_sources'][0]['source_sha256'],'memory-sha')
+  self.assertLess(len(json.dumps(request).encode())+2524,16000)
+  self.assertEqual(len(evidence['analysis']['predictions'][0]['value']),100000)
  def test_cost_settlement_keeps_unknown_requests(self):
   with tempfile.TemporaryDirectory() as d:
    path=Path(d)/'cost.sqlite';ledger=ReviewLedger(path,1000)

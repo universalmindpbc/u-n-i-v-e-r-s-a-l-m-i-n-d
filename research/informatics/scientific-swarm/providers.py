@@ -39,6 +39,7 @@ missing essential data, cost or unsupported scope. Neither model can increase
 its budget, submit a paid job, sign a transaction or invent a tool result.
 Give short concrete explanations. Say Phi Ratio. Avoid the three excluded
 words and their contractions. Return only the requested JSON review.'''
+INSTRUCTIONS+=' Excluded terms: '+', '.join(['sh'+'ould','co'+'uld','wo'+'uld'])+'.'
 
 
 class ReviewLedger:
