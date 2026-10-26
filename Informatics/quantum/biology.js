@@ -1,7 +1,7 @@
 import './scientific-review.js?v=live-3';
 import {appendGenomic,appendLocalChecks} from './study-progress.js?v=2';
 import {agentHeaders,ensureAgentSession,followAgent,resetAgent,renderAgentReport,setupAgent} from './agent.js?v=reviewed-3';
-import './study.js?v=live-5';
+import './study.js?v=live-6';
 import './hypothesis.js?v=1';
 import {renderResponse} from './response-view.js?v=6';
 import {interpretations,appendInsightPanel,appendComparison,appendEvidenceSummary,appendNextTest} from './insights.js?v=live-3';

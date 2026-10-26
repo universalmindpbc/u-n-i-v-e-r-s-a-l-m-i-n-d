@@ -25,16 +25,17 @@ async function init(){try{const r=await fetch('data/oxtr-qrc-study.json');if(!r.
 window.addEventListener('pagehide',()=>clearInterval(timer));init();
 
 function renderAgentState(){
- const t=agentTask,done=t.status==='complete',seen=new Set((t.events||[]).map(e=>e.stage));
+ const t=agentTask,done=t.status==='complete',stopped=['needs_attention','failed','cancelled'].includes(t.status),seen=new Set((t.events||[]).map(e=>e.stage));
  const stages={question:['Question received','complete'],model:['',''],simulation:['',''],hardware:['',''],evidence:['',''],result:['','']};
  if(seen.has('model'))stages.model=['Selecting the method','running'];
  if((t.reviews||[]).some(r=>r.phase==='design'&&r.decision==='approve'))stages.model=['Design reviewed','complete'];
- if(seen.has('classical'))stages.evidence=[done?'Classical analysis complete':'Comparing DNA evidence',done?'complete':'running'];
- if(seen.has('simulation'))stages.simulation=[seen.has('result')||seen.has('final_review')?'Local CUDA-Q checks complete':'Running local CUDA-Q checks',seen.has('result')||seen.has('final_review')?'complete':'running'];
+ if(seen.has('classical'))stages.evidence=[seen.has('simulation')||done?'Classical analysis complete':'Comparing DNA evidence',seen.has('simulation')||done?'complete':'running'];
+ if(seen.has('simulation')){const checked=done||seen.has('final_review')||(t.stage==='result'&&!stopped);stages.simulation=[checked?'Local CUDA-Q checks complete':'Running local CUDA-Q checks',checked?'complete':'running'];}
  if(t.report?.prior_quantum)stages.hardware=['Recorded measurements reused','recorded'];
  if(seen.has('result'))stages.result=['Astra is interpreting the findings','running'];
  if(t.stage==='final_review')stages.result=['Gemini is reviewing the findings','running'];
  if(done)stages.result=['Reviewed insights ready','complete'];
+ if(stopped){for(const id of Object.keys(stages))if(stages[id][1]==='running')stages[id]=['Progress saved','paused'];stages.result=[t.status==='cancelled'?'Investigation cancelled':'Progress saved · attention needed','paused'];}
  for(const [id,[label,status]]of Object.entries(stages)){const n=document.querySelector(`[data-stage="${id}"]`);n.querySelector('.stage-state').textContent=label;n.dataset.state=status;}
  $('#workflow-title').textContent='Follow your investigation.';
  $('#workflow-state').textContent=done?'Your insights are ready':t.status==='queued'?'Queued':t.status==='needs_attention'?'Your input is needed':t.status==='cancelled'?'Cancelled':t.stage==='design_review'?'Gemini · design review':t.stage==='final_review'?'Gemini · findings review':'Astra is working';
