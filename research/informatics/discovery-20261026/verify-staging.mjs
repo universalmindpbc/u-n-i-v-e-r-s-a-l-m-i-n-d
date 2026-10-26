@@ -60,7 +60,7 @@ try{
  report.sitemapMatches=true;await context.close();
  const js=await browser.newContext({viewport:{width:1470,height:1000}});
  await js.addInitScript(()=>{globalThis.__fullscreenAttempts=0;Element.prototype.requestFullscreen=function(){globalThis.__fullscreenAttempts++;return Promise.reject(new Error('Native fullscreen disabled during QA'));};});
- const landing=await js.newPage();await landing.goto(base,{waitUntil:'domcontentloaded'});await landing.getByRole('link',{name:'Read the research and evidence ↗',exact:true}).click();assert.match(landing.url(),/\/read\/$/);assert(await landing.locator('h1').isVisible());report.landingReadingLinkWorks=true;
+ const landing=await js.newPage();await landing.goto(base,{waitUntil:'domcontentloaded'});await landing.getByRole('link',{name:'Wiki For AI / LLMs',exact:true}).click();assert.match(landing.url(),/\/read\/$/);assert(await landing.locator('h1').isVisible());report.landingReadingLinkWorks=true;
  await landing.evaluate(()=>document.querySelectorAll('video,audio').forEach(x=>x.pause()));await js.close();
  assert.deepEqual(report.errors,[]);report.passed=true;
 }catch(e){report.failure=e.stack;throw e;}finally{

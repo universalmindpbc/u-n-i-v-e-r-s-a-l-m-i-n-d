@@ -45,4 +45,4 @@ footer nav small::before{content:"";display:inline-block;width:5px;height:5px;ma
 body:has(#initial-focus[open]) #about{visibility:hidden}body:has(#initial-focus[open]) #about::backdrop{background:transparent;backdrop-filter:none}
 @media(max-width:640px){.about-initial-focus{padding:16px}#initial-focus{padding:48px 24px 26px}#initial-focus h2{font-size:23px}}
 
-.research-reading-link{font-size:13px;margin:16px 0 0}.research-reading-link a{color:inherit;text-underline-offset:4px;opacity:.85}.research-reading-link a:focus-visible{outline:2px solid currentColor;outline-offset:5px}
+.ai-wiki-link{position:absolute;left:max(14px,env(safe-area-inset-left));bottom:max(10px,env(safe-area-inset-bottom));z-index:1;padding:6px 2px;color:#aaa;font:10px/1.4 system-ui,sans-serif;letter-spacing:.03em;text-decoration:none;opacity:.55}.ai-wiki-link:hover,.ai-wiki-link:focus-visible{opacity:1}.ai-wiki-link:focus-visible{outline:1px solid currentColor;outline-offset:3px}
