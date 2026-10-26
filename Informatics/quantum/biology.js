@@ -1,7 +1,7 @@
-import './scientific-review.js?v=1';
+import './scientific-review.js?v=live-2';
 import {appendGenomic,appendLocalChecks} from './study-progress.js?v=1';
-import {agentHeaders,ensureAgentSession,followAgent,resetAgent,renderAgentReport,setupAgent} from './agent.js?v=unified-2';
-import './study.js?v=clean-3';
+import {agentHeaders,ensureAgentSession,followAgent,resetAgent,renderAgentReport,setupAgent} from './agent.js?v=reviewed-3';
+import './study.js?v=live-4';
 import './hypothesis.js?v=1';
 import {renderResponse} from './response-view.js?v=6';
 import {interpretations,appendInsightPanel,appendComparison,appendEvidenceSummary,appendNextTest} from './insights.js?v=unified-2';
@@ -27,11 +27,11 @@ function report(slot,data){const display=data.study_id==='oxtr-qrc-01'?(interpre
  if(data.study_id==='oxtr-qrc-01')appendEvidenceSummary(slot,node,data.kind);
  renderResponse(slot,data);const method=details('Methods, execution checks and cost',[...(Array.isArray(data.details)?data.details:[]),`${data.receipt.backend||data.receipt.execution} · ${new Date(data.receipt.completed_at).toLocaleString()}`,`Run ${data.receipt.run_id} · model ${data.receipt.model_version}`]);
  if(Array.isArray(data.metrics)){const dl=node('dl',undefined,'result-stats');for(const m of data.metrics){if(typeof m.label==='string'&&['string','number'].includes(typeof m.value)){const item=node('div');item.append(node('dt',m.label),node('dd',String(m.value)));dl.append(item);}}method.append(dl);}slot.append(method);const save=node('button','Download result ↓','text-button');save.onclick=()=>download(data,'quantum-atlas-'+data.kind+'-result.json');slot.append(save);if(data.study_id==='oxtr-qrc-01'){const links=node('div',undefined,'completed-study-actions');for(const format of ['json','csv']){const a=node('a','Complete study · '+format.toUpperCase()+' ↓');a.href='experiments/oxtr-qrc-01-qualification/r1/experiment.'+format;a.download='';links.append(a);}slot.append(links);}}
-function refreshReports(){const context=reportContext(active,recordedState,busy),{study,reports,matched,shared}=context,
+function refreshReports(){const context=active&&!active.agent?reportContext(active,recordedState,busy):{study:null,reports:{},matched:false,shared:false},{study,reports,matched,shared}=context,
  c=verifiedReport(reports.classical,study,'classical'),s=verifiedReport(reports.simulation,study,'simulation'),q=verifiedReport(reports.quantum,study,'quantum');
  const unavailable=active?.status==='unavailable',before=!active;
- const message=busy?'Understanding your question…':before?'Recorded results are loading. Refresh if they remain unavailable.':unavailable?active.message:active.route==='dna_assembly'?'No matched quantum run is recorded for these fragments.':'Awaiting a recorded result for this study.';
- for(const [kind,title,data]of[['classical','Classical calculation',c],['simulation','CUDA-Q simulation',s],['quantum','Quantum measurement',q]]){const slot=$('#'+kind+'-report');if(data)report(slot,data);else{const stage=recordedState?.stages?.[kind==='quantum'?'hardware':kind==='simulation'?'simulation':'classical'];const running=matched&&['running','queued','failed'].includes(stage?.state),status=busy?'Processing question':running?{running:'Processing',queued:'Queued',failed:'Calculation interrupted'}[stage.state]:before?'Loading recorded results':unavailable?'Unavailable':'Not started';empty(slot,title,running?(stage.message||'The recorded calculation status will update here.'):message,status);}}
+ const message=busy?'Understanding your question…':before?'Ask a scientific question to begin your investigation.':unavailable?active.message:active.route==='dna_assembly'?'No matched quantum run is recorded for these fragments.':'Awaiting a recorded result for this study.';
+ for(const [kind,title,data]of[['classical','Classical calculation',c],['simulation','CUDA-Q simulation',s],['quantum','Quantum measurement',q]]){const slot=$('#'+kind+'-report');if(data)report(slot,data);else{const stage=recordedState?.stages?.[kind==='quantum'?'hardware':kind==='simulation'?'simulation':'classical'];const running=matched&&['running','queued','failed'].includes(stage?.state),status=busy?'Processing question':running?{running:'Processing',queued:'Queued',failed:'Calculation interrupted'}[stage.state]:before?'Your investigation':unavailable?'Unavailable':'Not started';empty(slot,title,running?(stage.message||'The recorded calculation status will update here.'):message,status);}}
  const comparison=$('#comparison-report');if(reportPair(c,q)&&reports.comparison?.state==='complete'&&reports.comparison.classical_run_id===c.receipt.run_id&&reports.comparison.quantum_run_id===q.receipt.run_id&&typeof reports.comparison.finding==='string'){comparison.replaceChildren(node('span','Comparison ready','result-status'),node('h3','What our OXTR experiment tells us'),node('p',reports.comparison.finding));comparison.dataset.state='complete';}else empty(comparison,'Classical and quantum, together','The comparison appears after both matched results have been checked.');
  $('#classical-step-status').textContent=c&&s?'Ready to view':c||s?'Result available':active?'Awaiting results':'';$('#quantum-step-status').textContent=q?'Ready to view':active?'Awaiting results':'';
  $('#classical-step-timing').textContent=c||s?'Recorded results available':timing.classical;$('#quantum-step-timing').textContent=q?'Recorded results available':timing.quantum;
@@ -41,12 +41,12 @@ function refreshReports(){const context=reportContext(active,recordedState,busy)
  document.querySelectorAll('.result-question').forEach(n=>n.textContent=shared?'Study 01 question: '+studyQuestion:active?'Your question: '+active.question:'');
  const saved=reportContext(null,recordedState);$('#completed-study').hidden=!(verifiedReport(saved.reports.simulation,saved.study,'simulation')&&verifiedReport(saved.reports.quantum,saved.study,'quantum'));
  document.querySelectorAll('[data-recorded-result]').forEach(b=>b.disabled=busy);
- if(active?.agent){$('#classical-step-status').textContent=active.agent.status==='complete'?'Insights ready':'Astra analysis';$('#classical-step-timing').textContent=active.agent.status==='complete'?'Open your findings':'Progress saved automatically';$('#quantum-step-status').textContent='Saved measurements';$('#quantum-step-timing').textContent='16 saved Aquila runs';}
+ if(active?.agent){const done=active.agent.status==='complete';$('#classical-step-status').textContent=done?'Insights ready':'In progress';$('#classical-step-timing').textContent=done?'Open your findings':'Your current investigation';$('#quantum-step-status').textContent='';$('#quantum-step-timing').textContent='Within the study’s available budget';}else if(!active){$('#classical-step-timing').textContent='Your calculations';$('#quantum-step-timing').textContent='Your measurements';}
 }
 const resultsDialog=$('#results-dialog'),resultsContent=$('#results-dialog-content');let resultTrigger=null,resultScroll=0,priorOverflow='';
 function openResults(kind,shared=false,trigger=document.activeElement,reportTask=null){
- if(!shared&&active?.agent){if(kind==='classical')kind='genomic';shared=true;}
- const context=reportContext(shared?null:active,recordedState,busy),{study,reports}=context;
+ if(reportTask||(!shared&&active?.agent)){openCurrentResults(reportTask||active.agent,kind,trigger);return;}
+ const context=shared||active?reportContext(shared?null:active,recordedState,busy):{study:null,reports:{}},{study,reports}=context;
  const c=verifiedReport(reports.classical,study,'classical'),s=verifiedReport(reports.simulation,study,'simulation'),q=verifiedReport(reports.quantum,study,'quantum');
  if(study?.id==='oxtr-qrc-01'&&kind==='classical')kind='genomic';
  const first=!resultsDialog.open;if(first){resultTrigger=trigger;resultScroll=window.scrollY;priorOverflow=document.documentElement.style.overflow;}
@@ -62,6 +62,17 @@ function openResults(kind,shared=false,trigger=document.activeElement,reportTask
  if(kind==='classical'&&c&&s){const check=details('Classical calculation record',[c.finding,`Run ${c.receipt.run_id} · ${c.receipt.backend}`]);resultsContent.append(check);}
  document.documentElement.style.overflow='hidden';if(first)resultsDialog.showModal();resultsContent.scrollTop=0;$('#close-results').focus({preventScroll:true});
 }
+function openCurrentResults(task,kind,trigger){
+ if(!resultsDialog.open){resultTrigger=trigger;resultScroll=window.scrollY;priorOverflow=document.documentElement.style.overflow;}
+ $('#results-dialog-title').textContent=kind==='quantum'?'Your quantum measurements':'Your investigation · insights';
+ resultsDialog.querySelector('.eyebrow').textContent='YOUR INVESTIGATION';resultsContent.replaceChildren(node('p',task.question,'reader-question'));
+ const slot=node('div',undefined,'result-slot');resultsContent.append(slot);
+ if(kind==='quantum'){
+  slot.append(node('h3','This investigation uses the recorded Aquila measurements.'),node('p','New hardware runs remain paused at the current funding boundary. The agent can analyse existing measurements and run the available local simulations.'));
+  const b=node('button','Open the recorded OXTR Aquila measurements ↗','text-button');b.onclick=()=>openResults('quantum',true,resultTrigger);slot.append(b);
+ }else renderAgentReport(slot,task);
+ document.documentElement.style.overflow='hidden';if(!resultsDialog.open)resultsDialog.showModal();resultsContent.scrollTop=0;$('#close-results').focus({preventScroll:true});
+}
 $('#close-results').onclick=()=>resultsDialog.close();
 resultsDialog.addEventListener('close',()=>{document.documentElement.style.overflow=priorOverflow;window.scrollTo({top:resultScroll,behavior:'instant'});resultTrigger?.focus({preventScroll:true});resultsContent.replaceChildren();});
 resultsDialog.addEventListener('click',e=>{if(e.target!==resultsDialog)return;const r=resultsDialog.getBoundingClientRect();if(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom)resultsDialog.close();});
@@ -70,9 +81,9 @@ appendInsightPanel($('#study-initial-insights'),node);
 document.addEventListener('click',e=>{const b=e.target.closest('[data-open-next-test]');if(b&&!busy)openResults('next',true,b);});
 window.addEventListener('quantum:state',e=>{recordedState=e.detail;refreshReports();});
 function studyMessage(data){const {study,reports}=reportContext(data,recordedState);return data.status==='study_linked'&&study?.id==='oxtr-qrc-01'&&verifiedReport(reports.simulation,study,'simulation')&&verifiedReport(reports.quantum,study,'quantum')?'Your question matches our OXTR study. The measurements and first genomic analysis are complete. Open the current findings and the next quantum decision.':data.message;}
-function activate(data){active=data;if(data.agent)followAgent(data.agent,t=>{if(active?.agent?.id===t.id){active.agent=t;$('#study-request-status').textContent=t.message;try{localStorage.setItem('quantum-atlas-question-v3',JSON.stringify(active));}catch{}$('#classical-step-status').textContent=t.status==='complete'?'Insights ready':'Astra is working';}});$('#active-question').textContent=data.question;$('#study-request-status').textContent=studyMessage(data);$('#study-actions').hidden=false;window.dispatchEvent(new CustomEvent('quantum:question',{detail:{state:'complete',label:'Question received',studyId:data.study?.id||null}}));refreshReports();}
+function activate(data){active=data;if(data.agent)followAgent(data.agent,t=>{if(active?.agent?.id===t.id){active.agent=t;$('#study-request-status').textContent=t.message;try{localStorage.setItem('quantum-atlas-question-v3',JSON.stringify(active));}catch{}refreshReports();}});$('#active-question').textContent=data.question;$('#study-request-status').textContent=studyMessage(data);$('#study-actions').hidden=false;window.dispatchEvent(new CustomEvent('quantum:question',{detail:{state:'complete',label:'Question received',studyId:data.study?.id||null}}));refreshReports();}
 $('#question-form').onsubmit=async e=>{e.preventDefault();if(busy)return;const question=$('#question').value.trim();if(question.length<5)return;if(question!==pendingText){pendingKey=crypto.randomUUID();pendingText=question;}resetAgent();busy=true;$('#ask-button').disabled=true;$('#question').readOnly=true;$('#question-status').textContent='';$('#question-status').className='';$('#saved-status').textContent='';active=null;refreshReports();$('#active-question').textContent=question;$('#study-request-status').textContent='Understanding your question…';$('#study-actions').hidden=true;step('study');window.dispatchEvent(new CustomEvent('quantum:question',{detail:{state:'running',label:'Understanding question',studyId:null}}));try{await ensureAgentSession();const r=await fetch(endpoint+'/quantum/question',{method:'POST',headers:{'Content-Type':'application/json',...agentHeaders()},body:JSON.stringify({question,requestKey:pendingKey}),signal:AbortSignal.timeout(110000)}),data=await r.json();if(!r.ok)throw Error(data.error||'The request failed. Please retry.');if(data.version!=='quantum-question-v3'||!data.id||!data.reports)throw Error('The response was incomplete. Please retry.');activate(data);updateCapacity(data.allowance);$('#question').value='';}catch(error){step('ask');$('#question-status').className='error';$('#question-status').textContent=error.name==='TimeoutError'?'The request timed out. Your question is preserved.':error.message;$('#study-request-status').textContent='Question not processed. Retry from Ask a question.';window.dispatchEvent(new CustomEvent('quantum:question',{detail:{state:'failed',label:'Request failed',studyId:null}}));}finally{busy=false;$('#ask-button').disabled=false;$('#question').readOnly=false;refreshReports();}};
-$('#new-question').onclick=()=>{if(busy)return;resetAgent();active=null;$('#active-question').textContent='Explore our OXTR study';$('#study-request-status').textContent='Ask a question to begin.';$('#study-actions').hidden=true;$('#question-status').textContent='';$('#question-status').className='';$('#saved-status').textContent='';refreshReports();window.dispatchEvent(new CustomEvent('quantum:question',{detail:{state:'ready',label:'Awaiting question',studyId:null}}));step('ask');$('#question').focus();};
+$('#new-question').onclick=()=>{if(busy)return;resetAgent();active=null;$('#active-question').textContent='Your investigation';$('#study-request-status').textContent='Ask a question to begin.';$('#study-actions').hidden=true;$('#question-status').textContent='';$('#question-status').className='';$('#saved-status').textContent='';refreshReports();window.dispatchEvent(new CustomEvent('quantum:question',{detail:{state:'ready',label:'Awaiting question',studyId:null}}));step('ask');$('#question').focus();};
 const savedKey='quantum-atlas-question-v3';
 function retained(){try{$('#saved-study').hidden=!localStorage.getItem(savedKey);}catch{$('#saved-study').hidden=true;}}
 $('#keep-session').onclick=()=>{if(!active)return;try{localStorage.setItem(savedKey,JSON.stringify(active));retained();$('#saved-status').textContent='Study saved on this device. Return to Quantum Atlas to reopen it.';}catch{$('#saved-status').textContent='Device storage is unavailable. Download your study record to keep a copy.';}};
@@ -86,7 +97,7 @@ const natureDialog=$('#nature-dialog');$('#open-nature').onclick=()=>{natureDial
 refreshReports();try{if(parent.location.hash==='#study')step('study');}catch{}
 
 function openAgentResults(task){
- if(!task)return;openResults('genomic',true,document.activeElement,task);
+ if(!task)return;openCurrentResults(task,'classical',document.activeElement);
 }
 
 setupAgent(openAgentResults);
