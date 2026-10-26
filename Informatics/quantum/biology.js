@@ -1,10 +1,10 @@
 import './scientific-review.js?v=live-3';
 import {appendGenomic,appendLocalChecks} from './study-progress.js?v=3';
 import {agentHeaders,ensureAgentSession,followAgent,resetAgent,renderAgentReport,setupAgent} from './agent.js?v=reviewed-4';
-import './study.js?v=live-6';
+import './study.js?v=live-7';
 import './hypothesis.js?v=1';
 import {renderResponse} from './response-view.js?v=6';
-import {interpretations,appendInsightPanel,appendComparison,appendEvidenceSummary,appendNextTest} from './insights.js?v=live-3';
+import {interpretations,appendInsightPanel,appendComparison,appendEvidenceSummary,appendNextTest} from './insights.js?v=live-4';
 import {verifiedReport,reportPair,reportContext,timing} from './result-contract.js?v=2';
 const $=s=>document.querySelector(s),node=(tag,text,cls)=>{const n=document.createElement(tag);if(text!==undefined)n.textContent=text;if(cls)n.className=cls;return n;};
 document.body.classList.toggle('embedded',new URLSearchParams(location.search).get('embedded')==='1');
