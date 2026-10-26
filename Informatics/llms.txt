@@ -2,6 +2,12 @@
 
 Bioinformatics platform for mental health. Research hypotheses remain distinct from mathematical verification and biological evidence.
 
+## Initial focus · Computer vision for genomics
+
+Inspired by research into how geometric architectures and Fibonacci-ordered dynamics can protect quantum information, we are investigating whether geometry derived from Fibonacci Pisano periods can improve the computational efficiency of hyperspectral image analysis for genomics.
+
+Our proposed approach explores equilateral triangular meshes and tetrahedral models, comparing computational cost, processing speed and accuracy against established methods.
+
 ## Read without a connector
 
 - [Research and evidence](https://universalmind.tv/informatics/read/): Plain HTML overview.
