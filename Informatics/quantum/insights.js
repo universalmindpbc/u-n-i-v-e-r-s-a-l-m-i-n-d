@@ -14,7 +14,7 @@ export const interpretations={
  {title:'What is the next biological test?',text:'Astra has completed the first classical comparison against known CTCF-binding regions. Next, test whether the quantum readings add predictive value. Keep ordinary and shuffled controls: the shuffled version also produced a large atom response in this first batch.'}]}
 };
 
-export {appendCurrentSummary as appendInsightPanel,appendWholeComparison as appendComparison,appendNextDecision as appendNextTest} from './study-progress.js?v=3';
+export {appendCurrentSummary as appendInsightPanel,appendWholeComparison as appendComparison,appendNextDecision as appendNextTest} from './study-progress.js?v=4';
 export function appendEvidenceSummary(parent,node,kind){
  const note=node('p',kind==='quantum'?'Phase 1: these are the original Aquila measurements. No additional hardware run has been submitted. Open Genomic analysis for Astra’s completed biological comparison.':'Phase 1: these are the original GPU simulation results. The further local CPU simulations appear below; Genomic analysis contains the binding-prediction test.','study-phase-note');parent.append(note);
 }
