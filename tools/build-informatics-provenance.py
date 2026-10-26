@@ -60,7 +60,7 @@ if desci.get('combinedManifestRecovered'):
     body+='<p>The combined archive manifest has been recovered and stored through DeSci’s supported draft-update API. Its CID was independently recomputed from the saved manifest bytes. The reconstructed directory CID matches DeSci’s stored 33-file directory.</p>'
     body+=definition([('DeSci archive manifest CID',code(desci['manifestCID'])),('Archive directory CID',code(desci['directoryCID']))])
     body+='<p>'+link('desci-recovered-manifest.json.txt','Download the recovered DeSci manifest','desci-recovered-manifest.json')+' · '+link('desci-directory-metadata.json.txt','Stored directory verification','desci-directory-metadata.json')+'</p>'
-    body+='<p>DeSci’s live document editor still reports a missing document reference. The archive manifest and files are intact; editor-service restoration remains a provider issue. No signed public DeSci publication has been made.</p>'
+    body+='<p>DeSci’s live document editor still reports a missing document reference. The archive manifest and files are intact; editor-service restoration remains a provider issue. A repair request was submitted to DeSci support on 26 October 2026 and receipt was confirmed. Restoration remains pending their response. No signed public DeSci publication has been made.</p>'
     body+='<p>'+link('desci-recovery.txt','Read the diagnosis and recovery record','desci-recovery.txt')+'</p>'
 else:
     body+='<p>DeSci’s manifest service currently returns an empty draft document, so preparation of a combined archive manifest remains incomplete. The individual files are saved and CID-verified. A signed DeSci publication has not been made.</p>'

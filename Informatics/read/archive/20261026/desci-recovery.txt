@@ -15,7 +15,7 @@ The directory was reconstructed using DeSci's published UnixFS directory algorit
 - Original timestamped package manifest SHA-256: `df177d308cf36853b5c23e5d47356bc0d7976a1bb12792a0771020477adcbd5a`
 - All original file CIDs and sizes remain unchanged; the draft remains private.
 
-The recovered archive is complete. DeSci's editable document service still needs provider-side restoration. No public API for resetting an existing document ID was found in the published routes. A support report is prepared here; it has not been sent to anyone.
+The recovered archive is complete. DeSci's editable document service still needs provider-side restoration. No public API for resetting an existing document ID was found in the published routes. A repair request was submitted through DeSci’s official contact form on 26 October 2026 with Ben’s explicit authorisation. The form confirmed receipt. A fresh empty diagnostic draft reproduced the same missing-document error before being removed; this extends the observed fault beyond the existing archive. Editor-service restoration remains pending DeSci’s response.
 
 Provider repair request: restore or recreate the editable document for this existing draft, reattach its document ID, and verify document retrieval and manifest preparation while preserving the recorded archive CID and all 33 file CIDs.
 
