@@ -74,6 +74,7 @@ body+='<h2>Bitcoin timestamp status</h2><p>An additional OpenTimestamps proof ha
 body+='<h2>AI access policy</h2><p>The prepared production policy permits automated reading and training by all LLM providers on Universal Mind-owned public Informatics content. Third-party attribution and licence terms remain attached to the source records. Staging remains excluded from crawling and indexing.</p><p><a href="access.html">Read the access and reuse policy</a> · '+link('production-robots.txt','Inspect the prepared production robots policy')+'</p>'
 page=site/'provenance.html'
 old=page.read_text();head=old.split('<main>')[0];footer=old.split('</main>',1)[1]
+if 'rel="icon"' not in head:head=head.replace('</head>','<link rel="icon" href="/vogue/iam/favicon.png"></head>')
 page.write_text(head+'<main>'+body+'</main>'+footer)
 report={'manifestSHA256':digest,'synapseFiles':len(syn['files']),'desciFiles':len(desci['files']),'timestampVerified':True,'bitcoinConfirmed':False,'files':[{'path':str(p.relative_to(site)),'sha256':sha(p),'bytes':p.stat().st_size} for p in sorted(out.iterdir())]}
 (ROOT/'research/informatics/discovery-20261026/archive-verification.json').write_text(json.dumps(report,indent=2)+'\n')
