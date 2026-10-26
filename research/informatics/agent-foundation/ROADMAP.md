@@ -102,3 +102,11 @@ AWS staging hosting is activated within Ben's US$25/month hosting allowance. Lam
 The shared research index now includes all three Vision Atlas geometry citations and seven additional quantum-geometry sources in an isolated staging branch. General research has a dedicated Quantum Computing chapter. Research-directions r2 gives Astra explicit mechanisms, source IDs, matched controls and uncertainty boundaries for Fibonacci/M9 P24 stability research and possible mathematical connections to vision. Universal One reads the same evidence summaries. Both JSON and CSV exports retain these records.
 
 The supported execution remains the bounded OXTR recipe. Research-memory expansion does not silently add an unrestricted autonomous experiment tool. Future stability experiments require a reviewed template and measurement plan; Gemini oversight, new hardware spend and external task delegation retain their existing roadmap status.
+
+## Astra–Argon review and publication prototype — 26 October 2026
+
+Gemini 4 Argon is connected through the Universal Informatics Google project. The saved OXTR design and final evidence report have real provider review receipts. The final report passed after the packet included the already-recorded cohort and local CUDA-Q evidence. Historical results remain unchanged; the later review is an additional record.
+
+`../scientific-swarm/` adds provider-neutral LangGraph design review, bounded revisions, mid-study scientific support, final review, saved human interruptions and immutable JSON/CSV snapshots. Each progress snapshot is queued separately for Synapse and DeSci, and remote receipts distinguish delivery from public publication. The new swarm is not yet installed in the AWS worker; the existing bounded Astra service remains active.
+
+The approved Gemini connection tests retain a shared US$1 ceiling. The key is stored in the existing AWS runtime secret. Recurring Gemini execution requires an explicit allowance and durable review/outbox integration. No new paid Aquila or GPU work is enabled. DeSci's archive bytes are verified, but its editor-service fault remains visible until resolved. Notion, Google Docs and Prism report adapters follow this integration.
