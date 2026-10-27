@@ -1,0 +1,25 @@
+{
+  "checkedAt": "2026-10-27T02:23:47.859273+00:00",
+  "assets": [
+    {
+      "url": "https://universalmind.tv/informatics/library.html",
+      "status": 200,
+      "sha256": "6b2346be0c6b82906c11e6f8652ecf5b17fe32cfdc870cf191317372ca2fe36c"
+    },
+    {
+      "url": "https://universalmind.tv/informatics/library.js",
+      "status": 200,
+      "sha256": "a54d471e2fd19833fd6833046f293797cfd4b6daec4dd263b78b16477eca308b"
+    },
+    {
+      "url": "https://universalmind.tv/informatics/library-data/general-edition.json",
+      "status": 200,
+      "sha256": "3c2672d0d4c865d2f97b1fe55bed99be85b829f317f07249411a2af3bf7a0e06"
+    },
+    {
+      "url": "https://universalmind.tv/informatics/exports/manifest.json",
+      "status": 200,
+      "sha256": "1e7a13dd697b542158224c92e3675e57870674420188fe57ab7b41eb6678512f"
+    }
+  ]
+}

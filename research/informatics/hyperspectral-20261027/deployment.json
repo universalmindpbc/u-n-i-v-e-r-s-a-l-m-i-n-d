@@ -1,0 +1,23 @@
+{
+  "sourceCommit": "993e804afaa71b114f3b7b329a914748c21ccc5f",
+  "informaticsTree": "eb6743c4d3540a5693fb5918e15d9364abf0fcf9",
+  "baseStagingCommit": "6b99831b64d7fb94e79f481fb452deec80b82cc9",
+  "deployedAt": "2026-10-27T02:28:25.739854+00:00",
+  "host": "https://staging.universalmind.tv",
+  "modes": [
+    "./deploy-panthur-staging.sh informatics",
+    "./deploy-panthur-staging.sh redirects"
+  ],
+  "changedInformaticsUploads": 254,
+  "exactHTTPAssets": 251,
+  "fullExportParts": 5,
+  "fullExportBytesVerified": 220766303,
+  "browserWidths": [
+    1470,
+    390,
+    320
+  ],
+  "directChapterLinkVerified": true,
+  "productionModified": false,
+  "sourceNotionPagesModified": false
+}

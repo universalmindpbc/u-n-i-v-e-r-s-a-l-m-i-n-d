@@ -23,7 +23,8 @@ try{
   const page=await context.newPage();page.on('pageerror',e=>report.errors.push(e.message));page.on('console',m=>{if(m.type()==='error')console.log('BROWSER',m.text());});
   await page.goto(base+'?entry=research&area=research',{waitUntil:'domcontentloaded'});
   await page.locator('#research-frame').waitFor();
-  const reader=await (await page.locator('#research-frame').elementHandle()).contentFrame();
+  let reader=await (await page.locator('#research-frame').elementHandle()).contentFrame();
+  await reader.waitForSelector('.contents-grid, .search-paper');
   await reader.goto(base+'library.html?collection=general&embedded=1',{waitUntil:'domcontentloaded'});
   await reader.locator('.contents-chapter h3 a[data-chapter="11"]').click();
   assert.match(reader.url(),/chapter=11/);
@@ -45,12 +46,13 @@ try{
   assert.match(await reader.locator('#article .source-provenance summary').textContent(),/NPL-1, NPL-153/);
   await page.keyboard.press('Escape');assert.equal(await reader.locator('#article').evaluate(el=>el.open),false);
   await reader.locator('#source-register-query').fill('');await reader.locator('#source-register-type').selectOption('PAT');
+  await reader.waitForFunction(()=>document.querySelector('#source-register-count').textContent==='11 entries');
   assert.equal(await reader.locator('[data-source-reference]:visible').count(),11);
   await reader.locator('[data-source-reference="PAT-7"] summary').click();
   assert.match(await reader.locator('[data-source-reference="PAT-7"]').textContent(),/Booz Allen Hamilton/);
   await reader.locator('#source-register-type').selectOption('review');
   assert.equal(await reader.locator('[data-source-reference]:visible').count(),14);
-  await reader.locator('#chapter-source-register').scrollIntoViewIfNeeded();
+  await reader.locator('#source-register-heading').scrollIntoViewIfNeeded();
   await page.screenshot({path:path.join(out,`${candidate?'candidate-':''}register-${width}.png`)});
   assert.equal(await reader.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),true);
   await reader.locator('#source-register-type').selectOption('');
@@ -67,7 +69,16 @@ try{
   assert.match(await reader.locator('#article-title').textContent(),/SpectralSeq/);
   assert.match(await reader.locator('#article .source-provenance').textContent(),/Related publication versions/);
   await page.keyboard.press('Escape');
+  if(width===1470){
+   await page.goto(base+'library.html?collection=general&chapter=11',{waitUntil:'domcontentloaded'});
+   await page.locator('#research-frame').waitFor();
+   reader=await (await page.locator('#research-frame').elementHandle()).contentFrame();
+   await reader.locator('.chapter-opening h2').waitFor();
+   assert.equal(await reader.locator('.chapter-opening h2').textContent(),'Hyperspectral Imaging');
+   report.deepLinkVerified=true;
+  }
   await reader.evaluate(()=>document.querySelectorAll('audio,video').forEach(el=>el.pause()));
+  await page.evaluate(()=>document.querySelectorAll('audio,video').forEach(el=>el.pause()));
   await context.close();
   report.results.push({width,chapterNavigation:true,subchapters:6,sourceEntries:240,timeline:13,exactReferenceFilter:true,patentFilter:11,unresolvedFilter:14,citationDialog:true,versionLinks:true,jsonCSVByteParity:true,downloadMethod:candidate?'routed candidate fetch':'browser download',noHorizontalOverflow:true,singleCrossRulePreserved:true});
  }

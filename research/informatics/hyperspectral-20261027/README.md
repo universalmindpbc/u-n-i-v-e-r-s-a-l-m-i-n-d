@@ -21,3 +21,13 @@ The user explicitly approved disclosure of published titles, DOI/PMID identifier
 Metadata identity checks are not full-text scientific appraisal. No new Trust Factor or Jadad score is assigned. Existing assessments on reused records remain intact. Six core publications have method/context summaries based on primary abstracts or full text, labelled separately from the original source annotations. A visible correction records the Purdue study's visible 400–720 nm range and reference-chart requirement.
 
 Rebuild data with `python3 tools/build-hyperspectral.py`. Public files are `Informatics/library-data/hyperspectral-expansion.json`, `hyperspectral-register.json`, `hyperspectral-register.csv`, and chapter 11 in `general-edition.json`. Register CSV includes canonical bibliographic identifiers, original citation wording and verification status. The complete dataset exports include these tracked public files. API caches and full patent responses are excluded.
+
+## Staging verification
+
+Source commit `993e804a` was deployed through the existing Panthur staging modes `informatics` and `redirects`. The release includes 254 changed Informatics uploads and the updated root discovery files. HTTP comparison verified 251 web/data files plus all five export parts, totalling 220,766,303 export bytes. Four production asset fingerprints remained unchanged.
+
+Browser verification passed at 1470, 390 and 320 pixels in a separate headless Chromium process launched with `--mute-audio`. Checks covered chapter navigation, the final deep link, six subchapters, 240 source entries, 13 milestones, exact reference-ID searches, patent and unresolved filters, citation dialogs, linked publication versions, real JSON/CSV downloads, horizontal overflow and preservation of the single-cross article-badge rule. All automated browser contexts were closed.
+
+Proof: https://staging.universalmind.tv/informatics/library.html?collection=general&chapter=11
+
+The original Notion pages and production site were not modified by this task. Metadata matches do not establish the scientific claims in the source annotations.

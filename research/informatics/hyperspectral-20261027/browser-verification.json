@@ -1,0 +1,58 @@
+{
+  "candidate": false,
+  "base": "https://staging.universalmind.tv/informatics/",
+  "checkedAt": "2026-10-27T02:27:11.585Z",
+  "processMuted": true,
+  "results": [
+    {
+      "width": 1470,
+      "chapterNavigation": true,
+      "subchapters": 6,
+      "sourceEntries": 240,
+      "timeline": 13,
+      "exactReferenceFilter": true,
+      "patentFilter": 11,
+      "unresolvedFilter": 14,
+      "citationDialog": true,
+      "versionLinks": true,
+      "jsonCSVByteParity": true,
+      "downloadMethod": "browser download",
+      "noHorizontalOverflow": true,
+      "singleCrossRulePreserved": true
+    },
+    {
+      "width": 390,
+      "chapterNavigation": true,
+      "subchapters": 6,
+      "sourceEntries": 240,
+      "timeline": 13,
+      "exactReferenceFilter": true,
+      "patentFilter": 11,
+      "unresolvedFilter": 14,
+      "citationDialog": true,
+      "versionLinks": true,
+      "jsonCSVByteParity": true,
+      "downloadMethod": "browser download",
+      "noHorizontalOverflow": true,
+      "singleCrossRulePreserved": true
+    },
+    {
+      "width": 320,
+      "chapterNavigation": true,
+      "subchapters": 6,
+      "sourceEntries": 240,
+      "timeline": 13,
+      "exactReferenceFilter": true,
+      "patentFilter": 11,
+      "unresolvedFilter": 14,
+      "citationDialog": true,
+      "versionLinks": true,
+      "jsonCSVByteParity": true,
+      "downloadMethod": "browser download",
+      "noHorizontalOverflow": true,
+      "singleCrossRulePreserved": true
+    }
+  ],
+  "errors": [],
+  "deepLinkVerified": true
+}
