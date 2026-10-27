@@ -1,0 +1,22 @@
+{
+  "checkedAt": "2026-10-27T01:57:39.234685+00:00",
+  "sourceCommit": "97e1ac6f74585d630b442198cf589972bc9f0ce0",
+  "informaticsTree": "440e92dcb730809978c4192b488067fc8f5cd81f",
+  "checks": [
+    {
+      "asset": "library.html",
+      "url": "https://staging.universalmind.tv/informatics/library.html",
+      "sha256": "9624cb8d2b795408a89718b450ddd3b54830621e18f118e19bc5c7a4e684eb24",
+      "bytes": 34558,
+      "exactMatch": true
+    },
+    {
+      "asset": "library.js",
+      "url": "https://staging.universalmind.tv/informatics/library.js?v=21",
+      "sha256": "2552f7865979c897fbb16093e9adafe883603a0718f56b21cded368915e301af",
+      "bytes": 35137,
+      "exactMatch": true
+    }
+  ],
+  "passed": true
+}
