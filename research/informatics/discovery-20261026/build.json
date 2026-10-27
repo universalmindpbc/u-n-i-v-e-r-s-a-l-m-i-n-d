@@ -1,46 +1,46 @@
 {
-  "datasetManifestSHA256": "1e7a13dd697b542158224c92e3675e57870674420188fe57ab7b41eb6678512f",
+  "datasetManifestSHA256": "09bf19b37a86ed56699d15a18685e7ec43520575a335a61e86f303ab1a02d851",
   "generatedAt": "2026-10-26",
-  "publications": 891,
+  "publications": 892,
   "atlas": 1001,
   "experiments": 2,
-  "pages": 1901,
+  "pages": 1902,
   "sourceHashes": [
     {
       "path": "library.js",
-      "sha256": "a54d471e2fd19833fd6833046f293797cfd4b6daec4dd263b78b16477eca308b"
+      "sha256": "316bb87adea81fafdd9d3a5169c30fee0d626b353862b16355db03299cfaf310"
     },
     {
       "path": "library-data/sound-edition.json",
-      "sha256": "728762bb2460a20175433f89469fa125024e31effecced542807efdc4f911001"
+      "sha256": "45cca9765db111a9572a5b4e979a01fed477f5065f78fd43e0df49693a11baa3"
     },
     {
       "path": "library-data/library.json",
-      "sha256": "e201040a7d9d9dd266f6510d876ab89cc98d27eab01381b90f8683e51324adc9"
+      "sha256": "9e8c73b42c5cb5cf04250910279d93ba58b3504a6230aac5020a6c1b0cb0698d"
     },
     {
       "path": "library-data/publication-access.json",
-      "sha256": "b6bab65cab09030fc0dcb2bbaf0da58e2c762a30912bffc48fef0b7cfa0327d7"
+      "sha256": "09941fafec05492b5b154006aa237069f9c6c276eb38735bf9913c7ea80418ca"
     },
     {
       "path": "library-data/language-edition.json",
-      "sha256": "9a5a390d836d369786d76be3dc3b07f5e3eb6597acc0d3f7ee2f665f8a2e8060"
+      "sha256": "b75953821a14dd5d816280fdd17957ca89d3d5dc2a88eb2639828b9a240c82be"
     },
     {
       "path": "library-data/general-edition.json",
-      "sha256": "3c2672d0d4c865d2f97b1fe55bed99be85b829f317f07249411a2af3bf7a0e06"
+      "sha256": "4dc388c02c3a2d875b6dbb06cdfa8249d207482b921c63eb6cf31be0ce4acc60"
     },
     {
       "path": "library-data/mindfulness-expansion.json",
-      "sha256": "0e933eafe764d5a21f92bde5c712e8871b70a7b490598600af5e7b69e2cb28f7"
+      "sha256": "52f669b3b56269d9d68333169edbad313733ff838963adafbc9d3b246e0da2c2"
     },
     {
       "path": "library-data/vision-edition.json",
-      "sha256": "e7964a11f99c4f3cde3883f5b47f20d355da903160c8cfd83c3e97394b9a9897"
+      "sha256": "72b7f957c48b7db15ef18a13ae70883a816dc946c0f1c480d2873ca84bca1577"
     },
     {
       "path": "library-data/vision-expansion.json",
-      "sha256": "667923535bb06a96d7a217f992e98f1f47475859b70e497bfca50a76fd270c4b"
+      "sha256": "c1aa46b0b6df3916009e60f912f762081869be97fa79b2729380dc74291d2358"
     },
     {
       "path": "library-data/clinical-conditions.json",
@@ -48,7 +48,7 @@
     },
     {
       "path": "library-data/nature-expansion.json",
-      "sha256": "acf88b25054e81b38d5ffcb8a59be1586e2f98776db0c5ce52c794db18a58fc7"
+      "sha256": "f7072ca98ea93b9b751d7d11d4fdf6002a83caaa06c7f46310b79f50db430ba8"
     },
     {
       "path": "library-data/fulltext-availability.json",
@@ -56,14 +56,14 @@
     },
     {
       "path": "library-data/fibonacci-expansion.json",
-      "sha256": "3c0926d690776962d2525e0f4e30b2349aeb14a8d70a2027b2ce2cefc3a20599"
+      "sha256": "4dec7704e4b0061d37c6164be4221a97e14c666726164ce522bfb23a84d5340a"
     },
     {
       "path": "library-model.js",
-      "sha256": "e565f7a479f36b6afcc26b5d24d761e1ddbe271c7bc3b7aed1d3f962325e23ae"
+      "sha256": "34912273777dadfe1c422bd72716c26088ade81f14318aed49ee4ce8356c39be"
     }
   ],
-  "publicationRecordSHA256": "48e8905b35b6dca89d354233e8d136b06c5b92be1d79761fb16a9edfbe141888",
+  "publicationRecordSHA256": "80b9890cb97883e31c13c45ca9a3c0724660c7e5534a7f8cfe9d93f6dfd661b4",
   "canonicalPaths": [
     "",
     "connect.html",
@@ -751,6 +751,7 @@
     "read/publications/src-1fa89730e1eb-94b73a44.html",
     "read/publications/src-973ffd9f69b7-4ed2c838.html",
     "read/publications/src-f0c081b81b89-437049c2.html",
+    "read/publications/src-9329423f6826-c56d5fdc.html",
     "read/publications/src-62d753228d9f-3c7bab02.html",
     "read/publications/src-5b5cfdfc3ae1-abf7fb58.html",
     "read/publications/src-19dff8a8bbe5-4e001f70.html",

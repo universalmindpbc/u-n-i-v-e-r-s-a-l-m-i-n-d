@@ -20,6 +20,12 @@ class TopicTrustTests(unittest.TestCase):
         records.append(paper(7, 'double-blind-rct'))
         self.assertEqual(assess_topic(records)['score'], 3)
 
+    def test_mixed_randomized_trials_reach_two_crosses(self):
+        records = [paper(1, 'double-blind-rct'), paper(2, 'single-blind-rct'), paper(3, 'rct-open-label')]
+        result = assess_topic(records)
+        self.assertEqual(result['score'], 2)
+        self.assertEqual(result['counts']['rct'], 3)
+
     def test_small_collection_ungraded(self):
         self.assertIsNone(assess_topic([paper(i, 'peer-reviewed') for i in range(2)])['score'])
         self.assertIsNone(assess_topic([])['score'])
@@ -29,11 +35,11 @@ class TopicTrustTests(unittest.TestCase):
         self.assertIsNone(assess_topic([one, one, one])['score'])
         repeated_trial = [paper(i, 'double-blind-rct', trial='NCT-SAME') for i in range(3)]
         assessment = assess_topic(repeated_trial)
-        self.assertEqual(assessment['score'], 1)
+        self.assertIsNone(assessment['score'])
         self.assertEqual(assessment['counts']['double-blind-rct'], 1)
 
-    def test_non_peer_reviewed_material_does_not_reach_minimum(self):
-        for category in ['peer-reviewed', 'double-blind-rct', 'single-blind-rct']:
+    def test_unconfirmed_material_does_not_reach_minimum(self):
+        for category in ['peer-reviewed', 'protocol', 'context']:
             records = [paper(i, category, peer_reviewed=False) for i in range(3)]
             self.assertIsNone(assess_topic(records)['score'])
 

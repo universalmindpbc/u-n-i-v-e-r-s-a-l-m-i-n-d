@@ -1,0 +1,232 @@
+{
+  "reviewedAt": "2026-10-27",
+  "records": {
+    "pmid-17573044": {
+      "design": "Double-blind randomized controlled trial",
+      "studyDesignAssessment": {
+        "category": "double-blind-rct",
+        "peerReviewed": true,
+        "basis": "The primary abstract reports randomized active versus sham stimulation in a double-blind multisite trial.",
+        "sources": [
+          "https://pubmed.ncbi.nlm.nih.gov/17573044/"
+        ],
+        "assessedAt": "2026-10-27",
+        "reviewScope": "Primary abstract or specified methods and trial register; comprehensive full-text risk-of-bias assessment not completed."
+      },
+      "evidence": {
+        "trialId": "NCT00104611"
+      }
+    },
+    "pmid-16314076": {
+      "design": "Randomized sham-controlled trial; blinding not confirmed",
+      "studyDesignAssessment": {
+        "category": "rct-masking-unclear",
+        "peerReviewed": true,
+        "basis": "The primary abstract reports random allocation of 24 participants to active or sham stimulation. The abstract does not establish the blinding roles.",
+        "sources": [
+          "https://pubmed.ncbi.nlm.nih.gov/16314076/"
+        ],
+        "assessedAt": "2026-10-27",
+        "reviewScope": "Primary abstract or specified methods and trial register; comprehensive full-text risk-of-bias assessment not completed."
+      }
+    },
+    "pmid-16254067": {
+      "design": "Double-blind randomized crossover trial",
+      "studyDesignAssessment": {
+        "category": "double-blind-rct",
+        "peerReviewed": true,
+        "basis": "The methods describe a double-blind crossover design, random treatment order, blinded patients and a technician unaware of treatment frequency.",
+        "sources": [
+          "https://pmc.ncbi.nlm.nih.gov/articles/PMC2632240/"
+        ],
+        "assessedAt": "2026-10-27",
+        "reviewScope": "Primary abstract or specified methods and trial register; comprehensive full-text risk-of-bias assessment not completed."
+      }
+    },
+    "pmid-11955466": {
+      "design": "Randomized controlled trial; blinding not confirmed",
+      "studyDesignAssessment": {
+        "category": "rct-masking-unclear",
+        "peerReviewed": true,
+        "basis": "The primary abstract describes random assignment to rTMS or ECT. Blinding is not established in the abstract.",
+        "sources": [
+          "https://pubmed.ncbi.nlm.nih.gov/11955466/"
+        ],
+        "assessedAt": "2026-10-27",
+        "reviewScope": "Primary abstract or specified methods and trial register; comprehensive full-text risk-of-bias assessment not completed."
+      }
+    },
+    "pmid-10686266": {
+      "design": "Open randomized controlled trial",
+      "studyDesignAssessment": {
+        "category": "rct-open-label",
+        "peerReviewed": true,
+        "basis": "The publication identifies the study as open and reports random assignment to rTMS or ECT.",
+        "sources": [
+          "https://pubmed.ncbi.nlm.nih.gov/10686266/"
+        ],
+        "assessedAt": "2026-10-27",
+        "reviewScope": "Primary abstract or specified methods and trial register; comprehensive full-text risk-of-bias assessment not completed."
+      }
+    },
+    "pmid-9614593": {
+      "design": "Preliminary clinical study; randomized control not established",
+      "studyDesignAssessment": {
+        "category": "peer-reviewed",
+        "peerReviewed": true,
+        "basis": "The primary abstract describes treatment in patients with depression and schizophrenia and calls for controlled research; it does not establish randomized allocation or a controlled blinded design.",
+        "sources": [
+          "https://pubmed.ncbi.nlm.nih.gov/9614593/"
+        ],
+        "assessedAt": "2026-10-27",
+        "reviewScope": "Primary abstract or specified methods and trial register; comprehensive full-text risk-of-bias assessment not completed.",
+        "isRandomizedControlledTrial": false
+      }
+    },
+    "src-11c37f0b338c": {
+      "design": "Double-blind randomized sham-controlled trial",
+      "studyDesignAssessment": {
+        "category": "double-blind-rct",
+        "peerReviewed": true,
+        "basis": "The primary abstract describes a randomized double-blind comparison of ten active and ten sham rTMS participants.",
+        "sources": [
+          "https://pubmed.ncbi.nlm.nih.gov/10686268/"
+        ],
+        "assessedAt": "2026-10-27",
+        "reviewScope": "Primary abstract or specified methods and trial register; comprehensive full-text risk-of-bias assessment not completed."
+      },
+      "pmid": "10686268",
+      "doi": "10.1016/s0006-3223(99)00243-7"
+    },
+    "src-d0bf23be01d8": {
+      "design": "Randomized sham-controlled trial; patients, treaters and raters masked",
+      "studyDesignAssessment": {
+        "category": "double-blind-rct",
+        "peerReviewed": true,
+        "basis": "The primary report describes randomized active versus sham rTMS with masking of participants, treatment staff and outcome raters.",
+        "sources": [
+          "https://pubmed.ncbi.nlm.nih.gov/20439832/",
+          "https://jamanetwork.com/journals/jamapsychiatry/fullarticle/210744"
+        ],
+        "assessedAt": "2026-10-27",
+        "reviewScope": "Primary abstract or specified methods and trial register; comprehensive full-text risk-of-bias assessment not completed."
+      },
+      "pmid": "20439832",
+      "doi": "10.1001/archgenpsychiatry.2010.46",
+      "evidence": {
+        "trialId": "NCT00149838"
+      }
+    },
+    "pmid-28544507": {
+      "design": "Double-blind randomized controlled trial",
+      "studyDesignAssessment": {
+        "category": "double-blind-rct",
+        "peerReviewed": true,
+        "basis": "The conference abstract and journal report describe the same 74-person military trial, with music plus or minus binaural beats over four weeks. The Sound Mind Warrior register records randomization and participant/investigator masking. These reports count as one trial.",
+        "sources": [
+          "https://pubmed.ncbi.nlm.nih.gov/28544507/",
+          "https://clinicaltrials.gov/study/NCT02328690"
+        ],
+        "assessedAt": "2026-10-27",
+        "reviewScope": "Primary abstract or specified methods and trial register; comprehensive full-text risk-of-bias assessment not completed."
+      },
+      "evidence": {
+        "trialId": "NCT02328690"
+      }
+    },
+    "src-6d277422d0a0": {
+      "design": "Double-blind randomized controlled trial; conference report",
+      "studyDesignAssessment": {
+        "category": "double-blind-rct",
+        "peerReviewed": false,
+        "basis": "The conference abstract and journal report describe the same 74-person military trial, with music plus or minus binaural beats over four weeks. The Sound Mind Warrior register records randomization and participant/investigator masking. These reports count as one trial.",
+        "sources": [
+          "https://stti.confex.com/stti/congrs16/webprogram/Paper78473.html",
+          "https://clinicaltrials.gov/study/NCT02328690"
+        ],
+        "assessedAt": "2026-10-27",
+        "reviewScope": "Primary abstract or specified methods and trial register; comprehensive full-text risk-of-bias assessment not completed."
+      },
+      "evidence": {
+        "trialId": "NCT02328690"
+      }
+    },
+    "src-8ad1130190f0": {
+      "design": "Double-blind randomized sham-controlled phase, followed by an open extension",
+      "studyDesignAssessment": {
+        "category": "double-blind-rct",
+        "peerReviewed": true,
+        "basis": "The initial two-week phase used randomized double-blind sham control. The later ten-session extension was unblinded; double blinding applies to the randomized phase.",
+        "sources": [
+          "https://pmc.ncbi.nlm.nih.gov/articles/PMC6824981/",
+          "https://pubmed.ncbi.nlm.nih.gov/31230462/"
+        ],
+        "assessedAt": "2026-10-27",
+        "reviewScope": "Primary abstract or specified methods and trial register; comprehensive full-text risk-of-bias assessment not completed."
+      },
+      "pmid": "31230462",
+      "doi": "10.1176/appi.ajp.2019.18101160",
+      "evidence": {
+        "trialId": "NCT02769312"
+      },
+      "title": "Theta-Burst Transcranial Magnetic Stimulation for Posttraumatic Stress Disorder",
+      "identityConflict": null,
+      "publicationStatus": "Primary publication identity resolved",
+      "journal": "The American Journal of Psychiatry",
+      "year": 2019,
+      "urls": [
+        "https://pubmed.ncbi.nlm.nih.gov/31230462/",
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC6824981/",
+        "https://doi.org/10.1176/appi.ajp.2019.18101160"
+      ]
+    },
+    "src-9329423f6826": {
+      "title": "The prospects of quantum computing in computational molecular biology",
+      "doi": "10.1002/wcms.1481",
+      "pmid": null,
+      "identityConflict": null,
+      "publicationStatus": "Primary publication identity resolved",
+      "journal": "WIREs Computational Molecular Science",
+      "year": 2021,
+      "kind": "Review / synthesis",
+      "design": "Peer-reviewed review",
+      "urls": [
+        "https://doi.org/10.1002/wcms.1481",
+        "https://ora.ox.ac.uk/objects/uuid%3A9fcfe879-d852-4678-a21d-f9bc009d43be"
+      ],
+      "evidence": {
+        "trialId": null
+      },
+      "studyDesignAssessment": {
+        "category": "review",
+        "peerReviewed": true,
+        "isRandomizedControlledTrial": false,
+        "basis": "The author institution identifies this as a peer-reviewed review of quantum computation. The imported citation linked to the military binaural-beat trial in error; the publisher DOI and university record resolve its identity.",
+        "sources": [
+          "https://ora.ox.ac.uk/objects/uuid%3A9fcfe879-d852-4678-a21d-f9bc009d43be",
+          "https://doi.org/10.1002/wcms.1481"
+        ],
+        "assessedAt": "2026-10-27"
+      }
+    }
+  },
+  "unresolved": [
+    {
+      "id": "src-f7e11cf61952",
+      "reason": "Primary methods for the refugee group-therapy report remain unavailable; no randomized or blinded classification inferred."
+    }
+  ],
+  "resolvedIdentityConflicts": {
+    "src-8ad1130190f0": {
+      "source": "“ Fifty veterans with PTSD received 10 days of sham-controlled iTBS (1,800 pulses/day), followed by",
+      "metadata": "Intermittent Theta Burst Stimulation of the Prefrontal Cortex in Cocaine Use Disorder: A Pilot Study.",
+      "pmid": "31402851",
+      "similarity": 0.319
+    },
+    "src-9329423f6826": {
+      "incorrectDoi": "10.1111/jnu.12304",
+      "incorrectPmid": "28544507",
+      "correctDoi": "10.1002/wcms.1481"
+    }
+  }
+}

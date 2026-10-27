@@ -1,0 +1,23 @@
+{
+  "passed": true,
+  "collections": [
+    {
+      "collection": "sound",
+      "records": 39,
+      "jsonSHA256": "7ad51fefc476ab60bbc003f3b1fdcc2e2dd14286597b2c4cd4a8ec9829db180c",
+      "csvSHA256": "c01e34250ce84bb15aab6d467be3aaedba3588c736aa93e6ce062b4e18cfdc3e"
+    },
+    {
+      "collection": "vision",
+      "records": 37,
+      "jsonSHA256": "a547a370a69ae1229bd932854b03ae10f185d1a2ed535f588060d0ad9b515650",
+      "csvSHA256": "203a91defee057af1e5031d265a665b479d584c6d0adb0a81e31b6e52bb263dd"
+    },
+    {
+      "collection": "language",
+      "records": 100,
+      "jsonSHA256": "39a4971a0acec7e90f05e36c6f50ab6c58b884ad07499f3bda1224051af665d0",
+      "csvSHA256": "0202ddcc971ea7cb7da046b17aa90fef23c754205307ec3ae7be8ca591412763"
+    }
+  ]
+}

@@ -1,0 +1,76 @@
+{
+  "passed": true,
+  "counts": {
+    "sound": {
+      "papers": 308,
+      "scores": {
+        "1": 130,
+        "2": 39,
+        "3": 32,
+        "null": 107
+      },
+      "singleBlind": 2,
+      "doubleBlind": 32,
+      "rct": 71
+    },
+    "vision": {
+      "papers": 110,
+      "scores": {
+        "1": 61,
+        "2": 37,
+        "3": 0,
+        "null": 12
+      },
+      "singleBlind": 14,
+      "doubleBlind": 0,
+      "rct": 37
+    },
+    "language": {
+      "papers": 368,
+      "scores": {
+        "1": 143,
+        "2": 100,
+        "3": 15,
+        "null": 110
+      },
+      "singleBlind": 21,
+      "doubleBlind": 15,
+      "rct": 115
+    },
+    "general": {
+      "papers": 344,
+      "scores": {
+        "1": 160,
+        "2": 12,
+        "3": 15,
+        "null": 157
+      },
+      "singleBlind": 1,
+      "doubleBlind": 15,
+      "rct": 27
+    },
+    "all": {
+      "papers": 892,
+      "scores": {
+        "1": 383,
+        "2": 179,
+        "3": 48,
+        "null": 282
+      },
+      "singleBlind": 37,
+      "doubleBlind": 48,
+      "rct": 227
+    }
+  },
+  "checks": [
+    "all publication records retained",
+    "paper and chapter scores independent",
+    "RCT filters include all recorded blinding types",
+    "unspecified blinding never labelled single-blind",
+    "chapter thresholds count distinct trials",
+    "chapter browsing and search share paper ratings",
+    "Sound Mind Warrior has three crosses",
+    "TMS chapter has four double-blind trials"
+  ],
+  "manualFullTextAuditOfEveryPaper": false
+}

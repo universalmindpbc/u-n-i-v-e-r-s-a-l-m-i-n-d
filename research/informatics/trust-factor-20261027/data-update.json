@@ -1,0 +1,258 @@
+{
+  "checkedAt": "2026-10-27",
+  "allFullTextsReviewed": false,
+  "chapterChanges": [
+    {
+      "collection": "sound",
+      "topic": "ii",
+      "title": "528 Hz sound: gene expression, hormonal responses and cell studies",
+      "previous": 1,
+      "score": null,
+      "counts": {
+        "double-blind-rct": 0,
+        "rct": 0,
+        "single-blind-rct": 0,
+        "peer-reviewed": 1
+      }
+    },
+    {
+      "collection": "sound",
+      "topic": "iii",
+      "title": "7.83 Hz and low-frequency electromagnetic research",
+      "previous": 1,
+      "score": 2,
+      "counts": {
+        "double-blind-rct": 2,
+        "rct": 3,
+        "single-blind-rct": 0,
+        "peer-reviewed": 11
+      }
+    },
+    {
+      "collection": "sound",
+      "topic": "xiv",
+      "title": "Transcranial magnetic stimulation: stimulation frequencies and depression",
+      "previous": 2,
+      "score": 3,
+      "counts": {
+        "double-blind-rct": 4,
+        "rct": 7,
+        "single-blind-rct": 0,
+        "peer-reviewed": 8
+      }
+    },
+    {
+      "collection": "sound",
+      "topic": "xx",
+      "title": "Brain entrainment, pain, anxiety and heart-rate variability in at-risk communities",
+      "previous": 2,
+      "score": null,
+      "counts": {
+        "double-blind-rct": 2,
+        "rct": 2,
+        "single-blind-rct": 0,
+        "peer-reviewed": 2
+      }
+    },
+    {
+      "collection": "vision",
+      "topic": "group",
+      "title": "Group EMDR",
+      "previous": 1,
+      "score": 2,
+      "counts": {
+        "double-blind-rct": 0,
+        "rct": 4,
+        "single-blind-rct": 0,
+        "peer-reviewed": 12
+      }
+    },
+    {
+      "collection": "vision",
+      "topic": "online",
+      "title": "Online EMDR",
+      "previous": 1,
+      "score": 2,
+      "counts": {
+        "double-blind-rct": 0,
+        "rct": 3,
+        "single-blind-rct": 0,
+        "peer-reviewed": 13
+      }
+    },
+    {
+      "collection": "vision",
+      "topic": "rna",
+      "title": "EMDR and trauma-focused psychotherapy: gene expression",
+      "previous": 1,
+      "score": null,
+      "counts": {
+        "double-blind-rct": 0,
+        "rct": 0,
+        "single-blind-rct": 0,
+        "peer-reviewed": 2
+      }
+    },
+    {
+      "collection": "language",
+      "topic": "v",
+      "title": "Meditation, telomeres, telomerase and epigenetic ageing",
+      "previous": 1,
+      "score": 2,
+      "counts": {
+        "double-blind-rct": 0,
+        "rct": 3,
+        "single-blind-rct": 0,
+        "peer-reviewed": 6
+      }
+    },
+    {
+      "collection": "language",
+      "topic": "viii",
+      "title": "Meditation, social connection and physiological synchrony",
+      "previous": 1,
+      "score": null,
+      "counts": {
+        "double-blind-rct": 0,
+        "rct": 1,
+        "single-blind-rct": 0,
+        "peer-reviewed": 2
+      }
+    },
+    {
+      "collection": "language",
+      "topic": "xii",
+      "title": "Mantra meditation: veterans, survivors of abuse and people living with HIV",
+      "previous": 1,
+      "score": null,
+      "counts": {
+        "double-blind-rct": 0,
+        "rct": 0,
+        "single-blind-rct": 0,
+        "peer-reviewed": 0
+      }
+    },
+    {
+      "collection": "language",
+      "topic": "xiv",
+      "title": "Meditation, mindfulness and yoga: the DVA evidence review",
+      "previous": 3,
+      "score": null,
+      "counts": {
+        "double-blind-rct": 0,
+        "rct": 0,
+        "single-blind-rct": 0,
+        "peer-reviewed": 0
+      }
+    },
+    {
+      "collection": "language",
+      "topic": "xvi",
+      "title": "Homelessness, displacement and mental health",
+      "previous": 2,
+      "score": 1,
+      "counts": {
+        "double-blind-rct": 0,
+        "rct": 0,
+        "single-blind-rct": 0,
+        "peer-reviewed": 10
+      }
+    },
+    {
+      "collection": "general",
+      "topic": "sound-iii",
+      "title": "7.83 Hz and low-frequency electromagnetic research",
+      "previous": 1,
+      "score": 2,
+      "counts": {
+        "double-blind-rct": 2,
+        "rct": 3,
+        "single-blind-rct": 0,
+        "peer-reviewed": 11
+      }
+    },
+    {
+      "collection": "general",
+      "topic": "language-xvi",
+      "title": "Homelessness, displacement and mental health",
+      "previous": 2,
+      "score": 1,
+      "counts": {
+        "double-blind-rct": 0,
+        "rct": 0,
+        "single-blind-rct": 0,
+        "peer-reviewed": 10
+      }
+    },
+    {
+      "collection": "general",
+      "topic": "sound-xxviii",
+      "title": "Quantum computing methods for bioinformatics and gene-expression modelling",
+      "previous": 1,
+      "score": null,
+      "counts": {
+        "double-blind-rct": 0,
+        "rct": 0,
+        "single-blind-rct": 0,
+        "peer-reviewed": 2
+      }
+    },
+    {
+      "collection": "general",
+      "topic": "sound-xxxiii",
+      "title": "Wellbeing, trust and economic participation",
+      "previous": 1,
+      "score": null,
+      "counts": {
+        "double-blind-rct": 0,
+        "rct": 0,
+        "single-blind-rct": 0,
+        "peer-reviewed": 2
+      }
+    }
+  ],
+  "recordCounts": {
+    "sound": {
+      "1": 189,
+      "2": 44,
+      "None": 223,
+      "3": 33
+    },
+    "vision": {
+      "1": 61,
+      "2": 37,
+      "None": 12
+    },
+    "language": {
+      "1": 143,
+      "3": 15,
+      "2": 100,
+      "None": 110
+    },
+    "general": {
+      "1": 47,
+      "3": 1,
+      "None": 3
+    }
+  },
+  "rules": {
+    "3": "Confirmed double-blind randomized controlled trial",
+    "2": "Confirmed randomized controlled trial",
+    "1": "Peer-reviewed study",
+    "unrated": "Insufficient publication-specific evidence, protocol, guidance, preprint, retraction or unresolved identity"
+  },
+  "manualSourceCorrections": [
+    "pmid-17573044",
+    "pmid-16314076",
+    "pmid-16254067",
+    "pmid-11955466",
+    "pmid-10686266",
+    "pmid-9614593",
+    "src-11c37f0b338c",
+    "src-d0bf23be01d8",
+    "pmid-28544507",
+    "src-6d277422d0a0",
+    "src-8ad1130190f0",
+    "src-9329423f6826"
+  ]
+}
