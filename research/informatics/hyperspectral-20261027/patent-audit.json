@@ -1,0 +1,138 @@
+[
+  {
+    "ref": "PAT-1",
+    "patentNumber": "US20240289989A1",
+    "citedAssignee": "Voyage81 / Il Makiage",
+    "originalDescription": "Smartphone hyperspectral imaging",
+    "url": "https://patents.google.com/patent/US20240289989A1/en",
+    "resolvedTitle": "Transformation of color representations and spectral recovery",
+    "status": "identifier-resolved",
+    "assignees": [
+      "Voyage81 Ltd"
+    ]
+  },
+  {
+    "ref": "PAT-2",
+    "patentNumber": "WO2021111436A1",
+    "citedAssignee": "[Binah.ai](http://Binah.ai)",
+    "originalDescription": "rPPG-based SaMD (HR, HRV, BP, spO2)",
+    "url": "https://patents.google.com/patent/WO2021111436A1/en",
+    "resolvedTitle": "System and method for physiological measurements from optical data",
+    "status": "identifier-resolved",
+    "assignees": [
+      "Binah.AI Ltd"
+    ]
+  },
+  {
+    "ref": "PAT-3",
+    "patentNumber": "US20230128051A1",
+    "citedAssignee": "Zak / DARPA / Immersion",
+    "originalDescription": "Oxytocin inference via heart rate",
+    "url": "https://patents.google.com/patent/US20230128051A1/en",
+    "resolvedTitle": "System for simultaneously assessing psychological safety in real time and associated methods",
+    "status": "identifier-resolved",
+    "assignees": [
+      "Immersion Neuroscience Inc"
+    ],
+    "comparisonNote": "The public record lists Immersion Neuroscience Inc as original assignee. The bibliography attribution also names Zak and DARPA; those labels are retained as source wording, not formal assignee metadata."
+  },
+  {
+    "ref": "PAT-4",
+    "patentNumber": "WO2020060606A1",
+    "citedAssignee": "Microsoft",
+    "originalDescription": "Biometric cryptocurrency mining",
+    "url": "https://patents.google.com/patent/WO2020060606A1/en",
+    "resolvedTitle": "Cryptocurrency system using body activity data",
+    "status": "identifier-resolved",
+    "assignees": [
+      "Microsoft Technology Licensing LLC"
+    ]
+  },
+  {
+    "ref": "PAT-5",
+    "patentNumber": "US8489181B1 / TOP2-186",
+    "citedAssignee": "NASA",
+    "originalDescription": "HeartBeatID — Remote heart rate-based biometric identity verification",
+    "url": "https://patents.google.com/patent/US8489181B1/en",
+    "resolvedTitle": "Heart electrical actions as biometric indicia",
+    "status": "identifier-resolved",
+    "assignees": [
+      "National Aeronautics and Space Administration"
+    ]
+  },
+  {
+    "ref": "PAT-6",
+    "patentNumber": "US20170303790A1",
+    "citedAssignee": "Samsung",
+    "originalDescription": "Multispectral imaging using illumination from smartphone display",
+    "url": "https://patents.google.com/patent/US20170303790A1/en",
+    "resolvedTitle": "Mobile hyperspectral camera system and human skin monitoring using a mobile hyperspectral camera system",
+    "status": "identifier-resolved",
+    "assignees": [
+      "Samsung Electronics Co Ltd"
+    ]
+  },
+  {
+    "ref": "PAT-7",
+    "patentNumber": "US9551613B2",
+    "citedAssignee": "University of Arizona",
+    "originalDescription": "Smartphone-based snapshot hyperspectral imager",
+    "url": "https://patents.google.com/patent/US9551613B2/en",
+    "resolvedTitle": "Mobile phone hyperspectral imager with single-frame spatial, spectral and polarization information",
+    "status": "identifier-resolved",
+    "assignees": [
+      "Booz Allen Hamilton Inc"
+    ],
+    "relevanceConflict": "Original assignee mismatch: the bibliography names University of Arizona; the public patent record lists Booz Allen Hamilton Inc as original assignee. Ownership history and legal status have not been assessed."
+  },
+  {
+    "ref": "PAT-8",
+    "patentNumber": "US20150044098A1",
+    "citedAssignee": "HyperMed Imaging",
+    "originalDescription": "Hyperspectral medical imaging for wound/tissue assessment",
+    "url": "https://patents.google.com/patent/US20150044098A1/en",
+    "resolvedTitle": "Hyperspectral imaging systems, units, and methods",
+    "status": "identifier-resolved",
+    "assignees": [
+      "SCANADU Inc"
+    ],
+    "relevanceConflict": "Original assignee mismatch: the bibliography names HyperMed Imaging; the public patent record lists SCANADU Inc as original assignee. Ownership history and legal status have not been assessed."
+  },
+  {
+    "ref": "PAT-9",
+    "patentNumber": "US11222422B2",
+    "citedAssignee": "Northwestern University",
+    "originalDescription": "Computational hyperspectral imaging from RGB sensor data",
+    "url": "https://patents.google.com/patent/US11222422B2/en",
+    "resolvedTitle": "Hyperspectral imaging sensor",
+    "status": "identifier-resolved",
+    "assignees": [
+      "Northwestern University"
+    ]
+  },
+  {
+    "ref": "PAT-10",
+    "patentNumber": "US10018758",
+    "citedAssignee": "HyperMed Imaging",
+    "originalDescription": "Portable hyperspectral imager for medical diagnostics",
+    "url": "https://patents.google.com/patent/US10018758/en",
+    "resolvedTitle": "Single-sensor hyperspectral imaging device",
+    "status": "identifier-resolved",
+    "assignees": [
+      "Hypermed Imaging Inc"
+    ]
+  },
+  {
+    "ref": "PAT-11",
+    "patentNumber": "US20140320858A1",
+    "citedAssignee": "Consumer Physics (Israel)",
+    "originalDescription": "NIR spectral analysis methods for molecular composition — pocket-sized spectrometer (SCiO); embedded in Changhong H2 smartphone (2017)",
+    "url": "https://patents.google.com/patent/US20140320858A1/en",
+    "resolvedTitle": "Low-cost spectrometry system for end-user food analysis",
+    "status": "identifier-resolved",
+    "assignees": [
+      "Verifood Ltd"
+    ],
+    "relevanceConflict": "Original assignee mismatch: the bibliography names Consumer Physics (Israel); the public patent record lists Verifood Ltd as original assignee. Ownership history and legal status have not been assessed."
+  }
+]

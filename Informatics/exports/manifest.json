@@ -1,6 +1,6 @@
 {
   "schema": "universal-informatics/complete-dataset/v1",
-  "dataset_version": "350923ad1182acd5b58891c030aa0a1daca12d5568edcff1136b91b488051412",
+  "dataset_version": "ae5a9bb06a27c3505af7194410e38f30d388520f8abf2320a1f1c3b9a4c858c6",
   "sources": [
     {
       "id": "geometry.json",
@@ -35,7 +35,25 @@
     {
       "id": "library-data/general-edition.json",
       "source_path": "library-data/general-edition.json",
-      "sha256": "4dc388c02c3a2d875b6dbb06cdfa8249d207482b921c63eb6cf31be0ce4acc60",
+      "sha256": "c0ce0dde985c954f18f29e58f899c192a67861652d12c3b168415a69e46c537c",
+      "format": "json"
+    },
+    {
+      "id": "library-data/hyperspectral-expansion.json",
+      "source_path": "library-data/hyperspectral-expansion.json",
+      "sha256": "7c40d251a8f3055c8d36fcac7e6596f51f469ff1a713b02a8978544bee4fdc4a",
+      "format": "json"
+    },
+    {
+      "id": "library-data/hyperspectral-register.csv",
+      "source_path": "library-data/hyperspectral-register.csv",
+      "sha256": "88bb8476f9c4a8c09059843d24a5f34eb31d0d79978396334ccd7bc138531d4b",
+      "format": "csv"
+    },
+    {
+      "id": "library-data/hyperspectral-register.json",
+      "source_path": "library-data/hyperspectral-register.json",
+      "sha256": "d1a45d9e0930987a5a665fc2523739531dfe94de741ac016e7c96027bb769852",
       "format": "json"
     },
     {
@@ -52115,44 +52133,44 @@
   "downloads": {
     "json": {
       "file": "informatics-complete.json.gz",
-      "bytes": 75701751,
-      "uncompressed_bytes": 761447942,
-      "sha256": "9084072189942a3a0d4621cc5b934e1640587d6e4963afb949b941efb9682bac",
-      "uncompressed_sha256": "bef7f9c169fe793b4815b9ac256c3db4ecc02c0028873608f0ac0a2a8a43fd3d",
+      "bytes": 75981825,
+      "uncompressed_bytes": 763202843,
+      "sha256": "d54c8e717e5fab5f595d0ab258a9941e3a5018ed74608867cba2ebc50edc1fdb",
+      "uncompressed_sha256": "8016489897ee8972c1b2987c9fbfe3cc6ebce258f5940ac3dfbb249c7edfe475",
       "parts": [
         {
-          "file": "part-57dc0c78a6d5f271aa918f352bc4553cdc81bece781ead1b1c723a8306dba01f.bin",
+          "file": "part-de9f242c637374d1f47572ca0955a15123692203129e25121fd14002371b4be5.bin",
           "bytes": 50331648,
-          "sha256": "57dc0c78a6d5f271aa918f352bc4553cdc81bece781ead1b1c723a8306dba01f"
+          "sha256": "de9f242c637374d1f47572ca0955a15123692203129e25121fd14002371b4be5"
         },
         {
-          "file": "part-6457d2aff97e019efbd93238f045a1c82e8f15e6e812e2ec7cb69c5ca3eb0c9f.bin",
-          "bytes": 25370103,
-          "sha256": "6457d2aff97e019efbd93238f045a1c82e8f15e6e812e2ec7cb69c5ca3eb0c9f"
+          "file": "part-192bcc6907dceb5ffd239c5149f0c9c8ca25d89faaa4336b35c0757e52ac6376.bin",
+          "bytes": 25650177,
+          "sha256": "192bcc6907dceb5ffd239c5149f0c9c8ca25d89faaa4336b35c0757e52ac6376"
         }
       ]
     },
     "csv": {
       "file": "informatics-complete.csv.gz",
-      "bytes": 144381214,
-      "uncompressed_bytes": 2424913550,
-      "sha256": "e1a35ec4db9f70773e3abecdbde2fd3e7f2cebda44f93201ab857bd4db12146c",
-      "uncompressed_sha256": "a64cc18a8290815a8062e9d2feff49eb39b9c23ba804a796e1e1482087895895",
+      "bytes": 144784478,
+      "uncompressed_bytes": 2428978618,
+      "sha256": "23fe45eb5892eba7b6fae21378b8a2e43b2094e6e0935bc9c413ccb4712124d2",
+      "uncompressed_sha256": "3b698a98f73995ed36761c4540acff08aabde04ee4e6eb0fa7e039510d04498c",
       "parts": [
         {
-          "file": "part-29ea004f5cbee6f27c703decb70a470f0d49e955474c8c37a2972421a723570b.bin",
+          "file": "part-2b318d82fe8b9bc3a9ae077b775d1940de5c93796cdd657c475732e2f1ccd2b1.bin",
           "bytes": 50331648,
-          "sha256": "29ea004f5cbee6f27c703decb70a470f0d49e955474c8c37a2972421a723570b"
+          "sha256": "2b318d82fe8b9bc3a9ae077b775d1940de5c93796cdd657c475732e2f1ccd2b1"
         },
         {
-          "file": "part-cc66d8b3fba62ff2b21a0aa16dfff2a05bcb32c37b0bed0df5a516544eb4f850.bin",
+          "file": "part-67fd6e857970c4df108f9a29d63f4559f6beae9086c68fa38620686dc65172d9.bin",
           "bytes": 50331648,
-          "sha256": "cc66d8b3fba62ff2b21a0aa16dfff2a05bcb32c37b0bed0df5a516544eb4f850"
+          "sha256": "67fd6e857970c4df108f9a29d63f4559f6beae9086c68fa38620686dc65172d9"
         },
         {
-          "file": "part-867c9f5b6272e6e024314b7fd64782a7862fceeda063020bec403d70ac150e81.bin",
-          "bytes": 43717918,
-          "sha256": "867c9f5b6272e6e024314b7fd64782a7862fceeda063020bec403d70ac150e81"
+          "file": "part-ce15f53c15d44015aa800c83dda9d3bae6f2afba345c5f36bade2ce69e2e7144.bin",
+          "bytes": 44121182,
+          "sha256": "ce15f53c15d44015aa800c83dda9d3bae6f2afba345c5f36bade2ce69e2e7144"
         }
       ]
     }

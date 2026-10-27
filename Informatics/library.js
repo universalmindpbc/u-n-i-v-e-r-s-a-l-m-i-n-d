@@ -77,6 +77,35 @@
     const family = publication.publisherFamily || publicationAccess[id]?.publisherFamily || records.find(record => record.id === id || record.aliases.includes(id))?.publisherFamily;
     return journal && family === 'nature' && !/\bnature\b/i.test(journal) ? `${journal} (Nature Portfolio)` : journal;
   }
+  const sourceStatus = entry => ({'metadata-matched':'Metadata matched','metadata-reconciled':'Metadata reconciled','identifier-resolved':'Patent identifier resolved','identifier-conflict':'Identifier conflict','unresolved':'Identity unresolved','documentary-source':'Documentary source'}[entry.metadataStatus] || entry.metadataStatus);
+  function sourceProvenanceMarkup(paper) {
+    const record = records.find(r => r.id === (paper.recordId || paper.id) || r.aliases.includes(paper.recordId));
+    const refs = paper.sourceReferences || record?.sourceReferences || [];
+    if (!refs.length) return '';
+    return `<details class="source-provenance"><summary>Bibliography provenance · ${refs.map(e=>esc(e.ref)).join(', ')}</summary>${refs.map(e=>`<p><strong>${esc(e.ref)} · ${esc(sourceStatus(e))}</strong><br>${esc(e.sourceType)} · ${esc(e.claimReview)}</p>${e.corrections.map(c=>`<p>${esc(c)}</p>`).join('')}<p class="original-citation"><span class="eyebrow">Original bibliography wording · not independently appraised</span><br>${esc(e.originalCitation)}</p><p><a href="${esc(safeURL(e.sourceURL))}" target="_blank" rel="noopener noreferrer">Notion source ↗</a>${e.metadataURL ? ` · <a href="${esc(safeURL(e.metadataURL))}" target="_blank" rel="noopener noreferrer">Metadata record ↗</a>` : ''}</p>`).join('')}${record?.relatedVersions?.length ? `<p>Related publication versions: ${record.relatedVersions.map(v=>`<button class="text-button" data-record="${esc(v.recordId)}">${esc(v.ref)}</button>`).join(' · ')}</p>` : ''}</details>`;
+  }
+  function timelineMarkup(chapter) {
+    if (!chapter.timeline) return '';
+    return `<details class="technology-history"><summary>Technology timeline · ${chapter.timeline.length} milestones</summary><p>Historical descriptions from the patent bibliography; capability appraisal remains pending.</p><ol class="technology-timeline">${chapter.timeline.map(row=>`<li><span class="timeline-year">${esc(row.year)}</span><div><h4>${esc(row.entity)}</h4><p class="publication">${esc(row.technologyClass)}</p><p>${esc(row.description)}</p>${row.spectralBand ? `<p>${esc(row.spectralBand)}</p>` : ''}${row.correctionNote ? `<p class="summary-limitation">${esc(row.correctionNote)}</p>` : ''}<button class="text-button" data-record="${esc(row.recordId)}">${row.sourceReferences.map(esc).join(' · ')} →</button></div></li>`).join('')}</ol></details>`;
+  }
+  function sourceRegisterMarkup(chapter) {
+    if (!chapter.sourceRegister) return '';
+    return `<section class="source-register" id="chapter-source-register" aria-labelledby="source-register-heading"><p class="eyebrow">Complete bibliography</p><h3 id="source-register-heading">Source register</h3><p>229 non-patent entries · 11 patent entries. Repeated citations share publication records. The original numbering ends at 222, includes lettered references and has no NPL-111 entry.</p><p>Source annotations remain attributed bibliography wording. A metadata match confirms identity, not the scientific claim or strength of evidence.</p><p class="register-downloads"><a href="${esc(chapter.registerDownloads.json)}" download>Download JSON ↓</a><a href="${esc(chapter.registerDownloads.csv)}" download>Download CSV ↓</a></p><div class="register-controls"><label>Find a reference<input id="source-register-query" type="search" placeholder="Reference ID, title or author" autocomplete="off"></label><label>Source group<select id="source-register-type"><option value="">All 240 entries</option value="NPL">Non-patent literature</option><option value="PAT">Patents</option><option value="review">Identity review pending</option></select></label></div><p id="source-register-count" role="status">240 entries</p><div class="register-entries">${chapter.sourceRegister.map(e=>`<details data-source-reference="${esc(e.ref)}" data-review="${['unresolved','identifier-conflict'].includes(e.metadataStatus)}" data-search="${esc(normalize([e.ref,e.title,e.originalCitation,e.originalSection].join(' ')))}"><summary><span class="reference-id">${esc(e.ref)}</span> ${esc(e.title)}</summary><p>${esc(e.sourceType)} · ${esc(sourceStatus(e))}<br>${esc(e.claimReview)}</p><p class="publication">${esc(e.originalSection)} · ${esc(e.role)}</p>${e.corrections.map(c=>`<p>${esc(c)}</p>`).join('')}<p class="original-citation"><span class="eyebrow">Original bibliography wording · not independently appraised</span><br>${esc(e.originalCitation)}</p><p><button class="text-button" data-record="${esc(e.recordId)}">Open source details →</button> · <a href="${esc(safeURL(e.publicationURL))}" target="_blank" rel="noopener noreferrer">${['unresolved','identifier-conflict','documentary-source'].includes(e.metadataStatus) ? 'Original source link' : 'Public record'} ↗</a> · <a href="${esc(safeURL(e.sourceURL))}" target="_blank" rel="noopener noreferrer">Notion bibliography ↗</a></p></details>`).join('')}</div></section>`;
+  }
+  function filterSourceRegister() {
+    const query = $('#source-register-query');
+    if (!query) return;
+    const raw = query.value.trim(), terms = normalize(raw).split(' ').filter(Boolean), type = $('#source-register-type').value;
+    const exactRef = /^(?:NPL|PAT)[- ]\d+[a-z]?$/i.test(raw) ? raw.toUpperCase().replace(' ','-') : '';
+    let count=0;
+    document.querySelectorAll('[data-source-reference]').forEach(row=>{
+      const match = (!exactRef || row.dataset.sourceReference.toUpperCase()===exactRef) && (exactRef || terms.every(t=>row.dataset.search.includes(t))) && (!type || type==='review' ? !type || row.dataset.review==='true' : row.dataset.sourceReference.startsWith(type+'-'));
+      row.hidden=!match;if(match)count++;
+    });
+    $('#source-register-count').textContent=`${count} ${count===1 ? 'entry' : 'entries'}`;
+  }
+  document.addEventListener('input',event=>{if(event.target.id==='source-register-query')filterSourceRegister();});
+  document.addEventListener('change',event=>{if(event.target.id==='source-register-type')filterSourceRegister();});
   function paperMarkup(paper, heading = 'h4') {
     const quotes = paper.quotes || [];
     const review = paper.quotationReview;
@@ -90,11 +119,11 @@
       ${quotes.filter((q,index) => index !== review?.index).length ? `<blockquote cite="${esc(url)}">${quotes.map((q,index) => index === review?.index ? '' : `<p>${quoteHTML(q)}</p>`).join('')}</blockquote>` : ''}
       ${paper.summary ? `<div class="study-summary"><p class="eyebrow">Study summary</p><p>${esc(paper.summary)}</p>${paper.limitation ? `<p class="summary-limitation">${esc(paper.limitation)}</p>` : ''}</div>` : ''}
 
-      ${!paper.summary && paper.limitation ? `<p class="summary-limitation">${esc(paper.limitation)}</p>` : ''}${(paper.figures || []).map(figure => `<figure class="research-figure"><img src="${esc(safeURL(figure.src))}" alt="${esc(figure.caption)}" loading="lazy"><figcaption>${esc(figure.caption)}</figcaption></figure>`).join('')}${evidenceMarkup(paper.evidence)}${paper.studyDesignAssessment ? `<details class="study-methods design-assessment"><summary>Study design and blinding</summary><p>${esc(paper.studyDesignAssessment.basis)}</p><p>${paper.studyDesignAssessment.sources.map((source,index)=>`<a href="${esc(safeURL(source))}" target="_blank" rel="noopener noreferrer">${source.includes('clinicaltrials.gov') || source.includes('isrctn.com') ? 'Trial register' : `Study source ${index+1}`} ↗</a>`).join(' · ')}</p></details>` : ''}${bibliographyMarkup(paper)}
+      ${!paper.summary && paper.limitation ? `<p class="summary-limitation">${esc(paper.limitation)}</p>` : ''}${(paper.figures || []).map(figure => `<figure class="research-figure"><img src="${esc(safeURL(figure.src))}" alt="${esc(figure.caption)}" loading="lazy"><figcaption>${esc(figure.caption)}</figcaption></figure>`).join('')}${evidenceMarkup(paper.evidence)}${paper.studyDesignAssessment ? `<details class="study-methods design-assessment"><summary>Study design and blinding</summary><p>${esc(paper.studyDesignAssessment.basis)}</p><p>${paper.studyDesignAssessment.sources.map((source,index)=>`<a href="${esc(safeURL(source))}" target="_blank" rel="noopener noreferrer">${source.includes('clinicaltrials.gov') || source.includes('isrctn.com') ? 'Trial register' : `Study source ${index+1}`} ↗</a>`).join(' · ')}</p></details>` : ''}${bibliographyMarkup(paper)}${sourceProvenanceMarkup(paper)}
       <div class="paper-links"><a href="${esc(url)}" target="_blank" rel="noopener noreferrer">${url.includes('web.archive.org/web/') ? 'Read archived publication' : 'Read publication'} ↗</a><button class="text-button" data-paper-detail="${esc(paper.id)}">Citation details</button></div>
     </article>`;
   }
-  const paperCount = items => { const count = model.uniqueCount(items); return `${count.toLocaleString()} ${count === 1 ? 'paper' : 'papers'}`; };
+  const paperCount = items => { const count = model.uniqueCount(items); const noun=items.some(p=>p.sourceType) ? 'source' : 'paper'; return `${count.toLocaleString()} ${noun}${count===1 ? '' : 's'}`; };
   function renderStatistics() {
     const stats = model.statistics(records,collection);
     $('#collection-statistics').hidden = false;
@@ -122,10 +151,12 @@
     const chapterIndex = edition.chapters.indexOf(chapter);
     const previous = edition.chapters[chapterIndex - 1];
     const next = edition.chapters[chapterIndex + 1];
-    return `<div class="narrative-layout">${rail}<div class="chapter-reader"><div class="chapter-opening"><p class="eyebrow">${esc(collectionTitle(collection))} · CHAPTER ${String(chapter.number).padStart(2,'0')}</p><h2>${esc(chapter.title)}</h2><p class="paper-count">${paperCount(chapter.topics.flatMap(t=>t.papers))}</p></div>${chapter.topics.map(topic => `<section class="topic" id="topic-${topic.id}"><div class="topic-heading"><h3>${esc(topic.title)}</h3>${crosses(topic.trustScore,true)}</div><p class="paper-count">${paperCount(topic.papers)}${topicScoreStatus(topic)}</p>${topic.description ? `<p class="topic-description">${esc(topic.description)}</p>` : ''}${topic.papers.map(p => paperMarkup(p)).join('')}</section>`).join('')}<nav class="chapter-pagination" aria-label="Read another chapter">${previous ? `<a data-chapter="${previous.number}" href="${esc(route(previous.number))}">← ${esc(previous.title)}</a>` : `<a data-chapter="0" href="${esc(route())}">← Contents</a>`}${next ? `<a data-chapter="${next.number}" href="${esc(route(next.number))}">${esc(next.title)} →</a>` : `<a data-chapter="0" href="${esc(route())}">Back to contents ↑</a>`}</nav></div></div>`;
+    return `<div class="narrative-layout">${rail}<div class="chapter-reader"><div class="chapter-opening"><p class="eyebrow">${esc(collectionTitle(collection))} · CHAPTER ${String(chapter.number).padStart(2,'0')}</p><h2>${esc(chapter.title)}</h2><p class="paper-count">${paperCount(chapter.topics.flatMap(t=>t.papers))}</p>${(chapter.overview || []).map(p=>`<p class="chapter-overview">${esc(p)}</p>`).join('')}${chapter.sourceRegister ? '<p><a href="#chapter-source-register">Browse all 240 bibliography entries and downloads ↓</a></p>' : ''}</div>${chapter.topics.map(topic => `<section class="topic" id="topic-${topic.id}"><div class="topic-heading"><h3>${esc(topic.title)}</h3>${crosses(topic.trustScore,true)}</div><p class="paper-count">${paperCount(topic.papers)}${topicScoreStatus(topic)}</p>${topic.description ? `<p class="topic-description">${esc(topic.description)}</p>` : ''}${(topic.paragraphs || []).map(p=>`<p class="topic-description">${esc(p)}</p>`).join('')}${topic.id==='imaging-evolution' ? timelineMarkup(chapter) : ''}${topic.papers.map(p => paperMarkup(p)).join('')}</section>`).join('')}${sourceRegisterMarkup(chapter)}<nav class="chapter-pagination" aria-label="Read another chapter">${previous ? `<a data-chapter="${previous.number}" href="${esc(route(previous.number))}">← ${esc(previous.title)}</a>` : `<a data-chapter="0" href="${esc(route())}">← Contents</a>`}${next ? `<a data-chapter="${next.number}" href="${esc(route(next.number))}">${esc(next.title)} →</a>` : `<a data-chapter="0" href="${esc(route())}">Back to contents ↑</a>`}</nav></div></div>`;
   }
   function filter() {
     const q = normalize($('#query').value).split(' ').filter(Boolean);
+    const referenceMatch = $('#query').value.trim().match(/^(NPL|PAT)[- ]?(\d+[a-z]?)$/i);
+    const referenceQuery = referenceMatch ? `${referenceMatch[1]}-${referenceMatch[2]}`.toUpperCase() : '';
     const chosen = Object.fromEntries(multiFields.map(key=>[key,multi.values(key)]));
     const any = (key,test) => !chosen[key].length || chosen[key].some(test);
     filtered = records.filter(r => (collection==='all' || r.collections.includes(collection)) &&
@@ -135,7 +166,7 @@
       any('jadad',v=>model.matchesJadad(r,v)) && any('kind',v=>model.matchesStudy(r,v)) &&
       any('period',v=>v==='recent' && r.year>=2022 && r.year<=2026 || v==='older' && r.year && r.year<2022) &&
       any('trust',v=>model.matchesPaperTrust(r,Number(v))) &&
-      q.every(word=>r._search.includes(word)));
+      (referenceQuery ? (r.sourceReferences || []).some(e=>e.ref.toUpperCase()===referenceQuery) : q.every(word=>r._search.includes(word))));
     const sort = $('#sort').value;
     filtered.sort((a,b) => sort === 'title' ? a.title.localeCompare(b.title) : sort === 'newest' ? (b.year || 0)-(a.year || 0) : a.priority-b.priority || (b.year || 0)-(a.year || 0) || a.title.localeCompare(b.title));
     const active = Object.values(chosen).reduce((sum,values)=>sum+values.length,0);
@@ -209,7 +240,7 @@
     if (!record) return;
     const entry = selectedEntry(record);
     if (entry) return showPaper(entry,opener);
-    const paper = {id:record.id,recordId:record.id,title:record.title,journal:record.journal,year:record.year,authors:record.authors,design:record.design,urls:record.urls,quotes:record.quotes.map(text => [{text,emphasis:false}]),summary:record.summary,limitation:record.limitation,citationCount:record.citationSnapshot?.count ?? record.citationCount,citationSnapshot:record.citationSnapshot,studyDesignAssessment:record.studyDesignAssessment,paperTrustAssessment:record.paperTrustAssessment,sourcePages:[],doi:record.doi,pmid:record.pmid,evidence:record.evidence};
+    const paper = {id:record.id,recordId:record.id,title:record.title,journal:record.journal,year:record.year,authors:record.authors,design:record.design,urls:record.urls,quotes:record.quotes.map(text => [{text,emphasis:false}]),summary:record.summary,limitation:record.limitation,citationCount:record.citationSnapshot?.count ?? record.citationCount,citationSnapshot:record.citationSnapshot,studyDesignAssessment:record.studyDesignAssessment,paperTrustAssessment:record.paperTrustAssessment,sourcePages:[],sourceReferences:record.sourceReferences,sourceType:record.sourceType,doi:record.doi,pmid:record.pmid,evidence:record.evidence};
     showPaper(paper,opener);
   }
   function buildRecords(data) {
@@ -226,8 +257,8 @@
       const citationsByCollection = Object.fromEntries(collections.map(c=>[c,model.maximumCount([...chapterEntries.filter(p=>p.collection===c).map(p=>p.citationCount),...otherEntries.filter(a=>a.collection===c).map(a=>a.historicalCitationCount)])]));
       const topics = [...chapterEntries.map(p=>({key:p.collection+':'+p.topicId,title:p.topicTitle,collection:p.collection,trustScore:p.trustScore})),...otherEntries.map(a=>({key:a.collection+':'+a.sectionPage,title:a.section.replace(/^.*?\b[ivxlcdm]+\.\s*/i,''),collection:a.collection,trustScore:a.sectionGrade}))];
       const quotes = first ? first.quotes.filter((q,index) => index !== first.quotationReview?.index).map(quoteText) : otherEntries.flatMap(a => (a.originalNote || '').split('\n\n').filter(Boolean));
-      const result = {id:r.id,publicationKey:access.publicationKey,aliases:first?.aliases || [],title:first?.title || r.title,journal:access.journalLabel || first?.journal || r.journal || '',publisherFamily:access.publisherFamily || r.publisherFamily,publisherFamilyLabel:access.publisherFamilyLabel || r.publisherFamilyLabel,neurotransmitters:r.neurotransmitters || [],year:first?.year || r.year,authors:first?.authors || r.authors || '',design:r.studyDesignAssessment ? r.design : first?.design || r.sourceDesign || r.design || '',kind:r.kind,identityConflict:r.identityConflict || null,doi:access.doi || first?.doi || r.doi,pmid:access.pmid || first?.pmid || r.pmid,urls:access.urls || first?.urls || r.urls,collections,categories:r.categories || [],targets:r.targets || [],priority:r.priority ?? 1,quotes,summary:first?.summary || r.finding || r.portalNotes?.[0]?.finding || '',limitation:first?.limitation || r.limitation || r.portalNotes?.[0]?.limitation || '',citationCount:model.maximumCount(Object.values(citationsByCollection)),citationSnapshot:r.citationSnapshot,studyDesignAssessment:r.studyDesignAssessment,paperTrustAssessment:r.paperTrustAssessment,citationsByCollection,topics,journalKey:access.journalKey ?? model.journalKey(first?.journal || r.journal),journalLabel:access.journalLabel || first?.journal || r.journal || '',topicScores:[...new Set([...chapterEntries.map(p=>p.trustScore),...otherEntries.map(a=>a.sectionGrade)].filter(Boolean))],soundEntries,chapterEntries,evidence:r.evidence,jadad:model.jadadStatus(r)};
-      result._search = normalize([result.title,result.journal,result.publisherFamilyLabel,...result.neurotransmitters,result.authors,result.design,result.doi,result.pmid,...result.quotes,result.summary,result.limitation,...result.targets,...result.categories,...chapterEntries.map(p=>p.topicTitle+' '+p.quotes.map(quoteText).join(' ')+' '+(p.bibliography || []).map(b=>b.text).join(' ')),...otherEntries.map(a=>a.originalNote),JSON.stringify(r.evidence || {})].join(' '));
+      const result = {id:r.id,publicationKey:access.publicationKey,aliases:[...new Set([...(r.aliases || []),...(first?.aliases || [])])],...(r.sourceReferences ? {sourceReferences:r.sourceReferences,sourceType:r.sourceType,sourceVerification:r.sourceVerification,sourceCollection:r.sourceCollection,relatedVersions:r.relatedVersions} : {}),title:first?.title || r.title,journal:access.journalLabel || first?.journal || r.journal || '',publisherFamily:access.publisherFamily || r.publisherFamily,publisherFamilyLabel:access.publisherFamilyLabel || r.publisherFamilyLabel,neurotransmitters:r.neurotransmitters || [],year:first?.year || r.year,authors:first?.authors || r.authors || '',design:r.studyDesignAssessment ? r.design : first?.design || r.sourceDesign || r.design || '',kind:r.kind,identityConflict:r.identityConflict || null,doi:access.doi || first?.doi || r.doi,pmid:access.pmid || first?.pmid || r.pmid,urls:access.urls || first?.urls || r.urls,collections,categories:r.categories || [],targets:r.targets || [],priority:r.priority ?? 1,quotes,summary:first?.summary || r.finding || r.portalNotes?.[0]?.finding || '',limitation:first?.limitation || r.limitation || r.portalNotes?.[0]?.limitation || '',citationCount:model.maximumCount(Object.values(citationsByCollection)),citationSnapshot:r.citationSnapshot,studyDesignAssessment:r.studyDesignAssessment,paperTrustAssessment:r.paperTrustAssessment,citationsByCollection,topics,journalKey:access.journalKey ?? model.journalKey(first?.journal || r.journal),journalLabel:access.journalLabel || first?.journal || r.journal || '',topicScores:[...new Set([...chapterEntries.map(p=>p.trustScore),...otherEntries.map(a=>a.sectionGrade)].filter(Boolean))],soundEntries,chapterEntries,evidence:r.evidence,jadad:model.jadadStatus(r)};
+      result._search = normalize([result.title,result.sourceCollection,JSON.stringify(result.sourceReferences),result.journal,result.publisherFamilyLabel,...result.neurotransmitters,result.authors,result.design,result.doi,result.pmid,...result.quotes,result.summary,result.limitation,...result.targets,...result.categories,...chapterEntries.map(p=>p.topicTitle+' '+p.quotes.map(quoteText).join(' ')+' '+(p.bibliography || []).map(b=>b.text).join(' ')),...otherEntries.map(a=>a.originalNote),JSON.stringify(r.evidence || {})].join(' '));
       return result;
     }).filter(Boolean));
   }
@@ -293,9 +324,9 @@
   async function load() {
     $('#load-error').hidden = true;
     try {
-      const responses = await Promise.all(['sound-edition','library','publication-access','language-edition','general-edition','mindfulness-expansion','vision-edition','vision-expansion','clinical-conditions','nature-expansion','fulltext-availability','fibonacci-expansion'].map(name=>fetch('library-data/'+name+'.json?v=trust-20261027')));
+      const responses = await Promise.all(['sound-edition','library','publication-access','language-edition','general-edition','mindfulness-expansion','vision-edition','vision-expansion','clinical-conditions','nature-expansion','fulltext-availability','fibonacci-expansion','hyperspectral-expansion'].map(name=>fetch('library-data/'+name+'.json?v=hyperspectral-20261027')));
       if (responses.some(response => !response.ok)) throw new Error('Research unavailable');
-      const [sound,data,access,language,general,expansion,vision,visionExpansion,conditions,natureExpansion,fulltexts,fibonacciExpansion] = await Promise.all(responses.map(response=>response.json()));
+      const [sound,data,access,language,general,expansion,vision,visionExpansion,conditions,natureExpansion,fulltexts,fibonacciExpansion,hyperspectralExpansion] = await Promise.all(responses.map(response=>response.json()));
       fullTextAccess=fulltexts.records;
       if (!Array.isArray(sound.chapters) || !Array.isArray(data.records)) throw new Error('Invalid research data');
       publicationAccess = {...access.records,...visionExpansion.publicationAccess};
@@ -304,7 +335,7 @@
       $('#condition').innerHTML='<option value="">All conditions and symptoms</option>'+conditions.taxonomy.map(t=>`<option value="${esc(t.id)}">${esc(t.label)}</option>`).join('');
       editions = {sound,language,general,vision};
       const byId = new Map(data.records.map(r=>[r.id,r]));
-      for (const additional of [...expansion.records,...visionExpansion.records,...natureExpansion.records,...fibonacciExpansion.records]) {
+      for (const additional of [...expansion.records,...visionExpansion.records,...natureExpansion.records,...fibonacciExpansion.records,...hyperspectralExpansion.records]) {
         const existing = byId.get(additional.id);
         byId.set(additional.id,{...existing,...additional,collections:[...new Set([...(existing?.collections || []),...additional.collections])],archiveEntries:existing?.archiveEntries || []});
       }
@@ -328,6 +359,7 @@
       if (params.get('paper') && papers.some(p=>p.id===params.get('paper'))) showPaper(papers.find(p=>p.id===params.get('paper')));
       else if (params.get('record')) openRecord(params.get('record'));
     } catch (error) {
+      console.error('Research library load failed',error);
       $('#load-error').hidden = false; $('#reading-content').innerHTML = ''; $('#search-view').hidden = true;
     }
   }

@@ -1,0 +1,1330 @@
+{
+  "sourcePages": [
+    {
+      "id": "3807b9c9-9c56-8086-8411-e11d24dda0f4",
+      "url": "https://app.notion.com/p/3807b9c99c5680868411e11d24dda0f4?pvs=204",
+      "lastEditedAt": "2026-06-18T03:09:12.285Z",
+      "textSHA256": "8b30c1562d8f6bf8b3c3317ee1bd5ee5cd5da9f1620c5cbf11105d515889519e"
+    },
+    {
+      "id": "3807b9c9-9c56-8059-9be7-d8337c817b15",
+      "url": "https://app.notion.com/p/3807b9c99c5680599be7d8337c817b15?pvs=204",
+      "lastEditedAt": "2026-06-15T01:30:00.511Z",
+      "textSHA256": "de92c6fdee64710419b9a02c2084b4c4e6929aede1f6b721cbe1429901582600"
+    }
+  ],
+  "npl": [
+    {
+      "ref": "NPL-1",
+      "citation": "Kwon S, Kim YL (2025). \"Hyperspectral Information Extraction From Standard Photographs With Full Resolution.\" <i>IEEE Transactions on Image Processing</i> ([ieeexplore.ieee.org/document/11125864](http://ieeexplore.ieee.org/document/11125864)) — 1–2 nm spectral resolution from standard RGB smartphone camera via colour reference chart; same laboratory demonstrated smartphone HSI for blood haemoglobin and tissue oximetry via \"hyperspectral learning\" (<i>PNAS Nexus</i>)",
+      "section": "Hyperspectral Imaging via Smartphone"
+    },
+    {
+      "ref": "NPL-2",
+      "citation": "Arad B, Ben-Shahar O (2016). \"Sparse Recovery of Hyperspectral Signal from Natural RGB Images.\" <i>ECCV 2016</i>",
+      "section": "Hyperspectral Imaging via Smartphone"
+    },
+    {
+      "ref": "NPL-3",
+      "citation": "Xiong Z et al. (2017). \"HSCNN: CNN-Based Hyperspectral Image Recovery from Spectrally Undersampled Projections.\" <i>ICCV Workshop 2017</i>",
+      "section": "Hyperspectral Imaging via Smartphone"
+    },
+    {
+      "ref": "NPL-4",
+      "citation": "Verkruysse W, Svaasand LO, Nelson JS (2008). \"Remote plethysmographic imaging using ambient light.\" <i>Optics Express</i> 16(26):21434–21445",
+      "section": "Remote Photoplethysmography"
+    },
+    {
+      "ref": "NPL-5",
+      "citation": "Wang W et al. (2017). \"Algorithmic Principles of Remote PPG.\" <i>IEEE Trans Biomedical Engineering</i> 64(7):1479–1491",
+      "section": "Remote Photoplethysmography"
+    },
+    {
+      "ref": "NPL-6",
+      "citation": "Zak PJ, Kurzban R, Matzner WT (2005). \"Oxytocin is associated with human trustworthiness.\" <i>Hormones and Behavior</i> 48(5):522–527",
+      "section": "Oxytocin Inference via Heart Rate"
+    },
+    {
+      "ref": "NPL-7",
+      "citation": "Feldman R (2012). \"Oxytocin and social affiliation in humans.\" <i>Hormones and Behavior</i> 61(3):380–391",
+      "section": "Oxytocin Inference via Heart Rate"
+    },
+    {
+      "ref": "NPL-8",
+      "citation": "Chen KH, Boettiger AN, Moffitt JR et al. (2015). \"Spatially resolved, highly multiplexed RNA profiling in single cells.\" <i>Science</i> 348(6233):aaa6090",
+      "section": "Hyper-Seq / Transcriptomics"
+    },
+    {
+      "ref": "NPL-9",
+      "citation": "Xie Y, Habibalahi A, Anwer AG, Wahi K, Gatt C, Johansson EMV, Holst J, Goldys E, Zanini F (2024). \"Integration of hyperspectral imaging and transcriptomics from individual cells with HyperSeq.\" <i>bioRxiv</i> preprint, doi:10.1101/2024.01.27.577536",
+      "section": "Hyper-Seq / Transcriptomics"
+    },
+    {
+      "ref": "NPL-9b",
+      "citation": "Xie Y, Habibalahi A, Anwer AG, Wahi K, Bailey J, Lin F, Gatt C, Johansson EMV, Chtanova T, Holst J, Goldys E, Zanini F (2025). \"Integration of hyperspectral imaging and transcriptomics from individual cells with SpectralSeq.\" <i>Genome Research</i> 35(8):1809–1820 (PMC12315715) — Peer-reviewed published version of NPL-9; renamed from HyperSeq to SpectralSeq during peer review",
+      "section": "Hyper-Seq / Transcriptomics"
+    },
+    {
+      "ref": "NPL-10",
+      "citation": "Cole SW, Yan W, Galic Z et al. (2005). \"Expression-based monitoring of transcription factor activity: The TELiS database.\" <i>Bioinformatics</i> 21(6):803–810",
+      "section": "TeLIS Framework"
+    },
+    {
+      "ref": "NPL-11",
+      "citation": "Cole SW et al. (2015). \"Myeloid differentiation architecture of leukocyte transcriptome dynamics in perceived social isolation.\" <i>PNAS</i> 112(49):15142–15147",
+      "section": "TeLIS Framework"
+    },
+    {
+      "ref": "NPL-12",
+      "citation": "Cole SW (2019). \"The Conserved Transcriptional Response to Adversity.\" <i>Current Opinion in Behavioral Sciences</i> 28:31–37",
+      "section": "TeLIS Framework"
+    },
+    {
+      "ref": "NPL-13",
+      "citation": "Cole SW et al. (2007). \"Social regulation of gene expression in human leukocytes.\" <i>Genome Biology</i> 8(9):R189",
+      "section": "TeLIS Framework"
+    },
+    {
+      "ref": "NPL-14",
+      "citation": "Cao Y et al. (2019). \"Quantum Chemistry in the Age of Quantum Computing.\" <i>Chemical Reviews</i> 119(19):10856–10915",
+      "section": "Quantum Computing in Genomics"
+    },
+    {
+      "ref": "NPL-15",
+      "citation": "Fedorov DA et al. (2022). \"VQE method: A short survey and recent developments.\" <i>Materials Theory</i> 6:2",
+      "section": "Quantum Computing in Genomics"
+    },
+    {
+      "ref": "NPL-16",
+      "citation": "McCraty R, Shaffer F (2015). \"Heart Rate Variability: New Perspectives on Physiological Mechanisms, Assessment of Self-regulatory Capacity, and Health Risk.\" <i>Global Advances in Health and Medicine</i> 4(1):46–61",
+      "section": "Prescription Sound / Biofeedback"
+    },
+    {
+      "ref": "NPL-17",
+      "citation": "Lehrer PM, Gevirtz R (2014). \"Heart rate variability biofeedback: how and why does it work?\" <i>Frontiers in Psychology</i> 5:756",
+      "section": "Prescription Sound / Biofeedback"
+    },
+    {
+      "ref": "NPL-18",
+      "citation": "Azaria A, Ekblaw A, Vieira T, Lippman A (2016). \"MedRec: Using Blockchain for Medical Data Access and Permission Management.\" <i>IEEE 2nd International Conference on Open and Big Data</i>",
+      "section": "Blockchain-Based Mental Health Rewards"
+    },
+    {
+      "ref": "NPL-19",
+      "citation": "Romero-Fernandez W, Borroto-Escuela DO, Agnati LF, Fuxe K (2013). \"Evidence for the existence of dopamine D2-oxytocin receptor heteromers in the ventral and dorsal striatum with facilitatory receptor–receptor interactions.\" <i>Molecular Psychiatry</i> 18:849–850",
+      "section": "OXTR Modulation of DRD2/SLC6A4"
+    },
+    {
+      "ref": "NPL-20",
+      "citation": "Chen L et al. (2023). \"The oxytocin receptor rs2254298 polymorphism and alcohol withdrawal symptoms: a gene–environment interaction in mood disorders.\" <i>Frontiers in Psychiatry</i> 14:1085429",
+      "section": "OXTR Modulation of DRD2/SLC6A4"
+    },
+    {
+      "ref": "NPL-21",
+      "citation": "Geisel O et al. (2025). \"The Role of Oxytocin and Oxytocin Gene Receptor Methylation During Withdrawal Therapy in Males With Alcohol Use Disorder.\" <i>Alcoholism: Clinical and Experimental Research</i> (PMC12257889)",
+      "section": "OXTR Modulation of DRD2/SLC6A4"
+    },
+    {
+      "ref": "NPL-22",
+      "citation": "Bakermans-Kranenburg MJ, van Ijzendoorn MH (2008). \"Oxytocin receptor (OXTR) and serotonin transporter (5-HTT) genes associated with observed parenting.\" <i>Social Cognitive and Affective Neuroscience</i> 3(2):128–134",
+      "section": "OXTR Modulation of DRD2/SLC6A4"
+    },
+    {
+      "ref": "NPL-23",
+      "citation": "Montag C, Fiebach CJ, Kirsch P, Reuter M (2011). \"Interaction of 5-HTTLPR and a Variation on the Oxytocin Receptor Gene Influences Negative Emotionality.\" <i>Biological Psychiatry</i> 69(6):601–603",
+      "section": "OXTR Modulation of DRD2/SLC6A4"
+    },
+    {
+      "ref": "NPL-24",
+      "citation": "Tong WH et al. (2014). \"Variation in the oxytocin receptor gene is associated with behavioral and neural correlates of empathic accuracy.\" <i>Frontiers in Behavioral Neuroscience</i> 8:423",
+      "section": "OXTR Modulation of DRD2/SLC6A4"
+    },
+    {
+      "ref": "NPL-25",
+      "citation": "Gutkowska J, Jankowski M (2020). \"Oxytocin Receptor Signaling in Vascular Function and Stroke.\" <i>Frontiers in Neuroscience</i> 14:574499 (PMC 7544744)",
+      "section": "OXTR Influence on Facial Microcirculation"
+    },
+    {
+      "ref": "NPL-26",
+      "citation": "Deing V et al. (2012). \"Oxytocin modulates proliferation and stress responses of human skin cells.\" <i>Experimental Dermatology</i> (PMID 23711064)",
+      "section": "OXTR Influence on Facial Microcirculation"
+    },
+    {
+      "ref": "NPL-27",
+      "citation": "Yin J et al. (2022). \"Structural basis for the activation and ligand recognition of the human oxytocin receptor.\" <i>Nature Communications</i> 13:4153",
+      "section": "OXTR Influence on Facial Microcirculation"
+    },
+    {
+      "ref": "NPL-28",
+      "citation": "Tabak BA et al. (2023). \"Advances in human oxytocin measurement: challenges and proposed solutions.\" <i>Molecular Psychiatry</i> (Nature) 28:1–14",
+      "section": "OXTR Influence on Facial Microcirculation"
+    },
+    {
+      "ref": "NPL-29",
+      "citation": "Busnelli M, Bhatt S (2022). \"The oxytocin receptor represents a key hub in the GPCR signaling network.\" <i>Frontiers in Endocrinology</i> (PMC 9812438)",
+      "section": "OXTR Influence on Facial Microcirculation"
+    },
+    {
+      "ref": "NPL-30",
+      "citation": "Cataldo I et al. (2024). \"The Multifaceted Role of Oxytocinergic System and OXTR Gene.\" <i>International Journal of Molecular Sciences</i> (PMC 10796195)",
+      "section": "OXTR Influence on Facial Microcirculation"
+    },
+    {
+      "ref": "NPL-31",
+      "citation": "Higa KT et al. (2002). \"Baroreflex control of heart rate by oxytocin in the solitary-vagal complex.\" <i>American Journal of Physiology – Regulatory, Integrative and Comparative Physiology</i> 282(2):R537–R545 (PMID 11792664)",
+      "section": "Baroreflex Modulation by Oxytocin"
+    },
+    {
+      "ref": "NPL-32",
+      "citation": "Martins AS et al. (2016). \"Ovarian Hormone Deprivation Reduces Oxytocin Expression in Paraventricular Nucleus.\" <i>Frontiers in Physiology</i> (PMC 5063006)",
+      "section": "Baroreflex Modulation by Oxytocin"
+    },
+    {
+      "ref": "NPL-33",
+      "citation": "Michelini LC et al. (2003). \"Oxytocinergic regulation of cardiovascular function: studies in oxytocin-deficient mice.\" <i>American Journal of Physiology – Heart and Circulatory Physiology</i> 284(6):H2269–H2276",
+      "section": "Baroreflex Modulation by Oxytocin"
+    },
+    {
+      "ref": "NPL-34",
+      "citation": "Haanwinckel MA et al. (1995). \"Baroreceptor influences on oxytocin and vasopressin secretion.\" <i>Experimental Physiology</i> (PMID 2914733)",
+      "section": "Baroreflex Modulation by Oxytocin"
+    },
+    {
+      "ref": "NPL-35",
+      "citation": "Japundžić-Žigon N et al. (2021). \"Complementary Role of Oxytocin and Vasopressin in Cardiovascular Regulation.\" <i>International Journal of Molecular Sciences</i> (PMC 8584236)",
+      "section": "Baroreflex Modulation by Oxytocin"
+    },
+    {
+      "ref": "NPL-36",
+      "citation": "Stoop R (2012). \"Neuromodulation by Oxytocin and Vasopressin.\" <i>Frontiers in Neuroscience</i> 6:335",
+      "section": "Baroreflex Modulation by Oxytocin"
+    },
+    {
+      "ref": "NPL-37",
+      "citation": "Wsol A et al. (2014). \"Overexpression of oxytocin receptors in the hypothalamic PVN enhances cardiovascular regulation.\" <i>Journal of Physiology and Pharmacology</i> (PMC 4209146)",
+      "section": "Baroreflex Modulation by Oxytocin"
+    },
+    {
+      "ref": "NPL-38",
+      "citation": "Norcliffe-Kaufmann L et al. (2022). \"Evaluation and Diagnosis of Afferent Baroreflex Failure.\" <i>Clinical Autonomic Research</i> (PMC 8761245)",
+      "section": "Baroreflex Modulation by Oxytocin"
+    },
+    {
+      "ref": "NPL-39",
+      "citation": "Lorthois S, Bhatt S (2022). \"Beyond the Baroreflex: A New Measure of Autonomic Regulation.\" <i>Frontiers in Network Physiology</i> 2:891604",
+      "section": "Baroreflex Modulation by Oxytocin"
+    },
+    {
+      "ref": "NPL-40",
+      "citation": "Fadel PJ (2015). \"Exercise-Induced Modulation of Baroreflex Control of Sympathetic Nerve Activity.\" <i>Frontiers in Neuroscience</i> 9:493",
+      "section": "Baroreflex Modulation by Oxytocin"
+    },
+    {
+      "ref": "NPL-41",
+      "citation": "Reisert M et al. (2018). \"Baroreflex functionality in the eye of diffusion tensor imaging.\" <i>NeuroImage: Clinical</i> (PMC 6312450)",
+      "section": "Baroreflex Modulation by Oxytocin"
+    },
+    {
+      "ref": "NPL-42",
+      "citation": "Lancaster K, Goldbeck L, Puglia MH, Morris JP, Connelly JJ (2018). \"DNA methylation of OXTR is associated with parasympathetic nervous system activity and amygdala morphology.\" <i>Social Cognitive and Affective Neuroscience</i> 13(11):1155–1163 (PMID 30257007; PMC6234329)",
+      "section": "Baroreflex Modulation by Oxytocin"
+    },
+    {
+      "ref": "NPL-43",
+      "citation": "Wei J et al. (2018). \"Transdermal optical imaging revealed different spatiotemporal patterns of facial cardiovascular activities.\" <i>Scientific Reports</i> (Nature) 8:10588",
+      "section": "Detectability by HSI / Optical Imaging"
+    },
+    {
+      "ref": "NPL-44",
+      "citation": "Chin MS et al. (2023). \"Detecting Changes in Tissue Perfusion With Hyperspectral Imaging.\" <i>Advances in Wound Care</i> (PMC 10209500)",
+      "section": "Detectability by HSI / Optical Imaging"
+    },
+    {
+      "ref": "NPL-45",
+      "citation": "Weingarten MS et al. (2021). \"New evidence from hyperspectral imaging analysis on the effect of wound dressings.\" <i>International Wound Journal</i> (PMID 34436694)",
+      "section": "Detectability by HSI / Optical Imaging"
+    },
+    {
+      "ref": "NPL-46",
+      "citation": "Wisotzky EL et al. (2024). \"Investigation on the influence of the skin tone on hyperspectral imaging.\" <i>Scientific Reports</i> (Nature) 14:14349",
+      "section": "Detectability by HSI / Optical Imaging"
+    },
+    {
+      "ref": "NPL-47",
+      "citation": "Barberio M et al. (2022). \"Imaging perfusion changes in oncological clinical applications by hyperspectral imaging.\" <i>Journal of Biomedical Optics</i> (PMID 36503709)",
+      "section": "Detectability by HSI / Optical Imaging"
+    },
+    {
+      "ref": "NPL-48",
+      "citation": "Chen H et al. (2022). \"Review on the Application of Hyperspectral Imaging Technology of Microbiological and Chemical Properties of Food.\" <i>Frontiers in Bioengineering and Biotechnology</i> 10:906728",
+      "section": "Detectability by HSI / Optical Imaging"
+    },
+    {
+      "ref": "NPL-49",
+      "citation": "Yang Y et al. (2019). \"Detecting Happiness Using Hyperspectral Imaging Technology.\" <i>Computational Intelligence and Neuroscience</i> 2019:1965789",
+      "section": "Detectability by HSI / Optical Imaging"
+    },
+    {
+      "ref": "NPL-50",
+      "citation": "Ishak WW et al. (2011). \"A novel role of oxytocin: Oxytocin-induced well-being in humans.\" <i>International Journal of Psychiatry in Medicine</i> (PMC 6784812)",
+      "section": "OXTR Influence on Facial Microcirculation"
+    },
+    {
+      "ref": "NPL-51",
+      "citation": "Bhatt S, Young KA (2013). \"Considerations in the development of oxytocin-based therapeutics.\" <i>Frontiers in Neuroscience</i> 7:35",
+      "section": "OXTR Influence on Facial Microcirculation"
+    },
+    {
+      "ref": "NPL-52",
+      "citation": "Peled-Avron L et al. (2024). \"Effects of chronic intranasal oxytocin on visual attention to faces.\" <i>Psychopharmacology</i> (PMC 11699979)",
+      "section": "OXTR Influence on Facial Microcirculation"
+    },
+    {
+      "ref": "NPL-53",
+      "citation": "Gao S et al. (2018). \"Effects of Oxytocin on Facial Expression and Identity Working Memory.\" <i>Frontiers in Pharmacology</i> (PMC 5913342)",
+      "section": "OXTR Influence on Facial Microcirculation"
+    },
+    {
+      "ref": "NPL-54",
+      "citation": "Jankowski M et al. (2020). \"The Role of Oxytocin in Cardiovascular Protection.\" <i>Frontiers in Psychology</i> 11:2139",
+      "section": "OXTR Influence on Facial Microcirculation"
+    },
+    {
+      "ref": "NPL-55",
+      "citation": "Zhang Y et al. (2024). \"Hyperspectral imaging for non-invasive blood oxygen saturation measurement.\" <i>Computers in Biology and Medicine</i>",
+      "section": "Detectability by HSI / Optical Imaging"
+    },
+    {
+      "ref": "NPL-56",
+      "citation": "Hellmann T et al. (2023). \"Evaluation of hyperspectral imaging to quantify perfusion changes.\" <i>Lasers in Surgery and Medicine</i> 55(5):468–476",
+      "section": "Detectability by HSI / Optical Imaging"
+    },
+    {
+      "ref": "NPL-57",
+      "citation": "Goodman RP, Schaap IAT, Tardin CF et al. (2005). \"Rapid chiral assembly of rigid DNA building blocks for molecular nanofabrication.\" <i>Science</i> 310(5754):1661–1665 — Landmark: Turberfield's original single-step DNA tetrahedron self-assembly",
+      "section": "Platonic Geometries / DNA Tetrahedrons"
+    },
+    {
+      "ref": "NPL-58",
+      "citation": "Li J, Pei H, Zhu B et al. (2011). \"Self-assembled multivalent DNA nanostructures for noninvasive intracellular delivery of immunostimulatory CpG oligonucleotides.\" <i>ACS Nano</i> 5(11):8783–8789 — Landmark: first CpG delivery via DNA tetrahedron",
+      "section": "Platonic Geometries / DNA Tetrahedrons"
+    },
+    {
+      "ref": "NPL-59",
+      "citation": "Lee H, Lytton-Jean AKR, Chen Y et al. (2012). \"Molecularly self-assembled nucleic acid nanoparticles for targeted in vivo siRNA delivery.\" <i>Nature Nanotechnology</i> 7(6):389–393 — Landmark: siRNA delivery via DNA tetrahedron extending in vivo half-life",
+      "section": "Platonic Geometries / DNA Tetrahedrons"
+    },
+    {
+      "ref": "NPL-60",
+      "citation": "Zhang T et al. (2024). \"Revolutionizing cancer therapy using tetrahedral DNA nanostructures as intelligent drug delivery systems.\" <i>Nanoscale Advances</i> (RSC Publishing) (PMC 11265600)",
+      "section": "Platonic Geometries / DNA Tetrahedrons"
+    },
+    {
+      "ref": "NPL-61",
+      "citation": "Hu Y, Chen Z, Zhang H et al. (2017). \"Development of DNA tetrahedron-based drug delivery systems.\" <i>Drug Delivery</i> 24(1):1295–1301 (PMC 8241089)",
+      "section": "Platonic Geometries / DNA Tetrahedrons"
+    },
+    {
+      "ref": "NPL-62",
+      "citation": "Angell C, Xie S, Zhang L, Chen Y (2016). \"DNA Nanotechnology for Cancer Therapy.\" <i>Journal of Biomedical Nanotechnology</i> 12(6):1101–1116 (PMC 4805665)",
+      "section": "Platonic Geometries / DNA Tetrahedrons"
+    },
+    {
+      "ref": "NPL-63",
+      "citation": "Zhang M, Zhang X, Tian T et al. (2022). \"Applications of tetrahedral DNA nanostructures in wound repair and tissue regeneration.\" <i>Military Medical Research</i> 9:12 (PMC 8912983)",
+      "section": "Platonic Geometries / DNA Tetrahedrons"
+    },
+    {
+      "ref": "NPL-64",
+      "citation": "Liu Y, Sun Y, Li S et al. (2022). \"Advances in regenerative medicine applications of tetrahedral framework nucleic acid-based nanomaterials: an expert consensus recommendation.\" <i>International Journal of Oral Science</i> (Nature) 14:51",
+      "section": "Platonic Geometries / DNA Tetrahedrons"
+    },
+    {
+      "ref": "NPL-65",
+      "citation": "Liu J, Song L, Liu S et al. (2019). \"DNA Nanostructure as an Efficient Drug Delivery Platform for Immunotherapy.\" <i>Frontiers in Pharmacology</i> 10:1585",
+      "section": "Platonic Geometries / DNA Tetrahedrons"
+    },
+    {
+      "ref": "NPL-66",
+      "citation": "Jiang Q, Song C, Nangreave J et al. (2012). \"DNA Origami as a Carrier for Circumvention of Drug Resistance.\" <i>Journal of the American Chemical Society</i> 134(32):13396–13403 — Landmark: DNA nanostructures overcoming drug resistance in cancer",
+      "section": "Platonic Geometries / DNA Tetrahedrons"
+    },
+    {
+      "ref": "NPL-67",
+      "citation": "Xia K, Kong H, Cui Y et al. (2022). \"Systematic study in mammalian cells showing no adverse response to tetrahedral DNA nanostructure.\" <i>ACS Applied Materials & Interfaces</i> 10(18):15442–15452 (PMC 6032219) — Biocompatibility validation",
+      "section": "Platonic Geometries / DNA Tetrahedrons"
+    },
+    {
+      "ref": "NPL-68",
+      "citation": "Yan J, Chen J, Zhang N et al. (2020). \"Mitochondria-targeted tetrahedral DNA nanostructures for doxorubicin delivery and enhancement of apoptosis.\" <i>Journal of Materials Chemistry B</i> (RSC Publishing)",
+      "section": "Platonic Geometries / DNA Tetrahedrons"
+    },
+    {
+      "ref": "NPL-69",
+      "citation": "Tian T, Li J, Xie C et al. (2023). \"Targeted imaging of brain tumors with a framework nucleic acid probe.\" <i>ACS Applied Materials & Interfaces</i> 15(7):9223–9232 — TDN for neurological disease imaging",
+      "section": "Platonic Geometries / DNA Tetrahedrons"
+    },
+    {
+      "ref": "NPL-70",
+      "citation": "Li Q, Zhao D, Shao X et al. (2017). \"Aptamer-modified tetrahedral DNA nanostructure for tumor-targeted drug delivery.\" <i>ACS Applied Materials & Interfaces</i> 9(42):36695–36701 — Aptamer-functionalised TDN for targeted oncology",
+      "section": "Platonic Geometries / DNA Tetrahedrons"
+    },
+    {
+      "ref": "NPL-71",
+      "citation": "Ma W, Yang Y, Zhu J et al. (2022). \"Biomimetic nanoerythrosome-coated aptamer–DNA tetrahedron/maytansine conjugates: pH-responsive drug release, targeted delivery and synergistic treatment of cancer.\" <i>Nature Communications</i> — DNA tetrahedron conjugate for synergistic cancer therapy",
+      "section": "Platonic Geometries / DNA Tetrahedrons"
+    },
+    {
+      "ref": "NPL-72",
+      "citation": "Coleman JA, Green EM, Gouaux E (2016). \"X-ray structures and mechanism of the human serotonin transporter.\" <i>Nature</i> 532(7599):334–339",
+      "section": "Gene-Correlated Platonic Solid Inference Vectors"
+    },
+    {
+      "ref": "NPL-73",
+      "citation": "Pellissier LP et al. (2011). \"G protein activation by serotonin type 4 receptor dimers.\" <i>Journal of Biological Chemistry</i> 286(12):9985–9997",
+      "section": "Gene-Correlated Platonic Solid Inference Vectors"
+    },
+    {
+      "ref": "NPL-74",
+      "citation": "Akimoto K, Hu A, Yamaguchi T, Kobayashi H (2018). \"Effect of 528 Hz Music on the Endocrine System and Autonomic Nervous System.\" <i>Health</i> (SCIRP) 10:1159–1170",
+      "section": "528 Hz Sound Frequency and Oxytocin Modulation"
+    },
+    {
+      "ref": "NPL-75",
+      "citation": "Peters ST, Bowen MT, Bohrer K, McGregor IS, Neumann ID (2017). \"Oxytocin inhibits ethanol consumption and ethanol-induced dopamine release in the nucleus accumbens.\" <i>Addiction Biology</i> 22(3):702–711",
+      "section": "Gene-Correlated Platonic Solid Inference Vectors"
+    },
+    {
+      "ref": "NPL-76",
+      "citation": "Cox BM, Bentzley BS, Regen-Tuero H, See RE, Reichel CM, Aston-Jones G (2017). \"Oxytocin acts in nucleus accumbens to attenuate methamphetamine seeking and demand.\" <i>Biological Psychiatry</i> 81(11):949–958",
+      "section": "Gene-Correlated Platonic Solid Inference Vectors"
+    },
+    {
+      "ref": "NPL-77",
+      "citation": "Pedersen CA, Smedley KL, Leserman J et al. (2013). \"Intranasal oxytocin blocks alcohol withdrawal in human subjects.\" <i>Alcoholism: Clinical and Experimental Research</i> 37(3):484–489",
+      "section": "Gene-Correlated Platonic Solid Inference Vectors"
+    },
+    {
+      "ref": "NPL-78",
+      "citation": "Hansson AC et al. (2018). \"Oxytocin reduces alcohol cue-reactivity in alcohol-dependent rats and humans.\" <i>Neuropsychopharmacology</i> 43(6):1235–1246",
+      "section": "Gene-Correlated Platonic Solid Inference Vectors"
+    },
+    {
+      "ref": "NPL-79",
+      "citation": "Joseph JE et al. (2019). \"Intranasal oxytocin attenuates cue-elicited reward-related brain activation in cocaine users.\" <i>NeuroImage: Clinical</i> 23:101839",
+      "section": "Gene-Correlated Platonic Solid Inference Vectors"
+    },
+    {
+      "ref": "NPL-80",
+      "citation": "Moeini M et al. (2019). \"Effect of intranasal oxytocin on heroin craving and withdrawal.\" <i>Journal of Clinical Psychopharmacology</i> 39(3):215–221",
+      "section": "Gene-Correlated Platonic Solid Inference Vectors"
+    },
+    {
+      "ref": "NPL-81",
+      "citation": "Mottolese R, Redouté J, Costes N, Le Bars D, Sirigu A (2014). \"Switching brain serotonin with oxytocin.\" <i>Proceedings of the National Academy of Sciences</i> 111(23):8637–8642",
+      "section": "Gene-Correlated Platonic Solid Inference Vectors"
+    },
+    {
+      "ref": "NPL-82",
+      "citation": "Yoshida M et al. (2009). \"Evidence that oxytocin exerts anxiolytic effects via oxytocin receptor expressed in serotonergic neurons in mice.\" <i>Journal of Neuroscience</i> 29(7):2259–2271",
+      "section": "Gene-Correlated Platonic Solid Inference Vectors"
+    },
+    {
+      "ref": "NPL-83",
+      "citation": "Dölen G, Darvishzadeh A, Huang KW, Malenka RC (2013). \"Social reward requires coordinated activity of nucleus accumbens oxytocin and serotonin.\" <i>Nature</i> 501(7466):179–184",
+      "section": "Gene-Correlated Platonic Solid Inference Vectors"
+    },
+    {
+      "ref": "NPL-84",
+      "citation": "Fuller RB (1975). <i>Synergetics: Explorations in the Geometry of Thinking.</i> New York: Macmillan. §§460.00–465.00 (Jitterbug Transformation)",
+      "section": "Gene-Correlated Platonic Solid Inference Vectors"
+    },
+    {
+      "ref": "NPL-85",
+      "citation": "Ball WWR, Coxeter HSM (1987). <i>Mathematical Recreations and Essays.</i> 13th ed. Dover. pp. 135–144",
+      "section": "Gene-Correlated Platonic Solid Inference Vectors"
+    },
+    {
+      "ref": "NPL-86",
+      "citation": "Coxeter HSM, Du Val P, Flather HT, Petrie JF (1938). <i>The Fifty-Nine Icosahedra.</i> University of Toronto Studies, Mathematical Series 6",
+      "section": "Gene-Correlated Platonic Solid Inference Vectors"
+    },
+    {
+      "ref": "NPL-87",
+      "citation": "Wenninger MJ (1971). <i>Polyhedron Models.</i> Cambridge University Press. pp. 37",
+      "section": "Gene-Correlated Platonic Solid Inference Vectors"
+    },
+    {
+      "ref": "NPL-88",
+      "citation": "Cromwell PR (1997). <i>Polyhedra.</i> Cambridge University Press. pp. 124, 152",
+      "section": "Gene-Correlated Platonic Solid Inference Vectors"
+    },
+    {
+      "ref": "NPL-89",
+      "citation": "Shin HJ et al. (2007). \"Exposure to Extremely Low Frequency Magnetic Fields Enhances Locomotor Activity via Activation of Dopamine D1-Like Receptors in Mice.\" <i>Journal of Pharmacological Sciences</i>",
+      "section": "Schumann Resonance, ELF, and Dopaminergic Modulation"
+    },
+    {
+      "ref": "NPL-90",
+      "citation": "Shaikh S et al. (2024). \"Increasing striatal dopamine release through repeated bouts of theta burst TMS of the left DLPFC.\" <i>Frontiers in Neuroscience</i>",
+      "section": "Schumann Resonance, ELF, and Dopaminergic Modulation"
+    },
+    {
+      "ref": "NPL-91",
+      "citation": "Ko JH et al. (2008). \"Theta burst stimulation-induced inhibition of dorsolateral prefrontal cortex reveals hemispheric asymmetry in striatal dopamine release during a set-shifting task.\" <i>European Journal of Neuroscience</i>",
+      "section": "Schumann Resonance, ELF, and Dopaminergic Modulation"
+    },
+    {
+      "ref": "NPL-92",
+      "citation": "Monte-Silva K et al. (2011). \"D2 Receptor Block Abolishes Theta Burst Stimulation-Induced Neuroplasticity in the Human Motor Cortex.\" <i>Neuropsychopharmacology</i> (PMC3158306)",
+      "section": "Schumann Resonance, ELF, and Dopaminergic Modulation"
+    },
+    {
+      "ref": "NPL-93",
+      "citation": "Aceves-Serrano L, Neva JL, Munro J, Parent M, Boyd LA, Doudet DJ (2022). \"Continuous but not intermittent theta burst stimulation decreases striatal dopamine release and cortical excitability.\" <i>Experimental Neurology</i> 354:114106 (PMID 35526596) — cTBS over left M1 acutely decreased dopamine release bilaterally in putamen; iTBS did not affect dopamine release. \\[Note: original citation attributed to \"Bhatt DK et al.\" — corrected to Aceves-Serrano L et al. as verified authors\\]",
+      "section": "Schumann Resonance, ELF, and Dopaminergic Modulation"
+    },
+    {
+      "ref": "NPL-94a",
+      "citation": "Strafella AP, Paus T, Barrett J, Dagher A (2001). \"Repetitive transcranial magnetic stimulation of the human prefrontal cortex induces dopamine release in the caudate nucleus.\" <i>Journal of Neuroscience</i> 21(15):RC157 (PMID 11459878)",
+      "section": "Schumann Resonance, ELF, and Dopaminergic Modulation"
+    },
+    {
+      "ref": "NPL-94b",
+      "citation": "Strafella AP, Paus T, Barrett J, Dagher A (2003). \"Striatal dopamine release induced by repetitive transcranial magnetic stimulation of the human motor cortex.\" <i>Brain</i> 126(12):2609–2615 (PMID 12937078)",
+      "section": "Schumann Resonance, ELF, and Dopaminergic Modulation"
+    },
+    {
+      "ref": "NPL-95",
+      "citation": "Wang C et al. (2008). \"Extremely low-frequency electromagnetic field exposure during morphine treatment on dopamine D2 receptor expression.\" <i>Neuroscience Letters</i>",
+      "section": "Schumann Resonance, ELF, and Dopaminergic Modulation"
+    },
+    {
+      "ref": "NPL-96a",
+      "citation": "Sandyk R (1992). \"Magnetic fields in the therapy of parkinsonism.\" <i>International Journal of Neuroscience</i> 66(3–4):209–235 (PMID 1305620) — Foundational report: picoTesla ELF magnetic fields produced sustained improvement in >20 Parkinson's patients",
+      "section": "Schumann Resonance, ELF, and Dopaminergic Modulation"
+    },
+    {
+      "ref": "NPL-96b",
+      "citation": "Sandyk R (1994). \"Treatment of Parkinson's disease with magnetic fields reduces the requirement for antiparkinsonian medications.\" <i>International Journal of Neuroscience</i> (PMID 7928105) — picoTesla MF reduced medication requirement",
+      "section": "Schumann Resonance, ELF, and Dopaminergic Modulation"
+    },
+    {
+      "ref": "NPL-96c",
+      "citation": "Sandyk R (1994). \"The effects of external picotesla range magnetic fields on the EEG in Parkinson's disease: a follow up study.\" <i>International Journal of Neuroscience</i> 76(3–4):227–229 (PMID 7960478)",
+      "section": "Schumann Resonance, ELF, and Dopaminergic Modulation"
+    },
+    {
+      "ref": "NPL-97",
+      "citation": "McCraty R et al. (2017). \"Long-Term Study of Heart Rate Variability Responses to Changes in the Solar and Geomagnetic Environment.\" <i>Scientific Reports</i> (Nature) 7:16338",
+      "section": "Schumann Resonance, ELF, and Dopaminergic Modulation"
+    },
+    {
+      "ref": "NPL-98",
+      "citation": "Alabdulgader AA et al. (2018). \"Synchronization of Human Autonomic Nervous System Rhythms with Geomagnetic Activity in Human Subjects.\" <i>International Journal of Environmental Research and Public Health</i> (PMC5551208)",
+      "section": "Schumann Resonance, ELF, and Dopaminergic Modulation"
+    },
+    {
+      "ref": "NPL-99",
+      "citation": "Sdraulig S et al. (2023). \"Schumann Resonances and the Human Body: Questions About Interactions, Problems and Prospects.\" <i>Applied Sciences</i> (MDPI) 15(1):449",
+      "section": "Schumann Resonance, ELF, and Dopaminergic Modulation"
+    },
+    {
+      "ref": "NPL-100a",
+      "citation": "Montagnier L, Aissa J, Ferris S, Montagnier JL, Lavallée C (2009). \"Electromagnetic Signals Are Produced by Aqueous Nanostructures Derived from Bacterial DNA Sequences.\" <i>Interdisciplinary Sciences: Computational Life Sciences</i> 1(2):81–90 (PMID 20640822)",
+      "section": "Schumann Resonance, ELF, and Dopaminergic Modulation"
+    },
+    {
+      "ref": "NPL-100b",
+      "citation": "Montagnier L, Aissa J, Del Giudice E, Lavallée C, Tedeschi A, Vitiello G (2011). \"DNA waves and water.\" <i>Journal of Physics: Conference Series</i> 306:012007 (arXiv:1012.5166)",
+      "section": "Schumann Resonance, ELF, and Dopaminergic Modulation"
+    },
+    {
+      "ref": "NPL-100c",
+      "citation": "Montagnier L, Del Giudice E, Aissa J et al. (2015). \"Transduction of DNA information through water and electromagnetic waves.\" <i>Electromagnetic Biology and Medicine</i> 34(2):106–112 (PMID 26098521) — 7 Hz electromagnetic stimulation required for DNA transduction; removal of Schumann resonance background abolished effect.",
+      "section": "Schumann Resonance, ELF, and Dopaminergic Modulation"
+    },
+    {
+      "ref": "NPL-101a",
+      "citation": "Tang JY et al. (2019). \"Effects of extremely low-frequency electromagnetic fields on B16F10 cancer cells.\" <i>Electromagnetic Biology and Medicine</i> (PMID 30889982) — 7.83 Hz ELF: 17% melanoma cell growth inhibition",
+      "section": "Schumann Resonance, ELF, and Dopaminergic Modulation"
+    },
+    {
+      "ref": "NPL-101b",
+      "citation": "Tang JY et al. (2020). <i>Electromagnetic Biology and Medicine</i> (PMID 33111597) — 7.83 Hz ELF: 26.4% melanoma cell growth inhibition via calcium channel modulation",
+      "section": "Schumann Resonance, ELF, and Dopaminergic Modulation"
+    },
+    {
+      "ref": "NPL-102",
+      "citation": "Kim JH et al. (2015). ELF-MF altered turnover and receptor reactivity of serotonergic and dopaminergic systems. <i>Brain Sciences</i> (MDPI)",
+      "section": "Schumann Resonance, ELF, and Dopaminergic Modulation"
+    },
+    {
+      "ref": "NPL-103",
+      "citation": "Cichon N et al. (2015). ELF-MF modulated major neurotransmitter levels in rat brain including elevated dopamine in thalamus. <i>Bioelectromagnetics</i> (PMC4297757)",
+      "section": "Schumann Resonance, ELF, and Dopaminergic Modulation"
+    },
+    {
+      "ref": "NPL-104",
+      "citation": "Gazdag E (2025). \"Exploring the influence of Schumann resonance and electromagnetic fields on bioelectricity and human health.\" <i>Electromagnetic Biology and Medicine</i>",
+      "section": "Schumann Resonance, ELF, and Dopaminergic Modulation"
+    },
+    {
+      "ref": "NPL-105",
+      "citation": "Gmitrov J, Ohkubo C (2002). \"Does Schumann resonance affect our blood pressure?\" <i>Biomedicine & Pharmacotherapy</i> (PMC2656447)",
+      "section": "Schumann Resonance, ELF, and Dopaminergic Modulation"
+    },
+    {
+      "ref": "NPL-106",
+      "citation": "Babayi G, Riazi GH (2017). \"The Effects of 528 Hz Sound Wave to Reduce Cell Death in Human Astrocyte Primary Cell Culture Treated with Ethanol.\" <i>Journal of Addiction Research & Therapy</i>",
+      "section": "528 Hz Sound Frequency and Oxytocin Modulation"
+    },
+    {
+      "ref": "NPL-107",
+      "citation": "Babayi Daylari M et al. (2019). \"Influence of various intensities of 528 Hz sound-wave in production of testosterone in rat's brain and analysis of behavioral changes.\" <i>Genes & Genomics</i> (Springer)",
+      "section": "528 Hz Sound Frequency and Oxytocin Modulation"
+    },
+    {
+      "ref": "NPL-108",
+      "citation": "OM Chanting 528 Hz RCT (2024). \"Effect of OM Chanting of 528Hz Frequency on Heart Rate Variability, Psychological Wellbeing, and Quality of Sleep in Patients of Hypertension.\" <i>PMC</i> (PMC12700779)",
+      "section": "528 Hz Sound Frequency and Oxytocin Modulation"
+    },
+    {
+      "ref": "NPL-109",
+      "citation": "Feneberg AC et al. (2020) / PMC Music-as-Stress-Management Review (2022). 528 Hz more pronounced stress-reducing effect than 440 Hz; lowers cortisol, increases oxytocin. <i>Frontiers in Psychiatry</i>; <i>PMC</i> (PMC9480195)",
+      "section": "528 Hz Sound Frequency and Oxytocin Modulation"
+    },
+    {
+      "ref": "NPL-110",
+      "citation": "Nozaki M (2023). \"Certain frequency music has attracted attention for possible effective healing.\" 528 Hz reduced cortisol/chromogranin A, increased oxytocin. <i>International Journal of Complementary & Alternative Medicine</i>",
+      "section": "528 Hz Sound Frequency and Oxytocin Modulation"
+    },
+    {
+      "ref": "NPL-112",
+      "citation": "Timmermann C et al. (2019). \"Neural correlates of the DMT experience assessed with multivariate EEG.\" IV DMT: increased gamma oscillations, 5-HT2A mediated. <i>Scientific Reports</i> (Nature)",
+      "section": "111 Hz Gamma-Band, Serotonergic/DMT Pathways"
+    },
+    {
+      "ref": "NPL-113",
+      "citation": "Timmermann C et al. (2023). \"Human brain effects of DMT assessed via EEG-fMRI.\" DMT gamma oscillations correlated with 5-HT2A receptor density. <i>PNAS</i> (PMC10068756)",
+      "section": "111 Hz Gamma-Band, Serotonergic/DMT Pathways"
+    },
+    {
+      "ref": "NPL-114",
+      "citation": "Pallavicini C et al. (2021). \"Baseline Power of Theta Oscillations Predicts Mystical-Type Experiences Induced by DMT in a Natural Setting.\" <i>Frontiers in Psychiatry</i>",
+      "section": "111 Hz Gamma-Band, Serotonergic/DMT Pathways"
+    },
+    {
+      "ref": "NPL-115",
+      "citation": "Smith RL et al. (1998). \"Agonist properties of N,N-dimethyltryptamine at serotonin 5-HT2A and 5-HT2C receptors.\" DMT full agonist at 5-HT2A. <i>Behavioural Brain Research</i>",
+      "section": "111 Hz Gamma-Band, Serotonergic/DMT Pathways"
+    },
+    {
+      "ref": "NPL-116",
+      "citation": "Barker SA et al. (2019). Endogenous DMT naturally produced in mammalian brain neurons. <i>Scientific Reports</i> (Nature)",
+      "section": "111 Hz Gamma-Band, Serotonergic/DMT Pathways"
+    },
+    {
+      "ref": "NPL-117",
+      "citation": "Olson DE et al. (2023). \"Psychedelics promote neuroplasticity through the activation of intracellular 5-HT2A receptors.\" <i>Science</i>",
+      "section": "111 Hz Gamma-Band, Serotonergic/DMT Pathways"
+    },
+    {
+      "ref": "NPL-118a",
+      "citation": "Jahn RG, Devereux P, Ibison M (1996). \"Acoustical resonances of assorted ancient structures.\" <i>Journal of the Acoustical Society of America</i> 99(2):649–658 — ICRL Project 1995–1996: measured fundamental acoustic resonance of Newgrange, Wayland's Smithy, and other Neolithic chambers at \\~110 Hz",
+      "section": "111 Hz Gamma-Band, Serotonergic/DMT Pathways"
+    },
+    {
+      "ref": "NPL-118b",
+      "citation": "Devereux P et al. (2007). ICRL/Dragon Project/Metageum Joint Project: Acoustic measurements at the Ħal Saflieni Hypogeum, Malta — confirmed Oracle Room resonance at \\~110 Hz. \\[Note: original NPL-118 attributed this to \"Cambridge University archaeoacoustics programme (2008)\" — correct attribution is ICRL, Princeton, with field work 1995–2007\\]",
+      "section": "111 Hz Gamma-Band, Serotonergic/DMT Pathways"
+    },
+    {
+      "ref": "NPL-119",
+      "citation": "Cook IA, Pajot SK, Leuchter AF (2008). \"Ancient Architectural Acoustic Resonance Patterns and Regional Brain Activity.\" <i>Time and Mind</i> 1(1):95–104 — EEG pilot study (n=30): 110 Hz produced significantly lower left temporal activity and prefrontal asymmetry shift from left to right hemispheric dominance compared to 90, 100, 120, 130 Hz tones. \\[Note: study tested 110 Hz, not 111 Hz; body text references to \"111 Hz\" for this study should be reviewed\\]",
+      "section": "111 Hz Gamma-Band, Serotonergic/DMT Pathways"
+    },
+    {
+      "ref": "NPL-120",
+      "citation": "Geffen N et al. (2024). \"Effects of Geometric Sound on Brainwave Activity Patterns, Autonomic Nervous System Markers, Emotional Response, and Faraday Wave Pattern Morphology.\" 111 Hz: serotonin +10%, oxytocin +5%. <i>Evidence-Based Complementary and Alternative Medicine</i> (Wiley) (PMC10997421)",
+      "section": "111 Hz Gamma-Band, Serotonergic/DMT Pathways"
+    },
+    {
+      "ref": "NPL-121",
+      "citation": "Barker SA (2018). \"N,N-Dimethyltryptamine (DMT), an Endogenous Hallucinogen: Past, Present, and Future Research.\" DMT binding: \\~6 µM SERT/SLC6A4, \\~22 µM DAT. <i>Frontiers in Neuroscience</i> (PMC5048497)",
+      "section": "111 Hz Gamma-Band, Serotonergic/DMT Pathways"
+    },
+    {
+      "ref": "NPL-122",
+      "citation": "Alamia A, Timmermann C, Nutt DJ, Lutz A, Lorincz ML, Carhart-Harris RL (2020). \"DMT alters cortical travelling waves.\" <i>eLife</i> 9:e59784 (PMID 33043883; PMC7577737) — \\[Note: original citation attributed to \"Schenberg EE\" — corrected to Alamia A et al. as verified first author\\]",
+      "section": "111 Hz Gamma-Band, Serotonergic/DMT Pathways"
+    },
+    {
+      "ref": "NPL-123",
+      "citation": "Baker D, Rice S, Sadler N, Cooper J, Wade D (2017). <i>The Next Post: Young people transitioning from military service and their mental health.</i> Orygen / Phoenix Australia. ISBN 978-1-920718-45-9. p. 15: Barriers to mental health service access — cost, culture/stigma, awareness, geographic location, and specific barriers for young men",
+      "section": "Mental Health Service Access Barriers"
+    },
+    {
+      "ref": "NPL-124",
+      "citation": "Brynjolfsson E, McAfee A (2023). \"Generative AI and the Future of Work.\" <i>Stanford Digital Economy Lab / NBER Working Paper</i>",
+      "section": "AI, Job Displacement, and Value Redistribution"
+    },
+    {
+      "ref": "NPL-125",
+      "citation": "Goldman Sachs (2023). \"The Potentially Large Effects of Artificial Intelligence on Economic Growth.\" <i>Global Economics Analyst</i>",
+      "section": "AI, Job Displacement, and Value Redistribution"
+    },
+    {
+      "ref": "NPL-126",
+      "citation": "Acemoglu D, Restrepo P (2020). \"Robots and Jobs: Evidence from US Labor Markets.\" <i>Journal of Political Economy</i> 128(6):2188–2244",
+      "section": "AI, Job Displacement, and Value Redistribution"
+    },
+    {
+      "ref": "NPL-127",
+      "citation": "PwC (2024). \"Sizing the Prize: PwC's Global Artificial Intelligence Study.\" <i>PwC Global Report</i>",
+      "section": "AI, Job Displacement, and Value Redistribution"
+    },
+    {
+      "ref": "NPL-128",
+      "citation": "Gimbel M, Kinder M, Kendall J, Lee M (2025). \"Evaluating the Impact of AI on the Labor Market: Current State of Affairs.\" <i>The Budget Lab at Yale</i>. Analysis of U.S. occupational mix change since ChatGPT release (Nov 2022), finding no economy-wide employment disruption after 33 months; occupational change pace only \\~1 percentage point above internet-era comparison; OpenAI exposure and Anthropic usage data show stable employment shares across AI-exposed occupations. \\[Note: original citation claimed Yale Budget Lab analysed \"policy frameworks for redistributing AI-driven productivity gains, including universal basic income, negative income taxation, and sovereign wealth models\" — no such publication exists; replaced with verified Yale Budget Lab AI research\\]",
+      "section": "AI, Job Displacement, and Value Redistribution"
+    },
+    {
+      "ref": "NPL-129",
+      "citation": "Kelton S (2020). <i>The Deficit Myth: Modern Monetary Theory and the Birth of the People's Economy.</i> PublicAffairs",
+      "section": "Sovereign Guarantees, MMT, and Oracle Architecture"
+    },
+    {
+      "ref": "NPL-130",
+      "citation": "Wray LR (2015). <i>Modern Money Theory: A Primer on Macroeconomics for Sovereign Monetary Systems.</i> 2nd ed. Palgrave Macmillan",
+      "section": "Sovereign Guarantees, MMT, and Oracle Architecture"
+    },
+    {
+      "ref": "NPL-131",
+      "citation": "Mosler WB (1993). <i>Soft Currency Economics.</i> — Foundational MMT framework for sovereign currency issuance",
+      "section": "Sovereign Guarantees, MMT, and Oracle Architecture"
+    },
+    {
+      "ref": "NPL-132",
+      "citation": "Tcherneva PR (2020). <i>The Case for a Job Guarantee.</i> Polity Press — MMT-informed direct employment as automatic stabiliser during structural transformation",
+      "section": "Sovereign Guarantees, MMT, and Oracle Architecture"
+    },
+    {
+      "ref": "NPL-133",
+      "citation": "MIGA Convention (1985) / World Bank Group (2024). <i>MIGA Annual Report 2023.</i> — Sovereign investment guarantees for developing economies and fragile states",
+      "section": "Sovereign Guarantees, MMT, and Oracle Architecture"
+    },
+    {
+      "ref": "NPL-134",
+      "citation": "Nazarov S, Ellis A (2017). \"Chainlink: A Decentralized Oracle Network.\" <i>Chainlink Whitepaper</i> — Decentralised oracle architecture for smart contract external data",
+      "section": "Sovereign Guarantees, MMT, and Oracle Architecture"
+    },
+    {
+      "ref": "NPL-135",
+      "citation": "Chainlink Labs (2023). \"Cross-Chain Interoperability Protocol (CCIP).\" <i>Chainlink Technical Documentation</i> — Multi-chain CBDC bridge architecture",
+      "section": "Sovereign Guarantees, MMT, and Oracle Architecture"
+    },
+    {
+      "ref": "NPL-136",
+      "citation": "W3C (2022). \"Decentralized Identifiers (DIDs) v1.0: Core architecture, data model, and representations.\" <i>World Wide Web Consortium Recommendation</i> — Standard for self-sovereign digital identity enabling individuals to create, own, and control identifiers without centralised authorities",
+      "section": "Self-Sovereign Identity and Genomic Authentication"
+    },
+    {
+      "ref": "NPL-137",
+      "citation": "Allen C (2016). \"The Path to Self-Sovereign Identity.\" <i>Life With Alacrity</i> — Foundational principles of self-sovereign identity: existence, control, access, transparency, persistence, portability, interoperability, consent, minimisation, and protection",
+      "section": "Self-Sovereign Identity and Genomic Authentication"
+    },
+    {
+      "ref": "NPL-138",
+      "citation": "Preukschat A, Reed D (2021). <i>Self-Sovereign Identity: Decentralized Digital Identity and Verifiable Credentials.</i> Manning Publications — Comprehensive technical framework for SSI architectures combining decentralised identifiers with verifiable credentials",
+      "section": "Self-Sovereign Identity and Genomic Authentication"
+    },
+    {
+      "ref": "NPL-139",
+      "citation": "WHO (2022). <i>World Mental Health Report: Transforming Mental Health for All.</i> World Health Organization — Global shortfall of 1.2+ million mental health workers; fewer than 2 per 100,000 population in low- and middle-income countries",
+      "section": "Robotic and IoT-Based Mental Health Delivery"
+    },
+    {
+      "ref": "NPL-140",
+      "citation": "Fitzpatrick KK, Darcy A, Vierhile M (2017). \"Delivering Cognitive Behavior Therapy to Young Adults With Symptoms of Depression via a Fully Automated Conversational Agent (Woebot): A Randomized Clinical Trial.\" <i>JMIR Mental Health</i> 4(2):e19 — Users disclosed mental health concerns to AI chatbot at rates comparable to human clinicians with reduced stigma",
+      "section": "Robotic and IoT-Based Mental Health Delivery"
+    },
+    {
+      "ref": "NPL-141",
+      "citation": "Vaidyam AN, Wisniewski H, Halamka JD, Kashavan MS, Torous JB (2019). \"Chatbots and Conversational Agents in Mental Health: A Review of the Psychiatric Landscape.\" <i>Canadian Journal of Psychiatry</i> 64(7):456–464 — Review of AI conversational agents for mental health applications; reduced stigma in digital disclosure environments",
+      "section": "Robotic and IoT-Based Mental Health Delivery"
+    },
+    {
+      "ref": "NPL-142",
+      "citation": "Broadbent E (2017). \"Interactions With Robots: The Truths We Reveal About Ourselves.\" <i>Annual Review of Psychology</i> 68:627–652 — Embodied robots enhance therapeutic engagement, disclosure, and sustained alliance versus screen-based agents",
+      "section": "Robotic and IoT-Based Mental Health Delivery"
+    },
+    {
+      "ref": "NPL-143",
+      "citation": "Scassellati B, Boccanfuso L, Huang CM et al. (2018). \"Improving social skills in children with ASD using a long-term, in-home social robot.\" <i>Science Robotics</i> 3(21):eaat7544 — Long-term therapeutic robot engagement demonstrated sustained outcomes in home settings for mental health and developmental applications",
+      "section": "Robotic and IoT-Based Mental Health Delivery"
+    },
+    {
+      "ref": "NPL-144",
+      "citation": "Tesla (2024). \"Optimus Gen 2 Humanoid Robot.\" <i>Tesla AI</i> — 8-camera vision-only FSD neural network stack; forecast production of 1 billion humanoid robots within the next decade; hardware-agnostic computer vision architecture compatible with camera-based biometric inference pipelines",
+      "section": "Robotic and IoT-Based Mental Health Delivery"
+    },
+    {
+      "ref": "NPL-145",
+      "citation": "Rissanen A et al. / VTT Technical Research Centre of Finland (2016). \"MEMS Fabry-Pérot interferometer-based hyperspectral mobile device.\" [<i>optics.org</i>](http://optics.org) (November 2016) — First hyperspectral mobile device via MEMS FPI filter integrated into iPhone camera lens module; health applications identified as target domain",
+      "section": "Hyperspectral Imaging via Smartphone"
+    },
+    {
+      "ref": "NPL-146",
+      "citation": "Unispectral (Israel) (2016–present). MEMS tuneable Fabry-Pérot filter technology for OEM smartphone camera module integration. Monarch Pro, Neptune, Solomon platforms. [unispectral.com](http://unispectral.com) — Demonstrates HSI filter manufacturing at smartphone camera module scale without form factor increase",
+      "section": "Hyperspectral Imaging via Smartphone"
+    },
+    {
+      "ref": "NPL-147",
+      "citation": "Consumer Physics (Israel) / SCiO (2014–present). Pocket-sized NIR molecular spectrometer; Kickstarter \\~US\\$2.7M (2014); embedded in Changhong H2 smartphone (CES 2017); matured to commercial platform with 10,000+ users, 50+ countries, millions of analyses. [scionir.com](http://scionir.com) — Agricultural/food NIR spectroscopy at consumer scale",
+      "section": "Hyperspectral Imaging via Smartphone"
+    },
+    {
+      "ref": "NPL-148",
+      "citation": "System Plus Consulting / Yole Développement (2017). \"Apple iPhone X TrueDepth Camera Teardown.\" Elisabeth S (December 2017) — STMicroelectronics NIR camera sensor (Imager-SOI substrate from SOITEC, sub-4 µm pixels, \\~2 MP, high NIR QE) + IR dot projector (\\~30,000 dots) confirmed at billion-unit manufacturing scale",
+      "section": "Hyperspectral Imaging via Smartphone"
+    },
+    {
+      "ref": "NPL-149",
+      "citation": "Teledyne FLIR (2014–present). \"FLIR ONE Gen 3 Thermal Camera.\" [flir.com](http://flir.com) — 80×60 thermal resolution, LWIR 8–14 µm, MSX® multi-spectral fusion, 34×67×14 mm / 36 g smartphone attachment with open developer SDK; thermal band only (no molecular/biomarker inference)",
+      "section": "Hyperspectral Imaging via Smartphone"
+    },
+    {
+      "ref": "NPL-150",
+      "citation": "Stuart MB, McGonigle AJS et al. (2021). \"Low-Cost Hyperspectral Imaging with A Smartphone.\" <i>Journal of Imaging</i> 7(8):136 (MDPI) — 3D-printed smartphone HSI attachment at \\~£100 total cost; proves HSI can be added to consumer smartphones without specialised manufacturing",
+      "section": "Hyperspectral Imaging via Smartphone"
+    },
+    {
+      "ref": "NPL-151",
+      "citation": "Stuart MB et al. (2024). \"Field deployment of a smartphone hyperspectral imaging attachment in South-West Greenland.\" <i>Science of the Total Environment</i> 951:175516 (ScienceDirect) — Operational reliability of smartphone HSI in extreme field conditions for ice sheet and proglacial environmental analysis",
+      "section": "Hyperspectral Imaging via Smartphone"
+    },
+    {
+      "ref": "NPL-152",
+      "citation": "Meng H, Gao Y et al. (2024). \"Colloidal quantum dot infrared hyperspectral imaging via single-pixel inference.\" <i>Light: Science & Applications</i> (Nature) 13:121 — CQD filters with 128×128 pixel HSI at 8.59 nm spectral resolution across 1050–1630 nm SWIR; miniaturisable architecture compatible with smartphone integration",
+      "section": "Hyperspectral Imaging via Smartphone"
+    },
+    {
+      "ref": "NPL-153",
+      "citation": "Kwon S, Kim YL (2025). \"Hyperspectral Information Extraction From Standard Photographs With Full Resolution.\" <i>IEEE Transactions on Image Processing</i> ([ieeexplore.ieee.org/document/11125864](http://ieeexplore.ieee.org/document/11125864)) — Formal IEEE peer-reviewed publication: 1–2 nm spectral resolution from standard RGB cameras via colour reference chart; no hardware modification required",
+      "section": "Hyperspectral Imaging via Smartphone"
+    },
+    {
+      "ref": "NPL-154",
+      "citation": "CSIRO Data61 (2016–present). \"Scyllarus: Hyperspectral Image Processing Platform.\" [scyllarus.data61.csiro.au](http://scyllarus.data61.csiro.au) — Obtains hyperspectral data from standard IoT cameras including smartphone cameras via computer vision and machine learning; C++ API, MATLAB toolbox, Scyven viewer; deployed for agricultural disease inference and forensic analysis",
+      "section": "Hyperspectral Imaging via Smartphone"
+    },
+    {
+      "ref": "NPL-155",
+      "citation": "CSIRO Data61 (2019). \"Distributed Ledgers\" whitepaper. [csiro.au/-/media/D61/Files/Distributed-Ledgers.pdf](http://csiro.au/-/media/D61/Files/Distributed-Ledgers.pdf) — Confirms Scyllarus platform capability for spectral analysis from standard cameras; BK met with CSIRO Data61 in 2019 regarding building technology with Scyllarus platform",
+      "section": "Hyperspectral Imaging via Smartphone"
+    },
+    {
+      "ref": "NPL-156",
+      "citation": "Affectiva / Smart Eye (2009–present). MIT Media Lab spinoff; 17.4M face videos analysed; FACS-based facial emotion recognition; adopted by 90% of world's largest advertisers. Acquired by Smart Eye (2021). [affectiva.com](http://affectiva.com)",
+      "section": "Facial Emotion Recognition Engines"
+    },
+    {
+      "ref": "NPL-157",
+      "citation": "Apple / Emotient acquisition (January 2016). \"Apple Buys AI Startup That Reads Emotions in Faces.\" <i>Wired</i> (7 January 2016); <i>CNBC</i> (8 January 2016). San Diego startup; crowdsourced ML for facial emotion recognition; integrated into Apple R&D pipeline",
+      "section": "Facial Emotion Recognition Engines"
+    },
+    {
+      "ref": "NPL-158",
+      "citation": "Neurodata Lab (2019). \"Comparing Emotion Recognition Tech: Microsoft, Neurodata Lab, Amazon, Affectiva.\" <i>Medium</i> — Independent benchmarking across 7 emotion categories: Microsoft Azure Face API ranked first, Neurodata Lab second, Affectiva and Amazon Rekognition trailing",
+      "section": "Facial Emotion Recognition Engines"
+    },
+    {
+      "ref": "NPL-159",
+      "citation": "Research and Markets (2024). \"Key Companies in Artificial Intelligence in Emotion Inference.\" — Market forecast: USD 3.57B by 2030 for AI-based emotion inference technologies",
+      "section": "Facial Emotion Recognition Engines"
+    },
+    {
+      "ref": "NPL-160",
+      "citation": "Kintsugi Health (2021–present). Voice biomarker API for depression and anxiety inference via short speech samples during routine phone/video interactions. Forbes AI 50. Published in <i>Annals of Family Medicine</i>. [kintsugihealth.com](http://kintsugihealth.com)",
+      "section": "Vocal Biomarker Technologies for Mental Health"
+    },
+    {
+      "ref": "NPL-161",
+      "citation": "Sonde Health (2017–present). Vocal biomarker platform for mental fitness scoring and tracking; 1M+ voice recordings, 80K+ individuals; measures pitch, vocal control, liveliness, energy, clarity. [sondehealth.com](http://sondehealth.com)",
+      "section": "Vocal Biomarker Technologies for Mental Health"
+    },
+    {
+      "ref": "NPL-162",
+      "citation": "American Psychiatric Association (January 2026). \"Vocal Biomarkers for Mental Health.\" <i>APA Blogs</i> — Identifies vocal biomarkers as promising frontier for mental health screening; notes clinical readiness not yet established",
+      "section": "Vocal Biomarker Technologies for Mental Health"
+    },
+    {
+      "ref": "NPL-163",
+      "citation": "Low DM et al. (2024). \"Smartphone-derived voice features for depression monitoring: A scoping review.\" <i>PMC</i> (PMC11179519) — Smartphone voice features show promise for depression monitoring; sole predictive power requires further validation",
+      "section": "Vocal Biomarker Technologies for Mental Health"
+    },
+    {
+      "ref": "NPL-164",
+      "citation": "Nogué S, Maguire C, Sherlock A et al. (2024). \"Practical RGB Measurement of Fluorescence and Blood Distributions in Skin.\" <i>Color and Imaging Conference</i> 32(1):133–141 — Commodity RGB cameras isolate elastin fluorescence + haemoglobin/melanin chromophores via Donaldson re-radiation matrices; no UV capture or dense hyperspectral rig required",
+      "section": "RGB Measurement of Fluorescence and Blood Distributions in Skin"
+    },
+    {
+      "ref": "NPL-165",
+      "citation": "Sarubo K, Ishida Y, Kawano S et al. (2025). \"Smartphone-Linked Optical Immunosensing for Oxytocin Determination in Human Saliva.\" <i>Biosensors</i> 15(4):261 (PMC 12025206) — LED backlight + CMOS camera ELISA readout; inference limit 5.26 pg/mL salivary OXT; r = 0.972 vs conventional ELISA. Invasive (saliva + reagents + physical cell attachment)",
+      "section": "Smartphone-Linked Immunosensing for Oxytocin Determination"
+    },
+    {
+      "ref": "NPL-166",
+      "citation": "Hashimoto H, Matsuura T, Ueta Y (2014). \"Fluorescent Visualization of Oxytocin in the Hypothalamo-Neurohypophysial System.\" <i>Frontiers in Neuroscience</i> 8:213 (PMC 4107947) — OXT-mRFP1 transgenic rats; visible fluorescence in hypothalamic OXT neurons and posterior pituitary; 5–7× fluorescence increase with OXT expression under salt loading",
+      "section": "Fluorescent Visualisation and Real-Time Sensing of Oxytocin"
+    },
+    {
+      "ref": "NPL-167",
+      "citation": "Ino D, Tanaka Y, Hibino H et al. (2022). \"A fluorescent sensor for real-time measurement of extracellular oxytocin dynamics in the brain.\" <i>Nature Methods</i> 19(10):1286–1294 (PMC 9550624) — MTRIA\\_OT GPCR-based green fluorescent OXT sensor; fiber photometry; ultradian \\~2 hr \"OT oscillation\"; intranasal/IP OXT \\<1% reaches brain",
+      "section": "Fluorescent Visualisation and Real-Time Sensing of Oxytocin"
+    },
+    {
+      "ref": "NPL-168",
+      "citation": "Santonocito R, Tuccitto N, Pappalardo A, Trusso Sfrazzetto G (2022). \"Smartphone-Based Dopamine Inference by Fluorescent Supramolecular Sensor.\" <i>Molecules</i> 27(21):7503 (PMC 9654496) — Quinoxaline cavitand (Cav-4-Qx) on siloxane polymer; inference limit 1 pM; linear range 10 mM–100 pM; smartphone camera readout in dark chamber; good selectivity in artificial and real saliva; reusable via acid-base switching. Invasive (saliva + sensor strip + dark chamber)",
+      "section": "Smartphone-Based Dopamine Inference by Fluorescent Supramolecular Sensor"
+    },
+    {
+      "ref": "NPL-169",
+      "citation": "Heikal AA (2010). \"Intracellular coenzymes as natural biomarkers for metabolic activities and mitochondrial anomalies.\" <i>Biomarkers in Medicine</i> 4(2):241–263 (PMC 2924670) — NADPH autofluorescence as \"bellwether\" of intracellular redox states; directly couples metabolic activity to optical emission intensity",
+      "section": "Systems Biology Framework for Fractal Autofluorescence"
+    },
+    {
+      "ref": "NPL-170",
+      "citation": "West GB, Brown JH, Enquist BJ (1997). \"A General Model for the Origin of Allometric Scaling Laws in Biology.\" <i>Science</i> 276(5309):122–126 — Fractal-like branching networks govern biological scaling laws from cellular metabolism to whole-organism physiology; theoretical basis for cross-scale signal propagation",
+      "section": "Systems Biology Framework for Fractal Autofluorescence"
+    },
+    {
+      "ref": "NPL-171",
+      "citation": "Unger EK, Keller JP, Altermatt M et al. (2020). \"Directed Evolution of a Selective and Sensitive Serotonin Sensor via Machine Learning.\" <i>Cell</i> 183(7):1986–2002 (DOI: 10.1016/j.cell.2020.11.040; Addgene #128483, pRSET-iSeroSnFR, Lin Tian Lab, UC Davis) — ML-guided binding-pocket redesign (Rosetta + random forest + GLM) produced iSeroSnFR genetically encoded fluorescent 5-HT sensor; >5,000× improved affinity over iAChSnFR0.6; 800% ΔF/F₀; \\~350 pM inference; millisecond kinetics; fiber photometry in freely behaving mice (fear conditioning, social interaction, sleep/wake); OSTA assay for hSERT/SLC6A4 pharmacology (SSRIs, cocaine, MDMA). Invasive (genetically encoded sensor + viral delivery + implanted fiber optics)",
+      "section": "Machine Learning-Directed Fluorescent Serotonin Sensor"
+    },
+    {
+      "ref": "NPL-172",
+      "citation": "Kurakin A (2011). \"The self-organizing fractal theory as a universal discovery method: the phenomenon of life.\" <i>Theoretical Biology and Medical Modelling</i> 8:4 (PMC 3080324) — Self-organising fractal theory unifying biological organisation from molecular to organismal scale; fractal self-similarity as a universal design principle underlying metabolism, gene expression, and cellular dynamics",
+      "section": "Systems Biology Framework for Fractal Autofluorescence"
+    },
+    {
+      "ref": "NPL-173",
+      "citation": "Lloyd D, Murray DB, Aon MA, Poole RK (2018). \"Temporal metabolic partitioning of the yeast and protist cellular networks: the cell is a global scale-invariant (fractal or self-similar) multioscillator.\" <i>Journal of Biomedical Optics</i> (ResearchGate DOI: 10.1117/1.JBO.24.5.051404) — NAD(P)H autofluorescence as \"bellwether of intracellular redox states\"; cell as fractal multioscillator with self-similar temporal organisation from milliseconds to hours; two-photon fluorescence excitation at 740 nm, emission \\<490 nm for NAD(P)H imaging in cardiomyocytes and yeast",
+      "section": "Systems Biology Framework for Fractal Autofluorescence"
+    },
+    {
+      "ref": "NPL-174",
+      "citation": "Korolj A, Wu HT, Radisic M (2019). \"A healthy dose of chaos: Using fractal frameworks for engineering higher-fidelity biomedical systems.\" <i>Biomaterials</i> 219:119363 (PMC 6759375) — Fractal dimension as quantitative health metric across biological systems; fractal frameworks for biomedical engineering; healthy biological systems exhibit characteristic fractal complexity that degrades in disease states",
+      "section": "Systems Biology Framework for Fractal Autofluorescence"
+    },
+    {
+      "ref": "NPL-175",
+      "citation": "Dong B, Almassalha LM et al. (2016). \"Superresolution intrinsic fluorescence imaging of chromatin utilizing native, unmodified nucleic acids for contrast.\" <i>Proceedings of the National Academy of Sciences</i> 113(35):9716–9721 (DOI: 10.1073/pnas.1602202113) — Label-free DNA partial-wave spectroscopic (PWS) microscopy at sub-20 nm resolution; chromatin follows fractal globule power-law scaling (D ≈ 3) at nanoscale; intrinsic nucleic acid fluorescence used as endogenous contrast for chromatin organisation imaging",
+      "section": "Systems Biology Framework for Fractal Autofluorescence"
+    },
+    {
+      "ref": "NPL-176",
+      "citation": "Dlask M, Kukal J, Poplová M, Sovka P, Cifra M (2019). \"Short-time fractal analysis of biological autoluminescence.\" <i>PLoS ONE</i> 14(7):e0214427 (PMID 31348777) — Fractal analysis of biological autoluminescence (ultra-weak photon emission) time series; negative memory in photon count signals from germinating mung beans; Hurst exponent analysis reveals anti-persistent fractal dynamics in endogenous biophoton emission",
+      "section": "Systems Biology Framework for Fractal Autofluorescence"
+    },
+    {
+      "ref": "NPL-177",
+      "citation": "Weibel ER (1991). \"Fractal geometry: a design principle for living organisms.\" <i>American Journal of Physiology</i> 261(6 Pt 1):L361–L369 (PMID 1767856) — Foundational paper: fractal geometry as biological design principle; self-similar branching networks in lungs, vasculature, and bronchial trees; efficient genetic programming of biological form through fractal algorithms; fractal dimension as measure of space-filling efficiency across biological scales",
+      "section": "Systems Biology Framework for Fractal Autofluorescence"
+    },
+    {
+      "ref": "NPL-178",
+      "citation": "Muhammad Y (2024). \"Fractal Analysis of Multiscale Biological Systems.\" [<i>Preprints.org</i>](http://Preprints.org) 2024121952 (posted 23 December 2024; ResearchGate presentation, Ain Shams University, January 2025) — Comprehensive review of fractal analysis across biological scales: chromatin (fractal globule D ≈ 1.02–1.40 for normal-to-cancerous), cell surface (healthy D ≈ 1.1–1.3, cancerous D ≈ 1.3–1.6), branching networks (circulatory D ≈ 1.6–1.9, lungs D ≈ 1.8–2.2, kidneys D ≈ 1.7–2.0, nervous system D ≈ 1.4–1.6), radiomics, physiological signals; fractal dimension as unique signature for healthy-versus-pathological state transitions",
+      "section": "Systems Biology Framework for Fractal Autofluorescence"
+    },
+    {
+      "ref": "NPL-179",
+      "citation": "Dobrescu R, Ichim L, Mocanu S, Popa S (2008). \"A Fractal Approach to Pattern Formation in Biological Systems.\" <i>WSEAS Transactions on Biology and Biomedicine</i> 5(6):107–116 — Reaction-diffusion systems as fractal pattern generators; connection between morphogenesis, nonlinear dynamics, and fractal structures; diffusion-limited aggregation (DLA) model of bacterial colony growth; attractor theory linking fractal patterns to stable biological states",
+      "section": "Systems Biology Framework for Fractal Autofluorescence"
+    },
+    {
+      "ref": "NPL-180",
+      "citation": "Sakr N, Glazova O, Shevkova L, Onyanov N, Kaziakhmedova S, Shilova A, Vorontsova MV, Volchkov P (2023). \"Characterizing and Quenching Autofluorescence in Fixed Mouse Adrenal Cortex Tissue.\" <i>International Journal of Molecular Sciences</i> 24(4):3432 (DOI: 10.3390/ijms24043432) — Broad-spectrum endogenous autofluorescence characterisation in adrenal cortex tissue; intracellular fluorophores (lipofuscin, lipids, NADH, flavins) emit across 405–488 nm excitation bands; autofluorescence originates from cortical cell cytoplasm; lipofuscin accumulation increases autofluorescence with age; lambda scanning quantification of autofluorescence emission profiles",
+      "section": "Systems Biology Framework for Fractal Autofluorescence"
+    },
+    {
+      "ref": "NPL-181",
+      "citation": "Wang ZJ, Walsh AJ, Skala MC, Gitter A (2020). \"Classifying T cell activity in autofluorescence intensity images with convolutional neural networks.\" <i>Journal of Biophotonics</i> 13(3):e201960050 (PMC 7065628) — CNN classification of T cell activation states from NAD(P)H autofluorescence intensity images; endogenous metabolic co-enzyme fluorescence reflects immune cell functional state; label-free optical metabolic imaging distinguishes quiescent from activated T cells",
+      "section": "Systems Biology Framework for Fractal Autofluorescence"
+    },
+    {
+      "ref": "NPL-182",
+      "citation": "Ramanujam N (2000). \"Fluorescence Spectroscopy of Neoplastic and Non-Neoplastic Tissues.\" <i>Neoplasia</i> 2(1-2):89–117 (PMC 1531869) — Comprehensive review of endogenous tissue fluorophores (NADH, FAD, collagen, elastin, porphyrins) for non-invasive tissue characterisation; fluorophore distributions across tissue architectural layers; spectral signatures distinguish neoplastic from normal tissue; establishes fluorescence spectroscopy as diagnostic tool for tissue state determination",
+      "section": "Systems Biology Framework for Fractal Autofluorescence"
+    },
+    {
+      "ref": "NPL-183",
+      "citation": "PMID 37537742 (2023). \"Imaging analyses of oxytocin: alkyne-tagging strategy for visualization of oxytocin and its implications for brain action.\" <i>IGAKU-SHOIN</i> — Alkyne-tagging chemical strategy for direct visualisation of oxytocin distribution; implications for understanding OXT brain action mechanisms",
+      "section": "Fluorescent Visualisation and Real-Time Sensing of Oxytocin"
+    },
+    {
+      "ref": "NPL-184",
+      "citation": "PMID 33851744 (2021). \"Identification of peripheral oxytocin-expressing cells using systemically applied cell-type specific adeno-associated viral vector.\" <i>Journal of Neuroendocrinology</i> — Confirmed OXT expression via fluorescence in enteric nervous system ganglia, pancreatic islets of Langerhans, and testicular Leydig cells using systemically applied AAV vector; demonstrates peripheral OXT-expressing cell populations beyond hypothalamus",
+      "section": "Fluorescent Visualisation and Real-Time Sensing of Oxytocin"
+    },
+    {
+      "ref": "NPL-185",
+      "citation": "PMID 1100756 (1976). \"Specificity of oxytocin and vasopressin immunofluorescence.\" — Classic study on immunofluorescence specificity for OXT and AVP using CNBr-activated agarose beads and quantitative fluorescence measurement; demonstrated antibody purification for specific OXT/AVP visualisation including validation in Brattleboro rats (vasopressin-deficient model)",
+      "section": "Fluorescent Visualisation and Real-Time Sensing of Oxytocin"
+    },
+    {
+      "ref": "NPL-186",
+      "citation": "Perisic Böhm V, Kalaba P et al. (2025). \"Fluorescent Peptide Tracers for Simultaneous Oxytocin Receptor Activation and Visualization.\" <i>Angewandte Chemie International Edition</i> 64(46):e202515180 (PMC 12603982) — Potent, selective, bright fluorescent peptide tracers for OTR; live-cell and post-hoc imaging; single-molecule tracking; FACS sorting of OTR-positive cells; simultaneous receptor activation and visualisation",
+      "section": "Fluorescent Visualisation and Real-Time Sensing of Oxytocin"
+    },
+    {
+      "ref": "NPL-187",
+      "citation": "\"Digital cutaneous fluorometry: Correlation between blood flow and fluorescence.\" <i>Journal of Vascular Surgery</i> 1(5):635–641 (1984) (ScienceDirect PII: 0741521484901289) — Established that tissue fluorescence intensity is linearly related to blood flow using digital cutaneous fluorometry; foundational evidence that perfusion conclusions can be drawn from relative fluorescence measurements in skin",
+      "section": "RGB Measurement of Fluorescence and Blood Distributions in Skin"
+    },
+    {
+      "ref": "NPL-188",
+      "citation": "Lakowicz JR (2006). <i>Principles of Fluorescence Spectroscopy.</i> 3rd ed. Springer. Ch. 16: \"Protein Fluorescence\" — Tryptophan indole ring (fused hexagonal benzene + pentagonal pyrrole) as dominant intrinsic protein fluorophore; excitation \\~280 nm, emission \\~340 nm; π→π\\* transitions of delocalised electrons across aromatic ring geometry; quantum yield sensitivity to local microenvironment; >90% of total protein UV fluorescence from tryptophan; molar extinction coefficient \\~5,500 M⁻¹cm⁻¹ at 280 nm",
+      "section": "Tryptophan Autofluorescence as a Primary Optical Marker of Gene Transcription"
+    },
+    {
+      "ref": "NPL-189",
+      "citation": "Ghisaidoobe ABT, Chung SJ (2014). \"Intrinsic Tryptophan Fluorescence in the Inference and Analysis of Proteins: A Focus on Förster Resonance Energy Transfer Techniques.\" <i>International Journal of Molecular Sciences</i> 15(12):22518–22538 (PMC 4284740) — Comprehensive review of tryptophan intrinsic fluorescence; indole chromophore π→π\\* transitions; environmental sensitivity of emission wavelength and quantum yield; FRET applications exploiting tryptophan as endogenous donor",
+      "section": "Tryptophan Autofluorescence as a Primary Optical Marker of Gene Transcription"
+    },
+    {
+      "ref": "NPL-190",
+      "citation": "Vivian JT, Callis PR (2001). \"Mechanisms of Tryptophan Fluorescence Shifts in Proteins.\" <i>Biophysical Journal</i> 80(5):2093–2109 (PMC 1301402) — Computational and experimental analysis of tryptophan fluorescence wavelength shifts; electrostatic interactions between indole ring π-electron system and local protein matrix; charge transfer states modulating emission",
+      "section": "Tryptophan Autofluorescence as a Primary Optical Marker of Gene Transcription"
+    },
+    {
+      "ref": "NPL-191",
+      "citation": "Callis PR (1997). \"¹Lₐ and ¹L\\_b Transitions of Tryptophan: Applications of Theory and Experiment.\" <i>Methods in Enzymology</i> 278:113–150 — Theoretical treatment of the two overlapping electronic transitions (¹Lₐ and ¹L\\_b) in tryptophan indole ring; molecular orbital analysis of π-electron delocalisation pathways across hexagonal and pentagonal ring geometry; transition dipole directions and energies",
+      "section": "Tryptophan Autofluorescence as a Primary Optical Marker of Gene Transcription"
+    },
+    {
+      "ref": "NPL-192",
+      "citation": "Shah S, Bhatt A, Bhatt S et al. (2023). \"Label-Free Tryptophan Fluorescence Lifetime Imaging as a Marker of Protein Conformational States in Cells.\" — FLIM distinguishing protein conformational states, folding intermediates, and aggregation from endogenous tryptophan autofluorescence in living cells without exogenous labels; demonstrates tryptophan fluorescence lifetime as a non-invasive readout of protein structure and translation state",
+      "section": "Tryptophan Autofluorescence as a Primary Optical Marker of Gene Transcription"
+    },
+    {
+      "ref": "NPL-193",
+      "citation": "Simpson CL (2019). \"Transcriptional Reporters: Watching Gene Expression in Color.\" <i>eLife</i> 8:e49414 (PMC 6660214) — Insight on TransTimer dual-colour fluorescent transcriptional reporter; green-to-red colour shift encoding transcriptional history at single-cell resolution; protein translation as the mechanism linking gene transcription to visible fluorescence",
+      "section": "Tryptophan Autofluorescence as a Primary Optical Marker of Gene Transcription"
+    },
+    {
+      "ref": "NPL-194",
+      "citation": "Bhogale S, Bhatt T, Bhatt S et al. (2024). \"Tracking and measuring local protein synthesis in vivo.\" <i>Development</i> 151(21) — Review of technologies for direct measurement of nascent protein synthesis including fluorescent reporters, non-canonical amino acid labelling (FUNCAT/BONCAT), ribosome profiling, and single-molecule imaging; establishes protein translation as a measurable, fluorescence-detectable event in living organisms",
+      "section": "Tryptophan Autofluorescence as a Primary Optical Marker of Gene Transcription"
+    },
+    {
+      "ref": "NPL-195",
+      "citation": "Tanenbaum ME, Gilbert LA, Qi LS, Weissman JS, Vale RD (2014). \"A Protein-Tagging System for Signal Amplification in Gene Expression and Fluorescence Imaging.\" <i>Cell</i> 159(3):635–646 — SunTag: repeating GCN4 peptide epitope array recruiting up to 24 copies of scFv-GFP fusion per translation event; single-molecule imaging of translation dynamics; amplifies fluorescent signal of individual protein translation events to single-molecule detectability",
+      "section": "Tryptophan Autofluorescence as a Primary Optical Marker of Gene Transcription"
+    },
+    {
+      "ref": "NPL-196",
+      "citation": "Abcam (2025). \"Understanding Protein Expression.\" <i>Abcam Knowledge Center</i> ([abcam.com](http://abcam.com)) — Reviews central dogma pipeline (transcription → translation → protein); protein expression systems (bacterial, mammalian, cell-free); post-translational modifications; fluorescent protein tagging as standard methodology for visualising gene expression products",
+      "section": "Tryptophan Autofluorescence as a Primary Optical Marker of Gene Transcription"
+    },
+    {
+      "ref": "NPL-197",
+      "citation": "Chao JA, Yoon YJ, Singer RH (2012). \"Imaging Translation in Single Cells Using Fluorescent Microscopy.\" <i>Cold Spring Harbor Perspectives in Biology</i> 4(11):a012310 (PMC 3536344) — FUNCAT, fluorescent puromycin, fl-tRNA FRET, photoconvertible reporters, MS2/PP7 dual-label systems for single-molecule and single-cell translation imaging; establishes fluorescent microscopy as primary modality for visualising protein synthesis in vivo",
+      "section": "Tryptophan Autofluorescence as a Primary Optical Marker of Gene Transcription"
+    },
+    {
+      "ref": "NPL-198",
+      "citation": "Simpson CL (2019). \"Watching Gene Expression in Color: TransTimer Dual-Colour Fluorescent Reporter.\" <i>eLife</i> 8:e49414 — TransTimer reporter system: slow-maturing green fluorescent protein and fast-maturing red fluorescent protein under same promoter; green/red ratio encodes time since transcriptional activation; real-time colour-coded visualisation of transcriptional history in living cells",
+      "section": "Tryptophan Autofluorescence as a Primary Optical Marker of Gene Transcription"
+    },
+    {
+      "ref": "NPL-199",
+      "citation": "Piston DW, Campbell RE, Day RN, Davidson MW. \"Introduction to Fluorescent Proteins.\" <i>ZEISS Microscopy Online Campus — Education in Microscopy and Digital Imaging</i>, Carl Zeiss Microscopy ([zeiss-campus.magnet.fsu.edu/articles/probes/fpintroduction.html](http://zeiss-campus.magnet.fsu.edu/articles/probes/fpintroduction.html)) — Comprehensive tutorial on the structure, spectral properties, brightness, maturation, and oligomerisation of fluorescent proteins derived from <i>Aequorea victoria</i> GFP and Anthozoa reef corals; details the 11-stranded β-barrel scaffold that protects the chromophore; the self-catalysed tripeptide cyclisation and oxidation reaction forming extended π-electron conjugated systems responsible for fluorescence; chromophore engineering via site-directed mutagenesis; fusion chimera design; fluorescent protein reporters and biosensors for monitoring gene expression, protein kinase activity, ion concentration, voltage, and cyclic nucleotide signalling in living cells",
+      "section": "Tryptophan Autofluorescence as a Primary Optical Marker of Gene Transcription"
+    },
+    {
+      "ref": "NPL-200",
+      "citation": "Morisaki T, Müller WG, Golob N, Mazza D, McNally JG (2014). \"Single-molecule analysis of transcription factor binding at transcription sites in live cells.\" <i>Nature Communications</i> 5:4456. DOI: 10.1038/ncomms5456",
+      "section": "Fractal TFBS Analysis"
+    },
+    {
+      "ref": "NPL-201",
+      "citation": "Almassalha LM, Silverstein SD, Bauer GM et al. (2017). \"The Global Relationship between Chromatin Physical Topology, Fractal Structure, and Gene Expression.\" <i>Scientific Reports</i> 7:41061. DOI: 10.1038/srep41061",
+      "section": "Fractal TFBS Analysis"
+    },
+    {
+      "ref": "NPL-202",
+      "citation": "Xie Z, Sokolov I, Osmala M, Yue X et al. (2025). \"DNA-guided transcription factor interactions extend human gene regulatory code.\" <i>Nature</i> 641:1329–1338. DOI: 10.1038/s41586-025-08844-z",
+      "section": "Fractal TFBS Analysis"
+    },
+    {
+      "ref": "NPL-203",
+      "citation": "Taylor SJ, Stauber J, Bohorquez O et al. (2024). \"Pharmacological restriction of genomic binding sites redirects PU.1 pioneer transcription factor activity.\" <i>Nature Genetics</i> 56:2213–2227. DOI: 10.1038/s41588-024-01911-7",
+      "section": "Fractal TFBS Analysis"
+    },
+    {
+      "ref": "NPL-204",
+      "citation": "Duttke SH, Guzman C, Chang M et al. (2024). \"Position-dependent function of human sequence-specific transcription factors.\" <i>Nature</i> 631:891–898. DOI: 10.1038/s41586-024-07662-z",
+      "section": "Fractal TFBS Analysis"
+    },
+    {
+      "ref": "NPL-205",
+      "citation": "Li J, Zhang P, Xi X, Liu L, Wei L, Wang X (2025). \"Modeling and designing enhancers by introducing and harnessing transcription factor binding units.\" <i>Nature Communications</i> 16:1469. DOI: 10.1038/s41467-025-56749-2",
+      "section": "Fractal TFBS Analysis"
+    },
+    {
+      "ref": "NPL-206",
+      "citation": "Cortini R, Filion GJ (2018). \"Theoretical principles of transcription factor traffic on folded chromatin.\" <i>Nature Communications</i> 9:1740. DOI: 10.1038/s41467-018-04130-x",
+      "section": "Fractal TFBS Analysis"
+    },
+    {
+      "ref": "NPL-207",
+      "citation": "Kribelbauer-Swietek JF, Pushkarev O, Gardeux V, Faltejskova K, Russeil J, van Mierlo G, Deplancke B (2024). \"Context transcription factors establish cooperative environments and mediate enhancer communication.\" <i>Nature Genetics</i> 56:2199–2212. DOI: 10.1038/s41588-024-01892-7",
+      "section": "Fractal TFBS Analysis"
+    },
+    {
+      "ref": "NPL-208",
+      "citation": "Yu CP, Lin JJ, Li WH (2016). \"Positional distribution of transcription factor binding sites in Arabidopsis thaliana.\" <i>Scientific Reports</i> 6:25164. DOI: 10.1038/srep25164",
+      "section": "Fractal TFBS Analysis"
+    },
+    {
+      "ref": "NPL-209",
+      "citation": "Almassalha LM, Silverstein SD, Bauer GM et al. (2017). \"The Global Relationship between Chromatin Physical Topology, Fractal Structure, and Gene Expression.\" <i>Scientific Reports</i> 7:41061. DOI: 10.1038/srep41061",
+      "section": "Fractal TFBS Analysis"
+    },
+    {
+      "ref": "NPL-210",
+      "citation": "Jumper J, Evans R, Pritzel A et al. (2021). \"Highly accurate protein structure prediction with AlphaFold.\" <i>Nature</i> 596:583–589. DOI: 10.1038/s41586-021-03819-2 — AlphaFold2: atomic-accuracy protein structure prediction from amino acid sequence; won CASP14; 2024 Nobel Prize in Chemistry (Hassabis & Jumper)",
+      "section": "AI-Driven Protein Structure Prediction (AlphaFold)"
+    },
+    {
+      "ref": "NPL-211",
+      "citation": "Varadi M, Anyango S, Deshpande M et al. (2022). \"AlphaFold Protein Structure Database: massively expanding the structural coverage of protein-sequence space with high-accuracy models.\" <i>Nucleic Acids Research</i> 50(D1):D439–D444. DOI: 10.1093/nar/gkab1061 — 200M+ predicted protein structures; EMBL-EBI partnership; 3M+ researchers across 190+ countries",
+      "section": "AI-Driven Protein Structure Prediction (AlphaFold)"
+    },
+    {
+      "ref": "NPL-212",
+      "citation": "Abramson J, Adler J, Dunger J et al. (2024). \"Accurate structure prediction of biomolecular interactions with AlphaFold 3.\" <i>Nature</i> 630:493–500. DOI: 10.1038/s41586-024-07487-w — Protein–DNA, protein–RNA, protein–ligand, and protein–ion complex structure prediction; ≥50% accuracy improvement over existing methods",
+      "section": "AI-Driven Protein Structure Prediction (AlphaFold)"
+    },
+    {
+      "ref": "NPL-213",
+      "citation": "Cheng J, Novati G, Pan J et al. (2023). \"Accurate proteome-wide missense variant effect prediction with AlphaMissense.\" <i>Science</i> 381(6664):eadg7492. DOI: 10.1126/science.adg7492 — 71 million missense variants classified across human proteome; 89% categorised as likely benign or likely pathogenic",
+      "section": "AI-Driven Protein Structure Prediction (AlphaFold)"
+    },
+    {
+      "ref": "NPL-214",
+      "citation": "Xie Y, Habibalahi A, Zanini F, Vukovic M, Nassiri R, Wang X, Cao Y, Anttila CJ, Dehkhoda F, Goldys EM, Tian L (2024). \"Integration of hyperspectral imaging and transcriptomics from individual cells with HyperSeq.\" <i>bioRxiv</i> preprint. DOI: 10.1101/2024.01.27.577536 — Combines hyperspectral autofluorescence imaging with scRNA-seq in MCF-7 breast cancer cells; correlates cellular optical signatures with gene expression profiles at single-cell resolution; provides ground-truth data linking autofluorescence molecular signatures to TFBS activity",
+      "section": "Fractal TFBS Analysis / Fractal Chromatin 3D Organisation"
+    },
+    {
+      "ref": "NPL-215",
+      "citation": "Klatt J, Gerich CE, Gröbe A, Opitz J, Horlitz F, Hanken H, Schwarz RA, Gilon A et al. (2014). \"Fractal dimension of time-resolved autofluorescence discriminates tumour from healthy tissues in the oral cavity.\" <i>Journal of Cranio-Maxillo-Facial Surgery</i> 42(6):852–854. PMID: 24444757 — Fractal D of tumour = 1.8 vs healthy = 1.6; 100% sensitivity, 86% specificity, AUC 99%; demonstrates fractal autofluorescence analysis as a tissue-state discriminator",
+      "section": "Fractal TFBS Analysis / Fractal Chromatin 3D Organisation"
+    },
+    {
+      "ref": "NPL-216",
+      "citation": "Pettie KP, Dresch JM, Drewell RA (2016). \"Spatial distribution of predicted transcription factor binding sites in Drosophila ChIP peaks.\" <i>Mechanisms of Development</i> 141:51–61. PMC5441388 — TFBS broadly distributed across ChIP peaks rather than narrowly centred; multiple sites per peak; establishes that TFBS positional distribution within regulatory regions carries functional significance",
+      "section": "Fractal TFBS Analysis / Fractal Chromatin 3D Organisation"
+    },
+    {
+      "ref": "NPL-217",
+      "citation": "Vinson C, Chatterjee R, Fitzgerald P (2011). \"Transcription Factor Binding Sites and Other Features in Human and Drosophila Proximal Promoters.\" <i>Subcellular Biochemistry</i> 52:205–222. PMC7394279 — TFBS architecture differs fundamentally between species; CpG islands play distinctive organisational role in human proximal promoters; cross-species comparative evidence for evolved TFBS positional grammar",
+      "section": "Fractal TFBS Analysis / Fractal Chromatin 3D Organisation"
+    },
+    {
+      "ref": "NPL-218",
+      "citation": "Bentsen M, Heger V, Schütte H, Lim CH, Kchouk C, Braun T, Looso M (2022). \"TF-COMB — Discovering grammar of transcription factor binding sites.\" <i>Computational and Structural Biotechnology Journal</i> 20:4040–4051. DOI: 10.1016/j.csbj.2022.07.025 — Market basket analysis framework for global TF co-occurrence inference across eight ENCODE cell lines; reveals preferred binding distances, orientations, and network relationships; TF pairs exhibit grammar-level features (distance periodicity, directional preferences) encoding biological function",
+      "section": "Fractal TFBS Analysis / Fractal Chromatin 3D Organisation"
+    },
+    {
+      "ref": "NPL-219",
+      "citation": "Ghosh N, Santoni D, Saha I, Felici G (2024). \"Predicting Transcription Factor Binding Sites with Deep Learning.\" <i>International Journal of Molecular Sciences</i> 25(9):4990. DOI: 10.3390/ijms25094990 — DNABERT-Cap: transformer-based capsule network for TFBS prediction; AUC > 0.91 across five ENCODE cell lines; cross-cell line prediction demonstrates intrinsic TFBS pattern transfer; TFs absent from training recognised with high accuracy (e.g., Znf143 AUC = 0.968, SMC3 AUC > 0.95)",
+      "section": "Fractal TFBS Analysis / Fractal Chromatin 3D Organisation"
+    },
+    {
+      "ref": "NPL-220",
+      "citation": "Funk CC, Casella AM, Jung S, Richards MA, Rodriguez A, Shannon P, Donovan-Maiye R, Heavner B, Chard K, Xiao Y, Glusman G, Ertekin-Taner N, Golde TE, Toga A, Hood L, Van Horn JD, Kesselman C, Foster I, Madduri R, Price ND, Ament SA (2020). \"Atlas of Transcription Factor Binding Sites from ENCODE DNase Hypersensitivity Data across 27 Tissue Types.\" <i>Cell Reports</i> 32(7):108029. PMC7462736 — Comprehensive atlas of genomic footprints across 27 human tissues from 192 DNase-seq experiments; predicted occupancy of 1,515 TFs; tissue-specific footprints span 9.8% of genome at optimal thresholds; strongly enriched for disease-associated SNPs; highest-scoring footprints contribute disproportionately to heritability for complex traits in disease-relevant tissues",
+      "section": "Fractal TFBS Analysis / Fractal Chromatin 3D Organisation"
+    },
+    {
+      "ref": "NPL-221",
+      "citation": "Yang TH, Cheng YW, Wang YT, Huang TW, Kang CW, Pan CT, Kuo HY, Chung CH, Chen CC, Liao YS (2023). \"Assessment of hyperspectral imaging and CycleGAN-simulated narrowband techniques to detect early esophageal cancer.\" <i>Scientific Reports</i> (Nature) 13:20502. DOI: 10.1038/s41598-023-47833-y — SAVE HSI engine (Hitspectra Intelligent Technology, Kaohsiung, Taiwan) reconstructing hyperspectral imaging from standard RGB endoscopic video; CycleGAN narrowband imaging simulation; real-time \\~25 fps; clinically superior early esophageal cancer inference vs conventional white-light imaging; validates HSI reconstruction from standard cameras for medical tissue inference in peer-reviewed clinical context",
+      "section": "Hyperspectral Imaging via Smartphone"
+    },
+    {
+      "ref": "NPL-222",
+      "citation": "Hitspectra Intelligent Technology Co., Ltd. (Kaohsiung, Taiwan). \"Medicine — Guiding machine vision with hyperspectral images.\" [hitspectra.com/en/application.php?CNo=1](http://hitspectra.com/en/application.php?CNo=1) — Commercial HSI integration with standard medical lenses: dermatoscope (85% accuracy for skin pigment and haemoglobin abnormalities), ophthalmoscope (fundus layer analysis for retinal disease, glaucoma, optic nerve pathology), odontoscope (oral cancer staging, accuracy expected to reach 99.9%); SAVE HSI engine expanding 400+ analysable spectral channels from a single pixel of standard camera input; AI-assisted pathological image analysis; non-invasive disease identification without biopsy. All applications target tissue morphology via specialised medical lens hardware — not gene expression, not consumer smartphone cameras, not mental health",
+      "section": "Hyperspectral Imaging via Smartphone"
+    }
+  ],
+  "patents": [
+    {
+      "ref": "PAT-1",
+      "patentNumber": "US20240289989A1",
+      "citedAssignee": "Voyage81 / Il Makiage",
+      "originalDescription": "Smartphone hyperspectral imaging"
+    },
+    {
+      "ref": "PAT-2",
+      "patentNumber": "WO2021111436A1",
+      "citedAssignee": "[Binah.ai](http://Binah.ai)",
+      "originalDescription": "rPPG-based SaMD (HR, HRV, BP, spO2)"
+    },
+    {
+      "ref": "PAT-3",
+      "patentNumber": "US20230128051A1",
+      "citedAssignee": "Zak / DARPA / Immersion",
+      "originalDescription": "Oxytocin inference via heart rate"
+    },
+    {
+      "ref": "PAT-4",
+      "patentNumber": "WO2020060606A1",
+      "citedAssignee": "Microsoft",
+      "originalDescription": "Biometric cryptocurrency mining"
+    },
+    {
+      "ref": "PAT-5",
+      "patentNumber": "US8489181B1 / TOP2-186",
+      "citedAssignee": "NASA",
+      "originalDescription": "HeartBeatID — Remote heart rate-based biometric identity verification"
+    },
+    {
+      "ref": "PAT-6",
+      "patentNumber": "US20170303790A1",
+      "citedAssignee": "Samsung",
+      "originalDescription": "Multispectral imaging using illumination from smartphone display"
+    },
+    {
+      "ref": "PAT-7",
+      "patentNumber": "US9551613B2",
+      "citedAssignee": "University of Arizona",
+      "originalDescription": "Smartphone-based snapshot hyperspectral imager"
+    },
+    {
+      "ref": "PAT-8",
+      "patentNumber": "US20150044098A1",
+      "citedAssignee": "HyperMed Imaging",
+      "originalDescription": "Hyperspectral medical imaging for wound/tissue assessment"
+    },
+    {
+      "ref": "PAT-9",
+      "patentNumber": "US11222422B2",
+      "citedAssignee": "Northwestern University",
+      "originalDescription": "Computational hyperspectral imaging from RGB sensor data"
+    },
+    {
+      "ref": "PAT-10",
+      "patentNumber": "US10018758",
+      "citedAssignee": "HyperMed Imaging",
+      "originalDescription": "Portable hyperspectral imager for medical diagnostics"
+    },
+    {
+      "ref": "PAT-11",
+      "patentNumber": "US20140320858A1",
+      "citedAssignee": "Consumer Physics (Israel)",
+      "originalDescription": "NIR spectral analysis methods for molecular composition — pocket-sized spectrometer (SCiO); embedded in Changhong H2 smartphone (2017)"
+    }
+  ],
+  "timeline": [
+    {
+      "year": "2014",
+      "entity": "Teledyne FLIR",
+      "technology": "FLIR ONE thermal camera attachment",
+      "spectralBand": "LWIR 8–14 µm",
+      "application": "Building diagnostics, electrical inspection"
+    },
+    {
+      "year": "2014",
+      "entity": "Consumer Physics (Israel)",
+      "technology": "SCiO pocket NIR spectrometer (Kickstarter)",
+      "spectralBand": "NIR \\~700–1100 nm",
+      "application": "Material composition (food, agriculture)"
+    },
+    {
+      "year": "2016",
+      "entity": "VTT (Finland)",
+      "technology": "MEMS Fabry-Pérot filter on iPhone lens",
+      "spectralBand": "NIR (tuneable)",
+      "application": "Health applications identified"
+    },
+    {
+      "year": "2016",
+      "entity": "Unispectral (Israel)",
+      "technology": "MEMS tuneable filter for OEM camera modules",
+      "spectralBand": "NIR/SWIR (tuneable)",
+      "application": "Agriculture, food, industrial"
+    },
+    {
+      "year": "2016",
+      "entity": "CSIRO Data61 (Australia)",
+      "technology": "Scyllarus HSI platform for standard cameras",
+      "spectralBand": "Vis–NIR (software recovery)",
+      "application": "Agriculture, forensics"
+    },
+    {
+      "year": "2017",
+      "entity": "Changhong / Consumer Physics",
+      "technology": "Changhong H2: first smartphone with embedded NIR sensor",
+      "spectralBand": "NIR \\~700–1100 nm",
+      "application": "Consumer molecular sensing"
+    },
+    {
+      "year": "2017",
+      "entity": "Apple / STMicroelectronics",
+      "technology": "TrueDepth dedicated NIR camera + IR dot projector",
+      "spectralBand": "NIR \\~940 nm",
+      "application": "Face ID geometric authentication"
+    },
+    {
+      "year": "2021",
+      "entity": "Stuart et al.",
+      "technology": "3D-printed smartphone HSI attachment (£100)",
+      "spectralBand": "Vis–NIR",
+      "application": "Environmental / geoscience"
+    },
+    {
+      "year": "2024",
+      "entity": "Stuart et al.",
+      "technology": "Field-deployed smartphone HSI (Greenland)",
+      "spectralBand": "Vis–NIR",
+      "application": "Environmental monitoring"
+    },
+    {
+      "year": "2024",
+      "entity": "Meng et al.",
+      "technology": "CQD infrared HSI with single-pixel inference",
+      "spectralBand": "SWIR 1050–1630 nm",
+      "application": "Laboratory imaging"
+    },
+    {
+      "year": "2025",
+      "entity": "Kwon & Kim (Purdue)",
+      "technology": "Spectral recovery from RGB photos (1–2 nm)",
+      "spectralBand": "Vis–NIR (software)",
+      "application": "Tissue oximetry, blood haemoglobin"
+    },
+    {
+      "year": "2023",
+      "entity": "Yang et al. / Hitspectra (Taiwan)",
+      "technology": "SAVE HSI engine + CycleGAN narrowband simulation on standard RGB endoscope",
+      "spectralBand": "Vis–NIR (software reconstruction)",
+      "application": "Early esophageal cancer inference"
+    },
+    {
+      "year": "2016–present",
+      "entity": "Hitspectra Intelligent Technology (Taiwan)",
+      "technology": "HSI integration with standard medical lenses (dermatoscope, ophthalmoscope, odontoscope)",
+      "spectralBand": "Vis–NIR (400+ channels per pixel)",
+      "application": "Skin disease (85%), retinal disease, oral cancer staging"
+    }
+  ],
+  "counts": {
+    "nplRows": 229,
+    "patentRows": 11,
+    "timelineRows": 13
+  },
+  "numberingNote": "The sequence ends at NPL-222, includes lettered references, and has no NPL-111 entry. Original IDs are retained."
+}

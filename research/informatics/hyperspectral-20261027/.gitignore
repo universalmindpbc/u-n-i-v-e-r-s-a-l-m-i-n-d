@@ -1,0 +1,4 @@
+metadata-cache/
+candidate-*.png
+*download-*.json
+*download-*.csv

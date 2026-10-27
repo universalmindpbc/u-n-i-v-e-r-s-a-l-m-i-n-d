@@ -17,7 +17,7 @@
       if (!existing) { grouped.set(id,record); continue; }
       existing.aliases = [...new Set([...existing.aliases,record.id,...record.aliases])];
       for (const field of ['collections','categories','targets','quotes','topicScores']) existing[field] = [...new Set([...existing[field],...record[field]])];
-      for (const field of ['topics','soundEntries','chapterEntries']) existing[field] = [...(existing[field] || []),...(record[field] || [])];
+      for (const field of ['topics','soundEntries','chapterEntries','sourceReferences','relatedVersions']) if(existing[field] || record[field]) existing[field] = [...(existing[field] || []),...(record[field] || [])];
       for (const [collection,count] of Object.entries(record.citationsByCollection)) existing.citationsByCollection[collection] = maximumCount([existing.citationsByCollection[collection],count]);
       existing.citationCount = maximumCount(Object.values(existing.citationsByCollection));
       if (record.studyDesignAssessment && !existing.studyDesignAssessment) {
