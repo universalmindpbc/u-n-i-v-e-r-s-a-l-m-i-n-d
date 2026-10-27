@@ -1,7 +1,6 @@
 {
   "passed": true,
   "verifiedAt": "2026-10-27T01:40:32.387309+00:00",
-  "sourceCommit": "90eedb8e062b338cdffb417ebe61d208b8fdf6a0",
   "assets": [
     {
       "path": "library.html",
@@ -149,5 +148,8 @@
     }
   ],
   "productionLibraryUnchanged": true,
-  "productionLibrarySHA256": "6b2346be0c6b82906c11e6f8652ecf5b17fe32cfdc870cf191317372ca2fe36c"
+  "productionLibrarySHA256": "6b2346be0c6b82906c11e6f8652ecf5b17fe32cfdc870cf191317372ca2fe36c",
+  "sourceCommitAtVerification": "90eedb8e062b338cdffb417ebe61d208b8fdf6a0",
+  "informaticsTree": "c84c9434a1f089b40d419d2ca500dad85d2b6660",
+  "integrationNote": "The verified Informatics tree is unchanged after integrating separately completed I AM staging releases."
 }

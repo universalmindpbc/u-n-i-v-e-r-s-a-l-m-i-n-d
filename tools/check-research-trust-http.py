@@ -40,6 +40,6 @@ with ThreadPoolExecutor(max_workers=3) as pool:part_checks=list(pool.map(check_p
 production,status=fetch('https://universalmind.tv/informatics/library.html')
 assert status==200
 assert production==Path('/private/tmp/trust-production-before.html').read_bytes(),'Production page changed during this task'
-result={'passed':True,'verifiedAt':datetime.now(timezone.utc).isoformat(),'sourceCommit':subprocess.check_output(['git','rev-parse','HEAD'],cwd=ROOT,text=True).strip(),'assets':assets,'exportPartsAvailable':part_checks,'productionLibraryUnchanged':True,'productionLibrarySHA256':sha(production)}
+result={'passed':True,'verifiedAt':datetime.now(timezone.utc).isoformat(),'sourceCommitAtVerification':subprocess.check_output(['git','rev-parse','HEAD'],cwd=ROOT,text=True).strip(),'assets':assets,'exportPartsAvailable':part_checks,'productionLibraryUnchanged':True,'productionLibrarySHA256':sha(production)}
 (OUT/'http-verification.json').write_text(json.dumps(result,indent=2)+'\n')
 print(json.dumps({'passed':True,'exactAssets':len(assets),'exportPartsAvailable':len(parts),'productionLibraryUnchanged':True}))
