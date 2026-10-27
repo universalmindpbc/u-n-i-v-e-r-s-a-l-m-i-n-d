@@ -17,9 +17,12 @@
         role: "Optional bilateral layer / planned clinician-guided pathway",
         summary: "Clinician-delivered EMDR is an established trauma-focused psychotherapy for PTSD. Individual telehealth delivery is supported and increasingly used, while therapist-led online group G-TEP now has a growing evidence base that includes a 2026 meta-analysis.",
         boundary: "Universal Mind's current bilateral visual and audio feature is an optional research layer, not yet a complete clinical EMDR protocol. Its planned clinician-guided groups of nine are intended as a protocol-governed online group pathway; clinical equivalence depends on clinician governance, protocol fidelity and product-specific outcomes.",
+        repository: {
+          collection: "Vision",
+          url: "https://universalmind.tv/informatics/library.html?collection=vision",
+        },
         dossier: {
           title: "Universal Mind [ I o H ] - EMDR Medical Research",
-          file: "a s s e t s/r e s e a r c h/Universal Mind [ I o H ] - EMDR Medical Research.pdf",
           pages: 19,
           articles: 55,
           publications: 33,
@@ -78,9 +81,12 @@
         summary: "Recent evidence supports qualified music interventions for anxiety and PTSD symptoms. A 2024 comparative EEG study provides a direct signal for isochronic-derived auditory stimulation, while theta-frequency binaural-beat research supports focused testing within the 5-8 Hz range. A small 528 Hz study reports short-term endocrine and mood changes that warrant replication.",
         boundary: "Music therapy, binaural beats, isochronic-derived stimulation and frequency-tuned listening are distinct interventions. The 2024 study used an alternating-frequency derivative rather than a conventional fixed-carrier isochronic tone or Universal Mind's exact protocol; its short-term EEG signal is not evidence of clinical benefit. The theta synthesis and nine-person 528 Hz signal remain preliminary translation evidence.",
         heroStudiesLabel: "Five peer-reviewed studies + one internal prototype observation",
+        repository: {
+          collection: "Sound",
+          url: "https://universalmind.tv/informatics/library.html?collection=sound",
+        },
         dossier: {
           title: "Universal Mind [ I o H ] - Sound Medical Research",
-          file: "a s s e t s/r e s e a r c h/Universal Mind [ I o H ] - Sound Medical Research.pdf",
           pages: 144,
           articles: 458,
           publications: 412,
@@ -162,9 +168,12 @@
         role: "Optional silent recitation / mindfulness practice",
         summary: "The evidence-backed starting point is active mantra recitation inside the mind: Transcendental Meditation, mantram repetition and related mantra-based mindfulness practices. This is distinct from passively receiving a sub-audible recording.",
         boundary: "The B grade applies to active internal mantra or meditation practice. Direct high-quality evidence for an inaudible or sub-audible mantra layer has not been established and would require separate testing.",
+        repository: {
+          collection: "Language",
+          url: "https://universalmind.tv/informatics/library.html?collection=language",
+        },
         dossier: {
           title: "Universal Mind [ I o H ] - Mantra Medical Research",
-          file: "a s s e t s/r e s e a r c h/Universal Mind [ I o H ] - Mantra Medical Research.pdf",
           pages: 73,
           articles: 298,
           publications: 222,
