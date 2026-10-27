@@ -4,6 +4,22 @@ set -euo pipefail
 ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 NODE_BIN="${NODE_BIN:-}"
 
+# The patent route has a scoped preflight and uses the same Panthur transport.
+if [[ "${1:-}" == "patent" || "${1:-}" == "patent-configure" ]]; then
+  export NODE_BIN="${NODE_BIN:-/Users/benkorbel/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/bin/node}"
+  "$NODE_BIN" --check "$ROOT_DIR/patent/portal.js"
+  if command -v php >/dev/null 2>&1; then
+    for patent_source in "$ROOT_DIR"/patent/*.php; do php -l "$patent_source"; done
+  fi
+  export FTP_HOST="${FTP_HOST:-sh00023.pa.smartservers.com.au}"
+  export FTP_USER="${FTP_USER:-stagingdeploy@universalmind.tv}"
+  export FTP_PASS_FILE="${FTP_PASS_FILE:-/private/tmp/um-staging-ftp-pass.txt}"
+  export FTP_KEYCHAIN_SERVICE="${FTP_KEYCHAIN_SERVICE:-universalmind-staging-ftp}"
+  export REMOTE_ROOT=""
+  export MANIFEST_FILE="${MANIFEST_FILE:-$ROOT_DIR/.panthur-staging-deploy-manifest.tsv}"
+  exec "$ROOT_DIR/deploy-panthurlive.sh" "$1"
+fi
+
 if [[ -z "$NODE_BIN" ]]; then
   if command -v node >/dev/null 2>&1; then
     NODE_BIN="$(command -v node)"

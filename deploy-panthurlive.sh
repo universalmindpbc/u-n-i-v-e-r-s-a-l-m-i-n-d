@@ -693,6 +693,50 @@ PYCONFIG
   echo "Informatics: completed changed uploads through the existing Panthur curl/FTP transport."
 }
 
+# Private patent staging route. Runtime records never enter Git or public assets.
+patent_staging_guard() {
+  if [[ "$FTP_USER" != "stagingdeploy@universalmind.tv" || -n "$REMOTE_ROOT" ]]; then
+    echo "Patent preview is restricted to the established staging target." >&2
+    return 1
+  fi
+}
+
+deploy_patent() {
+  patent_staging_guard || return 1
+  git -C "$ROOT_DIR" diff --quiet HEAD -- patent deploy-panthur-staging.sh deploy-panthurlive.sh || return 1
+  local patent_manifest patent_source patent_remote
+  patent_manifest="$(mktemp)"
+  if [[ -f "$MANIFEST_FILE" ]]; then
+    awk -F '\t' '$2 !~ /^patent\//' "$MANIFEST_FILE" > "$patent_manifest"
+  fi
+  put_file "$ROOT_DIR/patent/private-deny.htaccess" "patent/.private/.htaccess"
+  while IFS= read -r patent_source; do
+    [[ -n "$patent_source" ]] || continue
+    patent_remote="$patent_source"
+    [[ "$patent_source" == "patent/private-deny.htaccess" ]] && patent_remote="patent/.private/.htaccess"
+    put_file "$ROOT_DIR/$patent_source" "$patent_remote"
+    printf '%s\t%s\n' "$(file_hash "$ROOT_DIR/$patent_source")" "$patent_remote" >> "$patent_manifest"
+  done < <(git -C "$ROOT_DIR" ls-files patent | sort)
+  mv "$patent_manifest" "$MANIFEST_FILE"
+}
+
+configure_patent_private() {
+  patent_staging_guard || return 1
+  local patent_runtime="${PATENT_RUNTIME_DIR:-}" patent_probe patent_status
+  [[ -n "$patent_runtime" && -f "$patent_runtime/access.json" && -f "$patent_runtime/document.json" && -f "$patent_runtime/specification.pdf" ]] || return 1
+  put_file "$ROOT_DIR/patent/private-deny.htaccess" "patent/.private/.htaccess"
+  patent_probe="$(mktemp)"
+  printf 'Private route access test\n' > "$patent_probe"
+  put_file "$patent_probe" "patent/.private/access-probe.txt"
+  rm -f "$patent_probe"
+  patent_status="$(curl --silent --show-error --output /dev/null --write-out '%{http_code}' 'https://staging.universalmind.tv/patent/.private/access-probe.txt')"
+  [[ "$patent_status" == "403" ]] || { echo "Private storage denial failed; no private content uploaded." >&2; return 1; }
+  put_file "$patent_runtime/access.json" "patent/.private/access.json"
+  put_file "$patent_runtime/document.json" "patent/.private/document.json"
+  put_file "$patent_runtime/specification.pdf" "patent/.private/specification.pdf"
+  echo "Private patent runtime uploaded after denial verification."
+}
+
 DEPLOY_MODE="${1:-iam}"
 
 if deployment_requires_owner_state_guard "$DEPLOY_MODE"; then
@@ -700,6 +744,12 @@ if deployment_requires_owner_state_guard "$DEPLOY_MODE"; then
 fi
 
 case "$DEPLOY_MODE" in
+  patent)
+    deploy_patent
+    ;;
+  patent-configure)
+    configure_patent_private
+    ;;
   informatics)
     deploy_informatics
     ;;
