@@ -1,0 +1,26 @@
+{
+  "productionUrl": "https://universalmind.tv/",
+  "researchUrl": "https://universalmind.tv/vogue/iam/science.html#research-tracker",
+  "approvedStagingCommit": "2a3ea0635ee1ba8084747b1e0d0b6f871404ac89",
+  "productionTag": "production-2026-10-27-1251",
+  "verifiedAt": "2026-10-27T12:51:33.279786+11:00",
+  "sourceTree": {
+    "iam": "b4f7774830eb167ca134163c62b406e9eb8c3859",
+    "entry": "e78b5a5acd71cb82f71b6bdc5d343a49cbf5d3f7"
+  },
+  "checks": {
+    "approvedStagingFilesMatched": 26,
+    "productionAssetsVerified": 26,
+    "sharedNavigationPages": 22,
+    "desktopMobileCountChecks": 6,
+    "navigationChecks": 6,
+    "researchNewTabChecks": 6,
+    "passwordEntry": "passed with HTTP 202 entry receipt and induction page displayed",
+    "invalidPassword": "rejected",
+    "browserErrors": 0,
+    "protectedOwnerRuntimeState": "unchanged",
+    "browserAudio": "process-muted",
+    "temporaryCredentialRemoved": true
+  },
+  "productionBoundary": "Only approved I AM source released; separate newer Informatics staging commits retained on staging."
+}
