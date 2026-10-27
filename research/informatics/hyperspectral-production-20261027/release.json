@@ -1,0 +1,22 @@
+{
+  "approvedStaging": "e0ea13786febba2624e72452bf9bb4681ecdbcc0",
+  "productionBefore": "45508da032e96b3e366b84cff7ece795b45ea7d1",
+  "approvedInformaticsTree": "eb6743c4d3540a5693fb5918e15d9364abf0fcf9",
+  "releasedAtSydney": "2026-10-27T13:52:38.150797+11:00",
+  "productionTag": "production-2026-10-27-1352",
+  "productionURL": "https://universalmind.tv/informatics/library.html?collection=general&chapter=11",
+  "stagingURL": "https://staging.universalmind.tv/informatics/library.html?collection=general&chapter=11",
+  "approvedSourceTree": "eb6743c4d3540a5693fb5918e15d9364abf0fcf9",
+  "webDataAssetsVerified": 2139,
+  "byteExactHTTPAssets": 2137,
+  "hostTransformedHTML": [
+    "Informatics/read/publications/src-22bb91ee46db-2351440e.html",
+    "Informatics/read/publications/src-41ca41304bcd-c490256a.html"
+  ],
+  "completeExportParts": 10,
+  "exportBytesVerified": 440849268,
+  "productionPublisherCompleted": true,
+  "sourceModifiedAfterApproval": false,
+  "newScientificAssessments": false,
+  "originalNotionPagesModified": false
+}

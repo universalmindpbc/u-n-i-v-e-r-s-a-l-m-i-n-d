@@ -1,0 +1,7 @@
+{
+  "allUploadsCompleted": 2147,
+  "recoveredManifestEntriesVerified": 13494,
+  "sourceCommit": "e0ea13786febba2624e72452bf9bb4681ecdbcc0",
+  "failure": "Local disk space prevented the final manifest rename after all FTP uploads completed.",
+  "repair": "Recovered the completed manifest, compared every scoped source hash, and resumed the unchanged existing publisher."
+}

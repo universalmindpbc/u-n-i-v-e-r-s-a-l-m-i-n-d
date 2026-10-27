@@ -1,0 +1,6 @@
+download-*.json
+download-*.csv
+trust/*.json
+trust/*.csv
+!trust/browser-verification.json
+http-*-checkpoint.json

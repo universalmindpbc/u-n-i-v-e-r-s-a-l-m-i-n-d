@@ -1,0 +1,79 @@
+{
+  "checkedAt": "2026-10-27T02:38:16.352683+00:00",
+  "stagingAssetsMatchApprovedCommit": [
+    {
+      "path": "Informatics/library.html",
+      "url": "https://staging.universalmind.tv/informatics/library.html",
+      "sha256": "2972b7e3c62aba4619b71e4ec12f58c1391e8592c13412a57932b5f250de9649"
+    },
+    {
+      "path": "Informatics/library.js",
+      "url": "https://staging.universalmind.tv/informatics/library.js",
+      "sha256": "899928df6ad5e440bc49c0edcefa444d85d58a873f97655737861c676a4857f3"
+    },
+    {
+      "path": "Informatics/library.css",
+      "url": "https://staging.universalmind.tv/informatics/library.css",
+      "sha256": "ade5a25be49024b52434256f0aed4ef0edc45007b79a6a096ce600141b52eb56"
+    },
+    {
+      "path": "Informatics/library-model.js",
+      "url": "https://staging.universalmind.tv/informatics/library-model.js",
+      "sha256": "00df8dc93a90a09af387c5f32830d1dc3f4b994b1941b7cb066e898b56934841"
+    },
+    {
+      "path": "Informatics/library-data/general-edition.json",
+      "url": "https://staging.universalmind.tv/informatics/library-data/general-edition.json",
+      "sha256": "c0ce0dde985c954f18f29e58f899c192a67861652d12c3b168415a69e46c537c"
+    },
+    {
+      "path": "Informatics/library-data/hyperspectral-expansion.json",
+      "url": "https://staging.universalmind.tv/informatics/library-data/hyperspectral-expansion.json",
+      "sha256": "7c40d251a8f3055c8d36fcac7e6596f51f469ff1a713b02a8978544bee4fdc4a"
+    },
+    {
+      "path": "Informatics/library-data/hyperspectral-register.json",
+      "url": "https://staging.universalmind.tv/informatics/library-data/hyperspectral-register.json",
+      "sha256": "d1a45d9e0930987a5a665fc2523739531dfe94de741ac016e7c96027bb769852"
+    },
+    {
+      "path": "Informatics/read/hyperspectral/index.html",
+      "url": "https://staging.universalmind.tv/informatics/read/hyperspectral/index.html",
+      "sha256": "59f803e833aeebbb2b1745e237f360a588dbbd7f9cfdf640f46b247ad72f895b"
+    },
+    {
+      "path": "Informatics/exports/manifest.json",
+      "url": "https://staging.universalmind.tv/informatics/exports/manifest.json",
+      "sha256": "805b031f3745903cd5db968c629efe7ebea9c5cfc453ddc90cad6a29ac0ebfff"
+    },
+    {
+      "path": "llms.txt",
+      "url": "https://staging.universalmind.tv/llms.txt",
+      "sha256": "d983adf24c57d26851d3038c929896fb377cd5828de6dcfd4ced6f146a0e06ea"
+    },
+    {
+      "path": "sitemap.xml",
+      "url": "https://staging.universalmind.tv/sitemap.xml",
+      "sha256": "68e12a35237cda12fc6485eb35c2a0d5ce937a8d478def6211faf3fb2120fb04"
+    }
+  ],
+  "unrelatedProductionBaseline": [
+    {
+      "url": "https://universalmind.tv/vogue/iam/index.html",
+      "sha256": "fad220f58d84b5707b220f3339702c8b8da2a9578f295333de4f7089dd90d301"
+    },
+    {
+      "url": "https://universalmind.tv/vogue/iam/research.html",
+      "sha256": "f2459720c7e3fed6162c1b75d03266a8ade38222bdd0dac74e210532b659d3c4"
+    },
+    {
+      "url": "https://universalmind.tv/index.html",
+      "sha256": "0e896f7665627f256f6ef8fc98b210739dcec51de9eec519f298b0ceba9346eb"
+    }
+  ],
+  "dataPreflight": true,
+  "exportsPreflight": true,
+  "discoveryPreflight": true,
+  "paperTrustTests": 9,
+  "topicTrustTests": 6
+}

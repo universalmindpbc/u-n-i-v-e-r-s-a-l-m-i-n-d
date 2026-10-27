@@ -1,0 +1,15 @@
+{"passed": true, "robotDecisions": 270, "HTMLPages": 2119, "localLinks": 26631, "publicationRecords": 1108, "atlasRecords": 1001, "experimentRecords": 2, "sourceFilesMatched": 15}
+{"passed": true, "sources": 1175, "version": "ae5a9bb06a27c3505af7194410e38f30d388520f8abf2320a1f1c3b9a4c858c6"}
+Informatics: 13494 tracked assets; 2147 changed uploads via Panthur FTP.
+Informatics: uploaded 200/2147 changed assets.
+Informatics: uploaded 400/2147 changed assets.
+Informatics: uploaded 600/2147 changed assets.
+Informatics: uploaded 800/2147 changed assets.
+Informatics: uploaded 1000/2147 changed assets.
+Informatics: uploaded 1200/2147 changed assets.
+Informatics: uploaded 1400/2147 changed assets.
+Informatics: uploaded 1600/2147 changed assets.
+Informatics: uploaded 1800/2147 changed assets.
+Informatics: uploaded 2000/2147 changed assets.
+Informatics: uploaded 2147/2147 changed assets.
+mv: rename /var/folders/sy/hkpyt9jx3q124pk6nn_rgvb00000gn/T/tmp.SQeFhjMecG to /private/tmp/um-hyperspectral-20261027/.panthur-deploy-manifest.tsv: No space left on device
