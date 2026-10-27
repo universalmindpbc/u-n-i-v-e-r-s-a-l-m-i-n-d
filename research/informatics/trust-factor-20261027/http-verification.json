@@ -1,0 +1,153 @@
+{
+  "passed": true,
+  "verifiedAt": "2026-10-27T01:38:21.057500+00:00",
+  "sourceCommit": "8b7b0974b89232d24b79e7033a446a62fce45a71",
+  "assets": [
+    {
+      "path": "library.html",
+      "url": "https://staging.universalmind.tv/informatics/library.html",
+      "status": 200,
+      "sha256": "3fab29107f9879246282b6e55083a0d06934758a6649b2622d85c54ffd4eef92",
+      "bytes": 34558
+    },
+    {
+      "path": "library.js",
+      "url": "https://staging.universalmind.tv/informatics/library.js?v=20",
+      "status": 200,
+      "sha256": "316bb87adea81fafdd9d3a5169c30fee0d626b353862b16355db03299cfaf310",
+      "bytes": 35099
+    },
+    {
+      "path": "library-model.js",
+      "url": "https://staging.universalmind.tv/informatics/library-model.js?v=7",
+      "status": 200,
+      "sha256": "34912273777dadfe1c422bd72716c26088ade81f14318aed49ee4ce8356c39be",
+      "bytes": 5790
+    },
+    {
+      "path": "exports/manifest.json",
+      "url": "https://staging.universalmind.tv/informatics/exports/manifest.json",
+      "status": 200,
+      "sha256": "09bf19b37a86ed56699d15a18685e7ec43520575a335a61e86f303ab1a02d851",
+      "bytes": 2392223
+    },
+    {
+      "path": "library-data/sound-edition.json",
+      "url": "https://staging.universalmind.tv/informatics/library-data/sound-edition.json?v=trust-20261027",
+      "status": 200,
+      "sha256": "45cca9765db111a9572a5b4e979a01fed477f5065f78fd43e0df49693a11baa3",
+      "bytes": 740914
+    },
+    {
+      "path": "library-data/vision-edition.json",
+      "url": "https://staging.universalmind.tv/informatics/library-data/vision-edition.json?v=trust-20261027",
+      "status": 200,
+      "sha256": "72b7f957c48b7db15ef18a13ae70883a816dc946c0f1c480d2873ca84bca1577",
+      "bytes": 366149
+    },
+    {
+      "path": "library-data/language-edition.json",
+      "url": "https://staging.universalmind.tv/informatics/library-data/language-edition.json?v=trust-20261027",
+      "status": 200,
+      "sha256": "b75953821a14dd5d816280fdd17957ca89d3d5dc2a88eb2639828b9a240c82be",
+      "bytes": 864923
+    },
+    {
+      "path": "library-data/general-edition.json",
+      "url": "https://staging.universalmind.tv/informatics/library-data/general-edition.json?v=trust-20261027",
+      "status": 200,
+      "sha256": "4dc388c02c3a2d875b6dbb06cdfa8249d207482b921c63eb6cf31be0ce4acc60",
+      "bytes": 823605
+    },
+    {
+      "path": "library-data/library.json",
+      "url": "https://staging.universalmind.tv/informatics/library-data/library.json?v=trust-20261027",
+      "status": 200,
+      "sha256": "9e8c73b42c5cb5cf04250910279d93ba58b3504a6230aac5020a6c1b0cb0698d",
+      "bytes": 3964374
+    },
+    {
+      "path": "library-data/publication-access.json",
+      "url": "https://staging.universalmind.tv/informatics/library-data/publication-access.json?v=trust-20261027",
+      "status": 200,
+      "sha256": "09941fafec05492b5b154006aa237069f9c6c276eb38735bf9913c7ea80418ca",
+      "bytes": 328554
+    },
+    {
+      "path": "library-data/mindfulness-expansion.json",
+      "url": "https://staging.universalmind.tv/informatics/library-data/mindfulness-expansion.json?v=trust-20261027",
+      "status": 200,
+      "sha256": "52f669b3b56269d9d68333169edbad313733ff838963adafbc9d3b246e0da2c2",
+      "bytes": 78366
+    },
+    {
+      "path": "library-data/vision-expansion.json",
+      "url": "https://staging.universalmind.tv/informatics/library-data/vision-expansion.json?v=trust-20261027",
+      "status": 200,
+      "sha256": "c1aa46b0b6df3916009e60f912f762081869be97fa79b2729380dc74291d2358",
+      "bytes": 258440
+    },
+    {
+      "path": "library-data/nature-expansion.json",
+      "url": "https://staging.universalmind.tv/informatics/library-data/nature-expansion.json?v=trust-20261027",
+      "status": 200,
+      "sha256": "f7072ca98ea93b9b751d7d11d4fdf6002a83caaa06c7f46310b79f50db430ba8",
+      "bytes": 111315
+    },
+    {
+      "path": "library-data/fibonacci-expansion.json",
+      "url": "https://staging.universalmind.tv/informatics/library-data/fibonacci-expansion.json?v=trust-20261027",
+      "status": 200,
+      "sha256": "4dec7704e4b0061d37c6164be4221a97e14c666726164ce522bfb23a84d5340a",
+      "bytes": 187440
+    },
+    {
+      "path": "read/publications/src-6d277422d0a0-05936889.html",
+      "url": "https://staging.universalmind.tv/informatics/read/publications/src-6d277422d0a0-05936889.html",
+      "status": 200,
+      "sha256": "3def4dd8b5c765d8366b53f8879fc16c4ac8ab4dc23444bc97be529d9eef1a6f",
+      "bytes": 16567
+    },
+    {
+      "path": "read/publications/src-9329423f6826-c56d5fdc.html",
+      "url": "https://staging.universalmind.tv/informatics/read/publications/src-9329423f6826-c56d5fdc.html",
+      "status": 200,
+      "sha256": "c59d54e95d2523705a13394afbc81a5fda475fa9583e3c1967661c11b806494e",
+      "bytes": 13880
+    }
+  ],
+  "exportPartsAvailable": [
+    {
+      "file": "part-57dc0c78a6d5f271aa918f352bc4553cdc81bece781ead1b1c723a8306dba01f.bin",
+      "status": 206,
+      "first128BytesMatch": true,
+      "contentRange": "bytes 0-127/50331648"
+    },
+    {
+      "file": "part-6457d2aff97e019efbd93238f045a1c82e8f15e6e812e2ec7cb69c5ca3eb0c9f.bin",
+      "status": 206,
+      "first128BytesMatch": true,
+      "contentRange": "bytes 0-127/25370103"
+    },
+    {
+      "file": "part-29ea004f5cbee6f27c703decb70a470f0d49e955474c8c37a2972421a723570b.bin",
+      "status": 206,
+      "first128BytesMatch": true,
+      "contentRange": "bytes 0-127/50331648"
+    },
+    {
+      "file": "part-cc66d8b3fba62ff2b21a0aa16dfff2a05bcb32c37b0bed0df5a516544eb4f850.bin",
+      "status": 206,
+      "first128BytesMatch": true,
+      "contentRange": "bytes 0-127/50331648"
+    },
+    {
+      "file": "part-867c9f5b6272e6e024314b7fd64782a7862fceeda063020bec403d70ac150e81.bin",
+      "status": 206,
+      "first128BytesMatch": true,
+      "contentRange": "bytes 0-127/43717918"
+    }
+  ],
+  "productionLibraryUnchanged": true,
+  "productionLibrarySHA256": "6b2346be0c6b82906c11e6f8652ecf5b17fe32cfdc870cf191317372ca2fe36c"
+}

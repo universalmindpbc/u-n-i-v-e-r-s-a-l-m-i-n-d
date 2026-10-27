@@ -1,0 +1,129 @@
+{
+  "candidate": false,
+  "base": "https://staging.universalmind.tv/informatics/",
+  "checkedAt": "2026-10-27T01:37:33.422Z",
+  "processMuted": true,
+  "results": [
+    {
+      "width": 1470,
+      "collection": "sound",
+      "trustFilters": [
+        1,
+        2,
+        3
+      ],
+      "paperBadges": true,
+      "trialFilter": true,
+      "chapterLegend": true,
+      "noHorizontalOverflow": true
+    },
+    {
+      "width": 1470,
+      "collection": "vision",
+      "trustFilters": [
+        1,
+        2,
+        3
+      ],
+      "paperBadges": true,
+      "trialFilter": true,
+      "chapterLegend": true,
+      "noHorizontalOverflow": true
+    },
+    {
+      "width": 1470,
+      "collection": "language",
+      "trustFilters": [
+        1,
+        2,
+        3
+      ],
+      "paperBadges": true,
+      "trialFilter": true,
+      "chapterLegend": true,
+      "noHorizontalOverflow": true
+    },
+    {
+      "width": 390,
+      "collection": "sound",
+      "trustFilters": [
+        1,
+        2,
+        3
+      ],
+      "paperBadges": true,
+      "trialFilter": true,
+      "chapterLegend": true,
+      "noHorizontalOverflow": true
+    },
+    {
+      "width": 390,
+      "collection": "vision",
+      "trustFilters": [
+        1,
+        2,
+        3
+      ],
+      "paperBadges": true,
+      "trialFilter": true,
+      "chapterLegend": true,
+      "noHorizontalOverflow": true
+    },
+    {
+      "width": 390,
+      "collection": "language",
+      "trustFilters": [
+        1,
+        2,
+        3
+      ],
+      "paperBadges": true,
+      "trialFilter": true,
+      "chapterLegend": true,
+      "noHorizontalOverflow": true
+    },
+    {
+      "width": 320,
+      "collection": "sound",
+      "trustFilters": [
+        1,
+        2,
+        3
+      ],
+      "paperBadges": true,
+      "trialFilter": true,
+      "chapterLegend": true,
+      "noHorizontalOverflow": true
+    },
+    {
+      "width": 320,
+      "collection": "vision",
+      "trustFilters": [
+        1,
+        2,
+        3
+      ],
+      "paperBadges": true,
+      "trialFilter": true,
+      "chapterLegend": true,
+      "noHorizontalOverflow": true
+    },
+    {
+      "width": 320,
+      "collection": "language",
+      "trustFilters": [
+        1,
+        2,
+        3
+      ],
+      "paperBadges": true,
+      "trialFilter": true,
+      "chapterLegend": true,
+      "noHorizontalOverflow": true
+    }
+  ],
+  "errors": [],
+  "proofURL": "https://staging.universalmind.tv/informatics/library.html?collection=sound&view=search&trust=3&query=Sound%20Mind%20Warrior",
+  "directProofLink": true,
+  "passed": true
+}

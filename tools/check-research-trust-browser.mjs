@@ -94,6 +94,18 @@ try{
   await page.evaluate(()=>document.querySelectorAll('audio,video').forEach(el=>el.pause()));
   await context.close();
  }
+ if(!candidate){
+  const context=await browser.newContext({viewport:{width:1470,height:956},reducedMotion:'reduce'});
+  const page=await context.newPage();
+  const proofURL=base+'library.html?collection=sound&view=search&trust=3&query=Sound%20Mind%20Warrior';
+  await page.goto(proofURL,{waitUntil:'domcontentloaded'});
+  await page.waitForFunction(()=>document.querySelector('#research-frame')?.contentDocument?.querySelector('[data-id="src-6d277422d0a0"]'),null,{timeout:45000});
+  const frame=await (await page.locator('#research-frame').elementHandle()).contentFrame();
+  assert.equal(await frame.locator('[data-id="src-6d277422d0a0"] .trust-score svg').count(),3);
+  report.proofURL=proofURL;report.directProofLink=true;
+  for(const f of page.frames())await f.evaluate(()=>document.querySelectorAll('audio,video').forEach(el=>el.pause())).catch(()=>{});
+  await context.close();
+ }
  assert.deepEqual(report.errors,[]);report.passed=true;
  await fs.writeFile(path.join(out,(candidate?'candidate-':'')+'browser-verification.json'),JSON.stringify(report,null,2)+'\n');
  console.log(JSON.stringify(report,null,2));
