@@ -1,0 +1,30 @@
+{
+  "data.php": 401,
+  "document.php": 401,
+  ".private/access.json": 403,
+  ".private/document.json": 403,
+  ".private/specification.pdf": 403,
+  ".private/access-probe.txt": 403,
+  "authenticated_pages": 953,
+  "pdf_bytes": 19838167,
+  "pdf_sha256": "399737e3b7f37db6012071fdd83e132dd04d05605785036b6337249aead7c830",
+  "invalid_key": 401,
+  "cross_origin_login": 403,
+  "secure_httponly_cookie": true,
+  "logout_denies_data": true,
+  "verified_at": "2026-10-27T23:33:50.115428+00:00",
+  "source_commit": "68d6ee1809dba14789a487fd1a56afa2dd429c91",
+  "url": "https://staging.universalmind.tv/patent/",
+  "browser_checks": {
+    "search_Pisano_pages": 83,
+    "current_implementation_Pisano_pages": 5,
+    "contribution_map_pages": 3,
+    "reader_page": 716,
+    "pdf_page_link": 716,
+    "empty_search_message": true,
+    "pagination": "2 / 80",
+    "desktop_screenshot_reviewed": true
+  },
+  "ai_answers": "inactive; no AI functionality claimed",
+  "production": "not modified"
+}
