@@ -1,0 +1,101 @@
+{
+  "sourceCommit": "2a3ea0635ee1ba8084747b1e0d0b6f871404ac89",
+  "sourceUrl": "https://universalmind.tv/vogue/iam/science.html#research-tracker",
+  "processMuted": true,
+  "assets": [
+    {
+      "url": "https://universalmind.tv/vogue/iam/science.html",
+      "sha256": "e8591c9f9c13d18d997164bfeba725efb4cb3f1dfa37efae69f966864c77c9dc",
+      "matchesCommittedSource": true
+    },
+    {
+      "url": "https://universalmind.tv/vogue/iam/science-research-data-v1.js?v=da2cb27b9715",
+      "sha256": "da2cb27b9715094455f3ad0609af3dcede3a425f6117a1248630132b5d6f17b8",
+      "matchesCommittedSource": true
+    },
+    {
+      "url": "https://universalmind.tv/vogue/iam/science.js?v=9395df271997",
+      "sha256": "9395df27199724d40d8770d6ad8fae3eb001013ceee8a85eacccc614efa5b7a4",
+      "matchesCommittedSource": true
+    }
+  ],
+  "viewports": [
+    {
+      "viewport": {
+        "width": 1470,
+        "height": 1000
+      },
+      "checks": [
+        {
+          "layer": "sound",
+          "collection": "sound",
+          "newTab": true,
+          "keyboard": true,
+          "destination": "https://universalmind.tv/informatics/?entry=research&area=research&section=%7B%22area%22%3A%22research%22%2C%22search%22%3A%22%3Fcollection%3Dsound%22%2C%22hash%22%3A%22%22%7D&record=fibonacci-m9-p24&record-mode=animation",
+          "collectionContents": 6,
+          "portalPreserved": true
+        },
+        {
+          "layer": "emdr",
+          "collection": "vision",
+          "newTab": true,
+          "keyboard": true,
+          "destination": "https://universalmind.tv/informatics/?entry=research&area=research&section=%7B%22area%22%3A%22research%22%2C%22search%22%3A%22%3Fcollection%3Dvision%22%2C%22hash%22%3A%22%22%7D&record=fibonacci-m9-p24&record-mode=animation",
+          "collectionContents": 6,
+          "portalPreserved": true
+        },
+        {
+          "layer": "mantra",
+          "collection": "language",
+          "newTab": true,
+          "keyboard": true,
+          "destination": "https://universalmind.tv/informatics/?entry=research&area=research&section=%7B%22area%22%3A%22research%22%2C%22search%22%3A%22%3Fcollection%3Dlanguage%22%2C%22hash%22%3A%22%22%7D&record=fibonacci-m9-p24&record-mode=animation",
+          "collectionContents": 4,
+          "portalPreserved": true
+        }
+      ],
+      "horizontalOverflow": false
+    },
+    {
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "checks": [
+        {
+          "layer": "sound",
+          "collection": "sound",
+          "newTab": true,
+          "keyboard": false,
+          "destination": "https://universalmind.tv/informatics/?entry=research&area=research&section=%7B%22area%22%3A%22research%22%2C%22search%22%3A%22%3Fcollection%3Dsound%22%2C%22hash%22%3A%22%22%7D&record=fibonacci-m9-p24&record-mode=animation",
+          "collectionContents": 6,
+          "portalPreserved": true
+        },
+        {
+          "layer": "emdr",
+          "collection": "vision",
+          "newTab": true,
+          "keyboard": false,
+          "destination": "https://universalmind.tv/informatics/?entry=research&area=research&section=%7B%22area%22%3A%22research%22%2C%22search%22%3A%22%3Fcollection%3Dvision%22%2C%22hash%22%3A%22%22%7D&record=fibonacci-m9-p24&record-mode=animation",
+          "collectionContents": 6,
+          "portalPreserved": true
+        },
+        {
+          "layer": "mantra",
+          "collection": "language",
+          "newTab": true,
+          "keyboard": false,
+          "destination": "https://universalmind.tv/informatics/?entry=research&area=research&section=%7B%22area%22%3A%22research%22%2C%22search%22%3A%22%3Fcollection%3Dlanguage%22%2C%22hash%22%3A%22%22%7D&record=fibonacci-m9-p24&record-mode=animation",
+          "collectionContents": 4,
+          "portalPreserved": true
+        }
+      ],
+      "horizontalOverflow": false
+    }
+  ],
+  "errors": [],
+  "failedSiteRequests": [],
+  "pdfRequests": [],
+  "passed": true,
+  "checkedAt": "2026-10-27T01:50:29.819Z"
+}

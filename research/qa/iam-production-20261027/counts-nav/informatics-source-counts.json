@@ -1,0 +1,27 @@
+{
+  "checkedAt": "2026-10-27T01:32:43.427Z",
+  "source": "https://universalmind.tv/informatics/library.html",
+  "collections": {
+    "sound": {
+      "papers": 308,
+      "journals": 164,
+      "citations": 27526,
+      "note": "Each publication and identified journal is counted once. Citation counts are available for 240 of 308 publications; these are historical counts, not live totals.",
+      "sourceUrl": "https://universalmind.tv/informatics/library.html?collection=sound"
+    },
+    "vision": {
+      "papers": 110,
+      "journals": 58,
+      "citations": 3865,
+      "note": "Each publication and identified journal is counted once. Citation counts are available for 86 of 110 publications; these are historical counts, not live totals.",
+      "sourceUrl": "https://universalmind.tv/informatics/library.html?collection=vision"
+    },
+    "language": {
+      "papers": 368,
+      "journals": 200,
+      "citations": 18513,
+      "note": "Each publication and identified journal is counted once. Citation counts are available for 143 of 368 publications; these are historical counts, not live totals.",
+      "sourceUrl": "https://universalmind.tv/informatics/library.html?collection=language"
+    }
+  }
+}
