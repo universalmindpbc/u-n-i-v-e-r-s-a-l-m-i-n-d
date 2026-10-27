@@ -1,0 +1,108 @@
+{
+  "sourceCommit": "fbabb97e57b208b06069d62b6718b93fd776db6a",
+  "sourceUrl": "https://staging.universalmind.tv/vogue/iam/science.html#research-tracker",
+  "processMuted": true,
+  "assets": [
+    {
+      "url": "https://staging.universalmind.tv/vogue/iam/science.html",
+      "sha256": "13b59b41dc7e8886ae7b6e7efb2777c463e0896c0f3bb961190825cd19284084",
+      "matchesCommittedSource": true
+    },
+    {
+      "url": "https://staging.universalmind.tv/vogue/iam/science-research-data-v1.js?v=40add68b5e7b",
+      "sha256": "40add68b5e7b9770347d957b0165cf4e5f12cf55317eccd987607da3a10fe4e4",
+      "matchesCommittedSource": true
+    },
+    {
+      "url": "https://staging.universalmind.tv/vogue/iam/science.js?v=f12e6937f7c2",
+      "sha256": "f12e6937f7c2389a0b4621071adc6c9b4784dae32d0dafcbc06bd4c7aa9ea16c",
+      "matchesCommittedSource": true
+    }
+  ],
+  "viewports": [
+    {
+      "viewport": {
+        "width": 1470,
+        "height": 1000
+      },
+      "checks": [
+        {
+          "layer": "sound",
+          "collection": "sound",
+          "newTab": true,
+          "keyboard": true,
+          "destination": "https://universalmind.tv/informatics/?entry=research&area=research&section=%7B%22area%22%3A%22research%22%2C%22search%22%3A%22%3Fcollection%3Dsound%22%2C%22hash%22%3A%22%22%7D&record=fibonacci-m9-p24&record-mode=animation",
+          "collectionContents": 6,
+          "portalPreserved": true
+        },
+        {
+          "layer": "emdr",
+          "collection": "vision",
+          "newTab": true,
+          "keyboard": true,
+          "destination": "https://universalmind.tv/informatics/?entry=research&area=research&section=%7B%22area%22%3A%22research%22%2C%22search%22%3A%22%3Fcollection%3Dvision%22%2C%22hash%22%3A%22%22%7D&record=fibonacci-m9-p24&record-mode=animation",
+          "collectionContents": 6,
+          "portalPreserved": true
+        },
+        {
+          "layer": "mantra",
+          "collection": "language",
+          "newTab": true,
+          "keyboard": true,
+          "destination": "https://universalmind.tv/informatics/?entry=research&area=research&section=%7B%22area%22%3A%22research%22%2C%22search%22%3A%22%3Fcollection%3Dlanguage%22%2C%22hash%22%3A%22%22%7D&record=fibonacci-m9-p24&record-mode=animation",
+          "collectionContents": 4,
+          "portalPreserved": true
+        }
+      ],
+      "horizontalOverflow": false
+    },
+    {
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "checks": [
+        {
+          "layer": "sound",
+          "collection": "sound",
+          "newTab": true,
+          "keyboard": false,
+          "destination": "https://universalmind.tv/informatics/?entry=research&area=research&section=%7B%22area%22%3A%22research%22%2C%22search%22%3A%22%3Fcollection%3Dsound%22%2C%22hash%22%3A%22%22%7D&record=fibonacci-m9-p24&record-mode=animation",
+          "collectionContents": 6,
+          "portalPreserved": true
+        },
+        {
+          "layer": "emdr",
+          "collection": "vision",
+          "newTab": true,
+          "keyboard": false,
+          "destination": "https://universalmind.tv/informatics/?entry=research&area=research&section=%7B%22area%22%3A%22research%22%2C%22search%22%3A%22%3Fcollection%3Dvision%22%2C%22hash%22%3A%22%22%7D&record=fibonacci-m9-p24&record-mode=animation",
+          "collectionContents": 6,
+          "portalPreserved": true
+        },
+        {
+          "layer": "mantra",
+          "collection": "language",
+          "newTab": true,
+          "keyboard": false,
+          "destination": "https://universalmind.tv/informatics/?entry=research&area=research&section=%7B%22area%22%3A%22research%22%2C%22search%22%3A%22%3Fcollection%3Dlanguage%22%2C%22hash%22%3A%22%22%7D&record=fibonacci-m9-p24&record-mode=animation",
+          "collectionContents": 4,
+          "portalPreserved": true
+        }
+      ],
+      "horizontalOverflow": false
+    }
+  ],
+  "errors": [],
+  "failedSiteRequests": [],
+  "pdfRequests": [],
+  "passed": true,
+  "checkedAt": "2026-10-27T01:26:17.186Z",
+  "deployment": {
+    "method": "./deploy-panthur-staging.sh iam-changed",
+    "uploadedFiles": 3,
+    "standardPreflightsPassed": true,
+    "ownerRuntimeStateUnchanged": true,
+    "sourceExport": "Three files exported byte-for-byte from the source commit via IAM_DIR; only their manifest hashes merged."
+  }
+}
