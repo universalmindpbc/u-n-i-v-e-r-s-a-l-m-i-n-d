@@ -110,6 +110,7 @@
             <div class="global-nav-submenu" id="global-nav-research" data-nav-submenu="research">
               <a href="research.html" data-nav-subitem="research-rct">rct</a>
               <a href="light.html" data-nav-subitem="research-computer-vision">computer vision</a>
+              <a href="https://universalmind.tv/informatics/" data-nav-subitem="research-informatics" target="_blank" rel="noopener noreferrer" aria-label="Informatics (opens in a new tab)">informatics</a>
               <a href="/study" data-nav-subitem="research-participate">participate</a>
             </div>
             <a class="global-nav-item" href="privacy-first.html" data-nav-item="privacy-first">privacy first</a>

@@ -48,7 +48,7 @@
 
   function layerMarkup(layer) {
     const panelId = `research-detail-${layer.id}`;
-    const dossier = layer.dossier;
+    const statistics = layer.statistics;
 
     return `
       <article class="research-layer" id="research-${escapeHtml(layer.id)}" data-research-layer="${escapeHtml(layer.id)}">
@@ -57,7 +57,7 @@
           <span class="research-position">${escapeHtml(layer.position)}</span>
           <span class="research-grade" aria-label="Grade ${escapeHtml(layer.grade)}">${escapeHtml(layer.grade)}</span>
           <span class="research-role">${escapeHtml(layer.role)}</span>
-          <span class="research-evidence"><b>${numberFormat.format(dossier.publications)} publications</b><small>${numberFormat.format(dossier.citations)} citations catalogued in 2022 dossier</small></span>
+          <span class="research-evidence"><b>${numberFormat.format(statistics.publications)} publications</b><small>${numberFormat.format(statistics.journals)} journals · ${numberFormat.format(statistics.citations)} recorded citations</small></span>
           <span class="research-expand" aria-hidden="true">+</span>
         </button>
 
@@ -74,11 +74,11 @@
                 <p>${escapeHtml(layer.boundary)}</p>
               </div>
               <div>
-                <span class="research-dossier-label">Original 2022 source collection</span>
+                <span class="research-dossier-label">Universal Informatics collection</span>
                 <div class="research-dossier-stats">
-                  <span><b>${numberFormat.format(dossier.articles)}</b><small>articles catalogued</small></span>
-                  <span><b>${numberFormat.format(dossier.publications)}</b><small>publications catalogued</small></span>
-                  <span><b>${numberFormat.format(dossier.citations)}</b><small>citations stated</small></span>
+                  <span><b>${numberFormat.format(statistics.publications)}</b><small>publications</small></span>
+                  <span><b>${numberFormat.format(statistics.journals)}</b><small>journals</small></span>
+                  <span title="Historical citation counts available for ${numberFormat.format(statistics.citationCoverage)} of ${numberFormat.format(statistics.publications)} publications"><b>${numberFormat.format(statistics.citations)}</b><small>recorded citations</small></span>
                 </div>
               </div>
               <p class="research-source-state">Universal Informatics · ${escapeHtml(layer.repository.collection)} research · Opens in a new tab</p>

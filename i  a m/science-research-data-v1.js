@@ -21,12 +21,12 @@
           collection: "Vision",
           url: "https://universalmind.tv/informatics/library.html?collection=vision",
         },
-        dossier: {
-          title: "Universal Mind [ I o H ] - EMDR Medical Research",
-          pages: 19,
-          articles: 55,
-          publications: 33,
-          citations: 3210,
+        statistics: {
+          publications: 110,
+          journals: 58,
+          citations: 3865,
+          citationCoverage: 86,
+          checkedAt: "2026-10-27",
         },
         heroStudies: [
           {
@@ -85,12 +85,12 @@
           collection: "Sound",
           url: "https://universalmind.tv/informatics/library.html?collection=sound",
         },
-        dossier: {
-          title: "Universal Mind [ I o H ] - Sound Medical Research",
-          pages: 144,
-          articles: 458,
-          publications: 412,
-          citations: 73330,
+        statistics: {
+          publications: 308,
+          journals: 164,
+          citations: 27526,
+          citationCoverage: 240,
+          checkedAt: "2026-10-27",
         },
         heroStudies: [
           {
@@ -172,12 +172,12 @@
           collection: "Language",
           url: "https://universalmind.tv/informatics/library.html?collection=language",
         },
-        dossier: {
-          title: "Universal Mind [ I o H ] - Mantra Medical Research",
-          pages: 73,
-          articles: 298,
-          publications: 222,
-          citations: 11226,
+        statistics: {
+          publications: 368,
+          journals: 200,
+          citations: 18513,
+          citationCoverage: 143,
+          checkedAt: "2026-10-27",
         },
         heroStudies: [
           {
