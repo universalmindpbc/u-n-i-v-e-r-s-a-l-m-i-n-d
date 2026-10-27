@@ -24,7 +24,7 @@
   restoreFilters(params);
 
   function crosses(score, labelled = false, scope = 'Subchapter') {
-    if (!score) return '';
+    if (!score || (scope === 'Paper' && score === 1)) return '';
     const icon = '<svg viewBox="0 0 18 18" aria-hidden="true"><circle cx="9" cy="9" r="8" fill="#1468a8" stroke="currentColor" stroke-width=".5"/><path d="M7 3.5h4V7h3.5v4H11v3.5H7V11H3.5V7H7z" fill="#fff"/></svg>';
     return `<span class="trust-score" role="img" aria-label="${scope} Trust Factor: ${score} of 3" title="${scope} Trust Factor: ${score} of 3">${labelled ? '<span class="trust-label">Trust Factor</span>' : ''}${icon.repeat(score)}</span>`;
   }

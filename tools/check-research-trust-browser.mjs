@@ -6,8 +6,10 @@ import {chromium} from '/Users/benkorbel/.cache/codex-runtimes/codex-primary-run
 const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
 const base='https://staging.universalmind.tv/informatics/';
 const candidate=process.env.INFORMATICS_CANDIDATE==='1';
-const out=path.join(root,'research/informatics/trust-factor-20261027');
-const expected=JSON.parse(await fs.readFile(path.join(out,'model-verification.json'),'utf8')).counts;
+const baseline=path.join(root,'research/informatics/trust-factor-20261027');
+const out=process.env.INFORMATICS_QA_OUTPUT||baseline;
+await fs.mkdir(out,{recursive:true});
+const expected=JSON.parse(await fs.readFile(path.join(baseline,'model-verification.json'),'utf8')).counts;
 const server=await chromium.launchServer({executablePath:'/Applications/Google Chrome.app/Contents/MacOS/Google Chrome',headless:true,args:['--mute-audio']});
 assert.ok(server.process().spawnargs.includes('--mute-audio'));
 const browser=await chromium.connect(server.wsEndpoint());
@@ -52,7 +54,12 @@ try{
      assert.equal(await badge.getAttribute('aria-label'),`Paper Trust Factor: ${score} of 3`);
      assert.equal(await badge.locator('svg').count(),score);
     }
-    assert.equal(await reader.locator('.search-paper h3 .trust-score').count(),Math.min(n,15));
+    assert.equal(await reader.locator('.search-paper h3 .trust-score').count(),score===1?0:Math.min(n,15));
+    if(score===1 && n){
+     await reader.locator('.search-paper [data-record]').first().click();
+     assert.equal(await reader.locator('#article-title .trust-score').count(),0);
+     await page.keyboard.press('Escape');
+    }
     if(width===1470 && score===2){
      const event=page.waitForEvent('download');await reader.locator('#export-json').click();
      const download=await event;const file=path.join(out,`${candidate?'candidate-':''}${collection}-two-crosses.json`);await download.saveAs(file);
@@ -68,10 +75,19 @@ try{
    assert.match(await reader.locator('#result-count').textContent(),new RegExp('^'+expected[collection].rct+' papers'));
    await reader.locator('[data-view="chapters"]').click();
    assert.equal(await reader.locator('#reading-content').isVisible(),true);
+   assert.equal(await reader.locator('[aria-label="Paper Trust Factor: 1 of 3"]').count(),0);
+   assert.ok(await reader.locator('#trust-key [aria-label="Subchapter Trust Factor: 1 of 3"]').count()>0);
    assert.ok((await reader.locator('#trust-key').textContent()).includes('At least 3 randomized controlled trials'));
    assert.ok(!(await reader.locator('.research-guide').textContent()).includes('Individual paper'));
    assert.equal(await reader.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),true);
-   report.results.push({width,collection,trustFilters:[1,2,3],paperBadges:true,trialFilter:true,chapterLegend:true,noHorizontalOverflow:true});
+   const edition=JSON.parse(await fs.readFile(path.join(root,`Informatics/library-data/${collection}-edition.json`),'utf8'));
+   const singleChapter=edition.chapters.find(c=>c.topics.some(t=>t.trustAssessment?.score===1));
+   const singleTopic=singleChapter.topics.find(t=>t.trustAssessment?.score===1);
+   await visit(base+`library.html?collection=${collection}&chapter=${singleChapter.number}#topic-${singleTopic.id}`);
+   await reader.locator(`#topic-${singleTopic.id}`).waitFor();
+   assert.equal(await reader.locator(`#topic-${singleTopic.id} > .topic-heading [aria-label="Subchapter Trust Factor: 1 of 3"] svg`).count(),1);
+   assert.equal(await reader.locator('[aria-label="Paper Trust Factor: 1 of 3"]').count(),0);
+   report.results.push({width,collection,trustFilters:[1,2,3],paperBadges:true,singlePaperBadgesHidden:true,singleChapterLegendRetained:true,singleChapterBadgeRetained:true,trialFilter:true,chapterLegend:true,noHorizontalOverflow:true});
   }
   await visit(base+'library.html?collection=sound&view=search&trust=3&query=Sound%20Mind%20Warrior');
   await reader.locator('[data-id="src-6d277422d0a0"]').waitFor();
