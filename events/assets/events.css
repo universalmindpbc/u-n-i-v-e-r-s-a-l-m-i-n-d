@@ -47,6 +47,8 @@
   .about-return{min-height:48px;font-size:12px}
 }
 @media(max-width:700px),(pointer:coarse){
+  .global-nav-toggle{top:max(18px,env(safe-area-inset-top));left:max(22px,env(safe-area-inset-left));width:44px;height:44px}
+  .backdrop video:not(.ready){visibility:hidden}
   .maximise{display:none;width:44px;height:44px;padding:12px}
   body.film-open:not(.about-open) .maximise{display:block;top:auto;right:max(14px,env(safe-area-inset-right));bottom:max(10px,env(safe-area-inset-bottom))}
   .film-back{top:max(14px,env(safe-area-inset-top));left:max(76px,calc(env(safe-area-inset-left) + 54px));font-size:12px}

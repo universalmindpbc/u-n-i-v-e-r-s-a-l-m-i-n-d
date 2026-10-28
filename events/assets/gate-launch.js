@@ -12,8 +12,10 @@
       const response = await fetch('/events/', {method:'POST',body:new FormData(form),credentials:'same-origin',headers:{Accept:'application/json'}});
       const result = await response.json();
       if(!response.ok || !result.granted) throw new Error(result.error || 'Please check your invitation password.');
-      // Fullscreen belongs to this explicit visitor action; no automatic fullscreen on load.
-      await document.documentElement.requestFullscreen?.().catch(() => {});
+      // Keep mobile in the browser; the film has its own native fullscreen control.
+      if (!matchMedia('(max-width: 700px), (pointer: coarse)').matches) {
+        await document.documentElement.requestFullscreen?.().catch(() => {});
+      }
       document.body.dataset.accessState = 'granted';
       document.dispatchEvent(new Event('um:access-granted'));
       const stage = document.createElement('iframe');
