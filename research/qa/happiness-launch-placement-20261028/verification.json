@@ -1,0 +1,285 @@
+{
+  "verifiedAt": "2026-10-28T09:59:28.786Z",
+  "mode": "staging-assets",
+  "processAudioDisabled": true,
+  "nativeFullscreenInvoked": false,
+  "scope": "Six viewport layout checks using source-rendered authenticated HTML and exact staged assets. Mobile presentation playback and Back checked in muted Chromium; no invitation credentials or native fullscreen used.",
+  "checks": [
+    {
+      "viewport": {
+        "width": 1470,
+        "height": 834
+      },
+      "cta": {
+        "x": 613.859375,
+        "y": 763.09375,
+        "width": 242.28125,
+        "height": 46.90625,
+        "bottom": 810
+      },
+      "network": {
+        "x": 372.4375,
+        "y": 191.84375,
+        "width": 659.1875,
+        "height": 384,
+        "bottom": 575.84375
+      },
+      "response": {
+        "x": 265,
+        "y": 648.84375,
+        "width": 940,
+        "height": 95,
+        "bottom": 743.84375
+      },
+      "header": {
+        "x": 64.671875,
+        "y": 0,
+        "width": 1340.65625,
+        "height": 132,
+        "bottom": 132
+      },
+      "scene": {
+        "x": 64.671875,
+        "y": 175.25,
+        "width": 1340.65625,
+        "height": 415.59375,
+        "bottom": 590.84375
+      },
+      "bodyHeight": 834,
+      "viewportHeight": 834,
+      "buttonBelowDiagram": true,
+      "aboveFold": true
+    },
+    {
+      "viewport": {
+        "width": 1470,
+        "height": 920
+      },
+      "cta": {
+        "x": 613.859375,
+        "y": 849.09375,
+        "width": 242.28125,
+        "height": 46.90625,
+        "bottom": 896
+      },
+      "network": {
+        "x": 372.4375,
+        "y": 207,
+        "width": 659.1875,
+        "height": 455.6875,
+        "bottom": 662.6875
+      },
+      "response": {
+        "x": 265,
+        "y": 719.6875,
+        "width": 940,
+        "height": 95,
+        "bottom": 814.6875
+      },
+      "header": {
+        "x": 64.671875,
+        "y": 0,
+        "width": 1340.65625,
+        "height": 132,
+        "bottom": 132
+      },
+      "scene": {
+        "x": 64.671875,
+        "y": 190.40625,
+        "width": 1340.65625,
+        "height": 471.28125,
+        "bottom": 661.6875
+      },
+      "bodyHeight": 920,
+      "viewportHeight": 920,
+      "buttonBelowDiagram": true,
+      "aboveFold": true
+    },
+    {
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "cta": {
+        "x": 518.859375,
+        "y": 649.09375,
+        "width": 242.28125,
+        "height": 46.90625,
+        "bottom": 696
+      },
+      "network": {
+        "x": 324.296875,
+        "y": 146.84375,
+        "width": 574,
+        "height": 300,
+        "bottom": 446.84375
+      },
+      "response": {
+        "x": 170,
+        "y": 541.84375,
+        "width": 940,
+        "height": 95,
+        "bottom": 636.84375
+      },
+      "header": {
+        "x": 56.3125,
+        "y": 0,
+        "width": 1167.375,
+        "height": 110,
+        "bottom": 110
+      },
+      "scene": {
+        "x": 56.3125,
+        "y": 130.25,
+        "width": 1167.375,
+        "height": 373.59375,
+        "bottom": 503.84375
+      },
+      "bodyHeight": 720,
+      "viewportHeight": 720,
+      "buttonBelowDiagram": true,
+      "aboveFold": true
+    },
+    {
+      "viewport": {
+        "width": 1920,
+        "height": 1080
+      },
+      "cta": {
+        "x": 838.859375,
+        "y": 1009.09375,
+        "width": 242.28125,
+        "height": 46.90625,
+        "bottom": 1056
+      },
+      "network": {
+        "x": 486.453125,
+        "y": 261.84375,
+        "width": 860.984375,
+        "height": 520,
+        "bottom": 781.84375
+      },
+      "response": {
+        "x": 490,
+        "y": 832.84375,
+        "width": 940,
+        "height": 95,
+        "bottom": 927.84375
+      },
+      "header": {
+        "x": 84.46875,
+        "y": 0,
+        "width": 1751.0625,
+        "height": 132,
+        "bottom": 132
+      },
+      "scene": {
+        "x": 84.46875,
+        "y": 245.25,
+        "width": 1751.0625,
+        "height": 535.59375,
+        "bottom": 780.84375
+      },
+      "bodyHeight": 1080,
+      "viewportHeight": 1080,
+      "buttonBelowDiagram": true,
+      "aboveFold": true
+    },
+    {
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "cta": {
+        "x": 25,
+        "y": 1355.28125,
+        "width": 340,
+        "height": 50.15625,
+        "bottom": 1405.4375
+      },
+      "network": {
+        "x": 25,
+        "y": 177.09375,
+        "width": 340,
+        "height": 340,
+        "bottom": 517.09375
+      },
+      "response": {
+        "x": 25,
+        "y": 1200.28125,
+        "width": 340,
+        "height": 87,
+        "bottom": 1287.28125
+      },
+      "header": {
+        "x": 25,
+        "y": 0,
+        "width": 340,
+        "height": 134.5,
+        "bottom": 134.5
+      },
+      "scene": {
+        "x": 25,
+        "y": 164.5,
+        "width": 340,
+        "height": 950.78125,
+        "bottom": 1115.28125
+      },
+      "bodyHeight": 1429,
+      "viewportHeight": 844,
+      "buttonBelowDiagram": true,
+      "aboveFold": false
+    },
+    {
+      "mobileButtonOpensPresentation": true,
+      "backCleansUpPlayer": true
+    },
+    {
+      "viewport": {
+        "width": 320,
+        "height": 568
+      },
+      "cta": {
+        "x": 20,
+        "y": 1313.28125,
+        "width": 280,
+        "height": 50.15625,
+        "bottom": 1363.4375
+      },
+      "network": {
+        "x": 20,
+        "y": 170.09375,
+        "width": 280,
+        "height": 300,
+        "bottom": 470.09375
+      },
+      "response": {
+        "x": 20,
+        "y": 1161.28125,
+        "width": 280,
+        "height": 84,
+        "bottom": 1245.28125
+      },
+      "header": {
+        "x": 20,
+        "y": 0,
+        "width": 280,
+        "height": 127.5,
+        "bottom": 127.5
+      },
+      "scene": {
+        "x": 20,
+        "y": 157.5,
+        "width": 280,
+        "height": 918.78125,
+        "bottom": 1076.28125
+      },
+      "bodyHeight": 1387,
+      "viewportHeight": 568,
+      "buttonBelowDiagram": true,
+      "aboveFold": false
+    }
+  ],
+  "errors": [],
+  "passed": true
+}

@@ -1,0 +1,18 @@
+{
+  "verifiedAt": "2026-10-28T10:00:46.116352+00:00",
+  "sourceCommit": "aede43399537198247db28ff47d86323681e87a3",
+  "files": [
+    {
+      "file": "happiness/index.php",
+      "sha256": "731cf141e853ae92ad74fbf905fe989eb4a3c826e0ba7dc8825ec5332ffecf88",
+      "deployedBytesMatch": true
+    },
+    {
+      "file": "happiness/assets/happiness.css",
+      "sha256": "9aafd517fc234ce74147eb1fe4ddd6619161c617f97f77f20ec636ec33cfd826",
+      "deployedBytesMatch": true
+    }
+  ],
+  "page": "https://staging.universalmind.tv/happiness/",
+  "productionModified": false
+}
