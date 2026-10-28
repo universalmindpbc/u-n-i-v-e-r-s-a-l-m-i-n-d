@@ -801,7 +801,7 @@ deploy_events() {
 # The directory is published by the existing transport, with the root entry last.
 deploy_directory() {
   local relative manifest_tmp
-  local paths=(home/entry-shell.css home/entry-shell.js home/directory.css home/directory.js home/directory-story.js events/portal-entry.php home/index.html index.html)
+  local paths=(home/entry-shell.css home/entry-shell.js home/directory.css home/directory.js home/directory-story.js home/directory-rain.js events/portal-entry.php home/index.html index.html)
   if [[ -n "$(git -C "$ROOT_DIR" status --porcelain --untracked-files=all -- "${paths[@]}")" ]]; then
     echo "Refusing to deploy uncommitted directory source." >&2
     return 1

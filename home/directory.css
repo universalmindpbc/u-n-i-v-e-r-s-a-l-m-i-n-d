@@ -11,10 +11,12 @@
 body { margin: 0; }
 button, input, select, textarea { font-family: inherit; }
 
-.festival-background, .festival-film, .festival-shade { position: fixed; inset: 0; width: 100%; height: 100%; pointer-events: none; }
+.festival-background, .festival-film, .directory-rain { position: fixed; inset: 0; width: 100%; height: 100%; opacity: .5; pointer-events: none; }
+.festival-shade { position: fixed; inset: 0; width: 100%; height: 100%; pointer-events: none; }
 .festival-background { z-index: 0; background: #000; }
 .festival-film { object-fit: cover; opacity: 0; transition: opacity 600ms ease; }
 .festival-film.is-ready { opacity: 1; }
+.directory-rain { position: fixed; inset: 0; width: 100%; height: 100%; opacity: .5; pointer-events: none; }
 .festival-shade { background: linear-gradient(180deg, rgba(0, 0, 0, .52) 0%, rgba(0, 0, 0, .24) 35%, rgba(0, 0, 0, .24) 65%, rgba(0, 0, 0, .50) 100%); }
 
 .directory {
@@ -53,7 +55,7 @@ h1 {
 
 .routes path { fill: none; stroke-linecap: round; vector-effect: non-scaling-stroke; }
 .rail-line { stroke: rgba(255, 255, 255, .48); stroke-width: 3.5; }
-.rail-flow { stroke: #fff5f5; stroke-width: 5.5; stroke-dasharray: .22 2; }
+.rail-flow { stroke: url(#route-light); stroke-width: 4.5; stroke-dasharray: .22 2; }
 .rail-reveal { stroke: #fff; stroke-width: 15; stroke-dasharray: 1; stroke-dashoffset: var(--rail-offset, 0); }
 
 /* Reuse the landing page's asset, native alpha and exact responsive widths. */
@@ -188,7 +190,8 @@ html[data-story]:not([data-story="complete"]) .destination:not(.is-revealed) { p
   .destination--watch, .destination--events { top: 5%; }
   .destination--festivals, .destination--research { top: 77%; }
   .destination-title { font-size: clamp(18px, 3.7vw, 24px); }
-  .destination-description { margin-top: 7px; font-size: 13px; line-height: 1.5; }
+  .destination-description { display: none; }
+  .route-map { min-height: 480px; }
   .destination .station { left: calc(50% - 9px); right: auto; width: 18px; height: 18px; }
   .destination--watch .station, .destination--events .station { top: auto; bottom: -30px; }
   .destination--festivals .station, .destination--research .station { top: -30px; }

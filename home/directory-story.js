@@ -8,6 +8,7 @@
     const group = routes.querySelector(`[data-route="${name}"]`);
     return {
       group,
+      path: group.querySelector('.rail-line'),
       reveal: routes.querySelector(`[data-reveal="${name}"]`),
       flow: group.querySelector('.rail-flow'),
       destination: document.querySelector(`[data-destination="${name}"]`)
@@ -35,11 +36,20 @@
     languages.forEach((language, i) => { language.style.opacity = i === index ? String(opacity) : '0'; });
     intro.dataset.language = languages[index].lang;
   };
+  const light = routes.querySelector('#route-light');
   const flow = (track, head, opacity) => {
     track.flow.setAttribute('stroke-dashoffset', String(.22 - head));
     track.flow.setAttribute('opacity', String(opacity));
+    if (opacity > 0 && track.path.hasAttribute('d')) {
+      const length = track.path.getTotalLength();
+      const tail = track.path.getPointAtLength(length * clamp(head - .22));
+      const tip = track.path.getPointAtLength(length * clamp(head));
+      light.setAttribute('x1', tail.x); light.setAttribute('y1', tail.y);
+      light.setAttribute('x2', tip.x); light.setAttribute('y2', tip.y);
+    }
   };
   const render = () => {
+    window.UniversalMindRoutes?.animate(elapsed);
     languageFade();
     const time = skipEntrance ? Math.max(elapsed, completeAt) : elapsed;
     root.dataset.story = time < routeStart ? 'intro' : 'routes';

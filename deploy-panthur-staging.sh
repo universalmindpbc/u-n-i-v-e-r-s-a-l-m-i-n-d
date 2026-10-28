@@ -42,6 +42,7 @@ elif [[ "${1:-}" == directory ]]; then
   "$NODE_BIN" "$ROOT_DIR/tools/check-directory-source.mjs"
   "$NODE_BIN" --check "$ROOT_DIR/home/directory.js"
   "$NODE_BIN" --check "$ROOT_DIR/home/directory-story.js"
+  "$NODE_BIN" --check "$ROOT_DIR/home/directory-rain.js"
   "$NODE_BIN" --check "$ROOT_DIR/home/entry-shell.js"
   if command -v php >/dev/null 2>&1; then php -l "$ROOT_DIR/events/portal-entry.php"; fi
 elif [[ "${1:-}" == events ]]; then
