@@ -1,0 +1,37 @@
+{
+  "createdAt": "2026-10-28T06:05:27.225643+00:00",
+  "sourceCommit": "1a70066997a36c320c4b4471fafec44f49e0e1c5",
+  "stagingUrl": "https://staging.universalmind.tv/home/",
+  "loginJourney": "https://staging.universalmind.tv/",
+  "publisher": "./deploy-panthur-staging.sh directory",
+  "productionModified": false,
+  "nativeFullscreenInvokedDuringQA": false,
+  "changes": [
+    "Yellow titles and dots on hover and keyboard focus; descriptions remain white and Happiness remains inactive.",
+    "Reuse the existing Rihanna Global Citizen loop, always muted with volume zero, under a 78 percent black overlay.",
+    "Add unobtrusive video pause/resume and fullscreen controls, with static reduced-motion behaviour.",
+    "Request fullscreen during the login action, before awaiting the server, then retain that document while the directory opens.",
+    "Preserve each destination as a normal top-level page and retain the single-login Events session.",
+    "Stop the hidden splash animation once the directory opens."
+  ],
+  "validation": [
+    "Six live HTML/CSS/JavaScript assets match committed hashes.",
+    "Actual silent video playback advances; mute, volume, loop and inline settings verified; pause/resume works.",
+    "Yellow title/dot/border and white description colours verified for each active route; Happiness stays white and inactive.",
+    "Keyboard focus, desktop and mobile layouts checked. Original flower retains 94px desktop and 82px mobile widths and native transparency.",
+    "Fullscreen API interception verifies trusted user activation, request before the network call, retained document, full-viewport directory, blocked-request fallback and exit control. No native fullscreen was invoked.",
+    "Login-to-directory-to-Events and return verified without a second password; I AM and Informatics retain their native top-level contexts.",
+    "Reduced motion pauses the background and disables route-drawing animation.",
+    "Hidden splash animation stops; zero captured page errors; automated media paused and browser closed.",
+    "Existing credential hashes and unrelated deployment-manifest entries preserved. Production landing page matches the original baseline."
+  ],
+  "sourceSha256": {
+    "index.html": "83a51ae65888d42570f7b766f6b90f5aa0734e835deebf4a53ecc73405637b38",
+    "home/index.html": "4b9a8d5d3dda7d7334401ae45e861055b56a5ff49ac1fb47ee02726a3512f56b",
+    "home/directory.css": "3fbd1dc393bd66caa5386e2e575bc340a25a348f590cb5839e37889a49493f51",
+    "home/directory.js": "65993990eb3f0febf700e0b558903f41da56f2278991e914fc7d8ebb7ac250f6",
+    "home/entry-shell.css": "f4f97b9c6ef7f46915f10044256bda31a2aae0064cc2bfeab44223fff2d94570",
+    "home/entry-shell.js": "80e8ced119e2cb2478386bfe9ee82443a60d277bd20cdad7eead96f173275023",
+    "events/portal-entry.php": "1d281594d063e3449e624cba4d0eac00aef8da1a1094d76282f6ad727e018590"
+  }
+}
