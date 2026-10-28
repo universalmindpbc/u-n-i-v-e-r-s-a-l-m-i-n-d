@@ -36,7 +36,7 @@ if ($entered) {
 <title>athousandminds — Universal Mind</title>
 <link rel="stylesheet" href="assets/events.css?v=13">
 <?php if (!$entered): ?>
-<link rel="stylesheet" href="assets/gate.css?v=5">
+<link rel="stylesheet" href="assets/gate.css?v=6">
 <script src="assets/gate-rain.js?v=2" defer></script>
 <script src="assets/gate-launch.js?v=3" defer></script>
 <?php endif; ?>

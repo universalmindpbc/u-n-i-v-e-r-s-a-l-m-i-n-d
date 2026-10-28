@@ -234,3 +234,4 @@
 body:has(.events-entry-background):not([data-access-state=granted]):before{content:"";position:fixed;inset:0;background:#000;z-index:-3}
 body[data-background-visible=true] .events-stage{background:transparent}
 body[data-background-visible=false] .events-entry-background{visibility:hidden}
+body[data-access-state=granted] .rain-vignette{visibility:hidden}
