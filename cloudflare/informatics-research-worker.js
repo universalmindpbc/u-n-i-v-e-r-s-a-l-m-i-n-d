@@ -1,4 +1,5 @@
 import {astraRoute} from './informatics-astra.js';
+import {patentModelRelay} from './patent-model-relay.js';
 import {quantumKnowledge,quantumRelevant,normaliseResearchTerminology} from './informatics-quantum-knowledge.js';
 import {neon} from '@neondatabase/serverless';
 import {compactResearchRequest,retrievalQuery} from '../Informatics/universal-one-context.js';
@@ -197,7 +198,8 @@ export default {
   env={...env,QUOTA_SCOPE:qa?'qa':'visitors'};
   let response;
   try{
-   if(url.pathname.startsWith('/agent/'))response=await astraRoute(request,env);
+   if(url.pathname==='/patent/model')response=await patentModelRelay(request,env);
+   else if(url.pathname.startsWith('/agent/'))response=await astraRoute(request,env);
    else if(request.method==='GET'&&url.pathname==='/health')response=json({status:'ready',profile:'informatics-research',model:env.RESEARCH_MODEL,version:env.DATASET_VERSION});
    else if(request.method==='GET'&&url.pathname==='/budget-status'&&qa)response=json(await budgetStatus(env));
    else if(request.method==='GET'&&url.pathname==='/quantum/capacity'&&env.QUANTUM_PLANNING_ENABLED==='true')response=json(await quantumAllowance(env,true));
