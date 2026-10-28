@@ -30,7 +30,7 @@ $entered = events_authenticated() && ($_GET['experience'] ?? '') === '1';
 <meta name="theme-color" content="#080808">
 <link rel="icon" href="/vogue/iam/favicon.png?v=iam-favicon-3">
 <title>athousandminds — Universal Mind</title>
-<link rel="stylesheet" href="assets/events.css?v=3">
+<link rel="stylesheet" href="assets/events.css?v=4">
 <?php if (!$entered): ?>
 <link rel="stylesheet" href="assets/gate.css?v=1">
 <script src="assets/gate-rain.js?v=1" defer></script>
@@ -72,7 +72,7 @@ $entered = events_authenticated() && ($_GET['experience'] ?? '') === '1';
 </header>
 <div class="title-group">
 <h1 id="festival-title" aria-label="athousandminds"><span>athousand</span><strong>minds</strong></h1>
-<p class="tagline">change your emotions. transform your world</p>
+<p class="tagline"><span class="tagline-phrase">change your emotions.</span> <span class="tagline-phrase">transform your world</span></p>
 <button id="watch-film" class="watch-film"><span class="play-icon" aria-hidden="true">▶</span><span>Watch the film</span></button>
 <p id="film-status" class="film-status" role="status"></p>
 </div>
