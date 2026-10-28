@@ -32,7 +32,7 @@ $entered = events_authenticated() && ($_GET['experience'] ?? '') === '1';
 <title>athousandminds — Universal Mind</title>
 <link rel="stylesheet" href="assets/events.css?v=7">
 <?php if (!$entered): ?>
-<link rel="stylesheet" href="assets/gate.css?v=3">
+<link rel="stylesheet" href="assets/gate.css?v=4">
 <script src="assets/gate-rain.js?v=2" defer></script>
 <script src="assets/gate-launch.js?v=1" defer></script>
 <?php endif; ?>
