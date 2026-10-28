@@ -1,0 +1,38 @@
+{
+  "verified_at": "2026-10-28T16:09:28.675911+11:00",
+  "tag": "production-2026-10-28-1609",
+  "production_url": "https://universalmind.tv/patent/",
+  "staging_url": "https://staging.universalmind.tv/patent/",
+  "baseline": "f2112ca6a861a7ca4a94557974297f889916b16b",
+  "approved_staging": "ea3ed95ac9a32e6a17270db0918275864394c2e9",
+  "production_source": "cb357582e4e2dcb05c11a3cc8968df3e0f2b957a",
+  "worker_version": "bd50e720-06b8-4da0-80c1-fd45069a17c3",
+  "previous_worker_version": "f66cfa41-d2ee-466c-aede-9992f5498aa7",
+  "filed_pdf_sha256": "79c02b900a946092b1d4cb74c882390f76cb851524b7ff71fa3509c22af19653",
+  "filed_pdf_pages": 953,
+  "reader_chapters": 31,
+  "drawing_images": 91,
+  "login_copy_removal": {
+    "staging": true,
+    "production": true,
+    "viewport_widths": [
+      1440,
+      390
+    ],
+    "visible_password_guidance_removed": true,
+    "visible_footer_guidance_removed": true,
+    "no_visible_replacement_copy": true,
+    "accessible_generic_password_label_retained": true,
+    "password_protection_retained": true
+  },
+  "scope": "Only approved patent reader, shared assistant integration, relay and publisher paths released. Independent Events changes remain on staging. Main and the production tag identify the scoped release; staging also retains the independent Events work.",
+  "checks": {
+    "muted_browser": true,
+    "all_chapters_rendered": true,
+    "drawings_verified": 91,
+    "real_ai_text_and_citations": true,
+    "existing_informatics_research_regression": true,
+    "private_resources_denied_anonymously": true,
+    "audio_conversation_tested": false
+  }
+}
