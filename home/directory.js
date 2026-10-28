@@ -28,8 +28,18 @@
   let playAttempt = null;
   let lastPlayFailure = 'none';
   let diagnosticStatus = null;
+  let explicitLoadRequested = false;
+  const mediaEvents = [];
+  ['loadstart', 'loadedmetadata', 'loadeddata', 'canplay', 'play', 'playing', 'pause', 'stalled', 'suspend', 'error'].forEach(type => {
+    film.addEventListener(type, () => {
+      mediaEvents.push({ type, at: Math.round(performance.now()), readyState: film.readyState, networkState: film.networkState });
+      if (mediaEvents.length > 16) mediaEvents.shift();
+    });
+  });
   const playbackDiagnostic = () => ({
-    revision: 'safari-startup-3',
+    revision: 'safari-silent-4',
+    explicitLoadRequested,
+    mediaEvents,
     reducedMotion: motion.matches,
     requestedPause: userPaused,
     autoplayBlocked,
@@ -41,7 +51,7 @@
       autoplay: film.autoplay, playsInline: film.playsInline,
       readyState: film.readyState, networkState: film.networkState,
       currentTime: film.currentTime, error: film.error?.code || null,
-      source: film.currentSrc, opacity: getComputedStyle(film).opacity,
+      source: film.currentSrc, declaredSource: film.getAttribute('src'), opacity: getComputedStyle(film).opacity,
       parentOpacity: getComputedStyle(film.parentElement).opacity
     },
     browser: navigator.userAgent
@@ -97,13 +107,25 @@
       }).finally(() => { playAttempt = null; syncFilm(); });
     } catch (error) { autoplayBlocked = true; lastPlayFailure = `${error.name}: ${error.message}`; syncFilm(); }
   };
+  const prepareFilm = () => {
+    if (userPaused || document.hidden || document.body.classList.contains('is-experience-shell')) return;
+    // Select the resource before requesting automatic playback. A denied play()
+    // can leave Safari at NETWORK_EMPTY without loading metadata.
+    if (film.networkState === HTMLMediaElement.NETWORK_EMPTY && !explicitLoadRequested) {
+      explicitLoadRequested = true;
+      film.load();
+    }
+    if (film.readyState >= HTMLMediaElement.HAVE_METADATA) playFilm();
+  };
   film.muted = true;
   film.defaultMuted = true;
   film.volume = 0;
   film.playsInline = true;
   film.autoplay = !userPaused;
+  if (userPaused) film.pause();
   // Keep the parser-declared source intact so Safari can start native autoplay.
   if (!film.getAttribute('src')) film.src = film.dataset.src;
+  film.addEventListener('loadedmetadata', playFilm);
   film.addEventListener('loadeddata', () => { film.classList.add('is-ready'); playFilm(); });
   film.addEventListener('canplay', playFilm);
   film.addEventListener('playing', () => { autoplayBlocked = false; film.classList.add('is-ready'); syncFilm(); });
@@ -127,13 +149,13 @@
   });
   document.addEventListener('visibilitychange', () => {
     if (document.hidden) film.pause();
-    else playFilm();
+    else prepareFilm();
   });
   motion.addEventListener('change', () => {
     userPaused = motion.matches;
     film.autoplay = !userPaused;
     if (userPaused) film.pause();
-    else playFilm();
+    else prepareFilm();
     syncFilm();
   });
   window.addEventListener('pagehide', () => {
@@ -145,10 +167,17 @@
     fullscreenDocument.addEventListener('fullscreenchange', syncFullscreen);
     fullscreenDocument.addEventListener('webkitfullscreenchange', syncFullscreen);
     syncFullscreen();
-    playFilm();
+    prepareFilm();
   });
-  playFilm();
+  prepareFilm();
   syncFilm();
+  window.setTimeout(() => {
+    if (!userPaused && !document.hidden && !document.body.classList.contains('is-experience-shell') && film.paused && !playAttempt) {
+      autoplayBlocked = true;
+      document.body.dataset.festivalMedia = 'awaiting-play';
+      syncFilm();
+    }
+  }, 6000);
 
   const map = document.querySelector('.route-map');
   const routes = document.querySelector('.routes');
