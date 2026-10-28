@@ -12,6 +12,7 @@
   const entryFilm = shell?.getDirectoryFilm?.();
   if (entryFilm) {
     film = entryFilm;
+    shell.setBackgroundVisible?.(true);
     document.documentElement.classList.add('has-entry-film');
     userPaused = motion.matches || film.dataset.userPaused === 'true';
   }
@@ -133,7 +134,7 @@
   film.playsInline = true;
   film.autoplay = !userPaused;
   if (userPaused) film.pause();
-  // Keep the parser-declared source intact so Safari can start native autoplay.
+  // Reuse the login player, or load the local source for a direct directory visit.
   if (!film.getAttribute('src')) film.src = film.dataset.src;
   onFilm('loadedmetadata', playFilm);
   onFilm('loadeddata', () => { film.classList.add('is-ready'); playFilm(); });
