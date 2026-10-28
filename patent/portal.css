@@ -5,3 +5,5 @@
 .nav-lock{text-align:left;font-size:12px}#compact-toc{display:none;margin:0 0 30px;border-block:1px solid var(--line);padding:14px 0;font-size:13px}#compact-toc summary{cursor:pointer;font-weight:600}#compact-toc nav{max-height:340px;overflow:auto;padding:12px 0}#compact-toc a{display:block;margin:13px 0;line-height:1.5;text-decoration:none}#compact-toc a:hover{text-decoration:underline}@media(max-width:1280px){#compact-toc{display:block}}
 
 .drawing-gallery{overflow-wrap:anywhere}.drawing-description{overflow-wrap:anywhere}
+
+.nav-home.active{background:#e6e9df;font-weight:600}

@@ -16,7 +16,7 @@
    enlarge.onclick=()=>{zoom.querySelector('img').src=image.src;zoom.querySelector('img').alt=d.title;zoom.querySelector('p').textContent=d.title;zoom.showModal();};
    const caption=document.createElement('figcaption'),label=document.createElement('p'),heading=document.createElement('h3'),description=document.createElement('p'),links=document.createElement('p');
    label.className='eyebrow';label.textContent='Source image '+d.number+' · PDF page '+d.page;heading.textContent=d.title;
-   description.className='drawing-description';description.textContent=d.description;
+   description.className='drawing-description';const paragraphs=d.description.split('\n\n');if(paragraphs[0]===d.title)paragraphs.shift();description.textContent=paragraphs.join('\n\n');description.hidden=!description.textContent;
    const source=document.createElement('a');source.href='document.php#page='+d.page;source.target='_blank';source.rel='noopener';source.textContent='View PDF page ↗';links.append(source);
    if(d.description_pages.length){const context=document.createElement('a');context.href='document.php#page='+d.description_pages[0];context.target='_blank';context.rel='noopener';context.textContent=d.context_kind==='description'?'Description in the filed text ↗':'Source context in the filed text ↗';links.append(context);}
    if(d.context_kind==='context'){const note=document.createElement('p');note.className='small';note.textContent='Source context · '+d.section;caption.append(note);}
