@@ -1,0 +1,16 @@
+{
+  "previousHost": "https://rmu.universalmind.tv/rihanna-global-citizen-loop.mp4",
+  "previousRangeResponseStatus": 200,
+  "previousRangeResponseContentLength": 22164263,
+  "currentHost": "https://staging.universalmind.tv/home/assets/festival-loop.mp4",
+  "currentRangeRequest": "bytes=0-1",
+  "currentRangeResponseStatus": 206,
+  "currentRangeResponse": "bytes 0-1/22164263",
+  "currentResponseBodyBytes": 2,
+  "unchangedVideoSha256": "bf18860d7605bda7ee55128abb39a2323ddbb823b45d384772b9c4a3d912aff5",
+  "codecSampleEntries": [
+    "avc1",
+    "mp4a"
+  ],
+  "sourceWasExistingLocalFilm": true
+}

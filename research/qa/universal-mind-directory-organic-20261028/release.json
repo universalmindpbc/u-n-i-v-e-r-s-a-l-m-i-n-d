@@ -1,0 +1,44 @@
+{
+  "recordedAt": "2026-10-28T08:04:43.913284+00:00",
+  "sourceCommit": "246e13c59553b1182a331c0d3e2841713cbce9cd",
+  "stagingUrl": "https://staging.universalmind.tv/home/",
+  "entryUrl": "https://staging.universalmind.tv/",
+  "publisher": "./deploy-panthur-staging.sh directory",
+  "productionModified": false,
+  "preservedConcurrentStagingBase": "9fdb3479d0d03899edb64f5b001712107650b92c",
+  "changes": [
+    "Four independent organic branch contours with gentle motion",
+    "Landing glyph vocabulary and pearl palette at one tenth column density",
+    "Persistent fullscreen owner for all four destination routes and browser Back",
+    "Mobile descriptions hidden at 760px and below",
+    "Identical H.264 film served through Panthur with HTTP byte range support",
+    "Silent inline autoplay with explicit play recovery"
+  ],
+  "verification": {
+    "mutedSeparateChromium": true,
+    "nativeFullscreenInvoked": false,
+    "fullscreenApiIntercepted": true,
+    "allFourDestinationHandoffsAndBack": true,
+    "noSecondPassword": true,
+    "mobilePlaybackAndBlockedAutoplayRecovery": "Chromium mobile emulation; physical iPhone Safari not invoked",
+    "rangeResponse206": true,
+    "responsiveWidths": [
+      320,
+      390,
+      760,
+      1470,
+      1664,
+      1920
+    ],
+    "pauseAndReducedMotion": true,
+    "exactVersionedHttpSourceHashes": true
+  },
+  "evidence": {
+    "mobile-range-verification.json": "4a84a9024f90f662bdc90ade84e539a1dfd37602140c9d2d21e3f886dfbe34dd",
+    "mobile-390.png": "1474b040cf00e9dee2b23dfc4bd7ef4495b1ba9b8990901ed23d2ccc91ac151b",
+    "desktop-1664.png": "5c0ad314d8ead239f78385c1d73a31f0dcad87fcae28595c2d275af45c6b2a2b",
+    "verify-organic.mjs": "7edab441b5ffac012081356814cf1354ddc8645b45c22d25a4f02b3872a4bdbd",
+    "verification.json": "404b9b296b078dc0fea769278f0f7e5eafde8ea7c59d20b6a953223d087e0643",
+    "http-verification.json": "123eb9af032d2a9a53ca7c12b880bec35bc16cac147bb68da1bb762a4ff36967"
+  }
+}
