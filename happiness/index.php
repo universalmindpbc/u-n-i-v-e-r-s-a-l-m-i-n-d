@@ -42,7 +42,7 @@ session_write_close();
 <script src="assets/gate-launch.js?v=1" defer></script>
 <?php else: ?>
 <link rel="preload" as="image" href="assets/universal-mind-flower.png">
-<link rel="stylesheet" href="assets/happiness.css?v=3">
+<link rel="stylesheet" href="assets/happiness.css?v=4">
 <script src="assets/network.js?v=1" defer></script>
 <script src="assets/happiness.js?v=3" defer></script>
 <?php endif; ?>
@@ -143,7 +143,7 @@ session_write_close();
 
 <footer class="experience-footer">
 <p class="concept-note">Concept visualisation · research signals require validation</p>
-<div class="film-actions"><button id="watch-film" class="watch-film" data-film-start="0"><span aria-hidden="true">▶</span> Watch the presentation</button><nav class="chapters" aria-label="Presentation chapters"><button data-film-start="60">The index <span>1:00–1:37</span></button><i aria-hidden="true"></i><button data-film-start="103">The ecosystem <span>1:43–2:30</span></button></nav><p id="film-status" role="status"></p></div>
+<div class="film-actions"><button id="watch-film" class="watch-film" data-film-start="0"><svg class="play-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m6 3 14 9-14 9Z"/></svg> Watch the presentation</button><nav class="chapters" aria-label="Presentation chapters"><button data-film-start="60">The index <span>1:00–1:37</span></button><i aria-hidden="true"></i><button data-film-start="103">The ecosystem <span>1:43–2:30</span></button></nav><p id="film-status" role="status"></p></div>
 <button id="motion-toggle" class="motion-toggle" aria-label="Pause animation" aria-pressed="false"><span class="motion-symbol" aria-hidden="true">Ⅱ</span><span class="motion-text">Pause animation</span></button>
 </footer>
 </main>
