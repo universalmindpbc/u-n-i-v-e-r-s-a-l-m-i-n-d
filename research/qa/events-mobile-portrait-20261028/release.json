@@ -1,0 +1,47 @@
+{
+  "verifiedAt": "2026-10-28T08:54:18.671585+00:00",
+  "stagingUrl": "https://staging.universalmind.tv/events/",
+  "sourceCommit": "ad32dc91e34f618831d0a5ea6bd9700866ad09fe",
+  "sourceCommits": [
+    "94c3518",
+    "ad32dc9"
+  ],
+  "manifestCommit": "4e5a727",
+  "parallelIntegrationCommit": "d1a7a7e",
+  "productionModified": false,
+  "productionRefAtVerification": "53e091f4aefea56f4e6b0c2ff921ca328cf2f2b1",
+  "deploymentCommand": "./deploy-panthur-staging.sh events",
+  "verification": {
+    "phpParsed": true,
+    "javascriptSyntax": true,
+    "exactServedAssets": true,
+    "portraitWidths": [
+      320,
+      390,
+      430
+    ],
+    "landscapeViewport": [
+      844,
+      390
+    ],
+    "filmPlaybackAdvanced": true,
+    "filmBackPassed": true,
+    "backgroundBlockedAutoplayUsesStill": true,
+    "backgroundGestureRecoveryPassed": true,
+    "mobilePageFullscreenRemoved": true,
+    "videoFullscreenControl": "bottom right; capability gated",
+    "webkitAndStandardApiRouting": "mocked; passed",
+    "unsupportedControlHidden": true,
+    "desktopPreserved": "All measured positions and fonts match; replacing the play glyph with SVG changes the CTA width by less than 0.5 px."
+  },
+  "limits": {
+    "realIphoneSafariTested": false,
+    "nativeFullscreenInvoked": false,
+    "subjectiveAudioQualityTested": false
+  },
+  "safety": {
+    "processAudioDisabled": "Chromium --mute-audio confirmed before navigation",
+    "allBrowserContextsClosed": true,
+    "credentialsStoredInEvidence": false
+  }
+}
