@@ -8,3 +8,5 @@
 @media(max-width:700px) and (max-height:700px){.poster{min-height:680px}.title-group{top:23%}.hashtags{bottom:30%;font-size:12px}.venues{bottom:20%;font-size:9px}.event-description{bottom:12.3%;font-size:8px}.proposal-note{bottom:30px;font-size:8px}}
 
 @media(min-width:701px){.proposal-note{bottom:52px}}
+
+@media(max-width:700px) and (max-height:700px){.poster{min-height:100svh}.title-group{top:22%}.hashtags{bottom:31%;font-size:11px}.venues{bottom:21%;font-size:8px;gap:5px}.event-description{bottom:13%;font-size:7.5px;line-height:1.4}.proposal-note{bottom:25px;font-size:7.5px;line-height:1.4}.motion-toggle,.sound-toggle,.fullscreen-toggle{font-size:7px;bottom:3px}}
