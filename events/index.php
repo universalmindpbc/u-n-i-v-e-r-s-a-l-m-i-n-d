@@ -28,6 +28,7 @@ $entered = events_authenticated() && ($_GET['experience'] ?? '') === '1';
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="robots" content="noindex,nofollow,noarchive">
 <meta name="theme-color" content="#080808">
+<link rel="icon" href="/vogue/iam/favicon.png?v=iam-favicon-3">
 <title>a thousand minds — Universal Mind</title>
 <link rel="stylesheet" href="assets/events.css?v=1">
 <?php if (!$entered): ?>

@@ -33,7 +33,7 @@ fi
 
 # Events is an independent PHP microsite; validate its own source for scoped releases.
 if [[ "${1:-}" == events ]]; then
-  "$NODE_BIN" --check "$ROOT_DIR/events/assets/events.js"
+  for source in "$ROOT_DIR"/events/assets/*.js; do "$NODE_BIN" --check "$source"; done
   if command -v php >/dev/null 2>&1; then
     for source in "$ROOT_DIR"/events/*.php; do php -l "$source"; done
   fi

@@ -4,7 +4,7 @@ header('Cache-Control: private, no-store, max-age=0');
 header('X-Robots-Tag: noindex, nofollow, noarchive');
 header('X-Content-Type-Options: nosniff');
 header('Referrer-Policy: strict-origin-when-cross-origin');
-header("Content-Security-Policy: default-src 'self'; script-src 'self' https://embed.cloudflarestream.com; style-src 'self'; img-src 'self' data:; media-src 'self' https://*.cloudflarestream.com https://*.videodelivery.net; connect-src 'self' https://*.cloudflarestream.com https://*.videodelivery.net; frame-src 'self' https://*.cloudflarestream.com; frame-ancestors 'self'; base-uri 'self'; form-action 'self'");
+header("Content-Security-Policy: default-src 'self'; script-src 'self' https://embed.cloudflarestream.com https://static.cloudflareinsights.com; style-src 'self'; img-src 'self' data:; media-src 'self' https://*.cloudflarestream.com https://*.videodelivery.net; connect-src 'self' https://*.cloudflarestream.com https://*.videodelivery.net https://cloudflareinsights.com https://*.cloudflareinsights.com; frame-src 'self' https://*.cloudflarestream.com; frame-ancestors 'self'; base-uri 'self'; form-action 'self'");
 ini_set('session.use_strict_mode', '1');
 ini_set('session.use_only_cookies', '1');
 session_name('um_events');

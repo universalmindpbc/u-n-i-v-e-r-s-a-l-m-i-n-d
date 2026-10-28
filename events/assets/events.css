@@ -6,3 +6,5 @@
 .hashtags{position:absolute;bottom:22%;left:5%;right:5%;margin:0;text-align:center;font-size:clamp(13px,1.4vw,26px);font-weight:600}.venues{bottom:16.5%}.event-description{position:absolute;bottom:11.5%;left:6%;right:6%;margin:0;text-align:center;font-size:clamp(10px,1.1vw,21px);font-weight:600;letter-spacing:.15em;line-height:1.5}
 @media(max-width:700px){.title-group{top:29%}.hashtags{bottom:27%;font-size:13px}.venues{bottom:18.5%;gap:7px}.event-description{bottom:11.3%;font-size:8px;line-height:1.6;letter-spacing:.12em}.proposal-note{bottom:30px;font-size:8px;line-height:1.5}}
 @media(max-width:700px) and (max-height:700px){.poster{min-height:680px}.title-group{top:23%}.hashtags{bottom:30%;font-size:12px}.venues{bottom:20%;font-size:9px}.event-description{bottom:12.3%;font-size:8px}.proposal-note{bottom:30px;font-size:8px}}
+
+@media(min-width:701px){.proposal-note{bottom:52px}}

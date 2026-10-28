@@ -3,7 +3,7 @@
   const loop = document.getElementById('opening-loop');
   const watch = document.getElementById('watch-film');
   const view = document.getElementById('film-view');
-  const frame = document.getElementById('film-player');
+  let frame = document.getElementById('film-player');
   const close = document.getElementById('close-film');
   const motion = document.getElementById('motion-toggle');
   const status = document.getElementById('film-status');
@@ -49,7 +49,7 @@
   loop.addEventListener('error', () => { loop.classList.remove('ready'); motionEnabled = false; motionLabel(); });
   motion.addEventListener('click', () => { motionEnabled = !motionEnabled; motionLabel(); if(motionEnabled) startLoop(); else loop.pause(); });
   function closeFilm() {
-    player?.pause(); player = null; frame.removeAttribute('src');
+    player?.pause(); player = null; frame?.remove(); frame = null;
     view.hidden = true; poster.inert = false; document.body.classList.remove('film-open');
     playback.textContent = ''; watch.focus(); startLoop();
   }
@@ -57,6 +57,11 @@
     status.textContent = ''; watch.disabled = true;
     try {
       const data = await getMedia();
+      if (typeof Stream !== 'function') throw new Error('The film player is loading. Please try again.');
+      if (!frame) {
+        frame = document.createElement('iframe'); frame.id = 'film-player'; frame.title = 'A Thousand Minds — teaser film';
+        frame.allow = 'autoplay; encrypted-media; picture-in-picture; fullscreen'; frame.allowFullscreen = true; view.prepend(frame);
+      }
       loop.pause(); view.hidden = false; poster.inert = true; document.body.classList.add('film-open');
       playback.textContent = 'Loading film…';
       frame.src = `${data.film}?autoplay=true&controls=true&preload=auto&letterboxColor=black`;
@@ -75,6 +80,6 @@
     if (event.key === 'Tab' && event.shiftKey && document.activeElement === close) { event.preventDefault(); frame.focus(); }
   });
   document.addEventListener('visibilitychange', () => { if(document.hidden) loop.pause(); else startLoop(); });
-  window.addEventListener('pagehide', () => { loop.pause(); player?.pause(); frame.removeAttribute('src'); });
+  window.addEventListener('pagehide', () => { loop.pause(); player?.pause(); frame?.remove(); });
   soundLabel(); motionLabel(); startLoop();
 })();
