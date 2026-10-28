@@ -1,0 +1,10 @@
+{
+  "bytes": 1513,
+  "decodedSize": [
+    32,
+    32
+  ],
+  "decodedFirstFrameBlack": true,
+  "audioTracks": 0,
+  "decoder": "existing FFmpeg runtime"
+}

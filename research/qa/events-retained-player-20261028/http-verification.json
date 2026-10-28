@@ -1,0 +1,37 @@
+[
+  {
+    "file": "events.css",
+    "version": "13",
+    "bytes": 11492,
+    "sha256": "1361b646863d79670fea8183a9b27c4370020b30e6ca2d5042014ab292999bde",
+    "matchesCommittedSource": true
+  },
+  {
+    "file": "events.js",
+    "version": "13",
+    "bytes": 14893,
+    "sha256": "1ce531437f78b6feeed7bdf8b973784074ecf96656e3a954065da86e73901798",
+    "matchesCommittedSource": true
+  },
+  {
+    "file": "gate.css",
+    "version": "6",
+    "bytes": 6083,
+    "sha256": "1ba1588bf51f3f3926147e49d1c2eedec27e017cf3e2075a3bf91a4f78df4686",
+    "matchesCommittedSource": true
+  },
+  {
+    "file": "gate-launch.js",
+    "version": "3",
+    "bytes": 3411,
+    "sha256": "e697ad5838488e2fccef55157d16047c902f5b3d2b00544da025bae1da84b8e4",
+    "matchesCommittedSource": true
+  },
+  {
+    "file": "entry-primer.mp4",
+    "version": "1",
+    "bytes": 1513,
+    "sha256": "788845dab9b05b8d7678ebbc1766be7d632c4e6bf476c0814661ec5030c0b327",
+    "matchesCommittedSource": true
+  }
+]

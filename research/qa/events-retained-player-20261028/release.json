@@ -1,0 +1,43 @@
+{
+  "verifiedAt": "2026-10-28T09:44:47.743466+00:00",
+  "url": "https://staging.universalmind.tv/events/",
+  "sourceCommit": "27c9b599a29b2f2e5d618b25b6c7dd88d67644e5",
+  "sourceCommits": [
+    "dc2e5a2",
+    "92414c3",
+    "27c9b59"
+  ],
+  "publisher": "./deploy-panthur-staging.sh events",
+  "productionModified": false,
+  "changes": [
+    "Start a 1513-byte silent black primer directly inside Events Enter, before asynchronous password authentication.",
+    "Retain that same video element beneath the authenticated experience and load the private Events loop into it.",
+    "Acquire the existing root entry player when arriving through the directory; retain the same element and restore its original media state synchronously on departure.",
+    "Preserve the animated fallback when all video playback is denied.",
+    "Remove the invitation vignette after entry so the approved Events appearance is retained."
+  ],
+  "checks": [
+    "6.5-second delayed direct authentication under per-element gesture denial",
+    "Native private loop time advances without a second gesture",
+    "About and film/Back journeys",
+    "Directory \u2192 Events \u2192 Back with a playing original background",
+    "Directory \u2192 Events \u2192 Back with an explicitly paused original background",
+    "Original source, poster, loop, muted, defaultMuted, volume, playsInline, time and userPaused state restored",
+    "Events \u2192 directory \u2192 Happiness \u2192 directory preserves the shared video",
+    "Permanent video rejection still displays moving animation",
+    "Versioned HTTP assets match committed source",
+    "Public primer decodes to black and contains no audio"
+  ],
+  "limits": {
+    "physicalIphoneSafariTested": false,
+    "nativeFullscreenInvoked": false,
+    "testBrowser": "Separate Chromium with --mute-audio; fullscreen APIs intercepted",
+    "subjectiveAudioQualityTested": false
+  },
+  "evidence": [
+    "verification.json",
+    "http-verification.json",
+    "primer-verification.json",
+    "direct-entry-390.png"
+  ]
+}
