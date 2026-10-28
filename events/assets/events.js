@@ -90,7 +90,7 @@
     poster.inert = panelOpen || !view.hidden;
     view.inert = panelOpen;
     flower.setAttribute('aria-expanded', String(!nav.hidden));
-    flower.setAttribute('aria-label', nav.hidden ? 'Open global navigation' : 'Close global navigation');
+    flower.setAttribute('aria-label', nav.hidden ? 'About' : 'Close About navigation');
     document.body.classList.toggle('panel-open', panelOpen);
     document.body.classList.toggle('about-open', !about.hidden);
     if (!view.hidden && about.hidden) loop.pause();

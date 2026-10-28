@@ -119,9 +119,7 @@
               const isSignatureV = glyph.character === "V" && glyph.editorial;
               const [red, green, blue] = glyph.tone;
 
-              context.font = isSignatureV
-                ? `${Math.round(state.cell * 1.06)}px Didot, "Bodoni 72", "Times New Roman", serif`
-                : `${Math.round(state.cell * 0.86)}px "SFMono-Regular", Menlo, Consolas, monospace`;
+              context.font = `${Math.round(state.cell * (isSignatureV ? 1.06 : 0.86))}px "Helvetica Neue"`;
               context.fillStyle = `rgba(${red}, ${green}, ${blue}, ${isHead ? Math.min(1, alpha + 0.22) : alpha})`;
               context.shadowColor = isHead
                 ? `rgba(${red}, ${green}, ${blue}, ${glyph.anomaly ? 0.98 : 0.92})`

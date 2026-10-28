@@ -30,14 +30,14 @@ $entered = events_authenticated() && ($_GET['experience'] ?? '') === '1';
 <meta name="theme-color" content="#080808">
 <link rel="icon" href="/vogue/iam/favicon.png?v=iam-favicon-3">
 <title>athousandminds — Universal Mind</title>
-<link rel="stylesheet" href="assets/events.css?v=6">
+<link rel="stylesheet" href="assets/events.css?v=7">
 <?php if (!$entered): ?>
-<link rel="stylesheet" href="assets/gate.css?v=2">
-<script src="assets/gate-rain.js?v=1" defer></script>
+<link rel="stylesheet" href="assets/gate.css?v=3">
+<script src="assets/gate-rain.js?v=2" defer></script>
 <script src="assets/gate-launch.js?v=1" defer></script>
 <?php endif; ?>
 <?php if ($entered): ?>
-<script src="assets/events.js?v=6" defer></script>
+<script src="assets/events.js?v=7" defer></script>
 <?php endif; ?>
 </head>
 <body class="<?= $entered ? 'entered' : 'invitation' ?>">
@@ -61,8 +61,9 @@ $entered = events_authenticated() && ($_GET['experience'] ?? '') === '1';
 <img src="poster.php" alt="" fetchpriority="high">
 <video id="opening-loop" src="loop.php?v=2" autoplay muted loop playsinline preload="auto" tabindex="-1"></video>
 </div>
-<button id="global-nav-toggle" class="global-nav-toggle" aria-label="Open global navigation" aria-expanded="false" aria-controls="global-nav">
+<button id="global-nav-toggle" class="global-nav-toggle" aria-label="About" aria-expanded="false" aria-controls="global-nav">
 <img src="/vogue/iam/a%20s%20s%20e%20t%20s/Universal%20Mind%20%5B%20I%20o%20H%20%5D%20Logo%20512.png" alt="" aria-hidden="true">
+<span class="flower-label" aria-hidden="true">About</span>
 </button>
 <button id="fullscreen-toggle" class="maximise" aria-label="Enter fullscreen"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 3H3v5M16 3h5v5M21 16v5h-5M8 21H3v-5"/></svg></button>
 <section class="poster" aria-labelledby="festival-title">
