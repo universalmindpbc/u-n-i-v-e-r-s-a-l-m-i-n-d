@@ -37,7 +37,7 @@ $entered = events_authenticated() && ($_GET['experience'] ?? '') === '1';
 <script src="assets/gate-launch.js?v=1" defer></script>
 <?php endif; ?>
 <?php if ($entered): ?>
-<script src="assets/events.js?v=4" defer></script>
+<script src="assets/events.js?v=5" defer></script>
 <?php endif; ?>
 </head>
 <body class="<?= $entered ? 'entered' : 'invitation' ?>">
@@ -59,7 +59,7 @@ $entered = events_authenticated() && ($_GET['experience'] ?? '') === '1';
 <main class="experience" id="experience">
 <div class="backdrop" aria-hidden="true">
 <img src="poster.php" alt="" fetchpriority="high">
-<video id="opening-loop" src="loop.php?v=1" loop playsinline preload="auto" tabindex="-1"></video>
+<video id="opening-loop" src="loop.php?v=2" autoplay muted loop playsinline preload="auto" tabindex="-1"></video>
 </div>
 <button id="global-nav-toggle" class="global-nav-toggle" aria-label="Open global navigation" aria-expanded="false" aria-controls="global-nav">
 <img src="/vogue/iam/a%20s%20s%20e%20t%20s/Universal%20Mind%20%5B%20I%20o%20H%20%5D%20Logo%20512.png" alt="" aria-hidden="true">

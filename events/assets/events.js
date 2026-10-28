@@ -16,6 +16,7 @@
   const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
   let media, loading, player, frame, returnFocus, streamLoading;
   let openingPending = false;
+  if (reducedMotion) { loop.autoplay = false; loop.pause(); }
 
   function syncFullscreen() {
     maximise.hidden = Boolean(host.fullscreenElement || host.webkitFullscreenElement);
@@ -61,8 +62,8 @@
     openingPending = true;
     try {
       // The source is already in the HTML; no player SDK or media API is needed.
-      loop.muted = !view.hidden;
-      loop.volume = 1;
+      loop.muted = true;
+      loop.volume = 0;
       await loop.play();
       delete loop.dataset.gestureRequired;
     } catch(error) {
@@ -70,6 +71,8 @@
     } finally { openingPending = false; }
   }
   loop.addEventListener('playing', () => loop.classList.add('ready'));
+  loop.addEventListener('loadeddata', () => loop.classList.add('ready'));
+  if (loop.readyState >= 2) loop.classList.add('ready');
   loop.addEventListener('error', () => loop.classList.remove('ready'));
   document.addEventListener('pointerdown', () => {
     if (loop.dataset.gestureRequired === 'true') startLoop();
