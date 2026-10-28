@@ -1,0 +1,79 @@
+{
+  "verifiedAt": "2026-10-28T08:39:53.395Z",
+  "processAudioDisabled": true,
+  "nativeFullscreenInvoked": false,
+  "engine": "Chromium mobile emulation; actual iPhone Safari confirmation pending",
+  "checks": [
+    {
+      "automaticPlaybackWithoutTap": {
+        "source": "https://staging.universalmind.tv/home/assets/festival-loop.mp4",
+        "src": "/home/assets/festival-loop.mp4",
+        "time": 0.507529,
+        "muted": true,
+        "defaultMuted": true,
+        "volume": 0,
+        "autoplay": true,
+        "inline": true,
+        "opacity": "1",
+        "parentOpacity": "1"
+      },
+      "sourceDeclaredInInitialHTML": true
+    },
+    {
+      "blockedPlaybackRetainsVisiblePoster": {
+        "poster": "https://staging.universalmind.tv/home/assets/festival-poster.jpg",
+        "imageWidth": 1280,
+        "imageHeight": 720,
+        "opacity": "1",
+        "parentOpacity": "1",
+        "paused": true
+      }
+    },
+    {
+      "diagnosticCopyPreservesBlockedState": true,
+      "diagnostic": {
+        "revision": "safari-startup-3",
+        "reducedMotion": false,
+        "requestedPause": false,
+        "autoplayBlocked": true,
+        "playPending": false,
+        "playFailure": "NotAllowedError: Autoplay blocked for QA",
+        "visibility": "visible",
+        "video": {
+          "paused": true,
+          "muted": true,
+          "defaultMuted": true,
+          "autoplay": false,
+          "playsInline": true,
+          "readyState": 4,
+          "networkState": 1,
+          "currentTime": 0.000459,
+          "error": null,
+          "source": "https://staging.universalmind.tv/home/assets/festival-loop.mp4",
+          "opacity": "1",
+          "parentOpacity": "1"
+        },
+        "browser": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/151.0.0.0 Safari/537.36"
+      }
+    },
+    {
+      "explicitPlayRecovery": {
+        "source": "https://staging.universalmind.tv/home/assets/festival-loop.mp4",
+        "src": "/home/assets/festival-loop.mp4",
+        "time": 0.494777,
+        "muted": true,
+        "defaultMuted": true,
+        "volume": 0,
+        "autoplay": true,
+        "inline": true,
+        "opacity": "1",
+        "parentOpacity": "1"
+      }
+    },
+    {
+      "reducedMotionKeepsStaticVisiblePoster": true
+    }
+  ],
+  "errors": [],
+  "passed": true
+}

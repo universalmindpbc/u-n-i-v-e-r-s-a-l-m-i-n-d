@@ -11,11 +11,9 @@
 body { margin: 0; }
 button, input, select, textarea { font-family: inherit; }
 
-.festival-background, .festival-film, .directory-rain { position: fixed; inset: 0; width: 100%; height: 100%; opacity: .5; pointer-events: none; }
-.festival-shade { position: fixed; inset: 0; width: 100%; height: 100%; pointer-events: none; }
+.festival-background, .festival-film, .festival-shade { position: fixed; inset: 0; width: 100%; height: 100%; pointer-events: none; }
 .festival-background { z-index: 0; background: #000; }
-.festival-film { object-fit: cover; opacity: 0; transition: opacity 600ms ease; }
-.festival-film.is-ready { opacity: 1; }
+.festival-film { object-fit: cover; opacity: 1; }
 .directory-rain { position: fixed; inset: 0; width: 100%; height: 100%; opacity: .5; pointer-events: none; }
 .festival-shade { background: linear-gradient(180deg, rgba(0, 0, 0, .52) 0%, rgba(0, 0, 0, .24) 35%, rgba(0, 0, 0, .24) 65%, rgba(0, 0, 0, .50) 100%); }
 

@@ -1,0 +1,30 @@
+{
+  "verifiedAt": "2026-10-28T08:42:14.016565+00:00",
+  "sourceCommit": "e7790f37565489badf5bdbdff0f8c694e366f8d6",
+  "url": "https://staging.universalmind.tv/happiness/",
+  "publisher": "./deploy-panthur-staging.sh happiness",
+  "productionModified": false,
+  "changes": "Add a video fullscreen icon using WebKit native video fullscreen on iPhone and standard container fullscreen elsewhere. Preserve the video position when exiting.",
+  "checks": [
+    {
+      "path": "happiness/index.php",
+      "sha256": "49fecca6dc9226433cd8e9fe26b48c03240e35e20a9fd07feeb98798417ee3f7",
+      "stagingReadbackMatches": true
+    },
+    {
+      "path": "happiness/assets/happiness.css",
+      "sha256": "74e35f25e6841429870a849219ceab0e8ca9b6850a26ae5ce4f11437ac3913c3",
+      "stagingReadbackMatches": true
+    },
+    {
+      "path": "happiness/assets/happiness.js",
+      "sha256": "9e40fbc9d19de5ef72ef0eb1b960ba204b0e4f21ec8b65d39417899bce7300e1",
+      "stagingReadbackMatches": true
+    }
+  ],
+  "browserVerification": "staging-verification.json",
+  "platformLimit": "Fullscreen APIs were intercepted to prevent native fullscreen on the user display. Physical iPhone Safari confirmation remains.",
+  "reference": "https://developer.apple.com/documentation/webkit/delivering-video-content-for-safari",
+  "rebasedOnStaging": "2766a2b3bd0e5b6fa582abede53e20e2ae0204cf",
+  "rebaseVerification": "Deployed Happiness source hashes are unchanged; the concurrent directory commits are preserved."
+}

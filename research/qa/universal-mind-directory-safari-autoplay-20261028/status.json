@@ -1,0 +1,19 @@
+{
+  "candidateCommit": "f07f9a36c7df7ad2d6ba733c06da265fe4e87dbc",
+  "scope": [
+    "home/index.html",
+    "home/directory.css",
+    "home/directory.js"
+  ],
+  "stagingURL": "https://staging.universalmind.tv/home/",
+  "diagnosticURL": "https://staging.universalmind.tv/home/?autoplay-debug=1",
+  "deviceStatus": "UNRESOLVED: Ben reported iPhone Safari still requires Play with Low Power Mode off, including after native-source startup correction. Awaiting opt-in copied device diagnostics.",
+  "automationStatus": "Muted separate Chromium mobile emulation passed; it does not establish actual iPhone Safari autoplay.",
+  "changes": [
+    "Video src present in initial HTML; source no longer reassigned during startup.",
+    "Video and background opacity 1 from first paint; sparse-rain opacity scoped to canvas.",
+    "Opt-in playback error and state capture on autoplay-debug query; copying excludes gesture-retry handler."
+  ],
+  "productionModified": false,
+  "parallelWorkPreserved": "Rebased on 1a9ff5b Happiness SVG play-icon update before final directory deployment."
+}

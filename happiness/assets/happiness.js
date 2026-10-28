@@ -5,6 +5,7 @@
   const motion=$('motion-toggle'), reduced=matchMedia('(prefers-reduced-motion: reduce)');
   let motionPaused=reduced.matches, player=null, playerFrame=null, playerTimer=0, playbackTimer=0, loadGeneration=0;
   let filmOpener=null, aboutOpener=null, loading=false, sdkPromise=null;
+  let nativeVideoFullscreen=false;
   const format=time=>`${Math.floor(Math.max(0,time||0)/60)}:${String(Math.floor(Math.max(0,time||0)%60)).padStart(2,'0')}`;
   function syncMotion(){
     const stop=motionPaused||!film.hidden||document.hidden||!about.hidden;
@@ -112,6 +113,49 @@
     const paused=Boolean(player.paused);
     film.dataset.playback=paused?'paused':'playing';film.dataset.currentTime=String(time);
   }
+  function videoFullscreenActive(){
+    const video=playerFrame instanceof HTMLVideoElement?playerFrame:null;
+    return Boolean(nativeVideoFullscreen||video?.webkitDisplayingFullscreen||document.fullscreenElement===film||document.webkitFullscreenElement===film);
+  }
+  function syncVideoFullscreen(){
+    const button=$('film-fullscreen'),active=videoFullscreenActive();
+    button.disabled=!playerFrame||(playerFrame instanceof HTMLMediaElement&&playerFrame.readyState<1);
+    button.setAttribute('aria-pressed',String(active));
+    button.setAttribute('aria-label',active?'Exit video fullscreen':'Enter video fullscreen');
+    button.title=active?'Exit video fullscreen':'Enter video fullscreen';
+    button.querySelector('use').setAttribute('href',active?'#icon-collapse':'#icon-expand');
+    if(active)$('fullscreen-status').textContent='';
+  }
+  function exitVideoFullscreen(){
+    const video=playerFrame instanceof HTMLVideoElement?playerFrame:null;
+    if(video&&(nativeVideoFullscreen||video.webkitDisplayingFullscreen)){
+      const exit=video.webkitExitFullscreen||video.webkitExitFullScreen;
+      if(exit)exit.call(video);
+    }else if(document.fullscreenElement===film||document.webkitFullscreenElement===film){
+      return (document.exitFullscreen||document.webkitExitFullscreen)?.call(document);
+    }
+  }
+  $('film-fullscreen').addEventListener('click',()=>{
+    $('fullscreen-status').textContent='';
+    const failed=()=>{$('fullscreen-status').textContent='Fullscreen is unavailable. Please try again.';syncVideoFullscreen();};
+    try{
+      if(videoFullscreenActive()){
+        Promise.resolve(exitVideoFullscreen()).catch(failed);
+      }else{
+        const video=playerFrame instanceof HTMLVideoElement?playerFrame:null;
+        const enterNative=video&&(video.webkitEnterFullscreen||video.webkitEnterFullScreen);
+        // iPhone video fullscreen must be requested synchronously by this tap.
+        if(enterNative&&video.webkitSupportsFullscreen!==false){
+          enterNative.call(video);
+        }else{
+          const enter=film.requestFullscreen||film.webkitRequestFullscreen;
+          if(!enter)throw new Error('Fullscreen unavailable');
+          Promise.resolve(enter.call(film)).catch(failed);
+        }
+      }
+      syncVideoFullscreen();
+    }catch{failed();}
+  });
   function openNativeFilm(video,start,generation){
     // Keep this path synchronous: Safari grants audible playback to the tap,
     // not to a later fetch, iframe load or canplay event.
@@ -125,8 +169,10 @@
     video.addEventListener('loadedmetadata',()=>{
       if(!active())return;
       if(start)video.currentTime=start;
-      updateTransport();
+      updateTransport();syncVideoFullscreen();
     },{once:true});
+    video.addEventListener('webkitbeginfullscreen',()=>{if(active()){nativeVideoFullscreen=true;syncVideoFullscreen();}});
+    video.addEventListener('webkitendfullscreen',()=>{if(active()){nativeVideoFullscreen=false;syncVideoFullscreen();}});
     video.addEventListener('playing',ready);
     video.addEventListener('timeupdate',()=>{if(active()){if(!video.paused&&video.currentTime>0)ready();else updateTransport();}});
     video.addEventListener('durationchange',()=>{if(active())updateTransport();});
@@ -136,6 +182,7 @@
     video.addEventListener('error',()=>{if(active()){clearTimeout(playbackTimer);$('playback-status').textContent='The presentation is unavailable. Use Back to try again.';}});
     video.src=$('film-mount').dataset.hls;
     $('film-mount').replaceChildren(video);
+    syncVideoFullscreen();
     playerTimer=setInterval(updateTransport,350);
     playbackTimer=setTimeout(()=>{if(active())$('playback-status').textContent='The connection is taking longer than expected. Use Back to try again.';},25000);
     // No await before this call: the original Watch/chapter tap owns playback.
@@ -150,6 +197,7 @@
     $('film-status').textContent='';film.hidden=false;document.body.classList.add('film-open');syncInert();syncMotion();
     $('playback-status').textContent='Loading presentation…';$('film-back').focus();
     film.dataset.playback='loading';
+    $('fullscreen-status').textContent='';syncVideoFullscreen();
     try{
       const nativeVideo=document.createElement('video');
       if($('film-mount').dataset.hls&&nativeVideo.canPlayType('application/vnd.apple.mpegurl')){
@@ -164,6 +212,7 @@
       const iframe=document.createElement('iframe');iframe.title='Happiness — full presentation';iframe.allow='autoplay; encrypted-media; fullscreen; picture-in-picture';iframe.allowFullscreen=true;iframe.src=url.href;iframe.tabIndex=-1;
       playerFrame=iframe;$('film-mount').replaceChildren(iframe);player=window.Stream(iframe);
       film.dataset.player='stream-iframe';
+      syncVideoFullscreen();
       player.controls=false;player.volume=1;player.muted=false;
       const ready=()=>{if(generation!==loadGeneration)return;$('playback-status').textContent='';updateTransport();};
       player.addEventListener('playing',ready);
@@ -187,11 +236,13 @@
     }finally{if(generation===loadGeneration)loading=false;}
   }
   function closeFilm(){
+    try{Promise.resolve(exitVideoFullscreen()).catch(()=>{});}catch{}
     ++loadGeneration;loading=false;clearInterval(playerTimer);clearTimeout(playbackTimer);
     if(player){try{player.pause();}catch{}}
     if(playerFrame instanceof HTMLMediaElement){playerFrame.removeAttribute('src');playerFrame.load();}
     player=null;playerFrame?.remove();playerFrame=null;$('film-mount').replaceChildren();film.hidden=true;document.body.classList.remove('film-open');delete film.dataset.playback;delete film.dataset.player;
     $('playback-status').textContent='';$('film-timecode').value='0:00 / 5:55';
+    nativeVideoFullscreen=false;$('fullscreen-status').textContent='';syncVideoFullscreen();
     syncInert();syncMotion();filmOpener?.focus();
   }
   document.querySelectorAll('[data-film-start]').forEach(button=>button.addEventListener('click',()=>openFilm(Number(button.dataset.filmStart),button)));
@@ -208,8 +259,11 @@
     else await(doc.documentElement.requestFullscreen||doc.documentElement.webkitRequestFullscreen)?.call(doc.documentElement);}catch{}
     syncFullscreen();
   });
-  fullscreenDocument().addEventListener('fullscreenchange',syncFullscreen);fullscreenDocument().addEventListener('webkitfullscreenchange',syncFullscreen);
+  const fullscreenChanged=()=>{syncFullscreen();syncVideoFullscreen();};
+  for(const doc of new Set([document,fullscreenDocument()])){
+    doc.addEventListener('fullscreenchange',fullscreenChanged);doc.addEventListener('webkitfullscreenchange',fullscreenChanged);
+  }
   window.addEventListener('pagehide',()=>{background.pause();if(player)player.pause();clearInterval(playerTimer);clearTimeout(playbackTimer);cancelAnimationFrame(connectionFrame);resizeObserver.disconnect();});
   window.addEventListener('pageshow',()=>{resizeObserver.observe($('ecosystem'));scheduleConnections();syncMotion();});
-  scheduleConnections();syncMotion();syncFullscreen();
+  scheduleConnections();syncMotion();syncFullscreen();syncVideoFullscreen();
 })();
