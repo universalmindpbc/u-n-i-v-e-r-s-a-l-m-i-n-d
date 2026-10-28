@@ -21,6 +21,10 @@ if (($_SERVER['REQUEST_METHOD'] ?? 'GET') === 'POST') {
 }
 if (($_SERVER['REQUEST_METHOD'] ?? 'GET') === 'POST' && str_contains((string)($_SERVER['HTTP_ACCEPT'] ?? ''), 'application/json')) { header('Content-Type: application/json'); echo json_encode(['error'=>$error]); exit; }
 $entered = events_authenticated() && ($_GET['experience'] ?? '') === '1';
+$filmHls = '';
+if ($entered) {
+    try { $filmHls = events_media_urls()['hls']; } catch (Throwable $e) { /* Keep the entry screen available if media configuration is unavailable. */ }
+}
 ?><!doctype html>
 <html lang="en">
 <head>
@@ -30,14 +34,14 @@ $entered = events_authenticated() && ($_GET['experience'] ?? '') === '1';
 <meta name="theme-color" content="#080808">
 <link rel="icon" href="/vogue/iam/favicon.png?v=iam-favicon-3">
 <title>athousandminds — Universal Mind</title>
-<link rel="stylesheet" href="assets/events.css?v=8">
+<link rel="stylesheet" href="assets/events.css?v=9">
 <?php if (!$entered): ?>
 <link rel="stylesheet" href="assets/gate.css?v=4">
 <script src="assets/gate-rain.js?v=2" defer></script>
 <script src="assets/gate-launch.js?v=1" defer></script>
 <?php endif; ?>
 <?php if ($entered): ?>
-<script src="assets/events.js?v=8" defer></script>
+<script src="assets/events.js?v=9" defer></script>
 <?php endif; ?>
 </head>
 <body class="<?= $entered ? 'entered' : 'invitation' ?>">
@@ -59,7 +63,7 @@ $entered = events_authenticated() && ($_GET['experience'] ?? '') === '1';
 <main class="experience" id="experience">
 <div class="backdrop" aria-hidden="true">
 <img src="poster.php" alt="" fetchpriority="high">
-<video id="opening-loop" src="loop.php?v=2" autoplay muted loop playsinline preload="auto" tabindex="-1"></video>
+<video id="opening-loop" src="loop.php?v=2" poster="poster.php" autoplay muted loop playsinline webkit-playsinline preload="auto" tabindex="-1"></video>
 </div>
 <button id="global-nav-toggle" class="global-nav-toggle" aria-label="About" aria-expanded="false" aria-controls="about-panel">
 <img src="/vogue/iam/a%20s%20s%20e%20t%20s/Universal%20Mind%20%5B%20I%20o%20H%20%5D%20Logo%20512.png" alt="" aria-hidden="true">
@@ -86,7 +90,9 @@ $entered = events_authenticated() && ($_GET['experience'] ?? '') === '1';
 </section>
 <section id="film-view" class="film-view" aria-label="athousandminds — the film" hidden>
 <div id="film-mount"></div>
+<video id="native-film" data-hls="<?= htmlspecialchars($filmHls, ENT_QUOTES, 'UTF-8') ?>" playsinline webkit-playsinline preload="none" tabindex="-1" hidden></video>
 <button id="film-back" class="film-back" aria-label="Back to main screen"><span aria-hidden="true">←</span> Back</button>
+<button id="film-retry" class="film-retry" hidden>Play film</button>
 <output id="film-timecode" class="film-timecode" aria-label="Film playback time">0:00 / 2:22</output>
 <p id="playback-status" class="playback-status" role="status"></p>
 </section>

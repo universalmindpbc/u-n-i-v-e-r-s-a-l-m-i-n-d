@@ -13,6 +13,13 @@ session_start();
 function events_authenticated(): bool {
     return isset($_SESSION['events_until']) && $_SESSION['events_until'] > time();
 }
+function events_media_urls(): array {
+    $config = json_decode((string) file_get_contents(__DIR__ . '/private/media.json'), true, 16, JSON_THROW_ON_ERROR);
+    $uid = (string) ($config['film_uid'] ?? '');
+    if (!preg_match('/^[a-f0-9]{32}$/', $uid)) throw new RuntimeException('Media unavailable.');
+    $base = 'https://customer-1vpwglz3v6fiyaas.cloudflarestream.com/' . $uid;
+    return ['film' => $base . '/iframe', 'hls' => $base . '/manifest/video.m3u8', 'expires' => time() + 3500];
+}
 function events_require_access(): void {
     if (!events_authenticated()) {
         http_response_code(401);

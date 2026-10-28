@@ -4,6 +4,9 @@
   const watch = document.getElementById('watch-film');
   const view = document.getElementById('film-view');
   const mount = document.getElementById('film-mount');
+  const nativeFilm = document.getElementById('native-film');
+  const retryFilm = document.getElementById('film-retry');
+  const useNativeFilm = Boolean(nativeFilm.canPlayType('application/vnd.apple.mpegurl'));
   const timecode = document.getElementById('film-timecode');
   const status = document.getElementById('film-status');
   const playback = document.getElementById('playback-status');
@@ -56,12 +59,14 @@
       .finally(() => { loading = null; });
     return loading;
   }
-  async function startLoop() {
-    if (reducedMotion || (!view.hidden && about.hidden) || document.hidden || openingPending) return;
+  async function startLoop({gesture = false} = {}) {
+    if (reducedMotion || (!view.hidden && about.hidden) || document.hidden || (openingPending && !gesture)) return;
     openingPending = true;
     try {
       // The source is already in the HTML; no player SDK or media API is needed.
       loop.muted = true;
+      loop.defaultMuted = true;
+      loop.playsInline = true;
       loop.volume = 0;
       await loop.play();
       delete loop.dataset.gestureRequired;
@@ -73,9 +78,14 @@
   loop.addEventListener('loadeddata', () => loop.classList.add('ready'));
   if (loop.readyState >= 2) loop.classList.add('ready');
   loop.addEventListener('error', () => loop.classList.remove('ready'));
-  document.addEventListener('pointerdown', () => {
-    if (loop.dataset.gestureRequired === 'true') startLoop();
-  }, {passive:true});
+  // iOS recognises touchend/click as media gestures; pointerdown alone is insufficient.
+  const retryLoopFromGesture = () => { if (loop.paused) startLoop({gesture:true}); };
+  document.addEventListener('touchend', retryLoopFromGesture, {passive:true});
+  document.addEventListener('click', retryLoopFromGesture);
+  document.addEventListener('keydown', event => {
+    if (event.key === 'Enter' || event.key === ' ') retryLoopFromGesture();
+  });
+  loop.addEventListener('loadeddata', () => startLoop());
 
   function formatTime(value) {
     const seconds = Math.max(0, Math.floor(Number.isFinite(value) ? value : 0));
@@ -99,6 +109,7 @@
   }
   function returnToPoster({focus = true} = {}) {
     player?.pause(); player = null; frame?.remove(); frame = null;
+    nativeFilm.hidden = true; nativeFilm.removeAttribute('src'); nativeFilm.load(); retryFilm.hidden = true;
     view.hidden = true; document.body.classList.remove('film-open');
     playback.textContent = ''; timecode.textContent = '0:00 / 2:22'; syncPanels();
     if (focus && about.hidden) watch.focus();
@@ -122,25 +133,63 @@
     (returnFocus && !returnFocus.closest('[hidden]') ? returnFocus : flower).focus();
   });
 
+  function showFilm() {
+    status.textContent = ''; loop.pause(); dismissPanels(); view.hidden = false;
+    document.body.classList.add('film-open'); syncPanels();
+    playback.textContent = 'Loading film…'; retryFilm.hidden = true;
+  }
+  function playNativeFilm() {
+    nativeFilm.muted = false; nativeFilm.volume = 1;
+    // Keep play() in the visitor's tap handler: no fetch, SDK or iframe boundary.
+    const playing = nativeFilm.play();
+    Promise.resolve(playing).catch(error => {
+      if (player !== nativeFilm || view.hidden) return;
+      playback.textContent = error.name === 'NotAllowedError' ? '' : 'The film is temporarily unavailable. Please try again.';
+      retryFilm.hidden = false;
+    });
+  }
+  nativeFilm.addEventListener('playing', () => {
+    if (player === nativeFilm) { playback.textContent = ''; retryFilm.hidden = true; }
+  });
+  nativeFilm.addEventListener('timeupdate', updateTimecode);
+  nativeFilm.addEventListener('durationchange', updateTimecode);
+  nativeFilm.addEventListener('ended', () => { if (player === nativeFilm) returnToPoster(); });
+  nativeFilm.addEventListener('error', () => {
+    if (player === nativeFilm) { playback.textContent = 'The film is temporarily unavailable. Please try again.'; retryFilm.hidden = false; }
+  });
+  nativeFilm.addEventListener('pause', () => {
+    if (player === nativeFilm && !view.hidden && !nativeFilm.ended) retryFilm.hidden = false;
+  });
+  retryFilm.addEventListener('click', () => {
+    if (player === nativeFilm) playNativeFilm();
+    else if (player) Promise.resolve(player.play()).then(() => { retryFilm.hidden = true; }).catch(() => {});
+  });
+
   watch.addEventListener('click', async () => {
+    if (useNativeFilm) {
+      if (!nativeFilm.dataset.hls) { status.textContent = 'The film is temporarily unavailable. Please try again.'; return; }
+      showFilm(); nativeFilm.hidden = false; player = nativeFilm;
+      nativeFilm.src = nativeFilm.dataset.hls;
+      playNativeFilm(); flower.focus(); return;
+    }
     status.textContent = 'Loading film…'; watch.disabled = true;
     try {
       const [data] = await Promise.all([getMedia(), loadStreamPlayer()]);
-      status.textContent = '';
-      loop.pause(); dismissPanels(); view.hidden = false;
-      document.body.classList.add('film-open'); syncPanels();
-      playback.textContent = 'Loading film…';
+      showFilm();
       frame = document.createElement('iframe'); frame.id = 'film-player'; frame.title = 'athousandminds — teaser film';
       frame.allow = 'autoplay; encrypted-media; fullscreen'; frame.allowFullscreen = true; frame.tabIndex = -1;
       frame.src = `${data.film}?autoplay=true&controls=false&preload=auto&letterboxColor=black`;
       mount.replaceChildren(frame);
       const currentPlayer = Stream(frame); player = currentPlayer;
       currentPlayer.controls = false; currentPlayer.muted = false; currentPlayer.volume = 1;
-      currentPlayer.addEventListener('playing', () => { if(player===currentPlayer) playback.textContent = ''; });
+      currentPlayer.addEventListener('playing', () => { if(player===currentPlayer) { playback.textContent = ''; retryFilm.hidden = true; } });
       currentPlayer.addEventListener('timeupdate', updateTimecode);
       currentPlayer.addEventListener('durationchange', updateTimecode);
       currentPlayer.addEventListener('ended', () => { if(player===currentPlayer) returnToPoster(); });
       currentPlayer.addEventListener('error', () => { if(player===currentPlayer) playback.textContent = 'The film is temporarily unavailable. Please refresh and try again.'; });
+      currentPlayer.play().catch(() => {
+        if (player === currentPlayer) { playback.textContent = ''; retryFilm.hidden = false; }
+      });
       flower.focus();
     } catch(error) { status.textContent = error.message; }
     finally { watch.disabled = false; }
@@ -158,6 +207,7 @@
     }
   });
   document.addEventListener('visibilitychange', () => { if(document.hidden) loop.pause(); else startLoop(); });
+  window.addEventListener('pageshow', () => startLoop());
   window.addEventListener('pagehide', () => {
     loop.pause(); player?.pause(); frame?.remove();
     host.removeEventListener('fullscreenchange', syncFullscreen);
