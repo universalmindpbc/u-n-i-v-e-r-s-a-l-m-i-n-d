@@ -824,21 +824,21 @@ deploy_directory() {
 # Happiness uses the existing transport with a committed, narrowly scoped source.
 deploy_happiness() {
   local relative manifest_tmp
-  if [[ -n "$(git -C "$ROOT_DIR" status --porcelain --untracked-files=all -- happiness events/happiness-entry.php home/index.html)" ]]; then
+  if [[ -n "$(git -C "$ROOT_DIR" status --porcelain --untracked-files=all -- happiness events/happiness-entry.php)" ]]; then
     echo "Refusing to deploy uncommitted Happiness source." >&2
     return 1
   fi
-  git -C "$ROOT_DIR" ls-files --error-unmatch happiness/index.php events/happiness-entry.php home/index.html >/dev/null || return 1
+  git -C "$ROOT_DIR" ls-files --error-unmatch happiness/index.php events/happiness-entry.php >/dev/null || return 1
   manifest_tmp="$(mktemp)"
   if [[ -f "$MANIFEST_FILE" ]]; then
-    awk -F '\t' '$2 !~ /^happiness\// && $2 != "events/happiness-entry.php" && $2 != "home/index.html"' "$MANIFEST_FILE" > "$manifest_tmp"
+    awk -F '\t' '$2 !~ /^happiness\// && $2 != "events/happiness-entry.php"' "$MANIFEST_FILE" > "$manifest_tmp"
   fi
   while IFS= read -r relative; do
     [[ "$relative" == "happiness/index.php" ]] && continue
     put_file "$ROOT_DIR/$relative" "$relative"
     printf '%s\t%s\n' "$(file_hash "$ROOT_DIR/$relative")" "$relative" >> "$manifest_tmp"
   done < <(git -C "$ROOT_DIR" ls-files happiness)
-  for relative in happiness/index.php events/happiness-entry.php home/index.html; do
+  for relative in happiness/index.php events/happiness-entry.php; do
     put_file "$ROOT_DIR/$relative" "$relative"
     printf '%s\t%s\n' "$(file_hash "$ROOT_DIR/$relative")" "$relative" >> "$manifest_tmp"
   done
