@@ -8,6 +8,9 @@ if (!$granted) {
     exit;
 }
 // Carry the existing portal invitation into a separate, path-scoped session.
+// Drop the previous session ID before loading the Happiness cookie, preserving
+// the Events session when the Happiness ID is regenerated below.
+session_id('');
 require_once dirname(__DIR__) . '/happiness/access.php';
 session_regenerate_id(true);
 $_SESSION['happiness_until'] = time() + 8 * 3600;
