@@ -1,0 +1,77 @@
+{
+  "recordedAt": "2026-10-28T06:55:38.020474+00:00",
+  "sourceCommit": "bb1dce5ec9efd15becea8dede92fde1985061634",
+  "site": "https://staging.universalmind.tv/happiness/",
+  "deployment": "./deploy-panthur-staging.sh happiness",
+  "productionModified": false,
+  "checks": [
+    {
+      "path": "events/happiness-entry.php",
+      "bytes": 709,
+      "sha256": "cf9b7e51a4df81a32684c6f752b04f944ad596dc695b6c162062a1b4db7742fa",
+      "stagingReadbackMatches": true
+    },
+    {
+      "path": "happiness/.htaccess",
+      "bytes": 271,
+      "sha256": "df023a2df19539fcca6d9d053064149a3242500a777f3f2ab308ae848aa0f257",
+      "stagingReadbackMatches": true
+    },
+    {
+      "path": "happiness/access.php",
+      "bytes": 2127,
+      "sha256": "97ca6c18f7240a7f3f6abc7bb3e74e36e60a96e1d456901b987e072265740d79",
+      "stagingReadbackMatches": true
+    },
+    {
+      "path": "happiness/assets/festival-poster.jpg",
+      "bytes": 27676,
+      "sha256": "5333d941764fa9f2b594925b68d67fb51187ba8f37867c5a99b2a8f026a213bc",
+      "stagingReadbackMatches": true
+    },
+    {
+      "path": "happiness/assets/gate-launch.js",
+      "bytes": 2190,
+      "sha256": "c7d6b2da87494cd1cb13ce71106b43663bd5a0899049d072719d3ad08ad210d6",
+      "stagingReadbackMatches": true
+    },
+    {
+      "path": "happiness/assets/happiness.css",
+      "bytes": 18368,
+      "sha256": "baf12860e5b23be428b7034b43cb64ca4d6c9c25e4b5d5d815375dcac1edd2fe",
+      "stagingReadbackMatches": true
+    },
+    {
+      "path": "happiness/assets/happiness.js",
+      "bytes": 12437,
+      "sha256": "649fc39106d6c19f032d2d43c6e4d015220c7d7c23ad95479372700c39dff546",
+      "stagingReadbackMatches": true
+    },
+    {
+      "path": "happiness/assets/network.js",
+      "bytes": 4506,
+      "sha256": "ab59e13ef8b22579ea069ab6289866771bcddf5183ac7209d9529820bd135a16",
+      "stagingReadbackMatches": true
+    },
+    {
+      "path": "happiness/assets/universal-mind-flower.png",
+      "bytes": 485116,
+      "sha256": "9265619edbd83d103f4408933ecdb9a02f7a5392075200c4000fa1ec8a14cdee",
+      "stagingReadbackMatches": true
+    },
+    {
+      "path": "happiness/index.php",
+      "bytes": 13297,
+      "sha256": "71ffc0b191d51295762c55bfc085788f854c5394af094d82ba0d2a516d6af144",
+      "stagingReadbackMatches": true
+    },
+    {
+      "path": "happiness/media.php",
+      "bytes": 364,
+      "sha256": "41b516f29df5a7288047ebc570ffa2173cff6b23b7da72e544249d1139c896a7",
+      "stagingReadbackMatches": true
+    }
+  ],
+  "verificationLimit": "Automated authenticated invitation and portal handoff tests await an approved QA credential. Public access checks and isolated frontend playback tests passed.",
+  "directoryLink": "Deferred while the separate directory task owns and revises home/index.html."
+}

@@ -1,0 +1,91 @@
+{
+  "kind": "Local rendered source with deployed assets; no authenticated visitor journey",
+  "processAudioDisabled": true,
+  "checks": [
+    {
+      "route": "media.php",
+      "status": 401
+    },
+    {
+      "route": "access.php",
+      "status": 403
+    },
+    {
+      "invalidCsrf": 403
+    },
+    {
+      "networkFramesAdvance": true,
+      "pauseHoldsFrame": true
+    },
+    {
+      "viewport": {
+        "width": 1920,
+        "height": 1080
+      },
+      "layout": {
+        "width": 1920,
+        "scroll": 1920,
+        "height": 1080,
+        "paths": 16
+      }
+    },
+    {
+      "viewport": {
+        "width": 1470,
+        "height": 920
+      },
+      "layout": {
+        "width": 1470,
+        "scroll": 1470,
+        "height": 987,
+        "paths": 16
+      }
+    },
+    {
+      "viewport": {
+        "width": 1024,
+        "height": 768
+      },
+      "layout": {
+        "width": 1024,
+        "scroll": 1024,
+        "height": 891,
+        "paths": 16
+      }
+    },
+    {
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "layout": {
+        "width": 390,
+        "scroll": 390,
+        "height": 1612,
+        "paths": 16
+      }
+    },
+    {
+      "viewport": {
+        "width": 320,
+        "height": 568
+      },
+      "layout": {
+        "width": 320,
+        "scroll": 320,
+        "height": 1570,
+        "paths": 16
+      }
+    },
+    {
+      "aboutEscape": true,
+      "originalLogo": {
+        "naturalWidth": 1352,
+        "width": 86.796875,
+        "network": 280
+      }
+    }
+  ],
+  "errors": [],
+  "passed": true
+}

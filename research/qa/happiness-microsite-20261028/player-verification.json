@@ -1,0 +1,57 @@
+{
+  "kind": "Frontend player using local PHP-rendered markup, byte-matched staging assets and the uploaded public Cloudflare film; invitation authentication is outside this test",
+  "processAudioDisabled": true,
+  "nativeFullscreenInvoked": false,
+  "checks": [
+    {
+      "byteMatch": "happiness/assets/happiness.css"
+    },
+    {
+      "byteMatch": "happiness/assets/happiness.js"
+    },
+    {
+      "byteMatch": "happiness/assets/network.js"
+    },
+    {
+      "byteMatch": "happiness/assets/universal-mind-flower.png"
+    },
+    {
+      "start": 0,
+      "timeAdvanced": 0.426799,
+      "timer": {
+        "text": "0:00 / 5:55",
+        "left": 26,
+        "bottom": 23
+      },
+      "backOnly": true,
+      "backRemovesPlayer": true,
+      "animationResumes": true
+    },
+    {
+      "start": 60,
+      "timeAdvanced": 60.547749,
+      "timer": {
+        "text": "1:00 / 5:55",
+        "left": 26,
+        "bottom": 23
+      },
+      "backOnly": true,
+      "backRemovesPlayer": true,
+      "animationResumes": true
+    },
+    {
+      "start": 103,
+      "timeAdvanced": 103.629368,
+      "timer": {
+        "text": "1:43 / 5:55",
+        "left": 26,
+        "bottom": 23
+      },
+      "backOnly": true,
+      "backRemovesPlayer": true,
+      "animationResumes": true
+    }
+  ],
+  "errors": [],
+  "passed": true
+}
