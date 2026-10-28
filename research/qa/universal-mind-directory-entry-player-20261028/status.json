@@ -1,0 +1,20 @@
+{
+  "candidateCommit": "dcc45de0436830e6aae66f173698f0ba6bb9ff7a",
+  "proofURL": "https://staging.universalmind.tv/",
+  "journey": "Normal password Enter -> directory -> each of four destinations -> browser Back",
+  "userEvidence": "Ben confirms Rihanna launches and loops on mobile in Universal Informatics. Prior fresh-player directory attempts failed on his iPhone.",
+  "workingComparison": {
+    "informatics": "Informatics/app.js launch.onclick calls film.play directly and retains the same element.",
+    "remodel": "app/RmuDashboard.tsx enterApp calls video.play before await fullscreen and retains videoRef."
+  },
+  "change": "Start muted video synchronously inside root submit before hashing or authentication; retain that root-owned element behind a transparent directory iframe. Pause on destinations; reuse the same element on Back. Standalone directory keeps its local player.",
+  "sharedAPI": [
+    "getBackgroundFilm()",
+    "setBackgroundVisible(boolean)"
+  ],
+  "verified": "18 automated checks passed, including per-element entry-action restriction with 6.5 second delayed authentication, same player and fullscreen owner across four routes/Back, no repeated password, silent playback advancement, motion and responsive layout. Invalid login leaves player hidden and paused.",
+  "physicalIPhoneStatus": "Corrected normal-login journey awaits Ben proof; Chromium simulation is not physical Safari verification.",
+  "productionModified": false,
+  "coordination": "Findings and API shared at Ben request with active Happiness, Events and login tasks. Events and login commits through e267575 preserved.",
+  "qaCredentialSafety": "An additional authenticated test was blocked by automatic approval review for retrieving a credential from a prior session log. That lookup was removed from the retained test harness; it now requires an explicitly authorized environment-supplied QA credential. The subsequent invalid-login check uses no real credential."
+}

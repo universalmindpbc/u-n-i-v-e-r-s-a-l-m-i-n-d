@@ -1,0 +1,17 @@
+{
+  "verifiedAt": "2026-10-28T09:18:29.920Z",
+  "processAudioDisabled": true,
+  "nativeFullscreenInvoked": false,
+  "fullscreenVerification": "Fullscreen API intercepted; persistent owner document, activation and routing verified without invoking native fullscreen.",
+  "checks": [
+    {
+      "invalidLoginKeepsVideoHiddenAndPaused": {
+        "paused": true,
+        "opacity": "0",
+        "frames": 0
+      }
+    }
+  ],
+  "errors": [],
+  "passed": true
+}
