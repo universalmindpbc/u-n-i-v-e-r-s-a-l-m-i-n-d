@@ -1,8 +1,8 @@
-/* Private document reader. No document content or access key is bundled here. */
+/* Private document reader. No document content or password is bundled here. */
 'use strict';
 const $=s=>document.querySelector(s),csrf=$('meta[name="csrf-token"]').content;
 async function auth(payload){const r=await fetch('login.php',{method:'POST',credentials:'same-origin',headers:{'Content-Type':'application/json'},body:JSON.stringify({...payload,csrf})});const d=await r.json();if(!r.ok)throw Error(d.error||'Access unavailable.');return d;}
-if($('#login-form'))$('#login-form').addEventListener('submit',async e=>{e.preventDefault();const button=e.target.querySelector('button');button.disabled=true;$('#login-status').textContent='Opening…';try{await auth({key:$('#access-key').value});location.reload();}catch(err){$('#login-status').textContent=err.message;button.disabled=false;}});
+if($('#login-form'))$('#login-form').addEventListener('submit',async e=>{e.preventDefault();const button=e.target.querySelector('button');button.disabled=true;$('#login-status').textContent='Opening…';try{await auth({password:$('#access-password').value});location.reload();}catch(err){$('#login-status').textContent=err.message;button.disabled=false;}});
 if($('#logout'))$('#logout').addEventListener('click',async()=>{await auth({action:'logout'});location.reload();});
 let data=null,filtered=[],position=0;const size=12;let readingRanks=new Map();
 function readingRank(title){if(title.startsWith('1. '))return 10;if(title==='17. Abstract')return 20;if(title.startsWith('4. '))return 30;if(title.startsWith('2. '))return 40;if(title.startsWith('3. '))return 41;const n=Number(title.match(/^(\d+)\./)?.[1]);if(n>=6&&n<=14)return 50+n;if(title==='Drawings and figure descriptions')return 80;if(title==='Drawing sheets')return 81;if(title.startsWith('5. '))return 82;if(n===15||n===16)return 90+n;if(title.startsWith('Appendix'))return 200;return 150;}
