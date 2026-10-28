@@ -7,7 +7,7 @@
  function render(){
   if(!drawings)return;
   const words=normal(query.value).split(/\s+/).filter(Boolean);
-  const selected=drawings.filter(d=>(group.value==='all'||d.group===group.value)&&words.every(w=>normal(d.title+' '+d.description+' '+d.section+' source image '+d.number).includes(w)));
+  const selected=drawings.filter(d=>(group.value==='all'||d.group===group.value)&&words.every(w=>normal(d.title+' '+d.description+' '+(d.brief_description||'')+' '+d.section+' source image '+d.number).includes(w)));
   cards.replaceChildren();status.textContent=`${selected.length} of ${drawings.length} drawings`;
   for(const d of selected){
    const card=document.createElement('figure');card.className='drawing-card';card.id='drawing-'+d.number;
@@ -18,9 +18,12 @@
    label.className='eyebrow';label.textContent='Source image '+d.number+' · PDF page '+d.page;heading.textContent=d.title;
    description.className='drawing-description';const paragraphs=d.description.split('\n\n');if(paragraphs[0]===d.title)paragraphs.shift();description.textContent=paragraphs.join('\n\n');description.hidden=!description.textContent;
    const source=document.createElement('a');source.href='document.php#page='+d.page;source.target='_blank';source.rel='noopener';source.textContent='View PDF page ↗';links.append(source);
-   if(d.description_pages.length){const context=document.createElement('a');context.href='document.php#page='+d.description_pages[0];context.target='_blank';context.rel='noopener';context.textContent=d.context_kind==='description'?'Description in the filed text ↗':'Source context in the filed text ↗';links.append(context);}
+   const descriptionPages=d.brief_description_pages?.length?d.brief_description_pages:d.description_pages;
+   if(descriptionPages.length){const context=document.createElement('a');context.href='document.php#page='+descriptionPages[0];context.target='_blank';context.rel='noopener';context.textContent=d.context_kind==='description'?'Description in the filed text ↗':'Source context in the filed text ↗';links.append(context);}
    if(d.context_kind==='context'){const note=document.createElement('p');note.className='small';note.textContent='Source context · '+d.section;caption.append(note);}
-   caption.append(label,heading,description,links);card.append(enlarge,caption);cards.append(card);
+   caption.append(label,heading,description);
+   if(d.brief_description){const brief=document.createElement('p');brief.className='drawing-description';brief.textContent=d.brief_description;caption.append(brief);}
+   caption.append(links);card.append(enlarge,caption);cards.append(card);
   }
  }
  async function load(){

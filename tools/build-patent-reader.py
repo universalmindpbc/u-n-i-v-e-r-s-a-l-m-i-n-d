@@ -120,6 +120,26 @@ for title,sec in sections.items():
  chapter={'id':ident,'title':title,'page':sec['page'],'end_page':sec['end_page'],'html':str(soup),'text':soup.get_text(' ',strip=True),'headings':headings}
  chapters.append(chapter);audit.append({'title':title,'paragraphs':len(soup.find_all('p')),'headings':len(headings),'lists':len(soup.find_all(['ol','ul'])),'tables':len(soup.find_all('table')),'code_blocks':len(soup.find_all('pre'))})
 assert sorted(used)==list(range(1,92)),('Image coverage',len(used))
+# Pair the image captions with the separately filed Brief Description of Drawings.
+brief_chapter=next(c for c in chapters if c['page']==91)
+brief_soup=BeautifulSoup(brief_chapter['html'],'html.parser');brief={};current_figure=None
+figure_pattern=r'^FIG\.?\s*(\d+(?:\.\d+)?[A-Z]?)(?![\d.A-Z])'
+for node in brief_soup.children:
+ if not getattr(node,'name',None):continue
+ text=node.get_text(' ',strip=True);match=re.match(figure_pattern,text,re.I)
+ if match and not re.match(r'^FIG\.?\s*\d+[A-Z]-[A-Z]',text,re.I):
+  current_figure=match[1].upper();brief[current_figure]=[text]
+ elif re.match(r'h[1-6]',node.name):current_figure=None
+ elif current_figure and text:brief[current_figure].append(text)
+for d in gallery.values():
+ match=re.match(figure_pattern,d['description'],re.I)
+ if d['group']!='main' or not match:continue
+ number=match[1].upper()
+ if d['title']==d['section']:d['title']=d['description'].split('\n\n')[0]
+ if number in brief:
+  d['brief_description']=' '.join(brief[number])
+  pattern=r'FIG\.?\s*'+re.escape(number)+r'(?![\d.A-Z])'
+  d['brief_description_pages']=[p['page'] for p in doc['pages'] if p['section']==brief_chapter['title'] and re.search(pattern,p['text'],re.I)]
 pdf=PdfReader(runtime/'specification.pdf');out=runtime/'drawings';out.mkdir(exist_ok=True)
 for n in range(1,92):
  imgs=pdf.pages[298+n].images;assert len(imgs)==1

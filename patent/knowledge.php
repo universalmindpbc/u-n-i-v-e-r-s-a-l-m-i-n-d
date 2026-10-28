@@ -27,7 +27,7 @@ function patent_terms(string $text): array {
 }
 function patent_search(string $query, string $section='', int $limit=8): array {
     $d=patent_document(); $terms=array_unique(patent_terms($query)); $rows=[]; $df=[];
-    $captions=[]; foreach(patent_drawings() as $g) $captions[$g['page']]=$g['title'].' '.$g['description'];
+    $captions=[]; foreach(patent_drawings() as $g) $captions[$g['page']]=$g['title'].' '.$g['description'].' '.($g['brief_description']??'');
     foreach($d['pages'] as $p){
         if($section!==''&&stripos($p['section'],$section)===false) continue;
         $p['search_text']=$p['text'].' '.($captions[$p['page']]??'');
@@ -54,7 +54,7 @@ function patent_read_pages(array $numbers, array &$sources, array &$images): arr
         }
         $entry=['label'=>$sources[$number]['label'],'page'=>$number,'section'=>$p['section'],'text'=>$p['text']];
         if($g){
-            $entry['drawing']=$g['number'];$entry['description']=$g['description'];$entry['description_pages']=$g['description_pages'];
+            $entry['drawing']=$g['number'];$entry['description']=$g['description'];$entry['description_pages']=$g['description_pages'];$entry['brief_description']=$g['brief_description']??'';$entry['brief_description_pages']=$g['brief_description_pages']??[];
             if(count($images)<4){$file=__DIR__.'/.private/drawings/image-'.$g['number'].'.jpg';if(is_file($file))$images[$number]=['type'=>'input_image','image_url'=>'data:image/jpeg;base64,'.base64_encode((string)file_get_contents($file)),'detail'=>'high'];}
         }
         $result[]=$entry;
