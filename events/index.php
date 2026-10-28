@@ -34,14 +34,14 @@ if ($entered) {
 <meta name="theme-color" content="#080808">
 <link rel="icon" href="/vogue/iam/favicon.png?v=iam-favicon-3">
 <title>athousandminds — Universal Mind</title>
-<link rel="stylesheet" href="assets/events.css?v=9">
+<link rel="stylesheet" href="assets/events.css?v=10">
 <?php if (!$entered): ?>
 <link rel="stylesheet" href="assets/gate.css?v=4">
 <script src="assets/gate-rain.js?v=2" defer></script>
 <script src="assets/gate-launch.js?v=1" defer></script>
 <?php endif; ?>
 <?php if ($entered): ?>
-<script src="assets/events.js?v=9" defer></script>
+<script src="assets/events.js?v=10" defer></script>
 <?php endif; ?>
 </head>
 <body class="<?= $entered ? 'entered' : 'invitation' ?>">
@@ -63,7 +63,7 @@ if ($entered) {
 <main class="experience" id="experience">
 <div class="backdrop" aria-hidden="true">
 <img src="poster.php" alt="" fetchpriority="high">
-<video id="opening-loop" src="loop.php?v=2" poster="poster.php" autoplay muted loop playsinline webkit-playsinline preload="auto" tabindex="-1"></video>
+<video id="opening-loop" src="loop.php?v=2" poster="poster.php" autoplay muted loop playsinline webkit-playsinline disablepictureinpicture disableremoteplayback preload="auto" tabindex="-1"></video>
 </div>
 <button id="global-nav-toggle" class="global-nav-toggle" aria-label="About" aria-expanded="false" aria-controls="about-panel">
 <img src="/vogue/iam/a%20s%20s%20e%20t%20s/Universal%20Mind%20%5B%20I%20o%20H%20%5D%20Logo%20512.png" alt="" aria-hidden="true">
@@ -78,14 +78,14 @@ if ($entered) {
 <div class="title-group">
 <h1 id="festival-title" aria-label="athousandminds"><span>athousand</span><strong>minds</strong></h1>
 <p class="tagline"><span class="tagline-phrase">change your emotions.</span> <span class="tagline-phrase">transform your world</span></p>
-<button id="watch-film" class="watch-film"><span class="play-icon" aria-hidden="true">▶</span><span>Watch the film</span></button>
+<button id="watch-film" class="watch-film"><span class="play-icon" aria-hidden="true"><svg viewBox="0 0 12 12" focusable="false"><path d="M2 1.4v9.2L10.2 6z"/></svg></span><span>Watch the film</span></button>
 <p id="film-status" class="film-status" role="status"></p>
 </div>
-<p class="hashtags">#together #weareone</p>
+<p class="event-description"><span class="event-format">Multiple arenas</span><span class="event-divider"> - </span><span class="event-summary">A new interactive music, fashion, light festival, exploring mindfulness</span></p>
 <div class="venues" aria-label="Venues">
-<span>SYDNEY OPERA HOUSE</span><b aria-hidden="true">|</b><span>BARBICAN LONDON</span><b aria-hidden="true">|</b><span>MADISON SQUARE GARDEN NY</span>
+<span>Sydney Opera House</span><b aria-hidden="true">|</b><span>Barbican London</span><b aria-hidden="true">|</b><span>Madison Square Garden NY</span>
 </div>
-<p class="event-description">MULTIPLE ARENAS - A NEW INTERACTIVE MUSIC, FASHION, LIGHT FESTIVAL, EXPLORING MINDFULNESS</p>
+<p class="hashtags">#together #weareone</p>
 <footer class="proposal-label"><button id="proposal-about">Proposal</button></footer>
 </section>
 <section id="film-view" class="film-view" aria-label="athousandminds — the film" hidden>

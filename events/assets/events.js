@@ -15,21 +15,41 @@
   const about = document.getElementById('about-panel');
   const maximise = document.getElementById('fullscreen-toggle');
   const host = window.parent.document;
+  const mobileLayout = matchMedia('(max-width: 700px), (pointer: coarse)');
   const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
   let media, loading, player, frame, returnFocus, streamLoading;
   let openingPending = false;
   if (reducedMotion) { loop.autoplay = false; loop.pause(); }
 
   function syncFullscreen() {
-    maximise.hidden = Boolean(host.fullscreenElement || host.webkitFullscreenElement);
+    const nativeActive = player === nativeFilm && !view.hidden && about.hidden;
+    const webkitVideo = nativeActive && nativeFilm.readyState >= 1 && typeof nativeFilm.webkitEnterFullscreen === 'function' && nativeFilm.webkitSupportsFullscreen !== false;
+    const standardVideo = nativeActive && document.fullscreenEnabled && typeof nativeFilm.requestFullscreen === 'function';
+    const expanded = Boolean(host.fullscreenElement || host.webkitFullscreenElement || document.fullscreenElement || nativeFilm.webkitDisplayingFullscreen);
+    maximise.hidden = expanded || (mobileLayout.matches && !webkitVideo && !standardVideo);
+    maximise.setAttribute('aria-label', mobileLayout.matches ? 'Watch film fullscreen' : 'Enter fullscreen');
   }
   maximise.addEventListener('click', () => {
+    if (mobileLayout.matches) {
+      if (player !== nativeFilm || view.hidden || !about.hidden) return;
+      if (typeof nativeFilm.webkitEnterFullscreen === 'function' && nativeFilm.webkitSupportsFullscreen !== false) {
+        nativeFilm.webkitEnterFullscreen();
+      } else if (document.fullscreenEnabled && nativeFilm.requestFullscreen) {
+        nativeFilm.requestFullscreen().catch(() => {});
+      }
+      return;
+    }
     const target = host.documentElement;
     const request = target.requestFullscreen || target.webkitRequestFullscreen;
     if (request) Promise.resolve(request.call(target)).catch(() => {});
   });
   host.addEventListener('fullscreenchange', syncFullscreen);
   host.addEventListener('webkitfullscreenchange', syncFullscreen);
+  document.addEventListener('fullscreenchange', syncFullscreen);
+  nativeFilm.addEventListener('webkitbeginfullscreen', syncFullscreen);
+  nativeFilm.addEventListener('webkitendfullscreen', syncFullscreen);
+  nativeFilm.addEventListener('loadedmetadata', syncFullscreen);
+  mobileLayout.addEventListener('change', syncFullscreen);
 
   // Pointer interaction never inherits Safari's keyboard focus decoration.
   document.addEventListener('pointerdown', () => { document.body.dataset.input = 'pointer'; }, {passive:true});
@@ -75,8 +95,8 @@
     } finally { openingPending = false; }
   }
   loop.addEventListener('playing', () => loop.classList.add('ready'));
-  loop.addEventListener('loadeddata', () => loop.classList.add('ready'));
-  if (loop.readyState >= 2) loop.classList.add('ready');
+  loop.addEventListener('pause', () => loop.classList.remove('ready'));
+  if (loop.readyState >= 2 && !loop.paused) loop.classList.add('ready');
   loop.addEventListener('error', () => loop.classList.remove('ready'));
   // iOS recognises touchend/click as media gestures; pointerdown alone is insufficient.
   const retryLoopFromGesture = () => { if (loop.paused) startLoop({gesture:true}); };
@@ -103,6 +123,7 @@
     document.body.classList.toggle('panel-open', panelOpen);
     document.body.classList.toggle('about-open', !about.hidden);
     if (!view.hidden && about.hidden) loop.pause();
+    syncFullscreen();
   }
   function dismissPanels() {
     about.hidden = true; syncPanels();
@@ -170,7 +191,7 @@
       if (!nativeFilm.dataset.hls) { status.textContent = 'The film is temporarily unavailable. Please try again.'; return; }
       showFilm(); nativeFilm.hidden = false; player = nativeFilm;
       nativeFilm.src = nativeFilm.dataset.hls;
-      playNativeFilm(); flower.focus(); return;
+      playNativeFilm(); syncFullscreen(); flower.focus(); return;
     }
     status.textContent = 'Loading film…'; watch.disabled = true;
     try {
@@ -212,6 +233,8 @@
     loop.pause(); player?.pause(); frame?.remove();
     host.removeEventListener('fullscreenchange', syncFullscreen);
     host.removeEventListener('webkitfullscreenchange', syncFullscreen);
+    document.removeEventListener('fullscreenchange', syncFullscreen);
+    mobileLayout.removeEventListener('change', syncFullscreen);
   });
   syncFullscreen(); startLoop();
 })();
