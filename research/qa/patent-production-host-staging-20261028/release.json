@@ -1,0 +1,8 @@
+{
+  "approved_portal_commit": "ea3ed95",
+  "source_commit": "7b3edca",
+  "worker_version": "c071cca2-4c26-47ca-a228-513111224e36",
+  "ui_unchanged": true,
+  "changes": "Select the patent origin, service and citations from a fixed staging/production host allowlist.",
+  "production_authorized": true
+}
