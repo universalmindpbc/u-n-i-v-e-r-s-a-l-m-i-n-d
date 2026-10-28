@@ -1,0 +1,76 @@
+{
+  "origin": "https://staging.universalmind.tv/events/",
+  "processAudioDisabled": true,
+  "nativeFullscreenInvoked": false,
+  "checks": [
+    {
+      "viewport": {
+        "width": 1470,
+        "height": 920
+      },
+      "pointer": {
+        "focused": true,
+        "focusVisible": true,
+        "outline": "none",
+        "outlineWidth": "3px",
+        "outlineOffset": "0px",
+        "shadow": "none",
+        "borderTop": "0px",
+        "borderLeft": "0px",
+        "borderRight": "0px",
+        "borderBottom": "1px",
+        "borderColor": "rgb(255, 255, 255)"
+      },
+      "keyboard": {
+        "focused": true,
+        "focusVisible": true,
+        "outline": "none",
+        "outlineWidth": "3px",
+        "outlineOffset": "0px",
+        "shadow": "none",
+        "borderTop": "0px",
+        "borderLeft": "0px",
+        "borderRight": "0px",
+        "borderBottom": "1px",
+        "borderColor": "rgb(255, 255, 255)"
+      }
+    },
+    {
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "pointer": {
+        "focused": true,
+        "focusVisible": true,
+        "outline": "none",
+        "outlineWidth": "3px",
+        "outlineOffset": "0px",
+        "shadow": "none",
+        "borderTop": "0px",
+        "borderLeft": "0px",
+        "borderRight": "0px",
+        "borderBottom": "1px",
+        "borderColor": "rgb(255, 255, 255)"
+      },
+      "keyboard": {
+        "focused": true,
+        "focusVisible": true,
+        "outline": "none",
+        "outlineWidth": "3px",
+        "outlineOffset": "0px",
+        "shadow": "none",
+        "borderTop": "0px",
+        "borderLeft": "0px",
+        "borderRight": "0px",
+        "borderBottom": "1px",
+        "borderColor": "rgb(255, 255, 255)"
+      }
+    },
+    {
+      "passwordEntryStillWorks": true
+    }
+  ],
+  "errors": [],
+  "passed": true
+}
