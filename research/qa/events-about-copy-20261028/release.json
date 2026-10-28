@@ -1,0 +1,29 @@
+{
+  "source_commit": "3b99834022cdaae048dbeeeb99ed6e1dbed2083b",
+  "staging_url": "https://staging.universalmind.tv/events/",
+  "publisher": "./deploy-panthur-staging.sh events",
+  "production_modified": false,
+  "changes": [
+    "About paragraphs replaced with the supplied wording",
+    "Three numbered levels, bold festival names and rewards paragraph",
+    "Pasted HTML character codes decoded into normal text",
+    "SIX and IMMERSION links retain the supplied destinations and open in separate tabs"
+  ],
+  "verification": [
+    "Rendered paragraphs exactly match supplied copy after decoding character codes",
+    "All three list entries and four bold festival-name occurrences verified",
+    "Link destinations and new-tab attributes verified",
+    "Desktop and phone layouts scroll without horizontal overflow; return control remains reachable",
+    "Silent background continues; returning and reopening About works",
+    "Live stylesheet matches committed source; relevant console free of errors"
+  ],
+  "linked_pages_checked": [
+    "https://your6.com",
+    "https://www.getimmersion.com"
+  ],
+  "browser_verification": "Dedicated Chromium with --mute-audio. Fullscreen intercepted. All browser sessions closed after verification.",
+  "source_sha256": {
+    "events/index.php": "e303f6099a6d95ed24a085df39789808163edfd9005b6c3615677bdd2a33ee02",
+    "events/assets/events.css": "4d088d16d4c3b8b72cb064f8b47f4b5915da1b0f1d103796ede44f557c26a72e"
+  }
+}
