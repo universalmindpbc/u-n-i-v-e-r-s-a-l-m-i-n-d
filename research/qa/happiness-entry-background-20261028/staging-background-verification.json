@@ -1,0 +1,152 @@
+{
+  "verifiedAt": "2026-10-28T09:15:16.033Z",
+  "mode": "staging-assets",
+  "processAudioDisabled": true,
+  "nativeFullscreenInvoked": false,
+  "scope": "Source-rendered gate and authenticated HTML with simulated authentication; real staged video and HLS decoding. Per-element user-gesture denial emulates the reported browser restriction. Physical iPhone Safari and real authentication are separate checks.",
+  "checks": [
+    {
+      "deployedAsset": "happiness/assets/happiness.js",
+      "sha256": "e8008d08290552ad33874bf4b379908bc4587098c03e04ecaa068266295a862a"
+    },
+    {
+      "deployedAsset": "happiness/assets/happiness.css",
+      "sha256": "38f91430b47d94860341c596c82ec2614a3d4cf6330bc0cd94f0d39986513431"
+    },
+    {
+      "deployedAsset": "happiness/assets/gate-launch.js",
+      "sha256": "c76b3e34e3303a021e5ebbfee0422410399bc527bd4e806ffc34e23e3a2acde2"
+    },
+    {
+      "deployedAsset": "happiness/assets/gate-background.css",
+      "sha256": "46e28a483099d0672f04bb3edd869e75001582e0d1aa47074675ceab6d306257"
+    },
+    {
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "centeredCTA": {
+        "x": 20,
+        "y": 396.921875,
+        "width": 350,
+        "height": 50.15625,
+        "centerX": 195,
+        "centerY": 422,
+        "innerWidth": 390,
+        "innerHeight": 844,
+        "scrollWidth": 390
+      },
+      "video": {
+        "currentTime": 0.504922,
+        "frames": 21,
+        "muted": true,
+        "source": "https://staging.universalmind.tv/home/assets/festival-loop.mp4?v=silent-1",
+        "opacity": "0.24",
+        "audioBytes": 0
+      },
+      "removedFooter": true
+    },
+    {
+      "viewport": {
+        "width": 320,
+        "height": 568
+      },
+      "centeredCTA": {
+        "x": 20,
+        "y": 258.921875,
+        "width": 280,
+        "height": 50.15625,
+        "centerX": 160,
+        "centerY": 284,
+        "innerWidth": 320,
+        "innerHeight": 568,
+        "scrollWidth": 320
+      },
+      "video": {
+        "currentTime": 0.323319,
+        "frames": 14,
+        "muted": true,
+        "source": "https://staging.universalmind.tv/home/assets/festival-loop.mp4?v=silent-1",
+        "opacity": "0.24",
+        "audioBytes": 0
+      },
+      "removedFooter": true
+    },
+    {
+      "viewport": {
+        "width": 844,
+        "height": 390
+      },
+      "centeredCTA": {
+        "x": 300.859375,
+        "y": 171.546875,
+        "width": 242.28125,
+        "height": 46.90625,
+        "centerX": 422,
+        "centerY": 195,
+        "innerWidth": 844,
+        "innerHeight": 390,
+        "scrollWidth": 844
+      },
+      "video": {
+        "currentTime": 0.316416,
+        "frames": 16,
+        "muted": true,
+        "source": "https://staging.universalmind.tv/home/assets/festival-loop.mp4?v=silent-1",
+        "opacity": "0.24",
+        "audioBytes": 0
+      },
+      "removedFooter": true
+    },
+    {
+      "viewport": {
+        "width": 1470,
+        "height": 920
+      },
+      "centeredCTA": {
+        "x": 613.859375,
+        "y": 436.546875,
+        "width": 242.28125,
+        "height": 46.90625,
+        "centerX": 735,
+        "centerY": 460,
+        "innerWidth": 1470,
+        "innerHeight": 920,
+        "scrollWidth": 1470
+      },
+      "video": {
+        "currentTime": 0.305163,
+        "frames": 13,
+        "muted": true,
+        "source": "https://staging.universalmind.tv/home/assets/festival-loop.mp4?v=silent-1",
+        "opacity": "0.24",
+        "audioBytes": 0
+      },
+      "removedFooter": true
+    },
+    {
+      "autoplayDenialRecoveredOnRealTap": true
+    },
+    {
+      "directGateRetainsGestureStartedVideo": true,
+      "authenticationDelayMs": 1200,
+      "first": {
+        "time": 0.220734,
+        "unlocked": true
+      },
+      "after": {
+        "time": 1.888734,
+        "identity": "retained",
+        "unlocked": true
+      },
+      "presentationPausesBackground": true,
+      "backResumesSameVideo": true
+    },
+    {
+      "reducedMotionRespected": true
+    }
+  ],
+  "errors": [],
+  "passed": true
+}

@@ -1,0 +1,136 @@
+{
+  "verifiedAt": "2026-10-28T09:12:22.623Z",
+  "mode": "local-candidate",
+  "processAudioDisabled": true,
+  "nativeFullscreenInvoked": false,
+  "scope": "Source-rendered gate and authenticated HTML with simulated authentication; real staged video and HLS decoding. Per-element user-gesture denial emulates the reported browser restriction. Physical iPhone Safari and real authentication are separate checks.",
+  "checks": [
+    {
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "centeredCTA": {
+        "x": 20,
+        "y": 396.921875,
+        "width": 350,
+        "height": 50.15625,
+        "centerX": 195,
+        "centerY": 422,
+        "innerWidth": 390,
+        "innerHeight": 844,
+        "scrollWidth": 390
+      },
+      "video": {
+        "currentTime": 0.314632,
+        "frames": 16,
+        "muted": true,
+        "source": "https://staging.universalmind.tv/home/assets/festival-loop.mp4?v=silent-1",
+        "opacity": "0.24",
+        "audioBytes": 0
+      },
+      "removedFooter": true
+    },
+    {
+      "viewport": {
+        "width": 320,
+        "height": 568
+      },
+      "centeredCTA": {
+        "x": 20,
+        "y": 258.921875,
+        "width": 280,
+        "height": 50.15625,
+        "centerX": 160,
+        "centerY": 284,
+        "innerWidth": 320,
+        "innerHeight": 568,
+        "scrollWidth": 320
+      },
+      "video": {
+        "currentTime": 0.305599,
+        "frames": 15,
+        "muted": true,
+        "source": "https://staging.universalmind.tv/home/assets/festival-loop.mp4?v=silent-1",
+        "opacity": "0.24",
+        "audioBytes": 0
+      },
+      "removedFooter": true
+    },
+    {
+      "viewport": {
+        "width": 844,
+        "height": 390
+      },
+      "centeredCTA": {
+        "x": 300.859375,
+        "y": 171.546875,
+        "width": 242.28125,
+        "height": 46.90625,
+        "centerX": 422,
+        "centerY": 195,
+        "innerWidth": 844,
+        "innerHeight": 390,
+        "scrollWidth": 844
+      },
+      "video": {
+        "currentTime": 0.311043,
+        "frames": 16,
+        "muted": true,
+        "source": "https://staging.universalmind.tv/home/assets/festival-loop.mp4?v=silent-1",
+        "opacity": "0.24",
+        "audioBytes": 0
+      },
+      "removedFooter": true
+    },
+    {
+      "viewport": {
+        "width": 1470,
+        "height": 920
+      },
+      "centeredCTA": {
+        "x": 613.859375,
+        "y": 436.546875,
+        "width": 242.28125,
+        "height": 46.90625,
+        "centerX": 735,
+        "centerY": 460,
+        "innerWidth": 1470,
+        "innerHeight": 920,
+        "scrollWidth": 1470
+      },
+      "video": {
+        "currentTime": 0.307283,
+        "frames": 16,
+        "muted": true,
+        "source": "https://staging.universalmind.tv/home/assets/festival-loop.mp4?v=silent-1",
+        "opacity": "0.24",
+        "audioBytes": 0
+      },
+      "removedFooter": true
+    },
+    {
+      "autoplayDenialRecoveredOnRealTap": true
+    },
+    {
+      "directGateRetainsGestureStartedVideo": true,
+      "authenticationDelayMs": 1200,
+      "first": {
+        "time": 0.221585,
+        "unlocked": true
+      },
+      "after": {
+        "time": 1.89075,
+        "identity": "retained",
+        "unlocked": true
+      },
+      "presentationPausesBackground": true,
+      "backResumesSameVideo": true
+    },
+    {
+      "reducedMotionRespected": true
+    }
+  ],
+  "errors": [],
+  "passed": true
+}

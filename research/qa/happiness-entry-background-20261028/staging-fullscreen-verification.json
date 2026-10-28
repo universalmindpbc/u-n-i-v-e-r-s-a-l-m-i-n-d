@@ -1,0 +1,89 @@
+{
+  "verifiedAt": "2026-10-28T09:15:24.503Z",
+  "mode": "staging-assets",
+  "processAudioDisabled": true,
+  "nativeFullscreenInvoked": false,
+  "browser": "151.0.7922.34",
+  "scope": "Real video playback in muted Chromium; WebKit video and standard fullscreen APIs are intercepted. Tests verify user-gesture ownership, fullscreen state, landscape layout and playback continuity without invoking native fullscreen. The authenticated page is rendered from source; no invitation credential is used.",
+  "checks": [
+    {
+      "deployedAsset": "happiness/assets/happiness.js",
+      "sha256": "e8008d08290552ad33874bf4b379908bc4587098c03e04ecaa068266295a862a"
+    },
+    {
+      "deployedAsset": "happiness/assets/happiness.css",
+      "sha256": "38f91430b47d94860341c596c82ec2614a3d4cf6330bc0cd94f0d39986513431"
+    },
+    {
+      "deployedAsset": "happiness/assets/network.js",
+      "sha256": "ab59e13ef8b22579ea069ab6289866771bcddf5183ac7209d9529820bd135a16"
+    },
+    {
+      "mode": "webkit",
+      "nested": true,
+      "portrait": {
+        "x": 338,
+        "y": 797,
+        "width": 44,
+        "height": 44,
+        "right": 382,
+        "bottom": 841,
+        "viewportWidth": 390,
+        "viewportHeight": 844
+      },
+      "landscape": {
+        "right": 830,
+        "bottom": 381,
+        "viewportWidth": 844,
+        "viewportHeight": 390
+      },
+      "enterCall": {
+        "method": "webkit-enter",
+        "target": "film-player",
+        "tap": true,
+        "userActivation": true
+      },
+      "timeBefore": 0.580182,
+      "timeAfterExit": 0.736608,
+      "returnPreservesVideo": true,
+      "backExitsAndCleansUp": true,
+      "blockedFullscreenRecovery": false
+    },
+    {
+      "mode": "standard",
+      "nested": false,
+      "portrait": {
+        "x": 338,
+        "y": 797,
+        "width": 44,
+        "height": 44,
+        "right": 382,
+        "bottom": 841,
+        "viewportWidth": 390,
+        "viewportHeight": 844
+      },
+      "landscape": {
+        "right": 830,
+        "bottom": 381,
+        "viewportWidth": 844,
+        "viewportHeight": 390
+      },
+      "enterCall": {
+        "method": "standard-enter",
+        "target": "film-view",
+        "tap": true,
+        "userActivation": true
+      },
+      "timeBefore": 0.458566,
+      "timeAfterExit": 0.670363,
+      "returnPreservesVideo": true,
+      "backExitsAndCleansUp": true,
+      "blockedFullscreenRecovery": true
+    },
+    {
+      "embeddedPlayerFullscreenFallback": true
+    }
+  ],
+  "errors": [],
+  "passed": true
+}

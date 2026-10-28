@@ -1,0 +1,88 @@
+{
+  "verifiedAt": "2026-10-28T09:15:40.991235+00:00",
+  "sourceCommit": "c236a35a650bb1565232d93171a235922516625a",
+  "staging": "https://staging.universalmind.tv/happiness/",
+  "sourceReadback": [
+    {
+      "path": "happiness/index.php",
+      "bytes": 13516,
+      "sha256": "32ae592472e5dc04778371c34a009f77cc75a23554e3ee8a37a46eee609a7de6",
+      "deployedBytesMatch": true
+    },
+    {
+      "path": "happiness/assets/happiness.js",
+      "bytes": 20048,
+      "sha256": "e8008d08290552ad33874bf4b379908bc4587098c03e04ecaa068266295a862a",
+      "deployedBytesMatch": true
+    },
+    {
+      "path": "happiness/assets/happiness.css",
+      "bytes": 18407,
+      "sha256": "38f91430b47d94860341c596c82ec2614a3d4cf6330bc0cd94f0d39986513431",
+      "deployedBytesMatch": true
+    },
+    {
+      "path": "happiness/assets/gate-launch.js",
+      "bytes": 3909,
+      "sha256": "c76b3e34e3303a021e5ebbfee0422410399bc527bd4e806ffc34e23e3a2acde2",
+      "deployedBytesMatch": true
+    },
+    {
+      "path": "happiness/assets/gate-background.css",
+      "bytes": 495,
+      "sha256": "46e28a483099d0672f04bb3edd869e75001582e0d1aa47074675ceab6d306257",
+      "deployedBytesMatch": true
+    }
+  ],
+  "productionModified": false,
+  "coordinatedThreads": [
+    "01a180e8-195f-7090-acfd-6a41b14f8e6c",
+    "01a17fe3-7184-7363-a01c-567e053edb22",
+    "01a181b5-eac2-75d2-a145-027d7b9b472e"
+  ],
+  "change": [
+    "Retain the gesture-started parent video through direct authentication and the existing portal shell",
+    "Use the shared same-origin silent Rihanna loop for standalone fallback",
+    "Place Watch the presentation at the centre of the opening viewport",
+    "Remove the footer validation note, chapter links and animation toggle",
+    "Preserve native HLS film, timer, Back and fullscreen controls"
+  ],
+  "physicalIPhoneSafariVerified": false,
+  "localAndStagingBackgroundTestsPassed": true,
+  "localAndStagingFullscreenRegressionPassed": true,
+  "cleanup": {
+    "removedDuplicateLocalScreenshots": [
+      {
+        "file": "local-webkit-landscape.png",
+        "bytes": 298920
+      },
+      {
+        "file": "local-standard-portrait.png",
+        "bytes": 95069
+      },
+      {
+        "file": "local-opening-1470.png",
+        "bytes": 570647
+      },
+      {
+        "file": "local-webkit-portrait.png",
+        "bytes": 118296
+      },
+      {
+        "file": "local-standard-landscape.png",
+        "bytes": 276709
+      },
+      {
+        "file": "local-opening-390.png",
+        "bytes": 204451
+      },
+      {
+        "file": "local-retained-entry.png",
+        "bytes": 178231
+      }
+    ],
+    "preserved": "Source, final staged screenshots, compact test reports, all chat history and existing worktrees"
+  },
+  "portalSourceCommit": "dcc45de",
+  "portalAuditCommit": "8e3f3a54aeaa38eb876f5ea6766007297043c109"
+}
