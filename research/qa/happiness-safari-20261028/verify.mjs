@@ -16,7 +16,7 @@ const duration=Number(config.match(/'duration' => (\d+)/)[1]);
 const body=('<svg'+source.split('<?php else: ?>\n<svg')[1].split('<?php endif; ?>')[0])
  .replace(/<\?= htmlspecialchars\(\$filmConfig\['hls'\], ENT_QUOTES, 'UTF-8'\) \?>/,filmBase+'/manifest/video.m3u8')
  .replace(/<\?= \(int\)\$filmConfig\['duration'\] \?>/,String(duration));
-const html='<!doctype html><html><head><meta name="viewport" content="width=device-width, initial-scale=1">'+source.match(/<link rel="preload" as="image" href="assets\/universal-mind-flower.png">[\s\S]*?<script src="assets\/happiness.js\?v=\d+" defer><\/script>/)[0]+'</head><body class="entered">'+body+'</body></html>';
+const html='<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">'+source.match(/<link rel="preload" as="image" href="assets\/universal-mind-flower.png">[\s\S]*?<script src="assets\/happiness.js\?v=\d+" defer><\/script>/)[0]+'</head><body class="entered">'+body+'</body></html>';
 const server=await chromium.launchServer({headless:true,executablePath:'/Users/benkorbel/Library/Caches/ms-playwright/chromium-1234/chrome-mac-arm64/Google Chrome for Testing.app/Contents/MacOS/Google Chrome for Testing',args:['--mute-audio']});
 assert(server.process().spawnargs.includes('--mute-audio'));
 const browser=await chromium.connect(server.wsEndpoint());
@@ -44,13 +44,13 @@ async function setup({fallback=false,nested=false,slow=false}={}){
   const mime=name.endsWith('.js')?'text/javascript':name.endsWith('.css')?'text/css':name.endsWith('.png')?'image/png':'image/jpeg';
   await route.fulfill({body:await fs.readFile(root+'/'+name),contentType:mime});
  });
- await context.route(origin+'/happiness/?qa=safari-source',route=>route.fulfill({body:html,contentType:'text/html',headers:{'Cache-Control':'no-store'}}));
+ await context.route(origin+'/happiness/?qa=safari-source',route=>route.fulfill({body:html,contentType:'text/html; charset=utf-8',headers:{'Cache-Control':'no-store'}}));
  await context.route(origin+'/happiness/media.php',route=>route.fulfill({json:{film:filmBase+'/iframe',hls:filmBase+'/manifest/video.m3u8',duration}}));
  if(slow)await context.route('**/manifest/video.m3u8',async route=>{await new Promise(resolve=>setTimeout(resolve,1200));await route.continue();});
  const page=await context.newPage();page.on('pageerror',error=>report.errors.push(error.message));
  const requests=[];page.on('request',request=>requests.push(request.url()));
  if(nested){
-  await context.route(origin+'/happiness/?qa=parent',route=>route.fulfill({contentType:'text/html',body:'<html><head><meta name="viewport" content="width=device-width,initial-scale=1"></head><body style="margin:0"><iframe title="Happiness" src="/happiness/?qa=safari-source" allow="autoplay; fullscreen; encrypted-media" style="position:fixed;inset:0;border:0;width:100%;height:100%"></iframe></body></html>'}));
+  await context.route(origin+'/happiness/?qa=parent',route=>route.fulfill({contentType:'text/html; charset=utf-8',body:'<html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"></head><body style="margin:0"><iframe title="Happiness" src="/happiness/?qa=safari-source" allow="autoplay; fullscreen; encrypted-media" style="position:fixed;inset:0;border:0;width:100%;height:100%"></iframe></body></html>'}));
   await page.goto(origin+'/happiness/?qa=parent',{waitUntil:'domcontentloaded'});
  }else await page.goto(origin+'/happiness/?qa=safari-source',{waitUntil:'domcontentloaded'});
  const frame=nested?await new Promise(resolve=>{const found=page.frames().find(f=>f.url().includes('qa=safari-source'));if(found)resolve(found);else page.on('framenavigated',f=>{if(f.url().includes('qa=safari-source'))resolve(f);});}):page.mainFrame();
@@ -70,7 +70,7 @@ try{
   await native.frame.waitForFunction(start=>Number(document.querySelector('#film-view').dataset.currentTime)>start+.45,start,{timeout:60000});
   const state=await native.frame.locator('#film-player').evaluate(video=>({time:video.currentTime,duration:video.duration,width:video.videoWidth,height:video.videoHeight,inline:video.playsInline,controls:video.controls,muted:video.muted,readyState:video.readyState,paused:video.paused}));
   assert(state.time<start+15&&state.duration>354&&state.duration<357&&state.width>0&&!state.paused&&state.inline&&!state.controls&&!state.muted);
-  assert.equal(await native.frame.locator('#film-view button').count(),1);assert.equal(await native.frame.locator('#film-view input').count(),0);
+  assert.equal(await native.frame.locator('#film-back span').textContent(),'←');assert.equal(await native.frame.locator('#film-view button').count(),1);assert.equal(await native.frame.locator('#film-view input').count(),0);
   const timer=await native.frame.locator('#film-timecode').evaluate(el=>{const r=el.getBoundingClientRect();return {left:r.left,bottom:innerHeight-r.bottom,text:el.textContent};});assert.equal(timer.left,18);assert.equal(timer.bottom,18);assert(timer.text.includes(' / 5:55'));
   assert(await native.frame.locator('#opening-loop').evaluate(video=>video.paused));
   if(start===103)await native.page.screenshot({path:out+'/'+(local?'local':'staging')+'-mobile-native.png'});
