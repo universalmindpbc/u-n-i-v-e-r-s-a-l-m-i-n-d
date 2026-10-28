@@ -1,0 +1,44 @@
+{
+  "assets": [
+    {
+      "source": "patent/portal.css",
+      "sha256": "a6812b24c537939c7a590af856be1a62616f3e4feaaa143fc07126117c06b7f9",
+      "matches": true
+    },
+    {
+      "source": "patent/portal.js",
+      "sha256": "2f9d85c79db3840f28e18802480ad35435a0445e841a6c29dfdad864df5671eb",
+      "matches": true
+    },
+    {
+      "source": "patent/drawings.js",
+      "sha256": "721c56fd9c927eb0f5b0d1b153509f04bf1fb9f485903ec1a06170b16580e605",
+      "matches": true
+    },
+    {
+      "source": "patent/assistant.js",
+      "sha256": "96579a2023c95c78d56df1484d098f612a94b346d96bb3b341414aa588aef787",
+      "matches": true
+    },
+    {
+      "source": "Informatics/universal-one.js",
+      "sha256": "4a49a72725c9040673fe1223da2c52c4507d24de20c9fb57a027cd2bda88c032",
+      "matches": true
+    }
+  ],
+  "production_csp": true,
+  "cross_environment_request_denied": true,
+  "anonymous_access_denied": {
+    "chapters.php": 401,
+    "data.php": 401,
+    "document.php": 401,
+    "receipt.php": 401,
+    "drawing.php?image=45": 401,
+    "research.php": 401,
+    ".private/document.json": 403,
+    ".private/specification.pdf": 403,
+    ".private/chapters.json": 403,
+    ".private/drawings/image-45.jpg": 403,
+    ".private/ai-config.json": 403
+  }
+}
