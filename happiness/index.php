@@ -43,7 +43,7 @@ session_write_close();
 <script src="assets/gate-launch.js?v=2" defer></script>
 <?php else: ?>
 <link rel="preload" as="image" href="assets/universal-mind-flower.png">
-<link rel="stylesheet" href="assets/happiness.css?v=6">
+<link rel="stylesheet" href="assets/happiness.css?v=7">
 <script src="assets/network.js?v=1" defer></script>
 <script src="assets/happiness.js?v=5" defer></script>
 <?php endif; ?>
@@ -92,7 +92,6 @@ session_write_close();
 <nav class="header-actions" aria-label="Page controls"><a href="/home/" target="_top">Portal</a><button data-open-about>About</button><button id="fullscreen-toggle" class="icon-button" aria-label="Enter fullscreen" title="Enter fullscreen"><svg><use href="#icon-expand"/></svg></button></nav>
 </header>
 
-<div class="film-actions"><button id="watch-film" class="watch-film" data-film-start="0"><svg class="play-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m6 3 14 9-14 9Z"/></svg> Watch the presentation</button><p id="film-status" role="status"></p></div>
 <section id="ecosystem" class="ecosystem" aria-label="Happiness festival ecosystem">
 <svg id="connections" class="connections" aria-hidden="true"><g id="connection-paths"></g></svg>
 <div class="scene-columns">
@@ -144,7 +143,7 @@ session_write_close();
 </section>
 </section>
 
-
+<div class="film-actions"><button id="watch-film" class="watch-film" data-film-start="0"><svg class="play-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m6 3 14 9-14 9Z"/></svg> Watch the presentation</button><p id="film-status" role="status"></p></div>
 </main>
 
 <section id="film-view" class="film-view" aria-label="Happiness presentation player" hidden>

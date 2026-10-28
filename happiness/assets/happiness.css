@@ -330,13 +330,14 @@ svg{
 .collective{
   position:relative;
   text-align:center;
+  align-self:stretch;
   min-width:0}
 .collective .section-label{
   text-align:left}
 .network-field{
   position:relative;
   width:100%;
-  height:clamp(330px,31vw,520px);
+  height:clamp(300px,min(31vw,calc(100svh - 450px)),520px);
   margin-top:2px;
   isolation:isolate;
   touch-action:pan-y}
@@ -365,7 +366,7 @@ svg{
 .reward-label{
   position:absolute;
   left:-32%;
-  bottom:36px;
+  bottom:-22px;
   font-size:9px;
   letter-spacing:.12em;
   color:#a9986f;
@@ -486,12 +487,11 @@ svg{
   letter-spacing:.03em;
   color:#b5c1a5}
 .film-actions{
-  position:absolute;
-  top:50svh;
-  left:50%;
-  transform:translate(-50%,-50%);
+  position:relative;
+  flex:none;
+  margin:12px auto max(24px,env(safe-area-inset-bottom));
   z-index:4;
-  max-width:calc(100% - 40px);
+  max-width:100%;
   text-align:center}
 .watch-film{
   border:1px solid #74825c;
@@ -614,7 +614,7 @@ body.film-open{overflow:hidden}
 .section-label>span{
   margin-right:9px}
 .reward-label{
-  bottom:5px;
+  bottom:-22px;
   left:-25%}
 .watch-object{
   transform:scale(.9);
@@ -830,3 +830,18 @@ body.film-open{overflow:hidden}
 html[data-background-hosted],html[data-background-hosted] body{background:transparent}
 html[data-background-hosted] .backdrop>img,html[data-background-hosted] .backdrop>video{display:none}
 html[data-background-hosted] .backdrop-shade{background:linear-gradient(90deg,rgba(9,14,10,.97),rgba(10,16,11,.875) 45%,rgba(8,13,9,.965)),linear-gradient(0deg,#090d0a 0%,transparent 55%,rgba(8,12,9,.6))}
+
+/* Reserve a separate launch row above the desktop fold. */
+@media(min-width:801px){
+  .system-detail:empty{display:none}
+}
+@media(min-width:801px) and (max-height:760px){
+  .site-header{min-height:110px}
+  .ecosystem{min-height:0;padding-top:20px}
+  .watch-object{margin-top:24px;margin-bottom:12px}
+  .signals>div{margin:10px 0}
+  .control-room{margin-top:24px}
+  .control-heading{padding-bottom:12px}
+  .team-list button{padding-top:8px;padding-bottom:8px}
+  .festival-response{margin-top:16px;padding-top:22px}
+}
