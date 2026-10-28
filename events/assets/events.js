@@ -9,7 +9,6 @@
   const playback = document.getElementById('playback-status');
   const poster = document.querySelector('.poster');
   const flower = document.getElementById('global-nav-toggle');
-  const nav = document.getElementById('global-nav');
   const about = document.getElementById('about-panel');
   const maximise = document.getElementById('fullscreen-toggle');
   const host = window.parent.document;
@@ -86,41 +85,37 @@
     if (player) timecode.textContent = `${formatTime(player.currentTime)} / ${formatTime(player.duration || 142)}`;
   }
   function syncPanels() {
-    const panelOpen = !nav.hidden || !about.hidden;
+    const panelOpen = !about.hidden;
     poster.inert = panelOpen || !view.hidden;
     view.inert = panelOpen;
-    flower.setAttribute('aria-expanded', String(!nav.hidden));
-    flower.setAttribute('aria-label', nav.hidden ? 'About' : 'Close About navigation');
+    flower.setAttribute('aria-expanded', String(panelOpen));
+    flower.setAttribute('aria-label', panelOpen ? 'Close About' : 'About');
     document.body.classList.toggle('panel-open', panelOpen);
     document.body.classList.toggle('about-open', !about.hidden);
     if (!view.hidden && about.hidden) loop.pause();
   }
   function dismissPanels() {
-    nav.hidden = true; about.hidden = true; syncPanels();
+    about.hidden = true; syncPanels();
   }
   function returnToPoster({focus = true} = {}) {
     player?.pause(); player = null; frame?.remove(); frame = null;
     view.hidden = true; document.body.classList.remove('film-open');
     playback.textContent = ''; timecode.textContent = '0:00 / 2:22'; syncPanels();
-    if (focus && nav.hidden && about.hidden) watch.focus();
+    if (focus && about.hidden) watch.focus();
     startLoop();
   }
   document.getElementById('film-back').addEventListener('click', () => returnToPoster());
   flower.addEventListener('click', () => {
-    if (!nav.hidden) { dismissPanels(); return; }
-    returnFocus = document.activeElement;
-    about.hidden = true; nav.hidden = false; syncPanels();
-    document.getElementById('nav-about').focus();
+    if (!about.hidden) { dismissPanels(); return; }
+    openAbout();
   });
-  document.getElementById('nav-dismiss').addEventListener('click', () => { dismissPanels(); flower.focus(); });
   function openAbout() {
     returnFocus = document.activeElement;
-    nav.hidden = true; about.hidden = false; syncPanels();
+    about.hidden = false; syncPanels();
     about.scrollTop = 0;
     about.querySelector('article').focus({preventScroll:true});
     startLoop();
   }
-  document.getElementById('nav-about').addEventListener('click', openAbout);
   document.getElementById('proposal-about').addEventListener('click', openAbout);
   document.getElementById('about-return').addEventListener('click', () => {
     dismissPanels();
@@ -152,12 +147,11 @@
   });
   document.addEventListener('keydown', event => {
     if (event.key === 'Escape') {
-      if (!nav.hidden || !about.hidden) { dismissPanels(); flower.focus(); }
+      if (!about.hidden) { dismissPanels(); flower.focus(); }
       else if (!view.hidden) returnToPoster();
     }
-    if (event.key === 'Tab' && (!nav.hidden || !about.hidden)) {
-      const panel = nav.hidden ? about : nav;
-      const controls = [flower, ...panel.querySelectorAll('button:not([tabindex="-1"]),a[href]')].filter(el => !el.hidden);
+    if (event.key === 'Tab' && !about.hidden) {
+      const controls = [flower, ...about.querySelectorAll('button:not([tabindex="-1"]),a[href]')].filter(el => !el.hidden);
       const first = controls[0], last = controls[controls.length - 1];
       if (event.shiftKey && (document.activeElement === first || document.activeElement.tagName === 'ARTICLE')) {event.preventDefault();last.focus();}
       else if (!event.shiftKey && document.activeElement === last) {event.preventDefault();first.focus();}

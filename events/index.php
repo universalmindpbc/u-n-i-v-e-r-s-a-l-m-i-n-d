@@ -30,14 +30,14 @@ $entered = events_authenticated() && ($_GET['experience'] ?? '') === '1';
 <meta name="theme-color" content="#080808">
 <link rel="icon" href="/vogue/iam/favicon.png?v=iam-favicon-3">
 <title>athousandminds — Universal Mind</title>
-<link rel="stylesheet" href="assets/events.css?v=7">
+<link rel="stylesheet" href="assets/events.css?v=8">
 <?php if (!$entered): ?>
 <link rel="stylesheet" href="assets/gate.css?v=4">
 <script src="assets/gate-rain.js?v=2" defer></script>
 <script src="assets/gate-launch.js?v=1" defer></script>
 <?php endif; ?>
 <?php if ($entered): ?>
-<script src="assets/events.js?v=7" defer></script>
+<script src="assets/events.js?v=8" defer></script>
 <?php endif; ?>
 </head>
 <body class="<?= $entered ? 'entered' : 'invitation' ?>">
@@ -61,7 +61,7 @@ $entered = events_authenticated() && ($_GET['experience'] ?? '') === '1';
 <img src="poster.php" alt="" fetchpriority="high">
 <video id="opening-loop" src="loop.php?v=2" autoplay muted loop playsinline preload="auto" tabindex="-1"></video>
 </div>
-<button id="global-nav-toggle" class="global-nav-toggle" aria-label="About" aria-expanded="false" aria-controls="global-nav">
+<button id="global-nav-toggle" class="global-nav-toggle" aria-label="About" aria-expanded="false" aria-controls="about-panel">
 <img src="/vogue/iam/a%20s%20s%20e%20t%20s/Universal%20Mind%20%5B%20I%20o%20H%20%5D%20Logo%20512.png" alt="" aria-hidden="true">
 <span class="flower-label" aria-hidden="true">About</span>
 </button>
@@ -90,12 +90,6 @@ $entered = events_authenticated() && ($_GET['experience'] ?? '') === '1';
 <output id="film-timecode" class="film-timecode" aria-label="Film playback time">0:00 / 2:22</output>
 <p id="playback-status" class="playback-status" role="status"></p>
 </section>
-<aside id="global-nav" class="global-nav" aria-label="Global navigation" hidden>
-<button class="nav-scrim" id="nav-dismiss" aria-label="Return to experience" tabindex="-1"></button>
-<nav class="nav-links" aria-label="Events">
-<button id="nav-about">About</button>
-</nav>
-</aside>
 <section id="about-panel" class="about-panel" role="dialog" aria-modal="true" aria-labelledby="about-title" hidden>
 <article class="about-copy" tabindex="-1">
 <p class="about-eyebrow">UNIVERSAL MIND / EVENTS</p>
