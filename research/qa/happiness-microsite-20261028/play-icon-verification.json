@@ -1,0 +1,54 @@
+{
+  "verifiedAt": "2026-10-28T08:24:37.780Z",
+  "mode": "Deployed CSS with source-matched footer markup; no media playback",
+  "processAudioDisabled": true,
+  "checks": [
+    {
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "icon": {
+        "namespace": "http://www.w3.org/2000/svg",
+        "width": 16,
+        "height": 16,
+        "stroke": "rgb(187, 201, 153)",
+        "fill": "none",
+        "hidden": "true"
+      },
+      "accessibleLabelUnchanged": true,
+      "launchTargetUnchanged": true
+    },
+    {
+      "viewport": {
+        "width": 1470,
+        "height": 920
+      },
+      "icon": {
+        "namespace": "http://www.w3.org/2000/svg",
+        "width": 16,
+        "height": 16,
+        "stroke": "rgb(187, 201, 153)",
+        "fill": "none",
+        "hidden": "true"
+      },
+      "accessibleLabelUnchanged": true,
+      "launchTargetUnchanged": true
+    }
+  ],
+  "passed": true,
+  "sourceCommit": "6f6d8c0645b4dd2b4a8fe6fa7fed11c10fc84f16",
+  "deployedSource": [
+    {
+      "path": "happiness/index.php",
+      "sha256": "83f1cff7b3482c435d518fdcdcd663a2809dea56d42f2d5f53e3f508a822425a",
+      "deployedSourceMatches": true
+    },
+    {
+      "path": "happiness/assets/happiness.css",
+      "sha256": "54a27217a828b69e91061ba50e7c0fbf183b2776a5eb242e64c609c3225d544c",
+      "deployedSourceMatches": true
+    }
+  ],
+  "productionModified": false
+}
