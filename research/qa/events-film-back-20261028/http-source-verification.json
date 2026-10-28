@@ -1,0 +1,14 @@
+[
+  {
+    "path": "events/assets/events.css",
+    "status": 200,
+    "sha256": "536f442d7543ff179f2249bd171237480cca2b1c7e2f991989e011f15091e704",
+    "matches": true
+  },
+  {
+    "path": "events/assets/events.js",
+    "status": 200,
+    "sha256": "f683a4865a70ecd668a0ae35c8ea66d48227fc325663509fc0c6e6b23fd02c25",
+    "matches": true
+  }
+]
