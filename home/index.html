@@ -8,10 +8,16 @@
     <title>Universal Mind</title>
     <link rel="icon" href="/vogue/iam/favicon.png?v=iam-favicon-3">
     <link rel="preload" as="image" href="/vogue/iam/a s s e t s/Universal Mind [ I o H ] Logo.PNG">
-    <link rel="stylesheet" href="directory.css?v=1">
-    <script src="directory.js?v=2" defer></script>
+    <link rel="stylesheet" href="entry-shell.css?v=1">
+    <link rel="stylesheet" href="directory.css?v=2">
+    <script src="entry-shell.js?v=1" defer></script>
+    <script src="directory.js?v=3" defer></script>
   </head>
   <body>
+    <div class="festival-background" aria-hidden="true">
+      <video class="festival-film" data-src="https://rmu.universalmind.tv/rihanna-global-citizen-loop.mp4" muted loop playsinline preload="metadata" disablepictureinpicture disableremoteplayback tabindex="-1"></video>
+      <div class="festival-shade"></div>
+    </div>
     <main class="directory">
       <h1>Universal Mind is an electronic music company for mental health</h1>
       <nav class="route-map" aria-label="Universal Mind">
@@ -60,5 +66,11 @@
         </a>
       </nav>
     </main>
+    <button class="ambient-toggle directory-control" type="button" aria-label="Pause background video" title="Pause background video">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path class="pause-symbol" d="M8 6v12M16 6v12"></path><path class="play-symbol" d="m8 5 10 7-10 7Z"></path></svg>
+    </button>
+    <button class="fullscreen-toggle directory-control" type="button" aria-label="Enter fullscreen" title="Enter fullscreen">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 3H3v5M16 3h5v5M21 16v5h-5M8 21H3v-5"></path></svg>
+    </button>
   </body>
 </html>

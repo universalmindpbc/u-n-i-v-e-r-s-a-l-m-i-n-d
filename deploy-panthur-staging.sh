@@ -35,6 +35,7 @@ fi
 if [[ "${1:-}" == directory ]]; then
   "$NODE_BIN" "$ROOT_DIR/tools/check-directory-source.mjs"
   "$NODE_BIN" --check "$ROOT_DIR/home/directory.js"
+  "$NODE_BIN" --check "$ROOT_DIR/home/entry-shell.js"
   if command -v php >/dev/null 2>&1; then php -l "$ROOT_DIR/events/portal-entry.php"; fi
 elif [[ "${1:-}" == events ]]; then
   for source in "$ROOT_DIR"/events/assets/*.js; do "$NODE_BIN" --check "$source"; done

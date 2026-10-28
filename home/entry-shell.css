@@ -1,0 +1,13 @@
+html:fullscreen, html:-webkit-full-screen { width: 100%; height: 100%; background: #000; }
+body.is-experience-shell { height: 100svh; overflow: hidden; padding: 0; }
+body.is-experience-shell > :not(.um-experience-frame) { display: none !important; }
+.um-experience-frame {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: block;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  background: #000;
+}

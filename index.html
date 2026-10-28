@@ -9,6 +9,8 @@
     <link rel="shortcut icon" type="image/png" href="/vogue/iam/favicon.png?v=iam-favicon-3">
     <link rel="apple-touch-icon" sizes="180x180" href="/vogue/iam/apple-touch-icon.png?v=iam-favicon-3">
     <link rel="preload" as="image" href="/vogue/iam/a s s e t s/Universal Mind [ I o H ] Logo.PNG">
+    <link rel="stylesheet" href="/home/entry-shell.css?v=1">
+    <script src="/home/entry-shell.js?v=1" defer></script>
     <style>
       :root {
         color-scheme: dark;
@@ -466,6 +468,8 @@
         const passwordInput = document.querySelector("[data-access-password]");
         const errorMessage = document.querySelector("[data-access-error]");
         let entryPending = false;
+        let cachedPassword = "";
+        let cachedDigest = "";
 
         passwordInput.addEventListener("focus", () => {
           document.body.dataset.accessFocus = "true";
@@ -488,6 +492,18 @@
           return Array.from(new Uint8Array(digest), (byte) => byte.toString(16).padStart(2, "0")).join("");
         };
 
+        // Precompute while typing so the Enter action retains user activation.
+        const prepareEntry = () => {
+          const value = passwordInput.value.trim();
+          cachedPassword = value;
+          cachedDigest = "";
+          if (value) hashPassword(value).then((digest) => {
+            if (cachedPassword === value) cachedDigest = digest;
+          }).catch(() => {});
+        };
+        passwordInput.addEventListener("input", prepareEntry);
+        passwordInput.addEventListener("change", prepareEntry);
+
         form.addEventListener("submit", async (event) => {
           event.preventDefault();
           if (entryPending) return;
@@ -502,8 +518,10 @@
 
           entryPending = true;
           try {
-            const passwordHash = await hashPassword(password);
+            const passwordHash = cachedPassword === password && cachedDigest
+              ? cachedDigest : await hashPassword(password);
             if (allowedPasswordHashes.has(passwordHash)) {
+              void window.UniversalMindEntry?.requestFullscreen(true);
               // Establish the existing Events session before showing the directory.
               // All other destinations retain their current password-free entry.
               const entry = await fetch("/events/portal-entry.php", {
@@ -519,10 +537,13 @@
                 throw new Error("Entry unavailable");
               }
               passwordInput.value = "";
+              cachedPassword = "";
+              cachedDigest = "";
               document.body.dataset.accessState = "granted";
               document.dispatchEvent(new CustomEvent("um:access-granted"));
               window.setTimeout(() => {
-                window.location.assign("/home/");
+                if (window.UniversalMindEntry) window.UniversalMindEntry.open();
+                else window.location.assign("/home/");
               }, 700);
               // This optional receipt never participates in the entry timer.
               // No credential or receipt is persisted in browser storage.
@@ -545,6 +566,7 @@
               return;
             }
           } catch (error) {
+            window.UniversalMindEntry?.cancelLoginFullscreen();
             rejectAccess("unable to verify — please try again");
             return;
           } finally {
