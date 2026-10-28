@@ -84,5 +84,14 @@
     "preserved": "Source, final staged screenshots, compact test reports, all chat history and existing worktrees"
   },
   "portalSourceCommit": "dcc45de",
-  "portalAuditCommit": "8e3f3a54aeaa38eb876f5ea6766007297043c109"
+  "portalAuditCommit": "8e3f3a54aeaa38eb876f5ea6766007297043c109",
+  "authenticatedStagingJourneys": {
+    "passed": true,
+    "report": "authenticated-journey.json",
+    "paths": [
+      "portal Enter to directory to Activate Festivals to presentation to Back",
+      "direct Happiness login to presentation to Back"
+    ],
+    "physicalIPhoneSafari": false
+  }
 }
