@@ -1,0 +1,33 @@
+{
+  "original": {
+    "bytes": 22164263,
+    "sha256": "bf18860d7605bda7ee55128abb39a2323ddbb823b45d384772b9c4a3d912aff5",
+    "fastStart": true,
+    "tracks": [
+      {
+        "kind": "vide",
+        "codec": "avc1",
+        "sampleCount": 7230,
+        "compressedFramesSha256": "1670b29291990fcdd413573673f0533668ba17ca3e22060bf10862eda5d335eb"
+      },
+      {
+        "kind": "soun"
+      }
+    ]
+  },
+  "videoOnly": {
+    "bytes": 19064757,
+    "sha256": "d9686be29a210cf8a1936fcfff46016f7556201ce717d3689cd3d6e06ad65a76",
+    "fastStart": true,
+    "tracks": [
+      {
+        "kind": "vide",
+        "codec": "avc1",
+        "sampleCount": 7230,
+        "compressedFramesSha256": "1670b29291990fcdd413573673f0533668ba17ca3e22060bf10862eda5d335eb"
+      }
+    ]
+  },
+  "compressedVideoIdentical": true,
+  "audioRemoved": true
+}

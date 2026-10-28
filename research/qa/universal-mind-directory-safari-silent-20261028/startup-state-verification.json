@@ -1,0 +1,9 @@
+{
+  "emptyResourceLoadsBeforePlayback": true,
+  "readinessEventsDeduplicatePlay": true,
+  "explicitPausePreserved": true,
+  "policyBlockManualRecovery": true,
+  "reducedMotionDoesNotLoad": true,
+  "stalledLoadExposesPlay": true,
+  "passed": true
+}

@@ -1,0 +1,28 @@
+{
+  "candidateCommit": "8413733",
+  "stagingURL": "https://staging.universalmind.tv/home/",
+  "proofURL": "https://staging.universalmind.tv/home/?autoplay-debug=2",
+  "diagnosticRevision": "safari-silent-4",
+  "priorDeviceResult": "Safari rejected play before loading media; reduced motion false, muted true, readyState 0, networkState 0, empty currentSrc. Exact platform policy is unknown.",
+  "deviceVerification": "Pending Ben test of this candidate. Chromium success is not iPhone Safari proof.",
+  "change": [
+    "Video-only MP4 passthrough; 7230 compressed video samples unchanged, 241 second duration retained, fast-start enabled.",
+    "Versioned media URL prevents using the old cached audio-bearing asset.",
+    "Explicitly initialize an empty resource, then request automatic playback after metadata. User-initiated Play remains immediate.",
+    "Preserve motion preferences, explicit pause, static poster and honest Play fallback.",
+    "Opt-in diagnostics now include load events and declared source."
+  ],
+  "checks": [
+    "MP4 track inspection and compressed sample hashes",
+    "Local startup state test: empty resource, metadata, pause, blocked policy, reduced motion, stalled load",
+    "Separate Chromium process with --mute-audio: no-tap playback and zero decoded audio bytes, blocked autoplay poster, diagnostic copy, manual recovery, reduced motion",
+    "Ten exact versioned staging source/assets matched; production landing and password allowlist unchanged"
+  ],
+  "productionModified": false,
+  "preservedParallelWork": "fbfd54f Happiness fullscreen staging candidate",
+  "sources": [
+    "https://developer.apple.com/documentation/webkit/delivering-video-content-for-safari",
+    "https://bugs.webkit.org/show_bug.cgi?id=321264",
+    "https://raw.githubusercontent.com/WebKit/WebKit/main/Source/WebCore/html/MediaElementSession.cpp"
+  ]
+}
