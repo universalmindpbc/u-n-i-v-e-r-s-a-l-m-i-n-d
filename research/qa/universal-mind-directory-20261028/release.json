@@ -1,0 +1,37 @@
+{
+  "createdAt": "2026-10-28T05:35:26.398051+00:00",
+  "sourceCommit": "d2922bcbd53ac69c1ef2737bc9f25f942b1858a2",
+  "stagingUrl": "https://staging.universalmind.tv/home/",
+  "loginJourney": "https://staging.universalmind.tv/",
+  "publisher": "./deploy-panthur-staging.sh directory",
+  "productionModified": false,
+  "changes": [
+    "Add the approved four-path directory after the existing splash login.",
+    "Preserve all supplied text with smaller descriptions.",
+    "Reuse the exact original flower PNG, native alpha, 94px desktop width and 82px mobile width.",
+    "Animate four white curves outward with a static reduced-motion alternative.",
+    "Reuse the existing Events session to avoid a second login; preserve existing direct entry behaviour.",
+    "Keep Activate Festivals visible and inactive pending its microsite."
+  ],
+  "validation": [
+    "Exact live HTML, CSS and JavaScript hashes match the committed source.",
+    "Original flower source, dimensions, opacity, filter and native asset SHA-256 verified against the landing page.",
+    "Full root login to directory, keyboard entry to Events and repeat Events visit passed without another login.",
+    "I AM and Informatics destinations open without another login.",
+    "Fresh direct Events entry retains its gate; direct I AM and Informatics entry retains existing behaviour.",
+    "Invalid root password and failed session establishment remain on the entry screen.",
+    "Session endpoint rejects invalid methods, origins and credentials.",
+    "1664x936, 1470x920, 1920x1080, 768x1024, 390x844 and 320x568 layouts verified without horizontal overflow or overlapping cards.",
+    "Keyboard navigation, inactive Happiness link and reduced motion passed.",
+    "Dedicated headless Chromium used process-level --mute-audio; native fullscreen blocked; all media paused and browser closed.",
+    "No directory JavaScript errors. Existing password hashes and unrelated deployment-manifest rows preserved.",
+    "Production landing page remains byte-identical to the pre-change reference."
+  ],
+  "sourceSha256": {
+    "index.html": "0eefa0cbda3cfb08f27d608da755a13464d319797c22cec04432f09d33031247",
+    "home/index.html": "f34cd1e0128d53ee641805a11cc208afb96c135b89b3653f9c8c57e0b4ca4d99",
+    "home/directory.css": "773769357ca8ba1185e9c31145c3f87aa04a8e37a2da96922604d12d24ea72f1",
+    "home/directory.js": "06bd669ee3bafe922e142a480c97388d38b8f687629901f25edd03093c3d6915",
+    "events/portal-entry.php": "1d281594d063e3449e624cba4d0eac00aef8da1a1094d76282f6ad727e018590"
+  }
+}
