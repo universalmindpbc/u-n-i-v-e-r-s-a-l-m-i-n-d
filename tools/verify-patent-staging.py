@@ -1,11 +1,13 @@
 """Check private-route denial, authenticated document integrity and logout."""
 import hashlib,http.cookiejar,json,os,re,urllib.request,urllib.error
 from pathlib import Path
+from pypdf import PdfReader
 
 BASE='https://staging.universalmind.tv/patent/'
 keyfile=Path(os.environ['PATENT_ACCESS_FILE'])
 key=re.search(r'Access key:\n([a-f0-9]{64})',keyfile.read_text()).group(1)
 expected_hash=hashlib.sha256((keyfile.parent/'Australian-Provisional-Specification.pdf').read_bytes()).hexdigest()
+expected_pages=len(PdfReader(keyfile.parent/'Australian-Provisional-Specification.pdf').pages)
 jar=http.cookiejar.CookieJar();client=urllib.request.build_opener(urllib.request.HTTPCookieProcessor(jar))
 results={}
 def call(path,data=None,origin='https://staging.universalmind.tv'):
@@ -26,8 +28,15 @@ status,_,_=call('login.php',{'csrf':csrf,'key':key},'https://example.invalid');a
 status,_,_=call('login.php',{'csrf':csrf,'key':key});assert status==200
 assert all(c.secure and c.has_nonstandard_attr('HttpOnly') for c in jar)
 status,raw,headers=call('data.php');assert status==200
-doc=json.loads(raw);assert len(doc['pages'])==953 and doc['status']=='private-pre-filing'
-assert len({p['page'] for p in doc['pages']})==953
+doc=json.loads(raw);assert len(doc['pages'])==expected_pages and doc['status']=='private-pre-filing'
+assert len({p['page'] for p in doc['pages']})==expected_pages
+titles=[s['title'] for s in doc['sections']]
+ordered=['15. Proposed claims, part 1','16. Proposed claims, part 2','17. Abstract','Drawings and figure descriptions','Drawing sheets','Appendix A. Universal Light algorithm and research architecture']
+positions=[titles.index(t) for t in ordered]
+assert positions==sorted(positions)
+assert all(t.startswith('Appendix') for t in titles[positions[-1]:])
+results['notion_section_order']=True
+results['key_section_pages']={s['title']:s['page'] for s in doc['sections'] if s['title'] in ordered}
 status,pdf,headers=call('document.php');assert status==200 and pdf.startswith(b'%PDF')
 assert hashlib.sha256(pdf).hexdigest()==doc['sha256']==expected_hash
 assert 'no-store' in headers.get('Cache-Control','')

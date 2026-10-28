@@ -4,7 +4,7 @@ header('Cache-Control: no-store, private, max-age=0');
 header('X-Robots-Tag: noindex, nofollow, noarchive');
 header('X-Content-Type-Options: nosniff');
 header('Referrer-Policy: no-referrer');
-header("Content-Security-Policy: default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; frame-src 'self'; connect-src 'self'; base-uri 'none'; form-action 'self'; frame-ancestors 'none'");
+header("Content-Security-Policy: default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; frame-src 'self'; connect-src 'self' https://informatics-universal-one-staging.universalmind.workers.dev https://api.openai.com; media-src 'self' blob:; base-uri 'none'; form-action 'self'; frame-ancestors 'none'");
 if (strtolower(explode(':', $_SERVER['HTTP_HOST'] ?? '')[0]) !== 'staging.universalmind.tv') {
     http_response_code(404); exit('Unavailable.');
 }
