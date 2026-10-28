@@ -1,0 +1,67 @@
+{
+  "verifiedAt": "2026-10-28T10:08:14.223Z",
+  "mode": "staging-assets",
+  "processAudioDisabled": true,
+  "nativeFullscreenInvoked": false,
+  "scope": "Source-rendered authenticated HTML using exact staging assets, plus a simulated direct-entry authentication response for the retained parent video. Real silent MP4 decoded in dedicated Chromium. About transparency, playback continuity and close behavior checked at desktop and mobile viewport sizes; no physical iPhone or real login check in this scoped update.",
+  "checks": [
+    {
+      "hosted": false,
+      "viewport": "1470x834",
+      "before": {
+        "time": 0.225096,
+        "source": "https://staging.universalmind.tv/home/assets/festival-loop.mp4?v=silent-1"
+      },
+      "during": {
+        "time": 0.97344,
+        "paused": false,
+        "muted": true,
+        "source": "https://staging.universalmind.tv/home/assets/festival-loop.mp4?v=silent-1"
+      },
+      "appearance": {
+        "overlay": "rgba(6, 11, 8, 0.64)",
+        "blur": "none",
+        "shadeOpacity": "0",
+        "videoOpacity": "1",
+        "experienceVisibility": "hidden",
+        "networkPaused": "paused",
+        "horizontalOverflow": false
+      },
+      "after": {
+        "time": 1.127221,
+        "paused": false
+      },
+      "returnRestoresExperience": true
+    },
+    {
+      "hosted": true,
+      "viewport": "390x844",
+      "before": {
+        "time": 1.261838,
+        "source": "https://staging.universalmind.tv/home/assets/festival-loop.mp4?v=silent-1"
+      },
+      "during": {
+        "time": 1.981342,
+        "paused": false,
+        "muted": true,
+        "source": "https://staging.universalmind.tv/home/assets/festival-loop.mp4?v=silent-1"
+      },
+      "appearance": {
+        "overlay": "rgba(6, 11, 8, 0.64)",
+        "blur": "none",
+        "shadeOpacity": "0",
+        "videoOpacity": "1",
+        "experienceVisibility": "hidden",
+        "networkPaused": "paused",
+        "horizontalOverflow": false
+      },
+      "after": {
+        "time": 2.103575,
+        "paused": false
+      },
+      "returnRestoresExperience": true
+    }
+  ],
+  "errors": [],
+  "passed": true
+}

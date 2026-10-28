@@ -1,0 +1,12 @@
+[
+  {
+    "file": "happiness/assets/happiness.css?v=8",
+    "status": 200,
+    "sha256": "cf57f449591055e099de5f6e94cc3f94ad40c32226618e4cd04d356e74d0bc1d"
+  },
+  {
+    "file": "happiness/assets/happiness.js?v=6",
+    "status": 200,
+    "sha256": "e40e36553cd104f38e09466ab7cff6f3210cc3845479e1fd56a74edf1ec9704b"
+  }
+]
