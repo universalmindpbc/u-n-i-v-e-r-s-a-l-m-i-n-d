@@ -4,7 +4,7 @@ patent_session();
 if(empty($_SESSION['patent_csrf']))$_SESSION['patent_csrf']=bin2hex(random_bytes(24));
 $authenticated=patent_authenticated();
 ?>
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow,noarchive"><meta name="csrf-token" content="<?=htmlspecialchars($_SESSION['patent_csrf'],ENT_QUOTES)?>"><title>Patent | Universal Mind</title><link rel="icon" href="/vogue/iam/favicon.png?v=iam-favicon-4"><link rel="stylesheet" href="portal.css?v=6"><script src="portal.js?v=5" defer></script><script src="drawings.js?v=1" defer></script><?php if($authenticated):?>
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow,noarchive"><meta name="csrf-token" content="<?=htmlspecialchars($_SESSION['patent_csrf'],ENT_QUOTES)?>"><title>Patent | Universal Mind</title><link rel="icon" href="/vogue/iam/favicon.png?v=iam-favicon-4"><link rel="stylesheet" href="portal.css?v=7"><script src="portal.js?v=6" defer></script><script src="drawings.js?v=1" defer></script><?php if($authenticated):?>
 <link rel="stylesheet" href="/vogue/iam/realtime-voice-assistant.css?v=realtime-voice-css-66ef986e1dc3">
 <link rel="stylesheet" href="/informatics/universal-one.css?v=9">
 <script defer src="/informatics/universal-one-character.js?v=1"></script>
@@ -14,7 +14,7 @@ $authenticated=patent_authenticated();
 <script defer src="/informatics/universal-one-live.js?v=7"></script>
 <script defer src="/informatics/universal-one.js?v=15"></script>
 <?php endif;?></head>
-<body><header class="masthead"><a href="/patent/" class="brand" aria-label="Universal Mind"><img class="brand-mark" src="/vogue/iam/a%20s%20s%20e%20t%20s/Universal%20Mind%20%5B%20I%20o%20H%20%5D%20Logo%20512.png" alt="" width="64" height="64"><span class="brand-name">universal<span class="brand-mind">mind</span></span></a><span class="brand-context">PATENT LIBRARY</span><?php if($authenticated):?><button id="toggle-nav" class="text-button" aria-expanded="false" aria-controls="library-nav">Contents</button><button id="logout" class="text-button">Lock workspace</button><?php endif;?></header>
+<body><header class="masthead"><a href="/patent/" class="brand" aria-label="Universal Mind"><img class="brand-mark" src="/vogue/iam/a%20s%20s%20e%20t%20s/Universal%20Mind%20%5B%20I%20o%20H%20%5D%20Logo%20512.png" alt="" width="64" height="64"><span class="brand-name">universal<span class="brand-mind">mind</span></span></a><span class="brand-context">PATENT LIBRARY</span><?php if($authenticated):?><button id="toggle-nav" class="text-button" aria-expanded="false" aria-controls="library-nav">Contents</button><button id="logout" data-logout class="text-button">Lock workspace</button><?php endif;?></header>
 <?php if(!$authenticated):?>
 <main class="login-wrap"><span class="eyebrow">PRIVATE WORKSPACE</span><h1>Patent</h1><p class="intro">A protected space to explore the filed provisional specification.</p><form id="login-form"><label for="access-password">I AM portal password</label><input id="access-password" type="password" autocomplete="current-password" required maxlength="1024"><button type="submit">Open workspace <span>↗</span></button><p id="login-status" role="status"></p></form><p class="small">Use any current I AM portal password. The specification remains protected.</p></main>
 <?php else:?>
@@ -23,7 +23,7 @@ $authenticated=patent_authenticated();
 <form id="search-form" role="search"><label class="sr-only" for="query">Search the patent</label><input id="query" type="search" placeholder="Search the patent…" autocomplete="off"><button type="submit" aria-label="Search">↗</button></form>
 <a class="nav-home" href="#overview">Overview</a><a class="nav-home" href="#drawings">Drawings &amp; descriptions</a>
 <nav id="contents" aria-label="Contents"><p class="small">Loading chapters…</p></nav>
-<div class="nav-footer"><span>Australian provisional</span><strong>2026908928</strong><a href="document.php" target="_blank" rel="noopener">Filed specification ↗</a></div>
+<div class="nav-footer"><span>Australian provisional</span><strong>2026908928</strong><a href="document.php" target="_blank" rel="noopener">Filed specification ↗</a><button data-logout class="text-button nav-lock">Lock workspace</button></div>
 </aside>
 <main id="main">
 <section id="overview" class="view overview">
@@ -38,6 +38,7 @@ $authenticated=patent_authenticated();
 <section id="chapter-view" class="view" hidden>
 <div class="chapter-top"><span id="chapter-group" class="eyebrow"></span><a id="chapter-pdf" class="small-link" target="_blank" rel="noopener">Filed PDF ↗</a></div>
 <h1 id="chapter-title"></h1><div id="chapter-parts" class="chapter-parts"></div>
+<details id="compact-toc"><summary>In this chapter</summary><nav aria-label="Chapter headings"></nav></details>
 <div class="reading-layout"><article id="chapter-body" class="chapter-body"></article><nav id="on-this-page" aria-label="On this page"></nav></div>
 <nav class="chapter-pagination" aria-label="Adjacent chapters"><a id="previous-chapter"></a><a id="next-chapter"></a></nav>
 </section>
