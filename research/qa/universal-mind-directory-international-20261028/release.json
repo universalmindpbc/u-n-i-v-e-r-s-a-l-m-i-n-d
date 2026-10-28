@@ -1,0 +1,58 @@
+{
+  "recordedAt": "2026-10-28T06:54:16.060946+00:00",
+  "sourceCommit": "275d209a7da3e32d0c887edda6a0b330a339b06f",
+  "stagingUrl": "https://staging.universalmind.tv/home/",
+  "entryUrl": "https://staging.universalmind.tv/",
+  "publisher": "./deploy-panthur-staging.sh directory",
+  "productionModified": false,
+  "translations": {
+    "reference": "i  a m/script.js:19-22",
+    "mandarinBrand": "宇宙之心",
+    "arabicBrand": "العقل الكلي",
+    "mandarinSentence": "宇宙之心是一家致力于心理健康的电子音乐公司",
+    "arabicSentence": "العقل الكلي شركة موسيقى إلكترونية للصحة النفسية",
+    "noLatinTextInTranslatedSentences": true
+  },
+  "validation": {
+    "syntaxAndExactEnglishCopy": true,
+    "versionedAssetsMatchCommittedSource": true,
+    "languageCycle": [
+      "en",
+      "zh-Hans",
+      "ar",
+      "en"
+    ],
+    "headlineFades": true,
+    "fourSequentialDestinations": true,
+    "sharedSubtitleReveal": true,
+    "fiveOriginalFlowersRotating": true,
+    "propertyFlowersMatchTitleSize": true,
+    "flowerRotationMatchesExistingGlobalNavigation": "3s linear infinite",
+    "singleCurvedPathsWithMovingLight": true,
+    "lighterOverlay": "24 percent opacity at centre, 50 to 52 percent at edges",
+    "processAudioDisabled": true,
+    "nativeFullscreenInvoked": false,
+    "fullscreenApiIntercepted": true,
+    "loginToDirectoryAndNoSecondEventsLogin": true,
+    "responsiveWidths": [
+      1920,
+      1664,
+      1470,
+      390,
+      320
+    ],
+    "reducedMotionAndKeyboard": true
+  },
+  "fontAvailability": "Helvetica Neue for Latin text on the verified Mac; system glyph fallback for Mandarin and Arabic. Generic sans-serif fallback on devices without Helvetica Neue.",
+  "evidence": {
+    "mandarin-1664.png": "05ac4bf3a27c5343a8d9e8ca058a4979f307634357d653e234279c83f85f85c1",
+    "verify-international.mjs": "1c74286f203ddfdd3edc7b4f5f5cb4b3ddba8232a9e07a033783c2239f5b08ec",
+    "mobile-390.png": "61cb96b165218d41cc1a39c39aeb6dd3ae1f609fca80316cc30650c3b45f6fbf",
+    "english-complete-1664.png": "047ef3cbb6f665e080cc1aa6aefd8bef068985500c115fa36397f2c1ae7cd848",
+    "arabic-1664.png": "af75f9e8ecc337274d67772faa9ec0b0728dde5a7c3c67eeb6acedec7435b5b3",
+    "english-entrance-1664.png": "0482d72ce3b22514b132195ee2c9b4f0c20beccdf8579a97c50127904b1a4744",
+    "verification.json": "0e02a2f1bbcf66bd780b595f93a47285f9391d8b4dfb84aa1e801eeffb61a235",
+    "http-verification.json": "aa89187f54e733fb705cb2233bbdb1537cd7490a63f462d111ff4fe68c0dec99",
+    "journey-verification.json": "cf258c6a78449c65cfac3e53d2a16db3624cfd46068ae9b7e90ee0458e04bf47"
+  }
+}
