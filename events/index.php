@@ -30,14 +30,14 @@ $entered = events_authenticated() && ($_GET['experience'] ?? '') === '1';
 <meta name="theme-color" content="#080808">
 <link rel="icon" href="/vogue/iam/favicon.png?v=iam-favicon-3">
 <title>athousandminds — Universal Mind</title>
-<link rel="stylesheet" href="assets/events.css?v=4">
+<link rel="stylesheet" href="assets/events.css?v=5">
 <?php if (!$entered): ?>
 <link rel="stylesheet" href="assets/gate.css?v=1">
 <script src="assets/gate-rain.js?v=1" defer></script>
 <script src="assets/gate-launch.js?v=1" defer></script>
 <?php endif; ?>
 <?php if ($entered): ?>
-<script src="assets/events.js?v=5" defer></script>
+<script src="assets/events.js?v=6" defer></script>
 <?php endif; ?>
 </head>
 <body class="<?= $entered ? 'entered' : 'invitation' ?>">
@@ -85,6 +85,7 @@ $entered = events_authenticated() && ($_GET['experience'] ?? '') === '1';
 </section>
 <section id="film-view" class="film-view" aria-label="athousandminds — the film" hidden>
 <div id="film-mount"></div>
+<button id="film-back" class="film-back" aria-label="Back to main screen"><span aria-hidden="true">←</span> Back</button>
 <output id="film-timecode" class="film-timecode" aria-label="Film playback time">0:00 / 2:22</output>
 <p id="playback-status" class="playback-status" role="status"></p>
 </section>

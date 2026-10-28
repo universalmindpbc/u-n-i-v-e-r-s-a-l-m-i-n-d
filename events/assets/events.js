@@ -105,6 +105,7 @@
     if (focus && nav.hidden && about.hidden) watch.focus();
     startLoop();
   }
+  document.getElementById('film-back').addEventListener('click', () => returnToPoster());
   flower.addEventListener('click', () => {
     if (!nav.hidden) { dismissPanels(); return; }
     returnFocus = document.activeElement;
