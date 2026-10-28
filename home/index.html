@@ -9,17 +9,25 @@
     <link rel="icon" href="/vogue/iam/favicon.png?v=iam-favicon-3">
     <link rel="preload" as="image" href="/vogue/iam/a s s e t s/Universal Mind [ I o H ] Logo.PNG">
     <link rel="stylesheet" href="directory.css?v=1">
-    <script src="directory.js?v=1" defer></script>
+    <script src="directory.js?v=2" defer></script>
   </head>
   <body>
     <main class="directory">
       <h1>Universal Mind is an electronic music company for mental health</h1>
       <nav class="route-map" aria-label="Universal Mind">
         <svg class="routes" aria-hidden="true" focusable="false">
-          <path data-route="watch" pathLength="1"></path>
-          <path data-route="events" pathLength="1"></path>
-          <path data-route="festivals" pathLength="1"></path>
-          <path data-route="research" pathLength="1"></path>
+          <defs>
+            <mask id="flower-space" maskUnits="userSpaceOnUse">
+              <rect width="100%" height="100%" fill="#fff"></rect>
+              <circle class="flower-space" fill="#000"></circle>
+            </mask>
+          </defs>
+          <g mask="url(#flower-space)">
+            <path data-route="watch" pathLength="1"></path>
+            <path data-route="events" pathLength="1"></path>
+            <path data-route="festivals" pathLength="1"></path>
+            <path data-route="research" pathLength="1"></path>
+          </g>
         </svg>
         <img class="directory-flower" src="/vogue/iam/a s s e t s/Universal Mind [ I o H ] Logo.PNG" alt="" aria-hidden="true" fetchpriority="high">
         <a class="destination destination--watch" href="/iam/" data-destination="watch">

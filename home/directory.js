@@ -12,6 +12,11 @@
     const x = centre.left + centre.width / 2 - bounds.left;
     const y = centre.top + centre.height / 2 - bounds.top;
     routes.setAttribute('viewBox', `0 0 ${bounds.width} ${bounds.height}`);
+    // Keep the image's native transparency against the same black backdrop.
+    const clearance = routes.querySelector('.flower-space');
+    clearance.setAttribute('cx', x);
+    clearance.setAttribute('cy', y);
+    clearance.setAttribute('r', Math.max(centre.width, centre.height) / 2);
     const compact = window.matchMedia('(max-width: 760px)').matches;
     destinations.forEach((destination) => {
       const station = destination.querySelector('.station').getBoundingClientRect();
