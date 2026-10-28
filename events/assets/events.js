@@ -1,6 +1,8 @@
 (() => {
   'use strict';
-  const loop = document.getElementById('opening-loop');
+  const localLoop = document.getElementById('opening-loop');
+  let loop = localLoop, backgroundHost = null, originalBackground = null;
+  const backgroundEvents = new AbortController();
   const openingAnimation = document.getElementById('opening-animation');
   const watch = document.getElementById('watch-film');
   const view = document.getElementById('film-view');
@@ -18,6 +20,19 @@
   const host = window.parent.document;
   const mobileLayout = matchMedia('(max-width: 700px), (pointer: coarse)');
   const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  try {
+    const entry = parent !== window ? parent.UniversalMindEntry : null;
+    const retained = entry?.getBackgroundFilm?.();
+    if (retained && !reducedMotion) {
+      backgroundHost = entry; loop = retained;
+      originalBackground = {src:loop.src, poster:loop.getAttribute('poster'), time:loop.currentTime};
+      localLoop.pause(); localLoop.removeAttribute('src'); localLoop.load();
+      document.documentElement.dataset.backgroundHosted = 'true';
+      loop.pause();
+      loop.poster = new URL('poster.php', location.href).href;
+      loop.src = new URL('loop.php?v=2', location.href).href;
+    }
+  } catch {}
   let media, loading, player, frame, returnFocus, streamLoading;
   let openingPending = false;
   if (reducedMotion) { loop.autoplay = false; loop.pause(); }
@@ -84,6 +99,7 @@
     if (reducedMotion || (!view.hidden && about.hidden) || document.hidden || (openingPending && !gesture)) return;
     openingPending = true;
     try {
+      backgroundHost?.setBackgroundVisible(true);
       // The source is already in the HTML; no player SDK or media API is needed.
       loop.muted = true;
       loop.defaultMuted = true;
@@ -96,13 +112,13 @@
     } finally { openingPending = false; }
   }
   function showOpeningVideo(playing) {
-    loop.classList.toggle('ready', playing);
+    localLoop.classList.toggle('ready', playing);
     openingAnimation.hidden = playing;
   }
-  loop.addEventListener('playing', () => showOpeningVideo(true));
-  loop.addEventListener('pause', () => showOpeningVideo(false));
+  loop.addEventListener('playing', () => showOpeningVideo(true), {signal:backgroundEvents.signal});
+  loop.addEventListener('pause', () => showOpeningVideo(false), {signal:backgroundEvents.signal});
   if (loop.readyState >= 2 && !loop.paused) showOpeningVideo(true);
-  loop.addEventListener('error', () => showOpeningVideo(false));
+  loop.addEventListener('error', () => showOpeningVideo(false), {signal:backgroundEvents.signal});
   // iOS recognises touchend/click as media gestures; pointerdown alone is insufficient.
   const retryLoopFromGesture = () => { if (loop.paused) startLoop({gesture:true}); };
   document.addEventListener('touchend', retryLoopFromGesture, {passive:true});
@@ -110,7 +126,7 @@
   document.addEventListener('keydown', event => {
     if (event.key === 'Enter' || event.key === ' ') retryLoopFromGesture();
   });
-  loop.addEventListener('loadeddata', () => startLoop());
+  loop.addEventListener('loadeddata', () => startLoop(), {signal:backgroundEvents.signal});
 
   function formatTime(value) {
     const seconds = Math.max(0, Math.floor(Number.isFinite(value) ? value : 0));
@@ -127,7 +143,7 @@
     flower.setAttribute('aria-label', panelOpen ? 'Close About' : 'About');
     document.body.classList.toggle('panel-open', panelOpen);
     document.body.classList.toggle('about-open', !about.hidden);
-    if (!view.hidden && about.hidden) loop.pause();
+    if (!view.hidden && about.hidden) { loop.pause(); backgroundHost?.setBackgroundVisible(false); }
     syncFullscreen();
   }
   function dismissPanels() {
@@ -235,7 +251,16 @@
   document.addEventListener('visibilitychange', () => { if(document.hidden) loop.pause(); else startLoop(); });
   window.addEventListener('pageshow', () => startLoop());
   window.addEventListener('pagehide', () => {
-    loop.pause(); player?.pause(); frame?.remove();
+    backgroundEvents.abort();
+    loop.pause(); backgroundHost?.setBackgroundVisible(false); player?.pause(); frame?.remove();
+    if (originalBackground) {
+      const saved = originalBackground;
+      if (saved.poster === null) loop.removeAttribute('poster'); else loop.setAttribute('poster', saved.poster);
+      loop.src = saved.src;
+      loop.addEventListener('loadedmetadata', () => {
+        if (loop.src === saved.src && Number.isFinite(saved.time)) loop.currentTime = saved.time;
+      }, {once:true});
+    }
     host.removeEventListener('fullscreenchange', syncFullscreen);
     host.removeEventListener('webkitfullscreenchange', syncFullscreen);
     document.removeEventListener('fullscreenchange', syncFullscreen);

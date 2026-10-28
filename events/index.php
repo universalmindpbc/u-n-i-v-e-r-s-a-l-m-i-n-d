@@ -34,14 +34,14 @@ if ($entered) {
 <meta name="theme-color" content="#080808">
 <link rel="icon" href="/vogue/iam/favicon.png?v=iam-favicon-3">
 <title>athousandminds — Universal Mind</title>
-<link rel="stylesheet" href="assets/events.css?v=12">
+<link rel="stylesheet" href="assets/events.css?v=13">
 <?php if (!$entered): ?>
-<link rel="stylesheet" href="assets/gate.css?v=4">
+<link rel="stylesheet" href="assets/gate.css?v=5">
 <script src="assets/gate-rain.js?v=2" defer></script>
-<script src="assets/gate-launch.js?v=2" defer></script>
+<script src="assets/gate-launch.js?v=3" defer></script>
 <?php endif; ?>
 <?php if ($entered): ?>
-<script src="assets/events.js?v=11" defer></script>
+<script src="assets/events.js?v=12" defer></script>
 <?php endif; ?>
 </head>
 <body class="<?= $entered ? 'entered' : 'invitation' ?>">

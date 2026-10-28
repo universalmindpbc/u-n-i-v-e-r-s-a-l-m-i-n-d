@@ -9,6 +9,8 @@
 .about-panel{position:fixed;inset:0;z-index:35;background:rgba(0,0,0,.64);overflow-y:auto;overscroll-behavior:contain;padding:100px 30px 60px}.about-copy{max-width:720px;margin:auto;outline:none}.about-eyebrow{font-size:10px;letter-spacing:.24em;color:#aaa}.about-copy h2{font-weight:200;font-size:36px;letter-spacing:.04em;margin:22px 0 18px}.about-copy h2 strong{font-weight:700}.about-copy .about-tagline{font-size:18px;line-height:1.4;color:#fff;margin:0 0 28px}.about-copy p:not(.about-eyebrow):not(.about-tagline){font-size:14px;line-height:1.7;color:#eee;margin:0 0 21px}.about-levels{padding-left:1.5em;margin:0 0 21px;font-size:14px;line-height:1.7;color:#eee}.about-levels li+li{margin-top:7px}.about-copy a{color:inherit;text-underline-offset:3px}.about-copy .about-proposal{padding-top:22px;border-top:1px solid #444;font-size:12px!important;color:#ccc!important}.about-return{font-size:11px;letter-spacing:.1em;text-transform:uppercase;padding:14px 0;border-bottom:1px solid #777;margin-top:5px}
 @media(min-aspect-ratio:2/1){.poster{min-height:520px}.title-group{top:34%}.tagline{margin-top:3vh}}
 .opening-animation{position:absolute;inset:0;z-index:1;background:#080808 url(../poster.php) center/cover no-repeat}
+html[data-background-hosted],html[data-background-hosted] body{background:transparent}
+html[data-background-hosted] .backdrop>video{display:none}
 body.film-open:not(.about-open) .backdrop{display:none}
 /* Portrait phones use an editorial page with natural document flow. */
 @media(max-width:700px){
