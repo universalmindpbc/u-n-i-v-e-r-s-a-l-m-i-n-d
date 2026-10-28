@@ -1,0 +1,22 @@
+{
+  "verifiedAt": "2026-10-28T09:48:17.032Z",
+  "processAudioDisabled": true,
+  "nativeFullscreenInvoked": false,
+  "checks": [
+    {
+      "width": 390,
+      "earlyPauseRevealsAllDestinations": true,
+      "allFourLinksPassClickActionability": true,
+      "pausedPathsAndVideo": true,
+      "resumeKeepsDestinationsVisible": true
+    },
+    {
+      "width": 1470,
+      "earlyPauseRevealsAllDestinations": true,
+      "allFourLinksPassClickActionability": true,
+      "pausedPathsAndVideo": true,
+      "resumeKeepsDestinationsVisible": true
+    }
+  ],
+  "passed": true
+}

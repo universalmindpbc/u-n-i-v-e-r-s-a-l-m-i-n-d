@@ -1,0 +1,15 @@
+{
+  "recordedAt": "2026-10-28T09:49:06.828626+00:00",
+  "sourceCommitAtDeployment": "1f15d71b03a984d2a913fae217053f1b39da7899",
+  "change": "Reveal all destinations when motion is paused during the opening story.",
+  "scope": [
+    "home/directory-story.js",
+    "home/index.html"
+  ],
+  "deployment": "./deploy-panthur-staging.sh directory",
+  "proofUrl": "https://staging.universalmind.tv/home/",
+  "physicalIPhoneVerified": false,
+  "productionModified": false,
+  "sourceCommitAfterIntegration": "548afa357c95413c28551a4f06fb8feef5cd452b",
+  "preservedParallelStagingCommit": "43e81ff54c6eb3c5cf9a6ac9c26ba138682eb16c"
+}
