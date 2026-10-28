@@ -1,0 +1,35 @@
+{
+  "verifiedAt": "2026-10-28T06:58:55.436Z",
+  "kind": "Live unauthenticated portal entry and access boundaries; reduced-motion render uses local source",
+  "processAudioDisabled": true,
+  "nativeFullscreenInvoked": false,
+  "checks": [
+    {
+      "livePortalLink": true,
+      "unauthenticatedEntryReachesInvitation": true
+    },
+    {
+      "invalidInvitationRejected": true,
+      "blockedFullscreenHandled": true
+    },
+    {
+      "secureHttpOnlyPathScopedSession": true
+    },
+    {
+      "route": "/happiness/media.php",
+      "status": 401
+    },
+    {
+      "route": "/happiness/access.php",
+      "status": 403
+    },
+    {
+      "directoryHtmlByteMatch": true
+    },
+    {
+      "reducedMotionStaticNetworkAndPoster": true
+    }
+  ],
+  "errors": [],
+  "passed": true
+}

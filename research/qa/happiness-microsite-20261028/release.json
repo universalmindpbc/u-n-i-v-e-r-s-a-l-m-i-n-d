@@ -1,6 +1,6 @@
 {
   "recordedAt": "2026-10-28T06:55:38.020474+00:00",
-  "sourceCommit": "bb1dce5ec9efd15becea8dede92fde1985061634",
+  "sourceCommit": "b60d2df5e357a6c38fa39f80d33f0644e34e5f8e",
   "site": "https://staging.universalmind.tv/happiness/",
   "deployment": "./deploy-panthur-staging.sh happiness",
   "productionModified": false,
@@ -70,8 +70,15 @@
       "bytes": 364,
       "sha256": "41b516f29df5a7288047ebc570ffa2173cff6b23b7da72e544249d1139c896a7",
       "stagingReadbackMatches": true
+    },
+    {
+      "path": "home/index.html",
+      "bytes": 7215,
+      "sha256": "c8c3e5f49d9acdadef7b44b4d05f64a0ba5dc4b886a3c63ab4624b47b6677583",
+      "stagingHttpReadbackMatches": true
     }
   ],
-  "verificationLimit": "Automated authenticated invitation and portal handoff tests await an approved QA credential. Public access checks and isolated frontend playback tests passed.",
-  "directoryLink": "Deferred while the separate directory task owns and revises home/index.html."
+  "verificationLimit": "Automated authenticated invitation and portal session handoff tests await an approved QA credential. Live unauthenticated entry, access boundaries, byte-matched frontend playback, chapter starts, timer placement, Back, animation and reduced-motion checks passed.",
+  "directoryLink": "ACTIVATE FESTIVALS points to /events/happiness-entry.php with top-level navigation.",
+  "rebasedOnStaging": "d75ef5c"
 }
