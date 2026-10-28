@@ -737,6 +737,16 @@ configure_patent_content() {
   echo "Private patent chapters and 91 drawings uploaded through Panthur."
 }
 
+configure_patent_ai() {
+  patent_staging_guard || return 1
+  local runtime="${PATENT_RUNTIME_DIR:-}" status
+  [[ -f "$runtime/ai-config.json" ]] || return 1
+  status="$(curl --silent --show-error --output /dev/null --write-out '%{http_code}' 'https://staging.universalmind.tv/patent/.private/ai-config.json')"
+  [[ "$status" == "403" ]] || { echo "Private storage denial failed." >&2; return 1; }
+  put_file "$runtime/ai-config.json" "patent/.private/ai-config.json"
+  echo "Private patent service configuration uploaded through Panthur."
+}
+
 configure_patent_private() {
   patent_staging_guard || return 1
   local patent_runtime="${PATENT_RUNTIME_DIR:-}" patent_probe patent_status
@@ -799,6 +809,9 @@ case "$DEPLOY_MODE" in
     ;;
   patent-content)
     configure_patent_content
+    ;;
+  patent-ai-configure)
+    configure_patent_ai
     ;;
   patent-configure)
     configure_patent_private

@@ -4,7 +4,7 @@ require_once __DIR__.'/knowledge.php';
 header('Content-Type: application/json; charset=utf-8');
 function patent_reply(array $value,int $code=200): void {http_response_code($code);echo json_encode($value,JSON_UNESCAPED_SLASHES|JSON_INVALID_UTF8_SUBSTITUTE);exit;}
 try {
- if(($_SERVER['REQUEST_METHOD']??'')==='GET')patent_reply(['ready'=>patent_ai_key()!=='','catalogue'=>patent_catalogue()]);
+ if(($_SERVER['REQUEST_METHOD']??'')==='GET')patent_reply(['ready'=>patent_ai_ready(),'catalogue'=>patent_catalogue()]);
  if(($_SERVER['REQUEST_METHOD']??'')!=='POST'||!patent_same_origin())patent_reply(['error'=>'Open the patent portal to continue.'],403);
  $raw=file_get_contents('php://input',false,null,0,50001);if(!is_string($raw)||strlen($raw)>50000)patent_reply(['error'=>'The question is too long.'],413);
  $body=json_decode($raw,true);if(!is_array($body)||!is_string($body['csrf']??null)||!hash_equals((string)($_SESSION['patent_csrf']??''),$body['csrf'])||empty($_SESSION['patent_csrf']))patent_reply(['error'=>'Refresh the patent page and sign in again.'],403);

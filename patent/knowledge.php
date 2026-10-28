@@ -68,11 +68,20 @@ function patent_ai_key(): string {
     if($key===''){$config=json_decode((string)@file_get_contents(__DIR__.'/.private/ai-config.json'),true);$key=(string)($config['api_key']??'');}
     return $key;
 }
+function patent_ai_config(): array {
+    $config=json_decode((string)@file_get_contents(__DIR__.'/.private/ai-config.json'),true);
+    return is_array($config)?$config:[];
+}
+function patent_ai_ready(): bool {return patent_ai_key()!==''||strlen((string)(patent_ai_config()['relay_secret']??''))>=32;}
 function patent_openai(string $path,array $payload): array {
-    $key=patent_ai_key();if($key==='')throw new RuntimeException('Universal One is being connected. Please try again shortly.');
-    $c=curl_init('https://api.openai.com/v1/'.$path);
-    curl_setopt_array($c,[CURLOPT_POST=>true,CURLOPT_RETURNTRANSFER=>true,CURLOPT_CONNECTTIMEOUT=>15,CURLOPT_TIMEOUT=>100,CURLOPT_HTTPHEADER=>['Authorization: Bearer '.$key,'Content-Type: application/json'],CURLOPT_POSTFIELDS=>json_encode($payload)]);
+    $key=patent_ai_key();$config=patent_ai_config();$relay=(string)($config['relay_secret']??'');
+    if($key===''&&strlen($relay)<32)throw new RuntimeException('Universal One is temporarily unavailable. Please try again shortly.');
+    if($key!==''){$url='https://api.openai.com/v1/'.$path;$rawPayload=json_encode($payload);$headers=['Authorization: Bearer '.$key,'Content-Type: application/json'];}
+    else{$url='https://informatics-universal-one-staging.universalmind.workers.dev/patent/model';$rawPayload=json_encode(['operation'=>$path,'payload'=>$payload]);$time=(string)time();$headers=['Content-Type: application/json','Origin: https://staging.universalmind.tv','X-Patent-Time: '.$time,'X-Patent-Signature: '.hash_hmac('sha256',$time.'.'.$rawPayload,$relay)];}
+    $c=curl_init($url);
+    curl_setopt_array($c,[CURLOPT_POST=>true,CURLOPT_RETURNTRANSFER=>true,CURLOPT_CONNECTTIMEOUT=>15,CURLOPT_TIMEOUT=>100,CURLOPT_HTTPHEADER=>$headers,CURLOPT_POSTFIELDS=>$rawPayload]);
     $raw=curl_exec($c);$code=curl_getinfo($c,CURLINFO_HTTP_CODE);curl_close($c);
+    if($code===429)throw new RuntimeException('Universal One has reached a research limit. Please try again later.');
     if($code<200||$code>=300||!is_string($raw))throw new RuntimeException('The AI service did not complete this request. Please retry.');
     $data=json_decode($raw,true);if(!is_array($data))throw new RuntimeException('The AI service returned an unreadable response.');return $data;
 }
