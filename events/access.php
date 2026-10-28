@@ -29,7 +29,7 @@ function events_password_valid(string $password): bool {
         if (!is_string($source) || !preg_match('/const allowedPasswordHashes = new Set\\(\\[([\\s\\S]*?)\\]\\)/', $source, $block)) continue;
         preg_match_all('/[a-f0-9]{64}/', $block[1], $matches);
         foreach ($matches[0] as $hash) {
-            if (hash_equals($hash, hash('sha256', $password))) return true;
+            if (hash_equals($hash, hash('sha256', trim($password)))) return true;
         }
     }
     return false;

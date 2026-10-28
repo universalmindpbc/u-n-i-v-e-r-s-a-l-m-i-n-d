@@ -140,7 +140,7 @@
         };
 
         const render = (time) => {
-          if (document.hidden) return;
+          if (document.hidden || (state.exitingAt && time - state.exitingAt >= 700)) return;
           if (time - state.lastTime < 1000 / 30 && state.lastTime) {
             state.frame = window.requestAnimationFrame(render);
             return;
