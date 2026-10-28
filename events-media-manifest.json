@@ -17,5 +17,12 @@
       "sha256": "fdb16c545aa193aa97e251ef2e27eee6ffa8d82119da4c84ebdc376224154a3c",
       "stream_uid": "c247c32426bd38efca22f8300717f70b"
     }
-  ]
+  ],
+  "cloudflare_status": "ready",
+  "allowed_origins": [
+    "staging.universalmind.tv",
+    "universalmind.tv",
+    "www.universalmind.tv"
+  ],
+  "loop_mp4_status": "ready"
 }

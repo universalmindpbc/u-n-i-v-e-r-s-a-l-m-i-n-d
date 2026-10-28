@@ -1,0 +1,185 @@
+{
+  "date": "2026-10-28",
+  "origin": "https://staging.universalmind.tv/events/",
+  "processAudioDisabled": true,
+  "fullscreenTest": "Request intercepted; native fullscreen not invoked",
+  "checks": [
+    {
+      "anonymous": "media.php",
+      "status": 401
+    },
+    {
+      "anonymous": "poster.php",
+      "status": 401
+    },
+    {
+      "anonymous": "private/media.json",
+      "status": 403
+    },
+    {
+      "anonymous": "private/poster.jpg",
+      "status": 403
+    },
+    {
+      "anonymous": "access.php",
+      "status": 403
+    },
+    {
+      "invalidPasswordRejected": true
+    },
+    {
+      "validPasswordAccepted": true,
+      "opening": {
+        "first": {
+          "time": 0,
+          "muted": false,
+          "paused": false,
+          "duration": 5.504,
+          "audioBytes": 4437
+        },
+        "second": {
+          "time": 1.506205,
+          "muted": false,
+          "paused": false,
+          "audioBytes": 33932
+        }
+      }
+    },
+    {
+      "filmStart": {
+        "time": 0.200345,
+        "paused": false,
+        "readyState": 4,
+        "networkState": 2,
+        "source": "blob:https://customer-1vpwglz3v6fiyaas.cloudflarestream.com/b0ef9299-e16e-4609-bdc2-5c622e6567e1"
+      }
+    },
+    {
+      "film": {
+        "first": {
+          "time": 0.204604,
+          "muted": false,
+          "paused": false,
+          "duration": 142,
+          "volume": 1
+        },
+        "second": {
+          "time": 5.216984,
+          "muted": false,
+          "paused": false
+        }
+      }
+    },
+    {
+      "closeStopsFilm": true
+    },
+    {
+      "endedReturnsToPoster": true,
+      "loopResumesAfterFilm": true
+    },
+    {
+      "layout": {
+        "width": 390,
+        "scrollWidth": 390,
+        "height": 844,
+        "scrollHeight": 844
+      },
+      "boxes": {
+        "#watch-film": {
+          "top": 472.609375,
+          "bottom": 511.609375
+        },
+        ".hashtags": {
+          "top": 600.125,
+          "bottom": 616.125
+        },
+        ".venues": {
+          "top": 637.875,
+          "bottom": 687.875
+        },
+        ".event-description": {
+          "top": 723.046875,
+          "bottom": 748.640625
+        },
+        ".proposal-note": {
+          "top": 778,
+          "bottom": 814
+        },
+        "#sound-toggle": {
+          "top": 815,
+          "bottom": 839
+        }
+      }
+    },
+    {
+      "layout": {
+        "width": 320,
+        "scrollWidth": 320,
+        "height": 568,
+        "scrollHeight": 568
+      },
+      "boxes": {
+        "#watch-film": {
+          "top": 265.109375,
+          "bottom": 300.109375
+        },
+        ".hashtags": {
+          "top": 378.921875,
+          "bottom": 391.921875
+        },
+        ".venues": {
+          "top": 408.734375,
+          "bottom": 448.734375
+        },
+        ".event-description": {
+          "top": 473.171875,
+          "bottom": 494.171875
+        },
+        ".proposal-note": {
+          "top": 511.5,
+          "bottom": 543
+        },
+        "#sound-toggle": {
+          "top": 543,
+          "bottom": 565
+        }
+      }
+    },
+    {
+      "layout": {
+        "width": 1920,
+        "scrollWidth": 1920,
+        "height": 1080,
+        "scrollHeight": 1080
+      },
+      "boxes": {
+        "#watch-film": {
+          "top": 744.609375,
+          "bottom": 784.609375
+        },
+        ".hashtags": {
+          "top": 810.40625,
+          "bottom": 842.40625
+        },
+        ".venues": {
+          "top": 867.8125,
+          "bottom": 901.8125
+        },
+        ".event-description": {
+          "top": 924.3125,
+          "bottom": 955.8125
+        },
+        ".proposal-note": {
+          "top": 1009.859375,
+          "bottom": 1028
+        },
+        "#sound-toggle": {
+          "top": 1035,
+          "bottom": 1060
+        }
+      }
+    }
+  ],
+  "errors": [],
+  "passed": true
+}
