@@ -9,7 +9,7 @@
  const label=c=>c.title.replace(/^Appendix ([A-Z](?:\.\d+)?)[.]?\s*/, '$1 · ');
  function closeNav(){document.body.classList.remove('nav-open');$('#toggle-nav').setAttribute('aria-expanded','false');}
  $('#toggle-nav').onclick=()=>{const open=document.body.classList.toggle('nav-open');$('#toggle-nav').setAttribute('aria-expanded',String(open));};
- function show(id){for(const el of document.querySelectorAll('.view'))el.hidden=el.id!==id;if(id!=='chapter-view')document.querySelectorAll('[data-chapter]').forEach(a=>a.classList.remove('active'));document.querySelectorAll('.nav-home').forEach(a=>a.classList.toggle('active',a.hash==='#'+id));closeNav();}
+ function show(id){for(const el of document.querySelectorAll('.view'))el.hidden=el.id!==id;if(id!=='chapter-view')document.querySelectorAll('[data-chapter]').forEach(a=>a.classList.remove('active'));document.querySelectorAll('.nav-home').forEach(a=>a.classList.toggle('active',a.hash==='#'+id));closeNav();window.dispatchEvent(new CustomEvent('patent:view',{detail:id}));}
  function navigation(){
   const nav=$('#contents');nav.replaceChildren();
   for(const group of ['Main patent','Reading guides','Appendices']){

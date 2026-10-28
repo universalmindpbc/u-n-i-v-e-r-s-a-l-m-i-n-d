@@ -33,4 +33,5 @@
  query.oninput=render;group.onchange=render;retry.onclick=load;
  document.querySelector('#drawing-zoom-close').onclick=()=>zoom.close();
  window.addEventListener('hashchange',openHash);void openHash();
+ window.addEventListener('patent:view',e=>{if(e.detail==='drawings')void openHash();});
 })();
