@@ -25,7 +25,9 @@
     const retained = entry?.getBackgroundFilm?.();
     if (retained && !reducedMotion) {
       backgroundHost = entry; loop = retained;
-      originalBackground = {src:loop.src, poster:loop.getAttribute('poster'), time:loop.currentTime};
+      originalBackground = {src:loop.src, poster:loop.getAttribute('poster'), time:loop.currentTime,
+        loop:loop.loop, muted:loop.muted, defaultMuted:loop.defaultMuted, volume:loop.volume,
+        playsInline:loop.playsInline, userPaused:loop.dataset.userPaused};
       localLoop.pause(); localLoop.removeAttribute('src'); localLoop.load();
       document.documentElement.dataset.backgroundHosted = 'true';
       loop.pause();
@@ -256,10 +258,13 @@
     if (originalBackground) {
       const saved = originalBackground;
       if (saved.poster === null) loop.removeAttribute('poster'); else loop.setAttribute('poster', saved.poster);
+      loop.loop = saved.loop; loop.muted = saved.muted; loop.defaultMuted = saved.defaultMuted;
+      loop.volume = saved.volume; loop.playsInline = saved.playsInline;
+      if (saved.userPaused === undefined) delete loop.dataset.userPaused; else loop.dataset.userPaused = saved.userPaused;
       loop.src = saved.src;
-      loop.addEventListener('loadedmetadata', () => {
-        if (loop.src === saved.src && Number.isFinite(saved.time)) loop.currentTime = saved.time;
-      }, {once:true});
+      loop.load();
+      // Set the native default start position now; no unloading-child callback.
+      if (Number.isFinite(saved.time)) loop.currentTime = saved.time;
     }
     host.removeEventListener('fullscreenchange', syncFullscreen);
     host.removeEventListener('webkitfullscreenchange', syncFullscreen);

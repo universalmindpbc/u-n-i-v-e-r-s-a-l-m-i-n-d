@@ -41,7 +41,7 @@ if ($entered) {
 <script src="assets/gate-launch.js?v=3" defer></script>
 <?php endif; ?>
 <?php if ($entered): ?>
-<script src="assets/events.js?v=12" defer></script>
+<script src="assets/events.js?v=13" defer></script>
 <?php endif; ?>
 </head>
 <body class="<?= $entered ? 'entered' : 'invitation' ?>">
