@@ -2,7 +2,9 @@
 
 .contents-group{margin:22px 0 8px;padding-top:16px;border-top:1px solid var(--line);font-size:10px;font-weight:bold;letter-spacing:.08em;text-transform:uppercase;color:var(--ink)}.contents-group:first-child{margin-top:0;padding-top:0;border-top:0}
 
-/* Match the established I AM header: flower asset, Helvetica Neue 100 and tracking. */
+/* I AM flower and Helvetica Neue; the patent wordmark emphasises mind. */
 .masthead{height:104px;padding:12px 24px;gap:32px}.masthead .brand{display:flex;align-items:center;gap:clamp(16px,.98vw,20px);text-decoration:none;min-width:0}.brand .brand-mark{width:clamp(64px,4.35vw,90px);height:clamp(64px,4.35vw,90px);object-fit:contain}.brand .brand-name{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;font-weight:100;font-size:clamp(28px,2.05vw,42px);line-height:1;letter-spacing:.28em}.masthead>span{margin-left:auto}.masthead #logout{margin-left:0;white-space:nowrap}aside{height:calc(100vh - 104px)}.uo h2{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif}.uo{letter-spacing:normal}.hero-actions{flex-wrap:wrap}.guide-state button{font-size:13px}
 @media(max-width:850px){aside{height:auto}.masthead{height:88px;padding:12px 5vw;gap:12px}.masthead .brand{gap:13px}.brand .brand-mark{width:48px;height:48px}.brand .brand-name{font-size:21px;letter-spacing:.16em}.masthead #logout{margin-left:auto;font-size:10px}.masthead>span{display:none}}
 @media(max-width:380px){.brand .brand-name{font-size:18px;letter-spacing:.12em}.masthead .brand{gap:8px}}
+
+.brand .brand-name .brand-mind{font-weight:700}

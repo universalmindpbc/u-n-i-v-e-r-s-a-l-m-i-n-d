@@ -4,7 +4,7 @@ patent_session();
 if(empty($_SESSION['patent_csrf']))$_SESSION['patent_csrf']=bin2hex(random_bytes(24));
 $authenticated=patent_authenticated();
 ?>
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow,noarchive"><meta name="csrf-token" content="<?=htmlspecialchars($_SESSION['patent_csrf'],ENT_QUOTES)?>"><title>Patent | Universal Mind</title><link rel="icon" href="/vogue/iam/favicon.png?v=iam-favicon-4"><link rel="stylesheet" href="portal.css?v=2"><script src="portal.js?v=2" defer></script><?php if($authenticated):?>
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow,noarchive"><meta name="csrf-token" content="<?=htmlspecialchars($_SESSION['patent_csrf'],ENT_QUOTES)?>"><title>Patent | Universal Mind</title><link rel="icon" href="/vogue/iam/favicon.png?v=iam-favicon-4"><link rel="stylesheet" href="portal.css?v=3"><script src="portal.js?v=2" defer></script><?php if($authenticated):?>
 <link rel="stylesheet" href="/vogue/iam/realtime-voice-assistant.css?v=realtime-voice-css-66ef986e1dc3">
 <link rel="stylesheet" href="/informatics/universal-one.css?v=9">
 <script defer src="/informatics/universal-one-character.js?v=1"></script>
@@ -14,7 +14,7 @@ $authenticated=patent_authenticated();
 <script defer src="/informatics/universal-one-live.js?v=7"></script>
 <script defer src="/informatics/universal-one.js?v=14"></script>
 <?php endif;?></head>
-<body><header class="masthead"><a href="/patent/" class="brand" aria-label="Universal Mind"><img class="brand-mark" src="/vogue/iam/a%20s%20s%20e%20t%20s/Universal%20Mind%20%5B%20I%20o%20H%20%5D%20Logo%20512.png" alt="" width="64" height="64"><span class="brand-name">universalmind</span></a><span>RESEARCH & INVENTION</span><?php if($authenticated):?><button id="logout" class="text-button">Lock workspace</button><?php endif;?></header>
+<body><header class="masthead"><a href="/patent/" class="brand" aria-label="Universal Mind"><img class="brand-mark" src="/vogue/iam/a%20s%20s%20e%20t%20s/Universal%20Mind%20%5B%20I%20o%20H%20%5D%20Logo%20512.png" alt="" width="64" height="64"><span class="brand-name">universal<span class="brand-mind">mind</span></span></a><span>RESEARCH & INVENTION</span><?php if($authenticated):?><button id="logout" class="text-button">Lock workspace</button><?php endif;?></header>
 <?php if(!$authenticated):?>
 <main class="login-wrap"><span class="eyebrow">PRIVATE WORKSPACE</span><h1>Patent</h1><p class="intro">A protected space to review the specification before filing.</p><form id="login-form"><label for="access-key">Private access key</label><input id="access-key" type="password" autocomplete="current-password" required maxlength="64"><button type="submit">Open workspace <span>↗</span></button><p id="login-status" role="status"></p></form><p class="small">Access is restricted. The specification is not publicly available here.</p></main>
 <?php else:?>
