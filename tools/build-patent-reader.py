@@ -73,6 +73,12 @@ def render(text,title):
  out=markdown.markdown(text,extensions=['fenced_code','tables','sane_lists','md_in_html'])
  out=bleach.clean(out,tags=allowed,attributes=attrs,protocols=['http','https','mailto'],strip=True)
  soup=BeautifulSoup(out,'html.parser')
+ # Notion escapes punctuation that the Markdown parser leaves visible in prose.
+ # Decode only text nodes after parsing; never reinterpret source code or URLs.
+ for node in list(soup.find_all(string=True)):
+  if node.find_parent(['pre','code']):continue
+  decoded=re.sub(r'\\([\\`*_{}\[\]()#+\-.!|>$~^])',r'\1',str(node)).replace('\ufffc','')
+  if decoded!=str(node):node.replace_with(decoded)
  for link in soup.find_all('a'):
   if (link.get('href') or '').startswith(('https://','http://')):link['target']='_blank';link['rel']='noopener noreferrer'
  for table in soup.find_all('table'):
