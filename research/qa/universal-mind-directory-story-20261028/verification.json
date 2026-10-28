@@ -1,0 +1,4164 @@
+{
+  "verifiedAt": "2026-10-28T06:35:57.970Z",
+  "origin": "https://staging.universalmind.tv",
+  "processAudioDisabled": true,
+  "nativeFullscreenInvoked": false,
+  "checks": [
+    {
+      "storySequence": true,
+      "arrivals": [
+        {
+          "name": "watch",
+          "routeStart": 2561,
+          "titleStart": 3361
+        },
+        {
+          "name": "events",
+          "routeStart": 3681,
+          "titleStart": 4481
+        },
+        {
+          "name": "festivals",
+          "routeStart": 4801,
+          "titleStart": 5601
+        },
+        {
+          "name": "research",
+          "routeStart": 5921,
+          "titleStart": 6721
+        }
+      ],
+      "allSubtitlesTogetherAt": 7202,
+      "completeAt": 7761,
+      "oneAmbientTrainAtATime": true,
+      "exactHeadingPreserved": true
+    },
+    {
+      "renderedTypography": [
+        {
+          "selector": "h1",
+          "computed": "\"Helvetica Neue\", sans-serif",
+          "actual": [
+            {
+              "familyName": "Helvetica Neue",
+              "postScriptName": "HelveticaNeue-Light",
+              "isCustomFont": false,
+              "glyphCount": 63
+            }
+          ]
+        },
+        {
+          "selector": ".destination-title",
+          "computed": "\"Helvetica Neue\", sans-serif",
+          "actual": [
+            {
+              "familyName": "Helvetica Neue",
+              "postScriptName": "HelveticaNeue-Medium",
+              "isCustomFont": false,
+              "glyphCount": 8
+            }
+          ]
+        },
+        {
+          "selector": ".destination-description",
+          "computed": "\"Helvetica Neue\", sans-serif",
+          "actual": [
+            {
+              "familyName": "Helvetica Neue",
+              "postScriptName": "HelveticaNeue",
+              "isCustomFont": false,
+              "glyphCount": 46
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "silentFestivalVideo": {
+        "muted": true,
+        "defaultMuted": true,
+        "volume": 0,
+        "loop": true,
+        "currentTime": 10.522742,
+        "source": "https://rmu.universalmind.tv/rihanna-global-citizen-loop.mp4"
+      }
+    },
+    {
+      "pauseControlsFilmAndRailMotion": true
+    },
+    {
+      "activeDestinationsYellowOnHover": true,
+      "happinessInactive": true
+    },
+    {
+      "viewport": {
+        "width": 1920,
+        "height": 1080
+      },
+      "geometry": {
+        "width": 1920,
+        "scrollWidth": 1920,
+        "flower": {
+          "width": 94,
+          "opacity": "1"
+        },
+        "rails": [
+          {
+            "length": 618.3256225585938,
+            "stroke": "9px"
+          },
+          {
+            "length": 604.0565795898438,
+            "stroke": "9px"
+          },
+          {
+            "length": 578.064208984375,
+            "stroke": "9px"
+          },
+          {
+            "length": 563.124755859375,
+            "stroke": "9px"
+          }
+        ],
+        "cards": [
+          {
+            "left": 61.4375,
+            "right": 474.765625,
+            "top": 194.359375,
+            "bottom": 280.359375
+          },
+          {
+            "left": 1427.265625,
+            "right": 1858.5625,
+            "top": 194.359375,
+            "bottom": 280.359375
+          },
+          {
+            "left": 61.4375,
+            "right": 474.765625,
+            "top": 841.234375,
+            "bottom": 948.234375
+          },
+          {
+            "left": 1427.265625,
+            "right": 1858.5625,
+            "top": 841.234375,
+            "bottom": 927.234375
+          }
+        ]
+      }
+    },
+    {
+      "viewport": {
+        "width": 1470,
+        "height": 920
+      },
+      "geometry": {
+        "width": 1470,
+        "scrollWidth": 1470,
+        "flower": {
+          "width": 94,
+          "opacity": "1"
+        },
+        "rails": [
+          {
+            "length": 485.5033874511719,
+            "stroke": "9px"
+          },
+          {
+            "length": 474.8658142089844,
+            "stroke": "9px"
+          },
+          {
+            "length": 453.5991516113281,
+            "stroke": "9px"
+          },
+          {
+            "length": 442.4705810546875,
+            "stroke": "9px"
+          }
+        ],
+        "cards": [
+          {
+            "left": 47.03125,
+            "right": 363.484375,
+            "top": 172.921875,
+            "bottom": 256.4375
+          },
+          {
+            "left": 1092.75,
+            "right": 1422.96875,
+            "top": 172.921875,
+            "bottom": 256.4375
+          },
+          {
+            "left": 47.03125,
+            "right": 363.484375,
+            "top": 714.3125,
+            "bottom": 818.828125
+          },
+          {
+            "left": 1092.75,
+            "right": 1422.96875,
+            "top": 714.3125,
+            "bottom": 797.828125
+          }
+        ]
+      }
+    },
+    {
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "geometry": {
+        "width": 390,
+        "scrollWidth": 390,
+        "flower": {
+          "width": 82,
+          "opacity": "1"
+        },
+        "rails": [
+          {
+            "length": 265.07025146484375,
+            "stroke": "9px"
+          },
+          {
+            "length": 265.0704345703125,
+            "stroke": "9px"
+          },
+          {
+            "length": 210.27670288085938,
+            "stroke": "9px"
+          },
+          {
+            "length": 210.27662658691406,
+            "stroke": "9px"
+          }
+        ],
+        "cards": [
+          {
+            "left": 24,
+            "right": 174.46875,
+            "top": 124,
+            "bottom": 191.59375
+          },
+          {
+            "left": 215.53125,
+            "right": 366,
+            "top": 124,
+            "bottom": 191.59375
+          },
+          {
+            "left": 24,
+            "right": 174.46875,
+            "top": 642.390625,
+            "bottom": 790.078125
+          },
+          {
+            "left": 215.53125,
+            "right": 366,
+            "top": 642.390625,
+            "bottom": 751.078125
+          }
+        ]
+      }
+    },
+    {
+      "viewport": {
+        "width": 320,
+        "height": 568
+      },
+      "geometry": {
+        "width": 320,
+        "scrollWidth": 320,
+        "flower": {
+          "width": 82,
+          "opacity": "1"
+        },
+        "rails": [
+          {
+            "length": 206.11904907226562,
+            "stroke": "9px"
+          },
+          {
+            "length": 187.02420043945312,
+            "stroke": "9px"
+          },
+          {
+            "length": 181.3612060546875,
+            "stroke": "9px"
+          },
+          {
+            "length": 181.35145568847656,
+            "stroke": "9px"
+          }
+        ],
+        "cards": [
+          {
+            "left": 18,
+            "right": 142.953125,
+            "top": 117,
+            "bottom": 204.09375
+          },
+          {
+            "left": 177.046875,
+            "right": 302,
+            "top": 117,
+            "bottom": 225.6875
+          },
+          {
+            "left": 18,
+            "right": 142.953125,
+            "top": 577.796875,
+            "bottom": 725.484375
+          },
+          {
+            "left": 177.046875,
+            "right": 302,
+            "top": 577.796875,
+            "bottom": 705.984375
+          }
+        ]
+      }
+    },
+    {
+      "reducedMotionImmediateCompleteAndStatic": true
+    },
+    {
+      "keyboardSkipsEntrance": true
+    }
+  ],
+  "errors": [],
+  "timeline": [
+    {
+      "at": 81,
+      "phase": "intro",
+      "typed": 0,
+      "progress": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "titles": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "subtitles": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "trains": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "at": 161,
+      "phase": "intro",
+      "typed": 0,
+      "progress": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "titles": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "subtitles": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "trains": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "at": 242,
+      "phase": "intro",
+      "typed": 1,
+      "progress": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "titles": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "subtitles": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "trains": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "at": 321,
+      "phase": "intro",
+      "typed": 5,
+      "progress": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "titles": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "subtitles": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "trains": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "at": 404,
+      "phase": "intro",
+      "typed": 8,
+      "progress": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "titles": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "subtitles": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "trains": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "at": 480,
+      "phase": "intro",
+      "typed": 9,
+      "progress": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "titles": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "subtitles": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "trains": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "at": 560,
+      "phase": "intro",
+      "typed": 12,
+      "progress": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "titles": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "subtitles": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "trains": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "at": 641,
+      "phase": "intro",
+      "typed": 14,
+      "progress": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "titles": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "subtitles": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "trains": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "at": 722,
+      "phase": "intro",
+      "typed": 17,
+      "progress": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "titles": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "subtitles": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "trains": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "at": 805,
+      "phase": "intro",
+      "typed": 19,
+      "progress": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "titles": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "subtitles": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "trains": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "at": 880,
+      "phase": "intro",
+      "typed": 22,
+      "progress": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "titles": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "subtitles": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "trains": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "at": 961,
+      "phase": "intro",
+      "typed": 24,
+      "progress": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "titles": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "subtitles": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "trains": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "at": 1042,
+      "phase": "intro",
+      "typed": 27,
+      "progress": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "titles": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "subtitles": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "trains": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "at": 1121,
+      "phase": "intro",
+      "typed": 30,
+      "progress": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "titles": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "subtitles": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "trains": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "at": 1205,
+      "phase": "intro",
+      "typed": 32,
+      "progress": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "titles": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "subtitles": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "trains": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "at": 1290,
+      "phase": "intro",
+      "typed": 35,
+      "progress": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "titles": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "subtitles": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "trains": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "at": 1363,
+      "phase": "intro",
+      "typed": 38,
+      "progress": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "titles": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "subtitles": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "trains": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "at": 1441,
+      "phase": "intro",
+      "typed": 40,
+      "progress": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "titles": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "subtitles": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "trains": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "at": 1521,
+      "phase": "intro",
+      "typed": 43,
+      "progress": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "titles": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "subtitles": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "trains": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "at": 1601,
+      "phase": "intro",
+      "typed": 45,
+      "progress": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "titles": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "subtitles": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "trains": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "at": 1681,
+      "phase": "intro",
+      "typed": 49,
+      "progress": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "titles": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "subtitles": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "trains": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "at": 1761,
+      "phase": "intro",
+      "typed": 50,
+      "progress": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "titles": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "subtitles": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "trains": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "at": 1841,
+      "phase": "intro",
+      "typed": 53,
+      "progress": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "titles": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "subtitles": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "trains": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "at": 1921,
+      "phase": "intro",
+      "typed": 56,
+      "progress": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "titles": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "subtitles": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "trains": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "at": 2005,
+      "phase": "intro",
+      "typed": 59,
+      "progress": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "titles": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "subtitles": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "trains": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "at": 2080,
+      "phase": "intro",
+      "typed": 62,
+      "progress": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "titles": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "subtitles": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "trains": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "at": 2162,
+      "phase": "intro",
+      "typed": 63,
+      "progress": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "titles": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "subtitles": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "trains": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "at": 2241,
+      "phase": "intro",
+      "typed": 63,
+      "progress": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "titles": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "subtitles": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "trains": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "at": 2322,
+      "phase": "intro",
+      "typed": 63,
+      "progress": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "titles": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "subtitles": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "trains": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "at": 2401,
+      "phase": "intro",
+      "typed": 63,
+      "progress": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "titles": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "subtitles": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "trains": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "at": 2481,
+      "phase": "intro",
+      "typed": 63,
+      "progress": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "titles": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "subtitles": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "trains": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "at": 2561,
+      "phase": "routes",
+      "typed": 63,
+      "progress": [
+        0.083,
+        0,
+        0,
+        0
+      ],
+      "titles": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "subtitles": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "trains": [
+        1,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "at": 2641,
+      "phase": "routes",
+      "typed": 63,
+      "progress": [
+        0.152,
+        0,
+        0,
+        0
+      ],
+      "titles": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "subtitles": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "trains": [
+        1,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "at": 2721,
+      "phase": "routes",
+      "typed": 63,
+      "progress": [
+        0.237,
+        0,
+        0,
+        0
+      ],
+      "titles": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "subtitles": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "trains": [
+        1,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "at": 2802,
+      "phase": "routes",
+      "typed": 63,
+      "progress": [
+        0.321,
+        0,
+        0,
+        0
+      ],
+      "titles": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "subtitles": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "trains": [
+        1,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "at": 2881,
+      "phase": "routes",
+      "typed": 63,
+      "progress": [
+        0.407,
+        0,
+        0,
+        0
+      ],
+      "titles": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "subtitles": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "trains": [
+        1,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "at": 2963,
+      "phase": "routes",
+      "typed": 63,
+      "progress": [
+        0.492,
+        0,
+        0,
+        0
+      ],
+      "titles": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "subtitles": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "trains": [
+        1,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "at": 3042,
+      "phase": "routes",
+      "typed": 63,
+      "progress": [
+        0.56,
+        0,
+        0,
+        0
+      ],
+      "titles": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "subtitles": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "trains": [
+        1,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "at": 3121,
+      "phase": "routes",
+      "typed": 63,
+      "progress": [
+        0.645,
+        0,
+        0,
+        0
+      ],
+      "titles": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "subtitles": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "trains": [
+        1,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "at": 3201,
+      "phase": "routes",
+      "typed": 63,
+      "progress": [
+        0.73,
+        0,
+        0,
+        0
+      ],
+      "titles": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "subtitles": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "trains": [
+        1,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "at": 3281,
+      "phase": "routes",
+      "typed": 63,
+      "progress": [
+        0.815,
+        0,
+        0,
+        0
+      ],
+      "titles": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "subtitles": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "trains": [
+        1,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "at": 3361,
+      "phase": "routes",
+      "typed": 63,
+      "progress": [
+        0.883,
+        0,
+        0,
+        0
+      ],
+      "titles": [
+        0.262124,
+        0,
+        0,
+        0
+      ],
+      "subtitles": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "trains": [
+        1,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "at": 3442,
+      "phase": "routes",
+      "typed": 63,
+      "progress": [
+        0.968,
+        0,
+        0,
+        0
+      ],
+      "titles": [
+        0.705775,
+        0,
+        0,
+        0
+      ],
+      "subtitles": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "trains": [
+        1,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "at": 3521,
+      "phase": "routes",
+      "typed": 63,
+      "progress": [
+        1,
+        0,
+        0,
+        0
+      ],
+      "titles": [
+        0.914923,
+        0,
+        0,
+        0
+      ],
+      "subtitles": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "trains": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "at": 3601,
+      "phase": "routes",
+      "typed": 63,
+      "progress": [
+        1,
+        0,
+        0,
+        0
+      ],
+      "titles": [
+        0.991643,
+        0,
+        0,
+        0
+      ],
+      "subtitles": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "trains": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "at": 3681,
+      "phase": "routes",
+      "typed": 63,
+      "progress": [
+        1,
+        0.06,
+        0,
+        0
+      ],
+      "titles": [
+        1,
+        0,
+        0,
+        0
+      ],
+      "subtitles": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "trains": [
+        0,
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "at": 3762,
+      "phase": "routes",
+      "typed": 63,
+      "progress": [
+        1,
+        0.145,
+        0,
+        0
+      ],
+      "titles": [
+        1,
+        0,
+        0,
+        0
+      ],
+      "subtitles": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "trains": [
+        0,
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "at": 3841,
+      "phase": "routes",
+      "typed": 63,
+      "progress": [
+        1,
+        0.213,
+        0,
+        0
+      ],
+      "titles": [
+        1,
+        0,
+        0,
+        0
+      ],
+      "subtitles": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "trains": [
+        0,
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "at": 3921,
+      "phase": "routes",
+      "typed": 63,
+      "progress": [
+        1,
+        0.298,
+        0,
+        0
+      ],
+      "titles": [
+        1,
+        0,
+        0,
+        0
+      ],
+      "subtitles": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "trains": [
+        0,
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "at": 4001,
+      "phase": "routes",
+      "typed": 63,
+      "progress": [
+        1,
+        0.383,
+        0,
+        0
+      ],
+      "titles": [
+        1,
+        0,
+        0,
+        0
+      ],
+      "subtitles": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "trains": [
+        0,
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "at": 4081,
+      "phase": "routes",
+      "typed": 63,
+      "progress": [
+        1,
+        0.468,
+        0,
+        0
+      ],
+      "titles": [
+        1,
+        0,
+        0,
+        0
+      ],
+      "subtitles": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "trains": [
+        0,
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "at": 4161,
+      "phase": "routes",
+      "typed": 63,
+      "progress": [
+        1,
+        0.553,
+        0,
+        0
+      ],
+      "titles": [
+        1,
+        0,
+        0,
+        0
+      ],
+      "subtitles": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "trains": [
+        0,
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "at": 4241,
+      "phase": "routes",
+      "typed": 63,
+      "progress": [
+        1,
+        0.621,
+        0,
+        0
+      ],
+      "titles": [
+        1,
+        0,
+        0,
+        0
+      ],
+      "subtitles": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "trains": [
+        0,
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "at": 4321,
+      "phase": "routes",
+      "typed": 63,
+      "progress": [
+        1,
+        0.706,
+        0,
+        0
+      ],
+      "titles": [
+        1,
+        0,
+        0,
+        0
+      ],
+      "subtitles": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "trains": [
+        0,
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "at": 4400,
+      "phase": "routes",
+      "typed": 63,
+      "progress": [
+        1,
+        0.791,
+        0,
+        0
+      ],
+      "titles": [
+        1,
+        0,
+        0,
+        0
+      ],
+      "subtitles": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "trains": [
+        0,
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "at": 4481,
+      "phase": "routes",
+      "typed": 63,
+      "progress": [
+        1,
+        0.876,
+        0,
+        0
+      ],
+      "titles": [
+        1,
+        0.261412,
+        0,
+        0
+      ],
+      "subtitles": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "trains": [
+        0,
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "at": 4560,
+      "phase": "routes",
+      "typed": 63,
+      "progress": [
+        1,
+        0.944,
+        0,
+        0
+      ],
+      "titles": [
+        1,
+        0.638057,
+        0,
+        0
+      ],
+      "subtitles": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "trains": [
+        0,
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "at": 4641,
+      "phase": "routes",
+      "typed": 63,
+      "progress": [
+        1,
+        1,
+        0,
+        0
+      ],
+      "titles": [
+        1,
+        0.886413,
+        0,
+        0
+      ],
+      "subtitles": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "trains": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "at": 4721,
+      "phase": "routes",
+      "typed": 63,
+      "progress": [
+        1,
+        1,
+        0,
+        0
+      ],
+      "titles": [
+        1,
+        0.983492,
+        0,
+        0
+      ],
+      "subtitles": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "trains": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "at": 4801,
+      "phase": "routes",
+      "typed": 63,
+      "progress": [
+        1,
+        1,
+        0.036,
+        0
+      ],
+      "titles": [
+        1,
+        1,
+        0,
+        0
+      ],
+      "subtitles": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "trains": [
+        0,
+        0,
+        1,
+        0
+      ]
+    },
+    {
+      "at": 4880,
+      "phase": "routes",
+      "typed": 63,
+      "progress": [
+        1,
+        1,
+        0.121,
+        0
+      ],
+      "titles": [
+        1,
+        1,
+        0,
+        0
+      ],
+      "subtitles": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "trains": [
+        0,
+        0,
+        1,
+        0
+      ]
+    },
+    {
+      "at": 4961,
+      "phase": "routes",
+      "typed": 63,
+      "progress": [
+        1,
+        1,
+        0.206,
+        0
+      ],
+      "titles": [
+        1,
+        1,
+        0,
+        0
+      ],
+      "subtitles": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "trains": [
+        0,
+        0,
+        1,
+        0
+      ]
+    },
+    {
+      "at": 5042,
+      "phase": "routes",
+      "typed": 63,
+      "progress": [
+        1,
+        1,
+        0.274,
+        0
+      ],
+      "titles": [
+        1,
+        1,
+        0,
+        0
+      ],
+      "subtitles": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "trains": [
+        0,
+        0,
+        1,
+        0
+      ]
+    },
+    {
+      "at": 5122,
+      "phase": "routes",
+      "typed": 63,
+      "progress": [
+        1,
+        1,
+        0.358,
+        0
+      ],
+      "titles": [
+        1,
+        1,
+        0,
+        0
+      ],
+      "subtitles": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "trains": [
+        0,
+        0,
+        1,
+        0
+      ]
+    },
+    {
+      "at": 5201,
+      "phase": "routes",
+      "typed": 63,
+      "progress": [
+        1,
+        1,
+        0.444,
+        0
+      ],
+      "titles": [
+        1,
+        1,
+        0,
+        0
+      ],
+      "subtitles": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "trains": [
+        0,
+        0,
+        1,
+        0
+      ]
+    },
+    {
+      "at": 5281,
+      "phase": "routes",
+      "typed": 63,
+      "progress": [
+        1,
+        1,
+        0.529,
+        0
+      ],
+      "titles": [
+        1,
+        1,
+        0,
+        0
+      ],
+      "subtitles": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "trains": [
+        0,
+        0,
+        1,
+        0
+      ]
+    },
+    {
+      "at": 5362,
+      "phase": "routes",
+      "typed": 63,
+      "progress": [
+        1,
+        1,
+        0.615,
+        0
+      ],
+      "titles": [
+        1,
+        1,
+        0,
+        0
+      ],
+      "subtitles": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "trains": [
+        0,
+        0,
+        1,
+        0
+      ]
+    },
+    {
+      "at": 5441,
+      "phase": "routes",
+      "typed": 63,
+      "progress": [
+        1,
+        1,
+        0.683,
+        0
+      ],
+      "titles": [
+        1,
+        1,
+        0,
+        0
+      ],
+      "subtitles": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "trains": [
+        0,
+        0,
+        1,
+        0
+      ]
+    },
+    {
+      "at": 5521,
+      "phase": "routes",
+      "typed": 63,
+      "progress": [
+        1,
+        1,
+        0.767,
+        0
+      ],
+      "titles": [
+        1,
+        1,
+        0,
+        0
+      ],
+      "subtitles": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "trains": [
+        0,
+        0,
+        1,
+        0
+      ]
+    },
+    {
+      "at": 5601,
+      "phase": "routes",
+      "typed": 63,
+      "progress": [
+        1,
+        1,
+        0.853,
+        0
+      ],
+      "titles": [
+        1,
+        1,
+        0.163186,
+        0
+      ],
+      "subtitles": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "trains": [
+        0,
+        0,
+        1,
+        0
+      ]
+    },
+    {
+      "at": 5680,
+      "phase": "routes",
+      "typed": 63,
+      "progress": [
+        1,
+        1,
+        0.938,
+        0
+      ],
+      "titles": [
+        1,
+        1,
+        0.638385,
+        0
+      ],
+      "subtitles": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "trains": [
+        0,
+        0,
+        1,
+        0
+      ]
+    },
+    {
+      "at": 5761,
+      "phase": "routes",
+      "typed": 63,
+      "progress": [
+        1,
+        1,
+        1,
+        0
+      ],
+      "titles": [
+        1,
+        1,
+        0.85162,
+        0
+      ],
+      "subtitles": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "trains": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "at": 5841,
+      "phase": "routes",
+      "typed": 63,
+      "progress": [
+        1,
+        1,
+        1,
+        0
+      ],
+      "titles": [
+        1,
+        1,
+        0.971364,
+        0
+      ],
+      "subtitles": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "trains": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "at": 5921,
+      "phase": "routes",
+      "typed": 63,
+      "progress": [
+        1,
+        1,
+        1,
+        0.012
+      ],
+      "titles": [
+        1,
+        1,
+        1,
+        0
+      ],
+      "subtitles": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "trains": [
+        0,
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "at": 6002,
+      "phase": "routes",
+      "typed": 63,
+      "progress": [
+        1,
+        1,
+        1,
+        0.098
+      ],
+      "titles": [
+        1,
+        1,
+        1,
+        0
+      ],
+      "subtitles": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "trains": [
+        0,
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "at": 6080,
+      "phase": "routes",
+      "typed": 63,
+      "progress": [
+        1,
+        1,
+        1,
+        0.182
+      ],
+      "titles": [
+        1,
+        1,
+        1,
+        0
+      ],
+      "subtitles": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "trains": [
+        0,
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "at": 6162,
+      "phase": "routes",
+      "typed": 63,
+      "progress": [
+        1,
+        1,
+        1,
+        0.267
+      ],
+      "titles": [
+        1,
+        1,
+        1,
+        0
+      ],
+      "subtitles": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "trains": [
+        0,
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "at": 6242,
+      "phase": "routes",
+      "typed": 63,
+      "progress": [
+        1,
+        1,
+        1,
+        0.335
+      ],
+      "titles": [
+        1,
+        1,
+        1,
+        0
+      ],
+      "subtitles": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "trains": [
+        0,
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "at": 6321,
+      "phase": "routes",
+      "typed": 63,
+      "progress": [
+        1,
+        1,
+        1,
+        0.42
+      ],
+      "titles": [
+        1,
+        1,
+        1,
+        0
+      ],
+      "subtitles": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "trains": [
+        0,
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "at": 6401,
+      "phase": "routes",
+      "typed": 63,
+      "progress": [
+        1,
+        1,
+        1,
+        0.506
+      ],
+      "titles": [
+        1,
+        1,
+        1,
+        0
+      ],
+      "subtitles": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "trains": [
+        0,
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "at": 6480,
+      "phase": "routes",
+      "typed": 63,
+      "progress": [
+        1,
+        1,
+        1,
+        0.591
+      ],
+      "titles": [
+        1,
+        1,
+        1,
+        0
+      ],
+      "subtitles": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "trains": [
+        0,
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "at": 6562,
+      "phase": "routes",
+      "typed": 63,
+      "progress": [
+        1,
+        1,
+        1,
+        0.676
+      ],
+      "titles": [
+        1,
+        1,
+        1,
+        0
+      ],
+      "subtitles": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "trains": [
+        0,
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "at": 6641,
+      "phase": "routes",
+      "typed": 63,
+      "progress": [
+        1,
+        1,
+        1,
+        0.743
+      ],
+      "titles": [
+        1,
+        1,
+        1,
+        0
+      ],
+      "subtitles": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "trains": [
+        0,
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "at": 6721,
+      "phase": "routes",
+      "typed": 63,
+      "progress": [
+        1,
+        1,
+        1,
+        0.829
+      ],
+      "titles": [
+        1,
+        1,
+        1,
+        0.0296579
+      ],
+      "subtitles": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "trains": [
+        0,
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "at": 6801,
+      "phase": "routes",
+      "typed": 63,
+      "progress": [
+        1,
+        1,
+        1,
+        0.914
+      ],
+      "titles": [
+        1,
+        1,
+        1,
+        0.468257
+      ],
+      "subtitles": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "trains": [
+        0,
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "at": 6880,
+      "phase": "routes",
+      "typed": 63,
+      "progress": [
+        1,
+        1,
+        1,
+        0.999
+      ],
+      "titles": [
+        1,
+        1,
+        1,
+        0.81084
+      ],
+      "subtitles": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "trains": [
+        0,
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "at": 6961,
+      "phase": "routes",
+      "typed": 63,
+      "progress": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "titles": [
+        1,
+        1,
+        1,
+        0.93815
+      ],
+      "subtitles": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "trains": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "at": 7042,
+      "phase": "routes",
+      "typed": 63,
+      "progress": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "titles": [
+        1,
+        1,
+        1,
+        0.996808
+      ],
+      "subtitles": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "trains": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "at": 7122,
+      "phase": "descriptions",
+      "typed": 63,
+      "progress": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "titles": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "subtitles": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "trains": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "at": 7202,
+      "phase": "descriptions",
+      "typed": 63,
+      "progress": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "titles": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "subtitles": [
+        0.160318,
+        0.160318,
+        0.160318,
+        0.160318
+      ],
+      "trains": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "at": 7281,
+      "phase": "descriptions",
+      "typed": 63,
+      "progress": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "titles": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "subtitles": [
+        0.468211,
+        0.468211,
+        0.468211,
+        0.468211
+      ],
+      "trains": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "at": 7362,
+      "phase": "descriptions",
+      "typed": 63,
+      "progress": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "titles": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "subtitles": [
+        0.705746,
+        0.705746,
+        0.705746,
+        0.705746
+      ],
+      "trains": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "at": 7442,
+      "phase": "descriptions",
+      "typed": 63,
+      "progress": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "titles": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "subtitles": [
+        0.828632,
+        0.828632,
+        0.828632,
+        0.828632
+      ],
+      "trains": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "at": 7522,
+      "phase": "descriptions",
+      "typed": 63,
+      "progress": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "titles": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "subtitles": [
+        0.924102,
+        0.924102,
+        0.924102,
+        0.924102
+      ],
+      "trains": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "at": 7601,
+      "phase": "descriptions",
+      "typed": 63,
+      "progress": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "titles": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "subtitles": [
+        0.977065,
+        0.977065,
+        0.977065,
+        0.977065
+      ],
+      "trains": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "at": 7681,
+      "phase": "descriptions",
+      "typed": 63,
+      "progress": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "titles": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "subtitles": [
+        0.998295,
+        0.998295,
+        0.998295,
+        0.998295
+      ],
+      "trains": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "at": 7761,
+      "phase": "complete",
+      "typed": 63,
+      "progress": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "titles": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "subtitles": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "trains": [
+        0.19855769230769318,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "at": 7841,
+      "phase": "complete",
+      "typed": 63,
+      "progress": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "titles": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "subtitles": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "trains": [
+        0.5235576923076949,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "at": 7921,
+      "phase": "complete",
+      "typed": 63,
+      "progress": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "titles": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "subtitles": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "trains": [
+        0.9245192307692317,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "at": 8001,
+      "phase": "complete",
+      "typed": 63,
+      "progress": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "titles": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "subtitles": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "trains": [
+        1,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "at": 8080,
+      "phase": "complete",
+      "typed": 63,
+      "progress": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "titles": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "subtitles": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "trains": [
+        1,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "at": 8161,
+      "phase": "complete",
+      "typed": 63,
+      "progress": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "titles": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "subtitles": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "trains": [
+        1,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "at": 8241,
+      "phase": "complete",
+      "typed": 63,
+      "progress": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "titles": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "subtitles": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "trains": [
+        1,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "at": 8321,
+      "phase": "complete",
+      "typed": 63,
+      "progress": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "titles": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "subtitles": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "trains": [
+        1,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "at": 8401,
+      "phase": "complete",
+      "typed": 63,
+      "progress": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "titles": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "subtitles": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "trains": [
+        1,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "at": 8481,
+      "phase": "complete",
+      "typed": 63,
+      "progress": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "titles": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "subtitles": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "trains": [
+        1,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "at": 8561,
+      "phase": "complete",
+      "typed": 63,
+      "progress": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "titles": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "subtitles": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "trains": [
+        1,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "at": 8641,
+      "phase": "complete",
+      "typed": 63,
+      "progress": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "titles": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "subtitles": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "trains": [
+        1,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "at": 8722,
+      "phase": "complete",
+      "typed": 63,
+      "progress": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "titles": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "subtitles": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "trains": [
+        1,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "at": 8801,
+      "phase": "complete",
+      "typed": 63,
+      "progress": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "titles": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "subtitles": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "trains": [
+        1,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "at": 8880,
+      "phase": "complete",
+      "typed": 63,
+      "progress": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "titles": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "subtitles": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "trains": [
+        1,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "at": 8963,
+      "phase": "complete",
+      "typed": 63,
+      "progress": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "titles": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "subtitles": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "trains": [
+        1,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "at": 9042,
+      "phase": "complete",
+      "typed": 63,
+      "progress": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "titles": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "subtitles": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "trains": [
+        1,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "at": 9121,
+      "phase": "complete",
+      "typed": 63,
+      "progress": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "titles": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "subtitles": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "trains": [
+        1,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "at": 9201,
+      "phase": "complete",
+      "typed": 63,
+      "progress": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "titles": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "subtitles": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "trains": [
+        1,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "at": 9280,
+      "phase": "complete",
+      "typed": 63,
+      "progress": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "titles": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "subtitles": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "trains": [
+        1,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "at": 9364,
+      "phase": "complete",
+      "typed": 63,
+      "progress": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "titles": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "subtitles": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "trains": [
+        1,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "at": 9442,
+      "phase": "complete",
+      "typed": 63,
+      "progress": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "titles": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "subtitles": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "trains": [
+        1,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "at": 9522,
+      "phase": "complete",
+      "typed": 63,
+      "progress": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "titles": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "subtitles": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "trains": [
+        1,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "at": 9600,
+      "phase": "complete",
+      "typed": 63,
+      "progress": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "titles": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "subtitles": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "trains": [
+        1,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "at": 9681,
+      "phase": "complete",
+      "typed": 63,
+      "progress": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "titles": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "subtitles": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "trains": [
+        1,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "at": 9761,
+      "phase": "complete",
+      "typed": 63,
+      "progress": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "titles": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "subtitles": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "trains": [
+        1,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "at": 9842,
+      "phase": "complete",
+      "typed": 63,
+      "progress": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "titles": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "subtitles": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "trains": [
+        1,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "at": 9922,
+      "phase": "complete",
+      "typed": 63,
+      "progress": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "titles": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "subtitles": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "trains": [
+        1,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "at": 10001,
+      "phase": "complete",
+      "typed": 63,
+      "progress": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "titles": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "subtitles": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "trains": [
+        1,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "at": 10081,
+      "phase": "complete",
+      "typed": 63,
+      "progress": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "titles": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "subtitles": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "trains": [
+        1,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "at": 10161,
+      "phase": "complete",
+      "typed": 63,
+      "progress": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "titles": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "subtitles": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "trains": [
+        0.7457264957264953,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "at": 10242,
+      "phase": "complete",
+      "typed": 63,
+      "progress": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "titles": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "subtitles": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "trains": [
+        0.3905982905982973,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "at": 10322,
+      "phase": "complete",
+      "typed": 63,
+      "progress": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "titles": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "subtitles": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "trains": [
+        0.0333333333333383,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "at": 10401,
+      "phase": "complete",
+      "typed": 63,
+      "progress": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "titles": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "subtitles": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "trains": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "at": 10481,
+      "phase": "complete",
+      "typed": 63,
+      "progress": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "titles": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "subtitles": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "trains": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "at": 10561,
+      "phase": "complete",
+      "typed": 63,
+      "progress": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "titles": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "subtitles": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "trains": [
+        0,
+        0,
+        0,
+        0
+      ]
+    }
+  ],
+  "passed": true
+}

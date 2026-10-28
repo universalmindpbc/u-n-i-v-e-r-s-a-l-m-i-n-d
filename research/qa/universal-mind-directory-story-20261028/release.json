@@ -1,0 +1,57 @@
+{
+  "recordedAt": "2026-10-28T06:37:20.567660+00:00",
+  "sourceCommit": "9fd6921dc62132dfb6af21fef55bd85a235f0cd9",
+  "sourceCommits": [
+    "67ea4f256aaa07c2ae282ccabc50d3adf07bad6e",
+    "9fd6921dc62132dfb6af21fef55bd85a235f0cd9"
+  ],
+  "stagingUrl": "https://staging.universalmind.tv/home/",
+  "entryUrl": "https://staging.universalmind.tv/",
+  "publisher": "./deploy-panthur-staging.sh directory",
+  "productionModified": false,
+  "validation": {
+    "syntaxAndExactCopy": true,
+    "versionedAssetsMatchCommittedSource": true,
+    "sequentialRailAndTitleEntrances": true,
+    "sharedSubtitleReveal": true,
+    "renderedHelveticaNeueOnMacOS": true,
+    "mutedBrowserProcess": true,
+    "nativeFullscreenInvoked": false,
+    "fullscreenApiInterceptedForActivationAndHandoffChecks": true,
+    "noSecondEventsLogin": true,
+    "responsiveViewports": [
+      {
+        "width": 1920,
+        "height": 1080
+      },
+      {
+        "width": 1664,
+        "height": 936
+      },
+      {
+        "width": 1470,
+        "height": 920
+      },
+      {
+        "width": 390,
+        "height": 844
+      },
+      {
+        "width": 320,
+        "height": 568
+      }
+    ],
+    "reducedMotionAndKeyboard": true
+  },
+  "fontAvailability": "Helvetica Neue uses the installed system face. A generic sans-serif fallback applies on devices without that font.",
+  "evidence": {
+    "routes-1664.png": "bb298d84c2db6401714dccd667f73539ccb5482590fc3c509c45a6bf850a3e0c",
+    "intro-1664.png": "91a7674d7f29997940ee1da726596a90b249b80c51c36b55e002e9c20c5659f4",
+    "verify-story.mjs": "752e31b10fe215d41faa8383e851b5f313d90f613aab7714c2f916f0edcc00b5",
+    "verification.json": "9cbcc2756c7929a8d5f1bc081c4df4c429d2f9c3ab5ac1f6ac1377778bb5fb18",
+    "complete-390.png": "b45d2ebbd09958d3dc32e2841cbf3adfda60d4722bec8694fe726b6ccf6844d5",
+    "http-verification.json": "22c0e0cf34d41b1a2bf8020beb8cf3e2fc7b577bb9a6d419b0b66dc8b2f6f2d0",
+    "complete-1664.png": "03d122f59122f321afdb9ed2318c6cfe4ae7df71c6408e835c99eda8bb6b89ca",
+    "journey-verification.json": "0d9a47fd0a14ddfaf02283031c28c634888152090765328afc307d989dcc71d8"
+  }
+}

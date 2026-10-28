@@ -1,0 +1,51 @@
+{
+  "verifiedAt": "2026-10-28T06:36:02.325896+00:00",
+  "assets": [
+    {
+      "url": "https://staging.universalmind.tv/index.html",
+      "sha256": "83a51ae65888d42570f7b766f6b90f5aa0734e835deebf4a53ecc73405637b38",
+      "matchesCommittedSource": true,
+      "bytes": 20739
+    },
+    {
+      "url": "https://staging.universalmind.tv/home/index.html",
+      "sha256": "46b802899914a7a4e7e35fb299d30e9432640b7d76dc4f7ae5c4b4af2b44d217",
+      "matchesCommittedSource": true,
+      "bytes": 7181
+    },
+    {
+      "url": "https://staging.universalmind.tv/home/directory.css?v=4",
+      "sha256": "0bef8c1390418d8268d015b5e8def301d2ca2bfb38dd5f002efe3060df9a1a20",
+      "matchesCommittedSource": true,
+      "bytes": 7812
+    },
+    {
+      "url": "https://staging.universalmind.tv/home/directory.js?v=5",
+      "sha256": "4775720c59aed29dfea20a87ed746d4143c866818c88c38f6ab5ef5bf0abd199",
+      "matchesCommittedSource": true,
+      "bytes": 7050
+    },
+    {
+      "url": "https://staging.universalmind.tv/home/directory-story.js?v=1",
+      "sha256": "a669cca00b77570f31035fa86c3d471dabfab5873c88d1eb58d353a9b3ce1873",
+      "matchesCommittedSource": true,
+      "bytes": 5811
+    },
+    {
+      "url": "https://staging.universalmind.tv/home/entry-shell.css?v=1",
+      "sha256": "f4f97b9c6ef7f46915f10044256bda31a2aae0064cc2bfeab44223fff2d94570",
+      "matchesCommittedSource": true,
+      "bytes": 404
+    },
+    {
+      "url": "https://staging.universalmind.tv/home/entry-shell.js?v=2",
+      "sha256": "80e8ced119e2cb2478386bfe9ee82443a60d277bd20cdad7eead96f173275023",
+      "matchesCommittedSource": true,
+      "bytes": 2352
+    }
+  ],
+  "productionLandingUnchanged": true,
+  "passwordAllowlistUnchanged": true,
+  "productionLandingSha256": "0e896f7665627f256f6ef8fc98b210739dcec51de9eec519f298b0ceba9346eb",
+  "passed": true
+}

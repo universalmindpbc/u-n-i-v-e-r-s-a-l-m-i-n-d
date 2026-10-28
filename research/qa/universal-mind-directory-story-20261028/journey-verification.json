@@ -1,0 +1,254 @@
+{
+  "verifiedAt": "2026-10-28T06:36:13.082Z",
+  "origin": "https://staging.universalmind.tv",
+  "processAudioDisabled": true,
+  "nativeFullscreenInvoked": false,
+  "fullscreenVerification": "Fullscreen API intercepted; user activation, request timing and viewport handoff tested without native fullscreen.",
+  "checks": [
+    {
+      "loginFullscreenRequest": {
+        "userActivation": true,
+        "beforeSessionRequest": true,
+        "options": {
+          "navigationUI": "hide"
+        }
+      },
+      "retainedDocumentThroughDirectory": true,
+      "hiddenSplashAnimationPaused": true,
+      "iframeViewport": {
+        "width": 1664,
+        "height": 936,
+        "left": 0,
+        "top": 0,
+        "viewportWidth": 1664,
+        "viewportHeight": 936,
+        "allow": "autoplay; fullscreen"
+      }
+    },
+    {
+      "silentFestivalLoop": {
+        "source": "https://rmu.universalmind.tv/rihanna-global-citizen-loop.mp4",
+        "muted": true,
+        "defaultMuted": true,
+        "volume": 0,
+        "loop": true,
+        "playsInline": true,
+        "paused": false,
+        "time": 7.826736,
+        "readyState": 4,
+        "width": 1280,
+        "height": 720
+      }
+    },
+    {
+      "originalFlowerRetained": {
+        "source": "https://staging.universalmind.tv/vogue/iam/a%20s%20s%20e%20t%20s/Universal%20Mind%20[%20I%20o%20H%20]%20Logo.PNG",
+        "width": 94,
+        "opacity": "1",
+        "filter": "none"
+      },
+      "overlay": "rgba(0, 0, 0, 0.78)"
+    },
+    {
+      "yellowRollover": "watch",
+      "colours": {
+        "title": "rgb(255, 230, 0)",
+        "dot": "rgb(255, 230, 0)",
+        "border": "rgb(255, 230, 0)",
+        "description": "rgb(255, 255, 255)"
+      }
+    },
+    {
+      "yellowRollover": "events",
+      "colours": {
+        "title": "rgb(255, 230, 0)",
+        "dot": "rgb(255, 230, 0)",
+        "border": "rgb(255, 230, 0)",
+        "description": "rgb(255, 255, 255)"
+      }
+    },
+    {
+      "yellowRollover": "research",
+      "colours": {
+        "title": "rgb(255, 230, 0)",
+        "dot": "rgb(255, 230, 0)",
+        "border": "rgb(255, 230, 0)",
+        "description": "rgb(255, 255, 255)"
+      }
+    },
+    {
+      "yellowKeyboardFocus": true,
+      "happinessInactiveWhite": true
+    },
+    {
+      "backgroundPauseResume": true
+    },
+    {
+      "layout": {
+        "width": 1470,
+        "height": 920
+      },
+      "geometry": {
+        "width": 1470,
+        "scroll": 1470,
+        "flower": 94,
+        "cards": [
+          {
+            "left": 47.03125,
+            "right": 363.484375,
+            "top": 172.921875,
+            "bottom": 256.4375
+          },
+          {
+            "left": 1092.75,
+            "right": 1422.96875,
+            "top": 172.921875,
+            "bottom": 256.4375
+          },
+          {
+            "left": 47.03125,
+            "right": 363.484375,
+            "top": 714.3125,
+            "bottom": 818.828125
+          },
+          {
+            "left": 1092.75,
+            "right": 1422.96875,
+            "top": 714.3125,
+            "bottom": 797.828125
+          }
+        ]
+      }
+    },
+    {
+      "layout": {
+        "width": 1920,
+        "height": 1080
+      },
+      "geometry": {
+        "width": 1920,
+        "scroll": 1920,
+        "flower": 94,
+        "cards": [
+          {
+            "left": 61.4375,
+            "right": 474.765625,
+            "top": 194.359375,
+            "bottom": 280.359375
+          },
+          {
+            "left": 1427.265625,
+            "right": 1858.5625,
+            "top": 194.359375,
+            "bottom": 280.359375
+          },
+          {
+            "left": 61.4375,
+            "right": 474.765625,
+            "top": 841.234375,
+            "bottom": 948.234375
+          },
+          {
+            "left": 1427.265625,
+            "right": 1858.5625,
+            "top": 841.234375,
+            "bottom": 927.234375
+          }
+        ]
+      }
+    },
+    {
+      "layout": {
+        "width": 390,
+        "height": 844
+      },
+      "geometry": {
+        "width": 390,
+        "scroll": 390,
+        "flower": 82,
+        "cards": [
+          {
+            "left": 24,
+            "right": 174.46875,
+            "top": 124,
+            "bottom": 191.59375
+          },
+          {
+            "left": 215.53125,
+            "right": 366,
+            "top": 124,
+            "bottom": 191.59375
+          },
+          {
+            "left": 24,
+            "right": 174.46875,
+            "top": 642.390625,
+            "bottom": 790.078125
+          },
+          {
+            "left": 215.53125,
+            "right": 366,
+            "top": 642.390625,
+            "bottom": 751.078125
+          }
+        ]
+      }
+    },
+    {
+      "layout": {
+        "width": 320,
+        "height": 568
+      },
+      "geometry": {
+        "width": 320,
+        "scroll": 320,
+        "flower": 82,
+        "cards": [
+          {
+            "left": 18,
+            "right": 142.953125,
+            "top": 117,
+            "bottom": 204.09375
+          },
+          {
+            "left": 177.046875,
+            "right": 302,
+            "top": 117,
+            "bottom": 225.6875
+          },
+          {
+            "left": 18,
+            "right": 142.953125,
+            "top": 577.796875,
+            "bottom": 725.484375
+          },
+          {
+            "left": 177.046875,
+            "right": 302,
+            "top": 577.796875,
+            "bottom": 705.984375
+          }
+        ]
+      }
+    },
+    {
+      "eventsTopLevelContext": true,
+      "noSecondLogin": true
+    },
+    {
+      "watchTopLevelContext": true
+    },
+    {
+      "researchTopLevelContext": true
+    },
+    {
+      "blockedFullscreenStillEntersDirectory": true,
+      "fullscreenFallbackAndExitControl": true
+    },
+    {
+      "reducedMotionPausesVideoAndRouteAnimation": true
+    }
+  ],
+  "errors": [],
+  "passed": true
+}
