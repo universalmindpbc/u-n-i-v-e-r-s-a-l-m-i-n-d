@@ -1,0 +1,21 @@
+{
+  "createdAt": "2026-10-28T05:20:05.545769+00:00",
+  "stagingUrl": "https://staging.universalmind.tv/events/",
+  "sourceCommit": "7e947a162837d70edda44ee3ee5fc372985e25df",
+  "publisher": "./deploy-panthur-staging.sh events",
+  "productionModified": false,
+  "change": "Clicking the flower opens About directly. The intermediate single-item menu is removed. Clicking the flower again, Back to experience, or Escape closes About.",
+  "validation": [
+    "JavaScript syntax, PHP parsing and git diff checks passed.",
+    "Desktop and mobile: single-click About, flower toggle, Back to experience, retained copy and silent animated background verified.",
+    "Keyboard Enter, dialog focus cycle, Escape, Proposal link and focus restoration verified.",
+    "Live versioned CSS and JavaScript match committed SHA-256 hashes.",
+    "No page errors. Browser closed after verification; --mute-audio enabled and native fullscreen blocked.",
+    "Unrelated staging manifest entries preserved."
+  ],
+  "sourceSha256": {
+    "events/assets/events.css": "7f53a0449c3817195093459381ff4c40cb33460ba7887730c92741125658781a",
+    "events/assets/events.js": "28013da42465469f3b6e01e7b001053cd536334586113b418eab02f995b22c82",
+    "events/index.php": "630cf6c63c60cd70d430af82b483d09e5c269d891cdb5ab2a71552d2a6a38ce2"
+  }
+}

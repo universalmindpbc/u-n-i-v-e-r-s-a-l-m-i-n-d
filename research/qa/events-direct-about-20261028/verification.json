@@ -1,0 +1,59 @@
+{
+  "url": "https://staging.universalmind.tv/events/",
+  "processAudioDisabled": true,
+  "nativeFullscreenInvoked": false,
+  "checks": [
+    {
+      "viewport": {
+        "width": 1470,
+        "height": 920
+      },
+      "oneClickOpensAbout": true,
+      "extraMenuAbsent": true,
+      "returnButtonWorks": true,
+      "flowerToggleCloses": true,
+      "backgroundLoopMutedAndAdvancing": true,
+      "panel": {
+        "background": "rgba(0, 0, 0, 0.64)",
+        "scrollTop": 0,
+        "font": "\"Helvetica Neue\""
+      }
+    },
+    {
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "oneClickOpensAbout": true,
+      "extraMenuAbsent": true,
+      "returnButtonWorks": true,
+      "flowerToggleCloses": true,
+      "backgroundLoopMutedAndAdvancing": true,
+      "panel": {
+        "background": "rgba(0, 0, 0, 0.64)",
+        "scrollTop": 0,
+        "font": "\"Helvetica Neue\""
+      }
+    },
+    {
+      "keyboardEnterOpensDirectly": true,
+      "focusTrapWorks": true,
+      "escapeCloses": true,
+      "proposalLinkAndFocusReturnWork": true
+    }
+  ],
+  "errors": [],
+  "assets": [
+    {
+      "url": "https://staging.universalmind.tv/events/assets/events.css?v=8",
+      "sha256": "7f53a0449c3817195093459381ff4c40cb33460ba7887730c92741125658781a",
+      "matchesCommittedSource": true
+    },
+    {
+      "url": "https://staging.universalmind.tv/events/assets/events.js?v=8",
+      "sha256": "28013da42465469f3b6e01e7b001053cd536334586113b418eab02f995b22c82",
+      "matchesCommittedSource": true
+    }
+  ],
+  "passed": true
+}
