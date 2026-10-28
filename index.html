@@ -9,8 +9,8 @@
     <link rel="shortcut icon" type="image/png" href="/vogue/iam/favicon.png?v=iam-favicon-3">
     <link rel="apple-touch-icon" sizes="180x180" href="/vogue/iam/apple-touch-icon.png?v=iam-favicon-3">
     <link rel="preload" as="image" href="/vogue/iam/a s s e t s/Universal Mind [ I o H ] Logo.PNG">
-    <link rel="stylesheet" href="/home/entry-shell.css?v=1">
-    <script src="/home/entry-shell.js?v=3" defer></script>
+    <link rel="stylesheet" href="/home/entry-shell.css?v=2">
+    <script src="/home/entry-shell.js?v=4" defer></script>
     <style>
       :root {
         color-scheme: dark;
@@ -522,6 +522,7 @@
           }
 
           entryPending = true;
+          window.UniversalMindEntry?.beginDirectoryPlayback();
           try {
             const passwordHash = cachedPassword === password && cachedDigest
               ? cachedDigest : await hashPassword(password);
@@ -571,6 +572,7 @@
               return;
             }
           } catch (error) {
+            window.UniversalMindEntry?.cancelDirectoryPlayback();
             window.UniversalMindEntry?.cancelLoginFullscreen();
             rejectAccess("unable to verify — please try again");
             return;
@@ -578,6 +580,7 @@
             entryPending = document.body.dataset.accessState === "granted";
           }
 
+          window.UniversalMindEntry?.cancelDirectoryPlayback();
           rejectAccess("password not recognised");
           passwordInput.select();
         });

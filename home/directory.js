@@ -1,5 +1,6 @@
 (() => {
-  const film = document.querySelector('.festival-film');
+  const localFilm = document.querySelector('.festival-film');
+  let film = localFilm;
   const ambientToggle = document.querySelector('.ambient-toggle');
   const fullscreenToggle = document.querySelector('.fullscreen-toggle');
   const motion = window.matchMedia('(prefers-reduced-motion: reduce)');
@@ -8,6 +9,14 @@
   try {
     if (window.parent !== window && window.parent.UniversalMindEntry) shell = window.parent.UniversalMindEntry;
   } catch (_) { /* A standalone directory retains its own fullscreen control. */ }
+  const entryFilm = shell?.getDirectoryFilm?.();
+  if (entryFilm) {
+    film = entryFilm;
+    document.documentElement.classList.add('has-entry-film');
+    userPaused = motion.matches || film.dataset.userPaused === 'true';
+  }
+  const mediaListeners = new AbortController();
+  const onFilm = (type, listener) => film.addEventListener(type, listener, { signal: mediaListeners.signal });
   const syncFullscreen = () => {
     fullscreenToggle.hidden = !shell?.fullscreenSupported();
     const label = shell?.fullscreenActive() ? 'Exit fullscreen' : 'Enter fullscreen';
@@ -31,13 +40,14 @@
   let explicitLoadRequested = false;
   const mediaEvents = [];
   ['loadstart', 'loadedmetadata', 'loadeddata', 'canplay', 'play', 'playing', 'pause', 'stalled', 'suspend', 'error'].forEach(type => {
-    film.addEventListener(type, () => {
+    onFilm(type, () => {
       mediaEvents.push({ type, at: Math.round(performance.now()), readyState: film.readyState, networkState: film.networkState });
       if (mediaEvents.length > 16) mediaEvents.shift();
     });
   });
   const playbackDiagnostic = () => ({
-    revision: 'safari-silent-4',
+    revision: 'entry-player-5',
+    playerOwner: entryFilm ? 'login document' : 'directory document',
     explicitLoadRequested,
     mediaEvents,
     reducedMotion: motion.matches,
@@ -51,8 +61,8 @@
       autoplay: film.autoplay, playsInline: film.playsInline,
       readyState: film.readyState, networkState: film.networkState,
       currentTime: film.currentTime, error: film.error?.code || null,
-      source: film.currentSrc, declaredSource: film.getAttribute('src'), opacity: getComputedStyle(film).opacity,
-      parentOpacity: getComputedStyle(film.parentElement).opacity
+      source: film.currentSrc, declaredSource: film.getAttribute('src'), opacity: film.ownerDocument.defaultView.getComputedStyle(film).opacity,
+      parentOpacity: film.ownerDocument.defaultView.getComputedStyle(film.parentElement).opacity
     },
     browser: navigator.userAgent
   });
@@ -125,25 +135,31 @@
   if (userPaused) film.pause();
   // Keep the parser-declared source intact so Safari can start native autoplay.
   if (!film.getAttribute('src')) film.src = film.dataset.src;
-  film.addEventListener('loadedmetadata', playFilm);
-  film.addEventListener('loadeddata', () => { film.classList.add('is-ready'); playFilm(); });
-  film.addEventListener('canplay', playFilm);
-  film.addEventListener('playing', () => { autoplayBlocked = false; film.classList.add('is-ready'); syncFilm(); });
-  film.addEventListener('pause', syncFilm);
-  film.addEventListener('error', () => { autoplayBlocked = true; document.body.dataset.festivalMedia = 'unavailable'; syncFilm(); });
+  onFilm('loadedmetadata', playFilm);
+  onFilm('loadeddata', () => { film.classList.add('is-ready'); playFilm(); });
+  onFilm('canplay', playFilm);
+  onFilm('playing', () => { autoplayBlocked = false; film.classList.add('is-ready'); syncFilm(); });
+  onFilm('pause', syncFilm);
+  onFilm('error', () => { autoplayBlocked = true; document.body.dataset.festivalMedia = 'unavailable'; syncFilm(); });
   ambientToggle.addEventListener('click', () => {
     userPaused = autoplayBlocked ? false : !userPaused;
     autoplayBlocked = false;
+    film.dataset.userPaused = String(userPaused);
     if (userPaused) film.pause();
     else playFilm();
     syncFilm();
     document.dispatchEvent(new CustomEvent('directory:motion', { detail: { paused: userPaused } }));
   });
   // iOS may defer even silent autoplay until a visitor gesture.
-  document.addEventListener('pointerup', event => {
-    if (event.target.closest('.ambient-toggle,[data-playback-diagnostic]')) return;
+  const retryFromGesture = event => {
+    if (event.target.closest?.('.ambient-toggle,[data-playback-diagnostic]')) return;
     if (!userPaused && film.paused) playFilm();
-  }, { passive: true });
+  };
+  document.addEventListener('touchend', retryFromGesture, { passive: true });
+  document.addEventListener('click', retryFromGesture);
+  document.addEventListener('keydown', event => {
+    if (event.key === 'Enter' || event.key === ' ') retryFromGesture(event);
+  });
   document.addEventListener('directory:motion', event => {
     if (event.detail.paused) film.pause();
   });
@@ -153,13 +169,15 @@
   });
   motion.addEventListener('change', () => {
     userPaused = motion.matches;
+    film.dataset.userPaused = String(userPaused);
     film.autoplay = !userPaused;
     if (userPaused) film.pause();
     else prepareFilm();
     syncFilm();
   });
-  window.addEventListener('pagehide', () => {
+  window.addEventListener('pagehide', event => {
     film.pause();
+    if (!event.persisted) mediaListeners.abort();
     fullscreenDocument.removeEventListener('fullscreenchange', syncFullscreen);
     fullscreenDocument.removeEventListener('webkitfullscreenchange', syncFullscreen);
   });
@@ -171,6 +189,7 @@
   });
   prepareFilm();
   syncFilm();
+  if (userPaused) window.addEventListener('DOMContentLoaded', () => document.dispatchEvent(new CustomEvent('directory:motion', { detail: { paused: true } })), { once: true });
   window.setTimeout(() => {
     if (!userPaused && !document.hidden && !document.body.classList.contains('is-experience-shell') && film.paused && !playAttempt) {
       autoplayBlocked = true;

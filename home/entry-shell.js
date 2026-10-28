@@ -1,5 +1,31 @@
 (() => {
   let frame = null;
+  let directoryFilm = null;
+  const beginDirectoryPlayback = () => {
+    if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    if (!directoryFilm) {
+      directoryFilm = document.createElement('video');
+      directoryFilm.className = 'um-directory-film';
+      directoryFilm.muted = true;
+      directoryFilm.defaultMuted = true;
+      directoryFilm.volume = 0;
+      directoryFilm.playsInline = true;
+      directoryFilm.setAttribute('playsinline', '');
+      directoryFilm.setAttribute('webkit-playsinline', '');
+      directoryFilm.loop = true;
+      directoryFilm.preload = 'auto';
+      directoryFilm.poster = '/home/assets/festival-poster.jpg';
+      directoryFilm.src = '/home/assets/festival-loop.mp4?v=silent-1';
+      directoryFilm.setAttribute('aria-hidden', 'true');
+      directoryFilm.disablePictureInPicture = true;
+      directoryFilm.disableRemotePlayback = true;
+      document.body.append(directoryFilm);
+    }
+    directoryFilm.dataset.userPaused = 'false';
+    // Keep this call synchronous with Enter, before password hashing or fetch.
+    directoryFilm.play().catch(() => {});
+  };
+  const cancelDirectoryPlayback = () => directoryFilm?.pause();
   let loginOwnsFullscreen = false;
   let loginCancelled = false;
   const active = () => Boolean(document.fullscreenElement || document.webkitFullscreenElement);
@@ -38,7 +64,11 @@
     if (destination.origin !== location.origin) return false;
     const route = destination.pathname + destination.search + destination.hash;
     if (record) history.pushState({ umShell: true, umShellRoute: route }, '', route);
-    document.querySelectorAll('video,audio').forEach(media => media.pause());
+    const showingDirectory = /^\/home\/(?:index\.html)?$/.test(destination.pathname);
+    document.body.classList.toggle('um-directory-film-active', Boolean(showingDirectory && directoryFilm));
+    document.querySelectorAll('video,audio').forEach(media => {
+      if (media !== directoryFilm || !showingDirectory) media.pause();
+    });
     document.dispatchEvent(new CustomEvent('directory:motion', { detail: { paused: true } }));
     if (!frame) {
       frame = document.createElement('iframe');
@@ -94,7 +124,16 @@
   window.addEventListener('popstate', event => {
     if (frame && event.state?.umShellRoute) navigate(event.state.umShellRoute, 'Universal Mind', false);
   });
+  window.addEventListener('pagehide', cancelDirectoryPlayback);
   window.UniversalMindEntry = {
+    beginDirectoryPlayback,
+    cancelDirectoryPlayback,
+    getDirectoryFilm: () => directoryFilm,
+    getBackgroundFilm: () => directoryFilm,
+    setBackgroundVisible: visible => {
+      document.body.classList.toggle('um-directory-film-active', Boolean(visible && directoryFilm));
+      if (!visible) directoryFilm?.pause();
+    },
     requestFullscreen: request,
     exitFullscreen: exit,
     fullscreenActive: active,
