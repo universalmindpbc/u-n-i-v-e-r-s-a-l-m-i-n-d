@@ -1,0 +1,246 @@
+{
+  "date": "2026-10-28",
+  "environment": "staging",
+  "browser": "Dedicated Chromium; 390x844 touch viewport, not a physical iPhone test",
+  "viewport": {
+    "width": 390,
+    "height": 844
+  },
+  "audio": "--mute-audio confirmed on process launch",
+  "fullscreen": "All native fullscreen entry APIs stubbed before navigation",
+  "notes": [
+    "Chromium retains the child currentSrc after source removal; no duplicate playback is assessed using removed src, paused state, zero currentTime, play-call count and playing-event count."
+  ],
+  "journeys": [
+    {
+      "kind": "root-directory",
+      "checks": [
+        "Background play invoked synchronously by the real Enter click",
+        "Same root video continues with advancing currentTime; transparent child uses hosted background without local MP4 playback",
+        "Presentation CTA centered, visible and clickable within 390x844 viewport"
+      ],
+      "pageErrors": [],
+      "failed": null,
+      "afterEntry": {
+        "sameAsGestureStarted": true,
+        "currentTime": 0.307468,
+        "paused": false,
+        "readyState": 4,
+        "currentSrc": "https://staging.universalmind.tv/home/assets/festival-loop.mp4?v=silent-1",
+        "muted": true,
+        "loop": true,
+        "connected": true,
+        "visible": false,
+        "rootClasses": "",
+        "firstPlay": {
+          "id": "",
+          "className": "um-directory-film",
+          "path": "/",
+          "at": 276.19999980926514,
+          "currentTime": 0,
+          "activeGesture": true
+        }
+      },
+      "directory": {
+        "sameAsGestureStarted": true,
+        "currentTime": 0.813864,
+        "paused": false,
+        "readyState": 4,
+        "currentSrc": "https://staging.universalmind.tv/home/assets/festival-loop.mp4?v=silent-1",
+        "muted": true,
+        "loop": true,
+        "connected": true,
+        "visible": true,
+        "rootClasses": "um-directory-film-active is-experience-shell",
+        "firstPlay": {
+          "id": "",
+          "className": "um-directory-film",
+          "path": "/",
+          "at": 276.19999980926514,
+          "currentTime": 0,
+          "activeGesture": true
+        }
+      },
+      "happinessParent": {
+        "sameAsGestureStarted": true,
+        "currentTime": 13.902752,
+        "paused": false,
+        "readyState": 4,
+        "currentSrc": "https://staging.universalmind.tv/home/assets/festival-loop.mp4?v=silent-1",
+        "muted": true,
+        "loop": true,
+        "connected": true,
+        "visible": true,
+        "rootClasses": "is-experience-shell um-directory-film-active",
+        "firstPlay": {
+          "id": "",
+          "className": "um-directory-film",
+          "path": "/",
+          "at": 276.19999980926514,
+          "currentTime": 0,
+          "activeGesture": true
+        }
+      },
+      "happinessChild": {
+        "hosted": "true",
+        "bodyBackground": "rgba(0, 0, 0, 0)",
+        "htmlBackground": "rgba(0, 0, 0, 0)",
+        "localVideo": {
+          "paused": true,
+          "currentTime": 0,
+          "readyState": 0,
+          "networkState": 0,
+          "buffered": [],
+          "src": null,
+          "currentSrc": "https://staging.universalmind.tv/home/assets/festival-loop.mp4?v=silent-1",
+          "playCalls": 0,
+          "playingEvents": 0
+        },
+        "cta": {
+          "x": 20,
+          "y": 396.921875,
+          "width": 350,
+          "height": 50.15625,
+          "visible": true,
+          "centered": true,
+          "hitTarget": true
+        },
+        "filmHidden": true
+      },
+      "childAfter400ms": {
+        "hosted": "true",
+        "bodyBackground": "rgba(0, 0, 0, 0)",
+        "htmlBackground": "rgba(0, 0, 0, 0)",
+        "localVideo": {
+          "paused": true,
+          "currentTime": 0,
+          "readyState": 0,
+          "networkState": 0,
+          "buffered": [],
+          "src": null,
+          "currentSrc": "https://staging.universalmind.tv/home/assets/festival-loop.mp4?v=silent-1",
+          "playCalls": 0,
+          "playingEvents": 0
+        },
+        "cta": {
+          "x": 20,
+          "y": 396.921875,
+          "width": 350,
+          "height": 50.15625,
+          "visible": true,
+          "centered": true,
+          "hitTarget": true
+        },
+        "filmHidden": true
+      },
+      "passed": true
+    },
+    {
+      "kind": "direct-happiness",
+      "checks": [
+        "Background play invoked synchronously by the real Enter click",
+        "Same root video continues with advancing currentTime; transparent child uses hosted background without local MP4 playback",
+        "Presentation CTA centered, visible and clickable within 390x844 viewport"
+      ],
+      "pageErrors": [],
+      "failed": null,
+      "afterEntry": {
+        "sameAsGestureStarted": true,
+        "currentTime": 0.30843,
+        "paused": false,
+        "readyState": 4,
+        "currentSrc": "https://staging.universalmind.tv/home/assets/festival-loop.mp4?v=silent-1",
+        "muted": true,
+        "loop": true,
+        "connected": true,
+        "visible": true,
+        "rootClasses": "invitation",
+        "firstPlay": {
+          "id": "",
+          "className": "happiness-entry-background",
+          "path": "/happiness/",
+          "at": 253.39999961853027,
+          "currentTime": 0,
+          "activeGesture": true
+        }
+      },
+      "happinessParent": {
+        "sameAsGestureStarted": true,
+        "currentTime": 1.143468,
+        "paused": false,
+        "readyState": 4,
+        "currentSrc": "https://staging.universalmind.tv/home/assets/festival-loop.mp4?v=silent-1",
+        "muted": true,
+        "loop": true,
+        "connected": true,
+        "visible": true,
+        "rootClasses": "invitation",
+        "firstPlay": {
+          "id": "",
+          "className": "happiness-entry-background",
+          "path": "/happiness/",
+          "at": 253.39999961853027,
+          "currentTime": 0,
+          "activeGesture": true
+        }
+      },
+      "happinessChild": {
+        "hosted": "true",
+        "bodyBackground": "rgba(0, 0, 0, 0)",
+        "htmlBackground": "rgba(0, 0, 0, 0)",
+        "localVideo": {
+          "paused": true,
+          "currentTime": 0,
+          "readyState": 0,
+          "networkState": 0,
+          "buffered": [],
+          "src": null,
+          "currentSrc": "https://staging.universalmind.tv/home/assets/festival-loop.mp4?v=silent-1",
+          "playCalls": 0,
+          "playingEvents": 0
+        },
+        "cta": {
+          "x": 20,
+          "y": 396.921875,
+          "width": 350,
+          "height": 50.15625,
+          "visible": true,
+          "centered": true,
+          "hitTarget": true
+        },
+        "filmHidden": true
+      },
+      "childAfter400ms": {
+        "hosted": "true",
+        "bodyBackground": "rgba(0, 0, 0, 0)",
+        "htmlBackground": "rgba(0, 0, 0, 0)",
+        "localVideo": {
+          "paused": true,
+          "currentTime": 0,
+          "readyState": 0,
+          "networkState": 0,
+          "buffered": [],
+          "src": null,
+          "currentSrc": "https://staging.universalmind.tv/home/assets/festival-loop.mp4?v=silent-1",
+          "playCalls": 0,
+          "playingEvents": 0
+        },
+        "cta": {
+          "x": 20,
+          "y": 396.921875,
+          "width": 350,
+          "height": 50.15625,
+          "visible": true,
+          "centered": true,
+          "hitTarget": true
+        },
+        "filmHidden": true
+      },
+      "passed": true
+    }
+  ],
+  "errors": [],
+  "passed": true,
+  "browserClosed": true,
+  "temporaryCredentialRemoved": true
+}
