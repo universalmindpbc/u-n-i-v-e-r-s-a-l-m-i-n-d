@@ -14,7 +14,7 @@
   const maximise = document.getElementById('fullscreen-toggle');
   const host = window.parent.document;
   const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
-  let media, loading, player, frame, returnFocus;
+  let media, loading, player, frame, returnFocus, streamLoading;
   let openingPending = false;
 
   function syncFullscreen() {
@@ -28,6 +28,26 @@
   host.addEventListener('fullscreenchange', syncFullscreen);
   host.addEventListener('webkitfullscreenchange', syncFullscreen);
 
+  // Pointer interaction never inherits Safari's keyboard focus decoration.
+  document.addEventListener('pointerdown', () => { document.body.dataset.input = 'pointer'; }, {passive:true});
+  document.addEventListener('keydown', event => {
+    if (event.key === 'Tab') document.body.dataset.input = 'keyboard';
+  });
+
+  function loadStreamPlayer() {
+    if (typeof Stream === 'function') return Promise.resolve();
+    if (streamLoading) return streamLoading;
+    streamLoading = new Promise((resolve, reject) => {
+      const script = document.createElement('script');
+      script.src = 'https://embed.cloudflarestream.com/embed/sdk.latest.js';
+      script.async = true;
+      script.onload = () => resolve();
+      script.onerror = () => { script.remove(); streamLoading = null; reject(new Error('The film player is unavailable. Please try again.')); };
+      document.head.append(script);
+    });
+    return streamLoading;
+  }
+
   async function getMedia() {
     if (media && media.expires * 1000 > Date.now()) return media;
     if (loading) return loading;
@@ -37,15 +57,11 @@
     return loading;
   }
   async function startLoop() {
-    if (reducedMotion || !view.hidden || document.hidden || openingPending) return;
+    if (reducedMotion || (!view.hidden && about.hidden) || document.hidden || openingPending) return;
     openingPending = true;
     try {
-      const data = await getMedia();
-      if (!view.hidden || document.hidden) return;
-      if (!loop.src || loop.dataset.expires !== String(data.expires)) {
-        loop.src = data.loop; loop.dataset.expires = String(data.expires);
-      }
-      loop.muted = false;
+      // The source is already in the HTML; no player SDK or media API is needed.
+      loop.muted = !view.hidden;
       loop.volume = 1;
       await loop.play();
       delete loop.dataset.gestureRequired;
@@ -73,6 +89,8 @@
     flower.setAttribute('aria-expanded', String(!nav.hidden));
     flower.setAttribute('aria-label', nav.hidden ? 'Open global navigation' : 'Close global navigation');
     document.body.classList.toggle('panel-open', panelOpen);
+    document.body.classList.toggle('about-open', !about.hidden);
+    if (!view.hidden && about.hidden) loop.pause();
   }
   function dismissPanels() {
     nav.hidden = true; about.hidden = true; syncPanels();
@@ -88,14 +106,15 @@
     if (!nav.hidden) { dismissPanels(); return; }
     returnFocus = document.activeElement;
     about.hidden = true; nav.hidden = false; syncPanels();
-    document.getElementById('nav-home').focus();
+    document.getElementById('nav-about').focus();
   });
   document.getElementById('nav-dismiss').addEventListener('click', () => { dismissPanels(); flower.focus(); });
-  document.getElementById('nav-home').addEventListener('click', () => { dismissPanels(); returnToPoster(); });
   function openAbout() {
     returnFocus = document.activeElement;
     nav.hidden = true; about.hidden = false; syncPanels();
-    about.querySelector('article').focus();
+    about.scrollTop = 0;
+    about.querySelector('article').focus({preventScroll:true});
+    startLoop();
   }
   document.getElementById('nav-about').addEventListener('click', openAbout);
   document.getElementById('proposal-about').addEventListener('click', openAbout);
@@ -105,10 +124,10 @@
   });
 
   watch.addEventListener('click', async () => {
-    status.textContent = ''; watch.disabled = true;
+    status.textContent = 'Loading film…'; watch.disabled = true;
     try {
-      const data = await getMedia();
-      if (typeof Stream !== 'function') throw new Error('The film player is loading. Please try again.');
+      const [data] = await Promise.all([getMedia(), loadStreamPlayer()]);
+      status.textContent = '';
       loop.pause(); dismissPanels(); view.hidden = false;
       document.body.classList.add('film-open'); syncPanels();
       playback.textContent = 'Loading film…';
@@ -122,7 +141,7 @@
       currentPlayer.addEventListener('timeupdate', updateTimecode);
       currentPlayer.addEventListener('durationchange', updateTimecode);
       currentPlayer.addEventListener('ended', () => { if(player===currentPlayer) returnToPoster(); });
-      currentPlayer.addEventListener('error', () => { if(player===currentPlayer) playback.textContent = 'The film is temporarily unavailable. Return through the flower to try again.'; });
+      currentPlayer.addEventListener('error', () => { if(player===currentPlayer) playback.textContent = 'The film is temporarily unavailable. Please refresh and try again.'; });
       flower.focus();
     } catch(error) { status.textContent = error.message; }
     finally { watch.disabled = false; }

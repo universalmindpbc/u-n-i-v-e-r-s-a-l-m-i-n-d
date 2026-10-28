@@ -1,0 +1,36 @@
+{
+  "source_commit": "58211e17387d926de249546d79ef993afe4d27fb",
+  "browser_tested_source_before_rebase": "f2402355a577919821816722be6a252b09f66c2a",
+  "events_source_identical_after_rebase": true,
+  "parallel_staging_base": "7ca12dc",
+  "staging_url": "https://staging.universalmind.tv/events/",
+  "publisher": "./deploy-panthur-staging.sh events",
+  "production_modified": false,
+  "changes": [
+    "598171-byte H.264/AAC opening loop hosted on Panthur behind the existing password session",
+    "Progressive MP4 with HTTP range delivery, HTML preload, and no Cloudflare SDK or media API dependency on entry",
+    "Cloudflare player loads only for the full film",
+    "No rectangular pointer-focus outlines; smaller single About navigation item",
+    "Smaller About typography over a translucent overlay and visible animated loop; landing text hidden behind the overlay",
+    "Mobile About opens at the top, below the global flower"
+  ],
+  "verification": "Password entry and protected endpoints; MP4 byte and range integrity; 0.64-second first moving frame in a fresh test session; desktop and phone layouts; pointer and keyboard focus; About loop texture and retained hormone copy; full film audio state, timecode, continuity and completion; exact live CSS/JS hashes.",
+  "browser_verification": "Dedicated Chromium with --mute-audio; native fullscreen intercepted and state simulated. No subjective audio-quality assertion. Browser closed after verification.",
+  "source_sha256": {
+    "events/.htaccess": "df023a2df19539fcca6d9d053064149a3242500a777f3f2ab308ae848aa0f257",
+    "events/access.php": "41a560de965631a544f31936fb0c6c5e1b00bea0495eb21e84e63e68535a759e",
+    "events/assets/events.css": "22f73030c2c45d6e93e4e0d181d765de9d207257ce6d3a7bf5da99be78a17d26",
+    "events/assets/events.js": "ecdfa94394a1f5cb056c585661017af9a5d20d6063bdfdfd674452a1ae88f2dd",
+    "events/assets/gate-launch.js": "15d066bfe97d289ef5076cbdc6a23ae03eb8994ed79511c49faf637c86efcde6",
+    "events/assets/gate-rain.js": "dfa546c5c987f9a5a7b951173c2bc1d6fd8d9bccfc2766acd8a6fe177fa714e6",
+    "events/assets/gate.css": "7158221715ed52b695ece2e25c4eb82751e5978230fd61178bc1827c84ce665d",
+    "events/index.php": "6a908ceca1de969e583dd9e02cf1ec4e272adad9b6e3680a857d563589055a20",
+    "events/loop.php": "58fd03e59661fa77be71dbefcbf8bf5487a3d2b5be815ab192a5a210cee9fe1b",
+    "events/media.php": "d86a50ee11c21012c029e3d275faa57d72702d94f95ac7c2529625f5a2f7d411",
+    "events/poster.php": "ad25ec01380980ff0c6c460e2296ac7286bec3d469f431708c7155393dd62a9b",
+    "events/private/.htaccess": "fa28d421a28ed9b6f4b997d5119c2b8adbacff6e2dd119a179b71230f9664934",
+    "events/private/media.json": "de6fc8854f147db209941b8d90afed489476cbecfee4a88e6ce78b06168d65f5",
+    "events/private/opening-loop.mp4": "7f887f1e01f937ea9c8b61058d7397cf0e84d9029c328777688cb83afd6a7488",
+    "events/private/poster.jpg": "5fceff4d3ac536b1b869a4e9fa46d1867393b2874ec66af92d17e4c918b84a29"
+  }
+}
