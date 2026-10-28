@@ -33,6 +33,6 @@ assert(directory.includes('href="/iam/"'));
 assert(directory.includes('href="/events/?experience=1"'));
 assert(directory.includes('href="/informatics/"'));
 const festivals = directory.match(/<a[^>]+data-destination="festivals"[^>]*>/)[0];
-assert(festivals.includes('aria-disabled="true"') && !festivals.includes('href='));
+assert(festivals.includes('href="/events/happiness-entry.php"') && festivals.includes('target="_top"') && !festivals.includes('aria-disabled'));
 assert(landing.includes('window.location.assign("/home/")'));
 console.log('Directory source: exact copy, original flower, responsive sizes, routes and landing syntax verified.');
