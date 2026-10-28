@@ -1,0 +1,22 @@
+{
+  "verifiedAt": "2026-10-28T09:08:09.903138+00:00",
+  "sourceCommit": "b2b61c6e86243a7df2e34c3f0e54af04a4e9a992",
+  "url": "https://staging.universalmind.tv/events/",
+  "publisher": "./deploy-panthur-staging.sh events",
+  "productionModified": false,
+  "change": "Retain native muted MP4 playback, remove pre-playing video visibility suppression, and cover paused or blocked video with an authenticated animation of the same loop. The animation has no media playback controls or audio.",
+  "asset": {
+    "bytes": 1238274,
+    "frames": 82,
+    "durationMs": 5466,
+    "infiniteLoop": true,
+    "sha256": "765546f78243fa4ec1d779e4f388d7d91b6c104bb510663e3b156603695f1e84"
+  },
+  "verification": "verification.json",
+  "limits": "Real iPhone Safari was not available. Chromium was launched with --mute-audio. Permanent background video rejection was simulated; animation movement was verified by changing screenshot pixels against a stable static-image control. No native fullscreen was invoked.",
+  "sharedFinding": "The current Events gate creates a new iframe and video after awaiting password authentication; the original entry gesture is not retained. The directory task is investigating a persistent video started synchronously in the entry action. This release makes the Events background animation independent of video autoplay permission.",
+  "references": [
+    "https://webkit.org/blog/6784/new-video-policies-for-ios/",
+    "https://webkit.org/blog/11340/new-webkit-features-in-safari-14/"
+  ]
+}

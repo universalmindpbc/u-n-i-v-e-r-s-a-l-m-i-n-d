@@ -1,0 +1,38 @@
+{
+  "url": "https://staging.universalmind.tv/events/",
+  "processAudioDisabled": true,
+  "realIphoneSafariTested": false,
+  "nativeFullscreenInvoked": false,
+  "cases": [
+    {
+      "mode": "normal",
+      "videoAdvances": true,
+      "muted": true,
+      "volume": 0,
+      "animationCoveredByPlayingVideo": true
+    },
+    {
+      "mode": "blocked",
+      "backgroundVideoPermanentlyBlocked": true,
+      "animationMovesWithoutFurtherGesture": true,
+      "staticControlStable": true,
+      "animationBytes": 1238274,
+      "animationSha256": "765546f78243fa4ec1d779e4f388d7d91b6c104bb510663e3b156603695f1e84",
+      "aboutPassed": true,
+      "filmState": {
+        "time": 0.4003,
+        "paused": false,
+        "muted": false,
+        "volume": 1
+      },
+      "backPassed": true
+    },
+    {
+      "mode": "reduced-motion",
+      "staticPosterSelected": true,
+      "videoPaused": true
+    }
+  ],
+  "privateAssetProtected": true,
+  "passed": true
+}

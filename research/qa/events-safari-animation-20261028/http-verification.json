@@ -1,0 +1,24 @@
+{
+  "url": "https://staging.universalmind.tv/events/",
+  "sourceCommit": "b2b61c6e86243a7df2e34c3f0e54af04a4e9a992",
+  "assets": [
+    {
+      "name": "events.css",
+      "version": "12",
+      "sha256": "f57d7846f5d3b5b3454af038f84c7b5828f532dc35e31893ede55f053e4ca6f0",
+      "matchesCommittedSource": true
+    },
+    {
+      "name": "events.js",
+      "version": "11",
+      "sha256": "2d5869e835af21fe44128774142c3dc6dada6641c1906e6b2053fc354bba195e",
+      "matchesCommittedSource": true
+    },
+    {
+      "name": "gate-launch.js",
+      "version": "2",
+      "sha256": "39e398ca4b6819b0477b788950ff4680eb3ef31f02a70c90d2a2993b506d4693",
+      "matchesCommittedSource": true
+    }
+  ]
+}
