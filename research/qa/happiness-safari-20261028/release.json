@@ -1,0 +1,78 @@
+{
+  "verifiedAt": "2026-10-28T07:52:42.234097+00:00",
+  "sourceCommit": "f1f30dc727db6e26820828afd5dad3518b1f97f5",
+  "playbackSourceCommit": "7b23f8d",
+  "url": "https://staging.universalmind.tv/happiness/",
+  "publisher": "./deploy-panthur-staging.sh happiness",
+  "productionModified": false,
+  "changes": "Native HLS starts synchronously from the visitor tap; Back and timer controls retained. Embedded fallback retained for browsers without native HLS.",
+  "checks": [
+    {
+      "path": "events/happiness-entry.php",
+      "sha256": "cf9b7e51a4df81a32684c6f752b04f944ad596dc695b6c162062a1b4db7742fa",
+      "stagingReadbackMatches": true
+    },
+    {
+      "path": "happiness/.htaccess",
+      "sha256": "1cd36261400342d994fe2b6209b3c3edc130bbf7b6715d7bcc907d70f4660528",
+      "stagingReadbackMatches": true
+    },
+    {
+      "path": "happiness/access.php",
+      "sha256": "97ca6c18f7240a7f3f6abc7bb3e74e36e60a96e1d456901b987e072265740d79",
+      "stagingReadbackMatches": true
+    },
+    {
+      "path": "happiness/assets/festival-poster.jpg",
+      "sha256": "5333d941764fa9f2b594925b68d67fb51187ba8f37867c5a99b2a8f026a213bc",
+      "stagingReadbackMatches": true
+    },
+    {
+      "path": "happiness/assets/gate-launch.js",
+      "sha256": "c7d6b2da87494cd1cb13ce71106b43663bd5a0899049d072719d3ad08ad210d6",
+      "stagingReadbackMatches": true
+    },
+    {
+      "path": "happiness/assets/happiness.css",
+      "sha256": "654d6e1ede7961f8f0ab116766c164f9fa09a666ba41a9e5bbda079591f13cdb",
+      "stagingReadbackMatches": true
+    },
+    {
+      "path": "happiness/assets/happiness.js",
+      "sha256": "d0c061c8a6faad38badfe3211b14cf90a2bcf5c4f634a93a47e9af41ff19413e",
+      "stagingReadbackMatches": true
+    },
+    {
+      "path": "happiness/assets/network.js",
+      "sha256": "ab59e13ef8b22579ea069ab6289866771bcddf5183ac7209d9529820bd135a16",
+      "stagingReadbackMatches": true
+    },
+    {
+      "path": "happiness/assets/universal-mind-flower.png",
+      "sha256": "9265619edbd83d103f4408933ecdb9a02f7a5392075200c4000fa1ec8a14cdee",
+      "stagingReadbackMatches": true
+    },
+    {
+      "path": "happiness/film-config.php",
+      "sha256": "c641e9dc1eb26f78c0b8a1a80143c2758759602452da13b95f3d11ddd1351a82",
+      "stagingReadbackMatches": true
+    },
+    {
+      "path": "happiness/index.php",
+      "sha256": "a9ea6692df6f6977472ecfeca06eaa89124be6ac4a7b78e044c161e93d1d58f5",
+      "stagingReadbackMatches": true
+    },
+    {
+      "path": "happiness/media.php",
+      "sha256": "ada80f87df1861c571920e08f568b8a247dc936838af1ced5c8d713d9a43a341",
+      "stagingReadbackMatches": true
+    }
+  ],
+  "browserVerification": "staging-verification.json",
+  "scopeNote": "The Panthur Happiness scope now excludes home/index.html. The concurrent directory release is separately owned and retains its existing Happiness link.",
+  "platformLimit": "Native HLS decoded in muted Chromium. A physical iPhone Safari test remains for visitor proof. No authenticated gate credential was retrieved or used.",
+  "references": [
+    "https://developer.apple.com/documentation/webkit/delivering-video-content-for-safari",
+    "https://developers.cloudflare.com/stream/viewing-videos/using-own-player/"
+  ]
+}
