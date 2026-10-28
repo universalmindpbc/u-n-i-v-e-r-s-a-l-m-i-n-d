@@ -1,0 +1,38 @@
+{
+  "createdAt": "2026-10-28T05:25:44.465129+00:00",
+  "url": "https://universalmind.tv/events/",
+  "approvedStagingCommit": "b40407b71b6c32760f0141bd5da5e13d875ef6c8",
+  "productionTag": "production-2026-10-28-1625",
+  "previousProductionCommit": "1158eee790bc8ac016bd9afd2292f65f72e2ecfc",
+  "publisher": "./deploy-panthurlive.sh events",
+  "scope": "events/ only",
+  "unchangedFromApprovedSource": true,
+  "sourceSha256": {
+    "events/.htaccess": "df023a2df19539fcca6d9d053064149a3242500a777f3f2ab308ae848aa0f257",
+    "events/access.php": "41a560de965631a544f31936fb0c6c5e1b00bea0495eb21e84e63e68535a759e",
+    "events/assets/events.css": "7f53a0449c3817195093459381ff4c40cb33460ba7887730c92741125658781a",
+    "events/assets/events.js": "28013da42465469f3b6e01e7b001053cd536334586113b418eab02f995b22c82",
+    "events/assets/gate-launch.js": "15d066bfe97d289ef5076cbdc6a23ae03eb8994ed79511c49faf637c86efcde6",
+    "events/assets/gate-rain.js": "27aaac4857613f859deac1d68101949e335ca8d4fa2e9175e2e08bcbfda46c40",
+    "events/assets/gate.css": "07ac782255f88e549dc9fcef2a8eda12b1eb51c6484e8cc2cb3c5e0586451204",
+    "events/index.php": "630cf6c63c60cd70d430af82b483d09e5c269d891cdb5ab2a71552d2a6a38ce2",
+    "events/loop.php": "58fd03e59661fa77be71dbefcbf8bf5487a3d2b5be815ab192a5a210cee9fe1b",
+    "events/media.php": "d86a50ee11c21012c029e3d275faa57d72702d94f95ac7c2529625f5a2f7d411",
+    "events/poster.php": "ad25ec01380980ff0c6c460e2296ac7286bec3d469f431708c7155393dd62a9b",
+    "events/private/.htaccess": "fa28d421a28ed9b6f4b997d5119c2b8adbacff6e2dd119a179b71230f9664934",
+    "events/private/media.json": "de6fc8854f147db209941b8d90afed489476cbecfee4a88e6ce78b06168d65f5",
+    "events/private/opening-loop.mp4": "93cae8255802e729e380694bbacede4033a0ea1d42213dd2be22cbf4ea759435",
+    "events/private/poster.jpg": "5fceff4d3ac536b1b869a4e9fa46d1867393b2874ec66af92d17e4c918b84a29"
+  },
+  "validation": [
+    "Production entry accepts an existing I AM password. Anonymous media access is rejected and private source assets are denied.",
+    "Desktop and mobile: flower opens About in one click, toggles closed, and Back to experience returns correctly.",
+    "Keyboard navigation, dialog focus, Escape and Proposal link verified.",
+    "Protected loop and poster match approved source hashes; MP4 byte ranges return HTTP 206. Loop remains muted and advances.",
+    "Cloudflare film plays for 142 seconds total duration with controls disabled and the timecode visible; configured sound is on. Playback was verified with process-level audio disabled.",
+    "About opens over the film and returns to it; Back removes the film and restores the main screen with the silent loop.",
+    "Five live versioned CSS/JavaScript assets match source hashes. No page errors.",
+    "Dedicated muted Chromium closed after verification; no native fullscreen invoked.",
+    "All production manifest entries outside events/ remain unchanged."
+  ]
+}

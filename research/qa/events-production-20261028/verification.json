@@ -1,0 +1,128 @@
+{
+  "url": "https://universalmind.tv/events/",
+  "processAudioDisabled": true,
+  "nativeFullscreenInvoked": false,
+  "checks": [
+    {
+      "anonymousPath": "media.php",
+      "status": 401
+    },
+    {
+      "anonymousPath": "poster.php",
+      "status": 401
+    },
+    {
+      "anonymousPath": "loop.php",
+      "status": 401
+    },
+    {
+      "anonymousPath": "private/media.json",
+      "status": 403
+    },
+    {
+      "anonymousPath": "private/poster.jpg",
+      "status": 403
+    },
+    {
+      "anonymousPath": "private/opening-loop.mp4",
+      "status": 403
+    },
+    {
+      "anonymousPath": "access.php",
+      "status": 403
+    },
+    {
+      "viewport": {
+        "width": 1470,
+        "height": 920
+      },
+      "oneClickOpensAbout": true,
+      "extraMenuAbsent": true,
+      "returnButtonWorks": true,
+      "flowerToggleCloses": true,
+      "backgroundLoopMutedAndAdvancing": true,
+      "panel": {
+        "background": "rgba(0, 0, 0, 0.64)",
+        "scrollTop": 0,
+        "font": "\"Helvetica Neue\""
+      }
+    },
+    {
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "oneClickOpensAbout": true,
+      "extraMenuAbsent": true,
+      "returnButtonWorks": true,
+      "flowerToggleCloses": true,
+      "backgroundLoopMutedAndAdvancing": true,
+      "panel": {
+        "background": "rgba(0, 0, 0, 0.64)",
+        "scrollTop": 0,
+        "font": "\"Helvetica Neue\""
+      }
+    },
+    {
+      "keyboardEnterOpensDirectly": true,
+      "focusTrapWorks": true,
+      "escapeCloses": true,
+      "proposalLinkAndFocusReturnWork": true
+    },
+    {
+      "protectedLoopMatchesApprovedSource": true,
+      "loopBytes": 544230,
+      "byteRangeStatus": 206,
+      "protectedPosterMatchesApprovedSource": true
+    },
+    {
+      "cloudflareFilmPlays": {
+        "first": {
+          "time": 0.29058,
+          "paused": false,
+          "muted": false,
+          "volume": 1,
+          "duration": 142,
+          "controls": false
+        },
+        "later": {
+          "time": 1.414293,
+          "paused": false
+        },
+        "timecode": "0:01 / 2:22"
+      },
+      "aboutFromFilmReturnsToFilm": true,
+      "backRestoresMainScreen": true,
+      "silentLoopResumes": true
+    }
+  ],
+  "errors": [],
+  "assets": [
+    {
+      "url": "https://universalmind.tv/events/assets/events.css?v=8",
+      "sha256": "7f53a0449c3817195093459381ff4c40cb33460ba7887730c92741125658781a",
+      "matchesCommittedSource": true
+    },
+    {
+      "url": "https://universalmind.tv/events/assets/events.js?v=8",
+      "sha256": "28013da42465469f3b6e01e7b001053cd536334586113b418eab02f995b22c82",
+      "matchesCommittedSource": true
+    },
+    {
+      "url": "https://universalmind.tv/events/assets/gate.css?v=4",
+      "sha256": "07ac782255f88e549dc9fcef2a8eda12b1eb51c6484e8cc2cb3c5e0586451204",
+      "matchesCommittedSource": true
+    },
+    {
+      "url": "https://universalmind.tv/events/assets/gate-rain.js?v=2",
+      "sha256": "27aaac4857613f859deac1d68101949e335ca8d4fa2e9175e2e08bcbfda46c40",
+      "matchesCommittedSource": true
+    },
+    {
+      "url": "https://universalmind.tv/events/assets/gate-launch.js?v=1",
+      "sha256": "15d066bfe97d289ef5076cbdc6a23ae03eb8994ed79511c49faf637c86efcde6",
+      "matchesCommittedSource": true
+    }
+  ],
+  "passed": true
+}
