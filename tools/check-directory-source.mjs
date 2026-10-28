@@ -11,7 +11,7 @@ const styles = fs.readFileSync(path.join(root, 'home/directory.css'), 'utf8');
 for (const document of [landing, directory]) {
   for (const script of document.matchAll(/<script>([\s\S]*?)<\/script>/g)) new vm.Script(script[1]);
 }
-assert(styles.includes('font-family: "Helvetica Neue";'));
+assert(styles.includes('font-family: "Helvetica Neue", sans-serif;'));
 assert(!styles.includes('Arial'));
 const copy = [
   'Universal Mind is an electronic music company for mental health',

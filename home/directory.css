@@ -1,7 +1,7 @@
 :root {
   --route-highlight: #ffe600;
   color-scheme: dark;
-  font-family: "Helvetica Neue";
+  font-family: "Helvetica Neue", sans-serif;
   color: #fff;
   background: #000;
   -webkit-font-smoothing: antialiased;
@@ -87,6 +87,8 @@ h1 {
 .destination--watch, .destination--festivals { left: 0; }
 .destination--events, .destination--research { right: 0; }
 .destination--watch, .destination--festivals { width: 23%; }
+.destination--watch, .destination--festivals { text-align: right; }
+.destination--watch .destination-description, .destination--festivals .destination-description { margin-left: auto; }
 .destination[aria-disabled="true"] { cursor: default; }
 .destination:focus-visible { outline: 1px solid #fff; }
 .destination-copy { display: block; }
@@ -175,6 +177,7 @@ html[data-story]:not([data-story="complete"]) .destination:not(.is-revealed) { p
   h1 { max-width: 38ch; margin: 0 auto; font-size: 16px; }
   .route-map { min-height: 640px; margin-top: 16px; }
   .destination { width: 44%; }
+  .destination--watch, .destination--festivals { text-align: left; }
   .destination--watch, .destination--events { top: 5%; }
   .destination--festivals, .destination--research { top: 77%; }
   .destination-title { font-size: clamp(18px, 3.7vw, 24px); }
