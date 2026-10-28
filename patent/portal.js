@@ -14,7 +14,7 @@
   const nav=$('#contents');nav.replaceChildren();
   for(const group of ['Main patent','Reading guides','Appendices']){
    const box=document.createElement('details');box.className='nav-group';box.open=group==='Main patent';const heading=document.createElement('summary');heading.textContent=group;box.append(heading);
-   for(const c of chapters.filter(c=>c.group===group&&c.page!==278)){
+   for(const c of chapters.filter(c=>c.group===group)){
     const a=document.createElement('a');a.href='#'+c.id;a.textContent=label(c);a.dataset.chapter=c.id;box.append(a);
    }nav.append(box);
   }
@@ -58,7 +58,7 @@
   const page=/^page-(\d+)$/.exec(id);let c;
   if(page)c=chapters.find(c=>c.page<=Number(page[1])&&c.end_page>=Number(page[1]));
   else c=chapters.find(c=>c.id===id||c.headings.some(h=>h.id===id)||(c.parts||[]).some(p=>p.id===id));
-  if(c){if(c.page===278){location.hash='drawings';return;}if(current===c&&id!==c.id&&!page&&!query){show('chapter-view');document.getElementById(id)?.scrollIntoView({block:'start'});}else renderChapter(c,id===c.id||page?'':id,query);if(page){$('#chapter-pdf').href='document.php#page='+page[1];$('#chapter-pdf').textContent='Filed PDF · p. '+page[1]+' ↗';}return;}
+  if(c){if(current===c&&id!==c.id&&!page&&!query){show('chapter-view');document.getElementById(id)?.scrollIntoView({block:'start'});}else renderChapter(c,id===c.id||page?'':id,query);if(page){$('#chapter-pdf').href='document.php#page='+page[1];$('#chapter-pdf').textContent='Filed PDF · p. '+page[1]+' ↗';}return;}
   show('overview');
  }
  $('#search-form').onsubmit=e=>{e.preventDefault();location.hash='search?q='+encodeURIComponent($('#query').value.trim());};

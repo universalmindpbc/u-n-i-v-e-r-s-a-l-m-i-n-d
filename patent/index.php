@@ -4,7 +4,7 @@ patent_session();
 if(empty($_SESSION['patent_csrf']))$_SESSION['patent_csrf']=bin2hex(random_bytes(24));
 $authenticated=patent_authenticated();
 ?>
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow,noarchive"><meta name="csrf-token" content="<?=htmlspecialchars($_SESSION['patent_csrf'],ENT_QUOTES)?>"><title>Patent | Universal Mind</title><link rel="icon" href="/vogue/iam/favicon.png?v=iam-favicon-4"><link rel="stylesheet" href="portal.css?v=7"><script src="portal.js?v=6" defer></script><script src="drawings.js?v=1" defer></script><?php if($authenticated):?>
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow,noarchive"><meta name="csrf-token" content="<?=htmlspecialchars($_SESSION['patent_csrf'],ENT_QUOTES)?>"><title>Patent | Universal Mind</title><link rel="icon" href="/vogue/iam/favicon.png?v=iam-favicon-4"><link rel="stylesheet" href="portal.css?v=8"><script src="portal.js?v=7" defer></script><script src="drawings.js?v=1" defer></script><?php if($authenticated):?>
 <link rel="stylesheet" href="/vogue/iam/realtime-voice-assistant.css?v=realtime-voice-css-66ef986e1dc3">
 <link rel="stylesheet" href="/informatics/universal-one.css?v=9">
 <script defer src="/informatics/universal-one-character.js?v=1"></script>
