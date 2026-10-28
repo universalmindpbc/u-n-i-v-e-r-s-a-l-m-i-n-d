@@ -1,0 +1,300 @@
+{
+  "origin": "https://staging.universalmind.tv/events/",
+  "processAudioDisabled": true,
+  "nativeFullscreenInvoked": false,
+  "checks": [
+    {
+      "initial": {
+        "height": 30,
+        "buttonTop": 620.09375,
+        "phrases": [
+          {
+            "text": "change your emotions.",
+            "opacity": 0
+          },
+          {
+            "text": "transform your world",
+            "opacity": 0
+          }
+        ]
+      }
+    },
+    {
+      "entryAccepted": true,
+      "phraseSequence": {
+        "initial": {
+          "height": 30,
+          "buttonTop": 620.09375,
+          "phrases": [
+            {
+              "text": "change your emotions.",
+              "opacity": 0
+            },
+            {
+              "text": "transform your world",
+              "opacity": 0
+            }
+          ]
+        },
+        "first": {
+          "time": 1715.8750004157423,
+          "phrases": [
+            {
+              "opacity": 0.513683,
+              "transform": "matrix(1, 0, 0, 1, 0, 2.9179)"
+            },
+            {
+              "opacity": 0,
+              "transform": "matrix(1, 0, 0, 1, 0, 6)"
+            }
+          ]
+        },
+        "hold": {
+          "time": 3016.6750004157425,
+          "phrases": [
+            {
+              "opacity": 1,
+              "transform": "matrix(1, 0, 0, 1, 0, 0)"
+            },
+            {
+              "opacity": 0,
+              "transform": "matrix(1, 0, 0, 1, 0, 6)"
+            }
+          ]
+        },
+        "second": {
+          "time": 4316.675000415742,
+          "phrases": [
+            {
+              "opacity": 1,
+              "transform": "matrix(1, 0, 0, 1, 0, 0)"
+            },
+            {
+              "opacity": 0.514372,
+              "transform": "matrix(1, 0, 0, 1, 0, 2.91377)"
+            }
+          ]
+        },
+        "complete": {
+          "time": 5516.575000415743,
+          "phrases": [
+            {
+              "opacity": 1,
+              "transform": "matrix(1, 0, 0, 1, 0, 0)"
+            },
+            {
+              "opacity": 1,
+              "transform": "matrix(1, 0, 0, 1, 0, 0)"
+            }
+          ]
+        }
+      },
+      "noLayoutShift": true
+    },
+    {
+      "silentLocalLoopContinues": {
+        "first": {
+          "time": 5.181571,
+          "paused": false,
+          "muted": true,
+          "source": "https://staging.universalmind.tv/events/loop.php?v=2"
+        },
+        "second": {
+          "time": 0.332657,
+          "paused": false,
+          "muted": true
+        }
+      }
+    },
+    {
+      "viewport": {
+        "width": 1470,
+        "height": 920
+      },
+      "geometry": {
+        "flowerDeltaX": 0,
+        "flowerDeltaY": 0,
+        "pageWidth": 1470,
+        "scrollWidth": 1470,
+        "tagline": {
+          "top": 564.09375,
+          "bottom": 594.09375,
+          "left": 73.5,
+          "right": 1396.5
+        },
+        "watch": {
+          "top": 620.09375,
+          "bottom": 658.09375
+        },
+        "hashtagsTop": 692.609375
+      }
+    },
+    {
+      "viewport": {
+        "width": 1920,
+        "height": 1080
+      },
+      "geometry": {
+        "flowerDeltaX": -0.0078125,
+        "flowerDeltaY": 0,
+        "pageWidth": 1920,
+        "scrollWidth": 1920,
+        "tagline": {
+          "top": 679.609375,
+          "bottom": 718.609375,
+          "left": 96,
+          "right": 1824
+        },
+        "watch": {
+          "top": 744.609375,
+          "bottom": 782.609375
+        },
+        "hashtagsTop": 810.40625
+      }
+    },
+    {
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "geometry": {
+        "flowerDeltaX": 0,
+        "flowerDeltaY": 0,
+        "pageWidth": 390,
+        "scrollWidth": 390,
+        "tagline": {
+          "top": 379.515625,
+          "bottom": 421.515625,
+          "left": 52.5,
+          "right": 337.5
+        },
+        "watch": {
+          "top": 447.515625,
+          "bottom": 484.515625
+        },
+        "hashtagsTop": 600.125
+      }
+    },
+    {
+      "viewport": {
+        "width": 320,
+        "height": 568
+      },
+      "geometry": {
+        "flowerDeltaX": 0,
+        "flowerDeltaY": 0,
+        "pageWidth": 320,
+        "scrollWidth": 320,
+        "tagline": {
+          "top": 240.453125,
+          "bottom": 258.640625,
+          "left": 17.5,
+          "right": 302.5
+        },
+        "watch": {
+          "top": 278.640625,
+          "bottom": 311.640625
+        },
+        "hashtagsTop": 378.921875
+      }
+    },
+    {
+      "filmBackLayout": {
+        "viewport": {
+          "width": 1470,
+          "height": 920
+        },
+        "left": 98,
+        "top": 28,
+        "right": 178.15625,
+        "bottom": 72,
+        "height": 44,
+        "flowerRight": 80,
+        "outline": "none",
+        "border": "none"
+      }
+    },
+    {
+      "filmBackLayout": {
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "left": 66,
+        "top": 11,
+        "right": 143.46875,
+        "bottom": 55,
+        "height": 44,
+        "flowerRight": 54,
+        "outline": "none",
+        "border": "none"
+      }
+    },
+    {
+      "filmBackLayout": {
+        "viewport": {
+          "width": 320,
+          "height": 568
+        },
+        "left": 66,
+        "top": 11,
+        "right": 143.46875,
+        "bottom": 55,
+        "height": 44,
+        "flowerRight": 54,
+        "outline": "none",
+        "border": "none"
+      }
+    },
+    {
+      "filmPlayback": {
+        "first": {
+          "time": 0.42198,
+          "paused": false,
+          "muted": false,
+          "volume": 1,
+          "duration": 142
+        },
+        "later": {
+          "time": 0.6977,
+          "paused": false,
+          "muted": false
+        }
+      },
+      "backRemovesFilmAndRestoresPoster": true,
+      "fullscreenStatePreserved": true,
+      "noPageNavigation": true,
+      "silentLoopResumes": {
+        "first": {
+          "time": 1.15784,
+          "paused": false,
+          "muted": true,
+          "volume": 0
+        },
+        "second": {
+          "time": 1.874015,
+          "paused": false,
+          "muted": true,
+          "volume": 0
+        }
+      },
+      "watchButtonReceivesFocus": true
+    },
+    {
+      "reducedMotionShowsCompleteTagline": [
+        {
+          "opacity": 1,
+          "animation": "none",
+          "transform": "none"
+        },
+        {
+          "opacity": 1,
+          "animation": "none",
+          "transform": "none"
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "passed": true
+}

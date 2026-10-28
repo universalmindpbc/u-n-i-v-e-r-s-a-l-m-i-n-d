@@ -30,14 +30,14 @@ $entered = events_authenticated() && ($_GET['experience'] ?? '') === '1';
 <meta name="theme-color" content="#080808">
 <link rel="icon" href="/vogue/iam/favicon.png?v=iam-favicon-3">
 <title>athousandminds — Universal Mind</title>
-<link rel="stylesheet" href="assets/events.css?v=3">
+<link rel="stylesheet" href="assets/events.css?v=5">
 <?php if (!$entered): ?>
 <link rel="stylesheet" href="assets/gate.css?v=1">
 <script src="assets/gate-rain.js?v=1" defer></script>
 <script src="assets/gate-launch.js?v=1" defer></script>
 <?php endif; ?>
 <?php if ($entered): ?>
-<script src="assets/events.js?v=4" defer></script>
+<script src="assets/events.js?v=6" defer></script>
 <?php endif; ?>
 </head>
 <body class="<?= $entered ? 'entered' : 'invitation' ?>">
@@ -59,7 +59,7 @@ $entered = events_authenticated() && ($_GET['experience'] ?? '') === '1';
 <main class="experience" id="experience">
 <div class="backdrop" aria-hidden="true">
 <img src="poster.php" alt="" fetchpriority="high">
-<video id="opening-loop" src="loop.php?v=1" loop playsinline preload="auto" tabindex="-1"></video>
+<video id="opening-loop" src="loop.php?v=2" autoplay muted loop playsinline preload="auto" tabindex="-1"></video>
 </div>
 <button id="global-nav-toggle" class="global-nav-toggle" aria-label="Open global navigation" aria-expanded="false" aria-controls="global-nav">
 <img src="/vogue/iam/a%20s%20s%20e%20t%20s/Universal%20Mind%20%5B%20I%20o%20H%20%5D%20Logo%20512.png" alt="" aria-hidden="true">
@@ -72,7 +72,7 @@ $entered = events_authenticated() && ($_GET['experience'] ?? '') === '1';
 </header>
 <div class="title-group">
 <h1 id="festival-title" aria-label="athousandminds"><span>athousand</span><strong>minds</strong></h1>
-<p class="tagline">change your emotions. transform your world</p>
+<p class="tagline"><span class="tagline-phrase">change your emotions.</span> <span class="tagline-phrase">transform your world</span></p>
 <button id="watch-film" class="watch-film"><span class="play-icon" aria-hidden="true">▶</span><span>Watch the film</span></button>
 <p id="film-status" class="film-status" role="status"></p>
 </div>
@@ -85,6 +85,7 @@ $entered = events_authenticated() && ($_GET['experience'] ?? '') === '1';
 </section>
 <section id="film-view" class="film-view" aria-label="athousandminds — the film" hidden>
 <div id="film-mount"></div>
+<button id="film-back" class="film-back" aria-label="Back to main screen"><span aria-hidden="true">←</span> Back</button>
 <output id="film-timecode" class="film-timecode" aria-label="Film playback time">0:00 / 2:22</output>
 <p id="playback-status" class="playback-status" role="status"></p>
 </section>

@@ -1,0 +1,40 @@
+{
+  "source_commit": "181d8bbe848f66d339b493092f2aa5253e211274",
+  "staging_url": "https://staging.universalmind.tv/events/",
+  "publisher": "./deploy-panthur-staging.sh events",
+  "production_modified": false,
+  "changes": [
+    "Sequential cinematic fade for the two tagline phrases, then a settled complete line",
+    "Presenter flower centred on the Universal Mind text block at all viewport sizes",
+    "Opening MP4 audio track removed entirely; 544230-byte video-only local loop",
+    "Muted inline autoplay and readiness handling, including already-loaded video frames"
+  ],
+  "verification": [
+    "Real password entry on staging",
+    "Timed opacity samples prove first phrase, second phrase and fully visible settled state without layout movement",
+    "Flower centre within 0.01 pixels of the text block centre at 1470, 1920, 390 and 320 pixel widths",
+    "Reduced-motion mode presents complete static wording",
+    "Served MP4 has only a video track",
+    "Loop advances automatically without any gesture under Chromium document-user-activation-required policy, with zero decoded audio bytes",
+    "Exact live stylesheet and script hash equality",
+    "Relevant browser console free of errors"
+  ],
+  "browser_verification": "Dedicated Chromium process with --mute-audio. Native fullscreen intercepted. Safari was not operated. All automated browser processes closed after verification.",
+  "source_sha256": {
+    "events/.htaccess": "df023a2df19539fcca6d9d053064149a3242500a777f3f2ab308ae848aa0f257",
+    "events/access.php": "41a560de965631a544f31936fb0c6c5e1b00bea0495eb21e84e63e68535a759e",
+    "events/assets/events.css": "b6a42499e1f5b8e39ba3a98bd552777e62ef26f523f5146b90de9f8688b80876",
+    "events/assets/events.js": "ea78a2f20f1015b8036a0543099c415b5aa3c88efaead37262fc69a27203db18",
+    "events/assets/gate-launch.js": "15d066bfe97d289ef5076cbdc6a23ae03eb8994ed79511c49faf637c86efcde6",
+    "events/assets/gate-rain.js": "dfa546c5c987f9a5a7b951173c2bc1d6fd8d9bccfc2766acd8a6fe177fa714e6",
+    "events/assets/gate.css": "7158221715ed52b695ece2e25c4eb82751e5978230fd61178bc1827c84ce665d",
+    "events/index.php": "db119d041431e53f44ea679bf3fbde2695db16d169491f90858e227f44ed5536",
+    "events/loop.php": "58fd03e59661fa77be71dbefcbf8bf5487a3d2b5be815ab192a5a210cee9fe1b",
+    "events/media.php": "d86a50ee11c21012c029e3d275faa57d72702d94f95ac7c2529625f5a2f7d411",
+    "events/poster.php": "ad25ec01380980ff0c6c460e2296ac7286bec3d469f431708c7155393dd62a9b",
+    "events/private/.htaccess": "fa28d421a28ed9b6f4b997d5119c2b8adbacff6e2dd119a179b71230f9664934",
+    "events/private/media.json": "de6fc8854f147db209941b8d90afed489476cbecfee4a88e6ce78b06168d65f5",
+    "events/private/opening-loop.mp4": "93cae8255802e729e380694bbacede4033a0ea1d42213dd2be22cbf4ea759435",
+    "events/private/poster.jpg": "5fceff4d3ac536b1b869a4e9fa46d1867393b2874ec66af92d17e4c918b84a29"
+  }
+}
