@@ -4,6 +4,6 @@ DirectoryIndex index.php
   Header always set X-Robots-Tag "noindex, nofollow, noarchive"
   Header always set Cache-Control "private, no-store, max-age=0"
 </IfModule>
-<Files "access.php">
+<FilesMatch "^(access|film-config)\.php$">
   Require all denied
-</Files>
+</FilesMatch>

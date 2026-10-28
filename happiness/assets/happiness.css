@@ -564,6 +564,7 @@ body[data-motion=paused] .connection-pulse,body[data-motion=paused] .pulse-line{
   animation-play-state:paused}
 .film-view{position:fixed;inset:0;background:#000;z-index:10}#film-mount,.film-view iframe{position:absolute;inset:0;width:100%;height:100%;border:0}.film-view iframe{pointer-events:none}.film-back{position:absolute;top:28px;left:98px;z-index:2;display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:0 10px;font-size:12px;letter-spacing:.08em;color:rgba(255,255,255,.9)}.film-back span{font-size:20px;font-weight:300;line-height:1}.film-back:hover{color:#fff}.film-timecode{position:absolute;left:26px;bottom:23px;z-index:2;font:12px/1.2 "Helvetica Neue";font-variant-numeric:tabular-nums;letter-spacing:.04em;color:rgba(255,255,255,.86);pointer-events:none}.playback-status{position:absolute;left:20%;right:20%;top:45%;text-align:center;font-size:14px;pointer-events:none}.playback-status:empty{display:none}
 body.film-open{overflow:hidden}
+.film-view video{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;background:#000;pointer-events:none}
 .about-panel{
   position:fixed;
   inset:0;

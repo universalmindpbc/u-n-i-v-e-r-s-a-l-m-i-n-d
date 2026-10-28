@@ -25,6 +25,7 @@ if (($_SERVER['REQUEST_METHOD'] ?? '') === 'POST' && str_contains((string)($_SER
     header('Content-Type: application/json'); echo json_encode(['error'=>$error]); exit;
 }
 $entered = happiness_authenticated();
+$filmConfig = $entered ? (require __DIR__ . '/film-config.php') : [];
 session_write_close();
 ?><!doctype html>
 <html lang="en">
@@ -41,9 +42,9 @@ session_write_close();
 <script src="assets/gate-launch.js?v=1" defer></script>
 <?php else: ?>
 <link rel="preload" as="image" href="assets/universal-mind-flower.png">
-<link rel="stylesheet" href="assets/happiness.css?v=2">
+<link rel="stylesheet" href="assets/happiness.css?v=3">
 <script src="assets/network.js?v=1" defer></script>
-<script src="assets/happiness.js?v=2" defer></script>
+<script src="assets/happiness.js?v=3" defer></script>
 <?php endif; ?>
 </head>
 <body class="<?= $entered ? 'entered' : 'invitation' ?>">
@@ -148,7 +149,7 @@ session_write_close();
 </main>
 
 <section id="film-view" class="film-view" aria-label="Happiness presentation player" hidden>
-<div id="film-mount"></div>
+<div id="film-mount" data-hls="<?= htmlspecialchars($filmConfig['hls'], ENT_QUOTES, 'UTF-8') ?>" data-duration="<?= (int)$filmConfig['duration'] ?>"></div>
 <button id="film-back" class="film-back" aria-label="Back to main screen"><span aria-hidden="true">←</span> Back</button>
 <output id="film-timecode" class="film-timecode" aria-label="Film playback time">0:00 / 5:55</output>
 <p id="playback-status" class="playback-status" role="status"></p>

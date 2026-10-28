@@ -3,7 +3,7 @@
   const $=id=>document.getElementById(id);
   const experience=$('experience'), background=$('opening-loop'), film=$('film-view'), about=$('about-panel');
   const motion=$('motion-toggle'), reduced=matchMedia('(prefers-reduced-motion: reduce)');
-  let motionPaused=reduced.matches, player=null, playerFrame=null, playerTimer=0, loadGeneration=0;
+  let motionPaused=reduced.matches, player=null, playerFrame=null, playerTimer=0, playbackTimer=0, loadGeneration=0;
   let filmOpener=null, aboutOpener=null, loading=false, sdkPromise=null;
   const format=time=>`${Math.floor(Math.max(0,time||0)/60)}:${String(Math.floor(Math.max(0,time||0)%60)).padStart(2,'0')}`;
   function syncMotion(){
@@ -112,6 +112,38 @@
     const paused=Boolean(player.paused);
     film.dataset.playback=paused?'paused':'playing';film.dataset.currentTime=String(time);
   }
+  function openNativeFilm(video,start,generation){
+    // Keep this path synchronous: Safari grants audible playback to the tap,
+    // not to a later fetch, iframe load or canplay event.
+    video.id='film-player';video.setAttribute('aria-label','Happiness — full presentation');
+    video.playsInline=true;video.setAttribute('playsinline','');video.setAttribute('webkit-playsinline','');
+    video.controls=false;video.preload='metadata';video.muted=false;video.volume=1;
+    video.disablePictureInPicture=true;video.disableRemotePlayback=true;video.tabIndex=-1;
+    player=video;playerFrame=video;film.dataset.player='native-hls';
+    const active=()=>generation===loadGeneration&&player===video;
+    const ready=()=>{if(active()){clearTimeout(playbackTimer);$('playback-status').textContent='';updateTransport();}};
+    video.addEventListener('loadedmetadata',()=>{
+      if(!active())return;
+      if(start)video.currentTime=start;
+      updateTransport();
+    },{once:true});
+    video.addEventListener('playing',ready);
+    video.addEventListener('timeupdate',()=>{if(active()){if(!video.paused&&video.currentTime>0)ready();else updateTransport();}});
+    video.addEventListener('durationchange',()=>{if(active())updateTransport();});
+    video.addEventListener('pause',()=>{if(active())updateTransport();});
+    video.addEventListener('waiting',()=>{if(active())$('playback-status').textContent='Buffering…';});
+    video.addEventListener('ended',()=>{if(active())closeFilm();});
+    video.addEventListener('error',()=>{if(active()){clearTimeout(playbackTimer);$('playback-status').textContent='The presentation is unavailable. Use Back to try again.';}});
+    video.src=$('film-mount').dataset.hls;
+    $('film-mount').replaceChildren(video);
+    playerTimer=setInterval(updateTransport,350);
+    playbackTimer=setTimeout(()=>{if(active())$('playback-status').textContent='The connection is taking longer than expected. Use Back to try again.';},25000);
+    // No await before this call: the original Watch/chapter tap owns playback.
+    const started=video.play();
+    Promise.resolve(started).catch(()=>{
+      if(active()){clearTimeout(playbackTimer);$('playback-status').textContent='Playback did not start. Use Back to try again.';}
+    });
+  }
   async function openFilm(start,opener){
     if(loading||!film.hidden)return;
     const generation=++loadGeneration;loading=true;filmOpener=opener;
@@ -119,6 +151,11 @@
     $('playback-status').textContent='Loading presentation…';$('film-back').focus();
     film.dataset.playback='loading';
     try{
+      const nativeVideo=document.createElement('video');
+      if($('film-mount').dataset.hls&&nativeVideo.canPlayType('application/vnd.apple.mpegurl')){
+        openNativeFilm(nativeVideo,start,generation);
+        return;
+      }
       const [response]=await Promise.all([fetch('media.php',{credentials:'same-origin',cache:'no-store',signal:AbortSignal.timeout(18000)}),loadSDK()]);
       const media=await response.json();
       if(!response.ok)throw new Error(media.error||'Please refresh and enter your invitation password.');
@@ -126,6 +163,7 @@
       const url=new URL(media.film);url.searchParams.set('autoplay','true');url.searchParams.set('controls','false');url.searchParams.set('preload','auto');url.searchParams.set('letterboxColor','black');url.searchParams.set('startTime',`${start}s`);
       const iframe=document.createElement('iframe');iframe.title='Happiness — full presentation';iframe.allow='autoplay; encrypted-media; fullscreen; picture-in-picture';iframe.allowFullscreen=true;iframe.src=url.href;iframe.tabIndex=-1;
       playerFrame=iframe;$('film-mount').replaceChildren(iframe);player=window.Stream(iframe);
+      film.dataset.player='stream-iframe';
       player.controls=false;player.volume=1;player.muted=false;
       const ready=()=>{if(generation!==loadGeneration)return;$('playback-status').textContent='';updateTransport();};
       player.addEventListener('playing',ready);
@@ -149,9 +187,10 @@
     }finally{if(generation===loadGeneration)loading=false;}
   }
   function closeFilm(){
-    ++loadGeneration;loading=false;clearInterval(playerTimer);
+    ++loadGeneration;loading=false;clearInterval(playerTimer);clearTimeout(playbackTimer);
     if(player){try{player.pause();}catch{}}
-    player=null;playerFrame?.remove();playerFrame=null;$('film-mount').replaceChildren();film.hidden=true;document.body.classList.remove('film-open');delete film.dataset.playback;
+    if(playerFrame instanceof HTMLMediaElement){playerFrame.removeAttribute('src');playerFrame.load();}
+    player=null;playerFrame?.remove();playerFrame=null;$('film-mount').replaceChildren();film.hidden=true;document.body.classList.remove('film-open');delete film.dataset.playback;delete film.dataset.player;
     $('playback-status').textContent='';$('film-timecode').value='0:00 / 5:55';
     syncInert();syncMotion();filmOpener?.focus();
   }
@@ -170,7 +209,7 @@
     syncFullscreen();
   });
   fullscreenDocument().addEventListener('fullscreenchange',syncFullscreen);fullscreenDocument().addEventListener('webkitfullscreenchange',syncFullscreen);
-  window.addEventListener('pagehide',()=>{background.pause();if(player)player.pause();clearInterval(playerTimer);cancelAnimationFrame(connectionFrame);resizeObserver.disconnect();});
+  window.addEventListener('pagehide',()=>{background.pause();if(player)player.pause();clearInterval(playerTimer);clearTimeout(playbackTimer);cancelAnimationFrame(connectionFrame);resizeObserver.disconnect();});
   window.addEventListener('pageshow',()=>{resizeObserver.observe($('ecosystem'));scheduleConnections();syncMotion();});
   scheduleConnections();syncMotion();syncFullscreen();
 })();

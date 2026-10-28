@@ -1,0 +1,107 @@
+{
+  "verifiedAt": "2026-10-28T07:44:26.902Z",
+  "mode": "local-candidate",
+  "processAudioDisabled": true,
+  "nativeFullscreenInvoked": false,
+  "browser": "151.0.7922.34",
+  "scope": "Native HLS and iframe playback in muted Chromium, with an iPhone viewport and tap-owned play assertions. Authenticated HTML is rendered from source in memory; no invitation credential is used. Physical iPhone Safari is not available in this environment.",
+  "checks": [
+    {
+      "nativeStart": 0,
+      "state": {
+        "time": 0.613634,
+        "duration": 355,
+        "width": 426,
+        "height": 240,
+        "inline": true,
+        "controls": false,
+        "muted": false,
+        "readyState": 4,
+        "paused": false
+      },
+      "timer": {
+        "left": 18,
+        "bottom": 18,
+        "text": "0:00 / 5:55"
+      },
+      "backAbortsVideo": true
+    },
+    {
+      "nativeStart": 60,
+      "state": {
+        "time": 60.510917,
+        "duration": 355,
+        "width": 1920,
+        "height": 1080,
+        "inline": true,
+        "controls": false,
+        "muted": false,
+        "readyState": 4,
+        "paused": false
+      },
+      "timer": {
+        "left": 18,
+        "bottom": 18,
+        "text": "1:00 / 5:55"
+      },
+      "backAbortsVideo": true
+    },
+    {
+      "nativeStart": 103,
+      "state": {
+        "time": 103.487013,
+        "duration": 355,
+        "width": 1920,
+        "height": 1080,
+        "inline": true,
+        "controls": false,
+        "muted": false,
+        "readyState": 4,
+        "paused": false
+      },
+      "timer": {
+        "left": 18,
+        "bottom": 18,
+        "text": "1:43 / 5:55"
+      },
+      "backAbortsVideo": true
+    },
+    {
+      "tapOwnsNativePlay": [
+        {
+          "tap": true,
+          "userActivation": true,
+          "src": "https://customer-1vpwglz3v6fiyaas.cloudflarestream.com/8dc27681c2ab042abf567389868cea9e/manifest/video.m3u8",
+          "inline": true,
+          "controls": false,
+          "muted": false
+        },
+        {
+          "tap": true,
+          "userActivation": true,
+          "src": "https://customer-1vpwglz3v6fiyaas.cloudflarestream.com/8dc27681c2ab042abf567389868cea9e/manifest/video.m3u8",
+          "inline": true,
+          "controls": false,
+          "muted": false
+        },
+        {
+          "tap": true,
+          "userActivation": true,
+          "src": "https://customer-1vpwglz3v6fiyaas.cloudflarestream.com/8dc27681c2ab042abf567389868cea9e/manifest/video.m3u8",
+          "inline": true,
+          "controls": false,
+          "muted": false
+        }
+      ],
+      "noMediaFetchOrSdkBeforeNativePlayback": true
+    },
+    {
+      "nestedInvitationFrameNativePlayback": true
+    },
+    {
+      "nonNativeStreamIframeFallback": true
+    }
+  ],
+  "errors": [],
+  "passed": true
+}
