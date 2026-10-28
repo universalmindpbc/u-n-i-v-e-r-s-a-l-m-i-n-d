@@ -14,8 +14,9 @@ const about=[
 for(const paragraph of about)assert(page.includes(`<p>${paragraph}</p>`),'Approved About text changed');
 assert(page.includes('real time public health &amp; safety index for festivals'));
 assert.equal((page.match(/id="[^"]+"/g)||[]).length,new Set(page.match(/id="[^"]+"/g)).size,'Duplicate element IDs');
-assert(page.includes('data-film-start="60"')&&page.includes('data-film-start="103"'));
-assert(page.includes('research signals require validation'));
+assert(page.includes('id="watch-film"'));
+assert(!page.includes('class="experience-footer"')&&!page.includes('id="motion-toggle"'));
+assert(!page.includes('research signals require validation'));
 assert(access.includes('hash_equals')&&access.includes('allowedPasswordHashes'));
 assert(!/[a-f0-9]{64}/.test(access),'Do not duplicate invitation digests');
 assert(media.includes('happiness_require_access();'));
@@ -40,4 +41,4 @@ assert(script.includes("prefers-reduced-motion: reduce")&&network.includes('docu
 const png=fs.readFileSync(path.join(root,'happiness/assets/universal-mind-flower.png'));
 assert.equal(png[25],6,'Original flower requires RGBA transparency');
 assert.equal(png.readUInt32BE(16),1352);assert.equal(png.readUInt32BE(20),1364);
-console.log('Happiness: approved copy, chapters, protected media, original alpha logo, silent loop and player cleanup verified.');
+console.log('Happiness: approved copy, central presentation launch, protected media, original alpha logo, silent loop and player cleanup verified.');

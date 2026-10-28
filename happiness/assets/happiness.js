@@ -2,30 +2,63 @@
   'use strict';
   const $=id=>document.getElementById(id);
   const experience=$('experience'), background=$('opening-loop'), film=$('film-view'), about=$('about-panel');
-  const motion=$('motion-toggle'), reduced=matchMedia('(prefers-reduced-motion: reduce)');
+  const reduced=matchMedia('(prefers-reduced-motion: reduce)');
   let motionPaused=reduced.matches, player=null, playerFrame=null, playerTimer=0, playbackTimer=0, loadGeneration=0;
   let filmOpener=null, aboutOpener=null, loading=false, sdkPromise=null;
   let nativeVideoFullscreen=false;
+  let backgroundHost=null, backgroundFilm=background, backgroundPending=false;
+  const backgroundEvents=new AbortController();
+  try{
+    const host=parent!==window?parent.UniversalMindEntry:null;
+    const retained=host?.getBackgroundFilm?.();
+    if(retained){
+      backgroundHost=host;backgroundFilm=retained;
+      background.pause();background.removeAttribute('src');background.load();
+      document.documentElement.dataset.backgroundHosted='true';
+    }
+  }catch{}
   const format=time=>`${Math.floor(Math.max(0,time||0)/60)}:${String(Math.floor(Math.max(0,time||0)%60)).padStart(2,'0')}`;
+  const backgroundStopped=()=>motionPaused||!film.hidden||document.hidden||!about.hidden;
+  function playBackground(gesture=false){
+    if(backgroundStopped()||(backgroundPending&&!gesture))return;
+    backgroundFilm.muted=true;backgroundFilm.defaultMuted=true;backgroundFilm.volume=0;
+    backgroundFilm.playsInline=true;
+    backgroundPending=true;
+    try{
+      // A real visitor action takes priority over an earlier pending autoplay.
+      // Do not await metadata, authentication or fullscreen before this call.
+      Promise.resolve(backgroundFilm.play()).then(()=>{
+        document.body.dataset.backgroundPlayback='playing';
+      }).catch(error=>{
+        document.body.dataset.backgroundPlayback=error.name==='NotAllowedError'?'awaiting-gesture':'paused';
+      }).finally(()=>{backgroundPending=false;});
+    }catch{backgroundPending=false;document.body.dataset.backgroundPlayback='unavailable';}
+  }
   function syncMotion(){
-    const stop=motionPaused||!film.hidden||document.hidden||!about.hidden;
+    const stop=backgroundStopped();
     document.body.dataset.motion=stop?'paused':'running';
     window.HappinessNetwork?.setPaused(stop);
-    motion.setAttribute('aria-pressed',String(motionPaused));
-    motion.setAttribute('aria-label',motionPaused?'Resume animation':'Pause animation');
-    motion.querySelector('.motion-text').textContent=motionPaused?'Resume animation':'Pause animation';
-    motion.querySelector('.motion-symbol').textContent=motionPaused?'▷':'Ⅱ';
     background.muted=true;background.defaultMuted=true;background.volume=0;
-    if(stop){background.pause();return;}
-    if(!background.getAttribute('src')) background.src=background.dataset.src;
-    background.play().catch(()=>{});
+    if(backgroundHost)backgroundHost.setBackgroundVisible(!stop);
+    if(stop){backgroundFilm.pause();return;}
+    playBackground();
   }
-  background.addEventListener('playing',()=>background.classList.add('is-ready'));
-  motion.addEventListener('click',()=>{motionPaused=!motionPaused;syncMotion();});
+  backgroundFilm.addEventListener('playing',()=>{
+    background.classList.add('is-ready');document.body.dataset.backgroundPlayback='playing';
+    if(backgroundStopped())backgroundFilm.pause();
+  },{signal:backgroundEvents.signal});
+  backgroundFilm.addEventListener('error',()=>{document.body.dataset.backgroundPlayback='unavailable';},{signal:backgroundEvents.signal});
+  // Safari recognises click/touchend as media gestures. A pointer event alone
+  // does not cover the same browsers. Keep retries inside the actual gesture.
+  const resumeBackground=event=>{
+    if(event.target.closest?.('[data-film-start],[data-open-about],#global-nav-toggle,a[href]'))return;
+    if(backgroundFilm.paused)playBackground(true);
+  };
+  document.addEventListener('touchend',resumeBackground,{passive:true});
+  document.addEventListener('click',resumeBackground);
+  document.addEventListener('keydown',event=>{if(event.key==='Enter'||event.key===' ')resumeBackground(event);});
   reduced.addEventListener('change',event=>{motionPaused=event.matches;syncMotion();});
-  document.addEventListener('visibilitychange',()=>{
-    syncMotion();
-  });
+  document.addEventListener('visibilitychange',syncMotion);
 
   // Curved paths are positioned from the actual responsive elements.
   function drawConnections(){
@@ -49,7 +82,7 @@
       path(`M${x} ${y} C${x+60} ${y} ${control.x-65} ${control.y+50} ${control.x} ${control.y+50}`);
       path(`M${field.x+field.w*.2} ${field.y+field.h*.72} C${field.x-35} ${field.y+field.h*.93} ${watch.x-35} ${watch.y+watch.h+90} ${watch.x+watch.w*.3} ${watch.y+watch.h-12}`,'connection-return');
     } else {
-      path(`M${watch.x+watch.w/2} ${watch.y+watch.h} C${watch.x+watch.w/2} ${field.y+30} ${field.x+field.w*.4} ${field.y+25} ${field.x+field.w*.4} ${field.y+field.h*.13}`);
+      path(`M${watch.x+watch.w/2} ${watch.y} C${watch.x+watch.w/2} ${watch.y-45} ${field.x+field.w*.4} ${field.y+field.h+45} ${field.x+field.w*.4} ${field.y+field.h*.87}`);
       path(`M${field.x+field.w*.6} ${field.y+field.h*.86} C${field.x+field.w*.6} ${control.y-30} ${control.x+control.w*.65} ${control.y-40} ${control.x+control.w*.65} ${control.y}`);
       path(`M${field.x+field.w*.18} ${field.y+field.h*.65} C${field.x-20} ${field.y+field.h*.5} ${watch.x-36} ${watch.y+watch.h+30} ${watch.x+watch.w*.1} ${watch.y+watch.h*.6}`,'connection-return');
     }
@@ -263,7 +296,7 @@
   for(const doc of new Set([document,fullscreenDocument()])){
     doc.addEventListener('fullscreenchange',fullscreenChanged);doc.addEventListener('webkitfullscreenchange',fullscreenChanged);
   }
-  window.addEventListener('pagehide',()=>{background.pause();if(player)player.pause();clearInterval(playerTimer);clearTimeout(playbackTimer);cancelAnimationFrame(connectionFrame);resizeObserver.disconnect();});
+  window.addEventListener('pagehide',event=>{backgroundFilm.pause();backgroundHost?.setBackgroundVisible(false);if(!event.persisted)backgroundEvents.abort();if(player)player.pause();clearInterval(playerTimer);clearTimeout(playbackTimer);cancelAnimationFrame(connectionFrame);resizeObserver.disconnect();});
   window.addEventListener('pageshow',()=>{resizeObserver.observe($('ecosystem'));scheduleConnections();syncMotion();});
   scheduleConnections();syncMotion();syncFullscreen();syncVideoFullscreen();
 })();

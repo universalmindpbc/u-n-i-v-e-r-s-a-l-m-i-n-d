@@ -1,0 +1,5 @@
+/* The existing invitation screen stays above its gesture-started video. */
+.happiness-entry-background{position:fixed;inset:0;width:100%;height:100%;object-fit:cover;pointer-events:none;z-index:-4}
+body:has(.happiness-entry-background):not([data-access-state=granted]):before{content:"";position:fixed;inset:0;background:#000;z-index:-3}
+body[data-background-visible=true] .events-stage{background:transparent}
+body[data-background-visible=false] .happiness-entry-background{visibility:hidden}
