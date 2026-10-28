@@ -11,5 +11,19 @@
   "physicalIPhoneVerified": false,
   "productionModified": false,
   "sourceCommitAfterIntegration": "548afa357c95413c28551a4f06fb8feef5cd452b",
-  "preservedParallelStagingCommit": "43e81ff54c6eb3c5cf9a6ac9c26ba138682eb16c"
+  "preservedParallelStagingCommit": "43e81ff54c6eb3c5cf9a6ac9c26ba138682eb16c",
+  "integratedDeploymentCommit": "1bc531044e1c8f573c0335f5b95577376284a712",
+  "integratedDeploymentVerifiedAt": "2026-10-28T09:50:35.106962+00:00",
+  "integratedAssetChecks": [
+    {
+      "url": "https://staging.universalmind.tv/home/index.html",
+      "sha256": "e284229ecb45889da9011813b218454ddcbabc79dc792069598b408191cc7847",
+      "matchesCommittedSource": true
+    },
+    {
+      "url": "https://staging.universalmind.tv/home/directory-story.js?v=4",
+      "sha256": "9e9960cff9055f75d1ab2e8414e86863749f0149bfc8c5d06324f31259bb96e7",
+      "matchesCommittedSource": true
+    }
+  ]
 }
