@@ -562,80 +562,8 @@ svg{
   display:none}
 body[data-motion=paused] .connection-pulse,body[data-motion=paused] .pulse-line{
   animation-play-state:paused}
-.film-view{
-  position:fixed;
-  inset:0;
-  background:#000;
-  z-index:10}
-#film-mount{
-  position:absolute;
-  inset:0}
-#film-mount iframe{
-  width:100%;
-  height:100%;
-  border:0;
-  display:block;
-  pointer-events:none}
-.film-topbar{
-  position:absolute;
-  top:0;
-  left:0;
-  right:0;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  padding:25px 34px;
-  background:linear-gradient(#0009,transparent);
-  z-index:2}
-.film-topbar button{
-  font-size:12px;
-  letter-spacing:.06em;
-  padding:12px;
-  background:#080d0999;
-  border:1px solid #ffffff25;
-  min-width:80px}
-.film-back span{
-  margin-right:14px}
-.film-controls{
-  position:absolute;
-  bottom:0;
-  left:0;
-  right:0;
-  padding:35px 32px max(25px,env(safe-area-inset-bottom));
-  display:flex;
-  align-items:center;
-  gap:22px;
-  background:linear-gradient(transparent,#000b);
-  z-index:2}
-.film-controls button{
-  font-size:11px;
-  padding:10px;
-  white-space:nowrap;
-  background:#10150db3;
-  border:1px solid #ffffff25}
-.film-controls output{
-  font-variant-numeric:tabular-nums;
-  font-size:11px;
-  white-space:nowrap;
-  color:#d4deca}
-.film-controls input{
-  flex:1;
-  min-width:30px;
-  accent-color:#a7b983;
-  height:24px;
-  cursor:pointer}
-.playback-status{
-  position:absolute;
-  top:45%;
-  width:100%;
-  text-align:center;
-  padding:0 30px;
-  font-size:13px;
-  letter-spacing:.06em;
-  color:#cbd4bf;
-  pointer-events:none}
-.playback-status:empty{
-  display:none}
+.film-view{position:fixed;inset:0;background:#000;z-index:10}#film-mount,.film-view iframe{position:absolute;inset:0;width:100%;height:100%;border:0}.film-view iframe{pointer-events:none}.film-back{position:absolute;top:28px;left:98px;z-index:2;display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:0 10px;font-size:12px;letter-spacing:.08em;color:rgba(255,255,255,.9)}.film-back span{font-size:20px;font-weight:300;line-height:1}.film-back:hover{color:#fff}.film-timecode{position:absolute;left:26px;bottom:23px;z-index:2;font:12px/1.2 "Helvetica Neue";font-variant-numeric:tabular-nums;letter-spacing:.04em;color:rgba(255,255,255,.86);pointer-events:none}.playback-status{position:absolute;left:20%;right:20%;top:45%;text-align:center;font-size:14px;pointer-events:none}.playback-status:empty{display:none}
+body.film-open{overflow:hidden}
 .about-panel{
   position:fixed;
   inset:0;
@@ -910,20 +838,11 @@ body[data-motion=paused] .connection-pulse,body[data-motion=paused] .pulse-line{
   justify-self:auto;
   align-self:center;
   font-size:9px}
-.film-topbar{
-  padding:15px}
-.film-controls{
-  gap:10px;
-  padding:25px 12px max(15px,env(safe-area-inset-bottom));
-  flex-wrap:wrap}
-.film-controls input{
-  order:-1;
-  flex-basis:100%;
-  width:100%}
-.film-controls #film-sound{
-  margin-left:auto}
-.film-controls output{
-  font-size:10px}
+
+
+
+
+
 .about-panel{
   padding:70px 26px;
   align-items:flex-start}
@@ -976,3 +895,5 @@ body[data-motion=paused] .connection-pulse,body[data-motion=paused] .pulse-line{
 .pulse-line{
   stroke-dashoffset:0}
 }
+
+@media(max-width:700px){.film-back{top:11px;left:66px;font-size:11px}.film-timecode{left:18px;bottom:18px;font-size:11px}}

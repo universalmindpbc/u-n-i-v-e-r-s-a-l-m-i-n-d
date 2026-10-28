@@ -22,6 +22,18 @@ assert(media.includes('happiness_require_access();'));
 assert(media.includes('8dc27681c2ab042abf567389868cea9e'));
 assert(script.includes('background.muted=true;background.defaultMuted=true;background.volume=0;'));
 assert(script.includes('playerFrame?.remove()')&&script.includes('loadGeneration'));
+const film=page.match(/<section id="film-view"[\s\S]*?<\/section>/)[0];
+const events=read('events/index.php');
+const back=events.match(/<button id="film-back"[^\n]+/)[0];
+assert(film.includes(back),'Keep the signed-off Events Back button');
+assert.equal((film.match(/<button\b/g)||[]).length,1,'Back is the only film control');
+assert(!film.includes('<input')&&!film.includes('data-open-about'));
+assert(film.includes('class="film-timecode"'));
+const styles=read('happiness/assets/happiness.css'), eventStyles=read('events/assets/events.css');
+for(const selector of ['.film-back{','.film-back span{','.film-back:hover{','.film-timecode{']){
+ const original=eventStyles.slice(eventStyles.indexOf(selector)).split('}')[0]+'}';
+ assert(styles.includes(original),`Keep the signed-off Events style: ${selector}`);
+}
 assert(script.includes("prefers-reduced-motion: reduce")&&network.includes('document.hidden'));
 const png=fs.readFileSync(path.join(root,'happiness/assets/universal-mind-flower.png'));
 assert.equal(png[25],6,'Original flower requires RGBA transparency');

@@ -41,9 +41,9 @@ session_write_close();
 <script src="assets/gate-launch.js?v=1" defer></script>
 <?php else: ?>
 <link rel="preload" as="image" href="assets/universal-mind-flower.png">
-<link rel="stylesheet" href="assets/happiness.css?v=1">
+<link rel="stylesheet" href="assets/happiness.css?v=2">
 <script src="assets/network.js?v=1" defer></script>
-<script src="assets/happiness.js?v=1" defer></script>
+<script src="assets/happiness.js?v=2" defer></script>
 <?php endif; ?>
 </head>
 <body class="<?= $entered ? 'entered' : 'invitation' ?>">
@@ -149,9 +149,9 @@ session_write_close();
 
 <section id="film-view" class="film-view" aria-label="Happiness presentation player" hidden>
 <div id="film-mount"></div>
-<div class="film-topbar"><button id="film-back" class="film-back"><span aria-hidden="true">←</span> Back</button><button data-open-about>About</button></div>
+<button id="film-back" class="film-back" aria-label="Back to main screen"><span aria-hidden="true">←</span> Back</button>
+<output id="film-timecode" class="film-timecode" aria-label="Film playback time">0:00 / 5:55</output>
 <p id="playback-status" class="playback-status" role="status"></p>
-<div class="film-controls"><button id="film-pause" aria-label="Pause presentation">Ⅱ</button><output id="film-timecode" aria-label="Film playback time">0:00 / 5:55</output><label class="sr-only" for="film-seek">Presentation position</label><input id="film-seek" type="range" min="0" max="355" step="0.1" value="0"><button id="film-sound" aria-label="Mute presentation">Sound on</button></div>
 </section>
 
 <section id="about-panel" class="about-panel" role="dialog" aria-modal="true" aria-labelledby="about-title" hidden>

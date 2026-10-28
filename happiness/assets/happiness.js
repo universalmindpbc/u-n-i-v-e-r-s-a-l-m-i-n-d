@@ -4,7 +4,7 @@
   const experience=$('experience'), background=$('opening-loop'), film=$('film-view'), about=$('about-panel');
   const motion=$('motion-toggle'), reduced=matchMedia('(prefers-reduced-motion: reduce)');
   let motionPaused=reduced.matches, player=null, playerFrame=null, playerTimer=0, loadGeneration=0;
-  let filmOpener=null, aboutOpener=null, loading=false, sdkPromise=null, seeking=false;
+  let filmOpener=null, aboutOpener=null, loading=false, sdkPromise=null;
   const format=time=>`${Math.floor(Math.max(0,time||0)/60)}:${String(Math.floor(Math.max(0,time||0)%60)).padStart(2,'0')}`;
   function syncMotion(){
     const stop=motionPaused||!film.hidden||document.hidden||!about.hidden;
@@ -23,7 +23,6 @@
   motion.addEventListener('click',()=>{motionPaused=!motionPaused;syncMotion();});
   reduced.addEventListener('change',event=>{motionPaused=event.matches;syncMotion();});
   document.addEventListener('visibilitychange',()=>{
-    if(document.hidden&&player){player.pause();updateTransport();}
     syncMotion();
   });
 
@@ -110,17 +109,13 @@
     if(!player)return;
     const duration=Number(player.duration)||355,time=Number(player.currentTime)||0;
     $('film-timecode').value=`${format(time)} / ${format(duration)}`;
-    $('film-seek').max=String(duration);if(!seeking)$('film-seek').value=String(time);
     const paused=Boolean(player.paused);
-    $('film-pause').textContent=paused?'▶':'Ⅱ';$('film-pause').setAttribute('aria-label',paused?'Play presentation':'Pause presentation');
-    const muted=Boolean(player.muted);
-    $('film-sound').textContent=muted?'Sound off':'Sound on';$('film-sound').setAttribute('aria-label',muted?'Unmute presentation':'Mute presentation');
     film.dataset.playback=paused?'paused':'playing';film.dataset.currentTime=String(time);
   }
   async function openFilm(start,opener){
     if(loading||!film.hidden)return;
     const generation=++loadGeneration;loading=true;filmOpener=opener;
-    $('film-status').textContent='';film.hidden=false;syncInert();syncMotion();
+    $('film-status').textContent='';film.hidden=false;document.body.classList.add('film-open');syncInert();syncMotion();
     $('playback-status').textContent='Loading presentation…';$('film-back').focus();
     film.dataset.playback='loading';
     try{
@@ -128,22 +123,22 @@
       const media=await response.json();
       if(!response.ok)throw new Error(media.error||'Please refresh and enter your invitation password.');
       if(generation!==loadGeneration)return;
-      const url=new URL(media.film);url.searchParams.set('autoplay','true');url.searchParams.set('controls','false');url.searchParams.set('preload','auto');url.searchParams.set('startTime',`${start}s`);
+      const url=new URL(media.film);url.searchParams.set('autoplay','true');url.searchParams.set('controls','false');url.searchParams.set('preload','auto');url.searchParams.set('letterboxColor','black');url.searchParams.set('startTime',`${start}s`);
       const iframe=document.createElement('iframe');iframe.title='Happiness — full presentation';iframe.allow='autoplay; encrypted-media; fullscreen; picture-in-picture';iframe.allowFullscreen=true;iframe.src=url.href;iframe.tabIndex=-1;
       playerFrame=iframe;$('film-mount').replaceChildren(iframe);player=window.Stream(iframe);
-      player.volume=1;player.muted=false;
+      player.controls=false;player.volume=1;player.muted=false;
       const ready=()=>{if(generation!==loadGeneration)return;$('playback-status').textContent='';updateTransport();};
       player.addEventListener('playing',ready);
       let playbackAttempted=false;
       player.addEventListener('canplay',()=>{
         if(generation!==loadGeneration||playbackAttempted)return;
         playbackAttempted=true;
-        Promise.resolve(player.play()).catch(()=>{if(generation===loadGeneration){$('playback-status').textContent='Press Play to begin the presentation.';updateTransport();}});
+        Promise.resolve(player.play()).catch(()=>{if(generation===loadGeneration)$('playback-status').textContent='Playback did not start. Use Back to try again.';});
       });
       player.addEventListener('play',updateTransport);player.addEventListener('pause',updateTransport);
       player.addEventListener('timeupdate',()=>{if(Number(player?.currentTime)>0)ready();});
       player.addEventListener('waiting',()=>{if(generation===loadGeneration)$('playback-status').textContent='Buffering…';});
-      player.addEventListener('ended',()=>{$('playback-status').textContent='Presentation complete';updateTransport();});
+      player.addEventListener('ended',()=>{if(generation===loadGeneration)closeFilm();});
       player.addEventListener('error',()=>{if(generation===loadGeneration)$('playback-status').textContent='The presentation is unavailable. Use Back to try again.';});
       let seekApplied=false;
       player.addEventListener('loadedmetadata',()=>{if(generation===loadGeneration&&!seekApplied&&start){seekApplied=true;player.currentTime=start;}});
@@ -156,17 +151,12 @@
   function closeFilm(){
     ++loadGeneration;loading=false;clearInterval(playerTimer);
     if(player){try{player.pause();}catch{}}
-    player=null;playerFrame?.remove();playerFrame=null;$('film-mount').replaceChildren();film.hidden=true;delete film.dataset.playback;
-    $('playback-status').textContent='';$('film-timecode').value='0:00 / 5:55';$('film-seek').value='0';
+    player=null;playerFrame?.remove();playerFrame=null;$('film-mount').replaceChildren();film.hidden=true;document.body.classList.remove('film-open');delete film.dataset.playback;
+    $('playback-status').textContent='';$('film-timecode').value='0:00 / 5:55';
     syncInert();syncMotion();filmOpener?.focus();
   }
   document.querySelectorAll('[data-film-start]').forEach(button=>button.addEventListener('click',()=>openFilm(Number(button.dataset.filmStart),button)));
   $('film-back').addEventListener('click',closeFilm);
-  $('film-pause').addEventListener('click',()=>{if(player){if(player.paused)Promise.resolve(player.play()).catch(()=>{$('playback-status').textContent='Playback is unavailable. Use Back to try again.';});else player.pause();updateTransport();}});
-  $('film-sound').addEventListener('click',()=>{if(player){player.muted=!player.muted;updateTransport();}});
-  $('film-seek').addEventListener('input',()=>{seeking=true;$('film-timecode').value=`${format(Number($('film-seek').value))} / ${format(Number($('film-seek').max))}`;});
-  $('film-seek').addEventListener('change',()=>{if(player)player.currentTime=Number($('film-seek').value);seeking=false;});
-  $('film-seek').addEventListener('blur',()=>{seeking=false;});
 
   function fullscreenDocument(){try{return parent.document;}catch{return document;}}
   function syncFullscreen(){
