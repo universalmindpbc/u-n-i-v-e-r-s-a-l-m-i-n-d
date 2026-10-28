@@ -98,6 +98,7 @@
   }, { capture: true });
   document.addEventListener('directory:motion', event => {
     paused = event.detail.paused;
+    if (paused && !completed) finish();
     resume();
   });
   motion.addEventListener('change', () => {
