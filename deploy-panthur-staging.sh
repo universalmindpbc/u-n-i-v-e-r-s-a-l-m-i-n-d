@@ -32,7 +32,11 @@ if [[ -z "$NODE_BIN" ]]; then
 fi
 
 # Events is an independent PHP microsite; validate its own source for scoped releases.
-if [[ "${1:-}" == events ]]; then
+if [[ "${1:-}" == directory ]]; then
+  "$NODE_BIN" "$ROOT_DIR/tools/check-directory-source.mjs"
+  "$NODE_BIN" --check "$ROOT_DIR/home/directory.js"
+  if command -v php >/dev/null 2>&1; then php -l "$ROOT_DIR/events/portal-entry.php"; fi
+elif [[ "${1:-}" == events ]]; then
   for source in "$ROOT_DIR"/events/assets/*.js; do "$NODE_BIN" --check "$source"; done
   if command -v php >/dev/null 2>&1; then
     for source in "$ROOT_DIR"/events/*.php; do php -l "$source"; done

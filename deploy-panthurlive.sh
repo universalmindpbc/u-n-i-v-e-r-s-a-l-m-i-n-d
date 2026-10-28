@@ -798,6 +798,29 @@ deploy_events() {
   echo "Events: committed source published through Panthur FTP."
 }
 
+# The directory is published by the existing transport, with the root entry last.
+deploy_directory() {
+  local relative manifest_tmp
+  local paths=(home/index.html home/directory.css home/directory.js events/portal-entry.php index.html)
+  if [[ -n "$(git -C "$ROOT_DIR" status --porcelain --untracked-files=all -- "${paths[@]}")" ]]; then
+    echo "Refusing to deploy uncommitted directory source." >&2
+    return 1
+  fi
+  for relative in "${paths[@]}"; do
+    git -C "$ROOT_DIR" ls-files --error-unmatch "$relative" >/dev/null || return 1
+  done
+  manifest_tmp="$(mktemp)"
+  if [[ -f "$MANIFEST_FILE" ]]; then
+    awk -F '\t' '$2 !~ /^home\// && $2 != "events/portal-entry.php" && $2 != "index.html"' "$MANIFEST_FILE" > "$manifest_tmp"
+  fi
+  for relative in "${paths[@]}"; do
+    put_file "$ROOT_DIR/$relative" "$relative"
+    printf '%s\t%s\n' "$(file_hash "$ROOT_DIR/$relative")" "$relative" >> "$manifest_tmp"
+  done
+  mv "$manifest_tmp" "$MANIFEST_FILE"
+  echo "Directory: committed source published through Panthur FTP."
+}
+
 DEPLOY_MODE="${1:-iam}"
 
 if deployment_requires_owner_state_guard "$DEPLOY_MODE"; then
@@ -805,6 +828,9 @@ if deployment_requires_owner_state_guard "$DEPLOY_MODE"; then
 fi
 
 case "$DEPLOY_MODE" in
+  directory)
+    deploy_directory
+    ;;
   events)
     deploy_events
     ;;
@@ -866,7 +892,7 @@ case "$DEPLOY_MODE" in
     provision_sovereignty_runtime configure
     ;;
   *)
-    echo "Usage: $0 [events|iam|iam-fast|fast|changed|iam-changed|mark|media|redirects|all|all-fast|all-changed|seed-owner-state|owner-password-reset|sovereignty-seed|sovereignty-configure]" >&2
+    echo "Usage: $0 [directory|events|iam|iam-fast|fast|changed|iam-changed|mark|media|redirects|all|all-fast|all-changed|seed-owner-state|owner-password-reset|sovereignty-seed|sovereignty-configure]" >&2
     exit 2
     ;;
 esac

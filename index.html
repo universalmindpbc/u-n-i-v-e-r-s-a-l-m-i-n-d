@@ -465,6 +465,7 @@
         const form = document.querySelector("[data-access-form]");
         const passwordInput = document.querySelector("[data-access-password]");
         const errorMessage = document.querySelector("[data-access-error]");
+        let entryPending = false;
 
         passwordInput.addEventListener("focus", () => {
           document.body.dataset.accessFocus = "true";
@@ -489,6 +490,7 @@
 
         form.addEventListener("submit", async (event) => {
           event.preventDefault();
+          if (entryPending) return;
           errorMessage.textContent = "";
 
           const password = passwordInput.value.trim();
@@ -498,13 +500,29 @@
             return;
           }
 
+          entryPending = true;
           try {
             const passwordHash = await hashPassword(password);
             if (allowedPasswordHashes.has(passwordHash)) {
+              // Establish the existing Events session before showing the directory.
+              // All other destinations retain their current password-free entry.
+              const entry = await fetch("/events/portal-entry.php", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ password }),
+                credentials: "same-origin",
+                cache: "no-store",
+                redirect: "error",
+                signal: AbortSignal.timeout(15000)
+              });
+              if (!entry.ok || (await entry.json()).granted !== true) {
+                throw new Error("Entry unavailable");
+              }
+              passwordInput.value = "";
               document.body.dataset.accessState = "granted";
               document.dispatchEvent(new CustomEvent("um:access-granted"));
               window.setTimeout(() => {
-                window.location.assign("/vogue/iam/induction.html");
+                window.location.assign("/home/");
               }, 700);
               // This optional receipt never participates in the entry timer.
               // No credential or receipt is persisted in browser storage.
@@ -529,6 +547,8 @@
           } catch (error) {
             rejectAccess("unable to verify — please try again");
             return;
+          } finally {
+            entryPending = document.body.dataset.accessState === "granted";
           }
 
           rejectAccess("password not recognised");
