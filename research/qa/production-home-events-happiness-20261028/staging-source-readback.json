@@ -1,0 +1,218 @@
+{
+  "environment": "staging",
+  "verifiedAt": "2026-10-28T10:15:30.279623+00:00",
+  "approvedSourceCommit": "b9b79f9c86933035b053c92cf06353462bf20ed5",
+  "checks": [
+    {
+      "path": "events/.htaccess",
+      "sha256": "df023a2df19539fcca6d9d053064149a3242500a777f3f2ab308ae848aa0f257",
+      "matchesApprovedSource": true
+    },
+    {
+      "path": "events/access.php",
+      "sha256": "bc019bdd44d02b7ac16e38756c2dc18f6a7a88a16c9192b87b477d1813c87523",
+      "matchesApprovedSource": true
+    },
+    {
+      "path": "events/animation.php",
+      "sha256": "5cc21b10227d2b2b241ca3a31dfbbf83b8044302dbe3acc395c050c360df43a8",
+      "matchesApprovedSource": true
+    },
+    {
+      "path": "events/assets/entry-primer.mp4",
+      "sha256": "788845dab9b05b8d7678ebbc1766be7d632c4e6bf476c0814661ec5030c0b327",
+      "matchesApprovedSource": true
+    },
+    {
+      "path": "events/assets/events.css",
+      "sha256": "1361b646863d79670fea8183a9b27c4370020b30e6ca2d5042014ab292999bde",
+      "matchesApprovedSource": true
+    },
+    {
+      "path": "events/assets/events.js",
+      "sha256": "1ce531437f78b6feeed7bdf8b973784074ecf96656e3a954065da86e73901798",
+      "matchesApprovedSource": true
+    },
+    {
+      "path": "events/assets/gate-launch.js",
+      "sha256": "e697ad5838488e2fccef55157d16047c902f5b3d2b00544da025bae1da84b8e4",
+      "matchesApprovedSource": true
+    },
+    {
+      "path": "events/assets/gate-rain.js",
+      "sha256": "27aaac4857613f859deac1d68101949e335ca8d4fa2e9175e2e08bcbfda46c40",
+      "matchesApprovedSource": true
+    },
+    {
+      "path": "events/assets/gate.css",
+      "sha256": "1ba1588bf51f3f3926147e49d1c2eedec27e017cf3e2075a3bf91a4f78df4686",
+      "matchesApprovedSource": true
+    },
+    {
+      "path": "events/happiness-entry.php",
+      "sha256": "cf9b7e51a4df81a32684c6f752b04f944ad596dc695b6c162062a1b4db7742fa",
+      "matchesApprovedSource": true
+    },
+    {
+      "path": "events/index.php",
+      "sha256": "45a35ecb3ef189c30a032f18932f15dfe01f06d8fc1568ad18a36517437b6a08",
+      "matchesApprovedSource": true
+    },
+    {
+      "path": "events/loop.php",
+      "sha256": "58fd03e59661fa77be71dbefcbf8bf5487a3d2b5be815ab192a5a210cee9fe1b",
+      "matchesApprovedSource": true
+    },
+    {
+      "path": "events/media.php",
+      "sha256": "bed9a65599b5e3025993becb58c105a3de0c096f73f7948c9fb9433a2151319e",
+      "matchesApprovedSource": true
+    },
+    {
+      "path": "events/portal-entry.php",
+      "sha256": "1d281594d063e3449e624cba4d0eac00aef8da1a1094d76282f6ad727e018590",
+      "matchesApprovedSource": true
+    },
+    {
+      "path": "events/poster.php",
+      "sha256": "ad25ec01380980ff0c6c460e2296ac7286bec3d469f431708c7155393dd62a9b",
+      "matchesApprovedSource": true
+    },
+    {
+      "path": "events/private/.htaccess",
+      "sha256": "fa28d421a28ed9b6f4b997d5119c2b8adbacff6e2dd119a179b71230f9664934",
+      "matchesApprovedSource": true
+    },
+    {
+      "path": "events/private/media.json",
+      "sha256": "de6fc8854f147db209941b8d90afed489476cbecfee4a88e6ce78b06168d65f5",
+      "matchesApprovedSource": true
+    },
+    {
+      "path": "events/private/opening-animation.webp",
+      "sha256": "765546f78243fa4ec1d779e4f388d7d91b6c104bb510663e3b156603695f1e84",
+      "matchesApprovedSource": true
+    },
+    {
+      "path": "events/private/opening-loop.mp4",
+      "sha256": "93cae8255802e729e380694bbacede4033a0ea1d42213dd2be22cbf4ea759435",
+      "matchesApprovedSource": true
+    },
+    {
+      "path": "events/private/poster.jpg",
+      "sha256": "5fceff4d3ac536b1b869a4e9fa46d1867393b2874ec66af92d17e4c918b84a29",
+      "matchesApprovedSource": true
+    },
+    {
+      "path": "happiness/.htaccess",
+      "sha256": "1cd36261400342d994fe2b6209b3c3edc130bbf7b6715d7bcc907d70f4660528",
+      "matchesApprovedSource": true
+    },
+    {
+      "path": "happiness/access.php",
+      "sha256": "97ca6c18f7240a7f3f6abc7bb3e74e36e60a96e1d456901b987e072265740d79",
+      "matchesApprovedSource": true
+    },
+    {
+      "path": "happiness/assets/festival-poster.jpg",
+      "sha256": "5333d941764fa9f2b594925b68d67fb51187ba8f37867c5a99b2a8f026a213bc",
+      "matchesApprovedSource": true
+    },
+    {
+      "path": "happiness/assets/gate-background.css",
+      "sha256": "46e28a483099d0672f04bb3edd869e75001582e0d1aa47074675ceab6d306257",
+      "matchesApprovedSource": true
+    },
+    {
+      "path": "happiness/assets/gate-launch.js",
+      "sha256": "c76b3e34e3303a021e5ebbfee0422410399bc527bd4e806ffc34e23e3a2acde2",
+      "matchesApprovedSource": true
+    },
+    {
+      "path": "happiness/assets/happiness.css",
+      "sha256": "cf57f449591055e099de5f6e94cc3f94ad40c32226618e4cd04d356e74d0bc1d",
+      "matchesApprovedSource": true
+    },
+    {
+      "path": "happiness/assets/happiness.js",
+      "sha256": "e40e36553cd104f38e09466ab7cff6f3210cc3845479e1fd56a74edf1ec9704b",
+      "matchesApprovedSource": true
+    },
+    {
+      "path": "happiness/assets/network.js",
+      "sha256": "ab59e13ef8b22579ea069ab6289866771bcddf5183ac7209d9529820bd135a16",
+      "matchesApprovedSource": true
+    },
+    {
+      "path": "happiness/assets/universal-mind-flower.png",
+      "sha256": "9265619edbd83d103f4408933ecdb9a02f7a5392075200c4000fa1ec8a14cdee",
+      "matchesApprovedSource": true
+    },
+    {
+      "path": "happiness/film-config.php",
+      "sha256": "c641e9dc1eb26f78c0b8a1a80143c2758759602452da13b95f3d11ddd1351a82",
+      "matchesApprovedSource": true
+    },
+    {
+      "path": "happiness/index.php",
+      "sha256": "6fd634e6f4fbff09dc0c34b41721ee749313a45be60d79ca8cb5e2037534ca67",
+      "matchesApprovedSource": true
+    },
+    {
+      "path": "happiness/media.php",
+      "sha256": "ada80f87df1861c571920e08f568b8a247dc936838af1ced5c8d713d9a43a341",
+      "matchesApprovedSource": true
+    },
+    {
+      "path": "home/assets/festival-loop.mp4",
+      "sha256": "d9686be29a210cf8a1936fcfff46016f7556201ce717d3689cd3d6e06ad65a76",
+      "matchesApprovedSource": true
+    },
+    {
+      "path": "home/assets/festival-poster.jpg",
+      "sha256": "25b7b9c74eda683ed54977a627daea304180cff6e16dceed381e9323803c4427",
+      "matchesApprovedSource": true
+    },
+    {
+      "path": "home/directory-rain.js",
+      "sha256": "9d50d28576a72050256c25b34ba14b80555e73a94d68e3e7c47023b1f8d5bcf3",
+      "matchesApprovedSource": true
+    },
+    {
+      "path": "home/directory-story.js",
+      "sha256": "9e9960cff9055f75d1ab2e8414e86863749f0149bfc8c5d06324f31259bb96e7",
+      "matchesApprovedSource": true
+    },
+    {
+      "path": "home/directory.css",
+      "sha256": "31481bd655451fe87b8d094d7f1a0a3c3f5148ec207a6a9ac65607198405a02e",
+      "matchesApprovedSource": true
+    },
+    {
+      "path": "home/directory.js",
+      "sha256": "57451a8943ac23ec9c1747f1a36a53f4a258d327590e5ccd7421b168d73ecc74",
+      "matchesApprovedSource": true
+    },
+    {
+      "path": "home/entry-shell.css",
+      "sha256": "23bf449587a9a4654de1d789d9f7275608bb94e24abd6d2e3e6f2e5084477021",
+      "matchesApprovedSource": true
+    },
+    {
+      "path": "home/entry-shell.js",
+      "sha256": "3480228c2a797727e82c3bcc24b2486bed16d827edcebd966a140a70ec6a34b4",
+      "matchesApprovedSource": true
+    },
+    {
+      "path": "home/index.html",
+      "sha256": "e284229ecb45889da9011813b218454ddcbabc79dc792069598b408191cc7847",
+      "matchesApprovedSource": true
+    },
+    {
+      "path": "index.html",
+      "sha256": "55319dd4fe6cf1be2abd08a6ef763d4887a078ec7619ea6b3939f0901b8f6f53",
+      "matchesApprovedSource": true
+    }
+  ],
+  "passed": true
+}

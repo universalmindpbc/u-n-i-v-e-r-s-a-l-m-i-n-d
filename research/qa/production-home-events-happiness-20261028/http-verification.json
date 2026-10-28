@@ -1,0 +1,166 @@
+{
+  "origin": "https://universalmind.tv",
+  "verifiedAt": "2026-10-28T10:21:12.947198+00:00",
+  "checks": [
+    {
+      "route": "/",
+      "status": 200
+    },
+    {
+      "route": "/home/",
+      "status": 200
+    },
+    {
+      "route": "/events/",
+      "status": 200
+    },
+    {
+      "route": "/happiness/",
+      "status": 200
+    },
+    {
+      "route": "/patent/",
+      "status": 200
+    },
+    {
+      "route": "/vogue/iam/study.php",
+      "status": 200
+    },
+    {
+      "route": "/home/directory-rain.js",
+      "status": 200,
+      "sha256": "9d50d28576a72050256c25b34ba14b80555e73a94d68e3e7c47023b1f8d5bcf3",
+      "matchesApprovedSource": true
+    },
+    {
+      "route": "/home/directory-story.js",
+      "status": 200,
+      "sha256": "9e9960cff9055f75d1ab2e8414e86863749f0149bfc8c5d06324f31259bb96e7",
+      "matchesApprovedSource": true
+    },
+    {
+      "route": "/home/directory.css",
+      "status": 200,
+      "sha256": "31481bd655451fe87b8d094d7f1a0a3c3f5148ec207a6a9ac65607198405a02e",
+      "matchesApprovedSource": true
+    },
+    {
+      "route": "/home/directory.js",
+      "status": 200,
+      "sha256": "57451a8943ac23ec9c1747f1a36a53f4a258d327590e5ccd7421b168d73ecc74",
+      "matchesApprovedSource": true
+    },
+    {
+      "route": "/home/entry-shell.css",
+      "status": 200,
+      "sha256": "23bf449587a9a4654de1d789d9f7275608bb94e24abd6d2e3e6f2e5084477021",
+      "matchesApprovedSource": true
+    },
+    {
+      "route": "/home/entry-shell.js",
+      "status": 200,
+      "sha256": "3480228c2a797727e82c3bcc24b2486bed16d827edcebd966a140a70ec6a34b4",
+      "matchesApprovedSource": true
+    },
+    {
+      "route": "/events/assets/events.css",
+      "status": 200,
+      "sha256": "1361b646863d79670fea8183a9b27c4370020b30e6ca2d5042014ab292999bde",
+      "matchesApprovedSource": true
+    },
+    {
+      "route": "/events/assets/events.js",
+      "status": 200,
+      "sha256": "1ce531437f78b6feeed7bdf8b973784074ecf96656e3a954065da86e73901798",
+      "matchesApprovedSource": true
+    },
+    {
+      "route": "/events/assets/gate-launch.js",
+      "status": 200,
+      "sha256": "e697ad5838488e2fccef55157d16047c902f5b3d2b00544da025bae1da84b8e4",
+      "matchesApprovedSource": true
+    },
+    {
+      "route": "/events/assets/gate-rain.js",
+      "status": 200,
+      "sha256": "27aaac4857613f859deac1d68101949e335ca8d4fa2e9175e2e08bcbfda46c40",
+      "matchesApprovedSource": true
+    },
+    {
+      "route": "/events/assets/gate.css",
+      "status": 200,
+      "sha256": "1ba1588bf51f3f3926147e49d1c2eedec27e017cf3e2075a3bf91a4f78df4686",
+      "matchesApprovedSource": true
+    },
+    {
+      "route": "/happiness/assets/gate-background.css",
+      "status": 200,
+      "sha256": "46e28a483099d0672f04bb3edd869e75001582e0d1aa47074675ceab6d306257",
+      "matchesApprovedSource": true
+    },
+    {
+      "route": "/happiness/assets/gate-launch.js",
+      "status": 200,
+      "sha256": "c76b3e34e3303a021e5ebbfee0422410399bc527bd4e806ffc34e23e3a2acde2",
+      "matchesApprovedSource": true
+    },
+    {
+      "route": "/happiness/assets/happiness.css",
+      "status": 200,
+      "sha256": "cf57f449591055e099de5f6e94cc3f94ad40c32226618e4cd04d356e74d0bc1d",
+      "matchesApprovedSource": true
+    },
+    {
+      "route": "/happiness/assets/happiness.js",
+      "status": 200,
+      "sha256": "e40e36553cd104f38e09466ab7cff6f3210cc3845479e1fd56a74edf1ec9704b",
+      "matchesApprovedSource": true
+    },
+    {
+      "route": "/happiness/assets/network.js",
+      "status": 200,
+      "sha256": "ab59e13ef8b22579ea069ab6289866771bcddf5183ac7209d9529820bd135a16",
+      "matchesApprovedSource": true
+    },
+    {
+      "route": "/events/media.php",
+      "unauthenticatedStatus": 401
+    },
+    {
+      "route": "/happiness/media.php",
+      "unauthenticatedStatus": 401
+    },
+    {
+      "route": "/events/private/media.json",
+      "unauthenticatedStatus": 403
+    },
+    {
+      "gateway": "events",
+      "invalidPasswordRejected": true,
+      "newPasswordAccepted": true,
+      "authenticatedPageLoaded": true
+    },
+    {
+      "gateway": "happiness",
+      "invalidPasswordRejected": true,
+      "newPasswordAccepted": true,
+      "authenticatedPageLoaded": true
+    },
+    {
+      "gateway": "main server entry",
+      "invalidPasswordRejected": true
+    },
+    {
+      "gateway": "patent",
+      "invalidPasswordRejected": true,
+      "newPasswordAccepted": true,
+      "authenticatedPageLoaded": true
+    },
+    {
+      "gateway": "study",
+      "sharedWebsitePasswordAvailable": true,
+      "loginNotSubmittedToAvoidCreatingParticipant": true
+    }
+  ],
+  "passed": true
+}

@@ -1,0 +1,36 @@
+{
+  "releasedAt": "2026-10-28T21:22:33.792617+11:00",
+  "timezone": "Australia/Sydney",
+  "approvedStagingCommit": "b9b79f9c86933035b053c92cf06353462bf20ed5",
+  "previousProductionCommit": "53e091f4aefea56f4e6b0c2ff921ca328cf2f2b1",
+  "productionTag": "production-2026-10-28-2122",
+  "userAuthorization": "please push staging to production with the happiness, events sites + new homepage + new password.",
+  "productionUrls": [
+    "https://universalmind.tv/",
+    "https://universalmind.tv/home/",
+    "https://universalmind.tv/events/",
+    "https://universalmind.tv/happiness/"
+  ],
+  "deploymentCommands": [
+    "./deploy-panthurlive.sh events",
+    "./deploy-panthurlive.sh happiness",
+    "./deploy-panthurlive.sh directory"
+  ],
+  "websiteSourceChangedDuringPromotion": false,
+  "deployedSourceFiles": 42,
+  "verification": {
+    "stagingAndProductionSourceReadback": "All 42 files match the approved source commit and production manifest.",
+    "directoryChecks": 19,
+    "eventsChecks": 5,
+    "httpAndGatewayChecks": 30,
+    "processAudioDisabled": true,
+    "nativeFullscreenInvoked": false,
+    "physicalIPhoneVerified": false,
+    "openAIChanges": false,
+    "studyEnrollmentAttempted": false
+  },
+  "releaseRecordScope": [
+    ".panthur-deploy-manifest.tsv",
+    "research/qa/production-home-events-happiness-20261028/"
+  ]
+}

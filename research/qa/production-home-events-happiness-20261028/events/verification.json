@@ -1,0 +1,71 @@
+{
+  "url": "https://universalmind.tv/events/",
+  "processAudioDisabled": true,
+  "realIphoneSafariTested": false,
+  "nativeFullscreenInvoked": false,
+  "checks": [
+    {
+      "journey": "direct Events password entry",
+      "authenticationDelayMs": 6500,
+      "playBeforeAuthentication": true,
+      "samePlayerAcrossAuthentication": true,
+      "primerTime": 0.359873,
+      "privateLoopTime": 0.36,
+      "aboutPassed": true,
+      "filmAndBackPassed": true,
+      "trace": [
+        {
+          "event": "play",
+          "role": "events-entry-background",
+          "gesture": true,
+          "allowed": true
+        },
+        {
+          "event": "authentication"
+        },
+        {
+          "event": "play",
+          "role": "events-entry-background",
+          "gesture": false,
+          "allowed": true
+        },
+        {
+          "event": "play",
+          "role": "events-entry-background",
+          "gesture": false,
+          "allowed": true
+        }
+      ]
+    },
+    {
+      "journey": "directory → Events → Back",
+      "initiallyPaused": false,
+      "samePlayer": true,
+      "originalSourceRestored": true,
+      "allMediaFlagsRestored": true,
+      "timeBefore": 53.509705,
+      "timeAfter": 53.594058,
+      "pausedAfter": false
+    },
+    {
+      "journey": "directory → Events → Back",
+      "initiallyPaused": true,
+      "samePlayer": true,
+      "originalSourceRestored": true,
+      "allMediaFlagsRestored": true,
+      "timeBefore": 70.469346,
+      "timeAfter": 70.469346,
+      "pausedAfter": true
+    },
+    {
+      "journey": "Events → directory → Happiness → directory",
+      "originalBackgroundSourcePreserved": true,
+      "samePlayer": true
+    },
+    {
+      "journey": "all background video denied",
+      "animationFallbackMoves": true
+    }
+  ],
+  "passed": true
+}

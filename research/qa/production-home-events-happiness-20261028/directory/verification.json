@@ -1,0 +1,301 @@
+{
+  "origin": "https://universalmind.tv",
+  "physicalIPhoneVerified": false,
+  "verifiedAt": "2026-10-28T10:18:37.240Z",
+  "processAudioDisabled": true,
+  "nativeFullscreenInvoked": false,
+  "fullscreenVerification": "Fullscreen API intercepted; persistent owner document, activation and routing verified without invoking native fullscreen.",
+  "checks": [
+    {
+      "loginFullscreenOwnerRetained": true,
+      "silentVideo": {
+        "source": "https://universalmind.tv/home/assets/festival-loop.mp4?v=silent-1",
+        "muted": true,
+        "defaultMuted": true,
+        "volume": 0,
+        "paused": false,
+        "playsInline": true,
+        "autoplay": true,
+        "ready": 4,
+        "time": 25.124079
+      },
+      "mediaStartsInsideEnterBeforeAuthentication": true,
+      "authenticationDelayed6500ms": true,
+      "entry": {
+        "trace": [
+          {
+            "event": "play",
+            "gesture": true,
+            "player": "um-directory-film"
+          },
+          {
+            "event": "entry-request"
+          },
+          {
+            "event": "play",
+            "gesture": false,
+            "player": "um-directory-film"
+          },
+          {
+            "event": "play",
+            "gesture": false,
+            "player": "um-directory-film"
+          }
+        ],
+        "playerOpacity": "1",
+        "iframeBackground": "rgba(0, 0, 0, 0)"
+      }
+    },
+    {
+      "sparseLandingRain": {
+        "columns": 2,
+        "landingColumns": 23,
+        "density": "0.1",
+        "status": "running",
+        "visiblePixels": 949
+      }
+    },
+    {
+      "fourDistinctOrganicPaths": true,
+      "contoursMoveGently": true,
+      "pathLengths": [
+        318.0214538574219,
+        320.5743103027344,
+        232.6375274658203,
+        234.14639282226562
+      ]
+    },
+    {
+      "motionPauseResume": true
+    },
+    {
+      "destination": "watch",
+      "url": "https://universalmind.tv/vogue/iam/induction.html",
+      "sameFullscreenDocument": true,
+      "noSecondPassword": true
+    },
+    {
+      "backFrom": "watch",
+      "retainedPlayer": true,
+      "media": {
+        "source": "https://universalmind.tv/home/assets/festival-loop.mp4?v=silent-1",
+        "muted": true,
+        "defaultMuted": true,
+        "volume": 0,
+        "paused": false,
+        "playsInline": true,
+        "autoplay": true,
+        "ready": 4,
+        "time": 26.617194
+      }
+    },
+    {
+      "destination": "events",
+      "url": "https://universalmind.tv/events/?experience=1",
+      "sameFullscreenDocument": true,
+      "noSecondPassword": true
+    },
+    {
+      "backFrom": "events",
+      "retainedPlayer": true,
+      "media": {
+        "source": "https://universalmind.tv/home/assets/festival-loop.mp4?v=silent-1",
+        "muted": true,
+        "defaultMuted": true,
+        "volume": 0,
+        "paused": false,
+        "playsInline": true,
+        "autoplay": true,
+        "ready": 4,
+        "time": 27.4936
+      }
+    },
+    {
+      "happinessAboutTranslucent": true,
+      "backgroundContinuesBehindAbout": true,
+      "presentationDecoded": true,
+      "presentationBackResumesBackground": true
+    },
+    {
+      "destination": "festivals",
+      "url": "https://universalmind.tv/happiness/",
+      "sameFullscreenDocument": true,
+      "noSecondPassword": true
+    },
+    {
+      "backFrom": "festivals",
+      "retainedPlayer": true,
+      "media": {
+        "source": "https://universalmind.tv/home/assets/festival-loop.mp4?v=silent-1",
+        "muted": true,
+        "defaultMuted": true,
+        "volume": 0,
+        "paused": false,
+        "playsInline": true,
+        "autoplay": true,
+        "ready": 4,
+        "time": 30.270929
+      }
+    },
+    {
+      "destination": "research",
+      "url": "https://universalmind.tv/informatics/",
+      "sameFullscreenDocument": true,
+      "noSecondPassword": true
+    },
+    {
+      "backFrom": "research",
+      "retainedPlayer": true,
+      "media": {
+        "source": "https://universalmind.tv/home/assets/festival-loop.mp4?v=silent-1",
+        "muted": true,
+        "defaultMuted": true,
+        "volume": 0,
+        "paused": false,
+        "playsInline": true,
+        "autoplay": true,
+        "ready": 4,
+        "time": 31.19195
+      }
+    },
+    {
+      "mobileVideo": {
+        "source": "https://universalmind.tv/home/assets/festival-loop.mp4?v=silent-1",
+        "muted": true,
+        "defaultMuted": true,
+        "volume": 0,
+        "paused": false,
+        "playsInline": true,
+        "autoplay": true,
+        "ready": 4,
+        "time": 0.508333
+      },
+      "mobileDescriptionsHidden": true
+    },
+    {
+      "layoutWidth": 320,
+      "width": 320,
+      "scrollWidth": 320,
+      "descriptions": [
+        "none",
+        "none",
+        "none",
+        "none"
+      ],
+      "flower": 82,
+      "endpoints": [
+        {
+          "left": 18,
+          "right": 142.953125
+        },
+        {
+          "left": 177.046875,
+          "right": 302
+        },
+        {
+          "left": 18,
+          "right": 142.953125
+        },
+        {
+          "left": 177.046875,
+          "right": 302
+        }
+      ]
+    },
+    {
+      "layoutWidth": 760,
+      "width": 760,
+      "scrollWidth": 760,
+      "descriptions": [
+        "none",
+        "none",
+        "none",
+        "none"
+      ],
+      "flower": 94,
+      "endpoints": [
+        {
+          "left": 24,
+          "right": 337.265625
+        },
+        {
+          "left": 422.734375,
+          "right": 736
+        },
+        {
+          "left": 24,
+          "right": 337.265625
+        },
+        {
+          "left": 422.734375,
+          "right": 736
+        }
+      ]
+    },
+    {
+      "layoutWidth": 1470,
+      "width": 1470,
+      "scrollWidth": 1470,
+      "descriptions": [
+        "block",
+        "block",
+        "block",
+        "block"
+      ],
+      "flower": 94,
+      "endpoints": [
+        {
+          "left": 47.03125,
+          "right": 377.25
+        },
+        {
+          "left": 1092.75,
+          "right": 1422.96875
+        },
+        {
+          "left": 47.03125,
+          "right": 377.25
+        },
+        {
+          "left": 1092.75,
+          "right": 1422.96875
+        }
+      ]
+    },
+    {
+      "layoutWidth": 1920,
+      "width": 1920,
+      "scrollWidth": 1920,
+      "descriptions": [
+        "block",
+        "block",
+        "block",
+        "block"
+      ],
+      "flower": 94,
+      "endpoints": [
+        {
+          "left": 61.4375,
+          "right": 492.734375
+        },
+        {
+          "left": 1427.265625,
+          "right": 1858.5625
+        },
+        {
+          "left": 61.4375,
+          "right": 492.734375
+        },
+        {
+          "left": 1427.265625,
+          "right": 1858.5625
+        }
+      ]
+    },
+    {
+      "reducedMotionStatic": true
+    }
+  ],
+  "errors": [],
+  "passed": true
+}
