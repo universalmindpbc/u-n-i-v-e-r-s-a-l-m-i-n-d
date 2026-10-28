@@ -32,7 +32,13 @@ if [[ -z "$NODE_BIN" ]]; then
 fi
 
 # Events is an independent PHP microsite; validate its own source for scoped releases.
-if [[ "${1:-}" == directory ]]; then
+if [[ "${1:-}" == happiness ]]; then
+  "$NODE_BIN" "$ROOT_DIR/tools/check-happiness-microsite.mjs"
+  for source in "$ROOT_DIR"/happiness/assets/*.js; do "$NODE_BIN" --check "$source"; done
+  if command -v php >/dev/null 2>&1; then
+    for source in "$ROOT_DIR"/happiness/*.php "$ROOT_DIR/events/happiness-entry.php"; do php -l "$source"; done
+  fi
+elif [[ "${1:-}" == directory ]]; then
   "$NODE_BIN" "$ROOT_DIR/tools/check-directory-source.mjs"
   "$NODE_BIN" --check "$ROOT_DIR/home/directory.js"
   "$NODE_BIN" --check "$ROOT_DIR/home/directory-story.js"

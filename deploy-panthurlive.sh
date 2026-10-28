@@ -821,6 +821,31 @@ deploy_directory() {
   echo "Directory: committed source published through Panthur FTP."
 }
 
+# Happiness uses the existing transport with a committed, narrowly scoped source.
+deploy_happiness() {
+  local relative manifest_tmp
+  if [[ -n "$(git -C "$ROOT_DIR" status --porcelain --untracked-files=all -- happiness events/happiness-entry.php)" ]]; then
+    echo "Refusing to deploy uncommitted Happiness source." >&2
+    return 1
+  fi
+  git -C "$ROOT_DIR" ls-files --error-unmatch happiness/index.php events/happiness-entry.php >/dev/null || return 1
+  manifest_tmp="$(mktemp)"
+  if [[ -f "$MANIFEST_FILE" ]]; then
+    awk -F '\t' '$2 !~ /^happiness\// && $2 != "events/happiness-entry.php"' "$MANIFEST_FILE" > "$manifest_tmp"
+  fi
+  while IFS= read -r relative; do
+    [[ "$relative" == "happiness/index.php" ]] && continue
+    put_file "$ROOT_DIR/$relative" "$relative"
+    printf '%s\t%s\n' "$(file_hash "$ROOT_DIR/$relative")" "$relative" >> "$manifest_tmp"
+  done < <(git -C "$ROOT_DIR" ls-files happiness)
+  for relative in happiness/index.php events/happiness-entry.php; do
+    put_file "$ROOT_DIR/$relative" "$relative"
+    printf '%s\t%s\n' "$(file_hash "$ROOT_DIR/$relative")" "$relative" >> "$manifest_tmp"
+  done
+  mv "$manifest_tmp" "$MANIFEST_FILE"
+  echo "Happiness: committed source published through Panthur FTP."
+}
+
 DEPLOY_MODE="${1:-iam}"
 
 if deployment_requires_owner_state_guard "$DEPLOY_MODE"; then
@@ -828,6 +853,9 @@ if deployment_requires_owner_state_guard "$DEPLOY_MODE"; then
 fi
 
 case "$DEPLOY_MODE" in
+  happiness)
+    deploy_happiness
+    ;;
   directory)
     deploy_directory
     ;;
@@ -892,7 +920,7 @@ case "$DEPLOY_MODE" in
     provision_sovereignty_runtime configure
     ;;
   *)
-    echo "Usage: $0 [directory|events|iam|iam-fast|fast|changed|iam-changed|mark|media|redirects|all|all-fast|all-changed|seed-owner-state|owner-password-reset|sovereignty-seed|sovereignty-configure]" >&2
+    echo "Usage: $0 [happiness|directory|events|iam|iam-fast|fast|changed|iam-changed|mark|media|redirects|all|all-fast|all-changed|seed-owner-state|owner-password-reset|sovereignty-seed|sovereignty-configure]" >&2
     exit 2
     ;;
 esac
