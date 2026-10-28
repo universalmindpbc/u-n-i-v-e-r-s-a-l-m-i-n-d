@@ -1,0 +1,108 @@
+{
+  "origin": "https://staging.universalmind.tv/events/",
+  "processAudioDisabled": true,
+  "nativeFullscreenInvoked": false,
+  "checks": [
+    {
+      "paragraphsMatchSuppliedCopy": true,
+      "paragraphs": [
+        "Change your emotions. Transform your world.",
+        "Welcome to athousandminds is a new interactive music, fashion and light festival exploring mindfulness.",
+        "The event places the audience inside a responsive environment, gamifying mindfulness and authentic human connection through an electronic music experience.",
+        "Each level unlocks rewards that can be redeemed at the event, whether interactive digital experiences, physical items such as fashion and merch, or exclusive live performances on the night.",
+        "athousandminds attendees wear an Apple Watch, and their neurotransmitters shape the music, fashion and lighting around them in real time. As the audience’s mind-state evolves, the environment changes with it. This is the future of mindfulness.",
+        "The athousandminds experience uses Apple Watch signals to infer emotional connection through oxytocin health and psychological safety through cortisol health. Real time hormone and neurotransmitter inference is possible via wearables in 2026. Check out SIX / IMMERSION to learn more.",
+        "athousandminds is a new festival by Universal Mind, pitching to Live Nation and Apple TV+, together as one. The artists and venues are ideal bookings, not confirmed and this is not an advertisement for an existing event."
+      ],
+      "levels": [
+        "Connect to yourself (level one)",
+        "Connect with each other (level two)",
+        "Together, Transform your world (level three)"
+      ],
+      "boldFestivalNames": 4,
+      "htmlCharacterCodesDecoded": true,
+      "links": [
+        {
+          "text": "SIX",
+          "href": "https://your6.com",
+          "target": "_blank",
+          "rel": "noopener noreferrer"
+        },
+        {
+          "text": "IMMERSION",
+          "href": "https://www.getimmersion.com",
+          "target": "_blank",
+          "rel": "noopener noreferrer"
+        }
+      ]
+    },
+    {
+      "silentBackgroundContinues": {
+        "first": {
+          "time": 0,
+          "paused": false,
+          "muted": true
+        },
+        "second": {
+          "time": 0.671526,
+          "paused": false,
+          "muted": true
+        }
+      }
+    },
+    {
+      "viewport": {
+        "width": 1470,
+        "height": 920
+      },
+      "layout": {
+        "width": 1470,
+        "scrollWidth": 1470,
+        "height": 920,
+        "scrollHeight": 926,
+        "scrollTop": 0,
+        "headingTop": 144,
+        "listFont": "14px"
+      },
+      "returnControlReachable": true
+    },
+    {
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "layout": {
+        "width": 390,
+        "scrollWidth": 390,
+        "height": 844,
+        "scrollHeight": 1192,
+        "scrollTop": 0,
+        "headingTop": 134,
+        "listFont": "14px"
+      },
+      "returnControlReachable": true
+    },
+    {
+      "viewport": {
+        "width": 320,
+        "height": 568
+      },
+      "layout": {
+        "width": 320,
+        "scrollWidth": 320,
+        "height": 568,
+        "scrollHeight": 1374,
+        "scrollTop": 0,
+        "headingTop": 134,
+        "listFont": "14px"
+      },
+      "returnControlReachable": true
+    },
+    {
+      "returnToExperience": true,
+      "proposalReopensAboutAtTop": true
+    }
+  ],
+  "errors": [],
+  "passed": true
+}

@@ -1,0 +1,18 @@
+{
+  "source_commit": "248e47abf4402e598be7b7c54924f68215e2e244",
+  "staging_url": "https://staging.universalmind.tv/events/",
+  "publisher": "./deploy-panthur-staging.sh events",
+  "production_modified": false,
+  "change": "Password-field focus and focus-visible styling explicitly remove outlines and shadows while retaining the bright underline.",
+  "verification": [
+    "Pointer and keyboard focus on desktop and phone layouts show no outline, shadow, or top/side borders",
+    "Bottom underline remains visible as the focus indication",
+    "Password entry succeeds",
+    "Deployed stylesheet hash matches committed source",
+    "Dedicated Chromium process had --mute-audio; fullscreen intercepted; all automated browser sessions closed"
+  ],
+  "source_sha256": {
+    "events/index.php": "ce7fa71c4a3889aa15a02afb8900ee0f80bbaacac0938ce38bee0d59507f4563",
+    "events/assets/gate.css": "f2f1390a9a5fb13d4685b4d8ac42ddf566579f888e325fcc29ef9b56ef581064"
+  }
+}
