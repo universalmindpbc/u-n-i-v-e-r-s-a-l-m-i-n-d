@@ -9,6 +9,7 @@ from pypdf import PdfReader
 parser = argparse.ArgumentParser()
 parser.add_argument('--package', required=True, type=Path)
 parser.add_argument('--runtime', required=True, type=Path)
+parser.add_argument('--filing-record', type=Path)
 args = parser.parse_args()
 pdf = args.package / 'Australian-Provisional-Specification.pdf'
 sections = json.loads((args.package / 'specification-index.json').read_text())
@@ -40,6 +41,11 @@ document = {'title': str(reader.metadata.title), 'status': 'private-pre-filing',
             'sha256': hashlib.sha256(pdf.read_bytes()).hexdigest(),
             'sections': sections, 'pages': pages,
             'document_order': 'Main description, claims, abstract, drawings and figures, supplementary appendices'}
+if args.filing_record:
+    filing = json.loads(args.filing_record.read_text())
+    assert filing.get('application_number') and filing.get('transaction_reference')
+    assert filing.get('receipt_verified') is True
+    document.update(status='private-filed', filing=filing)
 args.runtime.mkdir(parents=True, exist_ok=True, mode=0o700)
 for name, content in [('document.json', json.dumps(document, ensure_ascii=False).encode()),
                       ('specification.pdf', pdf.read_bytes())]:

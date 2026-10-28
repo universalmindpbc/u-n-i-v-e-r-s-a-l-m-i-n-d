@@ -734,6 +734,9 @@ configure_patent_private() {
   put_file "$patent_runtime/access.json" "patent/.private/access.json"
   put_file "$patent_runtime/document.json" "patent/.private/document.json"
   put_file "$patent_runtime/specification.pdf" "patent/.private/specification.pdf"
+  if [[ -f "$patent_runtime/receipt.png" ]]; then
+    put_file "$patent_runtime/receipt.png" "patent/.private/receipt.png"
+  fi
   echo "Private patent runtime uploaded after denial verification."
 }
 

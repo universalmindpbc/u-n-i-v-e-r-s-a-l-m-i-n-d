@@ -8,3 +8,5 @@
 @media(max-width:380px){.brand .brand-name{font-size:18px;letter-spacing:.12em}.masthead .brand{gap:8px}}
 
 .brand .brand-name .brand-mind{font-weight:700}
+
+.filing-receipt{padding:32px 0;border-bottom:1px solid var(--line)}.filing-details{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px 32px;margin:25px 0}.filing-details dt{font-size:11px;color:var(--muted)}.filing-details dd{margin:6px 0 0;font-size:15px;overflow-wrap:anywhere}.filing-receipt details{margin-top:22px}.filing-receipt summary{cursor:pointer;text-decoration:underline;text-underline-offset:4px;font-size:13px}.filing-receipt img{display:block;width:100%;max-width:732px;height:auto;margin-top:20px;border:1px solid var(--line)}@media(max-width:600px){.filing-details{grid-template-columns:1fr;gap:16px}}
