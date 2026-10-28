@@ -34,14 +34,14 @@ if ($entered) {
 <meta name="theme-color" content="#080808">
 <link rel="icon" href="/vogue/iam/favicon.png?v=iam-favicon-3">
 <title>athousandminds — Universal Mind</title>
-<link rel="stylesheet" href="assets/events.css?v=11">
+<link rel="stylesheet" href="assets/events.css?v=12">
 <?php if (!$entered): ?>
 <link rel="stylesheet" href="assets/gate.css?v=4">
 <script src="assets/gate-rain.js?v=2" defer></script>
 <script src="assets/gate-launch.js?v=2" defer></script>
 <?php endif; ?>
 <?php if ($entered): ?>
-<script src="assets/events.js?v=10" defer></script>
+<script src="assets/events.js?v=11" defer></script>
 <?php endif; ?>
 </head>
 <body class="<?= $entered ? 'entered' : 'invitation' ?>">
@@ -62,8 +62,11 @@ if ($entered) {
 <?php else: ?>
 <main class="experience" id="experience">
 <div class="backdrop" aria-hidden="true">
-<img src="poster.php" alt="" fetchpriority="high">
 <video id="opening-loop" src="loop.php?v=2" poster="poster.php" autoplay muted loop playsinline webkit-playsinline disablepictureinpicture disableremoteplayback preload="auto" tabindex="-1"></video>
+<picture id="opening-animation" class="opening-animation">
+<source media="(prefers-reduced-motion: reduce)" srcset="poster.php">
+<img src="animation.php?v=1" alt="" fetchpriority="high">
+</picture>
 </div>
 <button id="global-nav-toggle" class="global-nav-toggle" aria-label="About" aria-expanded="false" aria-controls="about-panel">
 <img src="/vogue/iam/a%20s%20s%20e%20t%20s/Universal%20Mind%20%5B%20I%20o%20H%20%5D%20Logo%20512.png" alt="" aria-hidden="true">

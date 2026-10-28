@@ -1,6 +1,7 @@
 (() => {
   'use strict';
   const loop = document.getElementById('opening-loop');
+  const openingAnimation = document.getElementById('opening-animation');
   const watch = document.getElementById('watch-film');
   const view = document.getElementById('film-view');
   const mount = document.getElementById('film-mount');
@@ -94,10 +95,14 @@
       if (error.name === 'NotAllowedError') loop.dataset.gestureRequired = 'true';
     } finally { openingPending = false; }
   }
-  loop.addEventListener('playing', () => loop.classList.add('ready'));
-  loop.addEventListener('pause', () => loop.classList.remove('ready'));
-  if (loop.readyState >= 2 && !loop.paused) loop.classList.add('ready');
-  loop.addEventListener('error', () => loop.classList.remove('ready'));
+  function showOpeningVideo(playing) {
+    loop.classList.toggle('ready', playing);
+    openingAnimation.hidden = playing;
+  }
+  loop.addEventListener('playing', () => showOpeningVideo(true));
+  loop.addEventListener('pause', () => showOpeningVideo(false));
+  if (loop.readyState >= 2 && !loop.paused) showOpeningVideo(true);
+  loop.addEventListener('error', () => showOpeningVideo(false));
   // iOS recognises touchend/click as media gestures; pointerdown alone is insufficient.
   const retryLoopFromGesture = () => { if (loop.paused) startLoop({gesture:true}); };
   document.addEventListener('touchend', retryLoopFromGesture, {passive:true});
