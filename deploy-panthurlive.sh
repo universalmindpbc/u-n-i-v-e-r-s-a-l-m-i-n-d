@@ -737,6 +737,33 @@ configure_patent_private() {
   echo "Private patent runtime uploaded after denial verification."
 }
 
+
+# Scoped Events publishing retains the same Panthur FTP transport and manifest.
+deploy_events() {
+  local source relative checksum manifest_tmp
+  if [[ -n "$(git -C "$ROOT_DIR" status --porcelain --untracked-files=all -- events)" ]]; then
+    echo "Refusing to deploy uncommitted Events source." >&2
+    return 1
+  fi
+  manifest_tmp="$(mktemp)"
+  if [[ -f "$MANIFEST_FILE" ]]; then
+    awk -F '\t' '$2 !~ /^events\//' "$MANIFEST_FILE" > "$manifest_tmp"
+  fi
+  # Install directory protection first, then assets and the PHP entry point last.
+  put_file "$ROOT_DIR/events/private/.htaccess" "events/private/.htaccess"
+  while IFS= read -r relative; do
+    [[ "$relative" == "events/index.php" ]] && continue
+    source="$ROOT_DIR/$relative"
+    checksum="$(file_hash "$source")"
+    put_file "$source" "$relative"
+    printf '%s\t%s\n' "$checksum" "$relative" >> "$manifest_tmp"
+  done < <(git -C "$ROOT_DIR" ls-files events)
+  put_file "$ROOT_DIR/events/index.php" "events/index.php"
+  printf '%s\t%s\n' "$(file_hash "$ROOT_DIR/events/index.php")" "events/index.php" >> "$manifest_tmp"
+  mv "$manifest_tmp" "$MANIFEST_FILE"
+  echo "Events: committed source published through Panthur FTP."
+}
+
 DEPLOY_MODE="${1:-iam}"
 
 if deployment_requires_owner_state_guard "$DEPLOY_MODE"; then
@@ -744,6 +771,9 @@ if deployment_requires_owner_state_guard "$DEPLOY_MODE"; then
 fi
 
 case "$DEPLOY_MODE" in
+  events)
+    deploy_events
+    ;;
   patent)
     deploy_patent
     ;;
@@ -796,7 +826,7 @@ case "$DEPLOY_MODE" in
     provision_sovereignty_runtime configure
     ;;
   *)
-    echo "Usage: $0 [iam|iam-fast|fast|changed|iam-changed|mark|media|redirects|all|all-fast|all-changed|seed-owner-state|owner-password-reset|sovereignty-seed|sovereignty-configure]" >&2
+    echo "Usage: $0 [events|iam|iam-fast|fast|changed|iam-changed|mark|media|redirects|all|all-fast|all-changed|seed-owner-state|owner-password-reset|sovereignty-seed|sovereignty-configure]" >&2
     exit 2
     ;;
 esac

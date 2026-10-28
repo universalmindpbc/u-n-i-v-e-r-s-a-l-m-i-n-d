@@ -31,6 +31,13 @@ if [[ -z "$NODE_BIN" ]]; then
   fi
 fi
 
+# Events is an independent PHP microsite; validate its own source for scoped releases.
+if [[ "${1:-}" == events ]]; then
+  "$NODE_BIN" --check "$ROOT_DIR/events/assets/events.js"
+  if command -v php >/dev/null 2>&1; then
+    for source in "$ROOT_DIR"/events/*.php; do php -l "$source"; done
+  fi
+else
 "$NODE_BIN" --check "$ROOT_DIR/i  a m/adaptive-environment-television.js"
 "$NODE_BIN" --check "$ROOT_DIR/i  a m/mantra-sampler.js"
 "$NODE_BIN" --check "$ROOT_DIR/i  a m/broadcast-interactions-v1.js"
@@ -77,6 +84,8 @@ if command -v php >/dev/null 2>&1; then
   php -l "$ROOT_DIR/i  a m/apple-wallet/happiness-apple-lib.php"
   php -l "$ROOT_DIR/i  a m/apple-wallet/pass.php"
   php -l "$ROOT_DIR/i  a m/apple-wallet/service.php"
+fi
+
 fi
 
 export NODE_BIN

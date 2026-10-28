@@ -1,0 +1,21 @@
+{
+  "date": "2026-10-28",
+  "account_id": "bef34a5ee69678e46332813cb7610012",
+  "opening_edit": "Source 0\u20136 seconds; picture dissolve at loop join; original opening audio with short edge fades.",
+  "media": [
+    {
+      "role": "film",
+      "source_name": "a_t_h_o_u_s_a_n_d_m_i_n_d_s_-_t_e_a_s_e_r__f_i_l_m_v2 (1440p).mp4",
+      "bytes": 202525466,
+      "sha256": "422fad0b4533bcbbf085e985c2840827805848d71015d09d6f2e68df12f418d2",
+      "stream_uid": "6420e5ed4a3af887686bd280e3a60693"
+    },
+    {
+      "role": "opening-loop",
+      "source_name": "athousandminds-opening-loop.mp4",
+      "bytes": 3068558,
+      "sha256": "fdb16c545aa193aa97e251ef2e27eee6ffa8d82119da4c84ebdc376224154a3c",
+      "stream_uid": "c247c32426bd38efca22f8300717f70b"
+    }
+  ]
+}

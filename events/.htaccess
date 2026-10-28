@@ -1,0 +1,9 @@
+Options -Indexes -MultiViews
+DirectoryIndex index.php
+<IfModule mod_headers.c>
+  Header always set X-Robots-Tag "noindex, nofollow, noarchive"
+  Header always set Cache-Control "private, no-store, max-age=0"
+</IfModule>
+<Files "access.php">
+  Require all denied
+</Files>
