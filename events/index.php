@@ -30,7 +30,7 @@ $entered = events_authenticated() && ($_GET['experience'] ?? '') === '1';
 <meta name="theme-color" content="#080808">
 <link rel="icon" href="/vogue/iam/favicon.png?v=iam-favicon-3">
 <title>athousandminds — Universal Mind</title>
-<link rel="stylesheet" href="assets/events.css?v=5">
+<link rel="stylesheet" href="assets/events.css?v=6">
 <?php if (!$entered): ?>
 <link rel="stylesheet" href="assets/gate.css?v=1">
 <script src="assets/gate-rain.js?v=1" defer></script>
@@ -99,12 +99,18 @@ $entered = events_authenticated() && ($_GET['experience'] ?? '') === '1';
 <article class="about-copy" tabindex="-1">
 <p class="about-eyebrow">UNIVERSAL MIND / EVENTS</p>
 <h2 id="about-title">athousand<strong>minds</strong></h2>
-<p class="about-tagline">Change Your Emotions. Transform Your World.</p>
-<p>athousandminds is a new interactive music, fashion and light festival exploring mindfulness.</p>
-<p>The concept places the audience inside a responsive environment. Attendees wear an Apple Watch, and their physiological responses help shape the music, fashion and lighting around them in real time. As the audience’s experience changes, the environment changes with it—making mindfulness something people experience, practise and learn together.</p>
-<p>The proposed model uses Apple Watch signals to infer emotional connection through oxytocin-related responses and psychological safety through cortisol-related responses. This approach draws on Ben’s meetings with SIX / Immersion Neuroscience and its scientists, alongside his review of their patents. A proposed technology partnership is currently in discussion.</p>
-<p>Building a festival takes time. Ben’s previous festival projects have taken ten years or more to progress from an initial concept to a funded reality, bringing together partnerships, technology, venues and artists.</p>
-<p class="about-proposal">This is a concept for a new festival by Universal Mind, pitching to Live Nation and Apple TV+, together as one. The artists and venues are ideal bookings, not confirmed and this is not an advertisement for an existing event.</p>
+<p class="about-tagline">Change your emotions. Transform your world.</p>
+<p>Welcome to <strong>athousandminds</strong> is a new interactive music, fashion and light festival exploring mindfulness.</p>
+<p>The event places the audience inside a responsive environment, gamifying mindfulness and authentic human connection through an electronic music experience.</p>
+<ol class="about-levels">
+<li>Connect to yourself (level one)</li>
+<li>Connect with each other (level two)</li>
+<li>Together, Transform your world (level three)</li>
+</ol>
+<p>Each level unlocks rewards that can be redeemed at the event, whether interactive digital experiences, physical items such as fashion and merch, or exclusive live performances on the night.</p>
+<p><strong>athousandminds</strong> attendees wear an Apple Watch, and their neurotransmitters shape the music, fashion and lighting around them in real time. As the audience’s mind-state evolves, the environment changes with it. This is the future of mindfulness.</p>
+<p>The <strong>athousandminds</strong> experience uses Apple Watch signals to infer emotional connection through oxytocin health and psychological safety through cortisol health. Real time hormone and neurotransmitter inference is possible via wearables in 2026. Check out <a href="https://your6.com" target="_blank" rel="noopener noreferrer">SIX</a> / <a href="https://www.getimmersion.com" target="_blank" rel="noopener noreferrer">IMMERSION</a> to learn more.</p>
+<p class="about-proposal"><strong>athousandminds</strong> is a new festival by Universal Mind, pitching to Live Nation and Apple TV+, together as one. The artists and venues are ideal bookings, not confirmed and this is not an advertisement for an existing event.</p>
 <button id="about-return" class="about-return">Back to experience</button>
 </article>
 </section>
