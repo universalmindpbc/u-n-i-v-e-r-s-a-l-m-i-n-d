@@ -1,6 +1,6 @@
 {
   "verifiedAt": "2026-10-28T08:42:14.016565+00:00",
-  "sourceCommit": "c401fc6d61d381241fbf92511a89bbf8dc78cf09",
+  "sourceCommit": "e7790f37565489badf5bdbdff0f8c694e366f8d6",
   "url": "https://staging.universalmind.tv/happiness/",
   "publisher": "./deploy-panthur-staging.sh happiness",
   "productionModified": false,
@@ -24,5 +24,7 @@
   ],
   "browserVerification": "staging-verification.json",
   "platformLimit": "Fullscreen APIs were intercepted to prevent native fullscreen on the user display. Physical iPhone Safari confirmation remains.",
-  "reference": "https://developer.apple.com/documentation/webkit/delivering-video-content-for-safari"
+  "reference": "https://developer.apple.com/documentation/webkit/delivering-video-content-for-safari",
+  "rebasedOnStaging": "2766a2b3bd0e5b6fa582abede53e20e2ae0204cf",
+  "rebaseVerification": "Deployed Happiness source hashes are unchanged; the concurrent directory commits are preserved."
 }
