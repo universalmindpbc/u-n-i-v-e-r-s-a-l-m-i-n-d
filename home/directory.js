@@ -117,10 +117,6 @@
     destination.addEventListener('click', event => {
       if (!destination.hasAttribute('href') || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
       film.pause();
-      if (window.parent !== window || shell?.fullscreenActive()) {
-        event.preventDefault();
-        shell.navigate(destination.href);
-      }
     });
   });
   const observer = new ResizeObserver(schedule);
