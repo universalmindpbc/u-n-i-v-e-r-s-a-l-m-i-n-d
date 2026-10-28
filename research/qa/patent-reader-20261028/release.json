@@ -1,0 +1,33 @@
+{
+  "date": "2026-10-28",
+  "staging_url": "https://staging.universalmind.tv/patent/",
+  "source_commit": "3679b5a714bfac89a5d5fc3ad5e924c290e383c3",
+  "worker_version": "dfd1d371-8ed7-40ec-8f73-7de3e4603002",
+  "worker_source_commit": "c4fd44b",
+  "filed_pdf_sha256": "79c02b900a946092b1d4cb74c882390f76cb851524b7ff71fa3509c22af19653",
+  "reader_chapters": 31,
+  "filed_source_sections": 35,
+  "drawings": 91,
+  "notion_live_matches": [
+    "Universal Light part 1",
+    "Universal Informatics",
+    "Patent and non-patent source register",
+    "Proposed claims part 1",
+    "Appendix B"
+  ],
+  "all_frozen_source_hashes_verified": true,
+  "ai_mode": "authenticated retrieval from all 953 pages and drawing images; no model fine-tuning",
+  "model": "gpt-6-astra",
+  "raw_patent_text_and_answers_committed": false,
+  "production_modified": false,
+  "verified_at": "2026-10-28T04:31:51.827971+00:00",
+  "verification_source_commit": "f70143b656faf377917c5d086433fb4af141b1e9",
+  "main_figures_with_separate_full_descriptions": 46,
+  "private_content_live_matches_local": true,
+  "credential_scan_passed": true,
+  "credential_scan_source_files": 17,
+  "relay_authentication_checks_passed": true,
+  "existing_research_endpoint_regression_status": 200,
+  "voice_session_issued": true,
+  "live_voice_conversation_tested": false
+}

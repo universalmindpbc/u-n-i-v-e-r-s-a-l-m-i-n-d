@@ -1,0 +1,152 @@
+[
+  {
+    "name": "implementation",
+    "status": 200,
+    "seconds": 17.64,
+    "model": "gpt-6-astra",
+    "citation_count": 12,
+    "retrieval": {
+      "pages_available": 953,
+      "sections_available": 35,
+      "drawings_available": 91,
+      "pages_read": [
+        470,
+        143,
+        898,
+        495,
+        726,
+        731,
+        625,
+        535,
+        899,
+        900,
+        901,
+        902,
+        903,
+        904,
+        905,
+        906,
+        907,
+        908,
+        909,
+        910
+      ],
+      "images_read": [],
+      "rounds": 3
+    }
+  },
+  {
+    "name": "code",
+    "status": 200,
+    "seconds": 18.67,
+    "model": "gpt-6-astra",
+    "citation_count": 12,
+    "retrieval": {
+      "pages_available": 953,
+      "sections_available": 35,
+      "drawings_available": 91,
+      "pages_read": [
+        570,
+        462,
+        904,
+        901,
+        568,
+        611,
+        569,
+        460,
+        930,
+        950,
+        948,
+        945,
+        947,
+        927,
+        933,
+        917,
+        910,
+        923,
+        924,
+        925,
+        926,
+        928,
+        929,
+        931,
+        934,
+        935,
+        936,
+        937
+      ],
+      "images_read": [],
+      "rounds": 5
+    }
+  },
+  {
+    "name": "drawing",
+    "status": 200,
+    "seconds": 10.46,
+    "model": "gpt-6-astra",
+    "citation_count": 2,
+    "retrieval": {
+      "pages_available": 953,
+      "sections_available": 35,
+      "drawings_available": 91,
+      "pages_read": [
+        278,
+        298,
+        344,
+        378,
+        296,
+        293,
+        299,
+        297
+      ],
+      "images_read": [
+        344,
+        378
+      ],
+      "rounds": 2
+    }
+  },
+  {
+    "name": "quantum",
+    "status": 200,
+    "seconds": 18.83,
+    "model": "gpt-6-astra",
+    "citation_count": 15,
+    "retrieval": {
+      "pages_available": 953,
+      "sections_available": 35,
+      "drawings_available": 91,
+      "pages_read": [
+        548,
+        174,
+        458,
+        228,
+        905,
+        549,
+        898,
+        248,
+        438,
+        338,
+        436,
+        335,
+        706,
+        661,
+        220,
+        119,
+        904,
+        914,
+        903,
+        900,
+        899,
+        901,
+        906,
+        120
+      ],
+      "images_read": [
+        338,
+        335
+      ],
+      "rounds": 5
+    }
+  }
+]

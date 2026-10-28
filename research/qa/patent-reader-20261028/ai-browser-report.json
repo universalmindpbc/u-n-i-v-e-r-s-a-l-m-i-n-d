@@ -1,0 +1,77 @@
+{
+  "checks": [
+    "Two real browser requests processed by the patent server and OpenAI; cited answers rendered with a contextual follow-up",
+    "AI drawing citation opens the protected image and caption at the correct position",
+    "Text conversation and citations fit at 390px; no audio or microphone started",
+    "Patent-scoped voice session credentials issued; live audio conversation not exercised"
+  ],
+  "responses": [
+    {
+      "model": "gpt-6-astra",
+      "sources": 3,
+      "retrieval": {
+        "pages_available": 953,
+        "sections_available": 35,
+        "drawings_available": 91,
+        "pages_read": [
+          278,
+          344,
+          99,
+          91,
+          932,
+          296,
+          347,
+          494
+        ],
+        "images_read": [
+          344,
+          347
+        ],
+        "rounds": 2
+      },
+      "status": 200,
+      "rendered": true
+    },
+    {
+      "model": "gpt-6-astra",
+      "sources": 9,
+      "retrieval": {
+        "pages_available": 953,
+        "sections_available": 35,
+        "drawings_available": 91,
+        "pages_read": [
+          278,
+          344,
+          7,
+          99,
+          298,
+          363,
+          364,
+          365,
+          100,
+          898,
+          899,
+          900,
+          901,
+          902
+        ],
+        "images_read": [
+          344,
+          363,
+          364,
+          365
+        ],
+        "rounds": 2
+      },
+      "status": 200,
+      "rendered": true
+    }
+  ],
+  "errors": [],
+  "voice_session": {
+    "status": 200,
+    "ephemeral_session_created": true,
+    "audio_conversation_tested": false
+  },
+  "passed": true
+}
