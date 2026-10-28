@@ -10,7 +10,7 @@ $authenticated=patent_authenticated();
 <script defer src="/informatics/universal-one-character.js?v=1"></script>
 <script defer src="/informatics/universal-one-audio.js?v=2"></script>
 <script defer src="/informatics/universal-one-waveform.js?v=1"></script>
-<script defer src="assistant.js?v=2"></script>
+<script defer src="assistant.js?v=3"></script>
 <script defer src="/informatics/universal-one-live.js?v=7"></script>
 <script defer src="/informatics/universal-one.js?v=15"></script>
 <?php endif;?></head>
@@ -31,7 +31,7 @@ $authenticated=patent_authenticated();
 <p class="overview-intro">System and Method for Non-Invasive Mobile Inference of Neurotransmitter-Associated Gene Expression</p>
 <p class="overview-note">Read the invention chapter by chapter, explore the drawings, or ask Universal One to guide you through the specification.</p>
 <div class="overview-actions"><a class="button" href="#chapter-277">Read the abstract ↗</a><a class="text-button" href="#universal-light">Universal Light →</a><a class="text-button" href="#drawings">Browse drawings →</a></div>
-<section class="overview-guide"><div><div class="eyebrow">UNIVERSAL ONE</div><h2>A guide through the invention.</h2><p>Ask about a chapter, technical method, appendix or drawing. Answers link back to the filed specification.</p></div><button id="open-assistant">Ask Universal One ↗</button></section>
+<section class="overview-guide"><div><div class="eyebrow">UNIVERSAL ONE</div><h2>A guide through the invention.</h2><p>Ask about a chapter, technical method, appendix or drawing. Answers link back to the filed specification.</p></div><button id="open-assistant" disabled>Ask Universal One ↗</button></section>
 <section id="filing-receipt" class="filing-receipt" aria-labelledby="filing-heading"><span class="eyebrow">IP AUSTRALIA</span><h2 id="filing-heading">Filing confirmed.</h2><dl class="filing-details"><div><dt>Provisional application number</dt><dd>2026908928</dd></div><div><dt>Submission received</dt><dd>28 October 2026 · 12:34 PM</dd></div><div><dt>Transaction reference</dt><dd>APSZ-2616390071</dd></div><div><dt>Receipt / batch reference</dt><dd>AMCZ-2616390323</dd></div><div><dt>Filing fee paid</dt><dd>A$100.00</dd></div><div><dt>Applicant</dt><dd>Universal Mind TV, PBC</dd></div></dl><p class="small">IP Australia confirms receipt of the provisional application and its specification. This is a provisional application, not a granted patent. Application processing remains in progress.</p><details><summary>View official receipt excerpt</summary><a href="receipt.php" target="_blank" rel="noopener"><img src="receipt.php" alt="IP Australia official receipt showing provisional application 2026908928, transaction APSZ-2616390071 and A$100 payment on 28 October 2026" width="1416" height="564" loading="lazy"></a><p class="small">Excerpt of the official filing receipt. Card details are omitted.</p></details></section>
 
 </section>

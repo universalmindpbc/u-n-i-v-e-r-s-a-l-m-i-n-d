@@ -16,5 +16,5 @@ document.addEventListener('DOMContentLoaded',()=>{
  const welcome=assistant.querySelector('.uo-welcome');
  if(welcome)welcome.textContent='Ask about any chapter, appendix, software listing or drawing. Answers link to the filed specification.';
  assistant.querySelector('textarea').placeholder='Ask about the patent…';
- document.querySelector('#open-assistant')?.addEventListener('click',()=>window.UniversalOneResearch?.open());
+ const open=document.querySelector('#open-assistant');if(open){open.addEventListener('click',()=>window.UniversalOneResearch?.open());open.disabled=false;}
 });
