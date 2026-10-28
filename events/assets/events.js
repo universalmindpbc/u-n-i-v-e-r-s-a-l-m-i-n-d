@@ -3,26 +3,31 @@
   const loop = document.getElementById('opening-loop');
   const watch = document.getElementById('watch-film');
   const view = document.getElementById('film-view');
-  let frame = document.getElementById('film-player');
-  const close = document.getElementById('close-film');
-  const motion = document.getElementById('motion-toggle');
+  const mount = document.getElementById('film-mount');
+  const timecode = document.getElementById('film-timecode');
   const status = document.getElementById('film-status');
   const playback = document.getElementById('playback-status');
   const poster = document.querySelector('.poster');
-  let media, loading, player;
-  let soundEnabled = true;
-  const sound = document.getElementById('sound-toggle');
-  function soundLabel() { sound.textContent = soundEnabled ? 'Sound on' : 'Sound off'; sound.setAttribute('aria-label', soundEnabled ? 'Mute sound' : 'Enable sound'); }
-  sound.addEventListener('click', () => { soundEnabled = !soundEnabled; loop.muted = !soundEnabled; soundLabel(); if(motionEnabled) loop.play().catch(() => {}); });
-  document.getElementById('fullscreen-toggle').addEventListener('click', () => {
-    const host = window.parent.document;
-    if(host.fullscreenElement) host.exitFullscreen?.(); else host.documentElement.requestFullscreen?.().catch(() => {});
-  });
-  let motionEnabled = !matchMedia('(prefers-reduced-motion: reduce)').matches;
-  function motionLabel() {
-    motion.textContent = motionEnabled ? 'Pause motion' : 'Resume motion';
-    motion.setAttribute('aria-label', motionEnabled ? 'Pause background motion' : 'Resume background motion');
+  const flower = document.getElementById('global-nav-toggle');
+  const nav = document.getElementById('global-nav');
+  const about = document.getElementById('about-panel');
+  const maximise = document.getElementById('fullscreen-toggle');
+  const host = window.parent.document;
+  const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  let media, loading, player, frame, returnFocus;
+  let openingPending = false;
+
+  function syncFullscreen() {
+    maximise.hidden = Boolean(host.fullscreenElement || host.webkitFullscreenElement);
   }
+  maximise.addEventListener('click', () => {
+    const target = host.documentElement;
+    const request = target.requestFullscreen || target.webkitRequestFullscreen;
+    if (request) Promise.resolve(request.call(target)).catch(() => {});
+  });
+  host.addEventListener('fullscreenchange', syncFullscreen);
+  host.addEventListener('webkitfullscreenchange', syncFullscreen);
+
   async function getMedia() {
     if (media && media.expires * 1000 > Date.now()) return media;
     if (loading) return loading;
@@ -32,54 +37,114 @@
     return loading;
   }
   async function startLoop() {
-    if (!motionEnabled || !view.hidden || document.hidden) return;
+    if (reducedMotion || !view.hidden || document.hidden || openingPending) return;
+    openingPending = true;
     try {
       const data = await getMedia();
+      if (!view.hidden || document.hidden) return;
       if (!loop.src || loop.dataset.expires !== String(data.expires)) {
         loop.src = data.loop; loop.dataset.expires = String(data.expires);
       }
-      loop.muted = !soundEnabled;
-      try { await loop.play(); } catch(error) {
-        if(error.name !== 'NotAllowedError') throw error;
-        soundEnabled = false; loop.muted = true; soundLabel(); sound.textContent = 'Enable sound'; await loop.play();
-      }
-    } catch { /* The still poster remains available when autoplay or delivery is unavailable. */ }
+      loop.muted = false;
+      loop.volume = 1;
+      await loop.play();
+      delete loop.dataset.gestureRequired;
+    } catch(error) {
+      if (error.name === 'NotAllowedError') loop.dataset.gestureRequired = 'true';
+    } finally { openingPending = false; }
   }
   loop.addEventListener('playing', () => loop.classList.add('ready'));
-  loop.addEventListener('error', () => { loop.classList.remove('ready'); motionEnabled = false; motionLabel(); });
-  motion.addEventListener('click', () => { motionEnabled = !motionEnabled; motionLabel(); if(motionEnabled) startLoop(); else loop.pause(); });
-  function closeFilm() {
-    player?.pause(); player = null; frame?.remove(); frame = null;
-    view.hidden = true; poster.inert = false; document.body.classList.remove('film-open');
-    playback.textContent = ''; watch.focus(); startLoop();
+  loop.addEventListener('error', () => loop.classList.remove('ready'));
+  document.addEventListener('pointerdown', () => {
+    if (loop.dataset.gestureRequired === 'true') startLoop();
+  }, {passive:true});
+
+  function formatTime(value) {
+    const seconds = Math.max(0, Math.floor(Number.isFinite(value) ? value : 0));
+    return `${Math.floor(seconds / 60)}:${String(seconds % 60).padStart(2, '0')}`;
   }
+  function updateTimecode() {
+    if (player) timecode.textContent = `${formatTime(player.currentTime)} / ${formatTime(player.duration || 142)}`;
+  }
+  function syncPanels() {
+    const panelOpen = !nav.hidden || !about.hidden;
+    poster.inert = panelOpen || !view.hidden;
+    view.inert = panelOpen;
+    flower.setAttribute('aria-expanded', String(!nav.hidden));
+    flower.setAttribute('aria-label', nav.hidden ? 'Open global navigation' : 'Close global navigation');
+    document.body.classList.toggle('panel-open', panelOpen);
+  }
+  function dismissPanels() {
+    nav.hidden = true; about.hidden = true; syncPanels();
+  }
+  function returnToPoster({focus = true} = {}) {
+    player?.pause(); player = null; frame?.remove(); frame = null;
+    view.hidden = true; document.body.classList.remove('film-open');
+    playback.textContent = ''; timecode.textContent = '0:00 / 2:22'; syncPanels();
+    if (focus && nav.hidden && about.hidden) watch.focus();
+    startLoop();
+  }
+  flower.addEventListener('click', () => {
+    if (!nav.hidden) { dismissPanels(); return; }
+    returnFocus = document.activeElement;
+    about.hidden = true; nav.hidden = false; syncPanels();
+    document.getElementById('nav-home').focus();
+  });
+  document.getElementById('nav-dismiss').addEventListener('click', () => { dismissPanels(); flower.focus(); });
+  document.getElementById('nav-home').addEventListener('click', () => { dismissPanels(); returnToPoster(); });
+  function openAbout() {
+    returnFocus = document.activeElement;
+    nav.hidden = true; about.hidden = false; syncPanels();
+    about.querySelector('article').focus();
+  }
+  document.getElementById('nav-about').addEventListener('click', openAbout);
+  document.getElementById('proposal-about').addEventListener('click', openAbout);
+  document.getElementById('about-return').addEventListener('click', () => {
+    dismissPanels();
+    (returnFocus && !returnFocus.closest('[hidden]') ? returnFocus : flower).focus();
+  });
+
   watch.addEventListener('click', async () => {
     status.textContent = ''; watch.disabled = true;
     try {
       const data = await getMedia();
       if (typeof Stream !== 'function') throw new Error('The film player is loading. Please try again.');
-      if (!frame) {
-        frame = document.createElement('iframe'); frame.id = 'film-player'; frame.title = 'A Thousand Minds — teaser film';
-        frame.allow = 'autoplay; encrypted-media; picture-in-picture; fullscreen'; frame.allowFullscreen = true; view.prepend(frame);
-      }
-      loop.pause(); view.hidden = false; poster.inert = true; document.body.classList.add('film-open');
+      loop.pause(); dismissPanels(); view.hidden = false;
+      document.body.classList.add('film-open'); syncPanels();
       playback.textContent = 'Loading film…';
-      frame.src = `${data.film}?autoplay=true&controls=true&preload=auto&letterboxColor=black`;
-      player = Stream(frame);
-      player.addEventListener('playing', () => { playback.textContent = ''; });
-      player.addEventListener('ended', closeFilm);
-      player.addEventListener('error', () => { playback.textContent = 'Playback paused. Close the film and try again.'; });
-      close.focus();
+      frame = document.createElement('iframe'); frame.id = 'film-player'; frame.title = 'athousandminds — teaser film';
+      frame.allow = 'autoplay; encrypted-media; fullscreen'; frame.allowFullscreen = true; frame.tabIndex = -1;
+      frame.src = `${data.film}?autoplay=true&controls=false&preload=auto&letterboxColor=black`;
+      mount.replaceChildren(frame);
+      const currentPlayer = Stream(frame); player = currentPlayer;
+      currentPlayer.controls = false; currentPlayer.muted = false; currentPlayer.volume = 1;
+      currentPlayer.addEventListener('playing', () => { if(player===currentPlayer) playback.textContent = ''; });
+      currentPlayer.addEventListener('timeupdate', updateTimecode);
+      currentPlayer.addEventListener('durationchange', updateTimecode);
+      currentPlayer.addEventListener('ended', () => { if(player===currentPlayer) returnToPoster(); });
+      currentPlayer.addEventListener('error', () => { if(player===currentPlayer) playback.textContent = 'The film is temporarily unavailable. Return through the flower to try again.'; });
+      flower.focus();
     } catch(error) { status.textContent = error.message; }
     finally { watch.disabled = false; }
   });
-  close.addEventListener('click', closeFilm);
   document.addEventListener('keydown', event => {
-    if (view.hidden) return;
-    if (event.key === 'Escape') closeFilm();
-    if (event.key === 'Tab' && event.shiftKey && document.activeElement === close) { event.preventDefault(); frame.focus(); }
+    if (event.key === 'Escape') {
+      if (!nav.hidden || !about.hidden) { dismissPanels(); flower.focus(); }
+      else if (!view.hidden) returnToPoster();
+    }
+    if (event.key === 'Tab' && (!nav.hidden || !about.hidden)) {
+      const panel = nav.hidden ? about : nav;
+      const controls = [flower, ...panel.querySelectorAll('button:not([tabindex="-1"]),a[href]')].filter(el => !el.hidden);
+      const first = controls[0], last = controls[controls.length - 1];
+      if (event.shiftKey && (document.activeElement === first || document.activeElement.tagName === 'ARTICLE')) {event.preventDefault();last.focus();}
+      else if (!event.shiftKey && document.activeElement === last) {event.preventDefault();first.focus();}
+    }
   });
   document.addEventListener('visibilitychange', () => { if(document.hidden) loop.pause(); else startLoop(); });
-  window.addEventListener('pagehide', () => { loop.pause(); player?.pause(); frame?.remove(); });
-  soundLabel(); motionLabel(); startLoop();
+  window.addEventListener('pagehide', () => {
+    loop.pause(); player?.pause(); frame?.remove();
+    host.removeEventListener('fullscreenchange', syncFullscreen);
+    host.removeEventListener('webkitfullscreenchange', syncFullscreen);
+  });
+  syncFullscreen(); startLoop();
 })();

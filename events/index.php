@@ -29,8 +29,8 @@ $entered = events_authenticated() && ($_GET['experience'] ?? '') === '1';
 <meta name="robots" content="noindex,nofollow,noarchive">
 <meta name="theme-color" content="#080808">
 <link rel="icon" href="/vogue/iam/favicon.png?v=iam-favicon-3">
-<title>a thousand minds — Universal Mind</title>
-<link rel="stylesheet" href="assets/events.css?v=1">
+<title>athousandminds — Universal Mind</title>
+<link rel="stylesheet" href="assets/events.css?v=2">
 <?php if (!$entered): ?>
 <link rel="stylesheet" href="assets/gate.css?v=1">
 <script src="assets/gate-rain.js?v=1" defer></script>
@@ -38,7 +38,7 @@ $entered = events_authenticated() && ($_GET['experience'] ?? '') === '1';
 <?php endif; ?>
 <?php if ($entered): ?>
 <script src="https://embed.cloudflarestream.com/embed/sdk.latest.js" defer></script>
-<script src="assets/events.js?v=1" defer></script>
+<script src="assets/events.js?v=2" defer></script>
 <?php endif; ?>
 </head>
 <body class="<?= $entered ? 'entered' : 'invitation' ?>">
@@ -58,18 +58,22 @@ $entered = events_authenticated() && ($_GET['experience'] ?? '') === '1';
 </main>
 <?php else: ?>
 <main class="experience" id="experience">
+<button id="global-nav-toggle" class="global-nav-toggle" aria-label="Open global navigation" aria-expanded="false" aria-controls="global-nav">
+<img src="/vogue/iam/a%20s%20s%20e%20t%20s/Universal%20Mind%20%5B%20I%20o%20H%20%5D%20Logo%20512.png" alt="" aria-hidden="true">
+</button>
+<button id="fullscreen-toggle" class="maximise" aria-label="Enter fullscreen"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 3H3v5M16 3h5v5M21 16v5h-5M8 21H3v-5"/></svg></button>
 <section class="poster" aria-labelledby="festival-title">
 <div class="backdrop" aria-hidden="true">
 <img src="poster.php" alt="" fetchpriority="high">
 <video id="opening-loop" loop playsinline preload="none" tabindex="-1"></video>
 </div>
 <header class="presenters">
-<p>LIVE NATION, APPLE TV+ AND UNIVERSAL MIND</p>
+<p>LIVE NATION, APPLE TV+ AND <span class="presenter-brand"><img src="/vogue/iam/a%20s%20s%20e%20t%20s/Universal%20Mind%20%5B%20I%20o%20H%20%5D%20Logo%20512.png" alt="" aria-hidden="true"><span>UNIVERSAL MIND</span></span></p>
 <p class="present">PRESENT</p>
 </header>
 <div class="title-group">
-<h1 id="festival-title"><span>a thousand</span><strong>minds</strong></h1>
-<p class="tagline">change your emotions. change your world</p>
+<h1 id="festival-title" aria-label="athousandminds"><span>athousand</span><strong>minds</strong></h1>
+<p class="tagline">change your emotions. transform your world</p>
 <button id="watch-film" class="watch-film"><span class="play-icon" aria-hidden="true">▶</span><span>Watch the film</span></button>
 <p id="film-status" class="film-status" role="status"></p>
 </div>
@@ -78,15 +82,32 @@ $entered = events_authenticated() && ($_GET['experience'] ?? '') === '1';
 <span>SYDNEY OPERA HOUSE</span><b aria-hidden="true">|</b><span>BARBICAN LONDON</span><b aria-hidden="true">|</b><span>MADISON SQUARE GARDEN NY</span>
 </div>
 <p class="event-description">MULTIPLE ARENAS - A NEW INTERACTIVE MUSIC, FASHION, LIGHT FESTIVAL, EXPLORING MINDFULNESS</p>
-<button id="motion-toggle" class="motion-toggle" aria-label="Pause background motion">Pause motion</button>
-<button id="sound-toggle" class="sound-toggle" aria-label="Mute sound">Sound on</button>
-<button id="fullscreen-toggle" class="fullscreen-toggle" aria-label="Enter fullscreen">Fullscreen</button>
-<footer class="proposal-note">nb. This is a concept for a new festival by Universal Mind, pitching to Live Nation and Apple TV+, together as one. The artists and venues are ideal bookings, not confirmed and this is not an advertisement for an existing event.</footer>
+<footer class="proposal-label"><button id="proposal-about">Proposal</button></footer>
 </section>
-<section id="film-view" class="film-view" role="dialog" aria-modal="true" aria-label="A Thousand Minds — the film" hidden>
-<iframe id="film-player" title="A Thousand Minds — teaser film" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen></iframe>
-<button id="close-film" class="close-film" aria-label="Close film">Close <span aria-hidden="true">×</span></button>
+<section id="film-view" class="film-view" aria-label="athousandminds — the film" hidden>
+<div id="film-mount"></div>
+<output id="film-timecode" class="film-timecode" aria-label="Film playback time">0:00 / 2:22</output>
 <p id="playback-status" class="playback-status" role="status"></p>
+</section>
+<aside id="global-nav" class="global-nav" aria-label="Global navigation" hidden>
+<button class="nav-scrim" id="nav-dismiss" aria-label="Return to experience" tabindex="-1"></button>
+<nav class="nav-links" aria-label="Events">
+<button id="nav-home">athousandminds</button>
+<button id="nav-about">about</button>
+</nav>
+</aside>
+<section id="about-panel" class="about-panel" role="dialog" aria-modal="true" aria-labelledby="about-title" hidden>
+<article class="about-copy" tabindex="-1">
+<p class="about-eyebrow">UNIVERSAL MIND / EVENTS</p>
+<h2 id="about-title">athousand<strong>minds</strong></h2>
+<p class="about-tagline">Change Your Emotions. Transform Your World.</p>
+<p>athousandminds is a new interactive music, fashion and light festival exploring mindfulness.</p>
+<p>The concept places the audience inside a responsive environment. Attendees wear an Apple Watch, and their physiological responses help shape the music, fashion and lighting around them in real time. As the audience’s experience changes, the environment changes with it—making mindfulness something people experience, practise and learn together.</p>
+<p>The proposed model uses Apple Watch signals to infer emotional connection through oxytocin-related responses and psychological safety through cortisol-related responses. This approach draws on Ben’s meetings with SIX / Immersion Neuroscience and its scientists, alongside his review of their patents. A proposed technology partnership is currently in discussion.</p>
+<p>Building a festival takes time. Ben’s previous festival projects have taken ten years or more to progress from an initial concept to a funded reality, bringing together partnerships, technology, venues and artists.</p>
+<p class="about-proposal">This is a concept for a new festival by Universal Mind, pitching to Live Nation and Apple TV+, together as one. The artists and venues are ideal bookings, not confirmed and this is not an advertisement for an existing event.</p>
+<button id="about-return" class="about-return">Back to experience</button>
+</article>
 </section>
 </main>
 <?php endif; ?>
