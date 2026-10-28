@@ -1,0 +1,18 @@
+[
+  {
+    "path": "events/assets/events.css",
+    "version": 3,
+    "status": 200,
+    "localSha256": "22f73030c2c45d6e93e4e0d181d765de9d207257ce6d3a7bf5da99be78a17d26",
+    "remoteSha256": "22f73030c2c45d6e93e4e0d181d765de9d207257ce6d3a7bf5da99be78a17d26",
+    "matches": true
+  },
+  {
+    "path": "events/assets/events.js",
+    "version": 4,
+    "status": 200,
+    "localSha256": "ecdfa94394a1f5cb056c585661017af9a5d20d6063bdfdfd674452a1ae88f2dd",
+    "remoteSha256": "ecdfa94394a1f5cb056c585661017af9a5d20d6063bdfdfd674452a1ae88f2dd",
+    "matches": true
+  }
+]

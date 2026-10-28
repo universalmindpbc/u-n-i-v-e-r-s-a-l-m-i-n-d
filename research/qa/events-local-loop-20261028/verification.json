@@ -1,0 +1,294 @@
+{
+  "date": "2026-10-28",
+  "origin": "https://staging.universalmind.tv/events/",
+  "processAudioDisabled": true,
+  "fullscreenTest": "Request intercepted and state simulated; native fullscreen never invoked",
+  "checks": [
+    {
+      "anonymous": "media.php",
+      "status": 401
+    },
+    {
+      "anonymous": "poster.php",
+      "status": 401
+    },
+    {
+      "anonymous": "loop.php",
+      "status": 401
+    },
+    {
+      "anonymous": "private/media.json",
+      "status": 403
+    },
+    {
+      "anonymous": "private/poster.jpg",
+      "status": 403
+    },
+    {
+      "anonymous": "private/opening-loop.mp4",
+      "status": 403
+    },
+    {
+      "anonymous": "access.php",
+      "status": 403
+    },
+    {
+      "invalidPasswordRejected": true,
+      "validPasswordAccepted": true,
+      "maximiseVisibilityFollowsFullscreen": true
+    },
+    {
+      "brandOneWord": true,
+      "presenterFlower": {
+        "loaded": true,
+        "width": 73.5,
+        "behindBrand": true
+      },
+      "rotatingGlobalFlower": true,
+      "proposalOnlyFooter": true,
+      "removedControlsAbsent": true
+    },
+    {
+      "opening": {
+        "first": {
+          "time": 0,
+          "muted": false,
+          "paused": false,
+          "volume": 1,
+          "audioBytes": 89
+        },
+        "second": {
+          "time": 1.080413,
+          "muted": false,
+          "paused": false,
+          "volume": 1,
+          "audioBytes": 11952
+        }
+      },
+      "performance": {
+        "playingAtMs": 283.90000009536743,
+        "firstFrameAtMs": 641.0999999046326,
+        "source": "https://staging.universalmind.tv/events/loop.php?v=1",
+        "preload": "auto"
+      },
+      "noCloudflareDependencyOnEntry": true,
+      "localMp4Bytes": 598171,
+      "localMp4Sha256": "7f887f1e01f937ea9c8b61058d7397cf0e84d9029c328777688cb83afd6a7488",
+      "rangeRequestsVerified": true
+    },
+    {
+      "singleAboutMenu": true,
+      "pointerFocus": {
+        "outline": "none",
+        "fontSize": "20px",
+        "decoration": "none"
+      },
+      "keyboardFocus": {
+        "mode": "keyboard",
+        "active": "global-nav-toggle",
+        "outline": "solid",
+        "decoration": "underline"
+      }
+    },
+    {
+      "aboutDesign": {
+        "background": "rgba(0, 0, 0, 0.64)",
+        "bodyTextSize": "14px",
+        "headingSize": "36px",
+        "posterTextHidden": "hidden",
+        "videoZIndex": "32"
+      }
+    },
+    {
+      "aboutRetainsOxytocinAndCortisol": true,
+      "fullProposalNoteInAbout": true,
+      "aboutKeepsOpeningAudio": true,
+      "proposalOpensAbout": true
+    },
+    {
+      "film": {
+        "first": {
+          "time": 0.538863,
+          "muted": false,
+          "paused": false,
+          "duration": 142,
+          "volume": 1,
+          "controls": false
+        },
+        "second": {
+          "time": 2.552164,
+          "muted": false,
+          "paused": false
+        },
+        "cloudflare": true,
+        "controlsHidden": true,
+        "visibleControls": [],
+        "clock": "0:38 / 2:22"
+      },
+      "loopPausedDuringFilm": true
+    },
+    {
+      "aboutUsesLocalLoopDuringFilm": {
+        "paused": false,
+        "muted": true,
+        "time": 4.246529,
+        "ready": true
+      }
+    },
+    {
+      "aboutKeepsFilmAndAudio": true,
+      "aboutKeepsFullscreenState": true
+    },
+    {
+      "escapeStopsFilm": true,
+      "endedReturnsToPoster": true,
+      "loopResumesAfterFilm": true
+    },
+    {
+      "layout": {
+        "width": 390,
+        "scrollWidth": 390,
+        "height": 844,
+        "scrollHeight": 844
+      },
+      "boxes": {
+        "#festival-title": {
+          "left": 15.59375,
+          "right": 374.40625,
+          "top": 312.265625,
+          "bottom": 353.515625
+        },
+        "#watch-film": {
+          "left": 115.90625,
+          "right": 274.09375,
+          "top": 447.515625,
+          "bottom": 484.515625
+        },
+        ".hashtags": {
+          "left": 19.5,
+          "right": 370.5,
+          "top": 600.125,
+          "bottom": 616.125
+        },
+        ".venues": {
+          "left": 15.59375,
+          "right": 374.40625,
+          "top": 637.875,
+          "bottom": 687.875
+        },
+        ".event-description": {
+          "left": 23.390625,
+          "right": 366.609375,
+          "top": 723.046875,
+          "bottom": 748.640625
+        },
+        ".proposal-label": {
+          "left": 0,
+          "right": 390,
+          "top": 788,
+          "bottom": 820
+        }
+      }
+    },
+    {
+      "mobileAboutPosition": {
+        "scrollTop": 0,
+        "titleTop": 134
+      }
+    },
+    {
+      "layout": {
+        "width": 320,
+        "scrollWidth": 320,
+        "height": 568,
+        "scrollHeight": 568
+      },
+      "boxes": {
+        "#festival-title": {
+          "left": 12.796875,
+          "right": 307.203125,
+          "top": 187.4375,
+          "bottom": 220.453125
+        },
+        "#watch-film": {
+          "left": 81.90625,
+          "right": 238.09375,
+          "top": 278.640625,
+          "bottom": 311.640625
+        },
+        ".hashtags": {
+          "left": 16,
+          "right": 304,
+          "top": 378.921875,
+          "bottom": 391.921875
+        },
+        ".venues": {
+          "left": 12.796875,
+          "right": 307.203125,
+          "top": 408.734375,
+          "bottom": 448.734375
+        },
+        ".event-description": {
+          "left": 19.1875,
+          "right": 300.8125,
+          "top": 473.171875,
+          "bottom": 494.171875
+        },
+        ".proposal-label": {
+          "left": 0,
+          "right": 320,
+          "top": 522,
+          "bottom": 553
+        }
+      }
+    },
+    {
+      "layout": {
+        "width": 1920,
+        "scrollWidth": 1920,
+        "height": 1080,
+        "scrollHeight": 1080
+      },
+      "boxes": {
+        "#festival-title": {
+          "left": 96,
+          "right": 1824,
+          "top": 453.59375,
+          "bottom": 625.609375
+        },
+        "#watch-film": {
+          "left": 867.453125,
+          "right": 1052.53125,
+          "top": 744.609375,
+          "bottom": 782.609375
+        },
+        ".hashtags": {
+          "left": 96,
+          "right": 1824,
+          "top": 810.40625,
+          "bottom": 842.40625
+        },
+        ".venues": {
+          "left": 76.796875,
+          "right": 1843.203125,
+          "top": 867.8125,
+          "bottom": 901.8125
+        },
+        ".event-description": {
+          "left": 115.1875,
+          "right": 1804.8125,
+          "top": 924.3125,
+          "bottom": 955.8125
+        },
+        ".proposal-label": {
+          "left": 0,
+          "right": 1920,
+          "top": 1023,
+          "bottom": 1055
+        }
+      }
+    }
+  ],
+  "errors": [],
+  "passed": true
+}
