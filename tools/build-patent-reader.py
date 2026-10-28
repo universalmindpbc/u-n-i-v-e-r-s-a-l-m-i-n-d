@@ -1,5 +1,5 @@
 """Build protected, structured chapter content and drawings from frozen filing sources."""
-import argparse,ast,hashlib,html,json,re,sys
+import argparse,ast,hashlib,html,json,re,string,sys
 from collections import defaultdict
 from pathlib import Path
 sys.path.insert(0,'/private/tmp/um-patent-render-libs')
@@ -77,7 +77,7 @@ def render(text,title):
  # Decode only text nodes after parsing; never reinterpret source code or URLs.
  for node in list(soup.find_all(string=True)):
   if node.find_parent(['pre','code']):continue
-  decoded=re.sub(r'\\([\\`*_{}\[\]()#+\-.!|>$~^])',r'\1',str(node)).replace('\ufffc','')
+  decoded=re.sub(r'\\(.)',lambda m:m[1] if m[1] in string.punctuation else m[0],str(node)).replace('\ufffc','')
   if decoded!=str(node):node.replace_with(decoded)
  for link in soup.find_all('a'):
   if (link.get('href') or '').startswith(('https://','http://')):link['target']='_blank';link['rel']='noopener noreferrer'
