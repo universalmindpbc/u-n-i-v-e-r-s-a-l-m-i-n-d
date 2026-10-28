@@ -1,0 +1,25 @@
+{
+  "date": "2026-10-28",
+  "environment": "staging",
+  "source_commit": "7aa776b8eae4e5accddab5d450286e6c2bf0c424",
+  "url": "https://staging.universalmind.tv/",
+  "checks": [
+    "Dedicated headless Chromium process launched with --mute-audio",
+    "Main portal: HTTP 200; committed source matches after removing host analytics injection; no plaintext credential",
+    "Main portal: invalid password rejected",
+    "Main portal: new credential accepted by Events server and entry receipt; four-destination directory displayed",
+    "Directory gateways: Events session accepted and Happiness bridge grants access",
+    "Watch TV and Informatics directory destinations return HTTP 200",
+    "events: direct login rejects invalid password, accepts new credential, displays protected experience",
+    "happiness: direct login rejects invalid password, accepts new credential, displays protected experience",
+    "Patent: invalid password rejected; new credential opens protected library",
+    "Study: invalid password rejected; new credential reaches staging briefing without consent, owner, or stakeholder access",
+    "All tested gateways: no page errors, no plaintext password in browser storage, native fullscreen blocked",
+    "All automated media paused; every browser context and dedicated process closed",
+    "Final staging HTTP response byte-identical to committed source",
+    "Production root HTTP source unchanged from pre-deployment checksum"
+  ],
+  "page_errors": [],
+  "portal_sha256": "06eadbdd6fffbb139f6813f120d07ccd6d2cf6c28f2e654bc00cc95cea872433",
+  "passed": true
+}
