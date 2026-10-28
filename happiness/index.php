@@ -43,9 +43,9 @@ session_write_close();
 <script src="assets/gate-launch.js?v=2" defer></script>
 <?php else: ?>
 <link rel="preload" as="image" href="assets/universal-mind-flower.png">
-<link rel="stylesheet" href="assets/happiness.css?v=7">
+<link rel="stylesheet" href="assets/happiness.css?v=8">
 <script src="assets/network.js?v=1" defer></script>
-<script src="assets/happiness.js?v=5" defer></script>
+<script src="assets/happiness.js?v=6" defer></script>
 <?php endif; ?>
 </head>
 <body class="<?= $entered ? 'entered' : 'invitation' ?>">

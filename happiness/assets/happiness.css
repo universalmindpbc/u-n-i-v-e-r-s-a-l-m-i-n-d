@@ -534,8 +534,7 @@ body.film-open{overflow:hidden}
   position:fixed;
   inset:0;
   z-index:30;
-  background:rgba(6,11,8,.92);
-  backdrop-filter:blur(18px);
+  background:rgba(6,11,8,.64);
   overflow-y:auto;
   display:flex;
   align-items:center;
@@ -568,7 +567,7 @@ body.film-open{overflow:hidden}
   line-height:1.8;
   letter-spacing:.01em;
   font-weight:300;
-  color:#c6cebd;
+  color:#e4e7dc;
   margin:0 0 24px}
 .about-return{
   margin-top:20px;
@@ -845,3 +844,8 @@ html[data-background-hosted] .backdrop-shade{background:linear-gradient(90deg,rg
   .team-list button{padding-top:8px;padding-bottom:8px}
   .festival-response{margin-top:16px;padding-top:22px}
 }
+
+/* About keeps the film visible through one translucent layer. */
+body.about-open .experience{visibility:hidden}
+body.about-open .backdrop>img,body.about-open .backdrop>video{opacity:1}
+body.about-open .backdrop-shade{opacity:0}
