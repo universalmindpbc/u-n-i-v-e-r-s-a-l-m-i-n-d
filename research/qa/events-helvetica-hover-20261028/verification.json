@@ -1,0 +1,576 @@
+{
+  "origin": "https://staging.universalmind.tv/events/",
+  "processAudioDisabled": true,
+  "nativeFullscreenInvoked": false,
+  "checks": [
+    {
+      "gateFamilies": [
+        {
+          "tag": "H1",
+          "id": "",
+          "className": "access-title",
+          "family": "\"Helvetica Neue\""
+        },
+        {
+          "tag": "LABEL",
+          "id": "",
+          "className": "access-label",
+          "family": "\"Helvetica Neue\""
+        },
+        {
+          "tag": "INPUT",
+          "id": "password",
+          "className": "access-input",
+          "family": "\"Helvetica Neue\""
+        },
+        {
+          "tag": "INPUT",
+          "id": "",
+          "className": "",
+          "family": "\"Helvetica Neue\""
+        },
+        {
+          "tag": "BUTTON",
+          "id": "",
+          "className": "access-submit",
+          "family": "\"Helvetica Neue\""
+        }
+      ],
+      "gateFonts": [
+        {
+          "selector": ".access-title",
+          "fonts": [
+            {
+              "familyName": "Helvetica Neue",
+              "postScriptName": "HelveticaNeue",
+              "isCustomFont": false,
+              "glyphCount": 26
+            }
+          ]
+        },
+        {
+          "selector": ".access-label",
+          "fonts": [
+            {
+              "familyName": "Helvetica Neue",
+              "postScriptName": "HelveticaNeue",
+              "isCustomFont": false,
+              "glyphCount": 8
+            }
+          ]
+        },
+        {
+          "selector": ".access-submit",
+          "fonts": [
+            {
+              "familyName": "Helvetica Neue",
+              "postScriptName": "HelveticaNeue",
+              "isCustomFont": false,
+              "glyphCount": 5
+            }
+          ]
+        }
+      ],
+      "canvasFont": "20px \"Helvetica Neue\""
+    },
+    {
+      "gateLayout": {
+        "size": {
+          "width": 1470,
+          "height": 920
+        },
+        "width": 1470,
+        "scrollWidth": 1470,
+        "titleHeight": 32.296875,
+        "titleLineHeight": 32.3,
+        "titleLeft": 552.96875,
+        "titleRight": 917.03125
+      }
+    },
+    {
+      "gateLayout": {
+        "size": {
+          "width": 390,
+          "height": 844
+        },
+        "width": 390,
+        "scrollWidth": 390,
+        "titleHeight": 25.5,
+        "titleLineHeight": 25.5,
+        "titleLeft": 66.890625,
+        "titleRight": 323.109375
+      }
+    },
+    {
+      "gateLayout": {
+        "size": {
+          "width": 320,
+          "height": 568
+        },
+        "width": 320,
+        "scrollWidth": 320,
+        "titleHeight": 25.5,
+        "titleLineHeight": 25.5,
+        "titleLeft": 31.890625,
+        "titleRight": 288.109375
+      }
+    },
+    {
+      "stageFamilies": [
+        {
+          "tag": "BUTTON",
+          "id": "global-nav-toggle",
+          "className": "global-nav-toggle",
+          "family": "\"Helvetica Neue\""
+        },
+        {
+          "tag": "SPAN",
+          "id": "",
+          "className": "flower-label",
+          "family": "\"Helvetica Neue\""
+        },
+        {
+          "tag": "BUTTON",
+          "id": "fullscreen-toggle",
+          "className": "maximise",
+          "family": "\"Helvetica Neue\""
+        },
+        {
+          "tag": "P",
+          "id": "",
+          "className": "",
+          "family": "\"Helvetica Neue\""
+        },
+        {
+          "tag": "SPAN",
+          "id": "",
+          "className": "",
+          "family": "\"Helvetica Neue\""
+        },
+        {
+          "tag": "P",
+          "id": "",
+          "className": "present",
+          "family": "\"Helvetica Neue\""
+        },
+        {
+          "tag": "SPAN",
+          "id": "",
+          "className": "",
+          "family": "\"Helvetica Neue\""
+        },
+        {
+          "tag": "STRONG",
+          "id": "",
+          "className": "",
+          "family": "\"Helvetica Neue\""
+        },
+        {
+          "tag": "SPAN",
+          "id": "",
+          "className": "tagline-phrase",
+          "family": "\"Helvetica Neue\""
+        },
+        {
+          "tag": "SPAN",
+          "id": "",
+          "className": "tagline-phrase",
+          "family": "\"Helvetica Neue\""
+        },
+        {
+          "tag": "BUTTON",
+          "id": "watch-film",
+          "className": "watch-film",
+          "family": "\"Helvetica Neue\""
+        },
+        {
+          "tag": "SPAN",
+          "id": "",
+          "className": "play-icon",
+          "family": "\"Helvetica Neue\""
+        },
+        {
+          "tag": "SPAN",
+          "id": "",
+          "className": "",
+          "family": "\"Helvetica Neue\""
+        },
+        {
+          "tag": "P",
+          "id": "",
+          "className": "hashtags",
+          "family": "\"Helvetica Neue\""
+        },
+        {
+          "tag": "SPAN",
+          "id": "",
+          "className": "",
+          "family": "\"Helvetica Neue\""
+        },
+        {
+          "tag": "B",
+          "id": "",
+          "className": "",
+          "family": "\"Helvetica Neue\""
+        },
+        {
+          "tag": "SPAN",
+          "id": "",
+          "className": "",
+          "family": "\"Helvetica Neue\""
+        },
+        {
+          "tag": "B",
+          "id": "",
+          "className": "",
+          "family": "\"Helvetica Neue\""
+        },
+        {
+          "tag": "SPAN",
+          "id": "",
+          "className": "",
+          "family": "\"Helvetica Neue\""
+        },
+        {
+          "tag": "P",
+          "id": "",
+          "className": "event-description",
+          "family": "\"Helvetica Neue\""
+        },
+        {
+          "tag": "BUTTON",
+          "id": "proposal-about",
+          "className": "",
+          "family": "\"Helvetica Neue\""
+        },
+        {
+          "tag": "BUTTON",
+          "id": "film-back",
+          "className": "film-back",
+          "family": "\"Helvetica Neue\""
+        },
+        {
+          "tag": "SPAN",
+          "id": "",
+          "className": "",
+          "family": "\"Helvetica Neue\""
+        },
+        {
+          "tag": "OUTPUT",
+          "id": "film-timecode",
+          "className": "film-timecode",
+          "family": "\"Helvetica Neue\""
+        },
+        {
+          "tag": "BUTTON",
+          "id": "nav-dismiss",
+          "className": "nav-scrim",
+          "family": "\"Helvetica Neue\""
+        },
+        {
+          "tag": "BUTTON",
+          "id": "nav-about",
+          "className": "",
+          "family": "\"Helvetica Neue\""
+        },
+        {
+          "tag": "P",
+          "id": "",
+          "className": "about-eyebrow",
+          "family": "\"Helvetica Neue\""
+        },
+        {
+          "tag": "H2",
+          "id": "about-title",
+          "className": "",
+          "family": "\"Helvetica Neue\""
+        },
+        {
+          "tag": "STRONG",
+          "id": "",
+          "className": "",
+          "family": "\"Helvetica Neue\""
+        },
+        {
+          "tag": "P",
+          "id": "",
+          "className": "about-tagline",
+          "family": "\"Helvetica Neue\""
+        },
+        {
+          "tag": "P",
+          "id": "",
+          "className": "",
+          "family": "\"Helvetica Neue\""
+        },
+        {
+          "tag": "STRONG",
+          "id": "",
+          "className": "",
+          "family": "\"Helvetica Neue\""
+        },
+        {
+          "tag": "P",
+          "id": "",
+          "className": "",
+          "family": "\"Helvetica Neue\""
+        },
+        {
+          "tag": "LI",
+          "id": "",
+          "className": "",
+          "family": "\"Helvetica Neue\""
+        },
+        {
+          "tag": "LI",
+          "id": "",
+          "className": "",
+          "family": "\"Helvetica Neue\""
+        },
+        {
+          "tag": "LI",
+          "id": "",
+          "className": "",
+          "family": "\"Helvetica Neue\""
+        },
+        {
+          "tag": "P",
+          "id": "",
+          "className": "",
+          "family": "\"Helvetica Neue\""
+        },
+        {
+          "tag": "P",
+          "id": "",
+          "className": "",
+          "family": "\"Helvetica Neue\""
+        },
+        {
+          "tag": "STRONG",
+          "id": "",
+          "className": "",
+          "family": "\"Helvetica Neue\""
+        },
+        {
+          "tag": "P",
+          "id": "",
+          "className": "",
+          "family": "\"Helvetica Neue\""
+        },
+        {
+          "tag": "STRONG",
+          "id": "",
+          "className": "",
+          "family": "\"Helvetica Neue\""
+        },
+        {
+          "tag": "A",
+          "id": "",
+          "className": "",
+          "family": "\"Helvetica Neue\""
+        },
+        {
+          "tag": "A",
+          "id": "",
+          "className": "",
+          "family": "\"Helvetica Neue\""
+        },
+        {
+          "tag": "P",
+          "id": "",
+          "className": "about-proposal",
+          "family": "\"Helvetica Neue\""
+        },
+        {
+          "tag": "STRONG",
+          "id": "",
+          "className": "",
+          "family": "\"Helvetica Neue\""
+        },
+        {
+          "tag": "BUTTON",
+          "id": "about-return",
+          "className": "about-return",
+          "family": "\"Helvetica Neue\""
+        }
+      ],
+      "stageFonts": [
+        {
+          "selector": ".presenters",
+          "fonts": [
+            {
+              "familyName": "Helvetica Neue",
+              "postScriptName": "HelveticaNeue-Bold",
+              "isCustomFont": false,
+              "glyphCount": 34
+            }
+          ]
+        },
+        {
+          "selector": "#festival-title",
+          "fonts": [
+            {
+              "familyName": "Helvetica Neue",
+              "postScriptName": "HelveticaNeue-Thin",
+              "isCustomFont": false,
+              "glyphCount": 9
+            },
+            {
+              "familyName": "Helvetica Neue",
+              "postScriptName": "HelveticaNeue-Bold",
+              "isCustomFont": false,
+              "glyphCount": 5
+            }
+          ]
+        },
+        {
+          "selector": ".tagline",
+          "fonts": [
+            {
+              "familyName": "Helvetica Neue",
+              "postScriptName": "HelveticaNeue-Bold",
+              "isCustomFont": false,
+              "glyphCount": 42
+            }
+          ]
+        },
+        {
+          "selector": ".venues",
+          "fonts": [
+            {
+              "familyName": "Helvetica Neue",
+              "postScriptName": "HelveticaNeue-Light",
+              "isCustomFont": false,
+              "glyphCount": 2
+            },
+            {
+              "familyName": "Helvetica Neue",
+              "postScriptName": "HelveticaNeue-Bold",
+              "isCustomFont": false,
+              "glyphCount": 57
+            }
+          ]
+        },
+        {
+          "selector": "#watch-film > span:last-child",
+          "fonts": [
+            {
+              "familyName": "Helvetica Neue",
+              "postScriptName": "HelveticaNeue",
+              "isCustomFont": false,
+              "glyphCount": 14
+            }
+          ]
+        },
+        {
+          "selector": "#proposal-about",
+          "fonts": [
+            {
+              "familyName": "Helvetica Neue",
+              "postScriptName": "HelveticaNeue",
+              "isCustomFont": false,
+              "glyphCount": 8
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "plainAboutHoverLabel": {
+        "font": "\"Helvetica Neue\"",
+        "background": "rgba(0, 0, 0, 0)",
+        "border": "none",
+        "shadow": "none",
+        "top": 87,
+        "left": 33.8515625,
+        "right": 66.1484375
+      },
+      "hiddenOnPointerLeave": true,
+      "keyboardFocusShowsLabel": true
+    },
+    {
+      "aboutFonts": [
+        {
+          "selector": ".about-copy h2",
+          "fonts": [
+            {
+              "familyName": "Helvetica Neue",
+              "postScriptName": "HelveticaNeue-Thin",
+              "isCustomFont": false,
+              "glyphCount": 9
+            },
+            {
+              "familyName": "Helvetica Neue",
+              "postScriptName": "HelveticaNeue-Bold",
+              "isCustomFont": false,
+              "glyphCount": 5
+            }
+          ]
+        },
+        {
+          "selector": ".about-tagline",
+          "fonts": [
+            {
+              "familyName": "Helvetica Neue",
+              "postScriptName": "HelveticaNeue",
+              "isCustomFont": false,
+              "glyphCount": 43
+            }
+          ]
+        },
+        {
+          "selector": ".about-levels",
+          "fonts": [
+            {
+              "familyName": "Helvetica Neue",
+              "postScriptName": "HelveticaNeue",
+              "isCustomFont": false,
+              "glyphCount": 110
+            }
+          ]
+        },
+        {
+          "selector": ".about-copy p:nth-of-type(3)",
+          "fonts": [
+            {
+              "familyName": "Helvetica Neue",
+              "postScriptName": "HelveticaNeue",
+              "isCustomFont": false,
+              "glyphCount": 89
+            },
+            {
+              "familyName": "Helvetica Neue",
+              "postScriptName": "HelveticaNeue-Bold",
+              "isCustomFont": false,
+              "glyphCount": 14
+            }
+          ]
+        }
+      ],
+      "flowerOpensAboutNavigation": true
+    },
+    {
+      "mobileHoverLayout": {
+        "left": 16.8515625,
+        "right": 49.1484375,
+        "bottom": 74.1875,
+        "viewport": 390,
+        "opacity": "1"
+      }
+    },
+    {
+      "mobileHoverLayout": {
+        "left": 16.8515625,
+        "right": 49.1484375,
+        "bottom": 74.1875,
+        "viewport": 320,
+        "opacity": "1"
+      }
+    },
+    {
+      "silentLoopContinues": true
+    }
+  ],
+  "errors": [],
+  "passed": true
+}

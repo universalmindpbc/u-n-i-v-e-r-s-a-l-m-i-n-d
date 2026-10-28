@@ -1,0 +1,32 @@
+{
+  "createdAt": "2026-10-28T05:15:15.871239+00:00",
+  "stagingUrl": "https://staging.universalmind.tv/events/",
+  "sourceCommit": "4182138f150020a142778b052d6bbeb39994be26",
+  "publisher": "./deploy-panthur-staging.sh events",
+  "productionModified": false,
+  "changes": [
+    "Use Helvetica Neue for Events typography, the entry screen, timecode and falling characters; remove Arial and other explicit font overrides.",
+    "Show a plain About label beneath the rotating navigation flower on hover and keyboard focus.",
+    "Keep the password-screen wordmark centred on one line."
+  ],
+  "validation": [
+    "JavaScript syntax and PHP parsing checks passed.",
+    "All inspected text and form controls compute to Helvetica Neue.",
+    "Chromium platform-font inspection confirms Helvetica Neue regular, light, thin and bold for the rendered interface.",
+    "Hover, pointer leave, keyboard focus, About navigation and return verified.",
+    "Desktop 1470x920 and mobile 390x844 / 320x568 layouts checked.",
+    "Silent background loop remains active; dedicated Chromium --mute-audio confirmed; no native fullscreen invoked; browser closed.",
+    "Four versioned live CSS/JavaScript assets match the committed SHA-256 hashes.",
+    "No page errors. Non-Events deployment-manifest entries preserved."
+  ],
+  "limits": [
+    "Rendered fonts verified on macOS Chromium. No Helvetica Neue webfont is distributed; platform font availability applies."
+  ],
+  "sourceSha256": {
+    "events/assets/events.css": "8e223270dba99b5fc1d9a57625e0c0035f7bb1a99df73b9fc4a7365911860193",
+    "events/assets/events.js": "aa76cf14bda4b325a29f04bb70bef1abd20b18d7ab3545c722c4a35447fb41a3",
+    "events/assets/gate.css": "07ac782255f88e549dc9fcef2a8eda12b1eb51c6484e8cc2cb3c5e0586451204",
+    "events/assets/gate-rain.js": "27aaac4857613f859deac1d68101949e335ca8d4fa2e9175e2e08bcbfda46c40",
+    "events/index.php": "6f9df953e6043ab22c2aedbf883bfa73da54d7dd491d93ee39c89071f6d61a7d"
+  }
+}
