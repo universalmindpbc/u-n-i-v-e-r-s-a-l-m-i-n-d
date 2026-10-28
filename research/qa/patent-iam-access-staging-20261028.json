@@ -1,0 +1,73 @@
+{
+  "environment": "staging",
+  "url": "https://staging.universalmind.tv/patent/",
+  "verified_date": "2026-10-28",
+  "source_commit": "fa3494e8c594bc629fe5c334d91e9eb187fac448",
+  "shared_iam_password_entries": 11,
+  "password_source": "Existing site-root index.html allowedPasswordHashes; no copied or added credentials",
+  "local_validation": [
+    "JavaScript syntax check",
+    "Git whitespace check"
+  ],
+  "production_modified": false,
+  "access_and_document": {
+    "data.php": 401,
+    "document.php": 401,
+    "receipt.php": 401,
+    ".private/receipt.jpg": 403,
+    ".private/access.json": 403,
+    ".private/document.json": 403,
+    ".private/specification.pdf": 403,
+    ".private/access-probe.txt": 403,
+    "old_key_rejected": true,
+    "invalid_csrf_denied": true,
+    "malformed_input_denied": true,
+    "oversize_input_denied": true,
+    "iam_password_with_surrounding_spaces": true,
+    "receipt_excerpt_sha256": "79ee5e38044f7de6e6cfc3b6da2ea508ef437ab0d91cd66b9cc158865e83ef75",
+    "filing_receipt_verified": true,
+    "notion_section_order": true,
+    "key_section_pages": {
+      "15. Proposed claims, part 1": 209,
+      "16. Proposed claims, part 2": 246,
+      "17. Abstract": 277,
+      "Drawings and figure descriptions": 278,
+      "Drawing sheets": 300,
+      "Appendix A. Universal Light algorithm and research architecture": 391
+    },
+    "authenticated_pages": 953,
+    "pdf_bytes": 19838136,
+    "pdf_sha256": "79c02b900a946092b1d4cb74c882390f76cb851524b7ff71fa3509c22af19653",
+    "invalid_password": 401,
+    "cross_origin_login": 403,
+    "secure_httponly_cookie": true,
+    "logout_denies_all_private_routes": true
+  },
+  "anonymous_and_legacy": {
+    "data.php": 401,
+    "document.php": 401,
+    "receipt.php": 401,
+    ".private/access.json": 403,
+    ".private/document.json": 403,
+    ".private/specification.pdf": 403,
+    ".private/receipt.jpg": 403,
+    "legacy_session_revoked": true,
+    "invalid_password_denied": true,
+    "deployed_javascript_matches_commit": true
+  },
+  "browser": {
+    "url": "https://staging.universalmind.tv/patent/",
+    "checks": [
+      "Invalid password shows a clear error without unlocking",
+      "Existing I AM password opens the 953-page patent workspace and filing details",
+      "Authenticated document search returns results",
+      "Protected receipt excerpt loads",
+      "Password absent from browser localStorage and sessionStorage",
+      "Lock workspace returns to login and denies protected data",
+      "Mobile login has no horizontal overflow at 390px",
+      "Muted background browser closed after verification"
+    ],
+    "errors": [],
+    "passed": true
+  }
+}
