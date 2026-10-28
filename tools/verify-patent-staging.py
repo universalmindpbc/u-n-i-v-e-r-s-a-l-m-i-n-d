@@ -18,7 +18,7 @@ def call(path,data=None,origin='https://staging.universalmind.tv'):
  try:
   with client.open(req,timeout=90) as r:return r.status,r.read(),dict(r.headers)
  except urllib.error.HTTPError as e:return e.code,e.read(),dict(e.headers)
-for path,status in [('data.php',401),('document.php',401),('receipt.php',401),('.private/receipt.png',403),('.private/access.json',403),('.private/document.json',403),('.private/specification.pdf',403),('.private/access-probe.txt',403)]:
+for path,status in [('data.php',401),('document.php',401),('receipt.php',401),('.private/receipt.jpg',403),('.private/access.json',403),('.private/document.json',403),('.private/specification.pdf',403),('.private/access-probe.txt',403)]:
  actual,body,headers=call(path);assert actual==status,(path,actual);results[path]=actual
 status,body,_=call('');assert status==200
 assert b'System and Method for Non-Invasive' not in body
@@ -31,8 +31,9 @@ status,raw,headers=call('data.php');assert status==200
 doc=json.loads(raw);assert len(doc['pages'])==expected_pages and doc['status']=='private-filed'
 assert doc['filing']['application_number']=='2026908928'
 assert doc['filing']['transaction_reference']=='APSZ-2616390071'
-status,receipt,headers=call('receipt.php');assert status==200 and receipt.startswith(b'\x89PNG')
+status,receipt,headers=call('receipt.php');assert status==200 and receipt.startswith(b'\xff\xd8\xff')
 assert 'no-store' in headers.get('Cache-Control','')
+assert hashlib.sha256(receipt).hexdigest()==hashlib.sha256((keyfile.parent/'receipt.jpg').read_bytes()).hexdigest()
 results['receipt_excerpt_sha256']=hashlib.sha256(receipt).hexdigest()
 status,html,_=call('');assert status==200
 assert all(v in html for v in [b'2026908928',b'APSZ-2616390071',b'AMCZ-2616390323'])
