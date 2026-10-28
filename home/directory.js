@@ -52,6 +52,7 @@
   };
   if (new URLSearchParams(location.search).has('autoplay-debug')) {
     const panel = document.createElement('aside');
+    panel.dataset.playbackDiagnostic = 'true';
     panel.style.cssText = 'position:fixed;z-index:200;left:12px;right:12px;bottom:56px;padding:12px;background:#111;color:#fff;font:14px/1.5 "Helvetica Neue",sans-serif;border:1px solid #666';
     diagnosticStatus = document.createElement('div');
     const copy = document.createElement('button');
@@ -118,7 +119,7 @@
   });
   // iOS may defer even silent autoplay until a visitor gesture.
   document.addEventListener('pointerup', event => {
-    if (event.target.closest('.ambient-toggle')) return;
+    if (event.target.closest('.ambient-toggle,[data-playback-diagnostic]')) return;
     if (!userPaused && film.paused) playFilm();
   }, { passive: true });
   document.addEventListener('directory:motion', event => {
