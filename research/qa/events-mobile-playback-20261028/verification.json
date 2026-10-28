@@ -1,0 +1,117 @@
+{
+  "origin": "https://staging.universalmind.tv/events/",
+  "browser": "Chromium 151 with mobile viewport and touch emulation",
+  "realIphoneSafariTested": false,
+  "processAudioDisabled": true,
+  "nativeFullscreenInvoked": false,
+  "scenarios": [
+    {
+      "scenario": "native-hls",
+      "pass": true,
+      "initialFilm": {
+        "time": 0.321448,
+        "paused": false,
+        "muted": false,
+        "volume": 1,
+        "duration": 142,
+        "controls": false,
+        "playsInline": true,
+        "error": null
+      },
+      "later": 1.44747,
+      "timecode": "0:01 / 2:22",
+      "filmCalls": [
+        {
+          "id": "native-film",
+          "gesture": true,
+          "event": "click",
+          "muted": false,
+          "src": "https://customer-1vpwglz3v6fiyaas.cloudflarestream.com/6420e5ed4a3af887686bd280e3a60693/manifest/video.m3u8"
+        },
+        {
+          "id": "native-film",
+          "gesture": true,
+          "event": "click",
+          "muted": false,
+          "src": "https://customer-1vpwglz3v6fiyaas.cloudflarestream.com/6420e5ed4a3af887686bd280e3a60693/manifest/video.m3u8"
+        },
+        {
+          "id": "native-film",
+          "gesture": true,
+          "event": "click",
+          "muted": false,
+          "src": "https://customer-1vpwglz3v6fiyaas.cloudflarestream.com/6420e5ed4a3af887686bd280e3a60693/manifest/video.m3u8"
+        }
+      ],
+      "loopRecovery": false,
+      "aboutAndBackWork": true,
+      "repeatedWatchWorks": true,
+      "errors": []
+    },
+    {
+      "scenario": "native-hls-blocked-loop",
+      "pass": true,
+      "initialFilm": {
+        "time": 0.416219,
+        "paused": false,
+        "muted": false,
+        "volume": 1,
+        "duration": 142,
+        "controls": false,
+        "playsInline": true,
+        "error": null
+      },
+      "later": 1.539739,
+      "timecode": "0:01 / 2:22",
+      "filmCalls": [
+        {
+          "id": "native-film",
+          "gesture": true,
+          "event": "click",
+          "muted": false,
+          "src": "https://customer-1vpwglz3v6fiyaas.cloudflarestream.com/6420e5ed4a3af887686bd280e3a60693/manifest/video.m3u8"
+        },
+        {
+          "id": "native-film",
+          "gesture": true,
+          "event": "click",
+          "muted": false,
+          "src": "https://customer-1vpwglz3v6fiyaas.cloudflarestream.com/6420e5ed4a3af887686bd280e3a60693/manifest/video.m3u8"
+        },
+        {
+          "id": "native-film",
+          "gesture": true,
+          "event": "click",
+          "muted": false,
+          "src": "https://customer-1vpwglz3v6fiyaas.cloudflarestream.com/6420e5ed4a3af887686bd280e3a60693/manifest/video.m3u8"
+        }
+      ],
+      "loopRecovery": true,
+      "aboutAndBackWork": true,
+      "repeatedWatchWorks": true,
+      "errors": []
+    },
+    {
+      "scenario": "iframe-fallback",
+      "pass": true,
+      "initialFilm": {
+        "time": 0.495238,
+        "paused": false,
+        "muted": false,
+        "volume": 1,
+        "duration": 142,
+        "controls": false,
+        "playsInline": true,
+        "error": null
+      },
+      "later": 1.61549,
+      "timecode": "0:01 / 2:22",
+      "filmCalls": [],
+      "loopRecovery": false,
+      "aboutAndBackWork": true,
+      "repeatedWatchWorks": true,
+      "errors": []
+    }
+  ],
+  "passed": true
+}

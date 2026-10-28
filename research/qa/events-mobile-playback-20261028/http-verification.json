@@ -1,0 +1,35 @@
+{
+  "verifiedAt": "2026-10-28T07:51:44.854232+00:00",
+  "assets": [
+    {
+      "url": "https://staging.universalmind.tv/events/assets/events.css?v=9",
+      "sha256": "1a7633dff3230b7e2f924fe3b9a81f34e0a644e4e8382e6001264bb542c813c2",
+      "matchesSource": true
+    },
+    {
+      "url": "https://staging.universalmind.tv/events/assets/events.js?v=9",
+      "sha256": "38f52b2031393b97c10da15de7f2beecb0ef3105e4d342a18c6dbf187f72d024",
+      "matchesSource": true
+    }
+  ],
+  "anonymousEntryRemainsGated": true,
+  "protected": [
+    {
+      "path": "media.php",
+      "status": 401
+    },
+    {
+      "path": "loop.php",
+      "status": 401
+    },
+    {
+      "path": "private/media.json",
+      "status": 403
+    },
+    {
+      "path": "private/opening-loop.mp4",
+      "status": 403
+    }
+  ],
+  "passed": true
+}

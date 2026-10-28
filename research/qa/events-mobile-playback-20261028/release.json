@@ -1,0 +1,37 @@
+{
+  "createdAt": "2026-10-28T07:53:09.011335+00:00",
+  "stagingUrl": "https://staging.universalmind.tv/events/",
+  "sourceCommit": "334ce7bcba499906d459994b1341c64e698989b3",
+  "publisher": "./deploy-panthur-staging.sh events",
+  "productionModified": false,
+  "changes": [
+    "Use the browser native HLS player when supported, with the Cloudflare stream URL supplied by the authenticated PHP page. Call play directly within the original Watch tap.",
+    "Keep the silent background visible with its poster while loading, retain inline and muted attributes, and retry from click/touchend/keyboard gestures.",
+    "Provide a plain Play film retry only after playback is paused or refused; preserve minimal timecode, About and Back controls.",
+    "Retain the Cloudflare iframe path for browsers without native HLS support."
+  ],
+  "validation": [
+    "JavaScript syntax and PHP parsing passed.",
+    "Live Cloudflare HLS playback advances with configured sound on, 142-second duration and controls hidden. All native start/retry/replay calls occur in a trusted click handler.",
+    "A blocked-autoplay simulation recovers the silent loop from a real touch gesture.",
+    "About, Back, repeat Watch and native paused-film retry passed.",
+    "The iframe fallback streams the real film and passes About, Back and repeat Watch.",
+    "Versioned staging assets match committed hashes; anonymous media access remains denied.",
+    "Dedicated Chromium launched with --mute-audio; all test contexts and browser processes closed."
+  ],
+  "limitations": [
+    "No actual iPhone Safari session was available. The playback path was tested with native HLS in Chromium 151, mobile touch emulation, and explicit gesture/autoplay regression probes. Ben needs to verify the staging link in iPhone Safari.",
+    "System power-saving and reduced-motion settings can still restrict automatic background motion."
+  ],
+  "references": [
+    "https://webkit.org/blog/6784/new-video-policies-for-ios/",
+    "https://developers.cloudflare.com/stream/viewing-videos/using-own-player/"
+  ],
+  "sourceSha256": {
+    "events/access.php": "bc019bdd44d02b7ac16e38756c2dc18f6a7a88a16c9192b87b477d1813c87523",
+    "events/media.php": "bed9a65599b5e3025993becb58c105a3de0c096f73f7948c9fb9433a2151319e",
+    "events/index.php": "aad00e2bc239d9618606a69b2281ebbf662fe0d4a885071cddc5766beb7d2dcc",
+    "events/assets/events.css": "1a7633dff3230b7e2f924fe3b9a81f34e0a644e4e8382e6001264bb542c813c2",
+    "events/assets/events.js": "38f52b2031393b97c10da15de7f2beecb0ef3105e4d342a18c6dbf187f72d024"
+  }
+}
