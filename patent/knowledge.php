@@ -50,7 +50,7 @@ function patent_read_pages(array $numbers, array &$sources, array &$images): arr
         if(!is_int($number)||$number<1||$number>953) continue;
         $p=$d['pages'][$number-1]; $g=$drawings[$number]??null;
         if(!isset($sources[$number])){
-            $sources[$number]=['label'=>'S'.(count($sources)+1),'id'=>'patent-page-'.$number,'page'=>$number,'title'=>($g?$g['title']:$p['section']).' · p. '.$number,'section'=>$p['section'],'kind'=>'patent','url'=>'https://staging.universalmind.tv/patent/'.($g?'#drawing-'.$g['number']:'document.php#page='.$number),'text'=>substr($g?$g['description']:$p['text'],0,900)];
+            $sources[$number]=['label'=>'S'.(count($sources)+1),'id'=>'patent-page-'.$number,'page'=>$number,'title'=>($g?$g['title']:$p['section']).' · p. '.$number,'section'=>$p['section'],'kind'=>'patent','url'=>patent_origin().'/patent/'.($g?'#drawing-'.$g['number']:'document.php#page='.$number),'text'=>substr($g?$g['description']:$p['text'],0,900)];
         }
         $entry=['label'=>$sources[$number]['label'],'page'=>$number,'section'=>$p['section'],'text'=>$p['text']];
         if($g){
@@ -77,7 +77,7 @@ function patent_openai(string $path,array $payload): array {
     $key=patent_ai_key();$config=patent_ai_config();$relay=(string)($config['relay_secret']??'');
     if($key===''&&strlen($relay)<32)throw new RuntimeException('Universal One is temporarily unavailable. Please try again shortly.');
     if($key!==''){$url='https://api.openai.com/v1/'.$path;$rawPayload=json_encode($payload,JSON_INVALID_UTF8_SUBSTITUTE);$headers=['Authorization: Bearer '.$key,'Content-Type: application/json'];}
-    else{$url='https://informatics-universal-one-staging.universalmind.workers.dev/patent/model';$rawPayload=json_encode(['operation'=>$path,'payload'=>$payload],JSON_INVALID_UTF8_SUBSTITUTE);$time=(string)time();$headers=['Content-Type: application/json','Origin: https://staging.universalmind.tv','X-Patent-Time: '.$time,'X-Patent-Signature: '.hash_hmac('sha256',$time.'.'.$rawPayload,$relay)];}
+    else{$url=patent_service_origin().'/patent/model';$rawPayload=json_encode(['operation'=>$path,'payload'=>$payload],JSON_INVALID_UTF8_SUBSTITUTE);$time=(string)time();$headers=['Content-Type: application/json','Origin: '.patent_origin(),'X-Patent-Time: '.$time,'X-Patent-Signature: '.hash_hmac('sha256',$time.'.'.$rawPayload,$relay)];}
     $c=curl_init($url);
     curl_setopt_array($c,[CURLOPT_POST=>true,CURLOPT_RETURNTRANSFER=>true,CURLOPT_CONNECTTIMEOUT=>15,CURLOPT_TIMEOUT=>100,CURLOPT_HTTPHEADER=>$headers,CURLOPT_POSTFIELDS=>$rawPayload]);
     $raw=curl_exec($c);$code=curl_getinfo($c,CURLINFO_HTTP_CODE);curl_close($c);

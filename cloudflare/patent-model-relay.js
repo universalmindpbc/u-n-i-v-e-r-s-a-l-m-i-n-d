@@ -2,7 +2,7 @@
 const json=(value,status=200)=>Response.json(value,{status,headers:{'Cache-Control':'no-store'}});
 const fail=(message,status=403)=>json({error:message},status);
 export async function patentModelRelay(request,env){
- if(env.ALLOWED_ORIGIN!=='https://staging.universalmind.tv'||!env.PATENT_RELAY_SECRET)return fail('Unavailable.',404);
+ if(!['https://staging.universalmind.tv','https://universalmind.tv'].includes(env.ALLOWED_ORIGIN)||!env.PATENT_RELAY_SECRET)return fail('Unavailable.',404);
  if(request.method!=='POST')return fail('Method not allowed.',405);
  const timestamp=request.headers.get('X-Patent-Time')||'',signature=request.headers.get('X-Patent-Signature')||'';
  if(!/^\d{10}$/.test(timestamp)||Math.abs(Date.now()/1000-Number(timestamp))>90||!/^[a-f0-9]{64}$/.test(signature))return fail('Private service access is required.');

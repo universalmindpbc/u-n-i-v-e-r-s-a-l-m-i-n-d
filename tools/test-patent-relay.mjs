@@ -7,10 +7,10 @@ async function req(data=body,age=0,key=secret){const text=JSON.stringify(data),t
 assert.equal((await patentModelRelay(new Request('https://example.invalid/patent/model',{method:'POST',body:'{}'}),env)).status,403);
 assert.equal((await patentModelRelay(await req(body,120),env)).status,403);
 assert.equal((await patentModelRelay(await req(body,0,'invalid'),env)).status,403);
-assert.equal((await patentModelRelay(await req(),{...env,ALLOWED_ORIGIN:'https://universalmind.tv'})).status,404);
+assert.equal((await patentModelRelay(await req(),{...env,ALLOWED_ORIGIN:'https://invalid.example'})).status,404);
 assert.equal((await patentModelRelay(await req({operation:'models',payload:{}}),env)).status,400);
 assert.equal((await patentModelRelay(await req({...body,payload:{...body.payload,tools:[{type:'web_search'}]}}),env)).status,400);
 let sent;globalThis.fetch=async(url,options)=>{sent={url,payload:JSON.parse(options.body)};return Response.json({output:[]});};
-assert.equal((await patentModelRelay(await req(),env)).status,200);assert.equal(sent.url,'https://api.openai.com/v1/responses');assert.equal(sent.payload.store,false);assert.equal(sent.payload.max_output_tokens,2600);assert.equal(sent.payload.background,false);
+assert.equal((await patentModelRelay(await req(),env)).status,200);assert.equal((await patentModelRelay(await req(),{...env,ALLOWED_ORIGIN:'https://universalmind.tv'})).status,200);assert.equal(sent.url,'https://api.openai.com/v1/responses');assert.equal(sent.payload.store,false);assert.equal(sent.payload.max_output_tokens,2600);assert.equal(sent.payload.background,false);
 assert.equal((await patentModelRelay(await req(),{...env,REQUEST_LIMIT:{limit:async()=>({success:false})}})).status,429);
-console.log('PASS: unsigned, stale, wrong-key, production, unknown operation, arbitrary tool and over-rate requests denied; valid requests bounded and storage disabled.');
+console.log('PASS: unsigned, stale, wrong-key, unapproved host, unknown operation, arbitrary tool and over-rate requests denied; valid requests bounded and storage disabled.');

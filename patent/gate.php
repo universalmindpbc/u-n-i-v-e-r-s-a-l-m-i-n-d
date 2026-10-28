@@ -1,13 +1,17 @@
 <?php
 declare(strict_types=1);
+$patentHosts=['staging.universalmind.tv'=>['https://staging.universalmind.tv','https://informatics-universal-one-staging.universalmind.workers.dev'],'universalmind.tv'=>['https://universalmind.tv','https://informatics-universal-one.universalmind.workers.dev']];
+$patentHost=strtolower(explode(':',$_SERVER['HTTP_HOST']??'')[0]);
+if(!isset($patentHosts[$patentHost])){http_response_code(404);exit('Unavailable.');}
+define('PATENT_ORIGIN',$patentHosts[$patentHost][0]);
+define('PATENT_SERVICE_ORIGIN',$patentHosts[$patentHost][1]);
+function patent_origin(): string {return PATENT_ORIGIN;}
+function patent_service_origin(): string {return PATENT_SERVICE_ORIGIN;}
 header('Cache-Control: no-store, private, max-age=0');
 header('X-Robots-Tag: noindex, nofollow, noarchive');
 header('X-Content-Type-Options: nosniff');
 header('Referrer-Policy: no-referrer');
-header("Content-Security-Policy: default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; frame-src 'self'; connect-src 'self' https://informatics-universal-one-staging.universalmind.workers.dev https://api.openai.com; media-src 'self' blob:; base-uri 'none'; form-action 'self'; frame-ancestors 'none'");
-if (strtolower(explode(':', $_SERVER['HTTP_HOST'] ?? '')[0]) !== 'staging.universalmind.tv') {
-    http_response_code(404); exit('Unavailable.');
-}
+header("Content-Security-Policy: default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; frame-src 'self'; connect-src 'self' ".patent_service_origin()." https://api.openai.com; media-src 'self' blob:; base-uri 'none'; form-action 'self'; frame-ancestors 'none'");
 function patent_password_hashes(): array {
     // Read the live I AM access list so password additions and removals stay aligned.
     static $hashes = null;
@@ -45,5 +49,5 @@ function patent_require_auth(): void {
     }
 }
 function patent_same_origin(): bool {
-    return ($_SERVER['HTTP_ORIGIN']??'')==='https://staging.universalmind.tv';
+    return ($_SERVER['HTTP_ORIGIN']??'')===patent_origin();
 }

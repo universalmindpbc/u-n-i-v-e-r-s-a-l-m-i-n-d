@@ -693,16 +693,20 @@ PYCONFIG
   echo "Informatics: completed changed uploads through the existing Panthur curl/FTP transport."
 }
 
-# Private patent staging route. Runtime records never enter Git or public assets.
-patent_staging_guard() {
-  if [[ "$FTP_USER" != "stagingdeploy@universalmind.tv" || -n "$REMOTE_ROOT" ]]; then
-    echo "Patent preview is restricted to the established staging target." >&2
-    return 1
-  fi
+# Protected patent route. Runtime records never enter Git or public assets.
+patent_target_guard() {
+  if [[ -n "$REMOTE_ROOT" ]]; then echo "Unexpected patent deployment root." >&2; return 1; fi
+  case "$FTP_USER" in
+    stagingdeploy@universalmind.tv) PATENT_TARGET_ORIGIN="https://staging.universalmind.tv" ;;
+    codexdeploy@universalmind.tv)
+      [[ "${PATENT_PRODUCTION_APPROVED:-}" == "1" ]] || { echo "Explicit production release authorization is required." >&2; return 1; }
+      PATENT_TARGET_ORIGIN="https://universalmind.tv" ;;
+    *) echo "Unrecognised patent deployment target." >&2; return 1 ;;
+  esac
 }
 
 deploy_patent() {
-  patent_staging_guard || return 1
+  patent_target_guard || return 1
   git -C "$ROOT_DIR" diff --quiet HEAD -- patent Informatics/universal-one.js deploy-panthur-staging.sh deploy-panthurlive.sh || return 1
   local patent_manifest patent_source patent_remote
   patent_manifest="$(mktemp)"
@@ -723,12 +727,12 @@ deploy_patent() {
 }
 
 configure_patent_content() {
-  patent_staging_guard || return 1
+  patent_target_guard || return 1
   local runtime="${PATENT_RUNTIME_DIR:-}" image status
   [[ -f "$runtime/chapters.json" && -f "$runtime/drawing-gallery.json" ]] || return 1
   [[ "$(find "$runtime/drawings" -name 'image-*.jpg' -type f | wc -l | tr -d ' ')" == "91" ]] || return 1
   put_file "$ROOT_DIR/patent/private-deny.htaccess" "patent/.private/.htaccess"
-  status="$(curl --silent --show-error --output /dev/null --write-out '%{http_code}' 'https://staging.universalmind.tv/patent/.private/document.json')"
+  status="$(curl --silent --show-error --output /dev/null --write-out '%{http_code}' "$PATENT_TARGET_ORIGIN/patent/.private/document.json")"
   [[ "$status" == "403" ]] || { echo "Private storage denial failed." >&2; return 1; }
   for image in "$runtime"/drawings/image-*.jpg; do put_file "$image" "patent/.private/drawings/$(basename "$image")"; done
   put_file "$runtime/drawing-gallery.json" "patent/.private/drawing-gallery.json"
@@ -738,17 +742,17 @@ configure_patent_content() {
 }
 
 configure_patent_ai() {
-  patent_staging_guard || return 1
+  patent_target_guard || return 1
   local runtime="${PATENT_RUNTIME_DIR:-}" status
   [[ -f "$runtime/ai-config.json" ]] || return 1
-  status="$(curl --silent --show-error --output /dev/null --write-out '%{http_code}' 'https://staging.universalmind.tv/patent/.private/ai-config.json')"
+  status="$(curl --silent --show-error --output /dev/null --write-out '%{http_code}' "$PATENT_TARGET_ORIGIN/patent/.private/ai-config.json")"
   [[ "$status" == "403" ]] || { echo "Private storage denial failed." >&2; return 1; }
   put_file "$runtime/ai-config.json" "patent/.private/ai-config.json"
   echo "Private patent service configuration uploaded through Panthur."
 }
 
 configure_patent_private() {
-  patent_staging_guard || return 1
+  patent_target_guard || return 1
   local patent_runtime="${PATENT_RUNTIME_DIR:-}" patent_probe patent_status
   [[ -n "$patent_runtime" && -f "$patent_runtime/access.json" && -f "$patent_runtime/document.json" && -f "$patent_runtime/specification.pdf" ]] || return 1
   put_file "$ROOT_DIR/patent/private-deny.htaccess" "patent/.private/.htaccess"
@@ -756,7 +760,7 @@ configure_patent_private() {
   printf 'Private route access test\n' > "$patent_probe"
   put_file "$patent_probe" "patent/.private/access-probe.txt"
   rm -f "$patent_probe"
-  patent_status="$(curl --silent --show-error --output /dev/null --write-out '%{http_code}' 'https://staging.universalmind.tv/patent/.private/access-probe.txt')"
+  patent_status="$(curl --silent --show-error --output /dev/null --write-out '%{http_code}' "$PATENT_TARGET_ORIGIN/patent/.private/access-probe.txt")"
   [[ "$patent_status" == "403" ]] || { echo "Private storage denial failed; no private content uploaded." >&2; return 1; }
   put_file "$patent_runtime/access.json" "patent/.private/access.json"
   put_file "$patent_runtime/document.json" "patent/.private/document.json"
