@@ -57,7 +57,8 @@
   film.volume = 0;
   film.playsInline = true;
   film.autoplay = !userPaused;
-  film.src = film.dataset.src;
+  // Keep the parser-declared source intact so Safari can start native autoplay.
+  if (!film.getAttribute('src')) film.src = film.dataset.src;
   film.addEventListener('loadeddata', () => { film.classList.add('is-ready'); playFilm(); });
   film.addEventListener('canplay', playFilm);
   film.addEventListener('playing', () => { autoplayBlocked = false; film.classList.add('is-ready'); syncFilm(); });
