@@ -1,0 +1,54 @@
+{
+  "data.php": 401,
+  "document.php": 401,
+  ".private/access.json": 403,
+  ".private/document.json": 403,
+  ".private/specification.pdf": 403,
+  ".private/access-probe.txt": 403,
+  "notion_section_order": true,
+  "key_section_pages": {
+    "15. Proposed claims, part 1": 209,
+    "16. Proposed claims, part 2": 246,
+    "17. Abstract": 277,
+    "Drawings and figure descriptions": 278,
+    "Drawing sheets": 300,
+    "Appendix A. Universal Light algorithm and research architecture": 391
+  },
+  "authenticated_pages": 953,
+  "pdf_bytes": 19838136,
+  "pdf_sha256": "79c02b900a946092b1d4cb74c882390f76cb851524b7ff71fa3509c22af19653",
+  "invalid_key": 401,
+  "cross_origin_login": 403,
+  "secure_httponly_cookie": true,
+  "logout_denies_data": true,
+  "source_commit": "c8bcdf0",
+  "url": "https://staging.universalmind.tv/patent/",
+  "brand": {
+    "source": "existing I AM header",
+    "font_family": "Helvetica Neue, Helvetica, Arial, sans-serif",
+    "font_weight": "100",
+    "tracking": ".28em",
+    "flower_intrinsic_width": 512,
+    "flower_display_width_desktop_test": 64
+  },
+  "ui": {
+    "reader_order": "field, abstract, summary, background and sources, detailed description, drawings, claims, supplementary appendices",
+    "abstract_shortcut_pdf_page": 277,
+    "search_Pisano_pages": 83,
+    "claims_first_page": 209,
+    "claims_pages": 68,
+    "desktop_overflow": false,
+    "browser_errors": []
+  },
+  "assistant": {
+    "component": "existing Universal One",
+    "mode_tested": "text",
+    "general_question_response_visible": true,
+    "source_link_visible": true,
+    "staging_service_health": "ready",
+    "service_model": "gpt-6-astra",
+    "private_patent_context_connected": false,
+    "voice_or_microphone_tested": false
+  },
+  "production_modified": false
+}
