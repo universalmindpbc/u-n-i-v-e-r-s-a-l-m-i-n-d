@@ -122,9 +122,12 @@
         appearance: none;
       }
 
-      .access-input:focus {
+      .access-input:focus,
+      .access-input:focus-visible {
+        outline: none;
+        outline-offset: 0;
         border-bottom-color: #fff;
-        box-shadow: 0 8px 18px -18px rgba(255, 255, 255, 0.9);
+        box-shadow: none;
       }
 
       .access-submit {
