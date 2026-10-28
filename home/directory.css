@@ -15,7 +15,7 @@ button, input, select, textarea { font-family: inherit; }
 .festival-background { z-index: 0; background: #000; }
 .festival-film { object-fit: cover; opacity: 0; transition: opacity 600ms ease; }
 .festival-film.is-ready { opacity: 1; }
-.festival-shade { background: rgba(0, 0, 0, .78); }
+.festival-shade { background: linear-gradient(180deg, rgba(0, 0, 0, .52) 0%, rgba(0, 0, 0, .24) 35%, rgba(0, 0, 0, .24) 65%, rgba(0, 0, 0, .50) 100%); }
 
 .directory {
   position: relative;
@@ -52,11 +52,9 @@ h1 {
 }
 
 .routes path { fill: none; stroke-linecap: round; vector-effect: non-scaling-stroke; }
-.rail-outline { stroke: rgba(255, 255, 255, .94); stroke-width: 9; }
-.rail-bed { stroke: rgba(3, 5, 7, .94); stroke-width: 5.4; }
-.rail-ties { stroke: rgba(255, 255, 255, .48); stroke-width: 1.15; }
+.rail-line { stroke: rgba(255, 255, 255, .48); stroke-width: 3.5; }
+.rail-flow { stroke: #fff5f5; stroke-width: 5.5; stroke-dasharray: .22 2; }
 .rail-reveal { stroke: #fff; stroke-width: 15; stroke-dasharray: 1; stroke-dashoffset: var(--rail-offset, 0); }
-.rail-train { will-change: transform; }
 
 /* Reuse the landing page's asset, native alpha and exact responsive widths. */
 .directory-flower {
@@ -67,6 +65,7 @@ h1 {
   width: 94px;
   height: auto;
   transform: translate(-50%, -50%);
+  animation: directory-flower-spin 3s linear infinite;
   pointer-events: none;
 }
 
@@ -86,14 +85,16 @@ h1 {
 .destination--festivals, .destination--research { top: 79%; }
 .destination--watch, .destination--festivals { left: 0; }
 .destination--events, .destination--research { right: 0; }
-.destination--watch, .destination--festivals { width: 23%; }
+.destination--watch, .destination--festivals { width: 24%; }
 .destination--watch, .destination--festivals { text-align: right; }
 .destination--watch .destination-description, .destination--festivals .destination-description { margin-left: auto; }
 .destination[aria-disabled="true"] { cursor: default; }
 .destination:focus-visible { outline: 1px solid #fff; }
 .destination-copy { display: block; }
 .destination-title {
-  display: block;
+  display: flex;
+  align-items: center;
+  gap: clamp(8px, .7vw, 12px);
   font-size: clamp(18px, 1.9vw, 30px);
   font-weight: 500;
   line-height: 1.2;
@@ -150,19 +151,23 @@ h1 {
 .ambient-toggle[data-paused="true"] .pause-symbol { display: none; }
 .ambient-toggle[data-paused="true"] .play-symbol { display: block; }
 
-/* One narrative clock controls the headline, four routes and shared subtitle reveal. */
-h1 { position: relative; font-weight: 300; transition: transform 700ms cubic-bezier(.22, 1, .36, 1); }
-html[data-story="preparing"] h1, html[data-story="intro"] h1 { transform: translateY(clamp(48px, 9vh, 88px)); }
-html[data-story="preparing"] h1 { opacity: 0; }
-.intro-character { position: relative; opacity: 0; }
-.intro-character.is-visible { opacity: 1; }
-.intro-character.is-cursor::after { content: ""; position: absolute; left: 100%; top: .12em; width: 1px; height: .9em; background: #fff5f8; }
-html[data-story] .destination-title { opacity: 0; transform: translateY(12px); }
-html[data-story] .station { opacity: 0; transform: scale(.55); }
-html[data-story] .destination-description { opacity: 0; transform: translateY(8px); }
-.destination-title { transition: color 180ms ease, opacity 360ms ease, transform 600ms cubic-bezier(.22, 1, .36, 1); }
-.destination-description { transition: opacity 600ms ease, transform 600ms cubic-bezier(.22, 1, .36, 1); }
-.station { transition: background-color 180ms ease, border-color 180ms ease, opacity 240ms ease, transform 500ms cubic-bezier(.22, 1, .36, 1); }
+/* Slow language fades and destination arrivals share the motion control. */
+h1 { position: relative; display: grid; align-items: start; min-height: 2.2em; font-weight: 300; }
+.intro-language { grid-area: 1 / 1; opacity: 0; }
+.intro-language:first-child { opacity: 1; }
+html[data-story="preparing"] .intro-language { opacity: 0; }
+html[data-story] .destination-title { opacity: 0; transform: translateY(8px); }
+html[data-story] .station { opacity: 0; transform: scale(.7); }
+html[data-story] .destination-description { opacity: 0; transform: translateY(5px); }
+.destination-title { transition: color 180ms ease, opacity 1000ms ease, transform 1400ms cubic-bezier(.22, 1, .36, 1); }
+.destination-description { transition: opacity 1400ms ease, transform 1400ms cubic-bezier(.22, 1, .36, 1); }
+.station { transition: background-color 180ms ease, border-color 180ms ease, opacity 900ms ease, transform 1400ms cubic-bezier(.22, 1, .36, 1); }
+.destination--watch .destination-title, .destination--festivals .destination-title { justify-content: flex-end; }
+.destination-label { min-width: 0; }
+.property-flower { flex: none; width: 1em; height: 1em; object-fit: contain; animation: property-flower-spin 3s linear infinite; }
+@keyframes directory-flower-spin { to { transform: translate(-50%, -50%) rotate(360deg); } }
+@keyframes property-flower-spin { to { transform: rotate(360deg); } }
+html[data-motion="paused"] .directory-flower, html[data-motion="paused"] .property-flower { animation-play-state: paused; }
 html[data-story] .destination.is-revealed .destination-title,
 html[data-story] .destination.is-revealed .station { opacity: 1; transform: none; }
 html[data-story="descriptions"] .destination-description,
@@ -178,6 +183,8 @@ html[data-story]:not([data-story="complete"]) .destination:not(.is-revealed) { p
   .route-map { min-height: 640px; margin-top: 16px; }
   .destination { width: 44%; }
   .destination--watch, .destination--festivals { text-align: left; }
+  .destination--watch .destination-title, .destination--festivals .destination-title { justify-content: flex-start; }
+  .destination-title { gap: 7px; }
   .destination--watch, .destination--events { top: 5%; }
   .destination--festivals, .destination--research { top: 77%; }
   .destination-title { font-size: clamp(18px, 3.7vw, 24px); }
@@ -199,6 +206,6 @@ html[data-story]:not([data-story="complete"]) .destination:not(.is-revealed) { p
 @media (prefers-reduced-motion: reduce) {
   .routes path, .station, .destination-title, .destination-description, .festival-film, h1 { transition: none; }
   html[data-story] h1, html[data-story] .destination-title, html[data-story] .destination-description, html[data-story] .station { opacity: 1; transform: none; }
-  .intro-character { opacity: 1; }
-  .intro-character.is-cursor::after, .rail-train { display: none; }
+  .directory-flower, .property-flower { animation: none; }
+  .rail-flow { display: none; }
 }

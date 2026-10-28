@@ -93,33 +93,21 @@
     const clearance = routes.querySelector('.flower-space');
     clearance.setAttribute('cx', x);
     clearance.setAttribute('cy', y);
-    clearance.setAttribute('r', Math.max(centre.width, centre.height) / 2);
+    clearance.setAttribute('r', Math.max(flower.offsetWidth, flower.offsetHeight) / 2);
     const compact = window.matchMedia('(max-width: 760px)').matches;
     destinations.forEach((destination) => {
       const station = destination.querySelector('.station').getBoundingClientRect();
       const endX = station.left + station.width / 2 - bounds.left;
       const endY = station.top + station.height / 2 - bounds.top;
       const group = routes.querySelector(`[data-route="${destination.dataset.destination}"]`);
-      const path = group.querySelector('.rail-outline');
+      const path = group.querySelector('.rail-line');
       const reveal = routes.querySelector(`[data-reveal="${destination.dataset.destination}"]`);
       const dx = endX - x;
       const dy = endY - y;
       const d = compact
         ? `M ${x} ${y} C ${x + dx * .8} ${y + dy * .26}, ${endX} ${endY - dy * .46}, ${endX} ${endY}`
         : `M ${x} ${y} C ${x + dx * .26} ${y + dy * .78}, ${endX - dx * .35} ${endY}, ${endX} ${endY}`;
-      [path, group.querySelector('.rail-bed'), reveal].forEach(rail => rail.setAttribute('d', d));
-      const length = path.getTotalLength();
-      const ties = [];
-      for (let distance = 14; distance < length - 12; distance += 24) {
-        const point = path.getPointAtLength(distance);
-        const before = path.getPointAtLength(distance - 1);
-        const after = path.getPointAtLength(distance + 1);
-        const angle = Math.atan2(after.y - before.y, after.x - before.x) + Math.PI / 2;
-        const acrossX = Math.cos(angle) * 3.7;
-        const acrossY = Math.sin(angle) * 3.7;
-        ties.push(`M ${point.x - acrossX} ${point.y - acrossY} L ${point.x + acrossX} ${point.y + acrossY}`);
-      }
-      group.querySelector('.rail-ties').setAttribute('d', ties.join(' '));
+      [path, group.querySelector('.rail-flow'), reveal].forEach(rail => rail.setAttribute('d', d));
     });
     routes.classList.add('is-ready');
     document.dispatchEvent(new Event('directory:routes-ready'));

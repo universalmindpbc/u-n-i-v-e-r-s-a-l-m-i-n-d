@@ -9,7 +9,7 @@
     <link rel="icon" href="/vogue/iam/favicon.png?v=iam-favicon-3">
     <link rel="preload" as="image" href="/vogue/iam/a s s e t s/Universal Mind [ I o H ] Logo.PNG">
     <link rel="stylesheet" href="entry-shell.css?v=1">
-    <link rel="stylesheet" href="directory.css?v=4">
+    <link rel="stylesheet" href="directory.css?v=5">
     <script src="entry-shell.js?v=2" defer></script>
     <script>
       document.documentElement.dataset.story = "preparing";
@@ -17,8 +17,8 @@
         if (document.documentElement.dataset.story === "preparing") document.documentElement.dataset.story = "complete";
       }, 4000);
     </script>
-    <script src="directory.js?v=5" defer></script>
-    <script src="directory-story.js?v=1" defer></script>
+    <script src="directory.js?v=6" defer></script>
+    <script src="directory-story.js?v=2" defer></script>
   </head>
   <body>
     <div class="festival-background" aria-hidden="true">
@@ -26,7 +26,11 @@
       <div class="festival-shade"></div>
     </div>
     <main class="directory">
-      <h1>Universal Mind is an electronic music company for mental health</h1>
+      <h1 aria-label="Universal Mind is an electronic music company for mental health">
+        <span class="intro-language" lang="en" aria-hidden="true">Universal Mind is an electronic music company for mental health</span>
+        <span class="intro-language" lang="zh-Hans" aria-hidden="true"><bdi>Universal Mind</bdi> 是一家致力于心理健康的电子音乐公司</span>
+        <span class="intro-language" lang="ar" dir="rtl" aria-hidden="true"><bdi dir="ltr">Universal Mind</bdi> هي شركة موسيقى إلكترونية للصحة النفسية</span>
+      </h1>
       <nav class="route-map" aria-label="Universal Mind">
         <svg class="routes" aria-hidden="true" focusable="false">
           <defs>
@@ -34,11 +38,6 @@
               <rect width="100%" height="100%" fill="#fff"></rect>
               <circle class="flower-space" fill="#000"></circle>
             </mask>
-            <linearGradient id="pearl-train" x1="0" y1="0" x2="1" y2="0">
-              <stop offset="0" stop-color="#e8e2ff"></stop>
-              <stop offset=".5" stop-color="#ffe0ec"></stop>
-              <stop offset="1" stop-color="#fff5ed"></stop>
-            </linearGradient>
             <mask id="reveal-watch" maskUnits="userSpaceOnUse">
               <path class="rail-reveal" data-reveal="watch" pathLength="1"></path>
             </mask>
@@ -55,43 +54,27 @@
           <g mask="url(#flower-space)">
             <g class="route-track" data-route="watch">
               <g mask="url(#reveal-watch)">
-                <path class="rail-outline"></path>
-                <path class="rail-bed"></path>
-                <path class="rail-ties"></path>
+                <path class="rail-line"></path>
               </g>
-              <g class="rail-train" opacity="0">
-                <rect x="-20" y="-2.5" width="27" height="5" rx="2.5" fill="url(#pearl-train)"></rect>
-              </g>
+              <path class="rail-flow" pathLength="1" opacity="0"></path>
             </g>
             <g class="route-track" data-route="events">
               <g mask="url(#reveal-events)">
-                <path class="rail-outline"></path>
-                <path class="rail-bed"></path>
-                <path class="rail-ties"></path>
+                <path class="rail-line"></path>
               </g>
-              <g class="rail-train" opacity="0">
-                <rect x="-20" y="-2.5" width="27" height="5" rx="2.5" fill="url(#pearl-train)"></rect>
-              </g>
+              <path class="rail-flow" pathLength="1" opacity="0"></path>
             </g>
             <g class="route-track" data-route="festivals">
               <g mask="url(#reveal-festivals)">
-                <path class="rail-outline"></path>
-                <path class="rail-bed"></path>
-                <path class="rail-ties"></path>
+                <path class="rail-line"></path>
               </g>
-              <g class="rail-train" opacity="0">
-                <rect x="-20" y="-2.5" width="27" height="5" rx="2.5" fill="url(#pearl-train)"></rect>
-              </g>
+              <path class="rail-flow" pathLength="1" opacity="0"></path>
             </g>
             <g class="route-track" data-route="research">
               <g mask="url(#reveal-research)">
-                <path class="rail-outline"></path>
-                <path class="rail-bed"></path>
-                <path class="rail-ties"></path>
+                <path class="rail-line"></path>
               </g>
-              <g class="rail-train" opacity="0">
-                <rect x="-20" y="-2.5" width="27" height="5" rx="2.5" fill="url(#pearl-train)"></rect>
-              </g>
+              <path class="rail-flow" pathLength="1" opacity="0"></path>
             </g>
           </g>
         </svg>
@@ -99,28 +82,28 @@
         <a class="destination destination--watch" href="/iam/" target="_top" data-destination="watch">
           <span class="station" aria-hidden="true"></span>
           <span class="destination-copy">
-            <span class="destination-title">WATCH TV</span>
+            <span class="destination-title"><img class="property-flower" src="/vogue/iam/a s s e t s/Universal Mind [ I o H ] Logo.PNG" alt="" aria-hidden="true"><span class="destination-label">WATCH TV</span></span>
             <span class="destination-description">watch electronic music &amp; fashion as mindfulness</span>
           </span>
         </a>
         <a class="destination destination--events" href="/events/?experience=1" target="_top" data-destination="events">
           <span class="station" aria-hidden="true"></span>
           <span class="destination-copy">
-            <span class="destination-title">ATTEND EVENTS</span>
+            <span class="destination-title"><span class="destination-label">ATTEND EVENTS</span><img class="property-flower" src="/vogue/iam/a s s e t s/Universal Mind [ I o H ] Logo.PNG" alt="" aria-hidden="true"></span>
             <span class="destination-description">attend electronic music &amp; fashion as mindfulness</span>
           </span>
         </a>
         <a class="destination destination--festivals" role="link" aria-disabled="true" tabindex="0" data-destination="festivals">
           <span class="station" aria-hidden="true"></span>
           <span class="destination-copy">
-            <span class="destination-title">ACTIVATE FESTIVALS</span>
+            <span class="destination-title"><img class="property-flower" src="/vogue/iam/a s s e t s/Universal Mind [ I o H ] Logo.PNG" alt="" aria-hidden="true"><span class="destination-label">ACTIVATE FESTIVALS</span></span>
             <span class="destination-description">activate our happiness currency for health, safety &amp; risk management at your festivals</span>
           </span>
         </a>
         <a class="destination destination--research" href="/informatics/" target="_top" data-destination="research">
           <span class="station" aria-hidden="true"></span>
           <span class="destination-copy">
-            <span class="destination-title">EXPLORE RESEARCH</span>
+            <span class="destination-title"><span class="destination-label">EXPLORE RESEARCH</span><img class="property-flower" src="/vogue/iam/a s s e t s/Universal Mind [ I o H ] Logo.PNG" alt="" aria-hidden="true"></span>
             <span class="destination-description">explore our bioinformatics platform for mental health</span>
           </span>
         </a>

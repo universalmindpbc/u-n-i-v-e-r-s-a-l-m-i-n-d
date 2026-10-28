@@ -1,105 +1,69 @@
 (() => {
   const root = document.documentElement;
   const intro = document.querySelector('h1');
+  const languages = [...intro.querySelectorAll('.intro-language')];
   const routes = document.querySelector('.routes');
   const motion = window.matchMedia('(prefers-reduced-motion: reduce)');
-  const names = ['watch', 'events', 'festivals', 'research'];
-  const tracks = names.map(name => {
+  const tracks = ['watch', 'events', 'festivals', 'research'].map(name => {
     const group = routes.querySelector(`[data-route="${name}"]`);
     return {
-      name, group,
-      path: group.querySelector('.rail-outline'),
+      group,
       reveal: routes.querySelector(`[data-reveal="${name}"]`),
-      train: group.querySelector('.rail-train'),
-      destination: document.querySelector(`[data-destination="${name}"]`),
-      length: 0
+      flow: group.querySelector('.rail-flow'),
+      destination: document.querySelector(`[data-destination="${name}"]`)
     };
   });
-  const text = intro.textContent;
-  intro.setAttribute('aria-label', text);
-  let typedDuration = 180;
-  const characters = Array.from(text, character => {
-    const span = document.createElement('span');
-    span.className = 'intro-character';
-    span.textContent = character;
-    span.setAttribute('aria-hidden', 'true');
-    typedDuration += character === ' ' ? 50 : 27;
-    return { span, at: typedDuration };
-  });
-  intro.replaceChildren(...characters.map(character => character.span));
-  const routeStart = typedDuration + 380;
-  const routeDuration = 980;
-  const routeInterval = 1140;
-  const descriptionsAt = routeStart + 3 * routeInterval + routeDuration + 220;
-  const completeAt = descriptionsAt + 620;
+  const routeStart = 3600;
+  const routeDuration = 2100;
+  const routeInterval = 3000;
+  const descriptionsAt = routeStart + 3 * routeInterval + routeDuration + 700;
+  const completeAt = descriptionsAt + 1400;
   let elapsed = 0;
   let lastTime = 0;
   let frame = 0;
   let paused = motion.matches;
-  let typedCount = -1;
+  let skipEntrance = false;
   let completed = false;
   const clamp = value => Math.max(0, Math.min(1, value));
   const ease = value => value * value * (3 - 2 * value);
 
-  const updateGeometry = () => {
-    tracks.forEach(track => { track.length = track.path.getTotalLength(); });
+  const languageFade = () => {
+    const period = 9800;
+    const index = motion.matches ? 0 : Math.floor(elapsed / period) % languages.length;
+    const localTime = elapsed % period;
+    const opacity = motion.matches ? 1 : ease(Math.min(clamp(localTime / 1800), clamp((period - localTime) / 1800)));
+    languages.forEach((language, i) => { language.style.opacity = i === index ? String(opacity) : '0'; });
+    intro.dataset.language = languages[index].lang;
   };
-  document.addEventListener('directory:routes-ready', updateGeometry);
-
-  const type = count => {
-    if (count === typedCount) return;
-    characters.forEach((character, index) => {
-      character.span.classList.toggle('is-visible', index < count);
-      character.span.classList.toggle('is-cursor', index === count - 1 && count < characters.length);
-    });
-    typedCount = count;
-    intro.dataset.typedCharacters = String(count);
+  const flow = (track, head, opacity) => {
+    track.flow.setAttribute('stroke-dashoffset', String(.22 - head));
+    track.flow.setAttribute('opacity', String(opacity));
   };
-
-  const positionTrain = (track, progress, opacity = 1) => {
-    if (!track.length || opacity <= 0) {
-      track.train.setAttribute('opacity', '0');
-      return;
-    }
-    const distance = track.length * clamp(progress);
-    const point = track.path.getPointAtLength(distance);
-    const before = track.path.getPointAtLength(Math.max(0, distance - 1));
-    const after = track.path.getPointAtLength(Math.min(track.length, distance + 1));
-    const angle = Math.atan2(after.y - before.y, after.x - before.x) * 180 / Math.PI;
-    track.train.setAttribute('transform', `translate(${point.x} ${point.y}) rotate(${angle})`);
-    track.train.setAttribute('opacity', String(opacity));
-  };
-
   const render = () => {
-    const count = characters.filter(character => elapsed >= character.at).length;
-    type(count);
-    root.dataset.story = elapsed < routeStart ? 'intro' : 'routes';
+    languageFade();
+    const time = skipEntrance ? Math.max(elapsed, completeAt) : elapsed;
+    root.dataset.story = time < routeStart ? 'intro' : 'routes';
     tracks.forEach((track, index) => {
-      const progress = clamp((elapsed - routeStart - index * routeInterval) / routeDuration);
-      const revealed = progress >= .8;
+      const progress = clamp((time - routeStart - index * routeInterval) / routeDuration);
       track.reveal.style.setProperty('--rail-offset', String(1 - ease(progress)));
       track.group.dataset.progress = progress.toFixed(3);
-      track.destination.classList.toggle('is-revealed', revealed);
-      positionTrain(track, ease(progress), progress > 0 && progress < 1 ? 1 : 0);
+      track.destination.classList.toggle('is-revealed', progress >= .72);
+      flow(track, ease(progress), progress > 0 && progress < 1 ? clamp((1 - progress) / .15) : 0);
     });
-    if (elapsed >= descriptionsAt) root.dataset.story = 'descriptions';
-    if (elapsed >= completeAt) {
+    if (time >= descriptionsAt) root.dataset.story = 'descriptions';
+    if (time >= completeAt) {
       root.dataset.story = 'complete';
       completed = true;
-      // A single small train travels at a time, in the same four-route order.
-      const cycle = 3500;
-      const travel = 2600;
-      const ambient = elapsed - completeAt;
-      const activeIndex = Math.floor(ambient / cycle) % tracks.length;
-      const localTime = ambient % cycle;
+      // A broad light segment travels continuously through the four paths in order.
+      const cycle = 4800;
+      const ambient = skipEntrance ? elapsed : elapsed - completeAt;
+      const active = Math.floor(ambient / cycle) % tracks.length;
+      const progress = (ambient % cycle) / cycle;
       tracks.forEach((track, index) => {
-        const progress = clamp(localTime / travel);
-        const opacity = Math.min(clamp(progress / .08), clamp((1 - progress) / .09));
-        positionTrain(track, ease(progress), !paused && !motion.matches && index === activeIndex && localTime < travel ? opacity : 0);
+        flow(track, progress * 1.22, !motion.matches && index === active ? 1 : 0);
       });
     }
   };
-
   const tick = time => {
     frame = 0;
     if (paused || document.hidden) { lastTime = 0; return; }
@@ -112,15 +76,13 @@
   const resume = () => {
     cancelAnimationFrame(frame);
     lastTime = 0;
+    root.dataset.motion = paused || document.hidden ? 'paused' : 'playing';
     if (!paused && !document.hidden) frame = requestAnimationFrame(tick);
   };
   const finish = () => {
-    elapsed = Math.max(elapsed, completeAt);
+    skipEntrance = true;
     render();
-    tracks.forEach(track => track.train.setAttribute('opacity', '0'));
   };
-
-  // Keyboard navigation and reduced motion never wait for the entrance sequence.
   document.addEventListener('keydown', event => {
     if (event.key === 'Tab' && !completed) finish();
   }, { capture: true });
@@ -139,5 +101,5 @@
   root.dataset.story = 'intro';
   tracks.forEach(track => track.reveal.style.setProperty('--rail-offset', '1'));
   if (motion.matches) finish();
-  else resume();
+  resume();
 })();
