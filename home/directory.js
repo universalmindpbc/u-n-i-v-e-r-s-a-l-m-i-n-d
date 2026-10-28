@@ -26,12 +26,54 @@
 
   let autoplayBlocked = false;
   let playAttempt = null;
+  let lastPlayFailure = 'none';
+  let diagnosticStatus = null;
+  const playbackDiagnostic = () => ({
+    revision: 'safari-startup-3',
+    reducedMotion: motion.matches,
+    requestedPause: userPaused,
+    autoplayBlocked,
+    playPending: Boolean(playAttempt),
+    playFailure: lastPlayFailure,
+    visibility: document.visibilityState,
+    video: {
+      paused: film.paused, muted: film.muted, defaultMuted: film.defaultMuted,
+      autoplay: film.autoplay, playsInline: film.playsInline,
+      readyState: film.readyState, networkState: film.networkState,
+      currentTime: film.currentTime, error: film.error?.code || null,
+      source: film.currentSrc, opacity: getComputedStyle(film).opacity,
+      parentOpacity: getComputedStyle(film.parentElement).opacity
+    },
+    browser: navigator.userAgent
+  });
+  const updateDiagnostic = () => {
+    if (!diagnosticStatus) return;
+    diagnosticStatus.textContent = `Playback: ${film.paused ? 'paused' : 'playing'} · Reduced motion: ${motion.matches ? 'on' : 'off'} · Error: ${lastPlayFailure}`;
+  };
+  if (new URLSearchParams(location.search).has('autoplay-debug')) {
+    const panel = document.createElement('aside');
+    panel.style.cssText = 'position:fixed;z-index:200;left:12px;right:12px;bottom:56px;padding:12px;background:#111;color:#fff;font:14px/1.5 "Helvetica Neue",sans-serif;border:1px solid #666';
+    diagnosticStatus = document.createElement('div');
+    const copy = document.createElement('button');
+    copy.type = 'button';
+    copy.textContent = 'Copy playback diagnostics';
+    copy.style.cssText = 'margin-top:8px;padding:8px;background:#fff;color:#000;border:0;font:inherit';
+    copy.addEventListener('click', async () => {
+      const text = JSON.stringify(playbackDiagnostic());
+      try { await navigator.clipboard.writeText(text); copy.textContent = 'Copied'; }
+      catch (_) { diagnosticStatus.textContent = text; }
+    });
+    panel.append(diagnosticStatus, copy);
+    document.body.append(panel);
+    window.setTimeout(updateDiagnostic, 6000);
+  }
   const syncFilm = () => {
     const needsPlay = userPaused || autoplayBlocked;
     ambientToggle.dataset.paused = String(needsPlay);
     const label = needsPlay ? 'Play background motion' : 'Pause background motion';
     ambientToggle.setAttribute('aria-label', label);
     ambientToggle.title = label;
+    updateDiagnostic();
   };
   const playFilm = () => {
     if (userPaused || document.hidden || document.body.classList.contains('is-experience-shell')) return;
@@ -43,14 +85,16 @@
     try {
       playAttempt = Promise.resolve(film.play()).then(() => {
         autoplayBlocked = false;
+        lastPlayFailure = 'none';
         delete document.body.dataset.festivalMedia;
       }).catch(error => {
+        lastPlayFailure = `${error.name}: ${error.message}`;
         if (error.name !== 'AbortError') {
           autoplayBlocked = true;
           document.body.dataset.festivalMedia = 'awaiting-play';
         }
       }).finally(() => { playAttempt = null; syncFilm(); });
-    } catch (_) { autoplayBlocked = true; syncFilm(); }
+    } catch (error) { autoplayBlocked = true; lastPlayFailure = `${error.name}: ${error.message}`; syncFilm(); }
   };
   film.muted = true;
   film.defaultMuted = true;
