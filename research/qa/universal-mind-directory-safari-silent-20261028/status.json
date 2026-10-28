@@ -4,7 +4,7 @@
   "proofURL": "https://staging.universalmind.tv/home/?autoplay-debug=2",
   "diagnosticRevision": "safari-silent-4",
   "priorDeviceResult": "Safari rejected play before loading media; reduced motion false, muted true, readyState 0, networkState 0, empty currentSrc. Exact platform policy is unknown.",
-  "deviceVerification": "Pending Ben test of this candidate. Chromium success is not iPhone Safari proof.",
+  "deviceVerification": "FAILED on Ben iPhone: explicit load was called but no media events, readyState 0, networkState 0 and empty currentSrc. Awaiting Auto-Play Video Previews setting check; this setting is separate from reduced motion.",
   "change": [
     "Video-only MP4 passthrough; 7230 compressed video samples unchanged, 241 second duration retained, fast-start enabled.",
     "Versioned media URL prevents using the old cached audio-bearing asset.",
@@ -23,6 +23,9 @@
   "sources": [
     "https://developer.apple.com/documentation/webkit/delivering-video-content-for-safari",
     "https://bugs.webkit.org/show_bug.cgi?id=321264",
-    "https://raw.githubusercontent.com/WebKit/WebKit/main/Source/WebCore/html/MediaElementSession.cpp"
-  ]
+    "https://raw.githubusercontent.com/WebKit/WebKit/main/Source/WebCore/html/MediaElementSession.cpp",
+    "https://support.apple.com/guide/iphone/customize-onscreen-motion-iph0b691d3ed/ios",
+    "https://raw.githubusercontent.com/WebKit/WebKit/main/Source/WebCore/html/HTMLMediaElement.cpp"
+  ],
+  "diagnosis": "WebKit source gates resource selection on dataLoadingPermitted and adds a user-gesture load requirement when video autoplay is disabled. Its accessibility video-autoplay preference can enable that requirement. This is a plausible explanation, not a confirmed device setting."
 }

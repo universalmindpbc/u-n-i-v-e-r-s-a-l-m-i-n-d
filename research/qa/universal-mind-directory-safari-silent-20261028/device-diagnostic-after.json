@@ -1,0 +1,27 @@
+{
+  "revision": "safari-silent-4",
+  "explicitLoadRequested": true,
+  "mediaEvents": [],
+  "reducedMotion": false,
+  "requestedPause": false,
+  "autoplayBlocked": true,
+  "playPending": false,
+  "playFailure": "none",
+  "visibility": "visible",
+  "video": {
+    "paused": true,
+    "muted": true,
+    "defaultMuted": true,
+    "autoplay": true,
+    "playsInline": true,
+    "readyState": 0,
+    "networkState": 0,
+    "currentTime": 0,
+    "error": null,
+    "source": "",
+    "declaredSource": "/home/assets/festival-loop.mp4?v=silent-1",
+    "opacity": "1",
+    "parentOpacity": "1"
+  },
+  "browser": "Mozilla/5.0 (iPhone; CPU iPhone OS 18_7 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/27.0.1 Mobile/15E148 Safari/604.1"
+}
