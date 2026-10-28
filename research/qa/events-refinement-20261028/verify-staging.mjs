@@ -1,0 +1,137 @@
+import {createRequire} from 'node:module';
+import fs from 'node:fs/promises';
+import assert from 'node:assert/strict';
+const require=createRequire(import.meta.url);
+const {chromium}=require('/Users/benkorbel/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/playwright');
+const out='/private/tmp/thousand-minds-review/refinement';
+const server=await chromium.launchServer({headless:true,executablePath:'/Users/benkorbel/Library/Caches/ms-playwright/chromium-1234/chrome-mac-arm64/Google Chrome for Testing.app/Contents/MacOS/Google Chrome for Testing',args:['--mute-audio']});
+assert(server.process().spawnargs.includes('--mute-audio'));
+const browser=await chromium.connect(server.wsEndpoint());
+const report={date:'2026-10-28',origin:'https://staging.universalmind.tv/events/',processAudioDisabled:true,fullscreenTest:'Request intercepted and state simulated; native fullscreen never invoked',checks:[],errors:[]};
+try {
+ const context=await browser.newContext({viewport:{width:1470,height:920}});
+ const page=await context.newPage();
+ page.on('pageerror',e=>report.errors.push(e.message));
+ page.on('console',m=>{if(m.type()==='error'&&!m.text().includes('status of 401'))report.errors.push(m.text());});
+ page.on('response',r=>{if(r.status()>=400&&r.status()!==401)report.errors.push({url:r.url(),status:r.status()});});
+ await page.addInitScript(()=>{
+   Object.defineProperty(document,'fullscreenElement',{configurable:true,get(){return window.__testFullscreen||null;}});
+   Element.prototype.requestFullscreen=function(){window.__fullscreenRequested=true;window.__testFullscreen=this;document.dispatchEvent(new Event('fullscreenchange'));return Promise.resolve();};
+ });
+ for(const path of ['media.php','poster.php','private/media.json','private/poster.jpg','access.php']){
+   const r=await context.request.get(report.origin+path);report.checks.push({anonymous:path,status:r.status()});assert([401,403].includes(r.status()));
+ }
+ await page.goto(report.origin,{waitUntil:'networkidle'});
+ await page.locator('#password').fill('not-the-invitation-password');
+ await page.getByRole('button',{name:'enter',exact:true}).click();
+ await page.waitForFunction(()=>document.querySelector('#gate-error').textContent.includes('check'));
+ assert.equal(await page.locator('iframe.events-stage').count(),0);
+ await page.locator('#password').fill(process.env.EVENTS_QA_PASSWORD);
+ await page.getByRole('button',{name:'enter',exact:true}).click();
+ await page.waitForSelector('iframe.events-stage');
+ const stage=page.locator('iframe.events-stage').contentFrame();
+ await stage.locator('#festival-title').waitFor();
+ assert(await page.evaluate(()=>window.__fullscreenRequested===true));
+ await stage.locator('#fullscreen-toggle').waitFor({state:'hidden',timeout:30000});
+ await page.evaluate(()=>{window.__testFullscreen=null;document.dispatchEvent(new Event('fullscreenchange'));});
+ assert(await stage.locator('#fullscreen-toggle').isVisible());
+ await stage.locator('#fullscreen-toggle').click();
+ await stage.locator('#fullscreen-toggle').waitFor({state:'hidden',timeout:30000});
+ report.checks.push({invalidPasswordRejected:true,validPasswordAccepted:true,maximiseVisibilityFollowsFullscreen:true});
+ await stage.locator('.backdrop img').evaluate(img=>img.decode());
+ const flowerImage=await stage.locator('.presenter-brand img').evaluate(async img=>{await img.decode();const r=img.getBoundingClientRect(),p=img.parentElement.getBoundingClientRect();return{loaded:img.naturalWidth>0,width:r.width,behindBrand:r.left<p.right&&r.right>p.left&&r.top<p.bottom&&r.bottom>p.top};});
+ assert(flowerImage.loaded&&flowerImage.behindBrand);
+ assert.equal(await stage.locator('#festival-title').textContent(),'athousandminds');
+ assert.equal(await stage.locator('#proposal-about').innerText(),'Proposal');
+ assert.equal(await stage.locator('#motion-toggle,#sound-toggle,#close-film,.proposal-note').count(),0);
+ assert.equal(await stage.locator('.event-description').innerText(),'MULTIPLE ARENAS - A NEW INTERACTIVE MUSIC, FASHION, LIGHT FESTIVAL, EXPLORING MINDFULNESS');
+ const spin=await stage.locator('#global-nav-toggle img').evaluate(img=>getComputedStyle(img).animationName);
+ assert.equal(spin,'flower-spin');
+ report.checks.push({brandOneWord:true,presenterFlower:flowerImage,rotatingGlobalFlower:true,proposalOnlyFooter:true,removedControlsAbsent:true});
+ const loop=stage.locator('#opening-loop');
+ await loop.evaluate(v=>new Promise((resolve,reject)=>{if(v.readyState>=3&&!v.paused)return resolve();v.addEventListener('playing',resolve,{once:true});setTimeout(()=>reject(new Error('Opening loop did not start')),30000);}));
+ const openingFirst=await loop.evaluate(v=>({time:v.currentTime,muted:v.muted,paused:v.paused,volume:v.volume,audioBytes:v.webkitAudioDecodedByteCount||0}));
+ await page.waitForTimeout(1400);
+ const openingSecond=await loop.evaluate(v=>({time:v.currentTime,muted:v.muted,paused:v.paused,volume:v.volume,audioBytes:v.webkitAudioDecodedByteCount||0}));
+ assert.notEqual(openingFirst.time,openingSecond.time);assert.equal(openingSecond.muted,false);assert.equal(openingSecond.volume,1);assert.equal(openingSecond.paused,false);
+ report.checks.push({opening:{first:openingFirst,second:openingSecond}});
+ await page.screenshot({path:out+'/poster-desktop.png'});
+ await stage.locator('#global-nav-toggle').click();
+ await page.screenshot({path:out+'/navigation-desktop.png'});
+ await stage.locator('#nav-about').click();
+ const aboutText=await stage.locator('#about-panel').innerText();
+ assert(aboutText.includes('oxytocin-related responses')&&aboutText.includes('cortisol-related responses'));
+ const note=await stage.locator('.about-proposal').innerText();
+ assert.equal(note,'This is a concept for a new festival by Universal Mind, pitching to Live Nation and Apple TV+, together as one. The artists and venues are ideal bookings, not confirmed and this is not an advertisement for an existing event.');
+ assert.equal(await loop.evaluate(v=>v.paused),false);
+ await page.screenshot({path:out+'/about-desktop.png'});
+ await stage.locator('#about-return').click();
+ await stage.locator('#proposal-about').click();
+ assert(await stage.locator('#about-panel').isVisible());
+ await stage.locator('#about-return').click();
+ report.checks.push({aboutRetainsOxytocinAndCortisol:true,fullProposalNoteInAbout:true,aboutKeepsOpeningAudio:true,proposalOpensAbout:true});
+ await stage.locator('#watch-film').click();
+ const film=stage.frameLocator('#film-player');
+ await film.locator('video').waitFor({timeout:30000});
+ let start;
+ for(let attempt=0;attempt<60;attempt++){
+   start=await film.locator('video').evaluate(v=>({time:v.currentTime,paused:v.paused,readyState:v.readyState,error:v.error?.message}));
+   if(start.time>.2&&!start.paused)break;
+   await page.waitForTimeout(500);
+ }
+ assert(start.time>.2&&!start.paused,'Film did not start: '+JSON.stringify(start));
+ const first=await film.locator('video').evaluate(v=>({time:v.currentTime,muted:v.muted,paused:v.paused,duration:v.duration,volume:v.volume,controls:v.controls}));
+ await page.waitForTimeout(2000);
+ const second=await film.locator('video').evaluate(v=>({time:v.currentTime,muted:v.muted,paused:v.paused}));
+ assert(second.time>first.time);assert.equal(second.muted,false);assert.equal(second.paused,false);assert.equal(first.volume,1);assert.equal(first.controls,false);
+ assert.equal(await loop.evaluate(v=>v.paused),true);
+ const iframeSrc=await stage.locator('#film-player').getAttribute('src');
+ assert(iframeSrc.includes('cloudflarestream.com')&&iframeSrc.includes('controls=false'));
+ const visibleControls=await film.locator('body').evaluate(()=>[...document.querySelectorAll('button,input,[role="slider"]')].filter(el=>{const r=el.getBoundingClientRect(),s=getComputedStyle(el);return r.width&&r.height&&s.visibility!=='hidden'&&s.display!=='none';}).map(el=>({tag:el.tagName,label:el.getAttribute('aria-label'),text:el.textContent?.trim()})));
+ assert.deepEqual(visibleControls,[]);
+ await film.locator('video').evaluate(v=>{v.currentTime=38;});
+ await page.waitForTimeout(1000);
+ const clock=await stage.locator('#film-timecode').innerText();
+ assert(/^0:3[89] \/ 2:22$/.test(clock),'Unexpected film timecode: '+clock);
+ await page.screenshot({path:out+'/film-timecode-desktop.png'});
+ report.checks.push({film:{first,second,cloudflare:true,controlsHidden:true,visibleControls,clock},loopPausedDuringFilm:true});
+ await stage.locator('#global-nav-toggle').click();
+ await stage.locator('#nav-about').click();
+ const aboutFilmFirst=await film.locator('video').evaluate(v=>v.currentTime);
+ await page.waitForTimeout(1800);
+ const aboutFilmSecond=await film.locator('video').evaluate(v=>({time:v.currentTime,paused:v.paused,muted:v.muted}));
+ assert(aboutFilmSecond.time>aboutFilmFirst&&!aboutFilmSecond.paused&&!aboutFilmSecond.muted);
+ assert(await page.evaluate(()=>!!document.fullscreenElement));
+ await stage.locator('#about-return').click();
+ assert(await stage.locator('#film-view').isVisible());
+ report.checks.push({aboutKeepsFilmAndAudio:true,aboutKeepsFullscreenState:true});
+ await stage.locator('#global-nav-toggle').click();
+ await stage.locator('#nav-home').click();
+ assert(await stage.locator('#film-view').isHidden());assert.equal(await stage.locator('#film-player').count(),0);
+ await stage.locator('#watch-film').click();
+ const ending=stage.frameLocator('#film-player').locator('video');
+ await ending.waitFor({timeout:30000});
+ await ending.evaluate(v=>new Promise(resolve=>{if(Number.isFinite(v.duration))return resolve();v.addEventListener('loadedmetadata',resolve,{once:true});}));
+ await ending.evaluate(v=>{v.currentTime=v.duration-1;});
+ await stage.locator('#film-view').waitFor({state:'hidden',timeout:30000});
+ await loop.evaluate(v=>new Promise(resolve=>{if(!v.paused)return resolve();v.addEventListener('playing',resolve,{once:true});}));
+ report.checks.push({flowerHomeStopsFilm:true,endedReturnsToPoster:true,loopResumesAfterFilm:true});
+ for(const size of [{width:390,height:844},{width:320,height:568},{width:1920,height:1080}]){
+   await page.setViewportSize(size);await page.waitForTimeout(250);
+   const layout=await stage.locator('body').evaluate(()=>({width:innerWidth,scrollWidth:document.documentElement.scrollWidth,height:innerHeight,scrollHeight:document.documentElement.scrollHeight}));
+   assert(layout.scrollWidth<=layout.width+1);assert(layout.scrollHeight<=layout.height+1);
+   const boxes=await stage.locator('body').evaluate(()=>Object.fromEntries(['#festival-title','#watch-film','.hashtags','.venues','.event-description','.proposal-label'].map(sel=>{const r=document.querySelector(sel).getBoundingClientRect();return[sel,{left:r.left,right:r.right,top:r.top,bottom:r.bottom}];})));
+   for(const[a,b]of[['#watch-film','.hashtags'],['.hashtags','.venues'],['.venues','.event-description'],['.event-description','.proposal-label']])assert(boxes[a].bottom<=boxes[b].top+2,`${size.width}: ${a} overlaps ${b}`);
+   assert(boxes['#festival-title'].left>=0&&boxes['#festival-title'].right<=size.width);
+   report.checks.push({layout,boxes});
+   await page.screenshot({path:out+`/poster-${size.width}.png`});
+   if(size.width===390){
+     await stage.locator('#proposal-about').click();await page.screenshot({path:out+'/about-mobile.png'});
+     assert(await stage.locator('#about-panel').evaluate(el=>el.scrollWidth<=el.clientWidth+1));
+     await stage.locator('#about-return').click();
+   }
+ }
+ await loop.evaluate(v=>v.pause());await context.close();
+ assert.deepEqual(report.errors,[]);report.passed=true;
+} catch(error){report.passed=false;report.failure=error.stack;throw error;}
+finally{await fs.writeFile(out+'/verification.json',JSON.stringify(report,null,2));await browser.close();await server.close();console.log(JSON.stringify(report,null,2));}
