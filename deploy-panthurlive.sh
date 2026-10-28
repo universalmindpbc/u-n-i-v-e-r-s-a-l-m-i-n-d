@@ -703,21 +703,38 @@ patent_staging_guard() {
 
 deploy_patent() {
   patent_staging_guard || return 1
-  git -C "$ROOT_DIR" diff --quiet HEAD -- patent deploy-panthur-staging.sh deploy-panthurlive.sh || return 1
+  git -C "$ROOT_DIR" diff --quiet HEAD -- patent Informatics/universal-one.js deploy-panthur-staging.sh deploy-panthurlive.sh || return 1
   local patent_manifest patent_source patent_remote
   patent_manifest="$(mktemp)"
   if [[ -f "$MANIFEST_FILE" ]]; then
-    awk -F '\t' '$2 !~ /^patent\//' "$MANIFEST_FILE" > "$patent_manifest"
+    awk -F '\t' '$2 !~ /^patent\// && $2 != "informatics/universal-one.js"' "$MANIFEST_FILE" > "$patent_manifest"
   fi
   put_file "$ROOT_DIR/patent/private-deny.htaccess" "patent/.private/.htaccess"
+  put_file "$ROOT_DIR/Informatics/universal-one.js" "informatics/universal-one.js"
+  printf '%s\t%s\n' "$(file_hash "$ROOT_DIR/Informatics/universal-one.js")" "informatics/universal-one.js" >> "$patent_manifest"
   while IFS= read -r patent_source; do
     [[ -n "$patent_source" ]] || continue
     patent_remote="$patent_source"
     [[ "$patent_source" == "patent/private-deny.htaccess" ]] && patent_remote="patent/.private/.htaccess"
     put_file "$ROOT_DIR/$patent_source" "$patent_remote"
     printf '%s\t%s\n' "$(file_hash "$ROOT_DIR/$patent_source")" "$patent_remote" >> "$patent_manifest"
-  done < <(git -C "$ROOT_DIR" ls-files patent | sort)
+  done < <(git -C "$ROOT_DIR" ls-files patent | sort | awk '$0 != "patent/index.php" {print} END {print "patent/index.php"}')
   mv "$patent_manifest" "$MANIFEST_FILE"
+}
+
+configure_patent_content() {
+  patent_staging_guard || return 1
+  local runtime="${PATENT_RUNTIME_DIR:-}" image status
+  [[ -f "$runtime/chapters.json" && -f "$runtime/drawing-gallery.json" ]] || return 1
+  [[ "$(find "$runtime/drawings" -name 'image-*.jpg' -type f | wc -l | tr -d ' ')" == "91" ]] || return 1
+  put_file "$ROOT_DIR/patent/private-deny.htaccess" "patent/.private/.htaccess"
+  status="$(curl --silent --show-error --output /dev/null --write-out '%{http_code}' 'https://staging.universalmind.tv/patent/.private/document.json')"
+  [[ "$status" == "403" ]] || { echo "Private storage denial failed." >&2; return 1; }
+  for image in "$runtime"/drawings/image-*.jpg; do put_file "$image" "patent/.private/drawings/$(basename "$image")"; done
+  put_file "$runtime/drawing-gallery.json" "patent/.private/drawing-gallery.json"
+  put_file "$runtime/chapters.json" "patent/.private/chapters.json"
+  if [[ -f "$runtime/ai-config.json" ]]; then put_file "$runtime/ai-config.json" "patent/.private/ai-config.json"; fi
+  echo "Private patent chapters and 91 drawings uploaded through Panthur."
 }
 
 configure_patent_private() {
@@ -779,6 +796,9 @@ case "$DEPLOY_MODE" in
     ;;
   patent)
     deploy_patent
+    ;;
+  patent-content)
+    configure_patent_content
     ;;
   patent-configure)
     configure_patent_private

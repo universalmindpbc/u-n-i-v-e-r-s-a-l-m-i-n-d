@@ -1,32 +1,66 @@
-/* Private document reader. No document content or password is bundled here. */
 'use strict';
-const $=s=>document.querySelector(s),csrf=$('meta[name="csrf-token"]').content;
-async function auth(payload){const r=await fetch('login.php',{method:'POST',credentials:'same-origin',headers:{'Content-Type':'application/json'},body:JSON.stringify({...payload,csrf})});const d=await r.json();if(!r.ok)throw Error(d.error||'Access unavailable.');return d;}
-if($('#login-form'))$('#login-form').addEventListener('submit',async e=>{e.preventDefault();const button=e.target.querySelector('button');button.disabled=true;$('#login-status').textContent='Opening…';try{await auth({password:$('#access-password').value});location.reload();}catch(err){$('#login-status').textContent=err.message;button.disabled=false;}});
-if($('#logout'))$('#logout').addEventListener('click',async()=>{await auth({action:'logout'});location.reload();});
-let data=null,filtered=[],position=0;const size=12;let readingRanks=new Map();
-function readingRank(title){if(title.startsWith('1. '))return 10;if(title==='17. Abstract')return 20;if(title.startsWith('4. '))return 30;if(title.startsWith('2. '))return 40;if(title.startsWith('3. '))return 41;const n=Number(title.match(/^(\d+)\./)?.[1]);if(n>=6&&n<=14)return 50+n;if(title==='Drawings and figure descriptions')return 80;if(title==='Drawing sheets')return 81;if(title.startsWith('5. '))return 82;if(n===15||n===16)return 90+n;if(title.startsWith('Appendix'))return 200;return 150;}
-function displayTitle(title){return title.replace(/^\d+\.\s*/,'');}
-
-function normal(s){return s.normalize('NFKD').toLowerCase();}
-function selected(){return {query:$('#query').value.trim(),section:$('#chapter-select').value,material:$('#material').value};}
-function apply(){if(!data)return;const {query,section,material}=selected();const words=normal(query).split(/\s+/).filter(Boolean);filtered=data.pages.filter(p=>(!section||p.section===section)&&(!material||p.material===material)&&words.every(w=>p.search.includes(w)));if($('#order').value==='reading')filtered.sort((a,b)=>(readingRanks.get(a.section)??149)-(readingRanks.get(b.section)??149)||a.page-b.page);if($('#order').value==='relevance'&&words.length){filtered.sort((a,b)=>words.reduce((s,w)=>s+(b.search.split(w).length-a.search.split(w).length),0)||a.page-b.page);}position=0;render();document.querySelectorAll('#contents button').forEach(b=>b.classList.toggle('active',b.dataset.section===section));}
-function excerpt(p,q){const text=p.text.replace(/\s+/g,' ').trim();const term=q.split(/\s+/)[0]||'';const at=normal(text).indexOf(normal(term));const start=at>100?at-70:0;return (start?'…':'')+text.slice(start,start+270)+(text.length>start+270?'…':'');}
-function render(){const q=selected().query;$('#results').replaceChildren();$('#result-status').textContent=`${filtered.length.toLocaleString()} pages${q?' matching “'+q+'”':''}`;for(const p of filtered.slice(position*size,(position+1)*size)){const row=document.createElement('article');row.className='result';const n=document.createElement('span');n.className='page-no';n.textContent=String(p.page).padStart(3,'0');const box=document.createElement('div'),h=document.createElement('h3'),t=document.createElement('p'),b=document.createElement('button');h.textContent=displayTitle(p.section);t.textContent=excerpt(p,q);b.textContent='Read ↗';b.setAttribute('aria-label',`Read page ${p.page}`);b.addEventListener('click',()=>openPage(p));box.append(h,t);row.append(n,box,b);$('#results').append(row);}if(!filtered.length){const p=document.createElement('p');p.textContent='No pages match these filters. Try another term or clear the filters.';$('#results').append(p);}const total=Math.ceil(filtered.length/size);$('#pagination-status').textContent=total?`${position+1} / ${total}`:'0 / 0';$('#previous').disabled=position===0;$('#next').disabled=position+1>=total;}
-function openPage(p){$('#reader-heading').textContent=`Specification · page ${p.page}`;$('#reader-title').textContent=p.section;$('#reader-text').textContent=p.text;$('#reader-pdf').href=`document.php#page=${p.page}`;$('#reader').showModal();}
-function renderContents(sections){
- $('#chapter-select').replaceChildren(new Option('All sections',''));$('#contents').replaceChildren();
- let activeGroup='',options;
- for(const s of sections){
-  const group=s.title.startsWith('Appendix')?'Supplementary appendices':readingRank(s.title)===150?'Reading guides':'Main patent';
-  if(group!==activeGroup){
-   activeGroup=group;options=document.createElement('optgroup');options.label=group;$('#chapter-select').append(options);
-   const heading=document.createElement('p');heading.className='contents-group';heading.textContent=group;$('#contents').append(heading);
+(()=>{
+ const $=s=>document.querySelector(s),csrf=$('meta[name="csrf-token"]').content;
+ async function auth(payload){const r=await fetch('login.php',{method:'POST',credentials:'same-origin',headers:{'Content-Type':'application/json'},body:JSON.stringify({...payload,csrf})});const d=await r.json();if(!r.ok)throw Error(d.error||'Access unavailable.');return d;}
+ if($('#login-form')){$('#login-form').addEventListener('submit',async e=>{e.preventDefault();const button=e.target.querySelector('button');button.disabled=true;$('#login-status').textContent='Opening…';try{await auth({password:$('#access-password').value});location.reload();}catch(err){$('#login-status').textContent=err.message;button.disabled=false;}});return;}
+ $('#logout').onclick=async()=>{await auth({action:'logout'});location.reload();};
+ let chapters=[],current=null,observer=null;
+ const clean=s=>s.normalize('NFKD').toLowerCase();
+ const label=c=>c.title.replace(/^Appendix ([A-Z](?:\.\d+)?)[.]?\s*/, '$1 · ');
+ function closeNav(){document.body.classList.remove('nav-open');$('#toggle-nav').setAttribute('aria-expanded','false');}
+ $('#toggle-nav').onclick=()=>{const open=document.body.classList.toggle('nav-open');$('#toggle-nav').setAttribute('aria-expanded',String(open));};
+ function show(id){for(const el of document.querySelectorAll('.view'))el.hidden=el.id!==id;closeNav();}
+ function navigation(){
+  const nav=$('#contents');nav.replaceChildren();
+  for(const group of ['Main patent','Reading guides','Appendices']){
+   const box=document.createElement('details');box.className='nav-group';box.open=group==='Main patent';const heading=document.createElement('summary');heading.textContent=group;box.append(heading);
+   for(const c of chapters.filter(c=>c.group===group&&c.page!==278)){
+    const a=document.createElement('a');a.href='#'+c.id;a.textContent=label(c);a.dataset.chapter=c.id;box.append(a);
+   }nav.append(box);
   }
-  options.append(new Option(displayTitle(s.title),s.title));
-  const b=document.createElement('button');b.textContent=displayTitle(s.title);b.dataset.section=s.title;
-  b.addEventListener('click',()=>{$('#chapter-select').value=s.title;apply();$('#search-heading').scrollIntoView({block:'start'});});$('#contents').append(b);
  }
-}
-async function load(){try{$('#load-error').hidden=true;const r=await fetch('data.php',{credentials:'same-origin',cache:'no-store'});if(r.status===401){location.reload();return;}if(!r.ok)throw Error('Document unavailable');data=await r.json();for(const p of data.pages)p.search=normal(p.text+' '+p.section);$('#document-title').textContent=data.title;$('#page-total').textContent=`${data.pages.length.toLocaleString()} pages`;const readingSections=[...data.sections].sort((a,b)=>readingRank(a.title)-readingRank(b.title));readingRanks=new Map(readingSections.map((s,i)=>[s.title,i]));renderContents(readingSections);$('#read-abstract').disabled=false;apply();}catch(e){$('#load-error').hidden=false;$('#result-status').textContent='';}}
-if($('#search-form')){$('#read-abstract').addEventListener('click',()=>{const page=data?.pages.find(p=>p.section==='17. Abstract');if(page)openPage(page);});$('#search-form').addEventListener('submit',e=>{e.preventDefault();apply();});let timer;$('#query').addEventListener('input',()=>{clearTimeout(timer);timer=setTimeout(apply,220);});for(const id of ['chapter-select','material','order'])$('#'+id).addEventListener('change',apply);$('#reset').addEventListener('click',()=>{$('#query').value='';$('#chapter-select').value='';$('#material').value='';$('#order').value='reading';apply();});$('#previous').addEventListener('click',()=>{position--;render();});$('#next').addEventListener('click',()=>{position++;render();});$('#close-reader').addEventListener('click',()=>$('#reader').close());$('#focus-search').addEventListener('click',()=>{$('#query').focus();$('#search-heading').scrollIntoView();});$('#retry').addEventListener('click',load);load();}
+ function highlightQuery(text){
+  if(!text)return;const needle=clean(text);const nodes=[];const walker=document.createTreeWalker($('#chapter-body'),NodeFilter.SHOW_TEXT);
+  while(walker.nextNode()){const n=walker.currentNode;if(!n.parentElement.closest('pre,code')&&clean(n.textContent).includes(needle))nodes.push(n);}
+  for(const n of nodes.slice(0,100)){const i=clean(n.textContent).indexOf(needle);const fragment=document.createDocumentFragment();fragment.append(n.textContent.slice(0,i));const mark=document.createElement('mark');mark.textContent=n.textContent.slice(i,i+text.length);fragment.append(mark,n.textContent.slice(i+text.length));n.replaceWith(fragment);}
+ }
+ function renderChapter(c,target='',query=''){
+  show('chapter-view');current=c;$('#chapter-title').textContent=c.title;$('#chapter-group').textContent=c.group;
+  $('#chapter-pdf').href='document.php#page='+c.page;$('#chapter-pdf').textContent=`Filed PDF · pp. ${c.page}–${c.end_page} ↗`;
+  $('#chapter-body').innerHTML=c.html;$('#chapter-parts').replaceChildren();
+  for(const part of c.parts||[]){const a=document.createElement('a');a.href='#'+part.id;a.textContent=part.title;$('#chapter-parts').append(a);}
+  const toc=$('#on-this-page');toc.replaceChildren();const title=document.createElement('p');title.textContent='ON THIS PAGE';toc.append(title);
+  for(const h of c.headings){if(h.level>3)continue;const a=document.createElement('a');a.href='#'+h.id;a.textContent=h.title;a.className='toc-level-'+h.level;toc.append(a);}
+  const i=chapters.indexOf(c),previous=chapters[i-1],next=chapters[i+1];
+  for(const [id,chapter,prefix] of [['previous-chapter',previous,'← '],['next-chapter',next,'Next: ']]){const a=$('#'+id);a.hidden=!chapter;if(chapter){a.href='#'+chapter.id;a.textContent=prefix+chapter.title;}}
+  document.querySelectorAll('[data-chapter]').forEach(a=>{a.classList.toggle('active',a.dataset.chapter===c.id);if(a.dataset.chapter===c.id)a.closest('details').open=true;});
+  highlightQuery(query);observer?.disconnect();
+  observer=new IntersectionObserver(entries=>{for(const entry of entries)if(entry.isIntersecting){toc.querySelectorAll('a').forEach(a=>a.classList.toggle('active',a.hash==='#'+entry.target.id));}},{rootMargin:'-90px 0px -65% 0px'});
+  $('#chapter-body').querySelectorAll('h2,h3').forEach(h=>observer.observe(h));
+  requestAnimationFrame(()=>{const node=target?document.getElementById(target):query?$('#chapter-body mark'):null;if(node)node.scrollIntoView({block:'start'});else window.scrollTo({top:0});});
+ }
+ function search(query){
+  show('search-view');$('#results').replaceChildren();const words=clean(query).split(/\s+/).filter(Boolean);
+  const matches=words.length?chapters.filter(c=>words.every(w=>clean(c.title+' '+c.text).includes(w))):[];
+  $('#result-status').textContent=words.length?`${matches.length} chapters match “${query}”`:'Enter a subject, term or phrase in the search field.';
+  for(const c of matches){
+   const row=document.createElement('article');row.className='search-result';const a=document.createElement('a');a.href='#'+c.id+'?q='+encodeURIComponent(query);const h=document.createElement('h2');h.textContent=c.title;a.append(h);const p=document.createElement('p');let at=clean(c.text).indexOf(words[0]);at=Math.max(0,at-100);p.textContent=(at?'…':'')+c.text.slice(at,at+340)+'…';const meta=document.createElement('span');meta.className='eyebrow';meta.textContent=c.group;row.append(meta,a,p);$('#results').append(row);
+  }window.scrollTo({top:0});
+ }
+ function route(){
+  const hash=decodeURIComponent(location.hash.slice(1)||'overview');
+  if(hash==='overview'||hash==='filing-receipt'){show('overview');if(hash==='filing-receipt')$('#filing-receipt').scrollIntoView();else window.scrollTo({top:0});return;}
+  if(hash==='drawings'||/^drawing-\d+$/.test(hash)){show('drawings');if(hash==='drawings')window.scrollTo({top:0});return;}
+  if(hash.startsWith('search?')){search(new URLSearchParams(hash.slice(7)).get('q')||'');return;}
+  const [id,params='']=hash.split('?');const query=new URLSearchParams(params).get('q')||'';
+  const page=/^page-(\d+)$/.exec(id);let c;
+  if(page)c=chapters.find(c=>c.page<=Number(page[1])&&c.end_page>=Number(page[1]));
+  else c=chapters.find(c=>c.id===id||c.headings.some(h=>h.id===id)||(c.parts||[]).some(p=>p.id===id));
+  if(c){if(c.page===278){location.hash='drawings';return;}if(current===c&&id!==c.id&&!page&&!query){show('chapter-view');document.getElementById(id)?.scrollIntoView({block:'start'});}else renderChapter(c,id===c.id||page?'':id,query);if(page){$('#chapter-pdf').href='document.php#page='+page[1];$('#chapter-pdf').textContent='Filed PDF · p. '+page[1]+' ↗';}return;}
+  show('overview');
+ }
+ $('#search-form').onsubmit=e=>{e.preventDefault();location.hash='search?q='+encodeURIComponent($('#query').value.trim());};
+ window.addEventListener('hashchange',route);
+ async function load(){try{$('#load-error').hidden=true;const r=await fetch('chapters.php',{credentials:'same-origin',cache:'no-store'});if(r.status===401){location.reload();return;}if(!r.ok)throw Error();const data=await r.json();chapters=data.chapters;navigation();route();}catch{$('#load-error').hidden=false;}}
+ $('#retry-load').onclick=load;void load();
+})();
