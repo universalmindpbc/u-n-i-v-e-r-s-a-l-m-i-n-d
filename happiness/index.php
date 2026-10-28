@@ -42,9 +42,9 @@ session_write_close();
 <script src="assets/gate-launch.js?v=1" defer></script>
 <?php else: ?>
 <link rel="preload" as="image" href="assets/universal-mind-flower.png">
-<link rel="stylesheet" href="assets/happiness.css?v=4">
+<link rel="stylesheet" href="assets/happiness.css?v=5">
 <script src="assets/network.js?v=1" defer></script>
-<script src="assets/happiness.js?v=3" defer></script>
+<script src="assets/happiness.js?v=4" defer></script>
 <?php endif; ?>
 </head>
 <body class="<?= $entered ? 'entered' : 'invitation' ?>">
@@ -75,6 +75,7 @@ session_write_close();
 <symbol id="icon-medical" viewBox="0 0 24 24"><path d="M8 2h8v6h6v8h-6v6H8v-6H2V8h6Z"/></symbol>
 <symbol id="icon-police" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="m12 5 2 5h5l-4 3 1.5 5-4.5-3-4.5 3L9 13l-4-3h5Z"/></symbol>
 <symbol id="icon-expand" viewBox="0 0 24 24"><path d="M8 3H3v5M16 3h5v5M21 16v5h-5M8 21H3v-5"/></symbol>
+<symbol id="icon-collapse" viewBox="0 0 24 24"><path d="M3 8h5V3M16 3v5h5M21 16h-5v5M8 21v-5H3"/></symbol>
 </defs>
 </svg>
 <div class="backdrop" aria-hidden="true">
@@ -152,6 +153,8 @@ session_write_close();
 <div id="film-mount" data-hls="<?= htmlspecialchars($filmConfig['hls'], ENT_QUOTES, 'UTF-8') ?>" data-duration="<?= (int)$filmConfig['duration'] ?>"></div>
 <button id="film-back" class="film-back" aria-label="Back to main screen"><span aria-hidden="true">←</span> Back</button>
 <output id="film-timecode" class="film-timecode" aria-label="Film playback time">0:00 / 5:55</output>
+<button id="film-fullscreen" class="film-fullscreen" type="button" aria-label="Enter video fullscreen" aria-pressed="false" title="Enter video fullscreen" disabled><svg aria-hidden="true" focusable="false"><use href="#icon-expand"/></svg></button>
+<p id="fullscreen-status" class="fullscreen-status" role="status"></p>
 <p id="playback-status" class="playback-status" role="status"></p>
 </section>
 
