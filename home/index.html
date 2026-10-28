@@ -9,9 +9,16 @@
     <link rel="icon" href="/vogue/iam/favicon.png?v=iam-favicon-3">
     <link rel="preload" as="image" href="/vogue/iam/a s s e t s/Universal Mind [ I o H ] Logo.PNG">
     <link rel="stylesheet" href="entry-shell.css?v=1">
-    <link rel="stylesheet" href="directory.css?v=2">
+    <link rel="stylesheet" href="directory.css?v=3">
     <script src="entry-shell.js?v=2" defer></script>
-    <script src="directory.js?v=4" defer></script>
+    <script>
+      document.documentElement.dataset.story = "preparing";
+      window.setTimeout(() => {
+        if (document.documentElement.dataset.story === "preparing") document.documentElement.dataset.story = "complete";
+      }, 4000);
+    </script>
+    <script src="directory.js?v=5" defer></script>
+    <script src="directory-story.js?v=1" defer></script>
   </head>
   <body>
     <div class="festival-background" aria-hidden="true">
@@ -27,12 +34,65 @@
               <rect width="100%" height="100%" fill="#fff"></rect>
               <circle class="flower-space" fill="#000"></circle>
             </mask>
+            <linearGradient id="pearl-train" x1="0" y1="0" x2="1" y2="0">
+              <stop offset="0" stop-color="#e8e2ff"></stop>
+              <stop offset=".5" stop-color="#ffe0ec"></stop>
+              <stop offset="1" stop-color="#fff5ed"></stop>
+            </linearGradient>
+            <mask id="reveal-watch" maskUnits="userSpaceOnUse">
+              <path class="rail-reveal" data-reveal="watch" pathLength="1"></path>
+            </mask>
+            <mask id="reveal-events" maskUnits="userSpaceOnUse">
+              <path class="rail-reveal" data-reveal="events" pathLength="1"></path>
+            </mask>
+            <mask id="reveal-festivals" maskUnits="userSpaceOnUse">
+              <path class="rail-reveal" data-reveal="festivals" pathLength="1"></path>
+            </mask>
+            <mask id="reveal-research" maskUnits="userSpaceOnUse">
+              <path class="rail-reveal" data-reveal="research" pathLength="1"></path>
+            </mask>
           </defs>
           <g mask="url(#flower-space)">
-            <path data-route="watch" pathLength="1"></path>
-            <path data-route="events" pathLength="1"></path>
-            <path data-route="festivals" pathLength="1"></path>
-            <path data-route="research" pathLength="1"></path>
+            <g class="route-track" data-route="watch">
+              <g mask="url(#reveal-watch)">
+                <path class="rail-outline"></path>
+                <path class="rail-bed"></path>
+                <path class="rail-ties"></path>
+              </g>
+              <g class="rail-train" opacity="0">
+                <rect x="-20" y="-2.5" width="27" height="5" rx="2.5" fill="url(#pearl-train)"></rect>
+              </g>
+            </g>
+            <g class="route-track" data-route="events">
+              <g mask="url(#reveal-events)">
+                <path class="rail-outline"></path>
+                <path class="rail-bed"></path>
+                <path class="rail-ties"></path>
+              </g>
+              <g class="rail-train" opacity="0">
+                <rect x="-20" y="-2.5" width="27" height="5" rx="2.5" fill="url(#pearl-train)"></rect>
+              </g>
+            </g>
+            <g class="route-track" data-route="festivals">
+              <g mask="url(#reveal-festivals)">
+                <path class="rail-outline"></path>
+                <path class="rail-bed"></path>
+                <path class="rail-ties"></path>
+              </g>
+              <g class="rail-train" opacity="0">
+                <rect x="-20" y="-2.5" width="27" height="5" rx="2.5" fill="url(#pearl-train)"></rect>
+              </g>
+            </g>
+            <g class="route-track" data-route="research">
+              <g mask="url(#reveal-research)">
+                <path class="rail-outline"></path>
+                <path class="rail-bed"></path>
+                <path class="rail-ties"></path>
+              </g>
+              <g class="rail-train" opacity="0">
+                <rect x="-20" y="-2.5" width="27" height="5" rx="2.5" fill="url(#pearl-train)"></rect>
+              </g>
+            </g>
           </g>
         </svg>
         <img class="directory-flower" src="/vogue/iam/a s s e t s/Universal Mind [ I o H ] Logo.PNG" alt="" aria-hidden="true" fetchpriority="high">
@@ -66,7 +126,7 @@
         </a>
       </nav>
     </main>
-    <button class="ambient-toggle directory-control" type="button" aria-label="Pause background video" title="Pause background video">
+    <button class="ambient-toggle directory-control" type="button" aria-label="Pause background motion" title="Pause background motion">
       <svg viewBox="0 0 24 24" aria-hidden="true"><path class="pause-symbol" d="M8 6v12M16 6v12"></path><path class="play-symbol" d="m8 5 10 7-10 7Z"></path></svg>
     </button>
     <button class="fullscreen-toggle directory-control" type="button" aria-label="Enter fullscreen" title="Enter fullscreen">

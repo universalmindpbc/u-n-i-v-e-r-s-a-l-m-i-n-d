@@ -25,8 +25,8 @@
   syncFullscreen();
 
   const syncFilm = () => {
-    ambientToggle.dataset.paused = String(film.paused);
-    const label = film.paused ? 'Play background video' : 'Pause background video';
+    ambientToggle.dataset.paused = String(userPaused);
+    const label = userPaused ? 'Play background motion' : 'Pause background motion';
     ambientToggle.setAttribute('aria-label', label);
     ambientToggle.title = label;
   };
@@ -44,11 +44,13 @@
   film.addEventListener('loadeddata', () => { film.classList.add('is-ready'); syncFilm(); });
   film.addEventListener('play', syncFilm);
   film.addEventListener('pause', syncFilm);
-  film.addEventListener('error', () => { ambientToggle.hidden = true; });
+  film.addEventListener('error', () => { document.body.dataset.festivalMedia = 'unavailable'; syncFilm(); });
   ambientToggle.addEventListener('click', () => {
-    userPaused = !film.paused;
+    userPaused = !userPaused;
     if (userPaused) film.pause();
     else playFilm();
+    syncFilm();
+    document.dispatchEvent(new CustomEvent('directory:motion', { detail: { paused: userPaused } }));
   });
   document.addEventListener('visibilitychange', () => {
     if (document.hidden) film.pause();
@@ -58,6 +60,7 @@
     userPaused = motion.matches;
     if (userPaused) film.pause();
     else if (!document.hidden) playFilm();
+    syncFilm();
   });
   window.addEventListener('pagehide', () => {
     film.pause();
@@ -96,15 +99,30 @@
       const station = destination.querySelector('.station').getBoundingClientRect();
       const endX = station.left + station.width / 2 - bounds.left;
       const endY = station.top + station.height / 2 - bounds.top;
-      const path = routes.querySelector(`[data-route="${destination.dataset.destination}"]`);
+      const group = routes.querySelector(`[data-route="${destination.dataset.destination}"]`);
+      const path = group.querySelector('.rail-outline');
+      const reveal = routes.querySelector(`[data-reveal="${destination.dataset.destination}"]`);
       const dx = endX - x;
       const dy = endY - y;
-      const bend = endX - dx * .28;
-      path.setAttribute('d', compact
-        ? `M ${x} ${y} C ${x} ${y + dy * .55}, ${endX} ${y + dy * .45}, ${endX} ${endY}`
-        : `M ${x} ${y} C ${x + dx * .48} ${y}, ${bend} ${y}, ${bend} ${y + dy * .5} C ${bend} ${endY}, ${endX - dx * .1} ${endY}, ${endX} ${endY}`);
+      const d = compact
+        ? `M ${x} ${y} C ${x + dx * .8} ${y + dy * .26}, ${endX} ${endY - dy * .46}, ${endX} ${endY}`
+        : `M ${x} ${y} C ${x + dx * .26} ${y + dy * .78}, ${endX - dx * .35} ${endY}, ${endX} ${endY}`;
+      [path, group.querySelector('.rail-bed'), reveal].forEach(rail => rail.setAttribute('d', d));
+      const length = path.getTotalLength();
+      const ties = [];
+      for (let distance = 14; distance < length - 12; distance += 24) {
+        const point = path.getPointAtLength(distance);
+        const before = path.getPointAtLength(distance - 1);
+        const after = path.getPointAtLength(distance + 1);
+        const angle = Math.atan2(after.y - before.y, after.x - before.x) + Math.PI / 2;
+        const acrossX = Math.cos(angle) * 3.7;
+        const acrossY = Math.sin(angle) * 3.7;
+        ties.push(`M ${point.x - acrossX} ${point.y - acrossY} L ${point.x + acrossX} ${point.y + acrossY}`);
+      }
+      group.querySelector('.rail-ties').setAttribute('d', ties.join(' '));
     });
     routes.classList.add('is-ready');
+    document.dispatchEvent(new Event('directory:routes-ready'));
   };
   const schedule = () => {
     cancelAnimationFrame(frame);

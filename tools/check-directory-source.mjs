@@ -8,7 +8,11 @@ const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const landing = fs.readFileSync(path.join(root, 'index.html'), 'utf8');
 const directory = fs.readFileSync(path.join(root, 'home/index.html'), 'utf8');
 const styles = fs.readFileSync(path.join(root, 'home/directory.css'), 'utf8');
-for (const script of landing.matchAll(/<script>([\s\S]*?)<\/script>/g)) new vm.Script(script[1]);
+for (const document of [landing, directory]) {
+  for (const script of document.matchAll(/<script>([\s\S]*?)<\/script>/g)) new vm.Script(script[1]);
+}
+assert(styles.includes('font-family: "Helvetica Neue";'));
+assert(!styles.includes('Arial'));
 const copy = [
   'Universal Mind is an electronic music company for mental health',
   'WATCH TV', 'watch electronic music &amp; fashion as mindfulness',

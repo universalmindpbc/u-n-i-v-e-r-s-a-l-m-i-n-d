@@ -1,7 +1,7 @@
 :root {
   --route-highlight: #ffe600;
   color-scheme: dark;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: "Helvetica Neue";
   color: #fff;
   background: #000;
   -webkit-font-smoothing: antialiased;
@@ -9,6 +9,7 @@
 
 * { box-sizing: border-box; }
 body { margin: 0; }
+button, input, select, textarea { font-family: inherit; }
 
 .festival-background, .festival-film, .festival-shade { position: fixed; inset: 0; width: 100%; height: 100%; pointer-events: none; }
 .festival-background { z-index: 0; background: #000; }
@@ -50,16 +51,12 @@ h1 {
   pointer-events: none;
 }
 
-.routes path {
-  fill: none;
-  stroke: #fff;
-  stroke-width: 2;
-  stroke-linecap: round;
-  vector-effect: non-scaling-stroke;
-  transition: stroke-width 180ms ease;
-}
-
-.routes path.is-active { stroke-width: 3; }
+.routes path { fill: none; stroke-linecap: round; vector-effect: non-scaling-stroke; }
+.rail-outline { stroke: rgba(255, 255, 255, .94); stroke-width: 9; }
+.rail-bed { stroke: rgba(3, 5, 7, .94); stroke-width: 5.4; }
+.rail-ties { stroke: rgba(255, 255, 255, .48); stroke-width: 1.15; }
+.rail-reveal { stroke: #fff; stroke-width: 15; stroke-dasharray: 1; stroke-dashoffset: var(--rail-offset, 0); }
+.rail-train { will-change: transform; }
 
 /* Reuse the landing page's asset, native alpha and exact responsive widths. */
 .directory-flower {
@@ -96,7 +93,7 @@ h1 {
 .destination-title {
   display: block;
   font-size: clamp(18px, 1.9vw, 30px);
-  font-weight: 600;
+  font-weight: 500;
   line-height: 1.2;
   transition: color 180ms ease;
 }
@@ -151,16 +148,27 @@ h1 {
 .ambient-toggle[data-paused="true"] .pause-symbol { display: none; }
 .ambient-toggle[data-paused="true"] .play-symbol { display: block; }
 
-@media (prefers-reduced-motion: no-preference) {
-  .routes.is-ready path { animation: trace-route 1800ms cubic-bezier(.25, .1, .25, 1) both; }
-  .routes.is-ready path:nth-child(2) { animation-delay: 100ms; }
-  .routes.is-ready path:nth-child(3) { animation-delay: 200ms; }
-  .routes.is-ready path:nth-child(4) { animation-delay: 300ms; }
-  @keyframes trace-route {
-    from { stroke-dasharray: 1; stroke-dashoffset: 1; }
-    to { stroke-dasharray: 1; stroke-dashoffset: 0; }
-  }
-}
+/* One narrative clock controls the headline, four routes and shared subtitle reveal. */
+h1 { position: relative; font-weight: 300; transition: transform 700ms cubic-bezier(.22, 1, .36, 1); }
+html[data-story="preparing"] h1, html[data-story="intro"] h1 { transform: translateY(clamp(48px, 9vh, 88px)); }
+html[data-story="preparing"] h1 { opacity: 0; }
+.intro-character { position: relative; opacity: 0; }
+.intro-character.is-visible { opacity: 1; }
+.intro-character.is-cursor::after { content: ""; position: absolute; left: 100%; top: .12em; width: 1px; height: .9em; background: #fff5f8; }
+html[data-story] .destination-title { opacity: 0; transform: translateY(12px); }
+html[data-story] .station { opacity: 0; transform: scale(.55); }
+html[data-story] .destination-description { opacity: 0; transform: translateY(8px); }
+.destination-title { transition: color 180ms ease, opacity 360ms ease, transform 600ms cubic-bezier(.22, 1, .36, 1); }
+.destination-description { transition: opacity 600ms ease, transform 600ms cubic-bezier(.22, 1, .36, 1); }
+.station { transition: background-color 180ms ease, border-color 180ms ease, opacity 240ms ease, transform 500ms cubic-bezier(.22, 1, .36, 1); }
+html[data-story] .destination.is-revealed .destination-title,
+html[data-story] .destination.is-revealed .station { opacity: 1; transform: none; }
+html[data-story="descriptions"] .destination-description,
+html[data-story="complete"] .destination-description { opacity: 1; transform: none; }
+html[data-story="complete"] .destination-title,
+html[data-story="complete"] .station { opacity: 1; transform: none; }
+html[data-story="preparing"] .rail-reveal { --rail-offset: 1; }
+html[data-story]:not([data-story="complete"]) .destination:not(.is-revealed) { pointer-events: none; }
 
 @media (max-width: 760px) {
   .directory { padding: 24px 24px 36px; }
@@ -186,5 +194,8 @@ h1 {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .routes path, .station, .destination-title, .festival-film { transition: none; }
+  .routes path, .station, .destination-title, .destination-description, .festival-film, h1 { transition: none; }
+  html[data-story] h1, html[data-story] .destination-title, html[data-story] .destination-description, html[data-story] .station { opacity: 1; transform: none; }
+  .intro-character { opacity: 1; }
+  .intro-character.is-cursor::after, .rail-train { display: none; }
 }
