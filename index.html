@@ -408,7 +408,11 @@
         };
 
         const render = (time) => {
-          if (document.hidden) return;
+          if (document.hidden || document.body.classList.contains("is-experience-shell")) {
+            state.frame = 0;
+            canvas.dataset.rainStatus = "paused";
+            return;
+          }
           if (time - state.lastTime < 1000 / 30 && state.lastTime) {
             state.frame = window.requestAnimationFrame(render);
             return;
