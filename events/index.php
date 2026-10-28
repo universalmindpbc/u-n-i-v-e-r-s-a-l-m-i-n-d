@@ -37,7 +37,7 @@ $entered = events_authenticated() && ($_GET['experience'] ?? '') === '1';
 <script src="assets/gate-launch.js?v=1" defer></script>
 <?php endif; ?>
 <?php if ($entered): ?>
-<script src="assets/events.js?v=3" defer></script>
+<script src="assets/events.js?v=4" defer></script>
 <?php endif; ?>
 </head>
 <body class="<?= $entered ? 'entered' : 'invitation' ?>">

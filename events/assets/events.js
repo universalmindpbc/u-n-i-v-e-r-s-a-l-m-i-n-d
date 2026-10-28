@@ -112,7 +112,8 @@
   function openAbout() {
     returnFocus = document.activeElement;
     nav.hidden = true; about.hidden = false; syncPanels();
-    about.querySelector('article').focus();
+    about.scrollTop = 0;
+    about.querySelector('article').focus({preventScroll:true});
     startLoop();
   }
   document.getElementById('nav-about').addEventListener('click', openAbout);
