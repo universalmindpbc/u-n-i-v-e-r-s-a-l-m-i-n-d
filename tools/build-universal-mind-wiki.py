@@ -97,8 +97,13 @@ resources = [
     resource('Atlas JSON bundle', '/informatics/pilot-v1/m1-m1001-data.zip', 'Universal Informatics', 'ZIP / JSON'),
     resource('Atlas CSV bundle', '/informatics/pilot-v1/m1-m1001-csv.zip', 'Universal Informatics', 'ZIP / CSV'),
 ]
-for title in ['EMDR', 'Sound', 'Mantra']:
-    resources.append(resource(title+' Medical Research dossier', '/vogue/iam/a%20s%20s%20e%20t%20s/r%20e%20s%20e%20a%20r%20c%20h/Universal%20Mind%20%5B%20I%20o%20H%20%5D%20-%20'+title+'%20Medical%20Research.pdf', 'I AM', 'PDF', description='Original Internet of Happiness research dossier. The Informatics publication register provides navigable source records.'))
+# Reuse the approved Science destinations so retired dossiers cannot return here.
+research_collections = re.findall(
+    r'\bid:\s*"([^"]+)"[\s\S]*?repository:\s*\{\s*collection:\s*"([^"]+)",\s*url:\s*"([^"]+)"',
+    source('i  a m/science-research-data-v1.js'))
+assert [item[0] for item in research_collections] == ['emdr', 'sound', 'mantra']
+for _, collection, url in research_collections:
+    resources.append(resource(collection+' research', url, 'Universal Informatics'))
 resources.append(resource('Public sitemap', '/sitemap.xml', 'Universal Mind', 'XML'))
 
 access = [

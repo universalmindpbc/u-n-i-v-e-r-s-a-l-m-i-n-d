@@ -25,9 +25,9 @@ const publicPaths = [
 ];
 
 const researchPaths = [
-  "/vogue/iam/a%20s%20s%20e%20t%20s/r%20e%20s%20e%20a%20r%20c%20h/Universal%20Mind%20%5B%20I%20o%20H%20%5D%20-%20EMDR%20Medical%20Research.pdf",
-  "/vogue/iam/a%20s%20s%20e%20t%20s/r%20e%20s%20e%20a%20r%20c%20h/Universal%20Mind%20%5B%20I%20o%20H%20%5D%20-%20Sound%20Medical%20Research.pdf",
-  "/vogue/iam/a%20s%20s%20e%20t%20s/r%20e%20s%20e%20a%20r%20c%20h/Universal%20Mind%20%5B%20I%20o%20H%20%5D%20-%20Mantra%20Medical%20Research.pdf",
+  "/informatics/library.html?collection=vision",
+  "/informatics/library.html?collection=sound",
+  "/informatics/library.html?collection=language",
 ];
 
 const trainingAgents = [

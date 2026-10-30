@@ -68,5 +68,14 @@ ns={'s':'http://www.sitemaps.org/schemas/sitemap/0.9'}
 urls={n.text for n in ET.parse(ROOT/'sitemap.xml').findall('s:url/s:loc',ns)}
 for path in ['/','/home/','/read/']:
     assert 'https://universalmind.tv'+path in urls
+# The retired medical dossiers remain absent from every public guide format.
+from urllib.parse import unquote
+for path in ['read/index.html','read/resources.json','llms.txt','sitemap.xml']:
+    decoded=unquote((ROOT/path).read_text())
+    assert not re.search(r'(?:EMDR|Sound|Mantra) Medical Research\.pdf',decoded,re.I), path
+for collection in ['vision','sound','language']:
+    url='https://universalmind.tv/informatics/library.html?collection='+collection
+    assert url in urls
+    assert any(item['url']==url and item['format']=='HTML' for item in data['resources'])
 assert not re.search(r'\b(should|could|would)\b',html+'\n'+llms,re.I)
 print(json.dumps({'passed':True,'projects':4,'resources':len(data['resources']),'sourceFidelity':'exact excerpts','linkDesign':'exact Informatics CSS','publicRoutesAllowed':len(routes),'stagingRoutesBlocked':len(routes)}))

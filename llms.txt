@@ -108,9 +108,9 @@ Access: The research wiki, publication records and download directory are public
 - [Dataset guide](https://universalmind.tv/informatics/exports/README.md): Universal Informatics; Markdown; Public.
 - [Atlas JSON bundle](https://universalmind.tv/informatics/pilot-v1/m1-m1001-data.zip): Universal Informatics; ZIP / JSON; Public.
 - [Atlas CSV bundle](https://universalmind.tv/informatics/pilot-v1/m1-m1001-csv.zip): Universal Informatics; ZIP / CSV; Public.
-- [EMDR Medical Research dossier](https://universalmind.tv/vogue/iam/a%20s%20s%20e%20t%20s/r%20e%20s%20e%20a%20r%20c%20h/Universal%20Mind%20%5B%20I%20o%20H%20%5D%20-%20EMDR%20Medical%20Research.pdf): I AM; PDF; Public. Original Internet of Happiness research dossier. The Informatics publication register provides navigable source records.
-- [Sound Medical Research dossier](https://universalmind.tv/vogue/iam/a%20s%20s%20e%20t%20s/r%20e%20s%20e%20a%20r%20c%20h/Universal%20Mind%20%5B%20I%20o%20H%20%5D%20-%20Sound%20Medical%20Research.pdf): I AM; PDF; Public. Original Internet of Happiness research dossier. The Informatics publication register provides navigable source records.
-- [Mantra Medical Research dossier](https://universalmind.tv/vogue/iam/a%20s%20s%20e%20t%20s/r%20e%20s%20e%20a%20r%20c%20h/Universal%20Mind%20%5B%20I%20o%20H%20%5D%20-%20Mantra%20Medical%20Research.pdf): I AM; PDF; Public. Original Internet of Happiness research dossier. The Informatics publication register provides navigable source records.
+- [Vision research](https://universalmind.tv/informatics/library.html?collection=vision): Universal Informatics; HTML; Public.
+- [Sound research](https://universalmind.tv/informatics/library.html?collection=sound): Universal Informatics; HTML; Public.
+- [Language research](https://universalmind.tv/informatics/library.html?collection=language): Universal Informatics; HTML; Public.
 - [Public sitemap](https://universalmind.tv/sitemap.xml): Universal Mind; XML; Public.
 
 ## AI access and reuse
