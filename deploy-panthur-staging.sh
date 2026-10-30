@@ -5,9 +5,11 @@ ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 NODE_BIN="${NODE_BIN:-}"
 
 # The patent route has a scoped preflight and uses the same Panthur transport.
-if [[ "${1:-}" == "patent" || "${1:-}" == "patent-configure" || "${1:-}" == "patent-content" || "${1:-}" == "patent-ai-configure" ]]; then
+if [[ "${1:-}" == "patent" || "${1:-}" == "patent-configure" || "${1:-}" == "patent-content" || "${1:-}" == "patent-ai-configure" || "${1:-}" == "patent-receipt" ]]; then
   export NODE_BIN="${NODE_BIN:-/Users/benkorbel/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/bin/node}"
-  for source in "$ROOT_DIR"/patent/*.js "$ROOT_DIR/Informatics/universal-one.js"; do "$NODE_BIN" --check "$source"; done
+  if [[ "${1:-}" != "patent-receipt" ]]; then
+    for source in "$ROOT_DIR"/patent/*.js "$ROOT_DIR/Informatics/universal-one.js"; do "$NODE_BIN" --check "$source"; done
+  fi
   if command -v php >/dev/null 2>&1; then
     for patent_source in "$ROOT_DIR"/patent/*.php; do php -l "$patent_source"; done
   fi
