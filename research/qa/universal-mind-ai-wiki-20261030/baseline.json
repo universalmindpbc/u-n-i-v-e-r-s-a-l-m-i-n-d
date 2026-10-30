@@ -1,0 +1,55 @@
+{
+  "commit": "f17e93b99e426861a72430b52f184370d6830cf1",
+  "checks": [
+    {
+      "url": "https://staging.universalmind.tv/",
+      "sha256": "55319dd4fe6cf1be2abd08a6ef763d4887a078ec7619ea6b3939f0901b8f6f53",
+      "sourceMatch": true
+    },
+    {
+      "url": "https://universalmind.tv/",
+      "sha256": "55319dd4fe6cf1be2abd08a6ef763d4887a078ec7619ea6b3939f0901b8f6f53",
+      "sourceMatch": true
+    },
+    {
+      "url": "https://staging.universalmind.tv/home/",
+      "sha256": "e284229ecb45889da9011813b218454ddcbabc79dc792069598b408191cc7847",
+      "sourceMatch": true
+    },
+    {
+      "url": "https://universalmind.tv/home/",
+      "sha256": "e284229ecb45889da9011813b218454ddcbabc79dc792069598b408191cc7847",
+      "sourceMatch": true
+    },
+    {
+      "url": "https://staging.universalmind.tv/home/directory.css",
+      "sha256": "31481bd655451fe87b8d094d7f1a0a3c3f5148ec207a6a9ac65607198405a02e",
+      "sourceMatch": true
+    },
+    {
+      "url": "https://universalmind.tv/home/directory.css",
+      "sha256": "31481bd655451fe87b8d094d7f1a0a3c3f5148ec207a6a9ac65607198405a02e",
+      "sourceMatch": true
+    },
+    {
+      "url": "https://staging.universalmind.tv/Informatics/style.css",
+      "sha256": "25f3d5261da342d64fefb27a8418abee0c71bf174a8f459b29dbceb77766b332",
+      "sourceMatch": true
+    },
+    {
+      "url": "https://universalmind.tv/Informatics/style.css",
+      "sha256": "25f3d5261da342d64fefb27a8418abee0c71bf174a8f459b29dbceb77766b332",
+      "sourceMatch": true
+    },
+    {
+      "url": "https://staging.universalmind.tv/robots.txt",
+      "sha256": "41639a505f2a622da6787f54a076943f2eecc667ec6468daf51c347edb011c66",
+      "sourceMatch": false
+    },
+    {
+      "url": "https://universalmind.tv/robots.txt",
+      "sha256": "821eac4b692b98aa93fa9b18c2b33f07fc862a79593812d8183a4b224dc8b0b5",
+      "sourceMatch": false
+    }
+  ]
+}

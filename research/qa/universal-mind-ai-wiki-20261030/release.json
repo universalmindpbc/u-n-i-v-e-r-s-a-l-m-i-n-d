@@ -1,0 +1,35 @@
+{
+  "status": "staging-verified",
+  "sourceCommit": "bd739a68d0d954ebd1ce40be0f018965cf41c1f3",
+  "baselineCommit": "f17e93b99e426861a72430b52f184370d6830cf1",
+  "scope": [
+    "Universal Mind root landing metadata and wiki link",
+    "Universal Mind home metadata and wiki link",
+    "Existing motion control moved next to fullscreen to clear the wiki link",
+    "Public organisation wiki, plain-text guide and structured resource directory",
+    "Production crawler-policy source prepared; staging excluded"
+  ],
+  "copy": {
+    "organisation": "User-approved introduction and Ben Korbel biography",
+    "projects": "Verbatim extracts from existing I AM, Events and Happiness About pages and Informatics wiki",
+    "projectCount": 4,
+    "resourceCount": 34,
+    "patentHighlighted": false
+  },
+  "verification": {
+    "sourceMatches": 10,
+    "resourceHTTPChecks": 34,
+    "browserWidths": [
+      1440,
+      390,
+      320
+    ],
+    "wikiReachableWithoutLogin": true,
+    "worksWithoutJavaScript": true,
+    "audioDisabledAtProcessLevel": true,
+    "browserClosed": true,
+    "pageErrors": [],
+    "productionHashesUnchanged": 5
+  },
+  "productionReleaseNote": "Production has not been modified. After explicit approval, deploy the same candidate through the existing Panthur ai-wiki mode. Reconcile the Cloudflare-managed robots layer at publication: its current ai-train=no signal and named training-bot blocks remain active on production. Keep the staging crawler exclusion. No patent route is linked from this guide."
+}
