@@ -1,0 +1,19 @@
+{
+  "verifiedAt": "2026-10-30T06:41:48.728392+00:00",
+  "sourceCommit": "148283cd1fe82a0292d3bcb8c9214fef6935c286",
+  "assets": [
+    {
+      "path": "Informatics/library.html",
+      "url": "https://staging.universalmind.tv/informatics/library.html?verification=facet-counts-20261030",
+      "sha256": "91bd802674b59dd0ad21e562f62ad7ec85d082ada0f50d42c370abe31736bd78",
+      "matched": true
+    },
+    {
+      "path": "Informatics/library.js",
+      "url": "https://staging.universalmind.tv/informatics/library.js?verification=facet-counts-20261030",
+      "sha256": "5d42912dc178b6f53b78d8f9909040e2e70275f92c8a8afffb23ab16f67c3a57",
+      "matched": true
+    }
+  ],
+  "passed": true
+}

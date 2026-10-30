@@ -1,0 +1,21 @@
+{
+  "verifiedAt": "2026-10-30T06:43:05.124837+00:00",
+  "sourceCommit": "148283cd1fe82a0292d3bcb8c9214fef6935c286",
+  "previousStaging": "e3a88da5c0553df495199f077e3fe233491fa144",
+  "proofURL": "https://staging.universalmind.tv/informatics/library.html?collection=all&view=search&community=domestic-violence",
+  "deployedAssets": 2,
+  "matchingSourceHashes": 2,
+  "browserWidths": [
+    1440,
+    390
+  ],
+  "browserChecks": 14,
+  "browserErrors": [],
+  "processAudioMuted": true,
+  "completeExportVersionUnchanged": "da23bd92bec19d3809a1bbff4f133beb54498e85804a829a1ce286e053aa0e72",
+  "researchRecordsAndClassificationsUnchanged": true,
+  "assistantServiceModified": false,
+  "dotBrief": "Ben confirmed manual delivery in this conversation",
+  "productionModified": false,
+  "productionMainCommit": "2e34aa822120ea38fbb28541f9dd738044ec1385"
+}
