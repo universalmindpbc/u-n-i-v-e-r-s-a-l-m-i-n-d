@@ -1,0 +1,6 @@
+{"passed": true, "robotDecisions": 270, "HTMLPages": 2119, "localLinks": 26633, "publicationRecords": 1108, "atlasRecords": 1001, "experimentRecords": 2, "sourceFilesMatched": 15}
+{"passed": true, "sources": 1177, "version": "da23bd92bec19d3809a1bbff4f133beb54498e85804a829a1ce286e053aa0e72"}
+Informatics: 13512 tracked assets; 27 changed uploads via Panthur FTP.
+Informatics: uploaded 27/27 changed assets.
+Informatics: completed changed uploads through the existing Panthur curl/FTP transport.
+Deploy complete: informatics

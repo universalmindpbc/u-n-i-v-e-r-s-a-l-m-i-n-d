@@ -1,0 +1,146 @@
+{
+  "mode": "production",
+  "audioMutedAtLaunch": true,
+  "checks": [
+    {
+      "width": 1440,
+      "community": "domestic-violence",
+      "total": 5,
+      "ageCounts": {
+        "children": 1,
+        "adolescents": 1,
+        "youth": 2,
+        "adults": 3,
+        "older-adults": 1,
+        "not-specified": 1
+      },
+      "includingRelated": 62,
+      "expandedAges": {
+        "children": 9,
+        "adolescents": 15,
+        "youth": 22,
+        "adults": 29,
+        "older-adults": 4,
+        "not-specified": 24
+      }
+    },
+    {
+      "width": 1440,
+      "community": "defence",
+      "total": 56,
+      "ageCounts": {
+        "children": 0,
+        "adolescents": 2,
+        "youth": 6,
+        "adults": 20,
+        "older-adults": 6,
+        "not-specified": 34
+      },
+      "includingRelated": 84,
+      "expandedAges": {
+        "children": 2,
+        "adolescents": 5,
+        "youth": 9,
+        "adults": 32,
+        "older-adults": 8,
+        "not-specified": 50
+      }
+    },
+    {
+      "filter": "topic",
+      "baseResults": 4,
+      "withDomesticViolence": 0
+    },
+    {
+      "filter": "condition",
+      "baseResults": 75,
+      "withDomesticViolence": 0
+    },
+    {
+      "filter": "journal",
+      "baseResults": 1,
+      "withDomesticViolence": 0
+    },
+    {
+      "filter": "category",
+      "baseResults": 58,
+      "withDomesticViolence": 0
+    },
+    {
+      "filter": "physiology",
+      "baseResults": 70,
+      "withDomesticViolence": 0
+    },
+    {
+      "filter": "target",
+      "baseResults": 2,
+      "withDomesticViolence": 0
+    },
+    {
+      "filter": "kind",
+      "baseResults": 227,
+      "withDomesticViolence": 2
+    },
+    {
+      "filter": "period",
+      "baseResults": 202,
+      "withDomesticViolence": 2
+    },
+    {
+      "filter": "trust",
+      "baseResults": 179,
+      "withDomesticViolence": 2
+    },
+    {
+      "filter": "jadad",
+      "baseResults": 1053,
+      "withDomesticViolence": 5
+    },
+    {
+      "width": 390,
+      "community": "domestic-violence",
+      "total": 5,
+      "ageCounts": {
+        "children": 1,
+        "adolescents": 1,
+        "youth": 2,
+        "adults": 3,
+        "older-adults": 1,
+        "not-specified": 1
+      },
+      "includingRelated": 62,
+      "expandedAges": {
+        "children": 9,
+        "adolescents": 15,
+        "youth": 22,
+        "adults": 29,
+        "older-adults": 4,
+        "not-specified": 24
+      }
+    },
+    {
+      "width": 390,
+      "community": "defence",
+      "total": 56,
+      "ageCounts": {
+        "children": 0,
+        "adolescents": 2,
+        "youth": 6,
+        "adults": 20,
+        "older-adults": 6,
+        "not-specified": 34
+      },
+      "includingRelated": 84,
+      "expandedAges": {
+        "children": 2,
+        "adolescents": 5,
+        "youth": 9,
+        "adults": 32,
+        "older-adults": 8,
+        "not-specified": 50
+      }
+    }
+  ],
+  "errors": [],
+  "passed": true
+}

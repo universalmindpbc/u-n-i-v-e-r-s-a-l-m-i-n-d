@@ -1,0 +1,128 @@
+{
+  "verifiedAt": "2026-10-30T07:23:00.704342+00:00",
+  "approvedSourceCommit": "36fe9a2d3869f90083907ff7c9001aa9c5d8a21f",
+  "assets": [
+    {
+      "path": "Informatics/connect.html",
+      "url": "https://universalmind.tv/informatics/connect.html?verification=populations-production-20261030",
+      "bytes": 11985,
+      "sha256": "09bb13019921a0bfc10d7b48a7703df1bb664d818ea5e81cab7aaec6d63487e3",
+      "matched": true
+    },
+    {
+      "path": "Informatics/exports/manifest.json",
+      "url": "https://universalmind.tv/informatics/exports/manifest.json?verification=populations-production-20261030",
+      "bytes": 2393387,
+      "sha256": "962897f1936ec604d0ced91aebb05f8c051d93e3f2eae624afc963bb8e7ef894",
+      "matched": true
+    },
+    {
+      "path": "Informatics/index.html",
+      "url": "https://universalmind.tv/informatics/index.html?verification=populations-production-20261030",
+      "bytes": 28330,
+      "sha256": "138c1de9e94d2c528e36876fe1fac52ff62715592d0e3b8bdde911e5ddbc1012",
+      "matched": true
+    },
+    {
+      "path": "Informatics/library-communities.js",
+      "url": "https://universalmind.tv/informatics/library-communities.js?verification=populations-production-20261030",
+      "bytes": 1438,
+      "sha256": "6bf513a461b401ae70b2541662399623608bf8f2c5ae40d60d914eec3b1bd936",
+      "matched": true
+    },
+    {
+      "path": "Informatics/library-data/age-index.json",
+      "url": "https://universalmind.tv/informatics/library-data/age-index.json?verification=populations-production-20261030",
+      "bytes": 325671,
+      "sha256": "cdd380ee1a1425a5777aa415061b5472eb632b035accb96da8823c8cab61d320",
+      "matched": true
+    },
+    {
+      "path": "Informatics/library-data/community-index.json",
+      "url": "https://universalmind.tv/informatics/library-data/community-index.json?verification=populations-production-20261030",
+      "bytes": 125806,
+      "sha256": "2e6c7b9f39e68b888b72876120a297ffc09f025d79de4e180ff60f04723af138",
+      "matched": true
+    },
+    {
+      "path": "Informatics/library-multiselect.js",
+      "url": "https://universalmind.tv/informatics/library-multiselect.js?verification=populations-production-20261030",
+      "bytes": 4975,
+      "sha256": "db8347e6f62eacf2de5be242fb8772a1d75a69414e990197ef845c4fafc9a470",
+      "matched": true
+    },
+    {
+      "path": "Informatics/library.css",
+      "url": "https://universalmind.tv/informatics/library.css?verification=populations-production-20261030",
+      "bytes": 29959,
+      "sha256": "4752f51f4cc3e5ff5527c7517b4562b02af30d22417228195a2e09cf49f9ab05",
+      "matched": true
+    },
+    {
+      "path": "Informatics/library.html",
+      "url": "https://universalmind.tv/informatics/library.html?verification=populations-production-20261030",
+      "bytes": 35247,
+      "sha256": "91bd802674b59dd0ad21e562f62ad7ec85d082ada0f50d42c370abe31736bd78",
+      "matched": true
+    },
+    {
+      "path": "Informatics/library.js",
+      "url": "https://universalmind.tv/informatics/library.js?verification=populations-production-20261030",
+      "bytes": 47011,
+      "sha256": "5d42912dc178b6f53b78d8f9909040e2e70275f92c8a8afffb23ab16f67c3a57",
+      "matched": true
+    },
+    {
+      "path": "Informatics/read/data.html",
+      "url": "https://universalmind.tv/informatics/read/data.html?verification=populations-production-20261030",
+      "bytes": 180304,
+      "sha256": "c1b44d0dc89764529fb18750042381cf557cee5872d9725f89910f71ee6f0514",
+      "matched": true
+    },
+    {
+      "path": "Informatics/universal-one-context.js",
+      "url": "https://universalmind.tv/informatics/universal-one-context.js?verification=populations-production-20261030",
+      "bytes": 3739,
+      "sha256": "b62694b875dd3471e7c8e8b5126a4f27bb36739337023912726191ba691ca470",
+      "matched": true
+    },
+    {
+      "path": "Informatics/exports/part-88fa7af76efbae1b2795dcdb0c85ac3e84d47dfdf0325a7cf0deb96065858715.bin",
+      "url": "https://universalmind.tv/informatics/exports/part-88fa7af76efbae1b2795dcdb0c85ac3e84d47dfdf0325a7cf0deb96065858715.bin?verification=populations-production-20261030",
+      "bytes": 50331648,
+      "sha256": "88fa7af76efbae1b2795dcdb0c85ac3e84d47dfdf0325a7cf0deb96065858715",
+      "matched": true
+    },
+    {
+      "path": "Informatics/exports/part-faa532d2bf36bbb373a78e023c889137b3620ccb589595fad77ea645528bebfe.bin",
+      "url": "https://universalmind.tv/informatics/exports/part-faa532d2bf36bbb373a78e023c889137b3620ccb589595fad77ea645528bebfe.bin?verification=populations-production-20261030",
+      "bytes": 25693432,
+      "sha256": "faa532d2bf36bbb373a78e023c889137b3620ccb589595fad77ea645528bebfe",
+      "matched": true
+    },
+    {
+      "path": "Informatics/exports/part-dac5b8834b9b6f4440881bee338f69d1796c2bdf819036a96edbfd0fe4c7204e.bin",
+      "url": "https://universalmind.tv/informatics/exports/part-dac5b8834b9b6f4440881bee338f69d1796c2bdf819036a96edbfd0fe4c7204e.bin?verification=populations-production-20261030",
+      "bytes": 50331648,
+      "sha256": "dac5b8834b9b6f4440881bee338f69d1796c2bdf819036a96edbfd0fe4c7204e",
+      "matched": true
+    },
+    {
+      "path": "Informatics/exports/part-5dde7af70368ea424492adc1b3dbc69fe43033e2bda59e31a95b2d1661114091.bin",
+      "url": "https://universalmind.tv/informatics/exports/part-5dde7af70368ea424492adc1b3dbc69fe43033e2bda59e31a95b2d1661114091.bin?verification=populations-production-20261030",
+      "bytes": 50331648,
+      "sha256": "5dde7af70368ea424492adc1b3dbc69fe43033e2bda59e31a95b2d1661114091",
+      "matched": true
+    },
+    {
+      "path": "Informatics/exports/part-e1138f3640e8914fa068b5f38f34cde6d633ffd3c82a8d7805880e0cc69038ff.bin",
+      "url": "https://universalmind.tv/informatics/exports/part-e1138f3640e8914fa068b5f38f34cde6d633ffd3c82a8d7805880e0cc69038ff.bin?verification=populations-production-20261030",
+      "bytes": 44190215,
+      "sha256": "e1138f3640e8914fa068b5f38f34cde6d633ffd3c82a8d7805880e0cc69038ff",
+      "matched": true
+    }
+  ],
+  "completeDownloadPartsVerified": 5,
+  "datasetVersion": "da23bd92bec19d3809a1bbff4f133beb54498e85804a829a1ce286e053aa0e72",
+  "passed": true
+}

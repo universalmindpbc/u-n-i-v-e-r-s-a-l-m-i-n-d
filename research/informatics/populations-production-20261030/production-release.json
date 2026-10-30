@@ -1,0 +1,29 @@
+{
+  "verifiedAt": "2026-10-30T07:24:32.667290+00:00",
+  "releaseTag": "production-2026-10-30-1824",
+  "approvedSourceCommit": "36fe9a2d3869f90083907ff7c9001aa9c5d8a21f",
+  "previousProductionCommit": "2e34aa822120ea38fbb28541f9dd738044ec1385",
+  "productionURL": "https://universalmind.tv/informatics/library.html?collection=all&view=search",
+  "authorization": "Ben explicitly approved production publication of Communities and Contexts, Age group and Universal One guidance; subsequent Dot research remains staging-only.",
+  "workerVersion": "b3a48388-afb9-4cc1-9000-4d936482af0e",
+  "previousWorkerVersion": "bd50e720-06b8-4da0-80c1-fd45069a17c3",
+  "model": "gpt-6-astra",
+  "browserWidths": [
+    1440,
+    390
+  ],
+  "filterChecks": 14,
+  "realOpenAIResponses": 2,
+  "openAIResponsesVisible": true,
+  "productionSourceLinksVerified": true,
+  "matchedAssetHashes": 17,
+  "completeDownloadPartsVerified": 5,
+  "datasetVersion": "da23bd92bec19d3809a1bbff4f133beb54498e85804a829a1ce286e053aa0e72",
+  "visiblePapers": 1108,
+  "deployment": "Existing Panthur informatics scope and existing production Worker configuration",
+  "stagingWebsiteDeployed": false,
+  "stagingWorkerDeployed": false,
+  "dotResearchPromoted": false,
+  "modelWeightsChanged": false,
+  "publicationDatabaseMigrated": false
+}
