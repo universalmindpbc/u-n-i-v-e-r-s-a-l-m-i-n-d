@@ -1,6 +1,6 @@
 {
-  "updatedAt": "2026-10-30T08:10:06.306003+00:00",
-  "status": "screening-version-count-clarification-awaiting-staging",
+  "updatedAt": "2026-10-30T08:12:47.463684+00:00",
+  "status": "staging-verified-awaiting-human-review",
   "baselineCommit": "36fe9a2d3869f90083907ff7c9001aa9c5d8a21f",
   "batchRevision": "batch-8bd70e21e48d9a70",
   "metrics": {
@@ -50,15 +50,15 @@
     "1": 54,
     "0": 66
   },
-  "lastCompleted": "First 120-assessment release deployed, verified and pushed; screening-version links clarified without changing record hashes",
+  "lastCompleted": "Count-clarified batch deployed; 13 live asset hashes and responsive browser checks verified; all 120 assessment hashes preserved",
   "nextActions": [
-    "Push source and staging evidence to origin/staging",
-    "Retain human review backlog for exact batch revision",
-    "Continue source clarification and queue coverage without changing the frozen batch"
+    "Record and push verified count clarification metadata",
+    "Continue separate evidence addendum",
+    "Await human content approval before final chapters"
   ],
   "deploymentBaselineCommit": "4900e9e0a33a85c154104b25ec09586a03216675",
   "baselineReconciliation": "New staging commit adds release evidence only. Approved Informatics source and export version are unchanged.",
-  "sourceCommit": "3ace08df05636b7e887ebe13a47f4d9e6c27b389",
+  "sourceCommit": "a66baba1d65b374d134b89865715b2a8302f5e26",
   "stagingURL": "https://staging.universalmind.tv/informatics/review/domestic-violence-20261030/",
   "continuation": {
     "activeLane": "adult-therapy",

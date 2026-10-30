@@ -1,8 +1,17 @@
 {
   "passed": true,
-  "checkedAt": "2026-10-30T08:04:53.808610+00:00",
-  "sourceCommit": "3ace08df05636b7e887ebe13a47f4d9e6c27b389",
+  "checkedAt": "2026-10-30T08:12:01.874310+00:00",
+  "sourceCommit": "a66baba1d65b374d134b89865715b2a8302f5e26",
   "checks": [
+    {
+      "path": "Informatics/review/domestic-violence-20261030/batch-8bd70e21e48d9a70.json",
+      "url": "https://staging.universalmind.tv/informatics/review/domestic-violence-20261030/batch-8bd70e21e48d9a70.json",
+      "status": 200,
+      "sha256": "afd810cdaefa6be0eeed16490fbc9b0f3a580837ea5f8994f64aa5ca9373f3c8",
+      "matchesCommittedSource": true,
+      "robots": "noindex, nofollow, noarchive",
+      "cacheControl": "no-store"
+    },
     {
       "path": "Informatics/review/domestic-violence-20261030/batch-acb62474225f0804.json",
       "url": "https://staging.universalmind.tv/informatics/review/domestic-violence-20261030/batch-acb62474225f0804.json",
@@ -25,7 +34,7 @@
       "path": "Informatics/review/domestic-violence-20261030/index.json",
       "url": "https://staging.universalmind.tv/informatics/review/domestic-violence-20261030/index.json",
       "status": 200,
-      "sha256": "d64fbfa5ff8c91bbcc835c64fdaf8ec70bfeb476d435e4353c060dc9527df775",
+      "sha256": "7d6c048f9f6899274caa3d3378769c2a0b79458fa0e55f3c73efc0a911d6b4d0",
       "matchesCommittedSource": true,
       "robots": "noindex, nofollow, noarchive",
       "cacheControl": "no-store"
@@ -43,7 +52,7 @@
       "path": "Informatics/review/domestic-violence-20261030/review.js",
       "url": "https://staging.universalmind.tv/informatics/review/domestic-violence-20261030/review.js",
       "status": 200,
-      "sha256": "e3ce555d476822bbb485d753f6822151952055891db1360ec350bbacf56981fa",
+      "sha256": "b29300db2d4daa74f76df4d4ad04119caf12c0df4832efa82f6e2156a548b202",
       "matchesCommittedSource": true,
       "robots": "noindex, nofollow, noarchive",
       "cacheControl": "no-store"
